@@ -1,38 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QA6wP-0007dm-3I
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Apr 2011 16:45:33 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:38637)
+	id 1QAInf-00039H-Sf
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Apr 2011 05:25:19 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:43180)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QA6wM-0007Yz-Le
-	for qemu-trivial@nongnu.org; Wed, 13 Apr 2011 16:45:31 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QAInd-00036h-O9
+	for qemu-trivial@nongnu.org; Thu, 14 Apr 2011 05:25:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QA6wL-0006JN-Im
-	for qemu-trivial@nongnu.org; Wed, 13 Apr 2011 16:45:30 -0400
-Received: from moutng.kundenserver.de ([212.227.126.171]:61964)
+	(envelope-from <stefanha@gmail.com>) id 1QAInc-00061U-Sf
+	for qemu-trivial@nongnu.org; Thu, 14 Apr 2011 05:25:17 -0400
+Received: from mail-wy0-f173.google.com ([74.125.82.173]:42046)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1QA6wH-0006IQ-3d; Wed, 13 Apr 2011 16:45:25 -0400
-Received: from flocke.fritz.box (p54AD9A55.dip.t-dialin.net [84.173.154.85])
-	by mrelayeu.kundenserver.de (node=mrbap3) with ESMTP (Nemesis)
-	id 0Mddka-1QXI6B2Hbo-00PJ04; Wed, 13 Apr 2011 22:45:23 +0200
-Received: from stefan by flocke.fritz.box with local (Exim 4.72)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1QA6wE-000410-Nu; Wed, 13 Apr 2011 22:45:22 +0200
-From: Stefan Weil <weil@mail.berlios.de>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Date: Wed, 13 Apr 2011 22:45:22 +0200
-Message-Id: <1302727522-15406-1-git-send-email-weil@mail.berlios.de>
-X-Mailer: git-send-email 1.7.2.5
-X-Provags-ID: V02:K0:63JDjnTooCQE1r7IPY61kuIhZODCZ2LjCOwdkBdYQ3a
-	9Aman1Mf5+viMwomWGhuzsUFWTc7Wky6kQjwdBJHbDLJjamcUa
-	CCBmYytrU3yX/LXUcphgxwOf/IiYCwV8XDiXnkocP3JC0XULbB
-	cl9sFK7yW0S3dtD+3FAkn827g6x8HoDsUKIFhrLc3x8QG6+jms
-	NGdbzdsmw/44NFSHfDOTdkAwsdHm3kXjbQjm6BiO+TZo/omdoV S3Z5YO8ix7zAB
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.227.126.171
-Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
-Subject: [Qemu-trivial] [PATCH] Fix some typos in comments and documentation
+	(envelope-from <stefanha@gmail.com>)
+	id 1QAInZ-00060i-TG; Thu, 14 Apr 2011 05:25:13 -0400
+Received: by wyb42 with SMTP id 42so1401693wyb.4
+	for <multiple recipients>; Thu, 14 Apr 2011 02:25:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=gi4bOQyqXexIvo52P29XOV1soJRncya/OiziEun7O8U=;
+	b=d4yGbMGfQgOWmbq2Uog5aoz01KOpSD4aoAncve7Bdjb6vB3R2WX3rG8eENeqyIf16k
+	LvFjbmR8avnFo8qbj5R9ea+W8bwNBK/D3Lvi64wmjz2gx0MGG5986jCWf6VR6eNzqlKV
+	T9FFpArUcYTrAseOG+pVzvvLSWrRHohADuNDk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	b=Ey/E4JhpdnKwjmcggZ4UFAjLPpazfTBQPmgacHKL/tbcpQNPuQb56nSxIptwyXb/tQ
+	ONPboyQR6flkYx6vgjwwHJXJpwbvsxVSGmp/w6CrllW7hxlyhMnPFOXiAt82NBj3zhAG
+	Fqp2JAX0YS6Sn48dt4lXaVl2ZQHwb/EhUmWy0=
+Received: by 10.227.61.13 with SMTP id r13mr585815wbh.52.1302773112911;
+	Thu, 14 Apr 2011 02:25:12 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain
+	(gbibp9ph1--blueice2n1.emea.ibm.com [195.212.29.75])
+	by mx.google.com with ESMTPS id e13sm859724wbi.57.2011.04.14.02.25.10
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 14 Apr 2011 02:25:11 -0700 (PDT)
+Date: Thu, 14 Apr 2011 10:25:06 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <weil@mail.berlios.de>
+Message-ID: <20110414092506.GA32105@stefanha-thinkpad.localdomain>
+References: <1302727522-15406-1-git-send-email-weil@mail.berlios.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1302727522-15406-1-git-send-email-weil@mail.berlios.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.173
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] Fix some typos in comments and
+ documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,63 +60,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <http://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Apr 2011 20:45:31 -0000
+X-List-Received-Date: Thu, 14 Apr 2011 09:25:18 -0000
 
-helpfull -> helpful
-usefull -> useful
-cotrol -> control
+On Wed, Apr 13, 2011 at 10:45:22PM +0200, Stefan Weil wrote:
+> helpfull -> helpful
+> usefull -> useful
+> cotrol -> control
+> 
+> and a grammar fix.
+> 
+> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+> ---
+>  qemu-options.hx     |    4 ++--
+>  savevm.c            |    2 +-
+>  target-arm/helper.c |    2 +-
+>  3 files changed, 4 insertions(+), 4 deletions(-)
 
-and a grammar fix.
+Merged into the trivial-patches tree.  I will send a pull request to the
+qemu.git maintainers:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-Signed-off-by: Stefan Weil <weil@mail.berlios.de>
----
- qemu-options.hx     |    4 ++--
- savevm.c            |    2 +-
- target-arm/helper.c |    2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+For more information, see
+http://wiki.qemu.org/Contribute/TrivialPatches.
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index ef60730..677c550 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -937,8 +937,8 @@ a lot of bandwidth at the expense of quality.
- Disable adaptive encodings. Adaptive encodings are enabled by default.
- An adaptive encoding will try to detect frequently updated screen regions,
- and send updates in these regions using a lossy encoding (like JPEG).
--This can be really helpfull to save bandwidth when playing videos. Disabling
--adaptive encodings allow to restore the original static behavior of encodings
-+This can be really helpful to save bandwidth when playing videos. Disabling
-+adaptive encodings allows to restore the original static behavior of encodings
- like Tight.
- 
- @end table
-diff --git a/savevm.c b/savevm.c
-index 03fce62..c1c5467 100644
---- a/savevm.c
-+++ b/savevm.c
-@@ -1007,7 +1007,7 @@ const VMStateInfo vmstate_info_buffer = {
- };
- 
- /* unused buffers: space that was used for some fields that are
--   not usefull anymore */
-+   not useful anymore */
- 
- static int get_unused_buffer(QEMUFile *f, void *pv, size_t size)
- {
-diff --git a/target-arm/helper.c b/target-arm/helper.c
-index 9172fc7..a0ec643 100644
---- a/target-arm/helper.c
-+++ b/target-arm/helper.c
-@@ -1378,7 +1378,7 @@ void HELPER(set_cp15)(CPUState *env, uint32_t insn, uint32_t val)
-             /* This may enable/disable the MMU, so do a TLB flush.  */
-             tlb_flush(env, 1);
-             break;
--        case 1: /* Auxiliary cotrol register.  */
-+        case 1: /* Auxiliary control register.  */
-             if (arm_feature(env, ARM_FEATURE_XSCALE)) {
-                 env->cp15.c1_xscaleauxcr = val;
-                 break;
--- 
-1.7.2.5
-
+Stefan
 
