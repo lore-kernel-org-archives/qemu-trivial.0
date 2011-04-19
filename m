@@ -1,44 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QAq4g-0008Ae-CL
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Apr 2011 16:57:06 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:35316)
+	id 1QC6ko-0007dH-WB
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Apr 2011 04:57:51 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:37530)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1QAq4e-00086z-FM
-	for qemu-trivial@nongnu.org; Fri, 15 Apr 2011 16:57:05 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1QC6kn-0007aR-92
+	for qemu-trivial@nongnu.org; Tue, 19 Apr 2011 04:57:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1QAq4d-0003TE-O5
-	for qemu-trivial@nongnu.org; Fri, 15 Apr 2011 16:57:04 -0400
-Received: from mail-vw0-f45.google.com ([209.85.212.45]:57420)
+	(envelope-from <pm215@archaic.org.uk>) id 1QC6km-0005Wt-Gh
+	for qemu-trivial@nongnu.org; Tue, 19 Apr 2011 04:57:49 -0400
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:34962)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>)
-	id 1QAq4c-0003SQ-3G; Fri, 15 Apr 2011 16:57:02 -0400
-Received: by vws17 with SMTP id 17so2811757vws.4
-	for <multiple recipients>; Fri, 15 Apr 2011 13:57:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:mime-version:date:message-id:subject:from:to:cc
-	:content-type; bh=rY+kbJX53UNMBIgVZgR6pasZ8LeH08i7kvAf2v4y8dQ=;
-	b=mqm9IsV4H/teQgrXLsDwUILRVlhthlR8POMRuR3G/CmHhhwkiFp4NQtWR49dJauU1s
-	P1spt10PnX3plo8A6sE2pRq+kwrZGiO66L508UtvNHi9Z/QMlKtZcepubnKyNZkfM4Aw
-	VvhcbdM9Vo1PhGkiQKrv1qtsCmdRk3bv7q8lI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=mime-version:date:message-id:subject:from:to:cc:content-type;
-	b=r9vsM2QOil49fXonbM3mQXy8TaG5FPV8JFUDS29aGlYnrgIyRJ4U1GhzajqLtBB4Cm
-	uHb/yw5pGViWZl3KsVylyXCnsUeW5bICcMfrWb8f6CywHiCo4sj0SXCBfL8sdzMwKRJx
-	rxSbwGGJ9BIL8ForvLzObN8btodzik4wTDoWE=
-MIME-Version: 1.0
-Received: by 10.220.101.7 with SMTP id a7mr677885vco.150.1302901020282; Fri,
-	15 Apr 2011 13:57:00 -0700 (PDT)
-Received: by 10.220.168.204 with HTTP; Fri, 15 Apr 2011 13:57:00 -0700 (PDT)
-Date: Fri, 15 Apr 2011 22:57:00 +0200
-Message-ID: <BANLkTik3hmvH6_tUuEZjR8j0L04PdCk7mw@mail.gmail.com>
-From: Jan Vesely <jano.vesely@gmail.com>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1QC6kh-0005Vb-IG; Tue, 19 Apr 2011 04:57:43 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1QC6kf-00080p-3l; Tue, 19 Apr 2011 09:57:41 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Content-Type: text/plain; charset=UTF-8
+Date: Tue, 19 Apr 2011 09:57:41 +0100
+Message-Id: <1303203461-30776-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.212.45
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] Bug #757654: UHCI fails to signal stall response
-	patch
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] configure: Make epoll_create1 test work
+	around SPARC glibc bug
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,44 +36,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <http://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Apr 2011 20:57:05 -0000
+X-List-Received-Date: Tue, 19 Apr 2011 08:57:50 -0000
 
-Hi,
+Work around a SPARC glibc bug which caused the epoll_create1 configure
+test to wrongly claim that the function was present. Some versions of
+SPARC glibc provided the function in the library but didn't declare
+it in the include file; the result is that gcc warns about an implicit
+declaration but a link succeeds. So we build the configure test with
+-Werror to avoid the test passing but then a -Werror qemu build
+failing.
 
-I'm sending a patch for bug #757654. The bug does not really break
-anything it just makes USB error detection harder.
-It's a quick fix and might need some polishing but it works (I am
-currently using it).
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ configure |    7 ++++++-
+ 1 files changed, 6 insertions(+), 1 deletions(-)
 
-thx,
-jan
+diff --git a/configure b/configure
+index da2da04..d9a8fdc 100755
+--- a/configure
++++ b/configure
+@@ -2229,7 +2229,12 @@ int main(void)
+     return 0;
+ }
+ EOF
+-if compile_prog "$ARCH_CFLAGS" "" ; then
++# We need to build this with -Werror to handle a bug in some
++# SPARC glibc where the function is defined but not declared
++# in the header file. Without -Werror gcc warns about an implicit
++# declaration of the function but the link succeeds; however
++# qemu itself will fail to build if it is compiled -Werror.
++if compile_prog "$ARCH_CFLAGS -Werror" "" ; then
+   epoll_create1=yes
+ fi
+ 
+-- 
+1.7.1
 
-PS: I guess you need this line:
-Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
-
-diff --git a/hw/usb-uhci.c b/hw/usb-uhci.c
-index 346db3e..a51d89b 100644
---- a/hw/usb-uhci.c
-+++ b/hw/usb-uhci.c
-@@ -732,11 +732,21 @@ out:
-     case USB_RET_STALL:
-         td->ctrl |= TD_CTRL_STALL;
-         td->ctrl &= ~TD_CTRL_ACTIVE;
-+        s->status |= UHCI_STS_USBERR;
-+        *int_mask |= 0x02;
-+        if (td->ctrl & TD_CTRL_IOC)
-+            *int_mask |= 0x01;
-+        uhci_update_irq(s);
-         return 1;
-
-     case USB_RET_BABBLE:
-         td->ctrl |= TD_CTRL_BABBLE | TD_CTRL_STALL;
-         td->ctrl &= ~TD_CTRL_ACTIVE;
-+        s->status |= UHCI_STS_USBERR;
-+        *int_mask |= 0x02;
-+        if (td->ctrl & TD_CTRL_IOC)
-+           *int_mask |= 0x01;
-+        uhci_update_irq(s);
-         /* frame interrupted */
-         return -1;
 
