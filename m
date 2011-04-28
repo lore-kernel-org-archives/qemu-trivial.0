@@ -1,41 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QFT1k-0001Ok-SD
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Apr 2011 11:21:12 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:48555)
+	id 1QFT1m-0001Si-H3
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Apr 2011 11:21:14 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:48581)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QFT1c-00019X-S8
-	for qemu-trivial@nongnu.org; Thu, 28 Apr 2011 11:21:05 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1QFT1g-0001HE-L4
+	for qemu-trivial@nongnu.org; Thu, 28 Apr 2011 11:21:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QFT1b-0006kw-F4
-	for qemu-trivial@nongnu.org; Thu, 28 Apr 2011 11:21:04 -0400
-Received: from moutng.kundenserver.de ([212.227.126.186]:49168)
+	(envelope-from <stefan@weilnetz.de>) id 1QFT1b-0006lD-Rd
+	for qemu-trivial@nongnu.org; Thu, 28 Apr 2011 11:21:08 -0400
+Received: from moutng.kundenserver.de ([212.227.17.9]:57522)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1QFT1S-0006dw-Gb; Thu, 28 Apr 2011 11:20:54 -0400
+	id 1QFT1U-0006ek-Cu; Thu, 28 Apr 2011 11:20:56 -0400
 Received: from flocke.fritz.box (p5086FD13.dip.t-dialin.net [80.134.253.19])
-	by mrelayeu.kundenserver.de (node=mrbap1) with ESMTP (Nemesis)
-	id 0Las3s-1PVAus09AO-00knDz; Thu, 28 Apr 2011 17:20:46 +0200
+	by mrelayeu.kundenserver.de (node=mrbap2) with ESMTP (Nemesis)
+	id 0MIxJ3-1QD0373BSj-003EVu; Thu, 28 Apr 2011 17:20:49 +0200
 Received: from stefan by flocke.fritz.box with local (Exim 4.72)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1QFT1J-0002BJ-6c; Thu, 28 Apr 2011 17:20:45 +0200
+	id 1QFT1L-0002Bh-VE; Thu, 28 Apr 2011 17:20:47 +0200
 From: Stefan Weil <weil@mail.berlios.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Date: Thu, 28 Apr 2011 17:20:27 +0200
-Message-Id: <1304004042-8334-3-git-send-email-weil@mail.berlios.de>
+Date: Thu, 28 Apr 2011 17:20:36 +0200
+Message-Id: <1304004042-8334-12-git-send-email-weil@mail.berlios.de>
 X-Mailer: git-send-email 1.7.2.5
 In-Reply-To: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
 References: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
-X-Provags-ID: V02:K0:f7VaL2PMyyP4VFtSzgswyMKE4xsuCAW/fodeZe/o4J6
-	Our+TOeeoqmGaX1BiLmpyOHIuA6qzM/a5au4+fgC5l3nYOFity
-	2unK4vs+YWMJumjR71CcXxLnjw7VzwAj7y4nKqoJudzY8WGVJJ
-	Zw8Mo0Ltfq56rERuCXSrCdnl4EgtiJ/bIbAiIWsNAy6nhzk5IY
-	lfIQH8poMdU2LCF2If4PaDiQFOVN29ts6GUPAaM1hYYo8pH9wB yKpwzhFvxWQLm
+X-Provags-ID: V02:K0:PUkT8rmYisf3G3U/v0SAAf2maYKfbgKLConwpb6dYoL
+	1cFFYGs2IvOIPalu6bxH0w3CzFP2fI9zraZvIQT4xb07fYEYPN
+	2O8WoREoPBpSZTKYWCtjMfl/y9V28bu65Ep8yq/ReP7/6ByfMt
+	BNhEMMbecDbRRbtV90h5lNrcgrbaW3GbNGHntPKxU+kwY/unNc
+	KM75k5O3kImw/F11frSPwBzU9pOpH6jecAr/Ygb1bcgUu6ctOe QxAYMcIe4XqkV
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 212.227.126.186
+X-Received-From: 212.227.17.9
 Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
-Subject: [Qemu-trivial] [PATCH 03/18] Fix typos in comments (accessable ->
-	accessible, priveleged -> privileged)
+Subject: [Qemu-trivial] [PATCH 12/18] Fix typos in comments (instanciation
+	-> instantiation)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,67 +47,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Apr 2011 15:21:06 -0000
+X-List-Received-Date: Thu, 28 Apr 2011 15:21:09 -0000
 
 Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 ---
- hw/sh7750_regs.h  |    6 +++---
- target-cris/cpu.h |    2 +-
- tests/test-mmap.c |    4 ++--
- 3 files changed, 6 insertions(+), 6 deletions(-)
+ hw/ppc4xx_devs.c            |    2 +-
+ target-ppc/translate_init.c |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/sh7750_regs.h b/hw/sh7750_regs.h
-index 5a23a2c..6ec13ab 100644
---- a/hw/sh7750_regs.h
-+++ b/hw/sh7750_regs.h
-@@ -23,9 +23,9 @@
-  * All register has 2 addresses: in 0xff000000 - 0xffffffff (P4 address)  and
-  * in 0x1f000000 - 0x1fffffff (area 7 address)
-  */
--#define SH7750_P4_BASE       0xff000000	/* Accessable only in
--					   priveleged mode */
--#define SH7750_A7_BASE       0x1f000000	/* Accessable only using TLB */
-+#define SH7750_P4_BASE       0xff000000	/* Accessible only in
-+					   privileged mode */
-+#define SH7750_A7_BASE       0x1f000000	/* Accessible only using TLB */
+diff --git a/hw/ppc4xx_devs.c b/hw/ppc4xx_devs.c
+index 7f9ed17..68bdfaa 100644
+--- a/hw/ppc4xx_devs.c
++++ b/hw/ppc4xx_devs.c
+@@ -38,7 +38,7 @@
+ #endif
  
- #define SH7750_P4_REG32(ofs) (SH7750_P4_BASE + (ofs))
- #define SH7750_A7_REG32(ofs) (SH7750_A7_BASE + (ofs))
-diff --git a/target-cris/cpu.h b/target-cris/cpu.h
-index d908775..4a9032b 100644
---- a/target-cris/cpu.h
-+++ b/target-cris/cpu.h
-@@ -101,7 +101,7 @@ typedef struct CPUCRISState {
- 	/* P0 - P15 are referred to as special registers in the docs.  */
- 	uint32_t pregs[16];
+ /*****************************************************************************/
+-/* Generic PowerPC 4xx processor instanciation */
++/* Generic PowerPC 4xx processor instantiation */
+ CPUState *ppc4xx_init (const char *cpu_model,
+                        clk_setup_t *cpu_clk, clk_setup_t *tb_clk,
+                        uint32_t sysclk)
+diff --git a/target-ppc/translate_init.c b/target-ppc/translate_init.c
+index e2a83c5..ed291c3 100644
+--- a/target-ppc/translate_init.c
++++ b/target-ppc/translate_init.c
+@@ -9049,7 +9049,7 @@ static const ppc_def_t ppc_defs[] = {
+ };
  
--	/* Pseudo register for the PC. Not directly accessable on CRIS.  */
-+	/* Pseudo register for the PC. Not directly accessible on CRIS.  */
- 	uint32_t pc;
- 
- 	/* Pseudo register for the kernel stack.  */
-diff --git a/tests/test-mmap.c b/tests/test-mmap.c
-index c578e25..c67174a 100644
---- a/tests/test-mmap.c
-+++ b/tests/test-mmap.c
-@@ -322,7 +322,7 @@ void check_file_unfixed_eof_mmaps(void)
- 		fail_unless (p1[(test_fsize & pagemask) / sizeof *p1 - 1]
- 			     == ((test_fsize - sizeof *p1) / sizeof *p1));
- 
--		/* Verify that the end of page is accessable and zeroed.  */
-+		/* Verify that the end of page is accessible and zeroed.  */
- 		cp = (void *) p1;
- 		fail_unless (cp[pagesize - 4] == 0);
- 		munmap (p1, pagesize);
-@@ -365,7 +365,7 @@ void check_file_fixed_eof_mmaps(void)
- 		fail_unless (p1[(test_fsize & pagemask) / sizeof *p1 - 1]
- 			     == ((test_fsize - sizeof *p1) / sizeof *p1));
- 
--		/* Verify that the end of page is accessable and zeroed.  */
-+		/* Verify that the end of page is accessible and zeroed.  */
- 		cp = (void *)p1;
- 		fail_unless (cp[pagesize - 4] == 0);
- 		munmap (p1, pagesize);
+ /*****************************************************************************/
+-/* Generic CPU instanciation routine                                         */
++/* Generic CPU instantiation routine                                         */
+ static void init_ppc_proc (CPUPPCState *env, const ppc_def_t *def)
+ {
+ #if !defined(CONFIG_USER_ONLY)
 -- 
 1.7.2.5
 
