@@ -1,38 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QGH6d-0005TO-M8
-	for mharc-qemu-trivial@gnu.org; Sat, 30 Apr 2011 16:49:35 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:43181)
+	id 1QGnxX-00031F-NO
+	for mharc-qemu-trivial@gnu.org; Mon, 02 May 2011 03:54:23 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:47664)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QGH6b-0005Od-FU
-	for qemu-trivial@nongnu.org; Sat, 30 Apr 2011 16:49:34 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1QGnxV-0002wv-Gg
+	for qemu-trivial@nongnu.org; Mon, 02 May 2011 03:54:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QGH6a-0001tu-CI
-	for qemu-trivial@nongnu.org; Sat, 30 Apr 2011 16:49:33 -0400
-Received: from moutng.kundenserver.de ([212.227.17.8]:58040)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1QGnxU-0003yw-RM
+	for qemu-trivial@nongnu.org; Mon, 02 May 2011 03:54:21 -0400
+Received: from mail-gw0-f45.google.com ([74.125.83.45]:36438)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1QGH6X-0001td-Oe; Sat, 30 Apr 2011 16:49:30 -0400
-Received: from flocke.fritz.box (p5086FEF5.dip.t-dialin.net [80.134.254.245])
-	by mrelayeu.kundenserver.de (node=mrbap2) with ESMTP (Nemesis)
-	id 0Lf0KF-1PRUgh2Gy7-00q6Dk; Sat, 30 Apr 2011 22:49:28 +0200
-Received: from stefan by flocke.fritz.box with local (Exim 4.72)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1QGH6V-0003sz-Nu; Sat, 30 Apr 2011 22:49:27 +0200
-From: Stefan Weil <weil@mail.berlios.de>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Date: Sat, 30 Apr 2011 22:49:26 +0200
-Message-Id: <1304196566-14909-1-git-send-email-weil@mail.berlios.de>
-X-Mailer: git-send-email 1.7.2.5
-X-Provags-ID: V02:K0:nGEgRtj7I3IT+bvYEvYDFZtiEmm+0j0E3+sgVBD7w+n
-	9INPLnocg4U124nvKygtCRIfq7ee/2rQjnfvJSVveuWpuAaFw5
-	ICx/K6BwrkhkLaa5TRef2WGE6aZfzJrxFfS7r6F2IUxT+ynmFh
-	RXyq8bmu9Ul/eEgDZC7L8WfwtgwrpJsqPirmrv4sv1deRO9m6G
-	RZ0YeYPaQdYUCjjEI+53y83f7yPC96gRXCXJVyUnoTFKsD/qxh RpSkdU6iayaHY
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.227.17.8
-Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
-Subject: [Qemu-trivial] [PATCH] Fix typos in comments (chek -> check)
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1QGnxT-0003yb-0n; Mon, 02 May 2011 03:54:19 -0400
+Received: by gwb19 with SMTP id 19so2230984gwb.4
+	for <multiple recipients>; Mon, 02 May 2011 00:54:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:sender:from:to:cc:subject:date:message-id
+	:x-mailer; bh=3EShjAnrtQyYanN1VZHZJIwU4SfriMfMvpVdbcyMwFA=;
+	b=LxppzH2H1HlrYz2DJe+R90/A0QaOJOPVv/3nKiUmFAMtce6Z6WP4A6Dxn/8Ewl7/qi
+	ULcwMdrGn3uQwuxRzkRPLiZJ36B/f16sXcDgaflWGBmTiie6G+h/r8ljI/Jaw9YiTjJM
+	yxefDXnzh+pN3wUA0pZR0ZLE4UyN/dA7+5Ldw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=sender:from:to:cc:subject:date:message-id:x-mailer;
+	b=tu9w7xO/oq0gEOVPug11ZabhxxBfOHGaXDLiTNmErpGhTtRzQsc1dHJlIP3HR+Wf/f
+	SdrJEY5z7eoTMvLK8PRy4+Z2s+8w2yyIUSmnrLg0+IROgIzgHZVQfOsjkVAAt9Z5WBGu
+	wEk/2j7VsHitUAqomdAC00y3KaBw22FbZOqlM=
+Received: by 10.91.145.6 with SMTP id x6mr6396926agn.152.1304322858086;
+	Mon, 02 May 2011 00:54:18 -0700 (PDT)
+Received: from localhost.localdomain (93-34-184-88.ip51.fastwebnet.it
+	[93.34.184.88])
+	by mx.google.com with ESMTPS id t16sm3488849anm.16.2011.05.02.00.54.15
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 02 May 2011 00:54:17 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon,  2 May 2011 09:54:03 +0200
+Message-Id: <1304322846-24376-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.7.4.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.83.45
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH 1/4] libcacard: add correct subdirectory
+	dependencies
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,41 +54,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 30 Apr 2011 20:49:34 -0000
+X-List-Received-Date: Mon, 02 May 2011 07:54:22 -0000
 
-Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org
 ---
- exec.c            |    2 +-
- target-ppc/STATUS |    2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ Makefile           |    2 ++
+ Makefile.objs      |    7 +++----
+ libcacard/Makefile |    9 +--------
+ 3 files changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/exec.c b/exec.c
-index c3dc68a..ed7cffa 100644
---- a/exec.c
-+++ b/exec.c
-@@ -2041,7 +2041,7 @@ void cpu_physical_memory_reset_dirty(ram_addr_t start, ram_addr_t end,
-     /* we modify the TLB cache so that the dirty bit will be set again
-        when accessing the range */
-     start1 = (unsigned long)qemu_safe_ram_ptr(start);
--    /* Chek that we don't span multiple blocks - this breaks the
-+    /* Check that we don't span multiple blocks - this breaks the
-        address comparisons below.  */
-     if ((unsigned long)qemu_safe_ram_ptr(end - 1) - start1
-             != (end - 1) - start) {
-diff --git a/target-ppc/STATUS b/target-ppc/STATUS
-index 32e7ffa..c8e9018 100644
---- a/target-ppc/STATUS
-+++ b/target-ppc/STATUS
-@@ -11,7 +11,7 @@ INSN: instruction set.
- SPR:  special purpose registers set
-       OK => all SPR registered (but some may be fake)
-       KO => some SPR are missing or should be removed
--      ?  => uncheked
-+      ?  => unchecked
- MSR:  MSR bits definitions
-       OK => all MSR bits properly defined
-       KO => MSR definition is incorrect
+diff --git a/Makefile b/Makefile
+index 67c0268..2b0438c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -88,6 +88,8 @@ include $(SRC_PATH)/Makefile.objs
+ endif
+ 
+ $(common-obj-y): $(GENERATED_HEADERS)
++subdir-libcacard: $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o
++
+ $(filter %-softmmu,$(SUBDIR_RULES)): $(trace-obj-y) $(common-obj-y) subdir-libdis
+ 
+ $(filter %-user,$(SUBDIR_RULES)): $(GENERATED_HEADERS) $(trace-obj-y) subdir-libdis-user subdir-libuser
+diff --git a/Makefile.objs b/Makefile.objs
+index 44ce368..0ba989f 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -7,8 +7,8 @@ qobject-obj-y += qerror.o
+ #######################################################################
+ # oslib-obj-y is code depending on the OS (win32 vs posix)
+ oslib-obj-y = osdep.o
+-oslib-obj-$(CONFIG_WIN32) += oslib-win32.o
+-oslib-obj-$(CONFIG_POSIX) += oslib-posix.o
++oslib-obj-$(CONFIG_WIN32) += oslib-win32.o qemu-thread-win32.o
++oslib-obj-$(CONFIG_POSIX) += oslib-posix.o qemu-thread-posix.o
+ 
+ #######################################################################
+ # block-obj-y is code used by both qemu system emulation and qemu-img
+@@ -143,8 +143,7 @@ common-obj-y += $(addprefix ui/, $(ui-obj-y))
+ common-obj-$(CONFIG_VNC) += $(addprefix ui/, $(vnc-obj-y))
+ 
+ common-obj-y += iov.o acl.o
+-common-obj-$(CONFIG_POSIX) += qemu-thread-posix.o compatfd.o
+-common-obj-$(CONFIG_WIN32) += qemu-thread-win32.o
++common-obj-$(CONFIG_POSIX) += compatfd.o
+ common-obj-y += notify.o event_notifier.o
+ common-obj-y += qemu-timer.o qemu-timer-common.o
+ 
+diff --git a/libcacard/Makefile b/libcacard/Makefile
+index 4010029..1d34df0 100644
+--- a/libcacard/Makefile
++++ b/libcacard/Makefile
+@@ -4,14 +4,7 @@
+ 
+ $(call set-vpath, $(SRC_PATH):$(SRC_PATH)/libcacard)
+ 
+-ifeq ($(CONFIG_WIN32),y)
+-QEMU_THREAD=qemu-thread-win32.o
+-else
+-QEMU_THREAD=qemu-thread-posix.o
+-endif
+-
+-
+-QEMU_OBJS=$(addprefix ../, $(QEMU_THREAD) $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
++QEMU_OBJS=$(addprefix ../, $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
+ 
+ QEMU_CFLAGS+=-I../
+ 
 -- 
-1.7.2.5
+1.7.4.4
+
 
 
