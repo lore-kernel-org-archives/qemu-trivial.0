@@ -1,48 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QGnxe-0003E5-5L
-	for mharc-qemu-trivial@gnu.org; Mon, 02 May 2011 03:54:30 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:47718)
+	id 1QGojy-0002jU-Hk
+	for mharc-qemu-trivial@gnu.org; Mon, 02 May 2011 04:44:26 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:33545)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1QGnxb-00038G-IU
-	for qemu-trivial@nongnu.org; Mon, 02 May 2011 03:54:28 -0400
+	(envelope-from <alevy@redhat.com>) id 1QGojv-0002eC-UZ
+	for qemu-trivial@nongnu.org; Mon, 02 May 2011 04:44:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1QGnxa-00040B-Ji
-	for qemu-trivial@nongnu.org; Mon, 02 May 2011 03:54:27 -0400
-Received: from mail-yw0-f45.google.com ([209.85.213.45]:55681)
+	(envelope-from <alevy@redhat.com>) id 1QGoju-0001kO-VS
+	for qemu-trivial@nongnu.org; Mon, 02 May 2011 04:44:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:20857)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1QGnxY-0003yt-RB; Mon, 02 May 2011 03:54:24 -0400
-Received: by mail-yw0-f45.google.com with SMTP id 41so2236353ywl.4
-	for <multiple recipients>; Mon, 02 May 2011 00:54:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:sender:from:to:cc:subject:date:message-id
-	:x-mailer; bh=HQX9fdIygTuTu3XBebVnPzddZA083IsZRLTrU255fw8=;
-	b=bGBvJaIBa+rKxUh3zQAxZ1qWFgZ9vxKH/ceqmauIqspEvGxjsTT9DwMQ+lrIA63IHf
-	YtgwtRMvWgcZmDS3uYULmzJGxzDSugBEcqCeEbNOKG7SVROteT3rG+UGQvEzUZxV7tOt
-	Y/5S9DiSTZPnzQLsWgPb8LA1Wtw35phX68TdA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer;
-	b=e8fI6emnW/OSIkWYsYdB3MMEcX42foXuUAKJtjA9OFFH8Iy4x0WUdA8JyAZ1tAeTFM
-	Ma44t+IQRzb+V+qLOgb6rur5VLqeg0/UZMU9UQ0hVQyDndWJe2aDl6uF5yfcHH2Yw46g
-	pl+YHppytql6+z4+B4D434XpkriNgyn9ss+CA=
-Received: by 10.90.250.2 with SMTP id x2mr6451032agh.202.1304322864460;
-	Mon, 02 May 2011 00:54:24 -0700 (PDT)
-Received: from localhost.localdomain (93-34-184-88.ip51.fastwebnet.it
-	[93.34.184.88])
-	by mx.google.com with ESMTPS id t16sm3488849anm.16.2011.05.02.00.54.22
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 02 May 2011 00:54:23 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  2 May 2011 09:54:06 +0200
-Message-Id: <1304322846-24376-4-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.7.4.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.213.45
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 4/4] fix compilation when reconfiguring
-	without dtrace backend
+	(envelope-from <alevy@redhat.com>)
+	id 1QGojo-0001jx-Qn; Mon, 02 May 2011 04:44:17 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p428iEWp001509
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 2 May 2011 04:44:14 -0400
+Received: from playa.redhat.com (dhcp-3-110.tlv.redhat.com [10.35.3.110])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id p428i9T2023227
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Mon, 2 May 2011 04:44:13 -0400
+Date: Mon, 2 May 2011 11:44:09 +0300
+From: Alon Levy <alevy@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20110502084409.GE17629@playa.redhat.com>
+Mail-Followup-To: Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <1304322846-24376-1-git-send-email-pbonzini@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1304322846-24376-1-git-send-email-pbonzini@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/4] libcacard: add correct
+ subdirectory dependencies
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,43 +52,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 May 2011 07:54:28 -0000
+X-List-Received-Date: Mon, 02 May 2011 08:44:24 -0000
 
-If QEMU is configured with the dtrace backend, then built, then
-reconfigured without, the build fails.
+On Mon, May 02, 2011 at 09:54:03AM +0200, Paolo Bonzini wrote:
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: qemu-trivial@nongnu.org
+> ---
+>  Makefile           |    2 ++
+>  Makefile.objs      |    7 +++----
+>  libcacard/Makefile |    9 +--------
+>  3 files changed, 6 insertions(+), 12 deletions(-)
+> 
 
-The culprit is the trace-dtrace.h dependency that many files will
-have.  Due to this dependency, make will attempt to rebuild
-trace-dtrace.dtrace.  This is the step that fails.  Fix by wrapping
-the dtrace rules with ifeq/endif.
+Reviewed-by: Alon Levy <alevy@redhat.com>
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org
----
- Makefile.objs |    2 ++
- 1 files changed, 2 insertions(+), 0 deletions(-)
-
-diff --git a/Makefile.objs b/Makefile.objs
-index 0ba989f..e4e538a 100644
---- a/Makefile.objs
-+++ b/Makefile.objs
-@@ -326,6 +326,7 @@ trace.c-timestamp: $(SRC_PATH)/trace-events config-host.mak
- 
- trace.o: trace.c $(GENERATED_HEADERS)
- 
-+ifeq ($(TRACE_BACKEND),dtrace)
- trace-dtrace.h: trace-dtrace.dtrace
- 	$(call quiet-command,dtrace -o $@ -h -s $<, "  GEN   trace-dtrace.h")
- 
-@@ -339,6 +340,7 @@ trace-dtrace.dtrace-timestamp: $(SRC_PATH)/trace-events config-host.mak
- 
- trace-dtrace.o: trace-dtrace.dtrace $(GENERATED_HEADERS)
- 	$(call quiet-command,dtrace -o $@ -G -s $<, "  GEN trace-dtrace.o")
-+endif
- 
- simpletrace.o: simpletrace.c $(GENERATED_HEADERS)
- 
--- 
-1.7.4.4
-
+> diff --git a/Makefile b/Makefile
+> index 67c0268..2b0438c 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -88,6 +88,8 @@ include $(SRC_PATH)/Makefile.objs
+>  endif
+>  
+>  $(common-obj-y): $(GENERATED_HEADERS)
+> +subdir-libcacard: $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o
+> +
+>  $(filter %-softmmu,$(SUBDIR_RULES)): $(trace-obj-y) $(common-obj-y) subdir-libdis
+>  
+>  $(filter %-user,$(SUBDIR_RULES)): $(GENERATED_HEADERS) $(trace-obj-y) subdir-libdis-user subdir-libuser
+> diff --git a/Makefile.objs b/Makefile.objs
+> index 44ce368..0ba989f 100644
+> --- a/Makefile.objs
+> +++ b/Makefile.objs
+> @@ -7,8 +7,8 @@ qobject-obj-y += qerror.o
+>  #######################################################################
+>  # oslib-obj-y is code depending on the OS (win32 vs posix)
+>  oslib-obj-y = osdep.o
+> -oslib-obj-$(CONFIG_WIN32) += oslib-win32.o
+> -oslib-obj-$(CONFIG_POSIX) += oslib-posix.o
+> +oslib-obj-$(CONFIG_WIN32) += oslib-win32.o qemu-thread-win32.o
+> +oslib-obj-$(CONFIG_POSIX) += oslib-posix.o qemu-thread-posix.o
+>  
+>  #######################################################################
+>  # block-obj-y is code used by both qemu system emulation and qemu-img
+> @@ -143,8 +143,7 @@ common-obj-y += $(addprefix ui/, $(ui-obj-y))
+>  common-obj-$(CONFIG_VNC) += $(addprefix ui/, $(vnc-obj-y))
+>  
+>  common-obj-y += iov.o acl.o
+> -common-obj-$(CONFIG_POSIX) += qemu-thread-posix.o compatfd.o
+> -common-obj-$(CONFIG_WIN32) += qemu-thread-win32.o
+> +common-obj-$(CONFIG_POSIX) += compatfd.o
+>  common-obj-y += notify.o event_notifier.o
+>  common-obj-y += qemu-timer.o qemu-timer-common.o
+>  
+> diff --git a/libcacard/Makefile b/libcacard/Makefile
+> index 4010029..1d34df0 100644
+> --- a/libcacard/Makefile
+> +++ b/libcacard/Makefile
+> @@ -4,14 +4,7 @@
+>  
+>  $(call set-vpath, $(SRC_PATH):$(SRC_PATH)/libcacard)
+>  
+> -ifeq ($(CONFIG_WIN32),y)
+> -QEMU_THREAD=qemu-thread-win32.o
+> -else
+> -QEMU_THREAD=qemu-thread-posix.o
+> -endif
+> -
+> -
+> -QEMU_OBJS=$(addprefix ../, $(QEMU_THREAD) $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
+> +QEMU_OBJS=$(addprefix ../, $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
+>  
+>  QEMU_CFLAGS+=-I../
+>  
+> -- 
+> 1.7.4.4
+> 
+> 
+> 
 
