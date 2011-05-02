@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QGnxc-0003BP-VQ
-	for mharc-qemu-trivial@gnu.org; Mon, 02 May 2011 03:54:29 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:47702)
+	id 1QGnxe-0003E5-5L
+	for mharc-qemu-trivial@gnu.org; Mon, 02 May 2011 03:54:30 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:47718)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1QGnxZ-00035T-RB
-	for qemu-trivial@nongnu.org; Mon, 02 May 2011 03:54:26 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1QGnxb-00038G-IU
+	for qemu-trivial@nongnu.org; Mon, 02 May 2011 03:54:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1QGnxY-0003zi-Tb
-	for qemu-trivial@nongnu.org; Mon, 02 May 2011 03:54:25 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1QGnxa-00040B-Ji
+	for qemu-trivial@nongnu.org; Mon, 02 May 2011 03:54:27 -0400
 Received: from mail-yw0-f45.google.com ([209.85.213.45]:55681)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1QGnxW-0003yt-Pg; Mon, 02 May 2011 03:54:22 -0400
+	id 1QGnxY-0003yt-RB; Mon, 02 May 2011 03:54:24 -0400
 Received: by mail-yw0-f45.google.com with SMTP id 41so2236353ywl.4
-	for <multiple recipients>; Mon, 02 May 2011 00:54:22 -0700 (PDT)
+	for <multiple recipients>; Mon, 02 May 2011 00:54:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=domainkey-signature:sender:from:to:cc:subject:date:message-id
-	:x-mailer; bh=cfiLpWnxrQTsIs7NozAAR+bUXmtlXRAyO7ycNwUgC7Y=;
-	b=ImgSnEO8mmAY0TYpb4Qu20ac/VfIFagW7dUxQm65BJkwA9K9Mj+Bdk24fAHsGIHS9+
-	MbRg9Cu3RxjzjwtHs0WeY5tCqPvzNY5xydcSLQc190tnKU8PzWD7RpiZc/lg5BtMyKVp
-	9Umz+KCQ0vDt4WIOTT9Zsq+r2iGjZyzMU/rMw=
+	:x-mailer; bh=HQX9fdIygTuTu3XBebVnPzddZA083IsZRLTrU255fw8=;
+	b=bGBvJaIBa+rKxUh3zQAxZ1qWFgZ9vxKH/ceqmauIqspEvGxjsTT9DwMQ+lrIA63IHf
+	YtgwtRMvWgcZmDS3uYULmzJGxzDSugBEcqCeEbNOKG7SVROteT3rG+UGQvEzUZxV7tOt
+	Y/5S9DiSTZPnzQLsWgPb8LA1Wtw35phX68TdA=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
 	h=sender:from:to:cc:subject:date:message-id:x-mailer;
-	b=XdpPecTzNhIppxsbAcYTmUGgZvWfU9aSOnVtQ9Zmq+Px/Mlp19NTm8qmIZtIpVAbW0
-	A+cXRskPKzvUkXnOgAOPYQFD98YeA+0hH3TCarP3sOUS0bsPvqIXM790tTbpMobLcufS
-	9tUoj2AgQjrgNtv0A/VspsOSrqk/8HDw6dx0U=
-Received: by 10.236.170.201 with SMTP id p49mr8601094yhl.236.1304322862428;
-	Mon, 02 May 2011 00:54:22 -0700 (PDT)
+	b=e8fI6emnW/OSIkWYsYdB3MMEcX42foXuUAKJtjA9OFFH8Iy4x0WUdA8JyAZ1tAeTFM
+	Ma44t+IQRzb+V+qLOgb6rur5VLqeg0/UZMU9UQ0hVQyDndWJe2aDl6uF5yfcHH2Yw46g
+	pl+YHppytql6+z4+B4D434XpkriNgyn9ss+CA=
+Received: by 10.90.250.2 with SMTP id x2mr6451032agh.202.1304322864460;
+	Mon, 02 May 2011 00:54:24 -0700 (PDT)
 Received: from localhost.localdomain (93-34-184-88.ip51.fastwebnet.it
 	[93.34.184.88])
-	by mx.google.com with ESMTPS id t16sm3488849anm.16.2011.05.02.00.54.20
+	by mx.google.com with ESMTPS id t16sm3488849anm.16.2011.05.02.00.54.22
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 02 May 2011 00:54:21 -0700 (PDT)
+	Mon, 02 May 2011 00:54:23 -0700 (PDT)
 Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Mon,  2 May 2011 09:54:05 +0200
-Message-Id: <1304322846-24376-3-git-send-email-pbonzini@redhat.com>
+Date: Mon,  2 May 2011 09:54:06 +0200
+Message-Id: <1304322846-24376-4-git-send-email-pbonzini@redhat.com>
 X-Mailer: git-send-email 1.7.4.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 209.85.213.45
-Cc: qemu-trivial@nongnu.org, Hannes Reinecke <hare@suse.de>
-Subject: [Qemu-trivial] [PATCH 3/4] lsi53c895a: Rename 'sense' to 'status'
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH 4/4] fix compilation when reconfiguring
+	without dtrace backend
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,76 +54,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 May 2011 07:54:26 -0000
+X-List-Received-Date: Mon, 02 May 2011 07:54:28 -0000
 
-From: Hannes Reinecke <hare@suse.de>
+If QEMU is configured with the dtrace backend, then built, then
+reconfigured without, the build fails.
 
-The 'sense' field in the HBA status structure is misnamed, as it
-actually carries the SCSI status. Rename it.
+The culprit is the trace-dtrace.h dependency that many files will
+have.  Due to this dependency, make will attempt to rebuild
+trace-dtrace.dtrace.  This is the step that fails.  Fix by wrapping
+the dtrace rules with ifeq/endif.
 
-Signed-off-by: Hannes Reinecke <hare@suse.de>
-Reviewed-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Cc: qemu-trivial@nongnu.org
 ---
- hw/lsi53c895a.c |   18 +++++++++---------
- 1 files changed, 9 insertions(+), 9 deletions(-)
+ Makefile.objs |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
 
-diff --git a/hw/lsi53c895a.c b/hw/lsi53c895a.c
-index e4b51a8..68f4ad2 100644
---- a/hw/lsi53c895a.c
-+++ b/hw/lsi53c895a.c
-@@ -189,7 +189,7 @@ typedef struct {
-     uint32_t script_ram_base;
+diff --git a/Makefile.objs b/Makefile.objs
+index 0ba989f..e4e538a 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -326,6 +326,7 @@ trace.c-timestamp: $(SRC_PATH)/trace-events config-host.mak
  
-     int carry; /* ??? Should this be an a visible register somewhere?  */
--    int sense;
-+    int status;
-     /* Action to take at the end of a MSG IN phase.
-        0 = COMMAND, 1 = disconnect, 2 = DATA OUT, 3 = DATA IN.  */
-     int msg_action;
-@@ -695,8 +695,8 @@ static void lsi_command_complete(SCSIBus *bus, int reason, uint32_t tag,
+ trace.o: trace.c $(GENERATED_HEADERS)
  
-     out = (s->sstat1 & PHASE_MASK) == PHASE_DO;
-     if (reason == SCSI_REASON_DONE) {
--        DPRINTF("Command complete sense=%d\n", (int)arg);
--        s->sense = arg;
-+        DPRINTF("Command complete status=%d\n", (int)arg);
-+        s->status = arg;
-         s->command_complete = 2;
-         if (s->waiting && s->dbc != 0) {
-             /* Raise phase mismatch for short transfers.  */
-@@ -783,14 +783,14 @@ static void lsi_do_command(LSIState *s)
++ifeq ($(TRACE_BACKEND),dtrace)
+ trace-dtrace.h: trace-dtrace.dtrace
+ 	$(call quiet-command,dtrace -o $@ -h -s $<, "  GEN   trace-dtrace.h")
  
- static void lsi_do_status(LSIState *s)
- {
--    uint8_t sense;
--    DPRINTF("Get status len=%d sense=%d\n", s->dbc, s->sense);
-+    uint8_t status;
-+    DPRINTF("Get status len=%d status=%d\n", s->dbc, s->status);
-     if (s->dbc != 1)
-         BADF("Bad Status move\n");
-     s->dbc = 1;
--    sense = s->sense;
--    s->sfbr = sense;
--    cpu_physical_memory_write(s->dnad, &sense, 1);
-+    status = s->status;
-+    s->sfbr = status;
-+    cpu_physical_memory_write(s->dnad, &status, 1);
-     lsi_set_phase(s, PHASE_MI);
-     s->msg_action = 1;
-     lsi_add_msg_byte(s, 0); /* COMMAND COMPLETE */
-@@ -2131,7 +2131,7 @@ static const VMStateDescription vmstate_lsi_scsi = {
-         VMSTATE_PCI_DEVICE(dev, LSIState),
+@@ -339,6 +340,7 @@ trace-dtrace.dtrace-timestamp: $(SRC_PATH)/trace-events config-host.mak
  
-         VMSTATE_INT32(carry, LSIState),
--        VMSTATE_INT32(sense, LSIState),
-+        VMSTATE_INT32(status, LSIState),
-         VMSTATE_INT32(msg_action, LSIState),
-         VMSTATE_INT32(msg_len, LSIState),
-         VMSTATE_BUFFER(msg, LSIState),
+ trace-dtrace.o: trace-dtrace.dtrace $(GENERATED_HEADERS)
+ 	$(call quiet-command,dtrace -o $@ -G -s $<, "  GEN trace-dtrace.o")
++endif
+ 
+ simpletrace.o: simpletrace.c $(GENERATED_HEADERS)
+ 
 -- 
 1.7.4.4
-
 
 
