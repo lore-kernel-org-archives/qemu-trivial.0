@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QGojy-0002jU-Hk
-	for mharc-qemu-trivial@gnu.org; Mon, 02 May 2011 04:44:26 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:33545)
+	id 1QHMAW-00083a-Kh
+	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2011 16:26:04 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:50761)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1QGojv-0002eC-UZ
-	for qemu-trivial@nongnu.org; Mon, 02 May 2011 04:44:24 -0400
+	(envelope-from <weil@mail.berlios.de>) id 1QHMAV-00083I-AI
+	for qemu-trivial@nongnu.org; Tue, 03 May 2011 16:26:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1QGoju-0001kO-VS
-	for qemu-trivial@nongnu.org; Mon, 02 May 2011 04:44:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:20857)
+	(envelope-from <weil@mail.berlios.de>) id 1QHMAU-0006P0-Bq
+	for qemu-trivial@nongnu.org; Tue, 03 May 2011 16:26:03 -0400
+Received: from moutng.kundenserver.de ([212.227.17.9]:64061)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>)
-	id 1QGojo-0001jx-Qn; Mon, 02 May 2011 04:44:17 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p428iEWp001509
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 2 May 2011 04:44:14 -0400
-Received: from playa.redhat.com (dhcp-3-110.tlv.redhat.com [10.35.3.110])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id p428i9T2023227
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Mon, 2 May 2011 04:44:13 -0400
-Date: Mon, 2 May 2011 11:44:09 +0300
-From: Alon Levy <alevy@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20110502084409.GE17629@playa.redhat.com>
-Mail-Followup-To: Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <1304322846-24376-1-git-send-email-pbonzini@redhat.com>
+	(envelope-from <weil@mail.berlios.de>)
+	id 1QHMAT-0006Or-U5; Tue, 03 May 2011 16:26:02 -0400
+Received: from flocke.fritz.box (p54AD9E86.dip.t-dialin.net [84.173.158.134])
+	by mrelayeu.kundenserver.de (node=mreu2) with ESMTP (Nemesis)
+	id 0MCuUJ-1QQwxJ3f6Z-009j5t; Tue, 03 May 2011 22:25:59 +0200
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.fritz.box with esmtp (Exim 4.72)
+	(envelope-from <weil@mail.berlios.de>)
+	id 1QHMAP-0002Vp-S6; Tue, 03 May 2011 22:25:57 +0200
+Message-ID: <4DC064D5.7000800@mail.berlios.de>
+Date: Tue, 03 May 2011 22:25:57 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20110307 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1304322846-24376-1-git-send-email-pbonzini@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+To: qemu-trivial@nongnu.org
+References: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
+In-Reply-To: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V02:K0:fhlFjEUdIixNd6D/afDUnbtISpzgirBMWn8qIRFjP1K
+	U3oK0kyXkLe95YPNVmNLdg7OCEIwPTD0mm9azHyvGeq99tzDDj
+	lE9Imru/9nOvGuaRWClGszhzmEjIvTdnOVZy2kohIoYjozCOaC
+	yPL+yGblynFxxuQIxkDGf2JS4tpCjycJKNKfdOuLm24Cw4e2uQ
+	0SsBEr1k/Ad869P7ShXZcvGdzM/f4VqAmFZJq/djD/1NYoEEkF qW5YIO5/dm5TC
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/4] libcacard: add correct
- subdirectory dependencies
+X-Received-From: 212.227.17.9
+Cc: QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH 01/18] Fix typos in comments (dependancy
+	-> dependency)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,81 +52,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 May 2011 08:44:24 -0000
+X-List-Received-Date: Tue, 03 May 2011 20:26:04 -0000
 
-On Mon, May 02, 2011 at 09:54:03AM +0200, Paolo Bonzini wrote:
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: qemu-trivial@nongnu.org
+Am 28.04.2011 17:20, schrieb Stefan Weil:
+> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 > ---
->  Makefile           |    2 ++
->  Makefile.objs      |    7 +++----
->  libcacard/Makefile |    9 +--------
->  3 files changed, 6 insertions(+), 12 deletions(-)
-> 
+> Changelog | 2 +-
+> Makefile.objs | 2 +-
+> 2 files changed, 2 insertions(+), 2 deletions(-)
+>
 
-Reviewed-by: Alon Levy <alevy@redhat.com>
+There were no replies to the patch series up to now.
 
-> diff --git a/Makefile b/Makefile
-> index 67c0268..2b0438c 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -88,6 +88,8 @@ include $(SRC_PATH)/Makefile.objs
->  endif
->  
->  $(common-obj-y): $(GENERATED_HEADERS)
-> +subdir-libcacard: $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o
-> +
->  $(filter %-softmmu,$(SUBDIR_RULES)): $(trace-obj-y) $(common-obj-y) subdir-libdis
->  
->  $(filter %-user,$(SUBDIR_RULES)): $(GENERATED_HEADERS) $(trace-obj-y) subdir-libdis-user subdir-libuser
-> diff --git a/Makefile.objs b/Makefile.objs
-> index 44ce368..0ba989f 100644
-> --- a/Makefile.objs
-> +++ b/Makefile.objs
-> @@ -7,8 +7,8 @@ qobject-obj-y += qerror.o
->  #######################################################################
->  # oslib-obj-y is code depending on the OS (win32 vs posix)
->  oslib-obj-y = osdep.o
-> -oslib-obj-$(CONFIG_WIN32) += oslib-win32.o
-> -oslib-obj-$(CONFIG_POSIX) += oslib-posix.o
-> +oslib-obj-$(CONFIG_WIN32) += oslib-win32.o qemu-thread-win32.o
-> +oslib-obj-$(CONFIG_POSIX) += oslib-posix.o qemu-thread-posix.o
->  
->  #######################################################################
->  # block-obj-y is code used by both qemu system emulation and qemu-img
-> @@ -143,8 +143,7 @@ common-obj-y += $(addprefix ui/, $(ui-obj-y))
->  common-obj-$(CONFIG_VNC) += $(addprefix ui/, $(vnc-obj-y))
->  
->  common-obj-y += iov.o acl.o
-> -common-obj-$(CONFIG_POSIX) += qemu-thread-posix.o compatfd.o
-> -common-obj-$(CONFIG_WIN32) += qemu-thread-win32.o
-> +common-obj-$(CONFIG_POSIX) += compatfd.o
->  common-obj-y += notify.o event_notifier.o
->  common-obj-y += qemu-timer.o qemu-timer-common.o
->  
-> diff --git a/libcacard/Makefile b/libcacard/Makefile
-> index 4010029..1d34df0 100644
-> --- a/libcacard/Makefile
-> +++ b/libcacard/Makefile
-> @@ -4,14 +4,7 @@
->  
->  $(call set-vpath, $(SRC_PATH):$(SRC_PATH)/libcacard)
->  
-> -ifeq ($(CONFIG_WIN32),y)
-> -QEMU_THREAD=qemu-thread-win32.o
-> -else
-> -QEMU_THREAD=qemu-thread-posix.o
-> -endif
-> -
-> -
-> -QEMU_OBJS=$(addprefix ../, $(QEMU_THREAD) $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
-> +QEMU_OBJS=$(addprefix ../, $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
->  
->  QEMU_CFLAGS+=-I../
->  
-> -- 
-> 1.7.4.4
-> 
-> 
-> 
+Should I have added a remark that all 18 patches are independent,
+so they are trivial even if the series contains more than 4 patches?
+
+Or would it be better to combine all patches in one large patch?
+I did not do this because review is a little easier with small
+patches, and it also reduces the risk of merge conflicts.
+
+Best regards,
+
+Stefan W.
+
 
