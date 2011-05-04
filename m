@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QHMAW-00083a-Kh
-	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2011 16:26:04 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:50761)
+	id 1QHZ55-0002Jh-AH
+	for mharc-qemu-trivial@gnu.org; Wed, 04 May 2011 06:13:19 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:39835)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>) id 1QHMAV-00083I-AI
-	for qemu-trivial@nongnu.org; Tue, 03 May 2011 16:26:04 -0400
+	(envelope-from <alevy@redhat.com>) id 1QHZ54-0002Ip-1O
+	for qemu-trivial@nongnu.org; Wed, 04 May 2011 06:13:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>) id 1QHMAU-0006P0-Bq
-	for qemu-trivial@nongnu.org; Tue, 03 May 2011 16:26:03 -0400
-Received: from moutng.kundenserver.de ([212.227.17.9]:64061)
+	(envelope-from <alevy@redhat.com>) id 1QHZ53-0003QC-BA
+	for qemu-trivial@nongnu.org; Wed, 04 May 2011 06:13:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:20486)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>)
-	id 1QHMAT-0006Or-U5; Tue, 03 May 2011 16:26:02 -0400
-Received: from flocke.fritz.box (p54AD9E86.dip.t-dialin.net [84.173.158.134])
-	by mrelayeu.kundenserver.de (node=mreu2) with ESMTP (Nemesis)
-	id 0MCuUJ-1QQwxJ3f6Z-009j5t; Tue, 03 May 2011 22:25:59 +0200
-Received: from localhost ([127.0.0.1] ident=stefan)
-	by flocke.fritz.box with esmtp (Exim 4.72)
-	(envelope-from <weil@mail.berlios.de>)
-	id 1QHMAP-0002Vp-S6; Tue, 03 May 2011 22:25:57 +0200
-Message-ID: <4DC064D5.7000800@mail.berlios.de>
-Date: Tue, 03 May 2011 22:25:57 +0200
-From: Stefan Weil <weil@mail.berlios.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.1.16) Gecko/20110307 Iceowl/1.0b1 Icedove/3.0.11
-MIME-Version: 1.0
-To: qemu-trivial@nongnu.org
+	(envelope-from <alevy@redhat.com>)
+	id 1QHZ50-0003PQ-MU; Wed, 04 May 2011 06:13:15 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p44ADAvn013486
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 4 May 2011 06:13:10 -0400
+Received: from playa.tlv.redhat.com (dhcp-3-110.tlv.redhat.com [10.35.3.110])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with
+	ESMTP id p44AD51F027680
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Wed, 4 May 2011 06:13:08 -0400
+Date: Wed, 4 May 2011 13:13:05 +0300
+From: Alon Levy <alevy@redhat.com>
+To: Stefan Weil <weil@mail.berlios.de>
+Message-ID: <20110504101305.GK2991@playa.tlv.redhat.com>
+Mail-Followup-To: Stefan Weil <weil@mail.berlios.de>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
 References: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
-In-Reply-To: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V02:K0:fhlFjEUdIixNd6D/afDUnbtISpzgirBMWn8qIRFjP1K
-	U3oK0kyXkLe95YPNVmNLdg7OCEIwPTD0mm9azHyvGeq99tzDDj
-	lE9Imru/9nOvGuaRWClGszhzmEjIvTdnOVZy2kohIoYjozCOaC
-	yPL+yGblynFxxuQIxkDGf2JS4tpCjycJKNKfdOuLm24Cw4e2uQ
-	0SsBEr1k/Ad869P7ShXZcvGdzM/f4VqAmFZJq/djD/1NYoEEkF qW5YIO5/dm5TC
+	<1304004042-8334-7-git-send-email-weil@mail.berlios.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1304004042-8334-7-git-send-email-weil@mail.berlios.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 212.227.17.9
-Cc: QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 01/18] Fix typos in comments (dependancy
-	-> dependency)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 07/18] Fix typo in comment
+ (consistant -> consistent)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,27 +53,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 May 2011 20:26:04 -0000
+X-List-Received-Date: Wed, 04 May 2011 10:13:18 -0000
 
-Am 28.04.2011 17:20, schrieb Stefan Weil:
+On Thu, Apr 28, 2011 at 05:20:31PM +0200, Stefan Weil wrote:
 > Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 > ---
-> Changelog | 2 +-
-> Makefile.objs | 2 +-
-> 2 files changed, 2 insertions(+), 2 deletions(-)
->
 
-There were no replies to the patch series up to now.
+ACK. I assumed since you emailed qemu-trivial that these don't actually
+require any acks.
 
-Should I have added a remark that all 18 patches are independent,
-so they are trivial even if the series contains more than 4 patches?
-
-Or would it be better to combine all patches in one large patch?
-I did not do this because review is a little easier with small
-patches, and it also reduces the risk of merge conflicts.
-
-Best regards,
-
-Stefan W.
-
+>  libcacard/vcard_emul_nss.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+> 
+> diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
+> index baada52..f3db657 100644
+> --- a/libcacard/vcard_emul_nss.c
+> +++ b/libcacard/vcard_emul_nss.c
+> @@ -971,7 +971,7 @@ find_blank(const char *str)
+>  
+>  /*
+>   *  We really want to use some existing argument parsing library here. That
+> - *  would give us a consistant look */
+> + *  would give us a consistent look */
+>  static VCardEmulOptions options;
+>  #define READER_STEP 4
+>  
+> -- 
+> 1.7.2.5
+> 
+> 
 
