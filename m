@@ -1,47 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QHZ55-0002Jh-AH
-	for mharc-qemu-trivial@gnu.org; Wed, 04 May 2011 06:13:19 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:39835)
+	id 1QHdqg-0001uS-Qq
+	for mharc-qemu-trivial@gnu.org; Wed, 04 May 2011 11:18:46 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:53100)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1QHZ54-0002Ip-1O
-	for qemu-trivial@nongnu.org; Wed, 04 May 2011 06:13:18 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QHdqa-0001iH-Vv
+	for qemu-trivial@nongnu.org; Wed, 04 May 2011 11:18:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1QHZ53-0003QC-BA
-	for qemu-trivial@nongnu.org; Wed, 04 May 2011 06:13:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:20486)
+	(envelope-from <stefanha@gmail.com>) id 1QHdqa-0002pD-8w
+	for qemu-trivial@nongnu.org; Wed, 04 May 2011 11:18:40 -0400
+Received: from mail-qy0-f180.google.com ([209.85.216.180]:59405)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>)
-	id 1QHZ50-0003PQ-MU; Wed, 04 May 2011 06:13:15 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p44ADAvn013486
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 4 May 2011 06:13:10 -0400
-Received: from playa.tlv.redhat.com (dhcp-3-110.tlv.redhat.com [10.35.3.110])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with
-	ESMTP id p44AD51F027680
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Wed, 4 May 2011 06:13:08 -0400
-Date: Wed, 4 May 2011 13:13:05 +0300
-From: Alon Levy <alevy@redhat.com>
-To: Stefan Weil <weil@mail.berlios.de>
-Message-ID: <20110504101305.GK2991@playa.tlv.redhat.com>
-Mail-Followup-To: Stefan Weil <weil@mail.berlios.de>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
-References: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
-	<1304004042-8334-7-git-send-email-weil@mail.berlios.de>
+	(envelope-from <stefanha@gmail.com>)
+	id 1QHdqU-0002no-1L; Wed, 04 May 2011 11:18:34 -0400
+Received: by qyk10 with SMTP id 10so949106qyk.4
+	for <multiple recipients>; Wed, 04 May 2011 08:18:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=ttQxnODCXu2FehO3bh4s2jN/7gE41BKOai4UmYIHkg4=;
+	b=XXUUeEgHjs0Q/ExrkNWU26wxdMdR4w0OvoEnkcC9Fm51jPozMnYIjiV5V8fCOoj618
+	ZAt/JUeKbWajsuECKfaCVahLeZVpY09hj6UTTfkgsPz830ZVkvQAfiHtAIFguggYc8M3
+	szmI66mUHdGUSCXLem0HT7oi3qyri/yjrlUIo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	b=g6pLa8UTpMzU7Qq4IMkbnOBJflSGu8kop1GzpmnPqMXPeymBPvHqyKbUAfaJjVD9M5
+	pGLXdfqRGEV04t1vIuMEcIGwaPJz6+e0SiAdLK6kjQvewnu9JWx1+uKyrMDi9uEUdt6U
+	pMKul2bBZY4PY6O0rcV33dyZ3UYGFwRjiHTO4=
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1304004042-8334-7-git-send-email-weil@mail.berlios.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
+Received: by 10.52.91.20 with SMTP id ca20mr1530221vdb.99.1304522313008; Wed,
+	04 May 2011 08:18:33 -0700 (PDT)
+Received: by 10.220.200.7 with HTTP; Wed, 4 May 2011 08:18:32 -0700 (PDT)
+In-Reply-To: <4DC064D5.7000800@mail.berlios.de>
+References: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
+	<4DC064D5.7000800@mail.berlios.de>
+Date: Wed, 4 May 2011 16:18:32 +0100
+Message-ID: <BANLkTimjGpNJ9sPgEFj8cRePRvx++V2UqA@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <weil@mail.berlios.de>
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.216.180
 Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 07/18] Fix typo in comment
- (consistant -> consistent)
+Subject: Re: [Qemu-trivial] [PATCH 01/18] Fix typos in comments (dependancy
+	-> dependency)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,33 +55,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 May 2011 10:13:18 -0000
+X-List-Received-Date: Wed, 04 May 2011 15:18:45 -0000
 
-On Thu, Apr 28, 2011 at 05:20:31PM +0200, Stefan Weil wrote:
-> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
-> ---
+On Tue, May 3, 2011 at 9:25 PM, Stefan Weil <weil@mail.berlios.de> wrote:
+> Am 28.04.2011 17:20, schrieb Stefan Weil:
+>>
+>> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+>> ---
+>> Changelog | 2 +-
+>> Makefile.objs | 2 +-
+>> 2 files changed, 2 insertions(+), 2 deletions(-)
+>>
+>
+> There were no replies to the patch series up to now.
 
-ACK. I assumed since you emailed qemu-trivial that these don't actually
-require any acks.
+Sorry, I have been away on holiday and am still catching back up.
+Let's take them as they are.
 
->  libcacard/vcard_emul_nss.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
-> 
-> diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
-> index baada52..f3db657 100644
-> --- a/libcacard/vcard_emul_nss.c
-> +++ b/libcacard/vcard_emul_nss.c
-> @@ -971,7 +971,7 @@ find_blank(const char *str)
->  
->  /*
->   *  We really want to use some existing argument parsing library here. That
-> - *  would give us a consistant look */
-> + *  would give us a consistent look */
->  static VCardEmulOptions options;
->  #define READER_STEP 4
->  
-> -- 
-> 1.7.2.5
-> 
-> 
+Stefan
 
