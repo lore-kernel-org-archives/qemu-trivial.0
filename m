@@ -1,44 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QHxJM-0005u4-OY
-	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2011 08:05:40 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:52409)
+	id 1QIG4Y-0004I0-9i
+	for mharc-qemu-trivial@gnu.org; Fri, 06 May 2011 04:07:38 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:56442)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1QHxJG-0005hE-Tl
-	for qemu-trivial@nongnu.org; Thu, 05 May 2011 08:05:38 -0400
+	(envelope-from <jano.vesely@gmail.com>) id 1QIG4U-0004Cf-VV
+	for qemu-trivial@nongnu.org; Fri, 06 May 2011 04:07:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1QHxJG-0007Oy-25
-	for qemu-trivial@nongnu.org; Thu, 05 May 2011 08:05:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:3555)
+	(envelope-from <jano.vesely@gmail.com>) id 1QIG4U-0001GT-0B
+	for qemu-trivial@nongnu.org; Fri, 06 May 2011 04:07:34 -0400
+Received: from mail-vx0-f173.google.com ([209.85.220.173]:61417)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1QHxJD-0007OX-Jl; Thu, 05 May 2011 08:05:32 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p45C5UiR026668
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 5 May 2011 08:05:30 -0400
-Received: from rincewind.home.kraxel.org (vpn2-10-40.ams2.redhat.com
-	[10.36.10.40])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id p45C5SjP020869; Thu, 5 May 2011 08:05:29 -0400
-Message-ID: <4DC29287.5030106@redhat.com>
-Date: Thu, 05 May 2011 14:05:27 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.15) Gecko/20110318 Red Hat/3.1.9-3.el6_0 Thunderbird/3.1.9
+	(envelope-from <jano.vesely@gmail.com>)
+	id 1QIG4S-0001G7-2Q; Fri, 06 May 2011 04:07:32 -0400
+Received: by vxb37 with SMTP id 37so3683737vxb.4
+	for <multiple recipients>; Fri, 06 May 2011 01:07:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type
+	:content-transfer-encoding;
+	bh=4jxm9abmouaWdwrVnR93ubE3ZyXZ9VxIB30QI+jLaXc=;
+	b=QVzM3Z5Q7WytxilEQqlYekDnoOHN/baugB4InPCk3tMLvhpvNoSGFOZkiRteoOcdOg
+	hIkr9M6AXgpPNa08xGlbwP6raRWoHLOEDk834mNeFvTh0tGRCVXYo0HVge3LTY2ZEJC0
+	l8XH2uNLBhUr0R3mY8fxsgYOutgLG0NvIrOFo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	b=OSp81yr1gh6iuzbb8GQExaiAnuNyjbPsPvws87LT/2M71nTSBc8ZUshkxWFQPdq+tZ
+	A5GM9Kd6uBlpzTgeSzm0FshYZ0Uhm1ObXXef7M5FMM5z8biNviHsX1HBndMbp5LzJ0Ts
+	+uPQFp+g5GHwuNNUoZiSN4tpNoAddcrDqu1Ag=
 MIME-Version: 1.0
-To: Jan Vesely <jano.vesely@gmail.com>
+Received: by 10.220.198.139 with SMTP id eo11mr781910vcb.271.1304669250868;
+	Fri, 06 May 2011 01:07:30 -0700 (PDT)
+Received: by 10.220.158.131 with HTTP; Fri, 6 May 2011 01:07:30 -0700 (PDT)
+In-Reply-To: <4DC29287.5030106@redhat.com>
 References: <BANLkTik3hmvH6_tUuEZjR8j0L04PdCk7mw@mail.gmail.com>
-In-Reply-To: <BANLkTik3hmvH6_tUuEZjR8j0L04PdCk7mw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
+	<4DC29287.5030106@redhat.com>
+Date: Fri, 6 May 2011 10:07:30 +0200
+Message-ID: <BANLkTik=gr0K9-_fOTqPQORo37xs2D+9Yg@mail.gmail.com>
+From: Jan Vesely <jano.vesely@gmail.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.220.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] Bug #757654: UHCI fails to signal
- stall response patch
+	stall response patch
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,30 +57,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 May 2011 12:05:38 -0000
+X-List-Received-Date: Fri, 06 May 2011 08:07:36 -0000
 
-> diff --git a/hw/usb-uhci.c b/hw/usb-uhci.c
-> index 346db3e..a51d89b 100644
-> --- a/hw/usb-uhci.c
-> +++ b/hw/usb-uhci.c
-> @@ -732,11 +732,21 @@ out:
->       case USB_RET_STALL:
->           td->ctrl |= TD_CTRL_STALL;
->           td->ctrl&= ~TD_CTRL_ACTIVE;
-> +        s->status |= UHCI_STS_USBERR;
+hi,
+using the modified (single line) patch only works half-way, it sets
+the value in status register (guess that's what that line does :))
+but hw interrupt is not generated.
 
-Just this line should be enougth.
+I tried adding uhci_update_irq and this patch:
 
->       case USB_RET_BABBLE:
->           td->ctrl |= TD_CTRL_BABBLE | TD_CTRL_STALL;
->           td->ctrl&= ~TD_CTRL_ACTIVE;
-> +        s->status |= UHCI_STS_USBERR;
+diff --git a/hw/usb-uhci.c b/hw/usb-uhci.c
+index a65e0b3..1e9c1e7 100644
+--- a/hw/usb-uhci.c
++++ b/hw/usb-uhci.c
+@@ -702,11 +702,15 @@ out:
+     case USB_RET_STALL:
+         td->ctrl |=3D TD_CTRL_STALL;
+         td->ctrl &=3D ~TD_CTRL_ACTIVE;
++        s->status |=3D UHCI_STS_USBERR;
++        uhci_update_irq(s);
+         return 1;
 
-Likewise.
+     case USB_RET_BABBLE:
+         td->ctrl |=3D TD_CTRL_BABBLE | TD_CTRL_STALL;
+         td->ctrl &=3D ~TD_CTRL_ACTIVE;
++        s->status |=3D UHCI_STS_USBERR;
++        uhci_update_irq(s);
+         /* frame interrupted */
+         return -1;
 
-Tried that?
+works.
 
-cheers,
-   Gerd
+jan
 
+On Thu, May 5, 2011 at 2:05 PM, Gerd Hoffmann <kraxel@redhat.com> wrote:
+>> diff --git a/hw/usb-uhci.c b/hw/usb-uhci.c
+>> index 346db3e..a51d89b 100644
+>> --- a/hw/usb-uhci.c
+>> +++ b/hw/usb-uhci.c
+>> @@ -732,11 +732,21 @@ out:
+>> =C2=A0 =C2=A0 =C2=A0case USB_RET_STALL:
+>> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0td->ctrl |=3D TD_CTRL_STALL;
+>> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0td->ctrl&=3D ~TD_CTRL_ACTIVE;
+>> + =C2=A0 =C2=A0 =C2=A0 =C2=A0s->status |=3D UHCI_STS_USBERR;
+>
+> Just this line should be enougth.
+>
+>> =C2=A0 =C2=A0 =C2=A0case USB_RET_BABBLE:
+>> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0td->ctrl |=3D TD_CTRL_BABBLE | TD_CTRL=
+_STALL;
+>> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0td->ctrl&=3D ~TD_CTRL_ACTIVE;
+>> + =C2=A0 =C2=A0 =C2=A0 =C2=A0s->status |=3D UHCI_STS_USBERR;
+>
+> Likewise.
+>
+> Tried that?
+>
+> cheers,
+> =C2=A0Gerd
+>
+>
 
