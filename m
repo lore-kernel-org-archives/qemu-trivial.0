@@ -1,51 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QIG4Y-0004I0-9i
-	for mharc-qemu-trivial@gnu.org; Fri, 06 May 2011 04:07:38 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:56442)
+	id 1QInz2-0003cA-AB
+	for mharc-qemu-trivial@gnu.org; Sat, 07 May 2011 16:20:12 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:43958)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1QIG4U-0004Cf-VV
-	for qemu-trivial@nongnu.org; Fri, 06 May 2011 04:07:35 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1QInz0-0003Wo-2v
+	for qemu-trivial@nongnu.org; Sat, 07 May 2011 16:20:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1QIG4U-0001GT-0B
-	for qemu-trivial@nongnu.org; Fri, 06 May 2011 04:07:34 -0400
-Received: from mail-vx0-f173.google.com ([209.85.220.173]:61417)
+	(envelope-from <stefan@weilnetz.de>) id 1QInyz-0003oO-C2
+	for qemu-trivial@nongnu.org; Sat, 07 May 2011 16:20:10 -0400
+Received: from moutng.kundenserver.de ([212.227.126.187]:58773)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>)
-	id 1QIG4S-0001G7-2Q; Fri, 06 May 2011 04:07:32 -0400
-Received: by vxb37 with SMTP id 37so3683737vxb.4
-	for <multiple recipients>; Fri, 06 May 2011 01:07:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type
-	:content-transfer-encoding;
-	bh=4jxm9abmouaWdwrVnR93ubE3ZyXZ9VxIB30QI+jLaXc=;
-	b=QVzM3Z5Q7WytxilEQqlYekDnoOHN/baugB4InPCk3tMLvhpvNoSGFOZkiRteoOcdOg
-	hIkr9M6AXgpPNa08xGlbwP6raRWoHLOEDk834mNeFvTh0tGRCVXYo0HVge3LTY2ZEJC0
-	l8XH2uNLBhUr0R3mY8fxsgYOutgLG0NvIrOFo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	b=OSp81yr1gh6iuzbb8GQExaiAnuNyjbPsPvws87LT/2M71nTSBc8ZUshkxWFQPdq+tZ
-	A5GM9Kd6uBlpzTgeSzm0FshYZ0Uhm1ObXXef7M5FMM5z8biNviHsX1HBndMbp5LzJ0Ts
-	+uPQFp+g5GHwuNNUoZiSN4tpNoAddcrDqu1Ag=
-MIME-Version: 1.0
-Received: by 10.220.198.139 with SMTP id eo11mr781910vcb.271.1304669250868;
-	Fri, 06 May 2011 01:07:30 -0700 (PDT)
-Received: by 10.220.158.131 with HTTP; Fri, 6 May 2011 01:07:30 -0700 (PDT)
-In-Reply-To: <4DC29287.5030106@redhat.com>
-References: <BANLkTik3hmvH6_tUuEZjR8j0L04PdCk7mw@mail.gmail.com>
-	<4DC29287.5030106@redhat.com>
-Date: Fri, 6 May 2011 10:07:30 +0200
-Message-ID: <BANLkTik=gr0K9-_fOTqPQORo37xs2D+9Yg@mail.gmail.com>
-From: Jan Vesely <jano.vesely@gmail.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.220.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] Bug #757654: UHCI fails to signal
-	stall response patch
+	(envelope-from <stefan@weilnetz.de>)
+	id 1QInyx-0003mP-1m; Sat, 07 May 2011 16:20:07 -0400
+Received: from flocke.fritz.box (p54ADACCA.dip.t-dialin.net [84.173.172.202])
+	by mrelayeu.kundenserver.de (node=mreu2) with ESMTP (Nemesis)
+	id 0LaHLm-1Ptsol0TTq-00m4cY; Sat, 07 May 2011 22:20:06 +0200
+Received: from stefan by flocke.fritz.box with local (Exim 4.72)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1QInyu-00053S-95; Sat, 07 May 2011 22:20:04 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Date: Sat,  7 May 2011 22:20:03 +0200
+Message-Id: <1304799603-19402-1-git-send-email-weil@mail.berlios.de>
+X-Mailer: git-send-email 1.7.2.5
+X-Provags-ID: V02:K0:jp+dGGemp+X6BFg2RCNEJnjEzrzyGaywlOxfzfNAe86
+	YDij+RUZ7ywNyW/9z00I6x2GudPUbF4EeWBGY2hgsLZZ9tuXd0
+	2lPGutC642p1l5kqK+7NQIgnTPSoS62Nx5c8UKkP1yUBCoYvSj
+	tIAnVloAciQ8xwnZa8HXyoZoR5uFqBiEanuGVgfLwBrtCLCTzg
+	fdq+9ATmRE+Ft185eSsKB9apHncM4A1+gYscuN09LurXosDeaw MRfJI9lNqkuDj
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 212.227.126.187
+Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
+Subject: [Qemu-trivial] [PATCH] Fix spelling in comments (intruction ->
+	instruction)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,64 +45,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 May 2011 08:07:36 -0000
+X-List-Received-Date: Sat, 07 May 2011 20:20:11 -0000
 
-hi,
-using the modified (single line) patch only works half-way, it sets
-the value in status register (guess that's what that line does :))
-but hw interrupt is not generated.
+Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+---
+ bsd-user/main.c   |    2 +-
+ linux-user/main.c |    2 +-
+ tests/test-i386.c |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-I tried adding uhci_update_irq and this patch:
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 6b12f8b..0c3fca1 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -237,7 +237,7 @@ void cpu_loop(CPUX86State *env)
+             break;
+ #ifndef TARGET_ABI32
+         case EXCP_SYSCALL:
+-            /* syscall from syscall intruction */
++            /* syscall from syscall instruction */
+             if (bsd_type == target_freebsd)
+                 env->regs[R_EAX] = do_freebsd_syscall(env,
+                                                       env->regs[R_EAX],
+diff --git a/linux-user/main.c b/linux-user/main.c
+index a1e37e4..a4996e7 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -323,7 +323,7 @@ void cpu_loop(CPUX86State *env)
+             break;
+ #ifndef TARGET_ABI32
+         case EXCP_SYSCALL:
+-            /* linux syscall from syscall intruction */
++            /* linux syscall from syscall instruction */
+             env->regs[R_EAX] = do_syscall(env,
+                                           env->regs[R_EAX],
+                                           env->regs[R_EDI],
+diff --git a/tests/test-i386.c b/tests/test-i386.c
+index 8f481c7..56ff110 100644
+--- a/tests/test-i386.c
++++ b/tests/test-i386.c
+@@ -2281,7 +2281,7 @@ void test_sse_comi(double a1, double b1)
+ }
+ 
+ /* Force %xmm0 usage to avoid the case where both register index are 0
+-   to test intruction decoding more extensively */
++   to test instruction decoding more extensively */
+ #define CVT_OP_XMM2MMX(op)\
+ {\
+     asm volatile (#op " %1, %0" : "=y" (r.q[0]) : "x" (a.dq) \
+-- 
+1.7.2.5
 
-diff --git a/hw/usb-uhci.c b/hw/usb-uhci.c
-index a65e0b3..1e9c1e7 100644
---- a/hw/usb-uhci.c
-+++ b/hw/usb-uhci.c
-@@ -702,11 +702,15 @@ out:
-     case USB_RET_STALL:
-         td->ctrl |=3D TD_CTRL_STALL;
-         td->ctrl &=3D ~TD_CTRL_ACTIVE;
-+        s->status |=3D UHCI_STS_USBERR;
-+        uhci_update_irq(s);
-         return 1;
-
-     case USB_RET_BABBLE:
-         td->ctrl |=3D TD_CTRL_BABBLE | TD_CTRL_STALL;
-         td->ctrl &=3D ~TD_CTRL_ACTIVE;
-+        s->status |=3D UHCI_STS_USBERR;
-+        uhci_update_irq(s);
-         /* frame interrupted */
-         return -1;
-
-works.
-
-jan
-
-On Thu, May 5, 2011 at 2:05 PM, Gerd Hoffmann <kraxel@redhat.com> wrote:
->> diff --git a/hw/usb-uhci.c b/hw/usb-uhci.c
->> index 346db3e..a51d89b 100644
->> --- a/hw/usb-uhci.c
->> +++ b/hw/usb-uhci.c
->> @@ -732,11 +732,21 @@ out:
->> =C2=A0 =C2=A0 =C2=A0case USB_RET_STALL:
->> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0td->ctrl |=3D TD_CTRL_STALL;
->> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0td->ctrl&=3D ~TD_CTRL_ACTIVE;
->> + =C2=A0 =C2=A0 =C2=A0 =C2=A0s->status |=3D UHCI_STS_USBERR;
->
-> Just this line should be enougth.
->
->> =C2=A0 =C2=A0 =C2=A0case USB_RET_BABBLE:
->> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0td->ctrl |=3D TD_CTRL_BABBLE | TD_CTRL=
-_STALL;
->> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0td->ctrl&=3D ~TD_CTRL_ACTIVE;
->> + =C2=A0 =C2=A0 =C2=A0 =C2=A0s->status |=3D UHCI_STS_USBERR;
->
-> Likewise.
->
-> Tried that?
->
-> cheers,
-> =C2=A0Gerd
->
->
 
