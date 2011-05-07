@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QInz2-0003cA-AB
-	for mharc-qemu-trivial@gnu.org; Sat, 07 May 2011 16:20:12 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:43958)
+	id 1QIoBA-0006TH-1L
+	for mharc-qemu-trivial@gnu.org; Sat, 07 May 2011 16:32:44 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:58144)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QInz0-0003Wo-2v
-	for qemu-trivial@nongnu.org; Sat, 07 May 2011 16:20:11 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1QIoB7-0006Pf-MH
+	for qemu-trivial@nongnu.org; Sat, 07 May 2011 16:32:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QInyz-0003oO-C2
-	for qemu-trivial@nongnu.org; Sat, 07 May 2011 16:20:10 -0400
-Received: from moutng.kundenserver.de ([212.227.126.187]:58773)
+	(envelope-from <stefan@weilnetz.de>) id 1QIoB7-0005Lf-0A
+	for qemu-trivial@nongnu.org; Sat, 07 May 2011 16:32:41 -0400
+Received: from moutng.kundenserver.de ([212.227.17.9]:59382)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1QInyx-0003mP-1m; Sat, 07 May 2011 16:20:07 -0400
+	id 1QIoB4-0005L6-Eh; Sat, 07 May 2011 16:32:38 -0400
 Received: from flocke.fritz.box (p54ADACCA.dip.t-dialin.net [84.173.172.202])
-	by mrelayeu.kundenserver.de (node=mreu2) with ESMTP (Nemesis)
-	id 0LaHLm-1Ptsol0TTq-00m4cY; Sat, 07 May 2011 22:20:06 +0200
+	by mrelayeu.kundenserver.de (node=mreu3) with ESMTP (Nemesis)
+	id 0MEOzM-1QYBJl2ly4-00FRRX; Sat, 07 May 2011 22:32:30 +0200
 Received: from stefan by flocke.fritz.box with local (Exim 4.72)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1QInyu-00053S-95; Sat, 07 May 2011 22:20:04 +0200
+	id 1QIoAu-0005as-PQ; Sat, 07 May 2011 22:32:28 +0200
 From: Stefan Weil <weil@mail.berlios.de>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Date: Sat,  7 May 2011 22:20:03 +0200
-Message-Id: <1304799603-19402-1-git-send-email-weil@mail.berlios.de>
+Date: Sat,  7 May 2011 22:32:25 +0200
+Message-Id: <1304800345-21474-1-git-send-email-weil@mail.berlios.de>
 X-Mailer: git-send-email 1.7.2.5
-X-Provags-ID: V02:K0:jp+dGGemp+X6BFg2RCNEJnjEzrzyGaywlOxfzfNAe86
-	YDij+RUZ7ywNyW/9z00I6x2GudPUbF4EeWBGY2hgsLZZ9tuXd0
-	2lPGutC642p1l5kqK+7NQIgnTPSoS62Nx5c8UKkP1yUBCoYvSj
-	tIAnVloAciQ8xwnZa8HXyoZoR5uFqBiEanuGVgfLwBrtCLCTzg
-	fdq+9ATmRE+Ft185eSsKB9apHncM4A1+gYscuN09LurXosDeaw MRfJI9lNqkuDj
+X-Provags-ID: V02:K0:2Unxyct79gi88lhIoDLuC7NWs2mxBV11YPjvY3vbxjS
+	FNV05QaDxhUleqiEnVReTVUXQMgn6vlHNE/USRq5C1lp6CIbSy
+	pMUmkY1H+cDmFHQzzoYy5PlpjLZAvPgNTVMxSy7emt72q4SxdZ
+	RBTrsPtvzZsyzyK1bwHpb6VLbrsyTRR+QqA/NQx8JDBjwq/dae
+	yaUdbjwjWnfZgZ/t8jVK3uDgGnmyorqkfeJgziGhWhWGTX9mGg XbOW81gDsF1rU
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 212.227.126.187
-Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
-Subject: [Qemu-trivial] [PATCH] Fix spelling in comments (intruction ->
-	instruction)
+X-Received-From: 212.227.17.9
+Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>,
+	Riku Voipio <riku.voipio@iki.fi>
+Subject: [Qemu-trivial] [PATCH] linux-user: Replace deprecated function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,54 +45,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 May 2011 20:20:11 -0000
+X-List-Received-Date: Sat, 07 May 2011 20:32:42 -0000
+
+Function bzero is deprecated, so replace it by function memset.
 
 Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 ---
- bsd-user/main.c   |    2 +-
- linux-user/main.c |    2 +-
- tests/test-i386.c |    2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ linux-user/syscall.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index 6b12f8b..0c3fca1 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -237,7 +237,7 @@ void cpu_loop(CPUX86State *env)
-             break;
- #ifndef TARGET_ABI32
-         case EXCP_SYSCALL:
--            /* syscall from syscall intruction */
-+            /* syscall from syscall instruction */
-             if (bsd_type == target_freebsd)
-                 env->regs[R_EAX] = do_freebsd_syscall(env,
-                                                       env->regs[R_EAX],
-diff --git a/linux-user/main.c b/linux-user/main.c
-index a1e37e4..a4996e7 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -323,7 +323,7 @@ void cpu_loop(CPUX86State *env)
-             break;
- #ifndef TARGET_ABI32
-         case EXCP_SYSCALL:
--            /* linux syscall from syscall intruction */
-+            /* linux syscall from syscall instruction */
-             env->regs[R_EAX] = do_syscall(env,
-                                           env->regs[R_EAX],
-                                           env->regs[R_EDI],
-diff --git a/tests/test-i386.c b/tests/test-i386.c
-index 8f481c7..56ff110 100644
---- a/tests/test-i386.c
-+++ b/tests/test-i386.c
-@@ -2281,7 +2281,7 @@ void test_sse_comi(double a1, double b1)
- }
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 279cef3..6e7d88e 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -287,7 +287,7 @@ static int sys_uname(struct new_utsname *buf)
+    * struct linux kernel uses).
+    */
  
- /* Force %xmm0 usage to avoid the case where both register index are 0
--   to test intruction decoding more extensively */
-+   to test instruction decoding more extensively */
- #define CVT_OP_XMM2MMX(op)\
- {\
-     asm volatile (#op " %1, %0" : "=y" (r.q[0]) : "x" (a.dq) \
+-  bzero(buf, sizeof (*buf));
++  memset(buf, 0, sizeof(*buf));
+   COPY_UTSNAME_FIELD(buf->sysname, uts_buf.sysname);
+   COPY_UTSNAME_FIELD(buf->nodename, uts_buf.nodename);
+   COPY_UTSNAME_FIELD(buf->release, uts_buf.release);
 -- 
 1.7.2.5
 
