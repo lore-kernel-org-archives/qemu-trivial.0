@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QJ6Ut-0006lm-4e
-	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 12:06:19 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:52183)
+	id 1QJ6Uw-0006q8-6r
+	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 12:06:22 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:52194)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1QJ6Ul-0006W5-VY
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 12:06:12 -0400
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1QJ6Uo-0006bD-Li
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 12:06:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1QJ6Ul-0007ae-22
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 12:06:11 -0400
-Received: from mtagate1.uk.ibm.com ([194.196.100.161]:38475)
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1QJ6Un-0007as-O3
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 12:06:14 -0400
+Received: from mtagate7.uk.ibm.com ([194.196.100.167]:60117)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@linux.vnet.ibm.com>)
-	id 1QJ6Ug-0007Z4-Qq; Sun, 08 May 2011 12:06:07 -0400
-Received: from d06nrmr1307.portsmouth.uk.ibm.com
-	(d06nrmr1307.portsmouth.uk.ibm.com [9.149.38.129])
-	by mtagate1.uk.ibm.com (8.13.1/8.13.1) with ESMTP id p48G66YO023832;
-	Sun, 8 May 2011 16:06:06 GMT
+	id 1QJ6Uf-0007YU-Vl; Sun, 08 May 2011 12:06:06 -0400
+Received: from d06nrmr1707.portsmouth.uk.ibm.com
+	(d06nrmr1707.portsmouth.uk.ibm.com [9.149.39.225])
+	by mtagate7.uk.ibm.com (8.13.1/8.13.1) with ESMTP id p48G65LY029778;
+	Sun, 8 May 2011 16:06:05 GMT
 Received: from d06av11.portsmouth.uk.ibm.com (d06av11.portsmouth.uk.ibm.com
 	[9.149.37.252])
-	by d06nrmr1307.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
-	ESMTP id p48G7Let2523186; Sun, 8 May 2011 17:07:21 +0100
+	by d06nrmr1707.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
+	ESMTP id p48G7KO72244608; Sun, 8 May 2011 17:07:20 +0100
 Received: from d06av11.portsmouth.uk.ibm.com (loopback [127.0.0.1])
 	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
-	ESMTP id p48G65ss021822; Sun, 8 May 2011 10:06:05 -0600
+	ESMTP id p48G64er021802; Sun, 8 May 2011 10:06:04 -0600
 Received: from stefanha-thinkpad.ibm.com (sig-9-146-157-45.uk.ibm.com
 	[9.146.157.45])
 	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
-	ESMTP id p48G5njp021096; Sun, 8 May 2011 10:06:04 -0600
+	ESMTP id p48G5njo021096; Sun, 8 May 2011 10:06:04 -0600
 From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
 To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Sun,  8 May 2011 17:05:19 +0100
-Message-Id: <1304870719-20885-25-git-send-email-stefanha@linux.vnet.ibm.com>
+Date: Sun,  8 May 2011 17:05:18 +0100
+Message-Id: <1304870719-20885-24-git-send-email-stefanha@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.7.4.4
 In-Reply-To: <1304870719-20885-1-git-send-email-stefanha@linux.vnet.ibm.com>
 References: <1304870719-20885-1-git-send-email-stefanha@linux.vnet.ibm.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
 	4)
-X-Received-From: 194.196.100.161
+X-Received-From: 194.196.100.167
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>,
-	Hannes Reinecke <hare@suse.de>
-Subject: [Qemu-trivial] [PATCH 24/24] lsi53c895a: Rename 'sense' to 'status'
+	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH 23/24] libcacard: add correct subdirectory
+	dependencies
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,75 +52,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 May 2011 16:06:13 -0000
+X-List-Received-Date: Sun, 08 May 2011 16:06:15 -0000
 
-From: Hannes Reinecke <hare@suse.de>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-The 'sense' field in the HBA status structure is misnamed, as it
-actually carries the SCSI status. Rename it.
-
-Signed-off-by: Hannes Reinecke <hare@suse.de>
-Reviewed-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Cc: qemu-trivial@nongnu.org
 Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
 ---
- hw/lsi53c895a.c |   18 +++++++++---------
- 1 files changed, 9 insertions(+), 9 deletions(-)
+ Makefile           |    2 ++
+ Makefile.objs      |    7 +++----
+ libcacard/Makefile |    9 +--------
+ 3 files changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/hw/lsi53c895a.c b/hw/lsi53c895a.c
-index be4df58..2ce38a9 100644
---- a/hw/lsi53c895a.c
-+++ b/hw/lsi53c895a.c
-@@ -189,7 +189,7 @@ typedef struct {
-     uint32_t script_ram_base;
+diff --git a/Makefile b/Makefile
+index 67c0268..2b0438c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -88,6 +88,8 @@ include $(SRC_PATH)/Makefile.objs
+ endif
  
-     int carry; /* ??? Should this be an a visible register somewhere?  */
--    int sense;
-+    int status;
-     /* Action to take at the end of a MSG IN phase.
-        0 = COMMAND, 1 = disconnect, 2 = DATA OUT, 3 = DATA IN.  */
-     int msg_action;
-@@ -695,8 +695,8 @@ static void lsi_command_complete(SCSIBus *bus, int reason, uint32_t tag,
+ $(common-obj-y): $(GENERATED_HEADERS)
++subdir-libcacard: $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o
++
+ $(filter %-softmmu,$(SUBDIR_RULES)): $(trace-obj-y) $(common-obj-y) subdir-libdis
  
-     out = (s->sstat1 & PHASE_MASK) == PHASE_DO;
-     if (reason == SCSI_REASON_DONE) {
--        DPRINTF("Command complete sense=%d\n", (int)arg);
--        s->sense = arg;
-+        DPRINTF("Command complete status=%d\n", (int)arg);
-+        s->status = arg;
-         s->command_complete = 2;
-         if (s->waiting && s->dbc != 0) {
-             /* Raise phase mismatch for short transfers.  */
-@@ -783,14 +783,14 @@ static void lsi_do_command(LSIState *s)
+ $(filter %-user,$(SUBDIR_RULES)): $(GENERATED_HEADERS) $(trace-obj-y) subdir-libdis-user subdir-libuser
+diff --git a/Makefile.objs b/Makefile.objs
+index d82c60d..4478c61 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -7,8 +7,8 @@ qobject-obj-y += qerror.o
+ #######################################################################
+ # oslib-obj-y is code depending on the OS (win32 vs posix)
+ oslib-obj-y = osdep.o
+-oslib-obj-$(CONFIG_WIN32) += oslib-win32.o
+-oslib-obj-$(CONFIG_POSIX) += oslib-posix.o
++oslib-obj-$(CONFIG_WIN32) += oslib-win32.o qemu-thread-win32.o
++oslib-obj-$(CONFIG_POSIX) += oslib-posix.o qemu-thread-posix.o
  
- static void lsi_do_status(LSIState *s)
- {
--    uint8_t sense;
--    DPRINTF("Get status len=%d sense=%d\n", s->dbc, s->sense);
-+    uint8_t status;
-+    DPRINTF("Get status len=%d status=%d\n", s->dbc, s->status);
-     if (s->dbc != 1)
-         BADF("Bad Status move\n");
-     s->dbc = 1;
--    sense = s->sense;
--    s->sfbr = sense;
--    cpu_physical_memory_write(s->dnad, &sense, 1);
-+    status = s->status;
-+    s->sfbr = status;
-+    cpu_physical_memory_write(s->dnad, &status, 1);
-     lsi_set_phase(s, PHASE_MI);
-     s->msg_action = 1;
-     lsi_add_msg_byte(s, 0); /* COMMAND COMPLETE */
-@@ -2122,7 +2122,7 @@ static const VMStateDescription vmstate_lsi_scsi = {
-         VMSTATE_PCI_DEVICE(dev, LSIState),
+ #######################################################################
+ # block-obj-y is code used by both qemu system emulation and qemu-img
+@@ -143,8 +143,7 @@ common-obj-y += $(addprefix ui/, $(ui-obj-y))
+ common-obj-$(CONFIG_VNC) += $(addprefix ui/, $(vnc-obj-y))
  
-         VMSTATE_INT32(carry, LSIState),
--        VMSTATE_INT32(sense, LSIState),
-+        VMSTATE_INT32(status, LSIState),
-         VMSTATE_INT32(msg_action, LSIState),
-         VMSTATE_INT32(msg_len, LSIState),
-         VMSTATE_BUFFER(msg, LSIState),
+ common-obj-y += iov.o acl.o
+-common-obj-$(CONFIG_POSIX) += qemu-thread-posix.o compatfd.o
+-common-obj-$(CONFIG_WIN32) += qemu-thread-win32.o
++common-obj-$(CONFIG_POSIX) += compatfd.o
+ common-obj-y += notify.o event_notifier.o
+ common-obj-y += qemu-timer.o qemu-timer-common.o
+ 
+diff --git a/libcacard/Makefile b/libcacard/Makefile
+index 4010029..1d34df0 100644
+--- a/libcacard/Makefile
++++ b/libcacard/Makefile
+@@ -4,14 +4,7 @@
+ 
+ $(call set-vpath, $(SRC_PATH):$(SRC_PATH)/libcacard)
+ 
+-ifeq ($(CONFIG_WIN32),y)
+-QEMU_THREAD=qemu-thread-win32.o
+-else
+-QEMU_THREAD=qemu-thread-posix.o
+-endif
+-
+-
+-QEMU_OBJS=$(addprefix ../, $(QEMU_THREAD) $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
++QEMU_OBJS=$(addprefix ../, $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
+ 
+ QEMU_CFLAGS+=-I../
+ 
 -- 
 1.7.4.4
 
