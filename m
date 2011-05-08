@@ -1,38 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QIxwb-0001jD-QW
-	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 02:58:21 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:56061)
+	id 1QJ1xa-0007UB-Jz
+	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 07:15:38 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:52752)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QIxwa-0001gS-4f
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 02:58:21 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QJ1xY-0007R9-GH
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 07:15:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QIxwZ-000503-4x
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 02:58:20 -0400
-Received: from moutng.kundenserver.de ([212.227.126.187]:49235)
+	(envelope-from <stefanha@gmail.com>) id 1QJ1xX-0005ge-P5
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 07:15:36 -0400
+Received: from mail-yw0-f45.google.com ([209.85.213.45]:63265)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1QIxwW-0004zk-GI; Sun, 08 May 2011 02:58:16 -0400
-Received: from flocke.fritz.box (p54ADA2B4.dip.t-dialin.net [84.173.162.180])
-	by mrelayeu.kundenserver.de (node=mreu2) with ESMTP (Nemesis)
-	id 0LvxEH-1Pgsvo1zTB-017iKQ; Sun, 08 May 2011 08:58:13 +0200
-Received: from stefan by flocke.fritz.box with local (Exim 4.72)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1QIxwS-0007RN-CN; Sun, 08 May 2011 08:58:12 +0200
-From: Stefan Weil <weil@mail.berlios.de>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Date: Sun,  8 May 2011 08:58:11 +0200
-Message-Id: <1304837891-28573-1-git-send-email-weil@mail.berlios.de>
-X-Mailer: git-send-email 1.7.2.5
-X-Provags-ID: V02:K0:n5CAwPvPYIxYZlZOBw4QfGtMvtJKWe8jGoBOBn2XZem
-	QxPLGFZfEz/rvrWzH8uad0d0QGeaQYvuWGBNq8NRVDFH9HTCk2
-	Un9kZK+lTmZVuJbho2rhgJDoGm7xfysyM9KO7giQSGMXA95Njl
-	d5DYeF0DMm1TUiQkvgpTV7ZpxQ5YkZ5fUWoqvpZX3gGbnQ3k5Q
-	lKEX3mR9Ss8oRSWKjwZ1Qxlfs8CHoZvCf6zyczkQhShSadOAtc prZrupuWZamrU
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.227.126.187
-Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
-Subject: [Qemu-trivial] [PATCH] ac97: Remove unused local variables
+	(envelope-from <stefanha@gmail.com>)
+	id 1QJ1xW-0005gM-2i; Sun, 08 May 2011 07:15:34 -0400
+Received: by ywl41 with SMTP id 41so1882324ywl.4
+	for <multiple recipients>; Sun, 08 May 2011 04:15:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type
+	:content-transfer-encoding;
+	bh=SXycKLC40mnAqARAXb8vwp7RSjONHg+44Rr8tPDmTTE=;
+	b=vgMFrZVAQSpsPQPBRqKNQTMwtj3MGGiRDXo3NbIR7lmAVpCtgVHF0AGPEpbj7AIl6w
+	HoLqdyZwxCUEBPHhe+gCjgkbKAYgo69aunAduIV3U0UOvKqDyuyiB5i1I6aK9S82cz7L
+	ZSPZeHIltOVvvRi+Ka7ucFqOrR9DMMHSoUfW0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	b=mW+4M4VF9ZB6lFBP4YE1W0PamCiji6CIL9pFq1Tuhd5tRQnRs3XVMxSDLlleH2g2yA
+	E2GKKlf8NTOzSkWIA9XuGfPpl7RlGFWF88VyzAxoAhabrMIX0ezvFX5yiCNeZ9NqpVZD
+	oiNcPfc6ibKvusBncMTgDwew1yOzHZxMLpMdA=
+MIME-Version: 1.0
+Received: by 10.150.2.11 with SMTP id 11mr706110ybb.186.1304853333100; Sun, 08
+	May 2011 04:15:33 -0700 (PDT)
+Received: by 10.147.172.9 with HTTP; Sun, 8 May 2011 04:15:33 -0700 (PDT)
+In-Reply-To: <1304322846-24376-4-git-send-email-pbonzini@redhat.com>
+References: <1304322846-24376-4-git-send-email-pbonzini@redhat.com>
+Date: Sun, 8 May 2011 12:15:33 +0100
+Message-ID: <BANLkTikq7uuwZOhdFdJD4a1PkHneD6a=Fg@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.213.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 4/4] fix compilation when reconfiguring
+ without dtrace backend
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,58 +56,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 May 2011 06:58:21 -0000
+X-List-Received-Date: Sun, 08 May 2011 11:15:37 -0000
 
-cppcheck report:
-hw/ac97.c:1004: style:
- Variable 'written' is assigned a value that is never used
-hw/ac97.c:1072: style:
- Variable 'written' is assigned a value that is never used
+On Mon, May 2, 2011 at 8:54 AM, Paolo Bonzini <pbonzini@redhat.com> wrote:
+> If QEMU is configured with the dtrace backend, then built, then
+> reconfigured without, the build fails.
+>
+> The culprit is the trace-dtrace.h dependency that many files will
+> have. =A0Due to this dependency, make will attempt to rebuild
+> trace-dtrace.dtrace. =A0This is the step that fails. =A0Fix by wrapping
+> the dtrace rules with ifeq/endif.
+>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: qemu-trivial@nongnu.org
+> ---
+> =A0Makefile.objs | =A0 =A02 ++
+> =A01 files changed, 2 insertions(+), 0 deletions(-)
 
-Signed-off-by: Stefan Weil <weil@mail.berlios.de>
----
- hw/ac97.c |    6 +-----
- 1 files changed, 1 insertions(+), 5 deletions(-)
+I think the real problem is that dependencies need to be regenerated
+after ./configure?
 
-diff --git a/hw/ac97.c b/hw/ac97.c
-index d71072d..a946c1a 100644
---- a/hw/ac97.c
-+++ b/hw/ac97.c
-@@ -1001,8 +1001,6 @@ static int write_audio (AC97LinkState *s, AC97BusMasterRegs *r,
- 
- static void write_bup (AC97LinkState *s, int elapsed)
- {
--    int written = 0;
--
-     dolog ("write_bup\n");
-     if (!(s->bup_flag & BUP_SET)) {
-         if (s->bup_flag & BUP_LAST) {
-@@ -1026,7 +1024,6 @@ static void write_bup (AC97LinkState *s, int elapsed)
-                 return;
-             temp -= copied;
-             elapsed -= copied;
--            written += copied;
-         }
-     }
- }
-@@ -1069,7 +1066,7 @@ static int read_audio (AC97LinkState *s, AC97BusMasterRegs *r,
- static void transfer_audio (AC97LinkState *s, int index, int elapsed)
- {
-     AC97BusMasterRegs *r = &s->bm_regs[index];
--    int written = 0, stop = 0;
-+    int stop = 0;
- 
-     if (s->invalid_freq[index]) {
-         AUD_log ("ac97", "attempt to use voice %d with invalid frequency %d\n",
-@@ -1114,7 +1111,6 @@ static void transfer_audio (AC97LinkState *s, int index, int elapsed)
-         switch (index) {
-         case PO_INDEX:
-             temp = write_audio (s, r, elapsed, &stop);
--            written += temp;
-             elapsed -= temp;
-             r->picb -= (temp >> 1);
-             break;
--- 
-1.7.2.5
-
+Stefan
 
