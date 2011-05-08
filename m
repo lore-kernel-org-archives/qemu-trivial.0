@@ -1,50 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QJ1xa-0007UB-Jz
-	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 07:15:38 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:52752)
+	id 1QJ2fA-0002ms-6X
+	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 08:00:40 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:54033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QJ1xY-0007R9-GH
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 07:15:37 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QJ2f7-0002h1-58
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 08:00:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QJ1xX-0005ge-P5
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 07:15:36 -0400
-Received: from mail-yw0-f45.google.com ([209.85.213.45]:63265)
+	(envelope-from <stefanha@gmail.com>) id 1QJ2f5-00038C-Kv
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 08:00:37 -0400
+Received: from mail-wy0-f173.google.com ([74.125.82.173]:48641)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1QJ1xW-0005gM-2i; Sun, 08 May 2011 07:15:34 -0400
-Received: by ywl41 with SMTP id 41so1882324ywl.4
-	for <multiple recipients>; Sun, 08 May 2011 04:15:33 -0700 (PDT)
+	id 1QJ2ep-0002tr-MN; Sun, 08 May 2011 08:00:20 -0400
+Received: by wyb42 with SMTP id 42so3834487wyb.4
+	for <multiple recipients>; Sun, 08 May 2011 05:00:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type
-	:content-transfer-encoding;
-	bh=SXycKLC40mnAqARAXb8vwp7RSjONHg+44Rr8tPDmTTE=;
-	b=vgMFrZVAQSpsPQPBRqKNQTMwtj3MGGiRDXo3NbIR7lmAVpCtgVHF0AGPEpbj7AIl6w
-	HoLqdyZwxCUEBPHhe+gCjgkbKAYgo69aunAduIV3U0UOvKqDyuyiB5i1I6aK9S82cz7L
-	ZSPZeHIltOVvvRi+Ka7ucFqOrR9DMMHSoUfW0=
+	h=domainkey-signature:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=Pc+9Y6lvESNaaaQYB4z8RUdzQzPtUWU1mSClNU9LbCU=;
+	b=g/U/fdb8AZcuRco2Bjg3ECczWI4/QCDIQCh0rM1ZYiNCFnP64BVfNa0ypMaXmQDPq8
+	mW8vGxxgus8TUZ2NgEMqk5JuPg6SnAh7th1CUL1NhNV5gfeVww8eNrs6kR4FwP70SWwF
+	IC32ZH1TqLvJK5uh12ASVRGUrYfGBekmawx4k=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	b=mW+4M4VF9ZB6lFBP4YE1W0PamCiji6CIL9pFq1Tuhd5tRQnRs3XVMxSDLlleH2g2yA
-	E2GKKlf8NTOzSkWIA9XuGfPpl7RlGFWF88VyzAxoAhabrMIX0ezvFX5yiCNeZ9NqpVZD
-	oiNcPfc6ibKvusBncMTgDwew1yOzHZxMLpMdA=
-MIME-Version: 1.0
-Received: by 10.150.2.11 with SMTP id 11mr706110ybb.186.1304853333100; Sun, 08
-	May 2011 04:15:33 -0700 (PDT)
-Received: by 10.147.172.9 with HTTP; Sun, 8 May 2011 04:15:33 -0700 (PDT)
-In-Reply-To: <1304322846-24376-4-git-send-email-pbonzini@redhat.com>
-References: <1304322846-24376-4-git-send-email-pbonzini@redhat.com>
-Date: Sun, 8 May 2011 12:15:33 +0100
-Message-ID: <BANLkTikq7uuwZOhdFdJD4a1PkHneD6a=Fg@mail.gmail.com>
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	b=D96E3PeR19s7Xu7JHnJ5W2p4jbv02Z+1TCQ+/Jas0PXGCNjVMBabDuhx0KcX/curGh
+	YUMS4MkujSE1OOovq/D2PT73WSPRSLy0iKO554eQpKhs2wKHtf7QL/eTda1hpiOVveoX
+	dbGZmgCBZc9xU8EOhvS8C+Rliyi5L/ya7wCqc=
+Received: by 10.216.14.199 with SMTP id d49mr5588445wed.65.1304856018194;
+	Sun, 08 May 2011 05:00:18 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain ([109.224.133.37])
+	by mx.google.com with ESMTPS id n2sm2500414wej.22.2011.05.08.05.00.16
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sun, 08 May 2011 05:00:16 -0700 (PDT)
+Date: Sun, 8 May 2011 13:00:11 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+To: Stefan Weil <weil@mail.berlios.de>
+Message-ID: <20110508120011.GA10500@stefanha-thinkpad.localdomain>
+References: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1304004042-8334-1-git-send-email-weil@mail.berlios.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.213.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 4/4] fix compilation when reconfiguring
- without dtrace backend
+X-Received-From: 74.125.82.173
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 01/18] Fix typos in comments
+ (dependancy -> dependency)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,25 +59,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 May 2011 11:15:37 -0000
+X-List-Received-Date: Sun, 08 May 2011 12:00:38 -0000
 
-On Mon, May 2, 2011 at 8:54 AM, Paolo Bonzini <pbonzini@redhat.com> wrote:
-> If QEMU is configured with the dtrace backend, then built, then
-> reconfigured without, the build fails.
->
-> The culprit is the trace-dtrace.h dependency that many files will
-> have. =A0Due to this dependency, make will attempt to rebuild
-> trace-dtrace.dtrace. =A0This is the step that fails. =A0Fix by wrapping
-> the dtrace rules with ifeq/endif.
->
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: qemu-trivial@nongnu.org
+On Thu, Apr 28, 2011 at 05:20:25PM +0200, Stefan Weil wrote:
+> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 > ---
-> =A0Makefile.objs | =A0 =A02 ++
-> =A01 files changed, 2 insertions(+), 0 deletions(-)
+>  Changelog     |    2 +-
+>  Makefile.objs |    2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 
-I think the real problem is that dependencies need to be regenerated
-after ./configure?
+Thanks, applied the series to the trivial-patches branch:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+
+For more information see http://wiki.qemu.org/Contribute/TrivialPatches.
 
 Stefan
 
