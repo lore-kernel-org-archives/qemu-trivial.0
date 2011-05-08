@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QJ2hb-0004ip-9w
-	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 08:03:11 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:54374)
+	id 1QJ2iD-0005MZ-Sm
+	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 08:03:49 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:54954)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QJ2hY-0004eD-EP
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 08:03:09 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QJ2iB-0005HO-G3
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 08:03:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QJ2hX-0003dG-Ih
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 08:03:08 -0400
-Received: from mail-ww0-f53.google.com ([74.125.82.53]:45971)
+	(envelope-from <stefanha@gmail.com>) id 1QJ2iA-0003g1-Cu
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 08:03:47 -0400
+Received: from mail-wy0-f173.google.com ([74.125.82.173]:46348)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1QJ2hV-0003bY-C7; Sun, 08 May 2011 08:03:05 -0400
-Received: by wwj40 with SMTP id 40so4338913wwj.10
-	for <multiple recipients>; Sun, 08 May 2011 05:03:04 -0700 (PDT)
+	id 1QJ2i7-0003fU-Nw; Sun, 08 May 2011 08:03:43 -0400
+Received: by wyb42 with SMTP id 42so3835719wyb.4
+	for <multiple recipients>; Sun, 08 May 2011 05:03:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=domainkey-signature:date:from:to:cc:subject:message-id:references
 	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=pViakkJysllS5oPbeAVXJMtieS5mRzlh1VKGxbccyB8=;
-	b=PcD58dDV8LHqdYecyebzSHD3T7FKJpi+9X6vw0d+bY295OIiElBOadhUdCV1xyLdoa
-	bysHInENKo4ZnnimGmtjy3JW8+geEdLGPnu9Q4YDHvafS7EMDx61hf7QUeXAVDGujKm2
-	orzIIH4vDA6NrfgbWf+itrbo7lWbw3+tEm17E=
+	:user-agent; bh=ajLpU+C3XuwuYpkwXWYdE6wKt2QL7ArGofHJ+naju0M=;
+	b=wDt0R8ZOFvB6TfcyNm9T/Y5Xc1UsMTNO20T5dBUBhsKA6HFCz7n6C9xRTi7Lg4Zzz0
+	s2G6RCKZQ5pwk23EYjatgnXn2Sf1U33sxI81X/3kAP7Za22RJ2MNBegaJZc++1wFVD1z
+	nxPRAvj+YMLo7RZ32qz11hv8HyAAFYeJWFvFk=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	b=YAYbasPPMmrJu+bSIuS6NCfBWSBGxfXvNZVvLrhPjMsgN15S016d7ySbEL6JiTPKO8
-	Vx+VIuF16OJM2JPg8ujx/zF249ywpuMxDiqxu4PtGRY71LNamcYuzfMKLS+B5naBJ/GW
-	WljBxWZoytjIYVQgsdmFjCrd1ut3KaSaEUhYA=
-Received: by 10.227.184.66 with SMTP id cj2mr4596256wbb.90.1304856183351;
-	Sun, 08 May 2011 05:03:03 -0700 (PDT)
+	b=vSHcb0E0hJwcdpk8GeEzyV5a1Yq1cKpflZobofD/T+1omOxx3viVyvnpGmtNak6qdo
+	PVdWalB9zktTUOzm1kuisOFli5yANy9EFuKkGfNfDYVGBW3nncolDPx4ogXWfM5xJsOB
+	7FdvGVnX1G/8DcD2YCoymjhUwtGTmorufkduI=
+Received: by 10.216.60.193 with SMTP id u43mr1550155wec.103.1304856222934;
+	Sun, 08 May 2011 05:03:42 -0700 (PDT)
 Received: from stefanha-thinkpad.localdomain ([109.224.133.37])
-	by mx.google.com with ESMTPS id y29sm3110361wbd.38.2011.05.08.05.03.01
+	by mx.google.com with ESMTPS id f52sm2503230wes.11.2011.05.08.05.03.41
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 08 May 2011 05:03:02 -0700 (PDT)
-Date: Sun, 8 May 2011 13:02:59 +0100
+	Sun, 08 May 2011 05:03:42 -0700 (PDT)
+Date: Sun, 8 May 2011 13:03:38 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Stefan Weil <weil@mail.berlios.de>
-Message-ID: <20110508120259.GD10500@stefanha-thinkpad.localdomain>
-References: <1304799603-19402-1-git-send-email-weil@mail.berlios.de>
+Message-ID: <20110508120338.GE10500@stefanha-thinkpad.localdomain>
+References: <1304800345-21474-1-git-send-email-weil@mail.berlios.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1304799603-19402-1-git-send-email-weil@mail.berlios.de>
+In-Reply-To: <1304800345-21474-1-git-send-email-weil@mail.berlios.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix spelling in comments
- (intruction -> instruction)
+X-Received-From: 74.125.82.173
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: Replace
+	deprecated function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,15 +60,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 May 2011 12:03:09 -0000
+X-List-Received-Date: Sun, 08 May 2011 12:03:48 -0000
 
-On Sat, May 07, 2011 at 10:20:03PM +0200, Stefan Weil wrote:
+On Sat, May 07, 2011 at 10:32:25PM +0200, Stefan Weil wrote:
+> Function bzero is deprecated, so replace it by function memset.
+> 
 > Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 > ---
->  bsd-user/main.c   |    2 +-
->  linux-user/main.c |    2 +-
->  tests/test-i386.c |    2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+>  linux-user/syscall.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
 Thanks, applied to the trivial-patches branch:
 http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
