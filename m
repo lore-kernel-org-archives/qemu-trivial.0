@@ -1,53 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QJ2kx-0006vj-S7
-	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 08:06:39 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:55307)
+	id 1QJ6Ut-0006lm-4e
+	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 12:06:19 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:52183)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QJ2ku-0006mM-OY
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 08:06:37 -0400
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1QJ6Ul-0006W5-VY
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 12:06:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QJ2kt-0003v8-LD
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 08:06:36 -0400
-Received: from mail-wy0-f173.google.com ([74.125.82.173]:46284)
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1QJ6Ul-0007ae-22
+	for qemu-trivial@nongnu.org; Sun, 08 May 2011 12:06:11 -0400
+Received: from mtagate1.uk.ibm.com ([194.196.100.161]:38475)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QJ2kr-0003u2-0U; Sun, 08 May 2011 08:06:33 -0400
-Received: by wyb42 with SMTP id 42so3836642wyb.4
-	for <multiple recipients>; Sun, 08 May 2011 05:06:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=E/nQuSrleBdhVevkX9P3roCYZFNI3RkZWQ6WJ5DNe3c=;
-	b=jYSitbrrYI+oz4SezI4ROanmGI7DyFT1+xjWv+Fp1yGGbzmBoTYmpBmbpapaUN1JkT
-	D/pcMQnBfMlarDct7vP//59g5Na01Uz8TqNX4GQfqLyC8SjkGWlXver8OwAvKXj0Bd6y
-	f7JArjJqHqwBhl+KfBTmk0F2uQcp3XIXBTgnI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	b=RHpTE5sm5YkYohCdZ4Lp2NJe7iy6Tta4CR9CkfOw4Tt8bcTJTW8ziAfOapkeRn+zWq
-	qOCsLxDGyKpzV9r/Os0wHldO8AAaJCiF/O+tdKIWbSsp84Oql8tl7VBTQ6GVi6ezAnwh
-	lmkn8fCExpH/nzx7bT/RvgqfbTCsA4R5vdMSM=
-Received: by 10.227.196.209 with SMTP id eh17mr6023953wbb.5.1304856392118;
-	Sun, 08 May 2011 05:06:32 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain ([109.224.133.37])
-	by mx.google.com with ESMTPS id o6sm3111273wbo.54.2011.05.08.05.06.30
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 08 May 2011 05:06:31 -0700 (PDT)
-Date: Sun, 8 May 2011 13:06:26 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20110508120626.GA10606@stefanha-thinkpad.localdomain>
-References: <1304322846-24376-1-git-send-email-pbonzini@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1304322846-24376-1-git-send-email-pbonzini@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 1/4] libcacard: add correct subdirectory
- dependencies
+	(envelope-from <stefanha@linux.vnet.ibm.com>)
+	id 1QJ6Ug-0007Z4-Qq; Sun, 08 May 2011 12:06:07 -0400
+Received: from d06nrmr1307.portsmouth.uk.ibm.com
+	(d06nrmr1307.portsmouth.uk.ibm.com [9.149.38.129])
+	by mtagate1.uk.ibm.com (8.13.1/8.13.1) with ESMTP id p48G66YO023832;
+	Sun, 8 May 2011 16:06:06 GMT
+Received: from d06av11.portsmouth.uk.ibm.com (d06av11.portsmouth.uk.ibm.com
+	[9.149.37.252])
+	by d06nrmr1307.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
+	ESMTP id p48G7Let2523186; Sun, 8 May 2011 17:07:21 +0100
+Received: from d06av11.portsmouth.uk.ibm.com (loopback [127.0.0.1])
+	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
+	ESMTP id p48G65ss021822; Sun, 8 May 2011 10:06:05 -0600
+Received: from stefanha-thinkpad.ibm.com (sig-9-146-157-45.uk.ibm.com
+	[9.146.157.45])
+	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
+	ESMTP id p48G5njp021096; Sun, 8 May 2011 10:06:04 -0600
+From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+To: Anthony Liguori <aliguori@us.ibm.com>
+Date: Sun,  8 May 2011 17:05:19 +0100
+Message-Id: <1304870719-20885-25-git-send-email-stefanha@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.4.4
+In-Reply-To: <1304870719-20885-1-git-send-email-stefanha@linux.vnet.ibm.com>
+References: <1304870719-20885-1-git-send-email-stefanha@linux.vnet.ibm.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 194.196.100.161
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>,
+	Hannes Reinecke <hare@suse.de>
+Subject: [Qemu-trivial] [PATCH 24/24] lsi53c895a: Rename 'sense' to 'status'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,21 +52,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 May 2011 12:06:38 -0000
+X-List-Received-Date: Sun, 08 May 2011 16:06:13 -0000
 
-On Mon, May 02, 2011 at 09:54:03AM +0200, Paolo Bonzini wrote:
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: qemu-trivial@nongnu.org
-> ---
->  Makefile           |    2 ++
->  Makefile.objs      |    7 +++----
->  libcacard/Makefile |    9 +--------
->  3 files changed, 6 insertions(+), 12 deletions(-)
+From: Hannes Reinecke <hare@suse.de>
 
-Thanks, applied to the trivial-patches branch:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+The 'sense' field in the HBA status structure is misnamed, as it
+actually carries the SCSI status. Rename it.
 
-For more information see http://wiki.qemu.org/Contribute/TrivialPatches.
+Signed-off-by: Hannes Reinecke <hare@suse.de>
+Reviewed-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+---
+ hw/lsi53c895a.c |   18 +++++++++---------
+ 1 files changed, 9 insertions(+), 9 deletions(-)
 
-Stefan
+diff --git a/hw/lsi53c895a.c b/hw/lsi53c895a.c
+index be4df58..2ce38a9 100644
+--- a/hw/lsi53c895a.c
++++ b/hw/lsi53c895a.c
+@@ -189,7 +189,7 @@ typedef struct {
+     uint32_t script_ram_base;
+ 
+     int carry; /* ??? Should this be an a visible register somewhere?  */
+-    int sense;
++    int status;
+     /* Action to take at the end of a MSG IN phase.
+        0 = COMMAND, 1 = disconnect, 2 = DATA OUT, 3 = DATA IN.  */
+     int msg_action;
+@@ -695,8 +695,8 @@ static void lsi_command_complete(SCSIBus *bus, int reason, uint32_t tag,
+ 
+     out = (s->sstat1 & PHASE_MASK) == PHASE_DO;
+     if (reason == SCSI_REASON_DONE) {
+-        DPRINTF("Command complete sense=%d\n", (int)arg);
+-        s->sense = arg;
++        DPRINTF("Command complete status=%d\n", (int)arg);
++        s->status = arg;
+         s->command_complete = 2;
+         if (s->waiting && s->dbc != 0) {
+             /* Raise phase mismatch for short transfers.  */
+@@ -783,14 +783,14 @@ static void lsi_do_command(LSIState *s)
+ 
+ static void lsi_do_status(LSIState *s)
+ {
+-    uint8_t sense;
+-    DPRINTF("Get status len=%d sense=%d\n", s->dbc, s->sense);
++    uint8_t status;
++    DPRINTF("Get status len=%d status=%d\n", s->dbc, s->status);
+     if (s->dbc != 1)
+         BADF("Bad Status move\n");
+     s->dbc = 1;
+-    sense = s->sense;
+-    s->sfbr = sense;
+-    cpu_physical_memory_write(s->dnad, &sense, 1);
++    status = s->status;
++    s->sfbr = status;
++    cpu_physical_memory_write(s->dnad, &status, 1);
+     lsi_set_phase(s, PHASE_MI);
+     s->msg_action = 1;
+     lsi_add_msg_byte(s, 0); /* COMMAND COMPLETE */
+@@ -2122,7 +2122,7 @@ static const VMStateDescription vmstate_lsi_scsi = {
+         VMSTATE_PCI_DEVICE(dev, LSIState),
+ 
+         VMSTATE_INT32(carry, LSIState),
+-        VMSTATE_INT32(sense, LSIState),
++        VMSTATE_INT32(status, LSIState),
+         VMSTATE_INT32(msg_action, LSIState),
+         VMSTATE_INT32(msg_len, LSIState),
+         VMSTATE_BUFFER(msg, LSIState),
+-- 
+1.7.4.4
+
 
