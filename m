@@ -1,43 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QJM2l-0008Bm-3e
-	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2011 04:42:19 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:53021)
+	id 1QJMQb-0005MW-Vx
+	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2011 05:06:57 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:37290)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1QJM2j-00087H-Bv
-	for qemu-trivial@nongnu.org; Mon, 09 May 2011 04:42:18 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QJMQZ-0005Hd-R1
+	for qemu-trivial@nongnu.org; Mon, 09 May 2011 05:06:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1QJM2i-0003Il-Kg
-	for qemu-trivial@nongnu.org; Mon, 09 May 2011 04:42:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:63646)
+	(envelope-from <stefanha@gmail.com>) id 1QJMQY-0007dj-Vs
+	for qemu-trivial@nongnu.org; Mon, 09 May 2011 05:06:55 -0400
+Received: from mail-gy0-f173.google.com ([209.85.160.173]:50493)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1QJM2g-0003IM-Jr; Mon, 09 May 2011 04:42:14 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p498gCEl021206
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 9 May 2011 04:42:12 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-23.phx2.redhat.com
-	[10.3.112.23])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id p498g9kP018782; Mon, 9 May 2011 04:42:10 -0400
-Message-ID: <4DC7A8E0.1020500@redhat.com>
-Date: Mon, 09 May 2011 10:42:08 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.15) Gecko/20110307 Fedora/3.1.9-0.39.b3pre.fc14
-	Lightning/1.0b3pre Mnenhy/0.8.3 Thunderbird/3.1.9
+	(envelope-from <stefanha@gmail.com>)
+	id 1QJMQX-0007dP-36; Mon, 09 May 2011 05:06:53 -0400
+Received: by gyg4 with SMTP id 4so2056154gyg.4
+	for <multiple recipients>; Mon, 09 May 2011 02:06:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type
+	:content-transfer-encoding;
+	bh=4ptWjFE0qHJv/iLhcVkD+DbSMpg3u30nfKkPbsFwWSQ=;
+	b=Iz7DtKw7LLF7kKwUKN+4dRtEyVXKoAxbgjUdN0SnJp8uRlVskBpKABke6BGtOsJbQR
+	8gmNylEr72j7179nEVK9EJ+mpSVZ6QEqle4vXS+tuXQJuHoKXm4vXr0/Hx86K0rLtduv
+	AU0RYYGxZa5ZDRLo7L+wFlD9+X5ZuRmoEqn34=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	b=hXkrDoB0X0a2ATUOORTyUBuaeqYYXGCsMzi54w9N5g00h9LRlWam8wOwjakzu5SbpR
+	8xDz0+Yn/N4HC+EUYp/YN6H9ULrZyzRnzvh1phey2CLs861BaQQvkslqQ+VRvkAJMXVA
+	ads8gxGC+0kTXAE1JLxhFd8OIxH7I66uxDbbw=
 MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1304322846-24376-4-git-send-email-pbonzini@redhat.com>	<BANLkTikq7uuwZOhdFdJD4a1PkHneD6a=Fg@mail.gmail.com>	<4DC78F5D.7080505@redhat.com>
+Received: by 10.236.181.136 with SMTP id l8mr7740168yhm.117.1304932012370;
+	Mon, 09 May 2011 02:06:52 -0700 (PDT)
+Received: by 10.147.172.9 with HTTP; Mon, 9 May 2011 02:06:52 -0700 (PDT)
+In-Reply-To: <4DC7A8E0.1020500@redhat.com>
+References: <1304322846-24376-4-git-send-email-pbonzini@redhat.com>
+	<BANLkTikq7uuwZOhdFdJD4a1PkHneD6a=Fg@mail.gmail.com>
+	<4DC78F5D.7080505@redhat.com>
 	<BANLkTinvh3YJMqJJG9mm27MSYShyBDeZtg@mail.gmail.com>
-In-Reply-To: <BANLkTinvh3YJMqJJG9mm27MSYShyBDeZtg@mail.gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
+	<4DC7A8E0.1020500@redhat.com>
+Date: Mon, 9 May 2011 10:06:52 +0100
+Message-ID: <BANLkTikrHj7SCHids+rvSb2Aw9TNinSNXg@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.160.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH 4/4] fix compilation when reconfiguring
  without dtrace backend
@@ -52,25 +60,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 May 2011 08:42:18 -0000
+X-List-Received-Date: Mon, 09 May 2011 09:06:56 -0000
 
-On 05/09/2011 10:34 AM, Stefan Hajnoczi wrote:
-> BTW the Makefiles don't
-> seem to have a step before compilation to generate all the
-> dependencies, instead dependencies only kick in after the first build
-> has completed?
+On Mon, May 9, 2011 at 9:42 AM, Paolo Bonzini <pbonzini@redhat.com> wrote:
+> On 05/09/2011 10:34 AM, Stefan Hajnoczi wrote:
+>> Is there some smart change detection you are thinking about or just
+>> something like keeping the old copy of config-host.h and friends to
+>> see if they have changed?
+>
+> Just that, perhaps for both .h and .mak files. =A0Consider this very patc=
+h; it
+> is plausible that switching to another tracing backend does not change th=
+e
+> .h files, right now the backend is only present in .h files to enable the
+> monitor/cmdline interfaces.
 
-Yes, the first build doesn't need dependencies on headers.  Rules for 
-.c->.o and .o->executable are enough to get everything built.
+Hmm...I was wrong when I said that just deleting .d files is enough.
+If ./configure is run *and* an arbitrary header file was changed then
+stale .o files will be used.  So we also need to delete .o files on
+./configure.
 
-> Is there some smart change detection you are thinking about or just
-> something like keeping the old copy of config-host.h and friends to
-> see if they have changed?
-
-Just that, perhaps for both .h and .mak files.  Consider this very 
-patch; it is plausible that switching to another tracing backend does 
-not change the .h files, right now the backend is only present in .h 
-files to enable the monitor/cmdline interfaces.
-
-Paolo
+Stefan
 
