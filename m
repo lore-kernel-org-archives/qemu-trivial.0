@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QJ6Uw-0006q8-6r
-	for mharc-qemu-trivial@gnu.org; Sun, 08 May 2011 12:06:22 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:52194)
+	id 1QJKLT-0007hb-H2
+	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2011 02:53:31 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:56062)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1QJ6Uo-0006bD-Li
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 12:06:15 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1QJKLQ-0007bt-FM
+	for qemu-trivial@nongnu.org; Mon, 09 May 2011 02:53:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1QJ6Un-0007as-O3
-	for qemu-trivial@nongnu.org; Sun, 08 May 2011 12:06:14 -0400
-Received: from mtagate7.uk.ibm.com ([194.196.100.167]:60117)
+	(envelope-from <pbonzini@redhat.com>) id 1QJKLP-0002XX-Lt
+	for qemu-trivial@nongnu.org; Mon, 09 May 2011 02:53:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39143)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>)
-	id 1QJ6Uf-0007YU-Vl; Sun, 08 May 2011 12:06:06 -0400
-Received: from d06nrmr1707.portsmouth.uk.ibm.com
-	(d06nrmr1707.portsmouth.uk.ibm.com [9.149.39.225])
-	by mtagate7.uk.ibm.com (8.13.1/8.13.1) with ESMTP id p48G65LY029778;
-	Sun, 8 May 2011 16:06:05 GMT
-Received: from d06av11.portsmouth.uk.ibm.com (d06av11.portsmouth.uk.ibm.com
-	[9.149.37.252])
-	by d06nrmr1707.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
-	ESMTP id p48G7KO72244608; Sun, 8 May 2011 17:07:20 +0100
-Received: from d06av11.portsmouth.uk.ibm.com (loopback [127.0.0.1])
-	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
-	ESMTP id p48G64er021802; Sun, 8 May 2011 10:06:04 -0600
-Received: from stefanha-thinkpad.ibm.com (sig-9-146-157-45.uk.ibm.com
-	[9.146.157.45])
-	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
-	ESMTP id p48G5njo021096; Sun, 8 May 2011 10:06:04 -0600
-From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Sun,  8 May 2011 17:05:18 +0100
-Message-Id: <1304870719-20885-24-git-send-email-stefanha@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.4.4
-In-Reply-To: <1304870719-20885-1-git-send-email-stefanha@linux.vnet.ibm.com>
-References: <1304870719-20885-1-git-send-email-stefanha@linux.vnet.ibm.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 194.196.100.167
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH 23/24] libcacard: add correct subdirectory
-	dependencies
+	(envelope-from <pbonzini@redhat.com>)
+	id 1QJKLN-0002X5-PZ; Mon, 09 May 2011 02:53:25 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p496rNlC009106
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 9 May 2011 02:53:23 -0400
+Received: from yakj.usersys.redhat.com (ovpn-112-23.phx2.redhat.com
+	[10.3.112.23])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id p496rIlq009435; Mon, 9 May 2011 02:53:19 -0400
+Message-ID: <4DC78F5D.7080505@redhat.com>
+Date: Mon, 09 May 2011 08:53:17 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.2.15) Gecko/20110307 Fedora/3.1.9-0.39.b3pre.fc14
+	Lightning/1.0b3pre Mnenhy/0.8.3 Thunderbird/3.1.9
+MIME-Version: 1.0
+To: Stefan Hajnoczi <stefanha@gmail.com>
+References: <1304322846-24376-4-git-send-email-pbonzini@redhat.com>
+	<BANLkTikq7uuwZOhdFdJD4a1PkHneD6a=Fg@mail.gmail.com>
+In-Reply-To: <BANLkTikq7uuwZOhdFdJD4a1PkHneD6a=Fg@mail.gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 4/4] fix compilation when reconfiguring
+ without dtrace backend
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,78 +52,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 May 2011 16:06:15 -0000
+X-List-Received-Date: Mon, 09 May 2011 06:53:29 -0000
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+On 05/08/2011 01:15 PM, Stefan Hajnoczi wrote:
+> I think the real problem is that dependencies need to be regenerated
+> after ./configure?
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org
-Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
----
- Makefile           |    2 ++
- Makefile.objs      |    7 +++----
- libcacard/Makefile |    9 +--------
- 3 files changed, 6 insertions(+), 12 deletions(-)
+There are three ways to do that, the trivial but wrong one, and the 
+correct but overzealous one:
 
-diff --git a/Makefile b/Makefile
-index 67c0268..2b0438c 100644
---- a/Makefile
-+++ b/Makefile
-@@ -88,6 +88,8 @@ include $(SRC_PATH)/Makefile.objs
- endif
- 
- $(common-obj-y): $(GENERATED_HEADERS)
-+subdir-libcacard: $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o
-+
- $(filter %-softmmu,$(SUBDIR_RULES)): $(trace-obj-y) $(common-obj-y) subdir-libdis
- 
- $(filter %-user,$(SUBDIR_RULES)): $(GENERATED_HEADERS) $(trace-obj-y) subdir-libdis-user subdir-libuser
-diff --git a/Makefile.objs b/Makefile.objs
-index d82c60d..4478c61 100644
---- a/Makefile.objs
-+++ b/Makefile.objs
-@@ -7,8 +7,8 @@ qobject-obj-y += qerror.o
- #######################################################################
- # oslib-obj-y is code depending on the OS (win32 vs posix)
- oslib-obj-y = osdep.o
--oslib-obj-$(CONFIG_WIN32) += oslib-win32.o
--oslib-obj-$(CONFIG_POSIX) += oslib-posix.o
-+oslib-obj-$(CONFIG_WIN32) += oslib-win32.o qemu-thread-win32.o
-+oslib-obj-$(CONFIG_POSIX) += oslib-posix.o qemu-thread-posix.o
- 
- #######################################################################
- # block-obj-y is code used by both qemu system emulation and qemu-img
-@@ -143,8 +143,7 @@ common-obj-y += $(addprefix ui/, $(ui-obj-y))
- common-obj-$(CONFIG_VNC) += $(addprefix ui/, $(vnc-obj-y))
- 
- common-obj-y += iov.o acl.o
--common-obj-$(CONFIG_POSIX) += qemu-thread-posix.o compatfd.o
--common-obj-$(CONFIG_WIN32) += qemu-thread-win32.o
-+common-obj-$(CONFIG_POSIX) += compatfd.o
- common-obj-y += notify.o event_notifier.o
- common-obj-y += qemu-timer.o qemu-timer-common.o
- 
-diff --git a/libcacard/Makefile b/libcacard/Makefile
-index 4010029..1d34df0 100644
---- a/libcacard/Makefile
-+++ b/libcacard/Makefile
-@@ -4,14 +4,7 @@
- 
- $(call set-vpath, $(SRC_PATH):$(SRC_PATH)/libcacard)
- 
--ifeq ($(CONFIG_WIN32),y)
--QEMU_THREAD=qemu-thread-win32.o
--else
--QEMU_THREAD=qemu-thread-posix.o
--endif
--
--
--QEMU_OBJS=$(addprefix ../, $(QEMU_THREAD) $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
-+QEMU_OBJS=$(addprefix ../, $(oslib-obj-y) $(trace-obj-y) qemu-malloc.o qemu-timer-common.o)
- 
- QEMU_CFLAGS+=-I../
- 
--- 
-1.7.4.4
+- delete .d files.  This forces regeneration of dependencies, but if you 
+do not correspondingly delete .o files, you will likely have an 
+incomplete build (possibly _nothing_ will be built).
 
+- delete .d and .o files.  This forces regeneration of dependencies and 
+recompilation.  True, a lot of distros are using ccache nowadays, but 
+still this will cause a complete walk of all directories to pass those 
+files to ccache and relink the executables.  It will likely take a 
+minute or three.
+
+- detect changes in the configuration and, if those happen, delete .d 
+and .o files.  This is the correct one, and for one what the Linux 
+kernel makefiles do, but also the biggest effort to implement.
+
+Paolo
 
