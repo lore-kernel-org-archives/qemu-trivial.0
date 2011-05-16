@@ -1,46 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QKSBz-0000Xu-Oc
-	for mharc-qemu-trivial@gnu.org; Thu, 12 May 2011 05:28:23 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46182)
+	id 1QLwKJ-0006D9-P0
+	for mharc-qemu-trivial@gnu.org; Mon, 16 May 2011 07:51:07 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:40605)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1QKSBx-0000SR-1Z
-	for qemu-trivial@nongnu.org; Thu, 12 May 2011 05:28:21 -0400
+	(envelope-from <geleman@gmail.com>) id 1QLwKE-00062w-Ml
+	for qemu-trivial@nongnu.org; Mon, 16 May 2011 07:51:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1QKSBv-0004u1-W2
-	for qemu-trivial@nongnu.org; Thu, 12 May 2011 05:28:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52370)
+	(envelope-from <geleman@gmail.com>) id 1QLwKD-0003ou-Un
+	for qemu-trivial@nongnu.org; Mon, 16 May 2011 07:51:02 -0400
+Received: from mail-yx0-f173.google.com ([209.85.213.173]:58462)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1QKSBn-0004tF-RW; Thu, 12 May 2011 05:28:12 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p4C9S8HP004964
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 12 May 2011 05:28:08 -0400
-Received: from rincewind.home.kraxel.org (vpn2-10-138.ams2.redhat.com
-	[10.36.10.138])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id p4C9S7Me014345; Thu, 12 May 2011 05:28:07 -0400
-Message-ID: <4DCBA827.5010304@redhat.com>
-Date: Thu, 12 May 2011 11:28:07 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.17) Gecko/20110419 Red Hat/3.1.10-1.el6_0
-	Thunderbird/3.1.10
+	(envelope-from <geleman@gmail.com>)
+	id 1QLwK8-0003oN-OR; Mon, 16 May 2011 07:50:56 -0400
+Received: by yxk8 with SMTP id 8so1771885yxk.4
+	for <multiple recipients>; Mon, 16 May 2011 04:50:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:mime-version:date:message-id:subject:from:to:cc
+	:content-type; bh=sQQgFIsLV7PDU+EzlsM6QpLgWkgD8TxWhB2JEPWTTvw=;
+	b=NwN1zMCDQPMhIdRmds5ieaaKeu6RbUhgqeACNytQ38rPVu67/jcviMM+d19wGFUx+S
+	6eHNIRjAFX1/vARjgr9qaQjCsr8CMgR2vTdpCzb32rLLFdfjz3ZAIXIBRS/FY2X3SjAK
+	+BE1oER6tBkhntCzlM1vSpae5ThmMWcDqh7RM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=mime-version:date:message-id:subject:from:to:cc:content-type;
+	b=R+ENKOvpfdzk8eXU9XXl5nHpQFiMgekSBOVGzjIzuOZ0LejA1LMKc0+3Lsqw9I2bUU
+	bGJTh159zx5oQi8+EpTRs9r1GMYXYkRqawyFbPSigHvYTcLiZn6DHjIbZgQlkwgsyu6A
+	wZXsh5HgxfssVbSGWPL76oxyxiZd74CVmryjs=
 MIME-Version: 1.0
-To: Jan Vesely <jano.vesely@gmail.com>
-References: <BANLkTik3hmvH6_tUuEZjR8j0L04PdCk7mw@mail.gmail.com>	<4DC29287.5030106@redhat.com>	<BANLkTik=gr0K9-_fOTqPQORo37xs2D+9Yg@mail.gmail.com>	<4DC79DEC.50401@redhat.com>	<BANLkTimMGis4pBnZvbP=KwKtaOp8rDCfBQ@mail.gmail.com>	<4DC7D353.6020607@redhat.com>
-	<BANLkTi=PJMUjFCF--N9F60GhT-04jAeFcg@mail.gmail.com>
-In-Reply-To: <BANLkTi=PJMUjFCF--N9F60GhT-04jAeFcg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] Bug #757654: UHCI fails to signal
- stall response patch
+Received: by 10.147.149.11 with SMTP id b11mr3070056yao.11.1305546655199; Mon,
+	16 May 2011 04:50:55 -0700 (PDT)
+Received: by 10.147.98.17 with HTTP; Mon, 16 May 2011 04:50:55 -0700 (PDT)
+Date: Mon, 16 May 2011 19:50:55 +0800
+Message-ID: <BANLkTimVJAJL=2Jxe+qDMKPtS8CLagYhBA@mail.gmail.com>
+From: TeLeMan <geleman@gmail.com>
+To: Isaku Yamahata <yamahata@valinux.co.jp>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.213.173
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] piix_pci: fix piix3_set_irq_pic()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,18 +49,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 May 2011 09:28:22 -0000
+X-List-Received-Date: Mon, 16 May 2011 11:51:06 -0000
 
-On 05/11/11 13:33, Jan Vesely wrote:
-> glad I could help
->
-> the original bug report is here: https://bugs.launchpad.net/qemu/+bug/757654
-> should I update it? or will it be updated when the patch reaches master?
+If pic_irq is greater than 7, the irq level is always 0 on 32bits.
 
-Better wait until the stuff hits master, that is less confusing and you 
-can also add the git commit hash then.
+Signed-off-by: TeLeMan <geleman@gmail.com>
+---
+ hw/piix_pci.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-cheers,
-   Gerd
+diff --git a/hw/piix_pci.c b/hw/piix_pci.c
+index 7f1c4cc..85a320e 100644
+--- a/hw/piix_pci.c
++++ b/hw/piix_pci.c
+@@ -312,7 +312,7 @@ static void piix3_set_irq_pic(PIIX3State *piix3,
+int pic_irq)
+ {
+     qemu_set_irq(piix3->pic[pic_irq],
+                  !!(piix3->pic_levels &
+-                    (((1UL << PIIX_NUM_PIRQS) - 1) <<
++                    (((1ULL << PIIX_NUM_PIRQS) - 1) <<
+                      (pic_irq * PIIX_NUM_PIRQS))));
+ }
 
+-- 
+1.7.3.1.msysgit.0
+--
+SUN OF A BEACH
 
