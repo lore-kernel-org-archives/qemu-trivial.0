@@ -1,50 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QLwYD-0008Sk-TV
-	for mharc-qemu-trivial@gnu.org; Mon, 16 May 2011 08:05:29 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:34907)
+	id 1QN537-00056X-Qo
+	for mharc-qemu-trivial@gnu.org; Thu, 19 May 2011 11:22:05 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:48434)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QLwYC-0008Pn-5a
-	for qemu-trivial@nongnu.org; Mon, 16 May 2011 08:05:29 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1QN535-000506-B5
+	for qemu-trivial@nongnu.org; Thu, 19 May 2011 11:22:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QLwYB-0006Gt-7h
-	for qemu-trivial@nongnu.org; Mon, 16 May 2011 08:05:28 -0400
-Received: from mail-yi0-f45.google.com ([209.85.218.45]:43872)
+	(envelope-from <pm215@archaic.org.uk>) id 1QN534-0000HI-8k
+	for qemu-trivial@nongnu.org; Thu, 19 May 2011 11:22:03 -0400
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:50323)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QLwY8-0006Fd-IC; Mon, 16 May 2011 08:05:24 -0400
-Received: by yib19 with SMTP id 19so1661692yib.4
-	for <multiple recipients>; Mon, 16 May 2011 05:05:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type
-	:content-transfer-encoding;
-	bh=aUgrEUTlS3RrK5xIXmgIlhjLELtebJ4N47XDb3p6Yg0=;
-	b=kbtVRzYOOgtTiqd8xHrIpGpbtOU6sccJp1drOXKE+/5iIIYJiON+VQBmtUr4/4pV/b
-	tT79VFIOM/mPN74hPOV6KIgt2wRsJQr6irP5QQHuGEUmLcB79yDVew5nSgwClPnBf7lg
-	Ai4KpUbC1ISVydjXNo+hiHhGoVWv6KJmmC+L8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	b=tlgveZpamnUaODrEIymFkn/CPf6LwrR2dMCdw1HCPGj66O6RSTuBG6x1HdbXxe1hle
-	53Ow3wsWTRQC5qBz2m/EEnllLceJ6N1jHv6iBxo5+oYAQClAkuj0PXAQG/mZDZ1XQvOG
-	CPOfRqgfO4r/5VYN/2Vr0vJpvstGSoD2k2LJI=
-MIME-Version: 1.0
-Received: by 10.236.192.228 with SMTP id i64mr4207340yhn.111.1305547520976;
-	Mon, 16 May 2011 05:05:20 -0700 (PDT)
-Received: by 10.147.32.3 with HTTP; Mon, 16 May 2011 05:05:20 -0700 (PDT)
-In-Reply-To: <BANLkTimVJAJL=2Jxe+qDMKPtS8CLagYhBA@mail.gmail.com>
-References: <BANLkTimVJAJL=2Jxe+qDMKPtS8CLagYhBA@mail.gmail.com>
-Date: Mon, 16 May 2011 13:05:20 +0100
-Message-ID: <BANLkTi=Rv+UyqLgDyAQiM_kep0uJZvZE1w@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: TeLeMan <geleman@gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1QN532-0000GR-71; Thu, 19 May 2011 11:22:00 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1QN52z-00065O-Ny; Thu, 19 May 2011 16:21:57 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 19 May 2011 16:21:57 +0100
+Message-Id: <1305818517-23371-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.218.45
-Cc: qemu-trivial@nongnu.org, Isaku Yamahata <yamahata@valinux.co.jp>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] piix_pci: fix piix3_set_irq_pic()
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] hw/realview.c: Remove duplicate #include line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,23 +35,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 May 2011 12:05:29 -0000
+X-List-Received-Date: Thu, 19 May 2011 15:22:04 -0000
 
-On Mon, May 16, 2011 at 12:50 PM, TeLeMan <geleman@gmail.com> wrote:
-> If pic_irq is greater than 7, the irq level is always 0 on 32bits.
->
-> Signed-off-by: TeLeMan <geleman@gmail.com>
-> ---
-> =A0hw/piix_pci.c | =A0 =A02 +-
-> =A01 files changed, 1 insertions(+), 1 deletions(-)
+Remove a duplicate #include of sysbus.h.
 
-Thanks, applied to the trivial-patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/realview.c |    1 -
+ 1 files changed, 0 insertions(+), 1 deletions(-)
 
-Your patch is line-wrapped.  I have manually applied it, please make
-sure future submissions are not line-wrapped.  GMail's web interface
-always line wraps, you must use their SMTP server directly (e.g. with
-git-send-email(1)).
+diff --git a/hw/realview.c b/hw/realview.c
+index 96fb9da..82f3d82 100644
+--- a/hw/realview.c
++++ b/hw/realview.c
+@@ -17,7 +17,6 @@
+ #include "sysemu.h"
+ #include "boards.h"
+ #include "bitbang_i2c.h"
+-#include "sysbus.h"
+ #include "blockdev.h"
+ 
+ #define SMP_BOOT_ADDR 0xe0000000
+-- 
+1.7.1
 
-Stefan
 
