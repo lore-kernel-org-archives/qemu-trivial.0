@@ -1,29 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QN537-00056X-Qo
-	for mharc-qemu-trivial@gnu.org; Thu, 19 May 2011 11:22:05 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:48434)
+	id 1QNLkY-0000MP-2a
+	for mharc-qemu-trivial@gnu.org; Fri, 20 May 2011 05:12:02 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:37199)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1QN535-000506-B5
-	for qemu-trivial@nongnu.org; Thu, 19 May 2011 11:22:04 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1QNLkV-0000Ga-CH
+	for qemu-trivial@nongnu.org; Fri, 20 May 2011 05:12:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1QN534-0000HI-8k
-	for qemu-trivial@nongnu.org; Thu, 19 May 2011 11:22:03 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:50323)
+	(envelope-from <pm215@archaic.org.uk>) id 1QNLkU-0007Vl-Fc
+	for qemu-trivial@nongnu.org; Fri, 20 May 2011 05:11:59 -0400
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:55082)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1QN532-0000GR-71; Thu, 19 May 2011 11:22:00 -0400
+	id 1QNLkR-0007VR-TK; Fri, 20 May 2011 05:11:56 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1QN52z-00065O-Ny; Thu, 19 May 2011 16:21:57 +0100
+	id 1QNLkP-0006Vc-Gk; Fri, 20 May 2011 10:11:53 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Thu, 19 May 2011 16:21:57 +0100
-Message-Id: <1305818517-23371-1-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 20 May 2011 10:11:53 +0100
+Message-Id: <1305882713-24997-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.2.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 81.2.115.146
 Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] hw/realview.c: Remove duplicate #include line
+Subject: [Qemu-trivial] [PATCH] hw/sd.c: Don't complain about SDIO commands
+	CMD52/CMD53
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,27 +36,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 May 2011 15:22:04 -0000
+X-List-Received-Date: Fri, 20 May 2011 09:12:00 -0000
 
-Remove a duplicate #include of sysbus.h.
+The SDIO specification introduces new commands 52 and 53.
+Handle as illegal command but do not complain on stderr,
+as SDIO-aware OSes (including Linux) may legitimately use
+these in their probing for presence of an SDIO card.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/realview.c |    1 -
- 1 files changed, 0 insertions(+), 1 deletions(-)
+ hw/sd.c |   11 +++++++++++
+ 1 files changed, 11 insertions(+), 0 deletions(-)
 
-diff --git a/hw/realview.c b/hw/realview.c
-index 96fb9da..82f3d82 100644
---- a/hw/realview.c
-+++ b/hw/realview.c
-@@ -17,7 +17,6 @@
- #include "sysemu.h"
- #include "boards.h"
- #include "bitbang_i2c.h"
--#include "sysbus.h"
- #include "blockdev.h"
+diff --git a/hw/sd.c b/hw/sd.c
+index f44a970..cedfb20 100644
+--- a/hw/sd.c
++++ b/hw/sd.c
+@@ -1104,6 +1104,17 @@ static sd_rsp_type_t sd_normal_command(SDState *sd,
+         }
+         break;
  
- #define SMP_BOOT_ADDR 0xe0000000
++    case 52:
++    case 53:
++        /* CMD52, CMD53: reserved for SDIO cards
++         * (see the SDIO Simplified Specification V2.0)
++         * Handle as illegal command but do not complain
++         * on stderr, as some OSes may use these in their
++         * probing for presence of an SDIO card.
++         */
++        sd->card_status |= ILLEGAL_COMMAND;
++        return sd_r0;
++
+     /* Application specific commands (Class 8) */
+     case 55:	/* CMD55:  APP_CMD */
+         if (sd->rca != rca)
 -- 
 1.7.1
 
