@@ -1,41 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QO7N9-0001J9-IP
-	for mharc-qemu-trivial@gnu.org; Sun, 22 May 2011 08:03:03 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:33752)
+	id 1QODz5-0006Zy-RN
+	for mharc-qemu-trivial@gnu.org; Sun, 22 May 2011 15:06:39 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:48180)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QO7N2-0001IK-6K
-	for qemu-trivial@nongnu.org; Sun, 22 May 2011 08:03:02 -0400
+	(envelope-from <mst@redhat.com>) id 1QODz3-0006Zi-1r
+	for qemu-trivial@nongnu.org; Sun, 22 May 2011 15:06:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1QO7N1-0002zo-52
-	for qemu-trivial@nongnu.org; Sun, 22 May 2011 08:02:56 -0400
-Received: from moutng.kundenserver.de ([212.227.17.10]:55039)
+	(envelope-from <mst@redhat.com>) id 1QODz2-00063z-1z
+	for qemu-trivial@nongnu.org; Sun, 22 May 2011 15:06:36 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:31544)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1QO7N0-0002zE-Nc; Sun, 22 May 2011 08:02:55 -0400
-Received: from flocke.weilnetz.de (p5086EED0.dip.t-dialin.net [80.134.238.208])
-	by mrelayeu.kundenserver.de (node=mrbap3) with ESMTP (Nemesis)
-	id 0Lwqoy-1PZFrm3ysC-016N7l; Sun, 22 May 2011 14:02:43 +0200
-Received: from stefan by flocke.weilnetz.de with local (Exim 4.72)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1QO7Mo-0001Bp-4e; Sun, 22 May 2011 14:02:42 +0200
-From: Stefan Weil <weil@mail.berlios.de>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Date: Sun, 22 May 2011 14:02:40 +0200
-Message-Id: <1306065760-4541-2-git-send-email-weil@mail.berlios.de>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1306065760-4541-1-git-send-email-weil@mail.berlios.de>
-References: <1306065760-4541-1-git-send-email-weil@mail.berlios.de>
-X-Provags-ID: V02:K0:EF+wlUghMj1aM8AfJcml8yB3UN+q3WGPVOycLubtalO
-	6aDenCWnF1ih1xfZsbZOjFikUhoUN8K+QUGMwqkf07g3dZTGmk
-	OuVVWKqB313bGVlyS/WW7f4UVzvMdAgMaQUtcQVQcvHMtdCe3o
-	Axr379A6VwKzE/3V4hRskLCJJ/mqSQzZv5pgh1wg6Kuo1hfx6G
-	5eYAuGw7UiP0RwFVSAfZCHXnlell8db8WuUy33snLx/tU3l116 6r5dm5ec7cw4A
+	(envelope-from <mst@redhat.com>)
+	id 1QODz1-00063v-PD; Sun, 22 May 2011 15:06:36 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p4MJ6Wmp020099
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Sun, 22 May 2011 15:06:32 -0400
+Received: from redhat.com (vpn-201-166.tlv.redhat.com [10.35.201.166])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with SMTP
+	id p4MJ6TjL024049; Sun, 22 May 2011 15:06:30 -0400
+Date: Sun, 22 May 2011 22:06:42 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: TeLeMan <geleman@gmail.com>
+Message-ID: <20110522190642.GA15285@redhat.com>
+References: <BANLkTimVJAJL=2Jxe+qDMKPtS8CLagYhBA@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <BANLkTimVJAJL=2Jxe+qDMKPtS8CLagYhBA@mail.gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 212.227.17.10
-Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
-Subject: [Qemu-trivial] [PATCH 2/2] Fix spelling in comment (additon ->
-	addition)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Isaku Yamahata <yamahata@valinux.co.jp>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] piix_pci: fix piix3_set_irq_pic()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,27 +48,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 May 2011 12:03:02 -0000
+X-List-Received-Date: Sun, 22 May 2011 19:06:37 -0000
 
-Signed-off-by: Stefan Weil <weil@mail.berlios.de>
----
- tcg/tcg.h |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+On Mon, May 16, 2011 at 07:50:55PM +0800, TeLeMan wrote:
+> If pic_irq is greater than 7, the irq level is always 0 on 32bits.
+> 
+> Signed-off-by: TeLeMan <geleman@gmail.com>
 
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index cecef63..183a446 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -129,7 +129,7 @@ typedef tcg_target_ulong TCGArg;
-    We use plain int by default to avoid this runtime overhead.
-    Users of tcg_gen_* don't need to know about any of this, and should
-    treat TCGv as an opaque type.
--   In additon we do typechecking for different types of variables.  TCGv_i32
-+   In addition we do typechecking for different types of variables.  TCGv_i32
-    and TCGv_i64 are 32/64-bit variables respectively.  TCGv and TCGv_ptr
-    are aliases for target_ulong and host pointer sized values respectively.
-  */
--- 
-1.7.2.5
 
+Good catch
+
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+
+> ---
+>  hw/piix_pci.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+> 
+> diff --git a/hw/piix_pci.c b/hw/piix_pci.c
+> index 7f1c4cc..85a320e 100644
+> --- a/hw/piix_pci.c
+> +++ b/hw/piix_pci.c
+> @@ -312,7 +312,7 @@ static void piix3_set_irq_pic(PIIX3State *piix3,
+> int pic_irq)
+>  {
+>      qemu_set_irq(piix3->pic[pic_irq],
+>                   !!(piix3->pic_levels &
+> -                    (((1UL << PIIX_NUM_PIRQS) - 1) <<
+> +                    (((1ULL << PIIX_NUM_PIRQS) - 1) <<
+>                       (pic_irq * PIIX_NUM_PIRQS))));
+>  }
+> 
+> -- 
+> 1.7.3.1.msysgit.0
+> --
+> SUN OF A BEACH
 
