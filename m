@@ -1,38 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QOL0m-0007Tu-AL
-	for mharc-qemu-trivial@gnu.org; Sun, 22 May 2011 22:36:52 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:37244)
+	id 1QORD6-00043t-II
+	for mharc-qemu-trivial@gnu.org; Mon, 23 May 2011 05:14:00 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:46607)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yamahata@valinux.co.jp>) id 1QOL0k-0007Q0-70
-	for qemu-trivial@nongnu.org; Sun, 22 May 2011 22:36:51 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1QORD4-000420-Vb
+	for qemu-trivial@nongnu.org; Mon, 23 May 2011 05:13:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <yamahata@valinux.co.jp>) id 1QOL0j-0003wi-B7
-	for qemu-trivial@nongnu.org; Sun, 22 May 2011 22:36:50 -0400
-Received: from mail.valinux.co.jp ([210.128.90.3]:42907)
+	(envelope-from <pm215@archaic.org.uk>) id 1QORD4-0002k1-5l
+	for qemu-trivial@nongnu.org; Mon, 23 May 2011 05:13:58 -0400
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:58163)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yamahata@valinux.co.jp>)
-	id 1QOL0h-0003wH-11; Sun, 22 May 2011 22:36:47 -0400
-Received: from ps.local.valinux.co.jp (vagw.valinux.co.jp [210.128.90.14])
-	by mail.valinux.co.jp (Postfix) with SMTP id 65A15280C0;
-	Mon, 23 May 2011 11:36:43 +0900 (JST)
-Received: (nullmailer pid 13196 invoked by uid 1000);
-	Mon, 23 May 2011 02:36:43 -0000
-Date: Mon, 23 May 2011 11:36:43 +0900
-From: Isaku Yamahata <yamahata@valinux.co.jp>
-To: TeLeMan <geleman@gmail.com>
-Message-ID: <20110523023642.GA8517@valinux.co.jp>
-References: <BANLkTimVJAJL=2Jxe+qDMKPtS8CLagYhBA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <BANLkTimVJAJL=2Jxe+qDMKPtS8CLagYhBA@mail.gmail.com>
-User-Agent: Mutt/1.5.19 (2009-01-05)
-X-Virus-Scanned: clamav-milter 0.95.2 at va-mail.local.valinux.co.jp
-X-Virus-Status: Clean
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 210.128.90.3
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] piix_pci: fix piix3_set_irq_pic()
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1QORD2-0002j2-2B; Mon, 23 May 2011 05:13:56 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1QORCt-0007oE-9T; Mon, 23 May 2011 10:13:47 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Mon, 23 May 2011 10:13:47 +0100
+Message-Id: <1306142027-29995-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] configure: Document --disable-slirp option
+	in --help
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,39 +36,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 May 2011 02:36:51 -0000
+X-List-Received-Date: Mon, 23 May 2011 09:13:59 -0000
 
-Thank you.
-Acked-by: Isaku Yamahata <yamahata@valinux.co.jp>
+The --disable-slirp option was undocumented; add it to configure's
+--help output.
 
-On Mon, May 16, 2011 at 07:50:55PM +0800, TeLeMan wrote:
-> If pic_irq is greater than 7, the irq level is always 0 on 32bits.
-> 
-> Signed-off-by: TeLeMan <geleman@gmail.com>
-> ---
->  hw/piix_pci.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
-> 
-> diff --git a/hw/piix_pci.c b/hw/piix_pci.c
-> index 7f1c4cc..85a320e 100644
-> --- a/hw/piix_pci.c
-> +++ b/hw/piix_pci.c
-> @@ -312,7 +312,7 @@ static void piix3_set_irq_pic(PIIX3State *piix3,
-> int pic_irq)
->  {
->      qemu_set_irq(piix3->pic[pic_irq],
->                   !!(piix3->pic_levels &
-> -                    (((1UL << PIIX_NUM_PIRQS) - 1) <<
-> +                    (((1ULL << PIIX_NUM_PIRQS) - 1) <<
->                       (pic_irq * PIIX_NUM_PIRQS))));
->  }
-> 
-> -- 
-> 1.7.3.1.msysgit.0
-> --
-> SUN OF A BEACH
-> 
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ configure |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
 
+diff --git a/configure b/configure
+index d7dba5d..1f95ed7 100755
+--- a/configure
++++ b/configure
+@@ -964,6 +964,7 @@ echo "  --disable-check-utests   disable check unit-tests"
+ echo "  --enable-check-utests    enable check unit-tests"
+ echo "  --disable-bluez          disable bluez stack connectivity"
+ echo "  --enable-bluez           enable bluez stack connectivity"
++echo "  --disable-slirp          disable SLIRP userspace network connectivity"
+ echo "  --disable-kvm            disable KVM acceleration support"
+ echo "  --enable-kvm             enable KVM acceleration support"
+ echo "  --disable-nptl           disable usermode NPTL support"
 -- 
-yamahata
+1.7.1
+
 
