@@ -1,40 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QOcna-0000Tv-6T
-	for mharc-qemu-trivial@gnu.org; Mon, 23 May 2011 17:36:26 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:54770)
+	id 1QOpqd-0005ZH-OJ
+	for mharc-qemu-trivial@gnu.org; Tue, 24 May 2011 07:32:27 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:58006)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1QOcnX-0000Nx-GD
-	for qemu-trivial@nongnu.org; Mon, 23 May 2011 17:36:24 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QOpqa-0005Tr-N8
+	for qemu-trivial@nongnu.org; Tue, 24 May 2011 07:32:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1QOcnW-0002Qn-D0
-	for qemu-trivial@nongnu.org; Mon, 23 May 2011 17:36:23 -0400
-Received: from hall.aurel32.net ([88.191.126.93]:56517)
+	(envelope-from <stefanha@gmail.com>) id 1QOpqZ-0002U6-Ou
+	for qemu-trivial@nongnu.org; Tue, 24 May 2011 07:32:24 -0400
+Received: from mail-wy0-f173.google.com ([74.125.82.173]:58037)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1QOcnU-0002QU-7G; Mon, 23 May 2011 17:36:20 -0400
-Received: from [2001:470:d4ed:0:5e26:aff:fe2b:6f5b] (helo=volta.aurel32.net)
-	by hall.aurel32.net with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.72) (envelope-from <aurelien@aurel32.net>)
-	id 1QOcnT-0000M0-L3; Mon, 23 May 2011 23:36:19 +0200
-Received: from aurel32 by volta.aurel32.net with local (Exim 4.76)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1QOcnS-0002Bi-8J; Mon, 23 May 2011 23:36:18 +0200
-Date: Mon, 23 May 2011 23:36:18 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20110523213618.GA28505@volta.aurel32.net>
-References: <1306142027-29995-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <stefanha@gmail.com>)
+	id 1QOpqT-0002TQ-G3; Tue, 24 May 2011 07:32:17 -0400
+Received: by wyb42 with SMTP id 42so5579079wyb.4
+	for <multiple recipients>; Tue, 24 May 2011 04:32:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=WZ6phV4V7kAxbqU0onGkdtYAc9ix2dStahFaSesRuc0=;
+	b=j7RDvRJzQ3Nv3LNBiL5Qp0OdBDq6v1li17fyREDUbjZSxrQh+Q2se8wjLr2KGaaZk8
+	/b/GlWUbeSxHpvfgfNZnPMcOEv1PNUbiZsfgmSbqvSFXyRjPFYZQfiQJvuqWLI1lyP+a
+	wmblxbYiyvjKgobvSlRX5tnEaYq4WME8C/zDU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	b=cPUEAmg8c67cDqMN5PidppxjRDI0e59dl6enkepvP+2LwU9UEnif1awvsG4pMlVRLr
+	QV150qfL1qSOLGLskaxLSEcgcNrtb8CTWeS0V7i8Hh2Bt58TaPx3w1yQuT6gSAEC9D8X
+	k4sPfkdCBtoN+eJOsAPqrLN0hR4zIrOPky9UI=
+Received: by 10.216.221.67 with SMTP id q45mr3200433wep.97.1306236736447;
+	Tue, 24 May 2011 04:32:16 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain
+	(gbibp9ph1--blueice2n1.emea.ibm.com [195.212.29.75])
+	by mx.google.com with ESMTPS id bi13sm4706853wbb.25.2011.05.24.04.32.14
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 24 May 2011 04:32:15 -0700 (PDT)
+Date: Tue, 24 May 2011 12:32:09 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <weil@mail.berlios.de>
+Message-ID: <20110524113209.GA22385@stefanha-thinkpad.localdomain>
+References: <1306065760-4541-1-git-send-email-weil@mail.berlios.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1306142027-29995-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: Mutt 1.5.21 (2010-09-15)
+In-Reply-To: <1306065760-4541-1-git-send-email-weil@mail.berlios.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 88.191.126.93
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Document
- --disable-slirp option in --help
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.173
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH 1/2] pflash_cfi02: Fix a typo in debug
+ code (TARGET_FMT_pld -> TARGET_FMT_plx)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,38 +60,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 May 2011 21:36:24 -0000
+X-List-Received-Date: Tue, 24 May 2011 11:32:25 -0000
 
-On Mon, May 23, 2011 at 10:13:47AM +0100, Peter Maydell wrote:
-> The --disable-slirp option was undocumented; add it to configure's
-> --help output.
+On Sun, May 22, 2011 at 02:02:39PM +0200, Stefan Weil wrote:
+> Thanks to Tobias Hoffmann <th55@gmx.de> for this patch.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 > ---
->  configure |    1 +
->  1 files changed, 1 insertions(+), 0 deletions(-)
+>  hw/pflash_cfi02.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
-Thanks, applied.
+Thanks, applied to the trivial-patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-> diff --git a/configure b/configure
-> index d7dba5d..1f95ed7 100755
-> --- a/configure
-> +++ b/configure
-> @@ -964,6 +964,7 @@ echo "  --disable-check-utests   disable check unit-tests"
->  echo "  --enable-check-utests    enable check unit-tests"
->  echo "  --disable-bluez          disable bluez stack connectivity"
->  echo "  --enable-bluez           enable bluez stack connectivity"
-> +echo "  --disable-slirp          disable SLIRP userspace network connectivity"
->  echo "  --disable-kvm            disable KVM acceleration support"
->  echo "  --enable-kvm             enable KVM acceleration support"
->  echo "  --disable-nptl           disable usermode NPTL support"
-> -- 
-> 1.7.1
-> 
-> 
-> 
-
--- 
-Aurelien Jarno                          GPG: 1024D/F1BCDB73
-aurelien@aurel32.net                 http://www.aurel32.net
+Stefan
 
