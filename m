@@ -1,50 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QQ0mr-0001MM-Ji
-	for mharc-qemu-trivial@gnu.org; Fri, 27 May 2011 13:25:25 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:33274)
+	id 1QQ138-0000oQ-IE
+	for mharc-qemu-trivial@gnu.org; Fri, 27 May 2011 13:42:14 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:49937)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>) id 1QQ0mp-0001GS-8O
-	for qemu-trivial@nongnu.org; Fri, 27 May 2011 13:25:23 -0400
+	(envelope-from <weil@mail.berlios.de>) id 1QQ136-0000nR-71
+	for qemu-trivial@nongnu.org; Fri, 27 May 2011 13:42:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>) id 1QQ0mo-0003j0-Ei
-	for qemu-trivial@nongnu.org; Fri, 27 May 2011 13:25:23 -0400
-Received: from mail-qy0-f173.google.com ([209.85.216.173]:40388)
+	(envelope-from <weil@mail.berlios.de>) id 1QQ135-0007Th-7h
+	for qemu-trivial@nongnu.org; Fri, 27 May 2011 13:42:12 -0400
+Received: from moutng.kundenserver.de ([212.227.126.187]:53668)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>)
-	id 1QQ0mm-0003hY-MT; Fri, 27 May 2011 13:25:20 -0400
-Received: by mail-qy0-f173.google.com with SMTP id 36so3938014qyk.4
-	for <multiple recipients>; Fri, 27 May 2011 10:25:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:from:to:cc:subject:date:message-id:x-mailer
-	:in-reply-to:references;
-	bh=qd/e5F9GHYmOPhvUldrNaVt8aX3SUUDs2MPBYm1/Cdw=;
-	b=Gnh55gNJQwpyRNnYtxZuY3pDIxufLYIe4YR6XCme+qTP3uEWmG+twig216J2Vrr4wr
-	kxK0+yqzvSgiV8MiQ9SeUJ6XduVNb88Hrj3HHUbzKSDONUXRW/iNI4fZU3GYCHAa4iwV
-	lELHJbbRbDPCg6PjXqmEHifugVjxBvbdheGu8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=from:to:cc:subject:date:message-id:x-mailer:in-reply-to:references;
-	b=RLwa/VWnjWwcrIy6v8aQHWXKCejQZhIw+EzQ3/hL3vQazaVeQft1eOAdo0YhEusLtz
-	4ydxK9Zlsb52a2/ipJIhabqH5MZJCvaZ/2zt4RKlsZj8qrS5bCe9blHAPJgRB9z5hRae
-	JG7O2he9vIYjN70JHfsOG3JaQ9wFYQoM0D88s=
-Received: by 10.224.80.193 with SMTP id u1mr1790886qak.261.1306517120535;
-	Fri, 27 May 2011 10:25:20 -0700 (PDT)
-Received: from localhost.localdomain (modemcable055.201-23-96.mc.videotron.ca
-	[96.23.201.55])
-	by mx.google.com with ESMTPS id e28sm1198569qck.30.2011.05.27.10.25.19
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 27 May 2011 10:25:19 -0700 (PDT)
-From: Alexandre Raymond <cerbere@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 27 May 2011 13:22:31 -0400
-Message-Id: <1306516951-31105-7-git-send-email-cerbere@gmail.com>
-X-Mailer: git-send-email 1.7.5
-In-Reply-To: <1306516951-31105-1-git-send-email-cerbere@gmail.com>
+	(envelope-from <weil@mail.berlios.de>)
+	id 1QQ134-0007T1-QX; Fri, 27 May 2011 13:42:11 -0400
+Received: from flocke.weilnetz.de (p5086FC6B.dip.t-dialin.net [80.134.252.107])
+	by mrelayeu.kundenserver.de (node=mrbap4) with ESMTP (Nemesis)
+	id 0MbxnK-1Q6hTd0jpu-00JHCL; Fri, 27 May 2011 19:42:07 +0200
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <weil@mail.berlios.de>)
+	id 1QQ130-0001T4-Bj; Fri, 27 May 2011 19:42:06 +0200
+Message-ID: <4DDFE26E.8090803@mail.berlios.de>
+Date: Fri, 27 May 2011 19:42:06 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20110307 Iceowl/1.0b1 Icedove/3.0.11
+MIME-Version: 1.0
+To: Alexandre Raymond <cerbere@gmail.com>
 References: <1306516951-31105-1-git-send-email-cerbere@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.173
-Cc: qemu-trivial@nongnu.org, Alexandre Raymond <cerbere@gmail.com>
-Subject: [Qemu-trivial] [PATCH 6/6] Avoid compilation warning regarding kvm
-	under darwin
+	<1306516951-31105-4-git-send-email-cerbere@gmail.com>
+In-Reply-To: <1306516951-31105-4-git-send-email-cerbere@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V02:K0:gpn4xkovd3Ja2yjnZg3hMYn3pq+yXHP/h4jEU/mAi8K
+	fdb5w0hMMEEtBg6gRX/b/MnRhV0kWzmiq7/6vw8mn/ejVmnlDl
+	5XFRxTigDjw/rWlzq9bwbhF33W1KmBUebqf55tvQi30H5R6/HC
+	7fw6ItkerV1WWxw4P/iGHb8B/lzJh7LUtRp7mxo05fZ4swOa84
+	xzDcd0NLt/3Df9zMLLMpNLkDCYzL42gFEdAhL2y0G2Y7rScKxJ 6gc0SUcOpBjLl
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 212.227.126.187
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/6] Fix compilation warning
+ due to incorrectly specified type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,33 +53,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 May 2011 17:25:24 -0000
+X-List-Received-Date: Fri, 27 May 2011 17:42:12 -0000
 
-----8<----
-qemu/target-s390x/helper.c:32:23: warning: linux/kvm.h: No such file or director
-----8<----
+Am 27.05.2011 19:22, schrieb Alexandre Raymond:
+> In audio/coreaudio.c, a variable named "str" was assigned "const char" values,
+> which resulted in the following warnings:
+>
+> -----8<-----
+> audio/coreaudio.c: In function ‘coreaudio_logstatus’:
+> audio/coreaudio.c:59: warning: initialization discards qualifiers from pointer target type
+> audio/coreaudio.c:63: warning: assignment discards qualifiers from pointer target type
+> (...)
+> -----8<-----
+>
+> Signed-off-by: Alexandre Raymond<cerbere@gmail.com>
+> ---
+>   audio/coreaudio.c |    2 +-
+>   1 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/audio/coreaudio.c b/audio/coreaudio.c
+> index 0a26413..3bd75cd 100644
+> --- a/audio/coreaudio.c
+> +++ b/audio/coreaudio.c
+> @@ -56,7 +56,7 @@ typedef struct coreaudioVoiceOut {
+>
+>   static void coreaudio_logstatus (OSStatus status)
+>   {
+> -    char *str = "BUG";
+> +    const char *str = "BUG";
+>
+>       switch(status) {
+>       case kAudioHardwareNoError:
+>    
 
-kvm.h, which is included right after this line, already includes linux/kvm.h
-with the proper CONFIG_KVM guard. Remove redundant include.
-
-Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
----
- target-s390x/helper.c |    1 -
- 1 files changed, 0 insertions(+), 1 deletions(-)
-
-diff --git a/target-s390x/helper.c b/target-s390x/helper.c
-index c79af46..5dc42f1 100644
---- a/target-s390x/helper.c
-+++ b/target-s390x/helper.c
-@@ -29,7 +29,6 @@
- #include "qemu-timer.h"
- 
- #if !defined(CONFIG_USER_ONLY)
--#include <linux/kvm.h>
- #include "kvm.h"
- #endif
- 
--- 
-1.7.5
+Acked-by: Stefan Weil <weil@mail.berlios.de>
 
 
