@@ -1,60 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QPKKQ-00075G-VZ
-	for mharc-qemu-trivial@gnu.org; Wed, 25 May 2011 16:05:14 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46394)
+	id 1QQ0mT-0000I8-G4
+	for mharc-qemu-trivial@gnu.org; Fri, 27 May 2011 13:25:01 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:33086)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1QPKKO-000755-N8
-	for qemu-trivial@nongnu.org; Wed, 25 May 2011 16:05:13 -0400
+	(envelope-from <cerbere@gmail.com>) id 1QQ0mR-0000EH-Aa
+	for qemu-trivial@nongnu.org; Fri, 27 May 2011 13:25:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1QPKKN-0003qS-V5
-	for qemu-trivial@nongnu.org; Wed, 25 May 2011 16:05:12 -0400
-Received: from mail-wy0-f173.google.com ([74.125.82.173]:64756)
+	(envelope-from <cerbere@gmail.com>) id 1QQ0mQ-0003ac-I8
+	for qemu-trivial@nongnu.org; Fri, 27 May 2011 13:24:59 -0400
+Received: from mail-qw0-f45.google.com ([209.85.216.45]:45883)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1QPKKN-0003qO-P3; Wed, 25 May 2011 16:05:11 -0400
-Received: by wyb42 with SMTP id 42so10361wyb.4
-	for <multiple recipients>; Wed, 25 May 2011 13:05:10 -0700 (PDT)
+	(envelope-from <cerbere@gmail.com>)
+	id 1QQ0mO-0003aF-JE; Fri, 27 May 2011 13:24:56 -0400
+Received: by qwj8 with SMTP id 8so1166413qwj.4
+	for <multiple recipients>; Fri, 27 May 2011 10:24:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:sender:message-id:date:from:user-agent
-	:mime-version:to:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=YSwhZljIdPeeaY9SOWShdTvGE7T3gm1WMkHOBx0Dozo=;
-	b=k+fnAE13EZYWAew2/pDgWJXsu4NcYNMfvAez+3UTah1ChPRfedkYzhzZ59BUe7K8+L
-	eExwqZnfwoc50LR2jrcjLyIMQeMP1TO1QgWzRmMsAMA7NruabzvAUVGCRc7YuwB4P4gu
-	OtfFHudcBMwySjactyZ5tlM4E3SD2cNuZbFoI=
+	h=domainkey-signature:from:to:cc:subject:date:message-id:x-mailer
+	:mime-version:content-type:content-transfer-encoding;
+	bh=if+srPb2A2aV4QHEGlMTaHlYSrlkliifi1fRH4MTLAU=;
+	b=EMszf2/RgYdKHB+xXLtZTngOk5YU0VEoVhB7784wyTxiJQOJJI9xO+eQ1xIUYyhxoe
+	M8n0OrTTnrJUyw44O7DTplWabWvE7M35UtctKBTFPevpTtCzZIouDX+mYlLZASObfCMP
+	EKY0XKQOoNSY9uuFV9wKlHUZ7PivxF5anw/kI=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	b=vWT3hxJeBm8BvFWXwZbml39UULzx/+i5V4C5ETffZn16+Rd/TM4vtMCHYzouRKbo5C
-	4AOKmKKN//wOaWN9yzNYVZV3V9dX/y4M3R7kH3MasRse+rdAMiNqtpio0maCsOvtx8IT
-	Jn+jAbCkcZBuxEHQs1yrdKk3sW4geLChB7YDE=
-Received: by 10.216.91.17 with SMTP id g17mr5175093wef.1.1306353910687;
-	Wed, 25 May 2011 13:05:10 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (93-34-184-88.ip51.fastwebnet.it
-	[93.34.184.88])
-	by mx.google.com with ESMTPS id f53sm497597wes.26.2011.05.25.13.05.09
+	h=from:to:cc:subject:date:message-id:x-mailer:mime-version
+	:content-type:content-transfer-encoding;
+	b=EuPvYNoKVQOacjiBkXvD6XRGG8TgebvPQkdyCIhEoWrwCrcNfiFJnYsMKg2A0r6bQY
+	9y5XJ1I8CF5VFxGX/5bKRsrZX2Ly0RgGc9SsoCpatck6gTCQVgVl3OhK7dyAipDUaPgA
+	MeZbhLLtD8JMdLSYt6xsCcT1ey6n4bFzNMcDA=
+Received: by 10.229.77.166 with SMTP id g38mr1810820qck.60.1306517095697;
+	Fri, 27 May 2011 10:24:55 -0700 (PDT)
+Received: from localhost.localdomain (modemcable055.201-23-96.mc.videotron.ca
+	[96.23.201.55])
+	by mx.google.com with ESMTPS id e28sm1198569qck.30.2011.05.27.10.24.53
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 25 May 2011 13:05:10 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <4DDD60F4.3050207@redhat.com>
-Date: Wed, 25 May 2011 22:05:08 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.17) Gecko/20110428 Fedora/3.1.10-1.fc14
-	Lightning/1.0b3pre Mnenhy/0.8.3 Thunderbird/3.1.10
+	Fri, 27 May 2011 10:24:54 -0700 (PDT)
+From: Alexandre Raymond <cerbere@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 27 May 2011 13:22:25 -0400
+Message-Id: <1306516951-31105-1-git-send-email-cerbere@gmail.com>
+X-Mailer: git-send-email 1.7.5
 MIME-Version: 1.0
-To: Stefan Weil <weil@mail.berlios.de>
-References: <1306344617-1645-1-git-send-email-peter.maydell@linaro.org>
-	<4DDD4132.1080708@mail.berlios.de>
-In-Reply-To: <4DDD4132.1080708@mail.berlios.de>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	patches@linaro.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] configure: Don't create symlinks to
-	nonexistent targets
+X-Received-From: 209.85.216.45
+Cc: qemu-trivial@nongnu.org, Alexandre Raymond <cerbere@gmail.com>
+Subject: [Qemu-trivial] [PATCH 0/6] Fix compilation issues under darwin
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,15 +57,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 May 2011 20:05:13 -0000
+X-List-Received-Date: Fri, 27 May 2011 17:25:00 -0000
 
-On 05/25/2011 07:49 PM, Stefan Weil wrote:
->
-> + if [ -e "$source_path/$f" -a ! -e "$f" ]; then
-> + symlink "$source_path/$f" "$f"
-> + fi
+Hello everyone,
 
-Please use && instead of -a, and "! [" instead of "[ !".
+The following series contains trivial patches to fix several minor issues
+encountered while compiling qemu under OSX 10.6.7.
 
-Paolo
+I used [./configure --disable-bsd-user --disable-darwin-user --enable-io-thread]
+to configure the build.
+
+Cheers,
+Alexandre
+
+Alexandre Raymond (6):
+  Fix incorrect check for fdatasync() in configure
+  Cocoa: avoid displaying window when command-line contains '-h'
+  Fix compilation warning due to incorrectly specified type
+  Fix missing prototype under cocoa for qemu_main
+  Remove warning in printf due to type mismatch
+  Avoid compilation warning regarding kvm under darwin
+
+ audio/coreaudio.c       |    2 +-
+ configure               |    8 +++++++-
+ target-lm32/translate.c |    2 +-
+ target-s390x/helper.c   |    1 -
+ ui/cocoa.m              |    3 ++-
+ vl.c                    |    1 +
+ 6 files changed, 12 insertions(+), 5 deletions(-)
+
+-- 
+1.7.5
+
 
