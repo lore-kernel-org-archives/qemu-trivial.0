@@ -1,52 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QQV8n-0004Gn-Qd
-	for mharc-qemu-trivial@gnu.org; Sat, 28 May 2011 21:50:05 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46340)
+	id 1QQhJp-0004dT-7E
+	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2011 10:50:17 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:44201)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balrogg@gmail.com>) id 1QQV8l-0004A5-B9
-	for qemu-trivial@nongnu.org; Sat, 28 May 2011 21:50:04 -0400
+	(envelope-from <andreas.faerber@web.de>) id 1QQhJm-0004Yl-O6
+	for qemu-trivial@nongnu.org; Sun, 29 May 2011 10:50:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balrogg@gmail.com>) id 1QQV8k-0000dM-EX
-	for qemu-trivial@nongnu.org; Sat, 28 May 2011 21:50:03 -0400
-Received: from mail-pz0-f45.google.com ([209.85.210.45]:35727)
+	(envelope-from <andreas.faerber@web.de>) id 1QQhJl-0001vO-Ue
+	for qemu-trivial@nongnu.org; Sun, 29 May 2011 10:50:14 -0400
+Received: from fmmailgate01.web.de ([217.72.192.221]:39209)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balrogg@gmail.com>)
-	id 1QQV8h-0000ct-QF; Sat, 28 May 2011 21:49:59 -0400
-Received: by pzk30 with SMTP id 30so1311644pzk.4
-	for <multiple recipients>; Sat, 28 May 2011 18:49:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type
-	:content-transfer-encoding;
-	bh=b42dslFDEtHQyOWDPuI1qxhJQaryYopILr+8y+0+B/8=;
-	b=IQz6a9DEyY/K7owxJsUQoJFrb25OXENmzLJRBs+H3loI3qe9zCBBCEdFoipgFVF9fl
-	Q/vMp7OV0qTRPf2iaWDr7686CM5DD6QLyEk//kZWvhSt3jaiSXncqtvqluHUhH9Hnaa6
-	NWQLyqTT1R9waGDO+ASitfo6gZaU8L3BAYQUQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	b=HmD3dtgHwI0z7H8LZtrnZxfb4ftZ3Uo6aIXjeFD2Z9U+O1FKSc5Lz7M12IhbfF1zWs
-	CttRdlJmcE1CkdcHiydcoB33lVB1ezNo1LPV+BVadVK94zIWVi9/0FfXDgsM8CGV/322
-	X2l1yVPxV12AjjY+8p3APMz4aJwTjVCW5Gj5M=
-MIME-Version: 1.0
-Received: by 10.68.17.227 with SMTP id r3mr1412173pbd.396.1306633797484; Sat,
-	28 May 2011 18:49:57 -0700 (PDT)
-Received: by 10.68.43.73 with HTTP; Sat, 28 May 2011 18:49:57 -0700 (PDT)
-In-Reply-To: <BANLkTinbdHYTdPgmZHwUBOb4xEmA=mjHnQ@mail.gmail.com>
-References: <yf9sjryq3gn.fsf@chiyo.mc.pp.se>
-	<BANLkTinbdHYTdPgmZHwUBOb4xEmA=mjHnQ@mail.gmail.com>
-Date: Sun, 29 May 2011 03:49:57 +0200
-Message-ID: <BANLkTikEz_JrJ38iONRf0f_bqGXHVaSLDw@mail.gmail.com>
-From: andrzej zaborowski <balrogg@gmail.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.210.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Marcus Comstedt <marcus@mc.pp.se>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] bitbang_i2c: Fix spurious
- slave read after NACK
+	(envelope-from <andreas.faerber@web.de>)
+	id 1QQhJj-0001uo-Jq; Sun, 29 May 2011 10:50:11 -0400
+Received: from smtp06.web.de  ( [172.20.5.172])
+	by fmmailgate01.web.de (Postfix) with ESMTP id E2DB518F88045;
+	Sun, 29 May 2011 16:50:08 +0200 (CEST)
+Received: from [87.173.127.118] (helo=[10.0.1.1])
+	by smtp06.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
+	id 1QQhJg-0001wT-00; Sun, 29 May 2011 16:50:08 +0200
+Message-Id: <E3869720-39F6-4B6C-AD9A-E566DEE2005E@web.de>
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
+To: Alexandre Raymond <cerbere@gmail.com>
+In-Reply-To: <1306516951-31105-2-git-send-email-cerbere@gmail.com>
+Content-Type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
+Content-Transfer-Encoding: 7bit
+Mime-Version: 1.0 (Apple Message framework v936)
+Date: Sun, 29 May 2011 16:50:07 +0200
+References: <1306516951-31105-1-git-send-email-cerbere@gmail.com>
+	<1306516951-31105-2-git-send-email-cerbere@gmail.com>
+X-Mailer: Apple Mail (2.936)
+Sender: andreas.faerber@web.de
+X-Sender: Andreas.Faerber@web.de
+X-Provags-ID: V01U2FsdGVkX1/VcT40Q6KmhyNiALmNaClwYoOOeULO7vBtnk6F
+	ykAzFnXNa3ERYicgSZInv9hpcQhbmRabhX4MD5MtLP/9kv0Ep1
+	cYHYVcaXZ5+nWAYctNlw==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 217.72.192.221
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/6] Fix incorrect check for
+	fdatasync() in configure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,18 +50,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 May 2011 01:50:04 -0000
+X-List-Received-Date: Sun, 29 May 2011 14:50:15 -0000
 
-Hi,
+Am 27.05.2011 um 19:22 schrieb Alexandre Raymond:
 
-On 28 May 2011 21:52, Stefan Hajnoczi <stefanha@gmail.com> wrote:
-> On Sat, May 28, 2011 at 3:55 PM, Marcus Comstedt <marcus@mc.pp.se> wrote:
->> After NACKing a read operation, a raising SCL should not trigger a new
->> read from the slave. =C2=A0Introduce a new state which just waits for a =
-stop
->> or start condition after NACK.
+> For some reason, darwin provides a symbol for fdatasync(), but
+> doesn't officially support it.
+>
+> The manpage for fdatasync on Linux states the following:
+>
+> "On POSIX  systems  on  which fdatasync() is available,
+> _POSIX_SYNCHRONIZED_IO is defined in <unistd.h> to a value greater  
+> than 0."
 
-Makes sense, I pushed this change to master.
+The Open Group Base Specification Issue 7 says this on fdatasync():
 
-Cheers
+"The functionality shall be equivalent to fsync() with the symbol  
+_POSIX_SYNCHRONIZED_IO defined, with the exception that all I/O  
+operations shall be completed as defined for synchronized I/O data  
+integrity completion."
+
+On unistd.h it goes on to say:
+
+"_POSIX_SYNCHRONIZED_IO
+[SIO]
+The implementation supports the Synchronized Input and Output option.  
+If this symbol is defined in <unistd.h>, it shall be defined to be -1,  
+0, or 200809L."
+
+The change history has nothing on that define and its value -1, so I'm  
+not convinced that this really is The Right Way to check.
+
+> In fact, unistd.h defines this value to "-1", at least on OSX 10.6.7.
+>
+> Add this check to the configure file.
+>
+> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
+
+Andreas
+
+> ---
+> configure |    8 +++++++-
+> 1 files changed, 7 insertions(+), 1 deletions(-)
+>
+> diff --git a/configure b/configure
+> index a318d37..b21ef75 100755
+> --- a/configure
+> +++ b/configure
+> @@ -2477,7 +2477,13 @@ fi
+> fdatasync=no
+> cat > $TMPC << EOF
+> #include <unistd.h>
+> -int main(void) { return fdatasync(0); }
+> +int main(void) {
+> +#if defined(_POSIX_SYNCHRONIZED_IO) && _POSIX_SYNCHRONIZED_IO > 0
+> +return fdatasync(0);
+> +#else
+> +#abort Not supported
+> +#endif
+> +}
+> EOF
+> if compile_prog "" "" ; then
+>     fdatasync=yes
+> -- 
+> 1.7.5
+
 
