@@ -1,45 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QQhWA-0005sM-HO
-	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2011 11:03:02 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:44382)
+	id 1QQhed-0006qN-0M
+	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2011 11:11:47 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:49770)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1QQhW7-0005mZ-Mx
-	for qemu-trivial@nongnu.org; Sun, 29 May 2011 11:03:00 -0400
+	(envelope-from <andreas.faerber@web.de>) id 1QQheb-0006l8-6E
+	for qemu-trivial@nongnu.org; Sun, 29 May 2011 11:11:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1QQhW6-0003ED-UT
-	for qemu-trivial@nongnu.org; Sun, 29 May 2011 11:02:59 -0400
-Received: from fmmailgate02.web.de ([217.72.192.227]:47961)
+	(envelope-from <andreas.faerber@web.de>) id 1QQhea-0004bz-DC
+	for qemu-trivial@nongnu.org; Sun, 29 May 2011 11:11:45 -0400
+Received: from fmmailgate03.web.de ([217.72.192.234]:58396)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <andreas.faerber@web.de>)
-	id 1QQhW4-0003Df-K4; Sun, 29 May 2011 11:02:56 -0400
-Received: from smtp05.web.de  ( [172.20.4.166])
-	by fmmailgate02.web.de (Postfix) with ESMTP id 41FAF1A06DC89;
-	Sun, 29 May 2011 17:02:55 +0200 (CEST)
+	id 1QQheY-0004bb-Fz; Sun, 29 May 2011 11:11:42 -0400
+Received: from smtp02.web.de  ( [172.20.0.184])
+	by fmmailgate03.web.de (Postfix) with ESMTP id 46B1F18F92C27;
+	Sun, 29 May 2011 17:11:41 +0200 (CEST)
 Received: from [87.173.127.118] (helo=[10.0.1.1])
-	by smtp05.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
-	id 1QQhW2-0007TA-00; Sun, 29 May 2011 17:02:55 +0200
-Message-Id: <FCD2CC28-7DEC-4435-B7B0-D1349BD9BA4C@web.de>
+	by smtp02.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
+	id 1QQheX-0005LV-00; Sun, 29 May 2011 17:11:41 +0200
+Message-Id: <FB7E4CC1-F865-4AF5-9264-11A817D3F456@web.de>
 From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
-To: Alexandre Raymond <cerbere@gmail.com>, Stefan Weil <weil@mail.berlios.de>
-In-Reply-To: <4DDFE26E.8090803@mail.berlios.de>
+To: Alexandre Raymond <cerbere@gmail.com>
+In-Reply-To: <1306516951-31105-5-git-send-email-cerbere@gmail.com>
 Content-Type: text/plain; charset=WINDOWS-1252; format=flowed; delsp=yes
 Content-Transfer-Encoding: quoted-printable
 Mime-Version: 1.0 (Apple Message framework v936)
-Date: Sun, 29 May 2011 17:02:53 +0200
+Date: Sun, 29 May 2011 17:11:39 +0200
 References: <1306516951-31105-1-git-send-email-cerbere@gmail.com>
-	<1306516951-31105-4-git-send-email-cerbere@gmail.com>
-	<4DDFE26E.8090803@mail.berlios.de>
+	<1306516951-31105-5-git-send-email-cerbere@gmail.com>
 X-Mailer: Apple Mail (2.936)
 Sender: andreas.faerber@web.de
 X-Sender: Andreas.Faerber@web.de
-X-Provags-ID: V01U2FsdGVkX1+zVpjQCge1AHKNQFR1bic2XkvmsYDNch/UuU2x
-	tSbOEG/BAil7XDSIHb4tDGUXqJTvMwuiZ4VR4zmqyyzGJgb8Ms
-	0CShxP4EGsGJOtfbD/0g==
+X-Provags-ID: V01U2FsdGVkX19bJrGGrARnYzDQmn+s4Z2tkHJ/HIALe89rPbWL
+	2mRwU58ypz7T+yVqhK2atTWXgkzFJHTs4gdBwRE9w4iFajJIwn
+	lglb7nLYHjR99Ep8nYfw==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.227
-Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/6] Fix compilation warning
-	due to incorrectly specified type
+X-Received-From: 217.72.192.234
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/6] Fix missing prototype
+	under cocoa for qemu_main
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,48 +50,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 May 2011 15:03:00 -0000
+X-List-Received-Date: Sun, 29 May 2011 15:11:46 -0000
 
-Am 27.05.2011 um 19:42 schrieb Stefan Weil:
+Am 27.05.2011 um 19:22 schrieb Alexandre Raymond:
 
-> Am 27.05.2011 19:22, schrieb Alexandre Raymond:
->> In audio/coreaudio.c, a variable named "str" was assigned "const =20
->> char" values,
->> which resulted in the following warnings:
->>
->> -----8<-----
->> audio/coreaudio.c: In function =91coreaudio_logstatus=92:
->> audio/coreaudio.c:59: warning: initialization discards qualifiers =20
->> from pointer target type
->> audio/coreaudio.c:63: warning: assignment discards qualifiers from =20=
-
->> pointer target type
->> (...)
->> -----8<-----
->>
->> Signed-off-by: Alexandre Raymond<cerbere@gmail.com>
->> ---
->>  audio/coreaudio.c |    2 +-
->>  1 files changed, 1 insertions(+), 1 deletions(-)
->>
->> diff --git a/audio/coreaudio.c b/audio/coreaudio.c
->> index 0a26413..3bd75cd 100644
->> --- a/audio/coreaudio.c
->> +++ b/audio/coreaudio.c
->> @@ -56,7 +56,7 @@ typedef struct coreaudioVoiceOut {
->>
->>  static void coreaudio_logstatus (OSStatus status)
->>  {
->> -    char *str =3D "BUG";
->> +    const char *str =3D "BUG";
->>
->>      switch(status) {
->>      case kAudioHardwareNoError:
->>
+> The following error message was encountered when compiling
+> with cocoa support because qemu_main did not have a prototype.
 >
-> Acked-by: Stefan Weil <weil@mail.berlios.de>
+> -----8<-----
+> qemu/vl.c:2037: warning: no previous prototype for =91qemu_main=92
+> -----8<-----
+>
+> Add its prototype in the COCOA ifdef, similar to what is done for SDL.
+>
+> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
+> ---
+> vl.c |    1 +
+> 1 files changed, 1 insertions(+), 0 deletions(-)
+>
+> diff --git a/vl.c b/vl.c
+> index b362871..b983646 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -107,6 +107,7 @@ int main(int argc, char **argv)
+> #endif /* CONFIG_SDL */
+>
+> #ifdef CONFIG_COCOA
+> +int qemu_main(int argc, char **argv, char **envp);
+> #undef main
+> #define main qemu_main
+> #endif /* CONFIG_COCOA */
 
-Thanks, applied to the cocoa branch.
+We've seen at least two different ways of fixing this.
+
+I believe my last one was forgotten, waiting for someone to test with =20=
+
+SDL. The idea was to have the prototype in a header shared between =20
+vl.c and cocoa.m, so that we don't have to duplicate the prototype. =20
+I'll see if I can dig it out or will post a new patch.
 
 Andreas=
 
