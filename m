@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QQPYp-0007M7-NC
-	for mharc-qemu-trivial@gnu.org; Sat, 28 May 2011 15:52:35 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:41944)
+	id 1QQV8n-0004Gn-Qd
+	for mharc-qemu-trivial@gnu.org; Sat, 28 May 2011 21:50:05 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:46340)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QQPYn-0007Fb-6G
-	for qemu-trivial@nongnu.org; Sat, 28 May 2011 15:52:33 -0400
+	(envelope-from <balrogg@gmail.com>) id 1QQV8l-0004A5-B9
+	for qemu-trivial@nongnu.org; Sat, 28 May 2011 21:50:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QQPYm-0004x6-D8
-	for qemu-trivial@nongnu.org; Sat, 28 May 2011 15:52:33 -0400
-Received: from mail-yx0-f173.google.com ([209.85.213.173]:44200)
+	(envelope-from <balrogg@gmail.com>) id 1QQV8k-0000dM-EX
+	for qemu-trivial@nongnu.org; Sat, 28 May 2011 21:50:03 -0400
+Received: from mail-pz0-f45.google.com ([209.85.210.45]:35727)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QQPYk-0004wj-Ky; Sat, 28 May 2011 15:52:30 -0400
-Received: by yxk8 with SMTP id 8so1319197yxk.4
-	for <multiple recipients>; Sat, 28 May 2011 12:52:29 -0700 (PDT)
+	(envelope-from <balrogg@gmail.com>)
+	id 1QQV8h-0000ct-QF; Sat, 28 May 2011 21:49:59 -0400
+Received: by pzk30 with SMTP id 30so1311644pzk.4
+	for <multiple recipients>; Sat, 28 May 2011 18:49:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=domainkey-signature:mime-version:in-reply-to:references:date
 	:message-id:subject:from:to:cc:content-type
 	:content-transfer-encoding;
-	bh=OuHqhSDMZTA3EHZ8XoCIXSdzIYMaVbsUyFqhvayR2rQ=;
-	b=h9rjQUhQA69TXYTeJrvFItmv5PaHed2w04IiOkih+miya7rl8piDIunpgz+t1yVyE9
-	s1qDimWFQHoBQJ0M9O1O7eZikd5WkY5yvRwqLVjoAolZhiXV41uWbBVt3l/uttlLwDSA
-	eGcQMAo2pqyBeQp6DqJWn0rLuQv0e0iD7jEgo=
+	bh=b42dslFDEtHQyOWDPuI1qxhJQaryYopILr+8y+0+B/8=;
+	b=IQz6a9DEyY/K7owxJsUQoJFrb25OXENmzLJRBs+H3loI3qe9zCBBCEdFoipgFVF9fl
+	Q/vMp7OV0qTRPf2iaWDr7686CM5DD6QLyEk//kZWvhSt3jaiSXncqtvqluHUhH9Hnaa6
+	NWQLyqTT1R9waGDO+ASitfo6gZaU8L3BAYQUQ=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
 	:cc:content-type:content-transfer-encoding;
-	b=F/mM3bZYtoly0Wz7yW7fk3RTHgqN96dFofmmlbCGmTxJurbbrkqXA/BS+mwyRlwEop
-	eSsmekEO6YD2nNi+pX0FouMiDFGOWGpcfsnbaIHKuHHBoDFV/ERw4OHODZY2J26tfO2w
-	BIotHxpBX5soYMjJStp4GmxwOfgvRwnQObkRc=
+	b=HmD3dtgHwI0z7H8LZtrnZxfb4ftZ3Uo6aIXjeFD2Z9U+O1FKSc5Lz7M12IhbfF1zWs
+	CttRdlJmcE1CkdcHiydcoB33lVB1ezNo1LPV+BVadVK94zIWVi9/0FfXDgsM8CGV/322
+	X2l1yVPxV12AjjY+8p3APMz4aJwTjVCW5Gj5M=
 MIME-Version: 1.0
-Received: by 10.150.56.38 with SMTP id e38mr3032556yba.113.1306612349802; Sat,
-	28 May 2011 12:52:29 -0700 (PDT)
-Received: by 10.146.86.2 with HTTP; Sat, 28 May 2011 12:52:29 -0700 (PDT)
-In-Reply-To: <yf9sjryq3gn.fsf@chiyo.mc.pp.se>
+Received: by 10.68.17.227 with SMTP id r3mr1412173pbd.396.1306633797484; Sat,
+	28 May 2011 18:49:57 -0700 (PDT)
+Received: by 10.68.43.73 with HTTP; Sat, 28 May 2011 18:49:57 -0700 (PDT)
+In-Reply-To: <BANLkTinbdHYTdPgmZHwUBOb4xEmA=mjHnQ@mail.gmail.com>
 References: <yf9sjryq3gn.fsf@chiyo.mc.pp.se>
-Date: Sat, 28 May 2011 20:52:29 +0100
-Message-ID: <BANLkTinbdHYTdPgmZHwUBOb4xEmA=mjHnQ@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Andrzej Zaborowski <balrog@zabor.org>
-Content-Type: text/plain; charset=ISO-8859-1
+	<BANLkTinbdHYTdPgmZHwUBOb4xEmA=mjHnQ@mail.gmail.com>
+Date: Sun, 29 May 2011 03:49:57 +0200
+Message-ID: <BANLkTikEz_JrJ38iONRf0f_bqGXHVaSLDw@mail.gmail.com>
+From: andrzej zaborowski <balrogg@gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.213.173
+X-Received-From: 209.85.210.45
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
 	Marcus Comstedt <marcus@mc.pp.se>
-Subject: Re: [Qemu-trivial] [PATCH] bitbang_i2c: Fix spurious slave read
-	after NACK
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] bitbang_i2c: Fix spurious
+ slave read after NACK
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,56 +58,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 May 2011 19:52:34 -0000
+X-List-Received-Date: Sun, 29 May 2011 01:50:04 -0000
 
-On Sat, May 28, 2011 at 3:55 PM, Marcus Comstedt <marcus@mc.pp.se> wrote:
-> After NACKing a read operation, a raising SCL should not trigger a new
-> read from the slave. =A0Introduce a new state which just waits for a stop
-> or start condition after NACK.
->
-> Signed-off-by: Marcus Comstedt <marcus@mc.pp.se>
-> ---
-> =A0hw/bitbang_i2c.c | =A0 =A05 ++++-
-> =A01 files changed, 4 insertions(+), 1 deletions(-)
+Hi,
 
-Seems like a simple change but I'm not familiar with the code or I2C
-details.  Andrzej, care to take a look?
+On 28 May 2011 21:52, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> On Sat, May 28, 2011 at 3:55 PM, Marcus Comstedt <marcus@mc.pp.se> wrote:
+>> After NACKing a read operation, a raising SCL should not trigger a new
+>> read from the slave. =C2=A0Introduce a new state which just waits for a =
+stop
+>> or start condition after NACK.
 
-> diff --git a/hw/bitbang_i2c.c b/hw/bitbang_i2c.c
-> index 4ee99a1..2937b5c 100644
-> --- a/hw/bitbang_i2c.c
-> +++ b/hw/bitbang_i2c.c
-> @@ -38,7 +38,8 @@ typedef enum bitbang_i2c_state {
-> =A0 =A0 RECEIVING_BIT2,
-> =A0 =A0 RECEIVING_BIT1,
-> =A0 =A0 RECEIVING_BIT0,
-> - =A0 =A0SENDING_ACK
-> + =A0 =A0SENDING_ACK,
-> + =A0 =A0SENT_NACK
-> =A0} bitbang_i2c_state;
->
-> =A0struct bitbang_i2c_interface {
-> @@ -115,6 +116,7 @@ int bitbang_i2c_set(bitbang_i2c_interface *i2c, int l=
-ine, int level)
-> =A0 =A0 }
-> =A0 =A0 switch (i2c->state) {
-> =A0 =A0 case STOPPED:
-> + =A0 =A0case SENT_NACK:
-> =A0 =A0 =A0 =A0 return bitbang_i2c_ret(i2c, 1);
->
-> =A0 =A0 case SENDING_BIT7 ... SENDING_BIT0:
-> @@ -155,6 +157,7 @@ int bitbang_i2c_set(bitbang_i2c_interface *i2c, int l=
-ine, int level)
-> =A0 =A0 =A0 =A0 i2c->state =3D RECEIVING_BIT7;
-> =A0 =A0 =A0 =A0 if (data !=3D 0) {
-> =A0 =A0 =A0 =A0 =A0 =A0 DPRINTF("NACKED\n");
-> + =A0 =A0 =A0 =A0 =A0 =A0i2c->state =3D SENT_NACK;
-> =A0 =A0 =A0 =A0 =A0 =A0 i2c_nack(i2c->bus);
-> =A0 =A0 =A0 =A0 } else {
-> =A0 =A0 =A0 =A0 =A0 =A0 DPRINTF("ACKED\n");
-> --
-> 1.7.4.1
->
->
->
+Makes sense, I pushed this change to master.
+
+Cheers
 
