@@ -1,44 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QQhed-0006qN-0M
-	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2011 11:11:47 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:49770)
+	id 1QQiCp-0001Rh-9I
+	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2011 11:47:07 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:53746)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1QQheb-0006l8-6E
-	for qemu-trivial@nongnu.org; Sun, 29 May 2011 11:11:45 -0400
+	(envelope-from <cerbere@gmail.com>) id 1QQiCn-0001MI-1o
+	for qemu-trivial@nongnu.org; Sun, 29 May 2011 11:47:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1QQhea-0004bz-DC
-	for qemu-trivial@nongnu.org; Sun, 29 May 2011 11:11:45 -0400
-Received: from fmmailgate03.web.de ([217.72.192.234]:58396)
+	(envelope-from <cerbere@gmail.com>) id 1QQiCl-00019j-UF
+	for qemu-trivial@nongnu.org; Sun, 29 May 2011 11:47:05 -0400
+Received: from mail-pv0-f173.google.com ([74.125.83.173]:38055)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>)
-	id 1QQheY-0004bb-Fz; Sun, 29 May 2011 11:11:42 -0400
-Received: from smtp02.web.de  ( [172.20.0.184])
-	by fmmailgate03.web.de (Postfix) with ESMTP id 46B1F18F92C27;
-	Sun, 29 May 2011 17:11:41 +0200 (CEST)
-Received: from [87.173.127.118] (helo=[10.0.1.1])
-	by smtp02.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
-	id 1QQheX-0005LV-00; Sun, 29 May 2011 17:11:41 +0200
-Message-Id: <FB7E4CC1-F865-4AF5-9264-11A817D3F456@web.de>
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
-To: Alexandre Raymond <cerbere@gmail.com>
-In-Reply-To: <1306516951-31105-5-git-send-email-cerbere@gmail.com>
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed; delsp=yes
-Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0 (Apple Message framework v936)
-Date: Sun, 29 May 2011 17:11:39 +0200
+	(envelope-from <cerbere@gmail.com>)
+	id 1QQiCj-00019P-Dr; Sun, 29 May 2011 11:47:01 -0400
+Received: by pvg3 with SMTP id 3so1438288pvg.4
+	for <multiple recipients>; Sun, 29 May 2011 08:46:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=HjDJNeJC3+ApvOGIBY9xp97cR5tf6fxjfsAWfdG60c8=;
+	b=MxaQd+sr2kh0aL3bj5YizpGye6asIrlJghcT8DtRZGHfPtay2deVoJG1zsokB5L/98
+	Gacl6GR3wewS4qaxkWOFvaMgyTh36BogKiyVKTEAm6AoX2L3Va4nKyV4G7jHSjOHB0La
+	NQjSaDoRjsMM2pQ1S3fQMIrbUP0oGvfSJh12c=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	b=S1ZONYVlkS4xuTrbqEp6ebDTc/iEDnO3DkWIxWGDWEMGjR1C1OYk/Kzw6zYXhPpYgR
+	6BkQ1NZAIRlF+/nyakJQkMAZkRIDA1x+lgOuh4O9IO3bsTKRrsSiDbB+niQRxbeeYuLW
+	2D/WvHxbPEPpKPSKcpsznrpc/YsJWZcfqV+jE=
+Received: by 10.68.9.132 with SMTP id z4mr1593383pba.282.1306684018299; Sun,
+	29 May 2011 08:46:58 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.55.37 with HTTP; Sun, 29 May 2011 08:46:38 -0700 (PDT)
+In-Reply-To: <E3869720-39F6-4B6C-AD9A-E566DEE2005E@web.de>
 References: <1306516951-31105-1-git-send-email-cerbere@gmail.com>
-	<1306516951-31105-5-git-send-email-cerbere@gmail.com>
-X-Mailer: Apple Mail (2.936)
-Sender: andreas.faerber@web.de
-X-Sender: Andreas.Faerber@web.de
-X-Provags-ID: V01U2FsdGVkX19bJrGGrARnYzDQmn+s4Z2tkHJ/HIALe89rPbWL
-	2mRwU58ypz7T+yVqhK2atTWXgkzFJHTs4gdBwRE9w4iFajJIwn
-	lglb7nLYHjR99Ep8nYfw==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.234
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/6] Fix missing prototype
-	under cocoa for qemu_main
+	<1306516951-31105-2-git-send-email-cerbere@gmail.com>
+	<E3869720-39F6-4B6C-AD9A-E566DEE2005E@web.de>
+From: Alexandre Raymond <cerbere@gmail.com>
+Date: Sun, 29 May 2011 11:46:38 -0400
+Message-ID: <BANLkTikpOwSnNS7Y4B8+ZAO=dT-JimQTAw@mail.gmail.com>
+To: =?UTF-8?Q?Andreas_F=C3=A4rber?= <andreas.faerber@web.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.83.173
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/6] Fix incorrect check for
+	fdatasync() in configure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,44 +57,108 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 May 2011 15:11:46 -0000
+X-List-Received-Date: Sun, 29 May 2011 15:47:06 -0000
 
-Am 27.05.2011 um 19:22 schrieb Alexandre Raymond:
+Hi Andreas,
 
-> The following error message was encountered when compiling
-> with cocoa support because qemu_main did not have a prototype.
+According to this excerpt from The Open Group Base Specifications
+Issue 6 (http://pubs.opengroup.org/onlinepubs/009695399/basedefs/unistd.h.h=
+tml),
+'>0' indeed means that the functionality is implemented and can be
+used.
+----8<----
+The following symbolic constants, if defined in <unistd.h>, shall have
+a value of -1, 0, or greater, unless otherwise specified below. If
+these are undefined, the fpathconf(), pathconf(), or sysconf()
+functions can be used to determine whether the option is provided for
+a particular invocation of the application.
+
+If a symbolic constant is defined with the value -1, the option is not
+supported. Headers, data types, and function interfaces required only
+for the option need not be supplied. An application that attempts to
+use anything associated only with the option is considered to be
+requiring an extension.
+
+If a symbolic constant is defined with a value greater than zero, the
+option shall always be supported when the application is executed. All
+headers, data types, and functions shall be present and shall operate
+as specified.
+
+If a symbolic constant is defined with the value zero, all headers,
+data types, and functions shall be present. The application can check
+at runtime to see whether the option is supported by calling
+fpathconf(), pathconf(), or sysconf() with the indicated name
+parameter.
+----8<----
+
+Alexandre
+
+On Sun, May 29, 2011 at 10:50 AM, Andreas F=C3=A4rber <andreas.faerber@web.=
+de> wrote:
+> Am 27.05.2011 um 19:22 schrieb Alexandre Raymond:
 >
-> -----8<-----
-> qemu/vl.c:2037: warning: no previous prototype for =91qemu_main=92
-> -----8<-----
+>> For some reason, darwin provides a symbol for fdatasync(), but
+>> doesn't officially support it.
+>>
+>> The manpage for fdatasync on Linux states the following:
+>>
+>> "On POSIX =C2=A0systems =C2=A0on =C2=A0which fdatasync() is available,
+>> _POSIX_SYNCHRONIZED_IO is defined in <unistd.h> to a value greater than
+>> 0."
 >
-> Add its prototype in the COCOA ifdef, similar to what is done for SDL.
+> The Open Group Base Specification Issue 7 says this on fdatasync():
 >
-> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
-> ---
-> vl.c |    1 +
-> 1 files changed, 1 insertions(+), 0 deletions(-)
+> "The functionality shall be equivalent to fsync() with the symbol
+> _POSIX_SYNCHRONIZED_IO defined, with the exception that all I/O operation=
+s
+> shall be completed as defined for synchronized I/O data integrity
+> completion."
 >
-> diff --git a/vl.c b/vl.c
-> index b362871..b983646 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -107,6 +107,7 @@ int main(int argc, char **argv)
-> #endif /* CONFIG_SDL */
+> On unistd.h it goes on to say:
 >
-> #ifdef CONFIG_COCOA
-> +int qemu_main(int argc, char **argv, char **envp);
-> #undef main
-> #define main qemu_main
-> #endif /* CONFIG_COCOA */
-
-We've seen at least two different ways of fixing this.
-
-I believe my last one was forgotten, waiting for someone to test with =20=
-
-SDL. The idea was to have the prototype in a header shared between =20
-vl.c and cocoa.m, so that we don't have to duplicate the prototype. =20
-I'll see if I can dig it out or will post a new patch.
-
-Andreas=
+> "_POSIX_SYNCHRONIZED_IO
+> [SIO]
+> The implementation supports the Synchronized Input and Output option. If
+> this symbol is defined in <unistd.h>, it shall be defined to be -1, 0, or
+> 200809L."
+>
+> The change history has nothing on that define and its value -1, so I'm no=
+t
+> convinced that this really is The Right Way to check.
+>
+>> In fact, unistd.h defines this value to "-1", at least on OSX 10.6.7.
+>>
+>> Add this check to the configure file.
+>>
+>> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
+>
+> Andreas
+>
+>> ---
+>> configure | =C2=A0 =C2=A08 +++++++-
+>> 1 files changed, 7 insertions(+), 1 deletions(-)
+>>
+>> diff --git a/configure b/configure
+>> index a318d37..b21ef75 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -2477,7 +2477,13 @@ fi
+>> fdatasync=3Dno
+>> cat > $TMPC << EOF
+>> #include <unistd.h>
+>> -int main(void) { return fdatasync(0); }
+>> +int main(void) {
+>> +#if defined(_POSIX_SYNCHRONIZED_IO) && _POSIX_SYNCHRONIZED_IO > 0
+>> +return fdatasync(0);
+>> +#else
+>> +#abort Not supported
+>> +#endif
+>> +}
+>> EOF
+>> if compile_prog "" "" ; then
+>> =C2=A0 =C2=A0fdatasync=3Dyes
+>> --
+>> 1.7.5
+>
+>
 
