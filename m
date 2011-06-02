@@ -1,40 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QRzxI-0003Tk-Ap
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jun 2011 00:56:24 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:54727)
+	id 1QS4uK-0000ux-Rf
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jun 2011 06:13:41 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:32888)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <etomakin@host113.kvchosting.com>) id 1QRzxF-0003TH-A0
-	for qemu-trivial@nongnu.org; Thu, 02 Jun 2011 00:56:22 -0400
+	(envelope-from <andreas.faerber@web.de>) id 1QS4uD-0000ty-DB
+	for qemu-trivial@nongnu.org; Thu, 02 Jun 2011 06:13:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <etomakin@host113.kvchosting.com>) id 1QRzxE-00050B-3W
-	for qemu-trivial@nongnu.org; Thu, 02 Jun 2011 00:56:20 -0400
-Received: from [173.214.191.51] (port=34459 helo=host113.kvchosting.com)
+	(envelope-from <andreas.faerber@web.de>) id 1QS4uC-00079U-8B
+	for qemu-trivial@nongnu.org; Thu, 02 Jun 2011 06:13:33 -0400
+Received: from fmmailgate02.web.de ([217.72.192.227]:60721)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <etomakin@host113.kvchosting.com>) id 1QRzxD-0004zu-NY
-	for qemu-trivial@nongnu.org; Thu, 02 Jun 2011 00:56:19 -0400
-Received: from etomakin by host113.kvchosting.com with local (Exim 4.69)
-	(envelope-from <etomakin@host113.kvchosting.com>) id 1QRzxC-000MZm-Bi
-	for qemu-trivial@nongnu.org; Wed, 01 Jun 2011 23:56:18 -0500
-To: qemu-trivial@nongnu.org
-From: Sharon.Burns <sharon_burns72@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-Content-Transfer-Encoding: 8bit
-Message-Id: <E1QRzxC-000MZm-Bi@host113.kvchosting.com>
-Date: Wed, 01 Jun 2011 23:56:18 -0500
-X-AntiAbuse: This header was added to track abuse,
-	please include it with any abuse report
-X-AntiAbuse: Primary Hostname - host113.kvchosting.com
-X-AntiAbuse: Original Domain - nongnu.org
-X-AntiAbuse: Originator/Caller UID/GID - [1978 1967] / [47 12]
-X-AntiAbuse: Sender Address Domain - host113.kvchosting.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 173.214.191.51
-Subject: [Qemu-trivial] Hello Would You Like To Earn
+	(envelope-from <andreas.faerber@web.de>)
+	id 1QS4u9-00078k-Ip; Thu, 02 Jun 2011 06:13:29 -0400
+Received: from smtp04.web.de  ( [172.20.0.225])
+	by fmmailgate02.web.de (Postfix) with ESMTP id 1C70F1A12810C;
+	Thu,  2 Jun 2011 12:13:28 +0200 (CEST)
+Received: from [87.173.124.133] (helo=[10.0.1.1])
+	by smtp04.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
+	id 1QS4u8-0006an-00; Thu, 02 Jun 2011 12:13:28 +0200
+Message-Id: <C277121A-7515-4CD2-85E1-BEEE51AC3960@web.de>
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
+To: Alexandre Raymond <cerbere@gmail.com>
+In-Reply-To: <1306981290-17308-1-git-send-email-cerbere@gmail.com>
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed; delsp=yes
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0 (Apple Message framework v936)
+Date: Thu, 2 Jun 2011 12:13:26 +0200
+References: <1306981290-17308-1-git-send-email-cerbere@gmail.com>
+X-Mailer: Apple Mail (2.936)
+Sender: andreas.faerber@web.de
+X-Sender: Andreas.Faerber@web.de
+X-Provags-ID: V01U2FsdGVkX185XOsue8y6lnEdVTeKrEJU8b+DgnZ/v1PiTSwv
+	QaHaJZEIOAEpT7u1k1N6MomISRwBovAXjC2Sye8FuHkxVarxMu
+	lvpmhELCSSVQwj/p3ASQ==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 217.72.192.227
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix compilation warning due
+	to missing header for sigaction
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-Reply-To: sharon_burns72@gmail.com
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -43,19 +49,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jun 2011 04:56:23 -0000
+X-List-Received-Date: Thu, 02 Jun 2011 10:13:38 -0000
 
-Hello qemu-trivial
+Am 02.06.2011 um 04:21 schrieb Alexandre Raymond:
 
-Would you like to earn an extra $200 everyday?, for just 45 minutes work? You could quit your job and make double the money at home working for yourself.
+> Fix the following warning by including signal.h directly in qemu-=20
+> common.h
+> ----8<----
+> iohandler.c: In function =91qemu_init_child_watch=92:
+> iohandler.c:172: warning: implicit declaration of function =91sigaction=92=
 
-visit->http:tinyurl.com/3brnlpx
+> iohandler.c:172: warning: nested extern declaration of =91sigaction=92
+> ----8<----
+>
+> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
 
-Regards,
+Tested-by: Andreas F=E4rber <andreas.faerber@web.de>
 
-Sharon Burns
+Why in qemu-common.h and not in iohandler.c though?
+If we put it into qemu-common.h, you should remove other inclusions of =20=
 
-Survey Human Resources Dept.
+signal.h.
 
+Andreas
+
+> ---
+> qemu-common.h |    1 +
+> 1 files changed, 1 insertions(+), 0 deletions(-)
+>
+> diff --git a/qemu-common.h b/qemu-common.h
+> index b851b20..39fabc9 100644
+> --- a/qemu-common.h
+> +++ b/qemu-common.h
+> @@ -39,6 +39,7 @@ typedef struct Monitor Monitor;
+> #include <sys/stat.h>
+> #include <sys/time.h>
+> #include <assert.h>
+> +#include <signal.h>
+>
+> #ifdef _WIN32
+> #include "qemu-os-win32.h"
+> --=20
+> 1.7.5
+>
+>
 
 
