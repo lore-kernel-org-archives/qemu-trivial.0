@@ -1,43 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QS4uK-0000ux-Rf
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jun 2011 06:13:41 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:32888)
+	id 1QS7wb-000531-PN
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jun 2011 09:28:13 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:49987)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1QS4uD-0000ty-DB
-	for qemu-trivial@nongnu.org; Thu, 02 Jun 2011 06:13:38 -0400
+	(envelope-from <cerbere@gmail.com>) id 1QS7wY-00051z-Dw
+	for qemu-trivial@nongnu.org; Thu, 02 Jun 2011 09:28:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1QS4uC-00079U-8B
-	for qemu-trivial@nongnu.org; Thu, 02 Jun 2011 06:13:33 -0400
-Received: from fmmailgate02.web.de ([217.72.192.227]:60721)
+	(envelope-from <cerbere@gmail.com>) id 1QS7wX-0007jE-Au
+	for qemu-trivial@nongnu.org; Thu, 02 Jun 2011 09:28:10 -0400
+Received: from mail-pv0-f173.google.com ([74.125.83.173]:35099)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>)
-	id 1QS4u9-00078k-Ip; Thu, 02 Jun 2011 06:13:29 -0400
-Received: from smtp04.web.de  ( [172.20.0.225])
-	by fmmailgate02.web.de (Postfix) with ESMTP id 1C70F1A12810C;
-	Thu,  2 Jun 2011 12:13:28 +0200 (CEST)
-Received: from [87.173.124.133] (helo=[10.0.1.1])
-	by smtp04.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
-	id 1QS4u8-0006an-00; Thu, 02 Jun 2011 12:13:28 +0200
-Message-Id: <C277121A-7515-4CD2-85E1-BEEE51AC3960@web.de>
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
-To: Alexandre Raymond <cerbere@gmail.com>
-In-Reply-To: <1306981290-17308-1-git-send-email-cerbere@gmail.com>
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed; delsp=yes
-Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0 (Apple Message framework v936)
-Date: Thu, 2 Jun 2011 12:13:26 +0200
+	(envelope-from <cerbere@gmail.com>)
+	id 1QS7wR-0007hm-Pf; Thu, 02 Jun 2011 09:28:04 -0400
+Received: by pvg3 with SMTP id 3so425684pvg.4
+	for <multiple recipients>; Thu, 02 Jun 2011 06:28:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=Xh/oLQUnlPOs42olwrSuXDf6OMBeWfw0Q7dsLY4XmfU=;
+	b=wLt02Mk8VmOpzdtGNaBKoV6opza/k84k3B7VrwZNQfGwrBQTlAH17E6hK5pIZuiHxk
+	kL6/GZV9c4cCqwVFtshl5y+O9xVUEAulOxPajDc0ylgOu4JEOkQ+woImu2yS+cd/BiFk
+	psmQbAfrRKhUJd6VDbgXsXrVl9DRQ8g2vR4Uo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	b=LvO0BMAtbRa3qVGFVkCZcIgOFWwF1iZ2X8VAw4P7YQtjp6upZgLdlMPUHMQgr4jTW+
+	o39eTO+158eVPvuXyNWLMYSuNJAgKjd2TZcMJqxfMNsY3j6qQ79DSSpH3ntJwfs/QwMy
+	hHIOeGN7SxuhcWKec1WZ2XK8Mgeh1DE4oDJ8Y=
+Received: by 10.68.25.102 with SMTP id b6mr296018pbg.14.1307021282143; Thu, 02
+	Jun 2011 06:28:02 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.55.37 with HTTP; Thu, 2 Jun 2011 06:27:42 -0700 (PDT)
+In-Reply-To: <C277121A-7515-4CD2-85E1-BEEE51AC3960@web.de>
 References: <1306981290-17308-1-git-send-email-cerbere@gmail.com>
-X-Mailer: Apple Mail (2.936)
-Sender: andreas.faerber@web.de
-X-Sender: Andreas.Faerber@web.de
-X-Provags-ID: V01U2FsdGVkX185XOsue8y6lnEdVTeKrEJU8b+DgnZ/v1PiTSwv
-	QaHaJZEIOAEpT7u1k1N6MomISRwBovAXjC2Sye8FuHkxVarxMu
-	lvpmhELCSSVQwj/p3ASQ==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.227
+	<C277121A-7515-4CD2-85E1-BEEE51AC3960@web.de>
+From: Alexandre Raymond <cerbere@gmail.com>
+Date: Thu, 2 Jun 2011 09:27:42 -0400
+Message-ID: <BANLkTi=OedruypO6bf4-N0DQ6FJMyCR6dQ@mail.gmail.com>
+To: =?UTF-8?Q?Andreas_F=C3=A4rber?= <andreas.faerber@web.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.83.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix compilation warning due
-	to missing header for sigaction
+ to missing header for sigaction
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,49 +56,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jun 2011 10:13:38 -0000
+X-List-Received-Date: Thu, 02 Jun 2011 13:28:12 -0000
 
-Am 02.06.2011 um 04:21 schrieb Alexandre Raymond:
-
-> Fix the following warning by including signal.h directly in qemu-=20
-> common.h
-> ----8<----
-> iohandler.c: In function =91qemu_init_child_watch=92:
-> iohandler.c:172: warning: implicit declaration of function =91sigaction=92=
-
-> iohandler.c:172: warning: nested extern declaration of =91sigaction=92
-> ----8<----
+On Thu, Jun 2, 2011 at 6:13 AM, Andreas F=C3=A4rber <andreas.faerber@web.de=
+> wrote:
+> Am 02.06.2011 um 04:21 schrieb Alexandre Raymond:
 >
-> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
-
-Tested-by: Andreas F=E4rber <andreas.faerber@web.de>
-
-Why in qemu-common.h and not in iohandler.c though?
-If we put it into qemu-common.h, you should remove other inclusions of =20=
-
-signal.h.
-
-Andreas
-
-> ---
-> qemu-common.h |    1 +
-> 1 files changed, 1 insertions(+), 0 deletions(-)
+>> Fix the following warning by including signal.h directly in qemu-common.=
+h
+>> ----8<----
+>> iohandler.c: In function =E2=80=98qemu_init_child_watch=E2=80=99:
+>> iohandler.c:172: warning: implicit declaration of function =E2=80=98siga=
+ction=E2=80=99
+>> iohandler.c:172: warning: nested extern declaration of =E2=80=98sigactio=
+n=E2=80=99
+>> ----8<----
+>>
+>> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
 >
-> diff --git a/qemu-common.h b/qemu-common.h
-> index b851b20..39fabc9 100644
-> --- a/qemu-common.h
-> +++ b/qemu-common.h
-> @@ -39,6 +39,7 @@ typedef struct Monitor Monitor;
-> #include <sys/stat.h>
-> #include <sys/time.h>
-> #include <assert.h>
-> +#include <signal.h>
+> Tested-by: Andreas F=C3=A4rber <andreas.faerber@web.de>
 >
-> #ifdef _WIN32
-> #include "qemu-os-win32.h"
-> --=20
-> 1.7.5
->
->
+> Why in qemu-common.h and not in iohandler.c though?
+> If we put it into qemu-common.h, you should remove other inclusions of
+> signal.h.
 
+Well, I was simply following Anthony's advice from "[PATCH] #include
+cleanlines" : "The idea behind qemu-common.h is to avoid direct
+includes to help with portability."
+
+Alexandre
 
