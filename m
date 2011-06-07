@@ -1,38 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QTb7T-0000vz-7L
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jun 2011 10:49:31 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:59314)
+	id 1QTwjc-0001TA-W8
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jun 2011 09:54:21 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:36387)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <martin@lispworks.com>) id 1QTb7P-0000vB-W6
-	for qemu-trivial@nongnu.org; Mon, 06 Jun 2011 10:49:28 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QTwjV-0001Rh-3c
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2011 09:54:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <martin@lispworks.com>) id 1QTb7O-0007mm-DF
-	for qemu-trivial@nongnu.org; Mon, 06 Jun 2011 10:49:27 -0400
-Received: from mail.lispworks.com ([193.34.186.230]:47760
-	helo=lwfs1-cam.cam.lispworks.com)
+	(envelope-from <stefanha@gmail.com>) id 1QTwjT-00024N-CJ
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2011 09:54:12 -0400
+Received: from mail-ww0-f41.google.com ([74.125.82.41]:51360)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <martin@lispworks.com>)
-	id 1QTb7N-0007lK-Uj; Mon, 06 Jun 2011 10:49:26 -0400
-Received: from carson.cam.lispworks.com (carson [192.168.1.12])
-	by lwfs1-cam.cam.lispworks.com (8.14.3/8.14.3) with ESMTP id
-	p56EnH15088996; Mon, 6 Jun 2011 15:49:17 +0100 (BST)
-	(envelope-from martin@lispworks.com)
-Received: from carson.cam.lispworks.com (localhost [127.0.0.1]) by
-	carson.cam.lispworks.com (8.13.8+Sun) id p56EnHTq021677;
-	Mon, 6 Jun 2011 15:49:17 +0100 (BST)
-Received: (from martin@localhost)
-	by carson.cam.lispworks.com (8.13.8+Sun/8.13.8/Submit) id
-	p56EnHo1021674; Mon, 6 Jun 2011 15:49:17 +0100 (BST)
-Date: Mon, 6 Jun 2011 15:49:17 +0100 (BST)
-Message-Id: <201106061449.p56EnHo1021674@carson.cam.lispworks.com>
-From: Martin Simmons <martin@lispworks.com>
-To: qemu-devel@nongnu.org
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 193.34.186.230
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Make x86 mfence and lfence illegal without
-	SSE2
+	(envelope-from <stefanha@gmail.com>)
+	id 1QTwjJ-000231-Nr; Tue, 07 Jun 2011 09:54:02 -0400
+Received: by wwi18 with SMTP id 18so2488285wwi.4
+	for <multiple recipients>; Tue, 07 Jun 2011 06:54:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=zDy5fq/bKUFDdHaiZoU3tWn7h/RQ9rtcMLXSDkIFiN8=;
+	b=ZxclP+Ra65WXwM72dJsJjtGPnBgj5ZwsrGVmhBRxMb8keJ/Pwbn2RXp31pLg4KOyfC
+	gnbHQHvB3d39FkTD/wCf1EAzGmtoGg/yyHjvFEgZ51I7LmiBsrcreZQE222hWLl5NYLP
+	fS4VDu2FEVXZ2bzPSufwTgQUrXfTwUfFv2wtk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	b=f+BxsVaKyO+vfbuXDKevydd6sbAHz4KBLsAFP0Tgv0Szr7mAWj5MCQjSCDlpTc9hZa
+	hdwZxBvOLsTO58CRiyIbpKvEs4v6a1sWVowbBQqvTLCMx9QjStWwU2xJlkwEj0DLuuAB
+	Js1H87wBdnlJILvx4bYNuLA+9OvpbL6sUHYxY=
+Received: by 10.216.242.205 with SMTP id i55mr3992096wer.66.1307454840659;
+	Tue, 07 Jun 2011 06:54:00 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain
+	(gbibp9ph1--blueice2n1.emea.ibm.com [195.212.29.75])
+	by mx.google.com with ESMTPS id fw15sm3576267wbb.10.2011.06.07.06.53.58
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 07 Jun 2011 06:53:59 -0700 (PDT)
+Date: Tue, 7 Jun 2011 14:53:54 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Alexandre Raymond <cerbere@gmail.com>
+Message-ID: <20110607135354.GA1493@stefanha-thinkpad.localdomain>
+References: <1307071609-1165-1-git-send-email-cerbere@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1307071609-1165-1-git-send-email-cerbere@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.41
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Fix compilation warning due to missing
+ header for sigaction (followup)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,33 +60,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jun 2011 14:49:29 -0000
+X-List-Received-Date: Tue, 07 Jun 2011 13:54:19 -0000
 
-Hi,
+On Thu, Jun 02, 2011 at 11:26:49PM -0400, Alexandre Raymond wrote:
+> This patch removes all references to signal.h when qemu-common.h is included
+> as they become redundant.
+> 
+> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
+> ---
+>  audio/audio_pt_int.c  |    2 --
+>  audio/sdlaudio.c      |    1 -
+>  block/raw-posix.c     |    2 --
+>  bsd-user/syscall.c    |    1 -
+>  darwin-user/signal.c  |    3 ---
+>  exec.c                |    1 -
+>  linux-user/signal.c   |    1 -
+>  net/tap.c             |    1 -
+>  posix-aio-compat.c    |    1 -
+>  qemu-char.c           |    1 -
+>  qemu-progress.c       |    1 -
+>  savevm.c              |    1 -
+>  target-i386/helper.c  |    1 -
+>  target-ppc/helper.c   |    1 -
+>  target-sparc/helper.c |    1 -
+>  ui/curses.c           |    1 -
+>  ui/sdl.c              |    4 ----
+>  usb-bsd.c             |    1 -
+>  usb-linux.c           |    1 -
+>  19 files changed, 0 insertions(+), 26 deletions(-)
 
-While trying to use qemu -cpu pentium3 to test for incorrect uses of certain
-SSE2 instructions, I found that QEMU allowed the mfence and lfence
-instructions to be executed even though Pentium 3 doesn't support them.
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-According to the processor specs (and experience on a real Pentium 3), these
-instructions are only available with SSE2, but QEMU is checking for SSE.  The
-check for the related sfence instruction is correct (it works with SSE).
-
-This trival patch fixes the test:
-
-Signed-off-by: Martin Simmons <martin@lispworks.com>
-
---- a/target-i386/translate.c	2011-06-03 16:17:18.270208646 +0100
-+++ b/target-i386/translate.c	2011-06-03 16:02:41.381556714 +0100
-@@ -7560,7 +7560,7 @@
-             break;
-         case 5: /* lfence */
-         case 6: /* mfence */
--            if ((modrm & 0xc7) != 0xc0 || !(s->cpuid_features & CPUID_SSE))
-+            if ((modrm & 0xc7) != 0xc0 || !(s->cpuid_features & CPUID_SSE2))
-                 goto illegal_op;
-             break;
-         case 7: /* sfence / clflush */
-
-__Martin
+Stefan
 
