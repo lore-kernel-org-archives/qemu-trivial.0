@@ -1,54 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QTwmR-00027z-RX
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jun 2011 09:57:16 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:37474)
+	id 1QTycm-00077n-3w
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jun 2011 11:55:24 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:33245)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QTwmK-000265-O7
-	for qemu-trivial@nongnu.org; Tue, 07 Jun 2011 09:57:14 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1QTycj-00076i-1Z
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2011 11:55:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QTwmH-0002vj-TL
-	for qemu-trivial@nongnu.org; Tue, 07 Jun 2011 09:57:08 -0400
-Received: from mail-wy0-f173.google.com ([74.125.82.173]:51613)
+	(envelope-from <jan.kiszka@siemens.com>) id 1QTych-0002Qv-P5
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2011 11:55:20 -0400
+Received: from thoth.sbs.de ([192.35.17.2]:25552)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QTwm9-0002oD-CO; Tue, 07 Jun 2011 09:56:57 -0400
-Received: by mail-wy0-f173.google.com with SMTP id 42so4131048wyb.4
-	for <multiple recipients>; Tue, 07 Jun 2011 06:56:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=OR0n0yCj1L4hiaA2tm/z0DIMU1WR4Xb00nnPh1s1abM=;
-	b=VBSrx2xoS/DWBD8KPwDdfd6unkXOpnZZ8IDUJtRdCb9g0yWGd3gsF2uhGCFl8jUHnZ
-	15Ry/zGoxIhMqCh3wPtXkhA7ktpze44JhNIn16bKYadDcJr3fAZHxG6RDPPZmIt37YVF
-	Z7hmD+50R1lV4WmNYgeBG0xUNtIPF7yi79oL0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	b=bD6N1TUWy2UdZXnfNKvqQQvaz+xgayKlkn6Qo4HNt4CfZTZBuEOrxzompYd9as0L6/
-	+LOGYpJp7srdTtwpjDHL6Hv1IB1/YIvdGh6sGCoD71wmwIiGOrUwY9gYJWFhsI1z8uRH
-	7/EWmskfrP8BuITFxYwroBc/pWrkVeHLKNORM=
-Received: by 10.227.54.195 with SMTP id r3mr3413185wbg.11.1307455015595;
-	Tue, 07 Jun 2011 06:56:55 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain
-	(gbibp9ph1--blueice2n1.emea.ibm.com [195.212.29.75])
-	by mx.google.com with ESMTPS id b10sm3574806wbh.60.2011.06.07.06.56.54
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 07 Jun 2011 06:56:54 -0700 (PDT)
-Date: Tue, 7 Jun 2011 14:56:51 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Martin Simmons <martin@lispworks.com>
-Message-ID: <20110607135651.GD1493@stefanha-thinkpad.localdomain>
-References: <201106061449.p56EnHo1021674@carson.cam.lispworks.com>
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1QTycd-0002P9-3e; Tue, 07 Jun 2011 11:55:15 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by thoth.sbs.de (8.13.6/8.13.6) with ESMTP id p57Ft1Xm002988;
+	Tue, 7 Jun 2011 17:55:01 +0200
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id p57Ft1ue020878;
+	Tue, 7 Jun 2011 17:55:01 +0200
+Message-ID: <4DEE49D5.7010301@siemens.com>
+Date: Tue, 07 Jun 2011 17:55:01 +0200
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <201106061449.p56EnHo1021674@carson.cam.lispworks.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Make x86 mfence and lfence
- illegal without SSE2
+To: Aurelien Jarno <aurelien@aurel32.net>
+References: <4DB6AD38.50307@siemens.com>
+	<20110514224427.GG13600@volta.aurel32.net>
+In-Reply-To: <20110514224427.GG13600@volta.aurel32.net>
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 192.35.17.2
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] virtio: Move virtio-pci to hw library
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,25 +47,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jun 2011 13:57:14 -0000
+X-List-Received-Date: Tue, 07 Jun 2011 15:55:22 -0000
 
-On Mon, Jun 06, 2011 at 03:49:17PM +0100, Martin Simmons wrote:
-> Hi,
+On 2011-05-15 00:44, Aurelien Jarno wrote:
+> On Tue, Apr 26, 2011 at 01:32:08PM +0200, Jan Kiszka wrote:
+>> This module has no target dependencies (except for target_phys_addr_t
+>> size) and can thus be built as part of libhw.
+>>
+>> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+>> ---
+>>  Makefile.objs   |    1 +
+>>  Makefile.target |    1 -
+>>  2 files changed, 1 insertions(+), 1 deletions(-)
 > 
-> While trying to use qemu -cpu pentium3 to test for incorrect uses of certain
-> SSE2 instructions, I found that QEMU allowed the mfence and lfence
-> instructions to be executed even though Pentium 3 doesn't support them.
-> 
-> According to the processor specs (and experience on a real Pentium 3), these
-> instructions are only available with SSE2, but QEMU is checking for SSE.  The
-> check for the related sfence instruction is correct (it works with SSE).
-> 
-> This trival patch fixes the test:
-> 
-> Signed-off-by: Martin Simmons <martin@lispworks.com>
+> Reviewed-by: Aurelien Jarno <aurelien@aurel32.net>
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+Will you or qemu-trivial pick it up?
 
-Stefan
+Jan
+
+> 
+>> diff --git a/Makefile.objs b/Makefile.objs
+>> index fad1dce..3192bf5 100644
+>> --- a/Makefile.objs
+>> +++ b/Makefile.objs
+>> @@ -171,6 +171,7 @@ user-obj-y += cutils.o cache-utils.o
+>>  hw-obj-y =
+>>  hw-obj-y += vl.o loader.o
+>>  hw-obj-$(CONFIG_VIRTIO) += virtio.o virtio-console.o
+>> +hw-obj-$(CONFIG_VIRTIO_PCI) += virtio-pci.o
+>>  hw-obj-y += fw_cfg.o
+>>  hw-obj-$(CONFIG_PCI) += pci.o pci_bridge.o
+>>  hw-obj-$(CONFIG_PCI) += msix.o msi.o
+>> diff --git a/Makefile.target b/Makefile.target
+>> index cfc7091..5da9e59 100644
+>> --- a/Makefile.target
+>> +++ b/Makefile.target
+>> @@ -191,7 +191,6 @@ obj-y = arch_init.o cpus.o monitor.o machine.o gdbstub.o balloon.o
+>>  # need to fix this properly
+>>  obj-$(CONFIG_NO_PCI) += pci-stub.o
+>>  obj-$(CONFIG_VIRTIO) += virtio-blk.o virtio-balloon.o virtio-net.o virtio-serial-bus.o
+>> -obj-$(CONFIG_VIRTIO_PCI) += virtio-pci.o
+>>  obj-y += vhost_net.o
+>>  obj-$(CONFIG_VHOST_NET) += vhost.o
+>>  obj-$(CONFIG_REALLY_VIRTFS) += virtio-9p.o
+>> -- 
+>> 1.7.1
+>>
+>>
+> 
+
+-- 
+Siemens AG, Corporate Technology, CT T DE IT 1
+Corporate Competence Center Embedded Linux
 
