@@ -1,52 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QV0eo-0000XT-Sk
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jun 2011 08:17:47 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:41411)
+	id 1QWCju-0006ss-1D
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jun 2011 15:23:58 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:49775)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QV0em-0000Ws-CF
-	for qemu-trivial@nongnu.org; Fri, 10 Jun 2011 08:17:45 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1QWCjp-0006rE-2A
+	for qemu-trivial@nongnu.org; Mon, 13 Jun 2011 15:23:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QV0ek-00078k-LR
-	for qemu-trivial@nongnu.org; Fri, 10 Jun 2011 08:17:43 -0400
-Received: from mail-vw0-f45.google.com ([209.85.212.45]:45392)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1QWCjn-0004p8-Pf
+	for qemu-trivial@nongnu.org; Mon, 13 Jun 2011 15:23:52 -0400
+Received: from mail-fx0-f46.google.com ([209.85.161.46]:41348)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QV0eh-00075x-0X; Fri, 10 Jun 2011 08:17:39 -0400
-Received: by vws17 with SMTP id 17so2397541vws.4
-	for <multiple recipients>; Fri, 10 Jun 2011 05:17:38 -0700 (PDT)
+	(envelope-from <edgar.iglesias@gmail.com>)
+	id 1QWCjg-0004nL-Fy; Mon, 13 Jun 2011 15:23:45 -0400
+Received: by fxm17 with SMTP id 17so4865284fxm.33
+	for <multiple recipients>; Mon, 13 Jun 2011 12:23:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=SEmSq+nqg7CpLsHrur73n0j98oV+NX5VfXr8bitpZFY=;
-	b=qm2KwaSu3NarRM2W1oNyXrrHY0jP2FouwaM0/0dSzn5ugT2XdzGuqRUqHWVyNr0oP7
-	FM6NJWmK8CdVXXTqgAL+lq6w59QO+sI9teMl/JNNcNO8CDciKQhISCgqka0DqshvYAMT
-	oc3HnO0bqM8VmOfggiNvLhqjI4EWC4wSAAzJ0=
+	h=domainkey-signature:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=T7bVcRkgMfq15LVTvY35Q50Z/U5T8UlTlhmgBLbwBlc=;
+	b=RFB9LxmY4z1FH3pB7qr+3EY2gdlEdhz7wzUBT1Lrz8huBVEpvTJ/muOhYvXFyMADPh
+	aJfwPvv8riY0eugCGUyqpaAzjm6kbMFK1WReZcTxJvhSjs/WAYvQCsFaoluCXPXA2PmM
+	6MrKE4X2E/Wh5YQMyev9sbZSq+lFW4ojcwDPQ=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	b=W2amVLKHVBtiywwdEDEb2w+3gRR01bGDe+JTxg7WJ7YouLaHhOAt9WRnDaGsFBxqzy
-	9gv8LnTmZzB3X9aIAnbDgaQK0bsdnVI4b9RsrpebQKA31y2VKo87/VJ53TILkwMayXa/
-	iaEDTO+z/187SEtxjs8L26jv3FNfj9IxB/asA=
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	b=Agb5Xv6+JNIBs/EMf0kxcNY7k2mOQa3AE8Q0fMul27lcpY/nfB45rEiwEG+phEOCf/
+	JyJplzKasKnBm5uMblWTn0sTKcvTNatyqlHOxxKetXXO85XFg5UxkqXb4CQagdQO5O5C
+	LUORMb5OwGswf16vBfQYZD4lyy6qgTi+ngqDk=
+Received: by 10.223.62.146 with SMTP id x18mr157090fah.54.1307993022849;
+	Mon, 13 Jun 2011 12:23:42 -0700 (PDT)
+Received: from localhost (h59ec3266.selukar.dyn.perspektivbredband.net
+	[89.236.50.102])
+	by mx.google.com with ESMTPS id q21sm2191402fan.40.2011.06.13.12.23.40
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 13 Jun 2011 12:23:41 -0700 (PDT)
+Date: Mon, 13 Jun 2011 21:23:39 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20110613192339.GF29885@laped.lan>
+References: <1307616192-28711-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Received: by 10.220.118.80 with SMTP id u16mr705036vcq.214.1307708258222; Fri,
-	10 Jun 2011 05:17:38 -0700 (PDT)
-Received: by 10.220.199.66 with HTTP; Fri, 10 Jun 2011 05:17:38 -0700 (PDT)
-In-Reply-To: <20110610104329.GC31768@teriyaki.cdg.redhat.com>
-References: <20110531054345.GA17412@amit-x200.redhat.com>
-	<1306828429-9139-1-git-send-email-cfergeau@redhat.com>
-	<1306828429-9139-3-git-send-email-cfergeau@redhat.com>
-	<20110610104329.GC31768@teriyaki.cdg.redhat.com>
-Date: Fri, 10 Jun 2011 13:17:38 +0100
-Message-ID: <BANLkTimekZreaf7wJGr7+wCi6pKOizOKiw@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Christophe Fergeau <cfergeau@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1307616192-28711-1-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.5.20 (2009-06-14)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.212.45
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH-v3 2/2] kvm: Fix
-	unused-but-set-variable warning
+X-Received-From: 209.85.161.46
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Changelog: Add explanatory
+ note that this file is no longer updated
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,14 +60,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jun 2011 12:17:45 -0000
+X-List-Received-Date: Mon, 13 Jun 2011 19:23:55 -0000
 
-On Fri, Jun 10, 2011 at 11:43 AM, Christophe Fergeau
-<cfergeau@redhat.com> wrote:
-> Ping?
+On Thu, Jun 09, 2011 at 11:43:12AM +0100, Peter Maydell wrote:
+> Add an explanatory note to the top of Changelog pointing at the
+> wiki and git history for changelogs for more recent releases.
 
-Let me add these patches to the trivial-patches tree since they
-haven't been picked up.
+I've applied this, thanks.
 
-Stefan
+
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  Changelog |    6 ++++++
+>  1 files changed, 6 insertions(+), 0 deletions(-)
+> 
+> diff --git a/Changelog b/Changelog
+> index 1c41e14..28a69af 100644
+> --- a/Changelog
+> +++ b/Changelog
+> @@ -1,3 +1,9 @@
+> +This file documents changes for QEMU releases 0.12 and earlier.
+> +For changelog information for later releases, see
+> +http://wiki.qemu.org/ChangeLog or look at the git history for
+> +more detailed information.
+> +
+> +
+>  version 0.12.0:
+>  
+>    - Update to SeaBIOS 0.5.0
+> -- 
+> 1.7.1
+> 
+> 
 
