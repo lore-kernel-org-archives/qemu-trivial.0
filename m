@@ -1,46 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QWJCE-0003Ic-Ii
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jun 2011 22:17:38 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:54599)
+	id 1QWOev-0006IR-Nn
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jun 2011 04:07:37 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:54029)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>) id 1QWJCB-0003Hw-Bk
-	for qemu-trivial@nongnu.org; Mon, 13 Jun 2011 22:17:36 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QWOes-0006Hb-Cb
+	for qemu-trivial@nongnu.org; Tue, 14 Jun 2011 04:07:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>) id 1QWJC9-0003XR-U1
-	for qemu-trivial@nongnu.org; Mon, 13 Jun 2011 22:17:34 -0400
-Received: from mail-vw0-f45.google.com ([209.85.212.45]:41826)
+	(envelope-from <stefanha@gmail.com>) id 1QWOeq-0000jF-QL
+	for qemu-trivial@nongnu.org; Tue, 14 Jun 2011 04:07:33 -0400
+Received: from mail-ww0-f53.google.com ([74.125.82.53]:48183)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>)
-	id 1QWJC7-0003X5-Qd; Mon, 13 Jun 2011 22:17:31 -0400
-Received: by vws17 with SMTP id 17so4722542vws.4
-	for <multiple recipients>; Mon, 13 Jun 2011 19:17:30 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1QWOem-0000iF-3H; Tue, 14 Jun 2011 04:07:28 -0400
+Received: by wwj40 with SMTP id 40so5008841wwj.10
+	for <multiple recipients>; Tue, 14 Jun 2011 01:07:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:from:to:cc:subject:date:message-id:x-mailer;
-	bh=Ad311HE4BCiZH4yew3T0d8i+ETZ1TcoRNDq+xdaNCGM=;
-	b=JQhNaw3vElrLTffh4oIevWZ22oBV5/QArWlg8MGXcpkb5BYuTmLGXx/iIzG4obuQhJ
-	gtaDyUDYwKUxHX0G4OsMkEi9KDKvlf4SErla54kwON+kijF7esSe+Ebrvg6rRBmJYG5e
-	Xzp2yMYIULtytTGrb4xBRWKylfyOuZG+B+hMI=
+	h=domainkey-signature:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=35UxkMXQgoupKf0GCSWwP+vR7yc7bnm8IPRH9mMVN/o=;
+	b=lmtf7BvNsv7j8Ufz/maILGietyhNqofmuZtO8C45PMpdCOQDQev5pZ705v63Qk1omf
+	b5P5pnSi0I1kWE61TeSgh3ddBV+KNvLQ1gOQ9jaL6fhFA38Ro9l8KocxvA44q/YAUWSG
+	fEwS339f0a8ZDddlHw+/d7ByTR/MuM0DV1F9w=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=from:to:cc:subject:date:message-id:x-mailer;
-	b=YKZjofXQQMbBCIBabbtG2L2cfA+cQA/tlxLe4P2F9FMaCczwMvsM+SNz2ewB6h0jO6
-	/1+7wPN5eFwey5ng/FZZSaWFEmWJ+AMgh0/K8BuErfd3PljILGOjcwjhRzujECiva1fP
-	m+FO49MietR7z7fJwC9L4wcy/FdYuTYkcL20c=
-Received: by 10.52.160.99 with SMTP id xj3mr5031160vdb.261.1308017850530;
-	Mon, 13 Jun 2011 19:17:30 -0700 (PDT)
-Received: from localhost.localdomain (modemcable055.201-23-96.mc.videotron.ca
-	[96.23.201.55])
-	by mx.google.com with ESMTPS id bh17sm2104126vdc.3.2011.06.13.19.17.28
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	b=d/1HISPicPQulF69cVTKgHIINBtxl9Jhuryan0FvEbMpawbhqdEPYMImIvZfHmoM1/
+	LiKRxzrvefgbD1UhxSgaMB4VdR8XSOAqjscmk8Kpl0rn7au88vuf/nN6KfZ2PyJ80h/X
+	JZijIfB5wCLfflu93S5bWyzpUW3PFg7BTrxug=
+Received: by 10.216.159.75 with SMTP id r53mr5851824wek.98.1308038847043;
+	Tue, 14 Jun 2011 01:07:27 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain
+	(gbibp9ph1--blueice2n1.emea.ibm.com [195.212.29.75])
+	by mx.google.com with ESMTPS id h22sm3332841wes.32.2011.06.14.01.07.24
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 13 Jun 2011 19:17:29 -0700 (PDT)
-From: Alexandre Raymond <cerbere@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 13 Jun 2011 22:16:36 -0400
-Message-Id: <1308017796-397-1-git-send-email-cerbere@gmail.com>
-X-Mailer: git-send-email 1.7.5
+	Tue, 14 Jun 2011 01:07:25 -0700 (PDT)
+Date: Tue, 14 Jun 2011 09:07:19 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Alexandre Raymond <cerbere@gmail.com>
+Message-ID: <20110614080719.GA19163@stefanha-thinkpad.localdomain>
+References: <1308017796-397-1-git-send-email-cerbere@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1308017796-397-1-git-send-email-cerbere@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.212.45
-Cc: qemu-trivial@nongnu.org, Alexandre Raymond <cerbere@gmail.com>
-Subject: [Qemu-trivial] [PATCH] Fix typo in cpus.c
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Fix typo in cpus.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,29 +59,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jun 2011 02:17:36 -0000
+X-List-Received-Date: Tue, 14 Jun 2011 08:07:35 -0000
 
-filed -> failed
+On Mon, Jun 13, 2011 at 10:16:36PM -0400, Alexandre Raymond wrote:
+> filed -> failed
+> 
+> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
+> ---
+>  cpus.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
-Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
----
- cpus.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-diff --git a/cpus.c b/cpus.c
-index 1fc34b7..4ab76f0 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -297,7 +297,7 @@ static void qemu_event_increment(void)
- 
-     /* EAGAIN is fine, a read must be pending.  */
-     if (ret < 0 && errno != EAGAIN) {
--        fprintf(stderr, "qemu_event_increment: write() filed: %s\n",
-+        fprintf(stderr, "qemu_event_increment: write() failed: %s\n",
-                 strerror(errno));
-         exit (1);
-     }
--- 
-1.7.5
-
+Stefan
 
