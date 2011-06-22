@@ -1,43 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QYEgq-00044a-CO
-	for mharc-qemu-trivial@gnu.org; Sun, 19 Jun 2011 05:53:12 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:37554)
+	id 1QZLrt-0004f8-G5
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Jun 2011 07:45:13 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:34057)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1QYEgm-00043p-Fa
-	for qemu-trivial@nongnu.org; Sun, 19 Jun 2011 05:53:09 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1QZLrm-0004aN-Tv
+	for qemu-trivial@nongnu.org; Wed, 22 Jun 2011 07:45:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1QYEgl-0003JI-Gi
-	for qemu-trivial@nongnu.org; Sun, 19 Jun 2011 05:53:08 -0400
-Received: from fmmailgate03.web.de ([217.72.192.234]:47688)
+	(envelope-from <peter.maydell@linaro.org>) id 1QZLrl-0001Vw-JZ
+	for qemu-trivial@nongnu.org; Wed, 22 Jun 2011 07:45:06 -0400
+Received: from mail-pw0-f45.google.com ([209.85.160.45]:44038)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1QYEgj-0003Ix-4z; Sun, 19 Jun 2011 05:53:05 -0400
-Received: from smtp02.web.de  ( [172.20.0.184])
-	by fmmailgate03.web.de (Postfix) with ESMTP id 0092F1926DCBC;
-	Sun, 19 Jun 2011 11:53:03 +0200 (CEST)
-Received: from [92.74.60.106] (helo=mchn199C.mchp.siemens.de)
-	by smtp02.web.de with asmtp (TLSv1:AES256-SHA:256) (WEB.DE 4.110 #2)
-	id 1QYEgg-0008PN-00; Sun, 19 Jun 2011 11:53:02 +0200
-Message-ID: <4DFDC6FE.1080307@web.de>
-Date: Sun, 19 Jun 2011 11:53:02 +0200
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <peter.maydell@linaro.org>)
+	id 1QZLri-0001TO-8D; Wed, 22 Jun 2011 07:45:02 -0400
+Received: by pwi5 with SMTP id 5so570809pwi.4
+	for <multiple recipients>; Wed, 22 Jun 2011 04:45:00 -0700 (PDT)
 MIME-Version: 1.0
-To: qemu-trivial <qemu-trivial@nongnu.org>
-X-Enigmail-Version: 1.1.2
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-Sender: jan.kiszka@web.de
-X-Sender: jan.kiszka@web.de
-X-Provags-ID: V01U2FsdGVkX1+2DBEzlEXEihy8Qua6qxVbCJSgMXispB9shs0Z
-	rcPh5j3pStqtPEgppyIzhQkepRgNtjhdQRK6GKrj3mBg2ucx7k 44MjXIpsc=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.234
-Cc: qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] Align dummy display to fixed-size active
-	console
+Received: by 10.142.249.37 with SMTP id w37mr85690wfh.448.1308743100665; Wed,
+	22 Jun 2011 04:45:00 -0700 (PDT)
+Received: by 10.143.79.19 with HTTP; Wed, 22 Jun 2011 04:45:00 -0700 (PDT)
+In-Reply-To: <1307117440-18655-1-git-send-email-peter.maydell@linaro.org>
+References: <1307117440-18655-1-git-send-email-peter.maydell@linaro.org>
+Date: Wed, 22 Jun 2011 12:45:00 +0100
+Message-ID: <BANLkTinkEncx6FpP2vtBJaGAWD70joQe_w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.160.45
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] configure: Don't create
+ symlinks to nonexistent targets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,38 +43,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 19 Jun 2011 09:53:09 -0000
+X-List-Received-Date: Wed, 22 Jun 2011 11:45:11 -0000
 
-From: Jan Kiszka <jan.kiszka@siemens.com>
+ping?
 
-This fixes e.g. '-vga none -monitor vc:120Cx50C'.
+I didn't cc trivial first time round on the theory that any patch
+that makes it to v3 isn't trivial, but since nobody's commented
+on this version I guess it's OK...
 
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
----
- console.c |    9 ++++++++-
- 1 files changed, 8 insertions(+), 1 deletions(-)
+-- PMM
 
-diff --git a/console.c b/console.c
-index 9c6addf..acd8ca1 100644
---- a/console.c
-+++ b/console.c
-@@ -1349,8 +1349,15 @@ static struct DisplayAllocator default_allocator = {
- static void dumb_display_init(void)
- {
-     DisplayState *ds = qemu_mallocz(sizeof(DisplayState));
-+    int width = 640;
-+    int height = 480;
-+
-     ds->allocator = &default_allocator;
--    ds->surface = qemu_create_displaysurface(ds, 640, 480);
-+    if (is_fixedsize_console()) {
-+        width = active_console->g_width;
-+        height = active_console->g_height;
-+    }
-+    ds->surface = qemu_create_displaysurface(ds, width, height);
-     register_displaystate(ds);
- }
- 
--- 
-1.7.1
+On 3 June 2011 17:10, Peter Maydell <peter.maydell@linaro.org> wrote:
+> When we create the symlinks to source tree files, don't create them
+> if the file is not actually present in the source tree; this will
+> happen if the file is in a git submodule that wasn't checked out.
+>
+> This also avoids the odd effect where an in-source-tree configure
+> will end up creating the missing file as a symlink to itself.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> v1->v2: remove debug printing
+> v2->v3: don't use test constructs marked by POSIX as obsolete,
+> as pointed out by Paolo Bonzini
+>
+> =C2=A0configure | =C2=A0 =C2=A04 +++-
+> =C2=A01 files changed, 3 insertions(+), 1 deletions(-)
+>
+> diff --git a/configure b/configure
+> index a318d37..7f8ad24 100755
+> --- a/configure
+> +++ b/configure
+> @@ -3564,7 +3564,9 @@ for bios_file in $source_path/pc-bios/*.bin $source=
+_path/pc-bios/*.rom $source_p
+> =C2=A0done
+> =C2=A0mkdir -p $DIRS
+> =C2=A0for f in $FILES ; do
+> - =C2=A0 =C2=A0test -e $f || symlink $source_path/$f $f
+> + =C2=A0 =C2=A0if [ -e "$source_path/$f" ] && ! [ -e "$f" ]; then
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0symlink "$source_path/$f" "$f"
+> + =C2=A0 =C2=A0fi
+> =C2=A0done
+>
+> =C2=A0# temporary config to build submodules
+> --
+> 1.7.1
 
