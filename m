@@ -1,42 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QZf5O-0007sn-PX
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jun 2011 04:16:26 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:50596)
+	id 1QZh3Q-0006tz-1f
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jun 2011 06:22:32 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:50786)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1QZf5M-0007s7-14
-	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 04:16:25 -0400
+	(envelope-from <andreas.faerber@web.de>) id 1QZh3M-0006tL-UG
+	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 06:22:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1QZf5K-0001x1-JR
-	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 04:16:23 -0400
-Received: from fmmailgate01.web.de ([217.72.192.221]:43461)
+	(envelope-from <andreas.faerber@web.de>) id 1QZh3L-0007xd-Q2
+	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 06:22:28 -0400
+Received: from fmmailgate02.web.de ([217.72.192.227]:39917)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1QZf5H-0001wX-EP; Thu, 23 Jun 2011 04:16:19 -0400
+	(envelope-from <andreas.faerber@web.de>)
+	id 1QZh3I-0007wy-IM; Thu, 23 Jun 2011 06:22:24 -0400
 Received: from smtp06.web.de  ( [172.20.5.172])
-	by fmmailgate01.web.de (Postfix) with ESMTP id 73817191F3653;
-	Thu, 23 Jun 2011 10:15:56 +0200 (CEST)
-Received: from [88.65.252.133] (helo=mchn199C.mchp.siemens.de)
-	by smtp06.web.de with asmtp (TLSv1:AES256-SHA:256) (WEB.DE 4.110 #2)
-	id 1QZf4u-0000Qi-00; Thu, 23 Jun 2011 10:15:56 +0200
-Message-ID: <4E02F63B.7050701@web.de>
-Date: Thu, 23 Jun 2011 10:15:55 +0200
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
-MIME-Version: 1.0
-To: qemu-trivial <qemu-trivial@nongnu.org>
-X-Enigmail-Version: 1.1.2
-Content-Type: text/plain; charset=ISO-8859-15
+	by fmmailgate02.web.de (Postfix) with ESMTP id 3775A1A3907C4;
+	Thu, 23 Jun 2011 12:22:23 +0200 (CEST)
+Received: from [87.173.122.232] (helo=[10.0.1.1])
+	by smtp06.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
+	id 1QZh3H-0005zX-00; Thu, 23 Jun 2011 12:22:23 +0200
+Message-Id: <57FD980B-E6A3-4E1A-A83B-062B9954DB5C@web.de>
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
+To: Matthew Fernandez <matthew.fernandez@gmail.com>
+In-Reply-To: <BANLkTik5z-sZdPrt6+FMJwgvbehR9O2GwA@mail.gmail.com>
+Content-Type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
 Content-Transfer-Encoding: 7bit
-Sender: jan.kiszka@web.de
-X-Sender: jan.kiszka@web.de
-X-Provags-ID: V01U2FsdGVkX19qTv/YBidDgdVY13eOflOXFFFCiwPeiHRpZXgK
-	ufeAPMAgIEwMh3+s1TB2i9KrCNG6ZiG+YX6IW8PNi1T5m6C4vT wYER/9fqM=
+Mime-Version: 1.0 (Apple Message framework v936)
+Date: Thu, 23 Jun 2011 12:22:21 +0200
+References: <BANLkTik5z-sZdPrt6+FMJwgvbehR9O2GwA@mail.gmail.com>
+X-Mailer: Apple Mail (2.936)
+Sender: andreas.faerber@web.de
+X-Sender: Andreas.Faerber@web.de
+X-Provags-ID: V01U2FsdGVkX198JRIDETfdaA73OeSYS5DXXPGWoqS72nZ9uzWQ
+	/BLD5OdTvju1T8dx5nvmmB6PpMoYu2teQ+S4Rr1VK7mpW3IZVO
+	5nUBxJQLUzmtLd/GVALA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.221
-Cc: Stefan Weil <weil@mail.berlios.de>, qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] Do not include compatfd for WIN32
+X-Received-From: 217.72.192.227
+Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>,
+	qemu-devel Developers <qemu-devel@nongnu.org>,
+	Paul Brook <paul@codesourcery.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] Fix comment typos
+	in hw/armv7m.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,32 +51,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jun 2011 08:16:25 -0000
+X-List-Received-Date: Thu, 23 Jun 2011 10:22:30 -0000
 
-From: Jan Kiszka <jan.kiszka@siemens.com>
+Am 23.06.2011 um 02:59 schrieb Matthew Fernandez:
 
-sigset_t, used by that header, is not available in mingw32 environments.
+> Fix a couple of typos in comments.
+>
+> Signed-off-by: Matthew Fernandez <matthew.fernandez@gmail.com>
+> ----
+> This patch doesn't touch any code and should (hopefully) not be
+> controversial. There doesn't seem to be a maintainer for this file,
+> but changes are trivial.
+>
+>
+> diff --git a/hw/armv7m.c b/hw/armv7m.c
+> index 72d010a..83f3393 100644
+> --- a/hw/armv7m.c
+> +++ b/hw/armv7m.c
+> @@ -4,7 +4,7 @@
+>  * Copyright (c) 2006-2007 CodeSourcery.
+>  * Written by Paul Brook
+>  *
+> - * This code is licenced under the GPL.
+> + * This code is licensed under the GPL.
 
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
----
- cpus.c |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+Nack. Licence is British English, license American English. It's not  
+wrong.
 
-diff --git a/cpus.c b/cpus.c
-index 322295c..600f8f5 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -34,7 +34,10 @@
- 
- #include "qemu-thread.h"
- #include "cpus.h"
-+
-+#ifndef _WIN32
- #include "compatfd.h"
-+#endif
- 
- #ifdef SIGRTMIN
- #define SIG_IPI (SIGRTMIN+4)
--- 
-1.7.1
+>  */
+>
+> #include "sysbus.h"
+> @@ -14,7 +14,7 @@
+>
+> /* Bitbanded IO.  Each word corresponds to a single bit.  */
+>
+> -/* Get the byte address of the real memory for a bitband acess.  */
+> +/* Get the byte address of the real memory for a bitband access.  */
+
+This one's okay.
+
+Andreas
+
+> static inline uint32_t bitband_addr(void * opaque, uint32_t addr)
+> {
+>     uint32_t res;
+>
+
 
