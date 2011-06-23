@@ -1,30 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QZOgJ-0005jo-L8
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Jun 2011 10:45:27 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:32828)
+	id 1QZYGd-0002lQ-5h
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Jun 2011 20:59:35 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:33950)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1QZOgG-0005it-5v
-	for qemu-trivial@nongnu.org; Wed, 22 Jun 2011 10:45:25 -0400
+	(envelope-from <matthew.fernandez@gmail.com>) id 1QZYGZ-0002ko-J6
+	for qemu-trivial@nongnu.org; Wed, 22 Jun 2011 20:59:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1QZOgA-0003no-0z
-	for qemu-trivial@nongnu.org; Wed, 22 Jun 2011 10:45:23 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:42802)
+	(envelope-from <matthew.fernandez@gmail.com>) id 1QZYGY-0001Ls-Jo
+	for qemu-trivial@nongnu.org; Wed, 22 Jun 2011 20:59:31 -0400
+Received: from mail-pv0-f173.google.com ([74.125.83.173]:57362)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1QZOfy-0003hS-6a; Wed, 22 Jun 2011 10:45:06 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1QZOft-0004gj-KT; Wed, 22 Jun 2011 15:45:01 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <matthew.fernandez@gmail.com>)
+	id 1QZYGW-0001LZ-9W; Wed, 22 Jun 2011 20:59:28 -0400
+Received: by pvg3 with SMTP id 3so883373pvg.4
+	for <multiple recipients>; Wed, 22 Jun 2011 17:59:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:mime-version:date:message-id:subject:from:to:cc
+	:content-type; bh=NQgsNUikqp0mjEdjDkwxE3nfiOgINI/1kIBU4mxBwe0=;
+	b=g4/0t5UYDM6swQJk1aWWUSWghw03CzRJ8P7EdyB+hPZmfsBkyMgTnP+hLN7t8PLthD
+	y23KBrFyUEzEeehElAPBAE/rdox2onOv0HTbO7Tyllw8n1jEqv8DWnvmcJwyNYfOmywj
+	vdYYi8Fs17Qe7ksPBjGVXLJEHQeB7Oyqz53Pw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=mime-version:date:message-id:subject:from:to:cc:content-type;
+	b=c19IFMHwKeeRoQJ06xOL7NwDodWSkoeCHSOgeO6uR6gi2o8HD0VyGohrN3aOz3kFj6
+	kUjaFmUwOeMZzRWkw0aI6H/iavr/vwtW+bOmXUZ+lYC3I8TfmlmilX5m11YIp1flZ22z
+	GB6zKUR0cbrv8ggOdpO3OuVf3r1+sbSifRSHk=
+MIME-Version: 1.0
+Received: by 10.68.7.4 with SMTP id f4mr815763pba.208.1308790766739; Wed, 22
+	Jun 2011 17:59:26 -0700 (PDT)
+Received: by 10.68.48.229 with HTTP; Wed, 22 Jun 2011 17:59:26 -0700 (PDT)
+Date: Thu, 23 Jun 2011 10:59:26 +1000
+Message-ID: <BANLkTik5z-sZdPrt6+FMJwgvbehR9O2GwA@mail.gmail.com>
+From: Matthew Fernandez <matthew.fernandez@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 22 Jun 2011 15:45:01 +0100
-Message-Id: <1308753901-17998-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
-	patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Fix typo in email address
+X-Received-From: 74.125.83.173
+Cc: qemu-trivial@nongnu.org, paul@codesourcery.com
+Subject: [Qemu-trivial] [PATCH trivial] Fix comment typos in hw/armv7m.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,29 +49,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Jun 2011 14:45:26 -0000
+X-List-Received-Date: Thu, 23 Jun 2011 00:59:33 -0000
 
-Fix a typo in one of the copies of Aurelien Jarno's email address.
+Fix a couple of typos in comments.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- MAINTAINERS |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Signed-off-by: Matthew Fernandez <matthew.fernandez@gmail.com>
+----
+This patch doesn't touch any code and should (hopefully) not be
+controversial. There doesn't seem to be a maintainer for this file,
+but changes are trivial.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 35d4496..6115e4e 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -480,7 +480,7 @@ S: Maintained
- F: tcg/ia64/
- 
- MIPS target
--M: Aurelien Jarno <aurelien@aurel32.ne>
-+M: Aurelien Jarno <aurelien@aurel32.net>
- S: Maintained
- F: tcg/mips/
- 
--- 
-1.7.1
 
+diff --git a/hw/armv7m.c b/hw/armv7m.c
+index 72d010a..83f3393 100644
+--- a/hw/armv7m.c
++++ b/hw/armv7m.c
+@@ -4,7 +4,7 @@
+  * Copyright (c) 2006-2007 CodeSourcery.
+  * Written by Paul Brook
+  *
+- * This code is licenced under the GPL.
++ * This code is licensed under the GPL.
+  */
+
+ #include "sysbus.h"
+@@ -14,7 +14,7 @@
+
+ /* Bitbanded IO.  Each word corresponds to a single bit.  */
+
+-/* Get the byte address of the real memory for a bitband acess.  */
++/* Get the byte address of the real memory for a bitband access.  */
+ static inline uint32_t bitband_addr(void * opaque, uint32_t addr)
+ {
+     uint32_t res;
 
