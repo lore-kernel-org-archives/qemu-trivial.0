@@ -1,54 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QZk1v-0006DX-R3
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jun 2011 09:33:11 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:41181)
+	id 1QZk38-0006ZJ-HS
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jun 2011 09:34:26 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:41679)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QZk1s-0006Cb-Aq
-	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 09:33:09 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QZk35-0006YR-GM
+	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 09:34:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QZk1q-0002tK-EV
-	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 09:33:08 -0400
-Received: from mail-wy0-f173.google.com ([74.125.82.173]:54470)
+	(envelope-from <stefanha@gmail.com>) id 1QZk34-000360-5v
+	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 09:34:23 -0400
+Received: from mail-ww0-f41.google.com ([74.125.82.41]:56063)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1QZk1q-0002t8-4E; Thu, 23 Jun 2011 09:33:06 -0400
-Received: by wyf28 with SMTP id 28so1431419wyf.4
-	for <multiple recipients>; Thu, 23 Jun 2011 06:33:05 -0700 (PDT)
+	id 1QZk30-000355-53; Thu, 23 Jun 2011 09:34:18 -0400
+Received: by wwi14 with SMTP id 14so1381531wwi.4
+	for <multiple recipients>; Thu, 23 Jun 2011 06:34:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=domainkey-signature:date:from:to:cc:subject:message-id:references
 	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=1/k9jJ2DqldakXCwAdXxl0HDKRnRZeDGIMtiBnsP9Rw=;
-	b=b8HFKCqTHplJlX+eSCqWL8n1/JfPK13H1Lcmn5fPjJdFNrtkRz8YiVK7EcCuRkUTdT
-	4hsF4glTl/1nLzoD+zE9rsMu4cFCnHDhbNpkRsoMMOEcFCJZqUYMGORCxum01jG8+nFT
-	Gwz5TD3Y0pnJFp51kRJacfGknHAJrVUbr50yk=
+	:user-agent; bh=r4DavDlQDj5F7xiE2HuYebiERxjRaQzYQm038Rs1knw=;
+	b=GgF8slzodK0Ylu1/GtLDXsExTm7Le9CN5/k2wUFT5BNiZxe9wYLkmtFi4BtWvPQ+Nw
+	xcmyWqWUWCSG8zHjpLDxjEr42FxGVqx+xlOZAeZ2KyZt21RfMQ0idKS5hO2deHhgcFLk
+	UqfZarcjljcPnB6tL460aLB/xxHLayt2XYhu8=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	b=m8TaltqllnntCpyqBHqVQiDCQUzcEKOpqd2osB/mG+aG0zYtSBVPc/sZ1OalRcXx9p
-	0s23yRRiobcV0KTqs9DdIosTL3bsPo8IokF970DRK1C3cLtH3t+R2t8jpeJKEpgWhYvA
-	Uja5+sAENkgTixMVOOPy+onll9e0t6wLyon0I=
-Received: by 10.216.171.18 with SMTP id q18mr1928388wel.47.1308835984989;
-	Thu, 23 Jun 2011 06:33:04 -0700 (PDT)
+	b=guwgWGXNgeqrs8X0Svz2b4oatqoxUI84iGH5u9BWtYVNFv8OGC0rS2aUKjMTnvxPoS
+	FBZnjx2Me9ZEdbYZsyyrI56pq8Mz1S6icXUeusDr5a+rW9jZn0MZpX9L/gFAaQF3U926
+	A1bvSM7+a0V8p8SWNvPpHjLpzeBT+mVvaKEac=
+Received: by 10.216.231.89 with SMTP id k67mr1868757weq.113.1308836056678;
+	Thu, 23 Jun 2011 06:34:16 -0700 (PDT)
 Received: from stefanha-thinkpad.localdomain
 	(gbibp9ph1--blueice2n1.emea.ibm.com [195.212.29.75])
-	by mx.google.com with ESMTPS id d7sm863340wek.45.2011.06.23.06.33.03
+	by mx.google.com with ESMTPS id w62sm864009wec.42.2011.06.23.06.34.14
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 23 Jun 2011 06:33:04 -0700 (PDT)
-Date: Thu, 23 Jun 2011 14:32:58 +0100
+	Thu, 23 Jun 2011 06:34:15 -0700 (PDT)
+Date: Thu, 23 Jun 2011 14:34:11 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Jan Kiszka <jan.kiszka@web.de>
-Message-ID: <20110623133258.GA12698@stefanha-thinkpad.localdomain>
-References: <4DFDC6FE.1080307@web.de>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20110623133411.GC12698@stefanha-thinkpad.localdomain>
+References: <1308753901-17998-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <4DFDC6FE.1080307@web.de>
+In-Reply-To: <1308753901-17998-1-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] Align dummy display to fixed-size active
- console
+X-Received-From: 74.125.82.41
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Aurelien Jarno <aurelien@aurel32.net>, patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: Fix typo in
+	email address
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,17 +61,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jun 2011 13:33:09 -0000
+X-List-Received-Date: Thu, 23 Jun 2011 13:34:25 -0000
 
-On Sun, Jun 19, 2011 at 11:53:02AM +0200, Jan Kiszka wrote:
-> From: Jan Kiszka <jan.kiszka@siemens.com>
+On Wed, Jun 22, 2011 at 03:45:01PM +0100, Peter Maydell wrote:
+> Fix a typo in one of the copies of Aurelien Jarno's email address.
 > 
-> This fixes e.g. '-vga none -monitor vc:120Cx50C'.
-> 
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  console.c |    9 ++++++++-
->  1 files changed, 8 insertions(+), 1 deletions(-)
+>  MAINTAINERS |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
 Thanks, applied to the trivial patches tree:
 http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
