@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QZk3P-0006eh-Gk
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jun 2011 09:34:43 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:41775)
+	id 1QZk3c-0006iZ-BD
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jun 2011 09:34:56 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:41794)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QZk3N-0006dk-19
-	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 09:34:42 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QZk3Y-0006gw-PP
+	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 09:34:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QZk3L-00038g-K7
-	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 09:34:40 -0400
-Received: from mail-wy0-f173.google.com ([74.125.82.173]:65084)
+	(envelope-from <stefanha@gmail.com>) id 1QZk3X-00039j-9W
+	for qemu-trivial@nongnu.org; Thu, 23 Jun 2011 09:34:52 -0400
+Received: from mail-ww0-f53.google.com ([74.125.82.53]:62380)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1QZk3H-000380-Aa; Thu, 23 Jun 2011 09:34:35 -0400
-Received: by wyf28 with SMTP id 28so1432424wyf.4
-	for <multiple recipients>; Thu, 23 Jun 2011 06:34:34 -0700 (PDT)
+	id 1QZk3W-00039c-TR; Thu, 23 Jun 2011 09:34:51 -0400
+Received: by wwf26 with SMTP id 26so1680020wwf.10
+	for <multiple recipients>; Thu, 23 Jun 2011 06:34:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=domainkey-signature:date:from:to:cc:subject:message-id:references
 	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=BXpS7bw1KxsClM00eFdNNnKbwjrXoJg0VUSmNf95leQ=;
-	b=Eio9uvAFh3b8OGBZ0cZV6ERi7JHLFt164WxrJKoH5x4yXS0+k0ylS0WwhfDBq/AAOH
-	nWKVVrclBjf7UbGaAwdi86foO0dxA4//mL4jbj66nh4jGonK1bcuiOdaaGBrRLAAs0W4
-	taCURxagdhJO9KkEkfjiQ+HbwI4TaAQ7wBpJY=
+	:user-agent; bh=gyLbk9QHEPaeAhFQfpThXLOkMasl85jHzXnzX73hg+4=;
+	b=hkTL0Ul1HD2/Y6we1DRzd6riqlxdT6X2VZEQWXb1d2bY3ZdJQ27kwFazVdjYHLQD4a
+	39z5tcN83TP8Sw/KOg5jdwhxcjLUNuuElwweDCav2gCvQflXm4FZleGuHpabC+tS3t5W
+	80JEsX0SIQqU1xihQ6daSWC1JWsPVFWJW6RYk=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	b=CXhcsr932PRBjwRyJ95qJyAPAlzJCEfDivk0JSXLhU9HSnbSjpjN5t0ayBWqQQkMd3
-	uNvIZfW9zbtB/qPNOu4Ap2P3YvsTTZl9oMam0PE9wGRXrcCWH+zAs/w0LtunUFPocZeP
-	FKy/a/qJhbiTs0kprR71vDRIYDZTOnrgruepg=
-Received: by 10.216.237.136 with SMTP id y8mr3311714weq.76.1308836073861;
-	Thu, 23 Jun 2011 06:34:33 -0700 (PDT)
+	b=t9XX36Zwvqm9cOeHVn9B9OmZEkusUWYU1dgBF0c9PFe1O9tuW+INmpiwXaDSbhw1m1
+	8rytDR8dq/poQAJpMHW8TCfM1bY0s2nf2u6bNVpPOZIHW3xkUB0R1r6sT6Giws3qIGUy
+	JIwl8XLMzwSQGdfMtBHHOJ9JX/o4EqLumuG9o=
+Received: by 10.216.254.37 with SMTP id g37mr1923401wes.36.1308836088353;
+	Thu, 23 Jun 2011 06:34:48 -0700 (PDT)
 Received: from stefanha-thinkpad.localdomain
 	(gbibp9ph1--blueice2n1.emea.ibm.com [195.212.29.75])
-	by mx.google.com with ESMTPS id c17sm1243198wbh.12.2011.06.23.06.34.31
+	by mx.google.com with ESMTPS id w58sm865367weq.25.2011.06.23.06.34.46
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 23 Jun 2011 06:34:32 -0700 (PDT)
-Date: Thu, 23 Jun 2011 14:34:29 +0100
+	Thu, 23 Jun 2011 06:34:47 -0700 (PDT)
+Date: Thu, 23 Jun 2011 14:34:44 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Matthew Fernandez <matthew.fernandez@gmail.com>
-Message-ID: <20110623133429.GD12698@stefanha-thinkpad.localdomain>
-References: <BANLkTik5z-sZdPrt6+FMJwgvbehR9O2GwA@mail.gmail.com>
+To: Jan Kiszka <jan.kiszka@web.de>
+Message-ID: <20110623133444.GE12698@stefanha-thinkpad.localdomain>
+References: <4E02F63B.7050701@web.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <BANLkTik5z-sZdPrt6+FMJwgvbehR9O2GwA@mail.gmail.com>
+In-Reply-To: <4E02F63B.7050701@web.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, paul@codesourcery.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] Fix comment typos
-	in hw/armv7m.c
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <weil@mail.berlios.de>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] Do not include compatfd for WIN32
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,17 +60,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jun 2011 13:34:42 -0000
+X-List-Received-Date: Thu, 23 Jun 2011 13:34:54 -0000
 
-On Thu, Jun 23, 2011 at 10:59:26AM +1000, Matthew Fernandez wrote:
-> Fix a couple of typos in comments.
+On Thu, Jun 23, 2011 at 10:15:55AM +0200, Jan Kiszka wrote:
+> From: Jan Kiszka <jan.kiszka@siemens.com>
 > 
-> Signed-off-by: Matthew Fernandez <matthew.fernandez@gmail.com>
-> ----
-> This patch doesn't touch any code and should (hopefully) not be
-> controversial. There doesn't seem to be a maintainer for this file,
-> but changes are trivial.
+> sigset_t, used by that header, is not available in mingw32 environments.
 > 
+> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> ---
+>  cpus.c |    3 +++
+>  1 files changed, 3 insertions(+), 0 deletions(-)
 
 Thanks, applied to the trivial patches tree:
 http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
