@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QZyyl-00081q-A2
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jun 2011 01:30:55 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46657)
+	id 1QZz8i-0001bv-5N
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Jun 2011 01:41:12 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:45265)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QZyyi-00081H-F7
-	for qemu-trivial@nongnu.org; Fri, 24 Jun 2011 01:30:53 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QZz8e-0001b3-8A
+	for qemu-trivial@nongnu.org; Fri, 24 Jun 2011 01:41:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QZyyg-0002YG-RG
-	for qemu-trivial@nongnu.org; Fri, 24 Jun 2011 01:30:52 -0400
-Received: from mail-yx0-f173.google.com ([209.85.213.173]:59165)
+	(envelope-from <stefanha@gmail.com>) id 1QZz8c-0003j9-OO
+	for qemu-trivial@nongnu.org; Fri, 24 Jun 2011 01:41:08 -0400
+Received: from mail-gx0-f173.google.com ([209.85.161.173]:39263)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1QZyye-0002Xv-2e; Fri, 24 Jun 2011 01:30:48 -0400
-Received: by yxs7 with SMTP id 7so1288485yxs.4
-	for <multiple recipients>; Thu, 23 Jun 2011 22:30:47 -0700 (PDT)
+	id 1QZz8Y-0003it-Un; Fri, 24 Jun 2011 01:41:03 -0400
+Received: by gxk26 with SMTP id 26so1319345gxk.4
+	for <multiple recipients>; Thu, 23 Jun 2011 22:41:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=domainkey-signature:mime-version:in-reply-to:references:date
 	:message-id:subject:from:to:cc:content-type;
-	bh=zGlaR6rKHosA1h3vDTcx839XRdVkd6DmnxuQBoRU+4M=;
-	b=TiX0R5+Ix/keeW5AdXWS+8FbeWrJunFZxAFaQqSAAN09qr3Vx/E9YU3mj5O7/GILPo
-	EFrTiNEgdm9zsZ8QKj+Mqb6aTkwKOtMrUvZxrbcoUt0ZJYQ7LvUNW/qJAugF5gYjEX/L
-	cAy5Im9PBbFDsH/gTPXyDOEQmD8hkDsuWtB0w=
+	bh=OltWIWTf6eHYwrxflrDGz8lPeg+Q4Z2OvQh71xIuFAs=;
+	b=RxGrWFxx6LIAQ9BpTsUzBlIYpACCHOrHmfQGuGPEdwmM7KPFsRssiUrYHrKBIVeoPM
+	/uzpu6KC+sN0aLmvJl+UKOUFPVcTpD3m9CQOl19RgZ92sjUDLwWvwhevWVUu8Xw4umEE
+	tw3cqEYJm8IVsk4X+KZxn4uy/JAKCCAs4DflQ=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
 	:cc:content-type;
-	b=wowdi/ctXjah7/ZZJ3trF/mOSjrWBdUtG9YZDZ91q0ZzX4BETKhrFqd1YO4hyCu9WS
-	JZdz5y+FyNl4GvF87SQHn3FSodMBHa4Q5iS7yR6zVqNcgMgWi6N9KpID9fN83GqT7fAQ
-	CV+GIocGuE1wktzs+ZLXTCcQin7TkpPDl6LrE=
+	b=OAiin8Eb7mwLtGy0cogEYPwhUr/JFceHaZFHgsgT9jm8cd4PiejT9f+CkWHl/oYIfp
+	2GBjESusjAhz+t+YHyhek4ZjMr6DfzEMUzSbMjkAp/je5y7B9ipb8F6VsTo2VyT3NAmS
+	uAHgxJEZ7Z7qrt9eUUFdfxFrWnPGHrfAONQ5I=
 MIME-Version: 1.0
-Received: by 10.236.185.233 with SMTP id u69mr4668291yhm.19.1308893447260;
-	Thu, 23 Jun 2011 22:30:47 -0700 (PDT)
-Received: by 10.147.136.16 with HTTP; Thu, 23 Jun 2011 22:30:47 -0700 (PDT)
-In-Reply-To: <4E03564A.5060201@mail.berlios.de>
-References: <BANLkTika6YmzRYAnta8TgQGpLSpoAdpKNQ@mail.gmail.com>
-	<4DFC636D.9090800@mail.berlios.de>
-	<20110623135202.GA12765@stefanha-thinkpad.localdomain>
-	<4E03564A.5060201@mail.berlios.de>
-Date: Fri, 24 Jun 2011 06:30:47 +0100
-Message-ID: <BANLkTi=+f3Gc++Y4iU7x3i1fO=rnoM=Z4Q@mail.gmail.com>
+Received: by 10.236.180.68 with SMTP id i44mr4428630yhm.86.1308894061703; Thu,
+	23 Jun 2011 22:41:01 -0700 (PDT)
+Received: by 10.147.136.16 with HTTP; Thu, 23 Jun 2011 22:41:01 -0700 (PDT)
+In-Reply-To: <4E034E79.5050901@mail.berlios.de>
+References: <4E02F63E.3010908@web.de>
+	<20110623133508.GF12698@stefanha-thinkpad.localdomain>
+	<4E034E79.5050901@mail.berlios.de>
+Date: Fri, 24 Jun 2011 06:41:01 +0100
+Message-ID: <BANLkTikpwAVCpEdQzpBWLx=2CmkxXxEMAA@mail.gmail.com>
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Stefan Weil <weil@mail.berlios.de>
 Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.213.173
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
-	Roy Tam <roytam@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fix MinGW compilation when
- --enable-vnc-jpeg is specified
+X-Received-From: 209.85.161.173
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] Avoid double definitions of PRI*64
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,86 +56,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jun 2011 05:30:54 -0000
+X-List-Received-Date: Fri, 24 Jun 2011 05:41:09 -0000
 
-On Thu, Jun 23, 2011 at 4:05 PM, Stefan Weil <weil@mail.berlios.de> wrote:
-> Am 23.06.2011 15:52, schrieb Stefan Hajnoczi:
+On Thu, Jun 23, 2011 at 3:32 PM, Stefan Weil <weil@mail.berlios.de> wrote:
+> Am 23.06.2011 15:35, schrieb Stefan Hajnoczi:
 >>
->> On Sat, Jun 18, 2011 at 10:35:57AM +0200, Stefan Weil wrote:
+>> On Thu, Jun 23, 2011 at 10:15:58AM +0200, Jan Kiszka wrote:
 >>>
->>> Am 18.06.2011 07:13, schrieb Roy Tam:
->>>>
->>>> This patch fix conflicting types for 'INT32' in basetsd.h in including
->>>> qemu-common.h first.
->>>>
->>>>
->>>> Sign-off-by: Roy Tam<roytam@gmail.com>
->>>> --
->>>> diff --git a/ui/vnc-enc-tight.c b/ui/vnc-enc-tight.c
->>>> index 87fdf35..1591df0 100644
->>>> --- a/ui/vnc-enc-tight.c
->>>> +++ b/ui/vnc-enc-tight.c
->>>> @@ -28,6 +28,8 @@
->>>>
->>>> #include "config-host.h"
->>>>
->>>> +#include "qemu-common.h"
->>>> +
->>>> #ifdef CONFIG_VNC_PNG
->>>> #include<png.h>
->>>> #endif
->>>> @@ -36,8 +38,6 @@
->>>> #include<jpeglib.h>
->>>> #endif
->>>>
->>>> -#include "qemu-common.h"
->>>> -
->>>> #include "bswap.h"
->>>> #include "qint.h"
->>>> #include "vnc.h"
+>>> From: Jan Kiszka <jan.kiszka@siemens.com>
 >>>
->>> Acked-by: Stefan Weil <weil@mail.berlios.de>
+>>> Recent mingw32 provide those defines.
+>
+> ... and all of those defines are wrong, because QEMU does not use
+> MS format specifiers. http://patchwork.ozlabs.org/patch/74276/
+> tried to fix this. My preferred solution is removing those PRI*64 from
+> qemu-common.h, because not only recent mingw32 versions provide
+> the (wrong) definitions, but even the Debian version provides them
+> (which is really old, but I use it for my regression tests).
+>
+> The wrong definitions do not allow using -Wformat for mingw32
+> builds, but they work because (most?) relevant mingw32 functions
+> accept both MS and standard format specifiers.
+>
+> Adding the correct definitions (to qemu-os-win32.h, not to qemu-common.h)
+> would be another solution as long as mingw32 does not handle
+> __USE_MINGW_ANSI_STDIO correctly.
+>
 >>>
->>> The conflicting declaration is in jmorecfg.h which is included from
->>> jpeglib.h.
+>>> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+>>> ---
+>>> qemu-common.h | 3 +++
+>>> 1 files changed, 3 insertions(+), 0 deletions(-)
 >>
->> Is the problem that the Windows headers included from qemu-common.h try
->> to #define INT32?
->> http://msdn.microsoft.com/en-us/library/aa383751(v=vs.85).aspx
+>> It's never too late to implement C99!
 >>
->> In that case I think an explicit fix is better:
->>
->> #ifdef _WIN32
->> /* Include this before jpeglib.h for the INT32 definition */
->> #include <basetsd.h>
->> #endif
->>
->> ...followed by png/jpeg includes...
->>
->> Simply moving qemu-common.h provides no hints and is rather indirect.
->> Someone may move it back in the future.
+>> Thanks, applied to the trivial patches tree:
+>> http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 >>
 >> Stefan
 >
-> INT32 is declared in basetsd.h which is included from windows.h
-> (with some indirections) which is included from qemu-os-win32.h
-> which is included from qemu-common.h.
->
-> INT32 is not a #define, but a data type (typedef) and very common
-> for w32 compilations. Windows programmers don't include basetsd.h
-> directly, but usually use windows.h.
->
-> Including qemu-common.h right at the beginning (after config.h where
-> needed) should be good practice for QEMU source code - like this:
+> Stefan, the patch won't harm, but it's also unnecessary.
+> So it's up to you whether you remove it from your queue,
+> modify it as I suggested above or apply it as it is.
 
-Too bad qemu-common.h doesn't just include system headers, it also
-declares a bunch of QEMU stuff.
+Keeping those #defines unconditional prevents new mingw builds from
+working, according to the commit description.  So we have to either
+remove them entirely or do them correctly.  Dropping this patch will
+keep the build from working.
 
-> As long as the maintainers don't accept patches which simply move
-> qemu-common.h, there is no danger. :-)
-
-Sure but isn't always noticed.  That is why I suggest adding a comment
-about the jpeg interaction.
+I suggest we keep this patch.  A follow-up patch can us MS format
+specifiers or do any other adjustments that make this work better.
+Stefan, would you be able to send that patch?
 
 Stefan
 
