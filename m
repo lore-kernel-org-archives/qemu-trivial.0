@@ -1,42 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qa3Qi-0003VT-D0
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jun 2011 06:16:04 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:39934)
+	id 1Qa3Ze-0006FL-G0
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Jun 2011 06:25:18 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:34566)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Qa3Qe-0003UW-SY
-	for qemu-trivial@nongnu.org; Fri, 24 Jun 2011 06:16:02 -0400
+	(envelope-from <stefanha@gmail.com>) id 1Qa3Za-0006Cg-Qi
+	for qemu-trivial@nongnu.org; Fri, 24 Jun 2011 06:25:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Qa3Qd-000150-AS
-	for qemu-trivial@nongnu.org; Fri, 24 Jun 2011 06:16:00 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41261)
+	(envelope-from <stefanha@gmail.com>) id 1Qa3ZY-0002Ji-D9
+	for qemu-trivial@nongnu.org; Fri, 24 Jun 2011 06:25:14 -0400
+Received: from mail-ww0-f53.google.com ([74.125.82.53]:53589)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1Qa3QZ-00014a-L6; Fri, 24 Jun 2011 06:15:55 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	9D66A72818A5; Fri, 24 Jun 2011 12:15:53 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id bo1ZmHVcY4zj; Fri, 24 Jun 2011 12:15:53 +0200 (CEST)
-Received: from flocke.weilnetz.de (p5086FA80.dip.t-dialin.net [80.134.250.128])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	E959372818A4; Fri, 24 Jun 2011 12:15:52 +0200 (CEST)
-Received: from stefan by flocke.weilnetz.de with local (Exim 4.72)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1Qa3QW-0001AD-76; Fri, 24 Jun 2011 12:15:52 +0200
-From: Stefan Weil <weil@mail.berlios.de>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Date: Fri, 24 Jun 2011 12:15:49 +0200
-Message-Id: <1308910549-4445-1-git-send-email-weil@mail.berlios.de>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1308896356-17797-1-git-send-email-weil@mail.berlios.de>
-References: <1308896356-17797-1-git-send-email-weil@mail.berlios.de>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
-Subject: [Qemu-trivial] [PATCH] w32: Remove redundant definitions of PRI*64
+	(envelope-from <stefanha@gmail.com>)
+	id 1Qa3ZT-0002Fk-Ro; Fri, 24 Jun 2011 06:25:08 -0400
+Received: by wwf26 with SMTP id 26so2409032wwf.10
+	for <multiple recipients>; Fri, 24 Jun 2011 03:25:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=domainkey-signature:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=SItrTblBbFvbezldaU9Xp1BLA50OGeBfyuvd2qK1w0c=;
+	b=sQ2GM2A5uAm6cKkEOnDXZgw+FM70xO/6trO8KqG95rSyh+a611OtlWIP/u5vEszeXw
+	xDxJgmUhjHXyzY4Z8WeOO4x9HLUJco1Ee1LHOnaaa3nu11flBHGbEW/IDOeHI3TKKB4O
+	cqTlXTFaLHzxAMe5Uij42EFENDwffI3sUbJ7U=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	b=xRQ7fg6+48KD9MBzfs3F6Sk6l5XBDDmsCPFnSZkCk3iazB5luJ1W+viCDVrQ1HIUgM
+	WIxPk+KWzSHHPVIOGM75SIac4XHuAIlhwwXPnZjXCW7+wQvW2dZITSssyJQEjBMPI7d3
+	FSmA2IW7E07hVoL2q4fuMgavdtrY50VF/vM7g=
+Received: by 10.227.206.82 with SMTP id ft18mr2847107wbb.64.1308911105567;
+	Fri, 24 Jun 2011 03:25:05 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain
+	(gbibp9ph1--blueice2n1.emea.ibm.com [195.212.29.75])
+	by mx.google.com with ESMTPS id et5sm1893522wbb.50.2011.06.24.03.25.03
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 24 Jun 2011 03:25:04 -0700 (PDT)
+Date: Fri, 24 Jun 2011 11:24:59 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <weil@mail.berlios.de>
+Message-ID: <20110624102459.GA18653@stefanha-thinkpad.localdomain>
+References: <1308856793-29724-1-git-send-email-weil@mail.berlios.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1308856793-29724-1-git-send-email-weil@mail.berlios.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] Fix compilation for non-POSIX system
+	(w64)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,33 +60,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jun 2011 10:16:02 -0000
+X-List-Received-Date: Fri, 24 Jun 2011 10:25:16 -0000
 
-The PRI*64 macros are defined in MinGW's inttypes.h since 2002,
-so they are not needed in qemu-common.h (which includes inttypes.h).
+On Thu, Jun 23, 2011 at 09:19:53PM +0200, Stefan Weil wrote:
+> compatfd.h is only needed with CONFIG_POSIX.
+> Compilation fails in compatfd.h for at least one non-POSIX systems (w64).
+> 
+> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+> ---
+>  cpus.c |    2 ++
+>  1 files changed, 2 insertions(+), 0 deletions(-)
 
-Signed-off-by: Stefan Weil <weil@mail.berlios.de>
----
- qemu-common.h |    5 -----
- 1 files changed, 0 insertions(+), 5 deletions(-)
+Thanks!  Jan's patch which is similar but uses #ifndef _WIN32 is already
+queued.  The cpus.c qemu_signalfd() usage is #ifndef _WIN32, so I think
+there's a logic to keeping that patch.
 
-diff --git a/qemu-common.h b/qemu-common.h
-index 109498d..abd7a75 100644
---- a/qemu-common.h
-+++ b/qemu-common.h
-@@ -112,11 +112,6 @@ static inline char *realpath(const char *path, char *resolved_path)
-     _fullpath(resolved_path, path, _MAX_PATH);
-     return resolved_path;
- }
--
--#define PRId64 "I64d"
--#define PRIx64 "I64x"
--#define PRIu64 "I64u"
--#define PRIo64 "I64o"
- #endif
- 
- /* FIXME: Remove NEED_CPU_H.  */
--- 
-1.7.0.4
-
+Stefan
 
