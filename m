@@ -1,42 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QaijZ-0005cM-BD
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Jun 2011 02:22:17 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:51461)
+	id 1QanEL-0007Ae-MB
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Jun 2011 07:10:21 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:58536)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>) id 1QaijV-0005bI-RD
-	for qemu-trivial@nongnu.org; Sun, 26 Jun 2011 02:22:14 -0400
+	(envelope-from <andreas.faerber@web.de>) id 1QanEI-0007A2-Nv
+	for qemu-trivial@nongnu.org; Sun, 26 Jun 2011 07:10:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>) id 1QaijR-0001Dw-Po
-	for qemu-trivial@nongnu.org; Sun, 26 Jun 2011 02:22:13 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59301)
+	(envelope-from <andreas.faerber@web.de>) id 1QanEH-0003lR-QX
+	for qemu-trivial@nongnu.org; Sun, 26 Jun 2011 07:10:18 -0400
+Received: from fmmailgate01.web.de ([217.72.192.221]:33812)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>)
-	id 1QaijN-0001CX-Jw; Sun, 26 Jun 2011 02:22:05 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	40F047281C3B; Sun, 26 Jun 2011 08:22:02 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id zneKzfBIWVxs; Sun, 26 Jun 2011 08:22:00 +0200 (CEST)
-Received: from [192.168.178.20] (p54ADB4D5.dip.t-dialin.net [84.173.180.213])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	82CAD72818A1; Sun, 26 Jun 2011 08:22:00 +0200 (CEST)
-Message-ID: <4E06D007.50600@mail.berlios.de>
-Date: Sun, 26 Jun 2011 08:21:59 +0200
-From: Stefan Weil <weil@mail.berlios.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US;
-	rv:1.9.2.17) Gecko/20110424 Thunderbird/3.1.10
-MIME-Version: 1.0
-To: Matthew Fernandez <matthew.fernandez@gmail.com>
-References: <BANLkTinRT1a-r7uDJBxu9E7J1MZV7Rq4Lg@mail.gmail.com>
+	(envelope-from <andreas.faerber@web.de>)
+	id 1QanEE-0003kp-PB; Sun, 26 Jun 2011 07:10:15 -0400
+Received: from smtp04.web.de  ( [172.20.0.225])
+	by fmmailgate01.web.de (Postfix) with ESMTP id F3C7819216477;
+	Sun, 26 Jun 2011 13:10:12 +0200 (CEST)
+Received: from [87.173.99.245] (helo=[10.0.1.1])
+	by smtp04.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
+	id 1QanEC-0008Tu-00; Sun, 26 Jun 2011 13:10:12 +0200
+Message-Id: <2F28257F-F450-4322-9BB8-966F6B40888E@web.de>
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
+To: qemu-devel Developers <qemu-devel@nongnu.org>
 In-Reply-To: <BANLkTinRT1a-r7uDJBxu9E7J1MZV7Rq4Lg@mail.gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, qemu-devel Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed; delsp=yes
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0 (Apple Message framework v936)
+Date: Sun, 26 Jun 2011 13:10:11 +0200
+References: <BANLkTinRT1a-r7uDJBxu9E7J1MZV7Rq4Lg@mail.gmail.com>
+X-Mailer: Apple Mail (2.936)
+Sender: andreas.faerber@web.de
+X-Sender: Andreas.Faerber@web.de
+X-Provags-ID: V01U2FsdGVkX19OONvD5sjr1pAWvlCe0DGbMQD0VPEdSlBljiH2
+	PjgF8Ek2sN/abBAVmxgtujXvFY2v2MNfRT4Rm06TLvDptfT9aC
+	botJpsT9nuy39//QtASg==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 217.72.192.221
+Cc: qemu-trivial@nongnu.org, Matthew Fernandez <matthew.fernandez@gmail.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Correct spelling of licensed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -49,16 +48,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Jun 2011 06:22:15 -0000
+X-List-Received-Date: Sun, 26 Jun 2011 11:10:20 -0000
 
-Am 26.06.2011 04:21, schrieb Matthew Fernandez:
+Am 26.06.2011 um 04:21 schrieb Matthew Fernandez:
+
 > Correct typos of "licenced" to "licensed".
 >
-> Signed-off-by: Matthew Fernandez<matthew.fernandez@gmail.com>
-> ----
+> Signed-off-by: Matthew Fernandez <matthew.fernandez@gmail.com>
 
-Thanks.
+Reviewed-by: Andreas F=E4rber <andreas.faerber@web.de>
 
-Reviewed-by: Stefan Weil <weil@mail.berlios.de>
 
+BTW some of the files refer to "the GPL" or "the LGPL". Does that mean =20=
+
+version 1.0 or any version?
+
+Andreas=
 
