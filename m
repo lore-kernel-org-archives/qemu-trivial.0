@@ -1,57 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qb3ET-0006qR-Vf
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Jun 2011 00:15:34 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:50786)
+	id 1QbRWr-0005g0-IE
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2011 02:12:09 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:38634)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <roytam@gmail.com>) id 1Qb3EP-0006pC-Uf
-	for qemu-trivial@nongnu.org; Mon, 27 Jun 2011 00:15:31 -0400
+	(envelope-from <agenthh@gmail.com>) id 1QbRWn-0005fo-UZ
+	for qemu-trivial@nongnu.org; Tue, 28 Jun 2011 02:12:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <roytam@gmail.com>) id 1Qb3EO-0002Yd-If
-	for qemu-trivial@nongnu.org; Mon, 27 Jun 2011 00:15:29 -0400
-Received: from mail-ww0-f53.google.com ([74.125.82.53]:38034)
+	(envelope-from <agenthh@gmail.com>) id 1QbRWm-0007Nf-Tb
+	for qemu-trivial@nongnu.org; Tue, 28 Jun 2011 02:12:05 -0400
+Received: from mail-pz0-f45.google.com ([209.85.210.45]:43313)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <roytam@gmail.com>)
-	id 1Qb3EK-0002Xm-3n; Mon, 27 Jun 2011 00:15:24 -0400
-Received: by wwf26 with SMTP id 26so3804230wwf.10
-	for <multiple recipients>; Sun, 26 Jun 2011 21:15:22 -0700 (PDT)
+	(envelope-from <agenthh@gmail.com>) id 1QbRWm-0007Nb-Mq
+	for qemu-trivial@nongnu.org; Tue, 28 Jun 2011 02:12:04 -0400
+Received: by pzk30 with SMTP id 30so3693458pzk.4
+	for <qemu-trivial@nongnu.org>; Mon, 27 Jun 2011 23:12:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=domainkey-signature:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=ZWBZ5x4hGiOIupaa0qi6v3DKRMtluzqrZ4Wv9zPkGNw=;
-	b=mgMAbHJj3cN0JJCwADvmpjN8Azod+lKPDpZlaCgWjzNsZWIsRb4qKf1HuH64p/GWmM
-	tTZOyN2rcIMAmFm4TYB6YaIoqZCfXvWFXtEPo1/hnWeJrDqsVUuPIKYHBzXFUjbUk1+W
-	Lg1f3U04Vlt7F0gxdZVINcgCMVAdKT4aPjUGI=
+	h=domainkey-signature:message-id:date:from:user-agent:mime-version:to
+	:subject:content-type:content-transfer-encoding;
+	bh=PrWUyLVMM3QHLdl4Bg6jh4W/UBp7UtsoPq9TAQ3+BaQ=;
+	b=rO4ndigmQHEMVCW2USX2P1dLKODwTSys+2f/7evPippuLmqgEmfp1R++uRDQxtawNB
+	WZOFaeBeiW31JvoZ81qB46hMZ7B4DuTTsYCcKnVpMI++RZCEDHYDQCIMZEuhk1IbS4Y9
+	qEsEvZ8oAAHcYJzoQbAB4PjNET6g6fOn4JRAE=
 DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:content-transfer-encoding;
-	b=YEEGnKXMZB01AQ6hZ7hpQIZORk/MYGC69aSxKwKQvjUCEekX4HJwHN/eN/WcC25aNz
-	iNDyhUqurL3eHODffPrPmkXzp9s7AiWOfoYGkGqr+83XfJM1A9UkRaUaZG4dI5hGfEyn
-	KDeb+eK67cl2Kkaw5BelWbAB2eECpfWDDg6Qk=
-Received: by 10.227.132.66 with SMTP id a2mr5162701wbt.81.1309148122207; Sun,
-	26 Jun 2011 21:15:22 -0700 (PDT)
+	h=message-id:date:from:user-agent:mime-version:to:subject
+	:content-type:content-transfer-encoding;
+	b=rOkhpVMVQKy+8mXN5vqAyNceu5MRZE9bs5awP8rTFgZ0CzhZ9pX0t85XriAOh79ldu
+	MJxGV3SLnvFt0y3KaUqTFRGEYkA0gjWdv1jlJlixBpORbENZ/VRQ8hFt9YkWAY6KCXJg
+	mzt5kjp60go7fjc6fBjTQSPwro1cI2mkJ4vLw=
+Received: by 10.142.88.12 with SMTP id l12mr869472wfb.447.1309241523051;
+	Mon, 27 Jun 2011 23:12:03 -0700 (PDT)
+Received: from [10.0.0.163] (wsip-72-214-251-130.sb.sd.cox.net
+	[72.214.251.130])
+	by mx.google.com with ESMTPS id e6sm4654874pbm.23.2011.06.27.23.12.01
+	(version=SSLv3 cipher=OTHER); Mon, 27 Jun 2011 23:12:02 -0700 (PDT)
+Message-ID: <4E0970AA.4060501@gmail.com>
+Date: Mon, 27 Jun 2011 23:11:54 -0700
+From: Hans N <agenthh@gmail.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US;
+	rv:1.9.2.18) Gecko/20110616 Thunderbird/3.1.11
 MIME-Version: 1.0
-Received: by 10.227.152.84 with HTTP; Sun, 26 Jun 2011 21:15:02 -0700 (PDT)
-In-Reply-To: <BANLkTikp8PZoZVbeuHVgDsH2mpLxKs+ytg@mail.gmail.com>
-References: <BANLkTika6YmzRYAnta8TgQGpLSpoAdpKNQ@mail.gmail.com>
-	<4DFC636D.9090800@mail.berlios.de>
-	<20110623135202.GA12765@stefanha-thinkpad.localdomain>
-	<4E03564A.5060201@mail.berlios.de>
-	<BANLkTikP6ietymb3Cg2V5TSPpnjMyWacqA@mail.gmail.com>
-	<4E07907F.1060703@mail.berlios.de>
-	<BANLkTimZkQ9qBC+Rt0+CCV4TNKTRgttr9A@mail.gmail.com>
-	<BANLkTikp8PZoZVbeuHVgDsH2mpLxKs+ytg@mail.gmail.com>
-From: Roy Tam <roytam@gmail.com>
-Date: Mon, 27 Jun 2011 12:15:02 +0800
-Message-ID: <BANLkTikAi4eRX3PfRN+xKYWEMMC8=cZbVw@mail.gmail.com>
-To: TeLeMan <geleman@gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+To: qemu-trivial@nongnu.org
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.53
-Cc: Blue Swirl <blauwirbel@gmail.com>, Stefan Weil <weil@mail.berlios.de>,
-	qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fix MinGW compilation when
- --enable-vnc-jpeg is specified
+X-Received-From: 209.85.210.45
+Subject: [Qemu-trivial] [PATCH] Fix debug log option parsing in user-mode
+	emulation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,126 +57,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Jun 2011 04:15:31 -0000
+X-List-Received-Date: Tue, 28 Jun 2011 06:12:07 -0000
 
-Hi,
+Fix cpu_str_to_log_mask() to actually use log_mask
 
-2011/6/27 TeLeMan <geleman@gmail.com>:
-> This patch breaks the compilation with --enable-vnc-png:
->
-> =A0CC =A0 =A0ui/vnc-enc-tight.o
-> In file included from /usr/include/png.h:518,
-> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 from ui/vnc-enc-tight.c:34:
-> /usr/include/pngconf.h:371: error: expected '=3D', ',', ';', 'asm' or
-> '__attribute__' before '.' token
-> /usr/include/pngconf.h:372: error: expected '=3D', ',', ';', 'asm' or
-> '__attribute__' before 'include'
-> make: *** [ui/vnc-enc-tight.o] Error 1
->
+Signed-off-by: Hans Nielsen <agenthh@gmail.com>
+---
+  bsd-user/main.c    |    2 +-
+  darwin-user/main.c |    2 +-
+  linux-user/main.c  |    2 +-
+  3 files changed, 3 insertions(+), 3 deletions(-)
 
-Works for me here.
-But for the configure script, I need modifying to pass instead of giving er=
-ror.
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 5f790b2..6018a41 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -866,7 +866,7 @@ int main(int argc, char **argv)
+          int mask;
+          const CPULogItem *item;
 
--    vnc_png_libs=3D"-lpng"
-+    vnc_png_libs=3D"-lpng -lz"
+-        mask = cpu_str_to_log_mask(r);
++        mask = cpu_str_to_log_mask(log_mask);
+          if (!mask) {
+              printf("Log items (comma separated):\n");
+              for (item = cpu_log_items; item->mask != 0; item++) {
+diff --git a/darwin-user/main.c b/darwin-user/main.c
+index a6dc859..35196a1 100644
+--- a/darwin-user/main.c
++++ b/darwin-user/main.c
+@@ -819,7 +819,7 @@ int main(int argc, char **argv)
+          int mask;
+          CPULogItem *item;
 
+-        mask = cpu_str_to_log_mask(r);
++        mask = cpu_str_to_log_mask(log_mask);
+          if (!mask) {
+              printf("Log items (comma separated):\n");
+              for (item = cpu_log_items; item->mask != 0; item++) {
+diff --git a/linux-user/main.c b/linux-user/main.c
+index db5577b..289054b 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -3030,7 +3030,7 @@ int main(int argc, char **argv, char **envp)
+          int mask;
+          const CPULogItem *item;
 
-> --
-> SUN OF A BEACH
->
->
->
-> On Mon, Jun 27, 2011 at 04:26, Blue Swirl <blauwirbel@gmail.com> wrote:
->> On Sun, Jun 26, 2011 at 11:03 PM, Stefan Weil <weil@mail.berlios.de> wro=
-te:
->>> Am 26.06.2011 20:06, schrieb Blue Swirl:
->>>>
->>>> On Thu, Jun 23, 2011 at 6:05 PM, Stefan Weil<weil@mail.berlios.de> =A0=
-wrote:
->>>>>
->>>>> Am 23.06.2011 15:52, schrieb Stefan Hajnoczi:
->>>>>>
->>>>>> On Sat, Jun 18, 2011 at 10:35:57AM +0200, Stefan Weil wrote:
->>>>>>>
->>>>>>> Am 18.06.2011 07:13, schrieb Roy Tam:
->>>>>>>>
->>>>>>>> This patch fix conflicting types for 'INT32' in basetsd.h in inclu=
-ding
->>>>>>>> qemu-common.h first.
->>>>>>>>
->>>>>>>>
->>>>>>>> Sign-off-by: Roy Tam<roytam@gmail.com>
->>>>>>>> --
->>>
->>> ...
->>>>>>>
->>>>>>> The conflicting declaration is in jmorecfg.h which is included from
->>>>>>> jpeglib.h.
->>>>>>
->>>>>> Is the problem that the Windows headers included from qemu-common.h =
-try
->>>>>> to #define INT32?
->>>>>> http://msdn.microsoft.com/en-us/library/aa383751(v=3Dvs.85).aspx
->>>>>>
->>>>>> In that case I think an explicit fix is better:
->>>>>>
->>>>>> #ifdef _WIN32
->>>>>> /* Include this before jpeglib.h for the INT32 definition */
->>>>>> #include<basetsd.h>
->>>>>> #endif
->>>>>>
->>>>>> ...followed by png/jpeg includes...
->>>>>>
->>>>>> Simply moving qemu-common.h provides no hints and is rather indirect=
-.
->>>>>> Someone may move it back in the future.
->>>>>>
->>>>>> Stefan
->>>>>
->>>>> INT32 is declared in basetsd.h which is included from windows.h
->>>>> (with some indirections) which is included from qemu-os-win32.h
->>>>> which is included from qemu-common.h.
->>>>>
->>>>> INT32 is not a #define, but a data type (typedef) and very common
->>>>> for w32 compilations. Windows programmers don't include basetsd.h
->>>>> directly, but usually use windows.h.
->>>>>
->>>>> Including qemu-common.h right at the beginning (after config.h where
->>>>> needed) should be good practice for QEMU source code - like this:
->>>>>
->>>>> #include "config.h" =A0 =A0 =A0 =A0/* optional */
->>>>> #include "qemu-common.h"
->>>>> #include <system includes> /* without those that are included from
->>>>> qemu-common.h */
->>>>> ...
->>>>> #include "other local includes"
->>>>> ...
->>>>>
->>>>> As long as the maintainers don't accept patches which simply move
->>>>> qemu-common.h, there is no danger. :-)
->>>>>
->>>>> Of course a comment might be added. In most cases, I'm a great friend
->>>>> of good comments, but in this special case, I don't think it is
->>>>> necessary.
->>>>> It's a very special case of a typedef conflict caused by the mingw32
->>>>> version of jpeglib (which is obviously rarely used), and it might be
->>>>> fixed
->>>>> in a newer version of jpeglib (so the comment would be no longer
->>>>> valid, and nobody would notice that).
->>>>
->>>> We could also add a configure time check for this case for maximum
->>>> over engineering.
->>>
->>> ... which nobody wants. I suggest to apply the patch as it was sent
->>> by Roy. Stefan H. suggests to add a comment before the patch is applied=
-.
->>>
->>> Both ways fix a (small) problem, so please just decide which
->>> solution you prefer.
->>
->> I applied the patch with a comment, thanks.
->>
->>
->
+-        mask = cpu_str_to_log_mask(r);
++        mask = cpu_str_to_log_mask(log_mask);
+          if (!mask) {
+              printf("Log items (comma separated):\n");
+              for (item = cpu_log_items; item->mask != 0; item++) {
+--
+1.7.5.4
 
