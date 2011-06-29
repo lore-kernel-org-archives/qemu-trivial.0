@@ -1,48 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QbVc1-0006nD-H2
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2011 06:33:45 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:51506)
+	id 1QbpvA-00037j-Fi
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2011 04:14:52 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:55075)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QbVbx-0006mC-8J
-	for qemu-trivial@nongnu.org; Tue, 28 Jun 2011 06:33:42 -0400
+	(envelope-from <stefanha@gmail.com>) id 1Qbpv4-00036Y-SZ
+	for qemu-trivial@nongnu.org; Wed, 29 Jun 2011 04:14:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QbVbv-0003kG-6D
-	for qemu-trivial@nongnu.org; Tue, 28 Jun 2011 06:33:40 -0400
-Received: from mail-fx0-f47.google.com ([209.85.161.47]:56391)
+	(envelope-from <stefanha@gmail.com>) id 1Qbpv1-0004M7-Jq
+	for qemu-trivial@nongnu.org; Wed, 29 Jun 2011 04:14:46 -0400
+Received: from mail-yx0-f173.google.com ([209.85.213.173]:64743)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QbVbu-0003kB-NR
-	for qemu-trivial@nongnu.org; Tue, 28 Jun 2011 06:33:38 -0400
-Received: by fxg11 with SMTP id 11so95197fxg.34
-	for <qemu-trivial@nongnu.org>; Tue, 28 Jun 2011 03:33:37 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>) id 1Qbpv1-0004Lj-3X
+	for qemu-trivial@nongnu.org; Wed, 29 Jun 2011 04:14:43 -0400
+Received: by yxt3 with SMTP id 3so460871yxt.4
+	for <qemu-trivial@nongnu.org>; Wed, 29 Jun 2011 01:14:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=iCyCqNCc8PjLm29tr+it8lyCZDJlwJLt6rojbdyLrjI=;
-	b=CBD18z7Mk5XdLhoKQReRv811kZJmyTQu2JKoJIw3+ezK7I6WxAGztQEQztelfZ3D5S
-	r/f8rtFhkww3zs8aT1qFme2F7qCNkWNYCL+65rxHtDTYjP4LeZvR4mE0LJrr7YvaJAe9
-	dXytywjFTiHcMKzw6zlPqQMw4MvQxlpOi2z1o=
-Received: by 10.223.143.17 with SMTP id s17mr1104162fau.34.1309257217475;
-	Tue, 28 Jun 2011 03:33:37 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain
-	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
-	by mx.google.com with ESMTPS id b13sm45927fab.12.2011.06.28.03.33.36
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 28 Jun 2011 03:33:36 -0700 (PDT)
-Date: Tue, 28 Jun 2011 11:33:30 +0100
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=o2w0/GCUWwM4uAJHtvcNhrgMdg4bzREbJvi3bOKpmm0=;
+	b=xIrpsgznut1ZQMRADvOKCxbYYYHbD7D/iuI3GLlqJyZEBjvkxk8f/PLP0mOnR98lHd
+	Kd2FcArIoPaH6yJUdz58yqVuUhANHvl70EO7A/Qf+1A7heqIDt5zKJWRM6P+7A0lzVy5
+	So6q1VYGamQM2f7vK8J88/fzRoLv5daZDVk2A=
+MIME-Version: 1.0
+Received: by 10.147.89.19 with SMTP id r19mr204908yal.7.1309335281706; Wed, 29
+	Jun 2011 01:14:41 -0700 (PDT)
+Received: by 10.147.136.16 with HTTP; Wed, 29 Jun 2011 01:14:41 -0700 (PDT)
+In-Reply-To: <20110628103221.GB23547@stefanha-thinkpad.localdomain>
+References: <4E0970AA.4060501@gmail.com>
+	<20110628103221.GB23547@stefanha-thinkpad.localdomain>
+Date: Wed, 29 Jun 2011 09:14:41 +0100
+Message-ID: <BANLkTi=JfnLRNWONypgXbjK4tcPXhTz1wQ@mail.gmail.com>
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Hans N <agenthh@gmail.com>
-Message-ID: <20110628103221.GB23547@stefanha-thinkpad.localdomain>
-References: <4E0970AA.4060501@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4E0970AA.4060501@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.161.47
+X-Received-From: 209.85.213.173
 Cc: qemu-trivial@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH] Fix debug log option parsing in
- user-mode emulation
+	user-mode emulation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,20 +50,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Jun 2011 10:33:43 -0000
+X-List-Received-Date: Wed, 29 Jun 2011 08:14:49 -0000
 
-On Mon, Jun 27, 2011 at 11:11:54PM -0700, Hans N wrote:
-> Fix cpu_str_to_log_mask() to actually use log_mask
-> 
-> Signed-off-by: Hans Nielsen <agenthh@gmail.com>
-> ---
->  bsd-user/main.c    |    2 +-
->  darwin-user/main.c |    2 +-
->  linux-user/main.c  |    2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+On Tue, Jun 28, 2011 at 11:33 AM, Stefan Hajnoczi <stefanha@gmail.com> wrot=
+e:
+> On Mon, Jun 27, 2011 at 11:11:54PM -0700, Hans N wrote:
+>> Fix cpu_str_to_log_mask() to actually use log_mask
+>>
+>> Signed-off-by: Hans Nielsen <agenthh@gmail.com>
+>> ---
+>> =A0bsd-user/main.c =A0 =A0| =A0 =A02 +-
+>> =A0darwin-user/main.c | =A0 =A02 +-
+>> =A0linux-user/main.c =A0| =A0 =A02 +-
+>> =A03 files changed, 3 insertions(+), 3 deletions(-)
+>
+> Thanks, applied to the trivial patches tree:
+> http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+Edgar E. Iglesias <edgar.iglesias@gmail.com> has already merged an
+identical fix into qemu.git:
+
+http://repo.or.cz/w/qemu.git/commitdiff/1dfdcaa83f9ce34aded8bc0669e81753d94=
+f1b7d
+
+I am dropping your patch since the issue has been fixed.
 
 Stefan
 
