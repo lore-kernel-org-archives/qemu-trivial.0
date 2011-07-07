@@ -1,37 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qdqxn-0006T7-70
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Jul 2011 17:45:55 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:39187)
+	id 1Qegzd-0001jw-Ab
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Jul 2011 01:19:17 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:38249)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <agraf@suse.de>) id 1Qdqxl-0006Se-42
-	for qemu-trivial@nongnu.org; Mon, 04 Jul 2011 17:45:54 -0400
+	(envelope-from <weil@mail.berlios.de>) id 1Qegza-0001j0-4G
+	for qemu-trivial@nongnu.org; Thu, 07 Jul 2011 01:19:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <agraf@suse.de>) id 1Qdqxk-0002vZ-B1
-	for qemu-trivial@nongnu.org; Mon, 04 Jul 2011 17:45:53 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:49689 helo=mx2.suse.de)
+	(envelope-from <weil@mail.berlios.de>) id 1QegzY-00030s-Rm
+	for qemu-trivial@nongnu.org; Thu, 07 Jul 2011 01:19:13 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:47624)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <agraf@suse.de>)
-	id 1Qdqxh-0002vE-OM; Mon, 04 Jul 2011 17:45:50 -0400
-Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.221.2])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 12D0F8738D;
-	Mon,  4 Jul 2011 23:45:48 +0200 (CEST)
-Mime-Version: 1.0 (Apple Message framework v1084)
-Content-Type: text/plain; charset=us-ascii
-From: Alexander Graf <agraf@suse.de>
-In-Reply-To: <1309813366-7994-1-git-send-email-peter.maydell@linaro.org>
-Date: Mon, 4 Jul 2011 23:45:47 +0200
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <3894AA64-4F23-416C-8DDF-EAC95AECAD51@suse.de>
-References: <1309813366-7994-1-git-send-email-peter.maydell@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.1084)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-alpha,
-	target-ppc: Remove unnecessary setjmp.h include
+	(envelope-from <weil@mail.berlios.de>)
+	id 1QegzU-00030Y-Pw; Thu, 07 Jul 2011 01:19:09 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	322C77281BE1; Thu,  7 Jul 2011 07:19:06 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id qdgFo1pASeYS; Thu,  7 Jul 2011 07:19:05 +0200 (CEST)
+Received: from [192.168.178.20] (p54ADA44D.dip.t-dialin.net [84.173.164.77])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	B68C872818A1; Thu,  7 Jul 2011 07:19:04 +0200 (CEST)
+Message-ID: <4E1541C7.9060400@mail.berlios.de>
+Date: Thu, 07 Jul 2011 07:19:03 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US;
+	rv:1.9.2.17) Gecko/20110424 Thunderbird/3.1.10
+MIME-Version: 1.0
+To: Blue Swirl <blauwirbel@gmail.com>
+References: <20110707050349.C27C2BF74@buildbot.b1-systems.de>
+In-Reply-To: <20110707050349.C27C2BF74@buildbot.b1-systems.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, gollub@b1-systems.de, agraf@suse.de,
+	Anthony Liguori <anthony@codemonkey.ws>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] buildbot failure in qemu on
+	xen_x86_64_debian_5_0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,59 +51,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Jul 2011 21:45:54 -0000
+X-List-Received-Date: Thu, 07 Jul 2011 05:19:15 -0000
 
+Am 07.07.2011 07:03, schrieb qemu@buildbot.b1-systems.de:
+> The Buildbot has detected a new failure on builder 
+> xen_x86_64_debian_5_0 while building qemu.
+> Full details are available at:
+> http://buildbot.b1-systems.de/qemu/builders/xen_x86_64_debian_5_0/builds/26
+>
+> Buildbot URL: http://buildbot.b1-systems.de/qemu/
+>
+> Buildslave for this Build: b1_qemu_1
+>
+> Build Reason: The Nightly scheduler named 'nightly_xen' triggered this 
+> build
+> Build Source Stamp: [branch xen-next] HEAD
+> Blamelist:
+>
+> BUILD FAILED: failed compile
+>
+> sincerely,
+> -The Buildbot
+>
 
-On 04.07.2011, at 23:02, Peter Maydell wrote:
+This patch fixes compilation for Debian Lenny based buildbots:
+http://patchwork.ozlabs.org/patch/103157/.
 
-> Remove the include of setjmp.h from the cpu.h of target-alpha
-> and target-ppc. This is unnecessary because cpu-defs.h already
-> includes this header; this change brings these two targets
-> into line with all the rest.
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Maybe someone can apply the patch (or provide a different
+solution) to stop those repeated buildbot mails and fix the
+build breakage.
 
-Yeah, I actually think no code (unless specifically configure'd for it) =
-should include non-local headers (<...> instead of "..."). Of course =
-that would include device/target specific headers as well ;).
+Is it possible to configure the buildbots to send a mail only
+when the status changes (good -> bad, bad -> good)?
 
+Thanks and kind regards,
 
-Acked-by: Alexander Graf <agraf@suse.de>
-
-> ---
-> target-alpha/cpu.h |    2 --
-> target-ppc/cpu.h   |    2 --
-> 2 files changed, 0 insertions(+), 4 deletions(-)
->=20
-> diff --git a/target-alpha/cpu.h b/target-alpha/cpu.h
-> index 411bd55..78caa79 100644
-> --- a/target-alpha/cpu.h
-> +++ b/target-alpha/cpu.h
-> @@ -28,8 +28,6 @@
->=20
-> #include "cpu-defs.h"
->=20
-> -#include <setjmp.h>
-> -
-> #include "softfloat.h"
->=20
-> #define TARGET_HAS_ICE 1
-> diff --git a/target-ppc/cpu.h b/target-ppc/cpu.h
-> index 84f8ff6..d903366 100644
-> --- a/target-ppc/cpu.h
-> +++ b/target-ppc/cpu.h
-> @@ -75,8 +75,6 @@
->=20
-> #include "cpu-defs.h"
->=20
-> -#include <setjmp.h>
-> -
-> #include "softfloat.h"
->=20
-> #define TARGET_HAS_ICE 1
-> --=20
-> 1.7.4.1
->=20
->=20
+Stefan Weil
 
 
