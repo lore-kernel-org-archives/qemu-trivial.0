@@ -1,45 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qegzd-0001jw-Ab
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Jul 2011 01:19:17 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:38249)
+	id 1QgG2n-0003nQ-9j
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Jul 2011 08:57:01 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:34841)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>) id 1Qegza-0001j0-4G
-	for qemu-trivial@nongnu.org; Thu, 07 Jul 2011 01:19:15 -0400
+	(envelope-from <wolfgang.mauerer@siemens.com>) id 1QgG2j-0003ma-Rm
+	for qemu-trivial@nongnu.org; Mon, 11 Jul 2011 08:56:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>) id 1QegzY-00030s-Rm
-	for qemu-trivial@nongnu.org; Thu, 07 Jul 2011 01:19:13 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:47624)
+	(envelope-from <wolfgang.mauerer@siemens.com>) id 1QgG2i-0005tG-L8
+	for qemu-trivial@nongnu.org; Mon, 11 Jul 2011 08:56:57 -0400
+Received: from gecko.sbs.de ([194.138.37.40]:17332)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>)
-	id 1QegzU-00030Y-Pw; Thu, 07 Jul 2011 01:19:09 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	322C77281BE1; Thu,  7 Jul 2011 07:19:06 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id qdgFo1pASeYS; Thu,  7 Jul 2011 07:19:05 +0200 (CEST)
-Received: from [192.168.178.20] (p54ADA44D.dip.t-dialin.net [84.173.164.77])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	B68C872818A1; Thu,  7 Jul 2011 07:19:04 +0200 (CEST)
-Message-ID: <4E1541C7.9060400@mail.berlios.de>
-Date: Thu, 07 Jul 2011 07:19:03 +0200
-From: Stefan Weil <weil@mail.berlios.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US;
-	rv:1.9.2.17) Gecko/20110424 Thunderbird/3.1.10
-MIME-Version: 1.0
-To: Blue Swirl <blauwirbel@gmail.com>
-References: <20110707050349.C27C2BF74@buildbot.b1-systems.de>
-In-Reply-To: <20110707050349.C27C2BF74@buildbot.b1-systems.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, gollub@b1-systems.de, agraf@suse.de,
-	Anthony Liguori <anthony@codemonkey.ws>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] buildbot failure in qemu on
-	xen_x86_64_debian_5_0
+	(envelope-from <wolfgang.mauerer@siemens.com>)
+	id 1QgG2d-0005sU-Tv; Mon, 11 Jul 2011 08:56:52 -0400
+Received: from mail2.sbs.de (localhost [127.0.0.1])
+	by gecko.sbs.de (8.13.6/8.13.6) with ESMTP id p6BCumg6002562;
+	Mon, 11 Jul 2011 14:56:48 +0200
+Received: from localhost.localdomain ([146.254.15.72])
+	by mail2.sbs.de (8.13.6/8.13.6) with ESMTP id p6BCulsX029065;
+	Mon, 11 Jul 2011 14:56:48 +0200
+From: Wolfgang Mauerer <wolfgang.mauerer@siemens.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 11 Jul 2011 14:57:43 +0200
+Message-Id: <1310389063-16382-1-git-send-email-wolfgang.mauerer@siemens.com>
+X-Mailer: git-send-email 1.6.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 194.138.37.40
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] vhost build fix for i386
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,41 +39,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Jul 2011 05:19:15 -0000
+X-List-Received-Date: Mon, 11 Jul 2011 12:56:59 -0000
 
-Am 07.07.2011 07:03, schrieb qemu@buildbot.b1-systems.de:
-> The Buildbot has detected a new failure on builder 
-> xen_x86_64_debian_5_0 while building qemu.
-> Full details are available at:
-> http://buildbot.b1-systems.de/qemu/builders/xen_x86_64_debian_5_0/builds/26
->
-> Buildbot URL: http://buildbot.b1-systems.de/qemu/
->
-> Buildslave for this Build: b1_qemu_1
->
-> Build Reason: The Nightly scheduler named 'nightly_xen' triggered this 
-> build
-> Build Source Stamp: [branch xen-next] HEAD
-> Blamelist:
->
-> BUILD FAILED: failed compile
->
-> sincerely,
-> -The Buildbot
->
+vhost.c uses __sync_fetch_and_and(), which is only
+available for -march=i486 and above (see
+https://bugzilla.redhat.com/show_bug.cgi?id=624279).
 
-This patch fixes compilation for Debian Lenny based buildbots:
-http://patchwork.ozlabs.org/patch/103157/.
+Signed-off-by: Wolfgang Mauerer <wolfgang.mauerer@siemens.com>
+---
+ configure |   23 +++++++++++++++++++++++
+ 1 files changed, 23 insertions(+), 0 deletions(-)
 
-Maybe someone can apply the patch (or provide a different
-solution) to stop those repeated buildbot mails and fix the
-build breakage.
-
-Is it possible to configure the buildbots to send a mail only
-when the status changes (good -> bad, bad -> good)?
-
-Thanks and kind regards,
-
-Stefan Weil
+diff --git a/configure b/configure
+index 88159ac..3b6facb 100755
+--- a/configure
++++ b/configure
+@@ -2464,6 +2464,29 @@ if test "$trace_backend" = "dtrace"; then
+ fi
+ 
+ ##########################################
++# __sync_fetch_and_and requires at least -march=i486. Many toolchains
++# use i686 as default anyway, but for those that don't, an explicit
++# specification is necessary
++if test $vhost_net = "yes" && test $cpu = "i386"; then
++  cat > $TMPC << EOF
++int sfaa(unsigned *ptr)
++{
++  return __sync_fetch_and_and(ptr, 0);
++}
++
++int main(int argc, char **argv)
++{
++  int val = 42;
++  sfaa(&val);
++  return val;
++}
++EOF
++  if ! compile_prog "" "" ; then
++    CFLAGS+="-march=i486"
++  fi
++fi
++
++##########################################
+ # End of CC checks
+ # After here, no more $cc or $ld runs
+ 
+-- 
+1.6.4
 
 
