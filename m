@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QgGaU-0003jy-L4
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Jul 2011 09:31:50 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:45933)
+	id 1QgkWj-0001d3-47
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jul 2011 17:29:57 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:46742)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QgGaS-0003jN-M3
-	for qemu-trivial@nongnu.org; Mon, 11 Jul 2011 09:31:49 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1QgkWc-0001bR-7C
+	for qemu-trivial@nongnu.org; Tue, 12 Jul 2011 17:29:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QgGaR-0002rr-7x
-	for qemu-trivial@nongnu.org; Mon, 11 Jul 2011 09:31:48 -0400
-Received: from mail-yi0-f45.google.com ([209.85.218.45]:48426)
+	(envelope-from <blauwirbel@gmail.com>) id 1QgkWX-0008OM-Su
+	for qemu-trivial@nongnu.org; Tue, 12 Jul 2011 17:29:49 -0400
+Received: from mail-qw0-f45.google.com ([209.85.216.45]:60680)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QgGaM-0002nP-HO; Mon, 11 Jul 2011 09:31:42 -0400
-Received: by yia25 with SMTP id 25so1818720yia.4
-	for <multiple recipients>; Mon, 11 Jul 2011 06:31:41 -0700 (PDT)
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1QgkWO-0008Lz-7O; Tue, 12 Jul 2011 17:29:36 -0400
+Received: by qwj8 with SMTP id 8so3576007qwj.4
+	for <multiple recipients>; Tue, 12 Jul 2011 14:29:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=hXMqx8cHle5qQJVSFOzA2YhSxtbzlnPhMvePAw9Rzgo=;
-	b=YzbWKthp8TUxxYff31X7sTXEVE+ytgjd6Mz4WFHPJ/P094WU7LV9wCbTt4lBThr15v
-	iQUriab3b8nQP0Phuk+B6mmkSRmHzfgnaJwB8vWNgaUyanO4K54Hk27lF3pfrjmODhux
-	z7CjydNQTPeTMwgvRv+gFqaC9J91hljiVf21Y=
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	bh=wisKsuR6ptURE4lxTe+2dIzzgcpto27vQJelqU65xNs=;
+	b=khqBqGos4uBclyEsADwNMolHNsi84jeRCPrl+HdZNFbWucB6BJbD4hQr0UY9VT1zB/
+	dGY8g96w/anrx1Epvx58bBdAuiPBkr5DK9/CAkHfY7IY2a/iGh64wVR0lguRAyNm2F1A
+	/3Zwv+8OKAJv3qqKM3nz0S55ncxx6FbGhdeSc=
+Received: by 10.224.29.12 with SMTP id o12mr446543qac.20.1310506174200; Tue,
+	12 Jul 2011 14:29:34 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.236.176.42 with SMTP id a30mr5492313yhm.255.1310391100334;
-	Mon, 11 Jul 2011 06:31:40 -0700 (PDT)
-Received: by 10.147.98.12 with HTTP; Mon, 11 Jul 2011 06:31:40 -0700 (PDT)
-In-Reply-To: <1310389063-16382-1-git-send-email-wolfgang.mauerer@siemens.com>
-References: <1310389063-16382-1-git-send-email-wolfgang.mauerer@siemens.com>
-Date: Mon, 11 Jul 2011 14:31:40 +0100
-Message-ID: <CAJSP0QXPJWRBLPikS1rvPRWpm3CspjwVTToJMoYNf08qZ2QS-Q@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Wolfgang Mauerer <wolfgang.mauerer@siemens.com>
-Content-Type: text/plain; charset=ISO-8859-1
+Received: by 10.224.74.13 with HTTP; Tue, 12 Jul 2011 14:29:14 -0700 (PDT)
+In-Reply-To: <1309813366-7994-1-git-send-email-peter.maydell@linaro.org>
+References: <1309813366-7994-1-git-send-email-peter.maydell@linaro.org>
+From: Blue Swirl <blauwirbel@gmail.com>
+Date: Wed, 13 Jul 2011 00:29:14 +0300
+Message-ID: <CAAu8pHvPmWge_CmcGYP3ti0sHC1G-F3cgAv+FLJi=CMMQvzPgQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.218.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] vhost build fix for i386
+X-Received-From: 209.85.216.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-alpha,
+ target-ppc: Remove unnecessary setjmp.h include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,17 +49,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jul 2011 13:31:50 -0000
+X-List-Received-Date: Tue, 12 Jul 2011 21:29:54 -0000
 
-On Mon, Jul 11, 2011 at 1:57 PM, Wolfgang Mauerer
-<wolfgang.mauerer@siemens.com> wrote:
-> vhost.c uses __sync_fetch_and_and(), which is only
-> available for -march=i486 and above (see
-> https://bugzilla.redhat.com/show_bug.cgi?id=624279).
+Thanks, applied.
 
-Seems reasonable.  I am happy to add it to the trivial-patches tree
-but will wait another day to let others who are better gcc wizards
-consider it.
-
-Stefan
+On Tue, Jul 5, 2011 at 12:02 AM, Peter Maydell <peter.maydell@linaro.org> w=
+rote:
+> Remove the include of setjmp.h from the cpu.h of target-alpha
+> and target-ppc. This is unnecessary because cpu-defs.h already
+> includes this header; this change brings these two targets
+> into line with all the rest.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> =C2=A0target-alpha/cpu.h | =C2=A0 =C2=A02 --
+> =C2=A0target-ppc/cpu.h =C2=A0 | =C2=A0 =C2=A02 --
+> =C2=A02 files changed, 0 insertions(+), 4 deletions(-)
+>
+> diff --git a/target-alpha/cpu.h b/target-alpha/cpu.h
+> index 411bd55..78caa79 100644
+> --- a/target-alpha/cpu.h
+> +++ b/target-alpha/cpu.h
+> @@ -28,8 +28,6 @@
+>
+> =C2=A0#include "cpu-defs.h"
+>
+> -#include <setjmp.h>
+> -
+> =C2=A0#include "softfloat.h"
+>
+> =C2=A0#define TARGET_HAS_ICE 1
+> diff --git a/target-ppc/cpu.h b/target-ppc/cpu.h
+> index 84f8ff6..d903366 100644
+> --- a/target-ppc/cpu.h
+> +++ b/target-ppc/cpu.h
+> @@ -75,8 +75,6 @@
+>
+> =C2=A0#include "cpu-defs.h"
+>
+> -#include <setjmp.h>
+> -
+> =C2=A0#include "softfloat.h"
+>
+> =C2=A0#define TARGET_HAS_ICE 1
+> --
+> 1.7.4.1
+>
+>
+>
 
