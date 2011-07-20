@@ -1,43 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QgkWj-0001d3-47
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jul 2011 17:29:57 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46742)
+	id 1QjNgT-0005xM-Ch
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Jul 2011 23:42:53 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:36577)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1QgkWc-0001bR-7C
-	for qemu-trivial@nongnu.org; Tue, 12 Jul 2011 17:29:54 -0400
+	(envelope-from <cerbere@gmail.com>) id 1QjNgP-0005wR-Ht
+	for qemu-trivial@nongnu.org; Tue, 19 Jul 2011 23:42:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1QgkWX-0008OM-Su
-	for qemu-trivial@nongnu.org; Tue, 12 Jul 2011 17:29:49 -0400
-Received: from mail-qw0-f45.google.com ([209.85.216.45]:60680)
+	(envelope-from <cerbere@gmail.com>) id 1QjNgN-00075F-Vv
+	for qemu-trivial@nongnu.org; Tue, 19 Jul 2011 23:42:49 -0400
+Received: from mail-vx0-f173.google.com ([209.85.220.173]:60635)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>)
-	id 1QgkWO-0008Lz-7O; Tue, 12 Jul 2011 17:29:36 -0400
-Received: by qwj8 with SMTP id 8so3576007qwj.4
-	for <multiple recipients>; Tue, 12 Jul 2011 14:29:34 -0700 (PDT)
+	(envelope-from <cerbere@gmail.com>)
+	id 1QjNgI-00072s-Ns; Tue, 19 Jul 2011 23:42:42 -0400
+Received: by vxi29 with SMTP id 29so3273370vxi.4
+	for <multiple recipients>; Tue, 19 Jul 2011 20:42:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:content-transfer-encoding;
-	bh=wisKsuR6ptURE4lxTe+2dIzzgcpto27vQJelqU65xNs=;
-	b=khqBqGos4uBclyEsADwNMolHNsi84jeRCPrl+HdZNFbWucB6BJbD4hQr0UY9VT1zB/
-	dGY8g96w/anrx1Epvx58bBdAuiPBkr5DK9/CAkHfY7IY2a/iGh64wVR0lguRAyNm2F1A
-	/3Zwv+8OKAJv3qqKM3nz0S55ncxx6FbGhdeSc=
-Received: by 10.224.29.12 with SMTP id o12mr446543qac.20.1310506174200; Tue,
-	12 Jul 2011 14:29:34 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.224.74.13 with HTTP; Tue, 12 Jul 2011 14:29:14 -0700 (PDT)
-In-Reply-To: <1309813366-7994-1-git-send-email-peter.maydell@linaro.org>
-References: <1309813366-7994-1-git-send-email-peter.maydell@linaro.org>
-From: Blue Swirl <blauwirbel@gmail.com>
-Date: Wed, 13 Jul 2011 00:29:14 +0300
-Message-ID: <CAAu8pHvPmWge_CmcGYP3ti0sHC1G-F3cgAv+FLJi=CMMQvzPgQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	h=from:to:cc:subject:date:message-id:x-mailer;
+	bh=XGBVa7WqBuxa8d5YfTD4npO9FzEJ/ZWblpahY1hbwvs=;
+	b=HrLjIqmJthznlMUjCRrGZkjtIeHAYmuz0kKTPCMBLQn4Pct0G4WBuD9HxNfPyGpZG3
+	3czzXvhAxkU6bMlfKZBpgliVVkYZdV/5KMMmkqCN89jS4DgagsrzlaOI9bL8ZmjJ0y9p
+	bZdsE0Uf1hkmQQGanMFpTqtey+ZRiK3/pYnuY=
+Received: by 10.52.116.242 with SMTP id jz18mr1530315vdb.379.1311133360964;
+	Tue, 19 Jul 2011 20:42:40 -0700 (PDT)
+Received: from localhost.localdomain (modemcable055.201-23-96.mc.videotron.ca
+	[96.23.201.55])
+	by mx.google.com with ESMTPS id y4sm2688219vdv.13.2011.07.19.20.42.39
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 19 Jul 2011 20:42:40 -0700 (PDT)
+From: Alexandre Raymond <cerbere@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 19 Jul 2011 23:41:55 -0400
+Message-Id: <1311133315-978-1-git-send-email-cerbere@gmail.com>
+X-Mailer: git-send-email 1.7.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-alpha,
- target-ppc: Remove unnecessary setjmp.h include
+X-Received-From: 209.85.220.173
+Cc: qemu-trivial@nongnu.org, Alexandre Raymond <cerbere@gmail.com>
+Subject: [Qemu-trivial] [PATCH] Makefile: Minor cscope fixups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,52 +47,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jul 2011 21:29:54 -0000
+X-List-Received-Date: Wed, 20 Jul 2011 03:42:51 -0000
 
-Thanks, applied.
+-Create cscope symbols for assembly files in addition to .c/.h files.
+-Create cscope database with full path instead of relative path so cscope
+ can be used with CSCOPE_DB in any directory.
 
-On Tue, Jul 5, 2011 at 12:02 AM, Peter Maydell <peter.maydell@linaro.org> w=
-rote:
-> Remove the include of setjmp.h from the cpu.h of target-alpha
-> and target-ppc. This is unnecessary because cpu-defs.h already
-> includes this header; this change brings these two targets
-> into line with all the rest.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> =C2=A0target-alpha/cpu.h | =C2=A0 =C2=A02 --
-> =C2=A0target-ppc/cpu.h =C2=A0 | =C2=A0 =C2=A02 --
-> =C2=A02 files changed, 0 insertions(+), 4 deletions(-)
->
-> diff --git a/target-alpha/cpu.h b/target-alpha/cpu.h
-> index 411bd55..78caa79 100644
-> --- a/target-alpha/cpu.h
-> +++ b/target-alpha/cpu.h
-> @@ -28,8 +28,6 @@
->
-> =C2=A0#include "cpu-defs.h"
->
-> -#include <setjmp.h>
-> -
-> =C2=A0#include "softfloat.h"
->
-> =C2=A0#define TARGET_HAS_ICE 1
-> diff --git a/target-ppc/cpu.h b/target-ppc/cpu.h
-> index 84f8ff6..d903366 100644
-> --- a/target-ppc/cpu.h
-> +++ b/target-ppc/cpu.h
-> @@ -75,8 +75,6 @@
->
-> =C2=A0#include "cpu-defs.h"
->
-> -#include <setjmp.h>
-> -
-> =C2=A0#include "softfloat.h"
->
-> =C2=A0#define TARGET_HAS_ICE 1
-> --
-> 1.7.4.1
->
->
->
+Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
+---
+ Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b3ffbe2..4273b6f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -254,7 +254,7 @@ TAGS:
+ 
+ cscope:
+ 	rm -f ./cscope.*
+-	find . -name "*.[ch]" -print | sed 's,^\./,,' > ./cscope.files
++	find $$PWD -name "*.[chsS]" -print | sed 's,^\./,,' > ./cscope.files
+ 	cscope -b
+ 
+ # documentation
+-- 
+1.7.5
+
 
