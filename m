@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QjNgT-0005xM-Ch
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Jul 2011 23:42:53 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:36577)
+	id 1Qja4d-0004er-Ct
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Jul 2011 12:56:39 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:35684)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>) id 1QjNgP-0005wR-Ht
-	for qemu-trivial@nongnu.org; Tue, 19 Jul 2011 23:42:50 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1Qja4Y-0004dQ-BC
+	for qemu-trivial@nongnu.org; Wed, 20 Jul 2011 12:56:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>) id 1QjNgN-00075F-Vv
-	for qemu-trivial@nongnu.org; Tue, 19 Jul 2011 23:42:49 -0400
-Received: from mail-vx0-f173.google.com ([209.85.220.173]:60635)
+	(envelope-from <blauwirbel@gmail.com>) id 1Qja4V-000659-Df
+	for qemu-trivial@nongnu.org; Wed, 20 Jul 2011 12:56:33 -0400
+Received: from mail-qy0-f180.google.com ([209.85.216.180]:33430)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>)
-	id 1QjNgI-00072s-Ns; Tue, 19 Jul 2011 23:42:42 -0400
-Received: by vxi29 with SMTP id 29so3273370vxi.4
-	for <multiple recipients>; Tue, 19 Jul 2011 20:42:41 -0700 (PDT)
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1Qja4Q-00064a-VY; Wed, 20 Jul 2011 12:56:27 -0400
+Received: by qyk30 with SMTP id 30so267976qyk.4
+	for <multiple recipients>; Wed, 20 Jul 2011 09:56:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=from:to:cc:subject:date:message-id:x-mailer;
-	bh=XGBVa7WqBuxa8d5YfTD4npO9FzEJ/ZWblpahY1hbwvs=;
-	b=HrLjIqmJthznlMUjCRrGZkjtIeHAYmuz0kKTPCMBLQn4Pct0G4WBuD9HxNfPyGpZG3
-	3czzXvhAxkU6bMlfKZBpgliVVkYZdV/5KMMmkqCN89jS4DgagsrzlaOI9bL8ZmjJ0y9p
-	bZdsE0Uf1hkmQQGanMFpTqtey+ZRiK3/pYnuY=
-Received: by 10.52.116.242 with SMTP id jz18mr1530315vdb.379.1311133360964;
-	Tue, 19 Jul 2011 20:42:40 -0700 (PDT)
-Received: from localhost.localdomain (modemcable055.201-23-96.mc.videotron.ca
-	[96.23.201.55])
-	by mx.google.com with ESMTPS id y4sm2688219vdv.13.2011.07.19.20.42.39
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 19 Jul 2011 20:42:40 -0700 (PDT)
-From: Alexandre Raymond <cerbere@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 19 Jul 2011 23:41:55 -0400
-Message-Id: <1311133315-978-1-git-send-email-cerbere@gmail.com>
-X-Mailer: git-send-email 1.7.5
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	bh=HOSfBYelwU1K/0xcGQzSE9K+vNu+2TE7/nRLHXPiAfo=;
+	b=Z5PkFbSHM7HyAhUPDV3TR7gsi8czPdQEgY63bWscZ35KE1WVK30B9iumHpWczeFg+n
+	bBaKesoJ7VYSqE6l/AdjhoDYx5IcIi4YYIekNzCorbvOHtYhO1J/vxnA5g3sJ3oM+/Ye
+	DOQHGGXT1JyOIT9ZzBjPcxHBvo5P0KqYqOyPc=
+Received: by 10.224.193.7 with SMTP id ds7mr5439112qab.366.1311180986075; Wed,
+	20 Jul 2011 09:56:26 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.29.6 with HTTP; Wed, 20 Jul 2011 09:56:06 -0700 (PDT)
+In-Reply-To: <1311133315-978-1-git-send-email-cerbere@gmail.com>
+References: <1311133315-978-1-git-send-email-cerbere@gmail.com>
+From: Blue Swirl <blauwirbel@gmail.com>
+Date: Wed, 20 Jul 2011 19:56:06 +0300
+Message-ID: <CAAu8pHtoGceWve8PMWUFihSmhpsDQeiiO-wCQg6tC=xacXkooQ@mail.gmail.com>
+To: Alexandre Raymond <cerbere@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.220.173
-Cc: qemu-trivial@nongnu.org, Alexandre Raymond <cerbere@gmail.com>
-Subject: [Qemu-trivial] [PATCH] Makefile: Minor cscope fixups
+X-Received-From: 209.85.216.180
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Minor cscope
+	fixups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,31 +49,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Jul 2011 03:42:51 -0000
+X-List-Received-Date: Wed, 20 Jul 2011 16:56:37 -0000
 
--Create cscope symbols for assembly files in addition to .c/.h files.
--Create cscope database with full path instead of relative path so cscope
- can be used with CSCOPE_DB in any directory.
+On Wed, Jul 20, 2011 at 6:41 AM, Alexandre Raymond <cerbere@gmail.com> wrot=
+e:
+> -Create cscope symbols for assembly files in addition to .c/.h files.
+> -Create cscope database with full path instead of relative path so cscope
+> =C2=A0can be used with CSCOPE_DB in any directory.
+>
+> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
+> ---
+> =C2=A0Makefile | =C2=A0 =C2=A02 +-
+> =C2=A01 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/Makefile b/Makefile
+> index b3ffbe2..4273b6f 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -254,7 +254,7 @@ TAGS:
+>
+> =C2=A0cscope:
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f ./cscope.*
+> - =C2=A0 =C2=A0 =C2=A0 find . -name "*.[ch]" -print | sed 's,^\./,,' > ./=
+cscope.files
+> + =C2=A0 =C2=A0 =C2=A0 find $$PWD -name "*.[chsS]" -print | sed 's,^\./,,=
+' > ./cscope.files
 
-Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
----
- Makefile |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Please use $$SRC_PATH instead.
 
-diff --git a/Makefile b/Makefile
-index b3ffbe2..4273b6f 100644
---- a/Makefile
-+++ b/Makefile
-@@ -254,7 +254,7 @@ TAGS:
- 
- cscope:
- 	rm -f ./cscope.*
--	find . -name "*.[ch]" -print | sed 's,^\./,,' > ./cscope.files
-+	find $$PWD -name "*.[chsS]" -print | sed 's,^\./,,' > ./cscope.files
- 	cscope -b
- 
- # documentation
--- 
-1.7.5
-
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0cscope -b
+>
+> =C2=A0# documentation
+> --
+> 1.7.5
+>
+>
+>
 
