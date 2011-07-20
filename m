@@ -1,41 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qjl60-0003t0-Ch
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Jul 2011 00:42:48 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:44722)
+	id 1QjmIx-0000ct-19
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Jul 2011 02:00:15 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:48487)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>) id 1Qjl5u-0003qk-Pe
-	for qemu-trivial@nongnu.org; Thu, 21 Jul 2011 00:42:46 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1QjdxL-0008GV-0B
+	for qemu-trivial@nongnu.org; Wed, 20 Jul 2011 17:05:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>) id 1Qjl5q-0002CF-SE
-	for qemu-trivial@nongnu.org; Thu, 21 Jul 2011 00:42:42 -0400
-Received: from mail-vw0-f45.google.com ([209.85.212.45]:53645)
+	(envelope-from <blauwirbel@gmail.com>) id 1QjdxG-0003sz-EU
+	for qemu-trivial@nongnu.org; Wed, 20 Jul 2011 17:05:22 -0400
+Received: from mail-qw0-f45.google.com ([209.85.216.45]:35594)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cerbere@gmail.com>)
-	id 1Qjl5i-00029F-LO; Thu, 21 Jul 2011 00:42:30 -0400
-Received: by vws17 with SMTP id 17so769841vws.4
-	for <multiple recipients>; Wed, 20 Jul 2011 21:42:29 -0700 (PDT)
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1Qjdx1-0003ii-Sl; Wed, 20 Jul 2011 17:05:04 -0400
+Received: by qwj8 with SMTP id 8so427382qwj.4
+	for <multiple recipients>; Wed, 20 Jul 2011 14:05:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=from:to:cc:subject:date:message-id:x-mailer;
-	bh=kaMOwAYrZ/PpTkq6KOnjNOPz4skjxZBVw5almc5KSm8=;
-	b=pNsyuiuSNEFUr+gFnmBKrX0pwO9NhUG85KjVjGz7Gern0kqbMgTmAKuwQzzclD+kqd
-	3TihJcsaiEardepA4a/YDzNfMzY6iHtAVcr5xYn92cMdaCg35htPrnlSJsWzAQXK94ws
-	2Q3AJEXx3TplMvxty2HsLwmn5AS/Rjc7ihzZA=
-Received: by 10.52.96.33 with SMTP id dp1mr9856982vdb.20.1311223349476;
-	Wed, 20 Jul 2011 21:42:29 -0700 (PDT)
-Received: from localhost.localdomain (modemcable055.201-23-96.mc.videotron.ca
-	[96.23.201.55])
-	by mx.google.com with ESMTPS id fc13sm312402vcb.13.2011.07.20.21.42.28
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 20 Jul 2011 21:42:28 -0700 (PDT)
-From: Alexandre Raymond <cerbere@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 21 Jul 2011 00:41:47 -0400
-Message-Id: <1311223307-29486-1-git-send-email-cerbere@gmail.com>
-X-Mailer: git-send-email 1.7.5
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	bh=xUg7ynBOyiRGgVIsGhOyIMcwcbiVNyr92o/YRlCD1BM=;
+	b=gerHDujKnm0WhzxtWHAOOHM0L6w3yzetzBlT/9F0Vbtas79NwY7LTVeRhfT1bLrlSZ
+	JUm6eEPpIcB5qOpHS4cPhUeQ7FEYFly8cwcfbyJ5dotFseFzcqvBpNmBTk+RdIy65bji
+	j3m6woErBFDmIfuM1QWks+Rn9wcXW/DBYWpxI=
+Received: by 10.224.193.7 with SMTP id ds7mr5698655qab.366.1311195903085; Wed,
+	20 Jul 2011 14:05:03 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.29.6 with HTTP; Wed, 20 Jul 2011 14:04:43 -0700 (PDT)
+In-Reply-To: <1311188196-2867-2-git-send-email-weil@mail.berlios.de>
+References: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
+	<1311188196-2867-2-git-send-email-weil@mail.berlios.de>
+From: Blue Swirl <blauwirbel@gmail.com>
+Date: Thu, 21 Jul 2011 00:04:43 +0300
+Message-ID: <CAAu8pHvuqasqexORHq_=NTpLkwjR=wOxUeRE3JoqzK1xymG1Rg@mail.gmail.com>
+To: Stefan Weil <weil@mail.berlios.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.212.45
-Cc: qemu-trivial@nongnu.org, Alexandre Raymond <cerbere@gmail.com>
-Subject: [Qemu-trivial] [PATCH] Makefile: fix out-of-tree builds
+X-Received-From: 209.85.216.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] tcg/mips: Fix regression caused by typo
+	(copy + paste bug)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,30 +50,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Jul 2011 04:42:46 -0000
+X-List-Received-Date: Thu, 21 Jul 2011 06:00:13 -0000
 
-This patch fixes a minor bugs which prevented QEMU from being built
-out of tree.
+Thanks, applied.
 
-Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
----
- Makefile |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index fbdaecc..1cde239 100644
---- a/Makefile
-+++ b/Makefile
-@@ -46,7 +46,7 @@ config-all-devices.mak: $(SUBDIR_DEVICES_MAK)
- 
- -include $(SUBDIR_DEVICES_MAK_DEP)
- 
--%/config-devices.mak: default-configs/%.mak
-+%/config-devices.mak: $(SRC_PATH)/default-configs/%.mak
- 	$(call quiet-command,$(SHELL) $(SRC_PATH)/scripts/make_device_config.sh $@ $<, "  GEN   $@")
- 	@if test -f $@; then \
- 	  if cmp -s $@.old $@; then \
--- 
-1.7.5
-
+On Wed, Jul 20, 2011 at 9:56 PM, Stefan Weil <weil@mail.berlios.de> wrote:
+> cppcheck reports an error:
+> qemu/tcg/mips/tcg-target.c:1487: error: Invalid number of character (()
+>
+> The unpatched code won't compile on mips hosts starting with commit
+> cea5f9a28faa528b6b1b117c9ab2d8828f473fef.
+>
+> Cc: Blue Swirl <blauwirbel@gmail.com>
+> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+> ---
+> =C2=A0tcg/mips/tcg-target.c | =C2=A0 =C2=A02 +-
+> =C2=A01 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/tcg/mips/tcg-target.c b/tcg/mips/tcg-target.c
+> index 12ff9d5..a33d21f 100644
+> --- a/tcg/mips/tcg-target.c
+> +++ b/tcg/mips/tcg-target.c
+> @@ -1484,7 +1484,7 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+> =C2=A0 =C2=A0 }
+>
+> =C2=A0 =C2=A0 /* Call generated code */
+> - =C2=A0 =C2=A0tcg_out_opc_reg(s, OPC_JR, 0, tcg_target_call_iarg_regs[1]=
+), 0);
+> + =C2=A0 =C2=A0tcg_out_opc_reg(s, OPC_JR, 0, tcg_target_call_iarg_regs[1]=
+, 0);
+> =C2=A0 =C2=A0 tcg_out_mov(s, TCG_TYPE_PTR, TCG_AREG0, tcg_target_call_iar=
+g_regs[0]);
+> =C2=A0 =C2=A0 tb_ret_addr =3D s->code_ptr;
+>
+> --
+> 1.7.2.5
+>
+>
 
