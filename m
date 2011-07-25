@@ -1,45 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QlK77-0001iz-Eo
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2011 08:18:25 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:37025)
+	id 1QlKVj-0007lJ-M0
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2011 08:43:51 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:40130)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1QlK72-0001S4-Ph
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 08:18:22 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QlKVh-0007c7-4H
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 08:43:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1QlK71-0006YO-Ft
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 08:18:20 -0400
-Received: from e35.co.us.ibm.com ([32.97.110.153]:56944)
+	(envelope-from <stefanha@gmail.com>) id 1QlKVf-0002GG-Vr
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 08:43:49 -0400
+Received: from mail-yi0-f45.google.com ([209.85.218.45]:61615)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>)
-	id 1QlK71-0006Wl-A3; Mon, 25 Jul 2011 08:18:19 -0400
-Received: from d03relay02.boulder.ibm.com (d03relay02.boulder.ibm.com
-	[9.17.195.227])
-	by e35.co.us.ibm.com (8.14.4/8.13.1) with ESMTP id p6PBwo0S029162;
-	Mon, 25 Jul 2011 05:58:50 -0600
-Received: from d03av06.boulder.ibm.com (d03av06.boulder.ibm.com [9.17.195.245])
-	by d03relay02.boulder.ibm.com (8.13.8/8.13.8/NCO v9.1) with ESMTP id
-	p6PCGbDJ182886; Mon, 25 Jul 2011 06:16:37 -0600
-Received: from d03av06.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id p6PCMAm2031245; Mon, 25 Jul 2011 06:22:10 -0600
-Received: from [9.53.41.195] (dyn95341195.austin.ibm.com [9.53.41.195])
-	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	p6PCMAL2031131; Mon, 25 Jul 2011 06:22:10 -0600
-Message-ID: <4E2D5EA0.5020104@linux.vnet.ibm.com>
-Date: Mon, 25 Jul 2011 07:16:32 -0500
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:5.0) Gecko/20110624 Thunderbird/5.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1QlKVe-0002Fq-1G; Mon, 25 Jul 2011 08:43:46 -0400
+Received: by yia25 with SMTP id 25so2611741yia.4
+	for <multiple recipients>; Mon, 25 Jul 2011 05:43:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=6zHXrRPasUCxcsIS8z1n79Kuk1u5seud7RidAVgpqP8=;
+	b=FvJZMFwpA15mFqTg+I8xrHdDVevStcCuYgOsfeQt9099/KiCn68Xge8NJxWHu4Odgf
+	p9SAZGrGvq902cv6k8RaswDbPGGvbqV2ca0bXiMQlv4DdSMYb34n6Rn2WO+JUvy3+QY3
+	yxrGbWvLFn2lREMKhI3XAnjcLNg01lu63BXfo=
 MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@gmail.com>
+Received: by 10.146.115.1 with SMTP id n1mr3962865yac.29.1311597825213; Mon,
+	25 Jul 2011 05:43:45 -0700 (PDT)
+Received: by 10.147.125.14 with HTTP; Mon, 25 Jul 2011 05:43:45 -0700 (PDT)
+In-Reply-To: <4E2D5EA0.5020104@linux.vnet.ibm.com>
 References: <1311223307-29486-1-git-send-email-cerbere@gmail.com>
 	<CAJSP0QWn_wU_3q8r=q4Fqey=jSgzi__V_iJ1EyY0OA6Nnu_-8Q@mail.gmail.com>
-In-Reply-To: <CAJSP0QWn_wU_3q8r=q4Fqey=jSgzi__V_iJ1EyY0OA6Nnu_-8Q@mail.gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 32.97.110.153
+	<4E2D5EA0.5020104@linux.vnet.ibm.com>
+Date: Mon, 25 Jul 2011 13:43:45 +0100
+Message-ID: <CAJSP0QXUzpBLaYhvc3T-ArMaiZ7cxoo4ZsbDDrR8kjEq03P1cQ@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Michael Roth <mdroth@linux.vnet.ibm.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.218.45
 Cc: Alexandre Raymond <cerbere@gmail.com>, qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH] Makefile: fix out-of-tree builds
@@ -54,35 +51,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jul 2011 12:18:23 -0000
+X-List-Received-Date: Mon, 25 Jul 2011 12:43:49 -0000
 
-On 07/25/2011 05:15 AM, Stefan Hajnoczi wrote:
-> On Thu, Jul 21, 2011 at 5:41 AM, Alexandre Raymond<cerbere@gmail.com>  wrote:
->> This patch fixes a minor bugs which prevented QEMU from being built
->> out of tree.
+On Mon, Jul 25, 2011 at 1:16 PM, Michael Roth <mdroth@linux.vnet.ibm.com> w=
+rote:
+> On 07/25/2011 05:15 AM, Stefan Hajnoczi wrote:
 >>
->> Signed-off-by: Alexandre Raymond<cerbere@gmail.com>
->> ---
->>   Makefile |    2 +-
->>   1 files changed, 1 insertions(+), 1 deletions(-)
+>> On Thu, Jul 21, 2011 at 5:41 AM, Alexandre Raymond<cerbere@gmail.com>
+>> =A0wrote:
+>>>
+>>> This patch fixes a minor bugs which prevented QEMU from being built
+>>> out of tree.
+>>>
+>>> Signed-off-by: Alexandre Raymond<cerbere@gmail.com>
+>>> ---
+>>> =A0Makefile | =A0 =A02 +-
+>>> =A01 files changed, 1 insertions(+), 1 deletions(-)
+>>
+>> I don't normally use --source-path but it still seems broken to me
+>> after applying your patch?
+>>
+>> $ cd /tmp; mkdir out; cd out
+>> $ ~/qemu/configure --source-path=3D$HOME/qemu
+>> $ make
+>> =A0 GEN =A0 config-all-devices.mak
+>> cat: i386-softmmu/config-devices.mak: No such file or directory
+>> cat: x86_64-softmmu/config-devices.mak: No such file or directory
+>> cat: alpha-softmmu/config-devices.mak: No such file or directory
+>>
+>> Stefan
+>>
 >
-> I don't normally use --source-path but it still seems broken to me
-> after applying your patch?
+> Works okay for me with and without the patch if I do a `make distclean` i=
+n
+> $HOME/qemu beforehand.
 >
-> $ cd /tmp; mkdir out; cd out
-> $ ~/qemu/configure --source-path=$HOME/qemu
-> $ make
->    GEN   config-all-devices.mak
-> cat: i386-softmmu/config-devices.mak: No such file or directory
-> cat: x86_64-softmmu/config-devices.mak: No such file or directory
-> cat: alpha-softmmu/config-devices.mak: No such file or directory
->
-> Stefan
->
+> Not sure what the trigger is for the breakage Alexandre is trying to
+> address.
 
-Works okay for me with and without the patch if I do a `make distclean` 
-in $HOME/qemu beforehand.
+You are right that make distclean in the source directory solves the issue.
 
-Not sure what the trigger is for the breakage Alexandre is trying to 
-address.
+Intuitively I expect ./configure to re-wire things, make distclean
+should not be necessary.
+
+Alexandre: Can you describe the case where you hit a build issue in more de=
+tail?
+
+Stefan
 
