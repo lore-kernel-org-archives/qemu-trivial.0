@@ -1,42 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QlIC5-0006Qg-VQ
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2011 06:15:25 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46364)
+	id 1QlIE9-0007Nb-DC
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2011 06:17:33 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:41306)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QlIC3-0006JT-Kp
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 06:15:24 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QlIE6-0007Dr-Sb
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 06:17:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QlIC2-0002q0-JC
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 06:15:23 -0400
-Received: from mail-gx0-f173.google.com ([209.85.161.173]:62448)
+	(envelope-from <stefanha@gmail.com>) id 1QlIE5-0003MD-Py
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 06:17:30 -0400
+Received: from mail-fx0-f47.google.com ([209.85.161.47]:60326)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1QlIC0-0002pa-Ne; Mon, 25 Jul 2011 06:15:20 -0400
-Received: by gxk26 with SMTP id 26so2526574gxk.4
-	for <multiple recipients>; Mon, 25 Jul 2011 03:15:20 -0700 (PDT)
+	id 1QlIE2-0003Lg-NS; Mon, 25 Jul 2011 06:17:27 -0400
+Received: by fxg11 with SMTP id 11so9492335fxg.34
+	for <multiple recipients>; Mon, 25 Jul 2011 03:17:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=CJHwlivSmyJvlCsKtKcyLIA8LAybRGz9yafdcQnkjUM=;
-	b=SQly/0U+muoPGA5jMBULGA1SuvYLM4MU7qpY6Amaa5bnbr29IwdpN+PyHbT+5ZWUv3
-	gqnBvWr03muhVXFb5XIJw/CkAxzO6qjy8jkCTkmv5z+oU/KVmZdVs5EXPdZixbY5tI8W
-	dIUUtxaEAd3X8oOqmFISXjyRmF0vi/bgdcEJQ=
-MIME-Version: 1.0
-Received: by 10.147.52.22 with SMTP id e22mr3819123yak.39.1311588920019; Mon,
-	25 Jul 2011 03:15:20 -0700 (PDT)
-Received: by 10.147.125.14 with HTTP; Mon, 25 Jul 2011 03:15:19 -0700 (PDT)
-In-Reply-To: <1311223307-29486-1-git-send-email-cerbere@gmail.com>
-References: <1311223307-29486-1-git-send-email-cerbere@gmail.com>
-Date: Mon, 25 Jul 2011 11:15:19 +0100
-Message-ID: <CAJSP0QWn_wU_3q8r=q4Fqey=jSgzi__V_iJ1EyY0OA6Nnu_-8Q@mail.gmail.com>
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=8XDZEiQfNtXlM4FRM9kMBxgL/0IsogKi5revGPZSDEg=;
+	b=kJ8AjUQaH72p2M0AfNfjQv5kDMLpHMzu8n316xZM8AzgnuX1LXqIW4BXN0SyXoqI1w
+	4lHvSiwMe4QjG8nt763MHjk0TSiKx0Rk/ngv23Hx9K6NfuEEnhY+15rERJop6CFpKLol
+	qMYK858PQ3sjinaZPnnYCvFO6oJnRoTVxGax8=
+Received: by 10.223.55.209 with SMTP id v17mr6461346fag.77.1311589045724;
+	Mon, 25 Jul 2011 03:17:25 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain
+	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
+	by mx.google.com with ESMTPS id 28sm3711048fax.3.2011.07.25.03.17.23
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 25 Jul 2011 03:17:24 -0700 (PDT)
+Date: Mon, 25 Jul 2011 11:17:18 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Alexandre Raymond <cerbere@gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+To: Wolfgang Mauerer <wolfgang.mauerer@siemens.com>
+Message-ID: <20110725101718.GA15078@stefanha-thinkpad.localdomain>
+References: <1310389063-16382-1-git-send-email-wolfgang.mauerer@siemens.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1310389063-16382-1-git-send-email-wolfgang.mauerer@siemens.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.161.173
+X-Received-From: 209.85.161.47
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Makefile: fix out-of-tree builds
+Subject: Re: [Qemu-trivial] [PATCH] vhost build fix for i386
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,28 +53,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jul 2011 10:15:24 -0000
+X-List-Received-Date: Mon, 25 Jul 2011 10:17:32 -0000
 
-On Thu, Jul 21, 2011 at 5:41 AM, Alexandre Raymond <cerbere@gmail.com> wrot=
-e:
-> This patch fixes a minor bugs which prevented QEMU from being built
-> out of tree.
->
-> Signed-off-by: Alexandre Raymond <cerbere@gmail.com>
+On Mon, Jul 11, 2011 at 02:57:43PM +0200, Wolfgang Mauerer wrote:
+> vhost.c uses __sync_fetch_and_and(), which is only
+> available for -march=i486 and above (see
+> https://bugzilla.redhat.com/show_bug.cgi?id=624279).
+> 
+> Signed-off-by: Wolfgang Mauerer <wolfgang.mauerer@siemens.com>
 > ---
-> =A0Makefile | =A0 =A02 +-
-> =A01 files changed, 1 insertions(+), 1 deletions(-)
+>  configure |   23 +++++++++++++++++++++++
+>  1 files changed, 23 insertions(+), 0 deletions(-)
 
-I don't normally use --source-path but it still seems broken to me
-after applying your patch?
-
-$ cd /tmp; mkdir out; cd out
-$ ~/qemu/configure --source-path=3D$HOME/qemu
-$ make
-  GEN   config-all-devices.mak
-cat: i386-softmmu/config-devices.mak: No such file or directory
-cat: x86_64-softmmu/config-devices.mak: No such file or directory
-cat: alpha-softmmu/config-devices.mak: No such file or directory
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
 Stefan
 
