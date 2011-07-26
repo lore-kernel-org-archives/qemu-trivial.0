@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QlXom-0000RK-Qb
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2011 22:56:24 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:36730)
+	id 1QlYlI-0006TC-Ny
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2011 23:56:52 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:46249)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <geleman@gmail.com>) id 1QlXok-0000HR-7o
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 22:56:23 -0400
+	(envelope-from <cerbere@gmail.com>) id 1QlYlG-0006Js-5x
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 23:56:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <geleman@gmail.com>) id 1QlXoj-0004Tw-7h
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 22:56:22 -0400
-Received: from mail-yw0-f45.google.com ([209.85.213.45]:60264)
+	(envelope-from <cerbere@gmail.com>) id 1QlYlC-0006SJ-Ps
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 23:56:50 -0400
+Received: from mail-qw0-f45.google.com ([209.85.216.45]:54805)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <geleman@gmail.com>)
-	id 1QlXog-0004TZ-R1; Mon, 25 Jul 2011 22:56:18 -0400
-Received: by ywb3 with SMTP id 3so7182ywb.4
-	for <multiple recipients>; Mon, 25 Jul 2011 19:56:18 -0700 (PDT)
+	(envelope-from <cerbere@gmail.com>)
+	id 1QlYlB-0006Pe-00; Mon, 25 Jul 2011 23:56:45 -0400
+Received: by qwj8 with SMTP id 8so26458qwj.4
+	for <multiple recipients>; Mon, 25 Jul 2011 20:56:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=V/6PnNuWLiBYe6IBH6RLm6+WMkP3IGL6nZr52MvBGdU=;
-	b=GRbGIpf5FKOcS+LwPv3vQPc1RVeTfExz4ScRp5WfN0/1L2Dy7pjy26NUg8hvvUNmT4
-	/GHfBf6kQ4US0af1Kjb1aHd88iwk9J1+QvfifGRuLMrg6Clqc7/qp4L2qOdMJCpqsjSD
-	FwOzHz1F/VH/mvCdeDeqJPlEGkssDHS8AbSTk=
-MIME-Version: 1.0
-Received: by 10.147.136.19 with SMTP id o19mr4687793yan.38.1311648977933; Mon,
-	25 Jul 2011 19:56:17 -0700 (PDT)
-Received: by 10.146.82.8 with HTTP; Mon, 25 Jul 2011 19:56:17 -0700 (PDT)
-In-Reply-To: <4E2E274B.9020608@us.ibm.com>
-References: <1311647049-1896-1-git-send-email-geleman@gmail.com>
-	<4E2E274B.9020608@us.ibm.com>
-Date: Tue, 26 Jul 2011 10:56:17 +0800
-Message-ID: <CAETRQW=MWb+nyeOFgENxj-KZS_k477fa07gdfTZz9EWr-JkN2A@mail.gmail.com>
-From: TeLeMan <geleman@gmail.com>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	h=from:to:cc:subject:date:message-id:x-mailer;
+	bh=GGqgNSWsbKGcX9BhDwipnlsJA5BI/sGHpqD8x1Ix86E=;
+	b=RRTS16Utyz/Rwj6+eENGP7LsnBFSnJsLuB4dBuJJdN6aXf/irE4NFs0UugoHC006R1
+	lBvx4CaJcWG5zWm0R4KPNyMvQuf3K5JOR11X4uFuR8FZU5o3JcYSfuApVQ6tCUts30Fs
+	Kx/06nMxMPw+VpPqCKDaUL5Ame3YHGiG3EHV4=
+Received: by 10.224.31.7 with SMTP id w7mr3968934qac.55.1311652604084;
+	Mon, 25 Jul 2011 20:56:44 -0700 (PDT)
+Received: from localhost.localdomain (modemcable055.201-23-96.mc.videotron.ca
+	[96.23.201.55])
+	by mx.google.com with ESMTPS id p15sm62804qct.22.2011.07.25.20.56.42
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 25 Jul 2011 20:56:43 -0700 (PDT)
+From: Alexandre Raymond <cerbere@gmail.com>
+To: Qemu Developers <qemu-devel@nongnu.org>
+Date: Mon, 25 Jul 2011 23:56:00 -0400
+Message-Id: <1311652562-10794-1-git-send-email-cerbere@gmail.com>
+X-Mailer: git-send-email 1.7.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.213.45
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] console: Don't expose the the ui
- module's functions when the module is not available.
+X-Received-From: 209.85.216.45
+Cc: qemu-trivial@nongnu.org, Alexandre Raymond <cerbere@gmail.com>
+Subject: [Qemu-trivial] [PATCH 0/2] Minor makefile fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,78 +47,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Jul 2011 02:56:23 -0000
+X-List-Received-Date: Tue, 26 Jul 2011 03:56:51 -0000
 
-On Tue, Jul 26, 2011 at 10:32, Anthony Liguori <aliguori@us.ibm.com> wrote:
-> On 07/25/2011 09:24 PM, TeLeMan wrote:
->>
->> If there is no sdl support, the implement of sdl_display_init() is missi=
-ng
->> and its declaration should not be exposed.
->> vnc, cocoa, curses and other ui modules are the same as sdl.
->>
->> Signed-off-by: TeLeMan<geleman@gmail.com>
->
-> Nack.
->
-> There's no harm in exposing these and it avoids cluttered #ifdefs.
-This patch can avoid breakage on link stage . See my another patch:
-http://lists.nongnu.org/archive/html/qemu-devel/2011-07/msg02616.html
+Two simple patches for "make distclean"
 
 
-> Regards,
->
-> Anthony Liguori
->
->> ---
->> =C2=A0console.h | =C2=A0 =C2=A09 ++++++++-
->> =C2=A01 files changed, 8 insertions(+), 1 deletions(-)
->>
->> diff --git a/console.h b/console.h
->> index 67d1373..ede8bea 100644
->> --- a/console.h
->> +++ b/console.h
->> @@ -363,19 +363,24 @@ void qemu_console_copy(DisplayState *ds, int src_x=
-,
->> int src_y,
->> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 int dst_x, int dst_y, int w, int h);
->>
->> =C2=A0/* sdl.c */
->> +#ifdef CONFIG_SDL
->> =C2=A0void sdl_display_init(DisplayState *ds, int full_screen, int no_fr=
-ame);
->> +#endif
->>
->> =C2=A0/* cocoa.m */
->> +#ifdef CONFIG_COCOA
->> =C2=A0void cocoa_display_init(DisplayState *ds, int full_screen);
->> +#endif
->>
->> =C2=A0/* vnc.c */
->> +#ifdef CONFIG_VNC
->> =C2=A0void vnc_display_init(DisplayState *ds);
->> =C2=A0void vnc_display_close(DisplayState *ds);
->> =C2=A0int vnc_display_open(DisplayState *ds, const char *display);
->> =C2=A0void vnc_display_add_client(DisplayState *ds, int csock, int skipa=
-uth);
->> =C2=A0int vnc_display_disable_login(DisplayState *ds);
->> =C2=A0char *vnc_display_local_addr(DisplayState *ds);
->> -#ifdef CONFIG_VNC
->> +
->> =C2=A0int vnc_display_password(DisplayState *ds, const char *password);
->> =C2=A0int vnc_display_pw_expire(DisplayState *ds, time_t expires);
->> =C2=A0void do_info_vnc_print(Monitor *mon, const QObject *data);
->> @@ -401,6 +406,8 @@ static inline void do_info_vnc_print(Monitor *mon,
->> const QObject *data)
->> =C2=A0#endif
->>
->> =C2=A0/* curses.c */
->> +#ifdef CONFIG_CURSES
->> =C2=A0void curses_display_init(DisplayState *ds, int full_screen);
->> +#endif
->>
->> =C2=A0#endif
->
->
+Alexandre Raymond (2):
+  Makefile: distclean should clean all possible targets
+  Makefile: delete config.log in distclean
+
+ Makefile  |    3 ++-
+ configure |    1 +
+ 2 files changed, 3 insertions(+), 1 deletions(-)
+
+-- 
+1.7.5
+
 
