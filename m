@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qlihf-0008Aq-EJ
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Jul 2011 10:33:47 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:58807)
+	id 1QlilW-00018k-Ss
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Jul 2011 10:37:46 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:48847)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1QlihY-0008AQ-Dm
-	for qemu-trivial@nongnu.org; Tue, 26 Jul 2011 10:33:45 -0400
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1QlilV-00018d-1N
+	for qemu-trivial@nongnu.org; Tue, 26 Jul 2011 10:37:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1QlihW-00055m-UR
-	for qemu-trivial@nongnu.org; Tue, 26 Jul 2011 10:33:40 -0400
-Received: from e5.ny.us.ibm.com ([32.97.182.145]:34375)
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1QlilT-0005gH-UK
+	for qemu-trivial@nongnu.org; Tue, 26 Jul 2011 10:37:45 -0400
+Received: from e37.co.us.ibm.com ([32.97.110.158]:35975)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanb@linux.vnet.ibm.com>)
-	id 1QlihW-00055Z-Rq; Tue, 26 Jul 2011 10:33:38 -0400
-Received: from d01relay03.pok.ibm.com (d01relay03.pok.ibm.com [9.56.227.235])
-	by e5.ny.us.ibm.com (8.14.4/8.13.1) with ESMTP id p6QE4UhS008435;
-	Tue, 26 Jul 2011 10:04:30 -0400
-Received: from d01av04.pok.ibm.com (d01av04.pok.ibm.com [9.56.224.64])
-	by d01relay03.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	p6QEXadC110730; Tue, 26 Jul 2011 10:33:36 -0400
-Received: from d01av04.pok.ibm.com (loopback [127.0.0.1])
-	by d01av04.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	p6QEXZTn015323; Tue, 26 Jul 2011 10:33:35 -0400
+	id 1QlilT-0005gD-Nq; Tue, 26 Jul 2011 10:37:43 -0400
+Received: from d03relay02.boulder.ibm.com (d03relay02.boulder.ibm.com
+	[9.17.195.227])
+	by e37.co.us.ibm.com (8.14.4/8.13.1) with ESMTP id p6QEYaOV024286;
+	Tue, 26 Jul 2011 08:34:36 -0600
+Received: from d03av01.boulder.ibm.com (d03av01.boulder.ibm.com [9.17.195.167])
+	by d03relay02.boulder.ibm.com (8.13.8/8.13.8/NCO v9.1) with ESMTP id
+	p6QEbWH9145692; Tue, 26 Jul 2011 08:37:33 -0600
+Received: from d03av01.boulder.ibm.com (loopback [127.0.0.1])
+	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
+	id p6QEbJU8032429; Tue, 26 Jul 2011 08:37:19 -0600
 Received: from [9.59.241.154] (d941e-10.watson.ibm.com [9.59.241.154])
-	by d01av04.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	p6QEXX5p015153; Tue, 26 Jul 2011 10:33:33 -0400
+	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	p6QEbHHG032100; Tue, 26 Jul 2011 08:37:18 -0600
 From: Stefan Berger <stefanb@linux.vnet.ibm.com>
-To: aliguori@us.ibm.com, qemu-trivial@nongnu.org
+To: qemu-trivial@nongnu.org, aliguori@us.ibm.com
 Content-Type: text/plain; charset="UTF-8"
-Date: Tue, 26 Jul 2011 10:33:11 -0400
-Message-ID: <1311690791.7898.6.camel@d941e-10>
+Date: Tue, 26 Jul 2011 10:33:50 -0400
+Message-ID: <1311690830.7898.7.camel@d941e-10>
 Mime-Version: 1.0
 X-Mailer: Evolution 2.32.2 (2.32.2-1.fc14) 
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by e5.ny.us.ibm.com id
-	p6QE4UhS008435
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
 	4)
-X-Received-From: 32.97.182.145
+X-Received-From: 32.97.110.158
 Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] Fix a compilation error in xen-mapcache.c
+Subject: [Qemu-trivial] [PATCH] Makefile: Fix parallel building after a
+	clean tree
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,45 +50,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Jul 2011 14:33:45 -0000
+X-List-Received-Date: Tue, 26 Jul 2011 14:37:45 -0000
 
-This patch fixes a compilation error in xen-mapcache.c .
+This patch fixes a compilation error when building qemu after 'make clean'
+by parallel building using 'make -j6' for example. A dependency seems to be missing.
 
-/home/stefanb/qemu/qemu-git/xen-mapcache.c: In function =E2=80=98xen_ram_=
-addr_from_mapcache=E2=80=99:
-/home/stefanb/qemu/qemu-git/xen-mapcache.c:240:42: error: variable =E2=80=
-=98pentry=E2=80=99 set but not used [-Werror=3Dunused-but-set-variable]
+  GEN   qemu-options.def
+  GEN   trace.h
+  GEN   qapi-generated/qga-qapi-types.h
+  GEN   qapi-generated/qga-qapi-visit.h
+  GEN   qapi-generated/qga-qmp-marshal.c
+  CC    qga/guest-agent-command-state.o
+  CC    qga/guest-agent-commands.o
+  GEN   trace.c
+  GEN   qemu-img-cmds.h
+cc1: error: qapi-generated: No such file or directory [-Werror]
 cc1: all warnings being treated as errors
+
 
 Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
 
 ---
- xen-mapcache.c |    3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ Makefile |    2 ++
+ 1 file changed, 2 insertions(+)
 
-Index: qemu-git/xen-mapcache.c
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
---- qemu-git.orig/xen-mapcache.c
-+++ qemu-git/xen-mapcache.c
-@@ -237,7 +237,7 @@ uint8_t *xen_map_cache(target_phys_addr_
-=20
- ram_addr_t xen_ram_addr_from_mapcache(void *ptr)
- {
--    MapCacheEntry *entry =3D NULL, *pentry =3D NULL;
-+    MapCacheEntry *entry =3D NULL;
-     MapCacheRev *reventry;
-     target_phys_addr_t paddr_index;
-     target_phys_addr_t size;
-@@ -263,7 +263,6 @@ ram_addr_t xen_ram_addr_from_mapcache(vo
-=20
-     entry =3D &mapcache->entry[paddr_index % mapcache->nr_buckets];
-     while (entry && (entry->paddr_index !=3D paddr_index || entry->size =
-!=3D size)) {
--        pentry =3D entry;
-         entry =3D entry->next;
-     }
-     if (!entry) {
+Index: qemu-git/Makefile
+===================================================================
+--- qemu-git.orig/Makefile
++++ qemu-git/Makefile
+@@ -192,6 +192,8 @@ test-qmp-commands.o: $(addprefix $(qapi-
+ test-qmp-commands: test-qmp-commands.o qfloat.o qint.o qdict.o qstring.o qlist.o qbool.o $(qapi-obj-y) error.o osdep.o qemu-malloc.o $(oslib-obj-y) qjson.o json-streamer.o json-lexer.o json-parser.o qerror.o qemu-error.o qemu-tool.o $(qapi-dir)/test-qapi-visit.o $(qapi-dir)/test-qapi-types.o $(qapi-dir)/test-qmp-marshal.o module.o
+ 
+ QGALIB=qga/guest-agent-command-state.o qga/guest-agent-commands.o
++$(QGALIB): qemu-ga.o
++
+ 
+ qemu-ga.o: $(addprefix $(qapi-dir)/, qga-qapi-types.c qga-qapi-types.h qga-qapi-visit.c qga-qmp-marshal.c) $(qapi-obj-y)
+ qemu-ga$(EXESUF): qemu-ga.o $(QGALIB) qemu-tool.o qemu-error.o error.o $(oslib-obj-y) $(trace-obj-y) $(block-obj-y) $(qobject-obj-y) $(version-obj-y) $(qapi-obj-y) qemu-timer-common.o qemu-sockets.o module.o qapi/qmp-dispatch.o qapi/qmp-registry.o $(qapi-dir)/qga-qapi-visit.o $(qapi-dir)/qga-qapi-types.o $(qapi-dir)/qga-qmp-marshal.o
 
 
