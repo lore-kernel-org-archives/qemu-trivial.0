@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QlXSV-0005gI-Bv
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2011 22:33:23 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46808)
+	id 1QlXom-0000RK-Qb
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2011 22:56:24 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:36730)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1QlXSS-0005Wl-Vf
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 22:33:21 -0400
+	(envelope-from <geleman@gmail.com>) id 1QlXok-0000HR-7o
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 22:56:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1QlXSR-0000fN-Dp
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 22:33:20 -0400
-Received: from e4.ny.us.ibm.com ([32.97.182.144]:40779)
+	(envelope-from <geleman@gmail.com>) id 1QlXoj-0004Tw-7h
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2011 22:56:22 -0400
+Received: from mail-yw0-f45.google.com ([209.85.213.45]:60264)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>)
-	id 1QlXSP-0000eL-Ke; Mon, 25 Jul 2011 22:33:17 -0400
-Received: from d01relay02.pok.ibm.com (d01relay02.pok.ibm.com [9.56.227.234])
-	by e4.ny.us.ibm.com (8.14.4/8.13.1) with ESMTP id p6Q2AGd1025144;
-	Mon, 25 Jul 2011 22:10:16 -0400
-Received: from d01av03.pok.ibm.com (d01av03.pok.ibm.com [9.56.224.217])
-	by d01relay02.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	p6Q2WjaH345224; Mon, 25 Jul 2011 22:32:45 -0400
-Received: from d01av03.pok.ibm.com (loopback [127.0.0.1])
-	by d01av03.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	p6PMWWCK010112; Mon, 25 Jul 2011 19:32:32 -0300
-Received: from [9.65.156.9] (sig-9-65-156-9.mts.ibm.com [9.65.156.9])
-	by d01av03.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	p6PMWVE5010104; Mon, 25 Jul 2011 19:32:32 -0300
-Message-ID: <4E2E274B.9020608@us.ibm.com>
-Date: Mon, 25 Jul 2011 21:32:43 -0500
-From: Anthony Liguori <aliguori@us.ibm.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.17) Gecko/20110516 Lightning/1.0b2 Thunderbird/3.1.10
+	(envelope-from <geleman@gmail.com>)
+	id 1QlXog-0004TZ-R1; Mon, 25 Jul 2011 22:56:18 -0400
+Received: by ywb3 with SMTP id 3so7182ywb.4
+	for <multiple recipients>; Mon, 25 Jul 2011 19:56:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=V/6PnNuWLiBYe6IBH6RLm6+WMkP3IGL6nZr52MvBGdU=;
+	b=GRbGIpf5FKOcS+LwPv3vQPc1RVeTfExz4ScRp5WfN0/1L2Dy7pjy26NUg8hvvUNmT4
+	/GHfBf6kQ4US0af1Kjb1aHd88iwk9J1+QvfifGRuLMrg6Clqc7/qp4L2qOdMJCpqsjSD
+	FwOzHz1F/VH/mvCdeDeqJPlEGkssDHS8AbSTk=
 MIME-Version: 1.0
-To: TeLeMan <geleman@gmail.com>
+Received: by 10.147.136.19 with SMTP id o19mr4687793yan.38.1311648977933; Mon,
+	25 Jul 2011 19:56:17 -0700 (PDT)
+Received: by 10.146.82.8 with HTTP; Mon, 25 Jul 2011 19:56:17 -0700 (PDT)
+In-Reply-To: <4E2E274B.9020608@us.ibm.com>
 References: <1311647049-1896-1-git-send-email-geleman@gmail.com>
-In-Reply-To: <1311647049-1896-1-git-send-email-geleman@gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 32.97.182.144
+	<4E2E274B.9020608@us.ibm.com>
+Date: Tue, 26 Jul 2011 10:56:17 +0800
+Message-ID: <CAETRQW=MWb+nyeOFgENxj-KZS_k477fa07gdfTZz9EWr-JkN2A@mail.gmail.com>
+From: TeLeMan <geleman@gmail.com>
+To: Anthony Liguori <aliguori@us.ibm.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.213.45
 Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [PATCH] console: Don't expose the the ui
- module's functions when the	module is not available.
+ module's functions when the module is not available.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,64 +50,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Jul 2011 02:33:21 -0000
+X-List-Received-Date: Tue, 26 Jul 2011 02:56:23 -0000
 
-On 07/25/2011 09:24 PM, TeLeMan wrote:
-> If there is no sdl support, the implement of sdl_display_init() is missing and its declaration should not be exposed.
-> vnc, cocoa, curses and other ui modules are the same as sdl.
+On Tue, Jul 26, 2011 at 10:32, Anthony Liguori <aliguori@us.ibm.com> wrote:
+> On 07/25/2011 09:24 PM, TeLeMan wrote:
+>>
+>> If there is no sdl support, the implement of sdl_display_init() is missi=
+ng
+>> and its declaration should not be exposed.
+>> vnc, cocoa, curses and other ui modules are the same as sdl.
+>>
+>> Signed-off-by: TeLeMan<geleman@gmail.com>
 >
-> Signed-off-by: TeLeMan<geleman@gmail.com>
+> Nack.
+>
+> There's no harm in exposing these and it avoids cluttered #ifdefs.
+This patch can avoid breakage on link stage . See my another patch:
+http://lists.nongnu.org/archive/html/qemu-devel/2011-07/msg02616.html
 
-Nack.
 
-There's no harm in exposing these and it avoids cluttered #ifdefs.
-
-Regards,
-
-Anthony Liguori
-
-> ---
->   console.h |    9 ++++++++-
->   1 files changed, 8 insertions(+), 1 deletions(-)
+> Regards,
 >
-> diff --git a/console.h b/console.h
-> index 67d1373..ede8bea 100644
-> --- a/console.h
-> +++ b/console.h
-> @@ -363,19 +363,24 @@ void qemu_console_copy(DisplayState *ds, int src_x, int src_y,
->                          int dst_x, int dst_y, int w, int h);
+> Anthony Liguori
 >
->   /* sdl.c */
-> +#ifdef CONFIG_SDL
->   void sdl_display_init(DisplayState *ds, int full_screen, int no_frame);
-> +#endif
+>> ---
+>> =C2=A0console.h | =C2=A0 =C2=A09 ++++++++-
+>> =C2=A01 files changed, 8 insertions(+), 1 deletions(-)
+>>
+>> diff --git a/console.h b/console.h
+>> index 67d1373..ede8bea 100644
+>> --- a/console.h
+>> +++ b/console.h
+>> @@ -363,19 +363,24 @@ void qemu_console_copy(DisplayState *ds, int src_x=
+,
+>> int src_y,
+>> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 int dst_x, int dst_y, int w, int h);
+>>
+>> =C2=A0/* sdl.c */
+>> +#ifdef CONFIG_SDL
+>> =C2=A0void sdl_display_init(DisplayState *ds, int full_screen, int no_fr=
+ame);
+>> +#endif
+>>
+>> =C2=A0/* cocoa.m */
+>> +#ifdef CONFIG_COCOA
+>> =C2=A0void cocoa_display_init(DisplayState *ds, int full_screen);
+>> +#endif
+>>
+>> =C2=A0/* vnc.c */
+>> +#ifdef CONFIG_VNC
+>> =C2=A0void vnc_display_init(DisplayState *ds);
+>> =C2=A0void vnc_display_close(DisplayState *ds);
+>> =C2=A0int vnc_display_open(DisplayState *ds, const char *display);
+>> =C2=A0void vnc_display_add_client(DisplayState *ds, int csock, int skipa=
+uth);
+>> =C2=A0int vnc_display_disable_login(DisplayState *ds);
+>> =C2=A0char *vnc_display_local_addr(DisplayState *ds);
+>> -#ifdef CONFIG_VNC
+>> +
+>> =C2=A0int vnc_display_password(DisplayState *ds, const char *password);
+>> =C2=A0int vnc_display_pw_expire(DisplayState *ds, time_t expires);
+>> =C2=A0void do_info_vnc_print(Monitor *mon, const QObject *data);
+>> @@ -401,6 +406,8 @@ static inline void do_info_vnc_print(Monitor *mon,
+>> const QObject *data)
+>> =C2=A0#endif
+>>
+>> =C2=A0/* curses.c */
+>> +#ifdef CONFIG_CURSES
+>> =C2=A0void curses_display_init(DisplayState *ds, int full_screen);
+>> +#endif
+>>
+>> =C2=A0#endif
 >
->   /* cocoa.m */
-> +#ifdef CONFIG_COCOA
->   void cocoa_display_init(DisplayState *ds, int full_screen);
-> +#endif
 >
->   /* vnc.c */
-> +#ifdef CONFIG_VNC
->   void vnc_display_init(DisplayState *ds);
->   void vnc_display_close(DisplayState *ds);
->   int vnc_display_open(DisplayState *ds, const char *display);
->   void vnc_display_add_client(DisplayState *ds, int csock, int skipauth);
->   int vnc_display_disable_login(DisplayState *ds);
->   char *vnc_display_local_addr(DisplayState *ds);
-> -#ifdef CONFIG_VNC
-> +
->   int vnc_display_password(DisplayState *ds, const char *password);
->   int vnc_display_pw_expire(DisplayState *ds, time_t expires);
->   void do_info_vnc_print(Monitor *mon, const QObject *data);
-> @@ -401,6 +406,8 @@ static inline void do_info_vnc_print(Monitor *mon, const QObject *data)
->   #endif
->
->   /* curses.c */
-> +#ifdef CONFIG_CURSES
->   void curses_display_init(DisplayState *ds, int full_screen);
-> +#endif
->
->   #endif
-
 
