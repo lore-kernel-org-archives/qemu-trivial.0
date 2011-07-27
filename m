@@ -1,48 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QlzNa-0002tC-B7
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jul 2011 04:22:10 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:48430)
+	id 1Qm2EX-00064k-TV
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Jul 2011 07:25:01 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:60280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QlzNX-0002i2-H5
-	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 04:22:08 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1Qm2EU-0005r6-E1
+	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 07:24:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QlzNW-0003rK-JZ
-	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 04:22:07 -0400
-Received: from mail-ww0-f53.google.com ([74.125.82.53]:46706)
+	(envelope-from <jan.kiszka@siemens.com>) id 1Qm2ET-0000iK-D6
+	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 07:24:58 -0400
+Received: from david.siemens.de ([192.35.17.14]:18423)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QlzNU-0003qy-81; Wed, 27 Jul 2011 04:22:04 -0400
-Received: by wwf26 with SMTP id 26so1000162wwf.10
-	for <multiple recipients>; Wed, 27 Jul 2011 01:22:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=eg9pCbjDSWBs+X4oY1AVmAo096kOSIX9zR0uBIzi5hE=;
-	b=ctA9ANQcfxxix+33/0httajgr5/f7AX83nYPSs1YQ6q3qbctHk44YfQfoYM7kEKoKF
-	voZLpCQjwco3bM4QBZiIQOzbpi0DSoAkW2iVAGTTpSyabG93evp1XPkd7bLcxQUp0HU+
-	A+1kRWL9ASCNCecvZYG38NCudp9bB+6UG0BjA=
-Received: by 10.227.32.73 with SMTP id b9mr5881258wbd.107.1311754923243;
-	Wed, 27 Jul 2011 01:22:03 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain ([109.224.133.37])
-	by mx.google.com with ESMTPS id gd1sm1113240wbb.61.2011.07.27.01.22.01
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 27 Jul 2011 01:22:02 -0700 (PDT)
-Date: Wed, 27 Jul 2011 09:21:56 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Michael Roth <mdroth@linux.vnet.ibm.com>
-Message-ID: <20110727082156.GA12956@stefanha-thinkpad.localdomain>
-References: <4E2EED1E.6030402@linux.vnet.ibm.com>
-	<1311698364-32395-1-git-send-email-mdroth@linux.vnet.ibm.com>
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1Qm2ER-0000ht-Ey; Wed, 27 Jul 2011 07:24:55 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by david.siemens.de (8.13.6/8.13.6) with ESMTP id p6RBOop9004613;
+	Wed, 27 Jul 2011 13:24:50 +0200
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id p6RBOo4M016372;
+	Wed, 27 Jul 2011 13:24:50 +0200
+Message-ID: <4E2FF582.20602@siemens.com>
+Date: Wed, 27 Jul 2011 13:24:50 +0200
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1311698364-32395-1-git-send-email-mdroth@linux.vnet.ibm.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Makefile: add missing deps on
- $(GENERATED_HEADERS)
+To: Brad <brad@comstyle.com>
+References: <20110727031126.GA22433@rox.home.comstyle.com>
+In-Reply-To: <20110727031126.GA22433@rox.home.comstyle.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 192.35.17.14
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Fix configure display for non-Linux OS's
+ and the KVM / vhost-net features to show "no"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,19 +47,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jul 2011 08:22:08 -0000
+X-List-Received-Date: Wed, 27 Jul 2011 11:24:59 -0000
 
-On Tue, Jul 26, 2011 at 11:39:24AM -0500, Michael Roth wrote:
-> This fixes a build issue with make -j6+ due to qapi-generated files
-> being built before $(GENERATED_HEADERS) have been created.
-> 
-> Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
-> ---
->  Makefile |    4 +++-
->  1 files changed, 3 insertions(+), 1 deletions(-)
+On 2011-07-27 05:11, Brad wrote:
+> diff --git a/configure b/configure
+> index dc9a1fe..ef8a4c8 100755
+> --- a/configure
+> +++ b/configure
+> @@ -113,7 +113,6 @@ curl=""
+>  curses=""
+>  docs=""
+>  fdt=""
+> -kvm=""
+>  nptl=""
+>  sdl=""
+>  vnc="yes"
+> @@ -129,9 +128,10 @@ xen=""
+>  xen_ctrl_version=""
+>  linux_aio=""
+>  attr=""
+> -vhost_net=""
+>  xfs=""
+>  
+> +vhost_net="no"
+> +kvm="no"
+>  gprof="no"
+>  debug_tcg="no"
+>  debug_mon="no"
+> -- 1.7.6
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+Acked-by: Jan Kiszka <jan.kiszka@siemens.com>
 
-Stefan
+Should probably be fine for the trivial tree.
+
+Jan
+
+-- 
+Siemens AG, Corporate Technology, CT T DE IT 1
+Corporate Competence Center Embedded Linux
 
