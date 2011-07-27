@@ -1,49 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qlx7t-0003ia-Ra
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jul 2011 01:57:49 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:36406)
+	id 1QlzNa-0002tC-B7
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Jul 2011 04:22:10 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:48430)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Qlx7q-0003Zh-WA
-	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 01:57:48 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QlzNX-0002i2-H5
+	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 04:22:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Qlx7p-0003Fs-T2
-	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 01:57:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:29282)
+	(envelope-from <stefanha@gmail.com>) id 1QlzNW-0003rK-JZ
+	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 04:22:07 -0400
+Received: from mail-ww0-f53.google.com ([74.125.82.53]:46706)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Qlx7n-0003FR-A9; Wed, 27 Jul 2011 01:57:43 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p6R5vf0M026758
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 27 Jul 2011 01:57:41 -0400
-Received: from blackfin.pond.sub.org (ovpn-113-62.phx2.redhat.com
-	[10.3.113.62])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id p6R5veVp032262; Wed, 27 Jul 2011 01:57:40 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id 882C7265; Wed, 27 Jul 2011 07:57:38 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Alexandre Raymond <cerbere@gmail.com>
-References: <1311652562-10794-1-git-send-email-cerbere@gmail.com>
-	<1311652562-10794-2-git-send-email-cerbere@gmail.com>
-	<m339htczcl.fsf@blackfin.pond.sub.org>
-	<CAHWZs7UG9NrAQKAtJN2+eQtbOOGFZrotdfSg3PhQ+FD_mRX4-w@mail.gmail.com>
-Date: Wed, 27 Jul 2011 07:57:38 +0200
-In-Reply-To: <CAHWZs7UG9NrAQKAtJN2+eQtbOOGFZrotdfSg3PhQ+FD_mRX4-w@mail.gmail.com>
-	(Alexandre Raymond's message of "Tue, 26 Jul 2011 09:51:21 -0400")
-Message-ID: <m3k4b4z2nh.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.1 (gnu/linux)
+	(envelope-from <stefanha@gmail.com>)
+	id 1QlzNU-0003qy-81; Wed, 27 Jul 2011 04:22:04 -0400
+Received: by wwf26 with SMTP id 26so1000162wwf.10
+	for <multiple recipients>; Wed, 27 Jul 2011 01:22:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=eg9pCbjDSWBs+X4oY1AVmAo096kOSIX9zR0uBIzi5hE=;
+	b=ctA9ANQcfxxix+33/0httajgr5/f7AX83nYPSs1YQ6q3qbctHk44YfQfoYM7kEKoKF
+	voZLpCQjwco3bM4QBZiIQOzbpi0DSoAkW2iVAGTTpSyabG93evp1XPkd7bLcxQUp0HU+
+	A+1kRWL9ASCNCecvZYG38NCudp9bB+6UG0BjA=
+Received: by 10.227.32.73 with SMTP id b9mr5881258wbd.107.1311754923243;
+	Wed, 27 Jul 2011 01:22:03 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain ([109.224.133.37])
+	by mx.google.com with ESMTPS id gd1sm1113240wbb.61.2011.07.27.01.22.01
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 27 Jul 2011 01:22:02 -0700 (PDT)
+Date: Wed, 27 Jul 2011 09:21:56 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Michael Roth <mdroth@linux.vnet.ibm.com>
+Message-ID: <20110727082156.GA12956@stefanha-thinkpad.localdomain>
+References: <4E2EED1E.6030402@linux.vnet.ibm.com>
+	<1311698364-32395-1-git-send-email-mdroth@linux.vnet.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Qemu Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] Makefile: distclean
-	should clean all possible targets
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1311698364-32395-1-git-send-email-mdroth@linux.vnet.ibm.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Makefile: add missing deps on
+ $(GENERATED_HEADERS)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,48 +54,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jul 2011 05:57:48 -0000
+X-List-Received-Date: Wed, 27 Jul 2011 08:22:08 -0000
 
-Alexandre Raymond <cerbere@gmail.com> writes:
+On Tue, Jul 26, 2011 at 11:39:24AM -0500, Michael Roth wrote:
+> This fixes a build issue with make -j6+ due to qapi-generated files
+> being built before $(GENERATED_HEADERS) have been created.
+> 
+> Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+> ---
+>  Makefile |    4 +++-
+>  1 files changed, 3 insertions(+), 1 deletions(-)
 
-> Hi Markus,
->
->> Well, I'd expect distclean to remove exactly what *this* makefile can
->> build, and leave everything else alone.
->
-> I was expecting "distclean" to bring back the source directory to
-> however it was after checkout, removing anything that might have been
-> created by the build/configure process.
->
->
->> Your patch adds a special case to that simple rule: also remove
->> not-configured target directories. =C2=A0Other not-configured stuff is s=
-till
->> left behind.
->>
->> Special cases need special justification, hence my question above.
->
-> This patch stems from the discussion in "Makefile: fix out-of-tree builds"
-> http://lists.gnu.org/archive/html/qemu-devel/2011-07/msg02707.html
->
-> What happens is that SRC_PATH is set in the VPATH variable in the
-> Makefile, which causes it to search for files inside the source
-> directory (and outside the current build directory).
->
-> Say you're building out-of-tree, and the Makefile happens to pick up
-> old files from your main source directory, it can lead to errors in
-> the build. If you are "unable" to delete old build data because you've
-> run a more restricted "configure" after an earlier build, this earlier
-> build data will not go away if you distclean.
->
-> For example:
-[...]
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-There are many more object files that are built conditionally.  Why is
-it okay not to delete them?
-
-If you unwisely messed up your source tree by building in it, a simple
-and reliable way out is to git-clone yourself a new one.  Or if you
-insist on recovering in-place, remove files outside .git that aren't in
-git.
+Stefan
 
