@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qm8ad-0006yp-N9
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jul 2011 14:12:15 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:33449)
+	id 1QmjuH-000805-KI
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jul 2011 06:03:01 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:43230)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <freddy77@gmail.com>) id 1Qm8aY-0006fm-9v
-	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 14:12:12 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QmjuE-0007sC-U6
+	for qemu-trivial@nongnu.org; Fri, 29 Jul 2011 06:02:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <freddy77@gmail.com>) id 1Qm8aX-0002Mx-13
-	for qemu-trivial@nongnu.org; Wed, 27 Jul 2011 14:12:10 -0400
-Received: from mail-wy0-f173.google.com ([74.125.82.173]:40569)
+	(envelope-from <stefanha@gmail.com>) id 1QmjuE-0001qU-2g
+	for qemu-trivial@nongnu.org; Fri, 29 Jul 2011 06:02:58 -0400
+Received: from mail-gy0-f173.google.com ([209.85.160.173]:55391)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <freddy77@gmail.com>)
-	id 1Qm8aW-0002Mq-Oz; Wed, 27 Jul 2011 14:12:08 -0400
-Received: by wyf28 with SMTP id 28so1344394wyf.4
-	for <multiple recipients>; Wed, 27 Jul 2011 11:12:07 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1QmjuB-0001po-SX; Fri, 29 Jul 2011 06:02:55 -0400
+Received: by gyg8 with SMTP id 8so2890283gyg.4
+	for <multiple recipients>; Fri, 29 Jul 2011 03:02:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=from:to:cc:subject:date:message-id:x-mailer:in-reply-to:references;
-	bh=cboRRDCJ2c0CzYVL9M9W1ZdH91Z1NOfa+mbg27XDJls=;
-	b=BVBNl+PJ/x7hlEVGCxUZ3CZItSJw2O2yILa6B6QlTzuJlIcOFnvCivN5uama2OFDOi
-	bzD/Oo2nciU4MQN6d2gz+M7YZbIJ277DGmNVmgE1/m7B7YGMokzcxD13FZn+ys/5CnqR
-	iQu2ZmbmNB0v0ZPNAuDQf5RuopXcIBw0AHrN8=
-Received: by 10.216.137.215 with SMTP id y65mr81821wei.74.1311790327891;
-	Wed, 27 Jul 2011 11:12:07 -0700 (PDT)
-Received: from obol602.localdomain (net-2-37-106-50.cust.dsl.vodafone.it
-	[2.37.106.50])
-	by mx.google.com with ESMTPS id fn12sm108836wbb.38.2011.07.27.11.11.52
-	(version=SSLv3 cipher=OTHER); Wed, 27 Jul 2011 11:11:57 -0700 (PDT)
-From: Frediano Ziglio <freddy77@gmail.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Date: Wed, 27 Jul 2011 20:12:01 +0200
-Message-Id: <1311790322-10889-3-git-send-email-freddy77@gmail.com>
-X-Mailer: git-send-email 1.7.1
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=+/CD8PzWif20eyzyrvVGwnk3BfPdMaPo08P2d3Jyp/Q=;
+	b=xHm+hFWq5uaCo+u1yogXqF+HsACUMc0VmxUpDEG93Gx5T1hwrxZ8hbVY2eDNICKp9d
+	XYsmD08E0ikh6UoPgRMFRaNuiwGkZmnN+n92t8QsNhbaaPuuZgNghQkzmT1aZtThPNEn
+	k7h9W/IbKoMdc2qxZzUuPIUcILK5EjAW1gZ9I=
+MIME-Version: 1.0
+Received: by 10.147.87.16 with SMTP id p16mr854530yal.20.1311933773522; Fri,
+	29 Jul 2011 03:02:53 -0700 (PDT)
+Received: by 10.147.181.8 with HTTP; Fri, 29 Jul 2011 03:02:53 -0700 (PDT)
 In-Reply-To: <1311790322-10889-1-git-send-email-freddy77@gmail.com>
 References: <1311790322-10889-1-git-send-email-freddy77@gmail.com>
+Date: Fri, 29 Jul 2011 11:02:53 +0100
+Message-ID: <CAJSP0QXFz467=EFNxEBtBOF1QkEKNbK3JH3zUSA-R_HUn55L0w@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Frediano Ziglio <freddy77@gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Frediano Ziglio <freddy77@gmail.com>
-Subject: [Qemu-trivial] [PATCH 2/3] block: typo fix
+X-Received-From: 209.85.160.173
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 0/3] small trivial patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,28 +49,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jul 2011 18:12:13 -0000
+X-List-Received-Date: Fri, 29 Jul 2011 10:03:00 -0000
 
+On Wed, Jul 27, 2011 at 7:11 PM, Frediano Ziglio <freddy77@gmail.com> wrote=
+:
+> Minor fixes and improves
+>
+> Frediano Ziglio (3):
+> =A0block: removed unused function
+> =A0block: typo fix
+> =A0aio: always check paio_init result
+>
+> =A0block.c =A0 =A0 =A0 =A0 =A0 | =A0 13 -------------
+> =A0block.h =A0 =A0 =A0 =A0 =A0 | =A0 =A02 --
+> =A0block/raw-posix.c | =A0 13 ++++++-------
+> =A03 files changed, 6 insertions(+), 22 deletions(-)
 
-Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
----
- block/raw-posix.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Reviewed-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
 
-diff --git a/block/raw-posix.c b/block/raw-posix.c
-index cd89c83..275b41e 100644
---- a/block/raw-posix.c
-+++ b/block/raw-posix.c
-@@ -587,7 +587,7 @@ static BlockDriverAIOCB *raw_aio_submit(BlockDriverState *bs,
- 
-     /*
-      * If O_DIRECT is used the buffer needs to be aligned on a sector
--     * boundary.  Check if this is the case or telll the low-level
-+     * boundary.  Check if this is the case or tell the low-level
-      * driver that it needs to copy the buffer.
-      */
-     if (s->aligned_buf) {
--- 
-1.7.1
+Please send block patches to Kevin even if they are trivial.  The
+trivial-patches tree tries to stay out of the way of subsystems with
+an active maintainer.
 
+Stefan
 
