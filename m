@@ -1,43 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qnpb7-0001CH-El
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Aug 2011 06:19:45 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:44961)
+	id 1QnsuS-0001ae-8g
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Aug 2011 09:51:56 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:52027)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Qnpb4-00016j-GJ
-	for qemu-trivial@nongnu.org; Mon, 01 Aug 2011 06:19:43 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1QnsuP-0001Q4-ER
+	for qemu-trivial@nongnu.org; Mon, 01 Aug 2011 09:51:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Qnpb3-0002sL-N9
-	for qemu-trivial@nongnu.org; Mon, 01 Aug 2011 06:19:42 -0400
-Received: from mail-gw0-f45.google.com ([74.125.83.45]:54934)
+	(envelope-from <dgibson@ozlabs.org>) id 1QnsuO-0006X8-75
+	for qemu-trivial@nongnu.org; Mon, 01 Aug 2011 09:51:53 -0400
+Received: from ozlabs.org ([203.10.76.45]:50170)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1Qnpb1-0002rr-GD; Mon, 01 Aug 2011 06:19:39 -0400
-Received: by gwb19 with SMTP id 19so4220025gwb.4
-	for <multiple recipients>; Mon, 01 Aug 2011 03:19:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=TRguh5k0u1cntRNSBgrN4QC9dVGdfAYlsyc8VhbMl2M=;
-	b=HObS7x73NorQq9Y6FPBDzsBZWfHtSqq+qGEf0xBAaII307symvycTkywol370tj1zj
-	Vm+u/FBMsRo/zRw33dVZXINQgZw0VWtFErGUgcDHplLMsX+X6XNWYTENZRFY1tjQBgli
-	Q4hGNxn7MTBDVZ/VMeo/bIPWLHJYOqjJi8Pjw=
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1QnsuH-0006Vi-Cv; Mon, 01 Aug 2011 09:51:45 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id B620AB7090; Mon,  1 Aug 2011 23:51:43 +1000 (EST)
+Date: Mon, 1 Aug 2011 23:33:37 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20110801133337.GD28437@yookeroo.fritz.box>
+Mail-Followup-To: "Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <1312181462-29889-1-git-send-email-david@gibson.dropbear.id.au>
+	<20110801101038.GE5439@redhat.com>
 MIME-Version: 1.0
-Received: by 10.236.185.7 with SMTP id t7mr3016256yhm.45.1312193978689; Mon,
-	01 Aug 2011 03:19:38 -0700 (PDT)
-Received: by 10.146.84.20 with HTTP; Mon, 1 Aug 2011 03:19:38 -0700 (PDT)
-In-Reply-To: <1312181399-29841-1-git-send-email-david@gibson.dropbear.id.au>
-References: <1312181399-29841-1-git-send-email-david@gibson.dropbear.id.au>
-Date: Mon, 1 Aug 2011 11:19:38 +0100
-Message-ID: <CAJSP0QXvArm0_j0MgsJ2=nJWuGTGSMVTNbPBZYO5S+VuUY-uwA@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.83.45
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20110801101038.GE5439@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 203.10.76.45
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Check fread() results to avoid gcc 4.6
-	warnings
+Subject: Re: [Qemu-trivial] [PATCH] Correctly assign PCI domain numbers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,24 +43,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Aug 2011 10:19:43 -0000
+X-List-Received-Date: Mon, 01 Aug 2011 13:51:54 -0000
 
-On Mon, Aug 1, 2011 at 7:49 AM, David Gibson
-<david@gibson.dropbear.id.au> wrote:
-> When compiling with gcc 4.6, some code in fw_cfg.c complains that fop_ret
-> is assigned but not used (which is true). =A0However, it looks like the
-> meaningless assignments to fop_ret were done to suppress other gcc warnin=
-gs
-> due to the fact that fread() is labelled as warn_unused_result in glibc.
->
-> This patch avoids both errors, by actually checking the fread() result co=
-de
-> and dropping out with an error message if it fails.
->
-> Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
-> ---
-> =A0hw/fw_cfg.c | =A0 13 +++++++++++++
-> =A01 files changed, 13 insertions(+), 0 deletions(-)
+On Mon, Aug 01, 2011 at 01:10:38PM +0300, Michael S. Tsirkin wrote:
+> On Mon, Aug 01, 2011 at 04:51:02PM +1000, David Gibson wrote:
+> > qemu already almost supports PCI domains; that is, several entirely
+> > independent PCI host bridges on the same machine.  However, a bug in
+> > pci_bus_new_inplace() means that every host bridge gets assigned domain
+> > number zero and so can't be properly distinguished.  This patch fixes the
+> > bug, giving each new host bridge a new domain number.
+> > 
+> > Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+> 
+> OK, but I'd like to see the whole picture.
+> How does the guest detect multiple domains,
+> and how does it access them?
 
-Reviewed-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+For the pseries machine, which is what I'm concerned with, each host
+bridge is advertised through the device tree passed to the guest.
+That gives the necessary handles and addresses for accesing config
+space and memory and IO windows for each host bridge.
+
+-- 
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
