@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qot59-0005le-Lv
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Aug 2011 04:15:07 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:56817)
+	id 1QotzL-0003JV-VC
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Aug 2011 05:13:11 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:47419)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Qot56-0005cW-LL
-	for qemu-trivial@nongnu.org; Thu, 04 Aug 2011 04:15:05 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QotzJ-0003JL-Ay
+	for qemu-trivial@nongnu.org; Thu, 04 Aug 2011 05:13:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Qot55-0003Is-Or
-	for qemu-trivial@nongnu.org; Thu, 04 Aug 2011 04:15:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33061)
+	(envelope-from <stefanha@gmail.com>) id 1QotzH-0008LQ-TT
+	for qemu-trivial@nongnu.org; Thu, 04 Aug 2011 05:13:09 -0400
+Received: from mail-fx0-f45.google.com ([209.85.161.45]:33768)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Qot53-0003I3-Rd; Thu, 04 Aug 2011 04:15:02 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p748Eu1U029526
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 4 Aug 2011 04:14:56 -0400
-Received: from blackfin.pond.sub.org (ovpn-113-25.phx2.redhat.com
-	[10.3.113.25])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id p748Es2p028106; Thu, 4 Aug 2011 04:14:55 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id 7C09F6005D; Thu,  4 Aug 2011 10:14:53 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
+	(envelope-from <stefanha@gmail.com>)
+	id 1QotzH-0008IF-Kq; Thu, 04 Aug 2011 05:13:07 -0400
+Received: by fxbb27 with SMTP id b27so2104702fxb.4
+	for <multiple recipients>; Thu, 04 Aug 2011 02:13:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=YUsP0m63PKuH2hs1/5o+oFMbOXIqtk5IZ+oq/rA4MHk=;
+	b=mnz1oSv2q+hITwESeodR334Vb9FnS49iAlHgEjlokmkSxKai4t2ApdtuxcgghptE6Q
+	RvFn6JeHRrHK6rERHjimCFYYY0OeSjIZcNM/5TNvKEhHnU2ErmfeW/dYTviMSzgdGYg2
+	1egC60WAGdr0XL0Gdu3PvFEusGlW6Zi2Bgzy8=
+Received: by 10.223.69.83 with SMTP id y19mr844212fai.108.1312449186057;
+	Thu, 04 Aug 2011 02:13:06 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain
+	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
+	by mx.google.com with ESMTPS id o7sm135678fah.12.2011.08.04.02.13.03
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 04 Aug 2011 02:13:04 -0700 (PDT)
+Date: Thu, 4 Aug 2011 10:12:57 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Zhi Yong Wu <wuzhy@linux.vnet.ibm.com>
+Message-ID: <20110804091257.GA29786@stefanha-thinkpad.localdomain>
 References: <1312443635-21856-1-git-send-email-wuzhy@linux.vnet.ibm.com>
-Date: Thu, 04 Aug 2011 10:14:53 +0200
-In-Reply-To: <1312443635-21856-1-git-send-email-wuzhy@linux.vnet.ibm.com> (Zhi
-	Yong Wu's message of "Thu, 4 Aug 2011 15:40:35 +0800")
-Message-ID: <m3bow5ioea.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
+Content-Disposition: inline
+In-Reply-To: <1312443635-21856-1-git-send-email-wuzhy@linux.vnet.ibm.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.161.45
 Cc: aliguori@us.ibm.com, stefanha@linux.vnet.ibm.com, qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org, zwu.kernel@gmail.com, ryanh@us.ibm.com,
 	luowenj@cn.ibm.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] scsi-bus: use DO_UPCAST.
+Subject: Re: [Qemu-trivial] [PATCH] scsi-bus: use DO_UPCAST.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,28 +55,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Aug 2011 08:15:05 -0000
+X-List-Received-Date: Thu, 04 Aug 2011 09:13:10 -0000
 
-Zhi Yong Wu <wuzhy@linux.vnet.ibm.com> writes:
-
+On Thu, Aug 04, 2011 at 03:40:35PM +0800, Zhi Yong Wu wrote:
 > Signed-off-by: Zhi Yong Wu <wuzhy@linux.vnet.ibm.com>
 > ---
 >  hw/scsi-bus.c |    2 +-
 >  1 files changed, 1 insertions(+), 1 deletions(-)
->
-> diff --git a/hw/scsi-bus.c b/hw/scsi-bus.c
-> index ad6a730..f6c416e 100644
-> --- a/hw/scsi-bus.c
-> +++ b/hw/scsi-bus.c
-> @@ -712,7 +712,7 @@ void scsi_device_purge_requests(SCSIDevice *sdev)
->  
->  static char *scsibus_get_fw_dev_path(DeviceState *dev)
->  {
-> -    SCSIDevice *d = (SCSIDevice*)dev;
-> +    SCSIDevice *d = DO_UPCAST(SCSIDevice, qdev, dev);
->      SCSIBus *bus = scsi_bus_from_device(d);
->      char path[100];
->      int i;
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
+
+Stefan
 
