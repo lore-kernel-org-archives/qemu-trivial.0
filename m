@@ -1,48 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qou1S-0004LX-Ck
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Aug 2011 05:15:22 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:47775)
+	id 1QpBcu-0002fe-5F
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Aug 2011 00:03:12 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:50059)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Qou1P-0004HK-V0
-	for qemu-trivial@nongnu.org; Thu, 04 Aug 2011 05:15:20 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1QpBcq-0002TN-FD
+	for qemu-trivial@nongnu.org; Fri, 05 Aug 2011 00:03:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Qou1O-00033P-U7
-	for qemu-trivial@nongnu.org; Thu, 04 Aug 2011 05:15:19 -0400
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:43638)
+	(envelope-from <dgibson@ozlabs.org>) id 1QpBcp-00016o-4p
+	for qemu-trivial@nongnu.org; Fri, 05 Aug 2011 00:03:08 -0400
+Received: from ozlabs.org ([203.10.76.45]:60491)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1Qou1M-0002yl-BU; Thu, 04 Aug 2011 05:15:16 -0400
-Received: by fxbb27 with SMTP id b27so2107063fxb.4
-	for <multiple recipients>; Thu, 04 Aug 2011 02:15:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=S3+DZvEwPfECq3aqgWvk/nBU1/G+zR+8kGxmwTts/Zc=;
-	b=RqSFWhqGfvUHBu2Q/FY7zSvCD8PJgYp5sCrc04/uMokYmscppjNPTHtiBJ5q144pEO
-	A7JImTtYld72oy5mLJeA6XV4dkNqtlMPiKLau5Y6t7V/MgX7eR4+Srlw4OTJCkYeHJqN
-	HjTVLcOpPqos4qaMpSxHp+1xVC+U8rkzlnEuY=
-Received: by 10.223.10.143 with SMTP id p15mr879438fap.12.1312449315553;
-	Thu, 04 Aug 2011 02:15:15 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain
-	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
-	by mx.google.com with ESMTPS id b8sm265682fam.13.2011.08.04.02.15.14
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 04 Aug 2011 02:15:14 -0700 (PDT)
-Date: Thu, 4 Aug 2011 10:15:09 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20110804091509.GA29895@stefanha-thinkpad.localdomain>
-References: <1312411744-9292-1-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1312411744-9292-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.161.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH] hw/qdev: Don't crash if qdev_create(NULL,
- ...) fails
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1QpBcl-00013Z-2t; Fri, 05 Aug 2011 00:03:03 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id CE9EAB6F7A; Fri,  5 Aug 2011 14:02:59 +1000 (EST)
+From: David Gibson <david@gibson.dropbear.id.au>
+To: qemu-devel@nongnu.org
+Date: Fri,  5 Aug 2011 14:02:50 +1000
+Message-Id: <1312516970-26606-1-git-send-email-david@gibson.dropbear.id.au>
+X-Mailer: git-send-email 1.7.5.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 203.10.76.45
+Cc: qemu-trivial@nongnu.org, agraf@suse.de
+Subject: [Qemu-trivial] [PATCH] Permit -mem-path without sync mmu
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,20 +35,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Aug 2011 09:15:20 -0000
+X-List-Received-Date: Fri, 05 Aug 2011 04:03:09 -0000
 
-On Wed, Aug 03, 2011 at 11:49:04PM +0100, Peter Maydell wrote:
-> If an attempt to create a qdev device on the default sysbus (by passing
-> NULL as the bus to qdev_create) fails, print a useful error message
-> rather than crashing trying to dereference a NULL pointer.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/qdev.c |    7 ++++++-
->  1 files changed, 6 insertions(+), 1 deletions(-)
+At present, an explicit test disallows use of -mem-path when kvm is enabled
+but KVM_CAP_SYNC_MMU is not set.  In particular, this prevents the user
+from using hugetlbfs to back the guest memory.
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
+I can see no reason for this check, and when I asked about it previously,
+the only theory offered was that this was a limitation of the very early
+days of kvm which only happened to match the SYNC_MMU flag by accident.
 
-Stefan
+This patch, therefore, removes the check.  This is of particular use to
+us on POWER, where we haven't yet implement SYNC_MMU, but where backing
+the guest with hugepages is possible, and in fact mandatory (for now).
+
+Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+---
+ exec.c |    5 -----
+ 1 files changed, 0 insertions(+), 5 deletions(-)
+
+diff --git a/exec.c b/exec.c
+index 476b507..041637c 100644
+--- a/exec.c
++++ b/exec.c
+@@ -2818,11 +2818,6 @@ static void *file_ram_alloc(RAMBlock *block,
+         return NULL;
+     }
+ 
+-    if (kvm_enabled() && !kvm_has_sync_mmu()) {
+-        fprintf(stderr, "host lacks kvm mmu notifiers, -mem-path unsupported\n");
+-        return NULL;
+-    }
+-
+     if (asprintf(&filename, "%s/qemu_back_mem.XXXXXX", path) == -1) {
+         return NULL;
+     }
+-- 
+1.7.5.4
+
 
