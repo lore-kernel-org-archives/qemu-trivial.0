@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qph9O-0002ox-9h
-	for mharc-qemu-trivial@gnu.org; Sat, 06 Aug 2011 09:42:50 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:38122)
+	id 1Qpzpt-0007Rm-3c
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Aug 2011 05:39:57 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:52223)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1QpDiG-0007vq-PF
-	for qemu-trivial@nongnu.org; Fri, 05 Aug 2011 02:16:53 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1Qpzpq-0007Jp-Oh
+	for qemu-trivial@nongnu.org; Sun, 07 Aug 2011 05:39:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1QpDiF-0005pj-N2
-	for qemu-trivial@nongnu.org; Fri, 05 Aug 2011 02:16:52 -0400
-Received: from fmmailgate03.web.de ([217.72.192.234]:41925)
+	(envelope-from <blauwirbel@gmail.com>) id 1Qpzpq-0007h0-00
+	for qemu-trivial@nongnu.org; Sun, 07 Aug 2011 05:39:54 -0400
+Received: from mail-qy0-f173.google.com ([209.85.216.173]:54604)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1QpDiD-0005pN-3h; Fri, 05 Aug 2011 02:16:49 -0400
-Received: from smtp04.web.de  ( [172.20.0.225])
-	by fmmailgate03.web.de (Postfix) with ESMTP id 021291974FB52;
-	Fri,  5 Aug 2011 08:16:48 +0200 (CEST)
-Received: from [88.65.250.235] (helo=mchn199C.mchp.siemens.de)
-	by smtp04.web.de with asmtp (TLSv1:AES256-SHA:256) (WEB.DE 4.110 #2)
-	id 1QpDiB-0007vr-00; Fri, 05 Aug 2011 08:16:47 +0200
-Message-ID: <4E3B8ACA.7080104@web.de>
-Date: Fri, 05 Aug 2011 08:16:42 +0200
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1Qpzpn-0007gl-Tk; Sun, 07 Aug 2011 05:39:51 -0400
+Received: by qyk31 with SMTP id 31so1214880qyk.4
+	for <multiple recipients>; Sun, 07 Aug 2011 02:39:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	bh=JDWic5WDGhOk9biR8YeAXL89aoSMUE9sJ2gh+C4ztr0=;
+	b=NQCu0FmRYDLIEQAqibyZDQehbLzy0n8okE/lOtTjC4sisJSvQ9PWnkzuMyZDGIbhND
+	S526UbpbDMfwUchuw4qgpgEf7hxGZD/sm/Fdz4f6/gggEK94OfWi1CxDwPCc40RpFbM6
+	fD6f/G9kptoyqoC9+B+vR/yN+7IkVwFiJUl2M=
+Received: by 10.224.110.3 with SMTP id l3mr3625901qap.32.1312709991124; Sun,
+	07 Aug 2011 02:39:51 -0700 (PDT)
 MIME-Version: 1.0
-To: David Gibson <david@gibson.dropbear.id.au>
-References: <1312516970-26606-1-git-send-email-david@gibson.dropbear.id.au>
-In-Reply-To: <1312516970-26606-1-git-send-email-david@gibson.dropbear.id.au>
-X-Enigmail-Version: 1.2
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="------------enigC224A13DCFB3A9C505228A87"
-Sender: jan.kiszka@web.de
-X-Sender: jan.kiszka@web.de
-X-Provags-ID: V01U2FsdGVkX1/214oe85VKr2EQtsN4G8MLS4oOaZXVBJp07oUe
-	g+SxjENqnDHYp2tcKfEwZTYGss+6tBejRyTqx69pooTYUJa/HQ lz93wzcmo=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.234
-X-Mailman-Approved-At: Sat, 06 Aug 2011 09:42:49 -0400
-Cc: Avi Kivity <avi@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
-	qemu-devel@nongnu.org, kvm <kvm@vger.kernel.org>, agraf@suse.de
-Subject: Re: [Qemu-trivial] [PATCH] Permit -mem-path without sync mmu
+Received: by 10.224.37.82 with HTTP; Sun, 7 Aug 2011 02:39:31 -0700 (PDT)
+In-Reply-To: <4E29EEEC.3090803@mail.berlios.de>
+References: <1311190818-4793-1-git-send-email-weil@mail.berlios.de>
+	<1A5A263C-4EFA-4BF5-AC6E-937D109C8DA7@web.de>
+	<4E29EEEC.3090803@mail.berlios.de>
+From: Blue Swirl <blauwirbel@gmail.com>
+Date: Sun, 7 Aug 2011 09:39:31 +0000
+Message-ID: <CAAu8pHvVsNtVhrc+Mg4v4JdAPvHjSyUxcFb3n9WZKv7RrqPBjA@mail.gmail.com>
+To: Stefan Weil <weil@mail.berlios.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.216.173
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <andreas.faerber@web.de>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] darwin-user: Remove two
+	unused variables
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,77 +53,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Aug 2011 06:16:53 -0000
+X-List-Received-Date: Sun, 07 Aug 2011 09:39:55 -0000
 
-This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enigC224A13DCFB3A9C505228A87
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
+Thanks, applied.
 
-On 2011-08-05 06:02, David Gibson wrote:
-> At present, an explicit test disallows use of -mem-path when kvm is ena=
-bled
-> but KVM_CAP_SYNC_MMU is not set.  In particular, this prevents the user=
-
-> from using hugetlbfs to back the guest memory.
->=20
-> I can see no reason for this check, and when I asked about it previousl=
-y,
-> the only theory offered was that this was a limitation of the very earl=
-y
-> days of kvm which only happened to match the SYNC_MMU flag by accident.=
-
->=20
-> This patch, therefore, removes the check.  This is of particular use to=
-
-> us on POWER, where we haven't yet implement SYNC_MMU, but where backing=
-
-> the guest with hugepages is possible, and in fact mandatory (for now).
->=20
-> Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
-> ---
->  exec.c |    5 -----
->  1 files changed, 0 insertions(+), 5 deletions(-)
->=20
-> diff --git a/exec.c b/exec.c
-> index 476b507..041637c 100644
-> --- a/exec.c
-> +++ b/exec.c
-> @@ -2818,11 +2818,6 @@ static void *file_ram_alloc(RAMBlock *block,
->          return NULL;
->      }
-> =20
-> -    if (kvm_enabled() && !kvm_has_sync_mmu()) {
-> -        fprintf(stderr, "host lacks kvm mmu notifiers, -mem-path unsup=
-ported\n");
-> -        return NULL;
-> -    }
-> -
->      if (asprintf(&filename, "%s/qemu_back_mem.XXXXXX", path) =3D=3D -1=
-) {
->          return NULL;
->      }
-
-This is nothing trivial, see ce9a92411d in qemu-kvm or
-http://thread.gmane.org/gmane.comp.emulators.kvm.devel/27380. And it
-should rather target uq/master. CCing Avi, Marcelo, and the kvm list.
-
-Jan
-
-
---------------enigC224A13DCFB3A9C505228A87
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.16 (GNU/Linux)
-Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
-
-iEYEARECAAYFAk47itAACgkQitSsb3rl5xR1jQCdE5r8MEFmXnax/mH57uBbhIQh
-wBUAni5t4xlY+RLsXjqxOtRbgIpaUknF
-=zY2/
------END PGP SIGNATURE-----
-
---------------enigC224A13DCFB3A9C505228A87--
+On Fri, Jul 22, 2011 at 9:43 PM, Stefan Weil <weil@mail.berlios.de> wrote:
+> Am 22.07.2011 22:48, schrieb Andreas F=C3=A4rber:
+>>
+>> Hi Stefan W.,
+>>
+>> Am 20.07.2011 um 21:40 schrieb Stefan Weil:
+>>
+>>> cppcheck report:
+>>>
+>>> darwin-user/signal.c:322: style: Unused variable: i
+>>> darwin-user/signal.c:322: style:
+>>> Variable 'err' is assigned a value that is never used
+>>
+>> Does this really bug you? I'm a bit skeptical towards trying to fix
+>> warnings in code that doesn't compile either way... (or does it by now?)
+>>
+>> Andreas
+>
+> Hi Andreas,
+>
+> the warnings were the result of a static code inspection with
+> a program called cppcheck. I don't compile darwin code,
+> so I did not notice that the code does not compile.
+>
+> Is there a good reason to keep those two unused variables?
+> Fixing the issue helps with static code analysis because
+> unnecessary manual code checks can be avoided.
+>
+> Cheers,
+> Stefan
+>
+>
+>
 
