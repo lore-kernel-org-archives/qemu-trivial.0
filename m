@@ -1,47 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qpzpt-0007Rm-3c
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Aug 2011 05:39:57 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:52223)
+	id 1Qqz6x-0002jL-48
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2011 23:05:39 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:44656)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1Qpzpq-0007Jp-Oh
-	for qemu-trivial@nongnu.org; Sun, 07 Aug 2011 05:39:55 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1Qqz6v-0002ao-09
+	for qemu-trivial@nongnu.org; Tue, 09 Aug 2011 23:05:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1Qpzpq-0007h0-00
-	for qemu-trivial@nongnu.org; Sun, 07 Aug 2011 05:39:54 -0400
-Received: from mail-qy0-f173.google.com ([209.85.216.173]:54604)
+	(envelope-from <dgibson@ozlabs.org>) id 1Qqz6s-00011c-H7
+	for qemu-trivial@nongnu.org; Tue, 09 Aug 2011 23:05:36 -0400
+Received: from ozlabs.org ([203.10.76.45]:56125)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>)
-	id 1Qpzpn-0007gl-Tk; Sun, 07 Aug 2011 05:39:51 -0400
-Received: by qyk31 with SMTP id 31so1214880qyk.4
-	for <multiple recipients>; Sun, 07 Aug 2011 02:39:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:content-transfer-encoding;
-	bh=JDWic5WDGhOk9biR8YeAXL89aoSMUE9sJ2gh+C4ztr0=;
-	b=NQCu0FmRYDLIEQAqibyZDQehbLzy0n8okE/lOtTjC4sisJSvQ9PWnkzuMyZDGIbhND
-	S526UbpbDMfwUchuw4qgpgEf7hxGZD/sm/Fdz4f6/gggEK94OfWi1CxDwPCc40RpFbM6
-	fD6f/G9kptoyqoC9+B+vR/yN+7IkVwFiJUl2M=
-Received: by 10.224.110.3 with SMTP id l3mr3625901qap.32.1312709991124; Sun,
-	07 Aug 2011 02:39:51 -0700 (PDT)
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1Qqz6k-00010C-G5; Tue, 09 Aug 2011 23:05:26 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id B1CD1B6F83; Wed, 10 Aug 2011 13:05:22 +1000 (EST)
+Date: Wed, 10 Aug 2011 13:05:19 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20110810030519.GG23511@yookeroo.fritz.box>
+Mail-Followup-To: "Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <1312181462-29889-1-git-send-email-david@gibson.dropbear.id.au>
+	<20110801101038.GE5439@redhat.com>
 MIME-Version: 1.0
-Received: by 10.224.37.82 with HTTP; Sun, 7 Aug 2011 02:39:31 -0700 (PDT)
-In-Reply-To: <4E29EEEC.3090803@mail.berlios.de>
-References: <1311190818-4793-1-git-send-email-weil@mail.berlios.de>
-	<1A5A263C-4EFA-4BF5-AC6E-937D109C8DA7@web.de>
-	<4E29EEEC.3090803@mail.berlios.de>
-From: Blue Swirl <blauwirbel@gmail.com>
-Date: Sun, 7 Aug 2011 09:39:31 +0000
-Message-ID: <CAAu8pHvVsNtVhrc+Mg4v4JdAPvHjSyUxcFb3n9WZKv7RrqPBjA@mail.gmail.com>
-To: Stefan Weil <weil@mail.berlios.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.173
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <andreas.faerber@web.de>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] darwin-user: Remove two
-	unused variables
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20110801101038.GE5439@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 203.10.76.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Correctly assign PCI domain numbers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,41 +43,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Aug 2011 09:39:55 -0000
+X-List-Received-Date: Wed, 10 Aug 2011 03:05:38 -0000
 
-Thanks, applied.
+On Mon, Aug 01, 2011 at 01:10:38PM +0300, Michael S. Tsirkin wrote:
+> On Mon, Aug 01, 2011 at 04:51:02PM +1000, David Gibson wrote:
+> > qemu already almost supports PCI domains; that is, several entirely
+> > independent PCI host bridges on the same machine.  However, a bug in
+> > pci_bus_new_inplace() means that every host bridge gets assigned domain
+> > number zero and so can't be properly distinguished.  This patch fixes the
+> > bug, giving each new host bridge a new domain number.
+> > 
+> > Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+> 
+> OK, but I'd like to see the whole picture.
+> How does the guest detect multiple domains,
+> and how does it access them?
+> 
+> > ---
+> >  hw/pci.c |    5 ++++-
+> >  1 files changed, 4 insertions(+), 1 deletions(-)
+> > 
+> > diff --git a/hw/pci.c b/hw/pci.c
+> > index 36db58b..2b4aecb 100644
+> > --- a/hw/pci.c
+> > +++ b/hw/pci.c
+> > @@ -262,6 +262,8 @@ int pci_find_domain(const PCIBus *bus)
+> >      return -1;
+> >  }
+> >  
+> > +static int pci_next_domain; /* = 0 */
+> > +
+> >  void pci_bus_new_inplace(PCIBus *bus, DeviceState *parent,
+> >                           const char *name,
+> >                           MemoryRegion *address_space,
+> > @@ -274,7 +276,8 @@ void pci_bus_new_inplace(PCIBus *bus, DeviceState *parent,
+> >  
+> >      /* host bridge */
+> >      QLIST_INIT(&bus->child);
+> > -    pci_host_bus_register(0, bus); /* for now only pci domain 0 is supported */
+> > +
+> > +    pci_host_bus_register(pci_next_domain++, bus);
+> 
+> What happens when that overflows?
 
-On Fri, Jul 22, 2011 at 9:43 PM, Stefan Weil <weil@mail.berlios.de> wrote:
-> Am 22.07.2011 22:48, schrieb Andreas F=C3=A4rber:
->>
->> Hi Stefan W.,
->>
->> Am 20.07.2011 um 21:40 schrieb Stefan Weil:
->>
->>> cppcheck report:
->>>
->>> darwin-user/signal.c:322: style: Unused variable: i
->>> darwin-user/signal.c:322: style:
->>> Variable 'err' is assigned a value that is never used
->>
->> Does this really bug you? I'm a bit skeptical towards trying to fix
->> warnings in code that doesn't compile either way... (or does it by now?)
->>
->> Andreas
->
-> Hi Andreas,
->
-> the warnings were the result of a static code inspection with
-> a program called cppcheck. I don't compile darwin code,
-> so I did not notice that the code does not compile.
->
-> Is there a good reason to keep those two unused variables?
-> Fixing the issue helps with static code analysis because
-> unnecessary manual code checks can be avoided.
->
-> Cheers,
-> Stefan
->
->
->
+Well, I guess we get an overlap, and therefore multiple domains with
+the same number.
+
+So, exactly what happens now, only four billion times less often.
+
+-- 
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
