@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QrqYD-00009r-QV
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Aug 2011 08:09:21 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:34620)
+	id 1QsASw-0005Cs-5e
+	for mharc-qemu-trivial@gnu.org; Sat, 13 Aug 2011 05:25:14 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:36455)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QrqYB-0008Sy-5F
-	for qemu-trivial@nongnu.org; Fri, 12 Aug 2011 08:09:20 -0400
+	(envelope-from <weil@mail.berlios.de>) id 1QsASt-00050r-6R
+	for qemu-trivial@nongnu.org; Sat, 13 Aug 2011 05:25:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QrqYA-0000Ck-94
-	for qemu-trivial@nongnu.org; Fri, 12 Aug 2011 08:09:19 -0400
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:58410)
+	(envelope-from <weil@mail.berlios.de>) id 1QsASs-0006uS-6N
+	for qemu-trivial@nongnu.org; Sat, 13 Aug 2011 05:25:11 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:43956)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QrqY7-0000CA-Sa; Fri, 12 Aug 2011 08:09:16 -0400
-Received: by fxbb27 with SMTP id b27so2593996fxb.4
-	for <multiple recipients>; Fri, 12 Aug 2011 05:09:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=3Ir5gHZ0XLc6syYhrjTLoU9Y7fXiNYyuqo98A/kY0Es=;
-	b=ioIXGnvPaQ/GdJbi3gzCcMaeIL7MjR1yKrCStoegVnP02RbDe/aCqnA36x04ru5gRU
-	uyDAdBZO3IiOGk494k/Pure2pet/VDY4CSeMVpS9Zau4pCBbnTl3q5p8sVKUy2/RCrBy
-	5pN27GAzcdsta+md6RqJIqFyOU5ELsPI8Y/XE=
-Received: by 10.223.134.88 with SMTP id i24mr1176068fat.68.1313150954969;
-	Fri, 12 Aug 2011 05:09:14 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain
-	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
-	by mx.google.com with ESMTPS id 11sm1015642faf.25.2011.08.12.05.09.13
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 12 Aug 2011 05:09:14 -0700 (PDT)
-Date: Fri, 12 Aug 2011 13:09:08 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20110812120908.GA8454@stefanha-thinkpad.localdomain>
-References: <1313147894-12524-1-git-send-email-pbonzini@redhat.com>
+	(envelope-from <weil@mail.berlios.de>)
+	id 1QsASq-0006u8-13; Sat, 13 Aug 2011 05:25:08 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	5F4677283013; Sat, 13 Aug 2011 11:25:07 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id ALUBOoaglkQj; Sat, 13 Aug 2011 11:25:06 +0200 (CEST)
+Received: from flocke.fritz.box (p54AD9F10.dip.t-dialin.net [84.173.159.16])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	B83EA7283012; Sat, 13 Aug 2011 11:25:06 +0200 (CEST)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.fritz.box with esmtp (Exim 4.72)
+	(envelope-from <weil@mail.berlios.de>)
+	id 1QsASo-0001IS-0p; Sat, 13 Aug 2011 11:25:06 +0200
+Message-ID: <4E4642F1.5010600@mail.berlios.de>
+Date: Sat, 13 Aug 2011 11:25:05 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20110702 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1313147894-12524-1-git-send-email-pbonzini@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.161.45
+To: Aurelien Jarno <aurelien@aurel32.net>
+References: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
+In-Reply-To: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] fix QLIST usage for RAM list
+Subject: Re: [Qemu-trivial] [PATCH] sh4: Fix potential crash in debug code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,19 +53,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Aug 2011 12:09:20 -0000
+X-List-Received-Date: Sat, 13 Aug 2011 09:25:12 -0000
 
-On Fri, Aug 12, 2011 at 01:18:14PM +0200, Paolo Bonzini wrote:
-> Spotted while reviewing the migration thread patches.
-> 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Am 20.07.2011 20:56, schrieb Stefan Weil:
+> cppcheck reports this error:
+>
+> qemu/hw/sh_intc.c:390: error: Possible null pointer dereference:
+>   s - otherwise it is redundant to check if s is null at line 385
+>
+> If s were NULL, the printf() statement would crash.
+> Setting braces fixes this bug.
+>
+> Signed-off-by: Stefan Weil<weil@mail.berlios.de>
 > ---
->  cpu-all.h |    2 +-
->  exec.c    |    2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>   hw/sh_intc.c |    9 +++++----
+>   1 files changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/sh_intc.c b/hw/sh_intc.c
+> index 0734da9..f73a4b0 100644
+> --- a/hw/sh_intc.c
+> +++ b/hw/sh_intc.c
+> @@ -382,13 +382,14 @@ void sh_intc_register_sources(struct intc_desc *desc,
+>
+>   	sh_intc_register_source(desc, vect->enum_id, groups, nr_groups);
+>   	s = sh_intc_source(desc, vect->enum_id);
+> -	if (s)
+> -	    s->vect = vect->vect;
+> +        if (s) {
+> +            s->vect = vect->vect;
+>
+>   #ifdef DEBUG_INTC_SOURCES
+> -	printf("sh_intc: registered source %d ->  0x%04x (%d/%d)\n",
+> -	       vect->enum_id, s->vect, s->enable_count, s->enable_max);
+> +            printf("sh_intc: registered source %d ->  0x%04x (%d/%d)\n",
+> +                   vect->enum_id, s->vect, s->enable_count, s->enable_max);
+>   #endif
+> +        }
+>       }
+>
+>       if (groups) {
+>    
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+Ping?
 
-Stefan
 
