@@ -1,40 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QwU90-0008BI-OQ
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Aug 2011 03:14:30 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:32849)
+	id 1QwVDe-0000g3-P6
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Aug 2011 04:23:22 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:33041)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <freddy77@gmail.com>) id 1QwU8y-00080k-4a
-	for qemu-trivial@nongnu.org; Thu, 25 Aug 2011 03:14:29 -0400
+	(envelope-from <stefanha@gmail.com>) id 1QwVDb-0000RO-5z
+	for qemu-trivial@nongnu.org; Thu, 25 Aug 2011 04:23:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <freddy77@gmail.com>) id 1QwU8x-0001pd-Bl
-	for qemu-trivial@nongnu.org; Thu, 25 Aug 2011 03:14:28 -0400
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:35552)
+	(envelope-from <stefanha@gmail.com>) id 1QwVDa-0007lb-6c
+	for qemu-trivial@nongnu.org; Thu, 25 Aug 2011 04:23:19 -0400
+Received: from mail-fx0-f45.google.com ([209.85.161.45]:45310)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <freddy77@gmail.com>)
-	id 1QwU8v-0001p3-6B; Thu, 25 Aug 2011 03:14:25 -0400
-Received: by fxbb27 with SMTP id b27so1744203fxb.4
-	for <multiple recipients>; Thu, 25 Aug 2011 00:14:23 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1QwVDX-0007l6-CF; Thu, 25 Aug 2011 04:23:15 -0400
+Received: by fxbb27 with SMTP id b27so1779444fxb.4
+	for <multiple recipients>; Thu, 25 Aug 2011 01:23:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=from:to:cc:subject:date:message-id:x-mailer;
-	bh=l6NFs8N7zdQuaJlC4Z8eXm0Ge5CZlEuVd/ctQ1lntC0=;
-	b=FTOFDcMPUtMprbJokT/7juftVjsD6y0VbrQF3Qe05bbNg89+RDPRCgxoPIzXAsYywS
-	QgHc05830fTsRTOn01J6XiRsvn0VfHP6xgP4I5JXvEcyHkyTVYKjk31VCTTUInrY3njW
-	Fupx3qQ998/b34eFAZdXbO04HhIHNED92+w4s=
-Received: by 10.223.62.145 with SMTP id x17mr8878575fah.21.1314256463156;
-	Thu, 25 Aug 2011 00:14:23 -0700 (PDT)
-Received: from obol602.omnitel.it ([87.236.194.158])
-	by mx.google.com with ESMTPS id 14sm238665faf.32.2011.08.25.00.14.15
-	(version=SSLv3 cipher=OTHER); Thu, 25 Aug 2011 00:14:22 -0700 (PDT)
-From: Frediano Ziglio <freddy77@gmail.com>
-To: stefanha@gmail.com
-Date: Thu, 25 Aug 2011 09:14:38 +0200
-Message-Id: <1314256478-4853-1-git-send-email-freddy77@gmail.com>
-X-Mailer: git-send-email 1.7.1
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=ZdzENCuWn4k3u0Dqoh7CIAWxfjUs52S7UFOQTIVWrAw=;
+	b=Lnil3jsAalP4hKA6iJwr5oMoydCU/J/9vIlQb6W6hT2m+9zv4wqoMk2vNhK9gKGbL/
+	v5oplA6iqQCwfTrbbN6CgaLM07IA++N3sHI1ZW4bJ6FmS52K2QTXSmD6hGXmngYj1kOj
+	s4ML8Tw+R3mxMpOwYps+4odea3gWySskmnnnk=
+Received: by 10.223.76.201 with SMTP id d9mr8698264fak.119.1314260594281;
+	Thu, 25 Aug 2011 01:23:14 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain
+	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
+	by mx.google.com with ESMTPS id c18sm281905fah.39.2011.08.25.01.23.12
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 25 Aug 2011 01:23:13 -0700 (PDT)
+Date: Thu, 25 Aug 2011 09:23:07 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Frediano Ziglio <freddy77@gmail.com>
+Message-ID: <20110825082307.GA10892@stefanha-thinkpad.localdomain>
+References: <1314256478-4853-1-git-send-email-freddy77@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1314256478-4853-1-git-send-email-freddy77@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 209.85.161.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Frediano Ziglio <freddy77@gmail.com>
-Subject: [Qemu-trivial] [PATCH] disasm: update comment
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] disasm: update comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,28 +53,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Aug 2011 07:14:29 -0000
+X-List-Received-Date: Thu, 25 Aug 2011 08:23:20 -0000
 
+On Thu, Aug 25, 2011 at 09:14:38AM +0200, Frediano Ziglio wrote:
+> 
+> Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
+> ---
+>  disas.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
-Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
----
- disas.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-diff --git a/disas.c b/disas.c
-index 1334b8e..611b30b 100644
---- a/disas.c
-+++ b/disas.c
-@@ -137,7 +137,7 @@ print_insn_thumb1(bfd_vma pc, disassemble_info *info)
- 
- /* Disassemble this for me please... (debugging). 'flags' has the following
-    values:
--    i386 - nonzero means 16 bit code
-+    i386 - 1 means 16 bit code, 2 means 64 bit code
-     arm  - nonzero means thumb code
-     ppc  - nonzero means little endian
-     other targets - unused
--- 
-1.7.1
-
+Stefan
 
