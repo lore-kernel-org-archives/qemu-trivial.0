@@ -1,47 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QwVDe-0000g3-P6
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Aug 2011 04:23:22 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:33041)
+	id 1Qx1kn-0000lY-Md
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Aug 2011 15:07:45 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:50257)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QwVDb-0000RO-5z
-	for qemu-trivial@nongnu.org; Thu, 25 Aug 2011 04:23:20 -0400
+	(envelope-from <alevy@redhat.com>) id 1Qx1kk-0000l4-Vk
+	for qemu-trivial@nongnu.org; Fri, 26 Aug 2011 15:07:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QwVDa-0007lb-6c
-	for qemu-trivial@nongnu.org; Thu, 25 Aug 2011 04:23:19 -0400
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:45310)
+	(envelope-from <alevy@redhat.com>) id 1Qx1kj-0004TY-Qe
+	for qemu-trivial@nongnu.org; Fri, 26 Aug 2011 15:07:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:30717)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QwVDX-0007l6-CF; Thu, 25 Aug 2011 04:23:15 -0400
-Received: by fxbb27 with SMTP id b27so1779444fxb.4
-	for <multiple recipients>; Thu, 25 Aug 2011 01:23:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=ZdzENCuWn4k3u0Dqoh7CIAWxfjUs52S7UFOQTIVWrAw=;
-	b=Lnil3jsAalP4hKA6iJwr5oMoydCU/J/9vIlQb6W6hT2m+9zv4wqoMk2vNhK9gKGbL/
-	v5oplA6iqQCwfTrbbN6CgaLM07IA++N3sHI1ZW4bJ6FmS52K2QTXSmD6hGXmngYj1kOj
-	s4ML8Tw+R3mxMpOwYps+4odea3gWySskmnnnk=
-Received: by 10.223.76.201 with SMTP id d9mr8698264fak.119.1314260594281;
-	Thu, 25 Aug 2011 01:23:14 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain
-	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
-	by mx.google.com with ESMTPS id c18sm281905fah.39.2011.08.25.01.23.12
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 25 Aug 2011 01:23:13 -0700 (PDT)
-Date: Thu, 25 Aug 2011 09:23:07 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Frediano Ziglio <freddy77@gmail.com>
-Message-ID: <20110825082307.GA10892@stefanha-thinkpad.localdomain>
-References: <1314256478-4853-1-git-send-email-freddy77@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1314256478-4853-1-git-send-email-freddy77@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.161.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] disasm: update comment
+	(envelope-from <alevy@redhat.com>)
+	id 1Qx1kj-0004TJ-Cu; Fri, 26 Aug 2011 15:07:41 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p7QJ7eT3028346
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 26 Aug 2011 15:07:40 -0400
+Received: from bow.redhat.com (reserved-203-244.tlv.redhat.com [10.35.203.244]
+	(may be forged))
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id p7QJ7dAU016050; Fri, 26 Aug 2011 15:07:39 -0400
+From: Alon Levy <alevy@redhat.com>
+To: qemu-trivial@nongnu.org, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Date: Fri, 26 Aug 2011 22:06:01 +0300
+Message-Id: <1314385561-22519-1-git-send-email-alevy@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/pci-stub: fix comment typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,17 +41,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Aug 2011 08:23:20 -0000
+X-List-Received-Date: Fri, 26 Aug 2011 19:07:43 -0000
 
-On Thu, Aug 25, 2011 at 09:14:38AM +0200, Frediano Ziglio wrote:
-> 
-> Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
-> ---
->  disas.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
+Signed-off-by: Alon Levy <alevy@redhat.com>
+---
+ hw/pci-stub.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+diff --git a/hw/pci-stub.c b/hw/pci-stub.c
+index c5a0aa8..8454c30 100644
+--- a/hw/pci-stub.c
++++ b/hw/pci-stub.c
+@@ -1,5 +1,5 @@
+ /*
+- * PCI stubs for plathome that doesn't support pci bus.
++ * PCI stubs for platforms that doesn't support pci bus.
+  *
+  * Copyright (c) 2010 Isaku Yamahata <yamahata at valinux co jp>
+  *                    VA Linux Systems Japan K.K.
+-- 
+1.7.6
 
-Stefan
 
