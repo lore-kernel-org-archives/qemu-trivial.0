@@ -1,48 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qx2XD-0006CB-WD
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Aug 2011 15:57:47 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:37292)
+	id 1QxOXb-0007dh-Tn
+	for mharc-qemu-trivial@gnu.org; Sat, 27 Aug 2011 15:27:39 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:46206)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1Qx2XB-0006C2-FO
-	for qemu-trivial@nongnu.org; Fri, 26 Aug 2011 15:57:46 -0400
+	(envelope-from <weil@mail.berlios.de>) id 1QxOXZ-0007Ut-86
+	for qemu-trivial@nongnu.org; Sat, 27 Aug 2011 15:27:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1Qx2X9-0005az-2M
-	for qemu-trivial@nongnu.org; Fri, 26 Aug 2011 15:57:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39111)
+	(envelope-from <weil@mail.berlios.de>) id 1QxOXX-0006jo-S1
+	for qemu-trivial@nongnu.org; Sat, 27 Aug 2011 15:27:37 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:44757)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>)
-	id 1Qx2X8-0005ao-PP; Fri, 26 Aug 2011 15:57:43 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p7QJvaKS015294
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 26 Aug 2011 15:57:36 -0400
-Received: from bow.redhat.com (reserved-203-244.tlv.redhat.com [10.35.203.244]
-	(may be forged))
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id p7QJvVak032148
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Fri, 26 Aug 2011 15:57:35 -0400
-Date: Fri, 26 Aug 2011 22:55:53 +0300
-From: Alon Levy <alevy@redhat.com>
-To: malc <av1474@comtv.ru>
-Message-ID: <20110826195553.GD6393@bow.redhat.com>
-Mail-Followup-To: malc <av1474@comtv.ru>, qemu-trivial@nongnu.org,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <1314385561-22519-1-git-send-email-alevy@redhat.com>
-	<alpine.LNX.2.00.1108262316530.3630@linmac>
+	(envelope-from <weil@mail.berlios.de>)
+	id 1QxOXV-0006jJ-SW; Sat, 27 Aug 2011 15:27:33 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	254707283043; Sat, 27 Aug 2011 21:27:31 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id g9dxZcKxPDyp; Sat, 27 Aug 2011 21:27:29 +0200 (CEST)
+Received: from flocke.weilnetz.de (p5086EE92.dip.t-dialin.net [80.134.238.146])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	23F32728301D; Sat, 27 Aug 2011 21:27:29 +0200 (CEST)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <weil@mail.berlios.de>)
+	id 1QxOXQ-0001Tx-ER; Sat, 27 Aug 2011 21:27:28 +0200
+Message-ID: <4E59451F.6010902@mail.berlios.de>
+Date: Sat, 27 Aug 2011 21:27:27 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20110818 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.LNX.2.00.1108262316530.3630@linmac>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/pci-stub: fix comment
-	typo
+To: qemu-trivial <qemu-trivial@nongnu.org>
+References: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
+	<4E4642F1.5010600@mail.berlios.de>
+In-Reply-To: <4E4642F1.5010600@mail.berlios.de>
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sh4: Fix potential crash in
+	debug code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,36 +55,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Aug 2011 19:57:46 -0000
+X-List-Received-Date: Sat, 27 Aug 2011 19:27:38 -0000
 
-On Fri, Aug 26, 2011 at 11:17:59PM +0400, malc wrote:
-> On Fri, 26 Aug 2011, Alon Levy wrote:
-> 
-> > Signed-off-by: Alon Levy <alevy@redhat.com>
-> 
-> > ---
-> >  hw/pci-stub.c |    2 +-
-> >  1 files changed, 1 insertions(+), 1 deletions(-)
-> > 
-> > diff --git a/hw/pci-stub.c b/hw/pci-stub.c
-> > index c5a0aa8..8454c30 100644
-> > --- a/hw/pci-stub.c
-> > +++ b/hw/pci-stub.c
-> > @@ -1,5 +1,5 @@
-> >  /*
-> > - * PCI stubs for plathome that doesn't support pci bus.
-> > + * PCI stubs for platforms that doesn't support pci bus.
-> >   *
-> >   * Copyright (c) 2010 Isaku Yamahata <yamahata at valinux co jp>
-> >   *                    VA Linux Systems Japan K.K.
-> > 
-> 
-> I doubt that this is correct from grammatical standpoint (plural begs for
-> do, not does), not a native speaker though..
-> 
+Am 13.08.2011 11:25, schrieb Stefan Weil:
+> Am 20.07.2011 20:56, schrieb Stefan Weil:
+>> cppcheck reports this error:
+>>
+>> qemu/hw/sh_intc.c:390: error: Possible null pointer dereference:
+>>   s - otherwise it is redundant to check if s is null at line 385
+>>
+>> If s were NULL, the printf() statement would crash.
+>> Setting braces fixes this bug.
+>>
+>> Signed-off-by: Stefan Weil<weil@mail.berlios.de>
+>> ---
+>>   hw/sh_intc.c |    9 +++++----
+>>   1 files changed, 5 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/sh_intc.c b/hw/sh_intc.c
+>> index 0734da9..f73a4b0 100644
+>> --- a/hw/sh_intc.c
+>> +++ b/hw/sh_intc.c
+>> @@ -382,13 +382,14 @@ void sh_intc_register_sources(struct intc_desc 
+>> *desc,
+>>
+>>       sh_intc_register_source(desc, vect->enum_id, groups, nr_groups);
+>>       s = sh_intc_source(desc, vect->enum_id);
+>> -    if (s)
+>> -        s->vect = vect->vect;
+>> +        if (s) {
+>> +            s->vect = vect->vect;
+>>
+>>   #ifdef DEBUG_INTC_SOURCES
+>> -    printf("sh_intc: registered source %d ->  0x%04x (%d/%d)\n",
+>> -           vect->enum_id, s->vect, s->enable_count, s->enable_max);
+>> +            printf("sh_intc: registered source %d ->  0x%04x 
+>> (%d/%d)\n",
+>> +                   vect->enum_id, s->vect, s->enable_count, 
+>> s->enable_max);
+>>   #endif
+>> +        }
+>>       }
+>>
+>>       if (groups) {
+>
+> Ping?
 
-You are right, it should be don't.
 
-> -- 
-> mailto:av1474@comtv.ru
+Please add the patch to the trivial queue. More than a month time
+for review and comments should be sufficient for trivial patches.
+
+Thanks,
+Stefan
+
+
 
