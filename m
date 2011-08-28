@@ -1,47 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QxOXb-0007dh-Tn
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Aug 2011 15:27:39 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46206)
+	id 1QxdIx-0007Ru-O8
+	for mharc-qemu-trivial@gnu.org; Sun, 28 Aug 2011 07:13:31 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:46590)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>) id 1QxOXZ-0007Ut-86
-	for qemu-trivial@nongnu.org; Sat, 27 Aug 2011 15:27:38 -0400
+	(envelope-from <andreas.faerber@web.de>) id 1QxdIu-0007K2-Eu
+	for qemu-trivial@nongnu.org; Sun, 28 Aug 2011 07:13:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>) id 1QxOXX-0006jo-S1
-	for qemu-trivial@nongnu.org; Sat, 27 Aug 2011 15:27:37 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:44757)
+	(envelope-from <andreas.faerber@web.de>) id 1QxdIt-0007Gk-OD
+	for qemu-trivial@nongnu.org; Sun, 28 Aug 2011 07:13:28 -0400
+Received: from fmmailgate01.web.de ([217.72.192.221]:36033)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weil@mail.berlios.de>)
-	id 1QxOXV-0006jJ-SW; Sat, 27 Aug 2011 15:27:33 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	254707283043; Sat, 27 Aug 2011 21:27:31 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id g9dxZcKxPDyp; Sat, 27 Aug 2011 21:27:29 +0200 (CEST)
-Received: from flocke.weilnetz.de (p5086EE92.dip.t-dialin.net [80.134.238.146])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	23F32728301D; Sat, 27 Aug 2011 21:27:29 +0200 (CEST)
-Received: from localhost ([127.0.0.1] ident=stefan)
-	by flocke.weilnetz.de with esmtp (Exim 4.72)
-	(envelope-from <weil@mail.berlios.de>)
-	id 1QxOXQ-0001Tx-ER; Sat, 27 Aug 2011 21:27:28 +0200
-Message-ID: <4E59451F.6010902@mail.berlios.de>
-Date: Sat, 27 Aug 2011 21:27:27 +0200
-From: Stefan Weil <weil@mail.berlios.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.1.16) Gecko/20110818 Iceowl/1.0b1 Icedove/3.0.11
-MIME-Version: 1.0
-To: qemu-trivial <qemu-trivial@nongnu.org>
+	(envelope-from <andreas.faerber@web.de>)
+	id 1QxdIq-0007Fu-UP; Sun, 28 Aug 2011 07:13:25 -0400
+Received: from smtp04.web.de  ( [172.20.0.225])
+	by fmmailgate01.web.de (Postfix) with ESMTP id D2031195D0C7D;
+	Sun, 28 Aug 2011 13:13:17 +0200 (CEST)
+Received: from [84.148.54.226] (helo=[10.0.1.1])
+	by smtp04.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
+	id 1QxdIj-0005eN-00; Sun, 28 Aug 2011 13:13:17 +0200
+Message-Id: <E4C4E340-4777-48DD-B5B8-7FF18E9559A1@web.de>
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
+To: Stefan Weil <weil@mail.berlios.de>
+In-Reply-To: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed; delsp=yes
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0 (Apple Message framework v936)
+Date: Sun, 28 Aug 2011 13:13:16 +0200
 References: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
-	<4E4642F1.5010600@mail.berlios.de>
-In-Reply-To: <4E4642F1.5010600@mail.berlios.de>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>
+X-Mailer: Apple Mail (2.936)
+Sender: andreas.faerber@web.de
+X-Sender: Andreas.Faerber@web.de
+X-Provags-ID: V01U2FsdGVkX19tWwJw0RqZnbQfDM+lp7epesB2qa1ZATjd7ROZ
+	lyaLhVfQeUJ7WMmRQiCKvdYWqv8EaJOOoxGunkuir/i5mH7Ymg
+	dPW6hIm6kh8Hjc7QBQJQ==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 217.72.192.221
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sh4: Fix potential crash in
 	debug code
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,58 +50,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 27 Aug 2011 19:27:38 -0000
+X-List-Received-Date: Sun, 28 Aug 2011 11:13:29 -0000
 
-Am 13.08.2011 11:25, schrieb Stefan Weil:
-> Am 20.07.2011 20:56, schrieb Stefan Weil:
->> cppcheck reports this error:
->>
->> qemu/hw/sh_intc.c:390: error: Possible null pointer dereference:
->>   s - otherwise it is redundant to check if s is null at line 385
->>
->> If s were NULL, the printf() statement would crash.
->> Setting braces fixes this bug.
->>
->> Signed-off-by: Stefan Weil<weil@mail.berlios.de>
->> ---
->>   hw/sh_intc.c |    9 +++++----
->>   1 files changed, 5 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/sh_intc.c b/hw/sh_intc.c
->> index 0734da9..f73a4b0 100644
->> --- a/hw/sh_intc.c
->> +++ b/hw/sh_intc.c
->> @@ -382,13 +382,14 @@ void sh_intc_register_sources(struct intc_desc 
->> *desc,
->>
->>       sh_intc_register_source(desc, vect->enum_id, groups, nr_groups);
->>       s = sh_intc_source(desc, vect->enum_id);
->> -    if (s)
->> -        s->vect = vect->vect;
->> +        if (s) {
->> +            s->vect = vect->vect;
->>
->>   #ifdef DEBUG_INTC_SOURCES
->> -    printf("sh_intc: registered source %d ->  0x%04x (%d/%d)\n",
->> -           vect->enum_id, s->vect, s->enable_count, s->enable_max);
->> +            printf("sh_intc: registered source %d ->  0x%04x 
->> (%d/%d)\n",
->> +                   vect->enum_id, s->vect, s->enable_count, 
->> s->enable_max);
->>   #endif
->> +        }
->>       }
->>
->>       if (groups) {
+Am 20.07.2011 um 20:56 schrieb Stefan Weil:
+
+> cppcheck reports this error:
 >
-> Ping?
+> qemu/hw/sh_intc.c:390: error: Possible null pointer dereference:
+> s - otherwise it is redundant to check if s is null at line 385
+>
+> If s were NULL, the printf() statement would crash.
+> Setting braces fixes this bug.
+>
+> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 
+Apart from the stated addition of brackets, this reindents the =20
+bracketed block, replacing tabs with spaces.
+Reindenting further code or introducing a trace point is beyond the =20
+scope of a trivial bugfix, so patch looks fine to me.
 
-Please add the patch to the trivial queue. More than a month time
-for review and comments should be sufficient for trivial patches.
+Reviewed-by: Andreas F=E4rber <andreas.faerber@web.de>
 
-Thanks,
-Stefan
+Andreas
 
+> ---
+> hw/sh_intc.c |    9 +++++----
+> 1 files changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/sh_intc.c b/hw/sh_intc.c
+> index 0734da9..f73a4b0 100644
+> --- a/hw/sh_intc.c
+> +++ b/hw/sh_intc.c
+> @@ -382,13 +382,14 @@ void sh_intc_register_sources(struct intc_desc =20=
+
+> *desc,
+>
+> 	sh_intc_register_source(desc, vect->enum_id, groups, nr_groups);
+> 	s =3D sh_intc_source(desc, vect->enum_id);
+> -	if (s)
+> -	    s->vect =3D vect->vect;
+> +        if (s) {
+> +            s->vect =3D vect->vect;
+>
+> #ifdef DEBUG_INTC_SOURCES
+> -	printf("sh_intc: registered source %d -> 0x%04x (%d/%d)\n",
+> -	       vect->enum_id, s->vect, s->enable_count, s->enable_max);
+> +            printf("sh_intc: registered source %d -> 0x%04x (%d/%d)=20=
+
+> \n",
+> +                   vect->enum_id, s->vect, s->enable_count, s-=20
+> >enable_max);
+> #endif
+> +        }
+>     }
+>
+>     if (groups) {
+> --=20
+> 1.7.2.5
 
 
