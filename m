@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QxdIx-0007Ru-O8
-	for mharc-qemu-trivial@gnu.org; Sun, 28 Aug 2011 07:13:31 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46590)
+	id 1QxlIm-0005le-V9
+	for mharc-qemu-trivial@gnu.org; Sun, 28 Aug 2011 15:45:52 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:59085)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1QxdIu-0007K2-Eu
-	for qemu-trivial@nongnu.org; Sun, 28 Aug 2011 07:13:29 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1QxlIk-0005gz-8g
+	for qemu-trivial@nongnu.org; Sun, 28 Aug 2011 15:45:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1QxdIt-0007Gk-OD
-	for qemu-trivial@nongnu.org; Sun, 28 Aug 2011 07:13:28 -0400
-Received: from fmmailgate01.web.de ([217.72.192.221]:36033)
+	(envelope-from <stefan@weilnetz.de>) id 1QxlIj-0001OF-Bo
+	for qemu-trivial@nongnu.org; Sun, 28 Aug 2011 15:45:50 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:48531)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>)
-	id 1QxdIq-0007Fu-UP; Sun, 28 Aug 2011 07:13:25 -0400
-Received: from smtp04.web.de  ( [172.20.0.225])
-	by fmmailgate01.web.de (Postfix) with ESMTP id D2031195D0C7D;
-	Sun, 28 Aug 2011 13:13:17 +0200 (CEST)
-Received: from [84.148.54.226] (helo=[10.0.1.1])
-	by smtp04.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
-	id 1QxdIj-0005eN-00; Sun, 28 Aug 2011 13:13:17 +0200
-Message-Id: <E4C4E340-4777-48DD-B5B8-7FF18E9559A1@web.de>
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
-To: Stefan Weil <weil@mail.berlios.de>
-In-Reply-To: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed; delsp=yes
-Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0 (Apple Message framework v936)
-Date: Sun, 28 Aug 2011 13:13:16 +0200
-References: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
-X-Mailer: Apple Mail (2.936)
-Sender: andreas.faerber@web.de
-X-Sender: Andreas.Faerber@web.de
-X-Provags-ID: V01U2FsdGVkX19tWwJw0RqZnbQfDM+lp7epesB2qa1ZATjd7ROZ
-	lyaLhVfQeUJ7WMmRQiCKvdYWqv8EaJOOoxGunkuir/i5mH7Ymg
-	dPW6hIm6kh8Hjc7QBQJQ==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.221
-Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>,
-	Aurelien Jarno <aurelien@aurel32.net>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sh4: Fix potential crash in
-	debug code
+	(envelope-from <stefan@weilnetz.de>)
+	id 1QxlIh-0001NX-3y; Sun, 28 Aug 2011 15:45:47 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	2613F7283049; Sun, 28 Aug 2011 21:45:43 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id gt5PhFDy5P-3; Sun, 28 Aug 2011 21:45:42 +0200 (CEST)
+Received: from flocke.weilnetz.de (p54ADA446.dip.t-dialin.net [84.173.164.70])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	5BE7B7283048; Sun, 28 Aug 2011 21:45:42 +0200 (CEST)
+Received: from stefan by flocke.weilnetz.de with local (Exim 4.72)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1QxlIb-0001bX-Nq; Sun, 28 Aug 2011 21:45:41 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Date: Sun, 28 Aug 2011 21:45:40 +0200
+Message-Id: <1314560740-6136-1-git-send-email-weil@mail.berlios.de>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
+Subject: [Qemu-trivial] [PATCH] Fix spelling in comments and debug messages
+	(recieve -> receive)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,62 +47,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 28 Aug 2011 11:13:29 -0000
+X-List-Received-Date: Sun, 28 Aug 2011 19:45:51 -0000
 
-Am 20.07.2011 um 20:56 schrieb Stefan Weil:
+Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+---
+ docs/qapi-code-gen.txt |    2 +-
+ libcacard/vscclient.c  |    2 +-
+ qemu-ga.c              |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-> cppcheck reports this error:
->
-> qemu/hw/sh_intc.c:390: error: Possible null pointer dereference:
-> s - otherwise it is redundant to check if s is null at line 385
->
-> If s were NULL, the printf() statement would crash.
-> Setting braces fixes this bug.
->
-> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
-
-Apart from the stated addition of brackets, this reindents the =20
-bracketed block, replacing tabs with spaces.
-Reindenting further code or introducing a trace point is beyond the =20
-scope of a trivial bugfix, so patch looks fine to me.
-
-Reviewed-by: Andreas F=E4rber <andreas.faerber@web.de>
-
-Andreas
-
-> ---
-> hw/sh_intc.c |    9 +++++----
-> 1 files changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/sh_intc.c b/hw/sh_intc.c
-> index 0734da9..f73a4b0 100644
-> --- a/hw/sh_intc.c
-> +++ b/hw/sh_intc.c
-> @@ -382,13 +382,14 @@ void sh_intc_register_sources(struct intc_desc =20=
-
-> *desc,
->
-> 	sh_intc_register_source(desc, vect->enum_id, groups, nr_groups);
-> 	s =3D sh_intc_source(desc, vect->enum_id);
-> -	if (s)
-> -	    s->vect =3D vect->vect;
-> +        if (s) {
-> +            s->vect =3D vect->vect;
->
-> #ifdef DEBUG_INTC_SOURCES
-> -	printf("sh_intc: registered source %d -> 0x%04x (%d/%d)\n",
-> -	       vect->enum_id, s->vect, s->enable_count, s->enable_max);
-> +            printf("sh_intc: registered source %d -> 0x%04x (%d/%d)=20=
-
-> \n",
-> +                   vect->enum_id, s->vect, s->enable_count, s-=20
-> >enable_max);
-> #endif
-> +        }
->     }
->
->     if (groups) {
-> --=20
-> 1.7.2.5
+diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
+index b7befb5..f345866 100644
+--- a/docs/qapi-code-gen.txt
++++ b/docs/qapi-code-gen.txt
+@@ -229,7 +229,7 @@ in the schema. The following files are generated:
+ $(prefix)qmp-marshal.c: command marshal/dispatch functions for each
+                         QMP command defined in the schema. Functions
+                         generated by qapi-visit.py are used to
+-                        convert QObjects recieved from the wire into
++                        convert QObjects received from the wire into
+                         function parameters, and uses the same
+                         visitor functions to convert native C return
+                         values to QObjects from transmission back
+diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
+index a7b3834..2191f60 100644
+--- a/libcacard/vscclient.c
++++ b/libcacard/vscclient.c
+@@ -585,7 +585,7 @@ main(
+                 printf(" recv APDU: ");
+                 print_byte_array(pbSendBuffer, mhHeader.length);
+             }
+-            /* Transmit recieved APDU */
++            /* Transmit received APDU */
+             dwSendLength = mhHeader.length;
+             dwRecvLength = sizeof(pbRecvBuffer);
+             reader = vreader_get_reader_by_id(mhHeader.reader_id);
+diff --git a/qemu-ga.c b/qemu-ga.c
+index 858d75a..4932013 100644
+--- a/qemu-ga.c
++++ b/qemu-ga.c
+@@ -51,7 +51,7 @@ static struct GAState *ga_state;
+ 
+ static void quit_handler(int sig)
+ {
+-    g_debug("recieved signal num %d, quitting", sig);
++    g_debug("received signal num %d, quitting", sig);
+ 
+     if (g_main_loop_is_running(ga_state->main_loop)) {
+         g_main_loop_quit(ga_state->main_loop);
+-- 
+1.7.2.5
 
 
