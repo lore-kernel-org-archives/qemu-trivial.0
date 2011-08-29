@@ -1,43 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qxljg-0008E4-G6
-	for mharc-qemu-trivial@gnu.org; Sun, 28 Aug 2011 16:13:40 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:41552)
+	id 1Qxygh-0004Sv-3k
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Aug 2011 06:03:27 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:59206)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1Qxljd-00086I-T5
-	for qemu-trivial@nongnu.org; Sun, 28 Aug 2011 16:13:38 -0400
+	(envelope-from <stefanha@gmail.com>) id 1Qxyga-0004Q4-TL
+	for qemu-trivial@nongnu.org; Mon, 29 Aug 2011 06:03:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1Qxljc-0005iM-Sm
-	for qemu-trivial@nongnu.org; Sun, 28 Aug 2011 16:13:37 -0400
-Received: from fmmailgate01.web.de ([217.72.192.221]:44635)
+	(envelope-from <stefanha@gmail.com>) id 1QxygZ-0001hq-MW
+	for qemu-trivial@nongnu.org; Mon, 29 Aug 2011 06:03:20 -0400
+Received: from mail-ww0-f53.google.com ([74.125.82.53]:36352)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>)
-	id 1Qxlja-0005hN-5Y; Sun, 28 Aug 2011 16:13:34 -0400
-Received: from smtp07.web.de  ( [172.20.5.215])
-	by fmmailgate01.web.de (Postfix) with ESMTP id 91018195D1B41;
-	Sun, 28 Aug 2011 22:13:32 +0200 (CEST)
-Received: from [84.148.54.226] (helo=[10.0.1.1])
-	by smtp07.web.de with asmtp (TLSv1:AES128-SHA:128) (WEB.DE 4.110 #2)
-	id 1QxljY-0003tN-00; Sun, 28 Aug 2011 22:13:32 +0200
-Message-Id: <BF70931B-DC84-4A74-B23C-1D364621E345@web.de>
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
-To: Stefan Weil <weil@mail.berlios.de>
-In-Reply-To: <1314560740-6136-1-git-send-email-weil@mail.berlios.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0 (Apple Message framework v936)
-Date: Sun, 28 Aug 2011 22:13:31 +0200
-References: <1314560740-6136-1-git-send-email-weil@mail.berlios.de>
-X-Mailer: Apple Mail (2.936)
-Sender: andreas.faerber@web.de
-X-Sender: Andreas.Faerber@web.de
-X-Provags-ID: V01U2FsdGVkX18hTbjcEJ6McMXDaf76TnlKj0oeAjOoCbBk7Wet
-	8AaNbXN+ASQB80RxLYEFhrntCa7evBjfQvOb0SHyDFnT7n7PS4
-	5Bz9hWG6qBwkS7usHARw==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.221
-Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix spelling in comments
-	and debug messages (recieve -> receive)
+	(envelope-from <stefanha@gmail.com>)
+	id 1QxygZ-0001hh-Hz; Mon, 29 Aug 2011 06:03:19 -0400
+Received: by wwf25 with SMTP id 25so5141987wwf.10
+	for <multiple recipients>; Mon, 29 Aug 2011 03:03:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=CuJ7F3luBzmtFVfAUAMWt2F4a+rUuKvT4CKp8n1U6v4=;
+	b=xqJvWaxm3Pp9exwi638M/FbW5tQKtKvZJG1c2XHcUHLQHxgO3cJhkPEH/4Q8dqCmKq
+	Q44OGnum6N/yyshQJo+nS/usHtTCVzkiHT6Ora/iaHrZ2n0i1IbPz7eGgSg0KLdJjmZK
+	zox9iXz23eJkt7/BaRvptVycALQfCYwCXyE8A=
+Received: by 10.216.201.170 with SMTP id b42mr3992525weo.11.1314612197378;
+	Mon, 29 Aug 2011 03:03:17 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain ([109.224.133.37])
+	by mx.google.com with ESMTPS id fd4sm3593854wbb.30.2011.08.29.03.03.14
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 29 Aug 2011 03:03:15 -0700 (PDT)
+Date: Mon, 29 Aug 2011 11:03:05 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Alon Levy <alevy@redhat.com>
+Message-ID: <20110829100305.GA18524@stefanha-thinkpad.localdomain>
+References: <1314385561-22519-1-git-send-email-alevy@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1314385561-22519-1-git-send-email-alevy@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial@nongnu.org, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] hw/pci-stub: fix comment typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,63 +52,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 28 Aug 2011 20:13:38 -0000
+X-List-Received-Date: Mon, 29 Aug 2011 10:03:24 -0000
 
-Am 28.08.2011 um 21:45 schrieb Stefan Weil:
-
-> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
-
-Reviewed-by: Andreas F=E4rber <andreas.faerber@web.de>
-
-Thanks,
-Andreas
-
+On Fri, Aug 26, 2011 at 10:06:01PM +0300, Alon Levy wrote:
+> Signed-off-by: Alon Levy <alevy@redhat.com>
 > ---
-> docs/qapi-code-gen.txt |    2 +-
-> libcacard/vscclient.c  |    2 +-
-> qemu-ga.c              |    2 +-
-> 3 files changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
-> index b7befb5..f345866 100644
-> --- a/docs/qapi-code-gen.txt
-> +++ b/docs/qapi-code-gen.txt
-> @@ -229,7 +229,7 @@ in the schema. The following files are generated:
-> $(prefix)qmp-marshal.c: command marshal/dispatch functions for each
->                         QMP command defined in the schema. Functions
->                         generated by qapi-visit.py are used to
-> -                        convert QObjects recieved from the wire into
-> +                        convert QObjects received from the wire into
->                         function parameters, and uses the same
->                         visitor functions to convert native C return
->                         values to QObjects from transmission back
-> diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
-> index a7b3834..2191f60 100644
-> --- a/libcacard/vscclient.c
-> +++ b/libcacard/vscclient.c
-> @@ -585,7 +585,7 @@ main(
->                 printf(" recv APDU: ");
->                 print_byte_array(pbSendBuffer, mhHeader.length);
->             }
-> -            /* Transmit recieved APDU */
-> +            /* Transmit received APDU */
->             dwSendLength =3D mhHeader.length;
->             dwRecvLength =3D sizeof(pbRecvBuffer);
->             reader =3D vreader_get_reader_by_id(mhHeader.reader_id);
-> diff --git a/qemu-ga.c b/qemu-ga.c
-> index 858d75a..4932013 100644
-> --- a/qemu-ga.c
-> +++ b/qemu-ga.c
-> @@ -51,7 +51,7 @@ static struct GAState *ga_state;
->
-> static void quit_handler(int sig)
-> {
-> -    g_debug("recieved signal num %d, quitting", sig);
-> +    g_debug("received signal num %d, quitting", sig);
->
->     if (g_main_loop_is_running(ga_state->main_loop)) {
->         g_main_loop_quit(ga_state->main_loop);
-> --=20
-> 1.7.2.5
+>  hw/pci-stub.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+
+Fixed "doesn't" -> "don't".
+
+Stefan
 
