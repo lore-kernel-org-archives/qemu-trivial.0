@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QxzOw-0004rK-Vh
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Aug 2011 06:49:10 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:38081)
+	id 1Qy0CK-0000oL-Ml
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Aug 2011 07:40:12 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:34700)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QxzOu-0004mj-Tx
-	for qemu-trivial@nongnu.org; Mon, 29 Aug 2011 06:49:09 -0400
+	(envelope-from <stefanha@gmail.com>) id 1Qy0CH-0000dr-MI
+	for qemu-trivial@nongnu.org; Mon, 29 Aug 2011 07:40:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QxzOt-0002E4-RV
-	for qemu-trivial@nongnu.org; Mon, 29 Aug 2011 06:49:08 -0400
-Received: from mail-ww0-f53.google.com ([74.125.82.53]:41132)
+	(envelope-from <stefanha@gmail.com>) id 1Qy0CG-0002Lf-HK
+	for qemu-trivial@nongnu.org; Mon, 29 Aug 2011 07:40:09 -0400
+Received: from mail-ww0-f53.google.com ([74.125.82.53]:49067)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1QxzOr-0002DL-G3; Mon, 29 Aug 2011 06:49:05 -0400
-Received: by wwf25 with SMTP id 25so5175503wwf.10
-	for <multiple recipients>; Mon, 29 Aug 2011 03:49:04 -0700 (PDT)
+	id 1Qy0CD-0002Im-Qt; Mon, 29 Aug 2011 07:40:05 -0400
+Received: by wwf25 with SMTP id 25so5213725wwf.10
+	for <multiple recipients>; Mon, 29 Aug 2011 04:40:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=AXUvy2YLKEUZynD1N61MS194FErY/pSlepoFZhQkpsc=;
-	b=kGjSAqfwIH0Ogi0crkCLcofia3l9evI70hDXGNiTkRH+8jNt8QsSqgx5p8C2q/W+ya
-	QMX+0ExozGx+5skoEXBZPwJy29U/+kLaRqiijSLTCZni0kaSQsJAkPtUXxFy9S6hIFkL
-	0bY5Nu0jcksjxlvJ+ww6PWzTnUd6N+eRaNbL0=
-Received: by 10.216.230.89 with SMTP id i67mr3470962weq.79.1314614944052;
-	Mon, 29 Aug 2011 03:49:04 -0700 (PDT)
+	bh=bAiz1ULzmZerpSJ8H2e8PHQ9iaCdx9K1Wde+hgGb8CY=;
+	b=rwmVYXVXWyLbnLKt9tAw/WobeWu0k7+QGHuJp5r3tpbJaE/aLBC9NrundMkICONpKw
+	ZrkFkEQwkjbCmCB4Vd6Kou4i4jcfdU/+3x0sO+vHmdhh6F8D/tsL4DQRZslcWKAT5sbM
+	8VkjdNGSf6BoAhueoKlZBYzEM+KxpK87Rns1k=
+Received: by 10.216.229.157 with SMTP id h29mr4603483weq.20.1314618004784;
+	Mon, 29 Aug 2011 04:40:04 -0700 (PDT)
 Received: from stefanha-thinkpad.localdomain ([109.224.133.37])
-	by mx.google.com with ESMTPS id o57sm2815371weq.10.2011.08.29.03.49.01
+	by mx.google.com with ESMTPS id h62sm2843929wee.32.2011.08.29.04.40.02
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 29 Aug 2011 03:49:02 -0700 (PDT)
-Date: Mon, 29 Aug 2011 11:48:54 +0100
+	Mon, 29 Aug 2011 04:40:03 -0700 (PDT)
+Date: Mon, 29 Aug 2011 12:39:57 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Stefan Weil <weil@mail.berlios.de>
-Message-ID: <20110829104806.GA19425@stefanha-thinkpad.localdomain>
-References: <1314560740-6136-1-git-send-email-weil@mail.berlios.de>
+Message-ID: <20110829113957.GA6780@stefanha-thinkpad.localdomain>
+References: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1314560740-6136-1-git-send-email-weil@mail.berlios.de>
+In-Reply-To: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] Fix spelling in comments and debug
- messages (recieve -> receive)
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] sh4: Fix potential crash in debug code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,15 +52,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Aug 2011 10:49:09 -0000
+X-List-Received-Date: Mon, 29 Aug 2011 11:40:10 -0000
 
-On Sun, Aug 28, 2011 at 09:45:40PM +0200, Stefan Weil wrote:
+On Wed, Jul 20, 2011 at 08:56:35PM +0200, Stefan Weil wrote:
+> cppcheck reports this error:
+> 
+> qemu/hw/sh_intc.c:390: error: Possible null pointer dereference:
+>  s - otherwise it is redundant to check if s is null at line 385
+> 
+> If s were NULL, the printf() statement would crash.
+> Setting braces fixes this bug.
+> 
 > Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 > ---
->  docs/qapi-code-gen.txt |    2 +-
->  libcacard/vscclient.c  |    2 +-
->  qemu-ga.c              |    2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+>  hw/sh_intc.c |    9 +++++----
+>  1 files changed, 5 insertions(+), 4 deletions(-)
 
 Thanks, applied to the trivial patches tree:
 http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
