@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Qy0CK-0000oL-Ml
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Aug 2011 07:40:12 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:34700)
+	id 1QyITj-0008VO-NN
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Aug 2011 03:11:23 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:44454)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Qy0CH-0000dr-MI
-	for qemu-trivial@nongnu.org; Mon, 29 Aug 2011 07:40:10 -0400
+	(envelope-from <boris.figovsky@ravellosystems.com>)
+	id 1QyITg-0008LJ-Eq
+	for qemu-trivial@nongnu.org; Tue, 30 Aug 2011 03:11:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Qy0CG-0002Lf-HK
-	for qemu-trivial@nongnu.org; Mon, 29 Aug 2011 07:40:09 -0400
-Received: from mail-ww0-f53.google.com ([74.125.82.53]:49067)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1Qy0CD-0002Im-Qt; Mon, 29 Aug 2011 07:40:05 -0400
-Received: by wwf25 with SMTP id 25so5213725wwf.10
-	for <multiple recipients>; Mon, 29 Aug 2011 04:40:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=bAiz1ULzmZerpSJ8H2e8PHQ9iaCdx9K1Wde+hgGb8CY=;
-	b=rwmVYXVXWyLbnLKt9tAw/WobeWu0k7+QGHuJp5r3tpbJaE/aLBC9NrundMkICONpKw
-	ZrkFkEQwkjbCmCB4Vd6Kou4i4jcfdU/+3x0sO+vHmdhh6F8D/tsL4DQRZslcWKAT5sbM
-	8VkjdNGSf6BoAhueoKlZBYzEM+KxpK87Rns1k=
-Received: by 10.216.229.157 with SMTP id h29mr4603483weq.20.1314618004784;
-	Mon, 29 Aug 2011 04:40:04 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain ([109.224.133.37])
-	by mx.google.com with ESMTPS id h62sm2843929wee.32.2011.08.29.04.40.02
+	(envelope-from <boris.figovsky@ravellosystems.com>)
+	id 1QyITf-000504-Ft
+	for qemu-trivial@nongnu.org; Tue, 30 Aug 2011 03:11:20 -0400
+Received: from na3sys010aog101.obsmtp.com ([74.125.245.70]:47112)
+	by eggs.gnu.org with smtp (Exim 4.71)
+	(envelope-from <boris.figovsky@ravellosystems.com>)
+	id 1QyITc-0004zl-WC; Tue, 30 Aug 2011 03:11:17 -0400
+Received: from mail-ww0-f51.google.com ([74.125.82.51]) (using TLSv1) by
+	na3sys010aob101.postini.com ([74.125.244.12]) with SMTP
+	ID DSNKTlyNAtD7cvld4LeUQUqSeMQ3q9Ab76GZ@postini.com;
+	Tue, 30 Aug 2011 00:11:16 PDT
+Received: by mail-ww0-f51.google.com with SMTP id 18so5889311wwi.8
+	for <multiple recipients>; Tue, 30 Aug 2011 00:10:58 -0700 (PDT)
+Received: by 10.216.1.200 with SMTP id 50mr465133wed.33.1314688258037;
+	Tue, 30 Aug 2011 00:10:58 -0700 (PDT)
+Received: from borf.ravello.local (bzq-218-203-82.red.bezeqint.net
+	[81.218.203.82])
+	by mx.google.com with ESMTPS id fg5sm4365078wbb.23.2011.08.30.00.10.56
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 29 Aug 2011 04:40:03 -0700 (PDT)
-Date: Mon, 29 Aug 2011 12:39:57 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <weil@mail.berlios.de>
-Message-ID: <20110829113957.GA6780@stefanha-thinkpad.localdomain>
-References: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1311188196-2867-1-git-send-email-weil@mail.berlios.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] sh4: Fix potential crash in debug code
+	Tue, 30 Aug 2011 00:10:57 -0700 (PDT)
+Message-ID: <4e5c8d01.05cbe30a.22c4.ffffe8ac@mx.google.com>
+Received: by borf.ravello.local (sSMTP sendmail emulation);
+	Tue, 30 Aug 2011 10:12:22 +0300
+From: Boris Figovsky <boris.figovsky@ravellosystems.com>
+Date: Tue, 30 Aug 2011 10:00:55 +0300
+To: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 74.125.245.70
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] x86: fix daa opcode for al register values
+	higher than 0xf9
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,24 +50,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Aug 2011 11:40:10 -0000
+X-List-Received-Date: Tue, 30 Aug 2011 07:11:21 -0000
 
-On Wed, Jul 20, 2011 at 08:56:35PM +0200, Stefan Weil wrote:
-> cppcheck reports this error:
-> 
-> qemu/hw/sh_intc.c:390: error: Possible null pointer dereference:
->  s - otherwise it is redundant to check if s is null at line 385
-> 
-> If s were NULL, the printf() statement would crash.
-> Setting braces fixes this bug.
-> 
-> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
-> ---
->  hw/sh_intc.c |    9 +++++----
->  1 files changed, 5 insertions(+), 4 deletions(-)
+The second if statement should consider the original al register value,
+and not the new one.
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+Signed-off-by: Boris Figovsky <boris.figovksy@ravellosystems.com>
+---
+ target-i386/op_helper.c |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
 
-Stefan
+diff --git a/target-i386/op_helper.c b/target-i386/op_helper.c
+index 1bbc3b5..1fc248f 100644
+--- a/target-i386/op_helper.c
++++ b/target-i386/op_helper.c
+@@ -1970,20 +1970,20 @@ void helper_aas(void)
+ 
+ void helper_daa(void)
+ {
+-    int al, af, cf;
++    int old_al, al, af, cf;
+     int eflags;
+ 
+     eflags = helper_cc_compute_all(CC_OP);
+     cf = eflags & CC_C;
+     af = eflags & CC_A;
+-    al = EAX & 0xff;
++    old_al = al = EAX & 0xff;
+ 
+     eflags = 0;
+     if (((al & 0x0f) > 9 ) || af) {
+         al = (al + 6) & 0xff;
+         eflags |= CC_A;
+     }
+-    if ((al > 0x9f) || cf) {
++    if ((old_al > 0x99) || cf) {
+         al = (al + 0x60) & 0xff;
+         eflags |= CC_C;
+     }
+-- 
+1.7.0.4
+
 
