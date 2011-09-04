@@ -1,48 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1QzQgd-0000cR-V4
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Sep 2011 06:09:23 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:37917)
+	id 1R0Ca9-0006MM-QW
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Sep 2011 09:17:53 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:51984)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QzQga-0000SB-Qx
-	for qemu-trivial@nongnu.org; Fri, 02 Sep 2011 06:09:21 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1R0Ca6-0006B3-Ts
+	for qemu-trivial@nongnu.org; Sun, 04 Sep 2011 09:17:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1QzQgZ-0005TB-OB
-	for qemu-trivial@nongnu.org; Fri, 02 Sep 2011 06:09:20 -0400
-Received: from mail-ww0-f53.google.com ([74.125.82.53]:55106)
+	(envelope-from <stefan@weilnetz.de>) id 1R0Ca5-0007CZ-VO
+	for qemu-trivial@nongnu.org; Sun, 04 Sep 2011 09:17:50 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:45519)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1QzQgX-0005Rz-22; Fri, 02 Sep 2011 06:09:17 -0400
-Received: by wwf25 with SMTP id 25so2579435wwf.10
-	for <multiple recipients>; Fri, 02 Sep 2011 03:09:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=pr0ZJorDhA7li1M8oUSjAvW/nH02J4bcV4z5Hm35+fU=;
-	b=a9q6K637H/1edXNPXvUNLK2qetcQePg+haJ4FT/NtgY6e2jKO83kiJiykpLtdKHR59
-	m/9Tiv8amsSKSDcqs/2QrLRWeI0XAy5Qol8YnPCjyzwlGL40MCIhCEfxT9tv6AbMWJlc
-	ek0CD6cKQuuN7RHb9AQf1VLfwL9tGbPMSEblA=
-Received: by 10.227.9.207 with SMTP id m15mr880812wbm.59.1314958155903;
-	Fri, 02 Sep 2011 03:09:15 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain
-	(gbibp9ph1--blueice2n1.emea.ibm.com [195.212.29.75])
-	by mx.google.com with ESMTPS id et17sm1142726wbb.0.2011.09.02.03.09.13
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 02 Sep 2011 03:09:14 -0700 (PDT)
-Date: Fri, 2 Sep 2011 11:09:08 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Boris Figovsky <boris.figovsky@ravellosystems.com>
-Message-ID: <20110902100908.GA23425@stefanha-thinkpad.localdomain>
-References: <4e5c8d01.05cbe30a.22c4.ffffe8ac@mx.google.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4e5c8d01.05cbe30a.22c4.ffffe8ac@mx.google.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] x86: fix daa opcode for al register
- values higher than 0xf9
+	(envelope-from <stefan@weilnetz.de>)
+	id 1R0Ca3-0007C6-R3; Sun, 04 Sep 2011 09:17:47 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	9082C7283065; Sun,  4 Sep 2011 15:17:44 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id h+8wxpPUFxUh; Sun,  4 Sep 2011 15:17:43 +0200 (CEST)
+Received: from flocke.weilnetz.de (p5086ED72.dip.t-dialin.net [80.134.237.114])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	CFD6B7283053; Sun,  4 Sep 2011 15:17:43 +0200 (CEST)
+Received: from stefan by flocke.weilnetz.de with local (Exim 4.72)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1R0Ca3-0002Ya-9k; Sun, 04 Sep 2011 15:17:47 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Date: Sun,  4 Sep 2011 15:17:46 +0200
+Message-Id: <1315142266-9800-1-git-send-email-weil@mail.berlios.de>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
+Subject: [Qemu-trivial] [PATCH] Fix comment (install patch -> install path)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,19 +46,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Sep 2011 10:09:21 -0000
+X-List-Received-Date: Sun, 04 Sep 2011 13:17:52 -0000
 
-On Tue, Aug 30, 2011 at 10:00:55AM +0300, Boris Figovsky wrote:
-> The second if statement should consider the original al register value,
-> and not the new one.
-> 
-> Signed-off-by: Boris Figovsky <boris.figovksy@ravellosystems.com>
-> ---
->  target-i386/op_helper.c |    6 +++---
->  1 files changed, 3 insertions(+), 3 deletions(-)
+Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+---
+ vl.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+diff --git a/vl.c b/vl.c
+index 5ba9b35..c9e1975 100644
+--- a/vl.c
++++ b/vl.c
+@@ -3061,7 +3061,7 @@ int main(int argc, char **argv, char **envp)
+     if (!data_dir) {
+         data_dir = os_find_datadir(argv[0]);
+     }
+-    /* If all else fails use the install patch specified when building.  */
++    /* If all else fails use the install path specified when building. */
+     if (!data_dir) {
+         data_dir = CONFIG_QEMU_DATADIR;
+     }
+-- 
+1.7.2.5
 
-Stefan
 
