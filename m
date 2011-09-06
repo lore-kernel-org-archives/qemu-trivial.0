@@ -1,34 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1R0qbX-0006XF-HE
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Sep 2011 04:01:59 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:45254)
+	id 1R0wDK-0004O9-Dq
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Sep 2011 10:01:22 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:57021)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1R0qbR-0006CF-Fw
-	for qemu-trivial@nongnu.org; Tue, 06 Sep 2011 04:01:57 -0400
+	(envelope-from <stefanha@gmail.com>) id 1R0wDD-00043R-3A
+	for qemu-trivial@nongnu.org; Tue, 06 Sep 2011 10:01:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1R0qbQ-0001MS-Mr
-	for qemu-trivial@nongnu.org; Tue, 06 Sep 2011 04:01:53 -0400
-Received: from oxygen.pond.sub.org ([78.46.104.156]:50133)
+	(envelope-from <stefanha@gmail.com>) id 1R0wD7-00021v-D9
+	for qemu-trivial@nongnu.org; Tue, 06 Sep 2011 10:01:15 -0400
+Received: from mail-ey0-f171.google.com ([209.85.215.171]:51938)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1R0qbE-0001Ft-C9; Tue, 06 Sep 2011 04:01:40 -0400
-Received: from blackfin.pond.sub.org (p5B32C9A8.dip.t-dialin.net
-	[91.50.201.168])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id 564E8A247E;
-	Tue,  6 Sep 2011 10:01:37 +0200 (CEST)
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id 7602360066; Tue,  6 Sep 2011 10:01:36 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  6 Sep 2011 10:01:36 +0200
-Message-Id: <1315296096-8115-1-git-send-email-armbru@redhat.com>
-X-Mailer: git-send-email 1.7.6
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 78.46.104.156
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] docs: Fix qdev-device-use.txt typo in
-	-chardev serial, path=COM<NUM>
+	(envelope-from <stefanha@gmail.com>)
+	id 1R0wD0-00020z-SF; Tue, 06 Sep 2011 10:01:03 -0400
+Received: by eyg24 with SMTP id 24so3466053eyg.16
+	for <multiple recipients>; Tue, 06 Sep 2011 07:01:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=xaUMGdVk+4zgF5FFRPH/uuOQIcrQoZ9sBOXy0gkYWQM=;
+	b=MbeyY5skA5uKXiGt2pffRPtMuVHdDhuXIdhd9u6DLzPeJLhf22oCxzoGaL1mQciqFj
+	8XLAstivnh0pisXpX0tKZHpy0W+NzUNij/Czrt9thGQ5lMXEuLUED4vwt7UTbixvCdlj
+	nggKM/bUsM8HnO7u3UmcfWCas8CiJiO/CndzE=
+Received: by 10.213.8.130 with SMTP id h2mr853703ebh.47.1315317660289;
+	Tue, 06 Sep 2011 07:01:00 -0700 (PDT)
+Received: from stefanha-thinkpad.localdomain
+	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
+	by mx.google.com with ESMTPS id i6sm400421eeb.11.2011.09.06.07.00.57
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 06 Sep 2011 07:00:58 -0700 (PDT)
+Date: Tue, 6 Sep 2011 15:00:52 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20110906140052.GA11558@stefanha-thinkpad.localdomain>
+References: <1315296096-8115-1-git-send-email-armbru@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1315296096-8115-1-git-send-email-armbru@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.215.171
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] docs: Fix qdev-device-use.txt typo in
+ -chardev serial, path=COM<NUM>
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,28 +54,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Sep 2011 08:01:57 -0000
+X-List-Received-Date: Tue, 06 Sep 2011 14:01:20 -0000
 
+On Tue, Sep 06, 2011 at 10:01:36AM +0200, Markus Armbruster wrote:
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  docs/qdev-device-use.txt |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- docs/qdev-device-use.txt |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Thanks, applied to the trivial patches -next tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
 
-diff --git a/docs/qdev-device-use.txt b/docs/qdev-device-use.txt
-index 057c322..136d271 100644
---- a/docs/qdev-device-use.txt
-+++ b/docs/qdev-device-use.txt
-@@ -208,7 +208,7 @@ LEGACY-CHARDEV translates to -chardev HOST-OPTS... as follows:
- 
- * con: becomes -chardev console
- 
--* COM<NUM> becomes -chardev serial,path=<NUM>
-+* COM<NUM> becomes -chardev serial,path=COM<NUM>
- 
- * file:FNAME becomes -chardev file,path=FNAME
- 
--- 
-1.7.6
-
+Stefan
 
