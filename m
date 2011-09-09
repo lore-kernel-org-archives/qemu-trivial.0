@@ -1,41 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1R1rIf-0003D0-P7
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Sep 2011 22:58:41 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:55495)
+	id 1R1wDb-00036b-Av
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Sep 2011 04:13:47 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:34789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <nkunkee42@hotmail.com>) id 1R1rId-00033V-1R
-	for qemu-trivial@nongnu.org; Thu, 08 Sep 2011 22:58:40 -0400
+	(envelope-from <kwolf@redhat.com>) id 1R1wDY-0002xB-Pe
+	for qemu-trivial@nongnu.org; Fri, 09 Sep 2011 04:13:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <nkunkee42@hotmail.com>) id 1R1rIc-00068X-3u
-	for qemu-trivial@nongnu.org; Thu, 08 Sep 2011 22:58:38 -0400
-Received: from blu0-omc2-s14.blu0.hotmail.com ([65.55.111.89]:38225)
+	(envelope-from <kwolf@redhat.com>) id 1R1wDW-0002hZ-Tu
+	for qemu-trivial@nongnu.org; Fri, 09 Sep 2011 04:13:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:5427)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <nkunkee42@hotmail.com>)
-	id 1R1rIa-000684-8t; Thu, 08 Sep 2011 22:58:36 -0400
-Received: from BLU0-SMTP122 ([65.55.111.71]) by blu0-omc2-s14.blu0.hotmail.com
-	with Microsoft SMTPSVC(6.0.3790.4675); 
-	Thu, 8 Sep 2011 19:58:34 -0700
-X-Originating-IP: [71.158.236.7]
-X-Originating-Email: [nkunkee42@hotmail.com]
-Message-ID: <BLU0-SMTP1229303F26E34F713CF60E3BC010@phx.gbl>
-Received: from [192.168.1.67] ([71.158.236.7]) by BLU0-SMTP122.phx.gbl over
-	TLS secured channel with Microsoft SMTPSVC(6.0.3790.4675); 
-	Thu, 8 Sep 2011 19:58:33 -0700
-Date: Thu, 8 Sep 2011 21:58:31 -0500
-From: Nathan Kunkee <nkunkee42@hotmail.com>
-User-Agent: Mozilla/5.0 (X11; U; SunOS i86pc; en-US;
-	rv:1.9.2.9) Gecko/20110425 Lightning/1.0b2 Thunderbird/3.1.4
+	(envelope-from <kwolf@redhat.com>)
+	id 1R1wDU-0002h6-HD; Fri, 09 Sep 2011 04:13:40 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p898DSnB021049
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 9 Sep 2011 04:13:28 -0400
+Received: from dhcp-5-188.str.redhat.com (vpn1-4-167.ams2.redhat.com
+	[10.36.4.167])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id p898DPUU031628
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-CAMELLIA256-SHA bits=256 verify=NO);
+	Fri, 9 Sep 2011 04:13:27 -0400
+Message-ID: <4E69CB58.5020005@redhat.com>
+Date: Fri, 09 Sep 2011 10:16:24 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:6.0) Gecko/20110816 Thunderbird/6.0
 MIME-Version: 1.0
-To: qemu-devel@nongnu.org
-Content-Type: text/plain; charset="ISO-8859-1"; format=flowed
+To: Stefan Weil <weil@mail.berlios.de>
+References: <1315497332-7258-1-git-send-email-weil@mail.berlios.de>
+In-Reply-To: <1315497332-7258-1-git-send-email-weil@mail.berlios.de>
+Content-Type: text/plain; charset=ISO-8859-15
 Content-Transfer-Encoding: 7bit
-X-OriginalArrivalTime: 09 Sep 2011 02:58:33.0153 (UTC)
-	FILETIME=[5C6D6B10:01CC6E9C]
-X-detected-operating-system: by eggs.gnu.org: Windows 2000 SP4, XP SP1+
-X-Received-From: 65.55.111.89
-Cc: qemu-trivial@nongnu.org, nkunkee42@hotmail.com
-Subject: [Qemu-trivial] [PATCH] SPARC: Trivial patch to clean up npc monitor
-	output
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	Riku Voipio <riku.voipio@iki.fi>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] Fix include statements for qemu-common.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,28 +52,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Sep 2011 02:58:40 -0000
+X-List-Received-Date: Fri, 09 Sep 2011 08:13:45 -0000
 
+Am 08.09.2011 17:55, schrieb Stefan Weil:
+> * qemu-common.h is not a system include file, so it should be included
+>   with "" instead of <>. Otherwise incremental builds might fail
+>   because only local include files are checked for changes.
+> 
+> * linux-user/syscall.c included the file twice.
+> 
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Riku Voipio <riku.voipio@iki.fi>
+> Cc: Jan Kiszka <jan.kiszka@siemens.com>
+> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 
-  This patch fixes the spacing of the PC and NPC output from 'info cpus' 
-for SPARC.
-
-Signed-off-by: Nathan Kunkee <nkunkee42@hotmail.com>
-
-diff --git a/monitor.c b/monitor.c
-index 1b8ba2c..16cd4c5 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -884,9 +884,9 @@ static void print_cpu_iter(QObject *obj, void *opaque)
-      monitor_printf(mon, "nip=0x" TARGET_FMT_lx,
-                     (target_long) qdict_get_int(cpu, "nip"));
-  #elif defined(TARGET_SPARC)
--    monitor_printf(mon, "pc=0x " TARGET_FMT_lx,
-+    monitor_printf(mon, "pc=0x" TARGET_FMT_lx,
-                     (target_long) qdict_get_int(cpu, "pc"));
--    monitor_printf(mon, "npc=0x" TARGET_FMT_lx,
-+    monitor_printf(mon, " npc=0x" TARGET_FMT_lx,
-                     (target_long) qdict_get_int(cpu, "npc"));
-  #elif defined(TARGET_MIPS)
-      monitor_printf(mon, "PC=0x" TARGET_FMT_lx,
+Acked-by: Kevin Wolf <kwolf@redhat.com>
 
