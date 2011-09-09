@@ -1,48 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1R1wv3-0003NT-BP
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Sep 2011 04:58:41 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:36400)
+	id 1R1wws-0004d0-Ai
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Sep 2011 05:00:34 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:36798)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1R1wv0-0003GJ-TO
-	for qemu-trivial@nongnu.org; Fri, 09 Sep 2011 04:58:39 -0400
+	(envelope-from <stefanha@gmail.com>) id 1R1wwq-0004X5-Gm
+	for qemu-trivial@nongnu.org; Fri, 09 Sep 2011 05:00:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1R1wuz-0001NV-Sd
-	for qemu-trivial@nongnu.org; Fri, 09 Sep 2011 04:58:38 -0400
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:43049)
+	(envelope-from <stefanha@gmail.com>) id 1R1wwm-0001eE-6R
+	for qemu-trivial@nongnu.org; Fri, 09 Sep 2011 05:00:32 -0400
+Received: from mail-fx0-f45.google.com ([209.85.161.45]:40580)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1R1wux-0001Kz-Ik; Fri, 09 Sep 2011 04:58:35 -0400
-Received: by mail-fx0-f45.google.com with SMTP id b27so2595723fxb.4
-	for <multiple recipients>; Fri, 09 Sep 2011 01:58:35 -0700 (PDT)
+	id 1R1wwj-0001dR-0N; Fri, 09 Sep 2011 05:00:25 -0400
+Received: by fxbb27 with SMTP id b27so2597185fxb.4
+	for <multiple recipients>; Fri, 09 Sep 2011 02:00:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=Q8CthyuItGsqXXXo0DIeaSArGrVmUcVwPwnnqWi+uBo=;
-	b=aoErwtVejnqCEHeXYObsVGh+I880ISGbhKHo/M1OMPpb+sB7sV+kVzMFl0O7HMjy3E
-	gii6vh1+8/+dEnZ6V/UbE2k/JXz0+u9DgqGwpdRvtWqp4K0303UmKv+iXm+NLIg8RzkF
-	nRr/p6lpPKSPDk7azwcg4hIh6GN1DH3HhaCfk=
-Received: by 10.223.97.210 with SMTP id m18mr1322059fan.127.1315558715007;
-	Fri, 09 Sep 2011 01:58:35 -0700 (PDT)
+	bh=i7Xu7SF8RR4RUJg2dMx2e4Q5R/9vgdTObDVm/tSPQVg=;
+	b=QwwkxVpJzaUuZBoCIrjsN8olFeDz6htm2fGbxHjwo5sgzFhc463hG8jplnklXjErUV
+	aNCV8ixYNcVb8gzkfrDmdySoCtLn+QKtyP0u/spsaO1dlhd0EK9zSVw4EA0a9g52skgm
+	RHMaljmXY0e7jgo1tZ2vGH/FF3E0IA2wtbfao=
+Received: by 10.223.97.210 with SMTP id m18mr1324552fan.127.1315558822256;
+	Fri, 09 Sep 2011 02:00:22 -0700 (PDT)
 Received: from stefanha-thinkpad.localdomain
 	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
-	by mx.google.com with ESMTPS id h22sm2585538fag.15.2011.09.09.01.58.32
+	by mx.google.com with ESMTPS id d23sm2591289fam.4.2011.09.09.02.00.20
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 09 Sep 2011 01:58:33 -0700 (PDT)
-Date: Fri, 9 Sep 2011 09:58:30 +0100
+	Fri, 09 Sep 2011 02:00:21 -0700 (PDT)
+Date: Fri, 9 Sep 2011 10:00:17 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Nathan Kunkee <nkunkee42@hotmail.com>
-Message-ID: <20110909085830.GB7699@stefanha-thinkpad.localdomain>
-References: <BLU0-SMTP1229303F26E34F713CF60E3BC010@phx.gbl>
+To: Stefan Weil <weil@mail.berlios.de>
+Message-ID: <20110909090017.GC7699@stefanha-thinkpad.localdomain>
+References: <1315497332-7258-1-git-send-email-weil@mail.berlios.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <BLU0-SMTP1229303F26E34F713CF60E3BC010@phx.gbl>
+In-Reply-To: <1315497332-7258-1-git-send-email-weil@mail.berlios.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 209.85.161.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] SPARC: Trivial patch to clean up npc
- monitor output
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Riku Voipio <riku.voipio@iki.fi>, QEMU Developers <qemu-devel@nongnu.org>,
+	Jan Kiszka <jan.kiszka@siemens.com>
+Subject: Re: [Qemu-trivial] [PATCH] Fix include statements for qemu-common.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,17 +55,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Sep 2011 08:58:40 -0000
+X-List-Received-Date: Fri, 09 Sep 2011 09:00:33 -0000
 
-On Thu, Sep 08, 2011 at 09:58:31PM -0500, Nathan Kunkee wrote:
+On Thu, Sep 08, 2011 at 05:55:32PM +0200, Stefan Weil wrote:
+> * qemu-common.h is not a system include file, so it should be included
+>   with "" instead of <>. Otherwise incremental builds might fail
+>   because only local include files are checked for changes.
 > 
->  This patch fixes the spacing of the PC and NPC output from 'info
-> cpus' for SPARC.
+> * linux-user/syscall.c included the file twice.
 > 
-> Signed-off-by: Nathan Kunkee <nkunkee42@hotmail.com>
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Riku Voipio <riku.voipio@iki.fi>
+> Cc: Jan Kiszka <jan.kiszka@siemens.com>
+> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+> ---
+>  hw/virtio-blk.c      |    2 +-
+>  linux-user/syscall.c |    3 +--
+>  nbd.h                |    2 +-
+>  qemu-nbd.c           |    2 +-
+>  slirp/libslirp.h     |    2 +-
+>  5 files changed, 5 insertions(+), 6 deletions(-)
 
 Thanks, applied to the trivial patches -next tree:
 http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
+
+Perhaps I'm being too quick but seems like an obvious fix.
 
 Stefan
 
