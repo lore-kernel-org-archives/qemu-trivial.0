@@ -1,49 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1R1wws-0004d0-Ai
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Sep 2011 05:00:34 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:36798)
+	id 1R2Uno-0004do-4E
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Sep 2011 17:09:28 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:48217)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1R1wwq-0004X5-Gm
-	for qemu-trivial@nongnu.org; Fri, 09 Sep 2011 05:00:33 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1R2Unk-0004Qz-00
+	for qemu-trivial@nongnu.org; Sat, 10 Sep 2011 17:09:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1R1wwm-0001eE-6R
-	for qemu-trivial@nongnu.org; Fri, 09 Sep 2011 05:00:32 -0400
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:40580)
+	(envelope-from <stefan@weilnetz.de>) id 1R2Uni-0001nn-PE
+	for qemu-trivial@nongnu.org; Sat, 10 Sep 2011 17:09:23 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:48147)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1R1wwj-0001dR-0N; Fri, 09 Sep 2011 05:00:25 -0400
-Received: by fxbb27 with SMTP id b27so2597185fxb.4
-	for <multiple recipients>; Fri, 09 Sep 2011 02:00:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=i7Xu7SF8RR4RUJg2dMx2e4Q5R/9vgdTObDVm/tSPQVg=;
-	b=QwwkxVpJzaUuZBoCIrjsN8olFeDz6htm2fGbxHjwo5sgzFhc463hG8jplnklXjErUV
-	aNCV8ixYNcVb8gzkfrDmdySoCtLn+QKtyP0u/spsaO1dlhd0EK9zSVw4EA0a9g52skgm
-	RHMaljmXY0e7jgo1tZ2vGH/FF3E0IA2wtbfao=
-Received: by 10.223.97.210 with SMTP id m18mr1324552fan.127.1315558822256;
-	Fri, 09 Sep 2011 02:00:22 -0700 (PDT)
-Received: from stefanha-thinkpad.localdomain
-	(gbibp9ph1--blueice3n2.emea.ibm.com [195.212.29.84])
-	by mx.google.com with ESMTPS id d23sm2591289fam.4.2011.09.09.02.00.20
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 09 Sep 2011 02:00:21 -0700 (PDT)
-Date: Fri, 9 Sep 2011 10:00:17 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <weil@mail.berlios.de>
-Message-ID: <20110909090017.GC7699@stefanha-thinkpad.localdomain>
-References: <1315497332-7258-1-git-send-email-weil@mail.berlios.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1315497332-7258-1-git-send-email-weil@mail.berlios.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.161.45
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	Riku Voipio <riku.voipio@iki.fi>, QEMU Developers <qemu-devel@nongnu.org>,
-	Jan Kiszka <jan.kiszka@siemens.com>
-Subject: Re: [Qemu-trivial] [PATCH] Fix include statements for qemu-common.h
+	(envelope-from <stefan@weilnetz.de>)
+	id 1R2Ung-0001nV-C5; Sat, 10 Sep 2011 17:09:20 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	DEEE27282F85; Sat, 10 Sep 2011 23:09:17 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 11SVFNWjaguc; Sat, 10 Sep 2011 23:09:16 +0200 (CEST)
+Received: from flocke.weilnetz.de (p54ADA89C.dip.t-dialin.net [84.173.168.156])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	D5B817282F84; Sat, 10 Sep 2011 23:09:16 +0200 (CEST)
+Received: from stefan by flocke.weilnetz.de with local (Exim 4.72)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1R2Unc-0003oL-CB; Sat, 10 Sep 2011 23:09:16 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Date: Sat, 10 Sep 2011 23:09:14 +0200
+Message-Id: <1315688954-14621-1-git-send-email-weil@mail.berlios.de>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
+Subject: [Qemu-trivial] [PATCH] qemu-doc: Remove URL which is no longer
+	available
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,31 +47,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Sep 2011 09:00:33 -0000
+X-List-Received-Date: Sat, 10 Sep 2011 21:09:25 -0000
 
-On Thu, Sep 08, 2011 at 05:55:32PM +0200, Stefan Weil wrote:
-> * qemu-common.h is not a system include file, so it should be included
->   with "" instead of <>. Otherwise incremental builds might fail
->   because only local include files are checked for changes.
-> 
-> * linux-user/syscall.c included the file twice.
-> 
-> Cc: Kevin Wolf <kwolf@redhat.com>
-> Cc: Riku Voipio <riku.voipio@iki.fi>
-> Cc: Jan Kiszka <jan.kiszka@siemens.com>
-> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
-> ---
->  hw/virtio-blk.c      |    2 +-
->  linux-user/syscall.c |    3 +--
->  nbd.h                |    2 +-
->  qemu-nbd.c           |    2 +-
->  slirp/libslirp.h     |    2 +-
->  5 files changed, 5 insertions(+), 6 deletions(-)
+http://perso.magic.fr/l_indien/ was removed several years ago.
+There is obviously no mirror or any other replacement for it.
 
-Thanks, applied to the trivial patches -next tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
+Signed-off-by: Stefan Weil <weil@mail.berlios.de>
+---
+ qemu-doc.texi |    6 +-----
+ 1 files changed, 1 insertions(+), 5 deletions(-)
 
-Perhaps I'm being too quick but seems like an obvious fix.
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index 31199f6..a1e86c1 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -1493,8 +1493,7 @@ PREP Non Volatile RAM
+ PC compatible keyboard and mouse.
+ @end itemize
+ 
+-QEMU uses the Open Hack'Ware Open Firmware Compatible BIOS available at
+-@url{http://perso.magic.fr/l_indien/OpenHackWare/index.htm}.
++QEMU uses the Open Hack'Ware Open Firmware Compatible BIOS.
+ 
+ Since version 0.9.1, QEMU uses OpenBIOS @url{http://www.openbios.org/}
+ for the g3beige and mac99 PowerMac machines. OpenBIOS is a free (GPL
+@@ -1528,9 +1527,6 @@ These variables are not used by Open Hack'Ware.
+ @c man end
+ 
+ 
+-More information is available at
+-@url{http://perso.magic.fr/l_indien/qemu-ppc/}.
+-
+ @node Sparc32 System emulator
+ @section Sparc32 System emulator
+ @cindex system emulation (Sparc32)
+-- 
+1.7.2.5
 
-Stefan
 
