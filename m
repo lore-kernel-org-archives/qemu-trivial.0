@@ -1,42 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1R3VDX-00040P-EI
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Sep 2011 11:48:11 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:57289)
+	id 1R3sJk-0004JO-NE
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2011 12:28:08 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:59032)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1R3VDT-0003sA-QL
-	for qemu-trivial@nongnu.org; Tue, 13 Sep 2011 11:48:08 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1R3sJh-00045I-BN
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2011 12:28:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1R3VDS-00057Q-QY
-	for qemu-trivial@nongnu.org; Tue, 13 Sep 2011 11:48:07 -0400
-Received: from mail-ew0-f46.google.com ([209.85.215.46]:38503)
+	(envelope-from <stefan@weilnetz.de>) id 1R3sJg-0004D4-2p
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2011 12:28:05 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:40907)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1R3VDP-00056d-HX; Tue, 13 Sep 2011 11:48:03 -0400
-Received: by ewy4 with SMTP id 4so529685ewy.33
-	for <multiple recipients>; Tue, 13 Sep 2011 08:48:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer;
-	bh=BUfu9DBd7OKIoHrB1WjZXm+AiL4uoUJQrOloff0ek3c=;
-	b=vV5FtHwFDEPoP5p84snsgKwMCwWCdvS1Bt5NlBWEnsItJhAX+RV7l/TsDLlveZ9Lfa
-	f/LPqOPu+4cGsC3077Q0h4F/bm9eNNf+TYJmhbQJLIz5qmw+LMovMn9bforlc5FaWBtA
-	jbqvm4SItGOae/fZoXi791HMfeYFMx7yLztwA=
-Received: by 10.52.65.71 with SMTP id v7mr3687301vds.335.1315928881104;
-	Tue, 13 Sep 2011 08:48:01 -0700 (PDT)
-Received: from localhost.localdomain (93-34-199-31.ip51.fastwebnet.it.
-	[93.34.199.31])
-	by mx.google.com with ESMTPS id x19sm367089vdf.10.2011.09.13.08.47.58
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 13 Sep 2011 08:48:00 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <stefan@weilnetz.de>)
+	id 1R3sJZ-0004C2-N9; Wed, 14 Sep 2011 12:27:57 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	9393E7282F9A; Wed, 14 Sep 2011 18:27:55 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id l6ASnwdAXpj6; Wed, 14 Sep 2011 18:27:55 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 11A127282F9B; Wed, 14 Sep 2011 18:27:55 +0200 (CEST)
+From: Stefan Weil <weil@mail.berlios.de>
 To: qemu-devel@nongnu.org
-Date: Tue, 13 Sep 2011 17:47:52 +0200
-Message-Id: <1315928872-6730-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.7.6
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.215.46
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] fix compilation with stderr trace backend
+Date: Wed, 14 Sep 2011 18:27:54 +0200
+Message-Id: <1316017674-16380-1-git-send-email-weil@mail.berlios.de>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>
+Subject: [Qemu-trivial] [PATCH] target-i386: Remove data type CCTable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,27 +42,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Sep 2011 15:48:09 -0000
+X-List-Received-Date: Wed, 14 Sep 2011 16:28:06 -0000
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Remove also two assert statements which were the last remaining users.
+
+Signed-off-by: Stefan Weil <weil@mail.berlios.de>
 ---
- trace-events |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ target-i386/cpu.h       |    5 -----
+ target-i386/translate.c |    5 -----
+ 2 files changed, 0 insertions(+), 10 deletions(-)
 
-diff --git a/trace-events b/trace-events
-index a8e7684..1e9e717 100644
---- a/trace-events
-+++ b/trace-events
-@@ -454,7 +454,7 @@ milkymist_vgafb_memory_write(uint32_t addr, uint32_t value) "addr %08x value %08
- mipsnet_send(uint32_t size) "sending len=%u"
- mipsnet_receive(uint32_t size) "receiving len=%u"
- mipsnet_read(uint64_t addr, uint32_t val) "read addr=0x%" PRIx64 " val=0x%x"
--mipsnet_write(uint64_t addr, uint64_t val) "write addr=0x%" PRIx64 " val=0x%" PRIx64
-+mipsnet_write(uint64_t addr, uint64_t val) "write addr=0x%" PRIx64 " val=0x%" PRIx64 ""
- mipsnet_irq(uint32_t isr, uint32_t intctl) "set irq to %d (%02x)"
+diff --git a/target-i386/cpu.h b/target-i386/cpu.h
+index 4a6f675..ae36489 100644
+--- a/target-i386/cpu.h
++++ b/target-i386/cpu.h
+@@ -991,11 +991,6 @@ static inline int cpu_mmu_index (CPUState *env)
+ /* translate.c */
+ void optimize_flags_init(void);
  
- # xen-all.c
+-typedef struct CCTable {
+-    int (*compute_all)(void); /* return all the flags */
+-    int (*compute_c)(void);  /* return the C flag */
+-} CCTable;
+-
+ #if defined(CONFIG_USER_ONLY)
+ static inline void cpu_clone_regs(CPUState *env, target_ulong newsp)
+ {
+diff --git a/target-i386/translate.c b/target-i386/translate.c
+index b966762..b894e97 100644
+--- a/target-i386/translate.c
++++ b/target-i386/translate.c
+@@ -7641,11 +7641,6 @@ static target_ulong disas_insn(DisasContext *s, target_ulong pc_start)
+ 
+ void optimize_flags_init(void)
+ {
+-#if TCG_TARGET_REG_BITS == 32
+-    assert(sizeof(CCTable) == (1 << 3));
+-#else
+-    assert(sizeof(CCTable) == (1 << 4));
+-#endif
+     cpu_env = tcg_global_reg_new_ptr(TCG_AREG0, "env");
+     cpu_cc_op = tcg_global_mem_new_i32(TCG_AREG0,
+                                        offsetof(CPUState, cc_op), "cc_op");
 -- 
-1.7.6
+1.7.2.5
 
 
