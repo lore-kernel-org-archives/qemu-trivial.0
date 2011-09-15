@@ -1,30 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1R49vK-0005fe-JZ
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Sep 2011 07:16:06 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:53421)
+	id 1R4B03-0005Ek-7q
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Sep 2011 08:25:03 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:51141)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1R49vI-0005au-Mj
-	for qemu-trivial@nongnu.org; Thu, 15 Sep 2011 07:16:05 -0400
+	(envelope-from <stefanha@gmail.com>) id 1R4B00-00055U-3r
+	for qemu-trivial@nongnu.org; Thu, 15 Sep 2011 08:25:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1R49vH-0006xU-M4
-	for qemu-trivial@nongnu.org; Thu, 15 Sep 2011 07:16:04 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:49953)
+	(envelope-from <stefanha@gmail.com>) id 1R4Azw-0007Od-27
+	for qemu-trivial@nongnu.org; Thu, 15 Sep 2011 08:24:59 -0400
+Received: from mail-fx0-f45.google.com ([209.85.161.45]:42356)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1R49vC-0006vr-HK; Thu, 15 Sep 2011 07:15:58 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1R49vA-0000Ae-6s; Thu, 15 Sep 2011 12:15:56 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Thu, 15 Sep 2011 12:15:56 +0100
-Message-Id: <1316085356-632-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
+	(envelope-from <stefanha@gmail.com>)
+	id 1R4Azs-0007O2-Sf; Thu, 15 Sep 2011 08:24:52 -0400
+Received: by fxh13 with SMTP id 13so648084fxh.4
+	for <multiple recipients>; Thu, 15 Sep 2011 05:24:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=GmqLFZTHV43Gp2u5i+tBuvhrNATcVUaojz1XNfozqA4=;
+	b=Z4gtHUvLCXL8yYvn66+E25IJWHYoQvf4j8yui1ufOiFRZhcxnNdwEhrFXubFEhZf/C
+	mszhFsmZsl8Cn8w+A6t9k7jjxpw8cnJbVOL0mubINnpU01NY5q1AMGhJio15sXYDR+Tq
+	/4MrTMXVjMT3SukKjcyboJr2OEFu5y+MD5YOA=
+Received: by 10.223.76.24 with SMTP id a24mr868459fak.109.1316089491787;
+	Thu, 15 Sep 2011 05:24:51 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
+	by mx.google.com with ESMTPS id
+	e17sm6882567fae.17.2011.09.15.05.24.50
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 15 Sep 2011 05:24:50 -0700 (PDT)
+Date: Thu, 15 Sep 2011 13:24:48 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20110915122448.GA18553@stefanha-thinkpad.localdomain>
+References: <1315928872-6730-1-git-send-email-pbonzini@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1315928872-6730-1-git-send-email-pbonzini@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] configure: Make missing pkg-config an error
-	rather than a warning
+X-Received-From: 209.85.161.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fix compilation with stderr
+	trace backend
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,34 +54,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Sep 2011 11:16:05 -0000
+X-List-Received-Date: Thu, 15 Sep 2011 12:25:01 -0000
 
-If pkg-config doesn't exist then make configure fail immediately
-with a useful error message. Now that glib is a required dependency,
-proceeding despite the missing pkg-config will just cause us to
-fail later with a misleading message about glib not being present.
+On Tue, Sep 13, 2011 at 05:47:52PM +0200, Paolo Bonzini wrote:
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  trace-events |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- configure |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-diff --git a/configure b/configure
-index 0875f95..6c2839d 100755
---- a/configure
-+++ b/configure
-@@ -1339,8 +1339,8 @@ fi
- # pkg-config probe
- 
- if ! has $pkg_config; then
--  echo warning: proceeding without "$pkg_config" >&2
--  pkg_config=/bin/false
-+  echo "Error: pkg-config binary '$pkg_config' not found"
-+  exit 1
- fi
- 
- ##########################################
--- 
-1.7.1
-
+Stefan
 
