@@ -1,45 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1R6Mrk-0003RR-4Z
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Sep 2011 09:29:32 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:60505)
+	id 1R6mln-0003CH-IV
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Sep 2011 13:09:07 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:38900)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1R6Mrd-00033S-Lv
-	for qemu-trivial@nongnu.org; Wed, 21 Sep 2011 09:29:29 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1R6mlk-00036c-Ts
+	for qemu-trivial@nongnu.org; Thu, 22 Sep 2011 13:09:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1R6Mrc-0004a5-N6
-	for qemu-trivial@nongnu.org; Wed, 21 Sep 2011 09:29:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33846)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1R6mlj-0001Db-PQ
+	for qemu-trivial@nongnu.org; Thu, 22 Sep 2011 13:09:04 -0400
+Received: from mail-wy0-f173.google.com ([74.125.82.173]:37868)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1R6MrW-0004Xm-6p; Wed, 21 Sep 2011 09:29:18 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p8LDT9nP004174
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 21 Sep 2011 09:29:10 -0400
-Received: from dhcp-5-188.str.redhat.com (dhcp-5-175.str.redhat.com
-	[10.32.5.175])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id p8LDT8uA008145
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Wed, 21 Sep 2011 09:29:09 -0400
-Message-ID: <4E79E758.9000509@redhat.com>
-Date: Wed, 21 Sep 2011 15:32:08 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:6.0.2) Gecko/20110906 Thunderbird/6.0.2
-MIME-Version: 1.0
-To: nick@bytemark.co.uk
-References: <1316602550-13597-1-git-send-email-nick@bytemark.co.uk>
-In-Reply-To: <1316602550-13597-1-git-send-email-nick@bytemark.co.uk>
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] block/curl: Remedy a crashing bug
- completing AIOCBs from cache
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1R6mlg-0001Cj-BD; Thu, 22 Sep 2011 13:09:00 -0400
+Received: by wyh22 with SMTP id 22so3339698wyh.4
+	for <multiple recipients>; Thu, 22 Sep 2011 10:08:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=sender:from:to:cc:subject:date:message-id:x-mailer;
+	bh=VYlheVQ7mJKY+qJ+p8bSuufCu8Wwrh7jpOWNUDW65bA=;
+	b=My2nLORgKUBn82XFBP+AdT0lowDfb8hwQnE7fedLRsB3KKXs/lQSqVE2/Wv2a+3wBn
+	LQR9PkAvo0fgjN0dAetQgAy3tiA1XpR2/K8nv3aBhowU8BTVRuDNyC+6/iJEAv9QwkMz
+	AZNaM5aDET9UlNFJmRDfIKXW2bOH0nBGgxMPM=
+Received: by 10.216.178.144 with SMTP id f16mr2413625wem.104.1316711338859;
+	Thu, 22 Sep 2011 10:08:58 -0700 (PDT)
+Received: from localhost.localdomain (93-34-188-71.ip51.fastwebnet.it.
+	[93.34.188.71])
+	by mx.google.com with ESMTPS id fq9sm12389774wbb.15.2011.09.22.10.08.55
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 22 Sep 2011 10:08:57 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 22 Sep 2011 19:08:47 +0200
+Message-Id: <1316711327-4046-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.7.6
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.173
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] makefile: extract tools-obj-y
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,21 +48,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Sep 2011 13:29:30 -0000
+X-List-Received-Date: Thu, 22 Sep 2011 17:09:06 -0000
 
-Am 21.09.2011 12:55, schrieb nick@bytemark.co.uk:
-> In QEMU master, attempting to read a cached block from a HTTP (or otherwise)
-> mounted ISO causes an assert to be triggered, killing the entire QEMU process.
-> It looks like this:
-> 
-> hw/ide/pci.c:314: bmdma_cmd_writeb: Assertion `bm->bus->dma->aiocb == 
-> ((void *)0)' failed.
-> 
-> The following two patches add flush capability to the curl backend, and avoid
-> triggering the assert by finishing the AIOCB in a QEMUBH callback, rather than
-> directly in curl_aio_readv().
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ Makefile |    9 +++++----
+ 1 files changed, 5 insertions(+), 4 deletions(-)
 
-Thanks, applied to the block branch.
+diff --git a/Makefile b/Makefile
+index a211158..4308470 100644
+--- a/Makefile
++++ b/Makefile
+@@ -145,11 +145,12 @@ endif
+ qemu-img.o: qemu-img-cmds.h
+ qemu-img.o qemu-tool.o qemu-nbd.o qemu-io.o cmd.o qemu-ga.o: $(GENERATED_HEADERS)
+ 
+-qemu-img$(EXESUF): qemu-img.o qemu-tool.o qemu-error.o $(oslib-obj-y) $(trace-obj-y) $(block-obj-y) $(qobject-obj-y) $(version-obj-y) qemu-timer-common.o
++tools-obj-y = qemu-tool.o qemu-error.o $(oslib-obj-y) $(trace-obj-y) \
++        $(block-obj-y) $(qobject-obj-y) $(version-obj-y) qemu-timer-common.o
+ 
+-qemu-nbd$(EXESUF): qemu-nbd.o qemu-tool.o qemu-error.o $(oslib-obj-y) $(trace-obj-y) $(block-obj-y) $(qobject-obj-y) $(version-obj-y) qemu-timer-common.o
+-
+-qemu-io$(EXESUF): qemu-io.o cmd.o qemu-tool.o qemu-error.o $(oslib-obj-y) $(trace-obj-y) $(block-obj-y) $(qobject-obj-y) $(version-obj-y) qemu-timer-common.o
++qemu-img$(EXESUF): qemu-img.o $(tools-obj-y)
++qemu-nbd$(EXESUF): qemu-nbd.o $(tools-obj-y)
++qemu-io$(EXESUF): qemu-io.o cmd.o $(tools-obj-y)
+ 
+ qemu-img-cmds.h: $(SRC_PATH)/qemu-img-cmds.hx
+ 	$(call quiet-command,sh $(SRC_PATH)/scripts/hxtool -h < $< > $@,"  GEN   $@")
+-- 
+1.7.6
 
-Kevin
 
