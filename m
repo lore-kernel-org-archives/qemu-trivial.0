@@ -1,45 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1R83Kt-0002OR-Um
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Sep 2011 01:02:35 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:49419)
+	id 1R83L9-000382-Db
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Sep 2011 01:02:51 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:49455)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <antonynpavlov@gmail.com>) id 1R83Kr-0002IX-DO
-	for qemu-trivial@nongnu.org; Mon, 26 Sep 2011 01:02:34 -0400
+	(envelope-from <antonynpavlov@gmail.com>) id 1R83L5-0002w0-7K
+	for qemu-trivial@nongnu.org; Mon, 26 Sep 2011 01:02:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <antonynpavlov@gmail.com>) id 1R83Kq-00044r-EN
-	for qemu-trivial@nongnu.org; Mon, 26 Sep 2011 01:02:33 -0400
-Received: from mail-wy0-f173.google.com ([74.125.82.173]:55466)
+	(envelope-from <antonynpavlov@gmail.com>) id 1R83L3-0004MF-Tz
+	for qemu-trivial@nongnu.org; Mon, 26 Sep 2011 01:02:47 -0400
+Received: from mail-bw0-f45.google.com ([209.85.214.45]:41684)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <antonynpavlov@gmail.com>)
-	id 1R83Ko-00044b-AH; Mon, 26 Sep 2011 01:02:30 -0400
-Received: by wyh22 with SMTP id 22so6159764wyh.4
-	for <multiple recipients>; Sun, 25 Sep 2011 22:02:29 -0700 (PDT)
+	id 1R83L1-0004Lm-AX; Mon, 26 Sep 2011 01:02:43 -0400
+Received: by bkbzv15 with SMTP id zv15so5503531bkb.4
+	for <multiple recipients>; Sun, 25 Sep 2011 22:02:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=rOeP/ily2eEUwU/7wOEm4mxpKCaQzaXiGcmt2LJJqXI=;
-	b=SAQW8N5nu3D9m30gG3ys5kVbzv1Zg6sWC7w08ExsrIZ0GXfEQksFQx/2NKVSId/ze0
-	p2Qp4B4Koj3D7s5DEi/T9TEJ3iQTSKKLfMJd+v102Dev8Bhp9DfHmiaeD7z2JMToIEwB
-	IFfPHtnmPMckdy5Rrn+5QtFH88u0f3eOTJPWU=
-MIME-Version: 1.0
-Received: by 10.216.179.205 with SMTP id h55mr8231435wem.51.1317013349217;
-	Sun, 25 Sep 2011 22:02:29 -0700 (PDT)
-Received: by 10.216.47.211 with HTTP; Sun, 25 Sep 2011 22:02:29 -0700 (PDT)
-In-Reply-To: <CAFEAcA_dT-N0qWXqcF_7K1zZ5q3RbrXxF=oJYAvYx_YeFQgpwA@mail.gmail.com>
-References: <1316980937-18588-1-git-send-email-antonynpavlov@gmail.com>
-	<CAFEAcA_dT-N0qWXqcF_7K1zZ5q3RbrXxF=oJYAvYx_YeFQgpwA@mail.gmail.com>
-Date: Mon, 26 Sep 2011 09:02:29 +0400
-Message-ID: <CAA4bVAG-29fGBDcZyT1g8sfJ82CJ9toBkm5eUhwiQr7uPO1mQg@mail.gmail.com>
+	h=from:to:cc:subject:date:message-id:x-mailer;
+	bh=JqHBJqciBSbDNZBYQfXFqcLv6RoSCjVeVjan9+Wkfbk=;
+	b=DoRR5b1L1IqgYa6kyPRrlbxWPYwvqVeHn4Z9yPiq0Ro1dcezlEsNYIDTCPqUI4R3qu
+	HWFpNIl72yLWUqoV2dB+m/j7kkmfBhVd6AsydZnYrnmraEo4D9/aYDLPdZiDoBYA9XBm
+	gNoSD7XE0fUpl6crQvpiWTYr1TjUVpok/Bnlo=
+Received: by 10.204.8.77 with SMTP id g13mr4142323bkg.146.1317013362172;
+	Sun, 25 Sep 2011 22:02:42 -0700 (PDT)
+Received: from localhost.localdomain (ppp95-165-19-215.pppoe.spdop.ru.
+	[95.165.19.215])
+	by mx.google.com with ESMTPS id t13sm8055426fae.0.2011.09.25.22.02.40
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sun, 25 Sep 2011 22:02:41 -0700 (PDT)
 From: Antony Pavlov <antonynpavlov@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+To: qemu-devel@nongnu.org
+Date: Mon, 26 Sep 2011 09:02:37 +0400
+Message-Id: <1317013358-19839-1-git-send-email-antonynpavlov@gmail.com>
+X-Mailer: git-send-email 1.7.5.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+X-Received-From: 209.85.214.45
+Cc: qemu-trivial@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>,
 	Aurelien Jarno <aurelien@aurel32.net>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] gt64xxx.c: fix length
- modifier in DPRINTF format string
+Subject: [Qemu-trivial] [PATCH 1/2] gt64xxx.c: fix length modifier in
+	DPRINTF format string
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,23 +49,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Sep 2011 05:02:34 -0000
+X-List-Received-Date: Mon, 26 Sep 2011 05:02:48 -0000
 
-On 26 September 2011 00:56, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 25 September 2011 21:02, Antony Pavlov <antonynpavlov@gmail.com> wrote=
-:
->> The commit fc2bf44972349b078d8310466c3866615500e67f
->> changed the type of val argument of the function gt64120_writel()
->> from uint32_t to uint64_t, so we need to change the corresponding
->> length modifier from '%x' to '%llx'.
->
-> Revised patch looks OK but you forgot to update the commit message :-)
+The commit fc2bf44972349b078d8310466c3866615500e67f
+changed the type of val argument of the function gt64120_writel()
+from uint32_t to uint64_t, so we need to change the corresponding
+length modifier from "%x" to "%" PRIx64.
 
-Aghhhh.
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ hw/gt64xxx.c |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
 
-Next time I shell be more lucky. Wait for new patches.
+diff --git a/hw/gt64xxx.c b/hw/gt64xxx.c
+index c7df8c4..1defb6d 100644
+--- a/hw/gt64xxx.c
++++ b/hw/gt64xxx.c
+@@ -543,19 +543,19 @@ static void gt64120_writel (void *opaque, target_phys_addr_t addr,
+         /* not really implemented */
+         s->regs[saddr] = ~(~(s->regs[saddr]) | ~(val & 0xfffffffe));
+         s->regs[saddr] |= !!(s->regs[saddr] & 0xfffffffe);
+-        DPRINTF("INTRCAUSE %x\n", val);
++        DPRINTF("INTRCAUSE %" PRIx64 "\n", val);
+         break;
+     case GT_INTRMASK:
+         s->regs[saddr] = val & 0x3c3ffffe;
+-        DPRINTF("INTRMASK %x\n", val);
++        DPRINTF("INTRMASK %" PRIx64 "\n", val);
+         break;
+     case GT_PCI0_ICMASK:
+         s->regs[saddr] = val & 0x03fffffe;
+-        DPRINTF("ICMASK %x\n", val);
++        DPRINTF("ICMASK %" PRIx64 "\n", val);
+         break;
+     case GT_PCI0_SERR0MASK:
+         s->regs[saddr] = val & 0x0000003f;
+-        DPRINTF("SERR0MASK %x\n", val);
++        DPRINTF("SERR0MASK %" PRIx64 "\n", val);
+         break;
+ 
+     /* Reserved when only PCI_0 is configured. */
+-- 
+1.7.5.4
 
---=20
-Best regards,
-=A0 Antony Pavlov
 
