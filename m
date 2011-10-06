@@ -1,47 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RBMlR-00081z-Md
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Oct 2011 04:23:41 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:56611)
+	id 1RBlin-00005Q-KN
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Oct 2011 07:02:37 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:52419)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RBMlN-0007ju-Cb
-	for qemu-trivial@nongnu.org; Wed, 05 Oct 2011 04:23:38 -0400
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RBl7z-0005sD-NM
+	for qemu-trivial@nongnu.org; Thu, 06 Oct 2011 06:24:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RBMlM-0007sp-1P
-	for qemu-trivial@nongnu.org; Wed, 05 Oct 2011 04:23:37 -0400
-Received: from mail-wy0-f173.google.com ([74.125.82.173]:49579)
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RBl7y-0002WM-PL
+	for qemu-trivial@nongnu.org; Thu, 06 Oct 2011 06:24:35 -0400
+Received: from mtagate1.uk.ibm.com ([194.196.100.161]:59991)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RBMlJ-0007sW-21; Wed, 05 Oct 2011 04:23:33 -0400
-Received: by wyh22 with SMTP id 22so1566221wyh.4
-	for <multiple recipients>; Wed, 05 Oct 2011 01:23:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=ECgF9GeTE0KpfaeB10S3mddB1TWdf3SM7F+aWQ5APxA=;
-	b=eV3/oVQYTAMDkiAdsv/iRy3ep6yAW7U3uhh6qMTc206hJsNO9sk21LybkOi2zpWQ8B
-	DiVAL01FcsYwnmxJpRQ1S3vRRdJTeON7rWeJp28TH5g4m6Ey7S47tIDQLk7uENpjnY2R
-	J+bh4gxme8n+x8yKGABvjefaTMWMuIBQII9CI=
-Received: by 10.227.25.12 with SMTP id x12mr2746730wbb.54.1317803012055;
-	Wed, 05 Oct 2011 01:23:32 -0700 (PDT)
-Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id h14sm1547678wbo.7.2011.10.05.01.23.30
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 05 Oct 2011 01:23:30 -0700 (PDT)
-Date: Wed, 5 Oct 2011 09:23:28 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <weil@mail.berlios.de>
-Message-ID: <20111005082328.GB17877@stefanha-thinkpad.localdomain>
-References: <1317574389-15007-1-git-send-email-weil@mail.berlios.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1317574389-15007-1-git-send-email-weil@mail.berlios.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Fix mismatching allocation and
- deallocation
+	(envelope-from <stefanha@linux.vnet.ibm.com>)
+	id 1RBl7w-0002Vj-G2; Thu, 06 Oct 2011 06:24:32 -0400
+Received: from d06nrmr1707.portsmouth.uk.ibm.com
+	(d06nrmr1707.portsmouth.uk.ibm.com [9.149.39.225])
+	by mtagate1.uk.ibm.com (8.13.1/8.13.1) with ESMTP id p96AOU8F020757;
+	Thu, 6 Oct 2011 10:24:30 GMT
+Received: from d06av08.portsmouth.uk.ibm.com (d06av08.portsmouth.uk.ibm.com
+	[9.149.37.249])
+	by d06nrmr1707.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
+	ESMTP id p96AOUJk2359390; Thu, 6 Oct 2011 11:24:30 +0100
+Received: from d06av08.portsmouth.uk.ibm.com (loopback [127.0.0.1])
+	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
+	ESMTP id p96AOUxV016659; Thu, 6 Oct 2011 11:24:30 +0100
+Received: from localhost (dyn-9-174-219-31.manchester-maybrook.uk.ibm.com
+	[9.174.219.31])
+	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
+	ESMTP id p96AOTxg016637; Thu, 6 Oct 2011 11:24:30 +0100
+From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu,  6 Oct 2011 11:24:12 +0100
+Message-Id: <1317896652-3393-1-git-send-email-stefanha@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.6.3
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 194.196.100.161
+Cc: qemu-trivial@nongnu.org, Alon Levy <alevy@redhat.com>,
+	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH] qemu-options: avoid #if in spicevmc texi help
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,18 +49,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Oct 2011 08:23:38 -0000
+X-List-Received-Date: Thu, 06 Oct 2011 11:02:35 -0000
 
-On Sun, Oct 02, 2011 at 06:53:09PM +0200, Stefan Weil wrote:
-> This error was reported by cppcheck.
-> 
-> Signed-off-by: Stefan Weil <weil@mail.berlios.de>
-> ---
->  console.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
+Preprocessor directives cannot be used in STEXI/ETEXI sections since
+they are not passed through the preprocessor.  The spicevmc chardev
+option help currently uses #if, which is included verbatim in the man
+page output.
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+Fix this by simply stating that spicevmc chardevs are available only in
+builds with spice support.
 
-Stefan
+Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+---
+ qemu-options.hx |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index dfbabd0..d4fe990 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1673,15 +1673,15 @@ Connect to a local parallel port.
+ @option{path} specifies the path to the parallel port device. @option{path} is
+ required.
+ 
+-#if defined(CONFIG_SPICE)
+ @item -chardev spicevmc ,id=@var{id} ,debug=@var{debug}, name=@var{name}
+ 
++@option{spicevmc} is only available when spice support is built in.
++
+ @option{debug} debug level for spicevmc
+ 
+ @option{name} name of spice channel to connect to
+ 
+ Connect to a spice virtual machine channel, such as vdiport.
+-#endif
+ 
+ @end table
+ ETEXI
+-- 
+1.7.6.3
+
 
