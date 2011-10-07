@@ -1,43 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RBlin-00005Q-KN
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Oct 2011 07:02:37 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:52419)
+	id 1RC33w-0000lM-NJ
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Oct 2011 01:33:36 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:41309)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RBl7z-0005sD-NM
-	for qemu-trivial@nongnu.org; Thu, 06 Oct 2011 06:24:36 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1RC33s-0000aM-Vg
+	for qemu-trivial@nongnu.org; Fri, 07 Oct 2011 01:33:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RBl7y-0002WM-PL
-	for qemu-trivial@nongnu.org; Thu, 06 Oct 2011 06:24:35 -0400
-Received: from mtagate1.uk.ibm.com ([194.196.100.161]:59991)
+	(envelope-from <stefan@weilnetz.de>) id 1RC33r-0002lK-WB
+	for qemu-trivial@nongnu.org; Fri, 07 Oct 2011 01:33:32 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:44022)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>)
-	id 1RBl7w-0002Vj-G2; Thu, 06 Oct 2011 06:24:32 -0400
-Received: from d06nrmr1707.portsmouth.uk.ibm.com
-	(d06nrmr1707.portsmouth.uk.ibm.com [9.149.39.225])
-	by mtagate1.uk.ibm.com (8.13.1/8.13.1) with ESMTP id p96AOU8F020757;
-	Thu, 6 Oct 2011 10:24:30 GMT
-Received: from d06av08.portsmouth.uk.ibm.com (d06av08.portsmouth.uk.ibm.com
-	[9.149.37.249])
-	by d06nrmr1707.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
-	ESMTP id p96AOUJk2359390; Thu, 6 Oct 2011 11:24:30 +0100
-Received: from d06av08.portsmouth.uk.ibm.com (loopback [127.0.0.1])
-	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
-	ESMTP id p96AOUxV016659; Thu, 6 Oct 2011 11:24:30 +0100
-Received: from localhost (dyn-9-174-219-31.manchester-maybrook.uk.ibm.com
-	[9.174.219.31])
-	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
-	ESMTP id p96AOTxg016637; Thu, 6 Oct 2011 11:24:30 +0100
-From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu,  6 Oct 2011 11:24:12 +0100
-Message-Id: <1317896652-3393-1-git-send-email-stefanha@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.6.3
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 194.196.100.161
-Cc: qemu-trivial@nongnu.org, Alon Levy <alevy@redhat.com>,
-	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH] qemu-options: avoid #if in spicevmc texi help
+	(envelope-from <stefan@weilnetz.de>)
+	id 1RC33p-0002kV-Kw; Fri, 07 Oct 2011 01:33:29 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	D99AB72833FB; Fri,  7 Oct 2011 07:33:07 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id aTI+kTGC1Par; Fri,  7 Oct 2011 07:32:47 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 7384E72833FC; Fri,  7 Oct 2011 07:32:47 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Fri,  7 Oct 2011 07:32:47 +0200
+Message-Id: <1317965567-6781-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] block/qcow: Fix use of free() instead of
+	g_free()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,44 +44,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Oct 2011 11:02:35 -0000
+X-List-Received-Date: Fri, 07 Oct 2011 05:33:34 -0000
 
-Preprocessor directives cannot be used in STEXI/ETEXI sections since
-they are not passed through the preprocessor.  The spicevmc chardev
-option help currently uses #if, which is included verbatim in the man
-page output.
+cppcheck reported this error:
 
-Fix this by simply stating that spicevmc chardevs are available only in
-builds with spice support.
+qemu/block/qcow.c:599: error: Mismatching allocation and deallocation: cluster_data
 
-Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- qemu-options.hx |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ block/qcow.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index dfbabd0..d4fe990 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1673,15 +1673,15 @@ Connect to a local parallel port.
- @option{path} specifies the path to the parallel port device. @option{path} is
- required.
+diff --git a/block/qcow.c b/block/qcow.c
+index c8bfecc..eba5a04 100644
+--- a/block/qcow.c
++++ b/block/qcow.c
+@@ -596,7 +596,7 @@ static int qcow_co_writev(BlockDriverState *bs, int64_t sector_num,
+     if (qiov->niov > 1) {
+         qemu_vfree(orig_buf);
+     }
+-    free(cluster_data);
++    g_free(cluster_data);
  
--#if defined(CONFIG_SPICE)
- @item -chardev spicevmc ,id=@var{id} ,debug=@var{debug}, name=@var{name}
- 
-+@option{spicevmc} is only available when spice support is built in.
-+
- @option{debug} debug level for spicevmc
- 
- @option{name} name of spice channel to connect to
- 
- Connect to a spice virtual machine channel, such as vdiport.
--#endif
- 
- @end table
- ETEXI
+     return ret;
+ }
 -- 
-1.7.6.3
+1.7.2.5
 
 
