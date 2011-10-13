@@ -1,37 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RDgND-0005ev-1H
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Oct 2011 13:44:15 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:36331)
+	id 1REBg7-0000hx-At
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2011 23:09:51 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:51073)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RDgNA-0005Uu-Gp
-	for qemu-trivial@nongnu.org; Tue, 11 Oct 2011 13:44:13 -0400
+	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1REBg4-0000Xs-Do
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2011 23:09:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RDgN9-0003k7-My
-	for qemu-trivial@nongnu.org; Tue, 11 Oct 2011 13:44:12 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:37037)
+	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1REBg3-0000Zf-9n
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2011 23:09:48 -0400
+Received: from e28smtp03.in.ibm.com ([122.248.162.3]:45508)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1RDgN7-0003gH-OS; Tue, 11 Oct 2011 13:44:09 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	065AD72834E1; Tue, 11 Oct 2011 19:43:48 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id UPbrqksMCIrM; Tue, 11 Oct 2011 19:43:27 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 9FF6372834E2; Tue, 11 Oct 2011 19:43:27 +0200 (CEST)
-From: sw@weilnetz.de
-To: qemu-devel@nongnu.org
-Date: Tue, 11 Oct 2011 19:43:15 +0200
-Message-Id: <1318354995-20905-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] tcg: Fix spelling in comment (varables ->
-	variables)
+	(envelope-from <wdongxu@linux.vnet.ibm.com>)
+	id 1REBg0-0000Z3-OZ; Wed, 12 Oct 2011 23:09:45 -0400
+Received: from d28relay01.in.ibm.com (d28relay01.in.ibm.com [9.184.220.58])
+	by e28smtp03.in.ibm.com (8.14.4/8.13.1) with ESMTP id p9D39boN010006;
+	Thu, 13 Oct 2011 08:39:37 +0530
+Received: from d28av05.in.ibm.com (d28av05.in.ibm.com [9.184.220.67])
+	by d28relay01.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	p9D39ab03227760; Thu, 13 Oct 2011 08:39:37 +0530
+Received: from d28av05.in.ibm.com (loopback [127.0.0.1])
+	by d28av05.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	p9D39a98021669; Thu, 13 Oct 2011 14:09:36 +1100
+Received: from [9.115.124.195] ([9.115.124.195])
+	by d28av05.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	p9D39Zwj021014; Thu, 13 Oct 2011 14:09:36 +1100
+Message-ID: <4E965650.90807@linux.vnet.ibm.com>
+Date: Thu, 13 Oct 2011 11:09:04 +0800
+From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:7.0) Gecko/20110822 Thunderbird/7.0
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>
+References: <1317965926-1696-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1317965926-1696-1-git-send-email-sw@weilnetz.de>
+Content-Type: text/plain; charset=GB2312
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by e28smtp03.in.ibm.com id
+	p9D39boN010006
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 122.248.162.3
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-char: Fix use of
+ free() instead of g_free()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,29 +54,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Oct 2011 17:44:13 -0000
+X-List-Received-Date: Thu, 13 Oct 2011 03:09:49 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- tcg/tcg.h |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
-
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index de8a1d5..015f88a 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -175,7 +175,7 @@ typedef enum TCGType {
- 
- typedef tcg_target_ulong TCGArg;
- 
--/* Define a type and accessor macros for varables.  Using a struct is
-+/* Define a type and accessor macros for variables.  Using a struct is
-    nice because it gives some level of type safely.  Ideally the compiler
-    be able to see through all this.  However in practice this is not true,
-    expecially on targets with braindamaged ABIs (e.g. i386).
--- 
-1.7.2.5
-
+=D3=DA 10/07/2011 01:38 PM, Stefan Weil =D0=B4=B5=C0:
+> cppcheck reported these errors:
+>=20
+> qemu-char.c:1667: error: Mismatching allocation and deallocation: s
+> qemu-char.c:1668: error: Mismatching allocation and deallocation: chr
+> qemu-char.c:1769: error: Mismatching allocation and deallocation: s
+> qemu-char.c:1770: error: Mismatching allocation and deallocation: chr
+>=20
+> Signed-off-by: Stefan Weil<sw@weilnetz.de>
+> ---
+>   qemu-char.c |    8 ++++----
+>   1 files changed, 4 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/qemu-char.c b/qemu-char.c
+> index 09d2309..e1b2b87 100644
+> --- a/qemu-char.c
+> +++ b/qemu-char.c
+> @@ -1664,8 +1664,8 @@ static int qemu_chr_open_win(QemuOpts *opts, Char=
+DriverState **_chr)
+>       chr->chr_close =3D win_chr_close;
+>=20
+>       if (win_chr_init(chr, filename)<  0) {
+> -        free(s);
+> -        free(chr);
+> +        g_free(s);
+> +        g_free(chr);
+>           return -EIO;
+>       }
+>       qemu_chr_generic_open(chr);
+> @@ -1766,8 +1766,8 @@ static int qemu_chr_open_win_pipe(QemuOpts *opts,=
+ CharDriverState **_chr)
+>       chr->chr_close =3D win_chr_close;
+>=20
+>       if (win_chr_pipe_init(chr, filename)<  0) {
+> -        free(s);
+> -        free(chr);
+> +        g_free(s);
+> +        g_free(chr);
+>           return -EIO;
+>       }
+>       qemu_chr_generic_open(chr);
+Tested-by: Dongxu Wang <wdongxu@linux.vnet.ibm.com>
 
