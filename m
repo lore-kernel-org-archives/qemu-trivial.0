@@ -1,48 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1REBg7-0000hx-At
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2011 23:09:51 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:51073)
+	id 1REe0d-0001TF-DC
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Oct 2011 05:24:55 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:36923)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1REBg4-0000Xs-Do
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2011 23:09:49 -0400
+	(envelope-from <afaerber@suse.de>) id 1REe0Y-00018A-49
+	for qemu-trivial@nongnu.org; Fri, 14 Oct 2011 05:24:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1REBg3-0000Zf-9n
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2011 23:09:48 -0400
-Received: from e28smtp03.in.ibm.com ([122.248.162.3]:45508)
+	(envelope-from <afaerber@suse.de>) id 1REe0T-00011N-KP
+	for qemu-trivial@nongnu.org; Fri, 14 Oct 2011 05:24:50 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:49884 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wdongxu@linux.vnet.ibm.com>)
-	id 1REBg0-0000Z3-OZ; Wed, 12 Oct 2011 23:09:45 -0400
-Received: from d28relay01.in.ibm.com (d28relay01.in.ibm.com [9.184.220.58])
-	by e28smtp03.in.ibm.com (8.14.4/8.13.1) with ESMTP id p9D39boN010006;
-	Thu, 13 Oct 2011 08:39:37 +0530
-Received: from d28av05.in.ibm.com (d28av05.in.ibm.com [9.184.220.67])
-	by d28relay01.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	p9D39ab03227760; Thu, 13 Oct 2011 08:39:37 +0530
-Received: from d28av05.in.ibm.com (loopback [127.0.0.1])
-	by d28av05.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	p9D39a98021669; Thu, 13 Oct 2011 14:09:36 +1100
-Received: from [9.115.124.195] ([9.115.124.195])
-	by d28av05.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	p9D39Zwj021014; Thu, 13 Oct 2011 14:09:36 +1100
-Message-ID: <4E965650.90807@linux.vnet.ibm.com>
-Date: Thu, 13 Oct 2011 11:09:04 +0800
-From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:7.0) Gecko/20110822 Thunderbird/7.0
+	(envelope-from <afaerber@suse.de>)
+	id 1REe0L-0000tE-Mg; Fri, 14 Oct 2011 05:24:37 -0400
+Received: from [10.10.102.108] (charybdis-ext.suse.de [195.135.221.2])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 9F69B8B2F9;
+	Fri, 14 Oct 2011 11:24:35 +0200 (CEST)
+Message-ID: <4E97FFD3.5050205@suse.de>
+Date: Fri, 14 Oct 2011 11:24:35 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:7.0) Gecko/20110922 Thunderbird/7.0
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1317965926-1696-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1317965926-1696-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=GB2312
+To: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
+References: <1318578066-18379-1-git-send-email-wdongxu@linux.vnet.ibm.com>
+In-Reply-To: <1318578066-18379-1-git-send-email-wdongxu@linux.vnet.ibm.com>
+Content-Type: text/plain; charset=ISO-8859-15
 Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by e28smtp03.in.ibm.com id
-	p9D39boN010006
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 122.248.162.3
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-char: Fix use of
- free() instead of g_free()
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] correct spelling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,48 +44,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Oct 2011 03:09:49 -0000
+X-List-Received-Date: Fri, 14 Oct 2011 09:24:54 -0000
 
-=D3=DA 10/07/2011 01:38 PM, Stefan Weil =D0=B4=B5=C0:
-> cppcheck reported these errors:
->=20
-> qemu-char.c:1667: error: Mismatching allocation and deallocation: s
-> qemu-char.c:1668: error: Mismatching allocation and deallocation: chr
-> qemu-char.c:1769: error: Mismatching allocation and deallocation: s
-> qemu-char.c:1770: error: Mismatching allocation and deallocation: chr
->=20
-> Signed-off-by: Stefan Weil<sw@weilnetz.de>
+[cc'ing qemu-trivial]
+
+A one-line summary here and a topic like sheepdog: in the subject
+would've been nice but given it's just a typo fix... :)
+
+Am 14.10.2011 09:41, schrieb Dong Xu Wang:
+> Signed-off-by: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
 > ---
->   qemu-char.c |    8 ++++----
->   1 files changed, 4 insertions(+), 4 deletions(-)
+>  block/sheepdog.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 >=20
-> diff --git a/qemu-char.c b/qemu-char.c
-> index 09d2309..e1b2b87 100644
-> --- a/qemu-char.c
-> +++ b/qemu-char.c
-> @@ -1664,8 +1664,8 @@ static int qemu_chr_open_win(QemuOpts *opts, Char=
-DriverState **_chr)
->       chr->chr_close =3D win_chr_close;
->=20
->       if (win_chr_init(chr, filename)<  0) {
-> -        free(s);
-> -        free(chr);
-> +        g_free(s);
-> +        g_free(chr);
->           return -EIO;
->       }
->       qemu_chr_generic_open(chr);
-> @@ -1766,8 +1766,8 @@ static int qemu_chr_open_win_pipe(QemuOpts *opts,=
- CharDriverState **_chr)
->       chr->chr_close =3D win_chr_close;
->=20
->       if (win_chr_pipe_init(chr, filename)<  0) {
-> -        free(s);
-> -        free(chr);
-> +        g_free(s);
-> +        g_free(chr);
->           return -EIO;
->       }
->       qemu_chr_generic_open(chr);
-Tested-by: Dongxu Wang <wdongxu@linux.vnet.ibm.com>
+> diff --git a/block/sheepdog.c b/block/sheepdog.c
+> index c1f6e07..ae857e2 100644
+> --- a/block/sheepdog.c
+> +++ b/block/sheepdog.c
+> @@ -66,7 +66,7 @@
+>   * 20 - 31 (12 bits): reserved data object space
+>   * 32 - 55 (24 bits): vdi object space
+>   * 56 - 59 ( 4 bits): reserved vdi object space
+> - * 60 - 63 ( 4 bits): object type indentifier space
+> + * 60 - 63 ( 4 bits): object type identifier space
+>   */
+> =20
+>  #define VDI_SPACE_SHIFT   32
+
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746, AG N=FCrnb=
+erg
 
