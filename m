@@ -1,36 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RFloq-0004fv-LG
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Oct 2011 07:57:24 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:40543)
+	id 1RFskz-0005Gq-9H
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Oct 2011 15:21:53 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:55671)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1RFloo-0004ZX-TO
-	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 07:57:23 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1RFskx-0005C7-Dk
+	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 15:21:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1RFloj-0001EA-6v
-	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 07:57:22 -0400
-Received: from mail-qw0-f45.google.com ([209.85.216.45]:47892)
+	(envelope-from <stefan@weilnetz.de>) id 1RFskw-0007Sm-Kc
+	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 15:21:51 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:60112)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>)
-	id 1RFloc-0001DO-PD; Mon, 17 Oct 2011 07:57:10 -0400
-Received: by qadb10 with SMTP id b10so2567433qad.4
-	for <multiple recipients>; Mon, 17 Oct 2011 04:57:10 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.229.72.84 with SMTP id l20mr4050855qcj.60.1318852630013; Mon,
-	17 Oct 2011 04:57:10 -0700 (PDT)
-Received: by 10.229.92.10 with HTTP; Mon, 17 Oct 2011 04:57:09 -0700 (PDT)
-In-Reply-To: <m3sjmrltw3.fsf@trasno.mitica>
-References: <CAKUHwZpm+WW2vdM1WjHV+rmYe8mbsP8Ydtnub7UxxxzfMD9m8A@mail.gmail.com>
-	<m3sjmrltw3.fsf@trasno.mitica>
-Date: Mon, 17 Oct 2011 12:57:09 +0100
-Message-ID: <CAFEAcA_cDYx-JNOHrMg2yxb++AEozGAZPig7xE85bCw7ko7Mzw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: quintela@redhat.com
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.45
-Cc: qemu-trivial@nongnu.org, Dmitry Koshelev <karaghiozis@gmail.com>,
-	qemu-devel@nongnu.org, paul@codesourcery.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] arm cpu state loading fix
+	(envelope-from <stefan@weilnetz.de>)
+	id 1RFskr-0007RY-If; Mon, 17 Oct 2011 15:21:45 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	C3A5E72833E9; Mon, 17 Oct 2011 21:21:23 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id dKCgsuQdYNqI; Mon, 17 Oct 2011 21:21:03 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 3765672834F6; Mon, 17 Oct 2011 21:21:03 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Mon, 17 Oct 2011 21:20:59 +0200
+Message-Id: <1318879259-3052-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH] hw/9pfs: Fix missing parentheses
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,25 +43,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Oct 2011 11:57:23 -0000
+X-List-Received-Date: Mon, 17 Oct 2011 19:21:52 -0000
 
-On 17 October 2011 12:50, Juan Quintela <quintela@redhat.com> wrote:
-> Dmitry Koshelev <karaghiozis@gmail.com> wrote:
->> Floating registers loading fix.
->>
->> Signed-off-by: Dmitry Koshelev <karaghiozis@gmail.com>
->
-> Reviewed-by: Juan Quintela <quintela@redhat.com>
->
-> /me really wonders if arm migration has ever worked :-(
+cppcheck report:
+hw/9pfs/virtio-9p.c:2385:
+ style: Boolean result is used in bitwise operation.
+ Clarify expression with parentheses
+hw/9pfs/virtio-9p.c:2531:
+ style: Boolean result is used in bitwise operation.
+ Clarify expression with parentheses
 
-I've used save/restore successfully on versatilepb models
-before, but only for debug, not for serious work (which
-would be why I didn't hit this bug -- the test case I was
-working on was probably integer only code); and in order
-to get that to work I had to fix a lot of devices. There
-are still some ARM devboard device models which are missing
-save/restore support.
+Cc: Aneesh Kumar K.V <aneesh.kumar@linux.vnet.ibm.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/9pfs/virtio-9p.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
 
--- PMM
+diff --git a/hw/9pfs/virtio-9p.c b/hw/9pfs/virtio-9p.c
+index c01c31a..df0b22a 100644
+--- a/hw/9pfs/virtio-9p.c
++++ b/hw/9pfs/virtio-9p.c
+@@ -2382,7 +2382,7 @@ static void v9fs_remove(void *opaque)
+         goto out_nofid;
+     }
+     /* if fs driver is not path based, return EOPNOTSUPP */
+-    if (!pdu->s->ctx.flags & PATHNAME_FSCONTEXT) {
++    if (!(pdu->s->ctx.flags & PATHNAME_FSCONTEXT)) {
+         err = -EOPNOTSUPP;
+         goto out_err;
+     }
+@@ -2528,7 +2528,7 @@ static void v9fs_rename(void *opaque)
+     }
+     BUG_ON(fidp->fid_type != P9_FID_NONE);
+     /* if fs driver is not path based, return EOPNOTSUPP */
+-    if (!pdu->s->ctx.flags & PATHNAME_FSCONTEXT) {
++    if (!(pdu->s->ctx.flags & PATHNAME_FSCONTEXT)) {
+         err = -EOPNOTSUPP;
+         goto out;
+     }
+-- 
+1.7.0.4
+
 
