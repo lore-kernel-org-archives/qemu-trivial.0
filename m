@@ -1,38 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RFkpE-0001EY-6E
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Oct 2011 06:53:44 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:35269)
+	id 1RFkqG-00024g-Eb
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Oct 2011 06:54:48 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:35356)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <karaghiozis@gmail.com>) id 1RFkpB-000147-If
-	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 06:53:42 -0400
+	(envelope-from <afaerber@suse.de>) id 1RFkqE-0001vl-0I
+	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 06:54:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <karaghiozis@gmail.com>) id 1RFkp7-0004zv-CJ
-	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 06:53:41 -0400
-Received: from mail-qw0-f45.google.com ([209.85.216.45]:34345)
+	(envelope-from <afaerber@suse.de>) id 1RFkqC-00053e-Rt
+	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 06:54:45 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:38323 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <karaghiozis@gmail.com>)
-	id 1RFkoz-0004zP-85; Mon, 17 Oct 2011 06:53:29 -0400
-Received: by qadb10 with SMTP id b10so2513231qad.4
-	for <multiple recipients>; Mon, 17 Oct 2011 03:53:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:date:message-id:subject:from:to:cc:content-type;
-	bh=/cqhOkMLVhVaWn5fIt53xR2UWG/s/bzbF/kg/b3pxng=;
-	b=uaja8MPIpfcRnCWJLgh5lMRDhcyc/HaqMMztNwfaEM/YeBAGzeeeCUMohAzO37oUHl
-	9kLupbrTZEwqXrPJwXwdzWBg923S7MpoeXFpXrrhruNi6nWh7VPCmzmHEkadRVC/QoQ3
-	u4H4RLkWLjS6fxxPaH6Cedw3EUsa+1LK/s7ls=
+	(envelope-from <afaerber@suse.de>)
+	id 1RFkq5-000536-3J; Mon, 17 Oct 2011 06:54:37 -0400
+Received: from [10.10.102.108] (charybdis-ext.suse.de [195.135.221.2])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 7937B8A95F;
+	Mon, 17 Oct 2011 12:54:35 +0200 (CEST)
+Message-ID: <4E9C096B.9060405@suse.de>
+Date: Mon, 17 Oct 2011 12:54:35 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:7.0) Gecko/20110922 Thunderbird/7.0
 MIME-Version: 1.0
-Received: by 10.229.10.228 with SMTP id q36mr1916784qcq.130.1318848808334;
-	Mon, 17 Oct 2011 03:53:28 -0700 (PDT)
-Received: by 10.229.42.213 with HTTP; Mon, 17 Oct 2011 03:53:28 -0700 (PDT)
-Date: Mon, 17 Oct 2011 14:53:28 +0400
-Message-ID: <CAKUHwZpm+WW2vdM1WjHV+rmYe8mbsP8Ydtnub7UxxxzfMD9m8A@mail.gmail.com>
-From: Dmitry Koshelev <karaghiozis@gmail.com>
-To: qemu-devel@nongnu.org, paul@codesourcery.com
+To: Dmitry Koshelev <karaghiozis@gmail.com>
+References: <CAKUHwZqQa8BQGWEKgysuJmP2mHv-nS6k9+gNb6w3TsSNWSc_GQ@mail.gmail.com>
+In-Reply-To: <CAKUHwZqQa8BQGWEKgysuJmP2mHv-nS6k9+gNb6w3TsSNWSc_GQ@mail.gmail.com>
 Content-Type: text/plain; charset=ISO-8859-1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.45
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [Qemu-devel] [PATCH] arm cpu state loading fix
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org, paul@codesourcery.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] arm gic saving/loading fix
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,26 +45,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Oct 2011 10:53:42 -0000
+X-List-Received-Date: Mon, 17 Oct 2011 10:54:47 -0000
 
-Floating registers loading fix.
+Am 17.10.2011 12:48, schrieb Dmitry Koshelev:
+> irq_target field saving/loading is in the wrong loop
+>=20
+> Signed-off-by: Dmitry Koshelev <karagiozis@gmail.com>
 
-Signed-off-by: Dmitry Koshelev <karaghiozis@gmail.com>
----
- target-arm/machine.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
-diff --git a/target-arm/machine.c b/target-arm/machine.c
-index 3925d3a..73d82c9 100644
---- a/target-arm/machine.c
-+++ b/target-arm/machine.c
-@@ -175,7 +175,7 @@ int cpu_load(QEMUFile *f, void *opaque, int version_id)
-         env->vfp.vec_stride = qemu_get_be32(f);
+Andreas
 
-         if (arm_feature(env, ARM_FEATURE_VFP3)) {
--            for (i = 0;  i < 16; i++) {
-+            for (i = 16;  i < 32; i++) {
-                 CPU_DoubleU u;
-                 u.l.upper = qemu_get_be32(f);
-                 u.l.lower = qemu_get_be32(f);
+> ---
+>  hw/arm_gic.c |   12 ++++++------
+>  1 files changed, 6 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/hw/arm_gic.c b/hw/arm_gic.c
+> index 8286a28..ba05131 100644
+> --- a/hw/arm_gic.c
+> +++ b/hw/arm_gic.c
+> @@ -662,9 +662,6 @@ static void gic_save(QEMUFile *f, void *opaque)
+>      qemu_put_be32(f, s->enabled);
+>      for (i =3D 0; i < NUM_CPU(s); i++) {
+>          qemu_put_be32(f, s->cpu_enabled[i]);
+> -#ifndef NVIC
+> -        qemu_put_be32(f, s->irq_target[i]);
+> -#endif
+>          for (j =3D 0; j < 32; j++)
+>              qemu_put_be32(f, s->priority1[j][i]);
+>          for (j =3D 0; j < GIC_NIRQ; j++)
+> @@ -678,6 +675,9 @@ static void gic_save(QEMUFile *f, void *opaque)
+>          qemu_put_be32(f, s->priority2[i]);
+>      }
+>      for (i =3D 0; i < GIC_NIRQ; i++) {
+> +#ifndef NVIC
+> +        qemu_put_be32(f, s->irq_target[i]);
+> +#endif
+>          qemu_put_byte(f, s->irq_state[i].enabled);
+>          qemu_put_byte(f, s->irq_state[i].pending);
+>          qemu_put_byte(f, s->irq_state[i].active);
+> @@ -699,9 +699,6 @@ static int gic_load(QEMUFile *f, void *opaque, int
+> version_id)
+>      s->enabled =3D qemu_get_be32(f);
+>      for (i =3D 0; i < NUM_CPU(s); i++) {
+>          s->cpu_enabled[i] =3D qemu_get_be32(f);
+> -#ifndef NVIC
+> -        s->irq_target[i] =3D qemu_get_be32(f);
+> -#endif
+>          for (j =3D 0; j < 32; j++)
+>              s->priority1[j][i] =3D qemu_get_be32(f);
+>          for (j =3D 0; j < GIC_NIRQ; j++)
+> @@ -715,6 +712,9 @@ static int gic_load(QEMUFile *f, void *opaque, int
+> version_id)
+>          s->priority2[i] =3D qemu_get_be32(f);
+>      }
+>      for (i =3D 0; i < GIC_NIRQ; i++) {
+> +#ifndef NVIC
+> +        s->irq_target[i] =3D qemu_get_be32(f);
+> +#endif
+>          s->irq_state[i].enabled =3D qemu_get_byte(f);
+>          s->irq_state[i].pending =3D qemu_get_byte(f);
+>          s->irq_state[i].active =3D qemu_get_byte(f);
+
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746, AG N=FCrnb=
+erg
 
