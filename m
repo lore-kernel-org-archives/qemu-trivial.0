@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RFlPu-0000dQ-Cv
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Oct 2011 07:31:38 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:54957)
+	id 1RFliA-0007Yf-SE
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Oct 2011 07:50:30 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:50338)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RFlPs-0000Wl-B6
-	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 07:31:36 -0400
+	(envelope-from <quintela@redhat.com>) id 1RFli4-0007Fj-NW
+	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 07:50:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RFlPr-0004df-Bb
-	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 07:31:36 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:40757 helo=mx2.suse.de)
+	(envelope-from <quintela@redhat.com>) id 1RFli3-00004u-I5
+	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 07:50:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:1511)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1RFlPf-0004Y8-Rl; Mon, 17 Oct 2011 07:31:23 -0400
-Received: from [10.10.102.108] (charybdis-ext.suse.de [195.135.221.2])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id C37B68AD27;
-	Mon, 17 Oct 2011 13:31:22 +0200 (CEST)
-Message-ID: <4E9C120A.7040508@suse.de>
-Date: Mon, 17 Oct 2011 13:31:22 +0200
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:7.0) Gecko/20110922 Thunderbird/7.0
+	(envelope-from <quintela@redhat.com>)
+	id 1RFlhx-0008Vj-0Q; Mon, 17 Oct 2011 07:50:17 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p9HBoBZw023760
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 17 Oct 2011 07:50:12 -0400
+Received: from localhost (ovpn-116-17.ams2.redhat.com [10.36.116.17])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id p9HBoAkZ001561; Mon, 17 Oct 2011 07:50:10 -0400
+From: Juan Quintela <quintela@redhat.com>
+To: Dmitry Koshelev <karaghiozis@gmail.com>
+In-Reply-To: <CAKUHwZpm+WW2vdM1WjHV+rmYe8mbsP8Ydtnub7UxxxzfMD9m8A@mail.gmail.com>
+	(Dmitry Koshelev's message of "Mon, 17 Oct 2011 14:53:28 +0400")
+References: <CAKUHwZpm+WW2vdM1WjHV+rmYe8mbsP8Ydtnub7UxxxzfMD9m8A@mail.gmail.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.2 (gnu/linux)
+Date: Mon, 17 Oct 2011 13:50:04 +0200
+Message-ID: <m3sjmrltw3.fsf@trasno.mitica>
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <CAKUHwZqQa8BQGWEKgysuJmP2mHv-nS6k9+gNb6w3TsSNWSc_GQ@mail.gmail.com>
-	<4E9C096B.9060405@suse.de>
-	<CAFEAcA_6gLx3sD5r0cperWBbjYDTgmn5V-7dkUj-8g+PFEZP5Q@mail.gmail.com>
-In-Reply-To: <CAFEAcA_6gLx3sD5r0cperWBbjYDTgmn5V-7dkUj-8g+PFEZP5Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Dmitry Koshelev <karaghiozis@gmail.com>,
-	qemu-devel@nongnu.org, paul@codesourcery.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] arm gic saving/loading fix
+Content-Type: text/plain; charset=us-ascii
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, paul@codesourcery.com
+Subject: Re: [Qemu-trivial] [PATCH] arm cpu state loading fix
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
+Reply-To: quintela@redhat.com
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -47,27 +47,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Oct 2011 11:31:37 -0000
+X-List-Received-Date: Mon, 17 Oct 2011 11:50:28 -0000
 
-Am 17.10.2011 13:17, schrieb Peter Maydell:
-> On 17 October 2011 11:54, Andreas F=C3=A4rber <afaerber@suse.de> wrote:
->> Am 17.10.2011 12:48, schrieb Dmitry Koshelev:
->>> irq_target field saving/loading is in the wrong loop
->>>
->>> Signed-off-by: Dmitry Koshelev <karagiozis@gmail.com>
->>
->> Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
->=20
-> Doesn't it need a vmstate version bump too?
+Dmitry Koshelev <karaghiozis@gmail.com> wrote:
+> Floating registers loading fix.
+>
+> Signed-off-by: Dmitry Koshelev <karaghiozis@gmail.com>
 
-Sorry, you're right. Still reading my way into savevm code. arm_gic fix
-is correct but due to GIC_NIRQ vs. NUM_CPU(), no reordering of the code
-can really avoid a version bump here.
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746, AG N=C3=
-=BCrnberg
+/me really wonders if arm migration has ever worked :-(
 
