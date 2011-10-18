@@ -1,42 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RGDK7-0008Cu-QX
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Oct 2011 13:19:31 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:46643)
+	id 1RGDVO-0002Lq-8s
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Oct 2011 13:31:10 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:34230)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pavel.borzenkov@gmail.com>) id 1RGDK4-0007yD-18
-	for qemu-trivial@nongnu.org; Tue, 18 Oct 2011 13:19:28 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1RGDVL-0002DR-Q3
+	for qemu-trivial@nongnu.org; Tue, 18 Oct 2011 13:31:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pavel.borzenkov@gmail.com>) id 1RGDK2-0007k6-FL
-	for qemu-trivial@nongnu.org; Tue, 18 Oct 2011 13:19:27 -0400
-Received: from mail-bw0-f45.google.com ([209.85.214.45]:59201)
+	(envelope-from <peter.maydell@linaro.org>) id 1RGDVF-0001jr-Vx
+	for qemu-trivial@nongnu.org; Tue, 18 Oct 2011 13:31:07 -0400
+Received: from mail-qw0-f45.google.com ([209.85.216.45]:33295)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pavel.borzenkov@gmail.com>)
-	id 1RGDJw-0007iS-9W; Tue, 18 Oct 2011 13:19:20 -0400
-Received: by bkat2 with SMTP id t2so1177121bka.4
-	for <multiple recipients>; Tue, 18 Oct 2011 10:19:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=from:to:cc:subject:date:message-id:x-mailer;
-	bh=tOfTi7pP5bvfwxb9XiSk3n2nx3KIzuryKpZTPmUhW1w=;
-	b=fs2rheh+clJMYVotBbjAnSC67AK5C6kzJ3CbdvfDziycbu+GI8GkZ3NfLNEZPpzXlR
-	QKPVGruLg53m4aQ7NTYBLXWYVbk4R5HNqRYW5g+9g0WYlJRuak6rrF6ciZOV0VvPYFw6
-	HbXVRFuVpHvHYKrNf8A3NUKPTKq3Qi8WLmuSk=
-Received: by 10.204.157.131 with SMTP id b3mr2492985bkx.41.1318958359158;
-	Tue, 18 Oct 2011 10:19:19 -0700 (PDT)
-Received: from localhost.localdomain (ppp83-237-3-205.pppoe.mtu-net.ru.
-	[83.237.3.205])
-	by mx.google.com with ESMTPS id z9sm2930665bkn.7.2011.10.18.10.19.16
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 18 Oct 2011 10:19:18 -0700 (PDT)
-From: Pavel Borzenkov <pavel.borzenkov@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 18 Oct 2011 21:19:03 +0400
-Message-Id: <1318958343-14167-1-git-send-email-pavel.borzenkov@gmail.com>
-X-Mailer: git-send-email 1.7.7
+	(envelope-from <peter.maydell@linaro.org>)
+	id 1RGDVA-0001jG-3g; Tue, 18 Oct 2011 13:30:56 -0400
+Received: by qadb10 with SMTP id b10so763618qad.4
+	for <multiple recipients>; Tue, 18 Oct 2011 10:30:55 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.229.65.18 with SMTP id g18mr751022qci.22.1318959054753; Tue,
+	18 Oct 2011 10:30:54 -0700 (PDT)
+Received: by 10.229.217.205 with HTTP; Tue, 18 Oct 2011 10:30:54 -0700 (PDT)
+In-Reply-To: <1318958208-13965-1-git-send-email-pavel.borzenkov@gmail.com>
+References: <1318958208-13965-1-git-send-email-pavel.borzenkov@gmail.com>
+Date: Tue, 18 Oct 2011 18:30:54 +0100
+Message-ID: <CAFEAcA_SBfk9Rhthr6_sX-d3H1bkbUexmynucZZSmCVPVJgwpw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Pavel Borzenkov <pavel.borzenkov@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] vmdk: vmdk_read_cid returns garbage if
-	p_name is NULL
+X-Received-From: 209.85.216.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fw_cfg: check return value
+	of fread()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,29 +42,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Oct 2011 17:19:29 -0000
+X-List-Received-Date: Tue, 18 Oct 2011 17:31:08 -0000
 
-Spotted by Clang Analyzer
+On 18 October 2011 18:16, Pavel Borzenkov <pavel.borzenkov@gmail.com> wrote=
+:
+> Spotted by Clang Analyzer
+>
+> Signed-off-by: Pavel Borzenkov <pavel.borzenkov@gmail.com>
+> ---
+> =C2=A0hw/fw_cfg.c | =C2=A0 =C2=A07 +++++++
+> =C2=A01 files changed, 7 insertions(+), 0 deletions(-)
+>
+> diff --git a/hw/fw_cfg.c b/hw/fw_cfg.c
+> index 8df265c..1125e7d 100644
+> --- a/hw/fw_cfg.c
+> +++ b/hw/fw_cfg.c
+> @@ -113,6 +113,13 @@ static FILE *probe_splashfile(char *filename, int *f=
+ile_sizep, int *file_typep)
+> =C2=A0 =C2=A0 if (file_type =3D=3D BMP_FILE) {
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 fseek(fp, 28, SEEK_SET);
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 fop_ret =3D fread(buf, 1, 2, fp);
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0if (fop_ret !=3D 2) {
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_report("Could not read b=
+pp value from '%s': %s",
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 filename, strerror(errno));
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0fclose(fp);
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0fp =3D NULL;
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return fp;
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0}
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 bmp_bpp =3D (buf[0] + (buf[1] << 8)) & 0xffff=
+;
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (bmp_bpp !=3D 24) {
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report("only 24bpp bmp fi=
+le is supported.");
 
-Signed-off-by: Pavel Borzenkov <pavel.borzenkov@gmail.com>
----
- block/vmdk.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Yuck, this code again. We should just replace it with
+g_file_get_contents() and looking at the resulting buffer.
+That would be 10% of the code and much less bug-ridden.
 
-diff --git a/block/vmdk.c b/block/vmdk.c
-index 3969131..a75dcc2 100644
---- a/block/vmdk.c
-+++ b/block/vmdk.c
-@@ -207,7 +207,7 @@ static void vmdk_free_last_extent(BlockDriverState *bs)
- static uint32_t vmdk_read_cid(BlockDriverState *bs, int parent)
- {
-     char desc[DESC_SIZE];
--    uint32_t cid;
-+    uint32_t cid = 0xffffffff;
-     const char *p_name, *cid_str;
-     size_t cid_str_size;
-     BDRVVmdkState *s = bs->opaque;
--- 
-1.7.0.4
+FWIW, strictly speaking there isn't a need to check the result
+of the fread() because if we don't read the data then buf[] will
+still have the BMP_FILE signature in it and the !=3D 24 check will
+fail.
 
+Not checking the return code from that fseek(), on the other hand...
+
+-- PMM
 
