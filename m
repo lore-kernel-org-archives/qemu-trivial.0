@@ -1,44 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RG1wv-00044N-VU
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Oct 2011 01:10:49 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:34501)
+	id 1RG5iM-0001o7-2j
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Oct 2011 05:12:02 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:45222)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1RG1wt-00044E-74
-	for qemu-trivial@nongnu.org; Tue, 18 Oct 2011 01:10:48 -0400
+	(envelope-from <afaerber@suse.de>) id 1RG5iI-0001ck-NF
+	for qemu-trivial@nongnu.org; Tue, 18 Oct 2011 05:12:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1RG1wr-0007El-OQ
-	for qemu-trivial@nongnu.org; Tue, 18 Oct 2011 01:10:47 -0400
-Received: from e9.ny.us.ibm.com ([32.97.182.139]:41093)
+	(envelope-from <afaerber@suse.de>) id 1RG5iH-0003Di-F2
+	for qemu-trivial@nongnu.org; Tue, 18 Oct 2011 05:11:58 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:55757 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>)
-	id 1RG1wr-0007Ee-Ih; Tue, 18 Oct 2011 01:10:45 -0400
-Received: from d01relay02.pok.ibm.com (d01relay02.pok.ibm.com [9.56.227.234])
-	by e9.ny.us.ibm.com (8.14.4/8.13.1) with ESMTP id p9I4YNpp022038;
-	Tue, 18 Oct 2011 00:34:23 -0400
-Received: from d01av04.pok.ibm.com (d01av04.pok.ibm.com [9.56.224.64])
-	by d01relay02.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	p9I5Aike301942; Tue, 18 Oct 2011 01:10:44 -0400
-Received: from d01av04.pok.ibm.com (loopback [127.0.0.1])
-	by d01av04.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	p9I5Ai9J015623; Tue, 18 Oct 2011 01:10:44 -0400
-Received: from skywalker.linux.vnet.ibm.com ([9.124.35.48])
-	by d01av04.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	p9I5Aebd015422; Tue, 18 Oct 2011 01:10:41 -0400
-From: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
-To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-In-Reply-To: <1318879259-3052-1-git-send-email-sw@weilnetz.de>
-References: <1318879259-3052-1-git-send-email-sw@weilnetz.de>
-User-Agent: Notmuch/0.9_rc1-42-g76fdca8 (http://notmuchmail.org) Emacs/23.3.1
-	(x86_64-pc-linux-gnu)
-Date: Tue, 18 Oct 2011 10:40:39 +0530
-Message-ID: <87ipnm7uls.fsf@linux.vnet.ibm.com>
+	(envelope-from <afaerber@suse.de>)
+	id 1RG5i9-0003Bu-JR; Tue, 18 Oct 2011 05:11:49 -0400
+Received: from [10.10.102.108] (charybdis-ext.suse.de [195.135.221.2])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 65E9B8E857;
+	Tue, 18 Oct 2011 11:11:48 +0200 (CEST)
+Message-ID: <4E9D42D4.9070901@suse.de>
+Date: Tue, 18 Oct 2011 11:11:48 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:7.0) Gecko/20110922 Thunderbird/7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 32.97.182.139
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: Re: [Qemu-trivial] [PATCH] hw/9pfs: Fix missing parentheses
+To: Juan Pineda <juan@logician.com>
+References: <DE9DD0B1-B0C7-4ECC-889E-2B84EE2F287E@logician.com>
+In-Reply-To: <DE9DD0B1-B0C7-4ECC-889E-2B84EE2F287E@logician.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] Patch for ui/cocoa.m
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,50 +44,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Oct 2011 05:10:48 -0000
+X-List-Received-Date: Tue, 18 Oct 2011 09:12:00 -0000
 
-On Mon, 17 Oct 2011 21:20:59 +0200, Stefan Weil <sw@weilnetz.de> wrote:
-> cppcheck report:
-> hw/9pfs/virtio-9p.c:2385:
->  style: Boolean result is used in bitwise operation.
->  Clarify expression with parentheses
-> hw/9pfs/virtio-9p.c:2531:
->  style: Boolean result is used in bitwise operation.
->  Clarify expression with parentheses
-> 
-> Cc: Aneesh Kumar K.V <aneesh.kumar@linux.vnet.ibm.com>
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  hw/9pfs/virtio-9p.c |    4 ++--
->  1 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/9pfs/virtio-9p.c b/hw/9pfs/virtio-9p.c
-> index c01c31a..df0b22a 100644
-> --- a/hw/9pfs/virtio-9p.c
-> +++ b/hw/9pfs/virtio-9p.c
-> @@ -2382,7 +2382,7 @@ static void v9fs_remove(void *opaque)
->          goto out_nofid;
->      }
->      /* if fs driver is not path based, return EOPNOTSUPP */
-> -    if (!pdu->s->ctx.flags & PATHNAME_FSCONTEXT) {
-> +    if (!(pdu->s->ctx.flags & PATHNAME_FSCONTEXT)) {
->          err = -EOPNOTSUPP;
->          goto out_err;
->      }
-> @@ -2528,7 +2528,7 @@ static void v9fs_rename(void *opaque)
->      }
->      BUG_ON(fidp->fid_type != P9_FID_NONE);
->      /* if fs driver is not path based, return EOPNOTSUPP */
-> -    if (!pdu->s->ctx.flags & PATHNAME_FSCONTEXT) {
-> +    if (!(pdu->s->ctx.flags & PATHNAME_FSCONTEXT)) {
->          err = -EOPNOTSUPP;
->          goto out;
->      }
+Hello Juan,
 
-This is fixed in the new pull request i sent.
+Am 18.10.2011 03:22, schrieb Juan Pineda:
+> This is my first time submitting a patch, so please let me know if I'm =
+not following the correct protocol.
 
-http://article.gmane.org/gmane.comp.emulators.qemu/120990
-http://repo.or.cz/w/qemu/v9fs.git/commitdiff/c98f1d4a8bb6f779313043d2490093451cf52065?hp=7cca27dfde6435a7846d88e8a1fa927d0ab99919
+Please see http://wiki.qemu.org/Contribute/SubmitAPatch
 
--aneesh
+Using the git-send-mail tool assures that the patch format gets right.
+
+Then, this patch despite its small size is not "trivial" so instead of
+qemu-trivial@nongnu.org please cc andreas.faerber@web.de for Cocoa. Thank=
+s.
+
+> Under OSX Lion the boot volume dialog is not closed and it permanently =
+obscures the emulator window since under Lion the dialog cannot be reposi=
+tioned. The fix adds only to add a single line to close the dialog.
+
+I don't have access to v10.7 so please describe the problem in more
+details: What command line do you use? If using the right arguments you
+shouldn't see a window at all. Are you maybe using -drive instead of
+-hda and that is not yet handled correctly?
+
+Apart from this issue, is it working correctly for you?
+
+Regards,
+Andreas
+
+> Signed-off-by: Juan Pineda <juan@logician.com>
+>=20
+> Thanks!
+> -Juan
+>=20
+>=20
+>> git diff ui/cocoa.m
+> diff --git a/ui/cocoa.m b/ui/cocoa.m
+> index d9e4e3d..4b42462 100644
+> --- a/ui/cocoa.m
+> +++ b/ui/cocoa.m
+> @@ -811,6 +811,8 @@ QemuCocoaView *cocoaView;
+> =20
+>          char **argv =3D (char**)malloc( sizeof(char*)*3 );
+> =20
+> +       [sheet close];
+> +
+>          asprintf(&argv[0], "%s", bin);
+>          asprintf(&argv[1], "-hda");
+>          asprintf(&argv[2], "%s", img);
+>=20
+>=20
+
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746, AG N=FCrnb=
+erg
 
