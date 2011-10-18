@@ -1,36 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RFtYP-0006t4-IX
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Oct 2011 16:12:57 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:48250)
+	id 1RFyNj-0004Zc-4y
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Oct 2011 21:22:15 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:51421)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RFtYM-0006iY-Ge
-	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 16:12:55 -0400
+	(envelope-from <juan@logician.com>) id 1RFyNf-0004MF-9z
+	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 21:22:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RFtYL-0001vI-PM
-	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 16:12:54 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:46427)
+	(envelope-from <juan@logician.com>) id 1RFyNe-0002pX-Dy
+	for qemu-trivial@nongnu.org; Mon, 17 Oct 2011 21:22:11 -0400
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:63511)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1RFtYJ-0001uu-79; Mon, 17 Oct 2011 16:12:51 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	76CBE72834F6; Mon, 17 Oct 2011 22:12:39 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id DbPZ7gD+cdHO; Mon, 17 Oct 2011 22:12:10 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 0480272834F8; Mon, 17 Oct 2011 22:12:10 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Mon, 17 Oct 2011 22:12:09 +0200
-Message-Id: <1318882329-15119-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] device_tree: Fix potential memory leak
+	(envelope-from <juan@logician.com>)
+	id 1RFyNc-0002oe-Gf; Mon, 17 Oct 2011 21:22:08 -0400
+Received: by iakl21 with SMTP id l21so113719iak.4
+	for <multiple recipients>; Mon, 17 Oct 2011 18:22:07 -0700 (PDT)
+Received: by 10.231.67.80 with SMTP id q16mr71091ibi.86.1318900927014;
+	Mon, 17 Oct 2011 18:22:07 -0700 (PDT)
+Received: from [192.108.229.223] (208-90-212-34.PUBLIC.monkeybrains.net.
+	[208.90.212.34])
+	by mx.google.com with ESMTPS id g16sm931629ibs.8.2011.10.17.18.22.05
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 17 Oct 2011 18:22:06 -0700 (PDT)
+From: Juan Pineda <juan@logician.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Date: Mon, 17 Oct 2011 18:22:03 -0700
+Message-Id: <DE9DD0B1-B0C7-4ECC-889E-2B84EE2F287E@logician.com>
+To: aliguori@us.ibm.com,
+ qemu-devel@nongnu.org
+Mime-Version: 1.0 (Apple Message framework v1251.1)
+X-Mailer: Apple Mail (2.1251.1)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] Patch for ui/cocoa.m
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,30 +45,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Oct 2011 20:12:55 -0000
+X-List-Received-Date: Tue, 18 Oct 2011 01:22:12 -0000
 
-cppcheck error report:
+Hello,
 
-device_tree.c:156: error: Memory leak: dupname
+This is my first time submitting a patch, so please let me know if I'm =
+not following the correct protocol.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- device_tree.c |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
+Under OSX Lion the boot volume dialog is not closed and it permanently =
+obscures the emulator window since under Lion the dialog cannot be =
+repositioned. The fix adds only to add a single line to close the =
+dialog.
 
-diff --git a/device_tree.c b/device_tree.c
-index dc69232..86a694c 100644
---- a/device_tree.c
-+++ b/device_tree.c
-@@ -153,6 +153,7 @@ int qemu_devtree_add_subnode(void *fdt, const char *name)
-     int retval;
- 
-     if (!basename) {
-+        g_free(dupname);
-         return -1;
-     }
- 
--- 
-1.7.2.5
+Signed-off-by: Juan Pineda <juan@logician.com>
+
+Thanks!
+-Juan
+
+
+> git diff ui/cocoa.m
+diff --git a/ui/cocoa.m b/ui/cocoa.m
+index d9e4e3d..4b42462 100644
+--- a/ui/cocoa.m
++++ b/ui/cocoa.m
+@@ -811,6 +811,8 @@ QemuCocoaView *cocoaView;
+=20
+         char **argv =3D (char**)malloc( sizeof(char*)*3 );
+=20
++       [sheet close];
++
+         asprintf(&argv[0], "%s", bin);
+         asprintf(&argv[1], "-hda");
+         asprintf(&argv[2], "%s", img);
 
 
