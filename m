@@ -1,38 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RGYuZ-0001j6-48
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Oct 2011 12:22:35 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:43966)
+	id 1RGalS-0005hm-OX
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Oct 2011 14:21:18 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:45052)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RGYuV-0001YJ-24
-	for qemu-trivial@nongnu.org; Wed, 19 Oct 2011 12:22:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1RGalP-0005a0-6P
+	for qemu-trivial@nongnu.org; Wed, 19 Oct 2011 14:21:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RGYuT-00021r-Nj
-	for qemu-trivial@nongnu.org; Wed, 19 Oct 2011 12:22:30 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:48648 helo=mx2.suse.de)
+	(envelope-from <peter.maydell@linaro.org>) id 1RGalN-0004Ng-Px
+	for qemu-trivial@nongnu.org; Wed, 19 Oct 2011 14:21:14 -0400
+Received: from mail-qw0-f45.google.com ([209.85.216.45]:52401)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1RGYuK-0001zh-Of; Wed, 19 Oct 2011 12:22:21 -0400
-Received: from [10.10.102.108] (charybdis-ext.suse.de [195.135.221.2])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id B30278AD27;
-	Wed, 19 Oct 2011 18:22:17 +0200 (CEST)
-Message-ID: <4E9EF939.1060306@suse.de>
-Date: Wed, 19 Oct 2011 18:22:17 +0200
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:7.0) Gecko/20110922 Thunderbird/7.0
+	(envelope-from <peter.maydell@linaro.org>)
+	id 1RGalK-0004NB-UK; Wed, 19 Oct 2011 14:21:11 -0400
+Received: by qadc12 with SMTP id c12so957439qad.4
+	for <multiple recipients>; Wed, 19 Oct 2011 11:21:10 -0700 (PDT)
 MIME-Version: 1.0
-To: Dmitry Koshelev <karaghiozis@gmail.com>
-References: <CAKUHwZqVz1egRsgTtf_=Voe66EkL8n0kETW5zEFK5f=JHq_K6w@mail.gmail.com>
+Received: by 10.224.177.78 with SMTP id bh14mr1798048qab.14.1319048469870;
+	Wed, 19 Oct 2011 11:21:09 -0700 (PDT)
+Received: by 10.224.19.136 with HTTP; Wed, 19 Oct 2011 11:21:09 -0700 (PDT)
 In-Reply-To: <CAKUHwZqVz1egRsgTtf_=Voe66EkL8n0kETW5zEFK5f=JHq_K6w@mail.gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1
+References: <CAKUHwZqVz1egRsgTtf_=Voe66EkL8n0kETW5zEFK5f=JHq_K6w@mail.gmail.com>
+Date: Wed, 19 Oct 2011 19:21:09 +0100
+Message-ID: <CAFEAcA9BdhCJ0fSBeQU8VayCtE-RSNmHax0-sFnaynWHWkX=ew@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Dmitry Koshelev <karaghiozis@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org, Paul Brook <paul@codesourcery.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.216.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Paul Brook <paul@codesourcery.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] [v2] arm gic saving/loading
 	fix
 X-BeenThere: qemu-trivial@nongnu.org
@@ -46,99 +43,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Oct 2011 16:22:32 -0000
+X-List-Received-Date: Wed, 19 Oct 2011 18:21:16 -0000
 
-Dmitry,
-
-It would be nice to cc the people that have cared to review previous
-versions of the patch, Peter Maydell and me. Gets you quicker replies.
-
-Functional ARM patches are being reviewed by our ARM gurus and not by
-Stefan Hajnoczi, so please drop qemu-trivial from the cc list, as
-pointed out before.
-
-Am 19.10.2011 16:10, schrieb Dmitry Koshelev:
+On 19 October 2011 15:10, Dmitry Koshelev <karaghiozis@gmail.com> wrote:
 > irq_target field saving/loading is in the wrong loop
 > version bump
->=20
+>
 > Signed-off-by: Dmitry Koshelev <karagiozis@gmail.com>
-
-From my side this version looks okay now, with a check for loading and a
-bump for registration. Being no expert for the old savevm format,
-
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
-
-Andreas
-
 > ---
->  hw/arm_gic.c |   16 ++++++++--------
->  1 files changed, 8 insertions(+), 8 deletions(-)
->=20
-> diff --git a/hw/arm_gic.c b/hw/arm_gic.c
-> index 8286a28..d0747cf 100644
-> --- a/hw/arm_gic.c
-> +++ b/hw/arm_gic.c
-> @@ -662,9 +662,6 @@ static void gic_save(QEMUFile *f, void *opaque)
->      qemu_put_be32(f, s->enabled);
->      for (i =3D 0; i < NUM_CPU(s); i++) {
->          qemu_put_be32(f, s->cpu_enabled[i]);
-> -#ifndef NVIC
-> -        qemu_put_be32(f, s->irq_target[i]);
-> -#endif
->          for (j =3D 0; j < 32; j++)
->              qemu_put_be32(f, s->priority1[j][i]);
->          for (j =3D 0; j < GIC_NIRQ; j++)
-> @@ -678,6 +675,9 @@ static void gic_save(QEMUFile *f, void *opaque)
->          qemu_put_be32(f, s->priority2[i]);
->      }
->      for (i =3D 0; i < GIC_NIRQ; i++) {
-> +#ifndef NVIC
-> +        qemu_put_be32(f, s->irq_target[i]);
-> +#endif
->          qemu_put_byte(f, s->irq_state[i].enabled);
->          qemu_put_byte(f, s->irq_state[i].pending);
->          qemu_put_byte(f, s->irq_state[i].active);
-> @@ -693,15 +693,12 @@ static int gic_load(QEMUFile *f, void *opaque,
-> int version_id)
->      int i;
->      int j;
->=20
-> -    if (version_id !=3D 1)
-> +    if (version_id !=3D 2)
->          return -EINVAL;
->=20
->      s->enabled =3D qemu_get_be32(f);
->      for (i =3D 0; i < NUM_CPU(s); i++) {
->          s->cpu_enabled[i] =3D qemu_get_be32(f);
-> -#ifndef NVIC
-> -        s->irq_target[i] =3D qemu_get_be32(f);
-> -#endif
->          for (j =3D 0; j < 32; j++)
->              s->priority1[j][i] =3D qemu_get_be32(f);
->          for (j =3D 0; j < GIC_NIRQ; j++)
-> @@ -715,6 +712,9 @@ static int gic_load(QEMUFile *f, void *opaque, int
-> version_id)
->          s->priority2[i] =3D qemu_get_be32(f);
->      }
->      for (i =3D 0; i < GIC_NIRQ; i++) {
-> +#ifndef NVIC
-> +        s->irq_target[i] =3D qemu_get_be32(f);
-> +#endif
->          s->irq_state[i].enabled =3D qemu_get_byte(f);
->          s->irq_state[i].pending =3D qemu_get_byte(f);
->          s->irq_state[i].active =3D qemu_get_byte(f);
+> =C2=A0hw/arm_gic.c | =C2=A0 16 ++++++++--------
+> =C2=A01 files changed, 8 insertions(+), 8 deletions(-)
+>
 > @@ -744,5 +744,5 @@ static void gic_init(gic_state *s)
->      s->iomemtype =3D cpu_register_io_memory(gic_dist_readfn,
->                                            gic_dist_writefn, s);
->      gic_reset(s);
-> -    register_savevm(NULL, "arm_gic", -1, 1, gic_save, gic_load, s);
-> +    register_savevm(NULL, "arm_gic", -1, 2, gic_save, gic_load, s);
->  }
->=20
+> =C2=A0 =C2=A0 s->iomemtype =3D cpu_register_io_memory(gic_dist_readfn,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 g=
+ic_dist_writefn, s);
+> =C2=A0 =C2=A0 gic_reset(s);
+> - =C2=A0 =C2=A0register_savevm(NULL, "arm_gic", -1, 1, gic_save, gic_load=
+, s);
+> + =C2=A0 =C2=A0register_savevm(NULL, "arm_gic", -1, 2, gic_save, gic_load=
+, s);
+> =C2=A0}
+>
 
+This doesn't apply against master -- can you rebase, please?
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746, AG N=FCrnb=
-erg
+Since you need to resend anyway, convention for git commit messages
+is to put the filename in the summary line, something like
+
+ hw/arm_gic.c: Fix save/load of irq_target array
+
+Also, if at all possible, can you send via a mailer which doesn't
+wrap long lines? Otherwise I have to fix them at this end which
+is very tedious...
+
+thanks
+-- PMM
 
