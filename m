@@ -1,37 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RIZNx-0006ts-JI
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2011 01:17:13 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:41863)
+	id 1RIdv8-0003j0-HA
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2011 06:07:46 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:39532)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RIZNu-0006lQ-O7
-	for qemu-trivial@nongnu.org; Tue, 25 Oct 2011 01:17:11 -0400
+	(envelope-from <armbru@redhat.com>) id 1RIdv1-0003UG-U9
+	for qemu-trivial@nongnu.org; Tue, 25 Oct 2011 06:07:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RIZNt-0001Jo-Hu
-	for qemu-trivial@nongnu.org; Tue, 25 Oct 2011 01:17:10 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:58341)
+	(envelope-from <armbru@redhat.com>) id 1RIduw-0008DH-6A
+	for qemu-trivial@nongnu.org; Tue, 25 Oct 2011 06:07:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38262)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1RIZNr-0001JV-7K; Tue, 25 Oct 2011 01:17:07 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	E62C07283494; Tue, 25 Oct 2011 07:16:55 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id oODLhAmMVXML; Tue, 25 Oct 2011 07:16:26 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 966517283495; Tue, 25 Oct 2011 07:16:26 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Tue, 25 Oct 2011 07:16:25 +0200
-Message-Id: <1319519785-6220-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.2.5
+	(envelope-from <armbru@redhat.com>)
+	id 1RIdup-00089k-B9; Tue, 25 Oct 2011 06:07:27 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p9PA7Png020639
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 25 Oct 2011 06:07:25 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-30.ams2.redhat.com
+	[10.36.116.30])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id p9PA7NcK011828; Tue, 25 Oct 2011 06:07:24 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 500)
+	id B28F96006D; Tue, 25 Oct 2011 12:07:22 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>
+References: <1319485958-4849-1-git-send-email-hpoussin@reactos.org>
+Date: Tue, 25 Oct 2011 12:07:22 +0200
+In-Reply-To: <1319485958-4849-1-git-send-email-hpoussin@reactos.org>
+	(=?utf-8?Q?=22Herv=C3=A9?=
+	Poussineau"'s message of "Mon, 24 Oct 2011 21:52:38 +0200")
+Message-ID: <m3y5w9wfj9.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Blue Swirl <blauwirbel@gmail.com>
-Subject: [Qemu-trivial] [PATCH] target-sparc: Fix use of g_new0 / g_free
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 01/12] Fix typo: buf -> bus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,51 +51,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Oct 2011 05:17:12 -0000
+X-List-Received-Date: Tue, 25 Oct 2011 10:07:44 -0000
 
-g_malloc0 needs g_free instead of free.
-While fixing this, I also replaced g_malloc0 by g_new0
-as was suggested by Stuart Brady.
+Best to cc: qemu-trivial@nongnu.org for trivial patches.
 
-Cc: Blue Swirl <blauwirbel@gmail.com>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- target-sparc/cpu_init.c |    8 ++++----
- 1 files changed, 4 insertions(+), 4 deletions(-)
+Herv=C3=A9 Poussineau <hpoussin@reactos.org> writes:
 
-diff --git a/target-sparc/cpu_init.c b/target-sparc/cpu_init.c
-index 08b72a9..6954800 100644
---- a/target-sparc/cpu_init.c
-+++ b/target-sparc/cpu_init.c
-@@ -74,7 +74,7 @@ static int cpu_sparc_register(CPUSPARCState *env, const char *cpu_model)
-         return -1;
-     }
- 
--    env->def = g_malloc0(sizeof(*def));
-+    env->def = g_new0(sparc_def_t, 1);
-     memcpy(env->def, def, sizeof(*def));
- #if defined(CONFIG_USER_ONLY)
-     if ((env->def->features & CPU_FEATURE_FLOAT)) {
-@@ -100,15 +100,15 @@ static int cpu_sparc_register(CPUSPARCState *env, const char *cpu_model)
- 
- static void cpu_sparc_close(CPUSPARCState *env)
- {
--    free(env->def);
--    free(env);
-+    g_free(env->def);
-+    g_free(env);
- }
- 
- CPUSPARCState *cpu_sparc_init(const char *cpu_model)
- {
-     CPUSPARCState *env;
- 
--    env = g_malloc0(sizeof(CPUSPARCState));
-+    env = g_new0(CPUSPARCState, 1);
-     cpu_exec_init(env);
- 
-     gen_intermediate_code_init(env);
--- 
-1.7.2.5
-
+> Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+> ---
+>  hw/audiodev.h |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/hw/audiodev.h b/hw/audiodev.h
+> index 8e930b2..d60c349 100644
+> --- a/hw/audiodev.h
+> +++ b/hw/audiodev.h
+> @@ -11,7 +11,7 @@ int Adlib_init(qemu_irq *pic);
+>  int GUS_init(qemu_irq *pic);
+>=20=20
+>  /* ac97.c */
+> -int ac97_init(PCIBus *buf);
+> +int ac97_init(PCIBus *bus);
+>=20=20
+>  /* cs4231a.c */
+>  int cs4231a_init(qemu_irq *pic);
 
