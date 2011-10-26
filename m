@@ -1,41 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RJ1Jf-0005ma-73
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Oct 2011 07:06:39 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:55602)
+	id 1RJ2pd-0005xh-Ff
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Oct 2011 08:43:45 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:43172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@oktetlabs.ru>) id 1RJ1Jc-0005dU-Kn
-	for qemu-trivial@nongnu.org; Wed, 26 Oct 2011 07:06:37 -0400
+	(envelope-from <stefanha@gmail.com>) id 1RJ2pa-0005o5-Je
+	for qemu-trivial@nongnu.org; Wed, 26 Oct 2011 08:43:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@oktetlabs.ru>) id 1RJ1Jb-0008RO-10
-	for qemu-trivial@nongnu.org; Wed, 26 Oct 2011 07:06:36 -0400
-Received: from shelob.oktetlabs.ru ([195.131.132.186]:55566)
+	(envelope-from <stefanha@gmail.com>) id 1RJ2pV-0003aN-Hr
+	for qemu-trivial@nongnu.org; Wed, 26 Oct 2011 08:43:39 -0400
+Received: from mail-wy0-f173.google.com ([74.125.82.173]:33968)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@oktetlabs.ru>)
-	id 1RJ1JY-0008Ng-0l; Wed, 26 Oct 2011 07:06:32 -0400
-Received: by shelob.oktetlabs.ru (Postfix, from userid 122)
-	id A77997F505; Wed, 26 Oct 2011 15:06:25 +0400 (MSK)
-Received: from marish.oktetlabs.ru (marish.oktetlabs.ru [192.168.38.66])
-	(using TLSv1 with cipher AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by shelob.oktetlabs.ru (Postfix) with ESMTPS id 68CCD7F4E9;
-	Wed, 26 Oct 2011 15:06:19 +0400 (MSK)
-X-DKIM: Sendmail DKIM Filter v2.8.2 shelob.oktetlabs.ru 68CCD7F4E9
-Authentication-Results: shelob.oktetlabs.ru/68CCD7F4E9; dkim=none
-	(no signature) header.i=unknown; dkim-adsp=none
-Received: from jcmvbkbc by marish.oktetlabs.ru with local (Exim 4.72)
-	(envelope-from <jcmvbkbc@marish.oktetlabs.ru>)
-	id 1RJ1JL-00025l-Rm; Wed, 26 Oct 2011 15:06:19 +0400
-From: Max Filippov <jcmvbkbc@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Date: Wed, 26 Oct 2011 15:06:14 +0400
-Message-Id: <1319627174-8015-1-git-send-email-jcmvbkbc@gmail.com>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 195.131.132.186
-Cc: Kevin Wolf <kwolf@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [Qemu-trivial] [PATCH] ahci: fix DPRINTF format strings
+	(envelope-from <stefanha@gmail.com>)
+	id 1RJ2pK-0003Vi-H3; Wed, 26 Oct 2011 08:43:26 -0400
+Received: by wyh15 with SMTP id 15so1776633wyh.4
+	for <multiple recipients>; Wed, 26 Oct 2011 05:43:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:content-transfer-encoding
+	:in-reply-to:user-agent;
+	bh=lrPdtsVFfplTOBjCad7r4km9KWlOR1HRzkpxW+D+Cow=;
+	b=rBZpsnSwm482z/qK0zBlypN6vYKpa5eGAnT6s+Wv31sg8jsqLneLNUt3kS/8nI/xfo
+	/hNNtx18vOit2gMxl3ZX3qf+DaLiMm014nUr5kF+ESV3hD9jKjiIRkplP+Mh6edDoT+/
+	u1kqrROJFbIwvMlPPpjJTIY1NXF7wHhiBuhyw=
+Received: by 10.216.230.83 with SMTP id i61mr8160078weq.39.1319633005202;
+	Wed, 26 Oct 2011 05:43:25 -0700 (PDT)
+Received: from localhost ([109.224.133.37])
+	by mx.google.com with ESMTPS id es5sm2957200wbb.11.2011.10.26.05.43.23
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 26 Oct 2011 05:43:24 -0700 (PDT)
+Date: Wed, 26 Oct 2011 13:43:22 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+Message-ID: <20111026124322.GA27267@stefanha-thinkpad.localdomain>
+References: <20111021095709.GA10092@cs.nctu.edu.tw>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20111021095709.GA10092@cs.nctu.edu.tw>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] exec.c: Remove useless comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,66 +54,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Oct 2011 11:06:37 -0000
+X-List-Received-Date: Wed, 26 Oct 2011 12:43:43 -0000
 
-Signed-off-by: Max Filippov <jcmvbkbc@gmail.com>
----
- hw/ide/ahci.c |   16 ++++++++++------
- 1 files changed, 10 insertions(+), 6 deletions(-)
+On Fri, Oct 21, 2011 at 05:57:09PM +0800, 陳韋任 wrote:
+>   As phys_ram_size had been removed since QEMU 0.12. Remove the useless
+> comment.
+> 
+> Signed-off-by: Chen Wen-Ren <chenwj@iis.sinica.edu.tw>
+> ---
+>  exec.c |    1 -
+>  1 files changed, 0 insertions(+), 1 deletions(-)
 
-diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index 1c7e3a0..0af201d 100644
---- a/hw/ide/ahci.c
-+++ b/hw/ide/ahci.c
-@@ -327,7 +327,7 @@ static void ahci_mem_write(void *opaque, target_phys_addr_t addr,
-     }
- 
-     if (addr < AHCI_GENERIC_HOST_CONTROL_REGS_MAX_ADDR) {
--        DPRINTF(-1, "(addr 0x%08X), val 0x%08X\n", (unsigned) addr, val);
-+        DPRINTF(-1, "(addr 0x%08X), val 0x%08"PRIX64"\n", (unsigned) addr, val);
- 
-         switch (addr) {
-             case HOST_CAP: /* R/WO, RO */
-@@ -777,7 +777,8 @@ static void process_ncq_command(AHCIState *s, int port, uint8_t *cmd_fis,
-     ncq_tfs->sector_count = ((uint16_t)ncq_fis->sector_count_high << 8) |
-                                 ncq_fis->sector_count_low;
- 
--    DPRINTF(port, "NCQ transfer LBA from %ld to %ld, drive max %ld\n",
-+    DPRINTF(port, "NCQ transfer LBA from %"PRId64" to %"PRId64", "
-+            "drive max %"PRId64"\n",
-             ncq_tfs->lba, ncq_tfs->lba + ncq_tfs->sector_count - 2,
-             s->dev[port].port.ifs[0].nb_sectors - 1);
- 
-@@ -786,10 +787,12 @@ static void process_ncq_command(AHCIState *s, int port, uint8_t *cmd_fis,
- 
-     switch(ncq_fis->command) {
-         case READ_FPDMA_QUEUED:
--            DPRINTF(port, "NCQ reading %d sectors from LBA %ld, tag %d\n",
-+            DPRINTF(port, "NCQ reading %d sectors from LBA %"PRId64", "
-+                    "tag %d\n",
-                     ncq_tfs->sector_count-1, ncq_tfs->lba, ncq_tfs->tag);
- 
--            DPRINTF(port, "tag %d aio read %ld\n", ncq_tfs->tag, ncq_tfs->lba);
-+            DPRINTF(port, "tag %d aio read %"PRId64"\n",
-+                    ncq_tfs->tag, ncq_tfs->lba);
- 
-             bdrv_acct_start(ncq_tfs->drive->port.ifs[0].bs, &ncq_tfs->acct,
-                             (ncq_tfs->sector_count-1) * BDRV_SECTOR_SIZE,
-@@ -799,10 +802,11 @@ static void process_ncq_command(AHCIState *s, int port, uint8_t *cmd_fis,
-                                            ncq_cb, ncq_tfs);
-             break;
-         case WRITE_FPDMA_QUEUED:
--            DPRINTF(port, "NCQ writing %d sectors to LBA %ld, tag %d\n",
-+            DPRINTF(port, "NCQ writing %d sectors to LBA %"PRId64", tag %d\n",
-                     ncq_tfs->sector_count-1, ncq_tfs->lba, ncq_tfs->tag);
- 
--            DPRINTF(port, "tag %d aio write %ld\n", ncq_tfs->tag, ncq_tfs->lba);
-+            DPRINTF(port, "tag %d aio write %"PRId64"\n",
-+                    ncq_tfs->tag, ncq_tfs->lba);
- 
-             bdrv_acct_start(ncq_tfs->drive->port.ifs[0].bs, &ncq_tfs->acct,
-                             (ncq_tfs->sector_count-1) * BDRV_SECTOR_SIZE,
--- 
-1.7.2.5
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
+Stefan
 
