@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RJL35-0007VI-C7
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2011 04:10:51 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:33984)
+	id 1RJLfh-0003A8-9I
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2011 04:50:45 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:53509)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RJL2x-00073X-Rv
-	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 04:10:45 -0400
+	(envelope-from <kwolf@redhat.com>) id 1RJLfe-000334-0U
+	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 04:50:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RJL2w-0007vf-6e
-	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 04:10:43 -0400
-Received: from mail-ey0-f173.google.com ([209.85.215.173]:39922)
+	(envelope-from <kwolf@redhat.com>) id 1RJLfd-0006HH-5H
+	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 04:50:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:29905)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RJL2r-0007ua-LC; Thu, 27 Oct 2011 04:10:37 -0400
-Received: by eyh6 with SMTP id 6so2486272eyh.4
-	for <multiple recipients>; Thu, 27 Oct 2011 01:10:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=2x/pNDuUI3AD3b6Bc1Px23lRqtPaM5ih8wAHdSec+MI=;
-	b=DtabfZIuhXyNLPgFzade3EICM0irANuCXj/1SZBMekvmr3tjzRbUgC4z4dyNfSOo9F
-	ehXB/Xnr99vHjIxJVH+Zgnnx0rvex3Bw7Wc9aqCkrbHXsUh1vQMG6f0L2AfumGbcoIV5
-	1F5aMm3Corbr252jk23rHxF/BRXDvO3Qog1vQ=
-Received: by 10.14.14.80 with SMTP id c56mr4428647eec.197.1319703036229;
-	Thu, 27 Oct 2011 01:10:36 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id 54sm12603851eex.8.2011.10.27.01.10.34
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 27 Oct 2011 01:10:34 -0700 (PDT)
-Date: Thu, 27 Oct 2011 08:05:36 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Eric Sunshine <sunshine@sunshineco.com>
-Message-ID: <20111027070536.GA32265@stefanha-thinkpad.localdomain>
-References: <1319658678-18355-1-git-send-email-sunshine@sunshineco.com>
+	(envelope-from <kwolf@redhat.com>)
+	id 1RJLfa-0006Gi-P7; Thu, 27 Oct 2011 04:50:38 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p9R8oZ3H029632
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Thu, 27 Oct 2011 04:50:36 -0400
+Received: from dhcp-5-188.str.redhat.com (dhcp-5-175.str.redhat.com
+	[10.32.5.175])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id p9R8oXMZ005481
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-CAMELLIA256-SHA bits=256 verify=NO);
+	Thu, 27 Oct 2011 04:50:35 -0400
+Message-ID: <4EA91C16.6050908@redhat.com>
+Date: Thu, 27 Oct 2011 10:53:42 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:7.0) Gecko/20110927 Thunderbird/7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+To: Eric Sunshine <sunshine@sunshineco.com>
+References: <1319658678-18355-1-git-send-email-sunshine@sunshineco.com>
 In-Reply-To: <1319658678-18355-1-git-send-email-sunshine@sunshineco.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.215.173
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>,
-	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>
+	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH] Teach block/vdi about "discarded" (no
  longer allocated) blocks
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,9 +52,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Oct 2011 08:10:46 -0000
+X-List-Received-Date: Thu, 27 Oct 2011 08:50:43 -0000
 
-On Wed, Oct 26, 2011 at 03:51:18PM -0400, Eric Sunshine wrote:
+Am 26.10.2011 21:51, schrieb Eric Sunshine:
 > An entry in the VDI block map will hold an offset to the actual block if
 > the block is allocated, or one of two specially-interpreted values if
 > not allocated. Using VirtualBox terminology, value VDI_IMAGE_BLOCK_FREE
@@ -66,29 +64,8 @@ On Wed, Oct 26, 2011 at 03:51:18PM -0400, Eric Sunshine wrote:
 > VDI_IMAGE_BLOCK_FREE.  Teach it about VDI_IMAGE_BLOCK_ZERO.
 > 
 > Signed-off-by: Eric Sunshine <sunshine@sunshineco.com>
-> ---
-> 
-> Without this patch, "qemu-image check" on a VDI image containing
-> discarded blocks reports errors such as:
-> 
->   ERROR: block index 3434 too large, is 4294967294
-> 
-> Decimal 4294967294 is 0xfffffffe. Worse, "qemu-image convert" or direct
-> access of the VDI image from qemu involves reads and writes of blocks at
-> the bogus block offset 4294967294 within the image file.
-> 
-> Cc: Stefan Weil <weil@mail.berlios.de>
-> Cc: Kevin Wolf <kwolf@redhat.com>
-> 
->  block/vdi.c |   23 ++++++++++++++---------
->  1 files changed, 14 insertions(+), 9 deletions(-)
 
-Good to see this improvement.  I recently talked to a CernVM developer
-who had issues with vdi images.  This may fix the issue they were
-seeing.
+Thanks, applied to the block branch.
 
-I think Kevin should take this through the block tree.  I won't apply it
-to trivial-patches.
-
-Stefan
+Kevin
 
