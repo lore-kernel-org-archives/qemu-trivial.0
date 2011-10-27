@@ -1,49 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RJJwX-0002KY-Oz
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2011 03:00:01 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:37545)
+	id 1RJL35-0007VI-C7
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2011 04:10:51 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:33984)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wuzhy@linux.vnet.ibm.com>) id 1RJJwV-0002KM-6T
-	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 03:00:00 -0400
+	(envelope-from <stefanha@gmail.com>) id 1RJL2x-00073X-Rv
+	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 04:10:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wuzhy@linux.vnet.ibm.com>) id 1RJJwU-0003Y9-6o
-	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 02:59:59 -0400
-Received: from e36.co.us.ibm.com ([32.97.110.154]:52139)
+	(envelope-from <stefanha@gmail.com>) id 1RJL2w-0007vf-6e
+	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 04:10:43 -0400
+Received: from mail-ey0-f173.google.com ([209.85.215.173]:39922)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wuzhy@linux.vnet.ibm.com>) id 1RJJwT-0003Xu-Vu
-	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 02:59:58 -0400
-Received: from /spool/local
-	by e36.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <wuzhy@linux.vnet.ibm.com>;
-	Thu, 27 Oct 2011 00:59:55 -0600
-Received: from d03relay01.boulder.ibm.com ([9.17.195.226])
-	by e36.co.us.ibm.com ([192.168.1.136]) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 27 Oct 2011 00:59:36 -0600
-Received: from d03av01.boulder.ibm.com (d03av01.boulder.ibm.com [9.17.195.167])
-	by d03relay01.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	p9R6xZLF270784; Thu, 27 Oct 2011 00:59:35 -0600
-Received: from d03av01.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id p9R6xZYg000940; Thu, 27 Oct 2011 00:59:35 -0600
-Received: from us.ibm.com ([9.115.118.38])
-	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with SMTP id
-	p9R6xWcD031680; Thu, 27 Oct 2011 00:59:32 -0600
-Received: by us.ibm.com (sSMTP sendmail emulation);
-	Thu, 27 Oct 2011 14:58:57 +0800
-From: Zhi Yong Wu <wuzhy@linux.vnet.ibm.com>
-To: kwolf@redhat.com
-Date: Thu, 27 Oct 2011 14:58:57 +0800
-Message-Id: <1319698737-17270-1-git-send-email-wuzhy@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.6
-x-cbid: 11102706-3352-0000-0000-000000680E51
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 32.97.110.154
-Cc: qemu-trivial@nongnu.org, wuzhy@linux.vnet.ibm.com, qemu-devel@nongnu.org,
-	stefanha@linux.vnet.ibm.com
-Subject: [Qemu-trivial] [PATCH] qcow2: fix some errors and typo in qcow2.txt
+	(envelope-from <stefanha@gmail.com>)
+	id 1RJL2r-0007ua-LC; Thu, 27 Oct 2011 04:10:37 -0400
+Received: by eyh6 with SMTP id 6so2486272eyh.4
+	for <multiple recipients>; Thu, 27 Oct 2011 01:10:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=2x/pNDuUI3AD3b6Bc1Px23lRqtPaM5ih8wAHdSec+MI=;
+	b=DtabfZIuhXyNLPgFzade3EICM0irANuCXj/1SZBMekvmr3tjzRbUgC4z4dyNfSOo9F
+	ehXB/Xnr99vHjIxJVH+Zgnnx0rvex3Bw7Wc9aqCkrbHXsUh1vQMG6f0L2AfumGbcoIV5
+	1F5aMm3Corbr252jk23rHxF/BRXDvO3Qog1vQ=
+Received: by 10.14.14.80 with SMTP id c56mr4428647eec.197.1319703036229;
+	Thu, 27 Oct 2011 01:10:36 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
+	by mx.google.com with ESMTPS id 54sm12603851eex.8.2011.10.27.01.10.34
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 27 Oct 2011 01:10:34 -0700 (PDT)
+Date: Thu, 27 Oct 2011 08:05:36 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Eric Sunshine <sunshine@sunshineco.com>
+Message-ID: <20111027070536.GA32265@stefanha-thinkpad.localdomain>
+References: <1319658678-18355-1-git-send-email-sunshine@sunshineco.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1319658678-18355-1-git-send-email-sunshine@sunshineco.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.215.173
+Cc: qemu-trivial@nongnu.org, Stefan Weil <weil@mail.berlios.de>,
+	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] Teach block/vdi about "discarded" (no
+ longer allocated) blocks
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,38 +54,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Oct 2011 07:00:00 -0000
+X-List-Received-Date: Thu, 27 Oct 2011 08:10:46 -0000
 
-Signed-off-by: Zhi Yong Wu <wuzhy@linux.vnet.ibm.com>
----
- docs/specs/qcow2.txt |    6 +++---
- 1 files changed, 3 insertions(+), 3 deletions(-)
+On Wed, Oct 26, 2011 at 03:51:18PM -0400, Eric Sunshine wrote:
+> An entry in the VDI block map will hold an offset to the actual block if
+> the block is allocated, or one of two specially-interpreted values if
+> not allocated. Using VirtualBox terminology, value VDI_IMAGE_BLOCK_FREE
+> (0xffffffff) represents a never-allocated block (semantically arbitrary
+> content).  VDI_IMAGE_BLOCK_ZERO (0xfffffffe) represents a "discarded"
+> block (semantically zero-filled).  block/vdi knows only about
+> VDI_IMAGE_BLOCK_FREE.  Teach it about VDI_IMAGE_BLOCK_ZERO.
+> 
+> Signed-off-by: Eric Sunshine <sunshine@sunshineco.com>
+> ---
+> 
+> Without this patch, "qemu-image check" on a VDI image containing
+> discarded blocks reports errors such as:
+> 
+>   ERROR: block index 3434 too large, is 4294967294
+> 
+> Decimal 4294967294 is 0xfffffffe. Worse, "qemu-image convert" or direct
+> access of the VDI image from qemu involves reads and writes of blocks at
+> the bogus block offset 4294967294 within the image file.
+> 
+> Cc: Stefan Weil <weil@mail.berlios.de>
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> 
+>  block/vdi.c |   23 ++++++++++++++---------
+>  1 files changed, 14 insertions(+), 9 deletions(-)
 
-diff --git a/docs/specs/qcow2.txt b/docs/specs/qcow2.txt
-index 8fc3cb2..e792953 100644
---- a/docs/specs/qcow2.txt
-+++ b/docs/specs/qcow2.txt
-@@ -108,8 +108,8 @@ as follows:
- 
-     refcount_block_entries = (cluster_size / sizeof(uint16_t))
- 
--    refcount_block_index = (offset / cluster_size) % refcount_table_entries
--    refcount_table_index = (offset / cluster_size) / refcount_table_entries
-+    refcount_block_index = (offset / cluster_size) % refcount_block_entries
-+    refcount_table_index = (offset / cluster_size) / refcount_block_entries
- 
-     refcount_block = load_cluster(refcount_table[refcount_table_index]);
-     return refcount_block[refcount_block_index];
-@@ -211,7 +211,7 @@ switch the active L1 table, so that a different set of host clusters are
- exposed to the guest.
- 
- When creating a snapshot, the L1 table should be copied and the refcount of all
--L2 tables and clusters reachable form this L1 table must be increased, so that
-+L2 tables and clusters reachable from this L1 table must be increased, so that
- a write causes a COW and isn't visible in other snapshots.
- 
- When loading a snapshot, bit 63 of all entries in the new active L1 table and
--- 
-1.7.6
+Good to see this improvement.  I recently talked to a CernVM developer
+who had issues with vdi images.  This may fix the issue they were
+seeing.
 
+I think Kevin should take this through the block tree.  I won't apply it
+to trivial-patches.
+
+Stefan
 
