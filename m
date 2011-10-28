@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RJh3A-0006ep-U4
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2011 03:40:24 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:52325)
+	id 1RJhJY-0001lm-LH
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2011 03:57:20 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:32914)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1RJh38-0006XC-JM
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 03:40:23 -0400
+	(envelope-from <kwolf@redhat.com>) id 1RJhJW-0001lb-Pv
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 03:57:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1RJh37-0007U3-Hf
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 03:40:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:61773)
+	(envelope-from <kwolf@redhat.com>) id 1RJhJV-0001HL-S5
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 03:57:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58664)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1RJh35-0007Tf-1G; Fri, 28 Oct 2011 03:40:19 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p9S7e8q8012080
+	(envelope-from <kwolf@redhat.com>)
+	id 1RJhJV-0001HG-GZ; Fri, 28 Oct 2011 03:57:17 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p9S7vGr3017553
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 28 Oct 2011 03:40:15 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-20.ams2.redhat.com
-	[10.36.116.20])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id p9S7e6r3026805; Fri, 28 Oct 2011 03:40:07 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id 61A936006D; Fri, 28 Oct 2011 09:40:06 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1319487523-19978-1-git-send-email-sw@weilnetz.de>
-	<20111026125431.GC27267@stefanha-thinkpad.localdomain>
-Date: Fri, 28 Oct 2011 09:40:06 +0200
-In-Reply-To: <20111026125431.GC27267@stefanha-thinkpad.localdomain> (Stefan
-	Hajnoczi's message of "Wed, 26 Oct 2011 13:54:31 +0100")
-Message-ID: <m3obx1y36x.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.2 (gnu/linux)
+	Fri, 28 Oct 2011 03:57:16 -0400
+Received: from dhcp-5-188.str.redhat.com (vpn1-7-188.ams2.redhat.com
+	[10.36.7.188])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id p9S7vDln014762
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-CAMELLIA256-SHA bits=256 verify=NO);
+	Fri, 28 Oct 2011 03:57:15 -0400
+Message-ID: <4EAA6116.3050308@redhat.com>
+Date: Fri, 28 Oct 2011 10:00:22 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:7.0) Gecko/20110927 Thunderbird/7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+To: Stefan Weil <sw@weilnetz.de>
+References: <1319658678-18355-1-git-send-email-sunshine@sunshineco.com>
+	<4EA91C16.6050908@redhat.com> <4EA982D0.10902@weilnetz.de>
+In-Reply-To: <4EA982D0.10902@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix compiler warning
-	(always return a value)
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Teach block/vdi about
+ "discarded" (no longer allocated) blocks
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,55 +52,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Oct 2011 07:40:23 -0000
+X-List-Received-Date: Fri, 28 Oct 2011 07:57:19 -0000
 
-Stefan Hajnoczi <stefanha@gmail.com> writes:
+Am 27.10.2011 18:12, schrieb Stefan Weil:
+> Am 27.10.2011 10:53, schrieb Kevin Wolf:
+>> Am 26.10.2011 21:51, schrieb Eric Sunshine:
+>>> An entry in the VDI block map will hold an offset to the actual block if
+>>> the block is allocated, or one of two specially-interpreted values if
+>>> not allocated. Using VirtualBox terminology, value VDI_IMAGE_BLOCK_FREE
+>>> (0xffffffff) represents a never-allocated block (semantically arbitrary
+>>> content). VDI_IMAGE_BLOCK_ZERO (0xfffffffe) represents a "discarded"
+>>> block (semantically zero-filled). block/vdi knows only about
+>>> VDI_IMAGE_BLOCK_FREE. Teach it about VDI_IMAGE_BLOCK_ZERO.
+>>>
+>>> Signed-off-by: Eric Sunshine <sunshine@sunshineco.com>
+>>
+>> Thanks, applied to the block branch.
+>>
+>> Kevin
+> 
+> 
+> Kevin, I don't want to block improvements. Nevertheless
+> I'd like to see a small modification in this patch:
+> both #defines should be implemented without a type cast.
+> Please change them or wait until Eric sends an update.
+> 
+> My favorite is this:
+> 
+> #define VDI_UNALLOCATED UINT32_MAX
+> #define VDI_DISCARD     (VDI_UNALLOCATED - 1)
+> 
+> This would also be ok:
+> 
+> #define VDI_UNALLOCATED 0xffffffffU
+> #define VDI_DISCARD     0xfffffffeU
+> 
+> Using the macro names and the definitions (with type cast)
+> from the original VirtualBox code would also be ok.
 
-> On Mon, Oct 24, 2011 at 10:18:43PM +0200, Stefan Weil wrote:
->> For compilations with -DNDEBUG, the default case did not return
->> a value which caused a compiler warning.
->> 
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>  hw/ppce500_spin.c |   11 ++++++++---
->>  1 files changed, 8 insertions(+), 3 deletions(-)
->> 
->> diff --git a/hw/ppce500_spin.c b/hw/ppce500_spin.c
->> index cccd940..5b5ffe0 100644
->> --- a/hw/ppce500_spin.c
->> +++ b/hw/ppce500_spin.c
->> @@ -168,17 +168,22 @@ static uint64_t spin_read(void *opaque, target_phys_addr_t addr, unsigned len)
->>  {
->>      SpinState *s = opaque;
->>      uint8_t *spin_p = &((uint8_t*)s->spin)[addr];
->> +    uint64_t result = 0;
->>  
->>      switch (len) {
->>      case 1:
->> -        return ldub_p(spin_p);
->> +        result = ldub_p(spin_p);
->> +        break;
->>      case 2:
->> -        return lduw_p(spin_p);
->> +        result = lduw_p(spin_p);
->> +        break;
->>      case 4:
->> -        return ldl_p(spin_p);
->> +        result = ldl_p(spin_p);
->> +        break;
->>      default:
->>          assert(0);
->
-> I would replace assert(3) with abort(3).  If this ever happens the
-> program is broken - returning 0 instead of an undefined value doesn't
-> help.
+I did see your comments, and I waited for the endianness thing to be
+answered. However, how the definition of these constants is written is
+really not a functional defect, but simply a matter of taste. It's an
+old rule that whoever does the work also decides on the details.
 
-Why is it useful to make failed assertions stop the program regardless
-of NDEBUG only when the assertion happens to be "can't reach"?
+I really think it's wasting our time if we need to discuss if a type
+cast in the constant definition is only allowed after typedefing
+uint32_t to something else like in VBox.
 
-If you worry about assertions failing, don't compile with -DNDEBUG.
+So my preferred way is to leave the patch as it is. The code is simple
+and clear and objectively seen it won't get any better with your taste
+applied. If Eric prefers, I can update it to use 0xffffffffU, though.
 
-"Doctor, it hurts when I disable assertions!"
-"Don't disable them, then."
-;-P
+Kevin
 
