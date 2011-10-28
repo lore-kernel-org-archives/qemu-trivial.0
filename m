@@ -1,53 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RJnb3-0002lF-8r
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2011 10:39:49 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:53621)
+	id 1RJntM-00016r-E5
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2011 10:58:44 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:38513)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1RJnaw-0002Pq-SJ
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 10:39:46 -0400
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RJntJ-0000vY-F1
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 10:58:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1RJnav-0006uq-Pq
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 10:39:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33404)
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RJntI-0003KN-C3
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 10:58:41 -0400
+Received: from mtagate7.uk.ibm.com ([194.196.100.167]:37109)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1RJnas-0006uK-MS; Fri, 28 Oct 2011 10:39:38 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p9SEdat2029198
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 28 Oct 2011 10:39:36 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-20.ams2.redhat.com
-	[10.36.116.20])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id p9SEdXqL024631; Fri, 28 Oct 2011 10:39:35 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id E2AC86006D; Fri, 28 Oct 2011 16:39:32 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1319487523-19978-1-git-send-email-sw@weilnetz.de>
-	<20111026125431.GC27267@stefanha-thinkpad.localdomain>
-	<m3obx1y36x.fsf@blackfin.pond.sub.org>
-	<CAJSP0QVpEpB-_hAWJr1mNKzoEjGGPwVBkMu+S-BcOFe_fK7Nhw@mail.gmail.com>
-	<m34nytsd99.fsf@blackfin.pond.sub.org>
-	<CAJSP0QUX0TtQtrwsotPuGtMXnq=pH8srk-Bbyn6B2gu2YMt9hQ@mail.gmail.com>
-	<m3y5w5nzma.fsf@blackfin.pond.sub.org>
-	<CAJSP0QWd-aT6Hyj=dut+a_Va75zYMORzdjGit3pzU-PFzYWD+Q@mail.gmail.com>
-Date: Fri, 28 Oct 2011 16:39:32 +0200
-In-Reply-To: <CAJSP0QWd-aT6Hyj=dut+a_Va75zYMORzdjGit3pzU-PFzYWD+Q@mail.gmail.com>
-	(Stefan Hajnoczi's message of "Fri, 28 Oct 2011 13:41:47 +0100")
-Message-ID: <m3ehxxfae3.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.2 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix compiler warning
-	(always return a value)
+	(envelope-from <stefanha@linux.vnet.ibm.com>)
+	id 1RJntG-0003Jq-61; Fri, 28 Oct 2011 10:58:38 -0400
+Received: from d06nrmr1307.portsmouth.uk.ibm.com
+	(d06nrmr1307.portsmouth.uk.ibm.com [9.149.38.129])
+	by mtagate7.uk.ibm.com (8.13.1/8.13.1) with ESMTP id p9SEwams019790;
+	Fri, 28 Oct 2011 14:58:36 GMT
+Received: from d06av09.portsmouth.uk.ibm.com (d06av09.portsmouth.uk.ibm.com
+	[9.149.37.250])
+	by d06nrmr1307.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
+	ESMTP id p9SEwaYE2400326; Fri, 28 Oct 2011 15:58:36 +0100
+Received: from d06av09.portsmouth.uk.ibm.com (loopback [127.0.0.1])
+	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
+	ESMTP id p9SEwZ77018400; Fri, 28 Oct 2011 08:58:35 -0600
+Received: from localhost (stefanha-thinkpad.manchester-maybrook.uk.ibm.com
+	[9.174.219.31])
+	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
+	ESMTP id p9SEwZOB018391; Fri, 28 Oct 2011 08:58:35 -0600
+From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+To: <qemu-devel@nongnu.org>
+Date: Fri, 28 Oct 2011 15:58:26 +0100
+Message-Id: <1319813906-21196-1-git-send-email-stefanha@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.7
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 194.196.100.167
+Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH] qapi: fix typos in documentation JSON
+	examples
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,77 +49,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Oct 2011 14:39:47 -0000
+X-List-Received-Date: Fri, 28 Oct 2011 14:58:42 -0000
 
-Stefan Hajnoczi <stefanha@gmail.com> writes:
+Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+---
+ docs/qapi-code-gen.txt |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
 
-> On Fri, Oct 28, 2011 at 12:07 PM, Markus Armbruster <armbru@redhat.com> w=
-rote:
->> Stefan Hajnoczi <stefanha@gmail.com> writes:
->>
->>> On Fri, Oct 28, 2011 at 9:59 AM, Markus Armbruster <armbru@redhat.com> =
-wrote:
->>>> Stefan Hajnoczi <stefanha@gmail.com> writes:
->>>>
->>>>> On Fri, Oct 28, 2011 at 8:40 AM, Markus Armbruster <armbru@redhat.com=
-> wrote:
->>>>>> Stefan Hajnoczi <stefanha@gmail.com> writes:
-[...]
->>>>>>> I would replace assert(3) with abort(3). =C2=A0If this ever happens=
- the
->>>>>>> program is broken - returning 0 instead of an undefined value doesn=
-'t
->>>>>>> help.
->>>>>>
->>>>>> Why is it useful to make failed assertions stop the program regardle=
-ss
->>>>>> of NDEBUG only when the assertion happens to be "can't reach"?
->>>>>
->>>>> My point is that it should not be an assertion. =C2=A0The program has=
- a
->>>>> control flow path which should never be taken. =C2=A0In any "safe"
->>>>> programming environment the program will terminate with a diagnostic.
->>>>
->>>> In the not-so-safe C programming environment, we can disable that safe=
-ty
->>>> check by defining NDEBUG.
->>>>
->>>> Disabling safety checks is almost always a bad idea.
->>>
->>> There's a difference in a safety check that slows down the system and
->>> a failure condition where the program must terminate.
->>>
->>> assert(3) is for safety checks that can be disabled because they may
->>> slow down the system.
->>>
->>> I've been saying that assert(3) isn't appropriate here because the
->>> program can't continue and there's no check we can skip here.
->>
->> a. Program can't continue: same for pretty much any assertion anywhere.
->>
->> b. There's no code we can skip here: calling abort() is code.
->>
->> What I've been saying is
->>
->> 1. Attempting to distinguish between safety checks that are safe to skip
->> and failure conditions that aren't is a fool's errand. =C2=A0If a check =
-is
->> safe to skip it's not a safety check by definition. =C2=A0It's debugging
->> code, perhaps.
->>
->> 2. Optionally disabling "expensive" safety checks should be done based
->> on measurements, if at all. =C2=A0Arbitrarily declaring all "can't reach"
->> checks "inexpensive" and all other assertions "expensive" isn't
->> measuring, it's guesswork.
->
-> I'm tempted to continue the thread but at the end of the day we just
-> need to make the function compile with -NDEBUG.  Using abort(3) or
+diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
+index f345866..c0a9325 100644
+--- a/docs/qapi-code-gen.txt
++++ b/docs/qapi-code-gen.txt
+@@ -41,7 +41,7 @@ dictionary.  This corresponds to a struct in C or an Object in JSON.  An
+ example of a complex type is:
+ 
+  { 'type': 'MyType',
+-   'data' { 'member1': 'str', 'member2': 'int', '*member3': 'str } }
++   'data': { 'member1': 'str', 'member2': 'int', '*member3': 'str' } }
+ 
+ The use of '*' as a prefix to the name means the member is optional.  Optional
+ members should always be added to the end of the dictionary to preserve
+@@ -63,7 +63,7 @@ An example command is:
+ 
+  { 'command': 'my-command',
+    'data': { 'arg1': 'str', '*arg2': 'str' },
+-   'returns': 'str' ]
++   'returns': 'str' }
+ 
+ Command names should be all lower case with words separated by a hyphen.
+ 
+-- 
+1.7.7
 
-Do we?
-
-Anyone crazy^Wadventurous enough to compile with -DNDEBUG should be
-capable of configure --disable-werror.
-
-> qemu_abort() would be the smallest and IMO sanest change, but if it's
-> something else that's fine.
 
