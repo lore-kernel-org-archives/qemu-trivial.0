@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RJSgw-0004Ms-Ob
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2011 12:20:30 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:60999)
+	id 1RJh3A-0006ep-U4
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2011 03:40:24 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:52325)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ericsunshine@gmail.com>) id 1RJSgu-0004MJ-6z
-	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 12:20:29 -0400
+	(envelope-from <armbru@redhat.com>) id 1RJh38-0006XC-JM
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 03:40:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ericsunshine@gmail.com>) id 1RJSgl-0005Cm-Sk
-	for qemu-trivial@nongnu.org; Thu, 27 Oct 2011 12:20:28 -0400
-Received: from mail-qw0-f45.google.com ([209.85.216.45]:37791)
+	(envelope-from <armbru@redhat.com>) id 1RJh37-0007U3-Hf
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 03:40:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:61773)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ericsunshine@gmail.com>)
-	id 1RJSgl-0005Cc-QY; Thu, 27 Oct 2011 12:20:19 -0400
-Received: by qadc12 with SMTP id c12so3389923qad.4
-	for <multiple recipients>; Thu, 27 Oct 2011 09:20:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=sender:from:to:in-reply-to:subject:references:message-id
-	:content-type:content-transfer-encoding:mime-version:date:cc
-	:x-mailer; bh=oabbiKLdtksFyecRXfPsjHtM0JPJcMcjkw/Na+VMHfI=;
-	b=Sc0WOtzTSyE88qzmDcdePJbUyt8Lcq5rTqC9wycGuUSbCYFNkt9sAg1BnSDN03bhpN
-	anFGz4nzxXgs8UMCNarAPMs/D5B3RmCSKqHuxlx7zLzWSIJLFvsdx8qeOHQXxo432772
-	C6ZzuKCwkWiezOlBbayD4QWZfshrhEnlAjl/o=
-Received: by 10.224.189.200 with SMTP id df8mr2381664qab.31.1319732419317;
-	Thu, 27 Oct 2011 09:20:19 -0700 (PDT)
-Received: from [192.168.1.2] (user-0c936tj.cable.mindspring.com.
-	[24.145.155.179])
-	by mx.google.com with ESMTPS id dk9sm8897663qab.0.2011.10.27.09.20.17
-	(version=SSLv3 cipher=OTHER); Thu, 27 Oct 2011 09:20:18 -0700 (PDT)
-Sender: Eric Sunshine <ericsunshine@gmail.com>
-From: Eric Sunshine <sunshine@sunshineco.com>
-To: Stefan Weil <sw@weilnetz.de>
-In-Reply-To: <4EA982D0.10902@weilnetz.de>
-References: <1319658678-18355-1-git-send-email-sunshine@sunshineco.com>
-	<4EA91C16.6050908@redhat.com> <4EA982D0.10902@weilnetz.de>
-Message-Id: <FA53AC17-C206-400F-A66D-31EDDD2FE405@sunshineco.com>
-Content-Type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
-Content-Transfer-Encoding: 7bit
-Mime-Version: 1.0 (Apple Message framework v936)
-Date: Thu, 27 Oct 2011 12:20:15 -0400
-X-Mailer: Apple Mail (2.936)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.45
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
+	(envelope-from <armbru@redhat.com>)
+	id 1RJh35-0007Tf-1G; Fri, 28 Oct 2011 03:40:19 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p9S7e8q8012080
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 28 Oct 2011 03:40:15 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-20.ams2.redhat.com
+	[10.36.116.20])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id p9S7e6r3026805; Fri, 28 Oct 2011 03:40:07 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 500)
+	id 61A936006D; Fri, 28 Oct 2011 09:40:06 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+References: <1319487523-19978-1-git-send-email-sw@weilnetz.de>
+	<20111026125431.GC27267@stefanha-thinkpad.localdomain>
+Date: Fri, 28 Oct 2011 09:40:06 +0200
+In-Reply-To: <20111026125431.GC27267@stefanha-thinkpad.localdomain> (Stefan
+	Hajnoczi's message of "Wed, 26 Oct 2011 13:54:31 +0100")
+Message-ID: <m3obx1y36x.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Teach block/vdi about
-	"discarded" (no longer allocated) blocks
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix compiler warning
+	(always return a value)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,59 +52,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Oct 2011 16:20:29 -0000
+X-List-Received-Date: Fri, 28 Oct 2011 07:40:23 -0000
 
-On Oct 27, 2011, at 12:12 PM, Stefan Weil wrote:
+Stefan Hajnoczi <stefanha@gmail.com> writes:
 
-> Am 27.10.2011 10:53, schrieb Kevin Wolf:
->> Am 26.10.2011 21:51, schrieb Eric Sunshine:
->>> An entry in the VDI block map will hold an offset to the actual  
->>> block if
->>> the block is allocated, or one of two specially-interpreted values  
->>> if
->>> not allocated. Using VirtualBox terminology, value  
->>> VDI_IMAGE_BLOCK_FREE
->>> (0xffffffff) represents a never-allocated block (semantically  
->>> arbitrary
->>> content). VDI_IMAGE_BLOCK_ZERO (0xfffffffe) represents a "discarded"
->>> block (semantically zero-filled). block/vdi knows only about
->>> VDI_IMAGE_BLOCK_FREE. Teach it about VDI_IMAGE_BLOCK_ZERO.
->>>
->>> Signed-off-by: Eric Sunshine <sunshine@sunshineco.com>
->>
->> Thanks, applied to the block branch.
->>
->> Kevin
+> On Mon, Oct 24, 2011 at 10:18:43PM +0200, Stefan Weil wrote:
+>> For compilations with -DNDEBUG, the default case did not return
+>> a value which caused a compiler warning.
+>> 
+>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>> ---
+>>  hw/ppce500_spin.c |   11 ++++++++---
+>>  1 files changed, 8 insertions(+), 3 deletions(-)
+>> 
+>> diff --git a/hw/ppce500_spin.c b/hw/ppce500_spin.c
+>> index cccd940..5b5ffe0 100644
+>> --- a/hw/ppce500_spin.c
+>> +++ b/hw/ppce500_spin.c
+>> @@ -168,17 +168,22 @@ static uint64_t spin_read(void *opaque, target_phys_addr_t addr, unsigned len)
+>>  {
+>>      SpinState *s = opaque;
+>>      uint8_t *spin_p = &((uint8_t*)s->spin)[addr];
+>> +    uint64_t result = 0;
+>>  
+>>      switch (len) {
+>>      case 1:
+>> -        return ldub_p(spin_p);
+>> +        result = ldub_p(spin_p);
+>> +        break;
+>>      case 2:
+>> -        return lduw_p(spin_p);
+>> +        result = lduw_p(spin_p);
+>> +        break;
+>>      case 4:
+>> -        return ldl_p(spin_p);
+>> +        result = ldl_p(spin_p);
+>> +        break;
+>>      default:
+>>          assert(0);
 >
->
-> Kevin, I don't want to block improvements. Nevertheless
-> I'd like to see a small modification in this patch:
-> both #defines should be implemented without a type cast.
-> Please change them or wait until Eric sends an update.
->
-> My favorite is this:
->
-> #define VDI_UNALLOCATED UINT32_MAX
-> #define VDI_DISCARD     (VDI_UNALLOCATED - 1)
->
-> This would also be ok:
->
-> #define VDI_UNALLOCATED 0xffffffffU
-> #define VDI_DISCARD     0xfffffffeU
->
-> Using the macro names and the definitions (with type cast)
-> from the original VirtualBox code would also be ok.
+> I would replace assert(3) with abort(3).  If this ever happens the
+> program is broken - returning 0 instead of an undefined value doesn't
+> help.
 
-I originally implemented the change using the macro names, comments,  
-and definitions from the VirtualBox code, but found that it made the  
-diff so noisy that it obscured the simpler underlying change of  
-teaching block/vdi about "discarded" blocks. Sticking with the  
-original VDI_UNALLOCATED macro name kept the diff noise level down.
+Why is it useful to make failed assertions stop the program regardless
+of NDEBUG only when the assertion happens to be "can't reach"?
 
-At any rate, if Kevin can amend the commit with one of your above  
-suggestions, that would be simplest. Otherwise, I can re-roll. Let me  
-know which is preferred.
+If you worry about assertions failing, don't compile with -DNDEBUG.
 
--- ES
-
+"Doctor, it hurts when I disable assertions!"
+"Don't disable them, then."
+;-P
 
