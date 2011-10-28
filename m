@@ -1,33 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RJo1Z-0002jX-Iy
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2011 11:07:13 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:34330)
+	id 1RJpTi-0004OR-RN
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2011 12:40:22 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:41612)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RJo1X-0002fm-7C
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 11:07:12 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RJpTf-0004Ns-MA
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 12:40:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RJo1W-0005a5-8q
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 11:07:11 -0400
-Received: from oxygen.pond.sub.org ([78.46.104.156]:46501)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RJpTe-0006hZ-G8
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 12:40:19 -0400
+Received: from mail-qw0-f45.google.com ([209.85.216.45]:56393)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1RJo1Q-0005ZP-Rg; Fri, 28 Oct 2011 11:07:04 -0400
-Received: from blackfin.pond.sub.org (p5B32C8B0.dip.t-dialin.net
-	[91.50.200.176])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id 285C89FF71;
-	Fri, 28 Oct 2011 17:07:03 +0200 (CEST)
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id 4F7EB6006D; Fri, 28 Oct 2011 17:07:02 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 28 Oct 2011 17:07:02 +0200
-Message-Id: <1319814422-17952-1-git-send-email-armbru@redhat.com>
-X-Mailer: git-send-email 1.7.6.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 78.46.104.156
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] acl: Fix use after free in qemu_acl_reset()
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1RJpTe-0006hT-Dw; Fri, 28 Oct 2011 12:40:18 -0400
+Received: by qadc12 with SMTP id c12so4708300qad.4
+	for <multiple recipients>; Fri, 28 Oct 2011 09:40:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=sender:message-id:date:from:user-agent:mime-version:newsgroups:to
+	:cc:subject:references:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=hYTU3vZeVm01mzr9K84y0yrHOu8l9qNFdWHfcOMupU8=;
+	b=Rl8aSaUvoMnuG3jPEJ0EGPPZM+LoSm13P16P6eUAUBWUaWUCP8YH+0fF/5F/j9clQ1
+	7POTsMXN/rfGTh77THJaibOvwr4wPbz+2oOOQjREivOgHt169JZn2N4eWTQ0W4gdaRWY
+	saDjc5XIh4sNJiOdlnk3WRSGTwNxLGuFIndIk=
+Received: by 10.224.96.69 with SMTP id g5mr3458532qan.32.1319820017782;
+	Fri, 28 Oct 2011 09:40:17 -0700 (PDT)
+Received: from yakj.usersys.redhat.com (93-34-199-98.ip51.fastwebnet.it.
+	[93.34.199.98])
+	by mx.google.com with ESMTPS id ed2sm471099qab.15.2011.10.28.09.40.14
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 28 Oct 2011 09:40:16 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <4EAADAEA.5070608@redhat.com>
+Date: Fri, 28 Oct 2011 18:40:10 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:7.0.1) Gecko/20110930 Thunderbird/7.0.1
+MIME-Version: 1.0
+Newsgroups: gmane.comp.emulators.qemu
+To: Markus Armbruster <armbru@redhat.com>
+References: <1319487523-19978-1-git-send-email-sw@weilnetz.de>
+	<20111026125431.GC27267@stefanha-thinkpad.localdomain>
+	<m3obx1y36x.fsf@blackfin.pond.sub.org>
+	<CAJSP0QVpEpB-_hAWJr1mNKzoEjGGPwVBkMu+S-BcOFe_fK7Nhw@mail.gmail.com>
+	<m34nytsd99.fsf@blackfin.pond.sub.org>
+	<CAJSP0QUX0TtQtrwsotPuGtMXnq=pH8srk-Bbyn6B2gu2YMt9hQ@mail.gmail.com>
+	<m3y5w5nzma.fsf@blackfin.pond.sub.org>
+	<CAJSP0QWd-aT6Hyj=dut+a_Va75zYMORzdjGit3pzU-PFzYWD+Q@mail.gmail.com>
+	<m3ehxxfae3.fsf@blackfin.pond.sub.org>
+In-Reply-To: <m3ehxxfae3.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.216.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>
+Subject: Re: [Qemu-trivial] [PATCH] Fix compiler warning (always return a
+	value)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,45 +67,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Oct 2011 15:07:12 -0000
+X-List-Received-Date: Fri, 28 Oct 2011 16:40:20 -0000
 
-Reproducer:
+On 10/28/2011 04:39 PM, Markus Armbruster wrote:
+>> >
+>> >  I'm tempted to continue the thread but at the end of the day we just
+>> >  need to make the function compile with -NDEBUG.  Using abort(3) or
+> Do we?
+>
+> Anyone crazy^Wadventurous enough to compile with -DNDEBUG should be
+> capable of configure --disable-werror.
 
-    $ MALLOC_PERTURB_=234 qemu-system-x86_64 -vnc :0,acl,sasl [...]
-    QEMU 0.15.50 monitor - type 'help' for more information
-    (qemu) acl_add vnc.username fred allow
-    acl: added rule at position 1
-    (qemu) acl_reset vnc.username
-    Segmentation fault (core dumped)
+Also, I'm not really sure of the benefit of NDEBUG.  For something like 
+QEMU, hardware emulation is not going to be your bottleneck and for KVM 
+you badly want those asserts to protect against guest-to-host 
+escalation.  If you have a really expensive check, you should wrap it 
+inside #ifdef DEBUG.
 
-Spotted by Coverity.
+And if you use NDEBUG because you want to live on the edge and ignore 
+possible problems, remember there's an "assert (p != NULL)" hidden 
+before any pointer dereference, and you cannot disable that with NDEBUG. :)
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- acl.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/acl.c b/acl.c
-index 0654f38..e840b9b 100644
---- a/acl.c
-+++ b/acl.c
-@@ -95,13 +95,13 @@ int qemu_acl_party_is_allowed(qemu_acl *acl,
- 
- void qemu_acl_reset(qemu_acl *acl)
- {
--    qemu_acl_entry *entry;
-+    qemu_acl_entry *entry, *next_entry;
- 
-     /* Put back to deny by default, so there is no window
-      * of "open access" while the user re-initializes the
-      * access control list */
-     acl->defaultDeny = 1;
--    QTAILQ_FOREACH(entry, &acl->entries, next) {
-+    QTAILQ_FOREACH_SAFE(entry, &acl->entries, next, next_entry) {
-         QTAILQ_REMOVE(&acl->entries, entry, next);
-         free(entry->match);
-         free(entry);
--- 
-1.7.6.4
-
+Paolo
 
