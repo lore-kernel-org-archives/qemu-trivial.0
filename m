@@ -1,41 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RJuK3-0006eJ-GH
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2011 17:50:43 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:47284)
+	id 1RKlLo-0003TH-76
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Oct 2011 02:28:04 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:48249)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pavel.borzenkov@gmail.com>) id 1RJuK0-0006Ux-Vu
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 17:50:41 -0400
+	(envelope-from <armbru@redhat.com>) id 1RKlLk-0003EK-5z
+	for qemu-trivial@nongnu.org; Mon, 31 Oct 2011 02:28:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pavel.borzenkov@gmail.com>) id 1RJuK0-0000zS-3a
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2011 17:50:40 -0400
-Received: from mail-bw0-f45.google.com ([209.85.214.45]:33052)
+	(envelope-from <armbru@redhat.com>) id 1RKlLi-0001h0-Nf
+	for qemu-trivial@nongnu.org; Mon, 31 Oct 2011 02:27:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46852)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pavel.borzenkov@gmail.com>)
-	id 1RJuJy-0000yd-0T; Fri, 28 Oct 2011 17:50:38 -0400
-Received: by bke5 with SMTP id 5so757718bke.4
-	for <multiple recipients>; Fri, 28 Oct 2011 14:50:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=from:to:cc:subject:date:message-id:x-mailer;
-	bh=F0nT4fl8bVZkPlRcFKGwl0jDF1sAJKJI+xxyimu7tRo=;
-	b=Q8OL8O23Kdn0iF33EDcPmFNNfxO1DjyXYhjWkcZB/SO40z4sTRwbTzqzbFGWmcbCqS
-	i/a05KqLKhR5nMknqeEtbs2WLzflURcVJNDN2LU1Vgw1cdleTLHPlHrRnacVABhJ7L3G
-	ULi2Oud0wjE5bO3poghEqinMAuzeDZEeRFT2Q=
-Received: by 10.204.15.208 with SMTP id l16mr3857868bka.18.1319838637043;
-	Fri, 28 Oct 2011 14:50:37 -0700 (PDT)
-Received: from localhost.localdomain (ppp83-237-4-61.pppoe.mtu-net.ru.
-	[83.237.4.61])
-	by mx.google.com with ESMTPS id e14sm8808803bka.0.2011.10.28.14.50.33
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 28 Oct 2011 14:50:35 -0700 (PDT)
-From: Pavel Borzenkov <pavel.borzenkov@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Sat, 29 Oct 2011 01:50:33 +0400
-Message-Id: <1319838633-25493-1-git-send-email-pavel.borzenkov@gmail.com>
-X-Mailer: git-send-email 1.7.5.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] cmd: Fix potential memory leak
+	(envelope-from <armbru@redhat.com>)
+	id 1RKlLf-0001g5-U9; Mon, 31 Oct 2011 02:27:56 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id p9V6RsOT004445
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 31 Oct 2011 02:27:54 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-20.ams2.redhat.com
+	[10.36.116.20])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id p9V6RrR4007926; Mon, 31 Oct 2011 02:27:53 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 500)
+	id A0BE66006D; Mon, 31 Oct 2011 07:27:52 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Pavel Borzenkov <pavel.borzenkov@gmail.com>
+References: <1319838533-25405-1-git-send-email-pavel.borzenkov@gmail.com>
+Date: Mon, 31 Oct 2011 07:27:52 +0100
+In-Reply-To: <1319838533-25405-1-git-send-email-pavel.borzenkov@gmail.com>
+	(Pavel Borzenkov's message of "Sat, 29 Oct 2011 01:48:53 +0400")
+Message-ID: <m3pqhdn09j.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] cmd: Fix potential NULL
+	pointer dereference
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,46 +50,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Oct 2011 21:50:41 -0000
+X-List-Received-Date: Mon, 31 Oct 2011 06:28:01 -0000
 
-Signed-off-by: Pavel Borzenkov <pavel.borzenkov@gmail.com>
----
-Note, that almost all code in the file violates CODING STYLE. The changed lines
-are written wrt CODING STYLE (like commits 7d7d975c and c32d766a).
----
- cmd.c |   11 ++++++++---
- 1 files changed, 8 insertions(+), 3 deletions(-)
+Pavel Borzenkov <pavel.borzenkov@gmail.com> writes:
 
-diff --git a/cmd.c b/cmd.c
-index abcf206..e1ae5a0 100644
---- a/cmd.c
-+++ b/cmd.c
-@@ -334,16 +334,21 @@ breakline(
- 	int	c = 0;
- 	char	*p;
- 	char	**rval = calloc(sizeof(char *), 1);
-+    char **tmp;
- 
- 	while (rval && (p = qemu_strsep(&input, " ")) != NULL) {
- 		if (!*p)
- 			continue;
- 		c++;
--		rval = realloc(rval, sizeof(*rval) * (c + 1));
--		if (!rval) {
-+        tmp = realloc(rval, sizeof(*rval) * (c + 1));
-+        if (!tmp) {
-+            free(rval);
-+            rval = NULL;
- 			c = 0;
- 			break;
--		}
-+        } else {
-+            rval = tmp;
-+        }
- 		rval[c - 1] = p;
- 		rval[c] = NULL;
- 	}
--- 
-1.7.0.4
+> Signed-off-by: Pavel Borzenkov <pavel.borzenkov@gmail.com>
+> ---
+> Note, that almost all code in the file violates CODING STYLE. The changed lines
+> are written wrt CODING STYLE (like commits 7d7d975c and c32d766a).
+>
+> ---
+>
+>  cmd.c |   11 +++--------
+>  1 files changed, 3 insertions(+), 8 deletions(-)
+>
+> diff --git a/cmd.c b/cmd.c
+> index f77897e..abcf206 100644
+> --- a/cmd.c
+> +++ b/cmd.c
+> @@ -49,7 +49,7 @@ void
+>  add_command(
+>  	const cmdinfo_t	*ci)
+>  {
+> -	cmdtab = realloc((void *)cmdtab, ++ncmds * sizeof(*cmdtab));
+> +    cmdtab = g_realloc((void *)cmdtab, ++ncmds * sizeof(*cmdtab));
+>  	cmdtab[ncmds - 1] = *ci;
+>  	qsort(cmdtab, ncmds, sizeof(*cmdtab), compare);
+>  }
 
+Inconsistent indentation.
+
+Either stick to the original indentation, or reindent the whole
+function.
+
+[More of the same...]
 
