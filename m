@@ -1,43 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RLIvm-0002Q1-4G
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Nov 2011 14:19:26 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:49472)
+	id 1RLJ96-0006QZ-UY
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Nov 2011 14:33:12 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:56631)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1RLIhd-0005Y8-MB
-	for qemu-trivial@nongnu.org; Tue, 01 Nov 2011 14:04:50 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1RLJ94-0006FP-0o
+	for qemu-trivial@nongnu.org; Tue, 01 Nov 2011 14:33:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1RLIhZ-0002kE-Ox
-	for qemu-trivial@nongnu.org; Tue, 01 Nov 2011 14:04:49 -0400
-Received: from mail-qy0-f173.google.com ([209.85.216.173]:53366)
+	(envelope-from <pm215@archaic.org.uk>) id 1RLJ8z-0000at-Qt
+	for qemu-trivial@nongnu.org; Tue, 01 Nov 2011 14:33:09 -0400
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:33284)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>)
-	id 1RLIhT-0002jD-AR; Tue, 01 Nov 2011 14:04:39 -0400
-Received: by qyk30 with SMTP id 30so1029167qyk.4
-	for <multiple recipients>; Tue, 01 Nov 2011 11:04:38 -0700 (PDT)
-Received: by 10.229.52.148 with SMTP id i20mr123665qcg.81.1320170678008;
-	Tue, 01 Nov 2011 11:04:38 -0700 (PDT)
-Received: from [192.168.0.103] (cpe-70-123-132-139.austin.res.rr.com.
-	[70.123.132.139])
-	by mx.google.com with ESMTPS id fz9sm34902573qab.13.2011.11.01.11.04.36
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 01 Nov 2011 11:04:37 -0700 (PDT)
-Message-ID: <4EB034B3.2060108@codemonkey.ws>
-Date: Tue, 01 Nov 2011 13:04:35 -0500
-From: Anthony Liguori <anthony@codemonkey.ws>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.21) Gecko/20110831 Lightning/1.0b2 Thunderbird/3.1.13
-MIME-Version: 1.0
-To: Eric Sunshine <sunshine@sunshineco.com>
-References: <1320140389-22079-1-git-send-email-sunshine@sunshineco.com>
-In-Reply-To: <1320140389-22079-1-git-send-email-sunshine@sunshineco.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1RLJ8x-0000Zq-MA; Tue, 01 Nov 2011 14:33:03 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1RLJ8p-0007IM-Ep; Tue, 01 Nov 2011 18:32:55 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Tue,  1 Nov 2011 18:32:55 +0000
+Message-Id: <1320172375-28019-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-barrier: Fix build
- failure on PowerPC Mac OS X
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] configure: Suppress messages from pkg_config
+	probe for check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,44 +36,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Nov 2011 18:19:24 -0000
+X-List-Received-Date: Tue, 01 Nov 2011 18:33:11 -0000
 
-On 11/01/2011 04:39 AM, Eric Sunshine wrote:
-> qemu-barrier.h tests if macro __powerpc__ is defined, however, the
-> preprocessor on PowerPC Mac OS X defines only __POWERPC__, not
-> __powerpc__.  Resolve by testing instead for qemu-provided _ARCH_PPC.
->
-> Signed-off-by: Eric Sunshine<sunshine@sunshineco.com>
+Suppress confusing messages from pkg_config when probing for
+'check' by sending them to /dev/null as we do with other
+similar probes.
 
-Applied.  Thanks.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+We didn't notice this before because we only recently
+changed the default for whether configure probed for this.
+I think that makes this a regression we should fix for 1.0.
 
-Regards,
+ configure |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Anthony Liguori
-
-> ---
->
-> The anomalous __powerpc__ test appears only in qemu-barrier.h.
-> No other source files reference this name.
->
-> Cc: David Gibson<david@gibson.dropbear.id.au>
-
->
->   qemu-barrier.h |    2 +-
->   1 files changed, 1 insertions(+), 1 deletions(-)
->
-> diff --git a/qemu-barrier.h b/qemu-barrier.h
-> index 735eea6..c11bb2b 100644
-> --- a/qemu-barrier.h
-> +++ b/qemu-barrier.h
-> @@ -14,7 +14,7 @@
->    */
->   #define smp_wmb()   barrier()
->
-> -#elif defined(__powerpc__)
-> +#elif defined(_ARCH_PPC)
->
->   /*
->    * We use an eieio() for a wmb() on powerpc.  This assumes we don't
+diff --git a/configure b/configure
+index 28667fe..9661b0e 100755
+--- a/configure
++++ b/configure
+@@ -1828,7 +1828,7 @@ if test "$check_utests" != "no" ; then
+ #include <check.h>
+ int main(void) { suite_create("qemu test"); return 0; }
+ EOF
+-  check_libs=`$pkg_config --libs check`
++  check_libs=`$pkg_config --libs check 2>/dev/null`
+   if compile_prog "" $check_libs ; then
+     check_utests=yes
+     libs_tools="$check_libs $libs_tools"
+-- 
+1.7.4.1
 
 
