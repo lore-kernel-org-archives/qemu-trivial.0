@@ -1,48 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RLb6C-0004vD-Pe
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2011 09:43:24 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:43535)
+	id 1RMEKQ-0005Wo-12
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Nov 2011 03:36:42 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:58497)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1RLb68-0004eR-Le
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2011 09:43:21 -0400
+	(envelope-from <yamahata@valinux.co.jp>) id 1RMEKM-0005JV-Nu
+	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 03:36:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1RLb60-0004vn-TD
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2011 09:43:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:20684)
+	(envelope-from <yamahata@valinux.co.jp>) id 1RMEKL-0003TH-St
+	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 03:36:38 -0400
+Received: from mail.valinux.co.jp ([210.128.90.3]:52833)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1RLb5t-0004uo-Oe; Wed, 02 Nov 2011 09:43:05 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id pA2Dh2fi002543
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 2 Nov 2011 09:43:02 -0400
-Received: from dhcp-5-188.str.redhat.com (dhcp-5-175.str.redhat.com
-	[10.32.5.175])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id pA2DgxLP011090
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-CAMELLIA256-SHA bits=256 verify=NO);
-	Wed, 2 Nov 2011 09:43:01 -0400
-Message-ID: <4EB149A1.9020507@redhat.com>
-Date: Wed, 02 Nov 2011 14:46:09 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:7.0) Gecko/20110927 Thunderbird/7.0
+	(envelope-from <yamahata@valinux.co.jp>)
+	id 1RMEKJ-0003Sx-Gx; Fri, 04 Nov 2011 03:36:35 -0400
+Received: from ps.local.valinux.co.jp (vagw.valinux.co.jp [210.128.90.14])
+	by mail.valinux.co.jp (Postfix) with SMTP id 594A78758E;
+	Fri,  4 Nov 2011 16:36:31 +0900 (JST)
+Received: (nullmailer pid 30124 invoked by uid 1000);
+	Fri, 04 Nov 2011 07:36:31 -0000
+Date: Fri, 4 Nov 2011 16:36:31 +0900
+From: Isaku Yamahata <yamahata@valinux.co.jp>
+To: Anthony PERARD <anthony.perard@citrix.com>,
+	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>,
+	"Michael S\. Tsirkin" <mst@redhat.com>
+Message-ID: <20111104073631.GH499@valinux.co.jp>
+References: <1319814456-8158-1-git-send-email-anthony.perard@citrix.com>
+	<1319814456-8158-6-git-send-email-anthony.perard@citrix.com>
 MIME-Version: 1.0
-To: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
-References: <1320222981-3839-1-git-send-email-wdongxu@linux.vnet.ibm.com>
-In-Reply-To: <1320222981-3839-1-git-send-email-wdongxu@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	pA2Dh2fi002543
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1319814456-8158-6-git-send-email-anthony.perard@citrix.com>
+User-Agent: Mutt/1.5.19 (2009-01-05)
+X-Virus-Scanned: clamav-milter 0.95.2 at va-mail.local.valinux.co.jp
+X-Virus-Status: Clean
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, raywang@linux.vnet.ibm.com, qemu-devel@nongnu.org,
-	afaerber@suse.de
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] block:fix cloop.c
-	coding style
+X-Received-From: 210.128.90.3
+Cc: qemu-trivial@nongnu.org, Xen Devel <xen-devel@lists.xensource.com>,
+	QEMU-devel <qemu-devel@nongnu.org>,
+	Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V3 05/10] pci_regs: Fix
+	value of	PCI_EXP_TYPE_RC_EC.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,24 +50,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Nov 2011 13:43:22 -0000
+X-List-Received-Date: Fri, 04 Nov 2011 07:36:40 -0000
 
-Am 02.11.2011 09:36, schrieb Dong Xu Wang:
-> From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
->=20
-> Fix coding style in block/cloop.c.
->=20
-> v3: Split to 2 patches: one for fixing coding style, one for replacing =
-free with
->     g_free. And correct other 2 places with coding style problem.
-> v2: Fix spelling: gfree->g_free.
-> v1: Use gfree, to pair with g_malloc. Also fix coding style.
->=20
-> Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
-> Reviewed_by: Ray Wang <raywang@linux.vnet.ibm.com>
-> Signed-off-by: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
+Good catch.
+This patch (and the next one 6/10) can be picked up independently
+through qemu-trivial or pci-tree.
 
-Thanks, applied both to the block branch.
+On Fri, Oct 28, 2011 at 04:07:31PM +0100, Anthony PERARD wrote:
+> Value check in PCI Express Base Specification rev 1.1
+> 
+> Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
+> ---
+>  hw/pci_regs.h |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+> 
+> diff --git a/hw/pci_regs.h b/hw/pci_regs.h
+> index e8357c3..6b42515 100644
+> --- a/hw/pci_regs.h
+> +++ b/hw/pci_regs.h
+> @@ -393,7 +393,7 @@
+>  #define  PCI_EXP_TYPE_DOWNSTREAM 0x6	/* Downstream Port */
+>  #define  PCI_EXP_TYPE_PCI_BRIDGE 0x7	/* PCI/PCI-X Bridge */
+>  #define  PCI_EXP_TYPE_RC_END	0x9	/* Root Complex Integrated Endpoint */
+> -#define  PCI_EXP_TYPE_RC_EC	0x10	/* Root Complex Event Collector */
+> +#define  PCI_EXP_TYPE_RC_EC     0xa     /* Root Complex Event Collector */
+>  #define PCI_EXP_FLAGS_SLOT	0x0100	/* Slot implemented */
+>  #define PCI_EXP_FLAGS_IRQ	0x3e00	/* Interrupt message number */
+>  #define PCI_EXP_DEVCAP		4	/* Device capabilities */
+> -- 
+> Anthony PERARD
+> 
+> 
 
-Kevin
+-- 
+yamahata
 
