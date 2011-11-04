@@ -1,42 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RMLnj-0003b2-No
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Nov 2011 11:35:27 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:42395)
+	id 1RMNLy-0005kX-1i
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Nov 2011 13:14:54 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:56203)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony.perard@citrix.com>) id 1RMLng-0003Qp-NL
-	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 11:35:25 -0400
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RMNLv-0005k7-Ez
+	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 13:14:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony.perard@citrix.com>) id 1RMLnf-0006SM-CK
-	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 11:35:24 -0400
-Received: from smtp.citrix.com ([66.165.176.89]:30459)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RMNLt-0007x2-Ls
+	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 13:14:51 -0400
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:59014)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony.perard@citrix.com>)
-	id 1RMLnc-0006S0-Qq; Fri, 04 Nov 2011 11:35:20 -0400
-X-IronPort-AV: E=Sophos;i="4.69,456,1315195200"; d="scan'208";a="18830587"
-Received: from ftlpmailmx01.citrite.net ([10.13.107.65])
-	by FTLPIPO01.CITRIX.COM with ESMTP/TLS/RC4-MD5;
-	04 Nov 2011 11:35:19 -0400
-Received: from smtp01.ad.xensource.com (10.219.128.104) by
-	smtprelay.citrix.com (10.13.107.65) with Microsoft SMTP Server id
-	8.3.137.0; Fri, 4 Nov 2011 11:35:19 -0400
-Received: from perard.uk.xensource.com (dhcp-3-28.uk.xensource.com
-	[10.80.3.28] (may be forged))	by smtp01.ad.xensource.com
-	(8.13.1/8.13.1) with
-	ESMTP id pA4FZH3c027464;	Fri, 4 Nov 2011 08:35:17 -0700
-From: Anthony PERARD <anthony.perard@citrix.com>
-To: QEMU-devel <qemu-devel@nongnu.org>, QEMU-devel <qemu-devel@nongnu.org>
-Date: Fri, 4 Nov 2011 15:35:11 +0000
-Message-ID: <1320420911-32151-1-git-send-email-anthony.perard@citrix.com>
-X-Mailer: git-send-email 1.7.2.5
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RMNLs-0007wZ-Ve
+	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 13:14:49 -0400
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 5404C557
+	for <qemu-trivial@nongnu.org>; Sat,  5 Nov 2011 01:12:59 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:subject:message-id:mime-version:content-type; s=
+	rsa1024; bh=RTRVBaNVfBpQmowOuyWOvuRYzug=; b=rG0ugDrNvYijmomg9e/F
+	x5JXj5vB3z9JA27Cjbo9bujv0Del3HJlk1i+PJDf7zal6QEMz/vSWBlOe6Pmbk+Z
+	OXANIcaMXzBPEzxxvlGrJAeUSFuDRRtSI0JQLPXePbEG7QxfL2dNQ+nEWzh/TnM7
+	aqLYQ62CGKVlOxBda7VwuMI=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 31E04556
+	for <qemu-trivial@nongnu.org>; Sat,  5 Nov 2011 01:12:59 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id pA4HEiOK087494
+	for qemu-trivial@nongnu.org; Sat, 5 Nov 2011 01:14:44 +0800 (CST)
+	(envelope-from chenwj)
+Date: Sat, 5 Nov 2011 01:14:44 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+To: qemu-trivial@nongnu.org
+Message-ID: <20111104171444.GA85143@cs.nctu.edu.tw>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 66.165.176.89
-Cc: Anthony PERARD <anthony.perard@citrix.com>, qemu-trivial@nongnu.org,
-	Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-Subject: [Qemu-trivial] [PATCH] xen-platform: Fix IO port read/write
-	functions
+X-Received-From: 140.113.235.130
+Subject: [Qemu-trivial] [PATCH] qemu-tech.texi: Update default code cache
+	size
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,101 +52,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Nov 2011 15:35:25 -0000
+X-List-Received-Date: Fri, 04 Nov 2011 17:14:52 -0000
 
-Somehow, the read/write functions handle an offset that does not exist anymore.
+  Update the document since the default code cache size is 32 MB now.
 
-Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
-
+Signed-off-by: chenwj <chenwj@cs.nctu.edu.tw>
 ---
- hw/xen_platform.c |   18 +++++++++---------
- 1 files changed, 9 insertions(+), 9 deletions(-)
+ qemu-tech.texi |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/hw/xen_platform.c b/hw/xen_platform.c
-index 6e3ba8b..5e792f5 100644
---- a/hw/xen_platform.c
-+++ b/hw/xen_platform.c
-@@ -113,7 +113,7 @@ static void platform_fixed_ioport_writew(void *opaque, uint32_t addr, uint32_t v
- {
-     PCIXenPlatformState *s = opaque;
+diff --git a/qemu-tech.texi b/qemu-tech.texi
+index 397b070..62afe45 100644
+--- a/qemu-tech.texi
++++ b/qemu-tech.texi
+@@ -435,7 +435,7 @@ generate an addition for the segment base.
+ @node Translation cache
+ @section Translation cache
  
--    switch (addr - XEN_PLATFORM_IOPORT) {
-+    switch (addr) {
-     case 0:
-         /* Unplug devices.  Value is a bitmask of which devices to
-            unplug, with bit 0 the IDE devices, bit 1 the network
-@@ -152,7 +152,7 @@ static void platform_fixed_ioport_writew(void *opaque, uint32_t addr, uint32_t v
- static void platform_fixed_ioport_writel(void *opaque, uint32_t addr,
-                                          uint32_t val)
- {
--    switch (addr - XEN_PLATFORM_IOPORT) {
-+    switch (addr) {
-     case 0:
-         /* PV driver version */
-         break;
-@@ -163,7 +163,7 @@ static void platform_fixed_ioport_writeb(void *opaque, uint32_t addr, uint32_t v
- {
-     PCIXenPlatformState *s = opaque;
- 
--    switch (addr - XEN_PLATFORM_IOPORT) {
-+    switch (addr) {
-     case 0: /* Platform flags */ {
-         hvmmem_type_t mem_type = (val & PFFLAG_ROM_LOCK) ?
-             HVMMEM_ram_ro : HVMMEM_ram_rw;
-@@ -186,7 +186,7 @@ static uint32_t platform_fixed_ioport_readw(void *opaque, uint32_t addr)
- {
-     PCIXenPlatformState *s = opaque;
- 
--    switch (addr - XEN_PLATFORM_IOPORT) {
-+    switch (addr) {
-     case 0:
-         if (s->drivers_blacklisted) {
-             /* The drivers will recognise this magic number and refuse
-@@ -205,7 +205,7 @@ static uint32_t platform_fixed_ioport_readb(void *opaque, uint32_t addr)
- {
-     PCIXenPlatformState *s = opaque;
- 
--    switch (addr - XEN_PLATFORM_IOPORT) {
-+    switch (addr) {
-     case 0:
-         /* Platform flags */
-         return s->flags;
-@@ -221,7 +221,7 @@ static void platform_fixed_ioport_reset(void *opaque)
- {
-     PCIXenPlatformState *s = opaque;
- 
--    platform_fixed_ioport_writeb(s, XEN_PLATFORM_IOPORT, 0);
-+    platform_fixed_ioport_writeb(s, 0, 0);
- }
- 
- const MemoryRegionPortio xen_platform_ioport[] = {
-@@ -251,7 +251,7 @@ static void platform_fixed_ioport_init(PCIXenPlatformState* s)
- static uint32_t xen_platform_ioport_readb(void *opaque, uint32_t addr)
- {
-     if (addr == 0) {
--        return platform_fixed_ioport_readb(opaque, XEN_PLATFORM_IOPORT);
-+        return platform_fixed_ioport_readb(opaque, 0);
-     } else {
-         return ~0u;
-     }
-@@ -263,7 +263,7 @@ static void xen_platform_ioport_writeb(void *opaque, uint32_t addr, uint32_t val
- 
-     switch (addr) {
-     case 0: /* Platform flags */
--        platform_fixed_ioport_writeb(opaque, XEN_PLATFORM_IOPORT, val);
-+        platform_fixed_ioport_writeb(opaque, 0, val);
-         break;
-     case 8:
-         log_writeb(s, val);
-@@ -321,7 +321,7 @@ static int xen_platform_post_load(void *opaque, int version_id)
- {
-     PCIXenPlatformState *s = opaque;
- 
--    platform_fixed_ioport_writeb(s, XEN_PLATFORM_IOPORT, s->flags);
-+    platform_fixed_ioport_writeb(s, 0, s->flags);
- 
-     return 0;
- }
+-A 16 MByte cache holds the most recently used translations. For
++A 32 MByte cache holds the most recently used translations. For
+ simplicity, it is completely flushed when it is full. A translation unit
+ contains just a single basic block (a block of x86 instructions
+ terminated by a jump or by a virtual CPU state change which the
 -- 
-tg: (47abe9a..) fix/pci-platform (depends on: master)
+1.7.3.5
 
