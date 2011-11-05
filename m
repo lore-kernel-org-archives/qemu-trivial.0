@@ -1,46 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RMUiu-0006nJ-Up
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Nov 2011 21:07:04 -0400
-Received: from eggs.gnu.org ([140.186.70.92]:47816)
+	id 1RMbRC-0002mC-Vn
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2011 04:17:14 -0400
+Received: from eggs.gnu.org ([140.186.70.92]:42412)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RMUis-0006nA-Po
-	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 21:07:03 -0400
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RMbRB-0002m6-1O
+	for qemu-trivial@nongnu.org; Sat, 05 Nov 2011 04:17:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RMUir-0007zD-45
-	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 21:07:02 -0400
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:57020)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RMbR9-0001Ku-Sr
+	for qemu-trivial@nongnu.org; Sat, 05 Nov 2011 04:17:13 -0400
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:23449)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RMUiq-0007rr-FX
-	for qemu-trivial@nongnu.org; Fri, 04 Nov 2011 21:07:00 -0400
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RMbR9-0001Jb-6i
+	for qemu-trivial@nongnu.org; Sat, 05 Nov 2011 04:17:11 -0400
 Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id F1EB2723
-	for <qemu-trivial@nongnu.org>; Sat,  5 Nov 2011 09:05:08 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:subject:message-id:mime-version:content-type; s=
-	rsa1024; bh=4snj4y4KX7ZVkP062Q13xz9Jw84=; b=AndXz/lEAZhY65HbPDWE
-	aKoqUBF++xVzHGXIleStnhiDqUVXh8udJWVXh2Cik7TTRRvjYn9jYK2y261nx3g0
-	KoOsuu8Wu83S7WSw1ra6G5kVN0WXIkV2EY7rLHzYPdfzBzgPDVgYsz2SX8Hp2SKi
-	9zc4kGF0ia9D8mMf6JN9cT4=
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 836D4835
+	for <qemu-trivial@nongnu.org>; Sat,  5 Nov 2011 16:15:12 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=from:to
+	:subject:date:message-id; s=rsa1024; bh=jEjnnneZOcMJs1KNNER+QFDQ
+	Ta0=; b=ZQKxI8cxeII0HOvXePHRQ/Xf4m6Ml2iPKFogqk1vjPVbwGMtNvrwCL23
+	U8CDnm7an/LGO/mG54CSjUPRytvKIHC8+zamMVQvzSNloBCtfsVvssv0+1f8iNeC
+	ajRhfRBJK10EDHFypcE/0N5p3vCJHapnp3vCq76+A1VbW7U9nrA=
 Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id E9E0A722
-	for <qemu-trivial@nongnu.org>; Sat,  5 Nov 2011 09:05:08 +0800 (CST)
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 616A7834
+	for <qemu-trivial@nongnu.org>; Sat,  5 Nov 2011 16:15:12 +0800 (CST)
 Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id pA516sEk080244
-	for qemu-trivial@nongnu.org; Sat, 5 Nov 2011 09:06:54 +0800 (CST)
+	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id pA58Gr5w038796
+	for qemu-trivial@nongnu.org; Sat, 5 Nov 2011 16:16:53 +0800 (CST)
 	(envelope-from chenwj)
-Date: Sat, 5 Nov 2011 09:06:54 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+From: Chen Wen-Ren <chenwj@iis.sinica.edu.tw>
 To: qemu-trivial@nongnu.org
-Message-ID: <20111105010654.GA79132@cs.nctu.edu.tw>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Date: Sat,  5 Nov 2011 16:16:53 +0800
+Message-Id: <1320481013-38506-1-git-send-email-chenwj@iis.sinica.edu.tw>
+X-Mailer: git-send-email 1.7.3.5
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 140.113.235.130
-Subject: [Qemu-trivial] [PATCH] qemu-tech.texi: Remove libqemu from QEMU
-	generic features
+Subject: [Qemu-trivial] [PATCH 0/2] Add option to user-mode emulation so
+	that user can specify log file name
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,33 +48,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Nov 2011 01:07:04 -0000
+X-List-Received-Date: Sat, 05 Nov 2011 08:17:14 -0000
 
-  According to [1], libqemu is not available anymore. Remove libqemu
-from QEMU generic features.
+  QEMU user-mode's default log file name is "/tmp/qemu.log". In order to change
+the log file name, user need to modify the source code then recompile QEMU. This
+patchset allow user use "-D filename" option to specify the log file name.
 
-[1] http://www.mail-archive.com/qemu-devel@nongnu.org/msg49809.html
+Chen Wen-Ren (2):
+  exec.c: Make variable logfilename accessible from linux-user/main.c
+  linux-user/main.c: Add option to user-mode emulation so that user can
+    specify log file name
 
-Signed-off-by: Chen Wen-Ren <chenwj@iis.sinica.edu.tw>
----
- qemu-tech.texi |    4 ----
- 1 files changed, 0 insertions(+), 4 deletions(-)
+ exec.c            |    2 +-
+ linux-user/main.c |    8 ++++++++
+ 2 files changed, 9 insertions(+), 1 deletions(-)
 
-diff --git a/qemu-tech.texi b/qemu-tech.texi
-index 397b070..9a590b2 100644
---- a/qemu-tech.texi
-+++ b/qemu-tech.texi
-@@ -96,10 +96,6 @@ Alpha and S390 hosts, but TCG (see below) doesn't support those yet.
- 
- @item Precise exceptions support.
- 
--@item The virtual CPU is a library (@code{libqemu}) which can be used
--in other projects (look at @file{qemu/tests/qruncom.c} to have an
--example of user mode @code{libqemu} usage).
--
- @item
- Floating point library supporting both full software emulation and
- native host FPU instructions.
 -- 
 1.7.3.5
+
 
