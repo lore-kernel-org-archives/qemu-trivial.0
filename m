@@ -1,51 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RNRvX-0001Kg-OX
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2011 11:20:03 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:40900)
+	id 1RNRzu-000234-Dw
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2011 11:24:34 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:60315)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RNRvU-0001KX-Op
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:20:01 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RNRzo-0001i7-Hy
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:24:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RNRvT-0007aA-8v
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:20:00 -0500
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:34893)
+	(envelope-from <stefanha@gmail.com>) id 1RNRzk-0008Jz-QA
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:24:28 -0500
+Received: from mail-fx0-f45.google.com ([209.85.161.45]:44572)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RNRvT-0007Zy-02
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:19:59 -0500
-Received: by faap15 with SMTP id p15so6431731faa.4
-	for <qemu-trivial@nongnu.org>; Mon, 07 Nov 2011 08:19:58 -0800 (PST)
+	(envelope-from <stefanha@gmail.com>)
+	id 1RNRzc-0008I5-Gb; Mon, 07 Nov 2011 11:24:16 -0500
+Received: by faap15 with SMTP id p15so6437173faa.4
+	for <multiple recipients>; Mon, 07 Nov 2011 08:24:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:content-transfer-encoding
 	:in-reply-to:user-agent;
-	bh=D9GthUGIUS9g2HnfRJnnRni3T312juYCmkRdTdd1BMI=;
-	b=Lr5p+bXvYJu6vQJ5/m+cDRH3OOeRMe0PxRGZNEOUiUysjZac3OiMM68kuS/0/bkBa7
-	mO3tkGhc5ItKvfKe7LZN7QV3Sl6ENhLtl2vKvnEMcSHfCNi8wTiPDun7qKrwDKZoNAKS
-	t2ZbXBKnQxrfEY20p2Jk13nCh2C25gx2o4mXA=
-Received: by 10.223.7.14 with SMTP id b14mr49097913fab.10.1320682798228;
-	Mon, 07 Nov 2011 08:19:58 -0800 (PST)
+	bh=9fE1gFU5DhjKgCZ1/yZJdbJwQWCzZLty35MsckTXI/0=;
+	b=RCtzJb/Xt2lV4dxAuMkrebAxtshaEqgL4dLZKjptBF2bdcz56mqkbzapgPLyluPuFw
+	llFLmj2/MpsFaSTAZfbd2OUWuCoRqwosHR5GVORa5lGi+srs4avQ6SD1Qp+226Q3sf4e
+	R2FrEY57UMtrb3reoJgKSKPfidyamrGe0DVuU=
+Received: by 10.223.15.13 with SMTP id i13mr16835394faa.36.1320683055534;
+	Mon, 07 Nov 2011 08:24:15 -0800 (PST)
 Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id i3sm31813077faf.0.2011.11.07.08.19.57
+	by mx.google.com with ESMTPS id
+	g25sm31757719fae.16.2011.11.07.08.24.14
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 07 Nov 2011 08:19:57 -0800 (PST)
-Date: Mon, 7 Nov 2011 16:19:56 +0000
+	Mon, 07 Nov 2011 08:24:15 -0800 (PST)
+Date: Mon, 7 Nov 2011 16:24:13 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
-Message-ID: <20111107161956.GC14396@stefanha-thinkpad.localdomain>
-References: <20111104193331.GA37125@cs.nctu.edu.tw>
-	<20111107081517.GD9450@stefanha-thinkpad.localdomain>
-	<20111107094205.GA19396@cs.nctu.edu.tw>
+To: qemu-devel@nongnu.org
+Message-ID: <20111107162413.GD14396@stefanha-thinkpad.localdomain>
+References: <20111105010654.GA79132@cs.nctu.edu.tw>
+	<20111107081801.GE9450@stefanha-thinkpad.localdomain>
+	<20111107094705.GA20921@cs.nctu.edu.tw>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20111107094205.GA19396@cs.nctu.edu.tw>
+In-Reply-To: <20111107094705.GA20921@cs.nctu.edu.tw>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 209.85.161.45
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] configure: Show --cpu option on the help
- list
+Cc: qemu-trivial@nongnu.org,
+	=?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+Subject: Re: [Qemu-trivial] [PATCH] qemu-tech.texi: Remove libqemu from QEMU
+ generic features
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,21 +59,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Nov 2011 16:20:02 -0000
+X-List-Received-Date: Mon, 07 Nov 2011 16:24:32 -0000
 
-On Mon, Nov 07, 2011 at 05:42:05PM +0800, 陳韋任 wrote:
-> > Please say "Build for host CPU [$cpu]" so that it's 100% clear that this
-> > is the host architecture and not the target.
+On Mon, Nov 07, 2011 at 05:47:05PM +0800, 陳韋任 wrote:
+> On Mon, Nov 07, 2011 at 08:18:01AM +0000, Stefan Hajnoczi wrote:
+> > On Sat, Nov 05, 2011 at 09:06:54AM +0800, 陳韋任 wrote:
+> > >   According to [1], libqemu is not available anymore. Remove libqemu
+> > > from QEMU generic features.
+> > > 
+> > > [1] http://www.mail-archive.com/qemu-devel@nongnu.org/msg49809.html
+> > 
+> > Then perhaps we should get rid of tests/qruncom.c too?
 > 
->   Fix. Thanks. :)
-> 
-> Signed-off-by: Chen Wen-Ren (陳韋任) <chenwj@iis.sinica.edu.tw>
-> ---
->  configure |    1 +
->  1 files changed, 1 insertions(+), 0 deletions(-)
+>   I think so. But I don't know if anyone object this. Is it O.K. cc
+> this to qemu-devel@nongnu.org ?
 
-Thanks, applied to the trivial patches -next tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
+I suggest sending a patch that removes all references to libqemu.a and
+tests/qruncom.c.  Send it to qemu-devel instead of qemu-trivial and see
+if anyone complains :).
 
 Stefan
 
