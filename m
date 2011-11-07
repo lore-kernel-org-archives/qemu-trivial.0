@@ -1,39 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RNNBF-0007PP-Fd
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2011 06:15:57 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:45171)
+	id 1RNRu7-0001HF-Gz
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2011 11:18:35 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:40534)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RNNB9-00074Q-NY
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 06:15:55 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RNRu5-0001H9-AO
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:18:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RNNB8-0006zR-G4
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 06:15:51 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:57919 helo=mx2.suse.de)
+	(envelope-from <stefanha@gmail.com>) id 1RNRu3-0007ED-B5
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:18:33 -0500
+Received: from mail-fx0-f45.google.com ([209.85.161.45]:59265)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1RNNAs-0006wP-Gy; Mon, 07 Nov 2011 06:15:34 -0500
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.221.2])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 063448A908;
-	Mon,  7 Nov 2011 12:15:30 +0100 (CET)
-Message-ID: <4EB7BDC9.6050305@suse.de>
-Date: Mon, 07 Nov 2011 12:15:21 +0100
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:7.0.1) Gecko/20110929 Thunderbird/7.0.1
+	(envelope-from <stefanha@gmail.com>) id 1RNRu3-0007Ae-0f
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:18:31 -0500
+Received: by faap15 with SMTP id p15so6429974faa.4
+	for <qemu-trivial@nongnu.org>; Mon, 07 Nov 2011 08:18:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:content-transfer-encoding
+	:in-reply-to:user-agent;
+	bh=hrEcTLgodrhfyOlqR/ZXYUb/ysAQf9SAWJpFy9ZVN6Q=;
+	b=PODMSw0rpnClwhePMfx/CZnXbZRAhU8txTPlNS+ApJY1lV2o+NMmXVflgeI5rNPioK
+	Z9bP+WbxPhY+n3OJ5EfFJv2m+ah681u+To+dqEZy40M9n9BZgcfsNV0w4yI0dDj49ArQ
+	7L0B5MHYRXOi7DykmLazQ+p0OWdskqMdwihHg=
+Received: by 10.223.57.132 with SMTP id c4mr20258676fah.0.1320682710070;
+	Mon, 07 Nov 2011 08:18:30 -0800 (PST)
+Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
+	by mx.google.com with ESMTPS id
+	y10sm28607400fal.10.2011.11.07.08.18.28
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 07 Nov 2011 08:18:28 -0800 (PST)
+Date: Mon, 7 Nov 2011 16:18:27 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+Message-ID: <20111107161827.GA14396@stefanha-thinkpad.localdomain>
+References: <20111104171444.GA85143@cs.nctu.edu.tw>
+	<20111107081152.GC9450@stefanha-thinkpad.localdomain>
+	<20111107092751.GA8377@cs.nctu.edu.tw>
 MIME-Version: 1.0
-To: =?UTF-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>
-References: <1320616132-21864-1-git-send-email-hpoussin@reactos.org>
-In-Reply-To: <1320616132-21864-1-git-send-email-hpoussin@reactos.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] sonic: fix typo
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20111107092751.GA8377@cs.nctu.edu.tw>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.161.45
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] qemu-tech.texi: Update default code
+ cache size
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,42 +58,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Nov 2011 11:15:55 -0000
+X-List-Received-Date: Mon, 07 Nov 2011 16:18:34 -0000
 
-Would be nice to add description:
+On Mon, Nov 07, 2011 at 05:27:51PM +0800, 陳韋任 wrote:
+> > >   Update the document since the default code cache size is 32 MB now.
+> > > 
+> > > Signed-off-by: chenwj <chenwj@cs.nctu.edu.tw>
+> > > ---
+> > >  qemu-tech.texi |    2 +-
+> > >  1 files changed, 1 insertions(+), 1 deletions(-)
+> > 
+> > Can you point me to the place in the code where we use 32 MB?
+> 
+>   In exec.c,
+> 
+> #define DEFAULT_CODE_GEN_BUFFER_SIZE (32 * 1024 * 1024) <--- HERE
+> 
+> #ifdef USE_STATIC_CODE_GEN_BUFFER
+> static uint8_t static_code_gen_buffer[DEFAULT_CODE_GEN_BUFFER_SIZE]
+>                __attribute__((aligned (CODE_GEN_ALIGN)));
+> #endif
 
-Remove a doubled semicolon.
+Thank you.  I don't work on TCG and after a little bit of unsuccessful
+grepping I figured it would be easiest to ask you :).
 
-Am 06.11.2011 22:48, schrieb Herv=C3=A9 Poussineau:
->=20
-> Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
-
-Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
-
-Andreas
-
-> ---
->  hw/dp8393x.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
->=20
-> diff --git a/hw/dp8393x.c b/hw/dp8393x.c
-> index f66844b..cfec4cb 100644
-> --- a/hw/dp8393x.c
-> +++ b/hw/dp8393x.c
-> @@ -515,7 +515,7 @@ static void write_register(dp8393xState *s, int reg=
-, uint16_t val)
->      switch (reg) {
->          /* Command register */
->          case SONIC_CR:
-> -            do_command(s, val);;
-> +            do_command(s, val);
->              break;
->          /* Prevent write to read-only registers */
->          case SONIC_CAP2:
-
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
+Stefan
 
