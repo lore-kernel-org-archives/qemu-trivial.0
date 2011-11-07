@@ -1,52 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RNLnL-00083y-Er
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2011 04:47:11 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:50834)
+	id 1RNNBF-0007PP-Fd
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2011 06:15:57 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:45171)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RNLnI-00083o-Jk
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 04:47:09 -0500
+	(envelope-from <afaerber@suse.de>) id 1RNNB9-00074Q-NY
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 06:15:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RNLnH-00054j-AH
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 04:47:08 -0500
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:62757)
+	(envelope-from <afaerber@suse.de>) id 1RNNB8-0006zR-G4
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 06:15:51 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:57919 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RNLnH-00054e-0P
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 04:47:07 -0500
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 49F6D34C;
-	Mon,  7 Nov 2011 17:45:17 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=kkpEI3oB0hnjkSRs/3+ldtg7ePk=; b=axr91+lcl6tdbprJjRPMIU7YCtAy
-	Zq1e/SSpWYEN738Y3SqRB2p+EPyJr+WNA6euecG68fxgL5VnU3fRabKsYoupUglV
-	J1UFc0cbUrfBIBww+R2oWoGoBo7VoCIzFnUQE/n1yr6MjvqpoUwIdTde6nUQfzrl
-	RaTigL9g++noAXI=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 4135634B;
-	Mon,  7 Nov 2011 17:45:17 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id pA79l5OY021897;
-	Mon, 7 Nov 2011 17:47:05 +0800 (CST) (envelope-from chenwj)
-Date: Mon, 7 Nov 2011 17:47:05 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Message-ID: <20111107094705.GA20921@cs.nctu.edu.tw>
-References: <20111105010654.GA79132@cs.nctu.edu.tw>
-	<20111107081801.GE9450@stefanha-thinkpad.localdomain>
+	(envelope-from <afaerber@suse.de>)
+	id 1RNNAs-0006wP-Gy; Mon, 07 Nov 2011 06:15:34 -0500
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.221.2])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 063448A908;
+	Mon,  7 Nov 2011 12:15:30 +0100 (CET)
+Message-ID: <4EB7BDC9.6050305@suse.de>
+Date: Mon, 07 Nov 2011 12:15:21 +0100
+From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:7.0.1) Gecko/20110929 Thunderbird/7.0.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20111107081801.GE9450@stefanha-thinkpad.localdomain>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: =?UTF-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>
+References: <1320616132-21864-1-git-send-email-hpoussin@reactos.org>
+In-Reply-To: <1320616132-21864-1-git-send-email-hpoussin@reactos.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 140.113.235.130
-Cc: qemu-trivial@nongnu.org,
-	=?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
-Subject: Re: [Qemu-trivial] [PATCH] qemu-tech.texi: Remove libqemu from QEMU
- generic features
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] sonic: fix typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,27 +45,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Nov 2011 09:47:09 -0000
+X-List-Received-Date: Mon, 07 Nov 2011 11:15:55 -0000
 
-On Mon, Nov 07, 2011 at 08:18:01AM +0000, Stefan Hajnoczi wrote:
-> On Sat, Nov 05, 2011 at 09:06:54AM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB w=
-rote:
-> >   According to [1], libqemu is not available anymore. Remove libqemu
-> > from QEMU generic features.
-> >=20
-> > [1] http://www.mail-archive.com/qemu-devel@nongnu.org/msg49809.html
+Would be nice to add description:
+
+Remove a doubled semicolon.
+
+Am 06.11.2011 22:48, schrieb Herv=C3=A9 Poussineau:
 >=20
-> Then perhaps we should get rid of tests/qruncom.c too?
+> Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
 
-  I think so. But I don't know if anyone object this. Is it O.K. cc
-this to qemu-devel@nongnu.org ?
+Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
 
-Regards,
-chenwj
+Andreas
+
+> ---
+>  hw/dp8393x.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>=20
+> diff --git a/hw/dp8393x.c b/hw/dp8393x.c
+> index f66844b..cfec4cb 100644
+> --- a/hw/dp8393x.c
+> +++ b/hw/dp8393x.c
+> @@ -515,7 +515,7 @@ static void write_register(dp8393xState *s, int reg=
+, uint16_t val)
+>      switch (reg) {
+>          /* Command register */
+>          case SONIC_CR:
+> -            do_command(s, val);;
+> +            do_command(s, val);
+>              break;
+>          /* Prevent write to read-only registers */
+>          case SONIC_CAP2:
+
 
 --=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
+rnberg
 
