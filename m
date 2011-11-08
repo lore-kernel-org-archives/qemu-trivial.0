@@ -1,47 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RNjID-0006fn-6j
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Nov 2011 05:52:37 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:45924)
+	id 1RNkdE-0004k0-GO
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Nov 2011 07:18:24 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:34029)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RNjIA-0006VA-0w
-	for qemu-trivial@nongnu.org; Tue, 08 Nov 2011 05:52:34 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1RNkdB-0004aC-Vk
+	for qemu-trivial@nongnu.org; Tue, 08 Nov 2011 07:18:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RNjI8-0002hA-R9
-	for qemu-trivial@nongnu.org; Tue, 08 Nov 2011 05:52:33 -0500
-Received: from mail-ey0-f173.google.com ([209.85.215.173]:41851)
+	(envelope-from <peter.maydell@linaro.org>) id 1RNkd8-0002IZ-13
+	for qemu-trivial@nongnu.org; Tue, 08 Nov 2011 07:18:21 -0500
+Received: from mail-qy0-f180.google.com ([209.85.216.180]:62761)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RNjI6-0002gk-Du; Tue, 08 Nov 2011 05:52:30 -0500
-Received: by eyh6 with SMTP id 6so216247eyh.4
-	for <multiple recipients>; Tue, 08 Nov 2011 02:52:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=683XdJx6TMjBotUugT58kN/ceGJzUJZvW04HhXPqDxU=;
-	b=XmZki0SLOIhODDkDlLC1vji9Ptc/QxflZsAJmoXt8Oyk2iXngd2fyYXDeeCZkPg2eJ
-	DEZMZezgImWmlDoKtUnH0LJ0l5vJ1YwDG7LW2TCcRQ1sj2yG0YvdAmhLoiXyz9ZAnMf9
-	ExHa0ghm8bdgIeJr+x6j9WT9e+AuhX69XYM9c=
-Received: by 10.14.4.32 with SMTP id 32mr1869186eei.50.1320749549221;
-	Tue, 08 Nov 2011 02:52:29 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id 49sm3160902eec.1.2011.11.08.02.52.28
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 08 Nov 2011 02:52:28 -0800 (PST)
-Date: Tue, 8 Nov 2011 10:52:27 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20111108105227.GC18592@stefanha-thinkpad.localdomain>
-References: <1320746438-31756-1-git-send-email-armbru@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>)
+	id 1RNkd2-0002H8-Cx; Tue, 08 Nov 2011 07:18:12 -0500
+Received: by qyl38 with SMTP id 38so620835qyl.4
+	for <multiple recipients>; Tue, 08 Nov 2011 04:18:11 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1320746438-31756-1-git-send-email-armbru@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.229.43.3 with SMTP id u3mr3686677qce.210.1320754691453; Tue,
+	08 Nov 2011 04:18:11 -0800 (PST)
+Received: by 10.229.187.208 with HTTP; Tue, 8 Nov 2011 04:18:11 -0800 (PST)
+In-Reply-To: <20111108104441.GA18080@stefanha-thinkpad.localdomain>
+References: <4EB45011.6070609@tribudubois.net>
+	<20111108104441.GA18080@stefanha-thinkpad.localdomain>
+Date: Tue, 8 Nov 2011 12:18:11 +0000
+Message-ID: <CAFEAcA8_puQGycqqBA52TcxdMQnrxwF709qXwT5o=rtq8FZ4SA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.215.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qdev: Fix crash on -device
-	'?=x'
+X-Received-From: 209.85.216.180
+Cc: qemu-trivial@nongnu.org, paul@codesourcery.com, qemu-devel@nongnu.org,
+	Jean-Christophe DUBOIS <jcd@tribudubois.net>
+Subject: Re: [Qemu-trivial] [PATCH] arm: Fix CP15 FSR (C5) domain setting
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,18 +42,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Nov 2011 10:52:35 -0000
+X-List-Received-Date: Tue, 08 Nov 2011 12:18:22 -0000
 
-On Tue, Nov 08, 2011 at 11:00:38AM +0100, Markus Armbruster wrote:
-> Spotted by Coverity.
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  hw/qdev.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
+On 8 November 2011 10:44, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> On Fri, Nov 04, 2011 at 09:50:25PM +0100, Jean-Christophe DUBOIS wrote:
+>> During Xvisor development, it was noted that qemu did not return
+>> the correct domain value in the Cp15 [Data] FSR register (C5).
+>>
+>> This patch is a proposal to fix it.
+>>
+>> Signed-off-by: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+>> ---
+>
+> CCed Peter Maydell so this can go through the ARM tree.
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+This is an old and broken version of a patch which I've already
+reviewed the fixed version of -- you can ignore this one.
 
-Stefan
+-- PMM
 
