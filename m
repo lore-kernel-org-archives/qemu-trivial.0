@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RNRzu-000234-Dw
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2011 11:24:34 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:60315)
+	id 1RNanf-0002rC-UR
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2011 20:48:31 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:50949)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RNRzo-0001i7-Hy
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:24:32 -0500
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RNand-0002jn-UM
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 20:48:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RNRzk-0008Jz-QA
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 11:24:28 -0500
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:44572)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RNanc-0007S5-TB
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 20:48:29 -0500
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:59988)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RNRzc-0008I5-Gb; Mon, 07 Nov 2011 11:24:16 -0500
-Received: by faap15 with SMTP id p15so6437173faa.4
-	for <multiple recipients>; Mon, 07 Nov 2011 08:24:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=9fE1gFU5DhjKgCZ1/yZJdbJwQWCzZLty35MsckTXI/0=;
-	b=RCtzJb/Xt2lV4dxAuMkrebAxtshaEqgL4dLZKjptBF2bdcz56mqkbzapgPLyluPuFw
-	llFLmj2/MpsFaSTAZfbd2OUWuCoRqwosHR5GVORa5lGi+srs4avQ6SD1Qp+226Q3sf4e
-	R2FrEY57UMtrb3reoJgKSKPfidyamrGe0DVuU=
-Received: by 10.223.15.13 with SMTP id i13mr16835394faa.36.1320683055534;
-	Mon, 07 Nov 2011 08:24:15 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id
-	g25sm31757719fae.16.2011.11.07.08.24.14
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 07 Nov 2011 08:24:15 -0800 (PST)
-Date: Mon, 7 Nov 2011 16:24:13 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: qemu-devel@nongnu.org
-Message-ID: <20111107162413.GD14396@stefanha-thinkpad.localdomain>
-References: <20111105010654.GA79132@cs.nctu.edu.tw>
-	<20111107081801.GE9450@stefanha-thinkpad.localdomain>
-	<20111107094705.GA20921@cs.nctu.edu.tw>
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RNanc-0007Rv-HN
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2011 20:48:28 -0500
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 5935C7AC;
+	Tue,  8 Nov 2011 09:46:38 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
+	bh=bnNqgpkY/36MTZd/HGpXQMpDpLY=; b=F6RSONs+7DZTst3g6OB8Au9xDP56
+	IJN5X6DyFtZQBUZ+e8zbAoOAb5RdGDQ7W25za/PKNT3FzdsgEvF6M9SDvXJL0MIY
+	XCXO8RiaGhYiD7cBkftu73o+5KL2t0c6pQa8hkCaeEU3Bvf06blrmYhpLA/4+owP
+	ma8BqQ1GjbqQ29k=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 3BF557AB;
+	Tue,  8 Nov 2011 09:46:38 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id pA81mRhN071936;
+	Tue, 8 Nov 2011 09:48:27 +0800 (CST) (envelope-from chenwj)
+Date: Tue, 8 Nov 2011 09:48:27 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Message-ID: <20111108014827.GA66800@cs.nctu.edu.tw>
+References: <20111104171444.GA85143@cs.nctu.edu.tw>
+	<20111107081152.GC9450@stefanha-thinkpad.localdomain>
+	<20111107092751.GA8377@cs.nctu.edu.tw>
+	<20111107161827.GA14396@stefanha-thinkpad.localdomain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20111107094705.GA20921@cs.nctu.edu.tw>
+In-Reply-To: <20111107161827.GA14396@stefanha-thinkpad.localdomain>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.161.45
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 140.113.235.130
 Cc: qemu-trivial@nongnu.org,
 	=?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
-Subject: Re: [Qemu-trivial] [PATCH] qemu-tech.texi: Remove libqemu from QEMU
- generic features
+Subject: Re: [Qemu-trivial] [PATCH] qemu-tech.texi: Update default code
+ cache size
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,24 +60,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Nov 2011 16:24:32 -0000
+X-List-Received-Date: Tue, 08 Nov 2011 01:48:30 -0000
 
-On Mon, Nov 07, 2011 at 05:47:05PM +0800, 陳韋任 wrote:
-> On Mon, Nov 07, 2011 at 08:18:01AM +0000, Stefan Hajnoczi wrote:
-> > On Sat, Nov 05, 2011 at 09:06:54AM +0800, 陳韋任 wrote:
-> > >   According to [1], libqemu is not available anymore. Remove libqemu
-> > > from QEMU generic features.
-> > > 
-> > > [1] http://www.mail-archive.com/qemu-devel@nongnu.org/msg49809.html
-> > 
-> > Then perhaps we should get rid of tests/qruncom.c too?
-> 
->   I think so. But I don't know if anyone object this. Is it O.K. cc
-> this to qemu-devel@nongnu.org ?
+> Thank you.  I don't work on TCG and after a little bit of unsuccessful
+> grepping I figured it would be easiest to ask you :).
 
-I suggest sending a patch that removes all references to libqemu.a and
-tests/qruncom.c.  Send it to qemu-devel instead of qemu-trivial and see
-if anyone complains :).
+  You're welcome. :)
 
-Stefan
+Regards,
+chenwj
+
+--=20
+Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
+Computer Systems Lab, Institute of Information Science,
+Academia Sinica, Taiwan (R.O.C.)
+Tel:886-2-2788-3799 #1667
 
