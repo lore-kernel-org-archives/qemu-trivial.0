@@ -1,44 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RNkko-0000yX-S9
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Nov 2011 07:26:14 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:47273)
+	id 1RNl3U-0007CS-V7
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Nov 2011 07:45:32 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:56474)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RNkki-0000av-Nm
-	for qemu-trivial@nongnu.org; Tue, 08 Nov 2011 07:26:12 -0500
+	(envelope-from <armbru@pond.sub.org>) id 1RNl3S-00074T-8I
+	for qemu-trivial@nongnu.org; Tue, 08 Nov 2011 07:45:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RNkkh-0004PA-I0
-	for qemu-trivial@nongnu.org; Tue, 08 Nov 2011 07:26:08 -0500
-Received: from mail-wy0-f173.google.com ([74.125.82.173]:37668)
+	(envelope-from <armbru@pond.sub.org>) id 1RNl3R-0000NB-An
+	for qemu-trivial@nongnu.org; Tue, 08 Nov 2011 07:45:30 -0500
+Received: from oxygen.pond.sub.org ([78.46.104.156]:59667)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RNkkf-0004Oi-K8; Tue, 08 Nov 2011 07:26:05 -0500
-Received: by wyh22 with SMTP id 22so430191wyh.4
-	for <multiple recipients>; Tue, 08 Nov 2011 04:26:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=c0zB99HTaR0JyO3TQ/rJLorbkHIy6cnjN/5EQZLlsco=;
-	b=g0OMIVE39RD9IFV6FQVLDTG9C5bqPgLT8xLXTH8vAnkERS9oqgA6kU1Fv1FL4nfG4M
-	/2UGyXwXHotrziBZlgLs9S3SRt+TH8LgDJJglEVZcr2aMCA8MCtTMbaRWAE3c2MZHgJu
-	ANcKK6ZgMprLICI96bqUQXj+jftoN5u/dtdEc=
-MIME-Version: 1.0
-Received: by 10.180.90.6 with SMTP id bs6mr12729300wib.63.1320755164446; Tue,
-	08 Nov 2011 04:26:04 -0800 (PST)
-Received: by 10.180.85.165 with HTTP; Tue, 8 Nov 2011 04:26:04 -0800 (PST)
-In-Reply-To: <20111108104950.GB18592@stefanha-thinkpad.localdomain>
-References: <1320746152-31620-1-git-send-email-armbru@redhat.com>
-	<20111108104950.GB18592@stefanha-thinkpad.localdomain>
-Date: Tue, 8 Nov 2011 12:26:04 +0000
-Message-ID: <CAJSP0QXkAGCgh8kKaTfx2pZQZVUAdq=tAkyrFyOK5+2CK+aQPw@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ui/vnc: Convert
- sasl.mechlist to g_malloc() & friends
+	(envelope-from <armbru@pond.sub.org>)
+	id 1RNl3M-0000MC-AC; Tue, 08 Nov 2011 07:45:24 -0500
+Received: from blackfin.pond.sub.org (p5B32AA7E.dip.t-dialin.net
+	[91.50.170.126])
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id 276B79FFC5;
+	Tue,  8 Nov 2011 13:45:22 +0100 (CET)
+Received: by blackfin.pond.sub.org (Postfix, from userid 500)
+	id 5A4726006D; Tue,  8 Nov 2011 13:45:21 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  8 Nov 2011 13:45:21 +0100
+Message-Id: <1320756321-8059-1-git-send-email-armbru@redhat.com>
+X-Mailer: git-send-email 1.7.6.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 78.46.104.156
+Cc: qemu-trivial@nongnu.org, berrange@redhat.com
+Subject: [Qemu-trivial] [PATCH v2] ui/vnc: Convert sasl.mechlist to
+	g_malloc() & friends
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,21 +40,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Nov 2011 12:26:12 -0000
+X-List-Received-Date: Tue, 08 Nov 2011 12:45:31 -0000
 
-On Tue, Nov 8, 2011 at 10:49 AM, Stefan Hajnoczi <stefanha@gmail.com> wrote=
-:
-> On Tue, Nov 08, 2011 at 10:55:52AM +0100, Markus Armbruster wrote:
->> Fixes protocol_client_auth_sasl_mechname() not to crash when malloc()
->> fails. =A0Spotted by Coverity.
->>
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->> ---
->> =A0ui/vnc-auth-sasl.c | =A0 10 +++++-----
->> =A01 files changed, 5 insertions(+), 5 deletions(-)
-> Thanks, merged into the trivial-patches tree:
+Fixes protocol_client_auth_sasl_mechname() not to crash when malloc()
+fails.  Spotted by Coverity.
+---
+ ui/vnc-auth-sasl.c |   19 +++++--------------
+ 1 files changed, 5 insertions(+), 14 deletions(-)
 
-I'll grab the new version when it comes out.
+diff --git a/ui/vnc-auth-sasl.c b/ui/vnc-auth-sasl.c
+index 23b1bf5..e2045fc 100644
+--- a/ui/vnc-auth-sasl.c
++++ b/ui/vnc-auth-sasl.c
+@@ -35,7 +35,7 @@ void vnc_sasl_client_cleanup(VncState *vs)
+         vs->sasl.encodedLength = vs->sasl.encodedOffset = 0;
+         vs->sasl.encoded = NULL;
+         g_free(vs->sasl.username);
+-        free(vs->sasl.mechlist);
++        g_free(vs->sasl.mechlist);
+         vs->sasl.username = vs->sasl.mechlist = NULL;
+         sasl_dispose(&vs->sasl.conn);
+         vs->sasl.conn = NULL;
+@@ -430,11 +430,7 @@ static int protocol_client_auth_sasl_start_len(VncState *vs, uint8_t *data, size
+ 
+ static int protocol_client_auth_sasl_mechname(VncState *vs, uint8_t *data, size_t len)
+ {
+-    char *mechname = malloc(len + 1);
+-    if (!mechname) {
+-        VNC_DEBUG("Out of memory reading mechname\n");
+-        vnc_client_error(vs);
+-    }
++    char *mechname = g_malloc(len + 1);
+     strncpy(mechname, (char*)data, len);
+     mechname[len] = '\0';
+     VNC_DEBUG("Got client mechname '%s' check against '%s'\n",
+@@ -460,7 +456,7 @@ static int protocol_client_auth_sasl_mechname(VncState *vs, uint8_t *data, size_
+         }
+     }
+ 
+-    free(vs->sasl.mechlist);
++    g_free(vs->sasl.mechlist);
+     vs->sasl.mechlist = mechname;
+ 
+     VNC_DEBUG("Validated mechname '%s'\n", mechname);
+@@ -469,7 +465,7 @@ static int protocol_client_auth_sasl_mechname(VncState *vs, uint8_t *data, size_
+ 
+  fail:
+     vnc_client_error(vs);
+-    free(mechname);
++    g_free(mechname);
+     return -1;
+ }
+ 
+@@ -608,12 +604,7 @@ void start_auth_sasl(VncState *vs)
+     }
+     VNC_DEBUG("Available mechanisms for client: '%s'\n", mechlist);
+ 
+-    if (!(vs->sasl.mechlist = strdup(mechlist))) {
+-        VNC_DEBUG("Out of memory");
+-        sasl_dispose(&vs->sasl.conn);
+-        vs->sasl.conn = NULL;
+-        goto authabort;
+-    }
++    vs->sasl.mechlist = g_strdup(mechlist);
+     mechlistlen = strlen(mechlist);
+     vnc_write_u32(vs, mechlistlen);
+     vnc_write(vs, mechlist, mechlistlen);
+-- 
+1.7.6.4
 
-Stefan
 
