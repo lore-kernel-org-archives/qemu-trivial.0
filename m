@@ -1,34 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RO3u4-0002EX-6K
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Nov 2011 03:53:04 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:49442)
+	id 1RO53j-0007fK-9K
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Nov 2011 05:07:07 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:54785)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RO3u1-00027g-Ov
-	for qemu-trivial@nongnu.org; Wed, 09 Nov 2011 03:53:02 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RO53g-0007Vi-LK
+	for qemu-trivial@nongnu.org; Wed, 09 Nov 2011 05:07:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RO3u0-0006xG-26
-	for qemu-trivial@nongnu.org; Wed, 09 Nov 2011 03:53:01 -0500
-Received: from oxygen.pond.sub.org ([78.46.104.156]:47018)
+	(envelope-from <stefanha@gmail.com>) id 1RO53c-0004Ca-Ff
+	for qemu-trivial@nongnu.org; Wed, 09 Nov 2011 05:07:04 -0500
+Received: from mail-wy0-f173.google.com ([74.125.82.173]:64552)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1RO3tx-0006wo-ME; Wed, 09 Nov 2011 03:52:57 -0500
-Received: from blackfin.pond.sub.org (p5B32DABA.dip.t-dialin.net
-	[91.50.218.186])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id D499BA246E;
-	Wed,  9 Nov 2011 09:52:55 +0100 (CET)
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id 21E6A6006D; Wed,  9 Nov 2011 09:52:55 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed,  9 Nov 2011 09:52:55 +0100
-Message-Id: <1320828775-16828-1-git-send-email-armbru@redhat.com>
-X-Mailer: git-send-email 1.7.6.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 78.46.104.156
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-Subject: [Qemu-trivial] [PATCH] qxl: Don't convert from size_t to int and
-	back in qxl_cursor()
+	(envelope-from <stefanha@gmail.com>)
+	id 1RO53U-0004BL-SU; Wed, 09 Nov 2011 05:06:53 -0500
+Received: by wyh22 with SMTP id 22so1549335wyh.4
+	for <multiple recipients>; Wed, 09 Nov 2011 02:06:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=Xp92qMTr/PuMbME17WvkKRu850R2cxaKXQNjzFRreEs=;
+	b=Ev97Rs6tSpYhC8VIA9M5o+9N/XJXJFM0Q94myWvtY7RULbqKk3+GZ/eMfXuMkXPNgA
+	LqoeGQvFx+ON9uTfxuZvHeK0jH4Boi8U+VQimBDO5BlmiRS/7rVca9ykj3LZbN6m4RZM
+	vnBsLmTupMbIC1KUpBnOeHmaSMzq2b3hxP684=
+Received: by 10.216.136.195 with SMTP id w45mr1245658wei.38.1320833211643;
+	Wed, 09 Nov 2011 02:06:51 -0800 (PST)
+Received: from localhost ([109.224.133.37])
+	by mx.google.com with ESMTPS id fw16sm5059116wbb.13.2011.11.09.02.06.50
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 09 Nov 2011 02:06:50 -0800 (PST)
+Date: Wed, 9 Nov 2011 10:06:49 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20111109100649.GA4659@stefanha-thinkpad.localdomain>
+References: <1320762379-9276-1-git-send-email-armbru@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1320762379-9276-1-git-send-email-armbru@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] ui/vnc: Convert
+ sasl.mechlist to g_malloc() & friends
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,29 +53,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Nov 2011 08:53:02 -0000
+X-List-Received-Date: Wed, 09 Nov 2011 10:07:05 -0000
 
-Just for cleanliness; it would take a truly gigantic cursor to break.
+On Tue, Nov 08, 2011 at 03:26:19PM +0100, Markus Armbruster wrote:
+> Fixes protocol_client_auth_sasl_mechname() not to crash when malloc()
+> fails.  Spotted by Coverity.
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  ui/vnc-auth-sasl.c |   19 +++++--------------
+>  1 files changed, 5 insertions(+), 14 deletions(-)
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- hw/qxl-render.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-diff --git a/hw/qxl-render.c b/hw/qxl-render.c
-index 2c51ba9..133d093 100644
---- a/hw/qxl-render.c
-+++ b/hw/qxl-render.c
-@@ -157,7 +157,7 @@ static QEMUCursor *qxl_cursor(PCIQXLDevice *qxl, QXLCursor *cursor)
- {
-     QEMUCursor *c;
-     uint8_t *image, *mask;
--    int size;
-+    size_t size;
- 
-     c = cursor_alloc(cursor->header.width, cursor->header.height);
-     c->hot_x = cursor->header.hot_spot_x;
--- 
-1.7.6.4
-
+Stefan
 
