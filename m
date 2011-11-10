@@ -1,43 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ROUJF-0005NW-N4
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2011 08:04:49 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:57341)
+	id 1ROUge-0003Yu-UQ
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2011 08:29:00 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:58492)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1ROUJC-0005Bk-Fi
-	for qemu-trivial@nongnu.org; Thu, 10 Nov 2011 08:04:47 -0500
+	(envelope-from <donald.open@gmail.com>) id 1ROUgY-0003Jj-BR
+	for qemu-trivial@nongnu.org; Thu, 10 Nov 2011 08:28:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1ROUJB-0002db-N3
-	for qemu-trivial@nongnu.org; Thu, 10 Nov 2011 08:04:46 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:18780)
+	(envelope-from <donald.open@gmail.com>) id 1ROUgX-0008Ci-9J
+	for qemu-trivial@nongnu.org; Thu, 10 Nov 2011 08:28:54 -0500
+Received: from mail-wy0-f173.google.com ([74.125.82.173]:35053)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1ROUJ1-0002Zo-S9; Thu, 10 Nov 2011 08:04:36 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id pAAD4WJm017992
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 10 Nov 2011 08:04:33 -0500
-Received: from dhcp-5-188.str.redhat.com (vpn1-5-234.ams2.redhat.com
-	[10.36.5.234])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id pAAD4TFm022167
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 10 Nov 2011 08:04:31 -0500
-Message-ID: <4EBBCC9B.7040302@redhat.com>
-Date: Thu, 10 Nov 2011 14:07:39 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:7.0) Gecko/20110927 Thunderbird/7.0
+	(envelope-from <donald.open@gmail.com>)
+	id 1ROUgV-0008C0-41; Thu, 10 Nov 2011 08:28:51 -0500
+Received: by wyh22 with SMTP id 22so2964981wyh.4
+	for <multiple recipients>; Thu, 10 Nov 2011 05:28:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=mime-version:sender:in-reply-to:references:from:date
+	:x-google-sender-auth:message-id:subject:to:cc:content-type
+	:content-transfer-encoding;
+	bh=wGFVbvDSApF6Kz+XXciGAPkvJ37YDXUmgh8l8LLylow=;
+	b=JMf6NenTUpz+VUVagVbmd5dx7HmHZzXAQ5eoYta5qPKiKdwe9OYGFHNuvpGoo338J0
+	SWP5lGy7X2fj6cmDhJhx2lMbHtXgzt/NN+sckaHATspZ2cgk8KOgvcnXdiOUcMnN1csP
+	uei8Y+sGD8npbHK0M3NvOkoDmu81vtht2+Aj8=
+Received: by 10.216.229.32 with SMTP id g32mr1076381weq.84.1320931730138; Thu,
+	10 Nov 2011 05:28:50 -0800 (PST)
 MIME-Version: 1.0
-To: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
+Sender: donald.open@gmail.com
+Received: by 10.216.86.130 with HTTP; Thu, 10 Nov 2011 05:28:09 -0800 (PST)
+In-Reply-To: <20111110113228.GA12527@stefanha-thinkpad.localdomain>
 References: <1320913402-8762-1-git-send-email-wdongxu@linux.vnet.ibm.com>
-In-Reply-To: <1320913402-8762-1-git-send-email-wdongxu@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	<20111110113228.GA12527@stefanha-thinkpad.localdomain>
+From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
+Date: Thu, 10 Nov 2011 21:28:09 +0800
+X-Google-Sender-Auth: Onj_g4HMD8bQ-yRTWB3BGonNwFE
+Message-ID: <CAGrFBsir-S==67-5Kvfvyy33XEYEXw-KGD+iOeRyfinvv-P_ZQ@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.173
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block:add coroutine_fn
  marker to coroutine functions
 X-BeenThere: qemu-trivial@nongnu.org
@@ -51,16 +54,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Nov 2011 13:04:47 -0000
+X-List-Received-Date: Thu, 10 Nov 2011 13:28:59 -0000
 
-Am 10.11.2011 09:23, schrieb Dong Xu Wang:
-> From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
-> 
-> Looks better when reviewing these source files.
-> 
-> Signed-off-by: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
-
-Thanks, applied to the block branch (for 1.1)
-
-Kevin
+2011/11/10 Stefan Hajnoczi <stefanha@gmail.com>:
+> On Thu, Nov 10, 2011 at 04:23:22PM +0800, Dong Xu Wang wrote:
+>> From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
+>>
+>> Looks better when reviewing these source files.
+>>
+>> Signed-off-by: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
+>> ---
+>> =A0block/qcow.c =A0 =A0 | =A0 =A04 ++--
+>> =A0block/qcow2.c =A0 =A0| =A0 =A06 +++---
+>> =A0block/sheepdog.c | =A0 =A04 ++--
+>> =A03 files changed, 7 insertions(+), 7 deletions(-)
+>
+> Reviewed-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+>
+> Looks fine but please send all block patches through Kevin, who actively
+> maintains the block layer.
+>
+> Stefan
+>
+>
+Okay. I will next time. :)
 
