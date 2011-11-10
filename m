@@ -1,48 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ROSvT-0000hZ-Ar
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2011 06:36:11 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:50930)
+	id 1ROUJF-0005NW-N4
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2011 08:04:49 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:57341)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ROSvQ-0000ZV-Qc
-	for qemu-trivial@nongnu.org; Thu, 10 Nov 2011 06:36:09 -0500
+	(envelope-from <kwolf@redhat.com>) id 1ROUJC-0005Bk-Fi
+	for qemu-trivial@nongnu.org; Thu, 10 Nov 2011 08:04:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ROSvP-00041u-J7
-	for qemu-trivial@nongnu.org; Thu, 10 Nov 2011 06:36:08 -0500
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:61374)
+	(envelope-from <kwolf@redhat.com>) id 1ROUJB-0002db-N3
+	for qemu-trivial@nongnu.org; Thu, 10 Nov 2011 08:04:46 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:18780)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1ROSvI-0003wo-Lt; Thu, 10 Nov 2011 06:36:00 -0500
-Received: by mail-fx0-f45.google.com with SMTP id p15so3324761faa.4
-	for <multiple recipients>; Thu, 10 Nov 2011 03:36:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=gss+0b2Bsi3bmkEFnaXdPsx39uD8JYHM4N6xLxl1fcU=;
-	b=rp6ZXdnk5lWvkHnYHnobWq6+tvcuwLwUP4f7qgqCS0UwTb7d8+UycxSyDIzmfDakQF
-	LaauZaqdUXtz1HXEFttAN4ybT34KYeQ1GApPOLQ3HcJt1+VP0YG1BwKbsW3JuuIb4E1w
-	nPn+4UGr9+tYLPxzji5lSdeCVDw5wEIY+hxJY=
-Received: by 10.223.62.209 with SMTP id y17mr11610581fah.7.1320924960173;
-	Thu, 10 Nov 2011 03:36:00 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id
-	a21sm10745306fao.18.2011.11.10.03.35.59
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 10 Nov 2011 03:35:59 -0800 (PST)
-Date: Thu, 10 Nov 2011 11:35:57 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20111110113557.GD12527@stefanha-thinkpad.localdomain>
-References: <1320867938-10127-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <kwolf@redhat.com>)
+	id 1ROUJ1-0002Zo-S9; Thu, 10 Nov 2011 08:04:36 -0500
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id pAAD4WJm017992
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Thu, 10 Nov 2011 08:04:33 -0500
+Received: from dhcp-5-188.str.redhat.com (vpn1-5-234.ams2.redhat.com
+	[10.36.5.234])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id pAAD4TFm022167
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Thu, 10 Nov 2011 08:04:31 -0500
+Message-ID: <4EBBCC9B.7040302@redhat.com>
+Date: Thu, 10 Nov 2011 14:07:39 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:7.0) Gecko/20110927 Thunderbird/7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1320867938-10127-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.161.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: Delete
-	spurious '.'
+To: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
+References: <1320913402-8762-1-git-send-email-wdongxu@linux.vnet.ibm.com>
+In-Reply-To: <1320913402-8762-1-git-send-email-wdongxu@linux.vnet.ibm.com>
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block:add coroutine_fn
+ marker to coroutine functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,20 +51,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Nov 2011 11:36:09 -0000
+X-List-Received-Date: Thu, 10 Nov 2011 13:04:47 -0000
 
-On Wed, Nov 09, 2011 at 07:45:38PM +0000, Peter Maydell wrote:
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> If anything qualifies as a trivial patch, this does :-)
+Am 10.11.2011 09:23, schrieb Dong Xu Wang:
+> From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
 > 
->  MAINTAINERS |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
+> Looks better when reviewing these source files.
+> 
+> Signed-off-by: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
 
-Normally I wouldn't touch MAINTAINERS but this really is trivial :).
+Thanks, applied to the block branch (for 1.1)
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
-
-Stefan
+Kevin
 
