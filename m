@@ -1,42 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ROxX5-00061O-5i
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Nov 2011 15:17:03 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:52596)
+	id 1RPhYN-000783-48
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Nov 2011 16:25:27 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:40197)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1ROx3u-0007hq-H6
-	for qemu-trivial@nongnu.org; Fri, 11 Nov 2011 14:47:03 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1RPhYL-00077g-7x
+	for qemu-trivial@nongnu.org; Sun, 13 Nov 2011 16:25:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1ROx3c-0002Ft-2d
-	for qemu-trivial@nongnu.org; Fri, 11 Nov 2011 14:46:54 -0500
-Received: from mail-gy0-f173.google.com ([209.85.160.173]:54481)
+	(envelope-from <stefan@weilnetz.de>) id 1RPhYK-0001vO-8C
+	for qemu-trivial@nongnu.org; Sun, 13 Nov 2011 16:25:25 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:57642)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>)
-	id 1ROx3R-0002BC-Ft; Fri, 11 Nov 2011 14:46:25 -0500
-Received: by mail-gy0-f173.google.com with SMTP id 11so3672346gyb.4
-	for <multiple recipients>; Fri, 11 Nov 2011 11:46:25 -0800 (PST)
-Received: by 10.50.170.105 with SMTP id al9mr14516124igc.28.1321040784861;
-	Fri, 11 Nov 2011 11:46:24 -0800 (PST)
-Received: from [192.168.0.103] (cpe-70-123-132-139.austin.res.rr.com.
-	[70.123.132.139])
-	by mx.google.com with ESMTPS id hz1sm9471287igc.5.2011.11.11.11.46.23
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 11 Nov 2011 11:46:23 -0800 (PST)
-Message-ID: <4EBD7B8D.80306@codemonkey.ws>
-Date: Fri, 11 Nov 2011 13:46:21 -0600
-From: Anthony Liguori <anthony@codemonkey.ws>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.21) Gecko/20110831 Lightning/1.0b2 Thunderbird/3.1.13
-MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1321004409-3274-1-git-send-email-armbru@redhat.com>
-In-Reply-To: <1321004409-3274-1-git-send-email-armbru@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.160.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/5] Plug a few trivial
-	resource leaks
+	(envelope-from <stefan@weilnetz.de>) id 1RPhYK-0001uV-0b
+	for qemu-trivial@nongnu.org; Sun, 13 Nov 2011 16:25:24 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	0EA0472825EF; Sun, 13 Nov 2011 22:25:02 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id Ev49FAAr6Afz; Sun, 13 Nov 2011 22:24:32 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 9018772825F4; Sun, 13 Nov 2011 22:24:32 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@non-gnu.org
+Date: Sun, 13 Nov 2011 22:24:27 +0100
+Message-Id: <1321219467-12000-2-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.2.5
+In-Reply-To: <1321219467-12000-1-git-send-email-sw@weilnetz.de>
+References: <1321219467-12000-1-git-send-email-sw@weilnetz.de>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Anthony Liguori <aliguori@us.ibm.com>
+Subject: [Qemu-trivial] [PATCH 1.0 2/2] Fix some spelling bugs in
+	documentation and comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,31 +46,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Nov 2011 20:17:01 -0000
+X-List-Received-Date: Sun, 13 Nov 2011 21:25:26 -0000
 
-On 11/11/2011 03:40 AM, Markus Armbruster wrote:
-> As usual, shit happens on error paths.
+These errors were detected by codespell:
 
-Applied all.  Thanks.
+remaing -> remaining
+soley -> solely
+virutal -> virtual
+seperate -> separate
 
-Regards,
+libcacard.txt still needs some more patches.
 
-Anthony Liguori
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ block-migration.c      |    2 +-
+ docs/libcacard.txt     |    6 +++---
+ docs/qapi-code-gen.txt |    2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
->
-> Markus Armbruster (5):
->    qemu-char: Plug memory leak on qemu_chr_open_pty() error path
->    ui: Plug memory leaks on parse_keyboard_layout() error path
->    qemu-sockets: Plug fd leak on unix_connect_opts() error path
->    posix-aio-compat: Plug memory leak on paio_init() error path
->    os-posix: Plug fd leak in qemu_create_pidfile()
->
->   os-posix.c         |    3 +++
->   posix-aio-compat.c |    1 +
->   qemu-char.c        |   19 ++++++++++---------
->   qemu-sockets.c     |    1 +
->   ui/keymaps.c       |   12 +++++++-----
->   5 files changed, 22 insertions(+), 14 deletions(-)
->
+diff --git a/block-migration.c b/block-migration.c
+index 0bff075..5f10486 100644
+--- a/block-migration.c
++++ b/block-migration.c
+@@ -521,7 +521,7 @@ static int is_stage2_completed(void)
+ 
+         if ((remaining_dirty / bwidth) <=
+             migrate_max_downtime()) {
+-            /* finish stage2 because we think that we can finish remaing work
++            /* finish stage2 because we think that we can finish remaining work
+                below max_downtime */
+ 
+             return 1;
+diff --git a/docs/libcacard.txt b/docs/libcacard.txt
+index ae010d2..296706a 100644
+--- a/docs/libcacard.txt
++++ b/docs/libcacard.txt
+@@ -281,7 +281,7 @@ create card responses.
+         VCardResponse *vcard_make_response(VCard7816Status status);
+ 
+     This is the most basic function to get a response. This function will
+-    return a response the consists soley one 2 byte status code. If that status
++    return a response the consists solely one 2 byte status code. If that status
+     code is defined in card_7816t.h, then this function is guarrenteed to
+     return a response with that status. If a cart type specific status code
+     is passed and vcard_make_response fails to allocate the appropriate memory
+@@ -327,7 +327,7 @@ and applet.
+ 
+         int vcard_emul_get_login_count(VCard *card);
+ 
+-    This function returns the the number of remaing login attempts for this
++    This function returns the the number of remaining login attempts for this
+     card. If the card emulator does not know, or the card does not have a
+     way of giving this information, this function returns -1.
+ 
+@@ -373,7 +373,7 @@ functions:
+ 
+   The options structure is built by another function in the virtual card
+   interface where a string of virtual card emulator specific strings are
+-  mapped to the options. The actual structure is defined by the virutal card
++  mapped to the options. The actual structure is defined by the virtual card
+   emulator and is used to determine the configuration of soft cards, or to
+   determine which physical cards to present to the guest.
+ 
+diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
+index c0a9325..5831e37 100644
+--- a/docs/qapi-code-gen.txt
++++ b/docs/qapi-code-gen.txt
+@@ -14,7 +14,7 @@ To map QMP-defined interfaces to the native C QAPI implementations,
+ a JSON-based schema is used to define types and function
+ signatures, and a set of scripts is used to generate types/signatures,
+ and marshaling/dispatch code. The QEMU Guest Agent also uses these
+-scripts, paired with a seperate schema, to generate
++scripts, paired with a separate schema, to generate
+ marshaling/dispatch code for the guest agent server running in the
+ guest.
+ 
+-- 
+1.7.2.5
 
 
