@@ -1,40 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RPhYN-000783-48
+	id 1RPhYN-00078J-7R
 	for mharc-qemu-trivial@gnu.org; Sun, 13 Nov 2011 16:25:27 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:40197)
+Received: from eggs.gnu.org ([140.186.70.92]:40195)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RPhYL-00077g-7x
+	(envelope-from <stefan@weilnetz.de>) id 1RPhYL-00077f-7T
 	for qemu-trivial@nongnu.org; Sun, 13 Nov 2011 16:25:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RPhYK-0001vO-8C
+	(envelope-from <stefan@weilnetz.de>) id 1RPhYK-0001vI-5F
 	for qemu-trivial@nongnu.org; Sun, 13 Nov 2011 16:25:25 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:57642)
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:57638)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RPhYK-0001uV-0b
+	(envelope-from <stefan@weilnetz.de>) id 1RPhYK-0001uL-0g
 	for qemu-trivial@nongnu.org; Sun, 13 Nov 2011 16:25:24 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	0EA0472825EF; Sun, 13 Nov 2011 22:25:02 +0100 (CET)
+	75C0E72825C8; Sun, 13 Nov 2011 22:25:01 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id Ev49FAAr6Afz; Sun, 13 Nov 2011 22:24:32 +0100 (CET)
+	with ESMTP id 33nL7b1PPqPy; Sun, 13 Nov 2011 22:24:32 +0100 (CET)
 Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 9018772825F4; Sun, 13 Nov 2011 22:24:32 +0100 (CET)
+	id EFCB672825EF; Sun, 13 Nov 2011 22:24:31 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@non-gnu.org
-Date: Sun, 13 Nov 2011 22:24:27 +0100
-Message-Id: <1321219467-12000-2-git-send-email-sw@weilnetz.de>
+Date: Sun, 13 Nov 2011 22:24:26 +0100
+Message-Id: <1321219467-12000-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1321219467-12000-1-git-send-email-sw@weilnetz.de>
-References: <1321219467-12000-1-git-send-email-sw@weilnetz.de>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
 X-Received-From: 78.47.199.172
 Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	Anthony Liguori <aliguori@us.ibm.com>
-Subject: [Qemu-trivial] [PATCH 1.0 2/2] Fix some spelling bugs in
-	documentation and comments
+Subject: [Qemu-trivial] [PATCH 1.0 1/2] Fix spelling in documentation and
+	comments (similiar -> similar)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,78 +46,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 13 Nov 2011 21:25:26 -0000
 
-These errors were detected by codespell:
-
-remaing -> remaining
-soley -> solely
-virutal -> virtual
-seperate -> separate
-
-libcacard.txt still needs some more patches.
+This bug was detected by codespell.
+In mips_mipssim.c a grammatical error was fixed, too.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- block-migration.c      |    2 +-
- docs/libcacard.txt     |    6 +++---
- docs/qapi-code-gen.txt |    2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ docs/libcacard.txt |    2 +-
+ hw/mips_mipssim.c  |    2 +-
+ qemu-doc.texi      |    4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/block-migration.c b/block-migration.c
-index 0bff075..5f10486 100644
---- a/block-migration.c
-+++ b/block-migration.c
-@@ -521,7 +521,7 @@ static int is_stage2_completed(void)
- 
-         if ((remaining_dirty / bwidth) <=
-             migrate_max_downtime()) {
--            /* finish stage2 because we think that we can finish remaing work
-+            /* finish stage2 because we think that we can finish remaining work
-                below max_downtime */
- 
-             return 1;
 diff --git a/docs/libcacard.txt b/docs/libcacard.txt
-index ae010d2..296706a 100644
+index 5dee6fa..ae010d2 100644
 --- a/docs/libcacard.txt
 +++ b/docs/libcacard.txt
-@@ -281,7 +281,7 @@ create card responses.
-         VCardResponse *vcard_make_response(VCard7816Status status);
+@@ -399,7 +399,7 @@ functions:
+       This function will automatically generate the appropriate new reader
+       events and add the reader to the list.
  
-     This is the most basic function to get a response. This function will
--    return a response the consists soley one 2 byte status code. If that status
-+    return a response the consists solely one 2 byte status code. If that status
-     code is defined in card_7816t.h, then this function is guarrenteed to
-     return a response with that status. If a cart type specific status code
-     is passed and vcard_make_response fails to allocate the appropriate memory
-@@ -327,7 +327,7 @@ and applet.
+-  To create a new card, the virtual card emulator will call a similiar
++  To create a new card, the virtual card emulator will call a similar
+   function.
  
-         int vcard_emul_get_login_count(VCard *card);
+            VCard *vcard_new(VCardEmul *card_emul,
+diff --git a/hw/mips_mipssim.c b/hw/mips_mipssim.c
+index 7407158..b56cba6 100644
+--- a/hw/mips_mipssim.c
++++ b/hw/mips_mipssim.c
+@@ -1,7 +1,7 @@
+ /*
+  * QEMU/mipssim emulation
+  *
+- * Emulates a very simple machine model similiar to the one use by the
++ * Emulates a very simple machine model similar to the one used by the
+  * proprietary MIPS emulator.
+  * 
+  * Copyright (c) 2007 Thiemo Seufer
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index 149e9bd..154b82d 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -1749,7 +1749,7 @@ PC Keyboard
+ IDE controller
+ @end itemize
  
--    This function returns the the number of remaing login attempts for this
-+    This function returns the the number of remaining login attempts for this
-     card. If the card emulator does not know, or the card does not have a
-     way of giving this information, this function returns -1.
+-The mipssim pseudo board emulation provides an environment similiar
++The mipssim pseudo board emulation provides an environment similar
+ to what the proprietary MIPS emulator uses for running Linux.
+ It supports:
  
-@@ -373,7 +373,7 @@ functions:
+@@ -2141,7 +2141,7 @@ Xtensa emulator pseudo board "sim"
+ Avnet LX60/LX110/LX200 board
+ @end itemize
  
-   The options structure is built by another function in the virtual card
-   interface where a string of virtual card emulator specific strings are
--  mapped to the options. The actual structure is defined by the virutal card
-+  mapped to the options. The actual structure is defined by the virtual card
-   emulator and is used to determine the configuration of soft cards, or to
-   determine which physical cards to present to the guest.
- 
-diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
-index c0a9325..5831e37 100644
---- a/docs/qapi-code-gen.txt
-+++ b/docs/qapi-code-gen.txt
-@@ -14,7 +14,7 @@ To map QMP-defined interfaces to the native C QAPI implementations,
- a JSON-based schema is used to define types and function
- signatures, and a set of scripts is used to generate types/signatures,
- and marshaling/dispatch code. The QEMU Guest Agent also uses these
--scripts, paired with a seperate schema, to generate
-+scripts, paired with a separate schema, to generate
- marshaling/dispatch code for the guest agent server running in the
- guest.
+-The sim pseudo board emulation provides an environment similiar
++The sim pseudo board emulation provides an environment similar
+ to one provided by the proprietary Tensilica ISS.
+ It supports:
  
 -- 
 1.7.2.5
