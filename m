@@ -1,45 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RPx2B-0007RM-UK
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Nov 2011 08:57:15 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:51152)
+	id 1RQ2Ev-0006d5-Lj
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Nov 2011 14:30:45 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:57631)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RPx27-0007C4-NB
-	for qemu-trivial@nongnu.org; Mon, 14 Nov 2011 08:57:13 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1RQ2Es-0006QO-29
+	for qemu-trivial@nongnu.org; Mon, 14 Nov 2011 14:30:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RPx22-0002Lj-AG
-	for qemu-trivial@nongnu.org; Mon, 14 Nov 2011 08:57:11 -0500
-Received: from mail-ey0-f173.google.com ([209.85.215.173]:32809)
+	(envelope-from <stefan@weilnetz.de>) id 1RQ2Eq-0003dH-Ue
+	for qemu-trivial@nongnu.org; Mon, 14 Nov 2011 14:30:41 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:33858)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RPx1u-0002JR-JW; Mon, 14 Nov 2011 08:56:58 -0500
-Received: by eyh6 with SMTP id 6so5521989eyh.4
-	for <multiple recipients>; Mon, 14 Nov 2011 05:56:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=7pzrGZwqy/ot2Is/oLeK5BUHNLkzVmZO2louUuurN/Q=;
-	b=J0W30gyBUpsA1yCqZgGEgMGbZDRzDUEvlDvkN8XCbso9IaGC7YNQWlfLSpQq7XWf70
-	5ueOmspQQW4A5vqFbfOz0/AJeAq6fR4og1l1skVDhJQMt/iGtiBf1w+FMoyevlv6Wuq8
-	Osfu3IwaF39xSdVj9En3oBFt3V8ACY/apheLE=
-MIME-Version: 1.0
-Received: by 10.180.109.106 with SMTP id hr10mr26105710wib.9.1321279016144;
-	Mon, 14 Nov 2011 05:56:56 -0800 (PST)
-Received: by 10.180.85.165 with HTTP; Mon, 14 Nov 2011 05:56:56 -0800 (PST)
-In-Reply-To: <20111111160420.787aee5c@revolver>
-References: <20111111125818.444e400b@revolver> <4EBD3004.3080301@codemonkey.ws>
-	<20111111160420.787aee5c@revolver>
-Date: Mon, 14 Nov 2011 13:56:56 +0000
-Message-ID: <CAJSP0QWfFk8JoTZX=JKy9pY26aBmH5Go3JyFZxKwriJgGz67Wg@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.215.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Anthony Liguori <anthony@codemonkey.ws>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] make user networking
- hostfwd work with restrict=y
+	(envelope-from <stefan@weilnetz.de>)
+	id 1RQ2Eo-0003cY-EU; Mon, 14 Nov 2011 14:30:38 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	C32F372825C8; Mon, 14 Nov 2011 20:30:23 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id s4vmQ7QrzJ4H; Mon, 14 Nov 2011 20:30:03 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 5A6EB72825F4; Mon, 14 Nov 2011 20:30:03 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Mon, 14 Nov 2011 20:29:57 +0100
+Message-Id: <1321298997-20673-2-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.2.5
+In-Reply-To: <1321298997-20673-1-git-send-email-sw@weilnetz.de>
+References: <1321298997-20673-1-git-send-email-sw@weilnetz.de>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Anthony Liguori <aliguori@us.ibm.com>
+Subject: [Qemu-trivial] [PATCH 1.0 2/2] Fix some spelling bugs in
+	documentation and comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,101 +46,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Nov 2011 13:57:13 -0000
+X-List-Received-Date: Mon, 14 Nov 2011 19:30:43 -0000
 
-On Fri, Nov 11, 2011 at 3:04 PM, Gertjan Halkes <qemu@ghalkes.nl> wrote:
-> On Fri, 11 Nov 2011 08:24:04 -0600, Anthony Liguori <anthony@codemonkey.w=
-s>
-> wrote:
->
->>Please submit against qemu.git master with a Signed-off-by.
->
-> Ok, here goes:
->
-> This patch allows the hostfwd option to override the restrict=3Dy setting=
- in
-> the user network stack, as explicitly stated in the documentation on the
-> restrict option:
->
-> =A0 =A0 restrict=3Don|off
-> =A0 =A0 =A0 =A0 If this option is enabled, the guest will be isolated, i.=
-e. it
-> =A0 =A0 =A0 =A0 will not be able to contact the host and no guest IP pack=
-ets
-> =A0 =A0 =A0 =A0 will be routed over the host to the outside. This option =
-does
-> =A0 =A0 =A0 =A0 not affect any explicitly set forwarding rules.
->
-> Qemu bug tracker:
-> https://bugs.launchpad.net/qemu/+bug/829455
->
-> Signed-off-by: Gertjan Halkes <qemu@ghalkes.nl>
-> ---
-> =A0slirp/tcp_input.c | =A0 28 +++++++++++++++++-----------
-> =A01 files changed, 17 insertions(+), 11 deletions(-)
+These errors were detected by codespell:
 
-Jan: Want to take a look at this as SLIRP maintainer?
+remaing -> remaining
+soley -> solely
+virutal -> virtual
+seperate -> separate
 
-> diff --git a/slirp/tcp_input.c b/slirp/tcp_input.c
-> index 942aaf4..ed09c27 100644
-> --- a/slirp/tcp_input.c
-> +++ b/slirp/tcp_input.c
-> @@ -316,16 +316,6 @@ tcp_input(struct mbuf *m, int iphlen, struct socket =
-*inso)
-> =A0 =A0 =A0 =A0m->m_data +=3D sizeof(struct tcpiphdr)+off-sizeof(struct t=
-cphdr);
-> =A0 =A0 =A0 =A0m->m_len =A0-=3D sizeof(struct tcpiphdr)+off-sizeof(struct=
- tcphdr);
->
-> - =A0 =A0if (slirp->restricted) {
-> - =A0 =A0 =A0 =A0for (ex_ptr =3D slirp->exec_list; ex_ptr; ex_ptr =3D ex_=
-ptr->ex_next) {
-> - =A0 =A0 =A0 =A0 =A0 =A0if (ex_ptr->ex_fport =3D=3D ti->ti_dport &&
-> - =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0ti->ti_dst.s_addr =3D=3D ex_ptr->ex_addr=
-.s_addr) {
-> - =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0break;
-> - =A0 =A0 =A0 =A0 =A0 =A0}
-> - =A0 =A0 =A0 =A0}
-> - =A0 =A0 =A0 =A0if (!ex_ptr)
-> - =A0 =A0 =A0 =A0 =A0 =A0goto drop;
-> - =A0 =A0}
-> =A0 =A0 =A0 =A0/*
-> =A0 =A0 =A0 =A0 * Locate pcb for segment.
-> =A0 =A0 =A0 =A0 */
-> @@ -354,7 +344,23 @@ findso:
-> =A0 =A0 =A0 =A0 * the only flag set, then create a session, mark it
-> =A0 =A0 =A0 =A0 * as if it was LISTENING, and continue...
-> =A0 =A0 =A0 =A0 */
-> - =A0 =A0 =A0 =A0if (so =3D=3D NULL) {
-> + =A0 =A0if (so =3D=3D NULL) {
-> + =A0 =A0 =A0 =A0if (slirp->restricted) {
-> + =A0 =A0 =A0 =A0 =A0 =A0/* Any hostfwds will have an existing socket, so=
- we only get here
-> + =A0 =A0 =A0 =A0 =A0 =A0 * for non-hostfwd connections. These should be =
-dropped, unless it
-> + =A0 =A0 =A0 =A0 =A0 =A0 * happens to be a guestfwd.
-> + =A0 =A0 =A0 =A0 =A0 =A0 */
-> + =A0 =A0 =A0 =A0 =A0 =A0for (ex_ptr =3D slirp->exec_list; ex_ptr; ex_ptr=
- =3D ex_ptr->ex_next) {
-> + =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0if (ex_ptr->ex_fport =3D=3D ti->ti_dport=
- &&
-> + =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0ti->ti_dst.s_addr =3D=3D ex_ptr-=
->ex_addr.s_addr) {
-> + =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0break;
-> + =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0}
-> + =A0 =A0 =A0 =A0 =A0 =A0}
-> + =A0 =A0 =A0 =A0 =A0 =A0if (!ex_ptr) {
-> + =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0goto dropwithreset;
-> + =A0 =A0 =A0 =A0 =A0 =A0}
-> + =A0 =A0 =A0 =A0}
-> +
-> =A0 =A0 =A0 =A0 =A0if ((tiflags & (TH_SYN|TH_FIN|TH_RST|TH_URG|TH_ACK)) !=
-=3D TH_SYN)
-> =A0 =A0 =A0 =A0 =A0 =A0goto dropwithreset;
->
-> --
-> 1.7.1
->
->
->
+libcacard.txt still needs some more patches.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ block-migration.c      |    2 +-
+ docs/libcacard.txt     |    6 +++---
+ docs/qapi-code-gen.txt |    2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/block-migration.c b/block-migration.c
+index 0bff075..5f10486 100644
+--- a/block-migration.c
++++ b/block-migration.c
+@@ -521,7 +521,7 @@ static int is_stage2_completed(void)
+ 
+         if ((remaining_dirty / bwidth) <=
+             migrate_max_downtime()) {
+-            /* finish stage2 because we think that we can finish remaing work
++            /* finish stage2 because we think that we can finish remaining work
+                below max_downtime */
+ 
+             return 1;
+diff --git a/docs/libcacard.txt b/docs/libcacard.txt
+index ae010d2..296706a 100644
+--- a/docs/libcacard.txt
++++ b/docs/libcacard.txt
+@@ -281,7 +281,7 @@ create card responses.
+         VCardResponse *vcard_make_response(VCard7816Status status);
+ 
+     This is the most basic function to get a response. This function will
+-    return a response the consists soley one 2 byte status code. If that status
++    return a response the consists solely one 2 byte status code. If that status
+     code is defined in card_7816t.h, then this function is guarrenteed to
+     return a response with that status. If a cart type specific status code
+     is passed and vcard_make_response fails to allocate the appropriate memory
+@@ -327,7 +327,7 @@ and applet.
+ 
+         int vcard_emul_get_login_count(VCard *card);
+ 
+-    This function returns the the number of remaing login attempts for this
++    This function returns the the number of remaining login attempts for this
+     card. If the card emulator does not know, or the card does not have a
+     way of giving this information, this function returns -1.
+ 
+@@ -373,7 +373,7 @@ functions:
+ 
+   The options structure is built by another function in the virtual card
+   interface where a string of virtual card emulator specific strings are
+-  mapped to the options. The actual structure is defined by the virutal card
++  mapped to the options. The actual structure is defined by the virtual card
+   emulator and is used to determine the configuration of soft cards, or to
+   determine which physical cards to present to the guest.
+ 
+diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
+index c0a9325..5831e37 100644
+--- a/docs/qapi-code-gen.txt
++++ b/docs/qapi-code-gen.txt
+@@ -14,7 +14,7 @@ To map QMP-defined interfaces to the native C QAPI implementations,
+ a JSON-based schema is used to define types and function
+ signatures, and a set of scripts is used to generate types/signatures,
+ and marshaling/dispatch code. The QEMU Guest Agent also uses these
+-scripts, paired with a seperate schema, to generate
++scripts, paired with a separate schema, to generate
+ marshaling/dispatch code for the guest agent server running in the
+ guest.
+ 
+-- 
+1.7.2.5
+
 
