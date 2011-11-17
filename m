@@ -1,34 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RQgid-0002Uv-PS
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Nov 2011 09:44:07 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:47463)
+	id 1RR6cw-0006AV-J9
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Nov 2011 13:23:58 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:39244)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RQgib-0002MH-7T
-	for qemu-trivial@nongnu.org; Wed, 16 Nov 2011 09:44:05 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1RR6ct-000609-PJ
+	for qemu-trivial@nongnu.org; Thu, 17 Nov 2011 13:23:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RQgiW-0002f8-DA
-	for qemu-trivial@nongnu.org; Wed, 16 Nov 2011 09:44:05 -0500
-Received: from oxygen.pond.sub.org ([78.46.104.156]:54971)
+	(envelope-from <stefan@weilnetz.de>) id 1RR6cs-0007uE-Pu
+	for qemu-trivial@nongnu.org; Thu, 17 Nov 2011 13:23:55 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:42287)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1RQgiN-0002dQ-Fl; Wed, 16 Nov 2011 09:43:51 -0500
-Received: from blackfin.pond.sub.org (p5B32D5E5.dip.t-dialin.net
-	[91.50.213.229])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id 85C7CA22CD;
-	Wed, 16 Nov 2011 15:43:48 +0100 (CET)
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id D96CD6006E; Wed, 16 Nov 2011 15:43:47 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+	(envelope-from <stefan@weilnetz.de>)
+	id 1RR6cq-0007t9-DQ; Thu, 17 Nov 2011 13:23:52 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	F3A9D72825C8; Thu, 17 Nov 2011 19:23:29 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id iIpWAu8oDB7j; Thu, 17 Nov 2011 19:23:00 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 9494C72825EF; Thu, 17 Nov 2011 19:23:00 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org
-Date: Wed, 16 Nov 2011 15:43:47 +0100
-Message-Id: <1321454627-19403-1-git-send-email-armbru@redhat.com>
-X-Mailer: git-send-email 1.7.6.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 78.46.104.156
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] monitor: Fix file_completion() to check for
-	stat() failure
+Date: Thu, 17 Nov 2011 19:22:58 +0100
+Message-Id: <1321554178-12486-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] gdbstub: Fix GDBRegisterState memory leak
+	and use g_new0 to allocate it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,36 +43,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Nov 2011 14:44:06 -0000
+X-List-Received-Date: Thu, 17 Nov 2011 18:23:57 -0000
 
-stat() can fail for a file name just read with readdir().  Easiest way
-to trigger is a dangling symbolic link --- look ma, no race!  When it
-fails, file_completion() uses sb.st_mode uninitialized.  If the
-directory bit happens to be set, it appends a "/" to the completed
-name.
+cppcheck reported a memory leak which is fixed here.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
+I also replaced the corresponding g_malloc0 by g_new0 because
+that helps reviewers, and it is required by latest recommendations
+anyway.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- monitor.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ gdbstub.c |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/monitor.c b/monitor.c
-index 5ea35de..1be222e 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -4207,9 +4207,9 @@ static void file_completion(const char *input)
-             /* stat the file to find out if it's a directory.
-              * In that case add a slash to speed up typing long paths
-              */
--            stat(file, &sb);
--            if(S_ISDIR(sb.st_mode))
-+            if (stat(file, &sb) == 0 && S_ISDIR(sb.st_mode)) {
-                 pstrcat(file, sizeof(file), "/");
-+            }
-             readline_add_completion(cur_mon->rs, file);
-         }
+diff --git a/gdbstub.c b/gdbstub.c
+index a25f404..031a240 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -1781,7 +1781,7 @@ void gdb_register_coprocessor(CPUState * env,
+     GDBRegisterState **p;
+     static int last_reg = NUM_CORE_REGS;
+ 
+-    s = (GDBRegisterState *)g_malloc0(sizeof(GDBRegisterState));
++    s = g_new0(GDBRegisterState, 1);
+     s->base_reg = last_reg;
+     s->num_regs = num_regs;
+     s->get_reg = get_reg;
+@@ -1790,8 +1790,10 @@ void gdb_register_coprocessor(CPUState * env,
+     p = &env->gdb_regs;
+     while (*p) {
+         /* Check for duplicates.  */
+-        if (strcmp((*p)->xml, xml) == 0)
++        if (strcmp((*p)->xml, xml) == 0) {
++            g_free(s);
+             return;
++        }
+         p = &(*p)->next;
      }
+     /* Add to end of list.  */
 -- 
-1.7.6.4
+1.7.2.5
 
 
