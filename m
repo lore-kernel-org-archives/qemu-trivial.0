@@ -1,47 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RRMh1-0001NQ-3R
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Nov 2011 06:33:15 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:40416)
+	id 1RRNmp-0007LV-VW
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Nov 2011 07:43:19 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:36109)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RRMgv-000130-25
-	for qemu-trivial@nongnu.org; Fri, 18 Nov 2011 06:33:12 -0500
+	(envelope-from <jan.kiszka@web.de>) id 1RRNmj-00070E-TQ
+	for qemu-trivial@nongnu.org; Fri, 18 Nov 2011 07:43:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RRMgr-0008Sf-DN
-	for qemu-trivial@nongnu.org; Fri, 18 Nov 2011 06:33:09 -0500
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:55934)
+	(envelope-from <jan.kiszka@web.de>) id 1RRNmg-0005qM-5S
+	for qemu-trivial@nongnu.org; Fri, 18 Nov 2011 07:43:13 -0500
+Received: from fmmailgate02.web.de ([217.72.192.227]:57138)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RRMgi-0008RD-E3; Fri, 18 Nov 2011 06:32:56 -0500
-Received: by faas14 with SMTP id s14so4558135faa.4
-	for <multiple recipients>; Fri, 18 Nov 2011 03:32:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=a1W9C5YOIGG7Dd+UCaB0tilgzLvtXvEmle0sOd7Kr5A=;
-	b=n2uHQRKL2uteDqyibyKM8CLYc2VIKbZxYIepZgFYDZMLBAm1m+HRVUol9zugSBDB9W
-	cWegbI0gqstg2Tc9lMrwToBXT5SCoSPT7QtKKKkM+AHeJAswvyglbX5CwTe7BMGZJ2N7
-	POUrCMicYeE1FwPUWq0qZikpPOx437HWtjt8E=
-Received: by 10.205.119.207 with SMTP id fv15mr2929675bkc.100.1321615975372;
-	Fri, 18 Nov 2011 03:32:55 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id z3sm5104399faf.13.2011.11.18.03.32.54
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 18 Nov 2011 03:32:54 -0800 (PST)
-Date: Fri, 18 Nov 2011 11:32:53 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20111118113253.GA13224@stefanha-thinkpad.localdomain>
-References: <1321554178-12486-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <jan.kiszka@web.de>)
+	id 1RRNmX-0005ol-AR; Fri, 18 Nov 2011 07:43:01 -0500
+Received: from moweb002.kundenserver.de (moweb002.kundenserver.de
+	[172.19.20.108])
+	by fmmailgate02.web.de (Postfix) with ESMTP id 556961BAFC2D8;
+	Fri, 18 Nov 2011 13:43:00 +0100 (CET)
+Received: from netbook.home ([189.116.108.37]) by smtp.web.de (mrweb002) with
+	ESMTPA (Nemesis) id 0M40jS-1Qa6N93OhG-00rV94;
+	Fri, 18 Nov 2011 13:42:59 +0100
+Message-ID: <4EC652C8.4080903@web.de>
+Date: Fri, 18 Nov 2011 10:42:48 -0200
+From: Jan Kiszka <jan.kiszka@web.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1321554178-12486-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.161.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] gdbstub: Fix GDBRegisterState memory
- leak and use g_new0 to allocate it
+To: Markus Armbruster <armbru@redhat.com>, 
+	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+References: <1321454759-19508-1-git-send-email-armbru@redhat.com>
+In-Reply-To: <1321454759-19508-1-git-send-email-armbru@redhat.com>
+X-Enigmail-Version: 1.3.3
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature";
+	boundary="------------enig3F91A8B8BFA40457D40BA0A6"
+X-Provags-ID: V02:K0:wiQVCMsKLltC8ui+o9XQelr7vrjwHB9fr8inz3pBnrm
+	h4Avb/AhumsvHAJxmVcSWah1dwXcfGmRwlJoqwUjKlFGNXmg+8
+	DqjcQRpmjRU5hhg0Vp0Ayv4cG3wufrbvjKoJjSiRRUDfHPBmVt
+	YEVY+czGPXKAkYBnMgA0LXbpVBSl94on1psLsr86/kedKB8N4H
+	fkCicQKwKGk9Wv4alNm5w==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 217.72.192.227
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] slirp: Clean up
+	net_slirp_hostfwd_remove()'s use of get_str_sep()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,22 +55,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Nov 2011 11:33:12 -0000
+X-List-Received-Date: Fri, 18 Nov 2011 12:43:17 -0000
 
-On Thu, Nov 17, 2011 at 07:22:58PM +0100, Stefan Weil wrote:
-> cppcheck reported a memory leak which is fixed here.
-> 
-> I also replaced the corresponding g_malloc0 by g_new0 because
-> that helps reviewers, and it is required by latest recommendations
-> anyway.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
+--------------enig3F91A8B8BFA40457D40BA0A6
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+
+On 2011-11-16 12:45, Markus Armbruster wrote:
+> get_str_sep() can fail, but net_slirp_hostfwd_remove() doesn't check.
+> Works, because it initializes buf[] to "", which get_str_sep() doesn't
+> touch when it fails.  Coverity doesn't like it, and neither do I.
+>=20
+> Change it to work exactly like slirp_hostfwd().
+>=20
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+
+Acked-by: Jan Kiszka <jan.kiszka@siemens.com>
+
+Stefan, can you take this? My slirp queue not fully "operative" ATM down
+here in Brazil.
+
+Thanks,
+Jan
+
 > ---
->  gdbstub.c |    6 ++++--
->  1 files changed, 4 insertions(+), 2 deletions(-)
+>  net/slirp.c |    9 ++++-----
+>  1 files changed, 4 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/net/slirp.c b/net/slirp.c
+> index c6cda5d..6646ecb 100644
+> --- a/net/slirp.c
+> +++ b/net/slirp.c
+> @@ -305,7 +305,7 @@ void net_slirp_hostfwd_remove(Monitor *mon, const Q=
+Dict *qdict)
+>  {
+>      struct in_addr host_addr =3D { .s_addr =3D INADDR_ANY };
+>      int host_port;
+> -    char buf[256] =3D "";
+> +    char buf[256];
+>      const char *src_str, *p;
+>      SlirpState *s;
+>      int is_udp =3D 0;
+> @@ -325,11 +325,10 @@ void net_slirp_hostfwd_remove(Monitor *mon, const=
+ QDict *qdict)
+>          return;
+>      }
+> =20
+> -    if (!src_str || !src_str[0])
+> -        goto fail_syntax;
+> -
+>      p =3D src_str;
+> -    get_str_sep(buf, sizeof(buf), &p, ':');
+> +    if (!p || get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
+> +        goto fail_syntax;
+> +    }
+> =20
+>      if (!strcmp(buf, "tcp") || buf[0] =3D=3D '\0') {
+>          is_udp =3D 0;
 
-Thanks, applied to the trivial patches -next tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
 
-Stefan
+
+--------------enig3F91A8B8BFA40457D40BA0A6
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.18 (GNU/Linux)
+Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
+
+iEYEARECAAYFAk7GUsgACgkQitSsb3rl5xRNGQCdGaFIqmk/sfjIbTwjYbS2qi29
+v50AnjL3Y+jVRdVhpk/dGArzAKDrq8u9
+=t5oC
+-----END PGP SIGNATURE-----
+
+--------------enig3F91A8B8BFA40457D40BA0A6--
 
