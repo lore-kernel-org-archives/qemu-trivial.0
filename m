@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RSnHD-0007Wf-UB
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Nov 2011 05:08:31 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54535)
+	id 1RSnHQ-00084U-A7
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Nov 2011 05:08:44 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:54577)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1RSnGz-0007OE-Pe
-	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:08:29 -0500
+	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1RSnHD-0007TB-LU
+	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:08:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1RSnGa-000665-WD
-	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:07:57 -0500
-Received: from e28smtp02.in.ibm.com ([122.248.162.2]:51606)
+	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1RSnGi-00067j-Dz
+	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:08:09 -0500
+Received: from e28smtp01.in.ibm.com ([122.248.162.1]:48748)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1RSnGZ-00061s-GL
-	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:07:52 -0500
+	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1RSnGg-00062U-J5
+	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:08:00 -0500
 Received: from /spool/local
-	by e28smtp02.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e28smtp01.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <wdongxu@linux.vnet.ibm.com>;
-	Tue, 22 Nov 2011 15:37:31 +0530
-Received: from d28relay03.in.ibm.com ([9.184.220.60])
-	by e28smtp02.in.ibm.com ([192.168.1.132]) with IBM ESMTP SMTP Gateway:
+	Tue, 22 Nov 2011 15:37:34 +0530
+Received: from d28relay01.in.ibm.com ([9.184.220.58])
+	by e28smtp01.in.ibm.com ([192.168.1.131]) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 22 Nov 2011 15:37:26 +0530
+	Tue, 22 Nov 2011 15:37:17 +0530
 Received: from d28av05.in.ibm.com (d28av05.in.ibm.com [9.184.220.67])
-	by d28relay03.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	pAMA7ObY4161744; Tue, 22 Nov 2011 15:37:26 +0530
+	by d28relay01.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	pAMA7Fnu4186180; Tue, 22 Nov 2011 15:37:16 +0530
 Received: from d28av05.in.ibm.com (loopback [127.0.0.1])
 	by d28av05.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	pAMA7OlU028155; Tue, 22 Nov 2011 21:07:24 +1100
+	pAMA7Ft4027690; Tue, 22 Nov 2011 21:07:15 +1100
 Received: from wdongxu-T410.cn.ibm.com (wdongxu-t410.cn.ibm.com
 	[9.115.118.147] (may be forged))
 	by d28av05.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	pAMA6u0P026400; Tue, 22 Nov 2011 21:07:23 +1100
+	pAMA6u0L026400; Tue, 22 Nov 2011 21:07:14 +1100
 From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 22 Nov 2011 18:06:22 +0800
-Message-Id: <1321956386-12004-7-git-send-email-wdongxu@linux.vnet.ibm.com>
+Date: Tue, 22 Nov 2011 18:06:18 +0800
+Message-Id: <1321956386-12004-3-git-send-email-wdongxu@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.7.5.4
 In-Reply-To: <1321956386-12004-1-git-send-email-wdongxu@linux.vnet.ibm.com>
 References: <1321956386-12004-1-git-send-email-wdongxu@linux.vnet.ibm.com>
-x-cbid: 11112210-5816-0000-0000-00000025676E
+x-cbid: 11112210-4790-0000-0000-00000016BDB4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 122.248.162.2
+X-Received-From: 122.248.162.1
 Cc: qemu-trivial@nongnu.org, stefanha@linux.vnet.ibm.com
-Subject: [Qemu-trivial] [PATCH 07/11] fix spelling in tcg sub directory
+Subject: [Qemu-trivial] [PATCH 03/11] fix spelling in libcacard sub directory
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,43 +55,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Nov 2011 10:08:30 -0000
+X-List-Received-Date: Tue, 22 Nov 2011 10:08:43 -0000
 
 From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
 
 
 Signed-off-by: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
 ---
- tcg/tcg.c |    2 +-
- tcg/tcg.h |    2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ libcacard/card_7816.c      |    4 ++--
+ libcacard/card_7816.h      |    2 +-
+ libcacard/vcard_emul_nss.c |    2 +-
+ libcacard/vscard_common.h  |    2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 77bd6ef..d43fa4a 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -1555,7 +1555,7 @@ static void temp_save(TCGContext *s, int temp, TCGRegSet allocated_regs)
-     }
+diff --git a/libcacard/card_7816.c b/libcacard/card_7816.c
+index 6fe27d5..8d06326 100644
+--- a/libcacard/card_7816.c
++++ b/libcacard/card_7816.c
+@@ -125,7 +125,7 @@ vcard_response_new_bytes(VCard *card, unsigned char *buf, int len, int Le,
  }
  
--/* save globals to their cannonical location and assume they can be
-+/* save globals to their canonical location and assume they can be
-    modified be the following code. 'allocated_regs' is used in case a
-    temporary registers needs to be allocated to store a constant. */
- static void save_globals(TCGContext *s, TCGRegSet allocated_regs)
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index 755a8b3..175000f 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -178,7 +178,7 @@ typedef tcg_target_ulong TCGArg;
- /* Define a type and accessor macros for variables.  Using a struct is
-    nice because it gives some level of type safely.  Ideally the compiler
-    be able to see through all this.  However in practice this is not true,
--   expecially on targets with braindamaged ABIs (e.g. i386).
-+   especially on targets with braindamaged ABIs (e.g. i386).
-    We use plain int by default to avoid this runtime overhead.
-    Users of tcg_gen_* don't need to know about any of this, and should
-    treat TCGv as an opaque type.
+ /*
+- * get a new Reponse buffer that only has a status.
++ * get a new Response buffer that only has a status.
+  */
+ static VCardResponse *
+ vcard_response_new_status(vcard_7816_status_t status)
+@@ -239,7 +239,7 @@ vcard_apdu_set_class(VCardAPDU *apdu) {
+ }
+ 
+ /*
+- * set the Le and Lc fiels according to table 5 of the
++ * set the Le and Lc fields according to table 5 of the
+  * 7816-4 part 4 spec
+  */
+ static vcard_7816_status_t
+diff --git a/libcacard/card_7816.h b/libcacard/card_7816.h
+index 2bb2a0d..4a01993 100644
+--- a/libcacard/card_7816.h
++++ b/libcacard/card_7816.h
+@@ -23,7 +23,7 @@ VCardResponse *vcard_response_new_bytes(VCard *card, unsigned char *buf,
+ /* response from just status bytes */
+ VCardResponse *vcard_response_new_status_bytes(unsigned char sw1,
+                                                unsigned char sw2);
+-/* response from just status: NOTE this cannot fail, it will alwyas return a
++/* response from just status: NOTE this cannot fail, it will always return a
+  * valid response, if it can't allocate memory, the response will be
+  * VCARD7816_STATUS_EXC_ERROR_MEMORY_FAILURE */
+ VCardResponse *vcard_make_response(vcard_7816_status_t status);
+diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
+index 397485c..bdc3c79 100644
+--- a/libcacard/vcard_emul_nss.c
++++ b/libcacard/vcard_emul_nss.c
+@@ -1250,7 +1250,7 @@ vcard_emul_usage(void)
+ "  {card_type_to_emulate}  What card interface to present to the guest\n"
+ "  {param_for_card}        Card interface specific parameters\n"
+ "  {slot_name}             NSS slot that contains the certs\n"
+-"  {vreader_name}          Virutal reader name to present to the guest\n"
++"  {vreader_name}          Virtual reader name to present to the guest\n"
+ "  {certN}                 Nickname of the certificate n on the virtual card\n"
+ "\n"
+ "These parameters come as a single string separated by blanks or newlines."
+diff --git a/libcacard/vscard_common.h b/libcacard/vscard_common.h
+index 609ae98..08f68e4 100644
+--- a/libcacard/vscard_common.h
++++ b/libcacard/vscard_common.h
+@@ -44,7 +44,7 @@
+  * to the existing messages, addition of fields.
+  *
+  * The major digit is for a breaking change of protocol, presumably
+- * something that cannot be accomodated with the existing protocol.
++ * something that cannot be accommodated with the existing protocol.
+  */
+ 
+ #define VSCARD_VERSION MAKE_VERSION(0, 0, 2)
 -- 
 1.7.5.4
 
