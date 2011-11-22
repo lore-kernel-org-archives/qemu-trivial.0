@@ -1,39 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RSo2m-0002fD-K7
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Nov 2011 05:57:40 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:49821)
+	id 1RSo4R-00035K-HX
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Nov 2011 05:59:23 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:50125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1RSo2e-0002Ek-NV
-	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:57:38 -0500
+	(envelope-from <armbru@pond.sub.org>) id 1RSo4L-0002mz-Pi
+	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:59:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1RSo2a-0007dU-CK
-	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:57:32 -0500
-Received: from mail-qw0-f45.google.com ([209.85.216.45]:39593)
+	(envelope-from <armbru@pond.sub.org>) id 1RSo4K-00086M-6W
+	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:59:17 -0500
+Received: from oxygen.pond.sub.org ([78.46.104.156]:58517)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>)
-	id 1RSo2Q-0007cP-3R; Tue, 22 Nov 2011 05:57:18 -0500
-Received: by qabg14 with SMTP id g14so1353241qab.4
-	for <multiple recipients>; Tue, 22 Nov 2011 02:57:17 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.224.185.6 with SMTP id cm6mr7534532qab.89.1321959437158; Tue,
-	22 Nov 2011 02:57:17 -0800 (PST)
-Received: by 10.229.88.68 with HTTP; Tue, 22 Nov 2011 02:57:16 -0800 (PST)
-In-Reply-To: <20111122104354.GA27846@stefanha-thinkpad.localdomain>
-References: <1321730319-21498-1-git-send-email-sw@weilnetz.de>
-	<20111122104354.GA27846@stefanha-thinkpad.localdomain>
-Date: Tue, 22 Nov 2011 10:57:16 +0000
-Message-ID: <CAFEAcA9LHoQRXi2vFmr_bMUEsCU4vqLa7zurw5HFWnTAsjp_rw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.45
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <andreas.faerber@web.de>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] darwin-user: Fix format
- string in debug message
+	(envelope-from <armbru@pond.sub.org>)
+	id 1RSo4E-000857-Oc; Tue, 22 Nov 2011 05:59:10 -0500
+Received: from blackfin.pond.sub.org (p5B32D94C.dip.t-dialin.net
+	[91.50.217.76])
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id E84DFA246D;
+	Tue, 22 Nov 2011 11:59:08 +0100 (CET)
+Received: by blackfin.pond.sub.org (Postfix, from userid 500)
+	id 025346006D; Tue, 22 Nov 2011 11:59:07 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 22 Nov 2011 11:59:07 +0100
+Message-Id: <1321959547-2602-3-git-send-email-armbru@redhat.com>
+X-Mailer: git-send-email 1.7.6.4
+In-Reply-To: <1321959547-2602-1-git-send-email-armbru@redhat.com>
+References: <1321959547-2602-1-git-send-email-armbru@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 78.46.104.156
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH 2/2] console: Fix console_putchar() for CSI J
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,26 +41,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Nov 2011 10:57:38 -0000
+X-List-Received-Date: Tue, 22 Nov 2011 10:59:22 -0000
 
-On 22 November 2011 10:43, Stefan Hajnoczi <stefanha@gmail.com> wrote:
-> On Sat, Nov 19, 2011 at 08:18:39PM +0100, Stefan Weil wrote:
->> This was spotted by cppcheck.
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->> =C2=A0darwin-user/signal.c | =C2=A0 =C2=A03 +--
->> =C2=A01 files changed, 1 insertions(+), 2 deletions(-)
->
-> I am waiting to see if you send a v2 or this thread continues. =C2=A0Not
-> applied to trivial-patches.
+It falls through to the code for CSI K.  "Erase Down" also does "Erase
+End of Line", "Erase Up" also does "Erase Start of Line", and "Erase
+Screen" also does "Erase Line".  Happens not to be visible.  Fix it
+anyway.  Spotted by Coverity.
 
-FWIW I think the patch as it is is fine. We have already printed
-sa_handler &c in the immediately preceding line of debug output so
-there's nothing gained from printing them again; probably it was
-a stray cut-n-paste error in the first place.
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ console.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/console.c b/console.c
+index 374fcba..ce0429d 100644
+--- a/console.c
++++ b/console.c
+@@ -1011,6 +1011,7 @@ static void console_putchar(TextConsole *s, int ch)
+                     }
+                     break;
+                 }
++                break;
+             case 'K':
+                 switch (s->esc_params[0]) {
+                 case 0:
+-- 
+1.7.6.4
 
--- PMM
 
