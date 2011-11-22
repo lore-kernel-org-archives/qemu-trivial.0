@@ -1,33 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RSo4a-0003dp-B1
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Nov 2011 05:59:32 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:47554)
+	id 1RSoje-00082O-C0
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Nov 2011 06:41:58 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:35545)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RSo4S-0003BA-Va
-	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:59:30 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RSojX-0007dr-N1
+	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 06:41:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RSo4P-00087K-0n
-	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 05:59:24 -0500
-Received: from oxygen.pond.sub.org ([78.46.104.156]:58516)
+	(envelope-from <stefanha@gmail.com>) id 1RSojT-0007JC-GD
+	for qemu-trivial@nongnu.org; Tue, 22 Nov 2011 06:41:51 -0500
+Received: from mail-ey0-f173.google.com ([209.85.215.173]:39816)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1RSo4J-000858-2V; Tue, 22 Nov 2011 05:59:15 -0500
-Received: from blackfin.pond.sub.org (p5B32D94C.dip.t-dialin.net
-	[91.50.217.76])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id D5C259FF79;
-	Tue, 22 Nov 2011 11:59:08 +0100 (CET)
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id BBD3C6006E; Tue, 22 Nov 2011 11:59:07 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 22 Nov 2011 11:59:05 +0100
-Message-Id: <1321959547-2602-1-git-send-email-armbru@redhat.com>
-X-Mailer: git-send-email 1.7.6.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 78.46.104.156
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 0/2] Trivial console_putchar() fixes
+	(envelope-from <stefanha@gmail.com>)
+	id 1RSojJ-0007IL-7T; Tue, 22 Nov 2011 06:41:37 -0500
+Received: by eyh6 with SMTP id 6so68959eyh.4
+	for <multiple recipients>; Tue, 22 Nov 2011 03:41:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=3BVeDpTqMdzB+0QfN2XNBOH4/vRglT5QevhTm2Ns/38=;
+	b=Gxt0TTjH5jLUGjY7AX16mCaFImE/U3SmGhN89Vt1EZh3d3aKmLA4rqPZ8x1Gsl4k9p
+	g0TZMDjC4u7tVgvXzrY5z/trUJ+Kdm/64QUEpQIqbQez1zmko410CCSpxvX/YXpY3Ro/
+	yWMt38kreSVUU7A4iq9Cr4LoTYS2QRfRtepxI=
+Received: by 10.14.11.10 with SMTP id 10mr1318773eew.112.1321962096052;
+	Tue, 22 Nov 2011 03:41:36 -0800 (PST)
+Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
+	by mx.google.com with ESMTPS id
+	q28sm40924467eea.6.2011.11.22.03.41.35
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 22 Nov 2011 03:41:35 -0800 (PST)
+Date: Tue, 22 Nov 2011 11:41:34 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20111122114134.GA2845@stefanha-thinkpad.localdomain>
+References: <1321730319-21498-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1321730319-21498-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.215.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] darwin-user: Fix format string in debug
+ message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,16 +54,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Nov 2011 10:59:31 -0000
+X-List-Received-Date: Tue, 22 Nov 2011 11:41:56 -0000
 
-Markus Armbruster (2):
-  console: Clean up confusing indentation in console_putchar()
-  console: Fix console_putchar() for CSI J
+On Sat, Nov 19, 2011 at 08:18:39PM +0100, Stefan Weil wrote:
+> This was spotted by cppcheck.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  darwin-user/signal.c |    3 +--
+>  1 files changed, 1 insertions(+), 2 deletions(-)
 
- console.c |   19 ++++++++++---------
- 1 files changed, 10 insertions(+), 9 deletions(-)
+Thanks, applied to the trivial patches -next tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
 
--- 
-1.7.6.4
-
+Stefan
 
