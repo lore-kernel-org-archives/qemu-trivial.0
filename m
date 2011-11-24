@@ -1,50 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RTgCr-0001H4-4y
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Nov 2011 15:47:41 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:49176)
+	id 1RThbE-0006lQ-O6
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Nov 2011 17:16:56 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:39839)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1RTgCp-00019p-7b
-	for qemu-trivial@nongnu.org; Thu, 24 Nov 2011 15:47:40 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1RThbC-0006cR-CG
+	for qemu-trivial@nongnu.org; Thu, 24 Nov 2011 17:16:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1RTgCo-0006Zt-1H
-	for qemu-trivial@nongnu.org; Thu, 24 Nov 2011 15:47:39 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:49452)
+	(envelope-from <stefan@weilnetz.de>) id 1RThbB-0004S2-6m
+	for qemu-trivial@nongnu.org; Thu, 24 Nov 2011 17:16:54 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:56298)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1RTgCl-0006XJ-KN; Thu, 24 Nov 2011 15:47:35 -0500
+	(envelope-from <stefan@weilnetz.de>)
+	id 1RThb9-0004Rn-7S; Thu, 24 Nov 2011 17:16:51 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	62D5C728188B; Thu, 24 Nov 2011 21:47:13 +0100 (CET)
+	8A5AC7281889; Thu, 24 Nov 2011 23:16:40 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id bi1d6uOtp-zo; Thu, 24 Nov 2011 21:46:52 +0100 (CET)
-Received: from flocke.weilnetz.de (p5086FE3A.dip.t-dialin.net [80.134.254.58])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	B8AF67281889; Thu, 24 Nov 2011 21:46:52 +0100 (CET)
-Received: from localhost ([127.0.0.1] ident=stefan)
-	by flocke.weilnetz.de with esmtp (Exim 4.72)
-	(envelope-from <sw@weilnetz.de>)
-	id 1RTgBu-0001la-Af; Thu, 24 Nov 2011 21:46:42 +0100
-Message-ID: <4ECEAD32.3070402@weilnetz.de>
-Date: Thu, 24 Nov 2011 21:46:42 +0100
+	with ESMTP id P76lCJBekFkZ; Thu, 24 Nov 2011 23:16:11 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 2E647728188B; Thu, 24 Nov 2011 23:16:11 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.1.16) Gecko/20111110 Iceowl/1.0b1 Icedove/3.0.11
-MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <CAGtkxYxddRxBCJib+0xid-2BcS4WaUoxE1-Hc6FcsVwBDHVK4Q@mail.gmail.com>	<CAOfR6VHZHvcp-808F5n2NPv4E_zUjeToNBjx_2FyM+Wjb+oY5A@mail.gmail.com>
-	<20111124102712.GA27170@stefanha-thinkpad.localdomain>
-	<4ECE9AED.3070209@weilnetz.de>
-In-Reply-To: <4ECE9AED.3070209@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Thu, 24 Nov 2011 23:16:10 +0100
+Message-Id: <1322172970-20616-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.2.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
 X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Mark <wudx05@gmail.com>,
-	Zhi Hui Li <zhihuili@linux.vnet.ibm.com>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] os-win32.c : fix memory leak
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] tci: Make flush_icache_range() inline
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,63 +42,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Nov 2011 20:47:40 -0000
+X-List-Received-Date: Thu, 24 Nov 2011 22:16:55 -0000
 
-Am 24.11.2011 20:28, schrieb Stefan Weil:
-> Am 24.11.2011 11:27, schrieb Stefan Hajnoczi:
->> On Thu, Nov 24, 2011 at 05:15:30PM +0800, Mark wrote:
->>> If you free the string, it will cause the environment variable 
->>> unavailable.
->>>   More details please see the following text extracted from manual of
->>> "putenv":
->>>
->>>         The  libc4  and  libc5  and  glibc 2.1.2 versions conform to 
->>> SUSv2:
->>> the pointer string given to putenv() is used.  In particular, this
->>>         string becomes part of the environment; changing it later will
->>> change the environment.  (Thus, it is an error is to call putenv() with
->>>         an automatic variable as the argument, then return from the 
->>> calling
->>> function while string is still part of the environment.)  However,
->>>         glibc 2.0-2.1.1 differs: a copy of the string is used.  On 
->>> the one
->>> hand this causes a memory leak, and on the other hand  it  violates
->>>         SUSv2.  This has been fixed in glibc 2.1.2.
->> I don't think this matters since os-win32.c is only built for mingw,
->> which uses the Microsoft C runtime and not glibc.
->>
->> However, there is no documentation for putenv(3) on MSDN because the
->> function has been deprecated :(.  So I think the safest thing to do is
->> to assume this will leak memory but we are not allowed to free the
->> string.
->
-> MS claims that putenv is a POSIX function, so I also expected
-> that free / f_free is not allowed.
->
-> I now wrote a short test which indicates that g_free would work:
-> getenv returns a pointer which is completely different from
-> the one passed to putenv.
->
-> Nevertheless, there is a better solution using _putenv_s.
-> I'll send a patch.
->
-> Regards,
-> Stefan Weil
->
+This is standard for other tcg targets and improves tci, too.
 
-Hi Stefan,
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ tcg/tci/tcg-target.c |    4 ----
+ tcg/tci/tcg-target.h |    4 ++++
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-I'm afraid I was too fast when I promised a patch with _putenv_s.
-Function _putenv_s is a good solution, but only if it is supported
-by MinGW. Older versions of MinGW (Debian Squeeze!) don't support
-it :-(
-
-Therefore I suggest to apply this patch. I hope that my test which was
-run on XP (32 bit) is sufficient.
-
-Cheers,
-Stefan W.
-
-Tested-by: Stefan Weil <sw@weilnetz.de>
+diff --git a/tcg/tci/tcg-target.c b/tcg/tci/tcg-target.c
+index 5011c43..f26bec7 100644
+--- a/tcg/tci/tcg-target.c
++++ b/tcg/tci/tcg-target.c
+@@ -379,10 +379,6 @@ static const char *const tcg_target_reg_names[TCG_TARGET_NB_REGS] = {
+ };
+ #endif
+ 
+-static void flush_icache_range(unsigned long start, unsigned long stop)
+-{
+-}
+-
+ static void patch_reloc(uint8_t *code_ptr, int type,
+                         tcg_target_long value, tcg_target_long addend)
+ {
+diff --git a/tcg/tci/tcg-target.h b/tcg/tci/tcg-target.h
+index 449373d..c35786c 100644
+--- a/tcg/tci/tcg-target.h
++++ b/tcg/tci/tcg-target.h
+@@ -157,4 +157,8 @@ void tci_disas(uint8_t opc);
+ unsigned long tcg_qemu_tb_exec(CPUState *env, uint8_t *tb_ptr);
+ #define tcg_qemu_tb_exec tcg_qemu_tb_exec
+ 
++static inline void flush_icache_range(unsigned long start, unsigned long stop)
++{
++}
++
+ #endif /* TCG_TARGET_H */
+-- 
+1.7.2.5
 
 
