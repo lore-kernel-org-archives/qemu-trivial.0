@@ -1,32 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RTGbC-0004j8-6p
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Nov 2011 12:27:06 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:52944)
+	id 1RTUaS-0004T7-N5
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Nov 2011 03:23:16 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:56894)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1RTGb6-0004NR-Gv
-	for qemu-trivial@nongnu.org; Wed, 23 Nov 2011 12:27:01 -0500
+	(envelope-from <lizhihui95221@gmail.com>) id 1RTUaP-0004I6-DW
+	for qemu-trivial@nongnu.org; Thu, 24 Nov 2011 03:23:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1RTGb5-0008W9-89
-	for qemu-trivial@nongnu.org; Wed, 23 Nov 2011 12:27:00 -0500
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:46820)
+	(envelope-from <lizhihui95221@gmail.com>) id 1RTUaJ-0005ch-Pe
+	for qemu-trivial@nongnu.org; Thu, 24 Nov 2011 03:23:13 -0500
+Received: from mail-gx0-f173.google.com ([209.85.161.173]:43298)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1RTGaz-0008UI-7J; Wed, 23 Nov 2011 12:26:53 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1RTGaq-0000Tv-R9; Wed, 23 Nov 2011 17:26:44 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <lizhihui95221@gmail.com>)
+	id 1RTUaE-0005cM-G8; Thu, 24 Nov 2011 03:23:02 -0500
+Received: by ggnb1 with SMTP id b1so2682430ggn.4
+	for <multiple recipients>; Thu, 24 Nov 2011 00:23:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=mime-version:sender:date:x-google-sender-auth:message-id:subject
+	:from:to:cc:content-type;
+	bh=l2A8zo4DLuDOO97TBXD66nPwNZwCyBpTuMY5yBfDQBg=;
+	b=Sdx3bdVZrZHGUETE7WwvbY3z5HfCqdd1XVEBDG8ny2cTpfpksmfNEp4x4/6LuegOn5
+	cL9vt7h8ZZqzzmgebsTunXQigpsI0OA1r42QaoWFdhXGyrFqVFCCyrue3iXWiuQq0m5N
+	8grL8g1VUHuywPSvrMxeuJZL/kwtxh51E132E=
+MIME-Version: 1.0
+Received: by 10.68.36.70 with SMTP id o6mr15755455pbj.109.1322122980950; Thu,
+	24 Nov 2011 00:23:00 -0800 (PST)
+Sender: lizhihui95221@gmail.com
+Received: by 10.142.242.3 with HTTP; Thu, 24 Nov 2011 00:23:00 -0800 (PST)
+Date: Thu, 24 Nov 2011 16:23:00 +0800
+X-Google-Sender-Auth: _pjSfoeV24_OKq79_2KG3HK1mbY
+Message-ID: <CAGtkxYxBfYxcVpQopgpkvf-POUf-uDEjjRht5sOye0REyFExAQ@mail.gmail.com>
+From: Zhi Hui Li <zhihuili@linux.vnet.ibm.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 23 Nov 2011 17:26:44 +0000
-Message-Id: <1322069204-1824-3-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1322069204-1824-1-git-send-email-peter.maydell@linaro.org>
-References: <1322069204-1824-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary=bcaec51f96f1a103fc04b276be0f
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH 2/2] configure: Print a banner comment at the
-	top of config.log
+X-Received-From: 209.85.161.173
+Cc: qemu-trivial@nongnu.org, stefanha@linux.vnet.ibm.com
+Subject: [Qemu-trivial] [PATCH] net/socket.c : fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,34 +47,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Nov 2011 17:27:01 -0000
+X-List-Received-Date: Thu, 24 Nov 2011 08:23:14 -0000
 
-Print a banner comment at the top of config.log identifying
-when configure was run and the arguments used. This is occasionally
-useful for debugging purposes.
+--bcaec51f96f1a103fc04b276be0f
+Content-Type: text/plain; charset=ISO-8859-1
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Li Zhi Hui <zhihuili@linux.vnet.ibm.com>
 ---
- configure |    5 +++++
- 1 files changed, 5 insertions(+), 0 deletions(-)
+ net/socket.c |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
 
-diff --git a/configure b/configure
-index 5a35b6d..2e23650 100755
---- a/configure
-+++ b/configure
-@@ -20,6 +20,11 @@ TMPE="${TMPDIR1}/qemu-conf-${RANDOM}-$$-${RANDOM}.exe"
- trap "rm -f $TMPC $TMPO $TMPE" EXIT INT QUIT TERM
- rm -f config.log
- 
-+# Print a helpful header at the top of config.log
-+echo "# QEMU configure log $(date)" >> config.log
-+echo "# produced by $0 $*" >> config.log
-+echo "#" >> config.log
-+
- compile_object() {
-   echo $cc $QEMU_CFLAGS -c -o $TMPO $TMPC >> config.log
-   $cc $QEMU_CFLAGS -c -o $TMPO $TMPC >> config.log 2>&1
+diff --git a/net/socket.c b/net/socket.c
+index e9ef128..0f09164 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -409,6 +409,7 @@ static int net_socket_listen_init(VLANState *vlan,
+     fd = qemu_socket(PF_INET, SOCK_STREAM, 0);
+     if (fd < 0) {
+         perror("socket");
++        g_free(s);
+         return -1;
+     }
+     socket_set_nonblock(fd);
+@@ -420,11 +421,13 @@ static int net_socket_listen_init(VLANState *vlan,
+     ret = bind(fd, (struct sockaddr *)&saddr, sizeof(saddr));
+     if (ret < 0) {
+         perror("bind");
++        g_free(s);
+         return -1;
+     }
+     ret = listen(fd, 0);
+     if (ret < 0) {
+         perror("listen");
++        g_free(s);
+         return -1;
+     }
+     s->vlan = vlan;
 -- 
-1.7.1
+1.7.4.1
 
+--bcaec51f96f1a103fc04b276be0f
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Signed-off-by: Li Zhi Hui &lt;<a href=3D"mailto:zhihuili@linux.vnet.ibm.com=
+">zhihuili@linux.vnet.ibm.com</a>&gt;<br>---<br>=A0net/socket.c |=A0=A0=A0 =
+3 +++<br>=A01 files changed, 3 insertions(+), 0 deletions(-)<br><br>diff --=
+git a/net/socket.c b/net/socket.c<br>
+index e9ef128..0f09164 100644<br>--- a/net/socket.c<br>+++ b/net/socket.c<b=
+r>@@ -409,6 +409,7 @@ static int net_socket_listen_init(VLANState *vlan,<br=
+>=A0=A0=A0=A0 fd =3D qemu_socket(PF_INET, SOCK_STREAM, 0);<br>=A0=A0=A0=A0 =
+if (fd &lt; 0) {<br>
+=A0=A0=A0=A0=A0=A0=A0=A0 perror(&quot;socket&quot;);<br>+=A0=A0=A0=A0=A0=A0=
+=A0 g_free(s);<br>=A0=A0=A0=A0=A0=A0=A0=A0 return -1;<br>=A0=A0=A0=A0 }<br>=
+=A0=A0=A0=A0 socket_set_nonblock(fd);<br>@@ -420,11 +421,13 @@ static int n=
+et_socket_listen_init(VLANState *vlan,<br>=A0=A0=A0=A0 ret =3D bind(fd, (st=
+ruct sockaddr *)&amp;saddr, sizeof(saddr));<br>
+=A0=A0=A0=A0 if (ret &lt; 0) {<br>=A0=A0=A0=A0=A0=A0=A0=A0 perror(&quot;bin=
+d&quot;);<br>+=A0=A0=A0=A0=A0=A0=A0 g_free(s);<br>=A0=A0=A0=A0=A0=A0=A0=A0 =
+return -1;<br>=A0=A0=A0=A0 }<br>=A0=A0=A0=A0 ret =3D listen(fd, 0);<br>=A0=
+=A0=A0=A0 if (ret &lt; 0) {<br>=A0=A0=A0=A0=A0=A0=A0=A0 perror(&quot;listen=
+&quot;);<br>+=A0=A0=A0=A0=A0=A0=A0 g_free(s);<br>
+=A0=A0=A0=A0=A0=A0=A0=A0 return -1;<br>=A0=A0=A0=A0 }<br>=A0=A0=A0=A0 s-&gt=
+;vlan =3D vlan;<br>-- <br>1.7.4.1<br><br><br>
+
+--bcaec51f96f1a103fc04b276be0f--
 
