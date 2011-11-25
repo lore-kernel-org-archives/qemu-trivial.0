@@ -1,36 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RThbE-0006lQ-O6
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Nov 2011 17:16:56 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:39839)
+	id 1RTraB-0005yx-KJ
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Nov 2011 03:56:31 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:35784)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RThbC-0006cR-CG
-	for qemu-trivial@nongnu.org; Thu, 24 Nov 2011 17:16:55 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RTra8-0005yO-V8
+	for qemu-trivial@nongnu.org; Fri, 25 Nov 2011 03:56:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RThbB-0004S2-6m
-	for qemu-trivial@nongnu.org; Thu, 24 Nov 2011 17:16:54 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:56298)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RTra7-000491-6b
+	for qemu-trivial@nongnu.org; Fri, 25 Nov 2011 03:56:28 -0500
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:43260)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1RThb9-0004Rn-7S; Thu, 24 Nov 2011 17:16:51 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	8A5AC7281889; Thu, 24 Nov 2011 23:16:40 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id P76lCJBekFkZ; Thu, 24 Nov 2011 23:16:11 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 2E647728188B; Thu, 24 Nov 2011 23:16:11 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Thu, 24 Nov 2011 23:16:10 +0100
-Message-Id: <1322172970-20616-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] tci: Make flush_icache_range() inline
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1RTra7-00048s-0X; Fri, 25 Nov 2011 03:56:27 -0500
+Received: by iakk32 with SMTP id k32so4788300iak.4
+	for <multiple recipients>; Fri, 25 Nov 2011 00:56:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=sender:message-id:date:from:user-agent:mime-version:newsgroups:to
+	:cc:subject:references:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=vA445ebnvkMHH4gfOdERM9d3Smk3GP1tlvSHt40bXS8=;
+	b=Oa4hc2NZV2nufDtSAagYcLzBbMsp2WMyC+0I+PrUeKNFHY5gV2TK2u43mJ/r4GZJDV
+	Z81muQCV+heYBtq3UxQR6Cn2PmN/QmgNwAQOT7um+YA2XlCVzqL6kbVBgTJYJzhKNZuc
+	O3lpJfzI6tlygNGIk4W1U4kXRSk+KW7mBGlh0=
+Received: by 10.50.94.231 with SMTP id df7mr10404330igb.9.1322211384710;
+	Fri, 25 Nov 2011 00:56:24 -0800 (PST)
+Received: from yakj.usersys.redhat.com (93-34-178-147.ip50.fastwebnet.it.
+	[93.34.178.147])
+	by mx.google.com with ESMTPS id eh34sm98770738ibb.5.2011.11.25.00.56.20
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 25 Nov 2011 00:56:22 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <4ECF582E.9000709@redhat.com>
+Date: Fri, 25 Nov 2011 09:56:14 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:7.0.1) Gecko/20110930 Thunderbird/7.0.1
+MIME-Version: 1.0
+Newsgroups: gmane.comp.emulators.qemu
+To: Stefan Weil <sw@weilnetz.de>
+References: <CAGtkxYxddRxBCJib+0xid-2BcS4WaUoxE1-Hc6FcsVwBDHVK4Q@mail.gmail.com>	<CAOfR6VHZHvcp-808F5n2NPv4E_zUjeToNBjx_2FyM+Wjb+oY5A@mail.gmail.com>
+	<20111124102712.GA27170@stefanha-thinkpad.localdomain>
+	<4ECE9AED.3070209@weilnetz.de>
+In-Reply-To: <4ECE9AED.3070209@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org, Mark <wudx05@gmail.com>,
+	Zhi Hui Li <zhihuili@linux.vnet.ibm.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] os-win32.c : fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,45 +60,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Nov 2011 22:16:55 -0000
+X-List-Received-Date: Fri, 25 Nov 2011 08:56:30 -0000
 
-This is standard for other tcg targets and improves tci, too.
+On 11/24/2011 08:28 PM, Stefan Weil wrote:
+>
+> MS claims that putenv is a POSIX function, so I also expected
+> that free / f_free is not allowed.
+>
+> I now wrote a short test which indicates that g_free would work:
+> getenv returns a pointer which is completely different from
+> the one passed to putenv.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- tcg/tci/tcg-target.c |    4 ----
- tcg/tci/tcg-target.h |    4 ++++
- 2 files changed, 4 insertions(+), 4 deletions(-)
+Confirmed by http://source.winehq.org/source/dlls/msvcrt/environ.c.  It 
+makes a copy of the string, passes it to SetEnvironmentVariable, and 
+frees the copy.  So Windows never even sees the string passed to putenv.
 
-diff --git a/tcg/tci/tcg-target.c b/tcg/tci/tcg-target.c
-index 5011c43..f26bec7 100644
---- a/tcg/tci/tcg-target.c
-+++ b/tcg/tci/tcg-target.c
-@@ -379,10 +379,6 @@ static const char *const tcg_target_reg_names[TCG_TARGET_NB_REGS] = {
- };
- #endif
- 
--static void flush_icache_range(unsigned long start, unsigned long stop)
--{
--}
--
- static void patch_reloc(uint8_t *code_ptr, int type,
-                         tcg_target_long value, tcg_target_long addend)
- {
-diff --git a/tcg/tci/tcg-target.h b/tcg/tci/tcg-target.h
-index 449373d..c35786c 100644
---- a/tcg/tci/tcg-target.h
-+++ b/tcg/tci/tcg-target.h
-@@ -157,4 +157,8 @@ void tci_disas(uint8_t opc);
- unsigned long tcg_qemu_tb_exec(CPUState *env, uint8_t *tb_ptr);
- #define tcg_qemu_tb_exec tcg_qemu_tb_exec
- 
-+static inline void flush_icache_range(unsigned long start, unsigned long stop)
-+{
-+}
-+
- #endif /* TCG_TARGET_H */
--- 
-1.7.2.5
+The reason for the dance is that: 1) the underlying Win32 APIs require 
+separate arguments for the variable and value; 2) even though in the end 
+Wine stores the environment as name=value 
+(http://source.winehq.org/source/dlls/ntdll/env.c), it does so in a 
+single consecutive block of memory, not as a char* array like POSIX 
+does.  While (2) might apply only to Wine, (1) surely applies to Windows 
+as well.
 
+Stefan, can you add some of the info to the commit message?
+
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
