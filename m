@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RUzKk-0001bK-Uc
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2011 06:25:14 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:38126)
+	id 1RV62t-0003OT-BV
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2011 13:35:15 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:53128)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RUzKi-0001ao-PE
-	for qemu-trivial@nongnu.org; Mon, 28 Nov 2011 06:25:13 -0500
+	(envelope-from <sw@weilnetz.de>) id 1RV62q-0003Ht-Kj
+	for qemu-trivial@nongnu.org; Mon, 28 Nov 2011 13:35:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RUzKh-0004Vw-I7
-	for qemu-trivial@nongnu.org; Mon, 28 Nov 2011 06:25:12 -0500
-Received: from mail-bw0-f45.google.com ([209.85.214.45]:41044)
+	(envelope-from <sw@weilnetz.de>) id 1RV62p-00068I-JO
+	for qemu-trivial@nongnu.org; Mon, 28 Nov 2011 13:35:12 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:49059)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RUzKh-0004VT-DN; Mon, 28 Nov 2011 06:25:11 -0500
-Received: by bkbzu5 with SMTP id zu5so9185398bkb.4
-	for <multiple recipients>; Mon, 28 Nov 2011 03:25:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=lY2B4RVNZwkgZYlhMX/p3Kb1DsK5rtK6D+h1jZtPgP4=;
-	b=fskUPihLOvpPD32y6BTCzqkfh3R2XaCkN2QioU3jXFjMr+XZ7vGJBAlaEnwzVf1F3h
-	emEn2sK1gL80RLcO1ieu+BxRjml72AULRCTMFgRjTlSBIdRryxK3haMerr6uh5StD2p2
-	LtKA2PEWC47Gh8Myy0aADdRBkKP4kf+NLz16A=
-Received: by 10.204.128.199 with SMTP id l7mr34612831bks.27.1322479510126;
-	Mon, 28 Nov 2011 03:25:10 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id
-	hy13sm29077636bkc.0.2011.11.28.03.25.09
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 28 Nov 2011 03:25:09 -0800 (PST)
-Date: Mon, 28 Nov 2011 11:25:08 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
-Message-ID: <20111128112508.GB7564@stefanha-thinkpad.localdomain>
-References: <CAGrFBsgesVnGKiiMZ366N3H09po-RRF4=y=XaYoP_smZCyGRhQ@mail.gmail.com>
+	(envelope-from <sw@weilnetz.de>)
+	id 1RV62m-00064y-Kd; Mon, 28 Nov 2011 13:35:08 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	1966D7281C35; Mon, 28 Nov 2011 19:34:57 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id aZnKNAhx3gSf; Mon, 28 Nov 2011 19:34:27 +0100 (CET)
+Received: from flocke.weilnetz.de (p54ADA6BB.dip.t-dialin.net [84.173.166.187])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	534177281C2F; Mon, 28 Nov 2011 19:34:27 +0100 (CET)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <sw@weilnetz.de>)
+	id 1RV61w-0003Jt-Tu; Mon, 28 Nov 2011 19:34:16 +0100
+Message-ID: <4ED3D428.7030704@weilnetz.de>
+Date: Mon, 28 Nov 2011 19:34:16 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20111110 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAGrFBsgesVnGKiiMZ366N3H09po-RRF4=y=XaYoP_smZCyGRhQ@mail.gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [PATCH 2/2] fix spelling in hw directory
+To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+References: <alpine.DEB.2.00.1111221726190.31179@kaball-desktop>
+In-Reply-To: <alpine.DEB.2.00.1111221726190.31179@kaball-desktop>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fix out of tree build
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,15 +54,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Nov 2011 11:25:13 -0000
+X-List-Received-Date: Mon, 28 Nov 2011 18:35:13 -0000
 
-On Mon, Nov 28, 2011 at 04:59:44PM +0800, Dong Xu Wang wrote:
-> Correct obvious spelling errors in qemu/hw direcotry.
-> 
-> Signed-off-by: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
-> ---
+Am 22.11.2011 18:27, schrieb Stefano Stabellini:
+>
+> Signed-off-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+>
+> diff --git a/Makefile b/Makefile
+> index 168093c..885065f 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -167,7 +167,7 @@ check-qjson: check-qjson.o $(qobject-obj-y)=20
+> $(tools-obj-y)
+> test-coroutine: test-coroutine.o qemu-timer-common.o async.o=20
+> $(coroutine-obj-y) $(tools-obj-y)
+>
+> $(qapi-obj-y): $(GENERATED_HEADERS)
+> -qapi-dir :=3D qapi-generated
+> +qapi-dir :=3D $(SRC_PATH)/qapi-generated
+> test-visitor.o test-qmp-commands.o qemu-ga$(EXESUF): QEMU_CFLAGS +=3D -=
+I=20
+> $(qapi-dir)
+> qemu-ga$(EXESUF): LIBS =3D $(LIBS_QGA)
 
-Lines are wrapped.  Please resend without line-wrap.
+This patch was committed to latest QEMU and breaks in-tree and=20
+out-of-tree builds.
+Without it, both kinds of builds work in my standard Debian configuration=
+.
 
-Stefan
+Regards,
+Stefan Weil
+
+
+gcc output (extract):
+
+CC /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.o
+/home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=20
+In function =91qapi_free_GuestAgentInfoList=92:
+/home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:39=
+:=20
+warning: implicit declaration of function =91visit_type_GuestAgentInfoLis=
+t=92
+/home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:39=
+:=20
+warning: nested extern declaration of =91visit_type_GuestAgentInfoList=92
+/home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=20
+In function =91qapi_free_GuestAgentInfo=92:
+/home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:54=
+:=20
+warning: implicit declaration of function =91visit_type_GuestAgentInfo=92
+/home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:54=
+:=20
+warning: nested extern declaration of =91visit_type_GuestAgentInfo=92
+/home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=20
+In function =91qapi_free_GuestFileReadList=92:
+/home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:69=
+:=20
+warning: implicit declaration of function =91visit_type_GuestFileReadList=
+=92
+
 
