@@ -1,49 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RV81A-0005r6-P6
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2011 15:41:36 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:52378)
+	id 1RV9pg-0004Ab-TS
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2011 17:37:52 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:50137)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1RV815-0005b0-Sb
-	for qemu-trivial@nongnu.org; Mon, 28 Nov 2011 15:41:33 -0500
+	(envelope-from <anthony@codemonkey.ws>) id 1RV9pe-00044A-97
+	for qemu-trivial@nongnu.org; Mon, 28 Nov 2011 17:37:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1RV814-0003tl-Os
-	for qemu-trivial@nongnu.org; Mon, 28 Nov 2011 15:41:31 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:46644)
+	(envelope-from <anthony@codemonkey.ws>) id 1RV9pc-0004pv-Qc
+	for qemu-trivial@nongnu.org; Mon, 28 Nov 2011 17:37:49 -0500
+Received: from mail-yx0-f173.google.com ([209.85.213.173]:47347)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1RV811-0003tH-8j; Mon, 28 Nov 2011 15:41:27 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	5D5F17281C35; Mon, 28 Nov 2011 21:41:15 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id ZKUk+dXkMb8K; Mon, 28 Nov 2011 21:40:45 +0100 (CET)
-Received: from flocke.weilnetz.de (p54ADA6BB.dip.t-dialin.net [84.173.166.187])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	9A4977281C2F; Mon, 28 Nov 2011 21:40:45 +0100 (CET)
-Received: from localhost ([127.0.0.1] ident=stefan)
-	by flocke.weilnetz.de with esmtp (Exim 4.72)
-	(envelope-from <sw@weilnetz.de>)
-	id 1RV80B-0006a9-4G; Mon, 28 Nov 2011 21:40:35 +0100
-Message-ID: <4ED3F1C3.4060601@weilnetz.de>
-Date: Mon, 28 Nov 2011 21:40:35 +0100
-From: Stefan Weil <sw@weilnetz.de>
+	(envelope-from <anthony@codemonkey.ws>)
+	id 1RV9pZ-0004nR-Sg; Mon, 28 Nov 2011 17:37:45 -0500
+Received: by yenq7 with SMTP id q7so3342185yen.4
+	for <multiple recipients>; Mon, 28 Nov 2011 14:37:40 -0800 (PST)
+Received: by 10.50.158.227 with SMTP id wx3mr51378262igb.52.1322519860003;
+	Mon, 28 Nov 2011 14:37:40 -0800 (PST)
+Received: from [192.168.0.103] (cpe-70-123-132-139.austin.res.rr.com.
+	[70.123.132.139])
+	by mx.google.com with ESMTPS id mb4sm85350374igc.1.2011.11.28.14.37.38
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 28 Nov 2011 14:37:38 -0800 (PST)
+Message-ID: <4ED40D31.10903@codemonkey.ws>
+Date: Mon, 28 Nov 2011 16:37:37 -0600
+From: Anthony Liguori <anthony@codemonkey.ws>
 User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.1.16) Gecko/20111110 Iceowl/1.0b1 Icedove/3.0.11
+	rv:1.9.2.21) Gecko/20110831 Lightning/1.0b2 Thunderbird/3.1.13
 MIME-Version: 1.0
-To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-References: <alpine.DEB.2.00.1111221726190.31179@kaball-desktop>
-	<4ED3D428.7030704@weilnetz.de>
-In-Reply-To: <4ED3D428.7030704@weilnetz.de>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fix out of tree build
+To: Stefan Weil <sw@weilnetz.de>
+References: <1322172970-20616-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1322172970-20616-1-git-send-email-sw@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.213.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tci: Make
+	flush_icache_range() inline
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,95 +48,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Nov 2011 20:41:33 -0000
+X-List-Received-Date: Mon, 28 Nov 2011 22:37:51 -0000
 
-Am 28.11.2011 19:34, schrieb Stefan Weil:
-> Am 22.11.2011 18:27, schrieb Stefano Stabellini:
->>
->> Signed-off-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
->>
->> diff --git a/Makefile b/Makefile
->> index 168093c..885065f 100644
->> --- a/Makefile
->> +++ b/Makefile
->> @@ -167,7 +167,7 @@ check-qjson: check-qjson.o $(qobject-obj-y)=20
->> $(tools-obj-y)
->> test-coroutine: test-coroutine.o qemu-timer-common.o async.o=20
->> $(coroutine-obj-y) $(tools-obj-y)
->>
->> $(qapi-obj-y): $(GENERATED_HEADERS)
->> -qapi-dir :=3D qapi-generated
->> +qapi-dir :=3D $(SRC_PATH)/qapi-generated
->> test-visitor.o test-qmp-commands.o qemu-ga$(EXESUF): QEMU_CFLAGS +=3D=20
->> -I $(qapi-dir)
->> qemu-ga$(EXESUF): LIBS =3D $(LIBS_QGA)
+On 11/24/2011 04:16 PM, Stefan Weil wrote:
+> This is standard for other tcg targets and improves tci, too.
 >
-> This patch was committed to latest QEMU and breaks in-tree and=20
-> out-of-tree builds.
-> Without it, both kinds of builds work in my standard Debian=20
-> configuration.
->
-> Regards,
-> Stefan Weil
->
->
-> gcc output (extract):
->
-> CC /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types=
-.o
-> /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=
- In=20
-> function =91qapi_free_GuestAgentInfoList=92:
-> /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=
-39:=20
-> warning: implicit declaration of function =91visit_type_GuestAgentInfoL=
-ist=92
-> /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=
-39:=20
-> warning: nested extern declaration of =91visit_type_GuestAgentInfoList=92
-> /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=
- In=20
-> function =91qapi_free_GuestAgentInfo=92:
-> /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=
-54:=20
-> warning: implicit declaration of function =91visit_type_GuestAgentInfo=92
-> /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=
-54:=20
-> warning: nested extern declaration of =91visit_type_GuestAgentInfo=92
-> /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=
- In=20
-> function =91qapi_free_GuestFileReadList=92:
-> /home/stefan/src/qemu/qemu.org/patches/qapi-generated/qga-qapi-types.c:=
-69:=20
-> warning: implicit declaration of function =91visit_type_GuestFileReadLi=
-st=92
+> Signed-off-by: Stefan Weil<sw@weilnetz.de>
 
-The broken build can be reproduced with a source path containing at=20
-least one dot.
-Source paths without any dot will show no problems. My source path was=20
-~/src/qemu/qemu.org/qemu.
-
-File scripts/qapi.py fails to create unique guard names when given a=20
-filename with 2 or more dots:
-
-def guardname(filename):
-     if filename.startswith('./'):
-         filename =3D filename[2:]
-     return filename.replace("/", "_").replace("-",=20
-"_").split(".")[0].upper() + '_H'
-
-The function always returns the same guard name (in my case=20
-_HOME_STEFAN_SRC_QEMU_QEMU_H)
-which won't work when used for more than one header file.
-
-I expect that blanks in the source path will also give unexpected results=
-.
-
-Even when this function were fixed, I think that
-qapi-dir :=3D $(BUILD_DIR)/qapi-generated
-would be better.
+Applied.  Thanks.
 
 Regards,
-Stefan Weil
+
+Anthony Liguori
+
+> ---
+>   tcg/tci/tcg-target.c |    4 ----
+>   tcg/tci/tcg-target.h |    4 ++++
+>   2 files changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/tcg/tci/tcg-target.c b/tcg/tci/tcg-target.c
+> index 5011c43..f26bec7 100644
+> --- a/tcg/tci/tcg-target.c
+> +++ b/tcg/tci/tcg-target.c
+> @@ -379,10 +379,6 @@ static const char *const tcg_target_reg_names[TCG_TARGET_NB_REGS] = {
+>   };
+>   #endif
+>
+> -static void flush_icache_range(unsigned long start, unsigned long stop)
+> -{
+> -}
+> -
+>   static void patch_reloc(uint8_t *code_ptr, int type,
+>                           tcg_target_long value, tcg_target_long addend)
+>   {
+> diff --git a/tcg/tci/tcg-target.h b/tcg/tci/tcg-target.h
+> index 449373d..c35786c 100644
+> --- a/tcg/tci/tcg-target.h
+> +++ b/tcg/tci/tcg-target.h
+> @@ -157,4 +157,8 @@ void tci_disas(uint8_t opc);
+>   unsigned long tcg_qemu_tb_exec(CPUState *env, uint8_t *tb_ptr);
+>   #define tcg_qemu_tb_exec tcg_qemu_tb_exec
+>
+> +static inline void flush_icache_range(unsigned long start, unsigned long stop)
+> +{
+> +}
+> +
+>   #endif /* TCG_TARGET_H */
 
 
