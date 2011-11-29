@@ -1,46 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RVQSK-0008J8-VF
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Nov 2011 11:22:52 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:42648)
+	id 1RVWTg-0002pu-GY
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Nov 2011 17:48:40 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:36898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@eu.citrix.com>)
-	id 1RVQSD-00080b-Sv
-	for qemu-trivial@nongnu.org; Tue, 29 Nov 2011 11:22:50 -0500
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RVWTd-0002pg-Lw
+	for qemu-trivial@nongnu.org; Tue, 29 Nov 2011 17:48:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@eu.citrix.com>)
-	id 1RVQS7-0002Sj-Ex
-	for qemu-trivial@nongnu.org; Tue, 29 Nov 2011 11:22:45 -0500
-Received: from smtp.ctxuk.citrix.com ([62.200.22.115]:38240
-	helo=SMTP.EU.CITRIX.COM) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@eu.citrix.com>)
-	id 1RVQRz-0002R5-ER; Tue, 29 Nov 2011 11:22:31 -0500
-X-IronPort-AV: E=Sophos;i="4.69,591,1315180800"; 
-   d="scan'208";a="9190702"
-Received: from lonpmailmx01.citrite.net ([10.30.203.162])
-	by LONPIPO01.EU.CITRIX.COM with ESMTP/TLS/RC4-MD5;
-	29 Nov 2011 16:22:28 +0000
-Received: from kaball.uk.xensource.com (10.80.2.59) by
-	LONPMAILMX01.citrite.net (10.30.203.162) with Microsoft SMTP Server id
-	8.3.213.0; Tue, 29 Nov 2011 16:22:28 +0000
-Date: Tue, 29 Nov 2011 16:23:22 +0000
-From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-X-X-Sender: sstabellini@kaball-desktop
-To: Stefan Weil <sw@weilnetz.de>
-In-Reply-To: <4ED3F1C3.4060601@weilnetz.de>
-Message-ID: <alpine.DEB.2.00.1111291610510.31179@kaball-desktop>
-References: <alpine.DEB.2.00.1111221726190.31179@kaball-desktop>
-	<4ED3D428.7030704@weilnetz.de> <4ED3F1C3.4060601@weilnetz.de>
-User-Agent: Alpine 2.00 (DEB 1167 2008-08-23)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RVWTa-0005mk-WD
+	for qemu-trivial@nongnu.org; Tue, 29 Nov 2011 17:48:37 -0500
+Received: from mout.perfora.net ([74.208.4.194]:51410)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mdroth@linux.vnet.ibm.com>)
+	id 1RVWTa-0005hI-RI; Tue, 29 Nov 2011 17:48:34 -0500
+Received: from illuin.austin.ibm.com ([32.97.110.59])
+	by mrelay.perfora.net (node=mrus4) with ESMTP (Nemesis)
+	id 0LvlLA-1QkI5s3AOS-017kLF; Tue, 29 Nov 2011 17:48:29 -0500
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 29 Nov 2011 16:47:49 -0600
+Message-Id: <1322606869-25865-2-git-send-email-mdroth@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.4.1
+In-Reply-To: <1322606869-25865-1-git-send-email-mdroth@linux.vnet.ibm.com>
+References: <4ED3F1C3.4060601@weilnetz.de>
+	<1322606869-25865-1-git-send-email-mdroth@linux.vnet.ibm.com>
+X-Provags-ID: V02:K0:xmb4dfbrkB5HXiCW5iBc3zwb7KkXYx6cE3BVkMj4OKt
+	jDXkIEZTHKLqOVRxbDHPrTfmGN7mVCCfhzbMLraKcB1qsThPBi
+	wJfp/VYyULUqT0IWJFAeVEARnqivDygs+1+oQfSvS9OL2isk7p
+	zhYYFFQi9wrSuIl5Ink/WPh8kFS6slTuxurpIUR+XuLQLARaI3
+	CC4gKqowZ+0D0JEHbWMj0UFIHk09/cjZsS5wEWCH8eFo/JquFx
+	b/HW5uirmSnhmM/ymTrBUVITVmO/kvFvIhcL1sDr002joUcNcA
+	svV2k/C7eyJA0vi3AGc+/TnwKsX1li1mKN4z16PVnB7AQz6ELR
+	8XT8Yf6g7wrgtjx+8ESeVhDlODJtao889XI7ebbw9H7JmDz99Y
+	oi/KAG+TPieJ8am++T/YL+Sn1nkYHgd0Zs=
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 62.200.22.115
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Anthony Liguori <aliguori@us.ibm.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Stefano Stabellini <Stefano.Stabellini@eu.citrix.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fix out of tree build
+X-Received-From: 74.208.4.194
+Cc: qemu-trivial@nongnu.org, sw@weilnetz.de, stefano.stabellini@eu.citrix.com
+Subject: [Qemu-trivial] [PATCH 2/2] Makefile: use full path for
+	qapi-generated directory
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,42 +49,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Nov 2011 16:22:50 -0000
+X-List-Received-Date: Tue, 29 Nov 2011 22:48:38 -0000
 
-On Mon, 28 Nov 2011, Stefan Weil wrote:
-> The broken build can be reproduced with a source path containing at 
-> least one dot.
-> Source paths without any dot will show no problems. My source path was 
-> ~/src/qemu/qemu.org/qemu.
+Generally $(BUILD_DIR) == $(CURDIR), but that isn't necessarilly the
+case, so use $(BUILD_DIR)/qapi-generated for generated files to
+avoid potentionally sticking generating files in odd places outside
+the build's include paths.
+---
+ Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Sorry for the build break, I didn't have any dots in my source path so
-I didn't notice it :-/
-
-
-> File scripts/qapi.py fails to create unique guard names when given a 
-> filename with 2 or more dots:
-> 
-> def guardname(filename):
->      if filename.startswith('./'):
->          filename = filename[2:]
->      return filename.replace("/", "_").replace("-", 
-> "_").split(".")[0].upper() + '_H'
-> 
-> The function always returns the same guard name (in my case 
-> _HOME_STEFAN_SRC_QEMU_QEMU_H)
-> which won't work when used for more than one header file.
-> 
-> I expect that blanks in the source path will also give unexpected results.
-> 
-> Even when this function were fixed, I think that
-> qapi-dir := $(BUILD_DIR)/qapi-generated
-> would be better.
+diff --git a/Makefile b/Makefile
+index 168093c..0b4b2c3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -167,7 +167,7 @@ check-qjson: check-qjson.o $(qobject-obj-y) $(tools-obj-y)
+ test-coroutine: test-coroutine.o qemu-timer-common.o async.o $(coroutine-obj-y) $(tools-obj-y)
  
-Doing a more careful analysis of the out-of-tree build, I noticed that
-the system actually works correctly if the source directory is
-"distclean".
-I don't think we support building qemu out-of-tree if the source dir
-hasn't been cleaned properly, so I don't think is worth pursuing this
-patch anymore.
-Just be aware that a "make clean" is not enough.
+ $(qapi-obj-y): $(GENERATED_HEADERS)
+-qapi-dir := qapi-generated
++qapi-dir := $(BUILD_DIR)/qapi-generated
+ test-visitor.o test-qmp-commands.o qemu-ga$(EXESUF): QEMU_CFLAGS += -I $(qapi-dir)
+ qemu-ga$(EXESUF): LIBS = $(LIBS_QGA)
+ 
+-- 
+1.7.4.1
+
 
