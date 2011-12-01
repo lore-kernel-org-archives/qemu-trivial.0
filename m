@@ -1,41 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RW98u-0007JR-6b
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Dec 2011 11:05:48 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:56637)
+	id 1RWB7e-0004Oz-Uz
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Dec 2011 13:12:38 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:47125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RW98r-0007JG-NO
-	for qemu-trivial@nongnu.org; Thu, 01 Dec 2011 11:05:46 -0500
+	(envelope-from <sw@weilnetz.de>) id 1RWB7X-0003yj-MO
+	for qemu-trivial@nongnu.org; Thu, 01 Dec 2011 13:12:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RW98p-0007hH-P0
-	for qemu-trivial@nongnu.org; Thu, 01 Dec 2011 11:05:45 -0500
-Received: from e9.ny.us.ibm.com ([32.97.182.139]:49343)
+	(envelope-from <sw@weilnetz.de>) id 1RWB7T-0000Lf-EF
+	for qemu-trivial@nongnu.org; Thu, 01 Dec 2011 13:12:31 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:54687)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RW98p-0007gs-MG
-	for qemu-trivial@nongnu.org; Thu, 01 Dec 2011 11:05:43 -0500
-Received: from /spool/local
-	by e9.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
-	Thu, 1 Dec 2011 11:05:41 -0500
-Received: from d01relay03.pok.ibm.com (9.56.227.235)
-	by e9.ny.us.ibm.com (192.168.1.109) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 1 Dec 2011 11:05:39 -0500
-Received: from d03av04.boulder.ibm.com (d03av04.boulder.ibm.com [9.17.195.170])
-	by d01relay03.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	pB1G5bGp251244; Thu, 1 Dec 2011 11:05:37 -0500
-Received: from d03av04.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av04.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id pB1G5D5b021542; Thu, 1 Dec 2011 09:05:13 -0700
-Received: from [9.53.41.253] (illuin.austin.ibm.com [9.53.41.253] (may be
-	forged))
-	by d03av04.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	pB1G5CtJ021421; Thu, 1 Dec 2011 09:05:12 -0700
-Message-ID: <4ED7A5AE.4000602@linux.vnet.ibm.com>
-Date: Thu, 01 Dec 2011 10:05:02 -0600
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:8.0) Gecko/20111105 Thunderbird/8.0
+	(envelope-from <sw@weilnetz.de>)
+	id 1RWB7J-0000HI-Hh; Thu, 01 Dec 2011 13:12:17 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	17D8F728188C; Thu,  1 Dec 2011 19:11:55 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id WmoKzvR+vPHR; Thu,  1 Dec 2011 19:11:25 +0100 (CET)
+Received: from flocke.weilnetz.de (p5086F501.dip.t-dialin.net [80.134.245.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	AEA0B728188A; Thu,  1 Dec 2011 19:11:25 +0100 (CET)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <sw@weilnetz.de>)
+	id 1RWB6I-00013M-TY; Thu, 01 Dec 2011 19:11:14 +0100
+Message-ID: <4ED7C342.3060302@weilnetz.de>
+Date: Thu, 01 Dec 2011 19:11:14 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20111110 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
 To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
 References: <4ED3F1C3.4060601@weilnetz.de>
@@ -48,12 +44,9 @@ References: <4ED3F1C3.4060601@weilnetz.de>
 In-Reply-To: <alpine.DEB.2.00.1112011048150.31179@kaball-desktop>
 Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
-x-cbid: 11120116-7182-0000-0000-000000521F4A
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 32.97.182.139
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
 Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Stefan Weil <sw@weilnetz.de>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] Makefile: use full path
  for qapi-generated directory
@@ -68,9 +61,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Dec 2011 16:05:46 -0000
+X-List-Received-Date: Thu, 01 Dec 2011 18:12:37 -0000
 
-On 12/01/2011 09:19 AM, Stefano Stabellini wrote:
+Am 01.12.2011 16:19, schrieb Stefano Stabellini:
 > On Wed, 30 Nov 2011, Stefan Weil wrote:
 >> It's common to use either out-of-tree builds or in-tree builds,
 >> but not to mix both variants with a common root directory.
@@ -81,7 +74,15 @@ On 12/01/2011 09:19 AM, Stefano Stabellini wrote:
 >> header files.
 >
 > Really? Can you provide more specific details?
->
+
+Yes. Suppose different generated header files with the same name
+exist in the source directory tree and in the build directory tree.
+
+Then compiler options (the order of -I options) will determine
+which of two header files with same name will be used in out-of-tree
+builds. If the wrong one (that from the source directory tree) is used,
+the compiler might fail or produce wrong code (for example when
+macro values changed).
 >> The mixed scenario creates unnecessary complexity.
 >> Without the mixed scenario, your patch is not needed.
 >
@@ -96,38 +97,18 @@ On 12/01/2011 09:19 AM, Stefano Stabellini wrote:
 > - make clean
 >
 > - cd ../temp; ./configure --source-path=../qemu; make
+
+Which ./configure do you run in an empty temp directory?
+This example (like similar ones in your previous mail) won't work.
+
 >
 > this has to work, right? It does not without the patch to fix the
 > generation of config-devices.mak.
->
 
-To clarify, the first patch I sent fix a bug that's not currently 
-triggered due to qapi-dir always ending up being "qapi-generated/", so 
-the guardname generated works, albeit with some needlessly verbose names.
+No. You'll need a 'make distclean'. If that does what it should do,
+a following out-of-tree build will work.
 
-The second isn't intended to fix your issue with builds, but avoid 
-potential problems that may arise if at some point $(BUILD_DIR) != 
-$(CURDIR).
-
-So they don't actually fix anything, just potential bugs that may arise 
-in the future.
-
-The issue with doing out of tree builds with a dirty source directory is 
-really just an unsupported scenario. To really clean things up, you need 
-to run `make distclean` using the same configuration you used to dirty 
-the directory in the first place, otherwise even `make distclean` will 
-leave cruft laying in target directories not present in your current config.
-
-Alexandre Raymond sent a patch to make it so that `make distclean` 
-always left the source directory pristine, but there was some contention 
-on what exactly a `make distclean` entails and it wasn't applied:
-
-http://lists.gnu.org/archive/html/qemu-trivial/2011-07/msg00037.html
-
-That's really the only complete fix for these build issues. I'm starting 
-to think it'd be worth it to add a `make clean_for_reals` target that 
-does what Alexandre's patch does and tell people to run it after a pull 
-or switching to out-of-tree builds.
-
+Regards,
+Stefan Weil
 
 
