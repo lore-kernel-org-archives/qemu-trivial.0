@@ -1,41 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RWPTB-0004aE-9Q
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Dec 2011 04:31:49 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:38408)
+	id 1RWQFo-00074Q-A4
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Dec 2011 05:22:04 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:55342)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RWPT4-0004CZ-C1
-	for qemu-trivial@nongnu.org; Fri, 02 Dec 2011 04:31:46 -0500
+	(envelope-from <ncopa@alpinelinux.org>) id 1RWQFi-00070x-6v
+	for qemu-trivial@nongnu.org; Fri, 02 Dec 2011 05:22:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RWPT3-0001lM-2X
-	for qemu-trivial@nongnu.org; Fri, 02 Dec 2011 04:31:42 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:57598)
+	(envelope-from <ncopa@alpinelinux.org>) id 1RWQFd-0005QS-5F
+	for qemu-trivial@nongnu.org; Fri, 02 Dec 2011 05:21:58 -0500
+Received: from [74.117.189.114] (port=37712 helo=mail.alpinelinux.org)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1RWPSx-0001k9-QM; Fri, 02 Dec 2011 04:31:35 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	755507281889; Fri,  2 Dec 2011 10:31:13 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id fzUdAGGrsobs; Fri,  2 Dec 2011 10:30:43 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 8BC1C728188C; Fri,  2 Dec 2011 10:30:43 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Fri,  2 Dec 2011 10:30:41 +0100
-Message-Id: <1322818241-18137-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.2.5
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [Qemu-trivial] =?utf-8?q?=5BPATCH=5D_Convert_source_files_to_UTF-?=
-	=?utf-8?q?8_encoding?=
+	(envelope-from <ncopa@alpinelinux.org>) id 1RWQFd-0005Pt-0y
+	for qemu-trivial@nongnu.org; Fri, 02 Dec 2011 05:21:53 -0500
+Received: from ncdev.alpinelinux.org (build.alpinelinux.org [91.220.88.20])
+	by mail.alpinelinux.org (Postfix) with ESMTP id 8DA34DC0A12;
+	Fri,  2 Dec 2011 09:45:50 +0000 (UTC)
+From: Natanael Copa <ncopa@alpinelinux.org>
+To: qemu-trivial@nongnu.org
+Date: Fri,  2 Dec 2011 09:45:47 +0000
+Message-Id: <1322819147-20385-1-git-send-email-ncopa@alpinelinux.org>
+X-Mailer: git-send-email 1.7.7.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 74.117.189.114
+Cc: Natanael Copa <ncopa@alpinelinux.org>
+Subject: [Qemu-trivial] [PATCH] configure: check if -lm is needed for libm
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,94 +36,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Dec 2011 09:31:46 -0000
+X-List-Received-Date: Fri, 02 Dec 2011 10:22:02 -0000
 
-Most QEMU files either are pure ASCII or use UTF-8.
-Convert some files which still used ISO-8859-1 to UTF-8.
+Some systems, like uClibc, needs -lm linker flag. Check and add if
+needed.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+This fixes building on Alpine Linux.
+
+Signed-off-by: Natanael Copa <ncopa@alpinelinux.org>
 ---
- hw/ds1225y.c           |    2 +-
- hw/fdc.c               |    2 +-
- hw/jazz_led.c          |    2 +-
- hw/tc6393xb_template.h |    2 +-
- hw/vmport.c            |    2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+ Makefile  |    4 ++--
+ configure |   19 +++++++++++++++++++
+ 2 files changed, 21 insertions(+), 2 deletions(-)
 
-diff --git a/hw/ds1225y.c b/hw/ds1225y.c
-index 6852a61..5da2d68 100644
---- a/hw/ds1225y.c
-+++ b/hw/ds1225y.c
-@@ -1,7 +1,7 @@
- /*
-  * QEMU NVRAM emulation for DS1225Y chip
-  *
-- * Copyright (c) 2007-2008 Herv=E9 Poussineau
-+ * Copyright (c) 2007-2008 Herv=C3=A9 Poussineau
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining=
- a copy
-  * of this software and associated documentation files (the "Software"),=
- to deal
-diff --git a/hw/fdc.c b/hw/fdc.c
-index ecaad09..531a34e 100644
---- a/hw/fdc.c
-+++ b/hw/fdc.c
-@@ -2,7 +2,7 @@
-  * QEMU Floppy disk emulator (Intel 82078)
-  *
-  * Copyright (c) 2003, 2007 Jocelyn Mayer
-- * Copyright (c) 2008 Herv=E9 Poussineau
-+ * Copyright (c) 2008 Herv=C3=A9 Poussineau
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining=
- a copy
-  * of this software and associated documentation files (the "Software"),=
- to deal
-diff --git a/hw/jazz_led.c b/hw/jazz_led.c
-index eb472a0..c75aef7 100644
---- a/hw/jazz_led.c
-+++ b/hw/jazz_led.c
-@@ -1,7 +1,7 @@
- /*
-  * QEMU JAZZ LED emulator.
-  *
-- * Copyright (c) 2007 Herv=E9 Poussineau
-+ * Copyright (c) 2007 Herv=C3=A9 Poussineau
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining=
- a copy
-  * of this software and associated documentation files (the "Software"),=
- to deal
-diff --git a/hw/tc6393xb_template.h b/hw/tc6393xb_template.h
-index 1ccf6e8..4cbbad5 100644
---- a/hw/tc6393xb_template.h
-+++ b/hw/tc6393xb_template.h
-@@ -5,7 +5,7 @@
-  *
-  * FB support code. Based on G364 fb emulator
-  *
-- * Copyright (c) 2007 Herv=E9 Poussineau
-+ * Copyright (c) 2007 Herv=C3=A9 Poussineau
-  *
-  * This program is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU General Public License as
-diff --git a/hw/vmport.c b/hw/vmport.c
-index b5c6fa1..0a3dbc5 100644
---- a/hw/vmport.c
-+++ b/hw/vmport.c
-@@ -1,7 +1,7 @@
- /*
-  * QEMU VMPort emulation
-  *
-- * Copyright (C) 2007 Herv=E9 Poussineau
-+ * Copyright (C) 2007 Herv=C3=A9 Poussineau
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining=
- a copy
-  * of this software and associated documentation files (the "Software"),=
- to deal
---=20
-1.7.2.5
+diff --git a/Makefile b/Makefile
+index 301c75e..f3a291a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -34,7 +34,7 @@ configure: ;
+ 
+ $(call set-vpath, $(SRC_PATH):$(SRC_PATH)/hw)
+ 
+-LIBS+=-lz $(LIBS_TOOLS)
++LIBS+=-lz $(LIBS_TOOLS) $(LIBM)
+ 
+ ifdef BUILD_DOCS
+ DOCS=qemu-doc.html qemu-tech.html qemu.1 qemu-img.1 qemu-nbd.8 QMP/qmp-commands.txt
+@@ -170,7 +170,7 @@ test-coroutine: test-coroutine.o qemu-timer-common.o async.o $(coroutine-obj-y)
+ $(qapi-obj-y): $(GENERATED_HEADERS)
+ qapi-dir := $(BUILD_DIR)/qapi-generated
+ test-visitor.o test-qmp-commands.o qemu-ga$(EXESUF): QEMU_CFLAGS += -I $(qapi-dir)
+-qemu-ga$(EXESUF): LIBS = $(LIBS_QGA)
++qemu-ga$(EXESUF): LIBS = $(LIBS_QGA) $(LIBM)
+ 
+ $(qapi-dir)/test-qapi-types.c $(qapi-dir)/test-qapi-types.h :\
+ $(SRC_PATH)/qapi-schema-test.json $(SRC_PATH)/scripts/qapi-types.py
+diff --git a/configure b/configure
+index ac4840d..faa64bd 100755
+--- a/configure
++++ b/configure
+@@ -1287,6 +1287,24 @@ EOF
+ fi
+ 
+ ##########################################
++# libm check
++
++cat > $TMPC << EOF
++#include <math.h>
++int main(void) { return isnan(0.0); }
++EOF
++if compile_prog "" "" ; then
++    LIBM=
++elif compile_prog "" "-lm" ; then
++    LIBM="-lm"
++else
++    echo
++    echo "Error: libm check failed"
++    echo
++    exit 1
++fi
++
++##########################################
+ # zlib check
+ 
+ if test "$zlib" != "no" ; then
+@@ -3264,6 +3282,7 @@ echo "LIBS+=$LIBS" >> $config_host_mak
+ echo "LIBS_TOOLS+=$libs_tools" >> $config_host_mak
+ echo "EXESUF=$EXESUF" >> $config_host_mak
+ echo "LIBS_QGA+=$libs_qga" >> $config_host_mak
++echo "LIBM=$LIBM" >> $config_host_mak
+ 
+ # generate list of library paths for linker script
+ 
+-- 
+1.7.7.4
 
 
