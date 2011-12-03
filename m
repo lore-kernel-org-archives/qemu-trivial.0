@@ -1,48 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RWT4Q-0006Ha-Ou
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Dec 2011 08:22:30 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:57383)
+	id 1RWkT6-0008J2-Se
+	for mharc-qemu-trivial@gnu.org; Sat, 03 Dec 2011 02:57:08 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:49122)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RWT4N-00066U-I0
-	for qemu-trivial@nongnu.org; Fri, 02 Dec 2011 08:22:28 -0500
+	(envelope-from <sw@weilnetz.de>) id 1RWkT3-0008Bl-UN
+	for qemu-trivial@nongnu.org; Sat, 03 Dec 2011 02:57:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RWT4M-0001k1-HX
-	for qemu-trivial@nongnu.org; Fri, 02 Dec 2011 08:22:27 -0500
-Received: from mail-ww0-f41.google.com ([74.125.82.41]:63703)
+	(envelope-from <sw@weilnetz.de>) id 1RWkT3-0004Ew-0h
+	for qemu-trivial@nongnu.org; Sat, 03 Dec 2011 02:57:05 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:51455)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RWT4D-0001iC-0O; Fri, 02 Dec 2011 08:22:17 -0500
-Received: by wgbdt12 with SMTP id dt12so979370wgb.4
-	for <multiple recipients>; Fri, 02 Dec 2011 05:22:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=H0JwHPkQ15xEiKnQzhP9vFAQhJCX3kAxM+uOq5tMp8w=;
-	b=ITRTq879bhhW0y2LWDSrI1v6Vx5S7bWiMvMizFs5dE8P42jjHFmAaWrPnZxaXpdIci
-	OEn7lRxa+AlESmxbBObBohC7q6+bhF3t79DWtegLQKXCsRIpZ/ZFEy2S5XHsjczb3x4o
-	odIO/3gU50KD73LUYZa0LJbrjrf1RvYTCuCOM=
-Received: by 10.216.189.147 with SMTP id c19mr1402159wen.92.1322832135904;
-	Fri, 02 Dec 2011 05:22:15 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id
-	gg1sm10174395wbb.17.2011.12.02.05.22.15
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 02 Dec 2011 05:22:15 -0800 (PST)
-Date: Fri, 2 Dec 2011 13:22:13 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20111202132213.GC19437@stefanha-thinkpad.localdomain>
-References: <1322654344-13741-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <sw@weilnetz.de>)
+	id 1RWkT0-0004Dc-My; Sat, 03 Dec 2011 02:57:02 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	1AFD7728188C; Sat,  3 Dec 2011 08:56:40 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id LVOyeXFuToYk; Sat,  3 Dec 2011 08:56:10 +0100 (CET)
+Received: from [192.168.178.20] (p54AD9B23.dip.t-dialin.net [84.173.155.35])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	4CB2B7281889; Sat,  3 Dec 2011 08:56:10 +0100 (CET)
+Message-ID: <4ED9D60F.6000107@weilnetz.de>
+Date: Sat, 03 Dec 2011 08:55:59 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US;
+	rv:1.9.2.23) Gecko/20110921 Thunderbird/3.1.15
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1322654344-13741-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.82.41
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH] configure: Pull linux-headers/asm
- symlink creation out of loop
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1322854245-17590-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1322854245-17590-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	=?ISO-8859-15?Q?Lo=EFc_Minier?= <lool@dooz.org>,
+	Riku Voipio <riku.voipio@iki.fi>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] linux-user: Fix
+	non-UTF-8 characters
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,21 +52,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Dec 2011 13:22:28 -0000
+X-List-Received-Date: Sat, 03 Dec 2011 07:57:07 -0000
 
-On Wed, Nov 30, 2011 at 11:59:04AM +0000, Peter Maydell wrote:
-> Pull the creation of the linux-headers/asm symlink out of the loop
-> so we don't pointlessly delete and recreate it once for each target.
-> Also move the setting of the includes variable up so that it is
-> in the same place as the other code which sets this variable.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  configure |   37 ++++++++++++++++++++-----------------
->  1 files changed, 20 insertions(+), 17 deletions(-)
+Am 02.12.2011 20:30, schrieb Peter Maydell:
+> These two patches fix some non-UTF-8 characters in linux-user/
+> source files. Other than the five files Stefan Weil recently sent
+> a patch to fix, these are the only remaining non-UTF-8 characters
+> in the source tree.
+>
+> Since I don't entirely trust the email path for sending patches
+> to files where the diffs include non-UTF-8, I've also put the
+> changes up in a git repo, so you may prefer to pull from there:
 
-Thanks, applied to the trivial patches -next tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
+'git am' accepted both patches here without any problem.
 
-Stefan
+> The following changes since commit 1c8a881daaca6fe0646a425b0970fb3ad25f6732:
+>
+>    Update version for 1.0 release (2011-12-01 14:04:21 -0600)
+>
+> are available in the git repository at:
+>    git://git.linaro.org/people/pmaydell/qemu-arm.git non-utf-fixes
+>
+> Peter Maydell (2):
+>        linux-user/cpu-uname.c: Convert to UTF-8
+>        linux-user/arm/nwfpe/fpopcode.h: Fix non-UTF-8 characters
+>
+>   linux-user/arm/nwfpe/fpopcode.h |   34 +++++++++++++++++-----------------
+>   linux-user/cpu-uname.c          |    2 +-
+>   2 files changed, 18 insertions(+), 18 deletions(-)
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+I cc'ed qemu-trivial, too. Stefan, you can take both patches
+into the trivial patch queue.
+
+Thanks + regards,
+Stefan Weil
+
+
 
