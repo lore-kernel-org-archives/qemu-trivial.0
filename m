@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RWkT6-0008J2-Se
-	for mharc-qemu-trivial@gnu.org; Sat, 03 Dec 2011 02:57:08 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:49122)
+	id 1RWmAq-0006su-26
+	for mharc-qemu-trivial@gnu.org; Sat, 03 Dec 2011 04:46:24 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:41716)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1RWkT3-0008Bl-UN
-	for qemu-trivial@nongnu.org; Sat, 03 Dec 2011 02:57:06 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1RWmAn-0006jL-Ms
+	for qemu-trivial@nongnu.org; Sat, 03 Dec 2011 04:46:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1RWkT3-0004Ew-0h
-	for qemu-trivial@nongnu.org; Sat, 03 Dec 2011 02:57:05 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:51455)
+	(envelope-from <stefan@weilnetz.de>) id 1RWmAm-0007gl-PX
+	for qemu-trivial@nongnu.org; Sat, 03 Dec 2011 04:46:21 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:54569)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1RWkT0-0004Dc-My; Sat, 03 Dec 2011 02:57:02 -0500
+	(envelope-from <stefan@weilnetz.de>)
+	id 1RWmAk-0007eA-Ty; Sat, 03 Dec 2011 04:46:19 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	1AFD7728188C; Sat,  3 Dec 2011 08:56:40 +0100 (CET)
+	1F74C728188A; Sat,  3 Dec 2011 10:45:56 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id LVOyeXFuToYk; Sat,  3 Dec 2011 08:56:10 +0100 (CET)
-Received: from [192.168.178.20] (p54AD9B23.dip.t-dialin.net [84.173.155.35])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	4CB2B7281889; Sat,  3 Dec 2011 08:56:10 +0100 (CET)
-Message-ID: <4ED9D60F.6000107@weilnetz.de>
-Date: Sat, 03 Dec 2011 08:55:59 +0100
+	with ESMTP id 9GpWbzyYdsEG; Sat,  3 Dec 2011 10:45:26 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 8E970728188C; Sat,  3 Dec 2011 10:45:26 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US;
-	rv:1.9.2.23) Gecko/20110921 Thunderbird/3.1.15
+To: qemu-devel@nongnu.org
+Date: Sat,  3 Dec 2011 10:45:25 +0100
+Message-Id: <1322905525-354-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.2.5
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1322854245-17590-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1322854245-17590-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
 X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	=?ISO-8859-15?Q?Lo=EFc_Minier?= <lool@dooz.org>,
-	Riku Voipio <riku.voipio@iki.fi>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] linux-user: Fix
-	non-UTF-8 characters
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] =?utf-8?q?=5BPATCH=5D_Convert_keymap_file_to_UTF-8?=
+	=?utf-8?q?_encoding?=
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,42 +46,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 03 Dec 2011 07:57:07 -0000
+X-List-Received-Date: Sat, 03 Dec 2011 09:46:22 -0000
 
-Am 02.12.2011 20:30, schrieb Peter Maydell:
-> These two patches fix some non-UTF-8 characters in linux-user/
-> source files. Other than the five files Stefan Weil recently sent
-> a patch to fix, these are the only remaining non-UTF-8 characters
-> in the source tree.
->
-> Since I don't entirely trust the email path for sending patches
-> to files where the diffs include non-UTF-8, I've also put the
-> changes up in a git repo, so you may prefer to pull from there:
+Most QEMU files either are pure ASCII or use UTF-8.
+Convert this keymap file which still used ISO-8859-1 to UTF-8.
 
-'git am' accepted both patches here without any problem.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ pc-bios/keymaps/is |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-> The following changes since commit 1c8a881daaca6fe0646a425b0970fb3ad25f6732:
->
->    Update version for 1.0 release (2011-12-01 14:04:21 -0600)
->
-> are available in the git repository at:
->    git://git.linaro.org/people/pmaydell/qemu-arm.git non-utf-fixes
->
-> Peter Maydell (2):
->        linux-user/cpu-uname.c: Convert to UTF-8
->        linux-user/arm/nwfpe/fpopcode.h: Fix non-UTF-8 characters
->
->   linux-user/arm/nwfpe/fpopcode.h |   34 +++++++++++++++++-----------------
->   linux-user/cpu-uname.c          |    2 +-
->   2 files changed, 18 insertions(+), 18 deletions(-)
-
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
-I cc'ed qemu-trivial, too. Stefan, you can take both patches
-into the trivial patch queue.
-
-Thanks + regards,
-Stefan Weil
-
+diff --git a/pc-bios/keymaps/is b/pc-bios/keymaps/is
+index 21dc1fd..935ac1d 100644
+--- a/pc-bios/keymaps/is
++++ b/pc-bios/keymaps/is
+@@ -1,4 +1,4 @@
+-# 2004-03-16 Halld=F3r Gu=F0mundsson and Morten Lange
++# 2004-03-16 Halld=C3=B3r Gu=C3=B0mundsson and Morten Lange
+ # Keyboard definition file for the Icelandic keyboard
+ # to be used in rdesktop 1.3.x ( See rdesktop.org)
+ # generated from XKB map de, and changed manually
+--=20
+1.7.0.4
 
 
