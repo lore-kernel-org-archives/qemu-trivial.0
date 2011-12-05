@@ -1,31 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RXhhZ-0000EO-Pe
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2011 18:12:01 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:58612)
+	id 1RXi3p-0006Om-3H
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2011 18:35:01 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:38502)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1RXhhW-0008UE-M9
-	for qemu-trivial@nongnu.org; Mon, 05 Dec 2011 18:11:59 -0500
+	(envelope-from <agraf@suse.de>) id 1RXi3m-0006GG-Dh
+	for qemu-trivial@nongnu.org; Mon, 05 Dec 2011 18:34:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1RXhhV-0001LC-N8
-	for qemu-trivial@nongnu.org; Mon, 05 Dec 2011 18:11:58 -0500
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:44924)
+	(envelope-from <agraf@suse.de>) id 1RXi3l-0004zn-Eg
+	for qemu-trivial@nongnu.org; Mon, 05 Dec 2011 18:34:58 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:36875 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1RXhhT-0001Kw-A0; Mon, 05 Dec 2011 18:11:55 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1RXhhO-0000ab-0j; Mon, 05 Dec 2011 23:11:50 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Mon,  5 Dec 2011 23:11:50 +0000
-Message-Id: <1323126710-2242-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
+	(envelope-from <agraf@suse.de>)
+	id 1RXi3i-0004yq-2n; Mon, 05 Dec 2011 18:34:54 -0500
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.221.2])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 531ED8F0D1;
+	Tue,  6 Dec 2011 00:34:53 +0100 (CET)
+Mime-Version: 1.0 (Apple Message framework v1084)
+Content-Type: text/plain; charset=us-ascii
+From: Alexander Graf <agraf@suse.de>
+In-Reply-To: <1323126710-2242-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 6 Dec 2011 00:34:52 +0100
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <CC613A47-963C-4B7E-9C6C-F7195469AE3A@suse.de>
+References: <1323126710-2242-1-git-send-email-peter.maydell@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.1084)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
 Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	Alexander Graf <agraf@suse.de>, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] linux-user/syscall.c: Don't skip stracing
-	for fcntl64 failure case
+	qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] linux-user/syscall.c: Don't skip
+	stracing for fcntl64 failure case
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,37 +44,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Dec 2011 23:11:59 -0000
+X-List-Received-Date: Mon, 05 Dec 2011 23:34:59 -0000
 
-In an fcntl64 failure path, we were returning directly rather than
-simply breaking out of the switch statement. This skips the strace
-code for printing the syscall return value, so don't do that.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Alex Graf spotted this one...
+On 06.12.2011, at 00:11, Peter Maydell wrote:
 
- linux-user/syscall.c |    6 ++++--
- 1 files changed, 4 insertions(+), 2 deletions(-)
+> In an fcntl64 failure path, we were returning directly rather than
+> simply breaking out of the switch statement. This skips the strace
+> code for printing the syscall return value, so don't do that.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index f227097..4846b41 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -7521,8 +7521,10 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
- #endif
- 
- 	cmd = target_to_host_fcntl_cmd(arg2);
--	if (cmd == -TARGET_EINVAL)
--		return cmd;
-+        if (cmd == -TARGET_EINVAL) {
-+            ret = cmd;
-+            break;
-+        }
- 
-         switch(arg2) {
-         case TARGET_F_GETLK64:
--- 
-1.7.5.4
+Acked-by: Alexander Graf <agraf@suse.de>
+
+
+Alex
+
+> ---
+> Alex Graf spotted this one...
+>=20
+> linux-user/syscall.c |    6 ++++--
+> 1 files changed, 4 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index f227097..4846b41 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -7521,8 +7521,10 @@ abi_long do_syscall(void *cpu_env, int num, =
+abi_long arg1,
+> #endif
+>=20
+> 	cmd =3D target_to_host_fcntl_cmd(arg2);
+> -	if (cmd =3D=3D -TARGET_EINVAL)
+> -		return cmd;
+> +        if (cmd =3D=3D -TARGET_EINVAL) {
+> +            ret =3D cmd;
+> +            break;
+> +        }
+>=20
+>         switch(arg2) {
+>         case TARGET_F_GETLK64:
+> --=20
+> 1.7.5.4
+>=20
 
 
