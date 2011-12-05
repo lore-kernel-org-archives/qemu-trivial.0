@@ -1,44 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RXdzo-00020J-CX
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2011 14:14:36 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:44578)
+	id 1RXgPp-0005rR-Lw
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2011 16:49:37 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:52781)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cheffner@tacnetsol.com>) id 1RXdzl-00020C-RU
-	for qemu-trivial@nongnu.org; Mon, 05 Dec 2011 14:14:34 -0500
+	(envelope-from <sw@weilnetz.de>) id 1RXgPl-0005eA-Ve
+	for qemu-trivial@nongnu.org; Mon, 05 Dec 2011 16:49:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cheffner@tacnetsol.com>) id 1RXdzj-0003Xn-HT
-	for qemu-trivial@nongnu.org; Mon, 05 Dec 2011 14:14:33 -0500
-Received: from mail-qw0-f52.google.com ([209.85.216.52]:47568)
+	(envelope-from <sw@weilnetz.de>) id 1RXgPk-0003IJ-O8
+	for qemu-trivial@nongnu.org; Mon, 05 Dec 2011 16:49:33 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:33850)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cheffner@tacnetsol.com>) id 1RXdzj-0003Xa-DR
-	for qemu-trivial@nongnu.org; Mon, 05 Dec 2011 14:14:31 -0500
-Received: by qan41 with SMTP id 41so3632671qan.4
-	for <qemu-trivial@nongnu.org>; Mon, 05 Dec 2011 11:14:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tacnetsol.com; s=tns;
-	h=from:content-type:subject:date:message-id:to:mime-version:x-mailer;
-	bh=ZUOCCmheG3OPZ1/IsaVTTnTrXIsfzyfGcvVxSpvwrL0=;
-	b=lUnmF6E5G/cjgAIOZwIvwJ/LA9FkiUqvbKlSrZRNscAQQ+zws3wm78V5hiK956O8yI
-	htR+g7pMWic/snGHZfb9MBpW3AKgcJXVHVIrpLdtZAuKHEftIjCqG2lCjwcBIIZRma/z
-	pJ9k4EGIq2eVlkdOpsfBswVRdqj1KprZH44Xg=
-Received: by 10.224.17.209 with SMTP id t17mr9473190qaa.13.1323112469868;
-	Mon, 05 Dec 2011 11:14:29 -0800 (PST)
-Received: from new-host.tns (pool-96-244-144-225.bltmmd.fios.verizon.net.
-	[96.244.144.225])
-	by mx.google.com with ESMTPS id ed2sm27229716qab.15.2011.12.05.11.14.28
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 05 Dec 2011 11:14:29 -0800 (PST)
-From: Craig <cheffner@tacnetsol.com>
-Content-Type: multipart/signed; boundary=Apple-Mail-1--939599787;
-	protocol="application/pkcs7-signature"; micalg=sha1
-Date: Mon, 5 Dec 2011 14:14:27 -0500
-Message-Id: <EE7FAED6-555F-4A0C-9131-15353A5650C6@tacnetsol.com>
-To: qemu-trivial@nongnu.org
-Mime-Version: 1.0 (Apple Message framework v1084)
-X-Mailer: Apple Mail (2.1084)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.52
-Subject: [Qemu-trivial] User mode support for Linux ELF files with no
-	section headers
+	(envelope-from <sw@weilnetz.de>)
+	id 1RXgPg-0003HC-Ia; Mon, 05 Dec 2011 16:49:28 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	188A0728188C; Mon,  5 Dec 2011 22:49:18 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id fzLIU6hGFZZq; Mon,  5 Dec 2011 22:48:48 +0100 (CET)
+Received: from flocke.weilnetz.de (p5086EF76.dip.t-dialin.net [80.134.239.118])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	420DE7281889; Mon,  5 Dec 2011 22:48:48 +0100 (CET)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <sw@weilnetz.de>)
+	id 1RXgOr-0004E6-Sf; Mon, 05 Dec 2011 22:48:37 +0100
+Message-ID: <4EDD3C35.4060509@weilnetz.de>
+Date: Mon, 05 Dec 2011 22:48:37 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20111110 Iceowl/1.0b1 Icedove/3.0.11
+MIME-Version: 1.0
+To: Ademar de Souza Reis Jr <areis@redhat.com>
+References: <1323114854-28049-1-git-send-email-areis@redhat.com>
+In-Reply-To: <1323114854-28049-1-git-send-email-areis@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+	Avi Kivity <avi@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] memory: minor documentation
+	fixes/enhancements
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,107 +55,172 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Dec 2011 19:14:34 -0000
+X-List-Received-Date: Mon, 05 Dec 2011 21:49:35 -0000
 
+Am 05.12.2011 20:54, schrieb Ademar de Souza Reis Jr:
+> Fix typos and minor documentation errors in both memory.h and
+> docs/memory.txt.
+>
+> Also add missing documentation formatting tags to transaction
+> functions.
+>
+> Signed-off-by: Ademar de Souza Reis Jr<areis@redhat.com>
+> ---
+>   docs/memory.txt |    6 +++---
+>   memory.h        |   38 ++++++++++++++++++++++----------------
+>   2 files changed, 25 insertions(+), 19 deletions(-)
+>
+> diff --git a/docs/memory.txt b/docs/memory.txt
+> index 3fc1683..5bbee8e 100644
+> --- a/docs/memory.txt
+> +++ b/docs/memory.txt
+> @@ -7,7 +7,7 @@ machine.  It attempts to allow modelling of:
+>    - ordinary RAM
+>    - memory-mapped I/O (MMIO)
+>    - memory controllers that can dynamically reroute physical memory regions
+> -  to different destinations
+> +   to different destinations
+>
+>   The memory model provides support for
+>
+> @@ -121,7 +121,7 @@ pci (0-2^32-1)
+>
+>   ram: ram@0x00000000-0xffffffff
+>
+> -The is a (simplified) PC memory map. The 4GB RAM block is mapped into the
+> +This is a (simplified) PC memory map. The 4GB RAM block is mapped into the
+>   system address space via two aliases: "lomem" is a 1:1 mapping of the first
+>   3.5GB; "himem" maps the last 0.5GB at address 4GB.  This leaves 0.5GB for the
+>   so-called PCI hole, that allows a 32-bit PCI bus to exist in a system with
+> @@ -164,7 +164,7 @@ various constraints can be supplied to control how these callbacks are called:
+>    - .impl.min_access_size, .impl.max_access_size define the access sizes
+>      (in bytes) supported by the *implementation*; other access sizes will be
+>      emulated using the ones available.  For example a 4-byte write will be
+> -   emulated using four 1-byte write, if .impl.max_access_size = 1.
+> +   emulated using four 1-byte writes, if .impl.max_access_size = 1.
+>    - .impl.valid specifies that the *implementation* only supports unaligned
+>      accesses; unaligned accesses will be emulated by two aligned accesses.
+>    - .old_portio and .old_mmio can be used to ease porting from code using
+> diff --git a/memory.h b/memory.h
+> index 53bf261..beae127 100644
+> --- a/memory.h
+> +++ b/memory.h
+> @@ -149,7 +149,7 @@ struct MemoryRegionPortio {
+>   /**
+>    * memory_region_init: Initialize a memory region
+>    *
+> - * The region typically acts as a container for other memory regions.  Us
+> + * The region typically acts as a container for other memory regions.  Use
+>    * memory_region_add_subregion() to add subregions.
+>    *
+>    * @mr: the #MemoryRegion to be initialized
+> @@ -162,7 +162,7 @@ void memory_region_init(MemoryRegion *mr,
+>   /**
+>    * memory_region_init_io: Initialize an I/O memory region.
+>    *
+> - * Accesses into the region will be cause the callbacks in @ops to be called.
+> + * Accesses into the region will cause the callbacks in @ops to be called.
+>    * if @size is nonzero, subregions will be clipped to @size.
+>    *
+>    * @mr: the #MemoryRegion to be initialized.
+> @@ -180,7 +180,7 @@ void memory_region_init_io(MemoryRegion *mr,
+>
+>   /**
+>    * memory_region_init_ram:  Initialize RAM memory region.  Accesses into the
+> - *                          region will be modify memory directly.
+> + *                          region will modify memory directly.
+>    *
+>    * @mr: the #MemoryRegion to be initialized.
+>    * @dev: a device associated with the region; may be %NULL.
+> @@ -196,7 +196,7 @@ void memory_region_init_ram(MemoryRegion *mr,
+>
+>   /**
+>    * memory_region_init_ram:  Initialize RAM memory region from a user-provided.
+> - *                          pointer.  Accesses into the region will be modify
+> + *                          pointer.  Accesses into the region will modify
+>    *                          memory directly.
+>    *
+>    * @mr: the #MemoryRegion to be initialized.
+> @@ -250,7 +250,7 @@ void memory_region_init_rom_device(MemoryRegion *mr,
+>                                      uint64_t size);
+>
+>   /**
+> - * memory_region_destroy: Destroy a memory region and relaim all resources.
+> + * memory_region_destroy: Destroy a memory region and reclaim all resources.
+>    *
+>    * @mr: the region to be destroyed.  May not currently be a subregion
+>    *      (see memory_region_add_subregion()) or referenced in an alias
+> @@ -417,7 +417,7 @@ void memory_region_clear_coalescing(MemoryRegion *mr);
+>    *
+>    * Marks a word in an IO region (initialized with memory_region_init_io())
+>    * as a trigger for an eventfd event.  The I/O callback will not be called.
+> - * The caller must be prepared to handle failure (hat is, take the required
+> + * The caller must be prepared to handle failure (that is, take the required
+>    * action if the callback _is_ called).
+>    *
+>    * @mr: the memory region being updated.
+> @@ -435,10 +435,10 @@ void memory_region_add_eventfd(MemoryRegion *mr,
+>                                  int fd);
+>
+>   /**
+> - * memory_region_del_eventfd: Cancel and eventfd.
+> + * memory_region_del_eventfd: Cancel an eventfd.
+>    *
+> - * Cancels an eventfd trigger request by a previous memory_region_add_eventfd()
+> - * call.
+> + * Cancels an eventfd trigger requested by a previous
+> + * memory_region_add_eventfd() call.
+>    *
+>    * @mr: the memory region being updated.
+>    * @addr: the address within @mr that is to be monitored
+> @@ -454,9 +454,9 @@ void memory_region_del_eventfd(MemoryRegion *mr,
+>                                  uint64_t data,
+>                                  int fd);
+>   /**
+> - * memory_region_add_subregion: Add a sub-region to a container.
+> + * memory_region_add_subregion: Add a subregion to a container.
+>    *
+> - * Adds a sub-region at @offset.  The sub-region may not overlap with other
+> + * Adds a subregion at @offset.  The subregion may not overlap with other
+>    * subregions (except for those explicitly marked as overlapping).  A region
+>    * may only be added once as a subregion (unless removed with
+>    * memory_region_del_subregion()); use memory_region_init_alias() if you
+> @@ -471,9 +471,9 @@ void memory_region_add_subregion(MemoryRegion *mr,
+>                                    target_phys_addr_t offset,
+>                                    MemoryRegion *subregion);
+>   /**
+> - * memory_region_add_subregion: Add a sub-region to a container, with overlap.
+> + * memory_region_add_subregion: Add a subregion to a container, with overlap.
+>    *
+> - * Adds a sub-region at @offset.  The sub-region may overlap with other
+> + * Adds a subregion at @offset.  The subregion may overlap with other
+>    * subregions.  Conflicts are resolved by having a higher @priority hide a
+>    * lower @priority. Subregions without priority are taken as @priority 0.
+>    * A region may only be added once as a subregion (unless removed with
+> @@ -501,11 +501,17 @@ void memory_region_add_subregion_overlap(MemoryRegion *mr,
+>   void memory_region_del_subregion(MemoryRegion *mr,
+>                                    MemoryRegion *subregion);
+>
+> -/* Start a transaction; changes will be accumulated and made visible only
+> - * when the transaction ends.
+> +/**
+> + * memory_region_transaction_begin: Start a transaction.
+> + *
+> + * During a transaction, changes will be accumulated and made visible
+> + * only when the transaction ends (is commited).
+>    */
+>   void memory_region_transaction_begin(void);
+> -/* Commit a transaction and make changes visible to the guest.
+> +
+> +/**
+> + * memory_region_transaction_commit: Commit a transaction and make changes
+> + *                                   visible to the guest.
+>    */
+>   void memory_region_transaction_commit(void);
+>    
 
---Apple-Mail-1--939599787
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=us-ascii
+Looks good. It does not change code and can be committed via qemu-trivial.
 
-In user mode Linux, Qemu currently refuses to load ELF files that do not =
-contain section headers (ehdr->e_shentsize =3D=3D 0). Since section =
-headers are not required in order to load an ELF file, simply removing =
-the e_shentsize check in elf_check_ehdr() allows ELF binaries with no =
-section headers to be run properly in user mode:
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
-Signed-off-by: Craig Heffner <cheffner@tacnetsol.com>
---- qemu/linux-user/elfload.c	2011-12-02 15:16:07.637541215 -0500
-+++ qemu-patched/linux-user/elfload.c	2011-12-02 15:27:24.061522798 =
--0500
-@@ -1068,7 +1068,6 @@ static bool elf_check_ehdr(struct elfhdr
-     return (elf_check_arch(ehdr->e_machine)
-             && ehdr->e_ehsize =3D=3D sizeof(struct elfhdr)
-             && ehdr->e_phentsize =3D=3D sizeof(struct elf_phdr)
--            && ehdr->e_shentsize =3D=3D sizeof(struct elf_shdr)
-             && (ehdr->e_type =3D=3D ET_EXEC || ehdr->e_type =3D=3D =
-ET_DYN));
- }
-
-
---Apple-Mail-1--939599787
-Content-Disposition: attachment;
-	filename=smime.p7s
-Content-Type: application/pkcs7-signature;
-	name=smime.p7s
-Content-Transfer-Encoding: base64
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIKYDCCBN0w
-ggPFoAMCAQICEHGS++YZX6xNEoV0cTSiGKcwDQYJKoZIhvcNAQEFBQAwezELMAkGA1UEBhMCR0Ix
-GzAZBgNVBAgMEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBwwHU2FsZm9yZDEaMBgGA1UECgwR
-Q29tb2RvIENBIExpbWl0ZWQxITAfBgNVBAMMGEFBQSBDZXJ0aWZpY2F0ZSBTZXJ2aWNlczAeFw0w
-NDAxMDEwMDAwMDBaFw0yODEyMzEyMzU5NTlaMIGuMQswCQYDVQQGEwJVUzELMAkGA1UECBMCVVQx
-FzAVBgNVBAcTDlNhbHQgTGFrZSBDaXR5MR4wHAYDVQQKExVUaGUgVVNFUlRSVVNUIE5ldHdvcmsx
-ITAfBgNVBAsTGGh0dHA6Ly93d3cudXNlcnRydXN0LmNvbTE2MDQGA1UEAxMtVVROLVVTRVJGaXJz
-dC1DbGllbnQgQXV0aGVudGljYXRpb24gYW5kIEVtYWlsMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
-MIIBCgKCAQEAsjmFpPJ9q0E7YkY3rs3BYHW8OWX5ShpHornMSMxqmNVNNRm5pELlzkniii8efNIx
-B8dOtINknS4p1aJkxIW9hVE1eaROaJB7HHqkkqgX8pgV8pPMyaQylbsMTzC9mKALi+VuG6JG+ni8
-om+rWV6lL8/K2m2qL+usobNqqrcuZzWLeeEeaYji5kbNoKXqvgvOdjp6Dpvq/NonWz1zHyLmSGHG
-TPNpsaguG7bUMSAsvIKKjqQOpdeJQ/wWWq8dcdcRWdq6hw2v+vPhwvCkxWeM1tZUOt4KpLoDd7Nl
-yP0e03RiqhjKaJMeoYV+9Udly/hNVyh00jT/MLbu9mIwFIws6wIDAQABo4IBJzCCASMwHwYDVR0j
-BBgwFoAUoBEKIz6W8Qfs4q8p74Klf9AwpLQwHQYDVR0OBBYEFImCZ33EnSZwAEu0UEh83j2uBG59
-MA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdJQQWMBQGCCsGAQUFBwMCBggr
-BgEFBQcDBDARBgNVHSAECjAIMAYGBFUdIAAwewYDVR0fBHQwcjA4oDagNIYyaHR0cDovL2NybC5j
-b21vZG9jYS5jb20vQUFBQ2VydGlmaWNhdGVTZXJ2aWNlcy5jcmwwNqA0oDKGMGh0dHA6Ly9jcmwu
-Y29tb2RvLm5ldC9BQUFDZXJ0aWZpY2F0ZVNlcnZpY2VzLmNybDARBglghkgBhvhCAQEEBAMCAQYw
-DQYJKoZIhvcNAQEFBQADggEBAJ2Vyzy4fqUJxB6/C8LHdo45PJTGEKpPDMngq4RdiVTgZTvzbRx8
-NywlVF+WIfw3hJGdFdwUT4HPVB1rbEVgxy35l1FM+WbKPKCCjKbI8OLp1Er57D9Wyd12jMOCAU9s
-APMeGmF0BEcDqcZAV5G8ZSLFJ2dPV9tkWtmNH7qGL/QGrpxp7en0zykX2OBKnxogL5dMUbtGB8SK
-N04g4wkxaMeexIud6H4RvDJoEJYRmETYKlFgTYjrdDrfQwYyyDlWjDoRUtNBpEMD9O3vMyfbOeAU
-TibJ2PU54om4k123KSZB6rObroP8d3XK6Mq1/uJlSmM+RMTQw16Hc6mYHK9/FX8wggV7MIIEY6AD
-AgECAhEAtAqoXOjtsUrPHTMBtYEHcjANBgkqhkiG9w0BAQUFADCBrjELMAkGA1UEBhMCVVMxCzAJ
-BgNVBAgTAlVUMRcwFQYDVQQHEw5TYWx0IExha2UgQ2l0eTEeMBwGA1UEChMVVGhlIFVTRVJUUlVT
-VCBOZXR3b3JrMSEwHwYDVQQLExhodHRwOi8vd3d3LnVzZXJ0cnVzdC5jb20xNjA0BgNVBAMTLVVU
-Ti1VU0VSRmlyc3QtQ2xpZW50IEF1dGhlbnRpY2F0aW9uIGFuZCBFbWFpbDAeFw0xMTAxMTkwMDAw
-MDBaFw0xMjAxMTkyMzU5NTlaMCcxJTAjBgkqhkiG9w0BCQEWFmNoZWZmbmVyQHRhY25ldHNvbC5j
-b20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDAC2ci+8UERO+XVUYdBaNQojcIv+6W
-ynozEIPEOOmgwyMsPqNslp9xbf6ZGsOzJcO3V3/dUMSokzm2hzRgH8CtB4We/bMmB1qeHgbDiGci
-G+n4HosBwyRi8mbaYr4FCYHqyX/ygEjD/qMY5WAT+9utMEZpWpk5XD3McG4DoI4Qi0s8sTpg3WLL
-TCWRatSy88wKdUeqI8xyWvYXc8mkdodDk+2iqBwZY3tPC7+HUVtd7XFeqV3g0EFMsEatGhBzJsc0
-cU69ltmMwoLRuutZ8+iUU2ulT3vvhQZOFtblTkic4dlTbge3RTsSxS5sYZZiUhDIdXkLe4bGpKSa
-ZgLKobPJAgMBAAGjggIYMIICFDAfBgNVHSMEGDAWgBSJgmd9xJ0mcABLtFBIfN49rgRufTAdBgNV
-HQ4EFgQU1se6tfdE0P65WJzldOtfR/7Wx70wDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAw
-IAYDVR0lBBkwFwYIKwYBBQUHAwQGCysGAQQBsjEBAwUCMBEGCWCGSAGG+EIBAQQEAwIFIDBGBgNV
-HSAEPzA9MDsGDCsGAQQBsjEBAgEBATArMCkGCCsGAQUFBwIBFh1odHRwczovL3NlY3VyZS5jb21v
-ZG8ubmV0L0NQUzCBpQYDVR0fBIGdMIGaMEygSqBIhkZodHRwOi8vY3JsLmNvbW9kb2NhLmNvbS9V
-VE4tVVNFUkZpcnN0LUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kRW1haWwuY3JsMEqgSKBGhkRodHRw
-Oi8vY3JsLmNvbW9kby5uZXQvVVROLVVTRVJGaXJzdC1DbGllbnRBdXRoZW50aWNhdGlvbmFuZEVt
-YWlsLmNybDBsBggrBgEFBQcBAQRgMF4wNgYIKwYBBQUHMAKGKmh0dHA6Ly9jcnQuY29tb2RvY2Eu
-Y29tL1VUTkFBQUNsaWVudENBLmNydDAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuY29tb2RvY2Eu
-Y29tMCEGA1UdEQQaMBiBFmNoZWZmbmVyQHRhY25ldHNvbC5jb20wDQYJKoZIhvcNAQEFBQADggEB
-ADqYetfCPGbMbcQbGLAjQVnrOLAKbuWK8P0p77NLaUL7Zj9cIWKVq9IT6xQhOKEbKXyAnzJzaXTq
-3gK7JetZPAoRF+ZdVZUBSqJlAHKoYF9TVns1PeTQyGEvNXgmxu4zGkzZbYJLj7VPyeHZbtlAOXO0
-MVTRZCTHyhN6DV1/t3Qcyl/Yg3GVGIWfP8EmieK7glsAtgTLZs8OHPO2bBLiq7S9zBOL7HFa1AJ1
-36Hj9TeA6LimaBsADxP6qZy+aGubxHDiCe4BQcIAcEroUlH8uCSejZjddJlydtqMYUbWV6YyvSA9
-qpWDZuGLcm6rpGPx7LTHvxWcDGu1RLu3moy2NpUxggP/MIID+wIBATCBxDCBrjELMAkGA1UEBhMC
-VVMxCzAJBgNVBAgTAlVUMRcwFQYDVQQHEw5TYWx0IExha2UgQ2l0eTEeMBwGA1UEChMVVGhlIFVT
-RVJUUlVTVCBOZXR3b3JrMSEwHwYDVQQLExhodHRwOi8vd3d3LnVzZXJ0cnVzdC5jb20xNjA0BgNV
-BAMTLVVUTi1VU0VSRmlyc3QtQ2xpZW50IEF1dGhlbnRpY2F0aW9uIGFuZCBFbWFpbAIRALQKqFzo
-7bFKzx0zAbWBB3IwCQYFKw4DAhoFAKCCAg8wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkq
-hkiG9w0BCQUxDxcNMTExMjA1MTkxNDI3WjAjBgkqhkiG9w0BCQQxFgQU/g/whwh0WWPVxutcFkyS
-kSlYb10wgdUGCSsGAQQBgjcQBDGBxzCBxDCBrjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlVUMRcw
-FQYDVQQHEw5TYWx0IExha2UgQ2l0eTEeMBwGA1UEChMVVGhlIFVTRVJUUlVTVCBOZXR3b3JrMSEw
-HwYDVQQLExhodHRwOi8vd3d3LnVzZXJ0cnVzdC5jb20xNjA0BgNVBAMTLVVUTi1VU0VSRmlyc3Qt
-Q2xpZW50IEF1dGhlbnRpY2F0aW9uIGFuZCBFbWFpbAIRALQKqFzo7bFKzx0zAbWBB3IwgdcGCyqG
-SIb3DQEJEAILMYHHoIHEMIGuMQswCQYDVQQGEwJVUzELMAkGA1UECBMCVVQxFzAVBgNVBAcTDlNh
-bHQgTGFrZSBDaXR5MR4wHAYDVQQKExVUaGUgVVNFUlRSVVNUIE5ldHdvcmsxITAfBgNVBAsTGGh0
-dHA6Ly93d3cudXNlcnRydXN0LmNvbTE2MDQGA1UEAxMtVVROLVVTRVJGaXJzdC1DbGllbnQgQXV0
-aGVudGljYXRpb24gYW5kIEVtYWlsAhEAtAqoXOjtsUrPHTMBtYEHcjANBgkqhkiG9w0BAQEFAASC
-AQC266ztoBGGGIikQxCreeIRvTb+LEFAc3x70YBsosVPSB4T/cNNtj8lkfXoiSZpgSe4cf6wvF3F
-3n1eTbnRf1APjoZOGT/kcIUGGDDdzd1meGGx0yC/w7TKvZpBJjizrEuo0UZMrHzU/XrhX5RTH1Ex
-X7iljsBtVSn3/taEgWImzTKPULbl/4fL3trjNPL98SLO3xtsArjNLsnbVDTcShRl2p+lQs0rAI55
-lcXCAXZW1sgkQUPgJYtlWyGVQWHkp1guknGNAQtuU98EndWSBcHb5iLC4xckWSEpFfRvDVEOCAAT
-VKkLR7BjbvLOwVkUVZNpwQtrU6Bm3TvrLbHlVt1aAAAAAAAA
-
---Apple-Mail-1--939599787--
 
