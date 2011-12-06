@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RXs3H-0007Ef-Ef
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Dec 2011 05:15:07 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:33223)
+	id 1RXs3M-0007IJ-HT
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Dec 2011 05:15:12 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:33261)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RXs39-0006sR-Ao
-	for qemu-trivial@nongnu.org; Tue, 06 Dec 2011 05:15:04 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RXs3K-0007H5-0q
+	for qemu-trivial@nongnu.org; Tue, 06 Dec 2011 05:15:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RXs33-0004dY-O8
-	for qemu-trivial@nongnu.org; Tue, 06 Dec 2011 05:14:59 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RXs3E-0004ew-33
+	for qemu-trivial@nongnu.org; Tue, 06 Dec 2011 05:15:09 -0500
 Received: from mail-bw0-f45.google.com ([209.85.214.45]:41151)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1RXs2s-0004bQ-Kj; Tue, 06 Dec 2011 05:14:42 -0500
-Received: by bkaq10 with SMTP id q10so5940900bka.4
-	for <multiple recipients>; Tue, 06 Dec 2011 02:14:41 -0800 (PST)
+	id 1RXs3D-0004bQ-Ir; Tue, 06 Dec 2011 05:15:04 -0500
+Received: by mail-bw0-f45.google.com with SMTP id q10so5940900bka.4
+	for <multiple recipients>; Tue, 06 Dec 2011 02:15:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:content-transfer-encoding
 	:in-reply-to:user-agent;
-	bh=dT6q1fB/zbcc7kL4PWWtk9bef+1a2ohXhpEapscsTCo=;
-	b=S5Ngr3IV4fXtXkCygjgaktI6cygY3Lh+oR0kX7UYAzeXS4tOshWblImx1GS1AEFYtu
-	hrTw1pakQAid/UKrgjcK4KIVPNs1G8dq8+LOwxIMLK5+WsJ2r4iM/c7J+IJrWZj9oc2f
-	5EzedxGLcnBXorcoX6S2J8g8SJeAuDC8YRP2c=
-Received: by 10.180.74.211 with SMTP id w19mr6385711wiv.7.1323166481574;
-	Tue, 06 Dec 2011 02:14:41 -0800 (PST)
+	bh=jxsJM7HRrKz77a7A9wO9ObwsRGf/Aj2sTEcLiByIQTc=;
+	b=R60yLIJVFRqJr7ZpT1Q+zfoDsxfZ+OwwDgrhPvlf/00gUonzKlxwIRY7RVkz8Q+lwn
+	OoNq8iIgSwbnzsWSc3G7OdrmTHJEmgnw7ZknVxTR0h7jGHid+3t44P9jevitxiiPvgM1
+	qWcCBNNmBhwQ8bbXfAkzQJi3bvBSWlhagj9wY=
+Received: by 10.180.104.35 with SMTP id gb3mr17168312wib.11.1323166502857;
+	Tue, 06 Dec 2011 02:15:02 -0800 (PST)
 Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id
-	hn15sm14160265wib.22.2011.12.06.02.14.41
+	by mx.google.com with ESMTPS id m5sm13976713wie.2.2011.12.06.02.15.02
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 06 Dec 2011 02:14:41 -0800 (PST)
-Date: Tue, 6 Dec 2011 10:14:40 +0000
+	Tue, 06 Dec 2011 02:15:02 -0800 (PST)
+Date: Tue, 6 Dec 2011 10:15:01 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20111206101439.GA9809@stefanha-thinkpad.localdomain>
-References: <1322818241-18137-1-git-send-email-sw@weilnetz.de>
+Message-ID: <20111206101501.GB9809@stefanha-thinkpad.localdomain>
+References: <1322854245-17590-1-git-send-email-peter.maydell@linaro.org>
+	<4ED9D60F.6000107@weilnetz.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <1322818241-18137-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <4ED9D60F.6000107@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org,
-	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Convert source files to UTF-8 encoding
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>, Riku Voipio <riku.voipio@iki.fi>,
+	=?iso-8859-1?Q?Lo=EFc?= Minier <lool@dooz.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] linux-user: Fix
+	non-UTF-8 characters
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,23 +58,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Dec 2011 10:15:05 -0000
+X-List-Received-Date: Tue, 06 Dec 2011 10:15:11 -0000
 
-On Fri, Dec 02, 2011 at 10:30:41AM +0100, Stefan Weil wrote:
-> Most QEMU files either are pure ASCII or use UTF-8.
-> Convert some files which still used ISO-8859-1 to UTF-8.
+On Sat, Dec 03, 2011 at 08:55:59AM +0100, Stefan Weil wrote:
+> Am 02.12.2011 20:30, schrieb Peter Maydell:
+> >These two patches fix some non-UTF-8 characters in linux-user/
+> >source files. Other than the five files Stefan Weil recently sent
+> >a patch to fix, these are the only remaining non-UTF-8 characters
+> >in the source tree.
+> >
+> >Since I don't entirely trust the email path for sending patches
+> >to files where the diffs include non-UTF-8, I've also put the
+> >changes up in a git repo, so you may prefer to pull from there:
 > 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  hw/ds1225y.c           |    2 +-
->  hw/fdc.c               |    2 +-
->  hw/jazz_led.c          |    2 +-
->  hw/tc6393xb_template.h |    2 +-
->  hw/vmport.c            |    2 +-
->  5 files changed, 5 insertions(+), 5 deletions(-)
+> 'git am' accepted both patches here without any problem.
+> 
+> >The following changes since commit 1c8a881daaca6fe0646a425b0970fb3ad25f6732:
+> >
+> >   Update version for 1.0 release (2011-12-01 14:04:21 -0600)
+> >
+> >are available in the git repository at:
+> >   git://git.linaro.org/people/pmaydell/qemu-arm.git non-utf-fixes
+> >
+> >Peter Maydell (2):
+> >       linux-user/cpu-uname.c: Convert to UTF-8
+> >       linux-user/arm/nwfpe/fpopcode.h: Fix non-UTF-8 characters
+> >
+> >  linux-user/arm/nwfpe/fpopcode.h |   34 +++++++++++++++++-----------------
+> >  linux-user/cpu-uname.c          |    2 +-
+> >  2 files changed, 18 insertions(+), 18 deletions(-)
+> 
+> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+> 
+> I cc'ed qemu-trivial, too. Stefan, you can take both patches
+> into the trivial patch queue.
 
-Thänk§, äppliéd to thé triviäl pätché§ -néxt tréé:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
+Thänk§, äppliéd to thé triviäl pätché§ -néxt tréé.
 
 Stefan
 
