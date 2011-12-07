@@ -1,46 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RYGkR-0003e6-8F
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Dec 2011 07:37:19 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:45881)
+	id 1RYQ2g-0007ch-Fe
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Dec 2011 17:32:46 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:60955)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zwu.kernel@gmail.com>) id 1RYGkO-0003WH-R7
-	for qemu-trivial@nongnu.org; Wed, 07 Dec 2011 07:37:18 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1RYQ2c-0007OJ-U0
+	for qemu-trivial@nongnu.org; Wed, 07 Dec 2011 17:32:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zwu.kernel@gmail.com>) id 1RYGkN-0002ge-GT
-	for qemu-trivial@nongnu.org; Wed, 07 Dec 2011 07:37:16 -0500
-Received: from mail-vx0-f173.google.com ([209.85.220.173]:53419)
+	(envelope-from <stefan@weilnetz.de>) id 1RYQ2a-0000KD-Rz
+	for qemu-trivial@nongnu.org; Wed, 07 Dec 2011 17:32:41 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:35287)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zwu.kernel@gmail.com>)
-	id 1RYGkE-0002fK-Ls; Wed, 07 Dec 2011 07:37:06 -0500
-Received: by vcbfl11 with SMTP id fl11so365380vcb.4
-	for <multiple recipients>; Wed, 07 Dec 2011 04:37:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=9zEYErlDxYjvkjyEbLywg6AGb4MAjiTm5+rXKZxoHM0=;
-	b=X+3D/kx4FYnQhyUIBBhtRgsMGRP6w2+llvuV/gkBJTZcPgk5KK9d0OAoSNT2RsSv/3
-	wJQUHeccH8c/RE/TqebPIcp2/VRkZVs27e3bpB+/2HbyAgenT0nd8n9EaIF9Yx4ugCTz
-	I697c9uTiLhvLu87VJb7muNdjyutITtUSHyUU=
-MIME-Version: 1.0
-Received: by 10.220.96.211 with SMTP id i19mr2246020vcn.12.1323261426145; Wed,
-	07 Dec 2011 04:37:06 -0800 (PST)
-Received: by 10.220.175.202 with HTTP; Wed, 7 Dec 2011 04:37:06 -0800 (PST)
-In-Reply-To: <CAFEAcA-sXKtM7=M2ZpdO5bKkxzrSL2w6MdYMNAzoiuQw5dJ_YQ@mail.gmail.com>
-References: <1322905525-354-1-git-send-email-sw@weilnetz.de>
-	<CAEH94LgMfEgcqMh5ObAS1vpyVCkSTYz=a58tc0P7qGqwdddvqA@mail.gmail.com>
-	<CAFEAcA-sXKtM7=M2ZpdO5bKkxzrSL2w6MdYMNAzoiuQw5dJ_YQ@mail.gmail.com>
-Date: Wed, 7 Dec 2011 20:37:06 +0800
-Message-ID: <CAEH94LhC+uCrCwnvGUrB-sic=JK=7p=GmzsgvBqu24uQRBQpsw@mail.gmail.com>
-From: Zhi Yong Wu <zwu.kernel@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.220.173
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Convert keymap file to
-	UTF-8 encoding
+	(envelope-from <stefan@weilnetz.de>)
+	id 1RYQ2Z-0000F6-41; Wed, 07 Dec 2011 17:32:39 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	875EE728188A; Wed,  7 Dec 2011 23:32:16 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id wnw5DIeIBJPp; Wed,  7 Dec 2011 23:31:47 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 45251728188E; Wed,  7 Dec 2011 23:31:47 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Wed,  7 Dec 2011 23:31:46 +0100
+Message-Id: <1323297106-27312-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] tcg: Remove redundant declarations of
+	TCG_TARGET_REG_BITS
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,47 +43,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Dec 2011 12:37:18 -0000
+X-List-Received-Date: Wed, 07 Dec 2011 22:32:44 -0000
 
-On Wed, Dec 7, 2011 at 8:31 PM, Peter Maydell <peter.maydell@linaro.org> wr=
-ote:
-> On 7 December 2011 12:13, Zhi Yong Wu <zwu.kernel@gmail.com> wrote:
->> Can you let me know how you see that it is ISO-8859-1 coding, not
->> UTF-8? They look same to me.
->
-> This gets a bit confusing because mail clients and
-> web browsers tend to try to fix up what they think are
-> wrongly labelled encodings, so for example in my mail
-> client the diff looks like it is not changing anything.
-> However if you look at the file in the current git repo
-> with a hex editor:
-> 00000000 =A023 20 32 30 30 34 2d 30 =A033 2d 31 36 20 48 61 6c =A0|# 2004=
--03-16 Hal|
-> 00000010 =A06c 64 f3 72 20 47 75 f0 =A06d 75 6e 64 73 73 6f 6e =A0|ld.r G=
-u.mundsson|
->
-> you can see that there is an 0xf3 at offset 0x12, which
-> is LATIN SMALL LETTER O WITH ACUTE in ISO-8859-1. ISO-8859-1
-> is a one-byte-per-character encoding which is why it has a
-> raw 0xf3 here. However although the character is at Unicode
-> codepoint 0xf3 as well, the encoding of this in UTF-8 is
-> the two byte sequence 0xc3 0xb3. Similarly the 0xf0 LATIN
-> SMALL LETTER ETH has to be encoded as 0xc3 0xb0.
->
-> If you look at the raw text of Stefan's email it reads:
-> -# 2004-03-16 Halld=3DF3r Gu=3DF0mundsson and Morten Lange
-> +# 2004-03-16 Halld=3DC3=3DB3r Gu=3DC3=3DB0mundsson and Morten Lange
->
-> which is the quoted-printable encoding of this change.
-thanks for your explain.
+TCG_TARGET_REG_BITS is declared in tcg.h for all TCG targets.
 
->
-> -- PMM
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ tcg/i386/tcg-target.h |    5 -----
+ 1 files changed, 0 insertions(+), 5 deletions(-)
 
+diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
+index 7756e7b..adbb036 100644
+--- a/tcg/i386/tcg-target.h
++++ b/tcg/i386/tcg-target.h
+@@ -23,11 +23,6 @@
+  */
+ #define TCG_TARGET_I386 1
+ 
+-#if defined(__x86_64__)
+-# define TCG_TARGET_REG_BITS 64
+-#else
+-# define TCG_TARGET_REG_BITS 32
+-#endif
+ //#define TCG_TARGET_WORDS_BIGENDIAN
+ 
+ #if TCG_TARGET_REG_BITS == 64
+-- 
+1.7.2.5
 
-
---=20
-Regards,
-
-Zhi Yong Wu
 
