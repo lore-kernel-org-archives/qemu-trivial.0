@@ -1,37 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RYQ2g-0007ch-Fe
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Dec 2011 17:32:46 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:60955)
+	id 1RYY0z-0001mM-0u
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Dec 2011 02:03:33 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:40338)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RYQ2c-0007OJ-U0
-	for qemu-trivial@nongnu.org; Wed, 07 Dec 2011 17:32:43 -0500
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RYY0u-0001bT-TG
+	for qemu-trivial@nongnu.org; Thu, 08 Dec 2011 02:03:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RYQ2a-0000KD-Rz
-	for qemu-trivial@nongnu.org; Wed, 07 Dec 2011 17:32:41 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:35287)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RYY0t-0007O3-QN
+	for qemu-trivial@nongnu.org; Thu, 08 Dec 2011 02:03:28 -0500
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:55154)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1RYQ2Z-0000F6-41; Wed, 07 Dec 2011 17:32:39 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	875EE728188A; Wed,  7 Dec 2011 23:32:16 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id wnw5DIeIBJPp; Wed,  7 Dec 2011 23:31:47 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 45251728188E; Wed,  7 Dec 2011 23:31:47 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Wed,  7 Dec 2011 23:31:46 +0100
-Message-Id: <1323297106-27312-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] tcg: Remove redundant declarations of
-	TCG_TARGET_REG_BITS
+	(envelope-from <chenwj@cs.nctu.edu.tw>)
+	id 1RYY0q-0007IP-GB; Thu, 08 Dec 2011 02:03:25 -0500
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 0725C80A;
+	Thu,  8 Dec 2011 15:00:55 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
+	bh=z+JowA5RDVxqi1N9KIP/bE5ze24=; b=AUD9MklL6+Ge60LUBW4aiD1+n/hR
+	1zuh11J/RbKVcS00WTrT+ssUtLK9hPyuSVFe7WMlt+NHsxYYIK451wNI17EjZ5mO
+	KknRq0mlCB8H1aAmwkkw+ZGDjxXNnu/nrox1jqm6BP2At+vnUCQ/PPEFrJfIZ1EH
+	dwZoUm6eq1fAWno=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id DE86D809;
+	Thu,  8 Dec 2011 15:00:54 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id pB873BVf037901;
+	Thu, 8 Dec 2011 15:03:11 +0800 (CST) (envelope-from chenwj)
+Date: Thu, 8 Dec 2011 15:03:11 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20111208070311.GA34443@cs.nctu.edu.tw>
+References: <1323297106-27312-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <1323297106-27312-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 140.113.235.130
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tcg: Remove redundant
+ declarations of TCG_TARGET_REG_BITS
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,32 +56,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Dec 2011 22:32:44 -0000
+X-List-Received-Date: Thu, 08 Dec 2011 07:03:30 -0000
 
-TCG_TARGET_REG_BITS is declared in tcg.h for all TCG targets.
+On Wed, Dec 07, 2011 at 11:31:46PM +0100, Stefan Weil wrote:
+> TCG_TARGET_REG_BITS is declared in tcg.h for all TCG targets.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- tcg/i386/tcg-target.h |    5 -----
- 1 files changed, 0 insertions(+), 5 deletions(-)
+  Just want to make sure. When we talk about target in TCG, that _always_=
+ means
+the host, right?
 
-diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
-index 7756e7b..adbb036 100644
---- a/tcg/i386/tcg-target.h
-+++ b/tcg/i386/tcg-target.h
-@@ -23,11 +23,6 @@
-  */
- #define TCG_TARGET_I386 1
- 
--#if defined(__x86_64__)
--# define TCG_TARGET_REG_BITS 64
--#else
--# define TCG_TARGET_REG_BITS 32
--#endif
- //#define TCG_TARGET_WORDS_BIGENDIAN
- 
- #if TCG_TARGET_REG_BITS == 64
--- 
-1.7.2.5
+Regards,
+chenwj
 
+--=20
+Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
+Computer Systems Lab, Institute of Information Science,
+Academia Sinica, Taiwan (R.O.C.)
+Tel:886-2-2788-3799 #1667
+Homepage: http://people.cs.nctu.edu.tw/~chenwj
 
