@@ -1,38 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RZ9l1-0005Cx-5r
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Dec 2011 18:21:35 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:48257)
+	id 1RZ9lJ-0006Pg-PQ
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Dec 2011 18:21:53 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:48351)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RZ9kv-0004t1-P8
-	for qemu-trivial@nongnu.org; Fri, 09 Dec 2011 18:21:31 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1RZ9lG-0006By-3a
+	for qemu-trivial@nongnu.org; Fri, 09 Dec 2011 18:21:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1RZ9ku-0000gA-6P
-	for qemu-trivial@nongnu.org; Fri, 09 Dec 2011 18:21:29 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:46738)
+	(envelope-from <stefan@weilnetz.de>) id 1RZ9lE-0000jg-Gi
+	for qemu-trivial@nongnu.org; Fri, 09 Dec 2011 18:21:50 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:46815)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1RZ9kq-0000f1-3f; Fri, 09 Dec 2011 18:21:24 -0500
+	id 1RZ9lB-0000j6-0y; Fri, 09 Dec 2011 18:21:45 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	B4509728188B; Sat, 10 Dec 2011 00:21:13 +0100 (CET)
+	92F6B728188B; Sat, 10 Dec 2011 00:21:34 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id QFPxXMUHIT-G; Sat, 10 Dec 2011 00:20:53 +0100 (CET)
+	with ESMTP id kK+cChHxNtKN; Sat, 10 Dec 2011 00:21:13 +0100 (CET)
 Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 026B17281C24; Sat, 10 Dec 2011 00:19:59 +0100 (CET)
+	id D2F397281C26; Sat, 10 Dec 2011 00:20:00 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org
-Date: Sat, 10 Dec 2011 00:19:44 +0100
-Message-Id: <1323472786-26821-5-git-send-email-sw@weilnetz.de>
+Date: Sat, 10 Dec 2011 00:19:46 +0100
+Message-Id: <1323472786-26821-7-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.2.5
 In-Reply-To: <1323472786-26821-1-git-send-email-sw@weilnetz.de>
 References: <1323472786-26821-1-git-send-email-sw@weilnetz.de>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
 X-Received-From: 78.47.199.172
 Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH 4/6] hw: Fix spelling in comments
+Subject: [Qemu-trivial] [PATCH 6/6] Fix spelling in comments,
+	documentation and messages
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,348 +45,299 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Dec 2011 23:21:31 -0000
+X-List-Received-Date: Fri, 09 Dec 2011 23:21:52 -0000
 
-adress->address
-advertisment->advertisement
-begining->beginning
-bondary->boundary
-controler->controller
-controll->control
-convertion->conversion
-doesnt->doesn't
-existant->existent
-instuction->instruction
-loosing->losing
-managment->management
-multipled->multiplied
-negotation->negotiation
-runing->running
-teh->the
-unchangable->unchangeable
-writen->written
-yeild->yield
+accidently->accidentally
+annother->another
+choosen->chosen
+consideres->considers
+decriptor->descriptor
+developement->development
+paramter->parameter
+preceed->precede
+preceeding->preceding
+priviledge->privilege
+propogation->propagation
+substraction->subtraction
+throught->through
+upto->up to
+usefull->useful
+
+Fix also grammar in posix-aio-compat.c
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/9pfs/virtio-9p-coth.h   |    2 +-
- hw/9pfs/virtio-9p-handle.c |    2 +-
- hw/alpha_dp264.c           |    2 +-
- hw/arm_gic.c               |    2 +-
- hw/bt-hci-csr.c            |    2 +-
- hw/e1000_hw.h              |    2 +-
- hw/etraxfs_dma.c           |    2 +-
- hw/etraxfs_pic.c           |    2 +-
- hw/fmopl.c                 |    8 ++++----
- hw/gusemu.h                |    2 +-
- hw/gusemu_hal.c            |    2 +-
- hw/ide/core.c              |    2 +-
- hw/lan9118.c               |    4 ++--
- hw/pcie_aer.c              |    2 +-
- hw/pl110.c                 |    2 +-
- hw/rtl8139.c               |    2 +-
- hw/sh7750_regs.h           |    2 +-
- hw/spapr.h                 |    2 +-
- hw/ssd0303.c               |    2 +-
- hw/wdt_ib700.c             |    2 +-
- 20 files changed, 24 insertions(+), 24 deletions(-)
+ Changelog                     |    4 ++--
+ audio/audio.c                 |    2 +-
+ block.h                       |    2 +-
+ bsd-user/x86_64/syscall.h     |    2 +-
+ gdbstub.c                     |    2 +-
+ linux-user/x86_64/syscall.h   |    2 +-
+ pc-bios/ohw.diff              |    2 +-
+ pc-bios/optionrom/multiboot.S |    2 +-
+ posix-aio-compat.c            |    4 ++--
+ qapi-schema-guest.json        |    2 +-
+ qemu-options.hx               |    2 +-
+ qerror.c                      |    2 +-
+ scripts/checkpatch.pl         |    4 ++--
+ target-mips/helper.c          |    2 +-
+ target-s390x/cpu.h            |    8 ++++----
+ ui/vnc-enc-zywrle-template.c  |    2 +-
+ ui/vnc-enc-zywrle.h           |    2 +-
+ 17 files changed, 23 insertions(+), 23 deletions(-)
 
-diff --git a/hw/9pfs/virtio-9p-coth.h b/hw/9pfs/virtio-9p-coth.h
-index c4b74b0..c31c965 100644
---- a/hw/9pfs/virtio-9p-coth.h
-+++ b/hw/9pfs/virtio-9p-coth.h
-@@ -44,7 +44,7 @@ typedef struct V9fsThPool {
-                             qemu_coroutine_self());                     \
-         qemu_bh_schedule(co_bh);                                        \
-         /*                                                              \
--         * yeild in qemu thread and re-enter back                       \
-+         * yield in qemu thread and re-enter back                       \
-          * in glib worker thread                                        \
-          */                                                             \
-         qemu_coroutine_yield();                                         \
-diff --git a/hw/9pfs/virtio-9p-handle.c b/hw/9pfs/virtio-9p-handle.c
-index f97d898..9518bfe 100644
---- a/hw/9pfs/virtio-9p-handle.c
-+++ b/hw/9pfs/virtio-9p-handle.c
-@@ -520,7 +520,7 @@ static int handle_name_to_path(FsContext *ctx, V9fsPath *dir_path,
-     }
-     fh = g_malloc(sizeof(struct file_handle) + data->handle_bytes);
-     fh->handle_bytes = data->handle_bytes;
--    /* add a "./" at the begining of the path */
-+    /* add a "./" at the beginning of the path */
-     snprintf(buffer, PATH_MAX, "./%s", name);
-     /* flag = 0 imply don't follow symlink */
-     ret = name_to_handle(dirfd, buffer, fh, &mnt_id, 0);
-diff --git a/hw/alpha_dp264.c b/hw/alpha_dp264.c
-index fcc20e9..598b830 100644
---- a/hw/alpha_dp264.c
-+++ b/hw/alpha_dp264.c
-@@ -2,7 +2,7 @@
-  * QEMU Alpha DP264/CLIPPER hardware system emulator.
-  *
-  * Choose CLIPPER IRQ mappings over, say, DP264, MONET, or WEBBRICK
-- * variants because CLIPPER doesn't have an SMC669 SuperIO controler
-+ * variants because CLIPPER doesn't have an SMC669 SuperIO controller
-  * that we need to emulate as well.
-  */
+diff --git a/Changelog b/Changelog
+index 28a69af..8b63258 100644
+--- a/Changelog
++++ b/Changelog
+@@ -78,7 +78,7 @@ version 0.10.2:
  
-diff --git a/hw/arm_gic.c b/hw/arm_gic.c
-index 527c9ce..1a896fb 100644
---- a/hw/arm_gic.c
-+++ b/hw/arm_gic.c
-@@ -602,7 +602,7 @@ static uint32_t gic_cpu_read(gic_state *s, int cpu, int offset)
-         return 0;
-     case 0x0c: /* Acknowledge */
-         return gic_acknowledge_irq(s, cpu);
--    case 0x14: /* Runing Priority */
-+    case 0x14: /* Running Priority */
-         return s->running_priority[cpu];
-     case 0x18: /* Highest Pending Interrupt */
-         return s->current_pending[cpu];
-diff --git a/hw/bt-hci-csr.c b/hw/bt-hci-csr.c
-index 0dcf897..772b677 100644
---- a/hw/bt-hci-csr.c
-+++ b/hw/bt-hci-csr.c
-@@ -222,7 +222,7 @@ static void csrhci_in_packet(struct csrhci_s *s, uint8_t *pkt)
- 
-         rpkt = csrhci_out_packet_csr(s, H4_NEG_PKT, 10);
- 
--        *rpkt ++ = 0x20;	/* Operational settings negotation Ok */
-+        *rpkt ++ = 0x20;	/* Operational settings negotiation Ok */
-         memcpy(rpkt, pkt, 7); rpkt += 7;
-         *rpkt ++ = 0xff;
-         *rpkt = 0xff;
-diff --git a/hw/e1000_hw.h b/hw/e1000_hw.h
-index 2e341ac..9e29af8 100644
---- a/hw/e1000_hw.h
-+++ b/hw/e1000_hw.h
-@@ -295,7 +295,7 @@
- 
- #define E1000_KUMCTRLSTA 0x00034 /* MAC-PHY interface - RW */
- #define E1000_MDPHYA     0x0003C  /* PHY address - RW */
--#define E1000_MANC2H     0x05860  /* Managment Control To Host - RW */
-+#define E1000_MANC2H     0x05860  /* Management Control To Host - RW */
- #define E1000_SW_FW_SYNC 0x05B5C /* Software-Firmware Synchronization - RW */
- 
- #define E1000_GCR       0x05B00 /* PCI-Ex Control */
-diff --git a/hw/etraxfs_dma.c b/hw/etraxfs_dma.c
-index 02d0183..d2bd584 100644
---- a/hw/etraxfs_dma.c
-+++ b/hw/etraxfs_dma.c
-@@ -180,7 +180,7 @@ struct fs_dma_channel
- 	struct dma_descr_context current_c;
- 	struct dma_descr_data current_d;
- 
--	/* Controll registers.  */
-+	/* Control registers.  */
- 	uint32_t regs[DMA_REG_MAX];
- };
- 
-diff --git a/hw/etraxfs_pic.c b/hw/etraxfs_pic.c
-index 72cbdb8..993d6a8 100644
---- a/hw/etraxfs_pic.c
-+++ b/hw/etraxfs_pic.c
-@@ -53,7 +53,7 @@ static void pic_update(struct etrax_pic *fs)
- 
-     fs->regs[R_R_MASKED_VECT] = fs->regs[R_R_VECT] & fs->regs[R_RW_MASK];
- 
--    /* The ETRAX interrupt controller signals interrupts to teh core
-+    /* The ETRAX interrupt controller signals interrupts to the core
-        through an interrupt request wire and an irq vector bus. If 
-        multiple interrupts are simultaneously active it chooses vector 
-        0x30 and lets the sw choose the priorities.  */
-diff --git a/hw/fmopl.c b/hw/fmopl.c
-index 431f736..734d2f4 100644
---- a/hw/fmopl.c
-+++ b/hw/fmopl.c
-@@ -715,7 +715,7 @@ static void OPLCloseTable( void )
- 	free(VIB_TABLE);
- }
- 
--/* CSM Key Controll */
-+/* CSM Key Control */
- INLINE void CSMKeyControll(OPL_CH *CH)
- {
- 	OPL_SLOT *slot1 = &CH->SLOT[SLOT1];
-@@ -762,7 +762,7 @@ static void OPLWriteReg(FM_OPL *OPL, int r, int v)
- 
- 	switch(r&0xe0)
- 	{
--	case 0x00: /* 00-1f:controll */
-+	case 0x00: /* 00-1f:control */
- 		switch(r&0x1f)
- 		{
- 		case 0x01:
-@@ -826,7 +826,7 @@ static void OPLWriteReg(FM_OPL *OPL, int r, int v)
- 					LOG(LOG_WAR,("OPL:write unmapped KEYBOARD port\n"));
- 			}
- 			return;
--		case 0x07:	/* DELTA-T controll : START,REC,MEMDATA,REPT,SPOFF,x,x,RST */
-+		case 0x07:	/* DELTA-T control : START,REC,MEMDATA,REPT,SPOFF,x,x,RST */
- 			if(OPL->type&OPL_TYPE_ADPCM)
- 				YM_DELTAT_ADPCM_Write(OPL->deltat,r-0x07,v);
- 			return;
-@@ -1380,7 +1380,7 @@ int OPLTimerOver(FM_OPL *OPL,int c)
- 	else
- 	{	/* Timer A */
- 		OPL_STATUS_SET(OPL,0x40);
--		/* CSM mode key,TL controll */
-+		/* CSM mode key,TL control */
- 		if( OPL->mode & 0x80 )
- 		{	/* CSM mode total level latch and auto key on */
- 			int ch;
-diff --git a/hw/gusemu.h b/hw/gusemu.h
-index 5093767..27877c0 100644
---- a/hw/gusemu.h
-+++ b/hw/gusemu.h
-@@ -27,7 +27,7 @@
- 
- /* data types (need to be adjusted if neither a VC6 nor a C99 compatible compiler is used) */
- 
--#if defined _WIN32 && defined _MSC_VER /* doesnt support other win32 compilers yet, do it yourself... */
-+#if defined _WIN32 && defined _MSC_VER /* doesn't support other win32 compilers yet, do it yourself... */
-  typedef unsigned char GUSbyte;
-  typedef unsigned short GUSword;
-  typedef unsigned int GUSdword;
-diff --git a/hw/gusemu_hal.c b/hw/gusemu_hal.c
-index c6f9537..582779f 100644
---- a/hw/gusemu_hal.c
-+++ b/hw/gusemu_hal.c
-@@ -517,7 +517,7 @@ void gus_dma_transferdata(GUSEmuState * state, char *dma_addr, unsigned int coun
-         int             offset = (GUSregw(GUS42DMAStart) << 4) + (GUSregb(GUS50DMAHigh) & 0xf);
-         if (state->gusdma >= 4)
-             offset = (offset & 0xc0000) + (2 * (offset & 0x1fff0)); /* 16 bit address translation */
--        destaddr = (char *) state->himemaddr + offset; /* wavetable RAM adress */
-+        destaddr = (char *) state->himemaddr + offset; /* wavetable RAM address */
+   - fix savevm/loadvm (Anthony Liguori)
+   - live migration: fix dirty tracking windows (Glauber Costa)
+-  - live migration: improve error propogation (Glauber Costa)
++  - live migration: improve error propagation (Glauber Costa)
+   - qcow2: fix image creation for > ~2TB images (Chris Wright)
+   - hotplug: fix error handling for if= parameter (Eduardo Habkost)
+   - qcow2: fix data corruption (Nolan Leake)
+@@ -386,7 +386,7 @@ version 0.5.3:
+   - support of CD-ROM change
+   - multiple network interface support
+   - initial x86-64 host support (Gwenole Beauchesne)
+-  - lret to outer priviledge fix (OS/2 install fix)
++  - lret to outer privilege fix (OS/2 install fix)
+   - task switch fixes (SkyOS boot)
+   - VM save/restore commands
+   - new timer API
+diff --git a/audio/audio.c b/audio/audio.c
+index 50d0d71..5fff6de 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -1665,7 +1665,7 @@ static void audio_pp_nb_voices (const char *typ, int nb)
+         printf ("Theoretically supports many %s voices\n", typ);
+         break;
+     default:
+-        printf ("Theoretically supports upto %d %s voices\n", nb, typ);
++        printf ("Theoretically supports up to %d %s voices\n", nb, typ);
+         break;
      }
  
-     GUSregw(GUS42DMAStart) += (GUSword)  (count >> 4);                           /* ToDo: add 16bit GUS page limit? */
-diff --git a/hw/ide/core.c b/hw/ide/core.c
-index 93a1a68..49847bd 100644
---- a/hw/ide/core.c
-+++ b/hw/ide/core.c
-@@ -1000,7 +1000,7 @@ void ide_exec_cmd(IDEBus *bus, uint32_t val)
-     printf("ide: CMD=%02x\n", val);
- #endif
-     s = idebus_active_if(bus);
--    /* ignore commands to non existant slave */
-+    /* ignore commands to non existent slave */
-     if (s != bus->ifs && !s->bs)
-         return;
- 
-diff --git a/hw/lan9118.c b/hw/lan9118.c
-index ee8b2ea..7e64c5d 100644
---- a/hw/lan9118.c
-+++ b/hw/lan9118.c
-@@ -697,7 +697,7 @@ static uint32_t do_phy_read(lan9118_state *s, int reg)
-         return 0x0007;
-     case 3: /* ID2 */
-         return 0xc0d1;
--    case 4: /* Auto-neg advertisment */
-+    case 4: /* Auto-neg advertisement */
-         return s->phy_advertise;
-     case 5: /* Auto-neg Link Partner Ability */
-         return 0x0f71;
-@@ -731,7 +731,7 @@ static void do_phy_write(lan9118_state *s, int reg, uint32_t val)
-             s->phy_status |= 0x0020;
+diff --git a/block.h b/block.h
+index 1790f99..0e3ff9f 100644
+--- a/block.h
++++ b/block.h
+@@ -21,7 +21,7 @@ typedef struct QEMUSnapshotInfo {
+     char id_str[128]; /* unique snapshot id */
+     /* the following fields are informative. They are not needed for
+        the consistency of the snapshot */
+-    char name[256]; /* user choosen name */
++    char name[256]; /* user chosen name */
+     uint32_t vm_state_size; /* VM state info size */
+     uint32_t date_sec; /* UTC date of the snapshot */
+     uint32_t date_nsec;
+diff --git a/bsd-user/x86_64/syscall.h b/bsd-user/x86_64/syscall.h
+index 5f71b7c..630514a 100644
+--- a/bsd-user/x86_64/syscall.h
++++ b/bsd-user/x86_64/syscall.h
+@@ -8,7 +8,7 @@ struct target_pt_regs {
+ 	abi_ulong r12;
+ 	abi_ulong rbp;
+ 	abi_ulong rbx;
+-/* arguments: non interrupts/non tracing syscalls only save upto here*/
++/* arguments: non interrupts/non tracing syscalls only save up to here */
+  	abi_ulong r11;
+ 	abi_ulong r10;
+ 	abi_ulong r9;
+diff --git a/gdbstub.c b/gdbstub.c
+index 640cf4e..a5806ef 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -2678,7 +2678,7 @@ gdb_handlesig (CPUState *env, int sig)
          }
-         break;
--    case 4: /* Auto-neg advertisment */
-+    case 4: /* Auto-neg advertisement */
-         s->phy_advertise = (val & 0x2d7f) | 0x80;
-         break;
-         /* TODO 17, 18, 27, 31 */
-diff --git a/hw/pcie_aer.c b/hw/pcie_aer.c
-index 62c06ea..b9d1097 100644
---- a/hw/pcie_aer.c
-+++ b/hw/pcie_aer.c
-@@ -826,7 +826,7 @@ typedef struct PCIEAERErrorName {
- } PCIEAERErrorName;
+       else if (n == 0 || errno != EAGAIN)
+         {
+-          /* XXX: Connection closed.  Should probably wait for annother
++          /* XXX: Connection closed.  Should probably wait for another
+              connection before continuing.  */
+           return sig;
+         }
+diff --git a/linux-user/x86_64/syscall.h b/linux-user/x86_64/syscall.h
+index 2a8d696..81314cf 100644
+--- a/linux-user/x86_64/syscall.h
++++ b/linux-user/x86_64/syscall.h
+@@ -8,7 +8,7 @@ struct target_pt_regs {
+ 	abi_ulong r12;
+ 	abi_ulong rbp;
+ 	abi_ulong rbx;
+-/* arguments: non interrupts/non tracing syscalls only save upto here*/
++/* arguments: non interrupts/non tracing syscalls only save up to here */
+  	abi_ulong r11;
+ 	abi_ulong r10;
+ 	abi_ulong r9;
+diff --git a/pc-bios/ohw.diff b/pc-bios/ohw.diff
+index 4fb5422..c6b6623 100644
+--- a/pc-bios/ohw.diff
++++ b/pc-bios/ohw.diff
+@@ -1065,7 +1065,7 @@ diff -wruN --exclude '*~' --exclude '*.o' --exclude '*.bin' --exclude '*.out' --
+ +                        tab, 4 * sizeof(uint32_t));
+ +    }
+ +#if 0
+-     /* escc is usefull to get MacOS X debug messages */
++     /* escc is useful to get MacOS X debug messages */
+      {
+          OF_regprop_t regs[8];
+ @@ -2645,85 +2843,12 @@
+diff --git a/pc-bios/optionrom/multiboot.S b/pc-bios/optionrom/multiboot.S
+index cc5ca1b..f08222a 100644
+--- a/pc-bios/optionrom/multiboot.S
++++ b/pc-bios/optionrom/multiboot.S
+@@ -50,7 +50,7 @@ run_multiboot:
+ 	shr		$0x4, %ecx
+ 	mov		%cx, %gs
  
- /*
-- * AER error name -> value convertion table
-+ * AER error name -> value conversion table
-  * This naming scheme is same to linux aer-injection tool.
-  */
- static const struct PCIEAERErrorName pcie_aer_error_list[] = {
-diff --git a/hw/pl110.c b/hw/pl110.c
-index 7aef8a4..cc1eb6d 100644
---- a/hw/pl110.c
-+++ b/hw/pl110.c
-@@ -358,7 +358,7 @@ static void pl110_write(void *opaque, target_phys_addr_t offset,
-     int n;
+-	/* now push the indirect jump decriptor there */
++	/* now push the indirect jump descriptor there */
+ 	mov		(prot_jump), %ebx
+ 	add		%eax, %ebx
+ 	movl		%ebx, %gs:GS_PROT_JUMP
+diff --git a/posix-aio-compat.c b/posix-aio-compat.c
+index 0c0035c..c380ec1 100644
+--- a/posix-aio-compat.c
++++ b/posix-aio-compat.c
+@@ -128,8 +128,8 @@ static ssize_t handle_aiocb_ioctl(struct qemu_paiocb *aiocb)
+         return -errno;
  
-     /* For simplicity invalidate the display whenever a control register
--       is writen to.  */
-+       is written to.  */
-     s->invalidate = 1;
-     if (offset >= 0x200 && offset < 0x400) {
-         /* Pallette.  */
-diff --git a/hw/rtl8139.c b/hw/rtl8139.c
-index aa8ed0a..8aace9a 100644
---- a/hw/rtl8139.c
-+++ b/hw/rtl8139.c
-@@ -2662,7 +2662,7 @@ static void rtl8139_IntrStatus_write(RTL8139State *s, uint32_t val)
-      * Computing if we miss an interrupt here is not that correct but
-      * considered that we should have had already an interrupt
-      * and probably emulated is slower is better to assume this resetting was
--     * done before testing on previous rtl8139_update_irq lead to IRQ loosing
-+     * done before testing on previous rtl8139_update_irq lead to IRQ losing
-      */
-     rtl8139_set_next_tctr_time(s, qemu_get_clock_ns(vm_clock));
-     rtl8139_update_irq(s);
-diff --git a/hw/sh7750_regs.h b/hw/sh7750_regs.h
-index 6ec13ab..534aa48 100644
---- a/hw/sh7750_regs.h
-+++ b/hw/sh7750_regs.h
-@@ -157,7 +157,7 @@
-  * Exeption-related registers
-  */
+     /*
+-     * This looks weird, but the aio code only consideres a request
+-     * successful if it has written the number full number of bytes.
++     * This looks weird, but the aio code only considers a request
++     * successful if it has written the full number of bytes.
+      *
+      * Now we overload aio_nbytes as aio_ioctl_cmd for the ioctl command,
+      * so in fact we return the ioctl command here to make posix_aio_read()
+diff --git a/qapi-schema-guest.json b/qapi-schema-guest.json
+index fde5971..f4bcd1a 100644
+--- a/qapi-schema-guest.json
++++ b/qapi-schema-guest.json
+@@ -13,7 +13,7 @@
+ # partially-delivered JSON text in such a way that this response
+ # can be obtained.
+ #
+-# Such clients should also preceed this command
++# Such clients should also precede this command
+ # with a 0xFF byte to make such the guest agent flushes any
+ # partially read JSON data from a previous session.
+ #
+diff --git a/qemu-options.hx b/qemu-options.hx
+index b3db10c..087a3b9 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -217,7 +217,7 @@ qcow2.  If performance is more important than correctness,
+ In case you don't care about data integrity over host failures, use
+ cache=unsafe. This option tells qemu that it never needs to write any data
+ to the disk but can instead keeps things in cache. If anything goes wrong,
+-like your host losing power, the disk storage getting disconnected accidently,
++like your host losing power, the disk storage getting disconnected accidentally,
+ etc. you're image will most probably be rendered unusable.   When using
+ the @option{-snapshot} option, unsafe caching is always used.
  
--/* Immediate data for TRAPA instuction - TRA */
-+/* Immediate data for TRAPA instruction - TRA */
- #define SH7750_TRA_REGOFS     0x000020	/* offset */
- #define SH7750_TRA            SH7750_P4_REG32(SH7750_TRA_REGOFS)
- #define SH7750_TRA_A7         SH7750_A7_REG32(SH7750_TRA_REGOFS)
-diff --git a/hw/spapr.h b/hw/spapr.h
-index df88f6a..d624841 100644
---- a/hw/spapr.h
-+++ b/hw/spapr.h
-@@ -141,7 +141,7 @@ typedef struct sPAPREnvironment {
- #define H_DABRX_KERNEL     (1ULL<<(63-62))
- #define H_DABRX_USER       (1ULL<<(63-63))
+diff --git a/qerror.c b/qerror.c
+index 656efc2..d9ab396 100644
+--- a/qerror.c
++++ b/qerror.c
+@@ -253,7 +253,7 @@ static const QErrorStringTable qerror_table[] = {
+     },
+     {
+         .error_fmt = QERR_INVALID_PARAMETER_COMBINATION,
+-        .desc      = "Invalid paramter combination",
++        .desc      = "Invalid parameter combination",
+     },
+     {}
+ };
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index cce8f86..8850a5f 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1907,7 +1907,7 @@ sub process {
+ 			my $ok = 0;
+ 			for (my $ln = $linenr - 1; $ln >= $first_line; $ln--) {
+ 				#print "CHECK<$lines[$ln - 1]\n";
+-				# we have a preceeding printk if it ends
++				# we have a preceding printk if it ends
+ 				# with "\n" ignore it, else it is to blame
+ 				if ($lines[$ln - 1] =~ m{\bprintk\(}) {
+ 					if ($rawlines[$ln - 1] !~ m{\\n"}) {
+@@ -1999,7 +1999,7 @@ sub process {
+ 			for (my $n = 0; $n < $#elements; $n += 2) {
+ 				$off += length($elements[$n]);
  
--/* Each control block has to be on a 4K bondary */
-+/* Each control block has to be on a 4K boundary */
- #define H_CB_ALIGNMENT     4096
+-				# Pick up the preceeding and succeeding characters.
++				# Pick up the preceding and succeeding characters.
+ 				my $ca = substr($opline, 0, $off);
+ 				my $cc = '';
+ 				if (length($opline) >= ($off + length($elements[$n + 1]))) {
+diff --git a/target-mips/helper.c b/target-mips/helper.c
+index 1c58e0c..7225616 100644
+--- a/target-mips/helper.c
++++ b/target-mips/helper.c
+@@ -497,7 +497,7 @@ void do_interrupt (CPUState *env)
+                 }
+             } else {
+                 /* For VEIC mode, the external interrupt controller feeds the
+-                   vector throught the CP0Cause IP lines.  */
++                   vector through the CP0Cause IP lines.  */
+                 vector = pending;
+             }
+             offset = 0x200 + vector * spacing;
+diff --git a/target-s390x/cpu.h b/target-s390x/cpu.h
+index 202c098..b8893b3 100644
+--- a/target-s390x/cpu.h
++++ b/target-s390x/cpu.h
+@@ -513,15 +513,15 @@ enum cc_op {
  
- /* pSeries hypervisor opcodes */
-diff --git a/hw/ssd0303.c b/hw/ssd0303.c
-index 401fdf5..bcad7bf 100644
---- a/hw/ssd0303.c
-+++ b/hw/ssd0303.c
-@@ -123,7 +123,7 @@ static int ssd0303_send(i2c_slave *i2c, uint8_t data)
-             case 0xa7: /* Inverse on.  */
-                 s->inverse = 1;
-                 break;
--            case 0xa8: /* Set multipled ratio (Ignored).  */
-+            case 0xa8: /* Set multiplied ratio (Ignored).  */
-                 s->cmd_state = SSD0303_CMD_SKIP1;
-                 break;
-             case 0xad: /* DC-DC power control.  */
-diff --git a/hw/wdt_ib700.c b/hw/wdt_ib700.c
-index 81f22d0..ba1d92d 100644
---- a/hw/wdt_ib700.c
-+++ b/hw/wdt_ib700.c
-@@ -42,7 +42,7 @@ typedef struct IB700state {
+     CC_OP_ADD_64,               /* overflow on add (64bit) */
+     CC_OP_ADDU_64,              /* overflow on unsigned add (64bit) */
+-    CC_OP_SUB_64,               /* overflow on substraction (64bit) */
+-    CC_OP_SUBU_64,              /* overflow on unsigned substraction (64bit) */
++    CC_OP_SUB_64,               /* overflow on subtraction (64bit) */
++    CC_OP_SUBU_64,              /* overflow on unsigned subtraction (64bit) */
+     CC_OP_ABS_64,               /* sign eval on abs (64bit) */
+     CC_OP_NABS_64,              /* sign eval on nabs (64bit) */
  
- /* This is the timer.  We use a global here because the watchdog
-  * code ensures there is only one watchdog (it is located at a fixed,
-- * unchangable IO port, so there could only ever be one anyway).
-+ * unchangeable IO port, so there could only ever be one anyway).
-  */
+     CC_OP_ADD_32,               /* overflow on add (32bit) */
+     CC_OP_ADDU_32,              /* overflow on unsigned add (32bit) */
+-    CC_OP_SUB_32,               /* overflow on substraction (32bit) */
+-    CC_OP_SUBU_32,              /* overflow on unsigned substraction (32bit) */
++    CC_OP_SUB_32,               /* overflow on subtraction (32bit) */
++    CC_OP_SUBU_32,              /* overflow on unsigned subtraction (32bit) */
+     CC_OP_ABS_32,               /* sign eval on abs (64bit) */
+     CC_OP_NABS_32,              /* sign eval on nabs (64bit) */
  
- /* A write to this register enables the timer. */
+diff --git a/ui/vnc-enc-zywrle-template.c b/ui/vnc-enc-zywrle-template.c
+index 4cde6e4..561f7bf 100644
+--- a/ui/vnc-enc-zywrle-template.c
++++ b/ui/vnc-enc-zywrle-template.c
+@@ -9,7 +9,7 @@
+  *                                                                  *
+  * THE 'ZYWRLE' VNC CODEC SOURCE CODE IS (C) COPYRIGHT 2006         *
+  * BY Hitachi Systems & Services, Ltd.                              *
+- * (Noriaki Yamazaki, Research & Developement Center)               *
++ * (Noriaki Yamazaki, Research & Development Center)               *
+  *                                                                  *
+  *                                                                  *
+  ********************************************************************
+diff --git a/ui/vnc-enc-zywrle.h b/ui/vnc-enc-zywrle.h
+index ac5d27a..1ff40b1 100644
+--- a/ui/vnc-enc-zywrle.h
++++ b/ui/vnc-enc-zywrle.h
+@@ -8,7 +8,7 @@
+  *                                                                  *
+  * THE 'ZYWRLE' VNC CODEC SOURCE CODE IS (C) COPYRIGHT 2006         *
+  * BY Hitachi Systems & Services, Ltd.                              *
+- * (Noriaki Yamazaki, Research & Developement Center)               *
++ * (Noriaki Yamazaki, Research & Development Center)               *
+  *                                                                  *
+  *                                                                  *
+  ********************************************************************
 -- 
 1.7.2.5
 
