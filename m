@@ -1,42 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RalHD-00026o-NT
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Dec 2011 04:37:27 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:37434)
+	id 1RamkH-0001ck-Ve
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Dec 2011 06:11:33 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:53893)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RalH6-0001fy-KX
-	for qemu-trivial@nongnu.org; Wed, 14 Dec 2011 04:37:26 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RamkA-0001Fi-VJ
+	for qemu-trivial@nongnu.org; Wed, 14 Dec 2011 06:11:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RalH5-0002Ef-SB
-	for qemu-trivial@nongnu.org; Wed, 14 Dec 2011 04:37:20 -0500
-Received: from mail-iy0-f173.google.com ([209.85.210.173]:37426)
+	(envelope-from <stefanha@gmail.com>) id 1Ramk5-0007pE-84
+	for qemu-trivial@nongnu.org; Wed, 14 Dec 2011 06:11:26 -0500
+Received: from mail-fx0-f45.google.com ([209.85.161.45]:43239)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1RalGw-0002DS-7X; Wed, 14 Dec 2011 04:37:10 -0500
-Received: by iagj37 with SMTP id j37so1107800iag.4
-	for <multiple recipients>; Wed, 14 Dec 2011 01:37:09 -0800 (PST)
+	id 1Ramk2-0007om-7Z; Wed, 14 Dec 2011 06:11:18 -0500
+Received: by faao26 with SMTP id o26so1070243faa.4
+	for <multiple recipients>; Wed, 14 Dec 2011 03:11:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=c8omZ0H3QxPcARzbpMtEHPtwR7Scra3gLMpv5nEytsg=;
-	b=AIZUsGrfGSg4JkalRxVoz01iKPb5slDlQDJEdGLSrr+jlkfckHUCMqF3VYrony+NwD
-	nkOD/Rf8eYwGATQqo/k2P6xtxRdnFSHhX2L7hY0r4z0U513XfuCott2GT2YY0Cy23+i4
-	HifS4WzkQwQLqTMHSlwhLVoXrf7v7Z4PlO90w=
-MIME-Version: 1.0
-Received: by 10.50.160.161 with SMTP id xl1mr23378900igb.5.1323855429270; Wed,
-	14 Dec 2011 01:37:09 -0800 (PST)
-Received: by 10.231.19.138 with HTTP; Wed, 14 Dec 2011 01:37:08 -0800 (PST)
-In-Reply-To: <1323844224-22432-1-git-send-email-sw@weilnetz.de>
-References: <1323844224-22432-1-git-send-email-sw@weilnetz.de>
-Date: Wed, 14 Dec 2011 09:37:08 +0000
-Message-ID: <CAJSP0QVsJAztRBrxYTRLjaTwgA4FeBpYjeH8z8vErrLB8NcFOw@mail.gmail.com>
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=a087Goko6UxnK6rC8ouEVNmFkniqaLuFzqLCl3dI+UA=;
+	b=aXNhW/VuVytYOc4yGDnckARfnYU9L5V1UPt40gUJzGHUJ0M8GFj4fz3EDZLe99FnkL
+	5eYSSuLKYuz9DW9O4mUjp7EjfRBPAhk4G7GxpqWVazyGXB5JtFxeTRf098aXKcHEWNXC
+	ByzIF+mXW016ces8YqUd/I03SE6Q+CDKmmIKY=
+Received: by 10.180.105.232 with SMTP id gp8mr3584041wib.65.1323861076849;
+	Wed, 14 Dec 2011 03:11:16 -0800 (PST)
+Received: from localhost ([109.224.133.37])
+	by mx.google.com with ESMTPS id ep16sm3189601wbb.21.2011.12.14.03.11.15
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 14 Dec 2011 03:11:15 -0800 (PST)
+Date: Wed, 14 Dec 2011 11:11:14 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+Message-ID: <20111214111114.GA10403@stefanha-thinkpad.localdomain>
+References: <1323472786-26821-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1323472786-26821-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.210.173
+X-Received-From: 209.85.161.45
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] doc: Remove Symbian Virtual Platform
+Subject: Re: [Qemu-trivial] [PATCH 0/6] New fixes for some misspellings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,19 +52,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Dec 2011 09:37:26 -0000
+X-List-Received-Date: Wed, 14 Dec 2011 11:11:32 -0000
 
-On Wed, Dec 14, 2011 at 6:30 AM, Stefan Weil <sw@weilnetz.de> wrote:
-> Commit d396a657baec8c6b7aa0c888746e0e2f78303650 removed the code
-> for SVP, so the documentation needs this update.
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
-> =A0qemu-doc.texi | =A0 23 -----------------------
-> =A01 files changed, 0 insertions(+), 23 deletions(-)
+On Sat, Dec 10, 2011 at 12:19:40AM +0100, Stefan Weil wrote:
+> This patch series tries to fix the most common misspellings
+> using the tool 'codespell'.
+> 
+> See http://wiki.qemu.org/Contribute/SpellCheck for more information
+> on using codespell with QEMU.
+> 
+> Regards,
+> Stefan Weil
+> 
+> [PATCH 1/6] Add spelling exceptions for codespell
+> [PATCH 2/6] fmopl: Fix spelling in code and comments
+> [PATCH 3/6] hw: Fix spelling (licenced->licensed)
+> [PATCH 4/6] hw: Fix spelling in comments
+> [PATCH 5/6] hw: Fix spelling in comments and code
+> [PATCH 6/6] Fix spelling in comments, documentation and messages
 
-Thank you, I only did a case-sensitive git grep syborg and missed
-this!  Will merge into trivial-patches tree.
+Applied all except Patch 1 to the trivial-patches-next tree:
+
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
+
+There might be some more discussion around Patch 1.  Please post it
+separately and let Anthony merge it into qemu.git.
 
 Stefan
 
