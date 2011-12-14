@@ -1,48 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rammo-0002NZ-BR
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Dec 2011 06:14:10 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54314)
+	id 1Ramnm-0003nv-HR
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Dec 2011 06:15:10 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:35078)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rammh-0002N2-JV
-	for qemu-trivial@nongnu.org; Wed, 14 Dec 2011 06:14:09 -0500
+	(envelope-from <stefanha@gmail.com>) id 1Ramnc-0003Jh-Mr
+	for qemu-trivial@nongnu.org; Wed, 14 Dec 2011 06:15:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rammc-00089e-VV
-	for qemu-trivial@nongnu.org; Wed, 14 Dec 2011 06:14:03 -0500
-Received: from mail-fx0-f45.google.com ([209.85.161.45]:33722)
+	(envelope-from <stefanha@gmail.com>) id 1RamnW-0008MV-UG
+	for qemu-trivial@nongnu.org; Wed, 14 Dec 2011 06:15:00 -0500
+Received: from mail-fx0-f45.google.com ([209.85.161.45]:47804)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1Rammc-00089a-Qv; Wed, 14 Dec 2011 06:13:58 -0500
-Received: by faao26 with SMTP id o26so1073653faa.4
-	for <multiple recipients>; Wed, 14 Dec 2011 03:13:58 -0800 (PST)
+	id 1RamnL-0008Ku-2q; Wed, 14 Dec 2011 06:14:43 -0500
+Received: by faao26 with SMTP id o26so1074764faa.4
+	for <multiple recipients>; Wed, 14 Dec 2011 03:14:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=bTMu8RP3XyxhOo/8Fumgf2zBp4EWzamP842IY9hUJkI=;
-	b=usxOfotstCtR4YMfbhYXV4ultu2DJxMj5nSF+y02cMZDzYYhmJd/9Q0GH8XirIu27h
-	tr1Dcnxbsh/cN+kzrW+TqBX3TCHFQko47QjzUgBlbxA7auytyIBBL6EMBaE805a/vn5i
-	RfRXLtDZQxIKhBg21VDnsMM6k9qZFQ2lRWAS0=
-Received: by 10.180.4.37 with SMTP id h5mr3675512wih.45.1323861237901;
-	Wed, 14 Dec 2011 03:13:57 -0800 (PST)
+	bh=MvgWqMjcNpcSz5YtfhoplCegoHlGcKnt/ExzDhmQIRk=;
+	b=dlRlNcvy7YXx7C78mmwRa9FTGoyNW4g1cN2+1u9u7BcFioId7jiCQormuiFoqUyB1/
+	pyZzFpp2kNhdDWM/n/mLZXeDBT/lyA+TGhOahnpxs7uglwczltr2pgINlJ1bze5yv5Lr
+	+7aVD8H0AiHzhaUYBsZ8YE+mm7GY+sqt7NulY=
+Received: by 10.180.88.66 with SMTP id be2mr3538150wib.54.1323861282277;
+	Wed, 14 Dec 2011 03:14:42 -0800 (PST)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id gg1sm3213093wbb.17.2011.12.14.03.13.56
+	by mx.google.com with ESMTPS id k5sm2920526wiz.9.2011.12.14.03.14.41
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 14 Dec 2011 03:13:57 -0800 (PST)
-Date: Wed, 14 Dec 2011 11:13:56 +0000
+	Wed, 14 Dec 2011 03:14:41 -0800 (PST)
+Date: Wed, 14 Dec 2011 11:14:40 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Isaku Yamahata <yamahata@valinux.co.jp>
-Message-ID: <20111214111356.GC10403@stefanha-thinkpad.localdomain>
-References: <7649482739064866ddfb50275b1fcfa43547b782.1323747574.git.yamahata@valinux.co.jp>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20111214111440.GD10403@stefanha-thinkpad.localdomain>
+References: <1323844224-22432-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7649482739064866ddfb50275b1fcfa43547b782.1323747574.git.yamahata@valinux.co.jp>
+In-Reply-To: <1323844224-22432-1-git-send-email-sw@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 209.85.161.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Luiz Capitulino <lcapitulino@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] migration.h: remove
- incoming_expected declarations
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] doc: Remove Symbian Virtual Platform
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,17 +52,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Dec 2011 11:14:09 -0000
+X-List-Received-Date: Wed, 14 Dec 2011 11:15:09 -0000
 
-On Tue, Dec 13, 2011 at 12:40:51PM +0900, Isaku Yamahata wrote:
-> The variable is deleted by 1bcef683bf840a928d633755031ac572d5fdb851
-> So remove its declaration.
+On Wed, Dec 14, 2011 at 07:30:24AM +0100, Stefan Weil wrote:
+> Commit d396a657baec8c6b7aa0c888746e0e2f78303650 removed the code
+> for SVP, so the documentation needs this update.
 > 
-> Cc: Luiz Capitulino <lcapitulino@redhat.com>
-> Signed-off-by: Isaku Yamahata <yamahata@valinux.co.jp>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  migration.h |    2 --
->  1 files changed, 0 insertions(+), 2 deletions(-)
+>  qemu-doc.texi |   23 -----------------------
+>  1 files changed, 0 insertions(+), 23 deletions(-)
 
 Thanks, applied to the trivial patches -next tree:
 http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches-next
