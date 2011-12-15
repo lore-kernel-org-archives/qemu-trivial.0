@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RbG3B-0005yW-C8
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2011 13:29:01 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:40742)
+	id 1RbGVm-0003hV-Vz
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2011 13:58:34 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:58255)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1RbG38-0005sU-Vp
-	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:28:59 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1RbGVk-0003Zq-5O
+	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:58:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1RbG38-0002UW-6B
-	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:28:58 -0500
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:59857)
+	(envelope-from <pm215@archaic.org.uk>) id 1RbGVj-0000kq-3I
+	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:58:32 -0500
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:56006)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1RbG35-0002U5-J4; Thu, 15 Dec 2011 13:28:55 -0500
+	id 1RbGVg-0000eP-Vg; Thu, 15 Dec 2011 13:58:29 -0500
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1RbG32-0005gp-KO; Thu, 15 Dec 2011 18:28:52 +0000
+	id 1RbGVe-0005iK-Ey; Thu, 15 Dec 2011 18:58:26 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Thu, 15 Dec 2011 18:28:52 +0000
-Message-Id: <1323973732-21848-1-git-send-email-peter.maydell@linaro.org>
+Date: Thu, 15 Dec 2011 18:58:26 +0000
+Message-Id: <1323975506-21941-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.2.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 81.2.115.146
 Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] Makefile.target: Remove unnecessary
-	dependency rules
+Subject: [Qemu-trivial] [PATCH] stellaris: Calculate system clock period on
+	reset
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,35 +36,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Dec 2011 18:29:00 -0000
+X-List-Received-Date: Thu, 15 Dec 2011 18:58:33 -0000
 
-Remove some dependency rules which aren't necessary (the automatically
-generated .d files cover all these). These were leftovers from dyngen
-days, when the object files also had a dependency on some generated
-files.
+Calculate the system clock period on reset; otherwise it remains
+set to the default value of zero and attempting to use it provokes
+a hang. This is one of the issues noted in LP:696094.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- Makefile.target |    6 ------
- 1 files changed, 0 insertions(+), 6 deletions(-)
+ hw/stellaris.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
 
-diff --git a/Makefile.target b/Makefile.target
-index 8be9b9a..3261383 100644
---- a/Makefile.target
-+++ b/Makefile.target
-@@ -92,12 +92,6 @@ tci-dis.o: QEMU_CFLAGS += -I$(SRC_PATH)/tcg -I$(SRC_PATH)/tcg/tci
+diff --git a/hw/stellaris.c b/hw/stellaris.c
+index ce62a98..7a73074 100644
+--- a/hw/stellaris.c
++++ b/hw/stellaris.c
+@@ -621,6 +621,7 @@ static void ssys_reset(void *opaque)
+     s->rcgc[0] = 1;
+     s->scgc[0] = 1;
+     s->dcgc[0] = 1;
++    ssys_calculate_system_clock(s);
+ }
  
- $(libobj-y): $(GENERATED_HEADERS)
- 
--translate.o: translate.c cpu.h
--
--translate-all.o: translate-all.c cpu.h
--
--tcg/tcg.o: cpu.h
--
- # HELPER_CFLAGS is used for all the code compiled with static register
- # variables
- op_helper.o ldst_helper.o user-exec.o: QEMU_CFLAGS += $(HELPER_CFLAGS)
+ static int stellaris_sys_post_load(void *opaque, int version_id)
 -- 
 1.7.5.4
 
