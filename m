@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RbFmf-0000En-6U
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2011 13:11:57 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:56616)
+	id 1RbFnO-0001S1-Or
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2011 13:12:42 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:56770)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1RbFmc-00004r-Sg
-	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:11:55 -0500
+	(envelope-from <anthony@codemonkey.ws>) id 1RbFnL-0001I4-UF
+	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:12:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1RbFmb-0007GP-NI
-	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:11:54 -0500
-Received: from mail-iy0-f173.google.com ([209.85.210.173]:32892)
+	(envelope-from <anthony@codemonkey.ws>) id 1RbFnK-0007Li-Qz
+	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:12:39 -0500
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:35033)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <anthony@codemonkey.ws>)
-	id 1RbFmY-0007EH-V0; Thu, 15 Dec 2011 13:11:51 -0500
-Received: by mail-iy0-f173.google.com with SMTP id j37so3556647iag.4
-	for <multiple recipients>; Thu, 15 Dec 2011 10:11:50 -0800 (PST)
-Received: by 10.42.73.138 with SMTP id s10mr3002138icj.38.1323972710476;
-	Thu, 15 Dec 2011 10:11:50 -0800 (PST)
+	id 1RbFnI-0007LK-8m; Thu, 15 Dec 2011 13:12:36 -0500
+Received: by iagj37 with SMTP id j37so3558077iag.4
+	for <multiple recipients>; Thu, 15 Dec 2011 10:12:35 -0800 (PST)
+Received: by 10.42.73.138 with SMTP id s10mr3003700icj.38.1323972755735;
+	Thu, 15 Dec 2011 10:12:35 -0800 (PST)
 Received: from [192.168.0.103] (cpe-70-123-132-139.austin.res.rr.com.
 	[70.123.132.139])
-	by mx.google.com with ESMTPS id x18sm23586096ibi.2.2011.12.15.10.11.47
+	by mx.google.com with ESMTPS id e2sm23613367ibe.0.2011.12.15.10.12.33
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 15 Dec 2011 10:11:49 -0800 (PST)
-Message-ID: <4EEA3862.3030407@redhat.com>
-Date: Thu, 15 Dec 2011 12:11:46 -0600
+	Thu, 15 Dec 2011 10:12:34 -0800 (PST)
+Message-ID: <4EEA388F.2050008@codemonkey.ws>
+Date: Thu, 15 Dec 2011 12:12:31 -0600
 From: Anthony Liguori <anthony@codemonkey.ws>
 User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
 	rv:1.9.2.21) Gecko/20110831 Lightning/1.0b2 Thunderbird/3.1.13
@@ -49,7 +49,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Dec 2011 18:11:56 -0000
+X-List-Received-Date: Thu, 15 Dec 2011 18:12:41 -0000
 
 On 12/15/2011 07:33 AM, Peter Maydell wrote:
 > Clarify the allocation/free recommendations; this is mostly
