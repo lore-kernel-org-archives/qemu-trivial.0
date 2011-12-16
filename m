@@ -1,30 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RbGVm-0003hV-Vz
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2011 13:58:34 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:58255)
+	id 1RbUUb-00086V-Ls
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2011 04:54:17 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:44875)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1RbGVk-0003Zq-5O
-	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:58:33 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RbUUT-0007fM-Rf
+	for qemu-trivial@nongnu.org; Fri, 16 Dec 2011 04:54:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1RbGVj-0000kq-3I
-	for qemu-trivial@nongnu.org; Thu, 15 Dec 2011 13:58:32 -0500
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:56006)
+	(envelope-from <stefanha@gmail.com>) id 1RbUUP-0006VW-NG
+	for qemu-trivial@nongnu.org; Fri, 16 Dec 2011 04:54:09 -0500
+Received: from mail-ee0-f45.google.com ([74.125.83.45]:39916)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1RbGVg-0000eP-Vg; Thu, 15 Dec 2011 13:58:29 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1RbGVe-0005iK-Ey; Thu, 15 Dec 2011 18:58:26 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Thu, 15 Dec 2011 18:58:26 +0000
-Message-Id: <1323975506-21941-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
+	(envelope-from <stefanha@gmail.com>)
+	id 1RbUUD-0006QX-TV; Fri, 16 Dec 2011 04:53:54 -0500
+Received: by eekb45 with SMTP id b45so3354505eek.4
+	for <multiple recipients>; Fri, 16 Dec 2011 01:53:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=9Brb+b+9LYu8rpT5oSlbDIA7LrAcXusYSU1J+hxZorM=;
+	b=mFl4MU8k6YVkhaH6wAoc2jArm3LxjN9WScvaITsn+MpDMkoGupXLz7P1KqFJxGFOYL
+	jjhVjdNrQ84J5+x1RHXpdtZpCe30vx5J0oDSzCv+8sRxA/RpjrVbnBgIN+5+PVaRX5fz
+	kZxmlZqsmhjLZNCcgcgG9Jxh+SZIJozOm7NZc=
+Received: by 10.14.16.77 with SMTP id g53mr393126eeg.19.1324029232844;
+	Fri, 16 Dec 2011 01:53:52 -0800 (PST)
+Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
+	by mx.google.com with ESMTPS id
+	z54sm35995860eeh.5.2011.12.16.01.53.51
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 16 Dec 2011 01:53:52 -0800 (PST)
+Date: Fri, 16 Dec 2011 09:53:49 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20111216095349.GA26889@stefanha-thinkpad.localdomain>
+References: <1323958276-29225-1-git-send-email-pbonzini@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1323958276-29225-1-git-send-email-pbonzini@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] stellaris: Calculate system clock period on
-	reset
+X-Received-From: 74.125.83.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] ide: drop argument to dma_buf_commit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,30 +53,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Dec 2011 18:58:33 -0000
+X-List-Received-Date: Fri, 16 Dec 2011 09:54:15 -0000
 
-Calculate the system clock period on reset; otherwise it remains
-set to the default value of zero and attempting to use it provokes
-a hang. This is one of the issues noted in LP:696094.
+On Thu, Dec 15, 2011 at 03:11:16PM +0100, Paolo Bonzini wrote:
+> The argument is unused and even wrong when the function is called
+> by ide_handle_rw_error.  Drop it.
+> 
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  hw/ide/core.c |    6 +++---
+>  1 files changed, 3 insertions(+), 3 deletions(-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/stellaris.c |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
+Thanks, applied to the trivial patches tree:
+http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
 
-diff --git a/hw/stellaris.c b/hw/stellaris.c
-index ce62a98..7a73074 100644
---- a/hw/stellaris.c
-+++ b/hw/stellaris.c
-@@ -621,6 +621,7 @@ static void ssys_reset(void *opaque)
-     s->rcgc[0] = 1;
-     s->scgc[0] = 1;
-     s->dcgc[0] = 1;
-+    ssys_calculate_system_clock(s);
- }
- 
- static int stellaris_sys_post_load(void *opaque, int version_id)
--- 
-1.7.5.4
-
+Stefan
 
