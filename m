@@ -1,37 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rbux2-0004al-8m
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Dec 2011 09:09:24 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:55214)
+	id 1Rbv6N-0006Oe-IK
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Dec 2011 09:19:03 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:58462)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Rbuwy-0004MT-RO
-	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 09:09:21 -0500
+	(envelope-from <eblake@redhat.com>) id 1Rbv6L-0006OF-Hs
+	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 09:19:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Rbuwx-0001fw-Qr
-	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 09:09:20 -0500
-Received: from mail-qy0-f173.google.com ([209.85.216.173]:38960)
+	(envelope-from <eblake@redhat.com>) id 1Rbv6J-0003rX-Uj
+	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 09:19:01 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52225)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>)
-	id 1Rbuwv-0001ff-Eo; Sat, 17 Dec 2011 09:09:17 -0500
-Received: by qcsd15 with SMTP id d15so2517378qcs.4
-	for <multiple recipients>; Sat, 17 Dec 2011 06:09:17 -0800 (PST)
+	(envelope-from <eblake@redhat.com>)
+	id 1Rbv6J-0003r6-MK; Sat, 17 Dec 2011 09:18:59 -0500
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id pBHEIvxl012817
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Sat, 17 Dec 2011 09:18:57 -0500
+Received: from [10.3.113.3] ([10.3.113.3])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id pBHEIu9I025254; Sat, 17 Dec 2011 09:18:56 -0500
+Message-ID: <4EECA4CF.5030407@redhat.com>
+Date: Sat, 17 Dec 2011 07:18:55 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:8.0) Gecko/20111115 Thunderbird/8.0
 MIME-Version: 1.0
-Received: by 10.224.203.202 with SMTP id fj10mr16903294qab.66.1324130956912;
-	Sat, 17 Dec 2011 06:09:16 -0800 (PST)
-Received: by 10.229.211.4 with HTTP; Sat, 17 Dec 2011 06:09:16 -0800 (PST)
-In-Reply-To: <4EEC86E9.7080404@weilnetz.de>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1324110459-3932-1-git-send-email-sw@weilnetz.de>
 	<1324110459-3932-4-git-send-email-sw@weilnetz.de>
 	<CAFEAcA8MY3zc7xLD_PosE_fHnOL+jn54wX7TAS8MxE=4vVa+Bw@mail.gmail.com>
 	<4EEC86E9.7080404@weilnetz.de>
-Date: Sat, 17 Dec 2011 14:09:16 +0000
-Message-ID: <CAFEAcA-Dpy1a-hsN6oxPn6M=3LTwtfpR2c8J2Gz_a7-TfYQv-A@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	<CAFEAcA-Dpy1a-hsN6oxPn6M=3LTwtfpR2c8J2Gz_a7-TfYQv-A@mail.gmail.com>
+In-Reply-To: <CAFEAcA-Dpy1a-hsN6oxPn6M=3LTwtfpR2c8J2Gz_a7-TfYQv-A@mail.gmail.com>
+X-Enigmail-Version: 1.3.4
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="------------enigAEF3AE2E0D946BFC54C06920"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 03/11] configure: Fix
  compiler warning in config.log (integer from pointer)
 X-BeenThere: qemu-trivial@nongnu.org
@@ -45,45 +57,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Dec 2011 14:09:21 -0000
+X-List-Received-Date: Sat, 17 Dec 2011 14:19:02 -0000
 
-On 17 December 2011 12:11, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 17.12.2011 12:29, schrieb Peter Maydell:
->>> + =C2=A0return s !=3D (const char *)0;
->>
->> You don't need this cast, I think.
->
-> Indeed, a quick test with gcc-4.4.5 shows no new warning when
-> I remove the type cast. Are you sure that this works with all
-> supported versions of gcc and any set of warning options?
+This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
+--------------enigAEF3AE2E0D946BFC54C06920
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Yes. Both 0 and (void*)0 are null pointer constants;
-comparing explicitly for "if (ptr !=3D 0)" is equivalent to
-"if (ptr)"; qemu style prefers the latter but there are
-a few of the former in the codebase, so practically speaking
-we know it compiles fine.
+On 12/17/2011 07:09 AM, Peter Maydell wrote:
+>> Typically NULL is defined to be ((void *)0 for C
+>> (that's the reason why I used a type cast, too). Only for
+>> C++ it is defined without a type cast.
+>=20
+> The C standard permits plain "0" as a definition of NULL.
 
-> Normally NULL is used for this kind of code, but it needs
-> stddef.h.
+POSIX concurs with the C standard that a plain "0" can be used for
+representing a null pointer, but requires that the macro NULL be defined
+as ((void*)0) as a tighter requirement than C.
 
-Only in some coding styles. NULL is just a convenience
-macro if you like that kind of thing.
+http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#t=
+ag_03_244
+http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stddef.h.html#ta=
+g_13_47
 
-> Typically NULL is defined to be ((void *)0 for C
-> (that's the reason why I used a type cast, too). Only for
-> C++ it is defined without a type cast.
+> We use plain 0 for a null pointer constant in various
+> existing tests in configure; this is simpler and avoids
+> dragging in stddef.h. I would prefer that.
 
-The C standard permits plain "0" as a definition of NULL.
+I agree that configure tests should be as small as possible while still
+being correct, and use of a 0 constant without a cast, rather than NULL,
+is appropriate in that context.
 
-> The type cast won't harm and is not in "normal" code,
-> so it can be committed as it is. I also don't mind if it is
-> removed by whoever commits it. If it is preferred that
-> I send an updated patch, I'd use NULL with stddef.h
-> (just to be safe).
+--=20
+Eric Blake   eblake@redhat.com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-We use plain 0 for a null pointer constant in various
-existing tests in configure; this is simpler and avoids
-dragging in stddef.h. I would prefer that.
 
--- PMM
+--------------enigAEF3AE2E0D946BFC54C06920
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
+
+iQEcBAEBCAAGBQJO7KTQAAoJEKeha0olJ0Nq5RgH/2z37HTv9z0jtU1xebzItV1x
+K7XZtP5muBcEkNkoJCm/kTsOKetS0BBea6sobCFMkSaYcSmOc9qqTRR/dCfhZel+
+RR/t6DIrkQ4yKjo7KaQ7Xzj7KaJKxJoAelIb1nJh6tshhiPpgV93la6hP2u3rGTy
+3Hfnmly6CS1/fVoj0q7kd+WGp8qs+k4VO/jZhItlXdceQ81cSAb3H6BB44Mzr042
+4CByfQO/0Uh0j5Y9DhhesvP3pGr65pQ1mUTTDkelnr8EoUwNFdsAgg2YUg7DEJ3a
+RHbibQyAfIDfQVGi6h8feSD2mxIBlrpSNxKh6i+K+r1UbA8msLF3Fssw1y5tTPQ=
+=mWde
+-----END PGP SIGNATURE-----
+
+--------------enigAEF3AE2E0D946BFC54C06920--
 
