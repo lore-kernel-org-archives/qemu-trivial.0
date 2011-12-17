@@ -1,37 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RbxZy-0006kE-JK
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Dec 2011 11:57:46 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:50092)
+	id 1Rc0JW-0006t9-Ge
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Dec 2011 14:52:58 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:44081)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1RbxZv-0006XW-6j
-	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 11:57:44 -0500
+	(envelope-from <jan.kiszka@web.de>) id 1Rc0JT-0006kF-Eh
+	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 14:52:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1RbxZu-0001UB-68
-	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 11:57:43 -0500
-Received: from mail-qw0-f45.google.com ([209.85.216.45]:60434)
+	(envelope-from <jan.kiszka@web.de>) id 1Rc0JS-0004XX-7l
+	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 14:52:55 -0500
+Received: from fmmailgate01.web.de ([217.72.192.221]:57009)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>)
-	id 1RbxZs-0001TN-0e; Sat, 17 Dec 2011 11:57:40 -0500
-Received: by qadc10 with SMTP id c10so1513503qad.4
-	for <multiple recipients>; Sat, 17 Dec 2011 08:57:39 -0800 (PST)
+	(envelope-from <jan.kiszka@web.de>)
+	id 1Rc0JP-0004Wx-3I; Sat, 17 Dec 2011 14:52:51 -0500
+Received: from moweb002.kundenserver.de (moweb002.kundenserver.de
+	[172.19.20.108])
+	by fmmailgate01.web.de (Postfix) with ESMTP id 1C82B1A523729;
+	Sat, 17 Dec 2011 20:52:49 +0100 (CET)
+Received: from mchn199C.mchp.siemens.de ([88.64.14.121]) by smtp.web.de
+	(mrweb002) with ESMTPA (Nemesis) id 0M4Zlk-1Qm67844OS-00ye0t;
+	Sat, 17 Dec 2011 20:52:47 +0100
+Message-ID: <4EECF30E.9060109@web.de>
+Date: Sat, 17 Dec 2011 20:52:46 +0100
+From: Jan Kiszka <jan.kiszka@web.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-Received: by 10.224.219.144 with SMTP id hu16mr17416360qab.53.1324141059218;
-	Sat, 17 Dec 2011 08:57:39 -0800 (PST)
-Received: by 10.229.211.4 with HTTP; Sat, 17 Dec 2011 08:57:39 -0800 (PST)
-In-Reply-To: <1324140362-12636-1-git-send-email-sw@weilnetz.de>
-References: <1324110459-3932-4-git-send-email-sw@weilnetz.de>
-	<1324140362-12636-1-git-send-email-sw@weilnetz.de>
-Date: Sat, 17 Dec 2011 16:57:39 +0000
-Message-ID: <CAFEAcA-4HwEoQowSEiyLBStjOgMkJa7uu3oSewywLfD=D-LhLg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 03/11] configure: Fix
- compiler warning in config.log (integer from pointer)
+To: Geoffrey Thomas <geofft@ldpreload.com>
+References: <alpine.DEB.2.02.1112170420460.22177@tyger.mit.edu>
+In-Reply-To: <alpine.DEB.2.02.1112170420460.22177@tyger.mit.edu>
+X-Enigmail-Version: 1.3.4
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature";
+	boundary="------------enig92CCAABE478684B46E840052"
+X-Provags-ID: V02:K0:NXrG1fE8MSXlXR4eAEEMlC2Z/+App1q/EcAECCfkjb1
+	JHnMDgHzZbDWfrgIsxMCh7f3w4DfyvE3ns5KrxAZihlveZ/tOU
+	a/j/qmSLmO98/qLEVtRV3ugc5An61JLkGx6w+KYvvA6+4/s6Hx
+	uM/J0rAQthfwgW7q13tUb9ZjpZSbKxfeKicAxyibYR2aYnfigb
+	vtPKIm+119PldMxBmKNtQ==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 217.72.192.221
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: Re: [Qemu-trivial] [PATCH] slirp: Fix typo in
+	net_slirp_hostfwd_remove
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,50 +55,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Dec 2011 16:57:44 -0000
+X-List-Received-Date: Sat, 17 Dec 2011 19:52:57 -0000
 
-On 17 December 2011 16:46, Stefan Weil <sw@weilnetz.de> wrote:
-> warning: return makes integer from pointer without a cast
->
-> v2: Removed type cast.
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
+--------------enig92CCAABE478684B46E840052
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
+On 2011-12-17 10:23, Geoffrey Thomas wrote:
+> Report an error when err is nonzero, not when it is zero.
+>=20
+> Signed-off-by: Geoffrey Thomas <geofft@ldpreload.com>
 > ---
-> =C2=A0configure | =C2=A0 =C2=A06 +++++-
-> =C2=A01 files changed, 5 insertions(+), 1 deletions(-)
->
-> diff --git a/configure b/configure
-> index 93c6cbe..773df6a 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1841,7 +1841,11 @@ if test "$curses" !=3D "no" ; then
-> =C2=A0#ifdef __OpenBSD__
-> =C2=A0#define resize_term resizeterm
-> =C2=A0#endif
-> -int main(void) { resize_term(0, 0); return curses_version(); }
-> +int main(void) {
-> + =C2=A0const char *s =3D curses_version();
-> + =C2=A0resize_term(0, 0);
-> + =C2=A0return s !=3D 0;
-> +}
-> =C2=A0EOF
-> =C2=A0 for curses_lib in $curses_list; do
-> =C2=A0 =C2=A0 if compile_prog "" "$curses_lib" ; then
-> --
-> 1.7.2.5
->
->
+>  net/slirp.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>=20
+> diff --git a/net/slirp.c b/net/slirp.c
+> index 6646ecb..18e07ba 100644
+> --- a/net/slirp.c
+> +++ b/net/slirp.c
+> @@ -351,7 +351,7 @@ void net_slirp_hostfwd_remove(Monitor *mon, const
+> QDict *qdict)
+>                                 host_addr, host_port);
+>=20
+>      monitor_printf(mon, "host forwarding rule for %s %s\n", src_str,
+> -                   err ? "removed" : "not found");
+> +                   err ? "not found" : "removed");
+>      return;
+>=20
+>   fail_syntax:
+
+Oops, obviously. Stefan, should be another trivial one for you.
+
+Thanks,
+Jan
 
 
+--------------enig92CCAABE478684B46E840052
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
---=20
-123456789012345678901234567890123456789012345678901234567890123456789012345=
-67890
-=C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 1 =C2=A0 =C2=A0 =C2=A0 =C2=A0 2 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 3 =C2=A0 =C2=A0 =C2=A0 =C2=A0 4 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 5 =C2=A0 =C2=A0 =C2=A0 =C2=A0 6 =C2=A0 =C2=A0 =C2=A0 =C2=A0 7 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 8
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.16 (GNU/Linux)
+Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
+
+iEYEARECAAYFAk7s8w4ACgkQitSsb3rl5xQswACfYyGpdStqmdspLOBfokU9rsIe
+0cYAn0qsA/uWZ6fbv0j1m/EgSVbxD/UG
+=MalQ
+-----END PGP SIGNATURE-----
+
+--------------enig92CCAABE478684B46E840052--
 
