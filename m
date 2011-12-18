@@ -1,49 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rc0JW-0006t9-Ge
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Dec 2011 14:52:58 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:44081)
+	id 1RcKNe-0003QO-9n
+	for mharc-qemu-trivial@gnu.org; Sun, 18 Dec 2011 12:18:34 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:57260)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1Rc0JT-0006kF-Eh
-	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 14:52:56 -0500
+	(envelope-from <julian.pidancet@gmail.com>) id 1RcKNc-0003Po-34
+	for qemu-trivial@nongnu.org; Sun, 18 Dec 2011 12:18:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1Rc0JS-0004XX-7l
-	for qemu-trivial@nongnu.org; Sat, 17 Dec 2011 14:52:55 -0500
-Received: from fmmailgate01.web.de ([217.72.192.221]:57009)
+	(envelope-from <julian.pidancet@gmail.com>) id 1RcKNb-0007v2-5m
+	for qemu-trivial@nongnu.org; Sun, 18 Dec 2011 12:18:32 -0500
+Received: from mail-we0-f173.google.com ([74.125.82.173]:44414)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1Rc0JP-0004Wx-3I; Sat, 17 Dec 2011 14:52:51 -0500
-Received: from moweb002.kundenserver.de (moweb002.kundenserver.de
-	[172.19.20.108])
-	by fmmailgate01.web.de (Postfix) with ESMTP id 1C82B1A523729;
-	Sat, 17 Dec 2011 20:52:49 +0100 (CET)
-Received: from mchn199C.mchp.siemens.de ([88.64.14.121]) by smtp.web.de
-	(mrweb002) with ESMTPA (Nemesis) id 0M4Zlk-1Qm67844OS-00ye0t;
-	Sat, 17 Dec 2011 20:52:47 +0100
-Message-ID: <4EECF30E.9060109@web.de>
-Date: Sat, 17 Dec 2011 20:52:46 +0100
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
-MIME-Version: 1.0
-To: Geoffrey Thomas <geofft@ldpreload.com>
-References: <alpine.DEB.2.02.1112170420460.22177@tyger.mit.edu>
-In-Reply-To: <alpine.DEB.2.02.1112170420460.22177@tyger.mit.edu>
-X-Enigmail-Version: 1.3.4
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="------------enig92CCAABE478684B46E840052"
-X-Provags-ID: V02:K0:NXrG1fE8MSXlXR4eAEEMlC2Z/+App1q/EcAECCfkjb1
-	JHnMDgHzZbDWfrgIsxMCh7f3w4DfyvE3ns5KrxAZihlveZ/tOU
-	a/j/qmSLmO98/qLEVtRV3ugc5An61JLkGx6w+KYvvA6+4/s6Hx
-	uM/J0rAQthfwgW7q13tUb9ZjpZSbKxfeKicAxyibYR2aYnfigb
-	vtPKIm+119PldMxBmKNtQ==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.221
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [PATCH] slirp: Fix typo in
-	net_slirp_hostfwd_remove
+	(envelope-from <julian.pidancet@gmail.com>) id 1RcKNa-0007ux-UH
+	for qemu-trivial@nongnu.org; Sun, 18 Dec 2011 12:18:31 -0500
+Received: by werb10 with SMTP id b10so1076588wer.4
+	for <qemu-trivial@nongnu.org>; Sun, 18 Dec 2011 09:18:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=from:to:cc:subject:date:message-id:x-mailer;
+	bh=Sc+J2tDgrxznVJSRcy6K3xBf8c+zZ+2Zk8JuQZSFKxc=;
+	b=yB0BegMhuyNlnZlab+iJPloox0S6rGB6iVrJAk1dWh1n5qC+ZSYmvz+UVw6JxOZNUi
+	NFIQpSHXF2pQtBPqZRdRnUD8Qr4O0Us/03aAkeiPmqQ4j4NwZmIUdPF9191e+dj60pFx
+	GFtPsc+quEv1GbXeiej4PBljrF0GOsTx+1mP8=
+Received: by 10.216.136.152 with SMTP id w24mr5712484wei.43.1324228709473;
+	Sun, 18 Dec 2011 09:18:29 -0800 (PST)
+Received: from localhost.localdomain (188-223-88-44.zone14.bethere.co.uk.
+	[188.223.88.44])
+	by mx.google.com with ESMTPS id ff10sm1867604wbb.6.2011.12.18.09.18.28
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sun, 18 Dec 2011 09:18:28 -0800 (PST)
+From: Julian Pidancet <julian.pidancet@gmail.com>
+To: qemu-trivial@nongnu.org
+Date: Sun, 18 Dec 2011 18:08:44 +0000
+Message-Id: <f6c6b01e6bb9a48a80db3eabc38df974bba2d132.1324231597.git.julian.pidancet@gmail.com>
+X-Mailer: git-send-email 1.7.3.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 74.125.82.173
+Cc: aliguori@us.ibm.com, Julian Pidancet <julian.pidancet@gmail.com>
+Subject: [Qemu-trivial] [PATCH] Also create piix3 property when Xen is
+	enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,55 +48,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Dec 2011 19:52:57 -0000
+X-List-Received-Date: Sun, 18 Dec 2011 17:18:33 -0000
 
-This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enig92CCAABE478684B46E840052
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+This recently added line in hw/pc_piix.c is causing a SEGV on a Xen
+setup because the piix3 property is never created:
 
-On 2011-12-17 10:23, Geoffrey Thomas wrote:
-> Report an error when err is nonzero, not when it is zero.
->=20
-> Signed-off-by: Geoffrey Thomas <geofft@ldpreload.com>
-> ---
->  net/slirp.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
->=20
-> diff --git a/net/slirp.c b/net/slirp.c
-> index 6646ecb..18e07ba 100644
-> --- a/net/slirp.c
-> +++ b/net/slirp.c
-> @@ -351,7 +351,7 @@ void net_slirp_hostfwd_remove(Monitor *mon, const
-> QDict *qdict)
->                                 host_addr, host_port);
->=20
->      monitor_printf(mon, "host forwarding rule for %s %s\n", src_str,
-> -                   err ? "removed" : "not found");
-> +                   err ? "not found" : "removed");
->      return;
->=20
->   fail_syntax:
+qdev_property_add_child(qdev_resolve_path("/i440fx/piix3", NULL),
+                            "rtc", (DeviceState *)rtc_state, NULL);
 
-Oops, obviously. Stefan, should be another trivial one for you.
+Signed-off-by: Julian Pidancet <julian.pidancet@gmail.com>
+---
+ hw/piix_pci.c |    3 +--
+ 1 files changed, 1 insertions(+), 2 deletions(-)
 
-Thanks,
-Jan
+diff --git a/hw/piix_pci.c b/hw/piix_pci.c
+index d785d4b..ea156a9 100644
+--- a/hw/piix_pci.c
++++ b/hw/piix_pci.c
+@@ -324,9 +324,8 @@ static PCIBus *i440fx_common_init(const char *device_name,
+                 pci_create_simple_multifunction(b, -1, true, "PIIX3"));
+         pci_bus_irqs(b, piix3_set_irq, pci_slot_get_pirq, piix3,
+                 PIIX_NUM_PIRQS);
+-
+-        qdev_property_add_child(dev, "piix3", &piix3->dev.qdev, NULL);
+     }
++    qdev_property_add_child(dev, "piix3", &piix3->dev.qdev, NULL);
+     piix3->pic = pic;
+ 
+     (*pi440fx_state)->piix3 = piix3;
+-- 
+Julian Pidancet
 
-
---------------enig92CCAABE478684B46E840052
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.16 (GNU/Linux)
-Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
-
-iEYEARECAAYFAk7s8w4ACgkQitSsb3rl5xQswACfYyGpdStqmdspLOBfokU9rsIe
-0cYAn0qsA/uWZ6fbv0j1m/EgSVbxD/UG
-=MalQ
------END PGP SIGNATURE-----
-
---------------enig92CCAABE478684B46E840052--
 
