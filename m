@@ -1,47 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rcaq0-0004Wb-1v
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Dec 2011 05:52:56 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:38247)
+	id 1RcxW2-0000j8-8F
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Dec 2011 06:05:50 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:49900)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rcapw-0004W5-My
-	for qemu-trivial@nongnu.org; Mon, 19 Dec 2011 05:52:53 -0500
+	(envelope-from <alevy@redhat.com>) id 1RcxVt-0000KT-6A
+	for qemu-trivial@nongnu.org; Tue, 20 Dec 2011 06:05:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rcaps-0006dH-57
-	for qemu-trivial@nongnu.org; Mon, 19 Dec 2011 05:52:52 -0500
-Received: from mail-ee0-f45.google.com ([74.125.83.45]:35685)
+	(envelope-from <alevy@redhat.com>) id 1RcxVn-0004aO-Er
+	for qemu-trivial@nongnu.org; Tue, 20 Dec 2011 06:05:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:1848)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rcapr-0006d8-Sw
-	for qemu-trivial@nongnu.org; Mon, 19 Dec 2011 05:52:48 -0500
-Received: by eekb45 with SMTP id b45so5957568eek.4
-	for <qemu-trivial@nongnu.org>; Mon, 19 Dec 2011 02:52:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=Sl5On1u0M5YGwliii7qI67DL4s64robUMpsF2wenqRQ=;
-	b=MwJiP+xrht3ZthUjPUWeEAp03EQ+3/kk61kNS42BpeOKkyldaeiunzjSn3eGKR6ho+
-	VVQT0uEiTmpd1vQJxhe7lLZ1qUVcCKPBIBiA1bAwoSOVKfx2qCUzw50ORM16XB5Louf3
-	wGtqghS6VkLcO5pqaR7f7a2wVeOIBCh3HRhfM=
-Received: by 10.213.10.145 with SMTP id p17mr2542372ebp.43.1324291966930;
-	Mon, 19 Dec 2011 02:52:46 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id 13sm22738841eeu.1.2011.12.19.02.52.46
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 19 Dec 2011 02:52:46 -0800 (PST)
-Date: Mon, 19 Dec 2011 10:52:45 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Julian Pidancet <julian.pidancet@gmail.com>
-Message-ID: <20111219105245.GA10981@stefanha-thinkpad.localdomain>
-References: <f6c6b01e6bb9a48a80db3eabc38df974bba2d132.1324231597.git.julian.pidancet@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f6c6b01e6bb9a48a80db3eabc38df974bba2d132.1324231597.git.julian.pidancet@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.83.45
-Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com
-Subject: Re: [Qemu-trivial] [PATCH] Also create piix3 property when Xen is
- enabled
+	(envelope-from <alevy@redhat.com>)
+	id 1RcxVb-0004YD-Ey; Tue, 20 Dec 2011 06:05:23 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id pBKB5LOZ013357
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 20 Dec 2011 06:05:21 -0500
+Received: from garlic.tlv.redhat.com (dhcp-4-31.tlv.redhat.com [10.35.4.31])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id pBKB5IrC028432; Tue, 20 Dec 2011 06:05:19 -0500
+From: Alon Levy <alevy@redhat.com>
+To: kraxel@redhat.com
+Date: Tue, 20 Dec 2011 13:05:18 +0200
+Message-Id: <1324379118-2570-1-git-send-email-alevy@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] qemu-options.hx: fix tls-channel help text
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,22 +40,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Dec 2011 10:52:54 -0000
+X-List-Received-Date: Tue, 20 Dec 2011 11:05:48 -0000
 
-On Sun, Dec 18, 2011 at 06:08:44PM +0000, Julian Pidancet wrote:
-> This recently added line in hw/pc_piix.c is causing a SEGV on a Xen
-> setup because the piix3 property is never created:
-> 
-> qdev_property_add_child(qdev_resolve_path("/i440fx/piix3", NULL),
->                             "rtc", (DeviceState *)rtc_state, NULL);
-> 
-> Signed-off-by: Julian Pidancet <julian.pidancet@gmail.com>
-> ---
->  hw/piix_pci.c |    3 +--
->  1 files changed, 1 insertions(+), 2 deletions(-)
+Remove the default compiled out tunnel channel, add the always available
+cursor channel. Optimally the man page would depend on compiled in
+options, but that's harder to do.
 
-Thanks, applied to the trivial patches tree:
-http://repo.or.cz/w/qemu/stefanha.git/shortlog/refs/heads/trivial-patches
+RHBZ: 688586
 
-Stefan
+Signed-off-by: Alon Levy <alevy@redhat.com>
+---
+ qemu-options.hx |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index a60191f..3c3bda8 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -857,8 +857,8 @@ The x509 file names can also be configured individually.
+ @item tls-ciphers=<list>
+ Specify which ciphers to use.
+ 
+-@item tls-channel=[main|display|inputs|record|playback|tunnel]
+-@item plaintext-channel=[main|display|inputs|record|playback|tunnel]
++@item tls-channel=[main|display|cursor|inputs|record|playback]
++@item plaintext-channel=[main|display|cursor|inputs|record|playback]
+ Force specific channel to be used with or without TLS encryption.  The
+ options can be specified multiple times to configure multiple
+ channels.  The special name "default" can be used to set the default
+-- 
+1.7.8
+
 
