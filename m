@@ -1,34 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RcxW2-0000j8-8F
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Dec 2011 06:05:50 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:49900)
+	id 1RczTK-0006Ag-91
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Dec 2011 08:11:10 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:59367)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1RcxVt-0000KT-6A
-	for qemu-trivial@nongnu.org; Tue, 20 Dec 2011 06:05:47 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RczTD-0005ky-7W
+	for qemu-trivial@nongnu.org; Tue, 20 Dec 2011 08:11:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1RcxVn-0004aO-Er
-	for qemu-trivial@nongnu.org; Tue, 20 Dec 2011 06:05:41 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:1848)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RczT7-0002Ck-KV
+	for qemu-trivial@nongnu.org; Tue, 20 Dec 2011 08:11:03 -0500
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:41598)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>)
-	id 1RcxVb-0004YD-Ey; Tue, 20 Dec 2011 06:05:23 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id pBKB5LOZ013357
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 20 Dec 2011 06:05:21 -0500
-Received: from garlic.tlv.redhat.com (dhcp-4-31.tlv.redhat.com [10.35.4.31])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id pBKB5IrC028432; Tue, 20 Dec 2011 06:05:19 -0500
-From: Alon Levy <alevy@redhat.com>
-To: kraxel@redhat.com
-Date: Tue, 20 Dec 2011 13:05:18 +0200
-Message-Id: <1324379118-2570-1-git-send-email-alevy@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] qemu-options.hx: fix tls-channel help text
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1RczT0-0002BQ-3x; Tue, 20 Dec 2011 08:10:50 -0500
+Received: by iagj37 with SMTP id j37so11545911iag.4
+	for <multiple recipients>; Tue, 20 Dec 2011 05:10:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=sender:from:to:cc:subject:date:message-id:x-mailer;
+	bh=zllYl6iX879kaWzFH+UuazfMZd2otpk8v61oKpt8zww=;
+	b=lL4BOr3m+reAmxhvxE8uBLX0cyguJNPX53P6U8UV46ydpW1Ri1FMsELDgBDIbZCjfX
+	7grohXWF1W3Q7DOlGvAOIARFqdmXdv2J5JJbz5ai50YikzRM2mMMTqVOl0pMiisKj7/i
+	OuNpeE92XqAeBkSeSYH8DTmhx+jOSS0TEzFdI=
+Received: by 10.50.186.165 with SMTP id fl5mr2341220igc.86.1324386649431;
+	Tue, 20 Dec 2011 05:10:49 -0800 (PST)
+Received: from localhost.localdomain (93-34-178-147.ip50.fastwebnet.it.
+	[93.34.178.147])
+	by mx.google.com with ESMTPS id gh9sm23956202igb.3.2011.12.20.05.10.47
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 20 Dec 2011 05:10:48 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 20 Dec 2011 14:10:36 +0100
+Message-Id: <1324386636-25248-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.7.7.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] i440fx: remove piix3 field
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,35 +48,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Dec 2011 11:05:48 -0000
+X-List-Received-Date: Tue, 20 Dec 2011 13:11:09 -0000
 
-Remove the default compiled out tunnel channel, add the always available
-cursor channel. Optimally the man page would depend on compiled in
-options, but that's harder to do.
-
-RHBZ: 688586
-
-Signed-off-by: Alon Levy <alevy@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- qemu-options.hx |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ hw/piix_pci.c |    3 ---
+ 1 files changed, 0 insertions(+), 3 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index a60191f..3c3bda8 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -857,8 +857,8 @@ The x509 file names can also be configured individually.
- @item tls-ciphers=<list>
- Specify which ciphers to use.
+diff --git a/hw/piix_pci.c b/hw/piix_pci.c
+index 43c85aa..e188c7a 100644
+--- a/hw/piix_pci.c
++++ b/hw/piix_pci.c
+@@ -81,7 +81,6 @@ struct PCII440FXState {
+     PAMMemoryRegion pam_regions[13];
+     MemoryRegion smram_region;
+     uint8_t smm_enabled;
+-    PIIX3State *piix3;
+ };
  
--@item tls-channel=[main|display|inputs|record|playback|tunnel]
--@item plaintext-channel=[main|display|inputs|record|playback|tunnel]
-+@item tls-channel=[main|display|cursor|inputs|record|playback]
-+@item plaintext-channel=[main|display|cursor|inputs|record|playback]
- Force specific channel to be used with or without TLS encryption.  The
- options can be specified multiple times to configure multiple
- channels.  The special name "default" can be used to set the default
+ 
+@@ -320,8 +319,6 @@ static PCIBus *i440fx_common_init(const char *device_name,
+     qdev_property_add_child(dev, "piix3", &piix3->dev.qdev, NULL);
+     piix3->pic = pic;
+ 
+-    (*pi440fx_state)->piix3 = piix3;
+-
+     *piix3_devfn = piix3->dev.devfn;
+ 
+     ram_size = ram_size / 8 / 1024 / 1024;
 -- 
-1.7.8
+1.7.7.1
 
 
