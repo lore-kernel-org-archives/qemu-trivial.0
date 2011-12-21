@@ -1,36 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RdJsX-0005wd-U8
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2011 05:58:33 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:51454)
+	id 1RdJtW-0006ds-BT
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2011 05:59:34 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:33512)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RdJsS-0005w3-Rn
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:58:32 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RdJtQ-0006d7-RH
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:59:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RdJsN-0005Gp-9P
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:58:28 -0500
-Received: from mail-qw0-f45.google.com ([209.85.216.45]:42640)
+	(envelope-from <stefanha@gmail.com>) id 1RdJtK-0005Wa-DW
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:59:28 -0500
+Received: from mail-qw0-f45.google.com ([209.85.216.45]:60263)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1RdJsN-0005Gf-7I; Wed, 21 Dec 2011 05:58:23 -0500
-Received: by qadc10 with SMTP id c10so3537455qad.4
-	for <multiple recipients>; Wed, 21 Dec 2011 02:58:21 -0800 (PST)
+	id 1RdJtK-0005WQ-8q; Wed, 21 Dec 2011 05:59:22 -0500
+Received: by qadc10 with SMTP id c10so3537936qad.4
+	for <multiple recipients>; Wed, 21 Dec 2011 02:59:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=AA4ckzQ0fm+vZxALfkQWtYj2037lPOTQ8fD+sNZg4iA=;
-	b=PNX3/30Ygcm2cZOwP6Z6yK1r9DV2NfzEoTFCG+MAl9zakn6f4KTlvdtH3d7ysGgQ96
-	dh62AgW9AyWDiJuMSkJHpBfOttVcuBvrhsN574DnTnfZBmhARcTcih4Fc+r0EZb7UF4D
-	AWKDIaz+/H6uJCkiVBywtW1EUZu58cUfoFHLQ=
-Received: by 10.224.199.134 with SMTP id es6mr7687259qab.2.1324465101872;
-	Wed, 21 Dec 2011 02:58:21 -0800 (PST)
+	bh=PnoJiB3KF6+EfG9N4L5hXdjlGPp6b229lPF5F1rSqtw=;
+	b=F9YeD9Lwf1wMTjP0bfvpQ8W93Cegrmo/7G/rzonsbZ610usUmtWjNuPupZkQ1jVaa2
+	B8+61RmDOKpa3cTVHmQwHt28owdzYUtp0z94klpCCK6LhMmW+zNZIjgENQrPMMZa8xeK
+	gsZsRd/h4WPFXYQ8aIxvIf0KHxnQVyZanplCw=
+Received: by 10.224.98.8 with SMTP id o8mr7410774qan.79.1324465161899;
+	Wed, 21 Dec 2011 02:59:21 -0800 (PST)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id ed2sm9880441qab.15.2011.12.21.02.58.19
+	by mx.google.com with ESMTPS id q14sm9919777qap.4.2011.12.21.02.59.19
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 21 Dec 2011 02:58:21 -0800 (PST)
-Date: Wed, 21 Dec 2011 10:58:17 +0000
+	Wed, 21 Dec 2011 02:59:20 -0800 (PST)
+Date: Wed, 21 Dec 2011 10:59:17 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Alon Levy <alevy@redhat.com>
-Message-ID: <20111221105817.GA22697@stefanha-thinkpad.localdomain>
+Message-ID: <20111221105917.GB22697@stefanha-thinkpad.localdomain>
 References: <1324379118-2570-1-git-send-email-alevy@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -53,7 +53,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Dec 2011 10:58:32 -0000
+X-List-Received-Date: Wed, 21 Dec 2011 10:59:33 -0000
 
 On Tue, Dec 20, 2011 at 01:05:18PM +0200, Alon Levy wrote:
 > Remove the default compiled out tunnel channel, add the always available
@@ -67,7 +67,8 @@ On Tue, Dec 20, 2011 at 01:05:18PM +0200, Alon Levy wrote:
 >  qemu-options.hx |    4 ++--
 >  1 files changed, 2 insertions(+), 2 deletions(-)
 
-Looks fine but giving Gerd a chance to review and respond.
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
 Stefan
 
