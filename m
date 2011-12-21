@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RdJtW-0006ds-BT
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2011 05:59:34 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:33512)
+	id 1RdJvf-0000Nx-Li
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2011 06:01:47 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:34032)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RdJtQ-0006d7-RH
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:59:32 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RdJva-0000Lg-Oh
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 06:01:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RdJtK-0005Wa-DW
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:59:28 -0500
-Received: from mail-qw0-f45.google.com ([209.85.216.45]:60263)
+	(envelope-from <stefanha@gmail.com>) id 1RdJvI-0005tp-9Z
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 06:01:33 -0500
+Received: from mail-qy0-f173.google.com ([209.85.216.173]:59451)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1RdJtK-0005WQ-8q; Wed, 21 Dec 2011 05:59:22 -0500
-Received: by qadc10 with SMTP id c10so3537936qad.4
-	for <multiple recipients>; Wed, 21 Dec 2011 02:59:21 -0800 (PST)
+	id 1RdJv2-0005rh-O6; Wed, 21 Dec 2011 06:01:08 -0500
+Received: by qcsd15 with SMTP id d15so4670539qcs.4
+	for <multiple recipients>; Wed, 21 Dec 2011 03:01:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=PnoJiB3KF6+EfG9N4L5hXdjlGPp6b229lPF5F1rSqtw=;
-	b=F9YeD9Lwf1wMTjP0bfvpQ8W93Cegrmo/7G/rzonsbZ610usUmtWjNuPupZkQ1jVaa2
-	B8+61RmDOKpa3cTVHmQwHt28owdzYUtp0z94klpCCK6LhMmW+zNZIjgENQrPMMZa8xeK
-	gsZsRd/h4WPFXYQ8aIxvIf0KHxnQVyZanplCw=
-Received: by 10.224.98.8 with SMTP id o8mr7410774qan.79.1324465161899;
-	Wed, 21 Dec 2011 02:59:21 -0800 (PST)
+	bh=9ygHgbxsWPju69QmEtDBYWm+7lNmFH/facUz7vORsIg=;
+	b=kAJ83S3FFPtJQx6/G/xDVjQU/wlVXlQEz71khnh6KK+eN93Ze2ixRLyoy3Yejf0lhK
+	+5WnOo4q+YZKce5yrKX/cfKXRdXXWqFNWxnQKINqf7fGTBT8WT9gCYPCFyoH6/PkR9ao
+	vZ1byJvLo3G/k3AwrDoKsFmh4/huFJORG1F/A=
+Received: by 10.224.182.135 with SMTP id cc7mr7572085qab.51.1324465268016;
+	Wed, 21 Dec 2011 03:01:08 -0800 (PST)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id q14sm9919777qap.4.2011.12.21.02.59.19
+	by mx.google.com with ESMTPS id hv20sm9862121qab.22.2011.12.21.03.01.05
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 21 Dec 2011 02:59:20 -0800 (PST)
-Date: Wed, 21 Dec 2011 10:59:17 +0000
+	Wed, 21 Dec 2011 03:01:07 -0800 (PST)
+Date: Wed, 21 Dec 2011 11:01:02 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Alon Levy <alevy@redhat.com>
-Message-ID: <20111221105917.GB22697@stefanha-thinkpad.localdomain>
-References: <1324379118-2570-1-git-send-email-alevy@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20111221110102.GC22697@stefanha-thinkpad.localdomain>
+References: <1324401188-9712-1-git-send-email-armbru@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1324379118-2570-1-git-send-email-alevy@redhat.com>
+In-Reply-To: <1324401188-9712-1-git-send-email-armbru@redhat.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.45
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-options.hx: fix
-	tls-channel help text
+X-Received-From: 209.85.216.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Strip trailing '\n' from
+ error_report()'s first argument (again)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,19 +53,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Dec 2011 10:59:33 -0000
+X-List-Received-Date: Wed, 21 Dec 2011 11:01:47 -0000
 
-On Tue, Dec 20, 2011 at 01:05:18PM +0200, Alon Levy wrote:
-> Remove the default compiled out tunnel channel, add the always available
-> cursor channel. Optimally the man page would depend on compiled in
-> options, but that's harder to do.
+On Tue, Dec 20, 2011 at 06:13:08PM +0100, Markus Armbruster wrote:
+> Commit 6daf194d got rid of them, but Hans and Gerd added some more
+> lately.  Tracked down with this Coccinelle semantic patch:
 > 
-> RHBZ: 688586
+> @r@
+>     expression fmt;
+>     position p;
+> @@
+>     error_report(fmt, ...)@p
+> @script:python@
+>     fmt << r.fmt;
+>     p << r.p;
+> @@
+> if "\\n" in str(fmt):
+>     print "%s:%s:%s:%s" % (p[0].file, p[0].line, p[0].column, fmt)
 > 
-> Signed-off-by: Alon Levy <alevy@redhat.com>
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  qemu-options.hx |    4 ++--
->  1 files changed, 2 insertions(+), 2 deletions(-)
+>  hw/usb-bus.c |   12 ++++++------
+>  usb-redir.c  |    4 ++--
+>  2 files changed, 8 insertions(+), 8 deletions(-)
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
