@@ -1,47 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RdJxD-0001UU-HC
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2011 06:03:23 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:35198)
+	id 1RdKvG-0007cc-2B
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2011 07:05:26 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:37771)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RdJx5-00015E-Ne
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 06:03:21 -0500
+	(envelope-from <amit.shah@redhat.com>) id 1RdKv7-0007Js-UY
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 07:05:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RdJx4-0006c1-JM
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 06:03:15 -0500
-Received: from mail-qw0-f52.google.com ([209.85.216.52]:64896)
+	(envelope-from <amit.shah@redhat.com>) id 1RdKv2-000475-7E
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 07:05:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:9944)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RdJwg-0006QB-7u; Wed, 21 Dec 2011 06:02:50 -0500
-Received: by qadc11 with SMTP id c11so4536550qad.4
-	for <multiple recipients>; Wed, 21 Dec 2011 03:02:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=ZGxEoJ6WQZBxuw6tB8JAXFvmVANoAUEWl6PSKkaxphE=;
-	b=xOlB3221YT2FDdaHyWnQLk3rwglCDqIbwk6374Q18F4MMhXm0iSdI7d34jve0sSv8K
-	t0IiQvdXuXa//RQE2+y3MBcy9GQzc2Y6GroYbf4oOxqaxKTonQwgVAV3cCgE9lbWFvTd
-	FSdixdhb2fpkspxuJCmD71T5ZxLO+uEaJLQ84=
-Received: by 10.224.188.137 with SMTP id da9mr1284885qab.29.1324465369020;
-	Wed, 21 Dec 2011 03:02:49 -0800 (PST)
-Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id eb5sm9919817qab.10.2011.12.21.03.02.47
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 21 Dec 2011 03:02:48 -0800 (PST)
-Date: Wed, 21 Dec 2011 11:02:45 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
+	(envelope-from <amit.shah@redhat.com>)
+	id 1RdKum-00040k-Ku; Wed, 21 Dec 2011 07:04:56 -0500
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id pBLC4tCb019235
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 21 Dec 2011 07:04:55 -0500
+Received: from localhost (ovpn-113-87.phx2.redhat.com [10.3.113.87])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id pBLC4qEQ006744; Wed, 21 Dec 2011 07:04:54 -0500
+Date: Wed, 21 Dec 2011 17:34:52 +0530
+From: Amit Shah <amit.shah@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20111221110245.GD22697@stefanha-thinkpad.localdomain>
+Message-ID: <20111221120451.GC9080@amit-x200.redhat.com>
 References: <1324463877-1281-1-git-send-email-armbru@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <1324463877-1281-1-git-send-email-armbru@redhat.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.216.52
-Cc: qemu-trivial@nongnu.org, amit.shah@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] scsi virtio-blk usb-msd:
- Clean up device init error messages
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] scsi virtio-blk usb-msd: Clean up device
+ init error messages
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,9 +47,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Dec 2011 11:03:21 -0000
+X-List-Received-Date: Wed, 21 Dec 2011 12:05:23 -0000
 
-On Wed, Dec 21, 2011 at 11:37:57AM +0100, Markus Armbruster wrote:
+On (Wed) 21 Dec 2011 [11:37:57], Markus Armbruster wrote:
 > Replace
 > 
 >     error_report("DEVICE-NAME: MESSAGE");
@@ -86,15 +80,8 @@ On Wed, Dec 21, 2011 at 11:37:57AM +0100, Markus Armbruster wrote:
 > 
 > Reported-by: Amit Shah <amit.shah@redhat.com>
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  hw/scsi-disk.c    |    4 ++--
->  hw/scsi-generic.c |    8 ++++----
->  hw/usb-msd.c      |    2 +-
->  hw/virtio-blk.c   |    2 +-
->  4 files changed, 8 insertions(+), 8 deletions(-)
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Acked-by: Amit Shah <amit.shah@redhat.com>
 
-Stefan
+		Amit
 
