@@ -1,34 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RdJZ1-0001Ok-Ba
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2011 05:38:23 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:44404)
+	id 1RdJsX-0005wd-U8
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2011 05:58:33 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:51454)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RdJYt-00011A-9K
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:38:20 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RdJsS-0005w3-Rn
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:58:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1RdJYp-0000rj-3z
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:38:15 -0500
-Received: from oxygen.pond.sub.org ([78.46.104.156]:55258)
+	(envelope-from <stefanha@gmail.com>) id 1RdJsN-0005Gp-9P
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2011 05:58:28 -0500
+Received: from mail-qw0-f45.google.com ([209.85.216.45]:42640)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1RdJYe-0000pM-I3; Wed, 21 Dec 2011 05:38:00 -0500
-Received: from blackfin.pond.sub.org (p5B32C957.dip.t-dialin.net
-	[91.50.201.87])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id 61C799FF76;
-	Wed, 21 Dec 2011 11:37:58 +0100 (CET)
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id 9999260074; Wed, 21 Dec 2011 11:37:57 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 21 Dec 2011 11:37:57 +0100
-Message-Id: <1324463877-1281-1-git-send-email-armbru@redhat.com>
-X-Mailer: git-send-email 1.7.6.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 78.46.104.156
-Cc: qemu-trivial@nongnu.org, amit.shah@redhat.com
-Subject: [Qemu-trivial] [PATCH] scsi virtio-blk usb-msd: Clean up device
-	init error messages
+	(envelope-from <stefanha@gmail.com>)
+	id 1RdJsN-0005Gf-7I; Wed, 21 Dec 2011 05:58:23 -0500
+Received: by qadc10 with SMTP id c10so3537455qad.4
+	for <multiple recipients>; Wed, 21 Dec 2011 02:58:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=AA4ckzQ0fm+vZxALfkQWtYj2037lPOTQ8fD+sNZg4iA=;
+	b=PNX3/30Ygcm2cZOwP6Z6yK1r9DV2NfzEoTFCG+MAl9zakn6f4KTlvdtH3d7ysGgQ96
+	dh62AgW9AyWDiJuMSkJHpBfOttVcuBvrhsN574DnTnfZBmhARcTcih4Fc+r0EZb7UF4D
+	AWKDIaz+/H6uJCkiVBywtW1EUZu58cUfoFHLQ=
+Received: by 10.224.199.134 with SMTP id es6mr7687259qab.2.1324465101872;
+	Wed, 21 Dec 2011 02:58:21 -0800 (PST)
+Received: from localhost ([109.224.133.37])
+	by mx.google.com with ESMTPS id ed2sm9880441qab.15.2011.12.21.02.58.19
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 21 Dec 2011 02:58:21 -0800 (PST)
+Date: Wed, 21 Dec 2011 10:58:17 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Alon Levy <alevy@redhat.com>
+Message-ID: <20111221105817.GA22697@stefanha-thinkpad.localdomain>
+References: <1324379118-2570-1-git-send-email-alevy@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1324379118-2570-1-git-send-email-alevy@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.216.45
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-options.hx: fix
+	tls-channel help text
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,130 +53,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Dec 2011 10:38:22 -0000
+X-List-Received-Date: Wed, 21 Dec 2011 10:58:32 -0000
 
-Replace
+On Tue, Dec 20, 2011 at 01:05:18PM +0200, Alon Levy wrote:
+> Remove the default compiled out tunnel channel, add the always available
+> cursor channel. Optimally the man page would depend on compiled in
+> options, but that's harder to do.
+> 
+> RHBZ: 688586
+> 
+> Signed-off-by: Alon Levy <alevy@redhat.com>
+> ---
+>  qemu-options.hx |    4 ++--
+>  1 files changed, 2 insertions(+), 2 deletions(-)
 
-    error_report("DEVICE-NAME: MESSAGE");
+Looks fine but giving Gerd a chance to review and respond.
 
-by just
-
-    error_report("MESSAGE");
-
-in block device init functions.
-
-DEVICE-NAME is bogus in some cases: it's "scsi-disk" for device
-scsi-hd and scsi-cd, "virtio-blk-pci" for virtio-blk-s390, and
-"usb-msd" for usb-storage.
-
-There is no real need to put a device name in the message, because
-error_report() points to the offending command line option already:
-
-$ qemu-system-x86_64 --nodefaults --enable-kvm -vnc :0 -S -monitor stdio -usb -device virtio-blk-pci
-upstream-qemu: -device virtio-blk-pci: virtio-blk-pci: drive property not set
-upstream-qemu: -device virtio-blk-pci: Device 'virtio-blk-pci' could not be initialized
-
-And for a monitor command, it's obvious anyway:
-
-$ qemu-system-x86_64 --nodefaults --enable-kvm -vnc :0 -S -monitor stdio -usb
-(qemu) device_add virtio-blk-pci
-virtio-blk-pci: drive property not set
-Device 'virtio-blk-pci' could not be initialized
-
-Reported-by: Amit Shah <amit.shah@redhat.com>
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- hw/scsi-disk.c    |    4 ++--
- hw/scsi-generic.c |    8 ++++----
- hw/usb-msd.c      |    2 +-
- hw/virtio-blk.c   |    2 +-
- 4 files changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/hw/scsi-disk.c b/hw/scsi-disk.c
-index 505accd..5d8bf53 100644
---- a/hw/scsi-disk.c
-+++ b/hw/scsi-disk.c
-@@ -1515,7 +1515,7 @@ static int scsi_initfn(SCSIDevice *dev)
-     DriveInfo *dinfo;
- 
-     if (!s->qdev.conf.bs) {
--        error_report("scsi-disk: drive property not set");
-+        error_report("drive property not set");
-         return -1;
-     }
- 
-@@ -1537,7 +1537,7 @@ static int scsi_initfn(SCSIDevice *dev)
-     }
- 
-     if (bdrv_is_sg(s->qdev.conf.bs)) {
--        error_report("scsi-disk: unwanted /dev/sg*");
-+        error_report("unwanted /dev/sg*");
-         return -1;
-     }
- 
-diff --git a/hw/scsi-generic.c b/hw/scsi-generic.c
-index 6f7d3db..0aebcdd 100644
---- a/hw/scsi-generic.c
-+++ b/hw/scsi-generic.c
-@@ -374,13 +374,13 @@ static int scsi_generic_initfn(SCSIDevice *s)
-     struct sg_scsi_id scsiid;
- 
-     if (!s->conf.bs) {
--        error_report("scsi-generic: drive property not set");
-+        error_report("drive property not set");
-         return -1;
-     }
- 
-     /* check we are really using a /dev/sg* file */
-     if (!bdrv_is_sg(s->conf.bs)) {
--        error_report("scsi-generic: not /dev/sg*");
-+        error_report("not /dev/sg*");
-         return -1;
-     }
- 
-@@ -396,13 +396,13 @@ static int scsi_generic_initfn(SCSIDevice *s)
-     /* check we are using a driver managing SG_IO (version 3 and after */
-     if (bdrv_ioctl(s->conf.bs, SG_GET_VERSION_NUM, &sg_version) < 0 ||
-         sg_version < 30000) {
--        error_report("scsi-generic: scsi generic interface too old");
-+        error_report("scsi generic interface too old");
-         return -1;
-     }
- 
-     /* get LUN of the /dev/sg? */
-     if (bdrv_ioctl(s->conf.bs, SG_GET_SCSI_ID, &scsiid)) {
--        error_report("scsi-generic: SG_GET_SCSI_ID ioctl failed");
-+        error_report("SG_GET_SCSI_ID ioctl failed");
-         return -1;
-     }
- 
-diff --git a/hw/usb-msd.c b/hw/usb-msd.c
-index 4c06950..b87b929 100644
---- a/hw/usb-msd.c
-+++ b/hw/usb-msd.c
-@@ -517,7 +517,7 @@ static int usb_msd_initfn(USBDevice *dev)
-     DriveInfo *dinfo;
- 
-     if (!bs) {
--        error_report("usb-msd: drive property not set");
-+        error_report("drive property not set");
-         return -1;
-     }
- 
-diff --git a/hw/virtio-blk.c b/hw/virtio-blk.c
-index ef27421..5e81f53 100644
---- a/hw/virtio-blk.c
-+++ b/hw/virtio-blk.c
-@@ -569,7 +569,7 @@ VirtIODevice *virtio_blk_init(DeviceState *dev, BlockConf *conf,
-     DriveInfo *dinfo;
- 
-     if (!conf->bs) {
--        error_report("virtio-blk-pci: drive property not set");
-+        error_report("drive property not set");
-         return NULL;
-     }
-     if (!bdrv_is_inserted(conf->bs)) {
--- 
-1.7.6.4
-
+Stefan
 
