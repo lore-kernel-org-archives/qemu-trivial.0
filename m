@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rhmky-000341-OO
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jan 2012 13:37:12 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54388)
+	id 1Rhmlb-0003B5-Rp
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Jan 2012 13:37:51 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:54292)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1RhmCJ-00015m-Vd
-	for qemu-trivial@nongnu.org; Mon, 02 Jan 2012 13:01:24 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RhmC9-000138-Nm
+	for qemu-trivial@nongnu.org; Mon, 02 Jan 2012 13:01:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1RhmCI-0001Ce-KI
-	for qemu-trivial@nongnu.org; Mon, 02 Jan 2012 13:01:23 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RhmC7-0001Ai-Rt
+	for qemu-trivial@nongnu.org; Mon, 02 Jan 2012 13:01:13 -0500
 Received: from mail-gx0-f173.google.com ([209.85.161.173]:55712)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1RhmCE-00019i-Ur; Mon, 02 Jan 2012 13:01:19 -0500
-Received: by mail-gx0-f173.google.com with SMTP id k1so11343750ggn.4
-	for <multiple recipients>; Mon, 02 Jan 2012 10:01:18 -0800 (PST)
+	id 1RhmC3-00019i-I4; Mon, 02 Jan 2012 13:01:07 -0500
+Received: by ggnk1 with SMTP id k1so11343750ggn.4
+	for <multiple recipients>; Mon, 02 Jan 2012 10:01:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=sender:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
-	:references; bh=UsD8R6LAD1Bz6IU7OsB4YdZ5KJpyOPO+0g+LwvZI1m8=;
-	b=hKgREmFCowKVcjaxJDYbxD5JuFNBH2MVEh1U0aiMcLzp+6hR0eDucdi6uq0MRKmc3E
-	ZPdoOI5vglmIiU1Dh87gKxHn7dO05zMfgEOnNPufVgepvkobTmxmw34bLsRzf2Oc2pBH
-	0iuVq/jWab5Pn7ZBQNvJAkTjzZF5DD7DMZgo8=
-Received: by 10.236.128.138 with SMTP id f10mr65118808yhi.2.1325527278551;
-	Mon, 02 Jan 2012 10:01:18 -0800 (PST)
+	:references; bh=A1/d87kCl9OAGnUf8KfZ6Hv9Ob3XkWPqgsIMrPE8qkI=;
+	b=BOVT0AQMfpgRT8r+Uce89y0oYYKIG7Ie5X4jDntPHqCl8+ANCW8RxZ+IWY61uJL3kV
+	LodxBBA5MmGUEfsh0CrvyRuZZ59z6O2i80fA8jLT+sCPDfONqNXO6Z5uII+1Hjc65x6/
+	FHi8UmsPkG9dsQ7Jcvx1RccLy7CRrmcmA5vcM=
+Received: by 10.100.199.10 with SMTP id w10mr20124395anf.29.1325527266547;
+	Mon, 02 Jan 2012 10:01:06 -0800 (PST)
 Received: from localhost.localdomain
 	(host167-160-dynamic.2-87-r.retail.telecomitalia.it. [87.2.160.167])
-	by mx.google.com with ESMTPS id u47sm70078488yhl.0.2012.01.02.10.01.15
+	by mx.google.com with ESMTPS id u47sm70078488yhl.0.2012.01.02.10.01.04
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 02 Jan 2012 10:01:17 -0800 (PST)
+	Mon, 02 Jan 2012 10:01:05 -0800 (PST)
 Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Mon,  2 Jan 2012 19:00:37 +0100
-Message-Id: <1325527237-24146-9-git-send-email-pbonzini@redhat.com>
+Date: Mon,  2 Jan 2012 19:00:32 +0100
+Message-Id: <1325527237-24146-4-git-send-email-pbonzini@redhat.com>
 X-Mailer: git-send-email 1.7.7.1
 In-Reply-To: <1325527237-24146-1-git-send-email-pbonzini@redhat.com>
 References: <1325527237-24146-1-git-send-email-pbonzini@redhat.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
 X-Received-From: 209.85.161.173
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 8/8] block: use QSIMPLEQ for the AIO free list
+Subject: [Qemu-trivial] [PATCH 3/8] qed: switch to QTAILQ
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,66 +50,105 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jan 2012 18:37:11 -0000
+X-List-Received-Date: Mon, 02 Jan 2012 18:37:50 -0000
 
-QSIMPLEQ is equivalent to an open-coded free list, use it.
+QED needs to insert at tail.  Use a QTAILQ, even though
+the double links are strictly not necessary.
 
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- block.c     |    9 ++++-----
- block_int.h |    4 ++--
- 2 files changed, 6 insertions(+), 7 deletions(-)
+ block/qed.c |   20 ++++++++++----------
+ block/qed.h |    4 ++--
+ 2 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/block.c b/block.c
-index 3f072f6..10e80d7 100644
---- a/block.c
-+++ b/block.c
-@@ -3242,9 +3242,9 @@ void *qemu_aio_get(AIOPool *pool, BlockDriverState *bs,
- {
-     BlockDriverAIOCB *acb;
+diff --git a/block/qed.c b/block/qed.c
+index 8da3ebe..d30323b 100644
+--- a/block/qed.c
++++ b/block/qed.c
+@@ -300,7 +300,7 @@ static void qed_unplug_allocating_write_reqs(BDRVQEDState *s)
  
--    if (pool->free_aiocb) {
--        acb = pool->free_aiocb;
--        pool->free_aiocb = acb->next;
-+    if (!QSIMPLEQ_EMPTY(pool->free_aiocb)) {
-+        acb = QSIMPLEQ_FIRST(pool->free_aiocb);
-+        QSIMPLEQ_REMOVE_HEAD(pool->free_aiocb, next);
-     } else {
-         acb = g_malloc0(pool->aiocb_size);
-         acb->pool = pool;
-@@ -3259,8 +3259,7 @@ void qemu_aio_release(void *p)
- {
-     BlockDriverAIOCB *acb = (BlockDriverAIOCB *)p;
-     AIOPool *pool = acb->pool;
--    acb->next = pool->free_aiocb;
--    pool->free_aiocb = acb;
-+    QSIMPLEQ_INSERT_HEAD(pool->free_aiocb, acb, next);
- }
+     s->allocating_write_reqs_plugged = false;
  
- /**************************************************************/
-diff --git a/block_int.h b/block_int.h
-index 311bd2a..43b2d45 100644
---- a/block_int.h
-+++ b/block_int.h
-@@ -56,7 +56,7 @@ typedef struct BdrvTrackedRequest BdrvTrackedRequest;
- typedef struct AIOPool {
-     void (*cancel)(BlockDriverAIOCB *acb);
-     int aiocb_size;
--    BlockDriverAIOCB *free_aiocb;
-+    QSIMPLEQ_HEAD(, BlockDriverAIOCB) *free_aiocb;
- } AIOPool;
+-    acb = QSIMPLEQ_FIRST(&s->allocating_write_reqs);
++    acb = QTAILQ_FIRST(&s->allocating_write_reqs);
+     if (acb) {
+         qed_aio_next_io(acb, 0);
+     }
+@@ -339,7 +339,7 @@ static void qed_need_check_timer_cb(void *opaque)
+     BDRVQEDState *s = opaque;
  
- typedef struct BlockIOLimit {
-@@ -268,7 +268,7 @@ struct BlockDriverAIOCB {
-     BlockDriverState *bs;
-     BlockDriverCompletionFunc *cb;
-     void *opaque;
--    BlockDriverAIOCB *next;
-+    QSIMPLEQ_ENTRY(BlockDriverAIOCB) next;
- };
+     /* The timer should only fire when allocating writes have drained */
+-    assert(!QSIMPLEQ_FIRST(&s->allocating_write_reqs));
++    assert(!QTAILQ_FIRST(&s->allocating_write_reqs));
  
- void get_tmp_filename(char *filename, int size);
+     trace_qed_need_check_timer_cb(s);
+ 
+@@ -375,7 +375,7 @@ static int bdrv_qed_open(BlockDriverState *bs, int flags)
+     int ret;
+ 
+     s->bs = bs;
+-    QSIMPLEQ_INIT(&s->allocating_write_reqs);
++    QTAILQ_INIT(&s->allocating_write_reqs);
+ 
+     ret = bdrv_pread(bs->file, 0, &le_header, sizeof(le_header));
+     if (ret < 0) {
+@@ -886,9 +886,9 @@ static void qed_aio_complete(QEDAIOCB *acb, int ret)
+      * next request in the queue.  This ensures that we don't cycle through
+      * requests multiple times but rather finish one at a time completely.
+      */
+-    if (acb == QSIMPLEQ_FIRST(&s->allocating_write_reqs)) {
+-        QSIMPLEQ_REMOVE_HEAD(&s->allocating_write_reqs, next);
+-        acb = QSIMPLEQ_FIRST(&s->allocating_write_reqs);
++    if (acb == QTAILQ_FIRST(&s->allocating_write_reqs)) {
++        QTAILQ_REMOVE(&s->allocating_write_reqs, acb, next);
++        acb = QTAILQ_FIRST(&s->allocating_write_reqs);
+         if (acb) {
+             qed_aio_next_io(acb, 0);
+         } else if (s->header.features & QED_F_NEED_CHECK) {
+@@ -1094,15 +1094,15 @@ static void qed_aio_write_alloc(QEDAIOCB *acb, size_t len)
+     BDRVQEDState *s = acb_to_s(acb);
+ 
+     /* Cancel timer when the first allocating request comes in */
+-    if (QSIMPLEQ_EMPTY(&s->allocating_write_reqs)) {
++    if (QTAILQ_EMPTY(&s->allocating_write_reqs)) {
+         qed_cancel_need_check_timer(s);
+     }
+ 
+     /* Freeze this request if another allocating write is in progress */
+-    if (acb != QSIMPLEQ_FIRST(&s->allocating_write_reqs)) {
+-        QSIMPLEQ_INSERT_TAIL(&s->allocating_write_reqs, acb, next);
++    if (acb != QTAILQ_FIRST(&s->allocating_write_reqs)) {
++        QTAILQ_INSERT_TAIL(&s->allocating_write_reqs, acb, next);
+     }
+-    if (acb != QSIMPLEQ_FIRST(&s->allocating_write_reqs) ||
++    if (acb != QTAILQ_FIRST(&s->allocating_write_reqs) ||
+         s->allocating_write_reqs_plugged) {
+         return; /* wait for existing request to finish */
+     }
+diff --git a/block/qed.h b/block/qed.h
+index 62cbd3b..f2be4e1 100644
+--- a/block/qed.h
++++ b/block/qed.h
+@@ -127,7 +127,7 @@ typedef struct QEDAIOCB {
+     BlockDriverAIOCB common;
+     QEMUBH *bh;
+     int bh_ret;                     /* final return status for completion bh */
+-    QSIMPLEQ_ENTRY(QEDAIOCB) next;  /* next request */
++    QTAILQ_ENTRY(QEDAIOCB) next;    /* next request */
+     bool is_write;                  /* false - read, true - write */
+     bool *finished;                 /* signal for cancel completion */
+     uint64_t end_pos;               /* request end on block device, in bytes */
+@@ -159,7 +159,7 @@ typedef struct {
+     uint32_t l2_mask;
+ 
+     /* Allocating write request queue */
+-    QSIMPLEQ_HEAD(, QEDAIOCB) allocating_write_reqs;
++    QTAILQ_HEAD(, QEDAIOCB) allocating_write_reqs;
+     bool allocating_write_reqs_plugged;
+ 
+     /* Periodic flush and clear need check flag */
 -- 
 1.7.7.1
+
 
 
