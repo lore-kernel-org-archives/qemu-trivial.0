@@ -1,44 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RhnFe-00028U-21
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jan 2012 14:08:54 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54367)
+	id 1Ri1kU-000170-MO
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Jan 2012 05:37:42 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:36829)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1RhmCG-000159-91
-	for qemu-trivial@nongnu.org; Mon, 02 Jan 2012 13:01:22 -0500
+	(envelope-from <stefanha@gmail.com>) id 1Ri1kN-0000f3-1R
+	for qemu-trivial@nongnu.org; Tue, 03 Jan 2012 05:37:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1RhmCF-0001CC-5E
-	for qemu-trivial@nongnu.org; Mon, 02 Jan 2012 13:01:20 -0500
-Received: from mail-yx0-f173.google.com ([209.85.213.173]:35157)
+	(envelope-from <stefanha@gmail.com>) id 1Ri1kL-0002Bi-Su
+	for qemu-trivial@nongnu.org; Tue, 03 Jan 2012 05:37:35 -0500
+Received: from mail-ee0-f45.google.com ([74.125.83.45]:52322)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1RhmCC-00018o-2D; Mon, 02 Jan 2012 13:01:16 -0500
-Received: by mail-yx0-f173.google.com with SMTP id m6so10102477yen.4
-	for <multiple recipients>; Mon, 02 Jan 2012 10:01:15 -0800 (PST)
+	(envelope-from <stefanha@gmail.com>)
+	id 1Ri1kE-00029R-Px; Tue, 03 Jan 2012 05:37:26 -0500
+Received: by eekb45 with SMTP id b45so18554788eek.4
+	for <multiple recipients>; Tue, 03 Jan 2012 02:37:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
-	:references; bh=PXLf/WUiSjrntlaDwj5GDHEyWZ2yHaFucDoLoe2tSko=;
-	b=NaGPwxtLpenFx+vFA2UEQZaS5Q10CKq0beHLPVuKG727o5nIrDGXOn29ijR6lR96E6
-	mnSIQSd/h86RNQ8F+9etvR73OOUzr/tvcJ7/hJF3/qxF7K5hhS7i7R1qoU1gL64BGu8L
-	NB7zB3QkKlOWelh4+QPhRKTq3ddJ6L6Y8Xb8g=
-Received: by 10.236.141.37 with SMTP id f25mr5562375yhj.3.1325527275827;
-	Mon, 02 Jan 2012 10:01:15 -0800 (PST)
-Received: from localhost.localdomain
-	(host167-160-dynamic.2-87-r.retail.telecomitalia.it. [87.2.160.167])
-	by mx.google.com with ESMTPS id u47sm70078488yhl.0.2012.01.02.10.01.13
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=cT5xrnvJKxv1NNL03xrHEtnP1Bf8Fg51u4Vve48bmlw=;
+	b=ooxVdiV5GyUMKT/96ytgDqh/IfDUbtupr/duRer32lWrKyNq3ibJGPNlsKdmhsc+op
+	TW4rVYvYZ5IUouAqyIkLX677ooZU2Cs5XXBmEvki4RtrlCJqLvBxa7ZfLPFt2I7E4efZ
+	MkTDnqj9HFWS9hXiXcpQ3Q0nwnEEpUoyp7sFw=
+Received: by 10.14.51.198 with SMTP id b46mr21133654eec.111.1325587045860;
+	Tue, 03 Jan 2012 02:37:25 -0800 (PST)
+Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
+	by mx.google.com with ESMTPS id
+	s16sm204063202eef.2.2012.01.03.02.37.24
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 02 Jan 2012 10:01:14 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  2 Jan 2012 19:00:36 +0100
-Message-Id: <1325527237-24146-8-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.7.7.1
-In-Reply-To: <1325527237-24146-1-git-send-email-pbonzini@redhat.com>
-References: <1325527237-24146-1-git-send-email-pbonzini@redhat.com>
+	Tue, 03 Jan 2012 02:37:24 -0800 (PST)
+Date: Tue, 3 Jan 2012 10:37:23 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120103103723.GA23500@stefanha-thinkpad.localdomain>
+References: <1324549570-15569-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1324549570-15569-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.213.173
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 7/8] coroutine: switch to QSIMPLEQ
+X-Received-From: 74.125.83.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure:
+ CONFIG_QEMU_INTERP_PREFIX only for user mode
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,74 +54,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jan 2012 19:08:53 -0000
+X-List-Received-Date: Tue, 03 Jan 2012 10:37:40 -0000
 
-QSIMPLEQ is now the best candidate for a free list, use it.
+On Thu, Dec 22, 2011 at 11:26:10AM +0100, Stefan Weil wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  configure |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- coroutine-ucontext.c |   10 +++++-----
- qemu-coroutine-int.h |    2 +-
- 2 files changed, 6 insertions(+), 6 deletions(-)
+In the future, please include an explanation in the commit message.  For
+example, this change seems to be purely a clean up.
 
-diff --git a/coroutine-ucontext.c b/coroutine-ucontext.c
-index 3d01075..65b0bb7 100644
---- a/coroutine-ucontext.c
-+++ b/coroutine-ucontext.c
-@@ -36,7 +36,7 @@ enum {
- };
- 
- /** Free list to speed up creation */
--static QLIST_HEAD(, Coroutine) pool = QLIST_HEAD_INITIALIZER(pool);
-+static QSIMPLEQ_HEAD(, Coroutine) pool = QSIMPLEQ_HEAD_INITIALIZER(pool);
- static unsigned int pool_size;
- 
- typedef struct {
-@@ -92,7 +92,7 @@ static void __attribute__((destructor)) coroutine_cleanup(void)
-     Coroutine *co;
-     Coroutine *tmp;
- 
--    QLIST_FOREACH_SAFE(co, &pool, pool_next, tmp) {
-+    QSIMPLEQ_FOREACH_SAFE(co, &pool, pool_next, tmp) {
-         g_free(DO_UPCAST(CoroutineUContext, base, co)->stack);
-         g_free(co);
-     }
-@@ -175,9 +175,9 @@ Coroutine *qemu_coroutine_new(void)
- {
-     Coroutine *co;
- 
--    co = QLIST_FIRST(&pool);
-+    co = QSIMPLEQ_FIRST(&pool);
-     if (co) {
--        QLIST_REMOVE(co, pool_next);
-+        QSIMPLEQ_REMOVE_HEAD(&pool, pool_next);
-         pool_size--;
-     } else {
-         co = coroutine_new();
-@@ -190,7 +190,7 @@ void qemu_coroutine_delete(Coroutine *co_)
-     CoroutineUContext *co = DO_UPCAST(CoroutineUContext, base, co_);
- 
-     if (pool_size < POOL_MAX_SIZE) {
--        QLIST_INSERT_HEAD(&pool, &co->base, pool_next);
-+        QSIMPLEQ_INSERT_HEAD(&pool, &co->base, pool_next);
-         co->base.caller = NULL;
-         pool_size++;
-         return;
-diff --git a/qemu-coroutine-int.h b/qemu-coroutine-int.h
-index d495615..72b3f3a 100644
---- a/qemu-coroutine-int.h
-+++ b/qemu-coroutine-int.h
-@@ -37,7 +37,7 @@ struct Coroutine {
-     CoroutineEntry *entry;
-     void *entry_arg;
-     Coroutine *caller;
--    QLIST_ENTRY(Coroutine) pool_next;
-+    QSIMPLEQ_ENTRY(Coroutine) pool_next;
-     QTAILQ_ENTRY(Coroutine) co_queue_next;
- };
- 
--- 
-1.7.7.1
+Thanks, applied to the trivial patches -next tree:
+https://github.com/stefanha/qemu/commits/trivial-patches-next
 
-
+Stefan
 
