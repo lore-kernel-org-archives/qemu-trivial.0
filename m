@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RjBR8-0005kO-DY
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Jan 2012 10:10:30 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:45929)
+	id 1RjD7L-0001yJ-6q
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Jan 2012 11:58:11 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:39544)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RjBR5-0005fD-Ng
-	for qemu-trivial@nongnu.org; Fri, 06 Jan 2012 10:10:28 -0500
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RjD7I-0001xQ-Rj
+	for qemu-trivial@nongnu.org; Fri, 06 Jan 2012 11:58:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RjBR4-0006yx-Iz
-	for qemu-trivial@nongnu.org; Fri, 06 Jan 2012 10:10:27 -0500
-Received: from mail-ee0-f45.google.com ([74.125.83.45]:39874)
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RjD7F-0001zS-Tv
+	for qemu-trivial@nongnu.org; Fri, 06 Jan 2012 11:58:08 -0500
+Received: from e06smtp16.uk.ibm.com ([195.75.94.112]:37972)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RjBR1-0006yU-Ks; Fri, 06 Jan 2012 10:10:23 -0500
-Received: by eekb45 with SMTP id b45so1272386eek.4
-	for <multiple recipients>; Fri, 06 Jan 2012 07:10:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=6NZbQiPrQUi2xOL8y15+6YZ3ABzihYiHiulb2paowZs=;
-	b=hguSvg9PaZLRCTZ+uFJgSnYKpD9HlJc4AHC8E5y0WOUrX9sCLdY3jZ3KCxkIaAUgan
-	kxApC41NB2/WBTl8xKm++i3Fl+Pz4OiXAelDrEZfMszxjK3kEvHHxXiWJFCQKWR3C3pQ
-	mxCqagCCIMAa2XtQplTv1ffJXKtWiideWS9Ms=
-Received: by 10.213.26.5 with SMTP id b5mr1218797ebc.129.1325862621950;
-	Fri, 06 Jan 2012 07:10:21 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id
-	b49sm217653359eec.9.2012.01.06.07.10.20
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 06 Jan 2012 07:10:20 -0800 (PST)
-Date: Fri, 6 Jan 2012 15:10:19 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Message-ID: <20120106151019.GA27565@stefanha-thinkpad.localdomain>
-References: <1325769367-32267-1-git-send-email-stefanha@linux.vnet.ibm.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1325769367-32267-1-git-send-email-stefanha@linux.vnet.ibm.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 74.125.83.45
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, Dr David Alan Gilbert <davidagilbert@uk.ibm.com>
-Subject: Re: [Qemu-trivial] [PATCH] qemu-nbd: drop loop which can never loop
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RjD7F-0001yx-KH
+	for qemu-trivial@nongnu.org; Fri, 06 Jan 2012 11:58:05 -0500
+Received: from /spool/local
+	by e06smtp16.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanha@linux.vnet.ibm.com>;
+	Fri, 6 Jan 2012 16:58:03 -0000
+Received: from d06nrmr1307.portsmouth.uk.ibm.com ([9.149.38.129])
+	by e06smtp16.uk.ibm.com ([192.168.101.146]) with IBM ESMTP SMTP
+	Gateway: Authorized Use Only! Violators will be prosecuted; 
+	Fri, 6 Jan 2012 16:58:01 -0000
+Received: from d06av09.portsmouth.uk.ibm.com (d06av09.portsmouth.uk.ibm.com
+	[9.149.37.250])
+	by d06nrmr1307.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
+	ESMTP id q06Gw0QZ2605080; Fri, 6 Jan 2012 16:58:00 GMT
+Received: from d06av09.portsmouth.uk.ibm.com (loopback [127.0.0.1])
+	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
+	ESMTP id q06Gw0BL013062; Fri, 6 Jan 2012 09:58:00 -0700
+Received: from localhost (stefanha-thinkpad.manchester-maybrook.uk.ibm.com
+	[9.174.219.31])
+	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
+	ESMTP id q06Gw09k013053; Fri, 6 Jan 2012 09:58:00 -0700
+From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+To: <qemu-devel@nongnu.org>
+Date: Fri,  6 Jan 2012 16:57:45 +0000
+Message-Id: <1325869065-32182-3-git-send-email-stefanha@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.7.3
+In-Reply-To: <1325869065-32182-1-git-send-email-stefanha@linux.vnet.ibm.com>
+References: <1325869065-32182-1-git-send-email-stefanha@linux.vnet.ibm.com>
+x-cbid: 12010616-3548-0000-0000-0000009852F9
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 195.75.94.112
+Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH 2/2] vnc: fix no-lock-key-sync strncmp()
+	length
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,21 +57,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Jan 2012 15:10:29 -0000
+X-List-Received-Date: Fri, 06 Jan 2012 16:58:09 -0000
 
-On Thu, Jan 05, 2012 at 01:16:07PM +0000, Stefan Hajnoczi wrote:
-> For some reason nbd_client_thread() has a do..while loop which can never
-> loop, the condition is bogus because we would take a goto instead.  Drop
-> the loop.
-> 
-> Reported-by: Dr David Alan Gilbert <davidagilbert@uk.ibm.com>
-> Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-> ---
->  qemu-nbd.c |   10 ++++------
->  1 files changed, 4 insertions(+), 6 deletions(-)
+The no-lock-key-sync option is being parsed incorrectly because of an
+outdated strcmp() length value.  Use the correct length so that invalid
+option names do not match.
 
-Applied to the trivial patches -next tree:
-https://github.com/stefanha/qemu/commits/trivial-patches-next
+Reported-by: Dr David Alan Gilbert <davidagilbert@uk.ibm.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+---
+ ui/vnc.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Stefan
+diff --git a/ui/vnc.c b/ui/vnc.c
+index 6767ada..1869a7a 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -2763,7 +2763,7 @@ int vnc_display_open(DisplayState *ds, const char *display)
+             password = 1; /* Require password auth */
+         } else if (strncmp(options, "reverse", 7) == 0) {
+             reverse = 1;
+-        } else if (strncmp(options, "no-lock-key-sync", 9) == 0) {
++        } else if (strncmp(options, "no-lock-key-sync", 16) == 0) {
+             lock_key_sync = 0;
+ #ifdef CONFIG_VNC_SASL
+         } else if (strncmp(options, "sasl", 4) == 0) {
+-- 
+1.7.7.3
+
 
