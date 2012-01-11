@@ -1,49 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rkjcv-0003Qr-Nm
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Jan 2012 16:53:05 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54397)
+	id 1Rl0XK-0006p8-9y
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jan 2012 10:56:26 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:42498)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Rkjcs-0003Ga-Qv
-	for qemu-trivial@nongnu.org; Tue, 10 Jan 2012 16:53:03 -0500
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Rl0XB-0006kv-9c
+	for qemu-trivial@nongnu.org; Wed, 11 Jan 2012 10:56:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Rkjcr-0000mC-Ij
-	for qemu-trivial@nongnu.org; Tue, 10 Jan 2012 16:53:02 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:35306)
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Rl0X5-0007JU-9C
+	for qemu-trivial@nongnu.org; Wed, 11 Jan 2012 10:56:17 -0500
+Received: from e5.ny.us.ibm.com ([32.97.182.145]:47852)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1Rkjco-0000ln-TT; Tue, 10 Jan 2012 16:52:59 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	2BB097280009; Tue, 10 Jan 2012 22:52:56 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 8DtGqNmivMg9; Tue, 10 Jan 2012 22:52:28 +0100 (CET)
-Received: from flocke.weilnetz.de (p54ADA0B6.dip.t-dialin.net [84.173.160.182])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	BBCE67280003; Tue, 10 Jan 2012 22:52:28 +0100 (CET)
-Received: from localhost ([127.0.0.1] ident=stefan)
-	by flocke.weilnetz.de with esmtp (Exim 4.72)
-	(envelope-from <sw@weilnetz.de>)
-	id 1RkjcK-000275-4M; Tue, 10 Jan 2012 22:52:28 +0100
-Message-ID: <4F0CB31B.107@weilnetz.de>
-Date: Tue, 10 Jan 2012 22:52:27 +0100
-From: Stefan Weil <sw@weilnetz.de>
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Rl0X5-0007JN-6Q
+	for qemu-trivial@nongnu.org; Wed, 11 Jan 2012 10:56:11 -0500
+Received: from /spool/local
+	by e5.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
+	Wed, 11 Jan 2012 10:56:06 -0500
+Received: from d01relay02.pok.ibm.com (9.56.227.234)
+	by e5.ny.us.ibm.com (192.168.1.105) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Wed, 11 Jan 2012 10:52:55 -0500
+Received: from d01av01.pok.ibm.com (d01av01.pok.ibm.com [9.56.224.215])
+	by d01relay02.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	q0BFprcw247606; Wed, 11 Jan 2012 10:52:00 -0500
+Received: from d01av01.pok.ibm.com (loopback [127.0.0.1])
+	by d01av01.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	q0BFpqrs019217; Wed, 11 Jan 2012 10:51:52 -0500
+Received: from [9.59.241.154] (d941e-10.watson.ibm.com [9.59.241.154])
+	by d01av01.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	q0BFpqdA019182; Wed, 11 Jan 2012 10:51:52 -0500
+Message-ID: <4F0DB018.5080302@linux.vnet.ibm.com>
+Date: Wed, 11 Jan 2012 10:51:52 -0500
+From: Stefan Berger <stefanb@linux.vnet.ibm.com>
 User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.1.16) Gecko/20111110 Iceowl/1.0b1 Icedove/3.0.11
+	rv:1.9.2.23) Gecko/20110928 Fedora/3.1.15-1.fc14
+	Lightning/1.0b3pre Thunderbird/3.1.15
 MIME-Version: 1.0
-To: Andrzej Zaborowski <balrogg@gmail.com>
-References: <1326130191-20344-1-git-send-email-sw@weilnetz.de>
-	<20120110083555.GA13145@stefanha-thinkpad.localdomain>
-In-Reply-To: <20120110083555.GA13145@stefanha-thinkpad.localdomain>
+To: qemu-trivial@nongnu.org
 Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Add 'fall through' comments to case
- statements without break
+x-cbid: 12011115-5930-0000-0000-000004018B73
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 32.97.182.145
+Cc: qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] hmp: Fix freeing of PciInfoList
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,43 +57,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Jan 2012 21:53:04 -0000
+X-List-Received-Date: Wed, 11 Jan 2012 15:56:25 -0000
 
-Am 10.01.2012 09:35, schrieb Stefan Hajnoczi:
-> This reminds me of another questionable fall-through:
->
-> bt-host.c:bt_host_read():
->
-> while (s->len --)
-> switch (*pkt ++) {
-> ...
-> case HCI_SCODATA_PKT:
->   if (s->len < 3)
->    goto bad_pkt;
->
->   pktlen = MIN(pkt[2] + 3, s->len);
->   s->len -= pktlen;
->   pkt += pktlen;
-> <--- fall-through or not?
-> default:
-> bad_pkt:
->   fprintf(stderr, "qemu: bad HCI packet type %02x\n", pkt[-1]);
-> }
->
-> It seems the code will skip HCI_SCODATA_PKT and report a warning 
-> (although type
-> pkt[-1] will be incorrect). Any thoughts?
->
-> Stefan
->
+Remember the original PciInfoList in info_list and use
+the info variable to traverse the list.
 
-Hi Andrzej,
+Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
 
-I think there should be a break statement at the end of the
-HCI_SCODATA_PKT case. Could you please check this?
+---
+  hmp.c |    8 ++++----
+  1 file changed, 4 insertions(+), 4 deletions(-)
 
-Regards,
-Stefan
+Index: qemu-git.pt/hmp.c
+===================================================================
+--- qemu-git.pt.orig/hmp.c
++++ qemu-git.pt/hmp.c
+@@ -486,17 +486,17 @@ static void hmp_info_pci_device(Monitor
 
+  void hmp_info_pci(Monitor *mon)
+  {
+-    PciInfoList *info;
++    PciInfoList *info_list, info;
+      Error *err = NULL;
+
+-    info = qmp_query_pci(&err);
++    info_list = qmp_query_pci(&err);
+      if (err) {
+          monitor_printf(mon, "PCI devices not supported\n");
+          error_free(err);
+          return;
+      }
+
+-    for (; info; info = info->next) {
++    for (info = info_list; info; info = info->next) {
+          PciDeviceInfoList *dev;
+
+          for (dev = info->value->devices; dev; dev = dev->next) {
+@@ -504,7 +504,7 @@ void hmp_info_pci(Monitor *mon)
+          }
+      }
+
+-    qapi_free_PciInfoList(info);
++    qapi_free_PciInfoList(info_list);
+  }
+
+  void hmp_info_tpm(Monitor *mon)
 
 
