@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RlKoI-0004Tw-QX
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2012 08:35:18 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:49352)
+	id 1RlL4m-0002X2-7L
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2012 08:52:20 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:36136)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RlKoH-0004Tp-1w
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 08:35:18 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RlL4e-00028u-T1
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 08:52:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RlKoE-0001eY-Pj
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 08:35:17 -0500
-Received: from mail-ee0-f46.google.com ([74.125.83.46]:41632)
+	(envelope-from <stefanha@gmail.com>) id 1RlL4Z-0004Yg-B8
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 08:52:12 -0500
+Received: from mail-ey0-f173.google.com ([209.85.215.173]:40380)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1RlKoE-0001eB-IZ; Thu, 12 Jan 2012 08:35:14 -0500
-Received: by eekd4 with SMTP id d4so791445eek.33
-	for <multiple recipients>; Thu, 12 Jan 2012 05:35:13 -0800 (PST)
+	id 1RlL4P-0004Xj-5O; Thu, 12 Jan 2012 08:51:57 -0500
+Received: by eaak11 with SMTP id k11so709058eaa.4
+	for <multiple recipients>; Thu, 12 Jan 2012 05:51:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=sg3hWmthO7IJt4X5GK+zYO1VBaAoAjKytweGUOigJm8=;
-	b=EjgVlAp7oP6Hy/rRLRtfPjoPTtew6UATw0RQ1bstpyr6izBqBV8Nb0X/FnD+pVBkR6
-	2bzoYvosN//yPEMgkwOSKfN4bWlQB7I9WikItCjohpT4cXtT8qoKr15kgWX8DQKKlbvT
-	uv5TwV/EHvIPsV76lLrFiLQuZOa1fLfP47FJc=
-Received: by 10.14.29.14 with SMTP id h14mr1389857eea.70.1326375312944;
-	Thu, 12 Jan 2012 05:35:12 -0800 (PST)
+	bh=gJYsoXffwIVed+7yX0NHYNKFLdndbwyij5OISapfm40=;
+	b=OKGr2e29qJELSCQsMX+RxBE+yjyauoMDoN1Kj7tbL37wd9DhH+kWOzW4nhzNTNx2Du
+	w03slK13UJasP1HngggkZjBAaywIpOAQf8GDtu0Ept+YoL1hiXUXfddYppo1a5GaG0Tw
+	PqvYOIXA/RYV+SQBYYr3rHcSbUCCdXKUKyQfQ=
+Received: by 10.213.22.146 with SMTP id n18mr767230ebb.0.1326376316131;
+	Thu, 12 Jan 2012 05:51:56 -0800 (PST)
 Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id 15sm19621306eeu.1.2012.01.12.05.35.11
+	by mx.google.com with ESMTPS id t1sm19765299eeb.3.2012.01.12.05.51.54
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 12 Jan 2012 05:35:12 -0800 (PST)
-Date: Thu, 12 Jan 2012 13:35:10 +0000
+	Thu, 12 Jan 2012 05:51:55 -0800 (PST)
+Date: Thu, 12 Jan 2012 13:51:50 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Message-ID: <20120112133510.GA23222@stefanha-thinkpad.localdomain>
-References: <4F0DB018.5080302@linux.vnet.ibm.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120112135150.GB23222@stefanha-thinkpad.localdomain>
+References: <1326306870-14484-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <4F0DB018.5080302@linux.vnet.ibm.com>
+In-Reply-To: <1326306870-14484-1-git-send-email-sw@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 74.125.83.46
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] hmp: Fix freeing of PciInfoList
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.215.173
+Cc: qemu-trivial@nongnu.org, "M. Mohan Kumar" <mohan@in.ibm.com>,
+	qemu-devel@nongnu.org, "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] virtfs-proxy-helper:
+ Fix and clean include statements
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,40 +54,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2012 13:35:18 -0000
+X-List-Received-Date: Thu, 12 Jan 2012 13:52:18 -0000
 
-On Wed, Jan 11, 2012 at 10:51:52AM -0500, Stefan Berger wrote:
-> Remember the original PciInfoList in info_list and use
-> the info variable to traverse the list.
+On Wed, Jan 11, 2012 at 07:34:28PM +0100, Stefan Weil wrote:
+> Obviously most Linux host systems don't have a libcap-dev package.
 > 
-> Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+> If this package is available, make tries to build virtfs-proxy-helper
+> and fails on recent Linux distributions because of a missing attr/xattr.h.
 > 
-> ---
->  hmp.c |    8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+> The first patch fixes this. As I noticed that several include statements
+> were redundant, I added the second patch which is optional but cleans
+> the code a little bit.
+> 
+> Please consider adding libcap-dev to the Linux build bots (and of course
+> to the personal Linux environment when you are a maintainer).
+> 
+> Regards,
+> Stefan Weil
+> 
+> [PATCH 1/2] virtfs-proxy-helper: Fix compilation on newer systems
+> [PATCH 2/2] virtfs-proxy-helper: Clean include files
+> 
 
-Thanks, applied to the trivial patches tree but see below:
+Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
-
-Your patch seems to use two columns instead of just one column for
-'-'/'+'/' '.  This confused both git-am(1) and patch(1).  Perhaps you
-can figure out why your patch was generated like this?  It reminds me of
-diff3 where there are two columns because it compares file A and B
-against a common ancestor file.
-
-> Index: qemu-git.pt/hmp.c
-> ===================================================================
-> --- qemu-git.pt.orig/hmp.c
-> +++ qemu-git.pt/hmp.c
-> @@ -486,17 +486,17 @@ static void hmp_info_pci_device(Monitor
-> 
->  void hmp_info_pci(Monitor *mon)
->  {
-> -    PciInfoList *info;
-> +    PciInfoList *info_list, info;
-
-Missing '*' to make info a pointer too.  Fails to build, I fixed this
-when merging so don't worry about it.
 
 Stefan
 
