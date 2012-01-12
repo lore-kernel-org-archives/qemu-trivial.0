@@ -1,39 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rl3E3-0003V3-2q
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jan 2012 13:48:43 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54217)
+	id 1RlKLn-000539-8U
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2012 08:05:51 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:44008)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Rl3Dr-0002qj-2f
-	for qemu-trivial@nongnu.org; Wed, 11 Jan 2012 13:48:40 -0500
+	(envelope-from <balrogg@gmail.com>) id 1RlKLe-0004ca-Nt
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 08:05:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Rl3De-0004Kt-4C
-	for qemu-trivial@nongnu.org; Wed, 11 Jan 2012 13:48:27 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:33897)
+	(envelope-from <balrogg@gmail.com>) id 1RlKLY-000529-W4
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 08:05:42 -0500
+Received: from mail-tul01m020-f173.google.com ([209.85.214.173]:38572)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1Rl3D1-0004If-JN; Wed, 11 Jan 2012 13:47:39 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	E175E7280003; Wed, 11 Jan 2012 19:47:37 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 2rfbqHycPx93; Wed, 11 Jan 2012 19:47:37 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id B14E67280009; Wed, 11 Jan 2012 19:47:37 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Wed, 11 Jan 2012 19:47:37 +0100
-Message-Id: <1326307657-2132-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
+	(envelope-from <balrogg@gmail.com>)
+	id 1RlKLS-000519-UZ; Thu, 12 Jan 2012 08:05:31 -0500
+Received: by obbta7 with SMTP id ta7so772291obb.4
+	for <multiple recipients>; Thu, 12 Jan 2012 05:05:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=mHE7DpJWHYdJqJeA8aBqRjnWhA+87N7Ul7pR9kHCLKk=;
+	b=eWoInv/5bLid9y8TdpymxAjKWKTXy87nNnl9gD7SKXpEP3MMtVilup3WQvtYxW/XDW
+	iw1duQZW4VfO3Nc/ZLxeEG/CUHdh3FQC+EWp9SKwAxtGOwfcIUxwEOso85Pv/Qm0yhni
+	D3DP2Uvw4ocpicgGs4VJ0c9g1+IMDKsvfxPb0=
+MIME-Version: 1.0
+Received: by 10.182.150.66 with SMTP id ug2mr2871069obb.68.1326373529083; Thu,
+	12 Jan 2012 05:05:29 -0800 (PST)
+Received: by 10.182.51.136 with HTTP; Thu, 12 Jan 2012 05:05:28 -0800 (PST)
+In-Reply-To: <20120110083555.GA13145@stefanha-thinkpad.localdomain>
+References: <1326130191-20344-1-git-send-email-sw@weilnetz.de>
+	<20120110083555.GA13145@stefanha-thinkpad.localdomain>
+Date: Thu, 12 Jan 2012 14:05:28 +0100
+Message-ID: <CAOq732+AQK+WrgPeGCQdDJ6s90vx3zYCUdnb1msg3asB+KhbqQ@mail.gmail.com>
+From: andrzej zaborowski <balrogg@gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 209.85.214.173
 Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	"M. Mohan Kumar" <mohan@in.ibm.com>,
-	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH] virtfs-proxy-helper: Add missing printf
-	format attribute
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add 'fall through' comments
+ to case statements without break
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,30 +51,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jan 2012 18:48:40 -0000
+X-List-Received-Date: Thu, 12 Jan 2012 13:05:48 -0000
 
-Every function with printf like arguments must have it
-(see file HACKING), so add it.
+On 10 January 2012 09:35, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> On Mon, Jan 09, 2012 at 06:29:51PM +0100, Stefan Weil wrote:
+>> These comments are used by static code analysis tools and in code review=
+s
+>> to avoid false warnings because of missing break statements.
+>>
+>> The case statements handled here were reported by coverity.
+>>
+>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>> ---
+>> =C2=A0hw/pcnet.c =C2=A0 =C2=A0| =C2=A0 =C2=A01 +
+>> =C2=A0json-lexer.c =C2=A0| =C2=A0 =C2=A01 +
+>> =C2=A0qemu-option.c | =C2=A0 =C2=A04 ++++
+>> =C2=A03 files changed, 6 insertions(+), 0 deletions(-)
+>
+> This reminds me of another questionable fall-through:
+>
+> bt-host.c:bt_host_read():
+>
+> while (s->len --)
+> =C2=A0 =C2=A0switch (*pkt ++) {
+> =C2=A0 =C2=A0...
+> =C2=A0 =C2=A0case HCI_SCODATA_PKT:
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0if (s->len < 3)
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto bad_pkt;
+>
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0pktlen =3D MIN(pkt[2] + 3, s->len);
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0s->len -=3D pktlen;
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0pkt +=3D pktlen;
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 <--- fall-through or not?
+> =C2=A0 =C2=A0default:
+> =C2=A0 =C2=A0bad_pkt:
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0fprintf(stderr, "qemu: bad HCI packet type %02=
+x\n", pkt[-1]);
+> =C2=A0 =C2=A0}
+>
+> It seems the code will skip HCI_SCODATA_PKT and report a warning (althoug=
+h type
+> pkt[-1] will be incorrect). =C2=A0Any thoughts?
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- fsdev/virtfs-proxy-helper.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Yes, definitely there's a break missing.  Bluetooth SCO links are like
+USB Isochronous, so not really tested because they're only used by
+streaming devices.
 
-diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-index 21e9b16..4a507d8 100644
---- a/fsdev/virtfs-proxy-helper.c
-+++ b/fsdev/virtfs-proxy-helper.c
-@@ -54,7 +54,7 @@ static struct option helper_opts[] = {
- static bool is_daemon;
- static bool get_version; /* IOC getversion IOCTL supported */
- 
--static void do_log(int loglevel, const char *format, ...)
-+static void GCC_FMT_ATTR(2, 3) do_log(int loglevel, const char *format, ...)
- {
-     va_list ap;
- 
--- 
-1.7.2.5
-
+Cheers
 
