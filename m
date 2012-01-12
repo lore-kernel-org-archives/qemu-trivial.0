@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RlL5o-0004IK-01
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2012 08:53:24 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:36306)
+	id 1RlLTQ-0004aK-GJ
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2012 09:17:48 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:41058)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RlL5h-0003v7-Mj
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 08:53:21 -0500
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RlLTC-0003l1-QY
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 09:17:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RlL5d-0004db-Gm
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 08:53:17 -0500
-Received: from mail-ey0-f173.google.com ([209.85.215.173]:63434)
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RlLT2-00007z-L5
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 09:17:34 -0500
+Received: from e06smtp14.uk.ibm.com ([195.75.94.110]:53081)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RlL5T-0004b8-S2; Thu, 12 Jan 2012 08:53:03 -0500
-Received: by mail-ey0-f173.google.com with SMTP id k11so709416eaa.4
-	for <multiple recipients>; Thu, 12 Jan 2012 05:53:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=knm1NvvDb1Whdi1phz8aDGEvcQaw98Vy5nG34d2ZfpU=;
-	b=Iv7TQDGJyc7566cPY8WUdCIL2nsLHA+ZXViuCBQi4nEuVKk2h31qZuPslG9HNsN9q7
-	Sr4w9Hd/OnIhmVNO8bcXOsJzptkUyCtqn1N7+PFXu7mGZQnEZsrmJ3AdJrTC9L23M06c
-	Pp6DKDP/zVWBW/e07FAvRXi+AivNcCw+fP7EM=
-Received: by 10.213.16.82 with SMTP id n18mr45088eba.2.1326376383348;
-	Thu, 12 Jan 2012 05:53:03 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id
-	x43sm19723743eef.8.2012.01.12.05.53.02
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 12 Jan 2012 05:53:02 -0800 (PST)
-Date: Thu, 12 Jan 2012 13:53:01 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120112135301.GD23222@stefanha-thinkpad.localdomain>
-References: <1326306870-14484-1-git-send-email-sw@weilnetz.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1326306870-14484-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 209.85.215.173
-Cc: qemu-trivial@nongnu.org, "M. Mohan Kumar" <mohan@in.ibm.com>,
-	qemu-devel@nongnu.org, "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] virtfs-proxy-helper:
- Fix and clean include statements
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1RlLT2-00007Q-DS
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2012 09:17:24 -0500
+Received: from /spool/local
+	by e06smtp14.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanha@linux.vnet.ibm.com>;
+	Thu, 12 Jan 2012 14:17:21 -0000
+Received: from d06nrmr1707.portsmouth.uk.ibm.com ([9.149.39.225])
+	by e06smtp14.uk.ibm.com ([192.168.101.144]) with IBM ESMTP SMTP
+	Gateway: Authorized Use Only! Violators will be prosecuted; 
+	Thu, 12 Jan 2012 14:17:19 -0000
+Received: from d06av08.portsmouth.uk.ibm.com (d06av08.portsmouth.uk.ibm.com
+	[9.149.37.249])
+	by d06nrmr1707.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
+	ESMTP id q0CEHIOI2719962; Thu, 12 Jan 2012 14:17:18 GMT
+Received: from d06av08.portsmouth.uk.ibm.com (loopback [127.0.0.1])
+	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
+	ESMTP id q0CEHI1s011564; Thu, 12 Jan 2012 14:17:18 GMT
+Received: from localhost (stefanha-thinkpad.manchester-maybrook.uk.ibm.com
+	[9.174.219.31])
+	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
+	ESMTP id q0CEHIgL011542; Thu, 12 Jan 2012 14:17:18 GMT
+From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 12 Jan 2012 14:17:04 +0000
+Message-Id: <1326377824-23776-1-git-send-email-stefanha@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.7.3
+x-cbid: 12011214-1948-0000-0000-0000009EE30F
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 195.75.94.110
+Cc: qemu-trivial@nongnu.org, andrew.zaborowski@intel.com,
+	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH] bt-host: add missing break statement
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,13 +55,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2012 13:53:21 -0000
+X-List-Received-Date: Thu, 12 Jan 2012 14:17:41 -0000
 
-On Wed, Jan 11, 2012 at 07:34:28PM +0100, Stefan Weil wrote:
-> Please consider adding libcap-dev to the Linux build bots (and of course
-> to the personal Linux environment when you are a maintainer).
+The switch statement in bt_host_read() is missing a break in one case.
+Andrzej Zaborowski <andrew.zaborowski@intel.com> confirmed that this is
+not an intentional fall-through.
 
-I have added it to yuzuki.
+Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+---
+ bt-host.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
 
-Stefan
+diff --git a/bt-host.c b/bt-host.c
+index df5b7cd..0d3ad28 100644
+--- a/bt-host.c
++++ b/bt-host.c
+@@ -130,6 +130,7 @@ static void bt_host_read(void *opaque)
+             pktlen = MIN(pkt[2] + 3, s->len);
+             s->len -= pktlen;
+             pkt += pktlen;
++            break;
+ 
+         default:
+         bad_pkt:
+-- 
+1.7.7.3
+
 
