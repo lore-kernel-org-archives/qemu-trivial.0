@@ -1,37 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rmg1g-0007JL-4t
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2012 01:26:40 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:47362)
+	id 1Rn5d3-0004Ov-EJ
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2012 04:46:57 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:38656)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Rmg1d-00079W-4U
-	for qemu-trivial@nongnu.org; Mon, 16 Jan 2012 01:26:38 -0500
+	(envelope-from <afaerber@suse.de>) id 1Rn5cw-0003xu-GV
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2012 04:46:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Rmg1c-00036N-2R
-	for qemu-trivial@nongnu.org; Mon, 16 Jan 2012 01:26:36 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:35641)
+	(envelope-from <afaerber@suse.de>) id 1Rn5cr-0003U2-VE
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2012 04:46:50 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:43554 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1Rmg1Z-00035r-PR; Mon, 16 Jan 2012 01:26:33 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	0F5D37280005; Mon, 16 Jan 2012 07:26:31 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 6q+S1ZYridWA; Mon, 16 Jan 2012 07:26:30 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 34B217280006; Mon, 16 Jan 2012 07:26:30 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
+	(envelope-from <afaerber@suse.de>)
+	id 1Rn5ci-0003Ss-VJ; Tue, 17 Jan 2012 04:46:37 -0500
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 1F1B78FFDD;
+	Tue, 17 Jan 2012 10:46:35 +0100 (CET)
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
 To: qemu-devel@nongnu.org
-Date: Mon, 16 Jan 2012 07:26:27 +0100
-Message-Id: <1326695187-14008-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Anthony Liguori <aliguori@us.ibm.com>
-Subject: [Qemu-trivial] [PATCH] tests: Silence gtester in Makefile
+Date: Tue, 17 Jan 2012 10:44:40 +0100
+Message-Id: <1326793481-3967-1-git-send-email-afaerber@suse.de>
+X-Mailer: git-send-email 1.7.7
+In-Reply-To: <1326674823-13069-2-git-send-email-afaerber@suse.de>
+References: <1326674823-13069-2-git-send-email-afaerber@suse.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Michael Walle <michael@walle.cc>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: [Qemu-trivial] [PATCH v2] lm32: Fix mixup of uint32 and uint32_t
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,27 +45,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2012 06:26:38 -0000
+X-List-Received-Date: Tue, 17 Jan 2012 09:46:56 -0000
 
-This prettifies make output a little by avoiding a very long line.
-As gtester prints the checks when they are run, no information is lost.
+Commit d23948b15a9920fb7f6374b55a6db1ecff81f3ee (lm32: add Milkymist
+VGAFB support) introduced a stray usage of the softfloat uint32 type.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Use uint32_t instead.
+
+Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
+Acked-by: Michael Walle <michael@walle.cc>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/Makefile |    2 +-
+ hw/milkymist-vgafb_template.h |    2 +-
  1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/tests/Makefile b/tests/Makefile
-index efde63a..55e8eb0 100644
---- a/tests/Makefile
-+++ b/tests/Makefile
-@@ -36,4 +36,4 @@ test-qmp-commands: test-qmp-commands.o $(qobject-obj-y) $(qapi-obj-y) $(tools-ob
- 
- .PHONY: check
- check: $(CHECKS)
--	gtester $(CHECKS)
-+	$(call quiet-command, gtester $(CHECKS), "  CHECK")
--- 
-1.7.2.5
+diff --git a/hw/milkymist-vgafb_template.h b/hw/milkymist-vgafb_template.=
+h
+index 69af9ef..1d33ee8 100644
+--- a/hw/milkymist-vgafb_template.h
++++ b/hw/milkymist-vgafb_template.h
+@@ -39,7 +39,7 @@
+ #elif BITS =3D=3D 24
+ #define COPY_PIXEL(to, r, g, b)                    \
+     do {                                           \
+-        uint32 tmp =3D rgb_to_pixel24(r, g, b);      \
++        uint32_t tmp =3D rgb_to_pixel24(r, g, b);    \
+         *(to++) =3D         tmp & 0xff;              \
+         *(to++) =3D  (tmp >> 8) & 0xff;              \
+         *(to++) =3D (tmp >> 16) & 0xff;              \
+--=20
+1.7.7
 
 
