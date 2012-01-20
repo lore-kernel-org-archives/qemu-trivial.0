@@ -1,53 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rnp0b-0005DI-7K
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Jan 2012 05:14:17 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:56473)
+	id 1RoCI4-0000LH-Pi
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2012 06:05:52 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:41815)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rnp0R-0004bG-4l
-	for qemu-trivial@nongnu.org; Thu, 19 Jan 2012 05:14:13 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RoCHz-00007x-QR
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:05:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rnp0M-0003Tz-84
-	for qemu-trivial@nongnu.org; Thu, 19 Jan 2012 05:14:07 -0500
-Received: from mail-we0-f173.google.com ([74.125.82.173]:44886)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RoCHv-0006gk-Ge
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:05:47 -0500
+Received: from mail-ww0-f53.google.com ([74.125.82.53]:37172)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1Rnp0F-0003SM-C5; Thu, 19 Jan 2012 05:13:55 -0500
-Received: by werc1 with SMTP id c1so4725651wer.4
-	for <multiple recipients>; Thu, 19 Jan 2012 02:13:54 -0800 (PST)
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1RoCHm-0006fs-3s; Fri, 20 Jan 2012 06:05:34 -0500
+Received: by wgbdr1 with SMTP id dr1so411930wgb.10
+	for <multiple recipients>; Fri, 20 Jan 2012 03:05:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=smw/zOxQcMX3JQ7t29Dcz5Bu3/QZ17ysKAVuRBbjxp0=;
-	b=edHlQaQV+E8Idpckx/t2Bhf8tDXqusLnIPDs0OngkLB2EnVnAmIYl4s1TZxB9t/ZEc
-	f1vIrX4yOos1q7H7Ce3/T2QRmvghZ3T/m75yTBvsTSJawzAr0tMw5/h8VxAvyhWnLv9L
-	sBRL/g3cPsjObXJUpW1hcDB3zc+q6D0stZweA=
-Received: by 10.216.136.94 with SMTP id v72mr11025158wei.43.1326968034525;
-	Thu, 19 Jan 2012 02:13:54 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id
-	g12sm64611353wiw.10.2012.01.19.02.13.53
+	h=sender:from:to:cc:subject:date:message-id:x-mailer;
+	bh=IhXUhnBhgK8uJgSWc1uFCxMZIuRMxIIfDHTFOe4+Yok=;
+	b=OnI6CDDQ+Mx4LPObh49MmVX7mnWa5TsNWV4DmnyG+GOOcxMZL6TMfuVqQlKFxYxfx4
+	W4Ishhpxbj4qLov2gSJdVO1fCyp67k3Jry1RSh+KI2B0LGYav3jDP32VH3LkZv2n+kHH
+	74wbVroviKOP6n1hbx95Eb1LyGB0Il9Z0mHLY=
+Received: by 10.180.19.130 with SMTP id f2mr2912304wie.12.1327057532682;
+	Fri, 20 Jan 2012 03:05:32 -0800 (PST)
+Received: from localhost.localdomain (93-34-200-238.ip51.fastwebnet.it.
+	[93.34.200.238])
+	by mx.google.com with ESMTPS id fv6sm7848260wib.8.2012.01.20.03.05.30
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 19 Jan 2012 02:13:53 -0800 (PST)
-Date: Thu, 19 Jan 2012 08:17:33 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
-Message-ID: <20120119081733.GB23160@stefanha-thinkpad.localdomain>
-References: <1326674823-13069-2-git-send-email-afaerber@suse.de>
-	<1326793481-3967-1-git-send-email-afaerber@suse.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1326793481-3967-1-git-send-email-afaerber@suse.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	Fri, 20 Jan 2012 03:05:31 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 20 Jan 2012 12:05:21 +0100
+Message-Id: <1327057522-6590-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.7.7.1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Michael Walle <michael@walle.cc>, qemu-devel@nongnu.org,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] lm32: Fix mixup of uint32 and uint32_t
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] rename get_clock_realtime
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,23 +49,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Jan 2012 10:14:13 -0000
+X-List-Received-Date: Fri, 20 Jan 2012 11:05:49 -0000
 
-On Tue, Jan 17, 2012 at 10:44:40AM +0100, Andreas Färber wrote:
-> Commit d23948b15a9920fb7f6374b55a6db1ecff81f3ee (lm32: add Milkymist
-> VGAFB support) introduced a stray usage of the softfloat uint32 type.
-> 
-> Use uint32_t instead.
-> 
-> Signed-off-by: Andreas Färber <afaerber@suse.de>
-> Acked-by: Michael Walle <michael@walle.cc>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/milkymist-vgafb_template.h |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
+get_clock_realtime accesses the host_clock, not the rt_clock.
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ qemu-timer.c |    2 +-
+ qemu-timer.h |    4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-Stefan
+diff --git a/qemu-timer.c b/qemu-timer.c
+index cd026c6..4a14a6d 100644
+--- a/qemu-timer.c
++++ b/qemu-timer.c
+@@ -436,7 +436,7 @@ int64_t qemu_get_clock_ns(QEMUClock *clock)
+             return cpu_get_clock();
+         }
+     case QEMU_CLOCK_HOST:
+-        now = get_clock_realtime();
++        now = get_clock_host();
+         last = clock->last;
+         clock->last = now;
+         if (now < last) {
+diff --git a/qemu-timer.h b/qemu-timer.h
+index de17f3b..b180fca 100644
+--- a/qemu-timer.h
++++ b/qemu-timer.h
+@@ -93,7 +93,7 @@ static inline int64_t get_ticks_per_sec(void)
+ }
+ 
+ /* real time host monotonic timer */
+-static inline int64_t get_clock_realtime(void)
++static inline int64_t get_clock_host(void)
+ {
+     struct timeval tv;
+ 
+@@ -131,7 +131,7 @@ static inline int64_t get_clock(void)
+     {
+         /* XXX: using gettimeofday leads to problems if the date
+            changes, so it should be avoided. */
+-        return get_clock_realtime();
++        return get_clock_host();
+     }
+ }
+ #endif
+-- 
+1.7.7.1
+
 
