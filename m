@@ -1,43 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RoCIA-0000fP-Tp
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2012 06:05:58 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:41840)
+	id 1RoCTb-0006MR-0b
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2012 06:17:47 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:60021)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1RoCI3-0000Hh-Ix
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:05:57 -0500
+	(envelope-from <jan.kiszka@siemens.com>) id 1RoCTY-0006D1-5n
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:17:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1RoCHx-0006h8-Qw
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:05:51 -0500
-Received: from mail-ww0-f41.google.com ([74.125.82.41]:46860)
+	(envelope-from <jan.kiszka@siemens.com>) id 1RoCTS-0000my-Jk
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:17:44 -0500
+Received: from goliath.siemens.de ([192.35.17.28]:22592)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1RoCHm-0006fx-JZ; Fri, 20 Jan 2012 06:05:34 -0500
-Received: by wgbdt11 with SMTP id dt11so486312wgb.4
-	for <multiple recipients>; Fri, 20 Jan 2012 03:05:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer;
-	bh=2JIJsUE8XA24aw+wujv89R+OVEW8gihEDOu6GUw8ans=;
-	b=WVm1totgCruOI9MaWAEzC2Y+b1A3Iv/Hy0kK22HQ49LPkqtaIzrGlPi4SuooR7JQjg
-	57t4/7xavgzJaiQS0rF8Ayt1316RMX+g33lvQ0RjiDAlm2hWB2ZL51UGHVSFG7GzrdIO
-	FPeVKfaDTX3jT/NcV3d8w5JsMBgRo9PLIia24=
-Received: by 10.180.106.38 with SMTP id gr6mr2947757wib.0.1327057533788;
-	Fri, 20 Jan 2012 03:05:33 -0800 (PST)
-Received: from localhost.localdomain (93-34-200-238.ip51.fastwebnet.it.
-	[93.34.200.238])
-	by mx.google.com with ESMTPS id fv6sm7848260wib.8.2012.01.20.03.05.32
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 20 Jan 2012 03:05:33 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 20 Jan 2012 12:05:22 +0100
-Message-Id: <1327057522-6590-2-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.7.7.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 74.125.82.41
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] remove #if 0 code for timers
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1RoCTI-0000kx-S1; Fri, 20 Jan 2012 06:17:29 -0500
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id q0KBHQmd000765;
+	Fri, 20 Jan 2012 12:17:26 +0100
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q0KBHQLo017479;
+	Fri, 20 Jan 2012 12:17:26 +0100
+Message-ID: <4F194D46.1050501@siemens.com>
+Date: Fri, 20 Jan 2012 12:17:26 +0100
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
+MIME-Version: 1.0
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <1327057522-6590-1-git-send-email-pbonzini@redhat.com>
+In-Reply-To: <1327057522-6590-1-git-send-email-pbonzini@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 192.35.17.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] rename get_clock_realtime
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,54 +46,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Jan 2012 11:05:57 -0000
+X-List-Received-Date: Fri, 20 Jan 2012 11:17:45 -0000
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- qemu-timer.c |   29 -----------------------------
- 1 files changed, 0 insertions(+), 29 deletions(-)
+On 2012-01-20 12:05, Paolo Bonzini wrote:
+> get_clock_realtime accesses the host_clock, not the rt_clock.
+> 
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  qemu-timer.c |    2 +-
+>  qemu-timer.h |    4 ++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/qemu-timer.c b/qemu-timer.c
+> index cd026c6..4a14a6d 100644
+> --- a/qemu-timer.c
+> +++ b/qemu-timer.c
+> @@ -436,7 +436,7 @@ int64_t qemu_get_clock_ns(QEMUClock *clock)
+>              return cpu_get_clock();
+>          }
+>      case QEMU_CLOCK_HOST:
+> -        now = get_clock_realtime();
+> +        now = get_clock_host();
+>          last = clock->last;
+>          clock->last = now;
+>          if (now < last) {
+> diff --git a/qemu-timer.h b/qemu-timer.h
+> index de17f3b..b180fca 100644
+> --- a/qemu-timer.h
+> +++ b/qemu-timer.h
+> @@ -93,7 +93,7 @@ static inline int64_t get_ticks_per_sec(void)
+>  }
+>  
+>  /* real time host monotonic timer */
+> -static inline int64_t get_clock_realtime(void)
+> +static inline int64_t get_clock_host(void)
 
-diff --git a/qemu-timer.c b/qemu-timer.c
-index 4a14a6d..8dc0d8a 100644
---- a/qemu-timer.c
-+++ b/qemu-timer.c
-@@ -494,35 +494,6 @@ static void host_alarm_handler(int host_signum)
-     if (!t)
- 	return;
- 
--#if 0
--#define DISP_FREQ 1000
--    {
--        static int64_t delta_min = INT64_MAX;
--        static int64_t delta_max, delta_cum, last_clock, delta, ti;
--        static int count;
--        ti = qemu_get_clock_ns(vm_clock);
--        if (last_clock != 0) {
--            delta = ti - last_clock;
--            if (delta < delta_min)
--                delta_min = delta;
--            if (delta > delta_max)
--                delta_max = delta;
--            delta_cum += delta;
--            if (++count == DISP_FREQ) {
--                printf("timer: min=%" PRId64 " us max=%" PRId64 " us avg=%" PRId64 " us avg_freq=%0.3f Hz\n",
--                       muldiv64(delta_min, 1000000, get_ticks_per_sec()),
--                       muldiv64(delta_max, 1000000, get_ticks_per_sec()),
--                       muldiv64(delta_cum, 1000000 / DISP_FREQ, get_ticks_per_sec()),
--                       (double)get_ticks_per_sec() / ((double)delta_cum / DISP_FREQ));
--                count = 0;
--                delta_min = INT64_MAX;
--                delta_max = 0;
--                delta_cum = 0;
--            }
--        }
--        last_clock = ti;
--    }
--#endif
-     if (alarm_has_dynticks(t) ||
-         qemu_next_alarm_deadline () <= 0) {
-         t->expired = alarm_has_dynticks(t);
+It accesses the host realtime clock, so get_clock_host_realtime would be
+optimal. In that light, the comment above should be fixed as well.
+
+Jan
+
+>  {
+>      struct timeval tv;
+>  
+> @@ -131,7 +131,7 @@ static inline int64_t get_clock(void)
+>      {
+>          /* XXX: using gettimeofday leads to problems if the date
+>             changes, so it should be avoided. */
+> -        return get_clock_realtime();
+> +        return get_clock_host();
+>      }
+>  }
+>  #endif
+
 -- 
-1.7.7.1
-
+Siemens AG, Corporate Technology, CT T DE IT 1
+Corporate Competence Center Embedded Linux
 
