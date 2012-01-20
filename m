@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RoCI4-0000LH-Pi
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2012 06:05:52 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:41815)
+	id 1RoCIA-0000fP-Tp
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2012 06:05:58 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:41840)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1RoCHz-00007x-QR
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:05:48 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RoCI3-0000Hh-Ix
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:05:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1RoCHv-0006gk-Ge
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:05:47 -0500
-Received: from mail-ww0-f53.google.com ([74.125.82.53]:37172)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1RoCHx-0006h8-Qw
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:05:51 -0500
+Received: from mail-ww0-f41.google.com ([74.125.82.41]:46860)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1RoCHm-0006fs-3s; Fri, 20 Jan 2012 06:05:34 -0500
-Received: by wgbdr1 with SMTP id dr1so411930wgb.10
-	for <multiple recipients>; Fri, 20 Jan 2012 03:05:32 -0800 (PST)
+	id 1RoCHm-0006fx-JZ; Fri, 20 Jan 2012 06:05:34 -0500
+Received: by wgbdt11 with SMTP id dt11so486312wgb.4
+	for <multiple recipients>; Fri, 20 Jan 2012 03:05:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=sender:from:to:cc:subject:date:message-id:x-mailer;
-	bh=IhXUhnBhgK8uJgSWc1uFCxMZIuRMxIIfDHTFOe4+Yok=;
-	b=OnI6CDDQ+Mx4LPObh49MmVX7mnWa5TsNWV4DmnyG+GOOcxMZL6TMfuVqQlKFxYxfx4
-	W4Ishhpxbj4qLov2gSJdVO1fCyp67k3Jry1RSh+KI2B0LGYav3jDP32VH3LkZv2n+kHH
-	74wbVroviKOP6n1hbx95Eb1LyGB0Il9Z0mHLY=
-Received: by 10.180.19.130 with SMTP id f2mr2912304wie.12.1327057532682;
-	Fri, 20 Jan 2012 03:05:32 -0800 (PST)
+	bh=2JIJsUE8XA24aw+wujv89R+OVEW8gihEDOu6GUw8ans=;
+	b=WVm1totgCruOI9MaWAEzC2Y+b1A3Iv/Hy0kK22HQ49LPkqtaIzrGlPi4SuooR7JQjg
+	57t4/7xavgzJaiQS0rF8Ayt1316RMX+g33lvQ0RjiDAlm2hWB2ZL51UGHVSFG7GzrdIO
+	FPeVKfaDTX3jT/NcV3d8w5JsMBgRo9PLIia24=
+Received: by 10.180.106.38 with SMTP id gr6mr2947757wib.0.1327057533788;
+	Fri, 20 Jan 2012 03:05:33 -0800 (PST)
 Received: from localhost.localdomain (93-34-200-238.ip51.fastwebnet.it.
 	[93.34.200.238])
-	by mx.google.com with ESMTPS id fv6sm7848260wib.8.2012.01.20.03.05.30
+	by mx.google.com with ESMTPS id fv6sm7848260wib.8.2012.01.20.03.05.32
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 20 Jan 2012 03:05:31 -0800 (PST)
+	Fri, 20 Jan 2012 03:05:33 -0800 (PST)
 Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 20 Jan 2012 12:05:21 +0100
-Message-Id: <1327057522-6590-1-git-send-email-pbonzini@redhat.com>
+Date: Fri, 20 Jan 2012 12:05:22 +0100
+Message-Id: <1327057522-6590-2-git-send-email-pbonzini@redhat.com>
 X-Mailer: git-send-email 1.7.7.1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.53
+X-Received-From: 74.125.82.41
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] rename get_clock_realtime
+Subject: [Qemu-trivial] [PATCH] remove #if 0 code for timers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,51 +49,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Jan 2012 11:05:49 -0000
-
-get_clock_realtime accesses the host_clock, not the rt_clock.
+X-List-Received-Date: Fri, 20 Jan 2012 11:05:57 -0000
 
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- qemu-timer.c |    2 +-
- qemu-timer.h |    4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ qemu-timer.c |   29 -----------------------------
+ 1 files changed, 0 insertions(+), 29 deletions(-)
 
 diff --git a/qemu-timer.c b/qemu-timer.c
-index cd026c6..4a14a6d 100644
+index 4a14a6d..8dc0d8a 100644
 --- a/qemu-timer.c
 +++ b/qemu-timer.c
-@@ -436,7 +436,7 @@ int64_t qemu_get_clock_ns(QEMUClock *clock)
-             return cpu_get_clock();
-         }
-     case QEMU_CLOCK_HOST:
--        now = get_clock_realtime();
-+        now = get_clock_host();
-         last = clock->last;
-         clock->last = now;
-         if (now < last) {
-diff --git a/qemu-timer.h b/qemu-timer.h
-index de17f3b..b180fca 100644
---- a/qemu-timer.h
-+++ b/qemu-timer.h
-@@ -93,7 +93,7 @@ static inline int64_t get_ticks_per_sec(void)
- }
+@@ -494,35 +494,6 @@ static void host_alarm_handler(int host_signum)
+     if (!t)
+ 	return;
  
- /* real time host monotonic timer */
--static inline int64_t get_clock_realtime(void)
-+static inline int64_t get_clock_host(void)
- {
-     struct timeval tv;
- 
-@@ -131,7 +131,7 @@ static inline int64_t get_clock(void)
-     {
-         /* XXX: using gettimeofday leads to problems if the date
-            changes, so it should be avoided. */
--        return get_clock_realtime();
-+        return get_clock_host();
-     }
- }
- #endif
+-#if 0
+-#define DISP_FREQ 1000
+-    {
+-        static int64_t delta_min = INT64_MAX;
+-        static int64_t delta_max, delta_cum, last_clock, delta, ti;
+-        static int count;
+-        ti = qemu_get_clock_ns(vm_clock);
+-        if (last_clock != 0) {
+-            delta = ti - last_clock;
+-            if (delta < delta_min)
+-                delta_min = delta;
+-            if (delta > delta_max)
+-                delta_max = delta;
+-            delta_cum += delta;
+-            if (++count == DISP_FREQ) {
+-                printf("timer: min=%" PRId64 " us max=%" PRId64 " us avg=%" PRId64 " us avg_freq=%0.3f Hz\n",
+-                       muldiv64(delta_min, 1000000, get_ticks_per_sec()),
+-                       muldiv64(delta_max, 1000000, get_ticks_per_sec()),
+-                       muldiv64(delta_cum, 1000000 / DISP_FREQ, get_ticks_per_sec()),
+-                       (double)get_ticks_per_sec() / ((double)delta_cum / DISP_FREQ));
+-                count = 0;
+-                delta_min = INT64_MAX;
+-                delta_max = 0;
+-                delta_cum = 0;
+-            }
+-        }
+-        last_clock = ti;
+-    }
+-#endif
+     if (alarm_has_dynticks(t) ||
+         qemu_next_alarm_deadline () <= 0) {
+         t->expired = alarm_has_dynticks(t);
 -- 
 1.7.7.1
 
