@@ -1,49 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RoeQ8-00027t-Qk
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Jan 2012 12:08:04 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:38903)
+	id 1RoeW8-0003Q2-8Z
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Jan 2012 12:14:16 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:57117)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1RoeQ5-00022x-T1
-	for qemu-trivial@nongnu.org; Sat, 21 Jan 2012 12:08:03 -0500
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RoeW5-0003Pu-B2
+	for qemu-trivial@nongnu.org; Sat, 21 Jan 2012 12:14:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1RoeQ4-00030D-Dn
-	for qemu-trivial@nongnu.org; Sat, 21 Jan 2012 12:08:01 -0500
-Received: from fmmailgate02.web.de ([217.72.192.227]:50897)
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RoeW3-0003mZ-VA
+	for qemu-trivial@nongnu.org; Sat, 21 Jan 2012 12:14:13 -0500
+Received: from mout.perfora.net ([74.208.4.195]:61985)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1RoeQ1-0002zv-0e; Sat, 21 Jan 2012 12:07:57 -0500
-Received: from moweb002.kundenserver.de (moweb002.kundenserver.de
-	[172.19.20.108])
-	by fmmailgate02.web.de (Postfix) with ESMTP id DD9301C0544B1;
-	Sat, 21 Jan 2012 18:07:55 +0100 (CET)
-Received: from netbook.home ([92.74.55.47]) by smtp.web.de (mrweb001) with
-	ESMTPA (Nemesis) id 0Lcxfc-1SWTXv0qWG-00imcT;
-	Sat, 21 Jan 2012 18:07:55 +0100
-Message-ID: <4F1AF0E2.8050907@web.de>
-Date: Sat, 21 Jan 2012 18:07:46 +0100
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
-MIME-Version: 1.0
-To: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-References: <4F1AC0EB.3050304@web.de> <4F1AE974.2090401@suse.de>
-In-Reply-To: <4F1AE974.2090401@suse.de>
-X-Enigmail-Version: 1.3.4
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="------------enigDE85DC5722BDC0C40DBD592E"
-X-Provags-ID: V02:K0:HKyS7Ax2eRMeiSJ4Ss6hC6zRw+NSCF6yzq5kETM9NSi
-	dt3yXR18Kx+BmdtDH0HLU8LE5Od40fIMET/0s1zpaF7UcIEEwR
-	WSGaiVmbMw9CVk002B1HvjaGyt/dkh627ODOvLGsSZmi2wUx+n
-	WI1LkSE2xVYvSDrhYg+8Zc60IfUPhxVgOd1AWJ9NZRaQE1D+LU
-	Bw+L9HXHL8zc2CkWzR7NQ==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.227
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qdev-property: Make bit
- property parsing stricter
+	(envelope-from <mdroth@linux.vnet.ibm.com>)
+	id 1RoeW3-0003mP-L9; Sat, 21 Jan 2012 12:14:11 -0500
+Received: from illuin.morrigu.org (adsl-99-62-40-129.dsl.aus2tx.sbcglobal.net
+	[99.62.40.129])
+	by mrelay.perfora.net (node=mrus2) with ESMTP (Nemesis)
+	id 0MOOMv-1RlcEr43k5-005nfI; Sat, 21 Jan 2012 12:14:09 -0500
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
+Date: Sat, 21 Jan 2012 11:13:53 -0600
+Message-Id: <1327166033-17922-1-git-send-email-mdroth@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.4.1
+In-Reply-To: <1327108107-16600-1-git-send-email-mdroth@linux.vnet.ibm.com>
+References: <1327108107-16600-1-git-send-email-mdroth@linux.vnet.ibm.com>
+X-Provags-ID: V02:K0:FA9I5r+6AbFzaa+cd1bhPyNMyHnAUd2wJHqZsSOeHYW
+	D96lWyvqUU0E34c63Hyz4GVR4tW/vmVwWAUmfvBFBL1cMljt09
+	yIgpcttXkDesLE7deRUKWjAdwIvGkYHI/VD25tHtsjeBaIGJkP
+	Oz1HsxVWphAJ+XOr1AqFh+wW8d18UfpGVzvrIQSydqsVp2/PIn
+	WI/0shLB3YiJ+tAuJai97ZfEX5iCfhPF+wT9tmH4lCK78yHQRh
+	9JHanNqV8YI5wUi6Q5oHfypFlLAKMuBgbFMKEuKdLbo1Yi8KG+
+	FM27FCN9hHaL2hAQ3LYWcEvgHIOHOim6RN2S9ObRH9w4NVZ+aX
+	Vo/eLyqy8YrfCS59SAoiuwsVdT5PPaxkRiFTdOb8nUONfSLugK
+	M7T7Q4rYH/TYastRnwMIA3BfDGyd40X/mo=
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 74.208.4.195
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+Subject: [Qemu-trivial] [PATCH] main-loop: For tools,
+	initialize timers as part of qemu_init_main_loop()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,47 +49,108 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Jan 2012 17:08:03 -0000
+X-List-Received-Date: Sat, 21 Jan 2012 17:14:14 -0000
 
-This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enigDE85DC5722BDC0C40DBD592E
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+In some cases initializing the alarm timers can lead to non-negligable
+overhead from programs that link against qemu-tool.o. At least,
+setting a max-resolution WinMM alarm timer via mm_start_timer() (the
+current default for Windows) can increase the "tick rate" on Windows
+OSs and affect frequency scaling, and in the case of tools that run
+in guest OSs such has qemu-ga, the impact can be fairly dramatic
+(+20%/20% user/sys time on a core 2 processor was observed from an idle
+Windows XP guest).
 
-On 2012-01-21 17:36, Andreas F=E4rber wrote:
-> Am 21.01.2012 14:43, schrieb Jan Kiszka:
->> By using strncasecmp, we allow for arbitrary characters after the
->> "on"/"off" string. Fix this by switching to strcasecmp.
->>
->> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
->=20
-> Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
->=20
-> An alternative might be to increase the char count by one. For a const
-> char* parameter I see the responsibility for nul-terminating at the
-> caller though, so this seems right. Did you check all callers?
+This patch doesn't address the issue directly (not sure what a good
+solution would be for Windows, or what other situations it might be
+noticeable), but it at least limits the scope of the issue to programs
+that "opt-in" to using the main-loop.c functions by only enabling alarm
+timers when qemu_init_main_loop() is called, which is already required
+to make use of those facilities, so existing users shouldn't be
+affected.
 
-For any normal function that takes a char * string without a maximum
-length, the responsibility for terminating is on caller side. Also
-because we checks against patterns of different length. So we don't need
-to jump through hoops here.
+Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+---
+ main-loop.c |    2 +-
+ main-loop.h |   12 ++++++++++++
+ qemu-tool.c |    3 ++-
+ vl.c        |    5 +++++
+ 4 files changed, 20 insertions(+), 2 deletions(-)
 
-Jan
+diff --git a/main-loop.c b/main-loop.c
+index 62d95b9..db23de0 100644
+--- a/main-loop.c
++++ b/main-loop.c
+@@ -199,7 +199,7 @@ static int qemu_signal_init(void)
+ }
+ #endif
+ 
+-int qemu_init_main_loop(void)
++int main_loop_init(void)
+ {
+     int ret;
+ 
+diff --git a/main-loop.h b/main-loop.h
+index f971013..4987041 100644
+--- a/main-loop.h
++++ b/main-loop.h
+@@ -41,10 +41,22 @@
+  * SIGUSR2, thread signals (SIGFPE, SIGILL, SIGSEGV, SIGBUS) and real-time
+  * signals if available.  Remember that Windows in practice does not have
+  * signals, though.
++ *
++ * In the case of QEMU tools, this will also start/initialize timers.
+  */
+ int qemu_init_main_loop(void);
+ 
+ /**
++ * main_loop_init: Initializes main loop
++ *
++ * Internal (but shared for compatibility reasons) initialization routine
++ * for the main loop. This should not be used by applications directly,
++ * use qemu_init_main_loop() instead.
++ *
++ */
++int main_loop_init(void);
++
++/**
+  * main_loop_wait: Run one iteration of the main loop.
+  *
+  * If @nonblocking is true, poll for events, otherwise suspend until
+diff --git a/qemu-tool.c b/qemu-tool.c
+index 6b69668..183a583 100644
+--- a/qemu-tool.c
++++ b/qemu-tool.c
+@@ -83,11 +83,12 @@ void qemu_clock_warp(QEMUClock *clock)
+ {
+ }
+ 
+-static void __attribute__((constructor)) init_main_loop(void)
++int qemu_init_main_loop(void)
+ {
+     init_clocks();
+     init_timer_alarm();
+     qemu_clock_enable(vm_clock, false);
++    return main_loop_init();
+ }
+ 
+ void slirp_select_fill(int *pnfds, fd_set *readfds,
+diff --git a/vl.c b/vl.c
+index ba55b35..74a47e6 100644
+--- a/vl.c
++++ b/vl.c
+@@ -2136,6 +2136,11 @@ static void free_and_trace(gpointer mem)
+     free(mem);
+ }
+ 
++int qemu_init_main_loop(void)
++{
++    return main_loop_init();
++}
++
+ int main(int argc, char **argv, char **envp)
+ {
+     const char *gdbstub_dev = NULL;
+-- 
+1.7.4.1
 
-
---------------enigDE85DC5722BDC0C40DBD592E
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.18 (GNU/Linux)
-Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
-
-iEYEARECAAYFAk8a8OgACgkQitSsb3rl5xQqdQCgq+exo0JwIFeNBi0tGG0x6MXZ
-2aQAoKx1Dkyfus+Uy9mD0ID4W8o9EBwj
-=fisD
------END PGP SIGNATURE-----
-
---------------enigDE85DC5722BDC0C40DBD592E--
 
