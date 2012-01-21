@@ -1,45 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RoCp2-0004ij-Mk
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2012 06:39:56 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:38361)
+	id 1RoPRp-0001Yl-Ix
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2012 20:08:49 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:53527)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1RoCoz-0004YQ-Ol
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:39:55 -0500
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RoPRn-0001Pe-82
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 20:08:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1RoCov-0004iO-Hg
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 06:39:53 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:65282)
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RoPRm-0006By-12
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 20:08:47 -0500
+Received: from mout.perfora.net ([74.208.4.194]:60121)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1RoCoj-0004gw-M9; Fri, 20 Jan 2012 06:39:37 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q0KBdaPj018667
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 20 Jan 2012 06:39:36 -0500
-Received: from yakj.usersys.redhat.com (ovpn-112-23.ams2.redhat.com
-	[10.36.112.23])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q0KBdY0b017232; Fri, 20 Jan 2012 06:39:35 -0500
-Message-ID: <4F195276.9000308@redhat.com>
-Date: Fri, 20 Jan 2012 12:39:34 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:9.0) Gecko/20111222 Thunderbird/9.0
-MIME-Version: 1.0
-To: Jan Kiszka <jan.kiszka@siemens.com>, qemu-devel <qemu-devel@nongnu.org>,
-	qemu-trivial <qemu-trivial@nongnu.org>
-References: <1327057522-6590-1-git-send-email-pbonzini@redhat.com>
-	<4F194D46.1050501@siemens.com> <4F194F4E.9060901@redhat.com>
-	<4F195003.7050500@siemens.com>
-In-Reply-To: <4F195003.7050500@siemens.com>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	(envelope-from <mdroth@linux.vnet.ibm.com>)
+	id 1RoPRi-0006Al-JG; Fri, 20 Jan 2012 20:08:42 -0500
+Received: from illuin.austin.ibm.com ([32.97.110.59])
+	by mrelay.perfora.net (node=mrus0) with ESMTP (Nemesis)
+	id 0Lm2Tx-1SO1NT34ld-00ZepC; Fri, 20 Jan 2012 20:08:39 -0500
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 20 Jan 2012 19:08:27 -0600
+Message-Id: <1327108107-16600-1-git-send-email-mdroth@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.4.1
+X-Provags-ID: V02:K0:YC73A1HGkC2eB2Q1YFZ2IEga1FAofYDp9862szpWODd
+	7+ZmmuqPYQMHhfo+7mh9SQDjqSZpd8RLn1qILPKWjdjN3QTmAl
+	lQb1kY8UbL/fTtNXihNoikncxYOdN+iG63W5KWyhkw+ZYzMldH
+	+wYkwRHsb/I9B+NnUJOYlA0G9GOJOK5+CZsuOGE9x5cjaZ536Y
+	UdE4ZJ8temNAjW+0B0aqPG2j+02j5cBHHGCDDDshEYv6p3uvSj
+	jAlgSsKXmeawXCBGg+jIXgr9XrI5hVSlrVyQJ5NQ/4zJh7VG//
+	tmxqgzna3Ja6fT57o0z+aLfNQyOTrpCtLDvorQfkjpNebFsXMm
+	hterHGSXF3Co3Oc+8YvR085JCKr5DaLF+TUu4nbFY85+ufz5B4
+	/rO+d2wI3ApGuZXI1K7Sj93JhwxSSrjtZo=
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] rename get_clock_realtime
+X-Received-From: 74.208.4.194
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+Subject: [Qemu-trivial] [PATCH] main-loop: Fix SetEvent() on uninitialized
+	handle on win32
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,20 +46,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Jan 2012 11:39:55 -0000
+X-List-Received-Date: Sat, 21 Jan 2012 01:08:48 -0000
 
-On 01/20/2012 12:29 PM, Jan Kiszka wrote:
->> >  Yeah, however, realtime is quite confusing because CLOCK_MONOTONIC is
->> >  part of the "real-time clock API".  The code is much clearer than the
->> >  comment, I'll remove it completely.  v2 on the way.
-> There is CLOCK_MONOTONIC and CLOCK_REALTIME, and this function uses the
-> latter.
+The __attribute__((constructor)) init_main_loop() automatically get
+called if qemu-tool.o is linked in. On win32, this leads to
+a qemu_notify_event() call which attempts to SetEvent() on a HANDLE that
+won't be initialized until qemu_init_main_loop() is manually called,
+breaking qemu-tools.o programs on Windows at runtime.
 
-Actually it uses gettimeofday, but I see what you mean.
+This patch checks for an initialized event handle before attempting to
+set it, which is analoguous to how we deal with an unitialized
+io_thread_fd in the posix implementation.
 
-But QEMU_CLOCK_REALTIME and rt_clock refer to CLOCK_MONOTONIC and are 
-_not_ read by get_clock_realtime.  This actually is what prompted me to 
-rename get_clock_realtime (see commit message).
+Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+---
+ main-loop.c |    5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
 
-Paolo
+diff --git a/main-loop.c b/main-loop.c
+index 692381c..62d95b9 100644
+--- a/main-loop.c
++++ b/main-loop.c
+@@ -164,7 +164,7 @@ static int qemu_signal_init(void)
+ 
+ #else /* _WIN32 */
+ 
+-HANDLE qemu_event_handle;
++HANDLE qemu_event_handle = NULL;
+ 
+ static void dummy_event_handler(void *opaque)
+ {
+@@ -183,6 +183,9 @@ static int qemu_event_init(void)
+ 
+ void qemu_notify_event(void)
+ {
++    if (!qemu_event_handle) {
++        return;
++    }
+     if (!SetEvent(qemu_event_handle)) {
+         fprintf(stderr, "qemu_notify_event: SetEvent failed: %ld\n",
+                 GetLastError());
+-- 
+1.7.4.1
+
 
