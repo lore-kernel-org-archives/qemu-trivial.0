@@ -1,40 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RoPRp-0001Yl-Ix
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2012 20:08:49 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:53527)
+	id 1RoaSr-0002vV-Ui
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Jan 2012 07:54:37 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:42662)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RoPRn-0001Pe-82
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 20:08:48 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1RoaSo-0002l2-My
+	for qemu-trivial@nongnu.org; Sat, 21 Jan 2012 07:54:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1RoPRm-0006By-12
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2012 20:08:47 -0500
-Received: from mout.perfora.net ([74.208.4.194]:60121)
+	(envelope-from <stefan@weilnetz.de>) id 1RoaSn-00075J-QL
+	for qemu-trivial@nongnu.org; Sat, 21 Jan 2012 07:54:34 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:39634)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>)
-	id 1RoPRi-0006Al-JG; Fri, 20 Jan 2012 20:08:42 -0500
-Received: from illuin.austin.ibm.com ([32.97.110.59])
-	by mrelay.perfora.net (node=mrus0) with ESMTP (Nemesis)
-	id 0Lm2Tx-1SO1NT34ld-00ZepC; Fri, 20 Jan 2012 20:08:39 -0500
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
+	(envelope-from <stefan@weilnetz.de>)
+	id 1RoaSl-00074z-Mo; Sat, 21 Jan 2012 07:54:31 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	5CC11728000B; Sat, 21 Jan 2012 13:54:29 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id OCOcBK1zG3GA; Sat, 21 Jan 2012 13:54:25 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 8F8D1728000C; Sat, 21 Jan 2012 13:54:25 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org
-Date: Fri, 20 Jan 2012 19:08:27 -0600
-Message-Id: <1327108107-16600-1-git-send-email-mdroth@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.4.1
-X-Provags-ID: V02:K0:YC73A1HGkC2eB2Q1YFZ2IEga1FAofYDp9862szpWODd
-	7+ZmmuqPYQMHhfo+7mh9SQDjqSZpd8RLn1qILPKWjdjN3QTmAl
-	lQb1kY8UbL/fTtNXihNoikncxYOdN+iG63W5KWyhkw+ZYzMldH
-	+wYkwRHsb/I9B+NnUJOYlA0G9GOJOK5+CZsuOGE9x5cjaZ536Y
-	UdE4ZJ8temNAjW+0B0aqPG2j+02j5cBHHGCDDDshEYv6p3uvSj
-	jAlgSsKXmeawXCBGg+jIXgr9XrI5hVSlrVyQJ5NQ/4zJh7VG//
-	tmxqgzna3Ja6fT57o0z+aLfNQyOTrpCtLDvorQfkjpNebFsXMm
-	hterHGSXF3Co3Oc+8YvR085JCKr5DaLF+TUu4nbFY85+ufz5B4
-	/rO+d2wI3ApGuZXI1K7Sj93JhwxSSrjtZo=
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 74.208.4.194
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
-Subject: [Qemu-trivial] [PATCH] main-loop: Fix SetEvent() on uninitialized
-	handle on win32
+Date: Sat, 21 Jan 2012 13:54:24 +0100
+Message-Id: <1327150464-29682-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.7.3
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] block/vdi: Zero unused parts when allocating
+	a new block (fix #919242)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,47 +44,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Jan 2012 01:08:48 -0000
+X-List-Received-Date: Sat, 21 Jan 2012 12:54:35 -0000
 
-The __attribute__((constructor)) init_main_loop() automatically get
-called if qemu-tool.o is linked in. On win32, this leads to
-a qemu_notify_event() call which attempts to SetEvent() on a HANDLE that
-won't be initialized until qemu_init_main_loop() is manually called,
-breaking qemu-tools.o programs on Windows at runtime.
+The new block was filled with zero when it was allocated by g_malloc0,
+but when it was reused later and only partially used, data from the
+previously allocated block were still present and written to the new
+block.
 
-This patch checks for an initialized event handle before attempting to
-set it, which is analoguous to how we deal with an unitialized
-io_thread_fd in the posix implementation.
+This caused the problems reported by bug #919242
+(https://bugs.launchpad.net/qemu/+bug/919242).
 
-Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+Now the unused parts of the new block which are before and after the data
+are always filled with zero, so it is no longer necessary to zero the whole
+block with g_malloc0.
+
+I also updated the copyright comment.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- main-loop.c |    5 ++++-
- 1 files changed, 4 insertions(+), 1 deletions(-)
+ block/vdi.c |    8 ++++++--
+ 1 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/main-loop.c b/main-loop.c
-index 692381c..62d95b9 100644
---- a/main-loop.c
-+++ b/main-loop.c
-@@ -164,7 +164,7 @@ static int qemu_signal_init(void)
- 
- #else /* _WIN32 */
- 
--HANDLE qemu_event_handle;
-+HANDLE qemu_event_handle = NULL;
- 
- static void dummy_event_handler(void *opaque)
- {
-@@ -183,6 +183,9 @@ static int qemu_event_init(void)
- 
- void qemu_notify_event(void)
- {
-+    if (!qemu_event_handle) {
-+        return;
-+    }
-     if (!SetEvent(qemu_event_handle)) {
-         fprintf(stderr, "qemu_notify_event: SetEvent failed: %ld\n",
-                 GetLastError());
+diff --git a/block/vdi.c b/block/vdi.c
+index 31cdfab..6a0011f 100644
+--- a/block/vdi.c
++++ b/block/vdi.c
+@@ -1,7 +1,7 @@
+ /*
+  * Block driver for the Virtual Disk Image (VDI) format
+  *
+- * Copyright (c) 2009 Stefan Weil
++ * Copyright (c) 2009, 2012 Stefan Weil
+  *
+  * This program is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -756,15 +756,19 @@ static void vdi_aio_write_cb(void *opaque, int ret)
+                  (uint64_t)bmap_entry * s->block_sectors;
+         block = acb->block_buffer;
+         if (block == NULL) {
+-            block = g_malloc0(s->block_size);
++            block = g_malloc(s->block_size);
+             acb->block_buffer = block;
+             acb->bmap_first = block_index;
+             assert(!acb->header_modified);
+             acb->header_modified = 1;
+         }
+         acb->bmap_last = block_index;
++        /* Copy data to be written to new block and zero unused parts. */
++        memset(block, 0, sector_in_block * SECTOR_SIZE);
+         memcpy(block + sector_in_block * SECTOR_SIZE,
+                acb->buf, n_sectors * SECTOR_SIZE);
++        memset(block + (sector_in_block + n_sectors) * SECTOR_SIZE, 0,
++               (s->block_sectors - n_sectors - sector_in_block) * SECTOR_SIZE);
+         acb->hd_iov.iov_base = (void *)block;
+         acb->hd_iov.iov_len = s->block_size;
+         qemu_iovec_init_external(&acb->hd_qiov, &acb->hd_iov, 1);
 -- 
-1.7.4.1
+1.7.7.3
 
 
