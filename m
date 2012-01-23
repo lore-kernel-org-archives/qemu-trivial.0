@@ -1,36 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rohiu-0005Vg-If
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Jan 2012 15:39:40 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54952)
+	id 1RpIOj-0001he-O6
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Jan 2012 06:49:17 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:35421)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jamie@shareable.org>) id 1Rohiq-0005Jp-QW
-	for qemu-trivial@nongnu.org; Sat, 21 Jan 2012 15:39:37 -0500
+	(envelope-from <kwolf@redhat.com>) id 1RpIOd-0001Md-5Y
+	for qemu-trivial@nongnu.org; Mon, 23 Jan 2012 06:49:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jamie@shareable.org>) id 1Rohip-00019I-Fl
-	for qemu-trivial@nongnu.org; Sat, 21 Jan 2012 15:39:36 -0500
-Received: from mail2.shareable.org ([80.68.89.115]:38978)
+	(envelope-from <kwolf@redhat.com>) id 1RpIOY-0003jg-Tz
+	for qemu-trivial@nongnu.org; Mon, 23 Jan 2012 06:49:11 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:65263)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jamie@shareable.org>)
-	id 1Rohin-00018P-DH; Sat, 21 Jan 2012 15:39:33 -0500
-Received: from jamie by mail2.shareable.org with local (Exim 4.63)
-	(envelope-from <jamie@shareable.org>)
-	id 1Rohid-0005Ir-L5; Sat, 21 Jan 2012 20:39:23 +0000
-Date: Sat, 21 Jan 2012 20:39:23 +0000
-From: Jamie Lokier <jamie@shareable.org>
-To: Michael Roth <mdroth@linux.vnet.ibm.com>
-Message-ID: <20120121203923.GE4871@jl-vm1.vm.bytemark.co.uk>
-References: <1327108107-16600-1-git-send-email-mdroth@linux.vnet.ibm.com>
-	<1327166033-17922-1-git-send-email-mdroth@linux.vnet.ibm.com>
+	(envelope-from <kwolf@redhat.com>)
+	id 1RpIOQ-0003iA-2s; Mon, 23 Jan 2012 06:48:58 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q0NBmv5u011139
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 23 Jan 2012 06:48:57 -0500
+Received: from dhcp-5-188.str.redhat.com (dhcp-5-175.str.redhat.com
+	[10.32.5.175])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q0NBms9w014579
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-CAMELLIA256-SHA bits=256 verify=NO);
+	Mon, 23 Jan 2012 06:48:56 -0500
+Message-ID: <4F1D49F4.5090801@redhat.com>
+Date: Mon, 23 Jan 2012 12:52:20 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:8.0) Gecko/20111115 Thunderbird/8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1327166033-17922-1-git-send-email-mdroth@linux.vnet.ibm.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 80.68.89.115
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] main-loop: For tools,
- initialize timers as part of qemu_init_main_loop()
+To: Stefan Weil <sw@weilnetz.de>
+References: <1327150464-29682-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1327150464-29682-1-git-send-email-sw@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] block/vdi: Zero unused parts when
+ allocating a new block (fix #919242)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,30 +52,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Jan 2012 20:39:37 -0000
+X-List-Received-Date: Mon, 23 Jan 2012 11:49:15 -0000
 
-Michael Roth wrote:
-> In some cases initializing the alarm timers can lead to non-negligable
-> overhead from programs that link against qemu-tool.o. At least,
-> setting a max-resolution WinMM alarm timer via mm_start_timer() (the
-> current default for Windows) can increase the "tick rate" on Windows
-> OSs and affect frequency scaling, and in the case of tools that run
-> in guest OSs such has qemu-ga, the impact can be fairly dramatic
-> (+20%/20% user/sys time on a core 2 processor was observed from an idle
-> Windows XP guest).
+Am 21.01.2012 13:54, schrieb Stefan Weil:
+> The new block was filled with zero when it was allocated by g_malloc0,
+> but when it was reused later and only partially used, data from the
+> previously allocated block were still present and written to the new
+> block.
 > 
-> This patch doesn't address the issue directly (not sure what a good
-> solution would be for Windows, or what other situations it might be
-> noticeable),
+> This caused the problems reported by bug #919242
+> (https://bugs.launchpad.net/qemu/+bug/919242).
+> 
+> Now the unused parts of the new block which are before and after the data
+> are always filled with zero, so it is no longer necessary to zero the whole
+> block with g_malloc0.
+> 
+> I also updated the copyright comment.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Is this a timer that need to fire soon after setting, every time?
+Thanks, applied to the block branch (this is not trivial!)
 
-I wonder if a different kind of Windows timer, lower-resolution, could
-be used if the timeout is longer.  If it has insufficient resolution,
-it could be set to trigger a little early, then set a high-resolution
-timer at that point.
-
-Maybe that could help for Linux CONFIG_NOHZ guests?
-
--- Jamie
+Kevin
 
