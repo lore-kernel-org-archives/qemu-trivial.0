@@ -1,48 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rpk2d-0006Pe-2q
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2012 12:20:19 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:40863)
+	id 1RpkKb-00036i-Vu
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2012 12:38:53 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:58495)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thigdon@akamai.com>) id 1Rpk2R-0005sL-6l
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:20:16 -0500
+	(envelope-from <slyfox@gentoo.org>) id 1RpkKY-0002s2-6c
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:38:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thigdon@akamai.com>) id 1Rpk2I-0001SG-Ea
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:20:04 -0500
-Received: from prod-mail-xrelay02.akamai.com ([72.246.2.14]:55533)
+	(envelope-from <slyfox@gentoo.org>) id 1RpkKW-0003uf-8a
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:38:49 -0500
+Received: from smtp.gentoo.org ([140.211.166.183]:52917)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thigdon@akamai.com>)
-	id 1Rpk27-0001Qi-6A; Tue, 24 Jan 2012 12:19:47 -0500
-Received: from prod-mail-xrelay02.akamai.com (localhost [127.0.0.1])
-	by postfix.imss70 (Postfix) with ESMTP id 2874327D03;
-	Tue, 24 Jan 2012 17:19:45 +0000 (GMT)
-Received: from prod-mail-relay02.akamai.com (prod-mail-relay02.akamai.com
-	[172.17.50.21])
-	by prod-mail-xrelay02.akamai.com (Postfix) with ESMTP id 0D0E327CF2;
-	Tue, 24 Jan 2012 17:19:45 +0000 (GMT)
-Received: from texas.kendall.corp.akamai.com (texas.kendall.corp.akamai.com
-	[172.28.11.142])
-	by prod-mail-relay02.akamai.com (Postfix) with ESMTP id 018C3FE065;
-	Tue, 24 Jan 2012 17:19:45 +0000 (GMT)
-Received: from thigdon by texas.kendall.corp.akamai.com with local (Exim 4.71)
-	(envelope-from <thigdon@akamai.com>)
-	id 1Rpk24-0001ux-Vd; Tue, 24 Jan 2012 12:19:44 -0500
-Date: Tue, 24 Jan 2012 12:19:44 -0500
-From: Thomas Higdon <thigdon@akamai.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Message-ID: <20120124171944.GD14494@akamai.com>
-References: <20120123171525.GM32632@akamai.com> <4F1EB7BF.8070104@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4F1EB7BF.8070104@redhat.com>
-User-Agent: Mutt/1.5.20 (2009-06-14)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 72.246.2.14
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"paul@codesourcery.com" <paul@codesourcery.com>
-Subject: [Qemu-trivial] [PATCH] scsi: Guard against buflen exceeding
- req->cmd.xfer in scsi_disk_emulate_command
+	(envelope-from <slyfox@gentoo.org>)
+	id 1RpkKM-0003oW-A8; Tue, 24 Jan 2012 12:38:38 -0500
+Received: from sf.home (unknown [178.125.150.85])
+	(using TLSv1 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested) (Authenticated sender: slyfox)
+	by smtp.gentoo.org (Postfix) with ESMTPSA id C92161B4003;
+	Tue, 24 Jan 2012 17:38:36 +0000 (UTC)
+Received: by sf.home (Postfix, from userid 1000)
+	id A07DE1254725; Tue, 24 Jan 2012 20:42:45 +0300 (FET)
+From: Sergei Trofimovich <slyfox@inbox.ru>
+To: qemu-devel@nongnu.org
+Date: Tue, 24 Jan 2012 20:42:40 +0300
+Message-Id: <1327426960-29196-1-git-send-email-slyfox@inbox.ru>
+X-Mailer: git-send-email 1.7.8.3
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 140.211.166.183
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Anthony Liguori <aliguori@us.ibm.com>,
+	Sergei Trofimovich <slyfox@gentoo.org>
+Subject: [Qemu-trivial] [PATCH] ./configure: export xfs config via --{enable,
+	disable}-xfsctl
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,108 +43,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2012 17:20:16 -0000
+X-List-Received-Date: Tue, 24 Jan 2012 17:38:51 -0000
 
-On Tue, Jan 24, 2012 at 08:53:03AM -0500, Kevin Wolf wrote:
-> Am 23.01.2012 18:15, schrieb Thomas Higdon:
-> > This prevents the emulated SCSI device from trying to DMA more bytes to the
-> > initiator than are expected. Without this, the SCRIPTS code in the emulated LSI
-> > device eventually raises a DMA interrupt for a data overrun when an INQUIRY
-> > command whose buflen exceeds req->cmd.xfer is processed. It's the
-> > responsibility of the client to provide a request buffer and allocation
-> > length that are large enough for the result of the command.
-> > 
-> > Signed-off-by: Thomas Higdon <thigdon@akamai.com>
-> > ---
-> >  hw/scsi-disk.c |    3 +++
-> >   1 files changed, 3 insertions(+), 0 deletions(-)
-> > 
-> > diff --git a/hw/scsi-disk.c b/hw/scsi-disk.c
-> > index 5d8bf53..71fe2a3 100644
-> > --- a/hw/scsi-disk.c
-> > +++ b/hw/scsi-disk.c
-> > @@ -477,6 +477,9 @@ static int scsi_disk_emulate_inquiry(SCSIRequest *req, uint8_t *outbuf)
-> >                   "buffer size %zd\n", page_code, req->cmd.xfer);
-> >              return -1;
-> >          }
-> > +        if (buflen > req->cmd.xfer) {
-> > +            buflen = req->cmd.xfer;
-> > +        }
-> >          /* done with EVPD */
-> >          return buflen;
-> >      }
-> 
-> I wonder if it would make sense to make this check in a more central
-> place like scsi_send_command(). This way we would avoid similar bugs in
-> other commands.
+From: Sergei Trofimovich <slyfox@gentoo.org>
 
-Limit the return value (corresponding to the length of the buffer to be
-DMAed back to the intiator) to the value in req->cmd.xfer, which is the
-amount of data that the initiator expects. Eliminate now-duplicate code
-that does this guarding in the functions for individual commands.
-
-Without this, the SCRIPTS code in the emulated LSI device eventually
-raises a DMA interrupt for a data overrun when an INQUIRY command whose
-buflen exceeds req->cmd.xfer is processed. It's the responsibility of
-the client to provide a request buffer and allocation length that are
-large enough for the result of the command.
-
-Signed-off-by: Thomas Higdon <thigdon@akamai.com>
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
 ---
+ configure |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
 
-I agree that it's better to get this into a more general place. However,
-I wasn't willing to pull the MIN statement up into scsi_send_command
-because I don't understand the interplay between 'len' in that function
-and r->iov.iov_len. I couldn't see that there was a general relationship
-between these two variables that applied to both read/write commands and
-other commands.
-
- hw/scsi-disk.c |   10 +---------
- 1 files changed, 1 insertions(+), 9 deletions(-)
-
-diff --git a/hw/scsi-disk.c b/hw/scsi-disk.c
-index 5d8bf53..11cfe73 100644
---- a/hw/scsi-disk.c
-+++ b/hw/scsi-disk.c
-@@ -391,9 +391,6 @@ static int scsi_disk_emulate_inquiry(SCSIRequest *req, uint8_t *outbuf)
-             }
- 
-             l = strlen(s->serial);
--            if (l > req->cmd.xfer) {
--                l = req->cmd.xfer;
--            }
-             if (l > 20) {
-                 l = 20;
-             }
-@@ -1002,9 +999,6 @@ static int scsi_disk_emulate_mode_sense(SCSIDiskReq *r, uint8_t *outbuf)
-         outbuf[0] = ((buflen - 2) >> 8) & 0xff;
-         outbuf[1] = (buflen - 2) & 0xff;
-     }
--    if (buflen > r->req.cmd.xfer) {
--        buflen = r->req.cmd.xfer;
--    }
-     return buflen;
- }
- 
-@@ -1038,9 +1032,6 @@ static int scsi_disk_emulate_read_toc(SCSIRequest *req, uint8_t *outbuf)
-     default:
-         return -1;
-     }
--    if (toclen > req->cmd.xfer) {
--        toclen = req->cmd.xfer;
--    }
-     return toclen;
- }
- 
-@@ -1251,6 +1242,7 @@ static int scsi_disk_emulate_command(SCSIDiskReq *r)
-         scsi_check_condition(r, SENSE_CODE(INVALID_OPCODE));
-         return -1;
-     }
-+    buflen = MIN(buflen, req->cmd.xfer);
-     return buflen;
- 
- not_ready:
+diff --git a/configure b/configure
+index 9d72145..bca1943 100755
+--- a/configure
++++ b/configure
+@@ -771,6 +771,10 @@ for opt do
+   ;;
+   --enable-rbd) rbd="yes"
+   ;;
++  --disable-xfsctl) xfs="no"
++  ;;
++  --enable-xfsctl) xfs="yes"
++  ;;
+   --disable-smartcard) smartcard="no"
+   ;;
+   --enable-smartcard) smartcard="yes"
 -- 
-1.7.0.4
+1.7.8.3
 
 
