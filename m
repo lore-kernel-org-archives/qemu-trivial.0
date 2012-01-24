@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rq46b-0007lE-Gd
+	id 1Rq46b-0007ms-VD
 	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2012 09:45:45 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:42337)
+Received: from eggs.gnu.org ([140.186.70.92]:46583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1RpkBY-0000Sl-Nd
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:29:39 -0500
+	(envelope-from <jan.kiszka@siemens.com>) id 1Rpkew-0001mI-Pt
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 13:00:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1RpkBT-0002gk-OJ
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:29:32 -0500
-Received: from goliath.siemens.de ([192.35.17.28]:25644)
+	(envelope-from <jan.kiszka@siemens.com>) id 1Rpkes-00073w-Bh
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:59:54 -0500
+Received: from david.siemens.de ([192.35.17.14]:28681)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <jan.kiszka@siemens.com>)
-	id 1RpkBE-0002ZO-T3; Tue, 24 Jan 2012 12:29:13 -0500
+	id 1Rpkej-00070r-5o; Tue, 24 Jan 2012 12:59:41 -0500
 Received: from mail1.siemens.de (localhost [127.0.0.1])
-	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id q0OHT8Rj008774;
-	Tue, 24 Jan 2012 18:29:08 +0100
+	by david.siemens.de (8.13.6/8.13.6) with ESMTP id q0OHxajt002173;
+	Tue, 24 Jan 2012 18:59:36 +0100
 Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
-	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q0OHT85E022439;
-	Tue, 24 Jan 2012 18:29:08 +0100
-Message-ID: <4F1EEA64.2080704@siemens.com>
-Date: Tue, 24 Jan 2012 18:29:08 +0100
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q0OHxakB020298;
+	Tue, 24 Jan 2012 18:59:36 +0100
+Message-ID: <4F1EF188.4090608@siemens.com>
+Date: Tue, 24 Jan 2012 18:59:36 +0100
 From: Jan Kiszka <jan.kiszka@siemens.com>
 User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
 	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
@@ -27,14 +27,15 @@ User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
 MIME-Version: 1.0
 To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
 References: <1327425457-31313-1-git-send-email-afaerber@suse.de>
-In-Reply-To: <1327425457-31313-1-git-send-email-afaerber@suse.de>
+	<4F1EEA64.2080704@siemens.com> <4F1EEC88.8060803@suse.de>
+In-Reply-To: <4F1EEC88.8060803@suse.de>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by goliath.siemens.de id
-	q0OHT8Rj008774
+X-MIME-Autoconverted: from 8bit to quoted-printable by david.siemens.de id
+	q0OHxajt002173
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
 	4)
-X-Received-From: 192.35.17.28
+X-Received-From: 192.35.17.14
 X-Mailman-Approved-At: Wed, 25 Jan 2012 09:45:41 -0500
 Cc: Kevin Wolf <kwolf@redhat.com>, Blue Swirl <blauwirbel@gmail.com>,
 	Anthony Liguori <aliguori@us.ibm.com>, Juan Quintela <quintela@redhat.com>,
@@ -57,112 +58,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2012 17:29:39 -0000
+X-List-Received-Date: Tue, 24 Jan 2012 18:00:01 -0000
 
-On 2012-01-24 18:17, Andreas F=C3=A4rber wrote:
-> From: Andreas F=C3=A4rber <andreas.faerber@web.de>
+On 2012-01-24 18:38, Andreas F=C3=A4rber wrote:
+> Am 24.01.2012 18:29, schrieb Jan Kiszka:
+>> On 2012-01-24 18:17, Andreas F=C3=A4rber wrote:
+>>> From: Andreas F=C3=A4rber <andreas.faerber@web.de>
+>>>
+>>> VMState supports the type bool but qdev instead supports bit, backed =
+by
+>>> uint32_t. Therefore let's add DEFINE_PROP_BOOL() and qdev_prop_set_bo=
+ol().
+>>>
+>>> bool by definition is either true or false. Should the need arise to
+>>> parse yes/no, on/off, 1/0 or whatever as well, we can still add that =
+at
+>>> a later point in time.
+>>
+>> To make it a real replacement for PROP_TYPE_BIT, let's use on/off, als=
+o
+>> for printing. Not only programmers may use this interface. ;)
 >=20
-> VMState supports the type bool but qdev instead supports bit, backed by
-> uint32_t. Therefore let's add DEFINE_PROP_BOOL() and qdev_prop_set_bool=
-().
->=20
-> bool by definition is either true or false. Should the need arise to
-> parse yes/no, on/off, 1/0 or whatever as well, we can still add that at
-> a later point in time.
+> Actually non-programmers are the reason for this: cache=3Don/off makes =
+a
+> great deal of sense in English (noun), but not enabled=3Doff (adjective=
+),
+> which was my use case of this patch for ISA devices.
 
-To make it a real replacement for PROP_TYPE_BIT, let's use on/off, also
-for printing. Not only programmers may use this interface. ;)
+Agreed, there are use cases for both.
 
 >=20
-> Signed-off-by: Andreas F=C3=A4rber <andreas.faerber@web.de>
-> Cc: Juan Quintela <quintela@redhat.com>
-> Cc: Markus Armbruster <armbru@redhat.com>
-> Cc: Jan Kiszka <jan.kiszka@siemens.com>
-> Cc: Vasilis Liaskovitis <vasilis.liaskovitis@profitbricks.com>
-> ---
->  v5 -> v6:
->  * Rebased onto QOM properties.
->  * Parse and print true/false for bool, leave bit untouched.
->  Please review, v6 untested.
->=20
->  v4 -> v5 (40P):
->  * Parse on/off in addition to yes/no for both bit and bool, print yes/=
-no for bool.
->=20
->  v4 (ISA):
->  * Introduced.
->=20
->  hw/qdev-properties.c |   62 ++++++++++++++++++++++++++++++++++++++++++=
-++++++++
->  hw/qdev.h            |    4 +++
->  2 files changed, 66 insertions(+), 0 deletions(-)
->=20
-> diff --git a/hw/qdev-properties.c b/hw/qdev-properties.c
-> index 02f0dae..612f2ea 100644
-> --- a/hw/qdev-properties.c
-> +++ b/hw/qdev-properties.c
-> @@ -96,6 +96,68 @@ PropertyInfo qdev_prop_bit =3D {
->      .set   =3D set_bit,
->  };
-> =20
-> +/* --- bool --- */
-> +
-> +static int parse_bool(DeviceState *dev, Property *prop, const char *st=
-r)
-> +{
-> +    bool *ptr =3D qdev_get_prop_ptr(dev, prop);
-> +    if (strcmp(str, "true") =3D=3D 0) {
-> +        *ptr =3D true;
-> +    } else if (strcmp(str, "false") =3D=3D 0) {
-> +        *ptr =3D false;
-> +    } else {
-> +        return -EINVAL;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static int print_bool(DeviceState *dev, Property *prop, char *dest, si=
-ze_t len)
-> +{
-> +    bool *ptr =3D qdev_get_prop_ptr(dev, prop);
-> +    return snprintf(dest, len, *ptr ? "true" : "false");
-> +}
-> +
-> +static void get_bool(DeviceState *dev, Visitor *v, void *opaque,
-> +                     const char *name, Error **errp)
-> +{
-> +    Property *prop =3D opaque;
-> +    bool *ptr =3D qdev_get_prop_ptr(dev, prop);
-> +
-> +    visit_type_bool(v, ptr, name, errp);
-> +}
-> +
-> +static void set_bool(DeviceState *dev, Visitor *v, void *opaque,
-> +                     const char *name, Error **errp)
-> +{
-> +    Property *prop =3D opaque;
-> +    bool *ptr =3D qdev_get_prop_ptr(dev, prop);
-> +    Error *local_err =3D NULL;
-> +    bool value;
-> +
-> +    if (dev->state !=3D DEV_STATE_CREATED) {
-> +        error_set(errp, QERR_PERMISSION_DENIED);
-> +        return;
-> +    }
-> +
-> +    visit_type_bool(v, &value, name, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
-> +    *ptr =3D value;
-> +}
-> +
-> +PropertyInfo qdev_prop_bool =3D {
-> +    .name =3D "bool",
+> I'm fine with accepting the whole range of possibilities for parsing.
+> For printing I see no reason to, since there's no legacy users of this
+> new type we could break. true/false seemed better than yes/no.
 
-Now we have "bool" and "boolean". Can we rename the latter to bit?
+We have a few single-bit booleans I would like to convert to bool. So
+the best option may be having control over what is printed. Could we
+easily provide a PROP_TYPE_SWITCH based on bool?
+
+>=20
+>>> +PropertyInfo qdev_prop_bool =3D {
+>>> +    .name =3D "bool",
+>>
+>> Now we have "bool" and "boolean". Can we rename the latter to bit?
+>=20
+> I'd be fine with that, just don't know if that would break anything
+> elsewhere for qdev or QOM?
+
+Hmm, to me it looks like it's only used for verbose error reporting. But
+I may miss something.
 
 Jan
 
