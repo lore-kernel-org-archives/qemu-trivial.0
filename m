@@ -1,49 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rpf8B-0000f4-SL
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2012 07:05:43 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:51245)
+	id 1Rpfpx-0006BI-At
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2012 07:50:57 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:33275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Rpf84-0000OE-4o
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 07:05:41 -0500
+	(envelope-from <jan.kiszka@siemens.com>) id 1Rpfpm-0005gf-B3
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 07:50:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Rpf7y-00084a-Cm
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 07:05:36 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:64792)
+	(envelope-from <jan.kiszka@siemens.com>) id 1Rpfpg-00074L-1S
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 07:50:46 -0500
+Received: from goliath.siemens.de ([192.35.17.28]:26774)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Rpf7s-00083u-RT; Tue, 24 Jan 2012 07:05:25 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q0OC5NSJ008692
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 24 Jan 2012 07:05:24 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-60.ams2.redhat.com
-	[10.36.116.60])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q0OC5Mcv000731; Tue, 24 Jan 2012 07:05:23 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 500)
-	id 23EF06006E; Tue, 24 Jan 2012 13:05:22 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Jan Kiszka <jan.kiszka@web.de>
-References: <4F1AC0EB.3050304@web.de> <4F1AE974.2090401@suse.de>
-	<4F1AF0E2.8050907@web.de>
-Date: Tue, 24 Jan 2012 13:05:22 +0100
-In-Reply-To: <4F1AF0E2.8050907@web.de> (Jan Kiszka's message of "Sat, 21 Jan
-	2012 18:07:46 +0100")
-Message-ID: <m3zkddmhkt.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.3 (gnu/linux)
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1RpfpH-00071n-Fa; Tue, 24 Jan 2012 07:50:15 -0500
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id q0OCoDtV003835;
+	Tue, 24 Jan 2012 13:50:13 +0100
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q0OCoCMr022479;
+	Tue, 24 Jan 2012 13:50:13 +0100
+Message-ID: <4F1EA904.4000105@siemens.com>
+Date: Tue, 24 Jan 2012 13:50:12 +0100
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qdev-property: Make bit
-	property parsing stricter
+To: qemu-devel <qemu-devel@nongnu.org>, Anthony Liguori <aliguori@us.ibm.com>
+References: <4F1EA872.4030905@siemens.com>
+In-Reply-To: <4F1EA872.4030905@siemens.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 192.35.17.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-stable@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] e1000: Preserve link state across device
+	reset
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,29 +47,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2012 12:05:42 -0000
+X-List-Received-Date: Tue, 24 Jan 2012 12:50:55 -0000
 
-Jan Kiszka <jan.kiszka@web.de> writes:
+On 2012-01-24 13:47, Jan Kiszka wrote:
+> A device reset does not affect the link state, only set_link does.
+> 
+> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> ---
+>  hw/e1000.c |    5 +++++
+>  1 files changed, 5 insertions(+), 0 deletions(-)
+> 
+> diff --git a/hw/e1000.c b/hw/e1000.c
+> index 86c5416..76e736f 100644
+> --- a/hw/e1000.c
+> +++ b/hw/e1000.c
+> @@ -1133,6 +1133,11 @@ static void e1000_reset(void *opaque)
+>      memmove(d->mac_reg, mac_reg_init, sizeof mac_reg_init);
+>      d->rxbuf_min_shift = 1;
+>      memset(&d->tx, 0, sizeof d->tx);
+> +
+> +    if (d->nic->nc.link_down) {
+> +        d->mac_reg[STATUS] &= ~E1000_STATUS_LU;
+> +        d->phy_reg[PHY_STATUS] &= ~MII_SR_LINK_STATUS;
+> +    }
+>  }
+>  
+>  static NetClientInfo net_e1000_info = {
 
-> On 2012-01-21 17:36, Andreas F=C3=A4rber wrote:
->> Am 21.01.2012 14:43, schrieb Jan Kiszka:
->>> By using strncasecmp, we allow for arbitrary characters after the
->>> "on"/"off" string. Fix this by switching to strcasecmp.
->>>
->>> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
->>=20
->> Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
->>=20
->> An alternative might be to increase the char count by one. For a const
->> char* parameter I see the responsibility for nul-terminating at the
->> caller though, so this seems right. Did you check all callers?
->
-> For any normal function that takes a char * string without a maximum
-> length, the responsibility for terminating is on caller side. Also
-> because we checks against patterns of different length. So we don't need
-> to jump through hoops here.
+May rather go via trivial, sorry.
 
-I agree.
+Jan
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+-- 
+Siemens AG, Corporate Technology, CT T DE IT 1
+Corporate Competence Center Embedded Linux
 
