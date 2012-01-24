@@ -1,37 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RpOj3-0006Ph-QG
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Jan 2012 13:34:41 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:44625)
+	id 1RpbdB-0003HF-N2
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2012 03:21:29 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:47570)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1RpOiy-00065u-2M
-	for qemu-trivial@nongnu.org; Mon, 23 Jan 2012 13:34:40 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1Rpbd4-0003Gw-IQ
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 03:21:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1RpOix-0004IC-2X
-	for qemu-trivial@nongnu.org; Mon, 23 Jan 2012 13:34:36 -0500
-Received: from goliath.siemens.de ([192.35.17.28]:30093)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1Rpbcx-0006Kq-JV
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 03:21:22 -0500
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:38640)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>)
-	id 1RpOiq-0004Hi-4c; Mon, 23 Jan 2012 13:34:28 -0500
-Received: from mail1.siemens.de (localhost [127.0.0.1])
-	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id q0NIYOeY029312;
-	Mon, 23 Jan 2012 19:34:24 +0100
-Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
-	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q0NIYNHu009955;
-	Mon, 23 Jan 2012 19:34:23 +0100
-Message-ID: <4F1DA82F.4090808@siemens.com>
-Date: Mon, 23 Jan 2012 19:34:23 +0100
-From: Jan Kiszka <jan.kiszka@siemens.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1Rpbcx-0006Kg-D6; Tue, 24 Jan 2012 03:21:15 -0500
+Received: by iahk25 with SMTP id k25so4158257iah.4
+	for <multiple recipients>; Tue, 24 Jan 2012 00:21:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=sender:message-id:date:from:user-agent:mime-version:newsgroups:to
+	:cc:subject:references:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=fkvs+cQ62CoNBXPeQAQB6A+HVPEHvWIEXCjL+rbXOmI=;
+	b=bGDXRI5dymfF0yWkrogoXm4IVc2PaiymI/69iPLpIANyGeuBqVLp1OCkCdCTCbDA2t
+	rp95mlFXxYlJBkfv3OKUCzx927vmSu+0NSTtV0VPlV0lc4hvv8wuOcdPKPawNBAAQs8N
+	w/YYtc5Ado4bgi9odZnvfe8lj+wYcfAnVlVAo=
+Received: by 10.42.151.196 with SMTP id f4mr12691873icw.29.1327393274357;
+	Tue, 24 Jan 2012 00:21:14 -0800 (PST)
+Received: from yakj.usersys.redhat.com (93-34-182-16.ip50.fastwebnet.it.
+	[93.34.182.16])
+	by mx.google.com with ESMTPS id or1sm28146538igc.3.2012.01.24.00.21.10
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 24 Jan 2012 00:21:13 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <4F1E69F3.4040406@redhat.com>
+Date: Tue, 24 Jan 2012 09:21:07 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:9.0) Gecko/20111222 Thunderbird/9.0
 MIME-Version: 1.0
-To: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=ISO-8859-1
+Newsgroups: gmane.comp.emulators.qemu
+To: Thomas Higdon <thigdon@akamai.com>
+References: <20120123171525.GM32632@akamai.com> <4F1D9D4A.3000104@redhat.com>
+	<20120123181426.GA14494@akamai.com>
+In-Reply-To: <20120123181426.GA14494@akamai.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 192.35.17.28
-Subject: [Qemu-trivial] [PATCH] optionroms: Silence intermediate file removal
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
+	qemu-devel <qemu-devel@nongnu.org>, Paul Brook <paul@codesourcery.com>
+Subject: Re: [Qemu-trivial] [PATCH] scsi: restrict buffer length to
+ req->cmd.xfer for responses to INQUIRY commands.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,42 +61,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Jan 2012 18:34:40 -0000
+X-List-Received-Date: Tue, 24 Jan 2012 08:21:28 -0000
 
-The build process of optionroms spits out an "rm ..." line. Moreover, it
-removes all .o files that can be handy for debugging purposes.
+On 01/23/2012 07:14 PM, Thomas Higdon wrote:
+> >  Can you please also do the same REPORT LUNS and INQUIRY in hw/scsi-bus.c?
+>
+> You're talking about the scsi_target_emulate_report_luns() and
+> scsi_target_emulate_inquiry() functions in hw/scsi-bus.c? By my read of
+> the code, these appear safe. In both functions, I see len getting set
+> via calls to MIN with r->req->cmd.xfer as one of the arguments. If
+> you're referring to something else, can you be more specific?
 
-Disable automatic intermediate removal and only clean up the unneeded
-and large .img and .raw files.
+Ugh, you're right, sorry.  I just looked for if.*xfer.
 
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
----
- pc-bios/optionrom/Makefile |    6 ++++--
- 1 files changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/pc-bios/optionrom/Makefile b/pc-bios/optionrom/Makefile
-index 51da288..3edde85 100644
---- a/pc-bios/optionrom/Makefile
-+++ b/pc-bios/optionrom/Makefile
-@@ -16,14 +16,16 @@ QEMU_CFLAGS = $(CFLAGS)
- 
- build-all: multiboot.bin linuxboot.bin
- 
-+.SECONDARY:
-+
- %.img: %.o
- 	$(call quiet-command,$(LD) -Ttext 0 -e _start -s -o $@ $<,"  Building $(TARGET_DIR)$@")
- 
- %.raw: %.img
--	$(call quiet-command,$(OBJCOPY) -O binary -j .text $< $@,"  Building $(TARGET_DIR)$@")
-+	$(call quiet-command,$(OBJCOPY) -O binary -j .text $< $@; rm -f $<,"  Building $(TARGET_DIR)$@")
- 
- %.bin: %.raw
--	$(call quiet-command,$(SHELL) $(SRC_PATH)/scripts/signrom.sh $< $@,"  Signing $(TARGET_DIR)$@")
-+	$(call quiet-command,$(SHELL) $(SRC_PATH)/scripts/signrom.sh $< $@; rm -f $<,"  Signing $(TARGET_DIR)$@")
- 
- clean:
- 	rm -f *.o *.d *.raw *.img *.bin *~
--- 
-1.7.3.4
+Paolo
 
