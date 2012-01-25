@@ -1,37 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RpkKb-00036i-Vu
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2012 12:38:53 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:58495)
+	id 1RpxyP-0008Gk-Q7
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2012 03:12:53 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:47416)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <slyfox@gentoo.org>) id 1RpkKY-0002s2-6c
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:38:51 -0500
+	(envelope-from <armbru@redhat.com>) id 1RpxyG-0007r4-NQ
+	for qemu-trivial@nongnu.org; Wed, 25 Jan 2012 03:12:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <slyfox@gentoo.org>) id 1RpkKW-0003uf-8a
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:38:49 -0500
-Received: from smtp.gentoo.org ([140.211.166.183]:52917)
+	(envelope-from <armbru@redhat.com>) id 1RpxyA-000892-Ma
+	for qemu-trivial@nongnu.org; Wed, 25 Jan 2012 03:12:44 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:27739)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <slyfox@gentoo.org>)
-	id 1RpkKM-0003oW-A8; Tue, 24 Jan 2012 12:38:38 -0500
-Received: from sf.home (unknown [178.125.150.85])
-	(using TLSv1 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested) (Authenticated sender: slyfox)
-	by smtp.gentoo.org (Postfix) with ESMTPSA id C92161B4003;
-	Tue, 24 Jan 2012 17:38:36 +0000 (UTC)
-Received: by sf.home (Postfix, from userid 1000)
-	id A07DE1254725; Tue, 24 Jan 2012 20:42:45 +0300 (FET)
-From: Sergei Trofimovich <slyfox@inbox.ru>
-To: qemu-devel@nongnu.org
-Date: Tue, 24 Jan 2012 20:42:40 +0300
-Message-Id: <1327426960-29196-1-git-send-email-slyfox@inbox.ru>
-X-Mailer: git-send-email 1.7.8.3
+	(envelope-from <armbru@redhat.com>)
+	id 1Rpxxy-00087N-Se; Wed, 25 Jan 2012 03:12:27 -0500
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q0P8CPAu024904
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 25 Jan 2012 03:12:25 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-60.ams2.redhat.com
+	[10.36.116.60])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id q0P8COWi005603; Wed, 25 Jan 2012 03:12:25 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 500)
+	id 1999F6006E; Wed, 25 Jan 2012 09:12:24 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Laszlo Ersek <lersek@redhat.com>
+References: <1327436008-3553-1-git-send-email-lersek@redhat.com>
+Date: Wed, 25 Jan 2012 09:12:23 +0100
+In-Reply-To: <1327436008-3553-1-git-send-email-lersek@redhat.com> (Laszlo
+	Ersek's message of "Tue, 24 Jan 2012 21:13:28 +0100")
+Message-ID: <m3aa5cw68o.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.3 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 140.211.166.183
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Anthony Liguori <aliguori@us.ibm.com>,
-	Sergei Trofimovich <slyfox@gentoo.org>
-Subject: [Qemu-trivial] [PATCH] ./configure: export xfs config via --{enable,
-	disable}-xfsctl
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fixup e432cef9 (aio help
+	text): end sentences with periods
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,31 +51,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2012 17:38:51 -0000
+X-List-Received-Date: Wed, 25 Jan 2012 08:12:52 -0000
 
-From: Sergei Trofimovich <slyfox@gentoo.org>
+Patch looks good, cc'ing qemu-trivial.
 
-Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
----
- configure |    4 ++++
- 1 files changed, 4 insertions(+), 0 deletions(-)
+Laszlo Ersek <lersek@redhat.com> writes:
 
-diff --git a/configure b/configure
-index 9d72145..bca1943 100755
---- a/configure
-+++ b/configure
-@@ -771,6 +771,10 @@ for opt do
-   ;;
-   --enable-rbd) rbd="yes"
-   ;;
-+  --disable-xfsctl) xfs="no"
-+  ;;
-+  --enable-xfsctl) xfs="yes"
-+  ;;
-   --disable-smartcard) smartcard="no"
-   ;;
-   --enable-smartcard) smartcard="yes"
--- 
-1.7.8.3
+> (Please keep me CC'd on any followup; I'm not subscribed. Thanks.)
 
+Best to put such notes below the --- line, so they don't get
+immortalized in the commit log.
+
+> Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+> ---
+>  qemu-io.c |    4 ++--
+>  1 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/qemu-io.c b/qemu-io.c
+> index ffa62fb..938b20c 100644
+> --- a/qemu-io.c
+> +++ b/qemu-io.c
+> @@ -1118,7 +1118,7 @@ static void aio_read_help(void)
+>  " Reads a segment of the currently open file, optionally dumping it to the\n"
+>  " standard output stream (with -v option) for subsequent inspection.\n"
+>  " The read is performed asynchronously and the aio_flush command must be\n"
+> -" used to ensure all outstanding aio requests have been completed\n"
+> +" used to ensure all outstanding aio requests have been completed.\n"
+>  " -C, -- report statistics in a machine parsable format\n"
+>  " -P, -- use a pattern to verify read data\n"
+>  " -v, -- dump buffer to standard output\n"
+> @@ -1214,7 +1214,7 @@ static void aio_write_help(void)
+>  " Writes into a segment of the currently open file, using a buffer\n"
+>  " filled with a set pattern (0xcdcdcdcd).\n"
+>  " The write is performed asynchronously and the aio_flush command must be\n"
+> -" used to ensure all outstanding aio requests have been completed\n"
+> +" used to ensure all outstanding aio requests have been completed.\n"
+>  " -P, -- use different pattern to fill file\n"
+>  " -C, -- report statistics in a machine parsable format\n"
+>  " -q, -- quiet mode, do not show I/O statistics\n"
 
