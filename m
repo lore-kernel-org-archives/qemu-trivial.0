@@ -1,49 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rq46b-0007lX-Ig
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2012 09:45:45 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:56904)
+	id 1RqQt6-0002iT-Kh
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Jan 2012 10:05:20 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:35985)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RpkMP-0005HB-GT
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:40:51 -0500
+	(envelope-from <afaerber@suse.de>) id 1RqQsy-0002JY-A7
+	for qemu-trivial@nongnu.org; Thu, 26 Jan 2012 10:05:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RpkMJ-0004Pb-Io
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2012 12:40:45 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:42329 helo=mx2.suse.de)
+	(envelope-from <afaerber@suse.de>) id 1RqQsu-0007jU-2C
+	for qemu-trivial@nongnu.org; Thu, 26 Jan 2012 10:05:12 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:58076 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <afaerber@suse.de>)
-	id 1RpkM7-0004OK-Hj; Tue, 24 Jan 2012 12:40:27 -0500
-Received: from relay2.suse.de (unknown [195.135.220.254])
+	id 1RqQsc-0007du-Ib; Thu, 26 Jan 2012 10:04:50 -0500
+Received: from relay1.suse.de (unknown [195.135.220.254])
 	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id CA2649043F;
-	Tue, 24 Jan 2012 18:40:25 +0100 (CET)
-Message-ID: <4F1EEC88.8060803@suse.de>
-Date: Tue, 24 Jan 2012 18:38:16 +0100
+	by mx2.suse.de (Postfix) with ESMTP id 2BE029043F;
+	Thu, 26 Jan 2012 16:04:47 +0100 (CET)
+Message-ID: <4F216B0C.4010904@suse.de>
+Date: Thu, 26 Jan 2012 16:02:36 +0100
 From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
 Organization: SUSE LINUX Products GmbH
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:9.0) Gecko/20111220 Thunderbird/9.0
 MIME-Version: 1.0
-To: Jan Kiszka <jan.kiszka@siemens.com>
+To: qemu-devel@nongnu.org
 References: <1327425457-31313-1-git-send-email-afaerber@suse.de>
-	<4F1EEA64.2080704@siemens.com>
-In-Reply-To: <4F1EEA64.2080704@siemens.com>
+In-Reply-To: <1327425457-31313-1-git-send-email-afaerber@suse.de>
 X-Enigmail-Version: 1.3.4
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
 X-Received-From: 195.135.220.15
-X-Mailman-Approved-At: Wed, 25 Jan 2012 09:45:41 -0500
-Cc: Kevin Wolf <kwolf@redhat.com>, Blue Swirl <blauwirbel@gmail.com>,
-	Anthony Liguori <aliguori@us.ibm.com>, Juan Quintela <quintela@redhat.com>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+Cc: Kevin Wolf <kwolf@redhat.com>,
 	Vasilis Liaskovitis <vasilis.liaskovitis@profitbricks.com>,
+	Anthony Liguori <aliguori@us.ibm.com>,
+	Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
+	Jan Kiszka <jan.kiszka@siemens.com>, Markus Armbruster <armbru@redhat.com>,
+	Blue Swirl <blauwirbel@gmail.com>,
 	=?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <andreas.faerber@web.de>,
 	Amit Shah <amit.shah@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH v6] qdev: Add support for property type
-	bool
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6] qdev: Add support for
+	property type bool
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,40 +53,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2012 17:40:51 -0000
+X-List-Received-Date: Thu, 26 Jan 2012 15:05:18 -0000
 
-Am 24.01.2012 18:29, schrieb Jan Kiszka:
-> On 2012-01-24 18:17, Andreas F=C3=A4rber wrote:
->> From: Andreas F=C3=A4rber <andreas.faerber@web.de>
->>
->> VMState supports the type bool but qdev instead supports bit, backed b=
-y
->> uint32_t. Therefore let's add DEFINE_PROP_BOOL() and qdev_prop_set_boo=
-l().
->>
->> bool by definition is either true or false. Should the need arise to
->> parse yes/no, on/off, 1/0 or whatever as well, we can still add that a=
-t
->> a later point in time.
+Am 24.01.2012 18:17, schrieb Andreas F=C3=A4rber:
+> From: Andreas F=C3=A4rber <andreas.faerber@web.de>
 >=20
-> To make it a real replacement for PROP_TYPE_BIT, let's use on/off, also
-> for printing. Not only programmers may use this interface. ;)
+> VMState supports the type bool but qdev instead supports bit, backed by
+> uint32_t. Therefore let's add DEFINE_PROP_BOOL() and qdev_prop_set_bool=
+().
 
-Actually non-programmers are the reason for this: cache=3Don/off makes a
-great deal of sense in English (noun), but not enabled=3Doff (adjective),
-which was my use case of this patch for ISA devices.
-
-I'm fine with accepting the whole range of possibilities for parsing.
-For printing I see no reason to, since there's no legacy users of this
-new type we could break. true/false seemed better than yes/no.
-
->> +PropertyInfo qdev_prop_bool =3D {
->> +    .name =3D "bool",
->=20
-> Now we have "bool" and "boolean". Can we rename the latter to bit?
-
-I'd be fine with that, just don't know if that would break anything
-elsewhere for qdev or QOM?
+Actually qdev_prop_set_bool() got lost in a merge conflict... Re-adding.
 
 Andreas
 
