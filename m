@@ -1,36 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RqXU5-0000mv-PI
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Jan 2012 17:07:57 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54877)
+	id 1RqePH-000768-4R
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 00:31:27 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:32784)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1RqXU2-0000mm-UA
-	for qemu-trivial@nongnu.org; Thu, 26 Jan 2012 17:07:55 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RqePD-0006uL-HW
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 00:31:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1RqXU1-00007H-Me
-	for qemu-trivial@nongnu.org; Thu, 26 Jan 2012 17:07:54 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:1973)
+	(envelope-from <stefanha@gmail.com>) id 1RqePB-0004OU-UV
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 00:31:23 -0500
+Received: from mail-pz0-f45.google.com ([209.85.210.45]:34380)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1RqXU1-00007A-G7; Thu, 26 Jan 2012 17:07:53 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q0QM7oV6005666
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 26 Jan 2012 17:07:51 -0500
-Received: from lacos-laptop.usersys.redhat.com (vpn1-4-99.ams2.redhat.com
-	[10.36.4.99])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q0QLZQIB009083; Thu, 26 Jan 2012 16:35:27 -0500
-From: Laszlo Ersek <lersek@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Thu, 26 Jan 2012 22:36:41 +0100
-Message-Id: <1327613801-5828-1-git-send-email-lersek@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	(envelope-from <stefanha@gmail.com>)
+	id 1RqeP9-0004O9-73; Fri, 27 Jan 2012 00:31:19 -0500
+Received: by dajr28 with SMTP id r28so1397732daj.4
+	for <multiple recipients>; Thu, 26 Jan 2012 21:31:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=aCatjivjqGcbwJQrBwqJyjK/CemUgsldftzNya1g2U4=;
+	b=BMbUgsF3Yqp3NPgyy1XGJUGeAovVHPY6SyIKlS8gMqhGXY8xQuKo8PWBsRq4GYY3KJ
+	CNI7lxUs5u0AZfT/CNzpJc/gJHxrLD74FWoyjffjnV0TSB6khDKireTetfzZlgnLvmdM
+	JBixqkRAQrWltAX2fvEuOCd/PJxC232XGYJUc=
+Received: by 10.68.74.72 with SMTP id r8mr11744903pbv.8.1327642277448;
+	Thu, 26 Jan 2012 21:31:17 -0800 (PST)
+Received: from localhost (42-98-55-070.static.netvigator.com. [42.98.55.70])
+	by mx.google.com with ESMTPS id x4sm1969262pbx.16.2012.01.26.21.31.13
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 26 Jan 2012 21:31:15 -0800 (PST)
+Date: Fri, 27 Jan 2012 05:31:11 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20120127053111.GA17836@stefanha-thinkpad.localdomain>
+References: <1327057522-6590-2-git-send-email-pbonzini@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1327057522-6590-2-git-send-email-pbonzini@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] keep the PID file locked for the lifetime of
-	the process
+X-Received-From: 209.85.210.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] remove #if 0 code for timers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,39 +53,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Jan 2012 22:07:55 -0000
+X-List-Received-Date: Fri, 27 Jan 2012 05:31:25 -0000
 
-The lockf() call in qemu_create_pidfile() aims at ensuring mutual
-exclusion. We shouldn't close the pidfile on success, because that drops
-the lock as well [1]:
+On Fri, Jan 20, 2012 at 12:05:22PM +0100, Paolo Bonzini wrote:
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  qemu-timer.c |   29 -----------------------------
+>  1 files changed, 0 insertions(+), 29 deletions(-)
 
-    "File locks shall be released on first close by the locking process
-    of any file descriptor for the file."
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-Coverity may complain again about the leaked file descriptor; let's
-worry about that later.
-
-[1] http://pubs.opengroup.org/onlinepubs/9699919799/functions/lockf.html
-
-Signed-off-by: Laszlo Ersek <lersek@redhat.com>
----
-Please keep me CC'd, I'm not subscribed. Thanks!
-
- os-posix.c |    1 -
- 1 files changed, 0 insertions(+), 1 deletions(-)
-
-diff --git a/os-posix.c b/os-posix.c
-index 5c437ca..f4940c8 100644
---- a/os-posix.c
-+++ b/os-posix.c
-@@ -348,6 +348,5 @@ int qemu_create_pidfile(const char *filename)
-         return -1;
-     }
- 
--    close(fd);
-     return 0;
- }
--- 
-1.7.1
-
+Stefan
 
