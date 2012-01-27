@@ -1,46 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RqiJ6-0001ja-8Z
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 04:41:20 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:59304)
+	id 1Rqiz2-0007sm-Kv
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 05:24:40 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:47528)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RqiIy-0001GV-1s
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 04:41:17 -0500
+	(envelope-from <afaerber@suse.de>) id 1Rqiyw-0007VM-NN
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 05:24:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1RqiIu-0007xp-47
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 04:41:11 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:50274 helo=mx2.suse.de)
+	(envelope-from <afaerber@suse.de>) id 1Rqiyv-0005Ut-JY
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 05:24:34 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:51942 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <afaerber@suse.de>)
-	id 1RqiIj-0007wl-FH; Fri, 27 Jan 2012 04:40:57 -0500
+	id 1Rqiym-0005U1-DF; Fri, 27 Jan 2012 05:24:24 -0500
 Received: from relay2.suse.de (unknown [195.135.220.254])
 	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id D62E48C061;
-	Fri, 27 Jan 2012 10:40:55 +0100 (CET)
-Message-ID: <4F2270A3.4060707@suse.de>
-Date: Fri, 27 Jan 2012 10:38:43 +0100
+	by mx2.suse.de (Postfix) with ESMTP id B065B8891E;
+	Fri, 27 Jan 2012 11:24:23 +0100 (CET)
+Message-ID: <4F227AD6.5020408@suse.de>
+Date: Fri, 27 Jan 2012 11:22:14 +0100
 From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
 Organization: SUSE LINUX Products GmbH
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:9.0) Gecko/20111220 Thunderbird/9.0
 MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@gmail.com>,
-	Vasilis Liaskovitis <vasilis.liaskovitis@profitbricks.com>
-References: <1327425457-31313-1-git-send-email-afaerber@suse.de>
-	<20120127062355.GA20307@stefanha-thinkpad.localdomain>
-In-Reply-To: <20120127062355.GA20307@stefanha-thinkpad.localdomain>
+To: Jan Kiszka <jan.kiszka@siemens.com>
+References: <4F1DA82F.4090808@siemens.com>
+In-Reply-To: <4F1DA82F.4090808@siemens.com>
 X-Enigmail-Version: 1.3.4
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
 X-Received-From: 195.135.220.15
-Cc: Kevin Wolf <kwolf@redhat.com>, Anthony Liguori <aliguori@us.ibm.com>,
-	Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
-	Jan Kiszka <jan.kiszka@siemens.com>, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, Blue Swirl <blauwirbel@gmail.com>,
-	Amit Shah <amit.shah@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6] qdev: Add support for
-	property type bool
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] optionroms: Silence
+	intermediate file removal
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,42 +47,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jan 2012 09:41:18 -0000
+X-List-Received-Date: Fri, 27 Jan 2012 10:24:38 -0000
 
-Am 27.01.2012 07:23, schrieb Stefan Hajnoczi:
-> On Tue, Jan 24, 2012 at 06:17:36PM +0100, Andreas F=E4rber wrote:
->> From: Andreas F=E4rber <andreas.faerber@web.de>
->>
->> VMState supports the type bool but qdev instead supports bit, backed b=
-y
->> uint32_t. Therefore let's add DEFINE_PROP_BOOL() and qdev_prop_set_boo=
-l().
->>
->> bool by definition is either true or false. Should the need arise to
->> parse yes/no, on/off, 1/0 or whatever as well, we can still add that a=
+Am 23.01.2012 19:34, schrieb Jan Kiszka:
+> The build process of optionroms spits out an "rm ..." line. Moreover, i=
 t
->> a later point in time.
->>
->> Signed-off-by: Andreas F=E4rber <andreas.faerber@web.de>
->> Cc: Juan Quintela <quintela@redhat.com>
->> Cc: Markus Armbruster <armbru@redhat.com>
->> Cc: Jan Kiszka <jan.kiszka@siemens.com>
->> Cc: Vasilis Liaskovitis <vasilis.liaskovitis@profitbricks.com>
->> ---
->>  v5 -> v6:
+> removes all .o files that can be handy for debugging purposes.
 >=20
-> Please merge through a qemu.git committer.  v6 and discussion means thi=
-s
-> isn't trivial.
+> Disable automatic intermediate removal and only clean up the unneeded
+> and large .img and .raw files.
+>=20
+> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> ---
+>  pc-bios/optionrom/Makefile |    6 ++++--
+>  1 files changed, 4 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/pc-bios/optionrom/Makefile b/pc-bios/optionrom/Makefile
+> index 51da288..3edde85 100644
+> --- a/pc-bios/optionrom/Makefile
+> +++ b/pc-bios/optionrom/Makefile
+> @@ -16,14 +16,16 @@ QEMU_CFLAGS =3D $(CFLAGS)
+> =20
+>  build-all: multiboot.bin linuxboot.bin
+> =20
+> +.SECONDARY:
+> +
+>  %.img: %.o
+>  	$(call quiet-command,$(LD) -Ttext 0 -e _start -s -o $@ $<,"  Building=
+ $(TARGET_DIR)$@")
+> =20
+>  %.raw: %.img
+> -	$(call quiet-command,$(OBJCOPY) -O binary -j .text $< $@,"  Building =
+$(TARGET_DIR)$@")
+> +	$(call quiet-command,$(OBJCOPY) -O binary -j .text $< $@; rm -f $<," =
+ Building $(TARGET_DIR)$@")
+> =20
+>  %.bin: %.raw
+> -	$(call quiet-command,$(SHELL) $(SRC_PATH)/scripts/signrom.sh $< $@," =
+ Signing $(TARGET_DIR)$@")
+> +	$(call quiet-command,$(SHELL) $(SRC_PATH)/scripts/signrom.sh $< $@; r=
+m -f $<,"  Signing $(TARGET_DIR)$@")
+> =20
+>  clean:
+>  	rm -f *.o *.d *.raw *.img *.bin *~
 
-Unfortunately that hasn't happened for half a year though. Generally no
-qemu.git committer seems to care about cherry-picking useful
-infrastructures from bigger series even once discussions are resolved.
+It's possible that objcopy or a shell script fails. In that case,
+&& rm -f $<
+or a second output-suppressed Makefile line might be a better than
+; rm -f $<
 
-And for the record, it's net v3 as shown in the part you snipped.
-
-Vasilis, unless Jan or someone has further nitpicks, just prepend my v8
-to your series and reuse its DEFINE_PROP_BOOL().
+Stefan's comment on .SECONDARY seconded. :)
 
 Andreas
 
