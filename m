@@ -1,55 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rqgso-0005xf-Dl
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 03:10:06 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:48676)
+	id 1RqhbF-0001ZF-Is
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 03:56:01 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:46628)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Rqgsj-0005v3-Ob
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 03:10:03 -0500
+	(envelope-from <lersek@redhat.com>) id 1Rqhb8-0001BH-2y
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 03:55:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Rqgsi-0004Z8-Jx
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 03:10:01 -0500
-Received: from mail-ww0-f53.google.com ([74.125.82.53]:33374)
+	(envelope-from <lersek@redhat.com>) id 1Rqhb2-0002Ke-EF
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 03:55:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:3145)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1Rqgsi-0004Yx-7Q; Fri, 27 Jan 2012 03:10:00 -0500
-Received: by wgbdr12 with SMTP id dr12so1439812wgb.10
-	for <multiple recipients>; Fri, 27 Jan 2012 00:09:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=sender:message-id:date:from:user-agent:mime-version:newsgroups:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=17ZUNkeGKP8daxb/MTHHYzBu2ZxjyaNbf1EjcnktWwY=;
-	b=wHOo8xe///YBM2+d3N7T91wJmzyi02tkHbJb9UWxFi0ewiBoCch47os2Tbj5IbUAkB
-	tGWTuzcGVQD8mlQO8ja4iTh9H3neN30+aZeQKqrPzyTSCd6lgHRodR263vGgHPAm4Buc
-	UR9rqMOUdyrpRnO5Pb1Wu/4/KRT0xmGZCvB4I=
-Received: by 10.180.94.68 with SMTP id da4mr8636885wib.22.1327651799466;
-	Fri, 27 Jan 2012 00:09:59 -0800 (PST)
-Received: from yakj.usersys.redhat.com (93-34-182-16.ip50.fastwebnet.it.
-	[93.34.182.16])
-	by mx.google.com with ESMTPS id t6sm9993659wid.1.2012.01.27.00.09.56
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 27 Jan 2012 00:09:56 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <4F225BD3.4090300@redhat.com>
-Date: Fri, 27 Jan 2012 09:09:55 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:9.0) Gecko/20111222 Thunderbird/9.0
+	(envelope-from <lersek@redhat.com>)
+	id 1Rqhav-0002K1-5a; Fri, 27 Jan 2012 03:55:41 -0500
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q0R8tbMx008717
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 27 Jan 2012 03:55:38 -0500
+Received: from lacos-laptop.usersys.redhat.com (dhcp-1-169.brq.redhat.com
+	[10.34.1.169])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id q0R8tasf023219; Fri, 27 Jan 2012 03:55:37 -0500
+Message-ID: <4F2266D8.2020502@redhat.com>
+Date: Fri, 27 Jan 2012 09:56:56 +0100
+From: Laszlo Ersek <lersek@redhat.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.2.24) Gecko/20111104 Red Hat/3.1.16-2.el6_1 Mnenhy/0.8.4
+	Thunderbird/3.1.16
 MIME-Version: 1.0
-Newsgroups: gmane.comp.emulators.qemu
 To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1327108107-16600-1-git-send-email-mdroth@linux.vnet.ibm.com>
-	<1327166033-17922-1-git-send-email-mdroth@linux.vnet.ibm.com>
-	<20120127054606.GC17836@stefanha-thinkpad.localdomain>
-In-Reply-To: <20120127054606.GC17836@stefanha-thinkpad.localdomain>
+References: <1327613801-5828-1-git-send-email-lersek@redhat.com>
+	<20120127063639.GA22748@stefanha-thinkpad.localdomain>
+In-Reply-To: <20120127063639.GA22748@stefanha-thinkpad.localdomain>
 Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.53
+X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] main-loop: For tools,
- initialize timers as part of qemu_init_main_loop()
+Subject: Re: [Qemu-trivial] [PATCH] keep the PID file locked for the
+ lifetime of the process
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,46 +52,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jan 2012 08:10:03 -0000
+X-List-Received-Date: Fri, 27 Jan 2012 08:55:59 -0000
 
-On 01/27/2012 06:46 AM, Stefan Hajnoczi wrote:
-> #ifndef _WIN32
-> #ifdef __linux__
->      {"dynticks", dynticks_start_timer,
->       dynticks_stop_timer, dynticks_rearm_timer},
-> #endif
->      {"unix", unix_start_timer, unix_stop_timer, unix_rearm_timer},
-> #else
->      {"mmtimer", mm_start_timer, mm_stop_timer, mm_rearm_timer},
->      {"dynticks", win32_start_timer, win32_stop_timer, win32_rearm_timer},
-> #endif
+On 01/27/12 07:36, Stefan Hajnoczi wrote:
+> On Thu, Jan 26, 2012 at 10:36:41PM +0100, Laszlo Ersek wrote:
+>> The lockf() call in qemu_create_pidfile() aims at ensuring mutual
+>> exclusion. We shouldn't close the pidfile on success, because that drops
+>> the lock as well [1]:
+>>
+>>      "File locks shall be released on first close by the locking process
+>>      of any file descriptor for the file."
+>>
+>> Coverity may complain again about the leaked file descriptor; let's
+>> worry about that later.
+>>
+>> [1] http://pubs.opengroup.org/onlinepubs/9699919799/functions/lockf.html
+>>
+>> Signed-off-by: Laszlo Ersek<lersek@redhat.com>
+>> ---
 >
-> It seems Windows host already has a "dynticks" implementation.  Have you
-> tried using this instead of "mmtimer"?
+> Isn't the normal way to do pidfiles O_CREAT | O_EXCL?
 
-The dynticks Win32 timer doesn't boot Linux successfully, even though 
-under Wine it works and it is actually more reliable than mmtimer (which 
-is why I haven't thrown it away yet).
+Yes, it is.
 
-> mm_start_timer() is using 1 ms intervals!
+> It may not work
+> on all NFS versions but putting the pidfile on NFS doesn't really make
+> sense.
+>
+> Then we can drop the lockf(3) completely.
 
-No, it's setting a 1 ms system quantum via timeBeginPeriod.  The actual 
-implementation is using dynamic rather than periodic ticks (it has a 
-rearm callback).  We threw away periodic timers a few months ago.
+When you rely on O_EXCL to ensure mutual exclusion, and an abruptly 
+terminated process leaves the lockfile lying around, then the user has 
+to clean it up manually before starting the next instance (and double 
+check if the pid file is in fact stale or not). I'm personally OK with 
+that, but I reckoned the qemu code tried to avoid that intentionally. 
+Record locks can't remain stale when the process dies.
 
-The problem is that Windows doesn't have something like Linux NOHZ and 
-limits the timer resolution to the system quanta.  That's 1 ms for 
-mmtimer and 10 ms (the default) for dynticks right now.  However, I 
-suspect that the solution is to move timeBeginPeriod and timeEndPeriod 
-from timer code to generic QEMU code, dynticks would start working on 
-native Windows too.  Besides possibly fixing QEMU, it would definitely 
-fix Michael's problem, too.  Tools do not need such a fine-grained 
-timer, and shorter quanta cause the increased CPU usage that Michael 
-observed.
-
-However, Michael's patch makes sense as a cleanup anyway.  Since we have 
-an initialization function, there's no need to have that _and_ a 
-constructor.
-
-Paolo
+Laszlo
 
