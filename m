@@ -1,42 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rqkto-0005sj-U5
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 07:27:24 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:38646)
+	id 1Rql80-0001uq-F2
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 07:42:04 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:52500)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1Rqktd-0005HY-19
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 07:27:23 -0500
+	(envelope-from <anthony@codemonkey.ws>) id 1Rql7v-0001tg-58
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 07:42:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1Rqktb-0003mY-F9
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 07:27:12 -0500
-Received: from david.siemens.de ([192.35.17.14]:27662)
+	(envelope-from <anthony@codemonkey.ws>) id 1Rql7q-0005tA-PL
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 07:41:59 -0500
+Received: from mail-gy0-f173.google.com ([209.85.160.173]:34161)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>)
-	id 1RqktM-0003kG-KZ; Fri, 27 Jan 2012 07:26:56 -0500
-Received: from mail1.siemens.de (localhost [127.0.0.1])
-	by david.siemens.de (8.13.6/8.13.6) with ESMTP id q0RCQb1I016140;
-	Fri, 27 Jan 2012 13:26:37 +0100
-Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
-	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q0RCQZFZ021523;
-	Fri, 27 Jan 2012 13:26:35 +0100
-Message-ID: <4F2297FB.2040508@siemens.com>
-Date: Fri, 27 Jan 2012 13:26:35 +0100
-From: Jan Kiszka <jan.kiszka@siemens.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <anthony@codemonkey.ws>)
+	id 1Rql7q-0005t3-Me; Fri, 27 Jan 2012 07:41:54 -0500
+Received: by ghrr20 with SMTP id r20so187645ghr.4
+	for <multiple recipients>; Fri, 27 Jan 2012 04:41:53 -0800 (PST)
+Received: by 10.236.193.70 with SMTP id j46mr9755075yhn.108.1327668113830;
+	Fri, 27 Jan 2012 04:41:53 -0800 (PST)
+Received: from [192.168.0.103] (cpe-70-123-132-139.austin.res.rr.com.
+	[70.123.132.139])
+	by mx.google.com with ESMTPS id k15sm13164995yhf.11.2012.01.27.04.41.51
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 27 Jan 2012 04:41:52 -0800 (PST)
+Message-ID: <4F229B8E.6000908@codemonkey.ws>
+Date: Fri, 27 Jan 2012 06:41:50 -0600
+From: Anthony Liguori <anthony@codemonkey.ws>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.2.23) Gecko/20110922 Lightning/1.0b2 Thunderbird/3.1.15
 MIME-Version: 1.0
-To: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>
-References: <4F1DA82F.4090808@siemens.com>
-In-Reply-To: <4F1DA82F.4090808@siemens.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 192.35.17.14
-Cc: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>,
-	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH v2] optionroms: Silence intermediate file
-	removal
+To: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+References: <1327425457-31313-1-git-send-email-afaerber@suse.de>	<20120127062355.GA20307@stefanha-thinkpad.localdomain>
+	<4F2270A3.4060707@suse.de>
+In-Reply-To: <4F2270A3.4060707@suse.de>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.160.173
+Cc: Kevin Wolf <kwolf@redhat.com>, Blue Swirl <blauwirbel@gmail.com>,
+	Anthony Liguori <aliguori@us.ibm.com>,
+	Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	Vasilis Liaskovitis <vasilis.liaskovitis@profitbricks.com>,
+	Jan Kiszka <jan.kiszka@siemens.com>, Amit Shah <amit.shah@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6] qdev: Add support for
+	property type bool
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,48 +56,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jan 2012 12:27:23 -0000
+X-List-Received-Date: Fri, 27 Jan 2012 12:42:03 -0000
 
-The build process of optionroms spits out an "rm ..." line. Moreover, it
-removes all .o files that can be handy for debugging purposes.
+On 01/27/2012 03:38 AM, Andreas Färber wrote:
+> Am 27.01.2012 07:23, schrieb Stefan Hajnoczi:
+>> On Tue, Jan 24, 2012 at 06:17:36PM +0100, Andreas Färber wrote:
+>>> From: Andreas Färber<andreas.faerber@web.de>
+>>>
+>>> VMState supports the type bool but qdev instead supports bit, backed by
+>>> uint32_t. Therefore let's add DEFINE_PROP_BOOL() and qdev_prop_set_bool().
+>>>
+>>> bool by definition is either true or false. Should the need arise to
+>>> parse yes/no, on/off, 1/0 or whatever as well, we can still add that at
+>>> a later point in time.
+>>>
+>>> Signed-off-by: Andreas Färber<andreas.faerber@web.de>
+>>> Cc: Juan Quintela<quintela@redhat.com>
+>>> Cc: Markus Armbruster<armbru@redhat.com>
+>>> Cc: Jan Kiszka<jan.kiszka@siemens.com>
+>>> Cc: Vasilis Liaskovitis<vasilis.liaskovitis@profitbricks.com>
+>>> ---
+>>>   v5 ->  v6:
+>>
+>> Please merge through a qemu.git committer.  v6 and discussion means this
+>> isn't trivial.
+>
+> Unfortunately that hasn't happened for half a year though. Generally no
+> qemu.git committer seems to care about cherry-picking useful
+> infrastructures from bigger series even once discussions are resolved.
 
-Disable automatic intermediate removal and only clean up the unneeded
-and large .img and .raw files.
+So... why are we introducing a type that's not being used anywhere?
 
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
----
+Are you planning to use this type somewhere or is this purely speculative?
 
-Changes in v2:
- - comment on .SECONDARY purpose
- - make rm -rf dependent on success of build command
+Regards,
 
- pc-bios/optionrom/Makefile |    7 +++++--
- 1 files changed, 5 insertions(+), 2 deletions(-)
+Anthony Liguori
 
-diff --git a/pc-bios/optionrom/Makefile b/pc-bios/optionrom/Makefile
-index 51da288..4e7275b 100644
---- a/pc-bios/optionrom/Makefile
-+++ b/pc-bios/optionrom/Makefile
-@@ -16,14 +16,17 @@ QEMU_CFLAGS = $(CFLAGS)
- 
- build-all: multiboot.bin linuxboot.bin
- 
-+# suppress auto-removal of intermediate files
-+.SECONDARY:
-+
- %.img: %.o
- 	$(call quiet-command,$(LD) -Ttext 0 -e _start -s -o $@ $<,"  Building $(TARGET_DIR)$@")
- 
- %.raw: %.img
--	$(call quiet-command,$(OBJCOPY) -O binary -j .text $< $@,"  Building $(TARGET_DIR)$@")
-+	$(call quiet-command,$(OBJCOPY) -O binary -j .text $< $@ && rm -f $<,"  Building $(TARGET_DIR)$@")
- 
- %.bin: %.raw
--	$(call quiet-command,$(SHELL) $(SRC_PATH)/scripts/signrom.sh $< $@,"  Signing $(TARGET_DIR)$@")
-+	$(call quiet-command,$(SHELL) $(SRC_PATH)/scripts/signrom.sh $< $@ && rm -f $<,"  Signing $(TARGET_DIR)$@")
- 
- clean:
- 	rm -f *.o *.d *.raw *.img *.bin *~
--- 
-1.7.3.4
+>
+> And for the record, it's net v3 as shown in the part you snipped.
+>
+> Vasilis, unless Jan or someone has further nitpicks, just prepend my v8
+> to your series and reuse its DEFINE_PROP_BOOL().
+>
+> Andreas
+>
+
 
