@@ -1,51 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RqkpP-0001EM-6J
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 07:22:51 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:43114)
+	id 1Rqkto-0005sj-U5
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 07:27:24 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:38646)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1RqkpJ-0000uQ-Tw
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 07:22:49 -0500
+	(envelope-from <jan.kiszka@siemens.com>) id 1Rqktd-0005HY-19
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 07:27:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1RqkpF-0003Hs-U7
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 07:22:45 -0500
-Received: from thoth.sbs.de ([192.35.17.2]:24630)
+	(envelope-from <jan.kiszka@siemens.com>) id 1Rqktb-0003mY-F9
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 07:27:12 -0500
+Received: from david.siemens.de ([192.35.17.14]:27662)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <jan.kiszka@siemens.com>)
-	id 1RqkpA-0003H4-HX; Fri, 27 Jan 2012 07:22:36 -0500
+	id 1RqktM-0003kG-KZ; Fri, 27 Jan 2012 07:26:56 -0500
 Received: from mail1.siemens.de (localhost [127.0.0.1])
-	by thoth.sbs.de (8.13.6/8.13.6) with ESMTP id q0RCMVqL029805;
-	Fri, 27 Jan 2012 13:22:31 +0100
+	by david.siemens.de (8.13.6/8.13.6) with ESMTP id q0RCQb1I016140;
+	Fri, 27 Jan 2012 13:26:37 +0100
 Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
-	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q0RCMSn5015964;
-	Fri, 27 Jan 2012 13:22:28 +0100
-Message-ID: <4F229704.9020003@siemens.com>
-Date: Fri, 27 Jan 2012 13:22:28 +0100
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q0RCQZFZ021523;
+	Fri, 27 Jan 2012 13:26:35 +0100
+Message-ID: <4F2297FB.2040508@siemens.com>
+Date: Fri, 27 Jan 2012 13:26:35 +0100
 From: Jan Kiszka <jan.kiszka@siemens.com>
 User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
 	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
 	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-To: "quintela@redhat.com" <quintela@redhat.com>
-References: <1327593288-22521-1-git-send-email-afaerber@suse.de>
-	<8739b1pceg.fsf@elfo.elfo>
-In-Reply-To: <8739b1pceg.fsf@elfo.elfo>
-Content-Type: text/plain; charset=UTF-8
+To: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>
+References: <4F1DA82F.4090808@siemens.com>
+In-Reply-To: <4F1DA82F.4090808@siemens.com>
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
 	4)
-X-Received-From: 192.35.17.2
-Cc: Kevin Wolf <kwolf@redhat.com>, Blue Swirl <blauwirbel@gmail.com>,
-	Anthony Liguori <aliguori@us.ibm.com>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Vasilis Liaskovitis <vasilis.liaskovitis@profitbricks.com>,
-	=?UTF-8?B?QW5kcmVhcw==?= =?UTF-8?B?IEbDpHJiZXI=?=
-	<andreas.faerber@web.de>, Amit Shah <amit.shah@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH v8] qdev: Add support for property type
-	bool
+X-Received-From: 192.35.17.14
+Cc: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>,
+	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH v2] optionroms: Silence intermediate file
+	removal
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,48 +48,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jan 2012 12:22:49 -0000
+X-List-Received-Date: Fri, 27 Jan 2012 12:27:23 -0000
 
-On 2012-01-27 13:17, Juan Quintela wrote:
->> +{
->> +    bool *ptr = qdev_get_prop_ptr(dev, prop);
->> +    if (strcmp(str, "true") == 0 || strcmp(str, "yes") == 0) {
->> +        *ptr = true;
->> +    } else if (strcmp(str, "false") == 0 || strcmp(str, "no") == 0) {
->> +        *ptr = false;
->> +    } else {
->> +        return -EINVAL;
->> +    }
->> +
->> +    return 0;
->> +}
->> +
->> +static int parse_bool_switch(DeviceState *dev, Property *prop,
->> +                             const char *str)
->> +{
->> +    bool *ptr = qdev_get_prop_ptr(dev, prop);
->> +    if (strcmp(str, "on") == 0) {
->> +        *ptr = true;
->> +    } else if (strcmp(str, "off") == 0) {
->> +        *ptr = false;
->> +    } else {
->> +        return -EINVAL;
->> +    }
->> +
->> +    return 0;
->> +}
-> 
-> As I am joining late to this discussion, I am not going to point it very
-> strong.  But I think that it is an easy to have a single bool type that
-> accept yes/on/true and no/off/false.  Didn't really see a strong
-> advantage with the split.
+The build process of optionroms spits out an "rm ..." line. Moreover, it
+removes all .o files that can be handy for debugging purposes.
 
-Accepting all this on input is a non-issue, but true/false as output is
-suboptimal for quite a few existing and future switches.
+Disable automatic intermediate removal and only clean up the unneeded
+and large .img and .raw files.
 
-Jan
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+---
 
+Changes in v2:
+ - comment on .SECONDARY purpose
+ - make rm -rf dependent on success of build command
+
+ pc-bios/optionrom/Makefile |    7 +++++--
+ 1 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/pc-bios/optionrom/Makefile b/pc-bios/optionrom/Makefile
+index 51da288..4e7275b 100644
+--- a/pc-bios/optionrom/Makefile
++++ b/pc-bios/optionrom/Makefile
+@@ -16,14 +16,17 @@ QEMU_CFLAGS = $(CFLAGS)
+ 
+ build-all: multiboot.bin linuxboot.bin
+ 
++# suppress auto-removal of intermediate files
++.SECONDARY:
++
+ %.img: %.o
+ 	$(call quiet-command,$(LD) -Ttext 0 -e _start -s -o $@ $<,"  Building $(TARGET_DIR)$@")
+ 
+ %.raw: %.img
+-	$(call quiet-command,$(OBJCOPY) -O binary -j .text $< $@,"  Building $(TARGET_DIR)$@")
++	$(call quiet-command,$(OBJCOPY) -O binary -j .text $< $@ && rm -f $<,"  Building $(TARGET_DIR)$@")
+ 
+ %.bin: %.raw
+-	$(call quiet-command,$(SHELL) $(SRC_PATH)/scripts/signrom.sh $< $@,"  Signing $(TARGET_DIR)$@")
++	$(call quiet-command,$(SHELL) $(SRC_PATH)/scripts/signrom.sh $< $@ && rm -f $<,"  Signing $(TARGET_DIR)$@")
+ 
+ clean:
+ 	rm -f *.o *.d *.raw *.img *.bin *~
 -- 
-Siemens AG, Corporate Technology, CT T DE IT 1
-Corporate Competence Center Embedded Linux
+1.7.3.4
 
