@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rqlp9-0006b6-7i
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 08:26:39 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:39960)
+	id 1RqlvT-00008w-ST
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2012 08:33:11 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:59399)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Rqlp3-0006Fq-Jx
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 08:26:37 -0500
+	(envelope-from <lersek@redhat.com>) id 1RqlvR-0008Qd-5f
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 08:33:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Rqloy-0003fx-1x
-	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 08:26:33 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:33490 helo=mx2.suse.de)
+	(envelope-from <lersek@redhat.com>) id 1RqlvL-0004gC-Ej
+	for qemu-trivial@nongnu.org; Fri, 27 Jan 2012 08:33:09 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58191)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1Rqlop-0003eX-0O; Fri, 27 Jan 2012 08:26:19 -0500
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 7893A90349;
-	Fri, 27 Jan 2012 14:26:18 +0100 (CET)
-Message-ID: <4F22A579.3040307@suse.de>
-Date: Fri, 27 Jan 2012 14:24:09 +0100
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:9.0) Gecko/20111220 Thunderbird/9.0
-MIME-Version: 1.0
-To: Jan Kiszka <jan.kiszka@siemens.com>
-References: <4F1DA82F.4090808@siemens.com> <4F2297FB.2040508@siemens.com>
-In-Reply-To: <4F2297FB.2040508@siemens.com>
-X-Enigmail-Version: 1.3.4
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] optionroms: Silence intermediate file
-	removal
+	(envelope-from <lersek@redhat.com>)
+	id 1RqlvA-0004db-2K; Fri, 27 Jan 2012 08:32:52 -0500
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q0RDWoJ9006110
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 27 Jan 2012 08:32:50 -0500
+Received: from lacos-laptop.usersys.redhat.com (dhcp-1-169.brq.redhat.com
+	[10.34.1.169])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q0RDWm9G029788; Fri, 27 Jan 2012 08:32:49 -0500
+From: Laszlo Ersek <lersek@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, armbru@redhat.com
+Date: Fri, 27 Jan 2012 14:34:05 +0100
+Message-Id: <1327671245-5231-1-git-send-email-lersek@redhat.com>
+In-Reply-To: <m31uqluvwy.fsf@blackfin.pond.sub.org>
+References: <m31uqluvwy.fsf@blackfin.pond.sub.org>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH v2] keep the PID file locked for the lifetime
+	of the process
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,25 +44,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jan 2012 13:26:37 -0000
+X-List-Received-Date: Fri, 27 Jan 2012 13:33:10 -0000
 
-Am 27.01.2012 13:26, schrieb Jan Kiszka:
-> The build process of optionroms spits out an "rm ..." line. Moreover, i=
-t
-> removes all .o files that can be handy for debugging purposes.
->=20
-> Disable automatic intermediate removal and only clean up the unneeded
-> and large .img and .raw files.
->=20
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+The lockf() call in qemu_create_pidfile() aims at ensuring mutual
+exclusion. We shouldn't close the pidfile on success (as introduced by
+commit 1bbd1592), because that drops the lock as well [1]:
 
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+    "File locks shall be released on first close by the locking process
+    of any file descriptor for the file."
 
-Thanks,
-Andreas
+Coverity may complain again about the leaked file descriptor; let's
+worry about that later.
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+v1->v2:
+- add reference to 1bbd1592
+- explain the intentional fd leak in the source
+
+[1] http://pubs.opengroup.org/onlinepubs/9699919799/functions/lockf.html
+
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+---
+ os-posix.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/os-posix.c b/os-posix.c
+index 5c437ca..e3ed497 100644
+--- a/os-posix.c
++++ b/os-posix.c
+@@ -348,6 +348,6 @@ int qemu_create_pidfile(const char *filename)
+         return -1;
+     }
+ 
+-    close(fd);
++    /* keep pidfile open & locked forever */
+     return 0;
+ }
+-- 
+1.7.1
+
 
