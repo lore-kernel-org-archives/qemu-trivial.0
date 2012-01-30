@@ -1,42 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RroSy-0007LH-MQ
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Jan 2012 05:28:04 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:56934)
+	id 1Rrr2b-000415-QF
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Jan 2012 08:13:01 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:57953)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1RroSs-0006yM-N3
-	for qemu-trivial@nongnu.org; Mon, 30 Jan 2012 05:28:02 -0500
+	(envelope-from <afaerber@suse.de>) id 1Rrr2U-0003a2-62
+	for qemu-trivial@nongnu.org; Mon, 30 Jan 2012 08:12:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1RroSn-00063G-0F
-	for qemu-trivial@nongnu.org; Mon, 30 Jan 2012 05:27:58 -0500
-Received: from david.siemens.de ([192.35.17.14]:34235)
+	(envelope-from <afaerber@suse.de>) id 1Rrr2T-00062J-4f
+	for qemu-trivial@nongnu.org; Mon, 30 Jan 2012 08:12:54 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:57173 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>)
-	id 1RroSb-00061R-PN; Mon, 30 Jan 2012 05:27:42 -0500
-Received: from mail1.siemens.de (localhost [127.0.0.1])
-	by david.siemens.de (8.13.6/8.13.6) with ESMTP id q0UARYuk011575;
-	Mon, 30 Jan 2012 11:27:35 +0100
-Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
-	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q0UARXfi025321;
-	Mon, 30 Jan 2012 11:27:33 +0100
-Message-ID: <4F267095.6010207@siemens.com>
-Date: Mon, 30 Jan 2012 11:27:33 +0100
-From: Jan Kiszka <jan.kiszka@siemens.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <afaerber@suse.de>)
+	id 1Rrr2H-00060j-Sf; Mon, 30 Jan 2012 08:12:42 -0500
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id E82078BB22;
+	Mon, 30 Jan 2012 14:12:40 +0100 (CET)
+Message-ID: <4F2696BF.7040601@suse.de>
+Date: Mon, 30 Jan 2012 14:10:23 +0100
+From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:9.0) Gecko/20111220 Thunderbird/9.0
 MIME-Version: 1.0
-To: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>
-References: <4F1DA82F.4090808@siemens.com> <4F2297FB.2040508@siemens.com>
-In-Reply-To: <4F2297FB.2040508@siemens.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 192.35.17.14
-Cc: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>,
-	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH v3] optionroms: Silence intermediate file
-	removal
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1326806593-21785-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1326806593-21785-1-git-send-email-peter.maydell@linaro.org>
+X-Enigmail-Version: 1.3.4
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, patches@linaro.org,
+	qemu-devel@nongnu.org,
+	=?UTF-8?B?6Zmz?= =?UTF-8?B?6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>,
+	Alexander Graf <agraf@suse.de>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] exec.c: Clarify comment
+ about tlb_flush() flush_global parameter
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,35 +49,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Jan 2012 10:28:02 -0000
+X-List-Received-Date: Mon, 30 Jan 2012 13:13:00 -0000
 
-The build process of optionroms spits out an "rm ..." line. Moreover, it
-removes all .o files that can be handy for debugging purposes. So
-disable automatic intermediate removal.
+Am 17.01.2012 14:23, schrieb Peter Maydell:
+> Clarify the comment about tlb_flush()'s flush_global parameter,
+> so it is clearer what it does and why it is OK that the implementation
+> currently ignores it.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
----
+Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
 
-Changes in v3:
- - do not remove intermediate file manually, it breaks parallel build
+CC'ing qemu-trivial.
 
- pc-bios/optionrom/Makefile |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+Andreas
 
-diff --git a/pc-bios/optionrom/Makefile b/pc-bios/optionrom/Makefile
-index 51da288..2caf7e6 100644
---- a/pc-bios/optionrom/Makefile
-+++ b/pc-bios/optionrom/Makefile
-@@ -16,6 +16,9 @@ QEMU_CFLAGS = $(CFLAGS)
- 
- build-all: multiboot.bin linuxboot.bin
- 
-+# suppress auto-removal of intermediate files
-+.SECONDARY:
-+
- %.img: %.o
- 	$(call quiet-command,$(LD) -Ttext 0 -e _start -s -o $@ $<,"  Building $(TARGET_DIR)$@")
- 
--- 
-1.7.3.4
+> ---
+> Minor clarification following a conversation on IRC...
+>=20
+>  exec.c |   14 ++++++++++++--
+>  1 files changed, 12 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/exec.c b/exec.c
+> index 7f9f730..f667cf0 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -1876,8 +1876,18 @@ static CPUTLBEntry s_cputlb_empty_entry =3D {
+>      .addend     =3D -1,
+>  };
+> =20
+> -/* NOTE: if flush_global is true, also flush global entries (not
+> -   implemented yet) */
+> +/* NOTE:
+> + * If flush_global is true (the usual case), flush all tlb entries.
+> + * If flush_global is false, flush (at least) all tlb entries not
+> + * marked global.
+> + *
+> + * Since QEMU doesn't currently implement a global/not-global flag
+> + * for tlb entries, at the moment tlb_flush() will also flush all
+> + * tlb entries in the flush_global =3D=3D false case. This is OK becau=
+se
+> + * CPU architectures generally permit an implementation to drop
+> + * entries from the TLB at any time, so flushing more entries than
+> + * required is only an efficiency issue, not a correctness issue.
+> + */
+>  void tlb_flush(CPUState *env, int flush_global)
+>  {
+>      int i;
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
+rnberg
 
