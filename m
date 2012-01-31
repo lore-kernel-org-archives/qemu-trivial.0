@@ -1,30 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RsC89-0006VQ-HG
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2012 06:44:09 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54896)
-	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <uli@suse.de>)
-	id 1RsC83-0006UT-ML
-	for qemu-trivial@nongnu.org; Tue, 31 Jan 2012 06:44:07 -0500
+	id 1RsJBU-00046M-3B
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2012 14:16:04 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:42678)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <slyfox@gentoo.org>) id 1RsJBL-0003a3-RD
+	for qemu-trivial@nongnu.org; Tue, 31 Jan 2012 14:16:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <uli@suse.de>) id 1RsC7y-0005rD-3z
-	for qemu-trivial@nongnu.org; Tue, 31 Jan 2012 06:44:03 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:38004 helo=mx2.suse.de)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <uli@suse.de>)
-	id 1RsC7q-0005lD-JR; Tue, 31 Jan 2012 06:43:50 -0500
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id E85C08FC92;
-	Tue, 31 Jan 2012 12:43:47 +0100 (CET)
-From: Ulrich Hecht <uli@suse.de>
+	(envelope-from <slyfox@gentoo.org>) id 1RsJBE-0006et-Qp
+	for qemu-trivial@nongnu.org; Tue, 31 Jan 2012 14:15:52 -0500
+Received: from smtp.gentoo.org ([140.211.166.183]:45536)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <slyfox@gentoo.org>)
+	id 1RsJAv-0006bz-U4; Tue, 31 Jan 2012 14:15:30 -0500
+Received: from sf.home (unknown [178.125.67.224])
+	(using TLSv1 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested) (Authenticated sender: slyfox)
+	by smtp.gentoo.org (Postfix) with ESMTPSA id B02471B4060;
+	Tue, 31 Jan 2012 19:15:23 +0000 (UTC)
+Received: by sf.home (Postfix, from userid 1000)
+	id B0B3E1358C63; Tue, 31 Jan 2012 22:04:02 +0300 (FET)
+From: Sergei Trofimovich <slyfox@inbox.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 31 Jan 2012 12:43:16 +0100
-Message-Id: <1328010196-32134-1-git-send-email-uli@suse.de>
-X-Mailer: git-send-email 1.7.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Ulrich Hecht <uli@suse.de>
-Subject: [Qemu-trivial] [PATCH] linux-user: fail execve() if env/args too big
+Date: Tue, 31 Jan 2012 22:03:58 +0300
+Message-Id: <1328036638-3190-1-git-send-email-slyfox@inbox.ru>
+X-Mailer: git-send-email 1.7.8.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 140.211.166.183
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Sergei Trofimovich <slyfox@gentoo.org>
+Subject: [Qemu-trivial] [PATCH resend] ./configure: add link check for
+	nss-smartcard
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,61 +42,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2012 11:44:08 -0000
+X-List-Received-Date: Tue, 31 Jan 2012 19:16:02 -0000
 
-If the host's page size is equal to or smaller than the target's, native
-execve() will fail appropriately with E2BIG if called with too big an
-environment for the target to handle. It may falsely succeed, however, if
-the host's page size is bigger, and feed the executed target process an
-environment that is too big for it to handle, at which point QEMU barfs and
-exits, confusing procmail's autoconf script and causing the build to fail.
+From: Sergei Trofimovich <slyfox@gentoo.org>
 
-This patch makes sure that execve() will return E2BIG if the environment is
-too large for the target.
+Current './configure --static && make' fails for me:
 
-Signed-off-by: Ulrich Hecht <uli@suse.de>
+    LINK  qemu-nbd
+    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lssl3
+    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lsmime3
+    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lnssutil3
+    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lnss3
+    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lplds4
+    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lplc4
+    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lnspr4
+
+My system does not provide static libraries for nss, so
+fix autoconfiguration by link checking.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+CC: qemu-trivial <qemu-trivial@nongnu.org>
 ---
- linux-user/syscall.c |    9 +++++++++
- 1 files changed, 9 insertions(+), 0 deletions(-)
+ configure |   13 +++++++++----
+ 1 files changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 2bf9e7e..fba3f29 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -4797,6 +4797,7 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
-             abi_ulong guest_envp;
-             abi_ulong addr;
-             char **q;
-+            int total_size = 0;
- 
-             argc = 0;
-             guest_argp = arg2;
-@@ -4828,6 +4829,7 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
-                     break;
-                 if (!(*q = lock_user_string(addr)))
-                     goto execve_efault;
-+                total_size += strlen(*q) + 1;
-             }
-             *q = NULL;
- 
-@@ -4839,9 +4841,16 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
-                     break;
-                 if (!(*q = lock_user_string(addr)))
-                     goto execve_efault;
-+                total_size += strlen(*q) + 1;
-             }
-             *q = NULL;
- 
-+            /* This case will not be caught by the host's execve() if its
-+               page size is bigger than the target's. */
-+            if (total_size > MAX_ARG_PAGES * TARGET_PAGE_SIZE) {
-+                ret = -TARGET_E2BIG;
-+                goto execve_end;
-+            }
-             if (!(p = lock_user_string(arg1)))
-                 goto execve_efault;
-             ret = get_errno(execve(p, argp, envp));
+diff --git a/configure b/configure
+index 8fd5404..3b0b300 100755
+--- a/configure
++++ b/configure
+@@ -2528,11 +2528,16 @@ if test "$smartcard" != "no" ; then
+     smartcard_cflags=""
+     # TODO - what's the minimal nss version we support?
+     if test "$smartcard_nss" != "no"; then
+-        if $pkg_config --atleast-version=3.12.8 nss >/dev/null 2>&1 ; then
++      cat > $TMPC << EOF
++#include <pk11pub.h>
++int main(void) { PK11_FreeSlot(0); return 0; }
++EOF
++        smartcard_cflags="-I\$(SRC_PATH)/libcacard"
++        libcacard_libs=$($pkg_config --libs nss 2>/dev/null)
++        libcacard_cflags=$($pkg_config --cflags nss 2>/dev/null)
++        if $pkg_config --atleast-version=3.12.8 nss >/dev/null 2>&1 && \
++          compile_prog "$smartcard_cflags $libcacard_cflags" "$libcacard_libs"; then
+             smartcard_nss="yes"
+-            smartcard_cflags="-I\$(SRC_PATH)/libcacard"
+-            libcacard_libs=$($pkg_config --libs nss 2>/dev/null)
+-            libcacard_cflags=$($pkg_config --cflags nss 2>/dev/null)
+             QEMU_CFLAGS="$QEMU_CFLAGS $smartcard_cflags $libcacard_cflags"
+             LIBS="$libcacard_libs $LIBS"
+         else
 -- 
-1.7.1
+1.7.8.4
 
 
