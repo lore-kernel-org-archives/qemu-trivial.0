@@ -1,36 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RsJBU-00046M-3B
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2012 14:16:04 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:42678)
+	id 1RseIw-0000IO-Pk
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Feb 2012 12:49:10 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:55338)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <slyfox@gentoo.org>) id 1RsJBL-0003a3-RD
-	for qemu-trivial@nongnu.org; Tue, 31 Jan 2012 14:16:01 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1RseIp-0008LN-No
+	for qemu-trivial@nongnu.org; Wed, 01 Feb 2012 12:49:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <slyfox@gentoo.org>) id 1RsJBE-0006et-Qp
-	for qemu-trivial@nongnu.org; Tue, 31 Jan 2012 14:15:52 -0500
-Received: from smtp.gentoo.org ([140.211.166.183]:45536)
+	(envelope-from <peter.maydell@linaro.org>) id 1RseIl-0004v1-Gi
+	for qemu-trivial@nongnu.org; Wed, 01 Feb 2012 12:49:03 -0500
+Received: from mail-pz0-f46.google.com ([209.85.210.46]:40371)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <slyfox@gentoo.org>)
-	id 1RsJAv-0006bz-U4; Tue, 31 Jan 2012 14:15:30 -0500
-Received: from sf.home (unknown [178.125.67.224])
-	(using TLSv1 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested) (Authenticated sender: slyfox)
-	by smtp.gentoo.org (Postfix) with ESMTPSA id B02471B4060;
-	Tue, 31 Jan 2012 19:15:23 +0000 (UTC)
-Received: by sf.home (Postfix, from userid 1000)
-	id B0B3E1358C63; Tue, 31 Jan 2012 22:04:02 +0300 (FET)
-From: Sergei Trofimovich <slyfox@inbox.ru>
+	(envelope-from <peter.maydell@linaro.org>)
+	id 1RseIb-0004jc-1C; Wed, 01 Feb 2012 12:48:49 -0500
+Received: by dadp15 with SMTP id p15so1530194dad.33
+	for <multiple recipients>; Wed, 01 Feb 2012 09:48:47 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.68.211.198 with SMTP id ne6mr61797449pbc.83.1328118527473;
+	Wed, 01 Feb 2012 09:48:47 -0800 (PST)
+Received: by 10.68.25.138 with HTTP; Wed, 1 Feb 2012 09:48:47 -0800 (PST)
+In-Reply-To: <CAFEAcA-2pM0YGGH_fsgofNmzd+rZMMhHMDc74G_VeRiH-AfUOg@mail.gmail.com>
+References: <1326486589-12326-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA-2pM0YGGH_fsgofNmzd+rZMMhHMDc74G_VeRiH-AfUOg@mail.gmail.com>
+Date: Wed, 1 Feb 2012 17:48:47 +0000
+Message-ID: <CAFEAcA9F=2_G3BKjWc6qL6os4ZMC=mgXFSFkyazWxanftm3Oog@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Tue, 31 Jan 2012 22:03:58 +0300
-Message-Id: <1328036638-3190-1-git-send-email-slyfox@inbox.ru>
-X-Mailer: git-send-email 1.7.8.4
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 140.211.166.183
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Sergei Trofimovich <slyfox@gentoo.org>
-Subject: [Qemu-trivial] [PATCH resend] ./configure: add link check for
-	nss-smartcard
+X-Received-From: 209.85.210.46
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC] CODING_STYLE: Clarify style
+ for enum and function type names
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,56 +45,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2012 19:16:02 -0000
+X-List-Received-Date: Wed, 01 Feb 2012 17:49:09 -0000
 
-From: Sergei Trofimovich <slyfox@gentoo.org>
+Ping^2 and cc'ing trivial.
 
-Current './configure --static && make' fails for me:
+-- PMM
 
-    LINK  qemu-nbd
-    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lssl3
-    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lsmime3
-    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lnssutil3
-    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lnss3
-    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lplds4
-    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lplc4
-    /usr/lib/gcc/x86_64-pc-linux-gnu/4.5.3/../../../../x86_64-pc-linux-gnu/bin/ld: cannot find -lnspr4
-
-My system does not provide static libraries for nss, so
-fix autoconfiguration by link checking.
-
-Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
-CC: qemu-trivial <qemu-trivial@nongnu.org>
----
- configure |   13 +++++++++----
- 1 files changed, 9 insertions(+), 4 deletions(-)
-
-diff --git a/configure b/configure
-index 8fd5404..3b0b300 100755
---- a/configure
-+++ b/configure
-@@ -2528,11 +2528,16 @@ if test "$smartcard" != "no" ; then
-     smartcard_cflags=""
-     # TODO - what's the minimal nss version we support?
-     if test "$smartcard_nss" != "no"; then
--        if $pkg_config --atleast-version=3.12.8 nss >/dev/null 2>&1 ; then
-+      cat > $TMPC << EOF
-+#include <pk11pub.h>
-+int main(void) { PK11_FreeSlot(0); return 0; }
-+EOF
-+        smartcard_cflags="-I\$(SRC_PATH)/libcacard"
-+        libcacard_libs=$($pkg_config --libs nss 2>/dev/null)
-+        libcacard_cflags=$($pkg_config --cflags nss 2>/dev/null)
-+        if $pkg_config --atleast-version=3.12.8 nss >/dev/null 2>&1 && \
-+          compile_prog "$smartcard_cflags $libcacard_cflags" "$libcacard_libs"; then
-             smartcard_nss="yes"
--            smartcard_cflags="-I\$(SRC_PATH)/libcacard"
--            libcacard_libs=$($pkg_config --libs nss 2>/dev/null)
--            libcacard_cflags=$($pkg_config --cflags nss 2>/dev/null)
-             QEMU_CFLAGS="$QEMU_CFLAGS $smartcard_cflags $libcacard_cflags"
-             LIBS="$libcacard_libs $LIBS"
-         else
--- 
-1.7.8.4
-
+On 23 January 2012 14:12, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Since nobody seems to have disagreed, perhaps we should
+> just commit this?
+>
+> -- PMM
+>
+> On 13 January 2012 20:29, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> Clarify that enum type names and function type names should follow
+>> the CamelCase style used for structured type names.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> During a conversation on IRC with Anthony, I realised that the coding
+>> standard isn't entirely clear about what convention should be followed
+>> for enum and function types. This patch resolves that by saying they
+>> should be CamelCase like structured type names, based on Anthony's
+>> suggestion. I've tagged this as an RFC in case anybody would rather
+>> we went the other way instead...
+>>
+>> =C2=A0CODING_STYLE | =C2=A0 =C2=A03 ++-
+>> =C2=A01 files changed, 2 insertions(+), 1 deletions(-)
+>>
+>> diff --git a/CODING_STYLE b/CODING_STYLE
+>> index 6e61c49..7c82d4d 100644
+>> --- a/CODING_STYLE
+>> +++ b/CODING_STYLE
+>> @@ -44,7 +44,8 @@ Rationale:
+>> =C2=A03. Naming
+>>
+>> =C2=A0Variables are lower_case_with_underscores; easy to type and read. =
+=C2=A0Structured
+>> -type names are in CamelCase; harder to type but standing out. =C2=A0Sca=
+lar type
+>> +type names are in CamelCase; harder to type but standing out. =C2=A0Enu=
+m type
+>> +names and function type names should also be in CamelCase. =C2=A0Scalar=
+ type
+>> =C2=A0names are lower_case_with_underscores_ending_with_a_t, like the PO=
+SIX
+>> =C2=A0uint64_t and family. =C2=A0Note that this last convention contradi=
+cts POSIX
+>> =C2=A0and is therefore likely to be changed.
+>> --
+>> 1.7.1
 
