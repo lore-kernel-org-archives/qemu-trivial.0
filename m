@@ -1,39 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RseIw-0000IO-Pk
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Feb 2012 12:49:10 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:55338)
+	id 1RsfGo-0002Cx-Ix
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Feb 2012 13:51:02 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:40949)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1RseIp-0008LN-No
-	for qemu-trivial@nongnu.org; Wed, 01 Feb 2012 12:49:09 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1RsfGj-0001sB-6B
+	for qemu-trivial@nongnu.org; Wed, 01 Feb 2012 13:51:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1RseIl-0004v1-Gi
-	for qemu-trivial@nongnu.org; Wed, 01 Feb 2012 12:49:03 -0500
-Received: from mail-pz0-f46.google.com ([209.85.210.46]:40371)
+	(envelope-from <pm215@archaic.org.uk>) id 1RsfGf-0002aQ-CK
+	for qemu-trivial@nongnu.org; Wed, 01 Feb 2012 13:50:57 -0500
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:46988)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>)
-	id 1RseIb-0004jc-1C; Wed, 01 Feb 2012 12:48:49 -0500
-Received: by dadp15 with SMTP id p15so1530194dad.33
-	for <multiple recipients>; Wed, 01 Feb 2012 09:48:47 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.68.211.198 with SMTP id ne6mr61797449pbc.83.1328118527473;
-	Wed, 01 Feb 2012 09:48:47 -0800 (PST)
-Received: by 10.68.25.138 with HTTP; Wed, 1 Feb 2012 09:48:47 -0800 (PST)
-In-Reply-To: <CAFEAcA-2pM0YGGH_fsgofNmzd+rZMMhHMDc74G_VeRiH-AfUOg@mail.gmail.com>
-References: <1326486589-12326-1-git-send-email-peter.maydell@linaro.org>
-	<CAFEAcA-2pM0YGGH_fsgofNmzd+rZMMhHMDc74G_VeRiH-AfUOg@mail.gmail.com>
-Date: Wed, 1 Feb 2012 17:48:47 +0000
-Message-ID: <CAFEAcA9F=2_G3BKjWc6qL6os4ZMC=mgXFSFkyazWxanftm3Oog@mail.gmail.com>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1RsfGY-0002ZW-CY; Wed, 01 Feb 2012 13:50:46 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1RsfGU-0004kT-Pg; Wed, 01 Feb 2012 18:50:42 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.210.46
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC] CODING_STYLE: Clarify style
- for enum and function type names
+Date: Wed,  1 Feb 2012 18:50:42 +0000
+Message-Id: <1328122242-18230-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] Makefile: Remove linux-headers/asm symlink
+	on distclean
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,54 +36,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Feb 2012 17:49:09 -0000
+X-List-Received-Date: Wed, 01 Feb 2012 18:51:01 -0000
 
-Ping^2 and cc'ing trivial.
+configure creates a linux-headers/asm symlink. Remove this when
+doing a distclean.
 
--- PMM
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ Makefile |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
 
-On 23 January 2012 14:12, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Since nobody seems to have disagreed, perhaps we should
-> just commit this?
->
-> -- PMM
->
-> On 13 January 2012 20:29, Peter Maydell <peter.maydell@linaro.org> wrote:
->> Clarify that enum type names and function type names should follow
->> the CamelCase style used for structured type names.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->> During a conversation on IRC with Anthony, I realised that the coding
->> standard isn't entirely clear about what convention should be followed
->> for enum and function types. This patch resolves that by saying they
->> should be CamelCase like structured type names, based on Anthony's
->> suggestion. I've tagged this as an RFC in case anybody would rather
->> we went the other way instead...
->>
->> =C2=A0CODING_STYLE | =C2=A0 =C2=A03 ++-
->> =C2=A01 files changed, 2 insertions(+), 1 deletions(-)
->>
->> diff --git a/CODING_STYLE b/CODING_STYLE
->> index 6e61c49..7c82d4d 100644
->> --- a/CODING_STYLE
->> +++ b/CODING_STYLE
->> @@ -44,7 +44,8 @@ Rationale:
->> =C2=A03. Naming
->>
->> =C2=A0Variables are lower_case_with_underscores; easy to type and read. =
-=C2=A0Structured
->> -type names are in CamelCase; harder to type but standing out. =C2=A0Sca=
-lar type
->> +type names are in CamelCase; harder to type but standing out. =C2=A0Enu=
-m type
->> +names and function type names should also be in CamelCase. =C2=A0Scalar=
- type
->> =C2=A0names are lower_case_with_underscores_ending_with_a_t, like the PO=
-SIX
->> =C2=A0uint64_t and family. =C2=A0Note that this last convention contradi=
-cts POSIX
->> =C2=A0and is therefore likely to be changed.
->> --
->> 1.7.1
+diff --git a/Makefile b/Makefile
+index d172cbf..2560b59 100644
+--- a/Makefile
++++ b/Makefile
+@@ -233,6 +233,7 @@ distclean: clean
+ 	rm -f qemu-doc.log qemu-doc.pdf qemu-doc.pg qemu-doc.toc qemu-doc.tp
+ 	rm -f qemu-doc.vr
+ 	rm -f config.log
++	rm -f linux-headers/asm
+ 	rm -f qemu-tech.info qemu-tech.aux qemu-tech.cp qemu-tech.dvi qemu-tech.fn qemu-tech.info qemu-tech.ky qemu-tech.log qemu-tech.pdf qemu-tech.pg qemu-tech.toc qemu-tech.tp qemu-tech.vr
+ 	for d in $(TARGET_DIRS) $(QEMULIBS); do \
+ 	rm -rf $$d || exit 1 ; \
+-- 
+1.7.1
+
 
