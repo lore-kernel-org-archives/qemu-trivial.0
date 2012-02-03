@@ -1,43 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RsiWf-0006eb-Qx
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Feb 2012 17:19:37 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:36658)
+	id 1RtHqW-0003BT-PW
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2012 07:02:28 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:46200)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1RsiQL-0002dr-Lt
-	for qemu-trivial@nongnu.org; Wed, 01 Feb 2012 17:13:09 -0500
+	(envelope-from <jan.kiszka@siemens.com>) id 1RtHqO-0003Ag-JK
+	for qemu-trivial@nongnu.org; Fri, 03 Feb 2012 07:02:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1RsiQE-0000MU-Mk
-	for qemu-trivial@nongnu.org; Wed, 01 Feb 2012 17:13:04 -0500
-Received: from mail-pw0-f45.google.com ([209.85.160.45]:40163)
+	(envelope-from <jan.kiszka@siemens.com>) id 1RtHqE-0008Tw-VV
+	for qemu-trivial@nongnu.org; Fri, 03 Feb 2012 07:02:20 -0500
+Received: from thoth.sbs.de ([192.35.17.2]:31618)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>)
-	id 1RsiPt-00006T-IP; Wed, 01 Feb 2012 17:12:37 -0500
-Received: by mail-pw0-f45.google.com with SMTP id a11so1882314pba.4
-	for <multiple recipients>; Wed, 01 Feb 2012 14:12:36 -0800 (PST)
-Received: by 10.68.227.132 with SMTP id sa4mr1426891pbc.64.1328134356819;
-	Wed, 01 Feb 2012 14:12:36 -0800 (PST)
-Received: from [192.168.0.103] (cpe-70-123-132-139.austin.res.rr.com.
-	[70.123.132.139])
-	by mx.google.com with ESMTPS id c5sm1207256pbq.13.2012.02.01.14.12.34
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 01 Feb 2012 14:12:35 -0800 (PST)
-Message-ID: <4F29B8D1.2070202@codemonkey.ws>
-Date: Wed, 01 Feb 2012 16:12:33 -0600
-From: Anthony Liguori <anthony@codemonkey.ws>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.23) Gecko/20110922 Lightning/1.0b2 Thunderbird/3.1.15
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1RtHqE-0008Tr-EH; Fri, 03 Feb 2012 07:02:10 -0500
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by thoth.sbs.de (8.13.6/8.13.6) with ESMTP id q13C27aw015114;
+	Fri, 3 Feb 2012 13:02:07 +0100
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q13C25Om021403;
+	Fri, 3 Feb 2012 13:02:05 +0100
+Message-ID: <4F2BCCBD.8050009@siemens.com>
+Date: Fri, 03 Feb 2012 13:02:05 +0100
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1328122242-18230-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1328122242-18230-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+To: qemu-trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Remove
- linux-headers/asm symlink on distclean
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 192.35.17.2
+Cc: Blue Swirl <blauwirbel@gmail.com>, qemu-devel <qemu-devel@nongnu.org>,
+	Avi Kivity <avi@redhat.com>
+Subject: [Qemu-trivial] [PATCH] memory-region: Report if region is read-only
+	on info mtree
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,35 +46,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Feb 2012 22:19:36 -0000
+X-List-Received-Date: Fri, 03 Feb 2012 12:02:27 -0000
 
-On 02/01/2012 12:50 PM, Peter Maydell wrote:
-> configure creates a linux-headers/asm symlink. Remove this when
-> doing a distclean.
->
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+Helpful to understand guest configurations of things like the i440FX's
+PAM.
 
-Applied.  Thanks.
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+---
+ memory.c |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
 
-Regards,
-
-Anthony Liguori
-
-> ---
->   Makefile |    1 +
->   1 files changed, 1 insertions(+), 0 deletions(-)
->
-> diff --git a/Makefile b/Makefile
-> index d172cbf..2560b59 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -233,6 +233,7 @@ distclean: clean
->   	rm -f qemu-doc.log qemu-doc.pdf qemu-doc.pg qemu-doc.toc qemu-doc.tp
->   	rm -f qemu-doc.vr
->   	rm -f config.log
-> +	rm -f linux-headers/asm
->   	rm -f qemu-tech.info qemu-tech.aux qemu-tech.cp qemu-tech.dvi qemu-tech.fn qemu-tech.info qemu-tech.ky qemu-tech.log qemu-tech.pdf qemu-tech.pg qemu-tech.toc qemu-tech.tp qemu-tech.vr
->   	for d in $(TARGET_DIRS) $(QEMULIBS); do \
->   	rm -rf $$d || exit 1 ; \
-
+diff --git a/memory.c b/memory.c
+index ee4c98a..ea4adda 100644
+--- a/memory.c
++++ b/memory.c
+@@ -1608,23 +1608,25 @@ static void mtree_print_mr(fprintf_function mon_printf, void *f,
+             ml->printed = false;
+             QTAILQ_INSERT_TAIL(alias_print_queue, ml, queue);
+         }
+-        mon_printf(f, TARGET_FMT_plx "-" TARGET_FMT_plx " (prio %d): alias %s @%s "
++        mon_printf(f, TARGET_FMT_plx "-" TARGET_FMT_plx " (prio %d, %s): alias %s @%s "
+                    TARGET_FMT_plx "-" TARGET_FMT_plx "\n",
+                    base + mr->addr,
+                    base + mr->addr
+                    + (target_phys_addr_t)int128_get64(mr->size) - 1,
+                    mr->priority,
++                   mr->readonly ? "RO" : "RW",
+                    mr->name,
+                    mr->alias->name,
+                    mr->alias_offset,
+                    mr->alias_offset
+                    + (target_phys_addr_t)int128_get64(mr->size) - 1);
+     } else {
+-        mon_printf(f, TARGET_FMT_plx "-" TARGET_FMT_plx " (prio %d): %s\n",
++        mon_printf(f, TARGET_FMT_plx "-" TARGET_FMT_plx " (prio %d, %s): %s\n",
+                    base + mr->addr,
+                    base + mr->addr
+                    + (target_phys_addr_t)int128_get64(mr->size) - 1,
+                    mr->priority,
++                   mr->readonly ? "RO" : "RW",
+                    mr->name);
+     }
+ 
+-- 
+1.7.3.4
 
