@@ -1,45 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RteUJ-0003QB-QF
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2012 07:13:03 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:55956)
+	id 1Rteev-0005QR-FG
+	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2012 07:24:01 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:57459)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1RteUF-00039n-K2
-	for qemu-trivial@nongnu.org; Sat, 04 Feb 2012 07:13:00 -0500
+	(envelope-from <jan.kiszka@web.de>) id 1Rteer-0005F6-OE
+	for qemu-trivial@nongnu.org; Sat, 04 Feb 2012 07:23:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1RteUE-0003mG-MF
-	for qemu-trivial@nongnu.org; Sat, 04 Feb 2012 07:12:59 -0500
-Received: from mail-iy0-f173.google.com ([209.85.210.173]:33465)
+	(envelope-from <jan.kiszka@web.de>) id 1Rteeq-0005XM-L9
+	for qemu-trivial@nongnu.org; Sat, 04 Feb 2012 07:23:57 -0500
+Received: from fmmailgate04.web.de ([217.72.192.242]:55329)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>)
-	id 1RteUB-0003lq-Qs; Sat, 04 Feb 2012 07:12:55 -0500
-Received: by iahk25 with SMTP id k25so7497749iah.4
-	for <multiple recipients>; Sat, 04 Feb 2012 04:12:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:content-transfer-encoding;
-	bh=TW9dmH+TelzCfuuAY0EPID4+cHB59cPrJwAFkqqc8XM=;
-	b=EoB5orMk0aJ61kzd94OpipWt3zlWgQlx5noOSVQujjmMxpnq5lxNlKltmpv0U8FF9Y
-	khaGfOAHvlorskzsaeRIATt1Ex+O/OENFQ/iE1dbPFiVF7HcwCR0HeKkB7j21kG9mxWp
-	4JxmyqEhzBVWm3X7FKN6mDwhsfuPj+eOx4HUU=
-Received: by 10.42.165.135 with SMTP id k7mr12043983icy.32.1328357575111; Sat,
-	04 Feb 2012 04:12:55 -0800 (PST)
+	(envelope-from <jan.kiszka@web.de>)
+	id 1Rteen-0005Wz-At; Sat, 04 Feb 2012 07:23:53 -0500
+Received: from moweb001.kundenserver.de (moweb001.kundenserver.de
+	[172.19.20.114])
+	by fmmailgate04.web.de (Postfix) with ESMTP id 0D6CC7138F8A;
+	Sat,  4 Feb 2012 13:23:52 +0100 (CET)
+Received: from mchn199C.mchp.siemens.de ([95.157.56.37]) by smtp.web.de
+	(mrweb001) with ESMTPA (Nemesis) id 0MfYXz-1SDors1N8N-00Op8b;
+	Sat, 04 Feb 2012 13:23:51 +0100
+Message-ID: <4F2D2352.80204@web.de>
+Date: Sat, 04 Feb 2012 13:23:46 +0100
+From: Jan Kiszka <jan.kiszka@web.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-Received: by 10.50.15.167 with HTTP; Sat, 4 Feb 2012 04:12:35 -0800 (PST)
-In-Reply-To: <4F2BCCBD.8050009@siemens.com>
+To: Blue Swirl <blauwirbel@gmail.com>
 References: <4F2BCCBD.8050009@siemens.com>
-From: Blue Swirl <blauwirbel@gmail.com>
-Date: Sat, 4 Feb 2012 12:12:35 +0000
-Message-ID: <CAAu8pHvB_cG6KWaq350-ZAdsAiBr+m2FCSzuAX3LAYUdDUHX5A@mail.gmail.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.210.173
+	<CAAu8pHvB_cG6KWaq350-ZAdsAiBr+m2FCSzuAX3LAYUdDUHX5A@mail.gmail.com>
+In-Reply-To: <CAAu8pHvB_cG6KWaq350-ZAdsAiBr+m2FCSzuAX3LAYUdDUHX5A@mail.gmail.com>
+X-Enigmail-Version: 1.3.5
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature";
+	boundary="------------enigA935425AE780C261F8209223"
+X-Provags-ID: V02:K0:uf/8FZgFqtJrbHJWbZkohlgU2+4YJTqT+SR2fe9HGYq
+	jJa0ExTOUOjEL9hN7j+TnpPXwnN/WLDFZSRBfET+4bExj3tlP4
+	UneN+KcpavXDkKGNRhBDXlH6sfJ8ir1oAfX/M+qfTyTMYYfGFW
+	VKhpq8usXYxyVfHTn2ZhdCu2zh3QQ2nmWCYRoqDyUaFgDlqUm7
+	T2cjcZSm4C0T8DYdEu24A==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 217.72.192.242
 Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
 	Avi Kivity <avi@redhat.com>
 Subject: Re: [Qemu-trivial] [PATCH] memory-region: Report if region is
-	read-only on info mtree
+ read-only on info mtree
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,44 +56,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Feb 2012 12:13:00 -0000
+X-List-Received-Date: Sat, 04 Feb 2012 12:23:58 -0000
 
-T24gRnJpLCBGZWIgMywgMjAxMiBhdCAxMjowMiwgSmFuIEtpc3prYSA8amFuLmtpc3prYUBzaWVt
-ZW5zLmNvbT4gd3JvdGU6Cj4gSGVscGZ1bCB0byB1bmRlcnN0YW5kIGd1ZXN0IGNvbmZpZ3VyYXRp
-b25zIG9mIHRoaW5ncyBsaWtlIHRoZSBpNDQwRlgncwo+IFBBTS4KPgo+IFNpZ25lZC1vZmYtYnk6
-IEphbiBLaXN6a2EgPGphbi5raXN6a2FAc2llbWVucy5jb20+Cj4gLS0tCj4gwqBtZW1vcnkuYyB8
-IMKgIMKgNiArKysrLS0KPiDCoDEgZmlsZXMgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAyIGRl
-bGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL21lbW9yeS5jIGIvbWVtb3J5LmMKPiBpbmRleCBl
-ZTRjOThhLi5lYTRhZGRhIDEwMDY0NAo+IC0tLSBhL21lbW9yeS5jCj4gKysrIGIvbWVtb3J5LmMK
-PiBAQCAtMTYwOCwyMyArMTYwOCwyNSBAQCBzdGF0aWMgdm9pZCBtdHJlZV9wcmludF9tcihmcHJp
-bnRmX2Z1bmN0aW9uIG1vbl9wcmludGYsIHZvaWQgKmYsCj4gwqAgwqAgwqAgwqAgwqAgwqAgbWwt
-PnByaW50ZWQgPSBmYWxzZTsKPiDCoCDCoCDCoCDCoCDCoCDCoCBRVEFJTFFfSU5TRVJUX1RBSUwo
-YWxpYXNfcHJpbnRfcXVldWUsIG1sLCBxdWV1ZSk7Cj4gwqAgwqAgwqAgwqAgfQo+IC0gwqAgwqAg
-wqAgwqBtb25fcHJpbnRmKGYsIFRBUkdFVF9GTVRfcGx4ICItIiBUQVJHRVRfRk1UX3BseCAiIChw
-cmlvICVkKTogYWxpYXMgJXMgQCVzICIKPiArIMKgIMKgIMKgIMKgbW9uX3ByaW50ZihmLCBUQVJH
-RVRfRk1UX3BseCAiLSIgVEFSR0VUX0ZNVF9wbHggIiAocHJpbyAlZCwgJXMpOiBhbGlhcyAlcyBA
-JXMgIgo+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgVEFSR0VUX0ZNVF9wbHggIi0iIFRB
-UkdFVF9GTVRfcGx4ICJcbiIsCj4gwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBiYXNlICsg
-bXItPmFkZHIsCj4gwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBiYXNlICsgbXItPmFkZHIK
-PiDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCsgKHRhcmdldF9waHlzX2FkZHJfdClpbnQx
-MjhfZ2V0NjQobXItPnNpemUpIC0gMSwKPiDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoG1y
-LT5wcmlvcml0eSwKPiArIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIG1yLT5yZWFkb25seSA/
-ICJSTyIgOiAiUlciLAoKSSB0aGluayB0aGUgcmVzZXJ2ZWQgcmVnaW9ucyB3aGljaCBhcmUgdW5y
-ZWFkYWJsZSBhbmQgdW53cml0YWJsZQpzaG91bGQgYmUgc2hvd24gYXMgd2VsbC4gVGhlbiB0aGUg
-b3V0cHV0IHNob3VsZCBiZSBhIGNvbWJpbmF0aW9uIG9mCidSJywgJ1cnIG9yIG5laXRoZXIgKCct
-JykuCgo+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgbXItPm5hbWUsCj4gwqAgwqAgwqAg
-wqAgwqAgwqAgwqAgwqAgwqAgwqBtci0+YWxpYXMtPm5hbWUsCj4gwqAgwqAgwqAgwqAgwqAgwqAg
-wqAgwqAgwqAgwqBtci0+YWxpYXNfb2Zmc2V0LAo+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
-IMKgbXItPmFsaWFzX29mZnNldAo+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgKyAodGFy
-Z2V0X3BoeXNfYWRkcl90KWludDEyOF9nZXQ2NChtci0+c2l6ZSkgLSAxKTsKPiDCoCDCoCB9IGVs
-c2Ugewo+IC0gwqAgwqAgwqAgwqBtb25fcHJpbnRmKGYsIFRBUkdFVF9GTVRfcGx4ICItIiBUQVJH
-RVRfRk1UX3BseCAiIChwcmlvICVkKTogJXNcbiIsCj4gKyDCoCDCoCDCoCDCoG1vbl9wcmludGYo
-ZiwgVEFSR0VUX0ZNVF9wbHggIi0iIFRBUkdFVF9GTVRfcGx4ICIgKHByaW8gJWQsICVzKTogJXNc
-biIsCj4gwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBiYXNlICsgbXItPmFkZHIsCj4gwqAg
-wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBiYXNlICsgbXItPmFkZHIKPiDCoCDCoCDCoCDCoCDC
-oCDCoCDCoCDCoCDCoCDCoCsgKHRhcmdldF9waHlzX2FkZHJfdClpbnQxMjhfZ2V0NjQobXItPnNp
-emUpIC0gMSwKPiDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoG1yLT5wcmlvcml0eSwKPiAr
-IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIG1yLT5yZWFkb25seSA/ICJSTyIgOiAiUlciLAo+
-IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgbXItPm5hbWUpOwo+IMKgIMKgIH0KPgo+IC0t
-Cj4gMS43LjMuNAo=
+This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
+--------------enigA935425AE780C261F8209223
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On 2012-02-04 13:12, Blue Swirl wrote:
+> On Fri, Feb 3, 2012 at 12:02, Jan Kiszka <jan.kiszka@siemens.com> wrote=
+:
+>> Helpful to understand guest configurations of things like the i440FX's=
+
+>> PAM.
+>>
+>> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+>> ---
+>>  memory.c |    6 ++++--
+>>  1 files changed, 4 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/memory.c b/memory.c
+>> index ee4c98a..ea4adda 100644
+>> --- a/memory.c
+>> +++ b/memory.c
+>> @@ -1608,23 +1608,25 @@ static void mtree_print_mr(fprintf_function mo=
+n_printf, void *f,
+>>             ml->printed =3D false;
+>>             QTAILQ_INSERT_TAIL(alias_print_queue, ml, queue);
+>>         }
+>> -        mon_printf(f, TARGET_FMT_plx "-" TARGET_FMT_plx " (prio %d): =
+alias %s @%s "
+>> +        mon_printf(f, TARGET_FMT_plx "-" TARGET_FMT_plx " (prio %d, %=
+s): alias %s @%s "
+>>                    TARGET_FMT_plx "-" TARGET_FMT_plx "\n",
+>>                    base + mr->addr,
+>>                    base + mr->addr
+>>                    + (target_phys_addr_t)int128_get64(mr->size) - 1,
+>>                    mr->priority,
+>> +                   mr->readonly ? "RO" : "RW",
+>=20
+> I think the reserved regions which are unreadable and unwritable
+> should be shown as well. Then the output should be a combination of
+> 'R', 'W' or neither ('-').
+
+Reserved regions are in the hand of some other device model (so far only
+the KVM kernel). That says nothing about their R/W property. If we ever
+have a reserved region that is not writable, the owner could still set
+the corresponding flag for documentation purposes.
+
+Jan
+
+
+--------------enigA935425AE780C261F8209223
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.16 (GNU/Linux)
+Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
+
+iEYEARECAAYFAk8tI1YACgkQitSsb3rl5xQAZACeII9oKsOHxcjOKH2ISRLFJ1GZ
+neYAn3wUHWjjapIdeB8HS/sFkp+qvJyq
+=lSgJ
+-----END PGP SIGNATURE-----
+
+--------------enigA935425AE780C261F8209223--
 
