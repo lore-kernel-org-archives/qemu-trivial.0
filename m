@@ -1,52 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rtgy7-0004Og-0x
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2012 09:51:59 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:49110)
+	id 1RuHfa-0004Xw-Av
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Feb 2012 01:03:18 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:38701)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1Rtgy4-0004HH-9H
-	for qemu-trivial@nongnu.org; Sat, 04 Feb 2012 09:51:57 -0500
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RuHfX-0004Xl-TW
+	for qemu-trivial@nongnu.org; Mon, 06 Feb 2012 01:03:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1Rtgy3-0008Lc-As
-	for qemu-trivial@nongnu.org; Sat, 04 Feb 2012 09:51:56 -0500
-Received: from fmmailgate03.web.de ([217.72.192.234]:40064)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RuHfW-0005Sv-PP
+	for qemu-trivial@nongnu.org; Mon, 06 Feb 2012 01:03:15 -0500
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:37453)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1Rtgxz-0008Ks-O5; Sat, 04 Feb 2012 09:51:51 -0500
-Received: from moweb002.kundenserver.de (moweb002.kundenserver.de
-	[172.19.20.108])
-	by fmmailgate03.web.de (Postfix) with ESMTP id 862401B09E47C;
-	Sat,  4 Feb 2012 15:51:50 +0100 (CET)
-Received: from mchn199C.mchp.siemens.de ([95.157.56.37]) by smtp.web.de
-	(mrweb002) with ESMTPA (Nemesis) id 0Lr2I7-1SXicQ3lat-00eLTT;
-	Sat, 04 Feb 2012 15:51:50 +0100
-Message-ID: <4F2D45FF.9070204@web.de>
-Date: Sat, 04 Feb 2012 15:51:43 +0100
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <chenwj@cs.nctu.edu.tw>)
+	id 1RuHfR-0005Oq-ER; Mon, 06 Feb 2012 01:03:11 -0500
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 4D17319A;
+	Mon,  6 Feb 2012 13:59:42 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:cc:subject:message-id:mime-version:content-type
+	:content-transfer-encoding; s=rsa1024; bh=VGcR63OI2vl7ODhi3A5Si0
+	THkaY=; b=V7/6SEp33ALtvQbMzzkYDcz8buWFtW8ht0KIQ6yfwesHQXSzT3c5su
+	cmOClTYGIqNhPugg147wD9Yaolehxu6JCrkzlWBNDCDMzsceg0aWwjhboh9s9Ezf
+	dsiGiILce9pVU7HOvSoPm7+eE6AhxY4qcpN6p7BhecFzM82FzzbWg=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 2FC2C199;
+	Mon,  6 Feb 2012 13:59:42 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id q1662trk056580;
+	Mon, 6 Feb 2012 14:02:55 +0800 (CST) (envelope-from chenwj)
+Date: Mon, 6 Feb 2012 14:02:55 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+To: qemu-devel@nongnu.org
+Message-ID: <20120206060255.GA55374@cs.nctu.edu.tw>
 MIME-Version: 1.0
-To: Blue Swirl <blauwirbel@gmail.com>
-References: <4F2BCCBD.8050009@siemens.com>
-	<CAAu8pHvB_cG6KWaq350-ZAdsAiBr+m2FCSzuAX3LAYUdDUHX5A@mail.gmail.com>
-	<4F2D2352.80204@web.de>
-	<CAAu8pHvBnW2v-q9YG57m0SH9BShbeyor+NY-TjGiT6Cj=f9kRQ@mail.gmail.com>
-In-Reply-To: <CAAu8pHvBnW2v-q9YG57m0SH9BShbeyor+NY-TjGiT6Cj=f9kRQ@mail.gmail.com>
-X-Enigmail-Version: 1.3.5
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="------------enig818B3DA45E29F5EED18FAF63"
-X-Provags-ID: V02:K0:x/mh7cq+BKRzfcz/xbZfclgnJdepppJgsduBnsENtbG
-	w1lgZFdeJu6i3K5zY0tOcwfW6lQ3OlekEyIB12DdKkD0HUvn7w
-	Y1VhyPv0hI/UCDNiDkGGT5REoL2QTG+0rClM6/TYpaAZmkMmdd
-	hzzqOK0bP8SAs2iypqqvVls9I4XxW3JWLgsEyazMXSyNK0bJr0
-	IeVUVltdOLWB2+TDPlpLQ==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 217.72.192.234
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Avi Kivity <avi@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] memory-region: Report if region is
- read-only on info mtree
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 140.113.235.130
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH v2] cpu-exec.c: Correct comment about this
+ file and indentation cleanup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,84 +53,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Feb 2012 14:51:57 -0000
+X-List-Received-Date: Mon, 06 Feb 2012 06:03:16 -0000
 
-This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enig818B3DA45E29F5EED18FAF63
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+  Each target use #define marco (in target-xxx/cpu.h) to rename cpu_exec
+(cpu-exec.c) to cpu_xxx_exec, then defines its own cpu_loop which calls
+cpu_xxx_exec. So basically, cpu-exec.c is not i386 (only) emulator main
+execution loop. This patch correctes the comment of this file and does
+indentation cleanup.
 
-On 2012-02-04 13:32, Blue Swirl wrote:
-> On Sat, Feb 4, 2012 at 12:23, Jan Kiszka <jan.kiszka@web.de> wrote:
->> On 2012-02-04 13:12, Blue Swirl wrote:
->>> On Fri, Feb 3, 2012 at 12:02, Jan Kiszka <jan.kiszka@siemens.com> wro=
-te:
->>>> Helpful to understand guest configurations of things like the i440FX=
-'s
->>>> PAM.
->>>>
->>>> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
->>>> ---
->>>>  memory.c |    6 ++++--
->>>>  1 files changed, 4 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/memory.c b/memory.c
->>>> index ee4c98a..ea4adda 100644
->>>> --- a/memory.c
->>>> +++ b/memory.c
->>>> @@ -1608,23 +1608,25 @@ static void mtree_print_mr(fprintf_function =
-mon_printf, void *f,
->>>>             ml->printed =3D false;
->>>>             QTAILQ_INSERT_TAIL(alias_print_queue, ml, queue);
->>>>         }
->>>> -        mon_printf(f, TARGET_FMT_plx "-" TARGET_FMT_plx " (prio %d)=
-: alias %s @%s "
->>>> +        mon_printf(f, TARGET_FMT_plx "-" TARGET_FMT_plx " (prio %d,=
- %s): alias %s @%s "
->>>>                    TARGET_FMT_plx "-" TARGET_FMT_plx "\n",
->>>>                    base + mr->addr,
->>>>                    base + mr->addr
->>>>                    + (target_phys_addr_t)int128_get64(mr->size) - 1,=
+Signed-off-by: Chen Wei-Ren (=E9=99=B3=E9=9F=8B=E4=BB=BB) <chenwj@iis.sin=
+ica.edu.tw>
+---
+v1 -> v2:
 
->>>>                    mr->priority,
->>>> +                   mr->readonly ? "RO" : "RW",
->>>
->>> I think the reserved regions which are unreadable and unwritable
->>> should be shown as well. Then the output should be a combination of
->>> 'R', 'W' or neither ('-').
->>
->> Reserved regions are in the hand of some other device model (so far on=
-ly
->> the KVM kernel). That says nothing about their R/W property. If we eve=
-r
->> have a reserved region that is not writable, the owner could still set=
+ Didn't notice tab in previous patch, please use this patch instead.=20
+ Sorry about that.
 
->> the corresponding flag for documentation purposes.
->=20
-> OK. But it's also possible for a region to have readable =3D=3D false
-> while readonly =3D=3D false, which would imply 'WO' or '-W'. That also
-> supports separate 'R', 'W' and '-' flags.
+ cpu-exec.c |   10 +++++-----
+ 1 files changed, 5 insertions(+), 5 deletions(-)
 
-Yep, I encoded the ROM device state as well. And this revealed a
-regression of the memory region conversion of the cfi02. Gave up
-counting how often I fixed this type of bug in the flash code.
-
-Jan
-
-
---------------enig818B3DA45E29F5EED18FAF63
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.16 (GNU/Linux)
-Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
-
-iEYEARECAAYFAk8tRgEACgkQitSsb3rl5xQNLACcD28Ijx7U6x3OJzNW7VFyvFlK
-ePwAn09vjMOuyNGp3Zd2T8QO+D64mckf
-=VF1L
------END PGP SIGNATURE-----
-
---------------enig818B3DA45E29F5EED18FAF63--
+diff --git a/cpu-exec.c b/cpu-exec.c
+index a9fa608..2c2d24e 100644
+--- a/cpu-exec.c
++++ b/cpu-exec.c
+@@ -1,5 +1,5 @@
+ /*
+- *  i386 emulator main execution loop
++ *  emulator main execution loop
+  *
+  *  Copyright (c) 2003-2005 Fabrice Bellard
+  *
+@@ -304,7 +304,7 @@ int cpu_exec(CPUState *env)
+                             env->hflags2 |=3D HF2_NMI_MASK;
+                             do_interrupt_x86_hardirq(env, EXCP02_NMI, 1)=
+;
+                             next_tb =3D 0;
+-			} else if (interrupt_request & CPU_INTERRUPT_MCE) {
++                        } else if (interrupt_request & CPU_INTERRUPT_MCE=
+) {
+                             env->interrupt_request &=3D ~CPU_INTERRUPT_M=
+CE;
+                             do_interrupt_x86_hardirq(env, EXCP12_MCHK, 0=
+);
+                             next_tb =3D 0;
+@@ -390,7 +390,7 @@ int cpu_exec(CPUState *env)
+                                 next_tb =3D 0;
+                             }
+                         }
+-		    }
++                    }
+ #elif defined(TARGET_ARM)
+                     if (interrupt_request & CPU_INTERRUPT_FIQ
+                         && !(env->uncached_cpsr & CPSR_F)) {
+@@ -429,7 +429,7 @@ int cpu_exec(CPUState *env)
+                     {
+                         int idx =3D -1;
+                         /* ??? This hard-codes the OSF/1 interrupt level=
+s.  */
+-		        switch (env->pal_mode ? 7 : env->ps & PS_INT_MASK) {
++                        switch (env->pal_mode ? 7 : env->ps & PS_INT_MAS=
+K) {
+                         case 0 ... 3:
+                             if (interrupt_request & CPU_INTERRUPT_HARD) =
+{
+                                 idx =3D EXCP_DEV_INTERRUPT;
+@@ -562,7 +562,7 @@ int cpu_exec(CPUState *env)
+                 barrier();
+                 if (likely(!env->exit_request)) {
+                     tc_ptr =3D tb->tc_ptr;
+-                /* execute the generated code */
++                    /* execute the generated code */
+                     next_tb =3D tcg_qemu_tb_exec(env, tc_ptr);
+                     if ((next_tb & 3) =3D=3D 2) {
+                         /* Instruction counter expired.  */
+--=20
+1.7.3.5
 
