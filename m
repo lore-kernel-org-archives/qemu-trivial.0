@@ -1,34 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RuVyE-0000FA-PB
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Feb 2012 16:19:30 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:43871)
+	id 1Rus6p-000631-4p
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Feb 2012 15:57:51 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:40513)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1RuVyD-00009K-0F
-	for qemu-trivial@nongnu.org; Mon, 06 Feb 2012 16:19:29 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1Rus6f-0005Zv-VA
+	for qemu-trivial@nongnu.org; Tue, 07 Feb 2012 15:57:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1RuVyC-00080N-2s
-	for qemu-trivial@nongnu.org; Mon, 06 Feb 2012 16:19:28 -0500
-Received: from smtp1-g21.free.fr ([212.27.42.1]:58160)
+	(envelope-from <pm215@archaic.org.uk>) id 1Rus6c-0002CD-1N
+	for qemu-trivial@nongnu.org; Tue, 07 Feb 2012 15:57:41 -0500
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:33750)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>)
-	id 1RuVy8-0007zJ-ME; Mon, 06 Feb 2012 16:19:25 -0500
-Received: from localhost.localdomain (unknown [82.227.227.196])
-	by smtp1-g21.free.fr (Postfix) with ESMTP id 44CDA9401B1;
-	Mon,  6 Feb 2012 22:19:11 +0100 (CET)
-From: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Rus6T-0002BG-M4; Tue, 07 Feb 2012 15:57:29 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Rus6R-0007qC-4c; Tue, 07 Feb 2012 20:57:27 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon,  6 Feb 2012 22:19:42 +0100
-Message-Id: <1328563183-2823-1-git-send-email-hpoussin@reactos.org>
-X-Mailer: git-send-email 1.7.8.3
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 212.27.42.1
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [Qemu-trivial] [PATCH] ide: fix compilation errors when DEBUG_IDE
-	is set
+Date: Tue,  7 Feb 2012 20:57:27 +0000
+Message-Id: <1328648247-30117-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] vl.c: Fix typo in variable name
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,55 +35,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Feb 2012 21:19:30 -0000
+X-List-Received-Date: Tue, 07 Feb 2012 20:57:49 -0000
 
+Fix a typo in a local variable name.
 
-Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/ide/pci.c  |    2 +-
- hw/ide/piix.c |    4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ vl.c |   10 +++++-----
+ 1 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/ide/pci.c b/hw/ide/pci.c
-index 246dd57..88c0942 100644
---- a/hw/ide/pci.c
-+++ b/hw/ide/pci.c
-@@ -336,7 +336,7 @@ static uint64_t bmdma_addr_read(void *opaque, target_=
-phys_addr_t addr,
-=20
-     data =3D (bm->addr >> (addr * 8)) & mask;
- #ifdef DEBUG_IDE
--    printf("%s: 0x%08x\n", __func__, (unsigned)*data);
-+    printf("%s: 0x%08x\n", __func__, (unsigned)data);
- #endif
-     return data;
- }
-diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-index bf4465b..76cf209 100644
---- a/hw/ide/piix.c
-+++ b/hw/ide/piix.c
-@@ -53,7 +53,7 @@ static uint64_t bmdma_read(void *opaque, target_phys_ad=
-dr_t addr, unsigned size)
-         break;
+diff --git a/vl.c b/vl.c
+index 63dd725..c4b3aab 100644
+--- a/vl.c
++++ b/vl.c
+@@ -2030,7 +2030,7 @@ static int configure_accelerator(void)
+     const char *p = NULL;
+     char buf[10];
+     int i, ret;
+-    bool accel_initalised = 0;
++    bool accel_initialised = 0;
+     bool init_failed = 0;
+ 
+     QemuOptsList *list = qemu_find_opts("machine");
+@@ -2043,7 +2043,7 @@ static int configure_accelerator(void)
+         p = "tcg";
      }
- #ifdef DEBUG_IDE
--    printf("bmdma: readb 0x%02x : 0x%02x\n", addr, val);
-+    printf("bmdma: readb 0x%02x : 0x%02x\n", (uint8_t)addr, val);
- #endif
-     return val;
- }
-@@ -68,7 +68,7 @@ static void bmdma_write(void *opaque, target_phys_addr_=
-t addr,
+ 
+-    while (!accel_initalised && *p != '\0') {
++    while (!accel_initialised && *p != '\0') {
+         if (*p == ':') {
+             p++;
+         }
+@@ -2064,7 +2064,7 @@ static int configure_accelerator(void)
+                     }
+                     *(accel_list[i].allowed) = 0;
+                 } else {
+-                    accel_initalised = 1;
++                    accel_initialised = 1;
+                 }
+                 break;
+             }
+@@ -2074,7 +2074,7 @@ static int configure_accelerator(void)
+         }
      }
-=20
- #ifdef DEBUG_IDE
--    printf("bmdma: writeb 0x%02x : 0x%02x\n", addr, val);
-+    printf("bmdma: writeb 0x%02x : 0x%02x\n", (uint8_t)addr, (uint8_t)va=
-l);
- #endif
-     switch(addr & 3) {
-     case 0:
---=20
-1.7.8.3
+ 
+-    if (!accel_initalised) {
++    if (!accel_initialised) {
+         fprintf(stderr, "No accelerator found!\n");
+         exit(1);
+     }
+@@ -2083,7 +2083,7 @@ static int configure_accelerator(void)
+         fprintf(stderr, "Back to %s accelerator.\n", accel_list[i].name);
+     }
+ 
+-    return !accel_initalised;
++    return !accel_initialised;
+ }
+ 
+ void qemu_add_exit_notifier(Notifier *notify)
+-- 
+1.7.5.4
 
 
