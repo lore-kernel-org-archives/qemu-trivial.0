@@ -1,50 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RvQDR-00008V-8V
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2012 04:22:57 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:45181)
+	id 1RvQDU-0000LK-DU
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2012 04:23:00 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:45192)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RvQDL-0008D3-0C
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 04:22:55 -0500
+	(envelope-from <stefanha@gmail.com>) id 1RvQDL-0008Fz-Ts
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 04:22:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RvQDC-0007ns-JB
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 04:22:50 -0500
-Received: from mail-we0-f173.google.com ([74.125.82.173]:45631)
+	(envelope-from <stefanha@gmail.com>) id 1RvQDH-0007p9-Qc
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 04:22:51 -0500
+Received: from mail-wi0-f173.google.com ([209.85.212.173]:36360)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1RvQD1-0007kc-6o; Thu, 09 Feb 2012 04:22:31 -0500
-Received: by werh12 with SMTP id h12so1158879wer.4
-	for <multiple recipients>; Thu, 09 Feb 2012 01:22:30 -0800 (PST)
+	id 1RvQD6-0007i1-TY; Thu, 09 Feb 2012 04:22:37 -0500
+Received: by mail-wi0-f173.google.com with SMTP id hi20so1152830wib.4
+	for <multiple recipients>; Thu, 09 Feb 2012 01:22:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
 	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=hy98ySq0imJKIlatG3MJOiAqRheYf0EIO0pZv1UBViw=;
-	b=nXouq9rDnBO5VrXeDUnY+aZwf8T3QkgEvOtwMU4y0AJ2j+hZ+dPG+rg4Ov0j57JS1Z
-	TM3ep73Du1d7QktfOxQRNWHkzW5RQbUcyCpeIK5mcmpz6zpwc3R3drUJb4yiofdIqXb1
-	B6A3nZvehssKISKt1Z6x3TqzYwfGKp+eFardE=
-Received: by 10.216.139.147 with SMTP id c19mr385818wej.11.1328779350233;
-	Thu, 09 Feb 2012 01:22:30 -0800 (PST)
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=Zb8G3SzIg8HP4oQPtAtpcnTDrl/iMXQ9HVzVObc1cxc=;
+	b=Dxe1wDSnmnIVSYI72KC5sUXcMysLVs1NnmVV/4svXrT+97g1aFNdprZMvnJ4YW1nYJ
+	k5jFLbN/D7I7iubjkc1znvN8mauhZUdA+gVKmv5/cO3k3Gsy3ndzpP/9Y8bWahDuLl5N
+	wmVTvvcsa0j6JDCW5kNhzWKBor+24sQ5r9vTA=
+Received: by 10.180.24.202 with SMTP id w10mr1485481wif.9.1328779356435;
+	Thu, 09 Feb 2012 01:22:36 -0800 (PST)
 Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id q2sm5453348wiy.7.2012.02.09.01.22.28
+	by mx.google.com with ESMTPS id
+	hb10sm5971029wib.10.2012.02.09.01.22.35
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 09 Feb 2012 01:22:29 -0800 (PST)
-Date: Thu, 9 Feb 2012 08:38:27 +0000
+	Thu, 09 Feb 2012 01:22:35 -0800 (PST)
+Date: Thu, 9 Feb 2012 08:47:10 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
-Message-ID: <20120209083827.GB30956@stefanha-thinkpad.localdomain>
-References: <20120206060255.GA55374@cs.nctu.edu.tw>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120209084710.GE30956@stefanha-thinkpad.localdomain>
+References: <1328649989-3096-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20120206060255.GA55374@cs.nctu.edu.tw>
+In-Reply-To: <1328649989-3096-1-git-send-email-sw@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.173
+X-Received-From: 209.85.212.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] cpu-exec.c: Correct comment about
- this file and indentation cleanup
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fmopl: Fix typo in function
+	name
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,24 +55,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Feb 2012 09:22:55 -0000
+X-List-Received-Date: Thu, 09 Feb 2012 09:22:58 -0000
 
-On Mon, Feb 06, 2012 at 02:02:55PM +0800, 陳韋任 wrote:
->   Each target use #define marco (in target-xxx/cpu.h) to rename cpu_exec
-> (cpu-exec.c) to cpu_xxx_exec, then defines its own cpu_loop which calls
-> cpu_xxx_exec. So basically, cpu-exec.c is not i386 (only) emulator main
-> execution loop. This patch correctes the comment of this file and does
-> indentation cleanup.
+On Tue, Feb 07, 2012 at 10:26:29PM +0100, Stefan Weil wrote:
+> Fix a typo in a local function name.
 > 
-> Signed-off-by: Chen Wei-Ren (陳韋任) <chenwj@iis.sinica.edu.tw>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
-> v1 -> v2:
-> 
->  Didn't notice tab in previous patch, please use this patch instead. 
->  Sorry about that.
-> 
->  cpu-exec.c |   10 +++++-----
->  1 files changed, 5 insertions(+), 5 deletions(-)
+>  hw/fmopl.c |    4 ++--
+>  1 files changed, 2 insertions(+), 2 deletions(-)
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
