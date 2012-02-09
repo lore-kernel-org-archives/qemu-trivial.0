@@ -1,43 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RvWFC-0005c5-EK
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2012 10:49:10 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:52458)
+	id 1RvYlp-0005so-Uf
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2012 13:31:01 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:46666)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1RvWF5-0005bx-7G
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 10:49:08 -0500
+	(envelope-from <alex.barcelo@gmail.com>) id 1RvYli-0005V8-7d
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 13:31:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1RvWEz-0004Zp-8D
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 10:49:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:8179)
+	(envelope-from <alex.barcelo@gmail.com>) id 1RvYla-0003Bu-LU
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 13:30:50 -0500
+Received: from mail-pw0-f45.google.com ([209.85.160.45]:60679)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1RvWEy-0004Zi-VI; Thu, 09 Feb 2012 10:48:57 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q19Fmsr9022346
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 9 Feb 2012 10:48:54 -0500
-Received: from doriath.home (ovpn-116-73.ams2.redhat.com [10.36.116.73])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id q19FmprW001965; Thu, 9 Feb 2012 10:48:52 -0500
-Date: Thu, 9 Feb 2012 13:48:51 -0200
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Message-ID: <20120209134851.46b62fde@doriath.home>
-In-Reply-To: <20120209152858.GA6051@stefanha-thinkpad.localdomain>
-References: <20120209112942.77ce62bf@doriath.home>
-	<20120209152858.GA6051@stefanha-thinkpad.localdomain>
-Organization: Red Hat
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+	(envelope-from <alex.barcelo@gmail.com>)
+	id 1RvYlP-0003AI-6M; Thu, 09 Feb 2012 13:30:35 -0500
+Received: by pbbro12 with SMTP id ro12so1988263pbb.4
+	for <multiple recipients>; Thu, 09 Feb 2012 10:30:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=mime-version:sender:from:date:x-google-sender-auth:message-id
+	:subject:to:cc:content-type;
+	bh=YrExd7XF+GZt+kh0gVOA6kj/lCiZmDl4U64QmnGKWc0=;
+	b=uwNkPDAO33RlQjBhFfE+zfUrrPOmHDPEwstVKGh38X0K9tcf7RCdUjQCd1xpP/6MCW
+	j7UnHrQcVe446c9VH5ZNlMiymyQBfe6/IbS+kk36gkkwKL2ISv9iybhczgNbrVCaOWkJ
+	i3m4PeWNCBng/80oJcfPfjDDLRM8FHKekeCLA=
+Received: by 10.68.73.103 with SMTP id k7mr7997209pbv.132.1328812233161; Thu,
+	09 Feb 2012 10:30:33 -0800 (PST)
+MIME-Version: 1.0
+Sender: alex.barcelo@gmail.com
+Received: by 10.142.208.6 with HTTP; Thu, 9 Feb 2012 10:30:13 -0800 (PST)
+From: Alex Barcelo <abarcelo@ac.upc.edu>
+Date: Thu, 9 Feb 2012 19:30:13 +0100
+X-Google-Sender-Auth: nlwO2iuLUV8j3yw_WbMXEO0L5UA
+Message-ID: <CAFKAgTdwXj_XZ3EOgwR0=x_biz6s=SJKVsKX5C+z38=SicWY2A@mail.gmail.com>
+To: qemu-devel <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [TRIVIAL] virtio_cleanup(): Remove unneeded
- g_free() parameter check
+X-Received-From: 209.85.160.45
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [TRIVIAL] sas_ss_flags bug for powerpc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,28 +48,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Feb 2012 15:49:08 -0000
+X-List-Received-Date: Thu, 09 Feb 2012 18:31:00 -0000
 
-On Thu, 9 Feb 2012 15:28:58 +0000
-Stefan Hajnoczi <stefanha@gmail.com> wrote:
+Signed-off-by: Alex Barcelo <abarcelo@ac.upc.edu>
+---
+ linux-user/signal.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-> On Thu, Feb 09, 2012 at 11:29:42AM -0200, Luiz Capitulino wrote:
-> > 
-> > Signed-off-by: Luiz Capitulino <lcapitulino@redhat.com>
-> > ---
-> >  hw/virtio.c |    3 +--
-> >  1 files changed, 1 insertions(+), 2 deletions(-)
-> 
-> Tweaked commit message to be more conventional with "virtio: Remove
-> unneeded g_free() check in virtio_cleanup()".
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index 79a39dc..26e0530 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -4115,7 +4115,7 @@ static target_ulong get_sigframe(struct
+target_sigaction *ka,
+     oldsp = env->gpr[1];
 
-Thanks.
-
-> 
-> Thanks, applied to the trivial patches tree:
-> https://github.com/stefanha/qemu/commits/trivial-patches
-> 
-> Stefan
-> 
-
+     if ((ka->sa_flags & TARGET_SA_ONSTACK) &&
+-        (sas_ss_flags(oldsp))) {
++        (sas_ss_flags(oldsp)) == 0) {
+         oldsp = (target_sigaltstack_used.ss_sp
+                  + target_sigaltstack_used.ss_size);
+     }
+-- 
+1.7.5.4
 
