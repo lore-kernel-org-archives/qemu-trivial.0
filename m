@@ -1,42 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RvYlp-0005so-Uf
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2012 13:31:01 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:46666)
+	id 1RvYyJ-0000ZO-7D
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2012 13:43:55 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:38743)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.barcelo@gmail.com>) id 1RvYli-0005V8-7d
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 13:31:00 -0500
+	(envelope-from <afaerber@suse.de>) id 1RvYyG-0000N6-43
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 13:43:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.barcelo@gmail.com>) id 1RvYla-0003Bu-LU
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 13:30:50 -0500
-Received: from mail-pw0-f45.google.com ([209.85.160.45]:60679)
+	(envelope-from <afaerber@suse.de>) id 1RvYyE-0005Jd-M8
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2012 13:43:52 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:56499 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.barcelo@gmail.com>)
-	id 1RvYlP-0003AI-6M; Thu, 09 Feb 2012 13:30:35 -0500
-Received: by pbbro12 with SMTP id ro12so1988263pbb.4
-	for <multiple recipients>; Thu, 09 Feb 2012 10:30:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:sender:from:date:x-google-sender-auth:message-id
-	:subject:to:cc:content-type;
-	bh=YrExd7XF+GZt+kh0gVOA6kj/lCiZmDl4U64QmnGKWc0=;
-	b=uwNkPDAO33RlQjBhFfE+zfUrrPOmHDPEwstVKGh38X0K9tcf7RCdUjQCd1xpP/6MCW
-	j7UnHrQcVe446c9VH5ZNlMiymyQBfe6/IbS+kk36gkkwKL2ISv9iybhczgNbrVCaOWkJ
-	i3m4PeWNCBng/80oJcfPfjDDLRM8FHKekeCLA=
-Received: by 10.68.73.103 with SMTP id k7mr7997209pbv.132.1328812233161; Thu,
-	09 Feb 2012 10:30:33 -0800 (PST)
+	(envelope-from <afaerber@suse.de>)
+	id 1RvYy2-0005FO-Hd; Thu, 09 Feb 2012 13:43:38 -0500
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 68A848FC93;
+	Thu,  9 Feb 2012 19:43:37 +0100 (CET)
+Message-ID: <4F3413D9.7040204@suse.de>
+Date: Thu, 09 Feb 2012 19:43:37 +0100
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:9.0) Gecko/20111220 Thunderbird/9.0
 MIME-Version: 1.0
-Sender: alex.barcelo@gmail.com
-Received: by 10.142.208.6 with HTTP; Thu, 9 Feb 2012 10:30:13 -0800 (PST)
-From: Alex Barcelo <abarcelo@ac.upc.edu>
-Date: Thu, 9 Feb 2012 19:30:13 +0100
-X-Google-Sender-Auth: nlwO2iuLUV8j3yw_WbMXEO0L5UA
-Message-ID: <CAFKAgTdwXj_XZ3EOgwR0=x_biz6s=SJKVsKX5C+z38=SicWY2A@mail.gmail.com>
-To: qemu-devel <qemu-devel@nongnu.org>
+To: Alex Barcelo <abarcelo@ac.upc.edu>
+References: <CAFKAgTdwXj_XZ3EOgwR0=x_biz6s=SJKVsKX5C+z38=SicWY2A@mail.gmail.com>
+In-Reply-To: <CAFKAgTdwXj_XZ3EOgwR0=x_biz6s=SJKVsKX5C+z38=SicWY2A@mail.gmail.com>
+X-Enigmail-Version: 1.3.4
 Content-Type: text/plain; charset=ISO-8859-1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [TRIVIAL] sas_ss_flags bug for powerpc
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [TRIVIAL] sas_ss_flags bug for
+	powerpc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,27 +47,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Feb 2012 18:31:00 -0000
+X-List-Received-Date: Thu, 09 Feb 2012 18:43:53 -0000
 
-Signed-off-by: Alex Barcelo <abarcelo@ac.upc.edu>
----
- linux-user/signal.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Am 09.02.2012 19:30, schrieb Alex Barcelo:
+> Signed-off-by: Alex Barcelo <abarcelo@ac.upc.edu>
 
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index 79a39dc..26e0530 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -4115,7 +4115,7 @@ static target_ulong get_sigframe(struct
-target_sigaction *ka,
-     oldsp = env->gpr[1];
+This patch needs a better description than "bug", and you forgot to cc
+the linux-user maintainer. The patch should describe what it touches
+(linux-user), what it does, what for and make clear why that is correct.
+Is there a particular test case that's broken without the patch?
 
-     if ((ka->sa_flags & TARGET_SA_ONSTACK) &&
--        (sas_ss_flags(oldsp))) {
-+        (sas_ss_flags(oldsp)) == 0) {
-         oldsp = (target_sigaltstack_used.ss_sp
-                  + target_sigaltstack_used.ss_size);
-     }
--- 
-1.7.5.4
+I can't speak for Stefan, but to me it is totally unclear from looking
+at the patch what sas_ss_flags() does here so this is likely not really
+a trivial one.
+
+Andreas
+
+> ---
+>  linux-user/signal.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>=20
+> diff --git a/linux-user/signal.c b/linux-user/signal.c
+> index 79a39dc..26e0530 100644
+> --- a/linux-user/signal.c
+> +++ b/linux-user/signal.c
+> @@ -4115,7 +4115,7 @@ static target_ulong get_sigframe(struct
+> target_sigaction *ka,
+>      oldsp =3D env->gpr[1];
+>=20
+>      if ((ka->sa_flags & TARGET_SA_ONSTACK) &&
+> -        (sas_ss_flags(oldsp))) {
+> +        (sas_ss_flags(oldsp)) =3D=3D 0) {
+>          oldsp =3D (target_sigaltstack_used.ss_sp
+>                   + target_sigaltstack_used.ss_size);
+>      }
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
