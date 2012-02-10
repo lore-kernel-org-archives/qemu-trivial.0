@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RvpyO-0001Hg-IK
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2012 07:53:08 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:44739)
+	id 1RvqWv-00072c-Re
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2012 08:28:49 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:58697)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Paul_Brook@mentor.com>) id 1RvpyF-0000oH-Qe
-	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 07:53:05 -0500
+	(envelope-from <alex.barcelo@gmail.com>) id 1RvqWp-0006it-1P
+	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 08:28:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Paul_Brook@mentor.com>) id 1RvpyA-0001Ep-7w
-	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 07:52:59 -0500
-Received: from relay1.mentorg.com ([192.94.38.131]:40384)
+	(envelope-from <alex.barcelo@gmail.com>) id 1RvqWf-0007q1-UU
+	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 08:28:42 -0500
+Received: from mail-pz0-f45.google.com ([209.85.210.45]:61429)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Paul_Brook@mentor.com>)
-	id 1Rvpy0-0001DU-Ep; Fri, 10 Feb 2012 07:52:44 -0500
-Received: from nat-ies.mentorg.com ([192.94.31.2]
-	helo=EU1-MAIL.mgc.mentorg.com) by relay1.mentorg.com with esmtp 
-	id 1Rvpxt-0002Cz-TG from Paul_Brook@mentor.com ;
-	Fri, 10 Feb 2012 04:52:38 -0800
-Received: from nowt.org ([172.30.64.210]) by EU1-MAIL.mgc.mentorg.com with
-	Microsoft SMTPSVC(6.0.3790.1830); Fri, 10 Feb 2012 12:52:36 +0000
-Received: from wren.localnet (wren.home [192.168.93.7])
-	by nowt.org (Postfix) with ESMTP id 11F276EEE9;
-	Fri, 10 Feb 2012 12:52:36 +0000 (GMT)
-From: Paul Brook <paul@codesourcery.com>
-Organization: Mentor Graphics
-To: qemu-devel@nongnu.org
-Date: Fri, 10 Feb 2012 12:52:35 +0000
-User-Agent: KMail/1.13.7 (Linux/3.1.0-1-amd64; KDE/4.6.5; x86_64; ; )
+	(envelope-from <alex.barcelo@gmail.com>)
+	id 1RvqWS-0007ln-1G; Fri, 10 Feb 2012 08:28:20 -0500
+Received: by dadp14 with SMTP id p14so2670391dad.4
+	for <multiple recipients>; Fri, 10 Feb 2012 05:28:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=mime-version:sender:in-reply-to:references:from:date
+	:x-google-sender-auth:message-id:subject:to:cc:content-type;
+	bh=QGRUhjaWQ51Iz3aBpSFQFBqG4mp/g8OHQVqKHy8rUoc=;
+	b=KVUbtXusZHG7D2iOhE5a3o1pCAAY8wZxFN9SGPY7P+uGixUygs3x0M/ttuC6VPQ6bM
+	g0KHGpV0H5lOhr3mWIPjSd5OPs/nu/tXyxEUsu3tS2HF2KBDcAbzhNcWtFC1YjKuR0YG
+	+nSA3RpQq6+4ufBmpR7ElKIbpDhzWp3AeJk3U=
+Received: by 10.68.226.98 with SMTP id rr2mr16043045pbc.115.1328880499120;
+	Fri, 10 Feb 2012 05:28:19 -0800 (PST)
+MIME-Version: 1.0
+Sender: alex.barcelo@gmail.com
+Received: by 10.142.208.6 with HTTP; Fri, 10 Feb 2012 05:27:59 -0800 (PST)
+In-Reply-To: <201202101252.35754.paul@codesourcery.com>
 References: <CAFKAgTdwXj_XZ3EOgwR0=x_biz6s=SJKVsKX5C+z38=SicWY2A@mail.gmail.com>
 	<CAFKAgTe-7hZ1U-CE5khEQ792VxsEayuWG6rCmR2F0uuHi7O1PQ@mail.gmail.com>
 	<20120210082350.GB17878@stefanha-thinkpad.localdomain>
-In-Reply-To: <20120210082350.GB17878@stefanha-thinkpad.localdomain>
-MIME-Version: 1.0
-Content-Type: Text/Plain;
-  charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <201202101252.35754.paul@codesourcery.com>
-X-OriginalArrivalTime: 10 Feb 2012 12:52:36.0852 (UTC)
-	FILETIME=[DD57C340:01CCE7F2]
-X-detected-operating-system: by eggs.gnu.org: Solaris 10 (beta)
-X-Received-From: 192.94.38.131
+	<201202101252.35754.paul@codesourcery.com>
+From: Alex Barcelo <abarcelo@ac.upc.edu>
+Date: Fri, 10 Feb 2012 14:27:59 +0100
+X-Google-Sender-Auth: uLHfVoQTx56j_x9aV7aCzbni-AY
+Message-ID: <CAFKAgTcN3=SMX8MrLPEX+f84HESkfh162Vp+xLPh_onViU0JBA@mail.gmail.com>
+To: Paul Brook <paul@codesourcery.com>
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.210.45
 Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	Andreas =?iso-8859-1?q?F=E4rber?= <afaerber@suse.de>
+	qemu-devel@nongnu.org, =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [TRIVIAL] sas_ss_flags bug for
 	powerpc
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,31 +55,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Feb 2012 12:53:05 -0000
+X-List-Received-Date: Fri, 10 Feb 2012 13:28:48 -0000
 
-> Changes which require knowledge of a specific device model are often not
-> trivial to anyone who hasn't studied the specification.  So if the patch
-> requires background knowledge of ppc ABI, hardware registers, etc then
-> it's usually best sent to relevant subsystem maintainer (see
-> ./MAINTAINERS).
+I have sent a v2 of this patch (renaming it, with a description and a
+test case). If it's not trivial and I have to send it in another way,
+I will do so.
 
-I agree.
-
-IMO It's important to distinguich between trivial patches, and simple patch=
-es.
-A trivial patch is one that can reasonably be approved by anyone.
-If domain specific knowledge, or familiarity with particular code is requir=
-ed=20
-then a change is no longer trivial.  Even if it's a one-line change and the=
-=20
-right answer is "obvious" to the relevant maintainer.
-
-> Basically I draw the line when it requires me too do too much background
-> readying to be able to review the patch! ;
-
-=46rom what I've seen you're doing a fairly good job at bouncing things bac=
-k=20
-when they aren't appropriate.
-
-Paul
+Sorry for the inconvenience, as I said I'm new here and maybe I
+misunderstood the "trivial" category.
 
