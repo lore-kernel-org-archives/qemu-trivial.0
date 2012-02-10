@@ -1,45 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RvnEe-00058V-Mu
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2012 04:57:44 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:48449)
+	id 1RvpyO-0001Hg-IK
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2012 07:53:08 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:44739)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.barcelo@gmail.com>) id 1RvnEb-0004yu-TY
-	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 04:57:42 -0500
+	(envelope-from <Paul_Brook@mentor.com>) id 1RvpyF-0000oH-Qe
+	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 07:53:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.barcelo@gmail.com>) id 1RvnEW-0002Am-2u
-	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 04:57:41 -0500
-Received: from mail-pw0-f45.google.com ([209.85.160.45]:55134)
+	(envelope-from <Paul_Brook@mentor.com>) id 1RvpyA-0001Ep-7w
+	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 07:52:59 -0500
+Received: from relay1.mentorg.com ([192.94.38.131]:40384)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.barcelo@gmail.com>)
-	id 1RvnEM-0002A4-2T; Fri, 10 Feb 2012 04:57:26 -0500
-Received: by pbbro12 with SMTP id ro12so2597561pbb.4
-	for <multiple recipients>; Fri, 10 Feb 2012 01:57:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:sender:in-reply-to:references:from:date
-	:x-google-sender-auth:message-id:subject:to:cc:content-type;
-	bh=VMBiJQi1VEnvdTJhGqDIR1N/+i1r1DrXgbP5b9Jlwxw=;
-	b=joY1mSfmvCK2ovHmrZfUgTtHES/AV/haym7dQpJKwGds8F+D0smDhgJp9HTpR3HW+B
-	vrIiIxnUxAFqt+WVTegIWd1LqHzScpPASfnLk5duoRggGPBPTX6+d9mjUdqQvqqzBNFs
-	Y3pUS8igoDlNEDx1sp/sWfQXBmlWk08DfH9+Q=
-Received: by 10.68.227.132 with SMTP id sa4mr14806667pbc.64.1328867845110;
-	Fri, 10 Feb 2012 01:57:25 -0800 (PST)
+	(envelope-from <Paul_Brook@mentor.com>)
+	id 1Rvpy0-0001DU-Ep; Fri, 10 Feb 2012 07:52:44 -0500
+Received: from nat-ies.mentorg.com ([192.94.31.2]
+	helo=EU1-MAIL.mgc.mentorg.com) by relay1.mentorg.com with esmtp 
+	id 1Rvpxt-0002Cz-TG from Paul_Brook@mentor.com ;
+	Fri, 10 Feb 2012 04:52:38 -0800
+Received: from nowt.org ([172.30.64.210]) by EU1-MAIL.mgc.mentorg.com with
+	Microsoft SMTPSVC(6.0.3790.1830); Fri, 10 Feb 2012 12:52:36 +0000
+Received: from wren.localnet (wren.home [192.168.93.7])
+	by nowt.org (Postfix) with ESMTP id 11F276EEE9;
+	Fri, 10 Feb 2012 12:52:36 +0000 (GMT)
+From: Paul Brook <paul@codesourcery.com>
+Organization: Mentor Graphics
+To: qemu-devel@nongnu.org
+Date: Fri, 10 Feb 2012 12:52:35 +0000
+User-Agent: KMail/1.13.7 (Linux/3.1.0-1-amd64; KDE/4.6.5; x86_64; ; )
+References: <CAFKAgTdwXj_XZ3EOgwR0=x_biz6s=SJKVsKX5C+z38=SicWY2A@mail.gmail.com>
+	<CAFKAgTe-7hZ1U-CE5khEQ792VxsEayuWG6rCmR2F0uuHi7O1PQ@mail.gmail.com>
+	<20120210082350.GB17878@stefanha-thinkpad.localdomain>
+In-Reply-To: <20120210082350.GB17878@stefanha-thinkpad.localdomain>
 MIME-Version: 1.0
-Sender: alex.barcelo@gmail.com
-Received: by 10.142.208.6 with HTTP; Fri, 10 Feb 2012 01:57:05 -0800 (PST)
-In-Reply-To: <CAFKAgTcgMqVpopxTw8+8N005OSOoNM33L2a8DLJvn7Tpa-BGvQ@mail.gmail.com>
-References: <CAFKAgTcgMqVpopxTw8+8N005OSOoNM33L2a8DLJvn7Tpa-BGvQ@mail.gmail.com>
-From: Alex Barcelo <abarcelo@ac.upc.edu>
-Date: Fri, 10 Feb 2012 10:57:05 +0100
-X-Google-Sender-Auth: JKuKJhUrzDQWePdMB9eAwmsYP4w
-Message-ID: <CAFKAgTfOTniTEteFa5Rkms6PYXxDBFOS7g1VQNU4szXmC6T5Pw@mail.gmail.com>
-To: qemu-devel <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=ISO-8859-1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>
-Subject: Re: [Qemu-trivial] [TRIVIAL v2] Bad zero comparison for
-	sas_ss_flags on powerpc
+Content-Type: Text/Plain;
+  charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <201202101252.35754.paul@codesourcery.com>
+X-OriginalArrivalTime: 10 Feb 2012 12:52:36.0852 (UTC)
+	FILETIME=[DD57C340:01CCE7F2]
+X-detected-operating-system: by eggs.gnu.org: Solaris 10 (beta)
+X-Received-From: 192.94.38.131
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	Andreas =?iso-8859-1?q?F=E4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [TRIVIAL] sas_ss_flags bug for
+	powerpc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,91 +54,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Feb 2012 09:57:43 -0000
+X-List-Received-Date: Fri, 10 Feb 2012 12:53:05 -0000
 
-// Test source and desired /real output:
+> Changes which require knowledge of a specific device model are often not
+> trivial to anyone who hasn't studied the specification.  So if the patch
+> requires background knowledge of ppc ABI, hardware registers, etc then
+> it's usually best sent to relevant subsystem maintainer (see
+> ./MAINTAINERS).
 
-#include <signal.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+I agree.
 
-void handler(int sig)
-{
-   unsigned int a;
-   // to prevent uninitialized stack, normally a = 0
-   if ( a>10 ) a = 0;
-   a = a + 1;
-   printf ("new value: %d\n" , a );
-   if (a > 7) _exit(a);
-   return;
-}
+IMO It's important to distinguich between trivial patches, and simple patch=
+es.
+A trivial patch is one that can reasonably be approved by anyone.
+If domain specific knowledge, or familiarity with particular code is requir=
+ed=20
+then a change is no longer trivial.  Even if it's a one-line change and the=
+=20
+right answer is "obvious" to the relevant maintainer.
 
-int main()
-{
-   int ret;
-   char * stackA = malloc(SIGSTKSZ);
-   char * stackB = malloc(SIGSTKSZ);
-   stack_t ssA = {
-       .ss_size = SIGSTKSZ,
-       .ss_sp = stackA,
-   };
-   stack_t ssB = {
-       .ss_size = SIGSTKSZ,
-       .ss_sp = stackB,
-   };
-   struct sigaction sa = {
-       .sa_handler = handler,
-       .sa_flags = SA_ONSTACK
-   };
+> Basically I draw the line when it requires me too do too much background
+> readying to be able to review the patch! ;
 
-   // no error checking, only debug output
-   ret = sigfillset(&sa.sa_mask);
-   printf ( "Sigfillset: %d\n" , ret );
-   ret = sigaction(SIGUSR1, &sa, 0);
-   printf ( "Sigaction: %d\n" , ret );
+=46rom what I've seen you're doing a fairly good job at bouncing things bac=
+k=20
+when they aren't appropriate.
 
-   while (1) {
-       printf ("On stack A -- " );
-       ret = sigaltstack(&ssA, 0);
-       printf ( "sigaltstack return: %d -- " , ret );
-       kill(0, SIGUSR1);
-       sleep(1);
-       printf ("                                    -- " );
-       kill(0, SIGUSR1);
-       sleep(1);
-
-       printf ("On stack B -- " );
-       ret = sigaltstack(&ssB, 0);
-       printf ( "sigaltstack return: %d -- " , ret );
-       kill(0, SIGUSR1);
-       sleep(1);
-   }
-}
-
-/* Desired output:
-Sigfillset: 0
-Sigaction: 0
-On stack A -- sigaltstack return: 0 -- new value: 1
-                                   -- new value: 2
-On stack B -- sigaltstack return: 0 -- new value: 1
-On stack A -- sigaltstack return: 0 -- new value: 3
-                                   -- new value: 4
-On stack B -- sigaltstack return: 0 -- new value: 2
-On stack A -- sigaltstack return: 0 -- new value: 5
-                                   -- new value: 6
-On stack B -- sigaltstack return: 0 -- new value: 3
-On stack A -- sigaltstack return: 0 -- new value: 7
-                                   -- new value: 8
-
-Output for ppc without patch:
-Sigfillset: 0
-Sigaction: 0
-On stack A -- sigaltstack return: 0 -- new value: 1
-                                   -- new value: 2
-On stack B -- sigaltstack return: 0 -- new value: 3 // WRONG!!
-On stack A -- sigaltstack return: 0 -- new value: 4
-                                   -- new value: 5 // WRONG AGAIN!
-...
-*/
+Paul
 
