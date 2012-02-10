@@ -1,54 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rvmz2-0005w7-QG
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2012 04:41:36 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:35792)
+	id 1RvnDX-0004Vq-9S
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2012 04:56:35 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:48278)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rvmyw-0005W9-7o
-	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 04:41:34 -0500
+	(envelope-from <alex.barcelo@gmail.com>) id 1RvnDP-00044b-4W
+	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 04:56:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rvmyq-0007mm-QU
-	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 04:41:30 -0500
-Received: from mail-we0-f173.google.com ([74.125.82.173]:63421)
+	(envelope-from <alex.barcelo@gmail.com>) id 1RvnDI-00023z-9A
+	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 04:56:25 -0500
+Received: from mail-pw0-f45.google.com ([209.85.160.45]:35048)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1Rvmyq-0007mh-KJ; Fri, 10 Feb 2012 04:41:24 -0500
-Received: by werh12 with SMTP id h12so2087809wer.4
-	for <multiple recipients>; Fri, 10 Feb 2012 01:41:23 -0800 (PST)
+	(envelope-from <alex.barcelo@gmail.com>)
+	id 1RvnD5-00022G-7C; Fri, 10 Feb 2012 04:56:07 -0500
+Received: by pbbro12 with SMTP id ro12so2596659pbb.4
+	for <multiple recipients>; Fri, 10 Feb 2012 01:56:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=YmkLwGwIuk+BgzMyfkIsTpORlIC6y2vGuhFchZMzHU8=;
-	b=KGAby72Ym87cllYGjwNqudsGaK80t/LWe71nP1p8F2qQX5Hrt3ZBV3Sghp49uncnob
-	VafilwkdWBp3vRY1R4smbYe5T1O1TObrRFR6FZ9FoMjpyOV9bZrnKFYmixc1tqP0Kc5R
-	+3jC1AtXJheg3uMHQcoVNZIMrp2jFnPdK9rrc=
-Received: by 10.216.138.89 with SMTP id z67mr501670wei.10.1328866883708;
-	Fri, 10 Feb 2012 01:41:23 -0800 (PST)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id y6sm2024809wix.10.2012.02.10.01.41.20
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 10 Feb 2012 01:41:21 -0800 (PST)
-Date: Fri, 10 Feb 2012 08:23:50 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Alex Barcelo <abarcelo@ac.upc.edu>
-Message-ID: <20120210082350.GB17878@stefanha-thinkpad.localdomain>
-References: <CAFKAgTdwXj_XZ3EOgwR0=x_biz6s=SJKVsKX5C+z38=SicWY2A@mail.gmail.com>
-	<4F3413D9.7040204@suse.de>
-	<CAFKAgTe-7hZ1U-CE5khEQ792VxsEayuWG6rCmR2F0uuHi7O1PQ@mail.gmail.com>
+	h=mime-version:sender:from:date:x-google-sender-auth:message-id
+	:subject:to:cc:content-type;
+	bh=OoXfL+n9Oemvrw3EDJvH7lCia5LCNGgUBNmp4m1XGZA=;
+	b=J9ySkEk1rm5QI7JYuw4wG4WXVGedLAQCmPW+6aZJ2FvmIIVUTyJ/r+BINzRMD5rwnt
+	glkqGsqxn9fO9vP3LpaWAc/RdlXbbV7WvTB/YXpnxNVBSy/D+ffQetgN4UiQU/IUsgO0
+	s9/sNyRzIw1pr7f9E2S+lIWk7MVqjJbME6n5k=
+Received: by 10.68.222.169 with SMTP id qn9mr14637979pbc.30.1328867766178;
+	Fri, 10 Feb 2012 01:56:06 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFKAgTe-7hZ1U-CE5khEQ792VxsEayuWG6rCmR2F0uuHi7O1PQ@mail.gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Sender: alex.barcelo@gmail.com
+Received: by 10.142.208.6 with HTTP; Fri, 10 Feb 2012 01:55:46 -0800 (PST)
+From: Alex Barcelo <abarcelo@ac.upc.edu>
+Date: Fri, 10 Feb 2012 10:55:46 +0100
+X-Google-Sender-Auth: uNA7HNU8QBU20JWtHPFZLE_VR3M
+Message-ID: <CAFKAgTcgMqVpopxTw8+8N005OSOoNM33L2a8DLJvn7Tpa-BGvQ@mail.gmail.com>
+To: qemu-devel <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [TRIVIAL] sas_ss_flags bug for
- powerpc
+X-Received-From: 209.85.160.45
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>
+Subject: [Qemu-trivial] [TRIVIAL v2] Bad zero comparison for sas_ss_flags on
+	powerpc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,32 +49,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Feb 2012 09:41:35 -0000
+X-List-Received-Date: Fri, 10 Feb 2012 09:56:34 -0000
 
-On Thu, Feb 09, 2012 at 08:00:49PM +0100, Alex Barcelo wrote:
-> On Thu, Feb 9, 2012 at 19:43, Andreas Färber <afaerber@suse.de> wrote:
-> > Am 09.02.2012 19:30, schrieb Alex Barcelo:
-> > The patch should describe what it touches
-> > (linux-user), what it does, what for and make clear why that is correct.
-> > Is there a particular test case that's broken without the patch?[1]
-> >
-> > I can't speak for Stefan, but to me it is totally unclear from looking
-> > at the patch what sas_ss_flags() does here so this is likely not really
-> > a trivial one.
-> 
-> Well, is really trivial when compared to the other architectures,
-> because all do a zero check and this one does it the other way round.
-> I'm really new here, and I still don't get the workflow and the way to
-> do things. Will try my best!
+This is v2 of the patch "sas_ss_flags bug for powerpc", which had a
+horrible name and no description.
 
-Changes which require knowledge of a specific device model are often not
-trivial to anyone who hasn't studied the specification.  So if the patch
-requires background knowledge of ppc ABI, hardware registers, etc then
-it's usually best sent to relevant subsystem maintainer (see
-./MAINTAINERS).
+All architectures work the same way, and all check for sas_ss_flags ==
+0. The powerpc lines are wrong, and do the check the other way round
+(it's a qemu internal check, which is done wrong only for this
+architecture, it's more a typo than a bug). It's NOT ppc specific,
+it's POSIX standard (sigaltstack) and qemu internal.
 
-Basically I draw the line when it requires me too do too much background
-readying to be able to review the patch! ;)
+I have a test source that I will send in a follow-up (it's longer than
+I would have wished, I'm sure that a better test case can be written
+if needed)
 
-Stefan
+Signed-off-by: Alex Barcelo <abarcelo@ac.upc.edu>
+---
+ linux-user/signal.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index 79a39dc..26e0530 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -4115,7 +4115,7 @@ static target_ulong get_sigframe(struct
+target_sigaction *ka,
+    oldsp = env->gpr[1];
+
+    if ((ka->sa_flags & TARGET_SA_ONSTACK) &&
+-        (sas_ss_flags(oldsp))) {
++        (sas_ss_flags(oldsp)) == 0) {
+        oldsp = (target_sigaltstack_used.ss_sp
+                 + target_sigaltstack_used.ss_size);
+    }
+--
+1.7.5.4
 
