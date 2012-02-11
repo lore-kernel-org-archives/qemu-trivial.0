@@ -1,49 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RvqWv-00072c-Re
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2012 08:28:49 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:58697)
+	id 1Rw8we-0001Mn-Qp
+	for mharc-qemu-trivial@gnu.org; Sat, 11 Feb 2012 04:08:36 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:60906)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.barcelo@gmail.com>) id 1RvqWp-0006it-1P
-	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 08:28:48 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1Rw8wa-0001AX-RE
+	for qemu-trivial@nongnu.org; Sat, 11 Feb 2012 04:08:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.barcelo@gmail.com>) id 1RvqWf-0007q1-UU
-	for qemu-trivial@nongnu.org; Fri, 10 Feb 2012 08:28:42 -0500
-Received: from mail-pz0-f45.google.com ([209.85.210.45]:61429)
+	(envelope-from <stefan@weilnetz.de>) id 1Rw8wZ-00083H-Rw
+	for qemu-trivial@nongnu.org; Sat, 11 Feb 2012 04:08:32 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:34905)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.barcelo@gmail.com>)
-	id 1RvqWS-0007ln-1G; Fri, 10 Feb 2012 08:28:20 -0500
-Received: by dadp14 with SMTP id p14so2670391dad.4
-	for <multiple recipients>; Fri, 10 Feb 2012 05:28:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:sender:in-reply-to:references:from:date
-	:x-google-sender-auth:message-id:subject:to:cc:content-type;
-	bh=QGRUhjaWQ51Iz3aBpSFQFBqG4mp/g8OHQVqKHy8rUoc=;
-	b=KVUbtXusZHG7D2iOhE5a3o1pCAAY8wZxFN9SGPY7P+uGixUygs3x0M/ttuC6VPQ6bM
-	g0KHGpV0H5lOhr3mWIPjSd5OPs/nu/tXyxEUsu3tS2HF2KBDcAbzhNcWtFC1YjKuR0YG
-	+nSA3RpQq6+4ufBmpR7ElKIbpDhzWp3AeJk3U=
-Received: by 10.68.226.98 with SMTP id rr2mr16043045pbc.115.1328880499120;
-	Fri, 10 Feb 2012 05:28:19 -0800 (PST)
-MIME-Version: 1.0
-Sender: alex.barcelo@gmail.com
-Received: by 10.142.208.6 with HTTP; Fri, 10 Feb 2012 05:27:59 -0800 (PST)
-In-Reply-To: <201202101252.35754.paul@codesourcery.com>
-References: <CAFKAgTdwXj_XZ3EOgwR0=x_biz6s=SJKVsKX5C+z38=SicWY2A@mail.gmail.com>
-	<CAFKAgTe-7hZ1U-CE5khEQ792VxsEayuWG6rCmR2F0uuHi7O1PQ@mail.gmail.com>
-	<20120210082350.GB17878@stefanha-thinkpad.localdomain>
-	<201202101252.35754.paul@codesourcery.com>
-From: Alex Barcelo <abarcelo@ac.upc.edu>
-Date: Fri, 10 Feb 2012 14:27:59 +0100
-X-Google-Sender-Auth: uLHfVoQTx56j_x9aV7aCzbni-AY
-Message-ID: <CAFKAgTcN3=SMX8MrLPEX+f84HESkfh162Vp+xLPh_onViU0JBA@mail.gmail.com>
-To: Paul Brook <paul@codesourcery.com>
-Content-Type: text/plain; charset=ISO-8859-1
+	(envelope-from <stefan@weilnetz.de>)
+	id 1Rw8w2-00080e-CV; Sat, 11 Feb 2012 04:07:58 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	7E1567280012; Sat, 11 Feb 2012 10:07:56 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 9HuDMILyxaI8; Sat, 11 Feb 2012 10:07:55 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id E789D7280013; Sat, 11 Feb 2012 10:07:55 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Sat, 11 Feb 2012 10:07:55 +0100
+Message-Id: <1328951275-23481-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.8.3
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.210.45
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	qemu-devel@nongnu.org, =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [TRIVIAL] sas_ss_flags bug for
-	powerpc
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] tcg: Remove unneeded include statements
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,12 +43,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Feb 2012 13:28:48 -0000
+X-List-Received-Date: Sat, 11 Feb 2012 09:08:33 -0000
 
-I have sent a v2 of this patch (renaming it, with a description and a
-test case). If it's not trivial and I have to send it in another way,
-I will do so.
+The standard include files are already included in qemu-common.h.
 
-Sorry for the inconvenience, as I said I'm new here and maybe I
-misunderstood the "trivial" category.
+malloc.h and alloca.h were needed for alloca() which was removed
+from TCG code some years ago when switching from dyngen to TCG
+(see commit 49516bc0d622112caac9df628caf19010fda8b67).
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ tcg/tcg.c |   12 ------------
+ 1 files changed, 0 insertions(+), 12 deletions(-)
+
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 6f9328e..023cb51 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -33,18 +33,6 @@
+ #define NDEBUG
+ #endif
+ 
+-#include <stdarg.h>
+-#include <stdlib.h>
+-#include <stdio.h>
+-#include <string.h>
+-#include <inttypes.h>
+-#ifdef _WIN32
+-#include <malloc.h>
+-#endif
+-#ifdef _AIX
+-#include <alloca.h>
+-#endif
+-
+ #include "qemu-common.h"
+ #include "cache-utils.h"
+ #include "host-utils.h"
+-- 
+1.7.8.3
+
 
