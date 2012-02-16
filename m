@@ -1,37 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ry4kP-0003Zj-Aj
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Feb 2012 12:03:57 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:41091)
+	id 1Ry5GK-000580-7x
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Feb 2012 12:36:56 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:47133)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Ry4kI-0003AB-Ud
-	for qemu-trivial@nongnu.org; Thu, 16 Feb 2012 12:03:54 -0500
+	(envelope-from <Alexander_Barabash@mentor.com>) id 1Ry5GD-00057h-Ae
+	for qemu-trivial@nongnu.org; Thu, 16 Feb 2012 12:36:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Ry4kD-0004JG-4e
-	for qemu-trivial@nongnu.org; Thu, 16 Feb 2012 12:03:50 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:56955 helo=mx2.suse.de)
+	(envelope-from <Alexander_Barabash@mentor.com>) id 1Ry5G9-0002wp-NZ
+	for qemu-trivial@nongnu.org; Thu, 16 Feb 2012 12:36:49 -0500
+Received: from relay1.mentorg.com ([192.94.38.131]:37659)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1Ry4jt-0004GK-0J; Thu, 16 Feb 2012 12:03:25 -0500
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 3546B8FC92;
-	Thu, 16 Feb 2012 18:03:23 +0100 (CET)
-From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-To: qemu-devel@nongnu.org
-Date: Thu, 16 Feb 2012 18:03:18 +0100
-Message-Id: <1329411799-4266-2-git-send-email-afaerber@suse.de>
-X-Mailer: git-send-email 1.7.7
-In-Reply-To: <1329411799-4266-1-git-send-email-afaerber@suse.de>
-References: <1329411799-4266-1-git-send-email-afaerber@suse.de>
+	(envelope-from <Alexander_Barabash@mentor.com>)
+	id 1Ry5Fv-0002tV-J9; Thu, 16 Feb 2012 12:36:31 -0500
+Received: from svr-orw-exc-10.mgc.mentorg.com ([147.34.98.58])
+	by relay1.mentorg.com with esmtp 
+	id 1Ry5Ft-00077U-AR from Alexander_Barabash@mentor.com ;
+	Thu, 16 Feb 2012 09:36:29 -0800
+Received: from SVR-IES-FEM-01.mgc.mentorg.com ([137.202.0.104]) by
+	SVR-ORW-EXC-10.mgc.mentorg.com with Microsoft
+	SMTPSVC(6.0.3790.4675); Thu, 16 Feb 2012 09:35:46 -0800
+Received: from [137.202.52.68] (137.202.0.76) by
+	SVR-IES-FEM-01.mgc.mentorg.com (137.202.0.104) with Microsoft SMTP
+	Server id 14.1.289.1; Thu, 16 Feb 2012 17:36:27 +0000
+Message-ID: <4F3D3EB1.6090003@mentor.com>
+Date: Thu, 16 Feb 2012 19:36:49 +0200
+From: Alexander Barabash <alexander_barabash@mentor.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:9.0) Gecko/20111229 Thunderbird/9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [Qemu-trivial] [PATCH 1/2] qom: Fix typo in Object's documentation
+To: <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="ISO-8859-1"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-OriginalArrivalTime: 16 Feb 2012 17:35:46.0171 (UTC)
+	FILETIME=[6A3E9CB0:01CCECD1]
+X-detected-operating-system: by eggs.gnu.org: Solaris 10 (beta)
+X-Received-From: 192.94.38.131
+Subject: [Qemu-trivial] [PATCH] [TRIVIAL] Removed unused pl080_init().
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,29 +47,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Feb 2012 17:03:55 -0000
+X-List-Received-Date: Thu, 16 Feb 2012 17:36:55 -0000
 
-Fixes a warning from gtk-doc.
 
-Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
----
- include/qemu/object.h |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+     Removed unused pl080_init().
 
-diff --git a/include/qemu/object.h b/include/qemu/object.h
-index 69cc2ab..c871254 100644
---- a/include/qemu/object.h
-+++ b/include/qemu/object.h
-@@ -330,7 +330,7 @@ struct TypeInfo
-=20
- /**
-  * OBJECT_CLASS:
-- * @class: A derivative of #ObjectClas.
-+ * @class: A derivative of #ObjectClass.
-  *
-  * Converts a class to an #ObjectClass.  Since all objects are #Objects,
-  * this function will always succeed.
---=20
-1.7.7
+     Signed-off-by: Alexander Barabash <alexander_barabash@mentor.com>
+
+diff --git a/hw/primecell.h b/hw/primecell.h
+index de7d6f2..ded0446 100644
+--- a/hw/primecell.h
++++ b/hw/primecell.h
+@@ -5,9 +5,6 @@
+  /* Also includes some devices that are currently only used by the
+     ARM boards.  */
+
+-/* pl080.c */
+-void *pl080_init(uint32_t base, qemu_irq irq, int nchannels);
+-
+  /* arm_sysctl.c */
+  void arm_sysctl_init(uint32_t base, uint32_t sys_id, uint32_t proc_id);
+
 
 
