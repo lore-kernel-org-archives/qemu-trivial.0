@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ry5HO-00061T-Mn
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Feb 2012 12:38:02 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:47362)
+	id 1Ry5IF-0006OU-2o
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Feb 2012 12:38:55 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:47643)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Alexander_Barabash@mentor.com>) id 1Ry5HH-0005ok-Km
-	for qemu-trivial@nongnu.org; Thu, 16 Feb 2012 12:38:01 -0500
+	(envelope-from <Alexander_Barabash@mentor.com>) id 1Ry5I7-0006Nd-Vi
+	for qemu-trivial@nongnu.org; Thu, 16 Feb 2012 12:38:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Alexander_Barabash@mentor.com>) id 1Ry5H9-00033n-Mr
-	for qemu-trivial@nongnu.org; Thu, 16 Feb 2012 12:37:54 -0500
-Received: from relay1.mentorg.com ([192.94.38.131]:37880)
+	(envelope-from <Alexander_Barabash@mentor.com>) id 1Ry5I2-0003DH-2y
+	for qemu-trivial@nongnu.org; Thu, 16 Feb 2012 12:38:47 -0500
+Received: from relay1.mentorg.com ([192.94.38.131]:37996)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <Alexander_Barabash@mentor.com>)
-	id 1Ry5Gx-00030y-Kd; Thu, 16 Feb 2012 12:37:35 -0500
+	id 1Ry5Ho-0003AK-7C; Thu, 16 Feb 2012 12:38:28 -0500
 Received: from svr-orw-fem-01.mgc.mentorg.com ([147.34.98.93])
 	by relay1.mentorg.com with esmtp 
-	id 1Ry5Gx-0007F9-48 from Alexander_Barabash@mentor.com ;
-	Thu, 16 Feb 2012 09:37:35 -0800
+	id 1Ry5Hn-0007JN-IP from Alexander_Barabash@mentor.com ;
+	Thu, 16 Feb 2012 09:38:27 -0800
 Received: from SVR-IES-FEM-01.mgc.mentorg.com ([137.202.0.104]) by
 	svr-orw-fem-01.mgc.mentorg.com over TLS secured channel with
-	Microsoft SMTPSVC(6.0.3790.4675); Thu, 16 Feb 2012 09:37:35 -0800
+	Microsoft SMTPSVC(6.0.3790.4675); Thu, 16 Feb 2012 09:38:27 -0800
 Received: from [137.202.52.68] (137.202.0.76) by
 	SVR-IES-FEM-01.mgc.mentorg.com (137.202.0.104) with Microsoft SMTP
-	Server id 14.1.289.1; Thu, 16 Feb 2012 17:37:32 +0000
-Message-ID: <4F3D3EF2.4090503@mentor.com>
-Date: Thu, 16 Feb 2012 19:37:54 +0200
+	Server id 14.1.289.1; Thu, 16 Feb 2012 17:38:25 +0000
+Message-ID: <4F3D3F26.8010402@mentor.com>
+Date: Thu, 16 Feb 2012 19:38:46 +0200
 From: Alexander Barabash <alexander_barabash@mentor.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:9.0) Gecko/20111229 Thunderbird/9.0
@@ -31,11 +31,12 @@ MIME-Version: 1.0
 To: <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="ISO-8859-1"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-OriginalArrivalTime: 16 Feb 2012 17:37:35.0011 (UTC)
-	FILETIME=[AB1E4730:01CCECD1]
+X-OriginalArrivalTime: 16 Feb 2012 17:38:27.0464 (UTC)
+	FILETIME=[CA61F880:01CCECD1]
 X-detected-operating-system: by eggs.gnu.org: Solaris 10 (beta)
 X-Received-From: 192.94.38.131
-Subject: [Qemu-trivial] [PATCH] [TRIVIAL] Removed unused arm_sysctl_init().
+Subject: [Qemu-trivial] [PATCH] [TRIVIAL] Replace object_delete() with
+	object_unref().
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,70 +48,138 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Feb 2012 17:38:01 -0000
+X-List-Received-Date: Thu, 16 Feb 2012 17:38:53 -0000
 
 
-     Removed unused arm_sysctl_init().
-     Renamed arm_sysctl_init1() into arm_sysctl_init().
+     Replace object_delete() with object_unref().
+
+     In the existing implementation, object_delete()
+     calls object_unref(), then frees the object's storage.
+     Running object_delete() on an object with reference count
+     different from one (1) causes program failure.
+
+     In the existing implementation, object_unref()
+     finalizes the object when its reference count becomes zero (0).
+
+     In the new implementation, object_unref()
+     finalizes and frees the object's storage when the reference count 
+becomes zero (0).
+
+     One usage of object_delete() replaced by object_unref().
 
      Signed-off-by: Alexander Barabash <alexander_barabash@mentor.com>
 
-diff --git a/hw/arm_sysctl.c b/hw/arm_sysctl.c
-index 149c639..5f1237b 100644
---- a/hw/arm_sysctl.c
-+++ b/hw/arm_sysctl.c
-@@ -378,7 +378,7 @@ static void arm_sysctl_gpio_set(void *opaque, int 
-line, int level)
+diff --git a/hw/qdev.c b/hw/qdev.c
+index f0eb3a7..891981a 100644
+--- a/hw/qdev.c
++++ b/hw/qdev.c
+@@ -247,7 +247,7 @@ void qdev_init_nofail(DeviceState *dev)
+  /* Unlink device from bus and free the structure.  */
+  void qdev_free(DeviceState *dev)
+  {
+-    object_delete(OBJECT(dev));
++    object_unref(OBJECT(dev));
+  }
+
+  void qdev_machine_creation_done(void)
+diff --git a/include/qemu/object.h b/include/qemu/object.h
+index 69cc2ab..e7e32fe 100644
+--- a/include/qemu/object.h
++++ b/include/qemu/object.h
+@@ -415,8 +415,9 @@ struct InterfaceInfo
+   * object_new:
+   * @typename: The name of the type of the object to instantiate.
+   *
+- * This function will initialize a new object using heap allocated 
+memory.  This
+- * function should be paired with object_delete() to free the resources
++ * This function will initialize a new object using heap allocated memory.
++ * The object's reference count will be set to one (1) upon successful 
+completion.
++ * This function should be paired with object_unref() to free the resources
+   * associated with the object.
+   *
+   * Returns: The newly allocated and instantiated object.
+@@ -427,8 +428,9 @@ Object *object_new(const char *typename);
+   * object_new_with_type:
+   * @type: The type of the object to instantiate.
+   *
+- * This function will initialize a new object using heap allocated 
+memory.  This
+- * function should be paired with object_delete() to free the resources
++ * This function will initialize a new object using heap allocated memory.
++ * The object's reference count will be set to one (1) upon successful 
+completion.
++ * This function should be paired with object_unref() to free the resources
+   * associated with the object.
+   *
+   * Returns: The newly allocated and instantiated object.
+@@ -436,15 +438,6 @@ Object *object_new(const char *typename);
+  Object *object_new_with_type(Type type);
+
+  /**
+- * object_delete:
+- * @obj: The object to free.
+- *
+- * Finalize an object and then free the memory associated with it.  
+This should
+- * be paired with object_new() to free the resources associated with an 
+object.
+- */
+-void object_delete(Object *obj);
+-
+-/**
+   * object_initialize_with_type:
+   * @obj: A pointer to the memory to be used for the object.
+   * @type: The type of the object to instantiate.
+@@ -573,8 +566,10 @@ void object_ref(Object *obj);
+   * qdef_unref:
+   * @obj: the object
+   *
+- * Decrease the reference count of a object.  A object cannot be freed 
+as long
++ * Decrease the reference count of a object.  A object is not freed as long
+   * as its reference count is greater than zero.
++ * Once an object's reference count gets to zero (0),
++ * the object is finalized and the memory associated with it is freed.
+   */
+  void object_unref(Object *obj);
+
+diff --git a/qom/object.c b/qom/object.c
+index 0cbd9bb..2de6eaf 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -328,7 +328,7 @@ static void object_deinit(Object *obj, TypeImpl *type)
+      while (obj->interfaces) {
+          Interface *iface_obj = obj->interfaces->data;
+          obj->interfaces = g_slist_delete_link(obj->interfaces, 
+obj->interfaces);
+-        object_delete(OBJECT(iface_obj));
++        object_unref(OBJECT(iface_obj));
+      }
+
+      if (type_has_parent(type)) {
+@@ -369,13 +369,6 @@ Object *object_new(const char *typename)
+      return object_new_with_type(ti);
+  }
+
+-void object_delete(Object *obj)
+-{
+-    object_unref(obj);
+-    g_assert(obj->ref == 0);
+-    g_free(obj);
+-}
+-
+  static bool type_is_ancestor(TypeImpl *type, TypeImpl *target_type)
+  {
+      assert(target_type);
+@@ -583,6 +576,7 @@ void object_unref(Object *obj)
+      /* parent always holds a reference to its children */
+      if (obj->ref == 0) {
+          object_finalize(obj);
++        g_free(obj);
       }
   }
 
--static int arm_sysctl_init1(SysBusDevice *dev)
-+static int arm_sysctl_init(SysBusDevice *dev)
-  {
-      arm_sysctl_state *s = FROM_SYSBUS(arm_sysctl_state, dev);
-
-@@ -389,18 +389,6 @@ static int arm_sysctl_init1(SysBusDevice *dev)
-      return 0;
-  }
-
--/* Legacy helper function.  */
--void arm_sysctl_init(uint32_t base, uint32_t sys_id, uint32_t proc_id)
--{
--    DeviceState *dev;
--
--    dev = qdev_create(NULL, "realview_sysctl");
--    qdev_prop_set_uint32(dev, "sys_id", sys_id);
--    qdev_init_nofail(dev);
--    qdev_prop_set_uint32(dev, "proc_id", proc_id);
--    sysbus_mmio_map(sysbus_from_qdev(dev), 0, base);
--}
--
-  static Property arm_sysctl_properties[] = {
-      DEFINE_PROP_UINT32("sys_id", arm_sysctl_state, sys_id, 0),
-      DEFINE_PROP_UINT32("proc_id", arm_sysctl_state, proc_id, 0),
-@@ -412,7 +400,7 @@ static void arm_sysctl_class_init(ObjectClass 
-*klass, void *data)
-      DeviceClass *dc = DEVICE_CLASS(klass);
-      SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
-
--    k->init = arm_sysctl_init1;
-+    k->init = arm_sysctl_init;
-      dc->reset = arm_sysctl_reset;
-      dc->vmsd = &vmstate_arm_sysctl;
-      dc->props = arm_sysctl_properties;
-diff --git a/hw/primecell.h b/hw/primecell.h
-index ded0446..7337c3b 100644
---- a/hw/primecell.h
-+++ b/hw/primecell.h
-@@ -5,9 +5,6 @@
-  /* Also includes some devices that are currently only used by the
-     ARM boards.  */
-
--/* arm_sysctl.c */
--void arm_sysctl_init(uint32_t base, uint32_t sys_id, uint32_t proc_id);
--
-  /* arm_sysctl GPIO lines */
-  #define ARM_SYSCTL_GPIO_MMC_WPROT 0
-  #define ARM_SYSCTL_GPIO_MMC_CARDIN 1
 
 
