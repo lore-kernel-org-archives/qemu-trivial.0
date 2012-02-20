@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RzP26-0006Mj-4F
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Feb 2012 03:55:42 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:38836)
+	id 1RzPI9-0002ia-Ox
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Feb 2012 04:12:17 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:48095)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RzP1z-00065r-An
-	for qemu-trivial@nongnu.org; Mon, 20 Feb 2012 03:55:39 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1RzPI1-0002F6-RY
+	for qemu-trivial@nongnu.org; Mon, 20 Feb 2012 04:12:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1RzP1v-000176-2x
-	for qemu-trivial@nongnu.org; Mon, 20 Feb 2012 03:55:35 -0500
-Received: from mail-wi0-f173.google.com ([209.85.212.173]:57363)
+	(envelope-from <pbonzini@redhat.com>) id 1RzPHx-0003we-QE
+	for qemu-trivial@nongnu.org; Mon, 20 Feb 2012 04:12:09 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:22331)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RzP1l-000154-2C; Mon, 20 Feb 2012 03:55:21 -0500
-Received: by wibhi20 with SMTP id hi20so3435544wib.4
-	for <multiple recipients>; Mon, 20 Feb 2012 00:55:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=GAxod++31ULYWX2V9rb6TpbDatcze+SV3dRUqPb5SLY=;
-	b=W+EPhMN2LOCa7l/IDN/UhzmJUV6XiWLvRWREgOLFcFN3XejYO6723mKxfUjTqFd7+n
-	+XBNmXMWDEPzAbSHoMQKNFc0w88euRXfGiNB08rKqDGNWLDO4Aj17pv/7EedpFUHIa2P
-	zY46YEkTKE97RdAL8hC85BfZpDCYIEVHoV1JA=
-Received: by 10.180.8.164 with SMTP id s4mr12616172wia.6.1329728117849;
-	Mon, 20 Feb 2012 00:55:17 -0800 (PST)
-Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id m16sm36791499wie.9.2012.02.20.00.55.16
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 20 Feb 2012 00:55:16 -0800 (PST)
-Date: Mon, 20 Feb 2012 08:55:12 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120220085512.GA14535@stefanha-thinkpad.localdomain>
-References: <1328951275-23481-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1RzPHo-0003vN-Mt; Mon, 20 Feb 2012 04:11:56 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q1K9BtbZ021030
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 20 Feb 2012 04:11:55 -0500
+Received: from yakj.usersys.redhat.com (ovpn-112-24.ams2.redhat.com
+	[10.36.112.24])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q1K9Bq7v006699; Mon, 20 Feb 2012 04:11:52 -0500
+Message-ID: <4F420E57.9090804@redhat.com>
+Date: Mon, 20 Feb 2012 10:11:51 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:10.0.1) Gecko/20120209 Thunderbird/10.0.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1328951275-23481-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+References: <1329695347-9289-1-git-send-email-afaerber@suse.de>
+In-Reply-To: <1329695347-9289-1-git-send-email-afaerber@suse.de>
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	q1K9BtbZ021030
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] tcg: Remove unneeded include statements
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, anthony@codemonkey.ws
+Subject: Re: [Qemu-trivial] [PATCH] qom: Fix object_initialize_with_type()
+	assertion
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,22 +52,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Feb 2012 08:55:39 -0000
+X-List-Received-Date: Mon, 20 Feb 2012 09:12:15 -0000
 
-On Sat, Feb 11, 2012 at 10:07:55AM +0100, Stefan Weil wrote:
-> The standard include files are already included in qemu-common.h.
-> 
-> malloc.h and alloca.h were needed for alloca() which was removed
-> from TCG code some years ago when switching from dyngen to TCG
-> (see commit 49516bc0d622112caac9df628caf19010fda8b67).
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On 02/20/2012 12:49 AM, Andreas F=C3=A4rber wrote:
+> Assert the object is at least sizeof(Object), not sizeof(ObjectClass).
+>=20
+> Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
 > ---
->  tcg/tcg.c |   12 ------------
->  1 files changed, 0 insertions(+), 12 deletions(-)
+>  qom/object.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>=20
+> diff --git a/qom/object.c b/qom/object.c
+> index b1ead15..dbfd6a4 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -262,7 +262,7 @@ void object_initialize_with_type(void *data, TypeIm=
+pl *type)
+>      Object *obj =3D data;
+> =20
+>      g_assert(type !=3D NULL);
+> -    g_assert(type->instance_size >=3D sizeof(ObjectClass));
+> +    g_assert(type->instance_size >=3D sizeof(Object));
+> =20
+>      type_class_init(type);
+>      g_assert(type->abstract =3D=3D false);
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Stefan
+Paolo
 
