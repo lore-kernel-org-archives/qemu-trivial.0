@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1RzPI9-0002ia-Ox
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Feb 2012 04:12:17 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:48095)
+	id 1Rzmih-0007Y6-6w
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Feb 2012 05:13:15 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:37420)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1RzPI1-0002F6-RY
-	for qemu-trivial@nongnu.org; Mon, 20 Feb 2012 04:12:15 -0500
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RzmiZ-0007Vw-8u
+	for qemu-trivial@nongnu.org; Tue, 21 Feb 2012 05:13:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1RzPHx-0003we-QE
-	for qemu-trivial@nongnu.org; Mon, 20 Feb 2012 04:12:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:22331)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1RzmiT-0008Df-LJ
+	for qemu-trivial@nongnu.org; Tue, 21 Feb 2012 05:13:07 -0500
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:22519)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1RzPHo-0003vN-Mt; Mon, 20 Feb 2012 04:11:56 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q1K9BtbZ021030
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 20 Feb 2012 04:11:55 -0500
-Received: from yakj.usersys.redhat.com (ovpn-112-24.ams2.redhat.com
-	[10.36.112.24])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q1K9Bq7v006699; Mon, 20 Feb 2012 04:11:52 -0500
-Message-ID: <4F420E57.9090804@redhat.com>
-Date: Mon, 20 Feb 2012 10:11:51 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:10.0.1) Gecko/20120209 Thunderbird/10.0.1
+	(envelope-from <chenwj@cs.nctu.edu.tw>)
+	id 1RzmiF-0008Am-9Y; Tue, 21 Feb 2012 05:12:48 -0500
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 2957B769;
+	Tue, 21 Feb 2012 18:18:04 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:cc:subject:message-id:mime-version:content-type; s=
+	rsa1024; bh=Jh5xleVwv1WssMo2AUmQyzYV1ak=; b=LCcUnncfnPXhOZwlsNvR
+	8hZVE7EWXe54+GtwaDKPJQ1xvVvpLTLENPtz48yONPx2Mgv5LGmGTPtG0noKSnVV
+	r7KNP9dL6acRdG8kRLPH65ffypwzEPCeyhlI/Ey3dHxKDGe1h86OrWyY0/xIDXCc
+	hDRrY0lV1ueTlOtTtuznNpo=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 096FB768;
+	Tue, 21 Feb 2012 18:18:04 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id q1LACdRq095544;
+	Tue, 21 Feb 2012 18:12:39 +0800 (CST) (envelope-from chenwj)
+Date: Tue, 21 Feb 2012 18:12:39 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+To: qemu-devel@nongnu.org
+Message-ID: <20120221101239.GA95445@cs.nctu.edu.tw>
 MIME-Version: 1.0
-To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-References: <1329695347-9289-1-git-send-email-afaerber@suse.de>
-In-Reply-To: <1329695347-9289-1-git-send-email-afaerber@suse.de>
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	q1K9BtbZ021030
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, anthony@codemonkey.ws
-Subject: Re: [Qemu-trivial] [PATCH] qom: Fix object_initialize_with_type()
-	assertion
+X-Received-From: 140.113.235.130
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] Fix dependency issue introduced by commit
+ 7b93fadf3a38d1ed65ea5536a52efc2772c6e3b8
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,32 +52,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Feb 2012 09:12:15 -0000
+X-List-Received-Date: Tue, 21 Feb 2012 10:13:12 -0000
 
-On 02/20/2012 12:49 AM, Andreas F=C3=A4rber wrote:
-> Assert the object is at least sizeof(Object), not sizeof(ObjectClass).
->=20
-> Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
-> ---
->  qom/object.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
->=20
-> diff --git a/qom/object.c b/qom/object.c
-> index b1ead15..dbfd6a4 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -262,7 +262,7 @@ void object_initialize_with_type(void *data, TypeIm=
-pl *type)
->      Object *obj =3D data;
-> =20
->      g_assert(type !=3D NULL);
-> -    g_assert(type->instance_size >=3D sizeof(ObjectClass));
-> +    g_assert(type->instance_size >=3D sizeof(Object));
-> =20
->      type_class_init(type);
->      g_assert(type->abstract =3D=3D false);
+  Commit 7b93fadf3a38d1ed65ea5536a52efc2772c6e3b8 adds basic version of bridge
+helper, but introduces dependency issue at the same time. While building target
+xxx-linux-user, qemu-bridge-helper.c needs config-host.h which is not generated
+at the moment. Building recurse-all target first fixes the problem.  
 
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
+---
+ Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Paolo
+diff --git a/Makefile b/Makefile
+index e66e885..618b306 100644
+--- a/Makefile
++++ b/Makefile
+@@ -79,7 +79,7 @@ defconfig:
+ 
+ -include config-all-devices.mak
+ 
+-build-all: $(DOCS) $(TOOLS) $(HELPERS-y) recurse-all
++build-all: $(DOCS) $(TOOLS) recurse-all $(HELPERS-y)
+ 
+ config-host.h: config-host.h-timestamp
+ config-host.h-timestamp: config-host.mak
+-- 
+1.7.3.4
 
