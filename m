@@ -1,44 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Rzooy-0000r4-Oc
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Feb 2012 07:27:52 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:34057)
+	id 1Rzqy7-0000EN-VH
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Feb 2012 09:45:27 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:37548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rzooq-0000QS-Ts
-	for qemu-trivial@nongnu.org; Tue, 21 Feb 2012 07:27:50 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1Rzqxz-0008FI-G7
+	for qemu-trivial@nongnu.org; Tue, 21 Feb 2012 09:45:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Rzool-0002VV-1Y
-	for qemu-trivial@nongnu.org; Tue, 21 Feb 2012 07:27:44 -0500
-Received: from mail-lpp01m010-f45.google.com ([209.85.215.45]:42318)
+	(envelope-from <pm215@archaic.org.uk>) id 1Rzqxu-0005lu-UO
+	for qemu-trivial@nongnu.org; Tue, 21 Feb 2012 09:45:19 -0500
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:50181)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1RzooZ-0002UM-FS; Tue, 21 Feb 2012 07:27:27 -0500
-Received: by lahi5 with SMTP id i5so8199826lah.4
-	for <multiple recipients>; Tue, 21 Feb 2012 04:27:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=MkivH5C5mZtrWlwxBb3Q9GQ+aPbAPunsKbLLIzTs1jc=;
-	b=Ri/61Hgn0EQXfiCK3dQShav9bz64fdZMb+L5uXo1bNwRRKs3cTb6y/m26OucGK4yyP
-	uLQI4T/p7GBNQb98tbcXhM6VGF1kdhYXeKjoSWdkL3HKRcfkzDL7vqHuPMh6Tn2mZe9n
-	ZRpmfFpx3roHoroZexwZhwq+J3kC08DZcfqdA=
-MIME-Version: 1.0
-Received: by 10.152.144.39 with SMTP id sj7mr6525649lab.29.1329827246402; Tue,
-	21 Feb 2012 04:27:26 -0800 (PST)
-Received: by 10.112.66.45 with HTTP; Tue, 21 Feb 2012 04:27:26 -0800 (PST)
-In-Reply-To: <20120221101239.GA95445@cs.nctu.edu.tw>
-References: <20120221101239.GA95445@cs.nctu.edu.tw>
-Date: Tue, 21 Feb 2012 12:27:26 +0000
-Message-ID: <CAJSP0QXhexX4wZUMjGb3mS6u7Rvfi4-ePmQeg=9g0-ZgTSmPsA@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?UTF-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.215.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Fix dependency issue introduced by
-	commit 7b93fadf3a38d1ed65ea5536a52efc2772c6e3b8
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Rzqxd-0005co-Mg; Tue, 21 Feb 2012 09:44:57 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1RzqxM-0005mN-DM; Tue, 21 Feb 2012 14:44:40 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Tue, 21 Feb 2012 14:44:40 +0000
+Message-Id: <1329835480-22192-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, Corey Bryant <coreyb@linux.vnet.ibm.com>,
+	=?UTF-8?q?=E9=99=B3=E9=9F=8B=E4=BB=BB?= <chenwj@iis.sinica.edu.tw>,
+	Anthony Liguori <anthony@codemonkey.ws>
+Subject: [Qemu-trivial] [PATCH] Makefile: Add dependency to fix
+	linux-user-only build
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,21 +38,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Feb 2012 12:27:50 -0000
+X-List-Received-Date: Tue, 21 Feb 2012 14:45:25 -0000
 
-On Tue, Feb 21, 2012 at 10:12 AM, =E9=99=B3=E9=9F=8B=E4=BB=BB <chenwj@iis.s=
-inica.edu.tw> wrote:
-> =C2=A0Commit 7b93fadf3a38d1ed65ea5536a52efc2772c6e3b8 adds basic version =
-of bridge
-> helper, but introduces dependency issue at the same time. While building =
-target
-> xxx-linux-user, qemu-bridge-helper.c needs config-host.h which is not gen=
-erated
-> at the moment. Building recurse-all target first fixes the problem.
+Make qemu-bridge-helper explicitly depend on $(GENERATED_HEADERS)
+so that it doesn't fail to build when we configured for linux-user
+targets only. (Build breakage introduced in commit 7b93fad.)
 
-The build system should not rely on ordering side-effects.  Instead,
-please explicitly declare the dependency for the helper or see if the
-dependency can be eliminated if it is inappropriate.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I suspect we could handle generated headers better in our makefile
+than having to scatter $(GENERATED_HEADERS) dependencies into almost
+everything (eg "%.o: $(GENERATED_HEADERS)" ??) but this is the minimal
+fix for the build breakage which we should apply for now I think.
 
-Stefan
+ Makefile |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e66e885..c67493e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -159,6 +159,7 @@ qemu-nbd$(EXESUF): qemu-nbd.o $(tools-obj-y) $(block-obj-y)
+ qemu-io$(EXESUF): qemu-io.o cmd.o $(tools-obj-y) $(block-obj-y)
+ 
+ qemu-bridge-helper$(EXESUF): qemu-bridge-helper.o
++qemu-bridge-helper.o: $(GENERATED_HEADERS)
+ 
+ fsdev/virtfs-proxy-helper$(EXESUF): fsdev/virtfs-proxy-helper.o fsdev/virtio-9p-marshal.o oslib-posix.o $(trace-obj-y)
+ fsdev/virtfs-proxy-helper$(EXESUF): LIBS += -lcap
+-- 
+1.7.1
+
 
