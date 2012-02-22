@@ -1,52 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S01cu-0001Qv-IM
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Feb 2012 21:08:16 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:34706)
+	id 1S0HDB-0004zW-Rx
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2012 13:46:45 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:45168)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1S01cq-0001PO-Ns
-	for qemu-trivial@nongnu.org; Tue, 21 Feb 2012 21:08:14 -0500
+	(envelope-from <anthony@codemonkey.ws>) id 1S0HD8-0004oQ-RK
+	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 13:46:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1S01cp-000588-8w
-	for qemu-trivial@nongnu.org; Tue, 21 Feb 2012 21:08:12 -0500
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:26218)
+	(envelope-from <anthony@codemonkey.ws>) id 1S0HD7-0000O9-Lb
+	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 13:46:42 -0500
+Received: from mail-pz0-f45.google.com ([209.85.210.45]:51148)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>)
-	id 1S01cm-00057Z-Qv; Tue, 21 Feb 2012 21:08:09 -0500
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 76FEDC72;
-	Wed, 22 Feb 2012 10:13:31 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=Znvz+cESNm+WJE/I50VscOtCyiE=; b=kPscKftgfrfB316Dtmdb1bTcJJRQ
-	hUEnAy6wePUCPPKjHULC4pQc9mRwAa9IURqsujbSxEGSD+cg/UiFbSkI6Ul6dRxc
-	N3S4IxPfKuabYOmcGA/s/ka0k+afFFejFZ4L2p/3lLAUluKZ0lOa4Y8L6QC/7Kvg
-	6NM5sMUXkUqp4lY=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 7219FC71;
-	Wed, 22 Feb 2012 10:13:31 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id q1M2874V011042;
-	Wed, 22 Feb 2012 10:08:07 +0800 (CST) (envelope-from chenwj)
-Date: Wed, 22 Feb 2012 10:08:07 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Message-ID: <20120222020807.GA10573@cs.nctu.edu.tw>
-References: <20120221101239.GA95445@cs.nctu.edu.tw>
-	<CAJSP0QXhexX4wZUMjGb3mS6u7Rvfi4-ePmQeg=9g0-ZgTSmPsA@mail.gmail.com>
+	(envelope-from <anthony@codemonkey.ws>)
+	id 1S0HD5-0000NT-Bg; Wed, 22 Feb 2012 13:46:39 -0500
+Received: by dadp14 with SMTP id p14so381529dad.4
+	for <multiple recipients>; Wed, 22 Feb 2012 10:46:37 -0800 (PST)
+Received: by 10.68.208.136 with SMTP id me8mr75470909pbc.55.1329936397399;
+	Wed, 22 Feb 2012 10:46:37 -0800 (PST)
+Received: from [192.168.0.108] (cpe-70-123-132-139.austin.res.rr.com.
+	[70.123.132.139])
+	by mx.google.com with ESMTPS id y7sm19620732pbp.25.2012.02.22.10.46.34
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 22 Feb 2012 10:46:35 -0800 (PST)
+Message-ID: <4F453808.7020401@codemonkey.ws>
+Date: Wed, 22 Feb 2012 12:46:32 -0600
+From: Anthony Liguori <anthony@codemonkey.ws>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.2.23) Gecko/20110922 Lightning/1.0b2 Thunderbird/3.1.15
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAJSP0QXhexX4wZUMjGb3mS6u7Rvfi4-ePmQeg=9g0-ZgTSmPsA@mail.gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-Content-Transfer-Encoding: quoted-printable
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1329835480-22192-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1329835480-22192-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Gm-Message-State: ALoCoQm5EOLqtLXBRmkomtRdf/+vfWVbsn89k911ypIFySppMNNB8A/aPp78O4KdJrnA7BfKntAS
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 140.113.235.130
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	=?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
-Subject: Re: [Qemu-trivial] [PATCH] Fix dependency issue introduced by
- commit 7b93fadf3a38d1ed65ea5536a52efc2772c6e3b8
+X-Received-From: 209.85.210.45
+Cc: qemu-trivial@nongnu.org, Corey Bryant <coreyb@linux.vnet.ibm.com>,
+	qemu-devel@nongnu.org, =?UTF-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Add dependency to
+ fix linux-user-only build
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,34 +51,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Feb 2012 02:08:14 -0000
+X-List-Received-Date: Wed, 22 Feb 2012 18:46:44 -0000
 
-On Tue, Feb 21, 2012 at 12:27:26PM +0000, Stefan Hajnoczi wrote:
-> On Tue, Feb 21, 2012 at 10:12 AM, =E9=99=B3=E9=9F=8B=E4=BB=BB <chenwj@i=
-is.sinica.edu.tw> wrote:
-> > =C2=A0Commit 7b93fadf3a38d1ed65ea5536a52efc2772c6e3b8 adds basic vers=
-ion of bridge
-> > helper, but introduces dependency issue at the same time. While build=
-ing target
-> > xxx-linux-user, qemu-bridge-helper.c needs config-host.h which is not=
- generated
-> > at the moment. Building recurse-all target first fixes the problem.
->=20
-> The build system should not rely on ordering side-effects.  Instead,
-> please explicitly declare the dependency for the helper or see if the
-> dependency can be eliminated if it is inappropriate.
+On 02/21/2012 08:44 AM, Peter Maydell wrote:
+> Make qemu-bridge-helper explicitly depend on $(GENERATED_HEADERS)
+> so that it doesn't fail to build when we configured for linux-user
+> targets only. (Build breakage introduced in commit 7b93fad.)
+>
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 
-  O.K., since the dependency cannot be eliminated, I'll explicitly declar=
-e the
-dependency for the helper.
+Applied.  Thanks.
 
 Regards,
-chenwj
 
---=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
-Homepage: http://people.cs.nctu.edu.tw/~chenwj
+Anthony Liguori
+
+> ---
+> I suspect we could handle generated headers better in our makefile
+> than having to scatter $(GENERATED_HEADERS) dependencies into almost
+> everything (eg "%.o: $(GENERATED_HEADERS)" ??) but this is the minimal
+> fix for the build breakage which we should apply for now I think.
+>
+>   Makefile |    1 +
+>   1 files changed, 1 insertions(+), 0 deletions(-)
+>
+> diff --git a/Makefile b/Makefile
+> index e66e885..c67493e 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -159,6 +159,7 @@ qemu-nbd$(EXESUF): qemu-nbd.o $(tools-obj-y) $(block-obj-y)
+>   qemu-io$(EXESUF): qemu-io.o cmd.o $(tools-obj-y) $(block-obj-y)
+>
+>   qemu-bridge-helper$(EXESUF): qemu-bridge-helper.o
+> +qemu-bridge-helper.o: $(GENERATED_HEADERS)
+>
+>   fsdev/virtfs-proxy-helper$(EXESUF): fsdev/virtfs-proxy-helper.o fsdev/virtio-9p-marshal.o oslib-posix.o $(trace-obj-y)
+>   fsdev/virtfs-proxy-helper$(EXESUF): LIBS += -lcap
+
 
