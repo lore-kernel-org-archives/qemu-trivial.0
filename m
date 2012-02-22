@@ -1,44 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S0HJl-0000Ce-AH
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2012 13:53:33 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:54445)
+	id 1S0KR8-00047p-5A
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2012 17:13:22 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:58458)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1S0HJf-0008NB-DY
-	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 13:53:31 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1S0KR4-0003v7-Ml
+	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 17:13:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1S0HJd-0001Qr-RJ
-	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 13:53:27 -0500
-Received: from mail-pw0-f45.google.com ([209.85.160.45]:65325)
+	(envelope-from <pm215@archaic.org.uk>) id 1S0KR3-0002y4-DG
+	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 17:13:18 -0500
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:53855)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>)
-	id 1S0HJY-0001Pv-8u; Wed, 22 Feb 2012 13:53:20 -0500
-Received: by pbbro12 with SMTP id ro12so566435pbb.4
-	for <multiple recipients>; Wed, 22 Feb 2012 10:53:19 -0800 (PST)
-Received: by 10.68.220.196 with SMTP id py4mr70032590pbc.166.1329936799051;
-	Wed, 22 Feb 2012 10:53:19 -0800 (PST)
-Received: from [192.168.0.108] (cpe-70-123-132-139.austin.res.rr.com.
-	[70.123.132.139])
-	by mx.google.com with ESMTPS id f10sm19629920pbn.58.2012.02.22.10.53.16
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 22 Feb 2012 10:53:17 -0800 (PST)
-Message-ID: <4F45399B.4060208@codemonkey.ws>
-Date: Wed, 22 Feb 2012 12:53:15 -0600
-From: Anthony Liguori <anthony@codemonkey.ws>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.23) Gecko/20110922 Lightning/1.0b2 Thunderbird/3.1.15
-MIME-Version: 1.0
-To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-References: <1329695347-9289-1-git-send-email-afaerber@suse.de>
-In-Reply-To: <1329695347-9289-1-git-send-email-afaerber@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Gm-Message-State: ALoCoQmVBEAcoj8Y6bM12O1WT0bA9EG6Nmij0kJfGYSs/IdPSBfkyBYkPF1a139fEsNYWTHqgNTp
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qom: Fix
-	object_initialize_with_type() assertion
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1S0KR0-0002xV-78; Wed, 22 Feb 2012 17:13:14 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1S0KQx-0006Jx-NI; Wed, 22 Feb 2012 22:13:11 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Wed, 22 Feb 2012 22:13:11 +0000
+Message-Id: <1329948791-24274-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] vl.c: Increase width of machine name column
+	in "-M ?" output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,35 +36,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Feb 2012 18:53:31 -0000
+X-List-Received-Date: Wed, 22 Feb 2012 22:13:19 -0000
 
-On 02/19/2012 05:49 PM, Andreas Färber wrote:
-> Assert the object is at least sizeof(Object), not sizeof(ObjectClass).
->
-> Signed-off-by: Andreas Färber<afaerber@suse.de>
+Increase the width of the column used for the machine name in
+the "-M ?" output from 10 to 20 spaces. This fixes the formatting
+so it looks nice for architectures where a few of the machines
+have overly long names. (Our current longest machine name is
+"petalogix-s3adsp1800" with "realview-eb-mpcore" not far behind.)
 
-Applied.  Thanks.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ vl.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
 
-Regards,
-
-Anthony Liguori
-
-> ---
->   qom/object.c |    2 +-
->   1 files changed, 1 insertions(+), 1 deletions(-)
->
-> diff --git a/qom/object.c b/qom/object.c
-> index b1ead15..dbfd6a4 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -262,7 +262,7 @@ void object_initialize_with_type(void *data, TypeImpl *type)
->       Object *obj = data;
->
->       g_assert(type != NULL);
-> -    g_assert(type->instance_size>= sizeof(ObjectClass));
-> +    g_assert(type->instance_size>= sizeof(Object));
->
->       type_class_init(type);
->       g_assert(type->abstract == false);
+diff --git a/vl.c b/vl.c
+index 7a8cc08..f211c71 100644
+--- a/vl.c
++++ b/vl.c
+@@ -1999,9 +1999,9 @@ static QEMUMachine *machine_parse(const char *name)
+     printf("Supported machines are:\n");
+     for (m = first_machine; m != NULL; m = m->next) {
+         if (m->alias) {
+-            printf("%-10s %s (alias of %s)\n", m->alias, m->desc, m->name);
++            printf("%-20s %s (alias of %s)\n", m->alias, m->desc, m->name);
+         }
+-        printf("%-10s %s%s\n", m->name, m->desc,
++        printf("%-20s %s%s\n", m->name, m->desc,
+                m->is_default ? " (default)" : "");
+     }
+     exit(!name || *name != '?');
+-- 
+1.7.5.4
 
 
