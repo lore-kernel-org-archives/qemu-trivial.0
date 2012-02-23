@@ -1,30 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S0KR8-00047p-5A
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2012 17:13:22 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:58458)
+	id 1S0Pb6-0007mS-Ad
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2012 22:44:00 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:52193)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1S0KR4-0003v7-Ml
-	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 17:13:19 -0500
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1S0Pb3-0007mG-RQ
+	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 22:43:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1S0KR3-0002y4-DG
-	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 17:13:18 -0500
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:53855)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1S0Pb2-000359-Gm
+	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 22:43:57 -0500
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:25251)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1S0KR0-0002xV-78; Wed, 22 Feb 2012 17:13:14 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1S0KQx-0006Jx-NI; Wed, 22 Feb 2012 22:13:11 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Wed, 22 Feb 2012 22:13:11 +0000
-Message-Id: <1329948791-24274-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] vl.c: Increase width of machine name column
-	in "-M ?" output
+	(envelope-from <chenwj@cs.nctu.edu.tw>)
+	id 1S0Pay-0002x1-Ps; Wed, 22 Feb 2012 22:43:53 -0500
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 54193543;
+	Thu, 23 Feb 2012 11:49:02 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
+	bh=sm3e3DfSNtz44jxWbb36OfYzvgU=; b=eemLPCHDR16cr56VC0yoagaCdTQ2
+	AiabdX8SJRPcKL8IiI0yK+GbptCrvmhEgVTPZcLHUNi9AEOk0mJKWa/VEZudrwgm
+	EqbkYMtltC2YCdO8D8MvScNVS1a7GuolSS1zX4Sr8c1uQLfd8T6wAZDuDwbylA+g
+	aQhBntXfnPR/y3w=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 36FA7542;
+	Thu, 23 Feb 2012 11:49:02 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id q1N3hcac034947;
+	Thu, 23 Feb 2012 11:43:38 +0800 (CST) (envelope-from chenwj)
+Date: Thu, 23 Feb 2012 11:43:38 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
+To: stefanha@gmail.com
+Message-ID: <20120223034338.GA33288@cs.nctu.edu.tw>
+References: <20120222020705.GA10972@cs.nctu.edu.tw>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20120222020705.GA10972@cs.nctu.edu.tw>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 140.113.235.130
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Fix dependency issue
+ introduced by commit 7b93fadf3a38d1ed65ea5536a52efc2772c6e3b8
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,36 +56,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Feb 2012 22:13:19 -0000
+X-List-Received-Date: Thu, 23 Feb 2012 03:43:59 -0000
 
-Increase the width of the column used for the machine name in
-the "-M ?" output from 10 to 20 spaces. This fixes the formatting
-so it looks nice for architectures where a few of the machines
-have overly long names. (Our current longest machine name is
-"petalogix-s3adsp1800" with "realview-eb-mpcore" not far behind.)
+Hi Stefan,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- vl.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+  Peter already fix this issue [1]. Please ignore my patch, thanks!
 
-diff --git a/vl.c b/vl.c
-index 7a8cc08..f211c71 100644
---- a/vl.c
-+++ b/vl.c
-@@ -1999,9 +1999,9 @@ static QEMUMachine *machine_parse(const char *name)
-     printf("Supported machines are:\n");
-     for (m = first_machine; m != NULL; m = m->next) {
-         if (m->alias) {
--            printf("%-10s %s (alias of %s)\n", m->alias, m->desc, m->name);
-+            printf("%-20s %s (alias of %s)\n", m->alias, m->desc, m->name);
-         }
--        printf("%-10s %s%s\n", m->name, m->desc,
-+        printf("%-20s %s%s\n", m->name, m->desc,
-                m->is_default ? " (default)" : "");
-     }
-     exit(!name || *name != '?');
--- 
-1.7.5.4
+Regards,
+chenwj
 
+[1] http://patchwork.ozlabs.org/patch/142306/
+
+--=20
+Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
+Computer Systems Lab, Institute of Information Science,
+Academia Sinica, Taiwan (R.O.C.)
+Tel:886-2-2788-3799 #1667
+Homepage: http://people.cs.nctu.edu.tw/~chenwj
 
