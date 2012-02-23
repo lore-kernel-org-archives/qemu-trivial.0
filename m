@@ -1,50 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S0Pb6-0007mS-Ad
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2012 22:44:00 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:52193)
+	id 1S0UjA-00034C-Nw
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Feb 2012 04:12:40 -0500
+Received: from eggs.gnu.org ([140.186.70.92]:57961)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1S0Pb3-0007mG-RQ
-	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 22:43:59 -0500
+	(envelope-from <stefanha@gmail.com>) id 1S0Uj3-0002gt-2c
+	for qemu-trivial@nongnu.org; Thu, 23 Feb 2012 04:12:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1S0Pb2-000359-Gm
-	for qemu-trivial@nongnu.org; Wed, 22 Feb 2012 22:43:57 -0500
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:25251)
+	(envelope-from <stefanha@gmail.com>) id 1S0Uix-0007gR-9I
+	for qemu-trivial@nongnu.org; Thu, 23 Feb 2012 04:12:32 -0500
+Received: from mail-ee0-f45.google.com ([74.125.83.45]:57394)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>)
-	id 1S0Pay-0002x1-Ps; Wed, 22 Feb 2012 22:43:53 -0500
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 54193543;
-	Thu, 23 Feb 2012 11:49:02 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=sm3e3DfSNtz44jxWbb36OfYzvgU=; b=eemLPCHDR16cr56VC0yoagaCdTQ2
-	AiabdX8SJRPcKL8IiI0yK+GbptCrvmhEgVTPZcLHUNi9AEOk0mJKWa/VEZudrwgm
-	EqbkYMtltC2YCdO8D8MvScNVS1a7GuolSS1zX4Sr8c1uQLfd8T6wAZDuDwbylA+g
-	aQhBntXfnPR/y3w=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 36FA7542;
-	Thu, 23 Feb 2012 11:49:02 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id q1N3hcac034947;
-	Thu, 23 Feb 2012 11:43:38 +0800 (CST) (envelope-from chenwj)
-Date: Thu, 23 Feb 2012 11:43:38 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7?= <chenwj@iis.sinica.edu.tw>
-To: stefanha@gmail.com
-Message-ID: <20120223034338.GA33288@cs.nctu.edu.tw>
-References: <20120222020705.GA10972@cs.nctu.edu.tw>
+	(envelope-from <stefanha@gmail.com>)
+	id 1S0Uip-0007fK-VF; Thu, 23 Feb 2012 04:12:20 -0500
+Received: by eekd17 with SMTP id d17so391593eek.4
+	for <multiple recipients>; Thu, 23 Feb 2012 01:12:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=NLOI65MzgM62whnbhUy6nH+mebxCtKdF8mfy/mIdX+U=;
+	b=kKfVHiR3oiGeLBK2y+zg8m/N7iKOIuRzvgy36aOi/RGXU5O08EQ8/Bish9Ine0wXnD
+	adrJQr6+mMcfDvK0BtOCvzz4PMfWoOoB0hHvmHLB2BNGFS/wrAlIn3VY1kSh/Uj0OMaA
+	T7JxU9XYXpUMvKYtjqyP49deyGyeRTr8s4SHM=
+Received: by 10.213.9.133 with SMTP id l5mr126755ebl.81.1329988339096;
+	Thu, 23 Feb 2012 01:12:19 -0800 (PST)
+Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
+	by mx.google.com with ESMTPS id n17sm3221946eei.3.2012.02.23.01.12.18
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 23 Feb 2012 01:12:18 -0800 (PST)
+Date: Thu, 23 Feb 2012 08:06:06 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20120223080606.GA5147@stefanha-thinkpad.localdomain>
+References: <1329948791-24274-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20120222020705.GA10972@cs.nctu.edu.tw>
+In-Reply-To: <1329948791-24274-1-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 140.113.235.130
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Fix dependency issue
- introduced by commit 7b93fadf3a38d1ed65ea5536a52efc2772c6e3b8
+X-Received-From: 74.125.83.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] vl.c: Increase width of machine name
+ column in "-M ?" output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,21 +54,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Feb 2012 03:43:59 -0000
+X-List-Received-Date: Thu, 23 Feb 2012 09:12:39 -0000
 
-Hi Stefan,
+On Wed, Feb 22, 2012 at 10:13:11PM +0000, Peter Maydell wrote:
+> Increase the width of the column used for the machine name in
+> the "-M ?" output from 10 to 20 spaces. This fixes the formatting
+> so it looks nice for architectures where a few of the machines
+> have overly long names. (Our current longest machine name is
+> "petalogix-s3adsp1800" with "realview-eb-mpcore" not far behind.)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  vl.c |    4 ++--
+>  1 files changed, 2 insertions(+), 2 deletions(-)
 
-  Peter already fix this issue [1]. Please ignore my patch, thanks!
+Confirmed that libvirt does not depend on the spacing.
 
-Regards,
-chenwj
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-[1] http://patchwork.ozlabs.org/patch/142306/
-
---=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
-Homepage: http://people.cs.nctu.edu.tw/~chenwj
+Stefan
 
