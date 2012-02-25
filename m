@@ -1,37 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S0tQE-0004VO-BK
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2012 06:34:46 -0500
-Received: from eggs.gnu.org ([140.186.70.92]:43025)
+	id 1S1Gxl-0002CP-B2
+	for mharc-qemu-trivial@gnu.org; Sat, 25 Feb 2012 07:42:57 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:53575)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1S0tQ3-0004FM-B1
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2012 06:34:43 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1S1Gsd-0001jO-Ic
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2012 07:37:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1S0tPt-0006a6-LE
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2012 06:34:29 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:10881)
+	(envelope-from <stefan@weilnetz.de>) id 1S1GsV-0002gi-Dm
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2012 07:37:36 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:33563)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1S0tPt-0006Zm-6U
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2012 06:34:25 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q1OBYLE5028938
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 24 Feb 2012 06:34:21 -0500
-Received: from garlic.redhat.com (vpn-200-50.tlv.redhat.com [10.35.200.50])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q1OBXwjB030215; Fri, 24 Feb 2012 06:34:08 -0500
-From: Alon Levy <alevy@redhat.com>
-To: qemu-trivial@nongnu.org
-Date: Fri, 24 Feb 2012 13:33:49 +0200
-Message-Id: <1330083229-9011-1-git-send-email-alevy@redhat.com>
-In-Reply-To: <20120224082954.GA26938@stefanha-thinkpad.localdomain>
-References: <20120224082954.GA26938@stefanha-thinkpad.localdomain>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <stefan@weilnetz.de>)
+	id 1S1GsL-0002ew-CW; Sat, 25 Feb 2012 07:37:21 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	D5BA1728009C; Sat, 25 Feb 2012 13:37:19 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id WnrzWkGJXCmm; Sat, 25 Feb 2012 13:37:19 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 64D68728009A; Sat, 25 Feb 2012 13:37:19 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial <qemu-trivial@nongnu.org>
+Date: Sat, 25 Feb 2012 13:37:13 +0100
+Message-Id: <1330173433-32043-3-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.9
+In-Reply-To: <1330173433-32043-1-git-send-email-sw@weilnetz.de>
+References: <1330173433-32043-1-git-send-email-sw@weilnetz.de>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] slirp/misc: fix gcc __warn_memset_zero_len
-	warnings
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH 2/2] sh7750: Remove redundant 'struct' from
+	MemoryRegionOps
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,84 +46,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Feb 2012 11:34:43 -0000
+X-List-Received-Date: Sat, 25 Feb 2012 12:42:55 -0000
 
-By removing memset altogether (Patch from Stefan Hajnoczi, tested
-compile only by me).
+The 'struct' is not needed, and all other MemoryRegionOps don't use it.
 
-Signed-off-by: Alon Levy <alevy@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- slirp/misc.c |   21 +++++++--------------
- 1 files changed, 7 insertions(+), 14 deletions(-)
+ hw/sh7750.c  |    2 +-
+ hw/sh_intc.c |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/slirp/misc.c b/slirp/misc.c
-index 3432fbf..0308a62 100644
---- a/slirp/misc.c
-+++ b/slirp/misc.c
-@@ -333,7 +333,6 @@ void slirp_connection_info(Slirp *slirp, Monitor *mon)
-     struct socket *so;
-     const char *state;
-     char buf[20];
--    int n;
- 
-     monitor_printf(mon, "  Protocol[State]    FD  Source Address  Port   "
-                         "Dest. Address  Port RecvQ SendQ\n");
-@@ -357,10 +356,8 @@ void slirp_connection_info(Slirp *slirp, Monitor *mon)
-             dst_addr = so->so_faddr;
-             dst_port = so->so_fport;
-         }
--        n = snprintf(buf, sizeof(buf), "  TCP[%s]", state);
--        memset(&buf[n], ' ', 19 - n);
--        buf[19] = 0;
--        monitor_printf(mon, "%s %3d %15s %5d ", buf, so->s,
-+        snprintf(buf, sizeof(buf), "  TCP[%s]", state);
-+        monitor_printf(mon, "%-19s %3d %15s %5d ", buf, so->s,
-                        src.sin_addr.s_addr ? inet_ntoa(src.sin_addr) : "*",
-                        ntohs(src.sin_port));
-         monitor_printf(mon, "%15s %5d %5d %5d\n",
-@@ -370,22 +367,20 @@ void slirp_connection_info(Slirp *slirp, Monitor *mon)
- 
-     for (so = slirp->udb.so_next; so != &slirp->udb; so = so->so_next) {
-         if (so->so_state & SS_HOSTFWD) {
--            n = snprintf(buf, sizeof(buf), "  UDP[HOST_FORWARD]");
-+            snprintf(buf, sizeof(buf), "  UDP[HOST_FORWARD]");
-             src_len = sizeof(src);
-             getsockname(so->s, (struct sockaddr *)&src, &src_len);
-             dst_addr = so->so_laddr;
-             dst_port = so->so_lport;
-         } else {
--            n = snprintf(buf, sizeof(buf), "  UDP[%d sec]",
-+            snprintf(buf, sizeof(buf), "  UDP[%d sec]",
-                          (so->so_expire - curtime) / 1000);
-             src.sin_addr = so->so_laddr;
-             src.sin_port = so->so_lport;
-             dst_addr = so->so_faddr;
-             dst_port = so->so_fport;
-         }
--        memset(&buf[n], ' ', 19 - n);
--        buf[19] = 0;
--        monitor_printf(mon, "%s %3d %15s %5d ", buf, so->s,
-+        monitor_printf(mon, "%-19s %3d %15s %5d ", buf, so->s,
-                        src.sin_addr.s_addr ? inet_ntoa(src.sin_addr) : "*",
-                        ntohs(src.sin_port));
-         monitor_printf(mon, "%15s %5d %5d %5d\n",
-@@ -394,13 +389,11 @@ void slirp_connection_info(Slirp *slirp, Monitor *mon)
+diff --git a/hw/sh7750.c b/hw/sh7750.c
+index 4f4d8e7..e712928 100644
+--- a/hw/sh7750.c
++++ b/hw/sh7750.c
+@@ -712,7 +712,7 @@ static void sh7750_mmct_write(void *opaque, target_phys_addr_t addr,
      }
+ }
  
-     for (so = slirp->icmp.so_next; so != &slirp->icmp; so = so->so_next) {
--        n = snprintf(buf, sizeof(buf), "  ICMP[%d sec]",
-+        snprintf(buf, sizeof(buf), "  ICMP[%d sec]",
-                      (so->so_expire - curtime) / 1000);
-         src.sin_addr = so->so_laddr;
-         dst_addr = so->so_faddr;
--        memset(&buf[n], ' ', 19 - n);
--        buf[19] = 0;
--        monitor_printf(mon, "%s %3d %15s  -    ", buf, so->s,
-+        monitor_printf(mon, "%-19s %3d %15s  -    ", buf, so->s,
-                        src.sin_addr.s_addr ? inet_ntoa(src.sin_addr) : "*");
-         monitor_printf(mon, "%15s  -    %5d %5d\n", inet_ntoa(dst_addr),
-                        so->so_rcv.sb_cc, so->so_snd.sb_cc);
+-static const struct MemoryRegionOps sh7750_mmct_ops = {
++static const MemoryRegionOps sh7750_mmct_ops = {
+     .read = sh7750_mmct_read,
+     .write = sh7750_mmct_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
+diff --git a/hw/sh_intc.c b/hw/sh_intc.c
+index b24ec77..7d31ced 100644
+--- a/hw/sh_intc.c
++++ b/hw/sh_intc.c
+@@ -283,7 +283,7 @@ static void sh_intc_write(void *opaque, target_phys_addr_t offset,
+ #endif
+ }
+ 
+-static const struct MemoryRegionOps sh_intc_ops = {
++static const MemoryRegionOps sh_intc_ops = {
+     .read = sh_intc_read,
+     .write = sh_intc_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
 -- 
-1.7.9.1
+1.7.9
 
 
