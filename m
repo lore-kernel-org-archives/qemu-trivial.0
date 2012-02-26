@@ -1,53 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S1h8O-00070E-D8
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Feb 2012 11:39:40 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:34125)
+	id 1S1hke-0007Da-LA
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Feb 2012 12:19:12 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:44839)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1S1h8L-0006zP-B8
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 11:39:38 -0500
+	(envelope-from <afaerber@suse.de>) id 1S1hka-00070R-67
+	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 12:19:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1S1h8I-00043s-DH
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 11:39:36 -0500
-Received: from mail-pz0-f45.google.com ([209.85.210.45]:65353)
+	(envelope-from <afaerber@suse.de>) id 1S1hkZ-00012q-3X
+	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 12:19:08 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:44735 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1S1h8I-00043d-7I
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 11:39:34 -0500
-Received: by dadp14 with SMTP id p14so5241628dad.4
-	for <qemu-trivial@nongnu.org>; Sun, 26 Feb 2012 08:39:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of anthony@codemonkey.ws designates
-	10.68.201.196 as permitted sender) client-ip=10.68.201.196; 
-Authentication-Results: mr.google.com;
-	spf=pass (google.com: domain of anthony@codemonkey.ws
-	designates 10.68.201.196 as permitted sender)
-	smtp.mail=anthony@codemonkey.ws
-Received: from mr.google.com ([10.68.201.196])
-	by 10.68.201.196 with SMTP id kc4mr21474212pbc.141.1330274372992
-	(num_hops = 1); Sun, 26 Feb 2012 08:39:32 -0800 (PST)
-Received: by 10.68.201.196 with SMTP id kc4mr18381405pbc.141.1330274372946;
-	Sun, 26 Feb 2012 08:39:32 -0800 (PST)
-Received: from [192.168.0.104] (cpe-70-123-132-139.austin.res.rr.com.
-	[70.123.132.139])
-	by mx.google.com with ESMTPS id y7sm10221624pbp.25.2012.02.26.08.39.30
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 26 Feb 2012 08:39:31 -0800 (PST)
-Message-ID: <4F4A6041.5060102@codemonkey.ws>
-Date: Sun, 26 Feb 2012 10:39:29 -0600
-From: Anthony Liguori <anthony@codemonkey.ws>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.23) Gecko/20110922 Lightning/1.0b2 Thunderbird/3.1.15
+	(envelope-from <afaerber@suse.de>)
+	id 1S1hkW-00012J-DB; Sun, 26 Feb 2012 12:19:04 -0500
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 795DF8FE2D;
+	Sun, 26 Feb 2012 18:18:58 +0100 (CET)
+Message-ID: <4F4A6981.2030008@suse.de>
+Date: Sun, 26 Feb 2012 18:18:57 +0100
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:10.0.2) Gecko/20120215 Thunderbird/10.0.2
 MIME-Version: 1.0
 To: Stefan Weil <sw@weilnetz.de>
-References: <1330263596-4988-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1330263596-4988-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Gm-Message-State: ALoCoQmOkSBZCRiS2EPFfI7cc/GF2o+v+4+dIg4SIOOcaQ4tOf77hUMgV0jQ0sKYYvbcf4yXs/HP
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.210.45
+References: <1330263343-21307-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1330263343-21307-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.3.5
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix spelling in comments
-	(iff -> if)
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Spelling fixes in comments
+	(it's -> its)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,42 +46,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Feb 2012 16:39:38 -0000
+X-List-Received-Date: Sun, 26 Feb 2012 17:19:10 -0000
 
-On 02/26/2012 07:39 AM, Stefan Weil wrote:
-> Signed-off-by: Stefan Weil<sw@weilnetz.de>
+Am 26.02.2012 14:35, schrieb Stefan Weil:
+> * it's -> its (fixed for all files)
+> * dont -> don't (only fixed in a line which was touched by the previous=
+ fix)
+>=20
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+
+Except for one omission:
+
 > ---
->   a.out.h                |    2 +-
->   arm-dis.c              |   22 +++++++++++-----------
->   block.c                |    2 +-
->   block/qcow2-refcount.c |    4 ++--
->   hw/alpha_typhoon.c     |    2 +-
->   hw/hid.h               |    2 +-
->   hw/pcnet.c             |    2 +-
->   m68k-dis.c             |    4 ++--
->   memory.h               |    4 ++--
->   monitor.c              |    2 +-
->   net/socket.c           |    2 +-
->   qemu-img.c             |    2 +-
->   tcg/hppa/tcg-target.c  |    6 +++---
->   13 files changed, 28 insertions(+), 28 deletions(-)
->
-> diff --git a/a.out.h b/a.out.h
-> index 33ca7f7..7ea8d5a 100644
-> --- a/a.out.h
-> +++ b/a.out.h
-> @@ -136,7 +136,7 @@ struct external_scnhdr {
->    */
->   struct external_lineno {
->     union {
-> -    host_ulong l_symndx; /* function name symbol index, iff l_lnno 0 */
+>  configure               |    2 +-
+>  hw/exynos4210_mct.c     |    2 +-
+>  hw/usb-ccid.c           |    2 +-
+>  include/qemu/object.h   |    4 ++--
+>  kvm-all.c               |    2 +-
+>  libcacard/vscclient.c   |    2 +-
+>  linux-user/signal.c     |    2 +-
+>  qemu-file.h             |    2 +-
+>  target-mips/op_helper.c |    2 +-
+>  9 files changed, 10 insertions(+), 10 deletions(-)
 
-I don't know if this is the intention but this may be short hand for 'if and 
-only if'.  I do use this short hand quite a bit myself.
+> diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
+> index c51b9cb..7d6773d 100644
+> --- a/target-mips/op_helper.c
+> +++ b/target-mips/op_helper.c
+> @@ -1930,7 +1930,7 @@ target_ulong helper_evpe(void)
+> =20
+>      do {
+>          if (other_cpu !=3D env
+> -           /* If the VPE is WFI, dont distrub it's sleep.  */
+> +           /* If the VPE is WFI, don't distrub its sleep.  */
 
-http://en.wikipedia.org/wiki/If_and_only_if
+While at it, please also fix "disturb". :)
 
-Regards,
+Also I've generally wondered if there is a reason for having two spaces
+before */? Some do, some don't.
 
-Anthony Liguori
+Andreas
+
+>             && !mips_vpe_is_wfi(other_cpu)) {
+>              /* Enable the VPE.  */
+>              other_cpu->mvp->CP0_MVPControl |=3D (1 << CP0MVPCo_EVP);
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
