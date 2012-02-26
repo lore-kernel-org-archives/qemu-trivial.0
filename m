@@ -1,37 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S1eGo-00084Q-3d
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Feb 2012 08:36:10 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:39762)
+	id 1S1eJ8-0008Gd-Cl
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Feb 2012 08:38:34 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:40138)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1S1eGf-0007cv-8g
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 08:36:07 -0500
+	(envelope-from <alevy@redhat.com>) id 1S1eJ1-0008Fo-Qh
+	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 08:38:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1S1eGa-0004tc-AP
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 08:36:01 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:56066)
+	(envelope-from <alevy@redhat.com>) id 1S1eIt-00055n-UG
+	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 08:38:27 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:61567)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1S1eGQ-0004sl-2q; Sun, 26 Feb 2012 08:35:46 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	375947280013; Sun, 26 Feb 2012 14:35:45 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id Aphu8eYIJklk; Sun, 26 Feb 2012 14:35:44 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 56B9D728009A; Sun, 26 Feb 2012 14:35:44 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: QEMU Trivial <qemu-trivial@nongnu.org>
-Date: Sun, 26 Feb 2012 14:35:43 +0100
-Message-Id: <1330263343-21307-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.9
+	(envelope-from <alevy@redhat.com>)
+	id 1S1eIt-00055b-M2; Sun, 26 Feb 2012 08:38:19 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q1QDcHoI023854
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Sun, 26 Feb 2012 08:38:17 -0500
+Received: from garlic.redhat.com (spice-ovirt.tlv.redhat.com [10.35.4.71])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q1QDcDP0005609
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Sun, 26 Feb 2012 08:38:16 -0500
+Date: Sun, 26 Feb 2012 14:38:12 +0100
+From: Alon Levy <alevy@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120226133812.GC7395@garlic.redhat.com>
+Mail-Followup-To: Stefan Weil <sw@weilnetz.de>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+References: <1330263021-1339-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1330263021-1339-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Spelling fixes in comments (it's -> its)
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libcacard: Spelling and
+ grammar fixes in documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,151 +52,126 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Feb 2012 13:36:08 -0000
+X-List-Received-Date: Sun, 26 Feb 2012 13:38:32 -0000
 
-* it's -> its (fixed for all files)
-* dont -> don't (only fixed in a line which was touched by the previous fix)
+On Sun, Feb 26, 2012 at 02:30:21PM +0100, Stefan Weil wrote:
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- configure               |    2 +-
- hw/exynos4210_mct.c     |    2 +-
- hw/usb-ccid.c           |    2 +-
- include/qemu/object.h   |    4 ++--
- kvm-all.c               |    2 +-
- libcacard/vscclient.c   |    2 +-
- linux-user/signal.c     |    2 +-
- qemu-file.h             |    2 +-
- target-mips/op_helper.c |    2 +-
- 9 files changed, 10 insertions(+), 10 deletions(-)
+Ack.
 
-diff --git a/configure b/configure
-index c6c863a..5c46f1c 100755
---- a/configure
-+++ b/configure
-@@ -231,7 +231,7 @@ for opt do
- done
- # OS specific
- # Using uname is really, really broken.  Once we have the right set of checks
--# we can eliminate it's usage altogether
-+# we can eliminate its usage altogether.
- 
- cc="${CC-${cross_prefix}gcc}"
- ar="${AR-${cross_prefix}ar}"
-diff --git a/hw/exynos4210_mct.c b/hw/exynos4210_mct.c
-index 01e3fb8..7474fcf 100644
---- a/hw/exynos4210_mct.c
-+++ b/hw/exynos4210_mct.c
-@@ -888,7 +888,7 @@ static void exynos4210_ltick_event(void *opaque)
-     static uint64_t time2[2] = {0};
- #endif
- 
--    /* Call tick_timer event handler, it will update it's tcntb and icntb */
-+    /* Call tick_timer event handler, it will update its tcntb and icntb. */
-     exynos4210_ltick_timer_event(&s->tick_timer);
- 
-     /* get tick_timer cnt */
-diff --git a/hw/usb-ccid.c b/hw/usb-ccid.c
-index 0b2ac80..6ddcba7 100644
---- a/hw/usb-ccid.c
-+++ b/hw/usb-ccid.c
-@@ -5,7 +5,7 @@
-  *
-  * Written by Alon Levy, with contributions from Robert Relyea.
-  *
-- * Based on usb-serial.c, see it's copyright and attributions below.
-+ * Based on usb-serial.c, see its copyright and attributions below.
-  *
-  * This work is licensed under the terms of the GNU GPL, version 2.1 or later.
-  * See the COPYING file in the top-level directory.
-diff --git a/include/qemu/object.h b/include/qemu/object.h
-index dd7f3c0..ec2d294 100644
---- a/include/qemu/object.h
-+++ b/include/qemu/object.h
-@@ -124,7 +124,7 @@ typedef struct InterfaceInfo InterfaceInfo;
-  *
-  * Once all of the parent classes have been initialized, #TypeInfo::class_init
-  * is called to let the class being instantiated provide default initialize for
-- * it's virtual functions.  Here is how the above example might be modified
-+ * its virtual functions.  Here is how the above example might be modified
-  * to introduce an overridden virtual function:
-  *
-  * <example>
-@@ -527,7 +527,7 @@ Type type_register_static(const TypeInfo *info);
-  * type_register:
-  * @info: The #TypeInfo of the new type
-  *
-- * Unlike type_register_static(), this call does not require @info or it's
-+ * Unlike type_register_static(), this call does not require @info or its
-  * string members to continue to exist after the call returns.
-  *
-  * Returns: 0 on failure, the new #Type on success.
-diff --git a/kvm-all.c b/kvm-all.c
-index c4babda..0729020 100644
---- a/kvm-all.c
-+++ b/kvm-all.c
-@@ -34,7 +34,7 @@
- #include <sys/eventfd.h>
- #endif
- 
--/* KVM uses PAGE_SIZE in it's definition of COALESCED_MMIO_MAX */
-+/* KVM uses PAGE_SIZE in its definition of COALESCED_MMIO_MAX */
- #define PAGE_SIZE TARGET_PAGE_SIZE
- 
- //#define DEBUG_KVM
-diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
-index e317a25..4fbcc89 100644
---- a/libcacard/vscclient.c
-+++ b/libcacard/vscclient.c
-@@ -129,7 +129,7 @@ event_thread(void *arg)
-                 vevent_delete(event);
-                 continue;
-             }
--            /* this reader hasn't been told it's status from qemu yet, wait for
-+            /* this reader hasn't been told its status from qemu yet, wait for
-              * that status */
-             while (pending_reader != NULL) {
-                 qemu_cond_wait(&pending_reader_condition, &pending_reader_lock);
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index 79a39dc..cefd2ff 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -2700,7 +2700,7 @@ get_sigframe(struct target_sigaction *ka, CPUState *regs, size_t frame_size)
-     sp = regs->active_tc.gpr[29];
- 
-     /*
--     * FPU emulator may have it's own trampoline active just
-+     * FPU emulator may have its own trampoline active just
-      * above the user stack, 16-bytes before the next lowest
-      * 16 byte boundary.  Try to avoid trashing it.
-      */
-diff --git a/qemu-file.h b/qemu-file.h
-index 8da1021..31b83f6 100644
---- a/qemu-file.h
-+++ b/qemu-file.h
-@@ -47,7 +47,7 @@ typedef int (QEMUFileGetBufferFunc)(void *opaque, uint8_t *buf,
-  */
- typedef int (QEMUFileCloseFunc)(void *opaque);
- 
--/* Called to determine if the file has exceeded it's bandwidth allocation.  The
-+/* Called to determine if the file has exceeded its bandwidth allocation.  The
-  * bandwidth capping is a soft limit, not a hard limit.
-  */
- typedef int (QEMUFileRateLimit)(void *opaque);
-diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
-index c51b9cb..7d6773d 100644
---- a/target-mips/op_helper.c
-+++ b/target-mips/op_helper.c
-@@ -1930,7 +1930,7 @@ target_ulong helper_evpe(void)
- 
-     do {
-         if (other_cpu != env
--           /* If the VPE is WFI, dont distrub it's sleep.  */
-+           /* If the VPE is WFI, don't distrub its sleep.  */
-            && !mips_vpe_is_wfi(other_cpu)) {
-             /* Enable the VPE.  */
-             other_cpu->mvp->CP0_MVPControl |= (1 << CP0MVPCo_EVP);
--- 
-1.7.9
-
+> * it's -> its
+> 
+> * it's -> it is (that's no fix, but makes future checks easier)
+> 
+> * this functions -> this function
+> 
+> * replacable -> replaceable
+> 
+> * reader's -> readers
+> 
+> * logins into -> logs into
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  docs/libcacard.txt |   22 +++++++++++-----------
+>  1 files changed, 11 insertions(+), 11 deletions(-)
+> 
+> diff --git a/docs/libcacard.txt b/docs/libcacard.txt
+> index f7d7519..559db8a 100644
+> --- a/docs/libcacard.txt
+> +++ b/docs/libcacard.txt
+> @@ -10,7 +10,7 @@ such as signing, card removal/insertion, etc. are mapped to real, physical
+>  cards which are shared with the client machine the emulator is running on, or
+>  the cards could be pure software constructs.
+>  
+> -The emulator is structured to allow multiple replacable or additional pieces,
+> +The emulator is structured to allow multiple replaceable or additional pieces,
+>  so it can be easily modified for future requirements. The primary envisioned
+>  modifications are:
+>  
+> @@ -32,7 +32,7 @@ be emulated as well, including PIV, newer versions of CAC, PKCS #15, etc.
+>  --------------------
+>  Replacing the Socket Based Virtual Reader Interface.
+>  
+> -The current implementation contains a replacable module vscclient.c. The
+> +The current implementation contains a replaceable module vscclient.c. The
+>  current vscclient.c implements a sockets interface to the virtual ccid reader
+>  on the guest. CCID commands that are pertinent to emulation are passed
+>  across the socket, and their responses are passed back along that same socket.
+> @@ -42,7 +42,7 @@ implements a program with a main entry. It also handles argument parsing for
+>  the emulator.
+>  
+>  An application that wants to use the virtual reader can replace vscclient.c
+> -with it's own implementation that connects to it's own CCID reader.  The calls
+> +with its own implementation that connects to its own CCID reader.  The calls
+>  that the CCID reader can call are:
+>  
+>        VReaderList * vreader_get_reader_list();
+> @@ -72,12 +72,12 @@ that the CCID reader can call are:
+>        VReader * vreader_list_get_reader(VReaderListEntry *)
+>  
+>    This function returns the reader stored in the reader List entry. Caller gets
+> -  a new reference to a reader. The caller must free it's reference when it is
+> +  a new reference to a reader. The caller must free its reference when it is
+>    finished with vreader_free().
+>  
+>        void vreader_free(VReader *reader);
+>  
+> -   This function frees a reference to a reader. Reader's are reference counted
+> +   This function frees a reference to a reader. Readers are reference counted
+>     and are automatically deleted when the last reference is freed.
+>  
+>        void vreader_list_delete(VReaderList *list);
+> @@ -87,7 +87,7 @@ that the CCID reader can call are:
+>  
+>        VReaderStatus vreader_power_on(VReader *reader, char *atr, int *len);
+>  
+> -  This functions simulates a card power on. Virtual cards do not care about
+> +  This function simulates a card power on. A virtual card does not care about
+>    the actual voltage and other physical parameters, but it does care that the
+>    card is actually on or off. Cycling the card causes the card to reset. If
+>    the caller provides enough space, vreader_power_on will return the ATR of
+> @@ -104,7 +104,7 @@ that the CCID reader can call are:
+>                                         unsigned char *receive_buf,
+>                                         int receive_buf_len);
+>  
+> -  This functions send a raw apdu to a card and returns the card's response.
+> +  This function sends a raw apdu to a card and returns the card's response.
+>    The CCID front end should return the response back. Most of the emulation
+>    is driven from these APDUs.
+>  
+> @@ -217,10 +217,10 @@ the card using the following functions:
+>           VCardStatus vcard_add_applet(VCard *card, VCardApplet *applet);
+>  
+>    Add an applet onto the list of applets attached to the card. Once an applet
+> -  has been added, it can be selected by it's aid, and then commands will be
+> +  has been added, it can be selected by its aid, and then commands will be
+>    routed to it VCardProcessAPDU function. This function adopts the applet the
+>    passed int applet. Note: 2 applets with the same AID should not be added to
+> -  the same card. It's permissible to add more than one applet. Multiple applets
+> +  the same card. It is permissible to add more than one applet. Multiple applets
+>    may have the same VCardPRocessAPDU entry point.
+>  
+>  The certs and keys should be attached to private data associated with one or
+> @@ -335,7 +335,7 @@ and applet.
+>           VCard7816Status vcard_emul_login(VCard *card, unsigned char *pin,
+>                                            int pin_len);
+>  
+> -    This function logins into the card and return the standard 7816 status
+> +    This function logs into the card and returns the standard 7816 status
+>      word depending on the success or failure of the call.
+>  
+>           void vcard_emul_delete_key(VCardKey *key);
+> @@ -424,7 +424,7 @@ functions:
+>        cert_len, and keys are all arrays of length cert_count. These are the
+>        the same of the parameters xxxx_card_init() accepts.
+>  
+> -   Finally the card is associated with it's reader by the call:
+> +   Finally the card is associated with its reader by the call:
+>  
+>              VReaderStatus vreader_insert_card(VReader *vreader, VCard *vcard);
+>  
+> -- 
+> 1.7.9
+> 
+> 
 
