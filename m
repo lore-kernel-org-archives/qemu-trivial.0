@@ -1,46 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S1jJ0-0007Qz-2t
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Feb 2012 13:58:46 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:53148)
+	id 1S1jPK-0008Pg-2m
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Feb 2012 14:05:18 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:40523)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1S1jIw-0007Ey-PD
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 13:58:44 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1S1jPG-0008D4-3N
+	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 14:05:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1S1jIv-0007LZ-KI
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 13:58:42 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59945)
+	(envelope-from <stefan@weilnetz.de>) id 1S1jPE-0008QZ-Nl
+	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 14:05:13 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:34093)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1S1jIs-0007LG-Sv; Sun, 26 Feb 2012 13:58:39 -0500
+	(envelope-from <stefan@weilnetz.de>)
+	id 1S1jPB-0008Q0-3N; Sun, 26 Feb 2012 14:05:09 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	EABFE728009A; Sun, 26 Feb 2012 19:58:37 +0100 (CET)
+	313387280013; Sun, 26 Feb 2012 20:05:08 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id wdwvyFP5bsvt; Sun, 26 Feb 2012 19:58:37 +0100 (CET)
-Received: from [192.168.178.20] (p5086FEE3.dip.t-dialin.net [80.134.254.227])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	133017280013; Sun, 26 Feb 2012 19:58:37 +0100 (CET)
-Message-ID: <4F4A80DC.6000106@weilnetz.de>
-Date: Sun, 26 Feb 2012 19:58:36 +0100
+	with ESMTP id hGI1qYsDfftE; Sun, 26 Feb 2012 20:05:07 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 019BE728009A; Sun, 26 Feb 2012 20:05:06 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US;
-	rv:1.9.2.27) Gecko/20120216 Thunderbird/3.1.19
-MIME-Version: 1.0
-To: Anthony Liguori <anthony@codemonkey.ws>
-References: <1330263596-4988-1-git-send-email-sw@weilnetz.de>
-	<4F4A6041.5060102@codemonkey.ws>
-In-Reply-To: <4F4A6041.5060102@codemonkey.ws>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
+To: QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Sun, 26 Feb 2012 20:04:55 +0100
+Message-Id: <1330283095-19363-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.9
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 78.47.199.172
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix spelling in comments
-	(iff -> if)
+Cc: Stefan Weil <sw@weilnetz.de>, Alon Levy <alevy@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH v2] libcacard: Spelling and grammar fixes in
+	documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,65 +45,124 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Feb 2012 18:58:44 -0000
+X-List-Received-Date: Sun, 26 Feb 2012 19:05:15 -0000
 
-Am 26.02.2012 17:39, schrieb Anthony Liguori:
-> On 02/26/2012 07:39 AM, Stefan Weil wrote:
->> Signed-off-by: Stefan Weil<sw@weilnetz.de>
->> ---
->>   a.out.h                |    2 +-
->>   arm-dis.c              |   22 +++++++++++-----------
->>   block.c                |    2 +-
->>   block/qcow2-refcount.c |    4 ++--
->>   hw/alpha_typhoon.c     |    2 +-
->>   hw/hid.h               |    2 +-
->>   hw/pcnet.c             |    2 +-
->>   m68k-dis.c             |    4 ++--
->>   memory.h               |    4 ++--
->>   monitor.c              |    2 +-
->>   net/socket.c           |    2 +-
->>   qemu-img.c             |    2 +-
->>   tcg/hppa/tcg-target.c  |    6 +++---
->>   13 files changed, 28 insertions(+), 28 deletions(-)
->>
->> diff --git a/a.out.h b/a.out.h
->> index 33ca7f7..7ea8d5a 100644
->> --- a/a.out.h
->> +++ b/a.out.h
->> @@ -136,7 +136,7 @@ struct external_scnhdr {
->>    */
->>   struct external_lineno {
->>     union {
->> -    host_ulong l_symndx; /* function name symbol index, iff l_lnno 0 */
->
-> I don't know if this is the intention but this may be short hand for 
-> 'if and only if'.  I do use this short hand quite a bit myself.
->
-> http://en.wikipedia.org/wiki/If_and_only_if
->
-> Regards,
->
-> Anthony Liguori
+* it's -> its
 
-Thank you for this information which was new for me.
+* it's -> it is (that's no fix, but makes future checks easier)
 
-I reviewed my own patch, and there are indeed some 'iff' which might
-be used for 'if and only if'. Others cannot have this meaning because
-there are several alternatives with the same result. For the
-description of function return values 'if and only if' also looks strange.
-Some comments just translate an if statement in text.
-Here 'if and only if' would not match the C code which only says 'if'.
+* this functions -> this function
 
-I'll send new patches for these different categories, then it will
-be easier to accept or reject them.
+* replacable -> replaceable
 
-Many authors regard "iff" as unsuitable in formal writing
-(citation from Wikipedia).Personally, I'd also prefer to see
-'if and only if' in full length or in symbolic notation (<==>)
-when this is the intention, not an abbreviation like 'iff'.
+* reader's -> readers
 
-Regards,
+* logins into -> logs into
 
-Stefan Weil
+v2:
+Also replace 'aid' by 'AID' (thanks to Peter Maydell for this hint).
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ docs/libcacard.txt |   22 +++++++++++-----------
+ 1 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/docs/libcacard.txt b/docs/libcacard.txt
+index f7d7519..1772733 100644
+--- a/docs/libcacard.txt
++++ b/docs/libcacard.txt
+@@ -10,7 +10,7 @@ such as signing, card removal/insertion, etc. are mapped to real, physical
+ cards which are shared with the client machine the emulator is running on, or
+ the cards could be pure software constructs.
+ 
+-The emulator is structured to allow multiple replacable or additional pieces,
++The emulator is structured to allow multiple replaceable or additional pieces,
+ so it can be easily modified for future requirements. The primary envisioned
+ modifications are:
+ 
+@@ -32,7 +32,7 @@ be emulated as well, including PIV, newer versions of CAC, PKCS #15, etc.
+ --------------------
+ Replacing the Socket Based Virtual Reader Interface.
+ 
+-The current implementation contains a replacable module vscclient.c. The
++The current implementation contains a replaceable module vscclient.c. The
+ current vscclient.c implements a sockets interface to the virtual ccid reader
+ on the guest. CCID commands that are pertinent to emulation are passed
+ across the socket, and their responses are passed back along that same socket.
+@@ -42,7 +42,7 @@ implements a program with a main entry. It also handles argument parsing for
+ the emulator.
+ 
+ An application that wants to use the virtual reader can replace vscclient.c
+-with it's own implementation that connects to it's own CCID reader.  The calls
++with its own implementation that connects to its own CCID reader.  The calls
+ that the CCID reader can call are:
+ 
+       VReaderList * vreader_get_reader_list();
+@@ -72,12 +72,12 @@ that the CCID reader can call are:
+       VReader * vreader_list_get_reader(VReaderListEntry *)
+ 
+   This function returns the reader stored in the reader List entry. Caller gets
+-  a new reference to a reader. The caller must free it's reference when it is
++  a new reference to a reader. The caller must free its reference when it is
+   finished with vreader_free().
+ 
+       void vreader_free(VReader *reader);
+ 
+-   This function frees a reference to a reader. Reader's are reference counted
++   This function frees a reference to a reader. Readers are reference counted
+    and are automatically deleted when the last reference is freed.
+ 
+       void vreader_list_delete(VReaderList *list);
+@@ -87,7 +87,7 @@ that the CCID reader can call are:
+ 
+       VReaderStatus vreader_power_on(VReader *reader, char *atr, int *len);
+ 
+-  This functions simulates a card power on. Virtual cards do not care about
++  This function simulates a card power on. A virtual card does not care about
+   the actual voltage and other physical parameters, but it does care that the
+   card is actually on or off. Cycling the card causes the card to reset. If
+   the caller provides enough space, vreader_power_on will return the ATR of
+@@ -104,7 +104,7 @@ that the CCID reader can call are:
+                                        unsigned char *receive_buf,
+                                        int receive_buf_len);
+ 
+-  This functions send a raw apdu to a card and returns the card's response.
++  This function sends a raw apdu to a card and returns the card's response.
+   The CCID front end should return the response back. Most of the emulation
+   is driven from these APDUs.
+ 
+@@ -217,10 +217,10 @@ the card using the following functions:
+          VCardStatus vcard_add_applet(VCard *card, VCardApplet *applet);
+ 
+   Add an applet onto the list of applets attached to the card. Once an applet
+-  has been added, it can be selected by it's aid, and then commands will be
++  has been added, it can be selected by its AID, and then commands will be
+   routed to it VCardProcessAPDU function. This function adopts the applet the
+   passed int applet. Note: 2 applets with the same AID should not be added to
+-  the same card. It's permissible to add more than one applet. Multiple applets
++  the same card. It is permissible to add more than one applet. Multiple applets
+   may have the same VCardPRocessAPDU entry point.
+ 
+ The certs and keys should be attached to private data associated with one or
+@@ -335,7 +335,7 @@ and applet.
+          VCard7816Status vcard_emul_login(VCard *card, unsigned char *pin,
+                                           int pin_len);
+ 
+-    This function logins into the card and return the standard 7816 status
++    This function logs into the card and returns the standard 7816 status
+     word depending on the success or failure of the call.
+ 
+          void vcard_emul_delete_key(VCardKey *key);
+@@ -424,7 +424,7 @@ functions:
+       cert_len, and keys are all arrays of length cert_count. These are the
+       the same of the parameters xxxx_card_init() accepts.
+ 
+-   Finally the card is associated with it's reader by the call:
++   Finally the card is associated with its reader by the call:
+ 
+             VReaderStatus vreader_insert_card(VReader *vreader, VCard *vcard);
+ 
+-- 
+1.7.9
 
 
