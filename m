@@ -1,54 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S1kIJ-0004IG-Qp
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Feb 2012 15:02:07 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:49990)
+	id 1S283c-0005J9-Rd
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Feb 2012 16:24:32 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:42764)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1S1kIG-0004Gj-B3
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 15:02:05 -0500
+	(envelope-from <alevy@redhat.com>) id 1S283Y-0005Ic-WB
+	for qemu-trivial@nongnu.org; Mon, 27 Feb 2012 16:24:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1S1kIE-0000kn-6j
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 15:02:04 -0500
-Received: from mail-pz0-f45.google.com ([209.85.210.45]:37329)
+	(envelope-from <alevy@redhat.com>) id 1S283U-0006Fw-Fh
+	for qemu-trivial@nongnu.org; Mon, 27 Feb 2012 16:24:28 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:34378)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1S1kIE-0000kD-0r
-	for qemu-trivial@nongnu.org; Sun, 26 Feb 2012 15:02:02 -0500
-Received: by dadp14 with SMTP id p14so5368323dad.4
-	for <qemu-trivial@nongnu.org>; Sun, 26 Feb 2012 12:02:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of anthony@codemonkey.ws designates
-	10.68.189.100 as permitted sender) client-ip=10.68.189.100; 
-Authentication-Results: mr.google.com;
-	spf=pass (google.com: domain of anthony@codemonkey.ws
-	designates 10.68.189.100 as permitted sender)
-	smtp.mail=anthony@codemonkey.ws
-Received: from mr.google.com ([10.68.189.100])
-	by 10.68.189.100 with SMTP id gh4mr7168834pbc.106.1330286520151
-	(num_hops = 1); Sun, 26 Feb 2012 12:02:00 -0800 (PST)
-Received: by 10.68.189.100 with SMTP id gh4mr6340412pbc.106.1330286519956;
-	Sun, 26 Feb 2012 12:01:59 -0800 (PST)
-Received: from [192.168.0.104] (cpe-70-123-132-139.austin.res.rr.com.
-	[70.123.132.139])
-	by mx.google.com with ESMTPS id e3sm10430360pbr.15.2012.02.26.12.01.57
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 26 Feb 2012 12:01:58 -0800 (PST)
-Message-ID: <4F4A8FB4.1060207@codemonkey.ws>
-Date: Sun, 26 Feb 2012 14:01:56 -0600
-From: Anthony Liguori <anthony@codemonkey.ws>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.23) Gecko/20110922 Lightning/1.0b2 Thunderbird/3.1.15
+	(envelope-from <alevy@redhat.com>)
+	id 1S283U-0006Fc-6y; Mon, 27 Feb 2012 16:24:24 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q1RLOLn8020761
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 27 Feb 2012 16:24:21 -0500
+Received: from garlic.redhat.com (vpn-200-51.tlv.redhat.com [10.35.200.51])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q1RLOFma023192
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Mon, 27 Feb 2012 16:24:18 -0500
+Date: Mon, 27 Feb 2012 23:24:14 +0200
+From: Alon Levy <alevy@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20120227212414.GQ7395@garlic.redhat.com>
+Mail-Followup-To: Peter Maydell <peter.maydell@linaro.org>,
+	Stefan Weil <sw@weilnetz.de>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+References: <1330263021-1339-1-git-send-email-sw@weilnetz.de>
+	<CAFEAcA_82UCPWVukhAWcxGjeRQfkb+_E7OOdx8fh9y-6Ya_OMg@mail.gmail.com>
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1330263596-4988-1-git-send-email-sw@weilnetz.de>	<4F4A6041.5060102@codemonkey.ws>
-	<4F4A80DC.6000106@weilnetz.de>
-In-Reply-To: <4F4A80DC.6000106@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Gm-Message-State: ALoCoQnXY0ss5cdSCv52DqDzeW1I2M520Qd/zPptyrXhjoaUN8bWBrQItoc9mY1WJGWiLY/FrLsT
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_82UCPWVukhAWcxGjeRQfkb+_E7OOdx8fh9y-6Ya_OMg@mail.gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	q1RLOLn8020761
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.210.45
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix spelling in comments
-	(iff -> if)
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libcacard: Spelling and
+ grammar fixes in documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,75 +58,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Feb 2012 20:02:05 -0000
+X-List-Received-Date: Mon, 27 Feb 2012 21:24:31 -0000
 
-On 02/26/2012 12:58 PM, Stefan Weil wrote:
-> Am 26.02.2012 17:39, schrieb Anthony Liguori:
->> On 02/26/2012 07:39 AM, Stefan Weil wrote:
->>> Signed-off-by: Stefan Weil<sw@weilnetz.de>
->>> ---
->>> a.out.h | 2 +-
->>> arm-dis.c | 22 +++++++++++-----------
->>> block.c | 2 +-
->>> block/qcow2-refcount.c | 4 ++--
->>> hw/alpha_typhoon.c | 2 +-
->>> hw/hid.h | 2 +-
->>> hw/pcnet.c | 2 +-
->>> m68k-dis.c | 4 ++--
->>> memory.h | 4 ++--
->>> monitor.c | 2 +-
->>> net/socket.c | 2 +-
->>> qemu-img.c | 2 +-
->>> tcg/hppa/tcg-target.c | 6 +++---
->>> 13 files changed, 28 insertions(+), 28 deletions(-)
->>>
->>> diff --git a/a.out.h b/a.out.h
->>> index 33ca7f7..7ea8d5a 100644
->>> --- a/a.out.h
->>> +++ b/a.out.h
->>> @@ -136,7 +136,7 @@ struct external_scnhdr {
->>> */
->>> struct external_lineno {
->>> union {
->>> - host_ulong l_symndx; /* function name symbol index, iff l_lnno 0 */
->>
->> I don't know if this is the intention but this may be short hand for 'if and
->> only if'. I do use this short hand quite a bit myself.
->>
->> http://en.wikipedia.org/wiki/If_and_only_if
->>
->> Regards,
->>
->> Anthony Liguori
->
-> Thank you for this information which was new for me.
->
-> I reviewed my own patch, and there are indeed some 'iff' which might
-> be used for 'if and only if'. Others cannot have this meaning because
-> there are several alternatives with the same result. For the
-> description of function return values 'if and only if' also looks strange.
-> Some comments just translate an if statement in text.
-> Here 'if and only if' would not match the C code which only says 'if'.
->
-> I'll send new patches for these different categories, then it will
-> be easier to accept or reject them.
->
-> Many authors regard "iff" as unsuitable in formal writing
-> (citation from Wikipedia).Personally, I'd also prefer to see
-> 'if and only if' in full length or in symbolic notation (<==>)
-> when this is the intention, not an abbreviation like 'iff'.
+On Sun, Feb 26, 2012 at 06:18:04PM +0000, Peter Maydell wrote:
+> On 26 February 2012 13:30, Stefan Weil <sw@weilnetz.de> wrote:
+> > @@ -217,10 +217,10 @@ the card using the following functions:
+> > =A0 =A0 =A0 =A0 =A0VCardStatus vcard_add_applet(VCard *card, VCardApp=
+let *applet);
+> >
+> > =A0 Add an applet onto the list of applets attached to the card. Once=
+ an applet
+> > - =A0has been added, it can be selected by it's aid, and then command=
+s will be
+> > + =A0has been added, it can be selected by its aid, and then commands=
+ will be
+>=20
+> While you're changing this line, it looks like 'aid' here should be 'AI=
+D'
+> (it is capitalised elsewhere in the doc except where referring to a fun=
+ction
+> parameter name).
+>=20
+> > =A0 routed to it VCardProcessAPDU function. This function adopts the =
+applet the
+> > =A0 passed int applet.
+>=20
+> The sentence "This function..." clearly needs correcting as it doesn't
+> make much sense as it stands, but I'm not sure what it should be change=
+d to.
 
-Yup, just pointing out that in some cases it may be intentional.
+Asked Robert Relyea (rrelyea@redhat.com - I guess he should be in
+MAINTAINERS, although he is not..) and the answer was:
+ This function adopts the applet that is passed into it.
 
-Regards,
-
-Anthony Liguori
-
->
-> Regards,
->
-> Stefan Weil
->
->
-
+>=20
+> > Note: 2 applets with the same AID should not be added to
+> > - =A0the same card. It's permissible to add more than one applet. Mul=
+tiple applets
+> > + =A0the same card. It is permissible to add more than one applet. Mu=
+ltiple applets
+> > =A0 may have the same VCardPRocessAPDU entry point.
+>=20
+> -- PMM
+>=20
 
