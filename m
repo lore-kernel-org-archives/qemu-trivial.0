@@ -1,40 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S28a7-00012N-Tg
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Feb 2012 16:58:07 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:34861)
+	id 1S2Tqj-0008Ch-Aj
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2012 15:40:41 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:48826)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1S28a1-0000jr-SL
-	for qemu-trivial@nongnu.org; Mon, 27 Feb 2012 16:58:06 -0500
+	(envelope-from <lcapitulino@redhat.com>) id 1S2Tqd-0008BA-CU
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2012 15:40:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1S28Zz-0002yc-PK
-	for qemu-trivial@nongnu.org; Mon, 27 Feb 2012 16:58:01 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59801)
+	(envelope-from <lcapitulino@redhat.com>) id 1S2Tqb-0007DC-5t
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2012 15:40:34 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:32134)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1S28ZZ-0002wI-AU; Mon, 27 Feb 2012 16:57:33 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	B5F8E7280013; Mon, 27 Feb 2012 22:57:30 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id s9z1dZHhGQdd; Mon, 27 Feb 2012 22:57:26 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 3F5AD728009A; Mon, 27 Feb 2012 22:57:26 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: QEMU Trivial <qemu-trivial@nongnu.org>
-Date: Mon, 27 Feb 2012 22:57:24 +0100
-Message-Id: <1330379844-30735-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.9
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1S2Tqa-0007D4-Te; Tue, 28 Feb 2012 15:40:33 -0500
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q1SKeSJ3031938
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 28 Feb 2012 15:40:28 -0500
+Received: from doriath.home (ovpn-113-165.phx2.redhat.com [10.3.113.165])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q1SKeOVc032308; Tue, 28 Feb 2012 15:40:27 -0500
+Date: Tue, 28 Feb 2012 17:34:55 -0300
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120228173455.46736c6b@doriath.home>
+In-Reply-To: <1330174030-21373-2-git-send-email-sw@weilnetz.de>
+References: <1330174030-21373-1-git-send-email-sw@weilnetz.de>
+	<1330174030-21373-2-git-send-email-sw@weilnetz.de>
+Organization: Red Hat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
-	Alon Levy <alevy@redhat.com>, qemu-devel@nongnu.org,
-	Robert Relyea <rrelyea@redhat.com>
-Subject: [Qemu-trivial] [PATCH v3] libcacard: Spelling and grammar fixes in
-	documentation
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp: Fix spelling fourty ->
+	forty
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,132 +49,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Feb 2012 21:58:06 -0000
+X-List-Received-Date: Tue, 28 Feb 2012 20:40:39 -0000
 
-* it's -> its
+On Sat, 25 Feb 2012 13:47:10 +0100
+Stefan Weil <sw@weilnetz.de> wrote:
 
-* it's -> it is (that's no fix, but makes future checks easier)
+> This was found by codespell.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-* this functions -> this function
+Acked-by: Luiz Capitulino <lcapitulino@redhat.com>
 
-* replacable -> replaceable
-
-* reader's -> readers
-
-* logins into -> logs into
-
-v2:
-Also replace 'aid' by 'AID' (thanks to Peter Maydell for this hint).
-
-v3:
-Fix sentence (contributed by Alon Levy / Robert Relyea).
-
-Cc: Alon Levy <alevy@redhat.com>
-Cc: Robert Relyea <rrelyea@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- docs/libcacard.txt |   26 +++++++++++++-------------
- 1 files changed, 13 insertions(+), 13 deletions(-)
-
-diff --git a/docs/libcacard.txt b/docs/libcacard.txt
-index f7d7519..8db421d 100644
---- a/docs/libcacard.txt
-+++ b/docs/libcacard.txt
-@@ -10,7 +10,7 @@ such as signing, card removal/insertion, etc. are mapped to real, physical
- cards which are shared with the client machine the emulator is running on, or
- the cards could be pure software constructs.
- 
--The emulator is structured to allow multiple replacable or additional pieces,
-+The emulator is structured to allow multiple replaceable or additional pieces,
- so it can be easily modified for future requirements. The primary envisioned
- modifications are:
- 
-@@ -32,7 +32,7 @@ be emulated as well, including PIV, newer versions of CAC, PKCS #15, etc.
- --------------------
- Replacing the Socket Based Virtual Reader Interface.
- 
--The current implementation contains a replacable module vscclient.c. The
-+The current implementation contains a replaceable module vscclient.c. The
- current vscclient.c implements a sockets interface to the virtual ccid reader
- on the guest. CCID commands that are pertinent to emulation are passed
- across the socket, and their responses are passed back along that same socket.
-@@ -42,7 +42,7 @@ implements a program with a main entry. It also handles argument parsing for
- the emulator.
- 
- An application that wants to use the virtual reader can replace vscclient.c
--with it's own implementation that connects to it's own CCID reader.  The calls
-+with its own implementation that connects to its own CCID reader.  The calls
- that the CCID reader can call are:
- 
-       VReaderList * vreader_get_reader_list();
-@@ -72,12 +72,12 @@ that the CCID reader can call are:
-       VReader * vreader_list_get_reader(VReaderListEntry *)
- 
-   This function returns the reader stored in the reader List entry. Caller gets
--  a new reference to a reader. The caller must free it's reference when it is
-+  a new reference to a reader. The caller must free its reference when it is
-   finished with vreader_free().
- 
-       void vreader_free(VReader *reader);
- 
--   This function frees a reference to a reader. Reader's are reference counted
-+   This function frees a reference to a reader. Readers are reference counted
-    and are automatically deleted when the last reference is freed.
- 
-       void vreader_list_delete(VReaderList *list);
-@@ -87,7 +87,7 @@ that the CCID reader can call are:
- 
-       VReaderStatus vreader_power_on(VReader *reader, char *atr, int *len);
- 
--  This functions simulates a card power on. Virtual cards do not care about
-+  This function simulates a card power on. A virtual card does not care about
-   the actual voltage and other physical parameters, but it does care that the
-   card is actually on or off. Cycling the card causes the card to reset. If
-   the caller provides enough space, vreader_power_on will return the ATR of
-@@ -104,7 +104,7 @@ that the CCID reader can call are:
-                                        unsigned char *receive_buf,
-                                        int receive_buf_len);
- 
--  This functions send a raw apdu to a card and returns the card's response.
-+  This function sends a raw apdu to a card and returns the card's response.
-   The CCID front end should return the response back. Most of the emulation
-   is driven from these APDUs.
- 
-@@ -217,10 +217,10 @@ the card using the following functions:
-          VCardStatus vcard_add_applet(VCard *card, VCardApplet *applet);
- 
-   Add an applet onto the list of applets attached to the card. Once an applet
--  has been added, it can be selected by it's aid, and then commands will be
--  routed to it VCardProcessAPDU function. This function adopts the applet the
--  passed int applet. Note: 2 applets with the same AID should not be added to
--  the same card. It's permissible to add more than one applet. Multiple applets
-+  has been added, it can be selected by its AID, and then commands will be
-+  routed to it VCardProcessAPDU function. This function adopts the applet that
-+  is passed into it. Note: 2 applets with the same AID should not be added to
-+  the same card. It is permissible to add more than one applet. Multiple applets
-   may have the same VCardPRocessAPDU entry point.
- 
- The certs and keys should be attached to private data associated with one or
-@@ -335,7 +335,7 @@ and applet.
-          VCard7816Status vcard_emul_login(VCard *card, unsigned char *pin,
-                                           int pin_len);
- 
--    This function logins into the card and return the standard 7816 status
-+    This function logs into the card and returns the standard 7816 status
-     word depending on the success or failure of the call.
- 
-          void vcard_emul_delete_key(VCardKey *key);
-@@ -424,7 +424,7 @@ functions:
-       cert_len, and keys are all arrays of length cert_count. These are the
-       the same of the parameters xxxx_card_init() accepts.
- 
--   Finally the card is associated with it's reader by the call:
-+   Finally the card is associated with its reader by the call:
- 
-             VReaderStatus vreader_insert_card(VReader *vreader, VCard *vcard);
- 
--- 
-1.7.9
+> ---
+>  test-qmp-output-visitor.c |    4 ++--
+>  1 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/test-qmp-output-visitor.c b/test-qmp-output-visitor.c
+> index c94c208..5452cd4 100644
+> --- a/test-qmp-output-visitor.c
+> +++ b/test-qmp-output-visitor.c
+> @@ -221,8 +221,8 @@ static void test_visitor_out_struct_nested(TestOutputVisitorData *data,
+>      QObject *obj;
+>      QDict *qdict, *dict1, *dict2, *dict3, *userdef;
+>      const char *string = "user def string";
+> -    const char *strings[] = { "fourty two", "fourty three", "fourty four",
+> -                              "fourty five" };
+> +    const char *strings[] = { "forty two", "forty three", "forty four",
+> +                              "forty five" };
+>  
+>      ud2 = g_malloc0(sizeof(*ud2));
+>      ud2->string0 = g_strdup(strings[0]);
 
 
