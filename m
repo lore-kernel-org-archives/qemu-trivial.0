@@ -1,45 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S33cE-0000th-MY
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Mar 2012 05:52:06 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:52296)
+	id 1S3tCo-0004k0-LH
+	for mharc-qemu-trivial@gnu.org; Sat, 03 Mar 2012 12:57:18 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:51743)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1S33c7-0000Xl-Iq
-	for qemu-trivial@nongnu.org; Thu, 01 Mar 2012 05:52:05 -0500
+	(envelope-from <blauwirbel@gmail.com>) id 1S3tCl-0004ak-Gq
+	for qemu-trivial@nongnu.org; Sat, 03 Mar 2012 12:57:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1S33c1-0007mr-GE
-	for qemu-trivial@nongnu.org; Thu, 01 Mar 2012 05:51:59 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:6146)
+	(envelope-from <blauwirbel@gmail.com>) id 1S3tCj-0005OZ-Mu
+	for qemu-trivial@nongnu.org; Sat, 03 Mar 2012 12:57:15 -0500
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:62917)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1S33bE-0007fH-TO; Thu, 01 Mar 2012 05:51:05 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q21Ap1Nw017989
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 1 Mar 2012 05:51:01 -0500
-Received: from rincewind.home.kraxel.org (ovpn-116-38.ams2.redhat.com
-	[10.36.116.38])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q21Aow4T019739; Thu, 1 Mar 2012 05:50:59 -0500
-Message-ID: <4F4F5491.6030400@redhat.com>
-Date: Thu, 01 Mar 2012 11:50:57 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:10.0.1) Gecko/20120216 Thunderbird/10.0.1
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1S3tCf-0005Nc-PD; Sat, 03 Mar 2012 12:57:09 -0500
+Received: by iafj26 with SMTP id j26so3980672iaf.4
+	for <multiple recipients>; Sat, 03 Mar 2012 09:57:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	bh=vmvHZ4V90FfKHoJ8P+0tbMBpZqxpvKol84shfc+zoKE=;
+	b=GwQbHv8H2+U1TT2MsolaeGq1f9fSNksx9kc7JTB8Q8pay3vSr3BAfie/SHvYP7ue9m
+	WChYlEQDkms1PoxXKUVDiCYvC6f7uhMFVezutpxUDLfMZohlYJsbXGEV8bOCtekaz3WS
+	viI8uXmENT8Aq8BL/q0lKKDxrw9neG1t4tw2DE2yxfU2cw7fcRTDldj3hJglcUdJD8mx
+	jhRkf5Tl5L1AFKq83Yxq/dRDgwlXn8KAyB9+i2/wl975Jtqqdz8yCK6QiWwdoUNdXytL
+	ltfdeXYgqugPk4Lp4KBzeNyLH2020YgqFP9LX70OL1z3jdttnOSBxLAdHrsZhTQUqxMi
+	dxPQ==
+Received: by 10.50.77.231 with SMTP id v7mr1831729igw.24.1330797427197; Sat,
+	03 Mar 2012 09:57:07 -0800 (PST)
 MIME-Version: 1.0
-To: Jan Kiszka <jan.kiszka@siemens.com>
-References: <4F4F44D6.2020907@siemens.com>
+Received: by 10.50.22.40 with HTTP; Sat, 3 Mar 2012 09:56:47 -0800 (PST)
 In-Reply-To: <4F4F44D6.2020907@siemens.com>
-X-Enigmail-Version: 1.3.5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+References: <4F4F44D6.2020907@siemens.com>
+From: Blue Swirl <blauwirbel@gmail.com>
+Date: Sat, 3 Mar 2012 17:56:47 +0000
+Message-ID: <CAAu8pHt3CxDTqh-HJjE=z4LO1hg6WZqcqu0e=r8bzsySv3q8vw@mail.gmail.com>
+To: Jan Kiszka <jan.kiszka@siemens.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Roy Tam <roytam@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH] usb: Fix signature of stub
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Roy Tam <roytam@gmail.com>,
+	qemu-devel <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] usb: Fix signature of stub
 	usb_host_device_open
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -52,14 +54,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Mar 2012 10:52:05 -0000
+X-List-Received-Date: Sat, 03 Mar 2012 17:57:17 -0000
 
-On 03/01/12 10:43, Jan Kiszka wrote:
+Thanks, applied.
+
+On Thu, Mar 1, 2012 at 09:43, Jan Kiszka <jan.kiszka@siemens.com> wrote:
+> This was a breakage of 3741715cf2.
+>
+> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> ---
+> =C2=A0usb-stub.c | =C2=A0 =C2=A02 +-
+> =C2=A01 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/usb-stub.c b/usb-stub.c
+> index 9c3fcea..b4e10c1 100644
+> --- a/usb-stub.c
+> +++ b/usb-stub.c
+> @@ -41,7 +41,7 @@ void usb_host_info(Monitor *mon)
+> =C2=A0}
+>
+> =C2=A0/* XXX: modify configure to compile the right host driver */
 > -USBDevice *usb_host_device_open(const char *devname)
 > +USBDevice *usb_host_device_open(USBBus *bus, const char *devname)
-
-Acked-by: Gerd Hoffmann <kraxel@redhat.com>
-
-cheers,
-  Gerd
+> =C2=A0{
+> =C2=A0 =C2=A0 return NULL;
+> =C2=A0}
+> --
+> 1.7.3.4
+>
 
