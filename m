@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S5Epg-0000ap-5F
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2012 06:15:00 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:60451)
+	id 1S5Eqj-0000n2-O7
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2012 06:16:05 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:60717)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1S5EpG-0000ZP-QJ
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 06:14:58 -0500
+	(envelope-from <stefanha@gmail.com>) id 1S5EqL-0000iw-BU
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 06:16:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1S5Ep9-00081C-US
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 06:14:34 -0500
-Received: from mail-ww0-f53.google.com ([74.125.82.53]:53048)
+	(envelope-from <stefanha@gmail.com>) id 1S5EqE-0008S1-Sz
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 06:15:40 -0500
+Received: from mail-we0-f173.google.com ([74.125.82.173]:34477)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1S5Ep9-0007yH-Lw
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 06:14:27 -0500
-Received: by wgbfm10 with SMTP id fm10so4206149wgb.10
-	for <qemu-trivial@nongnu.org>; Wed, 07 Mar 2012 03:14:25 -0800 (PST)
+	(envelope-from <stefanha@gmail.com>) id 1S5EqE-0008Oy-HB
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 06:15:34 -0500
+Received: by werp12 with SMTP id p12so4603121wer.4
+	for <qemu-trivial@nongnu.org>; Wed, 07 Mar 2012 03:15:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=Of1k7KwzPWsR04rLBFZmMgeAJZniuW/wwZKVtzVhtGk=;
-	b=z+cfyP8APGQrHfWF6KJNN0CEMCGtOAxOHNAEr3+QbKVEdpDknRybSkU+268ieoQ/cY
-	egODO82MwkdMSAW7uK8jYxuGwWbnDNXu3G3MzuxB1/evWgtfYk1iAupwQublBLvrbaOW
-	EOKDJekPaAKu+Ss+Q/vCWK2frO5PS1cVTgehkH24dtzGA9YrFhXRLhCKrdk8DU25IE4Z
-	1ORSzhIj9GKVzRDNW3qi1M+j7je9EBHMRMHYzmbUvcPQ0xTDfH1wwQXFl2Y3GTXRul54
-	qWrZf0EmP6cROdvvfV9Ad4fvN1IWjAyE63UnWbXxm1/qYJjq5iOFFkUEfbEkWnRWvpSN
-	oImg==
-Received: by 10.180.87.100 with SMTP id w4mr2977076wiz.22.1331118865626;
-	Wed, 07 Mar 2012 03:14:25 -0800 (PST)
+	bh=cb4iN86qQ+AjQEsaMXnrqBxV8BvGIQqVWFFAoxlEbPs=;
+	b=L8J+azk6rJLQJxdtoI9aXBLEU2xcsbJphvJfS/SulZRriH/p9ww8O2zFc3PGOTNNbA
+	njGJKNmWlKwQq+PSDlBmyaB1dzZIXTtJV34BfMTsrOQHhIDwyOPZikGjcbn2GhByXvBZ
+	UMoH/UmvO/llz8GHuh9OO/Tlwr1vyJb6lX01mxjMzKSlkBIv50AmbgORwLnxFfEQUdVn
+	A1ULXsNunwqbq2rrTxZK7hzEws1veBTLjUmDD5e8f/C6K2kjcLuFOCzas2f2SktxRTda
+	qo+T78VozArYh71m/Giq29wWGt9VhK791cv9Hpa3RtpO3JLksw9WV+jVrI1bX8To1cp+
+	opkw==
+Received: by 10.180.78.130 with SMTP id b2mr25563606wix.1.1331118932425;
+	Wed, 07 Mar 2012 03:15:32 -0800 (PST)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id fl2sm93704406wib.4.2012.03.07.03.14.24
+	by mx.google.com with ESMTPS id t20sm34619163wiv.0.2012.03.07.03.15.31
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 07 Mar 2012 03:14:25 -0800 (PST)
-Date: Wed, 7 Mar 2012 11:14:22 +0000
+	Wed, 07 Mar 2012 03:15:31 -0800 (PST)
+Date: Wed, 7 Mar 2012 11:15:29 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Chen Yufei <cyfdecyf@gmail.com>
-Message-ID: <20120307111422.GA314@stefanha-thinkpad.localdomain>
+Message-ID: <20120307111529.GA1754@stefanha-thinkpad.localdomain>
 References: <y>
  <1331040285-17807-1-git-send-email-cyfdecyf@gmail.com>
 MIME-Version: 1.0
@@ -43,7 +43,7 @@ In-Reply-To: <1331040285-17807-1-git-send-email-cyfdecyf@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.53
+X-Received-From: 74.125.82.173
 Cc: qemu-trivial@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH] Remove type field in ModuleEntry as it's
  not used.
@@ -58,15 +58,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Mar 2012 11:14:58 -0000
+X-List-Received-Date: Wed, 07 Mar 2012 11:16:04 -0000
 
 On Tue, Mar 06, 2012 at 09:24:45PM +0800, Chen Yufei wrote:
 > ---
 >  module.c |    1 -
 >  1 files changed, 0 insertions(+), 1 deletions(-)
 
-Please add your Signed-off-by: line.  For more info see
-http://wiki.qemu.org/Contribute/SubmitAPatch.
-
-Otherwise it looks fine.
+I forgot to mention, please CC qemu-devel@nongnu.org.  All QEMU patches
+should be on that list, qemu-trivial allows you to request that the
+patch is merged through the trivial tree, but everything still needs to
+be on qemu-devel.
 
