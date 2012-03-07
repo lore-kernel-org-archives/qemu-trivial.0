@@ -1,47 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S5KVB-0008NN-3V
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2012 12:18:13 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:39295)
+	id 1S5KZ2-0002RH-H6
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2012 12:22:12 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:50087)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1S5KV4-0008N2-N8
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:18:12 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1S5KYd-0001kq-8d
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:22:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1S5KUu-0002Kr-Pu
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:18:06 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:2432)
+	(envelope-from <peter.maydell@linaro.org>) id 1S5KYY-0003XD-Kn
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:21:46 -0500
+Received: from mail-gy0-f173.google.com ([209.85.160.173]:46139)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1S5KUu-0002Kf-H6; Wed, 07 Mar 2012 12:17:56 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q27HHqNL014937
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 7 Mar 2012 12:17:52 -0500
-Received: from [10.3.113.123] (ovpn-113-123.phx2.redhat.com [10.3.113.123])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id q27HHop7025309; Wed, 7 Mar 2012 12:17:51 -0500
-Message-ID: <4F579838.8050701@redhat.com>
-Date: Wed, 07 Mar 2012 10:17:44 -0700
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:10.0.1) Gecko/20120216 Thunderbird/10.0.1
+	(envelope-from <peter.maydell@linaro.org>) id 1S5KYY-0003Wo-GX
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:21:42 -0500
+Received: by ghrr14 with SMTP id r14so3591017ghr.4
+	for <qemu-trivial@nongnu.org>; Wed, 07 Mar 2012 09:21:40 -0800 (PST)
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
+Received: by 10.50.85.227 with SMTP id k3mr2448247igz.17.1331140900131; Wed,
+	07 Mar 2012 09:21:40 -0800 (PST)
+Received: by 10.50.100.198 with HTTP; Wed, 7 Mar 2012 09:21:40 -0800 (PST)
+In-Reply-To: <4F579778.5010609@redhat.com>
 References: <1331122589-15717-1-git-send-email-peter.maydell@linaro.org>
-	<CAJSP0QVjZ_YqRNrf5dVPHTQmkLwPJeo_M1G2z7gfVHBY_-Z33w@mail.gmail.com>
-	<4F57959C.5090408@redhat.com>
-	<CAFEAcA8_dGFsB0x9gb97S15Mj=BdxuN=Q8u=vbCCkDEPLxhofA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8_dGFsB0x9gb97S15Mj=BdxuN=Q8u=vbCCkDEPLxhofA@mail.gmail.com>
-X-Enigmail-Version: 1.3.5
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="------------enig20E69DF3E0AC959B0F38E0B9"
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+	<4F579778.5010609@redhat.com>
+Date: Wed, 7 Mar 2012 17:21:40 +0000
+Message-ID: <CAFEAcA_tmpwCj8gqnFkTLuB-OxL9kE6BWTPgnrQUkevnEjBV3A@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Avi Kivity <avi@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Gm-Message-State: ALoCoQmUcuRJMR6QNh4tBpB55mMtOtvOiLoaa4eCczhAmhF7m6IpLFZOMterfnwY8+yBLpSSIyx5
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
+X-Received-From: 209.85.160.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Quote the
  configure args printed in config.log
@@ -56,54 +45,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Mar 2012 17:18:12 -0000
+X-List-Received-Date: Wed, 07 Mar 2012 17:22:11 -0000
 
-This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enig20E69DF3E0AC959B0F38E0B9
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On 7 March 2012 17:14, Avi Kivity <avi@redhat.com> wrote:
+> This still breaks if an argument has a single quote. =C2=A0bash's printf'=
+s %q
+> deals with this correctly, but not sure how portable it is.
 
-On 03/07/2012 10:08 AM, Peter Maydell wrote:
-> If you look at the whole change, rather than just the
-> fragment Stefan quoted to comment on:
->=20
->  # Print a helpful header at the top of config.log
->  echo "# QEMU configure log $(date)" >> config.log
-> -echo "# produced by $0 $*" >> config.log
-> +printf "# Configured with:" >> config.log
-> +printf " '%s'" "$0" "$@" >> config.log
-> +echo >> config.log
->  echo "#" >> config.log
->=20
-> ...you'll see that it does exactly what you suggest.
+True, but we've lived with it for the code that writes to config-host.mak
+since 2008 (commit fd69fe2b)...
 
-Good to hear!  Serves me right for not paying attention to the thread
-until my personal keyword of 'opengroup' appeared mid-stream, at which
-point I'd already deleted your original message to see the full context.
-
---=20
-Eric Blake   eblake@redhat.com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---------------enig20E69DF3E0AC959B0F38E0B9
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.12 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
-
-iQEcBAEBCAAGBQJPV5g5AAoJEKeha0olJ0Nq1gIH/3jlyWQAW3qLPetKw0zEvK9u
-l4A9pqLl1FeR2jcUtzSnUmh7suBPF40ZdRitAtizC0ckW9RuDqFBezSMSrW5cZJY
-wE48YrsAkPJR4zGfb+IgyZgUOkh2+eQ1QmAegvGtIb2xQjGp1BOeuyd1RQiHefjB
-yzvv20IUF/5gGCr1rUM8wpnpV4fdtf/SbWfYAPD9qlK+rgFgXT7Qa0HV0ZhNb5Xt
-PrhayLN+b4gHptuMqIrM2zkYYERjLTnVekjejsfmA+eZuHZWS2FfgXPTI33Ojk7A
-eN9XgDcA7ZFxfRXTqDfWyc2c4e3og+yHAKJNqg6CJzo/be5NC38qDf42dIwcgRQ=
-=nV8D
------END PGP SIGNATURE-----
-
---------------enig20E69DF3E0AC959B0F38E0B9--
+-- PMM
 
