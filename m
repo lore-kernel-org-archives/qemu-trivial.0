@@ -1,37 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S5KMD-0003XN-0c
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2012 12:08:57 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:42379)
+	id 1S5KNI-0004yb-Ht
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2012 12:10:04 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:42606)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1S5KM5-0003WT-SU
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:08:55 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1S5KNB-0004ik-3B
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:10:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1S5KM1-0008Sr-4m
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:08:49 -0500
-Received: from mail-yw0-f45.google.com ([209.85.213.45]:54736)
+	(envelope-from <peter.maydell@linaro.org>) id 1S5KMn-0000Qt-J6
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:09:56 -0500
+Received: from mail-gy0-f173.google.com ([209.85.160.173]:55619)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1S5KM1-0008Q1-0o
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:08:45 -0500
-Received: by yhoo21 with SMTP id o21so3585809yho.4
-	for <qemu-trivial@nongnu.org>; Wed, 07 Mar 2012 09:08:42 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1S5KMn-0000QY-FC
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 12:09:33 -0500
+Received: by ghrr14 with SMTP id r14so3579455ghr.4
+	for <qemu-trivial@nongnu.org>; Wed, 07 Mar 2012 09:09:31 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.50.185.228 with SMTP id ff4mr997287igc.17.1331140121799; Wed,
-	07 Mar 2012 09:08:41 -0800 (PST)
-Received: by 10.50.100.198 with HTTP; Wed, 7 Mar 2012 09:08:41 -0800 (PST)
-In-Reply-To: <4F57959C.5090408@redhat.com>
+Received: by 10.50.169.5 with SMTP id aa5mr12630128igc.17.1331140171272; Wed,
+	07 Mar 2012 09:09:31 -0800 (PST)
+Received: by 10.50.100.198 with HTTP; Wed, 7 Mar 2012 09:09:31 -0800 (PST)
+In-Reply-To: <CAJSP0QVjZ_YqRNrf5dVPHTQmkLwPJeo_M1G2z7gfVHBY_-Z33w@mail.gmail.com>
 References: <1331122589-15717-1-git-send-email-peter.maydell@linaro.org>
 	<CAJSP0QVjZ_YqRNrf5dVPHTQmkLwPJeo_M1G2z7gfVHBY_-Z33w@mail.gmail.com>
-	<4F57959C.5090408@redhat.com>
-Date: Wed, 7 Mar 2012 17:08:41 +0000
-Message-ID: <CAFEAcA8_dGFsB0x9gb97S15Mj=BdxuN=Q8u=vbCCkDEPLxhofA@mail.gmail.com>
+Date: Wed, 7 Mar 2012 17:09:31 +0000
+Message-ID: <CAFEAcA8gyck18p1q51N-z+=6Af09wj7y4EtO3kA6N6UFhpexjA@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: Eric Blake <eblake@redhat.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-Gm-Message-State: ALoCoQmCyT7hHv3rJDlg5SjgNoXP82vZswYq3OaHex0/6HLGxZ45cU1h95ot6/KjW7kMU+0pPFiW
+X-Gm-Message-State: ALoCoQnTeygkT8iJiJjcll+vZaKM1EE2SunKMN1WtdCgEMTdVXi+nmDYGf66qsolfbHfWuSn4R09
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.213.45
+X-Received-From: 209.85.160.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Quote the
  configure args printed in config.log
@@ -46,35 +45,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Mar 2012 17:08:55 -0000
+X-List-Received-Date: Wed, 07 Mar 2012 17:10:03 -0000
 
-On 7 March 2012 17:06, Eric Blake <eblake@redhat.com> wrote:
->>> =C2=A0# Print a helpful header at the top of config.log
->>> =C2=A0echo "# QEMU configure log $(date)" >> config.log
->>> -echo "# produced by $0 $*" >> config.log
+On 7 March 2012 12:40, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+>> +printf "# Configured with:" >> config.log
+>> +printf " '%s'" "$0" "$@" >> config.log
 >
-> This left a trailing newline,
->
->>> +printf "# Configured with:" >> config.log
->>> +printf " '%s'" "$0" "$@" >> config.log
->
-> but this does not. =C2=A0You probably want to add another echo afterwards=
-, so
-> that the next line of the log doesn't look like another configure argumen=
-t.
+> You use an interesting feature of printf(1)- it applies the (short)
+> format string as long as there are arguments. =C2=A0I checked that this i=
+s
+> in the specification:
+> http://pubs.opengroup.org/onlinepubs/9699919799/utilities/printf.html
 
-If you look at the whole change, rather than just the
-fragment Stefan quoted to comment on:
-
- # Print a helpful header at the top of config.log
- echo "# QEMU configure log $(date)" >> config.log
--echo "# produced by $0 $*" >> config.log
-+printf "# Configured with:" >> config.log
-+printf " '%s'" "$0" "$@" >> config.log
-+echo >> config.log
- echo "#" >> config.log
-
-...you'll see that it does exactly what you suggest.
+Yes, I had to look up the spec to figure out why it worked too :-)
 
 -- PMM
 
