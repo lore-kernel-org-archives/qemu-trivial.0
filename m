@@ -1,57 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S5hl0-0005Q9-A3
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Mar 2012 13:08:06 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:51137)
+	id 1S5lMh-0004IP-QP
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Mar 2012 16:59:15 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:48881)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1S5hks-00051U-Df
-	for qemu-trivial@nongnu.org; Thu, 08 Mar 2012 13:08:04 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1S5lMP-0004HM-EC
+	for qemu-trivial@nongnu.org; Thu, 08 Mar 2012 16:59:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1S5hkY-0006Ob-CD
-	for qemu-trivial@nongnu.org; Thu, 08 Mar 2012 13:07:57 -0500
-Received: from mail-wi0-f173.google.com ([209.85.212.173]:42183)
+	(envelope-from <stefan@weilnetz.de>) id 1S5lLh-0000Rw-5K
+	for qemu-trivial@nongnu.org; Thu, 08 Mar 2012 16:58:57 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:45742)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1S5hkY-0006OJ-2Y; Thu, 08 Mar 2012 13:07:38 -0500
-Received: by wibhi18 with SMTP id hi18so622759wib.4
-	for <multiple recipients>; Thu, 08 Mar 2012 10:07:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=WxcmxE9i7DLdtDsvdavCVdtUR0rhjcd6QRpoPPIe2ls=;
-	b=kb79X/RV2Tx7Xz8YqUqKPLLNH/ST6Qh5U/cEAz8taQp9bSoFCRpH4bhFrExzkKESub
-	0kd5iej7rpeNWsCcMof8cYqAgxzE0EJOG4YbqgQJPTEyGgtoBB62lvqLWsMmqUEZlPBZ
-	Um7qzGTQENtwfw6DqHITEd+OLOE3K1x2q5kwVkPtUWmY/fKca4kIs3btiTNrUlUnuO9L
-	IRejo+I3CZ4l2ytA+8MoPvFfre1h1EPGmtW2Vh8VpFP2VfrHl24xJ2N02Rw74RD8SvLB
-	+KOWvbhJvjX23GKD01TYjhFOXKNcp9i31Tyb04fbDpYCZ28pXQAzBFlfcEVfeDW4e1mE
-	bEQA==
-Received: by 10.216.133.39 with SMTP id p39mr3725197wei.40.1331230055132;
-	Thu, 08 Mar 2012 10:07:35 -0800 (PST)
-Received: from yakj.usersys.redhat.com (93-34-182-16.ip50.fastwebnet.it.
-	[93.34.182.16])
-	by mx.google.com with ESMTPS id fa9sm11927982wib.5.2012.03.08.10.07.33
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 08 Mar 2012 10:07:34 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <4F58F563.1020107@redhat.com>
-Date: Thu, 08 Mar 2012 19:07:31 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:10.0.1) Gecko/20120216 Thunderbird/10.0.1
+	(envelope-from <stefan@weilnetz.de>)
+	id 1S5lLd-0000RA-LR; Thu, 08 Mar 2012 16:58:09 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	1F7CA728009F; Thu,  8 Mar 2012 22:58:07 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id Pan3NGjdl-lU; Thu,  8 Mar 2012 22:58:06 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 8E1A872800A0; Thu,  8 Mar 2012 22:58:06 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Thu,  8 Mar 2012 22:58:06 +0100
+Message-Id: <1331243886-19117-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.9
 MIME-Version: 1.0
-To: Anthony Liguori <anthony@codemonkey.ws>
-References: <1330176948-14379-1-git-send-email-sw@weilnetz.de>	<CAJSP0QXAc5S6dvh-6EJkL8RNfDCkD=7QcbT0DMZTiS5D+xTQsg@mail.gmail.com>
-	<4F58D961.70706@redhat.com> <4F58DD6F.8080907@codemonkey.ws>
-In-Reply-To: <4F58DD6F.8080907@codemonkey.ws>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.173
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vnc: Fix packed boolean
-	struct members
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+	Anthony Liguori <aliguori@us.ibm.com>
+Subject: [Qemu-trivial] [PATCH v2] vnc: Fix packed boolean struct members
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,31 +47,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Mar 2012 18:08:04 -0000
+X-List-Received-Date: Thu, 08 Mar 2012 21:59:15 -0000
 
-Il 08/03/2012 17:25, Anthony Liguori ha scritto:
->>
->> Looks like a GCC bug where
->>
->>     x = y = 0;
->>
->> is converted to
->>
->>     x = (y = 0) != 0;
-> 
-> Curious, why convert like this?  What does this optimization do?
+This patch fixes warnings reported by splint:
 
-Nothing, it's just that if "y = 0" is an int (for some reason, I didn't
-check if it's implicit promotion or just that y is already an int), then
-it has to be converted back to a truth value before assigning to bool.
-If you do
+For variables which are packed in a single bit, a signed data type
+like 'int' does not make much sense.
 
-  bool x;
-  int y;
+There is no obvious reason why the two values should be packed,
+so I removed the packing and changed the data type to bool
+because both are used as boolean values.
 
-  x = y = 2;
+v2:
 
-x is actually set to 1.
+Some versions of gcc complain after this modification,
+for example gcc (Debian 4.4.5-8) 4.4.5):
 
-Paolo
+ui/vnc-auth-sasl.c: In function =E2=80=98vnc_sasl_client_cleanup=E2=80=99=
+:
+ui/vnc-auth-sasl.c:34: error: suggest parentheses around assignment used =
+as truth value
+
+Obviously, the compiler does not like code which does
+bool =3D unsigned =3D bool =3D 0
+
+Splitting that code in three statements works.
+
+Cc: Anthony Liguori <aliguori@us.ibm.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ ui/vnc-auth-sasl.c |    4 +++-
+ ui/vnc-auth-sasl.h |    4 ++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/ui/vnc-auth-sasl.c b/ui/vnc-auth-sasl.c
+index e2045fc..8fba770 100644
+--- a/ui/vnc-auth-sasl.c
++++ b/ui/vnc-auth-sasl.c
+@@ -31,7 +31,9 @@
+ void vnc_sasl_client_cleanup(VncState *vs)
+ {
+     if (vs->sasl.conn) {
+-        vs->sasl.runSSF =3D vs->sasl.waitWriteSSF =3D vs->sasl.wantSSF =3D=
+ 0;
++        vs->sasl.runSSF =3D false;
++        vs->sasl.wantSSF =3D false;
++        vs->sasl.waitWriteSSF =3D 0;
+         vs->sasl.encodedLength =3D vs->sasl.encodedOffset =3D 0;
+         vs->sasl.encoded =3D NULL;
+         g_free(vs->sasl.username);
+diff --git a/ui/vnc-auth-sasl.h b/ui/vnc-auth-sasl.h
+index fd9b18a..ee243a9 100644
+--- a/ui/vnc-auth-sasl.h
++++ b/ui/vnc-auth-sasl.h
+@@ -37,9 +37,9 @@ typedef struct VncDisplaySASL VncDisplaySASL;
+ struct VncStateSASL {
+     sasl_conn_t *conn;
+     /* If we want to negotiate an SSF layer with client */
+-    int wantSSF :1;
++    bool wantSSF;
+     /* If we are now running the SSF layer */
+-    int runSSF :1;
++    bool runSSF;
+     /*
+      * If this is non-zero, then wait for that many bytes
+      * to be written plain, before switching to SSF encoding
+--=20
+1.7.9
+
 
