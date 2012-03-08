@@ -1,29 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S5Rs9-0005GH-Lv
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2012 20:10:25 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58345)
+	id 1S5Snw-0003QS-8M
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2012 21:10:08 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:47745)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1S5Rrm-0003pZ-Rh
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 20:10:23 -0500
+	(envelope-from <jasowang@redhat.com>) id 1S5Sno-0003HV-US
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 21:10:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1S5Rrk-0006wd-UD
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 20:10:02 -0500
-Received: from ozlabs.org ([203.10.76.45]:59526)
+	(envelope-from <jasowang@redhat.com>) id 1S5Snh-0003xJ-Ps
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2012 21:10:00 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:62927)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>)
-	id 1S5Rrh-0006w0-HZ; Wed, 07 Mar 2012 20:09:57 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 84615B6F98; Thu,  8 Mar 2012 12:09:54 +1100 (EST)
-From: David Gibson <david@gibson.dropbear.id.au>
-To: qemu-trivial@nongnu.org
-Date: Thu,  8 Mar 2012 12:09:40 +1100
-Message-Id: <1331168981-13139-1-git-send-email-david@gibson.dropbear.id.au>
-X-Mailer: git-send-email 1.7.9.1
+	(envelope-from <jasowang@redhat.com>)
+	id 1S5Snh-0003ve-IM; Wed, 07 Mar 2012 21:09:53 -0500
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q2829pIa019575
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 7 Mar 2012 21:09:51 -0500
+Received: from amd-6168-8-1.englab.nay.redhat.com
+	(amd-6168-8-1.englab.nay.redhat.com [10.66.104.52])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id q2829nKH014105; Wed, 7 Mar 2012 21:09:50 -0500
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+From: Jason Wang <jasowang@redhat.com>
+Date: Thu, 08 Mar 2012 10:05:22 +0800
+Message-ID: <20120308020522.24053.8087.stgit@amd-6168-8-1.englab.nay.redhat.com>
+User-Agent: StGit/0.16-1-g60c4
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	q2829pIa019575
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 203.10.76.45
-Cc: qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
-Subject: [Qemu-trivial] [PATCH 1/2] .gitignore update
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] ioapic: fix build with DEBUG_IOAPIC
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,43 +47,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Mar 2012 01:10:24 -0000
+X-List-Received-Date: Thu, 08 Mar 2012 02:10:06 -0000
 
-This adds a few previously missing generated files to .gitignore: the
-qemu-bridge-helper binary, and the linuxboot and multiboot images from
-pc-bios/optionrom.
+ioapic.c:198: error: format =E2=80=98%08x=E2=80=99 expects type =E2=80=98=
+unsigned int=E2=80=99, but argument 3 has type =E2=80=98uint64_t=E2=80=99
 
-Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+Signed-off-by: Jason Wang <jasowang@redhat.com>
 ---
- .gitignore                   |    1 +
- pc-bios/optionrom/.gitignore |    5 +++++
- 2 files changed, 6 insertions(+), 0 deletions(-)
- create mode 100644 pc-bios/optionrom/.gitignore
+ hw/ioapic.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/.gitignore b/.gitignore
-index 81b1510..b290954 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -39,6 +39,7 @@ qemu-img-cmds.texi
- qemu-img-cmds.h
- qemu-io
- qemu-ga
-+qemu-bridge-helper
- qemu-monitor.texi
- QMP/qmp-commands.txt
- test-coroutine
-diff --git a/pc-bios/optionrom/.gitignore b/pc-bios/optionrom/.gitignore
-new file mode 100644
-index 0000000..57b036c
---- /dev/null
-+++ b/pc-bios/optionrom/.gitignore
-@@ -0,0 +1,5 @@
-+linuxboot.img
-+linuxboot.raw
-+multiboot.img
-+kvmvapic.img
-+kvmvapic.raw
--- 
-1.7.9.1
+diff --git a/hw/ioapic.c b/hw/ioapic.c
+index 3fee011..2b0e6e9 100644
+--- a/hw/ioapic.c
++++ b/hw/ioapic.c
+@@ -195,7 +195,7 @@ ioapic_mem_write(void *opaque, target_phys_addr_t add=
+r, uint64_t val,
+         if (size !=3D 4) {
+             break;
+         }
+-        DPRINTF("write: %08x =3D %08x\n", s->ioregsel, val);
++        DPRINTF("write: %08x =3D %lx\n", s->ioregsel, val);
+         switch (s->ioregsel) {
+         case IOAPIC_REG_ID:
+             s->id =3D (val >> IOAPIC_ID_SHIFT) & IOAPIC_ID_MASK;
 
 
