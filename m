@@ -1,41 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S5lMh-0004IP-QP
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Mar 2012 16:59:15 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:48881)
+	id 1S6RlT-0002wR-QQ
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Mar 2012 14:15:39 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:45870)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1S5lMP-0004HM-EC
-	for qemu-trivial@nongnu.org; Thu, 08 Mar 2012 16:59:14 -0500
+	(envelope-from <sw@weilnetz.de>) id 1S6RlQ-0002lD-C4
+	for qemu-trivial@nongnu.org; Sat, 10 Mar 2012 14:15:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1S5lLh-0000Rw-5K
-	for qemu-trivial@nongnu.org; Thu, 08 Mar 2012 16:58:57 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:45742)
+	(envelope-from <sw@weilnetz.de>) id 1S6RlO-000117-9E
+	for qemu-trivial@nongnu.org; Sat, 10 Mar 2012 14:15:35 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:57084)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1S5lLd-0000RA-LR; Thu, 08 Mar 2012 16:58:09 -0500
+	(envelope-from <sw@weilnetz.de>)
+	id 1S6Rl1-0000yE-PW; Sat, 10 Mar 2012 14:15:12 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	1F7CA728009F; Thu,  8 Mar 2012 22:58:07 +0100 (CET)
+	A0B7C72800A0; Sat, 10 Mar 2012 20:15:09 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id Pan3NGjdl-lU; Thu,  8 Mar 2012 22:58:06 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 8E1A872800A0; Thu,  8 Mar 2012 22:58:06 +0100 (CET)
+	with ESMTP id z90TKI54gKcg; Sat, 10 Mar 2012 20:15:08 +0100 (CET)
+Received: from flocke.weilnetz.de (p5086F01F.dip.t-dialin.net [80.134.240.31])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	92F1B728009F; Sat, 10 Mar 2012 20:15:08 +0100 (CET)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <sw@weilnetz.de>)
+	id 1S6Rky-0001iu-1i; Sat, 10 Mar 2012 20:15:08 +0100
+Message-ID: <4F5BA83B.1010403@weilnetz.de>
+Date: Sat, 10 Mar 2012 20:15:07 +0100
 From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Thu,  8 Mar 2012 22:58:06 +0100
-Message-Id: <1331243886-19117-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.9
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20120207 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+To: Anthony Liguori <anthony@codemonkey.ws>
+References: <1328473147-22124-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1328473147-22124-1-git-send-email-sw@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	Anthony Liguori <aliguori@us.ibm.com>
-Subject: [Qemu-trivial] [PATCH v2] vnc: Fix packed boolean struct members
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Add missing const attributes for
+	MemoryRegionOps
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,72 +55,182 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Mar 2012 21:59:15 -0000
+X-List-Received-Date: Sat, 10 Mar 2012 19:15:38 -0000
 
-This patch fixes warnings reported by splint:
+Am 05.02.2012 21:19, schrieb Stefan Weil:
+> Most MemoryRegionOps already had the const attribute.
+> This patch adds it to the remaining ones.
+>
+> Signed-off-by: Stefan Weil<sw@weilnetz.de>
+> ---
+>   hw/cuda.c          |    2 +-
+>   hw/ide/ahci.c      |    4 ++--
+>   hw/ide/cmd646.c    |    6 +++---
+>   hw/ide/macio.c     |    2 +-
+>   hw/ide/piix.c      |    2 +-
+>   hw/ide/via.c       |    2 +-
+>   hw/mipsnet.c       |    2 +-
+>   hw/opencores_eth.c |    4 ++--
+>   hw/spapr_pci.c     |    2 +-
+>   9 files changed, 13 insertions(+), 13 deletions(-)
+>
+> diff --git a/hw/cuda.c b/hw/cuda.c
+> index 4077436..233ab66 100644
+> --- a/hw/cuda.c
+> +++ b/hw/cuda.c
+> @@ -634,7 +634,7 @@ static uint32_t cuda_readl (void *opaque, target_phys_addr_t addr)
+>       return 0;
+>   }
+>
+> -static MemoryRegionOps cuda_ops = {
+> +static const MemoryRegionOps cuda_ops = {
+>       .old_mmio = {
+>           .write = {
+>               cuda_writeb,
+> diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+> index 630d572..cc54590 100644
+> --- a/hw/ide/ahci.c
+> +++ b/hw/ide/ahci.c
+> @@ -365,7 +365,7 @@ static void ahci_mem_write(void *opaque, target_phys_addr_t addr,
+>
+>   }
+>
+> -static MemoryRegionOps ahci_mem_ops = {
+> +static const MemoryRegionOps ahci_mem_ops = {
+>       .read = ahci_mem_read,
+>       .write = ahci_mem_write,
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+> @@ -401,7 +401,7 @@ static void ahci_idp_write(void *opaque, target_phys_addr_t addr,
+>       }
+>   }
+>
+> -static MemoryRegionOps ahci_idp_ops = {
+> +static const MemoryRegionOps ahci_idp_ops = {
+>       .read = ahci_idp_read,
+>       .write = ahci_idp_write,
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+> diff --git a/hw/ide/cmd646.c b/hw/ide/cmd646.c
+> index d78ed69..0aac94a 100644
+> --- a/hw/ide/cmd646.c
+> +++ b/hw/ide/cmd646.c
+> @@ -65,7 +65,7 @@ static void cmd646_cmd_write(void *opaque, target_phys_addr_t addr,
+>       ide_cmd_write(cmd646bar->bus, addr + 2, data);
+>   }
+>
+> -static MemoryRegionOps cmd646_cmd_ops = {
+> +static const MemoryRegionOps cmd646_cmd_ops = {
+>       .read = cmd646_cmd_read,
+>       .write = cmd646_cmd_write,
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+> @@ -104,7 +104,7 @@ static void cmd646_data_write(void *opaque, target_phys_addr_t addr,
+>       }
+>   }
+>
+> -static MemoryRegionOps cmd646_data_ops = {
+> +static const MemoryRegionOps cmd646_data_ops = {
+>       .read = cmd646_data_read,
+>       .write = cmd646_data_write,
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+> @@ -193,7 +193,7 @@ static void bmdma_write(void *opaque, target_phys_addr_t addr,
+>       }
+>   }
+>
+> -static MemoryRegionOps cmd646_bmdma_ops = {
+> +static const MemoryRegionOps cmd646_bmdma_ops = {
+>       .read = bmdma_read,
+>       .write = bmdma_write,
+>   };
+> diff --git a/hw/ide/macio.c b/hw/ide/macio.c
+> index a827d81..2c4027d 100644
+> --- a/hw/ide/macio.c
+> +++ b/hw/ide/macio.c
+> @@ -291,7 +291,7 @@ static uint32_t pmac_ide_readl (void *opaque,target_phys_addr_t addr)
+>       return retval;
+>   }
+>
+> -static MemoryRegionOps pmac_ide_ops = {
+> +static const MemoryRegionOps pmac_ide_ops = {
+>       .old_mmio = {
+>           .write = {
+>               pmac_ide_writeb,
+> diff --git a/hw/ide/piix.c b/hw/ide/piix.c
+> index a472bff..c524f55 100644
+> --- a/hw/ide/piix.c
+> +++ b/hw/ide/piix.c
+> @@ -79,7 +79,7 @@ static void bmdma_write(void *opaque, target_phys_addr_t addr,
+>       }
+>   }
+>
+> -static MemoryRegionOps piix_bmdma_ops = {
+> +static const MemoryRegionOps piix_bmdma_ops = {
+>       .read = bmdma_read,
+>       .write = bmdma_write,
+>   };
+> diff --git a/hw/ide/via.c b/hw/ide/via.c
+> index 2771f0c..ad6f302 100644
+> --- a/hw/ide/via.c
+> +++ b/hw/ide/via.c
+> @@ -82,7 +82,7 @@ static void bmdma_write(void *opaque, target_phys_addr_t addr,
+>       }
+>   }
+>
+> -static MemoryRegionOps via_bmdma_ops = {
+> +static const MemoryRegionOps via_bmdma_ops = {
+>       .read = bmdma_read,
+>       .write = bmdma_write,
+>   };
+> diff --git a/hw/mipsnet.c b/hw/mipsnet.c
+> index a0e6c9f..1b49a79 100644
+> --- a/hw/mipsnet.c
+> +++ b/hw/mipsnet.c
+> @@ -224,7 +224,7 @@ static NetClientInfo net_mipsnet_info = {
+>       .cleanup = mipsnet_cleanup,
+>   };
+>
+> -static MemoryRegionOps mipsnet_ioport_ops = {
+> +static const MemoryRegionOps mipsnet_ioport_ops = {
+>       .read = mipsnet_ioport_read,
+>       .write = mipsnet_ioport_write,
+>       .impl.min_access_size = 1,
+> diff --git a/hw/opencores_eth.c b/hw/opencores_eth.c
+> index 09f2757..6f3f5fc 100644
+> --- a/hw/opencores_eth.c
+> +++ b/hw/opencores_eth.c
+> @@ -692,12 +692,12 @@ static void open_eth_desc_write(void *opaque,
+>   }
+>
+>
+> -static MemoryRegionOps open_eth_reg_ops = {
+> +static const MemoryRegionOps open_eth_reg_ops = {
+>       .read = open_eth_reg_read,
+>       .write = open_eth_reg_write,
+>   };
+>
+> -static MemoryRegionOps open_eth_desc_ops = {
+> +static const MemoryRegionOps open_eth_desc_ops = {
+>       .read = open_eth_desc_read,
+>       .write = open_eth_desc_write,
+>   };
+> diff --git a/hw/spapr_pci.c b/hw/spapr_pci.c
+> index ed2e4b3..3c08d57 100644
+> --- a/hw/spapr_pci.c
+> +++ b/hw/spapr_pci.c
+> @@ -281,7 +281,7 @@ static void spapr_io_write(void *opaque, target_phys_addr_t addr,
+>       assert(0);
+>   }
+>
+> -static MemoryRegionOps spapr_io_ops = {
+> +static const MemoryRegionOps spapr_io_ops = {
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+>       .read = spapr_io_read,
+>       .write = spapr_io_write
+>    
 
-For variables which are packed in a single bit, a signed data type
-like 'int' does not make much sense.
 
-There is no obvious reason why the two values should be packed,
-so I removed the packing and changed the data type to bool
-because both are used as boolean values.
+Ping. Could someone please commit this patch to QEMU master?
+More than one month should be enough time for a review.
 
-v2:
-
-Some versions of gcc complain after this modification,
-for example gcc (Debian 4.4.5-8) 4.4.5):
-
-ui/vnc-auth-sasl.c: In function =E2=80=98vnc_sasl_client_cleanup=E2=80=99=
-:
-ui/vnc-auth-sasl.c:34: error: suggest parentheses around assignment used =
-as truth value
-
-Obviously, the compiler does not like code which does
-bool =3D unsigned =3D bool =3D 0
-
-Splitting that code in three statements works.
-
-Cc: Anthony Liguori <aliguori@us.ibm.com>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- ui/vnc-auth-sasl.c |    4 +++-
- ui/vnc-auth-sasl.h |    4 ++--
- 2 files changed, 5 insertions(+), 3 deletions(-)
-
-diff --git a/ui/vnc-auth-sasl.c b/ui/vnc-auth-sasl.c
-index e2045fc..8fba770 100644
---- a/ui/vnc-auth-sasl.c
-+++ b/ui/vnc-auth-sasl.c
-@@ -31,7 +31,9 @@
- void vnc_sasl_client_cleanup(VncState *vs)
- {
-     if (vs->sasl.conn) {
--        vs->sasl.runSSF =3D vs->sasl.waitWriteSSF =3D vs->sasl.wantSSF =3D=
- 0;
-+        vs->sasl.runSSF =3D false;
-+        vs->sasl.wantSSF =3D false;
-+        vs->sasl.waitWriteSSF =3D 0;
-         vs->sasl.encodedLength =3D vs->sasl.encodedOffset =3D 0;
-         vs->sasl.encoded =3D NULL;
-         g_free(vs->sasl.username);
-diff --git a/ui/vnc-auth-sasl.h b/ui/vnc-auth-sasl.h
-index fd9b18a..ee243a9 100644
---- a/ui/vnc-auth-sasl.h
-+++ b/ui/vnc-auth-sasl.h
-@@ -37,9 +37,9 @@ typedef struct VncDisplaySASL VncDisplaySASL;
- struct VncStateSASL {
-     sasl_conn_t *conn;
-     /* If we want to negotiate an SSF layer with client */
--    int wantSSF :1;
-+    bool wantSSF;
-     /* If we are now running the SSF layer */
--    int runSSF :1;
-+    bool runSSF;
-     /*
-      * If this is non-zero, then wait for that many bytes
-      * to be written plain, before switching to SSF encoding
---=20
-1.7.9
+Thanks,
+Stefan Weil
 
 
