@@ -1,32 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S8LaM-00083P-17
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Mar 2012 21:04:02 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:57159)
+	id 1S8TFz-0007lR-Ft
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Mar 2012 05:15:31 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:60964)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1S8LaA-0007YR-B7
-	for qemu-trivial@nongnu.org; Thu, 15 Mar 2012 21:03:58 -0400
+	(envelope-from <jasowang@redhat.com>) id 1S8TFw-0007jW-FH
+	for qemu-trivial@nongnu.org; Fri, 16 Mar 2012 05:15:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1S8La1-0003Yk-1X
-	for qemu-trivial@nongnu.org; Thu, 15 Mar 2012 21:03:49 -0400
-Received: from ozlabs.org ([203.10.76.45]:51121)
+	(envelope-from <jasowang@redhat.com>) id 1S8TFr-0007Tp-M7
+	for qemu-trivial@nongnu.org; Fri, 16 Mar 2012 05:15:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:16292)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>)
-	id 1S8LZk-0003Km-Tl; Thu, 15 Mar 2012 21:03:25 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id CB71FB6FA2; Fri, 16 Mar 2012 12:03:16 +1100 (EST)
-From: David Gibson <david@gibson.dropbear.id.au>
-To: aliguori@us.ibm.com
-Date: Fri, 16 Mar 2012 12:03:08 +1100
-Message-Id: <1331859788-6522-1-git-send-email-david@gibson.dropbear.id.au>
-X-Mailer: git-send-email 1.7.9.1
+	(envelope-from <jasowang@redhat.com>)
+	id 1S8TFr-0007T4-EZ; Fri, 16 Mar 2012 05:15:23 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q2G9FJRU014919
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 16 Mar 2012 05:15:20 -0400
+Received: from amd-6168-8-1.englab.nay.redhat.com
+	(amd-6168-8-1.englab.nay.redhat.com [10.66.104.52])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q2G9FHNF015213; Fri, 16 Mar 2012 05:15:18 -0400
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, stefanha@linux.vnet.ibm.com
+From: Jason Wang <jasowang@redhat.com>
+Date: Fri, 16 Mar 2012 17:10:44 +0800
+Message-ID: <20120316091044.6166.86916.stgit@amd-6168-8-1.englab.nay.redhat.com>
+User-Agent: StGit/0.16-1-g60c4
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	q2G9FJRU014919
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 203.10.76.45
-Cc: qemu-trivial@nongnu.org, Rusty Russell <rusty@rustcorp.com.au>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: [Qemu-trivial] [PATCH] Remove PCI class code from virtio balloon
-	device
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [RESEND PATCH] ioapic: fix build with DEBUG_IOAPIC
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,43 +47,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Mar 2012 01:03:59 -0000
+X-List-Received-Date: Fri, 16 Mar 2012 09:15:29 -0000
 
-Currently the virtio balloon device, when using the virtio-pci interface
-advertises itself with PCI class code MEMORY_RAM.  This is wrong; the
-balloon is vaguely related to memory, but is nothing like a PCI memory
-device in the meaning of the class code, and this code is not required or
-suggested by the virtio PCI specification.
+ioapic.c:198: error: format =E2=80=98%08x=E2=80=99 expects type =E2=80=98=
+unsigned int=E2=80=99, but argument 3 has type =E2=80=98uint64_t=E2=80=99
 
-Worse, this patch causes problems on the pseries machine, because the
-firmware, seeing this class code, advertises the device as memory in the
-device tree, and then a guest kernel bug causes it to see this "memory"
-before the real system memory, leading to a crash in early boot.
-
-This patch fixes the problem by removing the bogus PCI class code on the
-balloon device.
-
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Cc: Rusty Russell <rusty@rustcorp.com.au>
-
-Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+Signed-off-by: Jason Wang <jasowang@redhat.com>
 ---
- hw/virtio-pci.c |    1 -
- 1 files changed, 0 insertions(+), 1 deletions(-)
+ hw/ioapic.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/hw/virtio-pci.c b/hw/virtio-pci.c
-index a0fb7c1..3c3907a 100644
---- a/hw/virtio-pci.c
-+++ b/hw/virtio-pci.c
-@@ -919,7 +919,6 @@ static void virtio_balloon_class_init(ObjectClass *klass, void *data)
-     k->vendor_id = PCI_VENDOR_ID_REDHAT_QUMRANET;
-     k->device_id = PCI_DEVICE_ID_VIRTIO_BALLOON;
-     k->revision = VIRTIO_PCI_ABI_VERSION;
--    k->class_id = PCI_CLASS_MEMORY_RAM;
-     dc->reset = virtio_pci_reset;
-     dc->props = virtio_balloon_properties;
- }
--- 
-1.7.9.1
+diff --git a/hw/ioapic.c b/hw/ioapic.c
+index 3fee011..1ff31a1 100644
+--- a/hw/ioapic.c
++++ b/hw/ioapic.c
+@@ -195,7 +195,7 @@ ioapic_mem_write(void *opaque, target_phys_addr_t add=
+r, uint64_t val,
+         if (size !=3D 4) {
+             break;
+         }
+-        DPRINTF("write: %08x =3D %08x\n", s->ioregsel, val);
++        DPRINTF("write: %08x =3D %" PRIx64 "\n", s->ioregsel, val);
+         switch (s->ioregsel) {
+         case IOAPIC_REG_ID:
+             s->id =3D (val >> IOAPIC_ID_SHIFT) & IOAPIC_ID_MASK;
 
 
