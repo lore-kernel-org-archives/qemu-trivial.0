@@ -1,50 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S8xMW-0002r5-MD
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Mar 2012 13:24:16 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:59004)
+	id 1S9FO3-0007BP-K1
+	for mharc-qemu-trivial@gnu.org; Sun, 18 Mar 2012 08:39:03 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:57223)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1S8xMT-0002pf-T7
-	for qemu-trivial@nongnu.org; Sat, 17 Mar 2012 13:24:15 -0400
+	(envelope-from <mst@redhat.com>) id 1S9FO0-00078m-EH
+	for qemu-trivial@nongnu.org; Sun, 18 Mar 2012 08:39:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1S8xMR-0005tw-3O
-	for qemu-trivial@nongnu.org; Sat, 17 Mar 2012 13:24:13 -0400
-Received: from mail-iy0-f173.google.com ([209.85.210.173]:50399)
+	(envelope-from <mst@redhat.com>) id 1S9FNg-0002bK-Aq
+	for qemu-trivial@nongnu.org; Sun, 18 Mar 2012 08:39:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:15907)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1S8xMQ-0005tT-Ue
-	for qemu-trivial@nongnu.org; Sat, 17 Mar 2012 13:24:11 -0400
-Received: by iafj26 with SMTP id j26so8048008iaf.4
-	for <qemu-trivial@nongnu.org>; Sat, 17 Mar 2012 10:24:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=Uh2UZBKCri9kD36OSiAwtl0xw6iSd7LPJbY38x9Q0Ic=;
-	b=TobB8ni782k33PYewBz+d1O7w/2ahq5zfdrG8FrUWj6qeMnjHc1g6h7fdrTSJIAOId
-	Y8EOjMU3CKBB1/Y94wjM5OCt5X4PPYy2FcaYln4yqIUinKhb9N0akqXRT+OuURDjuOSz
-	MToMm98bd73CmeMdMuxnRStsMeC8ec+pIhHuOSg2WZ+KsNCRV68dGhJdL6iqt5Tth2dX
-	7zdfDjpuSIidZt9xnzkXVgmZBwoAgieehnO4YI9fHAIKNIs2xD3YPfIHp5jcrdb1o/7z
-	JFFYJgievo8jDyrQ9knQgS5B4pIgXy+08otlNmlOt04yKRlym4xBvB6N+Dh5LRbCZpUO
-	mS9g==
+	(envelope-from <mst@redhat.com>)
+	id 1S9FNc-0002WH-7a; Sun, 18 Mar 2012 08:38:36 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q2ICcUi0008621
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Sun, 18 Mar 2012 08:38:30 -0400
+Received: from redhat.com (reserved-200-249.tlv.redhat.com [10.35.200.249]
+	(may be forged))
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id q2ICcPZ6031408; Sun, 18 Mar 2012 08:38:28 -0400
+Date: Sun, 18 Mar 2012 14:38:42 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20120318123840.GF29902@redhat.com>
+References: <1331859788-6522-1-git-send-email-david@gibson.dropbear.id.au>
 MIME-Version: 1.0
-Received: by 10.50.188.138 with SMTP id ga10mr2249029igc.51.1332005048256;
-	Sat, 17 Mar 2012 10:24:08 -0700 (PDT)
-Received: by 10.50.100.198 with HTTP; Sat, 17 Mar 2012 10:24:08 -0700 (PDT)
-In-Reply-To: <4F64B4F2.5020805@weilnetz.de>
-References: <1331998306-30941-1-git-send-email-sw@weilnetz.de>
-	<CAFEAcA89CWS=+N1JPXo=o-sR9sAxBg4X+AZGb47UdzdWCTjy2A@mail.gmail.com>
-	<4F64B4F2.5020805@weilnetz.de>
-Date: Sat, 17 Mar 2012 17:24:08 +0000
-Message-ID: <CAFEAcA9_P8tmG-M2ytw5eaRPq8KBPc7iXWuGf1M9=rkxnsWRdw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQkp49S8ej3u4FPB+/GjzKT55/9Q9m06QddXtvbGXdEE8NhorSBbpXqic+qrT7NmmEU1+63f
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1331859788-6522-1-git-send-email-david@gibson.dropbear.id.au>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.210.173
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Fix creation of
- symbolic links for MinGW toolchain
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com,
+	Rusty Russell <rusty@rustcorp.com.au>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Remove PCI class code from virtio
+	balloon device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,25 +50,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Mar 2012 17:24:15 -0000
+X-List-Received-Date: Sun, 18 Mar 2012 12:39:02 -0000
 
-On 17 March 2012 15:59, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 17.03.2012 16:49, schrieb Peter Maydell:
->> Where do we symlink directories? (I exclude the setting up
->> of the linux headers because that will only happen on Linux
->> hosts where we know we have working symlinks.)
+On Fri, Mar 16, 2012 at 12:03:08PM +1100, David Gibson wrote:
+> Currently the virtio balloon device, when using the virtio-pci interface
+> advertises itself with PCI class code MEMORY_RAM.  This is wrong; the
+> balloon is vaguely related to memory, but is nothing like a PCI memory
+> device in the meaning of the class code, and this code is not required or
+> suggested by the virtio PCI specification.
+> 
+> Worse, this patch causes problems on the pseries machine, because the
+> firmware, seeing this class code, advertises the device as memory in the
+> device tree, and then a guest kernel bug causes it to see this "memory"
+> before the real system memory, leading to a crash in early boot.
+> 
+> This patch fixes the problem by removing the bogus PCI class code on the
+> balloon device.
+> 
+> Cc: Michael S. Tsirkin <mst@redhat.com>
+> Cc: Rusty Russell <rusty@rustcorp.com.au>
+> 
+> Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
 
-> pc-bios/keymaps
+Well, this gives the class a legacy value 00,
+and the PCI spec says we should not use this:
 
-Oh yes, missed that one (since it's a directory name cunningly
-hidden in a variable named FILES :-)).
+D.1.
+Base Class 00h
+This base class is defined to provide backward compatibility for devices
+that were built
+before the Class Code field was defined. No new devices should use this
+value and existing
+devices should switch to a more appropriate value if possible.
+For class codes with this base class value, there are two defined values
+for the remaining
+fields as shown in the table below. All other values are reserved.
+Base Class
+00h
+Sub-Class
+Interface
+00h
+01h
+VGA-compatible device
+00h
+00h
+All currently implemented devices
+except VGA-compatible devices
 
-I'm just a little wary of 'rm -rf', especially here where
-we're nuking whatever was passed as an argument and we
-aren't getting the shell quoting right. In theory we could
-use a wildcard for the keymaps the same way we do for a
-bunch of the other pc-bios files; I'm not sure if it's worth
-the effort, though.
+You probably want this instead:
 
--- PMM
+#define PCI_CLASS_OTHERS		0xff
+
+
+> ---
+>  hw/virtio-pci.c |    1 -
+>  1 files changed, 0 insertions(+), 1 deletions(-)
+> 
+> diff --git a/hw/virtio-pci.c b/hw/virtio-pci.c
+> index a0fb7c1..3c3907a 100644
+> --- a/hw/virtio-pci.c
+> +++ b/hw/virtio-pci.c
+> @@ -919,7 +919,6 @@ static void virtio_balloon_class_init(ObjectClass *klass, void *data)
+>      k->vendor_id = PCI_VENDOR_ID_REDHAT_QUMRANET;
+>      k->device_id = PCI_DEVICE_ID_VIRTIO_BALLOON;
+>      k->revision = VIRTIO_PCI_ABI_VERSION;
+> -    k->class_id = PCI_CLASS_MEMORY_RAM;
+>      dc->reset = virtio_pci_reset;
+>      dc->props = virtio_balloon_properties;
+>  }
+> -- 
+> 1.7.9.1
 
