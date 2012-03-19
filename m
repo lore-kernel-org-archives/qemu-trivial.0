@@ -1,56 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S9an9-0001gu-VX
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Mar 2012 07:30:23 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:36350)
+	id 1S9aq4-0003NE-N4
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Mar 2012 07:33:24 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36841)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1S9an2-0001gR-HS
-	for qemu-trivial@nongnu.org; Mon, 19 Mar 2012 07:30:22 -0400
+	(envelope-from <stefanha@gmail.com>) id 1S9apx-0003Lz-Vb
+	for qemu-trivial@nongnu.org; Mon, 19 Mar 2012 07:33:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1S9amx-0007Az-Ku
-	for qemu-trivial@nongnu.org; Mon, 19 Mar 2012 07:30:16 -0400
-Received: from mail-wi0-f181.google.com ([209.85.212.181]:32850)
+	(envelope-from <stefanha@gmail.com>) id 1S9apv-0007f9-Pw
+	for qemu-trivial@nongnu.org; Mon, 19 Mar 2012 07:33:17 -0400
+Received: from mail-wg0-f41.google.com ([74.125.82.41]:37306)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1S9amx-0007An-Bu; Mon, 19 Mar 2012 07:30:11 -0400
-Received: by wibhr17 with SMTP id hr17so3212968wib.10
-	for <multiple recipients>; Mon, 19 Mar 2012 04:30:08 -0700 (PDT)
+	id 1S9apv-0007f1-GS; Mon, 19 Mar 2012 07:33:15 -0400
+Received: by wgbds1 with SMTP id ds1so617995wgb.4
+	for <multiple recipients>; Mon, 19 Mar 2012 04:33:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=T+RpFCXqVbq8OZ8k0J3SvQD60fTlREQP0jKJ5H+fSHo=;
-	b=jPkRQt9ADHlByDyLA1FrzOj2VEbg0t6T8AAOo5aL44VMXR6hUfZ+mBlA8kRrG631Ul
-	f7lIm6YCelmpVsrf68bb1qAhvGb2S1cFceJ2pwC3p4kGfM8TlVWGsmieveVvCrTuqj+x
-	MbdyFJJRPL2AzDWyqR4gdWz3oS2vX9Fj6Ghc7u7nJX3NBFAAyvVUyKrXJVMSP82v00oD
-	AVPxkLych4q6AM/WAtliSgRIsEKwbyAjLJ0yDb49EGaNlIxgWAixxVQi/LwqyBexbf92
-	0Ok9Nd8MsSapyYDGyndfBUUY16IzPiYZVAA3TC6bg1UUUuEV/CRgZRe4m+EZr9gKe6cH
-	aKzw==
-Received: by 10.216.134.200 with SMTP id s50mr6655833wei.116.1332156608664;
-	Mon, 19 Mar 2012 04:30:08 -0700 (PDT)
+	bh=tglFQgjVQL8n0/QrzoJ0rlr/5asJWy2ag37/kZyO+TY=;
+	b=FXuL6kPR3JmJN8Vahe6T3WxnhqfKEuhh9TTpRDBF/nHG++VmIXloFpqJ4Za1HgjkRH
+	1XNy7f2wwpCDDRZgVTmXtM+PayZfLdoDQn/tI4XkO8m4EAsPnRv6cwiDZUv+2i2PAhnO
+	SGBQvUyjcyTEdn+12vl9agaZXJH1vZvOUB+occ3IOYrtSabABX1t9ekLzB4evGAn4zkN
+	0aRJFyW7iX8FfCEIDEnF+oM1QnqVURUtN8YUs1cEaIosv/F7vDeIRwzUIXw7DnwgQgmc
+	Ig0PGHxgPAMHCDwryDlnEmIqovnyjQL9XZmu9Bvf9tfl2PnoctrLRFUWwJjwaw4hrSgP
+	T+bg==
+Received: by 10.180.101.231 with SMTP id fj7mr19063244wib.15.1332156792856;
+	Mon, 19 Mar 2012 04:33:12 -0700 (PDT)
 Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
 	by mx.google.com with ESMTPS id
-	bx13sm11440602wib.10.2012.03.19.04.30.07
+	ff9sm24945291wib.2.2012.03.19.04.33.11
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 19 Mar 2012 04:30:07 -0700 (PDT)
-Date: Mon, 19 Mar 2012 11:30:06 +0000
+	Mon, 19 Mar 2012 04:33:12 -0700 (PDT)
+Date: Mon, 19 Mar 2012 11:33:10 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <weil@mail.berlios.de>
-Message-ID: <20120319113006.GC30033@stefanha-thinkpad.localdomain>
-References: <1331998306-30941-1-git-send-email-sw@weilnetz.de>
-	<CAFEAcA89CWS=+N1JPXo=o-sR9sAxBg4X+AZGb47UdzdWCTjy2A@mail.gmail.com>
-	<4F64B4F2.5020805@weilnetz.de>
-	<CAFEAcA9_P8tmG-M2ytw5eaRPq8KBPc7iXWuGf1M9=rkxnsWRdw@mail.gmail.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20120319113310.GD30033@stefanha-thinkpad.localdomain>
+References: <1332133163-7890-1-git-send-email-david@gibson.dropbear.id.au>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA9_P8tmG-M2ytw5eaRPq8KBPc7iXWuGf1M9=rkxnsWRdw@mail.gmail.com>
+In-Reply-To: <1332133163-7890-1-git-send-email-david@gibson.dropbear.id.au>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.181
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Fix creation of
- symbolic links for MinGW toolchain
+X-Received-From: 74.125.82.41
+Cc: qemu-trivial@nongnu.org, Rusty Russell <rusty@rustcorp.com.au>,
+	qemu-devel@nongnu.org, anthony@codemonkey.ws,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Remove PCI class code from
+ virtio balloon device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,29 +60,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Mar 2012 11:30:22 -0000
+X-List-Received-Date: Mon, 19 Mar 2012 11:33:24 -0000
 
-On Sat, Mar 17, 2012 at 05:24:08PM +0000, Peter Maydell wrote:
-> On 17 March 2012 15:59, Stefan Weil <sw@weilnetz.de> wrote:
-> > Am 17.03.2012 16:49, schrieb Peter Maydell:
-> >> Where do we symlink directories? (I exclude the setting up
-> >> of the linux headers because that will only happen on Linux
-> >> hosts where we know we have working symlinks.)
+On Mon, Mar 19, 2012 at 03:59:23PM +1100, David Gibson wrote:
+> Currently the virtio balloon device, when using the virtio-pci interface
+> advertises itself with PCI class code MEMORY_RAM.  This is wrong; the
+> balloon is vaguely related to memory, but is nothing like a PCI memory
+> device in the meaning of the class code, and this code is not required or
+> suggested by the virtio PCI specification.
 > 
-> > pc-bios/keymaps
+> Worse, this patch causes problems on the pseries machine, because the
+> firmware, seeing this class code, advertises the device as memory in the
+> device tree, and then a guest kernel bug causes it to see this "memory"
+> before the real system memory, leading to a crash in early boot.
 > 
-> Oh yes, missed that one (since it's a directory name cunningly
-> hidden in a variable named FILES :-)).
+> This patch fixes the problem by removing the bogus PCI class code on the
+> balloon device.
 > 
-> I'm just a little wary of 'rm -rf', especially here where
-> we're nuking whatever was passed as an argument and we
-> aren't getting the shell quoting right. In theory we could
-> use a wildcard for the keymaps the same way we do for a
-> bunch of the other pc-bios files; I'm not sure if it's worth
-> the effort, though.
+> Cc: Michael S. Tsirkin <mst@redhat.com>
+> Cc: Rusty Russell <rusty@rustcorp.com.au>
+> 
+> Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+> ---
+>  hw/virtio-pci.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
-Yes, I'm not comfortable with the 'rm -rf' either.  Please use "$2" so
-that the path is at least quoted.
+Since this is a guest-visible change we might need to be careful about
+how it's introduced.
 
-Stefan
+Do we need to keep the old class code for existing machine types?  The
+new class code could be introduced only for 1.1 and later machine types
+if we want to be extra careful about introducing guest-visible changes.
+
+Michael: Do you want to take it through your tree?
+
+Reviewed-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
 
