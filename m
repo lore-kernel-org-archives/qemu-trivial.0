@@ -1,49 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S9OQT-0005tx-DS
-	for mharc-qemu-trivial@gnu.org; Sun, 18 Mar 2012 18:18:09 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34088)
+	id 1S9SAK-0007CU-9G
+	for mharc-qemu-trivial@gnu.org; Sun, 18 Mar 2012 22:17:44 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:40350)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1S9OQQ-0005su-Cj
-	for qemu-trivial@nongnu.org; Sun, 18 Mar 2012 18:18:07 -0400
+	(envelope-from <dwg@au1.ibm.com>) id 1S9SAG-0007Bk-Oz
+	for qemu-trivial@nongnu.org; Sun, 18 Mar 2012 22:17:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1S9OQM-0001dG-TM
-	for qemu-trivial@nongnu.org; Sun, 18 Mar 2012 18:18:05 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59951)
+	(envelope-from <dwg@au1.ibm.com>) id 1S9SAD-0006JK-K5
+	for qemu-trivial@nongnu.org; Sun, 18 Mar 2012 22:17:40 -0400
+Received: from e23smtp05.au.ibm.com ([202.81.31.147]:47254)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1S9OQM-0001cy-MF
-	for qemu-trivial@nongnu.org; Sun, 18 Mar 2012 18:18:02 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	E7CD372800A1; Sun, 18 Mar 2012 23:18:00 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id j5k3ogpzV88Z; Sun, 18 Mar 2012 23:18:00 +0100 (CET)
-Received: from flocke.weilnetz.de (p5086F20B.dip.t-dialin.net [80.134.242.11])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	20606728009F; Sun, 18 Mar 2012 23:18:00 +0100 (CET)
-Received: from localhost ([127.0.0.1] ident=stefan)
-	by flocke.weilnetz.de with esmtp (Exim 4.72)
-	(envelope-from <sw@weilnetz.de>)
-	id 1S9OQJ-0005b2-Pq; Sun, 18 Mar 2012 23:17:59 +0100
-Message-ID: <4F665F17.1060505@weilnetz.de>
-Date: Sun, 18 Mar 2012 23:17:59 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.1.16) Gecko/20120207 Iceowl/1.0b1 Icedove/3.0.11
+	(envelope-from <dwg@au1.ibm.com>) id 1S9SAC-0006IH-Kg
+	for qemu-trivial@nongnu.org; Sun, 18 Mar 2012 22:17:37 -0400
+Received: from /spool/local
+	by e23smtp05.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <dwg@au1.ibm.com>;
+	Mon, 19 Mar 2012 02:13:11 +1000
+Received: from d23relay03.au.ibm.com (202.81.31.245)
+	by e23smtp05.au.ibm.com (202.81.31.211) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Mon, 19 Mar 2012 02:13:09 +1000
+Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
+	by d23relay03.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	q2J2HAtT1253434; Mon, 19 Mar 2012 13:17:13 +1100
+Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	q2J2HAfX021532; Mon, 19 Mar 2012 13:17:10 +1100
+Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.190.163.12])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	q2J2HARi021526; Mon, 19 Mar 2012 13:17:10 +1100
+Received: by ozlabs.au.ibm.com (Postfix, from userid 1010)
+	id 2023873A0A; Mon, 19 Mar 2012 13:17:10 +1100 (EST)
+Date: Mon, 19 Mar 2012 13:17:06 +1100
+From: David Gibson <dwg@au1.ibm.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20120319021706.GA32554@truffala.fritz.box>
+Mail-Followup-To: "Michael S. Tsirkin" <mst@redhat.com>,
+	aliguori@us.ibm.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Rusty Russell <rusty@rustcorp.com.au>
+References: <1331859788-6522-1-git-send-email-david@gibson.dropbear.id.au>
+	<20120318123840.GF29902@redhat.com>
 MIME-Version: 1.0
-To: Blue Swirl <blauwirbel@gmail.com>
-References: <1332108898-6377-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1332108898-6377-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20120318123840.GF29902@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+x-cbid: 12031816-1396-0000-0000-000000D54067
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 1/3] Add support for target helper
- functions which don't return
+X-Received-From: 202.81.31.147
+Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com,
+	Rusty Russell <rusty@rustcorp.com.au>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Remove PCI class code from virtio
+	balloon device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,81 +65,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 18 Mar 2012 22:18:07 -0000
+X-List-Received-Date: Mon, 19 Mar 2012 02:17:42 -0000
 
-Am 18.03.2012 23:14, schrieb Stefan Weil:
-> Most functions which handle exceptions don't return.
->
-> With a compiler attribute (added by QEMU_NORETURN),
-> gcc can optimize the code.
->
-> Signed-off-by: Stefan Weil<sw@weilnetz.de>
-> ---
->   def-helper.h |    7 +++++++
->   1 files changed, 7 insertions(+), 0 deletions(-)
->
-> diff --git a/def-helper.h b/def-helper.h
-> index 0e70c31..b98ff69 100644
-> --- a/def-helper.h
-> +++ b/def-helper.h
-> @@ -39,6 +39,7 @@
->   #endif
->   #define dh_alias_ptr ptr
->   #define dh_alias_void void
-> +#define dh_alias_noreturn noreturn
->   #define dh_alias_env ptr
->   #define dh_alias(t) glue(dh_alias_, t)
->
-> @@ -52,36 +53,42 @@
->   #define dh_ctype_tl target_ulong
->   #define dh_ctype_ptr void *
->   #define dh_ctype_void void
-> +#define dh_ctype_noreturn void QEMU_NORETURN
->   #define dh_ctype_env CPUArchState *
->   #define dh_ctype(t) dh_ctype_##t
->
->   /* We can't use glue() here because it falls foul of C preprocessor
->      recursive expansion rules.  */
->   #define dh_retvar_decl0_void void
-> +#define dh_retvar_decl0_noreturn void
->   #define dh_retvar_decl0_i32 TCGv_i32 retval
->   #define dh_retvar_decl0_i64 TCGv_i64 retval
->   #define dh_retvar_decl0_ptr TCGv_ptr retval
->   #define dh_retvar_decl0(t) glue(dh_retvar_decl0_, dh_alias(t))
->
->   #define dh_retvar_decl_void
-> +#define dh_retvar_decl_noreturn
->   #define dh_retvar_decl_i32 TCGv_i32 retval,
->   #define dh_retvar_decl_i64 TCGv_i64 retval,
->   #define dh_retvar_decl_ptr TCGv_ptr retval,
->   #define dh_retvar_decl(t) glue(dh_retvar_decl_, dh_alias(t))
->
->   #define dh_retvar_void TCG_CALL_DUMMY_ARG
-> +#define dh_retvar_noreturn TCG_CALL_DUMMY_ARG
->   #define dh_retvar_i32 GET_TCGV_i32(retval)
->   #define dh_retvar_i64 GET_TCGV_i64(retval)
->   #define dh_retvar_ptr GET_TCGV_ptr(retval)
->   #define dh_retvar(t) glue(dh_retvar_, dh_alias(t))
->
->   #define dh_is_64bit_void 0
-> +#define dh_is_64bit_noreturn 0
->   #define dh_is_64bit_i32 0
->   #define dh_is_64bit_i64 1
->   #define dh_is_64bit_ptr (TCG_TARGET_REG_BITS == 64)
->   #define dh_is_64bit(t) glue(dh_is_64bit_, dh_alias(t))
->
->   #define dh_is_signed_void 0
-> +#define dh_is_signed_noreturn 0
->   #define dh_is_signed_i32 0
->   #define dh_is_signed_s32 1
->   #define dh_is_signed_i64 0
->    
+On Sun, Mar 18, 2012 at 02:38:42PM +0200, Michael S. Tsirkin wrote:
+> On Fri, Mar 16, 2012 at 12:03:08PM +1100, David Gibson wrote:
+> > Currently the virtio balloon device, when using the virtio-pci interface
+> > advertises itself with PCI class code MEMORY_RAM.  This is wrong; the
+> > balloon is vaguely related to memory, but is nothing like a PCI memory
+> > device in the meaning of the class code, and this code is not required or
+> > suggested by the virtio PCI specification.
+> > 
+> > Worse, this patch causes problems on the pseries machine, because the
+> > firmware, seeing this class code, advertises the device as memory in the
+> > device tree, and then a guest kernel bug causes it to see this "memory"
+> > before the real system memory, leading to a crash in early boot.
+> > 
+> > This patch fixes the problem by removing the bogus PCI class code on the
+> > balloon device.
+> > 
+> > Cc: Michael S. Tsirkin <mst@redhat.com>
+> > Cc: Rusty Russell <rusty@rustcorp.com.au>
+> > 
+> > Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+> 
+> Well, this gives the class a legacy value 00,
+> and the PCI spec says we should not use this:
+> 
+> D.1.
+> Base Class 00h
+> This base class is defined to provide backward compatibility for devices
+> that were built
+> before the Class Code field was defined. No new devices should use this
+> value and existing
+> devices should switch to a more appropriate value if possible.
+> For class codes with this base class value, there are two defined values
+> for the remaining
+> fields as shown in the table below. All other values are reserved.
+> Base Class
+> 00h
+> Sub-Class
+> Interface
+> 00h
+> 01h
+> VGA-compatible device
+> 00h
+> 00h
+> All currently implemented devices
+> except VGA-compatible devices
+> 
+> You probably want this instead:
+> 
+> #define PCI_CLASS_OTHERS		0xff
 
-I'm sorry, these three patches should have been sent to qemu-devel,
-not qemu-trivial. Please ignore them for qemu-trivial.
+Ah, thanks.  I had mistakenly assumed that 0 meant "no class
+specified".  I'll respin changing to PCI_CLASS_OTHERS.
 
-Best regards,
-
-Stefan W.
+-- 
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
 
