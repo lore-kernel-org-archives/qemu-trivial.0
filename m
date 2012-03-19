@@ -1,32 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1S9UhN-0000ic-P0
+	id 1S9UhN-0000hN-FJ
 	for mharc-qemu-trivial@gnu.org; Mon, 19 Mar 2012 01:00:01 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34710)
+Received: from eggs.gnu.org ([208.118.235.92]:34707)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1S9UhJ-0000SO-CL
+	(envelope-from <dgibson@ozlabs.org>) id 1S9UhI-0000Rq-QU
 	for qemu-trivial@nongnu.org; Mon, 19 Mar 2012 00:59:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1S9UhH-0005dy-M1
+	(envelope-from <dgibson@ozlabs.org>) id 1S9UhH-0005dr-8g
 	for qemu-trivial@nongnu.org; Mon, 19 Mar 2012 00:59:56 -0400
-Received: from ozlabs.org ([203.10.76.45]:39928)
+Received: from ozlabs.org ([203.10.76.45]:44938)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <dgibson@ozlabs.org>)
-	id 1S9Ugu-0005aq-HZ; Mon, 19 Mar 2012 00:59:32 -0400
+	id 1S9Ugu-0005ap-CZ; Mon, 19 Mar 2012 00:59:32 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 52EEEB6FE5; Mon, 19 Mar 2012 15:59:30 +1100 (EST)
+	id 19702B6FBD; Mon, 19 Mar 2012 15:59:29 +1100 (EST)
 From: David Gibson <david@gibson.dropbear.id.au>
 To: anthony@codemonkey.ws
-Date: Mon, 19 Mar 2012 15:59:23 +1100
-Message-Id: <1332133163-7890-1-git-send-email-david@gibson.dropbear.id.au>
+Date: Mon, 19 Mar 2012 15:58:45 +1100
+Message-Id: <1332133125-7832-1-git-send-email-david@gibson.dropbear.id.au>
 X-Mailer: git-send-email 1.7.9.1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 203.10.76.45
-Cc: qemu-trivial@nongnu.org, Rusty Russell <rusty@rustcorp.com.au>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
 	David Gibson <david@gibson.dropbear.id.au>
-Subject: [Qemu-trivial] [PATCH] Remove PCI class code from virtio balloon
-	device
+Subject: [Qemu-trivial] [PATCH] .gitignore update
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,41 +38,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 19 Mar 2012 04:59:59 -0000
 
-Currently the virtio balloon device, when using the virtio-pci interface
-advertises itself with PCI class code MEMORY_RAM.  This is wrong; the
-balloon is vaguely related to memory, but is nothing like a PCI memory
-device in the meaning of the class code, and this code is not required or
-suggested by the virtio PCI specification.
-
-Worse, this patch causes problems on the pseries machine, because the
-firmware, seeing this class code, advertises the device as memory in the
-device tree, and then a guest kernel bug causes it to see this "memory"
-before the real system memory, leading to a crash in early boot.
-
-This patch fixes the problem by removing the bogus PCI class code on the
-balloon device.
-
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Cc: Rusty Russell <rusty@rustcorp.com.au>
+This adds a few previously missing generated files to .gitignore: the
+qemu-bridge-helper binary, and more generated versions of the
+linuxboot, multiboot and kvmvapic roms from pc-bios/optionrom.
 
 Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
 ---
- hw/virtio-pci.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ .gitignore |    6 ++++++
+ 1 files changed, 6 insertions(+), 0 deletions(-)
 
-diff --git a/hw/virtio-pci.c b/hw/virtio-pci.c
-index a0fb7c1..da8a382 100644
---- a/hw/virtio-pci.c
-+++ b/hw/virtio-pci.c
-@@ -919,7 +919,7 @@ static void virtio_balloon_class_init(ObjectClass *klass, void *data)
-     k->vendor_id = PCI_VENDOR_ID_REDHAT_QUMRANET;
-     k->device_id = PCI_DEVICE_ID_VIRTIO_BALLOON;
-     k->revision = VIRTIO_PCI_ABI_VERSION;
--    k->class_id = PCI_CLASS_MEMORY_RAM;
-+    k->class_id = PCI_CLASS_OTHERS;
-     dc->reset = virtio_pci_reset;
-     dc->props = virtio_balloon_properties;
- }
+diff --git a/.gitignore b/.gitignore
+index 81b1510..9859c7d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -39,6 +39,7 @@ qemu-img-cmds.texi
+ qemu-img-cmds.h
+ qemu-io
+ qemu-ga
++qemu-bridge-helper
+ qemu-monitor.texi
+ QMP/qmp-commands.txt
+ test-coroutine
+@@ -75,9 +76,14 @@ patches
+ pc-bios/bios-pq/status
+ pc-bios/vgabios-pq/status
+ pc-bios/optionrom/linuxboot.bin
++pc-bios/optionrom/linuxboot.raw
++pc-bios/optionrom/linuxboot.img
+ pc-bios/optionrom/multiboot.bin
+ pc-bios/optionrom/multiboot.raw
++pc-bios/optionrom/multiboot.img
+ pc-bios/optionrom/kvmvapic.bin
++pc-bios/optionrom/kvmvapic.raw
++pc-bios/optionrom/kvmvapic.img
+ .stgit-*
+ cscope.*
+ tags
 -- 
 1.7.9.1
 
