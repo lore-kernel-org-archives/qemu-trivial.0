@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SAJrC-0006HR-MO
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Mar 2012 07:37:34 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:55048)
+	id 1SAKfc-0006Kp-Rd
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Mar 2012 08:29:40 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:45867)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SAJr6-00060a-AQ
-	for qemu-trivial@nongnu.org; Wed, 21 Mar 2012 07:37:32 -0400
+	(envelope-from <armbru@redhat.com>) id 1SAKfU-0005wh-VP
+	for qemu-trivial@nongnu.org; Wed, 21 Mar 2012 08:29:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SAJqz-0001iC-RZ
-	for qemu-trivial@nongnu.org; Wed, 21 Mar 2012 07:37:27 -0400
-Received: from mail-iy0-f173.google.com ([209.85.210.173]:43475)
+	(envelope-from <armbru@redhat.com>) id 1SAKfP-0007FR-UU
+	for qemu-trivial@nongnu.org; Wed, 21 Mar 2012 08:29:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:20225)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SAJqr-0001Zl-Bo; Wed, 21 Mar 2012 07:37:13 -0400
-Received: by iafj26 with SMTP id j26so1661925iaf.4
-	for <multiple recipients>; Wed, 21 Mar 2012 04:37:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=0uxtbkeOxkEcqNartBhpUA1Oyenx8vK9kPdcwJtAZP0=;
-	b=dIryQthKGWFEU1P059X/MTNPlmveCOoOKpD2XdmS/Nuvxx3wZJ8tilngb72aysrxWM
-	bHt6nKjeksfWLDIG2h0gzV4bv/Vjk28Q6T9YzJtBZskK7HwyNE8BY+UTgBcr/DqS6FKh
-	5A659h0CsroI2xiTQKvFUCaFOyu7qEr71LyoCWW9N+njWQUA5hSFAarpfWAZaNU3tg/5
-	5djmdE7kyeDFdxD+M08QSG9y4v5P02B+E9wuO7xl1VfEZRS7pGcMczoAFFXp6JzmIqSc
-	muAQFVd18r+y/p1u6SYmdbns7k+RIScn+dYtYO4f58irBDUt/GeuF3NOgCN/R11eGzgs
-	3fuQ==
+	(envelope-from <armbru@redhat.com>)
+	id 1SAKfH-0007E9-FU; Wed, 21 Mar 2012 08:29:19 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q2LCSViB023075
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 21 Mar 2012 08:28:31 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-65.ams2.redhat.com
+	[10.36.116.65])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q2LCSU1W023405; Wed, 21 Mar 2012 08:28:31 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 500)
+	id 4DF076007D; Wed, 21 Mar 2012 13:28:30 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: alexey.korolev@endace.com
+References: <1330479314.29508.7.camel@nzhmlwks0057.ad.endace.com>
+	<1332307597.20383.2.camel@nzhmlwks0057.ad.endace.com>
+Date: Wed, 21 Mar 2012 13:28:30 +0100
+In-Reply-To: <1332307597.20383.2.camel@nzhmlwks0057.ad.endace.com> (Alexey
+	Korolev's message of "Wed, 21 Mar 2012 18:26:37 +1300")
+Message-ID: <m3r4wmm93l.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/23.3 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.50.88.165 with SMTP id bh5mr2498684igb.28.1332329831004; Wed,
-	21 Mar 2012 04:37:11 -0700 (PDT)
-Received: by 10.231.65.16 with HTTP; Wed, 21 Mar 2012 04:37:10 -0700 (PDT)
-In-Reply-To: <1332202706-25061-1-git-send-email-mdroth@linux.vnet.ibm.com>
-References: <1332202706-25061-1-git-send-email-mdroth@linux.vnet.ibm.com>
-Date: Wed, 21 Mar 2012 11:37:10 +0000
-Message-ID: <CAJSP0QXFP-M-d0yX91qY-3--YNse=O=kvRhytZ=+3hmgyuD4AQ@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Michael Roth <mdroth@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.210.173
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] test: remove qemu-ga
-	reference
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix typo in i400FX chipset
+	init code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,48 +52,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Mar 2012 11:37:32 -0000
+X-List-Received-Date: Wed, 21 Mar 2012 12:29:39 -0000
 
-On Tue, Mar 20, 2012 at 12:18 AM, Michael Roth
-<mdroth@linux.vnet.ibm.com> wrote:
-> This was added by mistake a while back.
+Alexey Korolev <alexey.korolev@endace.com> writes:
+
+>> Hi,
+>> 
+>> There is a typo in i440FX init code. This is causing problems when
+>> somebody wants to access 64bit PCI range.
+>> 
+>> 
+>> Signed-off-by: Alexey Korolev <alexey.korolev@endace.com>
+>> ---
+>> 
+>>  hw/piix_pci.c |    2 +-
+>>  1 files changed, 1 insertions(+), 1 deletions(-)
+>> 
+>> diff --git a/hw/piix_pci.c b/hw/piix_pci.c
+>> index 3ed3d90..aab8188 100644
+>> --- a/hw/piix_pci.c
+>> +++ b/hw/piix_pci.c
+>> @@ -353,7 +353,7 @@ PCIBus *i440fx_init(PCII440FXState **pi440fx_state, int *piix3_devfn,
+>>      b = i440fx_common_init("i440FX", pi440fx_state, piix3_devfn, isa_bus, pic,
+>>                             address_space_mem, address_space_io, ram_size,
+>>                             pci_hole_start, pci_hole_size,
+>> -                           pci_hole64_size, pci_hole64_size,
+>> +                           pci_hole64_start, pci_hole64_size,
+>>                             pci_memory, ram_memory);
+>>      return b;
+>>  }
+>> 
+>> 
+>> 
+> Hi there,
 >
-> Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
-> ---
-> =A0tests/Makefile | =A0 =A02 +-
-> =A01 files changed, 1 insertions(+), 1 deletions(-)
+> Any chance that someone could have a look and commit this?
 
-After applying your series and rebuilding, I get the following error.
-I checked that there are no auto-generated files left around after
-make distclean.
-
-$ make distclean
-$ ./configure --target-list=3Dx86_64-softmmu --disable-werror
-$ make
-  GEN   x86_64-softmmu/config-devices.mak
-  GEN   config-all-devices.mak
-  GEN   qemu-options.texi
-  GEN   qemu-monitor.texi
-  GEN   qemu-img-cmds.texi
-  GEN   qemu-doc.html
-  GEN   qemu-tech.html
-  GEN   qemu.1
-  GEN   qemu-img.1
-  GEN   qemu-nbd.8
-  GEN   QMP/qmp-commands.txt
-  GEN   config-host.h
-  GEN   trace.h
-  GEN   qemu-options.def
-  GEN   qmp-commands.h
-  GEN   qapi-types.h
-  GEN   qapi-visit.h
-  GEN   /home/stefanha/qemu/qapi-generated/qga-qapi-types.h
-  GEN   /home/stefanha/qemu/qapi-generated/qga-qapi-visit.h
-  GEN   /home/stefanha/qemu/qapi-generated/qga-qmp-commands.h
-  CC    qemu-ga.o
-  CC    qga/commands.o
-qga/commands.c:15:30: fatal error: qga-qmp-commands.h: No such file or dire=
-ctory
-compilation terminated.
-make: *** [qga/commands.o] Error 1
+Stefan, would you like to take this through your trivial queue?
 
