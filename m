@@ -1,57 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SAN7m-0002t6-Ta
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Mar 2012 11:06:54 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:37291)
+	id 1SANBY-0004Ro-I4
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Mar 2012 11:10:48 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44016)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <flukshun@gmail.com>) id 1SAN7e-0002WX-R4
-	for qemu-trivial@nongnu.org; Wed, 21 Mar 2012 11:06:52 -0400
+	(envelope-from <mst@redhat.com>) id 1SANBP-0004Og-9c
+	for qemu-trivial@nongnu.org; Wed, 21 Mar 2012 11:10:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <flukshun@gmail.com>) id 1SAN7Y-0001dd-IU
-	for qemu-trivial@nongnu.org; Wed, 21 Mar 2012 11:06:46 -0400
-Received: from mail-yx0-f173.google.com ([209.85.213.173]:50162)
+	(envelope-from <mst@redhat.com>) id 1SANBI-0002SX-T4
+	for qemu-trivial@nongnu.org; Wed, 21 Mar 2012 11:10:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:26316)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <flukshun@gmail.com>)
-	id 1SAN7O-0001bx-AX; Wed, 21 Mar 2012 11:06:30 -0400
-Received: by yenr5 with SMTP id r5so1187530yen.4
-	for <multiple recipients>; Wed, 21 Mar 2012 08:06:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=dxLPmnSAfSFE5Z5FbIIYXCXEMy9kOTo5jOvu1TqJCQI=;
-	b=Mo0D+po4Xu94geujQK+gKHp7DbLRSwtDUQLJnFy12+bQyFchur9NxURGNFaWJ6MdQL
-	tXe4jZiZ5el7uOgHewTLILcpcpXvwH1IUOFTJQlHiUaNKp8XrzSy5I6/tVh2yGoG/5+X
-	485CA4gKmyX2vyWBqfIYh/BuCXQfdVPj7AwmqY5+AO7363tjon01xWCGT7mc5oG7gIzN
-	onAj6uGGpUcULN9ofME7dpi/ljn7QDX62zU4BvEfZ76i/Qvgie1M+dO8sM9euSv64Ui4
-	SmXUSi4b/mw9usNfPiRtV62yErsdZiIK90d3c6EWIgbDFof47bAVsIwQwihXtc1pA62p
-	saaw==
-Received: by 10.60.26.166 with SMTP id m6mr4926489oeg.45.1332342387538;
-	Wed, 21 Mar 2012 08:06:27 -0700 (PDT)
-Received: from illuin.morrigu.org ([32.97.110.59])
-	by mx.google.com with ESMTPS id w4sm1816121obx.2.2012.03.21.08.06.24
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 21 Mar 2012 08:06:26 -0700 (PDT)
-Sender: fluxion <flukshun@gmail.com>
-Received: by illuin.morrigu.org (sSMTP sendmail emulation);
-	Wed, 21 Mar 2012 10:06:23 -0500
-Date: Wed, 21 Mar 2012 10:06:23 -0500
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Message-ID: <20120321150623.GB18965@illuin>
-References: <1332202706-25061-1-git-send-email-mdroth@linux.vnet.ibm.com>
-	<CAJSP0QXFP-M-d0yX91qY-3--YNse=O=kvRhytZ=+3hmgyuD4AQ@mail.gmail.com>
+	(envelope-from <mst@redhat.com>)
+	id 1SANBI-0002SP-LA; Wed, 21 Mar 2012 11:10:32 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q2LFASjQ022296
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 21 Mar 2012 11:10:28 -0400
+Received: from redhat.com (vpn-201-23.tlv.redhat.com [10.35.201.23])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id q2LFAO6g015996; Wed, 21 Mar 2012 11:10:25 -0400
+Date: Wed, 21 Mar 2012 17:10:44 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Anthony Liguori <anthony@codemonkey.ws>
+Message-ID: <20120321151043.GA22707@redhat.com>
+References: <1332133163-7890-1-git-send-email-david@gibson.dropbear.id.au>
+	<20120319113310.GD30033@stefanha-thinkpad.localdomain>
+	<20120320004206.GB22089@truffala.fritz.box>
+	<CAJSP0QU4azkZic4GM++uXtj91b_vdXT=TETXTr1AD0qXxii28A@mail.gmail.com>
+	<20120320101947.GA19542@truffala.fritz.box>
+	<20120321112615.GA15090@stefanha-thinkpad.localdomain>
+	<20120321130852.GC21467@redhat.com>
+	<4F69E8E1.8050004@codemonkey.ws>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAJSP0QXFP-M-d0yX91qY-3--YNse=O=kvRhytZ=+3hmgyuD4AQ@mail.gmail.com>
+In-Reply-To: <4F69E8E1.8050004@codemonkey.ws>
 User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.213.173
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] test: remove qemu-ga
-	reference
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Rusty Russell <rusty@rustcorp.com.au>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Remove PCI class code from
+ virtio balloon device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,55 +56,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Mar 2012 15:06:53 -0000
+X-List-Received-Date: Wed, 21 Mar 2012 15:10:47 -0000
 
-On Wed, Mar 21, 2012 at 11:37:10AM +0000, Stefan Hajnoczi wrote:
-> On Tue, Mar 20, 2012 at 12:18 AM, Michael Roth
-> <mdroth@linux.vnet.ibm.com> wrote:
-> > This was added by mistake a while back.
+On Wed, Mar 21, 2012 at 09:42:41AM -0500, Anthony Liguori wrote:
+> On 03/21/2012 08:08 AM, Michael S. Tsirkin wrote:
+> >On Wed, Mar 21, 2012 at 11:26:15AM +0000, Stefan Hajnoczi wrote:
+> >>On Tue, Mar 20, 2012 at 09:19:47PM +1100, David Gibson wrote:
+> >>Looking at hw/pc_piix.c there are QEMUMachine types for each QEMU
+> >>release.  Legacy machine types (e.g. pc_machine_v0_14) have a
+> >>.compat_props array that can override qdev properties.
+> >>
+> >>Perhaps Michael Tsirkin or someone else can comment on how to wire up
+> >>hw/virtio-pci.c so that the class code can be overridden.
+> >>
+> >>Stefan
 > >
-> > Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
-> > ---
-> >  tests/Makefile |    2 +-
-> >  1 files changed, 1 insertions(+), 1 deletions(-)
+> >afaik we already let users over-write it for some other pci devices,
+> >look there for examples.
 > 
-> After applying your series and rebuilding, I get the following error.
-> I checked that there are no auto-generated files left around after
-> make distclean.
+> From hw/pc_piix.c:
+> 
+>     .name = "pc-0.10",
+>     .desc = "Standard PC, qemu 0.10",
+>     .init = pc_init_pci_no_kvmclock,
+>     .max_cpus = 255,
+>     .compat_props = (GlobalProperty[]) {
+>         {
+>             .driver   = "virtio-blk-pci",
+>             .property = "class",
+>             .value    = stringify(PCI_CLASS_STORAGE_OTHER),
+>         },{
+> 
+> And from the earlier part of the thread, yes, it's imperative that
+> we do not change anything in the PCI configuration space for older
+> pc versions regardless of whether it may or may not work.
+> 
+> Certain guests (like Windows) use a complex fingerprinting algorithm
+> to determine when hardware changes.  It can be hard to detect in
+> simple testing because it's based on a threshold.
+> 
+> Regards,
+> 
+> Anthony Liguori
 
-Shoot, sorry, I must've only tested make check after the change. It looks
-like qemu-ga target is relying on that dependency being sourced from
-tests/Makefile. I'll send an updated 1/3 that moves it to top-level
-Makefile where it should be.
+Which reminds me - qemu sticks the release version in
+guest visible places like CPU version.
+This is wrong and causes windows guests to print messages
+about driver updates when you switch.
+We should find all these places and stop doing this.
 
-> 
-> $ make distclean
-> $ ./configure --target-list=x86_64-softmmu --disable-werror
-> $ make
->   GEN   x86_64-softmmu/config-devices.mak
->   GEN   config-all-devices.mak
->   GEN   qemu-options.texi
->   GEN   qemu-monitor.texi
->   GEN   qemu-img-cmds.texi
->   GEN   qemu-doc.html
->   GEN   qemu-tech.html
->   GEN   qemu.1
->   GEN   qemu-img.1
->   GEN   qemu-nbd.8
->   GEN   QMP/qmp-commands.txt
->   GEN   config-host.h
->   GEN   trace.h
->   GEN   qemu-options.def
->   GEN   qmp-commands.h
->   GEN   qapi-types.h
->   GEN   qapi-visit.h
->   GEN   /home/stefanha/qemu/qapi-generated/qga-qapi-types.h
->   GEN   /home/stefanha/qemu/qapi-generated/qga-qapi-visit.h
->   GEN   /home/stefanha/qemu/qapi-generated/qga-qmp-commands.h
->   CC    qemu-ga.o
->   CC    qga/commands.o
-> qga/commands.c:15:30: fatal error: qga-qmp-commands.h: No such file or directory
-> compilation terminated.
-> make: *** [qga/commands.o] Error 1
-> 
+> >
+> >
 
