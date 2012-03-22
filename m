@@ -1,49 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SAfFV-0000PH-07
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2012 06:28:05 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39960)
+	id 1SAfhm-0007kk-HX
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2012 06:57:18 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:37135)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SAfFP-000091-Sz
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2012 06:28:04 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1SAfhg-0007Xw-IT
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2012 06:57:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SAfFO-0002i1-67
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2012 06:27:59 -0400
-Received: from mail-lpp01m010-f45.google.com ([209.85.215.45]:63880)
+	(envelope-from <peter.maydell@linaro.org>) id 1SAfha-0008Vv-Cq
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2012 06:57:12 -0400
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:34851)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SAfFB-0002fJ-TC; Thu, 22 Mar 2012 06:27:46 -0400
-Received: by lahe6 with SMTP id e6so1566786lah.4
-	for <multiple recipients>; Thu, 22 Mar 2012 03:27:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	(envelope-from <peter.maydell@linaro.org>) id 1SAfha-0008VV-6W
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2012 06:57:06 -0400
+Received: by iafj26 with SMTP id j26so3352706iaf.4
+	for <qemu-trivial@nongnu.org>; Thu, 22 Mar 2012 03:57:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=d3qDZzMAl4PlE8kJxDXJpBoCv5ePnLhv38IFFeaARl0=;
-	b=uVSJvnAQh4s28448zw2TX7SSQESpunc98HYcdIQYtgtLfVsWG5muR0FoWPgJfll7Ck
-	FzNW4U5eAJg/MX9Qrddc3+VC/kxG2dGwmiW8VSSyrTLfzl4HLWvA9UIGWIyPejl/ZGH0
-	Ut8T+nnR2jAWla0FQBKmpc1gejPjuG7G0CR7B/z8lor4DOQnWgFtXbFauQc0l0+BWbI2
-	k/p4vJvaT7PQdiQ/X/oCGT1h5Tg3aRRYJ+RuMfpCOkZA0kS54lAGt7yU1skJKxVSFuHG
-	AFgUBk32IREbUTrB/TVfSzwA/+KKY7+LKspXh6rAa15yJEG2RqgV6xZescPMgbHJjWGk
-	5X4A==
+	:cc:content-type:x-gm-message-state;
+	bh=xvOP54jV9xfOzpZi0d68wZxMYnRrIFqNYpMbkmNTe0Y=;
+	b=LKviHSf/GGRl3N4cCZo4Hm4gUd4iTzboo0qbNEigZY+hbBylnkLW+rZauTEpTva+ei
+	c3K6TCd8TPf700bKBTHc6GEJHVqWLYlincjrY4sTDti8pWmLZgi/GNj1oh2+jenoMAqK
+	AvQk08EVdIO1T99Afae2miE9hjLYX58kn5XZRWChisBOtynWR6Nb5SsEca8tZhVXSsJZ
+	RVshyhoZ0Fzu50QzYdam4Y94H80fNXAleIG8AKa6LTxLuzkDMKdH6JOMbhRnQuZUt9oR
+	+N4fieEyVvm7ZfjkprG0Xz0+8MZUrPBMfUMmL34hLl7iKxQXVYL9W64Nn6RKk7U3MyBy
+	Z6jQ==
 MIME-Version: 1.0
-Received: by 10.112.102.65 with SMTP id fm1mr2476465lbb.82.1332412062872; Thu,
-	22 Mar 2012 03:27:42 -0700 (PDT)
-Received: by 10.112.80.167 with HTTP; Thu, 22 Mar 2012 03:27:42 -0700 (PDT)
-In-Reply-To: <4F6A6CCE.4000904@redhat.com>
+Received: by 10.50.153.169 with SMTP id vh9mr1049709igb.41.1332413823525; Thu,
+	22 Mar 2012 03:57:03 -0700 (PDT)
+Received: by 10.50.100.198 with HTTP; Thu, 22 Mar 2012 03:57:03 -0700 (PDT)
+In-Reply-To: <1332363767-21327-1-git-send-email-peter.portante@redhat.com>
 References: <1332363767-21327-1-git-send-email-peter.portante@redhat.com>
-	<4F6A6CCE.4000904@redhat.com>
-Date: Thu, 22 Mar 2012 10:27:42 +0000
-Message-ID: <CAJSP0QU4j3Fpki3vV8dKgC4a=OBuNiuepCMm4Qenw6AUuWZPFQ@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: peter.portante@redhat.com
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+Date: Thu, 22 Mar 2012 10:57:03 +0000
+Message-ID: <CAFEAcA-S_vooBfKeAFB0aOrgwoaR+JB60YoRtOJC0MhaKx4v_Q@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Peter Portante <peter.portante@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQlW7E8uPfcVjP56aggqT0K6jvYePe9/zKX6FbcxwrmoUmrFSUso57IhasJB1ncTh+9v+QZ1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.215.45
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 0/4] More whitespace and coding style
- clean ups ahead of future changes
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] More whitespace and
+ coding style clean ups ahead of future changes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,46 +54,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Mar 2012 10:28:04 -0000
+X-List-Received-Date: Thu, 22 Mar 2012 10:57:17 -0000
 
-On Thu, Mar 22, 2012 at 12:05 AM, Paolo Bonzini <pbonzini@redhat.com> wrote=
-:
-> Il 21/03/2012 22:02, Peter Portante ha scritto:
->> Hi Folks,
->>
->> Please forgive me if you find these changes are annoying, as I am trying=
- to
->> learn the ropes of patch submission with git ahead of making a real patc=
-h.
->>
->> While working on the code, I found that scripts/checkpatch.pl will flag =
-lines
->> that I am changing as not adhereing to the codeing standard due to
->> pre-existing coding violations. So I figured I could learn a bit about h=
-ow to
->> submit patches by fixing these files I will be touching before submittin=
-g the
->> code changes.
->
-> I think slirp is a mess and it's not worth doing this kind of sweeping
-> change. =A0Just ignore checkpatch output for slirp.
+On 21 March 2012 21:02, Peter Portante <peter.portante@redhat.com> wrote:
+> Please forgive me if you find these changes are annoying, as I am trying to
+> learn the ropes of patch submission with git ahead of making a real patch.
 
-Please resend without slirp changes.  I suggest including the
-individual block/raw-posix.c patch you sent in the new series too.
+I'd recommend using git format-patch's --cover-letter option to create your
+'cover letter' patch, as this will include a diffstat and summary of
+all the patches in the patchset.
 
-> For the others, the changes are pretty small so they could be doable.
-> If you want to change them then please also add braces around if statemen=
-ts.
+> While working on the code, I found that scripts/checkpatch.pl will flag lines
+> that I am changing as not adhereing to the codeing standard due to
+> pre-existing coding violations. So I figured I could learn a bit about how to
+> submit patches by fixing these files I will be touching before submitting the
+> code changes.
 
-If you're doing a whitespace patch please include the 3-space
-indentation issues that checkpatch.pl reports in block/raw-posix.c.
+Whitespace-fixes and other coding-style-only changes are a bit of
+a touchy issue here; they've caused long mailing list arguments in
+the past. Mostly the line we seem to take is "fix issues in new
+code submitted; when patching old code you can fix problems complained
+about in the immediately surrounding few lines". The idea is that
+gradually the codebase moves into line with the style guide without
+having massive style-only changes that break tools like 'git blame'.
+Small changes (like the qemu-timers one) are more likely to be
+accepted than massive ones (like the slirp patches).
 
-> In any case, your patch submission workflow seems to be fine. :P
+Also, it would be helpful if you could split your patches more
+logically into smaller ones which touch the different subsystems:
+any patch which touches all of block_int.h, qemu-timer.c and slirp
+is going to struggle to be reviewed and committed because it is
+trying to modify three different bits of the codebase and so it
+needs agreement from more people. Sometimes a patch really does have
+to touch several different areas, but in this case you're only
+putting roadblocks in your own path...
 
-Please use a prefix in your commit messages, for example "raw-posix:
-whitespace cleanup".  This gives each commit a unique, useful message
-which communicates more than "Yet another whitespace cleanup"-style
-messages.
-
-Stefan
+-- PMM
 
