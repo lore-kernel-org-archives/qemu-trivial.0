@@ -1,54 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SCKz1-0001aN-Do
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Mar 2012 21:13:59 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:51108)
+	id 1SCYYr-0002rn-Ly
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Mar 2012 11:43:53 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:51440)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1SCKyx-0001UN-L2
-	for qemu-trivial@nongnu.org; Mon, 26 Mar 2012 21:13:57 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1SCYYk-0002q2-QQ
+	for qemu-trivial@nongnu.org; Tue, 27 Mar 2012 11:43:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1SCKyu-00005I-LC
-	for qemu-trivial@nongnu.org; Mon, 26 Mar 2012 21:13:55 -0400
-Received: from e36.co.us.ibm.com ([32.97.110.154]:60688)
+	(envelope-from <peter.maydell@linaro.org>) id 1SCYYe-0003w4-KK
+	for qemu-trivial@nongnu.org; Tue, 27 Mar 2012 11:43:46 -0400
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:62169)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1SCKyu-0008Vd-Ee
-	for qemu-trivial@nongnu.org; Mon, 26 Mar 2012 21:13:52 -0400
-Received: from /spool/local
-	by e36.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
-	Mon, 26 Mar 2012 19:13:47 -0600
-Received: from d01dlp03.pok.ibm.com (9.56.224.17)
-	by e36.co.us.ibm.com (192.168.1.136) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 26 Mar 2012 19:13:46 -0600
-Received: from d01relay04.pok.ibm.com (d01relay04.pok.ibm.com [9.56.227.236])
-	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id D0AD1C90052;
-	Mon, 26 Mar 2012 21:13:44 -0400 (EDT)
-Received: from d03av04.boulder.ibm.com (d03av04.boulder.ibm.com [9.17.195.170])
-	by d01relay04.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	q2R1Dikq350286; Mon, 26 Mar 2012 21:13:45 -0400
-Received: from d03av04.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av04.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id q2R1Di2b030307; Mon, 26 Mar 2012 19:13:44 -0600
-Received: from [9.59.241.154] (d941e-10.watson.ibm.com [9.59.241.154])
-	by d03av04.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	q2R1DhMW030282; Mon, 26 Mar 2012 19:13:43 -0600
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Date: Mon, 26 Mar 2012 21:13:37 -0400
-Message-ID: <1332810817.25443.3.camel@d941e-10>
-Mime-Version: 1.0
-X-Mailer: Evolution 2.32.3 (2.32.3-1.fc14) 
-Content-Transfer-Encoding: 7bit
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 12032701-3352-0000-0000-00000397DD6A
+	(envelope-from <peter.maydell@linaro.org>) id 1SCYYe-0003v2-FY
+	for qemu-trivial@nongnu.org; Tue, 27 Mar 2012 11:43:40 -0400
+Received: by iafj26 with SMTP id j26so68822iaf.4
+	for <qemu-trivial@nongnu.org>; Tue, 27 Mar 2012 08:43:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding:x-gm-message-state;
+	bh=23XOO7duY4LXR4TVU6N2XwjJh/57S9/f/VkNvIXHoSc=;
+	b=G4Szyn13xw8PW/25sgpX5tOc6/WV/ngDaFzMUQD5pJOz5zCpW8/pbseXwKQYYJ/0lP
+	WKZjj1qio0Afw9jgtkSTffNBauiL0Aqiyb7HDopNXLcy/CeuYrCvqmDdqV74B5QT/oLg
+	U605B+ow8FmoCnYS1YKHM+pJDXGhHOg86gKGEnMaugF9Ws552pbDPzHucrjHxVAHtumV
+	XrDkcoW7xK+aP2byUFsE2InWW/zropPXYEWp+OFZQRthgctKt+tNRFJYPwLmzGZtF7LH
+	rLXVRlM2hfzUQS1OI5jsOcd80EtY1CBbYy5/cQal+2NA5TBBsUNi1Q+D/xHSVn1YwPR4
+	Ow0g==
+MIME-Version: 1.0
+Received: by 10.50.207.5 with SMTP id ls5mr9043779igc.51.1332863015871; Tue,
+	27 Mar 2012 08:43:35 -0700 (PDT)
+Received: by 10.50.100.198 with HTTP; Tue, 27 Mar 2012 08:43:35 -0700 (PDT)
+In-Reply-To: <4F71D7AD.8080103@codesourcery.com>
+References: <1330121921-23462-1-git-send-email-meadori@codesourcery.com>
+	<4F4814F7.6040008@suse.de> <4F71D7AD.8080103@codesourcery.com>
+Date: Tue, 27 Mar 2012 16:43:35 +0100
+Message-ID: <CAFEAcA8R+J+DeN7V_6bVHhh3kYprA8EKWJXEzfDp7iWjWzYLqQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Meador Inge <meadori@codesourcery.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Gm-Message-State: ALoCoQkUn37d2MGEOPzBbWxwS6j7fpUxPgsOg0zhCJpciuXQZk1l6lN8gdEn2C7sOXMwBhHDFz+a
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 32.97.110.154
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Make live saving stages public and use their
-	#defines
+X-Received-From: 209.85.210.173
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paul Brook <paul@codesourcery.com>,
+	qemu-devel@nongnu.org, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 1/1] m68k: Return
+	semihosting errno values correctly
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,128 +57,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Mar 2012 01:13:57 -0000
+X-List-Received-Date: Tue, 27 Mar 2012 15:43:51 -0000
 
-Make the different stages for live saving of state public and use
-the #defines rather than numbers.
+This patch is simple enough (and m68k unmaintained enough)
+that it could reasonably go through qemu-trivial I think.
 
-Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+-- PMM
 
----
- arch_init.c       |    7 ++++---
- block-migration.c |    8 ++++----
- savevm.c          |    7 -------
- vmstate.h         |    8 ++++++++
- 4 files changed, 16 insertions(+), 14 deletions(-)
-
-Index: qemu/savevm.c
-===================================================================
---- qemu.orig/savevm.c
-+++ qemu/savevm.c
-@@ -1541,13 +1541,6 @@ static void vmstate_save(QEMUFile *f, Sa
- #define QEMU_VM_FILE_VERSION_COMPAT  0x00000002
- #define QEMU_VM_FILE_VERSION         0x00000003
- 
--#define QEMU_VM_EOF                  0x00
--#define QEMU_VM_SECTION_START        0x01
--#define QEMU_VM_SECTION_PART         0x02
--#define QEMU_VM_SECTION_END          0x03
--#define QEMU_VM_SECTION_FULL         0x04
--#define QEMU_VM_SUBSECTION           0x05
--
- bool qemu_savevm_state_blocked(Error **errp)
- {
-     SaveStateEntry *se;
-Index: qemu/vmstate.h
-===================================================================
---- qemu.orig/vmstate.h
-+++ qemu/vmstate.h
-@@ -31,6 +31,14 @@ typedef void SaveStateHandler(QEMUFile *
- typedef int SaveLiveStateHandler(QEMUFile *f, int stage, void *opaque);
- typedef int LoadStateHandler(QEMUFile *f, void *opaque, int version_id);
- 
-+/* stages of the live state handler */
-+#define QEMU_VM_EOF                  0x00
-+#define QEMU_VM_SECTION_START        0x01
-+#define QEMU_VM_SECTION_PART         0x02
-+#define QEMU_VM_SECTION_END          0x03
-+#define QEMU_VM_SECTION_FULL         0x04
-+#define QEMU_VM_SUBSECTION           0x05
-+
- int register_savevm(DeviceState *dev,
-                     const char *idstr,
-                     int instance_id,
-Index: qemu/arch_init.c
-===================================================================
---- qemu.orig/arch_init.c
-+++ qemu/arch_init.c
-@@ -275,7 +275,7 @@ int ram_save_live(QEMUFile *f, int stage
- 
-     memory_global_sync_dirty_bitmap(get_system_memory());
- 
--    if (stage == 1) {
-+    if (stage == QEMU_VM_SECTION_START) {
-         RAMBlock *block;
-         bytes_transferred = 0;
-         last_block = NULL;
-@@ -330,7 +330,7 @@ int ram_save_live(QEMUFile *f, int stage
-     }
- 
-     /* try transferring iterative blocks of memory */
--    if (stage == 3) {
-+    if (stage == QEMU_VM_SECTION_END) {
-         int bytes_sent;
- 
-         /* flush all remaining blocks regardless of rate limiting */
-@@ -344,7 +344,8 @@ int ram_save_live(QEMUFile *f, int stage
- 
-     expected_time = ram_save_remaining() * TARGET_PAGE_SIZE / bwidth;
- 
--    return (stage == 2) && (expected_time <= migrate_max_downtime());
-+    return (stage == QEMU_VM_SECTION_PART) &&
-+           (expected_time <= migrate_max_downtime());
- }
- 
- static inline void *host_from_stream_offset(QEMUFile *f,
-Index: qemu/block-migration.c
-===================================================================
---- qemu.orig/block-migration.c
-+++ qemu/block-migration.c
-@@ -554,7 +554,7 @@ static int block_save_live(QEMUFile *f, 
-         return 1;
-     }
- 
--    if (stage == 1) {
-+    if (stage == QEMU_VM_SECTION_START) {
-         init_blk_migration(f);
- 
-         /* start track dirty blocks */
-@@ -571,7 +571,7 @@ static int block_save_live(QEMUFile *f, 
- 
-     blk_mig_reset_dirty_cursor();
- 
--    if (stage == 2) {
-+    if (stage == QEMU_VM_SECTION_PART) {
-         /* control the rate of transfer */
-         while ((block_mig_state.submitted +
-                 block_mig_state.read_done) * BLOCK_SIZE <
-@@ -599,7 +599,7 @@ static int block_save_live(QEMUFile *f, 
-         }
-     }
- 
--    if (stage == 3) {
-+    if (stage == QEMU_VM_SECTION_END) {
-         /* we know for sure that save bulk is completed and
-            all async read completed */
-         assert(block_mig_state.submitted == 0);
-@@ -620,7 +620,7 @@ static int block_save_live(QEMUFile *f, 
- 
-     qemu_put_be64(f, BLK_MIG_FLAG_EOS);
- 
--    return ((stage == 2) && is_stage2_completed());
-+    return ((stage == QEMU_VM_SECTION_PART) && is_stage2_completed());
- }
- 
- static int block_load(QEMUFile *f, void *opaque, int version_id)
-
+On 27 March 2012 16:07, Meador Inge <meadori@codesourcery.com> wrote:
+> Ping.
+>
+> On 02/24/2012 04:53 PM, Andreas F=C3=A4rber wrote:
+>> Am 24.02.2012 23:18, schrieb Meador Inge:
+>>> Fixing a simple typo, s/errno/err/, that caused
+>>> the error status from GDB semihosted system calls
+>>> to be returned incorrectly.
+>>>
+>>> Signed-off-by: Meador Inge <meadori@codesourcery.com>
+>>
+>> Nice catch!
+>>
+>> Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+>>
+>> Andreas
+>>
+>>> ---
+>>> =C2=A0m68k-semi.c | =C2=A0 =C2=A02 +-
+>>> =C2=A01 files changed, 1 insertions(+), 1 deletions(-)
+>>>
+>>> diff --git a/m68k-semi.c b/m68k-semi.c
+>>> index bab01ee..6d60ced 100644
+>>> --- a/m68k-semi.c
+>>> +++ b/m68k-semi.c
+>>> @@ -150,7 +150,7 @@ static void m68k_semi_cb(CPUState *env, target_ulon=
+g ret, target_ulong err)
+>>> =C2=A0 =C2=A0 =C2=A0}
+>>> =C2=A0 =C2=A0 =C2=A0/* FIXME - handle put_user() failure */
+>>> =C2=A0 =C2=A0 =C2=A0put_user_u32(ret, args);
+>>> - =C2=A0 =C2=A0put_user_u32(errno, args + 4);
+>>> + =C2=A0 =C2=A0put_user_u32(err, args + 4);
+>>> =C2=A0}
+>>>
+>>> =C2=A0#define ARG(n) =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0\
+>>
+>
+>
+> --
+> Meador Inge
+> CodeSourcery / Mentor Embedded
+> http://www.mentor.com/embedded-software
+>
 
