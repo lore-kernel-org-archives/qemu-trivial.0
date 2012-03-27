@@ -1,37 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SCZzp-0000ls-V5
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Mar 2012 13:15:49 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44211)
+	id 1SCa80-0006R9-KM
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Mar 2012 13:24:16 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:58963)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1SCZzk-0000Ue-Lb
-	for qemu-trivial@nongnu.org; Tue, 27 Mar 2012 13:15:48 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1SCa7y-0006KY-6Q
+	for qemu-trivial@nongnu.org; Tue, 27 Mar 2012 13:24:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1SCZzi-000596-Sw
-	for qemu-trivial@nongnu.org; Tue, 27 Mar 2012 13:15:44 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:34041)
+	(envelope-from <stefan@weilnetz.de>) id 1SCa7w-0007eu-4a
+	for qemu-trivial@nongnu.org; Tue, 27 Mar 2012 13:24:13 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:38073)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1SCZzb-00056L-Pr; Tue, 27 Mar 2012 13:15:35 -0400
+	id 1SCa7k-0007cd-N3; Tue, 27 Mar 2012 13:24:00 -0400
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	44ABC72800B0; Tue, 27 Mar 2012 19:15:30 +0200 (CEST)
+	0FD7A72800B0; Tue, 27 Mar 2012 19:23:55 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id 3b6OGdGGz840; Tue, 27 Mar 2012 19:15:28 +0200 (CEST)
+	with ESMTP id UGCPxnbTqYoP; Tue, 27 Mar 2012 19:23:54 +0200 (CEST)
 Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 426BF72800B1; Tue, 27 Mar 2012 19:15:28 +0200 (CEST)
+	id 525EA72800B1; Tue, 27 Mar 2012 19:23:54 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org
-Date: Tue, 27 Mar 2012 19:15:27 +0200
-Message-Id: <1332868527-11909-1-git-send-email-sw@weilnetz.de>
+Date: Tue, 27 Mar 2012 19:23:53 +0200
+Message-Id: <1332869033-5558-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.9
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] Always set LC_ALL=C for makeinfo
+Cc: Peter Maydell <peter.maydell@linaro.org>, Emre Ersin <emre.ersin@gmail.com>,
+	qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Andreas Faerber <andreas.faerber@web.de>, Eric Blake <eblake@redhat.com>
+Subject: [Qemu-trivial] [PATCH v2] Fix conversion from lower to upper case
+	with Turkish locale
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,29 +46,128 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Mar 2012 17:15:49 -0000
+X-List-Received-Date: Tue, 27 Mar 2012 17:24:15 -0000
 
-Otherwise the generated file qemu-doc.html will contain "Anhang"
-instead of "Appendix" with a German locale (de_DE.UTF-8).
+Some locale settings let make fail or create wrong results
+because tr '[:lower:]' '[:upper:]' which is used to convert
+from lower to upper case depends on the locale.
+
+With locale tr_TR.UTF-8, lower case 'i' is not converted to 'I'.
+This results in wrong entries in config-host.h like these ones:
+
+  #define CONFIG_QEMU_PREFiX "/usr/local"
+  #define CONFIG_QEMU_BiNDiR "/usr/local/bin"
+
+This problem was reported by Emre Ersin.
+
+The same problem occurs when configure creates the target specific
+files config-target.mak. They get wrong declarations:
+
+TARGET_CRiS=y
+TARGET_i386=y
+TARGET_MiCROBLAZE=y
+TARGET_MiPS64=y
+TARGET_MiPS=y
+TARGET_UNiCORE32=y
+
+It is sufficient to restrict the conversion to the characters a-z.
+
+Using this explicit range avoids the dependency on the locale
+settings and is also shorter.
+
+v2:
+POSIX says that 'tr a-z' is unspecified outside of the POSIX
+locale, so we must set LC_ALL=C to make sure that we are using
+POSIX (hint from Eric Blake, thanks).
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- Makefile |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ configure             |    6 +++---
+ scripts/create_config |    6 +++---
+ scripts/tracetool     |    4 ++--
+ 3 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index d8e1f36..b48c019 100644
---- a/Makefile
-+++ b/Makefile
-@@ -327,7 +327,7 @@ TEXIFLAG=$(if $(V),,--quiet)
- 	$(call quiet-command,texi2dvi $(TEXIFLAG) -I . $<,"  GEN   $@")
+diff --git a/configure b/configure
+index 14ef738..39a78dd 100755
+--- a/configure
++++ b/configure
+@@ -3052,12 +3052,12 @@ if test "$cap_ng" = "yes" ; then
+   echo "CONFIG_LIBCAP=y" >> $config_host_mak
+ fi
+ for card in $audio_card_list; do
+-    def=CONFIG_`echo $card | tr '[:lower:]' '[:upper:]'`
++    def=CONFIG_`echo $card | LC_ALL=C tr '[a-z]' '[A-Z]'`
+     echo "$def=y" >> $config_host_mak
+ done
+ echo "CONFIG_AUDIO_DRIVERS=$audio_drv_list" >> $config_host_mak
+ for drv in $audio_drv_list; do
+-    def=CONFIG_`echo $drv | tr '[:lower:]' '[:upper:]'`
++    def=CONFIG_`echo $drv | LC_ALL=C tr '[a-z]' '[A-Z]'`
+     echo "$def=y" >> $config_host_mak
+     if test "$drv" = "fmod"; then
+         echo "FMOD_CFLAGS=-I$fmod_inc" >> $config_host_mak
+@@ -3618,7 +3618,7 @@ echo "TARGET_INT_ALIGNMENT=$target_int_alignment" >> $config_target_mak
+ echo "TARGET_LONG_ALIGNMENT=$target_long_alignment" >> $config_target_mak
+ echo "TARGET_LLONG_ALIGNMENT=$target_llong_alignment" >> $config_target_mak
+ echo "TARGET_ARCH=$TARGET_ARCH" >> $config_target_mak
+-target_arch_name="`echo $TARGET_ARCH | tr '[:lower:]' '[:upper:]'`"
++target_arch_name="`echo $TARGET_ARCH | LC_ALL=C tr '[a-z]' '[A-Z]'`"
+ echo "TARGET_$target_arch_name=y" >> $config_target_mak
+ echo "TARGET_ARCH2=$target_arch2" >> $config_target_mak
+ # TARGET_BASE_ARCH needs to be defined after TARGET_ARCH
+diff --git a/scripts/create_config b/scripts/create_config
+index 0098e68..ee4737e 100755
+--- a/scripts/create_config
++++ b/scripts/create_config
+@@ -16,7 +16,7 @@ case $line in
+  prefix=* | [a-z]*dir=*) # directory configuration
+     name=${line%=*}
+     value=${line#*=}
+-    define_name=`echo $name | tr '[:lower:]' '[:upper:]'`
++    define_name=`echo $name | LC_ALL=C tr '[a-z]' '[A-Z]'`
+     eval "define_value=\"$value\""
+     echo "#define CONFIG_QEMU_$define_name \"$define_value\""
+     # save for the next definitions
+@@ -48,7 +48,7 @@ case $line in
+     ;;
+  ARCH=*) # configuration
+     arch=${line#*=}
+-    arch_name=`echo $arch | tr '[:lower:]' '[:upper:]'`
++    arch_name=`echo $arch | LC_ALL=C tr '[a-z]' '[A-Z]'`
+     echo "#define HOST_$arch_name 1"
+     ;;
+  HOST_USB=*)
+@@ -73,7 +73,7 @@ case $line in
+  TARGET_BASE_ARCH=*) # configuration
+     target_base_arch=${line#*=}
+     if [ "$target_base_arch" != "$target_arch" ]; then
+-      base_arch_name=`echo $target_base_arch | tr '[:lower:]' '[:upper:]'`
++      base_arch_name=`echo $target_base_arch | LC_ALL=C tr '[a-z]' '[A-Z]'`
+       echo "#define TARGET_$base_arch_name 1"
+     fi
+     ;;
+diff --git a/scripts/tracetool b/scripts/tracetool
+index 65bd0a1..ddd0ec5 100755
+--- a/scripts/tracetool
++++ b/scripts/tracetool
+@@ -410,7 +410,7 @@ linetoh_dtrace()
+     args=$(get_args "$1")
+     argnames=$(get_argnames "$1", ",")
  
- %.html: %.texi
--	$(call quiet-command,$(MAKEINFO) $(MAKEINFOFLAGS) --html $< -o $@, \
-+	$(call quiet-command,LC_ALL=C $(MAKEINFO) $(MAKEINFOFLAGS) --html $< -o $@, \
- 	"  GEN   $@")
+-    nameupper=`echo $name | tr '[:lower:]' '[:upper:]'`
++    nameupper=`echo $name | LC_ALL=C tr '[a-z]' '[A-Z]'`
  
- %.info: %.texi
+     # Define an empty function for the trace event
+     cat <<EOF
+@@ -539,7 +539,7 @@ convert()
+         fi
+         if [ "$1" = "h" ]; then
+             name=$(get_name "$str")
+-            NAME=$(echo $name | tr '[:lower:]' '[:upper:]')
++            NAME=$(echo $name | LC_ALL=C tr '[a-z]' '[A-Z]')
+             echo "#define TRACE_${NAME}_ENABLED ${enabled}"
+         fi
+     done
 -- 
 1.7.9
 
