@@ -1,45 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SCtHA-0005WB-Cu
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Mar 2012 09:51:00 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42228)
+	id 1SCy67-0003iw-PY
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Mar 2012 14:59:55 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:37093)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1SCtH3-0005Us-1O
-	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 09:50:58 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1SCy33-0003OM-Cr
+	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 14:56:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1SCtGw-0005vf-Rc
-	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 09:50:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:62147)
+	(envelope-from <jan.kiszka@siemens.com>) id 1SCy31-000665-LR
+	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 14:56:44 -0400
+Received: from goliath.siemens.de ([192.35.17.28]:27913)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1SCtGw-0005vA-Jg
-	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 09:50:46 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q2SDoiGM029705
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK)
-	for <qemu-trivial@nongnu.org>; Wed, 28 Mar 2012 09:50:44 -0400
-Received: from rincewind.home.kraxel.org (vpn1-7-153.ams2.redhat.com
-	[10.36.7.153])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q2SDohlB017299; Wed, 28 Mar 2012 09:50:43 -0400
-Message-ID: <4F731732.4020307@redhat.com>
-Date: Wed, 28 Mar 2012 15:50:42 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:10.0.3) Gecko/20120307 Thunderbird/10.0.3
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1SCy31-00065o-5p; Wed, 28 Mar 2012 14:56:43 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id q2SIucjO026047;
+	Wed, 28 Mar 2012 20:56:38 +0200
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q2SIuc6v019047;
+	Wed, 28 Mar 2012 20:56:38 +0200
+Message-ID: <4F735EE6.4080106@siemens.com>
+Date: Wed, 28 Mar 2012 20:56:38 +0200
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-To: Alon Levy <alevy@redhat.com>
-References: <1332927008-559-1-git-send-email-alevy@redhat.com>
-In-Reply-To: <1332927008-559-1-git-send-email-alevy@redhat.com>
-X-Enigmail-Version: 1.4
+To: qemu-trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] trace-events: remove unused
-	qxl_vga_ioport_while_not_in_vga_mode
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 192.35.17.28
+Cc: Stefan Weil <weil@mail.berlios.de>, qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] w32: Undefine error constants before their
+	redefinition
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,31 +45,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Mar 2012 13:50:58 -0000
+X-List-Received-Date: Wed, 28 Mar 2012 18:56:49 -0000
 
-On 03/28/12 11:30, Alon Levy wrote:
-> The resulting stp file fails to load because of an unresolvable probe.
-> 
-> Signed-off-by: Alon Levy <alevy@redhat.com>
-> ---
->  trace-events |    1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/trace-events b/trace-events
-> index 0924666..322662b 100644
-> --- a/trace-events
-> +++ b/trace-events
-> @@ -781,7 +781,6 @@ qxl_spice_reset_memslots(int qid) "%d"
->  qxl_spice_update_area(int qid, uint32_t surface_id, uint32_t left, uint32_t right, uint32_t top, uint32_t bottom) "%d sid=%d [%d,%d,%d,%d]"
->  qxl_spice_update_area_rest(int qid, uint32_t num_dirty_rects, uint32_t clear_dirty_region) "%d #d=%d clear=%d"
->  qxl_surfaces_dirty(int qid, int surface, int offset, int size) "%d surface=%d offset=%d size=%d"
-> -qxl_vga_ioport_while_not_in_vga_mode(int qid) "%d (int qid, reset to VGA mode because of VGA io)"
->  
->  # hw/qxl-render.c
->  qxl_render_blit_guest_primary_initialized(void) ""
+Avoids lots of warnings.
 
-Patch added to spice patch queue.
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+---
+ qemu_socket.h |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
 
-thanks,
-  Gerd
+diff --git a/qemu_socket.h b/qemu_socket.h
+index fe4cf6c..51ad210 100644
+--- a/qemu_socket.h
++++ b/qemu_socket.h
+@@ -8,7 +8,9 @@
+ #include <ws2tcpip.h>
+ 
+ #define socket_error() WSAGetLastError()
++#undef EWOULDBLOCK
+ #undef EINTR
++#undef EINPROGRESS
+ #define EWOULDBLOCK WSAEWOULDBLOCK
+ #define EINTR       WSAEINTR
+ #define EINPROGRESS WSAEINPROGRESS
+-- 
+1.7.3.4
 
