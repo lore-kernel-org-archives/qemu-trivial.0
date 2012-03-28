@@ -1,39 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SCt01-00031G-LF
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Mar 2012 09:33:17 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56617)
+	id 1SCtHA-0005WB-Cu
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Mar 2012 09:51:00 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42228)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1SCszv-0002zA-6S
-	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 09:33:17 -0400
+	(envelope-from <kraxel@redhat.com>) id 1SCtH3-0005Us-1O
+	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 09:50:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1SCszo-0001dz-TI
-	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 09:33:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:11267)
+	(envelope-from <kraxel@redhat.com>) id 1SCtGw-0005vf-Rc
+	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 09:50:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:62147)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1SCszo-0001dZ-LA
-	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 09:33:04 -0400
+	(envelope-from <kraxel@redhat.com>) id 1SCtGw-0005vA-Jg
+	for qemu-trivial@nongnu.org; Wed, 28 Mar 2012 09:50:46 -0400
 Received: from int-mx12.intmail.prod.int.phx2.redhat.com
 	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q2SDX0A2031759
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 28 Mar 2012 09:33:01 -0400
-Received: from garlic.tlv.redhat.com (spice-ovirt.tlv.redhat.com [10.35.4.71])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id q2SDWvHd009305; Wed, 28 Mar 2012 09:32:59 -0400
-From: Alon Levy <alevy@redhat.com>
-To: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@gmail.com>
-Date: Wed, 28 Mar 2012 15:32:57 +0200
-Message-Id: <1332941577-24820-2-git-send-email-alevy@redhat.com>
-In-Reply-To: <1332941577-24820-1-git-send-email-alevy@redhat.com>
-References: <20120328131634.GY32389@garlic>
-	<1332941577-24820-1-git-send-email-alevy@redhat.com>
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q2SDoiGM029705
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK)
+	for <qemu-trivial@nongnu.org>; Wed, 28 Mar 2012 09:50:44 -0400
+Received: from rincewind.home.kraxel.org (vpn1-7-153.ams2.redhat.com
+	[10.36.7.153])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q2SDohlB017299; Wed, 28 Mar 2012 09:50:43 -0400
+Message-ID: <4F731732.4020307@redhat.com>
+Date: Wed, 28 Mar 2012 15:50:42 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:10.0.3) Gecko/20120307 Thunderbird/10.0.3
+MIME-Version: 1.0
+To: Alon Levy <alevy@redhat.com>
+References: <1332927008-559-1-git-send-email-alevy@redhat.com>
+In-Reply-To: <1332927008-559-1-git-send-email-alevy@redhat.com>
+X-Enigmail-Version: 1.4
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.132.183.28
-Cc: =?UTF-8?q?Llu=C3=ADs=20Vilanova?= <vilanova@ac.upc.edu>
-Subject: [Qemu-trivial] [PATCH 2/2] tracetool: dtrace: warn on reserved word
-	usage
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] trace-events: remove unused
+	qxl_vga_ioport_while_not_in_vga_mode
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,26 +51,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Mar 2012 13:33:17 -0000
+X-List-Received-Date: Wed, 28 Mar 2012 13:50:58 -0000
 
-Signed-off-by: Alon Levy <alevy@redhat.com>
----
- scripts/tracetool |    1 +
- 1 file changed, 1 insertion(+)
+On 03/28/12 11:30, Alon Levy wrote:
+> The resulting stp file fails to load because of an unresolvable probe.
+> 
+> Signed-off-by: Alon Levy <alevy@redhat.com>
+> ---
+>  trace-events |    1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/trace-events b/trace-events
+> index 0924666..322662b 100644
+> --- a/trace-events
+> +++ b/trace-events
+> @@ -781,7 +781,6 @@ qxl_spice_reset_memslots(int qid) "%d"
+>  qxl_spice_update_area(int qid, uint32_t surface_id, uint32_t left, uint32_t right, uint32_t top, uint32_t bottom) "%d sid=%d [%d,%d,%d,%d]"
+>  qxl_spice_update_area_rest(int qid, uint32_t num_dirty_rects, uint32_t clear_dirty_region) "%d #d=%d clear=%d"
+>  qxl_surfaces_dirty(int qid, int surface, int offset, int size) "%d surface=%d offset=%d size=%d"
+> -qxl_vga_ioport_while_not_in_vga_mode(int qid) "%d (int qid, reset to VGA mode because of VGA io)"
+>  
+>  # hw/qxl-render.c
+>  qxl_render_blit_guest_primary_initialized(void) ""
 
-diff --git a/scripts/tracetool b/scripts/tracetool
-index e7cebf3..d011bb7 100755
---- a/scripts/tracetool
-+++ b/scripts/tracetool
-@@ -496,6 +496,7 @@ EOF
-     do
-         # 'limit', 'in' and 'next' are reserved keywords
-         if [ "$arg" = "limit" -o "$arg" = "in" -o "$arg" = "next" ]; then
-+          echo "reserved word used in line: $1" 1>&2
-           arg="_$arg"
-         fi
-         cat <<EOF
--- 
-1.7.9.3
+Patch added to spice patch queue.
 
+thanks,
+  Gerd
 
