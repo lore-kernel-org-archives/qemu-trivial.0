@@ -1,53 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SDAkh-0000BN-4T
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Mar 2012 04:30:39 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42956)
+	id 1SDJgP-0004w3-14
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Mar 2012 14:02:49 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54198)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SDAkZ-0000B8-E2
-	for qemu-trivial@nongnu.org; Thu, 29 Mar 2012 04:30:37 -0400
+	(envelope-from <weil@mail.berlios.de>) id 1SDJgM-0004oV-BF
+	for qemu-trivial@nongnu.org; Thu, 29 Mar 2012 14:02:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SDAkT-0005kN-4P
-	for qemu-trivial@nongnu.org; Thu, 29 Mar 2012 04:30:31 -0400
-Received: from mail-ey0-f173.google.com ([209.85.215.173]:45045)
+	(envelope-from <weil@mail.berlios.de>) id 1SDJgK-0005p3-Ke
+	for qemu-trivial@nongnu.org; Thu, 29 Mar 2012 14:02:45 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59195)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SDAkS-0005kC-Rw; Thu, 29 Mar 2012 04:30:25 -0400
-Received: by eaaf11 with SMTP id f11so939316eaa.4
-	for <multiple recipients>; Thu, 29 Mar 2012 01:30:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=nlFKJ7uP0M48l4lYUk30pMcvzqAoI8MEuR4ILcTTDdo=;
-	b=L4UcKeDI9WhPL1iPbChHqWyYdGUPKKScZcZrc4D5f/aiXLkdq+10qitrUxXHXi9KDB
-	5l3tzbFuwiovFB91zj3jzstkW98YJ9b2MKVl7bZc/k2ZC0cVeaB97K9gRF4QSMuvi69c
-	UWI3MrJXf64FoLAGilAyoNOKgIimsltc59YRNOi5vxlBjiughXYwKmnqg+XSVVQiBnSi
-	LSWWlgzVTVD0MjOzUm8KX9vebuhv5grj3KWvM+79Q3Kc0Xsaildg0s+WEBorQq8Kl/D1
-	4B1qykX54XDw5aJiOKAWjnXwu0tokNByH+gXjOlNCOozayFZc1BK4gHZg9e/o9oTscH4
-	MYlg==
-Received: by 10.14.187.1 with SMTP id x1mr4623750eem.101.1333009822021;
-	Thu, 29 Mar 2012 01:30:22 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice1n1.emea.ibm.com. [195.212.29.67])
-	by mx.google.com with ESMTPS id
-	m55sm19199227eei.1.2012.03.29.01.30.21
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 29 Mar 2012 01:30:21 -0700 (PDT)
-Date: Thu, 29 Mar 2012 07:53:51 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>
-Message-ID: <20120329065351.GA13344@stefanha-thinkpad.localdomain>
-References: <4F735EE6.4080106@siemens.com>
+	(envelope-from <weil@mail.berlios.de>)
+	id 1SDJgD-0005nt-9a; Thu, 29 Mar 2012 14:02:37 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	D2B4972800B0; Thu, 29 Mar 2012 20:02:33 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id qgYw-mVVIS7i; Thu, 29 Mar 2012 20:02:33 +0200 (CEST)
+Received: from flocke.weilnetz.de (p5086FA49.dip.t-dialin.net [80.134.250.73])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	5036372800AF; Thu, 29 Mar 2012 20:02:33 +0200 (CEST)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <weil@mail.berlios.de>)
+	id 1SDJg8-00015d-Q7; Thu, 29 Mar 2012 20:02:32 +0200
+Message-ID: <4F74A3B8.5040805@mail.berlios.de>
+Date: Thu, 29 Mar 2012 20:02:32 +0200
+From: Stefan Weil <weil@mail.berlios.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20120317 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+To: Jan Kiszka <jan.kiszka@siemens.com>
+References: <4F735EE6.4080106@siemens.com>
 In-Reply-To: <4F735EE6.4080106@siemens.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.215.173
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <weil@mail.berlios.de>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] w32: Undefine error constants before
- their redefinition
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] w32: Undefine error
+ constants before their redefinition
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,18 +55,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Mar 2012 08:30:37 -0000
+X-List-Received-Date: Thu, 29 Mar 2012 18:02:47 -0000
 
-On Wed, Mar 28, 2012 at 08:56:38PM +0200, Jan Kiszka wrote:
+Am 28.03.2012 20:56, schrieb Jan Kiszka:
 > Avoids lots of warnings.
-> 
+>
 > Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
 > ---
->  qemu_socket.h |    2 ++
->  1 files changed, 2 insertions(+), 0 deletions(-)
+> qemu_socket.h | 2 ++
+> 1 files changed, 2 insertions(+), 0 deletions(-)
+>
+> diff --git a/qemu_socket.h b/qemu_socket.h
+> index fe4cf6c..51ad210 100644
+> --- a/qemu_socket.h
+> +++ b/qemu_socket.h
+> @@ -8,7 +8,9 @@
+> #include <ws2tcpip.h>
+>
+> #define socket_error() WSAGetLastError()
+> +#undef EWOULDBLOCK
+> #undef EINTR
+> +#undef EINPROGRESS
+> #define EWOULDBLOCK WSAEWOULDBLOCK
+> #define EINTR WSAEINTR
+> #define EINPROGRESS WSAEINPROGRESS
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Hi,
 
-Stefan
+I am curious: with which version of MinGW or Cygwin do you get warnings?
+I don't see them in my native and cross MinGW / MinGW-w64 builds.
+
+Where do the original definitions come from, and are they compatible with
+the redefined values? If yes, it might be possible to put the new 
+definitions
+in a conditionally compiled code block (#if !defined(EWOULDBLOCK) ... 
+#endif).
+
+Could slirp/slirp.h also use qemu_socket.h? That would simplify the code.
+Is it possible to move those definitions to qemu-os-win32.h? I'd prefer
+to have them in some w32 specific header file instead of qemu_socket.h and
+slirp/slirp.h.
+
+If the current two patches help you for the moment, I don't mind when they
+are committed, but we should have a better solution later.
+
+Regards,
+
+Stefan W.
+
 
