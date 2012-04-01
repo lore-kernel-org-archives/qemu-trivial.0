@@ -1,46 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SE36D-0003vz-SH
-	for mharc-qemu-trivial@gnu.org; Sat, 31 Mar 2012 14:32:29 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53388)
+	id 1SER3s-0007A5-Rn
+	for mharc-qemu-trivial@gnu.org; Sun, 01 Apr 2012 16:07:40 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:45014)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <freddy77@gmail.com>) id 1SE36A-0003mU-L0
-	for qemu-trivial@nongnu.org; Sat, 31 Mar 2012 14:32:27 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1SER3q-00073U-BX
+	for qemu-trivial@nongnu.org; Sun, 01 Apr 2012 16:07:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <freddy77@gmail.com>) id 1SE369-0001mc-5Y
-	for qemu-trivial@nongnu.org; Sat, 31 Mar 2012 14:32:26 -0400
-Received: from mail-we0-f173.google.com ([74.125.82.173]:53795)
+	(envelope-from <stefan@weilnetz.de>) id 1SER3o-0000nA-Nd
+	for qemu-trivial@nongnu.org; Sun, 01 Apr 2012 16:07:37 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41248)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <freddy77@gmail.com>)
-	id 1SE366-0001lz-2L; Sat, 31 Mar 2012 14:32:22 -0400
-Received: by werp12 with SMTP id p12so1084333wer.4
-	for <multiple recipients>; Sat, 31 Mar 2012 11:32:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:x-mailer;
-	bh=oYAWaZFCsNyDFLmThYDpZvCUDvOjzssiyp4EQn2fUuQ=;
-	b=A5EXYeR6G7oHImsIRg0BYKRVzD+TNv08IesRkyDwzOBcqeesQyJqcxx7qg4oah7oEJ
-	lrH63fkdBZ+FbHVFYYW7ml/8M9SAO6I4xXMhosZBwSD1GuOhOluy69ppB1ygHd5ldRJY
-	ypklpBCWqGlnBWhrk1CTnBIelh/IK5qUFFutXMiPMoLNHOGFLBCzKz9b+onbZbtsyi+2
-	JkoKz8rizsbXaH7PMsLCJ78BdUY1kJlGD6gCW94zUhdKhm+LPSfNaLJABnnGxh+1qrcA
-	NRhYoDkSyuZR6LGBogZewLTaJRafkKvwFdb/BTBQplaaBSbbQ9RCvbPo4ajnGthxIiPw
-	vipg==
-Received: by 10.180.82.136 with SMTP id i8mr8293578wiy.19.1333218738577;
-	Sat, 31 Mar 2012 11:32:18 -0700 (PDT)
-Received: from localhost.localdomain
-	(cpc11-cmbg15-2-0-cust58.5-4.cable.virginmedia.com. [86.30.245.59])
-	by mx.google.com with ESMTPS id
-	bx13sm18243448wib.10.2012.03.31.11.32.16
-	(version=SSLv3 cipher=OTHER); Sat, 31 Mar 2012 11:32:17 -0700 (PDT)
-From: Frediano Ziglio <freddy77@gmail.com>
-To: stefanha@gmail.com
-Date: Sat, 31 Mar 2012 19:32:14 +0100
-Message-Id: <1333218734-23920-1-git-send-email-freddy77@gmail.com>
-X-Mailer: git-send-email 1.7.4.1
+	(envelope-from <stefan@weilnetz.de>)
+	id 1SER3l-0000mi-JO; Sun, 01 Apr 2012 16:07:33 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	0A91672800AE; Sun,  1 Apr 2012 22:07:31 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id Z+0kOXpS3PA8; Sun,  1 Apr 2012 22:07:30 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 9858B72800B2; Sun,  1 Apr 2012 22:07:30 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Sun,  1 Apr 2012 22:07:30 +0200
+Message-Id: <1333310850-28767-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.9
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Frediano Ziglio <freddy77@gmail.com>
-Subject: [Qemu-trivial] [PATCH] make qemu_event_handle static
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [Qemu-trivial] [PATCH] qxl: Add missing GCC_FMT_ATTR and fix format
+	specifier
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,28 +45,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 31 Mar 2012 18:32:28 -0000
+X-List-Received-Date: Sun, 01 Apr 2012 20:07:39 -0000
 
+val is an uint64_t, therefore %d was not correct.
 
-Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- main-loop.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ hw/qxl.c |    2 +-
+ hw/qxl.h |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/main-loop.c b/main-loop.c
-index db23de0..fc738d1 100644
---- a/main-loop.c
-+++ b/main-loop.c
-@@ -164,7 +164,7 @@ static int qemu_signal_init(void)
+diff --git a/hw/qxl.c b/hw/qxl.c
+index 47a162e..85028dd 100644
+--- a/hw/qxl.c
++++ b/hw/qxl.c
+@@ -1370,7 +1370,7 @@ async_common:
+     case QXL_IO_DESTROY_SURFACE_WAIT:
+         if (val >= NUM_SURFACES) {
+             qxl_guest_bug(d, "QXL_IO_DESTROY_SURFACE (async=%d):"
+-                             "%d >= NUM_SURFACES", async, val);
++                             "%" PRIu64 " >= NUM_SURFACES", async, val);
+             goto cancel_async;
+         }
+         qxl_spice_destroy_surface_wait(d, val, async);
+diff --git a/hw/qxl.h b/hw/qxl.h
+index 11a0db3..cbb1e2d 100644
+--- a/hw/qxl.h
++++ b/hw/qxl.h
+@@ -127,7 +127,7 @@ typedef struct PCIQXLDevice {
  
- #else /* _WIN32 */
+ /* qxl.c */
+ void *qxl_phys2virt(PCIQXLDevice *qxl, QXLPHYSICAL phys, int group_id);
+-void qxl_guest_bug(PCIQXLDevice *qxl, const char *msg, ...);
++void qxl_guest_bug(PCIQXLDevice *qxl, const char *msg, ...) GCC_FMT_ATTR(2, 3);
  
--HANDLE qemu_event_handle = NULL;
-+static HANDLE qemu_event_handle = NULL;
- 
- static void dummy_event_handler(void *opaque)
- {
+ void qxl_spice_update_area(PCIQXLDevice *qxl, uint32_t surface_id,
+                            struct QXLRect *area, struct QXLRect *dirty_rects,
 -- 
-1.7.4.1
+1.7.2.5
 
 
