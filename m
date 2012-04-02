@@ -1,39 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SER3s-0007A5-Rn
-	for mharc-qemu-trivial@gnu.org; Sun, 01 Apr 2012 16:07:40 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45014)
+	id 1SEgsF-0005no-Hl
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Apr 2012 09:00:43 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34754)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1SER3q-00073U-BX
-	for qemu-trivial@nongnu.org; Sun, 01 Apr 2012 16:07:39 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SEgs9-0005VP-C1
+	for qemu-trivial@nongnu.org; Mon, 02 Apr 2012 09:00:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1SER3o-0000nA-Nd
-	for qemu-trivial@nongnu.org; Sun, 01 Apr 2012 16:07:37 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41248)
+	(envelope-from <stefanha@gmail.com>) id 1SEgs3-0001Bv-9N
+	for qemu-trivial@nongnu.org; Mon, 02 Apr 2012 09:00:36 -0400
+Received: from mail-wi0-f175.google.com ([209.85.212.175]:38451)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1SER3l-0000mi-JO; Sun, 01 Apr 2012 16:07:33 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	0A91672800AE; Sun,  1 Apr 2012 22:07:31 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id Z+0kOXpS3PA8; Sun,  1 Apr 2012 22:07:30 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 9858B72800B2; Sun,  1 Apr 2012 22:07:30 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Sun,  1 Apr 2012 22:07:30 +0200
-Message-Id: <1333310850-28767-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.9
+	(envelope-from <stefanha@gmail.com>)
+	id 1SEgrs-00018J-7n; Mon, 02 Apr 2012 09:00:20 -0400
+Received: by wibhn6 with SMTP id hn6so2296501wib.10
+	for <multiple recipients>; Mon, 02 Apr 2012 06:00:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=A415qtmYma8WeYsAPw9UojJIajOi+h6S/Vta3zaGU/4=;
+	b=Sn1P/r/OwFQaYS8EclAj06S1TqwGUp+Y0gkGTr7xMgfPsgF59IZfu3bxUX31PRW2//
+	n0RBcE4npniJAeuwAWEioS1IWy8TpAODQbBPux6/0jAxFFC/+K7fOKTDnlAGVbKaR1+d
+	KhPmYcEkgN4BwsNLa2iGNMAeK2EcTnDB2SToWoEyAeFwS7v/FukG0k3pIOKtlfvXc0dG
+	qVmX91DdoTg7b7XUE42sINSDSgkkxFY33ELS/ROIdi9gYTvaZXwxSTL07twurkPji53W
+	lmRn4AD+xF5hHOyrbsOILLe0P5oSDCOOPsq1QZmN5Bvbr9vAiozdtY2GCig8ddhTMXYF
+	04/g==
+Received: by 10.180.94.33 with SMTP id cz1mr24859063wib.13.1333371617367;
+	Mon, 02 Apr 2012 06:00:17 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
+	by mx.google.com with ESMTPS id
+	gg2sm54991061wib.7.2012.04.02.06.00.16
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 02 Apr 2012 06:00:16 -0700 (PDT)
+Date: Mon, 2 Apr 2012 14:00:15 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120402130014.GA11583@stefanha-thinkpad.localdomain>
+References: <1333206691-8459-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1333206691-8459-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [Qemu-trivial] [PATCH] qxl: Add missing GCC_FMT_ATTR and fix format
-	specifier
+X-Received-From: 209.85.212.175
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qtest: Add missing
+	GCC_FMT_ATTR
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,44 +58,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 01 Apr 2012 20:07:39 -0000
+X-List-Received-Date: Mon, 02 Apr 2012 13:00:42 -0000
 
-val is an uint64_t, therefore %d was not correct.
+On Sat, Mar 31, 2012 at 05:11:31PM +0200, Stefan Weil wrote:
+> gcc reports an error when the code is compiled with -Wmissing-format-attribute.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  qtest.c |    3 ++-
+>  1 files changed, 2 insertions(+), 1 deletions(-)
 
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- hw/qxl.c |    2 +-
- hw/qxl.h |    2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-diff --git a/hw/qxl.c b/hw/qxl.c
-index 47a162e..85028dd 100644
---- a/hw/qxl.c
-+++ b/hw/qxl.c
-@@ -1370,7 +1370,7 @@ async_common:
-     case QXL_IO_DESTROY_SURFACE_WAIT:
-         if (val >= NUM_SURFACES) {
-             qxl_guest_bug(d, "QXL_IO_DESTROY_SURFACE (async=%d):"
--                             "%d >= NUM_SURFACES", async, val);
-+                             "%" PRIu64 " >= NUM_SURFACES", async, val);
-             goto cancel_async;
-         }
-         qxl_spice_destroy_surface_wait(d, val, async);
-diff --git a/hw/qxl.h b/hw/qxl.h
-index 11a0db3..cbb1e2d 100644
---- a/hw/qxl.h
-+++ b/hw/qxl.h
-@@ -127,7 +127,7 @@ typedef struct PCIQXLDevice {
- 
- /* qxl.c */
- void *qxl_phys2virt(PCIQXLDevice *qxl, QXLPHYSICAL phys, int group_id);
--void qxl_guest_bug(PCIQXLDevice *qxl, const char *msg, ...);
-+void qxl_guest_bug(PCIQXLDevice *qxl, const char *msg, ...) GCC_FMT_ATTR(2, 3);
- 
- void qxl_spice_update_area(PCIQXLDevice *qxl, uint32_t surface_id,
-                            struct QXLRect *area, struct QXLRect *dirty_rects,
--- 
-1.7.2.5
-
+Stefan
 
