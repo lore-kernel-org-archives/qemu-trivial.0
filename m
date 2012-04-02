@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SEgsf-00076x-N9
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Apr 2012 09:01:09 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34858)
+	id 1SEgvH-0008IT-Nn
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Apr 2012 09:03:51 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:49947)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SEgsV-0006ai-P9
-	for qemu-trivial@nongnu.org; Mon, 02 Apr 2012 09:01:07 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SEgvA-0007wx-5u
+	for qemu-trivial@nongnu.org; Mon, 02 Apr 2012 09:03:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SEgsR-0001FQ-3z
-	for qemu-trivial@nongnu.org; Mon, 02 Apr 2012 09:00:59 -0400
-Received: from mail-we0-f173.google.com ([74.125.82.173]:36245)
+	(envelope-from <stefanha@gmail.com>) id 1SEgv4-0001o8-40
+	for qemu-trivial@nongnu.org; Mon, 02 Apr 2012 09:03:43 -0400
+Received: from mail-wi0-f181.google.com ([209.85.212.181]:34987)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1SEgsF-00019D-Mm; Mon, 02 Apr 2012 09:00:43 -0400
-Received: by mail-we0-f173.google.com with SMTP id p12so1849173wer.4
-	for <multiple recipients>; Mon, 02 Apr 2012 06:00:42 -0700 (PDT)
+	id 1SEgur-0001lx-1J; Mon, 02 Apr 2012 09:03:25 -0400
+Received: by wibhr17 with SMTP id hr17so2331552wib.10
+	for <multiple recipients>; Mon, 02 Apr 2012 06:03:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=J5KwVyiB9GW0cYVw28lJoVWyyj7nr4M2Xqs8FoWc4zY=;
-	b=ugn0xzS5Fc31fij+btV6mpvUzsP8qFOMzkv2kD8nGIqs3SdkEDSx7GF6p00Ehvx/f4
-	dq400qXcedjSOPEntn4B0bITjKmJEgdEpCZWvBAneAJzyG9Uhhce5An9Hw4ZkUpt8QiY
-	9sxgAwoU7Kr6vB0mbU2SGTYEk5ddHoPRutuX5x1s2vrTRWh6gdmFnkWDKyPiNzV7Z6rc
-	ivqE4xRM6dWVtpzwW1oORshP2yva6xKk8hoiM5AZUfQxId/atd/vFku10iuQ/huJhhsZ
-	qRz3j/TEfpj9jr888EFJtx2j3nAYUKpgbVAU2pvUjWWEUZNRraeOpFj//cajqLPI7kxo
-	+ScQ==
-Received: by 10.180.96.168 with SMTP id dt8mr24676402wib.18.1333371642074;
-	Mon, 02 Apr 2012 06:00:42 -0700 (PDT)
+	bh=Keg419+2ljShAl4p6unVlYu7bnTXkFsxzg+qaODQ5oU=;
+	b=ktMfzfFUV1EHx+mj/WrEr0zr1dUFNZTrr3OAlcLH1SGpV0DMjR5Pl74xU0je+R61EU
+	pYdBp2fiHs9UTZHlHZVeueQ6kTIRSksPtfNuXPVOlq3krVJFiNMR3dxkHK6kNahYGnt9
+	KY8WGMsxRDki674lNyU2bXkYzy2sM88PhpOZYN3D+VDNCOvm8fC+z42OH9dhfjCIp4KC
+	/JlLf4CnHwlWLjxt5f/9EjH5Oc+OO0SmmYeXlnbQmzdzr5dmajBwESVNXRevMXN5oudE
+	BCvgLVicZS6g3c3v8xRAFDWw9Lp5QKqVusT0pTvqbGWLkpWaGrjkeIHAMdvTrriWfWyw
+	brng==
+Received: by 10.180.101.230 with SMTP id fj6mr25450840wib.13.1333371802389;
+	Mon, 02 Apr 2012 06:03:22 -0700 (PDT)
 Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id
-	bx13sm33929481wib.10.2012.04.02.06.00.41
+	by mx.google.com with ESMTPS id j3sm55104804wiw.1.2012.04.02.06.03.21
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 02 Apr 2012 06:00:41 -0700 (PDT)
-Date: Mon, 2 Apr 2012 14:00:39 +0100
+	Mon, 02 Apr 2012 06:03:21 -0700 (PDT)
+Date: Mon, 2 Apr 2012 14:03:20 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120402130039.GB11583@stefanha-thinkpad.localdomain>
-References: <1333208081-26421-1-git-send-email-sw@weilnetz.de>
+To: Frediano Ziglio <freddy77@gmail.com>
+Message-ID: <20120402130320.GC11583@stefanha-thinkpad.localdomain>
+References: <1333218734-23920-1-git-send-email-freddy77@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1333208081-26421-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1333218734-23920-1-git-send-email-freddy77@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] block/curl: Replace usleep by g_usleep
+X-Received-From: 209.85.212.181
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] make qemu_event_handle static
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,22 +56,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Apr 2012 13:01:07 -0000
+X-List-Received-Date: Mon, 02 Apr 2012 13:03:49 -0000
 
-On Sat, Mar 31, 2012 at 05:34:41PM +0200, Stefan Weil wrote:
-> The function usleep is not available for all supported platforms:
-> at least some versions of MinGW don't support it.
+On Sat, Mar 31, 2012 at 07:32:14PM +0100, Frediano Ziglio wrote:
 > 
-> usleep was also declared obsolete by POSIX.1-2001.
-> 
-> The function g_usleep is part of glib2.0, so it is available for
-> all supported platforms.
-> 
-> Using nanosleep would also be possible but needs more code.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
 > ---
->  block/curl.c |    2 +-
+>  main-loop.c |    2 +-
 >  1 files changed, 1 insertions(+), 1 deletions(-)
 
 Thanks, applied to the trivial patches tree:
