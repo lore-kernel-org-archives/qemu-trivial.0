@@ -1,42 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SEiuh-0000f6-GI
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Apr 2012 11:11:23 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42336)
+	id 1SEzXW-0007fV-Hp
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Apr 2012 04:56:34 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36538)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony.perard@citrix.com>) id 1SEiuW-000085-T5
-	for qemu-trivial@nongnu.org; Mon, 02 Apr 2012 11:11:22 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SEzXU-0007fG-3x
+	for qemu-trivial@nongnu.org; Tue, 03 Apr 2012 04:56:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony.perard@citrix.com>) id 1SEiuQ-0004P8-Oe
-	for qemu-trivial@nongnu.org; Mon, 02 Apr 2012 11:11:12 -0400
-Received: from smtp.citrix.com ([66.165.176.89]:60141)
+	(envelope-from <stefanha@gmail.com>) id 1SEzXN-0008LR-NH
+	for qemu-trivial@nongnu.org; Tue, 03 Apr 2012 04:56:31 -0400
+Received: from mail-wi0-f175.google.com ([209.85.212.175]:43589)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony.perard@citrix.com>)
-	id 1SEiuC-0004NJ-VX; Mon, 02 Apr 2012 11:10:53 -0400
-X-IronPort-AV: E=Sophos;i="4.75,357,1330923600"; d="scan'208";a="23784120"
-Received: from ftlpmailmx02.citrite.net ([10.13.107.66])
-	by FTLPIPO01.CITRIX.COM with ESMTP/TLS/RC4-MD5;
-	02 Apr 2012 11:10:49 -0400
-Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
-	(10.13.107.66) with Microsoft SMTP Server id 8.3.213.0;
-	Mon, 2 Apr 2012 11:10:49 -0400
-Received: from [10.80.3.61] (helo=perard.uk.xensource.com)	by
-	ukmail1.uk.xensource.com with esmtp (Exim 4.69)	(envelope-from
-	<anthony.perard@citrix.com>)	id 1SEiu9-00047r-3U;
-	Mon, 02 Apr 2012 16:10:49 +0100
-From: Anthony PERARD <anthony.perard@citrix.com>
-To: qemu-trivial <qemu-trivial@nongnu.org>
-Date: Mon, 2 Apr 2012 16:10:39 +0100
-Message-ID: <1333379439-8688-1-git-send-email-anthony.perard@citrix.com>
-X-Mailer: git-send-email 1.7.2.5
+	(envelope-from <stefanha@gmail.com>)
+	id 1SEzXN-0008LF-EH; Tue, 03 Apr 2012 04:56:25 -0400
+Received: by wibhn6 with SMTP id hn6so3036559wib.10
+	for <multiple recipients>; Tue, 03 Apr 2012 01:56:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=ZzoCz2v9gtQ/ETMXomjmJWITPs2+q44toxYpqBHLQWI=;
+	b=GpTOsSOud9R2cUCpsOBt4386lGThvDkkCtHm1aQcpQZg/oOJoCVlgub5KS25ib2kEx
+	ptUMLW2KI3jSS/nYU6fDwCIR3tI4gZapJGadkNvKgTIIlHfHLYHxZWhudqW9CJNqDt99
+	T2VgpuTJ6wBq7xO38Ys3iAwITA2sFZFS25rpHowAAwrR5bVjIohHFZUtA7b9h6D0tdSK
+	AiLgIkrbnG4NJloBo7ESfggFh1ycJ3FJHBLOikBNt4qjHmYSsglBU0LuvtfMCq32KAsf
+	x2IWGazinL2MlPcGlctcVxV+PQW05ob7deMcAsyKM+jQKNBp/fLc13enHpokZmugsRnv
+	rhtw==
+Received: by 10.180.104.137 with SMTP id ge9mr34199641wib.20.1333443382524;
+	Tue, 03 Apr 2012 01:56:22 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
+	by mx.google.com with ESMTPS id
+	ea6sm41206848wib.5.2012.04.03.01.56.21
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 03 Apr 2012 01:56:21 -0700 (PDT)
+Date: Tue, 3 Apr 2012 09:56:20 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Anthony PERARD <anthony.perard@citrix.com>
+Message-ID: <20120403085620.GC30614@stefanha-thinkpad.localdomain>
+References: <1333379439-8688-1-git-send-email-anthony.perard@citrix.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1333379439-8688-1-git-send-email-anthony.perard@citrix.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 66.165.176.89
-Cc: Anthony PERARD <anthony.perard@citrix.com>,
-	QEMU-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH trivial] make: fix clean rule by removing
-	build file in qom/
+X-Received-From: 209.85.212.175
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, QEMU-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH trivial] make: fix clean rule by removing
+ build file in qom/
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,29 +58,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Apr 2012 15:11:22 -0000
+X-List-Received-Date: Tue, 03 Apr 2012 08:56:33 -0000
 
-Make clean does not clean the 'qom' directory, leaving *.o and *.d files. This
-patch fixes this.
+On Mon, Apr 02, 2012 at 04:10:39PM +0100, Anthony PERARD wrote:
+> Make clean does not clean the 'qom' directory, leaving *.o and *.d files. This
+> patch fixes this.
+> 
+> Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
+> 
+> ---
+>  Makefile |    1 +
+>  1 files changed, 1 insertions(+), 0 deletions(-)
 
-Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
----
- Makefile |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
+> tg: (a3b6181..) fix/make-clean (depends on: master)
 
-diff --git a/Makefile b/Makefile
-index 35c7a2a..a78f53d 100644
---- a/Makefile
-+++ b/Makefile
-@@ -217,6 +217,7 @@ clean:
- 	rm -f *.o *.d *.a *.lo $(TOOLS) $(HELPERS-y) qemu-ga TAGS cscope.* *.pod *~ */*~
- 	rm -Rf .libs
- 	rm -f slirp/*.o slirp/*.d audio/*.o audio/*.d block/*.o block/*.d net/*.o net/*.d fsdev/*.o fsdev/*.d ui/*.o ui/*.d qapi/*.o qapi/*.d qga/*.o qga/*.d
-+	rm -f qom/*.o qom/*.d
- 	rm -f qemu-img-cmds.h
- 	rm -f trace/*.o trace/*.d
- 	rm -f trace.c trace.h trace.c-timestamp trace.h-timestamp
--- 
-tg: (a3b6181..) fix/make-clean (depends on: master)
+What's this?  I'm curious.  First I thought it was a signature joke that
+I didn't get but I guess it's for some kind of commit tracking system?
+
+Stefan
 
