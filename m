@@ -1,30 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SFSgX-0004AU-Gn
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Apr 2012 12:03:49 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41249)
+	id 1SFgyt-0001Ca-E1
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Apr 2012 03:19:43 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50351)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1SFSgP-0003oj-ML
-	for qemu-trivial@nongnu.org; Wed, 04 Apr 2012 12:03:48 -0400
+	(envelope-from <afaerber@suse.de>) id 1SFgyk-0000mg-RM
+	for qemu-trivial@nongnu.org; Thu, 05 Apr 2012 03:19:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1SFSgD-0005RS-KJ
-	for qemu-trivial@nongnu.org; Wed, 04 Apr 2012 12:03:39 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:55264)
+	(envelope-from <afaerber@suse.de>) id 1SFgyd-0003tb-RP
+	for qemu-trivial@nongnu.org; Thu, 05 Apr 2012 03:19:33 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:33671 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1SFSg2-0005QW-Kq; Wed, 04 Apr 2012 12:03:18 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1SFSfz-0003M6-9V; Wed, 04 Apr 2012 17:03:15 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Wed,  4 Apr 2012 17:03:15 +0100
-Message-Id: <1333555395-12873-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org, Juan Quintela <quintela@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] configure: Remove useless uses of ARCH_CFLAGS
+	(envelope-from <afaerber@suse.de>)
+	id 1SFgyS-0003rL-B9; Thu, 05 Apr 2012 03:19:16 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 53BEA92325;
+	Thu,  5 Apr 2012 09:19:12 +0200 (CEST)
+Message-ID: <4F7D476F.5080307@suse.de>
+Date: Thu, 05 Apr 2012 09:19:11 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:11.0) Gecko/20120312 Thunderbird/11.0
+MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1333555395-12873-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1333555395-12873-1-git-send-email-peter.maydell@linaro.org>
+X-Enigmail-Version: 1.4
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-devel@nongnu.org, patches@linaro.org,
+	Juan Quintela <quintela@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Remove useless
+	uses of ARCH_CFLAGS
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,80 +48,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Apr 2012 16:03:48 -0000
+X-List-Received-Date: Thu, 05 Apr 2012 07:19:42 -0000
 
-Remove some useless uses of ARCH_CFLAGS -- this variable was never set
-so will always be empty. The uses were accidental: in commit 0c439cbf8
-Juan Quintela removed ARCH_CFLAGS in favour of CFLAGS (which in turn
-became QEMU_CFLAGS). However in commit be17dc90 a use of it was
-reintroduced (apparently accidentally) by Michael S. Tsirkin, and then
-I subsequently cut-n-pasted that into a number of other configure
-feature tests.
+Am 04.04.2012 18:03, schrieb Peter Maydell:
+> Remove some useless uses of ARCH_CFLAGS -- this variable was never set
+> so will always be empty. The uses were accidental: in commit 0c439cbf8
+> Juan Quintela removed ARCH_CFLAGS in favour of CFLAGS (which in turn
+> became QEMU_CFLAGS). However in commit be17dc90 a use of it was
+> reintroduced (apparently accidentally) by Michael S. Tsirkin, and then
+> I subsequently cut-n-pasted that into a number of other configure
+> feature tests.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- configure |   12 ++++++------
- 1 files changed, 6 insertions(+), 6 deletions(-)
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
-diff --git a/configure b/configure
-index 4b3adc9..80a3e8d 100755
---- a/configure
-+++ b/configure
-@@ -2361,7 +2361,7 @@ int main(void)
-     return 0;
- }
- EOF
--if compile_prog "$ARCH_CFLAGS" "" ; then
-+if compile_prog "" "" ; then
-   fallocate=yes
- fi
- 
-@@ -2376,7 +2376,7 @@ int main(void)
-     return 0;
- }
- EOF
--if compile_prog "$ARCH_CFLAGS" "" ; then
-+if compile_prog "" "" ; then
-   sync_file_range=yes
- fi
- 
-@@ -2393,7 +2393,7 @@ int main(void)
-     return 0;
- }
- EOF
--if compile_prog "$ARCH_CFLAGS" "" ; then
-+if compile_prog "" "" ; then
-   fiemap=yes
- fi
- 
-@@ -2423,7 +2423,7 @@ int main(void)
-     return 0;
- }
- EOF
--if compile_prog "$ARCH_CFLAGS" "" ; then
-+if compile_prog "" "" ; then
-   epoll=yes
- fi
- 
-@@ -2446,7 +2446,7 @@ int main(void)
-     return epoll_create1 == epoll_create1;
- }
- EOF
--if compile_prog "$ARCH_CFLAGS" "" ; then
-+if compile_prog "" "" ; then
-   epoll_create1=yes
- fi
- 
-@@ -2460,7 +2460,7 @@ int main(void)
-     return 0;
- }
- EOF
--if compile_prog "$ARCH_CFLAGS" "" ; then
-+if compile_prog "" "" ; then
-   epoll_pwait=yes
- fi
- 
--- 
-1.7.1
+Thanks,
 
+/-F
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
