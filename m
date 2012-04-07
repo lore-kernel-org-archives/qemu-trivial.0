@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SGQ08-0001sL-QR
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Apr 2012 03:24:00 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56358)
+	id 1SGQ09-0001vz-T6
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Apr 2012 03:24:01 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56370)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1SGQ01-0001Vl-DS
+	(envelope-from <stefan@weilnetz.de>) id 1SGQ02-0001XN-2G
 	for qemu-trivial@nongnu.org; Sat, 07 Apr 2012 03:23:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1SGPzz-0008J6-SO
-	for qemu-trivial@nongnu.org; Sat, 07 Apr 2012 03:23:52 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:38705)
+	(envelope-from <stefan@weilnetz.de>) id 1SGPzy-0008Is-UA
+	for qemu-trivial@nongnu.org; Sat, 07 Apr 2012 03:23:53 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:38698)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1SGPzv-0008Hd-KN; Sat, 07 Apr 2012 03:23:47 -0400
+	id 1SGPzv-0008Hb-Be; Sat, 07 Apr 2012 03:23:47 -0400
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	35EB072800B5; Sat,  7 Apr 2012 09:23:46 +0200 (CEST)
+	D765A72800B3; Sat,  7 Apr 2012 09:23:45 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id G4AYpIqp3Wjl; Sat,  7 Apr 2012 09:23:45 +0200 (CEST)
+	with ESMTP id urV-e5FnDpo8; Sat,  7 Apr 2012 09:23:45 +0200 (CEST)
 Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 62D1D72800B6; Sat,  7 Apr 2012 09:23:45 +0200 (CEST)
+	id 5E9FB72800B5; Sat,  7 Apr 2012 09:23:45 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org
-Date: Sat,  7 Apr 2012 09:23:38 +0200
-Message-Id: <1333783419-7982-4-git-send-email-sw@weilnetz.de>
+Date: Sat,  7 Apr 2012 09:23:37 +0200
+Message-Id: <1333783419-7982-3-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.9
 In-Reply-To: <1333783419-7982-1-git-send-email-sw@weilnetz.de>
 References: <1333783419-7982-1-git-send-email-sw@weilnetz.de>
@@ -35,8 +35,8 @@ X-Received-From: 78.47.199.172
 Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
 	Stefan Weil <sw@weilnetz.de>, Alexander Graf <agraf@suse.de>,
 	Blue Swirl <blauwirbel@gmail.com>, Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-trivial] [PATCH 3/4] Replace Qemu by QEMU in w32 installation
-	path (prefix)
+Subject: [Qemu-trivial] [PATCH 2/4] Replace Qemu by QEMU in internal
+	documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,48 +54,81 @@ The official spelling is QEMU.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- configure     |    2 +-
- qemu-doc.texi |    6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ CODING_STYLE                       |    2 +-
+ docs/ccid.txt                      |    2 +-
+ docs/specs/ivshmem_device_spec.txt |    2 +-
+ target-alpha/STATUS                |    2 +-
+ target-mips/TODO                   |    4 ++--
+ 5 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/configure b/configure
-index 5d5b854..2374b71 100755
---- a/configure
-+++ b/configure
-@@ -519,7 +519,7 @@ EOF
-   if compile_prog "" "-liberty" ; then
-     LIBS="-liberty $LIBS"
-   fi
--  prefix="c:/Program Files/Qemu"
-+  prefix="c:/Program Files/QEMU"
-   mandir="\${prefix}"
-   datadir="\${prefix}"
-   docdir="\${prefix}"
-diff --git a/qemu-doc.texi b/qemu-doc.texi
-index d18dff0..9e07ba6 100644
---- a/qemu-doc.texi
-+++ b/qemu-doc.texi
-@@ -2709,9 +2709,9 @@ MinGW's default header and linker search paths.
- @file{make}.  If you have problems using SDL, verify that
- @file{sdl-config} can be launched from the MSYS command line.
+diff --git a/CODING_STYLE b/CODING_STYLE
+index 7c82d4d..dcbce28 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -1,4 +1,4 @@
+-Qemu Coding Style
++QEMU Coding Style
+ =================
  
--@item You can install QEMU in @file{Program Files/Qemu} by typing
-+@item You can install QEMU in @file{Program Files/QEMU} by typing
- @file{make install}. Don't forget to copy @file{SDL.dll} in
--@file{Program Files/Qemu}.
-+@file{Program Files/QEMU}.
+ Please use the script checkpatch.pl in the scripts directory to check
+diff --git a/docs/ccid.txt b/docs/ccid.txt
+index b8e504a..450a66a 100644
+--- a/docs/ccid.txt
++++ b/docs/ccid.txt
+@@ -1,4 +1,4 @@
+-Qemu CCID Device Documentation.
++QEMU CCID Device Documentation.
  
- @end itemize
+ Contents
+ 1. USB CCID device
+diff --git a/docs/specs/ivshmem_device_spec.txt b/docs/specs/ivshmem_device_spec.txt
+index 23dd2ba..667a862 100644
+--- a/docs/specs/ivshmem_device_spec.txt
++++ b/docs/specs/ivshmem_device_spec.txt
+@@ -24,7 +24,7 @@ The device currently supports 4 registers of 32-bits each.  Registers
+ are used for synchronization between guests sharing the same memory object when
+ interrupts are supported (this requires using the shared memory server).
  
-@@ -2745,7 +2745,7 @@ The example assumes @file{sdl-config} is installed under @file{/usr/i686-pc-ming
- MinGW cross compilation tools have names like @file{i686-pc-mingw32-gcc} and @file{i686-pc-mingw32-strip}.
- We set the @code{PATH} environment variable to ensure the MinGW version of @file{sdl-config} is used and
- use --cross-prefix to specify the name of the cross compiler.
--You can also use --prefix to set the Win32 install path which defaults to @file{c:/Program Files/Qemu}.
-+You can also use --prefix to set the Win32 install path which defaults to @file{c:/Program Files/QEMU}.
+-The server assigns each VM an ID number and sends this ID number to the Qemu
++The server assigns each VM an ID number and sends this ID number to the QEMU
+ process when the guest starts.
  
- Under Fedora Linux, you can run:
- @example
+ enum ivshmem_registers {
+diff --git a/target-alpha/STATUS b/target-alpha/STATUS
+index 742e370..6c97445 100644
+--- a/target-alpha/STATUS
++++ b/target-alpha/STATUS
+@@ -4,7 +4,7 @@ Alpha emulation structure:
+ cpu.h           : CPU definitions globally exported
+ exec.h          : CPU definitions used only for translated code execution
+ helper.c        : helpers that can be called either by the translated code
+-                  or the Qemu core, including the exception handler.
++                  or the QEMU core, including the exception handler.
+ op_helper.c     : helpers that can be called only from TCG
+ helper.h        : TCG helpers prototypes
+ translate.c     : Alpha instructions to micro-operations translator
+diff --git a/target-mips/TODO b/target-mips/TODO
+index 9101881..2a3546f 100644
+--- a/target-mips/TODO
++++ b/target-mips/TODO
+@@ -16,7 +16,7 @@ General
+   Existing documentation is x86-centric.
+ - Reverse endianness bit not implemented
+ - The TLB emulation is very inefficient:
+-  Qemu's softmmu implements a x86-style MMU, with separate entries
++  QEMU's softmmu implements a x86-style MMU, with separate entries
+   for read/write/execute, a TLB index which is just a modulo of the
+   virtual address, and a set of TLBs for each user/kernel/supervisor
+   MMU mode.
+@@ -25,7 +25,7 @@ General
+   up to 256 ASID tags as additional matching criterion (which roughly
+   equates to 256 MMU modes). It also has a global flag which causes
+   entries to match regardless of ASID.
+-  To cope with these differences, Qemu currently flushes the TLB at
++  To cope with these differences, QEMU currently flushes the TLB at
+   each ASID change. Using the MMU modes to implement ASIDs hinges on
+   implementing the global bit efficiently.
+ - save/restore of the CPU state is not implemented (see machine.c).
 -- 
 1.7.9
 
