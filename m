@@ -1,41 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SGSoV-00045G-2I
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Apr 2012 06:24:11 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:37632)
+	id 1SGWZz-0008JE-On
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Apr 2012 10:25:27 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44667)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1SGSoS-0003xE-BI
-	for qemu-trivial@nongnu.org; Sat, 07 Apr 2012 06:24:09 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1SGWZx-0008Af-AI
+	for qemu-trivial@nongnu.org; Sat, 07 Apr 2012 10:25:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1SGSoQ-000308-JF
-	for qemu-trivial@nongnu.org; Sat, 07 Apr 2012 06:24:07 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:41674 helo=mx2.suse.de)
+	(envelope-from <blauwirbel@gmail.com>) id 1SGWZv-0006om-LO
+	for qemu-trivial@nongnu.org; Sat, 07 Apr 2012 10:25:24 -0400
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:48271)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1SGSoN-0002zV-Ex; Sat, 07 Apr 2012 06:24:03 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 9395F915A2;
-	Sat,  7 Apr 2012 12:24:01 +0200 (CEST)
-Message-ID: <4F8015BF.1060101@suse.de>
-Date: Sat, 07 Apr 2012 12:23:59 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:11.0) Gecko/20120312 Thunderbird/11.0
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1SGWZr-0006nb-Jn; Sat, 07 Apr 2012 10:25:19 -0400
+Received: by iafj26 with SMTP id j26so4968850iaf.4
+	for <multiple recipients>; Sat, 07 Apr 2012 07:25:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=6GqBHyRpXuDZnT4FLMUcf6SsCa3Cc5lJ1Xf0g+IaQtY=;
+	b=GAxWkJyafe1osIiMbHC8N+gg0vIdzBjSqJ1XhjhSirfkBUdtW9dZ9v0DBxbo+7PWmN
+	z5apHbf0bhviwvUuinLslzBIjUyBOVLTWiqzuQ7EGUBqS3qFC7aFIULDO3Q2NaXYIAIE
+	irZJY6d45/QSUOcID7P5zENEDRaFrIOHP2j4jyWWGblbzEaO86SQkEpsUzUazbFrMHjG
+	X6tSk+7GlwlA6LB1U8k72i9zwkRwvfrVa8wTnYBB06JjvketmC6ID2549r+PAFRQiHnJ
+	OJqcJhx0OwpBqfFOQqvtIwnvluqCBAowj6XhjA5wNGIzONi9d2tIs3M5qZLmEQ8Ejcto
+	qEWA==
+Received: by 10.50.47.162 with SMTP id e2mr1057734ign.0.1333808717393; Sat, 07
+	Apr 2012 07:25:17 -0700 (PDT)
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1333783419-7982-1-git-send-email-sw@weilnetz.de>
+Received: by 10.50.197.194 with HTTP; Sat, 7 Apr 2012 07:24:57 -0700 (PDT)
 In-Reply-To: <1333783419-7982-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.4
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
-	Blue Swirl <blauwirbel@gmail.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] Replace Qemu by QEMU
+References: <1333783419-7982-1-git-send-email-sw@weilnetz.de>
+From: Blue Swirl <blauwirbel@gmail.com>
+Date: Sat, 7 Apr 2012 14:24:57 +0000
+Message-ID: <CAAu8pHu4u9t18hFDW1wDPx11CbLActQHRb_K3K527eLzP9PdwQ@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>,
+	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH 0/4] Replace Qemu by QEMU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,35 +53,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Apr 2012 10:24:09 -0000
+X-List-Received-Date: Sat, 07 Apr 2012 14:25:26 -0000
 
-Am 07.04.2012 09:23, schrieb Stefan Weil:
+On Sat, Apr 7, 2012 at 07:23, Stefan Weil <sw@weilnetz.de> wrote:
 > These patches try to establish the official spelling "QEMU".
 > There remain some old spellings "Qemu" in BIOS code
 > (use "grep -rw Qemu pc-bios" to see them).
->=20
+>
 > Patch 4 also fixes a spelling bug and debug messages
 > which I did not mention in the commit message.
->=20
+>
 > Regards,
 > Stefan W.
->=20
+>
 > [PATCH 1/4] Replace Qemu by QEMU in user visible documentation
 > [PATCH 2/4] Replace Qemu by QEMU in internal documentation
 > [PATCH 3/4] Replace Qemu by QEMU in w32 installation path (prefix)
 > [PATCH 4/4] Replace Qemu by QEMU in comments
 
-Series (including ppc parts and same-line fixes)
-
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
-
-I hope it'll avoid some copy&paste errors, but I somewhat doubt it'll
-stop newbies from varying the spelling and new misspellings creeping in.
-
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+Thanks, applied all.
 
