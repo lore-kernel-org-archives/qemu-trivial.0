@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SH3vi-0001QP-6K
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Apr 2012 22:02:06 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40196)
+	id 1SH4KP-0003BN-ID
+	for mharc-qemu-trivial@gnu.org; Sun, 08 Apr 2012 22:27:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:57403)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH3vf-0001Pk-6F
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:02:04 -0400
+	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH4KM-0003An-3x
+	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:27:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH3vd-000753-9a
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:02:02 -0400
-Received: from e28smtp01.in.ibm.com ([122.248.162.1]:40188)
+	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH4KK-0003wY-7b
+	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:27:33 -0400
+Received: from e28smtp04.in.ibm.com ([122.248.162.4]:36264)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH3vc-00074i-L6
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:02:01 -0400
+	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH4KJ-0003wF-KS
+	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:27:32 -0400
 Received: from /spool/local
-	by e28smtp01.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e28smtp04.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <liwp@linux.vnet.ibm.com>;
-	Mon, 9 Apr 2012 07:31:55 +0530
-Received: from d28relay01.in.ibm.com (9.184.220.58)
-	by e28smtp01.in.ibm.com (192.168.1.131) with IBM ESMTP SMTP Gateway:
+	Mon, 9 Apr 2012 07:57:25 +0530
+Received: from d28relay04.in.ibm.com (9.184.220.61)
+	by e28smtp04.in.ibm.com (192.168.1.134) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 9 Apr 2012 07:31:39 +0530
-Received: from d28av04.in.ibm.com (d28av04.in.ibm.com [9.184.220.66])
-	by d28relay01.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	q3921dmN4595744
-	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 07:31:39 +0530
-Received: from d28av04.in.ibm.com (loopback [127.0.0.1])
-	by d28av04.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	q397VRjA003847
-	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 17:31:27 +1000
+	Mon, 9 Apr 2012 07:57:22 +0530
+Received: from d28av03.in.ibm.com (d28av03.in.ibm.com [9.184.220.65])
+	by d28relay04.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	q392RJ4B3653732
+	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 07:57:21 +0530
+Received: from d28av03.in.ibm.com (loopback [127.0.0.1])
+	by d28av03.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	q397uXlW016609
+	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 17:56:33 +1000
 Received: from localhost ([9.123.236.97])
-	by d28av04.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	q397VQbu003824; Mon, 9 Apr 2012 17:31:27 +1000
+	by d28av03.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	q397uXJP016592; Mon, 9 Apr 2012 17:56:33 +1000
 From: Wanpeng Li <liwp@linux.vnet.ibm.com>
 To: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>
-Date: Mon,  9 Apr 2012 10:01:36 +0800
-Message-Id: <1333936896-15614-1-git-send-email-liwp@linux.vnet.ibm.com>
+Date: Mon,  9 Apr 2012 10:27:16 +0800
+Message-Id: <1333938436-20345-1-git-send-email-liwp@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.7.5.4
-x-cbid: 12040902-4790-0000-0000-0000021CF615
+x-cbid: 12040902-5564-0000-0000-00000220C66A
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 122.248.162.1
+X-Received-From: 122.248.162.4
 Subject: [Qemu-trivial] [PATCH] avoid repeating contain header file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -53,7 +53,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Apr 2012 02:02:04 -0000
+X-List-Received-Date: Mon, 09 Apr 2012 02:27:36 -0000
 
 Signed-off-by: Wanpeng Li <liwp@linux.vnet.ibm.com>
 ---
@@ -66,9 +66,9 @@ index 32a4231..d19c226 100644
 +++ b/hw/ps2.h
 @@ -1,3 +1,30 @@
 +/*
-+ * QEMU VMMouse emulation
++ * QEMU PS/2 keyboard/mouse emulation
 + *
-+ * Copyright (C) 2007 Anthony Liguori <anthony@codemonkey.ws>
++ * Copyright (C) 2003 Fabrice Bellard
 + *
 + * Permission is hereby granted, free of charge, to any person obtaining a copy
 + * of this software and associated documentation files (the "Software"), to deal
