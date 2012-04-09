@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SH3sw-0000Zd-L2
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Apr 2012 21:59:14 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39945)
+	id 1SH3vi-0001QP-6K
+	for mharc-qemu-trivial@gnu.org; Sun, 08 Apr 2012 22:02:06 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:40196)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH3su-0000ZS-8X
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 21:59:13 -0400
+	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH3vf-0001Pk-6F
+	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:02:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH3ss-0006AZ-F3
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 21:59:11 -0400
-Received: from e28smtp01.in.ibm.com ([122.248.162.1]:33747)
+	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH3vd-000753-9a
+	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:02:02 -0400
+Received: from e28smtp01.in.ibm.com ([122.248.162.1]:40188)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH3sr-0006AT-Rj
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 21:59:10 -0400
+	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH3vc-00074i-L6
+	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:02:01 -0400
 Received: from /spool/local
 	by e28smtp01.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <liwp@linux.vnet.ibm.com>;
-	Mon, 9 Apr 2012 07:29:02 +0530
-Received: from d28relay02.in.ibm.com (9.184.220.59)
+	Mon, 9 Apr 2012 07:31:55 +0530
+Received: from d28relay01.in.ibm.com (9.184.220.58)
 	by e28smtp01.in.ibm.com (192.168.1.131) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 9 Apr 2012 07:29:01 +0530
-Received: from d28av05.in.ibm.com (d28av05.in.ibm.com [9.184.220.67])
-	by d28relay02.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	q391x0CH2760954
-	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 07:29:00 +0530
-Received: from d28av05.in.ibm.com (loopback [127.0.0.1])
-	by d28av05.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	q397TSMT027476
-	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 17:29:29 +1000
+	Mon, 9 Apr 2012 07:31:39 +0530
+Received: from d28av04.in.ibm.com (d28av04.in.ibm.com [9.184.220.66])
+	by d28relay01.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	q3921dmN4595744
+	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 07:31:39 +0530
+Received: from d28av04.in.ibm.com (loopback [127.0.0.1])
+	by d28av04.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	q397VRjA003847
+	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 17:31:27 +1000
 Received: from localhost ([9.123.236.97])
-	by d28av05.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	q397TSL5027473; Mon, 9 Apr 2012 17:29:28 +1000
+	by d28av04.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	q397VQbu003824; Mon, 9 Apr 2012 17:31:27 +1000
 From: Wanpeng Li <liwp@linux.vnet.ibm.com>
 To: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>
-Date: Mon,  9 Apr 2012 09:58:56 +0800
-Message-Id: <1333936736-14996-1-git-send-email-liwp@linux.vnet.ibm.com>
+Date: Mon,  9 Apr 2012 10:01:36 +0800
+Message-Id: <1333936896-15614-1-git-send-email-liwp@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.7.5.4
-x-cbid: 12040901-4790-0000-0000-0000021CF488
+x-cbid: 12040902-4790-0000-0000-0000021CF615
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 122.248.162.1
-Subject: [Qemu-trivial] [PATCH 2/2] avoid repeating contain header file
+Subject: [Qemu-trivial] [PATCH] avoid repeating contain header file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,7 +53,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Apr 2012 01:59:13 -0000
+X-List-Received-Date: Mon, 09 Apr 2012 02:02:04 -0000
 
 Signed-off-by: Wanpeng Li <liwp@linux.vnet.ibm.com>
 ---
