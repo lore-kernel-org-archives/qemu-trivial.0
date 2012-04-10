@@ -1,48 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SHSLF-0003XR-2k
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Apr 2012 00:06:05 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:35216)
+	id 1SHaY6-00069E-K6
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Apr 2012 08:51:54 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:48840)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1SHSLC-0003WI-Ut
-	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 00:06:04 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SHaY1-000696-64
+	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 08:51:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1SHSLB-0006Vb-Cz
-	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 00:06:02 -0400
-Received: from mail-iy0-f173.google.com ([209.85.210.173]:37808)
+	(envelope-from <stefanha@gmail.com>) id 1SHaXu-0005wy-SW
+	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 08:51:48 -0400
+Received: from mail-wi0-f181.google.com ([209.85.212.181]:56624)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1SHSLB-0006VK-8d
-	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 00:06:01 -0400
-Received: by iafj26 with SMTP id j26so8118352iaf.4
-	for <qemu-trivial@nongnu.org>; Mon, 09 Apr 2012 21:05:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
-	bh=fqmW0MYeL4i05msNGdiinD6lZ0OwGGV3J4QzYSGQL4o=;
-	b=CSjm7Vs7KHgPdV9j1DlJ2cWH9lwXtv9a0YlxdFKdqPyUEGhhmEwA7CUM96PVy47awU
-	H1oieMDF7zQww2BU9GkyAT/ZhUnRMT3AKjpj6YgCv05wK87BeFDOASBtxe64ZZD5gZ0J
-	syhOjtE+Y1qCuGBw0EGa8N3U3LYtl/ZauvO9x6nAq8lF0N30B9PgjzAo2j6CSFHuwY6M
-	tOk29fSJol5GCxqv60N1Gln6tOFno7+d4Yi9E0Lpk894915eZGWkKpftU00zXzW5chnl
-	HMAMo2oeshKopI7eT9aDxkPw6ptThKnXX7PxCtkk3xrDqbHen7jYfX+MawcwkWC3IRY5
-	IgZQ==
-Received: by 10.50.181.193 with SMTP id dy1mr1022215igc.9.1334030758550;
-	Mon, 09 Apr 2012 21:05:58 -0700 (PDT)
-Received: from localhost ([124.148.20.9])
-	by mx.google.com with ESMTPS id en8sm18734323igc.7.2012.04.09.21.05.55
+	(envelope-from <stefanha@gmail.com>)
+	id 1SHaXu-0005wk-Iz; Tue, 10 Apr 2012 08:51:42 -0400
+Received: by wibhr17 with SMTP id hr17so2999316wib.10
+	for <multiple recipients>; Tue, 10 Apr 2012 05:51:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=q+GsohIwMJd4WjSWna99fzG3WKhIbMTId1IPweR6sVo=;
+	b=vGuPrjJcIUehdyeIUDjPRF6O1tLGB/EyroWDbsQS7DohQjccR1FfuFv21OxhSS11CL
+	epHIkD1BYLQ1Iqedo67i28gVc3yfdWAqrPyDgh5eFLAagRmRR3IzBAP4UWZ6a7XJYUNy
+	suu8SyO+zodgQRoSq+10CU6yb6EjSJW/DSNnFawggH6MKYJNBeMAB29lgTzoL6vP14eu
+	shl8Zj+anKSr3TKiEHYHSHtXNC7umhSVQt8qVI8T0BTlS/BPdADbtllyQ9pPRsxrO9gk
+	gExkk24cV+JZyJqdChDUittYXQF1oaKpW4Bf7akOGq6rFXoOKlC/9AMwrFzSJK2NAbkF
+	l+BA==
+Received: by 10.216.139.229 with SMTP id c79mr7465314wej.16.1334062299273;
+	Tue, 10 Apr 2012 05:51:39 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
+	by mx.google.com with ESMTPS id
+	fn2sm60873536wib.0.2012.04.10.05.51.38
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 09 Apr 2012 21:05:57 -0700 (PDT)
-From: "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>
-To: qemu-devel@nongnu.org,
-	edgar.iglesias@gmail.com
-Date: Tue, 10 Apr 2012 14:05:52 +1000
-Message-Id: <1334030752-26476-1-git-send-email-peter.crosthwaite@petalogix.com>
-X-Mailer: git-send-email 1.7.3.2
-X-Gm-Message-State: ALoCoQnmYeb4AtNZfmZzuKhM9PBMuGTo4Kt09ncrF76kvx5brkFQDNy1mfXxzHlls6jSFDpdTArW
+	Tue, 10 Apr 2012 05:51:38 -0700 (PDT)
+Date: Tue, 10 Apr 2012 13:51:36 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20120410125136.GA9094@stefanha-thinkpad.localdomain>
+References: <1333515728-9769-1-git-send-email-david@gibson.dropbear.id.au>
+	<1333515728-9769-3-git-send-email-david@gibson.dropbear.id.au>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1333515728-9769-3-git-send-email-david@gibson.dropbear.id.au>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.210.173
-Cc: peter.crosthwaite@petalogix.com, qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] petalogix_s3adsp1800: deleted bad FIXME
-	comment
+X-Received-From: 209.85.212.181
+Cc: qemu-trivial@nongnu.org, benh@kernel.crashing.org, qemu-devel@nongnu.org,
+	qemu-ppc@nongnu.org, scottwood@freescale.com, afaerber@web.de
+Subject: Re: [Qemu-trivial] [PATCH 2/4] pseries: Remove unused fields from
+ VIOsPAPRBus structure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,28 +60,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Apr 2012 04:06:04 -0000
+X-List-Received-Date: Tue, 10 Apr 2012 12:51:53 -0000
 
-This FIXME has already been actioned. Deleted comment.
+On Wed, Apr 04, 2012 at 03:02:06PM +1000, David Gibson wrote:
+> The VIOsPAPRBus structure, used on the pseries machine contains some old
+> fields which are no longer used anywhere.  This patch removes them.
+> 
+> Cc: qemu-trivial@nongnu.org
+> 
+> Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+> ---
+>  hw/spapr_vio.h |    2 --
+>  1 files changed, 0 insertions(+), 2 deletions(-)
 
-Signed-off-by: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
----
- hw/petalogix_s3adsp1800_mmu.c |    1 -
- 1 files changed, 0 insertions(+), 1 deletions(-)
+Leaving for Andreas to apply the whole series to the ppc tree.
 
-diff --git a/hw/petalogix_s3adsp1800_mmu.c b/hw/petalogix_s3adsp1800_mmu.c
-index ff154c7..8b37336 100644
---- a/hw/petalogix_s3adsp1800_mmu.c
-+++ b/hw/petalogix_s3adsp1800_mmu.c
-@@ -51,7 +51,6 @@
- 
- static void machine_cpu_reset(CPUMBState *env)
- {
--    /* FIXME: move to machine specfic cpu reset */
-     env->pvr.regs[10] = 0x0c000000; /* spartan 3a dsp family.  */
- }
- 
--- 
-1.7.3.2
-
+Stefan
 
