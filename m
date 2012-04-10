@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SHahZ-0002Bm-Ik
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Apr 2012 09:01:41 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:48262)
+	id 1SHasR-0004MM-Lj
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Apr 2012 09:12:55 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:45617)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SHahO-0001ha-RN
-	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 09:01:40 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SHasM-0004Ly-4I
+	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 09:12:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SHahI-0000S1-OA
-	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 09:01:30 -0400
-Received: from mail-wi0-f175.google.com ([209.85.212.175]:45336)
+	(envelope-from <stefanha@gmail.com>) id 1SHasJ-0003XB-VW
+	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 09:12:49 -0400
+Received: from mail-wg0-f41.google.com ([74.125.82.41]:37352)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SHah6-0000Mt-OE; Tue, 10 Apr 2012 09:01:12 -0400
-Received: by wibhn6 with SMTP id hn6so2968887wib.10
-	for <multiple recipients>; Tue, 10 Apr 2012 06:01:10 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>) id 1SHasJ-0003WT-N6
+	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 09:12:47 -0400
+Received: by wgbds1 with SMTP id ds1so3059910wgb.4
+	for <qemu-trivial@nongnu.org>; Tue, 10 Apr 2012 06:12:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=noTqJtqReH41onkl1hSHj6pBsKYCQrmyKI/WIbRZE/A=;
-	b=PjUeyD83kM2nBPDUI2/ukHk+gsrvJpah/qlpn0Pt1tA51kbcr6sMPeVd9F+ltyd0Yb
-	+A8V0M1yEmMbb3AMtvTSrRn4QCGXYfAkF0+w6UHyCKGQQlNOAxNOIwT5yB3bXKt1qKEr
-	Tpm5bmg3r7qmWJvWNCVLImtNPSeRdQ31E+ZTxY2xDxSuDENFH6uOxKdEC9Eccf5tLX0l
-	Ktl6TLGpmjZU1fz89nq39c5Sm1xJUClhszVC3i5p/Wa7e+Sc/64ozXZOX5RGHuM2WyYe
-	z592jKTdbNqU2IPNiXmiVnERqMEyOaIZAt9bdExs4Fe8L0wAtUPFhSbp0OLmrL2QuqyO
-	eu2g==
-Received: by 10.180.107.132 with SMTP id hc4mr6758763wib.21.1334062870037;
-	Tue, 10 Apr 2012 06:01:10 -0700 (PDT)
+	bh=yt7okQ20pLP7sOhm/IeEa3H41VF7gyXEL4ZvXIIXutk=;
+	b=rEipoLxx+tIy2HQb8C5vJK0uLN/YqEf1w6aFnkWes595Kd1CvPRIMopVqCzoblcoGl
+	/gdGbEQBzxK/R2FbD4fKrpwcE97fIEef7CxwAggX+WGJ9kI6OtwhgJiUvQKo/xuyHW0u
+	J50P/3GupfeDfdKAWDb85MEsAqj2zA6qcJVNFS30KCD6Yuc0UMnth8XvB/tXqq339qjq
+	qqCI7mTkfblWaqKoBGdI5XyNxSIzCiqlSLrUfBVkMu2iImW9gEDNIC8gvK7hKE0OaXCb
+	RWRuraxEljR4TEwa2uyAJINEsGmr06jTO8HhAF14N2yNzFTN6i5jY7GrQPqbKVOD7iSz
+	WQgg==
+Received: by 10.180.80.70 with SMTP id p6mr6844300wix.21.1334063565806;
+	Tue, 10 Apr 2012 06:12:45 -0700 (PDT)
 Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id k6sm37541004wiy.7.2012.04.10.06.01.08
+	by mx.google.com with ESMTPS id 6sm37622613wiz.1.2012.04.10.06.12.44
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 10 Apr 2012 06:01:09 -0700 (PDT)
-Date: Tue, 10 Apr 2012 14:01:04 +0100
+	Tue, 10 Apr 2012 06:12:45 -0700 (PDT)
+Date: Tue, 10 Apr 2012 14:12:40 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120410130104.GC9094@stefanha-thinkpad.localdomain>
-References: <1333740800-721-1-git-send-email-sw@weilnetz.de>
+To: Wanpeng Li <liwp@linux.vnet.ibm.com>
+Message-ID: <20120410131240.GD9094@stefanha-thinkpad.localdomain>
+References: <1333938436-20345-1-git-send-email-liwp@linux.vnet.ibm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1333740800-721-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1333938436-20345-1-git-send-email-liwp@linux.vnet.ibm.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.175
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] configure: Fix wrong preprocessor
- statement
+X-Received-From: 74.125.82.41
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>
+Subject: Re: [Qemu-trivial] [PATCH] avoid repeating contain header file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,19 +56,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Apr 2012 13:01:40 -0000
+X-List-Received-Date: Tue, 10 Apr 2012 13:12:54 -0000
 
-On Fri, Apr 06, 2012 at 09:33:20PM +0200, Stefan Weil wrote:
-> #abort is not a preprocessor statement. It aborts, but the preprocessor
-> statement #error is more common to abort a compilation.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On Mon, Apr 09, 2012 at 10:27:16AM +0800, Wanpeng Li wrote:
+> Signed-off-by: Wanpeng Li <liwp@linux.vnet.ibm.com>
 > ---
->  configure |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
+>  hw/ps2.h |   29 +++++++++++++++++++++++++++++
+>  1 files changed, 29 insertions(+), 0 deletions(-)
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Please use version numbers on your patches so it's easy to identify the
+latest version and understand the changes between versions.  [PATCH v2]
+would be good.
+
+Also please CC qemu-devel@nongnu.org.  All QEMU patches must go to
+qemu-devel@nongnu.org, CCing qemu-trivial will bring them to my
+attention but they still need to be on the main mailing list.
 
 Stefan
 
