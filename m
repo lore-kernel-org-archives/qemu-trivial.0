@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SH4KP-0003BN-ID
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Apr 2012 22:27:37 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:57403)
+	id 1SHSLF-0003XR-2k
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Apr 2012 00:06:05 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:35216)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH4KM-0003An-3x
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:27:36 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1SHSLC-0003WI-Ut
+	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 00:06:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH4KK-0003wY-7b
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:27:33 -0400
-Received: from e28smtp04.in.ibm.com ([122.248.162.4]:36264)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1SHSLB-0006Vb-Cz
+	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 00:06:02 -0400
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:37808)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liwp@linux.vnet.ibm.com>) id 1SH4KJ-0003wF-KS
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2012 22:27:32 -0400
-Received: from /spool/local
-	by e28smtp04.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <liwp@linux.vnet.ibm.com>;
-	Mon, 9 Apr 2012 07:57:25 +0530
-Received: from d28relay04.in.ibm.com (9.184.220.61)
-	by e28smtp04.in.ibm.com (192.168.1.134) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 9 Apr 2012 07:57:22 +0530
-Received: from d28av03.in.ibm.com (d28av03.in.ibm.com [9.184.220.65])
-	by d28relay04.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	q392RJ4B3653732
-	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 07:57:21 +0530
-Received: from d28av03.in.ibm.com (loopback [127.0.0.1])
-	by d28av03.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	q397uXlW016609
-	for <qemu-trivial@nongnu.org>; Mon, 9 Apr 2012 17:56:33 +1000
-Received: from localhost ([9.123.236.97])
-	by d28av03.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	q397uXJP016592; Mon, 9 Apr 2012 17:56:33 +1000
-From: Wanpeng Li <liwp@linux.vnet.ibm.com>
-To: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>
-Date: Mon,  9 Apr 2012 10:27:16 +0800
-Message-Id: <1333938436-20345-1-git-send-email-liwp@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.5.4
-x-cbid: 12040902-5564-0000-0000-00000220C66A
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1SHSLB-0006VK-8d
+	for qemu-trivial@nongnu.org; Tue, 10 Apr 2012 00:06:01 -0400
+Received: by iafj26 with SMTP id j26so8118352iaf.4
+	for <qemu-trivial@nongnu.org>; Mon, 09 Apr 2012 21:05:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
+	bh=fqmW0MYeL4i05msNGdiinD6lZ0OwGGV3J4QzYSGQL4o=;
+	b=CSjm7Vs7KHgPdV9j1DlJ2cWH9lwXtv9a0YlxdFKdqPyUEGhhmEwA7CUM96PVy47awU
+	H1oieMDF7zQww2BU9GkyAT/ZhUnRMT3AKjpj6YgCv05wK87BeFDOASBtxe64ZZD5gZ0J
+	syhOjtE+Y1qCuGBw0EGa8N3U3LYtl/ZauvO9x6nAq8lF0N30B9PgjzAo2j6CSFHuwY6M
+	tOk29fSJol5GCxqv60N1Gln6tOFno7+d4Yi9E0Lpk894915eZGWkKpftU00zXzW5chnl
+	HMAMo2oeshKopI7eT9aDxkPw6ptThKnXX7PxCtkk3xrDqbHen7jYfX+MawcwkWC3IRY5
+	IgZQ==
+Received: by 10.50.181.193 with SMTP id dy1mr1022215igc.9.1334030758550;
+	Mon, 09 Apr 2012 21:05:58 -0700 (PDT)
+Received: from localhost ([124.148.20.9])
+	by mx.google.com with ESMTPS id en8sm18734323igc.7.2012.04.09.21.05.55
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 09 Apr 2012 21:05:57 -0700 (PDT)
+From: "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>
+To: qemu-devel@nongnu.org,
+	edgar.iglesias@gmail.com
+Date: Tue, 10 Apr 2012 14:05:52 +1000
+Message-Id: <1334030752-26476-1-git-send-email-peter.crosthwaite@petalogix.com>
+X-Mailer: git-send-email 1.7.3.2
+X-Gm-Message-State: ALoCoQnmYeb4AtNZfmZzuKhM9PBMuGTo4Kt09ncrF76kvx5brkFQDNy1mfXxzHlls6jSFDpdTArW
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 122.248.162.4
-Subject: [Qemu-trivial] [PATCH] avoid repeating contain header file
+X-Received-From: 209.85.210.173
+Cc: peter.crosthwaite@petalogix.com, qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] petalogix_s3adsp1800: deleted bad FIXME
+	comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,55 +54,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Apr 2012 02:27:36 -0000
+X-List-Received-Date: Tue, 10 Apr 2012 04:06:04 -0000
 
-Signed-off-by: Wanpeng Li <liwp@linux.vnet.ibm.com>
+This FIXME has already been actioned. Deleted comment.
+
+Signed-off-by: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
 ---
- hw/ps2.h |   29 +++++++++++++++++++++++++++++
- 1 files changed, 29 insertions(+), 0 deletions(-)
+ hw/petalogix_s3adsp1800_mmu.c |    1 -
+ 1 files changed, 0 insertions(+), 1 deletions(-)
 
-diff --git a/hw/ps2.h b/hw/ps2.h
-index 32a4231..d19c226 100644
---- a/hw/ps2.h
-+++ b/hw/ps2.h
-@@ -1,3 +1,30 @@
-+/*
-+ * QEMU PS/2 keyboard/mouse emulation
-+ *
-+ * Copyright (C) 2003 Fabrice Bellard
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#ifndef HW_PS2_H
-+#define HW_PS2_H
-+
- /* ps2.c */
- void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg);
- void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg);
-@@ -7,3 +34,5 @@ uint32_t ps2_read_data(void *);
- void ps2_queue(void *, int b);
- void ps2_keyboard_set_translation(void *opaque, int mode);
- void ps2_mouse_fake_event(void *opaque);
-+
-+#endif /* !HW_PS2_H */
+diff --git a/hw/petalogix_s3adsp1800_mmu.c b/hw/petalogix_s3adsp1800_mmu.c
+index ff154c7..8b37336 100644
+--- a/hw/petalogix_s3adsp1800_mmu.c
++++ b/hw/petalogix_s3adsp1800_mmu.c
+@@ -51,7 +51,6 @@
+ 
+ static void machine_cpu_reset(CPUMBState *env)
+ {
+-    /* FIXME: move to machine specfic cpu reset */
+     env->pvr.regs[10] = 0x0c000000; /* spartan 3a dsp family.  */
+ }
+ 
 -- 
-1.7.5.4
+1.7.3.2
 
 
