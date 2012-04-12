@@ -1,48 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SIhJs-0000O4-TS
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Apr 2012 10:17:48 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54378)
+	id 1SJOlm-0004dz-2E
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2012 08:41:30 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:39959)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1SIhJn-0000N8-UI
-	for qemu-trivial@nongnu.org; Fri, 13 Apr 2012 10:17:48 -0400
+	(envelope-from <camponez@oc6553588448.ibm.com>) id 1SJOlj-0004dG-11
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2012 08:41:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1SIhJh-0003y3-Ri
-	for qemu-trivial@nongnu.org; Fri, 13 Apr 2012 10:17:43 -0400
-Received: from e06smtp14.uk.ibm.com ([195.75.94.110]:51177)
+	(envelope-from <camponez@oc6553588448.ibm.com>) id 1SJOlh-0006Ra-Fv
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2012 08:41:26 -0400
+Received: from [177.42.71.101] (port=26033 helo=oc6553588448.ibm.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1SIhJh-0003xS-JB
-	for qemu-trivial@nongnu.org; Fri, 13 Apr 2012 10:17:37 -0400
-Received: from /spool/local
-	by e06smtp14.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanha@linux.vnet.ibm.com>;
-	Fri, 13 Apr 2012 15:17:33 +0100
-Received: from d06nrmr1307.portsmouth.uk.ibm.com (9.149.38.129)
-	by e06smtp14.uk.ibm.com (192.168.101.144) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 13 Apr 2012 15:17:31 +0100
-Received: from d06av12.portsmouth.uk.ibm.com (d06av12.portsmouth.uk.ibm.com
-	[9.149.37.247])
-	by d06nrmr1307.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
-	ESMTP id q3DEHUsB2347188; Fri, 13 Apr 2012 15:17:30 +0100
-Received: from d06av12.portsmouth.uk.ibm.com (loopback [127.0.0.1])
-	by d06av12.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
-	ESMTP id q3DEHTLp014443; Fri, 13 Apr 2012 08:17:29 -0600
-Received: from localhost (dyn-9-174-219-44.manchester-maybrook.uk.ibm.com
-	[9.174.219.44])
-	by d06av12.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
-	ESMTP id q3DEHTxL014414; Fri, 13 Apr 2012 08:17:29 -0600
-From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-To: <qemu-devel@nongnu.org>
-Date: Fri, 13 Apr 2012 15:17:21 +0100
-Message-Id: <1334326641-30837-1-git-send-email-stefanha@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.9.5
-x-cbid: 12041314-1948-0000-0000-00000183F40D
+	(envelope-from <camponez@oc6553588448.ibm.com>) id 1SJOlh-0006RD-7T
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2012 08:41:25 -0400
+Received: by oc6553588448.ibm.com (Postfix, from userid 500)
+	id EACB4660E9; Thu, 12 Apr 2012 12:56:02 -0300 (BRT)
+From: Eduardo Elias Ferreira <edusf@linux.vnet.ibm.com>
+To: qemu-trivial@nongnu.org
+Date: Thu, 12 Apr 2012 12:56:00 -0300
+Message-Id: <1334246160-17278-1-git-send-email-edusf@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 195.75.94.110
-Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH] gitignore: ignore qtest binaries
+X-Received-From: 177.42.71.101
+Subject: [Qemu-trivial] [PATCH] spice-qemu-char.c: Show what name is
+	unsupported
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,23 +35,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Apr 2012 14:17:48 -0000
+X-List-Received-Date: Sun, 15 Apr 2012 12:41:28 -0000
 
-Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
 ---
- .gitignore |    1 +
- 1 file changed, 1 insertion(+)
+ spice-qemu-char.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/.gitignore b/.gitignore
-index 9859c7d..db74219 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -89,3 +89,4 @@ cscope.*
- tags
- TAGS
- *~
-+tests/*-test
+diff --git a/spice-qemu-char.c b/spice-qemu-char.c
+index 9bab4ac..ef44bc0 100644
+--- a/spice-qemu-char.c
++++ b/spice-qemu-char.c
+@@ -233,7 +233,7 @@ CharDriverState *qemu_chr_open_spice(QemuOpts *opts)
+         }
+     }
+     if (subtype == NULL) {
+-        fprintf(stderr, "spice-qemu-char: unsupported name\n");
++        fprintf(stderr, "spice-qemu-char: unsupported name: %s\n", name);
+         print_allowed_subtypes();
+         return NULL;
+     }
 -- 
-1.7.9.5
+1.7.1
 
 
