@@ -1,46 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SIdMj-0000Z8-Ay
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Apr 2012 06:04:29 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:55551)
+	id 1SIhJs-0000O4-TS
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Apr 2012 10:17:48 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54378)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1SIdMb-0000BJ-Md
-	for qemu-trivial@nongnu.org; Fri, 13 Apr 2012 06:04:27 -0400
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1SIhJn-0000N8-UI
+	for qemu-trivial@nongnu.org; Fri, 13 Apr 2012 10:17:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1SIdMV-0000ER-EA
-	for qemu-trivial@nongnu.org; Fri, 13 Apr 2012 06:04:21 -0400
-Received: from mail-pz0-f46.google.com ([209.85.210.46]:58493)
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1SIhJh-0003y3-Ri
+	for qemu-trivial@nongnu.org; Fri, 13 Apr 2012 10:17:43 -0400
+Received: from e06smtp14.uk.ibm.com ([195.75.94.110]:51177)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1SIdMS-0000Bu-18; Fri, 13 Apr 2012 06:04:12 -0400
-Received: by dadz9 with SMTP id z9so4256663dad.33
-	for <multiple recipients>; Fri, 13 Apr 2012 03:04:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer;
-	bh=+0JnFDXualoQfYy/OXQ0LV/QHl+/yeLhcNaoIXqJ9Wo=;
-	b=jQ6IaZ8713FgTeI+Dg/yfOmEBUqORO+lTf2ZmvsWVGC/0LOgfouU8ujj2+Tdj6Tmii
-	1P279KZ3hDokOxxK85R0/Ybev/LoDwf1T+5bFWeedss1SZYvmPLxDhfvzzFOcTet76xQ
-	ENRyzf4Fdlw0gB4/QJ+3RFUH9mFBnkx+jgt6SHY8EsY63x+vJatKQkjOZh4/yUn3ujqa
-	VSiXJZ2fOeQBo7RRMRAOB8GaJG98Ruwt1/MKjt3FMwxaTe4VI2NN41vGR+bDpiwERgHo
-	NODyry8lKROjb5MLtOAS0INbrj8dta5r7+NEBBYN6JE/+H0fnlq+HkJkzjenyMjmjy2B
-	k9RA==
-Received: by 10.68.240.42 with SMTP id vx10mr3683640pbc.21.1334311449208;
-	Fri, 13 Apr 2012 03:04:09 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (93-34-182-16.ip50.fastwebnet.it.
-	[93.34.182.16])
-	by mx.google.com with ESMTPS id pv10sm5534277pbc.4.2012.04.13.03.04.05
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 13 Apr 2012 03:04:07 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 13 Apr 2012 12:03:46 +0200
-Message-Id: <1334311426-5694-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.7.9.3
+	(envelope-from <stefanha@linux.vnet.ibm.com>) id 1SIhJh-0003xS-JB
+	for qemu-trivial@nongnu.org; Fri, 13 Apr 2012 10:17:37 -0400
+Received: from /spool/local
+	by e06smtp14.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanha@linux.vnet.ibm.com>;
+	Fri, 13 Apr 2012 15:17:33 +0100
+Received: from d06nrmr1307.portsmouth.uk.ibm.com (9.149.38.129)
+	by e06smtp14.uk.ibm.com (192.168.101.144) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 13 Apr 2012 15:17:31 +0100
+Received: from d06av12.portsmouth.uk.ibm.com (d06av12.portsmouth.uk.ibm.com
+	[9.149.37.247])
+	by d06nrmr1307.portsmouth.uk.ibm.com (8.13.8/8.13.8/NCO v10.0) with
+	ESMTP id q3DEHUsB2347188; Fri, 13 Apr 2012 15:17:30 +0100
+Received: from d06av12.portsmouth.uk.ibm.com (loopback [127.0.0.1])
+	by d06av12.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with
+	ESMTP id q3DEHTLp014443; Fri, 13 Apr 2012 08:17:29 -0600
+Received: from localhost (dyn-9-174-219-44.manchester-maybrook.uk.ibm.com
+	[9.174.219.44])
+	by d06av12.portsmouth.uk.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with
+	ESMTP id q3DEHTxL014414; Fri, 13 Apr 2012 08:17:29 -0600
+From: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+To: <qemu-devel@nongnu.org>
+Date: Fri, 13 Apr 2012 15:17:21 +0100
+Message-Id: <1334326641-30837-1-git-send-email-stefanha@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.9.5
+x-cbid: 12041314-1948-0000-0000-00000183F40D
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.210.46
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] fix block_job_set_speed name in documentation
+X-Received-From: 195.75.94.110
+Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH] gitignore: ignore qtest binaries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,29 +54,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Apr 2012 10:04:27 -0000
+X-List-Received-Date: Fri, 13 Apr 2012 14:17:48 -0000
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
 ---
- hmp-commands.hx |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .gitignore |    1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hmp-commands.hx b/hmp-commands.hx
-index a6f5a84..461fa59 100644
---- a/hmp-commands.hx
-+++ b/hmp-commands.hx
-@@ -92,8 +92,8 @@ ETEXI
-     },
- 
- STEXI
--@item block_job_set_stream
--@findex block_job_set_stream
-+@item block_job_set_speed
-+@findex block_job_set_speed
- Set maximum speed for a background block operation.
- ETEXI
- 
+diff --git a/.gitignore b/.gitignore
+index 9859c7d..db74219 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -89,3 +89,4 @@ cscope.*
+ tags
+ TAGS
+ *~
++tests/*-test
 -- 
-1.7.9.3
+1.7.9.5
 
 
