@@ -1,29 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SJOlm-0004dz-2E
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2012 08:41:30 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39959)
+	id 1SJgRE-0007Kq-PE
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Apr 2012 03:33:28 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:39366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <camponez@oc6553588448.ibm.com>) id 1SJOlj-0004dG-11
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2012 08:41:28 -0400
+	(envelope-from <akong@redhat.com>) id 1SJgR3-0006rw-KY
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2012 03:33:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <camponez@oc6553588448.ibm.com>) id 1SJOlh-0006Ra-Fv
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2012 08:41:26 -0400
-Received: from [177.42.71.101] (port=26033 helo=oc6553588448.ibm.com)
+	(envelope-from <akong@redhat.com>) id 1SJgQb-0007wE-Hu
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2012 03:33:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51301)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <camponez@oc6553588448.ibm.com>) id 1SJOlh-0006RD-7T
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2012 08:41:25 -0400
-Received: by oc6553588448.ibm.com (Postfix, from userid 500)
-	id EACB4660E9; Thu, 12 Apr 2012 12:56:02 -0300 (BRT)
-From: Eduardo Elias Ferreira <edusf@linux.vnet.ibm.com>
-To: qemu-trivial@nongnu.org
-Date: Thu, 12 Apr 2012 12:56:00 -0300
-Message-Id: <1334246160-17278-1-git-send-email-edusf@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.1
+	(envelope-from <akong@redhat.com>)
+	id 1SJgQb-0007vV-9x; Mon, 16 Apr 2012 03:32:49 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q3G7WjlL021655
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 16 Apr 2012 03:32:45 -0400
+Received: from dhcp-8-167.nay.redhat.com (dhcp-8-167.nay.redhat.com
+	[10.66.8.167])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id q3G7WgZK021381; Mon, 16 Apr 2012 03:32:43 -0400
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, stefanha@linux.vnet.ibm.com
+From: Amos Kong <akong@redhat.com>
+Date: Mon, 16 Apr 2012 15:32:49 +0800
+Message-ID: <20120416073249.13295.65065.stgit@dhcp-8-167.nay.redhat.com>
+User-Agent: StGit/0.15
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 177.42.71.101
-Subject: [Qemu-trivial] [PATCH] spice-qemu-char.c: Show what name is
-	unsupported
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] error.c: don't return value for void function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,26 +45,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Apr 2012 12:41:28 -0000
+X-List-Received-Date: Mon, 16 Apr 2012 07:33:28 -0000
 
+It is invalid to return a value from a function
+returning void.
+
+Signed-off-by: Amos Kong <akong@redhat.com>
 ---
- spice-qemu-char.c |    2 +-
+ error.c |    2 +-
  1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/spice-qemu-char.c b/spice-qemu-char.c
-index 9bab4ac..ef44bc0 100644
---- a/spice-qemu-char.c
-+++ b/spice-qemu-char.c
-@@ -233,7 +233,7 @@ CharDriverState *qemu_chr_open_spice(QemuOpts *opts)
-         }
-     }
-     if (subtype == NULL) {
--        fprintf(stderr, "spice-qemu-char: unsupported name\n");
-+        fprintf(stderr, "spice-qemu-char: unsupported name: %s\n", name);
-         print_allowed_subtypes();
-         return NULL;
-     }
--- 
-1.7.1
+diff --git a/error.c b/error.c
+index d3455ab..a52b771 100644
+--- a/error.c
++++ b/error.c
+@@ -93,7 +93,7 @@ QDict *error_get_data(Error *err)
+ void error_set_field(Error *err, const char *field, const char *value)
+ {
+     QDict *dict = qdict_get_qdict(err->obj, "data");
+-    return qdict_put(dict, field, qstring_from_str(value));
++    qdict_put(dict, field, qstring_from_str(value));
+ }
+ 
+ void error_free(Error *err)
 
 
