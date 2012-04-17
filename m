@@ -1,52 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SJmmm-0002pk-RL
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Apr 2012 10:20:08 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:38586)
+	id 1SKBst-0000O2-L7
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Apr 2012 13:08:07 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:52401)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SJmmf-0002kk-LK
-	for qemu-trivial@nongnu.org; Mon, 16 Apr 2012 10:20:07 -0400
+	(envelope-from <flukshun@gmail.com>) id 1SKBso-0008Vh-2y
+	for qemu-trivial@nongnu.org; Tue, 17 Apr 2012 13:08:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SJmma-0003Vf-Qn
-	for qemu-trivial@nongnu.org; Mon, 16 Apr 2012 10:20:01 -0400
-Received: from mail-ey0-f173.google.com ([209.85.215.173]:40372)
+	(envelope-from <flukshun@gmail.com>) id 1SKBsj-0001aW-AJ
+	for qemu-trivial@nongnu.org; Tue, 17 Apr 2012 13:08:01 -0400
+Received: from mail-ob0-f173.google.com ([209.85.214.173]:51649)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SJmma-0003VT-Io
-	for qemu-trivial@nongnu.org; Mon, 16 Apr 2012 10:19:56 -0400
-Received: by eaaf11 with SMTP id f11so1479902eaa.4
-	for <qemu-trivial@nongnu.org>; Mon, 16 Apr 2012 07:19:54 -0700 (PDT)
+	(envelope-from <flukshun@gmail.com>)
+	id 1SKBsb-0001Xe-Dp; Tue, 17 Apr 2012 13:07:49 -0400
+Received: by obbwd18 with SMTP id wd18so3132837obb.4
+	for <multiple recipients>; Tue, 17 Apr 2012 10:07:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=Q87/hpdL8N9NwwHd4NMToRkNsaKgYlfE7nj9UHI1sI0=;
-	b=S1Lr1UByCJQPDb9yGjL+v9cD4xsqhgRpH+3+G3rJ4wiFfEta4C/Zz78E2xrl1MQSBU
-	nHN4N36qc+SxbKPLPNuIck+CsAZxx14GKOBPXjMxL/lbyHzKGzEKBepc65AzPh7J7FD4
-	IL5qmlEgEi8d8OU5sU3wLfzpH/1E/ByjauxRe2m2xLOYMNX+Kufkihj+3eakW+ztKm06
-	kZ/GmL5hzCnf1r/77jQQd8/blYC/eyUGLBWbDlabpi0tfufzAd5HtnDGkIdBl2MkO8tf
-	WkAXR7szi1YtWdDD1CXnDEKMBho7t9nkPBw5az4G47wARGA0WENeFPyVFzEfCZESyf46
-	Qihg==
-Received: by 10.213.2.134 with SMTP id 6mr806364ebj.241.1334585994580;
-	Mon, 16 Apr 2012 07:19:54 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id
-	x4sm87706985eef.10.2012.04.16.07.19.53
+	h=sender:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
+	:references; bh=KkaES/ctc17/VC/ia7Li4J9OxkP8yqMZETOK5O9895c=;
+	b=ZHgbgN/evksFJEk7r8HfxPugaGLAEwPuypc0Dug7TkyErSVAvvvOgYY5I5HpjX2Imy
+	pY5ZckIUTCVPXdqOH59Q9eGHmX0VYFQ1yKdJcvJTshMmaqYwyyBIkMPen2yhQuGkoYTO
+	gQYyGlfGSBvRBuD1pVZC/CBiwZ2SrL6YNY6EYXc9NvyOuNYZwQCMlAa7vnIy6D9hUVW9
+	Rc+ibtDXI8v4MkFymhYL73JzHfcMH9/dJ1F+lfZdiZSxRj0+WlH9N6RMJGXT8rVG7lJ/
+	ib5HiP/M9Y6FfqU9wAq+Bjfo42SMN3al0FXQbZqknkSurFMvZpPTLZ7TUUHXsmPvgWn4
+	+fpA==
+Received: by 10.182.159.41 with SMTP id wz9mr22426794obb.69.1334682467046;
+	Tue, 17 Apr 2012 10:07:47 -0700 (PDT)
+Received: from localhost.localdomain ([32.97.110.59])
+	by mx.google.com with ESMTPS id m2sm23700149obk.9.2012.04.17.10.07.45
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 16 Apr 2012 07:19:53 -0700 (PDT)
-Date: Mon, 16 Apr 2012 15:19:51 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Eduardo Elias Ferreira <edusf@linux.vnet.ibm.com>
-Message-ID: <20120416141951.GA23177@stefanha-thinkpad.localdomain>
-References: <1334580702-8416-1-git-send-email-edusf@linux.vnet.ibm.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1334580702-8416-1-git-send-email-edusf@linux.vnet.ibm.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	Tue, 17 Apr 2012 10:07:46 -0700 (PDT)
+Sender: fluxion <flukshun@gmail.com>
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 17 Apr 2012 12:07:39 -0500
+Message-Id: <1334682459-27835-2-git-send-email-mdroth@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.4.1
+In-Reply-To: <1334682459-27835-1-git-send-email-mdroth@linux.vnet.ibm.com>
+References: <1334682459-27835-1-git-send-email-mdroth@linux.vnet.ibm.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.215.173
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] spice-qemu-char.c: Show what name is
- unsupported
+X-Received-From: 209.85.214.173
+Cc: qemu-trivial@nongnu.org, afaerber@suse.de, lcapitulino@redhat.com
+Subject: [Qemu-trivial] [PATCH 2/2] qemu-ga: fix help output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,17 +53,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Apr 2012 14:20:07 -0000
+X-List-Received-Date: Tue, 17 Apr 2012 17:08:05 -0000
 
-On Mon, Apr 16, 2012 at 09:51:42AM -0300, Eduardo Elias Ferreira wrote:
-> 
-> Signed-off-by: Eduardo Elias Ferreira <edusf@linux.vnet.ibm.com>
-> ---
->  spice-qemu-char.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+---
+ qemu-ga.c |    7 ++++---
+ 1 files changed, 4 insertions(+), 3 deletions(-)
 
-Stefan
+diff --git a/qemu-ga.c b/qemu-ga.c
+index d6f786e..74a1b02 100644
+--- a/qemu-ga.c
++++ b/qemu-ga.c
+@@ -117,12 +117,13 @@ static gboolean register_signal_handlers(void)
+ static void usage(const char *cmd)
+ {
+     printf(
+-"Usage: %s -c <channel_opts>\n"
++"Usage: %s [-m <method> -p <path>] [<options>]\n"
+ "QEMU Guest Agent %s\n"
+ "\n"
+ "  -m, --method      transport method: one of unix-listen, virtio-serial, or\n"
+ "                    isa-serial (virtio-serial is the default)\n"
+-"  -p, --path        device/socket path (%s is the default for virtio-serial)\n"
++"  -p, --path        device/socket path (the default for virtio-serial is:\n"
++"                    %s)\n"
+ "  -l, --logfile     set logfile path, logs to stderr by default\n"
+ "  -f, --pidfile     specify pidfile (default is %s)\n"
+ "  -v, --verbose     log extra debugging information\n"
+@@ -131,7 +132,7 @@ static void usage(const char *cmd)
+ #ifdef _WIN32
+ "  -s, --service     service commands: install, uninstall\n"
+ #endif
+-"  -b, --blacklist   comma-separated list of RPCs to disable (no spaces, \"?\""
++"  -b, --blacklist   comma-separated list of RPCs to disable (no spaces, \"?\"\n"
+ "                    to list available RPCs)\n"
+ "  -h, --help        display this help and exit\n"
+ "\n"
+-- 
+1.7.4.1
+
 
