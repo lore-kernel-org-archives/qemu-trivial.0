@@ -1,47 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SKBst-0000O2-L7
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Apr 2012 13:08:07 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:52401)
+	id 1SKBsv-0000Rp-0Q
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Apr 2012 13:08:09 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:52416)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <flukshun@gmail.com>) id 1SKBso-0008Vh-2y
-	for qemu-trivial@nongnu.org; Tue, 17 Apr 2012 13:08:03 -0400
+	(envelope-from <flukshun@gmail.com>) id 1SKBsp-00008A-6b
+	for qemu-trivial@nongnu.org; Tue, 17 Apr 2012 13:08:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <flukshun@gmail.com>) id 1SKBsj-0001aW-AJ
-	for qemu-trivial@nongnu.org; Tue, 17 Apr 2012 13:08:01 -0400
-Received: from mail-ob0-f173.google.com ([209.85.214.173]:51649)
+	(envelope-from <flukshun@gmail.com>) id 1SKBsk-0001av-LX
+	for qemu-trivial@nongnu.org; Tue, 17 Apr 2012 13:08:02 -0400
+Received: from mail-gx0-f173.google.com ([209.85.161.173]:60446)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <flukshun@gmail.com>)
-	id 1SKBsb-0001Xe-Dp; Tue, 17 Apr 2012 13:07:49 -0400
-Received: by obbwd18 with SMTP id wd18so3132837obb.4
-	for <multiple recipients>; Tue, 17 Apr 2012 10:07:47 -0700 (PDT)
+	id 1SKBsZ-0001WN-MM; Tue, 17 Apr 2012 13:07:47 -0400
+Received: by ggnp2 with SMTP id p2so4209945ggn.4
+	for <multiple recipients>; Tue, 17 Apr 2012 10:07:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
-	:references; bh=KkaES/ctc17/VC/ia7Li4J9OxkP8yqMZETOK5O9895c=;
-	b=ZHgbgN/evksFJEk7r8HfxPugaGLAEwPuypc0Dug7TkyErSVAvvvOgYY5I5HpjX2Imy
-	pY5ZckIUTCVPXdqOH59Q9eGHmX0VYFQ1yKdJcvJTshMmaqYwyyBIkMPen2yhQuGkoYTO
-	gQYyGlfGSBvRBuD1pVZC/CBiwZ2SrL6YNY6EYXc9NvyOuNYZwQCMlAa7vnIy6D9hUVW9
-	Rc+ibtDXI8v4MkFymhYL73JzHfcMH9/dJ1F+lfZdiZSxRj0+WlH9N6RMJGXT8rVG7lJ/
-	ib5HiP/M9Y6FfqU9wAq+Bjfo42SMN3al0FXQbZqknkSurFMvZpPTLZ7TUUHXsmPvgWn4
-	+fpA==
-Received: by 10.182.159.41 with SMTP id wz9mr22426794obb.69.1334682467046;
-	Tue, 17 Apr 2012 10:07:47 -0700 (PDT)
+	h=sender:from:to:cc:subject:date:message-id:x-mailer:mime-version
+	:content-type:content-transfer-encoding;
+	bh=4RJS5PFgRu2XUuZGzD5F5Mdv0IaJKJB8dAQ9wypoQYs=;
+	b=AT9ceMPqahErZoytqB5uU7PxBShaYrdeQEYjnZSEpfXAMD5X125pJrFczQYlwqOq0w
+	5DiXoRbCmsEdt/afzsD8BOy9opafWYH50pj80o4mcblA2Mxhytw2P5xh5wR8tGAqO8he
+	Dejc3/8FU6KVVrM4sVIP0hqxN913SCcoEne1JQaIB1Q0AGAM8fsdgZvOdBBy9MUBkGhG
+	mqBdvzm9/w99CByvKMSVP+rZn8R6T+kqiqBiRiG05H04S5P7xzziuYJg844Y3/4hQxSR
+	7BFUc6Ogmh6SV+k7ZXJsQG1hGkzKOL52Xeuc/oj3cyIBcHq8g2jAtlf3QHP7OIt/8Duw
+	HM8w==
+Received: by 10.60.22.138 with SMTP id d10mr22110687oef.69.1334682465252;
+	Tue, 17 Apr 2012 10:07:45 -0700 (PDT)
 Received: from localhost.localdomain ([32.97.110.59])
-	by mx.google.com with ESMTPS id m2sm23700149obk.9.2012.04.17.10.07.45
+	by mx.google.com with ESMTPS id m2sm23700149obk.9.2012.04.17.10.07.43
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 17 Apr 2012 10:07:46 -0700 (PDT)
+	Tue, 17 Apr 2012 10:07:44 -0700 (PDT)
 Sender: fluxion <flukshun@gmail.com>
 From: Michael Roth <mdroth@linux.vnet.ibm.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 17 Apr 2012 12:07:39 -0500
-Message-Id: <1334682459-27835-2-git-send-email-mdroth@linux.vnet.ibm.com>
+Date: Tue, 17 Apr 2012 12:07:38 -0500
+Message-Id: <1334682459-27835-1-git-send-email-mdroth@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.7.4.1
-In-Reply-To: <1334682459-27835-1-git-send-email-mdroth@linux.vnet.ibm.com>
-References: <1334682459-27835-1-git-send-email-mdroth@linux.vnet.ibm.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.214.173
+X-Received-From: 209.85.161.173
 Cc: qemu-trivial@nongnu.org, afaerber@suse.de, lcapitulino@redhat.com
-Subject: [Qemu-trivial] [PATCH 2/2] qemu-ga: fix help output
+Subject: [Qemu-trivial] [PATCH 1/2] qemu-ga: generate missing stubs for
+	fsfreeze
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,43 +56,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Apr 2012 17:08:05 -0000
+X-List-Received-Date: Tue, 17 Apr 2012 17:08:07 -0000
 
+When linux-specific commands (including guest-fsfreeze-*) were consolidated
+under defined(__linux__), we forgot to account for the case where
+defined(__linux__) && !defined(FIFREEZE). As a result stubs are no longer
+being generated on linux hosts that don't have FIFREEZE support. Fix
+this.
 
+Tested-by: Andreas Färber <afaerber@suse.de>
 Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
 ---
- qemu-ga.c |    7 ++++---
- 1 files changed, 4 insertions(+), 3 deletions(-)
+ qga/commands-posix.c |   36 ++++++++++++++++++++----------------
+ 1 files changed, 20 insertions(+), 16 deletions(-)
 
-diff --git a/qemu-ga.c b/qemu-ga.c
-index d6f786e..74a1b02 100644
---- a/qemu-ga.c
-+++ b/qemu-ga.c
-@@ -117,12 +117,13 @@ static gboolean register_signal_handlers(void)
- static void usage(const char *cmd)
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index faf970d..087c3af 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -881,46 +881,50 @@ error:
+ 
+ #else /* defined(__linux__) */
+ 
+-GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **err)
++void qmp_guest_suspend_disk(Error **err)
  {
-     printf(
--"Usage: %s -c <channel_opts>\n"
-+"Usage: %s [-m <method> -p <path>] [<options>]\n"
- "QEMU Guest Agent %s\n"
- "\n"
- "  -m, --method      transport method: one of unix-listen, virtio-serial, or\n"
- "                    isa-serial (virtio-serial is the default)\n"
--"  -p, --path        device/socket path (%s is the default for virtio-serial)\n"
-+"  -p, --path        device/socket path (the default for virtio-serial is:\n"
-+"                    %s)\n"
- "  -l, --logfile     set logfile path, logs to stderr by default\n"
- "  -f, --pidfile     specify pidfile (default is %s)\n"
- "  -v, --verbose     log extra debugging information\n"
-@@ -131,7 +132,7 @@ static void usage(const char *cmd)
- #ifdef _WIN32
- "  -s, --service     service commands: install, uninstall\n"
+     error_set(err, QERR_UNSUPPORTED);
+-
+-    return 0;
+ }
+ 
+-int64_t qmp_guest_fsfreeze_freeze(Error **err)
++void qmp_guest_suspend_ram(Error **err)
+ {
+     error_set(err, QERR_UNSUPPORTED);
+-
+-    return 0;
+ }
+ 
+-int64_t qmp_guest_fsfreeze_thaw(Error **err)
++void qmp_guest_suspend_hybrid(Error **err)
+ {
+     error_set(err, QERR_UNSUPPORTED);
+-
+-    return 0;
+ }
+ 
+-void qmp_guest_suspend_disk(Error **err)
++GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
+ {
+-    error_set(err, QERR_UNSUPPORTED);
++    error_set(errp, QERR_UNSUPPORTED);
++    return NULL;
+ }
+ 
+-void qmp_guest_suspend_ram(Error **err)
++#endif
++
++#if !defined(CONFIG_FSFREEZE)
++
++GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **err)
+ {
+     error_set(err, QERR_UNSUPPORTED);
++
++    return 0;
+ }
+ 
+-void qmp_guest_suspend_hybrid(Error **err)
++int64_t qmp_guest_fsfreeze_freeze(Error **err)
+ {
+     error_set(err, QERR_UNSUPPORTED);
++
++    return 0;
+ }
+ 
+-GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
++int64_t qmp_guest_fsfreeze_thaw(Error **err)
+ {
+-    error_set(errp, QERR_UNSUPPORTED);
+-    return NULL;
++    error_set(err, QERR_UNSUPPORTED);
++
++    return 0;
+ }
+ 
  #endif
--"  -b, --blacklist   comma-separated list of RPCs to disable (no spaces, \"?\""
-+"  -b, --blacklist   comma-separated list of RPCs to disable (no spaces, \"?\"\n"
- "                    to list available RPCs)\n"
- "  -h, --help        display this help and exit\n"
- "\n"
 -- 
 1.7.4.1
 
