@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SLD0s-0005iY-AG
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Apr 2012 08:32:34 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:35095)
+	id 1SMPQ7-00038t-QE
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Apr 2012 15:59:35 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47580)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SLD0m-0005S5-4W
-	for qemu-trivial@nongnu.org; Fri, 20 Apr 2012 08:32:32 -0400
+	(envelope-from <sw@weilnetz.de>) id 1SMPQ4-0002z6-IR
+	for qemu-trivial@nongnu.org; Mon, 23 Apr 2012 15:59:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SLD0h-0005HP-Ex
-	for qemu-trivial@nongnu.org; Fri, 20 Apr 2012 08:32:27 -0400
-Received: from mail-ee0-f45.google.com ([74.125.83.45]:47837)
+	(envelope-from <sw@weilnetz.de>) id 1SMPQ2-0008SB-H1
+	for qemu-trivial@nongnu.org; Mon, 23 Apr 2012 15:59:32 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:47033)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SLD0W-0005GZ-Mn; Fri, 20 Apr 2012 08:32:12 -0400
-Received: by eeit10 with SMTP id t10so2816707eei.4
-	for <multiple recipients>; Fri, 20 Apr 2012 05:32:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=ydGYYkRrTzuL+8/MAcvUIEL1D6H549hG3hhVs9b0ESM=;
-	b=NsMsZjmJxwjRAmybWoR+HoMfv7dgeLh3p8UbtW3jhAzFX0x3QVn2WpIAUgRRdbn7aZ
-	RLZFRq8KblWY9cXaCX4AOHpX0JxDzhnkf4w/TJMhGfHF8R9puWc+LOZtYigFEAKhgDQ7
-	ixRtB+3vwpEyLmvpErDhTl+pbBsO9iDtYvl1a0NGMTXAHPTd/yxhLCIGFIYPXFfpbbv9
-	cd/uIjzqjke21KtHlw8v5Z/pcGq6tzOpMs4K3zy7OtbLF+yuxs+s7qmnqDm5DctrdLSG
-	4f/6ytelGKWtyIOjIywnmka+cQWeoiNq8D3G9fyQkGHgJbcxE3PQq/wUtCXXl0x+VEWG
-	Y7zg==
-Received: by 10.213.21.204 with SMTP id k12mr189142ebb.109.1334924682088;
-	Fri, 20 Apr 2012 05:24:42 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice1n1.emea.ibm.com. [195.212.29.67])
-	by mx.google.com with ESMTPS id
-	q45sm25578809eem.7.2012.04.20.05.24.41
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 20 Apr 2012 05:24:41 -0700 (PDT)
-Date: Fri, 20 Apr 2012 13:24:40 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-Message-ID: <20120420122440.GA13494@stefanha-thinkpad.localdomain>
-References: <1334326641-30837-1-git-send-email-stefanha@linux.vnet.ibm.com>
+	(envelope-from <sw@weilnetz.de>)
+	id 1SMPPy-0008M1-HC; Mon, 23 Apr 2012 15:59:26 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	6765872800B8; Mon, 23 Apr 2012 21:59:24 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 0phxDMMAHnzR; Mon, 23 Apr 2012 21:59:23 +0200 (CEST)
+Received: from flocke.weilnetz.de (p5086FB0F.dip.t-dialin.net [80.134.251.15])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	A913A72800B4; Mon, 23 Apr 2012 21:59:23 +0200 (CEST)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <sw@weilnetz.de>)
+	id 1SMPPv-000132-Ff; Mon, 23 Apr 2012 21:59:23 +0200
+Message-ID: <4F95B49B.8060300@weilnetz.de>
+Date: Mon, 23 Apr 2012 21:59:23 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20120317 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1334326641-30837-1-git-send-email-stefanha@linux.vnet.ibm.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+References: <1331985651-16227-1-git-send-email-sw@weilnetz.de>	<4F670B62.2040606@suse.de>	<CAJSP0QX6=x+AFxC6rK1hnBkoZHSgSporYVCXxGH5E293SVdpUA@mail.gmail.com>	<4F672711.7030501@weilnetz.de>
+	<4F672A0E.2090301@suse.de> <4F672FBD.1080406@weilnetz.de>
+In-Reply-To: <4F672FBD.1080406@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.83.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gitignore: ignore qtest
-	binaries
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-mips: Remove unused
+	inline function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,26 +56,102 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Apr 2012 12:32:33 -0000
+X-List-Received-Date: Mon, 23 Apr 2012 19:59:34 -0000
 
-On Fri, Apr 13, 2012 at 03:17:21PM +0100, Stefan Hajnoczi wrote:
-> Signed-off-by: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
-> ---
->  .gitignore |    1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/.gitignore b/.gitignore
-> index 9859c7d..db74219 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -89,3 +89,4 @@ cscope.*
->  tags
->  TAGS
->  *~
-> +tests/*-test
+Am 19.03.2012 14:08, schrieb Stefan Weil:
+> Am 19.03.2012 13:43, schrieb Andreas F=E4rber:
+>> Am 19.03.2012 13:31, schrieb Stefan Weil:
+>>> Am 19.03.2012 13:17, schrieb Stefan Hajnoczi:
+>>>> On Mon, Mar 19, 2012 at 10:33 AM, Andreas F=E4rber <afaerber@suse.de=
+>
+>>>> wrote:
+>>>>> Am 17.03.2012 13:00, schrieb Stefan Weil:
+>>>>>> Function set_HILO is not needed anywhere.
+>>>>>
+>>>>> Does this cause any warnings? Given the state mips is currently in=20
+>>>>> (TCG
+>>>>> patches queuing), I'd suggest to hold this off for a bit, but I don=
+'t
+>>>>> really mind either way.
+>>>>>
+>>>>> Commit message does not mention if this was never used in the first
+>>>>> place or became unused during TCG conversion or some other=20
+>>>>> refactoring?
+>>>>
+>>>> It doesn't cause any warning on my build here, so there's no strict
+>>>> need for this patch.
+>>>>
+>>>> I have dropped the patch for now. Please resend if you want to get i=
+t
+>>>> in and address Andreas' questions.
+>>>
+>>> the function was never used. It should be removed just to keep
+>>> the code clean and free of unneeded functions. I noticed this
+>>> function when I looked after the functions which follow
+>>> (set_HIT0_LO, ...). Those functions are very similar, so I
+>>> think set_HILO was the copy master for those functions
+>>> (maybe used in a local code version whic was never committed).
+>>
+>> Could you please check that it is not used by Richard Sandiford's,
+>> Khansa Butt's and Jia Liu's patches? Then I'll happily ack.
+>
+>
+> I looked for set_HI_LO in my local qemu-devel mailings from
+> 2011 and 2012 and found only my own patches.
+>
+> You can also search the QEMU mailing list archive for set_HILO. Try=20
+> this URL:
+> http://lists.nongnu.org/archive/cgi-bin/namazu.cgi?query=3D*set_HI_LO*&=
+submit=3DSearch!&idxname=3Dqemu-devel&max=3D20&result=3Dnormal&sort=3Dsco=
+re=20
+>
+> It also shows no patches which include 'set_HILO' from the people you=20
+> mentioned.
+>
+> This patch conflicts with the new one, but it was also sent by me
+> and I knew that I'd have to rebase it:
+> http://lists.nongnu.org/archive/html/qemu-devel/2012-03/msg00447.html.
+> It's this patch which made me aware that set_HILO is unused.
+> All that code was added for the V54xx core family and is only
+> used for V54xx (or not used at all).
+>
+>
+>>
+>>>
+>>> Static inline functions never create a gcc warning when they
+>>> are unused, as far as I know. Maybe other tools like static code
+>>> analysers raise a warning.
+>>
+>> Sure, I was thinking of the static analysis tools you occasionally
+>> posted patches for.
+>>
+>> Andreas
+>>
+>
+> Actually, they did complain, but I did not care then:
+>
+> cppcheck-20110721.log:qemu/target-mips/op_helper.c:1: style: The=20
+> function 'set_HILO' is never used
+>
+> My cppcheck-20111029.log lists 1372 functions which are never used in=20
+> QEMU.
+> Many of those are false positives (for examples caused by the way how=20
+> QEMU
+> creates helper function names using macros), so I did not care.
+>
+> Cheers,
+> Stefan
+>
 
-Dropped in favor of the patch from David Gibson
-<david@gibson.dropbear.id.au> which does more.
+
+Are there any questions remaining?
+
+I know that a lot of MIPS related patches are waiting for commit,
+but maybe at least this really trivial one can finally find its way
+through qemu-trivial.
+
+Cheers,
 
 Stefan
+
 
