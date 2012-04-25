@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SMmmF-0004ab-A9
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Apr 2012 16:55:59 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40269)
+	id 1SMxlR-0006DT-Cs
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Apr 2012 04:39:53 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43939)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1SMmmB-0004Py-Vo
-	for qemu-trivial@nongnu.org; Tue, 24 Apr 2012 16:55:57 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SMxlN-00061m-Gd
+	for qemu-trivial@nongnu.org; Wed, 25 Apr 2012 04:39:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1SMmmA-0000Qz-1Q
-	for qemu-trivial@nongnu.org; Tue, 24 Apr 2012 16:55:55 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:37441)
+	(envelope-from <stefanha@gmail.com>) id 1SMxlL-00066Q-IA
+	for qemu-trivial@nongnu.org; Wed, 25 Apr 2012 04:39:49 -0400
+Received: from mail-wi0-f169.google.com ([209.85.212.169]:65273)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1SMmm4-0000NQ-T7; Tue, 24 Apr 2012 16:55:49 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	082A472800B9; Tue, 24 Apr 2012 22:55:46 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id xpd+9MWLry1A; Tue, 24 Apr 2012 22:55:45 +0200 (CEST)
-Received: from flocke.weilnetz.de (p54ADA578.dip.t-dialin.net [84.173.165.120])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	4A7A072800B4; Tue, 24 Apr 2012 22:55:45 +0200 (CEST)
-Received: from localhost ([127.0.0.1] ident=stefan)
-	by flocke.weilnetz.de with esmtp (Exim 4.72)
-	(envelope-from <sw@weilnetz.de>)
-	id 1SMmm0-0001Wt-Ui; Tue, 24 Apr 2012 22:55:45 +0200
-Message-ID: <4F971350.8060107@weilnetz.de>
-Date: Tue, 24 Apr 2012 22:55:44 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.1.16) Gecko/20120317 Iceowl/1.0b1 Icedove/3.0.11
-MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@gmail.com>
+	(envelope-from <stefanha@gmail.com>)
+	id 1SMxlH-0005zC-Ji; Wed, 25 Apr 2012 04:39:43 -0400
+Received: by wibhm17 with SMTP id hm17so4521965wib.4
+	for <multiple recipients>; Wed, 25 Apr 2012 01:39:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=edcKbe2uRrwitNOOWBz/mtSJBb+42P90S4DKzxUJ2oA=;
+	b=CSSNTE7yZFAA7MnVyEremH0235VK6ZfgcRU2C0tQDOEBJPlH0Vz70m/aoLfrsSEirF
+	hegQWlfZFkuSVDUk13wjXHuf1/QyaaaFbnb36SZAb5WbybQdDv9y8ItpKy7rkwT2Be3W
+	p7kBoa0kYtthJiq2be4x1g+TX0kGTVGFj6yo47kfeUOE72rBMh32aJQE3RItQ789bUnn
+	Vj1l5J/DTdNFKyOl92Y64NcgQSeqAHd23Qr7XgJzD9SMlWMGEmJRm85CQspJFVJFM9Dr
+	ySK9FbUbZtPy7T3DqfplAWSIXCVSSQb2MQpQyuJvoHzpRThp+ldS7NAiXpDb567czXsf
+	RgzA==
+Received: by 10.180.78.164 with SMTP id c4mr39074046wix.10.1335343180882;
+	Wed, 25 Apr 2012 01:39:40 -0700 (PDT)
+Received: from localhost ([109.224.133.37])
+	by mx.google.com with ESMTPS id gd4sm56418206wib.6.2012.04.25.01.39.39
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 25 Apr 2012 01:39:40 -0700 (PDT)
+Date: Wed, 25 Apr 2012 09:39:39 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120425083939.GA15165@stefanha-thinkpad.localdomain>
 References: <20120319113006.GC30033@stefanha-thinkpad.localdomain>
 	<1332159647-9456-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <1332159647-9456-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH v2] configure: Fix creation of symbolic
- links for MinGW toolchain
+X-Received-From: 209.85.212.169
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, peter.maydell@linaro.org,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] configure: Fix creation
+ of symbolic links for MinGW toolchain
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,128 +59,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Apr 2012 20:55:57 -0000
+X-List-Received-Date: Wed, 25 Apr 2012 08:39:51 -0000
 
-Am 19.03.2012 13:20, schrieb Stefan Weil:
+On Mon, Mar 19, 2012 at 01:20:47PM +0100, Stefan Weil wrote:
 > The MinGW toolchain on w32/w64 hosts does not create symbolic links,
 > but implements 'ln -s' similar to 'cp -r'.
->
+> 
 > In incremental out of tree builds, this resulted in files which
 > were not updated when their counterparts in the QEMU source tree
 > changed. Especially for Makefile* this happened very often.
->
+> 
 > With this patch, the 'symlinked' files are now always updated for
 > out of tree builds. Similar code was already used for the symbolic
 > link of libcacard/Makefile.
->
+> 
 > The symlink macro always removes the target before it is created
 > again, therefore the rm command for libcacard/Makefile was redundant
 > and is removed now.
->
+> 
 > Macro symlink is also used with directories. To remove them on w32
 > hosts, a recursive rm is needed.
->
+> 
 > v2:
 > Quote arguments in shell function symlink, and also quote any argument
 > which is passed to symlink and which contains macros. This should reduce
 > the chance of accidents caused by rm -rf.
->
-> Signed-off-by: Stefan Weil<sw@weilnetz.de>
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->   configure |   21 ++++++++++-----------
->   1 files changed, 10 insertions(+), 11 deletions(-)
->
-> diff --git a/configure b/configure
-> index afe7395..53a8174 100755
-> --- a/configure
-> +++ b/configure
-> @@ -41,8 +41,8 @@ compile_prog() {
->
->   # symbolically link $1 to $2.  Portable version of "ln -sf".
->   symlink() {
-> -  rm -f $2
-> -  ln -s $1 $2
-> +  rm -rf "$2"
-> +  ln -s "$1" "$2"
->   }
->
->   # check whether a command is available to this shell (may be either an
-> @@ -3373,7 +3373,7 @@ fi
->
->   for d in libdis libdis-user; do
->       mkdir -p $d
-> -    symlink $source_path/Makefile.dis $d/Makefile
-> +    symlink "$source_path/Makefile.dis" "$d/Makefile"
->       echo>  $d/config.mak
->   done
->
-> @@ -3382,13 +3382,13 @@ if test "$linux" = "yes" ; then
->     mkdir -p linux-headers
->     case "$cpu" in
->     i386|x86_64)
-> -    symlink $source_path/linux-headers/asm-x86 linux-headers/asm
-> +    symlink "$source_path/linux-headers/asm-x86" linux-headers/asm
->       ;;
->     ppcemb|ppc|ppc64)
-> -    symlink $source_path/linux-headers/asm-powerpc linux-headers/asm
-> +    symlink "$source_path/linux-headers/asm-powerpc" linux-headers/asm
->       ;;
->     s390x)
-> -    symlink $source_path/linux-headers/asm-s390 linux-headers/asm
-> +    symlink "$source_path/linux-headers/asm-s390" linux-headers/asm
->       ;;
->     esac
->   fi
-> @@ -3453,7 +3453,7 @@ mkdir -p $target_dir/kvm
->   if test "$target" = "arm-linux-user" -o "$target" = "armeb-linux-user" -o "$target" = "arm-bsd-user" -o "$target" = "armeb-bsd-user" ; then
->     mkdir -p $target_dir/nwfpe
->   fi
-> -symlink $source_path/Makefile.target $target_dir/Makefile
-> +symlink "$source_path/Makefile.target" "$target_dir/Makefile"
->
->
->   echo "# Automatically generated by configure - do not modify">  $config_target_mak
-> @@ -3883,7 +3883,7 @@ do
->   done
->   mkdir -p $DIRS
->   for f in $FILES ; do
-> -    if [ -e "$source_path/$f" ]&&  ! [ -e "$f" ]; then
-> +    if [ -e "$source_path/$f" ]&&  [ "$source_path" != `pwd` ]; then
->           symlink "$source_path/$f" "$f"
->       fi
->   done
-> @@ -3906,7 +3906,7 @@ for hwlib in 32 64; do
->     mkdir -p $d
->     mkdir -p $d/ide
->     mkdir -p $d/usb
-> -  symlink $source_path/Makefile.hw $d/Makefile
-> +  symlink "$source_path/Makefile.hw" "$d/Makefile"
->     mkdir -p $d/9pfs
->     echo "QEMU_CFLAGS+=-DTARGET_PHYS_ADDR_BITS=$hwlib">  $d/config.mak
->   done
-> @@ -3914,7 +3914,6 @@ done
->   if [ "$source_path" != `pwd` ]; then
->       # out of tree build
->       mkdir -p libcacard
-> -    rm -f libcacard/Makefile
->       symlink "$source_path/libcacard/Makefile" libcacard/Makefile
->   fi
->
-> @@ -3922,7 +3921,7 @@ d=libuser
->   mkdir -p $d
->   mkdir -p $d/trace
->   mkdir -p $d/qom
-> -symlink $source_path/Makefile.user $d/Makefile
-> +symlink "$source_path/Makefile.user" "$d/Makefile"
->
->   if test "$docs" = "yes" ; then
->     mkdir -p QMP
->    
+>  configure |   21 ++++++++++-----------
+>  1 files changed, 10 insertions(+), 11 deletions(-)
 
-Should I send a pull request for this patch, or can it be applied
-through qemu-devel?
+Sorry, this got lost in my inbox.  If you send patch revisions as
+top-level emails then it's easier to notice them.  I probably marked it
+as read and forgot about it because being part of the original email
+thread made it appear like the discussion was still continuing.
 
-Regards,
-Stefan W.
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
+Stefan
 
