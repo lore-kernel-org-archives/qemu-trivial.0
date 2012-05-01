@@ -1,38 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SOXcK-0006D2-6w
-	for mharc-qemu-trivial@gnu.org; Sun, 29 Apr 2012 13:09:00 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43453)
+	id 1SP99h-0004f3-Do
+	for mharc-qemu-trivial@gnu.org; Tue, 01 May 2012 05:13:57 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44903)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1SOXcE-0005sz-TA
-	for qemu-trivial@nongnu.org; Sun, 29 Apr 2012 13:08:56 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SP99f-0004Xg-6G
+	for qemu-trivial@nongnu.org; Tue, 01 May 2012 05:13:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1SOXcD-0004ie-85
-	for qemu-trivial@nongnu.org; Sun, 29 Apr 2012 13:08:54 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:49916)
+	(envelope-from <stefanha@gmail.com>) id 1SP99d-0008RG-7m
+	for qemu-trivial@nongnu.org; Tue, 01 May 2012 05:13:54 -0400
+Received: from mail-wg0-f53.google.com ([74.125.82.53]:40284)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1SOXcA-0004hs-8P; Sun, 29 Apr 2012 13:08:50 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	86A1772800B5; Sun, 29 Apr 2012 19:08:47 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id sHJAQewqHvDu; Sun, 29 Apr 2012 19:08:47 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 1C21F72800B7; Sun, 29 Apr 2012 19:08:47 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Sun, 29 Apr 2012 19:08:45 +0200
-Message-Id: <1335719326-31264-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.9
+	(envelope-from <stefanha@gmail.com>)
+	id 1SP99Z-0008Gu-PF; Tue, 01 May 2012 05:13:49 -0400
+Received: by wgbfm10 with SMTP id fm10so1446186wgb.10
+	for <multiple recipients>; Tue, 01 May 2012 02:13:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=TFKKcaF0RX9GISqqpe8sSgnA0jhQCxsQGfhRu1XyGA8=;
+	b=tcniWp+IbyqMphzTx/Rx8LoUgkqpLNiMIxt+16bWUGsHQSMDrXLx9gpXpw1kpukRWr
+	r/fIDVSKrXGkur7LXCiPHE7D7Zg8fVTTL6X4FtkNFciRWbSby60L555CyQOVIXnFdZGu
+	bku2JKs5+f2yB+drecRj+eLCvUAZFozTh6nOVB/PivY5fW02veR11ntswjhWqPKPzKpH
+	m5gUpgJT4IRQ9zJsDrlEIK/X+vFsxw+na6p1eRR5TBburIvrd+mbUWl4s8W8FXUS+yOr
+	P7DyYjSJG0cqIxZJFxaKDdNcnydMYpaq8t9i4ZIcX5TqTHt6jMj0RFsDAgmfVzF2yB4d
+	l1/w==
+Received: by 10.180.8.231 with SMTP id u7mr3655289wia.9.1335863626755;
+	Tue, 01 May 2012 02:13:46 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
+	by mx.google.com with ESMTPS id
+	du4sm55449061wib.10.2012.05.01.02.13.45
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 01 May 2012 02:13:46 -0700 (PDT)
+Date: Tue, 1 May 2012 10:13:44 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120501091344.GA4082@stefanha-thinkpad.localdomain>
+References: <1335719326-31264-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1335719326-31264-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH 1/2] async: Use bool for boolean struct
-	members and remove a hole
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] async: Use bool for
+ boolean struct members and remove a hole
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,35 +58,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 Apr 2012 17:08:58 -0000
+X-List-Received-Date: Tue, 01 May 2012 09:13:56 -0000
 
-Using bool reduces the size of the structure and improves readability.
-A hole in the structure was removed.
+On Sun, Apr 29, 2012 at 07:08:45PM +0200, Stefan Weil wrote:
+> Using bool reduces the size of the structure and improves readability.
+> A hole in the structure was removed.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  async.c |    6 +++---
+>  1 files changed, 3 insertions(+), 3 deletions(-)
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- async.c |    6 +++---
- 1 files changed, 3 insertions(+), 3 deletions(-)
+Thanks, applied both to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-diff --git a/async.c b/async.c
-index ecdaf15..85cc641 100644
---- a/async.c
-+++ b/async.c
-@@ -35,10 +35,10 @@ static struct QEMUBH *first_bh;
- struct QEMUBH {
-     QEMUBHFunc *cb;
-     void *opaque;
--    int scheduled;
--    int idle;
--    int deleted;
-     QEMUBH *next;
-+    bool scheduled;
-+    bool idle;
-+    bool deleted;
- };
- 
- QEMUBH *qemu_bh_new(QEMUBHFunc *cb, void *opaque)
--- 
-1.7.9
-
+Stefan
 
