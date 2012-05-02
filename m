@@ -1,52 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SP99h-0004f3-Do
-	for mharc-qemu-trivial@gnu.org; Tue, 01 May 2012 05:13:57 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44903)
+	id 1SPgAk-0004xn-Bh
+	for mharc-qemu-trivial@gnu.org; Wed, 02 May 2012 16:29:14 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:51303)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SP99f-0004Xg-6G
-	for qemu-trivial@nongnu.org; Tue, 01 May 2012 05:13:56 -0400
+	(envelope-from <afaerber@suse.de>) id 1SPgAh-0004pr-Ts
+	for qemu-trivial@nongnu.org; Wed, 02 May 2012 16:29:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SP99d-0008RG-7m
-	for qemu-trivial@nongnu.org; Tue, 01 May 2012 05:13:54 -0400
-Received: from mail-wg0-f53.google.com ([74.125.82.53]:40284)
+	(envelope-from <afaerber@suse.de>) id 1SPgAf-0005AP-Ig
+	for qemu-trivial@nongnu.org; Wed, 02 May 2012 16:29:10 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:48419 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SP99Z-0008Gu-PF; Tue, 01 May 2012 05:13:49 -0400
-Received: by wgbfm10 with SMTP id fm10so1446186wgb.10
-	for <multiple recipients>; Tue, 01 May 2012 02:13:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=TFKKcaF0RX9GISqqpe8sSgnA0jhQCxsQGfhRu1XyGA8=;
-	b=tcniWp+IbyqMphzTx/Rx8LoUgkqpLNiMIxt+16bWUGsHQSMDrXLx9gpXpw1kpukRWr
-	r/fIDVSKrXGkur7LXCiPHE7D7Zg8fVTTL6X4FtkNFciRWbSby60L555CyQOVIXnFdZGu
-	bku2JKs5+f2yB+drecRj+eLCvUAZFozTh6nOVB/PivY5fW02veR11ntswjhWqPKPzKpH
-	m5gUpgJT4IRQ9zJsDrlEIK/X+vFsxw+na6p1eRR5TBburIvrd+mbUWl4s8W8FXUS+yOr
-	P7DyYjSJG0cqIxZJFxaKDdNcnydMYpaq8t9i4ZIcX5TqTHt6jMj0RFsDAgmfVzF2yB4d
-	l1/w==
-Received: by 10.180.8.231 with SMTP id u7mr3655289wia.9.1335863626755;
-	Tue, 01 May 2012 02:13:46 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id
-	du4sm55449061wib.10.2012.05.01.02.13.45
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 01 May 2012 02:13:46 -0700 (PDT)
-Date: Tue, 1 May 2012 10:13:44 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120501091344.GA4082@stefanha-thinkpad.localdomain>
-References: <1335719326-31264-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <afaerber@suse.de>)
+	id 1SPgAc-0004zw-1y; Wed, 02 May 2012 16:29:06 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 3D1DC90182;
+	Wed,  2 May 2012 22:29:04 +0200 (CEST)
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+To: qemu-devel@nongnu.org
+Date: Wed,  2 May 2012 22:28:58 +0200
+Message-Id: <1335990538-20025-1-git-send-email-afaerber@suse.de>
+X-Mailer: git-send-email 1.7.7
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1335719326-31264-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] async: Use bool for
- boolean struct members and remove a hole
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Subject: [Qemu-trivial] [PATCH for-1.1] cpu: Update documentation and comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,19 +41,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 May 2012 09:13:56 -0000
+X-List-Received-Date: Wed, 02 May 2012 20:29:13 -0000
 
-On Sun, Apr 29, 2012 at 07:08:45PM +0200, Stefan Weil wrote:
-> Using bool reduces the size of the structure and improves readability.
-> A hole in the structure was removed.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  async.c |    6 +++---
->  1 files changed, 3 insertions(+), 3 deletions(-)
+State struct CPU had been renamed to CPUState, former CPUState to
+CPUArchState.
 
-Thanks, applied both to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
+---
+ include/qemu/cpu.h |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
 
-Stefan
+diff --git a/include/qemu/cpu.h b/include/qemu/cpu.h
+index 4291279..78b65b3 100644
+--- a/include/qemu/cpu.h
++++ b/include/qemu/cpu.h
+@@ -39,7 +39,7 @@ typedef struct CPUState CPUState;
+=20
+ /**
+  * CPUClass:
+- * @reset: Callback to reset the #CPU to its initial state.
++ * @reset: Callback to reset the #CPUState to its initial state.
+  *
+  * Represents a CPU family or model.
+  */
+@@ -61,7 +61,7 @@ struct CPUState {
+     Object parent_obj;
+     /*< public >*/
+=20
+-    /* TODO Move common fields from CPUState here. */
++    /* TODO Move common fields from CPUArchState here. */
+ };
+=20
+=20
+--=20
+1.7.7
+
 
