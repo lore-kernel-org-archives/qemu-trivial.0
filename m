@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SPq3L-0006Tm-3q
-	for mharc-qemu-trivial@gnu.org; Thu, 03 May 2012 03:02:15 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:60334)
+	id 1SPrVM-0002QQ-7z
+	for mharc-qemu-trivial@gnu.org; Thu, 03 May 2012 04:35:16 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:58359)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>) id 1SPq3I-0006T0-6M
-	for qemu-trivial@nongnu.org; Thu, 03 May 2012 03:02:13 -0400
+	(envelope-from <riegamaths@gmail.com>) id 1SPrVF-0002Pz-Pk
+	for qemu-trivial@nongnu.org; Thu, 03 May 2012 04:35:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>) id 1SPq3B-0006R9-Rn
-	for qemu-trivial@nongnu.org; Thu, 03 May 2012 03:02:11 -0400
-Received: from mail-pz0-f46.google.com ([209.85.210.46]:36996)
+	(envelope-from <riegamaths@gmail.com>) id 1SPrV9-00071v-AY
+	for qemu-trivial@nongnu.org; Thu, 03 May 2012 04:35:09 -0400
+Received: from mail-pz0-f46.google.com ([209.85.210.46]:51074)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <riegamaths@gmail.com>)
-	id 1SPq33-0006QG-Jg; Thu, 03 May 2012 03:01:57 -0400
-Received: by dady13 with SMTP id y13so1197882dad.5
-	for <multiple recipients>; Thu, 03 May 2012 00:01:54 -0700 (PDT)
+	id 1SPrUz-0006v1-Ph; Thu, 03 May 2012 04:34:53 -0400
+Received: by dady13 with SMTP id y13so1328887dad.5
+	for <multiple recipients>; Thu, 03 May 2012 01:34:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:x-mailer;
 	bh=asnpkqicstGZo2q6fAWZXgdmQQGGgvtmw8vxWiDrKxs=;
-	b=bR5ZCJuJq/kBJXmUERy05U0bqEh8KUurBFoB5tF8MsarnkMpdfnmQePftfyuQVZcvX
-	0MLve5JYERIGwRPG31WrSAalGCfoFwxjHtE9OJtXAdD3ywL3iZpSciKLyDOrVXJJ4B1c
-	cYmT5S1ojXXVdGMZ1sJKE3YoEpfjo355cPh/2yYDJ0qFhHm8vwqKZ0dGoh79FzuGg7YV
-	sJWAKRCJGUHtp57V/uPGz5XIBCGY6/MDUdRJQxyDJDZ1kNwtaQ9JazTveuiiQF47nH6p
-	BKKGGdO/7a+ltml8UxTzThCuGkuAVQLhKvyHnAFgKiceiErbZvaANRKN4KxGK+5oIacZ
-	6aGg==
-Received: by 10.68.216.225 with SMTP id ot1mr4666545pbc.46.1336028513971;
-	Thu, 03 May 2012 00:01:53 -0700 (PDT)
+	b=QaPwrYCOKtKeyBCCt6Cud1XezS6cf1/D8FZCOAh2ApV5f8pS0rjkhVXCn6nKrJEq5J
+	DZcVeIm1OkRzkfqqr0zLXxXvTyynisc+VhO4c+v1cQyUxFZgfcl+xN4ItE9bDWeDnWXV
+	48azhzVxcApAXuFQtItGDBlM8G2IfSDksNgMmzs3gQAl61TZNK7gdG8I6gtuIXBVcRDs
+	aNKYA2l5WOz7MeRgpHJpBllIbcSg58u4Z6HU0+fdAcejeOCsfnVBoGM3teiQb/52cJ+I
+	o6TFl6Qhk+eJeoRDFOyNmdrE5BpQJiHjhP2mqGNJDPIsyuEe4V3JVkK9nbccXFeSM4M8
+	intg==
+Received: by 10.68.221.136 with SMTP id qe8mr5311402pbc.108.1336034091085;
+	Thu, 03 May 2012 01:34:51 -0700 (PDT)
 Received: from riegamaths@gmail.com ([119.255.44.227])
-	by mx.google.com with ESMTPS id oj3sm1544389pbb.20.2012.05.03.00.01.48
+	by mx.google.com with ESMTPS id pz3sm4627964pbc.16.2012.05.03.01.34.46
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 03 May 2012 00:01:52 -0700 (PDT)
+	Thu, 03 May 2012 01:34:50 -0700 (PDT)
 Received: by riegamaths@gmail.com (sSMTP sendmail emulation);
-	Thu, 03 May 2012 15:02:24 +0800
+	Thu, 03 May 2012 16:35:23 +0800
 From: dunrong huang <riegamaths@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Thu,  3 May 2012 15:02:22 +0800
-Message-Id: <1336028542-785-1-git-send-email-riegamaths@gmail.com>
+Date: Thu,  3 May 2012 16:34:42 +0800
+Message-Id: <1336034082-5288-1-git-send-email-riegamaths@gmail.com>
 X-Mailer: git-send-email 1.7.8.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.85.210.46
-Cc: qemu-trivial@nongnu.org, dunrong huang <riegamaths@gmail.com>
-Subject: [Qemu-trivial] [PATCH] qdev: Fix memory leak
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	dunrong huang <riegamaths@gmail.com>
+Subject: [Qemu-trivial] [Qemu-devel][PATCH] qdev: Fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,7 +53,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 May 2012 07:02:13 -0000
+X-List-Received-Date: Thu, 03 May 2012 08:35:15 -0000
 
 The str allocated in visit_type_str was not freed
 
