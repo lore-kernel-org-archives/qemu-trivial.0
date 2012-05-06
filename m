@@ -1,36 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SQdMF-0006kH-RD
-	for mharc-qemu-trivial@gnu.org; Sat, 05 May 2012 07:41:03 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49379)
+	id 1SQwrV-0007sf-47
+	for mharc-qemu-trivial@gnu.org; Sun, 06 May 2012 04:30:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:38768)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1SQdMC-0006aC-Ie
-	for qemu-trivial@nongnu.org; Sat, 05 May 2012 07:41:01 -0400
+	(envelope-from <sw@weilnetz.de>) id 1SQwrS-0007jo-6N
+	for qemu-trivial@nongnu.org; Sun, 06 May 2012 04:30:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1SQdMA-0000zo-V2
-	for qemu-trivial@nongnu.org; Sat, 05 May 2012 07:41:00 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:34719 helo=mx2.suse.de)
+	(envelope-from <sw@weilnetz.de>) id 1SQwrQ-0007zI-5V
+	for qemu-trivial@nongnu.org; Sun, 06 May 2012 04:30:33 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:57165)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1SQdM7-0000z3-QC; Sat, 05 May 2012 07:40:55 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 0A1D499430;
-	Sat,  5 May 2012 13:40:53 +0200 (CEST)
-From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-To: qemu-devel@nongnu.org
-Date: Sat,  5 May 2012 13:40:47 +0200
-Message-Id: <1336218047-8906-1-git-send-email-afaerber@suse.de>
-X-Mailer: git-send-email 1.7.7
+	(envelope-from <sw@weilnetz.de>)
+	id 1SQwrM-0007yP-Mu; Sun, 06 May 2012 04:30:28 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	394D672800BE; Sun,  6 May 2012 10:30:26 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id CjM9CY38GcKg; Sun,  6 May 2012 10:30:25 +0200 (CEST)
+Received: from [192.168.1.69] (unknown [212.223.173.39])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	5EE1872800B6; Sun,  6 May 2012 10:30:25 +0200 (CEST)
+Message-ID: <4FA636A0.2060803@weilnetz.de>
+Date: Sun, 06 May 2012 10:30:24 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:12.0) Gecko/20120430 Thunderbird/12.0.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+References: <1336218047-8906-1-git-send-email-afaerber@suse.de>
+In-Reply-To: <1336218047-8906-1-git-send-email-afaerber@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [Qemu-trivial] [PATCH for-1.1] target-mips: Remove commented-out
-	function declaration
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-1.1] target-mips: Remove
+ commented-out function declaration
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,29 +51,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 May 2012 11:41:02 -0000
+X-List-Received-Date: Sun, 06 May 2012 08:30:35 -0000
 
-There is no function cpu_mips_get_clock(), so drop it.
+Am 05.05.2012 13:40, schrieb Andreas F=C3=A4rber:
+> There is no function cpu_mips_get_clock(), so drop it.
+>
+> Signed-off-by: Andreas F=C3=A4rber<afaerber@suse.de>
+> Cc: Stefan Weil<sw@weilnetz.de>
+> ---
+>   target-mips/cpu.h |    1 -
+>   1 files changed, 0 insertions(+), 1 deletions(-)
+>
+> diff --git a/target-mips/cpu.h b/target-mips/cpu.h
+> index c0f8826..44c1152 100644
+> --- a/target-mips/cpu.h
+> +++ b/target-mips/cpu.h
+> @@ -627,7 +627,6 @@ enum {
+>
+>   int cpu_mips_exec(CPUMIPSState *s);
+>   CPUMIPSState *cpu_mips_init(const char *cpu_model);
+> -//~ uint32_t cpu_mips_get_clock (void);
+>   int cpu_mips_signal_handler(int host_signum, void *pinfo, void *puc);
+>
+>   /* mips_timer.c */
 
-Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
-Cc: Stefan Weil <sw@weilnetz.de>
----
- target-mips/cpu.h |    1 -
- 1 files changed, 0 insertions(+), 1 deletions(-)
-
-diff --git a/target-mips/cpu.h b/target-mips/cpu.h
-index c0f8826..44c1152 100644
---- a/target-mips/cpu.h
-+++ b/target-mips/cpu.h
-@@ -627,7 +627,6 @@ enum {
-=20
- int cpu_mips_exec(CPUMIPSState *s);
- CPUMIPSState *cpu_mips_init(const char *cpu_model);
--//~ uint32_t cpu_mips_get_clock (void);
- int cpu_mips_signal_handler(int host_signum, void *pinfo, void *puc);
-=20
- /* mips_timer.c */
---=20
-1.7.7
+Acked-by: Stefan Weil <sw@weilnetz.de>
 
 
