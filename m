@@ -1,41 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SSnkl-0002jI-MH
-	for mharc-qemu-trivial@gnu.org; Fri, 11 May 2012 07:11:19 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53163)
+	id 1SU14a-0001UN-No
+	for mharc-qemu-trivial@gnu.org; Mon, 14 May 2012 15:36:48 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:49700)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1SSnkh-0002WB-MQ
-	for qemu-trivial@nongnu.org; Fri, 11 May 2012 07:11:18 -0400
+	(envelope-from <sw@weilnetz.de>) id 1SU14X-0001JP-C0
+	for qemu-trivial@nongnu.org; Mon, 14 May 2012 15:36:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1SSnkb-0000fC-H9
-	for qemu-trivial@nongnu.org; Fri, 11 May 2012 07:11:15 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:53126 helo=mx2.suse.de)
+	(envelope-from <sw@weilnetz.de>) id 1SU14V-00054A-Ld
+	for qemu-trivial@nongnu.org; Mon, 14 May 2012 15:36:44 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:49254)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1SSnkN-0000cS-QT; Fri, 11 May 2012 07:10:55 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id C21C08FA98;
-	Fri, 11 May 2012 13:10:53 +0200 (CEST)
-Message-ID: <4FACF3BA.7070403@suse.de>
-Date: Fri, 11 May 2012 13:10:50 +0200
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:12.0) Gecko/20120421 Thunderbird/12.0
+	(envelope-from <sw@weilnetz.de>)
+	id 1SU14S-00053e-3U; Mon, 14 May 2012 15:36:40 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	1D2C27280019; Mon, 14 May 2012 21:36:38 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id j4G4+3I+Jcti; Mon, 14 May 2012 21:36:37 +0200 (CEST)
+Received: from flocke.weilnetz.de (p5086E111.dip.t-dialin.net [80.134.225.17])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	7B6E07280018; Mon, 14 May 2012 21:36:37 +0200 (CEST)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <sw@weilnetz.de>)
+	id 1SU14P-0004bq-7I; Mon, 14 May 2012 21:36:37 +0200
+Message-ID: <4FB15EC4.3050206@weilnetz.de>
+Date: Mon, 14 May 2012 21:36:36 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20120506 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1336218047-8906-1-git-send-email-afaerber@suse.de>
-	<4FA636A0.2060803@weilnetz.de>
-In-Reply-To: <4FA636A0.2060803@weilnetz.de>
-X-Enigmail-Version: 1.5pre
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-1.1] target-mips: Remove
- commented-out function declaration
+To: dunrong huang <riegamaths@gmail.com>
+References: <1336034082-5288-1-git-send-email-riegamaths@gmail.com>
+In-Reply-To: <1336034082-5288-1-git-send-email-riegamaths@gmail.com>
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qdev: Fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,43 +55,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 May 2012 11:11:18 -0000
+X-List-Received-Date: Mon, 14 May 2012 19:36:47 -0000
 
-Am 06.05.2012 10:30, schrieb Stefan Weil:
-> Am 05.05.2012 13:40, schrieb Andreas F=C3=A4rber:
->> There is no function cpu_mips_get_clock(), so drop it.
->>
->> Signed-off-by: Andreas F=C3=A4rber<afaerber@suse.de>
->> Cc: Stefan Weil<sw@weilnetz.de>
->> ---
->>   target-mips/cpu.h |    1 -
->>   1 files changed, 0 insertions(+), 1 deletions(-)
->>
->> diff --git a/target-mips/cpu.h b/target-mips/cpu.h
->> index c0f8826..44c1152 100644
->> --- a/target-mips/cpu.h
->> +++ b/target-mips/cpu.h
->> @@ -627,7 +627,6 @@ enum {
->>
->>   int cpu_mips_exec(CPUMIPSState *s);
->>   CPUMIPSState *cpu_mips_init(const char *cpu_model);
->> -//~ uint32_t cpu_mips_get_clock (void);
->>   int cpu_mips_signal_handler(int host_signum, void *pinfo, void *puc)=
-;
->>
->>   /* mips_timer.c */
->=20
-> Acked-by: Stefan Weil <sw@weilnetz.de>
+Hello,
 
-Thanks, applied to qom-next for now:
-http://repo.or.cz/w/qemu/afaerber.git/shortlog/refs/heads/qom-next
+Am 03.05.2012 10:34, schrieb dunrong huang:
+> The str allocated in visit_type_str was not freed
+>
+> Signed-off-by: dunrong huang <riegamaths@gmail.com>
+> ---
+> hw/qdev-properties.c | 8 ++++++--
+> 1 files changed, 6 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/qdev-properties.c b/hw/qdev-properties.c
+> index 98dd06a..8088699 100644
+> --- a/hw/qdev-properties.c
+> +++ b/hw/qdev-properties.c
+> @@ -726,7 +726,7 @@ static void set_mac(Object *obj, Visitor *v, void 
+> *opaque,
+> MACAddr *mac = qdev_get_prop_ptr(dev, prop);
+> Error *local_err = NULL;
+> int i, pos;
+> - char *str, *p;
+> + char *str = NULL, *p;
 
-I'll queue it for a 1.1-rc2 pull.
+Is this change really needed?
 
-Andreas
+>
+> if (dev->state != DEV_STATE_CREATED) {
+> error_set(errp, QERR_PERMISSION_DENIED);
+> @@ -753,10 +753,12 @@ static void set_mac(Object *obj, Visitor *v, 
+> void *opaque,
+> }
+> mac->a[i] = strtol(str+pos, &p, 16);
+> }
+> + g_free(str);
+> return;
+>
+> inval:
+> error_set_from_qdev_prop_error(errp, EINVAL, dev, prop, str);
+> + g_free(str);
+> }
+>
+> PropertyInfo qdev_prop_macaddr = {
+> @@ -825,7 +827,7 @@ static void set_pci_devfn(Object *obj, Visitor *v, 
+> void *opaque,
+> uint32_t *ptr = qdev_get_prop_ptr(dev, prop);
+> unsigned int slot, fn, n;
+> Error *local_err = NULL;
+> - char *str = (char *)"";
+> + char *str = NULL;
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
+As far as I could see, str does not need an initial value, so
+neither the old nor the new code is optimal (both versions do
+work).
+
+>
+> if (dev->state != DEV_STATE_CREATED) {
+> error_set(errp, QERR_PERMISSION_DENIED);
+> @@ -847,10 +849,12 @@ static void set_pci_devfn(Object *obj, Visitor 
+> *v, void *opaque,
+> goto invalid;
+> }
+> *ptr = slot << 3 | fn;
+> + g_free(str);
+> return;
+>
+> invalid:
+> error_set_from_qdev_prop_error(errp, EINVAL, dev, prop, str);
+> + g_free(str);
+> }
+>
+> static int print_pci_devfn(DeviceState *dev, Property *prop, char 
+> *dest, size_t len)
+
+Maybe some expert (Michael Roth?) can comment on the correct
+usage of visit_type_str.
+
+Is the initial value for the 2nd argument really needed?
+The current QEMU code sometimes uses initialization,
+but not always (see the code above, for example), so it is confusing.
+
+Otherwise the patch is ok. It fixes memory leaks,
+therefore it should be added to QEMU 1.1.
+
+Tested-by: Stefan Weil <sw@weilnetz.de>
+
+Regards,
+
+Stefan Weil
+
 
