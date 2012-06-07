@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SXXBx-0003tx-1s
-	for mharc-qemu-trivial@gnu.org; Thu, 24 May 2012 08:30:57 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:37620)
+	id 1Sckbh-00042x-7X
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Jun 2012 17:51:05 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55737)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SXXBu-0003tO-DZ
-	for qemu-trivial@nongnu.org; Thu, 24 May 2012 08:30:55 -0400
+	(envelope-from <harsh@linux.vnet.ibm.com>) id 1Sckbf-00042Z-1k
+	for qemu-trivial@nongnu.org; Thu, 07 Jun 2012 17:51:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SXXBn-00013c-MB
-	for qemu-trivial@nongnu.org; Thu, 24 May 2012 08:30:53 -0400
-Received: from mail-ee0-f45.google.com ([74.125.83.45]:53836)
+	(envelope-from <harsh@linux.vnet.ibm.com>) id 1Sckbd-0008An-4M
+	for qemu-trivial@nongnu.org; Thu, 07 Jun 2012 17:51:02 -0400
+Received: from e28smtp02.in.ibm.com ([122.248.162.2]:34786)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SXXBn-000136-CK; Thu, 24 May 2012 08:30:47 -0400
-Received: by eekd41 with SMTP id d41so3265954eek.4
-	for <multiple recipients>; Thu, 24 May 2012 05:30:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=DT3uDubiJ3ARxQh7Mp9fss6204UgBanTKeXgFnzfjW0=;
-	b=Vu9s2Ou/A0MnbN01yYIaHno0MSo4lBZlT4O+/8s1NCLAKhpwwi/1gZL7Mbxa/ItAsZ
-	KkfIwGksnD44/vJ3rDdMcvUhh0jZxTDu2iMpVryT9Tx6e24kJXy24OFA0ej5Y0uDUve9
-	zNVicFZkYX8kp0LkGHn8pwWwig/Ab4L7XXOjWAMxn1M4ogH01fDPBcRtXrQUrCsJlbNX
-	4xTnTAwN+yGeusoptB3RoDiBIixwC4ATNvuyCZn/ymUenrTeL05mARDVHH02ejLxYKm5
-	kHQwQPlJIb/yR8JKiQ0xFcwZJ+hEreurqQo/Fk1AcaVxSo/GGt9V3GmRvviqf5a2+sWJ
-	YXRQ==
-Received: by 10.213.113.135 with SMTP id a7mr2196325ebq.9.1337862642435;
-	Thu, 24 May 2012 05:30:42 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice3n2.emea.ibm.com. [195.212.29.84])
-	by mx.google.com with ESMTPS id z5sm541960eem.3.2012.05.24.05.30.39
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 24 May 2012 05:30:41 -0700 (PDT)
-Date: Thu, 24 May 2012 13:30:35 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Jan Kiszka <jan.kiszka@web.de>
-Message-ID: <20120524123035.GA5412@stefanha-thinkpad.localdomain>
-References: <4FBD9FF1.9020908@web.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4FBD9FF1.9020908@web.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	(envelope-from <harsh@linux.vnet.ibm.com>) id 1Sckbc-00085F-Fu
+	for qemu-trivial@nongnu.org; Thu, 07 Jun 2012 17:51:01 -0400
+Received: from /spool/local
+	by e28smtp02.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <harsh@linux.vnet.ibm.com>;
+	Fri, 8 Jun 2012 03:20:54 +0530
+Received: from d28relay05.in.ibm.com (9.184.220.62)
+	by e28smtp02.in.ibm.com (192.168.1.132) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 8 Jun 2012 03:20:51 +0530
+Received: from d28av02.in.ibm.com (d28av02.in.ibm.com [9.184.220.64])
+	by d28relay05.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	q57LooFb52428866; Fri, 8 Jun 2012 03:20:50 +0530
+Received: from d28av02.in.ibm.com (loopback [127.0.0.1])
+	by d28av02.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	q583LSG4007632; Fri, 8 Jun 2012 13:21:28 +1000
+Received: from harshbora.in.ibm.com ([9.77.121.234])
+	by d28av02.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	q583LRIR007597; Fri, 8 Jun 2012 13:21:27 +1000
+From: Harsh Prateek Bora <harsh@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri,  8 Jun 2012 03:20:43 +0530
+Message-Id: <1339105843-30064-3-git-send-email-harsh@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.10.2
+In-Reply-To: <1339105843-30064-1-git-send-email-harsh@linux.vnet.ibm.com>
+References: <1339105843-30064-1-git-send-email-harsh@linux.vnet.ibm.com>
+x-cbid: 12060721-5816-0000-0000-0000030DADC8
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.83.45
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] Clarify comments of
- tb_invalidate_phys_[page_]range
+X-Received-From: 122.248.162.2
+Cc: Harsh Prateek Bora <harsh@linux.vnet.ibm.com>, stefanha@linux.vnet.ibm.com,
+	aneesh.kumar@linux.vnet.ibm.com
+Subject: [Qemu-trivial] [PATCH 2/2] configure: report appropriate error on
+	missing library
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,21 +56,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 May 2012 12:30:56 -0000
+X-List-Received-Date: Thu, 07 Jun 2012 21:51:04 -0000
 
-On Wed, May 23, 2012 at 11:41:53PM -0300, Jan Kiszka wrote:
-> From: Jan Kiszka <jan.kiszka@siemens.com>
-> 
-> They could suggest that all TBs of the page containing the range would
-> be invalidated.
-> 
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
-> ---
->  exec.c |   22 ++++++++++++----------
->  1 files changed, 12 insertions(+), 10 deletions(-)
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Signed-off-by: Harsh Prateek Bora <harsh@linux.vnet.ibm.com>
+---
+ configure |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Stefan
+diff --git a/configure b/configure
+index 76dd57f..e8f0172 100755
+--- a/configure
++++ b/configure
+@@ -2915,7 +2915,8 @@ if test "$softmmu" = yes ; then
+       tools="$tools fsdev/virtfs-proxy-helper\$(EXESUF)"
+     else
+       if test "$virtfs" = yes; then
+-        feature_not_found "virtfs"
++        echo "VirtFS is supported only on Linux and requires libcap-devel and libattr-devel"
++        exit 1
+       fi
+       virtfs=no
+     fi
+-- 
+1.7.10.2
+
 
