@@ -1,36 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SdxXD-0007b7-QA
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Jun 2012 01:51:27 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46946)
+	id 1Se3e3-0006sl-9M
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Jun 2012 08:22:55 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:59300)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1SdxXB-0007St-3B
-	for qemu-trivial@nongnu.org; Mon, 11 Jun 2012 01:51:26 -0400
+	(envelope-from <andreas.faerber@web.de>) id 1Se3dv-0006Tm-EF
+	for qemu-trivial@nongnu.org; Mon, 11 Jun 2012 08:22:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1SdxX9-0007ff-Fj
-	for qemu-trivial@nongnu.org; Mon, 11 Jun 2012 01:51:24 -0400
-Received: from mx3-phx2.redhat.com ([209.132.183.24]:56663)
+	(envelope-from <andreas.faerber@web.de>) id 1Se3dp-0002yy-CE
+	for qemu-trivial@nongnu.org; Mon, 11 Jun 2012 08:22:47 -0400
+Received: from mout.web.de ([212.227.17.11]:63807)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1SdxX6-0007ez-BS; Mon, 11 Jun 2012 01:51:20 -0400
-Received: from zmail13.collab.prod.int.phx2.redhat.com
-	(zmail13.collab.prod.int.phx2.redhat.com [10.5.83.15])
-	by mx3-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id q5B5pGNk014760;
-	Mon, 11 Jun 2012 01:51:16 -0400
-Date: Mon, 11 Jun 2012 01:51:16 -0400 (EDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>
-Message-ID: <623e85e3-4c0d-4af4-8c74-28162091981f@zmail13.collab.prod.int.phx2.redhat.com>
-In-Reply-To: <1339243002-13760-1-git-send-email-afaerber@suse.de>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <andreas.faerber@web.de>)
+	id 1Se3dj-0002yD-7c; Mon, 11 Jun 2012 08:22:35 -0400
+Received: from envy.site ([195.135.221.2]) by smtp.web.de (mrweb001) with
+	ESMTPSA (Nemesis) id 0LgHau-1S80gd2v7k-00nxVW; Mon, 11 Jun 2012 14:22:32
+	+0200
+Message-ID: <4FD5E307.7030301@web.de>
+Date: Mon, 11 Jun 2012 14:22:31 +0200
+From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <andreas.faerber@web.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:12.0) Gecko/20120421 Thunderbird/12.0
 MIME-Version: 1.0
-X-Originating-IP: [10.36.112.17]
-X-Mailer: Zimbra 7.1.2_GA_3268 (ZimbraWebClient - FF3.0 (Linux)/7.1.2_GA_3268)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 209.132.183.24
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Makefile.user: Define CONFIG_USER_ONLY
-	for libuser/
+To: qemu-devel@nongnu.org
+References: <1338159200-7502-1-git-send-email-andreas.faerber@web.de>
+In-Reply-To: <1338159200-7502-1-git-send-email-andreas.faerber@web.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V02:K0:rPkP/cgSuNvCGzW0zmxOA37ZlGlwS8cBMjPjvYZSYdf
+	+ROz1uzMKUa00RnLW7dNbNf/O30HzNf19bAk/issCeCwAmHZbc
+	Me7NOYnaSTwZ0l8RZpStaEwNiwHa0ZyXYpGSbUlFxktvrElxln
+	bFE1nTj50dc6fXwqmD+ljSvbjIDmJNCNsl9Z7byIOz2bmOzYB8
+	jh6TXW47Furqe8dRSk6+Q==
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 212.227.17.11
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-stable@nongnu.org,
+	anthony@codemonkey.ws
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-1.1] libqtest: Fix
+ socket_accept() to pass address_len
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,50 +49,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2012 05:51:26 -0000
+X-List-Received-Date: Mon, 11 Jun 2012 12:22:53 -0000
 
-
-
------ Messaggio originale -----
-> Da: "Andreas F=C3=A4rber" <afaerber@suse.de>
-> A: qemu-devel@nongnu.org
-> Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, "Andreas F=C3=A4rber" <=
-afaerber@suse.de>
-> Inviato: Sabato, 9 giugno 2012 13:56:42
-> Oggetto: [PATCH] Makefile.user: Define CONFIG_USER_ONLY for libuser/
+Am 28.05.2012 00:53, schrieb Andreas Färber:
+> accept() expects address_len to point to the length of the sockaddr on
+> input. Initialize it accordingly.
 > 
-> In *-*-user/ build dirs CONFIG_USER_ONLY is defined via
-> config-target.h.
-> In libuser/ it is not defined.
+> Resolves an assertion due to EFAULT on illumos.
 > 
-> Add it via QEMU_CFLAGS.
-> 
-> Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
+> Signed-off-by: Andreas Färber <andreas.faerber@web.de>
 
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Ping? Verifiable by looking at the Linux man page.
 
-Paolo
+/-F
 
 > ---
->  Soon needed for cpu.c.
-> 
->  Makefile.user |    1 +
+>  tests/libqtest.c |    1 +
 >  1 files changed, 1 insertions(+), 0 deletions(-)
 > 
-> diff --git a/Makefile.user b/Makefile.user
-> index b717820..ab70eb3 100644
-> --- a/Makefile.user
-> +++ b/Makefile.user
-> @@ -10,6 +10,7 @@ $(call set-vpath, $(SRC_PATH))
+> diff --git a/tests/libqtest.c b/tests/libqtest.c
+> index 6d333ef..1d73fd1 100644
+> --- a/tests/libqtest.c
+> +++ b/tests/libqtest.c
+> @@ -74,6 +74,7 @@ static int socket_accept(int sock)
+>      socklen_t addrlen;
+>      int ret;
 >  
->  QEMU_CFLAGS+=3D-I..
->  QEMU_CFLAGS +=3D -I$(SRC_PATH)/include
-> +QEMU_CFLAGS +=3D -DCONFIG_USER_ONLY
->  
->  include $(SRC_PATH)/Makefile.objs
->  
-> --
-> 1.7.7
-> 
-> 
+> +    addrlen = sizeof(addr);
+>      do {
+>          ret = accept(sock, (struct sockaddr *)&addr, &addrlen);
+>      } while (ret == -1 && errno == EINTR);
+
 
