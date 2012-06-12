@@ -1,54 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SeNl5-0003Yw-3p
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jun 2012 05:51:31 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:47766)
+	id 1SeRs9-0000CM-QY
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jun 2012 10:15:05 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:41153)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SeNkz-0003JN-QW
-	for qemu-trivial@nongnu.org; Tue, 12 Jun 2012 05:51:30 -0400
+	(envelope-from <flukshun@gmail.com>) id 1SeRrz-00009H-Hd
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2012 10:15:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SeNkq-0006jL-3H
-	for qemu-trivial@nongnu.org; Tue, 12 Jun 2012 05:51:25 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:37590)
+	(envelope-from <flukshun@gmail.com>) id 1SeRrt-0005PR-Qe
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2012 10:14:55 -0400
+Received: from mail-pz0-f45.google.com ([209.85.210.45]:63323)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SeNkh-0006fs-HS; Tue, 12 Jun 2012 05:51:07 -0400
-Received: by bkwj10 with SMTP id j10so4713517bkw.4
-	for <multiple recipients>; Tue, 12 Jun 2012 02:51:04 -0700 (PDT)
+	(envelope-from <flukshun@gmail.com>)
+	id 1SeRrt-0005OH-G8; Tue, 12 Jun 2012 10:14:49 -0400
+Received: by dadv2 with SMTP id v2so7596045dad.4
+	for <multiple recipients>; Tue, 12 Jun 2012 07:14:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=n2fcHlqpW/ox8LkDfbEUywA9WtEVYYlKej7b4uIqWKA=;
-	b=DXpCunVfjJBvAL231pqQsCU1beqj6AzH9f/TT66h8WCRuncdY5jEyzO6A7BniZcYeY
-	5B4MswxD/tuc1SwKa6B7qTK0r4Fr70VFJ+nyIVDqV5TIWqx/339V8ER4hv//D2bwdtnq
-	5kw3U1NzZ5DpHCTm1Fq1+iDCO/fauY+TvKIUMBj3b+4AB/8TIS6I6fh0dYhgv02dax64
-	Hq0/CNq72WcZaj85oVtdHEj5zlFFNNyoC+6HCEavkn5xaFtsR60SlZ2okIqCPzuNHgBl
-	fL9Yu7RFmxtGGT6S4OzCsg6zXqEzqAszrTXVgHyeI6rfoJ8FLPDxJc/5LcyWUW50a8po
-	Xqmg==
-Received: by 10.204.141.18 with SMTP id k18mr11533128bku.27.1339494664430;
-	Tue, 12 Jun 2012 02:51:04 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id
-	e20sm19522628bkv.10.2012.06.12.02.51.02
+	h=sender:date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=AQyxVYF2cva8bJoe+xPVmo4olZ87aQ1jZDYvoXU85DY=;
+	b=AQ0RuWFJxVsc8izY6ZGjbfavwGcJSyVS4pu1huUQnXj4p+p5Rg/XYsQPxEJXsf48uS
+	PA9pfBtdz5KV/UF9BcismjT2iTEnSUy0/7g8sFQwIovDCBvl2CZQzY9ntGNsekYWARHP
+	FNoa3rc49HceTmi0/EYy9l4bUsglytTZETPg3FQzeyO+7FkdxWlo2TRRMNnM5WNx8icI
+	aV7rRSXHZgueoWnSZ3eYYPm16IByYWo3VTwqJIeJGiVx6xRXFLoFa1mJEEAq7KAp5H1s
+	yraXhE6O+s9RqvwGus6QBrrqTKP3wqiUtgJDR6M+b5tcGDVAsTFDIM/SeAV95RFw079O
+	9hfA==
+Received: by 10.68.232.103 with SMTP id tn7mr38314910pbc.86.1339510485912;
+	Tue, 12 Jun 2012 07:14:45 -0700 (PDT)
+Received: from illuin.morrigu.org ([32.97.110.59])
+	by mx.google.com with ESMTPS id x1sm2149110pbp.50.2012.06.12.07.14.42
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 12 Jun 2012 02:51:03 -0700 (PDT)
-Date: Tue, 12 Jun 2012 10:50:59 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
-Message-ID: <20120612095059.GD29104@stefanha-thinkpad.localdomain>
-References: <1339243002-13760-1-git-send-email-afaerber@suse.de>
+	Tue, 12 Jun 2012 07:14:44 -0700 (PDT)
+Sender: fluxion <flukshun@gmail.com>
+Received: by illuin.morrigu.org (sSMTP sendmail emulation);
+	Tue, 12 Jun 2012 09:14:39 -0500
+Date: Tue, 12 Jun 2012 09:14:39 -0500
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Message-ID: <20120612141439.GA11828@illuin>
+References: <1339225719-5434-1-git-send-email-sw@weilnetz.de>
+	<20120612094957.GC29104@stefanha-thinkpad.localdomain>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1339243002-13760-1-git-send-email-afaerber@suse.de>
+In-Reply-To: <20120612094957.GC29104@stefanha-thinkpad.localdomain>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Makefile.user: Define CONFIG_USER_ONLY
- for libuser/
+X-Received-From: 209.85.210.45
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] Makefile: Remove
+	BUILD_DIR from qapi-dir
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,23 +62,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jun 2012 09:51:30 -0000
+X-List-Received-Date: Tue, 12 Jun 2012 14:15:05 -0000
 
-On Sat, Jun 09, 2012 at 01:56:42PM +0200, Andreas Färber wrote:
-> In *-*-user/ build dirs CONFIG_USER_ONLY is defined via config-target.h.
-> In libuser/ it is not defined.
+On Tue, Jun 12, 2012 at 10:49:57AM +0100, Stefan Hajnoczi wrote:
+> On Sat, Jun 09, 2012 at 09:08:38AM +0200, Stefan Weil wrote:
+> > qapi-dir does not need an absolute path. All other build directories
+> > are relative. When BUILD_DIR is removed, the build output looks better
+> > (no long lines with absolute paths when everything else uses short
+> > lines):
+> > 
+> >   GEN   qapi-generated/qga-qapi-types.c
+> >   CC    qapi-generated/qga-qapi-types.o
+> >   GEN   qapi-generated/qga-qapi-visit.c
+> >   CC    qapi-generated/qga-qapi-visit.o
+> >   GEN   qapi-generated/qga-qmp-marshal.c
+> >   CC    qapi-generated/qga-qmp-marshal.o
+> > 
+> > Using a relative path also avoids potential problems when BUILD_DIR
+> > includes blanks.
+> > 
+> > Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> > ---
+> >  Makefile |    2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Add it via QEMU_CFLAGS.
+> I merged this but have CCed Michael Roth to take a look.  qemu.git
+> contains an earlier commit to explicitly add $(BUILD_DIR):
 > 
-> Signed-off-by: Andreas Färber <afaerber@suse.de>
-> ---
->  Soon needed for cpu.c.
+> commit 9b129408589b2ed7bb2cdea03d2aba46a5fd74d4
+> Author: Michael Roth <mdroth@linux.vnet.ibm.com>
+> Date:   Tue Nov 29 16:47:49 2011 -0600
 > 
->  Makefile.user |    1 +
->  1 files changed, 1 insertions(+), 0 deletions(-)
+>     Makefile: use full path for qapi-generated directory
+>     
+>     Generally $(BUILD_DIR) == $(CURDIR), but that isn't necessarilly the
+>     case, so use $(BUILD_DIR)/qapi-generated for generated files to
+>     avoid potentionally sticking generating files in odd places outside
+>     the build's include paths.
+>     
+>     Signed-off-by: Anthony Liguori <aliguori@us.ibm.com>
+> 
+> Does this rationale still apply?  Is it really a good ideal to remove
+> $(BUILD_DIR)?
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Here's some context for the patch:
 
-Stefan
+http://lists.gnu.org/archive/html/qemu-devel/2011-11/msg03474.html
+
+Originally a change was made to add a $(SRC_DIR) prefix to fix a build.
+This triggered an unrelated bug, and was not quite correct. I submitted
+a patch to fix the bug it triggered, and then a patch that used
+$(BUILD_DIR) instead.
+
+I'm not sure the latter was ever needed however, it looks like it was
+just the classic issue of someone having a dirty $(SRC_DIR) and
+subsequently switching to out of tree builds. I think the original issue
+was simple a stale qapi-generated/ directory sitting in $(SRC_DIR) that
+was taking precedence over the one being created in $(BUILD_DIR)
+
+So, while having the $(BUILD_DIR) prefix does make the build safer in
+this regard, I think it addresses a use-case that was never supported to
+begin with. So I'd be fine with applying Stefan's patch if it makes
+things cleaner/more consistent with everything else.
+
+> 
+> Stefan
+> 
 
