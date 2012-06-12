@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SeNcm-00065D-LJ
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jun 2012 05:42:56 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44382)
+	id 1SeNgd-0006S9-B3
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jun 2012 05:46:55 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:38901)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SeNcf-0005iZ-Av
-	for qemu-trivial@nongnu.org; Tue, 12 Jun 2012 05:42:54 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SeNgX-0006Rk-D6
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2012 05:46:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SeNcZ-0002Z0-71
-	for qemu-trivial@nongnu.org; Tue, 12 Jun 2012 05:42:48 -0400
-Received: from mail-wg0-f41.google.com ([74.125.82.41]:59749)
+	(envelope-from <stefanha@gmail.com>) id 1SeNgR-0004a5-43
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2012 05:46:48 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:44516)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1SeNcO-0002UD-HI; Tue, 12 Jun 2012 05:42:32 -0400
-Received: by wgbds1 with SMTP id ds1so4152283wgb.4
-	for <multiple recipients>; Tue, 12 Jun 2012 02:42:28 -0700 (PDT)
+	id 1SeNgQ-0004Z6-Qy; Tue, 12 Jun 2012 05:46:43 -0400
+Received: by bkwj10 with SMTP id j10so4709721bkw.4
+	for <multiple recipients>; Tue, 12 Jun 2012 02:46:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=Z1+vyuknVGWyQSi747idUyP1doDTzf6YUziyVIsRVIg=;
-	b=it+a/He0lHzMStCm+yRTJ9vR6HWksaJ6DGv98pEFc/HQR7BQBzrhiVqNLVYG7LvJ8e
-	gFUrAwp5xirETnH83XHawwa/zq5Ki5FQO31zf15bGQglmJIaK+JLYChrds7I6je6zXel
-	VHcxahZJdAwUOgPrp3PSQ9UtPhOsodCUBKwq/Hyuy3ZMaFfrbsH1qPNqmdPtgYxl0ETZ
-	vGF0fa735TuSURwsleBmnM9ZlyNCvw2iXg3sN3zsD6D408W72gT+8YdldsqTwMjZxrPg
-	1pYUQTmA7zVQ3OHRYcVqjttgk+e+bwxulNwX+L+VWlFcrWQq7IYAPCTbabnAykExO9it
-	Aajw==
-Received: by 10.180.88.233 with SMTP id bj9mr27504631wib.1.1339494148388;
-	Tue, 12 Jun 2012 02:42:28 -0700 (PDT)
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=TaFtAWgDTMEeglXGTH8xr5mtit8++hwfLXbZNRCHOMA=;
+	b=iKPUzQaLDQWiLAlj5MwpJozMEXnECeGN0wu7KoTiLfVX/eZEVmsH1RFDhIbSHap4dV
+	B/H6QkuWkAPMPNh0eMv6SvgNN4fMdCFh12Sn0JcooyIJcLTk9HmQRfbFTiWN/0EfLfmR
+	oeBX6GjQe5uzGgWOJtoSm1AvDnO/LX9vxsGhR2IQTKXY99iuIG1uVcPz1iUIal/aQV1Z
+	sa17El57o1dWzVYYdA3TSDakUhwx/brBBxCCpVl7Jo9pgCqdbzHfg7qUln3iKczeR68N
+	a/LKaNSqvi1KNYcjhPlpTInhTELltuw2ut6vc496qNEeCrwW6NUGQutUlIkzA4J6UJR0
+	LPGQ==
+Received: by 10.205.129.8 with SMTP id hg8mr11581048bkc.25.1339494399450;
+	Tue, 12 Jun 2012 02:46:39 -0700 (PDT)
 Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id d10sm7518046wiy.3.2012.06.12.02.42.27
+	by mx.google.com with ESMTPS id
+	h18sm19511410bkh.8.2012.06.12.02.46.38
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 12 Jun 2012 02:42:27 -0700 (PDT)
-Date: Tue, 12 Jun 2012 10:42:25 +0100
+	Tue, 12 Jun 2012 02:46:39 -0700 (PDT)
+Date: Tue, 12 Jun 2012 10:46:37 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: fboiteux@free.fr
-Message-ID: <20120612094225.GA29104@stefanha-thinkpad.localdomain>
-References: <1339178785-8977-1-git-send-email-fboiteux@free.fr>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120612094637.GB29104@stefanha-thinkpad.localdomain>
+References: <1339225719-5434-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1339178785-8977-1-git-send-email-fboiteux@free.fr>
+In-Reply-To: <1339225719-5434-1-git-send-email-sw@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.41
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, 676374@bugs.debian.org
-Subject: Re: [Qemu-trivial] [PATCH] Install 'bepo' keymap already included
- in Qemu source
+X-Received-From: 209.85.214.45
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] Makefile: Remove
+	BUILD_DIR from qapi-dir
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,19 +58,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jun 2012 09:42:55 -0000
+X-List-Received-Date: Tue, 12 Jun 2012 09:46:53 -0000
 
-On Fri, Jun 08, 2012 at 08:06:25PM +0200, fboiteux@free.fr wrote:
-> From: Frédéric Boiteux <fboiteux@free.fr>
+On Sat, Jun 09, 2012 at 09:08:38AM +0200, Stefan Weil wrote:
+> qapi-dir does not need an absolute path. All other build directories
+> are relative. When BUILD_DIR is removed, the build output looks better
+> (no long lines with absolute paths when everything else uses short
+> lines):
 > 
-> The 'bepo' layout (a french dvorak-like keyboard layout) was added
-> about one year ago, (see commit 2a3c633c1eb8692716220195b6d3fe78b7e411d0),
-> but I missed to declare to install it.
+>   GEN   qapi-generated/qga-qapi-types.c
+>   CC    qapi-generated/qga-qapi-types.o
+>   GEN   qapi-generated/qga-qapi-visit.c
+>   CC    qapi-generated/qga-qapi-visit.o
+>   GEN   qapi-generated/qga-qmp-marshal.c
+>   CC    qapi-generated/qga-qmp-marshal.o
 > 
-> Signed-off-by: Frédéric Boiteux <fboiteux@free.fr>
+> Using a relative path also avoids potential problems when BUILD_DIR
+> includes blanks.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  Makefile |    3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  Makefile |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
