@@ -1,37 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Sg7Ye-0002Uh-HV
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Jun 2012 00:57:52 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:57520)
+	id 1SgQAp-0005Dl-RX
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Jun 2012 20:50:31 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43273)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Sg7Yb-0002Lu-Ek
-	for qemu-trivial@nongnu.org; Sun, 17 Jun 2012 00:57:50 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1SgQAn-00054p-14
+	for qemu-trivial@nongnu.org; Sun, 17 Jun 2012 20:50:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Sg7YZ-00024G-VX
-	for qemu-trivial@nongnu.org; Sun, 17 Jun 2012 00:57:49 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:57397)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1SgQAj-00029y-Gf
+	for qemu-trivial@nongnu.org; Sun, 17 Jun 2012 20:50:28 -0400
+Received: from mail-pb0-f45.google.com ([209.85.160.45]:50472)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1Sg7YW-00023Y-Ez; Sun, 17 Jun 2012 00:57:44 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	476177280025; Sun, 17 Jun 2012 06:57:42 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id D-ou7vVAe7Zi; Sun, 17 Jun 2012 06:57:41 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id AD1F672800C1; Sun, 17 Jun 2012 06:57:41 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial <qemu-trivial@nongnu.org>
-Date: Sun, 17 Jun 2012 06:57:41 +0200
-Message-Id: <1339909061-30971-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1SgQAj-00029k-AS
+	for qemu-trivial@nongnu.org; Sun, 17 Jun 2012 20:50:25 -0400
+Received: by pbbro12 with SMTP id ro12so8002564pbb.4
+	for <qemu-trivial@nongnu.org>; Sun, 17 Jun 2012 17:50:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
+	bh=N71Rskw3leHruZ+wF5kEhcLyBdFgLfGfsh5xVI4qnj0=;
+	b=j8cxGxi61O8/LomKcyl+4AnrOorB2rphGANd7GyofvH/ApF87NnxbvXFM4MBAT3j0H
+	UFtxPuEvMrDwdUe4f164/OtKYle32LVYrvMr9b95Lb68RrnmmBUJCLjPojYY5zgotvfA
+	4WqDSTu2LU1/M79Fa/62rptFNpCin2doQX0QIwTTrqRmi1e1j2HjnvIMZUVkEFBrKSMl
+	sxowqMedMv3tfiVKlf0mccbWedubrnKJrGib7UGReQ3bzpmoLEKaPu1cIx/DLbdKcsa5
+	rYuM4JVArTOqJie6VeDJNMIWPQwDCrDekjbSAYZQyczSeCDP7no1KLk3CsjuVbCV2Sue
+	KFgQ==
+Received: by 10.68.200.102 with SMTP id jr6mr46377569pbc.0.1339980622661;
+	Sun, 17 Jun 2012 17:50:22 -0700 (PDT)
+Received: from localhost ([124.148.20.9])
+	by mx.google.com with ESMTPS id og4sm21855001pbb.48.2012.06.17.17.50.19
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sun, 17 Jun 2012 17:50:21 -0700 (PDT)
+From: "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>
+To: edgar.iglesias@gmail.com,
+	qemu-devel@nongnu.org
+Date: Mon, 18 Jun 2012 11:00:18 +1000
+Message-Id: <1339981218-25247-1-git-send-email-peter.crosthwaite@petalogix.com>
+X-Mailer: git-send-email 1.7.3.2
+X-Gm-Message-State: ALoCoQkdL8kwaJZD3vX30zsvYTVpICvtbc4QTOpaeKafssbgrMOZsS+ARxDZdjEi1YhmYVDXi/ry
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] checkpatch: Add QEMU specific rule
+X-Received-From: 209.85.160.45
+Cc: peter.crosthwaite@petalogix.com, peter.maydell@linaro.org,
+	qemu-trivial@nongnu.org, john.williams@petalogix.com
+Subject: [Qemu-trivial] [PATCH] arm_gic: Send dbg msgs to stderr not stdout
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,33 +54,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Jun 2012 04:57:50 -0000
+X-List-Received-Date: Mon, 18 Jun 2012 00:50:30 -0000
 
-The new rule detects two wrong variants of QEMU.
-It was tested with commit b5a8fe5e.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
 ---
- scripts/checkpatch.pl |    5 +++++
- 1 files changed, 5 insertions(+), 0 deletions(-)
+ hw/arm_gic.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index 8850a5f..b98dc6c 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -2849,6 +2849,11 @@ sub process {
- 				ERROR("lockdep_no_validate class is reserved for device->mutex.\n" . $herecurr);
- 			}
- 		}
-+
-+# QEMU specific tests
-+		if ($rawline =~ /\b(?:Qemu|QEmu)\b/) {
-+			WARN("use QEMU instead of Qemu or QEmu\n" . $herecurr);
-+		}
- 	}
+diff --git a/hw/arm_gic.c b/hw/arm_gic.c
+index 72298b4..c78d58e 100644
+--- a/hw/arm_gic.c
++++ b/hw/arm_gic.c
+@@ -35,7 +35,7 @@
  
- 	# If we have no input at all, then there is nothing to report on
+ #ifdef DEBUG_GIC
+ #define DPRINTF(fmt, ...) \
+-do { printf("arm_gic: " fmt , ## __VA_ARGS__); } while (0)
++do { fprintf(stderr, "arm_gic: " fmt , ## __VA_ARGS__); } while (0)
+ #else
+ #define DPRINTF(fmt, ...) do {} while(0)
+ #endif
 -- 
-1.7.0.4
+1.7.3.2
 
 
