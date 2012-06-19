@@ -1,49 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Sgs1S-0002GC-1R
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Jun 2012 02:34:42 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43370)
+	id 1Sgzqb-0006AU-MN
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Jun 2012 10:56:01 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50669)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Sgs1Q-0002Eg-1c
-	for qemu-trivial@nongnu.org; Tue, 19 Jun 2012 02:34:41 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1SgzqU-0005mO-38
+	for qemu-trivial@nongnu.org; Tue, 19 Jun 2012 10:55:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Sgs1M-0004VB-Rf
-	for qemu-trivial@nongnu.org; Tue, 19 Jun 2012 02:34:39 -0400
-Received: from mail-pb0-f45.google.com ([209.85.160.45]:59636)
+	(envelope-from <pm215@archaic.org.uk>) id 1SgzqN-0007Da-Tn
+	for qemu-trivial@nongnu.org; Tue, 19 Jun 2012 10:55:53 -0400
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:44850)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Sgs1M-0004Uc-La
-	for qemu-trivial@nongnu.org; Tue, 19 Jun 2012 02:34:36 -0400
-Received: by pbbro12 with SMTP id ro12so9812658pbb.4
-	for <qemu-trivial@nongnu.org>; Mon, 18 Jun 2012 23:34:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
-	bh=vvdZ7nU778560u7iuscZPUziuKVOQU7RWmNhkhGaWQU=;
-	b=Xaf9wsjPysmv4L4A4h/aOmOd7rUMV7enwHbz7PzsomFN1dnxl1xETS/+NMSWb8zP0S
-	7goUKBFDfKG31CpVY4/UuBNjbgpUt/jmXQRNAsS16YwvULAQqPqk03E7DVFIXQCcUFoF
-	Pf8Ylngfp8pPU/cuN6zp1qAGnNLxqMAMV0V1NQWDNJ/ADkmjZn4VT+3KZyLLNFqfUGjO
-	jJAaZr9G6UQw5YQ65QqY0vn0MGWRNpuZS3TD38S2Ri68+mLE7oTOHB0w+gGA2KBMVbp5
-	zg010l6gf7YX/nfdsSutsEgdR7LGzwuTFHos2InBXKjH/pkeQg7qDpOiEtc4JsqdRTYr
-	v8bw==
-Received: by 10.68.217.40 with SMTP id ov8mr60432553pbc.131.1340087673751;
-	Mon, 18 Jun 2012 23:34:33 -0700 (PDT)
-Received: from localhost ([124.148.20.9])
-	by mx.google.com with ESMTPS id of1sm26745415pbb.15.2012.06.18.23.34.30
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 18 Jun 2012 23:34:32 -0700 (PDT)
-From: "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 19 Jun 2012 16:44:38 +1000
-Message-Id: <1340088278-8406-1-git-send-email-peter.crosthwaite@petalogix.com>
-X-Mailer: git-send-email 1.7.3.2
-X-Gm-Message-State: ALoCoQmM+2D8n3ZcO1KqphNuq83EdnsEezjJT3QEDod2hiElgOE4ldvF6VlTZ/anzbPG6u+58U7B
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.160.45
-Cc: Jim Meyering <meyering@redhat.com>,
-	"Peter A. G. Crosthwaite" <peter.croshtwaite@petalogix.com>
-Subject: [Qemu-trivial] [PATCH] cadence_gem: Avoid stack-writing
-	buffer-overrun
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1SgzqK-0007Cx-OC; Tue, 19 Jun 2012 10:55:44 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1SgzqE-0003y0-Ex; Tue, 19 Jun 2012 15:55:38 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Tue, 19 Jun 2012 15:55:38 +0100
+Message-Id: <1340117738-15225-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] Makefile.hw: avoid overly large 'make clean'
+	rm command
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,37 +37,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Jun 2012 06:34:41 -0000
+X-List-Received-Date: Tue, 19 Jun 2012 14:56:00 -0000
 
-From: Jim Meyering <meyering@redhat.com>
+Avoid 'make clean' producing an 'rm' command which has a lot
+of duplicate 'hw//*.o' arguments, by using $(sort $(dir ..))
+rather than $(dir $(sort ..)) so Make's sort function will
+remove the duplicates for us. We can also remove the double
+'//' safely because $(dir ..) is guaranteed to return a string
+ending in '/'.
 
-Use sizeof(rxbuf)-size (not sizeof(rxbuf-size)) as the number
-of bytes to clear.  The latter would always clear 4 or 8
-bytes, possibly writing beyond the end of that stack buffer.
-Alternatively, depending on the value of the "size" parameter,
-it could fail to initialize the end of "rxbuf".
-Spotted by coverity.
-
-Signed-off-by: Jim Meyering <meyering@redhat.com>
-Signed-off-by: Peter A. G. Crosthwaite <peter.croshtwaite@petalogix.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/cadence_gem.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Mostly cosmetic, although I guess there's a faint chance that expanding
+all those hw/*.o would hit the command line argument buffer limit...
 
-diff --git a/hw/cadence_gem.c b/hw/cadence_gem.c
-index e2140ae..dbde392 100644
---- a/hw/cadence_gem.c
-+++ b/hw/cadence_gem.c
-@@ -664,7 +664,7 @@ static ssize_t gem_receive(VLANClientState *nc, const uint8_t *buf, size_t size)
-          */
+ Makefile.hw |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.hw b/Makefile.hw
+index 2bcbaff..28fe100 100644
+--- a/Makefile.hw
++++ b/Makefile.hw
+@@ -19,8 +19,8 @@ all: $(hw-obj-y)
+ 	@true
  
-         memcpy(rxbuf, buf, size);
--        memset(rxbuf + size, 0, sizeof(rxbuf - size));
-+        memset(rxbuf + size, 0, sizeof(rxbuf) - size);
-         rxbuf_ptr = rxbuf;
-         crc_val = cpu_to_le32(crc32(0, rxbuf, MAX(size, 60)));
-         if (size < 60) {
+ clean:
+-	rm -f $(addsuffix /*.o, $(dir $(sort $(hw-obj-y))))
+-	rm -f $(addsuffix /*.d, $(dir $(sort $(hw-obj-y))))
++	rm -f $(addsuffix *.o, $(sort $(dir $(hw-obj-y))))
++	rm -f $(addsuffix *.d, $(sort $(dir $(hw-obj-y))))
+ 
+ # Include automatically generated dependency files
+ -include $(patsubst %.o, %.d, $(hw-obj-y))
 -- 
-1.7.3.2
+1.7.1
 
 
