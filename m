@@ -1,37 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ShNRg-0006Bj-3t
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Jun 2012 12:07:52 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41832)
+	id 1ShZMw-0005UV-Jt
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Jun 2012 00:51:46 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:57288)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1ShNRZ-0005qC-5c
-	for qemu-trivial@nongnu.org; Wed, 20 Jun 2012 12:07:50 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1ShZMu-0005TS-0h
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2012 00:51:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1ShNRS-0003sz-EY
-	for qemu-trivial@nongnu.org; Wed, 20 Jun 2012 12:07:44 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:42665)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1ShZMs-0003lE-3N
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2012 00:51:43 -0400
+Received: from mail-pb0-f45.google.com ([209.85.160.45]:57435)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1ShNRH-0003rI-OO; Wed, 20 Jun 2012 12:07:27 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	D56307280025; Wed, 20 Jun 2012 18:07:25 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 3mtgmv9PvOQN; Wed, 20 Jun 2012 18:07:25 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 03D9E72800C1; Wed, 20 Jun 2012 18:07:24 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial <qemu-trivial@nongnu.org>
-Date: Wed, 20 Jun 2012 18:07:24 +0200
-Message-Id: <1340208444-14440-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1ShZMr-0003kM-Tv
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2012 00:51:42 -0400
+Received: by pbbro12 with SMTP id ro12so1602332pbb.4
+	for <qemu-trivial@nongnu.org>; Wed, 20 Jun 2012 21:51:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
+	bh=37m6OXvxihrVutW45e8Q0ZJSudkgBs9AAbtvb6RCYH8=;
+	b=HkOdUHt5G9jSVwbQq0KpYHexo2z7+VZEWlpum4BR5htg/5FuMcWeK1JEoVIyH+SHh4
+	XrFHECUOQ7HGoA+2otNNzMQUmAQ1Xcdum3j9TVZjSpGg8lP/X/X16C4kc3yjtm15I7I6
+	zL1+0eBaz8hzjYSB5LhWdpTztEa0T1g0tnTnPDsBupCwrTdQvHhVJtgVoqp1apNeGvDw
+	Y56QYj6JGmBM53G+cZY9VPU5g9azWo7M5JZ6p3GNleBxJ2Lo+HiRxM1qsKOoAuWi9Mg5
+	vsqPMQu+VUWjMi8Khp1H1jwuy4O0BxT5//lpiv620b8QO+NgVpOOuwUlDwbVveTzwXrA
+	YROg==
+Received: by 10.68.228.2 with SMTP id se2mr83464385pbc.109.1340254299189;
+	Wed, 20 Jun 2012 21:51:39 -0700 (PDT)
+Received: from localhost ([124.148.20.9])
+	by mx.google.com with ESMTPS id np8sm34460969pbc.71.2012.06.20.21.51.35
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 20 Jun 2012 21:51:38 -0700 (PDT)
+From: "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>
+To: qemu-devel@nongnu.org, edgar.iglesias@gmail.com, qemu-trivial@nongnu.org
+Date: Thu, 21 Jun 2012 14:51:24 +1000
+Message-Id: <1340254284-20415-1-git-send-email-peter.crosthwaite@petalogix.com>
+X-Mailer: git-send-email 1.7.3.2
+X-Gm-Message-State: ALoCoQnBIth3WxotRuz4lotwZWM0Igc8ePpIGeYejmQPjKW23q3FrlVSyUU0u748xtv6SX8dG3GR
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] tci: Support INDEX_op_bswap64_i64
+X-Received-From: 209.85.160.45
+Cc: peter.crosthwaite@petalogix.com, john.williams@petalogix.com
+Subject: [Qemu-trivial] [PATCH v1] device_tree: load_device_tree(): Allow
+	NULL sizep
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,29 +53,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Jun 2012 16:07:51 -0000
+X-List-Received-Date: Thu, 21 Jun 2012 04:51:45 -0000
 
-Running the Windows 7 (64 bit) boot process needs INDEX_op_bswap64_i64.
-It was already implemented, but untested. Remove the TODO() statement.
+The sizep arg is populated with the size of the loaded device tree. Since this
+is one of those informational "please populate" type arguments it should be
+optional. Guarded writes to *sizep against NULL accordingly.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
 ---
- tci.c |    1 -
- 1 file changed, 1 deletion(-)
+ device_tree.c |    8 ++++++--
+ 1 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/tci.c b/tci.c
-index e40c080..01d365a 100644
---- a/tci.c
-+++ b/tci.c
-@@ -1036,7 +1036,6 @@ tcg_target_ulong tcg_qemu_tb_exec(CPUArchState *cpustate, uint8_t *tb_ptr)
- #endif
- #if TCG_TARGET_HAS_bswap64_i64
-         case INDEX_op_bswap64_i64:
--            TODO();
-             t0 = *tb_ptr++;
-             t1 = tci_read_r64(&tb_ptr);
-             tci_write_reg64(t0, bswap64(t1));
+diff --git a/device_tree.c b/device_tree.c
+index 86a694c..0ed0256 100644
+--- a/device_tree.c
++++ b/device_tree.c
+@@ -32,7 +32,9 @@ void *load_device_tree(const char *filename_path, int *sizep)
+     int ret;
+     void *fdt = NULL;
+ 
+-    *sizep = 0;
++    if (sizep) {
++        *sizep = 0;
++    }
+     dt_size = get_image_size(filename_path);
+     if (dt_size < 0) {
+         printf("Unable to get size of device tree file '%s'\n",
+@@ -65,7 +67,9 @@ void *load_device_tree(const char *filename_path, int *sizep)
+             filename_path);
+         goto fail;
+     }
+-    *sizep = dt_size;
++    if (sizep) {
++        *sizep = dt_size;
++    }
+     return fdt;
+ 
+ fail:
 -- 
-1.7.10
+1.7.3.2
 
 
