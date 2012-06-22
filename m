@@ -1,53 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Shzyd-0005MM-KW
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2012 05:16:27 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:60691)
+	id 1Si0Ct-0003JX-Tb
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2012 05:31:11 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:60744)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ShzyW-00050P-3l
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2012 05:16:24 -0400
+	(envelope-from <stefanha@gmail.com>) id 1Si0Cq-00039X-IJ
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2012 05:31:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ShzyQ-0003Gb-2M
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2012 05:16:19 -0400
-Received: from mail-wg0-f53.google.com ([74.125.82.53]:53071)
+	(envelope-from <stefanha@gmail.com>) id 1Si0Cl-0001BB-Py
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2012 05:31:08 -0400
+Received: from mail-lb0-f173.google.com ([209.85.217.173]:34778)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1ShzyD-0003BK-4R; Fri, 22 Jun 2012 05:16:01 -0400
-Received: by wgbfm10 with SMTP id fm10so1374854wgb.10
-	for <multiple recipients>; Fri, 22 Jun 2012 02:15:58 -0700 (PDT)
+	id 1Si0CX-000158-KB; Fri, 22 Jun 2012 05:30:49 -0400
+Received: by lbok6 with SMTP id k6so3838628lbo.4
+	for <multiple recipients>; Fri, 22 Jun 2012 02:30:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=iGLPemOvoeMxTM88KxdU5ur9XGdx+TpHu8h3h4xtJQ4=;
-	b=rU9DENG0YW2KThNcFp+AFxMbGoPe/r7Wo4OdBbs+P/Wm2jrgwav1wCQ8CExo9WFNK1
-	YN90C3rz5Mp6gGOd5Fpqpiw+w9e0RsGcXXDtDWrrpicOIgbHvsIpHIEN/G9U/4ldLsod
-	FUMbeSehF7jfgCy10l+nD8hmUwisGBg0PqlTFceKqGTIoa038OR+AdXudES4dc0XlBIW
-	yOk/KRYch2eJIqnSfotV2fYbTbxtTVFwRbzZihLFXrBc9VMQ6xViXGuj7mGFwEFtNLwv
-	dREHZ4xaOvLurYMKVakRpQpR0EGOWc65noWhrzXGMowUH/PuidkCPH+r95o+Wbi65WW3
-	l0lA==
-Received: by 10.216.226.218 with SMTP id b68mr774058weq.167.1340356558382;
-	Fri, 22 Jun 2012 02:15:58 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id
-	gv7sm50972744wib.4.2012.06.22.02.15.57
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 22 Jun 2012 02:15:57 -0700 (PDT)
-Date: Fri, 22 Jun 2012 10:15:55 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>
-Message-ID: <20120622091555.GF27038@stefanha-thinkpad.localdomain>
-References: <1340254284-20415-1-git-send-email-peter.crosthwaite@petalogix.com>
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=WZYxGhWD5s6163g4r8HcZe1zrV47LrbRelUdVvwr0/g=;
+	b=KeFjvlZ+fn5SHB20nobG2WpGuKOhmSE3lL1E8fYBz/hpw6sWoaduec4rutu3/9EVXS
+	lKl45cTn7jIH8P3DAEtu00JUL73ljRcrBJuaSe8tPFCD8tKpW6fctutWJfrNUQpTNoZa
+	YUu3GG9XAUkHRd9ZObCamv5Xxwqg77oFoir8fRwUwEk7V/nP8ZGEHpT5wkAiAqG3mC3L
+	TT7VxfH+wZpmNmPJbVFpNKp40CnECsCb2OQeTx5rhJGKaj2U1/p2dpfsfyBA+8Gm4m3l
+	igbUZh7MrkTZq4EsiIFPUhp3EidG6flztU8W8C8e4wCP+JXlwE6nqJEPonC6rfHupoCy
+	sfpg==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1340254284-20415-1-git-send-email-peter.crosthwaite@petalogix.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.152.135.200 with SMTP id pu8mr1458832lab.8.1340357445846; Fri,
+	22 Jun 2012 02:30:45 -0700 (PDT)
+Received: by 10.112.71.73 with HTTP; Fri, 22 Jun 2012 02:30:45 -0700 (PDT)
+In-Reply-To: <CAFEAcA82QdVH0vzQA8+SDJbBTkANLLEFAi1Z6DnK3Sf-=cyG6A@mail.gmail.com>
+References: <1340088278-8406-1-git-send-email-peter.crosthwaite@petalogix.com>
+	<20120622090331.GB27038@stefanha-thinkpad.localdomain>
+	<CAFEAcA82QdVH0vzQA8+SDJbBTkANLLEFAi1Z6DnK3Sf-=cyG6A@mail.gmail.com>
+Date: Fri, 22 Jun 2012 10:30:45 +0100
+Message-ID: <CAJSP0QUGO2OtKW5v71gP9FGoJUUyKu_ii46frsHKVTP-MvXmOA@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com, qemu-devel@nongnu.org,
-	john.williams@petalogix.com
-Subject: Re: [Qemu-trivial] [PATCH v1] device_tree: load_device_tree():
- Allow NULL sizep
+X-Received-From: 209.85.217.173
+Cc: "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>,
+	qemu-trivial@nongnu.org, Jim Meyering <meyering@redhat.com>,
+	"Peter A. G. Crosthwaite" <peter.croshtwaite@petalogix.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] cadence_gem: Avoid
+ stack-writing buffer-overrun
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,22 +57,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2012 09:16:26 -0000
+X-List-Received-Date: Fri, 22 Jun 2012 09:31:09 -0000
 
-On Thu, Jun 21, 2012 at 02:51:24PM +1000, Peter A. G. Crosthwaite wrote:
-> The sizep arg is populated with the size of the loaded device tree. Since this
-> is one of those informational "please populate" type arguments it should be
-> optional. Guarded writes to *sizep against NULL accordingly.
-> 
-> Signed-off-by: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
-> ---
->  device_tree.c |    8 ++++++--
->  1 files changed, 6 insertions(+), 2 deletions(-)
+On Fri, Jun 22, 2012 at 10:09 AM, Peter Maydell
+<peter.maydell@linaro.org> wrote:
+> On 22 June 2012 10:03, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+>> On Tue, Jun 19, 2012 at 04:44:38PM +1000, Peter A. G. Crosthwaite wrote:
+>>> From: Jim Meyering <meyering@redhat.com>
+>>>
+>>> Use sizeof(rxbuf)-size (not sizeof(rxbuf-size)) as the number
+>>> of bytes to clear.
+>
+>> Thanks, applied to the trivial patches tree:
+>> https://github.com/stefanha/qemu/commits/trivial-patches
+>
+> This patch is already in an outstanding arm-devs pullreq (possibly
+> due to confusion on my part); it would probably be better not to
+> put it in the trivial-patches tree I guess.
 
-Can someone who knows device trees review this?
-
-All current users need the size in order to copy the fdt into guest
-memory.  Why should the size argument be optional?
+Okay, I've dropped it.
 
 Stefan
 
