@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ShzsL-00030n-U1
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2012 05:09:57 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:32857)
+	id 1Shzsf-0003nP-Fp
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2012 05:10:17 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:32910)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ShzsJ-00030b-Bo
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2012 05:09:57 -0400
+	(envelope-from <stefanha@gmail.com>) id 1ShzsY-0003Tq-ER
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2012 05:10:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ShzsD-0000ET-BF
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2012 05:09:54 -0400
-Received: from mail-gh0-f173.google.com ([209.85.160.173]:61554)
+	(envelope-from <stefanha@gmail.com>) id 1ShzsQ-0000Xl-Ll
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2012 05:10:09 -0400
+Received: from mail-wg0-f41.google.com ([74.125.82.41]:42588)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ShzsD-0000EC-6i
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2012 05:09:49 -0400
-Received: by ghrr14 with SMTP id r14so1422827ghr.4
-	for <qemu-trivial@nongnu.org>; Fri, 22 Jun 2012 02:09:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=h7z87BLBzeuLm46wC3KnRg9Ow5CbdpoL4L4ZfTYNtAI=;
-	b=nxj7lBpaMwYfbVg7LHUKRAK8lNbW/3u4i6v3ScGmCv4hae8K0DG4QeCTzQHgZVNhuY
-	lGv/ufJsQdp1bke6ZWamCMYtKYnMOM8CSFTmkTmwWVV/+phlM7gOxgs3W90fOy49U+Ot
-	h7ikmVKtnH18XDL9qkB85zOpKDcmUaLqvErjs0UnYvplakI1bcDbCKSvQBtZVhUR594v
-	UwrU2wV2Y3xXWsJSakEkLeb/+AXuzusXnw4owfBNbrJ5rF4TkyU7o4po+yR60XpnUVi1
-	4ECTicH/QYOv/qQdWZd+ddsKwHEpvzvMO2gO+KzFPUDMmWF0A6iBvxRhUSz4LlmV5/CV
-	ueaQ==
+	(envelope-from <stefanha@gmail.com>)
+	id 1ShzsQ-0000TM-DY; Fri, 22 Jun 2012 05:10:02 -0400
+Received: by wgbds1 with SMTP id ds1so509310wgb.4
+	for <multiple recipients>; Fri, 22 Jun 2012 02:09:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=xw+6QdVocDRotTCmUxNoaVrrBkHGKmCrvG6+cvKwDTs=;
+	b=U+lnMH2697CTgX3QA3FMZ1DFNYwND8fQSlkPFYJk8ZZ12p0+gXpcZFcKvXMIWQ3ZUv
+	tjE2jU+SgLT3xL8ISR/Wa+Q42w1a4kpFxokQ8gJEvMlXYr8o2MR1udxzIh0ZjbMDiS6p
+	iIRW+atf/4uCDpv8nRQe0odZqNlqWO89xlfDFANL0nd8sLH2sRYRkaezEpZrEWspXevi
+	yKLsNUbOtRzcPIOjVZk9N5O+nlXim8V++Xzk9VlVkyvgU+3EtQzg/6J82BMHECOdgOlW
+	VP6O0z4NbScSDuqnWDaYIDwMVhGEenWqxhUJplkBCFoimwcY91CNk2TNqV+5PG2XbaCl
+	QaBQ==
+Received: by 10.181.13.142 with SMTP id ey14mr3501553wid.19.1340356196512;
+	Fri, 22 Jun 2012 02:09:56 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
+	by mx.google.com with ESMTPS id n6sm98419063wie.7.2012.06.22.02.09.55
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 22 Jun 2012 02:09:56 -0700 (PDT)
+Date: Fri, 22 Jun 2012 10:09:54 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120622090954.GE27038@stefanha-thinkpad.localdomain>
+References: <1340208444-14440-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Received: by 10.60.14.68 with SMTP id n4mr1128233oec.24.1340356187203; Fri, 22
-	Jun 2012 02:09:47 -0700 (PDT)
-Received: by 10.182.179.67 with HTTP; Fri, 22 Jun 2012 02:09:47 -0700 (PDT)
-In-Reply-To: <20120622090331.GB27038@stefanha-thinkpad.localdomain>
-References: <1340088278-8406-1-git-send-email-peter.crosthwaite@petalogix.com>
-	<20120622090331.GB27038@stefanha-thinkpad.localdomain>
-Date: Fri, 22 Jun 2012 10:09:47 +0100
-Message-ID: <CAFEAcA82QdVH0vzQA8+SDJbBTkANLLEFAi1Z6DnK3Sf-=cyG6A@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQk1T6zWrUUqibEx59kmmxzLyrUtdNEtTFmT3fK9GIn+LXvcfQeRHoB6LEmqLv51CF/mziPi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1340208444-14440-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.160.173
-Cc: "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>,
-	qemu-trivial@nongnu.org, Jim Meyering <meyering@redhat.com>,
-	"Peter A. G. Crosthwaite" <peter.croshtwaite@petalogix.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] cadence_gem: Avoid
- stack-writing buffer-overrun
+X-Received-From: 74.125.82.41
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tci: Support
+	INDEX_op_bswap64_i64
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,22 +57,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2012 09:09:57 -0000
+X-List-Received-Date: Fri, 22 Jun 2012 09:10:16 -0000
 
-On 22 June 2012 10:03, Stefan Hajnoczi <stefanha@gmail.com> wrote:
-> On Tue, Jun 19, 2012 at 04:44:38PM +1000, Peter A. G. Crosthwaite wrote:
->> From: Jim Meyering <meyering@redhat.com>
->>
->> Use sizeof(rxbuf)-size (not sizeof(rxbuf-size)) as the number
->> of bytes to clear.
+On Wed, Jun 20, 2012 at 06:07:24PM +0200, Stefan Weil wrote:
+> Running the Windows 7 (64 bit) boot process needs INDEX_op_bswap64_i64.
+> It was already implemented, but untested. Remove the TODO() statement.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  tci.c |    1 -
+>  1 file changed, 1 deletion(-)
 
-> Thanks, applied to the trivial patches tree:
-> https://github.com/stefanha/qemu/commits/trivial-patches
+If you weren't TCI maintainer I would ask for this patch to go through
+your tree because I don't touch TCG and this is declaring an operation
+supported, which the maintainer needs to be okay with.  Anyway, this is
+fine since it's coming from you.
 
-This patch is already in an outstanding arm-devs pullreq (possibly
-due to confusion on my part); it would probably be better not to
-put it in the trivial-patches tree I guess.
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-thanks and sorry for the confusion
--- PMM
+Stefan
 
