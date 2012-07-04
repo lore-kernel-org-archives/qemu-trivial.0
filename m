@@ -1,31 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SmMYG-00067d-Qo
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Jul 2012 06:11:16 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:59935)
+	id 1SmV0G-0006Ml-27
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Jul 2012 15:12:44 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:33503)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hare@suse.de>) id 1SmMQ8-0003Lt-5B
-	for qemu-trivial@nongnu.org; Wed, 04 Jul 2012 06:02:57 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1SmV0D-0006CG-33
+	for qemu-trivial@nongnu.org; Wed, 04 Jul 2012 15:12:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hare@suse.de>) id 1SmMPz-0004C4-UQ
-	for qemu-trivial@nongnu.org; Wed, 04 Jul 2012 06:02:51 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:54288 helo=mx2.suse.de)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <hare@suse.de>)
-	id 1SmMPm-0004A0-Ma; Wed, 04 Jul 2012 06:02:30 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 53ED6A538E;
-	Wed,  4 Jul 2012 12:02:29 +0200 (CEST)
-From: Hannes Reinecke <hare@suse.de>
-To: qemu-trivial@nongnu.org
-Date: Wed,  4 Jul 2012 12:02:25 +0200
-Message-Id: <1341396145-31338-1-git-send-email-hare@suse.de>
-X-Mailer: git-send-email 1.7.3.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	Hannes Reinecke <hare@suse.de>
-Subject: [Qemu-trivial] [PATCH] MAINTAINERS: mark megasas as maintained
+	(envelope-from <ehabkost@redhat.com>) id 1SmV0B-0007wv-FF
+	for qemu-trivial@nongnu.org; Wed, 04 Jul 2012 15:12:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:22774)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>)
+	id 1SmV08-0007wK-Bj; Wed, 04 Jul 2012 15:12:36 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q64JA3vf018953
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 4 Jul 2012 15:10:03 -0400
+Received: from blackpad.lan.raisama.net (vpn1-4-145.gru2.redhat.com
+	[10.97.4.145])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q64JA2Tl026299; Wed, 4 Jul 2012 15:10:02 -0400
+Received: by blackpad.lan.raisama.net (Postfix, from userid 500)
+	id EDEBE20053A; Wed,  4 Jul 2012 16:10:53 -0300 (BRT)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed,  4 Jul 2012 16:10:47 -0300
+Message-Id: <1341429047-17470-1-git-send-email-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH RESEND] .gitignore update
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,35 +44,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Jul 2012 10:11:15 -0000
+X-List-Received-Date: Wed, 04 Jul 2012 19:12:42 -0000
 
-Add maintainers entry for megasas.
-Patch is on top of Paolo's scsi-next tree.
+Makes sure the following files are ignored:
 
-Signed-off-by: Hannes Reinecke <hare@suse.de>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
+  libcacard/.libs/
+  libcacard/libcacard.la
+  libcacard/libcacard.pc
+  libcacard/libcacard/
+  libcacard/osdep.lo
+  libcacard/oslib-posix.lo
+  libcacard/qemu-thread-posix.lo
+  libcacard/qemu-timer-common.lo
+  libcacard/trace.lo
+  libcacard/trace/
+  tests/test-visitor-serialization
+  vscclient
+
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- MAINTAINERS |    6 ++++++
- 1 files changed, 6 insertions(+), 0 deletions(-)
+ .gitignore |    6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 2a514fd..e67c84f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -449,6 +449,12 @@ M: Paul Brook <paul@codesourcery.com>
- S: Odd Fixes
- F: hw/lsi53c895a.c
- 
-+MEGASAS
-+M: Hannes Reinecke <hare@suse.de>
-+S: Maintained
-+F: hw/megasas.c
-+F: hw/mfi.h
-+
- USB
- M: Gerd Hoffmann <kraxel@redhat.com>
- S: Maintained
+diff --git a/.gitignore b/.gitignore
+index 9859c7d..824c0d2 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -41,12 +41,14 @@ qemu-io
+ qemu-ga
+ qemu-bridge-helper
+ qemu-monitor.texi
++vscclient
+ QMP/qmp-commands.txt
+ test-coroutine
+ test-qmp-input-visitor
+ test-qmp-output-visitor
+ test-string-input-visitor
+ test-string-output-visitor
++test-visitor-serialization
+ fsdev/virtfs-proxy-helper.1
+ fsdev/virtfs-proxy-helper.pod
+ .gdbinit
+@@ -69,6 +71,10 @@ fsdev/virtfs-proxy-helper.pod
+ *.vr
+ *.d
+ *.o
++*.lo
++*.la
++*.pc
++.libs
+ *.swp
+ *.orig
+ .pc
 -- 
-1.7.3.4
+1.7.10.4
 
 
