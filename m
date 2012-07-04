@@ -1,52 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SlcfG-00084w-O0
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jul 2012 05:11:26 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54908)
+	id 1SmMQ0-0003Lo-3p
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Jul 2012 06:02:44 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:59883)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SlcfA-0007lN-DP
-	for qemu-trivial@nongnu.org; Mon, 02 Jul 2012 05:11:25 -0400
+	(envelope-from <hare@suse.de>) id 1SmMPo-0002y9-Mj
+	for qemu-trivial@nongnu.org; Wed, 04 Jul 2012 06:02:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Slcf3-0007PR-Q7
-	for qemu-trivial@nongnu.org; Mon, 02 Jul 2012 05:11:19 -0400
-Received: from mail-ee0-f45.google.com ([74.125.83.45]:47950)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1Slcer-0007Jm-Nr; Mon, 02 Jul 2012 05:11:01 -0400
-Received: by eekd41 with SMTP id d41so2909310eek.4
-	for <multiple recipients>; Mon, 02 Jul 2012 02:10:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=rIaJvwSB4yrQfIO4PmuAIGBzVWLH4JGx+11JgFgU7ro=;
-	b=VPjy7cmbg/8kEQGp1lUFA7SNL15EEBMdbPqQnO3hkdEndhSBWtpUZP0dyFjjJ0ulq6
-	jNXQrhaLGNno5xDTH4WkB/DV75GUIHMlpzCPCMy+HX3g0PWJ/TRfG16vby2aFIyr9eHj
-	M7wGy6XxdNNvVeWy1Zk9cxGO6bdd4HSXAG4ggRMYuc1N6xVr73u1CwkMMOPdgRrEMxXR
-	WBorPiN7ec8MsbXf2XbPGAxD9I73ooTiu0VvuGNZm9iigokXHYeC2sd3UZkbdEcB1NWK
-	ACGnSjnSW6okPQjoDxolYZmFK8JeoiDWXGPMAsueXwuT3oTMa1yKy4kVrV6UusfrBJGd
-	9lvA==
-Received: by 10.14.100.71 with SMTP id y47mr2860917eef.190.1341220259033;
-	Mon, 02 Jul 2012 02:10:59 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id
-	t3sm32664628eeb.15.2012.07.02.02.10.58
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 02 Jul 2012 02:10:58 -0700 (PDT)
-Date: Mon, 2 Jul 2012 10:10:56 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120702091056.GB25781@stefanha-thinkpad.localdomain>
-References: <1340898997-15820-1-git-send-email-sw@weilnetz.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1340898997-15820-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 74.125.83.45
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Remove help for
- --disable-vnc-thread, --enable-vnc-thread
+	(envelope-from <hare@suse.de>) id 1SmMPk-00049v-1r
+	for qemu-trivial@nongnu.org; Wed, 04 Jul 2012 06:02:32 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:54237 helo=mx2.suse.de)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <hare@suse.de>)
+	id 1SmMPX-00048f-Rt; Wed, 04 Jul 2012 06:02:15 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id A938FA538E;
+	Wed,  4 Jul 2012 12:02:13 +0200 (CEST)
+From: Hannes Reinecke <hare@suse.de>
+To: qemu-trivial@nongnu.org
+Date: Wed,  4 Jul 2012 12:02:07 +0200
+Message-Id: <1341396127-31269-1-git-send-email-hare@suse.de>
+X-Mailer: git-send-email 1.7.3.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: Blue Swirl <blauwirbel@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org, Hannes Reinecke <hare@suse.de>
+Subject: [Qemu-trivial] [PATCH] megasas: mark mfi_frame_desc as 'static'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,19 +37,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jul 2012 09:11:26 -0000
+X-List-Received-Date: Wed, 04 Jul 2012 10:02:42 -0000
 
-On Thu, Jun 28, 2012 at 05:56:37PM +0200, Stefan Weil wrote:
-> Commit 2624bab836662d37f08336408a99d97652fc9c4d removed these
-> configure arguments. Now the help text for both is removed, too.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  configure |    2 --
->  1 file changed, 2 deletions(-)
+Suggested by blue swirl. Patch is on top of Paolo's
+scsi-next tree.
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Signed-off-by: Hannes Reinecke <hare@suse.de>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Blue Swirl <blauwirbel@gmail.com>
+---
+ hw/megasas.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Stefan
+diff --git a/hw/megasas.c b/hw/megasas.c
+index b48836f..b99fa97 100644
+--- a/hw/megasas.c
++++ b/hw/megasas.c
+@@ -45,7 +45,7 @@
+ #define MEGASAS_FLAG_USE_QUEUE64   2
+ #define MEGASAS_MASK_USE_QUEUE64   (1 << MEGASAS_FLAG_USE_QUEUE64)
+ 
+-const char *mfi_frame_desc[] = {
++static const char *mfi_frame_desc[] = {
+     "MFI init", "LD Read", "LD Write", "LD SCSI", "PD SCSI",
+     "MFI Doorbell", "MFI Abort", "MFI SMP", "MFI Stop"};
+ 
+-- 
+1.7.3.4
+
 
