@@ -1,38 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Sny8l-0004k3-7X
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Jul 2012 16:31:35 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49672)
+	id 1SnyY0-0000gb-5u
+	for mharc-qemu-trivial@gnu.org; Sun, 08 Jul 2012 16:57:40 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44468)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Sny8g-0004YM-RH
-	for qemu-trivial@nongnu.org; Sun, 08 Jul 2012 16:31:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1SnyXx-0000ek-Ca
+	for qemu-trivial@nongnu.org; Sun, 08 Jul 2012 16:57:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Sny8f-0001fk-8e
-	for qemu-trivial@nongnu.org; Sun, 08 Jul 2012 16:31:30 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41390)
+	(envelope-from <peter.maydell@linaro.org>) id 1SnyXt-00074J-Pv
+	for qemu-trivial@nongnu.org; Sun, 08 Jul 2012 16:57:36 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:63104)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1Sny8b-0001dI-JG; Sun, 08 Jul 2012 16:31:25 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	A7B9D72800C0; Sun,  8 Jul 2012 22:31:22 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 5jQDASxY3kvF; Sun,  8 Jul 2012 22:31:22 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 224E872800C1; Sun,  8 Jul 2012 22:31:22 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Sun,  8 Jul 2012 22:31:21 +0200
-Message-Id: <1341779481-24690-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10
+	(envelope-from <peter.maydell@linaro.org>) id 1SnyXt-000741-J5
+	for qemu-trivial@nongnu.org; Sun, 08 Jul 2012 16:57:33 -0400
+Received: by bkcji1 with SMTP id ji1so1834094bkc.4
+	for <qemu-trivial@nongnu.org>; Sun, 08 Jul 2012 13:57:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=zNyaveTLLJob21n1maV9eQ9TqQupLq+hAsW66+flics=;
+	b=G5Sfn91KmwvhOxTwJWXW7+b8Ijffab3VaEl2hPo/OZF1YT8/ABBkfCrH+DA+cSwsAw
+	YFsq0NHty4IKOIWDPL1ic2US/doTMFS6OEqqD0MMQiLTuOEBSeIxC6WcHd9hYQG2N8RA
+	q3JtPKI9ZR4Y6poX4ohTveGUqswraVT7frYZongUMMdz2wEmjQegX1y/ld+Rzl5g/mSg
+	7KgR5c58jQSkP1wQPAZ7F/e9Mc/Yg/16lPIqZQgFNKUp+PuW1t9CUXvyxv8K6hn7jwqH
+	rz3AKU3Lp6Qm67HFyBExE1IFIhll3TY/5NSKKKJpxNCtQtKN49gdJtsmTC/GgwXraUj+
+	vPRQ==
+MIME-Version: 1.0
+Received: by 10.204.157.143 with SMTP id b15mr5779302bkx.75.1341781050747;
+	Sun, 08 Jul 2012 13:57:30 -0700 (PDT)
+Received: by 10.205.83.10 with HTTP; Sun, 8 Jul 2012 13:57:30 -0700 (PDT)
+In-Reply-To: <1341779481-24690-1-git-send-email-sw@weilnetz.de>
+References: <1341779481-24690-1-git-send-email-sw@weilnetz.de>
+Date: Sun, 8 Jul 2012 21:57:30 +0100
+Message-ID: <CAFEAcA_V2_6w4hdbpsav0g2vDgSrd6kybCsVdBzgjCPnTo21=w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQmwseOHMbdwvIyt5f4KPDaYrv6vaNdNERoNu56ZMBvVdHpO2KBOC2UsfN/I84YplpStwD27
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] bitops: Fix documentation
+X-Received-From: 209.85.214.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] bitops: Fix documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,47 +53,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 Jul 2012 20:31:33 -0000
+X-List-Received-Date: Sun, 08 Jul 2012 20:57:38 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- bitops.h |    8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+On 8 July 2012 21:31, Stefan Weil <sw@weilnetz.de> wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-diff --git a/bitops.h b/bitops.h
-index b967ef3..c456232 100644
---- a/bitops.h
-+++ b/bitops.h
-@@ -319,8 +319,8 @@ static inline uint64_t extract64(uint64_t value, int start, int length)
-  * @value. Bits of @value outside the bit field are not modified.
-  * Bits of @fieldval above the least significant @length bits are
-  * ignored. The bit field must lie entirely within the 32 bit word.
-- * It is valid to request that all 64 bits are modified (ie @length
-- * 64 and @start 0).
-+ * It is valid to request that all 32 bits are modified (ie @length
-+ * 32 and @start 0).
-  *
-  * Returns: the modified @value.
-  */
-@@ -334,7 +334,7 @@ static inline uint32_t deposit32(uint32_t value, int start, int length,
- }
- 
- /**
-- * deposit32:
-+ * deposit64:
-  * @value: initial value to insert bit field into
-  * @start: the lowest bit in the bit field (numbered from 0)
-  * @length: the length of the bit field
-@@ -344,7 +344,7 @@ static inline uint32_t deposit32(uint32_t value, int start, int length,
-  * by the @start and @length parameters, and return the modified
-  * @value. Bits of @value outside the bit field are not modified.
-  * Bits of @fieldval above the least significant @length bits are
-- * ignored. The bit field must lie entirely within the 32 bit word.
-+ * ignored. The bit field must lie entirely within the 64 bit word.
-  * It is valid to request that all 64 bits are modified (ie @length
-  * 64 and @start 0).
-  *
--- 
-1.7.10
+Doh.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+-- PMM
 
