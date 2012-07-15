@@ -1,53 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SpGtl-0007OK-WD
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jul 2012 06:45:29 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:52503)
+	id 1SqUd7-0000fp-N9
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Jul 2012 15:37:21 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:33549)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SpGta-0007Ms-Nz
-	for qemu-trivial@nongnu.org; Thu, 12 Jul 2012 06:45:28 -0400
+	(envelope-from <lersek@redhat.com>) id 1SqUd5-0000Zf-6O
+	for qemu-trivial@nongnu.org; Sun, 15 Jul 2012 15:37:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SpGtU-0000Ln-0H
-	for qemu-trivial@nongnu.org; Thu, 12 Jul 2012 06:45:18 -0400
-Received: from mail-we0-f173.google.com ([74.125.82.173]:35063)
+	(envelope-from <lersek@redhat.com>) id 1SqUd4-0003GU-FH
+	for qemu-trivial@nongnu.org; Sun, 15 Jul 2012 15:37:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35693)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SpGtT-0000LJ-Ph; Thu, 12 Jul 2012 06:45:11 -0400
-Received: by weyz53 with SMTP id z53so1514960wey.4
-	for <multiple recipients>; Thu, 12 Jul 2012 03:45:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=EAbSLnol7GY2vSFlEgDKEXoJbOe8fRWxxit699LqO/A=;
-	b=TSXLahyLL/x8M1MPFPvzdievcl+WudelxQG3uNqpaG8yiRgUMSIx/wHEZ+ovU0JsXm
-	cVPOlZMY9h5yPPLQTJMueuiiVOVBTJVFSSS7k+a+ilnuKR/6Kc+uBAms/qTKbpZGEnTP
-	QlgrLkz0yUEupSmY6MRT+QjpMFb9+etzzBIHBd5khYTAhSIklaYwl1Bv7eKkFO6PV0J4
-	9UUvQa3C9kfyZFKakXDt6XjG8b037tLsrvPYogJ+3VBNJGkSxyEoWyDqHmRvM9AsF75s
-	agALEuP0iZwQVJc2kLVtGpUr4JJQk/A7A8w7Wu9BdoA2WLNf1S1gANowgbusjYZlSiyk
-	754g==
-Received: by 10.180.105.163 with SMTP id gn3mr54867202wib.2.1342089910877;
-	Thu, 12 Jul 2012 03:45:10 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id
-	k20sm11606542wiv.11.2012.07.12.03.45.09
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 12 Jul 2012 03:45:10 -0700 (PDT)
-Date: Thu, 12 Jul 2012 11:45:07 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Hannes Reinecke <hare@suse.de>
-Message-ID: <20120712104507.GB22719@stefanha-thinkpad.localdomain>
-References: <1341396145-31338-1-git-send-email-hare@suse.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1341396145-31338-1-git-send-email-hare@suse.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	(envelope-from <lersek@redhat.com>)
+	id 1SqUd2-0003GD-9u; Sun, 15 Jul 2012 15:37:16 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q6FJbEjb013716
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Sun, 15 Jul 2012 15:37:15 -0400
+Received: from lacos-laptop.usersys.redhat.com (vpn1-6-12.ams2.redhat.com
+	[10.36.6.12])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id q6FJbDxm014834; Sun, 15 Jul 2012 15:37:13 -0400
+From: Laszlo Ersek <lersek@redhat.com>
+To: agraf@suse.de, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	lersek@redhat.com
+Date: Sun, 15 Jul 2012 21:38:25 +0200
+Message-Id: <1342381105-20395-1-git-send-email-lersek@redhat.com>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: mark megasas
-	as maintained
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] configure: adapt vde test to -Werror
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,20 +42,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jul 2012 10:45:28 -0000
+X-List-Received-Date: Sun, 15 Jul 2012 19:37:20 -0000
 
-On Wed, Jul 04, 2012 at 12:02:25PM +0200, Hannes Reinecke wrote:
-> Add maintainers entry for megasas.
-> Patch is on top of Paolo's scsi-next tree.
-> 
-> Signed-off-by: Hannes Reinecke <hare@suse.de>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  MAINTAINERS |    6 ++++++
->  1 files changed, 6 insertions(+), 0 deletions(-)
+... after commit 417c9d72 ("configure: add -Werror to QEMU_CFLAGS early")
 
-Changing ./MAINTAINERS is never trivial.  Please go directly through
-qemu.git.
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+---
+ configure |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Stefan
+diff --git a/configure b/configure
+index 0a3896e..8a1b902 100755
+--- a/configure
++++ b/configure
+@@ -1819,7 +1819,7 @@ if test "$vde" != "no" ; then
+ int main(void)
+ {
+     struct vde_open_args a = {0, 0, 0};
+-    vde_open("", "", &a);
++    vde_open((char *)"", (char *)"", &a);
+     return 0;
+ }
+ EOF
+-- 
+1.7.1
+
 
