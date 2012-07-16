@@ -1,38 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Sqsyi-0005rS-6r
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jul 2012 17:37:16 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34813)
+	id 1Sqtiw-0002wK-Jz
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jul 2012 18:25:02 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:48641)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Sqsyf-0005l9-Od
-	for qemu-trivial@nongnu.org; Mon, 16 Jul 2012 17:37:14 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Sqtiu-0002vw-Iv
+	for qemu-trivial@nongnu.org; Mon, 16 Jul 2012 18:25:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Sqsyf-0000K1-0c
-	for qemu-trivial@nongnu.org; Mon, 16 Jul 2012 17:37:13 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:42181)
+	(envelope-from <peter.maydell@linaro.org>) id 1Sqtit-00051z-AK
+	for qemu-trivial@nongnu.org; Mon, 16 Jul 2012 18:25:00 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:61951)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1Sqsyc-0000Hl-3r; Mon, 16 Jul 2012 17:37:10 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	7A5EF728001A; Mon, 16 Jul 2012 23:37:08 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id mFUIvomLQMTc; Mon, 16 Jul 2012 23:37:07 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id E140C72800C1; Mon, 16 Jul 2012 23:37:07 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Mon, 16 Jul 2012 23:37:07 +0200
-Message-Id: <1342474627-27738-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10
+	(envelope-from <peter.maydell@linaro.org>) id 1Sqtit-00051o-4h
+	for qemu-trivial@nongnu.org; Mon, 16 Jul 2012 18:24:59 -0400
+Received: by bkcji1 with SMTP id ji1so4235487bkc.4
+	for <qemu-trivial@nongnu.org>; Mon, 16 Jul 2012 15:24:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=NigWuiO2oLxe1fLOLDcqHcXDk5LNfdqT1EQTecB8H78=;
+	b=WISc2Dav+3d3dMiYmrvu81UQ7NYXgoyGolVPcvgFGvguvWkvKB4Wa9WdJIF4qm/A2r
+	hY4YrhCQgP6LxfeMgoe8Rxdvx2oG6Lpw5UzjUCfkYaKt73y3hmvzxfhI0OlIOiZeV+C7
+	CTJ2HhQpQdCpQsC+sr30K03jqiW7DkwB/Wgr0L8dKrp4L6+jwLOqYxUcLhuLPiWg+IUl
+	VJ1o6YTuuVRrBySiCNwZluRhuruUKXYXlEHtbNUdqRlstn7LZyewuOgYLlY4JVwngxd4
+	iOoX85dx3LDrgeBVMw/ueq4iQx4zpSS57em8gkjmjjUHhoRR9uM6eyZxkxL+qXNNsfvX
+	nxYg==
+MIME-Version: 1.0
+Received: by 10.205.135.6 with SMTP id ie6mr5537927bkc.139.1342477497823; Mon,
+	16 Jul 2012 15:24:57 -0700 (PDT)
+Received: by 10.204.102.14 with HTTP; Mon, 16 Jul 2012 15:24:57 -0700 (PDT)
+In-Reply-To: <1342474627-27738-1-git-send-email-sw@weilnetz.de>
+References: <1342474627-27738-1-git-send-email-sw@weilnetz.de>
+Date: Mon, 16 Jul 2012 23:24:57 +0100
+Message-ID: <CAFEAcA91f9Nd7M94FN9gOaGn69YB39VdWbfriZAfHa5nhQ+x4w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQm9e2d51WxhjSbjinMSNpMm6uiQWS+yABsOt0xp8HSIKbXPOi90Y1+bUrQe9okW+/DFlntk
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] doc: Fix indefinite article an -> a before
-	nouns that begin with 'h'
+X-Received-From: 209.85.214.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] doc: Fix indefinite article
+ an -> a before nouns that begin with 'h'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,44 +54,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jul 2012 21:37:14 -0000
+X-List-Received-Date: Mon, 16 Jul 2012 22:25:01 -0000
 
-Although the rule also allows 'an' for historical reasons,
-'a' is more common because 'h' is pronounced.
+On 16 July 2012 22:37, Stefan Weil <sw@weilnetz.de> wrote:
+> Although the rule also allows 'an' for historical reasons,
+> 'a' is more common because 'h' is pronounced.
+>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- qemu-doc.texi  |    2 +-
- qemu-tech.texi |    2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/qemu-doc.texi b/qemu-doc.texi
-index 1f20621..4416043 100644
---- a/qemu-doc.texi
-+++ b/qemu-doc.texi
-@@ -78,7 +78,7 @@ to ease cross-compilation and cross-debugging.
- 
- @end itemize
- 
--QEMU can run without an host kernel driver and yet gives acceptable
-+QEMU can run without a host kernel driver and yet gives acceptable
- performance.
- 
- For system emulation, the following hardware targets are supported:
-diff --git a/qemu-tech.texi b/qemu-tech.texi
-index b51a58a..d73dda8 100644
---- a/qemu-tech.texi
-+++ b/qemu-tech.texi
-@@ -536,7 +536,7 @@ timers, especially together with the use of bottom halves (BHs).
- @node Hardware interrupts
- @section Hardware interrupts
- 
--In order to be faster, QEMU does not check at every basic block if an
-+In order to be faster, QEMU does not check at every basic block if a
- hardware interrupt is pending. Instead, the user must asynchronously
- call a specific function to tell that an interrupt is pending. This
- function resets the chaining of the currently executing basic
--- 
-1.7.10
-
+-- PMM
 
