@@ -1,48 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Sqtiw-0002wK-Jz
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jul 2012 18:25:02 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:48641)
+	id 1Sr8Db-0003xs-MN
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jul 2012 09:53:39 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:41736)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Sqtiu-0002vw-Iv
-	for qemu-trivial@nongnu.org; Mon, 16 Jul 2012 18:25:01 -0400
+	(envelope-from <kwolf@redhat.com>) id 1Sr8DS-0003W6-RJ
+	for qemu-trivial@nongnu.org; Tue, 17 Jul 2012 09:53:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Sqtit-00051z-AK
-	for qemu-trivial@nongnu.org; Mon, 16 Jul 2012 18:25:00 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:61951)
+	(envelope-from <kwolf@redhat.com>) id 1Sr8DN-0001JI-24
+	for qemu-trivial@nongnu.org; Tue, 17 Jul 2012 09:53:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38030)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Sqtit-00051o-4h
-	for qemu-trivial@nongnu.org; Mon, 16 Jul 2012 18:24:59 -0400
-Received: by bkcji1 with SMTP id ji1so4235487bkc.4
-	for <qemu-trivial@nongnu.org>; Mon, 16 Jul 2012 15:24:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=NigWuiO2oLxe1fLOLDcqHcXDk5LNfdqT1EQTecB8H78=;
-	b=WISc2Dav+3d3dMiYmrvu81UQ7NYXgoyGolVPcvgFGvguvWkvKB4Wa9WdJIF4qm/A2r
-	hY4YrhCQgP6LxfeMgoe8Rxdvx2oG6Lpw5UzjUCfkYaKt73y3hmvzxfhI0OlIOiZeV+C7
-	CTJ2HhQpQdCpQsC+sr30K03jqiW7DkwB/Wgr0L8dKrp4L6+jwLOqYxUcLhuLPiWg+IUl
-	VJ1o6YTuuVRrBySiCNwZluRhuruUKXYXlEHtbNUdqRlstn7LZyewuOgYLlY4JVwngxd4
-	iOoX85dx3LDrgeBVMw/ueq4iQx4zpSS57em8gkjmjjUHhoRR9uM6eyZxkxL+qXNNsfvX
-	nxYg==
+	(envelope-from <kwolf@redhat.com>)
+	id 1Sr8DA-0001Gy-Lx; Tue, 17 Jul 2012 09:53:12 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q6HDrA4O024119
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 17 Jul 2012 09:53:11 -0400
+Received: from dhcp-5-188.str.redhat.com (vpn1-6-35.ams2.redhat.com
+	[10.36.6.35])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id q6HDr8K7025396
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 17 Jul 2012 09:53:09 -0400
+Message-ID: <50056E43.1060106@redhat.com>
+Date: Tue, 17 Jul 2012 15:53:07 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:13.0) Gecko/20120605 Thunderbird/13.0
 MIME-Version: 1.0
-Received: by 10.205.135.6 with SMTP id ie6mr5537927bkc.139.1342477497823; Mon,
-	16 Jul 2012 15:24:57 -0700 (PDT)
-Received: by 10.204.102.14 with HTTP; Mon, 16 Jul 2012 15:24:57 -0700 (PDT)
-In-Reply-To: <1342474627-27738-1-git-send-email-sw@weilnetz.de>
-References: <1342474627-27738-1-git-send-email-sw@weilnetz.de>
-Date: Mon, 16 Jul 2012 23:24:57 +0100
-Message-ID: <CAFEAcA91f9Nd7M94FN9gOaGn69YB39VdWbfriZAfHa5nhQ+x4w@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQm9e2d51WxhjSbjinMSNpMm6uiQWS+yABsOt0xp8HSIKbXPOi90Y1+bUrQe9okW+/DFlntk
+To: Pavel Hrdina <phrdina@redhat.com>
+References: <3d1ec0fd89b439e704cc1f6d2e7b841a64cecb47.1342436496.git.minovotn@redhat.com>
+In-Reply-To: <3d1ec0fd89b439e704cc1f6d2e7b841a64cecb47.1342436496.git.minovotn@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] doc: Fix indefinite article
- an -> a before nouns that begin with 'h'
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Michal Novotny <minovotn@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-options.hx: Fix
+ set_password and expire_password description
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,15 +53,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jul 2012 22:25:01 -0000
+X-List-Received-Date: Tue, 17 Jul 2012 13:53:37 -0000
 
-On 16 July 2012 22:37, Stefan Weil <sw@weilnetz.de> wrote:
-> Although the rule also allows 'an' for historical reasons,
-> 'a' is more common because 'h' is pronounced.
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Am 16.07.2012 15:19, schrieb Pavel Hrdina:
+> From: Michal Novotny <minovotn@redhat.com>
+> 
+> The description for set_password and expire_password commands is
+> incomplete. This patch fixes the man page that is being generated
+> to match the real behaviour of these functions.
+> 
+> Signed-off-by: Michal Novotny <minovotn@redhat.com>
+> ---
+>  qemu-options.hx |   17 +++++++++++++++--
+>  1 file changed, 15 insertions(+), 2 deletions(-)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This one probably qualifies for qemu-trivial, copied the list.
 
--- PMM
+Kevin
+
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index ecf7ca1..679e3ca 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1030,8 +1030,21 @@ is a TCP port number, not a display number.
+>  @item password
+>  
+>  Require that password based authentication is used for client connections.
+> -The password must be set separately using the @code{change} command in the
+> -@ref{pcsys_monitor}
+> +
+> +The password must be set separately using the @code{set_password} command in
+> +the @ref{pcsys_monitor}. The syntax to change your password is:
+> +@code{set_password <protocol> <password>} where <protocol> could be either
+> +"vnc" or "spice".
+> +
+> +If you would like to change <protocol> password expiration, you should use
+> +@code{expire_password <protocol> <expiration-time>} where expiration time could
+> +be one of the following options: now, never, +seconds or UNIX time of
+> +expiration, e.g. +60 to make password expire in 60 seconds, or 1335196800
+> +to make password expire on "Mon Apr 23 12:00:00 EDT 2012" (UNIX time for this
+> +date and time).
+> +
+> +You can also use keywords "now" or "never" for the expiration time to
+> +allow <protocol> password to expire immediately or never expire.
+>  
+>  @item tls
+>  
 
