@@ -1,45 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SrWNS-0004Bc-5H
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Jul 2012 11:41:26 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34537)
+	id 1SrWOE-00058Y-2Q
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Jul 2012 11:42:14 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34841)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1SrWNK-00045g-Ak
-	for qemu-trivial@nongnu.org; Wed, 18 Jul 2012 11:41:23 -0400
+	(envelope-from <agraf@suse.de>) id 1SrWOC-00055j-40
+	for qemu-trivial@nongnu.org; Wed, 18 Jul 2012 11:42:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1SrWNC-0002KY-Kh
-	for qemu-trivial@nongnu.org; Wed, 18 Jul 2012 11:41:18 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:34063)
+	(envelope-from <agraf@suse.de>) id 1SrWO2-0002TY-JH
+	for qemu-trivial@nongnu.org; Wed, 18 Jul 2012 11:42:12 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:39154 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1SrWMl-0002Gd-5r; Wed, 18 Jul 2012 11:40:43 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	16AF772800C8; Wed, 18 Jul 2012 17:40:42 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id kjqPfwAzmmgg; Wed, 18 Jul 2012 17:40:41 +0200 (CEST)
-Received: from [192.168.178.20] (p5086F660.dip.t-dialin.net [80.134.246.96])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	1EA8D728001A; Wed, 18 Jul 2012 17:40:41 +0200 (CEST)
-Message-ID: <5006D8F8.5050306@weilnetz.de>
-Date: Wed, 18 Jul 2012 17:40:40 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:13.0) Gecko/20120615 Thunderbird/13.0.1
+	(envelope-from <agraf@suse.de>)
+	id 1SrWNk-0002Pu-PK; Wed, 18 Jul 2012 11:41:44 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 5D75AA329D;
+	Wed, 18 Jul 2012 17:41:41 +0200 (CEST)
+Message-ID: <5006D930.8080205@suse.de>
+Date: Wed, 18 Jul 2012 17:41:36 +0200
+From: Alexander Graf <agraf@suse.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:13.0) Gecko/20120614 Thunderbird/13.0.1
 MIME-Version: 1.0
-To: Alexey Kardashevskiy <aik@ozlabs.ru>
+To: Stefan Weil <sw@weilnetz.de>
 References: <1342599771-13844-1-git-send-email-aik@ozlabs.ru>
-In-Reply-To: <1342599771-13844-1-git-send-email-aik@ozlabs.ru>
+	<5006D8F8.5050306@weilnetz.de>
+In-Reply-To: <5006D8F8.5050306@weilnetz.de>
 Content-Type: text/plain; charset=ISO-8859-15; format=flowed
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>,
+	qemu-trivial <qemu-trivial@nongnu.org>, qemu-ppc@nongnu.org,
+	qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] powerpc pci: fixed packing
 	of ranges[]
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,41 +47,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jul 2012 15:41:24 -0000
+X-List-Received-Date: Wed, 18 Jul 2012 15:42:13 -0000
 
-Am 18.07.2012 10:22, schrieb Alexey Kardashevskiy:
-> By default mingw-gcc is trying to pack structures the way to
-> preserve binary compatibility with MS Visual C what leads to
-> incorrect and unexpected padding in the PCI bus ranges property of
-> the sPAPR PHB.
+On 07/18/2012 05:40 PM, Stefan Weil wrote:
+> Am 18.07.2012 10:22, schrieb Alexey Kardashevskiy:
+>> By default mingw-gcc is trying to pack structures the way to
+>> preserve binary compatibility with MS Visual C what leads to
+>> incorrect and unexpected padding in the PCI bus ranges property of
+>> the sPAPR PHB.
+>>
+>> The patch replaces __attribute__((packed)) with more strict QEMU_PACKED
+>> which actually is __attribute__((gcc_struct, packed)) on Windows.
+>>
+>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+>> ---
+>>   hw/spapr_pci.c |    2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/spapr_pci.c b/hw/spapr_pci.c
+>> index b3032d2..0261d2e 100644
+>> --- a/hw/spapr_pci.c
+>> +++ b/hw/spapr_pci.c
+>> @@ -418,7 +418,7 @@ int spapr_populate_pci_dt(sPAPRPHBState *phb,
+>>           uint64_t child;
+>>           uint64_t parent;
+>>           uint64_t size;
+>> -    } __attribute__((packed)) ranges[] = {
+>> +    } QEMU_PACKED ranges[] = {
+>>           {
+>>               cpu_to_be32(b_ss(1)), cpu_to_be64(0),
+>>               cpu_to_be64(phb->io_win_addr),
 >
-> The patch replaces __attribute__((packed)) with more strict QEMU_PACKED
-> which actually is __attribute__((gcc_struct, packed)) on Windows.
 >
-> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
-> ---
->   hw/spapr_pci.c |    2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> The patch changes sizeof(ranges[0]) from 32 to 28 bytes
+> and can be applied as a trivial patch.
 >
-> diff --git a/hw/spapr_pci.c b/hw/spapr_pci.c
-> index b3032d2..0261d2e 100644
-> --- a/hw/spapr_pci.c
-> +++ b/hw/spapr_pci.c
-> @@ -418,7 +418,7 @@ int spapr_populate_pci_dt(sPAPRPHBState *phb,
->           uint64_t child;
->           uint64_t parent;
->           uint64_t size;
-> -    } __attribute__((packed)) ranges[] = {
-> +    } QEMU_PACKED ranges[] = {
->           {
->               cpu_to_be32(b_ss(1)), cpu_to_be64(0),
->               cpu_to_be64(phb->io_win_addr),
+> Tested-by: Stefan Weil <sw@weilnetz.de>
+> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+>
+
+So do you want to take it through the trivial queue? I'm fine either way.
+
+Acked-by: Alexander Graf <agraf@suse.de>
 
 
-The patch changes sizeof(ranges[0]) from 32 to 28 bytes
-and can be applied as a trivial patch.
-
-Tested-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Alex
 
 
