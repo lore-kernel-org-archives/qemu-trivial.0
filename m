@@ -1,39 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Srt7A-0002GW-JO
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Jul 2012 11:58:08 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:37462)
+	id 1SrtRS-00021J-3a
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Jul 2012 12:19:06 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:57797)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1Srt71-0002Fw-9b
-	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 11:58:06 -0400
+	(envelope-from <av1474@comtv.ru>) id 1SrtRL-0001zg-2P
+	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 12:19:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1Srt70-0000XF-9T
-	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 11:57:59 -0400
-Received: from goliath.siemens.de ([192.35.17.28]:19765)
+	(envelope-from <av1474@comtv.ru>) id 1SrtRF-0007gE-94
+	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 12:18:59 -0400
+Received: from fe01x03-cgp.akado.ru ([77.232.31.164]:63720 helo=akado.ru)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>)
-	id 1Srt6z-0000Wk-Vp; Thu, 19 Jul 2012 11:57:58 -0400
-Received: from mail1.siemens.de (localhost [127.0.0.1])
-	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id q6JFvpj3010144;
-	Thu, 19 Jul 2012 17:57:51 +0200
-Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
-	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q6JFvpaC026603;
-	Thu, 19 Jul 2012 17:57:51 +0200
-Message-ID: <50082E7F.7030800@siemens.com>
-Date: Thu, 19 Jul 2012 17:57:51 +0200
-From: Jan Kiszka <jan.kiszka@siemens.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <av1474@comtv.ru>)
+	id 1SrtRF-0007fm-19; Thu, 19 Jul 2012 12:18:53 -0400
+Received: from [10.0.66.9] ([10.0.66.9] verified)
+	by fe01-cgp.akado.ru (CommuniGate Pro SMTP 5.2.13)
+	with ESMTPS id 349191836; Thu, 19 Jul 2012 20:18:49 +0400
+Date: Thu, 19 Jul 2012 20:18:42 +0400 (MSK)
+From: malc <av1474@comtv.ru>
+X-X-Sender: malc@linmac
+To: Jan Kiszka <jan.kiszka@siemens.com>
+In-Reply-To: <50082E7F.7030800@siemens.com>
+Message-ID: <alpine.LNX.2.00.1207192018340.1477@linmac>
+References: <50082E7F.7030800@siemens.com>
+User-Agent: Alpine 2.00 (LNX 1167 2008-08-23)
 MIME-Version: 1.0
-To: qemu-trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
-	4)
-X-Received-From: 192.35.17.28
-Cc: malc <av1474@comtv.ru>, qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] audio: Make PC speaker audio card available
-	by default
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 77.232.31.164
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] audio: Make PC speaker audio card
+	available by default
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,28 +42,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Jul 2012 15:58:07 -0000
+X-List-Received-Date: Thu, 19 Jul 2012 16:19:04 -0000
 
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
----
- configure |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+On Thu, 19 Jul 2012, Jan Kiszka wrote:
 
-diff --git a/configure b/configure
-index 106209a..42adc8d 100755
---- a/configure
-+++ b/configure
-@@ -90,8 +90,8 @@ static="no"
- sparc_cpu=""
- cross_prefix=""
- audio_drv_list=""
--audio_card_list="ac97 es1370 sb16 hda"
--audio_possible_cards="ac97 es1370 sb16 cs4231a adlib gus hda"
-+audio_card_list="ac97 es1370 sb16 hda pcspk"
-+audio_possible_cards="ac97 es1370 sb16 cs4231a adlib gus hda pcspk"
- block_drv_whitelist=""
- host_cc="gcc"
- helper_cflags=""
+> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> ---
+>  configure |    4 ++--
+>  1 files changed, 2 insertions(+), 2 deletions(-)
+> 
+
+Applied, thanks.
+
 -- 
-1.7.3.4
+mailto:av1474@comtv.ru
 
