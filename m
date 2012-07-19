@@ -1,50 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SrXTE-0002Bd-5t
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Jul 2012 12:51:28 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:36588)
+	id 1Srt25-0000yt-Q4
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Jul 2012 11:52:53 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:59444)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1SrXT9-0002B9-5K
-	for qemu-trivial@nongnu.org; Wed, 18 Jul 2012 12:51:27 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1Srt20-0000hl-CQ
+	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 11:52:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1SrXT5-0006yG-DJ
-	for qemu-trivial@nongnu.org; Wed, 18 Jul 2012 12:51:23 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:47586)
+	(envelope-from <pm215@archaic.org.uk>) id 1Srt1u-0006vl-Hj
+	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 11:52:48 -0400
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:58786)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1SrXT5-0006xk-6E
-	for qemu-trivial@nongnu.org; Wed, 18 Jul 2012 12:51:19 -0400
-Received: by bkcji1 with SMTP id ji1so1474801bkc.4
-	for <qemu-trivial@nongnu.org>; Wed, 18 Jul 2012 09:51:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=SubpeuAqn2ru7ZLGqbBNJ0jaHsiEnJTYDkbr0gVU2Yc=;
-	b=DhfeY2y/Dg44Xs2J+0xKNaExKa0M0vtqSG75PYSO/cNdD7LwsTufKtcfhhMdQHER+5
-	JI+MMQK3M1g3WDyY7Z+OwxaxvNEr2VYd2S2KZU37oxro03j3a1JF+Us/Jo1uDeLM2Sjx
-	GnOGSERBmeKxbvXpN8yfbb06htzHDDjwNPa+4GGqSntT+nyUBo8NqozdhGwU4tAqAoQI
-	ji0kulmt4HONMIh5PqRaP8T0Dmue4HIYXxyRFqQ6fCi3FescE6FCC/qYm+agiFCrkv1s
-	3z/MLas4N1i8QsH26sAQ0qVNexqTNFiH2NGpG6KuwgoXRiVY9svq5SWCoIFYHb6pWL/M
-	A20g==
-MIME-Version: 1.0
-Received: by 10.204.157.135 with SMTP id b7mr2160928bkx.61.1342630277700; Wed,
-	18 Jul 2012 09:51:17 -0700 (PDT)
-Received: by 10.204.102.14 with HTTP; Wed, 18 Jul 2012 09:51:17 -0700 (PDT)
-In-Reply-To: <5006E77F.8030602@weilnetz.de>
-References: <1342627957-31682-1-git-send-email-sw@weilnetz.de>
-	<CAFEAcA-Cg7HOU3okDFUOdD9iG3z4gYKQovoNoFRibVV-1_E3Mw@mail.gmail.com>
-	<5006E77F.8030602@weilnetz.de>
-Date: Wed, 18 Jul 2012 17:51:17 +0100
-Message-ID: <CAFEAcA8dJ_vY=0=MZpQh8mQrvpDqWQKPj3hbo=Dbv4mDUnquCw@mail.gmail.com>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Srt1o-0006uo-ID; Thu, 19 Jul 2012 11:52:36 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Srt1f-0003q0-3u; Thu, 19 Jul 2012 16:52:27 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQlw/Y6ByuwjyXMzSCPgmV03Cuu/1w+P1FinL0LBP7eMkVA8Fr9/rZ70lqpoe2ZZBCZN6kSz
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Use macro QEMU_PACKED for
-	new packed structures
+To: qemu-devel@nongnu.org
+Date: Thu, 19 Jul 2012 16:52:27 +0100
+Message-Id: <1342713147-14729-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] cpus.c: Make all_cpu_threads_idle() static
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,37 +36,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jul 2012 16:51:27 -0000
+X-List-Received-Date: Thu, 19 Jul 2012 15:52:52 -0000
 
-On 18 July 2012 17:42, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 18.07.2012 18:33, schrieb Peter Maydell:
->> On 18 July 2012 17:12, Stefan Weil <sw@weilnetz.de> wrote:
->>> Since commit 541dc0d47f10973c241e9955afc2aefc96adec51,
->>> some new packed structures were added without using QEMU_PACKED.
->>>
->>> QEMU_PACKED is needed for compilations with MinGW.
->>> For other platforms nothing changes.
->>>
->>> The code was fixed using this command:
->>>
->>>      git grep -la '__attribute__ ((packed))'|xargs perl -pi -e
->>> 's/__attribute__ \(\(packed\)\)/QEMU_PACKED/'
->>
->> There's one in tcg/tcg.c as well, which you missed because
->> it doesn't have a space between the "__attribute__" and
->> "((packed))".
->>
->> (There are also some in some of the tcg-target.c files,
->> but those are cases of the packed attribute being applied
->> to individual struct members rather than a whole struct, so
->> I'm not entirely sure what we should do with those.)
+Commit 946fb27c1 moved all the uses of all_cpu_threads_idle()
+into cpus.c. This means we can mark the function 'static'
+(again), if we shuffle it a bit earlier in the source file.
 
-> I noticed those, too, but did not change them because
-> I think that they need more examination (see my comment
-> in http://lists.nongnu.org/archive/html/qemu-devel/2012-07/msg02373.html).
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ cpus.c        |   52 ++++++++++++++++++++++++++--------------------------
+ qemu-common.h |    1 -
+ 2 files changed, 26 insertions(+), 27 deletions(-)
 
-Fair enough.
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/cpus.c b/cpus.c
+index b182b3d..756e624 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -61,6 +61,32 @@
+ 
+ static CPUArchState *next_cpu;
+ 
++static bool cpu_thread_is_idle(CPUArchState *env)
++{
++    if (env->stop || env->queued_work_first) {
++        return false;
++    }
++    if (env->stopped || !runstate_is_running()) {
++        return true;
++    }
++    if (!env->halted || qemu_cpu_has_work(env) || kvm_irqchip_in_kernel()) {
++        return false;
++    }
++    return true;
++}
++
++static bool all_cpu_threads_idle(void)
++{
++    CPUArchState *env;
++
++    for (env = first_cpu; env != NULL; env = env->next_cpu) {
++        if (!cpu_thread_is_idle(env)) {
++            return false;
++        }
++    }
++    return true;
++}
++
+ /***********************************************************/
+ /* guest cycle counter */
+ 
+@@ -433,32 +459,6 @@ static int cpu_can_run(CPUArchState *env)
+     return 1;
+ }
+ 
+-static bool cpu_thread_is_idle(CPUArchState *env)
+-{
+-    if (env->stop || env->queued_work_first) {
+-        return false;
+-    }
+-    if (env->stopped || !runstate_is_running()) {
+-        return true;
+-    }
+-    if (!env->halted || qemu_cpu_has_work(env) || kvm_irqchip_in_kernel()) {
+-        return false;
+-    }
+-    return true;
+-}
+-
+-bool all_cpu_threads_idle(void)
+-{
+-    CPUArchState *env;
+-
+-    for (env = first_cpu; env != NULL; env = env->next_cpu) {
+-        if (!cpu_thread_is_idle(env)) {
+-            return false;
+-        }
+-    }
+-    return true;
+-}
+-
+ static void cpu_handle_guest_debug(CPUArchState *env)
+ {
+     gdb_set_stop_cpu(env);
+diff --git a/qemu-common.h b/qemu-common.h
+index 09676f5..7c8dac8 100644
+--- a/qemu-common.h
++++ b/qemu-common.h
+@@ -293,7 +293,6 @@ int cpu_load(QEMUFile *f, void *opaque, int version_id);
+ void qemu_cpu_kick(void *env);
+ void qemu_cpu_kick_self(void);
+ int qemu_cpu_is_self(void *env);
+-bool all_cpu_threads_idle(void);
+ 
+ /* work queue */
+ struct qemu_work_item {
+-- 
+1.7.5.4
 
--- PMM
 
