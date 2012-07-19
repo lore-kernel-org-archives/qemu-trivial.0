@@ -1,30 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Srt25-0000yt-Q4
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Jul 2012 11:52:53 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:59444)
+	id 1Srt7A-0002GW-JO
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Jul 2012 11:58:08 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:37462)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Srt20-0000hl-CQ
-	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 11:52:52 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1Srt71-0002Fw-9b
+	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 11:58:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Srt1u-0006vl-Hj
-	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 11:52:48 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:58786)
+	(envelope-from <jan.kiszka@siemens.com>) id 1Srt70-0000XF-9T
+	for qemu-trivial@nongnu.org; Thu, 19 Jul 2012 11:57:59 -0400
+Received: from goliath.siemens.de ([192.35.17.28]:19765)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1Srt1o-0006uo-ID; Thu, 19 Jul 2012 11:52:36 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1Srt1f-0003q0-3u; Thu, 19 Jul 2012 16:52:27 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Thu, 19 Jul 2012 16:52:27 +0100
-Message-Id: <1342713147-14729-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] cpus.c: Make all_cpu_threads_idle() static
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1Srt6z-0000Wk-Vp; Thu, 19 Jul 2012 11:57:58 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id q6JFvpj3010144;
+	Thu, 19 Jul 2012 17:57:51 +0200
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q6JFvpaC026603;
+	Thu, 19 Jul 2012 17:57:51 +0200
+Message-ID: <50082E7F.7030800@siemens.com>
+Date: Thu, 19 Jul 2012 17:57:51 +0200
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
+MIME-Version: 1.0
+To: qemu-trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 192.35.17.28
+Cc: malc <av1474@comtv.ru>, qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] audio: Make PC speaker audio card available
+	by default
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,101 +45,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Jul 2012 15:52:52 -0000
+X-List-Received-Date: Thu, 19 Jul 2012 15:58:07 -0000
 
-Commit 946fb27c1 moved all the uses of all_cpu_threads_idle()
-into cpus.c. This means we can mark the function 'static'
-(again), if we shuffle it a bit earlier in the source file.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
 ---
- cpus.c        |   52 ++++++++++++++++++++++++++--------------------------
- qemu-common.h |    1 -
- 2 files changed, 26 insertions(+), 27 deletions(-)
+ configure |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/cpus.c b/cpus.c
-index b182b3d..756e624 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -61,6 +61,32 @@
- 
- static CPUArchState *next_cpu;
- 
-+static bool cpu_thread_is_idle(CPUArchState *env)
-+{
-+    if (env->stop || env->queued_work_first) {
-+        return false;
-+    }
-+    if (env->stopped || !runstate_is_running()) {
-+        return true;
-+    }
-+    if (!env->halted || qemu_cpu_has_work(env) || kvm_irqchip_in_kernel()) {
-+        return false;
-+    }
-+    return true;
-+}
-+
-+static bool all_cpu_threads_idle(void)
-+{
-+    CPUArchState *env;
-+
-+    for (env = first_cpu; env != NULL; env = env->next_cpu) {
-+        if (!cpu_thread_is_idle(env)) {
-+            return false;
-+        }
-+    }
-+    return true;
-+}
-+
- /***********************************************************/
- /* guest cycle counter */
- 
-@@ -433,32 +459,6 @@ static int cpu_can_run(CPUArchState *env)
-     return 1;
- }
- 
--static bool cpu_thread_is_idle(CPUArchState *env)
--{
--    if (env->stop || env->queued_work_first) {
--        return false;
--    }
--    if (env->stopped || !runstate_is_running()) {
--        return true;
--    }
--    if (!env->halted || qemu_cpu_has_work(env) || kvm_irqchip_in_kernel()) {
--        return false;
--    }
--    return true;
--}
--
--bool all_cpu_threads_idle(void)
--{
--    CPUArchState *env;
--
--    for (env = first_cpu; env != NULL; env = env->next_cpu) {
--        if (!cpu_thread_is_idle(env)) {
--            return false;
--        }
--    }
--    return true;
--}
--
- static void cpu_handle_guest_debug(CPUArchState *env)
- {
-     gdb_set_stop_cpu(env);
-diff --git a/qemu-common.h b/qemu-common.h
-index 09676f5..7c8dac8 100644
---- a/qemu-common.h
-+++ b/qemu-common.h
-@@ -293,7 +293,6 @@ int cpu_load(QEMUFile *f, void *opaque, int version_id);
- void qemu_cpu_kick(void *env);
- void qemu_cpu_kick_self(void);
- int qemu_cpu_is_self(void *env);
--bool all_cpu_threads_idle(void);
- 
- /* work queue */
- struct qemu_work_item {
+diff --git a/configure b/configure
+index 106209a..42adc8d 100755
+--- a/configure
++++ b/configure
+@@ -90,8 +90,8 @@ static="no"
+ sparc_cpu=""
+ cross_prefix=""
+ audio_drv_list=""
+-audio_card_list="ac97 es1370 sb16 hda"
+-audio_possible_cards="ac97 es1370 sb16 cs4231a adlib gus hda"
++audio_card_list="ac97 es1370 sb16 hda pcspk"
++audio_possible_cards="ac97 es1370 sb16 cs4231a adlib gus hda pcspk"
+ block_drv_whitelist=""
+ host_cc="gcc"
+ helper_cflags=""
 -- 
-1.7.5.4
-
+1.7.3.4
 
