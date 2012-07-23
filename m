@@ -1,46 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1StNhB-0006LO-I2
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Jul 2012 14:49:29 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53060)
+	id 1StOMT-0000WT-NL
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Jul 2012 15:32:09 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34910)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1StNh8-0006CZ-OC
-	for qemu-trivial@nongnu.org; Mon, 23 Jul 2012 14:49:27 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1StOMR-0000Uy-GX
+	for qemu-trivial@nongnu.org; Mon, 23 Jul 2012 15:32:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1StNh7-0007Cb-L7
-	for qemu-trivial@nongnu.org; Mon, 23 Jul 2012 14:49:26 -0400
-Received: from mail-yw0-f45.google.com ([209.85.213.45]:36877)
+	(envelope-from <peter.maydell@linaro.org>) id 1StOMQ-0002Y9-Gf
+	for qemu-trivial@nongnu.org; Mon, 23 Jul 2012 15:32:07 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:49471)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>)
-	id 1StNh4-0007Bh-Oi; Mon, 23 Jul 2012 14:49:22 -0400
-Received: by yhpp34 with SMTP id p34so5924510yhp.4
-	for <multiple recipients>; Mon, 23 Jul 2012 11:49:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=yOWGMjgwvaZ1HD0d8ITP5qguj2IW9qk/viuZ1d9/PWA=;
-	b=InWQDGplRUuFKlsUPdln23fvFxeui6Yp2dunMPhUaSeOuXetRU9/BK7E6mYKMo5391
-	ymm2d2blCAwds2X1E6qj1upnxaRJ7AsFMcVT2e7Rf3ldqBe03unSOJE6Mf7rfGyVwWj3
-	z3ekzI3HumH56QLAkHgWg5vtxuh+K5m6TBnBEfVV78wAKB2tSnwMbfXAG9TioOPJQCFN
-	EYuVfWy16Y4guvDe6PQrR58/QiMXWyjfppnFfplQHuxuq8HhSyrlqKXWDShlLjRtY/JV
-	4tpX0E66KU3quAWs/UEvBaRfx3V43x3aocQ2I38xEU/HCLzROoDlfkfMTVA4RfZ/RZZn
-	EaqQ==
-Received: by 10.50.181.225 with SMTP id dz1mr46695igc.2.1343069361966; Mon, 23
-	Jul 2012 11:49:21 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1StOMQ-0002Y2-9u
+	for qemu-trivial@nongnu.org; Mon, 23 Jul 2012 15:32:06 -0400
+Received: by bkcji1 with SMTP id ji1so4791903bkc.4
+	for <qemu-trivial@nongnu.org>; Mon, 23 Jul 2012 12:32:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=sekQgO9vkFtCiZxlwmZQ23eT43jxvqXwtzlev1RrmcM=;
+	b=NZeUPRnY4G5f9MIkRY7DYnKEnWoNqQwTKfJXg/AspS3DNmGx4ahe7wFeC49Nymlfq2
+	/teBLBvAwxfWe6JzQl8x9Qk1y1g023ag4a94CgjHBUb0byJzgPdnHPEjyt9sZa1iSWGf
+	Mv9UKHtD6nJTB0SkiqBuZaMzMaJMtFajnEIWZiXu1/sXAkJWvdWG2yngYqukYQr+eJlL
+	gMnF+cNzIHVioE9wfUiC1PZF8AYv7ZkVHcwn+T/p08ahy1TibEezVHCi8JewmX97JRDD
+	oWbLQgQClJ5tahGH0Zb3AxdLeN+BUhTakZwDnSyQmWy/eZdI01ewBxDuXVnsAh1nagfG
+	GXHQ==
 MIME-Version: 1.0
-Received: by 10.64.38.68 with HTTP; Mon, 23 Jul 2012 11:49:00 -0700 (PDT)
-In-Reply-To: <1342818289-31860-1-git-send-email-sw@weilnetz.de>
-References: <1342818289-31860-1-git-send-email-sw@weilnetz.de>
-From: Blue Swirl <blauwirbel@gmail.com>
-Date: Mon, 23 Jul 2012 18:49:00 +0000
-Message-ID: <CAAu8pHvCJKqnb5t8GiDDRmkOS9zB5Q+b1yeAACYmc9phtioB=Q@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
+Received: by 10.205.122.147 with SMTP id gg19mr8496282bkc.73.1343071924925;
+	Mon, 23 Jul 2012 12:32:04 -0700 (PDT)
+Received: by 10.204.102.14 with HTTP; Mon, 23 Jul 2012 12:32:04 -0700 (PDT)
+In-Reply-To: <CAFEAcA-UC5Pmt-oMJx0okH2F6EWNY5XDmURq2EqXnPJuOBAL0w@mail.gmail.com>
+References: <1342546459-21993-1-git-send-email-i.mitsyanko@samsung.com>
+	<5005A904.5000006@samsung.com> <5005AFA5.6080101@weilnetz.de>
+	<CAFEAcA9t5qDGvOBTL0eb+nRZGdiNBBwqd020Gz+80ovGm3t+hA@mail.gmail.com>
+	<5005BBD7.1000905@weilnetz.de>
+	<CAFEAcA9n7+UVp9W20x8zs71cPxZWBu8o1FQxVSwq8o6TdGZ0BQ@mail.gmail.com>
+	<CAAu8pHvJVj=cU-q9gjrGinPT97O+60L4vipzYMVeWy+T2o3cuA@mail.gmail.com>
+	<CAFEAcA-UC5Pmt-oMJx0okH2F6EWNY5XDmURq2EqXnPJuOBAL0w@mail.gmail.com>
+Date: Mon, 23 Jul 2012 20:32:04 +0100
+Message-ID: <CAFEAcA8JjMuoJYjQLnZ7pn-kDDRwy+iJfhLsrLitx+bbC3i6UQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Blue Swirl <blauwirbel@gmail.com>
 Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQkSZuqnqZC5s4pnxADn5EVx/HRhIjMrWajE76stXIx/pBZ1drJTtZeBopB1etHtg/RIYaKk
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.213.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qdev: Fix Open Firmware
-	comment
+X-Received-From: 209.85.214.45
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+	Igor Mitsyanko <i.mitsyanko@samsung.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Anthony Liguori <anthony@codemonkey.ws>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: fix ALSA
+	configure test
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,55 +63,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Jul 2012 18:49:28 -0000
+X-List-Received-Date: Mon, 23 Jul 2012 19:32:08 -0000
 
-On Fri, Jul 20, 2012 at 9:04 PM, Stefan Weil <sw@weilnetz.de> wrote:
-> Commit 0d936928ef87ca1bb7b41b5b89c400c699a7691c removed code,
-> but left the related comment at a location where it no longer
-> belongs to.
+On 23 July 2012 18:45, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 23 July 2012 18:40, Blue Swirl <blauwirbel@gmail.com> wrote:
+>> On Tue, Jul 17, 2012 at 7:28 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> The trouble is that the warnings and errors here don't cause the
+>>> build to fail noisily; that's a big distinction IMHO.
+>>> I suppose we could make compile_prog do something like:
+>>>  * run the compile test
+>>
+>> Unfortunately that would break cross compiling.
 >
-> The patch moves the comment to the correct callback and improves the text.
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  hw/qdev.h |   11 +++++------
->  1 file changed, 5 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/qdev.h b/hw/qdev.h
-> index 247dd1e..a2cbd9d 100644
-> --- a/hw/qdev.h
-> +++ b/hw/qdev.h
-> @@ -78,12 +78,6 @@ struct DeviceState {
->      int alias_required_for_version;
->  };
->
-> -/*
-> - * This callback is used to create Open Firmware device path in accordance with
-> - * OF spec http://forthworks.com/standards/of1275.pdf. Indicidual bus bindings
-> - * can be found here http://playground.sun.com/1275/bindings/.
-> - */
-> -
->  #define TYPE_BUS "bus"
->  #define BUS(obj) OBJECT_CHECK(BusState, (obj), TYPE_BUS)
->  #define BUS_CLASS(klass) OBJECT_CLASS_CHECK(BusClass, (klass), TYPE_BUS)
-> @@ -95,6 +89,11 @@ struct BusClass {
->      /* FIXME first arg should be BusState */
->      void (*print_dev)(Monitor *mon, DeviceState *dev, int indent);
->      char *(*get_dev_path)(DeviceState *dev);
-> +    /*
-> +     * This callback is used to create Open Firmware device path in accordance
-> +     * with OF spec http://forthworks.com/standards/of1275.pdf. Individual bus
-> +     * bindings can be found at http://playground.sun.com/1275/bindings/.
-> +     */
+> Sorry, that was slightly unclear phrasing. By "run the test"
+> I meant "do the check that we can compile the test code"
+> "run the binary produced".
 
-The links are dead. Since you are improving the text, maybe you could
-find archived versions.
+Gah. Missing 'not', should read:
+# By "run the test" I meant
+# "do the check that we can compile the test code", not
+# "run the binary produced".
 
->      char *(*get_fw_dev_path)(DeviceState *dev);
->      int (*reset)(BusState *bus);
->  };
-> --
-> 1.7.10
->
->
+-- PMM
 
