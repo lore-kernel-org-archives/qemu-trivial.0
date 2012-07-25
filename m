@@ -1,41 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Stftn-0006Y0-1E
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jul 2012 10:15:43 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42774)
+	id 1StzVU-0001DR-PW
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jul 2012 07:11:56 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:41031)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Stftf-0006Cs-8o
-	for qemu-trivial@nongnu.org; Tue, 24 Jul 2012 10:15:40 -0400
+	(envelope-from <riegamaths@gmail.com>) id 1StzVR-00014C-Qj
+	for qemu-trivial@nongnu.org; Wed, 25 Jul 2012 07:11:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1StftZ-0005To-7z
-	for qemu-trivial@nongnu.org; Tue, 24 Jul 2012 10:15:35 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:45740 helo=mx2.suse.de)
+	(envelope-from <riegamaths@gmail.com>) id 1StzVN-0004Hb-4N
+	for qemu-trivial@nongnu.org; Wed, 25 Jul 2012 07:11:53 -0400
+Received: from mail-yx0-f173.google.com ([209.85.213.173]:34995)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1StftI-0005SI-Na; Tue, 24 Jul 2012 10:15:12 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id A79A2A329D;
-	Tue, 24 Jul 2012 16:15:11 +0200 (CEST)
-Message-ID: <500EADEC.8000800@suse.de>
-Date: Tue, 24 Jul 2012 16:15:08 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:13.0) Gecko/20120601 Thunderbird/13.0
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1343139027-23659-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1343139027-23659-1-git-send-email-peter.maydell@linaro.org>
-X-Enigmail-Version: 1.4.2
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Blue Swirl <blauwirbel@gmail.com>,
-	patches@linaro.org, qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/escc: Drop duplicate
- definition of 'disabled' property
+	(envelope-from <riegamaths@gmail.com>)
+	id 1StzVH-0004GS-Bg; Wed, 25 Jul 2012 07:11:43 -0400
+Received: by yenl1 with SMTP id l1so540474yen.4
+	for <multiple recipients>; Wed, 25 Jul 2012 04:11:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer;
+	bh=japWjcgA92m0nFyCH0sgFPb/BZDlqUZhcyUu3TDDJr0=;
+	b=egc40vCu7DSayuY/5QmJJEjZ5YgL7ypVWItz3O96XOKbiZD0Es+eDHdWtPBSHosKeZ
+	fnCkUqV3nB6Fc8Zr+uP2JWZ0Ql0dQx0p7VC9W5DAA9l4Zynz9k7gagpylcU5fXB1k1wH
+	TQQagi9eqsjBCVltplRz02NKj+JOaBBGh9zpGrzG6cFnvATOFs8XvjQZAZYHmziITqoL
+	EtwfowEHmK+t//Yw3K8p/5liLI/8u0F192NNfKMkbCKs/cXYQQwQ/Y+qGyKV+PaMzbno
+	TGcU5Hvv677bmssZVHtIS1MXVHycuXenAAJjDNQfTn9OHPw7UXDa7YPpTJ/dUKLjPmoH
+	uyqA==
+Received: by 10.66.81.232 with SMTP id d8mr11932067pay.66.1343214702105;
+	Wed, 25 Jul 2012 04:11:42 -0700 (PDT)
+Received: from localhost.localdomain ([111.196.220.100])
+	by mx.google.com with ESMTPS id nh8sm14184850pbc.60.2012.07.25.04.11.36
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 25 Jul 2012 04:11:41 -0700 (PDT)
+From: riegamaths@gmail.com
+To: qemu-devel <qemu-devel@nongnu.org>
+Date: Wed, 25 Jul 2012 19:11:51 +0800
+Message-Id: <1343214711-24336-1-git-send-email-riegamaths@gmail.com>
+X-Mailer: git-send-email 1.7.8.6
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.213.173
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <andreas.faerber@web.de>,
+	Anthony Liguori <aliguori@us.ibm.com>,
+	Dunrong Huang <riegamaths@gmail.com>,
+	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH v2] vl.c: Fix max_cpus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,49 +54,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jul 2012 14:15:41 -0000
+X-List-Received-Date: Wed, 25 Jul 2012 11:11:55 -0000
 
-Am 24.07.2012 16:10, schrieb Peter Maydell:
-> Drop a duplicate definition of the 'disabled' property from
-> the escc qdev property list: this redefinition is currently
-> effectively ignored but will become an error. (The duplication
-> was inadvertently introduced in 2009 in commit ec02f7dec2.)
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+From: Dunrong Huang <riegamaths@gmail.com>
 
-The mentioned commit turned 7 properties into 8, so it's no typo.
+The VCPU count limit in kernel now is 254, defined by KVM_MAX_VCPUS
+in kernel's header files. But the count limit in QEMU is 255,
+so QEMU will failed to start if user passes "-enable-kvm" and "-smp 255"
+to it.
 
-Acked-by: Andreas F=E4rber <afaerber@suse.de>
+Exit QEMU with an error if KVM is enabled and number of SMP cpus requested
+exceeds KVM_MAX_VCPUS.
 
-/-F
+Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
+---
+v1 -> v2:
+Checking if the number of smp cpus requested exceeds KVM limit count
+if and only if kvm is enabled.
 
-> ---
-> Other than the armv7m_nvic, this is the only other case of an
-> attempt to set a duplicate property that I could find in my
-> "start every machine QEMU implements" test...
->=20
->  hw/escc.c |    1 -
->  1 files changed, 0 insertions(+), 1 deletions(-)
->=20
-> diff --git a/hw/escc.c b/hw/escc.c
-> index 4d8a8e8..e1f5e73 100644
-> --- a/hw/escc.c
-> +++ b/hw/escc.c
-> @@ -905,7 +905,6 @@ static Property escc_properties[] =3D {
->      DEFINE_PROP_UINT32("frequency", SerialState, frequency,   0),
->      DEFINE_PROP_UINT32("it_shift",  SerialState, it_shift,    0),
->      DEFINE_PROP_UINT32("disabled",  SerialState, disabled,    0),
-> -    DEFINE_PROP_UINT32("disabled",  SerialState, disabled,    0),
->      DEFINE_PROP_UINT32("chnBtype",  SerialState, chn[0].type, 0),
->      DEFINE_PROP_UINT32("chnAtype",  SerialState, chn[1].type, 0),
->      DEFINE_PROP_CHR("chrB", SerialState, chn[0].chr),
->=20
+ vl.c |   11 +++++++++++
+ 1 files changed, 11 insertions(+), 0 deletions(-)
 
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
-
+diff --git a/vl.c b/vl.c
+index 8904db1..cdd1c96 100644
+--- a/vl.c
++++ b/vl.c
+@@ -169,6 +169,11 @@ int main(int argc, char **argv)
+ 
+ #define MAX_VIRTIO_CONSOLES 1
+ 
++/* KVM_MAX_VCPUS defined in kernel's header files */
++#ifndef KVM_MAX_VCPUS
++#define KVM_MAX_VCPUS 254
++#endif
++
+ static const char *data_dir;
+ const char *bios_name = NULL;
+ enum vga_retrace_method vga_retrace_method = VGA_RETRACE_DUMB;
+@@ -3348,6 +3353,12 @@ int main(int argc, char **argv, char **envp)
+ 
+     configure_accelerator();
+ 
++    if (kvm_enabled() && smp_cpus > KVM_MAX_VCPUS) {
++        fprintf(stderr, "Number of SMP cpus requested (%d) exceeds max cpus "
++                "supported by KVM (%d)\n", smp_cpus, KVM_MAX_VCPUS);
++        exit(1);
++    }
++
+     qemu_init_cpu_loop();
+     if (qemu_init_main_loop()) {
+         fprintf(stderr, "qemu_init_main_loop failed\n");
+-- 
+1.7.8.6
 
 
