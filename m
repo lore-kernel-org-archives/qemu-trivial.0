@@ -1,47 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Sv5xV-0006mj-8F
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Jul 2012 08:17:25 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:59974)
+	id 1SvTre-0005Ir-HZ
+	for mharc-qemu-trivial@gnu.org; Sun, 29 Jul 2012 09:48:58 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:46890)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1Sv5xQ-0006Xg-8V
-	for qemu-trivial@nongnu.org; Sat, 28 Jul 2012 08:17:22 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1SvTrb-0005AP-Dk
+	for qemu-trivial@nongnu.org; Sun, 29 Jul 2012 09:48:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1Sv5xP-0005EV-90
-	for qemu-trivial@nongnu.org; Sat, 28 Jul 2012 08:17:20 -0400
-Received: from mail-gg0-f173.google.com ([209.85.161.173]:52454)
+	(envelope-from <stefan@weilnetz.de>) id 1SvTra-0002uZ-Iv
+	for qemu-trivial@nongnu.org; Sun, 29 Jul 2012 09:48:55 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:44627)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>)
-	id 1Sv5xN-0005E7-Gx; Sat, 28 Jul 2012 08:17:17 -0400
-Received: by ggnp1 with SMTP id p1so3812975ggn.4
-	for <multiple recipients>; Sat, 28 Jul 2012 05:17:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=khOFRNqwWg/P2uTwolKwkSZzYtQ109gmju2fYlIdkxc=;
-	b=Gt9uPYVKW1c118JQq0CVQoqbjEMftdNjxFWI1vsusp09V+O+sS0y34jPg5ulQhQi5c
-	swGvKOzqWZiiS6JFceSkZhAFqIKS24wHtS+i3BLdFhlqhKsdc6hnciIF+UbwOt/A6bK7
-	nJQuOX2GKIPcRU9IBa7eHzT2lTOu5J8iPu+CN2RtVTGb3CRKqeafUhyCtmzcWn/T7Ch/
-	YF/VAZlsH8Y+LLxjisSCigOOPlAOBzcU3k0IOLyu8R7SQ2oUl31M9P9N6cJmPZwCJBIU
-	62C+T01ScnIQ+Rv85b3TBGglRf90qtOU2BaSfQiXxU+94wLSLViWEWJnEOmWnNInougT
-	T4rA==
-Received: by 10.50.154.201 with SMTP id vq9mr6970906igb.2.1343477836338; Sat,
-	28 Jul 2012 05:17:16 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.64.139.10 with HTTP; Sat, 28 Jul 2012 05:16:56 -0700 (PDT)
-In-Reply-To: <1343139027-23659-1-git-send-email-peter.maydell@linaro.org>
-References: <1343139027-23659-1-git-send-email-peter.maydell@linaro.org>
-From: Blue Swirl <blauwirbel@gmail.com>
-Date: Sat, 28 Jul 2012 12:16:56 +0000
-Message-ID: <CAAu8pHtznTEb2rnx9FSR=oEMu7AuMuoz+=uhzSWp7tRMwtKfVQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.161.173
-Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>,
-	qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH] hw/escc: Drop duplicate definition of
-	'disabled' property
+	(envelope-from <stefan@weilnetz.de>)
+	id 1SvTrY-0002uC-Aj; Sun, 29 Jul 2012 09:48:52 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	AA4E472800A0; Sun, 29 Jul 2012 15:48:50 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id SM+dAEkZiB6Z; Sun, 29 Jul 2012 15:48:49 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 9772872800C4; Sun, 29 Jul 2012 15:48:49 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Sun, 29 Jul 2012 15:48:49 +0200
+Message-Id: <1343569729-11218-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] Makefile: Remove generated hw/usb files in
+	'clean' target
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,38 +43,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Jul 2012 12:17:23 -0000
+X-List-Received-Date: Sun, 29 Jul 2012 13:48:56 -0000
 
-Thanks, applied.
+Commit f1ae32a1ecda8aaff7a355c9030c0d8c363f3a70 moved the
+usb directory to hw, so the files which should be removed
+are now hw/usb/*.{d,o}.
 
-On Tue, Jul 24, 2012 at 2:10 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Drop a duplicate definition of the 'disabled' property from
-> the escc qdev property list: this redefinition is currently
-> effectively ignored but will become an error. (The duplication
-> was inadvertently introduced in 2009 in commit ec02f7dec2.)
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Other than the armv7m_nvic, this is the only other case of an
-> attempt to set a duplicate property that I could find in my
-> "start every machine QEMU implements" test...
->
->  hw/escc.c |    1 -
->  1 files changed, 0 insertions(+), 1 deletions(-)
->
-> diff --git a/hw/escc.c b/hw/escc.c
-> index 4d8a8e8..e1f5e73 100644
-> --- a/hw/escc.c
-> +++ b/hw/escc.c
-> @@ -905,7 +905,6 @@ static Property escc_properties[] = {
->      DEFINE_PROP_UINT32("frequency", SerialState, frequency,   0),
->      DEFINE_PROP_UINT32("it_shift",  SerialState, it_shift,    0),
->      DEFINE_PROP_UINT32("disabled",  SerialState, disabled,    0),
-> -    DEFINE_PROP_UINT32("disabled",  SerialState, disabled,    0),
->      DEFINE_PROP_UINT32("chnBtype",  SerialState, chn[0].type, 0),
->      DEFINE_PROP_UINT32("chnAtype",  SerialState, chn[1].type, 0),
->      DEFINE_PROP_CHR("chrB", SerialState, chn[0].chr),
-> --
-> 1.7.5.4
->
+The new code removes these files and also any other generated
+*.o and *.d files in directories below hw.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index e4c754d..30f9e91 100644
+--- a/Makefile
++++ b/Makefile
+@@ -215,7 +215,7 @@ clean:
+ 	rm -Rf .libs
+ 	rm -f slirp/*.o slirp/*.d audio/*.o audio/*.d block/*.o block/*.d net/*.o net/*.d fsdev/*.o fsdev/*.d ui/*.o ui/*.d qapi/*.o qapi/*.d qga/*.o qga/*.d
+ 	rm -f qom/*.o qom/*.d
+-	rm -f usb/*.o usb/*.d hw/*.o hw/*.d
++	rm -f hw/*/*.o hw/*/*.d hw/*.o hw/*.d
+ 	rm -f qemu-img-cmds.h
+ 	rm -f trace/*.o trace/*.d
+ 	rm -f trace-dtrace.dtrace trace-dtrace.dtrace-timestamp
+-- 
+1.7.10
+
 
