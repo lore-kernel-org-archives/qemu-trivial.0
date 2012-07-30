@@ -1,49 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Svt1d-0002Pu-Gx
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Jul 2012 12:40:57 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42655)
+	id 1Svt3b-00047v-3j
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Jul 2012 12:42:59 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44748)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Svt1b-0002IL-0p
-	for qemu-trivial@nongnu.org; Mon, 30 Jul 2012 12:40:55 -0400
+	(envelope-from <stefanha@gmail.com>) id 1Svt3W-000466-6J
+	for qemu-trivial@nongnu.org; Mon, 30 Jul 2012 12:42:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Svt1a-0006bv-0V
-	for qemu-trivial@nongnu.org; Mon, 30 Jul 2012 12:40:54 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:65214)
+	(envelope-from <stefanha@gmail.com>) id 1Svt3Q-00086P-7U
+	for qemu-trivial@nongnu.org; Mon, 30 Jul 2012 12:42:54 -0400
+Received: from mail-wi0-f181.google.com ([209.85.212.181]:48522)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1Svt1R-0006XG-5o; Mon, 30 Jul 2012 12:40:45 -0400
-Received: by bkcji1 with SMTP id ji1so2511567bkc.4
-	for <multiple recipients>; Mon, 30 Jul 2012 09:40:44 -0700 (PDT)
+	id 1Svt3P-000861-V5; Mon, 30 Jul 2012 12:42:48 -0400
+Received: by wibhm2 with SMTP id hm2so1549308wib.10
+	for <multiple recipients>; Mon, 30 Jul 2012 09:42:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=3165l1uJCE5EjkKLjErAut73Z1DlOVeARkzu2T413aA=;
-	b=y65WQ86y+SOg3xnZiC89f8dPbEESNiqTIuobCMjgVQJaagE+dXFqUaZAIqT30p7GF7
-	gDofqUdz2e9k5f53HisMNv+B8vKUEDTTHO6iKGO/9WHDZ0QsCnwVuEE3B33VuLPf6YeP
-	YIg0A0dhjMJ1MHu+KD1U3b5gZxshi2Gwv+ydEQVrZzH87dB4Qbxn2lANgA2cGBUl0IWM
-	wHVUZQ0o0ogsSH0r8gavopUBk8iLhYwIEfleYw6hTFRCxtpiKYVPh1xJKAeXQkgsv4At
-	bPeOLIFWgnnNtsWCw/naZJSQAxkwKfTEbSb1fvgGQMYLeJm/ddHhu9t0RP3CEuhBxPbX
-	OCkw==
-MIME-Version: 1.0
-Received: by 10.205.119.208 with SMTP id fv16mr4256526bkc.100.1343666443992;
-	Mon, 30 Jul 2012 09:40:43 -0700 (PDT)
-Received: by 10.205.64.7 with HTTP; Mon, 30 Jul 2012 09:40:43 -0700 (PDT)
-In-Reply-To: <1343214711-24336-1-git-send-email-riegamaths@gmail.com>
-References: <1343214711-24336-1-git-send-email-riegamaths@gmail.com>
-Date: Mon, 30 Jul 2012 17:40:43 +0100
-Message-ID: <CAJSP0QU9EfQimQqUa5CyffdsWj4ZS-0EgOiB4vp7vTKbcUpJcg@mail.gmail.com>
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=o3ji785rFlr/4rVELB0nEPaapI+SWZjRIm9XbhDzrQQ=;
+	b=hq9wJilZse6ETxGgUiop8pHMPNT9lYVB7ILYLqNeWxiwk5ZTOqMyHUrT4lhIze/x/5
+	wFxaMIJELNVDfzz2f5yPffisGoxBs043dfUouxh21IJVPKfPPCqoWq8y8XhkbdVYJOqe
+	HqCOJWszhWPv67wQHPEk+k0VOujrvdLKJKbTDmFLeSK2337+TXBP9yIz1k8PF99qPhuj
+	5THajFh3+g0QOREpq8cP3dsGr/ZJjhpe2CqAbldlREVNhC8N5M35UkL6OPEtqBE+xC+s
+	k1W1GHM93eyatoJ32l37Jx/QMnev+Rar3cmYmh/KXr0C7DCcXvvhFP0ohFFMAKZZP6Nu
+	evxQ==
+Received: by 10.180.100.133 with SMTP id ey5mr27996552wib.4.1343666567009;
+	Mon, 30 Jul 2012 09:42:47 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
+	by mx.google.com with ESMTPS id
+	fb20sm25382892wid.1.2012.07.30.09.42.46
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 30 Jul 2012 09:42:46 -0700 (PDT)
+Date: Mon, 30 Jul 2012 17:42:44 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: riegamaths@gmail.com
-Content-Type: text/plain; charset=ISO-8859-1
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120730164244.GB21719@stefanha-thinkpad.localdomain>
+References: <1343569729-11218-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1343569729-11218-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	=?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>,
-	qemu-devel <qemu-devel@nongnu.org>,
-	Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>,
-	Anthony Liguori <aliguori@us.ibm.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] vl.c: Fix max_cpus
+X-Received-From: 209.85.212.181
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Remove generated
+ hw/usb files in 'clean' target
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,65 +58,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Jul 2012 16:40:56 -0000
+X-List-Received-Date: Mon, 30 Jul 2012 16:42:58 -0000
 
-On Wed, Jul 25, 2012 at 12:11 PM,  <riegamaths@gmail.com> wrote:
-> From: Dunrong Huang <riegamaths@gmail.com>
->
-> The VCPU count limit in kernel now is 254, defined by KVM_MAX_VCPUS
-> in kernel's header files. But the count limit in QEMU is 255,
-> so QEMU will failed to start if user passes "-enable-kvm" and "-smp 255"
-> to it.
->
-> Exit QEMU with an error if KVM is enabled and number of SMP cpus requested
-> exceeds KVM_MAX_VCPUS.
->
-> Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
+On Sun, Jul 29, 2012 at 03:48:49PM +0200, Stefan Weil wrote:
+> Commit f1ae32a1ecda8aaff7a355c9030c0d8c363f3a70 moved the
+> usb directory to hw, so the files which should be removed
+> are now hw/usb/*.{d,o}.
+> 
+> The new code removes these files and also any other generated
+> *.o and *.d files in directories below hw.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
-> v1 -> v2:
-> Checking if the number of smp cpus requested exceeds KVM limit count
-> if and only if kvm is enabled.
->
->  vl.c |   11 +++++++++++
->  1 files changed, 11 insertions(+), 0 deletions(-)
->
-> diff --git a/vl.c b/vl.c
-> index 8904db1..cdd1c96 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -169,6 +169,11 @@ int main(int argc, char **argv)
->
->  #define MAX_VIRTIO_CONSOLES 1
->
-> +/* KVM_MAX_VCPUS defined in kernel's header files */
-> +#ifndef KVM_MAX_VCPUS
-> +#define KVM_MAX_VCPUS 254
-> +#endif
-> +
->  static const char *data_dir;
->  const char *bios_name = NULL;
->  enum vga_retrace_method vga_retrace_method = VGA_RETRACE_DUMB;
-> @@ -3348,6 +3353,12 @@ int main(int argc, char **argv, char **envp)
->
->      configure_accelerator();
->
-> +    if (kvm_enabled() && smp_cpus > KVM_MAX_VCPUS) {
-> +        fprintf(stderr, "Number of SMP cpus requested (%d) exceeds max cpus "
-> +                "supported by KVM (%d)\n", smp_cpus, KVM_MAX_VCPUS);
-> +        exit(1);
-> +    }
+>  Makefile |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Makefile b/Makefile
+> index e4c754d..30f9e91 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -215,7 +215,7 @@ clean:
+>  	rm -Rf .libs
+>  	rm -f slirp/*.o slirp/*.d audio/*.o audio/*.d block/*.o block/*.d net/*.o net/*.d fsdev/*.o fsdev/*.d ui/*.o ui/*.d qapi/*.o qapi/*.d qga/*.o qga/*.d
+>  	rm -f qom/*.o qom/*.d
+> -	rm -f usb/*.o usb/*.d hw/*.o hw/*.d
+> +	rm -f hw/*/*.o hw/*/*.d hw/*.o hw/*.d
+>  	rm -f qemu-img-cmds.h
+>  	rm -f trace/*.o trace/*.d
+>  	rm -f trace-dtrace.dtrace trace-dtrace.dtrace-timestamp
+> -- 
+> 1.7.10
 
-After a little discussion on IRC, two points emerged:
-1. Use KVM_CAP_MAX_VCPUS to query the max number of vcpus at runtime.
-2. We should fail gracefully when ioctl() fails.
-
-In other words, using the KVM_MAX_VCPUS value from userspace isn't a
-good idea.  Imagine what happens when the user upgrades their kernel
-without recompiling QEMU.  If the KVM_MAX_VCPUS value increased in the
-kernel QEMU would not know.
-
-Please either drop this patch completely or at least using
-KVM_CAP_MAX_VCPUS so we fetch the maximum value at runtime.
+Thanks.  Jan Kiszka already submitted an equivalent patch which I have
+merged.  He used hw/usb/*.o hw/usb/*.d instead of hw/*/....
 
 Stefan
 
