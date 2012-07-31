@@ -1,54 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SwDvf-0006No-Mh
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jul 2012 11:00:11 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41002)
+	id 1SwEB9-0003xL-GD
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jul 2012 11:16:11 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1SwDvc-0006MW-Dp
-	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:00:10 -0400
+	(envelope-from <anthony@codemonkey.ws>) id 1SwEB2-0003da-6O
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:16:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1SwDvZ-0004Jp-Kb
-	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:00:08 -0400
-Received: from mail-gg0-f173.google.com ([209.85.161.173]:59674)
+	(envelope-from <anthony@codemonkey.ws>) id 1SwEAw-0002MA-2i
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:16:04 -0400
+Received: from mail-ob0-f173.google.com ([209.85.214.173]:65395)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1SwDvZ-0004C3-H9
-	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:00:05 -0400
-Received: by ggnp1 with SMTP id p1so5946796ggn.4
-	for <qemu-trivial@nongnu.org>; Tue, 31 Jul 2012 08:00:01 -0700 (PDT)
+	(envelope-from <anthony@codemonkey.ws>) id 1SwEAv-0002K5-UH
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:15:58 -0400
+Received: by obbta14 with SMTP id ta14so10157903obb.4
+	for <qemu-trivial@nongnu.org>; Tue, 31 Jul 2012 08:15:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=rv7fqZdwTuWSoon0qsRImgMn/JXOvPJTWfCqJU2Hyac=;
-	b=eEmKm0WhiPyxZVZiVE67jLrd98H3+MaCV2DEIIxT0xJA4tZYF0Qb0CqJ+rgXXMQ4JD
-	qo8NJz69g7FeauQYzNKSwH/CFeUfOzv5OcfcluTGX72yBpbouVhovtpA21aRBlQOb3fi
-	8x8ab3/bBPmU2sqZLp3WHyhrhTaOd2BDXqh3Yer6gUebWyn0WYSruAyf32YlvFiHtMwK
-	BCX6o5HSQ6TeL5kNKSGs1WQ8Nu5wVBESG7wLQc8QglYz0qmWr/KpDIbNqRgZEuHY5v0R
-	n7pI2vT7yOWktbu1YmiBkVkgBNmQY8hZO4neAWatwBrRla9JKtJE3JGxJXMcwbPKluDq
-	Afwg==
+	h=from:to:cc:subject:in-reply-to:references:user-agent:date
+	:message-id:mime-version:content-type:content-transfer-encoding
+	:x-gm-message-state;
+	bh=HrSxLsVGtsLuqNmW+5FqZeA4BA+RARAyIZpLa9HOLEI=;
+	b=OIeOdUZeMLE+4JP7V3SAAgXkoZ+Xj0SILTo2EXpq3KyRL8U5t4aPahKwIb2R5Oqjyy
+	zddRo/Jwd8vAiGWFgOBI/QtHkyMCheb00Dly+njn3xrTvTMF9R1k5MP9Jp6I1ScbX9Oq
+	0i7hOfe8qqlyCly/OPjG7a/oZTOYktxLyfHY43aBhOKmyV7CSCWbOs9RvAzA87bWVgtP
+	CmeFxrym7OTycQl6i62DfkJ3qIZv/oynkk4dIMJyGOnbIxwf7oZjV5jRRjW+6ZSgdVQE
+	VpvweDx/90Ds4E0CDHcniVhF4CyAdpMflom8IjhN37G/H6W4oMR1pxRR09j/nia+4OkB
+	SNvA==
+Received: by 10.182.110.37 with SMTP id hx5mr23720764obb.48.1343747757099;
+	Tue, 31 Jul 2012 08:15:57 -0700 (PDT)
+Received: from titi.smtp.gmail.com (cpe-70-123-145-39.austin.res.rr.com.
+	[70.123.145.39])
+	by mx.google.com with ESMTPS id fy6sm265779obc.7.2012.07.31.08.15.55
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 31 Jul 2012 08:15:56 -0700 (PDT)
+From: Anthony Liguori <anthony@codemonkey.ws>
+To: Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, Paolo Bonzini
+	<pbonzini@redhat.com>
+In-Reply-To: <5017F1E3.90806@suse.de>
+References: <1343714097-545-1-git-send-email-sw@weilnetz.de>
+	<5017EE1D.8060908@suse.de> <5017EEFD.5070503@redhat.com>
+	<5017EFC6.1050705@suse.de> <5017F0A2.5030400@redhat.com>
+	<5017F1E3.90806@suse.de>
+User-Agent: Notmuch/0.13.2+93~ged93d79 (http://notmuchmail.org) Emacs/23.3.1
+	(x86_64-pc-linux-gnu)
+Date: Tue, 31 Jul 2012 10:15:54 -0500
+Message-ID: <87y5m06jx1.fsf@codemonkey.ws>
 MIME-Version: 1.0
-Received: by 10.50.36.227 with SMTP id t3mr2355054igj.13.1343746801628; Tue,
-	31 Jul 2012 08:00:01 -0700 (PDT)
-Received: by 10.50.94.202 with HTTP; Tue, 31 Jul 2012 08:00:01 -0700 (PDT)
-In-Reply-To: <20120731143834.GJ2475@redhat.com>
-References: <1343739695-7757-1-git-send-email-peter.maydell@linaro.org>
-	<87pq7c9fng.fsf@blackfin.pond.sub.org>
-	<CAFEAcA_M7RJdCjsxycJUJcOLGe+DdBPSKuagb_=Kspwp-29A2Q@mail.gmail.com>
-	<87k3xk577l.fsf@blackfin.pond.sub.org>
-	<20120731143834.GJ2475@redhat.com>
-Date: Tue, 31 Jul 2012 16:00:01 +0100
-Message-ID: <CAFEAcA9+32Y+q7p5H7JPvOucVU-3_s94wT7JtX0nz7e60tbTPA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: "Daniel P. Berrange" <berrange@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnz8VU3zEBGJcjrWrIlBRNDmek6WPKYy5zhz5mXc8myM3urfblaxHoUrnrQZo30KD0L9u1A
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Gm-Message-State: ALoCoQmj6j8/huDeQMvH9y6y5RpsxykWVjyySYFA1efg1uQZwR7Mp63QJus0CzejYd1y44UKXn8P
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.161.173
-Cc: patches@linaro.org, qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Jan Kiszka <jan.kiszka@siemens.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Avoid explicit
- list of directories in clean target
+X-Received-From: 209.85.214.173
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
+	Hannes Reinecke <hare@suse.de>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] megasas: Update function
+	megasys_scsi_uninit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,19 +68,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jul 2012 15:00:10 -0000
+X-List-Received-Date: Tue, 31 Jul 2012 15:16:10 -0000
 
-On 31 July 2012 15:38, Daniel P. Berrange <berrange@redhat.com> wrote:
-> Isn't using 'find' somewhat overkill here really. QEMU only creates
-> .o and .d files in 2 levels of directory, so sure we can just avoid
-> find entirely
+Andreas F=C3=A4rber <afaerber@suse.de> writes:
+
+> Am 31.07.2012 16:50, schrieb Paolo Bonzini:
+>> Il 31/07/2012 16:46, Andreas F=C3=A4rber ha scritto:
+>>>>> Why would megasas be in master but not compiled/linked?
+>>>> Because Anthony objected to how it picks the initiator WWN.
+>>> Ah, anything keeping us from fixing that? :)
+>>=20
+>> Exact knowledge of the requirements, basically. :)
 >
->   rm -f *.[od] */*.[od]
+> I.e. waiting on feedback about numeric constraints from Hannes? :)
+> Or waiting on general direction from Anthony?
+> How to make progress there for 1.2 / Soft Freeze?
 
-That's exactly the bug this change is addressing (in a more
-general way than a couple of the proposed point fixes). There
-are subdirectories of hw/, so for instance we have a hw/usb/bus.o
-which your rm would not delete.
+You cannot build guest visible state by casting pointers.
 
--- PMM
+I'm really disappointed that this hasn't been resolved yet.  If it's not
+resolved before the soft freeze, I think we ought to revert the megasas
+patches completely.
+
+Regards,
+
+Anthony Liguori
+
+>
+> Andreas
+>
+> --=20
+> SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+> GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=
+=BCrnberg
 
