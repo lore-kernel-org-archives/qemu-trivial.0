@@ -1,50 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SwEhE-0003bo-4A
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jul 2012 11:49:20 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:33988)
+	id 1SwEjw-0004W0-V1
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jul 2012 11:52:08 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43997)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1SwEh7-0003Hq-39
-	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:49:18 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1SwEju-0004PX-JJ
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:52:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1SwEh5-00060o-Ri
-	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:49:12 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:58263)
+	(envelope-from <peter.maydell@linaro.org>) id 1SwEjq-0007Bg-6P
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:52:05 -0400
+Received: from mail-wg0-f53.google.com ([74.125.82.53]:58081)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1SwEh0-0005yx-Ov; Tue, 31 Jul 2012 11:49:06 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	3B3F87280021; Tue, 31 Jul 2012 17:49:05 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id B-FjkbUVsuB0; Tue, 31 Jul 2012 17:49:04 +0200 (CEST)
-Received: from [192.168.178.20] (p54ADA0E1.dip.t-dialin.net [84.173.160.225])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	2A937728001F; Tue, 31 Jul 2012 17:49:04 +0200 (CEST)
-Message-ID: <5017FE6F.7090107@weilnetz.de>
-Date: Tue, 31 Jul 2012 17:49:03 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:14.0) Gecko/20120714 Thunderbird/14.0
+	(envelope-from <peter.maydell@linaro.org>) id 1SwEjp-0007B1-WB
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:52:02 -0400
+Received: by wgbfm10 with SMTP id fm10so4808234wgb.10
+	for <qemu-trivial@nongnu.org>; Tue, 31 Jul 2012 08:52:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=sRCFy11Ysj1XOQxs3NGwWjRWP8sgUbn+qXwewjxSJ54=;
+	b=hRlK/GTmYBNAwOWgEX0fruhbkh0JSkMnyVsfHf5MJVqAa0+nCHY4x/2LKeaJBnP0r4
+	c3QPjedCglVUZIax1EaTkSQ/gs1MEWj5Ltn1tiQLUWd3rIj3YJoimXLlIYnIFKPrWxNF
+	8TDZBhxG+ruUK4if1hivpIStJQ/puLh4sSdQ9wzvGhOwt7mxW3oOiz7So1ZgmNDEyPUb
+	iUi2/mXJCPTeRgLhbSUe9K9ai/TITB2BmZaVojo6QHT53t7zC4esLWcQ4UMDLwtrxKKT
+	I3Cs39UblETWgCc4eNEyCtlKvKmZuJv16uIwf9d0kgjAeAkv4b9AanOYRJVeNIlu/2ih
+	w3oA==
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
+Received: by 10.50.220.195 with SMTP id py3mr2318936igc.70.1343749919679; Tue,
+	31 Jul 2012 08:51:59 -0700 (PDT)
+Received: by 10.50.94.202 with HTTP; Tue, 31 Jul 2012 08:51:59 -0700 (PDT)
+In-Reply-To: <5017FE6F.7090107@weilnetz.de>
 References: <1343739695-7757-1-git-send-email-peter.maydell@linaro.org>
 	<87pq7c9fng.fsf@blackfin.pond.sub.org>
 	<CAFEAcA_M7RJdCjsxycJUJcOLGe+DdBPSKuagb_=Kspwp-29A2Q@mail.gmail.com>
 	<87k3xk577l.fsf@blackfin.pond.sub.org>
 	<20120731143834.GJ2475@redhat.com>
 	<CAFEAcA9+32Y+q7p5H7JPvOucVU-3_s94wT7JtX0nz7e60tbTPA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9+32Y+q7p5H7JPvOucVU-3_s94wT7JtX0nz7e60tbTPA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
+	<5017FE6F.7090107@weilnetz.de>
+Date: Tue, 31 Jul 2012 16:51:59 +0100
+Message-ID: <CAFEAcA_iNL5YS4cH=NH=o_y3D9pmnE6j3U2qS6-xUw5CP_L4bA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQl6M3+09Cwx983mURVMZS6OXOJOrdEo5S9CmqQnGm3TzSgfU0W6RMTiPhkxkK250lRGQGn+
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 74.125.82.53
 Cc: "Daniel P. Berrange" <berrange@redhat.com>, patches@linaro.org,
-	qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
-	Jan Kiszka <jan.kiszka@siemens.com>
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>, Jan Kiszka <jan.kiszka@siemens.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Avoid explicit
  list of directories in clean target
 X-BeenThere: qemu-trivial@nongnu.org
@@ -58,39 +62,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jul 2012 15:49:19 -0000
+X-List-Received-Date: Tue, 31 Jul 2012 15:52:07 -0000
 
-Am 31.07.2012 17:00, schrieb Peter Maydell:
-> On 31 July 2012 15:38, Daniel P. Berrange <berrange@redhat.com> wrote:
->> Isn't using 'find' somewhat overkill here really. QEMU only creates
->> .o and .d files in 2 levels of directory, so sure we can just avoid
->> find entirely
->>
->>    rm -f *.[od] */*.[od]
+On 31 July 2012 16:49, Stefan Weil <sw@weilnetz.de> wrote:
+> Yes, QEMU creates files in 3 levels. We could use
 >
-> That's exactly the bug this change is addressing (in a more
-> general way than a couple of the proposed point fixes). There
-> are subdirectories of hw/, so for instance we have a hw/usb/bus.o
-> which your rm would not delete.
+>     rm -f *.[od] */*.[od] */*/*.[od]
 >
-> -- PMM
+> I suggest using the wrapper $(call quiet-command,...)
+> to suppress printing of all removed file names.
 
-Yes, QEMU creates files in 3 levels. We could use
+My worry was not so much what we print as that we
+might be exceeding the total command line length
+limits on some systems (whether you did it this way
+or via "rm -f $(find ...)").
 
-     rm -f *.[od] */*.[od] */*/*.[od]
-
-I suggest using the wrapper $(call quiet-command,...)
-to suppress printing of all removed file names.
-
-For me, your patch using find would also be sufficient.
-
-Only developers use "make clean", and they should know
-how to name files. Even if there are files with blanks
-in their name, in most cases nothing bad will happen
-(as long as they are not named "-rf .. .o" which would
-be the worst scenario I can imagine).
-
-Regards,
-Stefan W.
-
+-- PMM
 
