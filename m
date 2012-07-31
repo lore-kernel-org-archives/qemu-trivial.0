@@ -1,56 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SwFqs-000761-TV
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jul 2012 13:03:22 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43940)
+	id 1SwIsT-0006Mg-N6
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jul 2012 16:17:13 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54005)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1SwFql-0006mT-Rh
-	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 13:03:21 -0400
+	(envelope-from <hare@suse.de>) id 1SwIsR-0006Es-0B
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 16:17:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1SwFqj-00084M-TT
-	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 13:03:15 -0400
-Received: from mail-qa0-f52.google.com ([209.85.216.52]:64183)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>)
-	id 1SwFqb-000814-3p; Tue, 31 Jul 2012 13:03:05 -0400
-Received: by qabj34 with SMTP id j34so1679923qab.4
-	for <multiple recipients>; Tue, 31 Jul 2012 10:03:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=+fd9qPMx59lpugsi/rgPVeZpdfieRPqUrYqLOJQFjP0=;
-	b=ikjRaP+XRh7wuOZYxZIyfAFd1k3yjq657ElwOTPMmoRFYqUiUTvqclvhQJhkYTyFgM
-	o5EWge9KZNJRfXfJUROXOPL8Rt5m98LpfhoxcSwDfJqk3DOcHywbE1p3sbHr4nWbBzZw
-	SWLE9H67hHGj99pi3McdH3AvESLUVE9Nq6wtKhWJyKasiQajqfa8FESgQqdk2K/kfIH1
-	KBR/qX5Aog5gLHNYI/cqc/uAiwU/cipbpbXHornqtTvjXSJK/ciJ98LsqxapKt70/JfF
-	uXW2mXcqvmRlY6SQTxNCyR2laIayMudwgi9MnVBY/EUAcSWVDaDOs/V13wxJSgM0UOIs
-	JhZQ==
-Received: by 10.50.196.232 with SMTP id ip8mr2629178igc.50.1343754181274; Tue,
-	31 Jul 2012 10:03:01 -0700 (PDT)
+	(envelope-from <hare@suse.de>) id 1SwIsP-0002eu-TL
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 16:17:10 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:46320 helo=mx2.suse.de)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <hare@suse.de>)
+	id 1SwIsM-0002Xn-W8; Tue, 31 Jul 2012 16:17:07 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 9D2989FB23;
+	Tue, 31 Jul 2012 22:17:04 +0200 (CEST)
+Message-ID: <50185960.9050700@suse.de>
+Date: Wed, 01 Aug 2012 00:17:04 +0200
+From: Hannes Reinecke <hare@suse.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:13.0) Gecko/20120601 Thunderbird/13.0
 MIME-Version: 1.0
-Received: by 10.64.139.10 with HTTP; Tue, 31 Jul 2012 10:02:41 -0700 (PDT)
-In-Reply-To: <501805EB.9070606@weilnetz.de>
-References: <1343739695-7757-1-git-send-email-peter.maydell@linaro.org>
-	<87pq7c9fng.fsf@blackfin.pond.sub.org>
-	<CAFEAcA_M7RJdCjsxycJUJcOLGe+DdBPSKuagb_=Kspwp-29A2Q@mail.gmail.com>
-	<87k3xk577l.fsf@blackfin.pond.sub.org>
-	<20120731143834.GJ2475@redhat.com>
-	<CAFEAcA9+32Y+q7p5H7JPvOucVU-3_s94wT7JtX0nz7e60tbTPA@mail.gmail.com>
-	<5017FE6F.7090107@weilnetz.de>
-	<CAFEAcA_iNL5YS4cH=NH=o_y3D9pmnE6j3U2qS6-xUw5CP_L4bA@mail.gmail.com>
-	<501805EB.9070606@weilnetz.de>
-From: Blue Swirl <blauwirbel@gmail.com>
-Date: Tue, 31 Jul 2012 17:02:41 +0000
-Message-ID: <CAAu8pHurA8B-Gu1ipmX-owb5tcaQX5m58ZGFgGrcJgj+RVaJnw@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.216.52
-Cc: Peter Maydell <peter.maydell@linaro.org>, patches@linaro.org,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, Jan Kiszka <jan.kiszka@siemens.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Avoid explicit
- list of directories in clean target
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <1343714097-545-1-git-send-email-sw@weilnetz.de>
+	<5017EE1D.8060908@suse.de> <5017EEFD.5070503@redhat.com>
+	<5017EFC6.1050705@suse.de> <5017F0A2.5030400@redhat.com>
+	<5017F1E3.90806@suse.de> <87y5m06jx1.fsf@codemonkey.ws>
+	<5017FD81.3040707@redhat.com>
+In-Reply-To: <5017FD81.3040707@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
+	Anthony Liguori <anthony@codemonkey.ws>,
+	=?UTF-8?B?QW5kcmVhcyBGw6RyYmU=?= =?UTF-8?B?cg==?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] megasas: Update function
+	megasys_scsi_uninit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,66 +50,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jul 2012 17:03:21 -0000
+X-List-Received-Date: Tue, 31 Jul 2012 20:17:12 -0000
 
-On Tue, Jul 31, 2012 at 4:20 PM, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 31.07.2012 17:51, schrieb Peter Maydell:
+On 07/31/2012 05:45 PM, Paolo Bonzini wrote:
+> Il 31/07/2012 17:15, Anthony Liguori ha scritto:
+>> Andreas F=C3=A4rber <afaerber@suse.de> writes:
 >>
->> On 31 July 2012 16:49, Stefan Weil <sw@weilnetz.de> wrote:
+>>> Am 31.07.2012 16:50, schrieb Paolo Bonzini:
+>>>> Il 31/07/2012 16:46, Andreas F=C3=A4rber ha scritto:
+>>>>>>> Why would megasas be in master but not compiled/linked?
+>>>>>> Because Anthony objected to how it picks the initiator WWN.
+>>>>> Ah, anything keeping us from fixing that? :)
+>>>>
+>>>> Exact knowledge of the requirements, basically. :)
 >>>
->>> Yes, QEMU creates files in 3 levels. We could use
->>>
->>>      rm -f *.[od] */*.[od] */*/*.[od]
->>>
->>> I suggest using the wrapper $(call quiet-command,...)
->>> to suppress printing of all removed file names.
+>>> I.e. waiting on feedback about numeric constraints from Hannes? :)
+>>> Or waiting on general direction from Anthony?
+>>> How to make progress there for 1.2 / Soft Freeze?
 >>
+>> You cannot build guest visible state by casting pointers.
 >>
->> My worry was not so much what we print as that we
->> might be exceeding the total command line length
->> limits on some systems (whether you did it this way
->> or via "rm -f $(find ...)").
->>
->> -- PMM
+>> I'm really disappointed that this hasn't been resolved yet.  If it's n=
+ot
+>> resolved before the soft freeze, I think we ought to revert the megasa=
+s
+>> patches completely.
 >
+> Hannes, can you give a quick yes/no on the approach of the attached
+> patch?  The address of the HBA is given by a wwn property or, in the
+> lack of one, by an increasing index similar to the one used for MAC
+> addresses.  The address of the disks is also given by a wwn property or=
+,
+> in the lack of one, by combining the HBA address with the target number=
+.
 >
-> That's quite possible:
->
-> $ find -name "*.[od]"|wc
->    4862    4862  151329
-> $ ls *.[od] */*.[od] */*/*.[od] */*/*/*.[od] */*/*/*/*.[od]|wc
->    4862    4862  141605
->
-> (I was somewhat surprised to see that we use 5 levels of directories).
->
-> The command line would be more than 140000 characters which is indeed very
-> long.
->
-> Separating .o and .d files and the levels reduces that number:
->
-> $ ls *.o|wc
->      80      80     952
-> $ ls */*.o|wc
->     819     819   20048
-> $ ls */*/*.o|wc
->    1406    1406   45573
-> $ ls */*/*/*.o|wc
->      87      87    2579
-> $ ls */*/*/*/*.o|wc
->      16      16     796
->
-> The 2nd and the 3rd level are potentially critical, but they could be
-> split up further if needed.
->
-> What about removing support for in-tree builds?
-> For out-of-tree builds 'make distclean' is nearly trivial.
+Sorry for not answering earlier, but real life interfered
+(customer escalations et al ...)
 
-We could also recommend out of tree build for those hosts which have
-command line restrictions (can they be detected?). Even better, always
-warn if in tree build is detected.
+Anyway, Paolo, your approach is partially correct.
+Ad 1, yes, we should be having a property for setting the SAS address of=20
+the HBA. So that's okay and can go in. Anyone concerned with uniqueness=20
+can then set it as appropriate.
 
->
-> -- Stefan W.
->
->
+Ad 2: no, the SAS address for the devices is _not_ the WWN.
+The WWN is the ID of the LUN, whereas the SAS address is the ID of the=20
+Target. So to be correct we would need to generate unique SAS addressed=20
+per target which needs to be different from the WWN.
+However, megasas does not need to present SAS addresses here; we can set=20
+the interface to PCI-E (instead of SAS) and just use the LUN number.
+Sadly I've yet to figure out the code for PCIE.
+(Doing it correctly involves staring a binary output and figuring the=20
+meaning of bits. Did I mention I don't have documentation for that beast?=
+)
+That's what's stalled the patch for now.
+
+I see to have a patch cooked up tomorrow.
+
+Cheers,
+
+Hannes
+--=20
+Dr. Hannes Reinecke		      zSeries & Storage
+hare@suse.de			      +49 911 74053 688
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg
+GF: Markus Rex, HRB 16746 (AG N=C3=BCrnberg)
+
+
+
 
