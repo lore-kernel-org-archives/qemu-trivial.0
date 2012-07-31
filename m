@@ -1,44 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SwDrQ-00044p-Pw
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jul 2012 10:55:48 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58523)
+	id 1SwDvf-0006No-Mh
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jul 2012 11:00:11 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:41002)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1SwDrK-0003mK-Fo
-	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 10:55:46 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1SwDvc-0006MW-Dp
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:00:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1SwDrJ-0002YL-Fz
-	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 10:55:42 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:58775 helo=mx2.suse.de)
+	(envelope-from <peter.maydell@linaro.org>) id 1SwDvZ-0004Jp-Kb
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:00:08 -0400
+Received: from mail-gg0-f173.google.com ([209.85.161.173]:59674)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1SwDrE-0002V4-CM; Tue, 31 Jul 2012 10:55:36 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 31ABCA0FED;
-	Tue, 31 Jul 2012 16:55:34 +0200 (CEST)
-Message-ID: <5017F1E3.90806@suse.de>
-Date: Tue, 31 Jul 2012 16:55:31 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:14.0) Gecko/20120713 Thunderbird/14.0
+	(envelope-from <peter.maydell@linaro.org>) id 1SwDvZ-0004C3-H9
+	for qemu-trivial@nongnu.org; Tue, 31 Jul 2012 11:00:05 -0400
+Received: by ggnp1 with SMTP id p1so5946796ggn.4
+	for <qemu-trivial@nongnu.org>; Tue, 31 Jul 2012 08:00:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=rv7fqZdwTuWSoon0qsRImgMn/JXOvPJTWfCqJU2Hyac=;
+	b=eEmKm0WhiPyxZVZiVE67jLrd98H3+MaCV2DEIIxT0xJA4tZYF0Qb0CqJ+rgXXMQ4JD
+	qo8NJz69g7FeauQYzNKSwH/CFeUfOzv5OcfcluTGX72yBpbouVhovtpA21aRBlQOb3fi
+	8x8ab3/bBPmU2sqZLp3WHyhrhTaOd2BDXqh3Yer6gUebWyn0WYSruAyf32YlvFiHtMwK
+	BCX6o5HSQ6TeL5kNKSGs1WQ8Nu5wVBESG7wLQc8QglYz0qmWr/KpDIbNqRgZEuHY5v0R
+	n7pI2vT7yOWktbu1YmiBkVkgBNmQY8hZO4neAWatwBrRla9JKtJE3JGxJXMcwbPKluDq
+	Afwg==
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <1343714097-545-1-git-send-email-sw@weilnetz.de>
-	<5017EE1D.8060908@suse.de> <5017EEFD.5070503@redhat.com>
-	<5017EFC6.1050705@suse.de> <5017F0A2.5030400@redhat.com>
-In-Reply-To: <5017F0A2.5030400@redhat.com>
-X-Enigmail-Version: 1.5a1pre
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
-	Hannes Reinecke <hare@suse.de>, Anthony Liguori <anthony@codemonkey.ws>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] megasas: Update function
-	megasys_scsi_uninit
+Received: by 10.50.36.227 with SMTP id t3mr2355054igj.13.1343746801628; Tue,
+	31 Jul 2012 08:00:01 -0700 (PDT)
+Received: by 10.50.94.202 with HTTP; Tue, 31 Jul 2012 08:00:01 -0700 (PDT)
+In-Reply-To: <20120731143834.GJ2475@redhat.com>
+References: <1343739695-7757-1-git-send-email-peter.maydell@linaro.org>
+	<87pq7c9fng.fsf@blackfin.pond.sub.org>
+	<CAFEAcA_M7RJdCjsxycJUJcOLGe+DdBPSKuagb_=Kspwp-29A2Q@mail.gmail.com>
+	<87k3xk577l.fsf@blackfin.pond.sub.org>
+	<20120731143834.GJ2475@redhat.com>
+Date: Tue, 31 Jul 2012 16:00:01 +0100
+Message-ID: <CAFEAcA9+32Y+q7p5H7JPvOucVU-3_s94wT7JtX0nz7e60tbTPA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: "Daniel P. Berrange" <berrange@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQnz8VU3zEBGJcjrWrIlBRNDmek6WPKYy5zhz5mXc8myM3urfblaxHoUrnrQZo30KD0L9u1A
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.161.173
+Cc: patches@linaro.org, qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	Jan Kiszka <jan.kiszka@siemens.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Avoid explicit
+ list of directories in clean target
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,24 +60,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jul 2012 14:55:47 -0000
+X-List-Received-Date: Tue, 31 Jul 2012 15:00:10 -0000
 
-Am 31.07.2012 16:50, schrieb Paolo Bonzini:
-> Il 31/07/2012 16:46, Andreas F=E4rber ha scritto:
->>>> Why would megasas be in master but not compiled/linked?
->>> Because Anthony objected to how it picks the initiator WWN.
->> Ah, anything keeping us from fixing that? :)
->=20
-> Exact knowledge of the requirements, basically. :)
+On 31 July 2012 15:38, Daniel P. Berrange <berrange@redhat.com> wrote:
+> Isn't using 'find' somewhat overkill here really. QEMU only creates
+> .o and .d files in 2 levels of directory, so sure we can just avoid
+> find entirely
+>
+>   rm -f *.[od] */*.[od]
 
-I.e. waiting on feedback about numeric constraints from Hannes? :)
-Or waiting on general direction from Anthony?
-How to make progress there for 1.2 / Soft Freeze?
+That's exactly the bug this change is addressing (in a more
+general way than a couple of the proposed point fixes). There
+are subdirectories of hw/, so for instance we have a hw/usb/bus.o
+which your rm would not delete.
 
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+-- PMM
 
