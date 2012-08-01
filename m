@@ -1,29 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SwZ5u-0006uY-2e
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 09:36:10 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56649)
+	id 1SwZYR-0008KT-T3
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 10:05:39 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:40672)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1SwZ5r-0006mi-GH
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 09:36:08 -0400
+	(envelope-from <avi@redhat.com>) id 1SwZYK-0007xm-Nw
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 10:05:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1SwZ5q-0004aw-26
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 09:36:07 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:47175)
+	(envelope-from <avi@redhat.com>) id 1SwZYG-0005N4-2n
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 10:05:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50144)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1SwZ5h-0004T0-5R; Wed, 01 Aug 2012 09:35:57 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1SwZ5X-0002Sp-Rw; Wed, 01 Aug 2012 14:35:47 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Wed,  1 Aug 2012 14:35:47 +0100
-Message-Id: <1343828147-9446-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org, Avi Kivity <avi@redhat.com>, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] exec.c: Remove out of date comment
+	(envelope-from <avi@redhat.com>)
+	id 1SwZY7-0005Kt-Gx; Wed, 01 Aug 2012 10:05:19 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q71E5H5s016495
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 1 Aug 2012 10:05:17 -0400
+Received: from balrog.usersys.tlv.redhat.com (dhcp-4-121.tlv.redhat.com
+	[10.35.4.121])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q71E5Fm4018805; Wed, 1 Aug 2012 10:05:16 -0400
+Message-ID: <5019379B.5080206@redhat.com>
+Date: Wed, 01 Aug 2012 17:05:15 +0300
+From: Avi Kivity <avi@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:14.0) Gecko/20120717 Thunderbird/14.0
+MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1343828147-9446-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1343828147-9446-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] exec.c: Remove out of date comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,45 +49,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Aug 2012 13:36:08 -0000
+X-List-Received-Date: Wed, 01 Aug 2012 14:05:38 -0000
 
-Remove an out of date comment: this comment used to be attached to
-cpu_register_physical_memory_log(), before commit 0f0cb164 accidentally
-inserted a couple of other functions between the comment and its function.
-It is in any case obsolete since (a) the function arguments it refers
-to have been replaced with a single MemoryRegionSection* argument and
-(b) the inability to handle regions whose offset_within_address_space
-and offset_within_region aren't equally aligned was fixed as part of
-the rewrite of this code.
+On 08/01/2012 04:35 PM, Peter Maydell wrote:
+> Remove an out of date comment: this comment used to be attached to
+> cpu_register_physical_memory_log(), before commit 0f0cb164 accidentally
+> inserted a couple of other functions between the comment and its function.
+> It is in any case obsolete since (a) the function arguments it refers
+> to have been replaced with a single MemoryRegionSection* argument and
+> (b) the inability to handle regions whose offset_within_address_space
+> and offset_within_region aren't equally aligned was fixed as part of
+> the rewrite of this code.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Pretty sure my analysis is right and this comment is out of date --
-Avi, could you confirm that please?
+(c) it doesn't use the conventional block comment style.
 
- exec.c |    8 --------
- 1 file changed, 8 deletions(-)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Pretty sure my analysis is right and this comment is out of date --
+> Avi, could you confirm that please?
 
-diff --git a/exec.c b/exec.c
-index feb4795..22dff17 100644
---- a/exec.c
-+++ b/exec.c
-@@ -2240,14 +2240,6 @@ static void phys_sections_clear(void)
-     phys_sections_nb = 0;
- }
- 
--/* register physical memory.
--   For RAM, 'size' must be a multiple of the target page size.
--   If (phys_offset & ~TARGET_PAGE_MASK) != 0, then it is an
--   io memory page.  The address used when calling the IO function is
--   the offset from the start of the region, plus region_offset.  Both
--   start_addr and region_offset are rounded down to a page boundary
--   before calculating this offset.  This should not be a problem unless
--   the low bits of start_addr and region_offset differ.  */
- static void register_subpage(MemoryRegionSection *section)
- {
-     subpage_t *subpage;
+Yes, you are correct.
+
+
+
 -- 
-1.7.9.5
-
+error compiling committee.c: too many arguments to function
 
