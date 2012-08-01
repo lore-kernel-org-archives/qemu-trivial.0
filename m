@@ -1,56 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SwWAA-0002V2-TQ
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 06:28:22 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39605)
+	id 1SwWNz-0006a6-5x
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 06:42:39 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:58162)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SwWA7-0002QK-Lz
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 06:28:20 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SwWNs-0006Hc-Aw
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 06:42:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SwWA1-0004Ob-Md
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 06:28:19 -0400
-Received: from mail-wi0-f175.google.com ([209.85.212.175]:42058)
+	(envelope-from <stefanha@gmail.com>) id 1SwWNm-0000gw-N4
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 06:42:32 -0400
+Received: from mail-wi0-f175.google.com ([209.85.212.175]:37302)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1SwWA1-0004OS-GV; Wed, 01 Aug 2012 06:28:13 -0400
-Received: by wibhm2 with SMTP id hm2so2953843wib.10
-	for <multiple recipients>; Wed, 01 Aug 2012 03:28:12 -0700 (PDT)
+	id 1SwWNb-0000ep-8e; Wed, 01 Aug 2012 06:42:15 -0400
+Received: by wibhm2 with SMTP id hm2so2962623wib.10
+	for <multiple recipients>; Wed, 01 Aug 2012 03:42:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=dd0saLpcO37CXdUIX2pXLbUoWWkWUVAaHT0BHolc6+Y=;
-	b=SRRDWiIZa8q43rwBY1f6n1v8H8zpT/zRbA2doW9wMAi7j6Zj71aFh38x+3k+C3te3z
-	TWtGvTMvJvX2oOFUEsCTTn2cOpSueUgXB9Jmi1/bAXfrA///ceOkD5P/r3aPgK7Cp4a8
-	fem16O8LNi6a4QOpbZdR7Qcp+eq+/ehqADWhzZWkExvfdW7ixKHFbspSzgaKXOxsZIpY
-	t5fqaTQxQlhjOS2L27iNRlMvSsJTNlpGdVs0VN+B5QltrhW/J8mkLTDeWGNgiFjGv5ao
-	4DDvXli+ONY6IzmEFkzrW5WB8Ku6gbZcs4tvm2BojZ6HgPZJOgw4tswZBBK/EK7aqMep
-	OxgA==
-Received: by 10.216.54.146 with SMTP id i18mr8063782wec.187.1343816892593;
-	Wed, 01 Aug 2012 03:28:12 -0700 (PDT)
+	bh=iM7nRFB/x3Y6284U2V8kYDtO5oO5npQeDdRAptWTLTg=;
+	b=jdePrptj9W/6Gjpsfaou25cF1FUH9woXVmuNvfd3wuwYruYeMKCZFeoMR1+MLI3lls
+	fEvF19fq2+CijcA0wJ9wkjhbooykqSATWV31Wza+pmKdXSGksHJizZF0FC9af9jbejPL
+	SPc3+3pgbMJ2P7sdDbxWS/e8WSktMwzGs38nCKio9NimcCQfA4WSbtxLJBHtJDhm5nYN
+	3yJn5brinurydrrr2by2xWgmAcLh6pcFQ9cLvp9Gy34n8W4tklGkQdBubWM2eVHrL1cn
+	U8zGElOfrAsLDPaI2I+rEbJ3om4k8BboS+03nfkCcdGJCx4RQisYn7nG10XYtIvXAfNm
+	0qkA==
+Received: by 10.216.116.73 with SMTP id f51mr8658398weh.50.1343817734229;
+	Wed, 01 Aug 2012 03:42:14 -0700 (PDT)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id cu1sm27230086wib.6.2012.08.01.03.28.11
+	by mx.google.com with ESMTPS id fu8sm27281926wib.5.2012.08.01.03.42.12
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 01 Aug 2012 03:28:12 -0700 (PDT)
-Date: Wed, 1 Aug 2012 11:28:10 +0100
+	Wed, 01 Aug 2012 03:42:13 -0700 (PDT)
+Date: Wed, 1 Aug 2012 11:42:12 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <20120801102810.GA17816@stefanha-thinkpad.localdomain>
-References: <1343739695-7757-1-git-send-email-peter.maydell@linaro.org>
-	<87pq7c9fng.fsf@blackfin.pond.sub.org>
-	<5017EABA.1020005@redhat.com>
+To: Tyler Hall <tylerwhall@gmail.com>
+Message-ID: <20120801104212.GB17816@stefanha-thinkpad.localdomain>
+References: <1343256304-32029-1-git-send-email-tylerwhall@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <5017EABA.1020005@redhat.com>
+In-Reply-To: <1343256304-32029-1-git-send-email-tylerwhall@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.85.212.175
-Cc: Peter Maydell <peter.maydell@linaro.org>, patches@linaro.org,
-	qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Jan Kiszka <jan.kiszka@siemens.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Avoid explicit
- list of directories in clean target
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, Avi Kivity <avi@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH 1/2] exec.c: Fix off-by-one error in
+ register_subpage
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,42 +57,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Aug 2012 10:28:20 -0000
+X-List-Received-Date: Wed, 01 Aug 2012 10:42:38 -0000
 
-On Tue, Jul 31, 2012 at 08:24:58AM -0600, Eric Blake wrote:
-> On 07/31/2012 08:19 AM, Markus Armbruster wrote:
-> > Peter Maydell <peter.maydell@linaro.org> writes:
-> > 
-> >> Avoid having an explicit list of directories in the 'clean'
-> >> target by using 'find' to remove all .o and .d files instead.
-> >>
+On Wed, Jul 25, 2012 at 06:45:03PM -0400, Tyler Hall wrote:
+> subpage_register() expects "end" to be the last byte in the mapping.
+> Registering a non-page-aligned memory region that extends up to or
+> beyond a page boundary causes subpage_register() to silently fail
+> through the (end >= PAGE_SIZE) check.
 > 
-> >>  	rm -f qemu-options.def
-> >> -	rm -f *.o *.d *.a *.lo $(TOOLS) $(HELPERS-y) qemu-ga TAGS cscope.* *.pod *~ */*~
-> >> +	find . -name '*.[od]' | xargs rm -f
-> >> +	rm -f *.a *.lo $(TOOLS) $(HELPERS-y) qemu-ga TAGS cscope.* *.pod *~ */*~
-> > 
-> > Shit happens if you somehow manage to create a "mean" file name in the
-> > build tree.  Sure you don't want to -print0 | xargs -0?
+> This bug does not cause noticeable problems for mappings that do not
+> extend to a page boundary, though they do register an extra byte.
 > 
-> Except that 'find -print0' and 'xargs -0' are both GNU extensions, not
-> available everywhere.  We may be requiring gmake and gcc, but are we
-> also requiring GNU find?
+> Signed-off-by: Tyler Hall <tylerwhall@gmail.com>
+> ---
+>  exec.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> The POSIX way to write this, without relying on extensions, is:
-> 
-> find . -name '*.[od]' -exec rm -f {} +
-> 
-> (although then you get into the arguments of whether 'find -exec {} +'
-> is portable yet, even though it has now been required by POSIX for more
-> than 4 years.)
+> diff --git a/exec.c b/exec.c
+> index feb4795..27b100c 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -2271,7 +2271,7 @@ static void register_subpage(MemoryRegionSection *section)
+>          subpage = container_of(existing->mr, subpage_t, iomem);
+>      }
+>      start = section->offset_within_address_space & ~TARGET_PAGE_MASK;
+> -    end = start + section->size;
+> +    end = start + section->size - 1;
+>      subpage_register(subpage, start, end, phys_section_add(section));
+>  }
 
-This portable approach seems reasonable.  I have checked the find(1) man
-page on: FreeBSD, OpenBSD, Solaris 11, Mac OS X.
-
-Let's give find -exec + a shot.  If it breaks something then the folks
-who care can provide a buildslave to ensure their host platform
-continues to be supported in the future.
+I would really like to see an Acked-by: or Signed-off-by: from Avi or
+someone else who is familiar with the memory regions code.  Especially
+for Patch 2/2.
 
 Stefan
 
