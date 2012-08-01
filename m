@@ -1,48 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SwYYK-0008Bf-Cp
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 09:01:28 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46175)
+	id 1SwYZJ-0000h2-CT
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 09:02:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:46859)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SwYYD-0007st-Hi
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 09:01:27 -0400
+	(envelope-from <avi@redhat.com>) id 1SwYZH-0000al-5D
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 09:02:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SwYYC-0001AC-BA
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 09:01:21 -0400
-Received: from mail-lb0-f173.google.com ([209.85.217.173]:35052)
+	(envelope-from <avi@redhat.com>) id 1SwYZ9-0001vW-50
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 09:02:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60944)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SwYXw-00014p-W6; Wed, 01 Aug 2012 09:01:05 -0400
-Received: by lbok6 with SMTP id k6so335543lbo.4
-	for <multiple recipients>; Wed, 01 Aug 2012 06:01:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=1FBCBYAjtWO0IjzCpTJPAfbYyNilgWvY6hpeuiQr/io=;
-	b=IbtN0+v/rYBqakqoNAbY3Nt7R/mzbiDRzFPRorPlXwT/qSGyV5Is6cprDKxhCnQE+p
-	g0LgptYbOWnzQzJLFDDy/ujcnxsd20oWvJiTKvEYZWcr79N6Mosv6xpJ5fWN92l3qT82
-	S8cuILsca8AFuC4Poi5zQ7mRJpCXFIiW7qXzOZRfbYhpa+6Dl0g/eNIwXIbygRHffz0a
-	bcO+rajNJ6tP4hPP5XBRfS5anmxQDTWQHNsZ5t5eKABU/5H6oXdGUxrLi3qwcYVTbuiW
-	p0xn9l3ExrTHSdi+9H1Dg1id9XaBuN7e6mqbZhc32S3QzUsA+8XNmUi/iUV81Ree9q8c
-	1XIg==
+	(envelope-from <avi@redhat.com>)
+	id 1SwYYy-0001pv-F7; Wed, 01 Aug 2012 09:02:08 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q71D267n008763
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 1 Aug 2012 09:02:06 -0400
+Received: from balrog.usersys.tlv.redhat.com (dhcp-4-121.tlv.redhat.com
+	[10.35.4.121])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q71D24gw031613; Wed, 1 Aug 2012 09:02:05 -0400
+Message-ID: <501928CC.50201@redhat.com>
+Date: Wed, 01 Aug 2012 16:02:04 +0300
+From: Avi Kivity <avi@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:14.0) Gecko/20120717 Thunderbird/14.0
 MIME-Version: 1.0
-Received: by 10.112.45.168 with SMTP id o8mr8070891lbm.88.1343826063371; Wed,
-	01 Aug 2012 06:01:03 -0700 (PDT)
-Received: by 10.112.71.73 with HTTP; Wed, 1 Aug 2012 06:01:03 -0700 (PDT)
-In-Reply-To: <50192786.5080904@redhat.com>
+To: Tyler Hall <tylerwhall@gmail.com>
 References: <1343256304-32029-1-git-send-email-tylerwhall@gmail.com>
-	<50192786.5080904@redhat.com>
-Date: Wed, 1 Aug 2012 14:01:03 +0100
-Message-ID: <CAJSP0QV_aZLQ37M0+d-8aVoru_w7kgLpg2Bi1qR-1b5VzUFLKg@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Avi Kivity <avi@redhat.com>
+	<1343256304-32029-2-git-send-email-tylerwhall@gmail.com>
+In-Reply-To: <1343256304-32029-2-git-send-email-tylerwhall@gmail.com>
 Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.217.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Tyler Hall <tylerwhall@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] exec.c: Fix off-by-one
-	error in register_subpage
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] exec.c: Use subpages
+ for large unaligned mappings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,23 +51,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Aug 2012 13:01:27 -0000
+X-List-Received-Date: Wed, 01 Aug 2012 13:02:28 -0000
 
-On Wed, Aug 1, 2012 at 1:56 PM, Avi Kivity <avi@redhat.com> wrote:
-> On 07/26/2012 01:45 AM, Tyler Hall wrote:
->> subpage_register() expects "end" to be the last byte in the mapping.
->> Registering a non-page-aligned memory region that extends up to or
->> beyond a page boundary causes subpage_register() to silently fail
->> through the (end >= PAGE_SIZE) check.
->>
->> This bug does not cause noticeable problems for mappings that do not
->> extend to a page boundary, though they do register an extra byte.
->
-> Reviewed-by: Avi Kivity <avi@redhat.com>
+On 07/26/2012 01:45 AM, Tyler Hall wrote:
+> Registering a multi-page memory region that is non-page-aligned results
+> in a subpage from the start to the page boundary, some number of full
+> pages, and possibly another subpage from the last page boundary to the
+> end. The full pages will have a value for offset_within_region that is
+> not a multiple of TARGET_PAGE_SIZE. Accesses through softmmu are unable
+> to handle this and will segfault.
+> 
+> Handling full pages through subpages is not optimal, but only
+> non-page-aligned mappings take the penalty.
 
-Thanks Avi.  Does this include Patch 2/2 too?
+Reviewed-by: Avi Kivity <avi@redhat.com>
 
-https://lists.gnu.org/archive/html/qemu-devel/2012-07/msg03573.html
 
-Stefan
+
+-- 
+error compiling committee.c: too many arguments to function
 
