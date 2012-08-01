@@ -1,55 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SwTVx-0005qG-Kl
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 03:38:41 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40988)
+	id 1SwTlh-0001aN-Pa
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 03:54:57 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:35036)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1SwTVq-0005om-6r
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 03:38:39 -0400
+	(envelope-from <hare@suse.de>) id 1SwTlZ-0001E0-6D
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 03:54:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1SwTVk-0001xo-H4
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 03:38:34 -0400
-Received: from mail-yx0-f173.google.com ([209.85.213.173]:60685)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1SwTVk-0001xg-BU; Wed, 01 Aug 2012 03:38:28 -0400
-Received: by yenl1 with SMTP id l1so6799016yen.4
-	for <multiple recipients>; Wed, 01 Aug 2012 00:38:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=yWwLkQ1fidmau2DizANuwGGYV+gi7Y4MNzaNcVZzPGw=;
-	b=biHwgWHtUiJ/nl8SCvbVQfZDPZN905Q4E0ffrTxSJdsUBveHY4vW/tHi5TA+gPtpsr
-	GTzN6jfzNmT6thlu0BAl14gmySp0AoEl/IjKc4vywAYZY/MRkkkpt7CFL78QB24BP6s9
-	9cBfe++31YnzljNHYL3yn5JVccybF5WvJsosYtRbQEduB3EXpRufPAwzAvRAXdj/zprf
-	l5Mu7bMTWydMGz1uAUhpGvaqNbKu3x4ZQe/l8V3Ny2nfnSFE5sh7MdBiOVPhVAd1DG6g
-	Jgd9b02IZjX+1N5LJACSXY0O6hioUFBCHwB6YaaJGA6jm9UqlOG20UYA9gnKuTOmUryr
-	fmCQ==
-Received: by 10.66.88.131 with SMTP id bg3mr38154774pab.16.1343806706707;
-	Wed, 01 Aug 2012 00:38:26 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (93-34-169-1.ip50.fastwebnet.it.
-	[93.34.169.1])
-	by mx.google.com with ESMTPS id qo7sm2051615pbc.12.2012.08.01.00.38.22
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 01 Aug 2012 00:38:25 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <5018DCEB.9060208@redhat.com>
-Date: Wed, 01 Aug 2012 09:38:19 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <hare@suse.de>) id 1SwTlY-0006kJ-A6
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 03:54:49 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:39615 helo=mx2.suse.de)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <hare@suse.de>)
+	id 1SwTlQ-0006jJ-Ez; Wed, 01 Aug 2012 03:54:40 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 34BBB9FB23;
+	Wed,  1 Aug 2012 09:54:39 +0200 (CEST)
+Message-ID: <5018E0BE.3000706@suse.de>
+Date: Wed, 01 Aug 2012 09:54:38 +0200
+From: Hannes Reinecke <hare@suse.de>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:13.0) Gecko/20120615 Thunderbird/13.0.1
+	rv:13.0) Gecko/20120601 Thunderbird/13.0
 MIME-Version: 1.0
-To: Hannes Reinecke <hare@suse.de>
+To: Paolo Bonzini <pbonzini@redhat.com>
 References: <1343714097-545-1-git-send-email-sw@weilnetz.de>
 	<5017EE1D.8060908@suse.de> <5017EEFD.5070503@redhat.com>
 	<5017EFC6.1050705@suse.de> <5017F0A2.5030400@redhat.com>
 	<5017F1E3.90806@suse.de> <87y5m06jx1.fsf@codemonkey.ws>
 	<5017FD81.3040707@redhat.com> <50185960.9050700@suse.de>
-In-Reply-To: <50185960.9050700@suse.de>
+	<5018DCEB.9060208@redhat.com>
+In-Reply-To: <5018DCEB.9060208@redhat.com>
+X-Enigmail-Version: 1.4.2
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.213.173
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
 Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
 	Anthony Liguori <anthony@codemonkey.ws>,
@@ -67,25 +52,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Aug 2012 07:38:40 -0000
+X-List-Received-Date: Wed, 01 Aug 2012 07:54:56 -0000
 
-Il 01/08/2012 00:17, Hannes Reinecke ha scritto:
-> Ad 2: no, the SAS address for the devices is _not_ the WWN.
-> The WWN is the ID of the LUN, whereas the SAS address is the ID of the
-> Target. So to be correct we would need to generate unique SAS addressed
-> per target which needs to be different from the WWN.
+On 08/01/2012 09:38 AM, Paolo Bonzini wrote:
+> Il 01/08/2012 00:17, Hannes Reinecke ha scritto:
+>> Ad 2: no, the SAS address for the devices is _not_ the WWN.
+>> The WWN is the ID of the LUN, whereas the SAS address is the ID of the
+>> Target. So to be correct we would need to generate unique SAS addresse=
+d
+>> per target which needs to be different from the WWN.
+>=20
+> Oh, that's even easier then, just delete all the get_wwn stuff and use
+> HBA address + 1 + sdev->id.
+>=20
+Which HBA address? You that one I wasn't supposed to use ? :-)
 
-Oh, that's even easier then, just delete all the get_wwn stuff and use
-HBA address + 1 + sdev->id.
+As said, I'm currently working on a patch. But yeah, that's
+essentially what I'll be doing.
 
-Paolo
+Stay tuned.
 
-> However, megasas does not need to present SAS addresses here; we can set
-> the interface to PCI-E (instead of SAS) and just use the LUN number.
-> Sadly I've yet to figure out the code for PCIE.
-> (Doing it correctly involves staring a binary output and figuring the
-> meaning of bits. Did I mention I don't have documentation for that beast?)
-> That's what's stalled the patch for now.
+Cheers,
+
+Hannes
+--=20
+Dr. Hannes Reinecke		      zSeries & Storage
+hare@suse.de			      +49 911 74053 688
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg
+GF: J. Hawn, J. Guild, F. Imend=C3=B6rffer, HRB 16746 (AG N=C3=BCrnberg)
 
 
 
