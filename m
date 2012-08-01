@@ -1,37 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SwUld-0000Nf-7I
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 04:58:57 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:35595)
+	id 1SwV1c-0002Z0-GD
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Aug 2012 05:15:28 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54842)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1SwUlV-0008Nf-8r
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 04:58:54 -0400
+	(envelope-from <hare@suse.de>) id 1SwV1Z-0002Qq-T0
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 05:15:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1SwUlP-0002j6-GF
-	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 04:58:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48103)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>)
-	id 1SwUlE-0002hN-Na; Wed, 01 Aug 2012 04:58:32 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q718wV5n000729
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 1 Aug 2012 04:58:31 -0400
-Received: from dhcp-8-167.nay.redhat.com ([10.66.7.126])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q718wSqB027838; Wed, 1 Aug 2012 04:58:29 -0400
-From: Amos Kong <akong@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Wed,  1 Aug 2012 16:59:00 +0800
-Message-Id: <1343811543-12137-1-git-send-email-akong@redhat.com>
-In-Reply-To: <1342539951-30915-1-git-send-email-akong@redhat.com>
-References: <1342539951-30915-1-git-send-email-akong@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: aliguori@us.ibm.com, quintela@redhat.com
-Subject: [Qemu-trivial] [RESEND PATCH 0/3] trivial fix of qemu-sockets.c
+	(envelope-from <hare@suse.de>) id 1SwV1V-0007mz-Os
+	for qemu-trivial@nongnu.org; Wed, 01 Aug 2012 05:15:25 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:42635 helo=mx2.suse.de)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <hare@suse.de>)
+	id 1SwV1J-0007jG-Cc; Wed, 01 Aug 2012 05:15:09 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 9C241A39CE;
+	Wed,  1 Aug 2012 11:15:08 +0200 (CEST)
+Message-ID: <5018F39C.6090904@suse.de>
+Date: Wed, 01 Aug 2012 11:15:08 +0200
+From: Hannes Reinecke <hare@suse.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:13.0) Gecko/20120601 Thunderbird/13.0
+MIME-Version: 1.0
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <1343714097-545-1-git-send-email-sw@weilnetz.de>
+	<5017EE1D.8060908@suse.de> <5017EEFD.5070503@redhat.com>
+	<5017EFC6.1050705@suse.de> <5017F0A2.5030400@redhat.com>
+	<5017F1E3.90806@suse.de> <87y5m06jx1.fsf@codemonkey.ws>
+	<5017FD81.3040707@redhat.com> <50185960.9050700@suse.de>
+	<5018DCEB.9060208@redhat.com> <5018E0BE.3000706@suse.de>
+	<5018E25E.4010801@redhat.com>
+In-Reply-To: <5018E25E.4010801@redhat.com>
+X-Enigmail-Version: 1.4.2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
+	Anthony Liguori <anthony@codemonkey.ws>,
+	=?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [PATCH] megasas: Update function
+	megasys_scsi_uninit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,18 +53,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Aug 2012 08:58:55 -0000
+X-List-Received-Date: Wed, 01 Aug 2012 09:15:27 -0000
 
-Those patches fix trivial issues which were found
-in the second review.
+On 08/01/2012 10:01 AM, Paolo Bonzini wrote:
+> Il 01/08/2012 09:54, Hannes Reinecke ha scritto:
+>> On 08/01/2012 09:38 AM, Paolo Bonzini wrote:
+>>> Il 01/08/2012 00:17, Hannes Reinecke ha scritto:
+>>>> Ad 2: no, the SAS address for the devices is _not_ the WWN.
+>>>> The WWN is the ID of the LUN, whereas the SAS address is the ID of t=
+he
+>>>> Target. So to be correct we would need to generate unique SAS addres=
+sed
+>>>> per target which needs to be different from the WWN.
+>>>
+>>> Oh, that's even easier then, just delete all the get_wwn stuff and us=
+e
+>>> HBA address + 1 + sdev->id.
+>>>
+>> Which HBA address?
+>=20
+> The HBA SAS address. :)
+>=20
+Ah.
 
-Amos Kong (3):
-  socket: remove redundant check
-  remove unused include of error.h
-  socket: clean up redundant assignment
+I've now send a new patch fixing things up.
+Hopefully it gains Anthonys approval.
 
- qemu-sockets.c |    5 +----
- qemu_socket.h  |    1 -
- 2 files changed, 1 insertions(+), 5 deletions(-)
+Anthony, I'm dead sorry but didn't manage to type your e-mail
+address correctly.
+Hope it doesn't fall through the cracks because of this ..
+
+Cheers,
+
+Hannes
+--=20
+Dr. Hannes Reinecke		      zSeries & Storage
+hare@suse.de			      +49 911 74053 688
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg
+GF: J. Hawn, J. Guild, F. Imend=C3=B6rffer, HRB 16746 (AG N=C3=BCrnberg)
+
 
 
