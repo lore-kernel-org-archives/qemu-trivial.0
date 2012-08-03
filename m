@@ -1,46 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SxEX8-0005XW-9o
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Aug 2012 05:51:02 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39346)
+	id 1SxEbU-0006rG-Tw
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Aug 2012 05:55:32 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:57343)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SxEX1-0005Cr-Fv
-	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 05:50:59 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SxEbS-0006j6-Dv
+	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 05:55:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SxEWx-00052A-A5
-	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 05:50:55 -0400
-Received: from mail-lpp01m010-f45.google.com ([209.85.215.45]:35830)
+	(envelope-from <stefanha@gmail.com>) id 1SxEbO-0006TI-JJ
+	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 05:55:30 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:61858)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1SxEWm-000504-4V; Fri, 03 Aug 2012 05:50:40 -0400
-Received: by lahc1 with SMTP id c1so242464lah.4
-	for <multiple recipients>; Fri, 03 Aug 2012 02:50:38 -0700 (PDT)
+	id 1SxEbI-0006SQ-6Z; Fri, 03 Aug 2012 05:55:20 -0400
+Received: by bkcji1 with SMTP id ji1so163601bkc.4
+	for <multiple recipients>; Fri, 03 Aug 2012 02:55:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=aLniC0y/nRcmNc0PzA1Kkw/B2/DA7jTrn4N4SZMpuMQ=;
-	b=WMu661lSGbISB5YMDFHpvwU0jvTnbr0C/LliU/QEo34BvvecKHgR4EeogzN74AGykP
-	r0a7iKAFUeJ5uzrfEHrvt116qZnb+6ddWbkPPJ9gtSsTb3L75UOWA24uy3c4drlhUSKe
-	6Xdx0LuV+cV3gGLnYlNfQbaj0N6Riscq06cycPMTWmgiZJ1WG3h+aTP5qsa05Xbfu4nD
-	SzCj8vHK+ZEGkvmv3iNZKpihtd0UuUlLfjIjN3FPM5QIv2uUXPbcRwHzFIYqtLxfBxdt
-	nkzFb7NuhE5ighizuOW9eb7MPOhm7ZIpR461m9N9o4zZ/6u9Fnd/1GFX4VhhUOL7YHeh
-	82zQ==
-MIME-Version: 1.0
-Received: by 10.112.43.67 with SMTP id u3mr455327lbl.16.1343987438806; Fri, 03
-	Aug 2012 02:50:38 -0700 (PDT)
-Received: by 10.112.71.73 with HTTP; Fri, 3 Aug 2012 02:50:38 -0700 (PDT)
-In-Reply-To: <1343963182-28297-1-git-send-email-akong@redhat.com>
-References: <1343963182-28297-1-git-send-email-akong@redhat.com>
-Date: Fri, 3 Aug 2012 10:50:38 +0100
-Message-ID: <CAJSP0QWLB0QF6CLEm84Ns3TCM0CbGF59sCRuOu2AebAaLhu+6Q@mail.gmail.com>
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=4sL6dJuGlwWJ6XSxG3aSHJQQ/0BplvJOs1Gq0ofXUMs=;
+	b=l4qeMedf2GMFLKkSbLuGx+uWKjIdnTiFgPSwznEAxmDmlQVm2fegbrJwYl2wUWoqd1
+	vYLgT48ULd2asPRITJCxKtTCY9Jtwqbxm1U9jHlQDE1Srv+rqUpMbzlIfokgQz6AG5vu
+	m5iCQBrbdB/Lc6CAzaTl3eu6SGoXhwdKwEkjzFJLHbUFjP9h1DKJfZgwvjxGgLVHJVoz
+	aLh68m3rErgSkyZhg4XlpS1FbZ6S3c41q0RatEzZFisWLx5vT3i+0psmPmQE6FyMfz08
+	wQHL3IibvQJ9RECFtGCPZcGH2bLrtZ5SBYw3+ZvFqjlxDIEyITqsbvAVqsWO/uz/SEAk
+	v1Tg==
+Received: by 10.204.13.82 with SMTP id b18mr398091bka.118.1343987718660;
+	Fri, 03 Aug 2012 02:55:18 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
+	by mx.google.com with ESMTPS id fu8sm4537170bkc.5.2012.08.03.02.55.17
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 03 Aug 2012 02:55:17 -0700 (PDT)
+Date: Fri, 3 Aug 2012 10:55:15 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Amos Kong <akong@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
+To: Tyler Hall <tylerwhall@gmail.com>
+Message-ID: <20120803095515.GA23797@stefanha-thinkpad.localdomain>
+References: <1343256304-32029-1-git-send-email-tylerwhall@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1343256304-32029-1-git-send-email-tylerwhall@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.215.45
-Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, qemu-devel@nongnu.org,
-	quintela@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH v2 0/2] trivial fix of qemu-sockets.c
+X-Received-From: 209.85.214.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 1/2] exec.c: Fix off-by-one error in
+ register_subpage
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,26 +57,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Aug 2012 09:51:00 -0000
+X-List-Received-Date: Fri, 03 Aug 2012 09:55:31 -0000
 
-On Fri, Aug 3, 2012 at 4:06 AM, Amos Kong <akong@redhat.com> wrote:
-> Those patches fix trivial issues which were found
-> in the second review.
->
-> Amos Kong (2):
->   remove unused include of error.h
->   socket: clean up redundant assignment
->
->  qemu-sockets.c |    1 -
->  qemu_socket.h  |    1 -
->  2 files changed, 0 insertions(+), 2 deletions(-)
->
-> Changes from v1:
-> - drop wrong patch: [PATCH] socket: remove redundant check
+On Wed, Jul 25, 2012 at 06:45:03PM -0400, Tyler Hall wrote:
+> subpage_register() expects "end" to be the last byte in the mapping.
+> Registering a non-page-aligned memory region that extends up to or
+> beyond a page boundary causes subpage_register() to silently fail
+> through the (end >= PAGE_SIZE) check.
+> 
+> This bug does not cause noticeable problems for mappings that do not
+> extend to a page boundary, though they do register an extra byte.
+> 
+> Signed-off-by: Tyler Hall <tylerwhall@gmail.com>
+> ---
+>  exec.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks, merged.  I will update the pending trivial-patches pull
-request to include these patches.
-
+Thanks, both applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
 
 Stefan
