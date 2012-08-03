@@ -1,44 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SxHPL-0004dA-UQ
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Aug 2012 08:55:11 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:47746)
+	id 1SxHtS-0004Ri-48
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Aug 2012 09:26:18 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47274)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1SxHPF-0004Ky-WA
-	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 08:55:09 -0400
+	(envelope-from <stefanha@gmail.com>) id 1SxHtL-00045x-DD
+	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 09:26:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1SxHPF-0007dR-9k
-	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 08:55:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:27665)
+	(envelope-from <stefanha@gmail.com>) id 1SxHtH-000104-BG
+	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 09:26:11 -0400
+Received: from mail-lpp01m010-f45.google.com ([209.85.215.45]:47078)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1SxHP5-0007RG-J6; Fri, 03 Aug 2012 08:54:55 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q73CsrBX013012
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 3 Aug 2012 08:54:54 -0400
-Received: from doriath.home (ovpn-113-120.phx2.redhat.com [10.3.113.120])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q73Csp86028445; Fri, 3 Aug 2012 08:54:52 -0400
-Date: Fri, 3 Aug 2012 09:55:30 -0300
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Amos Kong <akong@redhat.com>
-Message-ID: <20120803095530.02c22d7e@doriath.home>
-In-Reply-To: <1343963182-28297-3-git-send-email-akong@redhat.com>
+	(envelope-from <stefanha@gmail.com>)
+	id 1SxHtF-0000zc-AG; Fri, 03 Aug 2012 09:26:05 -0400
+Received: by lahc1 with SMTP id c1so339918lah.4
+	for <multiple recipients>; Fri, 03 Aug 2012 06:26:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=Ovre/TxFu31XK7BcDIwtZ3Ex4XETxp0khJ8xmH91Ydc=;
+	b=H8zXXTv0anU/dEmvpObHlfW0FZeSVqIlpR7U+MwC3wYsLBEj42PBuAMy0O5OopdTBD
+	ab8Cl88ShActxEnaTC0JkxN46lJ85ElyEzOGa4WLSYCjPXsMX8e3NYHqVovlis9zNwDI
+	btnZ9s8NO4blK+1UqKbCLcNcHLnfXQD8ormCLEJqhNMg04HLHv0l6DvrZTruEpYFSW2+
+	SAylQbbKtoLa+iZ6NjMDwC984GNMGz18KZyzQc4SQD6JpI9MTe0rRwLnHVFK3mEB3F+E
+	Q2MSW8OPIDormj81lXf4vdIolbr9p2VU6xlRBX8mf/yma6wrNYkv/BOq2POiSo9jRS7N
+	Mjhg==
+MIME-Version: 1.0
+Received: by 10.112.46.166 with SMTP id w6mr644073lbm.100.1344000363996; Fri,
+	03 Aug 2012 06:26:03 -0700 (PDT)
+Received: by 10.112.71.73 with HTTP; Fri, 3 Aug 2012 06:26:03 -0700 (PDT)
+In-Reply-To: <1343963182-28297-2-git-send-email-akong@redhat.com>
 References: <1343963182-28297-1-git-send-email-akong@redhat.com>
-	<1343963182-28297-3-git-send-email-akong@redhat.com>
-Organization: Red Hat
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	<1343963182-28297-2-git-send-email-akong@redhat.com>
+Date: Fri, 3 Aug 2012 14:26:03 +0100
+Message-ID: <CAJSP0QVFQ=xETJW6mhKV_LOH_WAAG6ayxaQOhJJpED64D7U9Ug@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Amos Kong <akong@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
+X-Received-From: 209.85.215.45
 Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, qemu-devel@nongnu.org,
 	quintela@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 2/2] socket: clean up
- redundant assignment
+Subject: Re: [Qemu-trivial] [PATCH v2 1/2] remove unused include of error.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,30 +53,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Aug 2012 12:55:10 -0000
+X-List-Received-Date: Fri, 03 Aug 2012 13:26:17 -0000
 
-On Fri,  3 Aug 2012 11:06:22 +0800
-Amos Kong <akong@redhat.com> wrote:
-
+On Fri, Aug 3, 2012 at 4:06 AM, Amos Kong <akong@redhat.com> wrote:
 > Signed-off-by: Amos Kong <akong@redhat.com>
-
-Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
-
 > ---
->  qemu-sockets.c |    1 -
+>  qemu_socket.h |    1 -
 >  1 files changed, 0 insertions(+), 1 deletions(-)
-> 
-> diff --git a/qemu-sockets.c b/qemu-sockets.c
-> index 668fa93..beb2bb6 100644
-> --- a/qemu-sockets.c
-> +++ b/qemu-sockets.c
-> @@ -284,7 +284,6 @@ int inet_connect_opts(QemuOpts *opts, Error **errp)
->                          inet_strfamily(e->ai_family),
->                          e->ai_canonname, uaddr, uport, strerror(errno));
->              closesocket(sock);
-> -            sock = -1;
->              continue;
->          }
->          freeaddrinfo(res);
 
+I have dropped this, see Luiz' comment.
+
+Stefan
 
