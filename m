@@ -1,35 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Sx8DS-0005PA-Sg
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Aug 2012 23:06:18 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:37745)
+	id 1Sx8Dk-0005xO-Py
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Aug 2012 23:06:36 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:38065)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1Sx8DA-0004cJ-SE
-	for qemu-trivial@nongnu.org; Thu, 02 Aug 2012 23:06:04 -0400
+	(envelope-from <akong@redhat.com>) id 1Sx8DM-00052y-50
+	for qemu-trivial@nongnu.org; Thu, 02 Aug 2012 23:06:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1Sx8DA-00066X-2r
-	for qemu-trivial@nongnu.org; Thu, 02 Aug 2012 23:06:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51869)
+	(envelope-from <akong@redhat.com>) id 1Sx8DL-0006GK-7B
+	for qemu-trivial@nongnu.org; Thu, 02 Aug 2012 23:06:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:24545)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <akong@redhat.com>)
-	id 1Sx8D7-00065q-W0; Thu, 02 Aug 2012 23:05:58 -0400
+	id 1Sx8DF-0006As-8m; Thu, 02 Aug 2012 23:06:05 -0400
 Received: from int-mx02.intmail.prod.int.phx2.redhat.com
 	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q7335uks016002
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q73363Tj024507
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 2 Aug 2012 23:05:56 -0400
+	Thu, 2 Aug 2012 23:06:03 -0400
 Received: from dhcp-8-167.nay.redhat.com ([10.66.7.126])
 	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id q7335pTV024767; Thu, 2 Aug 2012 23:05:53 -0400
+	id q7335pTX024767; Thu, 2 Aug 2012 23:06:01 -0400
 From: Amos Kong <akong@redhat.com>
 To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Fri,  3 Aug 2012 11:06:20 +0800
-Message-Id: <1343963182-28297-1-git-send-email-akong@redhat.com>
+Date: Fri,  3 Aug 2012 11:06:22 +0800
+Message-Id: <1343963182-28297-3-git-send-email-akong@redhat.com>
+In-Reply-To: <1343963182-28297-1-git-send-email-akong@redhat.com>
+References: <1343963182-28297-1-git-send-email-akong@redhat.com>
 X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.132.183.28
 Cc: aliguori@us.ibm.com, quintela@redhat.com
-Subject: [Qemu-trivial] [PATCH v2 0/2] trivial fix of qemu-sockets.c
+Subject: [Qemu-trivial] [PATCH v2 2/2] socket: clean up redundant assignment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,19 +43,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Aug 2012 03:06:07 -0000
+X-List-Received-Date: Fri, 03 Aug 2012 03:06:13 -0000
 
-Those patches fix trivial issues which were found
-in the second review.
-
-Amos Kong (2):
-  remove unused include of error.h
-  socket: clean up redundant assignment
-
+Signed-off-by: Amos Kong <akong@redhat.com>
+---
  qemu-sockets.c |    1 -
- qemu_socket.h  |    1 -
- 2 files changed, 0 insertions(+), 2 deletions(-)
+ 1 files changed, 0 insertions(+), 1 deletions(-)
 
-Changes from v1:
-- drop wrong patch: [PATCH] socket: remove redundant check
+diff --git a/qemu-sockets.c b/qemu-sockets.c
+index 668fa93..beb2bb6 100644
+--- a/qemu-sockets.c
++++ b/qemu-sockets.c
+@@ -284,7 +284,6 @@ int inet_connect_opts(QemuOpts *opts, Error **errp)
+                         inet_strfamily(e->ai_family),
+                         e->ai_canonname, uaddr, uport, strerror(errno));
+             closesocket(sock);
+-            sock = -1;
+             continue;
+         }
+         freeaddrinfo(res);
+-- 
+1.7.1
+
 
