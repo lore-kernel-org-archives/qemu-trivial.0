@@ -1,55 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Swxk7-0002jl-M4
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Aug 2012 11:55:19 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:33305)
+	id 1Sx873-0002mf-Dh
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Aug 2012 22:59:41 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47998)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Swxk5-0002dc-Gq
-	for qemu-trivial@nongnu.org; Thu, 02 Aug 2012 11:55:18 -0400
+	(envelope-from <akong@redhat.com>) id 1Sx86x-0002WG-LM
+	for qemu-trivial@nongnu.org; Thu, 02 Aug 2012 22:59:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Swxk1-0007GC-Fe
-	for qemu-trivial@nongnu.org; Thu, 02 Aug 2012 11:55:17 -0400
-Received: from mail-yx0-f173.google.com ([209.85.213.173]:63531)
+	(envelope-from <akong@redhat.com>) id 1Sx86w-0004Ur-H7
+	for qemu-trivial@nongnu.org; Thu, 02 Aug 2012 22:59:35 -0400
+Received: from mx4-phx2.redhat.com ([209.132.183.25]:44352)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1Swxjq-00074e-87; Thu, 02 Aug 2012 11:55:02 -0400
-Received: by yenl1 with SMTP id l1so8629939yen.4
-	for <multiple recipients>; Thu, 02 Aug 2012 08:55:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=+vrBFonBwLGgepaylAUl9J4vmighDSGnf56uUjmmZXs=;
-	b=dwTiiTw9K6FjDuXAFQ3lGYwyp9x0GmE8mIkMkIGKnKs0eEIipI9Qa6+J5QnA/l45u5
-	kT1GfkTDKZFdkO3IMyEn3ylGMjenrDWMaIGu/H7XWjo+22CWo+2Ak2zAzt+20ZM+2Jn2
-	HKqaF9+qwonEAf6jI8Ocfxeu+AwustqCPGszHVa0vvfpr4JemJIMIRPlprojX0+7190G
-	hmsI6Htjd2xhMwMZnmy63K5xoUQPw8roLKGmL+L+7NXL0O9rssFf1aBQduXcIpxDKHlf
-	5bfjEIKxvNRjnd/WCpf/NDUCSCi3nze3wGpR/Ysqc7VtCgfFC6lySDwMFEJeZqSGa1Fp
-	mFaw==
-Received: by 10.50.171.106 with SMTP id at10mr4405691igc.61.1343922901271;
-	Thu, 02 Aug 2012 08:55:01 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (93-34-169-1.ip50.fastwebnet.it.
-	[93.34.169.1])
-	by mx.google.com with ESMTPS id gh2sm14137823igb.9.2012.08.02.08.54.57
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 02 Aug 2012 08:54:59 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <501AA2CF.8070907@redhat.com>
-Date: Thu, 02 Aug 2012 17:54:55 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:13.0) Gecko/20120615 Thunderbird/13.0.1
+	(envelope-from <akong@redhat.com>)
+	id 1Sx86u-0004Tn-2S; Thu, 02 Aug 2012 22:59:32 -0400
+Received: from zmail13.collab.prod.int.phx2.redhat.com
+	(zmail13.collab.prod.int.phx2.redhat.com [10.5.83.15])
+	by mx4-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id q732xTNq022242;
+	Thu, 2 Aug 2012 22:59:29 -0400
+Date: Thu, 2 Aug 2012 22:59:29 -0400 (EDT)
+From: Amos Kong <akong@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <1248253671.7451894.1343962769761.JavaMail.root@redhat.com>
+In-Reply-To: <876292g7dr.fsf@blackfin.pond.sub.org>
 MIME-Version: 1.0
-To: =?UTF-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>
-References: <1343896830-3503-1-git-send-email-hpoussin@reactos.org>
-	<1343896830-3503-2-git-send-email-hpoussin@reactos.org>
-In-Reply-To: <1343896830-3503-2-git-send-email-hpoussin@reactos.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.213.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 2/2] esp: add missing const on TypeInfo
-	structures
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.66.112.218]
+X-Mailer: Zimbra 7.2.0_GA_2669 (ZimbraWebClient - GC18 (Linux)/7.2.0_GA_2669)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 209.132.183.25
+Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, qemu-devel@nongnu.org,
+	quintela@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [RESEND PATCH 1/3] socket:
+	remove	redundant check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,41 +43,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Aug 2012 15:55:18 -0000
+X-List-Received-Date: Fri, 03 Aug 2012 02:59:39 -0000
 
-Il 02/08/2012 10:40, Hervé Poussineau ha scritto:
+----- Original Message -----
+> Stefan Hajnoczi <stefanha@gmail.com> writes:
 > 
-> Signed-off-by: Hervé Poussineau <hpoussin@reactos.org>
-> ---
->  hw/esp.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> > On Wed, Aug 01, 2012 at 04:59:01PM +0800, Amos Kong wrote:
+> >> It's aleady in the end of loop, error should be set.
+> >> 
+> >> Signed-off-by: Amos Kong <akong@redhat.com>
+> >> ---
+> >>  qemu-sockets.c |    4 +---
+> >>  1 files changed, 1 insertions(+), 3 deletions(-)
+> >> 
+> >> diff --git a/qemu-sockets.c b/qemu-sockets.c
+> >> index 668fa93..c636882 100644
+> >> --- a/qemu-sockets.c
+> >> +++ b/qemu-sockets.c
+> >> @@ -181,9 +181,7 @@ int inet_listen_opts(QemuOpts *opts, int
+> >> port_offset, Error **errp)
+> >>                  fprintf(stderr,"%s: bind(%s,%s,%d): %s\n",
+> >>                  __FUNCTION__,
+> >>                          inet_strfamily(e->ai_family), uaddr,
+> >>                          inet_getport(e),
+> >>                          strerror(errno));
+> >> -                if (!e->ai_next) {
+> >> -                    error_set(errp, QERR_SOCKET_BIND_FAILED);
+> >> -                }
+> >> +                error_set(errp, QERR_SOCKET_BIND_FAILED);
+> >>              }
+> >>          }
+> >>          closesocket(slisten);
+> >
+> > This isn't obvious.  It looks like the intent of the if
+> > (!e->ai_next) is
+> > to suppress the error so that the next iteration of the *outer*
+> > loop can
+> > succeed.
+> >
+> > Why is it okay to set QERR_SOCKET_BIND_FAILED?  We may have more
+> > addrinfos left to try in the outer loop.  They may succeed so we
+> > don't
+> > want an error in that case.
 > 
-> diff --git a/hw/esp.c b/hw/esp.c
-> index c6422ad..4b00889 100644
-> --- a/hw/esp.c
-> +++ b/hw/esp.c
-> @@ -816,7 +816,7 @@ static void sysbus_esp_class_init(ObjectClass *klass, void *data)
->      dc->vmsd = &vmstate_sysbus_esp_scsi;
->  }
->  
-> -static TypeInfo sysbus_esp_info = {
-> +static const TypeInfo sysbus_esp_info = {
->      .name          = "esp",
->      .parent        = TYPE_SYS_BUS_DEVICE,
->      .instance_size = sizeof(SysBusESPState),
-> @@ -1178,7 +1178,7 @@ static void esp_pci_class_init(ObjectClass *klass, void *data)
->      dc->vmsd = &vmstate_esp_pci_scsi;
->  }
->  
-> -static TypeInfo esp_pci_info = {
-> +static const TypeInfo esp_pci_info = {
->      .name = "am53c974",
->      .parent = TYPE_PCI_DEVICE,
->      .instance_size = sizeof(PCIESPState),
+> You are correct, and the patch is wrong.
+
+
+Yeah, will drop this patch from this thread.
+Thanks.
+
+> See also related
+> http://lists.nongnu.org/archive/html/qemu-devel/2012-02/msg00772.html
 > 
-
-Applied to scsi-next branch.
-
-Paolo
-
+> 
 
