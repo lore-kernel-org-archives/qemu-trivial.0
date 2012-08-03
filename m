@@ -1,51 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SxEcQ-0007rR-EV
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Aug 2012 05:56:30 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:57483)
+	id 1SxHNG-0003aR-Qc
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Aug 2012 08:53:02 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:51038)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SxEcK-0007Xn-Ck
-	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 05:56:28 -0400
+	(envelope-from <lcapitulino@redhat.com>) id 1SxHNE-0003U2-Pk
+	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 08:53:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SxEcJ-0006ta-IG
-	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 05:56:24 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:34096)
+	(envelope-from <lcapitulino@redhat.com>) id 1SxHN9-0006nz-6e
+	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 08:53:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:65041)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SxEcE-0006t6-3f; Fri, 03 Aug 2012 05:56:18 -0400
-Received: by bkcji1 with SMTP id ji1so163944bkc.4
-	for <multiple recipients>; Fri, 03 Aug 2012 02:56:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=CPZXPdieC3t08VDmufpjkz9DQj3EgyMQieLFFzr0FFY=;
-	b=BSF8HhlX6w+WltJEc6Ti9I+w7sye3xe89vtv2It5ekjVQFDNTAvK3yOicyLganrgRX
-	B7d1wVFCbsl1fWpax2PQ+1YjgYCooIkTTD8dSi+OZrWvSt8/U3RZmeRTjCT0uuOUcP3y
-	4OOw3u/e8TqrQ9w41kR3ph0Sb/NNZ8AEB6POaazOdS8go52UUT3A6bdUZ/neDR7R5YPm
-	xp66XlgLdA9DuIg3jPIIsJKiQCipSPjPPq3PI0e+g18QHyZnBNviwZykBJJtTptr5jrY
-	0eHIfNF549pfWxh9GnDMclZQ5sLeb/3NbvPtiIxyIf0FWDX13c3oMNr7Wz73ddQS9EpW
-	hslA==
-Received: by 10.204.152.145 with SMTP id g17mr384483bkw.120.1343987777083;
-	Fri, 03 Aug 2012 02:56:17 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id n5sm4524140bkv.14.2012.08.03.02.56.16
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 03 Aug 2012 02:56:16 -0700 (PDT)
-Date: Fri, 3 Aug 2012 10:56:14 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20120803095614.GB23797@stefanha-thinkpad.localdomain>
-References: <1343828147-9446-1-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1343828147-9446-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1SxHMy-0006ma-5K; Fri, 03 Aug 2012 08:52:44 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q73CqgQe028698
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 3 Aug 2012 08:52:42 -0400
+Received: from doriath.home (ovpn-113-120.phx2.redhat.com [10.3.113.120])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id q73CqeaB022980; Fri, 3 Aug 2012 08:52:40 -0400
+Date: Fri, 3 Aug 2012 09:53:18 -0300
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Amos Kong <akong@redhat.com>
+Message-ID: <20120803095318.44ae5920@doriath.home>
+In-Reply-To: <1343963182-28297-2-git-send-email-akong@redhat.com>
+References: <1343963182-28297-1-git-send-email-akong@redhat.com>
+	<1343963182-28297-2-git-send-email-akong@redhat.com>
+Organization: Red Hat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org, patches@linaro.org, qemu-devel@nongnu.org,
-	Avi Kivity <avi@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] exec.c: Remove out of date comment
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, qemu-devel@nongnu.org,
+	quintela@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 1/2] remove unused
+	include of error.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,28 +50,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Aug 2012 09:56:28 -0000
+X-List-Received-Date: Fri, 03 Aug 2012 12:53:01 -0000
 
-On Wed, Aug 01, 2012 at 02:35:47PM +0100, Peter Maydell wrote:
-> Remove an out of date comment: this comment used to be attached to
-> cpu_register_physical_memory_log(), before commit 0f0cb164 accidentally
-> inserted a couple of other functions between the comment and its function.
-> It is in any case obsolete since (a) the function arguments it refers
-> to have been replaced with a single MemoryRegionSection* argument and
-> (b) the inability to handle regions whose offset_within_address_space
-> and offset_within_region aren't equally aligned was fixed as part of
-> the rewrite of this code.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Fri,  3 Aug 2012 11:06:21 +0800
+Amos Kong <akong@redhat.com> wrote:
+
+> Signed-off-by: Amos Kong <akong@redhat.com>
 > ---
-> Pretty sure my analysis is right and this comment is out of date --
-> Avi, could you confirm that please?
+>  qemu_socket.h |    1 -
+>  1 files changed, 0 insertions(+), 1 deletions(-)
 > 
->  exec.c |    8 --------
->  1 file changed, 8 deletions(-)
+> diff --git a/qemu_socket.h b/qemu_socket.h
+> index 4689ff3..1a2f517 100644
+> --- a/qemu_socket.h
+> +++ b/qemu_socket.h
+> @@ -27,7 +27,6 @@ int inet_aton(const char *cp, struct in_addr *ia);
+>  #endif /* !_WIN32 */
+>  
+>  #include "qemu-option.h"
+> -#include "error.h"
+>  #include "qerror.h"
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+This is wrong. There are functions in this header that takes an Error argument
+(which is declared in error.h).
 
-Stefan
+qerror.h should be dropped though, as it's deprecated and as such shouldn't
+be in a public header like this. If you get build failures, then you can
+include it in the .c files where it's missing.
+
+>  
+>  /* misc helpers */
+
 
