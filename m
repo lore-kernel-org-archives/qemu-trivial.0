@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SxHtS-0004Ri-48
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Aug 2012 09:26:18 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:47274)
+	id 1SxcYe-0005EX-5l
+	for mharc-qemu-trivial@gnu.org; Sat, 04 Aug 2012 07:30:12 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42509)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SxHtL-00045x-DD
-	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 09:26:16 -0400
+	(envelope-from <riegamaths@gmail.com>) id 1SxcYb-00056D-4j
+	for qemu-trivial@nongnu.org; Sat, 04 Aug 2012 07:30:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1SxHtH-000104-BG
-	for qemu-trivial@nongnu.org; Fri, 03 Aug 2012 09:26:11 -0400
-Received: from mail-lpp01m010-f45.google.com ([209.85.215.45]:47078)
+	(envelope-from <riegamaths@gmail.com>) id 1SxcYa-0000vV-04
+	for qemu-trivial@nongnu.org; Sat, 04 Aug 2012 07:30:09 -0400
+Received: from mail-pb0-f45.google.com ([209.85.160.45]:57655)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1SxHtF-0000zc-AG; Fri, 03 Aug 2012 09:26:05 -0400
-Received: by lahc1 with SMTP id c1so339918lah.4
-	for <multiple recipients>; Fri, 03 Aug 2012 06:26:04 -0700 (PDT)
+	(envelope-from <riegamaths@gmail.com>)
+	id 1SxcYW-0000he-9c; Sat, 04 Aug 2012 07:30:04 -0400
+Received: by pbbro12 with SMTP id ro12so2651225pbb.4
+	for <multiple recipients>; Sat, 04 Aug 2012 04:30:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=Ovre/TxFu31XK7BcDIwtZ3Ex4XETxp0khJ8xmH91Ydc=;
-	b=H8zXXTv0anU/dEmvpObHlfW0FZeSVqIlpR7U+MwC3wYsLBEj42PBuAMy0O5OopdTBD
-	ab8Cl88ShActxEnaTC0JkxN46lJ85ElyEzOGa4WLSYCjPXsMX8e3NYHqVovlis9zNwDI
-	btnZ9s8NO4blK+1UqKbCLcNcHLnfXQD8ormCLEJqhNMg04HLHv0l6DvrZTruEpYFSW2+
-	SAylQbbKtoLa+iZ6NjMDwC984GNMGz18KZyzQc4SQD6JpI9MTe0rRwLnHVFK3mEB3F+E
-	Q2MSW8OPIDormj81lXf4vdIolbr9p2VU6xlRBX8mf/yma6wrNYkv/BOq2POiSo9jRS7N
-	Mjhg==
-MIME-Version: 1.0
-Received: by 10.112.46.166 with SMTP id w6mr644073lbm.100.1344000363996; Fri,
-	03 Aug 2012 06:26:03 -0700 (PDT)
-Received: by 10.112.71.73 with HTTP; Fri, 3 Aug 2012 06:26:03 -0700 (PDT)
-In-Reply-To: <1343963182-28297-2-git-send-email-akong@redhat.com>
-References: <1343963182-28297-1-git-send-email-akong@redhat.com>
-	<1343963182-28297-2-git-send-email-akong@redhat.com>
-Date: Fri, 3 Aug 2012 14:26:03 +0100
-Message-ID: <CAJSP0QVFQ=xETJW6mhKV_LOH_WAAG6ayxaQOhJJpED64D7U9Ug@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Amos Kong <akong@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
+	h=from:to:cc:subject:date:message-id:x-mailer;
+	bh=1H1RwF17126vHH8RI2UDMsvsWI5TIMdaubEWShPNsK4=;
+	b=RqnDy/sltxcWH+WTKKC39RkhBCB+4+F2u1O+3pB4dC1zqJz6s3aEZKmQN+6C6KsEW/
+	MSwMWLnS+M2in09twC44qamYerCuI6fp0mjemW+7H1he/tL9Z+N7tGvJ/0M6cjeJYxAq
+	sdwNsHb7FgekKtDpvc7oXzCsx2S1rdaG72UJ8ZVqbM7qDqoMCAUvX8wAHoVUx/IjhaLl
+	3Y/AiHsQLVOBXL+8EyXXKfxlC0qdxTEQmGujXDjRWmUZH0ojHBaUDO6MlQhEG8qOAHQZ
+	JoTLdZICuiZcePqoVwUBnDrAKdpX+UNCb2PdOKo/Ka3zgVcgn6FCAULVjUmbbSTqpxIW
+	tfog==
+Received: by 10.66.74.100 with SMTP id s4mr4822909pav.27.1344079800390;
+	Sat, 04 Aug 2012 04:30:00 -0700 (PDT)
+Received: from localhost.localdomain ([114.249.89.76])
+	by mx.google.com with ESMTPS id og7sm4468928pbb.62.2012.08.04.04.29.56
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sat, 04 Aug 2012 04:29:59 -0700 (PDT)
+From: riegamaths@gmail.com
+To: qemu-devel <qemu-devel@nongnu.org>,
+	<qemu-trivial@nongnu.org>
+Date: Sat,  4 Aug 2012 19:29:55 +0800
+Message-Id: <1344079795-8050-1-git-send-email-riegamaths@gmail.com>
+X-Mailer: git-send-email 1.7.8.6
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.215.45
-Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, qemu-devel@nongnu.org,
-	quintela@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH v2 1/2] remove unused include of error.h
+X-Received-From: 209.85.160.45
+Cc: Stefan Hajnoczi <stefanha@linux.vnet.ibm.com>,
+	Dunrong Huang <riegamaths@gmail.com>
+Subject: [Qemu-trivial] [PATCH] build: Fix build breakage detected by
+	buildbot
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,15 +53,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Aug 2012 13:26:17 -0000
+X-List-Received-Date: Sat, 04 Aug 2012 11:30:10 -0000
 
-On Fri, Aug 3, 2012 at 4:06 AM, Amos Kong <akong@redhat.com> wrote:
-> Signed-off-by: Amos Kong <akong@redhat.com>
-> ---
->  qemu_socket.h |    1 -
->  1 files changed, 0 insertions(+), 1 deletions(-)
+From: Dunrong Huang <riegamaths@gmail.com>
 
-I have dropped this, see Luiz' comment.
+More details:
+http://buildbot.b1-systems.de/qemu/builders/xen_unstable/builds/83/steps/compile/logs/stdio
 
-Stefan
+VLANState has been removed since commit a005d07, so "vlan id" should be
+fetched using net_hub_id_for_client().
+
+Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
+---
+ hw/xen_backend.h   |    1 +
+ hw/xen_devconfig.c |   10 ++++++----
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/hw/xen_backend.h b/hw/xen_backend.h
+index 3305630..fea86dd 100644
+--- a/hw/xen_backend.h
++++ b/hw/xen_backend.h
+@@ -4,6 +4,7 @@
+ #include "xen_common.h"
+ #include "sysemu.h"
+ #include "net.h"
++#include "net/hub.h"
+ 
+ /* ------------------------------------------------------------- */
+ 
+diff --git a/hw/xen_devconfig.c b/hw/xen_devconfig.c
+index 0928613..d83e8d0 100644
+--- a/hw/xen_devconfig.c
++++ b/hw/xen_devconfig.c
+@@ -123,19 +123,21 @@ int xen_config_dev_nic(NICInfo *nic)
+ {
+     char fe[256], be[256];
+     char mac[20];
++    int vlan_id = -1;
+ 
++    net_hub_id_for_client(nic->netdev, &vlan_id);
+     snprintf(mac, sizeof(mac), "%02x:%02x:%02x:%02x:%02x:%02x",
+              nic->macaddr.a[0], nic->macaddr.a[1], nic->macaddr.a[2],
+              nic->macaddr.a[3], nic->macaddr.a[4], nic->macaddr.a[5]);
+-    xen_be_printf(NULL, 1, "config nic %d: mac=\"%s\"\n", nic->vlan->id, mac);
+-    xen_config_dev_dirs("vif", "qnic", nic->vlan->id, fe, be, sizeof(fe));
++    xen_be_printf(NULL, 1, "config nic %d: mac=\"%s\"\n", vlan_id, mac);
++    xen_config_dev_dirs("vif", "qnic", vlan_id, fe, be, sizeof(fe));
+ 
+     /* frontend */
+-    xenstore_write_int(fe, "handle",     nic->vlan->id);
++    xenstore_write_int(fe, "handle",     vlan_id);
+     xenstore_write_str(fe, "mac",        mac);
+ 
+     /* backend */
+-    xenstore_write_int(be, "handle",     nic->vlan->id);
++    xenstore_write_int(be, "handle",     vlan_id);
+     xenstore_write_str(be, "mac",        mac);
+ 
+     /* common stuff */
+-- 
+1.7.8.6
+
 
