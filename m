@@ -1,31 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1SyQFt-0007Ud-AE
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Aug 2012 12:34:09 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:51460)
+	id 1SyQJN-0000GG-Sa
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Aug 2012 12:37:45 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54766)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1SyQFq-0007LC-4Z
-	for qemu-trivial@nongnu.org; Mon, 06 Aug 2012 12:34:07 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1SyQJM-0000G9-Er
+	for qemu-trivial@nongnu.org; Mon, 06 Aug 2012 12:37:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1SyQFj-0005kb-S9
-	for qemu-trivial@nongnu.org; Mon, 06 Aug 2012 12:34:06 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:37940)
+	(envelope-from <peter.maydell@linaro.org>) id 1SyQJL-00073F-E0
+	for qemu-trivial@nongnu.org; Mon, 06 Aug 2012 12:37:44 -0400
+Received: from mail-yx0-f173.google.com ([209.85.213.173]:64721)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1SyQFc-0005iO-Nm; Mon, 06 Aug 2012 12:33:53 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1SyQFT-0004aS-Tp; Mon, 06 Aug 2012 17:33:43 +0100
+	(envelope-from <peter.maydell@linaro.org>) id 1SyQJL-00073B-9h
+	for qemu-trivial@nongnu.org; Mon, 06 Aug 2012 12:37:43 -0400
+Received: by yenm4 with SMTP id m4so267841yen.4
+	for <qemu-trivial@nongnu.org>; Mon, 06 Aug 2012 09:37:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=KWgw7yjgLb94BcknN5hreH4N+H4LYvMC07Knw1dS+wM=;
+	b=ddNjN4AQTlUY6rnvH+eZ6bcPuQ2Nn4Tx6TJFEaqdpiMXxJhjt/2TaVj+UsAYUc709P
+	8cWb0XLwzSw1sSKQD9CXMs5RROY0QB3bH2pBHjz6rvsO0PiG+NgYqjFCdp2t/+9cD9oX
+	Tr+atSlHveTvYBtpARWMLdHH+kRjukDxJXYEWJCObzGlSQQzXZIR2DytlCY/XgJJPsR2
+	t4yduUkJs6pUaXny4PlqQG16xqJpQwEMQH1wSSTsdF6IvZn+BeX6dPHd3Yu+ox83ebGb
+	Sra1XqD+yfA4tXcpc9rM+YtajIqI/flZvCegfzK7E2GdKcrw6t+wpszJUaczQ+FZDzAC
+	h25A==
+MIME-Version: 1.0
+Received: by 10.50.207.65 with SMTP id lu1mr5990978igc.33.1344271062305; Mon,
+	06 Aug 2012 09:37:42 -0700 (PDT)
+Received: by 10.50.237.41 with HTTP; Mon, 6 Aug 2012 09:37:42 -0700 (PDT)
+In-Reply-To: <1344270823-17607-1-git-send-email-peter.maydell@linaro.org>
+References: <1344270823-17607-1-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 6 Aug 2012 17:37:42 +0100
+Message-ID: <CAFEAcA9cJCSE8G5NKMEm63eymRsWWNTpO4xa2SdnidyM_obUbA@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon,  6 Aug 2012 17:33:43 +0100
-Message-Id: <1344270823-17607-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQmWrat3cUO2rh0LtjqeRPeS1qbtZDD0INAe52u8bu3TELtbj6VM+2bxW4xtKCGv3JEyKxuW
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.213.173
 Cc: qemu-trivial@nongnu.org,
 	"Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>,
 	patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] target-arm: Fix typos in comments
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-arm: Fix typos in
+	comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,230 +56,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Aug 2012 16:34:08 -0000
+X-List-Received-Date: Mon, 06 Aug 2012 16:37:45 -0000
 
-Fix a variety of typos in comments in target-arm files.
+On 6 August 2012 17:33, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Fix a variety of typos in comments in target-arm files.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Includes all the ones I spotted but not the 'middel' fix which
-Peter C has already submitted a patch for, so the two patches
-shouldn't conflict.
+> -/* Handling addition overflow with 64 bits inputs values is more
+> - * tricky than with 32 bits values.  */
+> +/* Handling addition overflow with 64 bit inputs values is more
+> + * tricky than with 32 bit values.  */
 
- target-arm/arm-semi.c    |    2 +-
- target-arm/cpu.h         |    2 +-
- target-arm/helper.c      |    6 +++---
- target-arm/neon_helper.c |   26 +++++++++++++-------------
- target-arm/op_helper.c   |    2 +-
- target-arm/translate.c   |   10 +++++-----
- 6 files changed, 24 insertions(+), 24 deletions(-)
+In accordance with Muphry's Law (http://en.wikipedia.org/wiki/Muphry%27s_law)
+I've just noticed an error here: should be 'input', not 'inputs'.
+Will send v2 patch in a bit...
 
-diff --git a/target-arm/arm-semi.c b/target-arm/arm-semi.c
-index 88ca9bb..2495206 100644
---- a/target-arm/arm-semi.c
-+++ b/target-arm/arm-semi.c
-@@ -281,7 +281,7 @@ uint32_t do_arm_semihosting(CPUARMState *env)
-             return len - ret;
-         }
-     case TARGET_SYS_READC:
--       /* XXX: Read from debug cosole. Not implemented.  */
-+       /* XXX: Read from debug console. Not implemented.  */
-         return 0;
-     case TARGET_SYS_ISTTY:
-         if (use_gdb_syscalls()) {
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index 191895c..d7f93d9 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -79,7 +79,7 @@ struct arm_boot_info;
- typedef struct CPUARMState {
-     /* Regs for current mode.  */
-     uint32_t regs[16];
--    /* Frequently accessed CPSR bits are stored separately for efficiently.
-+    /* Frequently accessed CPSR bits are stored separately for efficiency.
-        This contains all the other bits.  Use cpsr_{read,write} to access
-        the whole CPSR.  */
-     uint32_t uncached_cpsr;
-diff --git a/target-arm/helper.c b/target-arm/helper.c
-index 5727da2..dceaa95 100644
---- a/target-arm/helper.c
-+++ b/target-arm/helper.c
-@@ -988,7 +988,7 @@ static void ttbr164_reset(CPUARMState *env, const ARMCPRegInfo *ri)
- }
- 
- static const ARMCPRegInfo lpae_cp_reginfo[] = {
--    /* NOP AMAIR0/1: the override is because these clash with tha rather
-+    /* NOP AMAIR0/1: the override is because these clash with the rather
-      * broadly specified TLB_LOCKDOWN entry in the generic cp_reginfo.
-      */
-     { .name = "AMAIR0", .cp = 15, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 0,
-@@ -2899,8 +2899,8 @@ uint32_t HELPER(logicq_cc)(uint64_t val)
-     return (val >> 32) | (val != 0);
- }
- 
--/* VFP support.  We follow the convention used for VFP instrunctions:
--   Single precition routines have a "s" suffix, double precision a
-+/* VFP support.  We follow the convention used for VFP instructions:
-+   Single precision routines have a "s" suffix, double precision a
-    "d" suffix.  */
- 
- /* Convert host exception flags to vfp form.  */
-diff --git a/target-arm/neon_helper.c b/target-arm/neon_helper.c
-index e0b9dbf..d9dbd91 100644
---- a/target-arm/neon_helper.c
-+++ b/target-arm/neon_helper.c
-@@ -530,7 +530,7 @@ NEON_VOP(rshl_s16, neon_s16, 2)
- #undef NEON_FN
- 
- /* The addition of the rounding constant may overflow, so we use an
-- * intermediate 64 bits accumulator.  */
-+ * intermediate 64 bit accumulator.  */
- uint32_t HELPER(neon_rshl_s32)(uint32_t valop, uint32_t shiftop)
- {
-     int32_t dest;
-@@ -547,8 +547,8 @@ uint32_t HELPER(neon_rshl_s32)(uint32_t valop, uint32_t shiftop)
-     return dest;
- }
- 
--/* Handling addition overflow with 64 bits inputs values is more
-- * tricky than with 32 bits values.  */
-+/* Handling addition overflow with 64 bit inputs values is more
-+ * tricky than with 32 bit values.  */
- uint64_t HELPER(neon_rshl_s64)(uint64_t valop, uint64_t shiftop)
- {
-     int8_t shift = (int8_t)shiftop;
-@@ -590,7 +590,7 @@ NEON_VOP(rshl_u16, neon_u16, 2)
- #undef NEON_FN
- 
- /* The addition of the rounding constant may overflow, so we use an
-- * intermediate 64 bits accumulator.  */
-+ * intermediate 64 bit accumulator.  */
- uint32_t HELPER(neon_rshl_u32)(uint32_t val, uint32_t shiftop)
- {
-     uint32_t dest;
-@@ -608,8 +608,8 @@ uint32_t HELPER(neon_rshl_u32)(uint32_t val, uint32_t shiftop)
-     return dest;
- }
- 
--/* Handling addition overflow with 64 bits inputs values is more
-- * tricky than with 32 bits values.  */
-+/* Handling addition overflow with 64 bit inputs values is more
-+ * tricky than with 32 bit values.  */
- uint64_t HELPER(neon_rshl_u64)(uint64_t val, uint64_t shiftop)
- {
-     int8_t shift = (uint8_t)shiftop;
-@@ -817,7 +817,7 @@ NEON_VOP_ENV(qrshl_u16, neon_u16, 2)
- #undef NEON_FN
- 
- /* The addition of the rounding constant may overflow, so we use an
-- * intermediate 64 bits accumulator.  */
-+ * intermediate 64 bit accumulator.  */
- uint32_t HELPER(neon_qrshl_u32)(CPUARMState *env, uint32_t val, uint32_t shiftop)
- {
-     uint32_t dest;
-@@ -846,8 +846,8 @@ uint32_t HELPER(neon_qrshl_u32)(CPUARMState *env, uint32_t val, uint32_t shiftop
-     return dest;
- }
- 
--/* Handling addition overflow with 64 bits inputs values is more
-- * tricky than with 32 bits values.  */
-+/* Handling addition overflow with 64 bit inputs values is more
-+ * tricky than with 32 bit values.  */
- uint64_t HELPER(neon_qrshl_u64)(CPUARMState *env, uint64_t val, uint64_t shiftop)
- {
-     int8_t shift = (int8_t)shiftop;
-@@ -914,7 +914,7 @@ NEON_VOP_ENV(qrshl_s16, neon_s16, 2)
- #undef NEON_FN
- 
- /* The addition of the rounding constant may overflow, so we use an
-- * intermediate 64 bits accumulator.  */
-+ * intermediate 64 bit accumulator.  */
- uint32_t HELPER(neon_qrshl_s32)(CPUARMState *env, uint32_t valop, uint32_t shiftop)
- {
-     int32_t dest;
-@@ -942,8 +942,8 @@ uint32_t HELPER(neon_qrshl_s32)(CPUARMState *env, uint32_t valop, uint32_t shift
-     return dest;
- }
- 
--/* Handling addition overflow with 64 bits inputs values is more
-- * tricky than with 32 bits values.  */
-+/* Handling addition overflow with 64 bit inputs values is more
-+ * tricky than with 32 bit values.  */
- uint64_t HELPER(neon_qrshl_s64)(CPUARMState *env, uint64_t valop, uint64_t shiftop)
- {
-     int8_t shift = (uint8_t)shiftop;
-@@ -1671,7 +1671,7 @@ uint64_t HELPER(neon_negl_u64)(uint64_t x)
-     return -x;
- }
- 
--/* Saturnating sign manuipulation.  */
-+/* Saturating sign manipulation.  */
- /* ??? Make these use NEON_VOP1 */
- #define DO_QABS8(x) do { \
-     if (x == (int8_t)0x80) { \
-diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-index 490111c..d77bfab 100644
---- a/target-arm/op_helper.c
-+++ b/target-arm/op_helper.c
-@@ -99,7 +99,7 @@ void tlb_fill(CPUARMState *env1, target_ulong addr, int is_write, int mmu_idx,
- }
- #endif
- 
--/* FIXME: Pass an axplicit pointer to QF to CPUARMState, and move saturating
-+/* FIXME: Pass an explicit pointer to QF to CPUARMState, and move saturating
-    instructions into helper.c  */
- uint32_t HELPER(add_setq)(uint32_t a, uint32_t b)
- {
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 29008a4..985e007 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -53,7 +53,7 @@ typedef struct DisasContext {
-     int condjmp;
-     /* The label that will be jumped to when the instruction is skipped.  */
-     int condlabel;
--    /* Thumb-2 condtional execution bits.  */
-+    /* Thumb-2 conditional execution bits.  */
-     int condexec_mask;
-     int condexec_cond;
-     struct TranslationBlock *tb;
-@@ -77,7 +77,7 @@ static uint32_t gen_opc_condexec_bits[OPC_BUF_SIZE];
- #endif
- 
- /* These instructions trap after executing, so defer them until after the
--   conditional executions state has been updated.  */
-+   conditional execution state has been updated.  */
- #define DISAS_WFI 4
- #define DISAS_SWI 5
- 
-@@ -155,7 +155,7 @@ static void load_reg_var(DisasContext *s, TCGv var, int reg)
- {
-     if (reg == 15) {
-         uint32_t addr;
--        /* normaly, since we updated PC, we need only to add one insn */
-+        /* normally, since we updated PC, we need only to add one insn */
-         if (s->thumb)
-             addr = (long)s->pc + 2;
-         else
-@@ -4897,7 +4897,7 @@ static int disas_neon_data_insn(CPUARMState * env, DisasContext *s, uint32_t ins
-                     size--;
-             }
-             shift = (insn >> 16) & ((1 << (3 + size)) - 1);
--            /* To avoid excessive dumplication of ops we implement shift
-+            /* To avoid excessive duplication of ops we implement shift
-                by immediate using the variable shift operations.  */
-             if (op < 8) {
-                 /* Shift by immediate:
-@@ -6402,7 +6402,7 @@ static void gen_logicq_cc(TCGv_i64 val)
- 
- /* Load/Store exclusive instructions are implemented by remembering
-    the value/address loaded, and seeing if these are the same
--   when the store is performed. This should be is sufficient to implement
-+   when the store is performed. This should be sufficient to implement
-    the architecturally mandated semantics, and avoids having to monitor
-    regular stores.
- 
--- 
-1.7.9.5
-
+-- PMM
 
