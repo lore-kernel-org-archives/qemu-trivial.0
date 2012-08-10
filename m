@@ -1,29 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Szrqr-0004IE-Tw
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Aug 2012 12:14:17 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45365)
+	id 1SzvBv-0006NV-Pj
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Aug 2012 15:48:15 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:39647)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Szrqo-00045c-6K
-	for qemu-trivial@nongnu.org; Fri, 10 Aug 2012 12:14:16 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1SzvBs-0006F7-L9
+	for qemu-trivial@nongnu.org; Fri, 10 Aug 2012 15:48:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Szrql-0002OE-St
-	for qemu-trivial@nongnu.org; Fri, 10 Aug 2012 12:14:14 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:57884)
+	(envelope-from <stefan@weilnetz.de>) id 1SzvBr-0003RU-TD
+	for qemu-trivial@nongnu.org; Fri, 10 Aug 2012 15:48:12 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:53417)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1Szrqi-0002N6-Lh; Fri, 10 Aug 2012 12:14:08 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1Szrqf-0006Wz-Vr; Fri, 10 Aug 2012 17:14:05 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 10 Aug 2012 17:14:05 +0100
-Message-Id: <1344615245-25080-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] cputlb.c: Fix out of date comment
+	(envelope-from <stefan@weilnetz.de>)
+	id 1SzvBo-0003R3-Og; Fri, 10 Aug 2012 15:48:08 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	F05ED7280031; Fri, 10 Aug 2012 21:48:07 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id FjnQY+DVm2hG; Fri, 10 Aug 2012 21:48:07 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 9E82872800CC; Fri, 10 Aug 2012 21:48:07 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Fri, 10 Aug 2012 21:48:07 +0200
+Message-Id: <1344628087-22672-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] Fix QEMU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,32 +42,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Aug 2012 16:14:16 -0000
+X-List-Received-Date: Fri, 10 Aug 2012 19:48:13 -0000
 
-The comment about the return address from get_page_addr_code() was
-well out of date as phys_ram_base has not existed for some time.
+One more...
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- cputlb.c |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ scripts/simpletrace.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/cputlb.c b/cputlb.c
-index 0d1e252..d3e7b25 100644
---- a/cputlb.c
-+++ b/cputlb.c
-@@ -312,7 +312,9 @@ void tlb_set_page(CPUArchState *env, target_ulong vaddr,
+diff --git a/scripts/simpletrace.py b/scripts/simpletrace.py
+index 1e74e75..9fce4bb 100755
+--- a/scripts/simpletrace.py
++++ b/scripts/simpletrace.py
+@@ -71,7 +71,7 @@ def read_trace_file(edict, fobj):
  
- /* NOTE: this function can trigger an exception */
- /* NOTE2: the returned address is not exactly the physical address: it
--   is the offset relative to phys_ram_base */
-+ * is actually a ram_addr_t (in system mode; the user mode emulation
-+ * version of this function returns a guest virtual address).
-+ */
- tb_page_addr_t get_page_addr_code(CPUArchState *env1, target_ulong addr)
- {
-     int mmu_idx, page_index, pd;
+     log_version = header[2]
+     if log_version == 0:
+-        raise ValueError('Older log format, not supported with this Qemu release!')
++        raise ValueError('Older log format, not supported with this QEMU release!')
+ 
+     while True:
+         rec = read_record(edict, fobj)
 -- 
-1.7.9.5
+1.7.10
 
 
