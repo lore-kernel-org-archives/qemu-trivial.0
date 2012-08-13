@@ -1,38 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T0VTI-0000os-GP
-	for mharc-qemu-trivial@gnu.org; Sun, 12 Aug 2012 06:32:36 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34435)
+	id 1T0p3J-0005wy-UJ
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Aug 2012 03:27:05 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43723)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1T0VTG-0000jh-Cs
-	for qemu-trivial@nongnu.org; Sun, 12 Aug 2012 06:32:35 -0400
+	(envelope-from <kwolf@redhat.com>) id 1T0p3E-0005fc-BY
+	for qemu-trivial@nongnu.org; Mon, 13 Aug 2012 03:27:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1T0VTE-000767-7r
-	for qemu-trivial@nongnu.org; Sun, 12 Aug 2012 06:32:34 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:54821)
+	(envelope-from <kwolf@redhat.com>) id 1T0p39-0007wn-Ux
+	for qemu-trivial@nongnu.org; Mon, 13 Aug 2012 03:27:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:30227)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1T0VTA-00073J-FT; Sun, 12 Aug 2012 06:32:28 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id F12FAA0B18;
-	Sun, 12 Aug 2012 14:32:25 +0400 (MSK)
-Message-ID: <50278638.4070206@msgid.tls.msk.ru>
-Date: Sun, 12 Aug 2012 14:32:24 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:10.0.5) Gecko/20120624 Icedove/10.0.5
+	(envelope-from <kwolf@redhat.com>)
+	id 1T0p30-0007v0-V9; Mon, 13 Aug 2012 03:26:47 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q7D7Qhg0005105
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 13 Aug 2012 03:26:43 -0400
+Received: from dhcp-5-188.str.redhat.com (dhcp-5-175.str.redhat.com
+	[10.32.5.175])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q7D7QdBJ030348
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-CAMELLIA256-SHA bits=256 verify=NO);
+	Mon, 13 Aug 2012 03:26:41 -0400
+Message-ID: <5028AC2E.9060807@redhat.com>
+Date: Mon, 13 Aug 2012 09:26:38 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:13.0) Gecko/20120605 Thunderbird/13.0
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
+To: Michael Tokarev <mjt@tls.msk.ru>
 References: <1344720275-26744-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1344720275-26744-1-git-send-email-peter.maydell@linaro.org>
-X-Enigmail-Version: 1.4.1
-OpenPGP: id=804465C5
+	<50278638.4070206@msgid.tls.msk.ru>
+In-Reply-To: <50278638.4070206@msgid.tls.msk.ru>
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org, patches@linaro.org
 Subject: Re: [Qemu-trivial] [PATCH] iov_send_recv(): Handle zero bytes case
  even if OS does not
@@ -47,49 +54,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 12 Aug 2012 10:32:35 -0000
+X-List-Received-Date: Mon, 13 Aug 2012 07:27:05 -0000
 
-On 12.08.2012 01:24, Peter Maydell wrote:
-> POSIX allows sendmsg() and recvmsg() to fail EMSGSIZE if passed a zero
-> msg.msg_iovlen (in particular the MacOS X implementation will do this).
-> Handle the case where iov_send_recv() is passed a zero byte count
-> explicitly, to avoid accidentally depending on the OS to treat zero
-> msg_iovlen as a no-op.
+Am 12.08.2012 12:32, schrieb Michael Tokarev:
+> On 12.08.2012 01:24, Peter Maydell wrote:
+>> POSIX allows sendmsg() and recvmsg() to fail EMSGSIZE if passed a zero
+>> msg.msg_iovlen (in particular the MacOS X implementation will do this).
+>> Handle the case where iov_send_recv() is passed a zero byte count
+>> explicitly, to avoid accidentally depending on the OS to treat zero
+>> msg_iovlen as a no-op.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> This is what was causing 'make check' to fail on MacOS X.
+>> The other option was to declare that a zero bytecount was illegal, I guess.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> This is what was causing 'make check' to fail on MacOS X.
-> The other option was to declare that a zero bytecount was illegal, I guess.
-
-Acked-by: Michael Tokarev <mjt@tls.msk.ru>
-
-Kevin, does this fix the test-iov failure you're seeing on one of
-the build bots?
-
-Thank you!
-
-/mjt
-
->  iov.c | 7 +++++++
->  1 file changed, 7 insertions(+)
+> Acked-by: Michael Tokarev <mjt@tls.msk.ru>
 > 
-> diff --git a/iov.c b/iov.c
-> index b333061..60705c7 100644
-> --- a/iov.c
-> +++ b/iov.c
-> @@ -146,6 +146,13 @@ ssize_t iov_send_recv(int sockfd, struct iovec *iov, unsigned iov_cnt,
->  {
->      ssize_t ret;
->      unsigned si, ei;            /* start and end indexes */
-> +    if (bytes == 0) {
-> +        /* Catch the do-nothing case early, as otherwise we will pass an
-> +         * empty iovec to sendmsg/recvmsg(), and not all implementations
-> +         * accept this.
-> +         */
-> +        return 0;
-> +    }
->  
->      /* Find the start position, skipping `offset' bytes:
->       * first, skip all full-sized vector elements, */
+> Kevin, does this fix the test-iov failure you're seeing on one of
+> the build bots?
 
+It's not on a build bot but on my test machine, but yes, this does fix
+it indeed. Thanks for looking into it, Peter!
+
+Kevin
 
