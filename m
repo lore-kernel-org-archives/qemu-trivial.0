@@ -1,40 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1J1n-0006Hd-Ig
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Aug 2012 11:27:31 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:59151)
+	id 1T1NZk-0006M0-UK
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Aug 2012 16:18:52 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55895)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1T1J1j-00063v-JE
-	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 11:27:29 -0400
+	(envelope-from <berto@elpiso.org>) id 1T1NZi-0006Lq-H7
+	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 16:18:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1T1J1h-0005NM-Fq
-	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 11:27:27 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:47073 helo=mx2.suse.de)
+	(envelope-from <berto@elpiso.org>) id 1T1NZh-000623-HY
+	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 16:18:50 -0400
+Received: from smtp4.mundo-r.com ([212.51.32.151]:65216)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1T1J1f-0005Mx-27; Tue, 14 Aug 2012 11:27:23 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id AE5B098E46;
-	Tue, 14 Aug 2012 17:27:21 +0200 (CEST)
-Message-ID: <502A6E57.9070402@suse.de>
-Date: Tue, 14 Aug 2012 17:27:19 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:14.0) Gecko/20120713 Thunderbird/14.0
+	(envelope-from <berto@elpiso.org>) id 1T1NZh-00061j-Ah
+	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 16:18:49 -0400
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: AloCAOWxKlBbdWObgWdsb2JhbABFhgGxAYMmIgEBFiYngkoPAUYZHAIYDgI+iEWlM5NUgSGMeYIKgRIDiEiNA5Jy
+X-IronPort-AV: E=Sophos;i="4.77,769,1336341600"; d="scan'208";a="957276700"
+Received: from fanzine.igalia.com ([91.117.99.155])
+	by smtp4.mundo-r.com with ESMTP; 14 Aug 2012 22:18:47 +0200
+Received: from dsl-hkibrasgw4-fe53df00-164.dhcp.inet.fi ([80.223.83.164]
+	helo=hermes.local) by fanzine.igalia.com with esmtpsa 
+	(Cipher TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim)
+	id 1T1NZf-0001no-5o; Tue, 14 Aug 2012 22:18:47 +0200
+Received: from berto by hermes.local with local (Exim 4.80)
+	(envelope-from <berto@elpiso.org>)
+	id 1T1NZQ-00043C-SY; Tue, 14 Aug 2012 23:18:33 +0300
+From: Alberto Garcia <agarcia@igalia.com>
+To: qemu-trivial@nongnu.org
+Date: Tue, 14 Aug 2012 23:18:32 +0300
+Message-Id: <1344975512-15542-1-git-send-email-agarcia@igalia.com>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-To: Gerd Hoffmann <kraxel@redhat.com>
-References: <1344953582-24303-1-git-send-email-alex@securiforest.com>
-In-Reply-To: <1344953582-24303-1-git-send-email-alex@securiforest.com>
-X-Enigmail-Version: 1.5a1pre
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Alejandro Martinez Ruiz <alex@securiforest.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ehci: fix assertion typo
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 212.51.32.151
+Cc: Orit Wasserman <owasserm@redhat.com>
+Subject: [Qemu-trivial] =?utf-8?q?=5BPATCH=5D_savevm=3A_fix_compiler_warni?=
+	=?utf-8?q?ng?=
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,40 +49,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Aug 2012 15:27:29 -0000
+X-List-Received-Date: Tue, 14 Aug 2012 20:18:51 -0000
 
-Am 14.08.2012 16:13, schrieb Alejandro Martinez Ruiz:
-> Signed-off-by: Alejandro Martinez Ruiz <alex@securiforest.com>
-> ---
->  hw/usb/hcd-ehci.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+If we have a 32-bit long then the truncation of a 64-bit value will
+produce a compiler warning unless we make an explicit cast.
+---
+ savevm.c |    2 +-
+ 1 ficheiro modificado, 1 adição(+), 1 eliminado(-)
 
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+diff --git a/savevm.c b/savevm.c
+index 0ea10c9..c89fc4e 100644
+--- a/savevm.c
++++ b/savevm.c
+@@ -2473,7 +2473,7 @@ int xbzrle_encode_buffer(uint8_t *old_buf, uint8_t *new_buf, int slen,
+         /* word at a time for speed, use of 32-bit long okay */
+         if (!res) {
+             /* truncation to 32-bit long okay */
+-            long mask = 0x0101010101010101ULL;
++            long mask = (long) 0x0101010101010101ULL;
+             while (i < slen) {
+                 xor = *(long *)(old_buf + i) ^ *(long *)(new_buf + i);
+                 if ((xor - mask) & ~xor & (mask << 7)) {
+-- 
+1.7.10.4
 
-Patch looks like a sensible bugfix for 1.2, we most likely don't intend
-to overwrite the status. Gerd, could you take a second look?
-
-Andreas
-
->=20
-> diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-> index b043e7c..104c21d 100644
-> --- a/hw/usb/hcd-ehci.c
-> +++ b/hw/usb/hcd-ehci.c
-> @@ -2010,7 +2010,7 @@ static void ehci_fill_queue(EHCIPacket *p)
->          p->qtdaddr =3D qtdaddr;
->          p->qtd =3D qtd;
->          p->usb_status =3D ehci_execute(p, "queue");
-> -        assert(p->usb_status =3D USB_RET_ASYNC);
-> +        assert(p->usb_status =3D=3D USB_RET_ASYNC);
->          p->async =3D EHCI_ASYNC_INFLIGHT;
->      }
->  }
->=20
-
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
 
