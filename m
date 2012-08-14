@@ -1,42 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1HuX-00017c-Cz
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Aug 2012 10:15:57 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54043)
+	id 1T1IKT-0008EE-Bw
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Aug 2012 10:42:45 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:58116)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <agarcia@igalia.com>) id 1T1HuV-00017W-VV
-	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 10:15:56 -0400
+	(envelope-from <lcapitulino@redhat.com>) id 1T1IKQ-00085h-EB
+	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 10:42:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <agarcia@igalia.com>) id 1T1HuU-0005Ca-K3
-	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 10:15:55 -0400
-Received: from smtp4.mundo-r.com ([212.51.32.151]:53860)
+	(envelope-from <lcapitulino@redhat.com>) id 1T1IKN-0005iB-Hi
+	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 10:42:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:10509)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <agarcia@igalia.com>)
-	id 1T1HuU-0004kQ-Cq; Tue, 14 Aug 2012 10:15:54 -0400
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: AoMEAGNcKlBbdWObgWdsb2JhbABEuRYEBHIiAQEWJieCIAEBBAE6PwULCw44FCghiBoKuS+LBYVRYAOVSgGScQ
-X-IronPort-AV: E=Sophos;i="4.77,767,1336341600"; d="scan'208";a="957207253"
-Received: from fanzine.igalia.com ([91.117.99.155])
-	by smtp4.mundo-r.com with ESMTP; 14 Aug 2012 16:15:37 +0200
-Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
-	by fanzine.igalia.com with esmtps 
-	(Cipher TLS1.0:RSA_AES_256_CBC_SHA1:32) (Exim)
-	id 1T1HuD-0007KW-CP; Tue, 14 Aug 2012 16:15:37 +0200
-Received: from berto by mail.igalia.com with local (Exim)
-	id 1T1HuD-00077y-7B; Tue, 14 Aug 2012 16:15:37 +0200
-Date: Tue, 14 Aug 2012 16:15:37 +0200
-From: Alberto Garcia <agarcia@igalia.com>
-To: Luiz Capitulino <lcapitulino@redhat.com>
-Message-ID: <20120814141537.GA27231@igalia.com>
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1T1IKN-0005hX-AW; Tue, 14 Aug 2012 10:42:39 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q7EEgLAo027331
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 14 Aug 2012 10:42:21 -0400
+Received: from doriath.home (ovpn-113-111.phx2.redhat.com [10.3.113.111])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q7EEgJWm028818; Tue, 14 Aug 2012 10:42:20 -0400
+Date: Tue, 14 Aug 2012 11:43:03 -0300
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Alberto Garcia <agarcia@igalia.com>
+Message-ID: <20120814114303.4e65b24b@doriath.home>
+In-Reply-To: <20120814141537.GA27231@igalia.com>
 References: <1344944488-27075-1-git-send-email-agarcia@igalia.com>
 	<20120814104230.64aed4e3@doriath.home>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20120814104230.64aed4e3@doriath.home>
-User-Agent: Mutt/1.5.20 (2009-06-14)
+	<20120814141537.GA27231@igalia.com>
+Organization: Red Hat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 212.51.32.151
+X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [PATCH] ivshmem,
 	qdev-monitor: fix order of qerror parameters
@@ -51,16 +50,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Aug 2012 14:15:56 -0000
+X-List-Received-Date: Tue, 14 Aug 2012 14:42:44 -0000
 
-On Tue, Aug 14, 2012 at 10:42:30AM -0300, Luiz Capitulino wrote:
+On Tue, 14 Aug 2012 16:15:37 +0200
+Alberto Garcia <agarcia@igalia.com> wrote:
 
-> Additionally, we should check all old QERR_ macros to see if anyone
-> else swaps parameters like this and change them too.
+> On Tue, Aug 14, 2012 at 10:42:30AM -0300, Luiz Capitulino wrote:
+> 
+> > Additionally, we should check all old QERR_ macros to see if anyone
+> > else swaps parameters like this and change them too.
+> 
+> Yes, I also noticed the problem and checked all QERR_ macros, I only
+> found the two that I corrected in the patch, but double checking the
+> list won't hurt I guess :)
 
-Yes, I also noticed the problem and checked all QERR_ macros, I only
-found the two that I corrected in the patch, but double checking the
-list won't hurt I guess :)
+Yes, you're right. I've just double checked it and these are the only
+two cases and both have only one single user.
 
-Berto
+This patch is fine then:
+
+ Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
 
