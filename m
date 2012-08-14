@@ -1,44 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1IKT-0008EE-Bw
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Aug 2012 10:42:45 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58116)
+	id 1T1J1n-0006Hd-Ig
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Aug 2012 11:27:31 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:59151)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1T1IKQ-00085h-EB
-	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 10:42:43 -0400
+	(envelope-from <afaerber@suse.de>) id 1T1J1j-00063v-JE
+	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 11:27:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1T1IKN-0005iB-Hi
-	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 10:42:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:10509)
+	(envelope-from <afaerber@suse.de>) id 1T1J1h-0005NM-Fq
+	for qemu-trivial@nongnu.org; Tue, 14 Aug 2012 11:27:27 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:47073 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1T1IKN-0005hX-AW; Tue, 14 Aug 2012 10:42:39 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q7EEgLAo027331
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 14 Aug 2012 10:42:21 -0400
-Received: from doriath.home (ovpn-113-111.phx2.redhat.com [10.3.113.111])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q7EEgJWm028818; Tue, 14 Aug 2012 10:42:20 -0400
-Date: Tue, 14 Aug 2012 11:43:03 -0300
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Alberto Garcia <agarcia@igalia.com>
-Message-ID: <20120814114303.4e65b24b@doriath.home>
-In-Reply-To: <20120814141537.GA27231@igalia.com>
-References: <1344944488-27075-1-git-send-email-agarcia@igalia.com>
-	<20120814104230.64aed4e3@doriath.home>
-	<20120814141537.GA27231@igalia.com>
-Organization: Red Hat
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] ivshmem,
-	qdev-monitor: fix order of qerror parameters
+	(envelope-from <afaerber@suse.de>)
+	id 1T1J1f-0005Mx-27; Tue, 14 Aug 2012 11:27:23 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id AE5B098E46;
+	Tue, 14 Aug 2012 17:27:21 +0200 (CEST)
+Message-ID: <502A6E57.9070402@suse.de>
+Date: Tue, 14 Aug 2012 17:27:19 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:14.0) Gecko/20120713 Thunderbird/14.0
+MIME-Version: 1.0
+To: Gerd Hoffmann <kraxel@redhat.com>
+References: <1344953582-24303-1-git-send-email-alex@securiforest.com>
+In-Reply-To: <1344953582-24303-1-git-send-email-alex@securiforest.com>
+X-Enigmail-Version: 1.5a1pre
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Alejandro Martinez Ruiz <alex@securiforest.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ehci: fix assertion typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,24 +46,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Aug 2012 14:42:44 -0000
+X-List-Received-Date: Tue, 14 Aug 2012 15:27:29 -0000
 
-On Tue, 14 Aug 2012 16:15:37 +0200
-Alberto Garcia <agarcia@igalia.com> wrote:
+Am 14.08.2012 16:13, schrieb Alejandro Martinez Ruiz:
+> Signed-off-by: Alejandro Martinez Ruiz <alex@securiforest.com>
+> ---
+>  hw/usb/hcd-ehci.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-> On Tue, Aug 14, 2012 at 10:42:30AM -0300, Luiz Capitulino wrote:
-> 
-> > Additionally, we should check all old QERR_ macros to see if anyone
-> > else swaps parameters like this and change them too.
-> 
-> Yes, I also noticed the problem and checked all QERR_ macros, I only
-> found the two that I corrected in the patch, but double checking the
-> list won't hurt I guess :)
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
-Yes, you're right. I've just double checked it and these are the only
-two cases and both have only one single user.
+Patch looks like a sensible bugfix for 1.2, we most likely don't intend
+to overwrite the status. Gerd, could you take a second look?
 
-This patch is fine then:
+Andreas
 
- Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
+>=20
+> diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+> index b043e7c..104c21d 100644
+> --- a/hw/usb/hcd-ehci.c
+> +++ b/hw/usb/hcd-ehci.c
+> @@ -2010,7 +2010,7 @@ static void ehci_fill_queue(EHCIPacket *p)
+>          p->qtdaddr =3D qtdaddr;
+>          p->qtd =3D qtd;
+>          p->usb_status =3D ehci_execute(p, "queue");
+> -        assert(p->usb_status =3D USB_RET_ASYNC);
+> +        assert(p->usb_status =3D=3D USB_RET_ASYNC);
+>          p->async =3D EHCI_ASYNC_INFLIGHT;
+>      }
+>  }
+>=20
+
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
