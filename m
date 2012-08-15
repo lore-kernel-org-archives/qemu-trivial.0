@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1eP9-0008CR-Cr
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 10:17:03 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:50480)
+	id 1T1eTu-0002dp-Cp
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 10:21:58 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:60801)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1eP7-0008C9-Fd
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 10:17:02 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T1eTs-0002X1-5y
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 10:21:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1eP6-0006nz-99
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 10:17:01 -0400
-Received: from mail-wg0-f53.google.com ([74.125.82.53]:60415)
+	(envelope-from <stefanha@gmail.com>) id 1T1eTr-0000Xj-6R
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 10:21:56 -0400
+Received: from mail-wg0-f41.google.com ([74.125.82.41]:53208)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1T1eP6-0006nr-2x; Wed, 15 Aug 2012 10:17:00 -0400
-Received: by wgbfm10 with SMTP id fm10so1150102wgb.10
-	for <multiple recipients>; Wed, 15 Aug 2012 07:16:59 -0700 (PDT)
+	id 1T1eTo-0000XK-SE; Wed, 15 Aug 2012 10:21:53 -0400
+Received: by wgbds1 with SMTP id ds1so4849313wgb.4
+	for <multiple recipients>; Wed, 15 Aug 2012 07:21:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=QoQXEMLX4FWCjxiNj5CT/LIbNi1E1QfjTM+fixgIkdo=;
-	b=YJZTJYr2xGEIbB7KhzGXITDudcNzXAFuLLLLKPz3qxPn2qAJxKWgBxt3gBS8CLlgYh
-	agPEPBpMKjyLPf8dHl7hOa42CY0JeOzRRY2eI99QkgQstkxpHqisiyVvKyykl4+Zock9
-	6F7VHMWOeaYQX3hooRT40A18bAB0ExoZuJ45yelDw6j8HHCv/jB1/QD+8bYpsiFvUUkD
-	I8QZoJ+Z9SLqunpgBatAF0b/wbOvhHfxW4AqXsP2gRsNHLu4mguEQo5bU3qSlLgdUcZK
-	mi800RjJ+5rVvj6LrdK4LltUPFU7U0L5Vf3PNWKjSevKwELnzR/UdKsI2awtYSZZQbNF
-	GOwg==
-Received: by 10.180.93.68 with SMTP id cs4mr37406603wib.14.1345040219323;
-	Wed, 15 Aug 2012 07:16:59 -0700 (PDT)
+	bh=IwZnRSk6prfRRMPQvjWXu7n9uJPAVJnpMT7u2Eqe80s=;
+	b=PtLPrgbZCN1nvzVUZT6510EGdGugTeFTUA+IQw2E4KM/JQbfKJXqJc1faT2u+lweay
+	wSZ3HV2ThxZRbOn6GuNJoIFIZidJTrt8sBz0lkSQVSwn00aBgz1gjnAtFVDukDsXFCPE
+	Je5YCF4HwpwDOIDpXIBlpugAdw2kl//XCG56DcjuhIDrZ4AgaNatRS2IaqiHnuA/cwRG
+	muQ3ghGOO1HxCqDf6R0eSVA4dW5C7cpOACkIlqWZot6k93+6M3V4lyplePl0Y6NHKLzo
+	U5vBlBq7Kh0XskDHDdbXXsqL00K/I4W4jUeAE0Zc4wgw3ry1RM7ndsOX7DB9NlInsB35
+	OXcQ==
+Received: by 10.216.71.82 with SMTP id q60mr10915842wed.64.1345040511836;
+	Wed, 15 Aug 2012 07:21:51 -0700 (PDT)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id bc2sm4934136wib.0.2012.08.15.07.16.58
+	by mx.google.com with ESMTPS id t8sm28896948wiy.3.2012.08.15.07.21.50
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 15 Aug 2012 07:16:58 -0700 (PDT)
-Date: Wed, 15 Aug 2012 15:16:55 +0100
+	Wed, 15 Aug 2012 07:21:51 -0700 (PDT)
+Date: Wed, 15 Aug 2012 15:21:48 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120815141655.GK10742@stefanha-thinkpad.localdomain>
-References: <1344713522-5229-1-git-send-email-sw@weilnetz.de>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20120815142148.GL10742@stefanha-thinkpad.localdomain>
+References: <1344720275-26744-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1344713522-5229-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1344720275-26744-1-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] framebuffer: Fix spelling
- in comment (leight -> height)
+X-Received-From: 74.125.82.41
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] iov_send_recv(): Handle zero bytes case
+ even if OS does not
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,15 +58,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Aug 2012 14:17:02 -0000
+X-List-Received-Date: Wed, 15 Aug 2012 14:21:57 -0000
 
-On Sat, Aug 11, 2012 at 09:32:02PM +0200, Stefan Weil wrote:
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On Sat, Aug 11, 2012 at 10:24:35PM +0100, Peter Maydell wrote:
+> POSIX allows sendmsg() and recvmsg() to fail EMSGSIZE if passed a zero
+> msg.msg_iovlen (in particular the MacOS X implementation will do this).
+> Handle the case where iov_send_recv() is passed a zero byte count
+> explicitly, to avoid accidentally depending on the OS to treat zero
+> msg_iovlen as a no-op.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/framebuffer.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-
-Let there be leight!
+> This is what was causing 'make check' to fail on MacOS X.
+> The other option was to declare that a zero bytecount was illegal, I guess.
+> 
+>  iov.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
