@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1dfs-00037c-UQ
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 09:30:16 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53149)
+	id 1T1dj0-0003Ka-Vp
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 09:33:30 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:53942)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1dfn-00032z-0E
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 09:30:15 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T1diy-0003Dq-Db
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 09:33:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1dfl-0000wh-8w
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 09:30:10 -0400
-Received: from mail-wi0-f181.google.com ([209.85.212.181]:65197)
+	(envelope-from <stefanha@gmail.com>) id 1T1dix-00021R-C1
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 09:33:28 -0400
+Received: from mail-wi0-f181.google.com ([209.85.212.181]:53529)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1dfl-0000t6-2L
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 09:30:09 -0400
-Received: by wibhm2 with SMTP id hm2so1088018wib.10
-	for <qemu-trivial@nongnu.org>; Wed, 15 Aug 2012 06:30:06 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1T1diu-00020o-W1; Wed, 15 Aug 2012 09:33:25 -0400
+Received: by wibhm2 with SMTP id hm2so1090176wib.10
+	for <multiple recipients>; Wed, 15 Aug 2012 06:33:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=cRCD5/Y7kXidcdYnXlAeisSXlYi+tZZxi4OO4FL7SVs=;
-	b=eYnyxyp6coIGxjFR0ORLOLSi6ktifyUKgCQ9KA3TI8ElkgUspWFTZGiK56Q2/Gia/f
-	Qc33W/xYEPIl5ZV2FF8KRkZl+BIQOpkBAAoXlQjrmaHTG9oQm0jWKdaT3BAPHP3SsEKs
-	BNVTx4Y09+iOaR1CbBvTmmGso3C3rnb9kEG7C4Rs5pZruJfofodySo+NbPowHOKTMKzf
-	cXfH5J7rpIhMu843dofVnZUM6psv6ZpYC8sX+hhJHbFe3zcIaPzzWZpgXFRSfS9fNqEj
-	ozSWbEezd7U5yEMOwMFrLMPAoUlc5AostsmVN2Lx4KnrI4r6+pkjjmUN/a7pgbDulk1A
-	rqyA==
-Received: by 10.180.97.135 with SMTP id ea7mr37120504wib.11.1345037406293;
-	Wed, 15 Aug 2012 06:30:06 -0700 (PDT)
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=lvs3S9Y5st6Dgick80mPoHamfJF5+fJcV51FiFyaFjc=;
+	b=CG3bMk8QTI5sqgBKb2tqowKbA87RLwXm8sjflK0ZA2Gn9jP3UFlK1cPMx6mfgeJrIf
+	WRns5OYyh/gqZ98d40fgL9DMiYPTHjyz3pku+lqWcht/m3giiojvZpvQuIEOVGlA5Tv4
+	SeoG5Qq21KW6U4z9FVMsQ6jBRyLGS1/YmMdQcSZ3SG6Q/mwGv/PfUGeEaNtC3/xJLVdy
+	Y7ObqUTc6ipiUd8CTw1bC295gJwxH3tL80dRa/YFytDJPlol18Kx9mk7keVSap9HKdNg
+	C3tyIi/v1cEeRNazlDfVLHQ94hwZh9sFIet2Kat+c5feyN/b7VT0VrxenGzq4/1zm8hC
+	Q1mg==
+Received: by 10.216.243.10 with SMTP id j10mr10446112wer.211.1345037603972;
+	Wed, 15 Aug 2012 06:33:23 -0700 (PDT)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id dc3sm28649176wib.7.2012.08.15.06.30.05
+	by mx.google.com with ESMTPS id fr4sm4606875wib.8.2012.08.15.06.33.22
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 15 Aug 2012 06:30:05 -0700 (PDT)
-Date: Wed, 15 Aug 2012 14:30:02 +0100
+	Wed, 15 Aug 2012 06:33:23 -0700 (PDT)
+Date: Wed, 15 Aug 2012 14:33:19 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Alberto Garcia <agarcia@igalia.com>
-Message-ID: <20120815133002.GA10742@stefanha-thinkpad.localdomain>
-References: <1344975512-15542-1-git-send-email-agarcia@igalia.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20120815133319.GB10742@stefanha-thinkpad.localdomain>
+References: <1345030164-2496-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1344975512-15542-1-git-send-email-agarcia@igalia.com>
+In-Reply-To: <1345030164-2496-1-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.85.212.181
-Cc: qemu-trivial@nongnu.org, Orit Wasserman <owasserm@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] savevm: fix compiler warning
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH v2] Makefile: Avoid explicit list of
+ directories in clean target
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,38 +58,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Aug 2012 13:30:15 -0000
+X-List-Received-Date: Wed, 15 Aug 2012 13:33:29 -0000
 
-On Tue, Aug 14, 2012 at 11:18:32PM +0300, Alberto Garcia wrote:
-> If we have a 32-bit long then the truncation of a 64-bit value will
-> produce a compiler warning unless we make an explicit cast.
-> ---
->  savevm.c |    2 +-
->  1 ficheiro modificado, 1 adição(+), 1 eliminado(-)
+On Wed, Aug 15, 2012 at 12:29:24PM +0100, Peter Maydell wrote:
+> Avoid having an explicit list of directories in the 'clean'
+> target by using 'find' to remove all .o and .d files instead.
 > 
-> diff --git a/savevm.c b/savevm.c
-> index 0ea10c9..c89fc4e 100644
-> --- a/savevm.c
-> +++ b/savevm.c
-> @@ -2473,7 +2473,7 @@ int xbzrle_encode_buffer(uint8_t *old_buf, uint8_t *new_buf, int slen,
->          /* word at a time for speed, use of 32-bit long okay */
->          if (!res) {
->              /* truncation to 32-bit long okay */
-> -            long mask = 0x0101010101010101ULL;
-> +            long mask = (long) 0x0101010101010101ULL;
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Changes v1->v2: use portable 'find -exec' rather than unsafe 'find | xargs'
+> or unportable 'find -print0 | xargs -0'.
+> 
+>  Makefile |    7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
 
-C99 6.3.1.3 Signed and unsigned integers, paragraph 3:
-
-"Otherwise, the new type is signed and the value cannot be represented
-in it; either the result is implementation-defined or an
-implementation-defined signal is raised."
-
-The safe way of doing this is by casting to (unsigned long) instead:
-
-"Otherwise, if the new type is unsigned, the value is converted by
-repeatedly adding or subtracting one more than the maximum value that
-can be represented in the new type until the value is in the range of
-the new type."
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
 Stefan
 
