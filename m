@@ -1,53 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1ejG-0008F7-Gp
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 10:37:50 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34940)
+	id 1T1g0Y-0003mb-3a
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 11:59:46 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:48360)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1ejB-0008DS-7w
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 10:37:49 -0400
+	(envelope-from <sw@weilnetz.de>) id 1T1g0U-0003aG-IM
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 11:59:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1ej9-0005h4-6L
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 10:37:45 -0400
-Received: from mail-wg0-f53.google.com ([74.125.82.53]:48844)
+	(envelope-from <sw@weilnetz.de>) id 1T1g0T-0007eA-F4
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 11:59:42 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:39238)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1ej9-0005h0-02
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 10:37:43 -0400
-Received: by wgbfm10 with SMTP id fm10so1169472wgb.10
-	for <qemu-trivial@nongnu.org>; Wed, 15 Aug 2012 07:37:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=2QI+GpAzPfywqwQ4WYTFIFswrSy4hJwMPHN05rVIdIc=;
-	b=RKXU0/FaiuyMkWtbGrRhsES8gkbS31L4yJ2k0fiQC5LEC9AUBFP6x+FGDv2dXAumOO
-	kvKM6dFiNOHqlJIxAVdi0Fa15BaDofVlzFvxBDoLZXc27deh9HolQLKdIxjzWzePCqVz
-	tENf7WOuw9XKf4J9h8nBAADFXs1YmOgF4P4huy1BucJaO7+2Kh8fVCyfE0gpx+bncs8C
-	Vr5A5QVrvqemQNhF6kG41U+gSVA1fx/nBL47izWjA0J4d2AKjQWJwAUlAcsHLRTH5ViD
-	Bbpwzr7nSThTKiMIWQXPAZ870nB9PBrueQW/ai9ZGFE0PT2S8IKzNRjS4paWvYB7QUzh
-	/Xag==
-Received: by 10.180.85.167 with SMTP id i7mr37539639wiz.8.1345041462176;
-	Wed, 15 Aug 2012 07:37:42 -0700 (PDT)
-Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id z11sm5030916wiv.10.2012.08.15.07.37.40
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 15 Aug 2012 07:37:41 -0700 (PDT)
-Date: Wed, 15 Aug 2012 15:37:38 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Alberto Garcia <agarcia@igalia.com>
-Message-ID: <20120815143738.GA16973@stefanha-thinkpad.localdomain>
-References: <1344944488-27075-1-git-send-email-agarcia@igalia.com>
+	(envelope-from <sw@weilnetz.de>)
+	id 1T1g0Q-0007dm-V0; Wed, 15 Aug 2012 11:59:39 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	C2619728002B; Wed, 15 Aug 2012 17:59:37 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id gpnzFIqZ9-OQ; Wed, 15 Aug 2012 17:59:37 +0200 (CEST)
+Received: from [192.168.3.38] (p548B8CDB.dip0.t-ipconnect.de [84.139.140.219])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	3BCEF7280027; Wed, 15 Aug 2012 17:59:35 +0200 (CEST)
+Message-ID: <502BC75E.8060404@weilnetz.de>
+Date: Wed, 15 Aug 2012 17:59:26 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:14.0) Gecko/20120714 Thunderbird/14.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1344944488-27075-1-git-send-email-agarcia@igalia.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, Luiz Capitulino <lcapitulino@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] ivshmem,
- qdev-monitor: fix order of qerror parameters
+To: Stefan Hajnoczi <stefanha@gmail.com>
+References: <1344629007-23311-1-git-send-email-sw@weilnetz.de>
+	<1344629007-23311-3-git-send-email-sw@weilnetz.de>
+	<20120815141608.GJ10742@stefanha-thinkpad.localdomain>
+In-Reply-To: <20120815141608.GJ10742@stefanha-thinkpad.localdomain>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] srp: Don't use QEMU_PACKED for single
+ elements of a structured type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,19 +53,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Aug 2012 14:37:49 -0000
+X-List-Received-Date: Wed, 15 Aug 2012 15:59:43 -0000
 
-On Tue, Aug 14, 2012 at 02:41:28PM +0300, Alberto Garcia wrote:
-> Now that the QERR_ macros no longer contain a json dictionary,
-> the order of some parameters needs to be fixed for them to appear
-> correctly.
-> ---
->  hw/ivshmem.c      |    3 ++-
->  hw/qdev-monitor.c |    2 +-
->  2 ficheiros modificados, 3 adições(+), 2 eliminados(-)
+Am 15.08.2012 16:16, schrieb Stefan Hajnoczi:
+> On Fri, Aug 10, 2012 at 10:03:27PM +0200, Stefan Weil wrote:
+>> QEMU_PACKED results in a MinGW compiler warning when it is
+>> used for single structure elements:
+>>
+>> warning: 'gcc_struct' attribute ignored
+>>
+>> Using QEMU_PACKED for the whole structure avoids the compiler warning
+>> without changing the memory layout.
+> Quick link for other reviewers:
+> http://gcc.gnu.org/onlinedocs/gcc-4.7.1/gcc/Type-Attributes.html#Type-Attributes
+>
+>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>> ---
+>>   hw/srp.h |    8 ++++----
+>>   1 files changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/srp.h b/hw/srp.h
+>> index 3009bd5..5e0cad5 100644
+>> --- a/hw/srp.h
+>> +++ b/hw/srp.h
+>> @@ -177,13 +177,13 @@ struct srp_tsk_mgmt {
+>>       uint8_t    reserved1[6];
+>>       uint64_t   tag;
+>>       uint8_t    reserved2[4];
+>> -    uint64_t   lun QEMU_PACKED;
+>> +    uint64_t   lun;
+>>       uint8_t    reserved3[2];
+>>       uint8_t    tsk_mgmt_func;
+>>       uint8_t    reserved4;
+>>       uint64_t   task_tag;
+>>       uint8_t    reserved5[8];
+>> -};
+>> +} QEMU_PACKED;
+> Here I actually see a difference for the uint64_t task_tag field.
+> Previously it was not packed, now it is packed and because it has 4 *
+> uint8_t before it there will be a difference in layout.
+>
+> Looking at how QEMU accesses srp_tsk_mgmt, I think we're safe because we
+> never actually access task_tag?
+>
+> Ben: Any thoughts on this patch?
+>
+> Stefan
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+4 * uint8_t + 4 bytes from the packed lun, so there is no change
+for task_tag, it's always on a 8 byte boundary!
 
+Regards,
 Stefan
+
 
