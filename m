@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1dj0-0003Ka-Vp
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 09:33:30 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53942)
+	id 1T1dkm-0004Hv-Hg
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 09:35:20 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36821)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1diy-0003Dq-Db
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 09:33:29 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T1dkj-00048i-W4
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 09:35:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T1dix-00021R-C1
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 09:33:28 -0400
-Received: from mail-wi0-f181.google.com ([209.85.212.181]:53529)
+	(envelope-from <stefanha@gmail.com>) id 1T1dkj-0002NW-0N
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 09:35:17 -0400
+Received: from mail-wg0-f53.google.com ([74.125.82.53]:45725)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1T1diu-00020o-W1; Wed, 15 Aug 2012 09:33:25 -0400
-Received: by wibhm2 with SMTP id hm2so1090176wib.10
-	for <multiple recipients>; Wed, 15 Aug 2012 06:33:24 -0700 (PDT)
+	id 1T1dkb-0002Mv-ER; Wed, 15 Aug 2012 09:35:09 -0400
+Received: by wgbfm10 with SMTP id fm10so1113763wgb.10
+	for <multiple recipients>; Wed, 15 Aug 2012 06:35:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=lvs3S9Y5st6Dgick80mPoHamfJF5+fJcV51FiFyaFjc=;
-	b=CG3bMk8QTI5sqgBKb2tqowKbA87RLwXm8sjflK0ZA2Gn9jP3UFlK1cPMx6mfgeJrIf
-	WRns5OYyh/gqZ98d40fgL9DMiYPTHjyz3pku+lqWcht/m3giiojvZpvQuIEOVGlA5Tv4
-	SeoG5Qq21KW6U4z9FVMsQ6jBRyLGS1/YmMdQcSZ3SG6Q/mwGv/PfUGeEaNtC3/xJLVdy
-	Y7ObqUTc6ipiUd8CTw1bC295gJwxH3tL80dRa/YFytDJPlol18Kx9mk7keVSap9HKdNg
-	C3tyIi/v1cEeRNazlDfVLHQ94hwZh9sFIet2Kat+c5feyN/b7VT0VrxenGzq4/1zm8hC
-	Q1mg==
-Received: by 10.216.243.10 with SMTP id j10mr10446112wer.211.1345037603972;
-	Wed, 15 Aug 2012 06:33:23 -0700 (PDT)
+	bh=V1k0oSyrnVFd0O/wIOXvcTM+450Fqw5EtLYpTkcwBwY=;
+	b=kFTd+FWrc2wBJH1lmQ4+1tGSIrV7eD4k8OrY507xhLUjsLw1MezyCRsy7tvhTqafGX
+	1shTXe3A8Gx5RR+mk2bLWzOB0YbsJ+9uAPkfAhR82a/t910g9uWOZwrlFPEWx5G6+/vE
+	2x1PNKt/9ztXpOfoopr/Jz2lvvP/uUHM0WzN73ppE7rcgH005BGkS6JhbzoyigZ7LtYG
+	u7A7PUiOp1yPj52MlxtxEZBcHF6UhLmE+K3IywQeYxqO6TFTZTaafXZTxuNfdngdpAAR
+	+RVjmS0MhtmtGPAhrfpNuaSeggaQIFTXnFF0N9KhVCJHzKdlMABezhj3vMCy3eJ3CgY4
+	QeFw==
+Received: by 10.180.100.37 with SMTP id ev5mr37197044wib.5.1345037708419;
+	Wed, 15 Aug 2012 06:35:08 -0700 (PDT)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id fr4sm4606875wib.8.2012.08.15.06.33.22
+	by mx.google.com with ESMTPS id el6sm28681926wib.8.2012.08.15.06.35.07
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 15 Aug 2012 06:33:23 -0700 (PDT)
-Date: Wed, 15 Aug 2012 14:33:19 +0100
+	Wed, 15 Aug 2012 06:35:07 -0700 (PDT)
+Date: Wed, 15 Aug 2012 14:35:04 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20120815133319.GB10742@stefanha-thinkpad.localdomain>
-References: <1345030164-2496-1-git-send-email-peter.maydell@linaro.org>
+To: Alejandro Martinez Ruiz <alex@securiforest.com>
+Message-ID: <20120815133504.GC10742@stefanha-thinkpad.localdomain>
+References: <1344953582-24303-1-git-send-email-alex@securiforest.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1345030164-2496-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1344953582-24303-1-git-send-email-alex@securiforest.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.181
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH v2] Makefile: Avoid explicit list of
- directories in clean target
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] ehci: fix assertion typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,19 +56,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Aug 2012 13:33:29 -0000
+X-List-Received-Date: Wed, 15 Aug 2012 13:35:19 -0000
 
-On Wed, Aug 15, 2012 at 12:29:24PM +0100, Peter Maydell wrote:
-> Avoid having an explicit list of directories in the 'clean'
-> target by using 'find' to remove all .o and .d files instead.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Tue, Aug 14, 2012 at 04:13:02PM +0200, Alejandro Martinez Ruiz wrote:
+> Signed-off-by: Alejandro Martinez Ruiz <alex@securiforest.com>
 > ---
-> Changes v1->v2: use portable 'find -exec' rather than unsafe 'find | xargs'
-> or unportable 'find -print0 | xargs -0'.
-> 
->  Makefile |    7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
+>  hw/usb/hcd-ehci.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+
+Looks good but would be good to hear from Gerd just to be sure.
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
