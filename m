@@ -1,49 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T20Br-0002Xh-4X
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Aug 2012 09:32:47 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:47184)
+	id 1T20mb-0008SL-R3
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Aug 2012 10:10:45 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44901)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T20Bk-0002XF-83
-	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 09:32:45 -0400
+	(envelope-from <afaerber@suse.de>) id 1T20mY-0008I3-2P
+	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 10:10:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T20Bf-0008NH-6r
-	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 09:32:40 -0400
-Received: from mail-wg0-f53.google.com ([74.125.82.53]:59338)
+	(envelope-from <afaerber@suse.de>) id 1T20mT-00039z-Dc
+	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 10:10:41 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:53713 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1T20Bf-0008Mx-0Z; Thu, 16 Aug 2012 09:32:35 -0400
-Received: by wgbfm10 with SMTP id fm10so1941727wgb.10
-	for <multiple recipients>; Thu, 16 Aug 2012 06:32:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=Hgfwn5Whp1IT4O68P96KXGtYmYNUAzOMwg34eEpUlBw=;
-	b=YMcVHdiRzkjOhha6hS0kQydkEvRL2LWCNNgj5DS0qTrvmbLTKFMkpXmqH7F0f3Uc/9
-	gZ2yKek0huglwPPpG8qm4f/RxwbzGiRCGOnobhM3h6+XkomrE5bX4pCjgcP1upXFNVCH
-	G75OmVze34cRadMRNtK8YY8SR4Kvd0B4QKTWP+I9eBPBeWXdpW3LUbOJcHN7ASkT5xXY
-	PX3VZy5nXkVc6T1sYgtnpJk+ks+LNato+nkFmKLYFnS7vPtngOZ9oMgXg8enLldoZU4a
-	zlYSKc5vPFWjzURY5Y/woJX4tjiVUiTHWGG+gdHvNbDNfpfyXfY2ClQbTNVoraM9HRaY
-	X4BA==
-Received: by 10.180.82.230 with SMTP id l6mr6075554wiy.21.1345123954092;
-	Thu, 16 Aug 2012 06:32:34 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id dc3sm3847216wib.7.2012.08.16.06.32.31
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 16 Aug 2012 06:32:33 -0700 (PDT)
-Date: Thu, 16 Aug 2012 14:32:26 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120816133226.GA22676@stefanha-thinkpad.localdomain>
-References: <1345122741-32492-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <afaerber@suse.de>)
+	id 1T20mK-00037s-8s; Thu, 16 Aug 2012 10:10:28 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 8F626A2FD6;
+	Thu, 16 Aug 2012 16:10:26 +0200 (CEST)
+Message-ID: <502CFF4F.3040003@suse.de>
+Date: Thu, 16 Aug 2012 16:10:23 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:14.0) Gecko/20120713 Thunderbird/14.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1345122741-32492-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 74.125.82.53
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+References: <1345122741-32492-1-git-send-email-sw@weilnetz.de>
+	<20120816133226.GA22676@stefanha-thinkpad.localdomain>
+In-Reply-To: <20120816133226.GA22676@stefanha-thinkpad.localdomain>
+X-Enigmail-Version: 1.5a1pre
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org,
+	"xen-devel@lists.xensource.com Devel" <xen-devel@lists.xensource.com>,
+	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Spelling fixes in comments
  and macro names (ressource -> resource)
 X-BeenThere: qemu-trivial@nongnu.org
@@ -57,19 +49,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Aug 2012 13:32:45 -0000
+X-List-Received-Date: Thu, 16 Aug 2012 14:10:43 -0000
 
-On Thu, Aug 16, 2012 at 03:12:21PM +0200, Stefan Weil wrote:
-> Macro XEN_HOST_PCI_RESOURCE_BUFFER_SIZE is only used locally,
-> so the change should be safe.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  hw/xen-host-pci-device.c |    6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+Am 16.08.2012 15:32, schrieb Stefan Hajnoczi:
+> On Thu, Aug 16, 2012 at 03:12:21PM +0200, Stefan Weil wrote:
+>> Macro XEN_HOST_PCI_RESOURCE_BUFFER_SIZE is only used locally,
+>> so the change should be safe.
+>>
+>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>> ---
+>>  hw/xen-host-pci-device.c |    6 +++---
+>>  1 file changed, 3 insertions(+), 3 deletions(-)
+>=20
+> Thanks, applied to the trivial patches tree:
+> https://github.com/stefanha/qemu/commits/trivial-patches
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+CC'ing the Xen folks.
 
-Stefan
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
