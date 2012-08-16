@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1g0Y-0003mb-3a
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 11:59:46 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:48360)
+	id 1T1pbR-0006TY-11
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 22:14:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56606)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1T1g0U-0003aG-IM
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 11:59:43 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1T1pbP-0006OE-4R
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 22:14:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1T1g0T-0007eA-F4
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 11:59:42 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:39238)
+	(envelope-from <dgibson@ozlabs.org>) id 1T1pbN-0005eT-Rl
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 22:14:27 -0400
+Received: from ozlabs.org ([203.10.76.45]:36151)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1T1g0Q-0007dm-V0; Wed, 15 Aug 2012 11:59:39 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	C2619728002B; Wed, 15 Aug 2012 17:59:37 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id gpnzFIqZ9-OQ; Wed, 15 Aug 2012 17:59:37 +0200 (CEST)
-Received: from [192.168.3.38] (p548B8CDB.dip0.t-ipconnect.de [84.139.140.219])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	3BCEF7280027; Wed, 15 Aug 2012 17:59:35 +0200 (CEST)
-Message-ID: <502BC75E.8060404@weilnetz.de>
-Date: Wed, 15 Aug 2012 17:59:26 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:14.0) Gecko/20120714 Thunderbird/14.0
-MIME-Version: 1.0
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1T1pbF-0005ds-GH; Wed, 15 Aug 2012 22:14:18 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id F04362C0089; Thu, 16 Aug 2012 12:14:14 +1000 (EST)
+Date: Thu, 16 Aug 2012 12:14:11 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
 To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1344629007-23311-1-git-send-email-sw@weilnetz.de>
-	<1344629007-23311-3-git-send-email-sw@weilnetz.de>
-	<20120815141608.GJ10742@stefanha-thinkpad.localdomain>
-In-Reply-To: <20120815141608.GJ10742@stefanha-thinkpad.localdomain>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Benjamin Herrenschmidt <benh@kernel.crashing.org>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] srp: Don't use QEMU_PACKED for single
- elements of a structured type
+Message-ID: <20120816021411.GE4171@truffula.fritz.box>
+Mail-Followup-To: Stefan Hajnoczi <stefanha@gmail.com>,
+	Jon Loeliger <jdl@jdl.com>, qemu-trivial@nongnu.org, agraf@suse.de,
+	qemu-devel@nongnu.org,
+	Peter Crosthwaite <peter.crosthwaite@petalogix.com>
+References: <1344570866-28595-1-git-send-email-peter.crosthwaite@petalogix.com>
+	<1344570866-28595-2-git-send-email-peter.crosthwaite@petalogix.com>
+	<20120810134245.GC14122@stefanha-thinkpad.localdomain>
+	<CAEgOgz7OwHJgKhgm=5VH9UomOr09XOQbDy5OgZx4DqnNj559gQ@mail.gmail.com>
+	<CAJSP0QXonD5WYkgAaqO-BeLaJEVoFOPDOajLWerxkrbKdECUkQ@mail.gmail.com>
+	<20120815134156.GD10742@stefanha-thinkpad.localdomain>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20120815134156.GD10742@stefanha-thinkpad.localdomain>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 203.10.76.45
+Cc: qemu-trivial@nongnu.org,
+	Peter Crosthwaite <peter.crosthwaite@petalogix.com>,
+	Jon Loeliger <jdl@jdl.com>, agraf@suse.de, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] device_tree:
+ load_device_tree(): Allow NULL sizep
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,57 +52,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Aug 2012 15:59:43 -0000
+X-List-Received-Date: Thu, 16 Aug 2012 02:14:28 -0000
 
-Am 15.08.2012 16:16, schrieb Stefan Hajnoczi:
-> On Fri, Aug 10, 2012 at 10:03:27PM +0200, Stefan Weil wrote:
->> QEMU_PACKED results in a MinGW compiler warning when it is
->> used for single structure elements:
->>
->> warning: 'gcc_struct' attribute ignored
->>
->> Using QEMU_PACKED for the whole structure avoids the compiler warning
->> without changing the memory layout.
-> Quick link for other reviewers:
-> http://gcc.gnu.org/onlinedocs/gcc-4.7.1/gcc/Type-Attributes.html#Type-Attributes
->
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>   hw/srp.h |    8 ++++----
->>   1 files changed, 4 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/srp.h b/hw/srp.h
->> index 3009bd5..5e0cad5 100644
->> --- a/hw/srp.h
->> +++ b/hw/srp.h
->> @@ -177,13 +177,13 @@ struct srp_tsk_mgmt {
->>       uint8_t    reserved1[6];
->>       uint64_t   tag;
->>       uint8_t    reserved2[4];
->> -    uint64_t   lun QEMU_PACKED;
->> +    uint64_t   lun;
->>       uint8_t    reserved3[2];
->>       uint8_t    tsk_mgmt_func;
->>       uint8_t    reserved4;
->>       uint64_t   task_tag;
->>       uint8_t    reserved5[8];
->> -};
->> +} QEMU_PACKED;
-> Here I actually see a difference for the uint64_t task_tag field.
-> Previously it was not packed, now it is packed and because it has 4 *
-> uint8_t before it there will be a difference in layout.
->
-> Looking at how QEMU accesses srp_tsk_mgmt, I think we're safe because we
-> never actually access task_tag?
->
-> Ben: Any thoughts on this patch?
->
-> Stefan
+On Wed, Aug 15, 2012 at 02:41:56PM +0100, Stefan Hajnoczi wrote:
+> On Sat, Aug 11, 2012 at 01:33:42PM +0100, Stefan Hajnoczi wrote:
+> > On Sat, Aug 11, 2012 at 12:11 AM, Peter Crosthwaite
+> > <peter.crosthwaite@petalogix.com> wrote:
+> > > On Fri, Aug 10, 2012 at 11:42 PM, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> > >> On Fri, Aug 10, 2012 at 01:54:26PM +1000, Peter A. G. Crosthwaite wrote:
+> > >>> The sizep arg is populated with the size of the loaded device tree. Since this
+> > >>> is one of those informational "please populate" type arguments it should be
+> > >>> optional. Guarded writes to *sizep against NULL accordingly.
+> > >>>
+> > >>> Signed-off-by: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
+> > >>> Acked-by: Alexander Graf <agraf@suse.de>
+> > >>> ---
+> > >>>  device_tree.c |    8 ++++++--
+> > >>>  1 files changed, 6 insertions(+), 2 deletions(-)
+> > >>>
+> > >>> diff --git a/device_tree.c b/device_tree.c
+> > >>> index d7a9b6b..641a48a 100644
+> > >>> --- a/device_tree.c
+> > >>> +++ b/device_tree.c
+> > >>> @@ -71,7 +71,9 @@ void *load_device_tree(const char *filename_path, int *sizep)
+> > >>>      int ret;
+> > >>>      void *fdt = NULL;
+> > >>>
+> > >>> -    *sizep = 0;
+> > >>> +    if (sizep) {
+> > >>> +        *sizep = 0;
+> > >>> +    }
+> > >>>      dt_size = get_image_size(filename_path);
+> > >>>      if (dt_size < 0) {
+> > >>>          printf("Unable to get size of device tree file '%s'\n",
+> > >>> @@ -104,7 +106,9 @@ void *load_device_tree(const char *filename_path, int *sizep)
+> > >>>              filename_path);
+> > >>>          goto fail;
+> > >>>      }
+> > >>> -    *sizep = dt_size;
+> > >>> +    if (sizep) {
+> > >>> +        *sizep = dt_size;
+> > >>> +    }
+> > >>
+> > >> What can the caller do with this void* buffer without knowing its size?
+> > >>
+> > >
+> > > Sanity check the machine:
+> > >
+> > > dtb = load_device_tree( ... ); //dont care how big it is
+> > > foo = fdt_gep_prop( dtb, ... );
+> > > if (foo != object_get_prop(foo_device, foo_prop, ... )) {
+> > >     hw_error("your dtb is bad because ... !\n", ... );
+> > > }
+> > 
+> > What happens if the fdt is corrupt or malicious?  I guess we'll access
+> > memory beyond the end of blob.
+> > 
+> > This seems to be libfdt's fault.  I didn't see an API to validate the
+> > blob's size.
+> > 
+> > I'm "happy" with this patch but if fdt's can ever come from untrusted
+> > sources then we're in trouble.
+> 
+> Jon/David, can you confirm that libfdt has no way of check the size of
+> the fdt blob?
 
-4 * uint8_t + 4 bytes from the packed lun, so there is no change
-for task_tag, it's always on a 8 byte boundary!
+That's not rentirely true.
 
-Regards,
-Stefan
+> For example, if I pass a corrupt or malicious blob to libfdt, is there a
+> way to detect that or will it access memory beyond the end of the blob
+> as we query the device tree?
 
+So, libfdt does trust the blob size that's given in the blob header,
+since libfdt itself doesn't really have any other source for the
+blob/buffer size.  If you have another source for your buffer size
+though, you can check that quite easily against fdt_totalsize(blob)
+(which returns the header value).  If you can think of a helper
+function that would make this easier, I'd be happy to add it to
+libfdt.
+
+Once the header size is validated, though, libfdt *is* supposed to be
+safe against a corrupt or malicious blob.  I can't guarantee that we
+don't have bugs here, but any crash on malicious data I do consider a
+bug and will fix once I'm aware of it.
+
+-- 
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
