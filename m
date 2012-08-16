@@ -1,46 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1pbR-0006TY-11
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2012 22:14:29 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56606)
+	id 1T1ux4-0001A7-Lq
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Aug 2012 03:57:10 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:33890)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1T1pbP-0006OE-4R
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 22:14:28 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T1ux3-00019z-7v
+	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 03:57:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1T1pbN-0005eT-Rl
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2012 22:14:27 -0400
-Received: from ozlabs.org ([203.10.76.45]:36151)
+	(envelope-from <stefanha@gmail.com>) id 1T1ux2-0000IY-3p
+	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 03:57:09 -0400
+Received: from mail-wi0-f181.google.com ([209.85.212.181]:53975)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>)
-	id 1T1pbF-0005ds-GH; Wed, 15 Aug 2012 22:14:18 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id F04362C0089; Thu, 16 Aug 2012 12:14:14 +1000 (EST)
-Date: Thu, 16 Aug 2012 12:14:11 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Message-ID: <20120816021411.GE4171@truffula.fritz.box>
-Mail-Followup-To: Stefan Hajnoczi <stefanha@gmail.com>,
-	Jon Loeliger <jdl@jdl.com>, qemu-trivial@nongnu.org, agraf@suse.de,
-	qemu-devel@nongnu.org,
-	Peter Crosthwaite <peter.crosthwaite@petalogix.com>
-References: <1344570866-28595-1-git-send-email-peter.crosthwaite@petalogix.com>
-	<1344570866-28595-2-git-send-email-peter.crosthwaite@petalogix.com>
-	<20120810134245.GC14122@stefanha-thinkpad.localdomain>
-	<CAEgOgz7OwHJgKhgm=5VH9UomOr09XOQbDy5OgZx4DqnNj559gQ@mail.gmail.com>
-	<CAJSP0QXonD5WYkgAaqO-BeLaJEVoFOPDOajLWerxkrbKdECUkQ@mail.gmail.com>
-	<20120815134156.GD10742@stefanha-thinkpad.localdomain>
+	(envelope-from <stefanha@gmail.com>)
+	id 1T1ux1-0000IT-T9; Thu, 16 Aug 2012 03:57:08 -0400
+Received: by wibhm2 with SMTP id hm2so301699wib.10
+	for <multiple recipients>; Thu, 16 Aug 2012 00:57:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=2x2F2yhvwvbHxtWg4DQZBo1lUUpqwtQYCZzWUD04Q/I=;
+	b=yFGtTQOVxhOC6T10NRtrlyKb6NgCLdHpHgwWpUw751o5OxWyo+8DpS0EQZ8aGqDZuq
+	fErs2+oIDlhlq0Q0yv4qPDilHHm9ICmtEOpEdO/W3Kwwvmu/OOB7W1+br+yyuX8rJtiz
+	z5oIW9u8u7Wt9uLqTVOTVfkLKRM49GiSa55TAlglgvavN+DyY80wjddmuFnW6E8h6MYd
+	jEzxIneblc0Q5FTP2wL0JVh0tAoMEweWFnacMFR6XyRBsI54+W/2moFZa7rYV1At34Ft
+	ajBvulvjOotsG+krBDwzkqGkhK41WZldujhVrDNytVR4n8l1IIfPRfdFfvfLsDD3tFpo
+	HGSw==
+Received: by 10.216.138.220 with SMTP id a70mr149170wej.170.1345103826729;
+	Thu, 16 Aug 2012 00:57:06 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
+	by mx.google.com with ESMTPS id l5sm3881971wix.5.2012.08.16.00.57.05
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 16 Aug 2012 00:57:06 -0700 (PDT)
+Date: Thu, 16 Aug 2012 07:53:52 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120816065352.GA17802@stefanha-thinkpad.localdomain>
+References: <1344629007-23311-1-git-send-email-sw@weilnetz.de>
+	<1344629007-23311-3-git-send-email-sw@weilnetz.de>
+	<20120815141608.GJ10742@stefanha-thinkpad.localdomain>
+	<502BC75E.8060404@weilnetz.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20120815134156.GD10742@stefanha-thinkpad.localdomain>
+In-Reply-To: <502BC75E.8060404@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 203.10.76.45
-Cc: qemu-trivial@nongnu.org,
-	Peter Crosthwaite <peter.crosthwaite@petalogix.com>,
-	Jon Loeliger <jdl@jdl.com>, agraf@suse.de, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] device_tree:
- load_device_tree(): Allow NULL sizep
+X-Received-From: 209.85.212.181
+Cc: qemu-trivial@nongnu.org, Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] srp: Don't use QEMU_PACKED for single
+ elements of a structured type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,93 +61,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Aug 2012 02:14:28 -0000
+X-List-Received-Date: Thu, 16 Aug 2012 07:57:10 -0000
 
-On Wed, Aug 15, 2012 at 02:41:56PM +0100, Stefan Hajnoczi wrote:
-> On Sat, Aug 11, 2012 at 01:33:42PM +0100, Stefan Hajnoczi wrote:
-> > On Sat, Aug 11, 2012 at 12:11 AM, Peter Crosthwaite
-> > <peter.crosthwaite@petalogix.com> wrote:
-> > > On Fri, Aug 10, 2012 at 11:42 PM, Stefan Hajnoczi <stefanha@gmail.com> wrote:
-> > >> On Fri, Aug 10, 2012 at 01:54:26PM +1000, Peter A. G. Crosthwaite wrote:
-> > >>> The sizep arg is populated with the size of the loaded device tree. Since this
-> > >>> is one of those informational "please populate" type arguments it should be
-> > >>> optional. Guarded writes to *sizep against NULL accordingly.
-> > >>>
-> > >>> Signed-off-by: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
-> > >>> Acked-by: Alexander Graf <agraf@suse.de>
-> > >>> ---
-> > >>>  device_tree.c |    8 ++++++--
-> > >>>  1 files changed, 6 insertions(+), 2 deletions(-)
-> > >>>
-> > >>> diff --git a/device_tree.c b/device_tree.c
-> > >>> index d7a9b6b..641a48a 100644
-> > >>> --- a/device_tree.c
-> > >>> +++ b/device_tree.c
-> > >>> @@ -71,7 +71,9 @@ void *load_device_tree(const char *filename_path, int *sizep)
-> > >>>      int ret;
-> > >>>      void *fdt = NULL;
-> > >>>
-> > >>> -    *sizep = 0;
-> > >>> +    if (sizep) {
-> > >>> +        *sizep = 0;
-> > >>> +    }
-> > >>>      dt_size = get_image_size(filename_path);
-> > >>>      if (dt_size < 0) {
-> > >>>          printf("Unable to get size of device tree file '%s'\n",
-> > >>> @@ -104,7 +106,9 @@ void *load_device_tree(const char *filename_path, int *sizep)
-> > >>>              filename_path);
-> > >>>          goto fail;
-> > >>>      }
-> > >>> -    *sizep = dt_size;
-> > >>> +    if (sizep) {
-> > >>> +        *sizep = dt_size;
-> > >>> +    }
-> > >>
-> > >> What can the caller do with this void* buffer without knowing its size?
-> > >>
-> > >
-> > > Sanity check the machine:
-> > >
-> > > dtb = load_device_tree( ... ); //dont care how big it is
-> > > foo = fdt_gep_prop( dtb, ... );
-> > > if (foo != object_get_prop(foo_device, foo_prop, ... )) {
-> > >     hw_error("your dtb is bad because ... !\n", ... );
-> > > }
-> > 
-> > What happens if the fdt is corrupt or malicious?  I guess we'll access
-> > memory beyond the end of blob.
-> > 
-> > This seems to be libfdt's fault.  I didn't see an API to validate the
-> > blob's size.
-> > 
-> > I'm "happy" with this patch but if fdt's can ever come from untrusted
-> > sources then we're in trouble.
+On Wed, Aug 15, 2012 at 05:59:26PM +0200, Stefan Weil wrote:
+> Am 15.08.2012 16:16, schrieb Stefan Hajnoczi:
+> >On Fri, Aug 10, 2012 at 10:03:27PM +0200, Stefan Weil wrote:
+> >>QEMU_PACKED results in a MinGW compiler warning when it is
+> >>used for single structure elements:
+> >>
+> >>warning: 'gcc_struct' attribute ignored
+> >>
+> >>Using QEMU_PACKED for the whole structure avoids the compiler warning
+> >>without changing the memory layout.
+> >Quick link for other reviewers:
+> >http://gcc.gnu.org/onlinedocs/gcc-4.7.1/gcc/Type-Attributes.html#Type-Attributes
+> >
+> >>Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> >>---
+> >>  hw/srp.h |    8 ++++----
+> >>  1 files changed, 4 insertions(+), 4 deletions(-)
+> >>
+> >>diff --git a/hw/srp.h b/hw/srp.h
+> >>index 3009bd5..5e0cad5 100644
+> >>--- a/hw/srp.h
+> >>+++ b/hw/srp.h
+> >>@@ -177,13 +177,13 @@ struct srp_tsk_mgmt {
+> >>      uint8_t    reserved1[6];
+> >>      uint64_t   tag;
+> >>      uint8_t    reserved2[4];
+> >>-    uint64_t   lun QEMU_PACKED;
+> >>+    uint64_t   lun;
+> >>      uint8_t    reserved3[2];
+> >>      uint8_t    tsk_mgmt_func;
+> >>      uint8_t    reserved4;
+> >>      uint64_t   task_tag;
+> >>      uint8_t    reserved5[8];
+> >>-};
+> >>+} QEMU_PACKED;
+> >Here I actually see a difference for the uint64_t task_tag field.
+> >Previously it was not packed, now it is packed and because it has 4 *
+> >uint8_t before it there will be a difference in layout.
+> >
+> >Looking at how QEMU accesses srp_tsk_mgmt, I think we're safe because we
+> >never actually access task_tag?
+> >
+> >Ben: Any thoughts on this patch?
+> >
+> >Stefan
 > 
-> Jon/David, can you confirm that libfdt has no way of check the size of
-> the fdt blob?
+> 4 * uint8_t + 4 bytes from the packed lun, so there is no change
+> for task_tag, it's always on a 8 byte boundary!
 
-That's not rentirely true.
+Ah, yes, I see it now!  Glad we're switching to struct-level packing :).
 
-> For example, if I pass a corrupt or malicious blob to libfdt, is there a
-> way to detect that or will it access memory beyond the end of the blob
-> as we query the device tree?
-
-So, libfdt does trust the blob size that's given in the blob header,
-since libfdt itself doesn't really have any other source for the
-blob/buffer size.  If you have another source for your buffer size
-though, you can check that quite easily against fdt_totalsize(blob)
-(which returns the header value).  If you can think of a helper
-function that would make this easier, I'd be happy to add it to
-libfdt.
-
-Once the header size is validated, though, libfdt *is* supposed to be
-safe against a corrupt or malicious blob.  I can't guarantee that we
-don't have bugs here, but any crash on malicious data I do consider a
-bug and will fix once I'm aware of it.
-
--- 
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Stefan
 
