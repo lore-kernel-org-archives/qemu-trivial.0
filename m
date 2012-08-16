@@ -1,37 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T1zsj-0005gr-SR
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Aug 2012 09:13:01 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44586)
+	id 1T20Br-0002Xh-4X
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Aug 2012 09:32:47 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47184)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T1zsa-0005GP-0m
-	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 09:13:00 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T20Bk-0002XF-83
+	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 09:32:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T1zsN-0001YC-Mw
-	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 09:12:51 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:51011)
+	(envelope-from <stefanha@gmail.com>) id 1T20Bf-0008NH-6r
+	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 09:32:40 -0400
+Received: from mail-wg0-f53.google.com ([74.125.82.53]:59338)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1T1zs8-0001S7-Bl; Thu, 16 Aug 2012 09:12:24 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	9AE097280027; Thu, 16 Aug 2012 15:12:22 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id zC2KwiW2ivdt; Thu, 16 Aug 2012 15:12:22 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 2D91A728002C; Thu, 16 Aug 2012 15:12:22 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Thu, 16 Aug 2012 15:12:21 +0200
-Message-Id: <1345122741-32492-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Spelling fixes in comments and macro names
-	(ressource -> resource)
+	(envelope-from <stefanha@gmail.com>)
+	id 1T20Bf-0008Mx-0Z; Thu, 16 Aug 2012 09:32:35 -0400
+Received: by wgbfm10 with SMTP id fm10so1941727wgb.10
+	for <multiple recipients>; Thu, 16 Aug 2012 06:32:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=Hgfwn5Whp1IT4O68P96KXGtYmYNUAzOMwg34eEpUlBw=;
+	b=YMcVHdiRzkjOhha6hS0kQydkEvRL2LWCNNgj5DS0qTrvmbLTKFMkpXmqH7F0f3Uc/9
+	gZ2yKek0huglwPPpG8qm4f/RxwbzGiRCGOnobhM3h6+XkomrE5bX4pCjgcP1upXFNVCH
+	G75OmVze34cRadMRNtK8YY8SR4Kvd0B4QKTWP+I9eBPBeWXdpW3LUbOJcHN7ASkT5xXY
+	PX3VZy5nXkVc6T1sYgtnpJk+ks+LNato+nkFmKLYFnS7vPtngOZ9oMgXg8enLldoZU4a
+	zlYSKc5vPFWjzURY5Y/woJX4tjiVUiTHWGG+gdHvNbDNfpfyXfY2ClQbTNVoraM9HRaY
+	X4BA==
+Received: by 10.180.82.230 with SMTP id l6mr6075554wiy.21.1345123954092;
+	Thu, 16 Aug 2012 06:32:34 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
+	by mx.google.com with ESMTPS id dc3sm3847216wib.7.2012.08.16.06.32.31
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 16 Aug 2012 06:32:33 -0700 (PDT)
+Date: Thu, 16 Aug 2012 14:32:26 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120816133226.GA22676@stefanha-thinkpad.localdomain>
+References: <1345122741-32492-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1345122741-32492-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Spelling fixes in comments
+ and macro names (ressource -> resource)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,38 +57,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Aug 2012 13:13:00 -0000
+X-List-Received-Date: Thu, 16 Aug 2012 13:32:45 -0000
 
-Macro XEN_HOST_PCI_RESOURCE_BUFFER_SIZE is only used locally,
-so the change should be safe.
+On Thu, Aug 16, 2012 at 03:12:21PM +0200, Stefan Weil wrote:
+> Macro XEN_HOST_PCI_RESOURCE_BUFFER_SIZE is only used locally,
+> so the change should be safe.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  hw/xen-host-pci-device.c |    6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- hw/xen-host-pci-device.c |    6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-diff --git a/hw/xen-host-pci-device.c b/hw/xen-host-pci-device.c
-index e7ff680..743b37b 100644
---- a/hw/xen-host-pci-device.c
-+++ b/hw/xen-host-pci-device.c
-@@ -47,13 +47,13 @@ static int xen_host_pci_sysfs_path(const XenHostPCIDevice *d,
- }
- 
- 
--/* This size should be enough to read the first 7 lines of a ressource file */
--#define XEN_HOST_PCI_RESSOURCE_BUFFER_SIZE 400
-+/* This size should be enough to read the first 7 lines of a resource file */
-+#define XEN_HOST_PCI_RESOURCE_BUFFER_SIZE 400
- static int xen_host_pci_get_resource(XenHostPCIDevice *d)
- {
-     int i, rc, fd;
-     char path[PATH_MAX];
--    char buf[XEN_HOST_PCI_RESSOURCE_BUFFER_SIZE];
-+    char buf[XEN_HOST_PCI_RESOURCE_BUFFER_SIZE];
-     unsigned long long start, end, flags, size;
-     char *endptr, *s;
-     uint8_t type;
--- 
-1.7.10
-
+Stefan
 
