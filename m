@@ -1,43 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T20mb-0008SL-R3
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Aug 2012 10:10:45 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44901)
+	id 1T2MTF-0007QU-45
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Aug 2012 09:20:13 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:58596)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1T20mY-0008I3-2P
-	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 10:10:43 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1T2MTC-0007Kx-PF
+	for qemu-trivial@nongnu.org; Fri, 17 Aug 2012 09:20:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1T20mT-00039z-Dc
-	for qemu-trivial@nongnu.org; Thu, 16 Aug 2012 10:10:41 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:53713 helo=mx2.suse.de)
+	(envelope-from <stefan@weilnetz.de>) id 1T2MTB-0007LV-Mr
+	for qemu-trivial@nongnu.org; Fri, 17 Aug 2012 09:20:10 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41625)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1T20mK-00037s-8s; Thu, 16 Aug 2012 10:10:28 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 8F626A2FD6;
-	Thu, 16 Aug 2012 16:10:26 +0200 (CEST)
-Message-ID: <502CFF4F.3040003@suse.de>
-Date: Thu, 16 Aug 2012 16:10:23 +0200
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:14.0) Gecko/20120713 Thunderbird/14.0
-MIME-Version: 1.0
-To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-References: <1345122741-32492-1-git-send-email-sw@weilnetz.de>
-	<20120816133226.GA22676@stefanha-thinkpad.localdomain>
-In-Reply-To: <20120816133226.GA22676@stefanha-thinkpad.localdomain>
-X-Enigmail-Version: 1.5a1pre
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org,
-	"xen-devel@lists.xensource.com Devel" <xen-devel@lists.xensource.com>,
-	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Spelling fixes in comments
- and macro names (ressource -> resource)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1T2MT7-0007CA-9v; Fri, 17 Aug 2012 09:20:05 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	60C227280027; Fri, 17 Aug 2012 15:20:02 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id gECdMcLmySaw; Fri, 17 Aug 2012 15:20:01 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 89D3D728002D; Fri, 17 Aug 2012 15:20:01 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Fri, 17 Aug 2012 15:20:00 +0200
+Message-Id: <1345209600-808-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] ui: Fix spelling in comment (ressource ->
+	resource)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,27 +44,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Aug 2012 14:10:43 -0000
+X-List-Received-Date: Fri, 17 Aug 2012 13:20:11 -0000
 
-Am 16.08.2012 15:32, schrieb Stefan Hajnoczi:
-> On Thu, Aug 16, 2012 at 03:12:21PM +0200, Stefan Weil wrote:
->> Macro XEN_HOST_PCI_RESOURCE_BUFFER_SIZE is only used locally,
->> so the change should be safe.
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>  hw/xen-host-pci-device.c |    6 +++---
->>  1 file changed, 3 insertions(+), 3 deletions(-)
->=20
-> Thanks, applied to the trivial patches tree:
-> https://github.com/stefanha/qemu/commits/trivial-patches
+The function is called interface_release_resource.
 
-CC'ing the Xen folks.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ ui/spice-display.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Andreas
+diff --git a/ui/spice-display.c b/ui/spice-display.c
+index 3e8f0b3..277843c 100644
+--- a/ui/spice-display.c
++++ b/ui/spice-display.c
+@@ -217,7 +217,7 @@ static SimpleSpiceUpdate *qemu_spice_create_update(SimpleSpiceDisplay *ssd)
+ }
+ 
+ /*
+- * Called from spice server thread context (via interface_release_ressource)
++ * Called from spice server thread context (via interface_release_resource)
+  * We do *not* hold the global qemu mutex here, so extra care is needed
+  * when calling qemu functions.  QEMU interfaces used:
+  *    - g_free (underlying glibc free is re-entrant).
+-- 
+1.7.10
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
 
