@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T2MTF-0007QU-45
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Aug 2012 09:20:13 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58596)
+	id 1T2Mgm-000545-9L
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Aug 2012 09:34:12 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:49029)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T2MTC-0007Kx-PF
-	for qemu-trivial@nongnu.org; Fri, 17 Aug 2012 09:20:11 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1T2Mgj-0004yl-Oj
+	for qemu-trivial@nongnu.org; Fri, 17 Aug 2012 09:34:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T2MTB-0007LV-Mr
-	for qemu-trivial@nongnu.org; Fri, 17 Aug 2012 09:20:10 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41625)
+	(envelope-from <stefan@weilnetz.de>) id 1T2Mgi-0003by-Ta
+	for qemu-trivial@nongnu.org; Fri, 17 Aug 2012 09:34:09 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:60741)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1T2MT7-0007CA-9v; Fri, 17 Aug 2012 09:20:05 -0400
+	id 1T2Mgg-0003bP-PF; Fri, 17 Aug 2012 09:34:06 -0400
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	60C227280027; Fri, 17 Aug 2012 15:20:02 +0200 (CEST)
+	926347280027; Fri, 17 Aug 2012 15:34:05 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id gECdMcLmySaw; Fri, 17 Aug 2012 15:20:01 +0200 (CEST)
+	with ESMTP id m3kxBVC-jliJ; Fri, 17 Aug 2012 15:34:05 +0200 (CEST)
 Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 89D3D728002D; Fri, 17 Aug 2012 15:20:01 +0200 (CEST)
+	id 28ADC728002D; Fri, 17 Aug 2012 15:34:05 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-trivial@nongnu.org
-Date: Fri, 17 Aug 2012 15:20:00 +0200
-Message-Id: <1345209600-808-1-git-send-email-sw@weilnetz.de>
+Date: Fri, 17 Aug 2012 15:34:04 +0200
+Message-Id: <1345210444-2292-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
 X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] ui: Fix spelling in comment (ressource ->
-	resource)
+Cc: qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Markus Armbruster <armbru@redhat.com>,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: [Qemu-trivial] [PATCH] monitor: Fix warning from clang
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,28 +44,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Aug 2012 13:20:11 -0000
+X-List-Received-Date: Fri, 17 Aug 2012 13:34:10 -0000
 
-The function is called interface_release_resource.
+ccc-analyzer reports these warnings:
+
+monitor.c:3532:21: warning: Division by zero
+                val %= val2;
+                    ^
+monitor.c:3530:21: warning: Division by zero
+                val /= val2;
+                    ^
+
+Rewriting the code fixes this (and also a style issue).
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- ui/spice-display.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ monitor.c |    7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/ui/spice-display.c b/ui/spice-display.c
-index 3e8f0b3..277843c 100644
---- a/ui/spice-display.c
-+++ b/ui/spice-display.c
-@@ -217,7 +217,7 @@ static SimpleSpiceUpdate *qemu_spice_create_update(SimpleSpiceDisplay *ssd)
- }
- 
- /*
-- * Called from spice server thread context (via interface_release_ressource)
-+ * Called from spice server thread context (via interface_release_resource)
-  * We do *not* hold the global qemu mutex here, so extra care is needed
-  * when calling qemu functions.  QEMU interfaces used:
-  *    - g_free (underlying glibc free is re-entrant).
+diff --git a/monitor.c b/monitor.c
+index 0c34934..0ea2c14 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -3524,12 +3524,13 @@ static int64_t expr_prod(Monitor *mon)
+             break;
+         case '/':
+         case '%':
+-            if (val2 == 0)
++            if (val2 == 0) {
+                 expr_error(mon, "division by zero");
+-            if (op == '/')
++            } else if (op == '/') {
+                 val /= val2;
+-            else
++            } else {
+                 val %= val2;
++            }
+             break;
+         }
+     }
 -- 
 1.7.10
 
