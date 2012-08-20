@@ -1,29 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T3Zgo-00066b-EX
+	id 1T3Zgo-00066m-IQ
 	for mharc-qemu-trivial@gnu.org; Mon, 20 Aug 2012 17:39:14 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41644)
+Received: from eggs.gnu.org ([208.118.235.92]:41636)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yann.morin.1998@free.fr>) id 1T3Zgm-00066L-Vj
+	(envelope-from <yann.morin.1998@free.fr>) id 1T3Zgm-00066K-Kf
 	for qemu-trivial@nongnu.org; Mon, 20 Aug 2012 17:39:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <yann.morin.1998@free.fr>) id 1T3Zgl-0000Ny-G0
+	(envelope-from <yann.morin.1998@free.fr>) id 1T3Zgl-0000Nt-Ff
 	for qemu-trivial@nongnu.org; Mon, 20 Aug 2012 17:39:12 -0400
-Received: from smtp01.smtpout.orange.fr ([80.12.242.123]:56691
+Received: from smtp01.smtpout.orange.fr ([80.12.242.123]:37925
 	helo=smtp.smtpout.orange.fr) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yann.morin.1998@free.fr>) id 1T3Zgl-0000NU-9Y
+	(envelope-from <yann.morin.1998@free.fr>) id 1T3Zgl-0000NW-9L
 	for qemu-trivial@nongnu.org; Mon, 20 Aug 2012 17:39:11 -0400
 Received: from treguer.bzh.lan ([90.32.34.169]) by mwinf5d54 with ME
-	id p9f91j00M3ewyLA039f9Rh; Mon, 20 Aug 2012 23:39:09 +0200
+	id p9f91j00M3ewyLA039f9Ry; Mon, 20 Aug 2012 23:39:10 +0200
 From: "Yann E. MORIN" <yann.morin.1998@free.fr>
 To: qemu-trivial@nongnu.org
-Date: Mon, 20 Aug 2012 23:39:07 +0200
-Message-Id: <1345498749-16769-1-git-send-email-yann.morin.1998@free.fr>
+Date: Mon, 20 Aug 2012 23:39:08 +0200
+Message-Id: <1345498749-16769-2-git-send-email-yann.morin.1998@free.fr>
 X-Mailer: git-send-email 1.7.2.5
+In-Reply-To: <1345498749-16769-1-git-send-email-yann.morin.1998@free.fr>
+References: <1345498749-16769-1-git-send-email-yann.morin.1998@free.fr>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 80.12.242.123
 Cc: "Yann E. MORIN" <yann.morin.1998@free.fr>
-Subject: [Qemu-trivial] [PATCH 1/3] configure: fix detection for cURL libs
+Subject: [Qemu-trivial] [PATCH 2/3] configure: fix detection for SDL libs
 	when static linking
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -38,45 +40,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 20 Aug 2012 21:39:13 -0000
 
-Currently, configure uses the same code-path to check for cURL libraries,
-whether we are doing a static or dynamic build.
-
-Fix that by pasing the proper arguments: '--static-libs' for curl-config
-and '--static --libs' for pkg-config when a static build is attempted.
+If using pkg-config, we must use '--static --libs', not '--static-libs'
+which is solely for sdl-config.
 
 Signed-off-by: "Yann E. MORIN" <yann.morin.1998@free.fr>
 ---
- configure |    8 +++++++-
- 1 files changed, 7 insertions(+), 1 deletions(-)
+ configure |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
 
 diff --git a/configure b/configure
-index 60d266f..8f8ae8a 100755
+index 8f8ae8a..5b52f9d 100755
 --- a/configure
 +++ b/configure
-@@ -2077,8 +2077,10 @@ fi
+@@ -1645,9 +1645,11 @@ fi
  
- if $pkg_config libcurl --modversion >/dev/null 2>&1; then
-   curlconfig="$pkg_config libcurl"
-+  curlconfig_staticlibs="--static --libs"
+ if $pkg_config sdl --modversion >/dev/null 2>&1; then
+   sdlconfig="$pkg_config sdl"
++  sdlconfig_staticlibs="--static --libs"
+   _sdlversion=`$sdlconfig --modversion 2>/dev/null | sed 's/[^0-9]//g'`
+ elif has ${sdl_config}; then
+   sdlconfig="$sdl_config"
++  sdlconfig_staticlibs="--static-libs"
+   _sdlversion=`$sdlconfig --version | sed 's/[^0-9]//g'`
  else
-   curlconfig=curl-config
-+  curlconfig_staticlibs="--static-libs"
- fi
- 
- if test "$curl" != "no" ; then
-@@ -2087,7 +2089,11 @@ if test "$curl" != "no" ; then
- int main(void) { curl_easy_init(); curl_multi_setopt(0, 0, 0); return 0; }
+   if test "$sdl" = "yes" ; then
+@@ -1668,7 +1670,7 @@ int main( void ) { return SDL_Init (SDL_INIT_VIDEO); }
  EOF
-   curl_cflags=`$curlconfig --cflags 2>/dev/null`
--  curl_libs=`$curlconfig --libs 2>/dev/null`
-+  if test "$static" = "yes" ; then
-+    curl_libs=`$curlconfig $curlconfig_staticlibs 2>/dev/null`
-+  else
-+    curl_libs=`$curlconfig --libs 2>/dev/null`
-+  fi
-   if compile_prog "$curl_cflags" "$curl_libs" ; then
-     curl=yes
-     libs_tools="$curl_libs $libs_tools"
+   sdl_cflags=`$sdlconfig --cflags 2> /dev/null`
+   if test "$static" = "yes" ; then
+-    sdl_libs=`$sdlconfig --static-libs 2>/dev/null`
++    sdl_libs=`$sdlconfig $sdlconfig_staticlibs 2>/dev/null`
+   else
+     sdl_libs=`$sdlconfig --libs 2> /dev/null`
+   fi
 -- 
 1.7.2.5
 
