@@ -1,32 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T3Zgp-00069z-M1
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Aug 2012 17:39:15 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41653)
+	id 1T3w35-0003g0-Vm
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Aug 2012 17:31:43 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56836)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yann.morin.1998@free.fr>) id 1T3Zgn-00066M-Aw
-	for qemu-trivial@nongnu.org; Mon, 20 Aug 2012 17:39:14 -0400
+	(envelope-from <balaton@eik.bme.hu>) id 1T3w33-0003fu-Hq
+	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 17:31:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <yann.morin.1998@free.fr>) id 1T3Zgl-0000O4-PS
-	for qemu-trivial@nongnu.org; Mon, 20 Aug 2012 17:39:13 -0400
-Received: from smtp01.smtpout.orange.fr ([80.12.242.123]:34751
-	helo=smtp.smtpout.orange.fr) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yann.morin.1998@free.fr>) id 1T3Zgl-0000Ni-Io
-	for qemu-trivial@nongnu.org; Mon, 20 Aug 2012 17:39:11 -0400
-Received: from treguer.bzh.lan ([90.32.34.169]) by mwinf5d54 with ME
-	id p9f91j00M3ewyLA039fAS3; Mon, 20 Aug 2012 23:39:10 +0200
-From: "Yann E. MORIN" <yann.morin.1998@free.fr>
-To: qemu-trivial@nongnu.org
-Date: Mon, 20 Aug 2012 23:39:09 +0200
-Message-Id: <1345498749-16769-3-git-send-email-yann.morin.1998@free.fr>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1345498749-16769-1-git-send-email-yann.morin.1998@free.fr>
-References: <1345498749-16769-1-git-send-email-yann.morin.1998@free.fr>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 80.12.242.123
-Cc: "Yann E. MORIN" <yann.morin.1998@free.fr>
-Subject: [Qemu-trivial] [PATCH 3/3] configure: fix detection for Spice libs
-	when static linking
+	(envelope-from <balaton@eik.bme.hu>) id 1T3w2w-0004iP-IP
+	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 17:31:41 -0400
+Received: from mono.eik.bme.hu ([152.66.115.2]:54011)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <balaton@eik.bme.hu>) id 1T3w2w-0004hE-CE
+	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 17:31:34 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by mono.eik.bme.hu (Postfix) with ESMTP id 64B1D27E;
+	Tue, 21 Aug 2012 23:31:26 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from mono.eik.bme.hu ([127.0.0.1])
+	by localhost (mono.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id YrGnU9qPilTl; Tue, 21 Aug 2012 23:31:26 +0200 (CEST)
+Received: by mono.eik.bme.hu (Postfix, from userid 432)
+	id 3872AA6F; Tue, 21 Aug 2012 23:31:26 +0200 (CEST)
+Date: Tue, 21 Aug 2012 23:31:26 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+X-X-Sender: balaton@mono
+To: qemu-devel@nongnu.org
+Message-ID: <Pine.GSO.4.64.1208212330010.11653@mono>
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+X-detected-operating-system: by eggs.gnu.org: Solaris 10 (beta)
+X-Received-From: 152.66.115.2
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] Fix copy&paste typos in documentation
+	comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,37 +44,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Aug 2012 21:39:14 -0000
+X-List-Received-Date: Tue, 21 Aug 2012 21:31:42 -0000
 
-Currently, configure uses the same code-path to check for Spice libraries,
-whether we are doing a static or dynamic build.
 
-Fix that by pasing '--static --libs' for pkg-config when a static build
-is attempted.
-
-Signed-off-by: "Yann E. MORIN" <yann.morin.1998@free.fr>
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 ---
- configure |    6 +++++-
- 1 files changed, 5 insertions(+), 1 deletions(-)
+  memory.h |   11 ++++++-----
+  1 file changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/configure b/configure
-index 5b52f9d..4d3aea4 100755
---- a/configure
-+++ b/configure
-@@ -2702,7 +2702,11 @@ if test "$spice" != "no" ; then
- int main(void) { spice_server_new(); return 0; }
- EOF
-   spice_cflags=$($pkg_config --cflags spice-protocol spice-server 2>/dev/null)
--  spice_libs=$($pkg_config --libs spice-protocol spice-server 2>/dev/null)
-+  if test "$static" = "yes" ; then
-+    spice_libs=$($pkg_config --static --libs spice-protocol spice-server 2>/dev/null)
-+  else
-+    spice_libs=$($pkg_config --libs spice-protocol spice-server 2>/dev/null)
-+  fi
-   if $pkg_config --atleast-version=0.8.2 spice-server >/dev/null 2>&1 && \
-      $pkg_config --atleast-version=0.8.1 spice-protocol > /dev/null 2>&1 && \
-      compile_prog "$spice_cflags" "$spice_libs" ; then
+diff --git a/memory.h b/memory.h
+index bd1bbae..aba5721 100644
+--- a/memory.h
++++ b/memory.h
+@@ -252,9 +252,9 @@ void memory_region_init_ram(MemoryRegion *mr,
+                              uint64_t size);
+
+  /**
+- * memory_region_init_ram:  Initialize RAM memory region from a user-provided.
+- *                          pointer.  Accesses into the region will modify
+- *                          memory directly.
++ * memory_region_init_ram_ptr:  Initialize RAM memory region from a
++ *                          user-provided pointer.  Accesses into the
++ *                          region will modify memory directly.
+   *
+   * @mr: the #MemoryRegion to be initialized.
+   * @name: the name of the region.
+@@ -581,7 +581,8 @@ void memory_region_add_subregion(MemoryRegion *mr,
+                                   target_phys_addr_t offset,
+                                   MemoryRegion *subregion);
+  /**
+- * memory_region_add_subregion: Add a subregion to a container, with overlap.
++ * memory_region_add_subregion_overlap: Add a subregion to a container
++ *                                      with overlap.
+   *
+   * Adds a subregion at @offset.  The subregion may overlap with other
+   * subregions.  Conflicts are resolved by having a higher @priority hide a
+@@ -743,7 +744,7 @@ void memory_listener_unregister(MemoryListener *listener);
+  void memory_global_dirty_log_start(void);
+
+  /**
+- * memory_global_dirty_log_stop: begin dirty logging for all regions
++ * memory_global_dirty_log_stop: end dirty logging for all regions
+   */
+  void memory_global_dirty_log_stop(void);
+
 -- 
-1.7.2.5
-
+1.7.10
 
