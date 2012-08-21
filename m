@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T3w35-0003g0-Vm
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Aug 2012 17:31:43 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56836)
+	id 1T3w3c-0003ig-42
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Aug 2012 17:32:16 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56923)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1T3w33-0003fu-Hq
-	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 17:31:42 -0400
+	(envelope-from <balaton@eik.bme.hu>) id 1T3w3a-0003iZ-AX
+	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 17:32:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1T3w2w-0004iP-IP
-	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 17:31:41 -0400
-Received: from mono.eik.bme.hu ([152.66.115.2]:54011)
+	(envelope-from <balaton@eik.bme.hu>) id 1T3w3T-0004pL-Kv
+	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 17:32:14 -0400
+Received: from mono.eik.bme.hu ([152.66.115.2]:54019)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1T3w2w-0004hE-CE
-	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 17:31:34 -0400
+	(envelope-from <balaton@eik.bme.hu>)
+	id 1T3w3R-0004oc-EJ; Tue, 21 Aug 2012 17:32:05 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by mono.eik.bme.hu (Postfix) with ESMTP id 64B1D27E;
-	Tue, 21 Aug 2012 23:31:26 +0200 (CEST)
+	by mono.eik.bme.hu (Postfix) with ESMTP id BBD1DA61;
+	Tue, 21 Aug 2012 23:32:04 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at eik.bme.hu
 Received: from mono.eik.bme.hu ([127.0.0.1])
 	by localhost (mono.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id YrGnU9qPilTl; Tue, 21 Aug 2012 23:31:26 +0200 (CEST)
+	with LMTP id 5XtbIP9USxeG; Tue, 21 Aug 2012 23:32:04 +0200 (CEST)
 Received: by mono.eik.bme.hu (Postfix, from userid 432)
-	id 3872AA6F; Tue, 21 Aug 2012 23:31:26 +0200 (CEST)
-Date: Tue, 21 Aug 2012 23:31:26 +0200 (CEST)
+	id 8C343A77; Tue, 21 Aug 2012 23:32:04 +0200 (CEST)
+Date: Tue, 21 Aug 2012 23:32:04 +0200 (CEST)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 X-X-Sender: balaton@mono
 To: qemu-devel@nongnu.org
-Message-ID: <Pine.GSO.4.64.1208212330010.11653@mono>
+Message-ID: <Pine.GSO.4.64.1208212331340.11653@mono>
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
 X-detected-operating-system: by eggs.gnu.org: Solaris 10 (beta)
 X-Received-From: 152.66.115.2
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Fix copy&paste typos in documentation
-	comments
+Subject: [Qemu-trivial] [PATCH] Correct computation of bytes per pixel from
+	bits per pixel
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,50 +44,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Aug 2012 21:31:42 -0000
+X-List-Received-Date: Tue, 21 Aug 2012 21:32:15 -0000
 
 
 Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 ---
-  memory.h |   11 ++++++-----
-  1 file changed, 6 insertions(+), 5 deletions(-)
+  console.c |    4 ++--
+  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/memory.h b/memory.h
-index bd1bbae..aba5721 100644
---- a/memory.h
-+++ b/memory.h
-@@ -252,9 +252,9 @@ void memory_region_init_ram(MemoryRegion *mr,
-                              uint64_t size);
+diff --git a/console.c b/console.c
+index 4525cc7..f698b77 100644
+--- a/console.c
++++ b/console.c
+@@ -1612,7 +1612,7 @@ PixelFormat qemu_different_endianness_pixelformat(int bpp)
+      memset(&pf, 0x00, sizeof(PixelFormat));
 
-  /**
-- * memory_region_init_ram:  Initialize RAM memory region from a user-provided.
-- *                          pointer.  Accesses into the region will modify
-- *                          memory directly.
-+ * memory_region_init_ram_ptr:  Initialize RAM memory region from a
-+ *                          user-provided pointer.  Accesses into the
-+ *                          region will modify memory directly.
-   *
-   * @mr: the #MemoryRegion to be initialized.
-   * @name: the name of the region.
-@@ -581,7 +581,8 @@ void memory_region_add_subregion(MemoryRegion *mr,
-                                   target_phys_addr_t offset,
-                                   MemoryRegion *subregion);
-  /**
-- * memory_region_add_subregion: Add a subregion to a container, with overlap.
-+ * memory_region_add_subregion_overlap: Add a subregion to a container
-+ *                                      with overlap.
-   *
-   * Adds a subregion at @offset.  The subregion may overlap with other
-   * subregions.  Conflicts are resolved by having a higher @priority hide a
-@@ -743,7 +744,7 @@ void memory_listener_unregister(MemoryListener *listener);
-  void memory_global_dirty_log_start(void);
+      pf.bits_per_pixel = bpp;
+-    pf.bytes_per_pixel = bpp / 8;
++    pf.bytes_per_pixel = (bpp + 7) >> 3;
+      pf.depth = bpp == 32 ? 24 : bpp;
 
-  /**
-- * memory_global_dirty_log_stop: begin dirty logging for all regions
-+ * memory_global_dirty_log_stop: end dirty logging for all regions
-   */
-  void memory_global_dirty_log_stop(void);
+      switch (bpp) {
+@@ -1661,7 +1661,7 @@ PixelFormat qemu_default_pixelformat(int bpp)
+      memset(&pf, 0x00, sizeof(PixelFormat));
 
+      pf.bits_per_pixel = bpp;
+-    pf.bytes_per_pixel = bpp / 8;
++    pf.bytes_per_pixel = (bpp + 7) >> 3;
+      pf.depth = bpp == 32 ? 24 : bpp;
+
+      switch (bpp) {
 -- 
 1.7.10
 
