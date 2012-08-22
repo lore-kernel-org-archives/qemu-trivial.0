@@ -1,50 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T40cI-0003JV-Ql
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Aug 2012 22:24:22 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:33213)
+	id 1T45tl-00053F-Cp
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Aug 2012 04:02:45 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42534)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1T40cA-0002qg-Kq
-	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 22:24:20 -0400
+	(envelope-from <jan.kiszka@web.de>) id 1T45td-00051z-MK
+	for qemu-trivial@nongnu.org; Wed, 22 Aug 2012 04:02:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1T40c9-0000wc-Kc
-	for qemu-trivial@nongnu.org; Tue, 21 Aug 2012 22:24:14 -0400
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:14045)
+	(envelope-from <jan.kiszka@web.de>) id 1T45tX-0000FG-Mb
+	for qemu-trivial@nongnu.org; Wed, 22 Aug 2012 04:02:37 -0400
+Received: from mout.web.de ([212.227.17.11]:63451)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>)
-	id 1T40c5-0000w2-FZ; Tue, 21 Aug 2012 22:24:09 -0400
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 38F9D582;
-	Wed, 22 Aug 2012 10:24:08 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=eGkp7KFE3P5xXsh89599X24lhNg=; b=XrFkYp+Pm4CsrdnuifEgdojhaGEE
-	s1x9HGzQ8ZRcLBMKPvgPxD1jgcJ0L8aCb/EZRtIUHCP7FER39l5gzE/BFs4uuikG
-	WXlCTRSS5F7BiA1rIabhzRoxidqySZLYrQaKSDfnJmxhm1V0jgxhOGIPbSBEgqkU
-	qZlCfozFm05WP/o=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 28BE4581;
-	Wed, 22 Aug 2012 10:24:08 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.4/8.14.4/Submit) id q7M2O6YK012671;
-	Wed, 22 Aug 2012 10:24:06 +0800 (CST) (envelope-from chenwj)
-Date: Wed, 22 Aug 2012 10:24:06 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Message-ID: <20120822022406.GB11966@cs.nctu.edu.tw>
-References: <Pine.GSO.4.64.1208212330010.11653@mono>
+	(envelope-from <jan.kiszka@web.de>)
+	id 1T45tX-0000F7-Cz; Wed, 22 Aug 2012 04:02:31 -0400
+Received: from mchn199C.mchp.siemens.de ([95.157.56.37]) by smtp.web.de
+	(mrweb001) with ESMTPSA (Nemesis) id 0LkhQi-1Tc3jV20yC-00acZk;
+	Wed, 22 Aug 2012 10:02:29 +0200
+Message-ID: <5034920F.7030101@web.de>
+Date: Wed, 22 Aug 2012 10:02:23 +0200
+From: Jan Kiszka <jan.kiszka@web.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <Pine.GSO.4.64.1208212330010.11653@mono>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-Content-Transfer-Encoding: quoted-printable
+To: BALATON Zoltan <balaton@eik.bme.hu>
+References: <Pine.GSO.4.64.1208212331340.11653@mono>
+In-Reply-To: <Pine.GSO.4.64.1208212331340.11653@mono>
+X-Enigmail-Version: 1.4.3
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature";
+	boundary="------------enigD6E957840309594CF6512E9D"
+X-Provags-ID: V02:K0:4CWPl7xo1C83QW2C09eWpsl164ZjufjgUV2nMEAe5qj
+	VpxbZmYndIKzL/Qu4Vv6pTeeystT0n6n/7fpHlIx+rImikHPE1
+	V0tI1tWjofyZ26WRzdaqr+Va2iXD+cER5eGn2e+byxEfaublYN
+	KmTyqSXNVcabfoWNByXoKQ2HF4cBpkZJ2EIxQC7ncC6W6zsmJR
+	D6CnDRRJ1DOPkd3piFBuQ==
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 140.113.235.130
+X-Received-From: 212.227.17.11
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix copy&paste typos in
- documentation comments
+Subject: Re: [Qemu-trivial] [PATCH] Correct computation of bytes per pixel
+ from bits per pixel
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,42 +51,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Aug 2012 02:24:20 -0000
+X-List-Received-Date: Wed, 22 Aug 2012 08:02:43 -0000
 
-On Tue, Aug 21, 2012 at 11:31:26PM +0200, BALATON Zoltan wrote:
+This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
+--------------enigD6E957840309594CF6512E9D
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Can you use this free space to provide a scenario where the missing
+round-up caused a problem?
+
+On 2012-08-21 23:32, BALATON Zoltan wrote:
 >=20
 > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 > ---
->   memory.h |   11 ++++++-----
->   1 file changed, 6 insertions(+), 5 deletions(-)
+>  console.c |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/memory.h b/memory.h
-> index bd1bbae..aba5721 100644
-> --- a/memory.h
-> +++ b/memory.h
-> @@ -252,9 +252,9 @@ void memory_region_init_ram(MemoryRegion *mr,
->                               uint64_t size);
+> diff --git a/console.c b/console.c
+> index 4525cc7..f698b77 100644
+> --- a/console.c
+> +++ b/console.c
+> @@ -1612,7 +1612,7 @@ PixelFormat
+> qemu_different_endianness_pixelformat(int bpp)
+>      memset(&pf, 0x00, sizeof(PixelFormat));
 >=20
->   /**
-> - * memory_region_init_ram:  Initialize RAM memory region from a user-p=
-rovided.
-> - *                          pointer.  Accesses into the region will mo=
-dify
-> - *                          memory directly.
-> + * memory_region_init_ram_ptr:  Initialize RAM memory region from a
-> + *                          user-provided pointer.  Accesses into the
-> + *                          region will modify memory directly.
-                               ^^^
+>      pf.bits_per_pixel =3D bpp;
+> -    pf.bytes_per_pixel =3D bpp / 8;
+> +    pf.bytes_per_pixel =3D (bpp + 7) >> 3;
 
-  Would be better if you make it align.=20
+Compilers are smart enough to substitute such divisions by shift
+operations but for humans the explicit form is easier to read. So please
+keep it.
 
-Regards,
-chenwj
+>      pf.depth =3D bpp =3D=3D 32 ? 24 : bpp;
+>=20
+>      switch (bpp) {
+> @@ -1661,7 +1661,7 @@ PixelFormat qemu_default_pixelformat(int bpp)
+>      memset(&pf, 0x00, sizeof(PixelFormat));
+>=20
+>      pf.bits_per_pixel =3D bpp;
+> -    pf.bytes_per_pixel =3D bpp / 8;
+> +    pf.bytes_per_pixel =3D (bpp + 7) >> 3;
+>      pf.depth =3D bpp =3D=3D 32 ? 24 : bpp;
+>=20
+>      switch (bpp) {
 
---=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
-Homepage: http://people.cs.nctu.edu.tw/~chenwj
+Jan
+
+
+
+--------------enigD6E957840309594CF6512E9D
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.16 (GNU/Linux)
+Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org/
+
+iEYEARECAAYFAlA0kg8ACgkQitSsb3rl5xQbtwCg3bCVrdy131nK6KuhPv7n3bbp
+ofUAnRoXqTc3ZQestiRbBVgSRxiCmHx8
+=+oBk
+-----END PGP SIGNATURE-----
+
+--------------enigD6E957840309594CF6512E9D--
 
