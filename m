@@ -1,48 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T4Grx-0006mJ-8Y
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Aug 2012 15:45:37 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34504)
+	id 1T4Kyu-0003GX-GY
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Aug 2012 20:09:04 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34446)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1T4Gru-0006fd-Hd
-	for qemu-trivial@nongnu.org; Wed, 22 Aug 2012 15:45:35 -0400
+	(envelope-from <balaton@eik.bme.hu>) id 1T4Kyk-0002nq-NW
+	for qemu-trivial@nongnu.org; Wed, 22 Aug 2012 20:09:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1T4Grt-0000a5-Eu
-	for qemu-trivial@nongnu.org; Wed, 22 Aug 2012 15:45:34 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:43271)
+	(envelope-from <balaton@eik.bme.hu>) id 1T4Kyj-0007Xh-9g
+	for qemu-trivial@nongnu.org; Wed, 22 Aug 2012 20:08:54 -0400
+Received: from mono.eik.bme.hu ([152.66.115.2]:64375)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1T4Grt-0000Zs-9Q
-	for qemu-trivial@nongnu.org; Wed, 22 Aug 2012 15:45:33 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	A6344728002B; Wed, 22 Aug 2012 21:45:32 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id lfYYF2L8s9wi; Wed, 22 Aug 2012 21:45:32 +0200 (CEST)
-Received: from flocke.weilnetz.de (p5086EC12.dip.t-dialin.net [80.134.236.18])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	37C6A7280028; Wed, 22 Aug 2012 21:45:32 +0200 (CEST)
-Received: from localhost ([127.0.0.1] ident=stefan)
-	by flocke.weilnetz.de with esmtp (Exim 4.72)
-	(envelope-from <sw@weilnetz.de>)
-	id 1T4Grr-000806-OP; Wed, 22 Aug 2012 21:45:31 +0200
-Message-ID: <503536DB.5060603@weilnetz.de>
-Date: Wed, 22 Aug 2012 21:45:31 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.1.16) Gecko/20120724 Iceowl/1.0b1 Icedove/3.0.11
+	(envelope-from <balaton@eik.bme.hu>)
+	id 1T4Kyb-0007WI-5m; Wed, 22 Aug 2012 20:08:45 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by mono.eik.bme.hu (Postfix) with ESMTP id A027D27E;
+	Thu, 23 Aug 2012 02:08:36 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from mono.eik.bme.hu ([127.0.0.1])
+	by localhost (mono.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id Rqd7A8NCDOvB; Thu, 23 Aug 2012 02:08:36 +0200 (CEST)
+Received: by mono.eik.bme.hu (Postfix, from userid 432)
+	id 5DB71A0C; Thu, 23 Aug 2012 02:08:36 +0200 (CEST)
+Date: Thu, 23 Aug 2012 02:08:36 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+X-X-Sender: balaton@mono
+To: qemu-devel@nongnu.org
+Message-ID: <Pine.GSO.4.64.1208230207120.26411@mono>
 MIME-Version: 1.0
-To: qemu-trivial <qemu-trivial@nongnu.org>
-References: <1345664451-28890-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1345664451-28890-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: Blue Swirl <blauwirbel@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH] w32: Always use standard instead of
-	native format strings
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+X-detected-operating-system: by eggs.gnu.org: Solaris 10 (beta)
+X-Received-From: 152.66.115.2
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH v3] console: Cleanup computation of bytes per
+ pixel and add missing cases
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,59 +44,280 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Aug 2012 19:45:36 -0000
+X-List-Received-Date: Thu, 23 Aug 2012 00:09:02 -0000
 
-Am 22.08.2012 21:40, schrieb Stefan Weil:
-> GLib 2.0 include files use __printf__ for the format attribute
-> which resolves to native format strings on w32 hosts.
->
-> QEMU wants standard format strings instead of native format
-> strings, so we simply change any declaration with __printf__
-> to use __gnu_printf__.
->
-> This works because all basic printf functions support both
-> kinds of format strings.
->
-> This fixes a compiler warning:
->
-> qapi/string-output-visitor.c: In function =E2=80=98print_type_int=E2=80=
-=99:
-> qapi/string-output-visitor.c:34:5: warning: unknown conversion type=20
-> character =E2=80=98l=E2=80=99 in format [-Wformat]
-> qapi/string-output-visitor.c:34:5: warning: too many arguments for=20
-> format [-Wformat-extra-args]
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
-> compiler.h | 5 +++++
-> 1 file changed, 5 insertions(+)
->
-> diff --git a/compiler.h b/compiler.h
-> index 07ba1f8..c734a71 100644
-> --- a/compiler.h
-> +++ b/compiler.h
-> @@ -44,6 +44,11 @@
-> /* Use gnu_printf when supported (qemu uses standard format strings). *=
-/
-> # define GCC_ATTR __attribute__((__unused__, format(gnu_printf, 1, 2)))
-> # define GCC_FMT_ATTR(n, m) __attribute__((format(gnu_printf, n, m)))
-> +# if defined(_WIN32)
-> + /* Map __printf__ to __gnu_printf__ because we want standard format=20
-> strings
-> + * even when MinGW or GLib include files use __printf__. */
-> +# define __printf__ __gnu_printf__
-> +# endif
-> # endif
-> #if defined(_WIN32)
-> #define GCC_WEAK __attribute__((weak))
+Division with round up is the correct way to compute this even if the
+only case where division with round down gives incorrect result is
+probably 15 bpp. This case was explicitely patched up in one of these
+functions but was unhandled in the other. This patch also adds the
+missing cases and aborts for invalid unhandled cases. (I'm not sure
+about setting 16 bpp for the 15 bpp case so I left it there for now.)
 
-Sorry, I used the wrong mail address.
-The mail should go to qemu-devel, not to qemu-trivial.
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
+  console.c |  230 +++++++++++++++++++++++++++++++++++--------------------------
+  1 file changed, 131 insertions(+), 99 deletions(-)
 
-Of course I don't mind if it is applied via qemu-trivial.
+  v2: Use DIV_ROUND_UP and extended commit message
+  v3: Add missing cases to qemu_different_endianness_pixelformat (I
+      have no way to test if this is correct though),
+      abort() for the default: case
+      also reindented as suggested by scripts/checkpatch.pl
 
-Cheers,
+diff --git a/console.c b/console.c
+index 4525cc7..21843cd 100644
+--- a/console.c
++++ b/console.c
+@@ -1612,44 +1612,75 @@ PixelFormat qemu_different_endianness_pixelformat(int bpp)
+      memset(&pf, 0x00, sizeof(PixelFormat));
 
-Stefan W.
+      pf.bits_per_pixel = bpp;
+-    pf.bytes_per_pixel = bpp / 8;
++    pf.bytes_per_pixel = DIV_ROUND_UP(bpp, 8);
+      pf.depth = bpp == 32 ? 24 : bpp;
 
+      switch (bpp) {
+-        case 24:
+-            pf.rmask = 0x000000FF;
+-            pf.gmask = 0x0000FF00;
+-            pf.bmask = 0x00FF0000;
+-            pf.rmax = 255;
+-            pf.gmax = 255;
+-            pf.bmax = 255;
+-            pf.rshift = 0;
+-            pf.gshift = 8;
+-            pf.bshift = 16;
+-            pf.rbits = 8;
+-            pf.gbits = 8;
+-            pf.bbits = 8;
+-            break;
+-        case 32:
+-            pf.rmask = 0x0000FF00;
+-            pf.gmask = 0x00FF0000;
+-            pf.bmask = 0xFF000000;
+-            pf.amask = 0x00000000;
+-            pf.amax = 255;
+-            pf.rmax = 255;
+-            pf.gmax = 255;
+-            pf.bmax = 255;
+-            pf.ashift = 0;
+-            pf.rshift = 8;
+-            pf.gshift = 16;
+-            pf.bshift = 24;
+-            pf.rbits = 8;
+-            pf.gbits = 8;
+-            pf.bbits = 8;
+-            pf.abits = 8;
+-            break;
+-        default:
+-            break;
++    case 0:
++        break;
++    case 15:
++        pf.bits_per_pixel = 16; /* Is this correct? */
++        pf.rmask = 0x0000001F;
++        pf.gmask = 0x000003E0;
++        pf.bmask = 0x00007C00;
++        pf.rmax = 31;
++        pf.gmax = 31;
++        pf.bmax = 31;
++        pf.rshift = 0;
++        pf.gshift = 5;
++        pf.bshift = 10;
++        pf.rbits = 5;
++        pf.gbits = 5;
++        pf.bbits = 5;
++        break;
++    case 16:
++        pf.rmask = 0x0000001F;
++        pf.gmask = 0x000007E0;
++        pf.bmask = 0x0000F800;
++        pf.rmax = 31;
++        pf.gmax = 63;
++        pf.bmax = 31;
++        pf.rshift = 0;
++        pf.gshift = 5;
++        pf.bshift = 11;
++        pf.rbits = 5;
++        pf.gbits = 6;
++        pf.bbits = 5;
++        break;
++    case 24:
++        pf.rmask = 0x000000FF;
++        pf.gmask = 0x0000FF00;
++        pf.bmask = 0x00FF0000;
++        pf.rmax = 255;
++        pf.gmax = 255;
++        pf.bmax = 255;
++        pf.rshift = 0;
++        pf.gshift = 8;
++        pf.bshift = 16;
++        pf.rbits = 8;
++        pf.gbits = 8;
++        pf.bbits = 8;
++        break;
++    case 32:
++        pf.rmask = 0x0000FF00;
++        pf.gmask = 0x00FF0000;
++        pf.bmask = 0xFF000000;
++        pf.amask = 0x00000000;
++        pf.amax = 255;
++        pf.rmax = 255;
++        pf.gmax = 255;
++        pf.bmax = 255;
++        pf.ashift = 0;
++        pf.rshift = 8;
++        pf.gshift = 16;
++        pf.bshift = 24;
++        pf.rbits = 8;
++        pf.gbits = 8;
++        pf.bbits = 8;
++        pf.abits = 8;
++        break;
++    default:
++        abort();
+      }
+      return pf;
+  }
+@@ -1661,73 +1692,74 @@ PixelFormat qemu_default_pixelformat(int bpp)
+      memset(&pf, 0x00, sizeof(PixelFormat));
+
+      pf.bits_per_pixel = bpp;
+-    pf.bytes_per_pixel = bpp / 8;
++    pf.bytes_per_pixel = DIV_ROUND_UP(bpp, 8);
+      pf.depth = bpp == 32 ? 24 : bpp;
+
+      switch (bpp) {
+-        case 15:
+-            pf.bits_per_pixel = 16;
+-            pf.bytes_per_pixel = 2;
+-            pf.rmask = 0x00007c00;
+-            pf.gmask = 0x000003E0;
+-            pf.bmask = 0x0000001F;
+-            pf.rmax = 31;
+-            pf.gmax = 31;
+-            pf.bmax = 31;
+-            pf.rshift = 10;
+-            pf.gshift = 5;
+-            pf.bshift = 0;
+-            pf.rbits = 5;
+-            pf.gbits = 5;
+-            pf.bbits = 5;
+-            break;
+-        case 16:
+-            pf.rmask = 0x0000F800;
+-            pf.gmask = 0x000007E0;
+-            pf.bmask = 0x0000001F;
+-            pf.rmax = 31;
+-            pf.gmax = 63;
+-            pf.bmax = 31;
+-            pf.rshift = 11;
+-            pf.gshift = 5;
+-            pf.bshift = 0;
+-            pf.rbits = 5;
+-            pf.gbits = 6;
+-            pf.bbits = 5;
+-            break;
+-        case 24:
+-            pf.rmask = 0x00FF0000;
+-            pf.gmask = 0x0000FF00;
+-            pf.bmask = 0x000000FF;
+-            pf.rmax = 255;
+-            pf.gmax = 255;
+-            pf.bmax = 255;
+-            pf.rshift = 16;
+-            pf.gshift = 8;
+-            pf.bshift = 0;
+-            pf.rbits = 8;
+-            pf.gbits = 8;
+-            pf.bbits = 8;
+-            break;
+-        case 32:
+-            pf.rmask = 0x00FF0000;
+-            pf.gmask = 0x0000FF00;
+-            pf.bmask = 0x000000FF;
+-            pf.amax = 255;
+-            pf.rmax = 255;
+-            pf.gmax = 255;
+-            pf.bmax = 255;
+-            pf.ashift = 24;
+-            pf.rshift = 16;
+-            pf.gshift = 8;
+-            pf.bshift = 0;
+-            pf.rbits = 8;
+-            pf.gbits = 8;
+-            pf.bbits = 8;
+-            pf.abits = 8;
+-            break;
+-        default:
+-            break;
++    case 0: /* Used by ui/curses */
++        break;
++    case 15:
++        pf.bits_per_pixel = 16; /* Is this correct? */
++        pf.rmask = 0x00007C00;
++        pf.gmask = 0x000003E0;
++        pf.bmask = 0x0000001F;
++        pf.rmax = 31;
++        pf.gmax = 31;
++        pf.bmax = 31;
++        pf.rshift = 10;
++        pf.gshift = 5;
++        pf.bshift = 0;
++        pf.rbits = 5;
++        pf.gbits = 5;
++        pf.bbits = 5;
++        break;
++    case 16:
++        pf.rmask = 0x0000F800;
++        pf.gmask = 0x000007E0;
++        pf.bmask = 0x0000001F;
++        pf.rmax = 31;
++        pf.gmax = 63;
++        pf.bmax = 31;
++        pf.rshift = 11;
++        pf.gshift = 5;
++        pf.bshift = 0;
++        pf.rbits = 5;
++        pf.gbits = 6;
++        pf.bbits = 5;
++        break;
++    case 24:
++        pf.rmask = 0x00FF0000;
++        pf.gmask = 0x0000FF00;
++        pf.bmask = 0x000000FF;
++        pf.rmax = 255;
++        pf.gmax = 255;
++        pf.bmax = 255;
++        pf.rshift = 16;
++        pf.gshift = 8;
++        pf.bshift = 0;
++        pf.rbits = 8;
++        pf.gbits = 8;
++        pf.bbits = 8;
++        break;
++    case 32:
++        pf.rmask = 0x00FF0000;
++        pf.gmask = 0x0000FF00;
++        pf.bmask = 0x000000FF;
++        pf.amax = 255;
++        pf.rmax = 255;
++        pf.gmax = 255;
++        pf.bmax = 255;
++        pf.ashift = 24;
++        pf.rshift = 16;
++        pf.gshift = 8;
++        pf.bshift = 0;
++        pf.rbits = 8;
++        pf.gbits = 8;
++        pf.bbits = 8;
++        pf.abits = 8;
++        break;
++    default:
++        abort();
+      }
+      return pf;
+  }
+-- 
+1.7.10
 
