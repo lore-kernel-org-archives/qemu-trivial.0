@@ -1,50 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T4w55-0002si-Rh
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 11:45:55 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41241)
+	id 1T4wp8-00035h-MO
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 12:33:30 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55587)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1T4w53-0002sb-BD
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 11:45:54 -0400
+	(envelope-from <afaerber@suse.de>) id 1T4wp6-0002zw-Ck
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 12:33:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1T4w52-0006kY-5v
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 11:45:53 -0400
-Received: from mail-iy0-f173.google.com ([209.85.210.173]:59653)
+	(envelope-from <afaerber@suse.de>) id 1T4wp5-0004Qp-4B
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 12:33:28 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:44779 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1T4w51-0006kQ-UF
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 11:45:52 -0400
-Received: by iakx26 with SMTP id x26so3476053iak.4
-	for <qemu-trivial@nongnu.org>; Fri, 24 Aug 2012 08:45:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=SiG9hHAQfrbNzZB/VjIICsXKeCtZzx20bioA/2ZnOyw=;
-	b=OsEmg8CSWu3+3OLP0WJU27QZpPK+9TsnXrR6PBmoObAck0Wj5HGFLWwmZwstd2fucb
-	h72hXMdtZFh25X6PrPoLlH14QJcODsZMLIo2r0NF5ChqoHPxmqcnSuSVYi/tXBwoSMal
-	8gR9huef8i6cXxwO3OjjMQe/AtEkT9cswY/ntJvlTru51+CvBvdUxuaYeqgAqmoxdR/l
-	gKjSs4ecJpipqjQfuu3lEIO0sqyBap/nsG52X6Cufp1hOQ9woIM81qxSIdkrEQj+Hy4v
-	JtmdYOUZbctKajGpjXQzUPMX8rW7Lx+IFRwduorLO8UwXR4DO0XoDQdZB9jrAnY6ve3z
-	VISA==
+	(envelope-from <afaerber@suse.de>)
+	id 1T4wox-0004Ph-Fu; Fri, 24 Aug 2012 12:33:19 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id D65FEA3EBF;
+	Fri, 24 Aug 2012 18:33:17 +0200 (CEST)
+Message-ID: <5037ACCA.2070207@suse.de>
+Date: Fri, 24 Aug 2012 18:33:14 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:14.0) Gecko/20120713 Thunderbird/14.0
 MIME-Version: 1.0
-Received: by 10.43.132.70 with SMTP id ht6mr4788559icc.14.1345823150774; Fri,
-	24 Aug 2012 08:45:50 -0700 (PDT)
-Received: by 10.50.160.161 with HTTP; Fri, 24 Aug 2012 08:45:50 -0700 (PDT)
-In-Reply-To: <Pine.GSO.4.64.1208241714240.16113@mono>
-References: <Pine.GSO.4.64.1208230207120.26411@mono>
-	<20120824112647.GK10867@stefanha-thinkpad.localdomain>
-	<Pine.GSO.4.64.1208241714240.16113@mono>
-Date: Fri, 24 Aug 2012 16:45:50 +0100
-Message-ID: <CAFEAcA-qY2UyAAXBoHwGy0fMqmTFu6zwx4E8SRwLE7S+NZm=-w@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnUK5cKIx2u+I2pgepLfOpwnxmkHxvde0vynCGfgDQ45S3YbtmQQmEbr9xAzeGKkhHNjyUl
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.210.173
+To: BALATON Zoltan <balaton@eik.bme.hu>,
+	Anthony Liguori <anthony@codemonkey.ws>,
+	Stefan Hajnoczi <stefanha@gmail.com>
+References: <Pine.GSO.4.64.1208221717460.28960@mono>
+In-Reply-To: <Pine.GSO.4.64.1208221717460.28960@mono>
+X-Enigmail-Version: 1.5a1pre
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] console: Cleanup
- computation of bytes per pixel and add missing cases
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Fix copy&paste typos in
+ documentation comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,24 +48,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Aug 2012 15:45:54 -0000
+X-List-Received-Date: Fri, 24 Aug 2012 16:33:29 -0000
 
-On 24 August 2012 16:24, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> The above
-> bits_per_pixel=16 for 15 bpp case was there already I just added a comment
-> marking it as suspicious but I'm not sure how to resolve that.
+Am 22.08.2012 17:18, schrieb BALATON Zoltan:
+>=20
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+> ---
+>  memory.h |   11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+>=20
+>  v2: indented memory_region_init_ram_ptr
+>=20
+> diff --git a/memory.h b/memory.h
+> index bd1bbae..f6c8e32 100644
+> --- a/memory.h
+> +++ b/memory.h
+> @@ -252,9 +252,9 @@ void memory_region_init_ram(MemoryRegion *mr,
+>                              uint64_t size);
+>=20
+>  /**
+> - * memory_region_init_ram:  Initialize RAM memory region from a
+> user-provided.
+> - *                          pointer.  Accesses into the region will mo=
+dify
+> - *                          memory directly.
+> + * memory_region_init_ram_ptr:  Initialize RAM memory region from a
+> + *                              user-provided pointer.  Accesses into =
+the
+> + *                              region will modify memory directly.
 
-It is certainly a bug somewhere, since ds_get_bits_per_pixel() just
-returns the pixelformat bits_per_pixel field, and code like hw/pl110.c
-assumes that that can be 15 and that that implies that the pixel
-format is as per rgb_to_pixel15() in pixel_ops.h. So one end of
-that or the other is wrong.
+@Anthony: Didn't you have a patch reformatting the whole file gtk-doc
+style? My guess is, that's no longer up to date?
 
-I think all this code needs careful auditing to (a) clearly define
-what "bpp" means and what "depth" means (assuming we need to distinguish;
-IME they are usually supposed to be synonyms!) and (b) make sure that
-everything that accesses one or the other is actually using the
-right one...
+Apart from slightly different markup, the gtk-doc convention seems to be
+to have the function name on a line of its own and the description
+starting on a line of its own, not indented to the function name.
+http://developer.gnome.org/gtk-doc-manual/unstable/documenting_symbols.ht=
+ml.en
+(cf. Anthony's include/qemu/object.h)
 
--- PMM
+Not objecting to this patch but questioning whether we should rebreak it
+to avoid future reindenting.
+
+@Stefan: Either way it would be nice to mention "memory" in the commit
+message, please. :)
+
+Regards,
+Andreas
+
+>   *
+>   * @mr: the #MemoryRegion to be initialized.
+>   * @name: the name of the region.
+> @@ -581,7 +581,8 @@ void memory_region_add_subregion(MemoryRegion *mr,
+>                                   target_phys_addr_t offset,
+>                                   MemoryRegion *subregion);
+>  /**
+> - * memory_region_add_subregion: Add a subregion to a container, with
+> overlap.
+> + * memory_region_add_subregion_overlap: Add a subregion to a container
+> + *                                      with overlap.
+>   *
+>   * Adds a subregion at @offset.  The subregion may overlap with other
+>   * subregions.  Conflicts are resolved by having a higher @priority hi=
+de a
+> @@ -743,7 +744,7 @@ void memory_listener_unregister(MemoryListener
+> *listener);
+>  void memory_global_dirty_log_start(void);
+>=20
+>  /**
+> - * memory_global_dirty_log_stop: begin dirty logging for all regions
+> + * memory_global_dirty_log_stop: end dirty logging for all regions
+>   */
+>  void memory_global_dirty_log_stop(void);
+>=20
+
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
