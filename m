@@ -1,50 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T4rwH-0001LF-Q2
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:20:33 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53551)
+	id 1T4rxH-00026j-8T
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:21:35 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:53747)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4rwB-0001L5-IH
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:20:32 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1T4rxF-000258-F4
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:21:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4rwA-0003XL-EF
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:20:27 -0400
-Received: from mail-we0-f173.google.com ([74.125.82.173]:36175)
+	(envelope-from <jan.kiszka@siemens.com>) id 1T4rx9-0003u1-JT
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:21:33 -0400
+Received: from thoth.sbs.de ([192.35.17.2]:25678)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1T4rwA-0003XA-7k; Fri, 24 Aug 2012 07:20:26 -0400
-Received: by weyz53 with SMTP id z53so901224wey.4
-	for <multiple recipients>; Fri, 24 Aug 2012 04:20:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=fdyMmatts4+wZxx9vX43aOlG7TKrvKk61wPTfovuyCc=;
-	b=pxsIautTardDxxTADfWdIqbvqefQ7Qq2fpOfSSkBDkBj4kPWv2x2Sor7FbDxfR2Qyh
-	QIZlqeXrdfa6EhBL5lkFLzTyV+tsK5B1Ds+TgUy6EbW1VoIfFOrXUC+HpQisPfPYQw1Z
-	+Mi6CPD//0v9ZPSEBVpWFN2SSb+ObxLd9ja5gruOVN8foWRfi+41RNGdD3EOsU6I4frM
-	g3gw3Fa6za1b5hsWPKYyPFawjCJV0d4owyfGTepuJZKYNMeltl/KWaK4tb8LcJ9emuLX
-	udaJgcUKe/9wV8KHPKlPji2ksvB69RqOPcyZVUNFHw1JyFyGos3hnTtGna5x8lGrbBjP
-	i2KA==
-Received: by 10.180.86.3 with SMTP id l3mr4770607wiz.16.1345807225311;
-	Fri, 24 Aug 2012 04:20:25 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id fu8sm3886762wib.5.2012.08.24.04.20.23
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 24 Aug 2012 04:20:24 -0700 (PDT)
-Date: Fri, 24 Aug 2012 12:20:21 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>
-Message-ID: <20120824112021.GI10867@stefanha-thinkpad.localdomain>
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1T4rx9-0003ti-9o; Fri, 24 Aug 2012 07:21:27 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by thoth.sbs.de (8.13.6/8.13.6) with ESMTP id q7OBLMFE024153;
+	Fri, 24 Aug 2012 13:21:22 +0200
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id q7OBLLdc030022;
+	Fri, 24 Aug 2012 13:21:22 +0200
+Message-ID: <503763B1.1040205@siemens.com>
+Date: Fri, 24 Aug 2012 13:21:21 +0200
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
+MIME-Version: 1.0
+To: Stefan Hajnoczi <stefanha@gmail.com>
 References: <Pine.GSO.4.64.1208221718470.28960@mono>
 	<5034FB7D.5050009@siemens.com> <503508CE.1020908@weilnetz.de>
 	<50350C58.8060306@siemens.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <50350C58.8060306@siemens.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 74.125.82.173
+	<20120824112021.GI10867@stefanha-thinkpad.localdomain>
+In-Reply-To: <20120824112021.GI10867@stefanha-thinkpad.localdomain>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6, seldom 2.4 (older,
+	4)
+X-Received-From: 192.35.17.2
 Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
 	Stefan Weil <sw@weilnetz.de>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
@@ -62,66 +53,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Aug 2012 11:20:32 -0000
+X-List-Received-Date: Fri, 24 Aug 2012 11:21:34 -0000
 
-On Wed, Aug 22, 2012 at 06:44:08PM +0200, Jan Kiszka wrote:
-> On 2012-08-22 18:29, Stefan Weil wrote:
-> > Am 22.08.2012 17:32, schrieb Jan Kiszka:
-> >> On 2012-08-22 17:19, BALATON Zoltan wrote:
-> >>> Division with round up is the correct way to compute this even if the
-> >>> only case where division with round down gives incorrect result is
-> >>> probably 15 bpp. This case was explicitely patched up in one of these
-> >>> functions but was unhandled in the other. (I'm not sure about setting
-> >>> 16 bpp for the 15bpp case either but I left that there for now.)
-> >>>
-> >>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> >>> ---
-> >>>   console.c |    5 ++---
-> >>>   1 file changed, 2 insertions(+), 3 deletions(-)
-> >>>
-> >>>   v2: Use DIV_ROUND_UP and extended commit message
-> >>>
-> >>> diff --git a/console.c b/console.c
-> >>> index 4525cc7..9df1701 100644
-> >>> --- a/console.c
-> >>> +++ b/console.c
-> >>> @@ -1612,7 +1612,7 @@ PixelFormat
-> >>> qemu_different_endianness_pixelformat(int bpp)
-> >>>       memset(&pf, 0x00, sizeof(PixelFormat));
-> >>>
-> >>>       pf.bits_per_pixel = bpp;
-> >>> -    pf.bytes_per_pixel = bpp / 8;
-> >>> +    pf.bytes_per_pixel = DIV_ROUND_UP(bpp, 8);
-> >>>       pf.depth = bpp == 32 ? 24 : bpp;
-> >>>
-> >>>       switch (bpp) {
-> >>> @@ -1661,13 +1661,12 @@ PixelFormat qemu_default_pixelformat(int bpp)
-> >>>       memset(&pf, 0x00, sizeof(PixelFormat));
-> >>>
-> >>>       pf.bits_per_pixel = bpp;
-> >>> -    pf.bytes_per_pixel = bpp / 8;
-> >>> +    pf.bytes_per_pixel = DIV_ROUND_UP(bpp, 8);
-> >>>       pf.depth = bpp == 32 ? 24 : bpp;
-> >>>
-> >>>       switch (bpp) {
-> >>>           case 15:
-> >>>               pf.bits_per_pixel = 16;
-> >>> -            pf.bytes_per_pixel = 2;
-> >> Removed unintentionally?
-> >>
-> >> Jan
-> > 
-> > 15 bpp no longer needs special handling because
-> > the computation above is fixed by the same patch,
-> > so the removal is correct.
+On 2012-08-24 13:20, Stefan Hajnoczi wrote:
+> On Wed, Aug 22, 2012 at 06:44:08PM +0200, Jan Kiszka wrote:
+>> On 2012-08-22 18:29, Stefan Weil wrote:
+>>> Am 22.08.2012 17:32, schrieb Jan Kiszka:
+>>>> On 2012-08-22 17:19, BALATON Zoltan wrote:
+>>>>> Division with round up is the correct way to compute this even if the
+>>>>> only case where division with round down gives incorrect result is
+>>>>> probably 15 bpp. This case was explicitely patched up in one of these
+>>>>> functions but was unhandled in the other. (I'm not sure about setting
+>>>>> 16 bpp for the 15bpp case either but I left that there for now.)
+>>>>>
+>>>>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+>>>>> ---
+>>>>>   console.c |    5 ++---
+>>>>>   1 file changed, 2 insertions(+), 3 deletions(-)
+>>>>>
+>>>>>   v2: Use DIV_ROUND_UP and extended commit message
+>>>>>
+>>>>> diff --git a/console.c b/console.c
+>>>>> index 4525cc7..9df1701 100644
+>>>>> --- a/console.c
+>>>>> +++ b/console.c
+>>>>> @@ -1612,7 +1612,7 @@ PixelFormat
+>>>>> qemu_different_endianness_pixelformat(int bpp)
+>>>>>       memset(&pf, 0x00, sizeof(PixelFormat));
+>>>>>
+>>>>>       pf.bits_per_pixel = bpp;
+>>>>> -    pf.bytes_per_pixel = bpp / 8;
+>>>>> +    pf.bytes_per_pixel = DIV_ROUND_UP(bpp, 8);
+>>>>>       pf.depth = bpp == 32 ? 24 : bpp;
+>>>>>
+>>>>>       switch (bpp) {
+>>>>> @@ -1661,13 +1661,12 @@ PixelFormat qemu_default_pixelformat(int bpp)
+>>>>>       memset(&pf, 0x00, sizeof(PixelFormat));
+>>>>>
+>>>>>       pf.bits_per_pixel = bpp;
+>>>>> -    pf.bytes_per_pixel = bpp / 8;
+>>>>> +    pf.bytes_per_pixel = DIV_ROUND_UP(bpp, 8);
+>>>>>       pf.depth = bpp == 32 ? 24 : bpp;
+>>>>>
+>>>>>       switch (bpp) {
+>>>>>           case 15:
+>>>>>               pf.bits_per_pixel = 16;
+>>>>> -            pf.bytes_per_pixel = 2;
+>>>> Removed unintentionally?
+>>>>
+>>>> Jan
+>>>
+>>> 15 bpp no longer needs special handling because
+>>> the computation above is fixed by the same patch,
+>>> so the removal is correct.
+>>
+>> Ok, actually starting to look at this code: This is apparently a code
+>> cleanup, not a bug fix like the subject suggests. No valid input for
+>> could have actually triggered the round-up issue. Please declare it as
+>> such. Bonus for abort() on the invalid default cases.
 > 
-> Ok, actually starting to look at this code: This is apparently a code
-> cleanup, not a bug fix like the subject suggests. No valid input for
-> could have actually triggered the round-up issue. Please declare it as
-> such. Bonus for abort() on the invalid default cases.
+> I have updated the commit message to "console: Clean up bytes per pixel
+> calculation".
 
-I have updated the commit message to "console: Clean up bytes per pixel
-calculation".
+I think there was a v3 on the list, didn't check the details yet, though.
 
-Stefan
+Jan
+
+-- 
+Siemens AG, Corporate Technology, CT RTC ITP SDP-DE
+Corporate Competence Center Embedded Linux
 
