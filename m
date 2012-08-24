@@ -1,49 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T4sVN-0007Jb-Po
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:56:49 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34471)
+	id 1T4uEc-0007Xp-0t
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 09:47:38 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44723)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4sVL-0007AL-2r
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:56:48 -0400
+	(envelope-from <lcapitulino@redhat.com>) id 1T4uEZ-0007X0-T1
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 09:47:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4sVK-0005r0-1U
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:56:46 -0400
-Received: from mail-lpp01m010-f45.google.com ([209.85.215.45]:65144)
+	(envelope-from <lcapitulino@redhat.com>) id 1T4uEX-0005Jd-SH
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 09:47:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:64881)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1T4sVG-0005q4-9q; Fri, 24 Aug 2012 07:56:42 -0400
-Received: by lagz14 with SMTP id z14so989080lag.4
-	for <multiple recipients>; Fri, 24 Aug 2012 04:56:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=sWaPAKTw1k5UOkE81/mQBX1Z+NWH+HDa3VLMMqAkK4Q=;
-	b=H2E+qIKsbhCIXwVad2yHY5ivsVwq9MpZ3meFOq7qRPKQT6VOctVQhmyW25FUVftdwo
-	42WxT0cl2NX5CzqTzmMlNUuh413gXVNbPquAKHajEnDJCVjjPenkYaaNEpCwyIZAVskM
-	yjvycIUhTbxOXsPbBxL9QnkKHCeDWj/aHLDGvr1f+ilAG4BbsP4SRPOXlO5ARIC+hNbj
-	aNd57aCPcG2vWvWXp8SFUo6SuMgCv3CeWvAp67Rpq1msEtEBZrGRayyxY3JjUkKpjvXG
-	a4hIn58H0WvHjTqS5myEP/VW3ReCOTsVGhdmJ7RjbFUIj1PhT097VuQUTEtjTDEw9o4T
-	Yy+A==
-MIME-Version: 1.0
-Received: by 10.152.113.68 with SMTP id iw4mr5480833lab.50.1345809400906; Fri,
-	24 Aug 2012 04:56:40 -0700 (PDT)
-Received: by 10.112.99.129 with HTTP; Fri, 24 Aug 2012 04:56:40 -0700 (PDT)
-In-Reply-To: <CAFEAcA8K=DxK6PbX+LzqN5+2qSxxs=7N+=7JiwwGX11FD3H9JA@mail.gmail.com>
-References: <1345437900-8001-1-git-send-email-sw@weilnetz.de>
-	<20120824105436.GC10867@stefanha-thinkpad.localdomain>
-	<CAFEAcA8K=DxK6PbX+LzqN5+2qSxxs=7N+=7JiwwGX11FD3H9JA@mail.gmail.com>
-Date: Fri, 24 Aug 2012 12:56:40 +0100
-Message-ID: <CAJSP0QWSg9B2_H6QBtZHDsJQdeZL+oW=AK7aYZw_AzKnHZq9Vw@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=ISO-8859-1
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1T4uEX-0005JO-L3; Fri, 24 Aug 2012 09:47:33 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q7ODlWmr009740
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 24 Aug 2012 09:47:32 -0400
+Received: from doriath.home (ovpn-113-82.phx2.redhat.com [10.3.113.82])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id q7ODlQPU032448; Fri, 24 Aug 2012 09:47:27 -0400
+Date: Fri, 24 Aug 2012 10:48:13 -0300
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120824104813.4345db29@doriath.home>
+In-Reply-To: <1345784583-25640-1-git-send-email-sw@weilnetz.de>
+References: <1345784583-25640-1-git-send-email-sw@weilnetz.de>
+Organization: Red Hat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.215.45
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org, imammedo@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-common: Declare
-	qemu_irq earlier
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 1.2] qemu-ga: Fix null
+ pointer passed to unlink in failure branch
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,33 +49,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Aug 2012 11:56:48 -0000
+X-List-Received-Date: Fri, 24 Aug 2012 13:47:36 -0000
 
-On Fri, Aug 24, 2012 at 12:06 PM, Peter Maydell
-<peter.maydell@linaro.org> wrote:
-> On 24 August 2012 11:54, Stefan Hajnoczi <stefanha@gmail.com> wrote:
->> On Mon, Aug 20, 2012 at 06:45:00AM +0200, Stefan Weil wrote:
->>> This allows using qemu_irq in the target specific cpu.h.
->>>
->>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->>> ---
->>>  qemu-common.h |    3 ++-
->>>  1 files changed, 2 insertions(+), 1 deletions(-)
->>
->> I'm not sure if there's a reason why qemu_irq was previously hidden from
->> cpu.h but the code change itself is fine and no one else has commented.
->>
->> Thanks, applied to the trivial patches tree:
->> https://github.com/stefanha/qemu/commits/trivial-patches
->
-> Consensus seemed to be that it was better to move qemu_irq
-> into hw/irq.h, as discussed in this mail thread:
-> http://lists.gnu.org/archive/html/qemu-devel/2012-08/msg03463.html
-> rather than just doing a move of the typedef within this header.
+On Fri, 24 Aug 2012 07:03:03 +0200
+Stefan Weil <sw@weilnetz.de> wrote:
 
-Fine by me.  I won't send a pull request with this patch yet.
+> Clang reports this warning:
+> 
+> Null pointer passed as an argument to a 'nonnull' parameter
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Stefan Weil: Are you happy to use the hw/irq.h patch instead of this?
+Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
 
-Stefan
+> ---
+>  qemu-ga.c |    4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/qemu-ga.c b/qemu-ga.c
+> index 26671fe..7623079 100644
+> --- a/qemu-ga.c
+> +++ b/qemu-ga.c
+> @@ -438,7 +438,9 @@ static void become_daemon(const char *pidfile)
+>      return;
+>  
+>  fail:
+> -    unlink(pidfile);
+> +    if (pidfile) {
+> +        unlink(pidfile);
+> +    }
+>      g_critical("failed to daemonize");
+>      exit(EXIT_FAILURE);
+>  #endif
+
 
