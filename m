@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T4rnl-0007N9-TK
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:11:45 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45511)
+	id 1T4rsh-0000eQ-8D
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:16:51 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34137)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4rnj-0007F3-AJ
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:11:44 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T4rsf-0000Y4-Dy
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:16:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4rni-00018v-3L
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:11:43 -0400
-Received: from mail-wi0-f175.google.com ([209.85.212.175]:48882)
+	(envelope-from <stefanha@gmail.com>) id 1T4rsZ-0002Zc-My
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:16:49 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:61302)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1T4rna-00017n-8D; Fri, 24 Aug 2012 07:11:34 -0400
-Received: by wibhm2 with SMTP id hm2so551521wib.10
-	for <multiple recipients>; Fri, 24 Aug 2012 04:11:33 -0700 (PDT)
+	id 1T4rsX-0002ZM-5l; Fri, 24 Aug 2012 07:16:41 -0400
+Received: by bkcji1 with SMTP id ji1so476717bkc.4
+	for <multiple recipients>; Fri, 24 Aug 2012 04:16:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=7KjAc80f2v+iogts9aAZhVklzewTNzpHh7apCe1AI6k=;
-	b=lzdjjr6y8+0z6GbiPfLOeyqv0MQrwKCHR0ukjXWkuk14PJ4ta7w3+S3YGIvxX2iHka
-	JLaTnHEWuNhius4PJVuFeHvukfbmDxVTyjVmvor7gqf/auoJpwQPj7Z2pGHcAjoxXo7E
-	nNyw0iAHt4Td6uL072Lx1DQ5zqvR9mc7JSnNSyfxRsgB3IamLvsX8nv1UK94tg44pOE+
-	xu7Z+g336zJgzRk+BUi5P8ACJ06rItSn+WHof1+uLFw9YD7qWw7Z+mKxeLZiz3YwxzC8
-	sT2W89WkohisD6Cqwvhxhs7phllQr2IWNWRayDWEMdcVyC9eA2VX1xRgB+FJQLlT+PZR
-	EJJA==
-Received: by 10.180.105.163 with SMTP id gn3mr4799549wib.2.1345806693494;
-	Fri, 24 Aug 2012 04:11:33 -0700 (PDT)
+	bh=OjNXXyjLJ9BMm4z2Kkd8PU4D/ugTQ6SyAxXP5JQJMm8=;
+	b=I+MiL7T9L/ShaejtuAfj2IkC9tmkQlQSeCBORe0hCpWGgXHPH3pQwJLgTAAD755SW6
+	Y5/h/uTeA0eWJnV/rXZroXMXmdWtIDH1DWVI96IHDXdev6LMqw09fzoILaLDWl0/Hz+L
+	TX3IMHgumny8oeoM5cBDWTnX8//O+Eg1T2iVKkY0QRs0JoJbNpm2/0vQ/beyHcUeLDHR
+	hJZDvVb5v9k2tOmACrVKWNd36uoEbBH1GrQ2WqsEYSEpDaUPpaZwoFA/0m1cxowpiRpb
+	V5IFg7SBS6OH109Y3uFxD4Aoj17XuJv+PKotfdLawr74/RuIjmgcUCyxnoU9rwSYcM57
+	yPTw==
+Received: by 10.204.145.90 with SMTP id c26mr1783975bkv.34.1345807000090;
+	Fri, 24 Aug 2012 04:16:40 -0700 (PDT)
 Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id t7sm5826250wix.6.2012.08.24.04.11.31
+	by mx.google.com with ESMTPS id t23sm6183222bks.4.2012.08.24.04.16.38
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 24 Aug 2012 04:11:32 -0700 (PDT)
-Date: Fri, 24 Aug 2012 12:11:28 +0100
+	Fri, 24 Aug 2012 04:16:38 -0700 (PDT)
+Date: Fri, 24 Aug 2012 12:16:37 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>
-Message-ID: <20120824111128.GG10867@stefanha-thinkpad.localdomain>
-References: <Pine.GSO.4.64.1208221717460.28960@mono>
+Message-ID: <20120824111637.GH10867@stefanha-thinkpad.localdomain>
+References: <Pine.GSO.4.64.1208221718470.28960@mono>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Pine.GSO.4.64.1208221717460.28960@mono>
+In-Reply-To: <Pine.GSO.4.64.1208221718470.28960@mono>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.175
+X-Received-From: 209.85.214.45
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] Fix copy&paste typos in documentation
- comments
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] console: Correct
+ computation of bytes per pixel from bits per pixel
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,16 +57,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Aug 2012 11:11:44 -0000
+X-List-Received-Date: Fri, 24 Aug 2012 11:16:50 -0000
 
-On Wed, Aug 22, 2012 at 05:18:38PM +0200, BALATON Zoltan wrote:
+On Wed, Aug 22, 2012 at 05:19:42PM +0200, BALATON Zoltan wrote:
+> Division with round up is the correct way to compute this even if the
+> only case where division with round down gives incorrect result is
+> probably 15 bpp. This case was explicitely patched up in one of these
+> functions but was unhandled in the other. (I'm not sure about setting
+> 16 bpp for the 15bpp case either but I left that there for now.)
 > 
 > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 > ---
->  memory.h |   11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
+>  console.c |    5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 > 
->  v2: indented memory_region_init_ram_ptr
+>  v2: Use DIV_ROUND_UP and extended commit message
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
