@@ -1,48 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T4sC7-0007Tx-Q3
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:36:55 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:35113)
+	id 1T4sSN-0004nM-Ne
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:53:43 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:53137)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1T4sC5-0007TQ-Nt
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:36:54 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T4sSG-0004Os-7R
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:53:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1T4sC3-0008L7-B9
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:36:53 -0400
-Received: from mail-iy0-f173.google.com ([209.85.210.173]:53799)
+	(envelope-from <stefanha@gmail.com>) id 1T4sSE-0004ZB-Si
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:53:35 -0400
+Received: from mail-lb0-f173.google.com ([209.85.217.173]:52340)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1T4sC3-0008Kr-6b
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:36:51 -0400
-Received: by iakx26 with SMTP id x26so3070690iak.4
-	for <qemu-trivial@nongnu.org>; Fri, 24 Aug 2012 04:36:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
+	(envelope-from <stefanha@gmail.com>)
+	id 1T4sS6-0004YH-Ts; Fri, 24 Aug 2012 07:53:27 -0400
+Received: by lbbgm13 with SMTP id gm13so988581lbb.4
+	for <multiple recipients>; Fri, 24 Aug 2012 04:53:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=8+Y3502NEnrRgL1pb5UeyNYcctBu/srA2CgDCLO2R88=;
-	b=QVvqXINKn41q309nr0akosfesvq7sbyU9m0UQuf5HWAi5Vu7dikvZgeZmKhACN73e0
-	2x+aiT32gFM/YMxlpTIPs0C6uYIGEJsbaf4s7Fpyz1nZb924uIxszal1UulIUOsjN9st
-	Ni55YIO/qBdzhJUrvlCLjH3drjxgDAx9S9WiVE4Bblvt1trgm81SHaHk+T36GOseQGD0
-	7nt14B0CLCOG1v62U9WjGUizRKagBom7IaRs3AdjlA6W+x/l/nxEXYRaNaThiRRVPHbC
-	b7GeL7dO2Inlz3RHm2XyrQN8Ok35pESpZYjYwaVGdkyb8mMuyukb9Dc7ruL7inCbj7YT
-	ghZQ==
+	:cc:content-type;
+	bh=Me7fA+OX/DTOdju8DKHfzK/awhWFge2BOaUiWvveybg=;
+	b=Lzl6QyhXXV89qy8Z+WCVaRq8TZqpkYyRi5SHFB91AOG4cH8nno/hkapa3Yr1RSvjIF
+	JI6mztGJb8zD0uQ7GRhoWLEFWYnV20GTePjd8nZbVyUM8TdcBL/sliHBMIK6YNDHF2jT
+	wcw1kknsQf6Xd+vYL8Nujj3gs5KP3/oVYUlK6jfxErxHU3ykUP7F+kIZb3+wwFU/TOPU
+	BY13LT619uKrpo63UJqXAM1/7CPa2aDdo4rxF66hjc4jjawYqFheM7WB0vfTnrp2iXQE
+	ObyQ44LuFdydySQHDj+NHCw5VVc2V1lZ9y0ru5iQ5LbCj+eebDZuczwYSqf/q45NfZ5x
+	sg1w==
 MIME-Version: 1.0
-Received: by 10.50.5.196 with SMTP id u4mr1783680igu.41.1345808210438; Fri, 24
-	Aug 2012 04:36:50 -0700 (PDT)
-Received: by 10.50.160.161 with HTTP; Fri, 24 Aug 2012 04:36:50 -0700 (PDT)
-In-Reply-To: <Pine.GSO.4.64.1208230207120.26411@mono>
-References: <Pine.GSO.4.64.1208230207120.26411@mono>
-Date: Fri, 24 Aug 2012 12:36:50 +0100
-Message-ID: <CAFEAcA_+UWLfr5NQi-SCNq_+9-q=kM-URR-c4oWuC6vNMcMN5w@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnaRp25zx5zUFZAJJtYbiR1ilquPdAni34iwHWy5SngTSRNGXgQNDZcE73KGtu4APU98IcA
+Received: by 10.152.113.68 with SMTP id iw4mr5469611lab.50.1345809205406; Fri,
+	24 Aug 2012 04:53:25 -0700 (PDT)
+Received: by 10.112.99.129 with HTTP; Fri, 24 Aug 2012 04:53:25 -0700 (PDT)
+In-Reply-To: <503763B1.1040205@siemens.com>
+References: <Pine.GSO.4.64.1208221718470.28960@mono>
+	<5034FB7D.5050009@siemens.com> <503508CE.1020908@weilnetz.de>
+	<50350C58.8060306@siemens.com>
+	<20120824112021.GI10867@stefanha-thinkpad.localdomain>
+	<503763B1.1040205@siemens.com>
+Date: Fri, 24 Aug 2012 12:53:25 +0100
+Message-ID: <CAJSP0QVHjXQZQqtsKRhpKmDxdGvAqpcaF1c=FDqHafaX2_EUYA@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Jan Kiszka <jan.kiszka@siemens.com>
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.210.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] console: Cleanup
- computation of bytes per pixel and add missing cases
+X-Received-From: 209.85.217.173
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Stefan Weil <sw@weilnetz.de>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	BALATON Zoltan <balaton@eik.bme.hu>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] console: Correct
+ computation of bytes per pixel from bits per pixel
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,32 +59,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Aug 2012 11:36:54 -0000
+X-List-Received-Date: Fri, 24 Aug 2012 11:53:42 -0000
 
-On 23 August 2012 01:08, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> Division with round up is the correct way to compute this even if the
-> only case where division with round down gives incorrect result is
-> probably 15 bpp. This case was explicitely patched up in one of these
-> functions but was unhandled in the other. This patch also adds the
-> missing cases and aborts for invalid unhandled cases. (I'm not sure
-> about setting 16 bpp for the 15 bpp case so I left it there for now.)
+On Fri, Aug 24, 2012 at 12:21 PM, Jan Kiszka <jan.kiszka@siemens.com> wrote:
+> On 2012-08-24 13:20, Stefan Hajnoczi wrote:
+>> On Wed, Aug 22, 2012 at 06:44:08PM +0200, Jan Kiszka wrote:
+>>> On 2012-08-22 18:29, Stefan Weil wrote:
+>>>> Am 22.08.2012 17:32, schrieb Jan Kiszka:
+>>>>> On 2012-08-22 17:19, BALATON Zoltan wrote:
+>>>>>> Division with round up is the correct way to compute this even if the
+>>>>>> only case where division with round down gives incorrect result is
+>>>>>> probably 15 bpp. This case was explicitely patched up in one of these
+>>>>>> functions but was unhandled in the other. (I'm not sure about setting
+>>>>>> 16 bpp for the 15bpp case either but I left that there for now.)
+>>>>>>
+>>>>>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+>>>>>> ---
+>>>>>>   console.c |    5 ++---
+>>>>>>   1 file changed, 2 insertions(+), 3 deletions(-)
+>>>>>>
+>>>>>>   v2: Use DIV_ROUND_UP and extended commit message
+>>>>>>
+>>>>>> diff --git a/console.c b/console.c
+>>>>>> index 4525cc7..9df1701 100644
+>>>>>> --- a/console.c
+>>>>>> +++ b/console.c
+>>>>>> @@ -1612,7 +1612,7 @@ PixelFormat
+>>>>>> qemu_different_endianness_pixelformat(int bpp)
+>>>>>>       memset(&pf, 0x00, sizeof(PixelFormat));
+>>>>>>
+>>>>>>       pf.bits_per_pixel = bpp;
+>>>>>> -    pf.bytes_per_pixel = bpp / 8;
+>>>>>> +    pf.bytes_per_pixel = DIV_ROUND_UP(bpp, 8);
+>>>>>>       pf.depth = bpp == 32 ? 24 : bpp;
+>>>>>>
+>>>>>>       switch (bpp) {
+>>>>>> @@ -1661,13 +1661,12 @@ PixelFormat qemu_default_pixelformat(int bpp)
+>>>>>>       memset(&pf, 0x00, sizeof(PixelFormat));
+>>>>>>
+>>>>>>       pf.bits_per_pixel = bpp;
+>>>>>> -    pf.bytes_per_pixel = bpp / 8;
+>>>>>> +    pf.bytes_per_pixel = DIV_ROUND_UP(bpp, 8);
+>>>>>>       pf.depth = bpp == 32 ? 24 : bpp;
+>>>>>>
+>>>>>>       switch (bpp) {
+>>>>>>           case 15:
+>>>>>>               pf.bits_per_pixel = 16;
+>>>>>> -            pf.bytes_per_pixel = 2;
+>>>>> Removed unintentionally?
+>>>>>
+>>>>> Jan
+>>>>
+>>>> 15 bpp no longer needs special handling because
+>>>> the computation above is fixed by the same patch,
+>>>> so the removal is correct.
+>>>
+>>> Ok, actually starting to look at this code: This is apparently a code
+>>> cleanup, not a bug fix like the subject suggests. No valid input for
+>>> could have actually triggered the round-up issue. Please declare it as
+>>> such. Bonus for abort() on the invalid default cases.
+>>
+>> I have updated the commit message to "console: Clean up bytes per pixel
+>> calculation".
 >
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
->  console.c |  230
-> +++++++++++++++++++++++++++++++++++--------------------------
->  1 file changed, 131 insertions(+), 99 deletions(-)
+> I think there was a v3 on the list, didn't check the details yet, though.
 
-It's a bit hard to see what's actually been changed in this
-patch -- can you split it up into a patch that fixes the
-switch indent first (and which has only whitespace changes,
-so 'git diff -w' produces no output for it), and then a patch
-making the actual changes, please?
+Yes but it just adds more stuff that should be in separate patches.
+Let's take v2 and additional changes can be done separately.
 
-(A useful rule of thumb, incidentally, is that if you find yourself
-writing "also" in a commit message you should consider splitting
-it into two separate commits instead :-))
-
-thanks
--- PMM
+Stefan
 
