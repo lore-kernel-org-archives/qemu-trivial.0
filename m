@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T4reu-0004W0-Ev
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:02:36 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39586)
+	id 1T4riP-0005ag-4H
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:06:13 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:39257)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4reo-0004Vg-Sy
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:02:34 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1T4riJ-0005Mt-Et
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:06:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4ren-0006er-Iv
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:02:30 -0400
-Received: from mail-we0-f173.google.com ([74.125.82.173]:35476)
+	(envelope-from <peter.maydell@linaro.org>) id 1T4riG-00087n-T4
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:06:07 -0400
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:59501)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4ren-0006ek-DP
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:02:29 -0400
-Received: by weyz53 with SMTP id z53so893456wey.4
-	for <qemu-trivial@nongnu.org>; Fri, 24 Aug 2012 04:02:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=K9ZqYk0/KmMVHEDs2btg7ZMIZaLg4/dKJmrsv93kEnE=;
-	b=cf6uv6fUBSXGJxEeAzsXZtX7UJpFi/YvDHnEx8qOGoFMRS1f3Kjtp1YKQNWHAvari5
-	fl9BK9oVWrBZg7LIW1TMQlh5M0on56n4GOKS4UrTCJmKmbMZwDxkp0pzcQptDCA/OnsA
-	FEnT/VnQ/bYM+MXrJ4ryw1s+Zm6831J0uPm1vUB4Kl6NBiPWj5HsvSoFZuVCDMby2mQW
-	vdMlLPIufdB4JFBVmkeIDblXbm7yCsZugexXYgUs0gDKe/mzpCcDd+xZ7BKMNhXGkF3G
-	gnrU6XZhKx5B1z1VcY6MG0xik7NpxiqT6dZW96tAuO456qHinaRsz56pbg3xhARSMMQp
-	zBiw==
-Received: by 10.180.105.6 with SMTP id gi6mr4730159wib.4.1345806148569;
-	Fri, 24 Aug 2012 04:02:28 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id l5sm5776581wix.5.2012.08.24.04.02.26
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 24 Aug 2012 04:02:27 -0700 (PDT)
-Date: Fri, 24 Aug 2012 12:02:24 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: "Yann E. MORIN" <yann.morin.1998@free.fr>
-Message-ID: <20120824110224.GE10867@stefanha-thinkpad.localdomain>
-References: <1345498749-16769-1-git-send-email-yann.morin.1998@free.fr>
+	(envelope-from <peter.maydell@linaro.org>) id 1T4riG-00086I-PB
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:06:04 -0400
+Received: by iakx26 with SMTP id x26so3022670iak.4
+	for <qemu-trivial@nongnu.org>; Fri, 24 Aug 2012 04:06:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=N+YT+ZfcXVevBALZ4Xrw1pXrtUZiKDcTlZecCafAnyQ=;
+	b=E7lUhfQ5v9WnUSeqxyBaeuiba03XT3e+ZA4e2N+0GoWMfkqj46x57xKOiVs5l5wqkC
+	mjkBBGQi2Crj/hhefKiI83KWAdluyAyzouEXcR7MDupm4vrOQ2kt6hVyY92FDgZa4rR1
+	JlF8vAzjiJsCSze/66FouKePmHYoezFUyxbijXPYM+uWq/OQ6vB1HCTuRDyhQnlxFl+P
+	K+iCAYjZJlQ0q6HmvfXIMZSs6Aa9cI3rdxitiHTLzxsXIpmy9bqKaG64iG1aYPByQ+IW
+	pnI2hzMQ1EPCTJVgV6Q28wfqMblrJSnRo5VeYYmj9jlcDyzQ4rhAnh1JzfWK+y1MSUSi
+	afow==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1345498749-16769-1-git-send-email-yann.morin.1998@free.fr>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.50.95.200 with SMTP id dm8mr1643480igb.60.1345806363780; Fri,
+	24 Aug 2012 04:06:03 -0700 (PDT)
+Received: by 10.50.160.161 with HTTP; Fri, 24 Aug 2012 04:06:03 -0700 (PDT)
+In-Reply-To: <20120824105436.GC10867@stefanha-thinkpad.localdomain>
+References: <1345437900-8001-1-git-send-email-sw@weilnetz.de>
+	<20120824105436.GC10867@stefanha-thinkpad.localdomain>
+Date: Fri, 24 Aug 2012 12:06:03 +0100
+Message-ID: <CAFEAcA8K=DxK6PbX+LzqN5+2qSxxs=7N+=7JiwwGX11FD3H9JA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQnNuJU3Ic+paH/uU5kON6Au6qZG/CnmSI6Y1/WmNn00kZeI1TQuogO/5wPg0sGHV5r+Fozk
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.173
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 1/3] configure: fix detection for cURL
- libs when static linking
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org, imammedo@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-common: Declare
+	qemu_irq earlier
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,23 +56,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Aug 2012 11:02:34 -0000
+X-List-Received-Date: Fri, 24 Aug 2012 11:06:12 -0000
 
-On Mon, Aug 20, 2012 at 11:39:07PM +0200, Yann E. MORIN wrote:
-> Currently, configure uses the same code-path to check for cURL libraries,
-> whether we are doing a static or dynamic build.
-> 
-> Fix that by pasing the proper arguments: '--static-libs' for curl-config
-> and '--static --libs' for pkg-config when a static build is attempted.
-> 
-> Signed-off-by: "Yann E. MORIN" <yann.morin.1998@free.fr>
-> ---
->  configure |    8 +++++++-
->  1 files changed, 7 insertions(+), 1 deletions(-)
+On 24 August 2012 11:54, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> On Mon, Aug 20, 2012 at 06:45:00AM +0200, Stefan Weil wrote:
+>> This allows using qemu_irq in the target specific cpu.h.
+>>
+>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>> ---
+>>  qemu-common.h |    3 ++-
+>>  1 files changed, 2 insertions(+), 1 deletions(-)
+>
+> I'm not sure if there's a reason why qemu_irq was previously hidden from
+> cpu.h but the code change itself is fine and no one else has commented.
+>
+> Thanks, applied to the trivial patches tree:
+> https://github.com/stefanha/qemu/commits/trivial-patches
 
-Can you set pkgconfig --static --libs in one place so the if [ "$static"
-= "yes" ] code isn't duplicated several times?  (This is a general
-question about the entire patch series.)
+Consensus seemed to be that it was better to move qemu_irq
+into hw/irq.h, as discussed in this mail thread:
+http://lists.gnu.org/archive/html/qemu-devel/2012-08/msg03463.html
+rather than just doing a move of the typedef within this header.
 
-Stefan
+-- PMM
 
