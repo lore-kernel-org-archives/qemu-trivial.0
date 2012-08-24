@@ -1,50 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T4rXQ-0001ej-C1
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 06:54:52 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42311)
+	id 1T4rYu-0003A7-EA
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 06:56:24 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4rXJ-0001cc-Lc
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 06:54:51 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T4rYs-00034R-Mc
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 06:56:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4rXI-00042A-Iy
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 06:54:45 -0400
-Received: from mail-wi0-f181.google.com ([209.85.212.181]:59714)
+	(envelope-from <stefanha@gmail.com>) id 1T4rYn-00059u-4Q
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 06:56:22 -0400
+Received: from mail-wg0-f53.google.com ([74.125.82.53]:41871)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1T4rXI-000425-Aw; Fri, 24 Aug 2012 06:54:44 -0400
-Received: by wibhm2 with SMTP id hm2so514848wib.10
-	for <multiple recipients>; Fri, 24 Aug 2012 03:54:43 -0700 (PDT)
+	id 1T4rYl-00059b-AV; Fri, 24 Aug 2012 06:56:15 -0400
+Received: by wgbfm10 with SMTP id fm10so1007471wgb.10
+	for <multiple recipients>; Fri, 24 Aug 2012 03:56:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=LG7cFIIgatzOGYvh4GpQ9/9mNEd2uMSJ5EWl3E1ii8I=;
-	b=tqEF4xyECzFGpdrMV5EXH5+9zpDPy3lbFdTnTmus+ktTFKSguNbaE78DyoSMbdhZFV
-	rgLmWkFbs8H7F83nfivIn3wwCPNkvSr9gI0wLSuETtX0BjZK9cYGfIqFjD6a7aUrAttG
-	U94JGP6WEXcADessop7xtNtsfvaNRr61isrZIxg9eD1p83pNJb2w61SrnA3kOKExYEbp
-	UpBp4brZGsS4URlNR3nnKdHV5uvHKw2KQYg1TS5ulO6erQaKdItaYxnX7Em1nqJTxaUk
-	HWfkFHlRWuMoJxDY+O/mSe32dqjXXyK6gz8lbtTkRUiI4FAxB8t+kPISyj/8sS09j17T
-	g09A==
-Received: by 10.216.241.198 with SMTP id g48mr2256499wer.164.1345805683343;
-	Fri, 24 Aug 2012 03:54:43 -0700 (PDT)
+	bh=UwCw7ahrsyiRdblTT5zOO0qWHWgVoRwXLwxu61hnsXI=;
+	b=cXLnTdEy2ozQkZgVi10CEz2XjUJCS9c3L6TZmG2KcdBCNWkJyQr9/X7hkBghZ7aczR
+	YvoG8GS8EB/r8tKQ/SWng7MRp5exrbGf/vsh+pQhpfkXHZ86gwhJMfjPWxM+FEvQgzse
+	vwDLwpN4YWM+unNzogGxQjd40ydCE2RBHXD1p77YMLkFtDSRN0nCrFjZG3IAEeCQmJ7g
+	/38SSLavQ0gbPn7f4iywhdwdF21CxIGZ3rUH3GelodTaiBurr8JfuE1D/jLYsYCHWluI
+	5hMIvlmv5Dp0oeqBaS59m7wEwjuWqXrwJ71TvFRmC1x8Vz39ff1zZhycX7W+BfoYyGXW
+	ow7g==
+Received: by 10.216.162.141 with SMTP id y13mr2592190wek.14.1345805774199;
+	Fri, 24 Aug 2012 03:56:14 -0700 (PDT)
 Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id k2sm5722337wiz.7.2012.08.24.03.54.39
+	by mx.google.com with ESMTPS id w7sm3804820wiz.0.2012.08.24.03.56.10
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 24 Aug 2012 03:54:41 -0700 (PDT)
-Date: Fri, 24 Aug 2012 11:54:36 +0100
+	Fri, 24 Aug 2012 03:56:13 -0700 (PDT)
+Date: Fri, 24 Aug 2012 11:56:07 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120824105436.GC10867@stefanha-thinkpad.localdomain>
-References: <1345437900-8001-1-git-send-email-sw@weilnetz.de>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20120824105607.GD10867@stefanha-thinkpad.localdomain>
+References: <1345467816-10893-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1345437900-8001-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1345467816-10893-1-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.181
-Cc: qemu-trivial@nongnu.org, imammedo@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] qemu-common: Declare qemu_irq earlier
+X-Received-From: 74.125.82.53
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] linux-user: Remove #if 0'd
+ cpu_get_real_ticks() definition
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,18 +58,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Aug 2012 10:54:51 -0000
+X-List-Received-Date: Fri, 24 Aug 2012 10:56:23 -0000
 
-On Mon, Aug 20, 2012 at 06:45:00AM +0200, Stefan Weil wrote:
-> This allows using qemu_irq in the target specific cpu.h.
+On Mon, Aug 20, 2012 at 02:03:36PM +0100, Peter Maydell wrote:
+> Remove the cpu_get_real_ticks() definition from linux-user/main.c.
+> This has been disabled via #if 0 and unused since commit 1dce7c3c22
+> in 2006; the definitions we actually use are in qemu-timer.h.
 > 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  qemu-common.h |    3 ++-
->  1 files changed, 2 insertions(+), 1 deletions(-)
-
-I'm not sure if there's a reason why qemu_irq was previously hidden from
-cpu.h but the code change itself is fine and no one else has commented.
+>  linux-user/main.c |   13 -------------
+>  1 file changed, 13 deletions(-)
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
