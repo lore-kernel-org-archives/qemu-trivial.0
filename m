@@ -1,52 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T4s50-0005EO-4r
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:29:34 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53703)
+	id 1T4sC7-0007Tx-Q3
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Aug 2012 07:36:55 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:35113)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4s4x-0005Cf-0B
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:29:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1T4sC5-0007TQ-Nt
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:36:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1T4s4v-0005gw-2N
-	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:29:30 -0400
-Received: from mail-wi0-f181.google.com ([209.85.212.181]:41279)
+	(envelope-from <peter.maydell@linaro.org>) id 1T4sC3-0008L7-B9
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:36:53 -0400
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:53799)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1T4s4u-0005gb-Ri; Fri, 24 Aug 2012 07:29:28 -0400
-Received: by wibhm2 with SMTP id hm2so539368wib.10
-	for <multiple recipients>; Fri, 24 Aug 2012 04:29:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=udEsPN/gyc/V4nzjrXMB/a5LhodFFtzSpLbVU/0bM38=;
-	b=W8YoiDrrI6kizX4jSUASrY7haSSVO+Z6CDoaK5zktYwqesqgk04uY4YXJ352ICfVRU
-	nOyNPMPnC12sVh1JaNnuewyLShCNaYddzu0II9nE9MWC5a98CrybSYHLo1E3tvW72YlP
-	5ftgmnffZBSmlqWkQVZKHRmCom42YVY/ZaA2vNPd6usoFrf4xfgh35TZevttel1o5hCl
-	SXg8M1Kw1n8bQHlQhhKl4CU6ierw5dAONqCs0+Qtor4QZdpKoRopxF394BTr+HLtsuUV
-	9oY5fErcxKjVwxcPYs0VYBNk2Ma5Jvi37Aeoaf9BsNjvwThGijijuUPMvw9u6jrnxp9Z
-	CzeQ==
-Received: by 10.180.105.163 with SMTP id gn3mr4909879wib.2.1345807767910;
-	Fri, 24 Aug 2012 04:29:27 -0700 (PDT)
-Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
-	by mx.google.com with ESMTPS id el6sm3915174wib.8.2012.08.24.04.29.24
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 24 Aug 2012 04:29:26 -0700 (PDT)
-Date: Fri, 24 Aug 2012 12:29:20 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120824112920.GL10867@stefanha-thinkpad.localdomain>
-References: <1345784583-25640-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <peter.maydell@linaro.org>) id 1T4sC3-0008Kr-6b
+	for qemu-trivial@nongnu.org; Fri, 24 Aug 2012 07:36:51 -0400
+Received: by iakx26 with SMTP id x26so3070690iak.4
+	for <qemu-trivial@nongnu.org>; Fri, 24 Aug 2012 04:36:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=8+Y3502NEnrRgL1pb5UeyNYcctBu/srA2CgDCLO2R88=;
+	b=QVvqXINKn41q309nr0akosfesvq7sbyU9m0UQuf5HWAi5Vu7dikvZgeZmKhACN73e0
+	2x+aiT32gFM/YMxlpTIPs0C6uYIGEJsbaf4s7Fpyz1nZb924uIxszal1UulIUOsjN9st
+	Ni55YIO/qBdzhJUrvlCLjH3drjxgDAx9S9WiVE4Bblvt1trgm81SHaHk+T36GOseQGD0
+	7nt14B0CLCOG1v62U9WjGUizRKagBom7IaRs3AdjlA6W+x/l/nxEXYRaNaThiRRVPHbC
+	b7GeL7dO2Inlz3RHm2XyrQN8Ok35pESpZYjYwaVGdkyb8mMuyukb9Dc7ruL7inCbj7YT
+	ghZQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1345784583-25640-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.50.5.196 with SMTP id u4mr1783680igu.41.1345808210438; Fri, 24
+	Aug 2012 04:36:50 -0700 (PDT)
+Received: by 10.50.160.161 with HTTP; Fri, 24 Aug 2012 04:36:50 -0700 (PDT)
+In-Reply-To: <Pine.GSO.4.64.1208230207120.26411@mono>
+References: <Pine.GSO.4.64.1208230207120.26411@mono>
+Date: Fri, 24 Aug 2012 12:36:50 +0100
+Message-ID: <CAFEAcA_+UWLfr5NQi-SCNq_+9-q=kM-URR-c4oWuC6vNMcMN5w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQnaRp25zx5zUFZAJJtYbiR1ilquPdAni34iwHWy5SngTSRNGXgQNDZcE73KGtu4APU98IcA
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.181
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH for 1.2] qemu-ga: Fix null pointer passed
- to unlink in failure branch
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] console: Cleanup
+ computation of bytes per pixel and add missing cases
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,23 +54,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Aug 2012 11:29:32 -0000
+X-List-Received-Date: Fri, 24 Aug 2012 11:36:54 -0000
 
-On Fri, Aug 24, 2012 at 07:03:03AM +0200, Stefan Weil wrote:
-> Clang reports this warning:
-> 
-> Null pointer passed as an argument to a 'nonnull' parameter
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On 23 August 2012 01:08, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+> Division with round up is the correct way to compute this even if the
+> only case where division with round down gives incorrect result is
+> probably 15 bpp. This case was explicitely patched up in one of these
+> functions but was unhandled in the other. This patch also adds the
+> missing cases and aborts for invalid unhandled cases. (I'm not sure
+> about setting 16 bpp for the 15 bpp case so I left it there for now.)
+>
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 > ---
->  qemu-ga.c |    4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+>  console.c |  230
+> +++++++++++++++++++++++++++++++++++--------------------------
+>  1 file changed, 131 insertions(+), 99 deletions(-)
 
-Nice, this looks like a legitimate bug that was detected by clang.  We
-call become_daemon(NULL).
+It's a bit hard to see what's actually been changed in this
+patch -- can you split it up into a patch that fixes the
+switch indent first (and which has only whitespace changes,
+so 'git diff -w' produces no output for it), and then a patch
+making the actual changes, please?
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+(A useful rule of thumb, incidentally, is that if you find yourself
+writing "also" in a commit message you should consider splitting
+it into two separate commits instead :-))
 
-Stefan
+thanks
+-- PMM
 
