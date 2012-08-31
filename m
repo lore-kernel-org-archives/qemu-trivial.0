@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T7YtD-0003Qk-Md
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Aug 2012 17:36:31 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:60476)
+	id 1T7ZgE-0001Z9-AP
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Aug 2012 18:27:10 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:58339)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1T7YtA-0003GY-0J
-	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 17:36:29 -0400
+	(envelope-from <yann.morin.1998@free.fr>) id 1T7ZgB-0001Z0-GC
+	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 18:27:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1T7Yt8-0007IX-QB
-	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 17:36:27 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:38209 helo=mx2.suse.de)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1T7Yt0-00079w-R0; Fri, 31 Aug 2012 17:36:19 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 955F9A3421;
-	Fri, 31 Aug 2012 23:36:17 +0200 (CEST)
-Message-ID: <50412E4D.9010204@suse.de>
-Date: Fri, 31 Aug 2012 23:36:13 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:15.0) Gecko/20120825 Thunderbird/15.0
+	(envelope-from <yann.morin.1998@free.fr>) id 1T7ZgA-0005ag-7x
+	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 18:27:07 -0400
+Received: from smtp05.smtpout.orange.fr ([80.12.242.127]:55237
+	helo=smtp.smtpout.orange.fr) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <yann.morin.1998@free.fr>) id 1T7ZgA-0005aS-1N
+	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 18:27:06 -0400
+Received: from treguer.localnet ([90.32.144.8]) by mwinf5d09 with ME
+	id taT21j0080B56Sa03aT2W5; Sat, 01 Sep 2012 00:27:04 +0200
+From: "Yann E. MORIN" <yann.morin.1998@free.fr>
+Organization: BZH lan
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Sat, 1 Sep 2012 00:27:01 +0200
+User-Agent: KMail/1.13.5 (Linux/3.5.3-treguer; KDE/4.4.5; x86_64; ; )
+References: <1346108494-31787-1-git-send-email-yann.morin.1998@free.fr>
+	<20120831064931.GA6425@stefanha-thinkpad.localdomain>
+In-Reply-To: <20120831064931.GA6425@stefanha-thinkpad.localdomain>
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1346444481-31727-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1346444481-31727-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.4.4
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ppc405_uc: Fix buffer
-	overflow
+Content-Type: Text/Plain;
+  charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+Message-Id: <201209010027.01669.yann.morin.1998@free.fr>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 80.12.242.127
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Liguori <aliguori@us.ibm.com>
+Subject: Re: [Qemu-trivial] [PATCH 0/2 v2] Fix static linking for cURL and
+	SDL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,101 +45,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Aug 2012 21:36:30 -0000
+X-List-Received-Date: Fri, 31 Aug 2012 22:27:08 -0000
 
-Am 31.08.2012 22:21, schrieb Stefan Weil:
-> Report from smatch:
->=20
-> ppc405_uc.c:209 dcr_read_pob(12) error: buffer overflow 'pob->besr' 2 <=
-=3D 2
-> ppc405_uc.c:232 dcr_write_pob(12) error: buffer overflow 'pob->besr' 2 =
-<=3D 2
->=20
-> The old code reads and writes besr[POB0_BESR1 - POB0_BESR0] or besr[2]
-> which is one too much.
->=20
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->=20
-> As this code was wrong for more than 5 years, there is no urgent need t=
-o
-> fix it now for QEMU 1.2.
->=20
-> Regards,
->=20
-> Stefan Weil
->=20
->  hw/ppc405_uc.c |   16 +++++++++++-----
->  1 file changed, 11 insertions(+), 5 deletions(-)
->=20
-> diff --git a/hw/ppc405_uc.c b/hw/ppc405_uc.c
-> index 89e5013..b52ab2f 100644
-> --- a/hw/ppc405_uc.c
-> +++ b/hw/ppc405_uc.c
-> @@ -191,7 +191,8 @@ enum {
->  typedef struct ppc4xx_pob_t ppc4xx_pob_t;
->  struct ppc4xx_pob_t {
->      uint32_t bear;
-> -    uint32_t besr[2];
-> +    uint32_t besr0;
-> +    uint32_t besr1;
->  };
-> =20
->  static uint32_t dcr_read_pob (void *opaque, int dcrn)
+Stefan, All,
 
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+On Friday 31 August 2012 08:49:31 Stefan Hajnoczi wrote:
+> On Tue, Aug 28, 2012 at 01:01:32AM +0200, Yann E. MORIN wrote:
+> > Hello All!
+> > 
+> > Currently, configure checks for cURL and SDL with either pkg-config (the
+> > default), or with {curl,sdl}-config (as a fallback).
+> > 
+> > But pkg-config and {curl,sdl}-config do not have the same set of options:
+[--SNIP--]
+> Patch 2's commit message still references "curl" instead of "sdl".
 
-We could alternatively leave besr[2] and access it with hardcoded 0..1.
+Nice catch, will fix.
 
-Adding qemu-stable to the mix so it can be backported to stable-1.2
-after the release.
+> Reviewed-by: Stefan Hajnoczi <stefanha@gmail.com>
 
-Andreas
+Thank you!
 
-> @@ -205,8 +206,10 @@ static uint32_t dcr_read_pob (void *opaque, int dc=
-rn)
->          ret =3D pob->bear;
->          break;
->      case POB0_BESR0:
-> +        ret =3D pob->besr0;
-> +        break;
->      case POB0_BESR1:
-> -        ret =3D pob->besr[dcrn - POB0_BESR0];
-> +        ret =3D pob->besr1;
->          break;
->      default:
->          /* Avoid gcc warning */
-> @@ -227,9 +230,12 @@ static void dcr_write_pob (void *opaque, int dcrn,=
- uint32_t val)
->          /* Read only */
->          break;
->      case POB0_BESR0:
-> +        /* Write-clear */
-> +        pob->besr0 &=3D ~val;
-> +        break;
->      case POB0_BESR1:
->          /* Write-clear */
-> -        pob->besr[dcrn - POB0_BESR0] &=3D ~val;
-> +        pob->besr1 &=3D ~val;
->          break;
->      }
->  }
-> @@ -241,8 +247,8 @@ static void ppc4xx_pob_reset (void *opaque)
->      pob =3D opaque;
->      /* No error */
->      pob->bear =3D 0x00000000;
-> -    pob->besr[0] =3D 0x0000000;
-> -    pob->besr[1] =3D 0x0000000;
-> +    pob->besr0 =3D 0x0000000;
-> +    pob->besr1 =3D 0x0000000;
->  }
-> =20
->  static void ppc4xx_pob_init(CPUPPCState *env)
->=20
+Regards,
+Yann E. MORIN.
 
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+-- 
+.-----------------.--------------------.------------------.--------------------.
+|  Yann E. MORIN  | Real-Time Embedded | /"\ ASCII RIBBON | Erics' conspiracy: |
+| +33 662 376 056 | Software  Designer | \ / CAMPAIGN     |  ___               |
+| +33 223 225 172 `------------.-------:  X  AGAINST      |  \e/  There is no  |
+| http://ymorin.is-a-geek.org/ | _/*\_ | / \ HTML MAIL    |   v   conspiracy.  |
+'------------------------------^-------^------------------^--------------------'
 
