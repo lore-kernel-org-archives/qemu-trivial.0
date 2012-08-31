@@ -1,37 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T7Xij-0002kS-RV
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Aug 2012 16:21:37 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:59694)
+	id 1T7YtD-0003Qk-Md
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Aug 2012 17:36:31 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:60476)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T7Xih-0002ec-Nc
-	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 16:21:36 -0400
+	(envelope-from <afaerber@suse.de>) id 1T7YtA-0003GY-0J
+	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 17:36:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T7Xig-0000xA-Qp
-	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 16:21:35 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:52040)
+	(envelope-from <afaerber@suse.de>) id 1T7Yt8-0007IX-QB
+	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 17:36:27 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:38209 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1T7Xie-0000wc-CK; Fri, 31 Aug 2012 16:21:32 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	357877280027; Fri, 31 Aug 2012 22:21:30 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id j9tgeGGOUd0G; Fri, 31 Aug 2012 22:21:23 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id A3520728002A; Fri, 31 Aug 2012 22:21:22 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: Alexander Graf <agraf@suse.de>
-Date: Fri, 31 Aug 2012 22:21:21 +0200
-Message-Id: <1346444481-31727-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] ppc405_uc: Fix buffer overflow
+	(envelope-from <afaerber@suse.de>)
+	id 1T7Yt0-00079w-R0; Fri, 31 Aug 2012 17:36:19 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 955F9A3421;
+	Fri, 31 Aug 2012 23:36:17 +0200 (CEST)
+Message-ID: <50412E4D.9010204@suse.de>
+Date: Fri, 31 Aug 2012 23:36:13 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:15.0) Gecko/20120825 Thunderbird/15.0
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>
+References: <1346444481-31727-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1346444481-31727-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.4.4
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
+	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ppc405_uc: Fix buffer
+	overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,81 +47,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Aug 2012 20:21:36 -0000
+X-List-Received-Date: Fri, 31 Aug 2012 21:36:30 -0000
 
-Report from smatch:
+Am 31.08.2012 22:21, schrieb Stefan Weil:
+> Report from smatch:
+>=20
+> ppc405_uc.c:209 dcr_read_pob(12) error: buffer overflow 'pob->besr' 2 <=
+=3D 2
+> ppc405_uc.c:232 dcr_write_pob(12) error: buffer overflow 'pob->besr' 2 =
+<=3D 2
+>=20
+> The old code reads and writes besr[POB0_BESR1 - POB0_BESR0] or besr[2]
+> which is one too much.
+>=20
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>=20
+> As this code was wrong for more than 5 years, there is no urgent need t=
+o
+> fix it now for QEMU 1.2.
+>=20
+> Regards,
+>=20
+> Stefan Weil
+>=20
+>  hw/ppc405_uc.c |   16 +++++++++++-----
+>  1 file changed, 11 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/hw/ppc405_uc.c b/hw/ppc405_uc.c
+> index 89e5013..b52ab2f 100644
+> --- a/hw/ppc405_uc.c
+> +++ b/hw/ppc405_uc.c
+> @@ -191,7 +191,8 @@ enum {
+>  typedef struct ppc4xx_pob_t ppc4xx_pob_t;
+>  struct ppc4xx_pob_t {
+>      uint32_t bear;
+> -    uint32_t besr[2];
+> +    uint32_t besr0;
+> +    uint32_t besr1;
+>  };
+> =20
+>  static uint32_t dcr_read_pob (void *opaque, int dcrn)
 
-ppc405_uc.c:209 dcr_read_pob(12) error: buffer overflow 'pob->besr' 2 <= 2
-ppc405_uc.c:232 dcr_write_pob(12) error: buffer overflow 'pob->besr' 2 <= 2
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
-The old code reads and writes besr[POB0_BESR1 - POB0_BESR0] or besr[2]
-which is one too much.
+We could alternatively leave besr[2] and access it with hardcoded 0..1.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
+Adding qemu-stable to the mix so it can be backported to stable-1.2
+after the release.
 
-As this code was wrong for more than 5 years, there is no urgent need to
-fix it now for QEMU 1.2.
+Andreas
 
-Regards,
+> @@ -205,8 +206,10 @@ static uint32_t dcr_read_pob (void *opaque, int dc=
+rn)
+>          ret =3D pob->bear;
+>          break;
+>      case POB0_BESR0:
+> +        ret =3D pob->besr0;
+> +        break;
+>      case POB0_BESR1:
+> -        ret =3D pob->besr[dcrn - POB0_BESR0];
+> +        ret =3D pob->besr1;
+>          break;
+>      default:
+>          /* Avoid gcc warning */
+> @@ -227,9 +230,12 @@ static void dcr_write_pob (void *opaque, int dcrn,=
+ uint32_t val)
+>          /* Read only */
+>          break;
+>      case POB0_BESR0:
+> +        /* Write-clear */
+> +        pob->besr0 &=3D ~val;
+> +        break;
+>      case POB0_BESR1:
+>          /* Write-clear */
+> -        pob->besr[dcrn - POB0_BESR0] &=3D ~val;
+> +        pob->besr1 &=3D ~val;
+>          break;
+>      }
+>  }
+> @@ -241,8 +247,8 @@ static void ppc4xx_pob_reset (void *opaque)
+>      pob =3D opaque;
+>      /* No error */
+>      pob->bear =3D 0x00000000;
+> -    pob->besr[0] =3D 0x0000000;
+> -    pob->besr[1] =3D 0x0000000;
+> +    pob->besr0 =3D 0x0000000;
+> +    pob->besr1 =3D 0x0000000;
+>  }
+> =20
+>  static void ppc4xx_pob_init(CPUPPCState *env)
+>=20
 
-Stefan Weil
 
- hw/ppc405_uc.c |   16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
-
-diff --git a/hw/ppc405_uc.c b/hw/ppc405_uc.c
-index 89e5013..b52ab2f 100644
---- a/hw/ppc405_uc.c
-+++ b/hw/ppc405_uc.c
-@@ -191,7 +191,8 @@ enum {
- typedef struct ppc4xx_pob_t ppc4xx_pob_t;
- struct ppc4xx_pob_t {
-     uint32_t bear;
--    uint32_t besr[2];
-+    uint32_t besr0;
-+    uint32_t besr1;
- };
- 
- static uint32_t dcr_read_pob (void *opaque, int dcrn)
-@@ -205,8 +206,10 @@ static uint32_t dcr_read_pob (void *opaque, int dcrn)
-         ret = pob->bear;
-         break;
-     case POB0_BESR0:
-+        ret = pob->besr0;
-+        break;
-     case POB0_BESR1:
--        ret = pob->besr[dcrn - POB0_BESR0];
-+        ret = pob->besr1;
-         break;
-     default:
-         /* Avoid gcc warning */
-@@ -227,9 +230,12 @@ static void dcr_write_pob (void *opaque, int dcrn, uint32_t val)
-         /* Read only */
-         break;
-     case POB0_BESR0:
-+        /* Write-clear */
-+        pob->besr0 &= ~val;
-+        break;
-     case POB0_BESR1:
-         /* Write-clear */
--        pob->besr[dcrn - POB0_BESR0] &= ~val;
-+        pob->besr1 &= ~val;
-         break;
-     }
- }
-@@ -241,8 +247,8 @@ static void ppc4xx_pob_reset (void *opaque)
-     pob = opaque;
-     /* No error */
-     pob->bear = 0x00000000;
--    pob->besr[0] = 0x0000000;
--    pob->besr[1] = 0x0000000;
-+    pob->besr0 = 0x0000000;
-+    pob->besr1 = 0x0000000;
- }
- 
- static void ppc4xx_pob_init(CPUPPCState *env)
--- 
-1.7.10
-
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
