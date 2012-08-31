@@ -1,59 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T7CQk-0002zh-Se
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Aug 2012 17:37:38 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45321)
+	id 1T7M92-0005Tu-Dl
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Aug 2012 04:00:00 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54807)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1T7CQj-0002ws-2o
-	for qemu-trivial@nongnu.org; Thu, 30 Aug 2012 17:37:37 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T7M90-0005Tl-8z
+	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 03:59:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1T7CQh-0001iH-6q
-	for qemu-trivial@nongnu.org; Thu, 30 Aug 2012 17:37:37 -0400
-Received: from e39.co.us.ibm.com ([32.97.110.160]:45895)
+	(envelope-from <stefanha@gmail.com>) id 1T7M8y-0007uJ-SB
+	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 03:59:58 -0400
+Received: from mail-wi0-f175.google.com ([209.85.212.175]:40817)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1T7CQh-0001iA-0g
-	for qemu-trivial@nongnu.org; Thu, 30 Aug 2012 17:37:35 -0400
-Received: from /spool/local
-	by e39.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Thu, 30 Aug 2012 15:37:33 -0600
-Received: from d03dlp03.boulder.ibm.com (9.17.202.179)
-	by e39.co.us.ibm.com (192.168.1.139) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 30 Aug 2012 15:37:31 -0600
-Received: from d03relay05.boulder.ibm.com (d03relay05.boulder.ibm.com
-	[9.17.195.107])
-	by d03dlp03.boulder.ibm.com (Postfix) with ESMTP id 9068E19D8043;
-	Thu, 30 Aug 2012 15:37:29 -0600 (MDT)
-Received: from d03av06.boulder.ibm.com (d03av06.boulder.ibm.com [9.17.195.245])
-	by d03relay05.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	q7ULbKMH137528; Thu, 30 Aug 2012 15:37:21 -0600
-Received: from d03av06.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id q7ULcjnc032234; Thu, 30 Aug 2012 15:38:45 -0600
-Received: from titi.na.relay.ibm.com (sig-9-65-230-208.mts.ibm.com
-	[9.65.230.208])
-	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	q7ULcfG0032088; Thu, 30 Aug 2012 15:38:43 -0600
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Stefan Weil <sw@weilnetz.de>
-In-Reply-To: <1346358511-27720-1-git-send-email-sw@weilnetz.de>
-References: <1346358511-27720-1-git-send-email-sw@weilnetz.de>
-User-Agent: Notmuch/0.13.2+93~ged93d79 (http://notmuchmail.org) Emacs/23.3.1
-	(x86_64-pc-linux-gnu)
-Date: Thu, 30 Aug 2012 16:37:16 -0500
-Message-ID: <87a9xc6oz7.fsf@codemonkey.ws>
+	(envelope-from <stefanha@gmail.com>) id 1T7M8y-0007u5-Ls
+	for qemu-trivial@nongnu.org; Fri, 31 Aug 2012 03:59:56 -0400
+Received: by wibhm2 with SMTP id hm2so921283wib.10
+	for <qemu-trivial@nongnu.org>; Fri, 31 Aug 2012 00:59:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=nzRdqisTcMFDkJn09hmbVHSDF24O0RNtUBgnyMyq1qs=;
+	b=RBOMO1DIOKRV4Z7FHVAY8RpBxcyamtnXdcKY3ODX2mMESTzjPb+xwzwgKjB255Efb/
+	I7MujoiQNu8jngV6ginzgL9bBJGbNd76NF8aG4/UCA3BbaCe6Mhvk82OzI71nRjZXkzy
+	KH/lCA8qZpG54LQDnYqizcaJEIhgxxi8sXIGFZ1nwRlSdJc4V+0sfRnSNfXh4aYTmdRT
+	PQAfouDucb+Mbk3Kf5XsbJ/t9vYuP98NqXIGuLJRbzp5bD6Uhqe732FjTYA67K6gc2NS
+	/oTTT2dzSuWA5lhkBoTDcnGy5dKs97v4z5pVlYQjs4fghcDXXJjGavqZIRQOrwfV6zzj
+	zAsQ==
+Received: by 10.216.52.7 with SMTP id d7mr4639167wec.132.1346399995814;
+	Fri, 31 Aug 2012 00:59:55 -0700 (PDT)
+Received: from localhost (gbibp9ph1--blueice2n1.emea.ibm.com. [195.212.29.75])
+	by mx.google.com with ESMTPS id fr4sm7711423wib.8.2012.08.31.00.59.54
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 31 Aug 2012 00:59:54 -0700 (PDT)
+Date: Fri, 31 Aug 2012 07:49:31 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: "Yann E. MORIN" <yann.morin.1998@free.fr>
+Message-ID: <20120831064931.GA6425@stefanha-thinkpad.localdomain>
+References: <1346108494-31787-1-git-send-email-yann.morin.1998@free.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 12083021-4242-0000-0000-000002BA048C
+Content-Disposition: inline
+In-Reply-To: <1346108494-31787-1-git-send-email-yann.morin.1998@free.fr>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 32.97.110.160
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 1.2] w32: Fix broken
-	build
+X-Received-From: 209.85.212.175
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Liguori <aliguori@us.ibm.com>
+Subject: Re: [Qemu-trivial] [PATCH 0/2 v2] Fix static linking for cURL and
+	SDL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,40 +58,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Aug 2012 21:37:38 -0000
+X-List-Received-Date: Fri, 31 Aug 2012 07:59:59 -0000
 
-Stefan Weil <sw@weilnetz.de> writes:
+On Tue, Aug 28, 2012 at 01:01:32AM +0200, Yann E. MORIN wrote:
+> Hello All!
+> 
+> Currently, configure checks for cURL and SDL with either pkg-config (the
+> default), or with {curl,sdl}-config (as a fallback).
+> 
+> But pkg-config and {curl,sdl}-config do not have the same set of options:
+>   - to check for shared libs, both use the option: --libs
+>   - to check for static libs:
+>     - pkg-config uses      : --static --libs
+>     - {curl,sdl}-config use: --static-libs
+> 
+> To add to the complexity, pkg-config is called through the querry_pkg_config
+> wrapper, that already passes --static when static linking is required, but 
+> there is no such wrapper for {curl,sdl}-config, so we miss the occasion to
+> pass --static-libs.
+> 
+> To fix this:
+>   - introduce a new variable QEMU_XXX_CONFIG_LIBS_FLAGS that mirrors the 
+>     behavior of QEMU_PKG_CONFIG_FLAGS; this variable can be used by all 
+>     xxx-config scripts (eg. curl-config, but later sdl-config too).
+>     Default it to '--libs', which is for shared linking;
+>   - properly use either --libs for pkg-config (--static is already taken
+>     care of in the wrapper), or $QEMU_XXX_CONFIG_LIBS_FLAGS for 
+>     {curl,sdl}-config.
+> 
+> 
+> Changes since v1:
+>   - drop the spice fix, it is not needed (bad env locally)
+>   - drop the added --static to calls to pkg-config, as it's already in the
+>     wrapper (Stefan Hajnoczi)
 
-> Commit ef8621b1a3b199c348606c0a11a77d8e8bf135f1 added an include
-> file which is not available for MinGW compilations.
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Patch 2's commit message still references "curl" instead of "sdl".
 
-Applied.  Thanks.
+I'd like for one more person to review this and then it can be merged
+into qemu.git, rather than through qemu-trivial.
 
-Regards,
-
-Anthony Liguori
-
-> ---
->  target-i386/cpu.c |    2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-> index f3cac49..423e009 100644
-> --- a/target-i386/cpu.c
-> +++ b/target-i386/cpu.c
-> @@ -33,7 +33,9 @@
->  #include "hyperv.h"
->  
->  #include "hw/hw.h"
-> +#if defined(CONFIG_KVM)
->  #include <linux/kvm_para.h>
-> +#endif
->  
->  /* feature flags taken from "Intel Processor Identification and the CPUID
->   * Instruction" and AMD's "CPUID Specification".  In cases of disagreement
-> -- 
-> 1.7.10
-
+Reviewed-by: Stefan Hajnoczi <stefanha@gmail.com>
 
