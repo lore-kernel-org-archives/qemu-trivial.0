@@ -1,38 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T7lK7-00024w-3C
-	for mharc-qemu-trivial@gnu.org; Sat, 01 Sep 2012 06:53:07 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:48764)
+	id 1T7lN5-0002xa-1x
+	for mharc-qemu-trivial@gnu.org; Sat, 01 Sep 2012 06:56:11 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56871)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T7lK4-0001w0-5e
-	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 06:53:04 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1T7lN2-0002oV-18
+	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 06:56:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T7lK3-0006HI-Ez
-	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 06:53:04 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:37176)
+	(envelope-from <stefan@weilnetz.de>) id 1T7lN1-0007Qn-6z
+	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 06:56:07 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:38116)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1T7lK1-0006H1-Aw; Sat, 01 Sep 2012 06:53:01 -0400
+	id 1T7lMz-0007Mz-Bd; Sat, 01 Sep 2012 06:56:05 -0400
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	96C587280021; Sat,  1 Sep 2012 12:53:00 +0200 (CEST)
+	C02ED7280021; Sat,  1 Sep 2012 12:56:04 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id 6q065GyFRrmK; Sat,  1 Sep 2012 12:53:00 +0200 (CEST)
+	with ESMTP id Q8OdlVkVHy4c; Sat,  1 Sep 2012 12:56:03 +0200 (CEST)
 Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id F163B728002B; Sat,  1 Sep 2012 12:52:59 +0200 (CEST)
+	id B0E04728002B; Sat,  1 Sep 2012 12:56:03 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Sat,  1 Sep 2012 12:52:58 +0200
-Message-Id: <1346496778-15014-1-git-send-email-sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Sat,  1 Sep 2012 12:56:03 +0200
+Message-Id: <1346496963-27422-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
 X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] json-parser: Fix potential NULL pointer
-	segfault
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] ioh3420: Remove unreachable code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,45 +42,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 Sep 2012 10:53:05 -0000
+X-List-Received-Date: Sat, 01 Sep 2012 10:56:09 -0000
 
 Report from smatch:
-json-parser.c:474 parse_object(62) error: potential null derefence 'dict'.
-json-parser.c:553 parse_array(75) error: potential null derefence 'list'.
-
-Label out can be called with list == NULL.
+hw/ioh3420.c:128 ioh3420_initfn(35) info: ignoring unreachable code.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- json-parser.c |    8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ hw/ioh3420.c |    1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/json-parser.c b/json-parser.c
-index 457291b..c31c759 100644
---- a/json-parser.c
-+++ b/json-parser.c
-@@ -471,7 +471,9 @@ static QObject *parse_object(JSONParserContext *ctxt, va_list *ap)
- 
- out:
-     parser_context_restore(ctxt, saved_ctxt);
--    QDECREF(dict);
-+    if (dict) {
-+        QDECREF(dict);
-+    }
-     return NULL;
- }
- 
-@@ -550,7 +552,9 @@ static QObject *parse_array(JSONParserContext *ctxt, va_list *ap)
- 
- out:
-     parser_context_restore(ctxt, saved_ctxt);
--    QDECREF(list);
-+    if (list) {
-+        QDECREF(list);
-+    }
-     return NULL;
- }
- 
+diff --git a/hw/ioh3420.c b/hw/ioh3420.c
+index 94a537c..4d31473 100644
+--- a/hw/ioh3420.c
++++ b/hw/ioh3420.c
+@@ -125,7 +125,6 @@ static int ioh3420_initfn(PCIDevice *d)
+     rc = pcie_chassis_add_slot(s);
+     if (rc < 0) {
+         goto err_pcie_cap;
+-        return rc;
+     }
+     pcie_cap_root_init(d);
+     rc = pcie_aer_init(d, IOH_EP_AER_OFFSET);
 -- 
 1.7.10
 
