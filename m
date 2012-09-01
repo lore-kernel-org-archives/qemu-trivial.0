@@ -1,37 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T7lRg-0003sH-04
-	for mharc-qemu-trivial@gnu.org; Sat, 01 Sep 2012 07:00:56 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40123)
+	id 1T7m5Y-00016o-OY
+	for mharc-qemu-trivial@gnu.org; Sat, 01 Sep 2012 07:42:08 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43478)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T7lRd-0003lo-Sh
-	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 07:00:54 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1T7m5W-00016g-Rh
+	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 07:42:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1T7lRc-0000Qm-TH
-	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 07:00:53 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:53365)
+	(envelope-from <peter.maydell@linaro.org>) id 1T7m5V-0003xR-S8
+	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 07:42:06 -0400
+Received: from mail-ie0-f173.google.com ([209.85.223.173]:61911)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1T7lRa-0000Py-DQ; Sat, 01 Sep 2012 07:00:50 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	A779E7280021; Sat,  1 Sep 2012 13:00:49 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 9z8iIqvgU7OV; Sat,  1 Sep 2012 13:00:48 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id F136E728002B; Sat,  1 Sep 2012 13:00:48 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Sat,  1 Sep 2012 13:00:48 +0200
-Message-Id: <1346497248-14659-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] pflash_cfi01: Fix warning caused by
-	unreachable code
+	(envelope-from <peter.maydell@linaro.org>) id 1T7m5V-0003xK-N1
+	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 07:42:05 -0400
+Received: by iebc10 with SMTP id c10so2249262ieb.4
+	for <qemu-trivial@nongnu.org>; Sat, 01 Sep 2012 04:42:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=2+Enzg0S/eGbgnC93mRTO6I8/feuwnoYCqlg06kIROc=;
+	b=hti+lxy5+1/RFpZun/fuqq5Dx/ZOjRDPFX4u0aVoOF5OMArV33WGkFjfXe3BfuaXcb
+	jhwHGtHBhEGRhNyP4+Eol9a4Zl4vJBf/nfO8EVllZ5wokYLbOu6WwRHPhCn1tEjrVmU+
+	Zfq8Hkf68P2gGfWGziC4P/MWFNCVxGO5NUgsVGI9CvQDCQ4yUvxdTBPmGNqJQdeWqpyG
+	tl3jm+q6eK54+A6EBHqQKSaizRlumNjyPsR8QNDjedh/PFP18oVSana57z2AAb6mEKXt
+	QCJ9kCINt15FcccSusjNeNPmuzeyBJIozwKyRL6KoCLtVkn1kwSCmdE8vTfCfcBymeBT
+	UFwA==
+MIME-Version: 1.0
+Received: by 10.50.40.225 with SMTP id a1mr5764216igl.51.1346499724515; Sat,
+	01 Sep 2012 04:42:04 -0700 (PDT)
+Received: by 10.50.160.161 with HTTP; Sat, 1 Sep 2012 04:42:04 -0700 (PDT)
+In-Reply-To: <1346496221-11188-1-git-send-email-sw@weilnetz.de>
+References: <1346496221-11188-1-git-send-email-sw@weilnetz.de>
+Date: Sat, 1 Sep 2012 12:42:04 +0100
+Message-ID: <CAFEAcA9V=YsP+womOB1EaET2O8YbjR5jXRD6EUvhLopQcQMW6g@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQl75PzV9jMNrmITYqYeYTQGPaobLehJX3ov4dGUxZYrDvA7PFfJ0YGvK+ysrQk6HHNRBvUS
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.223.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Mathieu Sonet <contact@elasticsheep.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] lm4549: Fix buffer overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,62 +54,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 Sep 2012 11:00:55 -0000
+X-List-Received-Date: Sat, 01 Sep 2012 11:42:08 -0000
 
-Report from smatch:
-hw/pflash_cfi01.c:431 pflash_write(180) info: ignoring unreachable code.
+On 1 September 2012 11:43, Stefan Weil <sw@weilnetz.de> wrote:
+> Report from smatch:
+> lm4549.c:234 lm4549_write_samples(14) error:
+>  buffer overflow 's->buffer' 1024 <= 1024
+>
+> There must be enough space to add two entries starting with index
+> s->buffer_level, therefore the old check was wrong.
+>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  hw/lm4549.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/lm4549.c b/hw/lm4549.c
+> index 80b3ec4..e0137d5 100644
+> --- a/hw/lm4549.c
+> +++ b/hw/lm4549.c
+> @@ -224,7 +224,7 @@ uint32_t lm4549_write_samples(lm4549_state *s, uint32_t left, uint32_t right)
+>         This model supports 16-bit playback.
+>      */
+>
+> -    if (s->buffer_level >= LM4549_BUFFER_SIZE) {
+> +    if (s->buffer_level > LM4549_BUFFER_SIZE - 2) {
+>          DPRINTF("write_sample Buffer full\n");
+>          return 0;
+>      }
+> --
+> 1.7.10
 
-Instead of removing the return statement after the switch statement,
-the patch replaces the return statements in the switch statement by
-break statements. Other switch statements in the same code do it also
-like that.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- hw/pflash_cfi01.c |    8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+I don't object to making the change to placate the analyser,
+but I don't think this is actually a buffer overrun. We always
+add and remove samples from the buffer two at a time, so it's
+not possible to get here with s->buffer_level == BUFFER_SIZE-1
+(which is the only case where the old and new conditions
+give different answers).
 
-diff --git a/hw/pflash_cfi01.c b/hw/pflash_cfi01.c
-index d1c7423..56ed33f 100644
---- a/hw/pflash_cfi01.c
-+++ b/hw/pflash_cfi01.c
-@@ -320,7 +320,7 @@ static void pflash_write(pflash_t *pfl, target_phys_addr_t offset,
-         }
-         pfl->wcycle++;
-         pfl->cmd = cmd;
--        return;
-+        break;
-     case 1:
-         switch (pfl->cmd) {
-         case 0x10: /* Single Byte Program */
-@@ -375,7 +375,7 @@ static void pflash_write(pflash_t *pfl, target_phys_addr_t offset,
-         default:
-             goto error_flash;
-         }
--        return;
-+        break;
-     case 2:
-         switch (pfl->cmd) {
-         case 0xe8: /* Block write */
-@@ -406,7 +406,7 @@ static void pflash_write(pflash_t *pfl, target_phys_addr_t offset,
-         default:
-             goto error_flash;
-         }
--        return;
-+        break;
-     case 3: /* Confirm mode */
-         switch (pfl->cmd) {
-         case 0xe8: /* Block write */
-@@ -422,7 +422,7 @@ static void pflash_write(pflash_t *pfl, target_phys_addr_t offset,
-         default:
-             goto error_flash;
-         }
--        return;
-+        break;
-     default:
-         /* Should never happen */
-         DPRINTF("%s: invalid write state\n",  __func__);
--- 
-1.7.10
-
+-- PMM
 
