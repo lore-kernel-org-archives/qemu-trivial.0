@@ -1,35 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T7wjq-0004Jy-5u
-	for mharc-qemu-trivial@gnu.org; Sat, 01 Sep 2012 19:04:26 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49750)
+	id 1T87pR-0003Rw-U1
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Sep 2012 06:54:57 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:52815)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1T7wjn-0004EB-Jm
-	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 19:04:24 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1T87pQ-0003Ov-4q
+	for qemu-trivial@nongnu.org; Sun, 02 Sep 2012 06:54:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1T7wjm-0005Up-RK
-	for qemu-trivial@nongnu.org; Sat, 01 Sep 2012 19:04:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56003)
+	(envelope-from <blauwirbel@gmail.com>) id 1T87pP-0004Rt-6x
+	for qemu-trivial@nongnu.org; Sun, 02 Sep 2012 06:54:56 -0400
+Received: from mail-iy0-f173.google.com ([209.85.210.173]:36243)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>)
-	id 1T7wjk-0005UY-Nt; Sat, 01 Sep 2012 19:04:20 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q81N4JPf007434
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Sat, 1 Sep 2012 19:04:19 -0400
-Received: from garlic.redhat.com (vpn-9-61.rdu.redhat.com [10.11.9.61])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q81N4HDh023688; Sat, 1 Sep 2012 19:04:18 -0400
-From: Alon Levy <alevy@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Sun,  2 Sep 2012 02:04:16 +0300
-Message-Id: <1346540656-2927-1-git-send-email-alevy@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1T87pN-0004Rb-3Z; Sun, 02 Sep 2012 06:54:53 -0400
+Received: by iakx26 with SMTP id x26so6576671iak.4
+	for <multiple recipients>; Sun, 02 Sep 2012 03:54:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=rx8rDbaOn7E2e52GMXyx4KKb0jQLpXtRfJXxanaIED0=;
+	b=nZpILzzlpbdDhdzGxPJEtvYdCduIOfqXPN6ek5kJ5lw81VO4wz32qur4oHs9ILIAag
+	eXjLEFqhh45wxyhKCgn7NJLXYXM0JOxcz7KVU341+k+E1VmGQfBpmm3YZCAn4Y5GkYSV
+	bCX9LwlIRJwnLyAOaNoGQWKRNtf0v/PROxVTz8r3F5sKoDeu87gX/kQMxyd936zHdETK
+	srU71EaNa+sTFtGlxNL8VF+wixRMLMUHjRJd9WxX4a93ZkcYs0QTbJtfV/OKJfWrsh4K
+	fhkvF5DIPRZ1J194vTHbjqHqqwguzBfsEjNzYYJ1nA79HHAAcpNUZ331BFz10CfIq9i7
+	8VKA==
+Received: by 10.50.159.226 with SMTP id xf2mr7950083igb.41.1346583292487; Sun,
+	02 Sep 2012 03:54:52 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.64.78.161 with HTTP; Sun, 2 Sep 2012 03:54:32 -0700 (PDT)
+In-Reply-To: <1346532470-15859-1-git-send-email-Don@CloudSwitch.com>
+References: <1346532470-15859-1-git-send-email-Don@CloudSwitch.com>
+From: Blue Swirl <blauwirbel@gmail.com>
+Date: Sun, 2 Sep 2012 10:54:32 +0000
+Message-ID: <CAAu8pHsbxJrO+rRG8Hs8V9y65gm1RHJ0+UGWjxLapZatvVw5AA@mail.gmail.com>
+To: Don Slutz <Don@cloudswitch.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] dtrace backend: add function to reserved
-	words
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-i386: Report on
+	error during cpu_x86_register().
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,27 +52,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 Sep 2012 23:04:24 -0000
+X-List-Received-Date: Sun, 02 Sep 2012 10:54:57 -0000
 
-Signed-off-by: Alon Levy <alevy@redhat.com>
----
- scripts/tracetool/backend/dtrace.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Sat, Sep 1, 2012 at 8:47 PM, Don Slutz <Don@cloudswitch.com> wrote:
+> Send it to stderr before free of the details.
+>
+> Signed-off-by: Don Slutz <Don@CloudSwitch.com>
+> ---
+>  target-i386/cpu.c |    1 +
+>  1 files changed, 1 insertions(+), 0 deletions(-)
+>
+> diff --git a/target-i386/cpu.c b/target-i386/cpu.c
+> index 57c064f..5c0fef1 100644
+> --- a/target-i386/cpu.c
+> +++ b/target-i386/cpu.c
+> @@ -1352,6 +1352,7 @@ int cpu_x86_register(X86CPU *cpu, const char *cpu_model)
+>      }
+>      object_property_set_str(OBJECT(cpu), def->model_id, "model-id", &error);
+>      if (error_is_set(&error)) {
+> +        fprintf(stderr, "%s: %s\n", __FUNCTION__, error_get_pretty(error));
 
-diff --git a/scripts/tracetool/backend/dtrace.py b/scripts/tracetool/backend/dtrace.py
-index 9cab75c..6be7047 100644
---- a/scripts/tracetool/backend/dtrace.py
-+++ b/scripts/tracetool/backend/dtrace.py
-@@ -87,7 +87,7 @@ def stap(events):
-         if len(e.args) > 0:
-             for name in e.args.names():
-                 # Append underscore to reserved keywords
--                if name in ('limit', 'in', 'next', 'self'):
-+                if name in ('limit', 'in', 'next', 'self', 'function'):
-                     name += '_'
-                 out('  %s = $arg%d;' % (name, i))
-                 i += 1
--- 
-1.7.12
+__func__ is preferred by checkpatch.pl and also GCC recommends using it:
+http://gcc.gnu.org/onlinedocs/gcc/Function-Names.html
 
+>          error_free(error);
+>          return -1;
+>      }
+> --
+> 1.7.1
+>
+>
 
