@@ -1,46 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T87pR-0003Rw-U1
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Sep 2012 06:54:57 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:52815)
+	id 1T89w3-0001M0-Bf
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Sep 2012 09:09:55 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:38929)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1T87pQ-0003Ov-4q
-	for qemu-trivial@nongnu.org; Sun, 02 Sep 2012 06:54:57 -0400
+	(envelope-from <yann.morin.1998@free.fr>) id 1T89w1-0001LE-Nw
+	for qemu-trivial@nongnu.org; Sun, 02 Sep 2012 09:09:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1T87pP-0004Rt-6x
-	for qemu-trivial@nongnu.org; Sun, 02 Sep 2012 06:54:56 -0400
-Received: from mail-iy0-f173.google.com ([209.85.210.173]:36243)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>)
-	id 1T87pN-0004Rb-3Z; Sun, 02 Sep 2012 06:54:53 -0400
-Received: by iakx26 with SMTP id x26so6576671iak.4
-	for <multiple recipients>; Sun, 02 Sep 2012 03:54:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=rx8rDbaOn7E2e52GMXyx4KKb0jQLpXtRfJXxanaIED0=;
-	b=nZpILzzlpbdDhdzGxPJEtvYdCduIOfqXPN6ek5kJ5lw81VO4wz32qur4oHs9ILIAag
-	eXjLEFqhh45wxyhKCgn7NJLXYXM0JOxcz7KVU341+k+E1VmGQfBpmm3YZCAn4Y5GkYSV
-	bCX9LwlIRJwnLyAOaNoGQWKRNtf0v/PROxVTz8r3F5sKoDeu87gX/kQMxyd936zHdETK
-	srU71EaNa+sTFtGlxNL8VF+wixRMLMUHjRJd9WxX4a93ZkcYs0QTbJtfV/OKJfWrsh4K
-	fhkvF5DIPRZ1J194vTHbjqHqqwguzBfsEjNzYYJ1nA79HHAAcpNUZ331BFz10CfIq9i7
-	8VKA==
-Received: by 10.50.159.226 with SMTP id xf2mr7950083igb.41.1346583292487; Sun,
-	02 Sep 2012 03:54:52 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.64.78.161 with HTTP; Sun, 2 Sep 2012 03:54:32 -0700 (PDT)
-In-Reply-To: <1346532470-15859-1-git-send-email-Don@CloudSwitch.com>
-References: <1346532470-15859-1-git-send-email-Don@CloudSwitch.com>
-From: Blue Swirl <blauwirbel@gmail.com>
-Date: Sun, 2 Sep 2012 10:54:32 +0000
-Message-ID: <CAAu8pHsbxJrO+rRG8Hs8V9y65gm1RHJ0+UGWjxLapZatvVw5AA@mail.gmail.com>
-To: Don Slutz <Don@cloudswitch.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <yann.morin.1998@free.fr>) id 1T89w0-00024a-0p
+	for qemu-trivial@nongnu.org; Sun, 02 Sep 2012 09:09:53 -0400
+Received: from smtp03.smtpout.orange.fr ([80.12.242.125]:25492
+	helo=smtp.smtpout.orange.fr) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <yann.morin.1998@free.fr>) id 1T89vz-000238-FL
+	for qemu-trivial@nongnu.org; Sun, 02 Sep 2012 09:09:51 -0400
+Received: from treguer.bzh.lan ([90.32.144.8]) by mwinf5d26 with ME
+	id uD9o1j00M0B56Sa03D9oAu; Sun, 02 Sep 2012 15:09:49 +0200
+From: "Yann E. MORIN" <yann.morin.1998@free.fr>
+To: qemu-devel@nongnu.org
+Date: Sun,  2 Sep 2012 15:09:44 +0200
+Message-Id: <1346591386-22698-1-git-send-email-yann.morin.1998@free.fr>
+X-Mailer: git-send-email 1.7.2.5
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.210.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-i386: Report on
-	error during cpu_x86_register().
+X-Received-From: 80.12.242.125
+Cc: qemu-trivial@nongnu.org, "Yann E. MORIN" <yann.morin.1998@free.fr>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [Qemu-trivial] [PATCH 0/2 v3] Fix static linking for cURL and SDL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,34 +36,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Sep 2012 10:54:57 -0000
+X-List-Received-Date: Sun, 02 Sep 2012 13:09:54 -0000
 
-On Sat, Sep 1, 2012 at 8:47 PM, Don Slutz <Don@cloudswitch.com> wrote:
-> Send it to stderr before free of the details.
->
-> Signed-off-by: Don Slutz <Don@CloudSwitch.com>
-> ---
->  target-i386/cpu.c |    1 +
->  1 files changed, 1 insertions(+), 0 deletions(-)
->
-> diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-> index 57c064f..5c0fef1 100644
-> --- a/target-i386/cpu.c
-> +++ b/target-i386/cpu.c
-> @@ -1352,6 +1352,7 @@ int cpu_x86_register(X86CPU *cpu, const char *cpu_model)
->      }
->      object_property_set_str(OBJECT(cpu), def->model_id, "model-id", &error);
->      if (error_is_set(&error)) {
-> +        fprintf(stderr, "%s: %s\n", __FUNCTION__, error_get_pretty(error));
+Hello All!
 
-__func__ is preferred by checkpatch.pl and also GCC recommends using it:
-http://gcc.gnu.org/onlinedocs/gcc/Function-Names.html
+Currently, configure checks for cURL and SDL with either pkg-config (the
+default), or with {curl,sdl}-config (as a fallback).
 
->          error_free(error);
->          return -1;
->      }
-> --
-> 1.7.1
->
->
+But pkg-config and {curl,sdl}-config do not have the same set of options:
+  - to check for shared libs, both use the option: --libs
+  - to check for static libs:
+    - pkg-config uses      : --static --libs
+    - {curl,sdl}-config use: --static-libs
+
+To add to the complexity, pkg-config is called through the querry_pkg_config
+wrapper, that already passes --static when static linking is required, but
+there is no such wrapper for {curl,sdl}-config, so we miss the occasion to
+pass --static-libs.
+
+To fix this:
+  - introduce a new variable QEMU_XXX_CONFIG_LIBS_FLAGS that mirrors the
+    behavior of QEMU_PKG_CONFIG_FLAGS; this variable can be used by all
+    xxx-config scripts (eg. curl-config, but later sdl-config too).
+    Default it to '--libs', which is for shared linking.
+  - properly use either --libs for pkg-config (--static is already taken
+    care of in the wrapper), or $QEMU_XXX_CONFIG_LIBS_FLAGS for
+    {curl,sdl}-config.
+
+
+Changes since v2:
+  - remove trailing reference to cURL in the SDL patch (Stefan Hajnoczi)
+  - sent to qemu-devel and cc qemu-trivial (Peter Maydell, Stefan)
+  - fix type in the name of the new variable
+
+Changes since v1:
+  - drop the spice fix, it is not needed (bad env locally)
+  - drop the added --static to calls to pkg-config, as it's already in the
+    wrapper (Stefan Hajnoczi)
+
+Regards,
+Yann E. MORIN.
 
