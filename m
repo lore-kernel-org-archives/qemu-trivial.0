@@ -1,44 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T8atc-0005LB-0p
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Sep 2012 13:57:12 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41667)
+	id 1T8dBC-0000E2-Ew
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Sep 2012 16:23:30 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:53324)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1T8ata-0005K5-Bd
-	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:57:11 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1T8dBA-00009o-7k
+	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 16:23:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1T8atZ-0005KT-95
-	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:57:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50514)
+	(envelope-from <stefan@weilnetz.de>) id 1T8dB9-00089K-Co
+	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 16:23:28 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:56383)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1T8atY-0005KP-V7; Mon, 03 Sep 2012 13:57:09 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q83Hv6CS005859
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 3 Sep 2012 13:57:06 -0400
-Received: from doriath.home (ovpn-113-57.phx2.redhat.com [10.3.113.57])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q83Hv4xL025863; Mon, 3 Sep 2012 13:57:05 -0400
-Date: Mon, 3 Sep 2012 14:57:52 -0300
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120903145752.5edfafa5@doriath.home>
-In-Reply-To: <5044E29C.1030802@weilnetz.de>
-References: <1346484855-29649-1-git-send-email-sw@weilnetz.de>
-	<20120903134920.2dff4a3d@doriath.home>
-	<5044E29C.1030802@weilnetz.de>
-Organization: Red Hat
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-ga: Remove unreachable
- code after g_error
+	(envelope-from <stefan@weilnetz.de>)
+	id 1T8dB6-00088V-Lj; Mon, 03 Sep 2012 16:23:24 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	06CC57280029; Mon,  3 Sep 2012 22:23:24 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id oFNU37yddpU2; Mon,  3 Sep 2012 22:23:23 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id A7297728002B; Mon,  3 Sep 2012 22:23:23 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Mon,  3 Sep 2012 22:23:23 +0200
+Message-Id: <1346703803-22003-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] sparc-dis: Remove redundant NULL check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,50 +42,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Sep 2012 17:57:11 -0000
+X-List-Received-Date: Mon, 03 Sep 2012 20:23:29 -0000
 
-On Mon, 03 Sep 2012 19:02:20 +0200
-Stefan Weil <sw@weilnetz.de> wrote:
+Report from smatch:
+sparc-dis.c:2664 build_hash_table(14) info:
+ redundant null check on hash_buf calling free()
 
-> Am 03.09.2012 18:49, schrieb Luiz Capitulino:
-> > On Sat,  1 Sep 2012 09:34:15 +0200
-> > Stefan Weil <sw@weilnetz.de> wrote:
-> >
-> >> Report from smatch:
-> >> qemu-ga.c:117 register_signal_handlers(11) info: ignoring unreachable code.
-> >> qemu-ga.c:122 register_signal_handlers(16) info: ignoring unreachable code.
-> >>
-> >> g_error calls abort which terminates the program.
-> >>
-> >> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> >> ---
-> >>   qemu-ga.c |    2 --
-> >>   1 file changed, 2 deletions(-)
-> >>
-> >> diff --git a/qemu-ga.c b/qemu-ga.c
-> >> index 7623079..b747470 100644
-> >> --- a/qemu-ga.c
-> >> +++ b/qemu-ga.c
-> >> @@ -114,12 +114,10 @@ static gboolean register_signal_handlers(void)
-> >>       ret = sigaction(SIGINT, &sigact, NULL);
-> >>       if (ret == -1) {
-> >>           g_error("error configuring signal handler: %s", strerror(errno));
-> >> -        return false;
-> > Good catch, but we should really drop g_error() usage as qemu-ga will not
-> > fail gracefully otherwise (will leak the pidfile, for example). We either
-> > just drop g_error() or replace it by fprintf().
-> 
-> Isn't that a classical case of an error which should never occur,
-> something which could also be handled by an assert statement?
-> 
-> I don't expect a graceful exit after such errors. If they occur,
-> that's something which must be fixed in the code.
-> 
-> When I read the documentation of sigaction, I don't see how
-> it could fail with the given function arguments.
-> 
-> Therefore I'd apply the patch as it is.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
-Yes, taking a look at the sigaction() manpages shows you're obviously
-correct. Please, disregard what I've said.
+Coding style was not fixed.
+
+- sw
+
+ sparc-dis.c |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/sparc-dis.c b/sparc-dis.c
+index cdd337a..ef28835 100644
+--- a/sparc-dis.c
++++ b/sparc-dis.c
+@@ -2660,8 +2660,7 @@ build_hash_table (const sparc_opcode **opcode_table,
+ 
+   memset (hash_table, 0, HASH_SIZE * sizeof (hash_table[0]));
+   memset (hash_count, 0, HASH_SIZE * sizeof (hash_count[0]));
+-  if (hash_buf != NULL)
+-    free (hash_buf);
++  free (hash_buf);
+   hash_buf = malloc (sizeof (* hash_buf) * num_opcodes);
+   for (i = num_opcodes - 1; i >= 0; --i)
+     {
+-- 
+1.7.10
+
 
