@@ -1,45 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T8a68-0007Kz-Nk
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Sep 2012 13:06:04 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58001)
+	id 1T8a6q-0007vq-4Y
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Sep 2012 13:06:48 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:59283)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1T8a5z-0006w3-QD
-	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:06:03 -0400
+	(envelope-from <yann.morin.1998@free.fr>) id 1T8a6n-0007qy-C1
+	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:06:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1T8a5g-00074G-Nq
-	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:05:55 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59619)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1T8a2b-0005fx-Ae; Mon, 03 Sep 2012 13:02:25 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	8FD9B728002D; Mon,  3 Sep 2012 19:02:24 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id LV+15phe9YBQ; Mon,  3 Sep 2012 19:02:20 +0200 (CEST)
-Received: from [192.168.178.20] (p5086F8C8.dip.t-dialin.net [80.134.248.200])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	53C157280029; Mon,  3 Sep 2012 19:02:20 +0200 (CEST)
-Message-ID: <5044E29C.1030802@weilnetz.de>
-Date: Mon, 03 Sep 2012 19:02:20 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:14.0) Gecko/20120714 Thunderbird/14.0
+	(envelope-from <yann.morin.1998@free.fr>) id 1T8a6h-0007pI-8J
+	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:06:45 -0400
+Received: from smtp03.smtpout.orange.fr ([80.12.242.125]:28374
+	helo=smtp.smtpout.orange.fr) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <yann.morin.1998@free.fr>) id 1T8a6h-0007og-2Q
+	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:06:39 -0400
+Received: from treguer.localnet ([90.32.144.8]) by mwinf5d58 with ME
+	id uh6d1j00C0B56Sa03h6d7G; Mon, 03 Sep 2012 19:06:37 +0200
+From: "Yann E. MORIN" <yann.morin.1998@free.fr>
+Organization: BZH lan
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 3 Sep 2012 19:06:36 +0200
+User-Agent: KMail/1.13.5 (Linux/3.5.3-treguer; KDE/4.4.5; x86_64; ; )
+References: <1346591386-22698-1-git-send-email-yann.morin.1998@free.fr>
+	<201209031828.15426.yann.morin.1998@free.fr>
+	<CAFEAcA-4CMyAONn5QOb7PKi0Zv=pioEOxgCLEZBmSM7t+Cgv7g@mail.gmail.com>
+In-Reply-To: <CAFEAcA-4CMyAONn5QOb7PKi0Zv=pioEOxgCLEZBmSM7t+Cgv7g@mail.gmail.com>
 MIME-Version: 1.0
-To: Luiz Capitulino <lcapitulino@redhat.com>
-References: <1346484855-29649-1-git-send-email-sw@weilnetz.de>
-	<20120903134920.2dff4a3d@doriath.home>
-In-Reply-To: <20120903134920.2dff4a3d@doriath.home>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Type: Text/Plain;
+  charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-ga: Remove unreachable
-	code after g_error
+Message-Id: <201209031906.37062.yann.morin.1998@free.fr>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 80.12.242.125
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	Andreas =?utf-8?q?F=C3=A4rber?= <afaerber@suse.de>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2 v3] Fix static linking
+	for cURL and SDL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,49 +46,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Sep 2012 17:06:03 -0000
+X-List-Received-Date: Mon, 03 Sep 2012 17:06:46 -0000
 
-Am 03.09.2012 18:49, schrieb Luiz Capitulino:
-> On Sat,  1 Sep 2012 09:34:15 +0200
-> Stefan Weil <sw@weilnetz.de> wrote:
->
->> Report from smatch:
->> qemu-ga.c:117 register_signal_handlers(11) info: ignoring unreachable code.
->> qemu-ga.c:122 register_signal_handlers(16) info: ignoring unreachable code.
->>
->> g_error calls abort which terminates the program.
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>   qemu-ga.c |    2 --
->>   1 file changed, 2 deletions(-)
->>
->> diff --git a/qemu-ga.c b/qemu-ga.c
->> index 7623079..b747470 100644
->> --- a/qemu-ga.c
->> +++ b/qemu-ga.c
->> @@ -114,12 +114,10 @@ static gboolean register_signal_handlers(void)
->>       ret = sigaction(SIGINT, &sigact, NULL);
->>       if (ret == -1) {
->>           g_error("error configuring signal handler: %s", strerror(errno));
->> -        return false;
-> Good catch, but we should really drop g_error() usage as qemu-ga will not
-> fail gracefully otherwise (will leak the pidfile, for example). We either
-> just drop g_error() or replace it by fprintf().
+Peter, All,
 
-Isn't that a classical case of an error which should never occur,
-something which could also be handled by an assert statement?
+On Monday 03 September 2012 18:38:48 Peter Maydell wrote:
+> On 3 September 2012 17:28, Yann E. MORIN <yann.morin.1998@free.fr> wrote:
+> > On Monday 03 September 2012 17:44:51 Peter Maydell wrote:
+> >> Personally I think it might indeed be a good idea to just say
+> >> "statically linked softmmu isn't supported" and forbid it, unless
+> >> somebody has a good use case for it...
+> >
+> > I personnally have such a use-case: provide run-everywhere qemu softmmu
+> > binaries that do have minimal requirements on the distro they'll be
+> > running on, especially when the distros can be very different (in kinds
+> > and in age).
+> 
+> ...have you audited all of qemu's library usage to confirm that it
+> doesn't use any of the bits of glibc that don't work in the static
+> linking scenario? I'm reasonably confident that the linux-user binaries
+> are OK, much less so for the system binaries...
 
-I don't expect a graceful exit after such errors. If they occur,
-that's something which must be fixed in the code.
+I guess you mean the nsswitch stuff?
 
-When I read the documentation of sigaction, I don't see how
-it could fail with the given function arguments.
-
-Therefore I'd apply the patch as it is.
+I'm using a uClibc-based toolchain that does not have such libs, and allows
+a truly static link.
 
 Regards,
+Yann E. MORIN.
 
-- sw
-
+-- 
+.-----------------.--------------------.------------------.--------------------.
+|  Yann E. MORIN  | Real-Time Embedded | /"\ ASCII RIBBON | Erics' conspiracy: |
+| +33 662 376 056 | Software  Designer | \ / CAMPAIGN     |  ___               |
+| +33 223 225 172 `------------.-------:  X  AGAINST      |  \e/  There is no  |
+| http://ymorin.is-a-geek.org/ | _/*\_ | / \ HTML MAIL    |   v   conspiracy.  |
+'------------------------------^-------^------------------^--------------------'
 
