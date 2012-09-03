@@ -1,40 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T8a6q-0007vq-4Y
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Sep 2012 13:06:48 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:59283)
+	id 1T8aEQ-0001xt-E8
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Sep 2012 13:14:38 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:40769)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yann.morin.1998@free.fr>) id 1T8a6n-0007qy-C1
-	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:06:46 -0400
+	(envelope-from <sw@weilnetz.de>) id 1T8aEO-0001rs-0T
+	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:14:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <yann.morin.1998@free.fr>) id 1T8a6h-0007pI-8J
-	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:06:45 -0400
-Received: from smtp03.smtpout.orange.fr ([80.12.242.125]:28374
-	helo=smtp.smtpout.orange.fr) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yann.morin.1998@free.fr>) id 1T8a6h-0007og-2Q
-	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:06:39 -0400
-Received: from treguer.localnet ([90.32.144.8]) by mwinf5d58 with ME
-	id uh6d1j00C0B56Sa03h6d7G; Mon, 03 Sep 2012 19:06:37 +0200
-From: "Yann E. MORIN" <yann.morin.1998@free.fr>
-Organization: BZH lan
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 3 Sep 2012 19:06:36 +0200
-User-Agent: KMail/1.13.5 (Linux/3.5.3-treguer; KDE/4.4.5; x86_64; ; )
-References: <1346591386-22698-1-git-send-email-yann.morin.1998@free.fr>
-	<201209031828.15426.yann.morin.1998@free.fr>
-	<CAFEAcA-4CMyAONn5QOb7PKi0Zv=pioEOxgCLEZBmSM7t+Cgv7g@mail.gmail.com>
-In-Reply-To: <CAFEAcA-4CMyAONn5QOb7PKi0Zv=pioEOxgCLEZBmSM7t+Cgv7g@mail.gmail.com>
+	(envelope-from <sw@weilnetz.de>) id 1T8aEN-0001NC-3I
+	for qemu-trivial@nongnu.org; Mon, 03 Sep 2012 13:14:35 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:53490)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sw@weilnetz.de>)
+	id 1T8aEH-0001Ly-7s; Mon, 03 Sep 2012 13:14:29 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	4904C728002D; Mon,  3 Sep 2012 19:14:28 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id myHsFZTh7enP; Mon,  3 Sep 2012 19:14:27 +0200 (CEST)
+Received: from [192.168.178.20] (p5086F8C8.dip.t-dialin.net [80.134.248.200])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	A30DD7280029; Mon,  3 Sep 2012 19:14:27 +0200 (CEST)
+Message-ID: <5044E573.7010300@weilnetz.de>
+Date: Mon, 03 Sep 2012 19:14:27 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:14.0) Gecko/20120714 Thunderbird/14.0
 MIME-Version: 1.0
-Content-Type: Text/Plain;
-  charset="utf-8"
+To: Luiz Capitulino <lcapitulino@redhat.com>
+References: <1346496778-15014-1-git-send-email-sw@weilnetz.de>
+	<20120903134129.74b4a264@doriath.home>
+	<5044E092.4030300@weilnetz.de>
+In-Reply-To: <5044E092.4030300@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <201209031906.37062.yann.morin.1998@free.fr>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 80.12.242.125
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	Andreas =?utf-8?q?F=C3=A4rber?= <afaerber@suse.de>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2 v3] Fix static linking
-	for cURL and SDL
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] json-parser: Fix potential
+ NULL pointer segfault
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,40 +53,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Sep 2012 17:06:46 -0000
+X-List-Received-Date: Mon, 03 Sep 2012 17:14:36 -0000
 
-Peter, All,
+Am 03.09.2012 18:53, schrieb Stefan Weil:
+> Am 03.09.2012 18:41, schrieb Luiz Capitulino:
+>> On Sat,  1 Sep 2012 12:52:58 +0200
+>> Stefan Weil <sw@weilnetz.de> wrote:
+>>
+>>> Report from smatch:
+>>> json-parser.c:474 parse_object(62) error: potential null derefence 
+>>> 'dict'.
+>>> json-parser.c:553 parse_array(75) error: potential null derefence 
+>>> 'list'.
+>>>
+>>> Label out can be called with list == NULL.
+>>>
+>>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>>> ---
+>>>   json-parser.c |    8 ++++++--
+>>>   1 file changed, 6 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/json-parser.c b/json-parser.c
+>>> index 457291b..c31c759 100644
+>>> --- a/json-parser.c
+>>> +++ b/json-parser.c
+>>> @@ -471,7 +471,9 @@ static QObject *parse_object(JSONParserContext 
+>>> *ctxt, va_list *ap)
+>>>     out:
+>>>       parser_context_restore(ctxt, saved_ctxt);
+>>> -    QDECREF(dict);
+>>> +    if (dict) {
+>>> +        QDECREF(dict);
+>>> +    }
+>>
+>> I prefer changing QDECREF() to a nop if obj is NULL.
+>
+> That's fine for me, too. If everybody agrees, I'll send two new
+> patches: one to change QDECREF, one to remove the if statements
+> from other code locations which use the same pattern as
+> my original patch.
+>
+> Cheers,
+>
+> - sw
+>
+>
 
-On Monday 03 September 2012 18:38:48 Peter Maydell wrote:
-> On 3 September 2012 17:28, Yann E. MORIN <yann.morin.1998@free.fr> wrote:
-> > On Monday 03 September 2012 17:44:51 Peter Maydell wrote:
-> >> Personally I think it might indeed be a good idea to just say
-> >> "statically linked softmmu isn't supported" and forbid it, unless
-> >> somebody has a good use case for it...
-> >
-> > I personnally have such a use-case: provide run-everywhere qemu softmmu
-> > binaries that do have minimal requirements on the distro they'll be
-> > running on, especially when the distros can be very different (in kinds
-> > and in age).
-> 
-> ...have you audited all of qemu's library usage to confirm that it
-> doesn't use any of the bits of glibc that don't work in the static
-> linking scenario? I'm reasonably confident that the linux-user binaries
-> are OK, much less so for the system binaries...
+What about modifying QOBJECT to return NULL if called with a NULL pointer?
+That would be a more generic fix for the same problem.
 
-I guess you mean the nsswitch stuff?
-
-I'm using a uClibc-based toolchain that does not have such libs, and allows
-a truly static link.
+In either case, the code will be a little larger and slower,
+but that should not matter because it is not time critical.
 
 Regards,
-Yann E. MORIN.
 
--- 
-.-----------------.--------------------.------------------.--------------------.
-|  Yann E. MORIN  | Real-Time Embedded | /"\ ASCII RIBBON | Erics' conspiracy: |
-| +33 662 376 056 | Software  Designer | \ / CAMPAIGN     |  ___               |
-| +33 223 225 172 `------------.-------:  X  AGAINST      |  \e/  There is no  |
-| http://ymorin.is-a-geek.org/ | _/*\_ | / \ HTML MAIL    |   v   conspiracy.  |
-'------------------------------^-------^------------------^--------------------'
+Stefan W.
+
 
