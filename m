@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T9F6I-00057u-AF
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 08:52:58 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58210)
+	id 1T9FcF-0004FJ-B3
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 09:25:59 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:49875)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>) id 1T9F6B-0004l0-3x
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 08:52:56 -0400
+	(envelope-from <riegamaths@gmail.com>) id 1T9FcC-00046t-Cg
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 09:25:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>) id 1T9F67-0007Ns-6q
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 08:52:51 -0400
-Received: from mail-lb0-f173.google.com ([209.85.217.173]:45615)
+	(envelope-from <riegamaths@gmail.com>) id 1T9Fc8-0002ow-5h
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 09:25:56 -0400
+Received: from mail-pz0-f45.google.com ([209.85.210.45]:56323)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <riegamaths@gmail.com>)
-	id 1T9F61-0007MY-PF; Wed, 05 Sep 2012 08:52:42 -0400
-Received: by lbbgm13 with SMTP id gm13so322960lbb.4
-	for <multiple recipients>; Wed, 05 Sep 2012 05:52:40 -0700 (PDT)
+	id 1T9Fby-0002oV-1P; Wed, 05 Sep 2012 09:25:42 -0400
+Received: by dadn15 with SMTP id n15so378542dad.4
+	for <multiple recipients>; Wed, 05 Sep 2012 06:25:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=1dyuFTC3h5m2Ihc+aY8KRINiC88THTgfvD4h65c/U80=;
-	b=kw/nk4vB7euCjuaNtJ5zIXKPY4a4GmAScmmHPQu0hROjJgcukLwk/+1ceSXjniDFoo
-	y0xDBlXutC3Xh7N4K+0ITHxfuqVK8xuKhQOJqbgqgQCRkU8qHTvmdElRx4hRJISL7opZ
-	u8xjWB3Qy31RZGSCLPElocxBUVtEbkVGn61gF4yCAdhopRaPo6j1iKpS0PSphJr0WKiF
-	w+SX6Kk6abM0K8diyAd0YLAzwZQ6hrNaHs53+qFvg4EP5MbJIVsWrNWdegXR/1L4AebD
-	A9zeFosV9Kke4eb8KGzl6Hdpe+Oc6OPNCgtCX9hPbVlH5CVKQr0/wOiXUCzPY0USFCL/
-	IUqw==
+	h=from:to:cc:subject:date:message-id:x-mailer:mime-version
+	:content-type:content-transfer-encoding;
+	bh=uxUshLtLl4OtJvRKq4ZAmHgpEARuP1j6ykGNG0N5N5A=;
+	b=povCCym2Borw7Vm73Sz4oH+kyizxQH22CqBkkb0TQKdcjPNNSrMh2OK4kiG2oBDLLK
+	50U+SPUDWXMdyDtLdvJeRWW7wS1tOaneZhUxqBwwUPzSiEAM56vIbaN1h6+b5ihfCxXT
+	WrrySu0n6w1I0/VniY200CljjJX05mhx03Bw5+nKOjVG97+IWCVNjrDLeiAD0ikNvQCy
+	NMLDFVFh1ZggeHyHHz2R9QKl1/61dQnF5uxhfJwH5p+IR4mXXJE2WlYkEz2n84wLbxA9
+	ZM+gRaLt7BnzqDMa2iJMLr/WPvbgOUf/DllTaKVpEootEbERPmLaQhN6Kr3GTHQ9EjAM
+	V8gQ==
+Received: by 10.68.240.66 with SMTP id vy2mr54227691pbc.73.1346851541151;
+	Wed, 05 Sep 2012 06:25:41 -0700 (PDT)
+Received: from localhost.localdomain ([106.3.103.158])
+	by mx.google.com with ESMTPS id hf1sm1429919pbc.42.2012.09.05.06.25.36
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 05 Sep 2012 06:25:39 -0700 (PDT)
+From: riegamaths@gmail.com
+To: qemu-devel <qemu-devel@nongnu.org>
+Date: Wed,  5 Sep 2012 21:24:53 +0800
+Message-Id: <1346851493-9149-1-git-send-email-riegamaths@gmail.com>
+X-Mailer: git-send-email 1.7.12
 MIME-Version: 1.0
-Received: by 10.112.24.196 with SMTP id w4mr7439649lbf.37.1346849560297; Wed,
-	05 Sep 2012 05:52:40 -0700 (PDT)
-Received: by 10.112.5.6 with HTTP; Wed, 5 Sep 2012 05:52:40 -0700 (PDT)
-In-Reply-To: <50472B0E.4080205@redhat.com>
-References: <1346833574-26193-1-git-send-email-riegamaths@gmail.com>
-	<20120905094003.GD4786@stefanha-thinkpad.localdomain>
-	<50472B0E.4080205@redhat.com>
-Date: Wed, 5 Sep 2012 20:52:40 +0800
-Message-ID: <CAOZVR5a6uiWAF3XT-u9gBef21ecOz5oKhy9Pg71fdwX0L=oBMw@mail.gmail.com>
-From: Dunrong Huang <riegamaths@gmail.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Content-Type: text/plain; charset=GB2312
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.217.173
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: output more error
- messages if failed to create temporary snapshot
+X-Received-From: 209.85.210.45
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Dunrong Huang <riegamaths@gmail.com>
+Subject: [Qemu-trivial] =?utf-8?q?=5BPATCH_v3=5D_block=3A_output_more_erro?=
+	=?utf-8?q?r_messages_if_failed_to_create_temporary_snapshot?=
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,61 +56,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Sep 2012 12:52:57 -0000
+X-List-Received-Date: Wed, 05 Sep 2012 13:25:58 -0000
 
-2012/9/5 Kevin Wolf <kwolf@redhat.com>:
-> Am 05.09.2012 11:40, schrieb Stefan Hajnoczi:
->> On Wed, Sep 05, 2012 at 04:26:14PM +0800, riegamaths@gmail.com wrote:
->>> From: Dunrong Huang <riegamaths@gmail.com>
->>>
->>> If we failed to create temporary snapshot, the error message did not ma=
-tch
->>> with the error, for example:
->>>
->>> $ TMPDIR=3D/tmp/bad_path qemu-system-x86_64 -enable-kvm debian.qcow2 -s=
-napshot
->>> qemu-system-x86_64: -enable-kvm: could not open disk image /home/mathsl=
-inux/Images/debian.qcow2: No such file or directory
->>>
->>> Indeed, the file which cant be created is /tmp/bad_path/vl.xxxxxx,  not
->>> debian.qcow2. so the error message makes users feel confused.
->>>
->>> Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
->>> ---
->>>  block.c | 2 ++
->>>  1 =B8=F6=CE=C4=BC=FE=B1=BB=D0=DE=B8=C4=A3=AC=B2=E5=C8=EB 2 =D0=D0(+)
->>>
->>> diff --git a/block.c b/block.c
->>> index 470bdcc..c9e5140 100644
->>> --- a/block.c
->>> +++ b/block.c
->>> @@ -434,6 +434,8 @@ int get_tmp_filename(char *filename, int size)
->>>      }
->>>      fd =3D mkstemp(filename);
->>>      if (fd < 0 || close(fd)) {
->>> +        fprintf(stderr, "Could not create temporary snapshot in %s dir=
-ectory: "
->>> +                "%s\n", tmpdir, strerror(errno));
->>
->> The error message is fine for fd < 0 but not for close(0) !=3D 0.  Also,
->> close(2) is allowed to change errno (even on success) so this is not
->> portable and could clobber the errno value.
->
-> I don't think this error message is fine in get_tmp_filename(). This
-> function happens to be used for temporary snapshots, but this is not
-> part of its interface. Today it's also used in vvfat and there the
-> message would only be confusing. Other use cases may be introduced in
-> the future.
-Sorry, I forgot that get_tmp_filename() is a public interface.
->
-> If you want to introduce an error message, do it in the caller.
->
-> Kevin
+From: Dunrong Huang <riegamaths@gmail.com>
 
+If we failed to create temporary snapshot, the error message did not match
+with the error, for example:
 
+$ TMPDIR=/tmp/bad_path qemu-system-x86_64 -enable-kvm debian.qcow2 -snapshot
+qemu-system-x86_64: -enable-kvm: could not open disk image /home/mathslinux/Images/debian.qcow2: No such file or directory
 
---=20
-Best Regards,
+Indeed, the file which cant be created is /tmp/bad_path/vl.xxxxxx,  not
+debian.qcow2. so the error message makes users feel confused.
 
-Dunrong Huang
+Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
+---
+v1 -> v2:
+   Output error message only if fd < 0
+v2 -> v3:
+   Output error message in the caller of get_tmp_filename()
+ block.c | 2 ++
+ 1 个文件被修改，插入 2 行(+)
+
+diff --git a/block.c b/block.c
+index 470bdcc..074987e 100644
+--- a/block.c
++++ b/block.c
+@@ -764,6 +764,8 @@ int bdrv_open(BlockDriverState *bs, const char *filename, int flags,
+ 
+         ret = get_tmp_filename(tmp_filename, sizeof(tmp_filename));
+         if (ret < 0) {
++            fprintf(stderr, "Could not create temporary snapshot %s: %s\n",
++                    tmp_filename, strerror(errno));
+             return ret;
+         }
+ 
+-- 
+1.7.12
+
 
