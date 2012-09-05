@@ -1,50 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T9AxA-0005WH-94
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 04:27:16 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39164)
+	id 1T9BYD-0007Hg-6e
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 05:05:33 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:49269)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>) id 1T9Ax1-0005AL-Cl
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 04:27:12 -0400
+	(envelope-from <i.mitsyanko@samsung.com>) id 1T9BY4-0006sy-3X
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 05:05:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>) id 1T9Awx-00056l-Gc
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 04:27:07 -0400
-Received: from mail-pb0-f45.google.com ([209.85.160.45]:48671)
+	(envelope-from <i.mitsyanko@samsung.com>) id 1T9BY3-0001GV-96
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 05:05:24 -0400
+Received: from mailout3.w1.samsung.com ([210.118.77.13]:55202)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>)
-	id 1T9Awv-000560-Aj; Wed, 05 Sep 2012 04:27:01 -0400
-Received: by pbbjt11 with SMTP id jt11so578998pbb.4
-	for <multiple recipients>; Wed, 05 Sep 2012 01:27:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:x-mailer:mime-version
-	:content-type:content-transfer-encoding;
-	bh=mBwhJTZRnFsmd2Mn1EZTxaFtlUV2a/6Zx2HtWcTYoxc=;
-	b=OmY06uLGaNluWQmyxdteAyti8HPSnJ57Qr352bJ9iB8mGfo6/Ll+2k7WLuoLnBmggg
-	MUUrSnjC9QpMYhOO4AXAhwWRbEDzf/ohVGigL65uFAAzSeuOaE/HHDH0c0pkxZCB206V
-	jOZeXJVv5XeqdfkMr403UmUoQHo4/ZM03xo5wuKPLTEc+63CpxJpCR11nLBrMjBuYbMu
-	LQb16x+bLfl6B8YmFKXp0/6bL+jgviDB38QiVlRfeP01A3KnoED74yzw2P8ca/+Q5zWM
-	qu9nOICCkXZ/qe0CblKfUwhKks7jd42xRAPKvjIv11XVSdhwYN1bLPb7VWF+EusCoN1W
-	ovPg==
-Received: by 10.68.223.133 with SMTP id qu5mr15060068pbc.104.1346833620482;
-	Wed, 05 Sep 2012 01:27:00 -0700 (PDT)
-Received: from localhost.localdomain ([221.122.32.18])
-	by mx.google.com with ESMTPS id ty1sm918277pbc.76.2012.09.05.01.26.56
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 05 Sep 2012 01:26:59 -0700 (PDT)
-From: riegamaths@gmail.com
-To: qemu-devel <qemu-devel@nongnu.org>
-Date: Wed,  5 Sep 2012 16:26:14 +0800
-Message-Id: <1346833574-26193-1-git-send-email-riegamaths@gmail.com>
-X-Mailer: git-send-email 1.7.12
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Dunrong Huang <riegamaths@gmail.com>
-Subject: [Qemu-trivial] =?utf-8?q?=5BPATCH=5D_block=3A_output_more_error_m?=
-	=?utf-8?q?essages_if_failed_to_create_temporary_snapshot?=
+	(envelope-from <i.mitsyanko@samsung.com>)
+	id 1T9BXr-0000tQ-20; Wed, 05 Sep 2012 05:05:11 -0400
+Received: from eusync1.samsung.com (mailout3.w1.samsung.com [210.118.77.13])
+	by mailout3.w1.samsung.com
+	(Oracle Communications Messaging Server 7u4-24.01(7.0.4.24.0) 64bit
+	(built Nov
+	17 2011)) with ESMTP id <0M9V00HQAD9CXIB0@mailout3.w1.samsung.com>; Wed,
+	05 Sep 2012 10:05:36 +0100 (BST)
+Received: from idodo.rnd.samsung.ru ([106.109.128.43])
+	by eusync1.samsung.com (Oracle Communications Messaging Server
+	7u4-23.01 (7.0.4.23.0) 64bit (built Aug 10 2011))
+	with ESMTPA id <0M9V00EUZD885A60@eusync1.samsung.com>; Wed,
+	05 Sep 2012 10:05:04 +0100 (BST)
+From: Igor Mitsyanko <i.mitsyanko@samsung.com>
+To: qemu-trivial@nongnu.org
+Date: Wed, 05 Sep 2012 13:04:56 +0400
+Message-id: <1346835896-25319-1-git-send-email-i.mitsyanko@samsung.com>
+X-Mailer: git-send-email 1.7.5.4
+X-TM-AS-MML: No
+X-detected-operating-system: by eggs.gnu.org: Solaris 10 (1203?)
+X-Received-From: 210.118.77.13
+Cc: Igor Mitsyanko <i.mitsyanko@samsung.com>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] arch_init.c: add missing '%' symbols before
+ PRIu64 in debug printfs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,38 +45,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Sep 2012 08:27:14 -0000
+X-List-Received-Date: Wed, 05 Sep 2012 09:05:30 -0000
 
-From: Dunrong Huang <riegamaths@gmail.com>
+'%' symbols were missing in front of PRIu64 macros in DPRINTF() messages in
+arch_init.c, this caused compilation warnings when compiled with DEBUG_ARCH_INIT defined.
 
-If we failed to create temporary snapshot, the error message did not match
-with the error, for example:
-
-$ TMPDIR=/tmp/bad_path qemu-system-x86_64 -enable-kvm debian.qcow2 -snapshot
-qemu-system-x86_64: -enable-kvm: could not open disk image /home/mathslinux/Images/debian.qcow2: No such file or directory
-
-Indeed, the file which cant be created is /tmp/bad_path/vl.xxxxxx,  not
-debian.qcow2. so the error message makes users feel confused.
-
-Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
+Signed-off-by: Igor Mitsyanko <i.mitsyanko@samsung.com>
 ---
- block.c | 2 ++
- 1 个文件被修改，插入 2 行(+)
+ arch_init.c |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/block.c b/block.c
-index 470bdcc..c9e5140 100644
---- a/block.c
-+++ b/block.c
-@@ -434,6 +434,8 @@ int get_tmp_filename(char *filename, int size)
-     }
-     fd = mkstemp(filename);
-     if (fd < 0 || close(fd)) {
-+        fprintf(stderr, "Could not create temporary snapshot in %s directory: "
-+                "%s\n", tmpdir, strerror(errno));
-         return -errno;
-     }
-     return 0;
+diff --git a/arch_init.c b/arch_init.c
+index 5a1173e..47977de 100644
+--- a/arch_init.c
++++ b/arch_init.c
+@@ -562,7 +562,7 @@ static int ram_save_iterate(QEMUFile *f, void *opaque)
+         if ((i & 63) == 0) {
+             uint64_t t1 = (qemu_get_clock_ns(rt_clock) - bwidth) / 1000000;
+             if (t1 > MAX_WAIT) {
+-                DPRINTF("big wait: " PRIu64 " milliseconds, %d iterations\n",
++                DPRINTF("big wait: %" PRIu64 " milliseconds, %d iterations\n",
+                         t1, i);
+                 break;
+             }
+@@ -587,7 +587,7 @@ static int ram_save_iterate(QEMUFile *f, void *opaque)
+ 
+     expected_time = ram_save_remaining() * TARGET_PAGE_SIZE / bwidth;
+ 
+-    DPRINTF("ram_save_live: expected(" PRIu64 ") <= max(" PRIu64 ")?\n",
++    DPRINTF("ram_save_live: expected(%" PRIu64 ") <= max(%" PRIu64 ")?\n",
+             expected_time, migrate_max_downtime());
+ 
+     if (expected_time <= migrate_max_downtime()) {
+@@ -799,8 +799,8 @@ static int ram_load(QEMUFile *f, void *opaque, int version_id)
+     } while (!(flags & RAM_SAVE_FLAG_EOS));
+ 
+ done:
+-    DPRINTF("Completed load of VM with exit code %d seq iteration " PRIu64 "\n",
+-            ret, seq_iter);
++    DPRINTF("Completed load of VM with exit code %d seq iteration "
++            "%" PRIu64 "\n", ret, seq_iter);
+     return ret;
+ }
+ 
 -- 
-1.7.12
+1.7.5.4
 
 
