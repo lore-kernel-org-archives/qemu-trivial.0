@@ -1,52 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T9ISo-0008IL-C8
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 12:28:26 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49257)
+	id 1T9Isz-0000Jl-8t
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 12:55:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:40979)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1T9ISl-0008Gl-Nk
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 12:28:24 -0400
+	(envelope-from <stefanha@gmail.com>) id 1T9Isr-0008OZ-L2
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 12:55:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1T9ISg-0003ln-Lm
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 12:28:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:21552)
+	(envelope-from <stefanha@gmail.com>) id 1T9Isl-000533-T5
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 12:55:21 -0400
+Received: from mail-lb0-f173.google.com ([209.85.217.173]:48634)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1T9ISg-0003li-DC; Wed, 05 Sep 2012 12:28:18 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q85GSFqN031831
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 5 Sep 2012 12:28:15 -0400
-Received: from [10.3.113.60] (ovpn-113-60.phx2.redhat.com [10.3.113.60])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q85GSEsF017021; Wed, 5 Sep 2012 12:28:15 -0400
-Message-ID: <50477D9E.1010408@redhat.com>
-Date: Wed, 05 Sep 2012 10:28:14 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:15.0) Gecko/20120828 Thunderbird/15.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1T9Isg-0004tR-9u; Wed, 05 Sep 2012 12:55:10 -0400
+Received: by lbbgm13 with SMTP id gm13so486280lbb.4
+	for <multiple recipients>; Wed, 05 Sep 2012 09:55:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=tjKglbrwnnE0xUKHgFzl72hmJUlcuQtW6iQdlcbNJ58=;
+	b=PO4SmmBqNfwG6nJEZFKE/2xx5N1kmUYfF4ngiQXNdntpTzRBBtqWUlZgtJgReu923o
+	W/AiOLPWJVMgTPXSckuEJ5oCe6LYjoQseCPXkYcUgYNjMQIKYvr45rXpYBWbuOx7Wwqq
+	lH/LXu30zPWRNZEM0lyHDxnrjnI07VKm/TmcJ30+G7c31WFGnlEcx3UT9JdwkVab+Gqi
+	Inob4Tqyf5vXQQcTufiN/MZpegykD5c7ecWsQixkK32tS1DoXRGhJpSPMmGL939mV/Xk
+	M3tN4E3M4VmNoyYA9bMi7b+guXKJNwC74eRTqpfvOmbYpjrhdk/O39GuYs+wrWGhRZIp
+	7CMw==
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <1346851582-9296-1-git-send-email-riegamaths@gmail.com>
-	<50477269.8050807@redhat.com>
-	<87d320e9uk.fsf@blackfin.pond.sub.org>
-	<50477C74.7050606@redhat.com>
-In-Reply-To: <50477C74.7050606@redhat.com>
-X-Enigmail-Version: 1.4.4
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="------------enig11F39D3F85E51B7CE51032E1"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+Received: by 10.152.132.133 with SMTP id ou5mr20811637lab.45.1346864107717;
+	Wed, 05 Sep 2012 09:55:07 -0700 (PDT)
+Received: by 10.112.99.129 with HTTP; Wed, 5 Sep 2012 09:55:07 -0700 (PDT)
+In-Reply-To: <504774FF.6000501@suse.de>
+References: <1346703803-22003-1-git-send-email-sw@weilnetz.de>
+	<504774FF.6000501@suse.de>
+Date: Wed, 5 Sep 2012 17:55:07 +0100
+Message-ID: <CAJSP0QXtri4UNmdriCFiTg4_m+-a0CBpG36FYFdXQ1XcJywNww@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>, riegamaths@gmail.com,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] block: Don't forget to delete temporary
-	file
+X-Received-From: 209.85.217.173
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc-dis: Remove redundant
+	NULL check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,56 +55,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Sep 2012 16:28:25 -0000
+X-List-Received-Date: Wed, 05 Sep 2012 16:55:27 -0000
 
-This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enig11F39D3F85E51B7CE51032E1
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On Wed, Sep 5, 2012 at 4:51 PM, Andreas F=E4rber <afaerber@suse.de> wrote:
+> Am 03.09.2012 22:23, schrieb Stefan Weil:
+>> Report from smatch:
+>> sparc-dis.c:2664 build_hash_table(14) info:
+>>  redundant null check on hash_buf calling free()
+>>
+>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>> ---
+>>
+>> Coding style was not fixed.
+>>
+>> - sw
+>>
+>>  sparc-dis.c |    3 +--
+>>  1 file changed, 1 insertion(+), 2 deletions(-)
+>>
+>> diff --git a/sparc-dis.c b/sparc-dis.c
+>> index cdd337a..ef28835 100644
+>> --- a/sparc-dis.c
+>> +++ b/sparc-dis.c
+>> @@ -2660,8 +2660,7 @@ build_hash_table (const sparc_opcode **opcode_tabl=
+e,
+>>
+>>    memset (hash_table, 0, HASH_SIZE * sizeof (hash_table[0]));
+>>    memset (hash_count, 0, HASH_SIZE * sizeof (hash_count[0]));
+>> -  if (hash_buf !=3D NULL)
+>> -    free (hash_buf);
+>> +  free (hash_buf);
+>>    hash_buf =3D malloc (sizeof (* hash_buf) * num_opcodes);
+>>    for (i =3D num_opcodes - 1; i >=3D 0; --i)
+>>      {
+>
+> *-dis sounds like binutils - did upstream drop the if, too?
+> If not, then diverging for a non-issue does not seem necessary.
 
-On 09/05/2012 10:23 AM, Paolo Bonzini wrote:
-> And finally, the whole get_tmp_filename is unsafe because there is a
-> race window between closing and reopening the file, if the directory is=
+Ah, good point.  I don't think we should apply this patch :P.
 
-> writable and does not have the sticky bit.
->=20
-> So the patch is an improvement, but there is still something unpleasing=
+Dropping the patch from qemu-trivial until this discussion finishes.
 
-> in this code...
-
-I absolutely agree that there is a nasty race here.  If you aren't going
-to use the fd, then mktemp() is sufficient (and just as racy, but then
-you are at least honest that you don't care about the race); in all
-other situations, if you want a temporary file name but want to avoid a
-race, then it feels like you should be returning the fd from mkstemp()
-still open (or at a bare minimum, auditing ALL callers to make sure they
-only use the temporary name with O_CREAT|O_EXCL, and that they retry in
-a loop in case they lose the race, at which point they are reinventing
-the loop already done on their behalf by mkstemp()...).
-
---=20
-Eric Blake   eblake@redhat.com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---------------enig11F39D3F85E51B7CE51032E1
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.12 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Mozilla - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJQR32eAAoJEKeha0olJ0Nq2roIAK9EWZ4XEj35E9bCD/aTcJQw
-hO2QQtrYVk7QG2Imaxpvw/C2lEJ22+gGFbQMKntLF8YzTszOjv7+09Ejc4HrrODG
-RGOGXTNrlmxkPsF1v2MHt9dXj5jKwJ5pegjuhGmmfLU5mzPuidDfHTxbpidxl4ZY
-3XwW2YlWqRnRai74bZxGqejJ0bTKBES/Ka4mZh55t/NODP0NJm77G59N2ABdDsif
-+VzUCdOSmabD+cKGwaL+KZW+NP0pi+9jvLd7bPLNB+D63sv/+3RtUSaycFEM5FN1
-GEsVVhpqIa8EA/Yg/xL3PSKs5kBTDf2wZXMceRSSOXp4l09/IUjGRzx9Iqsdnmk=
-=WqWK
------END PGP SIGNATURE-----
-
---------------enig11F39D3F85E51B7CE51032E1--
+Stefan
 
