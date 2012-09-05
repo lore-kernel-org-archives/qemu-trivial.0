@@ -1,55 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T9IO5-0006aX-KG
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 12:23:33 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54546)
+	id 1T9ISo-0008IL-C8
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 12:28:26 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:49257)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1T9INy-0006Zq-NP
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 12:23:32 -0400
+	(envelope-from <eblake@redhat.com>) id 1T9ISl-0008Gl-Nk
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 12:28:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1T9INx-00024I-DR
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 12:23:26 -0400
-Received: from mail-pb0-f45.google.com ([209.85.160.45]:37292)
+	(envelope-from <eblake@redhat.com>) id 1T9ISg-0003ln-Lm
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 12:28:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:21552)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1T9INw-000243-U7; Wed, 05 Sep 2012 12:23:25 -0400
-Received: by pbbjt11 with SMTP id jt11so1238431pbb.4
-	for <multiple recipients>; Wed, 05 Sep 2012 09:23:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=MIAIGoh6vBq+9GVq3GIPvUmU1Eglqa4qaHqoDA/n2RQ=;
-	b=TeTEX7sHJlMJhii27X7639017uZHEAGn54BHsOpduCU1H3eYT2ZjEukR/XC9oER4gv
-	Wrtdpf5VMcMmBD73JWsc87B1Kv5CTLFTlNP2SU12KFRD2K7PtnG96d/HjH0S8xskHZRs
-	+BKzOI4XxbhaZTg9LjpsguHRAActmzhlXTjbF6Is+qbHuCQ83ZfBUrvZiT1TQuf9hIf7
-	qqPeMNN6/A5gAICzKzy5lUB8S9abwNGFM/VWaw2gI13nBl2rU0nbb/GvziDtUhYuA34X
-	s4djNVViRruFgmmI11Q9eoTxfFz4TVN+sA41uEhOIdpT7/g+GybYmpsNeQB+01vp7UNS
-	+XTA==
-Received: by 10.68.240.236 with SMTP id wd12mr56448052pbc.83.1346862203978;
-	Wed, 05 Sep 2012 09:23:23 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (93-34-169-1.ip50.fastwebnet.it.
-	[93.34.169.1])
-	by mx.google.com with ESMTPS id hr1sm1737324pbc.23.2012.09.05.09.23.19
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 05 Sep 2012 09:23:21 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <50477C74.7050606@redhat.com>
-Date: Wed, 05 Sep 2012 18:23:16 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <eblake@redhat.com>)
+	id 1T9ISg-0003li-DC; Wed, 05 Sep 2012 12:28:18 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q85GSFqN031831
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 5 Sep 2012 12:28:15 -0400
+Received: from [10.3.113.60] (ovpn-113-60.phx2.redhat.com [10.3.113.60])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q85GSEsF017021; Wed, 5 Sep 2012 12:28:15 -0400
+Message-ID: <50477D9E.1010408@redhat.com>
+Date: Wed, 05 Sep 2012 10:28:14 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:14.0) Gecko/20120717 Thunderbird/14.0
+	rv:15.0) Gecko/20120828 Thunderbird/15.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
 References: <1346851582-9296-1-git-send-email-riegamaths@gmail.com>
 	<50477269.8050807@redhat.com>
 	<87d320e9uk.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87d320e9uk.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+	<50477C74.7050606@redhat.com>
+In-Reply-To: <50477C74.7050606@redhat.com>
+X-Enigmail-Version: 1.4.4
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="------------enig11F39D3F85E51B7CE51032E1"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Eric Blake <eblake@redhat.com>,
-	qemu-devel <qemu-devel@nongnu.org>, riegamaths@gmail.com
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, riegamaths@gmail.com,
+	qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [PATCH] block: Don't forget to delete temporary
 	file
 X-BeenThere: qemu-trivial@nongnu.org
@@ -63,64 +58,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Sep 2012 16:23:32 -0000
+X-List-Received-Date: Wed, 05 Sep 2012 16:28:25 -0000
 
-Il 05/09/2012 18:02, Markus Armbruster ha scritto:
-> Paolo Bonzini <pbonzini@redhat.com> writes:
-> 
->> Il 05/09/2012 15:26, riegamaths@gmail.com ha scritto:
->>> From: Dunrong Huang <riegamaths@gmail.com>
->>>
->>> The caller would not delete temporary file after failed get_tmp_filename().
->>>
->>> Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
->>> ---
->>>  block.c | 6 +++++-
->>>  1 个文件被修改，插入 5 行(+)，删除 1 行(-)
->>>
->>> diff --git a/block.c b/block.c
->>> index 074987e..2bc9f75 100644
->>> --- a/block.c
->>> +++ b/block.c
->>> @@ -433,7 +433,11 @@ int get_tmp_filename(char *filename, int size)
->>>          return -EOVERFLOW;
->>>      }
->>>      fd = mkstemp(filename);
->>> -    if (fd < 0 || close(fd)) {
->>> +    if (fd < 0) {
->>> +        return -errno;
->>> +    }
->>> +    if (close(fd) != 0) {
->>> +        unlink(filename);
->>>          return -errno;
->>>      }
->>>      return 0;
->>>
->>
->> Not necessary, mkstemp will not create a file if it returns an error.
-> 
-> Read the patch once more :)
+This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
+--------------enig11F39D3F85E51B7CE51032E1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Oops. :)
+On 09/05/2012 10:23 AM, Paolo Bonzini wrote:
+> And finally, the whole get_tmp_filename is unsafe because there is a
+> race window between closing and reopening the file, if the directory is=
 
-I wondered about that check for close() errors, perhaps an error in
-close could just be swallowed?  Since we don't care about the content of
-the file after close (it's empty), we also don't care about errors
-closing it.
+> writable and does not have the sticky bit.
+>=20
+> So the patch is an improvement, but there is still something unpleasing=
 
-However, perhaps there were errors writing the directory entry...
-Should any errors writing the directory entry be reported by open(),
-i.e. by mkstemp()?   If not, and the dcache entry is evicted, someone
-could create a different file with the same name as ours.  But then, not
-even a successful close() guarantees that the data has reached the disk.
+> in this code...
 
-And finally, the whole get_tmp_filename is unsafe because there is a
-race window between closing and reopening the file, if the directory is
-writable and does not have the sticky bit.
+I absolutely agree that there is a nasty race here.  If you aren't going
+to use the fd, then mktemp() is sufficient (and just as racy, but then
+you are at least honest that you don't care about the race); in all
+other situations, if you want a temporary file name but want to avoid a
+race, then it feels like you should be returning the fd from mkstemp()
+still open (or at a bare minimum, auditing ALL callers to make sure they
+only use the temporary name with O_CREAT|O_EXCL, and that they retry in
+a loop in case they lose the race, at which point they are reinventing
+the loop already done on their behalf by mkstemp()...).
 
-So the patch is an improvement, but there is still something unpleasing
-in this code...
+--=20
+Eric Blake   eblake@redhat.com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-Paolo
 
+--------------enig11F39D3F85E51B7CE51032E1
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Mozilla - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJQR32eAAoJEKeha0olJ0Nq2roIAK9EWZ4XEj35E9bCD/aTcJQw
+hO2QQtrYVk7QG2Imaxpvw/C2lEJ22+gGFbQMKntLF8YzTszOjv7+09Ejc4HrrODG
+RGOGXTNrlmxkPsF1v2MHt9dXj5jKwJ5pegjuhGmmfLU5mzPuidDfHTxbpidxl4ZY
+3XwW2YlWqRnRai74bZxGqejJ0bTKBES/Ka4mZh55t/NODP0NJm77G59N2ABdDsif
++VzUCdOSmabD+cKGwaL+KZW+NP0pi+9jvLd7bPLNB+D63sv/+3RtUSaycFEM5FN1
+GEsVVhpqIa8EA/Yg/xL3PSKs5kBTDf2wZXMceRSSOXp4l09/IUjGRzx9Iqsdnmk=
+=WqWK
+-----END PGP SIGNATURE-----
+
+--------------enig11F39D3F85E51B7CE51032E1--
 
