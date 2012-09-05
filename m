@@ -1,54 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T9HjE-0000WX-Gi
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 11:41:20 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:50970)
+	id 1T9HtW-0004ZX-W8
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 11:51:59 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43139)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1T9Hj4-0008Uf-Ao
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 11:41:19 -0400
+	(envelope-from <afaerber@suse.de>) id 1T9HtO-0004AT-Lk
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 11:51:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1T9Hj3-0005iG-2r
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 11:41:10 -0400
-Received: from mail-pb0-f45.google.com ([209.85.160.45]:35781)
+	(envelope-from <afaerber@suse.de>) id 1T9HtN-0000lJ-IK
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 11:51:50 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:49253 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1T9Hix-0005cE-MO; Wed, 05 Sep 2012 11:41:03 -0400
-Received: by mail-pb0-f45.google.com with SMTP id jt11so1174718pbb.4
-	for <multiple recipients>; Wed, 05 Sep 2012 08:41:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=fpGuphh2ErkLITxn/McukAPRynbweb4vo69kSPc9a+w=;
-	b=ZkX33YRGH2CT5fhDkDRtrkpjpD4AmzoBBmlJygqBtNWLjRdDScSqPvh3ssemhopExo
-	Jv5ZHvbB315CFs5Lae7x05dFZAK9C12yORKLDVMP/8ymGUjT6p6WtDZpVjDGYY2yMD1N
-	MEr1kYMbrnKwYDhqO59isJ1w325NFdeb4JBsaLvzO8qDGFzzDvxjRlIY6ebzkOOMNj+g
-	aNX+xYGL5m7u2Y9A4n61KQdg1QJU2M3AqG1WaVTTyC0Qj76N/QS2GclaZU2KobDZzxd3
-	yoRIqZNWz0SdSsBIZsX4ZngfjFb8P6DdZOwEnmJxzvOvY3k/7ALQ2RDCQr+98dwQEk1v
-	v8Ng==
-Received: by 10.66.74.100 with SMTP id s4mr49771628pav.27.1346859663208;
-	Wed, 05 Sep 2012 08:41:03 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (93-34-169-1.ip50.fastwebnet.it.
-	[93.34.169.1])
-	by mx.google.com with ESMTPS id kt2sm1638816pbc.73.2012.09.05.08.40.59
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 05 Sep 2012 08:41:01 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <50477289.5070703@redhat.com>
-Date: Wed, 05 Sep 2012 17:40:57 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <afaerber@suse.de>)
+	id 1T9Ht7-0000iL-Go; Wed, 05 Sep 2012 11:51:33 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 10AEAA2FD7;
+	Wed,  5 Sep 2012 17:51:31 +0200 (CEST)
+Message-ID: <504774FF.6000501@suse.de>
+Date: Wed, 05 Sep 2012 17:51:27 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:14.0) Gecko/20120717 Thunderbird/14.0
+	rv:15.0) Gecko/20120825 Thunderbird/15.0
 MIME-Version: 1.0
-To: riegamaths@gmail.com
-References: <1346851493-9149-1-git-send-email-riegamaths@gmail.com>
-In-Reply-To: <1346851493-9149-1-git-send-email-riegamaths@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH v3] block: output more error messages if
- failed to create temporary snapshot
+To: Stefan Weil <sw@weilnetz.de>
+References: <1346703803-22003-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1346703803-22003-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.4.4
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc-dis: Remove redundant
+	NULL check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,45 +46,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Sep 2012 15:41:19 -0000
+X-List-Received-Date: Wed, 05 Sep 2012 15:51:57 -0000
 
-Il 05/09/2012 15:24, riegamaths@gmail.com ha scritto:
-> From: Dunrong Huang <riegamaths@gmail.com>
-> 
-> If we failed to create temporary snapshot, the error message did not match
-> with the error, for example:
-> 
-> $ TMPDIR=/tmp/bad_path qemu-system-x86_64 -enable-kvm debian.qcow2 -snapshot
-> qemu-system-x86_64: -enable-kvm: could not open disk image /home/mathslinux/Images/debian.qcow2: No such file or directory
-> 
-> Indeed, the file which cant be created is /tmp/bad_path/vl.xxxxxx,  not
-> debian.qcow2. so the error message makes users feel confused.
-> 
-> Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
+Am 03.09.2012 22:23, schrieb Stefan Weil:
+> Report from smatch:
+> sparc-dis.c:2664 build_hash_table(14) info:
+>  redundant null check on hash_buf calling free()
+>=20
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
-> v1 -> v2:
->    Output error message only if fd < 0
-> v2 -> v3:
->    Output error message in the caller of get_tmp_filename()
->  block.c | 2 ++
->  1 个文件被修改，插入 2 行(+)
-> 
-> diff --git a/block.c b/block.c
-> index 470bdcc..074987e 100644
-> --- a/block.c
-> +++ b/block.c
-> @@ -764,6 +764,8 @@ int bdrv_open(BlockDriverState *bs, const char *filename, int flags,
->  
->          ret = get_tmp_filename(tmp_filename, sizeof(tmp_filename));
->          if (ret < 0) {
-> +            fprintf(stderr, "Could not create temporary snapshot %s: %s\n",
-> +                    tmp_filename, strerror(errno));
->              return ret;
->          }
->  
-> 
+>=20
+> Coding style was not fixed.
+>=20
+> - sw
+>=20
+>  sparc-dis.c |    3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>=20
+> diff --git a/sparc-dis.c b/sparc-dis.c
+> index cdd337a..ef28835 100644
+> --- a/sparc-dis.c
+> +++ b/sparc-dis.c
+> @@ -2660,8 +2660,7 @@ build_hash_table (const sparc_opcode **opcode_tab=
+le,
+> =20
+>    memset (hash_table, 0, HASH_SIZE * sizeof (hash_table[0]));
+>    memset (hash_count, 0, HASH_SIZE * sizeof (hash_count[0]));
+> -  if (hash_buf !=3D NULL)
+> -    free (hash_buf);
+> +  free (hash_buf);
+>    hash_buf =3D malloc (sizeof (* hash_buf) * num_opcodes);
+>    for (i =3D num_opcodes - 1; i >=3D 0; --i)
+>      {
 
-Looks good.
+*-dis sounds like binutils - did upstream drop the if, too?
+If not, then diverging for a non-issue does not seem necessary.
 
-Paolo
+Having said that, it's amazing what fixes you come up with. Did you
+describe the use of that tool in some posting or in the Wiki?
+
+Regards,
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
