@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T9Jf8-0008Hw-Tl
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 13:45:14 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56890)
+	id 1T9T48-0006GX-36
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Sep 2012 23:47:40 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50693)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1T9Jf2-00080b-Pa
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 13:45:12 -0400
+	(envelope-from <riegamaths@gmail.com>) id 1T9T45-00068h-Hr
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 23:47:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1T9Jf1-0003gx-ON
-	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 13:45:08 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:43905)
+	(envelope-from <riegamaths@gmail.com>) id 1T9T44-0008PN-5T
+	for qemu-trivial@nongnu.org; Wed, 05 Sep 2012 23:47:37 -0400
+Received: from mail-lpp01m010-f45.google.com ([209.85.215.45]:36498)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1T9Jez-0003X4-Ev; Wed, 05 Sep 2012 13:45:05 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	AB599728002B; Wed,  5 Sep 2012 19:45:03 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id WeFg5SBN4rfk; Wed,  5 Sep 2012 19:45:03 +0200 (CEST)
-Received: from flocke.weilnetz.de (p5086FA69.dip.t-dialin.net [80.134.250.105])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	40CF07280029; Wed,  5 Sep 2012 19:45:03 +0200 (CEST)
-Received: from localhost ([127.0.0.1] ident=stefan)
-	by flocke.weilnetz.de with esmtp (Exim 4.72)
-	(envelope-from <sw@weilnetz.de>)
-	id 1T9Jew-0001WB-Iw; Wed, 05 Sep 2012 19:45:02 +0200
-Message-ID: <50478F9E.80403@weilnetz.de>
-Date: Wed, 05 Sep 2012 19:45:02 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.1.16) Gecko/20120724 Iceowl/1.0b1 Icedove/3.0.11
+	(envelope-from <riegamaths@gmail.com>)
+	id 1T9T41-0008Oe-JZ; Wed, 05 Sep 2012 23:47:33 -0400
+Received: by lagz14 with SMTP id z14so729674lag.4
+	for <multiple recipients>; Wed, 05 Sep 2012 20:47:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=srI573mN6a4bB5COEZtkU3aoZxCD1sL5dnAr3ZxniFs=;
+	b=YvryhkhFokxWe8r+oy9OUDMnueb3ry4N58DkUup9mPUmFQGASr8WEm70LjDuPtYQ8/
+	q0k8/KWCuooi/PsHwzhiSUQb3nJeh2Ey95PjCa3Ncqt+Co9L6EkzZExpEjdRArMpuE75
+	N6D5M2fnWJLhj0BXeA1vM88fPjZDkc2F8T7WEG4A8YPM/knAHaRZKjyx48P70tjYF0oe
+	SuQ3G0wQx2eyf56KrCo6VfuikyCkL2SPRUReC6GwGtwLPfGoC9CObvxZiMOFdrpvlHb2
+	F/QrhRG1ifVslMuuWvwy/kZQcq9V0iXgrZYWswI0a0mSoXLc11g+QE1OvLqRYg6tbt1R
+	BPgA==
 MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1346703803-22003-1-git-send-email-sw@weilnetz.de>	<504774FF.6000501@suse.de>	<CAJSP0QXtri4UNmdriCFiTg4_m+-a0CBpG36FYFdXQ1XcJywNww@mail.gmail.com>
-	<504788BB.7030609@weilnetz.de>
-In-Reply-To: <504788BB.7030609@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org,
-	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc-dis: Remove redundant
-	NULL check
+Received: by 10.112.24.196 with SMTP id w4mr353055lbf.37.1346903251659; Wed,
+	05 Sep 2012 20:47:31 -0700 (PDT)
+Received: by 10.112.5.6 with HTTP; Wed, 5 Sep 2012 20:47:31 -0700 (PDT)
+In-Reply-To: <50477D9E.1010408@redhat.com>
+References: <1346851582-9296-1-git-send-email-riegamaths@gmail.com>
+	<50477269.8050807@redhat.com>
+	<87d320e9uk.fsf@blackfin.pond.sub.org>
+	<50477C74.7050606@redhat.com> <50477D9E.1010408@redhat.com>
+Date: Thu, 6 Sep 2012 11:47:31 +0800
+Message-ID: <CAOZVR5bpJc7_gJAxsptEzW08HiuYt7txVTKgj7ALsZ5aPBg-Ww@mail.gmail.com>
+From: Dunrong Huang <riegamaths@gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.215.45
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] block: Don't forget to delete temporary
+	file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,38 +56,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Sep 2012 17:45:13 -0000
+X-List-Received-Date: Thu, 06 Sep 2012 03:47:38 -0000
 
-Am 05.09.2012 19:15, schrieb Stefan Weil:
+2012/9/6 Eric Blake <eblake@redhat.com>:
+> On 09/05/2012 10:23 AM, Paolo Bonzini wrote:
+>> And finally, the whole get_tmp_filename is unsafe because there is a
+>> race window between closing and reopening the file, if the directory is
+>> writable and does not have the sticky bit.
+>>
+>> So the patch is an improvement, but there is still something unpleasing
+>> in this code...
 >
-> AFAIK, binutils moved to GPL 3. Therefore I don't expect that
-> QEMU will update to upstream in the next years.
+> I absolutely agree that there is a nasty race here.  If you aren't going
+> to use the fd, then mktemp() is sufficient (and just as racy, but then
+> you are at least honest that you don't care about the race); in all
+Yes, using mktemp() in get_tmp_filename() is ok because we dont
+care  about race, but for old gcc version, e.g. for version 4.4, we will get
+a annoying unsecure warning "warning: the use of `mktemp' is
+dangerous, better use `mkstemp'",
+which breaks build.
+
+> other situations, if you want a temporary file name but want to avoid a
+> race, then it feels like you should be returning the fd from mkstemp()
+> still open (or at a bare minimum, auditing ALL callers to make sure they
+> only use the temporary name with O_CREAT|O_EXCL, and that they retry in
+> a loop in case they lose the race, at which point they are reinventing
+> the loop already done on their behalf by mkstemp()...).
 >
-> We'll have to maintain the code which we have.
+> --
+> Eric Blake   eblake@redhat.com    +1-919-301-3266
+> Libvirt virtualization library http://libvirt.org
 >
-> Try "git log *-dis.c" or "gitk *-dis.c": there are already lots
-> of more trivial changes which got applied to the disassembler files.
->
-> => The patch should be applied.
->
-> Regards,
-> Stefan
-
-Here is some additional information:
-
-binutils switched from GPL 2 to GPL 3 with version 2.18:
-
-Changes in 2.18:
-
-* The binutils sources are now released under version 3 of the GNU General
-   Public License.
 
 
-sparc-dis.c is already based on 2.17, so we won't get anything newer.
-Even the latest version still uses the redundant NULL check, so I
-can send my patch to the binutils maintainers, too.
 
-Regards,
-Stefan
+-- 
+Best Regards,
 
+Dunrong Huang
 
