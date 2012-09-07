@@ -1,48 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T9yMz-0000bL-El
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Sep 2012 09:13:13 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:60069)
+	id 1T9zkX-0000ZZ-2R
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Sep 2012 10:41:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50960)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1T9yMs-0000F2-4L
-	for qemu-trivial@nongnu.org; Fri, 07 Sep 2012 09:13:11 -0400
+	(envelope-from <afaerber@suse.de>) id 1T9zkO-00008Y-T2
+	for qemu-trivial@nongnu.org; Fri, 07 Sep 2012 10:41:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1T9yMo-0007gK-5d
-	for qemu-trivial@nongnu.org; Fri, 07 Sep 2012 09:13:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60104)
+	(envelope-from <afaerber@suse.de>) id 1T9zkK-0002Qy-RV
+	for qemu-trivial@nongnu.org; Fri, 07 Sep 2012 10:41:28 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:51905 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1T9yMb-0007ec-T2; Fri, 07 Sep 2012 09:12:50 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q87DCltS002916
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 7 Sep 2012 09:12:48 -0400
-Received: from dhcp-5-188.str.redhat.com (vpn1-5-61.ams2.redhat.com
-	[10.36.5.61])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id q87DCjQG009714
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 7 Sep 2012 09:12:46 -0400
-Message-ID: <5049F2CD.9010809@redhat.com>
-Date: Fri, 07 Sep 2012 15:12:45 +0200
-From: Kevin Wolf <kwolf@redhat.com>
+	(envelope-from <afaerber@suse.de>)
+	id 1T9zkA-0002N6-Um; Fri, 07 Sep 2012 10:41:15 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 1C01CA398D;
+	Fri,  7 Sep 2012 16:41:14 +0200 (CEST)
+Message-ID: <504A0787.4050109@suse.de>
+Date: Fri, 07 Sep 2012 16:41:11 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:13.0) Gecko/20120605 Thunderbird/13.0
+	rv:15.0) Gecko/20120825 Thunderbird/15.0
 MIME-Version: 1.0
-To: riegamaths@gmail.com
-References: <1346851493-9149-1-git-send-email-riegamaths@gmail.com>
-In-Reply-To: <1346851493-9149-1-git-send-email-riegamaths@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+To: "Yann E. MORIN" <yann.morin.1998@free.fr>
+References: <1346964030-17633-1-git-send-email-yann.morin.1998@free.fr>
+In-Reply-To: <1346964030-17633-1-git-send-email-yann.morin.1998@free.fr>
+X-Enigmail-Version: 1.4.4
+Content-Type: text/plain; charset=ISO-8859-15
 Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	q87DCltS002916
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] block: output more error
- messages if failed to create temporary snapshot
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: fix seccomp check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,52 +45,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Sep 2012 13:13:12 -0000
+X-List-Received-Date: Fri, 07 Sep 2012 14:41:34 -0000
 
-Am 05.09.2012 15:24, schrieb riegamaths@gmail.com:
-> From: Dunrong Huang <riegamaths@gmail.com>
+Am 06.09.2012 22:40, schrieb Yann E. MORIN:
+> Currently, if libseccomp is missing but the user explicitly requested
+> seccomp support using --enable-seccomp, configure silently ignores the
+> situation and disables seccomp support.
 >=20
-> If we failed to create temporary snapshot, the error message did not ma=
-tch
-> with the error, for example:
+> This is unlike all other tests that explicitly fail in such situation.
 >=20
-> $ TMPDIR=3D/tmp/bad_path qemu-system-x86_64 -enable-kvm debian.qcow2 -s=
-napshot
-> qemu-system-x86_64: -enable-kvm: could not open disk image /home/mathsl=
-inux/Images/debian.qcow2: No such file or directory
+> Fix that.
 >=20
-> Indeed, the file which cant be created is /tmp/bad_path/vl.xxxxxx,  not
-> debian.qcow2. so the error message makes users feel confused.
->=20
-> Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
-> ---
-> v1 -> v2:
->    Output error message only if fd < 0
-> v2 -> v3:
->    Output error message in the caller of get_tmp_filename()
->  block.c | 2 ++
->  1 =E4=B8=AA=E6=96=87=E4=BB=B6=E8=A2=AB=E4=BF=AE=E6=94=B9=EF=BC=8C=E6=8F=
-=92=E5=85=A5 2 =E8=A1=8C(+)
->=20
-> diff --git a/block.c b/block.c
-> index 470bdcc..074987e 100644
-> --- a/block.c
-> +++ b/block.c
-> @@ -764,6 +764,8 @@ int bdrv_open(BlockDriverState *bs, const char *fil=
-ename, int flags,
-> =20
->          ret =3D get_tmp_filename(tmp_filename, sizeof(tmp_filename));
->          if (ret < 0) {
-> +            fprintf(stderr, "Could not create temporary snapshot %s: %=
-s\n",
-> +                    tmp_filename, strerror(errno));
+> Signed-off-by: "Yann E. MORIN" <yann.morin.1998@free.fr>
 
-This should be strerror(-ret). Also consider using error_report()
-instead of fprintf().
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
->              return ret;
->          }
-> =20
+Andreas
 
-Kevin
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
