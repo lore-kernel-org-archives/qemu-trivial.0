@@ -1,39 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1T9zkX-0000ZZ-2R
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Sep 2012 10:41:37 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:50960)
+	id 1TBNdT-0000zr-F4
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Sep 2012 06:24:03 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:35971)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1T9zkO-00008Y-T2
-	for qemu-trivial@nongnu.org; Fri, 07 Sep 2012 10:41:34 -0400
+	(envelope-from <kwolf@redhat.com>) id 1TBNdK-0000cS-Qu
+	for qemu-trivial@nongnu.org; Tue, 11 Sep 2012 06:24:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1T9zkK-0002Qy-RV
-	for qemu-trivial@nongnu.org; Fri, 07 Sep 2012 10:41:28 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:51905 helo=mx2.suse.de)
+	(envelope-from <kwolf@redhat.com>) id 1TBNdF-0004ak-5Y
+	for qemu-trivial@nongnu.org; Tue, 11 Sep 2012 06:23:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53302)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1T9zkA-0002N6-Um; Fri, 07 Sep 2012 10:41:15 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 1C01CA398D;
-	Fri,  7 Sep 2012 16:41:14 +0200 (CEST)
-Message-ID: <504A0787.4050109@suse.de>
-Date: Fri, 07 Sep 2012 16:41:11 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
+	(envelope-from <kwolf@redhat.com>)
+	id 1TBNd8-0004SZ-7V; Tue, 11 Sep 2012 06:23:42 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q8BANdLW005339
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 11 Sep 2012 06:23:39 -0400
+Received: from dhcp-5-188.str.redhat.com (dhcp-5-175.str.redhat.com
+	[10.32.5.175])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q8BANbJH023659
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-CAMELLIA256-SHA bits=256 verify=NO);
+	Tue, 11 Sep 2012 06:23:38 -0400
+Message-ID: <504F1129.8060009@redhat.com>
+Date: Tue, 11 Sep 2012 12:23:37 +0200
+From: Kevin Wolf <kwolf@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:15.0) Gecko/20120825 Thunderbird/15.0
+	rv:13.0) Gecko/20120605 Thunderbird/13.0
 MIME-Version: 1.0
-To: "Yann E. MORIN" <yann.morin.1998@free.fr>
-References: <1346964030-17633-1-git-send-email-yann.morin.1998@free.fr>
-In-Reply-To: <1346964030-17633-1-git-send-email-yann.morin.1998@free.fr>
-X-Enigmail-Version: 1.4.4
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: fix seccomp check
+To: riegamaths@gmail.com
+References: <1346851582-9296-1-git-send-email-riegamaths@gmail.com>
+In-Reply-To: <1346851582-9296-1-git-send-email-riegamaths@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: Don't forget to
+ delete temporary file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,25 +52,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Sep 2012 14:41:34 -0000
+X-List-Received-Date: Tue, 11 Sep 2012 10:24:00 -0000
 
-Am 06.09.2012 22:40, schrieb Yann E. MORIN:
-> Currently, if libseccomp is missing but the user explicitly requested
-> seccomp support using --enable-seccomp, configure silently ignores the
-> situation and disables seccomp support.
->=20
-> This is unlike all other tests that explicitly fail in such situation.
->=20
-> Fix that.
->=20
-> Signed-off-by: "Yann E. MORIN" <yann.morin.1998@free.fr>
+Am 05.09.2012 15:26, schrieb riegamaths@gmail.com:
+> From: Dunrong Huang <riegamaths@gmail.com>
+> 
+> The caller would not delete temporary file after failed get_tmp_filename().
+> 
+> Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
 
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+Thanks, applied to the block branch.
 
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+Kevin
 
