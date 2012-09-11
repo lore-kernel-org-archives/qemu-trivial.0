@@ -1,46 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TBNdT-0000zr-F4
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Sep 2012 06:24:03 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:35971)
+	id 1TBRE7-0001Gg-Ej
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Sep 2012 10:14:07 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:51174)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1TBNdK-0000cS-Qu
-	for qemu-trivial@nongnu.org; Tue, 11 Sep 2012 06:24:00 -0400
+	(envelope-from <don@cloudswitch.com>) id 1TBRE0-0001Fk-8e
+	for qemu-trivial@nongnu.org; Tue, 11 Sep 2012 10:14:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1TBNdF-0004ak-5Y
-	for qemu-trivial@nongnu.org; Tue, 11 Sep 2012 06:23:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53302)
+	(envelope-from <don@cloudswitch.com>) id 1TBRDq-0007We-Sy
+	for qemu-trivial@nongnu.org; Tue, 11 Sep 2012 10:14:00 -0400
+Received: from hub021-nj-8.exch021.serverdata.net ([206.225.164.233]:53916)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1TBNd8-0004SZ-7V; Tue, 11 Sep 2012 06:23:42 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q8BANdLW005339
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 11 Sep 2012 06:23:39 -0400
-Received: from dhcp-5-188.str.redhat.com (dhcp-5-175.str.redhat.com
-	[10.32.5.175])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q8BANbJH023659
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-CAMELLIA256-SHA bits=256 verify=NO);
-	Tue, 11 Sep 2012 06:23:38 -0400
-Message-ID: <504F1129.8060009@redhat.com>
-Date: Tue, 11 Sep 2012 12:23:37 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:13.0) Gecko/20120605 Thunderbird/13.0
+	(envelope-from <don@cloudswitch.com>)
+	id 1TBRDq-0007WS-Ps; Tue, 11 Sep 2012 10:13:50 -0400
+Received: from don-760.CloudSwitch.com (131.239.15.22) by
+	east.exch021.serverdata.net (10.240.4.118) with Microsoft SMTP Server
+	(TLS) id 14.2.309.2; Tue, 11 Sep 2012 07:13:50 -0700
+Message-ID: <504F471D.3030701@CloudSwitch.Com>
+Date: Tue, 11 Sep 2012 10:13:49 -0400
+From: Don Slutz <Don@CloudSwitch.Com>
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:15.0) Gecko/20120824 Thunderbird/15.0
 MIME-Version: 1.0
-To: riegamaths@gmail.com
-References: <1346851582-9296-1-git-send-email-riegamaths@gmail.com>
-In-Reply-To: <1346851582-9296-1-git-send-email-riegamaths@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+To: Don Slutz <Don@CloudSwitch.com>
+References: <1346532470-15859-1-git-send-email-Don@CloudSwitch.com>
+	<1346630960-30887-1-git-send-email-Don@CloudSwitch.com>
+In-Reply-To: <1346630960-30887-1-git-send-email-Don@CloudSwitch.com>
+Content-Type: text/plain; charset="ISO-8859-1"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: Don't forget to
- delete temporary file
+X-detected-operating-system: by eggs.gnu.org: Windows XP/2000 (RFC1323+, w+,
+	tstamp-)
+X-Received-From: 206.225.164.233
+Cc: blauwirbel@gmail.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2] target-i386: Report on error during
+	cpu_x86_register().
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,16 +44,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Sep 2012 10:24:00 -0000
+X-List-Received-Date: Tue, 11 Sep 2012 14:14:06 -0000
 
-Am 05.09.2012 15:26, schrieb riegamaths@gmail.com:
-> From: Dunrong Huang <riegamaths@gmail.com>
-> 
-> The caller would not delete temporary file after failed get_tmp_filename().
-> 
-> Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
-
-Thanks, applied to the block branch.
-
-Kevin
+On 09/02/12 20:09, Don Slutz wrote:
+> Send it to stderr before free of the details.
+>
+> Signed-off-by: Don Slutz <Don@CloudSwitch.com>
+> ---
+> v2: Change __FUNCTION__ to __func__
+>
+>   target-i386/cpu.c |    1 +
+>   1 files changed, 1 insertions(+), 0 deletions(-)
+>
+> diff --git a/target-i386/cpu.c b/target-i386/cpu.c
+> index 57c064f..760cca4 100644
+> --- a/target-i386/cpu.c
+> +++ b/target-i386/cpu.c
+> @@ -1352,6 +1352,7 @@ int cpu_x86_register(X86CPU *cpu, const char *cpu_model)
+>       }
+>       object_property_set_str(OBJECT(cpu), def->model_id, "model-id", &error);
+>       if (error_is_set(&error)) {
+> +        fprintf(stderr, "%s: %s\n", __func__, error_get_pretty(error));
+>           error_free(error);
+>           return -1;
+>       }
+The (3) patch set in 
+http://lists.gnu.org/archive/html/qemu-devel/2012-09/msg01400.html 
+includes this change, and so this request is being withdrawn.
 
