@@ -1,48 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TCQie-0008BR-0A
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Sep 2012 03:53:44 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:36664)
+	id 1TCU1t-0003AU-Uq
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Sep 2012 07:25:49 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47431)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TCQiW-00089E-ST
-	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 03:53:42 -0400
+	(envelope-from <h.mitake@gmail.com>) id 1TCU1g-00034X-VF
+	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 07:25:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TCQiT-0007ZT-Df
-	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 03:53:36 -0400
-Received: from mail-wi0-f169.google.com ([209.85.212.169]:65398)
+	(envelope-from <h.mitake@gmail.com>) id 1TCU1b-0003qj-1o
+	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 07:25:36 -0400
+Received: from mail-wi0-f181.google.com ([209.85.212.181]:64401)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TCQiT-0007Yy-6i
-	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 03:53:33 -0400
-Received: by wibhm2 with SMTP id hm2so1706666wib.4
-	for <qemu-trivial@nongnu.org>; Fri, 14 Sep 2012 00:53:32 -0700 (PDT)
+	(envelope-from <h.mitake@gmail.com>) id 1TCU1a-0003qa-PL
+	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 07:25:30 -0400
+Received: by wibhm2 with SMTP id hm2so3516506wib.10
+	for <qemu-trivial@nongnu.org>; Fri, 14 Sep 2012 04:25:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=VNhMdWWgzoQP+7QxXFAzYMh1Iph9T8t4P6S78v9rAkU=;
-	b=Zplz44mzMvqjQjmTDeiflZtsSinyL8kEL/4aqPq+lQ2cSeOsnbVbt2Php5HVfBgM6L
-	rdPw+4NQlMqvon0YIw9LidTuiUiSJU+3w6TsoOfojCv1DYAgN0EjCuloWlkvKfyneoQT
-	1Bt7Iu+KqN7x8EzM/t4fMNrPwYqTQ9S+bpMvs1+s41VtNL05BigW9ISnZ+N/SuqNryiw
-	wjCcjTXSqT8AXRBmAx8mMj5Uq6r1EqFk/J5CesLPv4FC0vEg/NID3GPP+BMQKvBjfQH1
-	6vBAzfmd8NvORnKzrVhKGzhj9pOIX5CamTK9hlE6Tl9d+WPCM3RqWdWiL7PNApewCypc
-	owog==
-Received: by 10.180.104.197 with SMTP id gg5mr4114889wib.9.1347609212242;
-	Fri, 14 Sep 2012 00:53:32 -0700 (PDT)
-Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id eu4sm17678373wib.2.2012.09.14.00.53.30
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 14 Sep 2012 00:53:31 -0700 (PDT)
-Date: Fri, 14 Sep 2012 08:53:28 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Hitoshi Mitake <h.mitake@gmail.com>
-Message-ID: <20120914075328.GC25596@stefanha-thinkpad.localdomain>
-References: <1347453510-32284-1-git-send-email-h.mitake@gmail.com>
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=gkVthdSCFFVDIkAGZUEekwMBuFilBLYfX0QulJJir20=;
+	b=b07QTUtsM+QbLzaxFnJedqK+5iRryflAoe8GtSvw7RBM6zJr9bUkc+oSI8Ms1Vzq2J
+	jKW6v0d2dyWDLtEToL1oC64cfQYaB/VqGBPCy659OTTZydMozOc6c1q62429pPc9BECm
+	JZ7PV7x4egIUd1r54s/i3wE0N7rtTAbyLdukQohD59LnKBgbiCOAFxzHLYNMAJqfxKxW
+	t+ZBZQJha4YmdBq50qI5QAV2GLzxPmyrLl6jMCxV1YZIO+eFaM+86uRycbZb09IElMcP
+	xTOzhRid544brOLdmv5Tfj8wrZwwiIW6CxkcJ43OzB6v4f6VpZFZveNJl+fh3JOcvz3b
+	vEdg==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1347453510-32284-1-git-send-email-h.mitake@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.180.97.135 with SMTP id ea7mr47487760wib.11.1347621927137;
+	Fri, 14 Sep 2012 04:25:27 -0700 (PDT)
+Received: by 10.227.206.201 with HTTP; Fri, 14 Sep 2012 04:25:27 -0700 (PDT)
+In-Reply-To: <20120914075328.GC25596@stefanha-thinkpad.localdomain>
+References: <1347453510-32284-1-git-send-email-h.mitake@gmail.com>
+	<20120914075328.GC25596@stefanha-thinkpad.localdomain>
+Date: Fri, 14 Sep 2012 20:25:27 +0900
+Message-ID: <CAMO-S2hQ6LhmUeiUa1_GSFegWjpwYe4XZOZWQTP8J=_eeCJPdg@mail.gmail.com>
+From: Hitoshi Mitake <h.mitake@gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.169
+X-Received-From: 209.85.212.181
 Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
 	Andrzej Zaborowski <balrog@zabor.org>
 Subject: Re: [Qemu-trivial] [PATCH] curses: don't initialize curses when
@@ -58,29 +54,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Sep 2012 07:53:42 -0000
+X-List-Received-Date: Fri, 14 Sep 2012 11:25:48 -0000
 
-On Wed, Sep 12, 2012 at 09:38:30PM +0900, Hitoshi Mitake wrote:
-> Current qemu initializes curses even if -daemonize option is
-> passed. This cause problem because shell prompt appears without
-> calling endwin().
-> 
-> This patch adds new function, is_daemonized(), to OS dependent
-> code. With this function, curses_display_init() can check that qemu is
-> daemonized or not. If daemonized, curses_display_init() returns
-> immediately.
-> 
-> Of course, -daemonize && -curses doesn't make sense. Users shouldn't
-> pass the arguments at the same time. But the problem is very painful
-> because Ctrl-C cannot be delivered to the terminal. So if this
-> approach isn't acceptable, -daemonize && -curses combination should be
-> treated as error.
+On Fri, Sep 14, 2012 at 4:53 PM, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> On Wed, Sep 12, 2012 at 09:38:30PM +0900, Hitoshi Mitake wrote:
+>> Current qemu initializes curses even if -daemonize option is
+>> passed. This cause problem because shell prompt appears without
+>> calling endwin().
+>>
+>> This patch adds new function, is_daemonized(), to OS dependent
+>> code. With this function, curses_display_init() can check that qemu is
+>> daemonized or not. If daemonized, curses_display_init() returns
+>> immediately.
+>>
+>> Of course, -daemonize && -curses doesn't make sense. Users shouldn't
+>> pass the arguments at the same time. But the problem is very painful
+>> because Ctrl-C cannot be delivered to the terminal. So if this
+>> approach isn't acceptable, -daemonize && -curses combination should be
+>> treated as error.
+>
+> I think it makes sense to explicitly check that -daemonize is used with
+> -nographic | -vnc | -spice.
 
-I think it makes sense to explicitly check that -daemonize is used with
--nographic | -vnc | -spice.
+Yes. But -curses doesn't make sense when it is passed with -daemonize.
 
-Making curses aware of daemonize seems strange and doesn't stop the same
-issue with SDL.
+>
+> Making curses aware of daemonize seems strange and doesn't stop the same
+> issue with SDL.
+>
 
-Stefan
+What is the same issue with SDL?
+
+Thanks,
+Hitoshi
 
