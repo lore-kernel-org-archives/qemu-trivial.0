@@ -1,47 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TBmDe-0005Ls-FN
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Sep 2012 08:39:02 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40219)
+	id 1TCQao-00055a-Ss
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Sep 2012 03:45:38 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43754)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <h.mitake@gmail.com>) id 1TBmDc-0005Lf-Pu
-	for qemu-trivial@nongnu.org; Wed, 12 Sep 2012 08:39:01 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TCQal-00053h-8a
+	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 03:45:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <h.mitake@gmail.com>) id 1TBmDa-0004gQ-I2
-	for qemu-trivial@nongnu.org; Wed, 12 Sep 2012 08:39:00 -0400
-Received: from mail-pz0-f45.google.com ([209.85.210.45]:35280)
+	(envelope-from <stefanha@gmail.com>) id 1TCQaa-00057t-2W
+	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 03:45:35 -0400
+Received: from mail-we0-f173.google.com ([74.125.82.173]:56230)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <h.mitake@gmail.com>) id 1TBmDa-0004gA-BP
-	for qemu-trivial@nongnu.org; Wed, 12 Sep 2012 08:38:58 -0400
-Received: by dadn15 with SMTP id n15so1034283dad.4
-	for <qemu-trivial@nongnu.org>; Wed, 12 Sep 2012 05:38:56 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1TCQaZ-00057X-QW; Fri, 14 Sep 2012 03:45:24 -0400
+Received: by weyz53 with SMTP id z53so2152496wey.4
+	for <multiple recipients>; Fri, 14 Sep 2012 00:45:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:x-mailer;
-	bh=npcd0LiUHlfynZL34pZSmHipiuYZwmY82e4l5fsWbAY=;
-	b=QZGt/t+Axyf9PJr0oFyShfyJoWKt/dUQLxeYRGprJvtVjRL2HMZgnZVoy/9IVAbH+6
-	3Ui4fCZi28WRtWDxpCowGSpYzzPZIxf3RBPfmTjEk5XRle5Mb78wJ13d+7HkRrbe9lo/
-	ZTg9qdx9T0+WKLXybXXlhsXROicZYCLDPdsO5hcN2j0Y7OcuE9mrUNbpUlh6BP+ae2Ur
-	y/zAB2vJanUE4lTwuOTEuJ00NPiIUotXOVZtohmjIiIvgeA6IlEAqj0Ibfk/bjTAvi5O
-	KD8dhCGdrhiZPzAer7hAmye9BuxffY3RNAD5VroHpUpZ8e6fflwAdf34/k1AFWGqdLNy
-	QbRQ==
-Received: by 10.68.213.5 with SMTP id no5mr915185pbc.24.1347453535950;
-	Wed, 12 Sep 2012 05:38:55 -0700 (PDT)
-Received: from localhost.localdomain
-	(i114-181-221-120.s04.a013.ap.plala.or.jp. [114.181.221.120])
-	by mx.google.com with ESMTPS id hx9sm11339414pbc.68.2012.09.12.05.38.53
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=RRUht83b/flaCCO24PSDLfQNBoYLF/Z6q4sQuDB11cE=;
+	b=eM4bN3NLF0feQYaxZ3Eniiha90sWf2hSSIOk52A40eYc2P5aY0QNr/zVVh1P3MGw+o
+	LhR1HNPWaEJdAlKyfLchDgN2T9onBHZBO0if9hZ+rGaBQy+m3U1b6b3xyVe34u7QQE0F
+	oOAgTJNer/c8T+a/gl7WCIBGNE5OC1aISygGAhcpQRYFgwbuK7DnIDt5IEltY1PZO4YY
+	OMW6NOdT1sBv2SDGyAc02uyIXqFDOkhggEVu0/QPm1SN8Qbsy1z8GLriLM6HI1g8Ks5Y
+	BSbRIV0Ls/Bxb2/pTaGolqfAdHVzM99adoFKp3/Q3TuXNCjrY2QJeHRMcyN0cqBvx1lp
+	6bXA==
+Received: by 10.180.78.40 with SMTP id y8mr4082443wiw.7.1347608722700;
+	Fri, 14 Sep 2012 00:45:22 -0700 (PDT)
+Received: from localhost ([109.224.133.37])
+	by mx.google.com with ESMTPS id b7sm2268375wiz.9.2012.09.14.00.45.21
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 12 Sep 2012 05:38:54 -0700 (PDT)
-From: Hitoshi Mitake <h.mitake@gmail.com>
-To: qemu-trivial@nongnu.org
-Date: Wed, 12 Sep 2012 21:38:30 +0900
-Message-Id: <1347453510-32284-1-git-send-email-h.mitake@gmail.com>
-X-Mailer: git-send-email 1.7.5.1
+	Fri, 14 Sep 2012 00:45:22 -0700 (PDT)
+Date: Fri, 14 Sep 2012 08:45:18 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Kevin Wolf <kwolf@redhat.com>
+Message-ID: <20120914074518.GA25596@stefanha-thinkpad.localdomain>
+References: <1346851582-9296-1-git-send-email-riegamaths@gmail.com>
+	<504F1129.8060009@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <504F1129.8060009@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.210.45
-Cc: Anthony Liguori <aliguori@us.ibm.com>,
-	Andrzej Zaborowski <balrog@zabor.org>, h.mitake@gmail.com
-Subject: [Qemu-trivial] [PATCH] curses: don't initialize curses when qemu is
-	daemonized
+X-Received-From: 74.125.82.173
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+	riegamaths@gmail.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: Don't forget to
+	delete temporary file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,94 +59,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Sep 2012 12:39:02 -0000
+X-List-Received-Date: Fri, 14 Sep 2012 07:45:36 -0000
 
-Current qemu initializes curses even if -daemonize option is
-passed. This cause problem because shell prompt appears without
-calling endwin().
+On Tue, Sep 11, 2012 at 12:23:37PM +0200, Kevin Wolf wrote:
+> Am 05.09.2012 15:26, schrieb riegamaths@gmail.com:
+> > From: Dunrong Huang <riegamaths@gmail.com>
+> > 
+> > The caller would not delete temporary file after failed get_tmp_filename().
+> > 
+> > Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
+> 
+> Thanks, applied to the block branch.
 
-This patch adds new function, is_daemonized(), to OS dependent
-code. With this function, curses_display_init() can check that qemu is
-daemonized or not. If daemonized, curses_display_init() returns
-immediately.
+For the record, using the close(2) errno after calling unlink(2) isn't
+a good idea.  We should follow the docs and preserve errno carefully.
 
-Of course, -daemonize && -curses doesn't make sense. Users shouldn't
-pass the arguments at the same time. But the problem is very painful
-because Ctrl-C cannot be delivered to the terminal. So if this
-approach isn't acceptable, -daemonize && -curses combination should be
-treated as error.
+It's the exact issue I pointed out on the original patch.
 
-
-BTW, I didn't build and test on windows environment because I don't
-have it which is capable of qemu build. Could someone build and test
-it on windows?
-
-Cc: Andrzej Zaborowski  <balrog@zabor.org>
-Cc: Stefan Hajnoczi <stefanha@gmail.com>
-Cc: Anthony Liguori <aliguori@us.ibm.com>
-Cc: Michael Roth <mdroth@linux.vnet.ibm.com>
-Signed-off-by: Hitoshi Mitake <h.mitake@gmail.com>
----
- os-posix.c      |    5 +++++
- qemu-os-posix.h |    2 ++
- qemu-os-win32.h |    5 +++++
- ui/curses.c     |    4 ++++
- 4 files changed, 16 insertions(+), 0 deletions(-)
-
-diff --git a/os-posix.c b/os-posix.c
-index 79fa228..99c5343 100644
---- a/os-posix.c
-+++ b/os-posix.c
-@@ -360,3 +360,8 @@ int qemu_create_pidfile(const char *filename)
-     /* keep pidfile open & locked forever */
-     return 0;
- }
-+
-+int is_daemonized(void)
-+{
-+    return daemonize;
-+}
-diff --git a/qemu-os-posix.h b/qemu-os-posix.h
-index 8e1149d..0b2b60a 100644
---- a/qemu-os-posix.h
-+++ b/qemu-os-posix.h
-@@ -46,4 +46,6 @@ typedef struct timeval qemu_timeval;
- typedef struct timespec qemu_timespec;
- int qemu_utimens(const char *path, const qemu_timespec *times);
- 
-+int is_daemonized(void);
-+
- #endif
-diff --git a/qemu-os-win32.h b/qemu-os-win32.h
-index 753679b..08a6fa8 100644
---- a/qemu-os-win32.h
-+++ b/qemu-os-win32.h
-@@ -86,4 +86,9 @@ typedef struct {
- } qemu_timeval;
- int qemu_gettimeofday(qemu_timeval *tp);
- 
-+static inline int is_daemonized(void)
-+{
-+    return 0;
-+}
-+
- #endif
-diff --git a/ui/curses.c b/ui/curses.c
-index c2be2c6..fc6ae8c 100644
---- a/ui/curses.c
-+++ b/ui/curses.c
-@@ -335,6 +335,10 @@ static void curses_keyboard_setup(void)
- void curses_display_init(DisplayState *ds, int full_screen)
- {
-     DisplayChangeListener *dcl;
-+
-+    if (is_daemonized())
-+        return;
-+
- #ifndef _WIN32
-     if (!isatty(1)) {
-         fprintf(stderr, "We need a terminal output\n");
--- 
-1.7.5.1
-
+Stefan
 
