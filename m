@@ -1,53 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TCQao-00055a-Ss
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Sep 2012 03:45:38 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43754)
+	id 1TCQcD-0006Jl-Pv
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Sep 2012 03:47:05 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43992)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TCQal-00053h-8a
-	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 03:45:36 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TCQc6-0005zl-O1
+	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 03:47:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TCQaa-00057t-2W
-	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 03:45:35 -0400
-Received: from mail-we0-f173.google.com ([74.125.82.173]:56230)
+	(envelope-from <stefanha@gmail.com>) id 1TCQc5-0005bD-Tt
+	for qemu-trivial@nongnu.org; Fri, 14 Sep 2012 03:46:58 -0400
+Received: from mail-we0-f173.google.com ([74.125.82.173]:49310)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TCQaZ-00057X-QW; Fri, 14 Sep 2012 03:45:24 -0400
-Received: by weyz53 with SMTP id z53so2152496wey.4
-	for <multiple recipients>; Fri, 14 Sep 2012 00:45:22 -0700 (PDT)
+	id 1TCQbx-0005aS-Dj; Fri, 14 Sep 2012 03:46:49 -0400
+Received: by weyz53 with SMTP id z53so2153193wey.4
+	for <multiple recipients>; Fri, 14 Sep 2012 00:46:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=RRUht83b/flaCCO24PSDLfQNBoYLF/Z6q4sQuDB11cE=;
-	b=eM4bN3NLF0feQYaxZ3Eniiha90sWf2hSSIOk52A40eYc2P5aY0QNr/zVVh1P3MGw+o
-	LhR1HNPWaEJdAlKyfLchDgN2T9onBHZBO0if9hZ+rGaBQy+m3U1b6b3xyVe34u7QQE0F
-	oOAgTJNer/c8T+a/gl7WCIBGNE5OC1aISygGAhcpQRYFgwbuK7DnIDt5IEltY1PZO4YY
-	OMW6NOdT1sBv2SDGyAc02uyIXqFDOkhggEVu0/QPm1SN8Qbsy1z8GLriLM6HI1g8Ks5Y
-	BSbRIV0Ls/Bxb2/pTaGolqfAdHVzM99adoFKp3/Q3TuXNCjrY2QJeHRMcyN0cqBvx1lp
-	6bXA==
-Received: by 10.180.78.40 with SMTP id y8mr4082443wiw.7.1347608722700;
-	Fri, 14 Sep 2012 00:45:22 -0700 (PDT)
+	bh=dD5rZPWrbC5/ozS4hbEgTxehnSMHRhcCIakV3YSnxUs=;
+	b=ZRFGnK9x7/3aomwGDvrasCTS5l9JkTWXbS7d2pPDVZ8yghrwgN6o2SvVb8yYccYo79
+	X3qAGWvy5whrY+WBI7vK+gCpcAxO38uyVG5BjVRrWGPKCmS/ifJCSAVAJRFTdDcOqzeV
+	8m4tOchFNrON5bSwqHxAD4RiwnKkiucIaDURU9TxYpyR1WfyUbyYAWE1ognYwr1LBscX
+	a/T0OVX1F534j9yhhlYhlH/tqXPuV01B9GaMW73ppsZtLDZA/NjfjklM3J8qyLLcWxUB
+	+ojUGbyM1nN/P+J/vOa35O8rwvBKwYpHOByrk0evfeVlnKPB0RKroRRecI94gfbMRjGr
+	Hm5g==
+Received: by 10.180.100.35 with SMTP id ev3mr46150579wib.7.1347608808463;
+	Fri, 14 Sep 2012 00:46:48 -0700 (PDT)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id b7sm2268375wiz.9.2012.09.14.00.45.21
+	by mx.google.com with ESMTPS id hv8sm1810494wib.0.2012.09.14.00.46.47
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 14 Sep 2012 00:45:22 -0700 (PDT)
-Date: Fri, 14 Sep 2012 08:45:18 +0100
+	Fri, 14 Sep 2012 00:46:47 -0700 (PDT)
+Date: Fri, 14 Sep 2012 08:46:44 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Message-ID: <20120914074518.GA25596@stefanha-thinkpad.localdomain>
-References: <1346851582-9296-1-git-send-email-riegamaths@gmail.com>
-	<504F1129.8060009@redhat.com>
+To: "Yann E. MORIN" <yann.morin.1998@free.fr>
+Message-ID: <20120914074644.GB25596@stefanha-thinkpad.localdomain>
+References: <1346964030-17633-1-git-send-email-yann.morin.1998@free.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <504F1129.8060009@redhat.com>
+In-Reply-To: <1346964030-17633-1-git-send-email-yann.morin.1998@free.fr>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 74.125.82.173
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	riegamaths@gmail.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: Don't forget to
-	delete temporary file
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] configure: fix seccomp check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,22 +56,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Sep 2012 07:45:36 -0000
+X-List-Received-Date: Fri, 14 Sep 2012 07:47:04 -0000
 
-On Tue, Sep 11, 2012 at 12:23:37PM +0200, Kevin Wolf wrote:
-> Am 05.09.2012 15:26, schrieb riegamaths@gmail.com:
-> > From: Dunrong Huang <riegamaths@gmail.com>
-> > 
-> > The caller would not delete temporary file after failed get_tmp_filename().
-> > 
-> > Signed-off-by: Dunrong Huang <riegamaths@gmail.com>
+On Thu, Sep 06, 2012 at 10:40:30PM +0200, Yann E. MORIN wrote:
+> Currently, if libseccomp is missing but the user explicitly requested
+> seccomp support using --enable-seccomp, configure silently ignores the
+> situation and disables seccomp support.
 > 
-> Thanks, applied to the block branch.
+> This is unlike all other tests that explicitly fail in such situation.
+> 
+> Fix that.
+> 
+> Signed-off-by: "Yann E. MORIN" <yann.morin.1998@free.fr>
+> ---
+>  configure |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 
-For the record, using the close(2) errno after calling unlink(2) isn't
-a good idea.  We should follow the docs and preserve errno carefully.
-
-It's the exact issue I pointed out on the original patch.
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
 Stefan
 
