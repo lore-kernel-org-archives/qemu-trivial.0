@@ -1,41 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TE132-00016R-Oh
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Sep 2012 12:53:20 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:60003)
+	id 1TE1Kj-00088e-GJ
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Sep 2012 13:11:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:48880)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TE12x-0000qv-0q
-	for qemu-trivial@nongnu.org; Tue, 18 Sep 2012 12:53:19 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1TE1Kd-00085N-1k
+	for qemu-trivial@nongnu.org; Tue, 18 Sep 2012 13:11:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TE12w-0000Yj-0L
-	for qemu-trivial@nongnu.org; Tue, 18 Sep 2012 12:53:14 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59588)
+	(envelope-from <peter.maydell@linaro.org>) id 1TE1Kc-0007lY-15
+	for qemu-trivial@nongnu.org; Tue, 18 Sep 2012 13:11:30 -0400
+Received: from mail-pb0-f45.google.com ([209.85.160.45]:50042)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1TE12n-0000Mc-Cb; Tue, 18 Sep 2012 12:53:05 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	56F097280032; Tue, 18 Sep 2012 18:53:03 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id Ebb2A5sjnR6y; Tue, 18 Sep 2012 18:53:02 +0200 (CEST)
-Received: from [192.168.178.20] (p54AD9BEB.dip.t-dialin.net [84.173.155.235])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	672057280029; Tue, 18 Sep 2012 18:53:02 +0200 (CEST)
-Message-ID: <5058A6ED.4040902@weilnetz.de>
-Date: Tue, 18 Sep 2012 18:53:01 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:15.0) Gecko/20120827 Thunderbird/15.0
+	(envelope-from <peter.maydell@linaro.org>) id 1TE1Kb-0007lN-Qh
+	for qemu-trivial@nongnu.org; Tue, 18 Sep 2012 13:11:29 -0400
+Received: by pbbrp12 with SMTP id rp12so432093pbb.4
+	for <qemu-trivial@nongnu.org>; Tue, 18 Sep 2012 10:11:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=GCJqQ+ZEajObwWFMkZbMWerbxANzi2M/DHg92cAa5zM=;
+	b=a+QgDLGnxl7urH1wIgr7w3MoLACkhs1ZipVz8EHx7XAbQ0dqOSrHtu8aV1uD3owxfE
+	4lS9hqvFtjGAMkzRtFCFWDK7jGwJMhKOPHGmU+6s+hJf9rUQk/DktOo3uncZve02jRo+
+	fnEizmvS6pHPnv7r/fcwBzHQAX7NTw7aBhSZoNRUK5OMh1JhTp9tkNO6HogoB6w1LqYc
+	imsOC+FuPF7KwjFR81z0vWiIp4GnrlaosjQr7QYY6LgOFme4pA6kNlDn085WSH1pEIad
+	hoJmKxwjD05EHvdFOneldAnJJ+P8MAqaHUyo4X4W3srIX7o9ZqHumCasmkm/eZHgvn1k
+	JZ/A==
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
+Received: by 10.68.138.163 with SMTP id qr3mr560508pbb.161.1347988289008; Tue,
+	18 Sep 2012 10:11:29 -0700 (PDT)
+Received: by 10.66.88.66 with HTTP; Tue, 18 Sep 2012 10:11:28 -0700 (PDT)
+In-Reply-To: <5058A6ED.4040902@weilnetz.de>
 References: <1347976422-2859-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1347976422-2859-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
+	<5058A6ED.4040902@weilnetz.de>
+Date: Tue, 18 Sep 2012 18:11:28 +0100
+Message-ID: <CAFEAcA_EoxhN7VPJ9kCP=-E=DHa1=kRUkM07g4Rb__LJqq5Ggg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQnwAvRkz2s82um77XhfBvS9TLiI7FAO1ShyJKGLtacRw2l2B/7n9C8i7gGKrmtcg6K4mue3
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.160.45
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/pflash_cfi0[12]: Use
 	host-utils.h ctz32()
@@ -50,135 +55,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Sep 2012 16:53:19 -0000
+X-List-Received-Date: Tue, 18 Sep 2012 17:11:35 -0000
 
-Am 18.09.2012 15:53, schrieb Peter Maydell:
-> Drop the private reimplementation of ctz32() from pflash_cfi0[12]
-> in favour of using the standard version from host-utils.h.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/pflash_cfi01.c |   37 +------------------------------------
->   hw/pflash_cfi02.c |   37 +------------------------------------
->   2 files changed, 2 insertions(+), 72 deletions(-)
->
-> diff --git a/hw/pflash_cfi01.c b/hw/pflash_cfi01.c
-> index d1c7423..00f1cdd 100644
-> --- a/hw/pflash_cfi01.c
-> +++ b/hw/pflash_cfi01.c
-> @@ -41,6 +41,7 @@
->   #include "block.h"
->   #include "qemu-timer.h"
->   #include "exec-memory.h"
-> +#include "host-utils.h"
->   
->   #define PFLASH_BUG(fmt, ...) \
->   do { \
-> @@ -543,42 +544,6 @@ static const MemoryRegionOps pflash_cfi01_ops_le = {
->       .endianness = DEVICE_NATIVE_ENDIAN,
->   };
->   
-> -/* Count trailing zeroes of a 32 bits quantity */
-> -static int ctz32 (uint32_t n)
-> -{
-> -    int ret;
-> -
-> -    ret = 0;
-> -    if (!(n & 0xFFFF)) {
-> -        ret += 16;
-> -        n = n >> 16;
-> -    }
-> -    if (!(n & 0xFF)) {
-> -        ret += 8;
-> -        n = n >> 8;
-> -    }
-> -    if (!(n & 0xF)) {
-> -        ret += 4;
-> -        n = n >> 4;
-> -    }
-> -    if (!(n & 0x3)) {
-> -        ret += 2;
-> -        n = n >> 2;
-> -    }
-> -    if (!(n & 0x1)) {
-> -        ret++;
-> -#if 0 /* This is not necessary as n is never 0 */
-> -        n = n >> 1;
-> -#endif
-> -    }
-> -#if 0 /* This is not necessary as n is never 0 */
-> -    if (!n)
-> -        ret++;
-> -#endif
-> -
-> -    return ret;
-> -}
-> -
->   pflash_t *pflash_cfi01_register(target_phys_addr_t base,
->                                   DeviceState *qdev, const char *name,
->                                   target_phys_addr_t size,
-> diff --git a/hw/pflash_cfi02.c b/hw/pflash_cfi02.c
-> index 3e2002e..8cb1549 100644
-> --- a/hw/pflash_cfi02.c
-> +++ b/hw/pflash_cfi02.c
-> @@ -40,6 +40,7 @@
->   #include "qemu-timer.h"
->   #include "block.h"
->   #include "exec-memory.h"
-> +#include "host-utils.h"
->   
->   //#define PFLASH_DEBUG
->   #ifdef PFLASH_DEBUG
-> @@ -575,42 +576,6 @@ static const MemoryRegionOps pflash_cfi02_ops_le = {
->       .endianness = DEVICE_NATIVE_ENDIAN,
->   };
->   
-> -/* Count trailing zeroes of a 32 bits quantity */
-> -static int ctz32 (uint32_t n)
-> -{
-> -    int ret;
-> -
-> -    ret = 0;
-> -    if (!(n & 0xFFFF)) {
-> -        ret += 16;
-> -        n = n >> 16;
-> -    }
-> -    if (!(n & 0xFF)) {
-> -        ret += 8;
-> -        n = n >> 8;
-> -    }
-> -    if (!(n & 0xF)) {
-> -        ret += 4;
-> -        n = n >> 4;
-> -    }
-> -    if (!(n & 0x3)) {
-> -        ret += 2;
-> -        n = n >> 2;
-> -    }
-> -    if (!(n & 0x1)) {
-> -        ret++;
-> -#if 0 /* This is not necessary as n is never 0 */
-> -        n = n >> 1;
-> -#endif
-> -    }
-> -#if 0 /* This is not necessary as n is never 0 */
-> -    if (!n)
-> -        ret++;
-> -#endif
-> -
-> -    return ret;
-> -}
-> -
->   pflash_t *pflash_cfi02_register(target_phys_addr_t base,
->                                   DeviceState *qdev, const char *name,
->                                   target_phys_addr_t size,
+On 18 September 2012 17:53, Stefan Weil <sw@weilnetz.de> wrote:
+> What about moving the ctz32 function (or even all of host-utils.h) to
+> bitops.h?
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+I guess that would make some sense, though I'm not generally
+a huge fan of shuffling code around.
 
-What about moving the ctz32 function (or even all of host-utils.h) to 
-bitops.h?
+(bitops.h and host-utils.h are not under the same license terms,
+which might complicate things slightly.)
 
-- sw
-
-
+-- PMM
 
