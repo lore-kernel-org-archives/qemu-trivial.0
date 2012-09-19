@@ -1,46 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TEKiX-00053Z-6a
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Sep 2012 09:53:29 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40458)
+	id 1TENL9-0006e1-4y
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Sep 2012 12:41:31 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:48766)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1TEKiM-0004Zv-La
-	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 09:53:28 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1TENL6-0006TK-1Q
+	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 12:41:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1TEKiG-0007CQ-Uh
-	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 09:53:18 -0400
-Received: from mail-pb0-f45.google.com ([209.85.160.45]:50109)
+	(envelope-from <stefan@weilnetz.de>) id 1TENL5-0005ek-1O
+	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 12:41:27 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:42115)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1TEKi3-0006xT-4I; Wed, 19 Sep 2012 09:52:59 -0400
-Received: by pbbrp12 with SMTP id rp12so2508785pbb.4
-	for <multiple recipients>; Wed, 19 Sep 2012 06:52:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer;
-	bh=PxojQF1Wnh1YiJudTd4KfF3GmK1MgBFg6Dzxbw6LnW4=;
-	b=j2CjEBB1Ns5L5wpRs+sWzCqoOHSDnE7vzA/gWIJrDfi/9OJdpDy6Wwty6HzHnYkmPK
-	OSk6LLZw8rQgdjKOJzwrYj21dB5dh4l4UFtkRkmBlParzkaj/x9pcgl7fbsk5FmSWbYY
-	szVLwfqE7WDfX4N3x9m/gz1zpzqG5ldgJMxN6bhAdqsjt2td1Q4TYLmUT1SykfV0Hkg8
-	ISAWFQ802aUSDVBh8pJncb7PCEWEwNr4I0L07ZmcXkcjDYes35Vy9/7A8UbodX9ZDjC6
-	S244ERxEAMnZtqfTAFPuU5v60VjniPsSgE+0MCe6cXsyRlZMhIEBMpS2DVhrrgen7COc
-	TZVQ==
-Received: by 10.66.83.234 with SMTP id t10mr7045482pay.39.1348062778190;
-	Wed, 19 Sep 2012 06:52:58 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (93-34-169-1.ip50.fastwebnet.it.
-	[93.34.169.1])
-	by mx.google.com with ESMTPS id ih2sm1870105pbc.65.2012.09.19.06.52.55
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 19 Sep 2012 06:52:56 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <stefan@weilnetz.de>)
+	id 1TENKu-0005QO-LP; Wed, 19 Sep 2012 12:41:16 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	581837280032; Wed, 19 Sep 2012 18:41:15 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id n3nybJ2Ld3xM; Wed, 19 Sep 2012 18:41:15 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id F2DBB7280033; Wed, 19 Sep 2012 18:41:14 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org
-Date: Wed, 19 Sep 2012 15:52:44 +0200
-Message-Id: <1348062764-30806-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.7.12
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] qemu-timer: simplify qemu_run_timers
+Date: Wed, 19 Sep 2012 18:41:14 +0200
+Message-Id: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] pflash: Avoid warnings from coverity
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,46 +42,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Sep 2012 13:53:28 -0000
+X-List-Received-Date: Wed, 19 Sep 2012 16:41:29 -0000
 
-ptimer_head is an invariant pointer to clock->active_timers.
-Remove it, and just reference clock->active_timers directly.
+hw/pflash_cfi01.c:209:
+check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+hw/pflash_cfi02.c:144:
+unterminated_default: The default case is not terminated by a 'break' statement.
+
+hw/pflash_cfi02.c:238:
+check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- qemu-timer.c | 7 +++----
- 1 file modificato, 3 inserzioni(+), 4 rimozioni(-)
+ hw/pflash_cfi01.c |    6 ++++--
+ hw/pflash_cfi02.c |    7 +++++--
+ 2 files changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/qemu-timer.c b/qemu-timer.c
-index c7a1551..908a103 100644
---- a/qemu-timer.c
-+++ b/qemu-timer.c
-@@ -372,21 +372,20 @@ bool qemu_timer_expired(QEMUTimer *timer_head, int64_t current_time)
+diff --git a/hw/pflash_cfi01.c b/hw/pflash_cfi01.c
+index 56ed33f..27ae4aa 100644
+--- a/hw/pflash_cfi01.c
++++ b/hw/pflash_cfi01.c
+@@ -205,8 +205,10 @@ static void pflash_update(pflash_t *pfl, int offset,
+         /* round to sectors */
+         offset = offset >> 9;
+         offset_end = (offset_end + 511) >> 9;
+-        bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
+-                   offset_end - offset);
++        if (bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
++                       offset_end - offset) == -1) {
++            fprintf(stderr, "pflash: Error writing to flash storage\n");
++        }
+     }
+ }
  
- void qemu_run_timers(QEMUClock *clock)
- {
--    QEMUTimer **ptimer_head, *ts;
-+    QEMUTimer *ts;
-     int64_t current_time;
-    
-     if (!clock->enabled)
-         return;
+diff --git a/hw/pflash_cfi02.c b/hw/pflash_cfi02.c
+index 3e2002e..bca7d1b 100644
+--- a/hw/pflash_cfi02.c
++++ b/hw/pflash_cfi02.c
+@@ -147,6 +147,7 @@ static uint32_t pflash_read (pflash_t *pfl, target_phys_addr_t offset,
+         DPRINTF("%s: unknown command state: %x\n", __func__, pfl->cmd);
+         pfl->wcycle = 0;
+         pfl->cmd = 0;
++        /* Fall through */
+     case 0x80:
+         /* We accept reads during second unlock sequence... */
+     case 0x00:
+@@ -236,8 +237,10 @@ static void pflash_update(pflash_t *pfl, int offset,
+         /* round to sectors */
+         offset = offset >> 9;
+         offset_end = (offset_end + 511) >> 9;
+-        bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
+-                   offset_end - offset);
++        if (bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
++                       offset_end - offset) == -1) {
++            fprintf(stderr, "pflash: Error writing to flash storage\n");
++        }
+     }
+ }
  
-     current_time = qemu_get_clock_ns(clock);
--    ptimer_head = &clock->active_timers;
-     for(;;) {
--        ts = *ptimer_head;
-+        ts = clock->active_timers;
-         if (!qemu_timer_expired_ns(ts, current_time)) {
-             break;
-         }
-         /* remove timer from the list before calling the callback */
--        *ptimer_head = ts->next;
-+        clock->active_timers = ts->next;
-         ts->next = NULL;
- 
-         /* run the callback (the timer list can be modified) */
 -- 
-1.7.12
+1.7.10
 
 
