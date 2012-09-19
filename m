@@ -1,48 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TENPU-0002wn-Vl
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Sep 2012 12:46:00 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46958)
+	id 1TEQJ6-0005v0-RA
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Sep 2012 15:51:36 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34096)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TENPT-0002tn-65
-	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 12:46:00 -0400
+	(envelope-from <aurelien@aurel32.net>) id 1TEQJ2-0005h8-Fm
+	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 15:51:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TENPQ-0008UU-Rl
-	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 12:45:59 -0400
-Received: from mail-ie0-f173.google.com ([209.85.223.173]:35656)
+	(envelope-from <aurelien@aurel32.net>) id 1TEQIw-0005R9-Mq
+	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 15:51:32 -0400
+Received: from hall.aurel32.net ([88.191.126.93]:42563)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TENPQ-0008UL-Mj
-	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 12:45:56 -0400
-Received: by iebc10 with SMTP id c10so1756168ieb.4
-	for <qemu-trivial@nongnu.org>; Wed, 19 Sep 2012 09:45:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=AxFpu5YG2wKngPEJ9qdic7PHSiERkpXt2I5KqQdWn4I=;
-	b=ZSjQCwyZG6bhQIC2crTS9MqaoYV3ZFkGnDEEk4YiN4C1UwGyBzi29T3tnMa1Y3Xvry
-	JGqh2KyXjCQNkzmTt5kEcNDd4kEeiYrchaX4W/IQm4cSfUBVtVrHWmtE2jw6FhvNllON
-	KLL4tCenYv+8g6iia0FwaZ3fRobVsjzyDxQobo/kly1YG3dhZJibJ8pOe54EaXAsuoMJ
-	SGCfQFP3M8Pl12ZpzEW+8nDR0Ol/1sV4Ypl6x/+kPCeZ3S7W39jvHJ+OnhU3DaFYO88i
-	NPp3zdB1pgBYFFi6Qsw61gIj58JJ9b9f7SOGHrjpDsNJO9DP6Pnb4tgaegQvyU1nYh2H
-	PxjQ==
+	(envelope-from <aurelien@aurel32.net>)
+	id 1TEQIq-0005HX-2e; Wed, 19 Sep 2012 15:51:20 -0400
+Received: from [2001:470:d4ed:1:2db:dfff:fe14:52d] (helo=ohm.aurel32.net)
+	by hall.aurel32.net with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.72) (envelope-from <aurelien@aurel32.net>)
+	id 1TEQIh-0004Wd-Q9; Wed, 19 Sep 2012 21:51:11 +0200
+Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1TEQIg-000331-9L; Wed, 19 Sep 2012 21:51:10 +0200
+Date: Wed, 19 Sep 2012 21:51:10 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20120919195110.GA11273@ohm.aurel32.net>
+References: <1347976422-2859-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Received: by 10.50.156.132 with SMTP id we4mr3319242igb.60.1348073155862; Wed,
-	19 Sep 2012 09:45:55 -0700 (PDT)
-Received: by 10.50.19.36 with HTTP; Wed, 19 Sep 2012 09:45:55 -0700 (PDT)
-In-Reply-To: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
-References: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
-Date: Wed, 19 Sep 2012 17:45:55 +0100
-Message-ID: <CAFEAcA8Yc1V1jnqrsOPT-JVgNX2RmkM2RoZUg2DzAHtW+dWtUA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQngX5b2ST1hP9pd6NCMJVXi8MK/Fa5xdwQL80biqEyaeG7vSZHsGkkOomIEq9S52rqWjkuh
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.223.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pflash: Avoid warnings from
-	coverity
+Content-Type: text/plain; charset=iso-8859-15
+Content-Disposition: inline
+In-Reply-To: <1347976422-2859-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: Mutt 1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 88.191.126.93
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/pflash_cfi0[12]: Use
+	host-utils.h ctz32()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,42 +46,132 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Sep 2012 16:46:00 -0000
+X-List-Received-Date: Wed, 19 Sep 2012 19:51:34 -0000
 
-On 19 September 2012 17:41, Stefan Weil <sw@weilnetz.de> wrote:
-> hw/pflash_cfi01.c:209:
-> check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
->
-> hw/pflash_cfi02.c:144:
-> unterminated_default: The default case is not terminated by a 'break' statement.
->
-> hw/pflash_cfi02.c:238:
-> check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On Tue, Sep 18, 2012 at 02:53:42PM +0100, Peter Maydell wrote:
+> Drop the private reimplementation of ctz32() from pflash_cfi0[12]
+> in favour of using the standard version from host-utils.h.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/pflash_cfi01.c |    6 ++++--
->  hw/pflash_cfi02.c |    7 +++++--
->  2 files changed, 9 insertions(+), 4 deletions(-)
->
+>  hw/pflash_cfi01.c |   37 +------------------------------------
+>  hw/pflash_cfi02.c |   37 +------------------------------------
+>  2 files changed, 2 insertions(+), 72 deletions(-)
+> 
 > diff --git a/hw/pflash_cfi01.c b/hw/pflash_cfi01.c
-> index 56ed33f..27ae4aa 100644
+> index d1c7423..00f1cdd 100644
 > --- a/hw/pflash_cfi01.c
 > +++ b/hw/pflash_cfi01.c
-> @@ -205,8 +205,10 @@ static void pflash_update(pflash_t *pfl, int offset,
->          /* round to sectors */
->          offset = offset >> 9;
->          offset_end = (offset_end + 511) >> 9;
-> -        bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
-> -                   offset_end - offset);
-> +        if (bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
-> +                       offset_end - offset) == -1) {
-> +            fprintf(stderr, "pflash: Error writing to flash storage\n");
-> +        }
+> @@ -41,6 +41,7 @@
+>  #include "block.h"
+>  #include "qemu-timer.h"
+>  #include "exec-memory.h"
+> +#include "host-utils.h"
+>  
+>  #define PFLASH_BUG(fmt, ...) \
+>  do { \
+> @@ -543,42 +544,6 @@ static const MemoryRegionOps pflash_cfi01_ops_le = {
+>      .endianness = DEVICE_NATIVE_ENDIAN,
+>  };
+>  
+> -/* Count trailing zeroes of a 32 bits quantity */
+> -static int ctz32 (uint32_t n)
+> -{
+> -    int ret;
+> -
+> -    ret = 0;
+> -    if (!(n & 0xFFFF)) {
+> -        ret += 16;
+> -        n = n >> 16;
+> -    }
+> -    if (!(n & 0xFF)) {
+> -        ret += 8;
+> -        n = n >> 8;
+> -    }
+> -    if (!(n & 0xF)) {
+> -        ret += 4;
+> -        n = n >> 4;
+> -    }
+> -    if (!(n & 0x3)) {
+> -        ret += 2;
+> -        n = n >> 2;
+> -    }
+> -    if (!(n & 0x1)) {
+> -        ret++;
+> -#if 0 /* This is not necessary as n is never 0 */
+> -        n = n >> 1;
+> -#endif
+> -    }
+> -#if 0 /* This is not necessary as n is never 0 */
+> -    if (!n)
+> -        ret++;
+> -#endif
+> -
+> -    return ret;
+> -}
+> -
+>  pflash_t *pflash_cfi01_register(target_phys_addr_t base,
+>                                  DeviceState *qdev, const char *name,
+>                                  target_phys_addr_t size,
+> diff --git a/hw/pflash_cfi02.c b/hw/pflash_cfi02.c
+> index 3e2002e..8cb1549 100644
+> --- a/hw/pflash_cfi02.c
+> +++ b/hw/pflash_cfi02.c
+> @@ -40,6 +40,7 @@
+>  #include "qemu-timer.h"
+>  #include "block.h"
+>  #include "exec-memory.h"
+> +#include "host-utils.h"
+>  
+>  //#define PFLASH_DEBUG
+>  #ifdef PFLASH_DEBUG
+> @@ -575,42 +576,6 @@ static const MemoryRegionOps pflash_cfi02_ops_le = {
+>      .endianness = DEVICE_NATIVE_ENDIAN,
+>  };
+>  
+> -/* Count trailing zeroes of a 32 bits quantity */
+> -static int ctz32 (uint32_t n)
+> -{
+> -    int ret;
+> -
+> -    ret = 0;
+> -    if (!(n & 0xFFFF)) {
+> -        ret += 16;
+> -        n = n >> 16;
+> -    }
+> -    if (!(n & 0xFF)) {
+> -        ret += 8;
+> -        n = n >> 8;
+> -    }
+> -    if (!(n & 0xF)) {
+> -        ret += 4;
+> -        n = n >> 4;
+> -    }
+> -    if (!(n & 0x3)) {
+> -        ret += 2;
+> -        n = n >> 2;
+> -    }
+> -    if (!(n & 0x1)) {
+> -        ret++;
+> -#if 0 /* This is not necessary as n is never 0 */
+> -        n = n >> 1;
+> -#endif
+> -    }
+> -#if 0 /* This is not necessary as n is never 0 */
+> -    if (!n)
+> -        ret++;
+> -#endif
+> -
+> -    return ret;
+> -}
+> -
+>  pflash_t *pflash_cfi02_register(target_phys_addr_t base,
+>                                  DeviceState *qdev, const char *name,
+>                                  target_phys_addr_t size,
 
-...shouldn't we be propagating the write error up to the guest?
-It feels like this change is just silencing the coverity error
-without actually fixing the underlying problem.
+Thanks, applied.
 
--- PMM
+-- 
+Aurelien Jarno                          GPG: 1024D/F1BCDB73
+aurelien@aurel32.net                 http://www.aurel32.net
 
