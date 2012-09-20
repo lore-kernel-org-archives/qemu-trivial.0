@@ -1,50 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TEcAT-0003Mr-Q5
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Sep 2012 04:31:29 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41626)
+	id 1TEd9F-0003W5-Cj
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Sep 2012 05:34:17 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:40731)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TEcAO-0003Kc-Gg
-	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 04:31:28 -0400
+	(envelope-from <agraf@suse.de>) id 1TEd97-00039J-IX
+	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 05:34:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TEcAK-0000bz-FC
-	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 04:31:24 -0400
-Received: from mail-ie0-f173.google.com ([209.85.223.173]:35506)
+	(envelope-from <agraf@suse.de>) id 1TEd91-0005yr-VX
+	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 05:34:09 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:41392 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TEcAK-0000a8-AT
-	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 04:31:20 -0400
-Received: by iebc10 with SMTP id c10so2830314ieb.4
-	for <qemu-trivial@nongnu.org>; Thu, 20 Sep 2012 01:31:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=LvEsY5ejtt6zoDNH3fGiL9aj8xDUnsdD4aexa/Qet2E=;
-	b=kglOP5ROHtLnChlXhQvu4NFtbfBa7vJKB/WjDeXMj7qy9eH5X7wGl6lshNT2yZY/RD
-	/PtcbB/5Ec9zHHlihT0eYLiZ0oR/uvvA/AHz1M4jYkS8ra6uNqaFWges5qTLVqn5pckU
-	EUV7qE5VgaAsW2KtWkqXlveWciaBFyaYVL2cgAh1noVZHXFkVJiMNVLaLhrA9B33sqO0
-	iiDZhMWO+gSkJxU49SUx7hP+z//K+2CzvCSnbQvoSrvo4CWl4tY9fQReNXYsdkrTeY9A
-	YiyxhOtq/KbaFuAC7AnKqowPsYrfCU57Y3uik+42coGZeuWemRuaPYqCOphUTdSXnKRI
-	LzxA==
-MIME-Version: 1.0
-Received: by 10.50.168.3 with SMTP id zs3mr947852igb.60.1348129879308; Thu, 20
-	Sep 2012 01:31:19 -0700 (PDT)
-Received: by 10.50.19.36 with HTTP; Thu, 20 Sep 2012 01:31:19 -0700 (PDT)
-In-Reply-To: <505A3039.3070404@weilnetz.de>
-References: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
-	<CAFEAcA8Yc1V1jnqrsOPT-JVgNX2RmkM2RoZUg2DzAHtW+dWtUA@mail.gmail.com>
-	<505A3039.3070404@weilnetz.de>
-Date: Thu, 20 Sep 2012 09:31:19 +0100
-Message-ID: <CAFEAcA-JJOarXuswU4ZZdGr_DxqUb+5_Rr-itBveXG5+fgi+5Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <agraf@suse.de>)
+	id 1TEd8y-0005y5-E7; Thu, 20 Sep 2012 05:34:00 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 8786EA0FED;
+	Thu, 20 Sep 2012 11:33:59 +0200 (CEST)
+Mime-Version: 1.0 (Apple Message framework v1278)
+Content-Type: text/plain; charset=us-ascii
+From: Alexander Graf <agraf@suse.de>
+In-Reply-To: <1346444481-31727-1-git-send-email-sw@weilnetz.de>
+Date: Thu, 20 Sep 2012 11:33:56 +0200
+Content-Transfer-Encoding: 7bit
+Message-Id: <73237B62-A27E-4C9B-8C3D-D11EFEF89C65@suse.de>
+References: <1346444481-31727-1-git-send-email-sw@weilnetz.de>
 To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnh31cEKzs13sH6nVipM2g94Itn0yfWZHv8NkHr0OdRCEHZSEhEFo1naV1JxPRLr4ZYVZFW
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.223.173
+X-Mailer: Apple Mail (2.1278)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pflash: Avoid warnings from
-	coverity
+Subject: Re: [Qemu-trivial] [PATCH] ppc405_uc: Fix buffer overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,22 +42,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Sep 2012 08:31:29 -0000
+X-List-Received-Date: Thu, 20 Sep 2012 09:34:15 -0000
 
-On 19 September 2012 21:51, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 19.09.2012 18:45, schrieb Peter Maydell:
->> ...shouldn't we be propagating the write error up to the guest?
->> It feels like this change is just silencing the coverity error
->> without actually fixing the underlying problem.
 
-> As far as I know, there is no concept how a flash memory
-> can report a write error. Flash memory which cannot be
-> written is unusable.
+On 31.08.2012, at 22:21, Stefan Weil wrote:
 
-Just looking at the callers of the pflash_update() function,
-they have cases where they set bits in the status register
-for errors, so there clearly is a mechanism for reporting
-errors back to the guest.
+> Report from smatch:
+> 
+> ppc405_uc.c:209 dcr_read_pob(12) error: buffer overflow 'pob->besr' 2 <= 2
+> ppc405_uc.c:232 dcr_write_pob(12) error: buffer overflow 'pob->besr' 2 <= 2
+> 
+> The old code reads and writes besr[POB0_BESR1 - POB0_BESR0] or besr[2]
+> which is one too much.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
--- PMM
+Thanks, applied to ppc-next.
+
+
+Alex
+
 
