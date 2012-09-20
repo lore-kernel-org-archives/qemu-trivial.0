@@ -1,42 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TEREy-0005A3-Ht
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Sep 2012 16:51:24 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45777)
+	id 1TEcAT-0003Mr-Q5
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Sep 2012 04:31:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:41626)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TEREs-0004qa-71
-	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 16:51:22 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1TEcAO-0003Kc-Gg
+	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 04:31:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TEREn-0006YJ-Qw
-	for qemu-trivial@nongnu.org; Wed, 19 Sep 2012 16:51:18 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:54962)
+	(envelope-from <peter.maydell@linaro.org>) id 1TEcAK-0000bz-FC
+	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 04:31:24 -0400
+Received: from mail-ie0-f173.google.com ([209.85.223.173]:35506)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1TEREi-0006Sc-AW; Wed, 19 Sep 2012 16:51:08 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	88D847280033; Wed, 19 Sep 2012 22:51:06 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id SIujJBRoFrsi; Wed, 19 Sep 2012 22:51:06 +0200 (CEST)
-Received: from [192.168.178.20] (p54AD9A97.dip.t-dialin.net [84.173.154.151])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	0BB3E7280032; Wed, 19 Sep 2012 22:51:06 +0200 (CEST)
-Message-ID: <505A3039.3070404@weilnetz.de>
-Date: Wed, 19 Sep 2012 22:51:05 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:15.0) Gecko/20120827 Thunderbird/15.0
+	(envelope-from <peter.maydell@linaro.org>) id 1TEcAK-0000a8-AT
+	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 04:31:20 -0400
+Received: by iebc10 with SMTP id c10so2830314ieb.4
+	for <qemu-trivial@nongnu.org>; Thu, 20 Sep 2012 01:31:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=LvEsY5ejtt6zoDNH3fGiL9aj8xDUnsdD4aexa/Qet2E=;
+	b=kglOP5ROHtLnChlXhQvu4NFtbfBa7vJKB/WjDeXMj7qy9eH5X7wGl6lshNT2yZY/RD
+	/PtcbB/5Ec9zHHlihT0eYLiZ0oR/uvvA/AHz1M4jYkS8ra6uNqaFWges5qTLVqn5pckU
+	EUV7qE5VgaAsW2KtWkqXlveWciaBFyaYVL2cgAh1noVZHXFkVJiMNVLaLhrA9B33sqO0
+	iiDZhMWO+gSkJxU49SUx7hP+z//K+2CzvCSnbQvoSrvo4CWl4tY9fQReNXYsdkrTeY9A
+	YiyxhOtq/KbaFuAC7AnKqowPsYrfCU57Y3uik+42coGZeuWemRuaPYqCOphUTdSXnKRI
+	LzxA==
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
+Received: by 10.50.168.3 with SMTP id zs3mr947852igb.60.1348129879308; Thu, 20
+	Sep 2012 01:31:19 -0700 (PDT)
+Received: by 10.50.19.36 with HTTP; Thu, 20 Sep 2012 01:31:19 -0700 (PDT)
+In-Reply-To: <505A3039.3070404@weilnetz.de>
 References: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
 	<CAFEAcA8Yc1V1jnqrsOPT-JVgNX2RmkM2RoZUg2DzAHtW+dWtUA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8Yc1V1jnqrsOPT-JVgNX2RmkM2RoZUg2DzAHtW+dWtUA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
+	<505A3039.3070404@weilnetz.de>
+Date: Thu, 20 Sep 2012 09:31:19 +0100
+Message-ID: <CAFEAcA-JJOarXuswU4ZZdGr_DxqUb+5_Rr-itBveXG5+fgi+5Q@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQnh31cEKzs13sH6nVipM2g94Itn0yfWZHv8NkHr0OdRCEHZSEhEFo1naV1JxPRLr4ZYVZFW
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.223.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pflash: Avoid warnings from
 	coverity
@@ -51,52 +56,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Sep 2012 20:51:22 -0000
+X-List-Received-Date: Thu, 20 Sep 2012 08:31:29 -0000
 
-Am 19.09.2012 18:45, schrieb Peter Maydell:
-> On 19 September 2012 17:41, Stefan Weil <sw@weilnetz.de> wrote:
->> hw/pflash_cfi01.c:209:
->> check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
->>
->> hw/pflash_cfi02.c:144:
->> unterminated_default: The default case is not terminated by a 'break' statement.
->>
->> hw/pflash_cfi02.c:238:
->> check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>   hw/pflash_cfi01.c |    6 ++++--
->>   hw/pflash_cfi02.c |    7 +++++--
->>   2 files changed, 9 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/pflash_cfi01.c b/hw/pflash_cfi01.c
->> index 56ed33f..27ae4aa 100644
->> --- a/hw/pflash_cfi01.c
->> +++ b/hw/pflash_cfi01.c
->> @@ -205,8 +205,10 @@ static void pflash_update(pflash_t *pfl, int offset,
->>           /* round to sectors */
->>           offset = offset >> 9;
->>           offset_end = (offset_end + 511) >> 9;
->> -        bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
->> -                   offset_end - offset);
->> +        if (bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
->> +                       offset_end - offset) == -1) {
->> +            fprintf(stderr, "pflash: Error writing to flash storage\n");
->> +        }
-> ...shouldn't we be propagating the write error up to the guest?
-> It feels like this change is just silencing the coverity error
-> without actually fixing the underlying problem.
->
-> -- PMM
+On 19 September 2012 21:51, Stefan Weil <sw@weilnetz.de> wrote:
+> Am 19.09.2012 18:45, schrieb Peter Maydell:
+>> ...shouldn't we be propagating the write error up to the guest?
+>> It feels like this change is just silencing the coverity error
+>> without actually fixing the underlying problem.
 
-As far as I know, there is no concept how a flash memory
-can report a write error. Flash memory which cannot be
-written is unusable.
+> As far as I know, there is no concept how a flash memory
+> can report a write error. Flash memory which cannot be
+> written is unusable.
 
-hw/nand.c uses a similar handling for write errors,
-but writes the error message to stdout (no good idea).
+Just looking at the callers of the pflash_update() function,
+they have cases where they set bits in the status register
+for errors, so there clearly is a mechanism for reporting
+errors back to the guest.
 
-- Stefan
-
+-- PMM
 
