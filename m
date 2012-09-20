@@ -1,48 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TEk4D-00047o-1O
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Sep 2012 12:57:33 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46521)
+	id 1TEkAn-0005n1-RT
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Sep 2012 13:04:21 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47117)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TEk43-0003dD-Hg
-	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 12:57:31 -0400
+	(envelope-from <sw@weilnetz.de>) id 1TEkAe-0005Nx-Qj
+	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 13:04:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TEk3x-0000YD-SH
-	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 12:57:23 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:43320)
+	(envelope-from <sw@weilnetz.de>) id 1TEkAZ-0002xY-2G
+	for qemu-trivial@nongnu.org; Thu, 20 Sep 2012 13:04:12 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59632)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <sw@weilnetz.de>)
-	id 1TEk3m-0000WK-KJ; Thu, 20 Sep 2012 12:57:06 -0400
+	id 1TEkAP-0002uT-EA; Thu, 20 Sep 2012 13:03:57 -0400
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	080677280033; Thu, 20 Sep 2012 18:57:06 +0200 (CEST)
+	F1BFE7280033; Thu, 20 Sep 2012 19:03:56 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id PUdxazEmxM+I; Thu, 20 Sep 2012 18:57:05 +0200 (CEST)
+	with ESMTP id Kelpw0+Bboy5; Thu, 20 Sep 2012 19:03:56 +0200 (CEST)
 Received: from flocke.weilnetz.de (p54AD9B9D.dip.t-dialin.net [84.173.155.157])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	826047280032; Thu, 20 Sep 2012 18:57:05 +0200 (CEST)
+	942EB7280032; Thu, 20 Sep 2012 19:03:56 +0200 (CEST)
 Received: from localhost ([127.0.0.1] ident=stefan)
 	by flocke.weilnetz.de with esmtp (Exim 4.72)
 	(envelope-from <sw@weilnetz.de>)
-	id 1TEk3l-00012n-6N; Thu, 20 Sep 2012 18:57:05 +0200
-Message-ID: <505B4AE1.6000505@weilnetz.de>
-Date: Thu, 20 Sep 2012 18:57:05 +0200
+	id 1TEkAN-00013c-QC; Thu, 20 Sep 2012 19:03:56 +0200
+Message-ID: <505B4C7B.4000501@weilnetz.de>
+Date: Thu, 20 Sep 2012 19:03:55 +0200
 From: Stefan Weil <sw@weilnetz.de>
 User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
 	rv:1.9.1.16) Gecko/20120724 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
 To: qemu-trivial <qemu-trivial@nongnu.org>
-References: <1346497248-14659-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1346497248-14659-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+References: <1346703803-22003-1-git-send-email-sw@weilnetz.de>	<504774FF.6000501@suse.de>	<CAJSP0QXtri4UNmdriCFiTg4_m+-a0CBpG36FYFdXQ1XcJywNww@mail.gmail.com>
+	<504788BB.7030609@weilnetz.de> <50478F9E.80403@weilnetz.de>
+In-Reply-To: <50478F9E.80403@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
 X-Received-From: 78.47.199.172
-Cc: qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] pflash_cfi01: Fix warning caused by
-	unreachable code
+Cc: =?ISO-8859-1?Q?Andreas_F=E4rb?= =?ISO-8859-1?Q?er?= <afaerber@suse.de>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc-dis: Remove redundant
+	NULL check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,64 +56,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Sep 2012 16:57:31 -0000
+X-List-Received-Date: Thu, 20 Sep 2012 17:04:20 -0000
 
-Am 01.09.2012 13:00, schrieb Stefan Weil:
-> Report from smatch:
-> hw/pflash_cfi01.c:431 pflash_write(180) info: ignoring unreachable code.
+Am 05.09.2012 19:45, schrieb Stefan Weil:
+> Am 05.09.2012 19:15, schrieb Stefan Weil:
+>>
+>> AFAIK, binutils moved to GPL 3. Therefore I don't expect that
+>> QEMU will update to upstream in the next years.
+>>
+>> We'll have to maintain the code which we have.
+>>
+>> Try "git log *-dis.c" or "gitk *-dis.c": there are already lots
+>> of more trivial changes which got applied to the disassembler files.
+>>
+>> => The patch should be applied.
+>>
+>> Regards,
+>> Stefan
 >
-> Instead of removing the return statement after the switch statement,
-> the patch replaces the return statements in the switch statement by
-> break statements. Other switch statements in the same code do it also
-> like that.
+> Here is some additional information:
 >
-> Signed-off-by: Stefan Weil<sw@weilnetz.de>
-> ---
->   hw/pflash_cfi01.c |    8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
+> binutils switched from GPL 2 to GPL 3 with version 2.18:
 >
-> diff --git a/hw/pflash_cfi01.c b/hw/pflash_cfi01.c
-> index d1c7423..56ed33f 100644
-> --- a/hw/pflash_cfi01.c
-> +++ b/hw/pflash_cfi01.c
-> @@ -320,7 +320,7 @@ static void pflash_write(pflash_t *pfl, target_phys_addr_t offset,
->           }
->           pfl->wcycle++;
->           pfl->cmd = cmd;
-> -        return;
-> +        break;
->       case 1:
->           switch (pfl->cmd) {
->           case 0x10: /* Single Byte Program */
-> @@ -375,7 +375,7 @@ static void pflash_write(pflash_t *pfl, target_phys_addr_t offset,
->           default:
->               goto error_flash;
->           }
-> -        return;
-> +        break;
->       case 2:
->           switch (pfl->cmd) {
->           case 0xe8: /* Block write */
-> @@ -406,7 +406,7 @@ static void pflash_write(pflash_t *pfl, target_phys_addr_t offset,
->           default:
->               goto error_flash;
->           }
-> -        return;
-> +        break;
->       case 3: /* Confirm mode */
->           switch (pfl->cmd) {
->           case 0xe8: /* Block write */
-> @@ -422,7 +422,7 @@ static void pflash_write(pflash_t *pfl, target_phys_addr_t offset,
->           default:
->               goto error_flash;
->           }
-> -        return;
-> +        break;
->       default:
->           /* Should never happen */
->           DPRINTF("%s: invalid write state\n",  __func__);
->    
+> Changes in 2.18:
+>
+> * The binutils sources are now released under version 3 of the GNU 
+> General
+>   Public License.
+>
+>
+> sparc-dis.c is already based on 2.17, so we won't get anything newer.
+> Even the latest version still uses the redundant NULL check, so I
+> can send my patch to the binutils maintainers, too.
+>
+> Regards,
+> Stefan
+>
 
-Ping?
+
+Ping? If nobody objects, I suggest to apply the patch via qemu-trivial.
+
+Regards
+
+Stefan W.
 
 
