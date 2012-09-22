@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TFST8-000279-Al
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 12:22:14 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43037)
+	id 1TFSaB-0003uc-8P
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 12:29:31 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:33798)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TFST5-000200-Qy
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 12:22:12 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TFSa7-0003mW-VQ
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 12:29:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TFST4-0000Ql-Ul
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 12:22:11 -0400
-Received: from mail-wg0-f53.google.com ([74.125.82.53]:37870)
+	(envelope-from <stefanha@gmail.com>) id 1TFSa7-0002On-7R
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 12:29:27 -0400
+Received: from mail-we0-f173.google.com ([74.125.82.173]:42795)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TFST2-0000QW-OS; Sat, 22 Sep 2012 12:22:08 -0400
-Received: by wgbdr1 with SMTP id dr1so2787297wgb.10
-	for <multiple recipients>; Sat, 22 Sep 2012 09:22:08 -0700 (PDT)
+	id 1TFSa4-0002OM-Ep; Sat, 22 Sep 2012 12:29:24 -0400
+Received: by weyt11 with SMTP id t11so2298999wey.4
+	for <multiple recipients>; Sat, 22 Sep 2012 09:29:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=EjDU0waRM1n5nmA/GK361v6EjDEu3BSyoPpYDbY73oU=;
-	b=lRFRqrMZ7Pr5/KhZu1Wwr5q6ak0ALVKnVhmXlHznU93wVcXkq7xAedMTIz8tm1i0Cg
-	4Uvqu7W4wHc+x2tYWYhzFEKJj4Fc0fql+YqHaj+sFF5UrQs4bMS+th6oFukdqZQjFRvd
-	xgQd7pyBGCUWxYvuI3PYrSzhzxxPe9wRDA4hIhVIUrw8hk1ilCMVqPPwHPawQpGl500/
-	HZ61hUBLXioVOG42EfGfm9quc/lXRRwsXpy/naV6X16EmO2HmS6kOGT2bWG1gE206FUN
-	AlATyWOcoR+Ix+sQEyVN9FxrHn1EN2RuLlAQJVd2zV+5hLfA4KQRPkeEdKUFwsBrsrDt
-	uM0A==
-Received: by 10.216.85.149 with SMTP id u21mr4438470wee.147.1348330927979;
-	Sat, 22 Sep 2012 09:22:07 -0700 (PDT)
+	bh=kq9YOqGGqRCal3X8wYoVPkMAiZ2Lz75CgVtXdvfEhm8=;
+	b=qPEEWa1oBQIbkJdI89F/PndSrYU4nF8r94I7XJYds6XM4E9mM/gLczrYd7HU0+V4Cu
+	uY6YYoX2U06JepEhv8yjdZ42OnbIB/PDn/TK3mvorC0xkhl03DaJefE+ku5z468Ydns6
+	lSq0PjKVt6uhJffWHZTV2UIRiGv32pHGh3nxaNBW8DPVxxTvPbs3vJaK0UIuiGoUkZ3S
+	esOXZyVdNDRgoGQkFNufDO+xuPvwUAQqrqUyuBzsJd9SSFBw3WunefHjvnsSMjsHgUpN
+	xiplBciaQwTaUE4M7zmOPE0Np8lrqWzsJTdER48NkGHJMpDdSwVjUQjJ1Ew+EsHY4s5i
+	MNkw==
+Received: by 10.216.140.135 with SMTP id e7mr4486009wej.149.1348331363580;
+	Sat, 22 Sep 2012 09:29:23 -0700 (PDT)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id ct3sm4370128wib.5.2012.09.22.09.22.06
+	by mx.google.com with ESMTPS id k2sm5020006wiz.7.2012.09.22.09.29.22
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sat, 22 Sep 2012 09:22:07 -0700 (PDT)
-Date: Sat, 22 Sep 2012 17:22:05 +0100
+	Sat, 22 Sep 2012 09:29:22 -0700 (PDT)
+Date: Sat, 22 Sep 2012 17:29:20 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20120922162205.GA14154@stefanha-thinkpad.localdomain>
-References: <1348062764-30806-1-git-send-email-pbonzini@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20120922162920.GB14154@stefanha-thinkpad.localdomain>
+References: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1348062764-30806-1-git-send-email-pbonzini@redhat.com>
+In-Reply-To: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 74.125.82.53
+X-Received-From: 74.125.82.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-timer: simplify
-	qemu_run_timers
+Subject: Re: [Qemu-trivial] [PATCH] pflash: Avoid warnings from coverity
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,22 +56,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Sep 2012 16:22:12 -0000
+X-List-Received-Date: Sat, 22 Sep 2012 16:29:29 -0000
 
-On Wed, Sep 19, 2012 at 03:52:44PM +0200, Paolo Bonzini wrote:
-> ptimer_head is an invariant pointer to clock->active_timers.
-> Remove it, and just reference clock->active_timers directly.
+On Wed, Sep 19, 2012 at 06:41:14PM +0200, Stefan Weil wrote:
+> hw/pflash_cfi01.c:209:
+> check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
 > 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> hw/pflash_cfi02.c:144:
+> unterminated_default: The default case is not terminated by a 'break' statement.
+> 
+> hw/pflash_cfi02.c:238:
+> check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  qemu-timer.c | 7 +++----
->  1 file modificato, 3 inserzioni(+), 4 rimozioni(-)
+>  hw/pflash_cfi01.c |    6 ++++--
+>  hw/pflash_cfi02.c |    7 +++++--
+>  2 files changed, 9 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/pflash_cfi01.c b/hw/pflash_cfi01.c
+> index 56ed33f..27ae4aa 100644
+> --- a/hw/pflash_cfi01.c
+> +++ b/hw/pflash_cfi01.c
+> @@ -205,8 +205,10 @@ static void pflash_update(pflash_t *pfl, int offset,
+>          /* round to sectors */
+>          offset = offset >> 9;
+>          offset_end = (offset_end + 511) >> 9;
+> -        bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
+> -                   offset_end - offset);
+> +        if (bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
+> +                       offset_end - offset) == -1) {
 
-qemu_run_timers() is a piece of code that I always have to read
-line-by-line.  This simplification helps a bit, nice.
+bdrv_write() returns -errno, not -1.
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+> +            fprintf(stderr, "pflash: Error writing to flash storage\n");
+> +        }
+
+Please report the errno and possibly bdrv_get_device_name() to uniquely
+identify this block device.
+
+Peter's comments about reporting errors to the guest make sense to me.
+I'm not sure how much work that involves, printing the error is a step
+in the right direction but we shouldn't forget the TODO.
 
 Stefan
 
