@@ -1,45 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TFUpM-0003Uh-KX
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 14:53:20 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34975)
+	id 1TFV8z-0007lQ-Gg
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 15:13:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:60188)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TFUpJ-0003KM-1I
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 14:53:19 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1TFV8x-0007ek-ER
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 15:13:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TFUpH-0008A0-Vi
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 14:53:16 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:33636)
+	(envelope-from <stefan@weilnetz.de>) id 1TFV8w-0006eU-BT
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 15:13:35 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:50500)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1TFUpF-00089W-IL; Sat, 22 Sep 2012 14:53:13 -0400
+	(envelope-from <stefan@weilnetz.de>)
+	id 1TFV8t-0006dG-QN; Sat, 22 Sep 2012 15:13:31 -0400
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	D22B27280033; Sat, 22 Sep 2012 20:53:11 +0200 (CEST)
+	0D0147280032; Sat, 22 Sep 2012 21:13:30 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id 0OVezdNCIYmn; Sat, 22 Sep 2012 20:53:11 +0200 (CEST)
-Received: from [192.168.178.20] (p54ADAD92.dip.t-dialin.net [84.173.173.146])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	2FEBF7280032; Sat, 22 Sep 2012 20:53:11 +0200 (CEST)
-Message-ID: <505E0916.6030707@weilnetz.de>
-Date: Sat, 22 Sep 2012 20:53:10 +0200
+	with ESMTP id QXJBjyH5P9mo; Sat, 22 Sep 2012 21:13:29 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 72BE17280033; Sat, 22 Sep 2012 21:13:29 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:15.0) Gecko/20120827 Thunderbird/15.0
-MIME-Version: 1.0
 To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
-	<20120922162920.GB14154@stefanha-thinkpad.localdomain>
-In-Reply-To: <20120922162920.GB14154@stefanha-thinkpad.localdomain>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
+Date: Sat, 22 Sep 2012 21:13:28 +0200
+Message-Id: <1348341208-23260-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
 X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] pflash: Avoid warnings from coverity
+Cc: Blue Swirl <blauwirbel@gmail.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] net/socket: Fix compiler warning (regression
+	for MinGW)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,66 +47,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Sep 2012 18:53:19 -0000
+X-List-Received-Date: Sat, 22 Sep 2012 19:13:36 -0000
 
-Am 22.09.2012 18:29, schrieb Stefan Hajnoczi:
-> On Wed, Sep 19, 2012 at 06:41:14PM +0200, Stefan Weil wrote:
-[snip]
->>           offset_end = (offset_end + 511) >> 9;
->> -        bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
->> -                   offset_end - offset);
->> +        if (bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
->> +                       offset_end - offset) == -1) {
-> bdrv_write() returns -errno, not -1.
+Commit 213fd5087e2e4e2da10ad266df0ba950cf7618bf removed a type cast
+which is needed for MinGW:
 
-Thanks. It looks like we have more code which uses the wrong check
-(and which I copied). So more patches are needed.
+net/socket.c:136: warning:
+ pointer targets in passing argument 2 of =E2=80=98sendto=E2=80=99 differ=
+ in signedness
+/usr/lib/gcc/amd64-mingw32msvc/4.4.4/../../../../amd64-mingw32msvc/includ=
+e/winsock2.h:1313: note:
+ expected =E2=80=98const char *=E2=80=99 but argument is of type =E2=80=98=
+const uint8_t *=E2=80=99
 
-Should we also replace code which does bdrv_write() != 0 or !bdrv_write()
-by bdrv_write() < 0 to get more uniform code (and the same for bdrv_read*),
-even it is not strictly wrong?
+Add a 'qemu_sendto' macro which provides that type cast where needed
+and use the new macro instead of 'sendto'.
 
-Maybe Kevin as block maintainer should decide that.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
->> +            fprintf(stderr, "pflash: Error writing to flash storage\n");
->> +        }
-> Please report the errno and possibly bdrv_get_device_name() to uniquely
-> identify this block device.
-
-That would be overkill here: writing flash memory is not used very
-often (even on real hardware it is typically only used for firmware
-updates). I expect that anyone who does a firmware update in a
-QEMU guest will know the name of the flash image file.
-
-Usually I replace the flash image file on the QEMU host when I want
-to exchange the firmware (much easier than flashing in the guest).
-
-Reporting errno might be more reasonable.Are there other values than
-EIO (e.g. defective media) and ENOSPC (disk full) which could occur?
-
-A common solution for all users of bdrv_write in the block layer
-would be even better. VirtualBox for example stops the guest when
-ENOSPC (disk full) occurs, so it's possible for users to fix that
-and resume the emulation.
-
-> Peter's comments about reporting errors to the guest make sense to me.
-> I'm not sure how much work that involves, printing the error is a step
-> in the right direction but we shouldn't forget the TODO.
->
-> Stefan
-
-There is no 1:1 mapping of block write errors on the host to
-an error statusin the flash controller.
-
-Currently the code in pflash_cfi01.c sets an error status which
-can be (mis-)used for block write errors. I just prepared a
-patch which does this.
-
-In pflash_cfi02.c I did not see such error status handling,
-therefore I'd stick to printing an error message there.
-
+I hope the modifications are trivial enough to justify that I did not
+split this in two patches.
+=20
 Regards
 
 Stefan W.
+
+ net/socket.c  |    6 +++---
+ qemu-common.h |    5 +++++
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/net/socket.c b/net/socket.c
+index 69aad03..ce4f980 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -131,9 +131,9 @@ static ssize_t net_socket_receive_dgram(NetClientStat=
+e *nc, const uint8_t *buf,
+     ssize_t ret;
+=20
+     do {
+-        ret =3D sendto(s->fd, buf, size, 0,
+-                     (struct sockaddr *)&s->dgram_dst,
+-                     sizeof(s->dgram_dst));
++        ret =3D qemu_sendto(s->fd, buf, size, 0,
++                          (struct sockaddr *)&s->dgram_dst,
++                          sizeof(s->dgram_dst));
+     } while (ret =3D=3D -1 && errno =3D=3D EINTR);
+=20
+     if (ret =3D=3D -1 && errno =3D=3D EAGAIN) {
+diff --git a/qemu-common.h b/qemu-common.h
+index 2f00c15..4f0ed9e 100644
+--- a/qemu-common.h
++++ b/qemu-common.h
+@@ -225,9 +225,14 @@ int qemu_pipe(int pipefd[2]);
+ #endif
+=20
+ #ifdef _WIN32
++/* MinGW needs a type cast for the 'buf' argument. */
+ #define qemu_recv(sockfd, buf, len, flags) recv(sockfd, (void *)buf, len=
+, flags)
++#define qemu_sendto(sockfd, buf, len, flags, destaddr, addrlen) \
++    sendto(sockfd, (const void *)buf, len, flags, destaddr, addrlen)
+ #else
+ #define qemu_recv(sockfd, buf, len, flags) recv(sockfd, buf, len, flags)
++#define qemu_sendto(sockfd, buf, len, flags, destaddr, addrlen) \
++    sendto(sockfd, buf, len, flags, destaddr, addrlen)
+ #endif
+=20
+ /* Error handling.  */
+--=20
+1.7.10
 
 
