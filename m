@@ -1,50 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TFSaB-0003uc-8P
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 12:29:31 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:33798)
+	id 1TFSd1-000555-15
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 12:32:27 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:41878)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TFSa7-0003mW-VQ
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 12:29:28 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TFScy-0004z5-Sb
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 12:32:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TFSa7-0002On-7R
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 12:29:27 -0400
-Received: from mail-we0-f173.google.com ([74.125.82.173]:42795)
+	(envelope-from <stefanha@gmail.com>) id 1TFScx-0003df-Pd
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 12:32:24 -0400
+Received: from mail-we0-f173.google.com ([74.125.82.173]:52708)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TFSa4-0002OM-Ep; Sat, 22 Sep 2012 12:29:24 -0400
-Received: by weyt11 with SMTP id t11so2298999wey.4
-	for <multiple recipients>; Sat, 22 Sep 2012 09:29:23 -0700 (PDT)
+	id 1TFSct-0003co-Vg; Sat, 22 Sep 2012 12:32:20 -0400
+Received: by weyt11 with SMTP id t11so2299946wey.4
+	for <multiple recipients>; Sat, 22 Sep 2012 09:32:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=kq9YOqGGqRCal3X8wYoVPkMAiZ2Lz75CgVtXdvfEhm8=;
-	b=qPEEWa1oBQIbkJdI89F/PndSrYU4nF8r94I7XJYds6XM4E9mM/gLczrYd7HU0+V4Cu
-	uY6YYoX2U06JepEhv8yjdZ42OnbIB/PDn/TK3mvorC0xkhl03DaJefE+ku5z468Ydns6
-	lSq0PjKVt6uhJffWHZTV2UIRiGv32pHGh3nxaNBW8DPVxxTvPbs3vJaK0UIuiGoUkZ3S
-	esOXZyVdNDRgoGQkFNufDO+xuPvwUAQqrqUyuBzsJd9SSFBw3WunefHjvnsSMjsHgUpN
-	xiplBciaQwTaUE4M7zmOPE0Np8lrqWzsJTdER48NkGHJMpDdSwVjUQjJ1Ew+EsHY4s5i
-	MNkw==
-Received: by 10.216.140.135 with SMTP id e7mr4486009wej.149.1348331363580;
-	Sat, 22 Sep 2012 09:29:23 -0700 (PDT)
+	:content-type:content-disposition:content-transfer-encoding
+	:in-reply-to:user-agent;
+	bh=U6sH+PVg5X89yiGePMsNtwCkAkyzsoU6P7tqbaMhbmY=;
+	b=c9wguQmH/ANcaY1iTv+/xxt35hIJciJXUVv/uGW1stpxbZpHAziPD5cns2YxD3PeEi
+	uswmQ3t1zcLyCMDEiXo984idHlEcqPqPGFvIg47pikGMImcyiyETB5iusavdaVpgqc8V
+	do/e7k1A9xNrHSdaOU/PYESGhOeJNp1zoWLzO5lBIn3tme2r4xfDJNBhZZ9iErADoxKm
+	XPCsArIgC1UB72/KSXwdFmYYm40wBxgf2QpohS0mSbm98ZVkVSxC4ia4w1DNXpBBZoyr
+	Tv6cGMzMCjkg9WP3J/J1TlASkt8MF50kuy5qnRzaLVsV3mFzWmH+j1J004v8M4MqmsH2
+	8t5Q==
+Received: by 10.180.8.40 with SMTP id o8mr3833639wia.9.1348331538900;
+	Sat, 22 Sep 2012 09:32:18 -0700 (PDT)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id k2sm5020006wiz.7.2012.09.22.09.29.22
+	by mx.google.com with ESMTPS id l5sm5040683wix.5.2012.09.22.09.32.17
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sat, 22 Sep 2012 09:29:22 -0700 (PDT)
-Date: Sat, 22 Sep 2012 17:29:20 +0100
+	Sat, 22 Sep 2012 09:32:18 -0700 (PDT)
+Date: Sat, 22 Sep 2012 17:32:16 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120922162920.GB14154@stefanha-thinkpad.localdomain>
-References: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
+Message-ID: <20120922163216.GC14154@stefanha-thinkpad.localdomain>
+References: <1348169539-24797-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1348169539-24797-1-git-send-email-sw@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 74.125.82.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] pflash: Avoid warnings from coverity
+Subject: Re: [Qemu-trivial] [PATCH] net/socket: Fix compiler warning
+	(regression for MinGW)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,48 +59,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Sep 2012 16:29:29 -0000
+X-List-Received-Date: Sat, 22 Sep 2012 16:32:25 -0000
 
-On Wed, Sep 19, 2012 at 06:41:14PM +0200, Stefan Weil wrote:
-> hw/pflash_cfi01.c:209:
-> check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
+On Thu, Sep 20, 2012 at 09:32:19PM +0200, Stefan Weil wrote:
+> Add a type cast which was removed by commit
+> 213fd5087e2e4e2da10ad266df0ba950cf7618bf again.
 > 
-> hw/pflash_cfi02.c:144:
-> unterminated_default: The default case is not terminated by a 'break' statement.
+> Without it, MinGW compilers complain:
 > 
-> hw/pflash_cfi02.c:238:
-> check_return: Calling function "bdrv_write" without checking return value (as is done elsewhere 35 out of 37 times).
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  hw/pflash_cfi01.c |    6 ++++--
->  hw/pflash_cfi02.c |    7 +++++--
->  2 files changed, 9 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/pflash_cfi01.c b/hw/pflash_cfi01.c
-> index 56ed33f..27ae4aa 100644
-> --- a/hw/pflash_cfi01.c
-> +++ b/hw/pflash_cfi01.c
-> @@ -205,8 +205,10 @@ static void pflash_update(pflash_t *pfl, int offset,
->          /* round to sectors */
->          offset = offset >> 9;
->          offset_end = (offset_end + 511) >> 9;
-> -        bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
-> -                   offset_end - offset);
-> +        if (bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
-> +                       offset_end - offset) == -1) {
+> net/socket.c:136: warning:
+>  pointer targets in passing argument 2 of ‘sendto’ differ in signedness
+> /usr/lib/gcc/amd64-mingw32msvc/4.4.4/../../../../amd64-mingw32msvc/include/winsock2.h:1313: note:
+>  expected ‘const char *’ but argument is of type ‘const uint8_t *’
 
-bdrv_write() returns -errno, not -1.
+Wow, that's messed up.  sendto() is POSIX and the prototype shouldn't be
+const char *.
 
-> +            fprintf(stderr, "pflash: Error writing to flash storage\n");
-> +        }
+It's easy for someone to remove this cast in the future.  Please add a
+comment explaining that it's needed because MinGW headers don't have the
+POSIX version of sendto().
 
-Please report the errno and possibly bdrv_get_device_name() to uniquely
-identify this block device.
-
-Peter's comments about reporting errors to the guest make sense to me.
-I'm not sure how much work that involves, printing the error is a step
-in the right direction but we shouldn't forget the TODO.
-
+Thanks,
 Stefan
 
