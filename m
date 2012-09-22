@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TFRsM-0007gF-VC
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 11:44:14 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54929)
+	id 1TFS1k-0001Fv-5F
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 11:53:56 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:52576)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TFRsK-0007g8-SF
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 11:44:13 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TFS1h-00017B-DL
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 11:53:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TFRsJ-0003jv-Rd
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 11:44:12 -0400
-Received: from mail-wi0-f181.google.com ([209.85.212.181]:60527)
+	(envelope-from <stefanha@gmail.com>) id 1TFS1g-0007E9-F4
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 11:53:53 -0400
+Received: from mail-we0-f173.google.com ([74.125.82.173]:56830)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TFRsJ-0003jr-LS; Sat, 22 Sep 2012 11:44:11 -0400
-Received: by wibhm2 with SMTP id hm2so2345527wib.10
-	for <multiple recipients>; Sat, 22 Sep 2012 08:44:10 -0700 (PDT)
+	id 1TFS1e-0007Cy-8V; Sat, 22 Sep 2012 11:53:50 -0400
+Received: by weyt11 with SMTP id t11so2287882wey.4
+	for <multiple recipients>; Sat, 22 Sep 2012 08:53:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=gK7ATcYlOXT7IRl/tkEFsVBEZs2MjGOQj+iJpebmtyc=;
-	b=kJCNa51Tnjnb6uJrlpWVkbo009swu15E75WCP8AZT4BzBBaa79DiKBSD5LUYcgeQZQ
-	96/4SgRn3YuoYH5U457PguBYn6m0ASMGL3+ZjCFvMJdMYgl+ogBPXPfElGHhP21GQF5y
-	5uFFg92qBCryCK+vATDfoP21PMSRN0Up8nODz0EOmI4W+1ZcWMIZAQKU2YLQ79Vstvgz
-	DwzonyuvXz0xxkY5wrOxio4PKNo8nEPxbzsMWKY7+RnLipyhcl3l8K0m+mt+WTEQ6Mzm
-	X09Wu7uKZfntVK7dZ+SdlQ1LZfs7vcrELzZ/S7bnFBHNmwEH5mExHwpmNcJcWG3eLsv1
-	KjDg==
-Received: by 10.180.73.76 with SMTP id j12mr3656418wiv.11.1348328650748;
-	Sat, 22 Sep 2012 08:44:10 -0700 (PDT)
+	bh=Hod0t5JK0AK5c1MJaT0Z/xlsPNXoS5pXIaExB40rmzs=;
+	b=QHyFxz35CtfA6kpGrcsLKch/yyuqhqZj/jtYpHbOCG8mimqooGEMiAgif9B3JUmJio
+	n5DDovwXwabHtpsThCb4hGpxKxmmNADwzktT9xSWD0+NRDN6Kf7kNtr2IT8LTlPwSa1G
+	iOvhQmjQ6/uVBA5ypZZ++ehCJFHWvgeUC+2PRWye95gzqC9+SOrYiEJzrXK+SZMy8ohc
+	72oA6+PatU04tEH5Vo6zUnLCs2KltFODtNzHXBBou5s/Eh9/53r13mL3ELgmEVwfXQDb
+	vuBviGVgSTHjGkXr52hEnrelP4DMwrMXUCYkPWJcX8GW19+jEp5oWQnTdv6b+NVsloZ3
+	fr/A==
+Received: by 10.180.94.164 with SMTP id dd4mr3728005wib.1.1348329229224;
+	Sat, 22 Sep 2012 08:53:49 -0700 (PDT)
 Received: from localhost ([109.224.133.37])
-	by mx.google.com with ESMTPS id w7sm4214758wiz.0.2012.09.22.08.44.09
+	by mx.google.com with ESMTPS id j6sm4849143wiy.4.2012.09.22.08.53.48
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sat, 22 Sep 2012 08:44:10 -0700 (PDT)
-Date: Sat, 22 Sep 2012 16:44:08 +0100
+	Sat, 22 Sep 2012 08:53:48 -0700 (PDT)
+Date: Sat, 22 Sep 2012 16:53:46 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20120922154408.GF13216@stefanha-thinkpad.localdomain>
-References: <1346497248-14659-1-git-send-email-sw@weilnetz.de>
+To: Alon Levy <alevy@redhat.com>
+Message-ID: <20120922155346.GG13216@stefanha-thinkpad.localdomain>
+References: <1346540656-2927-1-git-send-email-alevy@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1346497248-14659-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1346540656-2927-1-git-send-email-alevy@redhat.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.212.181
+X-Received-From: 74.125.82.173
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] pflash_cfi01: Fix warning caused by
- unreachable code
+Subject: Re: [Qemu-trivial] [PATCH] dtrace backend: add function to reserved
+ words
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,21 +57,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Sep 2012 15:44:13 -0000
+X-List-Received-Date: Sat, 22 Sep 2012 15:53:54 -0000
 
-On Sat, Sep 01, 2012 at 01:00:48PM +0200, Stefan Weil wrote:
-> Report from smatch:
-> hw/pflash_cfi01.c:431 pflash_write(180) info: ignoring unreachable code.
-> 
-> Instead of removing the return statement after the switch statement,
-> the patch replaces the return statements in the switch statement by
-> break statements. Other switch statements in the same code do it also
-> like that.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On Sun, Sep 02, 2012 at 02:04:16AM +0300, Alon Levy wrote:
+> Signed-off-by: Alon Levy <alevy@redhat.com>
 > ---
->  hw/pflash_cfi01.c |    8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  scripts/tracetool/backend/dtrace.py | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
