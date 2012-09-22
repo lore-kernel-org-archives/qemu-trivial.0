@@ -1,41 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TFTOY-0006sF-4t
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 13:21:34 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:47545)
+	id 1TFU1d-0007UH-Gg
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Sep 2012 14:01:57 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TFTOV-0006lW-NL
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 13:21:32 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1TFU1R-0007J9-5q
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 14:01:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TFTOU-0003F3-SM
-	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 13:21:31 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:42646)
+	(envelope-from <mjt@tls.msk.ru>) id 1TFU1Q-0008LH-A2
+	for qemu-trivial@nongnu.org; Sat, 22 Sep 2012 14:01:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:53405)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1TFTOS-0003Ee-39; Sat, 22 Sep 2012 13:21:28 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	050917280032; Sat, 22 Sep 2012 19:21:26 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 74HD9ZMa9IeF; Sat, 22 Sep 2012 19:21:23 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 84A2E7280033; Sat, 22 Sep 2012 19:21:23 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Date: Sat, 22 Sep 2012 19:21:22 +0200
-Message-Id: <1348334482-2598-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1TFU1O-0008Ke-6C; Sat, 22 Sep 2012 14:01:42 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id A25A8A1761;
+	Sat, 22 Sep 2012 22:01:33 +0400 (MSK)
+Message-ID: <505DFCFD.6010202@msgid.tls.msk.ru>
+Date: Sat, 22 Sep 2012 22:01:33 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:10.0.6esrpre) Gecko/20120817 Icedove/10.0.6
 MIME-Version: 1.0
+To: Stefan Hajnoczi <stefanha@gmail.com>
+References: <1348169539-24797-1-git-send-email-sw@weilnetz.de>
+	<20120922163216.GC14154@stefanha-thinkpad.localdomain>
+In-Reply-To: <20120922163216.GC14154@stefanha-thinkpad.localdomain>
+X-Enigmail-Version: 1.4.1
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH v2] net/socket: Fix compiler warning
-	(regression for MinGW)
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net/socket: Fix compiler
+ warning (regression for MinGW)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,54 +48,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Sep 2012 17:21:32 -0000
+X-List-Received-Date: Sat, 22 Sep 2012 18:01:46 -0000
 
-Add a type cast which was removed by commit
-213fd5087e2e4e2da10ad266df0ba950cf7618bf again.
+On 22.09.2012 20:32, Stefan Hajnoczi wrote:
+> On Thu, Sep 20, 2012 at 09:32:19PM +0200, Stefan Weil wrote:
+>> Add a type cast which was removed by commit
+>> 213fd5087e2e4e2da10ad266df0ba950cf7618bf again.
+>>
+>> Without it, MinGW compilers complain:
+>>
+>> net/socket.c:136: warning:
+>>  pointer targets in passing argument 2 of =E2=80=98sendto=E2=80=99 dif=
+fer in signedness
+>> /usr/lib/gcc/amd64-mingw32msvc/4.4.4/../../../../amd64-mingw32msvc/inc=
+lude/winsock2.h:1313: note:
+>>  expected =E2=80=98const char *=E2=80=99 but argument is of type =E2=80=
+=98const uint8_t *=E2=80=99
+>=20
+> Wow, that's messed up.  sendto() is POSIX and the prototype shouldn't b=
+e
+> const char *.
+>=20
+> It's easy for someone to remove this cast in the future.  Please add a
+> comment explaining that it's needed because MinGW headers don't have th=
+e
+> POSIX version of sendto().
 
-Without it, MinGW compilers complain:
+There's qemu_recv() in qemu-common.h, for exactly the same purpose.
+But qemu_recv() is much more evil, IMHO.
 
-net/socket.c:136: warning:
- pointer targets in passing argument 2 of =E2=80=98sendto=E2=80=99 differ=
- in signedness
-/usr/lib/gcc/amd64-mingw32msvc/4.4.4/../../../../amd64-mingw32msvc/includ=
-e/winsock2.h:1313: note:
- expected =E2=80=98const char *=E2=80=99 but argument is of type =E2=80=98=
-const uint8_t *=E2=80=99
+Thanks,
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
-
-v2:
-    Add comment which explains that the type cast is needed for MinGW.
-
-MinGW tries to be compatible with Microsoft's prototypes here
-(and those are _not_ POSIX).
-
-Regards
-Stefan
-
-
- net/socket.c |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/net/socket.c b/net/socket.c
-index 69aad03..2fefa2e 100644
---- a/net/socket.c
-+++ b/net/socket.c
-@@ -131,7 +131,8 @@ static ssize_t net_socket_receive_dgram(NetClientStat=
-e *nc, const uint8_t *buf,
-     ssize_t ret;
-=20
-     do {
--        ret =3D sendto(s->fd, buf, size, 0,
-+        /* MinGW's sendto is not POSIX and needs the type cast for buf! =
-*/
-+        ret =3D sendto(s->fd, (const void *)buf, size, 0,
-                      (struct sockaddr *)&s->dgram_dst,
-                      sizeof(s->dgram_dst));
-     } while (ret =3D=3D -1 && errno =3D=3D EINTR);
---=20
-1.7.10
-
+/mjt
 
