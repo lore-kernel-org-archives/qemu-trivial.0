@@ -1,50 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TGBl3-0004fi-KB
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Sep 2012 12:43:45 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:36690)
+	id 1TGCOG-0006eF-8s
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Sep 2012 13:24:16 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:57887)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1TGBkv-0004Hf-Ux
-	for qemu-trivial@nongnu.org; Mon, 24 Sep 2012 12:43:43 -0400
+	(envelope-from <aurelien@aurel32.net>) id 1TGCOD-0006Vu-AM
+	for qemu-trivial@nongnu.org; Mon, 24 Sep 2012 13:24:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1TGBkv-0000Gu-4Q
-	for qemu-trivial@nongnu.org; Mon, 24 Sep 2012 12:43:37 -0400
-Received: from mail-pb0-f45.google.com ([209.85.160.45]:33166)
+	(envelope-from <aurelien@aurel32.net>) id 1TGCOC-0006Sc-8B
+	for qemu-trivial@nongnu.org; Mon, 24 Sep 2012 13:24:13 -0400
+Received: from hall.aurel32.net ([88.191.126.93]:50133)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1TGBkr-0000GA-Iw; Mon, 24 Sep 2012 12:43:33 -0400
-Received: by pbbrp2 with SMTP id rp2so1602397pbb.4
-	for <multiple recipients>; Mon, 24 Sep 2012 09:43:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=ePpeJblHjGYwWrcRA3+92TOPyPRbrtXaJwEKx5cQ0nE=;
-	b=b7H6NBaPh9Q8UJ4N7+kSqm2d1GTzSdPJ1Fg0yOqiyHO7D9MKDgqOWdZGlet6zqUbLX
-	YXLPbZiPlHBqXSrlsaYwhlPwI2EDZvQacc+Xl/bmWC85iLHuDiVd0m+vgwBF3QCKFN+V
-	/JgQivDnsK7vYzC4hceToGwGQNalgZcfqDpviYO+cjMgud9hX62yKL6pzPcoH3WBSiEy
-	woKXYp3sV+Ifi8Z9QQTyCqmf59Jc7cm+AdodnBuUZPNXgUoNuRwF2hExFbIkS/SaieRa
-	9D3ckjHtpcrDfnI7gUIrfUK2EJ7Z5aRFsHZE+P8tcPAq3WUWYBHvGz6FPmb86WeYvvFc
-	BM5Q==
-Received: by 10.66.85.133 with SMTP id h5mr34047787paz.10.1348505012506;
-	Mon, 24 Sep 2012 09:43:32 -0700 (PDT)
-Received: from pebble.twiddle.home ([173.160.232.49])
-	by mx.google.com with ESMTPS id kj10sm9865065pbc.72.2012.09.24.09.43.31
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 24 Sep 2012 09:43:31 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Message-ID: <50608DBA.9090902@twiddle.net>
-Date: Mon, 24 Sep 2012 09:43:38 -0700
-From: Richard Henderson <rth@twiddle.net>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:15.0) Gecko/20120911 Thunderbird/15.0.1
-MIME-Version: 1.0
+	(envelope-from <aurelien@aurel32.net>)
+	id 1TGCO6-0006Pg-8g; Mon, 24 Sep 2012 13:24:06 -0400
+Received: from [37.160.17.197] (helo=ohm.aurel32.net)
+	by hall.aurel32.net with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.72) (envelope-from <aurelien@aurel32.net>)
+	id 1TGCNr-0000Cf-U4; Mon, 24 Sep 2012 19:23:52 +0200
+Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1TGCNj-00043h-Hq; Mon, 24 Sep 2012 19:23:43 +0200
+Date: Mon, 24 Sep 2012 19:23:43 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
 To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20120924172343.GC23241@ohm.aurel32.net>
 References: <1348504115-13203-1-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-15
+Content-Disposition: inline
 In-Reply-To: <1348504115-13203-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.160.45
+X-Mailer: Mutt 1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 88.191.126.93
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fpu/softfloat.c: Remove
  pointless shift of always-zero value
@@ -59,17 +46,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Sep 2012 16:43:43 -0000
+X-List-Received-Date: Mon, 24 Sep 2012 17:24:14 -0000
 
-On 2012-09-24 09:28, Peter Maydell wrote:
+On Mon, Sep 24, 2012 at 05:28:35PM +0100, Peter Maydell wrote:
 > In float16_to_float32, when returning an infinity, just pass zero
 > as the mantissa argument to packFloat32(), rather than shifting
 > a value which we know must be zero.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Spotted by the clang static analyzer. This brings this code into line with
+> the other float-to-float conversion functions and was probably a harmless
+> cut-n-paste error from the normal-return codepath.
+> 
+>  fpu/softfloat.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/fpu/softfloat.c b/fpu/softfloat.c
+> index b29256a..01a28ca 100644
+> --- a/fpu/softfloat.c
+> +++ b/fpu/softfloat.c
+> @@ -3007,7 +3007,7 @@ float32 float16_to_float32(float16 a, flag ieee STATUS_PARAM)
+>          if (aSig) {
+>              return commonNaNToFloat32(float16ToCommonNaN(a STATUS_VAR) STATUS_VAR);
+>          }
+> -        return packFloat32(aSign, 0xff, aSig << 13);
+> +        return packFloat32(aSign, 0xff, 0);
+>      }
+>      if (aExp == 0) {
+>          int8 shiftCount;
+> -- 
+> 1.7.9.5
 
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+Good catch!
 
+Reviewed-by: Aurelien Jarno <aurelien@aurel32.net>
 
-r~
+-- 
+Aurelien Jarno                          GPG: 1024D/F1BCDB73
+aurelien@aurel32.net                 http://www.aurel32.net
 
