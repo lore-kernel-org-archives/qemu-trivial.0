@@ -1,50 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TG4Q9-0007YU-EJ
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Sep 2012 04:53:41 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54569)
+	id 1TG86k-0007zU-Ou
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Sep 2012 08:49:54 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47454)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1TG4Q1-0007MV-F4
-	for qemu-trivial@nongnu.org; Mon, 24 Sep 2012 04:53:39 -0400
+	(envelope-from <sw@weilnetz.de>) id 1TG86d-0007dV-SN
+	for qemu-trivial@nongnu.org; Mon, 24 Sep 2012 08:49:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1TG4Pw-0001p0-49
-	for qemu-trivial@nongnu.org; Mon, 24 Sep 2012 04:53:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47519)
+	(envelope-from <sw@weilnetz.de>) id 1TG86X-0002oM-VK
+	for qemu-trivial@nongnu.org; Mon, 24 Sep 2012 08:49:47 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:60372)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1TG4Pv-0001om-Sj; Mon, 24 Sep 2012 04:53:28 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q8O8rPQu017562
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 24 Sep 2012 04:53:26 -0400
-Received: from dhcp-5-188.str.redhat.com (dhcp-5-175.str.redhat.com
-	[10.32.5.175])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id q8O8rN3u005545
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 24 Sep 2012 04:53:24 -0400
-Message-ID: <50601F84.8020705@redhat.com>
-Date: Mon, 24 Sep 2012 10:53:24 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:13.0) Gecko/20120605 Thunderbird/13.0
+	(envelope-from <sw@weilnetz.de>)
+	id 1TG86F-0002ks-O6; Mon, 24 Sep 2012 08:49:23 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	B4825728003A; Mon, 24 Sep 2012 14:49:21 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 6htUpNdS1Izd; Mon, 24 Sep 2012 14:49:21 +0200 (CEST)
+Received: from flocke.weilnetz.de (p54AD9C56.dip.t-dialin.net [84.173.156.86])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	EE2C17280039; Mon, 24 Sep 2012 14:49:20 +0200 (CEST)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <sw@weilnetz.de>)
+	id 1TG86C-0001dy-BU; Mon, 24 Sep 2012 14:49:20 +0200
+Message-ID: <506056D0.5020502@weilnetz.de>
+Date: Mon, 24 Sep 2012 14:49:20 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20120724 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1348072874-2096-1-git-send-email-sw@weilnetz.de>
-	<20120922162920.GB14154@stefanha-thinkpad.localdomain>
-	<505E0916.6030707@weilnetz.de> <50601043.2080209@redhat.com>
-	<878vbzvmmn.fsf@blackfin.pond.sub.org>
-In-Reply-To: <878vbzvmmn.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset=ISO-8859-15
+To: Laurent Desnogues <laurent.desnogues@gmail.com>
+References: <1347642150-4710-1-git-send-email-sw@weilnetz.de>	<505E2FB3.9020107@weilnetz.de>
+	<CABoDooNWZXcrgu2OVtjfC-MkLYoWx=_-68iHzy4ufBK-VV_73A@mail.gmail.com>
+In-Reply-To: <CABoDooNWZXcrgu2OVtjfC-MkLYoWx=_-68iHzy4ufBK-VV_73A@mail.gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Liguori <aliguori@us.ibm.com>, berrange@redhat.com,
 	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pflash: Avoid warnings from
- coverity
+Subject: Re: [Qemu-trivial] [PATCH] configure: Allow builds without any
+	system or user emulation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,67 +58,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Sep 2012 08:53:39 -0000
+X-List-Received-Date: Mon, 24 Sep 2012 12:49:53 -0000
 
-Am 24.09.2012 10:41, schrieb Markus Armbruster:
-> Kevin Wolf <kwolf@redhat.com> writes:
-> 
->> Am 22.09.2012 20:53, schrieb Stefan Weil:
->>> Am 22.09.2012 18:29, schrieb Stefan Hajnoczi:
->>>> On Wed, Sep 19, 2012 at 06:41:14PM +0200, Stefan Weil wrote:
->>> [snip]
->>>>>           offset_end = (offset_end + 511) >> 9;
->>>>> -        bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
->>>>> -                   offset_end - offset);
->>>>> +        if (bdrv_write(pfl->bs, offset, pfl->storage + (offset << 9),
->>>>> +                       offset_end - offset) == -1) {
->>>> bdrv_write() returns -errno, not -1.
->>>
->>> Thanks. It looks like we have more code which uses the wrong check
->>> (and which I copied). So more patches are needed.
->>>
->>> Should we also replace code which does bdrv_write() != 0 or !bdrv_write()
->>> by bdrv_write() < 0 to get more uniform code (and the same for bdrv_read*),
->>> even it is not strictly wrong?
->>>
->>> Maybe Kevin as block maintainer should decide that.
+Am 24.09.2012 12:57, schrieb Laurent Desnogues:
+> On Sat, Sep 22, 2012 at 11:37 PM, Stefan Weil<sw@weilnetz.de>  wrote:
+>> Am 14.09.2012 19:02, schrieb Stefan Weil:
 >>
->> Yes, I very much prefer ret < 0 checks for all block layer functions.
->>
->>>>> +            fprintf(stderr, "pflash: Error writing to flash storage\n");
->>>>> +        }
->>>> Please report the errno and possibly bdrv_get_device_name() to uniquely
->>>> identify this block device.
+>>> The old code aborted configure when no emulation target was selected.
+>>> Even after removing the 'exit 1', it tried to read from STDIN
+>>> when QEMU was configured with
 >>>
->>> That would be overkill here: writing flash memory is not used very
->>> often (even on real hardware it is typically only used for firmware
->>> updates). I expect that anyone who does a firmware update in a
->>> QEMU guest will know the name of the flash image file.
+>>>       configure' '--disable-user' '--disable-system'
 >>>
->>> Usually I replace the flash image file on the QEMU host when I want
->>> to exchange the firmware (much easier than flashing in the guest).
+>>> This is fixed here.
 >>>
->>> Reporting errno might be more reasonable.Are there other values than
->>> EIO (e.g. defective media) and ENOSPC (disk full) which could occur?
+>>> Signed-off-by: Stefan Weil<sw@weilnetz.de>
+>>> ---
+>>>
+>>> This patch can be applied after 66d5499b3 was reverted.
+>>>
+>>> It also works on top of 66d5499b3. In this case only Makefile
+>>> needs modifications, and the configure part of the patch must be removed.
+>>>
+>>> Regards
+>>>
+>>> Stefan Weil
+>>>
+>>>
+>>>    Makefile  |    5 +++++
+>>>    configure |    4 ----
+>>>    2 files changed, 5 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/Makefile b/Makefile
+>>> index 9523e05..d38ac0f 100644
+>>> --- a/Makefile
+>>> +++ b/Makefile
+>>> @@ -52,8 +52,13 @@ SUBDIR_MAKEFLAGS=$(if $(V),,--no-print-directory)
+>>> BUILD_DIR=$(BUILD_DIR)
+>>>    SUBDIR_DEVICES_MAK=$(patsubst %, %/config-devices.mak, $(TARGET_DIRS))
+>>>    SUBDIR_DEVICES_MAK_DEP=$(patsubst %, %/config-devices.mak.d,
+>>> $(TARGET_DIRS))
+>>>
+>>> +ifeq ($(SUBDIR_DEVICES_MAK),)
+>>> +config-all-devices.mak:
+>>> +       $(call quiet-command,echo '# no devices'>   $@,"  GEN   $@")
+>>> +else
+>>>    config-all-devices.mak: $(SUBDIR_DEVICES_MAK)
+>>>          $(call quiet-command,cat $(SUBDIR_DEVICES_MAK) | grep =y | sort
+>>> -u>   $@,"  GEN   $@")
+>>> +endif
+>>>
+>>>    -include $(SUBDIR_DEVICES_MAK_DEP)
+>>>
+>>> diff --git a/configure b/configure
+>>> index fc27bd9..a9305f3 100755
+>>> --- a/configure
+>>> +++ b/configure
+>>> @@ -1331,10 +1331,6 @@ if test -z "$target_list" ; then
+>>>    else
+>>>        target_list=`echo "$target_list" | sed -e 's/,/ /g'`
+>>>    fi
+>>> -if test -z "$target_list" ; then
+>>> -    echo "No targets enabled"
+>>> -    exit 1
+>>> -fi
+>>>    # see if system emulation was really requested
+>>>    case " $target_list " in
+>>>      *"-softmmu "*) softmmu=yes
+>>>
 >>
->> Basically anything that the OS can return. The block layer may
->> internally generate things like -EACCES for writing to read-only images,
->> or -ENOMEDIUM (not sure if it's possible for pflash).
 >>
->>> A common solution for all users of bdrv_write in the block layer
->>> would be even better. VirtualBox for example stops the guest when
->>> ENOSPC (disk full) occurs, so it's possible for users to fix that
->>> and resume the emulation.
 >>
->> virtio-blk/IDE/scsi-disk do that.
-> 
-> Doing it in the block layer for all devices would be cleaner
-> conceptually.  If I remember correctly, we did it in devices instead,
-> because that was much simpler.
+>> Ping? 66d5499b3 was reverted, so my patch can be applied if nobody objects.
+>
+> Works fine here.
+>
+> I think Daniel's original proposal to use some keyword for target-list
+> is more convenient than having to use both --disable-user and
+> --disable-system, but that's no big deal :-)
+>
+>
+> Laurent
 
-I believe today it wouldn't be too hard to implement the request
-queueing in the block layer. However, we can't change it without
-breaking migration, we'd need a VMState for the block layer.
+Thanks for testing. Support for --target-list= (empty target list
+instead of --disable-user --disable-system) also requires the same
+modifications and can be implemented by an additional patch.
 
-Kevin
+Stefan
+
 
