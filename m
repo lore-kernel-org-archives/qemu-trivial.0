@@ -1,40 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1THKDi-0000W8-MS
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Sep 2012 15:58:02 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53620)
+	id 1THL1z-00084t-9B
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Sep 2012 16:49:59 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34054)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1THKDc-0000BX-GI
-	for qemu-trivial@nongnu.org; Thu, 27 Sep 2012 15:58:00 -0400
+	(envelope-from <sw@weilnetz.de>) id 1THL1u-0007pT-IA
+	for qemu-trivial@nongnu.org; Thu, 27 Sep 2012 16:49:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1THKDb-0006nn-5F
-	for qemu-trivial@nongnu.org; Thu, 27 Sep 2012 15:57:56 -0400
-Received: from hall.aurel32.net ([88.191.126.93]:35139)
+	(envelope-from <sw@weilnetz.de>) id 1THL1t-0007Em-7k
+	for qemu-trivial@nongnu.org; Thu, 27 Sep 2012 16:49:54 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:50870)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1THKDR-0006mD-9Q; Thu, 27 Sep 2012 15:57:45 -0400
-Received: from watt.aurel32.net ([82.228.202.134] helo=ohm.aurel32.net)
-	by hall.aurel32.net with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.72) (envelope-from <aurelien@aurel32.net>)
-	id 1THKDQ-0004VR-4y; Thu, 27 Sep 2012 21:57:44 +0200
-Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1THKDP-0007UU-2s; Thu, 27 Sep 2012 21:57:43 +0200
-Date: Thu, 27 Sep 2012 21:57:43 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20120927195743.GG20151@ohm.aurel32.net>
-References: <1348754143-18251-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <sw@weilnetz.de>)
+	id 1THL1q-0007Cd-MC; Thu, 27 Sep 2012 16:49:50 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	4B697728003D; Thu, 27 Sep 2012 22:49:49 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id QjhgQrLUTNio; Thu, 27 Sep 2012 22:49:48 +0200 (CEST)
+Received: from flocke.weilnetz.de (p54AD9EBA.dip.t-dialin.net [84.173.158.186])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	B2193728003C; Thu, 27 Sep 2012 22:49:48 +0200 (CEST)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.weilnetz.de with esmtp (Exim 4.72)
+	(envelope-from <sw@weilnetz.de>)
+	id 1THL1o-0001ck-BU; Thu, 27 Sep 2012 22:49:48 +0200
+Message-ID: <5064BBEC.8000007@weilnetz.de>
+Date: Thu, 27 Sep 2012 22:49:48 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20120724 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
-In-Reply-To: <1348754143-18251-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: Mutt 1.5.21 (2010-09-15)
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: Eric Blake <eblake@redhat.com>
+References: <1348772258-31168-1-git-send-email-sw@weilnetz.de>
+	<5064A546.9080302@redhat.com>
+In-Reply-To: <5064A546.9080302@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 88.191.126.93
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tcg/arm: Use
- tcg_out_mov_reg rather than inline equivalent code
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Fix spelling in
+ comment (enought -> enough, insure -> ensure)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,51 +56,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Sep 2012 19:58:01 -0000
+X-List-Received-Date: Thu, 27 Sep 2012 20:49:57 -0000
 
-On Thu, Sep 27, 2012 at 02:55:43PM +0100, Peter Maydell wrote:
-> Use the recently introduced tcg_out_mov_reg() function rather than
-> the equivalent inline code.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> This is a minor follow-on cleanup patch after commit 9716ef3b1.
-> 
->  tcg/arm/tcg-target.c |   15 +++------------
->  1 file changed, 3 insertions(+), 12 deletions(-)
-> 
-> diff --git a/tcg/arm/tcg-target.c b/tcg/arm/tcg-target.c
-> index 2bad0a2..5e8dbdd 100644
-> --- a/tcg/arm/tcg-target.c
-> +++ b/tcg/arm/tcg-target.c
-> @@ -1197,20 +1197,11 @@ static inline void tcg_out_qemu_ld(TCGContext *s, const TCGArg *args, int opc)
->      case 1:
->      case 2:
->      default:
-> -        if (data_reg != TCG_REG_R0) {
-> -            tcg_out_dat_reg(s, COND_AL, ARITH_MOV,
-> -                            data_reg, 0, TCG_REG_R0, SHIFT_IMM_LSL(0));
-> -        }
-> +        tcg_out_mov_reg(s, COND_AL, data_reg, TCG_REG_R0);
->          break;
->      case 3:
-> -        if (data_reg != TCG_REG_R0) {
-> -            tcg_out_dat_reg(s, COND_AL, ARITH_MOV,
-> -                            data_reg, 0, TCG_REG_R0, SHIFT_IMM_LSL(0));
-> -        }
-> -        if (data_reg2 != TCG_REG_R1) {
-> -            tcg_out_dat_reg(s, COND_AL, ARITH_MOV,
-> -                            data_reg2, 0, TCG_REG_R1, SHIFT_IMM_LSL(0));
-> -        }
-> +        tcg_out_mov_reg(s, COND_AL, data_reg, TCG_REG_R0);
-> +        tcg_out_mov_reg(s, COND_AL, data_reg2, TCG_REG_R1);
->          break;
->      }
+Am 27.09.2012 21:13, schrieb Eric Blake:
+> On 09/27/2012 12:57 PM, Stefan Weil wrote:
+>> Signed-off-by: Stefan Weil<sw@weilnetz.de>
+>> ---
+>>
+>> As a non native speaker, I feel that 'ensure' is better here than 'insure'.
+>> Could a native speaker please confirm that?
+>
+> As a US speaker, I've seen both words used interchangeably.  I also
+> checked dictionary.com, where both words imply a guarantee, but 'insure'
+> has a connotation of a guarantee against loss (think insurance policy)
+> while 'ensure' tends to be used in most other situations.  That is, I am
+> in favor of this spelling change for connotation reasons.  But as Peter
+> pointed out, the sentence has more problems than just a spelling choice.
+>
+>> - * For the error advice packets must first insure that the
+>> - * packet is large enought to contain the returned ip header.
+>> + * For the error advice packets must first ensure that the
+>> + * packet is large enough to contain the returned ip header.
+>>    * Only then can we do the check to see if 64 bits of packet
+>>    * data have been returned, since we need to check the returned
+>>    * ip header length.
 
-Reviewed-by: Aurelien Jarno <aurelien@aurel32.net>
+Thanks for your and Peter's annotations.
+
+It looks like these lines of comment are much older than QEMU.
+I found code from 1995 which already contains them.
+
+They are spread in BSD, Apple and Microsoft code,
+so maybe we should add a comment which marks them
+as a historic artefact which must be preserved :-)
+
+I might also try to improve that sentence by adding 'we':
+
++ * For the error advice packets we must first ensure that the
++ * packet is large enough to contain the returned ip header.
 
 
--- 
-Aurelien Jarno                          GPG: 1024D/F1BCDB73
-aurelien@aurel32.net                 http://www.aurel32.net
+or
+
++ * For the error advice packets we must first ensure that
++ * they are large enough to contain the returned ip header.
+
+ICMP_ADVLENMIN seems to be the minimum length which meaningful
+'error advice packets' must have.
+
+Regards
+
+Stefan
+
 
