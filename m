@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TK6W8-0005YV-Du
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Oct 2012 07:56:32 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40499)
+	id 1TK6bj-00008L-C5
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Oct 2012 08:02:19 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:45882)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TK6Vw-0004yB-5W
-	for qemu-trivial@nongnu.org; Fri, 05 Oct 2012 07:56:29 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TK6bb-0008Fs-VP
+	for qemu-trivial@nongnu.org; Fri, 05 Oct 2012 08:02:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TK6Vv-0004M9-4F
-	for qemu-trivial@nongnu.org; Fri, 05 Oct 2012 07:56:20 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:64392)
+	(envelope-from <stefanha@gmail.com>) id 1TK6bV-0006SE-Pn
+	for qemu-trivial@nongnu.org; Fri, 05 Oct 2012 08:02:11 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:60752)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TK6Vm-0004KG-0i; Fri, 05 Oct 2012 07:56:10 -0400
-Received: by mail-bk0-f45.google.com with SMTP id jf3so752827bkc.4
-	for <multiple recipients>; Fri, 05 Oct 2012 04:56:09 -0700 (PDT)
+	id 1TK6bT-0006Rs-3M; Fri, 05 Oct 2012 08:02:03 -0400
+Received: by mail-bk0-f45.google.com with SMTP id jf3so755703bkc.4
+	for <multiple recipients>; Fri, 05 Oct 2012 05:02:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=HM5/2FpW9+bFWT6gTnFbFqxW+7e0aaByih8xoU/MeIU=;
-	b=ADilY+aj5luKoEXHJIS7lfZOlpFrz7c+8EQ4BYI5tYcRwgKwhQtSu0FHAA+1QGN4uW
-	gJfFyMPGPUnxErU6fdLHu20oLKsSZhAKD11OBbsLLxRm7YGYXWWBjf/YaNqWtCR9Prcq
-	lblZYjXr8BJqtGiX/iItoRxOdL5XW903WPnLvxU24MCi6rtxRj6Q3mmUnKtv3CLjFmbc
-	Civ090qgSxEuJGjn+2XDPGqqKJPJjglthPEF1Ozd0MXOzXynREomirpH0kwZiEtIqCpv
-	rKtEkUZC6MjDD6Wt99tKi8TxTyqx9cGsuoHzx83iHwEbpc5sdHw/Fj33mWPMNAsBqzb4
-	dVJQ==
-Received: by 10.204.11.194 with SMTP id u2mr2642596bku.41.1349438168937;
-	Fri, 05 Oct 2012 04:56:08 -0700 (PDT)
+	bh=tCQGDGu7enfH+sfy/GKqV5qi1pnJacISoaS/GQGkhEY=;
+	b=qpoeY3XL5wXefYj4IDbmwbu6T9scPyR+ljeikc34DZPBDNmK0cvLoITqQVgfoOU5j9
+	oZRL+ycONwER4ulH9bdCdIznL+o5ES/8aPTe2h/PR8cm2aMaPykBJPUNBifyw3SVtLSf
+	kWjlv0BiyrIJniM+9PpC4CVaPt0o+3uMgeDVVfo12G6jK67n/2Zn3nSG4cIMjjeNrEiU
+	jikIZW2xE8roBb8L2Rcc9dY4m+fO/GrENAXFfMgdEZD4J1A70i1qUdg6LCUwchpUDoc+
+	i0Fl/PQ4Z1yLIop6yXcGzdOPvd5x0FJDXRBaiG+knOdj9M+MM/9mQXbvolH8XMyyYn2x
+	peBQ==
+Received: by 10.204.12.197 with SMTP id y5mr2743088bky.77.1349438521891;
+	Fri, 05 Oct 2012 05:02:01 -0700 (PDT)
 Received: from localhost ([82.113.121.2])
-	by mx.google.com with ESMTPS id j24sm7479046bkv.0.2012.10.05.04.56.08
+	by mx.google.com with ESMTPS id k21sm7500000bkv.1.2012.10.05.05.02.00
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 05 Oct 2012 04:56:08 -0700 (PDT)
-Date: Fri, 5 Oct 2012 13:56:06 +0200
+	Fri, 05 Oct 2012 05:02:01 -0700 (PDT)
+Date: Fri, 5 Oct 2012 14:01:58 +0200
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20121005115606.GB7068@stefanha-thinkpad.redhat.com>
-References: <1348383061-29754-1-git-send-email-sw@weilnetz.de>
+Message-ID: <20121005120158.GC7068@stefanha-thinkpad.redhat.com>
+References: <1348689878-11544-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1348383061-29754-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1348689878-11544-1-git-send-email-sw@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] hw: Fix return value check for bdrv_read,
- bdrv_write
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Support empty
+ target list (--target-list=)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,22 +58,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Oct 2012 11:56:30 -0000
+X-List-Received-Date: Fri, 05 Oct 2012 12:02:17 -0000
 
-On Sun, Sep 23, 2012 at 08:51:01AM +0200, Stefan Weil wrote:
-> Those functions return -errno in case of an error.
-> The old code would typically only detect EPERM (1) errors.
+On Wed, Sep 26, 2012 at 10:04:38PM +0200, Stefan Weil wrote:
+> Specifying an empty target list with --target-list= is shorter
+> than specifying --disable-user --disable-system.
+> 
+> Both variants should give the same result: no targets at all.
+> 
+> This modification implements that feature.
+> 
+> It uses a trick which works with POSIX compliant shells to test whether
+> target_list is undefined (=> default targets) or empty (=> no targets).
 > 
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  hw/nand.c    |   34 ++++++++++++++++++++++------------
->  hw/onenand.c |    2 +-
->  hw/sd.c      |   16 +++++++++-------
->  3 files changed, 32 insertions(+), 20 deletions(-)
+>  configure |    5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 
 Applied, thanks!
 
-https://github.com/stefanha/qemu/commits/trivial-patches
+http://github.com/stefanha/qemu/commits/trivial-patches
 
 Stefan
 
