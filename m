@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TK6TV-0003sw-E5
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Oct 2012 07:53:49 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44323)
+	id 1TK6W8-0005YV-Du
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Oct 2012 07:56:32 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:40499)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TK6TP-0003dY-HM
-	for qemu-trivial@nongnu.org; Fri, 05 Oct 2012 07:53:47 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TK6Vw-0004yB-5W
+	for qemu-trivial@nongnu.org; Fri, 05 Oct 2012 07:56:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TK6TO-0002zc-I3
-	for qemu-trivial@nongnu.org; Fri, 05 Oct 2012 07:53:43 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:46190)
+	(envelope-from <stefanha@gmail.com>) id 1TK6Vv-0004M9-4F
+	for qemu-trivial@nongnu.org; Fri, 05 Oct 2012 07:56:20 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:64392)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TK6TG-0002xp-TJ; Fri, 05 Oct 2012 07:53:35 -0400
-Received: by mail-bk0-f45.google.com with SMTP id jf3so751734bkc.4
-	for <multiple recipients>; Fri, 05 Oct 2012 04:53:33 -0700 (PDT)
+	id 1TK6Vm-0004KG-0i; Fri, 05 Oct 2012 07:56:10 -0400
+Received: by mail-bk0-f45.google.com with SMTP id jf3so752827bkc.4
+	for <multiple recipients>; Fri, 05 Oct 2012 04:56:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=GlKRMPGRH2u28XtgKfLE3eVuS9xA2qghx0GDm9KxV1Y=;
-	b=A68VTtZHrAHdLOtHkLzreRwdAyu5krTBZGXhxRITwG4L7QTdCpSv1aPCFu/ZqoX4FL
-	sCuoDnCgBWVYV4uiMKAw3QdYuJLZgRjmjdpnqkZtJhGjMijfTavn6JXvXjuUmjeprwoH
-	VeMrOvpG+ANEVJ3QTCRkjhGz/ngUYeIO6f/5F3RmTzkO19gbjBlBTISueSLhp+fl8mue
-	oRh+mYyiFcVtitLH3xyzNN8ts3jdqxAWllzDxDLciHn7qHKCA7Z8rbBdm9Qrq/jXnIvd
-	iBf3CgpJxtN26sR6ghr8NAawzWVbJY7babA2QHE80uJDQedODQTk+Z39wwHihFw4DG+j
-	EQVg==
-Received: by 10.204.6.75 with SMTP id 11mr28878bky.10.1349438013732;
-	Fri, 05 Oct 2012 04:53:33 -0700 (PDT)
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=HM5/2FpW9+bFWT6gTnFbFqxW+7e0aaByih8xoU/MeIU=;
+	b=ADilY+aj5luKoEXHJIS7lfZOlpFrz7c+8EQ4BYI5tYcRwgKwhQtSu0FHAA+1QGN4uW
+	gJfFyMPGPUnxErU6fdLHu20oLKsSZhAKD11OBbsLLxRm7YGYXWWBjf/YaNqWtCR9Prcq
+	lblZYjXr8BJqtGiX/iItoRxOdL5XW903WPnLvxU24MCi6rtxRj6Q3mmUnKtv3CLjFmbc
+	Civ090qgSxEuJGjn+2XDPGqqKJPJjglthPEF1Ozd0MXOzXynREomirpH0kwZiEtIqCpv
+	rKtEkUZC6MjDD6Wt99tKi8TxTyqx9cGsuoHzx83iHwEbpc5sdHw/Fj33mWPMNAsBqzb4
+	dVJQ==
+Received: by 10.204.11.194 with SMTP id u2mr2642596bku.41.1349438168937;
+	Fri, 05 Oct 2012 04:56:08 -0700 (PDT)
 Received: from localhost ([82.113.121.2])
-	by mx.google.com with ESMTPS id x13sm7548072bkv.16.2012.10.05.04.53.32
+	by mx.google.com with ESMTPS id j24sm7479046bkv.0.2012.10.05.04.56.08
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 05 Oct 2012 04:53:32 -0700 (PDT)
-Date: Fri, 5 Oct 2012 13:53:30 +0200
+	Fri, 05 Oct 2012 04:56:08 -0700 (PDT)
+Date: Fri, 5 Oct 2012 13:56:06 +0200
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20121005115330.GA7068@stefanha-thinkpad.redhat.com>
-References: <1348382492-8342-1-git-send-email-sw@weilnetz.de>
+Message-ID: <20121005115606.GB7068@stefanha-thinkpad.redhat.com>
+References: <1348383061-29754-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1348382492-8342-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1348383061-29754-1-git-send-email-sw@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.85.214.45
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] hw: Disable code after return statement
+Subject: Re: [Qemu-trivial] [PATCH] hw: Fix return value check for bdrv_read,
+ bdrv_write
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,56 +57,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Oct 2012 11:53:47 -0000
+X-List-Received-Date: Fri, 05 Oct 2012 11:56:30 -0000
 
-On Sun, Sep 23, 2012 at 08:41:32AM +0200, Stefan Weil wrote:
-> Report from smatch:
-> microdrive.c:212 md_common_read(34) info: ignoring unreachable code.
-> microdrive.c:273 md_common_write(33) info: ignoring unreachable code.
-> sd.c:343 sd_req_crc_validate(9) info: ignoring unreachable code.
+On Sun, Sep 23, 2012 at 08:51:01AM +0200, Stefan Weil wrote:
+> Those functions return -errno in case of an error.
+> The old code would typically only detect EPERM (1) errors.
 > 
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  hw/ide/microdrive.c |    3 ++-
->  hw/sd.c             |    2 ++
->  2 files changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
-> index 64810f7..07c6f97 100644
-> --- a/hw/ide/microdrive.c
-> +++ b/hw/ide/microdrive.c
-> @@ -207,7 +207,7 @@ static uint16_t md_common_read(void *opaque, uint32_t at)
->      case 0x0:	/* Even RD Data */
->      case 0x8:
->          return ide_data_readw(&s->bus, 0);
-> -
-> +#if 0
->          /* TODO: 8-bit accesses */
->          if (s->cycle)
->              ret = s->io >> 8;
-> @@ -217,6 +217,7 @@ static uint16_t md_common_read(void *opaque, uint32_t at)
->          }
->          s->cycle = !s->cycle;
->          return ret;
-> +#endif
->      case 0x9:	/* Odd RD Data */
->          return s->io >> 8;
->      case 0xd:	/* Error */
-> diff --git a/hw/sd.c b/hw/sd.c
-> index ec26407..62a7751 100644
-> --- a/hw/sd.c
-> +++ b/hw/sd.c
-> @@ -340,7 +340,9 @@ static int sd_req_crc_validate(SDRequest *req)
->      buffer[3] = (req->arg >> 8) & 0xff;
->      buffer[4] = (req->arg >> 0) & 0xff;
->      return 0;
-> +#if 0
->      return sd_crc7(buffer, 5) != req->crc;	/* TODO */
-> +#endif
+>  hw/nand.c    |   34 ++++++++++++++++++++++------------
+>  hw/onenand.c |    2 +-
+>  hw/sd.c      |   16 +++++++++-------
+>  3 files changed, 32 insertions(+), 20 deletions(-)
 
-hw/sd.c:336:13: error: variable ‘buffer’ set but not used [-Werror=unused-but-set-variable]
+Applied, thanks!
 
-I suggest we drop this dead code completely instead of using #if 0.
+https://github.com/stefanha/qemu/commits/trivial-patches
 
 Stefan
 
