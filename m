@@ -1,50 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TL6uj-0004Cv-Mw
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Oct 2012 02:34:05 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58298)
+	id 1TLIYE-0002XZ-Ro
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Oct 2012 14:59:38 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54531)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TL6uh-00046G-7D
-	for qemu-trivial@nongnu.org; Mon, 08 Oct 2012 02:34:04 -0400
+	(envelope-from <mst@redhat.com>) id 1TLIYC-0002PC-12
+	for qemu-trivial@nongnu.org; Mon, 08 Oct 2012 14:59:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TL6ug-0005ZC-8D
-	for qemu-trivial@nongnu.org; Mon, 08 Oct 2012 02:34:03 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:48390)
+	(envelope-from <mst@redhat.com>) id 1TLIYB-0003G0-7z
+	for qemu-trivial@nongnu.org; Mon, 08 Oct 2012 14:59:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:7849)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1TL6ue-0005Yp-26; Mon, 08 Oct 2012 02:34:00 -0400
-Received: by mail-bk0-f45.google.com with SMTP id jf3so1533704bkc.4
-	for <multiple recipients>; Sun, 07 Oct 2012 23:33:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=GV6OtkoijdXTFiL3UC6UkH501+nVjHCSy2e9Qbb8/FQ=;
-	b=qyY68sQB81Deade9vF0tdVq7sIQr1QvcdRdTSs7ZCQGTVXn6+uw6Jj/QJNe1tAh0Pp
-	5qgghAn5DkDrpHrOtZ1ipN/9wJ95AB4aYaSyOqCtHclD0puTwT9neHI738fbf6vmfBbb
-	362hxMddyiqoWPHK+wnQI0yUT1rPAr2Hzeot3SQelvkQOLP7PMvOpRcIpce7bLw2qzfK
-	g3Jjj/0b7YwNVtAuWjUUhOT5zbxMhx5WWQMVlJXI4W8sYGB+kPRys4IpBz7moaMGxMOC
-	BZ2MQcOIt92D/3TWrV9WaGFE2u6VGPdkaJqnMUtoAiBZxU1QwPhEwv4NQi2goZNt/gFl
-	yiuA==
-Received: by 10.204.148.146 with SMTP id p18mr5029594bkv.51.1349678039021;
-	Sun, 07 Oct 2012 23:33:59 -0700 (PDT)
-Received: from localhost ([89.204.130.116])
-	by mx.google.com with ESMTPS id e3sm11249842bks.7.2012.10.07.23.33.57
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 07 Oct 2012 23:33:58 -0700 (PDT)
-Date: Mon, 8 Oct 2012 08:33:53 +0200
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: MORITA Kazutaka <morita.kazutaka@lab.ntt.co.jp>
-Message-ID: <20121008063353.GB12433@stefanha-thinkpad.redhat.com>
-References: <1349542634-17251-1-git-send-email-morita.kazutaka@lab.ntt.co.jp>
+	(envelope-from <mst@redhat.com>)
+	id 1TLIY8-0003EO-6q; Mon, 08 Oct 2012 14:59:32 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q98IxUIX012912
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 8 Oct 2012 14:59:30 -0400
+Received: from redhat.com (vpn1-4-246.ams2.redhat.com [10.36.4.246])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with SMTP
+	id q98IxSWs030919; Mon, 8 Oct 2012 14:59:28 -0400
+Date: Mon, 8 Oct 2012 22:01:20 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20121008200120.GB17303@redhat.com>
+References: <1349298662-16666-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1349542634-17251-1-git-send-email-morita.kazutaka@lab.ntt.co.jp>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <1349298662-16666-1-git-send-email-sw@weilnetz.de>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] sheepdog: use bool for boolean variables
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] qemu-barrier: Fix compiler version check
+ for future gcc versions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,19 +47,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Oct 2012 06:34:04 -0000
+X-List-Received-Date: Mon, 08 Oct 2012 18:59:37 -0000
 
-On Sun, Oct 07, 2012 at 01:57:14AM +0900, MORITA Kazutaka wrote:
-> This improves readability.
+On Wed, Oct 03, 2012 at 11:11:02PM +0200, Stefan Weil wrote:
+> The current check will give a wrong result for gcc-5.x with x < 4.
+> Using QEMU_GNUC_PREREQ is simpler and fixes that issue.
 > 
-> Signed-off-by: MORITA Kazutaka <morita.kazutaka@lab.ntt.co.jp>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  block/sheepdog.c |   70 +++++++++++++++++++++++++++---------------------------
->  1 files changed, 35 insertions(+), 35 deletions(-)
+> 
+> With current gcc versions (gcc-4.x) there is no problem.
+> Nevertheless, I suggest to fix this in stable versions, too.
+> 
+> Regards
+> 
+> Stefan Weil
 
-Applied, thanks!
+ACK for stable tree.
 
-https://github.com/stefanha/qemu/commits/trivial-patches
-
-Stefan
+>  qemu-barrier.h |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qemu-barrier.h b/qemu-barrier.h
+> index 7e11197..16f0942 100644
+> --- a/qemu-barrier.h
+> +++ b/qemu-barrier.h
+> @@ -19,7 +19,7 @@
+>   * mfence on 32 bit as well, e.g. if built with -march=pentium-m.
+>   * However, on i386, there seem to be known bugs as recently as 4.3.
+>   * */
+> -#if defined(__GNUC__) && __GNUC__ >= 4 && __GNUC_MINOR__ >= 4
+> +#if QEMU_GNUC_PREREQ(4, 4)
+>  #define smp_mb() __sync_synchronize()
+>  #else
+>  #define smp_mb() asm volatile("lock; addl $0,0(%%esp) " ::: "memory")
+> -- 
+> 1.7.10
 
