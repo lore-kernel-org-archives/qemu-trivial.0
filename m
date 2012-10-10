@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TM0Vs-0005a1-U6
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2012 13:56:08 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34162)
+	id 1TM0YG-0007J0-Gc
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2012 13:58:36 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34995)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1TM0Vo-0005MT-Oe
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:56:07 -0400
+	(envelope-from <eblake@redhat.com>) id 1TM0Y8-0007IG-1k
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:58:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1TM0Vk-00081f-3z
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:56:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55396)
+	(envelope-from <eblake@redhat.com>) id 1TM0Y6-0000DX-9E
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:58:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49553)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eblake@redhat.com>)
-	id 1TM0Vc-0007zD-Ni; Wed, 10 Oct 2012 13:55:52 -0400
+	id 1TM0Y5-0000D9-UI; Wed, 10 Oct 2012 13:58:26 -0400
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q9AHtoa5008392
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q9AHwOR4003680
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 10 Oct 2012 13:55:50 -0400
+	Wed, 10 Oct 2012 13:58:25 -0400
 Received: from [10.3.113.23] (ovpn-113-23.phx2.redhat.com [10.3.113.23])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q9AHtoHJ024240; Wed, 10 Oct 2012 13:55:50 -0400
-Message-ID: <5075B6A5.2080807@redhat.com>
-Date: Wed, 10 Oct 2012 11:55:49 -0600
+	id q9AHwMcB024831; Wed, 10 Oct 2012 13:58:24 -0400
+Message-ID: <5075B73E.9020506@redhat.com>
+Date: Wed, 10 Oct 2012 11:58:22 -0600
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
@@ -29,17 +29,19 @@ User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 MIME-Version: 1.0
 To: Paolo Bonzini <pbonzini@redhat.com>
 References: <1349868762-10021-1-git-send-email-pbonzini@redhat.com>
-In-Reply-To: <1349868762-10021-1-git-send-email-pbonzini@redhat.com>
+	<50759EEC.8070308@weilnetz.de> <50759F9E.3060800@redhat.com>
+In-Reply-To: <50759F9E.3060800@redhat.com>
 X-Enigmail-Version: 1.4.4
 OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="------------enig063B402F6D735B34089A30D1"
+	boundary="------------enig2E036F849F6642211FD8F566"
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtfs-proxy-helper: check
  return code of setfsgid/setfsuid
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,39 +55,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Oct 2012 17:56:07 -0000
+X-List-Received-Date: Wed, 10 Oct 2012 17:58:35 -0000
 
 This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enig063B402F6D735B34089A30D1
+--------------enig2E036F849F6642211FD8F566
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-On 10/10/2012 05:32 AM, Paolo Bonzini wrote:
-> Fixes the following error with glibc 2.16 on Fedora 18:
+On 10/10/2012 10:17 AM, Paolo Bonzini wrote:
+> Il 10/10/2012 18:14, Stefan Weil ha scritto:
+>>>
+>>>
+>>> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.=
+c
+>>> index f9a8270..b34a84a 100644
+>>> --- a/fsdev/virtfs-proxy-helper.c
+>>> +++ b/fsdev/virtfs-proxy-helper.c
+>>> @@ -290,8 +290,12 @@ static int setfsugid(int uid, int gid)
+>>>           CAP_DAC_OVERRIDE,
+>>>       };
+>>>   -    setfsgid(gid);
+>>> -    setfsuid(uid);
+>>> +    if (setfsgid(gid) !=3D 0) {
+>>> +        return -1;
+>>> +    }
+>>
+>> Wouldn't setfsgid(gid) =3D=3D gid be also ok?
 >=20
-> virtfs-proxy-helper.c: In function =E2=80=98setfsugid=E2=80=99:
-> virtfs-proxy-helper.c:293:13: error: ignoring return value of =E2=80=98=
-setfsgid=E2=80=99, declared with attribute warn_unused_result [-Werror=3D=
-unused-result]
-> virtfs-proxy-helper.c:294:13: error: ignoring return value of =E2=80=98=
-setfsuid=E2=80=99, declared with attribute warn_unused_result [-Werror=3D=
-unused-result]
-> cc1: all warnings being treated as errors
->=20
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  fsdev/virtfs-proxy-helper.c | 8 ++++++--
->  1 file modificato, 6 inserzioni(+), 2 rimozioni(-)
+> Of course, it should be < 0.  I have no idea how to test this thing...
 
-How does this differ from this earlier posting?
-https://lists.gnu.org/archive/html/qemu-devel/2012-10/msg00851.html
+POSIX states that uid_t and gid_t may be unsigned, so checking for < 0
+is not necessarily possible (really, all you can check for is equality
+with the same value as ((uid_t)-1) when put through integer promotion
+rules).
 
 --=20
 Eric Blake   eblake@redhat.com    +1-919-301-3266
 Libvirt virtualization library http://libvirt.org
 
 
---------------enig063B402F6D735B34089A30D1
+--------------enig2E036F849F6642211FD8F566
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
@@ -95,14 +104,14 @@ Version: GnuPG v1.4.12 (GNU/Linux)
 Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
 Comment: Using GnuPG with Mozilla - http://www.enigmail.net/
 
-iQEcBAEBCAAGBQJQdbamAAoJEKeha0olJ0NqtywH/1yrXWbwiIF4Owe0cLZs3AZv
-xxVQ2ntF6RthZgBI2KKddymBWGo/RC92Edt9uxOq00j/IdIixvgiAMvM7DVMN3/t
-J3ctpjjMA5yNZba+f8Xqs+lKyZsm2mizf8gVl8E3PRywotS30zX95yzjiWLrDxaD
-rPQQ3oMvhUAhP41Ui7VEV0P4wuLwVRehT2dr6GDsdINGmWunUF4V1JcVMmitZJB3
-DGvpLxaRg/tnsF89LVa72URI4MiWt9qZXXsyaLvlzLQwouau4F1shfoyZr2sAPaM
-emYQxRpFdbx5VCaA6RSvnaoZ6K71Paw/28iCjzLXC6UMVxqfzizo1SpBTj7sv1s=
-=+Tvp
+iQEcBAEBCAAGBQJQdbc+AAoJEKeha0olJ0NqkbEH/3AaFLRZiJz1SqPWD80U0OES
+eWSpoYJYxHTMKlZYwxPGPyUeI0qrCAKbEVyjVO36F55T0az5YD8ubV0qGYO1It9O
+qQhkrbWmpN235jUTX2VW/RahO5cNFS6kvbL+xoGa1LzBftUqFv/1gjknIMRDlU36
+6hGczQuhm4N97ycYDRd1uUD3TrBiXIpUFjDRZOVqjnwQda9/Esjc4+mjkAcfS6r2
+3rQHUQk2CRqi6RarWyLggORym4ck95rQgnymdNl7gNpllBJ3VboEmE7KfvOiB3UA
+MvcorI8fOv/4tD52+VIMT0GSZp021TxWADcGdYIw23m8RCfapAB5fXtmvA0cNlo=
+=pFH2
 -----END PGP SIGNATURE-----
 
---------------enig063B402F6D735B34089A30D1--
+--------------enig2E036F849F6642211FD8F566--
 
