@@ -1,45 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TLKUf-0004pi-FO
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Oct 2012 17:04:05 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49437)
+	id 1TLuXR-0002oz-Dn
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2012 07:33:21 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47617)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TLKUd-0004l5-6W
-	for qemu-trivial@nongnu.org; Mon, 08 Oct 2012 17:04:04 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1TLuXI-0002Qk-El
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 07:33:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1TLKUb-00059D-Op
-	for qemu-trivial@nongnu.org; Mon, 08 Oct 2012 17:04:03 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:48537)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1TLuXE-00005F-7q
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 07:33:12 -0400
+Received: from mail-pb0-f45.google.com ([209.85.160.45]:62576)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1TLKUZ-00058j-KI; Mon, 08 Oct 2012 17:03:59 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	9F98A7280041; Mon,  8 Oct 2012 23:03:58 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id FKFdDw-PaRbh; Mon,  8 Oct 2012 23:03:56 +0200 (CEST)
-Received: from [192.168.178.20] (p5086EDFD.dip.t-dialin.net [80.134.237.253])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	4A2A8728003D; Mon,  8 Oct 2012 23:03:56 +0200 (CEST)
-Message-ID: <50733FBB.5060708@weilnetz.de>
-Date: Mon, 08 Oct 2012 23:03:55 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:15.0) Gecko/20120912 Thunderbird/15.0.1
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1TLuWy-0008TX-9v; Wed, 10 Oct 2012 07:32:52 -0400
+Received: by mail-pb0-f45.google.com with SMTP id rp2so605877pbb.4
+	for <multiple recipients>; Wed, 10 Oct 2012 04:32:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id:x-mailer:mime-version
+	:content-type:content-transfer-encoding;
+	bh=EGqQqnGlRfzsHHOvTk8pZKfv4wDxNBdpyPYjglRrou0=;
+	b=U6+M/U7DgS+od/m4W8BNqLm7P2S7J0x8c4vEv+D4NRvBASki+leyPOGqRqcc/Sq67N
+	4wrrbhSsELIesCAECOLu1l7Q/q73NVqn3o8AtyGfVrM52D8aHlZHr2AsHdiBkGrkNhw7
+	InILwSS7QFYSJYm6iHdy71GY8R6qq5LcolGMxipHUHbPiZADetil0zBbHTkgwAWKnQDL
+	OrUhn3ut3zRN8Vzh4K6zfeU6tqyWpYeIHpGVrKPRFbl7aF/fOYTXYkEj5sCl1asxPEYZ
+	Iwzt5VBbtEtm3hoxNMzuRFl03itzlk5Gm7fj7i7KF9QKcefTZGGm/hob0sYgYSOvh0/M
+	63rQ==
+Received: by 10.68.225.5 with SMTP id rg5mr72224549pbc.73.1349868771371;
+	Wed, 10 Oct 2012 04:32:51 -0700 (PDT)
+Received: from yakj.usersys.redhat.com (93-34-169-1.ip50.fastwebnet.it.
+	[93.34.169.1])
+	by mx.google.com with ESMTPS id w10sm732346paz.22.2012.10.10.04.32.49
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 10 Oct 2012 04:32:50 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 10 Oct 2012 13:32:42 +0200
+Message-Id: <1349868762-10021-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.7.12.1
 MIME-Version: 1.0
-To: Michael Roth <mdroth@linux.vnet.ibm.com>
-References: <1349729149-6481-1-git-send-email-mdroth@linux.vnet.ibm.com>
-In-Reply-To: <1349729149-6481-1-git-send-email-mdroth@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: blauwirbel@gmail.com, qemu-trivial <qemu-trivial@nongnu.org>,
-	qemu-devel@nongnu.org, rth@twiddle.net
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tci: fix build breakage for
-	target-sparc
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.160.45
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] virtfs-proxy-helper: check return code of
+	setfsgid/setfsuid
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,40 +57,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Oct 2012 21:04:04 -0000
+X-List-Received-Date: Wed, 10 Oct 2012 11:33:20 -0000
 
-Am 08.10.2012 22:45, schrieb Michael Roth:
-> commit c28ae41 introduced GETPC() usage for sparc, which is currently
-> not defined when building with --enable-tcg-interpreter. Add sparc to
-> the list of targets we selectively define GETPC() for.
->
-> Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
-> ---
->   exec-all.h |    3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/exec-all.h b/exec-all.h
-> index 6516da0..f7f649e 100644
-> --- a/exec-all.h
-> +++ b/exec-all.h
-> @@ -296,7 +296,8 @@ extern int tb_invalidated_flag;
->   #if defined(CONFIG_TCG_INTERPRETER)
->   /* Alpha and SH4 user mode emulations and Softmmu call GETPC().
->      For all others, GETPC remains undefined (which makes TCI a little faster. */
-> -# if defined(CONFIG_SOFTMMU) || defined(TARGET_ALPHA) || defined(TARGET_SH4)
-> +# if defined(CONFIG_SOFTMMU) || defined(TARGET_ALPHA) || defined(TARGET_SH4) \
-> +     || defined(TARGET_SPARC)
->   extern uintptr_t tci_tb_ptr;
->   #  define GETPC() tci_tb_ptr
->   # endif
+Fixes the following error with glibc 2.16 on Fedora 18:
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+virtfs-proxy-helper.c: In function ‘setfsugid’:
+virtfs-proxy-helper.c:293:13: error: ignoring return value of ‘setfsgid’, declared with attribute warn_unused_result [-Werror=unused-result]
+virtfs-proxy-helper.c:294:13: error: ignoring return value of ‘setfsuid’, declared with attribute warn_unused_result [-Werror=unused-result]
+cc1: all warnings being treated as errors
 
-Maybe whoever commits that patch can fix the comment, too.
-I don't think we need a 2nd patch for that.
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ fsdev/virtfs-proxy-helper.c | 8 ++++++--
+ 1 file modificato, 6 inserzioni(+), 2 rimozioni(-)
 
-Regards
-
-Stefan W.
+diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+index f9a8270..b34a84a 100644
+--- a/fsdev/virtfs-proxy-helper.c
++++ b/fsdev/virtfs-proxy-helper.c
+@@ -290,8 +290,12 @@ static int setfsugid(int uid, int gid)
+         CAP_DAC_OVERRIDE,
+     };
+ 
+-    setfsgid(gid);
+-    setfsuid(uid);
++    if (setfsgid(gid) != 0) {
++        return -1;
++    }
++    if (setfsuid(uid) != 0) {
++        return -1;
++    }
+ 
+     if (uid != 0 || gid != 0) {
+         return do_cap_set(cap_list, ARRAY_SIZE(cap_list), 0);
+-- 
+1.7.12.1
 
 
