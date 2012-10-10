@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TM0UP-0003Io-B5
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2012 13:54:37 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58606)
+	id 1TM0Vs-0005a1-U6
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2012 13:56:08 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34162)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1TM0UN-0003Es-6j
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:54:36 -0400
+	(envelope-from <eblake@redhat.com>) id 1TM0Vo-0005MT-Oe
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:56:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1TM0UM-0006vH-Ay
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:54:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42990)
+	(envelope-from <eblake@redhat.com>) id 1TM0Vk-00081f-3z
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:56:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55396)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1TM0UM-0006vB-07; Wed, 10 Oct 2012 13:54:34 -0400
+	(envelope-from <eblake@redhat.com>)
+	id 1TM0Vc-0007zD-Ni; Wed, 10 Oct 2012 13:55:52 -0400
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q9AHsWla007722
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q9AHtoa5008392
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 10 Oct 2012 13:54:33 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-24.ams2.redhat.com
-	[10.36.112.24])
+	Wed, 10 Oct 2012 13:55:50 -0400
+Received: from [10.3.113.23] (ovpn-113-23.phx2.redhat.com [10.3.113.23])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q9AH0ais007513; Wed, 10 Oct 2012 13:00:37 -0400
-Message-ID: <5075A9B4.4080407@redhat.com>
-Date: Wed, 10 Oct 2012 19:00:36 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	id q9AHtoHJ024240; Wed, 10 Oct 2012 13:55:50 -0400
+Message-ID: <5075B6A5.2080807@redhat.com>
+Date: Wed, 10 Oct 2012 11:55:49 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:15.0) Gecko/20120911 Thunderbird/15.0.1
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
+To: Paolo Bonzini <pbonzini@redhat.com>
 References: <1349868762-10021-1-git-send-email-pbonzini@redhat.com>
-	<50759EEC.8070308@weilnetz.de> <50759F9E.3060800@redhat.com>
-	<5075A0FF.3080904@weilnetz.de> <5075A420.10003@redhat.com>
-	<5075A843.8020107@weilnetz.de>
-In-Reply-To: <5075A843.8020107@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <1349868762-10021-1-git-send-email-pbonzini@redhat.com>
+X-Enigmail-Version: 1.4.4
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="------------enig063B402F6D735B34089A30D1"
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
@@ -53,44 +53,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Oct 2012 17:54:36 -0000
+X-List-Received-Date: Wed, 10 Oct 2012 17:56:07 -0000
 
-Il 10/10/2012 18:54, Stefan Weil ha scritto:
->>
->>     if (setfsuid(uid) < 0 || setfsuid(uid) != uid) {
->>         return -1;
->>     }
->>
->> but it seems wasteful to do four syscalls instead of two.
-> 
-> I added a local variable in my example to avoid those extra
-> syscalls.
+This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
+--------------enig063B402F6D735B34089A30D1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Note that the two setfsuid() calls are different.
+On 10/10/2012 05:32 AM, Paolo Bonzini wrote:
+> Fixes the following error with glibc 2.16 on Fedora 18:
+>=20
+> virtfs-proxy-helper.c: In function =E2=80=98setfsugid=E2=80=99:
+> virtfs-proxy-helper.c:293:13: error: ignoring return value of =E2=80=98=
+setfsgid=E2=80=99, declared with attribute warn_unused_result [-Werror=3D=
+unused-result]
+> virtfs-proxy-helper.c:294:13: error: ignoring return value of =E2=80=98=
+setfsuid=E2=80=99, declared with attribute warn_unused_result [-Werror=3D=
+unused-result]
+> cc1: all warnings being treated as errors
+>=20
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  fsdev/virtfs-proxy-helper.c | 8 ++++++--
+>  1 file modificato, 6 inserzioni(+), 2 rimozioni(-)
 
-The first checks the "-1" error from glibc.  The second says "if the
-first call succeeded, the second call should see "uid" as the current
-fsuid and the second call will be a no-op; if not, the first call must
-have failed".
+How does this differ from this earlier posting?
+https://lists.gnu.org/archive/html/qemu-devel/2012-10/msg00851.html
 
-> The functions have an additional problem: they don't set
-> errno (see manpages). I tested this, and here the manpages
-> are correct. The code in virtfs-proxy-helper expects that
-> errno was set, so the patch must set errno = EPERM or
-> something like that.
+--=20
+Eric Blake   eblake@redhat.com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-So it would be
 
-    if (setfsuid(uid) < 0) {
-        return -1;
-    }
-    if (setfsuid(uid) != uid) {
-        errno = EPERM;
-        return -1;
-    }
+--------------enig063B402F6D735B34089A30D1
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-I still prefer my v2 (v1 is wrong).  The return path seems to be dead,
-but it's not worse than before...
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Mozilla - http://www.enigmail.net/
 
-Paolo
+iQEcBAEBCAAGBQJQdbamAAoJEKeha0olJ0NqtywH/1yrXWbwiIF4Owe0cLZs3AZv
+xxVQ2ntF6RthZgBI2KKddymBWGo/RC92Edt9uxOq00j/IdIixvgiAMvM7DVMN3/t
+J3ctpjjMA5yNZba+f8Xqs+lKyZsm2mizf8gVl8E3PRywotS30zX95yzjiWLrDxaD
+rPQQ3oMvhUAhP41Ui7VEV0P4wuLwVRehT2dr6GDsdINGmWunUF4V1JcVMmitZJB3
+DGvpLxaRg/tnsF89LVa72URI4MiWt9qZXXsyaLvlzLQwouau4F1shfoyZr2sAPaM
+emYQxRpFdbx5VCaA6RSvnaoZ6K71Paw/28iCjzLXC6UMVxqfzizo1SpBTj7sv1s=
+=+Tvp
+-----END PGP SIGNATURE-----
+
+--------------enig063B402F6D735B34089A30D1--
 
