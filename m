@@ -1,49 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TM0YG-0007J0-Gc
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2012 13:58:36 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34995)
+	id 1TMD9F-0004Yp-Sq
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Oct 2012 03:25:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55585)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1TM0Y8-0007IG-1k
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:58:35 -0400
+	(envelope-from <mohan@in.ibm.com>) id 1TMD9B-0004Wy-KA
+	for qemu-trivial@nongnu.org; Thu, 11 Oct 2012 03:25:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1TM0Y6-0000DX-9E
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2012 13:58:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49553)
+	(envelope-from <mohan@in.ibm.com>) id 1TMD94-0006uc-Ut
+	for qemu-trivial@nongnu.org; Thu, 11 Oct 2012 03:25:33 -0400
+Received: from e28smtp03.in.ibm.com ([122.248.162.3]:40822)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1TM0Y5-0000D9-UI; Wed, 10 Oct 2012 13:58:26 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q9AHwOR4003680
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 10 Oct 2012 13:58:25 -0400
-Received: from [10.3.113.23] (ovpn-113-23.phx2.redhat.com [10.3.113.23])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id q9AHwMcB024831; Wed, 10 Oct 2012 13:58:24 -0400
-Message-ID: <5075B73E.9020506@redhat.com>
-Date: Wed, 10 Oct 2012 11:58:22 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:15.0) Gecko/20120911 Thunderbird/15.0.1
-MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <mohan@in.ibm.com>) id 1TMD94-0006rr-AI
+	for qemu-trivial@nongnu.org; Thu, 11 Oct 2012 03:25:26 -0400
+Received: from /spool/local
+	by e28smtp03.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <mohan@in.ibm.com>;
+	Thu, 11 Oct 2012 12:55:21 +0530
+Received: from d28relay05.in.ibm.com (9.184.220.62)
+	by e28smtp03.in.ibm.com (192.168.1.133) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 11 Oct 2012 12:55:02 +0530
+Received: from d28av02.in.ibm.com (d28av02.in.ibm.com [9.184.220.64])
+	by d28relay05.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	q9B7P1o84194592; Thu, 11 Oct 2012 12:55:01 +0530
+Received: from d28av02.in.ibm.com (loopback [127.0.0.1])
+	by d28av02.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	q9BCscW4004912; Thu, 11 Oct 2012 23:54:38 +1100
+Received: from explorer.in.ibm.com.ibm.com (explorer.in.ibm.com [9.122.21.77])
+	by d28av02.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	q9BCsbma004899
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Thu, 11 Oct 2012 23:54:38 +1100
+From: "M. Mohan Kumar" <mohan@in.ibm.com>
+To: Stefan Weil <sw@weilnetz.de>
+In-Reply-To: <5075A966.3090708@weilnetz.de>
 References: <1349868762-10021-1-git-send-email-pbonzini@redhat.com>
 	<50759EEC.8070308@weilnetz.de> <50759F9E.3060800@redhat.com>
-In-Reply-To: <50759F9E.3060800@redhat.com>
-X-Enigmail-Version: 1.4.4
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="------------enig2E036F849F6642211FD8F566"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	<5075A0FF.3080904@weilnetz.de> <5075A420.10003@redhat.com>
+	<5075A843.8020107@weilnetz.de> <5075A966.3090708@weilnetz.de>
+User-Agent: Notmuch/0.13.2 (http://notmuchmail.org) Emacs/24.1.1
+	(x86_64-redhat-linux-gnu)
+Date: Thu, 11 Oct 2012 12:55:00 +0530
+Message-ID: <871uh5tqr7.fsf@explorer.in.ibm.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+x-cbid: 12101107-3864-0000-0000-00000503DC2C
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+X-Received-From: 122.248.162.3
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtfs-proxy-helper: check
- return code of setfsgid/setfsuid
+	return code of setfsgid/setfsuid
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,63 +64,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Oct 2012 17:58:35 -0000
+X-List-Received-Date: Thu, 11 Oct 2012 07:25:36 -0000
 
-This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enig2E036F849F6642211FD8F566
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Stefan Weil <sw@weilnetz.de> writes:
 
-On 10/10/2012 10:17 AM, Paolo Bonzini wrote:
-> Il 10/10/2012 18:14, Stefan Weil ha scritto:
+We need to change fsuid and fsgid in 9p server side when 9p client wants
+to create a file with given uid and gid.
+
+In my case setfsuid and setfsgid never return -1 even if a normal user tries to
+change fsuid.
+
+I am running F17 and glibc is 2.15-56.fc17
+
+IMHO setfsuid/setfsgid need to return -1 & set errno to EPERM when calling user
+lacks CAP_SETUID capability. I can work on the kernel side to return
+proper error values.
+
+Also as per the man page:
+       When glibc determines that the argument is not a valid user ID,
+       it will return -1 and set errno  to  EINVAL
+       without attempting the system call.
+
+If it mean a nonexistent id by 'not a valid user ID' it may be a
+problem in virtfs case. Client sends the user id details which may be
+a nonexistent user id in host system. Ideally setfsuid setfsgid sets
+whatever uid/gid passed if the caller is root as of now.   
+
+
+> Am 10.10.2012 18:54, schrieb Stefan Weil:
+>> Am 10.10.2012 18:36, schrieb Paolo Bonzini:
+>>> Il 10/10/2012 18:23, Stefan Weil ha scritto:
+>>>> < 0 would be wrong because it looks like both functions never
+>>>> return negative values.
+>>>> I just wrote a small test program (see
+>>>> below) and called it with different uids with and without root
+>>>> rights. This pattern should be fine:
+>>>>
+>>>> new_uid = setfsuid(uid);
+>>>> if (new_uid != 0 && new_uid != uid) {
+>>>>    return -1;
+>>>> }
+>>> I didn't really care about this case.  I assumed that the authors knew
+>>> what they were doing...
 >>>
->>>
->>> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.=
-c
->>> index f9a8270..b34a84a 100644
->>> --- a/fsdev/virtfs-proxy-helper.c
->>> +++ b/fsdev/virtfs-proxy-helper.c
->>> @@ -290,8 +290,12 @@ static int setfsugid(int uid, int gid)
->>>           CAP_DAC_OVERRIDE,
->>>       };
->>>   -    setfsgid(gid);
->>> -    setfsuid(uid);
->>> +    if (setfsgid(gid) !=3D 0) {
->>> +        return -1;
->>> +    }
+>>> What I cared about is: "When glibc determines that the argument is not a
+>>>   valid  group  ID,  it will  return  -1  and set errno to EINVAL 
+>>> without
+>>> attempting the system call".
 >>
->> Wouldn't setfsgid(gid) =3D=3D gid be also ok?
->=20
-> Of course, it should be < 0.  I have no idea how to test this thing...
+>> I was not able to get -1 with my test program: any value which I tried
+>> seemed to work when the program was called with sudo.
+>>
+>>>
+>>> I think this would also work:
+>>>
+>>>     if (setfsuid(uid) < 0 || setfsuid(uid) != uid) {
+>>>         return -1;
+>>>     }
+>>>
+>>> but it seems wasteful to do four syscalls instead of two.
+>>>
+>>> Paolo
+>>
+>> I added a local variable in my example to avoid those extra
+>> syscalls.
+>>
+>> Your last patch v2 does not handle missing rights (no root)
+>> because in that case the functions don't return a value < 0
+>> but fail nevertheless.Calling a program which requires
+>> root privileges from a normal user account is usually a
+>> very common error. I don't know the use cases for virtfs -
+>> maybe that's no problem here.
+>>
+>> The functions have an additional problem: they don't set
+>> errno (see manpages). I tested this, and here the manpages
+>> are correct. The code in virtfs-proxy-helper expects that
+>> errno was set, so the patch must set errno = EPERM or
+>> something like that.
+>>
+>> Stefan
+>
+> Maybe the author of those code can tell us more on the
+> use cases and which errors must be handled.
+>
+> Is it necessary to use those functions at all (they are very
+> Linux specific), or can they be replaced by seteuid, setegid?
+>
+> Regards
+>
+> Stefan W.
 
-POSIX states that uid_t and gid_t may be unsigned, so checking for < 0
-is not necessarily possible (really, all you can check for is equality
-with the same value as ((uid_t)-1) when put through integer promotion
-rules).
-
---=20
-Eric Blake   eblake@redhat.com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---------------enig2E036F849F6642211FD8F566
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.12 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Mozilla - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJQdbc+AAoJEKeha0olJ0NqkbEH/3AaFLRZiJz1SqPWD80U0OES
-eWSpoYJYxHTMKlZYwxPGPyUeI0qrCAKbEVyjVO36F55T0az5YD8ubV0qGYO1It9O
-qQhkrbWmpN235jUTX2VW/RahO5cNFS6kvbL+xoGa1LzBftUqFv/1gjknIMRDlU36
-6hGczQuhm4N97ycYDRd1uUD3TrBiXIpUFjDRZOVqjnwQda9/Esjc4+mjkAcfS6r2
-3rQHUQk2CRqi6RarWyLggORym4ck95rQgnymdNl7gNpllBJ3VboEmE7KfvOiB3UA
-MvcorI8fOv/4tD52+VIMT0GSZp021TxWADcGdYIw23m8RCfapAB5fXtmvA0cNlo=
-=pFH2
------END PGP SIGNATURE-----
-
---------------enig2E036F849F6642211FD8F566--
 
