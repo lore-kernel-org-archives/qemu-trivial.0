@@ -1,30 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TMjdz-0007Wm-97
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Oct 2012 14:07:31 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:60022)
+	id 1TMmJd-0001JD-Cr
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Oct 2012 16:58:41 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56827)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1TMjdw-0007Mf-5f
-	for qemu-trivial@nongnu.org; Fri, 12 Oct 2012 14:07:29 -0400
+	(envelope-from <afaerber@suse.de>) id 1TMmJb-0001EK-NI
+	for qemu-trivial@nongnu.org; Fri, 12 Oct 2012 16:58:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1TMjdv-0000OX-89
-	for qemu-trivial@nongnu.org; Fri, 12 Oct 2012 14:07:28 -0400
-Received: from 38.0.169.217.in-addr.arpa ([217.169.0.38]:52811
-	helo=mnementh.archaic.org.uk) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1TMjdt-0000O8-El; Fri, 12 Oct 2012 14:07:25 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1TMjdr-0003QU-LM; Fri, 12 Oct 2012 19:07:23 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 12 Oct 2012 19:07:23 +0100
-Message-Id: <1350065243-13147-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 217.169.0.38
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] target-arm/neon_helper: Remove obsolete
-	FIXME comment
+	(envelope-from <afaerber@suse.de>) id 1TMmJa-0007ZK-JS
+	for qemu-trivial@nongnu.org; Fri, 12 Oct 2012 16:58:39 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:59777 helo=mx2.suse.de)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <afaerber@suse.de>)
+	id 1TMmJX-0007WT-Bn; Fri, 12 Oct 2012 16:58:35 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 7E6F59D938;
+	Fri, 12 Oct 2012 22:58:32 +0200 (CEST)
+Message-ID: <50788472.3000707@suse.de>
+Date: Fri, 12 Oct 2012 22:58:26 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:15.0) Gecko/20120825 Thunderbird/15.0
+MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1350064784-13058-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1350064784-13058-1-git-send-email-peter.maydell@linaro.org>
+X-Enigmail-Version: 1.4.4
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	qemu-devel@nongnu.org, patches@linaro.org, Avi Kivity <avi@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] targphys.h: Don't define
+ target_phys_addr_t for user-mode emulators
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,29 +47,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Oct 2012 18:07:30 -0000
+X-List-Received-Date: Fri, 12 Oct 2012 20:58:40 -0000
 
-Commit 33ebc29 fixed the bugs in the implementation of VQRSHL,
-but forgot to remove the FIXME comment...
+Am 12.10.2012 19:59, schrieb Peter Maydell:
+> Commit 4be403c accidentally defined the target_phys_addr_t type when
+> building user-mode emulators. Since the type doesn't really make
+> any sense except for system emulators, avoid defining it when building
+> in user mode.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target-arm/neon_helper.c |    1 -
- 1 file changed, 1 deletion(-)
+Acked-by: Andreas F=E4rber <afaerber@suse.de>
 
-diff --git a/target-arm/neon_helper.c b/target-arm/neon_helper.c
-index 8bb5129..9aa920d 100644
---- a/target-arm/neon_helper.c
-+++ b/target-arm/neon_helper.c
-@@ -788,7 +788,6 @@ uint64_t HELPER(neon_qshlu_s64)(CPUARMState *env, uint64_t valop, uint64_t shift
-     return helper_neon_qshl_u64(env, valop, shiftop);
- }
- 
--/* FIXME: This is wrong.  */
- #define NEON_FN(dest, src1, src2) do { \
-     int8_t tmp; \
-     tmp = (int8_t)src2; \
--- 
-1.7.9.5
+I do ask myself though why we would include targphys.h in user mode. ;)
 
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
