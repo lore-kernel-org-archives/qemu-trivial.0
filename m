@@ -1,45 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TNUSZ-00049J-ER
-	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 16:06:51 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44433)
+	id 1TNUVL-00055v-VB
+	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 16:09:43 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:45023)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TNUSW-00042d-Vz
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:06:49 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1TNUVJ-00055W-Vs
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:09:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TNUSW-0005QQ-2v
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:06:48 -0400
-Received: from mail-ie0-f173.google.com ([209.85.223.173]:53256)
+	(envelope-from <peter.maydell@linaro.org>) id 1TNUVI-00062I-Vw
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:09:41 -0400
+Received: from mail-ie0-f173.google.com ([209.85.223.173]:62763)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>)
-	id 1TNUSS-0005Oi-UW; Sun, 14 Oct 2012 16:06:45 -0400
-Received: by mail-ie0-f173.google.com with SMTP id 17so6861889iea.4
-	for <multiple recipients>; Sun, 14 Oct 2012 13:06:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=yUbqM0+H+cvafU2i4VPnbUMBGem8Dj9cNt54aNmPalA=;
-	b=HvGgST3IKAtUHM9RYz2c8Lyn71ZG70SAmUfL5g8e6LxnykBgzRrtVRrngXoJtmuS70
-	Cq7vYQMbyxJw32U3KD/lAt7/Tra82SwudCHNgjIO7GXHVWU09w3M27y9TcZ7wmZ8BJSu
-	+FHV87Pg8mzypnSupJFXTVqdxRtKOqY+PfDG6aYuffE8mOW8StmxVwxzgr9fo6jj2Ehb
-	B60AlUTkP/ewhv1AVxFwjQYwCSeBbrrYXzqnKKdQwUpIEkL0GfGBi5Vqqh7WsCDRCrWg
-	ZtSG+G7JGMKVn/TQBYCjOErKnaNIddX8RQN69MkkS4k8/fk3NDueRR0Czfckyc4OtUQ3
-	/i4w==
-Received: by 10.50.190.137 with SMTP id gq9mr7209103igc.27.1350245204355; Sun,
-	14 Oct 2012 13:06:44 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1TNUVI-00062A-R5
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:09:40 -0400
+Received: by mail-ie0-f173.google.com with SMTP id 17so6863700iea.4
+	for <qemu-trivial@nongnu.org>; Sun, 14 Oct 2012 13:09:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=DDcA/eSZHrvBGiEKrA/pcI2LuHe90M4gs7k4ZOP3PYQ=;
+	b=ll9WMSd90K5qzzYkeQgPOnwksWNDoQcJ62vOeTl9UTVcW2vgI+Ka6tfSPUQEpM4jKM
+	cZhp4yFHf989cLul/ExgoB84EYBP1D7Mb9yKlsIg7zaoWxDGzjoauftO478vJmlIxKxH
+	f173n3oDukvghFMHTJ2Jh/4y2xGcn6uBVWrgka1iR4ty9V0JaxYKdwU53clzbxhQlRoj
+	bAkhTiEBm4bYI96HrEHidXly1++BItRDUjUb+moPTijF/0kM8sUXMF3Uzb3hmMg2LGDA
+	nk9Kqd1tNmgrSc/9C7b8VOzdKDBl5jL5byFt34LVn5SI4HmHk1LTnulVOYvYUp0Ph/ar
+	FRMg==
 MIME-Version: 1.0
-Received: by 10.64.53.130 with HTTP; Sun, 14 Oct 2012 13:06:24 -0700 (PDT)
-In-Reply-To: <cover.1350244587.git.blauwirbel@gmail.com>
+Received: by 10.50.152.137 with SMTP id uy9mr6933546igb.62.1350245380132; Sun,
+	14 Oct 2012 13:09:40 -0700 (PDT)
+Received: by 10.50.87.105 with HTTP; Sun, 14 Oct 2012 13:09:40 -0700 (PDT)
+In-Reply-To: <9b4ee7a47d8bc116e20f236a1ad9ed73a695123e.1350244587.git.blauwirbel@gmail.com>
 References: <cover.1350244587.git.blauwirbel@gmail.com>
-From: Blue Swirl <blauwirbel@gmail.com>
-Date: Sun, 14 Oct 2012 20:06:24 +0000
-Message-ID: <CAAu8pHtYEb8PXnFSyWn9ZEZkFvd4y4e77oxc-L+jZOOodLaNJw@mail.gmail.com>
-To: qemu-devel@nongnu.org
-Content-Type: multipart/mixed; boundary=f46d04478493c3eb6e04cc0a75bd
+	<9b4ee7a47d8bc116e20f236a1ad9ed73a695123e.1350244587.git.blauwirbel@gmail.com>
+Date: Sun, 14 Oct 2012 21:09:40 +0100
+Message-ID: <CAFEAcA_M58F9F-NTY81Fau9_iH_s76f0KHQ_L5TOoC8+naWB6Q@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Blue Swirl <blauwirbel@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQkS5iO10fojSylFLYu/gtcMNUuIa+LLfN8lx3qcOVz+rvui8jR/F63ZWi2OmSnerr0vsVlK
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.85.223.173
-Cc: qemu-trivial@nongnu.org, blauwirbel@gmail.com
-Subject: Re: [Qemu-trivial] [PATCH 00/11] static patches
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 10/11] arm: add missing static and remove
+	unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,124 +56,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 14 Oct 2012 20:06:50 -0000
+X-List-Received-Date: Sun, 14 Oct 2012 20:09:43 -0000
 
---f46d04478493c3eb6e04cc0a75bd
-Content-Type: text/plain; charset=UTF-8
+On 14 October 2012 20:58, Blue Swirl <blauwirbel@gmail.com> wrote:
+> index 2fc4137..2c02a83 100644
+> --- a/hw/omap_gpmc.c
+> +++ b/hw/omap_gpmc.c
+> @@ -871,24 +871,3 @@ void omap_gpmc_attach(struct omap_gpmc_s *s, int cs, MemoryRegion *iomem)
+>      f->iomem = iomem;
+>      omap_gpmc_cs_map(s, cs);
+>  }
+> -
+> -void omap_gpmc_attach_nand(struct omap_gpmc_s *s, int cs, DeviceState *nand)
+> -{
+> -    struct omap_gpmc_cs_file_s *f;
+> -    assert(nand);
+> -
+> -    if (cs < 0 || cs >= 8) {
+> -        fprintf(stderr, "%s: bad chip-select %i\n", __func__, cs);
+> -        exit(-1);
+> -    }
+> -    f = &s->cs_file[cs];
+> -
+> -    omap_gpmc_cs_unmap(s, cs);
+> -    f->config[0] &= ~(0xf << 10);
+> -    f->config[0] |= (OMAP_GPMC_NAND << 10);
+> -    f->dev = nand;
+> -    if (nand_getbuswidth(f->dev) == 16) {
+> -        f->config[0] |= OMAP_GPMC_16BIT << 12;
+> -    }
+> -    omap_gpmc_cs_map(s, cs);
+> -}
 
-On Sun, Oct 14, 2012 at 7:58 PM, Blue Swirl <blauwirbel@gmail.com> wrote:
-> I made a small tool to detect unused functions and
-> variables. Here's some fixes.
+Please don't delete this function, it is the public facing interface
+for allowing board models to attach NAND devices to the GPMC. This
+might not be used by anything currently in mainline, but it is used
+by the omap3 beagle and overo board models in qemu-linaro (and which
+I will upstream eventually, honest).
 
-Just run the attached tool in an object directory and after some time,
-it will produce a list of suspect symbols:
-AES_decrypt ( ./aes.o)
-AES_encrypt ( ./aes.o)
-AUD_get_elapsed_usec_in ( ./audio/audio.o)
-AUD_get_elapsed_usec_out ( ./audio/audio.o)
-AUD_init_time_stamp_in ( ./audio/audio.o)
-AUD_init_time_stamp_out ( ./audio/audio.o)
-AUD_is_active_in ( ./audio/audio.o)
-AUD_is_active_out ( ./audio/audio.o)
-DEFAULT_ATR ( ./hw/ccid-card-passthru.o)
-...
+More generally I'm wary of deletion of apparently unused functions like
+this one (or some of the others like the 'pcmcia eject card' function)
+which are obviously intended to be public facing APIs to other
+device models, unless they come with rationales along the lines of
+"this function was added for purpose X but it is not needed now because
+commit Y changed things so you do this with Z now".
 
->
-> Blue Swirl (11):
->   target-sparc: make do_unaligned_access static
->   vl.c: add missing static
->   vnc: add missing static and remove unused functions
->   tap-win32: avoid a warning
->   m48t59: remove unused m48t59_set_addr
->   sun4c: remove unused functions
->   slirp: remove unused function u_sleep
->   ppc: add missing static and remove unused functions
->   target-ppc: make some functions static
->   arm: add missing static and remove unused functions
->   exec: make some functions static
->
->  console.h                         |    2 -
->  cpu-common.h                      |    5 -
->  exec-all.h                        |    2 -
->  exec-obsolete.h                   |    4 -
->  exec.c                            |   19 ++-
->  hw/adb.c                          |    8 +-
->  hw/adb.h                          |    4 -
->  hw/devices.h                      |    3 -
->  hw/i2c.h                          |    3 -
->  hw/m48t59.c                       |    7 -
->  hw/mac_nvram.c                    |   24 ---
->  hw/nvram.h                        |   12 --
->  hw/omap.h                         |    1 -
->  hw/omap_gpmc.c                    |   21 ---
->  hw/pcmcia.h                       |    1 -
->  hw/ppc.c                          |   54 +-----
->  hw/ppc405.h                       |    6 -
->  hw/ppc405_uc.c                    |  342 -------------------------------------
->  hw/ppc_mac.h                      |    2 -
->  hw/pxa.h                          |    3 -
->  hw/pxa2xx.c                       |    4 +-
->  hw/pxa2xx_pcmcia.c                |   21 ---
->  hw/soc_dma.c                      |   52 ------
->  hw/soc_dma.h                      |   16 +--
->  hw/sun4c_intctl.c                 |   23 ---
->  hw/sun4m.h                        |    4 -
->  hw/tc6393xb.c                     |   16 --
->  hw/tmp105.c                       |   16 --
->  linux-user/arm/nwfpe/fpa11.c      |    4 +-
->  linux-user/arm/nwfpe/fpa11.h      |    2 -
->  linux-user/arm/nwfpe/fpa11_cprt.c |    8 +-
->  net/tap-win32.c                   |    1 +
->  slirp/misc.c                      |   14 --
->  slirp/misc.h                      |    1 -
->  sysemu.h                          |    5 -
->  target-ppc/cpu.h                  |    9 -
->  target-ppc/mmu_helper.c           |   11 +-
->  target-sparc/cpu.h                |    3 -
->  target-sparc/ldst_helper.c        |    8 +-
->  ui/vnc-jobs.c                     |   46 +-----
->  ui/vnc-jobs.h                     |    4 -
->  ui/vnc.c                          |   14 +-
->  ui/vnc.h                          |    5 -
->  vl.c                              |   33 ++---
->  44 files changed, 69 insertions(+), 774 deletions(-)
->
-> --
-> 1.7.2.5
->
+> diff --git a/linux-user/arm/nwfpe/fpa11.c b/linux-user/arm/nwfpe/fpa11.c
+> index eebd93f..3434036 100644
+> --- a/linux-user/arm/nwfpe/fpa11.c
+> +++ b/linux-user/arm/nwfpe/fpa11.c
 
---f46d04478493c3eb6e04cc0a75bd
-Content-Type: application/x-perl; name="statics.pl"
-Content-Disposition: attachment; filename="statics.pl"
-Content-Transfer-Encoding: base64
-X-Attachment-Id: f_h8al0x2l0
+In general anything in linux-user/arm/nwfpe is legacy code which
+it's scarcely worth the effort of touching or reviewing.
 
-IyEvdXNyL2Jpbi9lbnYgcGVybAoKbXkgQGRpcnN0YWNrID0gKCIuIik7Cm15ICVzeW1ib2xzX2Rl
-ZmluZWQ7Cm15ICVzeW1ib2xzX25lZWRlZDsKCnN1YiB2aXNpdF9maWxlIHsKICAgIG15ICgkZmls
-ZSkgPSBAXzsKICAgIG9wZW4obXkgJGZoLCAiLXwiLCAibm0gJGZpbGUiKSB8fCBkaWU7CgogICAg
-d2hpbGUgKG15ICRlbnRyeSA9IHJlYWRsaW5lKCRmaCkpIHsKICAgICAgICBjaG9tcCgkZW50cnkp
-OwogICAgICAgIG15IEBlbGVtID0gc3BsaXQoIiAiLCAkZW50cnkpOwogICAgICAgIG15ICRhZGRy
-LCAkdHlwZSwgJG5hbWU7CiAgICAgICAgaWYgKCQjZWxlbSA9PSAyKSB7CiAgICAgICAgICAgICgk
-YWRkciwgJHR5cGUsICRuYW1lKSA9IHNwbGl0KCIgIiwgJGVudHJ5KTsKICAgICAgICB9IGVsc2Ug
-ewogICAgICAgICAgICAoJHR5cGUsICRuYW1lKSA9IHNwbGl0KCIgIiwgJGVudHJ5KTsKICAgICAg
-ICB9CiAgICAgICAgaWYgKCR0eXBlIGVxICdUJyB8fCAkdHlwZSBlcSAnRCcgfHwgJHR5cGUgZXEg
-J0InIHx8ICR0eXBlIGVxICdSJykgewojICAgICAgICAgICAgcHJpbnQgImRlZmluZXMgdHlwZSAk
-dHlwZSBuYW1lICRuYW1lXG4iOwogICAgICAgICAgICAkc3ltYm9sc19kZWZpbmVkeyRuYW1lfSA9
-ICRzeW1ib2xzX2RlZmluZWR7JG5hbWV9IC4gIiAiIC4gJGZpbGU7CiAgICAgICAgfSBlbHNpZiAo
-JHR5cGUgZXEgJ1UnIHx8ICR0eXBlIGVxICdDJykgewojICAgICAgICAgICAgcHJpbnQgIm5lZWRz
-IHR5cGUgJHR5cGUgbmFtZSAkbmFtZVxuIjsKICAgICAgICAgICAgJHN5bWJvbHNfbmVlZGVkeyRu
-YW1lfSsrOwogICAgICAgIH0KICAgIH0KICAgIGNsb3NlICRmaDsKfQoKCnN1YiB2aXNpdF9kaXIg
-ewogICAgbXkgKCRjdXIpID0gQF87CiAgICBvcGVuZGlyKG15ICRkaCwgJGN1cikgfHwgZGllOwoK
-ICAgIHdoaWxlIChteSAkZW50cnkgPSByZWFkZGlyICRkaCkgewogICAgICAgIGlmICgkZW50cnkg
-bmUgIi4iICYmICRlbnRyeSBuZSAiLi4iKSB7CiAgICAgICAgICAgICRlbnRyeSA9ICRjdXIgLiAi
-LyIgLiAkZW50cnk7CiAgICAgICAgICAgIGlmICggLWQgJGVudHJ5KSB7CiAgICAgICAgICAgICAg
-ICBwdXNoKEBkaXJzdGFjaywgJGVudHJ5KTsKICAgICAgICAgICAgfSBlbHNpZiAoJGVudHJ5ID1+
-IG0vLipcLm8kLykgewojICAgICAgICAgICAgICAgIHByaW50ICJvYmplY3QgJGVudHJ5XG4iOwog
-ICAgICAgICAgICAgICAgdmlzaXRfZmlsZSgkZW50cnkpOwogICAgICAgICAgICB9CiAgICAgICAg
-fQogICAgfQogICAgY2xvc2VkaXIgJGRoOwp9Cgp3aGlsZSAobXkgJGN1ciA9IHBvcChAZGlyc3Rh
-Y2spKSB7CiAgICB2aXNpdF9kaXIoJGN1cik7Cn0KCmZvcmVhY2ggJHN5bWJvbCAoc29ydChrZXlz
-ICVzeW1ib2xzX2RlZmluZWQpKSB7CiAgICBpZiAoJHN5bWJvbHNfbmVlZGVkeyRzeW1ib2x9ID09
-IDApIHsKICAgICAgICBwcmludCAiJHN5bWJvbCAoJHN5bWJvbHNfZGVmaW5lZHskc3ltYm9sfSlc
-biI7CiAgICB9Cn0K
---f46d04478493c3eb6e04cc0a75bd--
+thanks
+-- PMM
 
