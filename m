@@ -1,45 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TNUL2-0007ou-Nl
-	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 15:59:04 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:52078)
+	id 1TNULN-00007g-6w
+	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 15:59:25 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:52179)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TNUL0-0007fd-5E
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 15:59:02 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1TNULK-0008Ps-BK
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 15:59:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TNUKz-0002Bp-4g
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 15:59:02 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1TNULJ-0002EJ-Da
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 15:59:22 -0400
 Received: from mail-lb0-f173.google.com ([209.85.217.173]:50005)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <blauwirbel@gmail.com>)
-	id 1TNUKw-0002B9-R2; Sun, 14 Oct 2012 15:58:58 -0400
+	id 1TNULG-0002B9-QR; Sun, 14 Oct 2012 15:59:18 -0400
 Received: by mail-lb0-f173.google.com with SMTP id gj3so2850165lbb.4
-	for <multiple recipients>; Sun, 14 Oct 2012 12:58:57 -0700 (PDT)
+	for <multiple recipients>; Sun, 14 Oct 2012 12:59:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:x-mailer;
-	bh=N+wmW+wmxj/A6Am9GulSC1qimT1x/hGUWVSIU0YIMuk=;
-	b=DH/iUWpgQlCjBlXtFaLlIyoVLwjnQLIT6bWDea/1pLvLGQNd3xyXbGzMAr8ELWdCxV
-	wfhKPJqEFXSnSRe9BaJrldPCA0lfe77Kvqs9q8sw3VAx5T5xPbkcmzKhdZMYup9tkPa/
-	kRR0qL3IeMvn9DgVVxHchdslRB+EjVHyhPOKwE98WQ/zoygwuO6KS+nyVIGzaRHl/vR0
-	ZQVYFfyAlyB98EcioIR1RLJX/F2b80Z8Pk+sWCqTElPKphs8IDv96akj9aRSOi1EyPSv
-	fFg1kUdqlpNUyz6fJPZRf71nX9uJggKOSeQ002pyejrZf2oH74VhWE7+hC+tvR9cNs7j
-	qhnA==
-Received: by 10.152.124.201 with SMTP id mk9mr8402313lab.33.1350244737494;
-	Sun, 14 Oct 2012 12:58:57 -0700 (PDT)
+	h=from:to:cc:subject:date:message-id:x-mailer:in-reply-to:references
+	:in-reply-to:references;
+	bh=HwU7ABK+DKHUjCWvo6nraEJjnDQDngUfcRp5vjDxvsQ=;
+	b=mJiUJI4tMRkLuuEzwjh+FHtDtgICbJLWmGML0G42ShpSOiEMti67zouX9pjqOLnXdo
+	6Ica+nB5umUDClUnOdXQZqZ3aCrSeRCUkbTmpGwa0uiaQjN8DAjBgWc12KpS0Cm5ntoT
+	cR36UTHaKp+7qV+JdvaoRNRRvGfeIGGihORBolhm9YMRMsUkZDGe9uzcQ1M2COX2RScy
+	ByX+PVzq/JORlEUISgo0cpVHY7BON/Zv4Lvr2dJ4Nfc19aqxI8mosAVh8ShFCDWdH13W
+	7qA+0ndaHQvdSO4evU+ZuXFfrE3eE6J3nkCSq/dOmsmVspCr4dVGJ9OThpBlJ5pV6k+c
+	wicw==
+Received: by 10.152.104.240 with SMTP id gh16mr8374796lab.56.1350244758135;
+	Sun, 14 Oct 2012 12:59:18 -0700 (PDT)
 Received: from localhost.localdomain (blueswirl.broker.freenet6.net.
 	[2001:5c0:1000:b::b867])
-	by mx.google.com with ESMTPS id r8sm3941759lba.15.2012.10.14.12.58.53
+	by mx.google.com with ESMTPS id r8sm3941759lba.15.2012.10.14.12.59.13
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 14 Oct 2012 12:58:56 -0700 (PDT)
+	Sun, 14 Oct 2012 12:59:17 -0700 (PDT)
 From: Blue Swirl <blauwirbel@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sun, 14 Oct 2012 19:58:48 +0000
-Message-Id: <cover.1350244587.git.blauwirbel@gmail.com>
+Date: Sun, 14 Oct 2012 19:58:49 +0000
+Message-Id: <f81dd96e31a1c61b75f157247551c3feb4fb3c38.1350244587.git.blauwirbel@gmail.com>
 X-Mailer: git-send-email 1.7.2.5
+In-Reply-To: <cover.1350244587.git.blauwirbel@gmail.com>
+References: <cover.1350244587.git.blauwirbel@gmail.com>
+In-Reply-To: <cover.1350244587.git.blauwirbel@gmail.com>
+References: <cover.1350244587.git.blauwirbel@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.85.217.173
 Cc: qemu-trivial@nongnu.org, blauwirbel@gmail.com
-Subject: [Qemu-trivial] [PATCH 00/11] static patches
+Subject: [Qemu-trivial] [PATCH 01/11] target-sparc: make do_unaligned_access
+	static
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,70 +57,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 14 Oct 2012 19:59:03 -0000
+X-List-Received-Date: Sun, 14 Oct 2012 19:59:23 -0000
 
-I made a small tool to detect unused functions and
-variables. Here's some fixes.
+Signed-off-by: Blue Swirl <blauwirbel@gmail.com>
+---
+ target-sparc/cpu.h         |    3 ---
+ target-sparc/ldst_helper.c |    8 ++++++--
+ 2 files changed, 6 insertions(+), 5 deletions(-)
 
-Blue Swirl (11):
-  target-sparc: make do_unaligned_access static
-  vl.c: add missing static
-  vnc: add missing static and remove unused functions
-  tap-win32: avoid a warning
-  m48t59: remove unused m48t59_set_addr
-  sun4c: remove unused functions
-  slirp: remove unused function u_sleep
-  ppc: add missing static and remove unused functions
-  target-ppc: make some functions static
-  arm: add missing static and remove unused functions
-  exec: make some functions static
-
- console.h                         |    2 -
- cpu-common.h                      |    5 -
- exec-all.h                        |    2 -
- exec-obsolete.h                   |    4 -
- exec.c                            |   19 ++-
- hw/adb.c                          |    8 +-
- hw/adb.h                          |    4 -
- hw/devices.h                      |    3 -
- hw/i2c.h                          |    3 -
- hw/m48t59.c                       |    7 -
- hw/mac_nvram.c                    |   24 ---
- hw/nvram.h                        |   12 --
- hw/omap.h                         |    1 -
- hw/omap_gpmc.c                    |   21 ---
- hw/pcmcia.h                       |    1 -
- hw/ppc.c                          |   54 +-----
- hw/ppc405.h                       |    6 -
- hw/ppc405_uc.c                    |  342 -------------------------------------
- hw/ppc_mac.h                      |    2 -
- hw/pxa.h                          |    3 -
- hw/pxa2xx.c                       |    4 +-
- hw/pxa2xx_pcmcia.c                |   21 ---
- hw/soc_dma.c                      |   52 ------
- hw/soc_dma.h                      |   16 +--
- hw/sun4c_intctl.c                 |   23 ---
- hw/sun4m.h                        |    4 -
- hw/tc6393xb.c                     |   16 --
- hw/tmp105.c                       |   16 --
- linux-user/arm/nwfpe/fpa11.c      |    4 +-
- linux-user/arm/nwfpe/fpa11.h      |    2 -
- linux-user/arm/nwfpe/fpa11_cprt.c |    8 +-
- net/tap-win32.c                   |    1 +
- slirp/misc.c                      |   14 --
- slirp/misc.h                      |    1 -
- sysemu.h                          |    5 -
- target-ppc/cpu.h                  |    9 -
- target-ppc/mmu_helper.c           |   11 +-
- target-sparc/cpu.h                |    3 -
- target-sparc/ldst_helper.c        |    8 +-
- ui/vnc-jobs.c                     |   46 +-----
- ui/vnc-jobs.h                     |    4 -
- ui/vnc.c                          |   14 +-
- ui/vnc.h                          |    5 -
- vl.c                              |   33 ++---
- 44 files changed, 69 insertions(+), 774 deletions(-)
-
+diff --git a/target-sparc/cpu.h b/target-sparc/cpu.h
+index 214d01d..b4eda18 100644
+--- a/target-sparc/cpu.h
++++ b/target-sparc/cpu.h
+@@ -711,9 +711,6 @@ uint64_t cpu_tick_get_count(CPUTimer *timer);
+ void cpu_tick_set_limit(CPUTimer *timer, uint64_t limit);
+ trap_state* cpu_tsptr(CPUSPARCState* env);
+ #endif
+-void QEMU_NORETURN do_unaligned_access(CPUSPARCState *env, target_ulong addr,
+-                                       int is_write, int is_user,
+-                                       uintptr_t retaddr);
+ void cpu_restore_state2(CPUSPARCState *env, uintptr_t retaddr);
+ 
+ #define TB_FLAG_FPU_ENABLED (1 << 4)
+diff --git a/target-sparc/ldst_helper.c b/target-sparc/ldst_helper.c
+index 2ca9a5c..795b0bd 100644
+--- a/target-sparc/ldst_helper.c
++++ b/target-sparc/ldst_helper.c
+@@ -65,6 +65,9 @@
+ #define QT1 (env->qt1)
+ 
+ #if !defined(CONFIG_USER_ONLY)
++static void QEMU_NORETURN do_unaligned_access(CPUSPARCState *env,
++                                              target_ulong addr, int is_write,
++                                              int is_user, uintptr_t retaddr);
+ #include "softmmu_exec.h"
+ #define MMUSUFFIX _mmu
+ #define ALIGNED_ONLY
+@@ -2407,8 +2410,9 @@ void cpu_restore_state2(CPUSPARCState *env, uintptr_t retaddr)
+ }
+ 
+ #if !defined(CONFIG_USER_ONLY)
+-void do_unaligned_access(CPUSPARCState *env, target_ulong addr, int is_write,
+-                         int is_user, uintptr_t retaddr)
++static void QEMU_NORETURN do_unaligned_access(CPUSPARCState *env,
++                                              target_ulong addr, int is_write,
++                                              int is_user, uintptr_t retaddr)
+ {
+ #ifdef DEBUG_UNALIGNED
+     printf("Unaligned access to 0x" TARGET_FMT_lx " from 0x" TARGET_FMT_lx
 -- 
 1.7.2.5
 
