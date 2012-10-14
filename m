@@ -1,41 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TMmJd-0001JD-Cr
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Oct 2012 16:58:41 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56827)
+	id 1TNUL2-0007ou-Nl
+	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 15:59:04 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:52078)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1TMmJb-0001EK-NI
-	for qemu-trivial@nongnu.org; Fri, 12 Oct 2012 16:58:40 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1TNUL0-0007fd-5E
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 15:59:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1TMmJa-0007ZK-JS
-	for qemu-trivial@nongnu.org; Fri, 12 Oct 2012 16:58:39 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:59777 helo=mx2.suse.de)
+	(envelope-from <blauwirbel@gmail.com>) id 1TNUKz-0002Bp-4g
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 15:59:02 -0400
+Received: from mail-lb0-f173.google.com ([209.85.217.173]:50005)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1TMmJX-0007WT-Bn; Fri, 12 Oct 2012 16:58:35 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 7E6F59D938;
-	Fri, 12 Oct 2012 22:58:32 +0200 (CEST)
-Message-ID: <50788472.3000707@suse.de>
-Date: Fri, 12 Oct 2012 22:58:26 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:15.0) Gecko/20120825 Thunderbird/15.0
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1350064784-13058-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1350064784-13058-1-git-send-email-peter.maydell@linaro.org>
-X-Enigmail-Version: 1.4.4
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	qemu-devel@nongnu.org, patches@linaro.org, Avi Kivity <avi@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] targphys.h: Don't define
- target_phys_addr_t for user-mode emulators
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1TNUKw-0002B9-R2; Sun, 14 Oct 2012 15:58:58 -0400
+Received: by mail-lb0-f173.google.com with SMTP id gj3so2850165lbb.4
+	for <multiple recipients>; Sun, 14 Oct 2012 12:58:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer;
+	bh=N+wmW+wmxj/A6Am9GulSC1qimT1x/hGUWVSIU0YIMuk=;
+	b=DH/iUWpgQlCjBlXtFaLlIyoVLwjnQLIT6bWDea/1pLvLGQNd3xyXbGzMAr8ELWdCxV
+	wfhKPJqEFXSnSRe9BaJrldPCA0lfe77Kvqs9q8sw3VAx5T5xPbkcmzKhdZMYup9tkPa/
+	kRR0qL3IeMvn9DgVVxHchdslRB+EjVHyhPOKwE98WQ/zoygwuO6KS+nyVIGzaRHl/vR0
+	ZQVYFfyAlyB98EcioIR1RLJX/F2b80Z8Pk+sWCqTElPKphs8IDv96akj9aRSOi1EyPSv
+	fFg1kUdqlpNUyz6fJPZRf71nX9uJggKOSeQ002pyejrZf2oH74VhWE7+hC+tvR9cNs7j
+	qhnA==
+Received: by 10.152.124.201 with SMTP id mk9mr8402313lab.33.1350244737494;
+	Sun, 14 Oct 2012 12:58:57 -0700 (PDT)
+Received: from localhost.localdomain (blueswirl.broker.freenet6.net.
+	[2001:5c0:1000:b::b867])
+	by mx.google.com with ESMTPS id r8sm3941759lba.15.2012.10.14.12.58.53
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sun, 14 Oct 2012 12:58:56 -0700 (PDT)
+From: Blue Swirl <blauwirbel@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Sun, 14 Oct 2012 19:58:48 +0000
+Message-Id: <cover.1350244587.git.blauwirbel@gmail.com>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.217.173
+Cc: qemu-trivial@nongnu.org, blauwirbel@gmail.com
+Subject: [Qemu-trivial] [PATCH 00/11] static patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,24 +51,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Oct 2012 20:58:40 -0000
+X-List-Received-Date: Sun, 14 Oct 2012 19:59:03 -0000
 
-Am 12.10.2012 19:59, schrieb Peter Maydell:
-> Commit 4be403c accidentally defined the target_phys_addr_t type when
-> building user-mode emulators. Since the type doesn't really make
-> any sense except for system emulators, avoid defining it when building
-> in user mode.
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+I made a small tool to detect unused functions and
+variables. Here's some fixes.
 
-Acked-by: Andreas F=E4rber <afaerber@suse.de>
+Blue Swirl (11):
+  target-sparc: make do_unaligned_access static
+  vl.c: add missing static
+  vnc: add missing static and remove unused functions
+  tap-win32: avoid a warning
+  m48t59: remove unused m48t59_set_addr
+  sun4c: remove unused functions
+  slirp: remove unused function u_sleep
+  ppc: add missing static and remove unused functions
+  target-ppc: make some functions static
+  arm: add missing static and remove unused functions
+  exec: make some functions static
 
-I do ask myself though why we would include targphys.h in user mode. ;)
+ console.h                         |    2 -
+ cpu-common.h                      |    5 -
+ exec-all.h                        |    2 -
+ exec-obsolete.h                   |    4 -
+ exec.c                            |   19 ++-
+ hw/adb.c                          |    8 +-
+ hw/adb.h                          |    4 -
+ hw/devices.h                      |    3 -
+ hw/i2c.h                          |    3 -
+ hw/m48t59.c                       |    7 -
+ hw/mac_nvram.c                    |   24 ---
+ hw/nvram.h                        |   12 --
+ hw/omap.h                         |    1 -
+ hw/omap_gpmc.c                    |   21 ---
+ hw/pcmcia.h                       |    1 -
+ hw/ppc.c                          |   54 +-----
+ hw/ppc405.h                       |    6 -
+ hw/ppc405_uc.c                    |  342 -------------------------------------
+ hw/ppc_mac.h                      |    2 -
+ hw/pxa.h                          |    3 -
+ hw/pxa2xx.c                       |    4 +-
+ hw/pxa2xx_pcmcia.c                |   21 ---
+ hw/soc_dma.c                      |   52 ------
+ hw/soc_dma.h                      |   16 +--
+ hw/sun4c_intctl.c                 |   23 ---
+ hw/sun4m.h                        |    4 -
+ hw/tc6393xb.c                     |   16 --
+ hw/tmp105.c                       |   16 --
+ linux-user/arm/nwfpe/fpa11.c      |    4 +-
+ linux-user/arm/nwfpe/fpa11.h      |    2 -
+ linux-user/arm/nwfpe/fpa11_cprt.c |    8 +-
+ net/tap-win32.c                   |    1 +
+ slirp/misc.c                      |   14 --
+ slirp/misc.h                      |    1 -
+ sysemu.h                          |    5 -
+ target-ppc/cpu.h                  |    9 -
+ target-ppc/mmu_helper.c           |   11 +-
+ target-sparc/cpu.h                |    3 -
+ target-sparc/ldst_helper.c        |    8 +-
+ ui/vnc-jobs.c                     |   46 +-----
+ ui/vnc-jobs.h                     |    4 -
+ ui/vnc.c                          |   14 +-
+ ui/vnc.h                          |    5 -
+ vl.c                              |   33 ++---
+ 44 files changed, 69 insertions(+), 774 deletions(-)
 
-Andreas
+-- 
+1.7.2.5
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
 
