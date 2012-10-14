@@ -1,50 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TNUMz-0002x7-HG
-	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 16:01:05 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45028)
+	id 1TNUSZ-00049J-ER
+	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 16:06:51 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44433)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TNUMw-0002u9-TO
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:01:03 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1TNUSW-00042d-Vz
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:06:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TNUMv-0003Im-Ox
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:01:02 -0400
-Received: from mail-la0-f45.google.com ([209.85.215.45]:37016)
+	(envelope-from <blauwirbel@gmail.com>) id 1TNUSW-0005QQ-2v
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:06:48 -0400
+Received: from mail-ie0-f173.google.com ([209.85.223.173]:53256)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <blauwirbel@gmail.com>)
-	id 1TNUMs-0002LR-Fd; Sun, 14 Oct 2012 16:00:58 -0400
-Received: by mail-la0-f45.google.com with SMTP id m13so2786709lah.4
-	for <multiple recipients>; Sun, 14 Oct 2012 13:00:57 -0700 (PDT)
+	id 1TNUSS-0005Oi-UW; Sun, 14 Oct 2012 16:06:45 -0400
+Received: by mail-ie0-f173.google.com with SMTP id 17so6861889iea.4
+	for <multiple recipients>; Sun, 14 Oct 2012 13:06:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:x-mailer:in-reply-to:references
-	:in-reply-to:references;
-	bh=CZxCA1Mr91AWEZfgQOl6t6NfamybbjBuS1eoWD51+dI=;
-	b=WSRGsLja285+9RNRvPbbWY2UJuF7cxa5xIMq0fdq5ls7b5jZw7wn6cBTRZCoruLuuV
-	xD3fIDnha4aONYB9EchBT0DZ2JWHP50FKPhYRkKdo/trpziVTk7yF/mbJ2DLFdgsT8rI
-	Fqw0T0gtmul/N6HXKkMNqOPVfzwAbXfBW9evcjHtjm35apAXKOY+5QKA22bAJCcK3c8Y
-	iDJTK8fVc67/ZPtA2pwBgwpijvAHGHgavBMVoaycwvc6F86TZzYwb1ed1pCVrvQsoSaO
-	byFD698ZO/1pzvndjUWfIjc/R8kA60vziGwOrNfh4FlnFVihc6HhOdCkFSkoyg2HYF7C
-	7E7Q==
-Received: by 10.112.13.173 with SMTP id i13mr3585851lbc.108.1350244857820;
-	Sun, 14 Oct 2012 13:00:57 -0700 (PDT)
-Received: from localhost.localdomain (blueswirl.broker.freenet6.net.
-	[2001:5c0:1000:b::b867])
-	by mx.google.com with ESMTPS id r8sm3941759lba.15.2012.10.14.13.00.54
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 14 Oct 2012 13:00:56 -0700 (PDT)
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=yUbqM0+H+cvafU2i4VPnbUMBGem8Dj9cNt54aNmPalA=;
+	b=HvGgST3IKAtUHM9RYz2c8Lyn71ZG70SAmUfL5g8e6LxnykBgzRrtVRrngXoJtmuS70
+	Cq7vYQMbyxJw32U3KD/lAt7/Tra82SwudCHNgjIO7GXHVWU09w3M27y9TcZ7wmZ8BJSu
+	+FHV87Pg8mzypnSupJFXTVqdxRtKOqY+PfDG6aYuffE8mOW8StmxVwxzgr9fo6jj2Ehb
+	B60AlUTkP/ewhv1AVxFwjQYwCSeBbrrYXzqnKKdQwUpIEkL0GfGBi5Vqqh7WsCDRCrWg
+	ZtSG+G7JGMKVn/TQBYCjOErKnaNIddX8RQN69MkkS4k8/fk3NDueRR0Czfckyc4OtUQ3
+	/i4w==
+Received: by 10.50.190.137 with SMTP id gq9mr7209103igc.27.1350245204355; Sun,
+	14 Oct 2012 13:06:44 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.64.53.130 with HTTP; Sun, 14 Oct 2012 13:06:24 -0700 (PDT)
+In-Reply-To: <cover.1350244587.git.blauwirbel@gmail.com>
+References: <cover.1350244587.git.blauwirbel@gmail.com>
 From: Blue Swirl <blauwirbel@gmail.com>
+Date: Sun, 14 Oct 2012 20:06:24 +0000
+Message-ID: <CAAu8pHtYEb8PXnFSyWn9ZEZkFvd4y4e77oxc-L+jZOOodLaNJw@mail.gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sun, 14 Oct 2012 19:58:59 +0000
-Message-Id: <d3cbc356c90e1ae18a352b9d6978bd56460e655d.1350244587.git.blauwirbel@gmail.com>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <cover.1350244587.git.blauwirbel@gmail.com>
-References: <cover.1350244587.git.blauwirbel@gmail.com>
-In-Reply-To: <cover.1350244587.git.blauwirbel@gmail.com>
-References: <cover.1350244587.git.blauwirbel@gmail.com>
+Content-Type: multipart/mixed; boundary=f46d04478493c3eb6e04cc0a75bd
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.215.45
+X-Received-From: 209.85.223.173
 Cc: qemu-trivial@nongnu.org, blauwirbel@gmail.com
-Subject: [Qemu-trivial] [PATCH 11/11] exec: make some functions static
+Subject: Re: [Qemu-trivial] [PATCH 00/11] static patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,147 +51,124 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 14 Oct 2012 20:01:04 -0000
+X-List-Received-Date: Sun, 14 Oct 2012 20:06:50 -0000
 
-Signed-off-by: Blue Swirl <blauwirbel@gmail.com>
----
- cpu-common.h    |    5 -----
- exec-all.h      |    2 --
- exec-obsolete.h |    4 ----
- exec.c          |   19 +++++++++++--------
- 4 files changed, 11 insertions(+), 19 deletions(-)
+--f46d04478493c3eb6e04cc0a75bd
+Content-Type: text/plain; charset=UTF-8
 
-diff --git a/cpu-common.h b/cpu-common.h
-index c0d27af..f51ba67 100644
---- a/cpu-common.h
-+++ b/cpu-common.h
-@@ -39,10 +39,6 @@ typedef uint32_t CPUReadMemoryFunc(void *opaque, target_phys_addr_t addr);
- void qemu_ram_remap(ram_addr_t addr, ram_addr_t length);
- /* This should only be used for ram local to a device.  */
- void *qemu_get_ram_ptr(ram_addr_t addr);
--void *qemu_ram_ptr_length(ram_addr_t addr, ram_addr_t *size);
--/* Same but slower, to use for migration, where the order of
-- * RAMBlocks must not change. */
--void *qemu_safe_ram_ptr(ram_addr_t addr);
- void qemu_put_ram_ptr(void *addr);
- /* This should not be used by devices.  */
- int qemu_ram_addr_from_host(void *ptr, ram_addr_t *ram_addr);
-@@ -67,7 +63,6 @@ void *cpu_physical_memory_map(target_phys_addr_t addr,
- void cpu_physical_memory_unmap(void *buffer, target_phys_addr_t len,
-                                int is_write, target_phys_addr_t access_len);
- void *cpu_register_map_client(void *opaque, void (*callback)(void *opaque));
--void cpu_unregister_map_client(void *cookie);
- 
- bool cpu_physical_memory_is_io(target_phys_addr_t phys_addr);
- 
-diff --git a/exec-all.h b/exec-all.h
-index 6516da0..4a8a19b 100644
---- a/exec-all.h
-+++ b/exec-all.h
-@@ -196,8 +196,6 @@ static inline unsigned int tb_phys_hash_func(tb_page_addr_t pc)
- 
- void tb_free(TranslationBlock *tb);
- void tb_flush(CPUArchState *env);
--void tb_link_page(TranslationBlock *tb,
--                  tb_page_addr_t phys_pc, tb_page_addr_t phys_page2);
- void tb_phys_invalidate(TranslationBlock *tb, tb_page_addr_t page_addr);
- 
- extern TranslationBlock *tb_phys_hash[CODE_GEN_PHYS_HASH_SIZE];
-diff --git a/exec-obsolete.h b/exec-obsolete.h
-index 286e2f7..d7a88a0 100644
---- a/exec-obsolete.h
-+++ b/exec-obsolete.h
-@@ -34,14 +34,10 @@ void qemu_ram_free_from_ptr(ram_addr_t addr);
- 
- struct MemoryRegion;
- struct MemoryRegionSection;
--void cpu_register_physical_memory_log(struct MemoryRegionSection *section,
--                                      bool readonly);
- 
- void qemu_register_coalesced_mmio(target_phys_addr_t addr, ram_addr_t size);
- void qemu_unregister_coalesced_mmio(target_phys_addr_t addr, ram_addr_t size);
- 
--int cpu_physical_memory_set_dirty_tracking(int enable);
--
- #define VGA_DIRTY_FLAG       0x01
- #define CODE_DIRTY_FLAG      0x02
- #define MIGRATION_DIRTY_FLAG 0x08
-diff --git a/exec.c b/exec.c
-index 7899042..4344f2b 100644
---- a/exec.c
-+++ b/exec.c
-@@ -212,9 +212,12 @@ static PhysPageEntry phys_map = { .ptr = PHYS_MAP_NODE_NIL, .is_leaf = 0 };
- 
- static void io_mem_init(void);
- static void memory_map_init(void);
-+static void *qemu_safe_ram_ptr(ram_addr_t addr);
- 
- static MemoryRegion io_mem_watch;
- #endif
-+static void tb_link_page(TranslationBlock *tb, tb_page_addr_t phys_pc,
-+                         tb_page_addr_t phys_page2);
- 
- /* statistics */
- static int tb_flush_count;
-@@ -1341,8 +1344,8 @@ static inline void tb_alloc_page(TranslationBlock *tb,
- 
- /* add a new TB and link it to the physical page tables. phys_page2 is
-    (-1) to indicate that only one page contains the TB. */
--void tb_link_page(TranslationBlock *tb,
--                  tb_page_addr_t phys_pc, tb_page_addr_t phys_page2)
-+static void tb_link_page(TranslationBlock *tb, tb_page_addr_t phys_pc,
-+                         tb_page_addr_t phys_page2)
- {
-     unsigned int h;
-     TranslationBlock **ptb;
-@@ -1851,7 +1854,7 @@ void cpu_physical_memory_reset_dirty(ram_addr_t start, ram_addr_t end,
-     }
- }
- 
--int cpu_physical_memory_set_dirty_tracking(int enable)
-+static int cpu_physical_memory_set_dirty_tracking(int enable)
- {
-     int ret = 0;
-     in_migration = enable;
-@@ -2272,8 +2275,8 @@ static void register_multipage(MemoryRegionSection *section)
-                   section_index);
- }
- 
--void cpu_register_physical_memory_log(MemoryRegionSection *section,
--                                      bool readonly)
-+static void cpu_register_physical_memory_log(MemoryRegionSection *section,
-+                                             bool readonly)
- {
-     MemoryRegionSection now = *section, remain = *section;
- 
-@@ -2745,7 +2748,7 @@ void *qemu_get_ram_ptr(ram_addr_t addr)
- /* Return a host pointer to ram allocated with qemu_ram_alloc.
-  * Same as qemu_get_ram_ptr but avoid reordering ramblocks.
-  */
--void *qemu_safe_ram_ptr(ram_addr_t addr)
-+static void *qemu_safe_ram_ptr(ram_addr_t addr)
- {
-     RAMBlock *block;
- 
-@@ -2775,7 +2778,7 @@ void *qemu_safe_ram_ptr(ram_addr_t addr)
- 
- /* Return a host pointer to guest's ram. Similar to qemu_get_ram_ptr
-  * but takes a size argument */
--void *qemu_ram_ptr_length(ram_addr_t addr, ram_addr_t *size)
-+static void *qemu_ram_ptr_length(ram_addr_t addr, ram_addr_t *size)
- {
-     if (*size == 0) {
-         return NULL;
-@@ -3569,7 +3572,7 @@ void *cpu_register_map_client(void *opaque, void (*callback)(void *opaque))
-     return client;
- }
- 
--void cpu_unregister_map_client(void *_client)
-+static void cpu_unregister_map_client(void *_client)
- {
-     MapClient *client = (MapClient *)_client;
- 
--- 
-1.7.2.5
+On Sun, Oct 14, 2012 at 7:58 PM, Blue Swirl <blauwirbel@gmail.com> wrote:
+> I made a small tool to detect unused functions and
+> variables. Here's some fixes.
 
+Just run the attached tool in an object directory and after some time,
+it will produce a list of suspect symbols:
+AES_decrypt ( ./aes.o)
+AES_encrypt ( ./aes.o)
+AUD_get_elapsed_usec_in ( ./audio/audio.o)
+AUD_get_elapsed_usec_out ( ./audio/audio.o)
+AUD_init_time_stamp_in ( ./audio/audio.o)
+AUD_init_time_stamp_out ( ./audio/audio.o)
+AUD_is_active_in ( ./audio/audio.o)
+AUD_is_active_out ( ./audio/audio.o)
+DEFAULT_ATR ( ./hw/ccid-card-passthru.o)
+...
+
+>
+> Blue Swirl (11):
+>   target-sparc: make do_unaligned_access static
+>   vl.c: add missing static
+>   vnc: add missing static and remove unused functions
+>   tap-win32: avoid a warning
+>   m48t59: remove unused m48t59_set_addr
+>   sun4c: remove unused functions
+>   slirp: remove unused function u_sleep
+>   ppc: add missing static and remove unused functions
+>   target-ppc: make some functions static
+>   arm: add missing static and remove unused functions
+>   exec: make some functions static
+>
+>  console.h                         |    2 -
+>  cpu-common.h                      |    5 -
+>  exec-all.h                        |    2 -
+>  exec-obsolete.h                   |    4 -
+>  exec.c                            |   19 ++-
+>  hw/adb.c                          |    8 +-
+>  hw/adb.h                          |    4 -
+>  hw/devices.h                      |    3 -
+>  hw/i2c.h                          |    3 -
+>  hw/m48t59.c                       |    7 -
+>  hw/mac_nvram.c                    |   24 ---
+>  hw/nvram.h                        |   12 --
+>  hw/omap.h                         |    1 -
+>  hw/omap_gpmc.c                    |   21 ---
+>  hw/pcmcia.h                       |    1 -
+>  hw/ppc.c                          |   54 +-----
+>  hw/ppc405.h                       |    6 -
+>  hw/ppc405_uc.c                    |  342 -------------------------------------
+>  hw/ppc_mac.h                      |    2 -
+>  hw/pxa.h                          |    3 -
+>  hw/pxa2xx.c                       |    4 +-
+>  hw/pxa2xx_pcmcia.c                |   21 ---
+>  hw/soc_dma.c                      |   52 ------
+>  hw/soc_dma.h                      |   16 +--
+>  hw/sun4c_intctl.c                 |   23 ---
+>  hw/sun4m.h                        |    4 -
+>  hw/tc6393xb.c                     |   16 --
+>  hw/tmp105.c                       |   16 --
+>  linux-user/arm/nwfpe/fpa11.c      |    4 +-
+>  linux-user/arm/nwfpe/fpa11.h      |    2 -
+>  linux-user/arm/nwfpe/fpa11_cprt.c |    8 +-
+>  net/tap-win32.c                   |    1 +
+>  slirp/misc.c                      |   14 --
+>  slirp/misc.h                      |    1 -
+>  sysemu.h                          |    5 -
+>  target-ppc/cpu.h                  |    9 -
+>  target-ppc/mmu_helper.c           |   11 +-
+>  target-sparc/cpu.h                |    3 -
+>  target-sparc/ldst_helper.c        |    8 +-
+>  ui/vnc-jobs.c                     |   46 +-----
+>  ui/vnc-jobs.h                     |    4 -
+>  ui/vnc.c                          |   14 +-
+>  ui/vnc.h                          |    5 -
+>  vl.c                              |   33 ++---
+>  44 files changed, 69 insertions(+), 774 deletions(-)
+>
+> --
+> 1.7.2.5
+>
+
+--f46d04478493c3eb6e04cc0a75bd
+Content-Type: application/x-perl; name="statics.pl"
+Content-Disposition: attachment; filename="statics.pl"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_h8al0x2l0
+
+IyEvdXNyL2Jpbi9lbnYgcGVybAoKbXkgQGRpcnN0YWNrID0gKCIuIik7Cm15ICVzeW1ib2xzX2Rl
+ZmluZWQ7Cm15ICVzeW1ib2xzX25lZWRlZDsKCnN1YiB2aXNpdF9maWxlIHsKICAgIG15ICgkZmls
+ZSkgPSBAXzsKICAgIG9wZW4obXkgJGZoLCAiLXwiLCAibm0gJGZpbGUiKSB8fCBkaWU7CgogICAg
+d2hpbGUgKG15ICRlbnRyeSA9IHJlYWRsaW5lKCRmaCkpIHsKICAgICAgICBjaG9tcCgkZW50cnkp
+OwogICAgICAgIG15IEBlbGVtID0gc3BsaXQoIiAiLCAkZW50cnkpOwogICAgICAgIG15ICRhZGRy
+LCAkdHlwZSwgJG5hbWU7CiAgICAgICAgaWYgKCQjZWxlbSA9PSAyKSB7CiAgICAgICAgICAgICgk
+YWRkciwgJHR5cGUsICRuYW1lKSA9IHNwbGl0KCIgIiwgJGVudHJ5KTsKICAgICAgICB9IGVsc2Ug
+ewogICAgICAgICAgICAoJHR5cGUsICRuYW1lKSA9IHNwbGl0KCIgIiwgJGVudHJ5KTsKICAgICAg
+ICB9CiAgICAgICAgaWYgKCR0eXBlIGVxICdUJyB8fCAkdHlwZSBlcSAnRCcgfHwgJHR5cGUgZXEg
+J0InIHx8ICR0eXBlIGVxICdSJykgewojICAgICAgICAgICAgcHJpbnQgImRlZmluZXMgdHlwZSAk
+dHlwZSBuYW1lICRuYW1lXG4iOwogICAgICAgICAgICAkc3ltYm9sc19kZWZpbmVkeyRuYW1lfSA9
+ICRzeW1ib2xzX2RlZmluZWR7JG5hbWV9IC4gIiAiIC4gJGZpbGU7CiAgICAgICAgfSBlbHNpZiAo
+JHR5cGUgZXEgJ1UnIHx8ICR0eXBlIGVxICdDJykgewojICAgICAgICAgICAgcHJpbnQgIm5lZWRz
+IHR5cGUgJHR5cGUgbmFtZSAkbmFtZVxuIjsKICAgICAgICAgICAgJHN5bWJvbHNfbmVlZGVkeyRu
+YW1lfSsrOwogICAgICAgIH0KICAgIH0KICAgIGNsb3NlICRmaDsKfQoKCnN1YiB2aXNpdF9kaXIg
+ewogICAgbXkgKCRjdXIpID0gQF87CiAgICBvcGVuZGlyKG15ICRkaCwgJGN1cikgfHwgZGllOwoK
+ICAgIHdoaWxlIChteSAkZW50cnkgPSByZWFkZGlyICRkaCkgewogICAgICAgIGlmICgkZW50cnkg
+bmUgIi4iICYmICRlbnRyeSBuZSAiLi4iKSB7CiAgICAgICAgICAgICRlbnRyeSA9ICRjdXIgLiAi
+LyIgLiAkZW50cnk7CiAgICAgICAgICAgIGlmICggLWQgJGVudHJ5KSB7CiAgICAgICAgICAgICAg
+ICBwdXNoKEBkaXJzdGFjaywgJGVudHJ5KTsKICAgICAgICAgICAgfSBlbHNpZiAoJGVudHJ5ID1+
+IG0vLipcLm8kLykgewojICAgICAgICAgICAgICAgIHByaW50ICJvYmplY3QgJGVudHJ5XG4iOwog
+ICAgICAgICAgICAgICAgdmlzaXRfZmlsZSgkZW50cnkpOwogICAgICAgICAgICB9CiAgICAgICAg
+fQogICAgfQogICAgY2xvc2VkaXIgJGRoOwp9Cgp3aGlsZSAobXkgJGN1ciA9IHBvcChAZGlyc3Rh
+Y2spKSB7CiAgICB2aXNpdF9kaXIoJGN1cik7Cn0KCmZvcmVhY2ggJHN5bWJvbCAoc29ydChrZXlz
+ICVzeW1ib2xzX2RlZmluZWQpKSB7CiAgICBpZiAoJHN5bWJvbHNfbmVlZGVkeyRzeW1ib2x9ID09
+IDApIHsKICAgICAgICBwcmludCAiJHN5bWJvbCAoJHN5bWJvbHNfZGVmaW5lZHskc3ltYm9sfSlc
+biI7CiAgICB9Cn0K
+--f46d04478493c3eb6e04cc0a75bd--
 
