@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TNULn-00015X-Ta
-	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 15:59:51 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:52335)
+	id 1TNULy-0001gk-UO
+	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 16:00:02 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44672)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TNULl-0000xz-H5
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 15:59:50 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1TNULw-0001ZK-7L
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:00:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TNULk-0002KA-DV
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 15:59:49 -0400
-Received: from mail-lb0-f173.google.com ([209.85.217.173]:50005)
+	(envelope-from <blauwirbel@gmail.com>) id 1TNULu-0002M5-EK
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:00:00 -0400
+Received: from mail-la0-f45.google.com ([209.85.215.45]:37016)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <blauwirbel@gmail.com>)
-	id 1TNULh-0002B9-MG; Sun, 14 Oct 2012 15:59:45 -0400
-Received: by mail-lb0-f173.google.com with SMTP id gj3so2850165lbb.4
-	for <multiple recipients>; Sun, 14 Oct 2012 12:59:45 -0700 (PDT)
+	id 1TNULr-0002LR-Di; Sun, 14 Oct 2012 15:59:55 -0400
+Received: by mail-la0-f45.google.com with SMTP id m13so2786709lah.4
+	for <multiple recipients>; Sun, 14 Oct 2012 12:59:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:x-mailer:in-reply-to:references
 	:in-reply-to:references;
-	bh=9Q9woImukks+dYsGiqg19AG48kVIQUK+mk+4Ws04aVo=;
-	b=c7zEW78IPkJx4h9n9Ymw+ChbxuFaYw/TydQfvdPmnbewC4xsgXWcE7RtLAHjJ5nUyz
-	7kNVMXnUOTWxeH/Qv02jZVM8DpjEOO0C0AqqojtaaIZUslgcss+y6Z0XXgI7KpOsmiDS
-	NQM+emDyLUrlUzCS1lZr0ek6u7cLnpJRnPJOG96IIIsOg8381hcf6yRC3bMCj3NPLljQ
-	Io+fDlYltSTpIDQgZxxHeuTq8mgt6xwQEWoKtMgutZKYP1H6k42ALU4VtWEFjkM6zPzM
-	4SM0WIliCxL48o5ed8oHhwkvKPWVpOeEK/d3YniwKuKiy2xHvaM8XGKkGr3YMmEkx6eC
-	fZKA==
-Received: by 10.152.105.236 with SMTP id gp12mr8352035lab.35.1350244784971;
-	Sun, 14 Oct 2012 12:59:44 -0700 (PDT)
+	bh=C2TEKsTD+23tWnHxA4ETT5paVea4JJ5/3Ca3Uxkxf2U=;
+	b=G+LcaSQf5vpUOIXle2veeTeu5HAGqp5+MCQfKBYKmsgiR1KayDINlJfzydlIsJzx90
+	lZY7pjXDkqqoqlqXCSVxIcnLVQezxvEIoF+SeozShuPXuKyWttEzKegke+zZBnWSxRG8
+	jShGxJHdetKVNwyjtMA+0DixDPBE1foNyNd4E66YRIcnBqdAkoPzUVPUUnxneXugRsI5
+	YWXI+rdDhl/k0STyTjY38ZeR8Pu/fw3YEQz8oNJ6EPAdN8jCd52Yvyn99Mtf5wlG/e5X
+	DgFu5s+ukJFeqoawRSUMVLlaoBMvpE9Wp6Y9/4iGpB7AR03jyPmyzEXSWoXJ/2rwfeZ6
+	+yQw==
+Received: by 10.152.148.195 with SMTP id tu3mr8089966lab.16.1350244794144;
+	Sun, 14 Oct 2012 12:59:54 -0700 (PDT)
 Received: from localhost.localdomain (blueswirl.broker.freenet6.net.
 	[2001:5c0:1000:b::b867])
-	by mx.google.com with ESMTPS id r8sm3941759lba.15.2012.10.14.12.59.40
+	by mx.google.com with ESMTPS id r8sm3941759lba.15.2012.10.14.12.59.49
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 14 Oct 2012 12:59:44 -0700 (PDT)
+	Sun, 14 Oct 2012 12:59:53 -0700 (PDT)
 From: Blue Swirl <blauwirbel@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sun, 14 Oct 2012 19:58:50 +0000
-Message-Id: <1b9d5e43534eb98840cd2f3fbbbe73c71351cb03.1350244587.git.blauwirbel@gmail.com>
+Date: Sun, 14 Oct 2012 19:58:51 +0000
+Message-Id: <d57a1e01b220160e15a35c76fb15d9054d26b2ef.1350244587.git.blauwirbel@gmail.com>
 X-Mailer: git-send-email 1.7.2.5
 In-Reply-To: <cover.1350244587.git.blauwirbel@gmail.com>
 References: <cover.1350244587.git.blauwirbel@gmail.com>
@@ -42,10 +42,11 @@ In-Reply-To: <cover.1350244587.git.blauwirbel@gmail.com>
 References: <cover.1350244587.git.blauwirbel@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.217.173
+X-Received-From: 209.85.215.45
 Cc: qemu-trivial@nongnu.org, blauwirbel@gmail.com,
 	Anthony Liguori <aliguori@us.ibm.com>
-Subject: [Qemu-trivial] [PATCH 02/11] vl.c: add missing static
+Subject: [Qemu-trivial] [PATCH 03/11] vnc: add missing static and remove
+	unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,160 +58,203 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 14 Oct 2012 19:59:50 -0000
+X-List-Received-Date: Sun, 14 Oct 2012 20:00:02 -0000
 
-Add missing 'static' qualifiers and remove unused
-pcmcia_socket_unregister().
+Add missing 'static' qualifiers. Remove unused functions
+vnc_stop_worker_thread(), vnc_has_job() and vnc_jobs_clear().
 
 Signed-off-by: Blue Swirl <blauwirbel@gmail.com>
 ---
- hw/pcmcia.h |    1 -
- sysemu.h    |    5 -----
- vl.c        |   33 ++++++++++++---------------------
- 3 files changed, 12 insertions(+), 27 deletions(-)
+ console.h     |    2 --
+ ui/vnc-jobs.c |   46 +++++-----------------------------------------
+ ui/vnc-jobs.h |    4 ----
+ ui/vnc.c      |   14 +++++++-------
+ ui/vnc.h      |    5 -----
+ 5 files changed, 12 insertions(+), 59 deletions(-)
 
-diff --git a/hw/pcmcia.h b/hw/pcmcia.h
-index 50648c9..6b7aee5 100644
---- a/hw/pcmcia.h
-+++ b/hw/pcmcia.h
-@@ -10,7 +10,6 @@ typedef struct {
- } PCMCIASocket;
+diff --git a/console.h b/console.h
+index f990684..b848e20 100644
+--- a/console.h
++++ b/console.h
+@@ -377,10 +377,8 @@ void cocoa_display_init(DisplayState *ds, int full_screen);
  
- void pcmcia_socket_register(PCMCIASocket *socket);
--void pcmcia_socket_unregister(PCMCIASocket *socket);
- void pcmcia_info(Monitor *mon);
- 
- struct PCMCIACardState {
-diff --git a/sysemu.h b/sysemu.h
-index 0c39a3a..1683448 100644
---- a/sysemu.h
-+++ b/sysemu.h
-@@ -19,7 +19,6 @@ extern uint8_t qemu_uuid[];
- int qemu_uuid_parse(const char *str, uint8_t *uuid);
- #define UUID_FMT "%02hhx%02hhx%02hhx%02hhx-%02hhx%02hhx-%02hhx%02hhx-%02hhx%02hhx-%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx"
- 
--void runstate_init(void);
- bool runstate_check(RunState state);
- void runstate_set(RunState new_state);
- int runstate_is_running(void);
-@@ -57,11 +56,7 @@ void qemu_system_debug_request(void);
- void qemu_system_vmstop_request(RunState reason);
- int qemu_shutdown_requested_get(void);
- int qemu_reset_requested_get(void);
--int qemu_shutdown_requested(void);
--int qemu_reset_requested(void);
--int qemu_powerdown_requested(void);
- void qemu_system_killed(int signal, pid_t pid);
--void qemu_kill_report(void);
- void qemu_devices_reset(void);
- void qemu_system_reset(bool report);
- 
-diff --git a/vl.c b/vl.c
-index 5b357a3..6cb87ac 100644
---- a/vl.c
-+++ b/vl.c
-@@ -180,7 +180,7 @@ static const char *data_dir;
- const char *bios_name = NULL;
- enum vga_retrace_method vga_retrace_method = VGA_RETRACE_DUMB;
- DisplayType display_type = DT_DEFAULT;
--int display_remote = 0;
-+static int display_remote;
- const char* keyboard_layout = NULL;
- ram_addr_t ram_size;
- const char *mem_path = NULL;
-@@ -215,7 +215,7 @@ const char *vnc_display;
- int acpi_enabled = 1;
- int no_hpet = 0;
- int fd_bootchk = 1;
--int no_reboot = 0;
-+static int no_reboot;
- int no_shutdown = 0;
- int cursor_hide = 1;
- int graphic_rotate = 0;
-@@ -243,7 +243,8 @@ struct FWBootEntry {
-     char *suffix;
- };
- 
--QTAILQ_HEAD(, FWBootEntry) fw_boot_order = QTAILQ_HEAD_INITIALIZER(fw_boot_order);
-+static QTAILQ_HEAD(, FWBootEntry) fw_boot_order =
-+    QTAILQ_HEAD_INITIALIZER(fw_boot_order);
- 
- int nb_numa_nodes;
- uint64_t node_mem[MAX_NODES];
-@@ -397,7 +398,7 @@ bool runstate_check(RunState state)
-     return current_run_state == state;
+ /* vnc.c */
+ void vnc_display_init(DisplayState *ds);
+-void vnc_display_close(DisplayState *ds);
+ int vnc_display_open(DisplayState *ds, const char *display);
+ void vnc_display_add_client(DisplayState *ds, int csock, int skipauth);
+-int vnc_display_disable_login(DisplayState *ds);
+ char *vnc_display_local_addr(DisplayState *ds);
+ #ifdef CONFIG_VNC
+ int vnc_display_password(DisplayState *ds, const char *password);
+diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
+index 087b84d..c779796 100644
+--- a/ui/vnc-jobs.c
++++ b/ui/vnc-jobs.c
+@@ -126,29 +126,6 @@ static bool vnc_has_job_locked(VncState *vs)
+     return false;
  }
  
--void runstate_init(void)
-+static void runstate_init(void)
- {
-     const RunStateTransition *p;
- 
-@@ -1170,18 +1171,6 @@ void pcmcia_socket_register(PCMCIASocket *socket)
-     pcmcia_sockets = entry;
- }
- 
--void pcmcia_socket_unregister(PCMCIASocket *socket)
+-bool vnc_has_job(VncState *vs)
 -{
--    struct pcmcia_socket_entry_s *entry, **ptr;
+-    bool ret;
 -
--    ptr = &pcmcia_sockets;
--    for (entry = *ptr; entry; ptr = &entry->next, entry = *ptr)
--        if (entry->socket == socket) {
--            *ptr = entry->next;
--            g_free(entry);
--        }
+-    vnc_lock_queue(queue);
+-    ret = vnc_has_job_locked(vs);
+-    vnc_unlock_queue(queue);
+-    return ret;
 -}
 -
- void pcmcia_info(Monitor *mon)
+-void vnc_jobs_clear(VncState *vs)
+-{
+-    VncJob *job, *tmp;
+-
+-    vnc_lock_queue(queue);
+-    QTAILQ_FOREACH_SAFE(job, &queue->jobs, next, tmp) {
+-        if (job->vs == vs || !vs) {
+-            QTAILQ_REMOVE(&queue->jobs, job, next);
+-        }
+-    }
+-    vnc_unlock_queue(queue);
+-}
+-
+ void vnc_jobs_join(VncState *vs)
  {
-     struct pcmcia_socket_entry_s *iter;
-@@ -1373,14 +1362,14 @@ int qemu_reset_requested_get(void)
-     return reset_requested;
+     vnc_lock_queue(queue);
+@@ -320,6 +297,11 @@ static void *vnc_worker_thread(void *arg)
+     return NULL;
  }
  
--int qemu_shutdown_requested(void)
-+static int qemu_shutdown_requested(void)
++static bool vnc_worker_thread_running(void)
++{
++    return queue; /* Check global queue */
++}
++
+ void vnc_start_worker_thread(void)
  {
-     int r = shutdown_requested;
-     shutdown_requested = 0;
-     return r;
+     VncJobQueue *q;
+@@ -331,21 +313,3 @@ void vnc_start_worker_thread(void)
+     qemu_thread_create(&q->thread, vnc_worker_thread, q, QEMU_THREAD_DETACHED);
+     queue = q; /* Set global queue */
  }
+-
+-bool vnc_worker_thread_running(void)
+-{
+-    return queue; /* Check global queue */
+-}
+-
+-void vnc_stop_worker_thread(void)
+-{
+-    if (!vnc_worker_thread_running())
+-        return ;
+-
+-    /* Remove all jobs and wake up the thread */
+-    vnc_lock_queue(queue);
+-    queue->exit = true;
+-    vnc_unlock_queue(queue);
+-    vnc_jobs_clear(NULL);
+-    qemu_cond_broadcast(&queue->cond);
+-}
+diff --git a/ui/vnc-jobs.h b/ui/vnc-jobs.h
+index 86e6d88..59f66bc 100644
+--- a/ui/vnc-jobs.h
++++ b/ui/vnc-jobs.h
+@@ -34,14 +34,10 @@
+ VncJob *vnc_job_new(VncState *vs);
+ int vnc_job_add_rect(VncJob *job, int x, int y, int w, int h);
+ void vnc_job_push(VncJob *job);
+-bool vnc_has_job(VncState *vs);
+-void vnc_jobs_clear(VncState *vs);
+ void vnc_jobs_join(VncState *vs);
  
--void qemu_kill_report(void)
-+static void qemu_kill_report(void)
- {
-     if (!qtest_enabled() && shutdown_signal != -1) {
-         fprintf(stderr, "qemu: terminating on signal %d", shutdown_signal);
-@@ -1396,7 +1385,7 @@ void qemu_kill_report(void)
+ void vnc_jobs_consume_buffer(VncState *vs);
+ void vnc_start_worker_thread(void);
+-bool vnc_worker_thread_running(void);
+-void vnc_stop_worker_thread(void);
+ 
+ /* Locks */
+ static inline int vnc_trylock_display(VncDisplay *vd)
+diff --git a/ui/vnc.c b/ui/vnc.c
+index 33e6386..bde896b 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -479,12 +479,12 @@ void buffer_reserve(Buffer *buffer, size_t len)
      }
  }
  
--int qemu_reset_requested(void)
-+static int qemu_reset_requested(void)
+-int buffer_empty(Buffer *buffer)
++static int buffer_empty(Buffer *buffer)
  {
-     int r = reset_requested;
-     reset_requested = 0;
-@@ -1417,7 +1406,7 @@ static int qemu_wakeup_requested(void)
-     return r;
+     return buffer->offset == 0;
  }
  
--int qemu_powerdown_requested(void)
-+static int qemu_powerdown_requested(void)
+-uint8_t *buffer_end(Buffer *buffer)
++static uint8_t *buffer_end(Buffer *buffer)
  {
-     int r = powerdown_requested;
-     powerdown_requested = 0;
-@@ -2043,7 +2032,9 @@ struct device_config {
-     Location loc;
-     QTAILQ_ENTRY(device_config) next;
- };
--QTAILQ_HEAD(, device_config) device_configs = QTAILQ_HEAD_INITIALIZER(device_configs);
-+
-+static QTAILQ_HEAD(, device_config) device_configs =
-+    QTAILQ_HEAD_INITIALIZER(device_configs);
+     return buffer->buffer + buffer->offset;
+ }
+@@ -1376,17 +1376,17 @@ void vnc_flush(VncState *vs)
+     vnc_unlock_output(vs);
+ }
  
- static void add_device_config(int type, const char *cmdline)
+-uint8_t read_u8(uint8_t *data, size_t offset)
++static uint8_t read_u8(uint8_t *data, size_t offset)
  {
+     return data[offset];
+ }
+ 
+-uint16_t read_u16(uint8_t *data, size_t offset)
++static uint16_t read_u16(uint8_t *data, size_t offset)
+ {
+     return ((data[offset] & 0xFF) << 8) | (data[offset + 1] & 0xFF);
+ }
+ 
+-int32_t read_s32(uint8_t *data, size_t offset)
++static int32_t read_s32(uint8_t *data, size_t offset)
+ {
+     return (int32_t)((data[offset] << 24) | (data[offset + 1] << 16) |
+                      (data[offset + 2] << 8) | data[offset + 3]);
+@@ -2761,7 +2761,7 @@ void vnc_display_init(DisplayState *ds)
+ }
+ 
+ 
+-void vnc_display_close(DisplayState *ds)
++static void vnc_display_close(DisplayState *ds)
+ {
+     VncDisplay *vs = ds ? (VncDisplay *)ds->opaque : vnc_display;
+ 
+@@ -2783,7 +2783,7 @@ void vnc_display_close(DisplayState *ds)
+ #endif
+ }
+ 
+-int vnc_display_disable_login(DisplayState *ds)
++static int vnc_display_disable_login(DisplayState *ds)
+ {
+     VncDisplay *vs = ds ? (VncDisplay *)ds->opaque : vnc_display;
+ 
+diff --git a/ui/vnc.h b/ui/vnc.h
+index 068c2fc..c89f693 100644
+--- a/ui/vnc.h
++++ b/ui/vnc.h
+@@ -493,9 +493,6 @@ void vnc_read_when(VncState *vs, VncReadEvent *func, size_t expecting);
+ 
+ 
+ /* Buffer I/O functions */
+-uint8_t read_u8(uint8_t *data, size_t offset);
+-uint16_t read_u16(uint8_t *data, size_t offset);
+-int32_t read_s32(uint8_t *data, size_t offset);
+ uint32_t read_u32(uint8_t *data, size_t offset);
+ 
+ /* Protocol stage functions */
+@@ -507,8 +504,6 @@ void start_auth_vnc(VncState *vs);
+ 
+ /* Buffer management */
+ void buffer_reserve(Buffer *buffer, size_t len);
+-int buffer_empty(Buffer *buffer);
+-uint8_t *buffer_end(Buffer *buffer);
+ void buffer_reset(Buffer *buffer);
+ void buffer_free(Buffer *buffer);
+ void buffer_append(Buffer *buffer, const void *data, size_t len);
 -- 
 1.7.2.5
 
