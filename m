@@ -1,54 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TNVE7-0007GD-9H
-	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 16:55:59 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46364)
+	id 1TNY7Z-0006a1-0M
+	for mharc-qemu-trivial@gnu.org; Sun, 14 Oct 2012 20:01:25 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44910)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TNVE5-0007Fx-6k
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:55:58 -0400
+	(envelope-from <afaerber@suse.de>) id 1TNY7V-0006Qs-Oz
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 20:01:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TNVE4-0005Ry-9m
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:55:57 -0400
-Received: from mail-ia0-f173.google.com ([209.85.210.173]:44689)
+	(envelope-from <afaerber@suse.de>) id 1TNY7U-0002ZP-Ra
+	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 20:01:21 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:41828 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TNVE4-0005Rl-4x
-	for qemu-trivial@nongnu.org; Sun, 14 Oct 2012 16:55:56 -0400
-Received: by mail-ia0-f173.google.com with SMTP id m10so3254665iam.4
-	for <qemu-trivial@nongnu.org>; Sun, 14 Oct 2012 13:55:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=ok9qIR6XEsd1/ytsWfz2WRhgLayVypqgE+62QY1sQYk=;
-	b=YNu89hJzns0FDANI4CaKRDbfrHy2/whWZiaPT7XyJ4LD4WR1XLCQdvAymQKjWaJnIP
-	rNq/Lpd8iXkgCkjXWSPCqH/X7yIVN6molPThvTwX34OZrDV2g5L4XYG/XbeYKfoviPoQ
-	EKf/rNUQe8WNV7KdLrYXzvFt+FkvqZXtPS3E3OVlLfLYuCVYRV09d/8w+WhT4VdUVZ2J
-	SxDaXrogoFzUuxynE3zaZWaVencjv/C51x2RQRL3Py63y0ljqXHkS4D+Cq2YrsQ+lvve
-	p9U2QamMs6iA36mNnghAqr4Z/jCRV1EnOKvGEmbR8n8hRezkskjty03/1gN6m37ztF2l
-	9L4g==
+	(envelope-from <afaerber@suse.de>)
+	id 1TNY7S-0002Yi-Cf; Sun, 14 Oct 2012 20:01:18 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id EE7E3A0FF5;
+	Mon, 15 Oct 2012 02:01:16 +0200 (CEST)
+Message-ID: <507B5248.9020600@suse.de>
+Date: Mon, 15 Oct 2012 02:01:12 +0200
+From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:15.0) Gecko/20120825 Thunderbird/15.0
 MIME-Version: 1.0
-Received: by 10.50.187.194 with SMTP id fu2mr7138948igc.63.1350248155459; Sun,
-	14 Oct 2012 13:55:55 -0700 (PDT)
-Received: by 10.50.87.105 with HTTP; Sun, 14 Oct 2012 13:55:55 -0700 (PDT)
-In-Reply-To: <CAAu8pHtR-jNTnEY0iwEJdihXO8FxKXWcTcnPGQssNJg5jtsBcw@mail.gmail.com>
+To: Blue Swirl <blauwirbel@gmail.com>
 References: <cover.1350244587.git.blauwirbel@gmail.com>
 	<9b4ee7a47d8bc116e20f236a1ad9ed73a695123e.1350244587.git.blauwirbel@gmail.com>
 	<CAFEAcA_M58F9F-NTY81Fau9_iH_s76f0KHQ_L5TOoC8+naWB6Q@mail.gmail.com>
 	<CAAu8pHu5cuBML84JehNbXXsbuJ=3KwauuAvOYP=+VH-Y_GQ+-g@mail.gmail.com>
-	<CAFEAcA-f_+CJgKBqW3mGbzDjK2xbBssef=0geyE-kxMZLiK-Og@mail.gmail.com>
-	<CAAu8pHtR-jNTnEY0iwEJdihXO8FxKXWcTcnPGQssNJg5jtsBcw@mail.gmail.com>
-Date: Sun, 14 Oct 2012 21:55:55 +0100
-Message-ID: <CAFEAcA-=WvnX6gYsvaXDvOy0T4yiRV06+sryzzsfdzxJm7u=DQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Blue Swirl <blauwirbel@gmail.com>
+In-Reply-To: <CAAu8pHu5cuBML84JehNbXXsbuJ=3KwauuAvOYP=+VH-Y_GQ+-g@mail.gmail.com>
+X-Enigmail-Version: 1.4.4
 Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQn/UoVMgYSpo6A830gYArG67aSewyROvckh3HrP9hQU34pd0p4vPWYFJOm5kWkqEcuSSdGu
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 209.85.210.173
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 10/11] arm: add missing static and remove
-	unused functions
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Riku Voipio <riku.voipio@iki.fi>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 10/11] arm: add missing
+ static and remove unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,33 +50,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 14 Oct 2012 20:55:58 -0000
+X-List-Received-Date: Mon, 15 Oct 2012 00:01:23 -0000
 
-On 14 October 2012 21:49, Blue Swirl <blauwirbel@gmail.com> wrote:
-> On Sun, Oct 14, 2012 at 8:35 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 14 October 2012 21:33, Blue Swirl <blauwirbel@gmail.com> wrote:
->>> On Sun, Oct 14, 2012 at 8:09 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>>> In general anything in linux-user/arm/nwfpe is legacy code which
->>>> it's scarcely worth the effort of touching or reviewing.
->>>
->>> Adding 'static' should be only beneficial.
->>
->> Except that it's taken you time to write these patches and it
->> will take me time to review them.
->
-> Yes, the benefit may come to the users who may get a slightly faster
-> emulator.
+Am 14.10.2012 22:33, schrieb Blue Swirl:
+> On Sun, Oct 14, 2012 at 8:09 PM, Peter Maydell <peter.maydell@linaro.or=
+g> wrote:
+>> Please don't delete this function, it is the public facing interface
+>> for allowing board models to attach NAND devices to the GPMC. This
+>> might not be used by anything currently in mainline, but it is used
+>> by the omap3 beagle and overo board models in qemu-linaro (and which
+>> I will upstream eventually, honest).
+>=20
+> It could be re-added with the boards, or just disabled now with #if 0/#=
+endif.
 
-If you or any other user would like to find me some test cases
-which actually use the FPA floating point emulation at all
-I'd be happy to (a) add them to my test collection and (b)
-test this patch...
+#if 0 would make things worse, since then no compile-time checking of
+the code is performed and it just rots, as seen with DPRINTF().
 
-> We, the developers, get the benefit from different things,
-> like technical excellence or something else.
+Andreas
 
-One day I might pursue technical excellence by dropping
-the nwfpe code completely :-)
-
--- PMM
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
+rnberg
 
