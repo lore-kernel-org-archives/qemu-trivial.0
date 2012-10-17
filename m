@@ -1,40 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TO0ih-0003pv-9U
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Oct 2012 02:33:39 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40000)
+	id 1TOUz3-0001hy-7Y
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Oct 2012 10:52:33 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:39046)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1TO0ic-0003dc-6f
-	for qemu-trivial@nongnu.org; Tue, 16 Oct 2012 02:33:36 -0400
+	(envelope-from <afaerber@suse.de>) id 1TOUyw-0001N0-D2
+	for qemu-trivial@nongnu.org; Wed, 17 Oct 2012 10:52:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1TO0ib-0005Ac-9I
-	for qemu-trivial@nongnu.org; Tue, 16 Oct 2012 02:33:34 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46869)
+	(envelope-from <afaerber@suse.de>) id 1TOUyv-0007Sg-AV
+	for qemu-trivial@nongnu.org; Wed, 17 Oct 2012 10:52:26 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:49668 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1TO0iV-00058l-3r; Tue, 16 Oct 2012 02:33:27 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id A3407A1336;
-	Tue, 16 Oct 2012 10:33:25 +0400 (MSK)
-Message-ID: <507CFFB3.7070907@msgid.tls.msk.ru>
-Date: Tue, 16 Oct 2012 10:33:23 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:10.0.7) Gecko/20120922 Icedove/10.0.7
+	(envelope-from <afaerber@suse.de>)
+	id 1TOUyj-0007RA-FU; Wed, 17 Oct 2012 10:52:13 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id 9BD27A329E;
+	Wed, 17 Oct 2012 16:52:12 +0200 (CEST)
+Message-ID: <507EA9F8.7090209@suse.de>
+Date: Wed, 17 Oct 2012 14:52:08 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:16.0) Gecko/20121010 Thunderbird/16.0.1
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <1349872258-21952-1-git-send-email-pbonzini@redhat.com>
-In-Reply-To: <1349872258-21952-1-git-send-email-pbonzini@redhat.com>
-X-Enigmail-Version: 1.4.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vnc: fix "info vnc" with
-	"-vnc ..., reverse=on"
+To: Tim Hardeck <thardeck@suse.de>
+References: <1350220128-10140-1-git-send-email-thardeck@suse.de>
+	<1350220128-10140-2-git-send-email-thardeck@suse.de>
+In-Reply-To: <1350220128-10140-2-git-send-email-thardeck@suse.de>
+X-Enigmail-Version: 1.5a1pre
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+	Anthony Liguori <anthony@codemonkey.ws>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] vnc: fix segfault due
+	to failed handshake
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,31 +48,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Oct 2012 06:33:36 -0000
+X-List-Received-Date: Wed, 17 Oct 2012 14:52:31 -0000
 
-On 10.10.2012 16:30, Paolo Bonzini wrote:
-[]
+Am 14.10.2012 15:08, schrieb Tim Hardeck:
+> When the VNC server disconnects due to a failed handshake we don't have
+> vs->bh allocated yet.
+>=20
+> Check for this case and don't delete it.
+>=20
+> Signed-off-by: Tim Hardeck <thardeck@suse.de>
+> ---
+>  ui/vnc.c |    4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/ui/vnc.c b/ui/vnc.c
+> index 01b2daf..656895a 100644
 > --- a/ui/vnc.c
 > +++ b/ui/vnc.c
-> @@ -372,6 +372,10 @@ VncInfo *qmp_query_vnc(Error **errp)
->              }
->          }
->  
-> +        if (vnc_display->lsock == -1) {
+> @@ -1055,7 +1055,9 @@ static void vnc_disconnect_finish(VncState *vs)
+>      vnc_unlock_output(vs);
+> =20
+>      qemu_mutex_destroy(&vs->output_mutex);
+> -    qemu_bh_delete(vs->bh);
+> +    if (vs->bh !=3D NULL) {
+> +        qemu_bh_delete(vs->bh);
+> +    }
+>      buffer_free(&vs->jobs_buffer);
+> =20
+>      for (i =3D 0; i < VNC_STAT_ROWS; ++i) {
 
-FWIW, can't we use "< 0" condition in all cases like this - for
-testing whenever a filedescriptor is not open or if a system call
-returned failure?  Why we compare with -1 only?  The "< 0" comparison
-is cheaper in the resulting code (very very small difference), but
-more to the point, it guarantees that no invalid value is treated
-as valid - for example, in case some function returns -errno like
-it was with bdrv_something() recently.  I use "< 0" in such places
-for over 20 years for this reason, this "technique" saved me
-countless number of times, when old API changed, or when I switched
-to a new API without reviewing return value checking in all places,
-or when I just didn't read the manpage carefully... ;)
+qemu_bh_delete() is not checking for a NULL argument, therefore this fix
+looks good to me,
 
-Thanks,
+Acked-by: Andreas F=E4rber <afaerber@suse.de>
 
-/mjt
+Adding some CCs.
+
+As a followup it might be a good idea to either assert or ignore a NULL
+argument in qemu_bh_delete().
+
+Regards,
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
