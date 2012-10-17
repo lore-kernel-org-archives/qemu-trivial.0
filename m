@@ -1,41 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TOXok-0006tC-MM
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Oct 2012 13:54:06 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:60625)
+	id 1TOZXg-000092-LW
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Oct 2012 15:44:36 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:45925)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TOXoh-0006im-Cu
-	for qemu-trivial@nongnu.org; Wed, 17 Oct 2012 13:54:04 -0400
+	(envelope-from <lcapitulino@redhat.com>) id 1TOZXe-0008UN-Aj
+	for qemu-trivial@nongnu.org; Wed, 17 Oct 2012 15:44:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TOXoc-0006BF-FQ
-	for qemu-trivial@nongnu.org; Wed, 17 Oct 2012 13:54:03 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:37872)
+	(envelope-from <lcapitulino@redhat.com>) id 1TOZXd-000475-J0
+	for qemu-trivial@nongnu.org; Wed, 17 Oct 2012 15:44:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58328)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1TOXoX-0006AJ-Ce; Wed, 17 Oct 2012 13:53:53 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	52214728003B; Wed, 17 Oct 2012 19:53:51 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id CfVZzUFm8l-4; Wed, 17 Oct 2012 19:53:50 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id D74507280041; Wed, 17 Oct 2012 19:53:50 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: Anthony Liguori <aliguori@us.ibm.com>, Stefan Hajnoczi <stefanha@gmail.com>
-Date: Wed, 17 Oct 2012 19:53:50 +0200
-Message-Id: <1350496430-14429-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 3)
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] net/tap-win32: Fix compiler warning caused
-	by missing include statement
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1TOZXa-00046X-2w; Wed, 17 Oct 2012 15:44:30 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id q9HJiTtE024334
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 17 Oct 2012 15:44:29 -0400
+Received: from doriath.home (ovpn-113-93.phx2.redhat.com [10.3.113.93])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id q9HJiRU7006813; Wed, 17 Oct 2012 15:44:28 -0400
+Date: Wed, 17 Oct 2012 16:45:25 -0300
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: qemu-devel <qemu-devel@nongnu.org>
+Message-ID: <20121017164525.0e9b2941@doriath.home>
+Organization: Red Hat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>
+Subject: [Qemu-trivial] [PATCH] block: bdrv_create(): don't leak
+	cco.filename on error
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,31 +46,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Oct 2012 17:54:04 -0000
+X-List-Received-Date: Wed, 17 Oct 2012 19:44:35 -0000
 
-The include file for net_init_tap was missing:
 
-net/tap-win32.c:703:
- warning: no previous prototype for =E2=80=98net_init_tap=E2=80=99
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Luiz Capitulino <lcapitulino@redhat.com>
 ---
- net/tap-win32.c |    1 +
- 1 file changed, 1 insertion(+)
+ block.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/net/tap-win32.c b/net/tap-win32.c
-index f1801e2..22dad3f 100644
---- a/net/tap-win32.c
-+++ b/net/tap-win32.c
-@@ -29,6 +29,7 @@
- #include "tap.h"
-=20
- #include "qemu-common.h"
-+#include "clients.h"            /* net_init_tap */
- #include "net.h"
- #include "sysemu.h"
- #include "qemu-error.h"
---=20
-1.7.10.4
+diff --git a/block.c b/block.c
+index 5e8184f..63bf768 100644
+--- a/block.c
++++ b/block.c
+@@ -379,7 +379,8 @@ int bdrv_create(BlockDriver *drv, const char* filename,
+     };
+ 
+     if (!drv->bdrv_create) {
+-        return -ENOTSUP;
++        ret = -ENOTSUP;
++        goto out;
+     }
+ 
+     if (qemu_in_coroutine()) {
+@@ -394,8 +395,9 @@ int bdrv_create(BlockDriver *drv, const char* filename,
+     }
+ 
+     ret = cco.ret;
+-    g_free(cco.filename);
+ 
++out:
++    g_free(cco.filename);
+     return ret;
+ }
+ 
+-- 
+1.7.12.315.g682ce8b
 
 
