@@ -1,41 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TOb6P-0002Qq-Tr
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Oct 2012 17:24:33 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:60261)
+	id 1TOkMS-0005Mt-IV
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Oct 2012 03:17:44 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42243)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thardeck@suse.de>) id 1TOb6N-0002KW-K3
-	for qemu-trivial@nongnu.org; Wed, 17 Oct 2012 17:24:32 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TOkMI-0004qV-Py
+	for qemu-trivial@nongnu.org; Thu, 18 Oct 2012 03:17:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thardeck@suse.de>) id 1TOb6M-0008D2-Be
-	for qemu-trivial@nongnu.org; Wed, 17 Oct 2012 17:24:31 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:35366 helo=mx2.suse.de)
+	(envelope-from <stefanha@gmail.com>) id 1TOkMD-0005Lc-8S
+	for qemu-trivial@nongnu.org; Thu, 18 Oct 2012 03:17:34 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:44565)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thardeck@suse.de>)
-	id 1TOb6J-0008CO-Dh; Wed, 17 Oct 2012 17:24:27 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id F07D9A24CA;
-	Wed, 17 Oct 2012 23:24:24 +0200 (CEST)
-From: Tim Hardeck <thardeck@suse.de>
-To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>
-Date: Wed, 17 Oct 2012 23:24:17 +0200
-Message-ID: <1359569.y3MYGdvym5@thinktank.site>
-Organization: SUSE LINUX Products GmbH
-User-Agent: KMail/4.8.5 (Linux/3.6.2-6-desktop; KDE/4.8.5; x86_64; ; )
-In-Reply-To: <507EC7FF.90603@suse.de>
-References: <1350220128-10140-1-git-send-email-thardeck@suse.de>
-	<1350220128-10140-3-git-send-email-thardeck@suse.de>
-	<507EC7FF.90603@suse.de>
+	(envelope-from <stefanha@gmail.com>)
+	id 1TOkM1-0005JR-Sz; Thu, 18 Oct 2012 03:17:18 -0400
+Received: by mail-bk0-f45.google.com with SMTP id jf3so3358685bkc.4
+	for <multiple recipients>; Thu, 18 Oct 2012 00:17:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=k04i8PkdHnGH1aSaSTVmrWClO0oZ/PpghWAbmg3JbUY=;
+	b=QvyFqlTUPNjFW4n0Qjh72N/GQqla6KqlNwdbUtJWJv+GQ5khunU+LGvvh/RFSCZhEn
+	/KXNceieDuBCp8OLtjQ3Guzvn1Ft040etvlJP2Yt8uGT2iLete1AR6xGgT2iHprMNm7K
+	oCEkcI9F7tD/8Dc7zFVKCCFRSYGCNKzhnlSJgTXkx/nP9EAGbI9IRSNDzxGJpVijaM0l
+	j3KyoOr1egEJwt/KBUvcDRAUonHHEa3IVRJOWBCSuz2PKk+lfeFDXLD8ktjUEUXFqXBj
+	2UYsUc6CF6WZ+ZXQiGwQmMCas4d94IFUtUEMCr4AO56tg3MDxWUff/QhhpvdMdHP0/D+
+	pxig==
+Received: by 10.204.5.204 with SMTP id 12mr6093002bkw.89.1350544637408;
+	Thu, 18 Oct 2012 00:17:17 -0700 (PDT)
+Received: from localhost (188-194-252-80-dynip.superkabel.de. [188.194.252.80])
+	by mx.google.com with ESMTPS id z22sm13856419bkw.2.2012.10.18.00.17.16
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 18 Oct 2012 00:17:16 -0700 (PDT)
+Date: Thu, 18 Oct 2012 09:15:34 +0200
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Luiz Capitulino <lcapitulino@redhat.com>
+Message-ID: <20121018071534.GB22425@stefanha-thinkpad.redhat.com>
+References: <20121017164525.0e9b2941@doriath.home>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="nextPart1384374.LIZGkQOY9H";
-	micalg="pgp-sha1"; protocol="application/pgp-signature"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4-2.6
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] qemu queue: fix
-	uninitialized removals
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20121017164525.0e9b2941@doriath.home>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.214.45
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] block: bdrv_create(): don't leak
+ cco.filename on error
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,128 +58,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Oct 2012 21:24:32 -0000
+X-List-Received-Date: Thu, 18 Oct 2012 07:17:42 -0000
 
+On Wed, Oct 17, 2012 at 04:45:25PM -0300, Luiz Capitulino wrote:
+> 
+> Signed-off-by: Luiz Capitulino <lcapitulino@redhat.com>
+> ---
+>  block.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 
---nextPart1384374.LIZGkQOY9H
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
-
-Hi Andreas,
-
-On Wednesday 17 October 2012 17:00:15 Andreas F=E4rber wrote:
-> Tim,
->=20
-> Am 14.10.2012 15:08, schrieb Tim Hardeck:
-> > When calling QTAILQ_REMOVE or QLIST_REMOVE on an unitialized list
-> > QEMU segfaults.
->=20
-> Can this be reproduced by a user today? Or is this just fixing the ca=
-se
-> that a developer forgot to initialize a list?
-I am not sure but in this case it happened during an early VNC connecti=
-on=20
-state failure which most likely wouldn't happen to regular users.
-I triggered it while working on the VNC connection part.
-
-The issue could most likely be also fixed in the VNC connection initial=
-ization=20
-process but if this changes doesn't have a relevant performance impact =
-they=20
-might prevent some other/future crashes.
-
-Regards
-Tim
-
->=20
-> Regards,
-> Andreas
->=20
-> > Check for this case specifically on item removal.
-> >=20
-> > Signed-off-by: Tim Hardeck <thardeck@suse.de>
-> > ---
-> >=20
-> >  qemu-queue.h |    8 ++++++--
-> >  1 file changed, 6 insertions(+), 2 deletions(-)
-> >=20
-> > diff --git a/qemu-queue.h b/qemu-queue.h
-> > index 9288cd8..47ed239 100644
-> > --- a/qemu-queue.h
-> > +++ b/qemu-queue.h
-> > @@ -141,7 +141,9 @@ struct {                                       =
-      =20
-> >                  \>=20
-> >          if ((elm)->field.le_next !=3D NULL)                       =
-        \
-> >         =20
-> >                  (elm)->field.le_next->field.le_prev =3D           =
-        \
-> >                 =20
-> >                      (elm)->field.le_prev;                         =
-      \
-> >=20
-> > -        *(elm)->field.le_prev =3D (elm)->field.le_next;           =
-        \
-> > +        if ((elm)->field.le_prev !=3D NULL) {                     =
-        \
-> > +            *(elm)->field.le_prev =3D (elm)->field.le_next;       =
-        \
-> > +        }                                                         =
-      \
-> >=20
-> >  } while (/*CONSTCOND*/0)
-> > =20
-> >  #define QLIST_FOREACH(var, head, field)                           =
-      \
-> >=20
-> > @@ -381,7 +383,9 @@ struct {                                       =
-      =20
-> >                  \>=20
-> >                      (elm)->field.tqe_prev;                        =
-      \
-> >         =20
-> >          else                                                      =
-      \
-> >         =20
-> >                  (head)->tqh_last =3D (elm)->field.tqe_prev;       =
-        \
-> >=20
-> > -        *(elm)->field.tqe_prev =3D (elm)->field.tqe_next;         =
-        \
-> > +        if ((elm)->field.tqe_prev !=3D NULL) {                    =
-        \
-> > +            *(elm)->field.tqe_prev =3D (elm)->field.tqe_next;     =
-        \
-> > +        }                                                         =
-      \
-> >=20
-> >  } while (/*CONSTCOND*/0)
-> > =20
-> >  #define QTAILQ_FOREACH(var, head, field)                          =
-      \
---=20
-SUSE LINUX Products GmbH, GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6=
-rffer, HRB=20
-16746 (AG N=FCrnberg)
-Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-T: +49 (0) 911 74053-0  F: +49 (0) 911 74053-483 http://www.suse.de/
---nextPart1384374.LIZGkQOY9H
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.19 (GNU/Linux)
-
-iQEcBAABAgAGBQJQfyIFAAoJENur/L6EMd67v2cIAKzVdEAoCQgKueCvyUt6rZmr
-JRH/CstHiWreXQj2Czs3jQZMqcmaisyl55JbS2nkKmnvYSbso+IQXdNSsxrhGv/0
-d3f3CILtyKT1kWhZPEkGqX/GbD0BhdpOLnk3dCeSfJqkw8H9S0ihaW3LAiF0v4KM
-KPg29rRqwRIQo7ezD9QwC54RrWFqL9e03f/+OmlmA0rWWJLGPZVFcyrf8ZYXTOZB
-NYbK62gt5pAa5IEUMXO2E+gYgWy2EXVVZFGnDgZgoDOn/7j8lxlpbpqYWzAxukDi
-1YgU8nwJS57LVu/ni77ifcFah0O8XOePz+0FL+6JHrnXuJtuBsJA4r/amEN6+C4=
-=/h07
------END PGP SIGNATURE-----
-
---nextPart1384374.LIZGkQOY9H--
-
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
