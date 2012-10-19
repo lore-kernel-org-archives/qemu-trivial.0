@@ -1,30 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TPDU2-0001Vv-HI
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Oct 2012 10:23:30 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43561)
+	id 1TPFgV-0008Kf-FV
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Oct 2012 12:44:31 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55431)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1TPDU0-0001OK-74
-	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 10:23:29 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1TPFgP-00083l-0D
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 12:44:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1TPDTw-0005nI-BR
-	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 10:23:28 -0400
-Received: from 38.0.169.217.in-addr.arpa ([217.169.0.38]:46758
-	helo=mnementh.archaic.org.uk) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1TPDTf-0005io-LY; Fri, 19 Oct 2012 10:23:07 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1TPDTd-0006nt-VT; Fri, 19 Oct 2012 15:23:05 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 19 Oct 2012 15:23:05 +0100
-Message-Id: <1350656585-26130-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6 (newer, 2)
-X-Received-From: 217.169.0.38
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] target-arm: Remove out of date FIXME
-	regarding saturating arithmetic
+	(envelope-from <blauwirbel@gmail.com>) id 1TPFgO-0007VG-2m
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 12:44:24 -0400
+Received: from mail-ia0-f173.google.com ([209.85.210.173]:54978)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1TPFgL-0007TW-6K; Fri, 19 Oct 2012 12:44:21 -0400
+Received: by mail-ia0-f173.google.com with SMTP id m10so443808iam.4
+	for <multiple recipients>; Fri, 19 Oct 2012 09:44:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=TSfPUPfq6foE849G49NG/HuSss+ja5+G5gGM79XQZ7Q=;
+	b=V5aBtl+t0UsOIyysh50jAy7Tone/nNL0Bvc12Zvx7buX6tEKBRP3YZPlFVD8nFPMAr
+	r3J04QLBnG65lbXx6ZIPbwNIlrgy7iI54VXVptRe55pJAIT0b1ifVN6G361QXWZ4uO/b
+	iIYBH2g3hcwBmCA/r51CSutQlFbm0fNm9cZZhFbxTrv9lzDoL/lKNZn6D031oTPIvxZA
+	8n8hVEAfhUlYxLL42ZGGyvIMaNJFZOnAaNRm1kXGsCLQJxVtpoAeS9SDicgC2wDWAlck
+	X4ySWuB4fhMU2Y3pkenrs+h6sUamO1GjNnApf4FBt7mbYlNTJombfO39E7Dq/qZhb0ZI
+	y1tA==
+Received: by 10.50.77.230 with SMTP id v6mr9150940igw.11.1350665059237; Fri,
+	19 Oct 2012 09:44:19 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.64.53.130 with HTTP; Fri, 19 Oct 2012 09:43:58 -0700 (PDT)
+In-Reply-To: <CAFEAcA-=WvnX6gYsvaXDvOy0T4yiRV06+sryzzsfdzxJm7u=DQ@mail.gmail.com>
+References: <cover.1350244587.git.blauwirbel@gmail.com>
+	<9b4ee7a47d8bc116e20f236a1ad9ed73a695123e.1350244587.git.blauwirbel@gmail.com>
+	<CAFEAcA_M58F9F-NTY81Fau9_iH_s76f0KHQ_L5TOoC8+naWB6Q@mail.gmail.com>
+	<CAAu8pHu5cuBML84JehNbXXsbuJ=3KwauuAvOYP=+VH-Y_GQ+-g@mail.gmail.com>
+	<CAFEAcA-f_+CJgKBqW3mGbzDjK2xbBssef=0geyE-kxMZLiK-Og@mail.gmail.com>
+	<CAAu8pHtR-jNTnEY0iwEJdihXO8FxKXWcTcnPGQssNJg5jtsBcw@mail.gmail.com>
+	<CAFEAcA-=WvnX6gYsvaXDvOy0T4yiRV06+sryzzsfdzxJm7u=DQ@mail.gmail.com>
+From: Blue Swirl <blauwirbel@gmail.com>
+Date: Fri, 19 Oct 2012 16:43:58 +0000
+Message-ID: <CAAu8pHtTxCgz7=+R8OY5Xq2vvjuDkmhdwxEQ7EYvWzFezyaRJQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 10/11] arm: add missing static and remove
+	unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,32 +59,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Oct 2012 14:23:29 -0000
+X-List-Received-Date: Fri, 19 Oct 2012 16:44:29 -0000
 
-Remove an out of date FIXME regarding the saturating arithmetic helpers:
-we now do pass a pointer to CPUARMState to these helpers, and since
-the AREG0 changes went in there is no difference between helper.c
-and op_helper.c and therefore no point in moving the functions.
+On Sun, Oct 14, 2012 at 8:55 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 14 October 2012 21:49, Blue Swirl <blauwirbel@gmail.com> wrote:
+>> On Sun, Oct 14, 2012 at 8:35 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> On 14 October 2012 21:33, Blue Swirl <blauwirbel@gmail.com> wrote:
+>>>> On Sun, Oct 14, 2012 at 8:09 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>>>> In general anything in linux-user/arm/nwfpe is legacy code which
+>>>>> it's scarcely worth the effort of touching or reviewing.
+>>>>
+>>>> Adding 'static' should be only beneficial.
+>>>
+>>> Except that it's taken you time to write these patches and it
+>>> will take me time to review them.
+>>
+>> Yes, the benefit may come to the users who may get a slightly faster
+>> emulator.
+>
+> If you or any other user would like to find me some test cases
+> which actually use the FPA floating point emulation at all
+> I'd be happy to (a) add them to my test collection and (b)
+> test this patch...
+>
+>> We, the developers, get the benefit from different things,
+>> like technical excellence or something else.
+>
+> One day I might pursue technical excellence by dropping
+> the nwfpe code completely :-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target-arm/op_helper.c |    2 --
- 1 file changed, 2 deletions(-)
+That would be the best option. Removed code does not need maintenance.
 
-diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-index aef592a..6e3ab90 100644
---- a/target-arm/op_helper.c
-+++ b/target-arm/op_helper.c
-@@ -93,8 +93,6 @@ void tlb_fill(CPUARMState *env, target_ulong addr, int is_write, int mmu_idx,
- }
- #endif
- 
--/* FIXME: Pass an explicit pointer to QF to CPUARMState, and move saturating
--   instructions into helper.c  */
- uint32_t HELPER(add_setq)(CPUARMState *env, uint32_t a, uint32_t b)
- {
-     uint32_t res = a + b;
--- 
-1.7.9.5
-
+>
+> -- PMM
 
