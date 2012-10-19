@@ -1,49 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TP8Z0-00082u-UX
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Oct 2012 05:08:18 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:52802)
+	id 1TPAE3-0006R1-32
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Oct 2012 06:54:47 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34764)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TP8Yu-0007vj-GR
-	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 05:08:17 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1TPADv-0006Kb-IJ
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 06:54:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TP8Yq-0004aP-Ji
-	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 05:08:12 -0400
-Received: from mail-pa0-f45.google.com ([209.85.220.45]:33382)
+	(envelope-from <peter.maydell@linaro.org>) id 1TPADu-0000eK-MG
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 06:54:39 -0400
+Received: from mail-ie0-f173.google.com ([209.85.223.173]:38370)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TP8Yq-0004aC-Dl
-	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 05:08:08 -0400
-Received: by mail-pa0-f45.google.com with SMTP id fb10so223684pad.4
-	for <qemu-trivial@nongnu.org>; Fri, 19 Oct 2012 02:08:07 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1TPADu-0000e9-Gr
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 06:54:38 -0400
+Received: by mail-ie0-f173.google.com with SMTP id 17so398010iea.4
+	for <qemu-trivial@nongnu.org>; Fri, 19 Oct 2012 03:54:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer
-	:x-gm-message-state;
-	bh=BDYHOWWsWoQISDVLvwnEWmm0IZQmAuXUN0O9JbInGg8=;
-	b=pUxTRLi7ccSGOvaCT6FvBXduDgsd81QWXLU/sqcmb97LSz4Lg8bGpO3QD/O2ypSGFY
-	BZbiCWJ+wC+aRHOZafcmruxAEwjoBabp4NJgAo87k8C9u2ky1O/BLVSkhhdMQCo4muTC
-	c0q5nny09HYrb/Sp3TIlt1eWi5tmNphbYuXeTuJD4Nt287I35nEIZFClViWtUbZk12tU
-	5ELF+rvMT84eXM0iza24BpYNiR0zR4jOF8K1rIAd6PynlucBMfLP6QJlkjG7gWaGVc2h
-	GWwN5qne30HMpfCHiD9idO+lZ9pO7/YAkNkPUUMxwQyXn3unAuHluzCag1m7pRq5UwAi
-	HMxg==
-Received: by 10.66.85.66 with SMTP id f2mr1882536paz.56.1350637687683;
-	Fri, 19 Oct 2012 02:08:07 -0700 (PDT)
-Received: from localhost ([124.148.20.9])
-	by mx.google.com with ESMTPS id k9sm790951paz.22.2012.10.19.02.08.05
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 19 Oct 2012 02:08:07 -0700 (PDT)
-Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Date: Fri, 19 Oct 2012 19:08:04 +1000
-Message-Id: <1350637684-32300-1-git-send-email-peter.crosthwaite@xilinx.com>
-X-Mailer: git-send-email 1.7.0.4
-X-Gm-Message-State: ALoCoQm9gOLmBzgPV1W6aUxI87/ZfUMJ1uLWtTE03d99XFJdGCu4bdVvfAw2siGcwR4AUOY9qcU3
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=g+x/1DlIlXeAb2OgBeh1CABmzrGB9ROLwKwUvbtGpt4=;
+	b=dp6C/SFATaNxZ3/+sWDmtB6hl2CgIFUpIbTIbb25wUrXPaLCniOWdj5M2aXmslzvXO
+	CU6Z36jUmPmct7WpVZEU8QhiiMmuIKdI+B3tiJN3G3BVtkm3FnykLdexe3+4nAjJ48wG
+	A9QOdSw1E0lGlWhvXNg4kA+st23snUwvDHY1raULCbv32pPHQtGSiIN9Sptk73A9447s
+	gufl8COBu49tXRwhz861Lvmd39mJptdJVid2eyZcRlbBxJ/D8sIRrFd9ppH0rUwdG5g8
+	3GB+RdqzO3pSKFdSwU04rpE2HIcB3T1FbVSKcBQuyGPXEKmiL8O0yTlTrO6Uv0naqNLe
+	/7jg==
+MIME-Version: 1.0
+Received: by 10.50.161.169 with SMTP id xt9mr7667125igb.62.1350644077500; Fri,
+	19 Oct 2012 03:54:37 -0700 (PDT)
+Received: by 10.50.87.105 with HTTP; Fri, 19 Oct 2012 03:54:37 -0700 (PDT)
+In-Reply-To: <1350637684-32300-1-git-send-email-peter.crosthwaite@xilinx.com>
+References: <1350637684-32300-1-git-send-email-peter.crosthwaite@xilinx.com>
+Date: Fri, 19 Oct 2012 11:54:37 +0100
+Message-ID: <CAFEAcA-poGUEscWY89iSO4wg4oRQ0TQVvuyC+4KZN5w-Q_z28A@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQk4gX5vU63VcigSttzL89zJwcvyKKGqWMX1oc8Yk87AVTt0YdIn1zjIvOT3AlSwc4rHn8va
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.220.45
-Cc: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Subject: [Qemu-trivial] [PATCH] cadence_uart: More debug information
+X-Received-From: 209.85.223.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] cadence_uart: More debug
+	information
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,48 +54,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Oct 2012 09:08:18 -0000
+X-List-Received-Date: Fri, 19 Oct 2012 10:54:45 -0000
 
-Add more helpful debug information to the cadence UART.
+On 19 October 2012 10:08, Peter Crosthwaite
+<peter.crosthwaite@xilinx.com> wrote:
+> Add more helpful debug information to the cadence UART.
+>
+> Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
----
- hw/cadence_uart.c |   11 +++++++----
- 1 files changed, 7 insertions(+), 4 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/cadence_uart.c b/hw/cadence_uart.c
-index f8afc4e..483a316 100644
---- a/hw/cadence_uart.c
-+++ b/hw/cadence_uart.c
-@@ -359,7 +359,7 @@ static void uart_write(void *opaque, target_phys_addr_t offset,
- {
-     UartState *s = (UartState *)opaque;
- 
--    DB_PRINT(" offset:%x data:%08x\n", offset, (unsigned)value);
-+    DB_PRINT(" offset:%x data:%08x\n", (unsigned)offset, (unsigned)value);
-     offset >>= 2;
-     switch (offset) {
-     case R_IER: /* ier (wts imr) */
-@@ -405,12 +405,15 @@ static uint64_t uart_read(void *opaque, target_phys_addr_t offset,
- 
-     offset >>= 2;
-     if (offset >= R_MAX) {
--        return 0;
-+        c = 0;
-     } else if (offset == R_TX_RX) {
-         uart_read_rx_fifo(s, &c);
--        return c;
-+    } else {
-+       c = s->r[offset];
-     }
--    return s->r[offset];
-+
-+    DB_PRINT(" offset:%x data:%08x\n", (unsigned)(offset << 2), (unsigned)c);
-+    return c;
- }
- 
- static const MemoryRegionOps uart_ops = {
--- 
-1.7.0.4
-
+-- PMM
 
