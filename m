@@ -1,54 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TP87h-0008TQ-Ac
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Oct 2012 04:40:05 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45194)
+	id 1TP8AN-00031w-CR
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Oct 2012 04:42:51 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:45822)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TP87Z-0008NI-M3
-	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 04:40:03 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TP8AF-0002fw-Rw
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 04:42:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TP87T-0003mj-Te
-	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 04:39:57 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:60175)
+	(envelope-from <stefanha@gmail.com>) id 1TP8AB-0004aU-LE
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2012 04:42:43 -0400
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:34538)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TP87T-0003ma-Kw; Fri, 19 Oct 2012 04:39:51 -0400
-Received: by mail-bk0-f45.google.com with SMTP id jf3so69661bkc.4
-	for <multiple recipients>; Fri, 19 Oct 2012 01:39:50 -0700 (PDT)
+	id 1TP8A2-0004Yz-Pj; Fri, 19 Oct 2012 04:42:30 -0400
+Received: by mail-bk0-f45.google.com with SMTP id jf3so70854bkc.4
+	for <multiple recipients>; Fri, 19 Oct 2012 01:42:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=Mb1kcSoWxEG/qM/h7S6QC3xJe1OXZ92VVFSaafFbzgw=;
-	b=Y4lRhF58L2DfpwEMdCoK/8Sm5D3T1V1W2NTkvkoLJkRgV52G/tobP2IaRbnZ/BveqY
-	llsGbjWukTGW/1s0Gl5Rfco6EyKrRqY094iJw+wz0ni7+5BlEW5YR6KsB7ROnQQyPeab
-	+NP338SAinptCHVlLDTBu1gyEMA03nxyrkA1doxu/onIlEUOuYbflWj02z91mwiWR6P3
-	7eHv/oY62TWoVVZBPnTILE1iivnZdUGXM4WVBCp+T9l45jO/6aN8ZA80702kSLasrhNc
-	x/37a51xG56FBTG9xexXclbv4HFGsSnd/fO9uhPPzPTcgpbxdN9Goi5WRLhTEdRpwXxB
-	A/QA==
-Received: by 10.205.118.136 with SMTP id fq8mr154506bkc.24.1350635990516;
-	Fri, 19 Oct 2012 01:39:50 -0700 (PDT)
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=BuA9zJJNbuY/qEoGk5PjQ7rcw3JmNp8PAOlgJA5HSho=;
+	b=rvmx7RDTQMqq2JglGsJUu0zF6E1BKwlTuxkJiRN7ijljN6zq4/gQxJ26IuY1bgbi6e
+	pJMrx2hzlrU8aUsfAnmHM0HjfeGb1D2Y3ogo2PW+VRFMqYU/8SEZy2pyt7QmiSkczjkU
+	MmALaCLR6nhv8Uaw9/vebjuptPpFcElZpZeM5h+e+QZZcn4lnv/jY8YGmuMSQFrSypeB
+	iFLeryUiTP/+BRglOwiNEAn47ClxcZZ+J+hiREBNBsQ0kmtt5qPRLnUB8qsXfrdupwbs
+	Mj/5wtlXm2mNAUyDSNY8NBxtWTQ2b9INwXhx5iMg5rNI869heVYyUEIi72qDjxO3QWtG
+	FDfA==
+Received: by 10.204.129.211 with SMTP id p19mr151299bks.94.1350636149831;
+	Fri, 19 Oct 2012 01:42:29 -0700 (PDT)
 Received: from localhost (188-194-252-80-dynip.superkabel.de. [188.194.252.80])
-	by mx.google.com with ESMTPS id e13sm315954bkw.12.2012.10.19.01.39.49
+	by mx.google.com with ESMTPS id s20sm322529bkw.15.2012.10.19.01.42.28
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 19 Oct 2012 01:39:49 -0700 (PDT)
-Date: Fri, 19 Oct 2012 10:39:48 +0200
+	Fri, 19 Oct 2012 01:42:29 -0700 (PDT)
+Date: Fri, 19 Oct 2012 10:42:27 +0200
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20121019083948.GE4656@stefanha-thinkpad.redhat.com>
-References: <1350496430-14429-1-git-send-email-sw@weilnetz.de>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20121019084227.GF4656@stefanha-thinkpad.redhat.com>
+References: <1350578453-24368-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1350496430-14429-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1350578453-24368-1-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] net/tap-win32: Fix compiler warning
- caused by missing include statement
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH v2] ui/vnc-jobs.c: Fix minor typos in
+ comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,18 +58,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Oct 2012 08:40:03 -0000
+X-List-Received-Date: Fri, 19 Oct 2012 08:42:50 -0000
 
-On Wed, Oct 17, 2012 at 07:53:50PM +0200, Stefan Weil wrote:
-> The include file for net_init_tap was missing:
+On Thu, Oct 18, 2012 at 05:40:53PM +0100, Peter Maydell wrote:
+> Fix some minor typos/grammar errors in comments.
 > 
-> net/tap-win32.c:703:
->  warning: no previous prototype for ‘net_init_tap’
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  net/tap-win32.c |    1 +
->  1 file changed, 1 insertion(+)
+> v1->v2: reinstated carelessly dropped 'if', noted by Stefan Weil.
+> 
+>  ui/vnc-jobs.c |   16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+
+Reads like Shakespeare now, thanks! :D
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
