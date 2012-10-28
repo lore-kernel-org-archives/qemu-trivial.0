@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TSQgI-0002MQ-Ch
-	for mharc-qemu-trivial@gnu.org; Sun, 28 Oct 2012 07:05:26 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53924)
+	id 1TSQgO-0002fW-Sq
+	for mharc-qemu-trivial@gnu.org; Sun, 28 Oct 2012 07:05:32 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:53949)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TSQgF-0002Df-A5
-	for qemu-trivial@nongnu.org; Sun, 28 Oct 2012 07:05:24 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1TSQgK-0002S4-BP
+	for qemu-trivial@nongnu.org; Sun, 28 Oct 2012 07:05:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TSQgD-0007vs-Ux
-	for qemu-trivial@nongnu.org; Sun, 28 Oct 2012 07:05:23 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1TSQgJ-0007wQ-4o
+	for qemu-trivial@nongnu.org; Sun, 28 Oct 2012 07:05:28 -0400
 Received: from mail-la0-f45.google.com ([209.85.215.45]:41861)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <blauwirbel@gmail.com>)
-	id 1TSQgA-0007vF-9S; Sun, 28 Oct 2012 07:05:18 -0400
+	id 1TSQgG-0007vF-HI; Sun, 28 Oct 2012 07:05:24 -0400
 Received: by mail-la0-f45.google.com with SMTP id m13so3144895lah.4
-	for <multiple recipients>; Sun, 28 Oct 2012 04:05:17 -0700 (PDT)
+	for <multiple recipients>; Sun, 28 Oct 2012 04:05:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:x-mailer:in-reply-to:references
 	:in-reply-to:references;
-	bh=PYoddt/2gM20c7aGxbLsdZINMHycAzeaaXgUYaVkqeQ=;
-	b=nBTSzbjjiOCOkSWQ40GwfbiXWpPRRk29euFwnfKnfFAuD3UxAPGMFJPqIS4FKlYCZk
-	aEznjckkKy67uFAfNO0+xt94aNTvZXAtVVDnfoNpEiyU7PDRmZdtCpwp+UtWuOWyFLRp
-	VemLlDRTEnKB6fVkO1v30KtaWyFTVdn/9oI7FDgUf/DAhvrLorvWs4fT7yiA+5WVbjRx
-	xKYixXA3kuF6UpQ8lym5GEwbRq1imV6KWyKj1JdOirdQRZwY0MvGJaxzGBc7htgeSvS9
-	mr3Peutky1DrazHkIvj7/JxXiIi1m4dcZ4066zAW4pec2qpDl+UO4RE3m8P2GExYj+8T
-	F9dQ==
-Received: by 10.152.106.110 with SMTP id gt14mr24312662lab.1.1351422317007;
-	Sun, 28 Oct 2012 04:05:17 -0700 (PDT)
+	bh=FKFS/BgqzzsvWFEAJtP8X2ylE+fQdfaMRUWonEp+vz8=;
+	b=r8Dyxw4ywQYA1JinAfuFCTMjpbbvmMk8QEIQnxxBlH6oCGUFTrKjuW4En6xLcH8m6c
+	rsefhDxe0mSyps4p+v7kXu94UmPCoTsC1Gt43RHNEh1ByDtmzAsMDi37A7y5oMBJGXto
+	UlNBkB5Teh88bcPY6gX9bIyvUFRmoyM7HCbtIolYLcVfzabO5w6B+J3twfoh5i6vV3Zl
+	QmHS3He1QO+Ue+EbiI8M9AFC//iZHjKu7dO76qOwzcftHa3cKxqk/7MXRrGmrSR0yvuD
+	5g3zT/21r8MVud6kBe7ZyXYtY7XETf298EpesjXNjHVPp4VeLSu5e4OEr/J7kVabH2gq
+	/2Og==
+Received: by 10.152.105.236 with SMTP id gp12mr24759534lab.35.1351422323867;
+	Sun, 28 Oct 2012 04:05:23 -0700 (PDT)
 Received: from localhost.localdomain (blueswirl.broker.freenet6.net.
 	[2001:5c0:1000:b::b867])
-	by mx.google.com with ESMTPS id ft3sm2070067lbb.1.2012.10.28.04.05.13
+	by mx.google.com with ESMTPS id ft3sm2070067lbb.1.2012.10.28.04.05.18
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 28 Oct 2012 04:05:16 -0700 (PDT)
+	Sun, 28 Oct 2012 04:05:23 -0700 (PDT)
 From: Blue Swirl <blauwirbel@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sun, 28 Oct 2012 11:04:46 +0000
-Message-Id: <12c4e70fd90fae884afbf715c498e42e47928831.1351422116.git.blauwirbel@gmail.com>
+Date: Sun, 28 Oct 2012 11:04:47 +0000
+Message-Id: <3225f962d943e3886078382ce2fd63bd42d567bb.1351422116.git.blauwirbel@gmail.com>
 X-Mailer: git-send-email 1.7.2.5
 In-Reply-To: <cover.1351422116.git.blauwirbel@gmail.com>
 References: <cover.1351422116.git.blauwirbel@gmail.com>
@@ -43,9 +43,9 @@ References: <cover.1351422116.git.blauwirbel@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 209.85.215.45
-Cc: qemu-trivial@nongnu.org, blauwirbel@gmail.com
-Subject: [Qemu-trivial] [PATCH v2 1/6] target-sparc: make
-	do_unaligned_access static
+Cc: qemu-trivial@nongnu.org, blauwirbel@gmail.com,
+	Anthony Liguori <aliguori@us.ibm.com>
+Subject: [Qemu-trivial] [PATCH v2 2/6] vl.c: add missing static
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,54 +57,127 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 28 Oct 2012 11:05:25 -0000
+X-List-Received-Date: Sun, 28 Oct 2012 11:05:32 -0000
+
+Add missing 'static' qualifiers.
 
 Signed-off-by: Blue Swirl <blauwirbel@gmail.com>
 ---
- target-sparc/cpu.h         |    3 ---
- target-sparc/ldst_helper.c |    8 ++++++--
- 2 files changed, 6 insertions(+), 5 deletions(-)
+ sysemu.h |    5 -----
+ vl.c     |   21 ++++++++++++---------
+ 2 files changed, 12 insertions(+), 14 deletions(-)
 
-diff --git a/target-sparc/cpu.h b/target-sparc/cpu.h
-index a55fe08..7c689ee 100644
---- a/target-sparc/cpu.h
-+++ b/target-sparc/cpu.h
-@@ -711,9 +711,6 @@ uint64_t cpu_tick_get_count(CPUTimer *timer);
- void cpu_tick_set_limit(CPUTimer *timer, uint64_t limit);
- trap_state* cpu_tsptr(CPUSPARCState* env);
- #endif
--void QEMU_NORETURN do_unaligned_access(CPUSPARCState *env, target_ulong addr,
--                                       int is_write, int is_user,
--                                       uintptr_t retaddr);
- void cpu_restore_state2(CPUSPARCState *env, uintptr_t retaddr);
+diff --git a/sysemu.h b/sysemu.h
+index 0c39a3a..1683448 100644
+--- a/sysemu.h
++++ b/sysemu.h
+@@ -19,7 +19,6 @@ extern uint8_t qemu_uuid[];
+ int qemu_uuid_parse(const char *str, uint8_t *uuid);
+ #define UUID_FMT "%02hhx%02hhx%02hhx%02hhx-%02hhx%02hhx-%02hhx%02hhx-%02hhx%02hhx-%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx"
  
- #define TB_FLAG_FPU_ENABLED (1 << 4)
-diff --git a/target-sparc/ldst_helper.c b/target-sparc/ldst_helper.c
-index 356144a..f3e08fd 100644
---- a/target-sparc/ldst_helper.c
-+++ b/target-sparc/ldst_helper.c
-@@ -65,6 +65,9 @@
- #define QT1 (env->qt1)
+-void runstate_init(void);
+ bool runstate_check(RunState state);
+ void runstate_set(RunState new_state);
+ int runstate_is_running(void);
+@@ -57,11 +56,7 @@ void qemu_system_debug_request(void);
+ void qemu_system_vmstop_request(RunState reason);
+ int qemu_shutdown_requested_get(void);
+ int qemu_reset_requested_get(void);
+-int qemu_shutdown_requested(void);
+-int qemu_reset_requested(void);
+-int qemu_powerdown_requested(void);
+ void qemu_system_killed(int signal, pid_t pid);
+-void qemu_kill_report(void);
+ void qemu_devices_reset(void);
+ void qemu_system_reset(bool report);
  
- #if !defined(CONFIG_USER_ONLY)
-+static void QEMU_NORETURN do_unaligned_access(CPUSPARCState *env,
-+                                              target_ulong addr, int is_write,
-+                                              int is_user, uintptr_t retaddr);
- #include "softmmu_exec.h"
- #define MMUSUFFIX _mmu
- #define ALIGNED_ONLY
-@@ -2407,8 +2410,9 @@ void cpu_restore_state2(CPUSPARCState *env, uintptr_t retaddr)
+diff --git a/vl.c b/vl.c
+index 9f99ef4..7320244 100644
+--- a/vl.c
++++ b/vl.c
+@@ -180,7 +180,7 @@ static const char *data_dir;
+ const char *bios_name = NULL;
+ enum vga_retrace_method vga_retrace_method = VGA_RETRACE_DUMB;
+ DisplayType display_type = DT_DEFAULT;
+-int display_remote = 0;
++static int display_remote;
+ const char* keyboard_layout = NULL;
+ ram_addr_t ram_size;
+ const char *mem_path = NULL;
+@@ -215,7 +215,7 @@ const char *vnc_display;
+ int acpi_enabled = 1;
+ int no_hpet = 0;
+ int fd_bootchk = 1;
+-int no_reboot = 0;
++static int no_reboot;
+ int no_shutdown = 0;
+ int cursor_hide = 1;
+ int graphic_rotate = 0;
+@@ -243,7 +243,8 @@ struct FWBootEntry {
+     char *suffix;
+ };
+ 
+-QTAILQ_HEAD(, FWBootEntry) fw_boot_order = QTAILQ_HEAD_INITIALIZER(fw_boot_order);
++static QTAILQ_HEAD(, FWBootEntry) fw_boot_order =
++    QTAILQ_HEAD_INITIALIZER(fw_boot_order);
+ 
+ int nb_numa_nodes;
+ uint64_t node_mem[MAX_NODES];
+@@ -397,7 +398,7 @@ bool runstate_check(RunState state)
+     return current_run_state == state;
  }
  
- #if !defined(CONFIG_USER_ONLY)
--void do_unaligned_access(CPUSPARCState *env, target_ulong addr, int is_write,
--                         int is_user, uintptr_t retaddr)
-+static void QEMU_NORETURN do_unaligned_access(CPUSPARCState *env,
-+                                              target_ulong addr, int is_write,
-+                                              int is_user, uintptr_t retaddr)
+-void runstate_init(void)
++static void runstate_init(void)
  {
- #ifdef DEBUG_UNALIGNED
-     printf("Unaligned access to 0x" TARGET_FMT_lx " from 0x" TARGET_FMT_lx
+     const RunStateTransition *p;
+ 
+@@ -1373,14 +1374,14 @@ int qemu_reset_requested_get(void)
+     return reset_requested;
+ }
+ 
+-int qemu_shutdown_requested(void)
++static int qemu_shutdown_requested(void)
+ {
+     int r = shutdown_requested;
+     shutdown_requested = 0;
+     return r;
+ }
+ 
+-void qemu_kill_report(void)
++static void qemu_kill_report(void)
+ {
+     if (!qtest_enabled() && shutdown_signal != -1) {
+         fprintf(stderr, "qemu: terminating on signal %d", shutdown_signal);
+@@ -1396,7 +1397,7 @@ void qemu_kill_report(void)
+     }
+ }
+ 
+-int qemu_reset_requested(void)
++static int qemu_reset_requested(void)
+ {
+     int r = reset_requested;
+     reset_requested = 0;
+@@ -1417,7 +1418,7 @@ static int qemu_wakeup_requested(void)
+     return r;
+ }
+ 
+-int qemu_powerdown_requested(void)
++static int qemu_powerdown_requested(void)
+ {
+     int r = powerdown_requested;
+     powerdown_requested = 0;
+@@ -2043,7 +2044,9 @@ struct device_config {
+     Location loc;
+     QTAILQ_ENTRY(device_config) next;
+ };
+-QTAILQ_HEAD(, device_config) device_configs = QTAILQ_HEAD_INITIALIZER(device_configs);
++
++static QTAILQ_HEAD(, device_config) device_configs =
++    QTAILQ_HEAD_INITIALIZER(device_configs);
+ 
+ static void add_device_config(int type, const char *cmdline)
+ {
 -- 
 1.7.2.5
 
