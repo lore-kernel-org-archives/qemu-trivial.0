@@ -1,50 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TSm6M-0001L7-60
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2012 05:57:46 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40917)
+	id 1TSmA5-0002hf-Qh
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2012 06:01:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:59656)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TSm6J-0001G4-JH
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 05:57:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1TSm9w-0002VT-W9
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 06:01:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TSm6I-00076C-NF
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 05:57:43 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:61590)
+	(envelope-from <peter.maydell@linaro.org>) id 1TSm9p-0008VP-EH
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 06:01:28 -0400
+Received: from mail-ie0-f173.google.com ([209.85.223.173]:40670)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1TSm68-00074S-Fx; Mon, 29 Oct 2012 05:57:32 -0400
-Received: by mail-bk0-f45.google.com with SMTP id jf3so1557449bkc.4
-	for <multiple recipients>; Mon, 29 Oct 2012 02:57:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=LDgeOi9kJYFpGfMMY18jRt8rA53qZoAfCiABKEI0xHM=;
-	b=JK9U6iOxRHYDpJQF8wwhsOpPYpFEj2NR3wkKRip1fRR9mSnnEcC6vsDj7hHZtskWpK
-	CoWqFEMSaAK7fkYWvoC9iLtt7ipkmBJxqcjT/cbaKFlalgfzObzM8vTh+/ju7/64o0Rp
-	CWahpQt/+7NoyUzsP8PXtUY9pwnixPYIE7VCUM1EVxXqUYGd0NHjI9McjQKHch0nSBc6
-	Mz7frg049YX85s/lHDXRzowkOj2ddVJBYu9c4Y1RTMDDI7xVtMHxrd+7/tNcqboL9O41
-	MjoDtd8FtfVcQcUYeRXLVn6/KQNediqX2PXMtkcKCpDvKMCwbqKQ5h+S4cPfJG9YgrVC
-	oOkg==
-Received: by 10.204.13.25 with SMTP id z25mr9196535bkz.119.1351504651505;
-	Mon, 29 Oct 2012 02:57:31 -0700 (PDT)
-Received: from localhost ([89.204.138.63])
-	by mx.google.com with ESMTPS id k21sm3421627bkv.1.2012.10.29.02.57.29
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 29 Oct 2012 02:57:30 -0700 (PDT)
-Date: Mon, 29 Oct 2012 10:57:28 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Blue Swirl <blauwirbel@gmail.com>
-Message-ID: <20121029095728.GA30930@stefanha-thinkpad.redhat.com>
-References: <cover.1351422116.git.blauwirbel@gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1TSm9p-0008VD-9z
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 06:01:21 -0400
+Received: by mail-ie0-f173.google.com with SMTP id 17so6549933iea.4
+	for <qemu-trivial@nongnu.org>; Mon, 29 Oct 2012 03:01:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=5Pu8XjDwO040rY2ZZ3lCq5oQ1JQ8LFxBXTqWKEBbUKY=;
+	b=WbIWNr1VNmdnGw+cJIgxvm2LlESkIX4MI8lN0VN8nQ2IYVjOIUuZcnDrcfgeCMlvor
+	l1objAVnlNUTJYZ+EJX14BD2JNTkX8TXIYqMa2Sj2CZOY3W50JsoY7tzWNwmPkRoeiDZ
+	U3re1OlVoGgmZuvAj+6yn+nnfLsKUg4PVejeCRgZ73S+e5TYFPNusDMd/Tre7fbLtn5m
+	fFp5LUfhKw8xTphUm+q95p++qz3inykKmGxq3L5tt8POmY32BsnnJkgyWQrKIQ02WiGZ
+	Oe2WSxfdamWbtK4NuP6rj2FSNkO73I1jJNhTfg1rr9hwFmYbqKCt1qXNded4ZmYy7cDr
+	+n0A==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1351422116.git.blauwirbel@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.50.161.169 with SMTP id xt9mr8725350igb.62.1351504880593; Mon,
+	29 Oct 2012 03:01:20 -0700 (PDT)
+Received: by 10.50.87.105 with HTTP; Mon, 29 Oct 2012 03:01:20 -0700 (PDT)
+In-Reply-To: <20121029095440.GB30593@stefanha-thinkpad.redhat.com>
+References: <1350761824-28185-1-git-send-email-peter.maydell@linaro.org>
+	<20121029095440.GB30593@stefanha-thinkpad.redhat.com>
+Date: Mon, 29 Oct 2012 10:01:20 +0000
+Message-ID: <CAFEAcA9xQms-YE3v8BNWA8kNrfeJmtgwtbFJ=5J3nF+UzsDtPA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQn9GqqBPtXOSg8ea0qauWw6hKAp1OcRzTg1OOnplnbMMpQn2xBoVhVMk0rjFFy3j73hxUsQ
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/6] static patches
+X-Received-From: 209.85.223.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] configure: Remove stray debug output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,47 +54,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Oct 2012 09:57:44 -0000
+X-List-Received-Date: Mon, 29 Oct 2012 10:01:35 -0000
 
-On Sun, Oct 28, 2012 at 11:04:45AM +0000, Blue Swirl wrote:
-> v2: extract function removal patches, skip ARM
-> 
-> Blue Swirl (6):
->   target-sparc: make do_unaligned_access static
->   vl.c: add missing static
->   vnc: add missing static
->   ppc: add missing static
->   target-ppc: make some functions static
->   exec: make some functions static
-> 
->  console.h                  |    2 --
->  cpu-common.h               |    5 -----
->  exec-all.h                 |    2 --
->  exec.c                     |   15 +++++++++------
->  hw/adb.c                   |    8 ++++----
->  hw/adb.h                   |    4 ----
->  hw/nvram.h                 |   10 +---------
->  hw/ppc.c                   |   16 ++++++++--------
->  memory-internal.h          |    2 --
->  sysemu.h                   |    5 -----
->  target-ppc/cpu.h           |    7 -------
->  target-ppc/mmu_helper.c    |   11 ++++++-----
->  target-sparc/cpu.h         |    3 ---
->  target-sparc/ldst_helper.c |    8 ++++++--
->  ui/vnc-jobs.c              |   10 +++++-----
->  ui/vnc-jobs.h              |    1 -
->  ui/vnc.c                   |   14 +++++++-------
->  ui/vnc.h                   |    5 -----
->  vl.c                       |   21 ++++++++++++---------
->  19 files changed, 58 insertions(+), 91 deletions(-)
-> 
-> -- 
-> 1.7.2.5
-> 
-> 
+On 29 October 2012 09:54, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> On Sat, Oct 20, 2012 at 08:37:04PM +0100, Peter Maydell wrote:
+>> Rather than printing a message saying we're silently falling
+>> back to gthread coroutines when running on MacOS, actually
+>> do it silently.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> I guess this is a self-falsifying echo :-)
+>>
+>>  configure | 2 --
+>>  1 file changed, 2 deletions(-)
+>>
+>> diff --git a/configure b/configure
+>> index 9f33c7d..e07baf3 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -2900,8 +2900,6 @@ EOF
+>>      else
+>>       coroutine_backend=gthread
+>>      fi
+>> -  else
+>> -    echo "Silently falling back into gthread backend under darwin"
+>>    fi
+>
+> Is there a reason to remove the echo?
 
-Waiting a bit before merging so experts in the various areas touched can
-take a look.
+1. Nothing else in configure prints progress messages during the
+   testing phase
+2. The echo is by definition printing something that's false
+3. We print the chosen coroutine backend at the end as part of
+   the standard "what did configure do?" output block, so removing
+   this echo loses no information
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+-- PMM
 
