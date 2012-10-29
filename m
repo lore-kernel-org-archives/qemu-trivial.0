@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TSmA5-0002hf-Qh
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2012 06:01:37 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:59656)
+	id 1TSmCT-00046O-4Z
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2012 06:04:05 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:60226)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TSm9w-0002VT-W9
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 06:01:35 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TSmCN-0003qn-CJ
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 06:04:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TSm9p-0008VP-EH
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 06:01:28 -0400
-Received: from mail-ie0-f173.google.com ([209.85.223.173]:40670)
+	(envelope-from <stefanha@gmail.com>) id 1TSmCI-0000jc-AB
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 06:03:59 -0400
+Received: from mail-lb0-f173.google.com ([209.85.217.173]:56725)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TSm9p-0008VD-9z
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2012 06:01:21 -0400
-Received: by mail-ie0-f173.google.com with SMTP id 17so6549933iea.4
-	for <qemu-trivial@nongnu.org>; Mon, 29 Oct 2012 03:01:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
+	(envelope-from <stefanha@gmail.com>)
+	id 1TSmCE-0000dU-Sq; Mon, 29 Oct 2012 06:03:51 -0400
+Received: by mail-lb0-f173.google.com with SMTP id gj3so2851494lbb.4
+	for <multiple recipients>; Mon, 29 Oct 2012 03:03:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=5Pu8XjDwO040rY2ZZ3lCq5oQ1JQ8LFxBXTqWKEBbUKY=;
-	b=WbIWNr1VNmdnGw+cJIgxvm2LlESkIX4MI8lN0VN8nQ2IYVjOIUuZcnDrcfgeCMlvor
-	l1objAVnlNUTJYZ+EJX14BD2JNTkX8TXIYqMa2Sj2CZOY3W50JsoY7tzWNwmPkRoeiDZ
-	U3re1OlVoGgmZuvAj+6yn+nnfLsKUg4PVejeCRgZ73S+e5TYFPNusDMd/Tre7fbLtn5m
-	fFp5LUfhKw8xTphUm+q95p++qz3inykKmGxq3L5tt8POmY32BsnnJkgyWQrKIQ02WiGZ
-	Oe2WSxfdamWbtK4NuP6rj2FSNkO73I1jJNhTfg1rr9hwFmYbqKCt1qXNded4ZmYy7cDr
-	+n0A==
+	:cc:content-type;
+	bh=3dS14bLPH5pBAzvpGwApmGURBxhH1JOjzlD1e45SW9g=;
+	b=JETY0nmA6CmE2G2HSS0mrxkXoCw5bTD1sr0tOplEK081wymjc/7HgV8mcl7uog3WBU
+	UlDkEh0NytQx/qW4hmHjVldqgNXVpW3M2qqyi1/xHSgRmnZj5WkqBWg8czbJVO0r7CZH
+	5iHqeEKa/LNyuMdtqiyHBB9rHTGJp9O9UBn1xIRy+Ubrd5pmMRbKmDQxRvay8BgH4ryH
+	aqRMdCM42PnN2mDYHtO4cLjvN7KhauaE20yo5tZ+t4+FkNx70YQ8JNs705YrNoCDX3q4
+	Hw4EWnGZyPUhp0LUSD9tBlOn+gfnESU5EdfZ9cSSaddJGRbByT10c+ZEBktc1e3m8F5N
+	9gTw==
 MIME-Version: 1.0
-Received: by 10.50.161.169 with SMTP id xt9mr8725350igb.62.1351504880593; Mon,
-	29 Oct 2012 03:01:20 -0700 (PDT)
-Received: by 10.50.87.105 with HTTP; Mon, 29 Oct 2012 03:01:20 -0700 (PDT)
-In-Reply-To: <20121029095440.GB30593@stefanha-thinkpad.redhat.com>
-References: <1350761824-28185-1-git-send-email-peter.maydell@linaro.org>
-	<20121029095440.GB30593@stefanha-thinkpad.redhat.com>
-Date: Mon, 29 Oct 2012 10:01:20 +0000
-Message-ID: <CAFEAcA9xQms-YE3v8BNWA8kNrfeJmtgwtbFJ=5J3nF+UzsDtPA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQn9GqqBPtXOSg8ea0qauWw6hKAp1OcRzTg1OOnplnbMMpQn2xBoVhVMk0rjFFy3j73hxUsQ
+Received: by 10.112.48.74 with SMTP id j10mr11738230lbn.94.1351505029574; Mon,
+	29 Oct 2012 03:03:49 -0700 (PDT)
+Received: by 10.112.23.37 with HTTP; Mon, 29 Oct 2012 03:03:49 -0700 (PDT)
+In-Reply-To: <CAFEAcA9WH_jrHGns6dEKa4F9TaQXR8FEWJ27rmNY+0yQ+MJepQ@mail.gmail.com>
+References: <1330121921-23462-1-git-send-email-meadori@codesourcery.com>
+	<4F4814F7.6040008@suse.de> <4F71D7AD.8080103@codesourcery.com>
+	<CAFEAcA8R+J+DeN7V_6bVHhh3kYprA8EKWJXEzfDp7iWjWzYLqQ@mail.gmail.com>
+	<CAFEAcA9WH_jrHGns6dEKa4F9TaQXR8FEWJ27rmNY+0yQ+MJepQ@mail.gmail.com>
+Date: Mon, 29 Oct 2012 11:03:49 +0100
+Message-ID: <CAJSP0QXAtsWdeoROrZ-zN5YWr2wpkZCJcjQH7sQmLG8vQTD9Ag@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.223.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH] configure: Remove stray debug output
+X-Received-From: 209.85.217.173
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Meador Inge <meadori@codesourcery.com>, Paul Brook <paul@codesourcery.com>,
+	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 1/1] m68k: Return
+ semihosting errno values correctly
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,41 +57,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Oct 2012 10:01:35 -0000
+X-List-Received-Date: Mon, 29 Oct 2012 10:04:03 -0000
 
-On 29 October 2012 09:54, Stefan Hajnoczi <stefanha@gmail.com> wrote:
-> On Sat, Oct 20, 2012 at 08:37:04PM +0100, Peter Maydell wrote:
->> Rather than printing a message saying we're silently falling
->> back to gthread coroutines when running on MacOS, actually
->> do it silently.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->> I guess this is a self-falsifying echo :-)
->>
->>  configure | 2 --
->>  1 file changed, 2 deletions(-)
->>
->> diff --git a/configure b/configure
->> index 9f33c7d..e07baf3 100755
->> --- a/configure
->> +++ b/configure
->> @@ -2900,8 +2900,6 @@ EOF
->>      else
->>       coroutine_backend=gthread
->>      fi
->> -  else
->> -    echo "Silently falling back into gthread backend under darwin"
->>    fi
->
-> Is there a reason to remove the echo?
+On Mon, Oct 29, 2012 at 10:42 AM, Peter Maydell
+<peter.maydell@linaro.org> wrote:
+> I just noticed this patch never got applied by anybody
+> (and alas it now needs a refresh because the file was renamed
+> in the interim.)
 
-1. Nothing else in configure prints progress messages during the
-   testing phase
-2. The echo is by definition printing something that's false
-3. We print the chosen coroutine backend at the end as part of
-   the standard "what did configure do?" output block, so removing
-   this echo loses no information
+Merged, thanks!
 
--- PMM
+https://github.com/stefanha/qemu/commits/trivial-patches
+
+Please CC qemu-trivial when suggesting a patch goes through the trivial queue.
+
+Stefan
 
