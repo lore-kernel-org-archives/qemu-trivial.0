@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TTThD-00035Z-3f
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Oct 2012 04:30:43 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49716)
+	id 1TTcpa-0000j9-Aa
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Oct 2012 14:15:58 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56188)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TTTh6-0002mg-Jk
-	for qemu-trivial@nongnu.org; Wed, 31 Oct 2012 04:30:41 -0400
+	(envelope-from <gsomlo@gmail.com>) id 1TTcpX-0000ai-Sm
+	for qemu-trivial@nongnu.org; Wed, 31 Oct 2012 14:15:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TTTh5-0000Jr-IW
-	for qemu-trivial@nongnu.org; Wed, 31 Oct 2012 04:30:36 -0400
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:34876)
+	(envelope-from <gsomlo@gmail.com>) id 1TTcpT-0006HQ-Nc
+	for qemu-trivial@nongnu.org; Wed, 31 Oct 2012 14:15:55 -0400
+Received: from mail-vb0-f45.google.com ([209.85.212.45]:35244)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1TTTgr-0000HO-0a; Wed, 31 Oct 2012 04:30:21 -0400
-Received: by mail-bk0-f45.google.com with SMTP id jf3so439447bkc.4
-	for <multiple recipients>; Wed, 31 Oct 2012 01:30:19 -0700 (PDT)
+	(envelope-from <gsomlo@gmail.com>)
+	id 1TTcpM-0006Du-0b; Wed, 31 Oct 2012 14:15:44 -0400
+Received: by mail-vb0-f45.google.com with SMTP id p1so1745895vbi.4
+	for <multiple recipients>; Wed, 31 Oct 2012 11:15:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=LWRscaNZe7hH7c1naqPXnMa++Nt6WNvnFKrwgsYMYrs=;
-	b=dxyAdFGUW+3FiRTlWI6vf65z9KNCfn6pvUB/d6eKO/kH+XBOWaaUzpNumHAVAqYTJo
-	drbtZNYmMjmanWimoRFAn1svYia3L+zXMSQ3FlyoiUOlrR+s3+xFkgA6vpwFPeUuKhOl
-	Uw0ZFUD7uRXJFWuDX3F5XLHBYvWh0gZ16N50TGqExu3RdBB+Qh0Fov1VmrJJF7SgU/XR
-	QOeQi5CWxJFeYdSBXYfVDQKlV8TPFBs6JfFgMtpqnslwclocbCXUHPH+fuSxBEqwDmUH
-	uVzIUd3Tsn1zKC5Ltl0Fh0CMSD1OkJjBOmNcIFsn2kJnAskYmX3bU1hEXeBO5OGZvC2Y
-	aixQ==
-Received: by 10.204.11.141 with SMTP id t13mr10869494bkt.65.1351672219726;
-	Wed, 31 Oct 2012 01:30:19 -0700 (PDT)
-Received: from localhost (nat-pool-muc-t.redhat.com. [209.132.186.12])
-	by mx.google.com with ESMTPS id v14sm2444454bkv.10.2012.10.31.01.30.18
+	bh=V5gzlMDh0wSMmrHuafHaivilLjhRkqduh6yPraap8uM=;
+	b=W5jPitBd6QzcxdrfmoEVZNmz2B3GzlvHin8fu4H5ksJr/HFSVhdXXT7dbxyfRTFwkX
+	+Au64vIW48yWAUF3ka38J9xRuDRbhnQ2y5d3KTg50bE2c0riwNrq0Zu2IS/1oHR4wesj
+	LIYOrOoK1iCIUM1z1hWqiwdXPRk7Q2Wp6cySEXPlqBA7AosVYvgfgrwlpz/AznYTvdcl
+	QZvJkE4NJmFLc2jIor8MBwIvp9Lb8eBY33LTaFBsajtRX4UItLgK3oBCzQm87UNCsG5N
+	Tl4CJhe5/ZclJ+b6qB2QVl3wxYb/QwbGWsNgg6kRr9z1bbdESmTxXY4wsU5f0QAaUm93
+	Z42w==
+Received: by 10.58.23.169 with SMTP id n9mr63050771vef.58.1351707342727;
+	Wed, 31 Oct 2012 11:15:42 -0700 (PDT)
+Received: from hedwig.ini.cmu.edu (HEDWIG.INI.CMU.EDU. [128.2.16.5])
+	by mx.google.com with ESMTPS id w17sm2487145vdf.16.2012.10.31.11.15.41
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 31 Oct 2012 01:30:18 -0700 (PDT)
-Date: Wed, 31 Oct 2012 09:03:51 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: "Gabriel L. Somlo" <gsomlo@gmail.com>
-Message-ID: <20121031080351.GC1116@stefanha-thinkpad>
+	Wed, 31 Oct 2012 11:15:41 -0700 (PDT)
+Date: Wed, 31 Oct 2012 14:15:39 -0400
+From: "Gabriel L. Somlo" <gsomlo@gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Message-ID: <20121031181538.GC29280@hedwig.ini.cmu.edu>
 References: <20121030172039.GN29280@hedwig.ini.cmu.edu>
+	<20121031080351.GC1116@stefanha-thinkpad>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20121030172039.GN29280@hedwig.ini.cmu.edu>
+In-Reply-To: <20121031080351.GC1116@stefanha-thinkpad>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 209.85.214.45
+X-Received-From: 209.85.212.45
 Cc: qemu-trivial@nongnu.org, rene@exactcode.com, somlo@cmu.edu,
 	qemu-devel@nongnu.org, agraf@suse.de
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] e1000: pre-initialize
-	RAH/RAL registers
+Subject: [Qemu-trivial] [PATCH v2] e1000: pre-initialize RAH/RAL registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,46 +58,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Oct 2012 08:30:41 -0000
+X-List-Received-Date: Wed, 31 Oct 2012 18:15:57 -0000
 
-On Tue, Oct 30, 2012 at 01:20:40PM -0400, Gabriel L. Somlo wrote:
-> Some guest operating systems' drivers (Mac OS X in particular) fail to
-> properly initialize the Receive Address registers (probably expecting
-> them to be pre-initialized by an earlier component, such as a proprietary
-> BIOS). This patch pre-initializes the RA registers, allowing OS X
-> networking to function properly. Other guest operating systems are not
-> affected, and free to (re)initialize these registers during boot.
+Some guest operating systems' drivers (Mac OS X in particular) fail to
+properly initialize the Receive Address registers (probably expecting
+them to be pre-initialized by an earlier component, such as a specific
+proprietary BIOS). This patch pre-initializes the RA registers, allowing
+OS X networking to function properly. Other guest operating systems are
+not affected, and free to (re)initialize these registers during boot.
+
+Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
+---
+
+On Wed, Oct 31, 2012 at 09:03:51AM +0100, Stefan Hajnoczi wrote:
+> Please use 4 space indentation (QEMU coding style).
+
+My bad, fixed in this version.
+
+> > +  memmove(&d->mac_reg[RA], &d->conf.macaddr, sizeof(struct MACAddr));
+>
+> When the host is big-endian the filter code will byteswap and the MAC address
+> will not match:
 > 
-> Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
-> ---
->  hw/e1000.c |    4 ++++
->  1 files changed, 4 insertions(+), 0 deletions(-)
-> 
-> diff --git a/hw/e1000.c b/hw/e1000.c
-> index e4f1ffe..6478ff3 100644
-> --- a/hw/e1000.c
-> +++ b/hw/e1000.c
-> @@ -278,6 +278,10 @@ static void e1000_reset(void *opaque)
->      if (d->nic->nc.link_down) {
->          e1000_link_down(d);
->      }
-> +
-> +  /* Some guests expect pre-initialized RAH/RAL (AddrValid flag + MACaddr) */
-> +  d->mac_reg[RA+1] = E1000_RAH_AV;
+>   for (rp = s->mac_reg + RA; rp < s->mac_reg + RA + 32; rp += 2) {
+>       if (!(rp[1] & E1000_RAH_AV))
+>           continue;
+>       ra[0] = cpu_to_le32(rp[0]);
+>       ra[1] = cpu_to_le32(rp[1]);
+>       if (!memcmp(buf, (uint8_t *)ra, 6)) {
 
-Please use 4 space indentation (QEMU coding style).
+OK, I guess I could just memmove from d->eeprom_data instead of
+d->conf.macaddr.a, on the assumption that pci_e1000_init() already
+did the endian-proofing for me. But probably the safest/most paranoid
+method is best, see below...
 
-> +  memmove(&d->mac_reg[RA], &d->conf.macaddr, sizeof(struct MACAddr));
+Thanks,
+  Gabriel
 
-When the host is big-endian the filter code will byteswap and the MAC address
-will not match:
+ hw/e1000.c |   10 ++++++++++
+ 1 files changed, 10 insertions(+), 0 deletions(-)
 
-  for (rp = s->mac_reg + RA; rp < s->mac_reg + RA + 32; rp += 2) {
-      if (!(rp[1] & E1000_RAH_AV))
-          continue;
-      ra[0] = cpu_to_le32(rp[0]);
-      ra[1] = cpu_to_le32(rp[1]);
-      if (!memcmp(buf, (uint8_t *)ra, 6)) {
+diff --git a/hw/e1000.c b/hw/e1000.c
+index e4f1ffe..a29b844 100644
+--- a/hw/e1000.c
++++ b/hw/e1000.c
+@@ -266,6 +266,8 @@ rxbufsize(uint32_t v)
+ static void e1000_reset(void *opaque)
+ {
+     E1000State *d = opaque;
++    uint8_t *macaddr = d->conf.macaddr.a;
++    int i;
+ 
+     qemu_del_timer(d->autoneg_timer);
+     memset(d->phy_reg, 0, sizeof d->phy_reg);
+@@ -278,6 +280,14 @@ static void e1000_reset(void *opaque)
+     if (d->nic->nc.link_down) {
+         e1000_link_down(d);
+     }
++
++    /* Some guests expect pre-initialized RAH/RAL (AddrValid flag + MACaddr) */
++    d->mac_reg[RA] = 0;
++    d->mac_reg[RA+1] = E1000_RAH_AV;
++    for (i = 0; i < 4; i++) {
++        d->mac_reg[RA] |= macaddr[i]<<(8*i);
++        d->mac_reg[RA+1] |= (i < 2) ? macaddr[i+4]<<(8*i) : 0;
++    }
+ }
+ 
+ static void
+-- 
+1.7.7.6
 
-Stefan
 
