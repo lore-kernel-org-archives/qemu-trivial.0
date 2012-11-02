@@ -1,47 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TU2Rv-00062d-1H
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Nov 2012 17:37:15 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45661)
+	id 1TUA2Q-0006Un-SX
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Nov 2012 01:43:26 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:53702)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1TU2Rs-0005tJ-6O
-	for qemu-trivial@nongnu.org; Thu, 01 Nov 2012 17:37:12 -0400
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1TUA2O-0006OF-Nl
+	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 01:43:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1TU2Rr-00029N-By
-	for qemu-trivial@nongnu.org; Thu, 01 Nov 2012 17:37:12 -0400
-Received: from mail-da0-f45.google.com ([209.85.210.45]:39354)
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1TUA2N-0006RG-Np
+	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 01:43:24 -0400
+Received: from [222.73.24.84] (port=13572 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1TU2Rp-00026p-8G; Thu, 01 Nov 2012 17:37:09 -0400
-Received: by mail-da0-f45.google.com with SMTP id n15so1304841dad.4
-	for <multiple recipients>; Thu, 01 Nov 2012 14:37:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
-	:references; bh=IaYTHG+pwdytN8Vp8wdvT+f3ls+IY3rzMWgqGgf72Ho=;
-	b=JjtDENcK3kRVgDgDrhr8sMdAM51Wx9ohc/N6QCIbBYHo+6iFqN/PNbcpU8qJSYv9FD
-	AYw7lKtvFnhXZQGs6mzB6lc4Risk7UdY6LBWMRj8hSRyjyR1DASw3yZnbwUx095fgKDO
-	dd97puePFxxzcTxae/U4+C8oW3DvPz61sAqrxcjiR4NZYcYMQv2sj7VTbxlO2/5RfrLE
-	7E2UXUrNmHttA+4c7ffCztNeNpFKRN8T9x4Y1v7NzyItrwYzQuorUT5pED/kfAmfiyJI
-	9tODe3L5RdRvuJiCIDqe8o0GLJ/jbkdlVEJa3Y4sIw+HfBZPBo8YF562wOeQetEW/TQw
-	REig==
-Received: by 10.68.252.132 with SMTP id zs4mr55168464pbc.131.1351805828789;
-	Thu, 01 Nov 2012 14:37:08 -0700 (PDT)
-Received: from pebble.twiddle.home.com ([1.152.139.87])
-	by mx.google.com with ESMTPS id c7sm4534436pay.10.2012.11.01.14.37.06
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 01 Nov 2012 14:37:08 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-From: Richard Henderson <rth@twiddle.net>
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1TUA2N-0006Qi-As
+	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 01:43:23 -0400
+X-IronPort-AV: E=Sophos;i="4.80,697,1344182400"; 
+   d="scan'208";a="6121966"
+Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
+	by song.cn.fujitsu.com with ESMTP; 02 Nov 2012 13:10:46 +0800
+Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id qA25CKQV007307;
+	Fri, 2 Nov 2012 13:12:21 +0800
+Received: from liguang.fnst.cn.fujitsu.com ([10.167.225.128])
+	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
+	with ESMTP id 2012110213113456-927627 ;
+	Fri, 2 Nov 2012 13:11:34 +0800 
+From: liguang <lig.fnst@cn.fujitsu.com>
 To: qemu-devel@nongnu.org
-Date: Fri,  2 Nov 2012 08:36:37 +1100
-Message-Id: <1351805797-31899-4-git-send-email-rth@twiddle.net>
-X-Mailer: git-send-email 1.7.11.7
-In-Reply-To: <1351805797-31899-1-git-send-email-rth@twiddle.net>
-References: <1351805797-31899-1-git-send-email-rth@twiddle.net>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.210.45
-Cc: qemu-trivial@nongnu.org, Blue Swirl <blauwirbel@gmail.com>
-Subject: [Qemu-trivial] [PATCH 3/3] target-sparc: Remove t0,
-	t1 from CPUSPARCState
+Date: Fri, 2 Nov 2012 13:11:22 +0800
+Message-Id: <1351833082-26633-1-git-send-email-lig.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 1.7.2.5
+X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
+	15, 2011) at 2012/11/02 13:11:34,
+	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
+	2011) at 2012/11/02 13:11:35,
+	Serialize complete at 2012/11/02 13:11:35
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 222.73.24.84
+Cc: qemu-trivial@nongnu.org, liguang <lig.fnst@cn.fujitsu.com>
+Subject: [Qemu-trivial] [Qemu-devel][PATCH v3] correct error message
+	qemu-img reported
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,29 +50,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Nov 2012 21:37:13 -0000
+X-List-Received-Date: Fri, 02 Nov 2012 05:43:25 -0000
 
-These fields are no longer used.
+qemu-img will complain when qcow or qcow2
+size overflow for 64 bits, report the right
+message in this condition.
 
-Cc: Blue Swirl <blauwirbel@gmail.com>
-Signed-off-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
 ---
- target-sparc/cpu.h | 1 -
- 1 file changed, 1 deletion(-)
+ qemu-img.c |    9 +++++++--
+ 1 files changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/target-sparc/cpu.h b/target-sparc/cpu.h
-index 6aa82b3..84dba4e 100644
---- a/target-sparc/cpu.h
-+++ b/target-sparc/cpu.h
-@@ -392,7 +392,6 @@ struct CPUSPARCState {
-     target_ulong cc_dst;
-     uint32_t cc_op;
+diff --git a/qemu-img.c b/qemu-img.c
+index b41e670..d4ea800 100644
+--- a/qemu-img.c
++++ b/qemu-img.c
+@@ -337,10 +337,15 @@ static int img_create(int argc, char **argv)
  
--    target_ulong t0, t1; /* temporaries live across basic blocks */
-     target_ulong cond; /* conditional branch result (XXX: save it in a
-                           temporary register when possible) */
- 
+     /* Get image size, if specified */
+     if (optind < argc) {
+-        int64_t sval;
++        int64_t sval = 0;
+         char *end;
+         sval = strtosz_suffix(argv[optind++], &end, STRTOSZ_DEFSUFFIX_B);
+-        if (sval < 0 || *end) {
++        if (sval < 0) {
++            error_report("image size is too large!");
++            ret = -1;
++            goto out;
++        }
++        if (*end) {
+             error_report("Invalid image size specified! You may use k, M, G or "
+                   "T suffixes for ");
+             error_report("kilobytes, megabytes, gigabytes and terabytes.");
 -- 
-1.7.11.7
+1.7.1
 
 
