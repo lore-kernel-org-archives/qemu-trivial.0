@@ -1,37 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TUBSP-0003Bv-JB
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Nov 2012 03:14:21 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:51892)
+	id 1TUBUK-0004Bf-52
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Nov 2012 03:16:20 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36556)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TUBSM-000369-W9
-	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:14:19 -0400
+	(envelope-from <stefanha@gmail.com>) id 1TUBUI-00046u-E0
+	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:16:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TUBSM-0005u8-3H
-	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:14:18 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:49539)
+	(envelope-from <stefanha@gmail.com>) id 1TUBUH-0006V7-EH
+	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:16:18 -0400
+Received: from mail-lb0-f173.google.com ([209.85.217.173]:45653)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1TUBSJ-0005tZ-Nv; Fri, 02 Nov 2012 03:14:15 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	209BF7280030; Fri,  2 Nov 2012 08:14:14 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id HsdMt+Qn-0dA; Fri,  2 Nov 2012 08:14:13 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 9A29A728003A; Fri,  2 Nov 2012 08:14:13 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: Anthony Liguori <aliguori@us.ibm.com>, Stefan Hajnoczi <stefanha@gmail.com>
-Date: Fri,  2 Nov 2012 08:14:12 +0100
-Message-Id: <1351840452-481-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Fix spelling (prefered -> preferred)
+	(envelope-from <stefanha@gmail.com>)
+	id 1TUBUF-0006UQ-Ba; Fri, 02 Nov 2012 03:16:15 -0400
+Received: by mail-lb0-f173.google.com with SMTP id gj3so2310359lbb.4
+	for <multiple recipients>; Fri, 02 Nov 2012 00:16:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=2YK+HqAXrJSa8dMnhQsaO0XkkhOwNcO7UoaCcG6mCwk=;
+	b=XZrvdpT+u6/SgXcbAF+WLo0OHc0ikA7UB5Db+rPNPOJcwVKSQOjG0iOQhIUhi/QkU5
+	YMglnKOxgiO485y/gB+rNm260/GVLNg8nQRSXgrEJ/XEA2nLVpW4ebKAlmi+xl+91CVQ
+	joHXZ7MQQfyhmMol1GQkFBnf2KX8osxNLFnLhmRU9pfJm8crlN43fbvM5s2laAVNzTqv
+	O2WghbPRM5kyq/oaglgzIRqLbA3omor+wtwR34P8ayTKVkHxEnsWW4GHJQAWqpK89yBE
+	mewO7r+KEzm0trGLoTUwk94JeFvr91y13tGVdtfcP1aV20TpBImaboPJhpU+3dNNQdrg
+	SLCQ==
+MIME-Version: 1.0
+Received: by 10.112.48.74 with SMTP id j10mr390060lbn.94.1351840574168; Fri,
+	02 Nov 2012 00:16:14 -0700 (PDT)
+Received: by 10.112.23.37 with HTTP; Fri, 2 Nov 2012 00:16:14 -0700 (PDT)
+In-Reply-To: <1351833082-26633-1-git-send-email-lig.fnst@cn.fujitsu.com>
+References: <1351833082-26633-1-git-send-email-lig.fnst@cn.fujitsu.com>
+Date: Fri, 2 Nov 2012 08:16:14 +0100
+Message-ID: <CAJSP0QXiLvzW5wUDCwVfnR6UXMv52Nb23314WnCC8-sv4vU_1g@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: liguang <lig.fnst@cn.fujitsu.com>
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.217.173
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] correct error message
+	qemu-img reported
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,53 +52,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Nov 2012 07:14:19 -0000
+X-List-Received-Date: Fri, 02 Nov 2012 07:16:19 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- configure       |    2 +-
- net/tap-win32.c |    7 ++++---
- 2 files changed, 5 insertions(+), 4 deletions(-)
+On Fri, Nov 2, 2012 at 6:11 AM, liguang <lig.fnst@cn.fujitsu.com> wrote:
+> diff --git a/qemu-img.c b/qemu-img.c
+> index b41e670..d4ea800 100644
+> --- a/qemu-img.c
+> +++ b/qemu-img.c
+> @@ -337,10 +337,15 @@ static int img_create(int argc, char **argv)
+>
+>      /* Get image size, if specified */
+>      if (optind < argc) {
+> -        int64_t sval;
+> +        int64_t sval = 0;
 
-diff --git a/configure b/configure
-index 79701ea..860859b 100755
---- a/configure
-+++ b/configure
-@@ -2115,7 +2115,7 @@ if test "$pixman" = "system"; then
- else
-   if test ! -d ${source_path}/pixman/pixman; then
-     echo "ERROR: pixman not present. Your options:"
--    echo "  (1) Prefered: Install the pixman devel package (any recent"
-+    echo "  (1) Preferred: Install the pixman devel package (any recent"
-     echo "      distro should have packages as Xorg needs pixman too)."
-     echo "  (2) Fetch the pixman submodule, using:"
-     echo "      git submodule update --init pixman"
-diff --git a/net/tap-win32.c b/net/tap-win32.c
-index 8d2d32b..f9bd741 100644
---- a/net/tap-win32.c
-+++ b/net/tap-win32.c
-@@ -565,7 +565,7 @@ static void tap_win32_free_buffer(tap_win32_overlapped_t *overlapped,
- }
- 
- static int tap_win32_open(tap_win32_overlapped_t **phandle,
--                          const char *prefered_name)
-+                          const char *preferred_name)
- {
-     char device_path[256];
-     char device_guid[0x100];
-@@ -581,8 +581,9 @@ static int tap_win32_open(tap_win32_overlapped_t **phandle,
-     DWORD version_len;
-     DWORD idThread;
- 
--    if (prefered_name != NULL)
--        snprintf(name_buffer, sizeof(name_buffer), "%s", prefered_name);
-+    if (preferred_name != NULL) {
-+        snprintf(name_buffer, sizeof(name_buffer), "%s", preferred_name);
-+    }
- 
-     rc = get_device_guid(device_guid, sizeof(device_guid), name_buffer, sizeof(name_buffer));
-     if (rc)
--- 
-1.7.10.4
+sval is assigned below so there is no need for this change.
 
+>          char *end;
+>          sval = strtosz_suffix(argv[optind++], &end, STRTOSZ_DEFSUFFIX_B);
+> -        if (sval < 0 || *end) {
+> +        if (sval < 0) {
+> +            error_report("image size is too large!");
+
+I suggest being specific about the upper limit so the user knows which
+values are valid:
+"Image size must be less than 8 exabytes!"
+
+Stefan
 
