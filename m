@@ -1,46 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TUBUK-0004Bf-52
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Nov 2012 03:16:20 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:36556)
+	id 1TUBhZ-00011v-EW
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Nov 2012 03:30:01 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:37162)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TUBUI-00046u-E0
-	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:16:19 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1TUBhW-0000tz-UE
+	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:29:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TUBUH-0006V7-EH
-	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:16:18 -0400
-Received: from mail-lb0-f173.google.com ([209.85.217.173]:45653)
+	(envelope-from <stefan@weilnetz.de>) id 1TUBhW-0001aB-0V
+	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:29:58 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:38597)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1TUBUF-0006UQ-Ba; Fri, 02 Nov 2012 03:16:15 -0400
-Received: by mail-lb0-f173.google.com with SMTP id gj3so2310359lbb.4
-	for <multiple recipients>; Fri, 02 Nov 2012 00:16:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=2YK+HqAXrJSa8dMnhQsaO0XkkhOwNcO7UoaCcG6mCwk=;
-	b=XZrvdpT+u6/SgXcbAF+WLo0OHc0ikA7UB5Db+rPNPOJcwVKSQOjG0iOQhIUhi/QkU5
-	YMglnKOxgiO485y/gB+rNm260/GVLNg8nQRSXgrEJ/XEA2nLVpW4ebKAlmi+xl+91CVQ
-	joHXZ7MQQfyhmMol1GQkFBnf2KX8osxNLFnLhmRU9pfJm8crlN43fbvM5s2laAVNzTqv
-	O2WghbPRM5kyq/oaglgzIRqLbA3omor+wtwR34P8ayTKVkHxEnsWW4GHJQAWqpK89yBE
-	mewO7r+KEzm0trGLoTUwk94JeFvr91y13tGVdtfcP1aV20TpBImaboPJhpU+3dNNQdrg
-	SLCQ==
-MIME-Version: 1.0
-Received: by 10.112.48.74 with SMTP id j10mr390060lbn.94.1351840574168; Fri,
-	02 Nov 2012 00:16:14 -0700 (PDT)
-Received: by 10.112.23.37 with HTTP; Fri, 2 Nov 2012 00:16:14 -0700 (PDT)
-In-Reply-To: <1351833082-26633-1-git-send-email-lig.fnst@cn.fujitsu.com>
-References: <1351833082-26633-1-git-send-email-lig.fnst@cn.fujitsu.com>
-Date: Fri, 2 Nov 2012 08:16:14 +0100
-Message-ID: <CAJSP0QXiLvzW5wUDCwVfnR6UXMv52Nb23314WnCC8-sv4vU_1g@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: liguang <lig.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=ISO-8859-1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.217.173
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] correct error message
-	qemu-img reported
+	(envelope-from <stefan@weilnetz.de>)
+	id 1TUBhT-0001Yy-Ht; Fri, 02 Nov 2012 03:29:55 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	C0857728003A; Fri,  2 Nov 2012 08:29:54 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id gyUr4R+NjLN7; Fri,  2 Nov 2012 08:29:54 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 1B1B3728003D; Fri,  2 Nov 2012 08:29:54 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Fri,  2 Nov 2012 08:29:53 +0100
+Message-Id: <1351841393-32625-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] Fix comments (adress -> address,
+	layed -> laid, wierd -> weird)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,31 +43,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Nov 2012 07:16:19 -0000
+X-List-Received-Date: Fri, 02 Nov 2012 07:30:00 -0000
 
-On Fri, Nov 2, 2012 at 6:11 AM, liguang <lig.fnst@cn.fujitsu.com> wrote:
-> diff --git a/qemu-img.c b/qemu-img.c
-> index b41e670..d4ea800 100644
-> --- a/qemu-img.c
-> +++ b/qemu-img.c
-> @@ -337,10 +337,15 @@ static int img_create(int argc, char **argv)
->
->      /* Get image size, if specified */
->      if (optind < argc) {
-> -        int64_t sval;
-> +        int64_t sval = 0;
+Remove also a duplicated 'the'.
 
-sval is assigned below so there is no need for this change.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ slirp/ip_icmp.c |    2 +-
+ tcg/tcg.h       |    4 ++--
+ uri.c           |    4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
->          char *end;
->          sval = strtosz_suffix(argv[optind++], &end, STRTOSZ_DEFSUFFIX_B);
-> -        if (sval < 0 || *end) {
-> +        if (sval < 0) {
-> +            error_report("image size is too large!");
+diff --git a/slirp/ip_icmp.c b/slirp/ip_icmp.c
+index d571fd0..9f1cb08 100644
+--- a/slirp/ip_icmp.c
++++ b/slirp/ip_icmp.c
+@@ -352,7 +352,7 @@ icmp_error(struct mbuf *msrc, u_char type, u_char code, int minsize,
+ 
+   ip->ip_ttl = MAXTTL;
+   ip->ip_p = IPPROTO_ICMP;
+-  ip->ip_dst = ip->ip_src;    /* ip adresses */
++  ip->ip_dst = ip->ip_src;    /* ip addresses */
+   ip->ip_src = m->slirp->vhost_addr;
+ 
+   (void ) ip_output((struct socket *)NULL, m);
+diff --git a/tcg/tcg.h b/tcg/tcg.h
+index a6c9256..db86a73 100644
+--- a/tcg/tcg.h
++++ b/tcg/tcg.h
+@@ -272,8 +272,8 @@ typedef int TCGv_i64;
+ #define TCG_CALL_DUMMY_TCGV     MAKE_TCGV_I32(-1)
+ #define TCG_CALL_DUMMY_ARG      ((TCGArg)(-1))
+ 
+-/* Conditions.  Note that these are layed out for easy manipulation by
+-   the the functions below:
++/* Conditions.  Note that these are laid out for easy manipulation by
++   the functions below:
+      bit 0 is used for inverting;
+      bit 1 is signed,
+      bit 2 is unsigned,
+diff --git a/uri.c b/uri.c
+index dd922de..138547b 100644
+--- a/uri.c
++++ b/uri.c
+@@ -432,7 +432,7 @@ rfc3986_parse_host(URI *uri, const char **str)
+ 
+     host = cur;
+     /*
+-     * IPv6 and future adressing scheme are enclosed between brackets
++     * IPv6 and future addressing scheme are enclosed between brackets
+      */
+     if (*cur == '[') {
+         cur++;
+@@ -1917,7 +1917,7 @@ done:
+  *     http://site1.com/docs/pic1.gif   http://site1.com/docs/pic1.gif
+  *
+  *
+- * Note: if the URI reference is really wierd or complicated, it may be
++ * Note: if the URI reference is really weird or complicated, it may be
+  *       worthwhile to first convert it into a "nice" one by calling
+  *       uri_resolve (using 'base') before calling this routine,
+  *       since this routine (for reasonable efficiency) assumes URI has
+-- 
+1.7.10.4
 
-I suggest being specific about the upper limit so the user knows which
-values are valid:
-"Image size must be less than 8 exabytes!"
-
-Stefan
 
