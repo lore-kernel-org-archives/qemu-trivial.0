@@ -1,38 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TUBnN-0003QZ-SL
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Nov 2012 03:36:01 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:55418)
+	id 1TUfts-0008Ht-9A
+	for mharc-qemu-trivial@gnu.org; Sat, 03 Nov 2012 11:44:44 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43665)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TUBnL-0003K2-RH
-	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:36:00 -0400
+	(envelope-from <blauwirbel@gmail.com>) id 1TUftp-00089v-CQ
+	for qemu-trivial@nongnu.org; Sat, 03 Nov 2012 11:44:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TUBnK-0003M1-Kb
-	for qemu-trivial@nongnu.org; Fri, 02 Nov 2012 03:35:59 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:55995)
+	(envelope-from <blauwirbel@gmail.com>) id 1TUfto-0001Rk-E6
+	for qemu-trivial@nongnu.org; Sat, 03 Nov 2012 11:44:41 -0400
+Received: from mail-la0-f45.google.com ([209.85.215.45]:55955)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1TUBnI-0003Kd-F2; Fri, 02 Nov 2012 03:35:56 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	B85157280030; Fri,  2 Nov 2012 08:35:55 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id YdHicTda-Cfh; Fri,  2 Nov 2012 08:35:55 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 24B14728003A; Fri,  2 Nov 2012 08:35:55 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Fri,  2 Nov 2012 08:35:54 +0100
-Message-Id: <1351841754-26483-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 78.47.199.172
-Cc: Christian Borntraeger <borntraeger@de.ibm.com>, qemu-devel@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] s390x: Spelling fixes (endianess ->
-	endianness, occured -> occurred)
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1TUftm-0001Ob-3K; Sat, 03 Nov 2012 11:44:38 -0400
+Received: by mail-la0-f45.google.com with SMTP id m13so3029056lah.4
+	for <multiple recipients>; Sat, 03 Nov 2012 08:44:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer;
+	bh=2J0uHU7irncPZU6WqSKMZnMhKhJi3Nw0b4CZqw8E6Jc=;
+	b=pTI4gt0+Ci927QMtjY1HbN4vnNY/+3zXmMNOAkH5z30WRzJE2PVGWVueXaGmkv/dFB
+	V3lIe7zrEd8Z9ZMtDhbnJg4UkvNNgRdRatRtMqaZdoVfuBINIht/xLdZ0q6bkdSNazKB
+	GMFLkpaf5PyfcA6g4tg9ex/jm1gCa27tBoj5O52m0SW/d5C+aZgtbskw62Y4ALVp0P/L
+	qaFGe0E3DWqBuF4Q/ZEslciJ5UAPDMyRfKfMclFzXCqKOSuv+7xhsHD3zBhI38vXMUt0
+	5UOr9X3Hc1eyixtTrW+jUBQ1pHUgVxD7gTdunKhVZmNfmXmj6VsYVxSyvz/12Si2upG3
+	jmRA==
+Received: by 10.152.132.3 with SMTP id oq3mr4503819lab.18.1351957476664;
+	Sat, 03 Nov 2012 08:44:36 -0700 (PDT)
+Received: from localhost.localdomain (blueswirl.broker.freenet6.net.
+	[2001:5c0:1000:b::b867])
+	by mx.google.com with ESMTPS id eo4sm4116378lbb.5.2012.11.03.08.44.33
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sat, 03 Nov 2012 08:44:35 -0700 (PDT)
+From: Blue Swirl <blauwirbel@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Sat,  3 Nov 2012 15:44:19 +0000
+Message-Id: <ca6867dfc9e12d5bbd88a18e2402c63714fe5c01.1351957436.git.blauwirbel@gmail.com>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.215.45
+Cc: qemu-trivial@nongnu.org, blauwirbel@gmail.com
+Subject: [Qemu-trivial] [PATCH] libseccomp: require version 1.0.0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,61 +50,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Nov 2012 07:36:01 -0000
+X-List-Received-Date: Sat, 03 Nov 2012 15:44:42 -0000
 
-Replace also "write into" by "write to".
+Debian Wheezy has version 0.1.0 which is not compatible, avoid it.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Blue Swirl <blauwirbel@gmail.com>
 ---
+ configure |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-I think "write to" is better, but I am not sure about this,
-so please wait until a native speaker has reviewed that patch.
-
-Regards
-Stefan Weil
-
- hw/s390x/sclp.h        |    4 ++--
- hw/s390x/sclpconsole.c |    4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/hw/s390x/sclp.h b/hw/s390x/sclp.h
-index fe89dad..231a38a 100644
---- a/hw/s390x/sclp.h
-+++ b/hw/s390x/sclp.h
-@@ -51,7 +51,7 @@
+diff --git a/configure b/configure
+index 8e70cbb..b6948f7 100755
+--- a/configure
++++ b/configure
+@@ -1383,7 +1383,7 @@ fi
+ # libseccomp check
  
- /*
-  * Normally packed structures are not the right thing to do, since all code
-- * must take care of endianess. We cant use ldl_phys and friends for two
-+ * must take care of endianness. We cannot use ldl_phys and friends for two
-  * reasons, though:
-  * - some of the embedded structures below the SCCB can appear multiple times
-  *   at different locations, so there is no fixed offset
-@@ -60,7 +60,7 @@
-  *   alter the structure while we parse it. We cannot use ldl_p and friends
-  *   either without doing pointer arithmetics
-  * So we have to double check that all users of sclp data structures use the
-- * right endianess wrappers.
-+ * right endianness wrappers.
-  */
- typedef struct SCCBHeader {
-     uint16_t length;
-diff --git a/hw/s390x/sclpconsole.c b/hw/s390x/sclpconsole.c
-index 0ec5623..fece878 100644
---- a/hw/s390x/sclpconsole.c
-+++ b/hw/s390x/sclpconsole.c
-@@ -179,8 +179,8 @@ static int read_event_data(SCLPEvent *event, EventBufferHeader *evt_buf_hdr,
- }
- 
- /* triggered by SCLP's write_event_data
-- *  - write console data into character layer
-- *  returns < 0 if an error occured
-+ *  - write console data to character layer
-+ *  returns < 0 if an error occurred
-  */
- static ssize_t write_console_data(SCLPEvent *event, const uint8_t *buf,
-                                   size_t len)
+ if test "$seccomp" != "no" ; then
+-    if $pkg_config libseccomp --modversion >/dev/null 2>&1; then
++    if $pkg_config --atleast-version=1.0.0 libseccomp --modversion >/dev/null 2>&1; then
+         LIBS=`$pkg_config --libs libseccomp`
+ 	seccomp="yes"
+     else
 -- 
-1.7.10.4
+1.7.2.5
 
 
