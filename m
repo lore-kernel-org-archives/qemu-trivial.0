@@ -1,50 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TUhpG-0003rm-4I
-	for mharc-qemu-trivial@gnu.org; Sat, 03 Nov 2012 13:48:06 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46183)
+	id 1TUy5K-0003m2-5N
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Nov 2012 06:09:46 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58127)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cardoe@cardoe.com>) id 1TUhpD-0003rU-My
-	for qemu-trivial@nongnu.org; Sat, 03 Nov 2012 13:48:04 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1TUy5G-0003br-MU
+	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 06:09:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cardoe@cardoe.com>) id 1TUhpC-0004rT-SQ
-	for qemu-trivial@nongnu.org; Sat, 03 Nov 2012 13:48:03 -0400
-Received: from mail-ob0-f173.google.com ([209.85.214.173]:51777)
+	(envelope-from <stefan@weilnetz.de>) id 1TUy5F-0003jx-F2
+	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 06:09:42 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59301)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cardoe@cardoe.com>) id 1TUhpC-0004rK-N0
-	for qemu-trivial@nongnu.org; Sat, 03 Nov 2012 13:48:02 -0400
-Received: by mail-ob0-f173.google.com with SMTP id wc18so4153998obb.4
-	for <qemu-trivial@nongnu.org>; Sat, 03 Nov 2012 10:48:01 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:date
-	:x-google-sender-auth:message-id:subject:from:to:cc:content-type
-	:x-gm-message-state;
-	bh=jls7inPUASK+juehqa0rCwjnDWBRxf1jgP+JcfQ6Vbk=;
-	b=Nqkxam/4BbRtdmMJBrO3rhYMMmMToJdVeDr+JHs8wp1HTgIk3Vof5opqQXO06au/Uv
-	nVD6nAsnKxu5hXQ0Yuc8aB8WwvLxjeuNsP0qYX595f8bKaWV7F/6AaaILtDQT4AKIuki
-	ABFQZ0n5Ah8NrFt5tftYt7h2X/cJT+GXmvr3hKRh1hV/s0zROYSbJLEcADGbSpMXCvHi
-	4PnECZ/13+5RFPm/qjQgChODqhz63aLBsOFbYu0nuShyXvQP7Yjw+UrPmYMh6Fl6e8K8
-	bC8Kk1cU04cr1RIO4hdSKCfFJFetlE32aOEX9czqBfFLoHSbJJ7p8h3hqi9vZlIYpbIo
-	Aztw==
-MIME-Version: 1.0
-Received: by 10.60.29.3 with SMTP id f3mr4092503oeh.97.1351964881766; Sat, 03
-	Nov 2012 10:48:01 -0700 (PDT)
-Sender: cardoe@cardoe.com
-Received: by 10.60.174.11 with HTTP; Sat, 3 Nov 2012 10:48:01 -0700 (PDT)
-In-Reply-To: <ca6867dfc9e12d5bbd88a18e2402c63714fe5c01.1351957436.git.blauwirbel@gmail.com>
-References: <ca6867dfc9e12d5bbd88a18e2402c63714fe5c01.1351957436.git.blauwirbel@gmail.com>
-Date: Sat, 3 Nov 2012 12:48:01 -0500
-X-Google-Sender-Auth: UhfBDrO3nXSW5EkdQxNUHebr7jo
-Message-ID: <CAFWqQMS6caqjNvF_2iK3gR+gDamL9OnDOsmwUpueMwyF2rSEYw@mail.gmail.com>
-From: Doug Goldstein <cardoe@gentoo.org>
-To: Blue Swirl <blauwirbel@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnPQbmdngLxjEKe8yiCw6fMYYbOObOY4VcX2IBRi2cVb8+McifA+BeP5+xOVah600FD9lWU
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.214.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libseccomp: require version
-	1.0.0
+	(envelope-from <stefan@weilnetz.de>)
+	id 1TUy5C-0003j3-Uh; Sun, 04 Nov 2012 06:09:39 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	543C3728002F; Sun,  4 Nov 2012 12:09:36 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id qC7xQNJ3Ysmw; Sun,  4 Nov 2012 12:09:35 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 66B2D728003A; Sun,  4 Nov 2012 12:09:35 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Sun,  4 Nov 2012 12:09:34 +0100
+Message-Id: <1352027374-30796-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 78.47.199.172
+Cc: Kevin Wolf <kwolf@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] block: Workaround for older versions of
+	MinGW gcc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,38 +44,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 03 Nov 2012 17:48:04 -0000
+X-List-Received-Date: Sun, 04 Nov 2012 11:09:44 -0000
 
-On Sat, Nov 3, 2012 at 10:44 AM, Blue Swirl <blauwirbel@gmail.com> wrote:
-> Debian Wheezy has version 0.1.0 which is not compatible, avoid it.
->
-> Signed-off-by: Blue Swirl <blauwirbel@gmail.com>
-> ---
->  configure |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
->
-> diff --git a/configure b/configure
-> index 8e70cbb..b6948f7 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1383,7 +1383,7 @@ fi
->  # libseccomp check
->
->  if test "$seccomp" != "no" ; then
-> -    if $pkg_config libseccomp --modversion >/dev/null 2>&1; then
-> +    if $pkg_config --atleast-version=1.0.0 libseccomp --modversion >/dev/null 2>&1; then
->          LIBS=`$pkg_config --libs libseccomp`
->         seccomp="yes"
->      else
-> --
-> 1.7.2.5
->
->
+Versions before gcc-4.6 don't support unnamed fields in initializers
+(see http://gcc.gnu.org/bugzilla/show_bug.cgi?id=10676).
 
-I can confirm this will fix the compile issue when you've got
-libseccomp 0.1.0, so ACK from a non-maintainer.
+Offset and OffsetHigh belong to an unnamed struct which is part of an
+unnamed union. Therefore the original code does not work with older
+versions of gcc.
 
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
+This patch is needed for Debian's amd64-mingw32msvc-gcc-4.4.4
+which I use for MinGW-w64 cross compilation.
+
+Regards
+Stefan W.
+
+ block/win32-aio.c |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/block/win32-aio.c b/block/win32-aio.c
+index c34dc73..92f25a9 100644
+--- a/block/win32-aio.c
++++ b/block/win32-aio.c
+@@ -167,11 +167,11 @@ BlockDriverAIOCB *win32_aio_submit(BlockDriverState *bs,
+         waiocb->is_linear = true;
+     }
+ 
+-    waiocb->ov = (OVERLAPPED) {
+-        .Offset = (DWORD) offset,
+-        .OffsetHigh = (DWORD) (offset >> 32),
+-        .hEvent = event_notifier_get_handle(&aio->e)
+-    };
++    memset(&waiocb->ov, 0, sizeof(waiocb->ov));
++    waiocb->ov.Offset = (DWORD)offset;
++    waiocb->ov.OffsetHigh = (DWORD)(offset >> 32);
++    waiocb->ov.hEvent = event_notifier_get_handle(&aio->e);
++
+     aio->count++;
+ 
+     if (type & QEMU_AIO_READ) {
 -- 
-Doug Goldstein
+1.7.10.4
+
 
