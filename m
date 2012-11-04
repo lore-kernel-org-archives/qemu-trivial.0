@@ -1,38 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TUy5K-0003m2-5N
-	for mharc-qemu-trivial@gnu.org; Sun, 04 Nov 2012 06:09:46 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58127)
+	id 1TV6jR-0003Qa-DA
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Nov 2012 15:23:45 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:40351)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TUy5G-0003br-MU
-	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 06:09:43 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1TV6jP-0003M1-KG
+	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 15:23:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TUy5F-0003jx-F2
-	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 06:09:42 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:59301)
+	(envelope-from <stefan@weilnetz.de>) id 1TV6jO-0004Fz-KL
+	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 15:23:43 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:43357)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1TUy5C-0003j3-Uh; Sun, 04 Nov 2012 06:09:39 -0500
+	id 1TV6jL-0004En-3Q; Sun, 04 Nov 2012 15:23:39 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	543C3728002F; Sun,  4 Nov 2012 12:09:36 +0100 (CET)
+	37B7E728002F; Sun,  4 Nov 2012 21:23:37 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id qC7xQNJ3Ysmw; Sun,  4 Nov 2012 12:09:35 +0100 (CET)
+	with ESMTP id IN7VB7cr-NF2; Sun,  4 Nov 2012 21:23:36 +0100 (CET)
 Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 66B2D728003A; Sun,  4 Nov 2012 12:09:35 +0100 (CET)
+	id 899A5728003A; Sun,  4 Nov 2012 21:23:36 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-trivial@nongnu.org
-Date: Sun,  4 Nov 2012 12:09:34 +0100
-Message-Id: <1352027374-30796-1-git-send-email-sw@weilnetz.de>
+Date: Sun,  4 Nov 2012 21:23:35 +0100
+Message-Id: <1352060615-17419-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
 X-Received-From: 78.47.199.172
-Cc: Kevin Wolf <kwolf@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] block: Workaround for older versions of
-	MinGW gcc
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] qemu-timer: Fix compilation for POSIX and
+	non-POSIX hosts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,49 +47,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 Nov 2012 11:09:44 -0000
+X-List-Received-Date: Sun, 04 Nov 2012 20:23:44 -0000
 
-Versions before gcc-4.6 don't support unnamed fields in initializers
-(see http://gcc.gnu.org/bugzilla/show_bug.cgi?id=10676).
+This compiler error is fixed by including pthread.h:
 
-Offset and OffsetHigh belong to an unnamed struct which is part of an
-unnamed union. Therefore the original code does not work with older
-versions of gcc.
+qemu-timer.c: In function =E2=80=98init_timer_alarm=E2=80=99:
+qemu-timer.c:782: error: implicit declaration of function =E2=80=98pthrea=
+d_atfork=E2=80=99
+
+Another compiler warning is caused by the unused local function
+reinit_timers on non-POSIX hosts. Include that function only for
+POSIX hosts.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
+ qemu-timer.c |    5 +++++
+ 1 file changed, 5 insertions(+)
 
-This patch is needed for Debian's amd64-mingw32msvc-gcc-4.4.4
-which I use for MinGW-w64 cross compilation.
-
-Regards
-Stefan W.
-
- block/win32-aio.c |   10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/block/win32-aio.c b/block/win32-aio.c
-index c34dc73..92f25a9 100644
---- a/block/win32-aio.c
-+++ b/block/win32-aio.c
-@@ -167,11 +167,11 @@ BlockDriverAIOCB *win32_aio_submit(BlockDriverState *bs,
-         waiocb->is_linear = true;
+diff --git a/qemu-timer.c b/qemu-timer.c
+index 7b2217a..3bc86cf 100644
+--- a/qemu-timer.c
++++ b/qemu-timer.c
+@@ -34,6 +34,9 @@
+ #ifdef _WIN32
+ #include <mmsystem.h>
+ #endif
++#ifdef CONFIG_POSIX
++#include <pthread.h>    /* pthread_atfork */
++#endif
+=20
+ /***********************************************************/
+ /* timers */
+@@ -742,6 +745,7 @@ static void quit_timers(void)
+     t->stop(t);
+ }
+=20
++#ifdef CONFIG_POSIX
+ static void reinit_timers(void)
+ {
+     struct qemu_alarm_timer *t =3D alarm_timer;
+@@ -752,6 +756,7 @@ static void reinit_timers(void)
      }
- 
--    waiocb->ov = (OVERLAPPED) {
--        .Offset = (DWORD) offset,
--        .OffsetHigh = (DWORD) (offset >> 32),
--        .hEvent = event_notifier_get_handle(&aio->e)
--    };
-+    memset(&waiocb->ov, 0, sizeof(waiocb->ov));
-+    waiocb->ov.Offset = (DWORD)offset;
-+    waiocb->ov.OffsetHigh = (DWORD)(offset >> 32);
-+    waiocb->ov.hEvent = event_notifier_get_handle(&aio->e);
-+
-     aio->count++;
- 
-     if (type & QEMU_AIO_READ) {
--- 
+     qemu_rearm_alarm_timer(t);
+ }
++#endif /* CONFIG_POSIX */
+=20
+ int init_timer_alarm(void)
+ {
+--=20
 1.7.10.4
 
 
