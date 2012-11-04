@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TV6pC-0004fY-Pg
-	for mharc-qemu-trivial@gnu.org; Sun, 04 Nov 2012 15:29:42 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:52800)
+	id 1TV71M-0007na-Ln
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Nov 2012 15:42:16 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:46129)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TV6pA-0004aD-KQ
-	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 15:29:41 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1TV71J-0007gF-VJ
+	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 15:42:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TV6p9-0006AN-Jp
-	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 15:29:40 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:48583)
+	(envelope-from <stefan@weilnetz.de>) id 1TV71J-00019D-76
+	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 15:42:13 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:33786)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1TV6p7-00069q-La; Sun, 04 Nov 2012 15:29:37 -0500
+	id 1TV71H-00018s-CA; Sun, 04 Nov 2012 15:42:11 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	1E748728002F; Sun,  4 Nov 2012 21:29:37 +0100 (CET)
+	2C444728002F; Sun,  4 Nov 2012 21:42:10 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id E2Uo1nsIa9Hn; Sun,  4 Nov 2012 21:29:36 +0100 (CET)
+	with ESMTP id MVIQumq+9Axo; Sun,  4 Nov 2012 21:42:09 +0100 (CET)
 Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 4CB65728003A; Sun,  4 Nov 2012 21:29:36 +0100 (CET)
+	id 856AF728003A; Sun,  4 Nov 2012 21:42:09 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-trivial@nongnu.org
-Date: Sun,  4 Nov 2012 21:29:35 +0100
-Message-Id: <1352060975-18646-1-git-send-email-sw@weilnetz.de>
+Date: Sun,  4 Nov 2012 21:42:08 +0100
+Message-Id: <1352061728-30617-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
 X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] target-mips: Fix compiler warnings caused by
-	very large constants
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] qemu-timer: Fix compilation for non-POSIX
+	hosts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,38 +44,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 Nov 2012 20:29:41 -0000
+X-List-Received-Date: Sun, 04 Nov 2012 20:42:14 -0000
 
-Those constants are larger than 32 bits and need a suffix to avoid
-warnings from some versions of gcc.
+A compiler warning is caused by the unused local function reinit_timers
+on non-POSIX hosts. Include that function only for POSIX hosts.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- target-mips/dsp_helper.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ qemu-timer.c |    2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target-mips/dsp_helper.c b/target-mips/dsp_helper.c
-index b59133e..2ab9956 100644
---- a/target-mips/dsp_helper.c
-+++ b/target-mips/dsp_helper.c
-@@ -3553,7 +3553,7 @@ target_ulong helper_dextr_rs_w(target_ulong ac, target_ulong shift,
-         if (temp128 == 0) {
-             temp[0] = 0x0FFFFFFFF;
-         } else {
--            temp[0] = 0x0100000000;
-+            temp[0] = 0x0100000000ULL;
-         }
-         set_DSPControl_overflow_flag(1, 23, env);
+diff --git a/qemu-timer.c b/qemu-timer.c
+index 8d9cf38..0d2bb94 100644
+--- a/qemu-timer.c
++++ b/qemu-timer.c
+@@ -745,6 +745,7 @@ static void quit_timers(void)
+     t->stop(t);
+ }
+ 
++#ifdef CONFIG_POSIX
+ static void reinit_timers(void)
+ {
+     struct qemu_alarm_timer *t = alarm_timer;
+@@ -755,6 +756,7 @@ static void reinit_timers(void)
      }
-@@ -3653,7 +3653,7 @@ target_ulong helper_extr_s_h(target_ulong ac, target_ulong shift,
-     if (temp > (int64_t)0x7FFF) {
-         temp = 0x00007FFF;
-         set_DSPControl_overflow_flag(1, 23, env);
--    } else if (temp < (int64_t)0xFFFFFFFFFFFF8000) {
-+    } else if (temp < (int64_t)0xFFFFFFFFFFFF8000LL) {
-         temp = 0xFFFF8000;
-         set_DSPControl_overflow_flag(1, 23, env);
-     }
+     qemu_rearm_alarm_timer(t);
+ }
++#endif /* CONFIG_POSIX */
+ 
+ int init_timer_alarm(void)
+ {
 -- 
 1.7.10.4
 
