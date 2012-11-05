@@ -1,38 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TV71M-0007na-Ln
-	for mharc-qemu-trivial@gnu.org; Sun, 04 Nov 2012 15:42:16 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:46129)
+	id 1TVFh0-0003VL-Oe
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Nov 2012 00:57:50 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:47667)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TV71J-0007gF-VJ
-	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 15:42:14 -0500
+	(envelope-from <stefanha@gmail.com>) id 1TVFgx-0003Nt-JK
+	for qemu-trivial@nongnu.org; Mon, 05 Nov 2012 00:57:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TV71J-00019D-76
-	for qemu-trivial@nongnu.org; Sun, 04 Nov 2012 15:42:13 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:33786)
+	(envelope-from <stefanha@gmail.com>) id 1TVFgw-0001Pc-B4
+	for qemu-trivial@nongnu.org; Mon, 05 Nov 2012 00:57:47 -0500
+Received: from mail-bk0-f45.google.com ([209.85.214.45]:37143)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1TV71H-00018s-CA; Sun, 04 Nov 2012 15:42:11 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	2C444728002F; Sun,  4 Nov 2012 21:42:10 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id MVIQumq+9Axo; Sun,  4 Nov 2012 21:42:09 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 856AF728003A; Sun,  4 Nov 2012 21:42:09 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Sun,  4 Nov 2012 21:42:08 +0100
-Message-Id: <1352061728-30617-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 78.47.199.172
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] qemu-timer: Fix compilation for non-POSIX
-	hosts
+	(envelope-from <stefanha@gmail.com>)
+	id 1TVFgw-0001PE-0e; Mon, 05 Nov 2012 00:57:46 -0500
+Received: by mail-bk0-f45.google.com with SMTP id jf3so1664620bkc.4
+	for <multiple recipients>; Sun, 04 Nov 2012 21:57:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=ZQ1QFiPgxnd2qCpuOzBoDjiM32xpL+5qalIjHtMGUqw=;
+	b=OIPxIoBQ//cLTF5oIklAXziXpPZtSCzPHkMBfFyyiMZ29NVBbQAbD5lFux4bd9c43s
+	RDTWZ6gYUA+zz083ddNQ//Ss21DEfvQ8stbAcnuF8gE/z6jNT05mKCtwJJ9BzT108Xmt
+	ZkbNflyOvuuR6kHmtttWuCj6OwQT/UF7HDnJKeW8mFURxOStM4YZvgZcXO+Fxy0jnLSm
+	jrG6wrsmM9NoNTuEK/9SBTmf4iBJ08cuwoIgzAsz7AvtdpDAKnvVPO/F7S7PtnBMmGO6
+	Gaq2MqFGrdMPNzjA9PTDaOMppGlpzi9KIM304MrjKjVNbUM+URM0MP2E5xYIqiI1opDo
+	qoJQ==
+Received: by 10.204.129.211 with SMTP id p19mr2094707bks.94.1352095064334;
+	Sun, 04 Nov 2012 21:57:44 -0800 (PST)
+Received: from localhost (88.Red-2-139-206.staticIP.rima-tde.net.
+	[2.139.206.88])
+	by mx.google.com with ESMTPS id s20sm8716934bkw.15.2012.11.04.21.57.42
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sun, 04 Nov 2012 21:57:43 -0800 (PST)
+Date: Mon, 5 Nov 2012 06:57:39 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20121105055739.GA2452@stefanha-thinkpad.redhat.com>
+References: <1352027374-30796-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1352027374-30796-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.214.45
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] block: Workaround for older versions of
+ MinGW gcc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,37 +58,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 Nov 2012 20:42:14 -0000
+X-List-Received-Date: Mon, 05 Nov 2012 05:57:48 -0000
 
-A compiler warning is caused by the unused local function reinit_timers
-on non-POSIX hosts. Include that function only for POSIX hosts.
+On Sun, Nov 04, 2012 at 12:09:34PM +0100, Stefan Weil wrote:
+> Versions before gcc-4.6 don't support unnamed fields in initializers
+> (see http://gcc.gnu.org/bugzilla/show_bug.cgi?id=10676).
+> 
+> Offset and OffsetHigh belong to an unnamed struct which is part of an
+> unnamed union. Therefore the original code does not work with older
+> versions of gcc.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+> 
+> This patch is needed for Debian's amd64-mingw32msvc-gcc-4.4.4
+> which I use for MinGW-w64 cross compilation.
+> 
+> Regards
+> Stefan W.
+> 
+>  block/win32-aio.c |   10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- qemu-timer.c |    2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/qemu-timer.c b/qemu-timer.c
-index 8d9cf38..0d2bb94 100644
---- a/qemu-timer.c
-+++ b/qemu-timer.c
-@@ -745,6 +745,7 @@ static void quit_timers(void)
-     t->stop(t);
- }
- 
-+#ifdef CONFIG_POSIX
- static void reinit_timers(void)
- {
-     struct qemu_alarm_timer *t = alarm_timer;
-@@ -755,6 +756,7 @@ static void reinit_timers(void)
-     }
-     qemu_rearm_alarm_timer(t);
- }
-+#endif /* CONFIG_POSIX */
- 
- int init_timer_alarm(void)
- {
--- 
-1.7.10.4
-
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
