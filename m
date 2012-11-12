@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TXquK-0005BS-Tw
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Nov 2012 05:06:20 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:60835)
+	id 1TXuKi-00025o-Fd
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Nov 2012 08:45:48 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:51769)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1TXquF-000599-Jg
-	for qemu-trivial@nongnu.org; Mon, 12 Nov 2012 05:06:18 -0500
+	(envelope-from <armbru@redhat.com>) id 1TXuKc-0001pS-OR
+	for qemu-trivial@nongnu.org; Mon, 12 Nov 2012 08:45:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1TXquC-0000Jf-HG
-	for qemu-trivial@nongnu.org; Mon, 12 Nov 2012 05:06:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:20119)
+	(envelope-from <armbru@redhat.com>) id 1TXuKZ-0001Pg-Jm
+	for qemu-trivial@nongnu.org; Mon, 12 Nov 2012 08:45:42 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:41763)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1TXquC-0000JY-9c; Mon, 12 Nov 2012 05:06:12 -0500
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qACA6Adx010397
+	(envelope-from <armbru@redhat.com>)
+	id 1TXuKT-0001OO-7e; Mon, 12 Nov 2012 08:45:33 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qACDjThE011735
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 12 Nov 2012 05:06:10 -0500
-Received: from dhcp-5-188.str.redhat.com (vpn1-5-133.ams2.redhat.com
-	[10.36.5.133])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id qACA67df018163
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 12 Nov 2012 05:06:08 -0500
-Message-ID: <50A0CA0F.102@redhat.com>
-Date: Mon, 12 Nov 2012 11:06:07 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:13.0) Gecko/20120605 Thunderbird/13.0
+	Mon, 12 Nov 2012 08:45:29 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-45.ams2.redhat.com
+	[10.36.116.45])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id qACDjRKu012327; Mon, 12 Nov 2012 08:45:28 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id E4C0C20098; Mon, 12 Nov 2012 14:45:26 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Anthony PERARD <anthony.perard@citrix.com>
+References: <1352461854-18195-1-git-send-email-anthony.perard@citrix.com>
+Date: Mon, 12 Nov 2012 14:45:26 +0100
+In-Reply-To: <1352461854-18195-1-git-send-email-anthony.perard@citrix.com>
+	(Anthony PERARD's message of "Fri, 9 Nov 2012 11:50:54 +0000")
+Message-ID: <87txsv3pft.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
 MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1352027374-30796-1-git-send-email-sw@weilnetz.de>
-	<20121105055739.GA2452@stefanha-thinkpad.redhat.com>
-In-Reply-To: <20121105055739.GA2452@stefanha-thinkpad.redhat.com>
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] block: Workaround for older versions of
- MinGW gcc
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	QEMU-devel <qemu-devel@nongnu.org>,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V2] qemu-sockets: Fix
+	parsing of the inet option 'to'.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,32 +52,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Nov 2012 10:06:18 -0000
+X-List-Received-Date: Mon, 12 Nov 2012 13:45:45 -0000
 
-Am 05.11.2012 06:57, schrieb Stefan Hajnoczi:
-> On Sun, Nov 04, 2012 at 12:09:34PM +0100, Stefan Weil wrote:
->> Versions before gcc-4.6 don't support unnamed fields in initializers
->> (see http://gcc.gnu.org/bugzilla/show_bug.cgi?id=10676).
->>
->> Offset and OffsetHigh belong to an unnamed struct which is part of an
->> unnamed union. Therefore the original code does not work with older
->> versions of gcc.
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>
->> This patch is needed for Debian's amd64-mingw32msvc-gcc-4.4.4
->> which I use for MinGW-w64 cross compilation.
->>
->> Regards
->> Stefan W.
->>
->>  block/win32-aio.c |   10 +++++-----
->>  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Anthony PERARD <anthony.perard@citrix.com> writes:
 
-Thanks, applied to the block branch.
+> Having a qemu command line argument like "-vnc 127.0.0.1:0,to=99" is broken.
+> This have been break with commit 879e45c72da1569e07fbbc6a1aa2a708ea796044.
+>
+> Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
 
-Kevin
+Thanks for taking the time to identify the commit that broke it.
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
