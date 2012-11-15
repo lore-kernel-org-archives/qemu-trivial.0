@@ -1,53 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TYsMY-0008Iv-DF
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 00:51:42 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:40496)
+	id 1TYt0N-0006Fx-R8
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 01:32:51 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:38405)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TYsMT-00083m-MZ
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 00:51:40 -0500
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TYt0I-0006Dq-Uy
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 01:32:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TYsMQ-0003zk-Jl
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 00:51:37 -0500
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:23353)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TYt0F-0008RP-IS
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 01:32:46 -0500
+Received: from mail-pa0-f45.google.com ([209.85.220.45]:50949)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>)
-	id 1TYsMJ-0003xo-UW; Thu, 15 Nov 2012 00:51:28 -0500
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 7D37686B;
-	Thu, 15 Nov 2012 13:51:20 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=UBmJz1BgCy1spXMo/hoQKoUaRJc=; b=Zp3imSTuE5mBTW0VcAsrJ1DAJbZ2
-	cEbRzMoXM9O7ABoZKnrftPti2otA12xl6+o5d4+vguFjwmqcycShRXf+YMzq/jVc
-	OC+URz5vbnqRmI4inE04xG9S2+z1Ht+G4C+caeCNk/arDsVY1wirmKjS+bSWNSjS
-	8BeU6rZ9G1JaQJI=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 6B2C586A;
-	Thu, 15 Nov 2012 13:51:20 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id qAF5pG4u020656;
-	Thu, 15 Nov 2012 13:51:16 +0800 (CST) (envelope-from chenwj)
-Date: Thu, 15 Nov 2012 13:51:16 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-To: "Johnson, Eric" <ericj@mips.com>
-Message-ID: <20121115055116.GA20526@cs.nctu.edu.tw>
-References: <20121115021501.GA15630@cs.nctu.edu.tw>
-	<AD431C1EF67D4B4B801AEC089EB7ED48014488ABEC@exchdb03.mips.com>
-	<20121115032652.GA17050@cs.nctu.edu.tw>
-	<FD6A7462-2EB5-4527-B56C-FDC5DD3A59AD@mips.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <FD6A7462-2EB5-4527-B56C-FDC5DD3A59AD@mips.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
-X-Received-From: 140.113.235.130
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Jia Liu <proljc@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-mips: Clean up
- microMIPS32 major opcode
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TYt0F-0008Qx-CN
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 01:32:43 -0500
+Received: by mail-pa0-f45.google.com with SMTP id fb10so834409pad.4
+	for <qemu-trivial@nongnu.org>; Wed, 14 Nov 2012 22:32:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id:x-mailer
+	:x-gm-message-state;
+	bh=e/spYbE6JXpgTr6rorz8ReW1+4Q5DbsK/34952FyAVk=;
+	b=NtzCrKLmMal073MvQKVv3eENvLDnZEnNO1ewNmK4yKoARQ7bRXfa1UD6MZoF4zgAY4
+	9r98ReruD4ikKQ2xeBISgqI4y9qXZnVXsaJrCWKen+Mlchc7jV1H2ykp7dk5Na71Vgwi
+	eqbpJUVLhGcapzhCT1aqnFdEdISDya2Umeb59zfXoeXL72CSSr6cq0K1B7C/ghIH+jld
+	yY0VOxvpAvmQZlb056ZxABzshcWg72UhOTnmKMsLhb1khyyFegIfjSjvMUs+0ej6AeHG
+	kj/kdpn4of8Au0KQQlVjccbfUko4e0iSIFiAA3UX5H5eZgXD1lkzn2RYb4M7sjVpmIyM
+	DHpQ==
+Received: by 10.66.87.163 with SMTP id az3mr322797pab.62.1352961162205;
+	Wed, 14 Nov 2012 22:32:42 -0800 (PST)
+Received: from localhost ([124.148.20.9])
+	by mx.google.com with ESMTPS id mn5sm9018440pbc.12.2012.11.14.22.32.39
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 14 Nov 2012 22:32:41 -0800 (PST)
+Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 15 Nov 2012 16:32:53 +1000
+Message-Id: <1352961173-16498-1-git-send-email-peter.crosthwaite@xilinx.com>
+X-Mailer: git-send-email 1.7.0.4
+X-Gm-Message-State: ALoCoQm3wb8VDjD6qZpa9LrPztbkk4+75uE4E8pw88Su1tSxZWn+SW3etjfavgDTYuoPuZjfaO89
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.220.45
+Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Subject: [Qemu-trivial] [PATCH] sd: Send debug printfery to stderr not stdout
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,31 +53,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Nov 2012 05:51:41 -0000
+X-List-Received-Date: Thu, 15 Nov 2012 06:32:50 -0000
 
-On Thu, Nov 15, 2012 at 04:01:32AM +0000, Johnson, Eric wrote:
-> Hi Chen,
->=20
-> Sorry I must have made a copy paste error.  I access the documents inte=
-rnally. I'll double check the link tomorrow.
->=20
-> The document I referenced is the MIPS64 not the microMIPS64.
->=20
-> Do not change the names. The LD32 and SD32 are microMIPS specific. The =
-assembler LD and SD opcodes work for either MIPS64 or microMIPS64.
+Some debug printfs for SD are coming up in stdout. Redirected them to stderr
+instead.
 
-  O.K., thanks for the help. :)
+Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+---
+ hw/sd.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
 
-  How about DADDIU32, should I keep the 32 suffix, too?
-I still can't find where POOL32S is.
+diff --git a/hw/sd.c b/hw/sd.c
+index 3c34d43..607edba 100644
+--- a/hw/sd.c
++++ b/hw/sd.c
+@@ -1439,8 +1439,8 @@ send_response:
+         int i;
+         DPRINTF("Response:");
+         for (i = 0; i < rsplen; i++)
+-            printf(" %02x", response[i]);
+-        printf(" state %d\n", sd->state);
++            fprintf(stderr, " %02x", response[i]);
++        fprintf(stderr, " state %d\n", sd->state);
+     } else {
+         DPRINTF("No response %d\n", sd->state);
+     }
+-- 
+1.7.0.4
 
-Regards,
-chenwj
-
---=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
-Homepage: http://people.cs.nctu.edu.tw/~chenwj
 
