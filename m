@@ -1,47 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TZ03m-0005OU-HB
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 09:04:50 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:47253)
+	id 1TZ1MI-00017A-Fw
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 10:28:02 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:41679)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1TZ03i-0005BK-84
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 09:04:49 -0500
+	(envelope-from <stefanha@redhat.com>) id 1TZ1MD-000146-At
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 10:28:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1TZ03f-0002Af-5k
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 09:04:46 -0500
-Received: from hall.aurel32.net ([2001:470:1f15:c4f::1]:59299)
+	(envelope-from <stefanha@redhat.com>) id 1TZ1MA-0000g2-8z
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 10:27:57 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59338)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1TZ03Y-00029f-QU; Thu, 15 Nov 2012 09:04:36 -0500
-Received: from wifi-pers-0465.univ-lyon1.fr ([134.214.213.210]
-	helo=ohm.aurel32.net)
-	by hall.aurel32.net with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.72) (envelope-from <aurelien@aurel32.net>)
-	id 1TZ03S-0000oJ-43; Thu, 15 Nov 2012 15:04:30 +0100
-Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1TZ03M-0005yK-Al; Thu, 15 Nov 2012 15:04:24 +0100
-Date: Thu, 15 Nov 2012 15:04:24 +0100
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: "Johnson, Eric" <ericj@mips.com>
-Message-ID: <20121115140424.GC21046@ohm.aurel32.net>
-References: <20121115021501.GA15630@cs.nctu.edu.tw>
-	<AD431C1EF67D4B4B801AEC089EB7ED48014488ABEC@exchdb03.mips.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
-In-Reply-To: <AD431C1EF67D4B4B801AEC089EB7ED48014488ABEC@exchdb03.mips.com>
-X-Mailer: Mutt 1.5.21 (2010-09-15)
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:470:1f15:c4f::1
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"chenwj@cs.nctu.edu.tw" <chenwj@cs.nctu.edu.tw>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	=?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>,
-	Jia Liu <proljc@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-mips: Clean up
- microMIPS32 major opcode
+	(envelope-from <stefanha@redhat.com>)
+	id 1TZ1MA-0000fv-1L; Thu, 15 Nov 2012 10:27:54 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qAFFRp8s027836
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Thu, 15 Nov 2012 10:27:53 -0500
+Received: from localhost (ovpn-112-20.ams2.redhat.com [10.36.112.20])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id qAFEU55u032131; Thu, 15 Nov 2012 09:30:09 -0500
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 15 Nov 2012 15:29:53 +0100
+Message-Id: <1352989793-7357-1-git-send-email-stefanha@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [Qemu-trivial] [PATCH] vmstate: drop orphan
+	register_device_unmigratable() prototype
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,24 +42,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Nov 2012 14:04:49 -0000
+X-List-Received-Date: Thu, 15 Nov 2012 15:28:00 -0000
 
-On Thu, Nov 15, 2012 at 02:34:31AM +0000, Johnson, Eric wrote:
-> Hi Chen,
-> 
-> Please only remove the POOL48A opcode.
-> 
-> The others are documented in the microMIPS64 Instruction Set manual ( http://www.mips.com/secure-download/index.dot?product_name=/auth/MD00087-2B-MIPS64BIS-AFP-03.51.pdf ).  See http://www.mips.com/products/architectures/mips64/ for other relavent docs.
-> 
-> Instead of removing them please surround the POOL32S, DADDIU32, SD32, and LD32 opcodes with
-> #if defined(TARGET_MIPS64)
-> 
+commit 38e0735eb76a1479917ef3501a208d4f70998494 ("ivshmem: use migration
+blockers to prevent live migration in peer mode (v2)") removed the
+definition of register_device_unmigratable() but forgot to remove the
+declaration in the header file.
 
-I don't think a #if is necessary there, this makes the code more
-difficult to read, while it doesn't change anything on the generated
-code.
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ vmstate.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
+diff --git a/vmstate.h b/vmstate.h
+index 623af0a..af10596 100644
+--- a/vmstate.h
++++ b/vmstate.h
+@@ -56,9 +56,6 @@ int register_savevm_live(DeviceState *dev,
+                          void *opaque);
+ 
+ void unregister_savevm(DeviceState *dev, const char *idstr, void *opaque);
+-void register_device_unmigratable(DeviceState *dev, const char *idstr,
+-                                                                void *opaque);
+-
+ 
+ typedef struct VMStateInfo VMStateInfo;
+ typedef struct VMStateDescription VMStateDescription;
 -- 
-Aurelien Jarno                          GPG: 1024D/F1BCDB73
-aurelien@aurel32.net                 http://www.aurel32.net
+1.8.0
+
 
