@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TYt0N-0006Fx-R8
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 01:32:51 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:38405)
+	id 1TYvBK-0006eX-0u
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 03:52:18 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:60890)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TYt0I-0006Dq-Uy
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 01:32:49 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1TYvBF-0006dP-Nw
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 03:52:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TYt0F-0008RP-IS
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 01:32:46 -0500
-Received: from mail-pa0-f45.google.com ([209.85.220.45]:50949)
+	(envelope-from <peter.maydell@linaro.org>) id 1TYvBC-0004eH-LT
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 03:52:13 -0500
+Received: from mail-ia0-f173.google.com ([209.85.210.173]:47317)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TYt0F-0008Qx-CN
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 01:32:43 -0500
-Received: by mail-pa0-f45.google.com with SMTP id fb10so834409pad.4
-	for <qemu-trivial@nongnu.org>; Wed, 14 Nov 2012 22:32:42 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1TYvBC-0004dz-HJ
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 03:52:10 -0500
+Received: by mail-ia0-f173.google.com with SMTP id m10so868727iam.4
+	for <qemu-trivial@nongnu.org>; Thu, 15 Nov 2012 00:52:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:x-mailer
-	:x-gm-message-state;
-	bh=e/spYbE6JXpgTr6rorz8ReW1+4Q5DbsK/34952FyAVk=;
-	b=NtzCrKLmMal073MvQKVv3eENvLDnZEnNO1ewNmK4yKoARQ7bRXfa1UD6MZoF4zgAY4
-	9r98ReruD4ikKQ2xeBISgqI4y9qXZnVXsaJrCWKen+Mlchc7jV1H2ykp7dk5Na71Vgwi
-	eqbpJUVLhGcapzhCT1aqnFdEdISDya2Umeb59zfXoeXL72CSSr6cq0K1B7C/ghIH+jld
-	yY0VOxvpAvmQZlb056ZxABzshcWg72UhOTnmKMsLhb1khyyFegIfjSjvMUs+0ej6AeHG
-	kj/kdpn4of8Au0KQQlVjccbfUko4e0iSIFiAA3UX5H5eZgXD1lkzn2RYb4M7sjVpmIyM
-	DHpQ==
-Received: by 10.66.87.163 with SMTP id az3mr322797pab.62.1352961162205;
-	Wed, 14 Nov 2012 22:32:42 -0800 (PST)
-Received: from localhost ([124.148.20.9])
-	by mx.google.com with ESMTPS id mn5sm9018440pbc.12.2012.11.14.22.32.39
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 14 Nov 2012 22:32:41 -0800 (PST)
-Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 15 Nov 2012 16:32:53 +1000
-Message-Id: <1352961173-16498-1-git-send-email-peter.crosthwaite@xilinx.com>
-X-Mailer: git-send-email 1.7.0.4
-X-Gm-Message-State: ALoCoQm3wb8VDjD6qZpa9LrPztbkk4+75uE4E8pw88Su1tSxZWn+SW3etjfavgDTYuoPuZjfaO89
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=NksbmhzxZcFsIfc/KCr9fAHimfg7F5bk8ZiFvAr2vXc=;
+	b=S6uQup3NioWW+nfQwyMn9LVs3MvAGCRzry0p9BfmQtptfNw+mVKAo/yV2a39H1jt4I
+	xmDiK0ZdZJPkbCAekKgbGk1d9r7tVsjBqORAjeEZH6DrNB59qsTuabeIXtibfbQyaM8j
+	N29Z06FrH9xWMq1qAbsyLBJM0FuhHeIUYudjMu3/T+svrwskBEWAnQsBMY2o2Rr+dDjq
+	gP6T3CHTaLF4Gvu+aJGHteH2ymwu/4BnbPNyLLU59bWfk2cCuu2WFGxdjvN0bNrq1Bwy
+	lB3LuYFGHLB+iaeKYj1TxqZtFOQCNy0fr8WIt+5V4GSZrpmg1Q6zjGSnB1BZ8LbdZs18
+	M3JA==
+MIME-Version: 1.0
+Received: by 10.50.190.162 with SMTP id gr2mr1842546igc.65.1352969529796; Thu,
+	15 Nov 2012 00:52:09 -0800 (PST)
+Received: by 10.50.88.166 with HTTP; Thu, 15 Nov 2012 00:52:09 -0800 (PST)
+In-Reply-To: <1352961173-16498-1-git-send-email-peter.crosthwaite@xilinx.com>
+References: <1352961173-16498-1-git-send-email-peter.crosthwaite@xilinx.com>
+Date: Thu, 15 Nov 2012 08:52:09 +0000
+Message-ID: <CAFEAcA9_CAhW5m+99ci2NwomNG0vO5Y2qH=Hdoy4XQtumGQuhw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQnMfIagjFF/A7dyQUQyasrSo75wiI5WFfthPvkSQtztBzsC0TJKrmWwOG4rdRTJq6L3/QuC
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.220.45
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Subject: [Qemu-trivial] [PATCH] sd: Send debug printfery to stderr not stdout
+X-Received-From: 209.85.210.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sd: Send debug printfery to
+	stderr not stdout
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,32 +53,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Nov 2012 06:32:50 -0000
+X-List-Received-Date: Thu, 15 Nov 2012 08:52:16 -0000
 
-Some debug printfs for SD are coming up in stdout. Redirected them to stderr
-instead.
+On 15 November 2012 06:32, Peter Crosthwaite
+<peter.crosthwaite@xilinx.com> wrote:
+> Some debug printfs for SD are coming up in stdout. Redirected them to stderr
+> instead.
+>
+> Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
----
- hw/sd.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/sd.c b/hw/sd.c
-index 3c34d43..607edba 100644
---- a/hw/sd.c
-+++ b/hw/sd.c
-@@ -1439,8 +1439,8 @@ send_response:
-         int i;
-         DPRINTF("Response:");
-         for (i = 0; i < rsplen; i++)
--            printf(" %02x", response[i]);
--        printf(" state %d\n", sd->state);
-+            fprintf(stderr, " %02x", response[i]);
-+        fprintf(stderr, " state %d\n", sd->state);
-     } else {
-         DPRINTF("No response %d\n", sd->state);
-     }
--- 
-1.7.0.4
+(the patched section is inside an #ifdef DEBUG_SD guard, so
+it's ok to be doing fprintf()s here.)
 
+-- PMM
 
