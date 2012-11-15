@@ -1,47 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TYvBK-0006eX-0u
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 03:52:18 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:60890)
+	id 1TYztC-00018U-FY
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 08:53:54 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58310)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TYvBF-0006dP-Nw
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 03:52:16 -0500
+	(envelope-from <aurelien@aurel32.net>) id 1TYzt8-00010n-0N
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 08:53:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TYvBC-0004eH-LT
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 03:52:13 -0500
-Received: from mail-ia0-f173.google.com ([209.85.210.173]:47317)
+	(envelope-from <aurelien@aurel32.net>) id 1TYzt4-0006pb-Tu
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 08:53:49 -0500
+Received: from hall.aurel32.net ([2001:470:1f15:c4f::1]:59258)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TYvBC-0004dz-HJ
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 03:52:10 -0500
-Received: by mail-ia0-f173.google.com with SMTP id m10so868727iam.4
-	for <qemu-trivial@nongnu.org>; Thu, 15 Nov 2012 00:52:09 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=NksbmhzxZcFsIfc/KCr9fAHimfg7F5bk8ZiFvAr2vXc=;
-	b=S6uQup3NioWW+nfQwyMn9LVs3MvAGCRzry0p9BfmQtptfNw+mVKAo/yV2a39H1jt4I
-	xmDiK0ZdZJPkbCAekKgbGk1d9r7tVsjBqORAjeEZH6DrNB59qsTuabeIXtibfbQyaM8j
-	N29Z06FrH9xWMq1qAbsyLBJM0FuhHeIUYudjMu3/T+svrwskBEWAnQsBMY2o2Rr+dDjq
-	gP6T3CHTaLF4Gvu+aJGHteH2ymwu/4BnbPNyLLU59bWfk2cCuu2WFGxdjvN0bNrq1Bwy
-	lB3LuYFGHLB+iaeKYj1TxqZtFOQCNy0fr8WIt+5V4GSZrpmg1Q6zjGSnB1BZ8LbdZs18
-	M3JA==
+	(envelope-from <aurelien@aurel32.net>) id 1TYzt4-0006p7-Mn
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 08:53:46 -0500
+Received: from wifi-pers-0465.univ-lyon1.fr ([134.214.213.210]
+	helo=ohm.aurel32.net)
+	by hall.aurel32.net with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.72) (envelope-from <aurelien@aurel32.net>)
+	id 1TYzt2-00007B-Fe; Thu, 15 Nov 2012 14:53:44 +0100
+Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1TYzsw-0005rm-Ti; Thu, 15 Nov 2012 14:53:38 +0100
+Date: Thu, 15 Nov 2012 14:53:38 +0100
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+Message-ID: <20121115135338.GA21046@ohm.aurel32.net>
+References: <20121114024954.GA63683@cs.nctu.edu.tw>
+	<20121114164521.GA5877@ohm.aurel32.net>
+	<20121114235704.GB11985@cs.nctu.edu.tw>
 MIME-Version: 1.0
-Received: by 10.50.190.162 with SMTP id gr2mr1842546igc.65.1352969529796; Thu,
-	15 Nov 2012 00:52:09 -0800 (PST)
-Received: by 10.50.88.166 with HTTP; Thu, 15 Nov 2012 00:52:09 -0800 (PST)
-In-Reply-To: <1352961173-16498-1-git-send-email-peter.crosthwaite@xilinx.com>
-References: <1352961173-16498-1-git-send-email-peter.crosthwaite@xilinx.com>
-Date: Thu, 15 Nov 2012 08:52:09 +0000
-Message-ID: <CAFEAcA9_CAhW5m+99ci2NwomNG0vO5Y2qH=Hdoy4XQtumGQuhw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnMfIagjFF/A7dyQUQyasrSo75wiI5WFfthPvkSQtztBzsC0TJKrmWwOG4rdRTJq6L3/QuC
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.210.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sd: Send debug printfery to
-	stderr not stdout
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20121114235704.GB11985@cs.nctu.edu.tw>
+X-Mailer: Mutt 1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:470:1f15:c4f::1
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Possible wrong microMIPS opcode encoding
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,19 +50,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Nov 2012 08:52:16 -0000
+X-List-Received-Date: Thu, 15 Nov 2012 13:53:53 -0000
 
-On 15 November 2012 06:32, Peter Crosthwaite
-<peter.crosthwaite@xilinx.com> wrote:
-> Some debug printfs for SD are coming up in stdout. Redirected them to stderr
-> instead.
->
-> Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+On Thu, Nov 15, 2012 at 07:57:04AM +0800, 陳韋任 (Wei-Ren Chen) wrote:
+> On Wed, Nov 14, 2012 at 05:45:21PM +0100, Aurelien Jarno wrote:
+> > On Wed, Nov 14, 2012 at 10:49:55AM +0800, 陳韋任 (Wei-Ren Chen) wrote:
+> > > Hi all,
+> > > 
+> > >   While reading microMIPS decoding, I found a possible wrong opcode
+> > > encoding. According to [1] page 337, the bits 13..12 for MULTU is
+> > > 0x01 rather than 0x00. Please review, thanks.
+> > > 
+> > > [1] MIPS Architecture for Programmers VolumeIV-e: The MIPS DSP
+> > >     Application-Specific Extension to the microMIPS32 Architecture
+> > 
+> > This is indeed correct, but I guess the page you meant is 166. Page 337
+> > refers to the original MULTU instruction from the MIPS Architecture for
+> > Programmers Volume II-B: The microMIPS32 Instruction Set.
+> > 
+> > On the other the microMIPS32 encoding for DSP instruction is not yet
+> > supported.
+> 
+>   Maybe we can start cleanup it a little bit. ;) Is this OK to commit?
+> 
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+My point was that the patch what correct, but not the comment. I have
+committed it after fixing the comment.
 
-(the patched section is inside an #ifdef DEBUG_SD guard, so
-it's ok to be doing fprintf()s here.)
-
--- PMM
+-- 
+Aurelien Jarno                          GPG: 1024D/F1BCDB73
+aurelien@aurel32.net                 http://www.aurel32.net
 
