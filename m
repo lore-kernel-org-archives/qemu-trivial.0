@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TZMDn-0002nH-3k
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Nov 2012 08:44:39 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:35031)
+	id 1TZMJd-0000jL-L6
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Nov 2012 08:50:41 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:55157)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TZMDj-0002be-2A
-	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 08:44:38 -0500
+	(envelope-from <stefanha@gmail.com>) id 1TZMJZ-0000Vm-02
+	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 08:50:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TZMDg-0001Xz-0U
-	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 08:44:35 -0500
-Received: from mail-ee0-f45.google.com ([74.125.83.45]:37837)
+	(envelope-from <stefanha@gmail.com>) id 1TZMJV-0002yP-TN
+	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 08:50:36 -0500
+Received: from mail-ee0-f45.google.com ([74.125.83.45]:42732)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TZMDZ-0001XY-Ks; Fri, 16 Nov 2012 08:44:25 -0500
-Received: by mail-ee0-f45.google.com with SMTP id d49so1670604eek.4
-	for <multiple recipients>; Fri, 16 Nov 2012 05:44:24 -0800 (PST)
+	id 1TZMJP-0002wo-IO; Fri, 16 Nov 2012 08:50:27 -0500
+Received: by mail-ee0-f45.google.com with SMTP id d49so1675092eek.4
+	for <multiple recipients>; Fri, 16 Nov 2012 05:50:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=B4HgyJgnKEbCs4KUs9yQPI+P54nQqxJXTaEx9V+cS+A=;
-	b=kAgdqkreBtEAz17Zt/rTw4o/HEZP2X97QwZYPdPPMYDMT6Rll7p8gapQgM/REH3PJZ
-	K6vVkyYSJu8anZohel6FlX5LVKoOxWb8ZuuVi5nTX0nBQN86t6oEz9zvnD7D3Xn7s2v9
-	YbtZVV2nbQC0nm+yj4yXbwIFMlDru5CNE0NWf+CK+61zcUXLTR+qWo7vJwrlNaGVrp4S
-	8IbKG8FmMgzKoOryr7Kok3JN/pEUaz8CxQxl3BOBGSMhcuPkM1KmVKew/ujgLYoLPhoA
-	Xw0OrJ26QRFEDlLcyMgWmNzEuxKNV30LOTm+gw1gG0Iz7piRvnVmI7HWK6/AqzHiCiWk
-	Sj0Q==
-Received: by 10.14.194.2 with SMTP id l2mr13851861een.12.1353073464740;
-	Fri, 16 Nov 2012 05:44:24 -0800 (PST)
+	bh=6uN0SuVYD4aW2CBPqhH0duptkGc/0PJXG+56/iGJmz0=;
+	b=nLTNM4o3r2fPUF++GcV23dtpaY022FQq5x8lr8C4bqlIMIh2oj8nEw6JHS5Img7HCu
+	sfUWsaAQ/dv+hPNSYDCxi0iUrXDpF45qQmLhF0EPeK1YudEO9hIavAYYR3hj9peZJPpT
+	W0klOK4No9n+hzk2uvKXnZjrePITrPic3tE73nfU9fFhNfgnE2M1glVrHfXVxp337cyt
+	jU7LEBxll3z5yKXHlcRga0n6X4UwnoIjhNSM42Ve8vpvWWSxPE8eA5lCCYMeY5KbfEgT
+	UGDHxmVGnCf4QSvNs258MYuVOtH7hI4PUcvfSJGAq+2Wc9BWj3bxdf3Hshq2YfoVFDe6
+	A06Q==
+Received: by 10.14.182.70 with SMTP id n46mr5646434eem.5.1353073826740;
+	Fri, 16 Nov 2012 05:50:26 -0800 (PST)
 Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
-	by mx.google.com with ESMTPS id z43sm3551313een.16.2012.11.16.05.44.23
+	by mx.google.com with ESMTPS id 42sm3635214eee.0.2012.11.16.05.50.25
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 16 Nov 2012 05:44:24 -0800 (PST)
-Date: Fri, 16 Nov 2012 14:44:22 +0100
+	Fri, 16 Nov 2012 05:50:26 -0800 (PST)
+Date: Fri, 16 Nov 2012 14:50:24 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Anthony PERARD <anthony.perard@citrix.com>
-Message-ID: <20121116134422.GA31927@stefanha-thinkpad.redhat.com>
-References: <1352461854-18195-1-git-send-email-anthony.perard@citrix.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <20121116135024.GB31927@stefanha-thinkpad.redhat.com>
+References: <20121111221650.GA3575@foober.ini.cmu.edu>
+	<50A0CECA.9060102@redhat.com>
+	<20121112144918.GA2107@hedwig.ini.cmu.edu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1352461854-18195-1-git-send-email-anthony.perard@citrix.com>
+In-Reply-To: <20121112144918.GA2107@hedwig.ini.cmu.edu>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 74.125.83.45
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Luiz Capitulino <lcapitulino@redhat.com>,
-	QEMU-devel <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH V2] qemu-sockets: Fix parsing of the inet
- option 'to'.
+Cc: qemu-trivial@nongnu.org, jbaron@redhat.com, somlo@cmu.edu,
+	qemu-devel@nongnu.org, "Gabriel L. Somlo" <gsomlo@gmail.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ehci: fix compile error
+ with EHCI_DEBUG enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,20 +59,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Nov 2012 13:44:38 -0000
+X-List-Received-Date: Fri, 16 Nov 2012 13:50:40 -0000
 
-On Fri, Nov 09, 2012 at 11:50:54AM +0000, Anthony PERARD wrote:
-> Having a qemu command line argument like "-vnc 127.0.0.1:0,to=99" is broken.
-> This have been break with commit 879e45c72da1569e07fbbc6a1aa2a708ea796044.
+On Mon, Nov 12, 2012 at 09:49:19AM -0500, Gabriel L. Somlo wrote:
+> This patch fixes a few debugging print statements whose arguments fell
+> out of sync over time with changes being made to the active code base.
 > 
-> Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
-> 
+> Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
 > ---
->  qemu-sockets.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> On Mon, Nov 12, 2012 at 11:26:18AM +0100, Gerd Hoffmann wrote:
+> > Seems macos doesn't like something in our ehci emulation ...
+> > Can you send a trace with all ehci tracepoints enabled?
+> 
+> Turning EHCI_DEBUG on gave me compile errors. This is my best guess
+> as to what the DPRINTF arguments *should* be, hope I guessed right :)
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+In that case I'll let Gerd confirm whether or not the guesses are
+correct.
 
+Gerd: can you review and take this through the USB tree?
+
+Thanks,
 Stefan
 
