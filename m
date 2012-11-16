@@ -1,59 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TZ3H1-0006uB-Fa
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 12:30:43 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:56405)
+	id 1TZAhv-0000kU-75
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 20:26:59 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:44140)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ericj@mips.com>) id 1TZ3Gw-0006tu-Uw
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 12:30:41 -0500
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZAhq-0000kN-Pz
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 20:26:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ericj@mips.com>) id 1TZ3Gt-0004tE-TF
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 12:30:38 -0500
-Received: from dns1.mips.com ([12.201.5.69]:55563)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZAhn-0007N5-Nv
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 20:26:54 -0500
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:28045)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ericj@mips.com>)
-	id 1TZ3Gt-0004t2-KS; Thu, 15 Nov 2012 12:30:35 -0500
-Received: from mailgate1.mips.com (mailgate1.mips.com [12.201.5.111])
-	by dns1.mips.com (8.13.8/8.13.8) with ESMTP id qAFHUBO8025654;
-	Thu, 15 Nov 2012 09:30:11 -0800
-X-WSS-ID: 0MDJHYA-01-0PF-02
-X-M-MSG: 
-Received: from exchdb01.mips.com (unknown [192.168.36.84])
-	(using TLSv1 with cipher AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	by mailgate1.mips.com (Postfix) with ESMTP id 2BF3936464F;
-	Thu, 15 Nov 2012 09:30:10 -0800 (PST)
-Received: from EXCHDB03.MIPS.com ([fe80::6df1:ae84:797e:9076]) by
-	exchhub01.mips.com ([::1]) with mapi id 14.01.0270.001; Thu, 15 Nov 2012
-	09:30:06 -0800
-From: "Johnson, Eric" <ericj@mips.com>
-To: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-Thread-Topic: [Qemu-devel] [PATCH] target-mips: Clean up microMIPS32 major
-	opcode
-Thread-Index: AQHNwtcTq/nEklNa4UOtkqHliN5GTJfqK3fwgACXEgD//4OUdoAApMUAgAA7gwA=
-Date: Thu, 15 Nov 2012 17:30:05 +0000
-Message-ID: <AD431C1EF67D4B4B801AEC089EB7ED48014488B35D@exchdb03.mips.com>
-References: <20121115021501.GA15630@cs.nctu.edu.tw>
-	<AD431C1EF67D4B4B801AEC089EB7ED48014488ABEC@exchdb03.mips.com>
-	<20121115032652.GA17050@cs.nctu.edu.tw>
-	<FD6A7462-2EB5-4527-B56C-FDC5DD3A59AD@mips.com>
-	<20121115055116.GA20526@cs.nctu.edu.tw>
-In-Reply-To: <20121115055116.GA20526@cs.nctu.edu.tw>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [192.168.16.149]
-x-ems-proccessed: 6LP3oGfGVdcdb8o1aBnt6w==
-x-ems-stamp: ZfmSklBfLPV6CQ2mQsix5w==
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZAhn-0007Lk-5y
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 20:26:51 -0500
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id A24806E2;
+	Fri, 16 Nov 2012 09:26:41 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
+	bh=QGfvLFR2GvHBBrv9nuRu60A/si4=; b=oe8q9Wd1IL6L0SCLM9vsMofaoRHr
+	StwW4TlXUbPFZ7R7orUOeaczMzw7pga35EM8m+KBz0WzTZE/RumcwBI0BsRDjwPy
+	vkJck3qexzDVd8u12/DZZl3/kwg0wPdQlbtn+Y2vXELZ19oxZqVslAkyYP8W0EhP
+	wSNY4Dl1qdQie1I=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 8C4866E1;
+	Fri, 16 Nov 2012 09:26:41 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id qAG1QeZI047694;
+	Fri, 16 Nov 2012 09:26:40 +0800 (CST) (envelope-from chenwj)
+Date: Fri, 16 Nov 2012 09:26:40 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+To: Aurelien Jarno <aurelien@aurel32.net>
+Message-ID: <20121116012640.GB47041@cs.nctu.edu.tw>
+References: <20121114024954.GA63683@cs.nctu.edu.tw>
+	<20121114164521.GA5877@ohm.aurel32.net>
+	<20121114235704.GB11985@cs.nctu.edu.tw>
+	<20121115135338.GA21046@ohm.aurel32.net>
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 12.201.5.69
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Jia Liu <proljc@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-mips: Clean up
- microMIPS32 major opcode
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20121115135338.GA21046@ohm.aurel32.net>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
+X-Received-From: 140.113.235.130
+Cc: qemu-trivial@nongnu.org,
+	=?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+Subject: Re: [Qemu-trivial] [PATCH] Possible wrong microMIPS opcode encoding
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,29 +58,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Nov 2012 17:30:42 -0000
+X-List-Received-Date: Fri, 16 Nov 2012 01:26:58 -0000
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiDpmbPpn4vku7sgKFdlaS1SZW4g
-Q2hlbikgW21haWx0bzpjaGVud2pAaWlzLnNpbmljYS5lZHUudHddDQo+IFNlbnQ6IFdlZG5lc2Rh
-eSwgTm92ZW1iZXIgMTQsIDIwMTIgOTo1MSBQTQ0KPiBUbzogSm9obnNvbiwgRXJpYw0KPiBDYzog
-cWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsgSmlhIExpdTsg
-QXVyZWxpZW4NCj4gSmFybm8NCj4gU3ViamVjdDogUmU6IFtRZW11LWRldmVsXSBbUEFUQ0hdIHRh
-cmdldC1taXBzOiBDbGVhbiB1cCBtaWNyb01JUFMzMiBtYWpvcg0KPiBvcGNvZGUNCj4gDQo+IE9u
-IFRodSwgTm92IDE1LCAyMDEyIGF0IDA0OjAxOjMyQU0gKzAwMDAsIEpvaG5zb24sIEVyaWMgd3Jv
-dGU6DQo+ID4gSGkgQ2hlbiwNCj4gPg0KPiA+IFNvcnJ5IEkgbXVzdCBoYXZlIG1hZGUgYSBjb3B5
-IHBhc3RlIGVycm9yLiAgSSBhY2Nlc3MgdGhlIGRvY3VtZW50cw0KPiBpbnRlcm5hbGx5LiBJJ2xs
-IGRvdWJsZSBjaGVjayB0aGUgbGluayB0b21vcnJvdy4NCj4gPg0KPiA+IFRoZSBkb2N1bWVudCBJ
-IHJlZmVyZW5jZWQgaXMgdGhlIE1JUFM2NCBub3QgdGhlIG1pY3JvTUlQUzY0Lg0KPiA+DQo+ID4g
-RG8gbm90IGNoYW5nZSB0aGUgbmFtZXMuIFRoZSBMRDMyIGFuZCBTRDMyIGFyZSBtaWNyb01JUFMg
-c3BlY2lmaWMuIFRoZQ0KPiBhc3NlbWJsZXIgTEQgYW5kIFNEIG9wY29kZXMgd29yayBmb3IgZWl0
-aGVyIE1JUFM2NCBvciBtaWNyb01JUFM2NC4NCj4gDQo+ICAgTy5LLiwgdGhhbmtzIGZvciB0aGUg
-aGVscC4gOikNCj4gDQo+ICAgSG93IGFib3V0IERBRERJVTMyLCBzaG91bGQgSSBrZWVwIHRoZSAz
-MiBzdWZmaXgsIHRvbz8NCj4gSSBzdGlsbCBjYW4ndCBmaW5kIHdoZXJlIFBPT0wzMlMgaXMuDQo+
-IA0KPiBSZWdhcmRzLA0KPiBjaGVud2oNCg0KVGhlIG9ubHkgb3Bjb2RlIG9uIHRoZSBsaXN0IHRo
-YXQgaXMgaW5jb3JyZWN0IGlzIHRoZSBQT09MNDhBIG9wY29kZS4gIEl0IHNob3VsZCBiZSByZW1v
-dmVkLiAgSWYgdGhlIG90aGVycyBhcmUgcmVtb3ZlZCBvciByZW5hbWVkLCBJIG9yIHNvbWVvbmUg
-ZWxzZSB3b3VsZCBqdXN0IGhhdmUgdG8gZml4IHRoZW0gYXQgc29tZSBwb2ludCBpbiB0aGUgZnV0
-dXJlLg0KDQpJdCBzZWVtcyB0aGUgbWljcm9NSVBTNjQgSW5zdHJ1Y3Rpb24gU2V0IG1hbnVhbCBp
-cyBub3Qgb25lIHRoZSBleHRlcm5hbCB3ZWJzaXRlLiAgSSdsbCBhc2sgYWJvdXQgdGhhdC4NCg0K
-LUVyaWMNCg0K
+On Thu, Nov 15, 2012 at 02:53:38PM +0100, Aurelien Jarno wrote:
+> On Thu, Nov 15, 2012 at 07:57:04AM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB (=
+Wei-Ren Chen) wrote:
+> > On Wed, Nov 14, 2012 at 05:45:21PM +0100, Aurelien Jarno wrote:
+> > > On Wed, Nov 14, 2012 at 10:49:55AM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB=
+ (Wei-Ren Chen) wrote:
+> > > > Hi all,
+> > > >=20
+> > > >   While reading microMIPS decoding, I found a possible wrong opco=
+de
+> > > > encoding. According to [1] page 337, the bits 13..12 for MULTU is
+> > > > 0x01 rather than 0x00. Please review, thanks.
+> > > >=20
+> > > > [1] MIPS Architecture for Programmers VolumeIV-e: The MIPS DSP
+> > > >     Application-Specific Extension to the microMIPS32 Architectur=
+e
+> > >=20
+> > > This is indeed correct, but I guess the page you meant is 166. Page=
+ 337
+> > > refers to the original MULTU instruction from the MIPS Architecture=
+ for
+> > > Programmers Volume II-B: The microMIPS32 Instruction Set.
+> > >=20
+> > > On the other the microMIPS32 encoding for DSP instruction is not ye=
+t
+> > > supported.
+> >=20
+> >   Maybe we can start cleanup it a little bit. ;) Is this OK to commit=
+?
+> >=20
+>=20
+> My point was that the patch what correct, but not the comment. I have
+> committed it after fixing the comment.
+
+  I saw your commit, thanks. btw, I found codesourcery MIPS GCC has a
+option called "-mmicromips". Would you mind confirm this option does
+work for me?
+
+Regards,
+chenwj
+=20
+--=20
+Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
+Computer Systems Lab, Institute of Information Science,
+Academia Sinica, Taiwan (R.O.C.)
+Tel:886-2-2788-3799 #1667
+Homepage: http://people.cs.nctu.edu.tw/~chenwj
 
