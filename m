@@ -1,52 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TZAhv-0000kU-75
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 20:26:59 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:44140)
+	id 1TZBJv-0006Ed-BY
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2012 21:06:15 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:36134)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZAhq-0000kN-Pz
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 20:26:57 -0500
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZBJp-0005ww-Vy
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 21:06:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZAhn-0007N5-Nv
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 20:26:54 -0500
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:28045)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZBJm-0000g6-TU
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 21:06:09 -0500
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:62486)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZAhn-0007Lk-5y
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2012 20:26:51 -0500
+	(envelope-from <chenwj@cs.nctu.edu.tw>)
+	id 1TZBJf-0000es-IT; Thu, 15 Nov 2012 21:06:00 -0500
 Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id A24806E2;
-	Fri, 16 Nov 2012 09:26:41 +0800 (CST)
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id B4DE476F;
+	Fri, 16 Nov 2012 10:05:53 +0800 (CST)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=QGfvLFR2GvHBBrv9nuRu60A/si4=; b=oe8q9Wd1IL6L0SCLM9vsMofaoRHr
-	StwW4TlXUbPFZ7R7orUOeaczMzw7pga35EM8m+KBz0WzTZE/RumcwBI0BsRDjwPy
-	vkJck3qexzDVd8u12/DZZl3/kwg0wPdQlbtn+Y2vXELZ19oxZqVslAkyYP8W0EhP
-	wSNY4Dl1qdQie1I=
+	:from:to:cc:subject:message-id:mime-version:content-type; s=
+	rsa1024; bh=j/MGvtzi3JvQCRX1E/HixTMcIvU=; b=fX/Kz5mHDvOZIRQ1zlfL
+	EbMNGz16H0y1JwlSU5KJ2dYLx04fuYFir7bc9ZdzuOakEPlRW5so8/SyCoVGQ3VP
+	nVLDb1tvCHCsS2CybSMnt+kh6vHLBfztNjJiYoBY0U12AmaWJXFNKvw7anCfppUD
+	/AiytnqesZMg/PqJ+QpraSk=
 Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 8C4866E1;
-	Fri, 16 Nov 2012 09:26:41 +0800 (CST)
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 8313076E;
+	Fri, 16 Nov 2012 10:05:53 +0800 (CST)
 Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id qAG1QeZI047694;
-	Fri, 16 Nov 2012 09:26:40 +0800 (CST) (envelope-from chenwj)
-Date: Fri, 16 Nov 2012 09:26:40 +0800
+	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id qAG25qtc049068;
+	Fri, 16 Nov 2012 10:05:52 +0800 (CST) (envelope-from chenwj)
+Date: Fri, 16 Nov 2012 10:05:52 +0800
 From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-To: Aurelien Jarno <aurelien@aurel32.net>
-Message-ID: <20121116012640.GB47041@cs.nctu.edu.tw>
-References: <20121114024954.GA63683@cs.nctu.edu.tw>
-	<20121114164521.GA5877@ohm.aurel32.net>
-	<20121114235704.GB11985@cs.nctu.edu.tw>
-	<20121115135338.GA21046@ohm.aurel32.net>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20121116020552.GA48755@cs.nctu.edu.tw>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20121115135338.GA21046@ohm.aurel32.net>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
 X-Received-From: 140.113.235.130
-Cc: qemu-trivial@nongnu.org,
-	=?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-Subject: Re: [Qemu-trivial] [PATCH] Possible wrong microMIPS opcode encoding
+Cc: "Johnson, Eric" <ericj@mips.com>, Jia Liu <proljc@gmail.com>
+Subject: [Qemu-trivial] [PATCH v2] target-mips: Clean up microMIPS32 major
+	opcode
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,53 +51,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Nov 2012 01:26:58 -0000
+X-List-Received-Date: Fri, 16 Nov 2012 02:06:13 -0000
 
-On Thu, Nov 15, 2012 at 02:53:38PM +0100, Aurelien Jarno wrote:
-> On Thu, Nov 15, 2012 at 07:57:04AM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB (=
-Wei-Ren Chen) wrote:
-> > On Wed, Nov 14, 2012 at 05:45:21PM +0100, Aurelien Jarno wrote:
-> > > On Wed, Nov 14, 2012 at 10:49:55AM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB=
- (Wei-Ren Chen) wrote:
-> > > > Hi all,
-> > > >=20
-> > > >   While reading microMIPS decoding, I found a possible wrong opco=
-de
-> > > > encoding. According to [1] page 337, the bits 13..12 for MULTU is
-> > > > 0x01 rather than 0x00. Please review, thanks.
-> > > >=20
-> > > > [1] MIPS Architecture for Programmers VolumeIV-e: The MIPS DSP
-> > > >     Application-Specific Extension to the microMIPS32 Architectur=
-e
-> > >=20
-> > > This is indeed correct, but I guess the page you meant is 166. Page=
- 337
-> > > refers to the original MULTU instruction from the MIPS Architecture=
- for
-> > > Programmers Volume II-B: The microMIPS32 Instruction Set.
-> > >=20
-> > > On the other the microMIPS32 encoding for DSP instruction is not ye=
-t
-> > > supported.
-> >=20
-> >   Maybe we can start cleanup it a little bit. ;) Is this OK to commit=
-?
-> >=20
->=20
-> My point was that the patch what correct, but not the comment. I have
-> committed it after fixing the comment.
+Hi all,
 
-  I saw your commit, thanks. btw, I found codesourcery MIPS GCC has a
-option called "-mmicromips". Would you mind confirm this option does
-work for me?
+  I check MIPS microMIPS manual [1], and found the major opcode might be
+wrong. I add a comment to explicitly indicate what manual I am refering
+to, and according that manual I remove microMIPS32 major opcodes 0x1f.
+As for others, like 0x16, 0x17, 0x36 and 0x37, they are for higher-order
+MIPS ISA level or new revision of this microMIPS architecture. Quote
+from Johnson, they are belong MIPS64 [2].
 
-Regards,
-chenwj
-=20
---=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
-Homepage: http://people.cs.nctu.edu.tw/~chenwj
+  Please review, thanks.
+
+[1] http://www.mips.com/products/architectures/micromips/#specifications
+
+    MIPS Architecture for Programmers Volume II-B:
+      The microMIPS32 Instruction Set (Revision 3.05)
+
+    MD00582-2B-microMIPS-AFP-03.05.pdf
+
+[2] http://www.mips.com/products/architectures/mips64/
+
+    MIPS Architecture For Programmers
+      Volume II-A: The MIPS64 Instruction Set
+
+    MD00087-2B-MIPS64BIS-AFP-03.51.pdf
+
+Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
+---
+ target-mips/translate.c |   24 +++++++++++++++++-------
+ 1 files changed, 17 insertions(+), 7 deletions(-)
+
+diff --git a/target-mips/translate.c b/target-mips/translate.c
+index 01b48fa..1c0ff65 100644
+--- a/target-mips/translate.c
++++ b/target-mips/translate.c
+@@ -10239,9 +10239,19 @@ static int decode_mips16_opc (CPUMIPSState *env, DisasContext *ctx,
+     return n_bytes;
+ }
+ 
+-/* microMIPS extension to MIPS32 */
++/* microMIPS extension to MIPS32/MIPS64 */
+ 
+-/* microMIPS32 major opcodes */
++/*
++ * microMIPS32/microMIPS64 major opcodes
++ *
++ *  1. MIPS Architecture for Programmers Volume II-B:
++ *       The microMIPS32 Instruction Set (Revision 3.05)
++ *
++ *     Table 6.2 microMIPS32 Encoding of Major Opcode Field
++ *
++ *  2. MIPS Architecture For Programmers Volume II-A:
++ *       The MIPS64 Instruction Set (Revision 3.51)
++ */
+ 
+ enum {
+     POOL32A = 0x00,
+@@ -10268,9 +10278,10 @@ enum {
+     POOL16D = 0x13,
+     ORI32 = 0x14,
+     POOL32F = 0x15,
+-    POOL32S = 0x16,
+-    DADDIU32 = 0x17,
++    POOL32S = 0x16,  /* MIPS64 */
++    DADDIU32 = 0x17, /* MIPS64 */
+ 
++    /* 0x1f is reserved */
+     POOL32C = 0x18,
+     LWGP16 = 0x19,
+     LW16 = 0x1a,
+@@ -10278,7 +10289,6 @@ enum {
+     XORI32 = 0x1c,
+     JALS32 = 0x1d,
+     ADDIUPC = 0x1e,
+-    POOL48A = 0x1f,
+ 
+     /* 0x20 is reserved */
+     RES_20 = 0x20,
+@@ -10307,8 +10317,8 @@ enum {
+     B16 = 0x33,
+     ANDI32 = 0x34,
+     J32 = 0x35,
+-    SD32 = 0x36,
+-    LD32 = 0x37,
++    SD32 = 0x36, /* MIPS64 */
++    LD32 = 0x37, /* MPIS64 */
+ 
+     /* 0x38 and 0x39 are reserved */
+     RES_38 = 0x38,
+-- 
+1.7.3.4
 
