@@ -1,53 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TZMSQ-0006ik-Rz
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Nov 2012 08:59:46 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:34943)
+	id 1TZMuM-0006kb-Sn
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Nov 2012 09:28:38 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:51264)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TZMSM-0006XJ-VR
-	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 08:59:45 -0500
+	(envelope-from <stefanha@gmail.com>) id 1TZMuJ-0006Z6-3r
+	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 09:28:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TZMSJ-0005iq-Ts
-	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 08:59:42 -0500
-Received: from mail-ee0-f45.google.com ([74.125.83.45]:34344)
+	(envelope-from <stefanha@gmail.com>) id 1TZMuF-0005pS-Ul
+	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 09:28:34 -0500
+Received: from mail-ea0-f173.google.com ([209.85.215.173]:55191)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TZMSD-0005i2-IS; Fri, 16 Nov 2012 08:59:33 -0500
-Received: by mail-ee0-f45.google.com with SMTP id d49so1680708eek.4
-	for <multiple recipients>; Fri, 16 Nov 2012 05:59:32 -0800 (PST)
+	id 1TZMu9-0005oQ-JR; Fri, 16 Nov 2012 09:28:25 -0500
+Received: by mail-ea0-f173.google.com with SMTP id i13so1138906eaa.4
+	for <multiple recipients>; Fri, 16 Nov 2012 06:28:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=azS3RKU1wGWRIFOQF9vCHb0op7h4f0/yU1WEnxN4/N8=;
-	b=SvjdTesNA7CiHr7Y4I7psVx7WKfyLyd70e7zyH4ltTp4glpqOkcbqnxrE8Rb8RRSEt
-	D2bRrEtWdfy7/XuK2RKt7wDhBz61SLPH/ORoMyjLOElGEWmt20JI92sazuoZwEKmnPGM
-	eF4U9uIKpfF9/XL0LFJqg2Wck3FZN0VzQROy3yNXEHTQzFE6CZBGRZEi0dU4IPmDpGR7
-	JQXwn/XFzg2+6cLKZCY9FOC6nFr7XdNeT/+YPLduMPvAf3NvTMNSAdnNkHmmtfgvn9T9
-	YGo0cFo1E3GSyUop55FS1gqsct4svrL+57gBfRRYqGLNMaHhTQ5JZWcetIeMnM7tAbLA
-	NGkw==
-Received: by 10.14.179.69 with SMTP id g45mr13710106eem.42.1353074372696;
-	Fri, 16 Nov 2012 05:59:32 -0800 (PST)
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=PSPmsBZzz1G5eYvZLAaSK7Mc7j0S4/CKoCQA/Hq/C+Y=;
+	b=jsBiA7YCcK/Lpjx6kbO/A5m9+Bx07QbW7HFMHpd7gUs4XAhfhMXrB2QIVmg3vAYvi2
+	a/6E8cP3M7CCkIvnK+Y/vu3cQh2S5KjS4Ptw9FaXTftOFiSfl7nGm1pUJb+FmPhfo184
+	8WG2gX8q5QDc64C/jPmUTxVdxIgC9oxqfKs+D1bzPjphx8tJgzNdb5tPKxpmQljx/G66
+	p+QZtSNVE8OHk694lrUcvitQjIyUv4RmuP4E3VHYChbzY1TGELYkHZeNqX0J0M8NSaOo
+	SEfVc9iD8YhZkgt82SGOM5qnayDOEqfhxGNqE/aDzVF1ci7efV8lswTLdJoOoyodNsD3
+	S6+w==
+Received: by 10.14.213.65 with SMTP id z41mr13867891eeo.29.1353076104648;
+	Fri, 16 Nov 2012 06:28:24 -0800 (PST)
 Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
-	by mx.google.com with ESMTPS id y44sm3630122eel.14.2012.11.16.05.59.31
+	by mx.google.com with ESMTPS id g5sm3806876eem.4.2012.11.16.06.28.23
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 16 Nov 2012 05:59:32 -0800 (PST)
-Date: Fri, 16 Nov 2012 14:59:30 +0100
+	Fri, 16 Nov 2012 06:28:23 -0800 (PST)
+Date: Fri, 16 Nov 2012 15:28:22 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-Message-ID: <20121116135930.GE31927@stefanha-thinkpad.redhat.com>
-References: <20121116022947.GA50435@cs.nctu.edu.tw>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20121116142822.GA3991@stefanha-thinkpad.redhat.com>
+References: <1350761824-28185-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20121116022947.GA50435@cs.nctu.edu.tw>
+In-Reply-To: <1350761824-28185-1-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.125.83.45
-Cc: qemu-trivial@nongnu.org, Jia Liu <proljc@gmail.com>, qemu-devel@nongnu.org,
-	"Johnson, Eric" <ericj@mips.com>
-Subject: Re: [Qemu-trivial] [PATCH] target-mips: Add comments on POOL32Axf
- encoding
+X-Received-From: 209.85.215.173
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] configure: Remove stray debug output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,24 +55,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Nov 2012 13:59:46 -0000
+X-List-Received-Date: Fri, 16 Nov 2012 14:28:38 -0000
 
-On Fri, Nov 16, 2012 at 10:29:47AM +0800, 陳韋任 (Wei-Ren Chen) wrote:
->   Current QEMU MIPS POOL32AXF encoding comes from microMIPS32
-> and microMIPS32 DSP. Add comment here to help reading.
+On Sat, Oct 20, 2012 at 08:37:04PM +0100, Peter Maydell wrote:
+> Rather than printing a message saying we're silently falling
+> back to gthread coroutines when running on MacOS, actually
+> do it silently.
 > 
->   Please review, thanks.
-> 
-> Regards,
-> chenwj
-> 
-> Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target-mips/translate.c |   17 +++++++++++++++++
->  1 files changed, 17 insertions(+), 0 deletions(-)
+> I guess this is a self-falsifying echo :-)
+> 
+>  configure | 2 --
+>  1 file changed, 2 deletions(-)
 
-Please send this through Aurelien.  Perhaps there's more to discuss
-about how the various MIPS instruction sets should be organized in QEMU.
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
 Stefan
 
