@@ -1,49 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TZMuM-0006kb-Sn
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Nov 2012 09:28:38 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:51264)
+	id 1TZlS5-00013I-80
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Nov 2012 11:41:05 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:34320)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TZMuJ-0006Z6-3r
-	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 09:28:38 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1TZlRz-0000jp-OH
+	for qemu-trivial@nongnu.org; Sat, 17 Nov 2012 11:41:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TZMuF-0005pS-Ul
-	for qemu-trivial@nongnu.org; Fri, 16 Nov 2012 09:28:34 -0500
-Received: from mail-ea0-f173.google.com ([209.85.215.173]:55191)
+	(envelope-from <stefan@weilnetz.de>) id 1TZlRw-0006pp-Mf
+	for qemu-trivial@nongnu.org; Sat, 17 Nov 2012 11:40:59 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:33674)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1TZMu9-0005oQ-JR; Fri, 16 Nov 2012 09:28:25 -0500
-Received: by mail-ea0-f173.google.com with SMTP id i13so1138906eaa.4
-	for <multiple recipients>; Fri, 16 Nov 2012 06:28:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=PSPmsBZzz1G5eYvZLAaSK7Mc7j0S4/CKoCQA/Hq/C+Y=;
-	b=jsBiA7YCcK/Lpjx6kbO/A5m9+Bx07QbW7HFMHpd7gUs4XAhfhMXrB2QIVmg3vAYvi2
-	a/6E8cP3M7CCkIvnK+Y/vu3cQh2S5KjS4Ptw9FaXTftOFiSfl7nGm1pUJb+FmPhfo184
-	8WG2gX8q5QDc64C/jPmUTxVdxIgC9oxqfKs+D1bzPjphx8tJgzNdb5tPKxpmQljx/G66
-	p+QZtSNVE8OHk694lrUcvitQjIyUv4RmuP4E3VHYChbzY1TGELYkHZeNqX0J0M8NSaOo
-	SEfVc9iD8YhZkgt82SGOM5qnayDOEqfhxGNqE/aDzVF1ci7efV8lswTLdJoOoyodNsD3
-	S6+w==
-Received: by 10.14.213.65 with SMTP id z41mr13867891eeo.29.1353076104648;
-	Fri, 16 Nov 2012 06:28:24 -0800 (PST)
-Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
-	by mx.google.com with ESMTPS id g5sm3806876eem.4.2012.11.16.06.28.23
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 16 Nov 2012 06:28:23 -0800 (PST)
-Date: Fri, 16 Nov 2012 15:28:22 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20121116142822.GA3991@stefanha-thinkpad.redhat.com>
-References: <1350761824-28185-1-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1350761824-28185-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.215.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH] configure: Remove stray debug output
+	(envelope-from <stefan@weilnetz.de>)
+	id 1TZlRq-0006ow-BW; Sat, 17 Nov 2012 11:40:50 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	4AE5D7280030; Sat, 17 Nov 2012 17:40:48 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id IXQ+0mYQwDM9; Sat, 17 Nov 2012 17:40:44 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 281B4728003A; Sat, 17 Nov 2012 17:40:44 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org,
+	Anthony Liguori <aliguori@us.ibm.com>
+Date: Sat, 17 Nov 2012 17:40:43 +0100
+Message-Id: <1353170443-18168-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] qemu-common: Add definition for O_NONBLOCK
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,22 +43,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Nov 2012 14:28:38 -0000
+X-List-Received-Date: Sat, 17 Nov 2012 16:41:03 -0000
 
-On Sat, Oct 20, 2012 at 08:37:04PM +0100, Peter Maydell wrote:
-> Rather than printing a message saying we're silently falling
-> back to gthread coroutines when running on MacOS, actually
-> do it silently.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I guess this is a self-falsifying echo :-)
-> 
->  configure | 2 --
->  1 file changed, 2 deletions(-)
+backends/rng-random.c which was added by commit
+5c74521d249486fa3e749dbbf6d56a70d4d7235f needs
+macro O_NONBLOCK.
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+The macro O_NONBLOCK is not defined for all hosts.
+Adding a default definition fixes builds for MinGW.
 
-Stefan
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+
+This is a build fix. Therefore I'd appreciate if it could be
+committed soon.
+
+Thanks
+Stefan W.
+
+ qemu-common.h |    3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/qemu-common.h b/qemu-common.h
+index ac9985c..3a5616c 100644
+--- a/qemu-common.h
++++ b/qemu-common.h
+@@ -55,6 +55,9 @@ typedef struct MigrationParams MigrationParams;
+ #ifndef O_BINARY
+ #define O_BINARY 0
+ #endif
++#ifndef O_NONBLOCK
++#define O_NONBLOCK 0
++#endif
+ #ifndef MAP_ANONYMOUS
+ #define MAP_ANONYMOUS MAP_ANON
+ #endif
+-- 
+1.7.10.4
+
 
