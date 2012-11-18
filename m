@@ -1,52 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TZvXI-0001HT-8Q
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Nov 2012 22:27:08 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:50822)
+	id 1Ta0D4-00009N-Ab
+	for mharc-qemu-trivial@gnu.org; Sun, 18 Nov 2012 03:26:34 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:60905)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZvXD-00012f-Eb
-	for qemu-trivial@nongnu.org; Sat, 17 Nov 2012 22:27:06 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1Ta0Cy-0008IC-BZ
+	for qemu-trivial@nongnu.org; Sun, 18 Nov 2012 03:26:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TZvXA-0008L5-CY
-	for qemu-trivial@nongnu.org; Sat, 17 Nov 2012 22:27:03 -0500
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:20225)
+	(envelope-from <stefan@weilnetz.de>) id 1Ta0Cu-0000MI-Pk
+	for qemu-trivial@nongnu.org; Sun, 18 Nov 2012 03:26:27 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:34579)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>)
-	id 1TZvX3-0008KY-TS; Sat, 17 Nov 2012 22:26:54 -0500
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 8D0B182B;
-	Sun, 18 Nov 2012 11:26:52 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=2m5HO4fbiwbv7/VC5NSIO+/RqHY=; b=TK8vZmOYNLMDrE+kYupIu3rHLjwm
-	oIzxCSJzCg+FQFK++GPU3Q8aiBs7cJa1DYsOORb8A5JCmZL1DesFJ6keXsz2poyx
-	WPYWUx9Nojs73adeo89PaEaDy+p7uNiSe5/14VgF4xbeKSVG3QEUeBBXRfiJ92Mq
-	Gc7O0Udsna96p28=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 749B482A;
-	Sun, 18 Nov 2012 11:26:52 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id qAI3Qqpq078240;
-	Sun, 18 Nov 2012 11:26:52 +0800 (CST) (envelope-from chenwj)
-Date: Sun, 18 Nov 2012 11:26:52 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Message-ID: <20121118032652.GA87959@cs.nctu.edu.tw>
-References: <20121116022947.GA50435@cs.nctu.edu.tw>
-	<20121116135930.GE31927@stefanha-thinkpad.redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20121116135930.GE31927@stefanha-thinkpad.redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
-X-Received-From: 140.113.235.130
-Cc: qemu-trivial@nongnu.org, Jia Liu <proljc@gmail.com>, qemu-devel@nongnu.org,
-	=?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>,
-	"Johnson, Eric" <ericj@mips.com>
-Subject: Re: [Qemu-trivial] [PATCH] target-mips: Add comments on POOL32Axf
- encoding
+	(envelope-from <stefan@weilnetz.de>)
+	id 1Ta0Co-0000Lo-Dh; Sun, 18 Nov 2012 03:26:18 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	B47A7728002F; Sun, 18 Nov 2012 09:26:16 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 3NFM3CivrDFe; Sun, 18 Nov 2012 09:26:16 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 1FE3C728003A; Sun, 18 Nov 2012 09:26:16 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Sun, 18 Nov 2012 09:26:15 +0100
+Message-Id: <1353227175-24596-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 78.47.199.172
+Cc: Kevin Wolf <kwolf@redhat.com>, Jim Meyering <meyering@redhat.com>,
+	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] block: Fix regression for MinGW (assertion
+	caused by short string)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,34 +44,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 18 Nov 2012 03:27:06 -0000
+X-List-Received-Date: Sun, 18 Nov 2012 08:26:32 -0000
 
-On Fri, Nov 16, 2012 at 02:59:30PM +0100, Stefan Hajnoczi wrote:
-> On Fri, Nov 16, 2012 at 10:29:47AM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB (=
-Wei-Ren Chen) wrote:
-> >   Current QEMU MIPS POOL32AXF encoding comes from microMIPS32
-> > and microMIPS32 DSP. Add comment here to help reading.
-> >=20
-> >   Please review, thanks.
-> >=20
-> > Regards,
-> > chenwj
-> >=20
-> > Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
-> > ---
-> >  target-mips/translate.c |   17 +++++++++++++++++
-> >  1 files changed, 17 insertions(+), 0 deletions(-)
->=20
-> Please send this through Aurelien.  Perhaps there's more to discuss
-> about how the various MIPS instruction sets should be organized in QEMU=
-.
+The local string tmp_filename is passed to function get_tmp_filename
+which expects a string with minimum size MAX_PATH for w32 hosts.
 
-  Got it. ;)
+MAX_PATH is 260 and PATH_MAX is 259, so tmp_filename was too short.
 
---=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
-Homepage: http://people.cs.nctu.edu.tw/~chenwj
+Commit eba25057b9a5e19d10ace2bc7716667a31297169 introduced this
+regression.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ block.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/block.c b/block.c
+index 49dd6bb..8739635 100644
+--- a/block.c
++++ b/block.c
+@@ -787,7 +787,7 @@ int bdrv_open(BlockDriverState *bs, const char *filename, int flags,
+               BlockDriver *drv)
+ {
+     int ret;
+-    char tmp_filename[PATH_MAX];
++    char tmp_filename[PATH_MAX + 1];
+ 
+     if (flags & BDRV_O_SNAPSHOT) {
+         BlockDriverState *bs1;
+-- 
+1.7.10.4
+
 
