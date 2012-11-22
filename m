@@ -1,46 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TbVzG-0007if-D1
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2012 07:34:34 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:47492)
+	id 1TbXaZ-0003Gh-CZ
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2012 09:17:11 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:33318)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1TbVzD-0007ak-Il
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 07:34:32 -0500
+	(envelope-from <armbru@pond.sub.org>) id 1TbXaV-00034X-Et
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 09:17:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1TbVzC-0006Tl-K6
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 07:34:31 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35992)
+	(envelope-from <armbru@pond.sub.org>) id 1TbXaP-0004St-Fu
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 09:17:07 -0500
+Received: from oxygen.pond.sub.org ([78.46.104.156]:44982)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1TbVyw-00066d-TC; Thu, 22 Nov 2012 07:34:15 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qAMCYClx030522
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 22 Nov 2012 07:34:13 -0500
-Received: from doriath.home (ovpn-113-66.phx2.redhat.com [10.3.113.66])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id qAMCYAQh008464; Thu, 22 Nov 2012 07:34:11 -0500
-Date: Thu, 22 Nov 2012 10:34:11 -0200
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>
-Message-ID: <20121122103411.0eefef6a@doriath.home>
-In-Reply-To: <50ACC545.7000002@siemens.com>
-References: <1353420681-8870-1-git-send-email-brogers@suse.com>
-	<87lidwux0q.fsf@blackfin.pond.sub.org>
-	<50ACC545.7000002@siemens.com>
-Organization: Red Hat
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	(envelope-from <armbru@pond.sub.org>)
+	id 1TbXa6-0004OG-10; Thu, 22 Nov 2012 09:16:42 -0500
+Received: from blackfin.pond.sub.org (p5B32A88D.dip.t-dialin.net
+	[91.50.168.141])
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id 3ED409FE48;
+	Thu, 22 Nov 2012 15:16:37 +0100 (CET)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 5F4BD2009B; Thu, 22 Nov 2012 15:16:36 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 22 Nov 2012 15:16:36 +0100
+Message-Id: <1353593796-26823-1-git-send-email-armbru@redhat.com>
+X-Mailer: git-send-email 1.7.11.7
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Bruce Rogers <brogers@suse.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Legacy qemu-kvm options
-	have no argument
+X-Received-From: 78.46.104.156
+Cc: qemu-trivial@nongnu.org, agraf@suse.de
+Subject: [Qemu-trivial] [PATCH] Clean up pci_drive_hot_add()'s use of
+	BlockInterfaceType
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,52 +39,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Nov 2012 12:34:32 -0000
+X-List-Received-Date: Thu, 22 Nov 2012 14:17:08 -0000
 
-On Wed, 21 Nov 2012 13:12:53 +0100
-Jan Kiszka <jan.kiszka@siemens.com> wrote:
+pci_drive_hot_add() parameter type has the wrong type: int instead of
+BlockInterfaceType.  It's actually redundant, so we can just drop it.
 
-> On 2012-11-20 16:14, Markus Armbruster wrote:
-> > Cc'ing Marcelo & Jan to speed up patch application.
-> > 
-> > Bruce Rogers <brogers@suse.com> writes:
-> > 
-> >> The options no-kvm, no-kvm-pit, no-kvm-pit-reinjection, and no-kvm-irqchip
-> >> should be marked as having no argument.
-> >>
-> >> Signed-off-by: Bruce Rogers <brogers@suse.com>
-> >> ---
-> >>  qemu-options.hx |    8 ++++----
-> >>  1 files changed, 4 insertions(+), 4 deletions(-)
-> >>
-> >> diff --git a/qemu-options.hx b/qemu-options.hx
-> >> index 9bb29d3..fbcf079 100644
-> >> --- a/qemu-options.hx
-> >> +++ b/qemu-options.hx
-> >> @@ -2918,17 +2918,17 @@ Enable FIPS 140-2 compliance mode.
-> >>  ETEXI
-> >>  
-> >>  HXCOMM Deprecated by -machine accel=tcg property
-> >> -DEF("no-kvm", HAS_ARG, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
-> >> +DEF("no-kvm", 0, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
-> >>  
-> >>  HXCOMM Deprecated by kvm-pit driver properties
-> >> -DEF("no-kvm-pit-reinjection", HAS_ARG, QEMU_OPTION_no_kvm_pit_reinjection,
-> >> +DEF("no-kvm-pit-reinjection", 0, QEMU_OPTION_no_kvm_pit_reinjection,
-> >>      "", QEMU_ARCH_I386)
-> >>  
-> >>  HXCOMM Deprecated (ignored)
-> >> -DEF("no-kvm-pit", HAS_ARG, QEMU_OPTION_no_kvm_pit, "", QEMU_ARCH_I386)
-> >> +DEF("no-kvm-pit", 0, QEMU_OPTION_no_kvm_pit, "", QEMU_ARCH_I386)
-> >>  
-> >>  HXCOMM Deprecated by -machine kernel_irqchip=on|off property
-> >> -DEF("no-kvm-irqchip", HAS_ARG, QEMU_OPTION_no_kvm_irqchip, "", QEMU_ARCH_I386)
-> >> +DEF("no-kvm-irqchip", 0, QEMU_OPTION_no_kvm_irqchip, "", QEMU_ARCH_I386)
-> >>  
-> >>  HXCOMM Deprecated (ignored)
-> >>  DEF("tdf", 0, QEMU_OPTION_tdf,"", QEMU_ARCH_ALL)
-> 
-> Reviewed-by: Jan Kiszka <jan.kiszka@siemens.com>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ hw/device-hotplug.c | 11 ++++-------
+ hw/pci-hotplug.c    |  7 +++----
+ sysemu.h            |  3 +--
+ 3 files changed, 8 insertions(+), 13 deletions(-)
 
-Candidate for -trivial.
+diff --git a/hw/device-hotplug.c b/hw/device-hotplug.c
+index eec0fe3..6d9c080 100644
+--- a/hw/device-hotplug.c
++++ b/hw/device-hotplug.c
+@@ -49,18 +49,16 @@ DriveInfo *add_init_drive(const char *optstr)
+ }
+ 
+ #if !defined(TARGET_I386)
+-int pci_drive_hot_add(Monitor *mon, const QDict *qdict,
+-                      DriveInfo *dinfo, int type)
++int pci_drive_hot_add(Monitor *mon, const QDict *qdict, DriveInfo *dinfo)
+ {
+     /* On non-x86 we don't do PCI hotplug */
+-    monitor_printf(mon, "Can't hot-add drive to type %d\n", type);
++    monitor_printf(mon, "Can't hot-add drive to type %d\n", dinfo->type);
+     return -1;
+ }
+ #endif
+ 
+ void drive_hot_add(Monitor *mon, const QDict *qdict)
+ {
+-    int type;
+     DriveInfo *dinfo = NULL;
+     const char *opts = qdict_get_str(qdict, "opts");
+ 
+@@ -72,14 +70,13 @@ void drive_hot_add(Monitor *mon, const QDict *qdict)
+         monitor_printf(mon, "Parameter addr not supported\n");
+         goto err;
+     }
+-    type = dinfo->type;
+ 
+-    switch (type) {
++    switch (dinfo->type) {
+     case IF_NONE:
+         monitor_printf(mon, "OK\n");
+         break;
+     default:
+-        if (pci_drive_hot_add(mon, qdict, dinfo, type)) {
++        if (pci_drive_hot_add(mon, qdict, dinfo)) {
+             goto err;
+         }
+     }
+diff --git a/hw/pci-hotplug.c b/hw/pci-hotplug.c
+index e7fb780..d2121ee 100644
+--- a/hw/pci-hotplug.c
++++ b/hw/pci-hotplug.c
+@@ -105,15 +105,14 @@ static int scsi_hot_add(Monitor *mon, DeviceState *adapter,
+     return 0;
+ }
+ 
+-int pci_drive_hot_add(Monitor *mon, const QDict *qdict,
+-                      DriveInfo *dinfo, int type)
++int pci_drive_hot_add(Monitor *mon, const QDict *qdict, DriveInfo *dinfo)
+ {
+     int dom, pci_bus;
+     unsigned slot;
+     PCIDevice *dev;
+     const char *pci_addr = qdict_get_str(qdict, "pci_addr");
+ 
+-    switch (type) {
++    switch (dinfo->type) {
+     case IF_SCSI:
+         if (pci_read_devaddr(mon, pci_addr, &dom, &pci_bus, &slot)) {
+             goto err;
+@@ -129,7 +128,7 @@ int pci_drive_hot_add(Monitor *mon, const QDict *qdict,
+         }
+         break;
+     default:
+-        monitor_printf(mon, "Can't hot-add drive to type %d\n", type);
++        monitor_printf(mon, "Can't hot-add drive to type %d\n", dinfo->type);
+         goto err;
+     }
+ 
+diff --git a/sysemu.h b/sysemu.h
+index f5ac664..c1b370b 100644
+--- a/sysemu.h
++++ b/sysemu.h
+@@ -145,8 +145,7 @@ extern unsigned int nb_prom_envs;
+ 
+ /* pci-hotplug */
+ void pci_device_hot_add(Monitor *mon, const QDict *qdict);
+-int pci_drive_hot_add(Monitor *mon, const QDict *qdict,
+-                      DriveInfo *dinfo, int type);
++int pci_drive_hot_add(Monitor *mon, const QDict *qdict, DriveInfo *dinfo);
+ void do_pci_device_hot_remove(Monitor *mon, const QDict *qdict);
+ 
+ /* generic hotplug */
+-- 
+1.7.11.7
+
 
