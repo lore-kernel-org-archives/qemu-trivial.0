@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TbFFT-0000dV-Cy
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Nov 2012 13:42:11 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:47270)
+	id 1TbRfK-0003C1-5M
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2012 02:57:42 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:47813)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TbFFQ-0000XJ-HS
-	for qemu-trivial@nongnu.org; Wed, 21 Nov 2012 13:42:09 -0500
+	(envelope-from <stefanha@gmail.com>) id 1TbRfG-000329-Jj
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 02:57:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TbFFO-0000X0-8d
-	for qemu-trivial@nongnu.org; Wed, 21 Nov 2012 13:42:08 -0500
-Received: from mail-ie0-f173.google.com ([209.85.223.173]:65487)
+	(envelope-from <stefanha@gmail.com>) id 1TbRfC-0007B0-CR
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 02:57:38 -0500
+Received: from mail-ee0-f45.google.com ([74.125.83.45]:57531)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TbFFO-0000Wq-3N
-	for qemu-trivial@nongnu.org; Wed, 21 Nov 2012 13:42:06 -0500
-Received: by mail-ie0-f173.google.com with SMTP id e13so684539iej.4
-	for <qemu-trivial@nongnu.org>; Wed, 21 Nov 2012 10:42:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding:x-gm-message-state;
-	bh=WG8KwmpjOuXEWMu1/3/VXGWJ9PpUsbelbAvx9MjArT8=;
-	b=dFWWrdke8lL2Errw6PwlA5x6WdiwTbo2HP4I4QhGp7ogXBLY4wgGFYvVmhpWr4L+WS
-	MBQdGRtMWHedQN1JsOzykCFHhQCZ/B60bMkU9H+zMI04scD/ZUJ0gAJx5eIenc1p2Rl4
-	tsh4R8fzW9wdhMU8P1BEwTzkkM2h9NvbcbPY/WAiMgwRWoVyIfYIXfQx8hCoq7d55qgP
-	sSbNgpdxJUNe4Qqb//oVl89TieEgfSGcgxPOiSb7ZDaREZkQ/8kod1IDfFuNuI4RVv74
-	ZUGpdAOQGmR/1EpLwKEyUKgodghFUcuIJ7Dzo6l62EvyI5HhS0CoyKR4ubMg7XXzxa/j
-	L4Lw==
-MIME-Version: 1.0
-Received: by 10.50.190.162 with SMTP id gr2mr428848igc.65.1353523325375; Wed,
-	21 Nov 2012 10:42:05 -0800 (PST)
-Received: by 10.50.88.166 with HTTP; Wed, 21 Nov 2012 10:42:05 -0800 (PST)
-In-Reply-To: <50AD1C33.8060509@twiddle.net>
-References: <1351805797-31899-1-git-send-email-rth@twiddle.net>
-	<50AD06A6.3000602@twiddle.net> <50AD0AB3.7020207@suse.de>
-	<50AD1C33.8060509@twiddle.net>
-Date: Wed, 21 Nov 2012 18:42:05 +0000
-Message-ID: <CAFEAcA_S9woXZqHBQntp_DFD4YYBBzA16x8Vh3AtM9DYBT5v+Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <stefanha@gmail.com>)
+	id 1TbRfA-0007AL-9a; Thu, 22 Nov 2012 02:57:32 -0500
+Received: by mail-ee0-f45.google.com with SMTP id d49so4687488eek.4
+	for <multiple recipients>; Wed, 21 Nov 2012 23:57:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=tyIW/ti9fKEmJ0DQQPtsE7lmKTVidAbH9fF+m50dyO8=;
+	b=Uphg6Gdzq1fm2nmqCq8ESedFiQzc40U6LjCfLdVuUh2KXmJE245q8PQIbDolaRBieX
+	hjoYvrv4J4AetvvH1N7Kokt3B3tg2iKxDAT4ZO5erfTUPgI0s159oYWmMJpuMaxvMe9b
+	AiKwlQD4cyrXj0ZfXEarxzNPeJE1LfTcnq3FcJZopq+Shg7DKhw1WcfOCaJWMAl08498
+	jHRhS9ZY1Ok8uLbNOuCR7Bp7IEcRDZ7rvJP6sBEXYeDcHLCa3J+MPOOvunRXQkevn1Q0
+	brct/rq0+Yio2f66/T6VoC09TgshVYkOFuE8Ng5zPy3n3ETdhfgU5ZNWTfZVhj6v6RNu
+	Evaw==
+Received: by 10.14.221.9 with SMTP id q9mr55343098eep.3.1353571051173;
+	Wed, 21 Nov 2012 23:57:31 -0800 (PST)
+Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
+	by mx.google.com with ESMTPS id a45sm4794185eep.16.2012.11.21.23.57.30
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 21 Nov 2012 23:57:30 -0800 (PST)
+Date: Thu, 22 Nov 2012 08:57:29 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Gm-Message-State: ALoCoQkDFIMW0YnFuS/FLRO0tqOG+17is/IedglTtD3ujTaAUuZgHHVUC5OPIL95FA+MFnyGJwNp
+Message-ID: <20121122075729.GB7598@stefanha-thinkpad.redhat.com>
+References: <1351805797-31899-1-git-send-email-rth@twiddle.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1351805797-31899-1-git-send-email-rth@twiddle.net>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.223.173
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/3] trivial: Remove some
- pre-TCG CPUArchState members
+X-Received-From: 74.125.83.45
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 0/3] trivial: Remove some pre-TCG
+ CPUArchState members
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,29 +56,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Nov 2012 18:42:09 -0000
+X-List-Received-Date: Thu, 22 Nov 2012 07:57:40 -0000
 
-On 21 November 2012 18:23, Richard Henderson <rth@twiddle.net> wrote:
-> On 2012-11-21 09:09, Andreas F=C3=A4rber wrote:
->> Not sure if this fits our current Hard Freeze definition though. ;)
->
-> How often do I need to ping patches to get them applied?
-> I've generally been waiting 1-2 weeks between pings.
-> I've got at least 5 minor patch sets outstanding, dating
-> back to at least late September.
+On Fri, Nov 02, 2012 at 08:36:34AM +1100, Richard Henderson wrote:
+> Best I can figure, these temporaries were used by the dyngen
+> code generator, last seen in qemu 0.9.0.  Certainly there are
+> no references to these members remaining.
+> 
+> Built x86_64 and i686 hosts.
+> 
+> 
+> r~
+> 
+> 
+> Richard Henderson (3):
+>   target-alpha: Remove t0, t1 from CPUAlphaState
+>   target-m68k: Remove t1 from CPUM68KState
+>   target-sparc: Remove t0, t1 from CPUSPARCState
+> 
+>  target-alpha/cpu.h | 7 -------
+>  target-m68k/cpu.h  | 3 ---
+>  target-sparc/cpu.h | 1 -
+>  3 files changed, 11 deletions(-)
+> 
+> -- 
+> 1.7.11.7
+> 
+> 
 
-My rule of thumb is a week or so between pings, yes.
+Sorry I missed your pull request.
 
-> I hope for the next release there's both soft and hard
-> freeze periods, and much more help from those with commit
-> privs in reducing the outstanding patch queues before we
-> decide on "done".
+Thanks, applied to the trivial patches tree and should get in once the
+1.4 merge window opens:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-There was a soft freeze period: 1st Nov to 19 Nov. I
-don't personally expect trivial patches sent after the
-soft freeze to be applied before release, so this one
-missing the boat is not very surprising. Patches dating
-back to September are a different story :-(
-
--- PMM
+Stefan
 
