@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TbRfK-0003C1-5M
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2012 02:57:42 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:47813)
+	id 1TbVzG-0007if-D1
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2012 07:34:34 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:47492)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TbRfG-000329-Jj
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 02:57:39 -0500
+	(envelope-from <lcapitulino@redhat.com>) id 1TbVzD-0007ak-Il
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 07:34:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TbRfC-0007B0-CR
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 02:57:38 -0500
-Received: from mail-ee0-f45.google.com ([74.125.83.45]:57531)
+	(envelope-from <lcapitulino@redhat.com>) id 1TbVzC-0006Tl-K6
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2012 07:34:31 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:35992)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1TbRfA-0007AL-9a; Thu, 22 Nov 2012 02:57:32 -0500
-Received: by mail-ee0-f45.google.com with SMTP id d49so4687488eek.4
-	for <multiple recipients>; Wed, 21 Nov 2012 23:57:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=tyIW/ti9fKEmJ0DQQPtsE7lmKTVidAbH9fF+m50dyO8=;
-	b=Uphg6Gdzq1fm2nmqCq8ESedFiQzc40U6LjCfLdVuUh2KXmJE245q8PQIbDolaRBieX
-	hjoYvrv4J4AetvvH1N7Kokt3B3tg2iKxDAT4ZO5erfTUPgI0s159oYWmMJpuMaxvMe9b
-	AiKwlQD4cyrXj0ZfXEarxzNPeJE1LfTcnq3FcJZopq+Shg7DKhw1WcfOCaJWMAl08498
-	jHRhS9ZY1Ok8uLbNOuCR7Bp7IEcRDZ7rvJP6sBEXYeDcHLCa3J+MPOOvunRXQkevn1Q0
-	brct/rq0+Yio2f66/T6VoC09TgshVYkOFuE8Ng5zPy3n3ETdhfgU5ZNWTfZVhj6v6RNu
-	Evaw==
-Received: by 10.14.221.9 with SMTP id q9mr55343098eep.3.1353571051173;
-	Wed, 21 Nov 2012 23:57:31 -0800 (PST)
-Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
-	by mx.google.com with ESMTPS id a45sm4794185eep.16.2012.11.21.23.57.30
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 21 Nov 2012 23:57:30 -0800 (PST)
-Date: Thu, 22 Nov 2012 08:57:29 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Richard Henderson <rth@twiddle.net>
-Message-ID: <20121122075729.GB7598@stefanha-thinkpad.redhat.com>
-References: <1351805797-31899-1-git-send-email-rth@twiddle.net>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1351805797-31899-1-git-send-email-rth@twiddle.net>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.125.83.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 0/3] trivial: Remove some pre-TCG
- CPUArchState members
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1TbVyw-00066d-TC; Thu, 22 Nov 2012 07:34:15 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qAMCYClx030522
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Thu, 22 Nov 2012 07:34:13 -0500
+Received: from doriath.home (ovpn-113-66.phx2.redhat.com [10.3.113.66])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id qAMCYAQh008464; Thu, 22 Nov 2012 07:34:11 -0500
+Date: Thu, 22 Nov 2012 10:34:11 -0200
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Jan Kiszka <jan.kiszka@siemens.com>
+Message-ID: <20121122103411.0eefef6a@doriath.home>
+In-Reply-To: <50ACC545.7000002@siemens.com>
+References: <1353420681-8870-1-git-send-email-brogers@suse.com>
+	<87lidwux0q.fsf@blackfin.pond.sub.org>
+	<50ACC545.7000002@siemens.com>
+Organization: Red Hat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Bruce Rogers <brogers@suse.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Legacy qemu-kvm options
+	have no argument
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,39 +52,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Nov 2012 07:57:40 -0000
+X-List-Received-Date: Thu, 22 Nov 2012 12:34:32 -0000
 
-On Fri, Nov 02, 2012 at 08:36:34AM +1100, Richard Henderson wrote:
-> Best I can figure, these temporaries were used by the dyngen
-> code generator, last seen in qemu 0.9.0.  Certainly there are
-> no references to these members remaining.
-> 
-> Built x86_64 and i686 hosts.
-> 
-> 
-> r~
-> 
-> 
-> Richard Henderson (3):
->   target-alpha: Remove t0, t1 from CPUAlphaState
->   target-m68k: Remove t1 from CPUM68KState
->   target-sparc: Remove t0, t1 from CPUSPARCState
-> 
->  target-alpha/cpu.h | 7 -------
->  target-m68k/cpu.h  | 3 ---
->  target-sparc/cpu.h | 1 -
->  3 files changed, 11 deletions(-)
-> 
-> -- 
-> 1.7.11.7
-> 
-> 
+On Wed, 21 Nov 2012 13:12:53 +0100
+Jan Kiszka <jan.kiszka@siemens.com> wrote:
 
-Sorry I missed your pull request.
+> On 2012-11-20 16:14, Markus Armbruster wrote:
+> > Cc'ing Marcelo & Jan to speed up patch application.
+> > 
+> > Bruce Rogers <brogers@suse.com> writes:
+> > 
+> >> The options no-kvm, no-kvm-pit, no-kvm-pit-reinjection, and no-kvm-irqchip
+> >> should be marked as having no argument.
+> >>
+> >> Signed-off-by: Bruce Rogers <brogers@suse.com>
+> >> ---
+> >>  qemu-options.hx |    8 ++++----
+> >>  1 files changed, 4 insertions(+), 4 deletions(-)
+> >>
+> >> diff --git a/qemu-options.hx b/qemu-options.hx
+> >> index 9bb29d3..fbcf079 100644
+> >> --- a/qemu-options.hx
+> >> +++ b/qemu-options.hx
+> >> @@ -2918,17 +2918,17 @@ Enable FIPS 140-2 compliance mode.
+> >>  ETEXI
+> >>  
+> >>  HXCOMM Deprecated by -machine accel=tcg property
+> >> -DEF("no-kvm", HAS_ARG, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
+> >> +DEF("no-kvm", 0, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
+> >>  
+> >>  HXCOMM Deprecated by kvm-pit driver properties
+> >> -DEF("no-kvm-pit-reinjection", HAS_ARG, QEMU_OPTION_no_kvm_pit_reinjection,
+> >> +DEF("no-kvm-pit-reinjection", 0, QEMU_OPTION_no_kvm_pit_reinjection,
+> >>      "", QEMU_ARCH_I386)
+> >>  
+> >>  HXCOMM Deprecated (ignored)
+> >> -DEF("no-kvm-pit", HAS_ARG, QEMU_OPTION_no_kvm_pit, "", QEMU_ARCH_I386)
+> >> +DEF("no-kvm-pit", 0, QEMU_OPTION_no_kvm_pit, "", QEMU_ARCH_I386)
+> >>  
+> >>  HXCOMM Deprecated by -machine kernel_irqchip=on|off property
+> >> -DEF("no-kvm-irqchip", HAS_ARG, QEMU_OPTION_no_kvm_irqchip, "", QEMU_ARCH_I386)
+> >> +DEF("no-kvm-irqchip", 0, QEMU_OPTION_no_kvm_irqchip, "", QEMU_ARCH_I386)
+> >>  
+> >>  HXCOMM Deprecated (ignored)
+> >>  DEF("tdf", 0, QEMU_OPTION_tdf,"", QEMU_ARCH_ALL)
+> 
+> Reviewed-by: Jan Kiszka <jan.kiszka@siemens.com>
 
-Thanks, applied to the trivial patches tree and should get in once the
-1.4 merge window opens:
-https://github.com/stefanha/qemu/commits/trivial-patches
-
-Stefan
+Candidate for -trivial.
 
