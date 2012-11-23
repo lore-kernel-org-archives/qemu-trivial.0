@@ -1,56 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tbn6N-0005xS-Ir
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Nov 2012 01:51:03 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:39702)
+	id 1Tbp5z-0003w7-GX
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Nov 2012 03:58:47 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:41020)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Tbn6H-0005qY-KF
-	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 01:51:01 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1Tbp5s-0003nj-1Z
+	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 03:58:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Tbn6D-0001DP-7l
-	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 01:50:57 -0500
-Received: from mail-bk0-f45.google.com ([209.85.214.45]:52586)
+	(envelope-from <peter.maydell@linaro.org>) id 1Tbp5m-00064L-Ca
+	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 03:58:39 -0500
+Received: from mail-ia0-f173.google.com ([209.85.210.173]:53111)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1Tbn6D-0001D8-0X; Fri, 23 Nov 2012 01:50:53 -0500
-Received: by mail-bk0-f45.google.com with SMTP id jk13so2586838bkc.4
-	for <multiple recipients>; Thu, 22 Nov 2012 22:50:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=/IMeix7XyXgHQ6IHtJpgOe3Sj5tnlhPHTIRa4MYkYEU=;
-	b=SfiHT/pYgyKw5SgB01+HPcpLguDw2iP2sr6yDYzb/VKL35mH9B7Bv/oJLfY2BwdcmY
-	LZ0GPHYQfX2asjkMHkFcIdOEbvtrM9HwfZtxf3OVtR8UBdv9bQx68ytafEnY+ye+trCd
-	9+TTCMSsCTWVOWwNeGjJRRU6kYjiyLXlNIwHOh5Wd6JuHLLojRbGlQzYEv+Y9o2g7yWS
-	WSBgyNotlbop7RXPLpY9nuJQm5OB7q5V4eVJgXbUHzPkQ7p59BfIx1rg0+N4y2qg+J5h
-	kVg+dK9d9IHaDj0jqQxuVPWTtPW7EHLfhVxacNOozNfJZJdq49FZtqQbtA2WBZ2a5gqO
-	QMAw==
-Received: by 10.204.150.137 with SMTP id y9mr389119bkv.103.1353653451895;
-	Thu, 22 Nov 2012 22:50:51 -0800 (PST)
-Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
-	by mx.google.com with ESMTPS id k3sm3656608bku.13.2012.11.22.22.50.50
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 22 Nov 2012 22:50:50 -0800 (PST)
-Date: Fri, 23 Nov 2012 07:50:49 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Luiz Capitulino <lcapitulino@redhat.com>
-Message-ID: <20121123065049.GB22787@stefanha-thinkpad.hitronhub.home>
-References: <1353420681-8870-1-git-send-email-brogers@suse.com>
-	<87lidwux0q.fsf@blackfin.pond.sub.org>
-	<50ACC545.7000002@siemens.com>
-	<20121122103411.0eefef6a@doriath.home>
+	(envelope-from <peter.maydell@linaro.org>) id 1Tbp5m-00064C-3w
+	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 03:58:34 -0500
+Received: by mail-ia0-f173.google.com with SMTP id w21so4865478iac.4
+	for <qemu-trivial@nongnu.org>; Fri, 23 Nov 2012 00:58:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=rQj2S1XKHBcsKGnqsvF+KNejRq/PIUvkUucmJ9fVDAc=;
+	b=D3PgOcTekAkZS2sbkhPChD1SPnTLnMjQNsdRXs7Ehw8mYjmP3HpfSObptZtZVV10+R
+	IBcjZiHTGdvctXSZDQCnkkkmAtXuomOCH6fZlVXqcTxaFJrPUpfpncA6e50rhwHE23cA
+	VulUGnCTqQCFfZ9hbEVpWiKfYWeHrcKHxruSGJY6DwDm1ujxq/D7zsD5XfB78fo03Mxc
+	cm5mKpOFfnNEOgI75IKuva50CkXL/itpXfvWIQIRj1WRExX2auHSrhUjnuKrkSXaJNkZ
+	B2dggN5AhnBZeYDtE3MV+CL/zUtke8uKHVT3/FN2DulHtmC/wb99h3PB4chQk7FAnOlP
+	GjDQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20121122103411.0eefef6a@doriath.home>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.50.42.170 with SMTP id p10mr5600414igl.47.1353661113368; Fri,
+	23 Nov 2012 00:58:33 -0800 (PST)
+Received: by 10.50.45.103 with HTTP; Fri, 23 Nov 2012 00:58:33 -0800 (PST)
+In-Reply-To: <8000c1db5e735e027860a47bde50d64ea4a96893.1353660725.git.mprivozn@redhat.com>
+References: <8000c1db5e735e027860a47bde50d64ea4a96893.1353660725.git.mprivozn@redhat.com>
+Date: Fri, 23 Nov 2012 08:58:33 +0000
+Message-ID: <CAFEAcA-+Ji_nCSnAj3p9LYCCZ-PHUMoGPVfqT9uL14E==pTGOg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+To: Michal Privoznik <mprivozn@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQlEWWLLRkdZ59mKj3OeW5ajXbVYQVtOrAHBiiuiDFd0Mr4985uxZV3qn5E9qgg9Is8xVca4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.214.45
-Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>, Bruce Rogers <brogers@suse.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Legacy qemu-kvm options
- have no argument
+X-Received-From: 209.85.210.173
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-options: Fix space at
+	EOL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,59 +53,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Nov 2012 06:51:01 -0000
+X-List-Received-Date: Fri, 23 Nov 2012 08:58:46 -0000
 
-On Thu, Nov 22, 2012 at 10:34:11AM -0200, Luiz Capitulino wrote:
-> On Wed, 21 Nov 2012 13:12:53 +0100
-> Jan Kiszka <jan.kiszka@siemens.com> wrote:
-> 
-> > On 2012-11-20 16:14, Markus Armbruster wrote:
-> > > Cc'ing Marcelo & Jan to speed up patch application.
-> > > 
-> > > Bruce Rogers <brogers@suse.com> writes:
-> > > 
-> > >> The options no-kvm, no-kvm-pit, no-kvm-pit-reinjection, and no-kvm-irqchip
-> > >> should be marked as having no argument.
-> > >>
-> > >> Signed-off-by: Bruce Rogers <brogers@suse.com>
-> > >> ---
-> > >>  qemu-options.hx |    8 ++++----
-> > >>  1 files changed, 4 insertions(+), 4 deletions(-)
-> > >>
-> > >> diff --git a/qemu-options.hx b/qemu-options.hx
-> > >> index 9bb29d3..fbcf079 100644
-> > >> --- a/qemu-options.hx
-> > >> +++ b/qemu-options.hx
-> > >> @@ -2918,17 +2918,17 @@ Enable FIPS 140-2 compliance mode.
-> > >>  ETEXI
-> > >>  
-> > >>  HXCOMM Deprecated by -machine accel=tcg property
-> > >> -DEF("no-kvm", HAS_ARG, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
-> > >> +DEF("no-kvm", 0, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
-> > >>  
-> > >>  HXCOMM Deprecated by kvm-pit driver properties
-> > >> -DEF("no-kvm-pit-reinjection", HAS_ARG, QEMU_OPTION_no_kvm_pit_reinjection,
-> > >> +DEF("no-kvm-pit-reinjection", 0, QEMU_OPTION_no_kvm_pit_reinjection,
-> > >>      "", QEMU_ARCH_I386)
-> > >>  
-> > >>  HXCOMM Deprecated (ignored)
-> > >> -DEF("no-kvm-pit", HAS_ARG, QEMU_OPTION_no_kvm_pit, "", QEMU_ARCH_I386)
-> > >> +DEF("no-kvm-pit", 0, QEMU_OPTION_no_kvm_pit, "", QEMU_ARCH_I386)
-> > >>  
-> > >>  HXCOMM Deprecated by -machine kernel_irqchip=on|off property
-> > >> -DEF("no-kvm-irqchip", HAS_ARG, QEMU_OPTION_no_kvm_irqchip, "", QEMU_ARCH_I386)
-> > >> +DEF("no-kvm-irqchip", 0, QEMU_OPTION_no_kvm_irqchip, "", QEMU_ARCH_I386)
-> > >>  
-> > >>  HXCOMM Deprecated (ignored)
-> > >>  DEF("tdf", 0, QEMU_OPTION_tdf,"", QEMU_ARCH_ALL)
-> > 
-> > Reviewed-by: Jan Kiszka <jan.kiszka@siemens.com>
-> 
-> Candidate for -trivial.
+On 23 November 2012 08:52, Michal Privoznik <mprivozn@redhat.com> wrote:
+> There's no need to add a space at the end of line.
+> Moreover, it can make problems in some projects that
+> store the help output into a file (and run couple of
+> tests based on that) and have space at EOL forbidden.
 
-This is more urgent than trivial.  It is necessary for qemu-kvm
-compatibility and I think should go into QEMU 1.3.  Otherwise we have to
-wait until QEMU 1.4 to complete the qemu-kvm -> qemu transition.
+I have no problem with this patch but I would suggest that
+these other projects have a broken workflow if they're
+reliant on QEMU's help output to not have trailing spaces
+like that :-)
 
-Stefan
+> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+(and cc'd qemu-trivial).
+
+-- PMM
+
+> ---
+>  qemu-options.hx |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 9bb29d3..8f6d0e3 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1331,7 +1331,7 @@ DEF("net", HAS_ARG, QEMU_OPTION_net,
+>      "                connect the host TAP network interface to VLAN 'n'\n"
+>  #else
+>      "-net tap[,vlan=n][,name=str][,fd=h][,ifname=name][,script=file][,downscript=dfile][,helper=helper][,sndbuf=nbytes][,vnet_hdr=on|off][,vhost=on|off][,vhostfd=h][,vhostforce=on|off]\n"
+> -    "                connect the host TAP network interface to VLAN 'n' \n"
+> +    "                connect the host TAP network interface to VLAN 'n'\n"
+>      "                use network scripts 'file' (default=" DEFAULT_NETWORK_SCRIPT ")\n"
+>      "                to configure it and 'dfile' (default=" DEFAULT_NETWORK_DOWN_SCRIPT ")\n"
+>      "                to deconfigure it\n"
 
