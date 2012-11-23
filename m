@@ -1,49 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tbv0w-0003SP-0I
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Nov 2012 10:17:58 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58991)
+	id 1TbvEq-0000xh-LU
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Nov 2012 10:32:20 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:36230)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Tbv0t-0003R2-GR
-	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 10:17:56 -0500
+	(envelope-from <jamie@shareable.org>) id 1TbvEk-0000vP-1m
+	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 10:32:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Tbv0n-0005ZP-1K
-	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 10:17:55 -0500
-Received: from mail-ia0-f173.google.com ([209.85.210.173]:59611)
+	(envelope-from <jamie@shareable.org>) id 1TbvEe-0001tC-8w
+	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 10:32:13 -0500
+Received: from mail2.shareable.org ([80.68.89.115]:42090)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Tbv0m-0005Z9-Sy
-	for qemu-trivial@nongnu.org; Fri, 23 Nov 2012 10:17:48 -0500
-Received: by mail-ia0-f173.google.com with SMTP id w21so5037400iac.4
-	for <qemu-trivial@nongnu.org>; Fri, 23 Nov 2012 07:17:48 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=a292AtTYDu+gzvETYQi2MwRKYPLFiF7Ar7L2gQePprY=;
-	b=RzXrekx/Fhf4fHPrWcWhk0ZuYix7hKvfnHFq8aM6miNcsLPrmnZXIu9+5LJY/WHdsy
-	ZfOmeY+bQ/zVNK3Y8Wm6WrfOoLfsNywd8Zl4bXZanZQ4Zahxd72qsvn3VuEat3SnNtQX
-	tsWoV99GdSVfD8mgflBGIeiXo5DlTrhp2im65gWwJ3HCjPuK8jHC4TunGoObC9oNNBOk
-	pEwrllOaiE/NoW2PNGLzULuisOT5ADHh8aGwaBnX4D6/q4M1M3TeUatO5xPpFr+k+Pg0
-	1rfoZaGOcaL+fdoLl8zEg9yvODA1KNRpl0LNWmLObjSXpC2WkahPA5BSC2IjTRohDiq+
-	PefA==
-MIME-Version: 1.0
-Received: by 10.50.152.196 with SMTP id va4mr3911475igb.13.1353683868100; Fri,
-	23 Nov 2012 07:17:48 -0800 (PST)
-Received: by 10.50.45.103 with HTTP; Fri, 23 Nov 2012 07:17:47 -0800 (PST)
-In-Reply-To: <50AF931B.8080707@redhat.com>
+	(envelope-from <jamie@shareable.org>)
+	id 1TbvEe-0001sS-3I; Fri, 23 Nov 2012 10:32:08 -0500
+Received: from jamie by mail2.shareable.org with local (Exim 4.63)
+	(envelope-from <jamie@shareable.org>)
+	id 1TbvEV-0001Gy-V0; Fri, 23 Nov 2012 15:31:59 +0000
+Date: Fri, 23 Nov 2012 15:31:59 +0000
+From: Jamie Lokier <jamie@shareable.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20121123153159.GA3912@jl-vm1.vm.bytemark.co.uk>
 References: <1353683570-30525-1-git-send-email-peter.maydell@linaro.org>
 	<50AF931B.8080707@redhat.com>
-Date: Fri, 23 Nov 2012 15:17:47 +0000
-Message-ID: <CAFEAcA9AnUrbrOKrJx7pkg9j1Ex3Ou2d23ROsn82TJa4Wdrf_Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQmfCeGgdUtoTRAm6h3o37zKrDN6EVBt3WjWJ2Rag8XzpWd3/QJl4RvsTutme0NHVI6zS3Pc
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.210.173
-Cc: qemu-trivial@nongnu.org, patches@linaro.org, qemu-devel@nongnu.org,
-	Yurij Popov <oss@djphoenix.ru>
-Subject: Re: [Qemu-trivial] [PATCH] qemu-timer: Don't use RDTSC on 386s and
-	486s
+	<CAFEAcA9AnUrbrOKrJx7pkg9j1Ex3Ou2d23ROsn82TJa4Wdrf_Q@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9AnUrbrOKrJx7pkg9j1Ex3Ou2d23ROsn82TJa4Wdrf_Q@mail.gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 80.68.89.115
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Yurij Popov <oss@djphoenix.ru>, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-timer: Don't use RDTSC
+	on 386s and 486s
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,29 +44,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Nov 2012 15:17:56 -0000
+X-List-Received-Date: Fri, 23 Nov 2012 15:32:19 -0000
 
-On 23 November 2012 15:15, Paolo Bonzini <pbonzini@redhat.com> wrote:
-> Il 23/11/2012 16:12, Peter Maydell ha scritto:
->> Adjust the conditional which guards the implementation of
->>
->> -#elif defined(__i386__)
->> +#elif defined(__i586__)
->>
->>  static inline int64_t cpu_get_real_ticks(void)
->>  {
->>
->
-> You should at least test __i686__ too:
->
-> $ gcc -m32 -dM -E -x c /dev/null |grep __i
-> #define __i686 1
-> #define __i686__ 1
-> #define __i386 1
-> #define __i386__ 1
+Peter Maydell wrote:
+> On 23 November 2012 15:15, Paolo Bonzini <pbonzini@redhat.com> wrote:
+> > Il 23/11/2012 16:12, Peter Maydell ha scritto:
+> >> Adjust the conditional which guards the implementation of
+> >>
+> >> -#elif defined(__i386__)
+> >> +#elif defined(__i586__)
+> >>
+> >>  static inline int64_t cpu_get_real_ticks(void)
+> >>  {
+> >>
+> >
+> > You should at least test __i686__ too:
+> >
+> > $ gcc -m32 -dM -E -x c /dev/null |grep __i
+> > #define __i686 1
+> > #define __i686__ 1
+> > #define __i386 1
+> > #define __i386__ 1
+> 
+> Yuck. I had assumed gcc would define everything from i386
+> on up when building for later cores.
 
-Yuck. I had assumed gcc would define everything from i386
-on up when building for later cores.
+No, and it doesn't define __i686__ on all x86-32 targets after i686 either:
 
--- PMM
+    $ gcc -march=core2 -dM -E -x c /dev/null | grep __[0-9a-z] | sort
+    #define __core2 1
+    #define __core2__ 1
+    #define __gnu_linux__ 1
+    #define __i386 1
+    #define __i386__ 1
+    #define __linux 1
+    #define __linux__ 1
+    #define __tune_core2__ 1
+    #define __unix 1
+    #define __unix__ 1
+
+x86 instruction sets haven't followed a linear progression of features
+for quite a while, especially including non-Intel chips, so it stopped
+making sense for GCC to indicate the instruction set in that way.
+
+GCC 4.6.3 defines __i586__ only when the target arch is set by -march
+(or default) to i586, pentium or pentium-mmx.
+
+And it defines __i686__ only when -march= is set (or default) to c3-2,
+i686, pentiumpro, pentium2, pentium3, pentium3m or pentium-m.
+
+Otherwise it's just things like __athlon__, __corei7__, etc.
+
+The only one that's consistent is __i386__ (and __i386).
+
+-- Jamie
 
