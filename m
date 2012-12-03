@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TdfBx-00073A-7J
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Nov 2012 05:48:33 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:44306)
+	id 1TfVVI-0001Za-3E
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Dec 2012 07:52:08 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:46696)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1TdfBn-0006aN-6h
-	for qemu-trivial@nongnu.org; Wed, 28 Nov 2012 05:48:31 -0500
+	(envelope-from <stefanha@gmail.com>) id 1TfVVG-0001ZU-9h
+	for qemu-trivial@nongnu.org; Mon, 03 Dec 2012 07:52:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1TdfBj-0006J1-8H
-	for qemu-trivial@nongnu.org; Wed, 28 Nov 2012 05:48:23 -0500
-Received: from mail-pb0-f45.google.com ([209.85.160.45]:57699)
+	(envelope-from <stefanha@gmail.com>) id 1TfVVF-0007md-0o
+	for qemu-trivial@nongnu.org; Mon, 03 Dec 2012 07:52:06 -0500
+Received: from mail-ea0-f173.google.com ([209.85.215.173]:32940)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1TdfBc-0006HG-1V; Wed, 28 Nov 2012 05:48:12 -0500
-Received: by mail-pb0-f45.google.com with SMTP id mc8so9126870pbc.4
-	for <multiple recipients>; Wed, 28 Nov 2012 02:48:10 -0800 (PST)
+	(envelope-from <stefanha@gmail.com>)
+	id 1TfVVE-0007mZ-QM; Mon, 03 Dec 2012 07:52:04 -0500
+Received: by mail-ea0-f173.google.com with SMTP id i13so1213910eaa.4
+	for <multiple recipients>; Mon, 03 Dec 2012 04:52:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=yb+eg5w3CIh2b89Dq9FjdcABbj6GchBjSORvfnTFkBw=;
-	b=DYsEgRH+HQByW7BIzZgkpdZUTFbtaEnsuqN8ZVzVGKHcyXQ24yt3QcQEcZDy/nDPiO
-	01lw6qgtECzIA4mZcT9ySP1n3GVzWufx/gze2O7mi6KVU+oIvTbdQuP0Bk26oUmW9S0K
-	YkxNQajKdMplGCf+FyqI4qDlcP64qB1GehEb9JGhx9uPlKNjOhpCG5UdTpBtNkgTtbvG
-	083VyC6AzifdkcMLgVkaBhFYEcPNMo7Mhfh8bkE/q6+Pv72ALE7zQiiDRPxdfa5+bOFX
-	n0OitJSKvmpMLXO2gb2qMXmw7hepC0/B0FS+Md9Ed3h5dOEC5DmSdIXb/nbsIPK9qAD1
-	JWTA==
-Received: by 10.68.253.4 with SMTP id zw4mr57153338pbc.143.1354099690595;
-	Wed, 28 Nov 2012 02:48:10 -0800 (PST)
-Received: from yakj.usersys.redhat.com (93-34-169-1.ip50.fastwebnet.it.
-	[93.34.169.1])
-	by mx.google.com with ESMTPS id ve6sm12269013pbc.58.2012.11.28.02.48.07
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=JqUv5ef69J1/dxHt2eOtIDY/z7nYZQOxNMQ2lLvkXJk=;
+	b=laNGC2Lz8yVx8jMtAMM/XBYlBSuyDyOxVxxO/F9ccVPgG+7Y1babtMNDi4mJhWs4af
+	RBgsPNpp0O28mZy0itKdLkI6HkvhEVcRo1NdoVJiZHuph9ruYd+Nmx4BdmP7PqwRj6gm
+	T5pdy1Xx1YRzYtehdglBH/BBWyLsdceD5Z39h4/p4lt75OZyavoCfuofbaotoDDhPJZV
+	018dVU/FiJe+eFOV0RhjLExYD9XoKneDr3a37nJwXjuPu7DtqSDsYhNXZV3KxebZzEYn
+	9Ml4A5Y9sH1EoCqAPB6USDHfqXtxlg30w6wTsKG8Q7XAn5RksouM0IzyoWpTSFjMoMuP
+	s2dw==
+Received: by 10.14.205.198 with SMTP id j46mr36160093eeo.27.1354539122337;
+	Mon, 03 Dec 2012 04:52:02 -0800 (PST)
+Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
+	by mx.google.com with ESMTPS id z8sm31092941eeo.11.2012.12.03.04.52.01
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 28 Nov 2012 02:48:09 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <50B5EBE3.2070005@redhat.com>
-Date: Wed, 28 Nov 2012 11:48:03 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/17.0 Thunderbird/17.0
+	Mon, 03 Dec 2012 04:52:01 -0800 (PST)
+Date: Mon, 3 Dec 2012 13:52:00 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20121203125200.GA6048@stefanha-thinkpad.redhat.com>
+References: <1353170443-18168-1-git-send-email-sw@weilnetz.de>
+	<50A8A264.4090705@redhat.com> <50A8BB50.5040905@weilnetz.de>
 MIME-Version: 1.0
-To: Michal Privoznik <mprivozn@redhat.com>
-References: <db00c89dd60757fa9b3be58894e3cbf0fdaa9517.1354099560.git.mprivozn@redhat.com>
-In-Reply-To: <db00c89dd60757fa9b3be58894e3cbf0fdaa9517.1354099560.git.mprivozn@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <50A8BB50.5040905@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] nbd-server-add: Fix the default for
-	'writable'
+X-Received-From: 209.85.215.173
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] qemu-common: Add definition for
+	O_NONBLOCK
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,16 +58,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Nov 2012 10:48:31 -0000
+X-List-Received-Date: Mon, 03 Dec 2012 12:52:07 -0000
 
-Il 28/11/2012 11:46, Michal Privoznik ha scritto:
-> The documentation to this monitor command tells, that 'writable'
-> argument is optional and defaults to false. However, the code sets
-> true as the default. But since some applications may already been
-> using this, it's safer to fix the code and not documentation which
-> would break those applications.
+On Sun, Nov 18, 2012 at 11:41:20AM +0100, Stefan Weil wrote:
+> Am 18.11.2012 09:55, schrieb Paolo Bonzini:
+> >Il 17/11/2012 17:40, Stefan Weil ha scritto:
+> >>backends/rng-random.c which was added by commit
+> >>5c74521d249486fa3e749dbbf6d56a70d4d7235f needs
+> >>macro O_NONBLOCK.
+> >>
+> >>The macro O_NONBLOCK is not defined for all hosts.
+> >>Adding a default definition fixes builds for MinGW.
+> >>
+> >>Signed-off-by: Stefan Weil<sw@weilnetz.de>
+> >>---
+> >>
+> >>This is a build fix. Therefore I'd appreciate if it could be
+> >>committed soon.
+> >
+> >This would make things blocking when they were supposed to be
+> >nonblocking, so I'd prefer not including it.  I thought Anthony had a
+> >fix too?
+> >
+> >Paolo
+> 
+> Yes, my patch is only a quick fix to enable builds with MinGW again.
+> 
+> Anthony's patch solves the same problem by omitting the code in
+> comiplations for non-POSIX builds.
+> 
+> My primary goal was fixing the build, so any of these two patches
+> is fine for me.
+> 
+> A backends/rng-random.c which compiles with MinGW would be even better,
+> but maybe that needs a little more time. /dev/random is available with
+> MinGW, so there is no basic problem doing this.
 
-Thanks, applied to nbd-next branch.
+Anthony's rng POSIX build patch was merged, dropping this.
 
-Paolo
+Stefan
 
