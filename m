@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TfVYi-0003yC-UI
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Dec 2012 07:55:40 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:60411)
+	id 1TfVZD-0004Do-2x
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Dec 2012 07:56:11 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:60471)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TfVYa-0003cZ-S0
-	for qemu-trivial@nongnu.org; Mon, 03 Dec 2012 07:55:38 -0500
+	(envelope-from <stefanha@gmail.com>) id 1TfVZ5-0004Ab-Nn
+	for qemu-trivial@nongnu.org; Mon, 03 Dec 2012 07:56:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TfVYU-0000Tj-SW
-	for qemu-trivial@nongnu.org; Mon, 03 Dec 2012 07:55:32 -0500
-Received: from mail-ea0-f173.google.com ([209.85.215.173]:50098)
+	(envelope-from <stefanha@gmail.com>) id 1TfVZ4-0000XQ-E9
+	for qemu-trivial@nongnu.org; Mon, 03 Dec 2012 07:56:03 -0500
+Received: from mail-ea0-f173.google.com ([209.85.215.173]:45823)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TfVYN-0000TF-NE; Mon, 03 Dec 2012 07:55:19 -0500
-Received: by mail-ea0-f173.google.com with SMTP id i13so1215308eaa.4
-	for <multiple recipients>; Mon, 03 Dec 2012 04:55:18 -0800 (PST)
+	id 1TfVZ4-0000XA-5s; Mon, 03 Dec 2012 07:56:02 -0500
+Received: by mail-ea0-f173.google.com with SMTP id i13so1215630eaa.4
+	for <multiple recipients>; Mon, 03 Dec 2012 04:56:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=egfsLZuLdiajAbpOaIVKPdYQsa51UAAKWJeU596C2bw=;
-	b=Hsi/V6UTCfMZppYzgkhkutMQ616GVto/eK3FilaEw8hpKfe/fYVnC2PQ2yXkuY1aHJ
-	RdjUjWw5ezntRiRRmFiBRwRc8oED57At/wzVB9+piqhPp3r6hp/SG5saVQxkqMw7AZ8Q
-	pVD5pAvlOZ7TcWLkpVRapGDckV7GxSTN+EahpRWeHuXE3G/b5ln40M+vrojB4EMJPXUV
-	HxAs9tg94vCAX6/3kWN8wl44yjo5ucSl6ebYE/v0Gsjhv7Wx3ubgPF4sI6qSsBEQ4HFx
-	yGxIs8MSxF7rMyhg2HGroqZJFuMdlDCSNO26TzGfsFa+RJ5UbnWNite4cajeXfaduprU
-	9FGw==
-Received: by 10.14.0.71 with SMTP id 47mr35716556eea.19.1354539318837;
-	Mon, 03 Dec 2012 04:55:18 -0800 (PST)
+	bh=mFgZsSY7+hCryt/2wHIDmRbeVd0yg1wSz228Rlb2N88=;
+	b=y36MYizi7/KWC77e3HuJDl8obngvaWV65ALUTnG3uf9NZwsDisPSjUx21B2gfqGGr9
+	aDZYrKCGRKS3GupfoTTjl0SABQ0Du9jtnMRzu1wuYjLGcP+QbvCzUFpIlPdnXTYdx9ED
+	nJNaOILDM7AoEPhzsQcLPhIYzFnTIpx8pqk5niB+/KuPfED7OBYnuvYLtHXI80YTjWCq
+	ZWNasdFsDD16lgx2rcD4VVXYuYlkbCLGFYhZ+TbL61/e/gOZe9bILxOLJrKFtnSY/UsF
+	Pkyk2QBze9anjdgxmlt67PPlxNOAP5DFCZhvWix4H6KhYTX3SA1/JDpx7jKawqBjzdt3
+	z9kg==
+Received: by 10.14.172.195 with SMTP id t43mr36257691eel.17.1354539361016;
+	Mon, 03 Dec 2012 04:56:01 -0800 (PST)
 Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
-	by mx.google.com with ESMTPS id a44sm31115854eeo.7.2012.12.03.04.55.17
+	by mx.google.com with ESMTPS id z8sm31111492eeo.11.2012.12.03.04.55.59
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 03 Dec 2012 04:55:18 -0800 (PST)
-Date: Mon, 3 Dec 2012 13:55:16 +0100
+	Mon, 03 Dec 2012 04:56:00 -0800 (PST)
+Date: Mon, 3 Dec 2012 13:55:58 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20121203125516.GC6048@stefanha-thinkpad.redhat.com>
-References: <1353593796-26823-1-git-send-email-armbru@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20121203125558.GD6048@stefanha-thinkpad.redhat.com>
+References: <1353651964-10507-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1353593796-26823-1-git-send-email-armbru@redhat.com>
+In-Reply-To: <1353651964-10507-1-git-send-email-sw@weilnetz.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 209.85.215.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, agraf@suse.de
-Subject: Re: [Qemu-trivial] [PATCH] Clean up pci_drive_hot_add()'s use of
- BlockInterfaceType
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] Fix spelling in comments and
+	documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,18 +57,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Dec 2012 12:55:39 -0000
+X-List-Received-Date: Mon, 03 Dec 2012 12:56:09 -0000
 
-On Thu, Nov 22, 2012 at 03:16:36PM +0100, Markus Armbruster wrote:
-> pci_drive_hot_add() parameter type has the wrong type: int instead of
-> BlockInterfaceType.  It's actually redundant, so we can just drop it.
+On Fri, Nov 23, 2012 at 07:26:04AM +0100, Stefan Weil wrote:
+> These spelling bugs were found by codespell:
 > 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> supressing -> suppressing
+> transfered -> transferred
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  hw/device-hotplug.c | 11 ++++-------
->  hw/pci-hotplug.c    |  7 +++----
->  sysemu.h            |  3 +--
->  3 files changed, 8 insertions(+), 13 deletions(-)
+>  hw/usb.h                      |    6 +++---
+>  tests/qemu-iotests/iotests.py |    2 +-
+>  2 files changed, 4 insertions(+), 4 deletions(-)
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
