@@ -1,46 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TfVxp-0003w2-RX
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Dec 2012 08:21:37 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:44487)
+	id 1Tflcy-0005lo-Oa
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Dec 2012 01:05:08 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:39886)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TfVxn-0003n0-8a
-	for qemu-trivial@nongnu.org; Mon, 03 Dec 2012 08:21:36 -0500
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Tflcs-0005fg-3x
+	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 01:05:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TfVxh-0008FN-Hk
-	for qemu-trivial@nongnu.org; Mon, 03 Dec 2012 08:21:35 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:61910)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Tflcp-0001wB-Mf
+	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 01:05:01 -0500
+Received: from mail-ia0-f173.google.com ([209.85.210.173]:55559)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1TfVxa-0008EU-AS; Mon, 03 Dec 2012 08:21:22 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qB3DLDA7004675
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 3 Dec 2012 08:21:19 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-18.ams2.redhat.com
-	[10.36.116.18])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id qB3DLDMU010850; Mon, 3 Dec 2012 08:21:13 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 67ABA2009D; Mon,  3 Dec 2012 14:21:12 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1353694338-13162-1-git-send-email-armbru@redhat.com>
-	<1353694338-13162-2-git-send-email-armbru@redhat.com>
-	<20121203130553.GG6048@stefanha-thinkpad.redhat.com>
-Date: Mon, 03 Dec 2012 14:21:12 +0100
-In-Reply-To: <20121203130553.GG6048@stefanha-thinkpad.redhat.com> (Stefan
-	Hajnoczi's message of "Mon, 3 Dec 2012 14:05:53 +0100")
-Message-ID: <87sj7nz2yf.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, jordan.l.justen@intel.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 1/2] pc_sysfw: Check for qemu_find_file()
-	failure
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Tflcp-0001w0-IG
+	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 01:04:59 -0500
+Received: by mail-ia0-f173.google.com with SMTP id w21so2752334iac.4
+	for <qemu-trivial@nongnu.org>; Mon, 03 Dec 2012 22:04:58 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id:x-mailer
+	:x-gm-message-state;
+	bh=w+HrF4NvfElwkB5ZgGo93LFy5QEQ0qnHjNzrqfdLwiI=;
+	b=F/lnhXJkIPHNzbw9z2/DqqqKk1buh2SjjxDQ+6OQtO1pLGsmOS2VYLzh59mjYpTuQv
+	p45nG5wqc3lw1nOGsSqAmJoy1lpxyIhIvcJX14/TiuwCZbfmcXUhrloNbY+15VjQCk2d
+	DxSet9nMS4+JsRkYje3gLSUugDjo8cDQ0mZWvSuwv8iuaGgXbMxLDPB9wEqDrdROyaxh
+	a27MxVCNd5mKeRUoz/XXKK4UT0g/uxLAVOf17c+l6UhdFKFt9SOLNhCIB/mcBF/aAcIy
+	pa4WKFRY1bCYXp7yGcnwyX2hPDq/oHH2Fr/OQiUGFCFI5yJBR1/WDcqa4VB/TkLknY2X
+	n+KA==
+Received: by 10.50.157.162 with SMTP id wn2mr1643224igb.27.1354601098621;
+	Mon, 03 Dec 2012 22:04:58 -0800 (PST)
+Received: from localhost ([124.148.20.9])
+	by mx.google.com with ESMTPS id ez8sm228870igb.17.2012.12.03.22.04.55
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 03 Dec 2012 22:04:57 -0800 (PST)
+Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Tue,  4 Dec 2012 16:04:32 +1000
+Message-Id: <cover.1354600680.git.peter.crosthwaite@xilinx.com>
+X-Mailer: git-send-email 1.7.0.4
+X-Gm-Message-State: ALoCoQkmgrYjsTk7KhBpygJyxCVN012McZAr2TLVffH4eReNmP1R/Wq2Qn8z9r7tZ8wafmmTQihQ
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.210.173
+Cc: peter.maydell@linaro.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Subject: [Qemu-trivial] [PATCH v1 0/4] Trivial patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,29 +54,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Dec 2012 13:21:36 -0000
+X-List-Received-Date: Tue, 04 Dec 2012 06:05:07 -0000
 
-Stefan Hajnoczi <stefanha@gmail.com> writes:
+My trivial patches from during the freeze.
 
-> On Fri, Nov 23, 2012 at 07:12:17PM +0100, Markus Armbruster wrote:
->> diff --git a/hw/pc_sysfw.c b/hw/pc_sysfw.c
->> index 9d7c5f4..066c4fe 100644
->> --- a/hw/pc_sysfw.c
->> +++ b/hw/pc_sysfw.c
->> @@ -84,6 +84,11 @@ static void pc_fw_add_pflash_drv(void)
->>          bios_name = BIOS_FILENAME;
->>      }
->>      filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
->> +    if (!filename) {
->> +        error_report("Can't open BIOS image %s: %s",
->> +                     bios_name, strerror(errno));
->
-> qemu_find_file() does not document that errno is set when returning
-> NULL.  I can't find other callers to qemu_find_file() that use errno
-> either.
->
-> Please add a doc comment to qemu_find_file() that errno will be set on
-> NULL return, otherwise we can't rely on it in the caller.
+Peter Crosthwaite (4):
+  pflash_cfi01: qemu_log_mask "unimplemented" msg
+  pflash_cfi0x: Send debug messages to stderr
+  zynq_slcr: Compile time warning fixes.
+  arm_gic: Add cpu nr to Raised IRQ message
 
-Good point, v2 coming.
+ hw/arm_gic.c      |    2 +-
+ hw/pflash_cfi01.c |   14 +++++++-------
+ hw/pflash_cfi02.c |    6 +++---
+ hw/zynq_slcr.c    |    7 ++++---
+ 4 files changed, 15 insertions(+), 14 deletions(-)
+
 
