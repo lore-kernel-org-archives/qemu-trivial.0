@@ -1,48 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tfx6m-0006n9-N9
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Dec 2012 13:20:40 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:43010)
+	id 1TfxfD-0005Ou-AW
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Dec 2012 13:56:15 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:51948)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Tfx6g-0006mv-Fq
-	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 13:20:40 -0500
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1Tfxf7-0005G3-9H
+	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 13:56:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Tfx6a-0004Qg-M6
-	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 13:20:34 -0500
-Received: from mail-pb0-f45.google.com ([209.85.160.45]:47363)
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1Tfxf0-00051y-PZ
+	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 13:56:09 -0500
+Received: from e28smtp05.in.ibm.com ([122.248.162.5]:56394)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Tfx6a-0004QU-GE
-	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 13:20:28 -0500
-Received: by mail-pb0-f45.google.com with SMTP id mc8so2813169pbc.4
-	for <qemu-trivial@nongnu.org>; Tue, 04 Dec 2012 10:20:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:x-gm-message-state;
-	bh=IJ11dvwmSoWZTU5VM7Fg1fP3kf0P9wfS0pvIn43H8Ls=;
-	b=aFr4xS224UIa7sq2P1lhKFdfvjXdpCK0Uu9Cvrd/JgYdC90hudkP8LkO8Ry3cq4yUT
-	E4CMymexVrSKi9Miv9DJfc93F7JMyQ9h8ku9ioKF2cA0A4HSzY4hHh/lJ8E6VJ3Bpsvp
-	37Do4As+Oea00oN0DFdDaDFL9YPtMYIW+vIRpaDGSpt9NANhMtXv/TfEsKlxtWEARkEx
-	RPf8L6amFT2TJ/IARjo6n1JvJxPbG3ejVKLd9ZIBxp7Xn4KU3fosRqZjWPkC3jdYACXF
-	Olwg+tIwTmvRSP5C+XP7Aq20FCbfsFo+zVueFCX4YKSjiB8tFznID3JXf5GE97RRNzrG
-	WtFg==
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1Tfxf0-00051g-0L
+	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 13:56:02 -0500
+Received: from /spool/local
+	by e28smtp05.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aneesh.kumar@linux.vnet.ibm.com>;
+	Wed, 5 Dec 2012 00:25:53 +0530
+Received: from d28dlp03.in.ibm.com (9.184.220.128)
+	by e28smtp05.in.ibm.com (192.168.1.135) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Wed, 5 Dec 2012 00:25:51 +0530
+Received: from d28relay04.in.ibm.com (d28relay04.in.ibm.com [9.184.220.61])
+	by d28dlp03.in.ibm.com (Postfix) with ESMTP id 3DBA0125804C;
+	Wed,  5 Dec 2012 00:25:40 +0530 (IST)
+Received: from d28av03.in.ibm.com (d28av03.in.ibm.com [9.184.220.65])
+	by d28relay04.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	qB4Itt4k64684286; Wed, 5 Dec 2012 00:25:55 +0530
+Received: from d28av03.in.ibm.com (loopback [127.0.0.1])
+	by d28av03.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	qB4Ittvp016873; Wed, 5 Dec 2012 05:55:55 +1100
+Received: from skywalker.linux.vnet.ibm.com ([9.79.213.3])
+	by d28av03.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	qB4IttiD016853; Wed, 5 Dec 2012 05:55:55 +1100
+From: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, "M. Mohan Kumar" <mohan@in.ibm.com>
+In-Reply-To: <5076BACC.7030309@redhat.com>
+References: <1349868762-10021-1-git-send-email-pbonzini@redhat.com>
+	<50759EEC.8070308@weilnetz.de> <50759F9E.3060800@redhat.com>
+	<5075A0FF.3080904@weilnetz.de> <5075A420.10003@redhat.com>
+	<5075A843.8020107@weilnetz.de> <5075A966.3090708@weilnetz.de>
+	<871uh5tqr7.fsf@explorer.in.ibm.com> <5076BACC.7030309@redhat.com>
+User-Agent: Notmuch/0.14+97~g3977b25 (http://notmuchmail.org) Emacs/24.3.50.1
+	(x86_64-unknown-linux-gnu)
+Date: Wed, 05 Dec 2012 00:25:55 +0530
+Message-ID: <87y5hdejes.fsf@linux.vnet.ibm.com>
 MIME-Version: 1.0
-Received: by 10.66.84.131 with SMTP id z3mr37036740pay.34.1354645227789; Tue,
-	04 Dec 2012 10:20:27 -0800 (PST)
-Received: by 10.66.16.137 with HTTP; Tue, 4 Dec 2012 10:20:27 -0800 (PST)
-In-Reply-To: <10b87716a125ba44a314d7a185a48d001fd3d338.1354600680.git.peter.crosthwaite@xilinx.com>
-References: <cover.1354600680.git.peter.crosthwaite@xilinx.com>
-	<10b87716a125ba44a314d7a185a48d001fd3d338.1354600680.git.peter.crosthwaite@xilinx.com>
-Date: Tue, 4 Dec 2012 18:20:27 +0000
-Message-ID: <CAFEAcA9SBLcU2avm8ma9h0DtP6=i9j0U1QdhgrJ6Bc0M_vVdCg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQllBS2UH9cMcQcERFpP0FyllHLNlFhP3/zn3JCjwDjT5d/mYhPix6W19dSY4Jqml8D2VABn
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.160.45
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v1 4/4] arm_gic: Add cpu nr to Raised IRQ
-	message
+Content-Type: text/plain
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 12120418-8256-0000-0000-0000054BDECB
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 122.248.162.5
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtfs-proxy-helper: check
+	return code of setfsgid/setfsuid
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,16 +66,241 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Dec 2012 18:20:40 -0000
+X-List-Received-Date: Tue, 04 Dec 2012 18:56:13 -0000
 
-On 4 December 2012 06:04, Peter Crosthwaite
-<peter.crosthwaite@xilinx.com> wrote:
-> Add the relevant CPU nr to this debug message to make IRQ debugging more
-> informative.
+Paolo Bonzini <pbonzini@redhat.com> writes:
+
+> Il 11/10/2012 09:25, M. Mohan Kumar ha scritto:
+>> Also as per the man page:
+>>        When glibc determines that the argument is not a valid user ID,
+>>        it will return -1 and set errno  to  EINVAL
+>>        without attempting the system call.
+>> 
+>> If it mean a nonexistent id by 'not a valid user ID' it may be a
+>> problem in virtfs case.
 >
-> Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+> I think only -1 would be an invalid user ID, or perhaps a user ID >
+> 65535 if the kernel only supports 16-bit user IDs.
+>
+> Rather than dealing with the kernel, can we just use
+> setresuid/setresgid like in the following (untested) patch?
+>
+> Paolo
+>
+> ps: so far in my short life I had managed to stay away from privilege
+> dropping, so please review with extra care.
+>
+> ------------------- 8< -----------------------
+> From: Paolo Bonzini <pbonini@redhat.com>
+> Date: Thu, 11 Oct 2012 14:20:23 +0200
+> Subject: [PATCH] virtfs-proxy-helper: use setresuid and setresgid
+>
+> The setfsuid and setfsgid system calls are obscure and they complicate
+> the error checking (that glibc's warn_unused_result "feature" forces
+> us to do).  Switch to the standard setresuid and setresgid functions.
+>
+> ---
+> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+> index f9a8270..07b3b5b 100644
+> --- a/fsdev/virtfs-proxy-helper.c
+> +++ b/fsdev/virtfs-proxy-helper.c
+> @@ -272,31 +272,76 @@ static int send_status(int sockfd, struct iovec *iovec, int status)
+>  /*
+>   * from man 7 capabilities, section
+>   * Effect of User ID Changes on Capabilities:
+> - * 4. If the file system user ID is changed from 0 to nonzero (see setfsuid(2))
+> - * then the following capabilities are cleared from the effective set:
+> - * CAP_CHOWN, CAP_DAC_OVERRIDE, CAP_DAC_READ_SEARCH,  CAP_FOWNER, CAP_FSETID,
+> - * CAP_LINUX_IMMUTABLE  (since  Linux 2.2.30), CAP_MAC_OVERRIDE, and CAP_MKNOD
+> - * (since Linux 2.2.30). If the file system UID is changed from nonzero to 0,
+> - * then any of these capabilities that are enabled in the permitted set
+> - * are enabled in the effective set.
+> + * If the effective user ID is changed from nonzero to 0, then the permitted
+> + * set is copied to the effective set.  If the effective user ID is changed
+> + * from 0 to nonzero, then all capabilities are are cleared from the effective
+> + * set.
+> + *
+> + * The setfsuid/setfsgid man pages warn that changing the effective user ID may
+> + * expose the program to unwanted signals, but this is not true anymore: for an
+> + * unprivileged (without CAP_KILL) program to send a signal, the real or
+> + * effective user ID of the sending process must equal the real or saved user
+> + * ID of the target process.  Even when dropping privileges, it is enough to
+> + * keep the saved UID to a "privileged" value and virtfs-proxy-helper won't
+> + * be exposed to signals.  So just use setresuid/setresgid.
+>   */
+> -static int setfsugid(int uid, int gid)
+> +static int setugid(int uid, int gid, int *suid, int *sgid)
+>  {
+> +    int retval;
+> +
+>      /*
+> -     * We still need DAC_OVERRIDE because  we don't change
+> +     * We still need DAC_OVERRIDE because we don't change
+>       * supplementary group ids, and hence may be subjected DAC rules
+>       */
+>      cap_value_t cap_list[] = {
+>          CAP_DAC_OVERRIDE,
+>      };
+>
+> -    setfsgid(gid);
+> -    setfsuid(uid);
+> +    /*
+> +     * If suid/sgid are NULL, the saved uid/gid is set to the
+> +     * new effective uid/gid.  If they are not, the saved uid/gid
+> +     * is set to the current effective user id and stored into
+> +     * *suid and *sgid.
+> +     */
+> +    if (!suid) {
+> +        suid = &uid;
+> +    } else {
+> +        *suid = geteuid();
+> +    }
+> +    if (!sgid) {
+> +        sgid = &gid;
+> +    } else {
+> +        *sgid = getegid();
+> +    }
+> +
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+I found this to be confusing. How about avoiding all those pointers, something
+like below ? If you are ok can I add the signed-off-by for this ? I can
+test this and get a pull request out with the build fix.
 
--- PMM
+commit 24cc9f0d07c2a505bfafbdcb72006f2eda1288a4
+Author: Paolo Bonzini <pbonini@redhat.com>
+Date:   Thu Oct 11 14:20:23 2012 +0200
+
+    virtfs-proxy-helper: use setresuid and setresgid
+    
+    The setfsuid and setfsgid system calls are obscure and they complicate
+    the error checking (that glibc's warn_unused_result "feature" forces
+    us to do).  Switch to the standard setresuid and setresgid functions.
+
+diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+index f9a8270..49ab0eb 100644
+--- a/fsdev/virtfs-proxy-helper.c
++++ b/fsdev/virtfs-proxy-helper.c
+@@ -272,31 +272,59 @@ static int send_status(int sockfd, struct iovec *iovec, int status)
+ /*
+  * from man 7 capabilities, section
+  * Effect of User ID Changes on Capabilities:
+- * 4. If the file system user ID is changed from 0 to nonzero (see setfsuid(2))
+- * then the following capabilities are cleared from the effective set:
+- * CAP_CHOWN, CAP_DAC_OVERRIDE, CAP_DAC_READ_SEARCH,  CAP_FOWNER, CAP_FSETID,
+- * CAP_LINUX_IMMUTABLE  (since  Linux 2.2.30), CAP_MAC_OVERRIDE, and CAP_MKNOD
+- * (since Linux 2.2.30). If the file system UID is changed from nonzero to 0,
+- * then any of these capabilities that are enabled in the permitted set
+- * are enabled in the effective set.
++ * If the effective user ID is changed from nonzero to 0, then the permitted
++ * set is copied to the effective set.  If the effective user ID is changed
++ * from 0 to nonzero, then all capabilities are are cleared from the effective
++ * set.
++ *
++ * The setfsuid/setfsgid man pages warn that changing the effective user ID may
++ * expose the program to unwanted signals, but this is not true anymore: for an
++ * unprivileged (without CAP_KILL) program to send a signal, the real or
++ * effective user ID of the sending process must equal the real or saved user
++ * ID of the target process.  Even when dropping privileges, it is enough to
++ * keep the saved UID to a "privileged" value and virtfs-proxy-helper won't
++ * be exposed to signals.  So just use setresuid/setresgid.
+  */
+-static int setfsugid(int uid, int gid)
++static int setugid(int uid, int gid, int suid, int sgid)
+ {
++    int retval;
++
+     /*
+-     * We still need DAC_OVERRIDE because  we don't change
++     * We still need DAC_OVERRIDE because we don't change
+      * supplementary group ids, and hence may be subjected DAC rules
+      */
+     cap_value_t cap_list[] = {
+         CAP_DAC_OVERRIDE,
+     };
+ 
+-    setfsgid(gid);
+-    setfsuid(uid);
++    if (setresuid(-1, uid, suid) == -1) {
++        retval = -errno;
++        goto err_out;
++    }
++    if (setresgid(-1, gid, sgid) == -1) {
++        retval = -errno;
++        goto err_suid;
++    }
+ 
+     if (uid != 0 || gid != 0) {
+-        return do_cap_set(cap_list, ARRAY_SIZE(cap_list), 0);
++        if (do_cap_set(cap_list, ARRAY_SIZE(cap_list), 0) < 0) {
++            retval = -errno;
++            goto err_sgid;
++        }
+     }
++
+     return 0;
++
++err_sgid:
++    if (setresgid(-1, sgid, sgid) == -1) {
++        abort();
++    }
++err_suid:
++    if (setresuid(-1, suid, suid) == -1) {
++        abort();
++    }
++err_out:
++    return retval;
+ }
+ 
+ /*
+@@ -586,9 +614,8 @@ static int do_create_others(int type, struct iovec *iovec)
+         return retval;
+     }
+     offset += retval;
+-    retval = setfsugid(uid, gid);
++    retval = setugid(uid, gid, cur_uid, cur_gid);
+     if (retval < 0) {
+-        retval = -errno;
+         goto err_out;
+     }
+     switch (type) {
+@@ -621,7 +648,7 @@ static int do_create_others(int type, struct iovec *iovec)
+ err_out:
+     v9fs_string_free(&path);
+     v9fs_string_free(&oldpath);
+-    setfsugid(cur_uid, cur_gid);
++    setugid(cur_uid, cur_gid, cur_uid, cur_gid);
+     return retval;
+ }
+ 
+@@ -641,24 +668,20 @@ static int do_create(struct iovec *iovec)
+     if (ret < 0) {
+         goto unmarshal_err_out;
+     }
++
+     cur_uid = geteuid();
+     cur_gid = getegid();
+-    ret = setfsugid(uid, gid);
++    ret = setugid(uid, gid, cur_uid, cur_gid);
+     if (ret < 0) {
+-        /*
+-         * On failure reset back to the
+-         * old uid/gid
+-         */
+-        ret = -errno;
+-        goto err_out;
++        goto unmarshal_err_out;
+     }
+     ret = open(path.data, flags, mode);
+     if (ret < 0) {
+         ret = -errno;
+     }
+ 
+-err_out:
+-    setfsugid(cur_uid, cur_gid);
++    setugid(cur_uid, cur_gid, cur_uid, cur_gid);
++
+ unmarshal_err_out:
+     v9fs_string_free(&path);
+     return ret;
+
 
