@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TfldL-0006lZ-JQ
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Dec 2012 01:05:31 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:39972)
+	id 1TfldO-0006vl-VD
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Dec 2012 01:05:34 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:39999)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TfldC-0006LE-SX
-	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 01:05:29 -0500
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TfldI-0006dY-TH
+	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 01:05:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Tfld6-0002Dk-Pg
-	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 01:05:22 -0500
-Received: from mail-ie0-f173.google.com ([209.85.223.173]:61964)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TfldC-0002Eg-No
+	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 01:05:28 -0500
+Received: from mail-ie0-f173.google.com ([209.85.223.173]:55792)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Tfld6-0001vz-M1
-	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 01:05:16 -0500
-Received: by mail-ie0-f173.google.com with SMTP id e13so5375619iej.4
-	for <qemu-trivial@nongnu.org>; Mon, 03 Dec 2012 22:05:16 -0800 (PST)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1TfldC-0002Do-KO
+	for qemu-trivial@nongnu.org; Tue, 04 Dec 2012 01:05:22 -0500
+Received: by mail-ie0-f173.google.com with SMTP id e13so5375899iej.4
+	for <qemu-trivial@nongnu.org>; Mon, 03 Dec 2012 22:05:22 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
 	h=sender:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
 	:references:in-reply-to:references:x-gm-message-state;
-	bh=eBh8j0XDlvct7Ppt5X31Zftz9BCCyhWIRyD7cMYomRc=;
-	b=EzbtVCAff2mjt6MdYN08chLn2sPi+rtQgI7eDk/nY86Xubwqcw5gingq+yGg8W6wNi
-	DYiwjEDDwcCnqucXN6kcjfVhO8RCOJQutWpnjjjjwtS4EZR5xGDJVmiHtW/gm4ls3lwL
-	9MtkxZBKRLH3weIqRyhd91Tun5I3byFLgHzIie+yyx37baYVd/NSXxzFk8+Mn9kGi408
-	TbZr2mBaoaiRovPkhhJBaE29L9kyrBfu5jQbbB1iN/35DP/9oHuJYyzpIs2duj6DC0F2
-	hELXuVsVFqythP79fB51CaDOCeq4Sn/hO1FSFOeYIPLqVpvlLTg1W2beh36mOcZR3EhC
-	i8aQ==
-Received: by 10.50.33.138 with SMTP id r10mr1685145igi.6.1354601116399;
-	Mon, 03 Dec 2012 22:05:16 -0800 (PST)
+	bh=nljpLKr1/doGEu3hI9Xs3KRRkMMV2SdU4qAVc/SlzXk=;
+	b=ZtlTXmo7oJZk6soCScdM4tGuntq2NMtky7EHUOF01dhd4szFrqWnE26uOV30OdqlRQ
+	KlUG1pxtdVmQO1iFLedQqyc5yvJwxDaiK1QdTNfbshFPtNDD/LmnCV2t+aGiHq8joMj9
+	aihwe/ZI6PcAX7MPGtLCQOKyA6kffS9w/llYd1dxan1v4cK6k96gfNwJHtEI5t6uB6RW
+	w8fiKD4ZsDWgxBB2cT0CNltPr70QLltvR7nCraD0h5eO7oHy/NOFROOtdxwHPYQE+/5L
+	bvDT0eQ7wBEPpILRhtDc+PMd3Xrm/4RoqPMAbTCb6Y4yfcu3ayvosbmGPube1bGNk0wj
+	kblg==
+Received: by 10.43.110.132 with SMTP id ek4mr10107803icc.32.1354601122317;
+	Mon, 03 Dec 2012 22:05:22 -0800 (PST)
 Received: from localhost ([124.148.20.9])
-	by mx.google.com with ESMTPS id em3sm9154798igc.7.2012.12.03.22.05.13
+	by mx.google.com with ESMTPS id v12sm263218igv.3.2012.12.03.22.05.19
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 03 Dec 2012 22:05:15 -0800 (PST)
+	Mon, 03 Dec 2012 22:05:21 -0800 (PST)
 Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
 From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 To: qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-Date: Tue,  4 Dec 2012 16:04:35 +1000
-Message-Id: <bf5f902df566826015586252b67754889111c27b.1354600680.git.peter.crosthwaite@xilinx.com>
+Date: Tue,  4 Dec 2012 16:04:36 +1000
+Message-Id: <10b87716a125ba44a314d7a185a48d001fd3d338.1354600680.git.peter.crosthwaite@xilinx.com>
 X-Mailer: git-send-email 1.7.0.4
 In-Reply-To: <cover.1354600680.git.peter.crosthwaite@xilinx.com>
 References: <cover.1354600680.git.peter.crosthwaite@xilinx.com>
 In-Reply-To: <cover.1354600680.git.peter.crosthwaite@xilinx.com>
 References: <cover.1354600680.git.peter.crosthwaite@xilinx.com>
-X-Gm-Message-State: ALoCoQns7nl63XTg1EvXQa/0jL9kv/WSZg7wzPx+Kx7fXenXAYAZlZ1kNFeKYdqTgGlQRJfoDomW
+X-Gm-Message-State: ALoCoQm3Cyb6cEGtAkPfCR1ZLki3C6CqIjTMDAKsLYi42Bp1nCmb1xBWY53FEf2sRNxxMzjr1h5x
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 209.85.223.173
 Cc: peter.maydell@linaro.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Subject: [Qemu-trivial] [PATCH v1 3/4] zynq_slcr: Compile time warning fixes.
+Subject: [Qemu-trivial] [PATCH v1 4/4] arm_gic: Add cpu nr to Raised IRQ
+	message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,48 +59,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Dec 2012 06:05:30 -0000
+X-List-Received-Date: Tue, 04 Dec 2012 06:05:33 -0000
 
-Few warnings when compiled with debug printfs enabled. Fixed all.
+Add the relevant CPU nr to this debug message to make IRQ debugging more
+informative.
 
 Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 ---
 
- hw/zynq_slcr.c |    7 ++++---
- 1 files changed, 4 insertions(+), 3 deletions(-)
+ hw/arm_gic.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/hw/zynq_slcr.c b/hw/zynq_slcr.c
-index dde4306..f55ab8d 100644
---- a/hw/zynq_slcr.c
-+++ b/hw/zynq_slcr.c
-@@ -334,7 +334,7 @@ static uint64_t zynq_slcr_read(void *opaque, hwaddr offset,
- {
-     uint32_t ret = zynq_slcr_read_imp(opaque, offset);
- 
--    DB_PRINT("addr: %08x data: %08x\n", offset, ret);
-+    DB_PRINT("addr: %08x data: %08x\n", (unsigned)offset, (unsigned)ret);
-     return ret;
- }
- 
-@@ -343,7 +343,7 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
- {
-     ZynqSLCRState *s = (ZynqSLCRState *)opaque;
- 
--    DB_PRINT("offset: %08x data: %08x\n", offset, (unsigned)val);
-+    DB_PRINT("offset: %08x data: %08x\n", (unsigned)offset, (unsigned)val);
- 
-     switch (offset) {
-     case 0x00: /* SCL */
-@@ -476,7 +476,8 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
-             break;
-         default:
-         bad_reg:
--            DB_PRINT("Bad register write %x <= %08x\n", (int)offset, val);
-+            DB_PRINT("Bad register write %x <= %08x\n", (int)offset,
-+                     (unsigned)val);
+diff --git a/hw/arm_gic.c b/hw/arm_gic.c
+index f9e423f..7a10188 100644
+--- a/hw/arm_gic.c
++++ b/hw/arm_gic.c
+@@ -76,7 +76,7 @@ void gic_update(GICState *s)
+         if (best_prio <= s->priority_mask[cpu]) {
+             s->current_pending[cpu] = best_irq;
+             if (best_prio < s->running_priority[cpu]) {
+-                DPRINTF("Raised pending IRQ %d\n", best_irq);
++                DPRINTF("Raised pending IRQ %d (cpu %d)\n", best_irq, cpu);
+                 level = 1;
+             }
          }
-     } else {
-         DB_PRINT("SCLR registers are locked. Unlock them first\n");
 -- 
 1.7.0.4
 
