@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TgEEo-00061n-0z
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Dec 2012 07:38:06 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:33453)
+	id 1TgFxm-0007YF-1O
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Dec 2012 09:28:38 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:53360)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1TgEEe-0005za-UN
-	for qemu-trivial@nongnu.org; Wed, 05 Dec 2012 07:38:04 -0500
+	(envelope-from <armbru@redhat.com>) id 1TgFxb-00077D-Im
+	for qemu-trivial@nongnu.org; Wed, 05 Dec 2012 09:28:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1TgEEZ-00012k-5P
-	for qemu-trivial@nongnu.org; Wed, 05 Dec 2012 07:37:56 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:10267)
+	(envelope-from <armbru@redhat.com>) id 1TgFxW-0003ie-Jm
+	for qemu-trivial@nongnu.org; Wed, 05 Dec 2012 09:28:27 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:32090)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1TgEEY-00012e-Th; Wed, 05 Dec 2012 07:37:51 -0500
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qB5Cbjwq008398
+	(envelope-from <armbru@redhat.com>)
+	id 1TgFxJ-0003gp-E3; Wed, 05 Dec 2012 09:28:09 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qB5ES7fN008330
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 5 Dec 2012 07:37:45 -0500
-Received: from yakj.usersys.redhat.com (ovpn-112-22.ams2.redhat.com
-	[10.36.112.22])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id qB5Cbgqh032000; Wed, 5 Dec 2012 07:37:43 -0500
-Message-ID: <50BF4015.2050102@redhat.com>
-Date: Wed, 05 Dec 2012 13:37:41 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/17.0 Thunderbird/17.0
+	Wed, 5 Dec 2012 09:28:07 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-18.ams2.redhat.com
+	[10.36.116.18])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id qB5ES6Pk003366; Wed, 5 Dec 2012 09:28:06 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id A8D52200A0; Wed,  5 Dec 2012 15:28:05 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+References: <1353694338-13162-1-git-send-email-armbru@redhat.com>
+	<1353694338-13162-2-git-send-email-armbru@redhat.com>
+	<20121203130553.GG6048@stefanha-thinkpad.redhat.com>
+Date: Wed, 05 Dec 2012 15:28:05 +0100
+In-Reply-To: <20121203130553.GG6048@stefanha-thinkpad.redhat.com> (Stefan
+	Hajnoczi's message of "Mon, 3 Dec 2012 14:05:53 +0100")
+Message-ID: <87a9tsh8ui.fsf_-_@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
 MIME-Version: 1.0
-To: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
-References: <1349868762-10021-1-git-send-email-pbonzini@redhat.com>
-	<50759EEC.8070308@weilnetz.de> <50759F9E.3060800@redhat.com>
-	<5075A0FF.3080904@weilnetz.de> <5075A420.10003@redhat.com>
-	<5075A843.8020107@weilnetz.de> <5075A966.3090708@weilnetz.de>
-	<871uh5tqr7.fsf@explorer.in.ibm.com> <5076BACC.7030309@redhat.com>
-	<87y5hdejes.fsf@linux.vnet.ibm.com>
-	<87obi8ew14.fsf@linux.vnet.ibm.com>
-In-Reply-To: <87obi8ew14.fsf@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	"M. Mohan Kumar" <mohan@in.ibm.com>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtfs-proxy-helper: check
- return code of setfsgid/setfsuid
+Cc: qemu-trivial@nongnu.org, jordan.l.justen@intel.com, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH v2 1/2] pc_sysfw: Check for qemu_find_file()
+	failure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,17 +52,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Dec 2012 12:38:04 -0000
+X-List-Received-Date: Wed, 05 Dec 2012 14:28:37 -0000
 
-Il 05/12/2012 09:35, Aneesh Kumar K.V ha scritto:
-> I have tested the below patch. Currently i don't have a signed-off-by on
-> the patch. One change noted by mohan which I incorporated in the patch
-> is we need to call setresgid before calling setresuid. If you are ok
-> with this change I can send it upstream.
+pc_fw_add_pflash_drv() ignores qemu_find_file() failure, and happily
+creates a drive without a medium.
 
-Yes, please.
+When pc_system_flash_init() asks for its size, bdrv_getlength() fails
+with -ENOMEDIUM, which isn't checked either.  It fails relatively
+cleanly only because -ENOMEDIUM isn't a multiple of 4096:
 
-Either your version without pointers or mine is okay for me.
+    $ qemu-system-x86_64 -S -vnc :0 -bios nonexistant
+    qemu: PC system firmware (pflash) must be a multiple of 0x1000
+    [Exit 1 ]
 
-Paolo
+Fix by handling the qemu_find_file() failure.
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+v2: Don't report errno, because that can produce misleading error
+messages.  For instance, when "seabios/out/bios.bin" is unreadable, we
+fall back to $data_dir/seabios/out/bios.bin, which doesn't exist, and
+then report "seabios/out/bios.bin: No such file or directory".  No other
+caller reports errno.
+
+ hw/pc_sysfw.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/hw/pc_sysfw.c b/hw/pc_sysfw.c
+index 9d7c5f4..a161e7b 100644
+--- a/hw/pc_sysfw.c
++++ b/hw/pc_sysfw.c
+@@ -84,6 +84,10 @@ static void pc_fw_add_pflash_drv(void)
+         bios_name = BIOS_FILENAME;
+     }
+     filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
++    if (!filename) {
++        error_report("Can't open BIOS image %s", bios_name);
++        exit(1);
++    }
+ 
+     opts = drive_add(IF_PFLASH, -1, filename, "readonly=on");
+ 
+-- 
+1.7.11.7
+
 
