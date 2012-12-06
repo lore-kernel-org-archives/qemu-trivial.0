@@ -1,46 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TgFxm-0007YF-1O
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Dec 2012 09:28:38 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:53360)
+	id 1TgXTX-0003nC-32
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Dec 2012 04:10:35 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:51469)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TgFxb-00077D-Im
-	for qemu-trivial@nongnu.org; Wed, 05 Dec 2012 09:28:36 -0500
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1TgXTN-0003R9-Al
+	for qemu-trivial@nongnu.org; Thu, 06 Dec 2012 04:10:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TgFxW-0003ie-Jm
-	for qemu-trivial@nongnu.org; Wed, 05 Dec 2012 09:28:27 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:32090)
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1TgXTD-0000Ex-0Y
+	for qemu-trivial@nongnu.org; Thu, 06 Dec 2012 04:10:22 -0500
+Received: from [222.73.24.84] (port=15509 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1TgFxJ-0003gp-E3; Wed, 05 Dec 2012 09:28:09 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qB5ES7fN008330
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 5 Dec 2012 09:28:07 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-18.ams2.redhat.com
-	[10.36.116.18])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id qB5ES6Pk003366; Wed, 5 Dec 2012 09:28:06 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id A8D52200A0; Wed,  5 Dec 2012 15:28:05 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+	(envelope-from <lig.fnst@cn.fujitsu.com>)
+	id 1TgXSx-0008SK-LV; Thu, 06 Dec 2012 04:09:59 -0500
+X-IronPort-AV: E=Sophos;i="4.84,229,1355068800"; 
+   d="scan'208";a="6345647"
+Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
+	by song.cn.fujitsu.com with ESMTP; 06 Dec 2012 17:08:03 +0800
+Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id qB68oQGM027909;
+	Thu, 6 Dec 2012 16:50:27 +0800
+Received: from [10.167.225.128] ([10.167.225.128])
+	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
+	with ESMTP id 2012120616493834-272652 ;
+	Thu, 6 Dec 2012 16:49:38 +0800 
+From: li guang <lig.fnst@cn.fujitsu.com>
 To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1353694338-13162-1-git-send-email-armbru@redhat.com>
-	<1353694338-13162-2-git-send-email-armbru@redhat.com>
-	<20121203130553.GG6048@stefanha-thinkpad.redhat.com>
-Date: Wed, 05 Dec 2012 15:28:05 +0100
-In-Reply-To: <20121203130553.GG6048@stefanha-thinkpad.redhat.com> (Stefan
-	Hajnoczi's message of "Mon, 3 Dec 2012 14:05:53 +0100")
-Message-ID: <87a9tsh8ui.fsf_-_@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, jordan.l.justen@intel.com, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH v2 1/2] pc_sysfw: Check for qemu_find_file()
-	failure
+In-Reply-To: <CAJSP0QXytL5YBzx2S1qQ0SOHJ6-Ke15kVbqC7Q12_PFWQOeGeA@mail.gmail.com>
+References: <1352101300-12060-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	<CAJSP0QXytL5YBzx2S1qQ0SOHJ6-Ke15kVbqC7Q12_PFWQOeGeA@mail.gmail.com>
+Date: Thu, 06 Dec 2012 16:47:51 +0800
+Message-ID: <1354783671.8768.1.camel@liguang.fnst.cn.fujitsu.com>
+Mime-Version: 1.0
+X-Mailer: Evolution 2.30.3 
+X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
+	15, 2011) at 2012/12/06 16:49:38,
+	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
+	2011) at 2012/12/06 16:49:40,
+	Serialize complete at 2012/12/06 16:49:40
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 222.73.24.84
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH v4] correct error message
+ qemu-img reported
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,48 +57,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Dec 2012 14:28:37 -0000
+X-List-Received-Date: Thu, 06 Dec 2012 09:10:32 -0000
 
-pc_fw_add_pflash_drv() ignores qemu_find_file() failure, and happily
-creates a drive without a medium.
+Hi, Stefan
 
-When pc_system_flash_init() asks for its size, bdrv_getlength() fails
-with -ENOMEDIUM, which isn't checked either.  It fails relatively
-cleanly only because -ENOMEDIUM isn't a multiple of 4096:
+seems this tiny patch was ignored.
 
-    $ qemu-system-x86_64 -S -vnc :0 -bios nonexistant
-    qemu: PC system firmware (pflash) must be a multiple of 0x1000
-    [Exit 1 ]
+=E5=9C=A8 2012-11-05=E4=B8=80=E7=9A=84 11:27 +0100=EF=BC=8CStefan Hajnoczi=
+=E5=86=99=E9=81=93=EF=BC=9A
+> On Mon, Nov 5, 2012 at 8:41 AM, liguang <lig.fnst@cn.fujitsu.com> wrote:
+> > qemu-img will complain when qcow or qcow2
+> > size overflow for 64 bits, report the right
+> > message in this condition.
+> >
+> > Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+> > ---
+> >  qemu-img.c |    7 ++++++-
+> >  1 files changed, 6 insertions(+), 1 deletions(-)
+>=20
+> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Fix by handling the qemu_find_file() failure.
-
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
-v2: Don't report errno, because that can produce misleading error
-messages.  For instance, when "seabios/out/bios.bin" is unreadable, we
-fall back to $data_dir/seabios/out/bios.bin, which doesn't exist, and
-then report "seabios/out/bios.bin: No such file or directory".  No other
-caller reports errno.
-
- hw/pc_sysfw.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/pc_sysfw.c b/hw/pc_sysfw.c
-index 9d7c5f4..a161e7b 100644
---- a/hw/pc_sysfw.c
-+++ b/hw/pc_sysfw.c
-@@ -84,6 +84,10 @@ static void pc_fw_add_pflash_drv(void)
-         bios_name = BIOS_FILENAME;
-     }
-     filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-+    if (!filename) {
-+        error_report("Can't open BIOS image %s", bios_name);
-+        exit(1);
-+    }
- 
-     opts = drive_add(IF_PFLASH, -1, filename, "readonly=on");
- 
--- 
-1.7.11.7
+--=20
+regards!
+li guang
 
 
