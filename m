@@ -1,50 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tgp5t-0000PW-PY
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Dec 2012 22:59:21 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:53403)
+	id 1ThoTf-00026T-1J
+	for mharc-qemu-trivial@gnu.org; Sun, 09 Dec 2012 16:31:59 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:41823)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1Tgp5r-0000J0-3J
-	for qemu-trivial@nongnu.org; Thu, 06 Dec 2012 22:59:20 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1ThoTb-0001uy-HL
+	for qemu-trivial@nongnu.org; Sun, 09 Dec 2012 16:31:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1Tgp5q-0003hX-04
-	for qemu-trivial@nongnu.org; Thu, 06 Dec 2012 22:59:19 -0500
-Received: from [222.73.24.84] (port=2844 helo=song.cn.fujitsu.com)
+	(envelope-from <stefan@weilnetz.de>) id 1ThoTY-0004UQ-GT
+	for qemu-trivial@nongnu.org; Sun, 09 Dec 2012 16:31:55 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41528)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1Tgp5n-0003h5-CY; Thu, 06 Dec 2012 22:59:15 -0500
-X-IronPort-AV: E=Sophos;i="4.84,235,1355068800"; 
-   d="scan'208";a="6350301"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 07 Dec 2012 11:57:25 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id qB73xhfq026818;
-	Fri, 7 Dec 2012 11:59:43 +0800
-Received: from [10.167.225.128] ([10.167.225.128])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2012120711583056-288498 ;
-	Fri, 7 Dec 2012 11:58:30 +0800 
-From: li guang <lig.fnst@cn.fujitsu.com>
-To: Kevin Wolf <kwolf@redhat.com>
-In-Reply-To: <50C06D98.9040804@redhat.com>
-References: <1352101300-12060-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<50C06D98.9040804@redhat.com>
-Date: Fri, 07 Dec 2012 11:56:42 +0800
-Message-ID: <1354852602.15193.0.camel@liguang.fnst.cn.fujitsu.com>
-Mime-Version: 1.0
-X-Mailer: Evolution 2.30.3 
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2012/12/07 11:58:30,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2012/12/07 11:58:32,
-	Serialize complete at 2012/12/07 11:58:32
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] correct error message
-	qemu-img reported
+	(envelope-from <stefan@weilnetz.de>)
+	id 1ThoTT-0004M3-2U; Sun, 09 Dec 2012 16:31:47 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	1F617728001C; Sun,  9 Dec 2012 22:31:45 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 8wbzzmd+clp1; Sun,  9 Dec 2012 22:31:44 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 6E50A7280048; Sun,  9 Dec 2012 22:31:44 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Sun,  9 Dec 2012 22:31:30 +0100
+Message-Id: <1355088690-4933-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 78.47.199.172
+Cc: Kevin Wolf <kwolf@redhat.com>, Hans de Goede <hdegoede@redhat.com>,
+	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] Fix spelling (transfered -> transferred,
+	supressing -> suppressing)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,71 +44,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Dec 2012 03:59:20 -0000
+X-List-Received-Date: Sun, 09 Dec 2012 21:31:58 -0000
 
-=E5=9C=A8 2012-12-06=E5=9B=9B=E7=9A=84 11:04 +0100=EF=BC=8CKevin Wolf=E5=86=
-=99=E9=81=93=EF=BC=9A
-> Am 05.11.2012 08:41, schrieb liguang:
-> > qemu-img will complain when qcow or qcow2
-> > size overflow for 64 bits, report the right
-> > message in this condition.
-> >=20
-> > Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
-> > ---
-> >  qemu-img.c |    7 ++++++-
-> >  1 files changed, 6 insertions(+), 1 deletions(-)
-> >=20
-> > diff --git a/qemu-img.c b/qemu-img.c
-> > index b41e670..d9434ad 100644
-> > --- a/qemu-img.c
-> > +++ b/qemu-img.c
-> > @@ -340,7 +340,12 @@ static int img_create(int argc, char **argv)
-> >          int64_t sval;
-> >          char *end;
-> >          sval =3D strtosz_suffix(argv[optind++], &end, STRTOSZ_DEFSUFFI=
-X_B);
-> > -        if (sval < 0 || *end) {
-> > +        if (sval < 0) {
-> > +            error_report("Image size must be less than 8 exabytes!");
-> > +            ret =3D -1;
-> > +            goto out;
-> > +        }
->=20
-> This is wrong, overflows are not the only way how strtosz_suffix() can fa=
-il.
->=20
-> Before this patch:
->=20
-> $ ./qemu-img create /tmp/foo bar
-> qemu-img: Invalid image size specified! You may use k, M, G or T
-> suffixes for
-> qemu-img: kilobytes, megabytes, gigabytes and terabytes
->=20
-> With the patch applied:
->=20
-> $ ./qemu-img create /tmp/foo bar
-> qemu-img: Image size must be less than 8 exabytes!
->=20
+These spellings were found and fixed by codespell.
 
-Oh, my fault, I'll fix.
-Thanks!
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/usb.h                      |    6 +++---
+ tests/qemu-iotests/iotests.py |    2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-> Kevin
->=20
->=20
-> > +        if (*end) {
-> >              error_report("Invalid image size specified! You may use k,=
- M, G or "
-> >                    "T suffixes for ");
-> >              error_report("kilobytes, megabytes, gigabytes and terabyte=
-s.");
-> >=20
->=20
->=20
->=20
-
---=20
-regards!
-li guang
+diff --git a/hw/usb.h b/hw/usb.h
+index 7d6de69..f05eb17 100644
+--- a/hw/usb.h
++++ b/hw/usb.h
+@@ -282,7 +282,7 @@ typedef struct USBDeviceClass {
+      * Called from handle_packet().
+      *
+      * Status gets stored in p->status, and if p->status == USB_RET_SUCCESS
+-     * then the number of bytes transfered is stored in p->actual_length
++     * then the number of bytes transferred is stored in p->actual_length
+      */
+     void (*handle_control)(USBDevice *dev, USBPacket *p, int request, int value,
+                            int index, int length, uint8_t *data);
+@@ -292,7 +292,7 @@ typedef struct USBDeviceClass {
+      * Called from handle_packet().
+      *
+      * Status gets stored in p->status, and if p->status == USB_RET_SUCCESS
+-     * then the number of bytes transfered is stored in p->actual_length
++     * then the number of bytes transferred is stored in p->actual_length
+      */
+     void (*handle_data)(USBDevice *dev, USBPacket *p);
+ 
+@@ -358,7 +358,7 @@ struct USBPacket {
+     bool short_not_ok;
+     bool int_req;
+     int status; /* USB_RET_* status code */
+-    int actual_length; /* Number of bytes actually transfered */
++    int actual_length; /* Number of bytes actually transferred */
+     /* Internal use by the USB layer.  */
+     USBPacketState state;
+     USBCombinedPacket *combined;
+diff --git a/tests/qemu-iotests/iotests.py b/tests/qemu-iotests/iotests.py
+index b2eaf20..0be5c7e 100644
+--- a/tests/qemu-iotests/iotests.py
++++ b/tests/qemu-iotests/iotests.py
+@@ -43,7 +43,7 @@ def qemu_img(*args):
+     return subprocess.call(qemu_img_args + list(args), stdin=devnull, stdout=devnull)
+ 
+ def qemu_img_verbose(*args):
+-    '''Run qemu-img without supressing its output and return the exit code'''
++    '''Run qemu-img without suppressing its output and return the exit code'''
+     return subprocess.call(qemu_img_args + list(args))
+ 
+ def qemu_io(*args):
+-- 
+1.7.10.4
 
 
