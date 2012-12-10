@@ -1,44 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ti4FE-0005RU-NT
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Dec 2012 09:22:08 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:38009)
+	id 1Ti7PV-0002CQ-Ur
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Dec 2012 12:44:57 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:52984)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1Ti4F6-0005R9-QK
-	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 09:22:07 -0500
+	(envelope-from <sw@weilnetz.de>) id 1Ti7PS-00021b-8G
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 12:44:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1Ti4F5-0007vT-3d
-	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 09:22:00 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:64911)
+	(envelope-from <sw@weilnetz.de>) id 1Ti7PR-00075O-5Y
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 12:44:54 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:58864)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1Ti4F4-0007vI-Rt
-	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 09:21:59 -0500
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qBAELpJS013682
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 10 Dec 2012 09:21:52 -0500
-Received: from localhost (vpn1-112-23.nay.redhat.com [10.66.112.23])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id qBAELodS010417; Mon, 10 Dec 2012 09:21:51 -0500
-Date: Mon, 10 Dec 2012 22:21:33 +0800
-From: Amos Kong <akong@redhat.com>
-To: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-Message-ID: <20121210142133.GB5484@t430s.redhat.com>
-References: <20121210135131.GA40753@cs.nctu.edu.tw>
+	(envelope-from <sw@weilnetz.de>)
+	id 1Ti7PH-00072c-RC; Mon, 10 Dec 2012 12:44:43 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	B2D5C7280048; Mon, 10 Dec 2012 18:44:42 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id QPqayjazTLNz; Mon, 10 Dec 2012 18:44:41 +0100 (CET)
+Received: from flocke.fritz.box (p5086F143.dip.t-dialin.net [80.134.241.67])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	215DC728001C; Mon, 10 Dec 2012 18:44:41 +0100 (CET)
+Received: from localhost ([127.0.0.1] ident=stefan)
+	by flocke.fritz.box with esmtp (Exim 4.72)
+	(envelope-from <sw@weilnetz.de>)
+	id 1Ti7PE-0001eP-L9; Mon, 10 Dec 2012 18:44:40 +0100
+Message-ID: <50C61F88.2040005@weilnetz.de>
+Date: Mon, 10 Dec 2012 18:44:40 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
+	rv:1.9.1.16) Gecko/20121027 Iceowl/1.0b1 Icedove/3.0.11
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20121210135131.GA40753@cs.nctu.edu.tw>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	qBAELpJS013682
+To: John Spencer <maillist-qemu@barfooze.de>
+References: <1355122786-29243-1-git-send-email-maillist-qemu@barfooze.de>
+In-Reply-To: <1355122786-29243-1-git-send-email-maillist-qemu@barfooze.de>
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Remove Sparc v7 and v8 host support from
- the configure list
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/4] fix implicit
+ declaration of syscall() in	linux-user/mmap.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,44 +54,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Dec 2012 14:22:07 -0000
+X-List-Received-Date: Mon, 10 Dec 2012 17:44:55 -0000
 
-On Mon, Dec 10, 2012 at 09:51:31PM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB (We=
-i-Ren Chen) wrote:
->   According to QEMU 1.3 release note, sparc v7 and v8 host support have
-> been removed. [1] Fix configure list as well.
->=20
-> [1] http://wiki.qemu.org/ChangeLog/1.3#Host_support
->=20
-> Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
+Am 10.12.2012 07:59, schrieb John Spencer:
+> on glibc, this header is getting pulled in automatically via
+> another header, however on musl we need to include it explicitly.
+>
+> linux-user/mmap.c:705:9: warning: implicit declaration of function 'syscall'
+> linux-user/mmap.c:705:9: warning: nested extern declaration of 'syscall'
+>
+> Signed-off-by: John Spencer<maillist-qemu@barfooze.de>
+>
 > ---
->  configure |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
->=20
-> diff --git a/configure b/configure
-> index e5aedef..56cf49d 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1089,7 +1089,7 @@ echo "  --fmod-inc               path to FMOD inc=
-ludes"
->  echo "  --oss-lib                path to OSS library"
->  echo "  --enable-uname-release=3DR Return R for uname -r in usermode e=
-mulation"
->  echo "  --cpu=3DCPU                Build for host CPU [$cpu]"
-> -echo "  --sparc_cpu=3DV            Build qemu for Sparc architecture v=
-7, v8, v8plus, v8plusa, v9"
-> +echo "  --sparc_cpu=3DV            Build qemu for Sparc architecture v=
-8plus, v8plusa, v9"
+>   linux-user/mmap.c |    1 +
+>   1 files changed, 1 insertions(+), 0 deletions(-)
+>
+> diff --git a/linux-user/mmap.c b/linux-user/mmap.c
+> index b412e3f..171b449 100644
+> --- a/linux-user/mmap.c
+> +++ b/linux-user/mmap.c
+> @@ -25,6 +25,7 @@
+>   #include<sys/types.h>
+>   #include<sys/stat.h>
+>   #include<sys/mman.h>
+> +#include<sys/syscall.h>
+>   #include<linux/mman.h>
+>   #include<linux/unistd.h>
 
 
-Reviewed-by: Amos Kong <akong@redhat.com>
+According to the Linux man-page SYSCALL(2), syscall
+is declared in unistd.h. On my Debian Linux with glibc,
+this information is correct. Here is the result of grep:
 
->  echo "  --disable-uuid           disable uuid support"
->  echo "  --enable-uuid            enable uuid support"
->  echo "  --disable-vde            disable support for vde network"
-> --=20
-> 1.7.3.4
+/usr/include/unistd.h:extern long int syscall (long int __sysno, ...) 
+__THROW;
 
---=20
-		Amos.
+unistd.h is included implicitly via qemu-common.h,
+so if you don't get the declaration, there is a buggy
+implementation of the header files in musl:
+
+http://git.musl-libc.org/cgit/musl/plain/include/unistd.h
+does not match the Linux documentation.
+
+Please report this to the musl developers.
+
+Regards
+Stefan Weil
+
 
