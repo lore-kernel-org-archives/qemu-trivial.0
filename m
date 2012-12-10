@@ -1,43 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Thx04-00056q-U4
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Dec 2012 01:38:00 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:39520)
+	id 1ThxMA-0000HS-JW
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Dec 2012 02:00:50 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:44861)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Thx02-0004zz-JD
-	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 01:37:59 -0500
+	(envelope-from <maillist-qemu@barfooze.de>) id 1ThxM7-0000H4-Gk
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 02:00:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Thx01-0007AC-3d
-	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 01:37:58 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:38918)
+	(envelope-from <maillist-qemu@barfooze.de>) id 1ThxM3-0005Pi-Ds
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 02:00:47 -0500
+Received: from furnace.wzff.de ([2a01:4f8:150:63e2::9]:22415)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1Thwzx-00079c-Ia; Mon, 10 Dec 2012 01:37:53 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	E39E37280048; Mon, 10 Dec 2012 07:37:51 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id PMJdoHuHo8PM; Mon, 10 Dec 2012 07:37:51 +0100 (CET)
-Received: from [192.168.178.20] (p5086F143.dip.t-dialin.net [80.134.241.67])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	3C926728001C; Mon, 10 Dec 2012 07:37:51 +0100 (CET)
-Message-ID: <50C5833E.2020404@weilnetz.de>
-Date: Mon, 10 Dec 2012 07:37:50 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:17.0) Gecko/17.0 Thunderbird/17.0
-MIME-Version: 1.0
-To: John Spencer <maillist-qemu@barfooze.de>
-References: <50C57E3D.9010708@barfooze.de>
-In-Reply-To: <50C57E3D.9010708@barfooze.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/4] linux-user/syscall.c:
- remove wrong forward decl of setgroups()
+	(envelope-from <maillist-qemu@barfooze.de>)
+	id 1ThxM3-0005PQ-54; Mon, 10 Dec 2012 02:00:43 -0500
+Received: from xdsl-188-155-204-150.adslplus.ch ([188.155.204.150]
+	helo=localhost.localdomain)
+	by furnace.wzff.de with esmtpsa (TLSv1:DHE-RSA-AES256-SHA:256)
+	(Exim 4.80.1 (FreeBSD)) (envelope-from <maillist-qemu@barfooze.de>)
+	id 1ThxLz-000KiM-02; Mon, 10 Dec 2012 08:00:40 +0100
+From: John Spencer <maillist-qemu@barfooze.de>
+To: qemu-trivial@nongnu.org
+Date: Mon, 10 Dec 2012 07:59:44 +0100
+Message-Id: <1355122786-29243-2-git-send-email-maillist-qemu@barfooze.de>
+X-Mailer: git-send-email 1.7.3.4
+In-Reply-To: <1355122786-29243-1-git-send-email-maillist-qemu@barfooze.de>
+References: <1355122786-29243-1-git-send-email-maillist-qemu@barfooze.de>
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:4f8:150:63e2::9
+Cc: qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH 2/4] fix build error on ARM due to wrong
+	glibc check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,25 +41,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Dec 2012 06:37:59 -0000
+X-List-Received-Date: Mon, 10 Dec 2012 07:00:49 -0000
 
-Am 10.12.2012 07:16, schrieb John Spencer:
+the test for glibc < 2 "succeeds" wrongly for any non-glibc C library,
+and breaks the build on musl libc.
+we must first test if __GLIBC__ is defined at all, before using it
+unconditionally.
 
-Your patch is not shown here because you had attached it to your email.
-Please use "git send-email" to send patches.See also
-http://wiki.qemu.org/Contribute/SubmitAPatch.
+Signed-off-by: John Spencer <maillist-qemu@barfooze.de>
 
-In your patch, you replaced a wrong forward declarationof function setgroups
-by an include statement using grp.h. That's fine.
+---
+ user-exec.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
-There are more extern declarations in linux-user/syscall.c.
-Even if they are correct, they should be replaced by include statements.
-If there will be a v2 of your patch series, you could add patches
-for those declarations, too.
-
-Regards
-Stefan Weil
+diff --git a/user-exec.c b/user-exec.c
+index ef9b172..cccc145 100644
+--- a/user-exec.c
++++ b/user-exec.c
+@@ -442,7 +442,7 @@ int cpu_signal_handler(int host_signum, void *pinfo,
+     unsigned long pc;
+     int is_write;
+ 
+-#if (__GLIBC__ < 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ <= 3))
++#if defined(__GLIBC__) && (__GLIBC__ < 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ <= 3))
+     pc = uc->uc_mcontext.gregs[R15];
+ #else
+     pc = uc->uc_mcontext.arm_pc;
+-- 
+1.7.3.4
 
 
