@@ -1,39 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ThxUM-0003wA-K3
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Dec 2012 02:09:18 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:46446)
+	id 1Ti3m6-0007PZ-Fs
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Dec 2012 08:52:02 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:59037)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <maillist-qemu@barfooze.de>) id 1ThxUH-0003fd-Al
-	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 02:09:16 -0500
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1Ti3lq-0007L1-51
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 08:52:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <maillist-qemu@barfooze.de>) id 1ThxUE-0007Qn-TD
-	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 02:09:13 -0500
-Received: from furnace.wzff.de ([2a01:4f8:150:63e2::9]:41797)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1Ti3li-0007Ty-3I
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 08:51:46 -0500
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:28839)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <maillist-qemu@barfooze.de>)
-	id 1ThxU9-0007QF-5V; Mon, 10 Dec 2012 02:09:05 -0500
-Received: from xdsl-188-155-204-150.adslplus.ch ([188.155.204.150]
-	helo=[10.1.1.4])
-	by furnace.wzff.de with esmtpsa (TLSv1:DHE-RSA-CAMELLIA256-SHA:256)
-	(Exim 4.80.1 (FreeBSD)) (envelope-from <maillist-qemu@barfooze.de>)
-	id 1ThxU6-000Kxy-GC; Mon, 10 Dec 2012 08:09:04 +0100
-Message-ID: <50C58AA4.3020700@barfooze.de>
-Date: Mon, 10 Dec 2012 08:09:24 +0100
-From: John Spencer <maillist-qemu@barfooze.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US;
-	rv:1.9.2.14) Gecko/20110221 SUSE/3.1.8 Mail/1.0
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1Ti3lh-0007Th-JL
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 08:51:38 -0500
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id B64F77FE
+	for <qemu-trivial@nongnu.org>; Mon, 10 Dec 2012 21:51:34 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:subject:message-id:mime-version:content-type; s=
+	rsa1024; bh=8epuzvGIaVAeXDAuu6kVOm8ARa0=; b=BJ7aRnRe8YhJYCPum6M0
+	MV2ddggZakkRIQ6OlQtWKiXzPaiBMyaodBnZv0cRNJZWQRYXpG3NO0SDFtBtxQ/W
+	0Ly+x0QrVSaS9AhwsuPn/RQABE6Y1qlPqoaZ80+k7+Iw+98Dnunz+v0zSd0Bp+sH
+	CDseVv7H8NcChEWDGw1IOAY=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id A66A97FD
+	for <qemu-trivial@nongnu.org>; Mon, 10 Dec 2012 21:51:34 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id qBADpVTj040830
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 21:51:31 +0800 (CST)
+	(envelope-from chenwj)
+Date: Mon, 10 Dec 2012 21:51:31 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+To: qemu-trivial@nongnu.org
+Message-ID: <20121210135131.GA40753@cs.nctu.edu.tw>
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <50C57E3D.9010708@barfooze.de> <50C5833E.2020404@weilnetz.de>
-In-Reply-To: <50C5833E.2020404@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a01:4f8:150:63e2::9
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/4] linux-user/syscall.c:
- remove wrong forward decl of setgroups()
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
+X-Received-From: 140.113.235.130
+Subject: [Qemu-trivial] [PATCH] Remove Sparc v7 and v8 host support from the
+	configure list
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,32 +51,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Dec 2012 07:09:17 -0000
+X-List-Received-Date: Mon, 10 Dec 2012 13:52:00 -0000
 
-On 12/10/2012 07:37 AM, Stefan Weil wrote:
-> Am 10.12.2012 07:16, schrieb John Spencer:
->
-> Your patch is not shown here because you had attached it to your email.
-> Please use "git send-email" to send patches.See also
-> http://wiki.qemu.org/Contribute/SubmitAPatch.
+  According to QEMU 1.3 release note, sparc v7 and v8 host support have
+been removed. [1] Fix configure list as well.
 
-thanks, resent with git send-email.
-i hope it is ok now.
+[1] http://wiki.qemu.org/ChangeLog/1.3#Host_support
 
->
-> In your patch, you replaced a wrong forward declarationof function
-> setgroups
-> by an include statement using grp.h. That's fine.
->
-> Reviewed-by: Stefan Weil <sw@weilnetz.de>
->
-> There are more extern declarations in linux-user/syscall.c.
-> Even if they are correct, they should be replaced by include statements.
-> If there will be a v2 of your patch series, you could add patches
-> for those declarations, too.
+Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
+---
+ configure |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-ok, will do separately after this first batch is merged.
-
-Regards,
-John Spencer
+diff --git a/configure b/configure
+index e5aedef..56cf49d 100755
+--- a/configure
++++ b/configure
+@@ -1089,7 +1089,7 @@ echo "  --fmod-inc               path to FMOD includes"
+ echo "  --oss-lib                path to OSS library"
+ echo "  --enable-uname-release=R Return R for uname -r in usermode emulation"
+ echo "  --cpu=CPU                Build for host CPU [$cpu]"
+-echo "  --sparc_cpu=V            Build qemu for Sparc architecture v7, v8, v8plus, v8plusa, v9"
++echo "  --sparc_cpu=V            Build qemu for Sparc architecture v8plus, v8plusa, v9"
+ echo "  --disable-uuid           disable uuid support"
+ echo "  --enable-uuid            enable uuid support"
+ echo "  --disable-vde            disable support for vde network"
+-- 
+1.7.3.4
 
