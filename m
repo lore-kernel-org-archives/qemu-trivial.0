@@ -1,50 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ti3p0-00010F-Kv
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Dec 2012 08:55:02 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:59662)
+	id 1Ti4FE-0005RU-NT
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Dec 2012 09:22:08 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:38009)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1Ti3oq-0000cG-IG
-	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 08:55:00 -0500
+	(envelope-from <akong@redhat.com>) id 1Ti4F6-0005R9-QK
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 09:22:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1Ti3og-0008BW-Qb
-	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 08:54:52 -0500
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:37898)
+	(envelope-from <akong@redhat.com>) id 1Ti4F5-0007vT-3d
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 09:22:00 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:64911)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>)
-	id 1Ti3oV-000894-Ah; Mon, 10 Dec 2012 08:54:31 -0500
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 2897F80E;
-	Mon, 10 Dec 2012 21:54:30 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=Yk8sVHyT/UrXaQJhzikza0FdlOY=; b=lRfz3B1KC39Lhl6TbX0yjX76r2y0
-	qe+jOxNnVPpjlFLrhIL57ODqX+0eZc/5Ou2mU2q4Em/DFBfs19jVncEF4qnJbkbx
-	j8nfYwBNcHqHZB3s2DLqLPLBxc8mtCqBdFEAksHP/8SzjEe9H5EXy8C5JrHc5Mhh
-	m/YAh2utCcdfnRo=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id F20E980D;
-	Mon, 10 Dec 2012 21:54:29 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id qBADsT6M040976;
-	Mon, 10 Dec 2012 21:54:29 +0800 (CST) (envelope-from chenwj)
-Date: Mon, 10 Dec 2012 21:54:29 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-To: qemu-devel@nongnu.org
-Message-ID: <20121210135429.GA40858@cs.nctu.edu.tw>
-References: <20121120235248.GA24638@cs.nctu.edu.tw>
+	(envelope-from <akong@redhat.com>) id 1Ti4F4-0007vI-Rt
+	for qemu-trivial@nongnu.org; Mon, 10 Dec 2012 09:21:59 -0500
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qBAELpJS013682
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 10 Dec 2012 09:21:52 -0500
+Received: from localhost (vpn1-112-23.nay.redhat.com [10.66.112.23])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id qBAELodS010417; Mon, 10 Dec 2012 09:21:51 -0500
+Date: Mon, 10 Dec 2012 22:21:33 +0800
+From: Amos Kong <akong@redhat.com>
+To: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+Message-ID: <20121210142133.GB5484@t430s.redhat.com>
+References: <20121210135131.GA40753@cs.nctu.edu.tw>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20121120235248.GA24638@cs.nctu.edu.tw>
+In-Reply-To: <20121210135131.GA40753@cs.nctu.edu.tw>
 User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
-X-Received-From: 140.113.235.130
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Evgeny Voevodin <e.voevodin@samsung.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] exec.c: Use
- tb1->phys_hash_next directly in tb_remove
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	qBAELpJS013682
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Remove Sparc v7 and v8 host support from
+ the configure list
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,100 +50,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Dec 2012 13:55:00 -0000
+X-List-Received-Date: Mon, 10 Dec 2012 14:22:07 -0000
 
-  [CC'ed qemu-trivial]
-
-  ping?
-
-On Wed, Nov 21, 2012 at 07:52:48AM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB (We=
+On Mon, Dec 10, 2012 at 09:51:31PM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB (We=
 i-Ren Chen) wrote:
->   When tb_remove was first commited at fd6ce8f6, there were three diffe=
-rent
-> calls pass different names to offsetof. In current codebase, the other =
-two
-> calls are replaced with tb_page_remove. There is no need to have a gene=
-ral
-> tb_remove. Omit passing the third parameter and using tb1->phys_hash_ne=
-xt
-> directly.
+>   According to QEMU 1.3 release note, sparc v7 and v8 host support have
+> been removed. [1] Fix configure list as well.
+>=20
+> [1] http://wiki.qemu.org/ChangeLog/1.3#Host_support
 >=20
 > Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
 > ---
+>  configure |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
 >=20
-> v2: Address Peter's comment.
->     - place comment used belong tb_remove above tb_phys_invalidate.
->     - remove unnecessary bracket.
->=20
->  exec.c |   12 +++++-------
->  1 files changed, 5 insertions(+), 7 deletions(-)
->=20
-> diff --git a/exec.c b/exec.c
-> index 8435de0..6343838 100644
-> --- a/exec.c
-> +++ b/exec.c
-> @@ -862,18 +862,16 @@ static void tb_page_check(void)
-> =20
->  #endif
-> =20
-> -/* invalidate one TB */
-> -static inline void tb_remove(TranslationBlock **ptb, TranslationBlock =
-*tb,
-> -                             int next_offset)
-> +static inline void tb_hash_remove(TranslationBlock **ptb, TranslationB=
-lock *tb)
->  {
->      TranslationBlock *tb1;
->      for(;;) {
->          tb1 =3D *ptb;
->          if (tb1 =3D=3D tb) {
-> -            *ptb =3D *(TranslationBlock **)((char *)tb1 + next_offset)=
-;
-> +            *ptb =3D tb1->phys_hash_next;
->              break;
->          }
-> -        ptb =3D (TranslationBlock **)((char *)tb1 + next_offset);
-> +        ptb =3D &tb1->phys_hash_next;
->      }
->  }
-> =20
-> @@ -929,6 +927,7 @@ static inline void tb_reset_jump(TranslationBlock *=
-tb, int n)
->      tb_set_jmp_target(tb, n, (uintptr_t)(tb->tc_ptr + tb->tb_next_offs=
-et[n]));
->  }
-> =20
-> +/* invalidate one TB */
->  void tb_phys_invalidate(TranslationBlock *tb, tb_page_addr_t page_addr=
-)
->  {
->      CPUArchState *env;
-> @@ -940,8 +939,7 @@ void tb_phys_invalidate(TranslationBlock *tb, tb_pa=
-ge_addr_t page_addr)
->      /* remove the TB from the hash list */
->      phys_pc =3D tb->page_addr[0] + (tb->pc & ~TARGET_PAGE_MASK);
->      h =3D tb_phys_hash_func(phys_pc);
-> -    tb_remove(&tb_phys_hash[h], tb,
-> -              offsetof(TranslationBlock, phys_hash_next));
-> +    tb_hash_remove(&tb_phys_hash[h], tb);
-> =20
->      /* remove the TB from the page list */
->      if (tb->page_addr[0] !=3D page_addr) {
+> diff --git a/configure b/configure
+> index e5aedef..56cf49d 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1089,7 +1089,7 @@ echo "  --fmod-inc               path to FMOD inc=
+ludes"
+>  echo "  --oss-lib                path to OSS library"
+>  echo "  --enable-uname-release=3DR Return R for uname -r in usermode e=
+mulation"
+>  echo "  --cpu=3DCPU                Build for host CPU [$cpu]"
+> -echo "  --sparc_cpu=3DV            Build qemu for Sparc architecture v=
+7, v8, v8plus, v8plusa, v9"
+> +echo "  --sparc_cpu=3DV            Build qemu for Sparc architecture v=
+8plus, v8plusa, v9"
+
+
+Reviewed-by: Amos Kong <akong@redhat.com>
+
+>  echo "  --disable-uuid           disable uuid support"
+>  echo "  --enable-uuid            enable uuid support"
+>  echo "  --disable-vde            disable support for vde network"
 > --=20
 > 1.7.3.4
->=20
->=20
-> --=20
-> Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-> Computer Systems Lab, Institute of Information Science,
-> Academia Sinica, Taiwan (R.O.C.)
-> Tel:886-2-2788-3799 #1667
-> Homepage: http://people.cs.nctu.edu.tw/~chenwj
 
 --=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
-Homepage: http://people.cs.nctu.edu.tw/~chenwj
+		Amos.
 
