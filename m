@@ -1,35 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tj9km-0004Y8-82
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Dec 2012 09:27:12 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:54445)
+	id 1TkBU7-0000mI-GW
+	for mharc-qemu-trivial@gnu.org; Sun, 16 Dec 2012 05:30:15 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:45607)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1Tj9ki-0004MP-Ax
-	for qemu-trivial@nongnu.org; Thu, 13 Dec 2012 09:27:10 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1TkBU1-0000VB-JB
+	for qemu-trivial@nongnu.org; Sun, 16 Dec 2012 05:30:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1Tj9kd-000313-60
-	for qemu-trivial@nongnu.org; Thu, 13 Dec 2012 09:27:08 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:47051)
+	(envelope-from <stefan@weilnetz.de>) id 1TkBTw-0004dr-Mw
+	for qemu-trivial@nongnu.org; Sun, 16 Dec 2012 05:30:09 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:53604)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1Tj9kc-00030n-UX; Thu, 13 Dec 2012 09:27:03 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id qBDER19h032678
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 13 Dec 2012 09:27:01 -0500
-Received: from lacos-laptop.usersys.redhat.com (vpn1-5-167.ams2.redhat.com
-	[10.36.5.167])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id qBDE0250026724; Thu, 13 Dec 2012 09:00:02 -0500
-From: Laszlo Ersek <lersek@redhat.com>
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, lersek@redhat.com
-Date: Thu, 13 Dec 2012 15:01:49 +0100
-Message-Id: <1355407309-7138-1-git-send-email-lersek@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	(envelope-from <stefan@weilnetz.de>)
+	id 1TkBTo-0004V9-TS; Sun, 16 Dec 2012 05:29:57 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	949C97280040; Sun, 16 Dec 2012 11:29:55 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id bM1j9VZXUemj; Sun, 16 Dec 2012 11:29:55 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 2CB267280049; Sun, 16 Dec 2012 11:29:55 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Sun, 16 Dec 2012 11:29:45 +0100
+Message-Id: <1355653785-2668-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] vmmouse_reset(): remove minimal code
-	duplication
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] configure: Earlier pkg-config probe
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,29 +42,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Dec 2012 14:27:11 -0000
+X-List-Received-Date: Sun, 16 Dec 2012 10:30:13 -0000
 
-Commit 069ab0eb added a vmmouse_disable() call to vmmouse_reset().
-vmmouse_disable() resets the status already.
+Probe pkg-config before it is used for the first time (libseccomp check).
 
-Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/vmmouse.c |    1 -
- 1 files changed, 0 insertions(+), 1 deletions(-)
+ configure |   16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/vmmouse.c b/hw/vmmouse.c
-index 6338efa..578122c 100644
---- a/hw/vmmouse.c
-+++ b/hw/vmmouse.c
-@@ -252,7 +252,6 @@ static void vmmouse_reset(DeviceState *d)
- {
-     VMMouseState *s = container_of(d, VMMouseState, dev.qdev);
+diff --git a/configure b/configure
+index ecdb33a..728caca 100755
+--- a/configure
++++ b/configure
+@@ -1360,6 +1360,14 @@ esac
+ fi
  
--    s->status = 0xffff;
-     s->queue_size = VMMOUSE_QUEUE_SIZE;
+ ##########################################
++# pkg-config probe
++
++if ! has "$pkg_config_exe"; then
++  echo "Error: pkg-config binary '$pkg_config_exe' not found"
++  exit 1
++fi
++
++##########################################
+ # NPTL probe
  
-     vmmouse_disable(s);
+ if test "$nptl" != "no" ; then
+@@ -1590,14 +1598,6 @@ if test "$xen_pci_passthrough" != "no"; then
+ fi
+ 
+ ##########################################
+-# pkg-config probe
+-
+-if ! has "$pkg_config_exe"; then
+-  echo "Error: pkg-config binary '$pkg_config_exe' not found"
+-  exit 1
+-fi
+-
+-##########################################
+ # libtool probe
+ 
+ if ! has $libtool; then
 -- 
-1.7.1
+1.7.10.4
 
 
