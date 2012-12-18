@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TkzxR-0002o5-3K
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2012 11:23:53 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:41278)
+	id 1Tkzxe-0003ME-Q1
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2012 11:24:06 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:41326)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TkzxK-0002mB-0e
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2012 11:23:51 -0500
+	(envelope-from <stefanha@gmail.com>) id 1TkzxY-000345-OS
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2012 11:24:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TkzxI-0004qg-Mm
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2012 11:23:45 -0500
-Received: from mail-we0-f181.google.com ([74.125.82.181]:52510)
+	(envelope-from <stefanha@gmail.com>) id 1TkzxX-0004st-Bn
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2012 11:24:00 -0500
+Received: from mail-wi0-f177.google.com ([209.85.212.177]:46942)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1TkzxI-0004qQ-Ex; Tue, 18 Dec 2012 11:23:44 -0500
-Received: by mail-we0-f181.google.com with SMTP id t11so387785wey.40
-	for <multiple recipients>; Tue, 18 Dec 2012 08:23:43 -0800 (PST)
+	id 1TkzxX-0004sp-5u; Tue, 18 Dec 2012 11:23:59 -0500
+Received: by mail-wi0-f177.google.com with SMTP id hm2so528711wib.4
+	for <multiple recipients>; Tue, 18 Dec 2012 08:23:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=x-received:date:from:to:cc:subject:message-id:references
 	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=rnAtlZSjXkpRlaL7en71qNabm89F+ZnPvmfrA/AbuUU=;
-	b=UOfSWndPRB45W/6Uo7zWU3CNegCVuBZzJgzKYCqhtJ0BQn/bJxA4puO5MIpH1RBFdU
-	KdiEuv4+vCbafONFAo4m7yqpbQCpE3vUaE3HkdBs4UJeMga4qeIp1LxBxZuiVidTHf1t
-	65BAh+RM2Md6H/SNoQ9JyklA5j6r3/vuJOCuKaQqudVPyM9Xfke2k4JM8uv49i5wj7Rn
-	1tnHbcr6GFW0IpQnyn2NfeK8wIwm/k3Zu4Xq2H6hWDtolDfgEuH8GOnwYnHWzEdLR4tw
-	47KoxwPQzRO91pLcPpuYr6HkdZjKXl93wvS4J9/gEEdwmuAeGjQo6d7o5qhH5r5BUHs+
-	CVqg==
-X-Received: by 10.194.19.10 with SMTP id a10mr5551158wje.45.1355847823362;
-	Tue, 18 Dec 2012 08:23:43 -0800 (PST)
+	:user-agent; bh=q6WA4Tz98+yROV8hs+MgBt3mxP0U8jh16BTLvFZuG5A=;
+	b=VQKnD+cDZA2EnJEYsnb4CgcP7xg1cpJkyUa6lFUnRyvvBEN+6UR7/vOkGm1xGZf6i+
+	dnuMWf3FaiXvJS7/pk0Pz6+4vjjr3eYrmvvCRZOT0mUEmD77y+CvAuQSOVqFtk16/Sps
+	TpGdc0QSFT1SIPTWDAjZqC/Mmfgsmvy7wJJygEp6k2JPPXWX3aBvbi5qtxb3VqKTVAaE
+	akkG4jNtJrAOLOTEyMJ5yoOC20HYAuPYFWM2gsa5GI1whzzrDMxGSO2cQup3Yx1ohra4
+	mnHfeHilAp2uuFg94d7cZi0jSxHwFVZybxa87Pbx3I52HCMpJVAmmrN/zqpTLbNUNqwd
+	SSaA==
+X-Received: by 10.180.87.102 with SMTP id w6mr5463789wiz.19.1355847838178;
+	Tue, 18 Dec 2012 08:23:58 -0800 (PST)
 Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
-	by mx.google.com with ESMTPS id hi2sm10225194wib.10.2012.12.18.08.23.41
+	by mx.google.com with ESMTPS id i6sm16486108wix.5.2012.12.18.08.23.56
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 18 Dec 2012 08:23:42 -0800 (PST)
-Date: Tue, 18 Dec 2012 17:23:41 +0100
+	Tue, 18 Dec 2012 08:23:57 -0800 (PST)
+Date: Tue, 18 Dec 2012 17:23:55 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: John Spencer <maillist-qemu@barfooze.de>
-Message-ID: <20121218162341.GD12099@stefanha-thinkpad.redhat.com>
+Message-ID: <20121218162355.GE12099@stefanha-thinkpad.redhat.com>
 References: <1355122786-29243-1-git-send-email-maillist-qemu@barfooze.de>
-	<1355122786-29243-2-git-send-email-maillist-qemu@barfooze.de>
+	<1355122786-29243-4-git-send-email-maillist-qemu@barfooze.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1355122786-29243-2-git-send-email-maillist-qemu@barfooze.de>
+In-Reply-To: <1355122786-29243-4-git-send-email-maillist-qemu@barfooze.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.125.82.181
+X-Received-From: 209.85.212.177
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 2/4] fix build error on ARM due to wrong
- glibc check
+Subject: Re: [Qemu-trivial] [PATCH 4/4] linux-user/syscall.c: remove wrong
+ forward decl of setgroups()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,21 +57,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2012 16:23:51 -0000
+X-List-Received-Date: Tue, 18 Dec 2012 16:24:05 -0000
 
-On Mon, Dec 10, 2012 at 07:59:44AM +0100, John Spencer wrote:
-> the test for glibc < 2 "succeeds" wrongly for any non-glibc C library,
-> and breaks the build on musl libc.
-> we must first test if __GLIBC__ is defined at all, before using it
-> unconditionally.
+On Mon, Dec 10, 2012 at 07:59:46AM +0100, John Spencer wrote:
+> this declaration is wrong:
+> the correct prototype on linux is:
+> int setgroups(size_t size, const gid_t *list);
+> 
+> since by default musl libc exposes this symbol in unistd.h
+> additionally to grp.h, the wrong declaration causes a build error.
+> 
+> the proper fix is to simply include the correct header.
 > 
 > Signed-off-by: John Spencer <maillist-qemu@barfooze.de>
 > 
 > ---
->  user-exec.c |    2 +-
+>  linux-user/syscall.c |    2 +-
 >  1 files changed, 1 insertions(+), 1 deletions(-)
 
-Thanks, applied Patch 2 to the trivial patches tree:
+Thanks, applied Patch 4 to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
 
 Stefan
