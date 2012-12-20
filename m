@@ -1,48 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TldCF-0000qd-6E
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Dec 2012 05:17:47 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:34516)
+	id 1TloJm-0003Xw-2U
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Dec 2012 17:10:18 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:43093)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TldCC-0000nZ-5c
-	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 05:17:45 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1TloJg-0003IZ-Rk
+	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 17:10:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TldCA-0003i7-HU
-	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 05:17:44 -0500
-Received: from mail-qc0-f173.google.com ([209.85.216.173]:41567)
+	(envelope-from <stefan@weilnetz.de>) id 1TloJa-0007wK-3k
+	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 17:10:12 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:45321)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TldCA-0003hy-Db
-	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 05:17:42 -0500
-Received: by mail-qc0-f173.google.com with SMTP id b12so1719425qca.32
-	for <qemu-trivial@nongnu.org>; Thu, 20 Dec 2012 02:17:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:content-transfer-encoding:x-gm-message-state;
-	bh=NcWT+x7RT0+GJzfry4yZy8Q8KsZ8jAZ4OhhWabhaAzw=;
-	b=RnKe6YCD3vGjWLSTWQtFPCNlPvbrfWBhGmp/Ss7Zjl50d7I01Y2C92D+k7uLcJHRZa
-	+Ul879ffI6OsCaDFXiALdSIPSGWTp8l5hVx5CU/tj9hBQDB4wtqc78EJs2/ttQ1lcgwJ
-	g9LkjfxGZAz3Jqm23uGa7zvRTdS16qQ4tJziUkMAxjKRpzdzedEbOaaoou8bxJRggKWN
-	xlo+1Jg4IRLCcMorl3kY7kXABiYrqgfnzKv9TECoRoBEYiBVuErSNH2xyurn+plDnQBZ
-	lAGEDuiSYl+YzbgfNqV6+rhl4taClt2n/+NzbT3pG5SEoU9KGZgX0jL95e4MHgDzXnZs
-	NabA==
-Received: by 10.49.127.101 with SMTP id nf5mr5122545qeb.20.1355998660812; Thu,
-	20 Dec 2012 02:17:40 -0800 (PST)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1TloJR-0007kO-RL; Thu, 20 Dec 2012 17:09:57 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	309D17280049; Thu, 20 Dec 2012 23:09:56 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id kIa7Dn3pOJ2k; Thu, 20 Dec 2012 23:09:55 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id B94FD728004A; Thu, 20 Dec 2012 23:09:55 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Date: Thu, 20 Dec 2012 23:09:53 +0100
+Message-Id: <1356041393-13853-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-Received: by 10.49.30.103 with HTTP; Thu, 20 Dec 2012 02:17:20 -0800 (PST)
-In-Reply-To: <20121220013916.GA10560@cs.nctu.edu.tw>
-References: <20121220013916.GA10560@cs.nctu.edu.tw>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Dec 2012 10:17:20 +0000
-Message-ID: <CAFEAcA9RU+15ehhoS15Ru95S5kY0Jsru50yJ1UQjNp1jERYU8A@mail.gmail.com>
-To: =?UTF-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-Gm-Message-State: ALoCoQmtsHd2nwgfqJLuS9sonRs0gl6nHrJXqqAch/YsZM4OYJqpUEMELuGSolFFBpAEXyYNCdSf
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.216.173
-Cc: qemu-trivial@nongnu.org, Evgeny Voevodin <e.voevodin@samsung.com>
-Subject: Re: [Qemu-trivial] [PATCH v3] translate-all.c: Use
-	tb1->phys_hash_next directly in tb_remove
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 78.47.199.172
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] net: Add missing include statement (fix
+	compiler warnings for MinGW)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,22 +48,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Dec 2012 10:17:45 -0000
+X-List-Received-Date: Thu, 20 Dec 2012 22:10:16 -0000
 
-On 20 December 2012 01:39, =E9=99=B3=E9=9F=8B=E4=BB=BB (Wei-Ren Chen) <chen=
-wj@iis.sinica.edu.tw> wrote:
->   When tb_remove was first commited at fd6ce8f6, there were three differe=
-nt
-> calls pass different names to offsetof. In current codebase, the other tw=
-o
-> calls are replaced with tb_page_remove. There is no need to have a genera=
-l
-> tb_remove. Omit passing the third parameter and using tb1->phys_hash_next
-> directly.
->
-> Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
+These and some more compiler warnings were caused by a recent commit:
 
-Please don't send patches to qemu-trivial but not qemu-devel.
+net/tap-win32.c:724: warning: no previous prototype for =E2=80=98tap_has_=
+ufo=E2=80=99
+net/tap-win32.c:729: warning: no previous prototype for =E2=80=98tap_has_=
+vnet_hdr=E2=80=99
+...
 
--- PMM
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ net/tap-win32.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/net/tap-win32.c b/net/tap-win32.c
+index 0c63cbd..265369c 100644
+--- a/net/tap-win32.c
++++ b/net/tap-win32.c
+@@ -31,6 +31,7 @@
+ #include "qemu-common.h"
+ #include "clients.h"            /* net_init_tap */
+ #include "net/net.h"
++#include "net/tap.h"            /* tap_has_ufo, ... */
+ #include "sysemu/sysemu.h"
+ #include "qemu/error-report.h"
+ #include <stdio.h>
+--=20
+1.7.10.4
+
 
