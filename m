@@ -1,53 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TlbnS-0001aw-HG
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Dec 2012 03:48:06 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:50353)
+	id 1TldCF-0000qd-6E
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Dec 2012 05:17:47 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:34516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TlbnN-0001Mu-GM
-	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 03:48:04 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1TldCC-0000nZ-5c
+	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 05:17:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TlbnK-0007Q3-9z
-	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 03:48:01 -0500
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:49391)
+	(envelope-from <peter.maydell@linaro.org>) id 1TldCA-0003i7-HU
+	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 05:17:44 -0500
+Received: from mail-qc0-f173.google.com ([209.85.216.173]:41567)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1TlbnK-0007Pq-0Y
-	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 03:47:58 -0500
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 62630A29;
-	Thu, 20 Dec 2012 16:47:56 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=cW0JEXRbl1MznA39SQipafztRfE=; b=omEdXavfAl88Syfkwyobr1Z4ZTbz
-	PPWOAp3hpfUlHVzJUXrwmSAvcD2k9nKRr1JDjxDt222TI9Bfuu8lXSgCYJSVBLYj
-	H95vRBktMb9r7LeqzVkatCJNvZoCkoKzInFpyw82iqj/9fbKFGtD7ehqWz3UltNq
-	kJfRyctumYNSkb8=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 4FC56A28;
-	Thu, 20 Dec 2012 16:47:56 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id qBK8lrCN022408;
-	Thu, 20 Dec 2012 16:47:53 +0800 (CST) (envelope-from chenwj)
-Date: Thu, 20 Dec 2012 16:47:53 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Message-ID: <20121220084752.GA22214@cs.nctu.edu.tw>
-References: <20121210135131.GA40753@cs.nctu.edu.tw>
-	<20121218162833.GF12099@stefanha-thinkpad.redhat.com>
-	<CAJSP0QUJYWu44CAsZTU3NMZD0Bn311xXFt6HyuPx=H90GcXaug@mail.gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1TldCA-0003hy-Db
+	for qemu-trivial@nongnu.org; Thu, 20 Dec 2012 05:17:42 -0500
+Received: by mail-qc0-f173.google.com with SMTP id b12so1719425qca.32
+	for <qemu-trivial@nongnu.org>; Thu, 20 Dec 2012 02:17:41 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding:x-gm-message-state;
+	bh=NcWT+x7RT0+GJzfry4yZy8Q8KsZ8jAZ4OhhWabhaAzw=;
+	b=RnKe6YCD3vGjWLSTWQtFPCNlPvbrfWBhGmp/Ss7Zjl50d7I01Y2C92D+k7uLcJHRZa
+	+Ul879ffI6OsCaDFXiALdSIPSGWTp8l5hVx5CU/tj9hBQDB4wtqc78EJs2/ttQ1lcgwJ
+	g9LkjfxGZAz3Jqm23uGa7zvRTdS16qQ4tJziUkMAxjKRpzdzedEbOaaoou8bxJRggKWN
+	xlo+1Jg4IRLCcMorl3kY7kXABiYrqgfnzKv9TECoRoBEYiBVuErSNH2xyurn+plDnQBZ
+	lAGEDuiSYl+YzbgfNqV6+rhl4taClt2n/+NzbT3pG5SEoU9KGZgX0jL95e4MHgDzXnZs
+	NabA==
+Received: by 10.49.127.101 with SMTP id nf5mr5122545qeb.20.1355998660812; Thu,
+	20 Dec 2012 02:17:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAJSP0QUJYWu44CAsZTU3NMZD0Bn311xXFt6HyuPx=H90GcXaug@mail.gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.49.30.103 with HTTP; Thu, 20 Dec 2012 02:17:20 -0800 (PST)
+In-Reply-To: <20121220013916.GA10560@cs.nctu.edu.tw>
+References: <20121220013916.GA10560@cs.nctu.edu.tw>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Dec 2012 10:17:20 +0000
+Message-ID: <CAFEAcA9RU+15ehhoS15Ru95S5kY0Jsru50yJ1UQjNp1jERYU8A@mail.gmail.com>
+To: =?UTF-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
-X-Received-From: 140.113.235.130
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Andreas Faerber <afaerber@suse.de>,
-	=?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] Remove Sparc v7 and v8 host support from
- the configure list
+X-Gm-Message-State: ALoCoQmtsHd2nwgfqJLuS9sonRs0gl6nHrJXqqAch/YsZM4OYJqpUEMELuGSolFFBpAEXyYNCdSf
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.216.173
+Cc: qemu-trivial@nongnu.org, Evgeny Voevodin <e.voevodin@samsung.com>
+Subject: Re: [Qemu-trivial] [PATCH v3] translate-all.c: Use
+	tb1->phys_hash_next directly in tb_remove
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,21 +54,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Dec 2012 08:48:05 -0000
+X-List-Received-Date: Thu, 20 Dec 2012 10:17:45 -0000
 
-On Thu, Dec 20, 2012 at 09:44:27AM +0100, Stefan Hajnoczi wrote:
-> Wei-Ren: your SMTP server bounced my response, I hope it gets through n=
-ow:
->=20
-> 554 <chenwj@iis.sinica.edu.tw>...5.7.1 go away! you're rejected by reci=
-pient.
+On 20 December 2012 01:39, =E9=99=B3=E9=9F=8B=E4=BB=BB (Wei-Ren Chen) <chen=
+wj@iis.sinica.edu.tw> wrote:
+>   When tb_remove was first commited at fd6ce8f6, there were three differe=
+nt
+> calls pass different names to offsetof. In current codebase, the other tw=
+o
+> calls are replaced with tb_page_remove. There is no need to have a genera=
+l
+> tb_remove. Omit passing the third parameter and using tb1->phys_hash_next
+> directly.
+>
+> Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
 
-  Seems works now? I got your mail this time.
+Please don't send patches to qemu-trivial but not qemu-devel.
 
---=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
-Homepage: http://people.cs.nctu.edu.tw/~chenwj
+-- PMM
 
