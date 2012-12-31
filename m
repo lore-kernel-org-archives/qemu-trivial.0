@@ -1,36 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TpDCC-0001cR-CZ
-	for mharc-qemu-trivial@gnu.org; Sun, 30 Dec 2012 02:20:32 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:45925)
+	id 1TpiGs-00065b-Pe
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Dec 2012 11:31:26 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:59829)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TpDC7-0001NN-7b
-	for qemu-trivial@nongnu.org; Sun, 30 Dec 2012 02:20:29 -0500
+	(envelope-from <v.e.evard@gmail.com>) id 1TpiGo-0005u8-Q5
+	for qemu-trivial@nongnu.org; Mon, 31 Dec 2012 11:31:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TpDC4-0001aR-R5
-	for qemu-trivial@nongnu.org; Sun, 30 Dec 2012 02:20:27 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:34660)
+	(envelope-from <v.e.evard@gmail.com>) id 1TpiGg-0004Oh-Rh
+	for qemu-trivial@nongnu.org; Mon, 31 Dec 2012 11:31:22 -0500
+Received: from mail-la0-f53.google.com ([209.85.215.53]:65452)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1TpDBz-0001SF-9i; Sun, 30 Dec 2012 02:20:19 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	38FD97280048; Sun, 30 Dec 2012 08:20:17 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id gNHInI2Ud5RK; Sun, 30 Dec 2012 08:20:16 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 943C0728004A; Sun, 30 Dec 2012 08:20:16 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Sun, 30 Dec 2012 08:20:13 +0100
-Message-Id: <1356852013-12955-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] tcg: Remove unneeded assertion
+	(envelope-from <v.e.evard@gmail.com>)
+	id 1TpiGX-0004Nc-7o; Mon, 31 Dec 2012 11:31:05 -0500
+Received: by mail-la0-f53.google.com with SMTP id fn20so4117313lab.12
+	for <multiple recipients>; Mon, 31 Dec 2012 08:31:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:message-id:date:from:user-agent:mime-version:to:cc
+	:subject:content-type:content-transfer-encoding;
+	bh=KYhYvX0QgbkGqVO4iESmE6FCBq5IV0sxwEMEUZ+h02k=;
+	b=t8ZVFvMnUMXaWqP2EWcmT8RNBWTJx7565LrW/9EVWxXCFqCCco6K6Wgyv0OPU4gvN3
+	UREFxDcdMV7Qhd6QOVYw+LlrMZyRNVwjKSYXjxsmNwubu53QkDl5sfXdtslgXre0qqc7
+	TzwE5ZukL6ZUDdd8ZF28BrLkddkyUbo+gpnV1RtGeMCUGv6lTeZnDOZh7OuZCHwYTGbF
+	TOWwcgCKtn0PHw7IyyvychpFxtXnK7noQNyMN9DyGYmtKtXX1fDgezIG/Yl8VT331dhV
+	FumzOhYSy+cFlP/8LZ13r8/8RjawRsZWdQFAFfeb0fU+rcY/ikGKSTFc9JqRaYd/X0yc
+	ttmQ==
+X-Received: by 10.152.105.203 with SMTP id go11mr38992996lab.53.1356971463611; 
+	Mon, 31 Dec 2012 08:31:03 -0800 (PST)
+Received: from [192.168.1.231] (host-165-152-66-217.spbmts.ru.
+	[217.66.152.165]) by mx.google.com with ESMTPS id
+	ew10sm14440401lbb.10.2012.12.31.08.31.01
+	(version=SSLv3 cipher=OTHER); Mon, 31 Dec 2012 08:31:02 -0800 (PST)
+Message-ID: <50E1BDC3.5040604@gmail.com>
+Date: Mon, 31 Dec 2012 20:30:59 +0400
+From: Vadim Evard <v.e.evard@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:10.0.11) Gecko/20121122 Icedove/10.0.11
+MIME-Version: 1.0
+To: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.215.53
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH] configure: try pkg-config for
+ curses
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,32 +55,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 30 Dec 2012 07:20:30 -0000
+X-List-Received-Date: Mon, 31 Dec 2012 16:31:25 -0000
 
-Commit 7f6f0ae5b95adfa76e10eabe2c34424a955fd10c added two assertions.
+configure: try pkg-config for curses
 
-One of these assertions is not needed:
-The pointer ts is never NULL because it is initialized with the
-address of an array element.
+Static linkikng against ncurses may require explicit -ltinfo.
+In case -lcurses and -lncurses both didn't work give pkg-config a
+chance.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Vadim Evard <v.e.evard@gmail.com>
 ---
- tcg/tcg.c |    1 -
- 1 file changed, 1 deletion(-)
+  configure |    4 +++-
+  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index ede51a3..9275e37 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -800,7 +800,6 @@ static char *tcg_get_arg_str_idx(TCGContext *s, char *buf, int buf_size,
- 
-     assert(idx >= 0 && idx < s->nb_temps);
-     ts = &s->temps[idx];
--    assert(ts);
-     if (idx < s->nb_globals) {
-         pstrcpy(buf, buf_size, ts->name);
-     } else {
+diff --git a/configure b/configure
+index b0c7e54..16280e2 100755
+--- a/configure
++++ b/configure
+@@ -2030,7 +2030,7 @@ fi
+  if test "$mingw32" = "yes" ; then
+      curses_list="-lpdcurses"
+  else
+-    curses_list="-lncurses -lcurses"
++    curses_list="-lncurses:-lcurses:$($pkg_config --libs ncurses)"
+  fi
+
+  if test "$curses" != "no" ; then
+@@ -2043,7 +2043,9 @@ int main(void) {
+    return s != 0;
+  }
+  EOF
++  IFS=:
+    for curses_lib in $curses_list; do
++    unset IFS
+      if compile_prog "" "$curses_lib" ; then
+        curses_found=yes
+        libs_softmmu="$curses_lib $libs_softmmu"
 -- 
 1.7.10.4
-
 
