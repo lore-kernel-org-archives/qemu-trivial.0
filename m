@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TpzHC-0002Za-Nj
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Jan 2013 05:40:54 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:39950)
+	id 1Tq5iz-00008G-Gr
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Jan 2013 12:34:01 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:35570)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1TpzH9-0002ZU-M7
-	for qemu-trivial@nongnu.org; Tue, 01 Jan 2013 05:40:53 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1Tq5iv-0008NY-1m
+	for qemu-trivial@nongnu.org; Tue, 01 Jan 2013 12:33:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1TpzH8-0004S7-Bz
-	for qemu-trivial@nongnu.org; Tue, 01 Jan 2013 05:40:51 -0500
-Received: from hall.aurel32.net ([2001:470:1f15:c4f::1]:52686)
+	(envelope-from <stefan@weilnetz.de>) id 1Tq5is-0001ic-Iy
+	for qemu-trivial@nongnu.org; Tue, 01 Jan 2013 12:33:56 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:49329)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1TpzH8-0004S1-31; Tue, 01 Jan 2013 05:40:50 -0500
-Received: from [2001:470:d4ed:0:ea11:32ff:fea1:831a] (helo=ohm.aurel32.net)
-	by hall.aurel32.net with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.72) (envelope-from <aurelien@aurel32.net>)
-	id 1Tpyx2-0002kj-Fb; Tue, 01 Jan 2013 11:20:04 +0100
-Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1Tpyx1-00077H-89; Tue, 01 Jan 2013 11:20:03 +0100
-Date: Tue, 1 Jan 2013 11:20:03 +0100
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20130101102003.GC16659@ohm.aurel32.net>
-References: <1356179899-1268-1-git-send-email-sw@weilnetz.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
-In-Reply-To: <1356179899-1268-1-git-send-email-sw@weilnetz.de>
-X-Mailer: Mutt 1.5.21 (2010-09-15)
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:470:1f15:c4f::1
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] target-mips: Remove semicolon from macro
-	definition
+	(envelope-from <stefan@weilnetz.de>)
+	id 1Tq5im-0001h0-EF; Tue, 01 Jan 2013 12:33:48 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	C6191728003D; Tue,  1 Jan 2013 18:33:46 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id C15y-6u2IJ+B; Tue,  1 Jan 2013 18:33:46 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 398D5728004C; Tue,  1 Jan 2013 18:33:46 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Tue,  1 Jan 2013 18:33:44 +0100
+Message-Id: <1357061624-9469-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 78.47.199.172
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] configure: Write new file
+	"config-all-disas.mak" when running configure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,46 +44,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Jan 2013 10:40:54 -0000
+X-List-Received-Date: Tue, 01 Jan 2013 17:34:00 -0000
 
-On Sat, Dec 22, 2012 at 01:38:19PM +0100, Stefan Weil wrote:
-> Macro RESTORE_FLUSH_MODE is similar to RESTORE_ROUNDING_MODE
-> but included a semicolon.
-> 
-> The code which uses that macro also includes a semicolon,
-> so the result was an empty statement.
-> 
-> Remove the superfluous semicolon from the macro definition.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
-> 
-> Note:
-> 
-> After the patch, the modified line is shorter, but still longer than
-> required by the coding conventions.
-> 
->  target-mips/op_helper.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
-> index e85edce..e3ab05c 100644
-> --- a/target-mips/op_helper.c
-> +++ b/target-mips/op_helper.c
-> @@ -2175,7 +2175,7 @@ static unsigned int ieee_rm[] = {
->      set_float_rounding_mode(ieee_rm[env->active_fpu.fcr31 & 3], &env->active_fpu.fp_status)
->  
->  #define RESTORE_FLUSH_MODE \
-> -    set_flush_to_zero((env->active_fpu.fcr31 & (1 << 24)) != 0, &env->active_fpu.fp_status);
-> +    set_flush_to_zero((env->active_fpu.fcr31 & (1 << 24)) != 0, &env->active_fpu.fp_status)
->  
->  target_ulong helper_cfc1(CPUMIPSState *env, uint32_t reg)
->  {
+Incremental builds added new lines to that file each time when configure
+was run.
 
-Thanks, applied.
+Now a new file with a comment line is written.
 
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
+The file still contains lots of duplicated entries, but they don't cause
+problems.
+
+Regards and happy new year
+
+Stefan
+
+ configure |    2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure b/configure
+index b0c7e54..2fafa8a 100755
+--- a/configure
++++ b/configure
+@@ -3297,6 +3297,8 @@ fi
+ config_host_mak="config-host.mak"
+ config_host_ld="config-host.ld"
+ 
++echo "# Automatically generated by configure - do not modify" >config-all-disas.mak
++
+ echo "# Automatically generated by configure - do not modify" > $config_host_mak
+ printf "# Configured with:" >> $config_host_mak
+ printf " '%s'" "$0" "$@" >> $config_host_mak
 -- 
-Aurelien Jarno                          GPG: 1024D/F1BCDB73
-aurelien@aurel32.net                 http://www.aurel32.net
+1.7.10.4
+
 
