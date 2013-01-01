@@ -1,54 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tpjqz-0004i5-5m
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Dec 2012 13:12:49 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:44852)
+	id 1TpzHC-0002Za-Nj
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Jan 2013 05:40:54 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:39950)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1Tpjqt-0004hg-HO
-	for qemu-trivial@nongnu.org; Mon, 31 Dec 2012 13:12:46 -0500
+	(envelope-from <aurelien@aurel32.net>) id 1TpzH9-0002ZU-M7
+	for qemu-trivial@nongnu.org; Tue, 01 Jan 2013 05:40:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1Tpjqr-00057h-2W
-	for qemu-trivial@nongnu.org; Mon, 31 Dec 2012 13:12:43 -0500
-Received: from mail-ie0-f175.google.com ([209.85.223.175]:64596)
+	(envelope-from <aurelien@aurel32.net>) id 1TpzH8-0004S7-Bz
+	for qemu-trivial@nongnu.org; Tue, 01 Jan 2013 05:40:51 -0500
+Received: from hall.aurel32.net ([2001:470:1f15:c4f::1]:52686)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1Tpjqq-00057b-U8; Mon, 31 Dec 2012 13:12:40 -0500
-Received: by mail-ie0-f175.google.com with SMTP id qd14so15365150ieb.34
-	for <multiple recipients>; Mon, 31 Dec 2012 10:12:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=evE3uuASOj9oJ6eriqXcr/cddDwNezC1uAN4JUyccQw=;
-	b=HeXqNHKuDnVI2Tm704Xcrx6aML/JhnaJka/otEfuJE6uOv8xaxfyb9h/3ejvhpyHwF
-	L/e3i9x7hLYy42TS5gQw9WFcBldaPNBsPv27uulilE3sYC9LB91nbil1ELzU+ui7SmU8
-	08Nj1YG+6VR9nm1MHu4TKunkmo9ilaKUMSJPI6cD0cQJ7Vn8tqELOkVda/kfsF3GNLXl
-	OGvHAPBL8OdGpP2iAlhDk6SU+jrE6JbcDBd/6ZXUPyoyrEaGMOeC003GwQaOw9tFzEAg
-	zP6AF6XfNrzQTTfU/WwM2pvP5WLtf/etvXPOTF//V/ql/w6Ce/pDyZdQDKovsCs3c3z3
-	nC8g==
-X-Received: by 10.50.196.227 with SMTP id ip3mr31057828igc.97.1356977560523;
-	Mon, 31 Dec 2012 10:12:40 -0800 (PST)
-Received: from pebble.twiddle.home
-	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
-	by mx.google.com with ESMTPS id v12sm33939798igv.3.2012.12.31.10.12.39
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 31 Dec 2012 10:12:40 -0800 (PST)
-Sender: Richard Henderson <rth7680@gmail.com>
-Message-ID: <50E1D599.5090802@twiddle.net>
-Date: Mon, 31 Dec 2012 10:12:41 -0800
-From: Richard Henderson <rth@twiddle.net>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/17.0 Thunderbird/17.0
-MIME-Version: 1.0
+	(envelope-from <aurelien@aurel32.net>)
+	id 1TpzH8-0004S1-31; Tue, 01 Jan 2013 05:40:50 -0500
+Received: from [2001:470:d4ed:0:ea11:32ff:fea1:831a] (helo=ohm.aurel32.net)
+	by hall.aurel32.net with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.72) (envelope-from <aurelien@aurel32.net>)
+	id 1Tpyx2-0002kj-Fb; Tue, 01 Jan 2013 11:20:04 +0100
+Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1Tpyx1-00077H-89; Tue, 01 Jan 2013 11:20:03 +0100
+Date: Tue, 1 Jan 2013 11:20:03 +0100
+From: Aurelien Jarno <aurelien@aurel32.net>
 To: Stefan Weil <sw@weilnetz.de>
-References: <1356852013-12955-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1356852013-12955-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.223.175
+Message-ID: <20130101102003.GC16659@ohm.aurel32.net>
+References: <1356179899-1268-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-15
+Content-Disposition: inline
+In-Reply-To: <1356179899-1268-1-git-send-email-sw@weilnetz.de>
+X-Mailer: Mutt 1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:470:1f15:c4f::1
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tcg: Remove unneeded
-	assertion
+Subject: Re: [Qemu-trivial] [PATCH] target-mips: Remove semicolon from macro
+	definition
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,18 +47,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Dec 2012 18:12:47 -0000
+X-List-Received-Date: Tue, 01 Jan 2013 10:40:54 -0000
 
-On 2012-12-29 23:20, Stefan Weil wrote:
-> Commit 7f6f0ae5b95adfa76e10eabe2c34424a955fd10c added two assertions.
+On Sat, Dec 22, 2012 at 01:38:19PM +0100, Stefan Weil wrote:
+> Macro RESTORE_FLUSH_MODE is similar to RESTORE_ROUNDING_MODE
+> but included a semicolon.
 > 
-> One of these assertions is not needed:
-> The pointer ts is never NULL because it is initialized with the
-> address of an array element.
+> The code which uses that macro also includes a semicolon,
+> so the result was an empty statement.
+> 
+> Remove the superfluous semicolon from the macro definition.
 > 
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+> 
+> Note:
+> 
+> After the patch, the modified line is shorter, but still longer than
+> required by the coding conventions.
+> 
+>  target-mips/op_helper.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
+> index e85edce..e3ab05c 100644
+> --- a/target-mips/op_helper.c
+> +++ b/target-mips/op_helper.c
+> @@ -2175,7 +2175,7 @@ static unsigned int ieee_rm[] = {
+>      set_float_rounding_mode(ieee_rm[env->active_fpu.fcr31 & 3], &env->active_fpu.fp_status)
+>  
+>  #define RESTORE_FLUSH_MODE \
+> -    set_flush_to_zero((env->active_fpu.fcr31 & (1 << 24)) != 0, &env->active_fpu.fp_status);
+> +    set_flush_to_zero((env->active_fpu.fcr31 & (1 << 24)) != 0, &env->active_fpu.fp_status)
+>  
+>  target_ulong helper_cfc1(CPUMIPSState *env, uint32_t reg)
+>  {
 
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+Thanks, applied.
 
-r~
+
+-- 
+Aurelien Jarno                          GPG: 1024D/F1BCDB73
+aurelien@aurel32.net                 http://www.aurel32.net
 
