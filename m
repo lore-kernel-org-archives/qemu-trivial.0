@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TqSfE-0005XG-4m
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2013 13:03:40 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:43112)
+	id 1TqXd0-0001Gt-Gt
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2013 18:21:42 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:38134)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1TqSfB-0005Oh-2X
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 13:03:37 -0500
+	(envelope-from <flukshun@gmail.com>) id 1TqXcy-0001BX-NE
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 18:21:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1TqSf5-0008Al-1G
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 13:03:37 -0500
-Received: from e7.ny.us.ibm.com ([32.97.182.137]:43385)
+	(envelope-from <flukshun@gmail.com>) id 1TqXcx-0000N8-He
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 18:21:40 -0500
+Received: from mail-gh0-f181.google.com ([209.85.160.181]:36653)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1TqSf4-0008AY-UH
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 13:03:30 -0500
-Received: from /spool/local
-	by e7.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Wed, 2 Jan 2013 13:03:29 -0500
-Received: from d01dlp03.pok.ibm.com (9.56.250.168)
-	by e7.ny.us.ibm.com (192.168.1.107) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Wed, 2 Jan 2013 13:02:49 -0500
-Received: from d01relay01.pok.ibm.com (d01relay01.pok.ibm.com [9.56.227.233])
-	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id 80C15C9003E;
-	Wed,  2 Jan 2013 13:02:48 -0500 (EST)
-Received: from d01av02.pok.ibm.com (d01av02.pok.ibm.com [9.56.224.216])
-	by d01relay01.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r02I2mIS307792; Wed, 2 Jan 2013 13:02:48 -0500
-Received: from d01av02.pok.ibm.com (loopback [127.0.0.1])
-	by d01av02.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r02I2llu018186; Wed, 2 Jan 2013 16:02:47 -0200
-Received: from ccnode4.phx.austin.ibm.com (ltcphx.austin.ibm.com [9.3.189.26])
-	by d01av02.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r02I2ixJ017637; Wed, 2 Jan 2013 16:02:44 -0200
-Message-Id: <201301021802.r02I2ixJ017637@d01av02.pok.ibm.com>
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
-In-Reply-To: 1356852013-12955-1-git-send-email-sw@weilnetz.de
-Date: Thu, 03 Jan 2013 02:21:17 -0000
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13010218-5806-0000-0000-00001DAF3DD2
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.182.137
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] tcg: Remove unneeded assertion
+	(envelope-from <flukshun@gmail.com>)
+	id 1TqXcv-0000Lw-E1; Wed, 02 Jan 2013 18:21:37 -0500
+Received: by mail-gh0-f181.google.com with SMTP id y8so1659100ghb.26
+	for <multiple recipients>; Wed, 02 Jan 2013 15:21:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:sender:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=IFRDqp1HbjoglyX3p6kKItRMYarZIgrjxYDsUqGs1BQ=;
+	b=f/VUZHCXY3ODYL+rgD1BN2wSED4fq5DAqLoxfOrkwah4Agkwj0kJpbHQHH0Dl989cf
+	C+aVKEGeo6AUOWP7QTpkc9ewi+isUoXvXsK0SICLawfAfChnpotdcpAJOPwhfnWrRo61
+	WD/VBEOQc5ukUHSyONJu9y1pTytdcqARBz2d94cB6bKznD+mJ1A5L9jU5tFbLlKXPf85
+	GvcsWHMqCZzBimZhBo3vst16D3snC2r7ksfIj2mn1pKblssdONP5IIihfi+kS+CWx7gi
+	XiduGD1xNSbVmXGehWXRq/AYa4i/LPgWiEfv3dVDvPOOE2MM61UuO1gAJXEM9nW/5UAU
+	sPhw==
+X-Received: by 10.236.175.104 with SMTP id y68mr47688822yhl.21.1357168503396; 
+	Wed, 02 Jan 2013 15:15:03 -0800 (PST)
+Received: from localhost (cpe-72-179-62-111.austin.res.rr.com. [72.179.62.111])
+	by mx.google.com with ESMTPS id a15sm232619ank.22.2013.01.02.15.15.02
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 02 Jan 2013 15:15:02 -0800 (PST)
+Sender: fluxion <flukshun@gmail.com>
+Date: Wed, 2 Jan 2013 17:14:21 -0600
+From: mdroth <mdroth@linux.vnet.ibm.com>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20130102231421.GC17859@vm>
+References: <1357143311-10927-1-git-send-email-eblake@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1357143311-10927-1-git-send-email-eblake@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.160.181
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, lcapitulino@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] qga: add missing commas in json docs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,12 +56,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jan 2013 18:03:38 -0000
+X-List-Received-Date: Wed, 02 Jan 2013 23:21:41 -0000
 
-Thanks, applied.
+On Wed, Jan 02, 2013 at 09:15:11AM -0700, Eric Blake wrote:
+> * qga/qapi-schema.json: Use valid JSON.
+> 
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 
-Regards,
+Thanks, applied to qga branch
 
-Anthony Liguori
-
+> ---
+>  qga/qapi-schema.json | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+> index ed0eb69..d91d903 100644
+> --- a/qga/qapi-schema.json
+> +++ b/qga/qapi-schema.json
+> @@ -31,7 +31,7 @@
+>  #
+>  # Since: 1.1
+>  # ##
+> -{ 'command': 'guest-sync-delimited'
+> +{ 'command': 'guest-sync-delimited',
+>    'data':    { 'id': 'int' },
+>    'returns': 'int' }
+> 
+> @@ -69,7 +69,7 @@
+>  #
+>  # Since: 0.15.0
+>  ##
+> -{ 'command': 'guest-sync'
+> +{ 'command': 'guest-sync',
+>    'data':    { 'id': 'int' },
+>    'returns': 'int' }
+> 
+> -- 
+> 1.8.0.2
+> 
 
