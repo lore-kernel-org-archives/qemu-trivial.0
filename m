@@ -1,38 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tq5iz-00008G-Gr
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Jan 2013 12:34:01 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:35570)
+	id 1TqQyS-0005pZ-CD
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2013 11:15:24 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:52985)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Tq5iv-0008NY-1m
-	for qemu-trivial@nongnu.org; Tue, 01 Jan 2013 12:33:59 -0500
+	(envelope-from <eblake@redhat.com>) id 1TqQyO-0005o2-La
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 11:15:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1Tq5is-0001ic-Iy
-	for qemu-trivial@nongnu.org; Tue, 01 Jan 2013 12:33:56 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:49329)
+	(envelope-from <eblake@redhat.com>) id 1TqQyM-0005oE-4l
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 11:15:20 -0500
+Received: from qmta10.emeryville.ca.mail.comcast.net ([76.96.30.17]:48139)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1Tq5im-0001h0-EF; Tue, 01 Jan 2013 12:33:48 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	C6191728003D; Tue,  1 Jan 2013 18:33:46 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id C15y-6u2IJ+B; Tue,  1 Jan 2013 18:33:46 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 398D5728004C; Tue,  1 Jan 2013 18:33:46 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Tue,  1 Jan 2013 18:33:44 +0100
-Message-Id: <1357061624-9469-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] configure: Write new file
-	"config-all-disas.mak" when running configure
+	(envelope-from <eblake@redhat.com>) id 1TqQyL-0005o3-QI
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 11:15:18 -0500
+Received: from omta05.emeryville.ca.mail.comcast.net ([76.96.30.43])
+	by qmta10.emeryville.ca.mail.comcast.net with comcast
+	id j42e1k0030vp7WLAA4FGfD; Wed, 02 Jan 2013 16:15:16 +0000
+Received: from office.redhat.com ([24.10.251.25])
+	by omta05.emeryville.ca.mail.comcast.net with comcast
+	id j4FC1k0040ZdyUg8R4FEE5; Wed, 02 Jan 2013 16:15:16 +0000
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed,  2 Jan 2013 09:15:11 -0700
+Message-Id: <1357143311-10927-1-git-send-email-eblake@redhat.com>
+X-Mailer: git-send-email 1.8.0.2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
+	s=q20121106; t=1357143316;
+	bh=rpQo2FBW6EAD29myi8meo/YFITWMX8VpszR56m/4KmQ=;
+	h=Received:Received:From:To:Subject:Date:Message-Id;
+	b=IF1MC8wWM/RH5Nh2hn5HpxfMR9EnAhZi5uH7KEuvKKcHeEVAPNvL+5MREXEvRJRkY
+	+CyVYadMxZmRTeJ5tJ9v1JX60ZhNDAM/muzP7v4ytYw9z0DnP5zjO1EIlLCts67osx
+	axeSRwgE9ALjs9I8ZM0p7rjOKJ39j686USKaRRFRz5InN0Sf/6doyYUGTcI/hy4EIC
+	Jt1p97HyCi8B17egV6+N3y90KATw4bknI9VDPBRmLpEkc8O+iPS2QTTVL1VQYFowXB
+	VeQ9aCyAA1BXGs+Ja+6gfwAQPrTdg5tONx5dgb0o9JJ526Bg3cRLXsS2UxOqxpwrhR
+	eNEwWV34ywrOg==
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 76.96.30.17
+Cc: qemu-trivial@nongnu.org, lcapitulino@redhat.com
+Subject: [Qemu-trivial] [PATCH] qga: add missing commas in json docs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,40 +49,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Jan 2013 17:34:00 -0000
+X-List-Received-Date: Wed, 02 Jan 2013 16:15:23 -0000
 
-Incremental builds added new lines to that file each time when configure
-was run.
+* qga/qapi-schema.json: Use valid JSON.
 
-Now a new file with a comment line is written.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Eric Blake <eblake@redhat.com>
 ---
+ qga/qapi-schema.json | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-The file still contains lots of duplicated entries, but they don't cause
-problems.
+diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+index ed0eb69..d91d903 100644
+--- a/qga/qapi-schema.json
++++ b/qga/qapi-schema.json
+@@ -31,7 +31,7 @@
+ #
+ # Since: 1.1
+ # ##
+-{ 'command': 'guest-sync-delimited'
++{ 'command': 'guest-sync-delimited',
+   'data':    { 'id': 'int' },
+   'returns': 'int' }
 
-Regards and happy new year
+@@ -69,7 +69,7 @@
+ #
+ # Since: 0.15.0
+ ##
+-{ 'command': 'guest-sync'
++{ 'command': 'guest-sync',
+   'data':    { 'id': 'int' },
+   'returns': 'int' }
 
-Stefan
-
- configure |    2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/configure b/configure
-index b0c7e54..2fafa8a 100755
---- a/configure
-+++ b/configure
-@@ -3297,6 +3297,8 @@ fi
- config_host_mak="config-host.mak"
- config_host_ld="config-host.ld"
- 
-+echo "# Automatically generated by configure - do not modify" >config-all-disas.mak
-+
- echo "# Automatically generated by configure - do not modify" > $config_host_mak
- printf "# Configured with:" >> $config_host_mak
- printf " '%s'" "$0" "$@" >> $config_host_mak
 -- 
-1.7.10.4
+1.8.0.2
 
 
