@@ -1,52 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TqYYG-0000Qb-6i
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2013 19:20:52 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:51647)
+	id 1TqZIP-0004n3-8S
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2013 20:08:33 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:56784)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1TqYYE-0000Pf-Jk
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 19:20:51 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1TqZIM-0004mm-S1
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 20:08:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1TqYYD-0000G2-EX
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 19:20:50 -0500
-Received: from e38.co.us.ibm.com ([32.97.110.159]:54197)
+	(envelope-from <peter.maydell@linaro.org>) id 1TqZIL-0002Sb-RF
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 20:08:30 -0500
+Received: from mail-la0-f46.google.com ([209.85.215.46]:61919)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1TqYYD-0000Fi-2T
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 19:20:49 -0500
-Received: from /spool/local
-	by e38.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Wed, 2 Jan 2013 17:20:48 -0700
-Received: from d03dlp02.boulder.ibm.com (9.17.202.178)
-	by e38.co.us.ibm.com (192.168.1.138) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Wed, 2 Jan 2013 17:20:16 -0700
-Received: from d03relay02.boulder.ibm.com (d03relay02.boulder.ibm.com
-	[9.17.195.227])
-	by d03dlp02.boulder.ibm.com (Postfix) with ESMTP id 956D63E4005E;
-	Wed,  2 Jan 2013 17:20:00 -0700 (MST)
-Received: from d03av04.boulder.ibm.com (d03av04.boulder.ibm.com [9.17.195.170])
-	by d03relay02.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r030JeCb048564; Wed, 2 Jan 2013 17:19:50 -0700
-Received: from d03av04.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av04.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id r030JP4l003521; Wed, 2 Jan 2013 17:19:25 -0700
-Received: from ccnode4.phx.austin.ibm.com (ltcphx.austin.ibm.com [9.3.189.26])
-	by d03av04.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP
-	id r030JOZG003472; Wed, 2 Jan 2013 17:19:24 -0700
-Message-Id: <201301030019.r030JOZG003472@d03av04.boulder.ibm.com>
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
-In-Reply-To: <1357061624-9469-1-git-send-email-sw@weilnetz.de>
-Date: Thu, 03 Jan 2013 00:19:50 -0000
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13010300-5518-0000-0000-00000A6CF832
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.110.159
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>
-Subject: Re: [Qemu-trivial] [PATCH] configure: Write new file
- "config-all-disas.mak" when running configure
+	(envelope-from <peter.maydell@linaro.org>) id 1TqZIL-0002SL-JS
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 20:08:29 -0500
+Received: by mail-la0-f46.google.com with SMTP id fq13so7116792lab.33
+	for <qemu-trivial@nongnu.org>; Wed, 02 Jan 2013 17:08:28 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=REfhhEGXoalTktn6GIqQhj8+UIuzKU1NmMI6HDOP4Rs=;
+	b=UaUanOen9CRBkFaXnhkgCebhC3E9T8HrYUjIC/CVyOPZUEMGvRZxKxy598WrBmRUOx
+	YlX3N12z18jiItzBZlKuoyCtgCihLpwmHIELBayQfmZYH0XRlxkx6f1dpCf/AI7sAM0Y
+	W08ob7Ni/r2vjHCqHuVY2TX/3O3Y6+UT80OnsLIaPUZ5xv9tfBYQ8VHlx4LDa/1vWjU9
+	5BNJxEbwu+gg0JyZpFKehzI0A1kNyP9aDT3c3YGY3kd0uHl55UMW1VgdK7mBvVexSTIe
+	UrI4rIrSwg0PRh835tCWRUrSW24ojJ/wvxyjGS9ZccpzixG1x7XcBtbmdTvBuynI7ADy
+	xRhw==
+Received: by 10.112.54.6 with SMTP id f6mr19510589lbp.71.1357175308017; Wed,
+	02 Jan 2013 17:08:28 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.112.55.176 with HTTP; Wed, 2 Jan 2013 17:08:07 -0800 (PST)
+In-Reply-To: <201301030019.r030JT4H029920@d01av04.pok.ibm.com>
+References: <1352101300-12060-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	<201301030019.r030JT4H029920@d01av04.pok.ibm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 Jan 2013 01:08:07 +0000
+Message-ID: <CAFEAcA86669ssq+5y8BLL6CBdZozjwKWmdKkQG1m=pFSn_JPTQ@mail.gmail.com>
+To: Anthony Liguori <aliguori@us.ibm.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQlTuEa7T/RJxNuAVOiqlXTKS58w1IEEveEBSqWe3iHOYfUaRsIRnGzVju8SMSTl86DxSG9o
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.215.46
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	liguang <lig.fnst@cn.fujitsu.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] correct error message
+	qemu-img reported
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,12 +55,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Jan 2013 00:20:51 -0000
+X-List-Received-Date: Thu, 03 Jan 2013 01:08:32 -0000
 
-Thanks, applied.
+On 3 January 2013 00:19, Anthony Liguori <aliguori@us.ibm.com> wrote:
+> This is an automated message generated from the QEMU Patches.
+> Thank you for submitting this patch.  This patch no longer applies to qemu.git.
 
-Regards,
+> Nacked-by: QEMU Patches <aliguori@us.ibm.com>
 
-Anthony Liguori
+Are we going to get these emails on every old patch that was
+superseded by a later fixed version 2?
 
+-- PMM
 
