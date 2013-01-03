@@ -1,45 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TqZIP-0004n3-8S
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2013 20:08:33 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:56784)
+	id 1TqaLY-00075d-Aj
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2013 21:15:52 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:37041)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TqZIM-0004mm-S1
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 20:08:32 -0500
+	(envelope-from <aliguori@us.ibm.com>) id 1TqaLU-00072w-VK
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 21:15:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TqZIL-0002Sb-RF
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 20:08:30 -0500
-Received: from mail-la0-f46.google.com ([209.85.215.46]:61919)
+	(envelope-from <aliguori@us.ibm.com>) id 1TqaLS-0001lj-VA
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 21:15:48 -0500
+Received: from e7.ny.us.ibm.com ([32.97.182.137]:46689)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TqZIL-0002SL-JS
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 20:08:29 -0500
-Received: by mail-la0-f46.google.com with SMTP id fq13so7116792lab.33
-	for <qemu-trivial@nongnu.org>; Wed, 02 Jan 2013 17:08:28 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:x-gm-message-state;
-	bh=REfhhEGXoalTktn6GIqQhj8+UIuzKU1NmMI6HDOP4Rs=;
-	b=UaUanOen9CRBkFaXnhkgCebhC3E9T8HrYUjIC/CVyOPZUEMGvRZxKxy598WrBmRUOx
-	YlX3N12z18jiItzBZlKuoyCtgCihLpwmHIELBayQfmZYH0XRlxkx6f1dpCf/AI7sAM0Y
-	W08ob7Ni/r2vjHCqHuVY2TX/3O3Y6+UT80OnsLIaPUZ5xv9tfBYQ8VHlx4LDa/1vWjU9
-	5BNJxEbwu+gg0JyZpFKehzI0A1kNyP9aDT3c3YGY3kd0uHl55UMW1VgdK7mBvVexSTIe
-	UrI4rIrSwg0PRh835tCWRUrSW24ojJ/wvxyjGS9ZccpzixG1x7XcBtbmdTvBuynI7ADy
-	xRhw==
-Received: by 10.112.54.6 with SMTP id f6mr19510589lbp.71.1357175308017; Wed,
-	02 Jan 2013 17:08:28 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.112.55.176 with HTTP; Wed, 2 Jan 2013 17:08:07 -0800 (PST)
-In-Reply-To: <201301030019.r030JT4H029920@d01av04.pok.ibm.com>
+	(envelope-from <aliguori@us.ibm.com>) id 1TqaLS-0001lR-G7
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2013 21:15:46 -0500
+Received: from /spool/local
+	by e7.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Wed, 2 Jan 2013 21:15:45 -0500
+Received: from d01dlp03.pok.ibm.com (9.56.250.168)
+	by e7.ny.us.ibm.com (192.168.1.107) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Wed, 2 Jan 2013 21:15:44 -0500
+Received: from d01relay06.pok.ibm.com (d01relay06.pok.ibm.com [9.56.227.116])
+	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id 0EC7EC90045;
+	Wed,  2 Jan 2013 21:15:44 -0500 (EST)
+Received: from d01av01.pok.ibm.com (d01av01.pok.ibm.com [9.56.224.215])
+	by d01relay06.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r032Fhku25755714; Wed, 2 Jan 2013 21:15:43 -0500
+Received: from d01av01.pok.ibm.com (loopback [127.0.0.1])
+	by d01av01.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	r032Fh2P025328; Wed, 2 Jan 2013 21:15:43 -0500
+Received: from titi.na.relay.ibm.com (sig-9-65-32-54.mts.ibm.com [9.65.32.54])
+	by d01av01.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r032Fe7L025211; Wed, 2 Jan 2013 21:15:41 -0500
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA86669ssq+5y8BLL6CBdZozjwKWmdKkQG1m=pFSn_JPTQ@mail.gmail.com>
 References: <1352101300-12060-1-git-send-email-lig.fnst@cn.fujitsu.com>
 	<201301030019.r030JT4H029920@d01av04.pok.ibm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Jan 2013 01:08:07 +0000
-Message-ID: <CAFEAcA86669ssq+5y8BLL6CBdZozjwKWmdKkQG1m=pFSn_JPTQ@mail.gmail.com>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQlTuEa7T/RJxNuAVOiqlXTKS58w1IEEveEBSqWe3iHOYfUaRsIRnGzVju8SMSTl86DxSG9o
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.215.46
+	<CAFEAcA86669ssq+5y8BLL6CBdZozjwKWmdKkQG1m=pFSn_JPTQ@mail.gmail.com>
+User-Agent: Notmuch/0.13.2+93~ged93d79 (http://notmuchmail.org) Emacs/23.3.1
+	(x86_64-pc-linux-gnu)
+Date: Wed, 02 Jan 2013 20:15:39 -0600
+Message-ID: <874nizui44.fsf@codemonkey.ws>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13010302-5806-0000-0000-00001DB64543
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 32.97.182.137
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
 	liguang <lig.fnst@cn.fujitsu.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] correct error message
@@ -55,16 +64,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Jan 2013 01:08:32 -0000
+X-List-Received-Date: Thu, 03 Jan 2013 02:15:50 -0000
 
-On 3 January 2013 00:19, Anthony Liguori <aliguori@us.ibm.com> wrote:
-> This is an automated message generated from the QEMU Patches.
-> Thank you for submitting this patch.  This patch no longer applies to qemu.git.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-> Nacked-by: QEMU Patches <aliguori@us.ibm.com>
+> On 3 January 2013 00:19, Anthony Liguori <aliguori@us.ibm.com> wrote:
+>> This is an automated message generated from the QEMU Patches.
+>> Thank you for submitting this patch.  This patch no longer applies to qemu.git.
+>
+>> Nacked-by: QEMU Patches <aliguori@us.ibm.com>
+>
+> Are we going to get these emails on every old patch that was
+> superseded by a later fixed version 2?
 
-Are we going to get these emails on every old patch that was
-superseded by a later fixed version 2?
+Nope.
 
--- PMM
+Patches detects obsoleted patches and ignores them.  It also detects
+patches that have been committed in submaintainer trees but have not yet
+made there way into qemu.git.
+
+Regards,
+
+Anthony Liguori
+
+>
+> -- PMM
+
 
