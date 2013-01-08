@@ -1,47 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TsKuh-0007Q2-Vu
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jan 2013 17:11:23 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:45632)
+	id 1TsRSW-0003R3-6u
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Jan 2013 00:10:44 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:46774)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1TsKuf-0007IR-M8
-	for qemu-trivial@nongnu.org; Mon, 07 Jan 2013 17:11:22 -0500
+	(envelope-from <sw@weilnetz.de>) id 1TsRSR-0003GC-V6
+	for qemu-trivial@nongnu.org; Tue, 08 Jan 2013 00:10:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1TsKue-0006VB-Ls
-	for qemu-trivial@nongnu.org; Mon, 07 Jan 2013 17:11:21 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:20941)
+	(envelope-from <sw@weilnetz.de>) id 1TsRSQ-0008Um-Uv
+	for qemu-trivial@nongnu.org; Tue, 08 Jan 2013 00:10:39 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:50968)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1TsKuc-0006Uo-Hd; Mon, 07 Jan 2013 17:11:18 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r07MBH5v032177
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 7 Jan 2013 17:11:17 -0500
-Received: from blackpad.lan.raisama.net (vpn1-7-15.gru2.redhat.com
-	[10.97.7.15])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r07MBGMS023595; Mon, 7 Jan 2013 17:11:16 -0500
-Received: by blackpad.lan.raisama.net (Postfix, from userid 500)
-	id 2F7F2203D16; Mon,  7 Jan 2013 20:12:57 -0200 (BRST)
-Date: Mon, 7 Jan 2013 20:12:57 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20130107221257.GG18372@otherpad.lan.raisama.net>
+	(envelope-from <sw@weilnetz.de>)
+	id 1TsRQE-0007i9-OV; Tue, 08 Jan 2013 00:08:22 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	4478E728004F; Tue,  8 Jan 2013 06:08:20 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id HLINE2xf5jte; Tue,  8 Jan 2013 06:08:19 +0100 (CET)
+Received: from weilnetz.de (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	6527C728004E; Tue,  8 Jan 2013 06:08:19 +0100 (CET)
+Received: from 80.134.244.1
+	(SquirrelMail authenticated user stefan.weil@weilnetz.de)
+	by weilnetz.de with HTTP; Tue, 8 Jan 2013 06:08:19 +0100
+Message-ID: <daad7ff9db9acb2fff5dc1d770df7368.squirrel@weilnetz.de>
+In-Reply-To: <20130107221257.GG18372@otherpad.lan.raisama.net>
 References: <1357579795-11770-1-git-send-email-peter.maydell@linaro.org>
 	<50EB0805.604@weilnetz.de>
 	<CAFEAcA8rwVhbgUbc3VRtgQUWtztkdXyxYfhxJozytdVQyeFY-g@mail.gmail.com>
+	<20130107221257.GG18372@otherpad.lan.raisama.net>
+Date: Tue, 8 Jan 2013 06:08:19 +0100
+From: "Stefan Weil" <sw@weilnetz.de>
+To: "Eduardo Habkost" <ehabkost@redhat.com>
+User-Agent: SquirrelMail/1.4.21
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8rwVhbgUbc3VRtgQUWtztkdXyxYfhxJozytdVQyeFY-g@mail.gmail.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Content-Type: text/plain;charset=iso-8859-1
+X-Priority: 3 (Normal)
+Importance: Normal
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	patches@linaro.org
+X-Received-From: 78.47.199.172
+Cc: Peter Maydell <peter.maydell@linaro.org>, patches@linaro.org,
+	qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qga/channel-posix.c:
  Explicitly include string.h
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,30 +59,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Jan 2013 22:11:22 -0000
+X-List-Received-Date: Tue, 08 Jan 2013 05:10:41 -0000
 
-On Mon, Jan 07, 2013 at 05:50:14PM +0000, Peter Maydell wrote:
-> On 7 January 2013 17:38, Stefan Weil <sw@weilnetz.de> wrote:
-> > Am 07.01.2013 18:29, schrieb Peter Maydell:
-> >
-> >> Explicitly include string.h to avoid warnings under MacOS X/clang
-> >> about implicit declarations of strerror() and strlen().
-> 
-> > Better: include qemu-common.h first and remove all
-> > three standard includes.
-> 
-> This would be reversing direction from commit 4d4922c33...
-> I took the commit message in that commit to imply that we
-> shouldn't be including qemu-common.h for standalone
-> executables like qga.
+> On Mon, Jan 07, 2013 at 05:50:14PM +0000, Peter Maydell wrote:
+>> On 7 January 2013 17:38, Stefan Weil <sw@weilnetz.de> wrote:
+>> > Am 07.01.2013 18:29, schrieb Peter Maydell:
+>> >
+>> >> Explicitly include string.h to avoid warnings under MacOS X/clang
+>> >> about implicit declarations of strerror() and strlen().
+>>
+>> > Better: include qemu-common.h first and remove all
+>> > three standard includes.
+>>
+>> This would be reversing direction from commit 4d4922c33...
+>> I took the commit message in that commit to imply that we
+>> shouldn't be including qemu-common.h for standalone
+>> executables like qga.
+>
+> Including qemu-common.h from .c files is OK, although I wouldn't do tha=
+t
+> in this specific case (I would include string.h instead).
+>
+> The problem with qemu-common.h is when it is included by header files,
+> because qemu-common.h includes lots of other headers, easily leading to
+> circular header dependencies.
+>
+> --
+> Eduardo
+>
 
-Including qemu-common.h from .c files is OK, although I wouldn't do that
-in this specific case (I would include string.h instead).
 
-The problem with qemu-common.h is when it is included by header files,
-because qemu-common.h includes lots of other headers, easily leading to
-circular header dependencies.
+I just noticed that on my Linux host qemu-common.h is no longer
+included indirectly (it was with earlier revisions of QEMU).
 
--- 
-Eduardo
+Therefore the patch is ok.
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+
 
