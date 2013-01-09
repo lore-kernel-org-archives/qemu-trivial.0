@@ -1,36 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TseGG-0003f3-EG
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Jan 2013 13:50:56 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:60996)
+	id 1Tt68y-0006OK-6U
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2013 19:37:16 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:35568)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1TseGC-0003e3-Kh
-	for qemu-trivial@nongnu.org; Tue, 08 Jan 2013 13:50:54 -0500
+	(envelope-from <julien.grall@citrix.com>) id 1Tt68t-0006Bi-O6
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2013 19:37:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1TseG7-000286-Kg
-	for qemu-trivial@nongnu.org; Tue, 08 Jan 2013 13:50:52 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:9749)
+	(envelope-from <julien.grall@citrix.com>) id 1Tt68q-0007AK-Ih
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2013 19:37:11 -0500
+Received: from smtp02.citrix.com ([66.165.176.63]:13857)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1TseG7-00026n-CO; Tue, 08 Jan 2013 13:50:47 -0500
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r08Ioe4d031791
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 8 Jan 2013 13:50:41 -0500
-Received: from lacos-laptop.usersys.redhat.com (vpn1-5-113.ams2.redhat.com
-	[10.36.5.113])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r08IoRgd028561; Tue, 8 Jan 2013 13:50:31 -0500
-From: Laszlo Ersek <lersek@redhat.com>
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, kraxel@redhat.com,
-	lersek@redhat.com
-Date: Tue,  8 Jan 2013 19:52:20 +0100
-Message-Id: <1357671140-21713-1-git-send-email-lersek@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] Makefile: install the "acpi-dsdt.aml" and
-	"q35-acpi-dsdt.aml" blobs too
+	(envelope-from <julien.grall@citrix.com>)
+	id 1Tt68j-00078Z-PA; Wed, 09 Jan 2013 19:37:01 -0500
+X-IronPort-AV: E=Sophos;i="4.84,440,1355097600"; 
+   d="scan'208";a="3078550"
+Received: from ftlpex01cl01.citrite.net ([10.13.107.78])
+	by FTLPIPO02.CITRIX.COM with ESMTP/TLS/AES128-SHA;
+	10 Jan 2013 00:37:00 +0000
+Received: from meteora.cam.xci-test.com (10.80.248.22) by smtprelay.citrix.com
+	(10.13.107.78) with Microsoft SMTP Server id 14.2.318.1;
+	Wed, 9 Jan 2013 19:36:59 -0500
+From: Julien Grall <julien.grall@citrix.com>
+To: <qemu-devel@nongnu.org>
+Date: Wed, 9 Jan 2013 18:10:22 +0000
+Message-ID: <1357755022-3572-1-git-send-email-julien.grall@citrix.com>
+X-Mailer: git-send-email 1.7.10.4
+MIME-Version: 1.0
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 66.165.176.63
+Cc: qemu-trivial@nongnu.org, Julien Grall <julien.grall@citrix.com>,
+	aliguori@us.ibm.com, adam@os.inf.tu-dresden.de
+Subject: [Qemu-trivial] [PATCH] hw/pc.c: Fix converting of ioport_register*
+	to MemoryRegion
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,28 +45,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Jan 2013 18:50:54 -0000
+X-List-Received-Date: Thu, 10 Jan 2013 00:37:14 -0000
 
-The WARNING message from commit f7e4dd6c made me notice.
+The commit 258711 introduced MemoryRegion to replace ioport_region*
+for ioport 80h and F0h.
+A MemoryRegion needs to have both read and write callback otherwise a segfault
+will occur when an access is made.
 
-Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+The previous behaviour of this both ioport is to return 0xffffffffffffffff.
+So keep this behaviour.
+
+Reported-by: Adam Lackorzynski <adam@os.inf.tu-dresden.de>
+Signed-off-by: Julien Grall <julien.grall@citrix.com>
 ---
- Makefile |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
+ hw/pc.c |   12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/Makefile b/Makefile
-index a7ac04b..f6626b5 100644
---- a/Makefile
-+++ b/Makefile
-@@ -280,6 +280,7 @@ bepo
- ifdef INSTALL_BLOBS
- BLOBS=bios.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
- vgabios-stdvga.bin vgabios-vmware.bin vgabios-qxl.bin \
-+acpi-dsdt.aml q35-acpi-dsdt.aml \
- ppc_rom.bin openbios-sparc32 openbios-sparc64 openbios-ppc \
- pxe-e1000.rom pxe-eepro100.rom pxe-ne2k_pci.rom \
- pxe-pcnet.rom pxe-rtl8139.rom pxe-virtio.rom \
+diff --git a/hw/pc.c b/hw/pc.c
+index df0c48e..90b1bf7 100644
+--- a/hw/pc.c
++++ b/hw/pc.c
+@@ -103,6 +103,11 @@ static void ioport80_write(void *opaque, hwaddr addr, uint64_t data,
+ {
+ }
+ 
++static uint64_t ioport80_read(void *opaque, hwaddr addr, unsigned size)
++{
++    return 0xffffffffffffffff;
++}
++
+ /* MSDOS compatibility mode FPU exception support */
+ static qemu_irq ferr_irq;
+ 
+@@ -123,6 +128,11 @@ static void ioportF0_write(void *opaque, hwaddr addr, uint64_t data,
+     qemu_irq_lower(ferr_irq);
+ }
+ 
++static uint64_t ioportF0_read(void *opaque, hwaddr addr, unsigned size)
++{
++    return 0xffffffffffffffff;
++}
++
+ /* TSC handling */
+ uint64_t cpu_get_tsc(CPUX86State *env)
+ {
+@@ -960,6 +970,7 @@ static void cpu_request_exit(void *opaque, int irq, int level)
+ 
+ static const MemoryRegionOps ioport80_io_ops = {
+     .write = ioport80_write,
++    .read = ioport80_read,
+     .endianness = DEVICE_NATIVE_ENDIAN,
+     .impl = {
+         .min_access_size = 1,
+@@ -969,6 +980,7 @@ static const MemoryRegionOps ioport80_io_ops = {
+ 
+ static const MemoryRegionOps ioportF0_io_ops = {
+     .write = ioportF0_write,
++    .read = ioportF0_read,
+     .endianness = DEVICE_NATIVE_ENDIAN,
+     .impl = {
+         .min_access_size = 1,
 -- 
-1.7.1
+Julien Grall
 
 
