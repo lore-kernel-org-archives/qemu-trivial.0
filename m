@@ -1,41 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ttuis-0005fD-Jk
-	for mharc-qemu-trivial@gnu.org; Sat, 12 Jan 2013 01:37:42 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58962)
+	id 1Tu3gZ-0001pg-Vg
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Jan 2013 11:11:55 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:36794)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Ttuin-0005N9-79
-	for qemu-trivial@nongnu.org; Sat, 12 Jan 2013 01:37:41 -0500
+	(envelope-from <blauwirbel@gmail.com>) id 1Tu3gV-0001ca-G0
+	for qemu-trivial@nongnu.org; Sat, 12 Jan 2013 11:11:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Ttuii-0006nZ-BI
-	for qemu-trivial@nongnu.org; Sat, 12 Jan 2013 01:37:37 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:44847)
+	(envelope-from <blauwirbel@gmail.com>) id 1Tu3gR-0003WX-3j
+	for qemu-trivial@nongnu.org; Sat, 12 Jan 2013 11:11:51 -0500
+Received: from mail-pb0-f52.google.com ([209.85.160.52]:60943)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1Ttuia-0006mv-I6; Sat, 12 Jan 2013 01:37:24 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	6F009728004D; Sat, 12 Jan 2013 07:37:22 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 01JvChsc5SfP; Sat, 12 Jan 2013 07:37:21 +0100 (CET)
-Received: from [192.168.178.35] (p5086E50F.dip.t-dialin.net [80.134.229.15])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	77520728004C; Sat, 12 Jan 2013 07:37:21 +0100 (CET)
-Message-ID: <50F104A0.9080201@weilnetz.de>
-Date: Sat, 12 Jan 2013 07:37:20 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130106 Thunderbird/17.0.2
+	(envelope-from <blauwirbel@gmail.com>)
+	id 1Tu3gJ-0003US-2Y; Sat, 12 Jan 2013 11:11:39 -0500
+Received: by mail-pb0-f52.google.com with SMTP id ro2so1468098pbb.39
+	for <multiple recipients>; Sat, 12 Jan 2013 08:11:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=mA+mgBohGkgGlT9gWhcQA8X8wB+PD5PiAxNNfHPWrk8=;
+	b=b4xqMOQfEtdS6lmCqPT5v88U6b4Kz7aNotoDbL5R4da+voPRQYlA3IXInphNaRYf/w
+	aotPFItnGRzcK573h8saxx1aJvWe1n850R9FCJD64OsHHdItUWlqC//JR3OI/JRfZGci
+	4Tmou760ir+Th7lHLRTst1iYAvtmgmls7w2Qc+FifW/K97EBzYBoNFfHI04clJDWZGmf
+	gCYeDOVgSD3HrfjBrXUTl5tQDzlvdHGU/wJqA7bKO4tSkGGCwcC5wfIYGKNQHKY/fgT2
+	1dVdkzDNtDglX+tYjzQss5A34P5JUOvLSubLxSBBiI73o5R65mNYwckqEurXY4AzDKNq
+	qmJw==
+Received: by 10.68.231.40 with SMTP id td8mr44272954pbc.48.1358007098336; Sat,
+	12 Jan 2013 08:11:38 -0800 (PST)
 MIME-Version: 1.0
-To: Julien Grall <julien.grall@citrix.com>
-References: <1357922503-20202-1-git-send-email-julien.grall@citrix.com>
+Received: by 10.68.208.168 with HTTP; Sat, 12 Jan 2013 08:11:18 -0800 (PST)
 In-Reply-To: <1357922503-20202-1-git-send-email-julien.grall@citrix.com>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
+References: <1357922503-20202-1-git-send-email-julien.grall@citrix.com>
+From: Blue Swirl <blauwirbel@gmail.com>
+Date: Sat, 12 Jan 2013 16:11:18 +0000
+Message-ID: <CAAu8pHt9Nifyzd-isnxU0z2VGanQUxTcvKsWourGQQYBEZLTow@mail.gmail.com>
+To: Julien Grall <julien.grall@citrix.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.160.52
 Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/pc.c: add ULL suffix in
  ioport80_read and ioportF0_read return value
@@ -50,46 +51,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 12 Jan 2013 06:37:41 -0000
+X-List-Received-Date: Sat, 12 Jan 2013 16:11:54 -0000
 
-Am 11.01.2013 17:41, schrieb Julien Grall:
+Thanks, applied.
+
+On Fri, Jan 11, 2013 at 4:41 PM, Julien Grall <julien.grall@citrix.com> wrote:
 > The commit c02e1eac887b1b0aee7361b1fcf889e7d47fed9d broke the compilation
 > for i386. ULL need to be specify for uint64_t value.
 >
 > Signed-off-by: Julien Grall <julien.grall@citrix.com>
 > ---
->   hw/pc.c |    4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/pc.c |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
 > diff --git a/hw/pc.c b/hw/pc.c
 > index dfa3144..ba1f19d 100644
 > --- a/hw/pc.c
 > +++ b/hw/pc.c
 > @@ -105,7 +105,7 @@ static void ioport80_write(void *opaque, hwaddr addr, uint64_t data,
->   
->   static uint64_t ioport80_read(void *opaque, hwaddr addr, unsigned size)
->   {
+>
+>  static uint64_t ioport80_read(void *opaque, hwaddr addr, unsigned size)
+>  {
 > -    return 0xffffffffffffffff;
 > +    return 0xffffffffffffffffULL;
->   }
->   
->   /* MSDOS compatibility mode FPU exception support */
+>  }
+>
+>  /* MSDOS compatibility mode FPU exception support */
 > @@ -130,7 +130,7 @@ static void ioportF0_write(void *opaque, hwaddr addr, uint64_t data,
->   
->   static uint64_t ioportF0_read(void *opaque, hwaddr addr, unsigned size)
->   {
+>
+>  static uint64_t ioportF0_read(void *opaque, hwaddr addr, unsigned size)
+>  {
 > -    return 0xffffffffffffffff;
 > +    return 0xffffffffffffffffULL;
->   }
->   
->   /* TSC handling */
-
-
-Better: use UINT64_MAX. Then reviewers don't have to count 'f's.
-
-As this patch is a build fix, it should be committed directly without
-waiting for a qemu-trivial pull request.
-
-Stefan
-
+>  }
+>
+>  /* TSC handling */
+> --
+> Julien Grall
+>
+>
 
