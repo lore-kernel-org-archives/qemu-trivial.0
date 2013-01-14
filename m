@@ -1,50 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TupIg-0000Ac-0D
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Jan 2013 14:02:26 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:55148)
+	id 1Tus1a-0002qp-7M
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Jan 2013 16:56:58 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:40462)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TupIY-00006x-NU
-	for qemu-trivial@nongnu.org; Mon, 14 Jan 2013 14:02:24 -0500
+	(envelope-from <eblake@redhat.com>) id 1Tus1W-0002nj-UJ
+	for qemu-trivial@nongnu.org; Mon, 14 Jan 2013 16:56:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TupIS-0001tt-TP
-	for qemu-trivial@nongnu.org; Mon, 14 Jan 2013 14:02:18 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:14278)
+	(envelope-from <eblake@redhat.com>) id 1Tus1U-0003Ug-Nq
+	for qemu-trivial@nongnu.org; Mon, 14 Jan 2013 16:56:54 -0500
+Received: from qmta02.emeryville.ca.mail.comcast.net ([76.96.30.24]:53691)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1TupHw-0001oe-IX; Mon, 14 Jan 2013 14:01:40 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0EJ1c60029249
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 14 Jan 2013 14:01:38 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-52.ams2.redhat.com
-	[10.36.116.52])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r0EJ1ba4002315; Mon, 14 Jan 2013 14:01:38 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id B5DA8200A9; Mon, 14 Jan 2013 20:01:36 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>
-References: <1358121304-21345-1-git-send-email-afaerber@suse.de>
-	<1358121304-21345-2-git-send-email-afaerber@suse.de>
-	<87k3rg2bzf.fsf@blackfin.pond.sub.org> <50F437C5.4020905@suse.de>
-Date: Mon, 14 Jan 2013 20:01:36 +0100
-In-Reply-To: <50F437C5.4020905@suse.de> ("Andreas =?utf-8?Q?F=C3=A4rber=22?=
-	=?utf-8?Q?'s?= message of "Mon, 14 Jan 2013 17:52:21 +0100")
-Message-ID: <87a9sboagf.fsf_-_@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
+	(envelope-from <eblake@redhat.com>) id 1Tus1U-0003UN-G6
+	for qemu-trivial@nongnu.org; Mon, 14 Jan 2013 16:56:52 -0500
+Received: from omta19.emeryville.ca.mail.comcast.net ([76.96.30.76])
+	by qmta02.emeryville.ca.mail.comcast.net with comcast
+	id nrpH1k0091eYJf8A2xwrAC; Mon, 14 Jan 2013 21:56:51 +0000
+Received: from [192.168.0.125] ([71.219.16.174])
+	by omta19.emeryville.ca.mail.comcast.net with comcast
+	id nxuB1k00t3lL5eF01xuJjw; Mon, 14 Jan 2013 21:54:46 +0000
+Message-ID: <50F47E7D.4020909@redhat.com>
+Date: Mon, 14 Jan 2013 14:54:05 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/17.0 Thunderbird/17.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-ppc@nongnu.org,
-	qemu-devel@nongnu.org, Anthony Liguori <anthony@codemonkey.ws>,
-	agraf@suse.de
-Subject: [Qemu-trivial] Go along with glib's basic type typedef silliness?
-	(was: [Qemu-devel] [PATCH 01/10] qom: Make
-	object_resolve_path_component() path argument const)
+To: mdroth <mdroth@linux.vnet.ibm.com>
+References: <1357143311-10927-1-git-send-email-eblake@redhat.com>
+	<20130102231421.GC17859@vm>
+In-Reply-To: <20130102231421.GC17859@vm>
+X-Enigmail-Version: 1.5.0
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="----enig2KHTEFGCDUPSSVEGXJTDL"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
+	s=q20121106; t=1358200611;
+	bh=kTiLo7h/wPIKYxOsjIDu3uIhfUza1fMLOtY1q0M1FJQ=;
+	h=Received:Received:Message-ID:Date:From:MIME-Version:To:Subject:
+	Content-Type;
+	b=lq8nDU2QUk/2nh/tGo3gQAX5iaqJs9UAf0EFo9cl0JiGwj9hPyLdPICCINpj6KV4B
+	T3f3YzhG38RV+/bHp7Fmdd3iOj1Bfcs5qsC2dHTiREgelNTZOS1/AoD9RmuqIoBQsl
+	VqK8gYVTrfBzy8XKGYyqM0uZZ12eCk1rLn/q98b2ysn1AWYw/RFv4H6Y1q+NzTHOh6
+	YUY6A/r4PENc/CZB/YNWw5lbLbe8OZ+XfykHMSt9zAeXrqYdPIfyJx0DpUWgSBrajq
+	5/++mk3HQExPN4Gjk+TD0jqRG+0dLy9MX/7GvnRTZiCmxmWciLzbREJI1ujhj4oEKr
+	ALTWfyuwIxRCQ==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 76.96.30.24
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, lcapitulino@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] qga: add missing commas in json docs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,49 +60,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Jan 2013 19:02:24 -0000
+X-List-Received-Date: Mon, 14 Jan 2013 21:56:56 -0000
 
-[Thread hijack, dropping cc: qemu-trivial, qemu-ppc]
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+------enig2KHTEFGCDUPSSVEGXJTDL
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Andreas F=C3=A4rber <afaerber@suse.de> writes:
+On 01/02/2013 04:14 PM, mdroth wrote:
+> On Wed, Jan 02, 2013 at 09:15:11AM -0700, Eric Blake wrote:
+>> * qga/qapi-schema.json: Use valid JSON.
+>>
+>> Signed-off-by: Eric Blake <eblake@redhat.com>
+>=20
+> Thanks, applied to qga branch
 
-> Am 14.01.2013 13:19, schrieb Markus Armbruster:
->> Andreas F=C3=A4rber <afaerber@suse.de> writes:
-[...]
->>> diff --git a/qom/object.c b/qom/object.c
->>> index 351b88c..03e6f24 100644
->>> --- a/qom/object.c
->>> +++ b/qom/object.c
->>> @@ -1017,7 +1017,7 @@ gchar *object_get_canonical_path(Object *obj)
->>>      return newpath;
->>>  }
->>>=20=20
->>> -Object *object_resolve_path_component(Object *parent, gchar *part)
->>> +Object *object_resolve_path_component(Object *parent, const gchar *par=
-t)
->>>  {
->>>      ObjectProperty *prop =3D object_property_find(parent, part, NULL);
->>>      if (prop =3D=3D NULL) {
->>=20
->> Unrelated: do we really want to go along with glib's basic type typedef
->> silliness?
->
-> Elsewhere I have adopted the exact GLib signature since typedefs can be
-> changed at any time. In particular the GCompareFunc using gconstpointer,
-> gint, etc. Not saying I find their GLib usage useful.
+Ping.  I don't see this patch in today's qga pull request:
+https://lists.gnu.org/archive/html/qemu-devel/2013-01/msg02272.html
+Should it go in through the trivial branch instead?
 
-No, these typedefs cannot be changed.
-
-Firstly, their exact definitions are documented[*], therefore can be
-relied on.
-
-Secondly, mountains of code rely on the exact definitions, and would
-break left and right if they were changed.
-
-They're a textbook example of a perfectly useless pseudo-abstraction.
-
-[...]
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
-[*] http://developer.gnome.org/glib/stable/glib-Basic-Types.html
+------enig2KHTEFGCDUPSSVEGXJTDL
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.13 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJQ9H59AAoJEKeha0olJ0Nq0+0IAK1R8VFpp/52MNLKgIj8SiZr
+7dSAKnkJKMsmneBBmIaDaZS0uzfh7DfJ0feNBB41ffeXaWRNWxbIEkaueF5cDU6j
+thDUPqNul8ghtIRTgLrdhwcj5H2L4eqGf+PjLVwhBj5CKgV6VVUxqt22+SYAAH33
+YXHyuieX6hiBz4hOC5YuMsXGtOLl/yXtmP9VTdQi1lMC4izJZIcOAriCmId9psUW
+qHtnj9+Mogtg6Kz/nDFx7NmrYGHwQVm3ri3BSouXOq8UJx+77Qj7aKmoQ6IOTnXX
+4yPnPVXPtKwKYgHT2pSaB9+iV5LBwAP0npHkDY6j4GDm+lUXwWf0+QXsFVmRiBg=
+=eupl
+-----END PGP SIGNATURE-----
+
+------enig2KHTEFGCDUPSSVEGXJTDL--
 
