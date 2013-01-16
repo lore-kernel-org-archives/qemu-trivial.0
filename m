@@ -1,50 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TvGJd-00087j-N8
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Jan 2013 18:53:13 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:39429)
+	id 1TvNo0-0008Fn-3U
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Jan 2013 02:53:04 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:33268)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <v.e.evard@gmail.com>) id 1TvGJZ-0007wq-S6
-	for qemu-trivial@nongnu.org; Tue, 15 Jan 2013 18:53:12 -0500
+	(envelope-from <dragonfax@gmail.com>) id 1TvNnv-0008Ab-63
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 02:53:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <v.e.evard@gmail.com>) id 1TvGJX-00087P-JC
-	for qemu-trivial@nongnu.org; Tue, 15 Jan 2013 18:53:09 -0500
-Received: from mail-wi0-f182.google.com ([209.85.212.182]:41956)
+	(envelope-from <dragonfax@gmail.com>) id 1TvNns-0008Ht-Ti
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 02:52:59 -0500
+Received: from mail-ie0-f178.google.com ([209.85.223.178]:47560)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <v.e.evard@gmail.com>)
-	id 1TvGJS-00085j-Pk; Tue, 15 Jan 2013 18:53:03 -0500
-Received: by mail-wi0-f182.google.com with SMTP id hn14so704915wib.3
-	for <multiple recipients>; Tue, 15 Jan 2013 15:53:01 -0800 (PST)
+	(envelope-from <dragonfax@gmail.com>) id 1TvNns-0008Hc-OQ
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 02:52:56 -0500
+Received: by mail-ie0-f178.google.com with SMTP id c12so1875010ieb.23
+	for <qemu-trivial@nongnu.org>; Tue, 15 Jan 2013 23:52:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:message-id:date:from:user-agent:mime-version:to:cc
-	:subject:content-type:content-transfer-encoding;
-	bh=PHkPA55HD5AfQd+4EPMHV96nYML5rvGxtppUshHBIfY=;
-	b=Ahlum3ANLZrMXGTHKFkKzEFnSSV9i47suxgcvTWbf5YIm8FTCuNhFkujtwQ+A3mbch
-	LVE/t4Q1bHPDFp1Cb/yxbu+uhdl2EIWS3fjb82rm5bX7CiqYEk5VID/heTVzC9MASKPz
-	txwb6S4Y/GDKr+4wFOQBiuqu0FVfNsyKpIrYmnnJAh3oX7kph85DCxTD0gz7ub4bEgDl
-	c3yw8c4acR5B1rK0AeI4OTAqxjx8xwqBRg04RLL6I6AQKHdmWUWA04X+CKoJQeR/otbr
-	d51sdFV/IcvSz5LX4VDJJpTTTzpPJiDoAo/9Y9sQWX3Tx+g8lPqPsoNaPg4sYOuEmI7/
-	S8+Q==
-X-Received: by 10.180.78.66 with SMTP id z2mr6553081wiw.23.1358293981823;
-	Tue, 15 Jan 2013 15:53:01 -0800 (PST)
-Received: from [192.168.1.231] (host-130-157-66-217.spbmts.ru.
-	[217.66.157.130])
-	by mx.google.com with ESMTPS id hu8sm5618504wib.6.2013.01.15.15.52.59
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Tue, 15 Jan 2013 15:53:00 -0800 (PST)
-Message-ID: <50F5EBDA.2040208@gmail.com>
-Date: Wed, 16 Jan 2013 03:52:58 +0400
-From: Vadim Evard <v.e.evard@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:10.0.11) Gecko/20121122 Icedove/10.0.11
+	h=x-received:mime-version:from:date:message-id:subject:to
+	:content-type; bh=iDOyGirGivNkPCokLIbrRdVtPVH1AG8fgrWhRb4W3Qk=;
+	b=D622LnLb8v/CHcq5d0EAdfqvcKwWnXYoEbzvZrSBgtEPegae7I+2cRQKOSapkJNau+
+	cY4vpCgxSisf2WG7MwNJtc7J8i9Gh82BGz9iuHwfuC5UK2/AI9r/FU1MoyEdZ0nO+r0t
+	IJa++/kS4S6bs5AoR6vktAbGDqA7o3wZJyquW8cmAcF5/m5hownOiVcsD1/sbolVkNCl
+	+UM8Lu/FnSC6Eb6BdcDR9bBy50iiQylN8FO+2H4HVnnKvXcQbYC9ObX5DvVHwhzVyeXu
+	3InymoY8yAi8lkeI58CKkxX7PmWlbegfMYMc2ldtKvrF1o5KluUa4Jy8nZ3449ZSKq4b
+	6pRA==
+X-Received: by 10.50.15.138 with SMTP id x10mr4140456igc.16.1358322775726;
+	Tue, 15 Jan 2013 23:52:55 -0800 (PST)
 MIME-Version: 1.0
-To: qemu-devel@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Received: by 10.50.219.169 with HTTP; Tue, 15 Jan 2013 23:52:35 -0800 (PST)
+From: Jason Stillwell <dragonfax@gmail.com>
+Date: Tue, 15 Jan 2013 23:52:35 -0800
+Message-ID: <CAG0b9_jOiRwSik_Np5ym=_LOiAPhuMtZOJ6kCMv+WrftnX1LAQ@mail.gmail.com>
+To: qemu-trivial@nongnu.org
+Content-Type: multipart/mixed; boundary=14dae9340bef899bbd04d3632ad0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.212.182
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>
-Subject: [Qemu-trivial] [Qemu-devel] [PATCH] configure: silencing
- pkg-config's check for curses
+X-Received-From: 209.85.223.178
+Subject: [Qemu-trivial] trival patch to master to fix osx build
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,31 +46,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Jan 2013 23:53:12 -0000
+X-List-Received-Date: Wed, 16 Jan 2013 07:53:02 -0000
 
-From d10856f3b1d893b5d3c6ab213eb921d0a24e7766 Mon Sep 17 00:00:00 2001
-From: Vadim Evard <v.e.evard@gmail.com>
-Date: Wed, 16 Jan 2013 03:45:44 +0400
-Subject: [PATCH] configure: silencing pkg-config's check for curses
+--14dae9340bef899bbd04d3632ad0
+Content-Type: multipart/alternative; boundary=14dae9340bef899bb904d3632ace
 
----
- configure |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--14dae9340bef899bb904d3632ace
+Content-Type: text/plain; charset=ISO-8859-1
 
-diff --git a/configure b/configure
-index 4ebb60d..6211db9 100755
---- a/configure
-+++ b/configure
-@@ -2039,7 +2039,7 @@ fi
- if test "$mingw32" = "yes" ; then
-     curses_list="-lpdcurses"
- else
--    curses_list="-lncurses:-lcurses:$($pkg_config --libs ncurses)"
-+    curses_list="-lncurses:-lcurses:$($pkg_config --libs ncurses 2>/dev/null)"
- fi
- 
- if test "$curses" != "no" ; then
--- 
-1.7.10.4
+symbol isnt' defined when __APPLE__
+this moves the symbol to the right place so it doesn't break the build.
 
+--14dae9340bef899bb904d3632ace
+Content-Type: text/html; charset=ISO-8859-1
+
+<div dir="ltr">symbol isnt&#39; defined when __APPLE__<div>this moves the symbol to the right place so it doesn&#39;t break the build.</div></div>
+
+--14dae9340bef899bb904d3632ace--
+--14dae9340bef899bbd04d3632ad0
+Content-Type: application/octet-stream; name="0001-fix-for-osx.patch"
+Content-Disposition: attachment; filename="0001-fix-for-osx.patch"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_hc06a60f0
+
+RnJvbSA1YmZlNjU1YzEyMTlkZjdmZWZlNTgxYzEyZDE4NjM2ODg4NWM2YjQ5IE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBKYXNvbiBTdGlsbHdlbGwgPGpzdGlsbHdlbGxAemVuZGVzay5j
+b20+CkRhdGU6IFR1ZSwgMTUgSmFuIDIwMTMgMjM6NTA6MzUgLTA4MDAKU3ViamVjdDogW1BBVENI
+XSBmaXggZm9yIG9zeAoKLS0tCiBibG9jay9yYXctcG9zaXguYyB8ICAgIDIgKy0KIDEgZmlsZSBj
+aGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2Jsb2Nr
+L3Jhdy1wb3NpeC5jIGIvYmxvY2svcmF3LXBvc2l4LmMKaW5kZXggNjc5ZmNjNS4uOTJjMjA5NCAx
+MDA2NDQKLS0tIGEvYmxvY2svcmF3LXBvc2l4LmMKKysrIGIvYmxvY2svcmF3LXBvc2l4LmMKQEAg
+LTE0NTUsNyArMTQ1NSw2IEBAIHN0YXRpYyBCbG9ja0RyaXZlciBiZHJ2X2hvc3RfZGV2aWNlID0g
+ewogICAgIC5iZHJ2X2Fpb19yZWFkdgk9IHJhd19haW9fcmVhZHYsCiAgICAgLmJkcnZfYWlvX3dy
+aXRldgk9IHJhd19haW9fd3JpdGV2LAogICAgIC5iZHJ2X2Fpb19mbHVzaAk9IHJhd19haW9fZmx1
+c2gsCi0gICAgLmJkcnZfYWlvX2Rpc2NhcmQgICA9IGhkZXZfYWlvX2Rpc2NhcmQsCiAKICAgICAu
+YmRydl90cnVuY2F0ZSAgICAgID0gcmF3X3RydW5jYXRlLAogICAgIC5iZHJ2X2dldGxlbmd0aAk9
+IHJhd19nZXRsZW5ndGgsCkBAIC0xNDY0LDYgKzE0NjMsNyBAQCBzdGF0aWMgQmxvY2tEcml2ZXIg
+YmRydl9ob3N0X2RldmljZSA9IHsKIAogICAgIC8qIGdlbmVyaWMgc2NzaSBkZXZpY2UgKi8KICNp
+ZmRlZiBfX2xpbnV4X18KKyAgICAuYmRydl9haW9fZGlzY2FyZCAgID0gaGRldl9haW9fZGlzY2Fy
+ZCwKICAgICAuYmRydl9pb2N0bCAgICAgICAgID0gaGRldl9pb2N0bCwKICAgICAuYmRydl9haW9f
+aW9jdGwgICAgID0gaGRldl9haW9faW9jdGwsCiAjZW5kaWYKLS0gCjEuNy4xMC4yIChBcHBsZSBH
+aXQtMzMpCgo=
+--14dae9340bef899bbd04d3632ad0--
 
