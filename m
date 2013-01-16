@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TvUI3-0000nF-2t
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Jan 2013 09:48:31 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:44554)
+	id 1TvUIS-0000xv-PH
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Jan 2013 09:48:56 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:44698)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1TvUHz-0000e1-Ut
-	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 09:48:28 -0500
+	(envelope-from <armbru@pond.sub.org>) id 1TvUIK-0000tC-Jj
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 09:48:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1TvU6l-00029w-Mx
-	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 09:36:57 -0500
-Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:41687)
+	(envelope-from <armbru@pond.sub.org>) id 1TvU6o-0002BN-Ep
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 09:37:02 -0500
+Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:41684)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@pond.sub.org>)
-	id 1TvU6b-000259-QO; Wed, 16 Jan 2013 09:36:41 -0500
+	id 1TvU6b-00023P-3o; Wed, 16 Jan 2013 09:36:41 -0500
 Received: from blackfin.pond.sub.org (p5B32B5E9.dip.t-dialin.net
 	[91.50.181.233])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id 8F8359FF74;
-	Wed, 16 Jan 2013 15:36:39 +0100 (CET)
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id F200D9FE64;
+	Wed, 16 Jan 2013 15:36:38 +0100 (CET)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id A83A5200AC; Wed, 16 Jan 2013 15:36:38 +0100 (CET)
+	id 6AA58200AA; Wed, 16 Jan 2013 15:36:38 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 16 Jan 2013 15:36:32 +0100
-Message-Id: <1358346998-26328-6-git-send-email-armbru@redhat.com>
+Date: Wed, 16 Jan 2013 15:36:29 +0100
+Message-Id: <1358346998-26328-3-git-send-email-armbru@redhat.com>
 X-Mailer: git-send-email 1.7.11.7
 In-Reply-To: <1358346998-26328-1-git-send-email-armbru@redhat.com>
 References: <1358346998-26328-1-git-send-email-armbru@redhat.com>
@@ -29,8 +29,7 @@ X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2a01:4f8:121:10e4::3
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 05/11] spice: Fix unchecked strdup() by
-	converting to g_strdup()
+Subject: [Qemu-trivial] [PATCH 02/11] g_strdup(NULL) returns NULL; simplify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,29 +41,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Jan 2013 14:48:29 -0000
+X-List-Received-Date: Wed, 16 Jan 2013 14:48:53 -0000
 
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- ui/spice-core.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/9pfs/virtio-9p-device.c | 6 +-----
+ hw/block-common.c          | 4 +---
+ net/net.c                  | 4 +---
+ slirp/slirp.c              | 8 ++------
+ util/qemu-option.c         | 8 ++------
+ 5 files changed, 7 insertions(+), 23 deletions(-)
 
-diff --git a/ui/spice-core.c b/ui/spice-core.c
-index 3f2c565..bcc4199 100644
---- a/ui/spice-core.c
-+++ b/ui/spice-core.c
-@@ -848,8 +848,8 @@ static int qemu_spice_set_ticket(bool fail_if_conn, bool disconnect_if_conn)
- int qemu_spice_set_passwd(const char *passwd,
-                           bool fail_if_conn, bool disconnect_if_conn)
- {
--    free(auth_passwd);
--    auth_passwd = strdup(passwd);
-+    g_free(auth_passwd);
-+    auth_passwd = g_strdup(passwd);
-     return qemu_spice_set_ticket(fail_if_conn, disconnect_if_conn);
+diff --git a/hw/9pfs/virtio-9p-device.c b/hw/9pfs/virtio-9p-device.c
+index 6f427df..6eab7f7 100644
+--- a/hw/9pfs/virtio-9p-device.c
++++ b/hw/9pfs/virtio-9p-device.c
+@@ -85,11 +85,7 @@ VirtIODevice *virtio_9p_init(DeviceState *dev, V9fsConf *conf)
+     }
+ 
+     s->ctx.export_flags = fse->export_flags;
+-    if (fse->path) {
+-        s->ctx.fs_root = g_strdup(fse->path);
+-    } else {
+-        s->ctx.fs_root = NULL;
+-    }
++    s->ctx.fs_root = g_strdup(fse->path);
+     s->ctx.exops.get_st_gen = NULL;
+     len = strlen(conf->tag);
+     if (len > MAX_TAG_LEN - 1) {
+diff --git a/hw/block-common.c b/hw/block-common.c
+index 0f1b64e..d21ec3a 100644
+--- a/hw/block-common.c
++++ b/hw/block-common.c
+@@ -18,9 +18,7 @@ void blkconf_serial(BlockConf *conf, char **serial)
+     if (!*serial) {
+         /* try to fall back to value set with legacy -drive serial=... */
+         dinfo = drive_get_by_blockdev(conf->bs);
+-        if (dinfo->serial) {
+-            *serial = g_strdup(dinfo->serial);
+-        }
++        *serial = g_strdup(dinfo->serial);
+     }
  }
  
+diff --git a/net/net.c b/net/net.c
+index 02b5458..0ff5262 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -566,9 +566,7 @@ static int net_init_nic(const NetClientOptions *opts, const char *name,
+         assert(peer);
+         nd->netdev = peer;
+     }
+-    if (name) {
+-        nd->name = g_strdup(name);
+-    }
++    nd->name = g_strdup(name);
+     if (nic->has_model) {
+         nd->model = g_strdup(nic->model);
+     }
+diff --git a/slirp/slirp.c b/slirp/slirp.c
+index e93b578..0e6e232 100644
+--- a/slirp/slirp.c
++++ b/slirp/slirp.c
+@@ -225,12 +225,8 @@ Slirp *slirp_init(int restricted, struct in_addr vnetwork,
+         pstrcpy(slirp->client_hostname, sizeof(slirp->client_hostname),
+                 vhostname);
+     }
+-    if (tftp_path) {
+-        slirp->tftp_prefix = g_strdup(tftp_path);
+-    }
+-    if (bootfile) {
+-        slirp->bootp_filename = g_strdup(bootfile);
+-    }
++    slirp->tftp_prefix = g_strdup(tftp_path);
++    slirp->bootp_filename = g_strdup(bootfile);
+     slirp->vdhcp_startaddr = vdhcp_start;
+     slirp->vnameserver_addr = vnameserver;
+ 
+diff --git a/util/qemu-option.c b/util/qemu-option.c
+index f532b76..c12e724 100644
+--- a/util/qemu-option.c
++++ b/util/qemu-option.c
+@@ -643,9 +643,7 @@ static void opt_set(QemuOpts *opts, const char *name, const char *value,
+         QTAILQ_INSERT_TAIL(&opts->head, opt, next);
+     }
+     opt->desc = desc;
+-    if (value) {
+-        opt->str = g_strdup(value);
+-    }
++    opt->str = g_strdup(value);
+     qemu_opt_parse(opt, &local_err);
+     if (error_is_set(&local_err)) {
+         error_propagate(errp, local_err);
+@@ -792,9 +790,7 @@ QemuOpts *qemu_opts_create(QemuOptsList *list, const char *id,
+         }
+     }
+     opts = g_malloc0(sizeof(*opts));
+-    if (id) {
+-        opts->id = g_strdup(id);
+-    }
++    opts->id = g_strdup(id);
+     opts->list = list;
+     loc_save(&opts->loc);
+     QTAILQ_INIT(&opts->head);
 -- 
 1.7.11.7
 
