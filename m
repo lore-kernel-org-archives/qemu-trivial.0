@@ -1,46 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TvVW9-0000jQ-Tt
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Jan 2013 11:07:09 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:36392)
+	id 1TvVXu-0002T1-Bh
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Jan 2013 11:08:58 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:36941)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TvVW2-0000PX-OW
-	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 11:07:08 -0500
+	(envelope-from <armbru@pond.sub.org>) id 1TvVXq-0002KZ-Mx
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 11:08:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TvVW1-0001my-RT
-	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 11:07:02 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:8554)
+	(envelope-from <armbru@pond.sub.org>) id 1TvU6n-0002B4-R7
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 09:37:01 -0500
+Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:41688)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1TvVVv-0001ln-Aq; Wed, 16 Jan 2013 11:06:55 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0GG6sFq010641
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 16 Jan 2013 11:06:54 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-69.ams2.redhat.com
-	[10.36.116.69])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r0GG6rQl022979; Wed, 16 Jan 2013 11:06:54 -0500
+	(envelope-from <armbru@pond.sub.org>)
+	id 1TvU6b-00025A-Qh; Wed, 16 Jan 2013 09:36:41 -0500
+Received: from blackfin.pond.sub.org (p5B32B5E9.dip.t-dialin.net
+	[91.50.181.233])
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id 91A54A0179;
+	Wed, 16 Jan 2013 15:36:39 +0100 (CET)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 80191200A9; Wed, 16 Jan 2013 17:06:53 +0100 (CET)
+	id C2BB2200AE; Wed, 16 Jan 2013 15:36:38 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 16 Jan 2013 15:36:33 +0100
+Message-Id: <1358346998-26328-7-git-send-email-armbru@redhat.com>
+X-Mailer: git-send-email 1.7.11.7
+In-Reply-To: <1358346998-26328-1-git-send-email-armbru@redhat.com>
 References: <1358346998-26328-1-git-send-email-armbru@redhat.com>
-	<1358346998-26328-9-git-send-email-armbru@redhat.com>
-	<50F6CCE1.4020503@redhat.com>
-Date: Wed, 16 Jan 2013 17:06:53 +0100
-In-Reply-To: <50F6CCE1.4020503@redhat.com> (Eric Blake's message of "Wed, 16
-	Jan 2013 08:53:05 -0700")
-Message-ID: <87a9s9jen6.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 08/11] qemu-log: Plug
-	trivial memory leak in cpu_set_log_filename()
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:4f8:121:10e4::3
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH 06/11] virtfs-proxy-helper: Fix unchecked
+	strdup() by conv. to g_strdup()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,38 +42,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Jan 2013 16:07:09 -0000
+X-List-Received-Date: Wed, 16 Jan 2013 16:08:55 -0000
 
-Eric Blake <eblake@redhat.com> writes:
 
-> On 01/16/2013 07:36 AM, Markus Armbruster wrote:
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->> ---
->>  qemu-log.c | 13 +++++++++----
->>  1 file changed, 9 insertions(+), 4 deletions(-)
->> 
->> diff --git a/qemu-log.c b/qemu-log.c
->> index 64a1b88..1eadf1b 100644
->> --- a/qemu-log.c
->> +++ b/qemu-log.c
->> @@ -21,10 +21,12 @@
->>  #include "qemu/log.h"
->>  
->>  #ifdef WIN32
->> -static const char *logfilename = "qemu.log";
->> +#define DEFAULT_LOGFILENAME = "qemu.log"
->
-> Syntax error.
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ fsdev/virtfs-proxy-helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-How embarrassing.  Unfortunately, it compiles...  I'll respin.
+diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+index 6b9afd3..36f6616 100644
+--- a/fsdev/virtfs-proxy-helper.c
++++ b/fsdev/virtfs-proxy-helper.c
+@@ -1039,7 +1039,7 @@ int main(int argc, char **argv)
+         }
+         switch (c) {
+         case 'p':
+-            rpath = strdup(optarg);
++            rpath = g_strdup(optarg);
+             break;
+         case 'n':
+             is_daemon = false;
+@@ -1048,7 +1048,7 @@ int main(int argc, char **argv)
+             sock = atoi(optarg);
+             break;
+         case 's':
+-            sock_name = strdup(optarg);
++            sock_name = g_strdup(optarg);
+             break;
+         case 'u':
+             own_u = atoi(optarg);
+-- 
+1.7.11.7
 
->> @@ -54,11 +56,13 @@ void qemu_log_mask(int mask, const char *fmt, ...)
->>  /* enable or disable low levels log */
->>  void qemu_set_log(int log_flags, bool use_own_buffers)
->>  {
->> +    const char *fname = logfilename ?: DEFAULT_LOGFILENAME;
->
-> ?: is not C99, but a GNU extension.  What is our policy on using it?
-
-We got several dozen instancess of ?: spread over the tree.
 
