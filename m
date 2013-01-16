@@ -1,37 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TvWcZ-0001Eu-50
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Jan 2013 12:17:51 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:54965)
+	id 1TvWr4-0000jn-FI
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Jan 2013 12:32:50 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58417)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TvWcS-0000v6-5t
-	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 12:17:50 -0500
+	(envelope-from <armbru@pond.sub.org>) id 1TvWqo-0000OP-Ou
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 12:32:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1TvWcP-0004pW-Nn
-	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 12:17:44 -0500
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:58601)
+	(envelope-from <armbru@pond.sub.org>) id 1TvWql-00017x-Ij
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 12:32:34 -0500
+Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:42186)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1TvWcK-0004oW-9A; Wed, 16 Jan 2013 12:17:36 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	598697280056; Wed, 16 Jan 2013 18:17:35 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id y2hDrYCKZYiP; Wed, 16 Jan 2013 18:17:34 +0100 (CET)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id CED9A7280057; Wed, 16 Jan 2013 18:17:34 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Wed, 16 Jan 2013 18:17:33 +0100
-Message-Id: <1358356653-16309-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, malc <av1474@comtv.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] audio: Replace non-portable asprintf in
-	debug code by g_strdup_printf
+	(envelope-from <armbru@pond.sub.org>)
+	id 1TvWqe-00014R-On; Wed, 16 Jan 2013 12:32:24 -0500
+Received: from blackfin.pond.sub.org (p5B32B5E9.dip.t-dialin.net
+	[91.50.181.233])
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id 194B0A247C;
+	Wed, 16 Jan 2013 18:32:23 +0100 (CET)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 19407200B1; Wed, 16 Jan 2013 18:32:21 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 16 Jan 2013 18:32:18 +0100
+Message-Id: <1358357540-29862-10-git-send-email-armbru@redhat.com>
+X-Mailer: git-send-email 1.7.11.7
+In-Reply-To: <1358357540-29862-1-git-send-email-armbru@redhat.com>
+References: <1358357540-29862-1-git-send-email-armbru@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:4f8:121:10e4::3
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com
+Subject: [Qemu-trivial] [PATCH v2 09/11] libcacard: Fix unchecked strdup()
+	by converting to g_strdup()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,37 +42,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Jan 2013 17:17:50 -0000
+X-List-Received-Date: Wed, 16 Jan 2013 17:32:37 -0000
 
-sw->name already uses the correct g_free to free the allocated memory.
+Note that we already free with g_free().
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 ---
- audio/audio.c |    5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ libcacard/vcard_emul_nss.c | 4 ++--
+ libcacard/vreader.c        | 2 +-
+ libcacard/vscclient.c      | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-The patch preserves the special coding style used for audio code.
-
-Regards,
-Stefan
-
-diff --git a/audio/audio.c b/audio/audio.c
-index 1510b59..02bb886 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -828,8 +828,9 @@ static int audio_attach_capture (HWVoiceOut *hw)
-         QLIST_INSERT_HEAD (&hw_cap->sw_head, sw, entries);
-         QLIST_INSERT_HEAD (&hw->cap_head, sc, entries);
- #ifdef DEBUG_CAPTURE
--        asprintf (&sw->name, "for %p %d,%d,%d",
--                  hw, sw->info.freq, sw->info.bits, sw->info.nchannels);
-+        sw->name = g_strdup_printf ("for %p %d,%d,%d",
-+                                    hw, sw->info.freq, sw->info.bits,
-+                                    sw->info.nchannels);
-         dolog ("Added %s active = %d\n", sw->name, sw->active);
- #endif
-         if (sw->active) {
+diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
+index 5f565e0..df79476 100644
+--- a/libcacard/vcard_emul_nss.c
++++ b/libcacard/vcard_emul_nss.c
+@@ -454,7 +454,7 @@ vreader_emul_new(PK11SlotInfo *slot, VCardEmulType type, const char *params)
+ 
+     new_reader_emul->slot = PK11_ReferenceSlot(slot);
+     new_reader_emul->default_type = type;
+-    new_reader_emul->type_params = strdup(params);
++    new_reader_emul->type_params = g_strdup(params);
+     new_reader_emul->present = PR_FALSE;
+     new_reader_emul->series = 0;
+     new_reader_emul->saved_vcard = NULL;
+@@ -997,7 +997,7 @@ vcard_emul_init(const VCardEmulOptions *options)
+     /* We should control this with options. For now we mirror out any
+      * removable hardware slot */
+     default_card_type = options->hw_card_type;
+-    default_type_params = strdup(options->hw_type_params);
++    default_type_params = g_strdup(options->hw_type_params);
+ 
+     SECMOD_GetReadLock(module_lock);
+     for (mlp = module_list; mlp; mlp = mlp->next) {
+diff --git a/libcacard/vreader.c b/libcacard/vreader.c
+index 313349b..f3efc27 100644
+--- a/libcacard/vreader.c
++++ b/libcacard/vreader.c
+@@ -49,7 +49,7 @@ vreader_new(const char *name, VReaderEmul *private,
+     reader = (VReader *)g_malloc(sizeof(VReader));
+     qemu_mutex_init(&reader->lock);
+     reader->reference_count = 1;
+-    reader->name = name ? strdup(name) : NULL;
++    reader->name = g_strdup(name);
+     reader->card = NULL;
+     reader->id = (vreader_id_t)-1;
+     reader->reader_private = private;
+diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
+index 2fce52b..9b744f2 100644
+--- a/libcacard/vscclient.c
++++ b/libcacard/vscclient.c
+@@ -503,8 +503,8 @@ main(
+         command_line_options = vcard_emul_options(emul_args);
+     }
+ 
+-    qemu_host = strdup(argv[argc - 2]);
+-    qemu_port = strdup(argv[argc - 1]);
++    qemu_host = g_strdup(argv[argc - 2]);
++    qemu_port = g_strdup(argv[argc - 1]);
+     sock = connect_to_qemu(qemu_host, qemu_port);
+     if (sock == -1) {
+         fprintf(stderr, "error opening socket, exiting.\n");
 -- 
-1.7.10.4
+1.7.11.7
 
 
