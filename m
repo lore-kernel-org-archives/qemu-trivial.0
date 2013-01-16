@@ -1,36 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TvWr4-0000jn-FI
+	id 1TvWr4-0000kE-RY
 	for mharc-qemu-trivial@gnu.org; Wed, 16 Jan 2013 12:32:50 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58417)
+Received: from eggs.gnu.org ([208.118.235.92]:58372)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1TvWqo-0000OP-Ou
-	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 12:32:36 -0500
+	(envelope-from <armbru@pond.sub.org>) id 1TvWqm-0000Gs-Fh
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 12:32:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1TvWql-00017x-Ij
-	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 12:32:34 -0500
-Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:42186)
+	(envelope-from <armbru@pond.sub.org>) id 1TvWqi-00016Z-63
+	for qemu-trivial@nongnu.org; Wed, 16 Jan 2013 12:32:32 -0500
+Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:42177)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@pond.sub.org>)
-	id 1TvWqe-00014R-On; Wed, 16 Jan 2013 12:32:24 -0500
+	id 1TvWqd-00013T-Vb; Wed, 16 Jan 2013 12:32:24 -0500
 Received: from blackfin.pond.sub.org (p5B32B5E9.dip.t-dialin.net
 	[91.50.181.233])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id 194B0A247C;
-	Wed, 16 Jan 2013 18:32:23 +0100 (CET)
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id 08C6A9FE57;
+	Wed, 16 Jan 2013 18:32:21 +0100 (CET)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 19407200B1; Wed, 16 Jan 2013 18:32:21 +0100 (CET)
+	id 80560200A9; Wed, 16 Jan 2013 18:32:20 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 16 Jan 2013 18:32:18 +0100
-Message-Id: <1358357540-29862-10-git-send-email-armbru@redhat.com>
+Date: Wed, 16 Jan 2013 18:32:09 +0100
+Message-Id: <1358357540-29862-1-git-send-email-armbru@redhat.com>
 X-Mailer: git-send-email 1.7.11.7
-In-Reply-To: <1358357540-29862-1-git-send-email-armbru@redhat.com>
-References: <1358357540-29862-1-git-send-email-armbru@redhat.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2a01:4f8:121:10e4::3
 Cc: qemu-trivial@nongnu.org, eblake@redhat.com
-Subject: [Qemu-trivial] [PATCH v2 09/11] libcacard: Fix unchecked strdup()
-	by converting to g_strdup()
+Subject: [Qemu-trivial] Trivial memory allocation fixes & cleanups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,68 +39,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Jan 2013 17:32:37 -0000
+X-List-Received-Date: Wed, 16 Jan 2013 17:32:38 -0000
 
-Note that we already free with g_free().
+v2: Windows compile fix in PATCH 08/11 (thanks eblake!), rest identical
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
----
- libcacard/vcard_emul_nss.c | 4 ++--
- libcacard/vreader.c        | 2 +-
- libcacard/vscclient.c      | 4 ++--
- 3 files changed, 5 insertions(+), 5 deletions(-)
+Markus Armbruster (11):
+  g_malloc(0) and g_malloc0(0) return NULL; simplify
+  g_strdup(NULL) returns NULL; simplify
+  hw/9pfs: Fix unchecked strdup() by converting to g_strdup()
+  readline: Fix unchecked strdup() by converting to g_strdup()
+  spice: Fix unchecked strdup() by converting to g_strdup()
+  virtfs-proxy-helper: Fix unchecked strdup() by conv. to g_strdup()
+  qemu-log: Fix unchecked strdup() by converting to g_strdup()
+  qemu-log: Plug trivial memory leak in cpu_set_log_filename()
+  libcacard: Fix unchecked strdup() by converting to g_strdup()
+  qapi: Fix unchecked strdup() by converting to g_strdup()
+  qemu-ga: Fix unchecked strdup() by converting to g_strdup()
 
-diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
-index 5f565e0..df79476 100644
---- a/libcacard/vcard_emul_nss.c
-+++ b/libcacard/vcard_emul_nss.c
-@@ -454,7 +454,7 @@ vreader_emul_new(PK11SlotInfo *slot, VCardEmulType type, const char *params)
- 
-     new_reader_emul->slot = PK11_ReferenceSlot(slot);
-     new_reader_emul->default_type = type;
--    new_reader_emul->type_params = strdup(params);
-+    new_reader_emul->type_params = g_strdup(params);
-     new_reader_emul->present = PR_FALSE;
-     new_reader_emul->series = 0;
-     new_reader_emul->saved_vcard = NULL;
-@@ -997,7 +997,7 @@ vcard_emul_init(const VCardEmulOptions *options)
-     /* We should control this with options. For now we mirror out any
-      * removable hardware slot */
-     default_card_type = options->hw_card_type;
--    default_type_params = strdup(options->hw_type_params);
-+    default_type_params = g_strdup(options->hw_type_params);
- 
-     SECMOD_GetReadLock(module_lock);
-     for (mlp = module_list; mlp; mlp = mlp->next) {
-diff --git a/libcacard/vreader.c b/libcacard/vreader.c
-index 313349b..f3efc27 100644
---- a/libcacard/vreader.c
-+++ b/libcacard/vreader.c
-@@ -49,7 +49,7 @@ vreader_new(const char *name, VReaderEmul *private,
-     reader = (VReader *)g_malloc(sizeof(VReader));
-     qemu_mutex_init(&reader->lock);
-     reader->reference_count = 1;
--    reader->name = name ? strdup(name) : NULL;
-+    reader->name = g_strdup(name);
-     reader->card = NULL;
-     reader->id = (vreader_id_t)-1;
-     reader->reader_private = private;
-diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
-index 2fce52b..9b744f2 100644
---- a/libcacard/vscclient.c
-+++ b/libcacard/vscclient.c
-@@ -503,8 +503,8 @@ main(
-         command_line_options = vcard_emul_options(emul_args);
-     }
- 
--    qemu_host = strdup(argv[argc - 2]);
--    qemu_port = strdup(argv[argc - 1]);
-+    qemu_host = g_strdup(argv[argc - 2]);
-+    qemu_port = g_strdup(argv[argc - 1]);
-     sock = connect_to_qemu(qemu_host, qemu_port);
-     if (sock == -1) {
-         fprintf(stderr, "error opening socket, exiting.\n");
+ block/qcow2-refcount.c      |  6 +-----
+ block/vdi.c                 |  4 +---
+ fsdev/virtfs-proxy-helper.c |  4 ++--
+ hw/9pfs/virtio-9p-device.c  |  8 ++------
+ hw/9pfs/virtio-9p-local.c   |  8 ++++----
+ hw/9pfs/virtio-9p.c         |  6 +-----
+ hw/block-common.c           |  4 +---
+ hw/vhost.c                  |  7 ++-----
+ libcacard/vcard_emul_nss.c  |  4 ++--
+ libcacard/vreader.c         |  2 +-
+ libcacard/vscclient.c       |  4 ++--
+ net/net.c                   |  4 +---
+ qapi/qmp-registry.c         |  2 +-
+ qemu-log.c                  | 15 ++++++++++-----
+ qga/commands.c              |  2 +-
+ readline.c                  |  4 ++--
+ slirp/slirp.c               |  8 ++------
+ ui/spice-core.c             |  4 ++--
+ util/qemu-option.c          |  8 ++------
+ 19 files changed, 40 insertions(+), 64 deletions(-)
+
 -- 
 1.7.11.7
 
