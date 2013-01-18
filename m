@@ -1,52 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TwE0B-00076m-Du
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Jan 2013 10:37:07 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:36952)
+	id 1TwE0E-0007Eg-HV
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Jan 2013 10:37:10 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:36979)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TwE07-0006sy-SH
-	for qemu-trivial@nongnu.org; Fri, 18 Jan 2013 10:37:05 -0500
+	(envelope-from <dragonfax@gmail.com>) id 1TwE0A-000729-22
+	for qemu-trivial@nongnu.org; Fri, 18 Jan 2013 10:37:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TwE04-0000NP-5O
-	for qemu-trivial@nongnu.org; Fri, 18 Jan 2013 10:37:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:61305)
+	(envelope-from <dragonfax@gmail.com>) id 1TwE05-0000Nr-V9
+	for qemu-trivial@nongnu.org; Fri, 18 Jan 2013 10:37:05 -0500
+Received: from mail-vb0-f46.google.com ([209.85.212.46]:34045)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1TwDzr-0000LZ-8S; Fri, 18 Jan 2013 10:36:47 -0500
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0IFaiA8024109
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 18 Jan 2013 10:36:44 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-57.ams2.redhat.com
-	[10.36.116.57])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r0IFahMG010320; Fri, 18 Jan 2013 10:36:44 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E425B200A9; Fri, 18 Jan 2013 16:36:42 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Blue Swirl <blauwirbel@gmail.com>
-References: <1358121304-21345-1-git-send-email-afaerber@suse.de>
-	<1358121304-21345-2-git-send-email-afaerber@suse.de>
-	<87k3rg2bzf.fsf@blackfin.pond.sub.org> <50F437C5.4020905@suse.de>
-	<87a9sboagf.fsf_-_@blackfin.pond.sub.org>
-	<CAAu8pHsXqN5c6KyBnMUajsdpAk8JQ2UhsTYj0yp9zJ-C_ir18w@mail.gmail.com>
-Date: Fri, 18 Jan 2013 16:36:42 +0100
-In-Reply-To: <CAAu8pHsXqN5c6KyBnMUajsdpAk8JQ2UhsTYj0yp9zJ-C_ir18w@mail.gmail.com>
-	(Blue Swirl's message of "Thu, 17 Jan 2013 20:26:12 +0000")
-Message-ID: <871uditsdx.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
+	(envelope-from <dragonfax@gmail.com>) id 1TwE05-0000NM-Cm
+	for qemu-trivial@nongnu.org; Fri, 18 Jan 2013 10:37:01 -0500
+Received: by mail-vb0-f46.google.com with SMTP id b13so3713752vby.19
+	for <qemu-trivial@nongnu.org>; Fri, 18 Jan 2013 07:36:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:x-received:in-reply-to:references:date:message-id
+	:subject:from:to:cc:content-type;
+	bh=IorJn3Ew2fkBWwE32VrxMT8cpAjZiLHWcaCT25w1LLQ=;
+	b=NrbtXKADHnF+Tmeu2FWdq1mW6+lxR7ny7OU9I3wNMbY7wakP8WvYm8Hk97DAkCo9WS
+	yfZvegfyucwIa0zVkwkKewFS3dDybFt+YYT+Nyjimrdob9OaapyEsD9ylzS+obvHyhmo
+	dK0XoZ81fPi4J48dKZDRxhgPhVBbDD7nz4eoUwthC/Mq42WrpZx4UFy+PJ4V2S4YBXg5
+	2t93HZ2bdN5tmw7UQHc+AdIjOPHTPVOeuEwqEwLf7hQfybUmIvX24ngD+oiCfpa/sD7+
+	f41smhzYu/SGOWZjpaNyZki8EkhWQ7xRTyfnvyJwk440/GGfY7YiFsmsJlgUajRBPxuK
+	sJPA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, agraf@suse.de,
-	qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
-	Anthony Liguori <anthony@codemonkey.ws>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] Go along with glib's basic type
-	typedef silliness?
+X-Received: by 10.52.64.131 with SMTP id o3mr8546307vds.116.1358523419657;
+	Fri, 18 Jan 2013 07:36:59 -0800 (PST)
+Received: by 10.220.224.194 with HTTP; Fri, 18 Jan 2013 07:36:59 -0800 (PST)
+Received: by 10.220.224.194 with HTTP; Fri, 18 Jan 2013 07:36:59 -0800 (PST)
+In-Reply-To: <20130118153407.GA20613@stefanha-thinkpad.redhat.com>
+References: <CAG0b9_jOiRwSik_Np5ym=_LOiAPhuMtZOJ6kCMv+WrftnX1LAQ@mail.gmail.com>
+	<20130118134205.GA24367@stefanha-thinkpad.redhat.com>
+	<20130118153407.GA20613@stefanha-thinkpad.redhat.com>
+Date: Fri, 18 Jan 2013 07:36:59 -0800
+Message-ID: <CAG0b9_gD3d2N9Lb4dOU2UdP1AGMddh2s7b20pqEdXsG1wUaaxQ@mail.gmail.com>
+From: Jason Stillwell <dragonfax@gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: multipart/alternative; boundary=20cf307ac797d9079604d391e176
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.212.46
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] trival patch to master to fix osx build
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,55 +53,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Jan 2013 15:37:05 -0000
+X-List-Received-Date: Fri, 18 Jan 2013 15:37:09 -0000
 
-Blue Swirl <blauwirbel@gmail.com> writes:
+--20cf307ac797d9079604d391e176
+Content-Type: text/plain; charset=ISO-8859-1
 
-> On Mon, Jan 14, 2013 at 7:01 PM, Markus Armbruster <armbru@redhat.com> wr=
-ote:
->> [Thread hijack, dropping cc: qemu-trivial, qemu-ppc]
->>
->> Andreas F=C3=A4rber <afaerber@suse.de> writes:
->>
->>> Am 14.01.2013 13:19, schrieb Markus Armbruster:
->>>> Andreas F=C3=A4rber <afaerber@suse.de> writes:
->> [...]
->>>>> diff --git a/qom/object.c b/qom/object.c
->>>>> index 351b88c..03e6f24 100644
->>>>> --- a/qom/object.c
->>>>> +++ b/qom/object.c
->>>>> @@ -1017,7 +1017,7 @@ gchar *object_get_canonical_path(Object *obj)
->>>>>      return newpath;
->>>>>  }
->>>>>
->>>>> -Object *object_resolve_path_component(Object *parent, gchar *part)
->>>>> +Object *object_resolve_path_component(Object *parent, const gchar *p=
-art)
->>>>>  {
->>>>>      ObjectProperty *prop =3D object_property_find(parent, part, NULL=
-);
->>>>>      if (prop =3D=3D NULL) {
->>>>
->>>> Unrelated: do we really want to go along with glib's basic type typedef
->>>> silliness?
->>>
->>> Elsewhere I have adopted the exact GLib signature since typedefs can be
->>> changed at any time. In particular the GCompareFunc using gconstpointer,
->>> gint, etc. Not saying I find their GLib usage useful.
->>
->> No, these typedefs cannot be changed.
->>
->> Firstly, their exact definitions are documented[*], therefore can be
->> relied on.
->>
->> Secondly, mountains of code rely on the exact definitions, and would
->> break left and right if they were changed.
->>
->> They're a textbook example of a perfectly useless pseudo-abstraction.
+No?
+On Jan 18, 2013 7:34 AM, "Stefan Hajnoczi" <stefanha@gmail.com> wrote:
+
+> On Fri, Jan 18, 2013 at 02:42:05PM +0100, Stefan Hajnoczi wrote:
+> > On Tue, Jan 15, 2013 at 11:52:35PM -0800, Jason Stillwell wrote:
+> > > symbol isnt' defined when __APPLE__
+> > > this moves the symbol to the right place so it doesn't break the build.
+> >
+> > Please follow http://wiki.qemu.org/Contribute/SubmitAPatch and resubmit
+> > your patch inline (no attachments) and with Signed-off-by:.
 >
-> CONST, WORD, PWORD, DWORD, FLOAT etc. in a certain platform...
+> Please also CC qemu-devel@nongnu.org.
+>
+> Stefan
+>
 
-MY EYES, MY EYES, WHAT DID YOU DO TO MY EYES!!!
+--20cf307ac797d9079604d391e176
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 
-[...]
+<p dir=3D"ltr">No?</p>
+<div class=3D"gmail_quote">On Jan 18, 2013 7:34 AM, &quot;Stefan Hajnoczi&q=
+uot; &lt;<a href=3D"mailto:stefanha@gmail.com">stefanha@gmail.com</a>&gt; w=
+rote:<br type=3D"attribution"><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+On Fri, Jan 18, 2013 at 02:42:05PM +0100, Stefan Hajnoczi wrote:<br>
+&gt; On Tue, Jan 15, 2013 at 11:52:35PM -0800, Jason Stillwell wrote:<br>
+&gt; &gt; symbol isnt&#39; defined when __APPLE__<br>
+&gt; &gt; this moves the symbol to the right place so it doesn&#39;t break =
+the build.<br>
+&gt;<br>
+&gt; Please follow <a href=3D"http://wiki.qemu.org/Contribute/SubmitAPatch"=
+ target=3D"_blank">http://wiki.qemu.org/Contribute/SubmitAPatch</a> and res=
+ubmit<br>
+&gt; your patch inline (no attachments) and with Signed-off-by:.<br>
+<br>
+Please also CC <a href=3D"mailto:qemu-devel@nongnu.org">qemu-devel@nongnu.o=
+rg</a>.<br>
+<br>
+Stefan<br>
+</blockquote></div>
+
+--20cf307ac797d9079604d391e176--
 
