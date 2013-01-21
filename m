@@ -1,39 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TxJPY-0008D2-Q4
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Jan 2013 10:35:48 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:35801)
+	id 1TxKxH-0000sq-BB
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Jan 2013 12:14:43 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:35790)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1TxJPU-00081u-Kb
-	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 10:35:45 -0500
+	(envelope-from <kraxel@redhat.com>) id 1TxKxE-0000mO-Ey
+	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 12:14:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1TxJPT-0007Vf-Hh
-	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 10:35:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38387)
+	(envelope-from <kraxel@redhat.com>) id 1TxKxD-0001Ps-9f
+	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 12:14:40 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58499)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <kraxel@redhat.com>)
-	id 1TxIDL-0003ea-5c; Mon, 21 Jan 2013 09:19:07 -0500
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0LEJ4Kg010553
+	id 1TxKxA-0001PL-DI; Mon, 21 Jan 2013 12:14:36 -0500
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0LHEWGu002887
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 21 Jan 2013 09:19:04 -0500
+	Mon, 21 Jan 2013 12:14:32 -0500
 Received: from rincewind.home.kraxel.org (ovpn-116-40.ams2.redhat.com
 	[10.36.116.40])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r0LEJ10p002368; Mon, 21 Jan 2013 09:19:02 -0500
-Message-ID: <50FD4E55.1080709@redhat.com>
-Date: Mon, 21 Jan 2013 15:19:01 +0100
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r0LHEU4w005233; Mon, 21 Jan 2013 12:14:31 -0500
+Message-ID: <50FD7775.6030307@redhat.com>
+Date: Mon, 21 Jan 2013 18:14:29 +0100
 From: Gerd Hoffmann <kraxel@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:10.0.12) Gecko/20130108 Thunderbird/10.0.12
 MIME-Version: 1.0
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <1358769827-7317-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1358769827-7317-1-git-send-email-peter.maydell@linaro.org>
+	<50FD4E55.1080709@redhat.com>
+In-Reply-To: <50FD4E55.1080709@redhat.com>
 X-Enigmail-Version: 1.4
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
@@ -51,16 +52,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Jan 2013 15:35:46 -0000
+X-List-Received-Date: Mon, 21 Jan 2013 17:14:41 -0000
 
-> Stefan: I've made the obvious change to fix the spice compile issue,
-> but none of my systems have a new enough spice-protocol/spice-server
-> to allow me to configure with spice enabled. I'd appreciate it if
-> you could check it does indeed compile OK now...
+On 01/21/13 15:19, Gerd Hoffmann wrote:
+>> Stefan: I've made the obvious change to fix the spice compile issue,
+>> but none of my systems have a new enough spice-protocol/spice-server
+>> to allow me to configure with spice enabled. I'd appreciate it if
+>> you could check it does indeed compile OK now...
+> 
+> I'll run this through the buildbot ...
 
-I'll run this through the buildbot ...
+All green.
 
-cheers,
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+
+Taking through trivial would be a nice service as I don't have any
+1.4-ish pixman stuff pending arm.
+
+thanks,
   Gerd
 
 
