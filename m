@@ -1,34 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TxG6n-0003WM-MT
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Jan 2013 07:04:13 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:37722)
+	id 1TxIHY-0006mY-As
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Jan 2013 09:23:28 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:44917)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1TxG6i-0003H0-Gn
-	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 07:04:10 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1TxIHR-0006eq-4U
+	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 09:23:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1TxG6f-0007IK-LC
-	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 07:04:08 -0500
-Received: from
-	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
-	([2001:8b0:1d0::1]:60042 helo=mnementh.archaic.org.uk)
+	(envelope-from <peter.maydell@linaro.org>) id 1TxIHQ-0004rt-0Y
+	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 09:23:21 -0500
+Received: from mail-lb0-f182.google.com ([209.85.217.182]:55059)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1TxG6Z-0007EI-3I; Mon, 21 Jan 2013 07:03:59 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1TxG6N-0001uS-Du; Mon, 21 Jan 2013 12:03:47 +0000
+	(envelope-from <peter.maydell@linaro.org>) id 1TxIHP-0004rd-Pn
+	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 09:23:19 -0500
+Received: by mail-lb0-f182.google.com with SMTP id gg6so3753713lbb.41
+	for <qemu-trivial@nongnu.org>; Mon, 21 Jan 2013 06:23:18 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=x-received:mime-version:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-type:x-gm-message-state;
+	bh=rseAQ86EL6ykGrEJ2K0/QcKCiyB1dSBGrMf++YB5r1Y=;
+	b=khtOshHXkYGG9vNhQTe/XDLiC4cz7ROojtO+JsBtVwJghLCOFWbju2D1GPaNmjF7PC
+	WpHa0353u1kGp4/yVhgKeYlR+JSVvM8eNbzdXoi3feeAg39ppAzC3yaPTSgcYuMZonOA
+	W0or4p9vmSwUAByTqNBR4pvKoTSP8Xq7rlSrs0Ig36Q6/hNTqkbJcH/PSWNMbmMDWs69
+	leB2/v0SZnKPg+v/iyp2yApANJNYR9HiJh9PiF3B7Q/AvAyWatIWzCVQdOzwKUj69Ani
+	RCoN771yKSgMJqKcenkukBiJl91r2dvsc56Q4at2GjnBeS76/+TF2yT3yEHWJMaX2wLK
+	1q8w==
+X-Received: by 10.112.43.161 with SMTP id x1mr6578149lbl.89.1358778198591;
+	Mon, 21 Jan 2013 06:23:18 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.112.107.42 with HTTP; Mon, 21 Jan 2013 06:22:58 -0800 (PST)
+In-Reply-To: <50FD4E55.1080709@redhat.com>
+References: <1358769827-7317-1-git-send-email-peter.maydell@linaro.org>
+	<50FD4E55.1080709@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Mon, 21 Jan 2013 12:03:47 +0000
-Message-Id: <1358769827-7317-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
+Date: Mon, 21 Jan 2013 14:22:58 +0000
+Message-ID: <CAFEAcA-A+yoZUkxi544EcVpnYu3N4amKBoGssM_0dUit_M+nWw@mail.gmail.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQkQQsmxU0+VuXIEUJq5bgSmtpTm02t+Myb/meASXdSjdcfvAuYYPBMsn19z02X+uV8Njzj2
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.217.182
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	patches@linaro.org
-Subject: [Qemu-trivial] [PATCH v2] qemu-pixman.h: Avoid mutual inclusion
-	loop with console.h
+	patches@linaro.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] qemu-pixman.h: Avoid
+ mutual inclusion loop with console.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,66 +55,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Jan 2013 12:04:11 -0000
+X-List-Received-Date: Mon, 21 Jan 2013 14:23:27 -0000
 
-Remove an unnecessary mutual inclusion loop between qemu-pixman.h and
-console.h, since the former was only including the latter for
-'PixelFormat*', which can be provided by typedefs.h.  This requires a
-minor adjustment to the files which included qemu-pixman.h, since
-they were relying on it implicitly dragging in all of console.h.
+On 21 January 2013 14:19, Gerd Hoffmann <kraxel@redhat.com> wrote:
+>> Stefan: I've made the obvious change to fix the spice compile issue,
+>> but none of my systems have a new enough spice-protocol/spice-server
+>> to allow me to configure with spice enabled. I'd appreciate it if
+>> you could check it does indeed compile OK now...
+>
+> I'll run this through the buildbot ...
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Stefan: I've made the obvious change to fix the spice compile issue,
-but none of my systems have a new enough spice-protocol/spice-server
-to allow me to configure with spice enabled. I'd appreciate it if
-you could check it does indeed compile OK now...
+Thanks, and apologies for forgetting to cc you.
 
- include/ui/qemu-pixman.h   |    2 +-
- include/ui/spice-display.h |    1 +
- ui/qemu-pixman.c           |    3 ++-
- 3 files changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/include/ui/qemu-pixman.h b/include/ui/qemu-pixman.h
-index 016fd87..b032f52 100644
---- a/include/ui/qemu-pixman.h
-+++ b/include/ui/qemu-pixman.h
-@@ -15,7 +15,7 @@
- #pragma GCC diagnostic error "-Wredundant-decls"
- #endif
- 
--#include "console.h"
-+#include "qemu/typedefs.h"
- 
- /*
-  * pixman image formats are defined to be native endian,
-diff --git a/include/ui/spice-display.h b/include/ui/spice-display.h
-index 8b192e9..46f9530 100644
---- a/include/ui/spice-display.h
-+++ b/include/ui/spice-display.h
-@@ -21,6 +21,7 @@
- 
- #include "qemu/thread.h"
- #include "ui/qemu-pixman.h"
-+#include "ui/console.h"
- #include "sysemu/sysemu.h"
- 
- #define NUM_MEMSLOTS 8
-diff --git a/ui/qemu-pixman.c b/ui/qemu-pixman.c
-index 609335a..6dcbe90 100644
---- a/ui/qemu-pixman.c
-+++ b/ui/qemu-pixman.c
-@@ -3,7 +3,8 @@
-  * See the COPYING file in the top-level directory.
-  */
- 
--#include "ui/qemu-pixman.h"
-+#include "qemu-common.h"
-+#include "ui/console.h"
- 
- int qemu_pixman_get_type(int rshift, int gshift, int bshift)
- {
--- 
-1.7.9.5
-
+-- PMM
 
