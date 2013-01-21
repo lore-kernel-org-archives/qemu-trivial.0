@@ -1,46 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TwYzO-0002TS-7c
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Jan 2013 09:01:42 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:37933)
+	id 1TxCbM-0001Yv-E2
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Jan 2013 03:19:32 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:47246)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TwYzL-0002Lb-O8
-	for qemu-trivial@nongnu.org; Sat, 19 Jan 2013 09:01:40 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1TxCbH-0001M6-Tp
+	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 03:19:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>) id 1TwYzJ-0006oW-Dz
-	for qemu-trivial@nongnu.org; Sat, 19 Jan 2013 09:01:39 -0500
-Received: from mail-pa0-f53.google.com ([209.85.220.53]:56750)
+	(envelope-from <stefan@weilnetz.de>) id 1TxCbE-00064e-Tm
+	for qemu-trivial@nongnu.org; Mon, 21 Jan 2013 03:19:27 -0500
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:47467)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <blauwirbel@gmail.com>)
-	id 1TwYzF-0006nW-CW; Sat, 19 Jan 2013 09:01:33 -0500
-Received: by mail-pa0-f53.google.com with SMTP id hz1so2616494pad.40
-	for <multiple recipients>; Sat, 19 Jan 2013 06:01:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:mime-version:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type;
-	bh=BpdWfw+VlgG+ucADT0Wu7lxqphJUNRDUFgWejG/EqOo=;
-	b=Ko02mH7utRVQ31Nn9R9kP61eBp9HYWpqyAQo0NXCgHYnHHyadttKUqLfUjA0BCGfMl
-	j5k6g96ecgRn5iwqf03N6FUAxGBneRKbxUWaWik/WmCXCYjrpQoYPfv3rRdJkjkYX1el
-	ZxjR8F3WMsgsYpdwS0e0GP+hmA5YWsjxUaPCGkVQ37YSextU6K4iDItdB9HiNT8zjAZ+
-	TyfHCYjr6LfIun0E3y4zFRehLhL1oWG0nUJzTLZ04A19G8gfRYVpaoUR5ir3a90KgmPm
-	o2aKbMwOeHBUVDOvg8aoZs8WVbnOaMp52tGsEQb/RVCYXPoLXw0B3dbXqTujDdi5y2Pa
-	Qi3Q==
-X-Received: by 10.66.80.70 with SMTP id p6mr32821605pax.23.1358604092399; Sat,
-	19 Jan 2013 06:01:32 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.68.208.168 with HTTP; Sat, 19 Jan 2013 06:01:12 -0800 (PST)
-In-Reply-To: <1358549290-23228-1-git-send-email-sw@weilnetz.de>
-References: <1358549290-23228-1-git-send-email-sw@weilnetz.de>
-From: Blue Swirl <blauwirbel@gmail.com>
-Date: Sat, 19 Jan 2013 14:01:12 +0000
-Message-ID: <CAAu8pHstADBWUNPpHreLEpTgw+r9Xzr=iWM0_y0f-Sg=inn9Cg@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.220.53
-Cc: qemu-trivial@nongnu.org, Wenchao Xia <xiawenc@linux.vnet.ibm.com>,
-	qemu-devel@nongnu.org, Luiz Capitulino <lcapitulino@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] usb: Fix compilation for
-	MinGW (regression)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1TxBCd-00056K-Os; Mon, 21 Jan 2013 01:49:55 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	D9A42728002C; Mon, 21 Jan 2013 07:49:53 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id b1-Ebrnz7g66; Mon, 21 Jan 2013 07:49:52 +0100 (CET)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 872B97280043; Mon, 21 Jan 2013 07:49:52 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Mon, 21 Jan 2013 07:49:51 +0100
+Message-Id: <1358750991-18501-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH v2] hw/tpci200: Fix compiler warning
+	(redefined symbol with MinGW)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,34 +43,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Jan 2013 14:01:40 -0000
+X-List-Received-Date: Mon, 21 Jan 2013 08:19:31 -0000
 
-Thanks, applied.
+STATUS_TIMEOUT is defined in winnt.h:
 
-On Fri, Jan 18, 2013 at 10:48 PM, Stefan Weil <sw@weilnetz.de> wrote:
-> 84f2d0ea added an argument to function usb_host_info.
-> The stub function must match the declaration in usb.h.
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  hw/usb/host-stub.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/usb/host-stub.c b/hw/usb/host-stub.c
-> index 58423a0..8affba7 100644
-> --- a/hw/usb/host-stub.c
-> +++ b/hw/usb/host-stub.c
-> @@ -35,7 +35,7 @@
->  #include "hw/usb.h"
->  #include "monitor/monitor.h"
->
-> -void usb_host_info(Monitor *mon)
-> +void usb_host_info(Monitor *mon, const QDict *qdict)
->  {
->      monitor_printf(mon, "USB host devices not supported\n");
->  }
-> --
-> 1.7.10.4
->
->
+  CC    hw/tpci200.o
+hw/tpci200.c:34:0:
+ warning: "STATUS_TIMEOUT" redefined [enabled by default]
+/usr/lib/gcc/x86_64-w64-mingw32/4.6/../../../../x86_64-w64-mingw32/include/winnt.h:1036:0:
+ note: this is the location of the previous definition
+
+Use STATUS_TIME instead of STATUS_TIMEOUT as suggested by Alberto Garcia.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+
+v1: Add QEMU_PREFIX (http://patchwork.ozlabs.org/patch/212348/)
+v2: Use STATUS_TIME
+
+Like v1, this patch fixes a warning for MinGW.
+We could also mix v1 and v2.
+
+Please commit one of those variants to git master.
+
+Regards,
+Stefan W.
+
+
+ hw/tpci200.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hw/tpci200.c b/hw/tpci200.c
+index e082bca..a4823fb 100644
+--- a/hw/tpci200.c
++++ b/hw/tpci200.c
+@@ -31,7 +31,7 @@
+ #define IP_INT_SPACE_ADDR_MASK 0x3F
+ 
+ #define STATUS_INT(IP, INTNO) BIT((IP) * 2 + (INTNO))
+-#define STATUS_TIMEOUT(IP)    BIT((IP) + 12)
++#define STATUS_TIME(IP)       BIT((IP) + 12)
+ #define STATUS_ERR_ANY        0xF00
+ 
+ #define CTRL_CLKRATE          BIT(0)
+@@ -279,9 +279,9 @@ static void tpci200_write_las0(void *opaque, hwaddr addr, uint64_t val,
+                     }
+                 }
+ 
+-                if (val & STATUS_TIMEOUT(i)) {
++                if (val & STATUS_TIME(i)) {
+                     DPRINTF("Clear IP %c timeout\n", 'A' + i);
+-                    s->status &= ~STATUS_TIMEOUT(i);
++                    s->status &= ~STATUS_TIME(i);
+                 }
+             }
+ 
+-- 
+1.7.10.4
+
 
