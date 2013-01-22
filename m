@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Txb1I-0000Wy-AD
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Jan 2013 05:23:56 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:36879)
+	id 1TxbK3-0007kR-UR
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Jan 2013 05:43:19 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:36819)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1TxamP-0008Mf-St
-	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 05:08:36 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1TxamK-0000Hj-IV
+	(envelope-from <armbru@pond.sub.org>) id 1TxamM-0008HS-JO
 	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 05:08:33 -0500
-Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:48327)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <armbru@pond.sub.org>) id 1TxamF-0000FL-Vy
+	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 05:08:29 -0500
+Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:48336)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@pond.sub.org>)
-	id 1Txam6-0000AL-Ad; Tue, 22 Jan 2013 05:08:14 -0500
+	id 1Txam7-0000BZ-2f; Tue, 22 Jan 2013 05:08:15 -0500
 Received: from blackfin.pond.sub.org (p5B329A82.dip.t-dialin.net
 	[91.50.154.130])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id E00729FE6C;
-	Tue, 22 Jan 2013 11:08:07 +0100 (CET)
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id 98748A3E6F;
+	Tue, 22 Jan 2013 11:08:10 +0100 (CET)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 26570200AB; Tue, 22 Jan 2013 11:08:07 +0100 (CET)
+	id A151E200B1; Tue, 22 Jan 2013 11:08:07 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 22 Jan 2013 11:07:57 +0100
-Message-Id: <1358849286-24750-3-git-send-email-armbru@redhat.com>
+Date: Tue, 22 Jan 2013 11:08:04 +0100
+Message-Id: <1358849286-24750-10-git-send-email-armbru@redhat.com>
 X-Mailer: git-send-email 1.7.11.7
 In-Reply-To: <1358849286-24750-1-git-send-email-armbru@redhat.com>
 References: <1358849286-24750-1-git-send-email-armbru@redhat.com>
@@ -29,8 +29,8 @@ X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2a01:4f8:121:10e4::3
 Cc: qemu-trivial@nongnu.org, eblake@redhat.com
-Subject: [Qemu-trivial] [PATCH v3 02/11] g_strdup(NULL) returns NULL;
-	simplify
+Subject: [Qemu-trivial] [PATCH v3 09/11] libcacard: Fix unchecked strdup()
+	by converting to g_strdup()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,110 +42,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Jan 2013 10:23:54 -0000
+X-List-Received-Date: Tue, 22 Jan 2013 10:43:18 -0000
+
+Note that we already free with g_free().
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Reviewed-by: Eric Blake <eblake@redhat.com>
 ---
- hw/9pfs/virtio-9p-device.c | 6 +-----
- hw/block-common.c          | 4 +---
- net/net.c                  | 4 +---
- slirp/slirp.c              | 8 ++------
- util/qemu-option.c         | 8 ++------
- 5 files changed, 7 insertions(+), 23 deletions(-)
+ libcacard/vcard_emul_nss.c | 4 ++--
+ libcacard/vreader.c        | 2 +-
+ libcacard/vscclient.c      | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/9pfs/virtio-9p-device.c b/hw/9pfs/virtio-9p-device.c
-index 6f427df..6eab7f7 100644
---- a/hw/9pfs/virtio-9p-device.c
-+++ b/hw/9pfs/virtio-9p-device.c
-@@ -85,11 +85,7 @@ VirtIODevice *virtio_9p_init(DeviceState *dev, V9fsConf *conf)
+diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
+index 5f565e0..df79476 100644
+--- a/libcacard/vcard_emul_nss.c
++++ b/libcacard/vcard_emul_nss.c
+@@ -454,7 +454,7 @@ vreader_emul_new(PK11SlotInfo *slot, VCardEmulType type, const char *params)
+ 
+     new_reader_emul->slot = PK11_ReferenceSlot(slot);
+     new_reader_emul->default_type = type;
+-    new_reader_emul->type_params = strdup(params);
++    new_reader_emul->type_params = g_strdup(params);
+     new_reader_emul->present = PR_FALSE;
+     new_reader_emul->series = 0;
+     new_reader_emul->saved_vcard = NULL;
+@@ -997,7 +997,7 @@ vcard_emul_init(const VCardEmulOptions *options)
+     /* We should control this with options. For now we mirror out any
+      * removable hardware slot */
+     default_card_type = options->hw_card_type;
+-    default_type_params = strdup(options->hw_type_params);
++    default_type_params = g_strdup(options->hw_type_params);
+ 
+     SECMOD_GetReadLock(module_lock);
+     for (mlp = module_list; mlp; mlp = mlp->next) {
+diff --git a/libcacard/vreader.c b/libcacard/vreader.c
+index 313349b..f3efc27 100644
+--- a/libcacard/vreader.c
++++ b/libcacard/vreader.c
+@@ -49,7 +49,7 @@ vreader_new(const char *name, VReaderEmul *private,
+     reader = (VReader *)g_malloc(sizeof(VReader));
+     qemu_mutex_init(&reader->lock);
+     reader->reference_count = 1;
+-    reader->name = name ? strdup(name) : NULL;
++    reader->name = g_strdup(name);
+     reader->card = NULL;
+     reader->id = (vreader_id_t)-1;
+     reader->reader_private = private;
+diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
+index 2fce52b..9b744f2 100644
+--- a/libcacard/vscclient.c
++++ b/libcacard/vscclient.c
+@@ -503,8 +503,8 @@ main(
+         command_line_options = vcard_emul_options(emul_args);
      }
  
-     s->ctx.export_flags = fse->export_flags;
--    if (fse->path) {
--        s->ctx.fs_root = g_strdup(fse->path);
--    } else {
--        s->ctx.fs_root = NULL;
--    }
-+    s->ctx.fs_root = g_strdup(fse->path);
-     s->ctx.exops.get_st_gen = NULL;
-     len = strlen(conf->tag);
-     if (len > MAX_TAG_LEN - 1) {
-diff --git a/hw/block-common.c b/hw/block-common.c
-index 0f1b64e..d21ec3a 100644
---- a/hw/block-common.c
-+++ b/hw/block-common.c
-@@ -18,9 +18,7 @@ void blkconf_serial(BlockConf *conf, char **serial)
-     if (!*serial) {
-         /* try to fall back to value set with legacy -drive serial=... */
-         dinfo = drive_get_by_blockdev(conf->bs);
--        if (dinfo->serial) {
--            *serial = g_strdup(dinfo->serial);
--        }
-+        *serial = g_strdup(dinfo->serial);
-     }
- }
- 
-diff --git a/net/net.c b/net/net.c
-index cdd9b04..2f0ab3a 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -566,9 +566,7 @@ static int net_init_nic(const NetClientOptions *opts, const char *name,
-         assert(peer);
-         nd->netdev = peer;
-     }
--    if (name) {
--        nd->name = g_strdup(name);
--    }
-+    nd->name = g_strdup(name);
-     if (nic->has_model) {
-         nd->model = g_strdup(nic->model);
-     }
-diff --git a/slirp/slirp.c b/slirp/slirp.c
-index e93b578..0e6e232 100644
---- a/slirp/slirp.c
-+++ b/slirp/slirp.c
-@@ -225,12 +225,8 @@ Slirp *slirp_init(int restricted, struct in_addr vnetwork,
-         pstrcpy(slirp->client_hostname, sizeof(slirp->client_hostname),
-                 vhostname);
-     }
--    if (tftp_path) {
--        slirp->tftp_prefix = g_strdup(tftp_path);
--    }
--    if (bootfile) {
--        slirp->bootp_filename = g_strdup(bootfile);
--    }
-+    slirp->tftp_prefix = g_strdup(tftp_path);
-+    slirp->bootp_filename = g_strdup(bootfile);
-     slirp->vdhcp_startaddr = vdhcp_start;
-     slirp->vnameserver_addr = vnameserver;
- 
-diff --git a/util/qemu-option.c b/util/qemu-option.c
-index f532b76..c12e724 100644
---- a/util/qemu-option.c
-+++ b/util/qemu-option.c
-@@ -643,9 +643,7 @@ static void opt_set(QemuOpts *opts, const char *name, const char *value,
-         QTAILQ_INSERT_TAIL(&opts->head, opt, next);
-     }
-     opt->desc = desc;
--    if (value) {
--        opt->str = g_strdup(value);
--    }
-+    opt->str = g_strdup(value);
-     qemu_opt_parse(opt, &local_err);
-     if (error_is_set(&local_err)) {
-         error_propagate(errp, local_err);
-@@ -792,9 +790,7 @@ QemuOpts *qemu_opts_create(QemuOptsList *list, const char *id,
-         }
-     }
-     opts = g_malloc0(sizeof(*opts));
--    if (id) {
--        opts->id = g_strdup(id);
--    }
-+    opts->id = g_strdup(id);
-     opts->list = list;
-     loc_save(&opts->loc);
-     QTAILQ_INIT(&opts->head);
+-    qemu_host = strdup(argv[argc - 2]);
+-    qemu_port = strdup(argv[argc - 1]);
++    qemu_host = g_strdup(argv[argc - 2]);
++    qemu_port = g_strdup(argv[argc - 1]);
+     sock = connect_to_qemu(qemu_host, qemu_port);
+     if (sock == -1) {
+         fprintf(stderr, "error opening socket, exiting.\n");
 -- 
 1.7.11.7
 
