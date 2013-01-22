@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TxfPB-0004Be-0U
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Jan 2013 10:04:53 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:36031)
+	id 1TxfwN-0007tu-9u
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Jan 2013 10:39:11 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:44755)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TxfP7-0003zs-2t
-	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 10:04:50 -0500
+	(envelope-from <armbru@redhat.com>) id 1TxfwG-0007rN-W6
+	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 10:39:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TxfP1-0002zR-S5
-	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 10:04:48 -0500
-Received: from mail-wi0-f180.google.com ([209.85.212.180]:54531)
+	(envelope-from <armbru@redhat.com>) id 1TxfwF-0004JN-Bn
+	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 10:39:04 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43384)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1TxfOy-0002yk-BC; Tue, 22 Jan 2013 10:04:40 -0500
-Received: by mail-wi0-f180.google.com with SMTP id hj13so5996309wib.1
-	for <multiple recipients>; Tue, 22 Jan 2013 07:04:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=/pVtcZl+0LRwaRuDw6gW8pQ36AJlu5wwQux/moSjM5s=;
-	b=gAcInbCZsOCWmjXa7HKHhAVHSOr2g3imeamCC8UeqguOZz+SaY8Zvs4Q19gf4hzMye
-	2C8mVg0t/GRrY0TlAWpbKKkGcvyXTS898300U9uej77qCh7xT1ivqBixLQvLg+nBDHMq
-	vmYQATtLaIA4U642EmQI347kXBkFeWpj2xLXOkCJYVn88Cay9U5+Veqeyyk4m6ciWCob
-	htRzRZDMIAwwed95Paf2BSp7k7kiCqxdQSfZBeugVVkJr4rS15NnFKFKtb/44DeX1O7/
-	LiKaD6Y5ivAGvW8Cr54ISYB5i76FNmviGdMxgr7bBgcCzENVnJ0JCs/I2w2z4kut50fE
-	rlEQ==
-X-Received: by 10.180.85.165 with SMTP id i5mr21740268wiz.11.1358867079322;
-	Tue, 22 Jan 2013 07:04:39 -0800 (PST)
-Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
-	by mx.google.com with ESMTPS id bd7sm24247264wib.8.2013.01.22.07.04.37
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Tue, 22 Jan 2013 07:04:38 -0800 (PST)
-Date: Tue, 22 Jan 2013 16:04:36 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20130122150436.GA29789@stefanha-thinkpad.redhat.com>
-References: <1358849286-24750-1-git-send-email-armbru@redhat.com>
+	(envelope-from <armbru@redhat.com>)
+	id 1TxfwF-0004JC-3t; Tue, 22 Jan 2013 10:39:03 -0500
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0MFcwSq002892
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 22 Jan 2013 10:38:59 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-70.ams2.redhat.com
+	[10.36.116.70])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r0MF0Pm4017775; Tue, 22 Jan 2013 10:00:28 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 124B0200AA; Tue, 22 Jan 2013 16:00:25 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: KONRAD =?utf-8?B?RnLDqWTDqXJpYw==?= <fred.konrad@greensocs.com>
+References: <1358357540-29862-1-git-send-email-armbru@redhat.com>
+	<1358357540-29862-4-git-send-email-armbru@redhat.com>
+	<20130117111951.GH2586@stefanha-thinkpad.redhat.com>
+	<87fw20rllu.fsf@blackfin.pond.sub.org>
+	<87y5fl1pp1.fsf@blackfin.pond.sub.org>
+	<50FE995C.3080504@greensocs.com>
+Date: Tue, 22 Jan 2013 16:00:24 +0100
+In-Reply-To: <50FE995C.3080504@greensocs.com> ("KONRAD =?utf-8?B?RnLDqWQ=?=
+	=?utf-8?B?w6lyaWMiJ3M=?= message of
+	"Tue, 22 Jan 2013 14:51:24 +0100")
+Message-ID: <8738xts1o7.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1358849286-24750-1-git-send-email-armbru@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.212.180
-Cc: qemu-trivial@nongnu.org, eblake@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v3 00/11] Trivial memory allocation fixes
- & cleanups
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 03/11] hw/9pfs: Fix
+	unchecked strdup() by converting to g_strdup()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,55 +57,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Jan 2013 15:04:51 -0000
+X-List-Received-Date: Tue, 22 Jan 2013 15:39:09 -0000
 
-On Tue, Jan 22, 2013 at 11:07:55AM +0100, Markus Armbruster wrote:
-> v3: const tweak suggested by stefanha in PATCH 08/11, rest identical
->     except 03/11's commit message mentions leak (thanks stefanha!)
-> 
-> v2: Windows compile fix in PATCH 08/11 (thanks eblake!), rest identical
-> 
-> Markus Armbruster (11):
->   g_malloc(0) and g_malloc0(0) return NULL; simplify
->   g_strdup(NULL) returns NULL; simplify
->   hw/9pfs: Fix unchecked strdup() by converting to g_strdup()
->   readline: Fix unchecked strdup() by converting to g_strdup()
->   spice: Fix unchecked strdup() by converting to g_strdup()
->   virtfs-proxy-helper: Fix unchecked strdup() by conv. to g_strdup()
->   qemu-log: Fix unchecked strdup() by converting to g_strdup()
->   qemu-log: Plug trivial memory leak in cpu_set_log_filename()
->   libcacard: Fix unchecked strdup() by converting to g_strdup()
->   qapi: Fix unchecked strdup() by converting to g_strdup()
->   qemu-ga: Fix unchecked strdup() by converting to g_strdup()
-> 
->  block/qcow2-refcount.c      |  6 +-----
->  block/vdi.c                 |  4 +---
->  fsdev/virtfs-proxy-helper.c |  4 ++--
->  hw/9pfs/virtio-9p-device.c  |  8 ++------
->  hw/9pfs/virtio-9p-local.c   |  8 ++++----
->  hw/9pfs/virtio-9p.c         |  6 +-----
->  hw/block-common.c           |  4 +---
->  hw/vhost.c                  |  7 ++-----
->  libcacard/vcard_emul_nss.c  |  4 ++--
->  libcacard/vreader.c         |  2 +-
->  libcacard/vscclient.c       |  4 ++--
->  net/net.c                   |  4 +---
->  qapi/qmp-registry.c         |  2 +-
->  qemu-log.c                  | 15 ++++++++++-----
->  qga/commands.c              |  2 +-
->  readline.c                  |  4 ++--
->  slirp/slirp.c               |  8 ++------
->  ui/spice-core.c             |  4 ++--
->  util/qemu-option.c          |  8 ++------
->  19 files changed, 40 insertions(+), 64 deletions(-)
-> 
-> -- 
-> 1.7.11.7
-> 
-> 
+KONRAD Fr=C3=A9d=C3=A9ric <fred.konrad@greensocs.com> writes:
 
-Thanks, applied to the trivial patches -next tree:
-https://github.com/stefanha/qemu/commits/trivial-patches-next
+> On 22/01/2013 11:23, Markus Armbruster wrote:
+>> Markus Armbruster <armbru@redhat.com> writes:
+>>
+>>> Stefan Hajnoczi <stefanha@gmail.com> writes:
+>>>
+>>>> On Wed, Jan 16, 2013 at 06:32:12PM +0100, Markus Armbruster wrote:
+>>>>> diff --git a/hw/9pfs/virtio-9p-device.c b/hw/9pfs/virtio-9p-device.c
+>>>>> index 6eab7f7..74155fb 100644
+>>>>> --- a/hw/9pfs/virtio-9p-device.c
+>>>>> +++ b/hw/9pfs/virtio-9p-device.c
+>>>>> @@ -94,7 +94,7 @@ VirtIODevice *virtio_9p_init(DeviceState *dev, V9fs=
+Conf *conf)
+>>>>>           exit(1);
+>>>>>       }
+>>>>>   -    s->tag =3D strdup(conf->tag);
+>>>>> +    s->tag =3D g_strdup(conf->tag);
+>>>>>       s->ctx.uid =3D -1;
+>>>>>         s->ops =3D fse->ops;
+>>>> s->tag is leaked.  Want to send a follow-up patch to g_free() it?
+>>> I'll give it a try.
+>> Mind if I wait for Fred Konrad's virtio refactoring to settle?  It
+>> should make the fix easier, and avoid getting into his way with
+>> pointless conflicts.
+> Hi,
+>
+> Maybe it's due to missing exit function?
+>
+> Do you want me to add an exit function to g_free this conf->tag?
 
-Stefan
+Yes, please!
 
