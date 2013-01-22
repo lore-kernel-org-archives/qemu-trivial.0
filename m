@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TxeGL-0006O3-5P
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Jan 2013 08:51:41 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:41567)
+	id 1TxfPB-0004Be-0U
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Jan 2013 10:04:53 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:36031)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <fred.konrad@greensocs.com>) id 1TxeGH-0006EV-Jx
-	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 08:51:39 -0500
+	(envelope-from <stefanha@gmail.com>) id 1TxfP7-0003zs-2t
+	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 10:04:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <fred.konrad@greensocs.com>) id 1TxeGF-0006Lx-Pq
-	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 08:51:37 -0500
-Received: from greensocs.com ([87.106.252.221]:55619
-	helo=s15328186.onlinehome-server.info)
+	(envelope-from <stefanha@gmail.com>) id 1TxfP1-0002zR-S5
+	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 10:04:48 -0500
+Received: from mail-wi0-f180.google.com ([209.85.212.180]:54531)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <fred.konrad@greensocs.com>)
-	id 1TxeGB-0006KE-Bv; Tue, 22 Jan 2013 08:51:31 -0500
-Received: from localhost (unknown [127.0.0.1])
-	by s15328186.onlinehome-server.info (Postfix) with ESMTP id 8730443EE2A;
-	Tue, 22 Jan 2013 13:51:28 +0000 (UTC)
-Received: from s15328186.onlinehome-server.info ([127.0.0.1])
-	by localhost (s15328186.onlinehome-server.info [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 00CS+00g63zS; Tue, 22 Jan 2013 14:51:26 +0100 (CET)
-Received: by s15328186.onlinehome-server.info (Postfix, from userid 491)
-	id 128AB43EE2B; Tue, 22 Jan 2013 14:51:26 +0100 (CET)
-Received: from compaq.katmai.xl.cx (lan31-11-83-155-143-136.fbx.proxad.net
-	[83.155.143.136])
-	by s15328186.onlinehome-server.info (Postfix) with ESMTPSA id
-	7709D43EE2A; Tue, 22 Jan 2013 14:51:25 +0100 (CET)
-Message-ID: <50FE995C.3080504@greensocs.com>
-Date: Tue, 22 Jan 2013 14:51:24 +0100
-From: =?ISO-8859-1?Q?KONRAD_Fr=E9d=E9ric?= <fred.konrad@greensocs.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130110 Thunderbird/17.0.2
-MIME-Version: 1.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1TxfOy-0002yk-BC; Tue, 22 Jan 2013 10:04:40 -0500
+Received: by mail-wi0-f180.google.com with SMTP id hj13so5996309wib.1
+	for <multiple recipients>; Tue, 22 Jan 2013 07:04:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=/pVtcZl+0LRwaRuDw6gW8pQ36AJlu5wwQux/moSjM5s=;
+	b=gAcInbCZsOCWmjXa7HKHhAVHSOr2g3imeamCC8UeqguOZz+SaY8Zvs4Q19gf4hzMye
+	2C8mVg0t/GRrY0TlAWpbKKkGcvyXTS898300U9uej77qCh7xT1ivqBixLQvLg+nBDHMq
+	vmYQATtLaIA4U642EmQI347kXBkFeWpj2xLXOkCJYVn88Cay9U5+Veqeyyk4m6ciWCob
+	htRzRZDMIAwwed95Paf2BSp7k7kiCqxdQSfZBeugVVkJr4rS15NnFKFKtb/44DeX1O7/
+	LiKaD6Y5ivAGvW8Cr54ISYB5i76FNmviGdMxgr7bBgcCzENVnJ0JCs/I2w2z4kut50fE
+	rlEQ==
+X-Received: by 10.180.85.165 with SMTP id i5mr21740268wiz.11.1358867079322;
+	Tue, 22 Jan 2013 07:04:39 -0800 (PST)
+Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
+	by mx.google.com with ESMTPS id bd7sm24247264wib.8.2013.01.22.07.04.37
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Tue, 22 Jan 2013 07:04:38 -0800 (PST)
+Date: Tue, 22 Jan 2013 16:04:36 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Markus Armbruster <armbru@redhat.com>
-References: <1358357540-29862-1-git-send-email-armbru@redhat.com>
-	<1358357540-29862-4-git-send-email-armbru@redhat.com>
-	<20130117111951.GH2586@stefanha-thinkpad.redhat.com>
-	<87fw20rllu.fsf@blackfin.pond.sub.org>
-	<87y5fl1pp1.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87y5fl1pp1.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 87.106.252.221
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 03/11] hw/9pfs: Fix
- unchecked strdup() by converting to g_strdup()
+Message-ID: <20130122150436.GA29789@stefanha-thinkpad.redhat.com>
+References: <1358849286-24750-1-git-send-email-armbru@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1358849286-24750-1-git-send-email-armbru@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.212.180
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v3 00/11] Trivial memory allocation fixes
+ & cleanups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,37 +56,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Jan 2013 13:51:39 -0000
+X-List-Received-Date: Tue, 22 Jan 2013 15:04:51 -0000
 
-On 22/01/2013 11:23, Markus Armbruster wrote:
-> Markus Armbruster <armbru@redhat.com> writes:
->
->> Stefan Hajnoczi <stefanha@gmail.com> writes:
->>
->>> On Wed, Jan 16, 2013 at 06:32:12PM +0100, Markus Armbruster wrote:
->>>> diff --git a/hw/9pfs/virtio-9p-device.c b/hw/9pfs/virtio-9p-device.c
->>>> index 6eab7f7..74155fb 100644
->>>> --- a/hw/9pfs/virtio-9p-device.c
->>>> +++ b/hw/9pfs/virtio-9p-device.c
->>>> @@ -94,7 +94,7 @@ VirtIODevice *virtio_9p_init(DeviceState *dev, V9fsConf *conf)
->>>>           exit(1);
->>>>       }
->>>>   
->>>> -    s->tag = strdup(conf->tag);
->>>> +    s->tag = g_strdup(conf->tag);
->>>>       s->ctx.uid = -1;
->>>>   
->>>>       s->ops = fse->ops;
->>> s->tag is leaked.  Want to send a follow-up patch to g_free() it?
->> I'll give it a try.
-> Mind if I wait for Fred Konrad's virtio refactoring to settle?  It
-> should make the fix easier, and avoid getting into his way with
-> pointless conflicts.
-Hi,
+On Tue, Jan 22, 2013 at 11:07:55AM +0100, Markus Armbruster wrote:
+> v3: const tweak suggested by stefanha in PATCH 08/11, rest identical
+>     except 03/11's commit message mentions leak (thanks stefanha!)
+> 
+> v2: Windows compile fix in PATCH 08/11 (thanks eblake!), rest identical
+> 
+> Markus Armbruster (11):
+>   g_malloc(0) and g_malloc0(0) return NULL; simplify
+>   g_strdup(NULL) returns NULL; simplify
+>   hw/9pfs: Fix unchecked strdup() by converting to g_strdup()
+>   readline: Fix unchecked strdup() by converting to g_strdup()
+>   spice: Fix unchecked strdup() by converting to g_strdup()
+>   virtfs-proxy-helper: Fix unchecked strdup() by conv. to g_strdup()
+>   qemu-log: Fix unchecked strdup() by converting to g_strdup()
+>   qemu-log: Plug trivial memory leak in cpu_set_log_filename()
+>   libcacard: Fix unchecked strdup() by converting to g_strdup()
+>   qapi: Fix unchecked strdup() by converting to g_strdup()
+>   qemu-ga: Fix unchecked strdup() by converting to g_strdup()
+> 
+>  block/qcow2-refcount.c      |  6 +-----
+>  block/vdi.c                 |  4 +---
+>  fsdev/virtfs-proxy-helper.c |  4 ++--
+>  hw/9pfs/virtio-9p-device.c  |  8 ++------
+>  hw/9pfs/virtio-9p-local.c   |  8 ++++----
+>  hw/9pfs/virtio-9p.c         |  6 +-----
+>  hw/block-common.c           |  4 +---
+>  hw/vhost.c                  |  7 ++-----
+>  libcacard/vcard_emul_nss.c  |  4 ++--
+>  libcacard/vreader.c         |  2 +-
+>  libcacard/vscclient.c       |  4 ++--
+>  net/net.c                   |  4 +---
+>  qapi/qmp-registry.c         |  2 +-
+>  qemu-log.c                  | 15 ++++++++++-----
+>  qga/commands.c              |  2 +-
+>  readline.c                  |  4 ++--
+>  slirp/slirp.c               |  8 ++------
+>  ui/spice-core.c             |  4 ++--
+>  util/qemu-option.c          |  8 ++------
+>  19 files changed, 40 insertions(+), 64 deletions(-)
+> 
+> -- 
+> 1.7.11.7
+> 
+> 
 
-Maybe it's due to missing exit function?
+Thanks, applied to the trivial patches -next tree:
+https://github.com/stefanha/qemu/commits/trivial-patches-next
 
-Do you want me to add an exit function to g_free this conf->tag?
-
-Fred
+Stefan
 
