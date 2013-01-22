@@ -1,47 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Txb1D-0000Hu-1Q
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Jan 2013 05:23:51 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:41076)
+	id 1Txb1I-0000Wy-AD
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Jan 2013 05:23:56 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:36879)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Txb1A-0000BP-0s
-	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 05:23:49 -0500
+	(envelope-from <armbru@pond.sub.org>) id 1TxamP-0008Mf-St
+	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 05:08:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Txb18-0004ap-Tn
-	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 05:23:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:12013)
+	(envelope-from <armbru@pond.sub.org>) id 1TxamK-0000Hj-IV
+	for qemu-trivial@nongnu.org; Tue, 22 Jan 2013 05:08:33 -0500
+Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:48327)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Txb15-0004Y4-9l; Tue, 22 Jan 2013 05:23:43 -0500
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0MANesr011722
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 22 Jan 2013 05:23:40 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-31.ams2.redhat.com
-	[10.36.116.31])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r0MANdmx025878; Tue, 22 Jan 2013 05:23:39 -0500
+	(envelope-from <armbru@pond.sub.org>)
+	id 1Txam6-0000AL-Ad; Tue, 22 Jan 2013 05:08:14 -0500
+Received: from blackfin.pond.sub.org (p5B329A82.dip.t-dialin.net
+	[91.50.154.130])
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id E00729FE6C;
+	Tue, 22 Jan 2013 11:08:07 +0100 (CET)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 6096D200AA; Tue, 22 Jan 2013 11:23:38 +0100 (CET)
+	id 26570200AB; Tue, 22 Jan 2013 11:08:07 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1358357540-29862-1-git-send-email-armbru@redhat.com>
-	<1358357540-29862-4-git-send-email-armbru@redhat.com>
-	<20130117111951.GH2586@stefanha-thinkpad.redhat.com>
-	<87fw20rllu.fsf@blackfin.pond.sub.org>
-Date: Tue, 22 Jan 2013 11:23:38 +0100
-In-Reply-To: <87fw20rllu.fsf@blackfin.pond.sub.org> (Markus Armbruster's
-	message of "Thu, 17 Jan 2013 14:21:33 +0100")
-Message-ID: <87y5fl1pp1.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, fred.konrad@greensocs.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 03/11] hw/9pfs: Fix
-	unchecked strdup() by converting to g_strdup()
+To: qemu-devel@nongnu.org
+Date: Tue, 22 Jan 2013 11:07:57 +0100
+Message-Id: <1358849286-24750-3-git-send-email-armbru@redhat.com>
+X-Mailer: git-send-email 1.7.11.7
+In-Reply-To: <1358849286-24750-1-git-send-email-armbru@redhat.com>
+References: <1358849286-24750-1-git-send-email-armbru@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:4f8:121:10e4::3
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com
+Subject: [Qemu-trivial] [PATCH v3 02/11] g_strdup(NULL) returns NULL;
+	simplify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,32 +42,111 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Jan 2013 10:23:49 -0000
+X-List-Received-Date: Tue, 22 Jan 2013 10:23:54 -0000
 
-Markus Armbruster <armbru@redhat.com> writes:
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+---
+ hw/9pfs/virtio-9p-device.c | 6 +-----
+ hw/block-common.c          | 4 +---
+ net/net.c                  | 4 +---
+ slirp/slirp.c              | 8 ++------
+ util/qemu-option.c         | 8 ++------
+ 5 files changed, 7 insertions(+), 23 deletions(-)
 
-> Stefan Hajnoczi <stefanha@gmail.com> writes:
->
->> On Wed, Jan 16, 2013 at 06:32:12PM +0100, Markus Armbruster wrote:
->>> diff --git a/hw/9pfs/virtio-9p-device.c b/hw/9pfs/virtio-9p-device.c
->>> index 6eab7f7..74155fb 100644
->>> --- a/hw/9pfs/virtio-9p-device.c
->>> +++ b/hw/9pfs/virtio-9p-device.c
->>> @@ -94,7 +94,7 @@ VirtIODevice *virtio_9p_init(DeviceState *dev, V9fsConf *conf)
->>>          exit(1);
->>>      }
->>>  
->>> -    s->tag = strdup(conf->tag);
->>> +    s->tag = g_strdup(conf->tag);
->>>      s->ctx.uid = -1;
->>>  
->>>      s->ops = fse->ops;
->>
->> s->tag is leaked.  Want to send a follow-up patch to g_free() it?
->
-> I'll give it a try.
+diff --git a/hw/9pfs/virtio-9p-device.c b/hw/9pfs/virtio-9p-device.c
+index 6f427df..6eab7f7 100644
+--- a/hw/9pfs/virtio-9p-device.c
++++ b/hw/9pfs/virtio-9p-device.c
+@@ -85,11 +85,7 @@ VirtIODevice *virtio_9p_init(DeviceState *dev, V9fsConf *conf)
+     }
+ 
+     s->ctx.export_flags = fse->export_flags;
+-    if (fse->path) {
+-        s->ctx.fs_root = g_strdup(fse->path);
+-    } else {
+-        s->ctx.fs_root = NULL;
+-    }
++    s->ctx.fs_root = g_strdup(fse->path);
+     s->ctx.exops.get_st_gen = NULL;
+     len = strlen(conf->tag);
+     if (len > MAX_TAG_LEN - 1) {
+diff --git a/hw/block-common.c b/hw/block-common.c
+index 0f1b64e..d21ec3a 100644
+--- a/hw/block-common.c
++++ b/hw/block-common.c
+@@ -18,9 +18,7 @@ void blkconf_serial(BlockConf *conf, char **serial)
+     if (!*serial) {
+         /* try to fall back to value set with legacy -drive serial=... */
+         dinfo = drive_get_by_blockdev(conf->bs);
+-        if (dinfo->serial) {
+-            *serial = g_strdup(dinfo->serial);
+-        }
++        *serial = g_strdup(dinfo->serial);
+     }
+ }
+ 
+diff --git a/net/net.c b/net/net.c
+index cdd9b04..2f0ab3a 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -566,9 +566,7 @@ static int net_init_nic(const NetClientOptions *opts, const char *name,
+         assert(peer);
+         nd->netdev = peer;
+     }
+-    if (name) {
+-        nd->name = g_strdup(name);
+-    }
++    nd->name = g_strdup(name);
+     if (nic->has_model) {
+         nd->model = g_strdup(nic->model);
+     }
+diff --git a/slirp/slirp.c b/slirp/slirp.c
+index e93b578..0e6e232 100644
+--- a/slirp/slirp.c
++++ b/slirp/slirp.c
+@@ -225,12 +225,8 @@ Slirp *slirp_init(int restricted, struct in_addr vnetwork,
+         pstrcpy(slirp->client_hostname, sizeof(slirp->client_hostname),
+                 vhostname);
+     }
+-    if (tftp_path) {
+-        slirp->tftp_prefix = g_strdup(tftp_path);
+-    }
+-    if (bootfile) {
+-        slirp->bootp_filename = g_strdup(bootfile);
+-    }
++    slirp->tftp_prefix = g_strdup(tftp_path);
++    slirp->bootp_filename = g_strdup(bootfile);
+     slirp->vdhcp_startaddr = vdhcp_start;
+     slirp->vnameserver_addr = vnameserver;
+ 
+diff --git a/util/qemu-option.c b/util/qemu-option.c
+index f532b76..c12e724 100644
+--- a/util/qemu-option.c
++++ b/util/qemu-option.c
+@@ -643,9 +643,7 @@ static void opt_set(QemuOpts *opts, const char *name, const char *value,
+         QTAILQ_INSERT_TAIL(&opts->head, opt, next);
+     }
+     opt->desc = desc;
+-    if (value) {
+-        opt->str = g_strdup(value);
+-    }
++    opt->str = g_strdup(value);
+     qemu_opt_parse(opt, &local_err);
+     if (error_is_set(&local_err)) {
+         error_propagate(errp, local_err);
+@@ -792,9 +790,7 @@ QemuOpts *qemu_opts_create(QemuOptsList *list, const char *id,
+         }
+     }
+     opts = g_malloc0(sizeof(*opts));
+-    if (id) {
+-        opts->id = g_strdup(id);
+-    }
++    opts->id = g_strdup(id);
+     opts->list = list;
+     loc_save(&opts->loc);
+     QTAILQ_INIT(&opts->head);
+-- 
+1.7.11.7
 
-Mind if I wait for Fred Konrad's virtio refactoring to settle?  It
-should make the fix easier, and avoid getting into his way with
-pointless conflicts.
 
