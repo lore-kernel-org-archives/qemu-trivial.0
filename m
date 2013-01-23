@@ -1,54 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TxvMC-0001bE-Ko
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Jan 2013 03:06:52 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:55372)
+	id 1Ty3wI-0000gl-9g
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Jan 2013 12:16:42 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:54426)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TxvM9-0001RP-2K
-	for qemu-trivial@nongnu.org; Wed, 23 Jan 2013 03:06:50 -0500
+	(envelope-from <armbru@pond.sub.org>) id 1Ty3w9-0000Hm-5F
+	for qemu-trivial@nongnu.org; Wed, 23 Jan 2013 12:16:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1TxvM7-0005U3-SY
-	for qemu-trivial@nongnu.org; Wed, 23 Jan 2013 03:06:48 -0500
-Received: from mail-we0-x231.google.com ([2a00:1450:400c:c03::231]:48595)
+	(envelope-from <armbru@pond.sub.org>) id 1Ty3vx-0000tz-97
+	for qemu-trivial@nongnu.org; Wed, 23 Jan 2013 12:16:27 -0500
+Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:41363)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1TxvM7-0005Tg-N2; Wed, 23 Jan 2013 03:06:47 -0500
-Received: by mail-we0-f177.google.com with SMTP id d7so1004323wer.36
-	for <multiple recipients>; Wed, 23 Jan 2013 00:06:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=s6blnA/l+kS7kRUqWXOE8tGXR5SZeDqBbWHYk5rGFsc=;
-	b=U6J7K1/KaefUJTPR/TYtvQjwYWi0rzL0pvW44QlRERENwaUYv27hVhO1Cu2BI2f3Lk
-	G+vljz0Ku26SVRw+i486Qw/j9bw7VuvRPG7vLAYU0/Tp+hkukV1e/n2tccGz9bAXaiqK
-	6bEkBtliT4VYRtvytgkqpm7TS/pXXDvxQP82qS4mhp5JshLsuUoQVxui1ZKD75fqdjD4
-	Ci5yraj6mmxaYeTG4QDIC6No6GaqSttSV6np4OKUhR/YqjguV7fdF8ZH888/deQZgwEg
-	rESW6OTKkkSZy76mqyEMj4N8gm2TN7qVZA9aoim1U2LDl1NTOzng84Z5YDls5xE0lifO
-	M0mQ==
-X-Received: by 10.194.76.165 with SMTP id l5mr690573wjw.14.1358928406553;
-	Wed, 23 Jan 2013 00:06:46 -0800 (PST)
-Received: from localhost (nat-pool-muc-t.redhat.com. [209.132.186.12])
-	by mx.google.com with ESMTPS id eo10sm28237476wib.9.2013.01.23.00.06.43
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Wed, 23 Jan 2013 00:06:45 -0800 (PST)
-Date: Wed, 23 Jan 2013 08:46:24 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Luiz Capitulino <lcapitulino@redhat.com>
-Message-ID: <20130123074624.GB4121@stefanha-thinkpad>
-References: <1358849286-24750-1-git-send-email-armbru@redhat.com>
-	<1358849286-24750-12-git-send-email-armbru@redhat.com>
-	<20130122145421.152dbb76@doriath.home>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20130122145421.152dbb76@doriath.home>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	(envelope-from <armbru@pond.sub.org>)
+	id 1Ty3vl-0000qk-MN; Wed, 23 Jan 2013 12:16:09 -0500
+Received: from blackfin.pond.sub.org (p5B32AAD4.dip.t-dialin.net
+	[91.50.170.212])
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id 9455C9FE47;
+	Wed, 23 Jan 2013 18:16:00 +0100 (CET)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 110FA200AA; Wed, 23 Jan 2013 18:16:00 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 23 Jan 2013 18:16:00 +0100
+Message-Id: <1358961360-15623-1-git-send-email-armbru@redhat.com>
+X-Mailer: git-send-email 1.7.11.7
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::231
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 11/11] qemu-ga: Fix
- unchecked strdup() by converting to g_strdup()
+X-Received-From: 2a01:4f8:121:10e4::3
+Cc: qemu-trivial@nongnu.org, thardeck@suse.de
+Subject: [Qemu-trivial] [PATCH] vnc: Clean up vncws_send_handshake_response()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,23 +39,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Jan 2013 08:06:51 -0000
+X-List-Received-Date: Wed, 23 Jan 2013 17:16:40 -0000
 
-On Tue, Jan 22, 2013 at 02:54:21PM -0200, Luiz Capitulino wrote:
-> On Tue, 22 Jan 2013 11:08:06 +0100
-> Markus Armbruster <armbru@redhat.com> wrote:
-> 
-> > I figure it's freed somewhere deep down in QAPI, with g_free().
-> 
-> It is, by qapi_dealloc_type_str().
-> 
-> > Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> > Reviewed-by: Eric Blake <eblake@redhat.com>
-> 
-> Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
+Use appropriate types, drop superfluous casts, use sizeof, don't
+exploit that this particular call of gnutls_fingerprint() doesn't
+change its last argument.
 
-Thanks for the reviews, Luiz.  Your Reviewed-by: has been added to the
-2 commits.
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ ui/vnc-ws.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Stefan
+diff --git a/ui/vnc-ws.c b/ui/vnc-ws.c
+index 9ccdc19..de7e74c 100644
+--- a/ui/vnc-ws.c
++++ b/ui/vnc-ws.c
+@@ -120,8 +120,8 @@ static char *vncws_extract_handshake_entry(const char *handshake,
+ static void vncws_send_handshake_response(VncState *vs, const char* key)
+ {
+     char combined_key[WS_CLIENT_KEY_LEN + WS_GUID_LEN + 1];
+-    char hash[SHA1_DIGEST_LEN];
+-    size_t hash_size = SHA1_DIGEST_LEN;
++    unsigned char hash[SHA1_DIGEST_LEN];
++    size_t hash_size = sizeof(hash);
+     char *accept = NULL, *response = NULL;
+     gnutls_datum_t in;
+ 
+@@ -133,7 +133,7 @@ static void vncws_send_handshake_response(VncState *vs, const char* key)
+     in.size = WS_CLIENT_KEY_LEN + WS_GUID_LEN;
+     if (gnutls_fingerprint(GNUTLS_DIG_SHA1, &in, hash, &hash_size)
+             == GNUTLS_E_SUCCESS) {
+-        accept = g_base64_encode((guchar *)hash, SHA1_DIGEST_LEN);
++        accept = g_base64_encode(hash, hash_size);
+     }
+     if (accept == NULL) {
+         VNC_DEBUG("Hashing Websocket combined key failed\n");
+-- 
+1.7.11.7
+
 
