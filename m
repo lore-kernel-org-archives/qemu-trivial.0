@@ -1,33 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ty3wI-0000gl-9g
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Jan 2013 12:16:42 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:54426)
+	id 1TyJTn-0007qp-P2
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Jan 2013 04:52:19 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:45275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1Ty3w9-0000Hm-5F
-	for qemu-trivial@nongnu.org; Wed, 23 Jan 2013 12:16:39 -0500
+	(envelope-from <afaerber@suse.de>) id 1TyJTj-0007eW-Jg
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2013 04:52:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1Ty3vx-0000tz-97
-	for qemu-trivial@nongnu.org; Wed, 23 Jan 2013 12:16:27 -0500
-Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:41363)
+	(envelope-from <afaerber@suse.de>) id 1TyJTe-0007wm-MT
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2013 04:52:15 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:60464 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1Ty3vl-0000qk-MN; Wed, 23 Jan 2013 12:16:09 -0500
-Received: from blackfin.pond.sub.org (p5B32AAD4.dip.t-dialin.net
-	[91.50.170.212])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id 9455C9FE47;
-	Wed, 23 Jan 2013 18:16:00 +0100 (CET)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 110FA200AA; Wed, 23 Jan 2013 18:16:00 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+	(envelope-from <afaerber@suse.de>)
+	id 1TyJTZ-0007vO-OY; Thu, 24 Jan 2013 04:52:06 -0500
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id A730AA3CEE;
+	Thu, 24 Jan 2013 10:52:03 +0100 (CET)
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
 To: qemu-devel@nongnu.org
-Date: Wed, 23 Jan 2013 18:16:00 +0100
-Message-Id: <1358961360-15623-1-git-send-email-armbru@redhat.com>
-X-Mailer: git-send-email 1.7.11.7
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a01:4f8:121:10e4::3
-Cc: qemu-trivial@nongnu.org, thardeck@suse.de
-Subject: [Qemu-trivial] [PATCH] vnc: Clean up vncws_send_handshake_response()
+Date: Thu, 24 Jan 2013 10:51:47 +0100
+Message-Id: <1359021107-29413-1-git-send-email-afaerber@suse.de>
+X-Mailer: git-send-email 1.7.10.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Subject: [Qemu-trivial] [PATCH for-1.4] target-cris: Fix typo in D_LOG()
+	macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,42 +43,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Jan 2013 17:16:40 -0000
+X-List-Received-Date: Thu, 24 Jan 2013 09:52:18 -0000
 
-Use appropriate types, drop superfluous casts, use sizeof, don't
-exploit that this particular call of gnutls_fingerprint() doesn't
-change its last argument.
+It's __VAR_ARGS__. Fixes the build with CRIS_[OP_]HELPER_DEBUG defined.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Broken since r6338 / 93fcfe39a0383377e647b821c9f165fd927cd4e0 (Convert
+references to logfile/loglevel to use qemu_log*() macros).
+
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
 ---
- ui/vnc-ws.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ target-cris/helper.c    |    2 +-
+ target-cris/op_helper.c |    2 +-
+ 2 Dateien ge=C3=A4ndert, 2 Zeilen hinzugef=C3=BCgt(+), 2 Zeilen entfernt=
+(-)
 
-diff --git a/ui/vnc-ws.c b/ui/vnc-ws.c
-index 9ccdc19..de7e74c 100644
---- a/ui/vnc-ws.c
-+++ b/ui/vnc-ws.c
-@@ -120,8 +120,8 @@ static char *vncws_extract_handshake_entry(const char *handshake,
- static void vncws_send_handshake_response(VncState *vs, const char* key)
- {
-     char combined_key[WS_CLIENT_KEY_LEN + WS_GUID_LEN + 1];
--    char hash[SHA1_DIGEST_LEN];
--    size_t hash_size = SHA1_DIGEST_LEN;
-+    unsigned char hash[SHA1_DIGEST_LEN];
-+    size_t hash_size = sizeof(hash);
-     char *accept = NULL, *response = NULL;
-     gnutls_datum_t in;
- 
-@@ -133,7 +133,7 @@ static void vncws_send_handshake_response(VncState *vs, const char* key)
-     in.size = WS_CLIENT_KEY_LEN + WS_GUID_LEN;
-     if (gnutls_fingerprint(GNUTLS_DIG_SHA1, &in, hash, &hash_size)
-             == GNUTLS_E_SUCCESS) {
--        accept = g_base64_encode((guchar *)hash, SHA1_DIGEST_LEN);
-+        accept = g_base64_encode(hash, hash_size);
-     }
-     if (accept == NULL) {
-         VNC_DEBUG("Hashing Websocket combined key failed\n");
--- 
-1.7.11.7
+diff --git a/target-cris/helper.c b/target-cris/helper.c
+index 8407a6d..6e75e98 100644
+--- a/target-cris/helper.c
++++ b/target-cris/helper.c
+@@ -28,7 +28,7 @@
+=20
+ #ifdef CRIS_HELPER_DEBUG
+ #define D(x) x
+-#define D_LOG(...) qemu_log(__VA__ARGS__)
++#define D_LOG(...) qemu_log(__VA_ARGS__)
+ #else
+ #define D(x)
+ #define D_LOG(...) do { } while (0)
+diff --git a/target-cris/op_helper.c b/target-cris/op_helper.c
+index 79bff38..0f6a1ee 100644
+--- a/target-cris/op_helper.c
++++ b/target-cris/op_helper.c
+@@ -28,7 +28,7 @@
+=20
+ #ifdef CRIS_OP_HELPER_DEBUG
+ #define D(x) x
+-#define D_LOG(...) qemu_log(__VA__ARGS__)
++#define D_LOG(...) qemu_log(__VA_ARGS__)
+ #else
+ #define D(x)
+ #define D_LOG(...) do { } while (0)
+--=20
+1.7.10.4
 
 
