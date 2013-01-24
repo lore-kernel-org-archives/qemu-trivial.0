@@ -1,41 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TyP6v-0004dK-IF
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Jan 2013 10:53:05 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:50306)
+	id 1TyR6x-00005b-VR
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Jan 2013 13:01:15 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:56282)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thardeck@suse.de>) id 1TyP6s-0004Tx-9v
-	for qemu-trivial@nongnu.org; Thu, 24 Jan 2013 10:53:04 -0500
+	(envelope-from <vishvananda@gmail.com>) id 1TyR6r-0008Gy-TY
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2013 13:01:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thardeck@suse.de>) id 1TyP6k-0001fw-E2
-	for qemu-trivial@nongnu.org; Thu, 24 Jan 2013 10:53:02 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:48418 helo=mx2.suse.de)
+	(envelope-from <vishvananda@gmail.com>) id 1TyR6j-0008Hs-QC
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2013 13:01:09 -0500
+Received: from mail-pb0-f50.google.com ([209.85.160.50]:59153)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thardeck@suse.de>)
-	id 1TyP6V-0001TN-QW; Thu, 24 Jan 2013 10:52:40 -0500
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id B6E14A4EB7;
-	Thu, 24 Jan 2013 16:51:57 +0100 (CET)
-Message-ID: <51015892.5000301@suse.de>
-Date: Thu, 24 Jan 2013 16:51:46 +0100
-From: Tim Hardeck <thardeck@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/17.0 Thunderbird/17.0
-MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1358961360-15623-1-git-send-email-armbru@redhat.com>
-In-Reply-To: <1358961360-15623-1-git-send-email-armbru@redhat.com>
-X-Enigmail-Version: 1.4.6
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="------------enig9473377017D7860FC87AB3B4"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] vnc: Clean up
-	vncws_send_handshake_response()
+	(envelope-from <vishvananda@gmail.com>)
+	id 1TyR6X-0008GL-H7; Thu, 24 Jan 2013 13:00:49 -0500
+Received: by mail-pb0-f50.google.com with SMTP id wz7so5582751pbc.9
+	for <multiple recipients>; Thu, 24 Jan 2013 10:00:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:from:to:cc:subject:date:message-id:x-mailer;
+	bh=x+nDxS8bh2WGbB9oncOLrCrBVR4octP02siUflAsULY=;
+	b=ImOK5OoNYlopIWvGmrpkHxWQq/B9HaMv7ntB4Hd1PWHGJo+KGeh8qws3XxPp+8wyNX
+	HX/h/UBjuzCa0VEKOFiQu+OfxzfFddbCUrbRuW8Xa6LQj3UGJLMqa8Hub1bbX7294u/F
+	tPsTCF2Sa35SfO6EL5QO2gnWSbZ6V1E2qejw1CwzqT0/Il/37eErsAuOl7LYZyPr/RvX
+	lfWLuLVPPs8E3vr3lpRiAeivRAFUmfHJh/kyv+doxUPVV44CV1RbzpBXWvQ7HrDAxULb
+	a74v+QgGibRMmmE4e/ivEr0cRhvScD8cC6jes3SWsfkzGSOgKles0e4ICXD7Dp+9uIrL
+	8Bdw==
+X-Received: by 10.66.82.200 with SMTP id k8mr6714948pay.56.1359050447837;
+	Thu, 24 Jan 2013 10:00:47 -0800 (PST)
+Received: from localhost.localdomain
+	(108-71-89-7.lightspeed.sntcca.sbcglobal.net. [108.71.89.7])
+	by mx.google.com with ESMTPS id wg3sm15256063pbc.28.2013.01.24.10.00.45
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Thu, 24 Jan 2013 10:00:47 -0800 (PST)
+From: Vishvananda Ishaya <vishvananda@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 24 Jan 2013 10:00:40 -0800
+Message-Id: <1359050440-52511-1-git-send-email-vishvananda@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.160.50
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Vishvananda Ishaya <vishvananda@gmail.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [Qemu-trivial] [PATCH] block: Create proper size file for disk
+	mirror
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,85 +53,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Jan 2013 15:53:05 -0000
+X-List-Received-Date: Thu, 24 Jan 2013 18:01:14 -0000
 
-This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enig9473377017D7860FC87AB3B4
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+The qmp monitor command to mirror a disk was passing -1 for size
+along with the disk's backing file. This size of the resulting disk
+is the size of the backing file, which is incorrect if the disk
+has been resized. Therefore we should always pass in the size of
+the current disk.
 
-Hi Markus,
+Signed-off-by: Vishvananda Ishaya <vishvananda@gmail.com>
+---
+Fixes https://bugs.launchpad.net/qemu/+bug/1103903
 
-On 01/23/2013 06:16 PM, Markus Armbruster wrote:
-> Use appropriate types, drop superfluous casts, use sizeof, don't
-> exploit that this particular call of gnutls_fingerprint() doesn't
-> change its last argument.
->=20
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+ blockdev.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Reviewed-by: Tim Hardeck <thardeck@suse.de>
+diff --git a/blockdev.c b/blockdev.c
+index 9126587..bb63162 100644
+--- a/blockdev.c
++++ b/blockdev.c
+@@ -1259,11 +1259,11 @@ void qmp_drive_mirror(const char *device, const char *target,
+         return;
+     }
+ 
++    bdrv_get_geometry(bs, &size);
++    size *= 512;
+     if (sync == MIRROR_SYNC_MODE_FULL && mode != NEW_IMAGE_MODE_EXISTING) {
+         /* create new image w/o backing file */
+         assert(format && drv);
+-        bdrv_get_geometry(bs, &size);
+-        size *= 512;
+         bdrv_img_create(target, format,
+                         NULL, NULL, NULL, size, flags, &local_err);
+     } else {
+@@ -1276,7 +1276,7 @@ void qmp_drive_mirror(const char *device, const char *target,
+             bdrv_img_create(target, format,
+                             source->filename,
+                             source->drv->format_name,
+-                            NULL, -1, flags, &local_err);
++                            NULL, size, flags, &local_err);
+             break;
+         default:
+             abort();
+-- 
+1.7.9.5
 
-Regards
-Tim
-
-> ---
->  ui/vnc-ws.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->=20
-> diff --git a/ui/vnc-ws.c b/ui/vnc-ws.c
-> index 9ccdc19..de7e74c 100644
-> --- a/ui/vnc-ws.c
-> +++ b/ui/vnc-ws.c
-> @@ -120,8 +120,8 @@ static char *vncws_extract_handshake_entry(const ch=
-ar *handshake,
->  static void vncws_send_handshake_response(VncState *vs, const char* ke=
-y)
->  {
->      char combined_key[WS_CLIENT_KEY_LEN + WS_GUID_LEN + 1];
-> -    char hash[SHA1_DIGEST_LEN];
-> -    size_t hash_size =3D SHA1_DIGEST_LEN;
-> +    unsigned char hash[SHA1_DIGEST_LEN];
-> +    size_t hash_size =3D sizeof(hash);
->      char *accept =3D NULL, *response =3D NULL;
->      gnutls_datum_t in;
-> =20
-> @@ -133,7 +133,7 @@ static void vncws_send_handshake_response(VncState =
-*vs, const char* key)
->      in.size =3D WS_CLIENT_KEY_LEN + WS_GUID_LEN;
->      if (gnutls_fingerprint(GNUTLS_DIG_SHA1, &in, hash, &hash_size)
->              =3D=3D GNUTLS_E_SUCCESS) {
-> -        accept =3D g_base64_encode((guchar *)hash, SHA1_DIGEST_LEN);
-> +        accept =3D g_base64_encode(hash, hash_size);
->      }
->      if (accept =3D=3D NULL) {
->          VNC_DEBUG("Hashing Websocket combined key failed\n");
->=20
-
-
---=20
-SUSE LINUX Products GmbH, GF: Jeff Hawn, Jennifer Guild, Felix
-Imend=F6rffer, HRB 16746 (AG N=FCrnberg)
-Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-T: +49 (0) 911 74053-0  F: +49 (0) 911 74053-483
-http://www.suse.de/
-
-
---------------enig9473377017D7860FC87AB3B4
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.19 (GNU/Linux)
-
-iQEcBAEBAgAGBQJRAViVAAoJENur/L6EMd67WKwH/joWcze0GNvRprGYLULIQLwn
-cnv/vPdHlTPPWLKSPqA4OMYtbEyors+b+AzyuDHzlPYd0l5HH/IeGk2HauFUp3eL
-90l4zNjkRSCVA37I8SS8nfJ0B3A9PCbey3uZMiz/PtZAHHXoR/bIR2j1U8kPcc5d
-LGgtwYl9nLmikcZPvsIObwK+D+Pp+JRsjHEBmOSWSG3TjYX9ag9H1sTmykqg+/f4
-ZIrqZa5IHEXDk11Y/xA7t/dOnYgt9QAXZqHZag4iKMewlLqIMRCphsnUTGShmqJ4
-gp/NK51UMnQlxjsx+R9O5W6vhVmWzU1QA/ayfYW/UIfNSnX4qaZIlrGl1jV6CP4=
-=MIou
------END PGP SIGNATURE-----
-
---------------enig9473377017D7860FC87AB3B4--
 
