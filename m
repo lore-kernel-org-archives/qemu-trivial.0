@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tyo14-0001ed-Qz
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2013 13:28:42 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:60265)
+	id 1TyoTa-0007Rk-S3
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2013 13:58:10 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:38928)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1Tyo12-0001eV-0N
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:28:41 -0500
+	(envelope-from <vishvananda@gmail.com>) id 1TyoTU-00079V-Uk
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:58:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1Tyo10-0001k8-S4
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:28:39 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38832)
+	(envelope-from <vishvananda@gmail.com>) id 1TyoTN-0002rl-2y
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:58:04 -0500
+Received: from mail-pb0-f46.google.com ([209.85.160.46]:41453)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1Tyo10-0001k0-KI; Fri, 25 Jan 2013 13:28:38 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0PISaN2004407
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 25 Jan 2013 13:28:37 -0500
-Received: from dhcp-5-188.str.redhat.com (vpn1-6-44.ams2.redhat.com
-	[10.36.6.44])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r0PISXn3025176
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 25 Jan 2013 13:28:35 -0500
-Message-ID: <5102CED1.8080306@redhat.com>
-Date: Fri, 25 Jan 2013 19:28:33 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:13.0) Gecko/20120605 Thunderbird/13.0
-MIME-Version: 1.0
-To: Eric Blake <eblake@redhat.com>
-References: <1359050440-52511-1-git-send-email-vishvananda@gmail.com>
-	<51024DE2.907@redhat.com>
-	<DAF889AE-060E-4C05-BC98-FC4AF47CAAAF@gmail.com>
-	<5102CB36.30204@redhat.com>
-In-Reply-To: <5102CB36.30204@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Vishvananda Ishaya <vishvananda@gmail.com>,
-	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: Create proper size
- file for disk mirror
+	(envelope-from <vishvananda@gmail.com>)
+	id 1TyoT8-0002nb-8Z; Fri, 25 Jan 2013 13:57:43 -0500
+Received: by mail-pb0-f46.google.com with SMTP id uo15so373204pbc.33
+	for <multiple recipients>; Fri, 25 Jan 2013 10:57:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
+	:references; bh=ur5A3qkk3w9Dp66EKOk1X/pcypsbvGAI+Z6kdafEzvU=;
+	b=XFZ4Pln2iAt9WLe2SZq/26edpvzhcM5ARzk1SVRP/30czw/W/guQK7yJEVPteHl9Ua
+	S+C6z8AU/IwMRPxl4mO9YBygonUOBJ1roOISZpqBBVs1wKyzLDqSEWHMMMcTyzw0rWoY
+	JEHT/0HwrfuiDLbyS1jFKokuQp3PVMqeqqMyxjNnpiGLRlnWxeYA7leP09D71hQM4ev/
+	L+R1tx20H7KYqep0KOHD4s6sbx25u2xTAqhnR7aXibjtwlM9zbaAAmHw7peYCy4KxazD
+	PNFpOUaQ4D1sQrpKVjQ8hHikyNuPU6F3aLbQG/FPpy8CR6CCHXvVreQcu8YYYhtCgKss
+	Yv/w==
+X-Received: by 10.68.254.137 with SMTP id ai9mr16518475pbd.21.1359140260864;
+	Fri, 25 Jan 2013 10:57:40 -0800 (PST)
+Received: from localhost.localdomain (50-0-250-146.dedicated.static.sonic.net.
+	[50.0.250.146])
+	by mx.google.com with ESMTPS id w5sm1329834pax.28.2013.01.25.10.57.38
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Fri, 25 Jan 2013 10:57:39 -0800 (PST)
+From: Vishvananda Ishaya <vishvananda@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 25 Jan 2013 10:57:20 -0800
+Message-Id: <1359140240-42972-1-git-send-email-vishvananda@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <51024DE2.907@redhat.com>
+References: <51024DE2.907@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.160.46
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Vishvananda Ishaya <vishvananda@gmail.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [Qemu-trivial] [PATCH] block: Adds mirroring tests for resized
+	images
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,34 +55,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Jan 2013 18:28:41 -0000
+X-List-Received-Date: Fri, 25 Jan 2013 18:58:08 -0000
 
-Am 25.01.2013 19:13, schrieb Eric Blake:
-> On 01/25/2013 11:10 AM, Vishvananda Ishaya wrote:
->>
->> On Jan 25, 2013, at 1:18 AM, Kevin Wolf <kwolf@redhat.com> wrote:
->>
->>> Am 24.01.2013 19:00, schrieb Vishvananda Ishaya:
->>>> The qmp monitor command to mirror a disk was passing -1 for size
->>>> along with the disk's backing file. This size of the resulting disk
->>>> is the size of the backing file, which is incorrect if the disk
->>>> has been resized. Therefore we should always pass in the size of
->>>> the current disk.
->>>>
->>>> Signed-off-by: Vishvananda Ishaya <vishvananda@gmail.com>
->>>
->>> Thanks, applied to the block branch.
->>>
->>> Can you send a qemu-iotests test case that tests this condition?
->>> (Probably best as an extension to case 041)
->>
->> I have a test for this. Would you like it as a separate patch or
->> should i respin the original?
-> 
-> Since the original has already been applied to the block branch, you are
-> best off sending a separate patch for the test addition.
+This test verifies two mirroring issues are fixed with resized images:
 
-Yes, please.
+ * sync='top' creates an image that is the proper size
+ * sync='full' doesn't cause an assertion failure and crash qemu
+---
+These are tests for my patches for the following bugs:
 
-Kevin
+https://bugs.launchpad.net/qemu/+bug/1103868
+https://bugs.launchpad.net/qemu/+bug/1103903
+
+ tests/qemu-iotests/041     |   48 ++++++++++++++++++++++++++++++++++++++++++++
+ tests/qemu-iotests/041.out |    4 ++--
+ 2 files changed, 50 insertions(+), 2 deletions(-)
+
+diff --git a/tests/qemu-iotests/041 b/tests/qemu-iotests/041
+index c6eb851..e7c004a 100755
+--- a/tests/qemu-iotests/041
++++ b/tests/qemu-iotests/041
+@@ -292,6 +292,54 @@ class TestMirrorNoBacking(ImageMirroringTestCase):
+         self.assertTrue(self.compare_images(test_img, target_img),
+                         'target image does not match source after mirroring')
+ 
++class TestMirrorResized(ImageMirroringTestCase):
++    backing_len = 1 * 1024 * 1024 # MB
++    image_len = 2 * 1024 * 1024 # MB
++
++    def setUp(self):
++        self.create_image(backing_img, TestMirrorResized.backing_len)
++        qemu_img('create', '-f', iotests.imgfmt, '-o', 'backing_file=%s' % backing_img, test_img)
++        qemu_img('resize', test_img, '2M')
++        self.vm = iotests.VM().add_drive(test_img)
++        self.vm.launch()
++
++    def tearDown(self):
++        self.vm.shutdown()
++        os.remove(test_img)
++        os.remove(backing_img)
++        try:
++            os.remove(target_img)
++        except OSError:
++            pass
++
++    def test_complete_top(self):
++        self.assert_no_active_mirrors()
++
++        result = self.vm.qmp('drive-mirror', device='drive0', sync='top',
++                             target=target_img)
++        self.assert_qmp(result, 'return', {})
++
++        self.complete_and_wait()
++        result = self.vm.qmp('query-block')
++        self.assert_qmp(result, 'return[0]/inserted/file', target_img)
++        self.vm.shutdown()
++        self.assertTrue(self.compare_images(test_img, target_img),
++                        'target image does not match source after mirroring')
++
++    def test_complete_full(self):
++        self.assert_no_active_mirrors()
++
++        result = self.vm.qmp('drive-mirror', device='drive0', sync='full',
++                             target=target_img)
++        self.assert_qmp(result, 'return', {})
++
++        self.complete_and_wait()
++        result = self.vm.qmp('query-block')
++        self.assert_qmp(result, 'return[0]/inserted/file', target_img)
++        self.vm.shutdown()
++        self.assertTrue(self.compare_images(test_img, target_img),
++                        'target image does not match source after mirroring')
++
+ class TestReadErrors(ImageMirroringTestCase):
+     image_len = 2 * 1024 * 1024 # MB
+ 
+diff --git a/tests/qemu-iotests/041.out b/tests/qemu-iotests/041.out
+index 71009c2..3a89159 100644
+--- a/tests/qemu-iotests/041.out
++++ b/tests/qemu-iotests/041.out
+@@ -1,5 +1,5 @@
+-..................
++....................
+ ----------------------------------------------------------------------
+-Ran 18 tests
++Ran 20 tests
+ 
+ OK
+-- 
+1.7.9.5
+
 
