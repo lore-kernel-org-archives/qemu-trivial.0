@@ -1,47 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TylXE-00035I-Fv
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2013 10:49:44 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:55307)
+	id 1Tynjo-0007wc-5w
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2013 13:10:52 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:55427)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TylXC-0002zL-5r
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 10:49:42 -0500
+	(envelope-from <vishvananda@gmail.com>) id 1Tynje-0007U7-T4
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:10:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1TylXB-0001LS-2g
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 10:49:42 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55891)
+	(envelope-from <vishvananda@gmail.com>) id 1TynjZ-0004tC-LY
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:10:42 -0500
+Received: from mail-da0-f50.google.com ([209.85.210.50]:47699)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1TylX3-0001Jq-Fq; Fri, 25 Jan 2013 10:49:33 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0PFnWar028553
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 25 Jan 2013 10:49:32 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-38.ams2.redhat.com
-	[10.36.116.38])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r0PFnVVQ032208; Fri, 25 Jan 2013 10:49:32 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 27383200AA; Fri, 25 Jan 2013 16:49:31 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-References: <ef9bb01f7a2cd566bcdc10f19dc0881818754c4e.1359120428.git.mprivozn@redhat.com>
-	<87zjzx2wpp.fsf@blackfin.pond.sub.org> <510291AE.6@redhat.com>
-	<5102A77A.6070508@redhat.com>
-Date: Fri, 25 Jan 2013 16:49:31 +0100
-In-Reply-To: <5102A77A.6070508@redhat.com> (Eric Blake's message of "Fri, 25
-	Jan 2013 08:40:42 -0700")
-Message-ID: <87ham51cvo.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Michal Privoznik <mprivozn@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-commands.hx:
-	s/tray-open/tray_open/ to match qapi schema
+	(envelope-from <vishvananda@gmail.com>)
+	id 1TynjN-0004qY-81; Fri, 25 Jan 2013 13:10:25 -0500
+Received: by mail-da0-f50.google.com with SMTP id h15so283343dan.23
+	for <multiple recipients>; Fri, 25 Jan 2013 10:10:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:content-type:mime-version:subject:from:in-reply-to:date
+	:cc:content-transfer-encoding:message-id:references:to:x-mailer;
+	bh=W0H6KyF4jIOacdOoqNyKgibljNvO9uMlbEpjzF/x8Ig=;
+	b=DDwNe2HxFWCHI1+jwU3ZF0P2CnBoSAs/PabG1gYdP8OGKYywrmK3JxTvQgtNoFURB3
+	jhB4VciP2M5DUlpS7CPEkqkRws2KdqMk3f2Yhep2t1AEumdav9YeLtrlUsQxYtM32msP
+	+nI+KCvz7QFfTXiFLNiun0YnZDKIRQ0N0zEm+K+7hzS0uCLBSf4X1uCLnEwFk2tt0Y5k
+	U29g47lclFIUus+ihUowNWK2qhS53dhZgcPDvQ4xpvDH44EG7XQbwnXm+9Gkf5s/Bzvt
+	n6eUtIiZ9Btqv9BexsxVZ+K67O2JH7zU6NXAIGSl8768RrVf+gWXGMQbTp6Yz0AXcm3M
+	XYWQ==
+X-Received: by 10.66.87.67 with SMTP id v3mr15391882paz.63.1359137421626;
+	Fri, 25 Jan 2013 10:10:21 -0800 (PST)
+Received: from [10.146.16.38] (50-0-250-146.dedicated.static.sonic.net.
+	[50.0.250.146])
+	by mx.google.com with ESMTPS id x6sm1284847paw.0.2013.01.25.10.10.20
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Fri, 25 Jan 2013 10:10:20 -0800 (PST)
+Content-Type: text/plain; charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 6.2 \(1499\))
+From: Vishvananda Ishaya <vishvananda@gmail.com>
+In-Reply-To: <51024DE2.907@redhat.com>
+Date: Fri, 25 Jan 2013 10:10:22 -0800
+Content-Transfer-Encoding: 7bit
+Message-Id: <DAF889AE-060E-4C05-BC98-FC4AF47CAAAF@gmail.com>
+References: <1359050440-52511-1-git-send-email-vishvananda@gmail.com>
+	<51024DE2.907@redhat.com>
+To: Kevin Wolf <kwolf@redhat.com>
+X-Mailer: Apple Mail (2.1499)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.210.50
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] block: Create proper size file for disk
+	mirror
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,38 +59,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Jan 2013 15:49:43 -0000
+X-List-Received-Date: Fri, 25 Jan 2013 18:10:49 -0000
 
-Eric Blake <eblake@redhat.com> writes:
 
-> On 01/25/2013 07:07 AM, Michal Privoznik wrote:
->> On 25.01.2013 14:55, Markus Armbruster wrote:
->>> Michal Privoznik <mprivozn@redhat.com> writes:
->>>
->>>> Currently, we are using 'tray_open' in QMP and 'tray-open' in
->>>> HMP. However, the QMP documentation was mistakenly using the
->>>> HMP version.
->>>
->>> Could you point me to where we're using "tray_open"?
->>>
+On Jan 25, 2013, at 1:18 AM, Kevin Wolf <kwolf@redhat.com> wrote:
+
+> Am 24.01.2013 19:00, schrieb Vishvananda Ishaya:
+>> The qmp monitor command to mirror a disk was passing -1 for size
+>> along with the disk's backing file. This size of the resulting disk
+>> is the size of the backing file, which is incorrect if the disk
+>> has been resized. Therefore we should always pass in the size of
+>> the current disk.
 >> 
->> qemu.git $ git grep -npC8 tray_open qapi-schema.json
->> 
->
->> qapi-schema.json-705-{ 'type': 'BlockInfo',
->> qapi-schema.json-706- 'data': {'device': 'str', 'type': 'str',
->> removable': 'bool',
->> qapi-schema.json-707- 'locked': 'bool', '*inserted':
->> BlockDeviceInfo',
->> qapi-schema.json:708: '*tray_open': 'bool', '*io-status':
->> BlockDeviceIoStatus',
->> qapi-schema.json-709-           '*dirty': 'BlockDirtyInfo' } }
->
-> And since existing qemu versions output tray_open, we would be breaking
-> API if we fixed the QMP to return tray-open (libvirt could cope with
-> that API break by checking both spellings, but that feels dirty).
+>> Signed-off-by: Vishvananda Ishaya <vishvananda@gmail.com>
+> 
+> Thanks, applied to the block branch.
+> 
+> Can you send a qemu-iotests test case that tests this condition?
+> (Probably best as an extension to case 041)
 
-Breaking the API is out of the question.
+I have a test for this. Would you like it as a separate patch or
+should i respin the original?
 
-We suck at consistency :(
+Vish
 
