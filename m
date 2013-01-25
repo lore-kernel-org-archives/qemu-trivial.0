@@ -1,47 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TyR8R-0001HX-0p
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Jan 2013 13:02:47 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:56540)
+	id 1Tyf6F-0006ML-HQ
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2013 03:57:27 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:52161)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vishvananda@gmail.com>) id 1TyR8J-0000vr-2c
-	for qemu-trivial@nongnu.org; Thu, 24 Jan 2013 13:02:44 -0500
+	(envelope-from <thardeck@suse.de>) id 1Tyf68-00064H-9W
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 03:57:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vishvananda@gmail.com>) id 1TyR8A-0008Tx-Ef
-	for qemu-trivial@nongnu.org; Thu, 24 Jan 2013 13:02:39 -0500
-Received: from mail-pb0-f54.google.com ([209.85.160.54]:36553)
+	(envelope-from <thardeck@suse.de>) id 1Tyf64-0002KN-1N
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 03:57:20 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:51171 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vishvananda@gmail.com>)
-	id 1TyR7w-0008S9-Tf; Thu, 24 Jan 2013 13:02:17 -0500
-Received: by mail-pb0-f54.google.com with SMTP id rr4so3754178pbb.41
-	for <multiple recipients>; Thu, 24 Jan 2013 10:02:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:from:to:cc:subject:date:message-id:x-mailer;
-	bh=HkZoMm5U+rx9jQjIHjxUlU6dQkBWpz+0oNxEmFaYCLk=;
-	b=YJBCJwhfrOujsIMtRJGrYYTCY0pZv80OGKiXGzWD41fN2JZKq2SNnhne1nlLwM3M9S
-	PopcuGckm1ZLp7FuXXXZqY8mRvApBhJtrMTdpXoORsHwAAyQ/wF9uDDL/GSixhBQoaIX
-	gM2bccvsHpmXZvI4WprlQDiPiE13NBoZevxeJCNCGo0qw1o3YYNboRuS9VvCzJnIn5CR
-	ZmIVNarVvqicxYVNmJhak9ax4O5lKHfKbWoCVkYZGvIvQTtziXZDdpSaDZtht9i72J+O
-	fR3CsTMxrFr7YrqiZv6OE/17wMDSKKRmiCtgipUhQJZa7IzdYGCGdIibTCBb6FbZHiaO
-	pImQ==
-X-Received: by 10.68.135.40 with SMTP id pp8mr7247222pbb.63.1359050535961;
-	Thu, 24 Jan 2013 10:02:15 -0800 (PST)
-Received: from localhost.localdomain
-	(108-71-89-7.lightspeed.sntcca.sbcglobal.net. [108.71.89.7])
-	by mx.google.com with ESMTPS id qt3sm15256963pbb.32.2013.01.24.10.02.14
-	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Thu, 24 Jan 2013 10:02:15 -0800 (PST)
-From: Vishvananda Ishaya <vishvananda@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 24 Jan 2013 10:02:08 -0800
-Message-Id: <1359050528-52668-1-git-send-email-vishvananda@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.160.54
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	Vishvananda Ishaya <vishvananda@gmail.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: [Qemu-trivial] [PATCH] block: Fix is_allocated_above with resized
-	files
+	(envelope-from <thardeck@suse.de>)
+	id 1Tyf5o-0002HM-UU; Fri, 25 Jan 2013 03:57:01 -0500
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx2.suse.de (Postfix) with ESMTP id D423AA38EA;
+	Fri, 25 Jan 2013 09:56:59 +0100 (CET)
+Message-ID: <1359104210.6884.5.camel@Thinktank.site>
+From: Tim Hardeck <thardeck@suse.de>
+To: Markus Armbruster <armbru@redhat.com>
+Date: Fri, 25 Jan 2013 09:56:50 +0100
+In-Reply-To: <1358961360-15623-1-git-send-email-armbru@redhat.com>
+References: <1358961360-15623-1-git-send-email-armbru@redhat.com>
+Organization: SUSE LINUX Products GmbH
+Content-Type: multipart/signed; micalg="pgp-sha1";
+	protocol="application/pgp-signature"; 
+	boundary="=-pBoVSdmiNyj5iXsu+GCT"
+X-Mailer: Evolution 3.4.4 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] vnc: Clean up
+	vncws_send_handshake_response()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,37 +45,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Jan 2013 18:02:44 -0000
+X-List-Received-Date: Fri, 25 Jan 2013 08:57:26 -0000
 
-In an image chain, if the base image is smaller than the current
-image, we need to make sure to use the current images count of
-unallocated blocks once we get to the end of the base image. Without
-this change the code will return 0 blocks when it gets to the end
-of the base image and mirror_run will fail its assertion.
 
-Signed-off-by: Vishvananda Ishaya <vishvananda@gmail.com>
----
-Fixes https://bugs.launchpad.net/qemu/+bug/1103868
+--=-pBoVSdmiNyj5iXsu+GCT
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
- block.c |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Hi Markus,
 
-diff --git a/block.c b/block.c
-index 6fa7c90..6474d9e 100644
---- a/block.c
-+++ b/block.c
-@@ -2831,7 +2831,9 @@ int coroutine_fn bdrv_co_is_allocated_above(BlockDriverState *top,
-          *
-          * [sector_num+x, nr_sectors] allocated.
-          */
--        if (n > pnum_inter) {
-+        if (n > pnum_inter &&
-+            (intermediate == top ||
-+             sector_num + pnum_inter < intermediate->total_sectors)) {
-             n = pnum_inter;
-         }
- 
--- 
-1.7.9.5
+thanks for your input.
+
+On Wed, 2013-01-23 at 18:16 +0100, Markus Armbruster wrote:
+> Use appropriate types, drop superfluous casts, use sizeof, don't
+> exploit that this particular call of gnutls_fingerprint() doesn't
+> change its last argument.
+
+your patch does work fine but if we expect gnutls_fingerprint to change
+the hash_size there has to be an additional check if the hash_size is
+bigger than SHA1_DIGEST_LEN.
+
+For example:
+
+diff --git a/ui/vnc-ws.c b/ui/vnc-ws.c
+index de7e74c..e64c895 100644
+--- a/ui/vnc-ws.c
++++ b/ui/vnc-ws.c
+@@ -132,7 +132,7 @@ static void vncws_send_handshake_response(VncState
+*vs, const char* key)
+     in.data =3D (void *)combined_key;
+     in.size =3D WS_CLIENT_KEY_LEN + WS_GUID_LEN;
+     if (gnutls_fingerprint(GNUTLS_DIG_SHA1, &in, hash, &hash_size)
+-            =3D=3D GNUTLS_E_SUCCESS) {
++            =3D=3D GNUTLS_E_SUCCESS && hash_size <=3D SHA1_DIGEST_LEN) {
+         accept =3D g_base64_encode(hash, hash_size);
+     }
+     if (accept =3D=3D NULL) {
+
+
+--=20
+SUSE LINUX Products GmbH, GF: Jeff Hawn, Jennifer Guild, Felix
+Imend=C3=B6rffer, HRB 16746 (AG N=C3=BCrnberg)
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+T: +49 (0) 911 74053-0  F: +49 (0) 911 74053-483
+http://www.suse.de/
+
+--=-pBoVSdmiNyj5iXsu+GCT
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.19 (GNU/Linux)
+
+iQEcBAABAgAGBQJRAkjVAAoJENur/L6EMd675kUIAJ0aC3W9fzcWLLZuxU7taELf
+nvs4j5FXAQsrtsrTRZhrJcCV3aeoZ/AsM3P6JK65+p0vU0QSOd8+Ca+ddG8CxZ2B
+/EID3VrzgI76cN0N3Z3ydPnND/1VpX/Ba9PNzh5K6FobcelzLmJBujYVwbqwJaI9
+LjD4DkKTKMAy5ODtuKB7K8EJrS1L4HUOOCTcrdKrcW86U4JxmWxnAmOVtsozSpJy
+7lXqfZ1tk/lQ4h7NXrzFFkjk+5QbYx9l66UZvHxmRJyu6QKgbzCeg1VGkSUorXhB
+WA17fL4r/K7d7RaI8kjtaqk1BFTcJMxCvMU+eN2mqB24pfs1cc4Fx9UJtsQzv3o=
+=dj1J
+-----END PGP SIGNATURE-----
+
+--=-pBoVSdmiNyj5iXsu+GCT--
 
 
