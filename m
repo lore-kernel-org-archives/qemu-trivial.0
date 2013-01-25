@@ -1,41 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tyjws-0004dH-Ne
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2013 09:08:06 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:33308)
+	id 1TylOl-0004kp-BI
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2013 10:40:59 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:53099)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>) id 1Tyjwj-0004Jf-Jp
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 09:08:05 -0500
+	(envelope-from <eblake@redhat.com>) id 1TylOe-0004gZ-5k
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 10:40:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>) id 1Tyjwi-0002UP-FD
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 09:07:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:11135)
+	(envelope-from <eblake@redhat.com>) id 1TylOW-00075C-HN
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 10:40:51 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:18112)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>)
-	id 1TyjwW-0002SH-IM; Fri, 25 Jan 2013 09:07:44 -0500
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0PE7h0m018922
+	(envelope-from <eblake@redhat.com>)
+	id 1TylOW-000751-7t; Fri, 25 Jan 2013 10:40:44 -0500
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0PFeh8m002282
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 25 Jan 2013 09:07:44 -0500
-Received: from [10.3.225.136] (vpn-225-136.phx2.redhat.com [10.3.225.136])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r0PE7gBV003202; Fri, 25 Jan 2013 09:07:43 -0500
-Message-ID: <510291AE.6@redhat.com>
-Date: Fri, 25 Jan 2013 15:07:42 +0100
-From: Michal Privoznik <mprivozn@redhat.com>
+	Fri, 25 Jan 2013 10:40:43 -0500
+Received: from [10.3.113.27] (ovpn-113-27.phx2.redhat.com [10.3.113.27])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r0PFegZj028317; Fri, 25 Jan 2013 10:40:43 -0500
+Message-ID: <5102A77A.6070508@redhat.com>
+Date: Fri, 25 Jan 2013 08:40:42 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130114 Thunderbird/17.0.2
+	rv:17.0) Gecko/20130110 Thunderbird/17.0.2
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
+To: Michal Privoznik <mprivozn@redhat.com>
 References: <ef9bb01f7a2cd566bcdc10f19dc0881818754c4e.1359120428.git.mprivozn@redhat.com>
-	<87zjzx2wpp.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87zjzx2wpp.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+	<87zjzx2wpp.fsf@blackfin.pond.sub.org> <510291AE.6@redhat.com>
+In-Reply-To: <510291AE.6@redhat.com>
+X-Enigmail-Version: 1.5.0
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="----enig2NCWLXCAQDGHCRRAPGWSN"
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-commands.hx:
  s/tray-open/tray_open/ to match qapi schema
 X-BeenThere: qemu-trivial@nongnu.org
@@ -49,53 +54,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Jan 2013 14:08:05 -0000
+X-List-Received-Date: Fri, 25 Jan 2013 15:40:58 -0000
 
-On 25.01.2013 14:55, Markus Armbruster wrote:
-> Michal Privoznik <mprivozn@redhat.com> writes:
-> 
->> Currently, we are using 'tray_open' in QMP and 'tray-open' in
->> HMP. However, the QMP documentation was mistakenly using the
->> HMP version.
-> 
-> Could you point me to where we're using "tray_open"?
-> 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+------enig2NCWLXCAQDGHCRRAPGWSN
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-qemu.git $ git grep -npC8 tray_open qapi-schema.json
+On 01/25/2013 07:07 AM, Michal Privoznik wrote:
+> On 25.01.2013 14:55, Markus Armbruster wrote:
+>> Michal Privoznik <mprivozn@redhat.com> writes:
+>>
+>>> Currently, we are using 'tray_open' in QMP and 'tray-open' in
+>>> HMP. However, the QMP documentation was mistakenly using the
+>>> HMP version.
+>>
+>> Could you point me to where we're using "tray_open"?
+>>
+>=20
+> qemu.git $ git grep -npC8 tray_open qapi-schema.json
+>=20
 
-qapi-schema.json-683-# @type: This field is returned only for compatibility reasons, it should
-qapi-schema.json-684-#        not be used (always returns 'unknown')
-qapi-schema.json-685-#
-qapi-schema.json-686-# @removable: True if the device supports removable media.
-qapi-schema.json-687-#
-qapi-schema.json-688-# @locked: True if the guest has locked this device from having its media
-qapi-schema.json-689-#          removed
-qapi-schema.json-690-#
-qapi-schema.json:691:# @tray_open: #optional True if the device has a tray and it is open
-qapi-schema.json-692-#             (only present if removable is true)
-qapi-schema.json-693-#
-qapi-schema.json-694-# @dirty: #optional dirty bitmap information (only present if the dirty
-qapi-schema.json-695-#         bitmap is enabled)
-qapi-schema.json-696-#
-qapi-schema.json-697-# @io-status: #optional @BlockDeviceIoStatus. Only present if the device
-qapi-schema.json-698-#             supports it and the VM is configured to stop on errors
-qapi-schema.json-699-#
-qapi-schema.json-700-# @inserted: #optional @BlockDeviceInfo describing the device if media is
-qapi-schema.json-701-#            present
-qapi-schema.json-702-#
-qapi-schema.json-703-# Since:  0.14.0
-qapi-schema.json-704-##
-qapi-schema.json-705-{ 'type': 'BlockInfo',
-qapi-schema.json-706-  'data': {'device': 'str', 'type': 'str', 'removable': 'bool',
-qapi-schema.json-707-           'locked': 'bool', '*inserted': 'BlockDeviceInfo',
-qapi-schema.json:708:           '*tray_open': 'bool', '*io-status': 'BlockDeviceIoStatus',
-qapi-schema.json-709-           '*dirty': 'BlockDirtyInfo' } }
-qapi-schema.json-710-
-qapi-schema.json-711-##
-qapi-schema.json-712-# @query-block:
-qapi-schema.json-713-#
-qapi-schema.json-714-# Get a list of BlockInfo for all virtual block devices.
-qapi-schema.json-715-#
-qapi-schema.json-716-# Returns: a list of @BlockInfo describing each virtual block device
+> qapi-schema.json-705-{ 'type': 'BlockInfo',
+> qapi-schema.json-706-  'data': {'device': 'str', 'type': 'str', 'remova=
+ble': 'bool',
+> qapi-schema.json-707-           'locked': 'bool', '*inserted': 'BlockDe=
+viceInfo',
+> qapi-schema.json:708:           '*tray_open': 'bool', '*io-status': 'Bl=
+ockDeviceIoStatus',
+> qapi-schema.json-709-           '*dirty': 'BlockDirtyInfo' } }
 
+And since existing qemu versions output tray_open, we would be breaking
+API if we fixed the QMP to return tray-open (libvirt could cope with
+that API break by checking both spellings, but that feels dirty).
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+------enig2NCWLXCAQDGHCRRAPGWSN
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.13 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJRAqd6AAoJEKeha0olJ0NqacEH/2wP4xwLIBvodzBCYpEhPqy/
+b0AjPkOqe03tQcJnL+6teG+T979XNmCk1xQqPAjRY9iecGZq9wffhdYN4SuGCoaI
+XcgNPMMwUTsISBRTRgYaHwKgnhI6DwUz+HB7nOuOVcmCYHTODyKDOhw8hrNFmThz
+n+uxXWt74ZZZnXy6TPyi7p7eHdwyphShUp+ZViqXP6cvFDILg0wcrWT4ymT1Mbg1
+2RoYdmkEUOLCfavZXfzvfswXZ6/Vl2BUpyMLM/gQkjcddOEVoARFcZKgC4+F9UjY
+4qIyAfhhxT7HVUwLeEHv/fN3bWyBAlFM/b9SBCjGref18wRhx0tbck4WUcm7opY=
+=8f36
+-----END PGP SIGNATURE-----
+
+------enig2NCWLXCAQDGHCRRAPGWSN--
 
