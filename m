@@ -1,53 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Tynjo-0007wc-5w
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2013 13:10:52 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:55427)
+	id 1TynmG-0002k0-Uv
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2013 13:13:24 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:55970)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vishvananda@gmail.com>) id 1Tynje-0007U7-T4
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:10:49 -0500
+	(envelope-from <eblake@redhat.com>) id 1TynmA-0002hb-Uy
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:13:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vishvananda@gmail.com>) id 1TynjZ-0004tC-LY
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:10:42 -0500
-Received: from mail-da0-f50.google.com ([209.85.210.50]:47699)
+	(envelope-from <eblake@redhat.com>) id 1Tynm5-0005OW-3F
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2013 13:13:18 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:4828)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vishvananda@gmail.com>)
-	id 1TynjN-0004qY-81; Fri, 25 Jan 2013 13:10:25 -0500
-Received: by mail-da0-f50.google.com with SMTP id h15so283343dan.23
-	for <multiple recipients>; Fri, 25 Jan 2013 10:10:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:content-type:mime-version:subject:from:in-reply-to:date
-	:cc:content-transfer-encoding:message-id:references:to:x-mailer;
-	bh=W0H6KyF4jIOacdOoqNyKgibljNvO9uMlbEpjzF/x8Ig=;
-	b=DDwNe2HxFWCHI1+jwU3ZF0P2CnBoSAs/PabG1gYdP8OGKYywrmK3JxTvQgtNoFURB3
-	jhB4VciP2M5DUlpS7CPEkqkRws2KdqMk3f2Yhep2t1AEumdav9YeLtrlUsQxYtM32msP
-	+nI+KCvz7QFfTXiFLNiun0YnZDKIRQ0N0zEm+K+7hzS0uCLBSf4X1uCLnEwFk2tt0Y5k
-	U29g47lclFIUus+ihUowNWK2qhS53dhZgcPDvQ4xpvDH44EG7XQbwnXm+9Gkf5s/Bzvt
-	n6eUtIiZ9Btqv9BexsxVZ+K67O2JH7zU6NXAIGSl8768RrVf+gWXGMQbTp6Yz0AXcm3M
-	XYWQ==
-X-Received: by 10.66.87.67 with SMTP id v3mr15391882paz.63.1359137421626;
-	Fri, 25 Jan 2013 10:10:21 -0800 (PST)
-Received: from [10.146.16.38] (50-0-250-146.dedicated.static.sonic.net.
-	[50.0.250.146])
-	by mx.google.com with ESMTPS id x6sm1284847paw.0.2013.01.25.10.10.20
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Fri, 25 Jan 2013 10:10:20 -0800 (PST)
-Content-Type: text/plain; charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 6.2 \(1499\))
-From: Vishvananda Ishaya <vishvananda@gmail.com>
-In-Reply-To: <51024DE2.907@redhat.com>
-Date: Fri, 25 Jan 2013 10:10:22 -0800
-Content-Transfer-Encoding: 7bit
-Message-Id: <DAF889AE-060E-4C05-BC98-FC4AF47CAAAF@gmail.com>
+	(envelope-from <eblake@redhat.com>)
+	id 1Tynm4-0005O2-Qb; Fri, 25 Jan 2013 13:13:13 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0PIDB7J022095
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 25 Jan 2013 13:13:11 -0500
+Received: from [10.3.113.27] (ovpn-113-27.phx2.redhat.com [10.3.113.27])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r0PIDA4n026826; Fri, 25 Jan 2013 13:13:11 -0500
+Message-ID: <5102CB36.30204@redhat.com>
+Date: Fri, 25 Jan 2013 11:13:10 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130110 Thunderbird/17.0.2
+MIME-Version: 1.0
+To: Vishvananda Ishaya <vishvananda@gmail.com>
 References: <1359050440-52511-1-git-send-email-vishvananda@gmail.com>
 	<51024DE2.907@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-X-Mailer: Apple Mail (2.1499)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.210.50
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] block: Create proper size file for disk
-	mirror
+	<DAF889AE-060E-4C05-BC98-FC4AF47CAAAF@gmail.com>
+In-Reply-To: <DAF889AE-060E-4C05-BC98-FC4AF47CAAAF@gmail.com>
+X-Enigmail-Version: 1.5.0
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="----enig2AAAAHFJMAOGKMXJKKKHB"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: Create proper size
+ file for disk mirror
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,27 +55,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Jan 2013 18:10:49 -0000
+X-List-Received-Date: Fri, 25 Jan 2013 18:13:24 -0000
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+------enig2AAAAHFJMAOGKMXJKKKHB
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On 01/25/2013 11:10 AM, Vishvananda Ishaya wrote:
+>=20
+> On Jan 25, 2013, at 1:18 AM, Kevin Wolf <kwolf@redhat.com> wrote:
+>=20
+>> Am 24.01.2013 19:00, schrieb Vishvananda Ishaya:
+>>> The qmp monitor command to mirror a disk was passing -1 for size
+>>> along with the disk's backing file. This size of the resulting disk
+>>> is the size of the backing file, which is incorrect if the disk
+>>> has been resized. Therefore we should always pass in the size of
+>>> the current disk.
+>>>
+>>> Signed-off-by: Vishvananda Ishaya <vishvananda@gmail.com>
+>>
+>> Thanks, applied to the block branch.
+>>
+>> Can you send a qemu-iotests test case that tests this condition?
+>> (Probably best as an extension to case 041)
+>=20
+> I have a test for this. Would you like it as a separate patch or
+> should i respin the original?
+
+Since the original has already been applied to the block branch, you are
+best off sending a separate patch for the test addition.
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
-On Jan 25, 2013, at 1:18 AM, Kevin Wolf <kwolf@redhat.com> wrote:
+------enig2AAAAHFJMAOGKMXJKKKHB
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-> Am 24.01.2013 19:00, schrieb Vishvananda Ishaya:
->> The qmp monitor command to mirror a disk was passing -1 for size
->> along with the disk's backing file. This size of the resulting disk
->> is the size of the backing file, which is incorrect if the disk
->> has been resized. Therefore we should always pass in the size of
->> the current disk.
->> 
->> Signed-off-by: Vishvananda Ishaya <vishvananda@gmail.com>
-> 
-> Thanks, applied to the block branch.
-> 
-> Can you send a qemu-iotests test case that tests this condition?
-> (Probably best as an extension to case 041)
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.13 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-I have a test for this. Would you like it as a separate patch or
-should i respin the original?
+iQEcBAEBCAAGBQJRAss2AAoJEKeha0olJ0NqaVwH/1q9A2X4Febh1GPgbeIDg1N/
+dT7WPGRzk8W2YdekbiJPJziFkpto7xOQcJFCpAL6kX/qEpCgCxp4uuehZhcEq9aw
+w6PHN2pTaAvfGT3RINkoNYxGZUrq8QfnKH9imiXwwNHj5HioSyqdUhPTxkK0b8pc
+hzxgWl8+nEn5HWAmf5necNgvY7V2uqp+J01BTYh/rP9/fvfj0lWk3E1niqAczF1a
+SP2PVAwvs3aaImQEzWXXJPNVr6879Yhzlli6PARCCjM/dOLh8LW7mILRPCfH3N1c
+oORFwIDHx1Avt7Sib4x6dEmG1+Xh+R0MbI0eG7BWLBW8ti8vbxKwRMeQcI3X/gs=
+=wTZ+
+-----END PGP SIGNATURE-----
 
-Vish
+------enig2AAAAHFJMAOGKMXJKKKHB--
 
