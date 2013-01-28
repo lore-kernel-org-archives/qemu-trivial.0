@@ -1,49 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TzpTT-00014s-BV
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2013 09:14:15 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:54787)
+	id 1TzpcE-0007wj-2T
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2013 09:23:18 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:40982)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TzpTQ-00012Z-8E
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 09:14:13 -0500
+	(envelope-from <lcapitulino@redhat.com>) id 1Tzofc-0004FB-NK
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 08:22:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TzpTH-0004vA-J6
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 09:14:12 -0500
-Received: from mail-lb0-f170.google.com ([209.85.217.170]:46369)
+	(envelope-from <lcapitulino@redhat.com>) id 1TzofY-0006Yz-44
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 08:22:44 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46304)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1TzpTH-0004um-Br
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 09:14:03 -0500
-Received: by mail-lb0-f170.google.com with SMTP id ge1so3976402lbb.1
-	for <qemu-trivial@nongnu.org>; Mon, 28 Jan 2013 06:14:02 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:mime-version:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type:x-gm-message-state;
-	bh=8sJQeYuyCCo6zYclA28WteY1ZJK10sWA43FFSFRvWAI=;
-	b=UMC8Vtc34WR6ujeDsxfGB602erCOSdvP+R8odo+88zyBDpWKFTUwhjj1h+uejprI/H
-	KPIGMEWl1GqHjQLJ/DafWTGED/5DJopTbmDCF6ho3excDZyuMa3vW/WYUypYkecK24L7
-	pN5KwY4/egVxqE3e+VEoOp/+5yYwDGPCClJ2a43+zl1hnoTzfEOGCaG+erDstzn1RFJM
-	sj8ZTA5wVwJYoAxS6ze9EmKtj+pE0cejgQub7yXcltLHxF0PAvulsvMyzeD7vIPi2Spw
-	NV7LhTB54tPwK4NEcbvrISdVDD/wROWsWstq5KtQUuInpbyXw5l2OBN35H3USdhpx4UM
-	InDA==
-X-Received: by 10.152.111.72 with SMTP id ig8mr13179030lab.1.1359380870269;
-	Mon, 28 Jan 2013 05:47:50 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.112.107.42 with HTTP; Mon, 28 Jan 2013 05:47:29 -0800 (PST)
-In-Reply-To: <50FD7775.6030307@redhat.com>
-References: <1358769827-7317-1-git-send-email-peter.maydell@linaro.org>
-	<50FD4E55.1080709@redhat.com> <50FD7775.6030307@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Jan 2013 13:47:29 +0000
-Message-ID: <CAFEAcA_roL5tEdnirqmMeDqS+yWmSg=QhcF-ML15-F0zKp0JWg@mail.gmail.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQlSTftehqGTGIZFmfZ15BMnj1WZHr8jDc0BBlk+GCxA/VxPzFXXdWHnT/2HvxHZz6iu+pBs
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.217.170
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	patches@linaro.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] qemu-pixman.h: Avoid
- mutual inclusion loop with console.h
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1TzofV-0006YH-SJ; Mon, 28 Jan 2013 08:22:38 -0500
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0SDMbD2006954
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 28 Jan 2013 08:22:37 -0500
+Received: from doriath.home (ovpn-113-108.phx2.redhat.com [10.3.113.108])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r0SDMZJc019919; Mon, 28 Jan 2013 08:22:36 -0500
+Date: Mon, 28 Jan 2013 11:22:47 -0200
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Michal Privoznik <mprivozn@redhat.com>
+Message-ID: <20130128112247.1a3ca03f@doriath.home>
+In-Reply-To: <ef9bb01f7a2cd566bcdc10f19dc0881818754c4e.1359120428.git.mprivozn@redhat.com>
+References: <ef9bb01f7a2cd566bcdc10f19dc0881818754c4e.1359120428.git.mprivozn@redhat.com>
+Organization: Red Hat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-commands.hx:
+ s/tray-open/tray_open/ to match qapi schema
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,32 +47,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2013 14:14:13 -0000
+X-List-Received-Date: Mon, 28 Jan 2013 14:23:16 -0000
 
-Ping: Stefan, are you going to take this via -trivial
-as Gerd suggests?
+On Fri, 25 Jan 2013 14:27:11 +0100
+Michal Privoznik <mprivozn@redhat.com> wrote:
 
-[patchwork url: http://patchwork.ozlabs.org/patch/214114/ ]
+> Currently, we are using 'tray_open' in QMP and 'tray-open' in
+> HMP. However, the QMP documentation was mistakenly using the
+> HMP version.
 
-thanks
--- PMM
+It's missing the s-o-b line.
 
-On 21 January 2013 17:14, Gerd Hoffmann <kraxel@redhat.com> wrote:
-> On 01/21/13 15:19, Gerd Hoffmann wrote:
->>> Stefan: I've made the obvious change to fix the spice compile issue,
->>> but none of my systems have a new enough spice-protocol/spice-server
->>> to allow me to configure with spice enabled. I'd appreciate it if
->>> you could check it does indeed compile OK now...
->>
->> I'll run this through the buildbot ...
->
-> All green.
->
-> Acked-by: Gerd Hoffmann <kraxel@redhat.com>
->
-> Taking through trivial would be a nice service as I don't have any
-> 1.4-ish pixman stuff pending arm.
->
-> thanks,
->   Gerd
+> ---
+>  qmp-commands.hx | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qmp-commands.hx b/qmp-commands.hx
+> index cbf1280..870ee54 100644
+> --- a/qmp-commands.hx
+> +++ b/qmp-commands.hx
+> @@ -1585,7 +1585,7 @@ Each json-object contain the following:
+>           - Possible values: "unknown"
+>  - "removable": true if the device is removable, false otherwise (json-bool)
+>  - "locked": true if the device is locked, false otherwise (json-bool)
+> -- "tray-open": only present if removable, true if the device has a tray,
+> +- "tray_open": only present if removable, true if the device has a tray,
+>                 and it is open (json-bool)
+>  - "inserted": only present if the device is inserted, it is a json-object
+>     containing the following:
+
 
