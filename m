@@ -1,41 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TzpcE-0007wj-2T
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2013 09:23:18 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:40982)
+	id 1TzrMJ-0001dn-2B
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2013 11:14:59 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58274)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1Tzofc-0004FB-NK
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 08:22:50 -0500
+	(envelope-from <aliguori@us.ibm.com>) id 1TzrME-0001dX-6Q
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 11:14:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1TzofY-0006Yz-44
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 08:22:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46304)
+	(envelope-from <aliguori@us.ibm.com>) id 1TzrM4-0000WB-JW
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 11:14:54 -0500
+Received: from e36.co.us.ibm.com ([32.97.110.154]:48378)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1TzofV-0006YH-SJ; Mon, 28 Jan 2013 08:22:38 -0500
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0SDMbD2006954
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 28 Jan 2013 08:22:37 -0500
-Received: from doriath.home (ovpn-113-108.phx2.redhat.com [10.3.113.108])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r0SDMZJc019919; Mon, 28 Jan 2013 08:22:36 -0500
-Date: Mon, 28 Jan 2013 11:22:47 -0200
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Michal Privoznik <mprivozn@redhat.com>
-Message-ID: <20130128112247.1a3ca03f@doriath.home>
-In-Reply-To: <ef9bb01f7a2cd566bcdc10f19dc0881818754c4e.1359120428.git.mprivozn@redhat.com>
-References: <ef9bb01f7a2cd566bcdc10f19dc0881818754c4e.1359120428.git.mprivozn@redhat.com>
-Organization: Red Hat
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+	(envelope-from <aliguori@us.ibm.com>) id 1TzrM4-0000Vv-DA
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 11:14:44 -0500
+Received: from /spool/local
+	by e36.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Mon, 28 Jan 2013 09:14:43 -0700
+Received: from d03dlp03.boulder.ibm.com (9.17.202.179)
+	by e36.co.us.ibm.com (192.168.1.136) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Mon, 28 Jan 2013 09:14:42 -0700
+Received: from d03relay02.boulder.ibm.com (d03relay02.boulder.ibm.com
+	[9.17.195.227])
+	by d03dlp03.boulder.ibm.com (Postfix) with ESMTP id A55EA19D8052;
+	Mon, 28 Jan 2013 09:14:25 -0700 (MST)
+Received: from d03av03.boulder.ibm.com (d03av03.boulder.ibm.com [9.17.195.169])
+	by d03relay02.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r0SGEEw3119062; Mon, 28 Jan 2013 09:14:15 -0700
+Received: from d03av03.boulder.ibm.com (loopback [127.0.0.1])
+	by d03av03.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
+	id r0SGECr0016862; Mon, 28 Jan 2013 09:14:13 -0700
+Received: from titi.na.relay.ibm.com ([9.80.39.67])
+	by d03av03.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r0SGE6Od016101; Mon, 28 Jan 2013 09:14:08 -0700
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>,
+	Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+In-Reply-To: <20130128131438.GF27668@stefanha-thinkpad.redhat.com>
+References: <5101BDFD.5010801@linux.vnet.ibm.com>
+	<20130128131438.GF27668@stefanha-thinkpad.redhat.com>
+User-Agent: Notmuch/0.13.2+93~ged93d79 (http://notmuchmail.org) Emacs/23.3.1
+	(x86_64-pc-linux-gnu)
+Date: Mon, 28 Jan 2013 10:14:05 -0600
+Message-ID: <87y5fdi8tu.fsf@codemonkey.ws>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13012816-7606-0000-0000-000007CE6EEB
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 32.97.110.154
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-commands.hx:
- s/tray-open/tray_open/ to match qapi schema
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH][TRIVIAL] vl: coding style
+	cleanups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,33 +64,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2013 14:23:16 -0000
+X-List-Received-Date: Mon, 28 Jan 2013 16:14:58 -0000
 
-On Fri, 25 Jan 2013 14:27:11 +0100
-Michal Privoznik <mprivozn@redhat.com> wrote:
+Stefan Hajnoczi <stefanha@gmail.com> writes:
 
-> Currently, we are using 'tray_open' in QMP and 'tray-open' in
-> HMP. However, the QMP documentation was mistakenly using the
-> HMP version.
+> On Thu, Jan 24, 2013 at 05:04:29PM -0600, Jesse Larrew wrote:
+>> 
+>> Reformat the option parsing code in main() and various supporting functions
+>> to conform to the QEMU coding style.
+>> 
+>> Signed-off-by: Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+>> ---
+>>  vl.c | 476 +++++++++++++++++++++++++++++++++++++------------------------------
+>>  1 file changed, 260 insertions(+), 216 deletions(-)
+>
+> Please CC qemu-trivial@nongnu.org on trivial patches in the future.
+>
+> There has been discussion about whitespace cleanups recently and it also
+> applies to this patch.  There is a cost to such patches - they require
+> code review, can clog up the git-blame(1) output, and make it hard for
+> stable branch or downstream maintainers to backport fixes.
+>
+> I'm happy to take this patch but I hope people don't get too
+> trigger-happy because this isn't free.
+>
+> Waiting a while longer to merge in case Blue Swirl or anyone else wants
+> to chime in.
 
-It's missing the s-o-b line.
+Before the patch:
 
-> ---
->  qmp-commands.hx | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/qmp-commands.hx b/qmp-commands.hx
-> index cbf1280..870ee54 100644
-> --- a/qmp-commands.hx
-> +++ b/qmp-commands.hx
-> @@ -1585,7 +1585,7 @@ Each json-object contain the following:
->           - Possible values: "unknown"
->  - "removable": true if the device is removable, false otherwise (json-bool)
->  - "locked": true if the device is locked, false otherwise (json-bool)
-> -- "tray-open": only present if removable, true if the device has a tray,
-> +- "tray_open": only present if removable, true if the device has a tray,
->                 and it is open (json-bool)
->  - "inserted": only present if the device is inserted, it is a json-object
->     containing the following:
+total: 75 errors, 125 warnings, 4230 lines checked
+
+After the patch:
+
+total: 59 errors, 67 warnings, 4274 lines checked
+
+This feels like unnecessary churn to me.  If the patch was taking vl.c
+to 0 errors, I'd be more inclined to pay the cost.  But I don't want
+there to be 3-4 patches that break blame just to get a single file into
+compliance.
+
+Regards,
+
+Anthony Liguori
+
+>
+> Stefan
 
 
