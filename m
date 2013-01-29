@@ -1,58 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1TzrMJ-0001dn-2B
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2013 11:14:59 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58274)
+	id 1U0CXc-00016M-8y
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2013 09:52:04 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:36845)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1TzrME-0001dX-6Q
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 11:14:58 -0500
+	(envelope-from <stefanha@gmail.com>) id 1U0CXV-0000mE-JK
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2013 09:52:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1TzrM4-0000WB-JW
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 11:14:54 -0500
-Received: from e36.co.us.ibm.com ([32.97.110.154]:48378)
+	(envelope-from <stefanha@gmail.com>) id 1U0CXU-0004SN-LK
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2013 09:51:57 -0500
+Received: from mail-ea0-f173.google.com ([209.85.215.173]:59788)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1TzrM4-0000Vv-DA
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2013 11:14:44 -0500
-Received: from /spool/local
-	by e36.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Mon, 28 Jan 2013 09:14:43 -0700
-Received: from d03dlp03.boulder.ibm.com (9.17.202.179)
-	by e36.co.us.ibm.com (192.168.1.136) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 28 Jan 2013 09:14:42 -0700
-Received: from d03relay02.boulder.ibm.com (d03relay02.boulder.ibm.com
-	[9.17.195.227])
-	by d03dlp03.boulder.ibm.com (Postfix) with ESMTP id A55EA19D8052;
-	Mon, 28 Jan 2013 09:14:25 -0700 (MST)
-Received: from d03av03.boulder.ibm.com (d03av03.boulder.ibm.com [9.17.195.169])
-	by d03relay02.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r0SGEEw3119062; Mon, 28 Jan 2013 09:14:15 -0700
-Received: from d03av03.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av03.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id r0SGECr0016862; Mon, 28 Jan 2013 09:14:13 -0700
-Received: from titi.na.relay.ibm.com ([9.80.39.67])
-	by d03av03.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r0SGE6Od016101; Mon, 28 Jan 2013 09:14:08 -0700
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>,
-	Jesse Larrew <jlarrew@linux.vnet.ibm.com>
-In-Reply-To: <20130128131438.GF27668@stefanha-thinkpad.redhat.com>
-References: <5101BDFD.5010801@linux.vnet.ibm.com>
-	<20130128131438.GF27668@stefanha-thinkpad.redhat.com>
-User-Agent: Notmuch/0.13.2+93~ged93d79 (http://notmuchmail.org) Emacs/23.3.1
-	(x86_64-pc-linux-gnu)
-Date: Mon, 28 Jan 2013 10:14:05 -0600
-Message-ID: <87y5fdi8tu.fsf@codemonkey.ws>
+	(envelope-from <stefanha@gmail.com>)
+	id 1U0CXS-0004Rf-5M; Tue, 29 Jan 2013 09:51:54 -0500
+Received: by mail-ea0-f173.google.com with SMTP id i1so228348eaa.18
+	for <multiple recipients>; Tue, 29 Jan 2013 06:51:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=JUWAYyLa79+rsNPLX/fEkqqyCJxCSBc34dBtyPzO+oI=;
+	b=x6/+Jh7qF0tBA1e8nuHFNIrum3EvwPSrtasnZ3Wja/K/+PJ1KHU4XNQ5K+qy8J8N86
+	F8MJN8n3gfV3plAtkkpSJaaWcPSMLHSuHhbS9it3euMcrTx5kXDPDgfA8hcM6xdTJcct
+	i7GDzDGAEZw8bctRS0UxXfwLQWh+R50J4anSv2eUsRoHn9K+vdrco/G9ntksZ0s5GiDB
+	T3wLxed+AvEGm9OV8UHDp4UsWtEHfFpLl5G96fDmUPrlrl7shrLOWcpJ6wtsqAObXUd3
+	0iZCRako7pxwcRjNWaexdNwASAjd1R9+Z2tE7LQXkzMsxgLlzQNf0EDLGiUNqCPk66eO
+	B5Mg==
+X-Received: by 10.14.201.69 with SMTP id a45mr3276980eeo.43.1359471113097;
+	Tue, 29 Jan 2013 06:51:53 -0800 (PST)
+Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
+	by mx.google.com with ESMTPS id g2sm20639549eep.16.2013.01.29.06.51.51
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Tue, 29 Jan 2013 06:51:52 -0800 (PST)
+Date: Tue, 29 Jan 2013 15:51:49 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Vishvananda Ishaya <vishvananda@gmail.com>
+Message-ID: <20130129145149.GB17664@stefanha-thinkpad.redhat.com>
+References: <1359050528-52668-1-git-send-email-vishvananda@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13012816-7606-0000-0000-000007CE6EEB
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.110.154
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH][TRIVIAL] vl: coding style
-	cleanups
+Content-Disposition: inline
+In-Reply-To: <1359050528-52668-1-git-send-email-vishvananda@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.215.173
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: Fix
+ is_allocated_above with resized files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,51 +57,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2013 16:14:58 -0000
+X-List-Received-Date: Tue, 29 Jan 2013 14:52:03 -0000
 
-Stefan Hajnoczi <stefanha@gmail.com> writes:
+On Thu, Jan 24, 2013 at 10:02:08AM -0800, Vishvananda Ishaya wrote:
+> In an image chain, if the base image is smaller than the current
+> image, we need to make sure to use the current images count of
+> unallocated blocks once we get to the end of the base image. Without
+> this change the code will return 0 blocks when it gets to the end
+> of the base image and mirror_run will fail its assertion.
+> 
+> Signed-off-by: Vishvananda Ishaya <vishvananda@gmail.com>
+> ---
+> Fixes https://bugs.launchpad.net/qemu/+bug/1103868
+> 
+>  block.c |    4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 
-> On Thu, Jan 24, 2013 at 05:04:29PM -0600, Jesse Larrew wrote:
->> 
->> Reformat the option parsing code in main() and various supporting functions
->> to conform to the QEMU coding style.
->> 
->> Signed-off-by: Jesse Larrew <jlarrew@linux.vnet.ibm.com>
->> ---
->>  vl.c | 476 +++++++++++++++++++++++++++++++++++++------------------------------
->>  1 file changed, 260 insertions(+), 216 deletions(-)
->
-> Please CC qemu-trivial@nongnu.org on trivial patches in the future.
->
-> There has been discussion about whitespace cleanups recently and it also
-> applies to this patch.  There is a cost to such patches - they require
-> code review, can clog up the git-blame(1) output, and make it hard for
-> stable branch or downstream maintainers to backport fixes.
->
-> I'm happy to take this patch but I hope people don't get too
-> trigger-happy because this isn't free.
->
-> Waiting a while longer to merge in case Blue Swirl or anyone else wants
-> to chime in.
+Thanks, applied to my block tree:
+https://github.com/stefanha/qemu/commits/block
 
-Before the patch:
-
-total: 75 errors, 125 warnings, 4230 lines checked
-
-After the patch:
-
-total: 59 errors, 67 warnings, 4274 lines checked
-
-This feels like unnecessary churn to me.  If the patch was taking vl.c
-to 0 errors, I'd be more inclined to pay the cost.  But I don't want
-there to be 3-4 patches that break blame just to get a single file into
-compliance.
-
-Regards,
-
-Anthony Liguori
-
->
-> Stefan
-
+Stefan
 
