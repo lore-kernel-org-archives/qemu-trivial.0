@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U0CYM-0002C7-SM
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2013 09:52:50 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:37017)
+	id 1U0DQE-0002Yk-F0
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2013 10:48:30 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:51445)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1U0CYG-0001rb-17
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2013 09:52:48 -0500
+	(envelope-from <aliguori@us.ibm.com>) id 1U0DQC-0002Sd-9Y
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2013 10:48:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1U0CYC-0004YQ-NL
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2013 09:52:43 -0500
-Received: from mail-ee0-f45.google.com ([74.125.83.45]:40711)
+	(envelope-from <aliguori@us.ibm.com>) id 1U0DQ3-0003rx-Pf
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2013 10:48:28 -0500
+Received: from e8.ny.us.ibm.com ([32.97.182.138]:46426)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1U0CY3-0004Wf-G8; Tue, 29 Jan 2013 09:52:31 -0500
-Received: by mail-ee0-f45.google.com with SMTP id b57so271384eek.18
-	for <multiple recipients>; Tue, 29 Jan 2013 06:52:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=qBZEVjOKIj5N86Qu0vgni76aG+GLeHbAohXUtlSVkT4=;
-	b=VpnUXZq+80IX3Eu117aw12UobWamtSfsnKB4xvdxI9rzcbQSXeZJGbNj6o16iWxc4U
-	f36qAOgCbPOivKh/bOuvQ3Rm3KkSHfOZ42lA/0jSdoglxgKP3vcYEZMeIuCdxdWJwBba
-	gWBMkvUU6Qan2Mlbx5km1NpToIIuvA7Atw4+9eBQXncfxEFSnRDRg4EzwLlWgFtIaAxy
-	txtu3xXjPEChbAhviDEVAMTA4DZ3LrE/x/MqDBeCqADeeSEebWR2yWx61b6bjRnVzhGa
-	SGdj5Th4dcg6K/ahUuzGefH88WZ1bYjmiP2OkkPcC33LVZLUWQZ7UogS4j7mC2FtEYc3
-	ke+w==
-X-Received: by 10.14.204.198 with SMTP id h46mr4233649eeo.1.1359471150539;
-	Tue, 29 Jan 2013 06:52:30 -0800 (PST)
-Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
-	by mx.google.com with ESMTPS id 44sm20602168eek.5.2013.01.29.06.52.28
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Tue, 29 Jan 2013 06:52:29 -0800 (PST)
-Date: Tue, 29 Jan 2013 15:52:27 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Vishvananda Ishaya <vishvananda@gmail.com>
-Message-ID: <20130129145227.GC17664@stefanha-thinkpad.redhat.com>
-References: <51024DE2.907@redhat.com>
-	<1359140240-42972-1-git-send-email-vishvananda@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1359140240-42972-1-git-send-email-vishvananda@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.125.83.45
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] block: Adds mirroring tests for resized
- images
+	(envelope-from <aliguori@us.ibm.com>) id 1U0DQ3-0003rp-Ie
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2013 10:48:19 -0500
+Received: from /spool/local
+	by e8.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Tue, 29 Jan 2013 10:47:17 -0500
+Received: from d01dlp01.pok.ibm.com (9.56.250.166)
+	by e8.ny.us.ibm.com (192.168.1.108) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 29 Jan 2013 10:47:13 -0500
+Received: from d01relay04.pok.ibm.com (d01relay04.pok.ibm.com [9.56.227.236])
+	by d01dlp01.pok.ibm.com (Postfix) with ESMTP id 9F3F538C804A;
+	Tue, 29 Jan 2013 10:47:10 -0500 (EST)
+Received: from d03av01.boulder.ibm.com (d03av01.boulder.ibm.com [9.17.195.167])
+	by d01relay04.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r0TFl62F278460; Tue, 29 Jan 2013 10:47:06 -0500
+Received: from d03av01.boulder.ibm.com (loopback [127.0.0.1])
+	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
+	id r0TFkoAc005733; Tue, 29 Jan 2013 08:46:50 -0700
+Received: from localhost6.localdomain6 (dyn9050022135.mts.ibm.com
+	[9.50.22.135] (may be forged))
+	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r0TFki9B004458; Tue, 29 Jan 2013 08:46:44 -0700
+Message-Id: <201301291546.r0TFki9B004458@d03av01.boulder.ibm.com>
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Michal Privoznik <mprivozn@redhat.com>, qemu-devel@nongnu.org
+In-Reply-To: <ef9bb01f7a2cd566bcdc10f19dc0881818754c4e.1359120428.git.mprivozn@redhat.com>
+Date: Tue, 29 Jan 2013 15:46:37 -0000
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13012915-9360-0000-0000-00000FDAE751
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 32.97.182.138
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] qmp-commands.hx: s/tray-open/tray_open/
+ to match qapi schema
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,25 +57,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Jan 2013 14:52:49 -0000
+X-List-Received-Date: Tue, 29 Jan 2013 15:48:29 -0000
 
-On Fri, Jan 25, 2013 at 10:57:20AM -0800, Vishvananda Ishaya wrote:
-> This test verifies two mirroring issues are fixed with resized images:
-> 
->  * sync='top' creates an image that is the proper size
->  * sync='full' doesn't cause an assertion failure and crash qemu
-> ---
-> These are tests for my patches for the following bugs:
-> 
-> https://bugs.launchpad.net/qemu/+bug/1103868
-> https://bugs.launchpad.net/qemu/+bug/1103903
-> 
->  tests/qemu-iotests/041     |   48 ++++++++++++++++++++++++++++++++++++++++++++
->  tests/qemu-iotests/041.out |    4 ++--
->  2 files changed, 50 insertions(+), 2 deletions(-)
+Hi,
 
-Thanks, applied to my block tree:
-https://github.com/stefanha/qemu/commits/block
+Thank you for submitting your patch series.  checkpatch.pl has
+detected that one or more of the patches in this series violate
+the QEMU coding style.
 
-Stefan
+If you believe this message was sent in error, please ignore it
+or respond here with an explanation.
+
+Otherwise, please correct the coding style issues and resubmit a
+new version of the patch.
+
+For more information about QEMU coding style, see:
+
+http://git.qemu.org/?p=qemu.git;a=blob_plain;f=CODING_STYLE;hb=HEAD
+
+Here is the output from checkpatch.pl:
+
+Subject: qmp-commands.hx: s/tray-open/tray_open/ to match qapi schema
+ERROR: Missing Signed-off-by: line(s)
+
+total: 1 errors, 0 warnings, 8 lines checked
+
+Your patch has style problems, please review.  If any of these errors
+are false positives report them to the maintainer, see
+CHECKPATCH in MAINTAINERS.
+
+
+
+Regards,
+
+Anthony Liguori
+
 
