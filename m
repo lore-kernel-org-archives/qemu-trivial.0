@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U0HSx-00018C-Jj
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2013 15:07:35 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:54729)
+	id 1U0U3r-0004pP-RK
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2013 04:34:31 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:59844)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1U0HSt-0000yj-Vu
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2013 15:07:33 -0500
+	(envelope-from <stefanha@gmail.com>) id 1U0U1Q-0003sZ-24
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2013 04:32:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1U0HSs-0001dW-Bs
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2013 15:07:31 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:28675)
+	(envelope-from <stefanha@gmail.com>) id 1U0U1P-0004ZT-0n
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2013 04:31:59 -0500
+Received: from mail-ee0-f45.google.com ([74.125.83.45]:58129)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1U0HSk-0001bt-RL; Tue, 29 Jan 2013 15:07:23 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r0TK7Mfh005400
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 29 Jan 2013 15:07:22 -0500
-Received: from [10.3.113.27] (ovpn-113-27.phx2.redhat.com [10.3.113.27])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r0TK7LbG009643; Tue, 29 Jan 2013 15:07:21 -0500
-Message-ID: <51082BF9.6020900@redhat.com>
-Date: Tue, 29 Jan 2013 13:07:21 -0700
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130110 Thunderbird/17.0.2
+	(envelope-from <stefanha@gmail.com>)
+	id 1U0U1M-0004Yy-OI; Wed, 30 Jan 2013 04:31:56 -0500
+Received: by mail-ee0-f45.google.com with SMTP id b57so677455eek.18
+	for <multiple recipients>; Wed, 30 Jan 2013 01:31:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=SnEuQNT3lzF+ocdIQ35BaZjAMR5N+FP2p9yI7qtTnyM=;
+	b=MXV5p/2yIvzCXftU15MVTrXvc7Yn+DXum0Bsk28s9MtBBpJE0t8iH/0mCoFEQPWonr
+	ZWFI+xXsmJDaydwhQBkxGcyNX3tVaCv5+Ww8mlCnYKi6/wNfEZi3IpSkb0jZGNgcKQWy
+	ayXXkZkZn9fZACL0ISEfZo1FxWUvHIhJ6CzbvlXiDXza7lKwwC+zWXNSuSabTf60fRf3
+	UR5jbeM8GrCDsMsQzsfif9pRitrTPoVLI8hzcRbR/YTw+RO26jz9eHwRL22aLlpFaU7H
+	WhvXbA+I/HbP/UcGEsPxd2/Ovxokr7yE807KoBkz73B+ggsKxP12aGeooR3kIqKoWBIy
+	RDsw==
+X-Received: by 10.14.201.69 with SMTP id a45mr12524933eeo.43.1359538315763;
+	Wed, 30 Jan 2013 01:31:55 -0800 (PST)
+Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
+	by mx.google.com with ESMTPS id g2sm1017809eep.16.2013.01.30.01.31.53
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Wed, 30 Jan 2013 01:31:54 -0800 (PST)
+Date: Wed, 30 Jan 2013 10:31:52 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Message-ID: <20130130093152.GB25131@stefanha-thinkpad.redhat.com>
+References: <a96aa63e-80c2-436d-8e57-bfba6d45dc02@CO9EHSMHS025.ehs.local>
 MIME-Version: 1.0
-To: Michal Privoznik <mprivozn@redhat.com>
-References: <8f03011d18d9d8cb51a4c2339f2ae4be7cfe1052.1359478671.git.mprivozn@redhat.com>
-In-Reply-To: <8f03011d18d9d8cb51a4c2339f2ae4be7cfe1052.1359478671.git.mprivozn@redhat.com>
-X-Enigmail-Version: 1.5.0
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="----enig2HFUPVIGKNJHECKDKTNGG"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a96aa63e-80c2-436d-8e57-bfba6d45dc02@CO9EHSMHS025.ehs.local>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.125.83.45
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] qmp-commands.hx:
- s/tray-open/tray_open/ to match qapi schema
+Subject: Re: [Qemu-trivial] [PATCH 0/4] Xilinx Trivial Patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,72 +55,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Jan 2013 20:07:33 -0000
+X-List-Received-Date: Wed, 30 Jan 2013 09:34:30 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
-------enig2HFUPVIGKNJHECKDKTNGG
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On Sat, Jan 26, 2013 at 12:54:32PM -0800, Peter Crosthwaite wrote:
+> Current queue of trivial patches from the Xilinx tree.
+> 
+> Peter Crosthwaite (4):
+>   cadence_ttc: Debug mode compile fixes
+>   cadence_gem: Debug mode compile fixes
+>   xilinx_axidma: Fix debug mode compile messages
+>   qemu/log.h: Fix missing includes
+> 
+>  hw/cadence_gem.c   | 17 ++++++++++-------
+>  hw/cadence_ttc.c   |  4 ++--
+>  hw/xilinx_axidma.c |  2 +-
+>  include/qemu/log.h |  1 +
+>  4 files changed, 14 insertions(+), 10 deletions(-)
+> 
+> -- 
+> 1.7.12.1.396.g16eed7c
+> 
+> 
+> 
 
-On 01/29/2013 09:58 AM, Michal Privoznik wrote:
-> Currently, we are using 'tray_open' in QMP and 'tray-open' in
-> HMP. However, the QMP documentation was mistakenly using the
-> HMP version.
->=20
-> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
-> ---
->=20
-> diff to v1:
-> -add S-o-b line
->=20
->  qmp-commands.hx | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks, patches 1-3 applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
->=20
-> diff --git a/qmp-commands.hx b/qmp-commands.hx
-> index f58a841..f90efe5 100644
-> --- a/qmp-commands.hx
-> +++ b/qmp-commands.hx
-> @@ -1659,7 +1659,7 @@ Each json-object contain the following:
->           - Possible values: "unknown"
->  - "removable": true if the device is removable, false otherwise (json-=
-bool)
->  - "locked": true if the device is locked, false otherwise (json-bool)
-> -- "tray-open": only present if removable, true if the device has a tra=
-y,
-> +- "tray_open": only present if removable, true if the device has a tra=
-y,
->                 and it is open (json-bool)
->  - "inserted": only present if the device is inserted, it is a json-obj=
-ect
->     containing the following:
->=20
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
-------enig2HFUPVIGKNJHECKDKTNGG
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.13 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJRCCv5AAoJEKeha0olJ0NqDfwIAIwG2/dIG/pLDhnNwYP9fCXy
-LKdhx6aHtuIUT9UuvzKvjFiuqH9JgaZl4yL1KB4Ed8FCcTdtGgkmtc1BplSTL5qk
-nOW8vAoUDHHqhgqQqMjnW8Ql01rxr1f6rvlM1EVykLNag8oVeGj7txnX3eeM8ws2
-9f/+nA6AXOnIszDX5LdlIKtO+YcGiSpBNAQUi8klWGm/eIra5Fa4Pipa1Ep7EzCs
-7sP2f0SdIWzkaHU0yiTArDyMuBw+acwOvT3UdrQv+gJtdsz6Vo7sAK3Zzuwxb2QD
-mGvkgyG5cPVe0TOW7iqgZzHtz0Z7Z9DLPG8tG5K/pg86NfZG7B31pghnzKfyU4s=
-=TTx6
------END PGP SIGNATURE-----
-
-------enig2HFUPVIGKNJHECKDKTNGG--
+Stefan
 
