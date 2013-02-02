@@ -1,40 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U1b9X-0007MK-MG
-	for mharc-qemu-trivial@gnu.org; Sat, 02 Feb 2013 06:20:59 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:42793)
+	id 1U1gjD-0002j9-7L
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Feb 2013 12:18:11 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:50762)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1U1b9V-0007HF-87
-	for qemu-trivial@nongnu.org; Sat, 02 Feb 2013 06:20:58 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1U1gj8-0002YH-Qw
+	for qemu-trivial@nongnu.org; Sat, 02 Feb 2013 12:18:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1U1b9U-0005Cl-99
-	for qemu-trivial@nongnu.org; Sat, 02 Feb 2013 06:20:57 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:36320 helo=mx2.suse.de)
+	(envelope-from <pm215@archaic.org.uk>) id 1U1gj5-0006Mq-Io
+	for qemu-trivial@nongnu.org; Sat, 02 Feb 2013 12:18:06 -0500
+Received: from
+	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
+	([2001:8b0:1d0::1]:60226 helo=mnementh.archaic.org.uk)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1U1b9S-0005CR-3W; Sat, 02 Feb 2013 06:20:54 -0500
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx2.suse.de (Postfix) with ESMTP id 5814FA3A4A;
-	Sat,  2 Feb 2013 12:20:53 +0100 (CET)
-Message-ID: <510CF691.6090700@suse.de>
-Date: Sat, 02 Feb 2013 12:20:49 +0100
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130105 Thunderbird/17.0.2
-MIME-Version: 1.0
-To: Jan Kiszka <jan.kiszka@web.de>
-References: <510CEE9A.1030207@web.de>
-In-Reply-To: <510CEE9A.1030207@web.de>
-X-Enigmail-Version: 1.5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Create link to
- icon bitmap for out-of-tree builds
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1U1giz-0006Lp-JQ; Sat, 02 Feb 2013 12:17:57 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1U1giw-0006wS-Qz; Sat, 02 Feb 2013 17:17:54 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Sat,  2 Feb 2013 17:17:54 +0000
+Message-Id: <1359825474-26661-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <andreas.faerber@web.de>,
+	patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] disas/i386.c: Add explicit braces round
+	empty for-loop body
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,36 +41,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 02 Feb 2013 11:20:58 -0000
+X-List-Received-Date: Sat, 02 Feb 2013 17:18:09 -0000
 
-Am 02.02.2013 11:46, schrieb Jan Kiszka:
-> From: Jan Kiszka <jan.kiszka@siemens.com>
->=20
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
-> ---
->  configure |    1 +
->  1 files changed, 1 insertions(+), 0 deletions(-)
->=20
-> diff --git a/configure b/configure
-> index 0657b1a..cfccec5 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4289,6 +4289,7 @@ FILES=3D"$FILES tests/tcg/lm32/Makefile"
->  FILES=3D"$FILES pc-bios/optionrom/Makefile pc-bios/keymaps"
->  FILES=3D"$FILES pc-bios/spapr-rtas/Makefile"
->  FILES=3D"$FILES roms/seabios/Makefile roms/vgabios/Makefile"
-> +FILES=3D"$FILES pc-bios/qemu-icon.bmp"
->  for bios_file in \
->      $source_path/pc-bios/*.bin \
->      $source_path/pc-bios/*.aml \
+Add explicit braces round an empty for-loop body; this fits
+QEMU style and is easier to read than an inconspicuous semicolon
+at the end of the line. It also silences a clang warning:
 
-Commit message is missing an explanation why? :)
+disas/i386.c:4723:49: warning: for loop has empty body [-Wempty-body]
+          for (i = 0; tmp[i] == '0' && tmp[i + 1]; i++);
+                                                       ^
+disas/i386.c:4723:49: note: put the semicolon on a separate line to silence this warning [-Wempty-body]
 
-Cheers,
-Andreas
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This is the only clang warning on MacOSX apart from the ones about
+deprecated features in audio/coreaudio.c and ui/cocoa.m, which is why
+I think it's worth zapping despite it being a style issue in one of the
+bits of disassembler code we got from binutils and which aren't generally
+in QEMU style.
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+checkpatch complains about the non-multiple-of-4 indent:
+WARNING: suspect code indent for conditional statements (10, 10)
+#27: FILE: disas/i386.c:4723:
++          for (i = 0; tmp[i] == '0' && tmp[i + 1]; i++) {
++          }
+
+but I didn't see any value in reindenting the whole function just to
+shut it up.
+
+At some point in the 1.5 cycle maybe we could update the code to avoid
+the deprecated MacOS functions and then we could enable warnings-are-errors
+on MacOS too.
+
+ disas/i386.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/disas/i386.c b/disas/i386.c
+index 3b006b1..dbecf1f 100644
+--- a/disas/i386.c
++++ b/disas/i386.c
+@@ -4720,7 +4720,8 @@ print_operand_value (char *buf, size_t bufsize, int hex, bfd_vma disp)
+ 	  buf[0] = '0';
+ 	  buf[1] = 'x';
+           snprintf_vma (tmp, sizeof(tmp), disp);
+-	  for (i = 0; tmp[i] == '0' && tmp[i + 1]; i++);
++          for (i = 0; tmp[i] == '0' && tmp[i + 1]; i++) {
++          }
+           pstrcpy (buf + 2, bufsize - 2, tmp + i);
+ 	}
+       else
+-- 
+1.7.11.4
+
 
