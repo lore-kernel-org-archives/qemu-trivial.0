@@ -1,39 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U1KBj-0000c6-6S
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Feb 2013 12:14:07 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:45922)
+	id 1U1acb-0002CH-29
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Feb 2013 05:46:57 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:38469)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1U1KBg-0000aO-Rh
-	for qemu-trivial@nongnu.org; Fri, 01 Feb 2013 12:14:05 -0500
+	(envelope-from <jan.kiszka@web.de>) id 1U1acX-0002C6-Pp
+	for qemu-trivial@nongnu.org; Sat, 02 Feb 2013 05:46:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1U1KBZ-0008EU-KB
-	for qemu-trivial@nongnu.org; Fri, 01 Feb 2013 12:14:04 -0500
-Received: from mel.act-europe.fr ([194.98.77.210]:47115)
+	(envelope-from <jan.kiszka@web.de>) id 1U1acW-0004Qd-Ib
+	for qemu-trivial@nongnu.org; Sat, 02 Feb 2013 05:46:53 -0500
+Received: from mout.web.de ([212.227.17.12]:50116)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1U1KBY-0008B5-PJ
-	for qemu-trivial@nongnu.org; Fri, 01 Feb 2013 12:13:57 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 90A382900C6;
-	Fri,  1 Feb 2013 18:14:05 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eu.adacore.com
-Received: from mel.act-europe.fr ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aAJy0zJ2QxUT; Fri,  1 Feb 2013 18:14:05 +0100 (CET)
-Received: from PomPomGalli.act-europe.fr (pompomgalli.act-europe.fr
-	[10.10.1.88])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mel.act-europe.fr (Postfix) with ESMTP id 637A22900B1;
-	Fri,  1 Feb 2013 18:14:05 +0100 (CET)
-From: Fabien Chouteau <chouteau@adacore.com>
-To: qemu-trivial@nongnu.org
-Date: Fri,  1 Feb 2013 18:13:51 +0100
-Message-Id: <1359738831-7232-1-git-send-email-chouteau@adacore.com>
-X-Mailer: git-send-email 1.7.9.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 194.98.77.210
-Cc: kwolf@redhat.com, stefanha@redhat.com
-Subject: [Qemu-trivial] [PATCH] get_tmp_filename: add explicit error message
+	(envelope-from <jan.kiszka@web.de>)
+	id 1U1acW-0004QR-8z; Sat, 02 Feb 2013 05:46:52 -0500
+Received: from mchn199C.mchp.siemens.de ([95.157.56.37]) by smtp.web.de
+	(mrweb001) with ESMTPSA (Nemesis) id 0LkyXt-1UZoyd1sFJ-00abYF;
+	Sat, 02 Feb 2013 11:46:50 +0100
+Message-ID: <510CEE9A.1030207@web.de>
+Date: Sat, 02 Feb 2013 11:46:50 +0100
+From: Jan Kiszka <jan.kiszka@web.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
+MIME-Version: 1.0
+To: qemu-trivial <qemu-trivial@nongnu.org>
+X-Enigmail-Version: 1.5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V02:K0:47MHaWHRqluw60Jv8YmV05Rlkwz9KP7hf281Z4m3rCA
+	BxL6yBSiz85c1jhMal+JHlQyc5yn/0wDaNgccGGC+JONRR2FLF
+	oP808by8pVm/9leQSgzCs6lNAQbLMIHe+Rtb0vSBdTOEZbHKMS
+	NYUg4Ma3MBBlR5jDkEgh2Tbuzjexna6laJHyoFqG97U1lBBPBj
+	Ab3f6rC7+l+2DXhlKPHuA==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 212.227.17.12
+Cc: qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] configure: Create link to icon bitmap for
+	out-of-tree builds
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,39 +47,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Feb 2013 17:14:05 -0000
+X-List-Received-Date: Sat, 02 Feb 2013 10:46:56 -0000
 
+From: Jan Kiszka <jan.kiszka@siemens.com>
 
-Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
 ---
- block.c |   13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+ configure |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
 
-diff --git a/block.c b/block.c
-index ba67c0d..3bf8eda 100644
---- a/block.c
-+++ b/block.c
-@@ -428,9 +428,16 @@ int get_tmp_filename(char *filename, int size)
-     /* GetTempFileName requires that its output buffer (4th param)
-        have length MAX_PATH or greater.  */
-     assert(size >= MAX_PATH);
--    return (GetTempPath(MAX_PATH, temp_dir)
--            && GetTempFileName(temp_dir, "qem", 0, filename)
--            ? 0 : -GetLastError());
-+    if (GetTempPath(MAX_PATH, temp_dir) == 0) {
-+        fprintf(stderr, "GetTempPath() error: %d\n", GetLastError());
-+        return -GetLastError();
-+    }
-+    if (GetTempFileName(temp_dir, "qem", 0, filename) == 0) {
-+        fprintf(stderr, "GetTempFileName(%s) error: %d\n", temp_dir,
-+                GetLastError());
-+        return -GetLastError();
-+    }
-+    return 0;
- #else
-     int fd;
-     const char *tmpdir;
+diff --git a/configure b/configure
+index 0657b1a..cfccec5 100755
+--- a/configure
++++ b/configure
+@@ -4289,6 +4289,7 @@ FILES="$FILES tests/tcg/lm32/Makefile"
+ FILES="$FILES pc-bios/optionrom/Makefile pc-bios/keymaps"
+ FILES="$FILES pc-bios/spapr-rtas/Makefile"
+ FILES="$FILES roms/seabios/Makefile roms/vgabios/Makefile"
++FILES="$FILES pc-bios/qemu-icon.bmp"
+ for bios_file in \
+     $source_path/pc-bios/*.bin \
+     $source_path/pc-bios/*.aml \
 -- 
-1.7.9.5
-
+1.7.3.4
 
