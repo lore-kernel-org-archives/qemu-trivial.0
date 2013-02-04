@@ -1,50 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U2MAw-000674-GP
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2013 08:33:34 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:59963)
+	id 1U2MKG-0005Nx-J0
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2013 08:43:12 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:34145)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1U2MAn-0005iq-1m
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2013 08:33:30 -0500
+	(envelope-from <afaerber@suse.de>) id 1U2MKA-00056P-2E
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2013 08:43:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1U2MAl-0006w2-PR
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2013 08:33:24 -0500
-Received: from mel.act-europe.fr ([194.98.77.210]:32949)
+	(envelope-from <afaerber@suse.de>) id 1U2MK8-0001WO-TH
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2013 08:43:05 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:53408 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1U2MAi-0006vV-O7; Mon, 04 Feb 2013 08:33:20 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id E767A290052;
-	Mon,  4 Feb 2013 14:33:29 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eu.adacore.com
-Received: from mel.act-europe.fr ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EjOeM9LOtJC4; Mon,  4 Feb 2013 14:33:29 +0100 (CET)
-Received: from [10.10.1.88] (pompomgalli.act-europe.fr [10.10.1.88])
-	(using TLSv1 with cipher DHE-RSA-CAMELLIA256-SHA (256/256 bits))
+	(envelope-from <afaerber@suse.de>)
+	id 1U2MK2-0001Un-9n; Mon, 04 Feb 2013 08:42:58 -0500
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mel.act-europe.fr (Postfix) with ESMTP id CF0FE290007;
-	Mon,  4 Feb 2013 14:33:29 +0100 (CET)
-Message-ID: <510FB89E.1080504@adacore.com>
-Date: Mon, 04 Feb 2013 14:33:18 +0100
-From: Fabien Chouteau <chouteau@adacore.com>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130106 Thunderbird/17.0.2
+	by mx2.suse.de (Postfix) with ESMTP id 3B6ACA50F4;
+	Mon,  4 Feb 2013 14:42:57 +0100 (CET)
+Message-ID: <510FBADF.7000406@suse.de>
+Date: Mon, 04 Feb 2013 14:42:55 +0100
+From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130105 Thunderbird/17.0.2
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1359738831-7232-1-git-send-email-chouteau@adacore.com>
-	<20130204083900.GB5216@stefanha-thinkpad.redhat.com>
-	<87k3qov047.fsf@blackfin.pond.sub.org>
-	<510F9B09.7030804@adacore.com>
-	<87obg0s1wf.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87obg0s1wf.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 194.98.77.210
-Cc: qemu-trivial@nongnu.org, kwolf@redhat.com, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] get_tmp_filename: add
-	explicit error message
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <1359267965-19902-1-git-send-email-afaerber@suse.de>
+In-Reply-To: <1359267965-19902-1-git-send-email-afaerber@suse.de>
+X-Enigmail-Version: 1.5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-1.4] target-cris: Build
+ fix for debug output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,41 +46,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2013 13:33:31 -0000
+X-List-Received-Date: Mon, 04 Feb 2013 13:43:11 -0000
 
-On 02/04/2013 01:24 PM, Markus Armbruster wrote:
-> Fabien Chouteau <chouteau@adacore.com> writes:
-> 
->> On 02/04/2013 11:34 AM, Markus Armbruster wrote:
->>
->> Why? The caller doesn't know the difference between Windows/Linux
->> implementation. And the error handling would have to be duplicated.
-> 
-> The function's (implied) contract is to return an error code without
-> printing anything.  If you want to change the contract to include
-> reporting the error, you need to implement it both for both arms of the
-> #ifdef.  You also have to demonstrate that all callers are happy with
-> the change of contract.
-> 
-> Regardless, printing to stderr is wrong.  The function can be called on
-> behalf of a monitor command, and then the error needs to be printed to
-> the correct monitor.  error_report() can do that for you, and more.
-> 
+Am 27.01.2013 07:26, schrieb Andreas F=C3=A4rber:
+> Around r3361 (81fdc5f8d2d681da8d255baf0713144f8656bac9) env->debug1 use=
+d
+> to contain the address of an MMU fault. This is now written into
+> env->pregs[PR_EDA] instead.
+>=20
+> Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
+> ---
+>  target-cris/op_helper.c |    2 +-
+>  1 Datei ge=C3=A4ndert, 1 Zeile hinzugef=C3=BCgt(+), 1 Zeile entfernt(-=
+)
 
-Alright, so I will use error_report() and do it for both Linux and Windows.
+Ping! Resent as part of my debug output RFC already, and it missed rc0.
 
->> It's not the first time I add error output in Windows code. Specially in
->> block/, when there's an error, the only thing you get is: "operation not
->> permitted". It's not very helpful and you have to dig in the code to
->> find which function failed.
-> 
-> Good error reporting is hard.  Knowledge about the error and its context
-> gets lost as you move up the call chain.  Knowledge about how to report
-> errors gets lost as you move down.
-> 
+CC'ing qemu-trivial as it should be easily confirmable by comparing the
+mentioned commit with today's MMU fault handler (helper.c iirc).
 
-You're right, and in my opinion, no error reporting is the worst case.
+Andreas
 
--- 
-Fabien Chouteau
+> diff --git a/target-cris/op_helper.c b/target-cris/op_helper.c
+> index 0f6a1ee..b580513 100644
+> --- a/target-cris/op_helper.c
+> +++ b/target-cris/op_helper.c
+> @@ -60,7 +60,7 @@ void tlb_fill(CPUCRISState *env, target_ulong addr, i=
+nt is_write, int mmu_idx,
+>      int ret;
+> =20
+>      D_LOG("%s pc=3D%x tpc=3D%x ra=3D%p\n", __func__,
+> -          env->pc, env->debug1, (void *)retaddr);
+> +          env->pc, env->pregs[PR_EDA], (void *)retaddr);
+>      ret =3D cpu_cris_handle_mmu_fault(env, addr, is_write, mmu_idx);
+>      if (unlikely(ret)) {
+>          if (retaddr) {
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
+rnberg
 
