@@ -1,58 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U38RQ-00071g-4n
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2013 12:05:48 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:48543)
+	id 1U3YPx-0007ts-UM
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Feb 2013 15:50:01 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58006)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1U38RI-00070w-2h
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2013 12:05:47 -0500
+	(envelope-from <jlarrew@linux.vnet.ibm.com>) id 1U3YPl-0007VZ-4d
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2013 15:49:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1U38RD-0002yr-65
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2013 12:05:39 -0500
-Received: from mail-ve0-f178.google.com ([209.85.128.178]:64255)
+	(envelope-from <jlarrew@linux.vnet.ibm.com>) id 1U3YPe-0006TP-KV
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2013 15:49:48 -0500
+Received: from e7.ny.us.ibm.com ([32.97.182.137]:50625)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1U38RD-0002xf-0K; Wed, 06 Feb 2013 12:05:35 -0500
-Received: by mail-ve0-f178.google.com with SMTP id db10so1411368veb.9
-	for <multiple recipients>; Wed, 06 Feb 2013 09:05:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=2oOaCY8Der6mysHZaByGA7cbQf6B0YSS5Sgei6DanZI=;
-	b=z7mWH7iQ+VVIvNkn6cVZsI56Q4LVCKmrcwsJWS2NvoMpHbbXB/Q0GwvZmTrducRHga
-	GdGUHo0YB7EwgKsMw/AR6cLRlxR8E/KdbFqdUEarwFu5QN2wkCy3XG4aDSbIEJspnzEY
-	nxlHQZ1TQcquDnNeq/yPN2UWvTRlLbx5/kliLT3hArhgzVD6ezFEQPIUeBdVQQblnuAe
-	UxkycqeH3WVS/SfxyQUzZiA3/bJKBZPUmAUnk28JGUbDBVEBC92hA/PjN1/osU4h2ar8
-	Ze3vD33/Zabok8IhujVxzTC+NcHwmgOk2Sr39l2UrEEAt8/oiTTNuNbdetK4CsiMkWMK
-	IkXA==
-X-Received: by 10.221.10.72 with SMTP id oz8mr33758548vcb.36.1360170328161;
-	Wed, 06 Feb 2013 09:05:28 -0800 (PST)
-Received: from pebble.twiddle.net ([173.247.199.130])
-	by mx.google.com with ESMTPS id q5sm3522923vdj.5.2013.02.06.09.05.25
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Wed, 06 Feb 2013 09:05:27 -0800 (PST)
-Sender: Richard Henderson <rth7680@gmail.com>
-Message-ID: <51128D53.7060303@twiddle.net>
-Date: Wed, 06 Feb 2013 09:05:23 -0800
-From: Richard Henderson <rth@twiddle.net>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130110 Thunderbird/17.0.2
-MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <9021f2f9e51e4c7a253d1993ea05f87d0718752f.1359627279.git.mprivozn@redhat.com>
-	<510B90C9.8000309@suse.de> <510BDCBF.5040108@redhat.com>
-	<20130206144956.GA22233@stefanha-thinkpad.redhat.com>
-In-Reply-To: <20130206144956.GA22233@stefanha-thinkpad.redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.128.178
-Cc: qemu-trivial@nongnu.org, Michal Privoznik <mprivozn@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?ISO-8859-1?Q?Andreas_F=E4?= =?ISO-8859-1?Q?rber?= <afaerber@suse.de>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Undefine
- _FORTIFY_SOURCE prior using it
+	(envelope-from <jlarrew@linux.vnet.ibm.com>) id 1U3YPe-0006RT-FK
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2013 15:49:42 -0500
+Received: from /spool/local
+	by e7.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <jlarrew@linux.vnet.ibm.com>;
+	Thu, 7 Feb 2013 15:49:40 -0500
+Received: from d01dlp01.pok.ibm.com (9.56.250.166)
+	by e7.ny.us.ibm.com (192.168.1.107) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 7 Feb 2013 15:49:38 -0500
+Received: from d01relay04.pok.ibm.com (d01relay04.pok.ibm.com [9.56.227.236])
+	by d01dlp01.pok.ibm.com (Postfix) with ESMTP id 9AA8938C801B;
+	Thu,  7 Feb 2013 15:49:37 -0500 (EST)
+Received: from d03av04.boulder.ibm.com (d03av04.boulder.ibm.com [9.17.195.170])
+	by d01relay04.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r17KnaMt257424; Thu, 7 Feb 2013 15:49:37 -0500
+Received: from d03av04.boulder.ibm.com (loopback [127.0.0.1])
+	by d03av04.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
+	id r17KnXjL014240; Thu, 7 Feb 2013 13:49:33 -0700
+Received: from jlarrew.austin.ibm.com (jlarrew.austin.ibm.com [9.41.149.99])
+	by d03av04.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r17KnWEj014183; Thu, 7 Feb 2013 13:49:33 -0700
+From: Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
+Date: Thu,  7 Feb 2013 14:49:26 -0600
+Message-Id: <1360270167-15385-2-git-send-email-jlarrew@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.11.7
+In-Reply-To: <1360270167-15385-1-git-send-email-jlarrew@linux.vnet.ibm.com>
+References: <1360270167-15385-1-git-send-email-jlarrew@linux.vnet.ibm.com>
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13020720-5806-0000-0000-00001F535BD5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 32.97.182.137
+Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com,
+	Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH 1/2] hw/virtio-net: use existing macros to
+	implement endof
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,25 +59,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2013 17:05:47 -0000
+X-List-Received-Date: Thu, 07 Feb 2013 20:49:59 -0000
 
-On 2013-02-06 06:49, Stefan Hajnoczi wrote:
->> $ echo "int main() {return 0;}" | gcc -D_FORTIFY_SOURCE=2 -x c -
->> <command-line>:0:0: warning: "_FORTIFY_SOURCE" redefined [enabled by default]
->> <stdin>:1:0: note: this is the location of the previous definition
->>
->> in which case we must undefine it. However, if the _FORTIFY_SOURCE is
->> defined by environment, I think we should not override it. So maybe need
->> a different approach. Anyway, with current state I cannot compile. I am using
->> gcc version 4.7.2 (Gentoo 4.7.2 p1.3, pie-0.5.5)
->
-> It would be nice to fix this for QEMU 1.4 but my gcc FORTIFY_SOURCE foo
-> is not strong enough to know what the best approach is here.
+Clarify the definition of endof() by using the offsetof() and sizeof()
+macros to handle the pointer magic.
 
-Using -U -D is just fine to override something that the distro turned on 
-by default.
+Signed-off-by: Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+---
+ hw/virtio-net.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-r~
+diff --git a/hw/virtio-net.c b/hw/virtio-net.c
+index 8f521b3..663f33c 100644
+--- a/hw/virtio-net.c
++++ b/hw/virtio-net.c
+@@ -81,7 +81,7 @@ typedef struct VirtIONet
+  * 'container'.
+  */
+ #define endof(container, field) \
+-    ((intptr_t)(&(((container *)0)->field)+1))
++    (offsetof(container, field) + sizeof(((container *)0)->field))
+ 
+ typedef struct VirtIOFeature {
+     uint32_t flags;
+-- 
+1.7.11.7
 
 
