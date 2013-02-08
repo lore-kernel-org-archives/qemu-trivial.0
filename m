@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U3tO4-0004SD-9u
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Feb 2013 14:13:28 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:48905)
+	id 1U3tRF-00074e-CP
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Feb 2013 14:16:45 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:49597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1U3tO1-0004Kv-RC
-	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 14:13:26 -0500
+	(envelope-from <lcapitulino@redhat.com>) id 1U3tRC-0006wq-QS
+	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 14:16:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1U3tO0-0002gm-DP
-	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 14:13:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:63575)
+	(envelope-from <lcapitulino@redhat.com>) id 1U3tRB-0003e1-C4
+	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 14:16:42 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:61314)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lcapitulino@redhat.com>)
-	id 1U3tNw-0002fe-7x; Fri, 08 Feb 2013 14:13:20 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r18JDIpd000864
+	id 1U3tR5-0003c0-Nt; Fri, 08 Feb 2013 14:16:35 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r18JGXub007399
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 8 Feb 2013 14:13:18 -0500
+	Fri, 8 Feb 2013 14:16:33 -0500
 Received: from localhost (ovpn-113-129.phx2.redhat.com [10.3.113.129])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r18JDGB6015300; Fri, 8 Feb 2013 14:13:16 -0500
-Date: Fri, 8 Feb 2013 17:13:15 -0200
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r18JGVHo029479; Fri, 8 Feb 2013 14:16:31 -0500
+Date: Fri, 8 Feb 2013 17:16:30 -0200
 From: Luiz Capitulino <lcapitulino@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20130208171315.2fc46fb4@redhat.com>
-In-Reply-To: <87wquid48e.fsf@blackfin.pond.sub.org>
+Message-ID: <20130208171630.3deddd59@redhat.com>
+In-Reply-To: <87sj56d44d.fsf@blackfin.pond.sub.org>
 References: <1360340232-4670-1-git-send-email-armbru@redhat.com>
-	<1360340232-4670-2-git-send-email-armbru@redhat.com>
-	<20130208154154.7bf7ab79@redhat.com>
-	<87wquid48e.fsf@blackfin.pond.sub.org>
+	<1360340232-4670-5-git-send-email-armbru@redhat.com>
+	<20130208155324.0c456dcc@redhat.com>
+	<87sj56d44d.fsf@blackfin.pond.sub.org>
 Organization: Red Hat
 Mime-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH for-1.4 v2 1/6] error: Clean up error
- strings with embedded newlines
+Subject: Re: [Qemu-trivial] [PATCH for-1.4 v2 4/6] qemu-option: Disable two
+ helpful messages that got broken recently
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,79 +50,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Feb 2013 19:13:27 -0000
+X-List-Received-Date: Fri, 08 Feb 2013 19:16:44 -0000
 
-On Fri, 08 Feb 2013 19:56:17 +0100
+On Fri, 08 Feb 2013 19:58:42 +0100
 Markus Armbruster <armbru@redhat.com> wrote:
 
 > Luiz Capitulino <lcapitulino@redhat.com> writes:
 > 
-> > On Fri,  8 Feb 2013 17:17:07 +0100
+> > On Fri,  8 Feb 2013 17:17:10 +0100
 > > Markus Armbruster <armbru@redhat.com> wrote:
 > >
-> >> The arguments of error_report() should yield a short error string
-> >> without newlines.
+> >> commit 8be7e7e4 and commit ec7b2ccb messed up the ordering of error
+> >> message and the helpful explanation that should follow it, like this:
 > >> 
-> >> A few places try to print additional help after the error message by
-> >> embedding newlines in the error string.  That's nice, but let's do it
-> >> the right way.
+> >>     $ qemu-system-x86_64 --nodefaults -S --vnc :0 --chardev null,id=,
+> >>     Identifiers consist of letters, digits, '-', '.', '_', starting
+> >> with a letter.
+> >>     qemu-system-x86_64: -chardev null,id=,: Parameter 'id' expects
+> >> an identifier
 > >> 
-> >> Since I'm touching these lines anyway, drop a stray preposition and
-> >> some tabs.  We don't use tabs for similar messages elsewhere.
+> >>     $ qemu-system-x86_64 --nodefaults -S --vnc :0 --machine
+> >> kvm_shadow_mem=dunno
+> >>     You may use k, M, G or T suffixes for kilobytes, megabytes,
+> >> gigabytes and terabytes.
+> >>     qemu-system-x86_64: -machine kvm_shadow_mem=dunno: Parameter
+> >> kvm_shadow_mem' expects a size
 > >> 
-> >> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> >> ---
-> >>  hw/kvm/pci-assign.c | 12 ++++++------
-> >>  1 file changed, 6 insertions(+), 6 deletions(-)
-> >> 
-> >> diff --git a/hw/kvm/pci-assign.c b/hw/kvm/pci-assign.c
-> >> index 896cfe8..da64b5b 100644
-> >> --- a/hw/kvm/pci-assign.c
-> >> +++ b/hw/kvm/pci-assign.c
-> >> @@ -936,8 +936,8 @@ retry:
-> >>              /* Retry with host-side MSI. There might be an IRQ conflict and
-> >>               * either the kernel or the device doesn't support sharing. */
-> >>              error_report("Host-side INTx sharing not supported, "
-> >> -                         "using MSI instead.\n"
-> >> -                         "Some devices do not to work properly in this mode.");
-> >> +                         "using MSI instead");
-> >> +            error_printf("Some devices do not work properly in this mode.\n");
+> >> Pity.  Disable them for now.
 > >
-> > This is fixing command-line, right?
+> > Oops, sorry. I think I'd prefer to drop them, but as this fixes the problem:
+> >
+> > Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
+> >
+> > Also, the real problem here is that general functions like parse_option_size()
+> > should never assume/try to guess in which context they're running. So, the
+> > best solution here is either to have a general enough error message that's
+> > not tied to any context, or let up layers (say vl.c) concatenate the
+> > context-dependent part of the error message.
 > 
-> Whatever made assign_intx() run.  I'm not familiar with this code, and I
-> don't know how to trigger the error.
-> 
-> Hmm, one call chain is via PCIDeviceClass init method assigned_initfn().
-> So it could also be device_add.
-> 
-> > I honestly don't know which is less worse, the current code or having
-> > to call two different functions in the correct order to report an
-> > error :(
-> 
-> You call one function to report the error.  In the rare case that you
-> want to add some explanation or hint to the error message, you use
-> another function to print to the error destination.  Big deal :)
+> I'm open to suggestions on how to better code the pattern "report an
+> error (a short string without newlines) together with some explanation
+> or hint (possibly longer string, newlines okay).
 
-I think the important point is not whether or not this is a big deal,
-but that this is a bad API which will break from time to time (as it's
-more or less the case now).
-
-> Explanations and hints are *not* error messages.  Sticking them into the
-> error string like the code does before my patch happens to work due to
-> the way error_report() formats the error message.  Relying on that is
-> unclean.  Besides, error_report()'s function comment clearly stipulates
-> "no newlines".
-
-I agree.
-
-But regarding this patch, we first have to decide whether or not this is
-good for 1.4 and then we have to come with a better solution for this
-(post 1.4).
-
-Regarding the first point, I have to questions:
-
- 1. Were the additional newlines added in 1.4?
-
- 2. What's the worse case here?
+The real problem here is that the k, M, G suffixes, for example, are not
+good to be reported by QMP. So maybe we should refactor the code in a way
+that we separate what's done in QMP from what is done in HMP/command-line.
 
