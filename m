@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U3qds-00013T-DL
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Feb 2013 11:17:36 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:33596)
+	id 1U3qdu-0001An-Qc
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Feb 2013 11:17:38 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:33570)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1U3qdh-0000Zy-P7
+	(envelope-from <armbru@pond.sub.org>) id 1U3qdg-0000WW-Jn
 	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 11:17:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1U3qde-0008Jk-Rv
-	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 11:17:25 -0500
-Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:39710)
+	(envelope-from <armbru@pond.sub.org>) id 1U3qde-0008JJ-A1
+	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 11:17:24 -0500
+Received: from oxygen.pond.sub.org ([2a01:4f8:121:10e4::3]:39711)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@pond.sub.org>)
-	id 1U3qdX-0008GI-Qh; Fri, 08 Feb 2013 11:17:15 -0500
+	id 1U3qdX-0008GJ-Qk; Fri, 08 Feb 2013 11:17:15 -0500
 Received: from blackfin.pond.sub.org (p5B32B25A.dip.t-dialin.net
 	[91.50.178.90])
-	by oxygen.pond.sub.org (Postfix) with ESMTPA id 8FC56A3E6F;
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id 8412BA2C87;
 	Fri,  8 Feb 2013 17:17:14 +0100 (CET)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E8B92200AE; Fri,  8 Feb 2013 17:17:12 +0100 (CET)
+	id D99CE200AD; Fri,  8 Feb 2013 17:17:12 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Fri,  8 Feb 2013 17:17:11 +0100
-Message-Id: <1360340232-4670-6-git-send-email-armbru@redhat.com>
+Date: Fri,  8 Feb 2013 17:17:12 +0100
+Message-Id: <1360340232-4670-7-git-send-email-armbru@redhat.com>
 X-Mailer: git-send-email 1.7.11.7
 In-Reply-To: <1360340232-4670-1-git-send-email-armbru@redhat.com>
 References: <1360340232-4670-1-git-send-email-armbru@redhat.com>
@@ -29,8 +29,8 @@ X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2a01:4f8:121:10e4::3
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, lcapitulino@redhat.com
-Subject: [Qemu-trivial] [PATCH for-1.4 v2 5/6] vl: Drop redundant "parse
-	error" reports
+Subject: [Qemu-trivial] [PATCH for-1.4 v2 6/6] vl: Exit unsuccessfully on
+	option argument syntax error
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,52 +42,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Feb 2013 16:17:31 -0000
+X-List-Received-Date: Fri, 08 Feb 2013 16:17:32 -0000
 
-qemu_opts_parse() reports the error already, and in a much more useful
-way.
+We exit successfully after reporting syntax error for argument of
+--sandbox and --add-fd.
+
+We continue undaunted after reporting it for argument of --option-rom
+and --object then.
+
+Change all four to exit unsuccessfully, like the other options.
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- vl.c | 4 ----
- 1 file changed, 4 deletions(-)
+ vl.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/vl.c b/vl.c
-index a8dc73d..73122d8 100644
+index 73122d8..4245ccc 100644
 --- a/vl.c
 +++ b/vl.c
-@@ -3334,7 +3334,6 @@ int main(int argc, char **argv, char **envp)
-                 }
-                 opts = qemu_opts_parse(olist, optarg, 1);
+@@ -3623,6 +3623,9 @@ int main(int argc, char **argv, char **envp)
+ 		    exit(1);
+ 		}
+                 opts = qemu_opts_parse(qemu_find_opts("option-rom"), optarg, 1);
++                if (!opts) {
++                    exit(1);
++                }
+                 option_rom[nb_option_roms].name = qemu_opt_get(opts, "romfile");
+                 option_rom[nb_option_roms].bootindex =
+                     qemu_opt_get_number(opts, "bootindex", -1);
+@@ -3780,14 +3783,14 @@ int main(int argc, char **argv, char **envp)
+             case QEMU_OPTION_sandbox:
+                 opts = qemu_opts_parse(qemu_find_opts("sandbox"), optarg, 1);
                  if (!opts) {
--                    fprintf(stderr, "parse error: %s\n", optarg);
-                     exit(1);
+-                    exit(0);
++                    exit(1);
                  }
                  break;
-@@ -3350,7 +3349,6 @@ int main(int argc, char **argv, char **envp)
-                 }
-                 opts = qemu_opts_parse(olist, optarg, 1);
+             case QEMU_OPTION_add_fd:
+ #ifndef _WIN32
+                 opts = qemu_opts_parse(qemu_find_opts("add-fd"), optarg, 0);
                  if (!opts) {
--                    fprintf(stderr, "parse error: %s\n", optarg);
-                     exit(1);
+-                    exit(0);
++                    exit(1);
                  }
- 
-@@ -3521,7 +3519,6 @@ int main(int argc, char **argv, char **envp)
-                 olist = qemu_find_opts("machine");
-                 opts = qemu_opts_parse(olist, optarg, 1);
-                 if (!opts) {
--                    fprintf(stderr, "parse error: %s\n", optarg);
-                     exit(1);
-                 }
-                 optarg = qemu_opt_get(opts, "type");
-@@ -3755,7 +3752,6 @@ int main(int argc, char **argv, char **envp)
-                 }
-                 opts = qemu_opts_parse(olist, optarg, 0);
-                 if (!opts) {
--                    fprintf(stderr, "parse error: %s\n", optarg);
-                     exit(1);
-                 }
+ #else
+                 error_report("File descriptor passing is disabled on this "
+@@ -3797,6 +3800,9 @@ int main(int argc, char **argv, char **envp)
                  break;
+             case QEMU_OPTION_object:
+                 opts = qemu_opts_parse(qemu_find_opts("object"), optarg, 1);
++                if (!opts) {
++                    exit(1);
++                }
+                 break;
+             default:
+                 os_parse_cmd_args(popt->index, optarg);
 -- 
 1.7.11.7
 
