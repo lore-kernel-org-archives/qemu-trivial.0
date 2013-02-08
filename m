@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U3tRF-00074e-CP
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Feb 2013 14:16:45 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:49597)
+	id 1U3tRU-0007mz-Jm
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Feb 2013 14:17:00 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:49665)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1U3tRC-0006wq-QS
-	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 14:16:44 -0500
+	(envelope-from <lcapitulino@redhat.com>) id 1U3tRO-0007UB-Bp
+	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 14:16:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1U3tRB-0003e1-C4
-	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 14:16:42 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:61314)
+	(envelope-from <lcapitulino@redhat.com>) id 1U3tRM-0003hW-OW
+	for qemu-trivial@nongnu.org; Fri, 08 Feb 2013 14:16:54 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:30460)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lcapitulino@redhat.com>)
-	id 1U3tR5-0003c0-Nt; Fri, 08 Feb 2013 14:16:35 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r18JGXub007399
+	id 1U3tRH-0003fL-VA; Fri, 08 Feb 2013 14:16:48 -0500
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r18JGjgl029034
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 8 Feb 2013 14:16:33 -0500
+	Fri, 8 Feb 2013 14:16:45 -0500
 Received: from localhost (ovpn-113-129.phx2.redhat.com [10.3.113.129])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r18JGVHo029479; Fri, 8 Feb 2013 14:16:31 -0500
-Date: Fri, 8 Feb 2013 17:16:30 -0200
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r18JGhAf025695; Fri, 8 Feb 2013 14:16:44 -0500
+Date: Fri, 8 Feb 2013 17:16:43 -0200
 From: Luiz Capitulino <lcapitulino@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20130208171630.3deddd59@redhat.com>
-In-Reply-To: <87sj56d44d.fsf@blackfin.pond.sub.org>
+Message-ID: <20130208171643.6c15fec9@redhat.com>
+In-Reply-To: <87txpmbphw.fsf@blackfin.pond.sub.org>
 References: <1360340232-4670-1-git-send-email-armbru@redhat.com>
-	<1360340232-4670-5-git-send-email-armbru@redhat.com>
-	<20130208155324.0c456dcc@redhat.com>
-	<87sj56d44d.fsf@blackfin.pond.sub.org>
+	<87txpmbphw.fsf@blackfin.pond.sub.org>
 Organization: Red Hat
 Mime-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH for-1.4 v2 4/6] qemu-option: Disable two
- helpful messages that got broken recently
+Subject: Re: [Qemu-trivial] [PATCH for-1.4 v2 0/6] Error reporting fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,49 +47,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Feb 2013 19:16:44 -0000
+X-List-Received-Date: Fri, 08 Feb 2013 19:16:58 -0000
 
-On Fri, 08 Feb 2013 19:58:42 +0100
+On Fri, 08 Feb 2013 19:59:55 +0100
 Markus Armbruster <armbru@redhat.com> wrote:
 
-> Luiz Capitulino <lcapitulino@redhat.com> writes:
-> 
-> > On Fri,  8 Feb 2013 17:17:10 +0100
-> > Markus Armbruster <armbru@redhat.com> wrote:
-> >
-> >> commit 8be7e7e4 and commit ec7b2ccb messed up the ordering of error
-> >> message and the helpful explanation that should follow it, like this:
-> >> 
-> >>     $ qemu-system-x86_64 --nodefaults -S --vnc :0 --chardev null,id=,
-> >>     Identifiers consist of letters, digits, '-', '.', '_', starting
-> >> with a letter.
-> >>     qemu-system-x86_64: -chardev null,id=,: Parameter 'id' expects
-> >> an identifier
-> >> 
-> >>     $ qemu-system-x86_64 --nodefaults -S --vnc :0 --machine
-> >> kvm_shadow_mem=dunno
-> >>     You may use k, M, G or T suffixes for kilobytes, megabytes,
-> >> gigabytes and terabytes.
-> >>     qemu-system-x86_64: -machine kvm_shadow_mem=dunno: Parameter
-> >> kvm_shadow_mem' expects a size
-> >> 
-> >> Pity.  Disable them for now.
-> >
-> > Oops, sorry. I think I'd prefer to drop them, but as this fixes the problem:
-> >
-> > Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
-> >
-> > Also, the real problem here is that general functions like parse_option_size()
-> > should never assume/try to guess in which context they're running. So, the
-> > best solution here is either to have a general enough error message that's
-> > not tied to any context, or let up layers (say vl.c) concatenate the
-> > context-dependent part of the error message.
-> 
-> I'm open to suggestions on how to better code the pattern "report an
-> error (a short string without newlines) together with some explanation
-> or hint (possibly longer string, newlines okay).
+> Luiz, would you like to take v3 through your tree?  In that case I'd
+> drop qemu-trivial.
 
-The real problem here is that the k, M, G suffixes, for example, are not
-good to be reported by QMP. So maybe we should refactor the code in a way
-that we separate what's done in QMP from what is done in HMP/command-line.
+Yes, I can do it.
 
