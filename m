@@ -1,60 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U4nco-0007nj-4T
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Feb 2013 02:16:26 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:50593)
+	id 1U4t8B-0006cl-LA
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Feb 2013 08:09:11 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:53827)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@xilinx.com>) id 1U4nck-0007lk-Sg
-	for qemu-trivial@nongnu.org; Mon, 11 Feb 2013 02:16:23 -0500
+	(envelope-from <stefanha@gmail.com>) id 1U4t88-0006TF-70
+	for qemu-trivial@nongnu.org; Mon, 11 Feb 2013 08:09:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@xilinx.com>) id 1U4ncj-0006MF-RH
-	for qemu-trivial@nongnu.org; Mon, 11 Feb 2013 02:16:22 -0500
-Received: from ch1ehsobe006.messaging.microsoft.com ([216.32.181.186]:46199
-	helo=ch1outboundpool.messaging.microsoft.com)
+	(envelope-from <stefanha@gmail.com>) id 1U4t87-0001iC-0L
+	for qemu-trivial@nongnu.org; Mon, 11 Feb 2013 08:09:08 -0500
+Received: from mail-wg0-f44.google.com ([74.125.82.44]:34625)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@xilinx.com>)
-	id 1U4ncj-0006M5-NM; Mon, 11 Feb 2013 02:16:21 -0500
-Received: from mail246-ch1-R.bigfish.com (10.43.68.253) by
-	CH1EHSOBE009.bigfish.com (10.43.70.59) with Microsoft SMTP Server id
-	14.1.225.23; Mon, 11 Feb 2013 07:16:20 +0000
-Received: from mail246-ch1 (localhost [127.0.0.1])	by
-	mail246-ch1-R.bigfish.com (Postfix) with ESMTP id E20B01B801BE;
-	Mon, 11 Feb 2013 07:16:19 +0000 (UTC)
-X-Forefront-Antispam-Report: CIP:149.199.60.83; KIP:(null); UIP:(null); IPV:NLI;
-	H:xsj-gw1; RD:unknown-60-83.xilinx.com; EFVD:NLI
-X-SpamScore: 1
-X-BigFish: VPS1(zzzz1f42h1ee6h1de0h1202h1e76h1d1ah1d2ahzz8275bhz2fh95h668h839hd24hf0ah119dh1288h12a5h12a9h12bdh12e5h137ah139eh13b6h1441h14ddh1504h1537h162dh1631h1758h1898h18e1h1946h19b5h906i1155h)
-Received-SPF: pass (mail246-ch1: domain of xilinx.com designates 149.199.60.83
-	as permitted sender) client-ip=149.199.60.83;
-	envelope-from=peter.crosthwaite@xilinx.com; helo=xsj-gw1 ;
-	helo=xsj-gw1 ; 
-Received: from mail246-ch1 (localhost.localdomain [127.0.0.1]) by mail246-ch1
-	(MessageSwitch) id 1360566978601290_24389;
-	Mon, 11 Feb 2013 07:16:18 +0000 (UTC)
-Received: from CH1EHSMHS010.bigfish.com (snatpool2.int.messaging.microsoft.com
-	[10.43.68.239])	by mail246-ch1.bigfish.com (Postfix) with ESMTP id
-	865631A40048;	Mon, 11 Feb 2013 07:16:18 +0000 (UTC)
-Received: from xsj-gw1 (149.199.60.83) by CH1EHSMHS010.bigfish.com
-	(10.43.70.10) with Microsoft SMTP Server id 14.1.225.23;
-	Mon, 11 Feb 2013 07:16:18 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]
-	helo=xsj-smtp1.xilinx.com)	by xsj-gw1 with esmtp (Exim
-	4.63)	(envelope-from
-	<peter.crosthwaite@xilinx.com>)	id 1U4ncf-0001t6-SC; Sun, 10 Feb 2013
-	23:16:17 -0800
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: <qemu-devel@nongnu.org>
-Date: Mon, 11 Feb 2013 17:16:05 +1000
-X-Mailer: git-send-email 1.7.0.4
-X-RCIS-Action: ALLOW
+	(envelope-from <stefanha@gmail.com>)
+	id 1U4t7y-0001h5-W5; Mon, 11 Feb 2013 08:08:59 -0500
+Received: by mail-wg0-f44.google.com with SMTP id dr12so4672991wgb.35
+	for <multiple recipients>; Mon, 11 Feb 2013 05:08:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition
+	:content-transfer-encoding:in-reply-to:user-agent;
+	bh=hoC0iv2AdD/sCbmnclCMEdsP/tedMMPjLnGrZzwiQQw=;
+	b=u0cNdxftvri+57l7Ruhjq/82eiqQNqensyII3sz81hxMEh2tGqRefxnHVKO4HX3CnK
+	TLQPkakGXyF1gve2vgCwxVWYt9D92EdvzQSwq4J+4LvUWsQz82qPB98arAvLO88AMGQT
+	jlWLk6wVoj2Cg6u6IIE3r14QjTTQXSfg/baJXHAeIEd6QKhD+VCnhEuNgyEeI9dQmiYo
+	5CThS0HGdEIfpaRmXY/K86jFzQuuQ9bHebYaWhC/tE5GSjcrMiDiv4rDzeLb3SnpmpKI
+	CIO6dROB8tPe1IJqI2t0eWBqCt1iu7nyRI3CnPgaLcQaMiZ9TmUDLzWBJyDDxv6CeNSP
+	C6Pw==
+X-Received: by 10.194.172.197 with SMTP id be5mr23763203wjc.20.1360588128564; 
+	Mon, 11 Feb 2013 05:08:48 -0800 (PST)
+Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
+	by mx.google.com with ESMTPS id gy2sm33088911wib.3.2013.02.11.05.08.46
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Mon, 11 Feb 2013 05:08:47 -0800 (PST)
+Date: Mon, 11 Feb 2013 14:08:45 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>
+Message-ID: <20130211130845.GB6491@stefanha-thinkpad.redhat.com>
+References: <1360534265-6477-1-git-send-email-hpoussin@reactos.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-Message-ID: <0c6a908b-571a-4573-b175-47f760f22135@CH1EHSMHS010.ehs.local>
-X-OriginatorOrg: xilinx.com
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 216.32.181.186
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Subject: [Qemu-trivial] [PATCH] xilinx_axienet.c: Assert no error when
-	making link
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1360534265-6477-1-git-send-email-hpoussin@reactos.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.125.82.44
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Remove forward declaration
+ of non-existant variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,35 +58,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Feb 2013 07:16:23 -0000
+X-List-Received-Date: Mon, 11 Feb 2013 13:09:10 -0000
 
-This gives an awful silent failure when it doesn't work. Assert against link
-creation failure.
+On Sun, Feb 10, 2013 at 11:11:05PM +0100, Hervé Poussineau wrote:
+> This variable has been removed 5 years ago in 970ac5a3082428dca91171f270dcd95d6f4b2636.
+> 
+> Signed-off-by: Hervé Poussineau <hpoussin@reactos.org>
+> ---
+>  include/sysemu/sysemu.h |    1 -
+>  1 file changed, 1 deletion(-)
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
----
- hw/xilinx_axienet.c |    4 +++-
- 1 files changed, 3 insertions(+), 1 deletions(-)
+Thanks, applied to the trivial patches -next tree:
+https://github.com/stefanha/qemu/commits/trivial-patches-next
 
-diff --git a/hw/xilinx_axienet.c b/hw/xilinx_axienet.c
-index 34e344c..e5d9251 100644
---- a/hw/xilinx_axienet.c
-+++ b/hw/xilinx_axienet.c
-@@ -869,9 +869,11 @@ static int xilinx_enet_init(SysBusDevice *dev)
- static void xilinx_enet_initfn(Object *obj)
- {
-     struct XilinxAXIEnet *s = FROM_SYSBUS(typeof(*s), SYS_BUS_DEVICE(obj));
-+    Error *errp = NULL;
- 
-     object_property_add_link(obj, "axistream-connected", TYPE_STREAM_SLAVE,
--                             (Object **) &s->tx_dev, NULL);
-+                             (Object **) &s->tx_dev, &errp);
-+    assert_no_error(errp);
- }
- 
- static Property xilinx_enet_properties[] = {
--- 
-1.7.0.4
-
-
+Stefan
 
