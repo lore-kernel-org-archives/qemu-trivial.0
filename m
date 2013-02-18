@@ -1,50 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U7O9f-0003wM-Mu
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Feb 2013 05:41:03 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:57592)
+	id 1U7R41-0005ZN-Kq
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Feb 2013 08:47:25 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:53834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1U7O9a-0001hv-18
-	for qemu-trivial@nongnu.org; Mon, 18 Feb 2013 05:41:02 -0500
+	(envelope-from <stefanha@redhat.com>) id 1U7R3s-0005YZ-GC
+	for qemu-trivial@nongnu.org; Mon, 18 Feb 2013 08:47:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1U7O4d-0008Jw-T9
-	for qemu-trivial@nongnu.org; Mon, 18 Feb 2013 05:36:00 -0500
-Received: from mail-la0-x234.google.com ([2a00:1450:4010:c03::234]:54674)
+	(envelope-from <stefanha@redhat.com>) id 1U7R3o-0003pu-KV
+	for qemu-trivial@nongnu.org; Mon, 18 Feb 2013 08:47:16 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50993)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1U7O4d-0008JN-GR
-	for qemu-trivial@nongnu.org; Mon, 18 Feb 2013 05:35:51 -0500
-Received: by mail-la0-f52.google.com with SMTP id fs12so5182957lab.25
-	for <qemu-trivial@nongnu.org>; Mon, 18 Feb 2013 02:35:50 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:mime-version:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type:x-gm-message-state;
-	bh=garMBa5VQNEQLaNu5U8u2o4dtdfIFmMPg7RT+4NOzOk=;
-	b=V/PfDp8SROJm0Yuhm1wOIWVczJrW+K7F6sLZjoqhvh1s7qeaAiJtmHV/x7QdlhURp2
-	3+4sTdd/CQw4D/o/dBaZg5QIi/kbJTyfc1Yj7lyoJfF1jKS8Zblt37n+/3su1X+R/p0T
-	XGs9oA9UUW/VLV0M1wIXFB3WfizyFSUkht/DiHgRT4gkDK4LVZX/wgRcdQnYuBhwbP0V
-	yE62Ba/1+wMfjOhgWxbj3kEHzXO12vDTAmAO/NmXXDAid6oELwuZahouy+1PeBN0XJcm
-	EX0Ehs0152S//3IQ1pxtnQaxlJW/TizIrP7ogix0FYfhxUu9hgKu+gsG3GPQUCUIvYF7
-	gGuw==
-X-Received: by 10.152.132.138 with SMTP id ou10mr10179076lab.56.1361183386518; 
-	Mon, 18 Feb 2013 02:29:46 -0800 (PST)
+	(envelope-from <stefanha@redhat.com>)
+	id 1U7R3o-0003pc-Cf; Mon, 18 Feb 2013 08:47:12 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r1IDl9JD023544
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 18 Feb 2013 08:47:09 -0500
+Received: from localhost (ovpn-112-30.ams2.redhat.com [10.36.112.30])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r1IDl7Zw008003; Mon, 18 Feb 2013 08:47:09 -0500
+Date: Mon, 18 Feb 2013 14:47:07 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Fabien Chouteau <chouteau@adacore.com>
+Message-ID: <20130218134707.GC10700@stefanha-thinkpad.redhat.com>
+References: <1360160243-31611-1-git-send-email-chouteau@adacore.com>
 MIME-Version: 1.0
-Received: by 10.112.47.68 with HTTP; Mon, 18 Feb 2013 02:29:26 -0800 (PST)
-In-Reply-To: <1359825474-26661-1-git-send-email-peter.maydell@linaro.org>
-References: <1359825474-26661-1-git-send-email-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Feb 2013 10:29:26 +0000
-Message-ID: <CAFEAcA9Fi4t1+d_Jn8+jsbnTmw1gEUD4TKpTqb=FSZTcxS6c8A@mail.gmail.com>
-To: qemu-devel@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnXg7V86uSj9454pKJX/VkGk8f2QZsyVbDEDDBmNn1BZb25L5R8EnvKvcjvdQQoZPy6ykTp
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c03::234
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <andreas.faerber@web.de>,
-	patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] disas/i386.c: Add explicit
- braces round empty for-loop body
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1360160243-31611-1-git-send-email-chouteau@adacore.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, kwolf@redhat.com, qemu-devel@nongnu.org,
+	armbru@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH V2] get_tmp_filename: add explicit error
+	message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,64 +48,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Feb 2013 10:41:02 -0000
+X-List-Received-Date: Mon, 18 Feb 2013 13:47:24 -0000
 
-Post-unfreeze ping for trivial...
-( patchwork url: http://patchwork.ozlabs.org/patch/217696/ )
-
-thanks
--- PMM
-
-On 2 February 2013 17:17, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Add explicit braces round an empty for-loop body; this fits
-> QEMU style and is easier to read than an inconspicuous semicolon
-> at the end of the line. It also silences a clang warning:
->
-> disas/i386.c:4723:49: warning: for loop has empty body [-Wempty-body]
->           for (i = 0; tmp[i] == '0' && tmp[i + 1]; i++);
->                                                        ^
-> disas/i386.c:4723:49: note: put the semicolon on a separate line to silence this warning [-Wempty-body]
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Wed, Feb 06, 2013 at 03:17:23PM +0100, Fabien Chouteau wrote:
+> Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
 > ---
-> This is the only clang warning on MacOSX apart from the ones about
-> deprecated features in audio/coreaudio.c and ui/cocoa.m, which is why
-> I think it's worth zapping despite it being a style issue in one of the
-> bits of disassembler code we got from binutils and which aren't generally
-> in QEMU style.
->
-> checkpatch complains about the non-multiple-of-4 indent:
-> WARNING: suspect code indent for conditional statements (10, 10)
-> #27: FILE: disas/i386.c:4723:
-> +          for (i = 0; tmp[i] == '0' && tmp[i + 1]; i++) {
-> +          }
->
-> but I didn't see any value in reindenting the whole function just to
-> shut it up.
->
-> At some point in the 1.5 cycle maybe we could update the code to avoid
-> the deprecated MacOS functions and then we could enable warnings-are-errors
-> on MacOS too.
->
->  disas/i386.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/disas/i386.c b/disas/i386.c
-> index 3b006b1..dbecf1f 100644
-> --- a/disas/i386.c
-> +++ b/disas/i386.c
-> @@ -4720,7 +4720,8 @@ print_operand_value (char *buf, size_t bufsize, int hex, bfd_vma disp)
->           buf[0] = '0';
->           buf[1] = 'x';
->            snprintf_vma (tmp, sizeof(tmp), disp);
-> -         for (i = 0; tmp[i] == '0' && tmp[i + 1]; i++);
-> +          for (i = 0; tmp[i] == '0' && tmp[i + 1]; i++) {
-> +          }
->            pstrcpy (buf + 2, bufsize - 2, tmp + i);
->         }
->        else
-> --
-> 1.7.11.4
->
->
+>  block.c |   15 ++++++++++++---
+>  1 file changed, 12 insertions(+), 3 deletions(-)
+
+Markus: Any more feedback on this patch?
+
+> diff --git a/block.c b/block.c
+> index ba67c0d..79fe01b 100644
+> --- a/block.c
+> +++ b/block.c
+> @@ -428,9 +428,16 @@ int get_tmp_filename(char *filename, int size)
+>      /* GetTempFileName requires that its output buffer (4th param)
+>         have length MAX_PATH or greater.  */
+>      assert(size >= MAX_PATH);
+> -    return (GetTempPath(MAX_PATH, temp_dir)
+> -            && GetTempFileName(temp_dir, "qem", 0, filename)
+> -            ? 0 : -GetLastError());
+> +    if (GetTempPath(MAX_PATH, temp_dir) == 0) {
+> +        error_report("%s: GetTempPath() error: %d\n", __func__, GetLastError());
+> +        return -GetLastError();
+> +    }
+> +    if (GetTempFileName(temp_dir, "qem", 0, filename) == 0) {
+> +        error_report("%s: GetTempFileName(%s) error: %d\n", __func__, temp_dir,
+> +                GetLastError());
+> +        return -GetLastError();
+> +    }
+> +    return 0;
+>  #else
+>      int fd;
+>      const char *tmpdir;
+> @@ -442,9 +449,11 @@ int get_tmp_filename(char *filename, int size)
+>      }
+>      fd = mkstemp(filename);
+>      if (fd < 0) {
+> +        error_report("%s: mkstemp() error: %s\n", __func__, strerror(errno));
+>          return -errno;
+>      }
+>      if (close(fd) != 0) {
+> +        error_report("%s: close() error: %s\n", __func__, strerror(errno));
+>          unlink(filename);
+>          return -errno;
+>      }
+> -- 
+> 1.7.9.5
+> 
 
