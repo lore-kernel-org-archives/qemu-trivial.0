@@ -1,50 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U8Sc1-00088O-5Q
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Feb 2013 04:38:45 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:57710)
+	id 1U8e95-0006qa-AP
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Feb 2013 16:57:39 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:33004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1U8Sbu-0007oh-Ct
-	for qemu-trivial@nongnu.org; Thu, 21 Feb 2013 04:38:43 -0500
+	(envelope-from <hpoussin@reactos.org>) id 1U8e91-0006eZ-AO
+	for qemu-trivial@nongnu.org; Thu, 21 Feb 2013 16:57:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1U8Sbq-0002DJ-By
-	for qemu-trivial@nongnu.org; Thu, 21 Feb 2013 04:38:38 -0500
-Received: from mail-wi0-f171.google.com ([209.85.212.171]:53959)
+	(envelope-from <hpoussin@reactos.org>) id 1U8e8z-0004Qc-Sp
+	for qemu-trivial@nongnu.org; Thu, 21 Feb 2013 16:57:35 -0500
+Received: from smtp1-g21.free.fr ([2a01:e0c:1:1599::10]:39219)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1U8SbZ-00026p-Qu; Thu, 21 Feb 2013 04:38:18 -0500
-Received: by mail-wi0-f171.google.com with SMTP id hn17so7243093wib.16
-	for <multiple recipients>; Thu, 21 Feb 2013 01:38:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=lcMWOWk0XUxZSvH2EygRBrRsbD7W7AjNoMsToKHDM/o=;
-	b=e3O0UzaUJ0BIBcS0424V76tVdEBkG5fN9WlKG0JCyCdVo9bWcRoCVPqdp4Lft1Be3G
-	d81WzWxEj9RrROvsctsOjE8swWsNol8wyUkj3vlNGgXXUsa1xujuc5WAqJ3BU4GINhuf
-	KImFr818YjoX0GW8qkrrDZHH9FNG9fDKaAemv2L2hcpvaA6VJNrI57aoTP09AQISbaW0
-	IS8qXCLbcaYFG0Oka3AKQZf9zOOCGEf4Uk/5gAKS+baTKs6wj391cbotC5+N7ajbqqTv
-	iwYtsaCaDQNQyyI/X5XaaZFx/BdD3hQGFMCICeaJaS8VfAauoJteZx1C1ULDxQdgxPGp
-	jCZA==
-X-Received: by 10.180.80.34 with SMTP id o2mr2637321wix.0.1361439496798;
-	Thu, 21 Feb 2013 01:38:16 -0800 (PST)
-Received: from localhost ([2a02:810d:ec0:dd:4041:25e8:2e7:b222])
-	by mx.google.com with ESMTPS id cf8sm26343514wib.1.2013.02.21.01.38.14
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Thu, 21 Feb 2013 01:38:15 -0800 (PST)
-Date: Thu, 21 Feb 2013 10:38:13 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Cole Robinson <crobinso@redhat.com>
-Message-ID: <20130221093813.GA23228@stefanha-thinkpad.redhat.com>
-References: <c6ae3e0f8f1c3aa615871b6ae6b6f975effa4e6e.1361313688.git.crobinso@redhat.com>
+	(envelope-from <hpoussin@reactos.org>)
+	id 1U8e8v-0004LK-G5; Thu, 21 Feb 2013 16:57:30 -0500
+Received: from localhost.localdomain (unknown [82.227.227.196])
+	by smtp1-g21.free.fr (Postfix) with ESMTP id C53AE94003C;
+	Thu, 21 Feb 2013 22:57:15 +0100 (CET)
+From: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 21 Feb 2013 22:58:08 +0100
+Message-Id: <1361483888-8976-1-git-send-email-hpoussin@reactos.org>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c6ae3e0f8f1c3aa615871b6ae6b6f975effa4e6e.1361313688.git.crobinso@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.212.171
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] .gitignore: Ignore
-	optionrom/*.asm
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:e0c:1:1599::10
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [Qemu-trivial] [PATCH] xhci: fix bad print specifier
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,17 +41,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Feb 2013 09:38:43 -0000
+X-List-Received-Date: Thu, 21 Feb 2013 21:57:38 -0000
 
-On Tue, Feb 19, 2013 at 05:41:28PM -0500, Cole Robinson wrote:
-> 
-> Signed-off-by: Cole Robinson <crobinso@redhat.com>
-> ---
->  .gitignore | 3 +++
->  1 file changed, 3 insertions(+)
+This fixes the following compilation error:
+hw/usb/hcd-xhci.c:1156:17: error: format =E2=80=98%llx=E2=80=99 expects a=
+rgument of type
+=E2=80=98long long unsigned int=E2=80=99, but argument 4 has type =E2=80=98=
+unsigned int=E2=80=99
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+---
+ hw/usb/hcd-xhci.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Stefan
+diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+index 5796102..07afdee 100644
+--- a/hw/usb/hcd-xhci.c
++++ b/hw/usb/hcd-xhci.c
+@@ -1152,8 +1152,8 @@ static XHCIStreamContext *xhci_find_stream(XHCIEPCo=
+ntext *epctx,
+=20
+     if (sctx->sct =3D=3D -1) {
+         xhci_dma_read_u32s(epctx->xhci, sctx->pctx, ctx, sizeof(ctx));
+-        fprintf(stderr, "%s: init sctx #%d @ %lx: %08x %08x\n", __func__=
+,
+-                streamid, sctx->pctx, ctx[0], ctx[1]);
++        fprintf(stderr, "%s: init sctx #%d @ " DMA_ADDR_FMT ": %08x %08x=
+\n",
++                __func__, streamid, sctx->pctx, ctx[0], ctx[1]);
+         sct =3D (ctx[0] >> 1) & 0x07;
+         if (epctx->lsa && sct !=3D 1) {
+             *cc_error =3D CC_INVALID_STREAM_TYPE_ERROR;
+--=20
+1.7.10.4
+
 
