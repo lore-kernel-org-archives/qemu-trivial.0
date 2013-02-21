@@ -1,34 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1U7wBT-0004Q2-BA
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2013 18:01:11 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58300)
+	id 1U8Md5-0003XI-RK
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Feb 2013 22:15:27 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:46693)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>) id 1U7vsd-0002av-E7
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2013 17:41:44 -0500
+	(envelope-from <alinush@t400>) id 1U8Mcy-0003CY-Mn
+	for qemu-trivial@nongnu.org; Wed, 20 Feb 2013 22:15:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>) id 1U7vsY-00005p-Nn
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2013 17:41:43 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:28611)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>)
-	id 1U7vsT-0008Vh-6D; Tue, 19 Feb 2013 17:41:33 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r1JMfWHF001582
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 19 Feb 2013 17:41:32 -0500
-Received: from colepc.redhat.com (ovpn-113-128.phx2.redhat.com [10.3.113.128])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id r1JMfVaW003031; Tue, 19 Feb 2013 17:41:31 -0500
-From: Cole Robinson <crobinso@redhat.com>
+	(envelope-from <alinush@t400>) id 1U8Mct-0000eJ-6i
+	for qemu-trivial@nongnu.org; Wed, 20 Feb 2013 22:15:20 -0500
+Received: from cpe-72-229-54-85.nyc.res.rr.com ([72.229.54.85]:55057 helo=t400)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <alinush@t400>)
+	id 1U8Mch-0000My-1C; Wed, 20 Feb 2013 22:15:03 -0500
+Received: by t400 (Postfix, from userid 1000)
+	id 0034026469B; Wed, 20 Feb 2013 21:36:19 -0500 (EST)
+From: Alin Tomescu <tomescu.alin@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 19 Feb 2013 17:41:28 -0500
-Message-Id: <c6ae3e0f8f1c3aa615871b6ae6b6f975effa4e6e.1361313688.git.crobinso@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Date: Wed, 20 Feb 2013 21:36:09 -0500
+Message-Id: <1361414169-2887-1-git-send-email-tomescu.alin@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Cole Robinson <crobinso@redhat.com>
-Subject: [Qemu-trivial] [PATCH] .gitignore: Ignore optionrom/*.asm
+X-Received-From: 72.229.54.85
+Cc: qemu-trivial@nongnu.org, Alin Tomescu <tomescu.alin@gmail.com>
+Subject: [Qemu-trivial] [PATCH] ppc: fixed RAM initialization bug in
+	hw/ppc4xx_devs.c,
+	can now use memory larger than 256MB in bamboo PPC machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,35 +35,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Feb 2013 23:01:10 -0000
+X-List-Received-Date: Thu, 21 Feb 2013 03:15:25 -0000
 
+I hope this is the right way of submitting QEMU patches.
 
-Signed-off-by: Cole Robinson <crobinso@redhat.com>
+I was trying to launch a PowerPC "bamboo" machine with more than 256MB of RAM
+with qemu-system-ppc -M bamboo -kernel $kernel -initrd $ramdisk -m 512, but QEMU
+would just hang. However, when I used -m 256, the machine would boot.
+
+I looked through the code in hw/ and it seems there is an error when the
+RAM memory is setup (if my understanding is correct).
+
+After patching it, the machine launched and booted successfully with 512MB of
+RAM.
+
+Signed-off-by: Alin Tomescu <tomescu.alin@gmail.com>
 ---
- .gitignore | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/ppc4xx_devs.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.gitignore b/.gitignore
-index 53fe9c3..27ad002 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -83,12 +83,15 @@ fsdev/virtfs-proxy-helper.pod
- patches
- pc-bios/bios-pq/status
- pc-bios/vgabios-pq/status
-+pc-bios/optionrom/linuxboot.asm
- pc-bios/optionrom/linuxboot.bin
- pc-bios/optionrom/linuxboot.raw
- pc-bios/optionrom/linuxboot.img
-+pc-bios/optionrom/multiboot.asm
- pc-bios/optionrom/multiboot.bin
- pc-bios/optionrom/multiboot.raw
- pc-bios/optionrom/multiboot.img
-+pc-bios/optionrom/kvmvapic.asm
- pc-bios/optionrom/kvmvapic.bin
- pc-bios/optionrom/kvmvapic.raw
- pc-bios/optionrom/kvmvapic.img
+diff --git a/hw/ppc4xx_devs.c b/hw/ppc4xx_devs.c
+index 5e491bc..b6bb0e1 100644
+--- a/hw/ppc4xx_devs.c
++++ b/hw/ppc4xx_devs.c
+@@ -700,7 +700,7 @@ ram_addr_t ppc4xx_sdram_adjust(ram_addr_t ram_size, int nr_banks,
+                 vmstate_register_ram_global(&ram_memories[i]);
+                 ram_bases[i] = base;
+                 ram_sizes[i] = bank_size;
+-                base += ram_size;
++                base += bank_size;
+                 size_left -= bank_size;
+                 break;
+             }
 -- 
-1.8.1.2
+1.7.9.5
 
 
