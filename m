@@ -1,38 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UBKct-0004P7-L7
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2013 02:43:31 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58614)
+	id 1UBPTR-00064X-3G
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2013 07:54:05 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58103)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>) id 1UBKcr-0004MI-HY
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 02:43:30 -0500
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1UBPTO-00064N-7j
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 07:54:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>) id 1UBKcq-0007DV-KQ
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 02:43:29 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:3269)
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1UBPTM-0003YC-Tf
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 07:54:02 -0500
+Received: from e9.ny.us.ibm.com ([32.97.182.139]:49074)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>)
-	id 1UBKco-0007D0-Go; Fri, 01 Mar 2013 02:43:26 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r217hO1X002742
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 1 Mar 2013 02:43:25 -0500
-Received: from bart.redhat.com (vpn-233-233.phx2.redhat.com [10.3.233.233])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r217hN5f013565; Fri, 1 Mar 2013 02:43:24 -0500
-From: Michal Privoznik <mprivozn@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri,  1 Mar 2013 08:43:18 +0100
-Message-Id: <302ae9628718b0c4ae10528ec97e88a6000b6099.1362123798.git.mprivozn@redhat.com>
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1UBPTM-0003Y2-QB
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 07:54:00 -0500
+Received: from /spool/local
+	by e9.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
+	Fri, 1 Mar 2013 07:54:00 -0500
+Received: from d01dlp01.pok.ibm.com (9.56.250.166)
+	by e9.ny.us.ibm.com (192.168.1.109) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 1 Mar 2013 07:53:56 -0500
+Received: from d01relay02.pok.ibm.com (d01relay02.pok.ibm.com [9.56.227.234])
+	by d01dlp01.pok.ibm.com (Postfix) with ESMTP id 568BD38C801C
+	for <qemu-trivial@nongnu.org>; Fri,  1 Mar 2013 07:53:56 -0500 (EST)
+Received: from d01av03.pok.ibm.com (d01av03.pok.ibm.com [9.56.224.217])
+	by d01relay02.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r21CruL1310272
+	for <qemu-trivial@nongnu.org>; Fri, 1 Mar 2013 07:53:56 -0500
+Received: from d01av03.pok.ibm.com (loopback [127.0.0.1])
+	by d01av03.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	r21CrtHK019615
+	for <qemu-trivial@nongnu.org>; Fri, 1 Mar 2013 09:53:55 -0300
+Received: from [9.2.141.150] (k-d941e-10.watson.ibm.com [9.2.141.150])
+	by d01av03.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r21CrtEZ019598; Fri, 1 Mar 2013 09:53:55 -0300
+Message-ID: <5130A4E3.70003@linux.vnet.ibm.com>
+Date: Fri, 01 Mar 2013 07:53:55 -0500
+From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:15.0) Gecko/20120911 Thunderbird/15.0.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] configure: Require at least
-	spice-protocol-0.12.3
+To: qemu-trivial@nongnu.org
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13030112-7182-0000-0000-0000059A0BB9
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 32.97.182.139
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+Subject: [Qemu-trivial] [PATCH] Use qemu_open / qemu_close in rng backend
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,30 +61,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2013 07:43:30 -0000
+X-List-Received-Date: Fri, 01 Mar 2013 12:54:03 -0000
 
-As of 5a49d3e9 we assume SPICE_PORT_EVENT_BREAK to be defined.
-However, it is defined not in 0.12.2 what we require now, but in
-0.12.3.  Therefore in order to prevent build failure we must
-adjust our minimal requirements.
----
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+In the rng backend use qemu_open and qemu_close rather than POSIX 
+open/close.
 
-diff --git a/configure b/configure
-index 8df7db1..696e84d 100755
---- a/configure
-+++ b/configure
-@@ -2867,7 +2867,7 @@ EOF
-   spice_cflags=$($pkg_config --cflags spice-protocol spice-server 2>/dev/null)
-   spice_libs=$($pkg_config --libs spice-protocol spice-server 2>/dev/null)
-   if $pkg_config --atleast-version=0.12.0 spice-server >/dev/null 2>&1 && \
--     $pkg_config --atleast-version=0.12.2 spice-protocol > /dev/null 2>&1 && \
-+     $pkg_config --atleast-version=0.12.3 spice-protocol > /dev/null 2>&1 && \
-      compile_prog "$spice_cflags" "$spice_libs" ; then
-     spice="yes"
-     libs_softmmu="$libs_softmmu $spice_libs"
--- 
-1.8.1.4
+Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+
+diff --git a/backends/rng-random.c b/backends/rng-random.c
+index 0d11088..acd20af 100644
+--- a/backends/rng-random.c
++++ b/backends/rng-random.c
+@@ -74,7 +74,7 @@ static void rng_random_opened(RngBackend *b, Error **errp)
+          error_set(errp, QERR_INVALID_PARAMETER_VALUE,
+                    "filename", "a valid filename");
+      } else {
+-        s->fd = open(s->filename, O_RDONLY | O_NONBLOCK);
++        s->fd = qemu_open(s->filename, O_RDONLY | O_NONBLOCK);
+
+          if (s->fd == -1) {
+              error_set(errp, QERR_OPEN_FILE_FAILED, s->filename);
+@@ -130,7 +130,7 @@ static void rng_random_finalize(Object *obj)
+      qemu_set_fd_handler(s->fd, NULL, NULL, NULL);
+
+      if (s->fd != -1) {
+-        close(s->fd);
++        qemu_close(s->fd);
+      }
+
+      g_free(s->filename);
 
 
