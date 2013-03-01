@@ -1,33 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UBTHS-0007XV-5a
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2013 11:57:58 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:60416)
+	id 1UBUmD-0008Kp-Ku
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2013 13:33:49 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:57505)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1UBTHN-0007M8-90
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 11:57:55 -0500
+	(envelope-from <afaerber@suse.de>) id 1UBUm9-0008E5-GL
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 13:33:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1UBTHK-0002NO-So
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 11:57:53 -0500
-Received: from
-	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
-	([2001:8b0:1d0::1]:60872 helo=mnementh.archaic.org.uk)
+	(envelope-from <afaerber@suse.de>) id 1UBUm8-0004cS-Im
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 13:33:45 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:50598 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1UBTHF-0002MM-3R; Fri, 01 Mar 2013 11:57:45 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1UBTHB-00007V-WC; Fri, 01 Mar 2013 16:57:42 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri,  1 Mar 2013 16:57:41 +0000
-Message-Id: <1362157061-438-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
+	(envelope-from <afaerber@suse.de>)
+	id 1UBUm4-0004bh-Fg; Fri, 01 Mar 2013 13:33:40 -0500
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id F2AAAA4F01;
+	Fri,  1 Mar 2013 19:33:39 +0100 (CET)
+Message-ID: <5130F483.3090003@suse.de>
+Date: Fri, 01 Mar 2013 19:33:39 +0100
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130215 Thunderbird/17.0.3
+MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1362157061-438-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1362157061-438-1-git-send-email-peter.maydell@linaro.org>
+X-Enigmail-Version: 1.6a1pre
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
 Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] pci_host: Drop write-only address_space field
+	qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] pci_host: Drop write-only address_space
+	field
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,59 +45,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2013 16:57:56 -0000
+X-List-Received-Date: Fri, 01 Mar 2013 18:33:46 -0000
 
-The address_space field of PCIHostState was only ever written, never used.
-Drop it completely.
+Am 01.03.2013 17:57, schrieb Peter Maydell:
+> The address_space field of PCIHostState was only ever written, never us=
+ed.
+> Drop it completely.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Noticed this when looking at converting versatile_pci to be a subclass
-of pci_host; it's nice to be able to drop the ugly fishing around in
-the object struct that the two users here were doing...
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
- hw/pci/pci_host.h |    1 -
- hw/piix_pci.c     |    1 -
- hw/ppc/prep.c     |    1 -
- 3 files changed, 3 deletions(-)
+Andreas
 
-diff --git a/hw/pci/pci_host.h b/hw/pci/pci_host.h
-index 1845d4d..236cd0f 100644
---- a/hw/pci/pci_host.h
-+++ b/hw/pci/pci_host.h
-@@ -40,7 +40,6 @@ struct PCIHostState {
-     MemoryRegion conf_mem;
-     MemoryRegion data_mem;
-     MemoryRegion mmcfg;
--    MemoryRegion *address_space;
-     uint32_t config_reg;
-     PCIBus *bus;
- };
-diff --git a/hw/piix_pci.c b/hw/piix_pci.c
-index 6c77e49..9246983 100644
---- a/hw/piix_pci.c
-+++ b/hw/piix_pci.c
-@@ -244,7 +244,6 @@ static PCIBus *i440fx_common_init(const char *device_name,
- 
-     dev = qdev_create(NULL, "i440FX-pcihost");
-     s = PCI_HOST_BRIDGE(dev);
--    s->address_space = address_space_mem;
-     b = pci_bus_new(dev, NULL, pci_address_space,
-                     address_space_io, 0);
-     s->bus = b;
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index e06dded..2920911 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -567,7 +567,6 @@ static void ppc_prep_init(QEMUMachineInitArgs *args)
- 
-     dev = qdev_create(NULL, "raven-pcihost");
-     pcihost = PCI_HOST_BRIDGE(dev);
--    pcihost->address_space = get_system_memory();
-     object_property_add_child(qdev_get_machine(), "raven", OBJECT(dev), NULL);
-     qdev_init_nofail(dev);
-     pci_bus = (PCIBus *)qdev_get_child_bus(dev, "pci.0");
--- 
-1.7.9.5
-
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
