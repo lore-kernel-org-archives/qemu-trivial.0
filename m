@@ -1,55 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UBPTR-00064X-3G
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2013 07:54:05 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58103)
+	id 1UBQDo-0005ZH-0f
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2013 08:42:00 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:42467)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1UBPTO-00064N-7j
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 07:54:03 -0500
+	(envelope-from <eblake@redhat.com>) id 1UBQDk-0005U9-NC
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 08:41:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1UBPTM-0003YC-Tf
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 07:54:02 -0500
-Received: from e9.ny.us.ibm.com ([32.97.182.139]:49074)
+	(envelope-from <eblake@redhat.com>) id 1UBQDj-0001eB-93
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 08:41:56 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:3011)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1UBPTM-0003Y2-QB
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 07:54:00 -0500
-Received: from /spool/local
-	by e9.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
-	Fri, 1 Mar 2013 07:54:00 -0500
-Received: from d01dlp01.pok.ibm.com (9.56.250.166)
-	by e9.ny.us.ibm.com (192.168.1.109) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 1 Mar 2013 07:53:56 -0500
-Received: from d01relay02.pok.ibm.com (d01relay02.pok.ibm.com [9.56.227.234])
-	by d01dlp01.pok.ibm.com (Postfix) with ESMTP id 568BD38C801C
-	for <qemu-trivial@nongnu.org>; Fri,  1 Mar 2013 07:53:56 -0500 (EST)
-Received: from d01av03.pok.ibm.com (d01av03.pok.ibm.com [9.56.224.217])
-	by d01relay02.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r21CruL1310272
-	for <qemu-trivial@nongnu.org>; Fri, 1 Mar 2013 07:53:56 -0500
-Received: from d01av03.pok.ibm.com (loopback [127.0.0.1])
-	by d01av03.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r21CrtHK019615
-	for <qemu-trivial@nongnu.org>; Fri, 1 Mar 2013 09:53:55 -0300
-Received: from [9.2.141.150] (k-d941e-10.watson.ibm.com [9.2.141.150])
-	by d01av03.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r21CrtEZ019598; Fri, 1 Mar 2013 09:53:55 -0300
-Message-ID: <5130A4E3.70003@linux.vnet.ibm.com>
-Date: Fri, 01 Mar 2013 07:53:55 -0500
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+	(envelope-from <eblake@redhat.com>)
+	id 1UBQDi-0001e5-U3; Fri, 01 Mar 2013 08:41:55 -0500
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r21Da1lH019833
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 1 Mar 2013 08:36:02 -0500
+Received: from [10.3.113.158] (ovpn-113-158.phx2.redhat.com [10.3.113.158])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r21Da1Tl008103; Fri, 1 Mar 2013 08:36:01 -0500
+Message-ID: <5130AEC0.5060800@redhat.com>
+Date: Fri, 01 Mar 2013 06:36:00 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:15.0) Gecko/20120911 Thunderbird/15.0.1
+	rv:17.0) Gecko/20130219 Thunderbird/17.0.3
 MIME-Version: 1.0
-To: qemu-trivial@nongnu.org
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13030112-7182-0000-0000-0000059A0BB9
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.182.139
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-Subject: [Qemu-trivial] [PATCH] Use qemu_open / qemu_close in rng backend
+To: Stefan Berger <stefanb@linux.vnet.ibm.com>
+References: <5130A4E3.70003@linux.vnet.ibm.com>
+In-Reply-To: <5130A4E3.70003@linux.vnet.ibm.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="----enig2LQTQNCSVJAQKXTPBQANP"
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] Use qemu_open / qemu_close in rng backend
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,34 +52,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2013 12:54:03 -0000
+X-List-Received-Date: Fri, 01 Mar 2013 13:41:58 -0000
 
-In the rng backend use qemu_open and qemu_close rather than POSIX 
-open/close.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+------enig2LQTQNCSVJAQKXTPBQANP
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+[don't you also need to cc the main qemu list, even for trivial patches?]=
 
-diff --git a/backends/rng-random.c b/backends/rng-random.c
-index 0d11088..acd20af 100644
---- a/backends/rng-random.c
-+++ b/backends/rng-random.c
-@@ -74,7 +74,7 @@ static void rng_random_opened(RngBackend *b, Error **errp)
-          error_set(errp, QERR_INVALID_PARAMETER_VALUE,
-                    "filename", "a valid filename");
-      } else {
--        s->fd = open(s->filename, O_RDONLY | O_NONBLOCK);
-+        s->fd = qemu_open(s->filename, O_RDONLY | O_NONBLOCK);
 
-          if (s->fd == -1) {
-              error_set(errp, QERR_OPEN_FILE_FAILED, s->filename);
-@@ -130,7 +130,7 @@ static void rng_random_finalize(Object *obj)
-      qemu_set_fd_handler(s->fd, NULL, NULL, NULL);
+On 03/01/2013 05:53 AM, Stefan Berger wrote:
+> In the rng backend use qemu_open and qemu_close rather than POSIX
+> open/close.
+>=20
+> Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
 
-      if (s->fd != -1) {
--        close(s->fd);
-+        qemu_close(s->fd);
-      }
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-      g_free(s->filename);
+>=20
+> diff --git a/backends/rng-random.c b/backends/rng-random.c
+> index 0d11088..acd20af 100644
+> --- a/backends/rng-random.c
+> +++ b/backends/rng-random.c
+> @@ -74,7 +74,7 @@ static void rng_random_opened(RngBackend *b, Error
+> **errp)
+>          error_set(errp, QERR_INVALID_PARAMETER_VALUE,
+>                    "filename", "a valid filename");
+>      } else {
+> -        s->fd =3D open(s->filename, O_RDONLY | O_NONBLOCK);
+> +        s->fd =3D qemu_open(s->filename, O_RDONLY | O_NONBLOCK);
+>=20
+>          if (s->fd =3D=3D -1) {
+>              error_set(errp, QERR_OPEN_FILE_FAILED, s->filename);
+> @@ -130,7 +130,7 @@ static void rng_random_finalize(Object *obj)
+>      qemu_set_fd_handler(s->fd, NULL, NULL, NULL);
+>=20
+>      if (s->fd !=3D -1) {
+> -        close(s->fd);
+> +        qemu_close(s->fd);
+>      }
+>=20
+>      g_free(s->filename);
+>=20
+>=20
+>=20
 
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+------enig2LQTQNCSVJAQKXTPBQANP
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.13 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJRMK7AAAoJEKeha0olJ0Nqy/IH/j2Xpy9Yf0Md1YRb29X5s/tR
+zZH7L3nHXJ/WcHjQwQcKkeTdyHa7aCJeK7z7BiPLK468rNHeXv0ntflFD03Lh9R+
+ymTdi1MqgeBjiGcw8SHbIhn+h2LKyyfzEcjRBV/DmLTaQzFE/jcH5iq4D8V4BqWM
+qMBwB+8tTtrscLaQij1G0hflKvkE/H9bZaMr5EWSKLj9nFvMNzFtw270D/fVsm9f
+Xp08oQBAhFKnaqbvitlijb4m8QBBQP9mlObLdqDgdQfHZOPpCshVEoTQtXZ/stcm
++vAGk+jIe4iWwKP9PEFqjAQuGdhfJssh5aqoLDzFTLEidh5qQETDmaoHI3XuDrs=
+=92Pm
+-----END PGP SIGNATURE-----
+
+------enig2LQTQNCSVJAQKXTPBQANP--
 
