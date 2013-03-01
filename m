@@ -1,46 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UBQDo-0005ZH-0f
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2013 08:42:00 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:42467)
+	id 1UBTHS-0007XV-5a
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2013 11:57:58 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:60416)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1UBQDk-0005U9-NC
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 08:41:58 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1UBTHN-0007M8-90
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 11:57:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1UBQDj-0001eB-93
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 08:41:56 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:3011)
+	(envelope-from <pm215@archaic.org.uk>) id 1UBTHK-0002NO-So
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2013 11:57:53 -0500
+Received: from
+	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
+	([2001:8b0:1d0::1]:60872 helo=mnementh.archaic.org.uk)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1UBQDi-0001e5-U3; Fri, 01 Mar 2013 08:41:55 -0500
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r21Da1lH019833
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 1 Mar 2013 08:36:02 -0500
-Received: from [10.3.113.158] (ovpn-113-158.phx2.redhat.com [10.3.113.158])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r21Da1Tl008103; Fri, 1 Mar 2013 08:36:01 -0500
-Message-ID: <5130AEC0.5060800@redhat.com>
-Date: Fri, 01 Mar 2013 06:36:00 -0700
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130219 Thunderbird/17.0.3
-MIME-Version: 1.0
-To: Stefan Berger <stefanb@linux.vnet.ibm.com>
-References: <5130A4E3.70003@linux.vnet.ibm.com>
-In-Reply-To: <5130A4E3.70003@linux.vnet.ibm.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="----enig2LQTQNCSVJAQKXTPBQANP"
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] Use qemu_open / qemu_close in rng backend
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1UBTHF-0002MM-3R; Fri, 01 Mar 2013 11:57:45 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1UBTHB-00007V-WC; Fri, 01 Mar 2013 16:57:42 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Fri,  1 Mar 2013 16:57:41 +0000
+Message-Id: <1362157061-438-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] pci_host: Drop write-only address_space field
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,75 +39,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2013 13:41:58 -0000
+X-List-Received-Date: Fri, 01 Mar 2013 16:57:56 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
-------enig2LQTQNCSVJAQKXTPBQANP
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+The address_space field of PCIHostState was only ever written, never used.
+Drop it completely.
 
-[don't you also need to cc the main qemu list, even for trivial patches?]=
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Noticed this when looking at converting versatile_pci to be a subclass
+of pci_host; it's nice to be able to drop the ugly fishing around in
+the object struct that the two users here were doing...
 
+ hw/pci/pci_host.h |    1 -
+ hw/piix_pci.c     |    1 -
+ hw/ppc/prep.c     |    1 -
+ 3 files changed, 3 deletions(-)
 
-On 03/01/2013 05:53 AM, Stefan Berger wrote:
-> In the rng backend use qemu_open and qemu_close rather than POSIX
-> open/close.
->=20
-> Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+diff --git a/hw/pci/pci_host.h b/hw/pci/pci_host.h
+index 1845d4d..236cd0f 100644
+--- a/hw/pci/pci_host.h
++++ b/hw/pci/pci_host.h
+@@ -40,7 +40,6 @@ struct PCIHostState {
+     MemoryRegion conf_mem;
+     MemoryRegion data_mem;
+     MemoryRegion mmcfg;
+-    MemoryRegion *address_space;
+     uint32_t config_reg;
+     PCIBus *bus;
+ };
+diff --git a/hw/piix_pci.c b/hw/piix_pci.c
+index 6c77e49..9246983 100644
+--- a/hw/piix_pci.c
++++ b/hw/piix_pci.c
+@@ -244,7 +244,6 @@ static PCIBus *i440fx_common_init(const char *device_name,
+ 
+     dev = qdev_create(NULL, "i440FX-pcihost");
+     s = PCI_HOST_BRIDGE(dev);
+-    s->address_space = address_space_mem;
+     b = pci_bus_new(dev, NULL, pci_address_space,
+                     address_space_io, 0);
+     s->bus = b;
+diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+index e06dded..2920911 100644
+--- a/hw/ppc/prep.c
++++ b/hw/ppc/prep.c
+@@ -567,7 +567,6 @@ static void ppc_prep_init(QEMUMachineInitArgs *args)
+ 
+     dev = qdev_create(NULL, "raven-pcihost");
+     pcihost = PCI_HOST_BRIDGE(dev);
+-    pcihost->address_space = get_system_memory();
+     object_property_add_child(qdev_get_machine(), "raven", OBJECT(dev), NULL);
+     qdev_init_nofail(dev);
+     pci_bus = (PCIBus *)qdev_get_child_bus(dev, "pci.0");
+-- 
+1.7.9.5
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
->=20
-> diff --git a/backends/rng-random.c b/backends/rng-random.c
-> index 0d11088..acd20af 100644
-> --- a/backends/rng-random.c
-> +++ b/backends/rng-random.c
-> @@ -74,7 +74,7 @@ static void rng_random_opened(RngBackend *b, Error
-> **errp)
->          error_set(errp, QERR_INVALID_PARAMETER_VALUE,
->                    "filename", "a valid filename");
->      } else {
-> -        s->fd =3D open(s->filename, O_RDONLY | O_NONBLOCK);
-> +        s->fd =3D qemu_open(s->filename, O_RDONLY | O_NONBLOCK);
->=20
->          if (s->fd =3D=3D -1) {
->              error_set(errp, QERR_OPEN_FILE_FAILED, s->filename);
-> @@ -130,7 +130,7 @@ static void rng_random_finalize(Object *obj)
->      qemu_set_fd_handler(s->fd, NULL, NULL, NULL);
->=20
->      if (s->fd !=3D -1) {
-> -        close(s->fd);
-> +        qemu_close(s->fd);
->      }
->=20
->      g_free(s->filename);
->=20
->=20
->=20
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
-------enig2LQTQNCSVJAQKXTPBQANP
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.13 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJRMK7AAAoJEKeha0olJ0Nqy/IH/j2Xpy9Yf0Md1YRb29X5s/tR
-zZH7L3nHXJ/WcHjQwQcKkeTdyHa7aCJeK7z7BiPLK468rNHeXv0ntflFD03Lh9R+
-ymTdi1MqgeBjiGcw8SHbIhn+h2LKyyfzEcjRBV/DmLTaQzFE/jcH5iq4D8V4BqWM
-qMBwB+8tTtrscLaQij1G0hflKvkE/H9bZaMr5EWSKLj9nFvMNzFtw270D/fVsm9f
-Xp08oQBAhFKnaqbvitlijb4m8QBBQP9mlObLdqDgdQfHZOPpCshVEoTQtXZ/stcm
-+vAGk+jIe4iWwKP9PEFqjAQuGdhfJssh5aqoLDzFTLEidh5qQETDmaoHI3XuDrs=
-=92Pm
------END PGP SIGNATURE-----
-
-------enig2LQTQNCSVJAQKXTPBQANP--
 
