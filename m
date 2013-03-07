@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UDRa7-000641-P4
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2013 22:33:23 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58307)
+	id 1UDWnl-0004Am-UE
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Mar 2013 04:07:49 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:57557)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1UDRa1-0005tl-VH
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2013 22:33:21 -0500
+	(envelope-from <armbru@redhat.com>) id 1UDWnj-00047A-9q
+	for qemu-trivial@nongnu.org; Thu, 07 Mar 2013 04:07:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1UDRZz-00021l-Dt
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2013 22:33:17 -0500
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:64515)
+	(envelope-from <armbru@redhat.com>) id 1UDWnh-0002aK-SE
+	for qemu-trivial@nongnu.org; Thu, 07 Mar 2013 04:07:47 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:34752)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>)
-	id 1UDRZt-00020I-T6; Wed, 06 Mar 2013 22:33:10 -0500
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 43049972;
-	Thu,  7 Mar 2013 11:33:02 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:mime-version:content-type; s=
-	rsa1024; bh=oTa0ymOBVAOyUaNctP6VCMjETXA=; b=dZGVLEpBpCJHiTtCJLZe
-	GIFWiKMRcW/MQ8isUIl1LoBZh85f42hFKa5bXb8o4JYGUrOyelz3KHshfIq3TlWM
-	eyrYb2CN9KoV6s91ff0ueXfWi0Z2I+PoTIMvx4Jpi1HmXL3xgibkymyeDFM167zE
-	5eUmvzafZS5190gdEZsbg20=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 19F08971;
-	Thu,  7 Mar 2013 11:33:02 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id r273X1qP049355;
-	Thu, 7 Mar 2013 11:33:01 +0800 (CST) (envelope-from chenwj)
-Date: Thu, 7 Mar 2013 11:33:01 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-To: qemu-trivial@nongnu.org
-Message-ID: <20130307033301.GA48996@cs.nctu.edu.tw>
+	(envelope-from <armbru@redhat.com>)
+	id 1UDWnd-0002ZR-Pz; Thu, 07 Mar 2013 04:07:41 -0500
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r2795fjk012904
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Thu, 7 Mar 2013 04:05:41 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-77.ams2.redhat.com
+	[10.36.116.77])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r2795edX022698; Thu, 7 Mar 2013 04:05:41 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id EF916200B0; Thu,  7 Mar 2013 10:05:39 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Lei Li <lilei@linux.vnet.ibm.com>
+References: <1362642626-22763-1-git-send-email-lilei@linux.vnet.ibm.com>
+Date: Thu, 07 Mar 2013 10:05:39 +0100
+In-Reply-To: <1362642626-22763-1-git-send-email-lilei@linux.vnet.ibm.com> (Lei
+	Li's message of "Thu, 7 Mar 2013 15:50:26 +0800")
+Message-ID: <87boavo9zw.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
-X-Received-From: 140.113.235.130
-Cc: qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Use proper term in TCG README
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix the wrong description
+	in qemu manual
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,29 +50,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Mar 2013 03:33:21 -0000
+X-List-Received-Date: Thu, 07 Mar 2013 09:07:48 -0000
 
-  In TCG, "target" means the host architecture for which TCG generates the
-code. Using "guest" rather than "target" to make the document more consistent.
+Copying qemu-trivial.
 
-Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
----
- tcg/README | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Lei Li <lilei@linux.vnet.ibm.com> writes:
 
-diff --git a/tcg/README b/tcg/README
-index 934e7af..22174c0 100644
---- a/tcg/README
-+++ b/tcg/README
-@@ -379,7 +379,7 @@ double-word product T0.  The later is returned in two single-word outputs.
- 
- Similar to mulu2, except the two inputs T1 and T2 are signed.
- 
--********* 64-bit target on 32-bit host support
-+********* 64-bit guest on 32-bit host support
- 
- The following opcodes are internal to TCG.  Thus they are to be implemented by
- 32-bit host code generators, but are not to be emitted by guest translators.
--- 
-1.7.12.3
+> Fix LP#1151450 the wrong description in qemu manual:
+>
+> 'qemu-system-x86_84' should be 'qemu-system-x86_64'.
+>
+> Signed-off-by: Lei Li <lilei@linux.vnet.ibm.com>
+> ---
+>  qemu-options.hx |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 6f9334a..cd76f2a 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -2132,7 +2132,7 @@
+> gluster[+transport]://[server[:port]]/volname/image[?socket=...]
+>  
+>  Example
+>  @example
+> -qemu-system-x86_84 --drive file=gluster://192.0.2.1/testvol/a.img
+> +qemu-system-x86_64 --drive file=gluster://192.0.2.1/testvol/a.img
+>  @end example
+>  
+>  See also @url{http://www.gluster.org}.
 
