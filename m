@@ -1,30 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UDaNn-0000nd-MD
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Mar 2013 07:57:15 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:53952)
+	id 1UDtOb-0004k9-Lf
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2013 04:15:21 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:46043)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <info@mtech.pl>) id 1UDaNi-0000kd-1w
-	for qemu-trivial@nongnu.org; Thu, 07 Mar 2013 07:57:13 -0500
+	(envelope-from <stefanha@gmail.com>) id 1UDtOT-0004hh-ET
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:15:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <info@mtech.pl>) id 1UDaNc-0003rT-Hi
-	for qemu-trivial@nongnu.org; Thu, 07 Mar 2013 07:57:09 -0500
-Received: from alg56.rev.netart.pl ([85.128.163.56]:48125)
+	(envelope-from <stefanha@gmail.com>) id 1UDtOO-0005Cy-Ck
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:15:13 -0500
+Received: from mail-we0-x22d.google.com ([2a00:1450:400c:c03::22d]:44866)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <info@mtech.pl>) id 1UDaNc-0003rF-C0
-	for qemu-trivial@nongnu.org; Thu, 07 Mar 2013 07:57:04 -0500
-Received: from WIN-GGRBRAR3FAN (unknown [79.190.216.85])
-	by mtech.nazwa.pl (Postfix) with ESMTP id 09D73114C00F
-	for <qemu-trivial@nongnu.org>; Thu,  7 Mar 2013 13:57:01 +0100 (CET)
+	(envelope-from <stefanha@gmail.com>)
+	id 1UDtOO-0005Cl-6N; Fri, 08 Mar 2013 04:15:08 -0500
+Received: by mail-we0-f173.google.com with SMTP id x51so709695wey.18
+	for <multiple recipients>; Fri, 08 Mar 2013 01:15:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=mViFg+msfwFv1OzhznI8/JY23ORfIMjMNgxlo73m+zg=;
+	b=NWs45TF79ynmYHho+pDmxuujqD8LImE7T82FPklsMv8ascZhACB4BrIUMM8VOxRMw4
+	hfTw7jxvg16b33SqKV001zkha3+gn+Aihw1ZFZvHOCHhp4b8rbnlNkTIFU6RF/3SVyb4
+	0AU+17CETBvCmO3hoiCF2ZiFKzUGkuRWTwEa7XP9Ba+MSYA6dHEIrXebTqE7a+RyI1p8
+	ZREsC7t8/aC4xUXFsbw3/a/xpJTWlWO6x3l1quHEKpnsQPGhAvcJi0sAsjEu3ppsQXpz
+	TZtbbX5HgmZCD9Otz+osm/WeGt1Ny0MAUoxLw1c6wXRQbhkYOGJfQ+O0jAECJsTD0Mn4
+	ROng==
+X-Received: by 10.180.72.148 with SMTP id d20mr38751183wiv.31.1362734107468;
+	Fri, 08 Mar 2013 01:15:07 -0800 (PST)
+Received: from localhost ([2a02:810d:ec0:195:852b:b477:8102:5356])
+	by mx.google.com with ESMTPS id n10sm8159943wia.0.2013.03.08.01.15.05
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Fri, 08 Mar 2013 01:15:06 -0800 (PST)
+Date: Fri, 8 Mar 2013 10:15:04 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Jan Kiszka <jan.kiszka@siemens.com>
+Message-ID: <20130308091504.GA9597@stefanha-thinkpad.redhat.com>
+References: <5127CF6D.2060104@siemens.com>
 MIME-Version: 1.0
-From: "Microtech" <info@mtech.pl>
-To: qemu-trivial@nongnu.org
-Date: 7 Mar 2013 13:57:06 +0100
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: base64
-Message-Id: <20130307125702.09D73114C00F@mtech.nazwa.pl>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 85.128.163.56
-Subject: [Qemu-trivial] Zapytanie
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5127CF6D.2060104@siemens.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c03::22d
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [PATCH][RESENT] configure: Create link to icon
+ bitmap for out-of-tree builds
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,41 +58,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Mar 2013 12:57:14 -0000
+X-List-Received-Date: Fri, 08 Mar 2013 09:15:20 -0000
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0
-aW9uYWwvL0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1s
-OyBjaGFyc2V0PXVuaWNvZGUiIGh0dHAtZXF1aXY9Q29udGVudC1UeXBlPg0KPE1FVEEg
-bmFtZT1HRU5FUkFUT1IgY29udGVudD0iTVNIVE1MIDEwLjAwLjkyMDAuMTYzODQiPjwv
-SEVBRD4NCjxCT0RZPg0KPFAgYWxpZ249Y2VudGVyPjxGT05UIGZhY2U9Q2FsaWJyaT5T
-emFub3duaSBQYcWEc3R3byw8QlI+PEJSPjwvRk9OVD48Rk9OVCANCmZhY2U9Q2FsaWJy
-aT5KZXN0ZW0gcHJ6ZWRzdGF3aWNpZWxlbSBmaXJteSBNaWNyb3RlY2ggcy5jLiw8QlI+
-a3TDs3JhIG5hIGNvZHppZcWEIA0KemFqbXVqZSBzacSZIGR5c3RyeWJ1Y2rEhSBtYXJr
-b3dlZ28gcG9sZWFzaW5nb3dlZ28gc3ByesSZdHUgDQprb21wdXRlcm93ZWdvPEJSPmN6
-b8WCb3d5Y2ggcHJvZHVjZW50w7N3IHogdGVqIGJyYW7FvHkgdGouIERFTEwsIEhQIGN6
-eSANCkxFTk9WTy48QlI+VyB6d2nEhXprdSB6IHByb2ZpbGVtIG5hc3plaiBmaXJteSBk
-b3N6bGlzbXkgZG8gd25pb3NrdSwgPEJSPsW8ZSANCm1vZ2xpYnkgUGHFhHN0d28gYnnE
-hyB6YWludGVyZXNvd2FuaSBuYXN6eW1pIHByb2R1a3RhbWkuPEJSPkRsYXRlZ28gY2hj
-aWHFgmJ5bSANCnphcHl0YcSHLCBjenkgd3lyYcW8YWrEhSBQYcWEc3R3byBuYSBvdHJ6
-eW1hbmllIG9kIG5hcyBvZmVydHkgDQpoYW5kbG93ZWo/PEJSPjxCUj48L0ZPTlQ+PEZP
-TlQgZmFjZT1DYWxpYnJpPkplxbxlbGkgd3lyYcW8YWrEhSBQYcWEc3R3byB6Z29kxJkg
-cHJvc3rEmSANCmtsaWtuxIXEhyB3IHBvbmnFvHN6eSBsaW5rOiA8L0ZPTlQ+PC9QPg0K
-PFAgYWxpZ249Y2VudGVyPjxGT05UIGZhY2U9Q2FsaWJyaT48QSANCmhyZWY9Imh0dHA6
-Ly9waWNrZXIubXRlY2gucGwvP2lkPTQ1MzRiZjdhOTE4OWNhMmU3ZmE4MGE5N2UwYTA2
-NmFmIj5odHRwOi8vcGlja2VyLm10ZWNoLnBsLz9pZD00NTM0YmY3YTkxODljYTJlN2Zh
-ODBhOTdlMGEwNjZhZjwvQT48L0ZPTlQ+PEZPTlQgDQpmYWNlPUNhbGlicmk+PEJSPmx1
-YiB3eXPFgmHEhyBvZHBvd2llZMW6IG8gZG93b2xuZWogdHJlxZtjaS48L0ZPTlQ+PC9Q
-Pg0KPFAgYWxpZ249bGVmdD48QlI+PEJSPjxGT05UIGZhY2U9Q2FsaWJyaT5aIHd5cmF6
-YW1pIHN6YWN1bmt1PEJSPsWBdWthc3ogDQpHYWJyeXNpYWs8QlI+RGVwYXJ0YW1lbnQg
-S2xpZW50w7N3IEJpem5lc293eWNoPEJSPk1pY3JvdGVjaCBzLmMuPEJSPjxCUj48Rk9O
-VCANCnNpemU9MT5OaW5pZWpzemEgd2lhZG9tb8WbxIcgem9zdGHFgmEgcHJ6ZXPFgmFu
-YSB6Z29kbmllIHogVXN0YXfEhSBvIMWbd2lhZGN6ZW5pdSANClVzxYJ1ZyBEcm9nxIUg
-RWxla3Ryb25pY3puxIUgeiAxOCBsaXBjYSAyMDAyIChEei5VLiBOciAxNDQsIHBvei4g
-MTIwNCkgb3JheiANCmR5cmVrdHl3IFVPS2lLOiBEb3B1c3pjemFsbmUgamVzdCBwcnpl
-c3nFgmFuaWUgbmEgYWRyZXMgZS1tYWlsIHB5dGFuaWEgY3p5IA0KYWRyZXNhdCB6Z2Fk
-emEgc2nEmSBuYSBvdHJ6eW15d2FuaWUgZHJvZ2EgZWxla3Ryb25pY3puxIUgaW5mb3Jt
-YWNqaSBoYW5kbG93ZWouIE1hIA0KY2hhcmFrdGVyIHphcHl0YW5pYSBpIG5pZSBzdGFu
-b3dpIG9mZXJ0eSANCmhhbmRsb3dlai48L0ZPTlQ+PC9GT05UPjwvUD48L0JPRFk+PC9I
-VE1MPg0K
+On Fri, Feb 22, 2013 at 09:05:01PM +0100, Jan Kiszka wrote:
+> This allows to pick up the icon when starting QEMU directly from an
+> out-of-tree build directory.
+> 
+> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> ---
+>  configure |    1 +
+>  1 files changed, 1 insertions(+), 0 deletions(-)
 
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
+
+Stefan
 
