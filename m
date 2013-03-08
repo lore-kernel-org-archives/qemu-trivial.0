@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UDtOb-0004k9-Lf
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2013 04:15:21 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:46043)
+	id 1UDtRD-00072n-3y
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2013 04:18:03 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:46916)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UDtOT-0004hh-ET
-	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:15:20 -0500
+	(envelope-from <stefanha@gmail.com>) id 1UDtR5-0006sK-UW
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:18:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UDtOO-0005Cy-Ck
-	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:15:13 -0500
-Received: from mail-we0-x22d.google.com ([2a00:1450:400c:c03::22d]:44866)
+	(envelope-from <stefanha@gmail.com>) id 1UDtR1-00065I-Dq
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:17:55 -0500
+Received: from mail-wg0-f46.google.com ([74.125.82.46]:41866)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1UDtOO-0005Cl-6N; Fri, 08 Mar 2013 04:15:08 -0500
-Received: by mail-we0-f173.google.com with SMTP id x51so709695wey.18
-	for <multiple recipients>; Fri, 08 Mar 2013 01:15:07 -0800 (PST)
+	id 1UDtQr-00062x-UR; Fri, 08 Mar 2013 04:17:42 -0500
+Received: by mail-wg0-f46.google.com with SMTP id fg15so2184991wgb.25
+	for <multiple recipients>; Fri, 08 Mar 2013 01:17:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=x-received:date:from:to:cc:subject:message-id:references
 	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=mViFg+msfwFv1OzhznI8/JY23ORfIMjMNgxlo73m+zg=;
-	b=NWs45TF79ynmYHho+pDmxuujqD8LImE7T82FPklsMv8ascZhACB4BrIUMM8VOxRMw4
-	hfTw7jxvg16b33SqKV001zkha3+gn+Aihw1ZFZvHOCHhp4b8rbnlNkTIFU6RF/3SVyb4
-	0AU+17CETBvCmO3hoiCF2ZiFKzUGkuRWTwEa7XP9Ba+MSYA6dHEIrXebTqE7a+RyI1p8
-	ZREsC7t8/aC4xUXFsbw3/a/xpJTWlWO6x3l1quHEKpnsQPGhAvcJi0sAsjEu3ppsQXpz
-	TZtbbX5HgmZCD9Otz+osm/WeGt1Ny0MAUoxLw1c6wXRQbhkYOGJfQ+O0jAECJsTD0Mn4
-	ROng==
-X-Received: by 10.180.72.148 with SMTP id d20mr38751183wiv.31.1362734107468;
-	Fri, 08 Mar 2013 01:15:07 -0800 (PST)
+	:user-agent; bh=ji+9en+xoeFS+UHibEF7AEsENssclnA0wtxJEYoacTI=;
+	b=04AKLme1KxpTvzvJ9OvJLYC+ETDbnE6JWYNRHE++RUjthRaAVxBdqYtq+T0YvbFsWK
+	2/CMpmmKEerWAlHvaSBc4QmyTPCBA60IyRkmtUj3h7mdin1fi39nYytgV7wkqzx86XY0
+	yQuACFMPwaFQGmCcWiNYJAmTFqFbzZHWdMcj3rdhmngsC4tXhaRTatwJv+uYPwoXva3l
+	O6k7soZE4Dak0Fllhzu4SBjMYAGzB/JSkoYlUeTE/JTXeFEnAEpb+0LAoRswEVZ4OjBc
+	HiXYCBRekWy611VoKhVbp/v+G71EybwsMWHQP4I6uopJGt8WcGMCj72kBPTDv6jOMZeC
+	vSHA==
+X-Received: by 10.194.21.233 with SMTP id y9mr2289487wje.47.1362734261036;
+	Fri, 08 Mar 2013 01:17:41 -0800 (PST)
 Received: from localhost ([2a02:810d:ec0:195:852b:b477:8102:5356])
-	by mx.google.com with ESMTPS id n10sm8159943wia.0.2013.03.08.01.15.05
+	by mx.google.com with ESMTPS id ex1sm8157741wib.7.2013.03.08.01.17.39
 	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Fri, 08 Mar 2013 01:15:06 -0800 (PST)
-Date: Fri, 8 Mar 2013 10:15:04 +0100
+	Fri, 08 Mar 2013 01:17:40 -0800 (PST)
+Date: Fri, 8 Mar 2013 10:17:38 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>
-Message-ID: <20130308091504.GA9597@stefanha-thinkpad.redhat.com>
-References: <5127CF6D.2060104@siemens.com>
+To: Cole Robinson <crobinso@redhat.com>
+Message-ID: <20130308091738.GB9597@stefanha-thinkpad.redhat.com>
+References: <4cef3fca4cde08008905c89cc2b73069e67824bc.1361925092.git.crobinso@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <5127CF6D.2060104@siemens.com>
+In-Reply-To: <4cef3fca4cde08008905c89cc2b73069e67824bc.1361925092.git.crobinso@redhat.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::22d
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH][RESENT] configure: Create link to icon
- bitmap for out-of-tree builds
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.125.82.46
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+	qemu-stable@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] rtc-test: Fix test failures with recent
+ glib
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,16 +57,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Mar 2013 09:15:20 -0000
+X-List-Received-Date: Fri, 08 Mar 2013 09:18:02 -0000
 
-On Fri, Feb 22, 2013 at 09:05:01PM +0100, Jan Kiszka wrote:
-> This allows to pick up the icon when starting QEMU directly from an
-> out-of-tree build directory.
+On Tue, Feb 26, 2013 at 07:31:32PM -0500, Cole Robinson wrote:
+> As of glib 2.35.4, glib changed its logic for ordering test cases:
 > 
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> https://bugzilla.gnome.org/show_bug.cgi?id=694487
+> 
+> This was causing failures in rtc-test. Group the reordered test
+> cases into their own suite, which maintains the original ordering.
+> 
+> CC: qemu-stable@nongnu.org
+> Signed-off-by: Cole Robinson <crobinso@redhat.com>
 > ---
->  configure |    1 +
->  1 files changed, 1 insertions(+), 0 deletions(-)
+>  tests/rtc-test.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+
+It's best to make test cases independent of order (no side-effects), but
+this small patch fixes the problem.
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
