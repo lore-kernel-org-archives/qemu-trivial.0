@@ -1,51 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UDtRD-00072n-3y
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2013 04:18:03 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:46916)
+	id 1UDtSE-0000e7-HK
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2013 04:19:06 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:47428)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UDtR5-0006sK-UW
-	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:18:02 -0500
+	(envelope-from <stefanha@gmail.com>) id 1UDtS9-0000W8-GA
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:19:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UDtR1-00065I-Dq
-	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:17:55 -0500
-Received: from mail-wg0-f46.google.com ([74.125.82.46]:41866)
+	(envelope-from <stefanha@gmail.com>) id 1UDtS4-0006PK-BL
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2013 04:19:01 -0500
+Received: from mail-wg0-f43.google.com ([74.125.82.43]:43102)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1UDtQr-00062x-UR; Fri, 08 Mar 2013 04:17:42 -0500
-Received: by mail-wg0-f46.google.com with SMTP id fg15so2184991wgb.25
-	for <multiple recipients>; Fri, 08 Mar 2013 01:17:41 -0800 (PST)
+	id 1UDtRv-0006MZ-Nz; Fri, 08 Mar 2013 04:18:47 -0500
+Received: by mail-wg0-f43.google.com with SMTP id e12so2280371wge.22
+	for <multiple recipients>; Fri, 08 Mar 2013 01:18:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=x-received:date:from:to:cc:subject:message-id:references
 	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=ji+9en+xoeFS+UHibEF7AEsENssclnA0wtxJEYoacTI=;
-	b=04AKLme1KxpTvzvJ9OvJLYC+ETDbnE6JWYNRHE++RUjthRaAVxBdqYtq+T0YvbFsWK
-	2/CMpmmKEerWAlHvaSBc4QmyTPCBA60IyRkmtUj3h7mdin1fi39nYytgV7wkqzx86XY0
-	yQuACFMPwaFQGmCcWiNYJAmTFqFbzZHWdMcj3rdhmngsC4tXhaRTatwJv+uYPwoXva3l
-	O6k7soZE4Dak0Fllhzu4SBjMYAGzB/JSkoYlUeTE/JTXeFEnAEpb+0LAoRswEVZ4OjBc
-	HiXYCBRekWy611VoKhVbp/v+G71EybwsMWHQP4I6uopJGt8WcGMCj72kBPTDv6jOMZeC
-	vSHA==
-X-Received: by 10.194.21.233 with SMTP id y9mr2289487wje.47.1362734261036;
-	Fri, 08 Mar 2013 01:17:41 -0800 (PST)
+	:user-agent; bh=oGodrwbyta0SNUIl5G8fFWWpInsNaZWGBFFpoHNcezM=;
+	b=KQTR5qlnnYJP4WEf2FGKoB0g5x1XQeU9cgAJIYOBwVyVzmj8zo8NtLHtJ9lhijac8K
+	NOa9xz8BNbiboLsrx5/0G69hFNX8hkKv2269UpMMuxKEW97PDUEmPPZflNOIiKCtDQCW
+	yu6IakLnmSPN69kDrJdFNk2VcGCnsgJAp8afb48ehCqJ42mZT2vqVsw6ZjszCiDftBmt
+	FMh6suak7avBDnFgxQvsQVu/wq0QFF1RzRM/MlyBZLiizGdWdr+peBsZwsYL0l4aQtu4
+	5T8urBD9xUTBXlKBUOwl7L9T0QdX2q6MymbkswKAIXFXLpptF27P2iKDjEcV2uLYMqSR
+	/Niw==
+X-Received: by 10.195.12.133 with SMTP id eq5mr2259766wjd.52.1362734327047;
+	Fri, 08 Mar 2013 01:18:47 -0800 (PST)
 Received: from localhost ([2a02:810d:ec0:195:852b:b477:8102:5356])
-	by mx.google.com with ESMTPS id ex1sm8157741wib.7.2013.03.08.01.17.39
+	by mx.google.com with ESMTPS id fv2sm8165738wib.6.2013.03.08.01.18.45
 	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Fri, 08 Mar 2013 01:17:40 -0800 (PST)
-Date: Fri, 8 Mar 2013 10:17:38 +0100
+	Fri, 08 Mar 2013 01:18:46 -0800 (PST)
+Date: Fri, 8 Mar 2013 10:18:44 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Cole Robinson <crobinso@redhat.com>
-Message-ID: <20130308091738.GB9597@stefanha-thinkpad.redhat.com>
-References: <4cef3fca4cde08008905c89cc2b73069e67824bc.1361925092.git.crobinso@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20130308091844.GC9597@stefanha-thinkpad.redhat.com>
+References: <1362417107-27069-1-git-send-email-pbonzini@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <4cef3fca4cde08008905c89cc2b73069e67824bc.1361925092.git.crobinso@redhat.com>
+In-Reply-To: <1362417107-27069-1-git-send-email-pbonzini@redhat.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.125.82.46
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
-	qemu-stable@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] rtc-test: Fix test failures with recent
- glib
+X-Received-From: 74.125.82.43
+Cc: qemu-trivial@nongnu.org, michael@walle.cc, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] lm32: remove unused function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,24 +55,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Mar 2013 09:18:02 -0000
+X-List-Received-Date: Fri, 08 Mar 2013 09:19:05 -0000
 
-On Tue, Feb 26, 2013 at 07:31:32PM -0500, Cole Robinson wrote:
-> As of glib 2.35.4, glib changed its logic for ordering test cases:
+On Mon, Mar 04, 2013 at 06:11:47PM +0100, Paolo Bonzini wrote:
+> The milkymist-minimac device in fact does not exist at all.
 > 
-> https://bugzilla.gnome.org/show_bug.cgi?id=694487
-> 
-> This was causing failures in rtc-test. Group the reordered test
-> cases into their own suite, which maintains the original ordering.
-> 
-> CC: qemu-stable@nongnu.org
-> Signed-off-by: Cole Robinson <crobinso@redhat.com>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 > ---
->  tests/rtc-test.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-
-It's best to make test cases independent of order (no side-effects), but
-this small patch fixes the problem.
+>  hw/milkymist-hw.h | 16 ----------------
+>  1 file changed, 16 deletions(-)
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
