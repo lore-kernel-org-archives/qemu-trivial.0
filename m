@@ -1,43 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UEGb9-0003Kl-FH
-	for mharc-qemu-trivial@gnu.org; Sat, 09 Mar 2013 05:01:51 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:46790)
+	id 1UEglX-00022V-JW
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2013 09:58:19 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:60224)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1UEGb3-0003K1-8E
-	for qemu-trivial@nongnu.org; Sat, 09 Mar 2013 05:01:50 -0500
+	(envelope-from <i.mitsyanko@gmail.com>) id 1UEglQ-00021l-Ep
+	for qemu-trivial@nongnu.org; Sun, 10 Mar 2013 09:58:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1UEGay-00073c-2Q
-	for qemu-trivial@nongnu.org; Sat, 09 Mar 2013 05:01:45 -0500
-Received: from [222.73.24.84] (port=59870 helo=song.cn.fujitsu.com)
+	(envelope-from <i.mitsyanko@gmail.com>) id 1UEglN-0004U8-OY
+	for qemu-trivial@nongnu.org; Sun, 10 Mar 2013 09:58:12 -0400
+Received: from mail-lb0-f180.google.com ([209.85.217.180]:64272)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>)
-	id 1UEGax-00071q-Oc; Sat, 09 Mar 2013 05:01:40 -0500
-X-IronPort-AV: E=Sophos;i="4.84,814,1355068800"; 
-   d="scan'208";a="6840900"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 09 Mar 2013 17:59:08 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r29A1XCY019812;
-	Sat, 9 Mar 2013 18:01:33 +0800
-Received: from localhost.localdomain ([10.167.233.156])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013030918002513-729760 ;
-	Sat, 9 Mar 2013 18:00:25 +0800 
-From: Hu Tao <hutao@cn.fujitsu.com>
-To: qemu-devel@nongnu.org
-Date: Sat, 9 Mar 2013 18:01:40 +0800
-Message-Id: <1362823300-19352-1-git-send-email-hutao@cn.fujitsu.com>
-X-Mailer: git-send-email 1.8.1.4
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/03/09 18:00:25,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/03/09 18:00:25,
-	Serialize complete at 2013/03/09 18:00:25
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>
-Subject: [Qemu-trivial] [PATCH] hw/baum.c: fix build error about baum.h
+	(envelope-from <i.mitsyanko@gmail.com>)
+	id 1UEglN-0004Tz-HM; Sun, 10 Mar 2013 09:58:09 -0400
+Received: by mail-lb0-f180.google.com with SMTP id q12so2429905lbc.25
+	for <multiple recipients>; Sun, 10 Mar 2013 06:58:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:from:to:cc:subject:date:message-id:x-mailer;
+	bh=ZG228Naa7foYEfuRyuy+5cDKHPeHsG6cXFZMcd5FIcU=;
+	b=acF6p8YQmQP3cab5kMJ3yQUXmjubVaayub3shdfVsNyeC/J9pGmNQ5ACB+t/H/AI3Q
+	eXcgiJBGAG1gteBesqcBXLLwbTkd6bdtymvXGWWA5Ff7qoneIAduLBhb4dXLbgOh/kCM
+	SJa4DYuH/F8QNGX/xTGECQB0WUzEAEf6IxGhBwTFyckDaq7N+FT+panvTQY1Byy2w5UT
+	dEXKjcJXX5j0gdC9DU9HdjP1tnt0OQqkgC/DO00NDL2XHjLfIuQd80baXRyqW0qAMVA/
+	Yr5zVVciuo7ZG8J/MJ5HE2WdoUWaOclVX/e5IvRl+9rxx136gKv6BTzTBQlo1s8EOA70
+	qj/A==
+X-Received: by 10.152.111.5 with SMTP id ie5mr7440135lab.31.1362923888289;
+	Sun, 10 Mar 2013 06:58:08 -0700 (PDT)
+Received: from localhost ([79.164.43.133])
+	by mx.google.com with ESMTPS id ng6sm5656846lab.2.2013.03.10.06.58.06
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Sun, 10 Mar 2013 06:58:07 -0700 (PDT)
+From: Igor Mitsyanko <i.mitsyanko@gmail.com>
+To: qemu-trivial@nongnu.org
+Date: Sun, 10 Mar 2013 17:58:05 +0400
+Message-Id: <1362923885-2656-1-git-send-email-i.mitsyanko@gmail.com>
+X-Mailer: git-send-email 1.8.1.2
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.217.180
+Cc: i.mitsyanko@gmail.com, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] qemu-char.c: fix waiting for telnet
+	connection message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,29 +50,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 09 Mar 2013 10:01:50 -0000
+X-List-Received-Date: Sun, 10 Mar 2013 13:58:18 -0000
 
-commit 08744c98115cfa144ed3493556024e400b2e2573 removes baum.h, but baum.c
-still includes it. Remove it from baum.c.
+Current colon position in "waiting for telnet connection" message template
+produces messages like:
+QEMU waiting for connection on: telnet::127.0.0.16666,server
 
-Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
+After moving a colon to the right, we will get a correct messages like:
+QEMU waiting for connection on: telnet:127.0.0.1:6666,server
+
+Signed-off-by: Igor Mitsyanko <i.mitsyanko@gmail.com>
 ---
- hw/baum.c |    1 -
- 1 files changed, 0 insertions(+), 1 deletions(-)
+ qemu-char.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/hw/baum.c b/hw/baum.c
-index d75b150..d8919d5 100644
---- a/hw/baum.c
-+++ b/hw/baum.c
-@@ -25,7 +25,6 @@
- #include "char/char.h"
- #include "qemu/timer.h"
- #include "usb.h"
--#include "baum.h"
- #include <brlapi.h>
- #include <brlapi_constants.h>
- #include <brlapi_keycodes.h>
+diff --git a/qemu-char.c b/qemu-char.c
+index 36295b1..789ee35 100644
+--- a/qemu-char.c
++++ b/qemu-char.c
+@@ -2476,7 +2476,7 @@ static CharDriverState *qemu_chr_open_socket_fd(int fd, bool do_nodelay,
+         s->do_nodelay = do_nodelay;
+         getnameinfo((struct sockaddr *) &ss, ss_len, host, sizeof(host),
+                     serv, sizeof(serv), NI_NUMERICHOST | NI_NUMERICSERV);
+-        snprintf(chr->filename, 256, "%s:%s:%s%s%s%s",
++        snprintf(chr->filename, 256, "%s:%s%s%s:%s%s",
+                  is_telnet ? "telnet" : "tcp",
+                  left, host, right, serv,
+                  is_listen ? ",server" : "");
 -- 
-1.7.2.5
+1.7.5.4
 
 
