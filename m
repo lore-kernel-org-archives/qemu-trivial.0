@@ -1,45 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UEz27-0003uP-NK
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2013 05:28:39 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53447)
+	id 1UEzAe-00067I-ND
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2013 05:37:28 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55168)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1UEz25-0003qb-49
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2013 05:28:38 -0400
+	(envelope-from <stefanha@gmail.com>) id 1UEzAc-00064W-4T
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2013 05:37:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1UEz23-0005EZ-CT
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2013 05:28:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:16199)
+	(envelope-from <stefanha@gmail.com>) id 1UEzAa-000856-Ae
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2013 05:37:26 -0400
+Received: from mail-we0-x22a.google.com ([2a00:1450:400c:c03::22a]:59401)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1UEz20-0005Dv-5z; Mon, 11 Mar 2013 05:28:32 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r2B9SUul003377
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 11 Mar 2013 05:28:30 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-77.ams2.redhat.com
-	[10.36.116.77])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r2B9STBh026238; Mon, 11 Mar 2013 05:28:30 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 30C1A200B1; Mon, 11 Mar 2013 10:28:29 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Igor Mitsyanko <i.mitsyanko@gmail.com>
-References: <1362923885-2656-1-git-send-email-i.mitsyanko@gmail.com>
-Date: Mon, 11 Mar 2013 10:28:29 +0100
-In-Reply-To: <1362923885-2656-1-git-send-email-i.mitsyanko@gmail.com> (Igor
-	Mitsyanko's message of "Sun, 10 Mar 2013 17:58:05 +0400")
-Message-ID: <8738w2thdu.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
+	(envelope-from <stefanha@gmail.com>)
+	id 1UEzAW-000843-TX; Mon, 11 Mar 2013 05:37:21 -0400
+Received: by mail-we0-f170.google.com with SMTP id z53so3413316wey.1
+	for <multiple recipients>; Mon, 11 Mar 2013 02:37:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=E0LVlwVSmonMeJMtMoox8Fngb6r37dauwzgfHllVXHk=;
+	b=bj6VyWWH/qL1Ud7Fo6NlPMkgVl96NHbwqMI4zz5kouk6bettTmSNNzOt6wXxg84WeZ
+	4JyhVo8qWf9fekN5PvzM7hgesBr/4CNDvoBY9gjs3Isg7iVK1MVjQNJkgC3dluavGtwa
+	d3whTVz5X5y1y3SyQurzycHaSnzYGftFfCCDf/zu9W6j1NQlg800TmLTu0d0aeiIADO4
+	2zPy2mSOhfJY2+HxAGDDKz64P17r0GtPGijAqDm34DtbIpEq/JNBVlsV5KZxRVAJ4s/4
+	DI/q0Qvfj4deM9+dc5GvnBu+UJ51UXptRo5ljAn85K0RaBXUpz7hPfeYI/nznI9Se/mh
+	NaKw==
+X-Received: by 10.194.173.167 with SMTP id bl7mr17600241wjc.50.1362994634795; 
+	Mon, 11 Mar 2013 02:37:14 -0700 (PDT)
+Received: from localhost ([2a02:810d:ec0:195:2dd0:fe29:43ae:5394])
+	by mx.google.com with ESMTPS id dm9sm14456610wib.3.2013.03.11.02.37.13
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Mon, 11 Mar 2013 02:37:13 -0700 (PDT)
+Date: Mon, 11 Mar 2013 10:37:11 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20130311093711.GA2543@stefanha-thinkpad.redhat.com>
+References: <1362769112-6097-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-char.c: fix waiting
-	for telnet connection message
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1362769112-6097-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c03::22a
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] MinGW: Replace setsockopt by
+ qemu_setsocketopt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,38 +57,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2013 09:28:38 -0000
+X-List-Received-Date: Mon, 11 Mar 2013 09:37:28 -0000
 
-Igor Mitsyanko <i.mitsyanko@gmail.com> writes:
-
-> Current colon position in "waiting for telnet connection" message template
-> produces messages like:
-> QEMU waiting for connection on: telnet::127.0.0.16666,server
->
-> After moving a colon to the right, we will get a correct messages like:
-> QEMU waiting for connection on: telnet:127.0.0.1:6666,server
->
-> Signed-off-by: Igor Mitsyanko <i.mitsyanko@gmail.com>
+On Fri, Mar 08, 2013 at 07:58:32PM +0100, Stefan Weil wrote:
+> Instead of adding missing type casts which are needed by MinGW for the
+> 4th argument, the patch uses qemu_setsockopt which was invented for this
+> purpose.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  qemu-char.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
->
-> diff --git a/qemu-char.c b/qemu-char.c
-> index 36295b1..789ee35 100644
-> --- a/qemu-char.c
-> +++ b/qemu-char.c
-> @@ -2476,7 +2476,7 @@ static CharDriverState *qemu_chr_open_socket_fd(int fd, bool do_nodelay,
->          s->do_nodelay = do_nodelay;
->          getnameinfo((struct sockaddr *) &ss, ss_len, host, sizeof(host),
->                      serv, sizeof(serv), NI_NUMERICHOST | NI_NUMERICSERV);
-> -        snprintf(chr->filename, 256, "%s:%s:%s%s%s%s",
-> +        snprintf(chr->filename, 256, "%s:%s%s%s:%s%s",
->                   is_telnet ? "telnet" : "tcp",
->                   left, host, right, serv,
->                   is_listen ? ",server" : "");
+> 
+> I did not fix some coding style issues in modified slirp code
+> (tabs, line length). Nor did I replace setsockopt in code which
+> is unused for MinGW (linux-user, tests).
+> 
+> - Stefan W.
+> 
+> 
+>  bt-host.c           |    2 +-
+>  gdbstub.c           |    2 +-
+>  net/socket.c        |   21 ++++++++++-----------
+>  slirp/misc.c        |    4 ++--
+>  slirp/socket.c      |    4 ++--
+>  slirp/tcp_subr.c    |    8 ++++----
+>  slirp/udp.c         |    2 +-
+>  util/osdep.c        |    4 ++--
+>  util/qemu-sockets.c |   10 +++++-----
+>  9 files changed, 28 insertions(+), 29 deletions(-)
 
-Broken in commit f6bd5d6e.  Nice to have that information in the commit
-message, but not worth a respin.
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Stefan
 
