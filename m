@@ -1,51 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UEzAe-00067I-ND
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2013 05:37:28 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:55168)
+	id 1UG1e3-0001IW-Bc
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Mar 2013 02:28:07 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:52809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UEzAc-00064W-4T
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2013 05:37:27 -0400
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1UG1dv-00017H-UC
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2013 02:28:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UEzAa-000856-Ae
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2013 05:37:26 -0400
-Received: from mail-we0-x22a.google.com ([2a00:1450:400c:c03::22a]:59401)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1UG1dt-0000Gf-0e
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2013 02:27:59 -0400
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:64074)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1UEzAW-000843-TX; Mon, 11 Mar 2013 05:37:21 -0400
-Received: by mail-we0-f170.google.com with SMTP id z53so3413316wey.1
-	for <multiple recipients>; Mon, 11 Mar 2013 02:37:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=E0LVlwVSmonMeJMtMoox8Fngb6r37dauwzgfHllVXHk=;
-	b=bj6VyWWH/qL1Ud7Fo6NlPMkgVl96NHbwqMI4zz5kouk6bettTmSNNzOt6wXxg84WeZ
-	4JyhVo8qWf9fekN5PvzM7hgesBr/4CNDvoBY9gjs3Isg7iVK1MVjQNJkgC3dluavGtwa
-	d3whTVz5X5y1y3SyQurzycHaSnzYGftFfCCDf/zu9W6j1NQlg800TmLTu0d0aeiIADO4
-	2zPy2mSOhfJY2+HxAGDDKz64P17r0GtPGijAqDm34DtbIpEq/JNBVlsV5KZxRVAJ4s/4
-	DI/q0Qvfj4deM9+dc5GvnBu+UJ51UXptRo5ljAn85K0RaBXUpz7hPfeYI/nznI9Se/mh
-	NaKw==
-X-Received: by 10.194.173.167 with SMTP id bl7mr17600241wjc.50.1362994634795; 
-	Mon, 11 Mar 2013 02:37:14 -0700 (PDT)
-Received: from localhost ([2a02:810d:ec0:195:2dd0:fe29:43ae:5394])
-	by mx.google.com with ESMTPS id dm9sm14456610wib.3.2013.03.11.02.37.13
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Mon, 11 Mar 2013 02:37:13 -0700 (PDT)
-Date: Mon, 11 Mar 2013 10:37:11 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20130311093711.GA2543@stefanha-thinkpad.redhat.com>
-References: <1362769112-6097-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <chenwj@cs.nctu.edu.tw>)
+	id 1UG1dl-0000Em-Pq; Thu, 14 Mar 2013 02:27:50 -0400
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 7037B47B;
+	Thu, 14 Mar 2013 14:27:44 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
+	bh=ArwsniNzUKTekZNpPF2EZ0KoV3o=; b=eKFG/+hHnEhRaAVEreJ3uYAjJ69r
+	Wvk30o3+6oDZWRvR7kT+pmqkoEj6D81XkK0qkVGpCR9+99/vVsLnYC3w8yoCDvX8
+	a3nOPQCZDmSV5XzU4S5XuuUzhcgcVXaHYwy8TkDszdFn8po8nupCQqUzevlBGBc0
+	XOgA8JI3pCHbxOI=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 4770F47A;
+	Thu, 14 Mar 2013 14:27:44 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id r2E6RcJn025698;
+	Thu, 14 Mar 2013 14:27:38 +0800 (CST) (envelope-from chenwj)
+Date: Thu, 14 Mar 2013 14:27:38 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Message-ID: <20130314062738.GA25684@cs.nctu.edu.tw>
+References: <20130307033301.GA48996@cs.nctu.edu.tw>
+	<20130308092102.GD9597@stefanha-thinkpad.redhat.com>
+	<CAFEAcA_2JCrZOVTmg8d=YHSPD0-txcXNmjmjvc0AFYihabyfcQ@mail.gmail.com>
+	<20130308101324.GA32107@stefanha-thinkpad.redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <1362769112-6097-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <20130308101324.GA32107@stefanha-thinkpad.redhat.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::22a
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] MinGW: Replace setsockopt by
- qemu_setsocketopt
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
+X-Received-From: 140.113.235.130
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org,
+	=?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Use proper term in TCG
+	README
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,36 +60,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2013 09:37:28 -0000
+X-List-Received-Date: Thu, 14 Mar 2013 06:28:05 -0000
 
-On Fri, Mar 08, 2013 at 07:58:32PM +0100, Stefan Weil wrote:
-> Instead of adding missing type casts which are needed by MinGW for the
-> 4th argument, the patch uses qemu_setsockopt which was invented for this
-> purpose.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
-> 
-> I did not fix some coding style issues in modified slirp code
-> (tabs, line length). Nor did I replace setsockopt in code which
-> is unused for MinGW (linux-user, tests).
-> 
-> - Stefan W.
-> 
-> 
->  bt-host.c           |    2 +-
->  gdbstub.c           |    2 +-
->  net/socket.c        |   21 ++++++++++-----------
->  slirp/misc.c        |    4 ++--
->  slirp/socket.c      |    4 ++--
->  slirp/tcp_subr.c    |    8 ++++----
->  slirp/udp.c         |    2 +-
->  util/osdep.c        |    4 ++--
->  util/qemu-sockets.c |   10 +++++-----
->  9 files changed, 28 insertions(+), 29 deletions(-)
+On Fri, Mar 08, 2013 at 11:13:24AM +0100, Stefan Hajnoczi wrote:
+> On Fri, Mar 08, 2013 at 05:29:29PM +0800, Peter Maydell wrote:
+> > On 8 March 2013 17:21, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> > > On Thu, Mar 07, 2013 at 11:33:01AM +0800, =E9=99=B3=E9=9F=8B=E4=BB=BB=
+ (Wei-Ren Chen) wrote:
+> > >>   In TCG, "target" means the host architecture for which TCG gener=
+ates the
+> > >> code. Using "guest" rather than "target" to make the document more=
+ consistent.
+> >=20
+> > >> @@ -379,7 +379,7 @@ double-word product T0.  The later is returned=
+ in two single-word outputs.
+> > >>
+> > >>  Similar to mulu2, except the two inputs T1 and T2 are signed.
+> > >>
+> > >> -********* 64-bit target on 32-bit host support
+> > >> +********* 64-bit guest on 32-bit host support
+> > >>
+> > >>  The following opcodes are internal to TCG.  Thus they are to be i=
+mplemented by
+> > >>  32-bit host code generators, but are not to be emitted by guest t=
+ranslators.
+> > >
+> > > Review from TCG experts please.
+> > >
+> > > It seems we have multiple meanings for "target" (e.g. ./configure
+> > > --target-list=3D does not mean "the host architecture for which TCG
+> > > generates code"), if this is really the way TCG uses the term then =
+fine.
+> >=20
+> > Yes, this is an unfortunate terminology clash, but in a TCG context
+> > 'target' does mean 'host architecture which the backend compiles for'
+> > (see the tcg/README definition in section 2). This is partly because
+> > of TCG's history as a C compiler backend, where 'target' is unambiguo=
+us
+> > and may be different from the 'host' architecture the compiler itself
+> > executes on.
+> >=20
+> > There are several places in tcg/README which use 'target' in the
+> > sense 'QEMU target, ie guest' (as well as lots of uses in the
+> > 'TCG target, ie host' sense), not just this one; it might be a good
+> > idea to put a note in the Definitions section that this document uses
+> > 'guest' when it means what in other areas of QEMU is often referred t=
+o
+> > as the 'target', and fix the places where we've accidentally used 'ta=
+rget'
+> > and 'guest would be better.
+>=20
+> Wei-Ren, can you please convert the other instances in tcg/README where
+> 'target' is used in the 'guest' sense, too?
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+  I will look into the tcg/README again. :)
 
-Stefan
+Regards,
+chenwj=20
+
+--=20
+Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
+Computer Systems Lab, Institute of Information Science,
+Academia Sinica, Taiwan (R.O.C.)
+Tel:886-2-2788-3799 #1667
+Homepage: http://people.cs.nctu.edu.tw/~chenwj
 
