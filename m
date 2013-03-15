@@ -1,50 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UGK6h-0001hE-4c
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Mar 2013 22:10:55 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46016)
+	id 1UGOBQ-0007In-Vi
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Mar 2013 02:32:04 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47061)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1UGK6b-0001ed-Oo
-	for qemu-trivial@nongnu.org; Thu, 14 Mar 2013 22:10:53 -0400
+	(envelope-from <hutao@cn.fujitsu.com>) id 1UGOBO-0007IY-VR
+	for qemu-trivial@nongnu.org; Fri, 15 Mar 2013 02:32:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1UGK6X-00054I-A6
-	for qemu-trivial@nongnu.org; Thu, 14 Mar 2013 22:10:49 -0400
-Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:53257)
+	(envelope-from <hutao@cn.fujitsu.com>) id 1UGOBN-0004dy-LW
+	for qemu-trivial@nongnu.org; Fri, 15 Mar 2013 02:32:02 -0400
+Received: from [222.73.24.84] (port=2847 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenwj@cs.nctu.edu.tw>)
-	id 1UGK6K-000533-Cu; Thu, 14 Mar 2013 22:10:33 -0400
-Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 6CADE3C1;
-	Fri, 15 Mar 2013 10:10:29 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
-	:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to:content-transfer-encoding; s=rsa1024;
-	bh=ZGUpQ0SlfknAWzq15TinZw0Num4=; b=h4hl7SOw4HRpPtb+aWMx+CE2kscd
-	W48b3fKswm21zgWxt9oi2nxP/mgojlN2QdjYVHGAEcyGSwlIS+gRhmXlHpwptCyQ
-	wj42EWVb6aX80gbGLrfS1VWIFMRip/R9t1vDOvGJdRyQOEiOkakuqm6B3nZgkkno
-	idVIIABrG6pTAe4=
-Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
-	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id 425AA3C0;
-	Fri, 15 Mar 2013 10:10:29 +0800 (CST)
-Received: (from chenwj@localhost)
-	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id r2F2ARMC054075;
-	Fri, 15 Mar 2013 10:10:27 +0800 (CST) (envelope-from chenwj)
-Date: Fri, 15 Mar 2013 10:10:27 +0800
-From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20130315021026.GA54017@cs.nctu.edu.tw>
-References: <20130314080646.GA28398@cs.nctu.edu.tw>
-	<CAFEAcA815a9QE-y_JSApC0o9MSt6TrjQc+Hgo83uxEUD8KTHjw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA815a9QE-y_JSApC0o9MSt6TrjQc+Hgo83uxEUD8KTHjw@mail.gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
-X-Received-From: 140.113.235.130
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	=?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
-Subject: Re: [Qemu-trivial] [PATCH v2] Use proper term in TCG README
+	(envelope-from <hutao@cn.fujitsu.com>)
+	id 1UGOBN-0004bt-B0; Fri, 15 Mar 2013 02:32:01 -0400
+X-IronPort-AV: E=Sophos;i="4.84,850,1355068800"; 
+   d="scan'208";a="6877397"
+Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
+	by song.cn.fujitsu.com with ESMTP; 15 Mar 2013 14:29:28 +0800
+Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r2F6VsV3012523;
+	Fri, 15 Mar 2013 14:31:54 +0800
+Received: from localhost.localdomain ([10.167.233.156])
+	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
+	with ESMTP id 2013031514303710-893282 ;
+	Fri, 15 Mar 2013 14:30:37 +0800 
+From: Hu Tao <hutao@cn.fujitsu.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 15 Mar 2013 14:32:01 +0800
+Message-Id: <1363329121-20625-1-git-send-email-hutao@cn.fujitsu.com>
+X-Mailer: git-send-email 1.8.1.4
+X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
+	15, 2011) at 2013/03/15 14:30:37,
+	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
+	2011) at 2013/03/15 14:30:37,
+	Serialize complete at 2013/03/15 14:30:37
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 222.73.24.84
+Subject: [Qemu-trivial] [PATCH] memory: fix a bug of detection of memory
+	region collision
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,101 +49,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Mar 2013 02:10:54 -0000
+X-List-Received-Date: Fri, 15 Mar 2013 06:32:04 -0000
 
-  Thanks, Peter.=20
+The collision reports before and after this patch are:
 
-On Thu, Mar 14, 2013 at 09:03:15AM +0000, Peter Maydell wrote:
-> On 14 March 2013 08:06, =E9=99=B3=E9=9F=8B=E4=BB=BB (Wei-Ren Chen) <che=
-nwj@iis.sinica.edu.tw> wrote:
-> >   In TCG, "target" means the host architecture for which TCG generate=
-s
-> > the code. Using "guest" rather than "target" to make the document mor=
-e
-> > consistent.
->=20
-> Thanks. I've tweaked the wording a little in one sentence below;
-> otherwise it looks good.
->=20
-> > Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
-> > ---
-> >  tcg/README | 13 ++++++++-----
-> >  1 file changed, 8 insertions(+), 5 deletions(-)
-> >
-> > diff --git a/tcg/README b/tcg/README
-> > index 934e7af..00d4751 100644
-> > --- a/tcg/README
-> > +++ b/tcg/README
-> > @@ -14,6 +14,9 @@ the emulated architecture. As TCG started as a gene=
-ric C backend used
-> >  for cross compiling, it is assumed that the TCG target is different
-> >  from the host, although it is never the case for QEMU.
-> >
-> > +In this document, we uses "guest" to specify what architecture we ar=
-e
->=20
-> "use".
->=20
->=20
-> > +emulating, and "target" means on what machine we are running QEMU.
->=20
-> "emulating; "target" always means the TCG target, the machine on which
-> we are running QEMU."
->=20
-> > +
-> >  A TCG "function" corresponds to a QEMU Translated Block (TB).
-> >
-> >  A TCG "temporary" is a variable only live in a basic
-> > @@ -379,7 +382,7 @@ double-word product T0.  The later is returned in=
- two single-word outputs.
-> >
-> >  Similar to mulu2, except the two inputs T1 and T2 are signed.
-> >
-> > -********* 64-bit target on 32-bit host support
-> > +********* 64-bit guest on 32-bit host support
-> >
-> >  The following opcodes are internal to TCG.  Thus they are to be impl=
-emented by
-> >  32-bit host code generators, but are not to be emitted by guest tran=
-slators.
-> > @@ -521,9 +524,9 @@ register.
-> >    a better generated code, but it reduces the memory usage of TCG an=
-d
-> >    the speed of the translation.
-> >
-> > -- Don't hesitate to use helpers for complicated or seldom used targe=
-t
-> > +- Don't hesitate to use helpers for complicated or seldom used guest
-> >    instructions. There is little performance advantage in using TCG t=
-o
-> > -  implement target instructions taking more than about twenty TCG
-> > +  implement guest instructions taking more than about twenty TCG
-> >    instructions. Note that this rule of thumb is more applicable to
-> >    helpers doing complex logic or arithmetic, where the C compiler ha=
-s
-> >    scope to do a good job of optimisation; it is less relevant where
-> > @@ -531,9 +534,9 @@ register.
-> >    inline TCG may still be faster for longer sequences.
-> >
-> >  - The hard limit on the number of TCG instructions you can generate
-> > -  per target instruction is set by MAX_OP_PER_INSTR in exec-all.h --
-> > +  per guest instruction is set by MAX_OP_PER_INSTR in exec-all.h --
-> >    you cannot exceed this without risking a buffer overrun.
-> >
-> >  - Use the 'discard' instruction if you know that TCG won't be able t=
-o
-> >    prove that a given global is "dead" at a given program point. The
-> > -  x86 target uses it to improve the condition codes optimisation.
-> > +  x86 guest uses it to improve the condition codes optimisation.
-> > --
-> > 1.7.12.3
->=20
-> -- PMM
+before:
 
---=20
-Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
-Computer Systems Lab, Institute of Information Science,
-Academia Sinica, Taiwan (R.O.C.)
-Tel:886-2-2788-3799 #1667
-Homepage: http://people.cs.nctu.edu.tw/~chenwj
+warning: subregion collision cfc/4 (pci-conf-data) vs cf8/4 (pci-conf-idx)
+warning: subregion collision 8000000/f8000000 (pci-hole) vs 0/8000000 (ram-below-4g)
+warning: subregion collision 100000000/4000000000000000 (pci-hole64) vs 8000000/f8000000 (pci-hole)
+warning: subregion collision 4d1/1 (kvm-elcr) vs 4d0/1 (kvm-elcr)
+warning: subregion collision fec00000/1000 (kvm-ioapic) vs 8000000/f8000000 (pci-hole)
+warning: subregion collision 80/1 (ioport80) vs 7e/2 (kvmvapic)
+warning: subregion collision fed00000/400 (hpet) vs 8000000/f8000000 (pci-hole)
+warning: subregion collision 81/3 (dma-page) vs 80/1 (ioport80)
+warning: subregion collision 8/8 (dma-cont) vs 0/8 (dma-chan)
+warning: subregion collision d0/10 (dma-cont) vs c0/10 (dma-chan)
+warning: subregion collision 0/80 (ich9-pm) vs 8/8 (dma-cont)
+warning: subregion collision 0/80 (ich9-pm) vs 0/8 (dma-chan)
+warning: subregion collision 0/80 (ich9-pm) vs 64/1 (i8042-cmd)
+warning: subregion collision 0/80 (ich9-pm) vs 60/1 (i8042-data)
+warning: subregion collision 0/80 (ich9-pm) vs 61/1 (elcr)
+warning: subregion collision 0/80 (ich9-pm) vs 40/4 (kvm-pit)
+warning: subregion collision 0/80 (ich9-pm) vs 70/2 (rtc)
+warning: subregion collision 0/80 (ich9-pm) vs 20/2 (kvm-pic)
+warning: subregion collision 0/80 (ich9-pm) vs 7e/2 (kvmvapic)
+warning: subregion collision 4/2 (acpi-cnt) vs 0/4 (acpi-evt)
+warning: subregion collision 30/8 (apci-smi) vs 20/10 (apci-gpe0)
+warning: subregion collision b0000000/10000000 (pcie-mmcfg) vs 8000000/f8000000 (pci-hole)
+
+after:
+
+warning: subregion collision fec00000/1000 (kvm-ioapic) vs 8000000/f8000000 (pci-hole)
+warning: subregion collision fed00000/400 (hpet) vs 8000000/f8000000 (pci-hole)
+warning: subregion collision 0/80 (ich9-pm) vs 8/8 (dma-cont)
+warning: subregion collision 0/80 (ich9-pm) vs 0/8 (dma-chan)
+warning: subregion collision 0/80 (ich9-pm) vs 64/1 (i8042-cmd)
+warning: subregion collision 0/80 (ich9-pm) vs 60/1 (i8042-data)
+warning: subregion collision 0/80 (ich9-pm) vs 61/1 (elcr)
+warning: subregion collision 0/80 (ich9-pm) vs 40/4 (kvm-pit)
+warning: subregion collision 0/80 (ich9-pm) vs 70/2 (rtc)
+warning: subregion collision 0/80 (ich9-pm) vs 20/2 (kvm-pic)
+warning: subregion collision 0/80 (ich9-pm) vs 7e/2 (kvmvapic)
+warning: subregion collision b0000000/10000000 (pcie-mmcfg) vs 8000000/f8000000 (pci-hole)
+
+Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
+---
+ memory.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/memory.c b/memory.c
+index 92a2196..75ca281 100644
+--- a/memory.c
++++ b/memory.c
+@@ -1321,7 +1321,7 @@ static void memory_region_add_subregion_common(MemoryRegion *mr,
+         if (subregion->may_overlap || other->may_overlap) {
+             continue;
+         }
+-        if (int128_gt(int128_make64(offset),
++        if (int128_ge(int128_make64(offset),
+                       int128_add(int128_make64(other->addr), other->size))
+             || int128_le(int128_add(int128_make64(offset), subregion->size),
+                          int128_make64(other->addr))) {
+-- 
+1.8.1.4
+
 
