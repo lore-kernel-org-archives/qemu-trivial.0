@@ -1,48 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UHKQl-0008MH-A2
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Mar 2013 16:43:47 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:48360)
+	id 1UHdqt-00086i-70
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Mar 2013 13:28:03 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36399)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cardoe@cardoe.com>) id 1UHKQh-0008JI-Vi
-	for qemu-trivial@nongnu.org; Sun, 17 Mar 2013 16:43:46 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1UHdqg-0007kt-S2
+	for qemu-trivial@nongnu.org; Mon, 18 Mar 2013 13:28:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cardoe@cardoe.com>) id 1UHKQd-0004mt-LC
-	for qemu-trivial@nongnu.org; Sun, 17 Mar 2013 16:43:43 -0400
-Received: from mail-qc0-x231.google.com ([2607:f8b0:400d:c01::231]:63247)
+	(envelope-from <pm215@archaic.org.uk>) id 1UHdqd-00067b-IN
+	for qemu-trivial@nongnu.org; Mon, 18 Mar 2013 13:27:50 -0400
+Received: from
+	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
+	([2001:8b0:1d0::1]:32998 helo=mnementh.archaic.org.uk)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cardoe@cardoe.com>) id 1UHKQd-0004mY-H9
-	for qemu-trivial@nongnu.org; Sun, 17 Mar 2013 16:43:39 -0400
-Received: by mail-qc0-f177.google.com with SMTP id u28so2407799qcs.8
-	for <qemu-trivial@nongnu.org>; Sun, 17 Mar 2013 13:43:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:from:to:cc:subject:date:message-id:x-mailer
-	:x-gm-message-state;
-	bh=vtJL6TamHyNXrF6SY4V0fuDsMJyLaWb/7WRR5peahbM=;
-	b=GOs9BZDGEjNoxMLSMoqwpEGVHXBdCwajb8eAi0NrFCjowM5O0RxjKtwUMzanRUC0us
-	TENxVI9nwGzPUIowg+SPibNGS8UeZKIuGrDKq8RrgyJuJPEOssuPfWRSoDDoosqy0Vo+
-	mwnYtYZMcBkrgg/1I5Z9I+FBHLm5//X9b/5Hin4MUEQnm1TtmaWPR4f67x9nZM4XF4eU
-	1OmA9lKT2vNbbDYiwJvXCgmO9mcMFnMAzSlDTuRsAXYWkiPHeuXf0RHDB+U31Wmzi6WT
-	BmIegIosnLL6L4dc1heYNHSWBMneQd8iJQfYRpP6tO5SwQJOABvgIMyU6xjM4pyxaSgg
-	qfSw==
-X-Received: by 10.229.93.105 with SMTP id u41mr3776050qcm.150.1363553018574;
-	Sun, 17 Mar 2013 13:43:38 -0700 (PDT)
-Received: from localhost.localdomain (c-68-62-173-137.hsd1.al.comcast.net.
-	[68.62.173.137])
-	by mx.google.com with ESMTPS id hn9sm27712329qab.8.2013.03.17.13.43.37
-	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 17 Mar 2013 13:43:38 -0700 (PDT)
-From: Doug Goldstein <cardoe@cardoe.com>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1UHdjI-0003De-CD; Mon, 18 Mar 2013 13:20:12 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1UHdjD-0007bn-LN; Mon, 18 Mar 2013 17:20:07 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sun, 17 Mar 2013 15:43:26 -0500
-Message-Id: <1363553006-27008-1-git-send-email-cardoe@cardoe.com>
-X-Mailer: git-send-email 1.8.1.5
-X-Gm-Message-State: ALoCoQnotyp2CodB1Kh5msrR8UxCLfeRbx83y4BxHolRGLymKcwvNHBGt0IQarX79M5FFt/3nFmf
+Date: Mon, 18 Mar 2013 17:20:07 +0000
+Message-Id: <1363627207-29224-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c01::231
-Cc: qemu-trivial@nongnu.org, Doug Goldstein <cardoe@cardoe.com>
-Subject: [Qemu-trivial] [PATCH] Advertise --libdir in configure --help output
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] Fix typos and misspellings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,30 +38,189 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Mar 2013 20:43:46 -0000
+X-List-Received-Date: Mon, 18 Mar 2013 17:28:01 -0000
 
-The configure script allows you to supply a libdir via --libdir but was
-not advertising this in --help.
+Fix various typos and misspellings. The bulk of these were found with
+codespell.
 
-Signed-off-by: Doug Goldstein <cardoe@cardoe.com>
-CC: qemu-trivial@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- configure | 1 +
- 1 file changed, 1 insertion(+)
+I noticed the PCI typo while reading the file so I figured I'd run codespell
+on the tree while I was at it. (Oddly codespell doesn't complain about the
+typos in pci_host.c.)
 
-diff --git a/configure b/configure
-index 46a7594..497ce29 100755
---- a/configure
-+++ b/configure
-@@ -1050,6 +1050,7 @@ echo "  --mandir=PATH            install man pages in PATH"
- echo "  --datadir=PATH           install firmware in PATH$confsuffix"
- echo "  --docdir=PATH            install documentation in PATH$confsuffix"
- echo "  --bindir=PATH            install binaries in PATH"
-+echo "  --libdir=PATH            install libraries in PATH"
- echo "  --sysconfdir=PATH        install config in PATH$confsuffix"
- echo "  --localstatedir=PATH     install local state in PATH"
- echo "  --with-confsuffix=SUFFIX suffix for QEMU data inside datadir and sysconfdir [$confsuffix]"
+ docs/usb-storage.txt     |    4 ++--
+ hw/arm-misc.h            |    2 +-
+ hw/pci/pci_host.c        |    2 +-
+ hw/sdhci.c               |    2 +-
+ include/qom/object.h     |    2 +-
+ monitor.c                |    8 ++++----
+ net/tap.c                |    2 +-
+ qemu-options.hx          |    2 +-
+ qga/commands-posix.c     |    2 +-
+ target-i386/translate.c  |    2 +-
+ target-s390x/translate.c |    2 +-
+ 11 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/docs/usb-storage.txt b/docs/usb-storage.txt
+index fa93111..c5a3866 100644
+--- a/docs/usb-storage.txt
++++ b/docs/usb-storage.txt
+@@ -5,7 +5,7 @@ qemu usb storage emulation
+ QEMU has three devices for usb storage emulation.
+ 
+ Number one emulates the classic bulk-only transport protocol which is
+-used by 99% of the usb sticks on the marked today and is called
++used by 99% of the usb sticks on the market today and is called
+ "usb-storage".  Usage (hooking up to xhci, other host controllers work
+ too):
+ 
+@@ -36,7 +36,7 @@ It's called "usb-bot".  It shares most code with "usb-storage", and
+ the guest will not be able to see the difference.  The qemu command
+ line interface is simliar to usb-uas though, i.e. no automatic scsi
+ disk creation.  It also features support for up to 16 LUNs.  The LUN
+-numbers must be continous, i.e. for three devices you must use 0+1+2.
++numbers must be continuous, i.e. for three devices you must use 0+1+2.
+ The 0+1+5 numbering from the "usb-uas" example isn't going to work
+ with "usb-bot".
+ 
+diff --git a/hw/arm-misc.h b/hw/arm-misc.h
+index cba7553..7b2b02d 100644
+--- a/hw/arm-misc.h
++++ b/hw/arm-misc.h
+@@ -14,7 +14,7 @@
+ #include "exec/memory.h"
+ #include "hw/irq.h"
+ 
+-/* The CPU is also modeled as an interrupt controller.  */
++/* The CPU is also modelled as an interrupt controller.  */
+ #define ARM_PIC_CPU_IRQ 0
+ #define ARM_PIC_CPU_FIQ 1
+ qemu_irq *arm_pic_init_cpu(ARMCPU *cpu);
+diff --git a/hw/pci/pci_host.c b/hw/pci/pci_host.c
+index daca1c1..12254b1 100644
+--- a/hw/pci/pci_host.c
++++ b/hw/pci/pci_host.c
+@@ -38,7 +38,7 @@ do { printf("pci_host_data: " fmt , ## __VA_ARGS__); } while (0)
+  * bit  0 -  7: offset in configuration space of a given pci device
+  */
+ 
+-/* the helper functio to get a PCIDeice* for a given pci address */
++/* the helper function to get a PCIDevice* for a given pci address */
+ static inline PCIDevice *pci_dev_find_by_addr(PCIBus *bus, uint32_t addr)
+ {
+     uint8_t bus_num = addr >> 16;
+diff --git a/hw/sdhci.c b/hw/sdhci.c
+index 93feada..4a29e6c 100644
+--- a/hw/sdhci.c
++++ b/hw/sdhci.c
+@@ -763,7 +763,7 @@ static void sdhci_do_adma(SDHCIState *s)
+         }
+     }
+ 
+-    /* we have unfinished bussiness - reschedule to continue ADMA */
++    /* we have unfinished business - reschedule to continue ADMA */
+     qemu_mod_timer(s->transfer_timer,
+                    qemu_get_clock_ns(vm_clock) + SDHC_TRANSFER_DELAY);
+ }
+diff --git a/include/qom/object.h b/include/qom/object.h
+index cf094e7..d0f99c5 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -202,7 +202,7 @@ typedef struct InterfaceInfo InterfaceInfo;
+  * Methods are always <emphasis>virtual</emphasis>. Overriding a method in
+  * #TypeInfo.class_init of a subclass leads to any user of the class obtained
+  * via OBJECT_GET_CLASS() accessing the overridden function.
+- * The original function is not automatically invoked. It is the responsability
++ * The original function is not automatically invoked. It is the responsibility
+  * of the overriding class to determine whether and when to invoke the method
+  * being overridden.
+  *
+diff --git a/monitor.c b/monitor.c
+index 112e920..99bbb17 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -3541,10 +3541,10 @@ static const mon_cmd_t *qmp_find_cmd(const char *cmdname)
+  * If @cmdline is blank, return NULL.
+  * If it can't be parsed, report to @mon, and return NULL.
+  * Else, insert command arguments into @qdict, and return the command.
+- * If sub-command table exist, and if @cmdline contains addtional string for
+- * sub-command, this function will try search sub-command table. if no
+- * addtional string for sub-command exist, this function will return the found
+- * one in @table.
++ * If a sub-command table exists, and if @cmdline contains an additional string
++ * for a sub-command, this function will try to search the sub-command table.
++ * If no additional string for a sub-command is present, this function will
++ * return the command found in @table.
+  * Do not assume the returned command points into @table!  It doesn't
+  * when the command is a sub-command.
+  */
+diff --git a/net/tap.c b/net/tap.c
+index daab350..ce79699 100644
+--- a/net/tap.c
++++ b/net/tap.c
+@@ -696,7 +696,7 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
+     /* QEMU vlans does not support multiqueue tap, in this case peer is set.
+      * For -netdev, peer is always NULL. */
+     if (peer && (tap->has_queues || tap->has_fds || tap->has_vhostfds)) {
+-        error_report("Multiqueue tap cannnot be used with QEMU vlans");
++        error_report("Multiqueue tap cannot be used with QEMU vlans");
+         return -1;
+     }
+ 
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 30fb85d..c68a46e 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1119,7 +1119,7 @@ is a TCP port number, not a display number.
+ @item websocket
+ 
+ Opens an additional TCP listening port dedicated to VNC Websocket connections.
+-By defintion the Websocket port is 5700+@var{display}. If @var{host} is
++By definition the Websocket port is 5700+@var{display}. If @var{host} is
+ specified connections will only be allowed from this host.
+ As an alternative the Websocket port could be specified by using
+ @code{websocket}=@var{port}.
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index d7da850..3b5c536 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -120,7 +120,7 @@ void qmp_guest_shutdown(bool has_mode, const char *mode, Error **err)
+         return;
+     }
+ 
+-    /* succeded */
++    /* succeeded */
+ }
+ 
+ int64_t qmp_guest_get_time(Error **errp)
+diff --git a/target-i386/translate.c b/target-i386/translate.c
+index 705147a..c9cc2ff 100644
+--- a/target-i386/translate.c
++++ b/target-i386/translate.c
+@@ -4746,7 +4746,7 @@ static target_ulong disas_insn(CPUX86State *env, DisasContext *s,
+             }
+             s->pc++;
+ 
+-            /* 4.1.1-4.1.3: No preceeding lock, 66, f2, f3, or rex prefixes. */
++            /* 4.1.1-4.1.3: No preceding lock, 66, f2, f3, or rex prefixes. */
+             if (prefixes & (PREFIX_REPZ | PREFIX_REPNZ
+                             | PREFIX_LOCK | PREFIX_DATA)) {
+                 goto illegal_op;
+diff --git a/target-s390x/translate.c b/target-s390x/translate.c
+index 88e481c..a4f2194 100644
+--- a/target-s390x/translate.c
++++ b/target-s390x/translate.c
+@@ -1142,7 +1142,7 @@ struct DisasInsn {
+ };
+ 
+ /* ====================================================================== */
+-/* Miscelaneous helpers, used by several operations.  */
++/* Miscellaneous helpers, used by several operations.  */
+ 
+ static void help_l2_shift(DisasContext *s, DisasFields *f,
+                           DisasOps *o, int mask)
 -- 
-1.8.1.5
+1.7.9.5
 
 
