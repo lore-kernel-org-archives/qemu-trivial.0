@@ -1,35 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UHwbe-00029B-FZ
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Mar 2013 09:29:34 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40784)
+	id 1UHwp4-0008Ka-GJ
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Mar 2013 09:43:26 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44622)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UHwba-00022g-Ab
-	for qemu-trivial@nongnu.org; Tue, 19 Mar 2013 09:29:32 -0400
+	(envelope-from <kwolf@redhat.com>) id 1UHwp2-0008Hp-JD
+	for qemu-trivial@nongnu.org; Tue, 19 Mar 2013 09:43:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UHwbV-0000wu-MG
-	for qemu-trivial@nongnu.org; Tue, 19 Mar 2013 09:29:30 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:38658 helo=mx2.suse.de)
+	(envelope-from <kwolf@redhat.com>) id 1UHwot-0006CZ-6v
+	for qemu-trivial@nongnu.org; Tue, 19 Mar 2013 09:43:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:27677)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UHwbS-0000pM-Pv; Tue, 19 Mar 2013 09:29:22 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 52AC0A50E4;
-	Tue, 19 Mar 2013 14:29:22 +0100 (CET)
-Message-ID: <51486831.4070802@suse.de>
-Date: Tue, 19 Mar 2013 14:29:21 +0100
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130307 Thunderbird/17.0.4
-MIME-Version: 1.0
-To: Kevin Wolf <kwolf@redhat.com>
+	(envelope-from <kwolf@redhat.com>)
+	id 1UHwof-00068W-Cu; Tue, 19 Mar 2013 09:43:01 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r2JDh0XG006235
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 19 Mar 2013 09:43:00 -0400
+Received: from dhcp-200-207.str.redhat.com (ovpn-116-87.ams2.redhat.com
+	[10.36.116.87])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r2JDgw0I001769; Tue, 19 Mar 2013 09:42:59 -0400
+Date: Tue, 19 Mar 2013 14:42:58 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
+Message-ID: <20130319134258.GE2418@dhcp-200-207.str.redhat.com>
 References: <1363692343-22299-1-git-send-email-kwolf@redhat.com>
-In-Reply-To: <1363692343-22299-1-git-send-email-kwolf@redhat.com>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=ISO-8859-15
+	<51486831.4070802@suse.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <51486831.4070802@suse.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	r2JDh0XG006235
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] serial: Fix debug format
 	strings
@@ -44,53 +52,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Mar 2013 13:29:32 -0000
+X-List-Received-Date: Tue, 19 Mar 2013 13:43:25 -0000
 
-Am 19.03.2013 12:25, schrieb Kevin Wolf:
-> This fixes the build of hw/serial.c with DEBUG_SERIAL enabled.
+Am 19.03.2013 um 14:29 hat Andreas F=E4rber geschrieben:
+> Am 19.03.2013 12:25, schrieb Kevin Wolf:
+> > This fixes the build of hw/serial.c with DEBUG_SERIAL enabled.
+> >=20
+> > Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+> > ---
+> >  hw/serial.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >=20
+> > diff --git a/hw/serial.c b/hw/serial.c
+> > index 48a5eb6..0ccc499 100644
+> > --- a/hw/serial.c
+> > +++ b/hw/serial.c
+> > @@ -306,7 +306,7 @@ static void serial_ioport_write(void *opaque, hwa=
+ddr addr, uint64_t val,
+> >      SerialState *s =3D opaque;
+> > =20
+> >      addr &=3D 7;
+> > -    DPRINTF("write addr=3D0x%02x val=3D0x%02x\n", addr, val);
+> > +    DPRINTF("write addr=3D0x%" HWADDR_PRIx " val=3D0x%" PRIx64 "\n",=
+ addr, val);
 >=20
-> Signed-off-by: Kevin Wolf <kwolf@redhat.com>
-> ---
->  hw/serial.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/serial.c b/hw/serial.c
-> index 48a5eb6..0ccc499 100644
-> --- a/hw/serial.c
-> +++ b/hw/serial.c
-> @@ -306,7 +306,7 @@ static void serial_ioport_write(void *opaque, hwadd=
-r addr, uint64_t val,
->      SerialState *s =3D opaque;
-> =20
->      addr &=3D 7;
-> -    DPRINTF("write addr=3D0x%02x val=3D0x%02x\n", addr, val);
-> +    DPRINTF("write addr=3D0x%" HWADDR_PRIx " val=3D0x%" PRIx64 "\n", a=
-ddr, val);
+> Are you intentionally dropping 02 in both places? That changes output F=
+WIW.
 
-Are you intentionally dropping 02 in both places? That changes output FWI=
-W.
+%02 for 64 bit values felt odd, but I think they might be guaranteed to
+be small enough in practice. If you really prefer, I can send a v2 which
+adds it back. But it's only debug code, so... *shrug*
 
-Andreas
-
->      switch(addr) {
->      default:
->      case 0:
-> @@ -527,7 +527,7 @@ static uint64_t serial_ioport_read(void *opaque, hw=
-addr addr, unsigned size)
->          ret =3D s->scr;
->          break;
->      }
-> -    DPRINTF("read addr=3D0x%02x val=3D0x%02x\n", addr, ret);
-> +    DPRINTF("read addr=3D0x%" HWADDR_PRIx " val=3D0x%02x\n", addr, ret=
-);
->      return ret;
->  }
-> =20
->=20
-
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+Kevin
 
