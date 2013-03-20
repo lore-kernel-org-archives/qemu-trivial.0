@@ -1,46 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UHwp4-0008Ka-GJ
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Mar 2013 09:43:26 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44622)
+	id 1UI9vP-0000GG-Cm
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Mar 2013 23:42:51 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:39884)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1UHwp2-0008Hp-JD
-	for qemu-trivial@nongnu.org; Tue, 19 Mar 2013 09:43:25 -0400
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1UI9vF-0008Pz-Uk
+	for qemu-trivial@nongnu.org; Tue, 19 Mar 2013 23:42:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1UHwot-0006CZ-6v
-	for qemu-trivial@nongnu.org; Tue, 19 Mar 2013 09:43:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:27677)
+	(envelope-from <chenwj@cs.nctu.edu.tw>) id 1UI9v9-00088K-4u
+	for qemu-trivial@nongnu.org; Tue, 19 Mar 2013 23:42:41 -0400
+Received: from csmailer.cs.nctu.edu.tw ([140.113.235.130]:54037)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1UHwof-00068W-Cu; Tue, 19 Mar 2013 09:43:01 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r2JDh0XG006235
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 19 Mar 2013 09:43:00 -0400
-Received: from dhcp-200-207.str.redhat.com (ovpn-116-87.ams2.redhat.com
-	[10.36.116.87])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r2JDgw0I001769; Tue, 19 Mar 2013 09:42:59 -0400
-Date: Tue, 19 Mar 2013 14:42:58 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
-Message-ID: <20130319134258.GE2418@dhcp-200-207.str.redhat.com>
-References: <1363692343-22299-1-git-send-email-kwolf@redhat.com>
-	<51486831.4070802@suse.de>
+	(envelope-from <chenwj@cs.nctu.edu.tw>)
+	id 1UI9uv-00086M-K8; Tue, 19 Mar 2013 23:42:22 -0400
+Received: from csmailer.cs.nctu.edu.tw (localhost [127.0.0.1])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id C9191EBD;
+	Wed, 20 Mar 2013 11:42:10 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=cs.nctu.edu.tw; h=date
+	:from:to:cc:subject:message-id:mime-version:content-type
+	:content-transfer-encoding; s=rsa1024; bh=wawljgHAyBjSFg/k8ouoW0
+	1hpHM=; b=jUA/YGklqsoQHFyYK77MCwXc7pGnNP4VUY8guaTDN61i8kqiZIBKwQ
+	vkFK5A8FUuPJ8K25IBVTCZSAhw+hhFoiDL+i8HRPHw95WbRiywG0z6KOxDdZBseO
+	PNhog0DIcmeV7h/hI0Rs+OpOJfdP2aDM2Z6U/PUl8YNqRyGeKKPwQ=
+Received: from alumni.cs.nctu.edu.tw (alumni.cs.nctu.edu.tw [140.113.235.116])
+	by csmailer.cs.nctu.edu.tw (Postfix) with ESMTP id A2206EBC;
+	Wed, 20 Mar 2013 11:42:10 +0800 (CST)
+Received: (from chenwj@localhost)
+	by alumni.cs.nctu.edu.tw (8.14.5/8.14.5/Submit) id r2K3g8Vn029723;
+	Wed, 20 Mar 2013 11:42:08 +0800 (CST) (envelope-from chenwj)
+Date: Wed, 20 Mar 2013 11:42:08 +0800
+From: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+To: qemu-trivial@nongnu.org
+Message-ID: <20130320034208.GA29514@cs.nctu.edu.tw>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <51486831.4070802@suse.de>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	r2JDh0XG006235
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] serial: Fix debug format
-	strings
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 8.x
+X-Received-From: 140.113.235.130
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: [Qemu-trivial] [PATCH v3] Use proper term in TCG README
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,36 +51,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Mar 2013 13:43:25 -0000
+X-List-Received-Date: Wed, 20 Mar 2013 03:42:50 -0000
 
-Am 19.03.2013 um 14:29 hat Andreas F=E4rber geschrieben:
-> Am 19.03.2013 12:25, schrieb Kevin Wolf:
-> > This fixes the build of hw/serial.c with DEBUG_SERIAL enabled.
-> >=20
-> > Signed-off-by: Kevin Wolf <kwolf@redhat.com>
-> > ---
-> >  hw/serial.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >=20
-> > diff --git a/hw/serial.c b/hw/serial.c
-> > index 48a5eb6..0ccc499 100644
-> > --- a/hw/serial.c
-> > +++ b/hw/serial.c
-> > @@ -306,7 +306,7 @@ static void serial_ioport_write(void *opaque, hwa=
-ddr addr, uint64_t val,
-> >      SerialState *s =3D opaque;
-> > =20
-> >      addr &=3D 7;
-> > -    DPRINTF("write addr=3D0x%02x val=3D0x%02x\n", addr, val);
-> > +    DPRINTF("write addr=3D0x%" HWADDR_PRIx " val=3D0x%" PRIx64 "\n",=
- addr, val);
->=20
-> Are you intentionally dropping 02 in both places? That changes output F=
-WIW.
+  In TCG, "target" means the host architecture for which TCG generates
+the code. Using "guest" rather than "target" to make the document more
+consistent.
 
-%02 for 64 bit values felt odd, but I think they might be guaranteed to
-be small enough in practice. If you really prefer, I can send a v2 which
-adds it back. But it's only debug code, so... *shrug*
+Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
+---
+v3: Adopt Peter's suggestion on sentence and typo.
 
-Kevin
+v2: Correct all wrong usage of the term "target" in this document.
+ =20
+
+ tcg/README | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/tcg/README b/tcg/README
+index 934e7af..063aeb9 100644
+--- a/tcg/README
++++ b/tcg/README
+@@ -14,6 +14,10 @@ the emulated architecture. As TCG started as a generic=
+ C backend used
+ for cross compiling, it is assumed that the TCG target is different
+ from the host, although it is never the case for QEMU.
+=20
++In this document, we use "guest" to specify what architecture we are
++emulating; "target" always means the TCG target, the machine on which
++we are running QEMU.
++
+ A TCG "function" corresponds to a QEMU Translated Block (TB).
+=20
+ A TCG "temporary" is a variable only live in a basic
+@@ -379,7 +383,7 @@ double-word product T0.  The later is returned in two=
+ single-word outputs.
+=20
+ Similar to mulu2, except the two inputs T1 and T2 are signed.
+=20
+-********* 64-bit target on 32-bit host support
++********* 64-bit guest on 32-bit host support
+=20
+ The following opcodes are internal to TCG.  Thus they are to be implemen=
+ted by
+ 32-bit host code generators, but are not to be emitted by guest translat=
+ors.
+@@ -521,9 +525,9 @@ register.
+   a better generated code, but it reduces the memory usage of TCG and
+   the speed of the translation.
+=20
+-- Don't hesitate to use helpers for complicated or seldom used target
++- Don't hesitate to use helpers for complicated or seldom used guest
+   instructions. There is little performance advantage in using TCG to
+-  implement target instructions taking more than about twenty TCG
++  implement guest instructions taking more than about twenty TCG
+   instructions. Note that this rule of thumb is more applicable to
+   helpers doing complex logic or arithmetic, where the C compiler has
+   scope to do a good job of optimisation; it is less relevant where
+@@ -531,9 +535,9 @@ register.
+   inline TCG may still be faster for longer sequences.
+=20
+ - The hard limit on the number of TCG instructions you can generate
+-  per target instruction is set by MAX_OP_PER_INSTR in exec-all.h --
++  per guest instruction is set by MAX_OP_PER_INSTR in exec-all.h --
+   you cannot exceed this without risking a buffer overrun.
+=20
+ - Use the 'discard' instruction if you know that TCG won't be able to
+   prove that a given global is "dead" at a given program point. The
+-  x86 target uses it to improve the condition codes optimisation.
++  x86 guest uses it to improve the condition codes optimisation.
+--=20
+1.7.12.3
+
+
+--=20
+Wei-Ren Chen (=E9=99=B3=E9=9F=8B=E4=BB=BB)
+Computer Systems Lab, Institute of Information Science,
+Academia Sinica, Taiwan (R.O.C.)
+Tel:886-2-2788-3799 #1667
+Homepage: http://people.cs.nctu.edu.tw/~chenwj
 
