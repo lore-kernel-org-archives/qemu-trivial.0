@@ -1,50 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UJ1QU-0002Fx-F0
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Mar 2013 08:50:30 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:33949)
+	id 1UJ3NV-00068I-BR
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Mar 2013 10:55:33 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:46335)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UJ1QR-0002Cc-H0
-	for qemu-trivial@nongnu.org; Fri, 22 Mar 2013 08:50:28 -0400
+	(envelope-from <stefanha@gmail.com>) id 1UJ3NR-00066e-Lb
+	for qemu-trivial@nongnu.org; Fri, 22 Mar 2013 10:55:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UJ1QL-0006fp-Us
-	for qemu-trivial@nongnu.org; Fri, 22 Mar 2013 08:50:27 -0400
-Received: from mail-la0-x232.google.com ([2a00:1450:4010:c03::232]:51618)
+	(envelope-from <stefanha@gmail.com>) id 1UJ3NK-0002T3-Oj
+	for qemu-trivial@nongnu.org; Fri, 22 Mar 2013 10:55:29 -0400
+Received: from mail-wi0-x22d.google.com ([2a00:1450:400c:c05::22d]:41070)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UJ1QL-0006fQ-N6
-	for qemu-trivial@nongnu.org; Fri, 22 Mar 2013 08:50:21 -0400
-Received: by mail-la0-f50.google.com with SMTP id ec20so7049043lab.23
-	for <qemu-trivial@nongnu.org>; Fri, 22 Mar 2013 05:50:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:mime-version:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type:x-gm-message-state;
-	bh=QLf99TR25AUkKnpo8mVVJfssXniaBAis9Q6GNqdPWXw=;
-	b=GbHCDJWDRQTRNVYWf00por2Y+ZWBFcGzE1NEBeYODgvzTvXqNdZskTnuYy3UltBUZj
-	zDcYvWrN3DytraJ8glNWFIHzWzxnWgS6Kr4RHBxFeBH/zkMhN24KggM7QJ084BiSo/6y
-	fX5NTq13JX4uvWsMKUh2cPcXdsTpO3SqbDwPLTnDoP9L/lZqIGGc25ZpwTwXl+mntsgn
-	oZjTKJM5lDOpNTYT/ugppIOLp3MFJWYgXYL5VhmHVhuznIWy1TO4lOZrHdWK1ate5tpB
-	AQrIRaQNKTt/ti5MZne1JTxFEFgN4MwsEX6o9JpnSCrhVgBnIVzRwFXHG9Mb9z+MVSjs
-	HDYQ==
-X-Received: by 10.112.10.102 with SMTP id h6mr1016144lbb.75.1363956620521;
-	Fri, 22 Mar 2013 05:50:20 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1UJ3NK-0002Sg-EC; Fri, 22 Mar 2013 10:55:22 -0400
+Received: by mail-wi0-f173.google.com with SMTP id hq4so7921097wib.12
+	for <multiple recipients>; Fri, 22 Mar 2013 07:55:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition
+	:content-transfer-encoding:in-reply-to:user-agent;
+	bh=sOBq8MhAcwodMlDzDIvDJSgDmVs0HgZBZayTSe9jqms=;
+	b=v7XeG7bYARrfW+I0nYwch0sbr5wBnNdir0L15qTG04sAuXJo3gBj3Ln2M36Kv3mkUB
+	w5T5VdsJXZ6nW2Zkso9fmiwJag8CoPD7JATlvPoNWxPV0Pnqhi6DPEAJNwNsdnrZWjnl
+	PpCxFT3j2QbZZj3iqVHDM88GY8OEtZ4+KFX6hX1UML4lXALDi3d4G9rV1wIhAeUAFsPZ
+	yO2phKdVeRfAkyh+QKcWHQurBnm45TUEQKCJkUtDktZUmWH5h7QdLBGe4tJeu7S6D1Ry
+	A6/AFXUqk+NIM8voLr673KY5SRwFH7jTZJ9AGk0vKPpemoG3qUFQU/IDFX7ICDUTrbxn
+	ENiA==
+X-Received: by 10.194.158.161 with SMTP id wv1mr3668871wjb.38.1363964121394;
+	Fri, 22 Mar 2013 07:55:21 -0700 (PDT)
+Received: from localhost ([2a02:810d:ec0:195:81b0:6069:490c:9a88])
+	by mx.google.com with ESMTPS id fb8sm4069927wid.1.2013.03.22.07.55.19
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Fri, 22 Mar 2013 07:55:20 -0700 (PDT)
+Date: Fri, 22 Mar 2013 15:55:18 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: =?utf-8?B?6Zmz6Z+L5Lu7IChXZWktUmVuIENoZW4p?= <chenwj@iis.sinica.edu.tw>
+Message-ID: <20130322145518.GA948@stefanha-thinkpad.redhat.com>
+References: <20130320034208.GA29514@cs.nctu.edu.tw>
 MIME-Version: 1.0
-Received: by 10.112.2.202 with HTTP; Fri, 22 Mar 2013 05:50:00 -0700 (PDT)
-In-Reply-To: <20130322122227.GB30604@stefanha-thinkpad.redhat.com>
-References: <1363329121-20625-1-git-send-email-hutao@cn.fujitsu.com>
-	<20130322122227.GB30604@stefanha-thinkpad.redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Mar 2013 12:50:00 +0000
-Message-ID: <CAFEAcA-jDhXjRs8FhMc8vmUouGPQwWptNw97HSQG3Lo_bHhsVw@mail.gmail.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQn+gHsAeAzVrW3APS6RG/y/cid4mhLDWhvUU16LokrESsaMYp8J8B1OrmK0xjtw3sRO5M76
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20130320034208.GA29514@cs.nctu.edu.tw>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4010:c03::232
-Cc: qemu-trivial@nongnu.org, Hu Tao <hutao@cn.fujitsu.com>,
+X-Received-From: 2a00:1450:400c:c05::22d
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] memory: fix a bug of
- detection of memory region collision
+Subject: Re: [Qemu-trivial] [PATCH v3] Use proper term in TCG README
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,29 +59,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Mar 2013 12:50:29 -0000
+X-List-Received-Date: Fri, 22 Mar 2013 14:55:31 -0000
 
-On 22 March 2013 12:22, Stefan Hajnoczi <stefanha@gmail.com> wrote:
-> The int128_le() comparison below suggests that int128_gt() really should
-> be int128_ge().
+On Wed, Mar 20, 2013 at 11:42:08AM +0800, 陳韋任 (Wei-Ren Chen) wrote:
+>   In TCG, "target" means the host architecture for which TCG generates
+> the code. Using "guest" rather than "target" to make the document more
+> consistent.
+> 
+> Signed-off-by: Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
+> ---
+> v3: Adopt Peter's suggestion on sentence and typo.
+> 
+> v2: Correct all wrong usage of the term "target" in this document.
+>   
+> 
+>  tcg/README | 14 +++++++++-----
+>  1 file changed, 9 insertions(+), 5 deletions(-)
 
-Agreed. It might be clearer to rephrase as:
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
- AddrRange thisrange = addrrange_make(int128_make64(offset),
-                                      int128_make64(subregion->size));
-
- QTAILQ_FOREACH(....) {
-     [...]
-     AddrRange otherrange = addrrange_make(int128_make64(other->addr),
-                                           int128_make64(other->size));
-     if (!addrrange_intersects(thisrange, otherrange)) {
-         continue;
-     }
-     [...]
- }
-
-(maybe with a new utility addrrange_make_64() that takes uint64_ts;
-there are a few other places in memory.c that could use it.)
-
--- PMM
+Stefan
 
