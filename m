@@ -1,45 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UJezu-0007M1-2s
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2013 03:05:42 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:55384)
+	id 1UJor4-000467-D8
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2013 13:37:14 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54967)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>) id 1UJezp-0007Gb-TY
-	for qemu-trivial@nongnu.org; Sun, 24 Mar 2013 03:05:41 -0400
+	(envelope-from <computers57@hotmail.com>) id 1UJor1-00041E-HQ
+	for qemu-trivial@nongnu.org; Sun, 24 Mar 2013 13:37:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>) id 1UJezk-0004jB-Bw
-	for qemu-trivial@nongnu.org; Sun, 24 Mar 2013 03:05:37 -0400
-Received: from mail-pb0-f54.google.com ([209.85.160.54]:33362)
+	(envelope-from <computers57@hotmail.com>) id 1UJor0-0003n3-Gi
+	for qemu-trivial@nongnu.org; Sun, 24 Mar 2013 13:37:11 -0400
+Received: from blu0-omc1-s6.blu0.hotmail.com ([65.55.116.17]:22256)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <riegamaths@gmail.com>)
-	id 1UJezb-0004cX-GF; Sun, 24 Mar 2013 03:05:23 -0400
-Received: by mail-pb0-f54.google.com with SMTP id jt11so1001768pbb.41
-	for <multiple recipients>; Sun, 24 Mar 2013 00:05:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:from:to:cc:subject:date:message-id:x-mailer;
-	bh=tqYR8JOTRFmlouKT43MkGfO/5F12zaityle9YPxiisU=;
-	b=CIU6vBn8DVsm/6RioWTL5NBMMD92DTrYWT+7s7juEpxlaBwn1T8dEU7qFhlUl8DXy5
-	R9x5nzKXqZk7QU5avwqMYZUF7iocCYkS7DoYDjUvrwUYiBm4b28iscGQ2/130x7IV87Q
-	FfWeHIKczE/ketwrDOY4Rkn9v4mWpa5pPg7AdWwU+EDDYmApDbt9uqXQTq0P+ihIQq9p
-	sU2CjBiAix0NTpNm3KB8ukhqkB9X3cYYtyavhnbS4OVcZQzm5npadKnblqiozq+IXR9y
-	tQE3T4ZDj7DpBxwiasc4r1Tc1qUQoCTauvd28sYv6ZrrXpVA2fpEFKyrPbmL1xEnDS/z
-	TxJA==
-X-Received: by 10.68.197.133 with SMTP id iu5mr10807383pbc.195.1364108722554; 
-	Sun, 24 Mar 2013 00:05:22 -0700 (PDT)
-Received: from localhost.localdomain ([220.181.73.114])
-	by mx.google.com with ESMTPS id z1sm8721297pbw.19.2013.03.24.00.05.19
-	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 24 Mar 2013 00:05:21 -0700 (PDT)
-From: riegamaths@gmail.com
-To: qemu-devel <qemu-devel@nongnu.org>
-Date: Sun, 24 Mar 2013 15:05:27 +0800
-Message-Id: <1364108727-14445-1-git-send-email-riegamaths@gmail.com>
-X-Mailer: git-send-email 1.8.1.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.160.54
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Dunrong Huang <huangdr@cloud-times.com>
-Subject: [Qemu-trivial] [PATCH] configure: show debug-info option in --help
-	output
+	(envelope-from <computers57@hotmail.com>) id 1UJor0-0003ms-D3
+	for qemu-trivial@nongnu.org; Sun, 24 Mar 2013 13:37:10 -0400
+Received: from BLU0-SMTP437 ([65.55.116.9]) by blu0-omc1-s6.blu0.hotmail.com
+	with Microsoft SMTPSVC(6.0.3790.4675); 
+	Sun, 24 Mar 2013 10:37:09 -0700
+X-EIP: [LFsUEj/amzzeuz7CaWl5mO7+LUZ1b4N2]
+X-Originating-Email: [computers57@hotmail.com]
+Message-ID: <BLU0-SMTP437073301907B1D6255834FB9D60@phx.gbl>
+Received: from [192.168.2.4] ([66.29.191.18]) by BLU0-SMTP437.phx.gbl over TLS
+	secured channel with Microsoft SMTPSVC(6.0.3790.4675); 
+	Sun, 24 Mar 2013 10:37:08 -0700
+From: "C.W. Betts" <computers57@hotmail.com>
+Content-Type: multipart/mixed;
+	boundary="Apple-Mail=_31435836-81CD-4A9B-A42C-2227A0710D7D"
+Date: Sun, 24 Mar 2013 11:37:05 -0600
+To: qemu-trivial@nongnu.org
+MIME-Version: 1.0 (Mac OS X Mail 6.3 \(1503\))
+X-Mailer: Apple Mail (2.1503)
+X-OriginalArrivalTime: 24 Mar 2013 17:37:08.0305 (UTC)
+	FILETIME=[3542C410:01CE28B6]
+X-detected-operating-system: by eggs.gnu.org: Windows XP
+X-Received-From: 65.55.116.17
+Subject: [Qemu-trivial] Make the GTK UI build on OS X
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,32 +44,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Mar 2013 07:05:41 -0000
+X-List-Received-Date: Sun, 24 Mar 2013 17:37:12 -0000
 
-From: Dunrong Huang <huangdr@cloud-times.com>
+--Apple-Mail=_31435836-81CD-4A9B-A42C-2227A0710D7D
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
 
-"--enable-debug-info" and "--disable-debug-info" were not shown
-in --help output.
+This patch makes the GTK front-end build and run on OS X (and most =
+likely Darwin in general). This patch makes it so that the right headers =
+are included.  As I am unaware if the headers included to make it run on =
+OS X work on Linux and other OSes, they are around a preprocessor check.
 
-Signed-off-by: Dunrong Huang <huangdr@cloud-times.com>
----
- configure | 2 ++
- 1 file changed, 2 insertions(+)
+--Apple-Mail=_31435836-81CD-4A9B-A42C-2227A0710D7D
+Content-Disposition: attachment;
+	filename="0001-Make-the-GTK-UI-build-on-OS-X.patch"
+Content-Type: application/octet-stream;
+	name="0001-Make-the-GTK-UI-build-on-OS-X.patch"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/configure b/configure
-index f2af714..61e71fa 100755
---- a/configure
-+++ b/configure
-@@ -1057,6 +1057,8 @@ echo "  --localstatedir=PATH     install local state in PATH"
- echo "  --with-confsuffix=SUFFIX suffix for QEMU data inside datadir and sysconfdir [$confsuffix]"
- echo "  --enable-debug-tcg       enable TCG debugging"
- echo "  --disable-debug-tcg      disable TCG debugging (default)"
-+echo "  --enable-debug-info       enable debugging information (default)"
-+echo "  --disable-debug-info      disable debugging information"
- echo "  --enable-debug           enable common debug build options"
- echo "  --enable-sparse          enable sparse checker"
- echo "  --disable-sparse         disable sparse checker (default)"
--- 
-1.8.1.5
+=46rom=20b5cc84343f479d4870961c82fc7b384637e9616c=20Mon=20Sep=2017=20=
+00:00:00=202001=0AFrom:=20"C.W.=20Betts"=20<computers57@hotmail.com>=0A=
+Date:=20Sun,=2024=20Mar=202013=2011:24:05=20-0600=0ASubject:=20[PATCH]=20=
+Make=20the=20GTK=20UI=20build=20on=20OS=20X.=0A=0A---=0A=20ui/gtk.c=20|=20=
+5=20+++++=0A=201=20file=20changed,=205=20insertions(+)=0A=0Adiff=20--git=20=
+a/ui/gtk.c=20b/ui/gtk.c=0Aindex=20305940d..e2948d7=20100644=0A---=20=
+a/ui/gtk.c=0A+++=20b/ui/gtk.c=0A@@=20-54,7=20+54,12=20@@=0A=20#include=20=
+<sys/socket.h>=0A=20#include=20<sys/un.h>=0A=20#include=20<sys/wait.h>=0A=
++#ifdef=20__APPLE__=0A+#include=20<termios.h>=0A+#include=20<util.h>=0A=
++#else=0A=20#include=20<pty.h>=0A+#endif=0A=20#include=20<math.h>=0A=20=0A=
+=20#include=20"ui/console.h"=0A--=20=0A1.8.2=0A=0A=
 
+--Apple-Mail=_31435836-81CD-4A9B-A42C-2227A0710D7D--
 
