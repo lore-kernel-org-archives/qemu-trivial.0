@@ -1,54 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ULAuY-0001p1-R8
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Mar 2013 07:22:26 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39438)
+	id 1ULDYw-0004SS-T3
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Mar 2013 10:12:18 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36607)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULAuT-0001lH-7z
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 07:22:25 -0400
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULDYt-0004Qc-CB
+	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 10:12:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULAuP-0000AF-TO
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 07:22:21 -0400
-Received: from e8.ny.us.ibm.com ([32.97.182.138]:53282)
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULDYn-0000Kz-OW
+	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 10:12:15 -0400
+Received: from e9.ny.us.ibm.com ([32.97.182.139]:35103)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULAuP-00009r-PY
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 07:22:17 -0400
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULDYn-0000Kk-L1
+	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 10:12:09 -0400
 Received: from /spool/local
-	by e8.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	by e9.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
 	Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
-	Thu, 28 Mar 2013 07:22:15 -0400
-Received: from d01dlp03.pok.ibm.com (9.56.250.168)
-	by e8.ny.us.ibm.com (192.168.1.108) with IBM ESMTP SMTP Gateway:
+	Thu, 28 Mar 2013 10:12:08 -0400
+Received: from d01dlp02.pok.ibm.com (9.56.250.167)
+	by e9.ny.us.ibm.com (192.168.1.109) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 28 Mar 2013 07:22:13 -0400
+	Thu, 28 Mar 2013 10:12:05 -0400
 Received: from d01relay05.pok.ibm.com (d01relay05.pok.ibm.com [9.56.227.237])
-	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id 0935FC9001E;
-	Thu, 28 Mar 2013 07:22:13 -0400 (EDT)
+	by d01dlp02.pok.ibm.com (Postfix) with ESMTP id 0A9636E8054;
+	Thu, 28 Mar 2013 10:12:02 -0400 (EDT)
 Received: from d01av05.pok.ibm.com (d01av05.pok.ibm.com [9.56.224.195])
 	by d01relay05.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r2SBMD1T338648; Thu, 28 Mar 2013 07:22:13 -0400
+	r2SEC401342472; Thu, 28 Mar 2013 10:12:04 -0400
 Received: from d01av05.pok.ibm.com (loopback [127.0.0.1])
 	by d01av05.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r2SBMC8X008648; Thu, 28 Mar 2013 07:22:12 -0400
+	r2SEC3wG032383; Thu, 28 Mar 2013 10:12:04 -0400
 Received: from [9.2.141.150] (k-d941e-10.watson.ibm.com [9.2.141.150])
 	by d01av05.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r2SBMCrc008645; Thu, 28 Mar 2013 07:22:12 -0400
-Message-ID: <515427E4.70402@linux.vnet.ibm.com>
-Date: Thu, 28 Mar 2013 07:22:12 -0400
+	r2SEC3Cg032368; Thu, 28 Mar 2013 10:12:03 -0400
+Message-ID: <51544FB3.6010009@linux.vnet.ibm.com>
+Date: Thu, 28 Mar 2013 10:12:03 -0400
 From: Stefan Berger <stefanb@linux.vnet.ibm.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:15.0) Gecko/20120911 Thunderbird/15.0.1
 MIME-Version: 1.0
-To: Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-trivial@nongnu.org
+To: Stefan Hajnoczi <stefanha@gmail.com>
+References: <515427E4.70402@linux.vnet.ibm.com>
+	<20130328133249.GF22865@stefanha-thinkpad.redhat.com>
+In-Reply-To: <20130328133249.GF22865@stefanha-thinkpad.redhat.com>
 Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
 X-TM-AS-MML: No
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13032811-9360-0000-0000-000011827433
+x-cbid: 13032814-7182-0000-0000-000005FD918C
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.182.138
-Cc: qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH v2] Fix some memory leaks in
+X-Received-From: 32.97.182.139
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [REPOST] [PATCH v2] Fix some memory leaks in
 	test-visitor-serialization
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -61,15 +64,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Mar 2013 11:22:26 -0000
+X-List-Received-Date: Thu, 28 Mar 2013 14:12:17 -0000
 
-This patch fixes some of the memory leaks in test-visitor-serialization 
-but not all of them.
+This patch fixes some of the memory leaks in test-visitor-serialization but not all of them.
 
-Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Signed-off-by: Stefan Berger<stefanb@linux.vnet.ibm.com>
 
----
-  v1->v2: call qobject_decref(obj) earlier
 
 ---
   tests/test-visitor-serialization.c |   12 +++++++++++-
