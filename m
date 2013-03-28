@@ -1,55 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ULEc6-0002Lm-Bz
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Mar 2013 11:19:38 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54296)
+	id 1ULEld-0007XS-Pa
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Mar 2013 11:29:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56450)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULEc1-0002HK-SR
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 11:19:36 -0400
+	(envelope-from <stefanha@gmail.com>) id 1ULElW-0007Vu-Sv
+	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 11:29:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULEc0-0007BT-61
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 11:19:33 -0400
-Received: from e39.co.us.ibm.com ([32.97.110.160]:35970)
+	(envelope-from <stefanha@gmail.com>) id 1ULElU-00025c-M1
+	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 11:29:22 -0400
+Received: from mail-wg0-f52.google.com ([74.125.82.52]:65375)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULEbz-0007AL-OE
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 11:19:31 -0400
-Received: from /spool/local
-	by e39.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
-	Thu, 28 Mar 2013 09:19:30 -0600
-Received: from d03dlp03.boulder.ibm.com (9.17.202.179)
-	by e39.co.us.ibm.com (192.168.1.139) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 28 Mar 2013 09:19:27 -0600
-Received: from d03relay02.boulder.ibm.com (d03relay02.boulder.ibm.com
-	[9.17.195.227])
-	by d03dlp03.boulder.ibm.com (Postfix) with ESMTP id 65B2019D806C;
-	Thu, 28 Mar 2013 09:19:21 -0600 (MDT)
-Received: from d03av01.boulder.ibm.com (d03av01.boulder.ibm.com [9.17.195.167])
-	by d03relay02.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r2SFJ8fx126410; Thu, 28 Mar 2013 09:19:21 -0600
-Received: from d03av01.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id r2SFJ72k019647; Thu, 28 Mar 2013 09:19:07 -0600
-Received: from [9.2.141.150] (k-d941e-10.watson.ibm.com [9.2.141.150])
-	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r2SFIikc016627; Thu, 28 Mar 2013 09:18:45 -0600
-Message-ID: <1364483920.28637.3.camel@d941e-10>
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
-To: qemu-trivial@nongnu.org, stefanha@gmail.com
-Date: Thu, 28 Mar 2013 11:18:40 -0400
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.2.3 (3.2.3-3.fc16) 
-Content-Transfer-Encoding: 7bit
-Mime-Version: 1.0
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13032815-3620-0000-0000-000001CF0B66
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.110.160
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH v3] Fix some memory leaks in
-	test-visitor-serialization
+	(envelope-from <stefanha@gmail.com>)
+	id 1ULElU-00025Q-FZ; Thu, 28 Mar 2013 11:29:20 -0400
+Received: by mail-wg0-f52.google.com with SMTP id n12so1647777wgh.19
+	for <multiple recipients>; Thu, 28 Mar 2013 08:29:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=GfkRwUrd6eEg+QjXQf2bkzFGTFsAvyM5waHyev6amVo=;
+	b=vq2flW42IgnkIm2kQ47wR2UzfT/qy4DdZ4DPXfJVUyMdtawIxPQkBVUUUIILN7Y5AP
+	I6aiY52F8VKp+dyqZzBK7lre6r/BrW5wPuEEH/GYMAm333zCIImyqw+/q8B7+QeyawEX
+	q+2ISR7QFhbLJO73q/nSln/LyW2f+Gn+I4wgsMKCLdwOgZQY2707+aFycSLMtIGUFuJK
+	ILNsdDz3z0VLl1OXCF3wqOQjYJOLKkxCKsjo2gQIKvM5KR4ANgW3YNxdVmXBB3oqWp21
+	WT3Dry3fwgRPQy6dNnaFk+dVYjqA4DSXLy7L9MYMQPVZIrRSgillny1D1hpm7h/dxFpz
+	vHbA==
+X-Received: by 10.180.76.84 with SMTP id i20mr17340298wiw.9.1364484559664;
+	Thu, 28 Mar 2013 08:29:19 -0700 (PDT)
+Received: from localhost ([2a02:810d:ec0:195:60a5:f151:c14b:54e1])
+	by mx.google.com with ESMTPS id s2sm16532816wib.4.2013.03.28.08.29.17
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Thu, 28 Mar 2013 08:29:18 -0700 (PDT)
+Date: Thu, 28 Mar 2013 16:29:16 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Message-ID: <20130328152916.GA31205@stefanha-thinkpad.redhat.com>
+References: <1364483920.28637.3.camel@d941e-10>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1364483920.28637.3.camel@d941e-10>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.125.82.52
+Cc: qemu-trivial@nongnu.org, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] Fix some memory leaks in
+ test-visitor-serialization
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,82 +56,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Mar 2013 15:19:36 -0000
+X-List-Received-Date: Thu, 28 Mar 2013 15:29:28 -0000
 
-This patch fixes some of the memory leaks in test-visitor-serialization but not all of them.
+On Thu, Mar 28, 2013 at 11:18:40AM -0400, Stefan Berger wrote:
+> This patch fixes some of the memory leaks in test-visitor-serialization but not all of them.
+> 
+> Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+> 
+> ---
+>  v2->v3: repost
+> 
+>  v1->v2: call qobject_decref(obj) earlier
+> 
+> ---
+>  tests/test-visitor-serialization.c |   12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
 
-Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Thanks, applied to the trivial patches -next tree:
+https://github.com/stefanha/qemu/commits/trivial-patches-next
 
----
- v2->v3: repost
-
- v1->v2: call qobject_decref(obj) earlier
-
----
- tests/test-visitor-serialization.c |   12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
-
-Index: qemu-git.pt/tests/test-visitor-serialization.c
-===================================================================
---- qemu-git.pt.orig/tests/test-visitor-serialization.c
-+++ qemu-git.pt/tests/test-visitor-serialization.c
-@@ -258,6 +258,7 @@ static void test_primitives(gconstpointe
-     g_assert(pt_copy != NULL);
-     if (pt->type == PTYPE_STRING) {
-         g_assert_cmpstr(pt->value.string, ==, pt_copy->value.string);
-+        g_free((char *)pt_copy->value.string);
-     } else if (pt->type == PTYPE_NUMBER) {
-         /* we serialize with %f for our reference visitors, so rather than fuzzy
-          * floating math to test "equality", just compare the formatted values
-@@ -275,6 +276,7 @@ static void test_primitives(gconstpointe
- 
-     ops->cleanup(serialize_data);
-     g_free(args);
-+    g_free(pt_copy);
- }
- 
- static void test_struct(gconstpointer opaque)
-@@ -660,6 +662,7 @@ static void qmp_deserialize(void **nativ
- 
-     QDECREF(output_json);
-     d->qiv = qmp_input_visitor_new(obj);
-+    qobject_decref(obj);
-     visit(qmp_input_get_visitor(d->qiv), native_out, errp);
- }
- 
-@@ -668,9 +671,12 @@ static void qmp_cleanup(void *datap)
-     QmpSerializeData *d = datap;
-     qmp_output_visitor_cleanup(d->qov);
-     qmp_input_visitor_cleanup(d->qiv);
-+
-+    g_free(d);
- }
- 
- typedef struct StringSerializeData {
-+    char *string;
-     StringOutputVisitor *sov;
-     StringInputVisitor *siv;
- } StringSerializeData;
-@@ -690,15 +696,19 @@ static void string_deserialize(void **na
- {
-     StringSerializeData *d = datap;
- 
--    d->siv = string_input_visitor_new(string_output_get_string(d->sov));
-+    d->string = string_output_get_string(d->sov);
-+    d->siv = string_input_visitor_new(d->string);
-     visit(string_input_get_visitor(d->siv), native_out, errp);
- }
- 
- static void string_cleanup(void *datap)
- {
-     StringSerializeData *d = datap;
-+
-     string_output_visitor_cleanup(d->sov);
-     string_input_visitor_cleanup(d->siv);
-+    g_free(d->string);
-+    g_free(d);
- }
- 
- /* visitor registration, test harness */
-
+Stefan
 
