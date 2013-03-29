@@ -1,58 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ULFhM-0003yb-Sh
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Mar 2013 12:29:08 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43492)
+	id 1ULNNY-00063s-GP
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Mar 2013 20:41:12 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56553)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULFhF-0003mj-9M
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 12:29:06 -0400
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1ULNNW-00063V-0y
+	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 20:41:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULFhC-0006D8-Da
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 12:29:01 -0400
-Received: from e9.ny.us.ibm.com ([32.97.182.139]:38590)
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1ULNNR-00021t-Ev
+	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 20:41:09 -0400
+Received: from [222.73.24.84] (port=6434 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1ULFhC-0006D2-9S
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 12:28:58 -0400
-Received: from /spool/local
-	by e9.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
-	Thu, 28 Mar 2013 12:28:57 -0400
-Received: from d01dlp02.pok.ibm.com (9.56.250.167)
-	by e9.ny.us.ibm.com (192.168.1.109) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 28 Mar 2013 12:28:55 -0400
-Received: from d01relay05.pok.ibm.com (d01relay05.pok.ibm.com [9.56.227.237])
-	by d01dlp02.pok.ibm.com (Postfix) with ESMTP id 64ECC6E8048;
-	Thu, 28 Mar 2013 12:28:52 -0400 (EDT)
-Received: from d01av05.pok.ibm.com (d01av05.pok.ibm.com [9.56.224.195])
-	by d01relay05.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r2SGSsUd339226; Thu, 28 Mar 2013 12:28:54 -0400
-Received: from d01av05.pok.ibm.com (loopback [127.0.0.1])
-	by d01av05.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r2SGSsrQ018312; Thu, 28 Mar 2013 12:28:54 -0400
-Received: from [9.2.141.150] (k-d941e-10.watson.ibm.com [9.2.141.150])
-	by d01av05.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r2SGSsT0018306; Thu, 28 Mar 2013 12:28:54 -0400
-Message-ID: <51546FC5.5010909@linux.vnet.ibm.com>
-Date: Thu, 28 Mar 2013 12:28:53 -0400
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:15.0) Gecko/20120911 Thunderbird/15.0.1
-MIME-Version: 1.0
+	(envelope-from <lig.fnst@cn.fujitsu.com>)
+	id 1ULNNR-000215-4b; Thu, 28 Mar 2013 20:41:05 -0400
+X-IronPort-AV: E=Sophos;i="4.87,370,1363104000"; 
+   d="scan'208";a="6965364"
+Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
+	by song.cn.fujitsu.com with ESMTP; 29 Mar 2013 08:38:27 +0800
+Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r2T0exon014281;
+	Fri, 29 Mar 2013 08:40:59 +0800
+Received: from [10.167.233.147] ([10.167.233.147])
+	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
+	with ESMTP id 2013032908400895-153425 ;
+	Fri, 29 Mar 2013 08:40:08 +0800 
+From: li guang <lig.fnst@cn.fujitsu.com>
 To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1364483920.28637.3.camel@d941e-10>
-	<20130328152916.GA31205@stefanha-thinkpad.redhat.com>
-In-Reply-To: <20130328152916.GA31205@stefanha-thinkpad.redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13032816-7182-0000-0000-000005FE6397
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.182.139
-Cc: qemu-trivial@nongnu.org, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] Fix some memory leaks in
-	test-visitor-serialization
+In-Reply-To: <20130328094237.GE24910@stefanha-thinkpad.redhat.com>
+References: <1364364631-24665-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	<20130328094237.GE24910@stefanha-thinkpad.redhat.com>
+Date: Fri, 29 Mar 2013 08:38:42 +0800
+Message-ID: <1364517522.31713.59.camel@liguang.fnst.cn.fujitsu.com>
+Mime-Version: 1.0
+X-Mailer: Evolution 2.30.3 
+X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
+	15, 2011) at 2013/03/29 08:40:08,
+	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
+	2011) at 2013/03/29 08:40:09,
+	Serialize complete at 2013/03/29 08:40:09
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 222.73.24.84
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH] hw/i386/pc: reject to boot a
+ wrong header magic kernel
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,28 +56,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Mar 2013 16:29:07 -0000
+X-List-Received-Date: Fri, 29 Mar 2013 00:41:11 -0000
 
-On 03/28/2013 11:29 AM, Stefan Hajnoczi wrote:
-> On Thu, Mar 28, 2013 at 11:18:40AM -0400, Stefan Berger wrote:
->> This patch fixes some of the memory leaks in test-visitor-serialization but not all of them.
->>
->> Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
->>
->> ---
->>   v2->v3: repost
->>
->>   v1->v2: call qobject_decref(obj) earlier
->>
->> ---
->>   tests/test-visitor-serialization.c |   12 +++++++++++-
->>   1 file changed, 11 insertions(+), 1 deletion(-)
-> Thanks, applied to the trivial patches -next tree:
-> https://github.com/stefanha/qemu/commits/trivial-patches-next
->
-> Stefan
->
-Great. There are some left-over leaks that I couldn't figure out how to 
-fix. Someone more familiar with the qmp code may want to look at them.
+=E5=9C=A8 2013-03-28=E5=9B=9B=E7=9A=84 10:42 +0100=EF=BC=8CStefan Hajnoczi=
+=E5=86=99=E9=81=93=EF=BC=9A
+> On Wed, Mar 27, 2013 at 02:10:31PM +0800, liguang wrote:
+> > if head magic is missing or wrong unexpectedly, we'd
+> > better to reject booting.
+> > e.g.
+> > I make a mistake to boot a vmlinuz for MIPS(which
+> > I think it's for x86) like this:
+> > qemu-system-x86_64 -kernel vmlinuz -initrd demord
+> > then qemu report:
+> > "qemu: linux kernel too old to load a ram disk"
+> > that's misleading.
+> >=20
+> > Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+> > ---
+> >  hw/i386/pc.c |    4 +++-
+> >  1 files changed, 3 insertions(+), 1 deletions(-)
+> >=20
+> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> > index b1e06fa..2b78dfc 100644
+> > --- a/hw/i386/pc.c
+> > +++ b/hw/i386/pc.c
+> > @@ -683,8 +683,10 @@ static void load_linux(void *fw_cfg,
+> >          if (load_multiboot(fw_cfg, f, kernel_filename, initrd_filename=
+,
+> >                             kernel_cmdline, kernel_size, header)) {
+> >              return;
+> > +        } else {
+> > +            fprintf(stderr, "please assure specicified kernel is for x=
+86!\n");
+> > +            exit(1);
+>=20
+> load_multiboot() can fail for other reasons so this error messing is
+> misleading.  Giving QEMU a non-x86 kernel is just one scenario where
+> this may fail.
+
+according to my check of load_mutiboot function,
+mostly it will return 0 if it's not multboot,
+or 1 it's a multiboot, so print this message,
+or can I just print "wrong kernel image!" ?
+
+>=20
+> >          }
+> > -        protocol =3D 0;
+> >      }
+>=20
+> Why did you drop protocol =3D 0?
+
+I think we only want either normal or multi boot linux kernel,
+I can't see meaning let other case go on.
+so, here, if a normal kernel, OK, go on,
+if multiboot, OK, go on,
+others, NO, end up.
+so, "protocol =3D 0" is meaningless here.
+
+
 
 
