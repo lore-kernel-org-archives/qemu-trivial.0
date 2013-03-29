@@ -1,50 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ULNNY-00063s-GP
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Mar 2013 20:41:12 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56553)
+	id 1ULXxo-0004kr-27
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Mar 2013 07:59:20 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42463)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1ULNNW-00063V-0y
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 20:41:11 -0400
+	(envelope-from <alex.aring@gmail.com>) id 1ULXxj-0004jn-0W
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2013 07:59:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1ULNNR-00021t-Ev
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2013 20:41:09 -0400
-Received: from [222.73.24.84] (port=6434 helo=song.cn.fujitsu.com)
+	(envelope-from <alex.aring@gmail.com>) id 1ULXxc-0002Z5-FU
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2013 07:59:14 -0400
+Received: from mail-ee0-f43.google.com ([74.125.83.43]:37810)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1ULNNR-000215-4b; Thu, 28 Mar 2013 20:41:05 -0400
-X-IronPort-AV: E=Sophos;i="4.87,370,1363104000"; 
-   d="scan'208";a="6965364"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 29 Mar 2013 08:38:27 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r2T0exon014281;
-	Fri, 29 Mar 2013 08:40:59 +0800
-Received: from [10.167.233.147] ([10.167.233.147])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013032908400895-153425 ;
-	Fri, 29 Mar 2013 08:40:08 +0800 
-From: li guang <lig.fnst@cn.fujitsu.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-In-Reply-To: <20130328094237.GE24910@stefanha-thinkpad.redhat.com>
-References: <1364364631-24665-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<20130328094237.GE24910@stefanha-thinkpad.redhat.com>
-Date: Fri, 29 Mar 2013 08:38:42 +0800
-Message-ID: <1364517522.31713.59.camel@liguang.fnst.cn.fujitsu.com>
-Mime-Version: 1.0
-X-Mailer: Evolution 2.30.3 
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/03/29 08:40:08,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/03/29 08:40:09,
-	Serialize complete at 2013/03/29 08:40:09
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH] hw/i386/pc: reject to boot a
- wrong header magic kernel
+	(envelope-from <alex.aring@gmail.com>) id 1ULXxc-0002Yz-6U
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2013 07:59:08 -0400
+Received: by mail-ee0-f43.google.com with SMTP id e50so197078eek.16
+	for <qemu-trivial@nongnu.org>; Fri, 29 Mar 2013 04:59:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:from:to:cc:subject:date:message-id:x-mailer;
+	bh=TjofXBjiM9rVLtq9jyQzd9s3aukKdx4qQBSWIUhdmc0=;
+	b=g0YhH8v01E80d9+ZhZatrQIl9HjCkAd8DSleyOs1NLPwPeI8GPc8SmU4hnpCZqSA1Y
+	yMdJxDqddw5VyVNBpiAHXKMWb3z3tWvu+U7QMpk8iiS4+8fyucnhRwwhnMi0Cmj85VjX
+	3TAHqrubv6JI4PgRr4tHTrjfrRxVjKGIF29GgOLh9KGI7iEC2BGihjCV6gtP4lo471ou
+	3vpNoWbKrIjF2YxvvpWQsJ4bi/yz/y1mpglKtW9M90UYC8hWwCxHkJ6Y2YABFobZuLqY
+	s/c7zIA/IrDtOR/xax6wM9sfEqVMBpW3ImsAfPOcF3aMrgieEVww//ui70hk/5tdobdQ
+	0yZg==
+X-Received: by 10.14.5.137 with SMTP id 9mr7095062eel.30.1364558346856;
+	Fri, 29 Mar 2013 04:59:06 -0700 (PDT)
+Received: from x61s.8.8.8.8 (p4FD35555.dip.t-dialin.net. [79.211.85.85])
+	by mx.google.com with ESMTPS id a1sm3679998eep.2.2013.03.29.04.59.05
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Fri, 29 Mar 2013 04:59:06 -0700 (PDT)
+From: Alexander Aring <alex.aring@gmail.com>
+To: qemu-trivial@nongnu.org
+Date: Fri, 29 Mar 2013 13:00:42 +0100
+Message-Id: <1364558442-11392-1-git-send-email-alex.aring@gmail.com>
+X-Mailer: git-send-email 1.8.2
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.125.83.43
+Cc: Alexander Aring <alex.aring@gmail.com>
+Subject: [Qemu-trivial] [PATCH] softfloat: fix mask in extractFloat32Exp
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,63 +49,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Mar 2013 00:41:11 -0000
+X-List-Received-Date: Fri, 29 Mar 2013 11:59:18 -0000
 
-=E5=9C=A8 2013-03-28=E5=9B=9B=E7=9A=84 10:42 +0100=EF=BC=8CStefan Hajnoczi=
-=E5=86=99=E9=81=93=EF=BC=9A
-> On Wed, Mar 27, 2013 at 02:10:31PM +0800, liguang wrote:
-> > if head magic is missing or wrong unexpectedly, we'd
-> > better to reject booting.
-> > e.g.
-> > I make a mistake to boot a vmlinuz for MIPS(which
-> > I think it's for x86) like this:
-> > qemu-system-x86_64 -kernel vmlinuz -initrd demord
-> > then qemu report:
-> > "qemu: linux kernel too old to load a ram disk"
-> > that's misleading.
-> >=20
-> > Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
-> > ---
-> >  hw/i386/pc.c |    4 +++-
-> >  1 files changed, 3 insertions(+), 1 deletions(-)
-> >=20
-> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> > index b1e06fa..2b78dfc 100644
-> > --- a/hw/i386/pc.c
-> > +++ b/hw/i386/pc.c
-> > @@ -683,8 +683,10 @@ static void load_linux(void *fw_cfg,
-> >          if (load_multiboot(fw_cfg, f, kernel_filename, initrd_filename=
-,
-> >                             kernel_cmdline, kernel_size, header)) {
-> >              return;
-> > +        } else {
-> > +            fprintf(stderr, "please assure specicified kernel is for x=
-86!\n");
-> > +            exit(1);
->=20
-> load_multiboot() can fail for other reasons so this error messing is
-> misleading.  Giving QEMU a non-x86 kernel is just one scenario where
-> this may fail.
+This will fix the mask of extractFloat32Exp from 0xFF to 0x7F.
+On bit 0x80 is the sign bit of IEEE 754.
 
-according to my check of load_mutiboot function,
-mostly it will return 0 if it's not multboot,
-or 1 it's a multiboot, so print this message,
-or can I just print "wrong kernel image!" ?
+Signed-off-by: Alexander Aring <alex.aring@gmail.com>
+---
+ fpu/softfloat.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
->=20
-> >          }
-> > -        protocol =3D 0;
-> >      }
->=20
-> Why did you drop protocol =3D 0?
-
-I think we only want either normal or multi boot linux kernel,
-I can't see meaning let other case go on.
-so, here, if a normal kernel, OK, go on,
-if multiboot, OK, go on,
-others, NO, end up.
-so, "protocol =3D 0" is meaningless here.
-
-
+diff --git a/fpu/softfloat.c b/fpu/softfloat.c
+index 83ccc4b..4e8ed79 100644
+--- a/fpu/softfloat.c
++++ b/fpu/softfloat.c
+@@ -221,7 +221,7 @@ INLINE uint32_t extractFloat32Frac( float32 a )
+ INLINE int_fast16_t extractFloat32Exp(float32 a)
+ {
+ 
+-    return ( float32_val(a)>>23 ) & 0xFF;
++    return ( float32_val(a)>>23 ) & 0x7F;
+ 
+ }
+ 
+-- 
+1.8.2
 
 
