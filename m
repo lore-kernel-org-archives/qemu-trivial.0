@@ -1,48 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ULaZN-0005IH-NE
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Mar 2013 10:46:17 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54401)
+	id 1ULzBx-0007XU-IO
+	for mharc-qemu-trivial@gnu.org; Sat, 30 Mar 2013 13:03:45 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34191)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ULaZH-00056X-Kj
-	for qemu-trivial@nongnu.org; Fri, 29 Mar 2013 10:46:16 -0400
+	(envelope-from <rth7680@gmail.com>) id 1ULzBr-0007OF-Cr
+	for qemu-trivial@nongnu.org; Sat, 30 Mar 2013 13:03:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ULaZF-0005uC-Tt
-	for qemu-trivial@nongnu.org; Fri, 29 Mar 2013 10:46:11 -0400
-Received: from mail-qe0-f46.google.com ([209.85.128.46]:56955)
+	(envelope-from <rth7680@gmail.com>) id 1ULzBo-0001nt-6h
+	for qemu-trivial@nongnu.org; Sat, 30 Mar 2013 13:03:39 -0400
+Received: from mail-pb0-f47.google.com ([209.85.160.47]:41490)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1ULaZB-0005sW-Ep; Fri, 29 Mar 2013 10:46:05 -0400
-Received: by mail-qe0-f46.google.com with SMTP id a11so299050qen.33
-	for <multiple recipients>; Fri, 29 Mar 2013 07:46:05 -0700 (PDT)
+	(envelope-from <rth7680@gmail.com>)
+	id 1ULzBi-0001mu-5G; Sat, 30 Mar 2013 13:03:30 -0400
+Received: by mail-pb0-f47.google.com with SMTP id rp2so626516pbb.20
+	for <multiple recipients>; Sat, 30 Mar 2013 10:03:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:x-received:in-reply-to:references:date:message-id
-	:subject:from:to:cc:content-type:content-transfer-encoding;
-	bh=6WkntQS28MTwoAVdv0E/pBtO24xxwu35ARHYmnSTsYo=;
-	b=Y/LuTvsfl4rAbWQY7QT9CtPlXUJ0aCI1S0cxhnNaS8IOteLqnAWwRBenk+amxCVMyI
-	YWBPsbeLWQ2NXZN94ecVBqf1a5Xlsvr7hJrZCu1M0Q83Wn+JRc/6JB50HiVrwEPIR2h2
-	6Bcc+PKjEWrrbfwDjq6Rp9vorDKvVb2EJBsgI9lBBiW8pp3EOe2XcKhV7teYPsg6Tt/g
-	mFefj/5j5H/BmIqNSViyLaXar9YtH9ULE8QjVMiPZN9f9sHVnCfTLM5NrvQcUYdWH5E8
-	ZTaNJbTdX2GNYo/LoXCPLBlNsv748t8MKs6N9F1SbYYSOVkMsKBMW7KkapYwZAYAI73U
-	7sBQ==
-MIME-Version: 1.0
-X-Received: by 10.49.117.106 with SMTP id kd10mr4545841qeb.25.1364568364977;
-	Fri, 29 Mar 2013 07:46:04 -0700 (PDT)
-Received: by 10.49.41.65 with HTTP; Fri, 29 Mar 2013 07:46:04 -0700 (PDT)
-In-Reply-To: <1364517522.31713.59.camel@liguang.fnst.cn.fujitsu.com>
-References: <1364364631-24665-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<20130328094237.GE24910@stefanha-thinkpad.redhat.com>
-	<1364517522.31713.59.camel@liguang.fnst.cn.fujitsu.com>
-Date: Fri, 29 Mar 2013 15:46:04 +0100
-Message-ID: <CAJSP0QUX88Jmnj9EhzBQ0FUAVm0AShYPfyyB7xY8YaXR+TMG7w@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: li guang <lig.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer;
+	bh=w2tOg1jhfubZ/jFTuolGfCidoUjxuuPotd9lKvvzgXY=;
+	b=nDF9Jfyu3ZrzrS+QPXobSjl14+7CvW49XXV2gRm/Nh0KJVM8w3otlgwMSDZPWPXMdz
+	fCRAnLVBy3ijfLOrBOh27h2mBmwsFVYs25Lk4wHKDUb4z3Pxhh407HSN4VOviKEmwxku
+	sjdYicNSGOr4a5odNWvb7ko3Eab1OjCc+MynAiBizTtCD03Esez+5NTVhpBSiNOYh6Bt
+	UxZFtaxjUmUPFq2M6xoBdIY3RgfWXCWcKWexGuMl1HKSmDap6DvyfsTNZQXibUs/npEj
+	6VIgPNfen3+gIQwmvNO6pf5+RzuM3ToQjXU4XUfqhEQ4lb/m6G/w+lRyBqf60aOGSGLy
+	1UBg==
+X-Received: by 10.68.143.197 with SMTP id sg5mr9801870pbb.101.1364663009115;
+	Sat, 30 Mar 2013 10:03:29 -0700 (PDT)
+Received: from anchor.twiddle.net
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by mx.google.com with ESMTPS id gf1sm7122254pbb.33.2013.03.30.10.03.27
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Sat, 30 Mar 2013 10:03:28 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+From: Richard Henderson <rth@twiddle.net>
+To: qemu-devel@nongnu.org
+Date: Sat, 30 Mar 2013 10:03:25 -0700
+Message-Id: <1364663005-1470-1-git-send-email-rth@twiddle.net>
+X-Mailer: git-send-email 1.8.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.128.46
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH] hw/i386/pc: reject to boot a
- wrong header magic kernel
+X-Received-From: 209.85.160.47
+Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>
+Subject: [Qemu-trivial] [PATCH] target-s390: Fix SRNMT
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,91 +51,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Mar 2013 14:46:16 -0000
+X-List-Received-Date: Sat, 30 Mar 2013 17:03:44 -0000
 
-On Fri, Mar 29, 2013 at 1:38 AM, li guang <lig.fnst@cn.fujitsu.com> wrote:
-> =E5=9C=A8 2013-03-28=E5=9B=9B=E7=9A=84 10:42 +0100=EF=BC=8CStefan Hajnocz=
-i=E5=86=99=E9=81=93=EF=BC=9A
->> On Wed, Mar 27, 2013 at 02:10:31PM +0800, liguang wrote:
->> > if head magic is missing or wrong unexpectedly, we'd
->> > better to reject booting.
->> > e.g.
->> > I make a mistake to boot a vmlinuz for MIPS(which
->> > I think it's for x86) like this:
->> > qemu-system-x86_64 -kernel vmlinuz -initrd demord
->> > then qemu report:
->> > "qemu: linux kernel too old to load a ram disk"
->> > that's misleading.
->> >
->> > Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
->> > ---
->> >  hw/i386/pc.c |    4 +++-
->> >  1 files changed, 3 insertions(+), 1 deletions(-)
->> >
->> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
->> > index b1e06fa..2b78dfc 100644
->> > --- a/hw/i386/pc.c
->> > +++ b/hw/i386/pc.c
->> > @@ -683,8 +683,10 @@ static void load_linux(void *fw_cfg,
->> >          if (load_multiboot(fw_cfg, f, kernel_filename, initrd_filenam=
-e,
->> >                             kernel_cmdline, kernel_size, header)) {
->> >              return;
->> > +        } else {
->> > +            fprintf(stderr, "please assure specicified kernel is for =
-x86!\n");
->> > +            exit(1);
->>
->> load_multiboot() can fail for other reasons so this error messing is
->> misleading.  Giving QEMU a non-x86 kernel is just one scenario where
->> this may fail.
->
-> according to my check of load_mutiboot function,
-> mostly it will return 0 if it's not multboot,
-> or 1 it's a multiboot, so print this message,
-> or can I just print "wrong kernel image!" ?
+Fallthough into abort = oops.
 
-Yes, load_multiboot() fails if the image is not a valid multiboot
-image.  An error message like "not a valid multiboot image" is good.
+Cc: qemu-trivial@nongnu.org
+Cc: Alexander Graf <agraf@suse.de>
+Signed-off-by: Richard Henderson <rth@twiddle.net>
+---
+ target-s390x/translate.c | 1 +
+ 1 file changed, 1 insertion(+)
 
->>
->> >          }
->> > -        protocol =3D 0;
->> >      }
->>
->> Why did you drop protocol =3D 0?
->
-> I think we only want either normal or multi boot linux kernel,
-> I can't see meaning let other case go on.
-> so, here, if a normal kernel, OK, go on,
-> if multiboot, OK, go on,
-> others, NO, end up.
-> so, "protocol =3D 0" is meaningless here.
+diff --git a/target-s390x/translate.c b/target-s390x/translate.c
+index a4f2194..0c3cf68 100644
+--- a/target-s390x/translate.c
++++ b/target-s390x/translate.c
+@@ -3088,6 +3088,7 @@ static ExitStatus op_srnm(DisasContext *s, DisasOps *o)
+         break;
+     case 0xb9: /* SRNMT */
+         pos = 4, len = 3;
++        break;
+     default:
+         tcg_abort();
+     }
+-- 
+1.8.1.4
 
-I looked in more detail now and here is why we cannot drop this line of cod=
-e:
-
-    uint16_t protocol;
-
-Note that the variable is not initialized.
-
-[...]
-    if (ldl_p(header+0x202) =3D=3D 0x53726448)
-    protocol =3D lduw_p(header+0x206);
-    else {
-    /* This looks like a multiboot kernel. If it is, let's stop
-       treating it like a Linux kernel. */
-        if (load_multiboot(fw_cfg, f, kernel_filename, initrd_filename,
-                           kernel_cmdline, kernel_size, header))
-            return;
-    protocol =3D 0;
-
-Set it to 0 here so it's initialized
-
-    }
-    if (protocol < 0x200 || !(header[0x211] & 0x01)) {
-
-Use variable here - so we *must* initialize it before use.
-
-Stefan
 
