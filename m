@@ -1,44 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UMTU9-00017r-5P
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Mar 2013 21:24:33 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:57835)
+	id 1UN3bE-0007z5-M5
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2013 11:58:16 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:53156)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UMTU3-00017h-1J
-	for qemu-trivial@nongnu.org; Sun, 31 Mar 2013 21:24:31 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1UN3bB-0007sv-S7
+	for qemu-trivial@nongnu.org; Tue, 02 Apr 2013 11:58:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UMTTy-0000ka-8h
-	for qemu-trivial@nongnu.org; Sun, 31 Mar 2013 21:24:26 -0400
-Received: from [222.73.24.84] (port=3103 helo=song.cn.fujitsu.com)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1UN3b7-0007eS-H1
+	for qemu-trivial@nongnu.org; Tue, 02 Apr 2013 11:58:13 -0400
+Received: from mail-ea0-x236.google.com ([2a00:1450:4013:c01::236]:51553)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1UMTTx-0000kN-U8; Sun, 31 Mar 2013 21:24:22 -0400
-X-IronPort-AV: E=Sophos;i="4.87,384,1363104000"; 
-   d="scan'208";a="6979804"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 01 Apr 2013 09:21:46 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r311OJdU012725;
-	Mon, 1 Apr 2013 09:24:19 +0800
-Received: from liguang.fnst.cn.fujitsu.com ([10.167.233.147])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013040109232423-189315 ;
-	Mon, 1 Apr 2013 09:23:24 +0800 
-From: liguang <lig.fnst@cn.fujitsu.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, stefanha@gmail.com
-Date: Mon, 1 Apr 2013 09:21:57 +0800
-Message-Id: <1364779317-3963-1-git-send-email-lig.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.7.2.5
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/04/01 09:23:24,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/04/01 09:23:24,
-	Serialize complete at 2013/04/01 09:23:24
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: liguang <lig.fnst@cn.fujitsu.com>
-Subject: [Qemu-trivial] [Qemu-devel][PATCH v2] hw/i386/pc: reject to boot a
-	wrong header magic kernel
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1UN3b0-0007dE-Gp; Tue, 02 Apr 2013 11:58:02 -0400
+Received: by mail-ea0-f182.google.com with SMTP id q15so305852ead.41
+	for <multiple recipients>; Tue, 02 Apr 2013 08:58:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer;
+	bh=2GMkI+l9USt2y0VbX3PoYhvHWYa9lTvOvYk+QhU7LAo=;
+	b=W0oSZNDlvA6NSc+U64hB0tUfHtYTl+AqrkSUg40RsuxDGzXG6FGT+QOuPlQAqjVkC8
+	g6wdN3+F5Lu/RF36pA2M1ItUAdpcu0ULQMUBlM+Al/JH1A4nf0vrrz9NhgbZku6Kyg33
+	RrkzGjMc/Zd/WQIgNmVv8ozZpf92DYlVX1gNv17/SrqlEIs51jiSD5UREyoRnn/Hx7C5
+	YUB27un8PkQ6sa7nJdeGM+zW/10y0bthKbjKd4FZa2+7cUMzAT+UpkkmYC+YzTvk1IvA
+	uqBinJqS63QTvYwSpiwzr8fC22Blfba6eljAEeLHRuy+s137EuDCpUszFKkG3dng1Fe/
+	Nl3w==
+X-Received: by 10.14.223.69 with SMTP id u45mr11121671eep.23.1364918281516;
+	Tue, 02 Apr 2013 08:58:01 -0700 (PDT)
+Received: from playground.lan (93-34-176-20.ip50.fastwebnet.it. [93.34.176.20])
+	by mx.google.com with ESMTPS id d47sm3507684eem.9.2013.04.02.08.57.59
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Tue, 02 Apr 2013 08:58:00 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  2 Apr 2013 17:57:56 +0200
+Message-Id: <1364918276-11866-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.8.1.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c01::236
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] configure: remove unset variables
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,38 +51,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Apr 2013 01:24:32 -0000
+X-List-Received-Date: Tue, 02 Apr 2013 15:58:15 -0000
 
-if head magic is missing or wrong unexpectedly, we'd
-better to reject booting.
-e.g.
-I make a mistake to boot a vmlinuz for MIPS(which
-I think it's for x86) like this:
-qemu-system-x86_64 -kernel vmlinuz -initrd demord
-then qemu report:
-"qemu: linux kernel too old to load a ram disk"
-that's misleading.
+These variables have not been set for a long time.  Do not
+include them in config-host.mak.
 
-Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- hw/i386/pc.c |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+ configure | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index b1e06fa..bfbb5fe 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -683,6 +683,9 @@ static void load_linux(void *fw_cfg,
-         if (load_multiboot(fw_cfg, f, kernel_filename, initrd_filename,
-                            kernel_cmdline, kernel_size, header)) {
-             return;
-+        } else {
-+            fprintf(stderr, "not a valid multiboot image!\n");
-+            exit(1);
-         }
-         protocol = 0;
-     }
+diff --git a/configure b/configure
+index ec51b0b..54e9017 100755
+--- a/configure
++++ b/configure
+@@ -3916,8 +3916,6 @@ else
+   echo "AUTOCONF_HOST := "                             >> $config_host_mak
+ fi
+ echo "LDFLAGS=$LDFLAGS" >> $config_host_mak
+-echo "ARLIBS_BEGIN=$arlibs_begin" >> $config_host_mak
+-echo "ARLIBS_END=$arlibs_end" >> $config_host_mak
+ echo "LIBS+=$LIBS" >> $config_host_mak
+ echo "LIBS_TOOLS+=$libs_tools" >> $config_host_mak
+ echo "EXESUF=$EXESUF" >> $config_host_mak
 -- 
-1.7.2.5
+1.8.1.4
 
 
