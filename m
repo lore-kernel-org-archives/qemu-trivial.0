@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UNF3X-0007Sz-Iv
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Apr 2013 00:12:15 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54936)
+	id 1UNHan-0006Jn-Nk
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Apr 2013 02:54:45 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56630)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UNF3U-0007Og-Ek
-	for qemu-trivial@nongnu.org; Wed, 03 Apr 2013 00:12:13 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1UNHal-0006HA-Nq
+	for qemu-trivial@nongnu.org; Wed, 03 Apr 2013 02:54:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UNF3T-00080B-2L
-	for qemu-trivial@nongnu.org; Wed, 03 Apr 2013 00:12:12 -0400
-Received: from mail-pb0-f54.google.com ([209.85.160.54]:54728)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1UNHak-0006iB-JY
+	for qemu-trivial@nongnu.org; Wed, 03 Apr 2013 02:54:43 -0400
+Received: from mail-ea0-x229.google.com ([2a00:1450:4013:c01::229]:58692)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UNF3S-0007zz-T1
-	for qemu-trivial@nongnu.org; Wed, 03 Apr 2013 00:12:10 -0400
-Received: by mail-pb0-f54.google.com with SMTP id xa7so617636pbc.13
-	for <qemu-trivial@nongnu.org>; Tue, 02 Apr 2013 21:12:10 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer
-	:in-reply-to:references:in-reply-to:references:x-gm-message-state;
-	bh=qXM1Wy/qFhIGW2X260FSa02TF81vb3H+F2SYFAp49hU=;
-	b=DgY2wwll9kJMNZgu6lSPvRhTLpAKAZzw9vDwP9oB3RiPs9rrhNF49kghFcD/tzNZHl
-	vERSLyqJJuCEEa3rDinhRybEHJxO6Q0Xax5wKC5iynM2eKAXTet2n/8JXPg/Zlqcsqqx
-	i9mBpBqvDA88MwN+Y2Ge3x95+6cs+tyftpeQPMJWELKM3av+pkRQ2Q9TDlVBemP9W0c7
-	XOrLtuqotpqPKFaKA2Mw3rJc7Q1/FsvbEy9sm+zz/N+kHU3cnHlUqL3V/8gt9tdxh/Dp
-	ctwvQgsCLqVVF1Ky5A81Yw5Mm7y2hNF+swSh4q2RSoA8rgM6XrQ3G5gvuD5Zd3wO2iK5
-	KyDw==
-X-Received: by 10.66.102.98 with SMTP id fn2mr767490pab.192.1364962330287;
-	Tue, 02 Apr 2013 21:12:10 -0700 (PDT)
-Received: from localhost ([149.199.62.254])
-	by mx.google.com with ESMTPS id cy4sm4259634pbc.13.2013.04.02.21.12.07
-	(version=TLSv1.1 cipher=RC4-SHA bits=128/128);
-	Tue, 02 Apr 2013 21:12:09 -0700 (PDT)
-Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Date: Wed,  3 Apr 2013 14:09:19 +1000
-Message-Id: <85c9e7a919a37a94fd01c5165aa20849c08530cc.1364961975.git.peter.crosthwaite@xilinx.com>
-X-Mailer: git-send-email 1.7.0.4
-In-Reply-To: <cover.1364961975.git.peter.crosthwaite@xilinx.com>
+	(envelope-from <edgar.iglesias@gmail.com>)
+	id 1UNHah-0006h3-4l; Wed, 03 Apr 2013 02:54:39 -0400
+Received: by mail-ea0-f169.google.com with SMTP id n15so540242ead.28
+	for <multiple recipients>; Tue, 02 Apr 2013 23:54:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=VewULC1J6Zvkb0o7YCXidyjjf9Q7OlzUcVhxYf9w7JQ=;
+	b=KfF6Xhqz6/Dne1lG7dGIzfWft7cSGtFapnbP+xL1dvKKFCfwkUKo0K0UdHlZ8Crpr9
+	m/s5QLcTY+5SlhE7Q2EpM+SNO2k0wUapSH4Ispc6y1v2Vv9uE7EhsjBkRqzlF1p1iIiv
+	Hc6i5hkhBa/I4Ecm53t6H6BK5XuWamrqvooNaUk9yvf1tbc66+V+qnm83Ex/HdUGtnpq
+	csqDmNXEHZ2nNtVm0urUHT7fi4OZ5ZVWMQ2i18GK4EIFu9I0lz8h054zQ9bZRTKQzY9A
+	CbEFh2zpZi7BBDaSpJz8Vaqu0zSm9T6qlYaOwkVsjld3hhT1kuHCce8+dmhvfMuQyu2/
+	XAqw==
+X-Received: by 10.14.216.2 with SMTP id f2mr948502eep.44.1364972077758;
+	Tue, 02 Apr 2013 23:54:37 -0700 (PDT)
+Received: from localhost (h59ec325f.selukar.dyn.perspektivbredband.net.
+	[89.236.50.95])
+	by mx.google.com with ESMTPS id d47sm6577061eem.9.2013.04.02.23.54.36
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Tue, 02 Apr 2013 23:54:37 -0700 (PDT)
+Date: Wed, 3 Apr 2013 08:50:56 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Message-ID: <20130403065056.GD21321@smtp.vpn>
 References: <cover.1364961975.git.peter.crosthwaite@xilinx.com>
-In-Reply-To: <cover.1364961975.git.peter.crosthwaite@xilinx.com>
-References: <cover.1364961975.git.peter.crosthwaite@xilinx.com>
-X-Gm-Message-State: ALoCoQnHmAGo33wL6KP+4gmUBwVWLdMYvArAQQyTTfO70cAXSfROkatxQt2CiFo7F/zV9bb+WDxE
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.160.54
-Cc: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Subject: [Qemu-trivial] [PATCH v1 4/4] m25p80: Add debug message for no bdrv
+	<ef1ea44a6c6f5d9846c3492006094044bbd805c3.1364961975.git.peter.crosthwaite@xilinx.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ef1ea44a6c6f5d9846c3492006094044bbd805c3.1364961975.git.peter.crosthwaite@xilinx.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c01::229
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 1/4] m25p80: Fix debug
+	messages.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,29 +59,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Apr 2013 04:12:14 -0000
+X-List-Received-Date: Wed, 03 Apr 2013 06:54:44 -0000
 
-If there is no backing bdrv, let the debugging developer know about it.
+On Wed, Apr 03, 2013 at 02:09:16PM +1000, Peter Crosthwaite wrote:
+> Some dodgy casts were making a mess of these msgs.
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
----
 
- hw/m25p80.c |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
+Hi Peter
 
-diff --git a/hw/m25p80.c b/hw/m25p80.c
-index f8aa0e9..812cae0 100644
---- a/hw/m25p80.c
-+++ b/hw/m25p80.c
-@@ -605,6 +605,7 @@ static int m25p80_init(SSISlave *ss)
-             return 1;
-         }
-     } else {
-+        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
-         memset(s->storage, 0xFF, s->size);
-     }
- 
--- 
-1.7.0.4
+> 
+> Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+> ---
+> 
+>  hw/m25p80.c |    6 +++---
+>  1 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/m25p80.c b/hw/m25p80.c
+> index 55e9d0d..34b476b 100644
+> --- a/hw/m25p80.c
+> +++ b/hw/m25p80.c
+> @@ -538,15 +538,15 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
+>      switch (s->state) {
+>  
+>      case STATE_PAGE_PROGRAM:
+> -        DB_PRINT("page program cur_addr=%lx data=%x\n", s->cur_addr,
+> -                 (uint8_t)tx);
+> +        DB_PRINT("page program cur_addr=%lx data=%x\n", (unsigned)s->cur_addr,
 
+Shouldn't this be using PRIx64 for cur_addr?
+
+
+> +                 (unsigned)(uint8_t)tx);
+>          flash_write8(s, s->cur_addr, (uint8_t)tx);
+>          s->cur_addr++;
+>          break;
+>  
+>      case STATE_READ:
+>          r = s->storage[s->cur_addr];
+> -        DB_PRINT("READ 0x%lx=%x\n", s->cur_addr, r);
+> +        DB_PRINT("READ 0x%lx=%x\n", (unsigned)s->cur_addr, (unsigned)r);
+
+
+same here.
+
+
+>          s->cur_addr = (s->cur_addr + 1) % s->size;
+>          break;
+>  
+> -- 
+> 1.7.0.4
+> 
+> 
 
