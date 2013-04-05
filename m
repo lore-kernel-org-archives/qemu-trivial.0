@@ -1,45 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UNtXC-0002Hj-LZ
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Apr 2013 19:25:34 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53711)
+	id 1UO5xR-0005C7-Qy
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Apr 2013 08:41:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34343)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1UNtX9-0002D9-O9
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2013 19:25:32 -0400
+	(envelope-from <stefanha@gmail.com>) id 1UO5xK-00050E-6g
+	for qemu-trivial@nongnu.org; Fri, 05 Apr 2013 08:41:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1UNtX8-00020U-IY
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2013 19:25:31 -0400
-Received: from mail-oa0-f44.google.com ([209.85.219.44]:51738)
+	(envelope-from <stefanha@gmail.com>) id 1UO5xF-0005uT-BM
+	for qemu-trivial@nongnu.org; Fri, 05 Apr 2013 08:41:22 -0400
+Received: from mail-wi0-x236.google.com ([2a00:1450:400c:c05::236]:41764)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>)
-	id 1UNtWx-0001yT-P2; Thu, 04 Apr 2013 19:25:19 -0400
-Received: by mail-oa0-f44.google.com with SMTP id h1so3465788oag.3
-	for <multiple recipients>; Thu, 04 Apr 2013 16:25:18 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1UO5x1-0005mT-6W; Fri, 05 Apr 2013 08:41:03 -0400
+Received: by mail-wi0-f182.google.com with SMTP id hi18so538821wib.3
+	for <multiple recipients>; Fri, 05 Apr 2013 05:41:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:x-received:in-reply-to:references:date:message-id
-	:subject:from:to:cc:content-type;
-	bh=v8IRINBlzyRfOop/Gomp6eSY40gANNBUF/A5UssUdtk=;
-	b=MtrRFbgpd/rrOtfijxTozlCKdRFKEBO6nBCrpYH2cHAcoVEUoIRnUFdWOkckGsifuc
-	kmaYPMh6PDoGSaSnn0c76/4gvbWr97fKpZ2WVvEHRBNqYvQkAAXUQpUXXPxv0AbfyHpy
-	8kHQ+R0ip10TD8eChqnOykE7XDYIvE3WQJCat5ftzZoncEz9x3iRUz6LJjFvXJmYJuz+
-	bVU2TCTUXV6LqmeSrzAHya0SO8Y/3z2IDUIZN6SOri55SPR0XnjvxaRRgouVNak7wfUo
-	gHBYVZMi8DDZ6uLqYVwZig8SsKzVuUtn0xAZ3g1pFvXGVca9NpORuyNJIkMBBjqFJy2r
-	fjdA==
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=OUSsIgmXA++8R4CJ7YhPO0EKNIHedq+8oKYMfoxpSBo=;
+	b=zjk87EdYzkcxZvS8m9yO0vgn/+tOX+MkZgjWeW4Nd4/9UHNeq4pFeCOo+I2o+KBuTY
+	NyJqS/ikMvIupOTE530uN/1tl46a5tZIt/M3OWvqCcgn1yC9O5uJxoYbUOX1JmovbMzH
+	/NwlGP4HtAurMylqkEBZopT8yMHPKS2POLPQ+hkywwuxi+OPke8tl5WKJ+WdtJIuISRW
+	UO5yQ7+GD/L2VBq7CgtpqpRoUbripIUI/iynDniL+27a/PEij8SA8ICx9ptPlg0kN7Qd
+	UujnBRxss8fI//tr6eQYuAKxn60Uym5DjTa5PmRH7yvelihBNzGRjxDLHUoGWYIquBAI
+	k0hg==
+X-Received: by 10.180.188.141 with SMTP id ga13mr4048181wic.9.1365165662051;
+	Fri, 05 Apr 2013 05:41:02 -0700 (PDT)
+Received: from localhost ([2a02:810d:ec0:195:2d83:6a4a:ca86:7c26])
+	by mx.google.com with ESMTPS id du2sm3529978wib.0.2013.04.05.05.40.59
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Fri, 05 Apr 2013 05:41:00 -0700 (PDT)
+Date: Fri, 5 Apr 2013 14:40:58 +0200
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20130405124058.GA15818@stefanha-thinkpad.redhat.com>
+References: <1364481204-11815-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-X-Received: by 10.60.135.131 with SMTP id ps3mr4793831oeb.131.1365117918781;
-	Thu, 04 Apr 2013 16:25:18 -0700 (PDT)
-Received: by 10.76.79.4 with HTTP; Thu, 4 Apr 2013 16:25:18 -0700 (PDT)
-In-Reply-To: <1365117183-23730-1-git-send-email-brendandg@gatech.edu>
-References: <1365117183-23730-1-git-send-email-brendandg@gatech.edu>
-Date: Fri, 5 Apr 2013 03:25:18 +0400
-Message-ID: <CAMo8BfL7BvuB2o0xXXv16P8mQVoBQ2F0rWoEWR+p6bOcKJi+wQ@mail.gmail.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-To: Brendan Dolan-Gavitt <brendandg@gatech.edu>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.219.44
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-i386: fix order of
-	checks in cpu_get_phys_page_debug
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1364481204-11815-1-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::236
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] linux-user: Don't omit comma for strace
+ of rt_sigaction()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,34 +58,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Apr 2013 23:25:33 -0000
+X-List-Received-Date: Fri, 05 Apr 2013 12:41:28 -0000
 
-On Fri, Apr 5, 2013 at 3:13 AM, Brendan Dolan-Gavitt
-<brendandg@gatech.edu> wrote:
-> In target-i386 cpu_get_phys_page_debug, the CR4_PAE bit is checked
-> before CR0_PG. This means that if paging is disabled but the PAE bit has
-> been set in CR4, cpu_get_phys_page_debug will return the wrong result
-> (it will try to translate the address as virtual rather than using it as
-> a physical address). This patch fixes that by moving the CR0_PG check to
-> the beginning of the function.
->
-> This shows up when booting the Linux kernel on amd64 with "-d in_asm".
-> The kernel turns on the PAE bit in CR4 before turning on paging, and so
-> QEMU's disassembler will fail because it will try to walk the page
-> tables to fetch code even though paging is disabled. The symptom is
-> incorrect disassembly and some "Disassembler disagrees with translator
-> over instruction decoding" messages.
->
-> This was also reported as bug #1163065.
+On Thu, Mar 28, 2013 at 02:33:24PM +0000, Peter Maydell wrote:
+> Pass the 'last' parameter of print_signal() through to
+> print_raw_param(); this fixes a problem where we weren't printing
+> the comma separator for strace of rt_sigaction() when the signal
+> was an unnamed (ie realtime) one:
+>   6856 rt_sigaction(230xf6fff870,0xf6fff8fc) = 0
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  linux-user/strace.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Hi,
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-a while ago I sent similar patch:
-http://comments.gmane.org/gmane.comp.emulators.qemu/180776
-and a suggestion for me was to unify cpu_get_phys_page_debug and
-cpu_x86_handle_mmu_fault implementations.
-
--- 
-Thanks.
--- Max
+Stefan
 
