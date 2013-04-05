@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UO6Jt-0006va-AH
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Apr 2013 09:04:41 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41356)
+	id 1UO6NK-0008F8-4N
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Apr 2013 09:08:14 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42501)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UO6Jl-0006hZ-AT
-	for qemu-trivial@nongnu.org; Fri, 05 Apr 2013 09:04:38 -0400
+	(envelope-from <stefanha@gmail.com>) id 1UO6N9-00080e-Ic
+	for qemu-trivial@nongnu.org; Fri, 05 Apr 2013 09:08:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UO6Jj-0006qg-4T
-	for qemu-trivial@nongnu.org; Fri, 05 Apr 2013 09:04:33 -0400
-Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:45504)
+	(envelope-from <stefanha@gmail.com>) id 1UO6N3-0008QR-VM
+	for qemu-trivial@nongnu.org; Fri, 05 Apr 2013 09:08:03 -0400
+Received: from mail-wi0-x22b.google.com ([2a00:1450:400c:c05::22b]:36049)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1UO6JZ-0006h8-Ez; Fri, 05 Apr 2013 09:04:21 -0400
-Received: by mail-wi0-f172.google.com with SMTP id hr17so563256wib.17
-	for <multiple recipients>; Fri, 05 Apr 2013 06:04:20 -0700 (PDT)
+	id 1UO6Mt-0008MJ-G3; Fri, 05 Apr 2013 09:07:47 -0400
+Received: by mail-wi0-f171.google.com with SMTP id hn17so567297wib.16
+	for <multiple recipients>; Fri, 05 Apr 2013 06:07:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=x-received:date:from:to:cc:subject:message-id:references
 	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=GPn/wQ/rHczCp4+Q1rG/8UqNs/5zpRy/piHSxVnsOu8=;
-	b=iZ+SIYBEOvIWijM73022x9ouQzGZYLLAUHuYdm9fZHUHP5oX6uAhLAeEfKkthgG6jp
-	lz2V+r41uamLk0cmDnpbPdHZWcKRmGvb9FSAfFr9f+6bNmxdd9sf8adMBfI6ohILIZfi
-	3SMYXZsKsYZIXUA521d7VpI7M8j2N7ctVNu4uD75jHWXCPWk+LFxnJn08jCq2HTxI3Gs
-	rnNy5LCIm9izzwwxIVbcQVbUklIL3kgNEwBX4Qals0KTiqN4gbuoFzw9pujPH9Yt3nSP
-	5rjS/QJZCWQzrblT8JgkKWj4uDq8BNVdn9B6SukYPoqeXrkb74b5e1rp6PRJ8MCdxryo
-	TV5A==
-X-Received: by 10.194.83.33 with SMTP id n1mr16487797wjy.7.1365167060660;
-	Fri, 05 Apr 2013 06:04:20 -0700 (PDT)
+	:user-agent; bh=CYKaAWIfuYFol0mfDf9ga8pXPbetxD8hsEg42UxJYwI=;
+	b=gyxEf0LzoE5aXOIj1NvBj8oiHjnNCEkPKzjbnrowux43SGWIpA8dp0MZm2CBCs/J01
+	0P07MC2OpsJCO4OnZbBarpvk7ixpAwhqy8ggau1hNxOlXGmiI5rzXQp0Tsb3iTxFAjlg
+	JOjqzWLF9swM2/MPEsQ/wF2kO2JcBeVfGMCrIGM9yUabkqWGANWFA1f3j4hz9Z0BcJZl
+	MigQCg0PiEh5SMEO2Q9iJYZzFBS8OxMQcwsj+N339qRBpMIM4rQSibVyz4vxcObAH/+N
+	Jl9BQNT8xFKvECiSeqPH9X8X6yHdnyyW/Qi4FIPvJadgOabeuu3RZs4ugYB3OKV2b4WQ
+	T30g==
+X-Received: by 10.194.120.195 with SMTP id le3mr16303063wjb.46.1365167266625; 
+	Fri, 05 Apr 2013 06:07:46 -0700 (PDT)
 Received: from localhost ([2a02:810d:ec0:195:2d83:6a4a:ca86:7c26])
-	by mx.google.com with ESMTPS id dp5sm3642690wib.1.2013.04.05.06.04.19
+	by mx.google.com with ESMTPS id g9sm4186119wix.1.2013.04.05.06.07.44
 	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Fri, 05 Apr 2013 06:04:19 -0700 (PDT)
-Date: Fri, 5 Apr 2013 15:04:17 +0200
+	Fri, 05 Apr 2013 06:07:45 -0700 (PDT)
+Date: Fri, 5 Apr 2013 15:07:43 +0200
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Message-ID: <20130405130417.GE15818@stefanha-thinkpad.redhat.com>
-References: <cover.1365037290.git.peter.crosthwaite@xilinx.com>
+To: Brendan Dolan-Gavitt <brendandg@gatech.edu>
+Message-ID: <20130405130743.GF15818@stefanha-thinkpad.redhat.com>
+References: <1365117183-23730-1-git-send-email-brendandg@gatech.edu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1365037290.git.peter.crosthwaite@xilinx.com>
+In-Reply-To: <1365117183-23730-1-git-send-email-brendandg@gatech.edu>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22c
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	dantesu@faraday-tech.com, edgar.iglesias@gmail.com
-Subject: Re: [Qemu-trivial] [PATCH v1 0/2] Remove un-needed use of
- ssi_create_slave_no_init
+X-Received-From: 2a00:1450:400c:c05::22b
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] target-i386: fix order of checks in
+ cpu_get_phys_page_debug
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,24 +57,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Apr 2013 13:04:39 -0000
+X-List-Received-Date: Fri, 05 Apr 2013 13:08:12 -0000
 
-On Thu, Apr 04, 2013 at 11:03:14AM +1000, Peter Crosthwaite wrote:
-> Trivial code cleanup of the PetaLogix and Zynq machine models.
+On Thu, Apr 04, 2013 at 07:13:03PM -0400, Brendan Dolan-Gavitt wrote:
+> In target-i386 cpu_get_phys_page_debug, the CR4_PAE bit is checked
+> before CR0_PG. This means that if paging is disabled but the PAE bit has
+> been set in CR4, cpu_get_phys_page_debug will return the wrong result
+> (it will try to translate the address as virtual rather than using it as
+> a physical address). This patch fixes that by moving the CR0_PG check to
+> the beginning of the function.
 > 
+> This shows up when booting the Linux kernel on amd64 with "-d in_asm".
+> The kernel turns on the PAE bit in CR4 before turning on paging, and so
+> QEMU's disassembler will fail because it will try to walk the page
+> tables to fetch code even though paging is disabled. The symptom is
+> incorrect disassembly and some "Disassembler disagrees with translator
+> over instruction decoding" messages.
 > 
-> Peter Crosthwaite (2):
->   petalogix_ml605_mmu: Cleanup ssi_create_slave()
->   xilinx_zynq: Cleanup ssi_create_slave
+> This was also reported as bug #1163065.
 > 
->  hw/arm/xilinx_zynq.c                |    3 +--
->  hw/microblaze/petalogix_ml605_mmu.c |    3 +--
->  2 files changed, 2 insertions(+), 4 deletions(-)
-> 
-> 
+> Signed-off-by: Brendan Dolan-Gavitt <brendandg@gatech.edu>
+> ---
+>  target-i386/helper.c |  121 ++++++++++++++++++++++++++------------------------
+>  1 file changed, 64 insertions(+), 57 deletions(-)
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Sorry, not trivial :).
 
 Stefan
 
