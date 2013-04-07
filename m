@@ -1,52 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UOBJd-0007S9-FE
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Apr 2013 14:24:45 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46544)
+	id 1UOi2C-0006GV-Nj
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Apr 2013 01:20:56 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36066)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.aring@gmail.com>) id 1UOBJX-0007Ku-ME
-	for qemu-trivial@nongnu.org; Fri, 05 Apr 2013 14:24:43 -0400
+	(envelope-from <ben.leslie@gmail.com>) id 1UOi26-0006GK-Qb
+	for qemu-trivial@nongnu.org; Sun, 07 Apr 2013 01:20:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.aring@gmail.com>) id 1UOBJT-00040O-Qc
-	for qemu-trivial@nongnu.org; Fri, 05 Apr 2013 14:24:39 -0400
-Received: from mail-ee0-f42.google.com ([74.125.83.42]:44003)
+	(envelope-from <ben.leslie@gmail.com>) id 1UOi22-0007wz-4t
+	for qemu-trivial@nongnu.org; Sun, 07 Apr 2013 01:20:50 -0400
+Received: from mail-ia0-x235.google.com ([2607:f8b0:4001:c02::235]:34172)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.aring@gmail.com>) id 1UOBJT-000405-K1
-	for qemu-trivial@nongnu.org; Fri, 05 Apr 2013 14:24:35 -0400
-Received: by mail-ee0-f42.google.com with SMTP id d4so763389eek.29
-	for <qemu-trivial@nongnu.org>; Fri, 05 Apr 2013 11:24:34 -0700 (PDT)
+	(envelope-from <ben.leslie@gmail.com>) id 1UOi21-0007ws-UC
+	for qemu-trivial@nongnu.org; Sun, 07 Apr 2013 01:20:46 -0400
+Received: by mail-ia0-f181.google.com with SMTP id o25so4200179iad.40
+	for <qemu-trivial@nongnu.org>; Sat, 06 Apr 2013 22:20:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=aBBF8xjPLoX58Idwo4ZVLwWxMBwoC0MwY0cdmKAUB4M=;
-	b=yWikvc2k1UK0msBYLwzzFlEXwpSFCgPUFTVvPJt0EZXjubssQoQmmic30GMxIY0vDu
-	6EfzleqhXMA8e5uPPUFeNzeMMxUJsQd2HatIN8P5NV9k7A8hLXDtNN+/6ocBj/GbdN6E
-	epJ/SENtNg7YvyUJbAq9fwfiNuhMGYtist+wglt4/DLC6w6/Y++ahq/NfTLR7I6hT1QN
-	QVF+VoNPJ3niuBJk0r3Wa9DU0zL06buBaUbR8qXYbAokejvFkdIX30zAyaWMZk7sn070
-	noq+4aHI1CbvN+peL90ihDCeVx5qrmgRDaTmQyChMqJ62tX1uYhotyfcaNEoD7R5ryFl
-	YPLQ==
-X-Received: by 10.15.107.205 with SMTP id cb53mr21929668eeb.14.1365186274411; 
-	Fri, 05 Apr 2013 11:24:34 -0700 (PDT)
-Received: from x61s.Speedport_W_921V_1_21_000
-	(p20030064AA0A6E0102133BFFFE0C3286.dip.t-dialin.net.
-	[2003:64:aa0a:6e01:213:3bff:fe0c:3286])
-	by mx.google.com with ESMTPS id cd3sm7084715eeb.6.2013.04.05.11.24.33
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Fri, 05 Apr 2013 11:24:33 -0700 (PDT)
-Date: Fri, 5 Apr 2013 20:26:18 +0200
-From: Alexander Aring <alex.aring@gmail.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Message-ID: <20130405182617.GA14373@x61s.Speedport_W_921V_1_21_000>
-References: <1364558442-11392-1-git-send-email-alex.aring@gmail.com>
-	<20130405125223.GB15818@stefanha-thinkpad.redhat.com>
+	h=mime-version:x-received:sender:date:x-google-sender-auth:message-id
+	:subject:from:to:content-type;
+	bh=Md0u3Hxq3coeEeEh+1upY47evl6VYT6u29yxAC3Z2kk=;
+	b=avf3OPAlDRB1H9V/aNziXRNGkk/Hr4r60uIxpUZidLFBG0M+3pMcDs44Y7pAfsfbHz
+	DY9GeFXjAZZZT4nj/0w5E7xsmNwSXzTq0i931eSEMPJf35tbKdTll+wtvuEl56IB8Zxz
+	CFSiH9MlEX8pvGiHhVUxiRi/zyev3VJKUhJJWIo8hzXinKurCU0RJPiMu1kanHjEiuZX
+	E465SP+drlCAsXSNaYvvfht0aU59BotrlgWWRj81d9zHwQPTTBKRBid57j+y7IsNiz4t
+	XuWolAR9LeEgrxGW/YcRCK0j/iOE36K27c3Mp9pGS48p8UwXQ73yLrDD3L27nm0a2zhl
+	4cuA==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20130405125223.GB15818@stefanha-thinkpad.redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.125.83.42
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] softfloat: fix mask in extractFloat32Exp
+X-Received: by 10.50.115.42 with SMTP id jl10mr3485214igb.71.1365312045060;
+	Sat, 06 Apr 2013 22:20:45 -0700 (PDT)
+Sender: ben.leslie@gmail.com
+Received: by 10.64.24.98 with HTTP; Sat, 6 Apr 2013 22:20:44 -0700 (PDT)
+Date: Sun, 7 Apr 2013 15:20:44 +1000
+X-Google-Sender-Auth: 9FdAStLFRq62f_oYEAqYYW9zQWs
+Message-ID: <CABZ0LtBxD4CvG4wFAE_S+Zr8OeWuq1PGGt+d7MZJ61DNKYTNdg@mail.gmail.com>
+From: Ben Leslie <benno@benno.id.au>
+To: qemu-trivial@nongnu.org
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4001:c02::235
+Subject: [Qemu-trivial] [PATCH] configure: Detect --disable-system and
+	--target-list conflicts.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,27 +51,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Apr 2013 18:24:44 -0000
+X-List-Received-Date: Sun, 07 Apr 2013 05:20:55 -0000
 
-Hi,
+The user should not be allowed to configure a softmmu target
+when --disable-system is selected.
 
-On Fri, Apr 05, 2013 at 02:52:23PM +0200, Stefan Hajnoczi wrote:
-> 
-> This patch seems wrong because the fraction is 23 bits, exponent is 8
-> bits, and sign is 1 bit.
-> 
-> IEEE 754 Binary32 representation:
-> SEEEEEEEEFFFFFFFFFFFFFFFFFFFFFFF
->  3      2                      0
->  0      3
-> 
-> http://en.wikipedia.org/wiki/Binary32
-> 
-> Since the exponent is *8* bits, 0xFF is correct.  The sign bit is 0x100
-> after >>23.
->
+Signed-off-by: Ben Leslie <benno@benno.id.au>
+---
+ configure | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-ahh, I see it! Sorry for the noise :)
-
-Alex
+diff --git a/configure b/configure
+index d685275..e4288ed 100755
+--- a/configure
++++ b/configure
+@@ -1353,7 +1353,13 @@ else
+ fi
+ # see if system emulation was really requested
+ case " $target_list " in
+-  *"-softmmu "*) softmmu=yes
++  *"-softmmu "*)
++    if test "$softmmu" = "no"; then
++      echo "ERROR: System emulation disabled (via --disable-system),
+however a "
++      echo "       system emulation target specified in --target-list."
++      exit 1
++    fi
++    softmmu=yes
+   ;;
+   *) softmmu=no
+   ;;
+--
 
