@@ -1,50 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UOzj0-0003ba-3g
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Apr 2013 20:14:18 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40868)
+	id 1UPEMX-0005wW-00
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Apr 2013 11:52:05 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:35618)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UOzix-0003au-6d
-	for qemu-trivial@nongnu.org; Sun, 07 Apr 2013 20:14:16 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1UPEMO-0005jh-M4
+	for qemu-trivial@nongnu.org; Mon, 08 Apr 2013 11:52:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UOziv-0007BH-Oo
-	for qemu-trivial@nongnu.org; Sun, 07 Apr 2013 20:14:15 -0400
-Received: from [222.73.24.84] (port=35778 helo=song.cn.fujitsu.com)
+	(envelope-from <pm215@archaic.org.uk>) id 1UPEML-0004F4-Vn
+	for qemu-trivial@nongnu.org; Mon, 08 Apr 2013 11:51:56 -0400
+Received: from
+	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
+	([2001:8b0:1d0::1]:33682 helo=mnementh.archaic.org.uk)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1UOziv-00070h-Dp; Sun, 07 Apr 2013 20:14:13 -0400
-X-IronPort-AV: E=Sophos;i="4.87,427,1363104000"; 
-   d="scan'208";a="7010627"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 08 Apr 2013 08:11:27 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r380E3f8023978;
-	Mon, 8 Apr 2013 08:14:03 +0800
-Received: from [10.167.233.147] ([10.167.233.147])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013040808125670-352115 ;
-	Mon, 8 Apr 2013 08:12:56 +0800 
-From: li guang <lig.fnst@cn.fujitsu.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-In-Reply-To: <20130405125941.GD15818@stefanha-thinkpad.redhat.com>
-References: <1364779317-3963-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<20130405125941.GD15818@stefanha-thinkpad.redhat.com>
-Date: Mon, 08 Apr 2013 08:13:05 +0800
-Message-ID: <1365379985.5674.0.camel@liguang.fnst.cn.fujitsu.com>
-Mime-Version: 1.0
-X-Mailer: Evolution 2.30.3 
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/04/08 08:12:56,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/04/08 08:12:57,
-	Serialize complete at 2013/04/08 08:12:57
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH v2] hw/i386/pc: reject to
- boot a wrong header magic kernel
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1UPEMG-00049O-2b; Mon, 08 Apr 2013 11:51:48 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1UPEME-0005FT-7O; Mon, 08 Apr 2013 16:51:46 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Mon,  8 Apr 2013 16:51:46 +0100
+Message-Id: <1365436306-20152-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, Anthony Green <green@moxielogic.com>,
+	patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] target-moxie: Fix VMState registration
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,51 +39,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Apr 2013 00:14:16 -0000
+X-List-Received-Date: Mon, 08 Apr 2013 15:52:03 -0000
 
-=E5=9C=A8 2013-04-05=E4=BA=94=E7=9A=84 14:59 +0200=EF=BC=8CStefan Hajnoczi=
-=E5=86=99=E9=81=93=EF=BC=9A
-> On Mon, Apr 01, 2013 at 09:21:57AM +0800, liguang wrote:
-> > if head magic is missing or wrong unexpectedly, we'd
-> > better to reject booting.
-> > e.g.
-> > I make a mistake to boot a vmlinuz for MIPS(which
-> > I think it's for x86) like this:
-> > qemu-system-x86_64 -kernel vmlinuz -initrd demord
-> > then qemu report:
-> > "qemu: linux kernel too old to load a ram disk"
-> > that's misleading.
-> >=20
-> > Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
-> > ---
-> >  hw/i386/pc.c |    3 +++
-> >  1 files changed, 3 insertions(+), 0 deletions(-)
-> >=20
-> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> > index b1e06fa..bfbb5fe 100644
-> > --- a/hw/i386/pc.c
-> > +++ b/hw/i386/pc.c
-> > @@ -683,6 +683,9 @@ static void load_linux(void *fw_cfg,
-> >          if (load_multiboot(fw_cfg, f, kernel_filename, initrd_filename=
-,
-> >                             kernel_cmdline, kernel_size, header)) {
-> >              return;
-> > +        } else {
-> > +            fprintf(stderr, "not a valid multiboot image!\n");
-> > +            exit(1);
-> >          }
-> >          protocol =3D 0;
->=20
-> The point of protocol =3D 0 is to support old Linux kernels.  If we exit
-> when probing load_multiboot() fails then QEMU will no longer load old
-> Linux kernels!
->=20
-> I suggest just:
-> fprintf(stderr, "warning: not a valid multiboot or modern kernel image\n"=
-);
->=20
-> Stefan
+Register the CPU VMState in the correct way, via cpu_class_set_vmsd(),
+rather than doing it in two different wrong ways (once by providing
+cpu_save and cpu_load functions, and once by setting the vmsd field in
+DeviceClass).
 
-OK, Thanks!
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Having just revamped the target-arm vmstate code I now have a
+better grasp of how it should work, so I noticed we didn't quite
+get moxie right. Not really very tested since I couldn't find a test
+image to try, but should work better than the previous code...
+
+ target-moxie/cpu.c     |    2 +-
+ target-moxie/cpu.h     |    2 --
+ target-moxie/machine.c |   12 +-----------
+ 3 files changed, 2 insertions(+), 14 deletions(-)
+
+diff --git a/target-moxie/cpu.c b/target-moxie/cpu.c
+index c0855f0..f2b0791 100644
+--- a/target-moxie/cpu.c
++++ b/target-moxie/cpu.c
+@@ -97,7 +97,7 @@ static void moxie_cpu_class_init(ObjectClass *oc, void *data)
+ 
+     cc->class_by_name = moxie_cpu_class_by_name;
+ 
+-    dc->vmsd = &vmstate_moxie_cpu;
++    cpu_class_set_vmsd(cc, &vmstate_moxie_cpu);
+     cc->do_interrupt = moxie_cpu_do_interrupt;
+ }
+ 
+diff --git a/target-moxie/cpu.h b/target-moxie/cpu.h
+index 988729a..a9d9ace 100644
+--- a/target-moxie/cpu.h
++++ b/target-moxie/cpu.h
+@@ -28,8 +28,6 @@
+ 
+ #define TARGET_HAS_ICE 1
+ 
+-#define CPU_SAVE_VERSION 1
+-
+ #define ELF_MACHINE     0xFEED /* EM_MOXIE */
+ 
+ #define MOXIE_EX_DIV0        0
+diff --git a/target-moxie/machine.c b/target-moxie/machine.c
+index 5bfdb28..0f5992b 100644
+--- a/target-moxie/machine.c
++++ b/target-moxie/machine.c
+@@ -3,7 +3,7 @@
+ 
+ const VMStateDescription vmstate_moxie_cpu = {
+     .name = "cpu",
+-    .version_id = CPU_SAVE_VERSION,
++    .version_id = 1,
+     .minimum_version_id = 1,
+     .minimum_version_id_old = 1,
+     .fields      = (VMStateField[]) {
+@@ -16,13 +16,3 @@ const VMStateDescription vmstate_moxie_cpu = {
+         VMSTATE_END_OF_LIST()
+     }
+ };
+-
+-void cpu_save(QEMUFile *f, void *opaque)
+-{
+-    vmstate_save_state(f, &vmstate_moxie_cpu, opaque);
+-}
+-
+-int cpu_load(QEMUFile *f, void *opaque, int version_id)
+-{
+-    return vmstate_load_state(f, &vmstate_moxie_cpu, opaque, version_id);
+-}
+-- 
+1.7.9.5
 
 
