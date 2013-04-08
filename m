@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UPF3o-0001zP-Th
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Apr 2013 12:36:48 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49460)
+	id 1UPGoq-0000f9-Sz
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Apr 2013 14:29:28 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54229)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1UPF3f-0001p6-HW
-	for qemu-trivial@nongnu.org; Mon, 08 Apr 2013 12:36:46 -0400
+	(envelope-from <petar.jovanovic@rt-rk.com>) id 1UPGoj-0000be-9G
+	for qemu-trivial@nongnu.org; Mon, 08 Apr 2013 14:29:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1UPF3Y-00063L-NC
-	for qemu-trivial@nongnu.org; Mon, 08 Apr 2013 12:36:39 -0400
-Received: from
-	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
-	([2001:8b0:1d0::1]:33685 helo=mnementh.archaic.org.uk)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1UPF3G-0005yJ-W8; Mon, 08 Apr 2013 12:36:15 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1UPF3E-0005HD-Vj; Mon, 08 Apr 2013 17:36:12 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <petar.jovanovic@rt-rk.com>) id 1UPGod-0003cQ-CI
+	for qemu-trivial@nongnu.org; Mon, 08 Apr 2013 14:29:21 -0400
+Received: from mail.rt-rk.ftn.uns.ac.rs ([147.91.177.140]:33232
+	helo=mail.rt-rk.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <petar.jovanovic@rt-rk.com>) id 1UPGod-0003WZ-5R
+	for qemu-trivial@nongnu.org; Mon, 08 Apr 2013 14:29:15 -0400
+Received: from mail.rt-rk.com (mail.localdomain [127.0.0.1])
+	by mail.rt-rk.com (Postfix) with SMTP id D3A0425BC5A
+	for <qemu-trivial@nongnu.org>; Mon,  8 Apr 2013 20:29:11 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at rt-rk.com
+From: Petar Jovanovic <petar.jovanovic@rt-rk.com>
 To: qemu-devel@nongnu.org
-Date: Mon,  8 Apr 2013 17:36:12 +0100
-Message-Id: <1365438972-20259-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] Typo, spelling and grammatical fixes
+Date: Mon,  8 Apr 2013 20:26:10 +0200
+Message-Id: <1365445570-112217-1-git-send-email-petar.jovanovic@rt-rk.com>
+X-Mailer: git-send-email 1.7.9.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 147.91.177.140
+Cc: qemu-trivial@nongnu.org, riku.voipio@linaro.org, petar.jovanovic@imgtec.com,
+	Petar Jovanovic <petar.jovanovic@rt-rk.com>
+Subject: [Qemu-trivial] [PATCH] linux-user: pass correct host flags to
+	eventfd2 call
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,210 +38,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Apr 2013 16:36:46 -0000
+X-List-Received-Date: Mon, 08 Apr 2013 18:29:25 -0000
 
-Minor fixes to documentation and code comments, including
-a set of lets-vs-let's corrections.
+This change makes conversion of TARGET_O_NONBLOCK and TARGET_O_CLOEXEC flags
+to host flags before calling eventfd for TARGET_NR_eventfd2.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Petar Jovanovic <petar.jovanovic@imgtec.com>
 ---
- docs/bootindex.txt         |   10 +++++-----
- docs/ccid.txt              |    2 +-
- hw/armv7m_nvic.c           |    2 +-
- hw/s390x/s390-virtio-ccw.c |    2 +-
- hw/s390x/s390-virtio.c     |    2 +-
- hw/sd.c                    |    4 ++--
- hw/virtio-blk.c            |    4 ++--
- target-microblaze/mmu.c    |    2 +-
- target-s390x/mem_helper.c  |    8 ++++----
- 9 files changed, 18 insertions(+), 18 deletions(-)
+ linux-user/syscall.c |   11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/docs/bootindex.txt b/docs/bootindex.txt
-index 803ebfc..f84fac7 100644
---- a/docs/bootindex.txt
-+++ b/docs/bootindex.txt
-@@ -9,7 +9,7 @@ still be bootable.
- 
- == Example ==
- 
--Lets assume we have QEMU machine with two NICs (virtio, e1000) and two
-+Let's assume we have a QEMU machine with two NICs (virtio, e1000) and two
- disks (IDE, virtio):
- 
- qemu -drive file=disk1.img,if=none,id=disk1
-@@ -20,7 +20,7 @@ qemu -drive file=disk1.img,if=none,id=disk1
-      -netdev type=user,id=net1 -device e1000,netdev=net1,bootindex=1
- 
- Given the command above, firmware should try to boot from the e1000 NIC
--first.  If this fails, it should try the virtio NIC next, if this fails
-+first.  If this fails, it should try the virtio NIC next; if this fails
- too, it should try the virtio disk, and then the IDE disk.
- 
- == Limitations ==
-@@ -28,7 +28,7 @@ too, it should try the virtio disk, and then the IDE disk.
- 1. Some firmware has limitations on which devices can be considered for
- booting.  For instance, the PC BIOS boot specification allows only one
- disk to be bootable.  If boot from disk fails for some reason, the BIOS
--won't retry booting from other disk.  It still can try to boot from
-+won't retry booting from other disk.  It can still try to boot from
- floppy or net, though.
- 
- 2. Sometimes, firmware cannot map the device path QEMU wants firmware to
-@@ -36,8 +36,8 @@ boot from to a boot method.  It doesn't happen for devices the firmware
- can natively boot from, but if firmware relies on an option ROM for
- booting, and the same option ROM is used for booting from more then one
- device, the firmware may not be able to ask the option ROM to boot from
--a particular device reliably.  For instance with PC BIOS, if a SCSI HBA
-+a particular device reliably.  For instance with the PC BIOS, if a SCSI HBA
- has three bootable devices target1, target3, target5 connected to it,
- the option ROM will have a boot method for each of them, but it is not
- possible to map from boot method back to a specific target.  This is a
--shortcoming of PC BIOS boot specification.
-+shortcoming of the PC BIOS boot specification.
-diff --git a/docs/ccid.txt b/docs/ccid.txt
-index 450a66a..8bbaa94 100644
---- a/docs/ccid.txt
-+++ b/docs/ccid.txt
-@@ -24,7 +24,7 @@ information see the specification:
-  Revision 1.1
-  April 22rd, 2005
- 
--Smartcard are used for authentication, single sign on, decryption in
-+Smartcards are used for authentication, single sign on, decryption in
- public/private schemes and digital signatures. A smartcard reader on the client
- cannot be used on a guest with simple usb passthrough since it will then not be
- available on the client, possibly locking the computer when it is "removed". On
-diff --git a/hw/armv7m_nvic.c b/hw/armv7m_nvic.c
-index 2351200..a5a0e4d 100644
---- a/hw/armv7m_nvic.c
-+++ b/hw/armv7m_nvic.c
-@@ -172,7 +172,7 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-         return 10000;
-     case 0xd00: /* CPUID Base.  */
-         return cpu_single_env->cp15.c0_cpuid;
--    case 0xd04: /* Interrypt Control State.  */
-+    case 0xd04: /* Interrupt Control State.  */
-         /* VECTACTIVE */
-         val = s->gic.running_irq[0];
-         if (val == 1023) {
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 76b63e2..a49e440 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -76,7 +76,7 @@ static void ccw_init(QEMUMachineInitArgs *args)
-     }
-     my_ram_size = my_ram_size >> (20 + shift) << (20 + shift);
- 
--    /* lets propagate the changed ram size into the global variable. */
-+    /* let's propagate the changed ram size into the global variable. */
-     ram_size = my_ram_size;
- 
-     /* get a BUS */
-diff --git a/hw/s390x/s390-virtio.c b/hw/s390x/s390-virtio.c
-index ca275bd..64e1213 100644
---- a/hw/s390x/s390-virtio.c
-+++ b/hw/s390x/s390-virtio.c
-@@ -240,7 +240,7 @@ static void s390_init(QEMUMachineInitArgs *args)
-     }
-     my_ram_size = my_ram_size >> (20 + shift) << (20 + shift);
- 
--    /* lets propagate the changed ram size into the global variable. */
-+    /* let's propagate the changed ram size into the global variable. */
-     ram_size = my_ram_size;
- 
-     /* get a BUS */
-diff --git a/hw/sd.c b/hw/sd.c
-index 66c4014..2e0ef3e 100644
---- a/hw/sd.c
-+++ b/hw/sd.c
-@@ -308,7 +308,7 @@ static void sd_set_csd(SDState *sd, uint64_t size)
-         sd->csd[13] = 0x40;
-         sd->csd[14] = 0x00;
-         sd->csd[15] = 0x00;
--        sd->ocr |= 1 << 30;	/* High Capacity SD Memort Card */
-+        sd->ocr |= 1 << 30;     /* High Capacity SD Memory Card */
-     }
- }
- 
-@@ -1541,7 +1541,7 @@ void sd_write_data(SDState *sd, uint8_t value)
- 
-     case 25:	/* CMD25:  WRITE_MULTIPLE_BLOCK */
-         if (sd->data_offset == 0) {
--            /* Start of the block - lets check the address is valid */
-+            /* Start of the block - let's check the address is valid */
-             if (sd->data_start + sd->blk_len > sd->size) {
-                 sd->card_status |= ADDRESS_ERROR;
-                 break;
-diff --git a/hw/virtio-blk.c b/hw/virtio-blk.c
-index f2143fd..49bf6fb 100644
---- a/hw/virtio-blk.c
-+++ b/hw/virtio-blk.c
-@@ -491,10 +491,10 @@ static void virtio_blk_update_config(VirtIODevice *vdev, uint8_t *config)
-     blkcfg.heads = s->conf->heads;
-     /*
-      * We must ensure that the block device capacity is a multiple of
--     * the logical block size. If that is not the case, lets use
-+     * the logical block size. If that is not the case, let's use
-      * sector_mask to adopt the geometry to have a correct picture.
-      * For those devices where the capacity is ok for the given geometry
--     * we dont touch the sector value of the geometry, since some devices
-+     * we don't touch the sector value of the geometry, since some devices
-      * (like s390 dasd) need a specific value. Here the capacity is already
-      * cyls*heads*secs*blk_size and the sector value is not block size
-      * divided by 512 - instead it is the amount of blk_size blocks
-diff --git a/target-microblaze/mmu.c b/target-microblaze/mmu.c
-index 53ad263..73bf805 100644
---- a/target-microblaze/mmu.c
-+++ b/target-microblaze/mmu.c
-@@ -114,7 +114,7 @@ unsigned int mmu_translate(struct microblaze_mmu *mmu,
-             tlb_ex = d & TLB_EX;
-             tlb_wr = d & TLB_WR;
- 
--            /* Now lets see if there is a zone that overrides the protbits.  */
-+            /* Now let's see if there is a zone that overrides the protbits.  */
-             tlb_zsel = (d >> 4) & 0xf;
-             t0 = mmu->regs[MMU_R_ZPR] >> (30 - (tlb_zsel * 2));
-             t0 &= 0x3;
-diff --git a/target-s390x/mem_helper.c b/target-s390x/mem_helper.c
-index 372334b..02bc432 100644
---- a/target-s390x/mem_helper.c
-+++ b/target-s390x/mem_helper.c
-@@ -344,7 +344,7 @@ uint64_t HELPER(srst)(CPUS390XState *env, uint64_t r0, uint64_t end,
-     env->retxl = str;
- 
-     /* Lest we fail to service interrupts in a timely manner, limit the
--       amount of work we're willing to do.  For now, lets cap at 8k.  */
-+       amount of work we're willing to do.  For now, let's cap at 8k.  */
-     for (len = 0; len < 0x2000; ++len) {
-         if (str + len == end) {
-             /* Character not found.  R1 & R2 are unmodified.  */
-@@ -375,7 +375,7 @@ uint64_t HELPER(clst)(CPUS390XState *env, uint64_t c, uint64_t s1, uint64_t s2)
-     s2 = fix_address(env, s2);
- 
-     /* Lest we fail to service interrupts in a timely manner, limit the
--       amount of work we're willing to do.  For now, lets cap at 8k.  */
-+       amount of work we're willing to do.  For now, let's cap at 8k.  */
-     for (len = 0; len < 0x2000; ++len) {
-         uint8_t v1 = cpu_ldub_data(env, s1 + len);
-         uint8_t v2 = cpu_ldub_data(env, s2 + len);
-@@ -424,7 +424,7 @@ uint64_t HELPER(mvst)(CPUS390XState *env, uint64_t c, uint64_t d, uint64_t s)
-     s = fix_address(env, s);
- 
-     /* Lest we fail to service interrupts in a timely manner, limit the
--       amount of work we're willing to do.  For now, lets cap at 8k.  */
-+       amount of work we're willing to do.  For now, let's cap at 8k.  */
-     for (len = 0; len < 0x2000; ++len) {
-         uint8_t v = cpu_ldub_data(env, s + len);
-         cpu_stb_data(env, d + len, v);
-@@ -708,7 +708,7 @@ uint64_t HELPER(cksm)(CPUS390XState *env, uint64_t r1,
-     uint64_t cksm = (uint32_t)r1;
- 
-     /* Lest we fail to service interrupts in a timely manner, limit the
--       amount of work we're willing to do.  For now, lets cap at 8k.  */
-+       amount of work we're willing to do.  For now, let's cap at 8k.  */
-     max_len = (src_len > 0x2000 ? 0x2000 : src_len);
- 
-     /* Process full words as available.  */
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index ee82a2d..1f07621 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -8823,8 +8823,17 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+ #endif
+ #if defined(TARGET_NR_eventfd2)
+     case TARGET_NR_eventfd2:
+-        ret = get_errno(eventfd(arg1, arg2));
++    {
++        int host_flags = arg2 & (~(TARGET_O_NONBLOCK | TARGET_O_CLOEXEC));
++        if (arg2 & TARGET_O_NONBLOCK) {
++            host_flags |= O_NONBLOCK;
++        }
++        if (arg2 & TARGET_O_CLOEXEC) {
++            host_flags |= O_CLOEXEC;
++        }
++        ret = get_errno(eventfd(arg1, host_flags));
+         break;
++    }
+ #endif
+ #endif /* CONFIG_EVENTFD  */
+ #if defined(CONFIG_FALLOCATE) && defined(TARGET_NR_fallocate)
 -- 
 1.7.9.5
 
