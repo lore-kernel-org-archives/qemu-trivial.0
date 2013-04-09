@@ -1,32 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UPX2T-00022V-CD
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Apr 2013 07:48:37 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39275)
+	id 1UPe8O-0005IX-Na
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Apr 2013 15:23:12 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:41562)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1UPX2P-0001x9-41
-	for qemu-trivial@nongnu.org; Tue, 09 Apr 2013 07:48:36 -0400
+	(envelope-from <jlarrew@linux.vnet.ibm.com>) id 1UPe8K-0005En-TI
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2013 15:23:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1UPX2K-0008O9-RX
-	for qemu-trivial@nongnu.org; Tue, 09 Apr 2013 07:48:33 -0400
-Received: from
-	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
-	([2001:8b0:1d0::1]:33707 helo=mnementh.archaic.org.uk)
+	(envelope-from <jlarrew@linux.vnet.ibm.com>) id 1UPe8J-0005Y6-H0
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2013 15:23:08 -0400
+Received: from e33.co.us.ibm.com ([32.97.110.151]:44833)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1UPX2D-0008Ma-DF; Tue, 09 Apr 2013 07:48:21 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1UPX2B-0005aV-Gj; Tue, 09 Apr 2013 12:48:19 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Tue,  9 Apr 2013 12:48:19 +0100
-Message-Id: <1365508099-21453-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.2.5
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH v2] Typo, spelling and grammatical fixes
+	(envelope-from <jlarrew@linux.vnet.ibm.com>) id 1UPe8J-0005Xs-AK
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2013 15:23:07 -0400
+Received: from /spool/local
+	by e33.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <jlarrew@linux.vnet.ibm.com>;
+	Tue, 9 Apr 2013 13:23:05 -0600
+Received: from d03dlp01.boulder.ibm.com (9.17.202.177)
+	by e33.co.us.ibm.com (192.168.1.133) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 9 Apr 2013 13:16:21 -0600
+Received: from d03relay02.boulder.ibm.com (d03relay02.boulder.ibm.com
+	[9.17.195.227])
+	by d03dlp01.boulder.ibm.com (Postfix) with ESMTP id 4DC861FF0051;
+	Tue,  9 Apr 2013 13:11:13 -0600 (MDT)
+Received: from d03av06.boulder.ibm.com (d03av06.boulder.ibm.com [9.17.195.245])
+	by d03relay02.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r39JG2oT034238; Tue, 9 Apr 2013 13:16:03 -0600
+Received: from d03av06.boulder.ibm.com (loopback [127.0.0.1])
+	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
+	id r39JIaf8009086; Tue, 9 Apr 2013 13:18:36 -0600
+Received: from jlarrew.austin.ibm.com (jlarrew.austin.ibm.com [9.41.149.149])
+	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP
+	id r39JIZlZ009022; Tue, 9 Apr 2013 13:18:35 -0600
+Message-ID: <516468E4.7020007@linux.vnet.ibm.com>
+Date: Tue, 09 Apr 2013 14:15:48 -0500
+From: Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
+MIME-Version: 1.0
+To: li guang <lig.fnst@cn.fujitsu.com>
+References: <1365474461-17474-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	<51639ACE.8020505@linux.vnet.ibm.com>
+	<1365483900.9553.8.camel@liguang.fnst.cn.fujitsu.com>
+In-Reply-To: <1365483900.9553.8.camel@liguang.fnst.cn.fujitsu.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TM-AS-MML: No
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13040919-2398-0000-0000-0000131A96A3
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 32.97.110.151
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] hw/i386/pc: prompt not
+ multboot or morden kernel image
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,213 +67,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Apr 2013 11:48:36 -0000
+X-List-Received-Date: Tue, 09 Apr 2013 19:23:11 -0000
 
-Minor fixes to documentation and code comments.
+On 04/09/2013 12:05 AM, li guang wrote:
+> 在 2013-04-08一的 23:36 -0500，Jesse Larrew写道：
+>> On 04/08/2013 09:27 PM, liguang wrote:
+>>> if head magic is missing or wrong unexpectedly, we'd
+>>> better to prompt memssage for this.
+>>> e.g.
+>>> I make a mistake to boot a vmlinuz for MIPS(which
+>>> I think it's for x86) like this:
+>>> qemu-system-x86_64 -kernel vmlinuz -initrd demord
+>>> then qemu report:
+>>> "qemu: linux kernel too old to load a ram disk"
+>>> that's misleading.
+>>>
+>>
+>> Yes, that message would definitely be misleading in this case.
+>>
+>>> Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+>>> ---
+>>>  hw/i386/pc.c |    2 ++
+>>>  1 files changed, 2 insertions(+), 0 deletions(-)
+>>>
+>>> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+>>> index ebbf059..6b29c3f 100644
+>>> --- a/hw/i386/pc.c
+>>> +++ b/hw/i386/pc.c
+>>> @@ -686,6 +686,8 @@ static void load_linux(void *fw_cfg,
+>>>          if (load_multiboot(fw_cfg, f, kernel_filename, initrd_filename,
+>>>                             kernel_cmdline, kernel_size, header)) {
+>>>              return;
+>>> +        } else {
+>>> +            fprintf(stderr, "warn: invalid multiboot or modern kernel image\n");
+>>>          }
+>>>          protocol = 0;
+>>>      }
+>>>
+>>
+>> My impression from reading through the code is that this branch can be
+>> legitimately triggered by an older kernel (protocol < 0x200). 
+> 
+> right.
+> 
+>> In that case,the error message above would also be misleading.
+> 
+> the warning message is saying: hey, we prefer modern kernel image
+> or multiboot, but you specify neither, what are you doing?
+> do you want to boot an old(obsolete) kernel?
+> 
+> or, add a line like fprintf(stderr, "do you boot an old kernel?\n") :-)
+> 
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Ah, I understand now. Thanks for explaining that. :)
+
+>>
+>> I think a better solution might be to simply validate that the arch
+>> specified in the ELF header matches the arch that qemu is emulating.
+>>  I'll look into this more tomorrow morning. :)
+> 
+> that's fine
+> 
+
+Looking at Documentation/x86/boot.txt in the kernel source, it looks
+like there is a separate word of header magic that all x86 kernels should
+have -- even the oldest images. Adding a separate check for that magic
+might be a more complete solution:
+
 ---
-No actual changes, just rebased and resent following Paolo
-moving everything around.
+ hw/i386/pc.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
- docs/bootindex.txt         |   10 +++++-----
- docs/ccid.txt              |    2 +-
- hw/block/virtio-blk.c      |    4 ++--
- hw/intc/armv7m_nvic.c      |    2 +-
- hw/s390x/s390-virtio-ccw.c |    2 +-
- hw/s390x/s390-virtio.c     |    2 +-
- hw/sd/sd.c                 |    4 ++--
- target-microblaze/mmu.c    |    2 +-
- target-s390x/mem_helper.c  |    8 ++++----
- 9 files changed, 18 insertions(+), 18 deletions(-)
-
-diff --git a/docs/bootindex.txt b/docs/bootindex.txt
-index 803ebfc..f84fac7 100644
---- a/docs/bootindex.txt
-+++ b/docs/bootindex.txt
-@@ -9,7 +9,7 @@ still be bootable.
- 
- == Example ==
- 
--Lets assume we have QEMU machine with two NICs (virtio, e1000) and two
-+Let's assume we have a QEMU machine with two NICs (virtio, e1000) and two
- disks (IDE, virtio):
- 
- qemu -drive file=disk1.img,if=none,id=disk1
-@@ -20,7 +20,7 @@ qemu -drive file=disk1.img,if=none,id=disk1
-      -netdev type=user,id=net1 -device e1000,netdev=net1,bootindex=1
- 
- Given the command above, firmware should try to boot from the e1000 NIC
--first.  If this fails, it should try the virtio NIC next, if this fails
-+first.  If this fails, it should try the virtio NIC next; if this fails
- too, it should try the virtio disk, and then the IDE disk.
- 
- == Limitations ==
-@@ -28,7 +28,7 @@ too, it should try the virtio disk, and then the IDE disk.
- 1. Some firmware has limitations on which devices can be considered for
- booting.  For instance, the PC BIOS boot specification allows only one
- disk to be bootable.  If boot from disk fails for some reason, the BIOS
--won't retry booting from other disk.  It still can try to boot from
-+won't retry booting from other disk.  It can still try to boot from
- floppy or net, though.
- 
- 2. Sometimes, firmware cannot map the device path QEMU wants firmware to
-@@ -36,8 +36,8 @@ boot from to a boot method.  It doesn't happen for devices the firmware
- can natively boot from, but if firmware relies on an option ROM for
- booting, and the same option ROM is used for booting from more then one
- device, the firmware may not be able to ask the option ROM to boot from
--a particular device reliably.  For instance with PC BIOS, if a SCSI HBA
-+a particular device reliably.  For instance with the PC BIOS, if a SCSI HBA
- has three bootable devices target1, target3, target5 connected to it,
- the option ROM will have a boot method for each of them, but it is not
- possible to map from boot method back to a specific target.  This is a
--shortcoming of PC BIOS boot specification.
-+shortcoming of the PC BIOS boot specification.
-diff --git a/docs/ccid.txt b/docs/ccid.txt
-index 450a66a..8bbaa94 100644
---- a/docs/ccid.txt
-+++ b/docs/ccid.txt
-@@ -24,7 +24,7 @@ information see the specification:
-  Revision 1.1
-  April 22rd, 2005
- 
--Smartcard are used for authentication, single sign on, decryption in
-+Smartcards are used for authentication, single sign on, decryption in
- public/private schemes and digital signatures. A smartcard reader on the client
- cannot be used on a guest with simple usb passthrough since it will then not be
- available on the client, possibly locking the computer when it is "removed". On
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index 6efb2f0..9fdf009 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -494,10 +494,10 @@ static void virtio_blk_update_config(VirtIODevice *vdev, uint8_t *config)
-     blkcfg.heads = s->conf->heads;
-     /*
-      * We must ensure that the block device capacity is a multiple of
--     * the logical block size. If that is not the case, lets use
-+     * the logical block size. If that is not the case, let's use
-      * sector_mask to adopt the geometry to have a correct picture.
-      * For those devices where the capacity is ok for the given geometry
--     * we dont touch the sector value of the geometry, since some devices
-+     * we don't touch the sector value of the geometry, since some devices
-      * (like s390 dasd) need a specific value. Here the capacity is already
-      * cyls*heads*secs*blk_size and the sector value is not block size
-      * divided by 512 - instead it is the amount of blk_size blocks
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 566b4bf..67dbe68 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -172,7 +172,7 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-         return 10000;
-     case 0xd00: /* CPUID Base.  */
-         return cpu_single_env->cp15.c0_cpuid;
--    case 0xd04: /* Interrypt Control State.  */
-+    case 0xd04: /* Interrupt Control State.  */
-         /* VECTACTIVE */
-         val = s->gic.running_irq[0];
-         if (val == 1023) {
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 76b63e2..a49e440 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -76,7 +76,7 @@ static void ccw_init(QEMUMachineInitArgs *args)
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 8d75b34..e120427 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -686,6 +686,14 @@ static void load_linux(void *fw_cfg,
+         if (load_multiboot(fw_cfg, f, kernel_filename, initrd_filename,
+                            kernel_cmdline, kernel_size, header)) {
+             return;
++        } else {
++            /* This is the closest thing old Linux kernels have to a
++               magic number. */
++            if (lduw_p(header+0x01FE) != 0xAA55) {
++                fprintf(stderr, "qemu: '%s' is not an x86 kernel image.\n",
++                        kernel_filename);
++                exit(1);
++            }
+         }
+         protocol = 0;
      }
-     my_ram_size = my_ram_size >> (20 + shift) << (20 + shift);
- 
--    /* lets propagate the changed ram size into the global variable. */
-+    /* let's propagate the changed ram size into the global variable. */
-     ram_size = my_ram_size;
- 
-     /* get a BUS */
-diff --git a/hw/s390x/s390-virtio.c b/hw/s390x/s390-virtio.c
-index f82c0e1..46aec99 100644
---- a/hw/s390x/s390-virtio.c
-+++ b/hw/s390x/s390-virtio.c
-@@ -240,7 +240,7 @@ static void s390_init(QEMUMachineInitArgs *args)
-     }
-     my_ram_size = my_ram_size >> (20 + shift) << (20 + shift);
- 
--    /* lets propagate the changed ram size into the global variable. */
-+    /* let's propagate the changed ram size into the global variable. */
-     ram_size = my_ram_size;
- 
-     /* get a BUS */
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 66c4014..2e0ef3e 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -308,7 +308,7 @@ static void sd_set_csd(SDState *sd, uint64_t size)
-         sd->csd[13] = 0x40;
-         sd->csd[14] = 0x00;
-         sd->csd[15] = 0x00;
--        sd->ocr |= 1 << 30;	/* High Capacity SD Memort Card */
-+        sd->ocr |= 1 << 30;     /* High Capacity SD Memory Card */
-     }
- }
- 
-@@ -1541,7 +1541,7 @@ void sd_write_data(SDState *sd, uint8_t value)
- 
-     case 25:	/* CMD25:  WRITE_MULTIPLE_BLOCK */
-         if (sd->data_offset == 0) {
--            /* Start of the block - lets check the address is valid */
-+            /* Start of the block - let's check the address is valid */
-             if (sd->data_start + sd->blk_len > sd->size) {
-                 sd->card_status |= ADDRESS_ERROR;
-                 break;
-diff --git a/target-microblaze/mmu.c b/target-microblaze/mmu.c
-index 53ad263..73bf805 100644
---- a/target-microblaze/mmu.c
-+++ b/target-microblaze/mmu.c
-@@ -114,7 +114,7 @@ unsigned int mmu_translate(struct microblaze_mmu *mmu,
-             tlb_ex = d & TLB_EX;
-             tlb_wr = d & TLB_WR;
- 
--            /* Now lets see if there is a zone that overrides the protbits.  */
-+            /* Now let's see if there is a zone that overrides the protbits.  */
-             tlb_zsel = (d >> 4) & 0xf;
-             t0 = mmu->regs[MMU_R_ZPR] >> (30 - (tlb_zsel * 2));
-             t0 &= 0x3;
-diff --git a/target-s390x/mem_helper.c b/target-s390x/mem_helper.c
-index 372334b..02bc432 100644
---- a/target-s390x/mem_helper.c
-+++ b/target-s390x/mem_helper.c
-@@ -344,7 +344,7 @@ uint64_t HELPER(srst)(CPUS390XState *env, uint64_t r0, uint64_t end,
-     env->retxl = str;
- 
-     /* Lest we fail to service interrupts in a timely manner, limit the
--       amount of work we're willing to do.  For now, lets cap at 8k.  */
-+       amount of work we're willing to do.  For now, let's cap at 8k.  */
-     for (len = 0; len < 0x2000; ++len) {
-         if (str + len == end) {
-             /* Character not found.  R1 & R2 are unmodified.  */
-@@ -375,7 +375,7 @@ uint64_t HELPER(clst)(CPUS390XState *env, uint64_t c, uint64_t s1, uint64_t s2)
-     s2 = fix_address(env, s2);
- 
-     /* Lest we fail to service interrupts in a timely manner, limit the
--       amount of work we're willing to do.  For now, lets cap at 8k.  */
-+       amount of work we're willing to do.  For now, let's cap at 8k.  */
-     for (len = 0; len < 0x2000; ++len) {
-         uint8_t v1 = cpu_ldub_data(env, s1 + len);
-         uint8_t v2 = cpu_ldub_data(env, s2 + len);
-@@ -424,7 +424,7 @@ uint64_t HELPER(mvst)(CPUS390XState *env, uint64_t c, uint64_t d, uint64_t s)
-     s = fix_address(env, s);
- 
-     /* Lest we fail to service interrupts in a timely manner, limit the
--       amount of work we're willing to do.  For now, lets cap at 8k.  */
-+       amount of work we're willing to do.  For now, let's cap at 8k.  */
-     for (len = 0; len < 0x2000; ++len) {
-         uint8_t v = cpu_ldub_data(env, s + len);
-         cpu_stb_data(env, d + len, v);
-@@ -708,7 +708,7 @@ uint64_t HELPER(cksm)(CPUS390XState *env, uint64_t r1,
-     uint64_t cksm = (uint32_t)r1;
- 
-     /* Lest we fail to service interrupts in a timely manner, limit the
--       amount of work we're willing to do.  For now, lets cap at 8k.  */
-+       amount of work we're willing to do.  For now, let's cap at 8k.  */
-     max_len = (src_len > 0x2000 ? 0x2000 : src_len);
- 
-     /* Process full words as available.  */
 -- 
-1.7.9.5
+1.7.11.7
+
+Jesse Larrew
+Software Engineer, KVM Team
+IBM Linux Technology Center
+Phone: (512) 973-2052 (T/L: 363-2052)
+jlarrew@linux.vnet.ibm.com
 
 
