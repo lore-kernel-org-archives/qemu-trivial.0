@@ -1,36 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UQj7W-0002Oy-Dh
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Apr 2013 14:54:46 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:37008)
+	id 1UQkd8-0005Ni-Kd
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Apr 2013 16:31:30 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50336)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1UQj7O-0002Dj-LB
-	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 14:54:45 -0400
+	(envelope-from <sw@weilnetz.de>) id 1UQkd6-0005K2-A6
+	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 16:31:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1UQj7G-0005Sf-Ik
-	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 14:54:38 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:40488)
+	(envelope-from <sw@weilnetz.de>) id 1UQkd5-00068n-8R
+	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 16:31:28 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:49956)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1UQj6y-0005Le-3d; Fri, 12 Apr 2013 14:54:12 -0400
+	(envelope-from <sw@weilnetz.de>)
+	id 1UQkd2-00067Q-Et; Fri, 12 Apr 2013 16:31:25 -0400
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	E7C9B728002C; Fri, 12 Apr 2013 20:54:09 +0200 (CEST)
+	4B9157280041; Fri, 12 Apr 2013 22:31:22 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id UO0AcM_45wIw; Fri, 12 Apr 2013 20:54:03 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 4848C7280041; Fri, 12 Apr 2013 20:54:03 +0200 (CEST)
+	with ESMTP id L0EsUqgFArxY; Fri, 12 Apr 2013 22:31:20 +0200 (CEST)
+Received: from [192.168.178.35] (p54ADBFC4.dip.t-dialin.net [84.173.191.196])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	443C2728002C; Fri, 12 Apr 2013 22:31:20 +0200 (CEST)
+Message-ID: <51686F17.7070503@weilnetz.de>
+Date: Fri, 12 Apr 2013 22:31:19 +0200
 From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Fri, 12 Apr 2013 20:53:58 +0200
-Message-Id: <1365792838-13621-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
+MIME-Version: 1.0
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
+References: <1365730875-22854-1-git-send-email-aik@ozlabs.ru>
+	<5167E747.2020106@suse.de>
+	<20130412164715.GL5065@truffula.fritz.box>
+	<51684621.7090204@weilnetz.de> <51686D39.3070209@ozlabs.ru>
+In-Reply-To: <51686D39.3070209@ozlabs.ru>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 78.47.199.172
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Remove unneeded type casts
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] bswap: fix compiler warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,410 +52,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Apr 2013 18:54:45 -0000
+X-List-Received-Date: Fri, 12 Apr 2013 20:31:29 -0000
 
-cpu_physical_memory_read, cpu_physical_memory_write take any pointer
-as 2nd argument without needing a type cast.
+Am 12.04.2013 22:23, schrieb Alexey Kardashevskiy:
+> On 04/13/2013 03:36 AM, Stefan Weil wrote:
+>> Am 12.04.2013 18:47, schrieb David Gibson:
+>>> On Fri, Apr 12, 2013 at 12:51:51PM +0200, Andreas F=C3=A4rber wrote:
+>>>> Am 12.04.2013 03:41, schrieb Alexey Kardashevskiy:
+>>>>> The bswap functions use memcpy but the bswap.h header itself does
+>>>>> not seem to
+>>>>> include it in some configuration such as cross compiling for
+>>>>> powerpc64
+>>>>> on x86_64 machine (gcc 4.6.3 from ftp.kernel.org, headers/libs
+>>>>> from FC18/ppc64),
+>>>>> the example warning is below.
+>>>>>
+>>>>> The patch explicitly includes string.h.
+>>>>>
+>>>>>    CC    ppc64-softmmu/hw/virtio/virtio.o
+>>>>> In file included from /home/alexey/qemu/include/libfdt_env.h:22:0,
+>>>>>                   from
+>>>>> /home/alexey/qemu/../lib4qemu/usr/include/libfdt.h:54,
+>>>>>                   from /home/alexey/qemu/hw/nvram/spapr_nvram.c:25:
+>>>>> /home/alexey/qemu/include/qemu/bswap.h: In function 'lduw_p':
+>>>>> /home/alexey/qemu/include/qemu/bswap.h:244:5: warning: implicit
+>>>>> declaration of function 'memcpy' [-Wimplicit-function-declaration]
+>>>>> /home/alexey/qemu/include/qemu/bswap.h:244:5: warning:
+>>>>> incompatible implicit declaration of built-in function 'memcpy'
+>>>>> [enabled by default]
+>>>>>
+>>>>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+>>>>> ---
+>>>>>   include/qemu/bswap.h |    2 ++
+>>>>>   1 file changed, 2 insertions(+)
+>>>>>
+>>>>> diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+>>>>> index d3af35d..d50de0d 100644
+>>>>> --- a/include/qemu/bswap.h
+>>>>> +++ b/include/qemu/bswap.h
+>>>>> @@ -1,6 +1,8 @@
+>>>>>   #ifndef BSWAP_H
+>>>>>   #define BSWAP_H
+>>>>>
+>>>>> +#include <string.h>
+>>>>> +
+>>>>>   #include "config-host.h"
+>>>>>   #include <inttypes.h>
+>>>>>   #include <limits.h>
+>>>> Including string.h is certainly the right thing to do, but why do yo=
+u
+>>>> single it out first?
+>>> Yeah, it probably shouldn't go above the config header.  Otherwise
+>>> it's the right thing.
+>>
+>> If string.h went directly after limits.h, we'd even preserve the
+>> alphabetic order of the system headers :-)
+>
+> Ah. Misunderstood the original question :) Do I need to repost it?
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- hw/arm/armv7m.c            |   12 ++++++------
- hw/arm/boot.c              |    4 ++--
- hw/arm/musicpal.c          |    8 ++++----
- hw/arm/nseries.c           |    4 ++--
- hw/arm/omap1.c             |   12 ++++++------
- hw/audio/marvell_88w8618.c |    3 +--
- hw/display/pxa2xx_lcd.c    |    2 +-
- hw/dma/pxa2xx_dma.c        |    2 +-
- hw/dma/xilinx_axidma.c     |    4 ++--
- hw/gpio/zaurus.c           |    2 +-
- hw/microblaze/boot.c       |    2 +-
- hw/misc/macio/mac_dbdma.c  |    8 ++++----
- hw/misc/milkymist-pfpu.c   |    4 ++--
- hw/net/mcf_fec.c           |    4 ++--
- hw/ppc/ppc405_boards.c     |    2 +-
- hw/ppc/virtex_ml507.c      |    2 +-
- 16 files changed, 37 insertions(+), 38 deletions(-)
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index a4bdd5f..eaff3b0 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -56,7 +56,7 @@ static uint32_t bitband_readw(void *opaque, hwaddr offset)
-     addr = bitband_addr(opaque, offset) & ~1;
-     mask = (1 << ((offset >> 2) & 15));
-     mask = tswap16(mask);
--    cpu_physical_memory_read(addr, (uint8_t *)&v, 2);
-+    cpu_physical_memory_read(addr, &v, 2);
-     return (v & mask) != 0;
- }
- 
-@@ -69,12 +69,12 @@ static void bitband_writew(void *opaque, hwaddr offset,
-     addr = bitband_addr(opaque, offset) & ~1;
-     mask = (1 << ((offset >> 2) & 15));
-     mask = tswap16(mask);
--    cpu_physical_memory_read(addr, (uint8_t *)&v, 2);
-+    cpu_physical_memory_read(addr, &v, 2);
-     if (value & 1)
-         v |= mask;
-     else
-         v &= ~mask;
--    cpu_physical_memory_write(addr, (uint8_t *)&v, 2);
-+    cpu_physical_memory_write(addr, &v, 2);
- }
- 
- static uint32_t bitband_readl(void *opaque, hwaddr offset)
-@@ -85,7 +85,7 @@ static uint32_t bitband_readl(void *opaque, hwaddr offset)
-     addr = bitband_addr(opaque, offset) & ~3;
-     mask = (1 << ((offset >> 2) & 31));
-     mask = tswap32(mask);
--    cpu_physical_memory_read(addr, (uint8_t *)&v, 4);
-+    cpu_physical_memory_read(addr, &v, 4);
-     return (v & mask) != 0;
- }
- 
-@@ -98,12 +98,12 @@ static void bitband_writel(void *opaque, hwaddr offset,
-     addr = bitband_addr(opaque, offset) & ~3;
-     mask = (1 << ((offset >> 2) & 31));
-     mask = tswap32(mask);
--    cpu_physical_memory_read(addr, (uint8_t *)&v, 4);
-+    cpu_physical_memory_read(addr, &v, 4);
-     if (value & 1)
-         v |= mask;
-     else
-         v &= ~mask;
--    cpu_physical_memory_write(addr, (uint8_t *)&v, 4);
-+    cpu_physical_memory_write(addr, &v, 4);
- }
- 
- static const MemoryRegionOps bitband_ops = {
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index c79c590..823878a 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -128,7 +128,7 @@ static void set_kernel_args(const struct arm_boot_info *info)
-         int cmdline_size;
- 
-         cmdline_size = strlen(info->kernel_cmdline);
--        cpu_physical_memory_write(p + 8, (void *)info->kernel_cmdline,
-+        cpu_physical_memory_write(p + 8, info->kernel_cmdline,
-                                   cmdline_size + 1);
-         cmdline_size = (cmdline_size >> 2) + 1;
-         WRITE_WORD(p, cmdline_size + 2);
-@@ -219,7 +219,7 @@ static void set_kernel_args_old(const struct arm_boot_info *info)
-     }
-     s = info->kernel_cmdline;
-     if (s) {
--        cpu_physical_memory_write(p, (void *)s, strlen(s) + 1);
-+        cpu_physical_memory_write(p, s, strlen(s) + 1);
-     } else {
-         WRITE_WORD(p, 0);
-     }
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 97b1340..add1fa4 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -170,12 +170,12 @@ static void eth_rx_desc_put(uint32_t addr, mv88w8618_rx_desc *desc)
-     cpu_to_le16s(&desc->buffer_size);
-     cpu_to_le32s(&desc->buffer);
-     cpu_to_le32s(&desc->next);
--    cpu_physical_memory_write(addr, (void *)desc, sizeof(*desc));
-+    cpu_physical_memory_write(addr, desc, sizeof(*desc));
- }
- 
- static void eth_rx_desc_get(uint32_t addr, mv88w8618_rx_desc *desc)
- {
--    cpu_physical_memory_read(addr, (void *)desc, sizeof(*desc));
-+    cpu_physical_memory_read(addr, desc, sizeof(*desc));
-     le32_to_cpus(&desc->cmdstat);
-     le16_to_cpus(&desc->bytes);
-     le16_to_cpus(&desc->buffer_size);
-@@ -229,12 +229,12 @@ static void eth_tx_desc_put(uint32_t addr, mv88w8618_tx_desc *desc)
-     cpu_to_le16s(&desc->bytes);
-     cpu_to_le32s(&desc->buffer);
-     cpu_to_le32s(&desc->next);
--    cpu_physical_memory_write(addr, (void *)desc, sizeof(*desc));
-+    cpu_physical_memory_write(addr, desc, sizeof(*desc));
- }
- 
- static void eth_tx_desc_get(uint32_t addr, mv88w8618_tx_desc *desc)
- {
--    cpu_physical_memory_read(addr, (void *)desc, sizeof(*desc));
-+    cpu_physical_memory_read(addr, desc, sizeof(*desc));
-     le32_to_cpus(&desc->cmdstat);
-     le16_to_cpus(&desc->res);
-     le16_to_cpus(&desc->bytes);
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index ba8dc3e..07b9024 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -970,7 +970,7 @@ static void n800_gpmc_init(struct n800_s *s)
-             (4 << 0);		/* BASEADDRESS */
- 
-     cpu_physical_memory_write(0x6800a078,		/* GPMC_CONFIG7_0 */
--                    (void *) &config7, sizeof(config7));
-+                              &config7, sizeof(config7));
- }
- 
- /* Setup sequence done by the bootloader */
-@@ -982,7 +982,7 @@ static void n8x0_boot_init(void *opaque)
-     /* PRCM setup */
- #define omap_writel(addr, val)	\
-     buf = (val);			\
--    cpu_physical_memory_write(addr, (void *) &buf, sizeof(buf))
-+    cpu_physical_memory_write(addr, &buf, sizeof(buf))
- 
-     omap_writel(0x48008060, 0x41);		/* PRCM_CLKSRC_CTRL */
-     omap_writel(0x48008070, 1);			/* PRCM_CLKOUT_CTRL */
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 17caa61..f6b82fe 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -31,7 +31,7 @@ uint32_t omap_badwidth_read8(void *opaque, hwaddr addr)
-     uint8_t ret;
- 
-     OMAP_8B_REG(addr);
--    cpu_physical_memory_read(addr, (void *) &ret, 1);
-+    cpu_physical_memory_read(addr, &ret, 1);
-     return ret;
- }
- 
-@@ -41,7 +41,7 @@ void omap_badwidth_write8(void *opaque, hwaddr addr,
-     uint8_t val8 = value;
- 
-     OMAP_8B_REG(addr);
--    cpu_physical_memory_write(addr, (void *) &val8, 1);
-+    cpu_physical_memory_write(addr, &val8, 1);
- }
- 
- uint32_t omap_badwidth_read16(void *opaque, hwaddr addr)
-@@ -49,7 +49,7 @@ uint32_t omap_badwidth_read16(void *opaque, hwaddr addr)
-     uint16_t ret;
- 
-     OMAP_16B_REG(addr);
--    cpu_physical_memory_read(addr, (void *) &ret, 2);
-+    cpu_physical_memory_read(addr, &ret, 2);
-     return ret;
- }
- 
-@@ -59,7 +59,7 @@ void omap_badwidth_write16(void *opaque, hwaddr addr,
-     uint16_t val16 = value;
- 
-     OMAP_16B_REG(addr);
--    cpu_physical_memory_write(addr, (void *) &val16, 2);
-+    cpu_physical_memory_write(addr, &val16, 2);
- }
- 
- uint32_t omap_badwidth_read32(void *opaque, hwaddr addr)
-@@ -67,7 +67,7 @@ uint32_t omap_badwidth_read32(void *opaque, hwaddr addr)
-     uint32_t ret;
- 
-     OMAP_32B_REG(addr);
--    cpu_physical_memory_read(addr, (void *) &ret, 4);
-+    cpu_physical_memory_read(addr, &ret, 4);
-     return ret;
- }
- 
-@@ -75,7 +75,7 @@ void omap_badwidth_write32(void *opaque, hwaddr addr,
-                 uint32_t value)
- {
-     OMAP_32B_REG(addr);
--    cpu_physical_memory_write(addr, (void *) &value, 4);
-+    cpu_physical_memory_write(addr, &value, 4);
- }
- 
- /* MPU OS timers */
-diff --git a/hw/audio/marvell_88w8618.c b/hw/audio/marvell_88w8618.c
-index f9b68fd..de06dfd 100644
---- a/hw/audio/marvell_88w8618.c
-+++ b/hw/audio/marvell_88w8618.c
-@@ -77,8 +77,7 @@ static void mv88w8618_audio_callback(void *opaque, int free_out, int free_in)
-     if (block_size > 4096) {
-         return;
-     }
--    cpu_physical_memory_read(s->target_buffer + s->play_pos, (void *)buf,
--                             block_size);
-+    cpu_physical_memory_read(s->target_buffer + s->play_pos, buf, block_size);
-     mem_buffer = buf;
-     if (s->playback_mode & MP_AUDIO_16BIT_SAMPLE) {
-         if (s->playback_mode & MP_AUDIO_MONO) {
-diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-index c9bd42e..2091ece 100644
---- a/hw/display/pxa2xx_lcd.c
-+++ b/hw/display/pxa2xx_lcd.c
-@@ -315,7 +315,7 @@ static void pxa2xx_descriptor_load(PXA2xxLCDState *s)
-             continue;
-         }
- 
--        cpu_physical_memory_read(descptr, (void *)&desc, sizeof(desc));
-+        cpu_physical_memory_read(descptr, &desc, sizeof(desc));
-         s->dma_ch[i].descriptor = tswap32(desc.fdaddr);
-         s->dma_ch[i].source = tswap32(desc.fsaddr);
-         s->dma_ch[i].id = tswap32(desc.fidr);
-diff --git a/hw/dma/pxa2xx_dma.c b/hw/dma/pxa2xx_dma.c
-index 6e4c1f6..b60569f 100644
---- a/hw/dma/pxa2xx_dma.c
-+++ b/hw/dma/pxa2xx_dma.c
-@@ -151,7 +151,7 @@ static inline void pxa2xx_dma_descriptor_fetch(
-     if ((s->chan[ch].descr & DDADR_BREN) && (s->chan[ch].state & DCSR_CMPST))
-         daddr += 32;
- 
--    cpu_physical_memory_read(daddr, (uint8_t *) desc, 16);
-+    cpu_physical_memory_read(daddr, desc, 16);
-     s->chan[ch].descr = desc[DDADR];
-     s->chan[ch].src = desc[DSADR];
-     s->chan[ch].dest = desc[DTADR];
-diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-index 8db1a74..981142b 100644
---- a/hw/dma/xilinx_axidma.c
-+++ b/hw/dma/xilinx_axidma.c
-@@ -163,7 +163,7 @@ static void stream_desc_load(struct Stream *s, hwaddr addr)
-     struct SDesc *d = &s->desc;
-     int i;
- 
--    cpu_physical_memory_read(addr, (void *) d, sizeof *d);
-+    cpu_physical_memory_read(addr, d, sizeof *d);
- 
-     /* Convert from LE into host endianness.  */
-     d->buffer_address = le64_to_cpu(d->buffer_address);
-@@ -188,7 +188,7 @@ static void stream_desc_store(struct Stream *s, hwaddr addr)
-     for (i = 0; i < ARRAY_SIZE(d->app); i++) {
-         d->app[i] = cpu_to_le32(d->app[i]);
-     }
--    cpu_physical_memory_write(addr, (void *) d, sizeof *d);
-+    cpu_physical_memory_write(addr, d, sizeof *d);
- }
- 
- static void stream_update_irq(struct Stream *s)
-diff --git a/hw/gpio/zaurus.c b/hw/gpio/zaurus.c
-index d853ea1..c6cdef3 100644
---- a/hw/gpio/zaurus.c
-+++ b/hw/gpio/zaurus.c
-@@ -287,6 +287,6 @@ static struct QEMU_PACKED sl_param_info {
- 
- void sl_bootparam_write(hwaddr ptr)
- {
--    cpu_physical_memory_write(ptr, (void *)&zaurus_bootparam,
-+    cpu_physical_memory_write(ptr, &zaurus_bootparam,
-                               sizeof(struct sl_param_info));
- }
-diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
-index 23cb11d..e543d88 100644
---- a/hw/microblaze/boot.c
-+++ b/hw/microblaze/boot.c
-@@ -80,7 +80,7 @@ static int microblaze_load_dtb(hwaddr addr,
-         }
-     }
- 
--    cpu_physical_memory_write(addr, (void *)fdt, fdt_size);
-+    cpu_physical_memory_write(addr, fdt, fdt_size);
- #else
-     /* We lack libfdt so we cannot manipulate the fdt. Just pass on the blob
-        to the kernel.  */
-diff --git a/hw/misc/macio/mac_dbdma.c b/hw/misc/macio/mac_dbdma.c
-index a2363bb..2fc7f87 100644
---- a/hw/misc/macio/mac_dbdma.c
-+++ b/hw/misc/macio/mac_dbdma.c
-@@ -192,7 +192,7 @@ static void dbdma_cmdptr_load(DBDMA_channel *ch)
-     DBDMA_DPRINTF("dbdma_cmdptr_load 0x%08x\n",
-                   ch->regs[DBDMA_CMDPTR_LO]);
-     cpu_physical_memory_read(ch->regs[DBDMA_CMDPTR_LO],
--                             (uint8_t*)&ch->current, sizeof(dbdma_cmd));
-+                             &ch->current, sizeof(dbdma_cmd));
- }
- 
- static void dbdma_cmdptr_save(DBDMA_channel *ch)
-@@ -203,7 +203,7 @@ static void dbdma_cmdptr_save(DBDMA_channel *ch)
-                   le16_to_cpu(ch->current.xfer_status),
-                   le16_to_cpu(ch->current.res_count));
-     cpu_physical_memory_write(ch->regs[DBDMA_CMDPTR_LO],
--                              (uint8_t*)&ch->current, sizeof(dbdma_cmd));
-+                              &ch->current, sizeof(dbdma_cmd));
- }
- 
- static void kill_channel(DBDMA_channel *ch)
-@@ -454,7 +454,7 @@ static void load_word(DBDMA_channel *ch, int key, uint32_t addr,
-         return;
-     }
- 
--    cpu_physical_memory_read(addr, (uint8_t*)&val, len);
-+    cpu_physical_memory_read(addr, &val, len);
- 
-     if (len == 2)
-         val = (val << 16) | (current->cmd_dep & 0x0000ffff);
-@@ -499,7 +499,7 @@ static void store_word(DBDMA_channel *ch, int key, uint32_t addr,
-     else if (len == 1)
-         val >>= 24;
- 
--    cpu_physical_memory_write(addr, (uint8_t*)&val, len);
-+    cpu_physical_memory_write(addr, &val, len);
- 
-     if (conditional_wait(ch))
-         goto wait;
-diff --git a/hw/misc/milkymist-pfpu.c b/hw/misc/milkymist-pfpu.c
-index ad44b4d..fe1b039 100644
---- a/hw/misc/milkymist-pfpu.c
-+++ b/hw/misc/milkymist-pfpu.c
-@@ -228,8 +228,8 @@ static int pfpu_decode_insn(MilkymistPFPUState *s)
-         hwaddr dma_ptr =
-             get_dma_address(s->regs[R_MESHBASE],
-                     s->gp_regs[GPR_X], s->gp_regs[GPR_Y]);
--        cpu_physical_memory_write(dma_ptr, (uint8_t *)&a, 4);
--        cpu_physical_memory_write(dma_ptr + 4, (uint8_t *)&b, 4);
-+        cpu_physical_memory_write(dma_ptr, &a, 4);
-+        cpu_physical_memory_write(dma_ptr + 4, &b, 4);
-         s->regs[R_LASTDMA] = dma_ptr + 4;
-         D_EXEC(qemu_log("VECTOUT a=%08x b=%08x dma=%08x\n", a, b, dma_ptr));
-         trace_milkymist_pfpu_vectout(a, b, dma_ptr);
-diff --git a/hw/net/mcf_fec.c b/hw/net/mcf_fec.c
-index 9b68052..2ef5a0d 100644
---- a/hw/net/mcf_fec.c
-+++ b/hw/net/mcf_fec.c
-@@ -108,7 +108,7 @@ typedef struct {
- 
- static void mcf_fec_read_bd(mcf_fec_bd *bd, uint32_t addr)
- {
--    cpu_physical_memory_read(addr, (uint8_t *)bd, sizeof(*bd));
-+    cpu_physical_memory_read(addr, bd, sizeof(*bd));
-     be16_to_cpus(&bd->flags);
-     be16_to_cpus(&bd->length);
-     be32_to_cpus(&bd->data);
-@@ -120,7 +120,7 @@ static void mcf_fec_write_bd(mcf_fec_bd *bd, uint32_t addr)
-     tmp.flags = cpu_to_be16(bd->flags);
-     tmp.length = cpu_to_be16(bd->length);
-     tmp.data = cpu_to_be32(bd->data);
--    cpu_physical_memory_write(addr, (uint8_t *)&tmp, sizeof(tmp));
-+    cpu_physical_memory_write(addr, &tmp, sizeof(tmp));
- }
- 
- static void mcf_fec_update(mcf_fec_state *s)
-diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-index 8e56b16..f0c7ee9 100644
---- a/hw/ppc/ppc405_boards.c
-+++ b/hw/ppc/ppc405_boards.c
-@@ -337,7 +337,7 @@ static void ref405ep_init(QEMUMachineInitArgs *args)
-         if (kernel_cmdline != NULL) {
-             len = strlen(kernel_cmdline);
-             bdloc -= ((len + 255) & ~255);
--            cpu_physical_memory_write(bdloc, (void *)kernel_cmdline, len + 1);
-+            cpu_physical_memory_write(bdloc, kernel_cmdline, len + 1);
-             env->gpr[6] = bdloc;
-             env->gpr[7] = bdloc + len;
-         } else {
-diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-index 92b4394..4dfa7ad 100644
---- a/hw/ppc/virtex_ml507.c
-+++ b/hw/ppc/virtex_ml507.c
-@@ -161,7 +161,7 @@ static int xilinx_load_device_tree(hwaddr addr,
-     r = qemu_devtree_setprop_string(fdt, "/chosen", "bootargs", kernel_cmdline);
-     if (r < 0)
-         fprintf(stderr, "couldn't set /chosen/bootargs\n");
--    cpu_physical_memory_write (addr, (void *)fdt, fdt_size);
-+    cpu_physical_memory_write(addr, fdt, fdt_size);
- #else
-     /* We lack libfdt so we cannot manipulate the fdt. Just pass on the blob
-        to the kernel.  */
--- 
-1.7.10.4
+Yes, please - I think that would be good. You can also cc your patch
+to qemu-trivial@nongnu.org, so it will be committed as a trivial patch.
 
 
