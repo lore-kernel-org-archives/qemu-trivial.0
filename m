@@ -1,51 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UQcHc-000826-9N
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Apr 2013 07:36:44 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45978)
+	id 1UQcKB-0001eg-0l
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Apr 2013 07:39:23 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47018)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UQcHY-0007xz-RV
-	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 07:36:42 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UQcK7-0001e2-QP
+	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 07:39:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UQcHX-0003JR-2W
-	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 07:36:40 -0400
-Received: from mail-wg0-f52.google.com ([74.125.82.52]:51857)
+	(envelope-from <peter.maydell@linaro.org>) id 1UQcK2-00049l-Cd
+	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 07:39:19 -0400
+Received: from mail-lb0-f177.google.com ([209.85.217.177]:60784)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1UQcHR-000390-Qf; Fri, 12 Apr 2013 07:36:34 -0400
-Received: by mail-wg0-f52.google.com with SMTP id n12so2598667wgh.19
-	for <multiple recipients>; Fri, 12 Apr 2013 04:36:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=Q4/8PvkMQs2KW9oCS+A94KXW9XZjpAk1LGGLRruzX4I=;
-	b=cTNI4RFSuIAhSVQxvTyflWbYzc7Ij8bAeqgsSju7Sp6fJa1DA5mZwTVJr+JMZo7t3g
-	EX8bWIjMLgstLNu3p9M2elzNqwW+8Kj4Q46nXfr4U/XGOefXgHo9CmCLUqP/11oJMMo3
-	AkhWWJTqx1NX1lqOsmKF5GR9ssACFf2QCv8UlOPIx2ioay65KXrwq54XkkDzT50I4cHi
-	CFDVXtIKxj2WeWDQcL06RVnIHIkuSEGBXmNZEeE1hjK533KpEGY287kCDJyxDGZDrLw2
-	5AjDwCl9oX/PLitAmXvhDFgjPMXYEz4h7zcU7kqKu2Dg9crGNXjC3HwKyDTJs6Za43ne
-	rb/w==
-X-Received: by 10.194.88.138 with SMTP id bg10mr16998688wjb.13.1365766593031; 
-	Fri, 12 Apr 2013 04:36:33 -0700 (PDT)
-Received: from localhost ([2a02:810d:ec0:195:495e:8c2d:3047:9ee5])
-	by mx.google.com with ESMTPS id ej8sm2749819wib.9.2013.04.12.04.36.31
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Fri, 12 Apr 2013 04:36:32 -0700 (PDT)
-Date: Fri, 12 Apr 2013 13:36:30 +0200
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Petar Jovanovic <petar.jovanovic@rt-rk.com>
-Message-ID: <20130412113630.GE9747@stefanha-thinkpad.redhat.com>
-References: <1365445570-112217-1-git-send-email-petar.jovanovic@rt-rk.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1UQcK2-00049W-4v
+	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 07:39:14 -0400
+Received: by mail-lb0-f177.google.com with SMTP id r10so2503216lbi.22
+	for <qemu-trivial@nongnu.org>; Fri, 12 Apr 2013 04:39:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=x-received:mime-version:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-type:x-gm-message-state;
+	bh=jcVnJK/d+ap+CnM4GaXVULEpffwp4iUPf0acLEeVV0Y=;
+	b=hpmC7hsU9m9QwuZdOuV4fQs/Hr6ssvwtoDEsN6LrK5QNc0zkY9LgWwHCqFWkLG/THF
+	qRXHbLm+TzUeJCb1jmcIA1vRY+CBRKpq8rnh0nOkVgAg9aRGRo78X8Vm5P0I9Vtxf8hM
+	3GNjzWF5ESKGQCndZlj9qllf+tQGsbyt4Qp4iDPFFIFpLM6PCx0waVcMn3CmeUJ5Dxc8
+	3lUfz2zxXzC758Yr9vcfZWtDrdgoSefuNQz1iuoxCqsFRUeYdYfgitCUh+TrpxPAcdZc
+	4WFH3+7LnqpFPY5kXXzRHJeCHoQ2l21/feHqM95b1FS+I8gJdDYDMnGfGE3P83XhwOIx
+	+sog==
+X-Received: by 10.152.110.74 with SMTP id hy10mr5118160lab.37.1365766753046;
+	Fri, 12 Apr 2013 04:39:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1365445570-112217-1-git-send-email-petar.jovanovic@rt-rk.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.112.198.198 with HTTP; Fri, 12 Apr 2013 04:38:52 -0700 (PDT)
+In-Reply-To: <20130412113534.GD9747@stefanha-thinkpad.redhat.com>
+References: <1365438972-20259-1-git-send-email-peter.maydell@linaro.org>
+	<20130412113534.GD9747@stefanha-thinkpad.redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Apr 2013 12:38:52 +0100
+Message-ID: <CAFEAcA9GU9XmkQeNN2g4975oOqsuveanNYCpskm_zFJqseNvMg@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQmyldONHQ7r1xrkUslpLkNI0uBgXauKWVuVOCxAeftVtlKziYHpnXYmtis4YL4UjSMkf9dZ
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.125.82.52
-Cc: qemu-trivial@nongnu.org, riku.voipio@linaro.org, qemu-devel@nongnu.org,
-	petar.jovanovic@imgtec.com
-Subject: Re: [Qemu-trivial] [PATCH] linux-user: pass correct host flags to
- eventfd2 call
+X-Received-From: 209.85.217.177
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] Typo, spelling and grammatical fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,19 +53,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Apr 2013 11:36:42 -0000
+X-List-Received-Date: Fri, 12 Apr 2013 11:39:22 -0000
 
-On Mon, Apr 08, 2013 at 08:26:10PM +0200, Petar Jovanovic wrote:
-> This change makes conversion of TARGET_O_NONBLOCK and TARGET_O_CLOEXEC flags
-> to host flags before calling eventfd for TARGET_NR_eventfd2.
-> 
-> Signed-off-by: Petar Jovanovic <petar.jovanovic@imgtec.com>
-> ---
->  linux-user/syscall.c |   11 ++++++++++-
->  1 file changed, 10 insertions(+), 1 deletion(-)
+On 12 April 2013 12:35, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> On Mon, Apr 08, 2013 at 05:36:12PM +0100, Peter Maydell wrote:
+>> Minor fixes to documentation and code comments, including
+>> a set of lets-vs-let's corrections.
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+> Looks fine but please resend with hw/ reorganization conflicts resolved.
 
-Stefan
+I already did a couple of days ago, v2 is here:
+http://patchwork.ozlabs.org/patch/235059/
+
+thanks
+-- PMM
 
