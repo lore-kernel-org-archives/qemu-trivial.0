@@ -1,46 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UQkd8-0005Ni-Kd
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Apr 2013 16:31:30 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:50336)
+	id 1UR7Kt-0004Cy-JW
+	for mharc-qemu-trivial@gnu.org; Sat, 13 Apr 2013 16:46:11 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55837)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UQkd6-0005K2-A6
-	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 16:31:29 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1UR7Ko-000443-Hp
+	for qemu-trivial@nongnu.org; Sat, 13 Apr 2013 16:46:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UQkd5-00068n-8R
-	for qemu-trivial@nongnu.org; Fri, 12 Apr 2013 16:31:28 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:49956)
+	(envelope-from <stefan@weilnetz.de>) id 1UR7Kl-0002rM-W8
+	for qemu-trivial@nongnu.org; Sat, 13 Apr 2013 16:46:06 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:44219)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1UQkd2-00067Q-Et; Fri, 12 Apr 2013 16:31:25 -0400
+	(envelope-from <stefan@weilnetz.de>)
+	id 1UR7Kf-0002jy-79; Sat, 13 Apr 2013 16:45:58 -0400
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	4B9157280041; Fri, 12 Apr 2013 22:31:22 +0200 (CEST)
+	91B757280042; Sat, 13 Apr 2013 22:45:53 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id L0EsUqgFArxY; Fri, 12 Apr 2013 22:31:20 +0200 (CEST)
-Received: from [192.168.178.35] (p54ADBFC4.dip.t-dialin.net [84.173.191.196])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	443C2728002C; Fri, 12 Apr 2013 22:31:20 +0200 (CEST)
-Message-ID: <51686F17.7070503@weilnetz.de>
-Date: Fri, 12 Apr 2013 22:31:19 +0200
+	with ESMTP id ZX-7cq4p_1vD; Sat, 13 Apr 2013 22:45:51 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id BE307728004A; Sat, 13 Apr 2013 22:45:51 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
-MIME-Version: 1.0
-To: Alexey Kardashevskiy <aik@ozlabs.ru>
-References: <1365730875-22854-1-git-send-email-aik@ozlabs.ru>
-	<5167E747.2020106@suse.de>
-	<20130412164715.GL5065@truffula.fritz.box>
-	<51684621.7090204@weilnetz.de> <51686D39.3070209@ozlabs.ru>
-In-Reply-To: <51686D39.3070209@ozlabs.ru>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+To: qemu-trivial@nongnu.org
+Date: Sat, 13 Apr 2013 22:45:50 +0200
+Message-Id: <1365885950-27598-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] bswap: fix compiler warning
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] w64: Fix compiler warnings (wrong format
+	specifier)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,66 +43,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Apr 2013 20:31:29 -0000
+X-List-Received-Date: Sat, 13 Apr 2013 20:46:10 -0000
 
-Am 12.04.2013 22:23, schrieb Alexey Kardashevskiy:
-> On 04/13/2013 03:36 AM, Stefan Weil wrote:
->> Am 12.04.2013 18:47, schrieb David Gibson:
->>> On Fri, Apr 12, 2013 at 12:51:51PM +0200, Andreas F=C3=A4rber wrote:
->>>> Am 12.04.2013 03:41, schrieb Alexey Kardashevskiy:
->>>>> The bswap functions use memcpy but the bswap.h header itself does
->>>>> not seem to
->>>>> include it in some configuration such as cross compiling for
->>>>> powerpc64
->>>>> on x86_64 machine (gcc 4.6.3 from ftp.kernel.org, headers/libs
->>>>> from FC18/ppc64),
->>>>> the example warning is below.
->>>>>
->>>>> The patch explicitly includes string.h.
->>>>>
->>>>>    CC    ppc64-softmmu/hw/virtio/virtio.o
->>>>> In file included from /home/alexey/qemu/include/libfdt_env.h:22:0,
->>>>>                   from
->>>>> /home/alexey/qemu/../lib4qemu/usr/include/libfdt.h:54,
->>>>>                   from /home/alexey/qemu/hw/nvram/spapr_nvram.c:25:
->>>>> /home/alexey/qemu/include/qemu/bswap.h: In function 'lduw_p':
->>>>> /home/alexey/qemu/include/qemu/bswap.h:244:5: warning: implicit
->>>>> declaration of function 'memcpy' [-Wimplicit-function-declaration]
->>>>> /home/alexey/qemu/include/qemu/bswap.h:244:5: warning:
->>>>> incompatible implicit declaration of built-in function 'memcpy'
->>>>> [enabled by default]
->>>>>
->>>>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
->>>>> ---
->>>>>   include/qemu/bswap.h |    2 ++
->>>>>   1 file changed, 2 insertions(+)
->>>>>
->>>>> diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
->>>>> index d3af35d..d50de0d 100644
->>>>> --- a/include/qemu/bswap.h
->>>>> +++ b/include/qemu/bswap.h
->>>>> @@ -1,6 +1,8 @@
->>>>>   #ifndef BSWAP_H
->>>>>   #define BSWAP_H
->>>>>
->>>>> +#include <string.h>
->>>>> +
->>>>>   #include "config-host.h"
->>>>>   #include <inttypes.h>
->>>>>   #include <limits.h>
->>>> Including string.h is certainly the right thing to do, but why do yo=
-u
->>>> single it out first?
->>> Yeah, it probably shouldn't go above the config header.  Otherwise
->>> it's the right thing.
->>
->> If string.h went directly after limits.h, we'd even preserve the
->> alphabetic order of the system headers :-)
->
-> Ah. Misunderstood the original question :) Do I need to repost it?
+GetLastError() returns a DWORD value which is unsigned long,
+so the correct format specifier is %lu.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+
+Debian's w32 cross compiler does not complain about the wrong
+specifiers, but the w64 cross compiler does.
+
+I'm sorry that I did not notice this before sending the pull
+request.
 
 
-Yes, please - I think that would be good. You can also cc your patch
-to qemu-trivial@nongnu.org, so it will be committed as a trivial patch.
+ cpus.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cpus.c b/cpus.c
+index 97e9ab4..3f754c6 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -865,7 +865,7 @@ static void qemu_cpu_kick_thread(CPUState *cpu)
+         CONTEXT tcgContext;
+ 
+         if (SuspendThread(cpu->hThread) == (DWORD)-1) {
+-            fprintf(stderr, "qemu:%s: GetLastError:%d\n", __func__,
++            fprintf(stderr, "qemu:%s: GetLastError:%lu\n", __func__,
+                     GetLastError());
+             exit(1);
+         }
+@@ -881,7 +881,7 @@ static void qemu_cpu_kick_thread(CPUState *cpu)
+         cpu_signal(0);
+ 
+         if (ResumeThread(cpu->hThread) == (DWORD)-1) {
+-            fprintf(stderr, "qemu:%s: GetLastError:%d\n", __func__,
++            fprintf(stderr, "qemu:%s: GetLastError:%lu\n", __func__,
+                     GetLastError());
+             exit(1);
+         }
+-- 
+1.7.10.4
 
 
