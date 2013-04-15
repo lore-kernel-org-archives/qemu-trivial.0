@@ -1,43 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1URfSP-0003an-8L
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Apr 2013 05:12:13 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:32937)
+	id 1URhNP-0007fP-Sl
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Apr 2013 07:15:11 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:46537)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1URfSL-0003ZD-64
-	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 05:12:10 -0400
+	(envelope-from <afaerber@suse.de>) id 1URhNM-0007bK-MT
+	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 07:15:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1URfSE-0001X5-9A
-	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 05:12:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:7240)
+	(envelope-from <afaerber@suse.de>) id 1URhNK-00012W-N8
+	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 07:15:08 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:58706 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1URfSE-0001Wz-1O; Mon, 15 Apr 2013 05:12:02 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r3F9C1Fe023889
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 15 Apr 2013 05:12:01 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-27.ams2.redhat.com
-	[10.36.112.27])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r3F9Bve9002729; Mon, 15 Apr 2013 05:11:58 -0400
-Message-ID: <516BC458.7050301@redhat.com>
-Date: Mon, 15 Apr 2013 11:11:52 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <afaerber@suse.de>)
+	id 1URh2D-00005i-Ld; Mon, 15 Apr 2013 06:53:17 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 1C279A50DE;
+	Mon, 15 Apr 2013 12:52:30 +0200 (CEST)
+Message-ID: <516BDBEA.4010404@suse.de>
+Date: Mon, 15 Apr 2013 12:52:26 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
+	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1365972770-13777-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1365972770-13777-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.5.1
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
+References: <51686F17.7070503@weilnetz.de>
+	<1365990476-14975-1-git-send-email-aik@ozlabs.ru>
+In-Reply-To: <1365990476-14975-1-git-send-email-aik@ozlabs.ru>
+X-Enigmail-Version: 1.6a1pre
 Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] hw: Add lost ARM core again
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>, Blue Swirl <blauwirbel@gmail.com>,
+	qemu-ppc@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Subject: Re: [Qemu-trivial] [PATCH v2] bswap: fix compiler warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,34 +48,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Apr 2013 09:12:10 -0000
+X-List-Received-Date: Mon, 15 Apr 2013 11:15:10 -0000
 
-Il 14/04/2013 22:52, Stefan Weil ha scritto:
-> Commit 0434e30afb6175212389811e0b28b948eb3c1e40 accidentally removed
-> the compilation of arm11mpcore.c.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Am 15.04.2013 03:47, schrieb Alexey Kardashevskiy:
+> The bswap functions use memcpy but the bswap.h header itself does not s=
+eem to
+> include it in some configuration such as cross compiling for powerpc64
+> on x86_64 machine.
+>=20
+> The patch explicitly includes string.h.
+>=20
+> v2:
+> * #include statement moved to the right place
+>=20
+> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 > ---
->  default-configs/arm-softmmu.mak |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 31725a9..27cbe3d 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -34,8 +34,8 @@ CONFIG_PFLASH_CFI02=y
->  CONFIG_MICRODRIVE=y
->  CONFIG_USB_MUSB=y
->  
-> -CONFIG_ARM5MPCORE=y
->  CONFIG_ARM9MPCORE=y
-> +CONFIG_ARM11MPCORE=y
->  CONFIG_ARM15MPCORE=y
->  
->  CONFIG_ARM_GIC=y
-> 
+>  include/qemu/bswap.h |    1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+> index d3af35d..14a5f65 100644
+> --- a/include/qemu/bswap.h
+> +++ b/include/qemu/bswap.h
+> @@ -4,6 +4,7 @@
+>  #include "config-host.h"
+>  #include <inttypes.h>
+>  #include <limits.h>
+> +#include <string.h>
+>  #include "fpu/softfloat.h"
+> =20
+>  #ifdef CONFIG_MACHINE_BSWAP_H
 
-Thanks, will include in pull request.
+Thanks,
 
-Paolo
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+
+Normally the change log does not go into the commit message but I'm sure
+Stefan can fix that. :)
+
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
