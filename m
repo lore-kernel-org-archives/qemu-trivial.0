@@ -1,61 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1URYbu-0001UR-Q5
-	for mharc-qemu-trivial@gnu.org; Sun, 14 Apr 2013 21:53:34 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:38670)
+	id 1URfSP-0003an-8L
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Apr 2013 05:12:13 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:32937)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dwg@au1.ibm.com>) id 1URYbs-0001UJ-ST
-	for qemu-trivial@nongnu.org; Sun, 14 Apr 2013 21:53:33 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1URfSL-0003ZD-64
+	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 05:12:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dwg@au1.ibm.com>) id 1URYbr-0002Im-Ll
-	for qemu-trivial@nongnu.org; Sun, 14 Apr 2013 21:53:32 -0400
-Received: from e23smtp05.au.ibm.com ([202.81.31.147]:54740)
+	(envelope-from <pbonzini@redhat.com>) id 1URfSE-0001X5-9A
+	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 05:12:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:7240)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dwg@au1.ibm.com>) id 1URYbr-0002HL-3r
-	for qemu-trivial@nongnu.org; Sun, 14 Apr 2013 21:53:31 -0400
-Received: from /spool/local
-	by e23smtp05.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <dwg@au1.ibm.com>;
-	Mon, 15 Apr 2013 11:48:33 +1000
-Received: from d23dlp01.au.ibm.com (202.81.31.203)
-	by e23smtp05.au.ibm.com (202.81.31.211) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 15 Apr 2013 11:48:31 +1000
-Received: from d23relay05.au.ibm.com (d23relay05.au.ibm.com [9.190.235.152])
-	by d23dlp01.au.ibm.com (Postfix) with ESMTP id 35E342CE804A;
-	Mon, 15 Apr 2013 11:53:22 +1000 (EST)
-Received: from d23av02.au.ibm.com (d23av02.au.ibm.com [9.190.235.138])
-	by d23relay05.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r3F1dkBn58851338; Mon, 15 Apr 2013 11:39:49 +1000
-Received: from d23av02.au.ibm.com (loopback [127.0.0.1])
-	by d23av02.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r3F1rINd022056; Mon, 15 Apr 2013 11:53:18 +1000
-Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.190.163.12])
-	by d23av02.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r3F1rIec022053; Mon, 15 Apr 2013 11:53:18 +1000
-Received: by ozlabs.au.ibm.com (Postfix, from userid 1010)
-	id 39A65A0191; Mon, 15 Apr 2013 11:53:18 +1000 (EST)
-Date: Mon, 15 Apr 2013 11:52:32 +1000
-From: David Gibson <dwg@au1.ibm.com>
-To: Alexey Kardashevskiy <aik@ozlabs.ru>
-Message-ID: <20130415015232.GB16400@truffula.fritz.box>
-References: <51686F17.7070503@weilnetz.de>
-	<1365990476-14975-1-git-send-email-aik@ozlabs.ru>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1URfSE-0001Wz-1O; Mon, 15 Apr 2013 05:12:02 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r3F9C1Fe023889
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 15 Apr 2013 05:12:01 -0400
+Received: from yakj.usersys.redhat.com (ovpn-112-27.ams2.redhat.com
+	[10.36.112.27])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r3F9Bve9002729; Mon, 15 Apr 2013 05:11:58 -0400
+Message-ID: <516BC458.7050301@redhat.com>
+Date: Mon, 15 Apr 2013 11:11:52 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="zx4FCpZtqtKETZ7O"
-Content-Disposition: inline
-In-Reply-To: <1365990476-14975-1-git-send-email-aik@ozlabs.ru>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13041501-1396-0000-0000-000002CDB641
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 202.81.31.147
-Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>, qemu-ppc@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH v2] bswap: fix compiler warning
+To: Stefan Weil <sw@weilnetz.de>
+References: <1365972770-13777-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1365972770-13777-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.5.1
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] hw: Add lost ARM core again
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,47 +49,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Apr 2013 01:53:34 -0000
+X-List-Received-Date: Mon, 15 Apr 2013 09:12:10 -0000
 
---zx4FCpZtqtKETZ7O
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Il 14/04/2013 22:52, Stefan Weil ha scritto:
+> Commit 0434e30afb6175212389811e0b28b948eb3c1e40 accidentally removed
+> the compilation of arm11mpcore.c.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  default-configs/arm-softmmu.mak |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 31725a9..27cbe3d 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -34,8 +34,8 @@ CONFIG_PFLASH_CFI02=y
+>  CONFIG_MICRODRIVE=y
+>  CONFIG_USB_MUSB=y
+>  
+> -CONFIG_ARM5MPCORE=y
+>  CONFIG_ARM9MPCORE=y
+> +CONFIG_ARM11MPCORE=y
+>  CONFIG_ARM15MPCORE=y
+>  
+>  CONFIG_ARM_GIC=y
+> 
 
-On Mon, Apr 15, 2013 at 11:47:56AM +1000, Alexey Kardashevskiy wrote:
-> The bswap functions use memcpy but the bswap.h header itself does not see=
-m to
-> include it in some configuration such as cross compiling for powerpc64
-> on x86_64 machine.
->=20
-> The patch explicitly includes string.h.
->=20
-> v2:
-> * #include statement moved to the right place
->=20
-> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Thanks, will include in pull request.
 
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---zx4FCpZtqtKETZ7O
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.12 (GNU/Linux)
-
-iEYEARECAAYFAlFrXWAACgkQaILKxv3ab8bnhACfb0+XAMpC83jXGjBQlBex4BAw
-YtkAn1r5GeuydRDP1pRKEBS6YvHQm1ag
-=ZPdy
------END PGP SIGNATURE-----
-
---zx4FCpZtqtKETZ7O--
-
+Paolo
 
