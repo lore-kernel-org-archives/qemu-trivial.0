@@ -1,37 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1URTvA-0005Fv-7o
-	for mharc-qemu-trivial@gnu.org; Sun, 14 Apr 2013 16:53:08 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34987)
+	id 1URYX5-0000iY-2t
+	for mharc-qemu-trivial@gnu.org; Sun, 14 Apr 2013 21:48:35 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:37165)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1URTv6-0005Ap-Dp
-	for qemu-trivial@nongnu.org; Sun, 14 Apr 2013 16:53:06 -0400
+	(envelope-from <aik@ozlabs.ru>) id 1URYX0-0000ff-Nf
+	for qemu-trivial@nongnu.org; Sun, 14 Apr 2013 21:48:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1URTv3-00033e-QB
-	for qemu-trivial@nongnu.org; Sun, 14 Apr 2013 16:53:04 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:58708)
+	(envelope-from <aik@ozlabs.ru>) id 1URYWx-0000Oc-Ps
+	for qemu-trivial@nongnu.org; Sun, 14 Apr 2013 21:48:30 -0400
+Received: from mail-da0-x22b.google.com ([2607:f8b0:400e:c00::22b]:46973)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1URTux-00031x-SY; Sun, 14 Apr 2013 16:52:56 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	BF8B97280034; Sun, 14 Apr 2013 22:52:53 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id ZKZaaGbKV96O; Sun, 14 Apr 2013 22:52:52 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id 0A5097280065; Sun, 14 Apr 2013 22:52:52 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Sun, 14 Apr 2013 22:52:50 +0200
-Message-Id: <1365972770-13777-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <aik@ozlabs.ru>) id 1URYWx-0000NQ-I9
+	for qemu-trivial@nongnu.org; Sun, 14 Apr 2013 21:48:27 -0400
+Received: by mail-da0-f43.google.com with SMTP id u36so1849097dak.2
+	for <qemu-trivial@nongnu.org>; Sun, 14 Apr 2013 18:48:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=x-received:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
+	:references:x-gm-message-state;
+	bh=oXOYxKoHPCpxGJbba+9SWW3P2DQB68Yjzu5PYnORRDE=;
+	b=ficnWDCRpG8FxdUbTh2//q9kzXUd11NaF3hAG0TRrwVIY0Dx9UOQwEpyD/ehz71D4W
+	Omj9Rn86MTWpbSiGSd9ExYeYrmMwhr9v+u+SevUnTPHVAO+ofrdIyuK53iD9k3YN+t8d
+	dGPzyyUCGM5nbY870AAO50RDIIanFvICoZzKs8XHXbCkrcuZFcuuL/FKuNcu9wp2hTI+
+	DHaFqeOW1KgylsoD/HKDyug+C7wBFHzLnAYJmCv8jOI5iHgnmXWYXKNljbcCzEJQsbeQ
+	Ap2MPKHhiMP5F868n/ATdopsyHUnxQ080EhzbkXpUYw752NOEX4RbaR0T/7SNvGK/BBa
+	TXWg==
+X-Received: by 10.68.196.231 with SMTP id ip7mr26026544pbc.61.1365990505320;
+	Sun, 14 Apr 2013 18:48:25 -0700 (PDT)
+Received: from ka1.ozlabs.ibm.com (ibmaus65.lnk.telstra.net. [165.228.126.9])
+	by mx.google.com with ESMTPS id
+	pb14sm18182452pbb.27.2013.04.14.18.48.19
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Sun, 14 Apr 2013 18:48:23 -0700 (PDT)
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Mon, 15 Apr 2013 11:47:56 +1000
+Message-Id: <1365990476-14975-1-git-send-email-aik@ozlabs.ru>
 X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] hw: Add lost ARM core again
+In-Reply-To: <51686F17.7070503@weilnetz.de>
+References: <51686F17.7070503@weilnetz.de>
+X-Gm-Message-State: ALoCoQl0WWr/EsKGgnHIGvVuHwdpSKGJlHOOFq1/hSnpGU1NUMSclP24deWXiu1BM8W6KrUTp8+h
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c00::22b
+Cc: Anthony Liguori <aliguori@us.ibm.com>, Alexey Kardashevskiy <aik@ozlabs.ru>,
+	Stefan Weil <sw@weilnetz.de>, Blue Swirl <blauwirbel@gmail.com>,
+	qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	David Gibson <david@gibson.dropbear.id.au>
+Subject: [Qemu-trivial] [PATCH v2] bswap: fix compiler warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,30 +61,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 14 Apr 2013 20:53:06 -0000
+X-List-Received-Date: Mon, 15 Apr 2013 01:48:34 -0000
 
-Commit 0434e30afb6175212389811e0b28b948eb3c1e40 accidentally removed
-the compilation of arm11mpcore.c.
+The bswap functions use memcpy but the bswap.h header itself does not seem to
+include it in some configuration such as cross compiling for powerpc64
+on x86_64 machine.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+The patch explicitly includes string.h.
+
+v2:
+* #include statement moved to the right place
+
+Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- default-configs/arm-softmmu.mak |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/qemu/bswap.h |    1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 31725a9..27cbe3d 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -34,8 +34,8 @@ CONFIG_PFLASH_CFI02=y
- CONFIG_MICRODRIVE=y
- CONFIG_USB_MUSB=y
+diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+index d3af35d..14a5f65 100644
+--- a/include/qemu/bswap.h
++++ b/include/qemu/bswap.h
+@@ -4,6 +4,7 @@
+ #include "config-host.h"
+ #include <inttypes.h>
+ #include <limits.h>
++#include <string.h>
+ #include "fpu/softfloat.h"
  
--CONFIG_ARM5MPCORE=y
- CONFIG_ARM9MPCORE=y
-+CONFIG_ARM11MPCORE=y
- CONFIG_ARM15MPCORE=y
- 
- CONFIG_ARM_GIC=y
+ #ifdef CONFIG_MACHINE_BSWAP_H
 -- 
 1.7.10.4
 
