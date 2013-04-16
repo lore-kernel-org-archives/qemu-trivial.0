@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1URijt-0001br-VE
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Apr 2013 08:42:29 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44485)
+	id 1URtr2-0000Ko-Vy
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Apr 2013 20:34:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36057)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Petar.Jovanovic@imgtec.com>) id 1URijp-0001VM-1P
-	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 08:42:28 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1URtqz-0000IR-Mi
+	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 20:34:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Petar.Jovanovic@imgtec.com>) id 1URijm-0003AZ-5f
-	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 08:42:24 -0400
-Received: from multi.imgtec.com ([194.200.65.239]:49604)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1URtqw-0002Ij-WB
+	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 20:34:33 -0400
+Received: from mail-pa0-f45.google.com ([209.85.220.45]:44450)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Petar.Jovanovic@imgtec.com>) id 1URijm-0003AG-0l
-	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 08:42:22 -0400
-From: Petar Jovanovic <Petar.Jovanovic@imgtec.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Petar Jovanovic
-	<petar.jovanovic@rt-rk.com>
-Thread-Topic: [Qemu-devel] [PATCH] linux-user: change do_semop to return
-	target errno when unsuccessful
-Thread-Index: AQHOJl3fGipKB/aWdEaiYvy3HYyNEJiw5W6AgBDETkeACxgfYYAKlT7p
-Date: Mon, 15 Apr 2013 12:10:10 +0000
-Message-ID: <56EA75BA695AE044ACFB41322F6D2BF40189171D@bamail02.ba.imgtec.org>
-References: <1363888656-123910-1-git-send-email-petar.jovanovic@rt-rk.com>,
-	<CAFEAcA-uf_Y3QSF9L+1z6b0KGemobJUP=+xS8AZtwZ6q-MLiPA@mail.gmail.com>,
-	<56EA75BA695AE044ACFB41322F6D2BF40188EB50@bamail02.ba.imgtec.org>,
-	<56EA75BA695AE044ACFB41322F6D2BF401890FFF@bamail02.ba.imgtec.org>
-In-Reply-To: <56EA75BA695AE044ACFB41322F6D2BF401890FFF@bamail02.ba.imgtec.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [192.168.64.117]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-SEF-Processed: 7_3_0_01181__2013_04_15_13_10_23
-X-detected-operating-system: by eggs.gnu.org: Windows XP
-X-Received-From: 194.200.65.239
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"riku.voipio@linaro.org" <riku.voipio@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: change do_semop
- to return target errno when unsuccessful
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1URtqw-0002IY-Ql
+	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 20:34:30 -0400
+Received: by mail-pa0-f45.google.com with SMTP id kl13so17934pab.32
+	for <qemu-trivial@nongnu.org>; Mon, 15 Apr 2013 17:34:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer
+	:x-gm-message-state;
+	bh=8tYVXH0QxMBNIRv1SZs8LjWgvfdQh3evIaZtf6BgSFU=;
+	b=OEeiozEdUlLIo8gBWZLZ2ANYb9pL49D7HYCbnGOPC7fhSMANvWnCX2QhqHOtPBRd5y
+	4xAmH8fx2b0v+OQ/e6RSTfjaeVYJEQ4FBnZNOZLfjj0LYL/K3cW7m0au7X/FwKOFLiJ8
+	ue/comi2EGO0Vv0a7/B4eIXF/zfBZrSuBTUv/Nu+4iFUmL3OdJBSH79CZT8NsUUObZI9
+	B1jpiwAIOKuUW0SztqZMsipbVWFjCTB8jEz91I8z8eINUllkr7NVZ9hapP5hv8IWhalv
+	y2LrZrzk6mBikMpuhgENNeDsgc2QZaksN6IM9qK0VNyxO7FS28OjyAT7Qi8+GEWiUzpF
+	FlWg==
+X-Received: by 10.66.81.2 with SMTP id v2mr525621pax.204.1366072469828;
+	Mon, 15 Apr 2013 17:34:29 -0700 (PDT)
+Received: from localhost ([149.199.62.254])
+	by mx.google.com with ESMTPS id ak5sm143995pac.4.2013.04.15.17.34.27
+	(version=TLSv1.1 cipher=RC4-SHA bits=128/128);
+	Mon, 15 Apr 2013 17:34:28 -0700 (PDT)
+Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
+From: peter.crosthwaite@xilinx.com
+To: qemu-devel@nongnu.org
+Date: Tue, 16 Apr 2013 10:32:14 +1000
+Message-Id: <cover.1366071713.git.peter.crosthwaite@xilinx.com>
+X-Mailer: git-send-email 1.7.0.4
+X-Gm-Message-State: ALoCoQk7Hko3yXKaHdHF9/Beo1cNfFYTQSAEbmAMIwQQ1IcIJbBzd2SZk9qIFI5pyzolp1amODFN
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.220.45
+Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com
+Subject: [Qemu-trivial] [PATCH v3 0/4]  m25p80: Fix debug printfery
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,54 +53,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Apr 2013 12:42:28 -0000
+X-List-Received-Date: Tue, 16 Apr 2013 00:34:35 -0000
 
-+ qemu-trivial@nongnu.org=0A=
-=0A=
-ping=0A=
-________________________________________=0A=
-From: Petar Jovanovic=0A=
-Sent: Monday, April 08, 2013 8:31 PM=0A=
-To: Peter Maydell; Petar Jovanovic=0A=
-Cc: qemu-devel@nongnu.org; riku.voipio@linaro.org=0A=
-Subject: RE: [Qemu-devel] [PATCH] linux-user: change do_semop to return tar=
-get errno when unsuccessful=0A=
-=0A=
-ping=0A=
-________________________________________=0A=
-From: Petar Jovanovic=0A=
-Sent: Monday, April 01, 2013 7:07 PM=0A=
-To: Peter Maydell; Petar Jovanovic=0A=
-Cc: qemu-devel@nongnu.org; riku.voipio@linaro.org=0A=
-Subject: RE: [Qemu-devel] [PATCH] linux-user: change do_semop to return tar=
-get errno when unsuccessful=0A=
-=0A=
-ping=0A=
-=0A=
-http://patchwork.ozlabs.org/patch/229787/=0A=
-=0A=
-________________________________________=0A=
-From: Peter Maydell [peter.maydell@linaro.org]=0A=
-Sent: Thursday, March 21, 2013 7:03 PM=0A=
-To: Petar Jovanovic=0A=
-Cc: qemu-devel@nongnu.org; riku.voipio@linaro.org; Petar Jovanovic=0A=
-Subject: Re: [Qemu-devel] [PATCH] linux-user: change do_semop to return tar=
-get errno when unsuccessful=0A=
-=0A=
-On 21 March 2013 17:57, Petar Jovanovic <petar.jovanovic@rt-rk.com> wrote:=
-=0A=
-> From: Petar Jovanovic <petar.jovanovic@imgtec.com>=0A=
->=0A=
-> do_semop() is called from two places, and one of these fails to convert=
-=0A=
-> return error to target errno when semop fails. This patch changes the=0A=
-> function to always return target errno in case of an unsuccessful call.=
-=0A=
->=0A=
-> Signed-off-by: Petar Jovanovic <petar.jovanovic@imgtec.com>=0A=
-=0A=
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>=0A=
-=0A=
--- PMM=0A=
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+
+Fix up the debug printfery m25p80 in various ways. 0 functional diff.
+
+changed from v2:
+Rebased against hw reorg
+
+
+Peter Crosthwaite (4):
+  m25p80: Fix debug messages.
+  m25p80: Convert guest errors to LOG_GUEST_ERROR
+  m25p80.c: Multiple debug verbosity levels
+  m25p80: Add debug message for no bdrv
+
+ hw/block/m25p80.c |   52 +++++++++++++++++++++++++++++-----------------------
+ 1 files changed, 29 insertions(+), 23 deletions(-)
 
 
