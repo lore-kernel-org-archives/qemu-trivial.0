@@ -1,49 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1URttZ-0003Oq-K3
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Apr 2013 20:37:13 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:36545)
+	id 1US1I6-0007L5-RK
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Apr 2013 04:31:03 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56992)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1URttT-0003IP-OT
-	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 20:37:09 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1US1I0-0007AF-6j
+	for qemu-trivial@nongnu.org; Tue, 16 Apr 2013 04:31:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1URttS-0003WV-K8
-	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 20:37:07 -0400
-Received: from mail-pa0-f41.google.com ([209.85.220.41]:60746)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1US1Hy-0006Wc-UE
+	for qemu-trivial@nongnu.org; Tue, 16 Apr 2013 04:30:56 -0400
+Received: from mail-ea0-x22c.google.com ([2a00:1450:4013:c01::22c]:49910)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1URttS-0003WJ-EV
-	for qemu-trivial@nongnu.org; Mon, 15 Apr 2013 20:37:06 -0400
-Received: by mail-pa0-f41.google.com with SMTP id kx1so20581pab.0
-	for <qemu-trivial@nongnu.org>; Mon, 15 Apr 2013 17:37:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer
-	:in-reply-to:references:x-gm-message-state;
-	bh=nM3+fTvymM0dxpijFIPUsIPy4tXrpvACIlLk+5A2xdE=;
-	b=MYGJ+Boa6Kkb4jWMgKlN8Mn5O58bIQJ18Vk6mrqmNI2ZU6AYVDGIBb8TpQSapAewGL
-	Hinnihe8OSJRHNiFEUB2RWP8RJNnSx8Yrxll0XDtgUh9x/0qcRd7f+Yspd9hAr7z8GTR
-	DZGqTdmsOdOORLPJ7gBnbgg/kf0m7h0Y8kyX48H7myATXmHG0YAqZL+a6F38IKfVMVBB
-	D0BbvOWB7t2w1LkUKoMKtTDOPBpKnPMmsLd2OX7pkefVDzDce1o3KwETCNP5j5PbyNGw
-	Qdh7d8/F9hDnVCqdzCWSoWsm17kx77NOIN9GvSiGhqsOOQK0jNk7WVkDE/rXrNhvc954
-	pQHA==
-X-Received: by 10.66.14.1 with SMTP id l1mr589913pac.150.1366072625756;
-	Mon, 15 Apr 2013 17:37:05 -0700 (PDT)
-Received: from localhost ([149.199.62.254])
-	by mx.google.com with ESMTPS id z18sm91984paf.22.2013.04.15.17.37.03
-	(version=TLSv1.1 cipher=RC4-SHA bits=128/128);
-	Mon, 15 Apr 2013 17:37:04 -0700 (PDT)
-Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
-From: peter.crosthwaite@xilinx.com
-To: qemu-devel@nongnu.org
-Date: Tue, 16 Apr 2013 10:34:50 +1000
-Message-Id: <43a713ca9cfed59a4d4577763e6ed10f72f985e2.1366071713.git.peter.crosthwaite@xilinx.com>
-X-Mailer: git-send-email 1.7.0.4
-In-Reply-To: <cover.1366071713.git.peter.crosthwaite@xilinx.com>
+	(envelope-from <edgar.iglesias@gmail.com>)
+	id 1US1Hq-0006UJ-KG; Tue, 16 Apr 2013 04:30:46 -0400
+Received: by mail-ea0-f172.google.com with SMTP id z7so103420eaf.17
+	for <multiple recipients>; Tue, 16 Apr 2013 01:30:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=28rtZpO3f1as6ujXfy6clkmbAorxPWISv9t7i1mdjJE=;
+	b=TkMSEYipS8cRRKWq07+QDuiVhjNqEOe21sDBhSJZ+6uiPOu9GPPJdDjmTJrZUAt/dy
+	lHxg3O1thMx0WDZ+WHunz1FLfxEy92uYKneTKl65XZk/LDGtRxGw1CNkLPjo0DJEzG55
+	w0aX9PNPH3mXTV3ZVpRGB0dbZhuwZnSo5IDRMkO/NNR/v2jZ66GYxjZvYd85I1zBlQeZ
+	4vb+gUijNQALxzxGyL0WmNYYlFCg2jvXdvaI+sz8EsEEPlYrVuz0QAWpdbLEhDdFsr9P
+	xamuzS6ZLS7CyEKwwEqmvM6BXmHJxOckl7oZ+22C0n0Ffu0dOLIzG+pOF0MRZ7ITMjzG
+	/bzA==
+X-Received: by 10.14.107.69 with SMTP id n45mr4031543eeg.23.1366101045621;
+	Tue, 16 Apr 2013 01:30:45 -0700 (PDT)
+Received: from localhost (h59ec325f.selukar.dyn.perspektivbredband.net.
+	[89.236.50.95])
+	by mx.google.com with ESMTPS id n48sm1385376eeg.12.2013.04.16.01.30.44
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Tue, 16 Apr 2013 01:30:45 -0700 (PDT)
+Date: Tue, 16 Apr 2013 10:30:40 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: peter.crosthwaite@xilinx.com
+Message-ID: <20130416083040.GJ26210@smtp.vpn>
 References: <cover.1366071713.git.peter.crosthwaite@xilinx.com>
-X-Gm-Message-State: ALoCoQkvF2bDXgd7qh+g+3/YJIkHXE9P8kH33F7oF3Z26X2UbLAQ/8IwAZncYGKW1mCzbq/RU+Uf
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.220.41
-Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com
-Subject: [Qemu-trivial] [PATCH v3 4/4] m25p80: Add debug message for no bdrv
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1366071713.git.peter.crosthwaite@xilinx.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c01::22c
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v3 0/4]  m25p80: Fix debug printfery
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,31 +57,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Apr 2013 00:37:09 -0000
+X-List-Received-Date: Tue, 16 Apr 2013 08:31:01 -0000
 
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+On Tue, Apr 16, 2013 at 10:32:14AM +1000, peter.crosthwaite@xilinx.com wrote:
+> From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+> 
+> Fix up the debug printfery m25p80 in various ways. 0 functional diff.
+> 
+> changed from v2:
+> Rebased against hw reorg
 
-If there is no backing bdrv, let the debugging developer know about it.
+Applied, thanks!
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
----
+Cheers,
+Edgar
 
- hw/block/m25p80.c |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
-
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index a2816c1..f8b6409 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -606,6 +606,7 @@ static int m25p80_init(SSISlave *ss)
-             return 1;
-         }
-     } else {
-+        DB_PRINT_L(0, "No BDRV - binding to RAM\n");
-         memset(s->storage, 0xFF, s->size);
-     }
- 
--- 
-1.7.0.4
-
+> 
+> 
+> Peter Crosthwaite (4):
+>   m25p80: Fix debug messages.
+>   m25p80: Convert guest errors to LOG_GUEST_ERROR
+>   m25p80.c: Multiple debug verbosity levels
+>   m25p80: Add debug message for no bdrv
+> 
+>  hw/block/m25p80.c |   52 +++++++++++++++++++++++++++++-----------------------
+>  1 files changed, 29 insertions(+), 23 deletions(-)
+> 
 
