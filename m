@@ -1,35 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1USw5U-0004SF-NX
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 17:09:48 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:50631)
+	id 1USwLe-00007u-R9
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 17:26:30 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55065)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1USw5S-0004S7-2a
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:09:47 -0400
+	(envelope-from <eblake@redhat.com>) id 1USwLd-00006O-5s
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:26:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1USw5R-0000bZ-6U
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:09:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39680)
+	(envelope-from <eblake@redhat.com>) id 1USwJJ-0005Tp-R3
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:24:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40778)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>)
-	id 1USw5Q-0000aU-Va; Thu, 18 Apr 2013 17:09:45 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r3IL9ijA028587
+	(envelope-from <eblake@redhat.com>)
+	id 1USwJJ-0005Te-Dy; Thu, 18 Apr 2013 17:24:05 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r3ILO46u000996
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 18 Apr 2013 17:09:44 -0400
-Received: from choo.home.annexia.org (vpn1-7-56.ams2.redhat.com [10.36.7.56])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with
-	ESMTP id r3IL9gqd007137; Thu, 18 Apr 2013 17:09:43 -0400
-From: "Richard W.M. Jones" <rjones@redhat.com>
-To: qemu-trivial@nongnu.org
-Date: Thu, 18 Apr 2013 22:09:33 +0100
-Message-Id: <1366319373-12926-1-git-send-email-rjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+	Thu, 18 Apr 2013 17:24:04 -0400
+Received: from [10.3.113.85] (ovpn-113-85.phx2.redhat.com [10.3.113.85])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r3ILO32w005962; Thu, 18 Apr 2013 17:24:03 -0400
+Message-ID: <51706473.7030808@redhat.com>
+Date: Thu, 18 Apr 2013 15:24:03 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130402 Thunderbird/17.0.5
+MIME-Version: 1.0
+To: "Richard W.M. Jones" <rjones@redhat.com>
+References: <1366319373-12926-1-git-send-email-rjones@redhat.com>
+In-Reply-To: <1366319373-12926-1-git-send-email-rjones@redhat.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="----enig2FQDMDJIVXMGHDSJWCDXH"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: sw@weilnetz.de, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] ssh: Remove unnecessary use of strlen
-	function.
+Cc: qemu-trivial@nongnu.org, sw@weilnetz.de, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ssh: Remove unnecessary use
+	of strlen function.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,37 +52,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Apr 2013 21:09:47 -0000
+X-List-Received-Date: Thu, 18 Apr 2013 21:26:30 -0000
 
-From: "Richard W.M. Jones" <rjones@redhat.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+------enig2FQDMDJIVXMGHDSJWCDXH
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
----
- block/ssh.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+On 04/18/2013 03:09 PM, Richard W.M. Jones wrote:
+> From: "Richard W.M. Jones" <rjones@redhat.com>
+>=20
+> ---
+>  block/ssh.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/block/ssh.c b/block/ssh.c
-index 8f78e2e..7bc008d 100644
---- a/block/ssh.c
-+++ b/block/ssh.c
-@@ -387,15 +387,13 @@ static int check_host_key(BDRVSSHState *s, const char *host, int port,
-     }
- 
-     /* host_key_check=md5:xx:yy:zz:... */
--    if (strlen(host_key_check) >= 4 &&
--        strncmp(host_key_check, "md5:", 4) == 0) {
-+    if (strncmp(host_key_check, "md5:", 4) == 0) {
-         return check_host_key_hash(s, &host_key_check[4],
-                                    LIBSSH2_HOSTKEY_HASH_MD5, 16);
-     }
- 
-     /* host_key_check=sha1:xx:yy:zz:... */
--    if (strlen(host_key_check) >= 5 &&
--        strncmp(host_key_check, "sha1:", 5) == 0) {
-+    if (strncmp(host_key_check, "sha1:", 5) == 0) {
-         return check_host_key_hash(s, &host_key_check[5],
-                                    LIBSSH2_HOSTKEY_HASH_SHA1, 20);
-     }
--- 
-1.8.1.4
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+------enig2FQDMDJIVXMGHDSJWCDXH
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.13 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJRcGRzAAoJEKeha0olJ0NqAJQH+QH6gZoVz0uq9skczmdE1PUs
+Vaj3AfKUFXt5J+alzH6TSLyPP7XTjs211BlFakcuKVKHeJMFsruk7wuA9e1ZJD/b
+/VLl0VXT2rF7gApamJZJaJU5ParPaeHJ3heUyRvHpuWfofEn5CbZ47Nen0gIhQRs
+G3Rh206pEZqFb1na22irjhN3Ae3k2F8WyW+9mp+RH6KI4j5oDEXs6/a/ekoSqHZX
+MNQl8cO0GuCt+pB/2MUtSmVZ98AAW1/HzauQwaj0z5YVq6qlYzOadJetQmvsbMyW
+9T72bEZdKjr4Ah6HC2Y8R4ywtKg5PWvgHdLMeSBIr04KfTqVmhtUCHNu5Tp7SlA=
+=nlkS
+-----END PGP SIGNATURE-----
+
+------enig2FQDMDJIVXMGHDSJWCDXH--
 
