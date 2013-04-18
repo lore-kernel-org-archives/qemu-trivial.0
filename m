@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1USmuu-0004tq-68
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 07:22:16 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42545)
+	id 1USmx5-0005oi-22
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 07:24:31 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42880)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1USmur-0004tg-Gt
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 07:22:14 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1USmx1-0005nL-Bm
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 07:24:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1USmuq-0006Jb-8f
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 07:22:13 -0400
-Received: from mail-lb0-f176.google.com ([209.85.217.176]:34487)
+	(envelope-from <peter.maydell@linaro.org>) id 1USmx0-0006bT-Eg
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 07:24:27 -0400
+Received: from mail-lb0-f182.google.com ([209.85.217.182]:40915)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1USmuq-0006JO-11
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 07:22:12 -0400
-Received: by mail-lb0-f176.google.com with SMTP id y8so2532925lbh.7
-	for <qemu-trivial@nongnu.org>; Thu, 18 Apr 2013 04:22:11 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1USmx0-0006bJ-7G
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 07:24:26 -0400
+Received: by mail-lb0-f182.google.com with SMTP id z13so2586708lbh.13
+	for <qemu-trivial@nongnu.org>; Thu, 18 Apr 2013 04:24:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
 	h=x-received:mime-version:in-reply-to:references:from:date:message-id
 	:subject:to:cc:content-type:x-gm-message-state;
-	bh=gSeLOoFq5UeEZ6A5e3WNhDIMps2E99WYLY++3IWfIYo=;
-	b=KJaNgKmoHNYH8k4N3Os/TfbEbmHpKPs8lYDshuUBYxZaLmrLs5kddB9j/x6eFGVnMO
-	uCEHWU1iHbEYXBKQixu5R6lysE/fdz9MbtAPEQuuSs7Th5OW2JyL1GZBexG5bYY0WiYQ
-	d8ZUUjcj362Zye62hejeClCVaWKzsKElVjEkS2JM4rMdzr4k/7cKaN9VbL4EI+TCv7fp
-	mgo2tl2o/py34cdDFXAn3dAYtkxAOajYPBVriYJR+1jk3qpEv+3TBJc9nJ15EcuQ8J1N
-	JUSMXrrZTJ5b/dmFlBFnwQBKApPV/M4nYVtaIqJP5dPUONxtsgFnqZjWq50Kn3BNn6/N
-	CgoA==
-X-Received: by 10.152.9.37 with SMTP id w5mr5599079laa.15.1366284130970; Thu,
-	18 Apr 2013 04:22:10 -0700 (PDT)
+	bh=Orc9Gfp7/dCVbaTzv8EER2XbxkA4ugDp2bKsX7A09Xg=;
+	b=el8ILqP1rqY05z1MfdOC8KmLa0WLV7mMAachoilnlhYQE0uINDB4ghdjDR5vLlUbWi
+	tB1QqLNSKCf+5PJyFfHiaZgOIAalT9pleF2KzYHdLPUAXZAZtS7y2p2u3WT8hxDGVnqU
+	3p4FiwYtNlX2WNOvv7iJsb5PfFX6RhL9M9E3cD0oyw4g+c+zRbrEWmjwdCMFIz629xCh
+	q/YMa30TkF0hu9Be1yp4Ni+yTfJdy7N/xrqUsLc6EPTUuLYdgAUfpSwpFNikEp6qE7kW
+	gpBUyt93iFpTPsASLBszemOKWjsp3GvjrNI5o5UREPf2m2ukK3VOJxzHOrH2XiMqWKFa
+	Uxxg==
+X-Received: by 10.112.125.33 with SMTP id mn1mr5660007lbb.89.1366284265117;
+	Thu, 18 Apr 2013 04:24:25 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.112.198.198 with HTTP; Thu, 18 Apr 2013 04:21:50 -0700 (PDT)
+Received: by 10.112.198.198 with HTTP; Thu, 18 Apr 2013 04:24:05 -0700 (PDT)
 In-Reply-To: <1366283853-31785-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1366283853-31785-1-git-send-email-mjt@msgid.tls.msk.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 18 Apr 2013 12:21:50 +0100
-Message-ID: <CAFEAcA80vAobT2+mcZ7BxLUdjH_39W3KK2noWna_NMutpDmy8A@mail.gmail.com>
+Date: Thu, 18 Apr 2013 12:24:05 +0100
+Message-ID: <CAFEAcA_pR8uik81i5kBGHF-=ZMfLg3xyuDbvxY2d5HwnxXN3hw@mail.gmail.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQmJDb/qPOv2TtTxDtHmlXRUdc8uiR1ApPxBtm+EzlWbkfGHZmw1I/aV/b07p5yoJKydkwKY
+X-Gm-Message-State: ALoCoQlN3ptb+jufgmKbz5I5PCq7j4zI+8UhBlSlLGL/pQIReON6Zw16rWszQEEHnx3+jqvInaCi
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.217.176
+X-Received-From: 209.85.217.182
 Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
 	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH] allow usage of older libusb which didn't
@@ -54,24 +54,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Apr 2013 11:22:14 -0000
+X-List-Received-Date: Thu, 18 Apr 2013 11:24:29 -0000
 
 On 18 April 2013 12:17, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
-> index 29f35b3..78c315f 100644
-> --- a/hw/usb/host-libusb.c
-> +++ b/hw/usb/host-libusb.c
-> @@ -1251,6 +1251,9 @@ static Property usb_host_dev_properties[] = {
->      DEFINE_PROP_UINT32("isobufs",  USBHostDevice, iso_urb_count,    4),
->      DEFINE_PROP_UINT32("isobsize", USBHostDevice, iso_urb_frames,   32),
->      DEFINE_PROP_INT32("bootindex", USBHostDevice, bootindex,        -1),
 > +#ifndef LIBUSB_LOG_LEVEL_WARNING /* older libusb didn't define these */
 > +#define LIBUSB_LOG_LEVEL_WARNING 2
 > +#endif
 
-Can we put this up near the top of the file rather than in the
-middle of the Property list definition, please?
+By the way, where these are provided by the header, they're
+provided as an enum, not #defined constants. So we'll always
+#define the define (which will work, but I don't know if you
+did this deliberately).
 
-thanks
 -- PMM
 
