@@ -1,48 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1USmx5-0005oi-22
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 07:24:31 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42880)
+	id 1USvKj-0004ro-5H
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 16:21:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:39171)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1USmx1-0005nL-Bm
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 07:24:29 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1USvKe-0004ie-LB
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 16:21:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1USmx0-0006bT-Eg
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 07:24:27 -0400
-Received: from mail-lb0-f182.google.com ([209.85.217.182]:40915)
+	(envelope-from <stefan@weilnetz.de>) id 1USvKa-00011r-Oy
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 16:21:24 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:38623)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1USmx0-0006bJ-7G
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 07:24:26 -0400
-Received: by mail-lb0-f182.google.com with SMTP id z13so2586708lbh.13
-	for <qemu-trivial@nongnu.org>; Thu, 18 Apr 2013 04:24:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:mime-version:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type:x-gm-message-state;
-	bh=Orc9Gfp7/dCVbaTzv8EER2XbxkA4ugDp2bKsX7A09Xg=;
-	b=el8ILqP1rqY05z1MfdOC8KmLa0WLV7mMAachoilnlhYQE0uINDB4ghdjDR5vLlUbWi
-	tB1QqLNSKCf+5PJyFfHiaZgOIAalT9pleF2KzYHdLPUAXZAZtS7y2p2u3WT8hxDGVnqU
-	3p4FiwYtNlX2WNOvv7iJsb5PfFX6RhL9M9E3cD0oyw4g+c+zRbrEWmjwdCMFIz629xCh
-	q/YMa30TkF0hu9Be1yp4Ni+yTfJdy7N/xrqUsLc6EPTUuLYdgAUfpSwpFNikEp6qE7kW
-	gpBUyt93iFpTPsASLBszemOKWjsp3GvjrNI5o5UREPf2m2ukK3VOJxzHOrH2XiMqWKFa
-	Uxxg==
-X-Received: by 10.112.125.33 with SMTP id mn1mr5660007lbb.89.1366284265117;
-	Thu, 18 Apr 2013 04:24:25 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.198.198 with HTTP; Thu, 18 Apr 2013 04:24:05 -0700 (PDT)
-In-Reply-To: <1366283853-31785-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1366283853-31785-1-git-send-email-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 18 Apr 2013 12:24:05 +0100
-Message-ID: <CAFEAcA_pR8uik81i5kBGHF-=ZMfLg3xyuDbvxY2d5HwnxXN3hw@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQlN3ptb+jufgmKbz5I5PCq7j4zI+8UhBlSlLGL/pQIReON6Zw16rWszQEEHnx3+jqvInaCi
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.217.182
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] allow usage of older libusb which didn't
-	define LIBUSB_LOG_LEVEL_WARNING
+	(envelope-from <stefan@weilnetz.de>)
+	id 1USvKS-0000zq-IX; Thu, 18 Apr 2013 16:21:12 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	7F853728002C; Thu, 18 Apr 2013 22:21:10 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 8JkSAfeMm7Z8; Thu, 18 Apr 2013 22:21:08 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id A5406728003E; Thu, 18 Apr 2013 22:21:08 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Thu, 18 Apr 2013 22:21:05 +0200
+Message-Id: <1366316465-32710-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 78.47.199.172
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
+	"Richard W.M. Jones" <rjones@redhat.com>
+Subject: [Qemu-trivial] [PATCH] block/ssh: Add missing gcc format attributes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,17 +43,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Apr 2013 11:24:29 -0000
+X-List-Received-Date: Thu, 18 Apr 2013 20:21:28 -0000
 
-On 18 April 2013 12:17, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> +#ifndef LIBUSB_LOG_LEVEL_WARNING /* older libusb didn't define these */
-> +#define LIBUSB_LOG_LEVEL_WARNING 2
-> +#endif
+Now gcc will check whether format string and variable arguments match.
 
-By the way, where these are provided by the header, they're
-provided as an enum, not #defined constants. So we'll always
-#define the define (which will work, but I don't know if you
-did this deliberately).
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
--- PMM
+Please note: I could only run limited tests with the new code
+because ssh.c is currently not compiled in my w32/w64 environment.
+
+Regards,
+Stefan W.
+
+ block/ssh.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/block/ssh.c b/block/ssh.c
+index 8f78e2e..b4e048c 100644
+--- a/block/ssh.c
++++ b/block/ssh.c
+@@ -109,7 +109,7 @@ static void ssh_state_free(BDRVSSHState *s)
+ /* Wrappers around error_report which make sure to dump as much
+  * information from libssh2 as possible.
+  */
+-static void
++static void GCC_FMT_ATTR(2, 3)
+ session_error_report(BDRVSSHState *s, const char *fs, ...)
+ {
+     va_list args;
+@@ -132,7 +132,7 @@ session_error_report(BDRVSSHState *s, const char *fs, ...)
+     error_printf("\n");
+ }
+ 
+-static void
++static void GCC_FMT_ATTR(2, 3)
+ sftp_error_report(BDRVSSHState *s, const char *fs, ...)
+ {
+     va_list args;
+-- 
+1.7.10.4
+
 
