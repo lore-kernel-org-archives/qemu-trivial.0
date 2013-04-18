@@ -1,41 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1USw3M-0002aY-SG
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 17:07:36 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:50030)
+	id 1USw5U-0004SF-NX
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 17:09:48 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50631)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1USw3K-0002Zr-LX
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:07:35 -0400
+	(envelope-from <rjones@redhat.com>) id 1USw5S-0004S7-2a
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:09:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1USw3H-0008Tb-D6
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:07:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:24472)
+	(envelope-from <rjones@redhat.com>) id 1USw5R-0000bZ-6U
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:09:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39680)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <rjones@redhat.com>)
-	id 1USw3H-0008TL-5c; Thu, 18 Apr 2013 17:07:31 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r3IL7S6q000993
+	id 1USw5Q-0000aU-Va; Thu, 18 Apr 2013 17:09:45 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r3IL9ijA028587
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 18 Apr 2013 17:07:28 -0400
-Received: from localhost (vpn1-7-56.ams2.redhat.com [10.36.7.56])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r3IL7QTA021214; Thu, 18 Apr 2013 17:07:27 -0400
-Date: Thu, 18 Apr 2013 22:07:25 +0100
+	Thu, 18 Apr 2013 17:09:44 -0400
+Received: from choo.home.annexia.org (vpn1-7-56.ams2.redhat.com [10.36.7.56])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with
+	ESMTP id r3IL9gqd007137; Thu, 18 Apr 2013 17:09:43 -0400
 From: "Richard W.M. Jones" <rjones@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20130418210725.GX4272@rhmail.home.annexia.org>
-References: <1366316465-32710-1-git-send-email-sw@weilnetz.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1366316465-32710-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.20 (2009-12-10)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+To: qemu-trivial@nongnu.org
+Date: Thu, 18 Apr 2013 22:09:33 +0100
+Message-Id: <1366319373-12926-1-git-send-email-rjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] block/ssh: Add missing gcc format
-	attributes
+Cc: sw@weilnetz.de, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] ssh: Remove unnecessary use of strlen
+	function.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,20 +41,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Apr 2013 21:07:35 -0000
+X-List-Received-Date: Thu, 18 Apr 2013 21:09:47 -0000
 
-On Thu, Apr 18, 2013 at 10:21:05PM +0200, Stefan Weil wrote:
-> Now gcc will check whether format string and variable arguments match.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+From: "Richard W.M. Jones" <rjones@redhat.com>
 
-ACK, this looks fine to me.
+---
+ block/ssh.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-Rich.
-
+diff --git a/block/ssh.c b/block/ssh.c
+index 8f78e2e..7bc008d 100644
+--- a/block/ssh.c
++++ b/block/ssh.c
+@@ -387,15 +387,13 @@ static int check_host_key(BDRVSSHState *s, const char *host, int port,
+     }
+ 
+     /* host_key_check=md5:xx:yy:zz:... */
+-    if (strlen(host_key_check) >= 4 &&
+-        strncmp(host_key_check, "md5:", 4) == 0) {
++    if (strncmp(host_key_check, "md5:", 4) == 0) {
+         return check_host_key_hash(s, &host_key_check[4],
+                                    LIBSSH2_HOSTKEY_HASH_MD5, 16);
+     }
+ 
+     /* host_key_check=sha1:xx:yy:zz:... */
+-    if (strlen(host_key_check) >= 5 &&
+-        strncmp(host_key_check, "sha1:", 5) == 0) {
++    if (strncmp(host_key_check, "sha1:", 5) == 0) {
+         return check_host_key_hash(s, &host_key_check[5],
+                                    LIBSSH2_HOSTKEY_HASH_SHA1, 20);
+     }
 -- 
-Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjones
-virt-top is 'top' for virtual machines.  Tiny program with many
-powerful monitoring features, net stats, disk stats, logging, etc.
-http://people.redhat.com/~rjones/virt-top
+1.8.1.4
+
 
