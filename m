@@ -1,44 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UT2bb-0005bm-9C
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Apr 2013 00:07:23 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:50204)
+	id 1UT7cj-00087I-89
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Apr 2013 05:28:53 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:41006)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UT2bY-0005ZE-Ve
-	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 00:07:21 -0400
+	(envelope-from <stefanha@gmail.com>) id 1UT7cf-00086f-W7
+	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 05:28:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UT2bX-0006UP-Pe
-	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 00:07:20 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41729)
+	(envelope-from <stefanha@gmail.com>) id 1UT7ce-0002KH-Q3
+	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 05:28:49 -0400
+Received: from mail-wi0-x234.google.com ([2a00:1450:400c:c05::234]:58223)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1UT2bU-0006Te-RA; Fri, 19 Apr 2013 00:07:16 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	890F9728003E; Fri, 19 Apr 2013 06:07:15 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 325tCHV5kWLg; Fri, 19 Apr 2013 06:07:13 +0200 (CEST)
-Received: from [192.168.178.35] (p54AD8D33.dip0.t-ipconnect.de [84.173.141.51])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	A5434728002C; Fri, 19 Apr 2013 06:07:13 +0200 (CEST)
-Message-ID: <5170C2F0.4040808@weilnetz.de>
-Date: Fri, 19 Apr 2013 06:07:12 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
+	(envelope-from <stefanha@gmail.com>)
+	id 1UT7ce-0002KA-Jp; Fri, 19 Apr 2013 05:28:48 -0400
+Received: by mail-wi0-f180.google.com with SMTP id h11so503289wiv.1
+	for <multiple recipients>; Fri, 19 Apr 2013 02:28:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent; bh=bTvzNkc1Xd24IT6YVDhw7kxLtfncIqnj6ExrrNdcjEs=;
+	b=bFbDvin0y/HvSC1J0vsj8GCNdHKR37SAfQcRhjPtfMfj0seb1S+jcD1RoiVgUiYdl9
+	tY+rDeiWsrHpPxdm/HKHyrWBGep3SVrq/d/zFa+c8Xw0KMw0/9cWnGuS8XNaGacs8K1n
+	GXSBCVlR+h0Q66qAQqTrUKMbsLXBbtFBp+xaRDe891Jiq1daY/IJPmJYgF/R8rSnA5Fz
+	QTeVgufhDpoz9vxIcYptFHimQKzhdGkgjmwyuPnQxDudmMf+3FDqhS339yq1J7GvJCxb
+	Gn6bnBNRc2YnGkKGlCs6kaAdxQfyaDjNY8e3IttEDzoLemGmXr+qo7dn7Vu/7dJESvKX
+	arTg==
+X-Received: by 10.180.93.134 with SMTP id cu6mr23476963wib.8.1366363727639;
+	Fri, 19 Apr 2013 02:28:47 -0700 (PDT)
+Received: from localhost ([2a02:810d:ec0:195:f833:9039:bb71:5207])
+	by mx.google.com with ESMTPS id g4sm2324304wib.11.2013.04.19.02.28.45
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Fri, 19 Apr 2013 02:28:46 -0700 (PDT)
+Date: Fri, 19 Apr 2013 11:28:44 +0200
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
+Message-ID: <20130419092844.GA30143@stefanha-thinkpad.redhat.com>
+References: <51686F17.7070503@weilnetz.de>
+	<1365990476-14975-1-git-send-email-aik@ozlabs.ru>
 MIME-Version: 1.0
-To: "Richard W.M. Jones" <rjones@redhat.com>
-References: <1366319373-12926-1-git-send-email-rjones@redhat.com>
-In-Reply-To: <1366319373-12926-1-git-send-email-rjones@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] ssh: Remove unnecessary use of strlen
-	function.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1365990476-14975-1-git-send-email-aik@ozlabs.ru>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::234
+Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>, Blue Swirl <blauwirbel@gmail.com>,
+	qemu-ppc@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	David Gibson <david@gibson.dropbear.id.au>
+Subject: Re: [Qemu-trivial] [PATCH v2] bswap: fix compiler warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,39 +62,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Apr 2013 04:07:22 -0000
+X-List-Received-Date: Fri, 19 Apr 2013 09:28:51 -0000
 
-Am 18.04.2013 23:09, schrieb Richard W.M. Jones:
-> From: "Richard W.M. Jones" <rjones@redhat.com>
->
+On Mon, Apr 15, 2013 at 11:47:56AM +1000, Alexey Kardashevskiy wrote:
+> The bswap functions use memcpy but the bswap.h header itself does not seem to
+> include it in some configuration such as cross compiling for powerpc64
+> on x86_64 machine.
+> 
+> The patch explicitly includes string.h.
+> 
+> v2:
+> * #include statement moved to the right place
+> 
+> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 > ---
->  block/ssh.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->
-> diff --git a/block/ssh.c b/block/ssh.c
-> index 8f78e2e..7bc008d 100644
-> --- a/block/ssh.c
-> +++ b/block/ssh.c
-> @@ -387,15 +387,13 @@ static int check_host_key(BDRVSSHState *s, const char *host, int port,
->      }
->  
->      /* host_key_check=md5:xx:yy:zz:... */
-> -    if (strlen(host_key_check) >= 4 &&
-> -        strncmp(host_key_check, "md5:", 4) == 0) {
-> +    if (strncmp(host_key_check, "md5:", 4) == 0) {
->          return check_host_key_hash(s, &host_key_check[4],
->                                     LIBSSH2_HOSTKEY_HASH_MD5, 16);
->      }
->  
->      /* host_key_check=sha1:xx:yy:zz:... */
-> -    if (strlen(host_key_check) >= 5 &&
-> -        strncmp(host_key_check, "sha1:", 5) == 0) {
-> +    if (strncmp(host_key_check, "sha1:", 5) == 0) {
->          return check_host_key_hash(s, &host_key_check[5],
->                                     LIBSSH2_HOSTKEY_HASH_SHA1, 20);
->      }
+>  include/qemu/bswap.h |    1 +
+>  1 file changed, 1 insertion(+)
 
+Thanks, applied to the trivial patches tree:
+https://github.com/stefanha/qemu/commits/trivial-patches
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
+Stefan
 
