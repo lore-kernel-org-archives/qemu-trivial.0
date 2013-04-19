@@ -1,46 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1USwLe-00007u-R9
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 17:26:30 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:55065)
+	id 1UT0vv-00031e-0j
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 22:20:15 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:60220)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1USwLd-00006O-5s
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:26:30 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UT0vr-0002ze-AV
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 22:20:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1USwJJ-0005Tp-R3
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 17:24:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40778)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UT0vq-0007QV-3P
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 22:20:11 -0400
+Received: from mail-da0-x22b.google.com ([2607:f8b0:400e:c00::22b]:61526)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1USwJJ-0005Te-Dy; Thu, 18 Apr 2013 17:24:05 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r3ILO46u000996
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 18 Apr 2013 17:24:04 -0400
-Received: from [10.3.113.85] (ovpn-113-85.phx2.redhat.com [10.3.113.85])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r3ILO32w005962; Thu, 18 Apr 2013 17:24:03 -0400
-Message-ID: <51706473.7030808@redhat.com>
-Date: Thu, 18 Apr 2013 15:24:03 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130402 Thunderbird/17.0.5
-MIME-Version: 1.0
-To: "Richard W.M. Jones" <rjones@redhat.com>
-References: <1366319373-12926-1-git-send-email-rjones@redhat.com>
-In-Reply-To: <1366319373-12926-1-git-send-email-rjones@redhat.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="----enig2FQDMDJIVXMGHDSJWCDXH"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, sw@weilnetz.de, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ssh: Remove unnecessary use
-	of strlen function.
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UT0vp-0007Q6-T6
+	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 22:20:10 -0400
+Received: by mail-da0-f43.google.com with SMTP id u36so1690101dak.2
+	for <qemu-trivial@nongnu.org>; Thu, 18 Apr 2013 19:20:09 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer
+	:x-gm-message-state;
+	bh=32R96lsycs3zhD2T6ZdzKdwfDilS6R0EB0ytDx2jDoo=;
+	b=L2YbVlAb5Ay8QZQ+l5dqwWdruLjS8tvyNxHjgNFNrfoABRzl59rd64mCI4A3g0rVZR
+	6m7rBwzwS0Z09xF7YIig1IH0WOQIt1kDmHWiPtPkYFvXBPHe6/n+DjLOQcp5B4zsaVCb
+	jJzMMfxyzZu/ZeCkwAAgoVUMeF6QPvp/4lyvCN9ZWBsqoXqbjUiw4+xY2xHYuqfc9f8j
+	PuUZ9pFvPHH9CyTKurvYb9K+Tab5P/Ho+BHkBpemj9y/BaXgTtyZNyAGWh4h+x5MY6/K
+	QsNhjoWA3Yg7fvFLgzV2Dbu8Znbejl/DX0RzpPU4d4FW1bvjGHvDj8CE5IT7J+9TcLCf
+	cXAA==
+X-Received: by 10.66.248.6 with SMTP id yi6mr15750142pac.20.1366338008923;
+	Thu, 18 Apr 2013 19:20:08 -0700 (PDT)
+Received: from localhost ([149.199.62.254])
+	by mx.google.com with ESMTPS id dg5sm11606101pbc.29.2013.04.18.19.20.06
+	(version=TLSv1.1 cipher=RC4-SHA bits=128/128);
+	Thu, 18 Apr 2013 19:20:07 -0700 (PDT)
+Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
+From: peter.crosthwaite@xilinx.com
+To: qemu-devel@nongnu.org
+Date: Fri, 19 Apr 2013 12:18:05 +1000
+Message-Id: <1366337885-9358-1-git-send-email-peter.crosthwaite@xilinx.com>
+X-Mailer: git-send-email 1.7.0.4
+X-Gm-Message-State: ALoCoQkVn+nv7/I91y/XsE44sY/m2UAG6wAsKHheJigMYVZOX+6oj8lYzAUSfu9W5ZBtm0Pot+HD
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c00::22b
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] m25p80: Remove bogus include of devices.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,45 +54,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Apr 2013 21:26:30 -0000
+X-List-Received-Date: Fri, 19 Apr 2013 02:20:13 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
-------enig2FQDMDJIVXMGHDSJWCDXH
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 
-On 04/18/2013 03:09 PM, Richard W.M. Jones wrote:
-> From: "Richard W.M. Jones" <rjones@redhat.com>
->=20
-> ---
->  block/ssh.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
+I think in the early revisions of this we had an instantiation helper
+for the device in devices.h. This was later removed and this header was
+left over. Removed
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+---
+ hw/block/m25p80.c |    1 -
+ 1 files changed, 0 insertions(+), 1 deletions(-)
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index efcc7f4..b3ca19a 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -24,7 +24,6 @@
+ #include "hw/hw.h"
+ #include "sysemu/blockdev.h"
+ #include "hw/ssi.h"
+-#include "hw/devices.h"
+ 
+ #ifndef M25P80_ERR_DEBUG
+ #define M25P80_ERR_DEBUG 0
+-- 
+1.7.0.4
 
-
-------enig2FQDMDJIVXMGHDSJWCDXH
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.13 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJRcGRzAAoJEKeha0olJ0NqAJQH+QH6gZoVz0uq9skczmdE1PUs
-Vaj3AfKUFXt5J+alzH6TSLyPP7XTjs211BlFakcuKVKHeJMFsruk7wuA9e1ZJD/b
-/VLl0VXT2rF7gApamJZJaJU5ParPaeHJ3heUyRvHpuWfofEn5CbZ47Nen0gIhQRs
-G3Rh206pEZqFb1na22irjhN3Ae3k2F8WyW+9mp+RH6KI4j5oDEXs6/a/ekoSqHZX
-MNQl8cO0GuCt+pB/2MUtSmVZ98AAW1/HzauQwaj0z5YVq6qlYzOadJetQmvsbMyW
-9T72bEZdKjr4Ah6HC2Y8R4ywtKg5PWvgHdLMeSBIr04KfTqVmhtUCHNu5Tp7SlA=
-=nlkS
------END PGP SIGNATURE-----
-
-------enig2FQDMDJIVXMGHDSJWCDXH--
 
