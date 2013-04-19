@@ -1,48 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UT0vv-00031e-0j
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Apr 2013 22:20:15 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:60220)
+	id 1UT2bb-0005bm-9C
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Apr 2013 00:07:23 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50204)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UT0vr-0002ze-AV
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 22:20:12 -0400
+	(envelope-from <sw@weilnetz.de>) id 1UT2bY-0005ZE-Ve
+	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 00:07:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UT0vq-0007QV-3P
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 22:20:11 -0400
-Received: from mail-da0-x22b.google.com ([2607:f8b0:400e:c00::22b]:61526)
+	(envelope-from <sw@weilnetz.de>) id 1UT2bX-0006UP-Pe
+	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 00:07:20 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41729)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UT0vp-0007Q6-T6
-	for qemu-trivial@nongnu.org; Thu, 18 Apr 2013 22:20:10 -0400
-Received: by mail-da0-f43.google.com with SMTP id u36so1690101dak.2
-	for <qemu-trivial@nongnu.org>; Thu, 18 Apr 2013 19:20:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer
-	:x-gm-message-state;
-	bh=32R96lsycs3zhD2T6ZdzKdwfDilS6R0EB0ytDx2jDoo=;
-	b=L2YbVlAb5Ay8QZQ+l5dqwWdruLjS8tvyNxHjgNFNrfoABRzl59rd64mCI4A3g0rVZR
-	6m7rBwzwS0Z09xF7YIig1IH0WOQIt1kDmHWiPtPkYFvXBPHe6/n+DjLOQcp5B4zsaVCb
-	jJzMMfxyzZu/ZeCkwAAgoVUMeF6QPvp/4lyvCN9ZWBsqoXqbjUiw4+xY2xHYuqfc9f8j
-	PuUZ9pFvPHH9CyTKurvYb9K+Tab5P/Ho+BHkBpemj9y/BaXgTtyZNyAGWh4h+x5MY6/K
-	QsNhjoWA3Yg7fvFLgzV2Dbu8Znbejl/DX0RzpPU4d4FW1bvjGHvDj8CE5IT7J+9TcLCf
-	cXAA==
-X-Received: by 10.66.248.6 with SMTP id yi6mr15750142pac.20.1366338008923;
-	Thu, 18 Apr 2013 19:20:08 -0700 (PDT)
-Received: from localhost ([149.199.62.254])
-	by mx.google.com with ESMTPS id dg5sm11606101pbc.29.2013.04.18.19.20.06
-	(version=TLSv1.1 cipher=RC4-SHA bits=128/128);
-	Thu, 18 Apr 2013 19:20:07 -0700 (PDT)
-Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
-From: peter.crosthwaite@xilinx.com
-To: qemu-devel@nongnu.org
-Date: Fri, 19 Apr 2013 12:18:05 +1000
-Message-Id: <1366337885-9358-1-git-send-email-peter.crosthwaite@xilinx.com>
-X-Mailer: git-send-email 1.7.0.4
-X-Gm-Message-State: ALoCoQkVn+nv7/I91y/XsE44sY/m2UAG6wAsKHheJigMYVZOX+6oj8lYzAUSfu9W5ZBtm0Pot+HD
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c00::22b
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] m25p80: Remove bogus include of devices.h
+	(envelope-from <sw@weilnetz.de>)
+	id 1UT2bU-0006Te-RA; Fri, 19 Apr 2013 00:07:16 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	890F9728003E; Fri, 19 Apr 2013 06:07:15 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 325tCHV5kWLg; Fri, 19 Apr 2013 06:07:13 +0200 (CEST)
+Received: from [192.168.178.35] (p54AD8D33.dip0.t-ipconnect.de [84.173.141.51])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	A5434728002C; Fri, 19 Apr 2013 06:07:13 +0200 (CEST)
+Message-ID: <5170C2F0.4040808@weilnetz.de>
+Date: Fri, 19 Apr 2013 06:07:12 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
+MIME-Version: 1.0
+To: "Richard W.M. Jones" <rjones@redhat.com>
+References: <1366319373-12926-1-git-send-email-rjones@redhat.com>
+In-Reply-To: <1366319373-12926-1-git-send-email-rjones@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] ssh: Remove unnecessary use of strlen
+	function.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,32 +50,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Apr 2013 02:20:13 -0000
+X-List-Received-Date: Fri, 19 Apr 2013 04:07:22 -0000
 
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Am 18.04.2013 23:09, schrieb Richard W.M. Jones:
+> From: "Richard W.M. Jones" <rjones@redhat.com>
+>
+> ---
+>  block/ssh.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+>
+> diff --git a/block/ssh.c b/block/ssh.c
+> index 8f78e2e..7bc008d 100644
+> --- a/block/ssh.c
+> +++ b/block/ssh.c
+> @@ -387,15 +387,13 @@ static int check_host_key(BDRVSSHState *s, const char *host, int port,
+>      }
+>  
+>      /* host_key_check=md5:xx:yy:zz:... */
+> -    if (strlen(host_key_check) >= 4 &&
+> -        strncmp(host_key_check, "md5:", 4) == 0) {
+> +    if (strncmp(host_key_check, "md5:", 4) == 0) {
+>          return check_host_key_hash(s, &host_key_check[4],
+>                                     LIBSSH2_HOSTKEY_HASH_MD5, 16);
+>      }
+>  
+>      /* host_key_check=sha1:xx:yy:zz:... */
+> -    if (strlen(host_key_check) >= 5 &&
+> -        strncmp(host_key_check, "sha1:", 5) == 0) {
+> +    if (strncmp(host_key_check, "sha1:", 5) == 0) {
+>          return check_host_key_hash(s, &host_key_check[5],
+>                                     LIBSSH2_HOSTKEY_HASH_SHA1, 20);
+>      }
 
-I think in the early revisions of this we had an instantiation helper
-for the device in devices.h. This was later removed and this header was
-left over. Removed
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
----
- hw/block/m25p80.c |    1 -
- 1 files changed, 0 insertions(+), 1 deletions(-)
-
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index efcc7f4..b3ca19a 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -24,7 +24,6 @@
- #include "hw/hw.h"
- #include "sysemu/blockdev.h"
- #include "hw/ssi.h"
--#include "hw/devices.h"
- 
- #ifndef M25P80_ERR_DEBUG
- #define M25P80_ERR_DEBUG 0
--- 
-1.7.0.4
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
 
