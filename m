@@ -1,56 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UT7cj-00087I-89
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Apr 2013 05:28:53 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:41006)
+	id 1UT7hB-0000ub-GG
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Apr 2013 05:33:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UT7cf-00086f-W7
-	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 05:28:51 -0400
+	(envelope-from <stefanha@gmail.com>) id 1UT7h9-0000uA-Su
+	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 05:33:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UT7ce-0002KH-Q3
-	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 05:28:49 -0400
-Received: from mail-wi0-x234.google.com ([2a00:1450:400c:c05::234]:58223)
+	(envelope-from <stefanha@gmail.com>) id 1UT7h8-00043h-UX
+	for qemu-trivial@nongnu.org; Fri, 19 Apr 2013 05:33:27 -0400
+Received: from mail-wi0-x22f.google.com ([2a00:1450:400c:c05::22f]:46641)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1UT7ce-0002KA-Jp; Fri, 19 Apr 2013 05:28:48 -0400
-Received: by mail-wi0-f180.google.com with SMTP id h11so503289wiv.1
-	for <multiple recipients>; Fri, 19 Apr 2013 02:28:47 -0700 (PDT)
+	id 1UT7h7-000433-0G; Fri, 19 Apr 2013 05:33:25 -0400
+Received: by mail-wi0-f175.google.com with SMTP id h11so502564wiv.14
+	for <multiple recipients>; Fri, 19 Apr 2013 02:33:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=x-received:date:from:to:cc:subject:message-id:references
 	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=bTvzNkc1Xd24IT6YVDhw7kxLtfncIqnj6ExrrNdcjEs=;
-	b=bFbDvin0y/HvSC1J0vsj8GCNdHKR37SAfQcRhjPtfMfj0seb1S+jcD1RoiVgUiYdl9
-	tY+rDeiWsrHpPxdm/HKHyrWBGep3SVrq/d/zFa+c8Xw0KMw0/9cWnGuS8XNaGacs8K1n
-	GXSBCVlR+h0Q66qAQqTrUKMbsLXBbtFBp+xaRDe891Jiq1daY/IJPmJYgF/R8rSnA5Fz
-	QTeVgufhDpoz9vxIcYptFHimQKzhdGkgjmwyuPnQxDudmMf+3FDqhS339yq1J7GvJCxb
-	Gn6bnBNRc2YnGkKGlCs6kaAdxQfyaDjNY8e3IttEDzoLemGmXr+qo7dn7Vu/7dJESvKX
-	arTg==
-X-Received: by 10.180.93.134 with SMTP id cu6mr23476963wib.8.1366363727639;
-	Fri, 19 Apr 2013 02:28:47 -0700 (PDT)
+	:user-agent; bh=sahUtC48C3qaKfM9HHXsKaYiw57HGqzUxaBJKTq5o7A=;
+	b=PY7x8w9cSdDDSTW42gwW8yQEgqBr70RUS40jeg8qr5g3LrFMT3dOVS1ZGC/qbA2xs1
+	GpmTT4zrAp4Rg6fpyh5ic0PxglMgaZhYm3VQnu0n6BdEERI40LTGaqDJi5skDL9T6d0l
+	jrmsdREGs9ibHlV0OEMpsh9hARKHHW3N6dHOFt6ILfg1toG348WfL9+6Zr/NIT3bBHan
+	bK3nquz10VltAJUlVTBvZYlp3W35oZqyM9yszXQhbXAUtyGRnbaroeFaJN1bl5Z7qcej
+	zGrfxMA0K05nhyhBISjcYAt7TiOb0hX6L0x0DMiHiEZVcvJXZ5mIjueksksHBoCfVKGd
+	ckRw==
+X-Received: by 10.194.93.68 with SMTP id cs4mr24470963wjb.17.1366364004167;
+	Fri, 19 Apr 2013 02:33:24 -0700 (PDT)
 Received: from localhost ([2a02:810d:ec0:195:f833:9039:bb71:5207])
-	by mx.google.com with ESMTPS id g4sm2324304wib.11.2013.04.19.02.28.45
+	by mx.google.com with ESMTPS id bq19sm2378076wib.7.2013.04.19.02.33.22
 	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Fri, 19 Apr 2013 02:28:46 -0700 (PDT)
-Date: Fri, 19 Apr 2013 11:28:44 +0200
+	Fri, 19 Apr 2013 02:33:23 -0700 (PDT)
+Date: Fri, 19 Apr 2013 11:33:21 +0200
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Alexey Kardashevskiy <aik@ozlabs.ru>
-Message-ID: <20130419092844.GA30143@stefanha-thinkpad.redhat.com>
-References: <51686F17.7070503@weilnetz.de>
-	<1365990476-14975-1-git-send-email-aik@ozlabs.ru>
+To: Luiz Capitulino <lcapitulino@redhat.com>
+Message-ID: <20130419093321.GB30143@stefanha-thinkpad.redhat.com>
+References: <20130412091255.7a3f1c75@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1365990476-14975-1-git-send-email-aik@ozlabs.ru>
+In-Reply-To: <20130412091255.7a3f1c75@redhat.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::234
-Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>, Blue Swirl <blauwirbel@gmail.com>,
-	qemu-ppc@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-trivial] [PATCH v2] bswap: fix compiler warning
+X-Received-From: 2a00:1450:400c:c05::22f
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
+	fred.konrad@greensocs.com
+Subject: Re: [Qemu-trivial] [PATCH] virtio.h: drop unused function prototypes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,23 +57,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Apr 2013 09:28:51 -0000
+X-List-Received-Date: Fri, 19 Apr 2013 09:33:28 -0000
 
-On Mon, Apr 15, 2013 at 11:47:56AM +1000, Alexey Kardashevskiy wrote:
-> The bswap functions use memcpy but the bswap.h header itself does not seem to
-> include it in some configuration such as cross compiling for powerpc64
-> on x86_64 machine.
+On Fri, Apr 12, 2013 at 09:12:55AM -0400, Luiz Capitulino wrote:
+> They are unused since commit 5c7d0962f60498c3f11d402e1c857cb9d5d8568d.
 > 
-> The patch explicitly includes string.h.
-> 
-> v2:
-> * #include statement moved to the right place
-> 
-> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Signed-off-by: Luiz Capitulino <lcapitulino@redhat.com>
 > ---
->  include/qemu/bswap.h |    1 +
->  1 file changed, 1 insertion(+)
+>  include/hw/virtio/virtio.h | 2 --
+>  1 file changed, 2 deletions(-)
 
 Thanks, applied to the trivial patches tree:
 https://github.com/stefanha/qemu/commits/trivial-patches
