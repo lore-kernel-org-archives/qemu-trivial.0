@@ -1,57 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UUDfZ-0004Zq-An
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Apr 2013 06:08:21 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42955)
+	id 1UULa1-0001pK-3f
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Apr 2013 14:35:09 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:38529)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1UUDfW-0004Zf-SN
-	for qemu-trivial@nongnu.org; Mon, 22 Apr 2013 06:08:20 -0400
+	(envelope-from <aliguori@us.ibm.com>) id 1UULZs-0001Y1-57
+	for qemu-trivial@nongnu.org; Mon, 22 Apr 2013 14:35:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1UUDfV-0006xK-L8
-	for qemu-trivial@nongnu.org; Mon, 22 Apr 2013 06:08:18 -0400
-Received: from mail-pa0-f51.google.com ([209.85.220.51]:38901)
+	(envelope-from <aliguori@us.ibm.com>) id 1UULZr-0003RP-6o
+	for qemu-trivial@nongnu.org; Mon, 22 Apr 2013 14:35:00 -0400
+Received: from e23smtp02.au.ibm.com ([202.81.31.144]:46463)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1UUDfV-0006wz-Ec
-	for qemu-trivial@nongnu.org; Mon, 22 Apr 2013 06:08:17 -0400
-Received: by mail-pa0-f51.google.com with SMTP id jh10so3488258pab.24
-	for <qemu-trivial@nongnu.org>; Mon, 22 Apr 2013 03:08:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:message-id:date:from:user-agent:mime-version:to:cc
-	:subject:references:in-reply-to:content-type
-	:content-transfer-encoding:x-gm-message-state;
-	bh=sR4So380oc1jf1pc3HIrsG1OsbPdO/W+8nIdiDlqw5I=;
-	b=JIuxxq55Fptt6WtfwNg5Xch13n6FXmjdRVt6zQWKgj4gSL66J/pl/zrNGFs1NCNLXT
-	9DrYVjMiCWORUjPGTL+V/YIwuuuqiu7i25Mmy9ij8huZYuO3oqc5HhQYvw9kby9pizUm
-	Z0VaNYUdaQp2lqdrEXIw4n7ul+Yd2ZiIRvIUP37jUKvNOuBFkn9uOp1oYLnkx0Kat7JA
-	iieZcRCuvb0NrI80PSN60rC1V9Lle8/+VNOW3SLo5ReB6eTHjDkjiBPbgBe/SemQyT5I
-	cz77cyaDrcauezG8DP8qcoEpbe8ee9ZqY9Z5nxYvMbhYpmk7XQzAmS3fPCoXB6rfDaYM
-	HwDA==
-X-Received: by 10.66.159.6 with SMTP id wy6mr11751603pab.206.1366625296816;
-	Mon, 22 Apr 2013 03:08:16 -0700 (PDT)
-Received: from aik.ozlabs.ibm.com (60-242-102-4.tpgi.com.au. [60.242.102.4])
-	by mx.google.com with ESMTPS id vb8sm24554109pbc.11.2013.04.22.03.08.13
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Mon, 22 Apr 2013 03:08:15 -0700 (PDT)
-Message-ID: <51750C0A.50509@ozlabs.ru>
-Date: Mon, 22 Apr 2013 20:08:10 +1000
-From: Alexey Kardashevskiy <aik@ozlabs.ru>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130402 Thunderbird/17.0.5
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1366616571-4321-1-git-send-email-aik@ozlabs.ru>
-	<CAFEAcA9szMz8X-XfehpR4CZrJ5SaQpPeRHD-5Auja=WMk=GxQg@mail.gmail.com>
-	<51750A76.6080504@ozlabs.ru>
-	<CAFEAcA8JWnpUb=L97H2qo82H+11oCEvYctUvuYU377xW7BU=Sw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8JWnpUb=L97H2qo82H+11oCEvYctUvuYU377xW7BU=Sw@mail.gmail.com>
-Content-Type: text/plain; charset=KOI8-R; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Gm-Message-State: ALoCoQkoClQJ1uC5AZH9h5JAWmJfFxQPnu83JRtYkMTqJVQfVBzxW2209oElorGr8Vsz0+RHjlS8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.85.220.51
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] translate-all: fix compiler
- warning and linked error
+	(envelope-from <aliguori@us.ibm.com>) id 1UULZq-0003QC-MC
+	for qemu-trivial@nongnu.org; Mon, 22 Apr 2013 14:34:59 -0400
+Received: from /spool/local
+	by e23smtp02.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Tue, 23 Apr 2013 04:27:06 +1000
+Received: from d23dlp02.au.ibm.com (202.81.31.213)
+	by e23smtp02.au.ibm.com (202.81.31.208) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 23 Apr 2013 04:27:04 +1000
+Received: from d23relay05.au.ibm.com (d23relay05.au.ibm.com [9.190.235.152])
+	by d23dlp02.au.ibm.com (Postfix) with ESMTP id 39C2B2BB0052;
+	Tue, 23 Apr 2013 04:34:53 +1000 (EST)
+Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
+	by d23relay05.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r3MILB371704324; Tue, 23 Apr 2013 04:21:11 +1000
+Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	r3MIYqKe031603; Tue, 23 Apr 2013 04:34:52 +1000
+Received: from localhost6.localdomain6 (sig-9-65-110-210.mts.ibm.com
+	[9.65.110.210])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r3MIYmNA031550; Tue, 23 Apr 2013 04:34:49 +1000
+Message-Id: <201304221834.r3MIYmNA031550@d23av03.au.ibm.com>
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <1366551003-16649-1-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 22 Apr 2013 18:34:47 -0000
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13042218-5490-0000-0000-00000353C99C
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 202.81.31.144
+Cc: qemu-trivial@nongnu.org, Blue Swirl <blauwirbel@gmail.com>,
+	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org,
+	patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] qtest: Handle addresses and values for
+ {in, out}[bwl] as unsigned
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,30 +60,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Apr 2013 10:08:20 -0000
+X-List-Received-Date: Mon, 22 Apr 2013 18:35:06 -0000
 
-On 04/22/2013 08:03 PM, Peter Maydell wrote:
-> On 22 April 2013 11:01, Alexey Kardashevskiy <aik@ozlabs.ru> wrote:
->> On 04/22/2013 07:00 PM, Peter Maydell wrote:
->>> NB that this compile failure only happens if you configure
->>> with --enable-profiler.
->>
->>
->> I also thought I can enable/disable it via ./configure but in fact I cannot:
->>
->> alexey@ka1:~/pcipassthru/qemu-impreza$ ./configure --help | grep prof
->> alexey@ka1:~/pcipassthru/qemu-impreza$
->
-> --enable-profiler exists but it is undocumented (ie not mentioned
-> in the --help text). In fact I have no idea how you tripped over
-> this missing include if you don't know about --enable-profiler,
-> since configure's default is to not enable this code.
+Applied.  Thanks.
 
-Ah. Looked closer to my scripts and found --enable-profiler (leftover from 
-something). I was confused by the fact that there is no 
-"--disable-profiler", the ./configure script prints an error.
+Regards,
 
+Anthony Liguori
 
--- 
-Alexey
 
