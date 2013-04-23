@@ -1,52 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UULb2-0003JP-Sk
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Apr 2013 14:36:12 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:38837)
+	id 1UUgpd-0003hK-2K
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Apr 2013 13:16:41 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:45671)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UULax-00039D-2z
-	for qemu-trivial@nongnu.org; Mon, 22 Apr 2013 14:36:09 -0400
+	(envelope-from <gabriel@kerneis.info>) id 1UUgpZ-0003bd-6C
+	for qemu-trivial@nongnu.org; Tue, 23 Apr 2013 13:16:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UULaw-0004DH-2n
-	for qemu-trivial@nongnu.org; Mon, 22 Apr 2013 14:36:06 -0400
-Received: from e23smtp06.au.ibm.com ([202.81.31.148]:43763)
+	(envelope-from <gabriel@kerneis.info>) id 1UUgpV-0003If-1u
+	for qemu-trivial@nongnu.org; Tue, 23 Apr 2013 13:16:37 -0400
+Received: from witko.kerneis.info ([213.186.56.95]:58924)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UULav-0004Br-1C
-	for qemu-trivial@nongnu.org; Mon, 22 Apr 2013 14:36:05 -0400
-Received: from /spool/local
-	by e23smtp06.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Tue, 23 Apr 2013 04:30:10 +1000
-Received: from d23dlp03.au.ibm.com (202.81.31.214)
-	by e23smtp06.au.ibm.com (202.81.31.212) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 23 Apr 2013 04:30:08 +1000
-Received: from d23relay04.au.ibm.com (d23relay04.au.ibm.com [9.190.234.120])
-	by d23dlp03.au.ibm.com (Postfix) with ESMTP id E9668357804A;
-	Tue, 23 Apr 2013 04:36:00 +1000 (EST)
-Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
-	by d23relay04.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r3MILvoS1311024; Tue, 23 Apr 2013 04:21:57 +1000
-Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r3MIZUwV032166; Tue, 23 Apr 2013 04:35:30 +1000
-Received: from localhost6.localdomain6 (sig-9-65-110-210.mts.ibm.com
-	[9.65.110.210])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r3MIZGhI032068; Tue, 23 Apr 2013 04:35:18 +1000
-Message-Id: <201304221835.r3MIZGhI032068@d23av03.au.ibm.com>
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
-	Eric Blake <eblake@redhat.com>
-In-Reply-To: <1366149041-626-1-git-send-email-eblake@redhat.com>
-Date: Mon, 22 Apr 2013 18:35:16 -0000
-x-cbid: 13042218-7014-0000-0000-000002E49B5D
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 202.81.31.148
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, phrdina@redhat.com,
-	Stefan Hajnoczi <stefanha@redhat.com>, quintela@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] migration: reflect incoming failure to
-	shell
+	(envelope-from <gabriel@kerneis.info>)
+	id 1UUgpI-0003Dl-EU; Tue, 23 Apr 2013 13:16:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=kerneis.info;
+	s=witko-rsa1; h=Message-Id:Date:Subject:Cc:To:From;
+	bh=dNlCaWWzrBNUwCifkG6S931xkivjGv4Wv0ksY5FT7B4=; 
+	b=yf7XjXvym7DrQZK8TGB9Jq0TiPK8XC7QCDAs51EcWZ1ZZqVHqEffw5laehGDvHC4vig4q2nkab3HLtPr/UXUBmHBpveM8IzKxAL9Mvd9L+iJxH1QWpr6MnVdvGVL+f+5;
+Received: from c171.al.cl.cam.ac.uk ([128.232.110.171] helo=localhost)
+	by witko.kerneis.info with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.72) (envelope-from <gabriel@kerneis.info>)
+	id 1UUgp5-0002Am-M4; Tue, 23 Apr 2013 19:16:07 +0200
+From: Gabriel Kerneis <gabriel@kerneis.info>
+To: Richard Henderson <rth@twiddle.net>,
+	Alexander Graf <agraf@suse.de>
+Date: Tue, 23 Apr 2013 18:15:12 +0100
+Message-Id: <1366737312-8598-1-git-send-email-gabriel@kerneis.info>
+X-Mailer: git-send-email 1.7.10.4
+X-SA-Exim-Connect-IP: 128.232.110.171
+X-SA-Exim-Mail-From: gabriel@kerneis.info
+X-SA-Exim-Scanned: No (on witko.kerneis.info); SAEximRunCond expanded to false
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 213.186.56.95
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] s390x: use CONFIG_INT128 to detect
+	__uint128_t
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,12 +45,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Apr 2013 18:36:09 -0000
+X-List-Received-Date: Tue, 23 Apr 2013 17:16:40 -0000
 
-Applied.  Thanks.
+Target s390x uses ad-hoc macro magic to guess if the compiler
+supports the GCC extension __uint128_t.  This patch uses the
+the dedicated macro CONFIG_INT128 defined by configure instead.
 
-Regards,
+This fixes compilation with the CIL source code analyzer, which
+uses GCC as a preprocessor but does not support __uint128_t.
 
-Anthony Liguori
+Signed-off-by: Gabriel Kerneis <gabriel@kerneis.info>
+---
+ target-s390x/int_helper.c |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/target-s390x/int_helper.c b/target-s390x/int_helper.c
+index af16b21..85e49aa 100644
+--- a/target-s390x/int_helper.c
++++ b/target-s390x/int_helper.c
+@@ -97,8 +97,7 @@ uint64_t HELPER(divu64)(CPUS390XState *env, uint64_t ah, uint64_t al,
+         ret = al / b;
+     } else {
+         /* ??? Move i386 idivq helper to host-utils.  */
+-#if HOST_LONG_BITS == 64 && defined(__GNUC__)
+-        /* assuming 64-bit hosts have __uint128_t */
++#ifdef CONFIG_INT128
+         __uint128_t a = ((__uint128_t)ah << 64) | al;
+         __uint128_t q = a / b;
+         env->retxl = a % b;
+-- 
+1.7.10.4
 
 
