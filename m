@@ -1,47 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UUgrg-0005hK-Ox
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Apr 2013 13:18:48 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46312)
+	id 1UUjyY-0007mZ-Pd
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Apr 2013 16:38:06 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:46741)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>) id 1UUgrd-0005gW-0p
-	for qemu-trivial@nongnu.org; Tue, 23 Apr 2013 13:18:47 -0400
+	(envelope-from <rth7680@gmail.com>) id 1UUjyU-0007g5-PP
+	for qemu-trivial@nongnu.org; Tue, 23 Apr 2013 16:38:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>) id 1UUgrb-0003sI-B8
-	for qemu-trivial@nongnu.org; Tue, 23 Apr 2013 13:18:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35531)
+	(envelope-from <rth7680@gmail.com>) id 1UUjyR-0000c4-Aq
+	for qemu-trivial@nongnu.org; Tue, 23 Apr 2013 16:38:02 -0400
+Received: from mail-wi0-x22d.google.com ([2a00:1450:400c:c05::22d]:64124)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>)
-	id 1UUgrb-0003s0-2C; Tue, 23 Apr 2013 13:18:43 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r3NHIeKO007716
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 23 Apr 2013 13:18:40 -0400
-Received: from [10.34.27.188] (dhcp-27-188.brq.redhat.com [10.34.27.188])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r3NHIbBS026300; Tue, 23 Apr 2013 13:18:38 -0400
-Message-ID: <5176C26D.9050508@redhat.com>
-Date: Tue, 23 Apr 2013 19:18:37 +0200
-From: Michal Privoznik <mprivozn@redhat.com>
+	(envelope-from <rth7680@gmail.com>)
+	id 1UUjyL-0000Xr-H9; Tue, 23 Apr 2013 16:37:53 -0400
+Received: by mail-wi0-f173.google.com with SMTP id c10so6620575wiw.0
+	for <multiple recipients>; Tue, 23 Apr 2013 13:37:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
+	:cc:subject:references:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=rVGUmXmXxPVxOFmF1OsWOj0SV0wRzDGWx2suVbilpGk=;
+	b=UqnZ4L8vvaks8cK2dn4hSN6nFSvw0U0/0bgb2NpGuNxK1NDYOxYabyYZfWWAkym8MJ
+	I1BIMD+RTx8Bit47AC83R3KEtwnBEgpDGe/ECijcpUBc8VKYmSYNu3039EBMFzojv/Ov
+	7HDvv2y1w4N/Ca91Z7UeLAQNKYl1Nj2p5UhEq9/qCiGAQQfsuw7Zk5UMcCZHyJVvRKe0
+	l/67P31/ON5jPuVzkxSwQXXeqAau4mocHiuD/frIPcMAjtqp7ju0xA8+2yZRDup6VZa/
+	2IH7cma9GycbLi2X3INzxhzyYzPtX7/0iW3j5UL5L86E3WjEe2HNwyXZdazrgAa1Ss+T
+	s68w==
+X-Received: by 10.194.219.162 with SMTP id pp2mr64012849wjc.27.1366749471865; 
+	Tue, 23 Apr 2013 13:37:51 -0700 (PDT)
+Received: from pebble.twiddle.net ([212.183.128.67])
+	by mx.google.com with ESMTPSA id ge7sm27751549wic.0.2013.04.23.13.37.49
+	for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Tue, 23 Apr 2013 13:37:51 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Message-ID: <5176F118.6050708@twiddle.net>
+Date: Tue, 23 Apr 2013 21:37:44 +0100
+From: Richard Henderson <rth@twiddle.net>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130411 Thunderbird/17.0.5
+	rv:17.0) Gecko/20130402 Thunderbird/17.0.5
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <9021f2f9e51e4c7a253d1993ea05f87d0718752f.1359627279.git.mprivozn@redhat.com>
-	<510B90C9.8000309@suse.de> <510BDCBF.5040108@redhat.com>
-	<20130206144956.GA22233@stefanha-thinkpad.redhat.com>
-	<51127222.1040904@redhat.com>
-In-Reply-To: <51127222.1040904@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
+To: Gabriel Kerneis <gabriel@kerneis.info>
+References: <1366737312-8598-1-git-send-email-gabriel@kerneis.info>
+In-Reply-To: <1366737312-8598-1-git-send-email-gabriel@kerneis.info>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Undefine
- _FORTIFY_SOURCE prior using it
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::22d
+Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] s390x: use CONFIG_INT128 to detect
+	__uint128_t
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,38 +62,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Apr 2013 17:18:48 -0000
+X-List-Received-Date: Tue, 23 Apr 2013 20:38:05 -0000
 
-On 06.02.2013 16:09, Paolo Bonzini wrote:
-> Il 06/02/2013 15:49, Stefan Hajnoczi ha scritto:
->>>> I don't think that's necessary. The 2nd level is the highest one [1] or [2].
->>>> It seems like in my case it's compiler who's defining the macro:
->>>>
->>>> $ echo "int main() {return 0;}" | gcc -D_FORTIFY_SOURCE=2 -x c -
->>>> <command-line>:0:0: warning: "_FORTIFY_SOURCE" redefined [enabled by default]
->>>> <stdin>:1:0: note: this is the location of the previous definition
->>>>
->>>> in which case we must undefine it. However, if the _FORTIFY_SOURCE is
->>>> defined by environment, I think we should not override it. So maybe need
->>>> a different approach. Anyway, with current state I cannot compile. I am using
->>>> gcc version 4.7.2 (Gentoo 4.7.2 p1.3, pie-0.5.5)
->> It would be nice to fix this for QEMU 1.4 but my gcc FORTIFY_SOURCE foo
->> is not strong enough to know what the best approach is here.
->>
->> Reviews from anyone else?
-> 
-> I would prefer to avoid having _FORTIFY_SOURCE completely, and let
-> distros do it.  Alternatively, tie it to a new --enable switch which
-> would do -U -D.
-> 
-> But if there is a real problem for 1.4 the patch looks good.
-> 
-> Paolo
-> 
+On 2013-04-23 18:15, Gabriel Kerneis wrote:
+> Target s390x uses ad-hoc macro magic to guess if the compiler
+> supports the GCC extension __uint128_t.  This patch uses the
+> the dedicated macro CONFIG_INT128 defined by configure instead.
+>
+> This fixes compilation with the CIL source code analyzer, which
+> uses GCC as a preprocessor but does not support __uint128_t.
+>
+> Signed-off-by: Gabriel Kerneis <gabriel@kerneis.info>
 
-Sorry for resurrecting such old thread, but what's the conclusion then?
-I keep hitting this problem and I am tired of having one single patch on
-the top of HEAD. And I bet others ran into this as well.
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-Michal
+
+r~
+
 
