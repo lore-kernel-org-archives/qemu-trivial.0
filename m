@@ -1,49 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UVgWt-0006P2-LR
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Apr 2013 07:09:27 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40283)
+	id 1UVmDV-0004RX-DG
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Apr 2013 13:13:49 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:33609)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UVgWr-0006Lw-Dn
-	for qemu-trivial@nongnu.org; Fri, 26 Apr 2013 07:09:26 -0400
+	(envelope-from <prlw1@cam.ac.uk>) id 1UVmDR-0004Iw-9a
+	for qemu-trivial@nongnu.org; Fri, 26 Apr 2013 13:13:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UVgWq-0005so-BO
-	for qemu-trivial@nongnu.org; Fri, 26 Apr 2013 07:09:25 -0400
-Received: from mail-bk0-x22f.google.com ([2a00:1450:4008:c01::22f]:38929)
+	(envelope-from <prlw1@cam.ac.uk>) id 1UVmDP-0005ox-Qg
+	for qemu-trivial@nongnu.org; Fri, 26 Apr 2013 13:13:45 -0400
+Received: from ppsw-52.csi.cam.ac.uk ([131.111.8.152]:53198)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1UVgWq-0005ry-45
-	for qemu-trivial@nongnu.org; Fri, 26 Apr 2013 07:09:24 -0400
-Received: by mail-bk0-f47.google.com with SMTP id ji1so1631840bkc.20
-	for <qemu-trivial@nongnu.org>; Fri, 26 Apr 2013 04:09:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent; bh=W8zPCSRodcDsRYU1nvjRe50Jx16CslrUM0w+g3fnhrc=;
-	b=U9I+9basR7ZFq/dSwRwi18m583ijSGAltbcUye2SP5TBrcKKBxoI8sAr2evee73Ko2
-	meQA2VGEPb1qbHLmXBrAG5rIRHSTw6/rhIH54XJg8xSQY36XKFkL4oo1elzFPaNukVQ6
-	PN8apD8wQjTBH2axksUhatX+T155NlNxQRlwl+jUZOjXj46C8WcyjdoBx2Sb9/XlD++X
-	mC0NHAPXUmLyiWDr2cLxhRjpv/PpaD2Bkto65F6NpQNrLon8nHhT40GeAldUhMEUCLv5
-	aSAsgORo5oQfoxAHCNY4O7Ayki6ONLe3njRem13wVMH5jDjLtU6OHeZ5jyfRcEK42SFk
-	IYFA==
-X-Received: by 10.205.104.8 with SMTP id dk8mr18220435bkc.34.1366974563302;
-	Fri, 26 Apr 2013 04:09:23 -0700 (PDT)
-Received: from localhost ([2a02:810d:ec0:195:933:b278:833c:e7be])
-	by mx.google.com with ESMTPSA id rm3sm3000492bkb.20.2013.04.26.04.09.21
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Fri, 26 Apr 2013 04:09:22 -0700 (PDT)
-Date: Fri, 26 Apr 2013 13:09:20 +0200
-From: Stefan Hajnoczi <stefanha@gmail.com>
+	(envelope-from <prlw1@cam.ac.uk>) id 1UVmDP-0005os-Lo
+	for qemu-trivial@nongnu.org; Fri, 26 Apr 2013 13:13:43 -0400
+X-Cam-AntiVirus: no malware found
+X-Cam-ScannerInfo: http://www.cam.ac.uk/cs/email/scanner/
+Received: from host-92-20-232-247.as13285.net ([92.20.232.247]:61703
+	helo=quark.inf.phy.private.cam.ac.uk)
+	by ppsw-52.csi.cam.ac.uk (smtp.hermes.cam.ac.uk [131.111.8.158]:587)
+	with esmtpsa (LOGIN:prlw1) (TLSv1:DHE-RSA-AES256-SHA:256)
+	id 1UVmDN-00069E-Fy (Exim 4.80_167-5a66dd3)
+	(return-path <prlw1@cam.ac.uk>); Fri, 26 Apr 2013 18:13:42 +0100
+Date: Fri, 26 Apr 2013 18:13:40 +0100
+From: Patrick Welche <prlw1@cam.ac.uk>
 To: Ed Maste <emaste@freebsd.org>
-Message-ID: <20130426110920.GA28416@stefanha-thinkpad.hitronhub.home>
+Message-ID: <20130426171340.GE1652@quark.inf.phy.private.cam.ac.uk>
 References: <1366912781-11766-1-git-send-email-emaste@freebsd.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <1366912781-11766-1-git-send-email-emaste@freebsd.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4008:c01::22f
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 131.111.8.152
 Cc: qemu-trivial@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH] Track change in FreeBSD SYSCTL(9) types
 X-BeenThere: qemu-trivial@nongnu.org
@@ -57,7 +45,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Apr 2013 11:09:26 -0000
+X-List-Received-Date: Fri, 26 Apr 2013 17:13:47 -0000
 
 On Thu, Apr 25, 2013 at 01:59:41PM -0400, Ed Maste wrote:
 > Originally from Garrett Cooper in FreeBSD PR ports/155558
@@ -67,9 +55,35 @@ On Thu, Apr 25, 2013 at 01:59:41PM -0400, Ed Maste wrote:
 > ---
 >  bsd-user/syscall.c | 4 ++++
 >  1 file changed, 4 insertions(+)
+> 
+> diff --git a/bsd-user/syscall.c b/bsd-user/syscall.c
+> index 18b43f1..69e3466 100644
+> --- a/bsd-user/syscall.c
+> +++ b/bsd-user/syscall.c
+> @@ -211,7 +211,11 @@ static int sysctl_oldcvt(void *holdp, size_t holdlen, uint32_t kind)
+>          *(uint64_t *)holdp = tswap64(*(unsigned long *)holdp);
+>          break;
+>  #endif
+> +#if !defined(__FreeBSD_version) || __FreeBSD_version < 900031
+>      case CTLTYPE_QUAD:
+> +#else
+> +    case CTLTYPE_U64:
+> +#endif
+>          *(uint64_t *)holdp = tswap64(*(uint64_t *)holdp);
+>          break;
+>      case CTLTYPE_STRING:
 
-Thanks, applied to the trivial patches tree:
-https://github.com/stefanha/qemu/commits/trivial-patches
+Would something OS agnostic such as
 
-Stefan
+#ifdef CTLTYPE_U64
+    case CTLTYPE_U64:
+#else
+    case CTLTYPE_QUAD:
+#endif
+
+have done?
+
+Cheers,
+
+Patrick
 
