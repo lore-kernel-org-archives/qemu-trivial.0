@@ -1,38 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UWmYC-0006hF-3Y
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2013 07:47:20 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53116)
+	id 1UWpsc-0004Hr-W9
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2013 11:20:39 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56611)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1UWmY6-0006ey-0R
-	for qemu-trivial@nongnu.org; Mon, 29 Apr 2013 07:47:18 -0400
+	(envelope-from <rth7680@gmail.com>) id 1UWpsX-0004Fg-Go
+	for qemu-trivial@nongnu.org; Mon, 29 Apr 2013 11:20:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1UWmY1-000601-GJ
-	for qemu-trivial@nongnu.org; Mon, 29 Apr 2013 07:47:13 -0400
-Received: from ozlabs.org ([203.10.76.45]:58337)
+	(envelope-from <rth7680@gmail.com>) id 1UWpsR-0003p7-Mq
+	for qemu-trivial@nongnu.org; Mon, 29 Apr 2013 11:20:33 -0400
+Received: from mail-ea0-x229.google.com ([2a00:1450:4013:c01::229]:35639)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1UWmY1-0005zC-5B
-	for qemu-trivial@nongnu.org; Mon, 29 Apr 2013 07:47:09 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 29ECD2C00BD; Mon, 29 Apr 2013 21:47:05 +1000 (EST)
-Date: Mon, 29 Apr 2013 21:09:54 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20130429110954.GN20202@truffula.fritz.box>
-References: <517BC1F2.70405@redhat.com>
-	<1367201460-28594-1-git-send-email-aik@ozlabs.ru>
-	<517E2C5C.8000700@redhat.com> <517E2D74.3070804@ozlabs.ru>
-	<517E3C7C.3080604@redhat.com>
+	(envelope-from <rth7680@gmail.com>)
+	id 1UWpsR-0003p0-GV; Mon, 29 Apr 2013 11:20:27 -0400
+Received: by mail-ea0-f169.google.com with SMTP id d10so2253374eaj.28
+	for <multiple recipients>; Mon, 29 Apr 2013 08:20:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
+	:cc:subject:references:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=/IPocyMBv0DT6ufpn3iaGHOfW+wKc7+p6sM0eJQKZQI=;
+	b=VryLFXiXnojD/Wg0BRNFhwbbLDsWsiDdD07KEHFseRNZ9jjT1EhucpNQ6FG660yIBl
+	qOrHB37ZfHzirbLtXCyCZCVtfeD4YyHTXB71hRqVEAq71NWY+xMbPKY9n9f44GJ/Ygmn
+	hik7VQ+hyMqA4bF6DRaUaNZBbbGd4SKeUF4fwQ0pZ1VKvfXT8gJfZ9fW1OUYRivrwP6W
+	afHgq6JO11lv/QatD5pYpyKKKrYZb7keqUsIZoZCG9KS5JF/ILC344hajXZYOJE7T3XQ
+	EB/5WTayvxKk8YmHnwClchBf0TKmxQQiZxs09c/oUN6s0hAT9K/3bYcrbmXV8YkoNoiV
+	aI3Q==
+X-Received: by 10.14.149.141 with SMTP id x13mr124645289eej.31.1367248826660; 
+	Mon, 29 Apr 2013 08:20:26 -0700 (PDT)
+Received: from pebble.twiddle.net
+	(host217-43-57-145.range217-43.btcentralplus.com. [217.43.57.145])
+	by mx.google.com with ESMTPSA id
+	bk42sm33418530eeb.3.2013.04.29.08.20.25 for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Mon, 29 Apr 2013 08:20:26 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Message-ID: <517E8FB7.9080706@twiddle.net>
+Date: Mon, 29 Apr 2013 16:20:23 +0100
+From: Richard Henderson <rth@twiddle.net>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130402 Thunderbird/17.0.5
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="s3R87C3fwYeCSZ0b"
-Content-Disposition: inline
-In-Reply-To: <517E3C7C.3080604@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 203.10.76.45
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org,
+To: Stefan Weil <sw@weilnetz.de>
+References: <1367142597-28810-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1367142597-28810-1-git-send-email-sw@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c01::229
+Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>,
 	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] memory: give name every AddressSpace
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Trivial grammar and
+	spelling fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,55 +63,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Apr 2013 11:47:18 -0000
+X-List-Received-Date: Mon, 29 Apr 2013 15:20:36 -0000
+
+On 2013-04-28 10:49, Stefan Weil wrote:
+> similiar -> similar
+> recieve -> receive
+> transfered -> transferred
+> preperation -> preparation
+>
+> Most changes are in comments, one modifies a parameter name in a function
+> prototype.
+>
+> The spelling fixes were made using codespell.
+>
+> Signed-off-by: Stefan Weil<sw@weilnetz.de>
+
+Acked-by: Richard Henderson <rth@twiddle.net>
 
 
---s3R87C3fwYeCSZ0b
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Apr 29, 2013 at 11:25:16AM +0200, Paolo Bonzini wrote:
-> Il 29/04/2013 10:21, Alexey Kardashevskiy ha scritto:
-> >>> >> +    g_free((void *)as->name);
-> >> >=20
-> >> > No cast here.
-> > ?
-> >=20
-> >   CC    ppc64-softmmu/memory.o
-> > /home/alexey/pcipassthru/qemu-impreza/memory.c: In function
-> > 'address_space_destroy':
-> > /home/alexey/pcipassthru/qemu-impreza/memory.c:1626:5: warning: passing
-> > argument 1 of 'g_free' discards 'const' qualifier from pointer target t=
-ype
-> > [enabled by default]
-> >      g_free(/*(void *)*/as->name);
-> >      ^
->=20
-> Please remove the const from as->name instead.  Since you are strdup-ing
-> it, and the field is meant to be private to memory.c anyway, you do not
-> need protection against changing it.
-
-As a general rule, pointer variables that you malloc()ate should not
-be const.
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---s3R87C3fwYeCSZ0b
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.12 (GNU/Linux)
-
-iEYEARECAAYFAlF+VQIACgkQaILKxv3ab8Y0GQCfX0q3ZoQiP5CoDTw5UhkNmGDn
-zjcAn3YUDCckTeYJ1lCQle2iDWaULmjh
-=eADQ
------END PGP SIGNATURE-----
-
---s3R87C3fwYeCSZ0b--
+r~
 
