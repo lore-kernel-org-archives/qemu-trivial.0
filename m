@@ -1,41 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UWWJA-00019N-Lk
-	for mharc-qemu-trivial@gnu.org; Sun, 28 Apr 2013 14:26:44 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34684)
+	id 1UWdYv-0008Sb-Il
+	for mharc-qemu-trivial@gnu.org; Sun, 28 Apr 2013 22:11:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:43772)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <m.o.ratnikov@gmail.com>) id 1UWWJ5-00012J-PT
-	for qemu-trivial@nongnu.org; Sun, 28 Apr 2013 14:26:43 -0400
+	(envelope-from <aik@ozlabs.ru>) id 1UWdYp-0008S4-PO
+	for qemu-trivial@nongnu.org; Sun, 28 Apr 2013 22:11:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <m.o.ratnikov@gmail.com>) id 1UWWJ3-0000ah-0N
-	for qemu-trivial@nongnu.org; Sun, 28 Apr 2013 14:26:39 -0400
-Received: from mail-ob0-x231.google.com ([2607:f8b0:4003:c01::231]:49766)
+	(envelope-from <aik@ozlabs.ru>) id 1UWdYk-0002nt-O8
+	for qemu-trivial@nongnu.org; Sun, 28 Apr 2013 22:11:23 -0400
+Received: from mail-pd0-f172.google.com ([209.85.192.172]:45678)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <m.o.ratnikov@gmail.com>) id 1UWWJ2-0000aX-Q5
-	for qemu-trivial@nongnu.org; Sun, 28 Apr 2013 14:26:36 -0400
-Received: by mail-ob0-f177.google.com with SMTP id ef5so4795420obb.22
-	for <qemu-trivial@nongnu.org>; Sun, 28 Apr 2013 11:26:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:x-received:date:message-id:subject:from:to
-	:content-type; bh=FePMmT7QZBS1cD0VAPDvxkRYkkoG1eH54VDbRL5X6vc=;
-	b=EmoCN4noK7rAGd3Sr6wMhhBydcZS599zsYxl5tUGWX8+ipUG5DLsgMSgFJk4GfD/o4
-	eCpcqRrQRe5iYfQUSWZxeDCd3poyXBZXAih0U0SB6aOVmtwCScJk/KAlNKZU04ldgBcT
-	2pnjP3MzvRXTCRmMhDUzQzn5eZX0SXByyrhxFm8aYJlHEzyLHQgmBKwrH3DKYXe3exUR
-	2ia4QxuJISAIhI9nffuFIg0ICFUAEzpdV615uB6we9V/zSdBuMfZGiMi1sgUPLfSJILq
-	5JvwDqPXO9fNJ7euHnOU034danlqmwYPglmYbBFRKhgjch9LRBzwRpANULvQSLmafcN3
-	OwFg==
-MIME-Version: 1.0
-X-Received: by 10.60.179.7 with SMTP id dc7mr18403692oec.3.1367173596297; Sun,
-	28 Apr 2013 11:26:36 -0700 (PDT)
-Received: by 10.76.150.138 with HTTP; Sun, 28 Apr 2013 11:26:36 -0700 (PDT)
-Date: Sun, 28 Apr 2013 22:26:36 +0400
-Message-ID: <CAAWx3aSdhAdZfPiKodbCo6sHhHPX4kk1_yZ6h1j4PU8EyNBQFg@mail.gmail.com>
-From: Maksim Ratnikov <m.o.ratnikov@gmail.com>
-To: qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary=089e0122881e8dbd7204db6fe8cf
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c01::231
-Subject: Re: [Qemu-trivial] [PATCH] SMBUS module update.
+	(envelope-from <aik@ozlabs.ru>) id 1UWdYk-0002nb-FZ
+	for qemu-trivial@nongnu.org; Sun, 28 Apr 2013 22:11:18 -0400
+Received: by mail-pd0-f172.google.com with SMTP id 4so3374400pdd.3
+	for <qemu-trivial@nongnu.org>; Sun, 28 Apr 2013 19:11:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=x-received:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
+	:references:x-gm-message-state;
+	bh=BOKjGnJhiHhFn4qjcxeB+PYG7u8H7n2i5j0Jxc6Vabs=;
+	b=RVmjzktmOdna5hOd6zY3WNZJpBwig8vwxV9fzEBZy0YyxtSgaQCDAzqxy4M/XG8trZ
+	fQBw5KCMlkFV6Iq1UX0bcqM5pTKtYCMvMetRyGnqj4jopw4MTdslVsHwDvS2XQNBI0OK
+	fOExryGxMe41p/nwfj2vq3TTenwurbnSZQUpCqaxurSXD2jADHuO2vRjDfLa4sqw1oGT
+	T/GNU2zyrSzKgyhk+2pHMaNKlEer7OpxcXAzNIy6T3SlH5l0mLM6MlU9DRVI8ES5AfB0
+	M8METGtg8ojVHDMfyg32jxThlJf2kGqEHkMcx/3HSp6NzMFkJl8MP1ofjPduOulUaO3X
+	uYRw==
+X-Received: by 10.68.135.133 with SMTP id ps5mr68346515pbb.158.1367201476439; 
+	Sun, 28 Apr 2013 19:11:16 -0700 (PDT)
+Received: from ka1.ozlabs.ibm.com (ibmaus65.lnk.telstra.net. [165.228.126.9])
+	by mx.google.com with ESMTPSA id
+	kd7sm21833551pbb.34.2013.04.28.19.11.12 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Sun, 28 Apr 2013 19:11:15 -0700 (PDT)
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 29 Apr 2013 12:11:00 +1000
+Message-Id: <1367201460-28594-1-git-send-email-aik@ozlabs.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <517BC1F2.70405@redhat.com>
+References: <517BC1F2.70405@redhat.com>
+X-Gm-Message-State: ALoCoQkU2WydKodZw78xJrmCfoNHIw6Ab0z2daN5V1rs1lkyC1lVQ8Znc3jBfkX+JcwPfMvy8Ftd
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 209.85.192.172
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
+Subject: [Qemu-trivial] [PATCH] memory: give name every AddressSpace
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,148 +56,133 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 28 Apr 2013 18:26:43 -0000
+X-List-Received-Date: Mon, 29 Apr 2013 02:11:28 -0000
 
---089e0122881e8dbd7204db6fe8cf
-Content-Type: text/plain; charset=ISO-8859-1
+The "info mtree" command in QEMU console prints only "memory" and "I/O"
+address spaces while there are actually a lot more other AddressSpace
+structs created by PCI and VIO devices. Those devices do not normally
+have names and therefore not present in "info qtree" output.
 
-Previous realization doesn't consider flags in the status register.
-Add DS and INTR bits of HST_STS register set after transaction execution.
-Update bits resetting in HST_STS register. Update error processing: if
-DEV_ERR bit are set
-transaction isn't execution.
+The patch fixes this.
 
-
-Signed-off-by: Maksim_Ratnikov <m.o.ratnikov@gmail.com>
+Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
 ---
- hw/i2c/pm_smbus.c |   13 ++++++++++++-
- 1 files changed, 12 insertions(+), 1 deletions(-)
 
-diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
-index 0b5bb89..d5f5c56 100644
---- a/hw/i2c/pm_smbus.c
-+++ b/hw/i2c/pm_smbus.c
-@@ -50,9 +50,16 @@ static void smb_transaction(PMSMBus *s)
-     i2c_bus *bus = s->smbus;
 
-     SMBUS_DPRINTF("SMBus trans addr=0x%02x prot=0x%02x\n", addr, prot);
-+    /* Transaction isn't exec if DEV_ERR bit set */
-+    if ((s->smb_stat & 0x04) != 0)
-+        goto error;
-     switch(prot) {
-     case 0x0:
-         smbus_quick_command(bus, addr, read);
-+        /* Set successfully transaction end:
-+         * ByteDoneStatus = 1 (HST_STS bit #7) and INTR = 1 (HST_STS bit
-#1)
-+         */
-+        s->smb_stat |= 0x82;
-         break;
-     case 0x1:
-         if (read) {
-@@ -60,6 +67,7 @@ static void smb_transaction(PMSMBus *s)
-         } else {
-             smbus_send_byte(bus, addr, cmd);
-         }
-+        s->smb_stat |= 0x82;
-         break;
-     case 0x2:
-         if (read) {
-@@ -67,6 +75,7 @@ static void smb_transaction(PMSMBus *s)
-         } else {
-             smbus_write_byte(bus, addr, cmd, s->smb_data0);
-         }
-+        s->smb_stat |= 0x82;
-         break;
-     case 0x3:
-         if (read) {
-@@ -77,6 +86,7 @@ static void smb_transaction(PMSMBus *s)
-         } else {
-             smbus_write_word(bus, addr, cmd, (s->smb_data1 << 8) |
-s->smb_data0);
-         }
-+        s->smb_stat |= 0x82;
-         break;
-     case 0x5:
-         if (read) {
-@@ -84,6 +94,7 @@ static void smb_transaction(PMSMBus *s)
-         } else {
-             smbus_write_block(bus, addr, cmd, s->smb_data, s->smb_data0);
-         }
-+        s->smb_stat |= 0x82;
-         break;
-     default:
-         goto error;
-@@ -102,7 +113,7 @@ static void smb_ioport_writeb(void *opaque, hwaddr
-addr, uint64_t val,
-     SMBUS_DPRINTF("SMB writeb port=0x%04x val=0x%02x\n", addr, val);
-     switch(addr) {
-     case SMBHSTSTS:
--        s->smb_stat = 0;
-+        s->smb_stat = (~(val & 0xff)) & s->smb_stat;
-         s->smb_index = 0;
-         break;
-     case SMBHSTCNT:
+The number of AddressSpace structs is constantly growing (even without IOMMU)
+and it is getting harder to trace them so this is why I came up with this patch.
+Or there is a reason to hide those AddressSpace structs which I do not see,
+is not it?
+
+
+---
+ exec.c                |    6 ++----
+ hw/pci/pci.c          |    3 ++-
+ hw/ppc/spapr_vio.c    |    2 +-
+ include/exec/memory.h |    2 +-
+ memory.c              |    7 ++++---
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/exec.c b/exec.c
+index 180a345..0091272 100644
+--- a/exec.c
++++ b/exec.c
+@@ -1839,13 +1839,11 @@ static void memory_map_init(void)
+ {
+     system_memory = g_malloc(sizeof(*system_memory));
+     memory_region_init(system_memory, "system", INT64_MAX);
+-    address_space_init(&address_space_memory, system_memory);
+-    address_space_memory.name = "memory";
++    address_space_init(&address_space_memory, system_memory, "memory");
+ 
+     system_io = g_malloc(sizeof(*system_io));
+     memory_region_init(system_io, "io", 65536);
+-    address_space_init(&address_space_io, system_io);
+-    address_space_io.name = "I/O";
++    address_space_init(&address_space_io, system_io, "I/O");
+ 
+     memory_listener_register(&core_memory_listener, &address_space_memory);
+     memory_listener_register(&io_memory_listener, &address_space_io);
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index fe146dc..0a1acd6 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -823,7 +823,8 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev, PCIBus *bus,
+     memory_region_init_alias(&pci_dev->bus_master_enable_region, "bus master",
+                              pci_dev->iommu, 0, memory_region_size(pci_dev->iommu));
+     memory_region_set_enabled(&pci_dev->bus_master_enable_region, false);
+-    address_space_init(&pci_dev->bus_master_as, &pci_dev->bus_master_enable_region);
++    address_space_init(&pci_dev->bus_master_as, &pci_dev->bus_master_enable_region,
++                       name);
+ 
+     pci_dev->devfn = devfn;
+     pstrcpy(pci_dev->name, sizeof(pci_dev->name), name);
+diff --git a/hw/ppc/spapr_vio.c b/hw/ppc/spapr_vio.c
+index fbcbd6f..fadde20 100644
+--- a/hw/ppc/spapr_vio.c
++++ b/hw/ppc/spapr_vio.c
+@@ -449,7 +449,7 @@ static int spapr_vio_busdev_init(DeviceState *qdev)
+     if (pc->rtce_window_size) {
+         uint32_t liobn = SPAPR_VIO_BASE_LIOBN | dev->reg;
+         dev->tcet = spapr_tce_new_table(liobn, pc->rtce_window_size);
+-        address_space_init(&dev->as, spapr_tce_get_iommu(dev->tcet));
++        address_space_init(&dev->as, spapr_tce_get_iommu(dev->tcet), qdev->id);
+     }
+ 
+     return pc->init(dev);
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 99d51b7..b4f1182 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -840,7 +840,7 @@ void mtree_info(fprintf_function mon_printf, void *f);
+  * @as: an uninitialized #AddressSpace
+  * @root: a #MemoryRegion that routes addesses for the address space
+  */
+-void address_space_init(AddressSpace *as, MemoryRegion *root);
++void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name);
+ 
+ 
+ /**
+diff --git a/memory.c b/memory.c
+index cee3e59..b50f5e6 100644
+--- a/memory.c
++++ b/memory.c
+@@ -1002,7 +1002,7 @@ void memory_region_init_iommu(MemoryRegion *mr,
+     mr->terminates = true;  /* then re-forwards */
+     mr->destructor = memory_region_destructor_iommu;
+     mr->iommu_target_as = g_new(AddressSpace, 1);
+-    address_space_init(mr->iommu_target_as, target);
++    address_space_init(mr->iommu_target_as, target, name);
+ }
+ 
+ static uint64_t invalid_read(void *opaque, hwaddr addr,
+@@ -1599,7 +1599,7 @@ void memory_listener_unregister(MemoryListener *listener)
+     QTAILQ_REMOVE(&memory_listeners, listener, link);
+ }
+ 
+-void address_space_init(AddressSpace *as, MemoryRegion *root)
++void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name)
+ {
+     memory_region_transaction_begin();
+     as->root = root;
+@@ -1608,7 +1608,7 @@ void address_space_init(AddressSpace *as, MemoryRegion *root)
+     as->ioeventfd_nb = 0;
+     as->ioeventfds = NULL;
+     QTAILQ_INSERT_TAIL(&address_spaces, as, address_spaces_link);
+-    as->name = NULL;
++    as->name = g_strdup(name?name:"anonymous");
+     address_space_init_dispatch(as);
+     memory_region_update_pending |= root->enabled;
+     memory_region_transaction_commit();
+@@ -1623,6 +1623,7 @@ void address_space_destroy(AddressSpace *as)
+     QTAILQ_REMOVE(&address_spaces, as, address_spaces_link);
+     address_space_destroy_dispatch(as);
+     flatview_destroy(as->current_map);
++    g_free((void *)as->name);
+     g_free(as->current_map);
+     g_free(as->ioeventfds);
+ }
 -- 
-1.7.3.4
+1.7.10.4
 
---089e0122881e8dbd7204db6fe8cf
-Content-Type: text/html; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div></div>Previous realization doesn&#39;t consider flags=
- in the status register.<br>Add DS and INTR bits of HST_STS register set af=
-ter transaction execution.<br>Update bits resetting in HST_STS register. Up=
-date error processing: if DEV_ERR bit are set<br>
-transaction isn&#39;t execution.<br><br><br>Signed-off-by: Maksim_Ratnikov =
-&lt;<a href=3D"mailto:m.o.ratnikov@gmail.com">m.o.ratnikov@gmail.com</a>&gt=
-;<br>---<br>=A0hw/i2c/pm_smbus.c |=A0=A0 13 ++++++++++++-<br>=A01 files cha=
-nged, 12 insertions(+), 1 deletions(-)<br>
-<br>diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c<br>index 0b5bb89..d5=
-f5c56 100644<br>--- a/hw/i2c/pm_smbus.c<br>+++ b/hw/i2c/pm_smbus.c<br>@@ -5=
-0,9 +50,16 @@ static void smb_transaction(PMSMBus *s)<br>=A0=A0=A0=A0 i2c_b=
-us *bus =3D s-&gt;smbus;<br>
-=A0<br>=A0=A0=A0=A0 SMBUS_DPRINTF(&quot;SMBus trans addr=3D0x%02x prot=3D0x=
-%02x\n&quot;, addr, prot);<br>+=A0=A0=A0 /* Transaction isn&#39;t exec if D=
-EV_ERR bit set */<br>+=A0=A0=A0 if ((s-&gt;smb_stat &amp; 0x04) !=3D 0)<br>=
-+=A0=A0=A0=A0=A0=A0=A0 goto error;<br>
-=A0=A0=A0=A0 switch(prot) {<br>=A0=A0=A0=A0 case 0x0:<br>=A0=A0=A0=A0=A0=A0=
-=A0=A0 smbus_quick_command(bus, addr, read);<br>+=A0=A0=A0=A0=A0=A0=A0 /* S=
-et successfully transaction end:<br>+=A0=A0=A0=A0=A0=A0=A0=A0 * ByteDoneSta=
-tus =3D 1 (HST_STS bit #7) and INTR =3D 1 (HST_STS bit #1)<br>
-+=A0=A0=A0=A0=A0=A0=A0=A0 */<br>+=A0=A0=A0=A0=A0=A0=A0 s-&gt;smb_stat |=3D =
-0x82;<br>=A0=A0=A0=A0=A0=A0=A0=A0 break;<br>=A0=A0=A0=A0 case 0x1:<br>=A0=
-=A0=A0=A0=A0=A0=A0=A0 if (read) {<br>@@ -60,6 +67,7 @@ static void smb_tran=
-saction(PMSMBus *s)<br>=A0=A0=A0=A0=A0=A0=A0=A0 } else {<br>=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0 smbus_send_byte(bus, addr, cmd);<br>
-=A0=A0=A0=A0=A0=A0=A0=A0 }<br>+=A0=A0=A0=A0=A0=A0=A0 s-&gt;smb_stat |=3D 0x=
-82;<br>=A0=A0=A0=A0=A0=A0=A0=A0 break;<br>=A0=A0=A0=A0 case 0x2:<br>=A0=A0=
-=A0=A0=A0=A0=A0=A0 if (read) {<br>@@ -67,6 +75,7 @@ static void smb_transac=
-tion(PMSMBus *s)<br>=A0=A0=A0=A0=A0=A0=A0=A0 } else {<br>=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0 smbus_write_byte(bus, addr, cmd, s-&gt;smb_data0);<br>
-=A0=A0=A0=A0=A0=A0=A0=A0 }<br>+=A0=A0=A0=A0=A0=A0=A0 s-&gt;smb_stat |=3D 0x=
-82;<br>=A0=A0=A0=A0=A0=A0=A0=A0 break;<br>=A0=A0=A0=A0 case 0x3:<br>=A0=A0=
-=A0=A0=A0=A0=A0=A0 if (read) {<br>@@ -77,6 +86,7 @@ static void smb_transac=
-tion(PMSMBus *s)<br>=A0=A0=A0=A0=A0=A0=A0=A0 } else {<br>=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0 smbus_write_word(bus, addr, cmd, (s-&gt;smb_data1 &lt;&l=
-t; 8) | s-&gt;smb_data0);<br>
-=A0=A0=A0=A0=A0=A0=A0=A0 }<br>+=A0=A0=A0=A0=A0=A0=A0 s-&gt;smb_stat |=3D 0x=
-82;<br>=A0=A0=A0=A0=A0=A0=A0=A0 break;<br>=A0=A0=A0=A0 case 0x5:<br>=A0=A0=
-=A0=A0=A0=A0=A0=A0 if (read) {<br>@@ -84,6 +94,7 @@ static void smb_transac=
-tion(PMSMBus *s)<br>=A0=A0=A0=A0=A0=A0=A0=A0 } else {<br>=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0 smbus_write_block(bus, addr, cmd, s-&gt;smb_data, s-&gt;=
-smb_data0);<br>
-=A0=A0=A0=A0=A0=A0=A0=A0 }<br>+=A0=A0=A0=A0=A0=A0=A0 s-&gt;smb_stat |=3D 0x=
-82;<br>=A0=A0=A0=A0=A0=A0=A0=A0 break;<br>=A0=A0=A0=A0 default:<br>=A0=A0=
-=A0=A0=A0=A0=A0=A0 goto error;<br>@@ -102,7 +113,7 @@ static void smb_iopor=
-t_writeb(void *opaque, hwaddr addr, uint64_t val,<br>=A0=A0=A0=A0 SMBUS_DPR=
-INTF(&quot;SMB writeb port=3D0x%04x val=3D0x%02x\n&quot;, addr, val);<br>
-=A0=A0=A0=A0 switch(addr) {<br>=A0=A0=A0=A0 case SMBHSTSTS:<br>-=A0=A0=A0=
-=A0=A0=A0=A0 s-&gt;smb_stat =3D 0;<br>+=A0=A0=A0=A0=A0=A0=A0 s-&gt;smb_stat=
- =3D (~(val &amp; 0xff)) &amp; s-&gt;smb_stat;<br>=A0=A0=A0=A0=A0=A0=A0=A0 =
-s-&gt;smb_index =3D 0;<br>=A0=A0=A0=A0=A0=A0=A0=A0 break;<br>=A0=A0=A0=A0 c=
-ase SMBHSTCNT:<br>
--- <br>1.7.3.4<br><br></div>
-
---089e0122881e8dbd7204db6fe8cf--
 
