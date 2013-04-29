@@ -1,57 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UWpsc-0004Hr-W9
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2013 11:20:39 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56611)
+	id 1UWr67-00076T-GZ
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2013 12:38:39 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:51820)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1UWpsX-0004Fg-Go
-	for qemu-trivial@nongnu.org; Mon, 29 Apr 2013 11:20:36 -0400
+	(envelope-from <jlarrew@jlarrew.austin.ibm.com>) id 1UWr65-00073j-3y
+	for qemu-trivial@nongnu.org; Mon, 29 Apr 2013 12:38:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1UWpsR-0003p7-Mq
-	for qemu-trivial@nongnu.org; Mon, 29 Apr 2013 11:20:33 -0400
-Received: from mail-ea0-x229.google.com ([2a00:1450:4013:c01::229]:35639)
+	(envelope-from <jlarrew@jlarrew.austin.ibm.com>) id 1UWr60-0005AU-JR
+	for qemu-trivial@nongnu.org; Mon, 29 Apr 2013 12:38:37 -0400
+Received: from [32.97.110.55] (port=40050 helo=jlarrew.austin.ibm.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1UWpsR-0003p0-GV; Mon, 29 Apr 2013 11:20:27 -0400
-Received: by mail-ea0-f169.google.com with SMTP id d10so2253374eaj.28
-	for <multiple recipients>; Mon, 29 Apr 2013 08:20:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=/IPocyMBv0DT6ufpn3iaGHOfW+wKc7+p6sM0eJQKZQI=;
-	b=VryLFXiXnojD/Wg0BRNFhwbbLDsWsiDdD07KEHFseRNZ9jjT1EhucpNQ6FG660yIBl
-	qOrHB37ZfHzirbLtXCyCZCVtfeD4YyHTXB71hRqVEAq71NWY+xMbPKY9n9f44GJ/Ygmn
-	hik7VQ+hyMqA4bF6DRaUaNZBbbGd4SKeUF4fwQ0pZ1VKvfXT8gJfZ9fW1OUYRivrwP6W
-	afHgq6JO11lv/QatD5pYpyKKKrYZb7keqUsIZoZCG9KS5JF/ILC344hajXZYOJE7T3XQ
-	EB/5WTayvxKk8YmHnwClchBf0TKmxQQiZxs09c/oUN6s0hAT9K/3bYcrbmXV8YkoNoiV
-	aI3Q==
-X-Received: by 10.14.149.141 with SMTP id x13mr124645289eej.31.1367248826660; 
-	Mon, 29 Apr 2013 08:20:26 -0700 (PDT)
-Received: from pebble.twiddle.net
-	(host217-43-57-145.range217-43.btcentralplus.com. [217.43.57.145])
-	by mx.google.com with ESMTPSA id
-	bk42sm33418530eeb.3.2013.04.29.08.20.25 for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Mon, 29 Apr 2013 08:20:26 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Message-ID: <517E8FB7.9080706@twiddle.net>
-Date: Mon, 29 Apr 2013 16:20:23 +0100
-From: Richard Henderson <rth@twiddle.net>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130402 Thunderbird/17.0.5
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1367142597-28810-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1367142597-28810-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4013:c01::229
-Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Trivial grammar and
-	spelling fixes
+	(envelope-from <jlarrew@jlarrew.austin.ibm.com>)
+	id 1UWr5w-00059J-QX; Mon, 29 Apr 2013 12:38:29 -0400
+Received: from jlarrew.austin.ibm.com (localhost [127.0.0.1])
+	by jlarrew.austin.ibm.com (8.14.5/8.14.5) with ESMTP id r3TFqvJ2017973; 
+	Mon, 29 Apr 2013 10:52:57 -0500
+Received: (from jlarrew@localhost)
+	by jlarrew.austin.ibm.com (8.14.5/8.14.5/Submit) id r3TFquJT017972;
+	Mon, 29 Apr 2013 10:52:56 -0500
+From: Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 29 Apr 2013 10:52:52 -0500
+Message-Id: <1367250772-17928-1-git-send-email-jlarrew@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.11.7
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 32.97.110.55
+Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com,
+	Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH] libqtest: only call fclose() on open files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,23 +39,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Apr 2013 15:20:36 -0000
+X-List-Received-Date: Mon, 29 Apr 2013 16:38:38 -0000
 
-On 2013-04-28 10:49, Stefan Weil wrote:
-> similiar -> similar
-> recieve -> receive
-> transfered -> transferred
-> preperation -> preparation
->
-> Most changes are in comments, one modifies a parameter name in a function
-> prototype.
->
-> The spelling fixes were made using codespell.
->
-> Signed-off-by: Stefan Weil<sw@weilnetz.de>
+libqtest.c can segfault when calling fclose() if the pidfile wasn't
+opened successfully. This patch fixes the issue.
 
-Acked-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+---
+ tests/libqtest.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/tests/libqtest.c b/tests/libqtest.c
+index 884f959..879ffe9 100644
+--- a/tests/libqtest.c
++++ b/tests/libqtest.c
+@@ -99,8 +99,8 @@ static pid_t qtest_qemu_pid(QTestState *s)
+         if (fgets(buffer, sizeof(buffer), f)) {
+             pid = atoi(buffer);
+         }
++        fclose(f);
+     }
+-    fclose(f);
+     return pid;
+ }
+ 
+-- 
+1.7.11.7
 
-r~
 
