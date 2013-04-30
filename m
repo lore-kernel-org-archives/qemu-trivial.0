@@ -1,29 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UXAcs-0001pA-8c
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2013 09:29:46 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:46654)
+	id 1UXBtx-0005Sd-78
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2013 10:51:29 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42684)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1UXAco-0001o1-At
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 09:29:44 -0400
+	(envelope-from <aliguori@us.ibm.com>) id 1UXBtt-0005MG-H8
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 10:51:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1UXAcm-00074Z-1s
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 09:29:42 -0400
-Received: from [216.171.111.232] (port=11708 helo=freebsd.org)
+	(envelope-from <aliguori@us.ibm.com>) id 1UXBtp-0002Og-1K
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 10:51:25 -0400
+Received: from e23smtp09.au.ibm.com ([202.81.31.142]:40506)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1UXAcl-00074G-R1
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 09:29:39 -0400
-Received: from emaste (uid 1001) (envelope-from emaste@freebsd.org) id 9cc4e
-	by freebsd.org (DragonFly Mail Agent 1);
-	Tue, 30 Apr 2013 09:29:39 -0400
-From: Ed Maste <emaste@freebsd.org>
-To: qemu-devel@nongnu.org
-Date: Tue, 30 Apr 2013 09:29:32 -0400
-Message-Id: <1367328572-40615-1-git-send-email-emaste@freebsd.org>
-X-Mailer: git-send-email 1.7.11.5
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
-X-Received-From: 216.171.111.232
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH v2] bsd-user: OS-agnostic 64-bit SYSCTL types
+	(envelope-from <aliguori@us.ibm.com>) id 1UXBto-0002OD-F7
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 10:51:20 -0400
+Received: from /spool/local
+	by e23smtp09.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Wed, 1 May 2013 00:41:48 +1000
+Received: from d23dlp02.au.ibm.com (202.81.31.213)
+	by e23smtp09.au.ibm.com (202.81.31.206) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Wed, 1 May 2013 00:41:46 +1000
+Received: from d23relay03.au.ibm.com (d23relay03.au.ibm.com [9.190.235.21])
+	by d23dlp02.au.ibm.com (Postfix) with ESMTP id D435F2BB004F;
+	Wed,  1 May 2013 00:51:12 +1000 (EST)
+Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
+	by d23relay03.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r3UEp6L918284784; Wed, 1 May 2013 00:51:06 +1000
+Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	r3UEpCbL024106; Wed, 1 May 2013 00:51:12 +1000
+Received: from titi.na.relay.ibm.com (titi.austin.ibm.com [9.41.105.190])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r3UEp8ui024043; Wed, 1 May 2013 00:51:10 +1000
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Jesse Larrew <jlarrew@linux.vnet.ibm.com>, qemu-devel@nongnu.org
+In-Reply-To: <1367250772-17928-1-git-send-email-jlarrew@linux.vnet.ibm.com>
+References: <1367250772-17928-1-git-send-email-jlarrew@linux.vnet.ibm.com>
+User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
+	(x86_64-pc-linux-gnu)
+Date: Tue, 30 Apr 2013 09:51:08 -0500
+Message-ID: <87ppxcnkbn.fsf@codemonkey.ws>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13043014-3568-0000-0000-000003841573
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 202.81.31.142
+Cc: qemu-trivial@nongnu.org, Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libqtest: only call
+	fclose() on open files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,42 +61,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Apr 2013 13:29:44 -0000
+X-List-Received-Date: Tue, 30 Apr 2013 14:51:26 -0000
 
-Use existence of type as #ifdef condition rather than FreeBSD-specific
-version check, as suggested by Patrick Welche.
+Jesse Larrew <jlarrew@linux.vnet.ibm.com> writes:
 
-Also handle the signed (CTLTYPE_S64) case identically to the unsigned
-(CTLTYPE_U64) case, per later patches in the FreeBSD ports tree
-(emulators/qemu-devel/files/patch-z-arm-bsd-user-001).
+> libqtest.c can segfault when calling fclose() if the pidfile wasn't
+> opened successfully. This patch fixes the issue.
+>
+> Signed-off-by: Jesse Larrew <jlarrew@linux.vnet.ibm.com>
 
-Signed-off-by: Ed Maste <emaste@freebsd.org>
----
-v2: Delete stray : at end of #ifdef conditional 
+Reviewed-by: Anthony Liguori <aliguori@us.ibm.com>
 
- bsd-user/syscall.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+Regards,
 
-diff --git a/bsd-user/syscall.c b/bsd-user/syscall.c
-index 69e3466..a4d1583 100644
---- a/bsd-user/syscall.c
-+++ b/bsd-user/syscall.c
-@@ -211,10 +211,11 @@ static int sysctl_oldcvt(void *holdp, size_t holdlen, uint32_t kind)
-         *(uint64_t *)holdp = tswap64(*(unsigned long *)holdp);
-         break;
- #endif
--#if !defined(__FreeBSD_version) || __FreeBSD_version < 900031
--    case CTLTYPE_QUAD:
--#else
-+#ifdef CTLTYPE_U64
-+    case CTLTYPE_S64:
-     case CTLTYPE_U64:
-+#else
-+    case CTLTYPE_QUAD:
- #endif
-         *(uint64_t *)holdp = tswap64(*(uint64_t *)holdp);
-         break;
--- 
-1.7.11.5
+Anthony Liguori
+
+> ---
+>  tests/libqtest.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/tests/libqtest.c b/tests/libqtest.c
+> index 884f959..879ffe9 100644
+> --- a/tests/libqtest.c
+> +++ b/tests/libqtest.c
+> @@ -99,8 +99,8 @@ static pid_t qtest_qemu_pid(QTestState *s)
+>          if (fgets(buffer, sizeof(buffer), f)) {
+>              pid = atoi(buffer);
+>          }
+> +        fclose(f);
+>      }
+> -    fclose(f);
+>      return pid;
+>  }
+>  
+> -- 
+> 1.7.11.7
 
 
