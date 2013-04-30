@@ -1,55 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UXBtx-0005Sd-78
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2013 10:51:29 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:42684)
+	id 1UXFqe-0008Bw-Si
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2013 15:04:21 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:58711)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UXBtt-0005MG-H8
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 10:51:26 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UXFqY-0008Bp-HL
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 15:04:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UXBtp-0002Og-1K
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 10:51:25 -0400
-Received: from e23smtp09.au.ibm.com ([202.81.31.142]:40506)
+	(envelope-from <mjt@tls.msk.ru>) id 1UXFqT-0004TY-Qb
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 15:04:14 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:43464)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UXBto-0002OD-F7
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 10:51:20 -0400
-Received: from /spool/local
-	by e23smtp09.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Wed, 1 May 2013 00:41:48 +1000
-Received: from d23dlp02.au.ibm.com (202.81.31.213)
-	by e23smtp09.au.ibm.com (202.81.31.206) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Wed, 1 May 2013 00:41:46 +1000
-Received: from d23relay03.au.ibm.com (d23relay03.au.ibm.com [9.190.235.21])
-	by d23dlp02.au.ibm.com (Postfix) with ESMTP id D435F2BB004F;
-	Wed,  1 May 2013 00:51:12 +1000 (EST)
-Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
-	by d23relay03.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r3UEp6L918284784; Wed, 1 May 2013 00:51:06 +1000
-Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r3UEpCbL024106; Wed, 1 May 2013 00:51:12 +1000
-Received: from titi.na.relay.ibm.com (titi.austin.ibm.com [9.41.105.190])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r3UEp8ui024043; Wed, 1 May 2013 00:51:10 +1000
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Jesse Larrew <jlarrew@linux.vnet.ibm.com>, qemu-devel@nongnu.org
-In-Reply-To: <1367250772-17928-1-git-send-email-jlarrew@linux.vnet.ibm.com>
-References: <1367250772-17928-1-git-send-email-jlarrew@linux.vnet.ibm.com>
-User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
-	(x86_64-pc-linux-gnu)
-Date: Tue, 30 Apr 2013 09:51:08 -0500
-Message-ID: <87ppxcnkbn.fsf@codemonkey.ws>
+	(envelope-from <mjt@tls.msk.ru>) id 1UXFqT-0004G7-JU
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2013 15:04:09 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 6635742D9E;
+	Tue, 30 Apr 2013 23:04:01 +0400 (MSK)
+Message-ID: <5180159F.80706@msgid.tls.msk.ru>
+Date: Tue, 30 Apr 2013 23:03:59 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13043014-3568-0000-0000-000003841573
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 202.81.31.142
-Cc: qemu-trivial@nongnu.org, Jesse Larrew <jlarrew@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libqtest: only call
-	fclose() on open files
+To: Maksim Ratnikov <m.o.ratnikov@gmail.com>
+References: <CAAWx3aSdhAdZfPiKodbCo6sHhHPX4kk1_yZ6h1j4PU8EyNBQFg@mail.gmail.com>
+In-Reply-To: <CAAWx3aSdhAdZfPiKodbCo6sHhHPX4kk1_yZ6h1j4PU8EyNBQFg@mail.gmail.com>
+X-Enigmail-Version: 1.6a1pre
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] SMBUS module update.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,40 +44,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Apr 2013 14:51:26 -0000
+X-List-Received-Date: Tue, 30 Apr 2013 19:04:19 -0000
 
-Jesse Larrew <jlarrew@linux.vnet.ibm.com> writes:
+28.04.2013 22:26, Maksim Ratnikov wrote:
+> Previous realization doesn't consider flags in the status register.
+> Add DS and INTR bits of HST_STS register set after transaction execution.
+> Update bits resetting in HST_STS register. Update error processing: if DEV_ERR bit are set
+> transaction isn't execution.
 
-> libqtest.c can segfault when calling fclose() if the pidfile wasn't
-> opened successfully. This patch fixes the issue.
->
-> Signed-off-by: Jesse Larrew <jlarrew@linux.vnet.ibm.com>
+I'm not sure this qualifies for -trivial branch.  Maybe the device
+itself isn't of first importance or trivial, but the change this
+patch introduces are a bit more than qemu-trivial branch considers.
+I think anyway - I'm new here in -trivial.
 
-Reviewed-by: Anthony Liguori <aliguori@us.ibm.com>
+Also, please don't us HTML to format patches.
 
-Regards,
+Thanks,
 
-Anthony Liguori
-
-> ---
->  tests/libqtest.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/tests/libqtest.c b/tests/libqtest.c
-> index 884f959..879ffe9 100644
-> --- a/tests/libqtest.c
-> +++ b/tests/libqtest.c
-> @@ -99,8 +99,8 @@ static pid_t qtest_qemu_pid(QTestState *s)
->          if (fgets(buffer, sizeof(buffer), f)) {
->              pid = atoi(buffer);
->          }
-> +        fclose(f);
->      }
-> -    fclose(f);
->      return pid;
->  }
->  
-> -- 
-> 1.7.11.7
-
+/mjt
 
