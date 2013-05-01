@@ -1,35 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UXPm6-0005mN-U5
-	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2013 01:40:19 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:57547)
+	id 1UXYDP-0005oD-7O
+	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2013 10:41:03 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50160)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1UXPm4-0005ee-5t
-	for qemu-trivial@nongnu.org; Wed, 01 May 2013 01:40:17 -0400
+	(envelope-from <emaste@freebsd.org>) id 1UXYDK-0005nj-LX
+	for qemu-trivial@nongnu.org; Wed, 01 May 2013 10:41:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1UXPm2-0005o2-Co
-	for qemu-trivial@nongnu.org; Wed, 01 May 2013 01:40:16 -0400
-Received: from smtp1-g21.free.fr ([2a01:e0c:1:1599::10]:48676)
+	(envelope-from <emaste@freebsd.org>) id 1UXYDJ-000777-Fg
+	for qemu-trivial@nongnu.org; Wed, 01 May 2013 10:40:58 -0400
+Received: from [216.171.111.232] (port=49877 helo=freebsd.org)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>)
-	id 1UXPly-0005if-U6; Wed, 01 May 2013 01:40:11 -0400
-Received: from localhost.localdomain (unknown [82.227.227.196])
-	by smtp1-g21.free.fr (Postfix) with ESMTP id 763C294013F;
-	Wed,  1 May 2013 07:40:03 +0200 (CEST)
-From: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+	(envelope-from <emaste@freebsd.org>) id 1UXYDJ-00076p-AQ
+	for qemu-trivial@nongnu.org; Wed, 01 May 2013 10:40:57 -0400
+Received: from emaste (uid 1001) (envelope-from emaste@freebsd.org) id 9dbef
+	by freebsd.org (DragonFly Mail Agent 1);
+	Wed, 01 May 2013 10:40:54 -0400
+From: Ed Maste <emaste@freebsd.org>
 To: qemu-devel@nongnu.org
-Date: Wed,  1 May 2013 07:41:26 +0200
-Message-Id: <1367386886-6839-1-git-send-email-hpoussin@reactos.org>
-X-Mailer: git-send-email 1.7.10.4
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a01:e0c:1:1599::10
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [Qemu-trivial] =?utf-8?q?=5BPATCH_for_1=2E5=5D_pvscsi=3A_fix_comp?=
-	=?utf-8?q?ilation_on_32_bit_hosts?=
+Date: Wed,  1 May 2013 10:40:53 -0400
+Message-Id: <1367419253-53868-1-git-send-email-emaste@freebsd.org>
+X-Mailer: git-send-email 1.7.11.5
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
+X-Received-From: 216.171.111.232
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] m25p80.c: Sync Flash chip list with Linux
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,46 +35,118 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 May 2013 05:40:17 -0000
+X-List-Received-Date: Wed, 01 May 2013 14:41:01 -0000
 
-This fixes the following error:
-In file included from qemu/include/trace.h:4:0,
-                 from trace/generated-events.c:3:
-./trace/generated-tracers.h: In function =E2=80=98trace_pvscsi_get_sg_lis=
-t=E2=80=99:
-./trace/generated-tracers.h:4271:9: error: format =E2=80=98%lu=E2=80=99 e=
-xpects argument of
-type =E2=80=98long unsigned int=E2=80=99, but argument 4 has type =E2=80=98=
-size_t=E2=80=99 [-Werror=3Dformat]
+Add new devices for various manufacturers, and re-sort Spansion list to
+match the order in Linux, which requires chips with a non-zero extended ID
+to come first.
 
-Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+With this commit the outstanding differences to Linux rev 55bf75b are:
 
+- Erase size flag differences in s25sl032p, s25sl064p, s25fl016k, s25fl064k
+  (These devices have only some blocks that support small erase sizes.)
+- Linux lacks n25q128
+- Devices without a Jedec ID have been excluded
+
+Signed-off-by: Ed Maste <emaste@freebsd.org>
 ---
- trace-events |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/block/m25p80.c | 31 ++++++++++++++++++++++++++-----
+ 1 file changed, 26 insertions(+), 5 deletions(-)
 
-diff --git a/trace-events b/trace-events
-index ffaa3f4..55e80be 100644
---- a/trace-events
-+++ b/trace-events
-@@ -776,7 +776,7 @@ pvscsi_update_irq_msi(void) "sending MSI notification=
-"
- pvscsi_cmp_ring_put(unsigned long addr) "got completion descriptor 0x%lx=
-"
- pvscsi_msg_ring_put(unsigned long addr) "got message descriptor 0x%lx"
- pvscsi_complete_request(uint64_t context, uint64_t len, uint8_t sense_ke=
-y) "completion: ctx: 0x%"PRIx64", len: 0x%"PRIx64", sense key: %u"
--pvscsi_get_sg_list(int nsg, size_t size) "get SG list: depth: %u, size: =
-%lu"
-+pvscsi_get_sg_list(int nsg, size_t size) "get SG list: depth: %u, size: =
-%zu"
- pvscsi_get_next_sg_elem(uint32_t flags) "unknown flags in SG element (va=
-l: 0x%x)"
- pvscsi_command_complete_not_found(uint32_t tag) "can't find request for =
-tag 0x%x"
- pvscsi_command_complete_data_run(void) "not all data required for comman=
-d transferred"
---=20
-1.7.10.4
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index b3ca19a..759c84d 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -91,18 +91,27 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("at26df161a",  0x1f4601,      0,  64 << 10,  32, ER_4K) },
+     { INFO("at26df321",   0x1f4700,      0,  64 << 10,  64, ER_4K) },
+ 
++    { INFO("at45db081d",  0x1f2500,      0,  64 << 10,  16, ER_4K) },
++
+     /* EON -- en25xxx */
+     { INFO("en25f32",     0x1c3116,      0,  64 << 10,  64, ER_4K) },
+     { INFO("en25p32",     0x1c2016,      0,  64 << 10,  64, 0) },
+     { INFO("en25q32b",    0x1c3016,      0,  64 << 10,  64, 0) },
+     { INFO("en25p64",     0x1c2017,      0,  64 << 10, 128, 0) },
++    { INFO("en25q64",     0x1c3017,      0,  64 << 10, 128, ER_4K) },
++
++    /* GigaDevice */
++    { INFO("gd25q32",     0xc84016,      0,  64 << 10,  64, ER_4K) },
++    { INFO("gd25q64",     0xc84017,      0,  64 << 10, 128, ER_4K) },
+ 
+     /* Intel/Numonyx -- xxxs33b */
+     { INFO("160s33b",     0x898911,      0,  64 << 10,  32, 0) },
+     { INFO("320s33b",     0x898912,      0,  64 << 10,  64, 0) },
+     { INFO("640s33b",     0x898913,      0,  64 << 10, 128, 0) },
++    { INFO("n25q064",     0x20ba17,      0,  64 << 10, 128, 0) },
+ 
+     /* Macronix */
++    { INFO("mx25l2005a",  0xc22012,      0,  64 << 10,   4, ER_4K) },
+     { INFO("mx25l4005a",  0xc22013,      0,  64 << 10,   8, ER_4K) },
+     { INFO("mx25l8005",   0xc22014,      0,  64 << 10,  16, 0) },
+     { INFO("mx25l1606e",  0xc22015,      0,  64 << 10,  32, ER_4K) },
+@@ -113,15 +122,16 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("mx25l25635e", 0xc22019,      0,  64 << 10, 512, 0) },
+     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+ 
++    /* Micron */
++    { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, 0) },
++    { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, 0) },
++    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
++
+     /* Spansion -- single (large) sector size only, at least
+      * for the chips listed here (without boot sectors).
+      */
+-    { INFO("s25sl004a",   0x010212,      0,  64 << 10,   8, 0) },
+-    { INFO("s25sl008a",   0x010213,      0,  64 << 10,  16, 0) },
+-    { INFO("s25sl016a",   0x010214,      0,  64 << 10,  32, 0) },
+-    { INFO("s25sl032a",   0x010215,      0,  64 << 10,  64, 0) },
+     { INFO("s25sl032p",   0x010215, 0x4d00,  64 << 10,  64, ER_4K) },
+-    { INFO("s25sl064a",   0x010216,      0,  64 << 10, 128, 0) },
++    { INFO("s25sl064p",   0x010216, 0x4d00,  64 << 10, 128, ER_4K) },
+     { INFO("s25fl256s0",  0x010219, 0x4d00, 256 << 10, 128, 0) },
+     { INFO("s25fl256s1",  0x010219, 0x4d01,  64 << 10, 512, 0) },
+     { INFO("s25fl512s",   0x010220, 0x4d00, 256 << 10, 256, 0) },
+@@ -130,6 +140,11 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("s25sl12801",  0x012018, 0x0301,  64 << 10, 256, 0) },
+     { INFO("s25fl129p0",  0x012018, 0x4d00, 256 << 10,  64, 0) },
+     { INFO("s25fl129p1",  0x012018, 0x4d01,  64 << 10, 256, 0) },
++    { INFO("s25sl004a",   0x010212,      0,  64 << 10,   8, 0) },
++    { INFO("s25sl008a",   0x010213,      0,  64 << 10,  16, 0) },
++    { INFO("s25sl016a",   0x010214,      0,  64 << 10,  32, 0) },
++    { INFO("s25sl032a",   0x010215,      0,  64 << 10,  64, 0) },
++    { INFO("s25sl064a",   0x010216,      0,  64 << 10, 128, 0) },
+     { INFO("s25fl016k",   0xef4015,      0,  64 << 10,  32, ER_4K | ER_32K) },
+     { INFO("s25fl064k",   0xef4017,      0,  64 << 10, 128, ER_4K | ER_32K) },
+ 
+@@ -153,11 +168,13 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("m25p32",      0x202016,      0,  64 << 10,  64, 0) },
+     { INFO("m25p64",      0x202017,      0,  64 << 10, 128, 0) },
+     { INFO("m25p128",     0x202018,      0, 256 << 10,  64, 0) },
++    { INFO("n25q032",     0x20ba16,      0,  64 << 10,  64, 0) },
+ 
+     { INFO("m45pe10",     0x204011,      0,  64 << 10,   2, 0) },
+     { INFO("m45pe80",     0x204014,      0,  64 << 10,  16, 0) },
+     { INFO("m45pe16",     0x204015,      0,  64 << 10,  32, 0) },
+ 
++    { INFO("m25pe20",     0x208012,      0,  64 << 10,   4, 0) },
+     { INFO("m25pe80",     0x208014,      0,  64 << 10,  16, 0) },
+     { INFO("m25pe16",     0x208015,      0,  64 << 10,  32, ER_4K) },
+ 
+@@ -174,8 +191,12 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("w25x16",      0xef3015,      0,  64 << 10,  32, ER_4K) },
+     { INFO("w25x32",      0xef3016,      0,  64 << 10,  64, ER_4K) },
+     { INFO("w25q32",      0xef4016,      0,  64 << 10,  64, ER_4K) },
++    { INFO("w25q32dw",    0xef6016,      0,  64 << 10,  64, ER_4K) },
+     { INFO("w25x64",      0xef3017,      0,  64 << 10, 128, ER_4K) },
+     { INFO("w25q64",      0xef4017,      0,  64 << 10, 128, ER_4K) },
++    { INFO("w25q80",      0xef5014,      0,  64 << 10,  16, ER_4K) },
++    { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K) },
++    { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K) },
+ 
+     /* Numonyx -- n25q128 */
+     { INFO("n25q128",      0x20ba18,      0,  64 << 10, 256, 0) },
+-- 
+1.7.11.5
 
 
