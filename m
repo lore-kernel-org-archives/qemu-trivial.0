@@ -1,29 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UXYDP-0005oD-7O
-	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2013 10:41:03 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:50160)
+	id 1UXYdm-00086F-Ux
+	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2013 11:08:18 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:56126)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1UXYDK-0005nj-LX
-	for qemu-trivial@nongnu.org; Wed, 01 May 2013 10:41:01 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1UXYdk-00085g-AQ
+	for qemu-trivial@nongnu.org; Wed, 01 May 2013 11:08:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1UXYDJ-000777-Fg
-	for qemu-trivial@nongnu.org; Wed, 01 May 2013 10:40:58 -0400
-Received: from [216.171.111.232] (port=49877 helo=freebsd.org)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1UXYdh-0006GR-Vm
+	for qemu-trivial@nongnu.org; Wed, 01 May 2013 11:08:15 -0400
+Received: from mail-gg0-x22e.google.com ([2607:f8b0:4002:c02::22e]:47326)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1UXYDJ-00076p-AQ
-	for qemu-trivial@nongnu.org; Wed, 01 May 2013 10:40:57 -0400
-Received: from emaste (uid 1001) (envelope-from emaste@freebsd.org) id 9dbef
-	by freebsd.org (DragonFly Mail Agent 1);
-	Wed, 01 May 2013 10:40:54 -0400
-From: Ed Maste <emaste@freebsd.org>
-To: qemu-devel@nongnu.org
-Date: Wed,  1 May 2013 10:40:53 -0400
-Message-Id: <1367419253-53868-1-git-send-email-emaste@freebsd.org>
-X-Mailer: git-send-email 1.7.11.5
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
-X-Received-From: 216.171.111.232
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] m25p80.c: Sync Flash chip list with Linux
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1UXYdh-0006GJ-Qc; Wed, 01 May 2013 11:08:13 -0400
+Received: by mail-gg0-f174.google.com with SMTP id k2so286239ggd.19
+	for <multiple recipients>; Wed, 01 May 2013 08:08:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
+	:cc:subject:references:in-reply-to:x-enigmail-version:content-type
+	:content-transfer-encoding;
+	bh=nQBANuQ5K45T6aMZ3ywA3cIxk/CKDzNvXlW09BhABpk=;
+	b=AHWubMbK3vQznbqyBwGBqXduzeMDq41t2vL1u2XgJZVsIIIHuJ0dMOqrHaCPGH+jnu
+	58soV1Yk77HxNGPJ0O7DapPaQYGYaPBXfJaR47h/vZOj8uiKZR9bsVZ75q5MOUFqxZka
+	eicBY6BGdX4i2H3Gu666GVr0n7QozjWef82+a+DBcxZHiBkIFFY70q0Ky7KY7VcBZ8lA
+	e4K97TSsJBRvSnNXcOUqKiSSM14SnobtmXGztsFU/sMee53n6egPSxUqLCVrgEXUZdK5
+	nOPj8SxCOu+bS1f5zz+vkjndPUZaGabg3g8VdGCdaUowk587YuAirWfe3FvbzBR1r1BZ
+	x1Lg==
+X-Received: by 10.236.82.70 with SMTP id n46mr2128354yhe.97.1367420893431;
+	Wed, 01 May 2013 08:08:13 -0700 (PDT)
+Received: from yakj.usersys.redhat.com (93-34-176-20.ip50.fastwebnet.it.
+	[93.34.176.20])
+	by mx.google.com with ESMTPSA id j47sm5780531yhm.21.2013.05.01.08.08.11
+	for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Wed, 01 May 2013 08:08:12 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <51812FCD.7050507@redhat.com>
+Date: Wed, 01 May 2013 17:07:57 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
+MIME-Version: 1.0
+To: David Gibson <david@gibson.dropbear.id.au>
+References: <1367288751-25163-1-git-send-email-aik@ozlabs.ru>
+	<517F7368.8010908@redhat.com>
+	<20130501032507.GL20202@truffula.fritz.box>
+In-Reply-To: <20130501032507.GL20202@truffula.fritz.box>
+X-Enigmail-Version: 1.5.1
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4002:c02::22e
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2] memory: give name every AddressSpace
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,118 +65,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 May 2013 14:41:01 -0000
+X-List-Received-Date: Wed, 01 May 2013 15:08:17 -0000
 
-Add new devices for various manufacturers, and re-sort Spansion list to
-match the order in Linux, which requires chips with a non-zero extended ID
-to come first.
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-With this commit the outstanding differences to Linux rev 55bf75b are:
+Il 01/05/2013 05:25, David Gibson ha scritto:
+>>> Applied to iommu branch, thanks.
+> I don't see this patch at git://github.com/bonzini/qemu.git yet.
+> Did you need to do something to push it out?
 
-- Erase size flag differences in s25sl032p, s25sl064p, s25fl016k, s25fl064k
-  (These devices have only some blocks that support small erase sizes.)
-- Linux lacks n25q128
-- Devices without a Jedec ID have been excluded
+I just applied it locally for now.
 
-Signed-off-by: Ed Maste <emaste@freebsd.org>
----
- hw/block/m25p80.c | 31 ++++++++++++++++++++++++++-----
- 1 file changed, 26 insertions(+), 5 deletions(-)
+Paolo
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.19 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index b3ca19a..759c84d 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -91,18 +91,27 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("at26df161a",  0x1f4601,      0,  64 << 10,  32, ER_4K) },
-     { INFO("at26df321",   0x1f4700,      0,  64 << 10,  64, ER_4K) },
- 
-+    { INFO("at45db081d",  0x1f2500,      0,  64 << 10,  16, ER_4K) },
-+
-     /* EON -- en25xxx */
-     { INFO("en25f32",     0x1c3116,      0,  64 << 10,  64, ER_4K) },
-     { INFO("en25p32",     0x1c2016,      0,  64 << 10,  64, 0) },
-     { INFO("en25q32b",    0x1c3016,      0,  64 << 10,  64, 0) },
-     { INFO("en25p64",     0x1c2017,      0,  64 << 10, 128, 0) },
-+    { INFO("en25q64",     0x1c3017,      0,  64 << 10, 128, ER_4K) },
-+
-+    /* GigaDevice */
-+    { INFO("gd25q32",     0xc84016,      0,  64 << 10,  64, ER_4K) },
-+    { INFO("gd25q64",     0xc84017,      0,  64 << 10, 128, ER_4K) },
- 
-     /* Intel/Numonyx -- xxxs33b */
-     { INFO("160s33b",     0x898911,      0,  64 << 10,  32, 0) },
-     { INFO("320s33b",     0x898912,      0,  64 << 10,  64, 0) },
-     { INFO("640s33b",     0x898913,      0,  64 << 10, 128, 0) },
-+    { INFO("n25q064",     0x20ba17,      0,  64 << 10, 128, 0) },
- 
-     /* Macronix */
-+    { INFO("mx25l2005a",  0xc22012,      0,  64 << 10,   4, ER_4K) },
-     { INFO("mx25l4005a",  0xc22013,      0,  64 << 10,   8, ER_4K) },
-     { INFO("mx25l8005",   0xc22014,      0,  64 << 10,  16, 0) },
-     { INFO("mx25l1606e",  0xc22015,      0,  64 << 10,  32, ER_4K) },
-@@ -113,15 +122,16 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("mx25l25635e", 0xc22019,      0,  64 << 10, 512, 0) },
-     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
- 
-+    /* Micron */
-+    { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, 0) },
-+    { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, 0) },
-+    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
-+
-     /* Spansion -- single (large) sector size only, at least
-      * for the chips listed here (without boot sectors).
-      */
--    { INFO("s25sl004a",   0x010212,      0,  64 << 10,   8, 0) },
--    { INFO("s25sl008a",   0x010213,      0,  64 << 10,  16, 0) },
--    { INFO("s25sl016a",   0x010214,      0,  64 << 10,  32, 0) },
--    { INFO("s25sl032a",   0x010215,      0,  64 << 10,  64, 0) },
-     { INFO("s25sl032p",   0x010215, 0x4d00,  64 << 10,  64, ER_4K) },
--    { INFO("s25sl064a",   0x010216,      0,  64 << 10, 128, 0) },
-+    { INFO("s25sl064p",   0x010216, 0x4d00,  64 << 10, 128, ER_4K) },
-     { INFO("s25fl256s0",  0x010219, 0x4d00, 256 << 10, 128, 0) },
-     { INFO("s25fl256s1",  0x010219, 0x4d01,  64 << 10, 512, 0) },
-     { INFO("s25fl512s",   0x010220, 0x4d00, 256 << 10, 256, 0) },
-@@ -130,6 +140,11 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("s25sl12801",  0x012018, 0x0301,  64 << 10, 256, 0) },
-     { INFO("s25fl129p0",  0x012018, 0x4d00, 256 << 10,  64, 0) },
-     { INFO("s25fl129p1",  0x012018, 0x4d01,  64 << 10, 256, 0) },
-+    { INFO("s25sl004a",   0x010212,      0,  64 << 10,   8, 0) },
-+    { INFO("s25sl008a",   0x010213,      0,  64 << 10,  16, 0) },
-+    { INFO("s25sl016a",   0x010214,      0,  64 << 10,  32, 0) },
-+    { INFO("s25sl032a",   0x010215,      0,  64 << 10,  64, 0) },
-+    { INFO("s25sl064a",   0x010216,      0,  64 << 10, 128, 0) },
-     { INFO("s25fl016k",   0xef4015,      0,  64 << 10,  32, ER_4K | ER_32K) },
-     { INFO("s25fl064k",   0xef4017,      0,  64 << 10, 128, ER_4K | ER_32K) },
- 
-@@ -153,11 +168,13 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("m25p32",      0x202016,      0,  64 << 10,  64, 0) },
-     { INFO("m25p64",      0x202017,      0,  64 << 10, 128, 0) },
-     { INFO("m25p128",     0x202018,      0, 256 << 10,  64, 0) },
-+    { INFO("n25q032",     0x20ba16,      0,  64 << 10,  64, 0) },
- 
-     { INFO("m45pe10",     0x204011,      0,  64 << 10,   2, 0) },
-     { INFO("m45pe80",     0x204014,      0,  64 << 10,  16, 0) },
-     { INFO("m45pe16",     0x204015,      0,  64 << 10,  32, 0) },
- 
-+    { INFO("m25pe20",     0x208012,      0,  64 << 10,   4, 0) },
-     { INFO("m25pe80",     0x208014,      0,  64 << 10,  16, 0) },
-     { INFO("m25pe16",     0x208015,      0,  64 << 10,  32, ER_4K) },
- 
-@@ -174,8 +191,12 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("w25x16",      0xef3015,      0,  64 << 10,  32, ER_4K) },
-     { INFO("w25x32",      0xef3016,      0,  64 << 10,  64, ER_4K) },
-     { INFO("w25q32",      0xef4016,      0,  64 << 10,  64, ER_4K) },
-+    { INFO("w25q32dw",    0xef6016,      0,  64 << 10,  64, ER_4K) },
-     { INFO("w25x64",      0xef3017,      0,  64 << 10, 128, ER_4K) },
-     { INFO("w25q64",      0xef4017,      0,  64 << 10, 128, ER_4K) },
-+    { INFO("w25q80",      0xef5014,      0,  64 << 10,  16, ER_4K) },
-+    { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K) },
-+    { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K) },
- 
-     /* Numonyx -- n25q128 */
-     { INFO("n25q128",      0x20ba18,      0,  64 << 10, 256, 0) },
--- 
-1.7.11.5
-
+iQIcBAEBAgAGBQJRgS/NAAoJEBvWZb6bTYbyr2wP/0SE8WDVpcteMf0oO+W/o1jg
+nav1QqSiVWs6KbFR5uQsiLK3l+Rv1BKKf5FZoGiOSvHxyr7/tYpv6MmOAMYyKqVF
++KsYZ5J8snL9OyZviSkUPvmYF/v8+MZxBAMJHB5ryjpZoDk/4y5aT0LrPl6NLeqy
+fkXToabzPFWHEWVwa6JkHgyS1IFxYM0zgobCv82TGypSAebded02BvrIzUV6jSI0
+iEjIAKdZiSK2pdgHnZFRHqd0I8+NHjeSaXXX5YxhtE0R3uCMNoRBiam9t5aGVIYb
+HLwGq94/ikf4gDnntkE6/J9zAwVcHltp97InGEhOQRP/71xgGjTbRVDn7v5kadwC
+UMZzGA+fBVhI80Zjnb280hQVPHihgicO3koaaEkW6zBDGuCZZtr2yocQFnVYRZhH
+CnQ5yUG6SZCgH+RlsIZ8mh/bEknH21+IF4xdTv5j3gSH8R5Y3I+l3KShTMDCcEfc
++ItrdQQLJXMlPXXRCeG6N1+Hkg1VpcnhGBpfIXqUTgfJtvGqi+TzEMqt8KGeIMEf
+7YLfpHm7vd5kseBo6u85XScAcxPazfoSn8vTb0yFiU+YeSUstZzoAwoQg/7lzarB
+1ouWvNrT9plNywg2aMGO34tCQCSCDwMlsQ47HMGxKiCTlVEczz758Xki1NAURCTy
+uza3CdJb9OrYDQ5qeDOi
+=jcUq
+-----END PGP SIGNATURE-----
 
