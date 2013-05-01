@@ -1,59 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UXYdm-00086F-Ux
-	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2013 11:08:18 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56126)
+	id 1UXaIE-00086L-15
+	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2013 12:54:10 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:53552)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UXYdk-00085g-AQ
-	for qemu-trivial@nongnu.org; Wed, 01 May 2013 11:08:17 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UXaIB-00082K-Em
+	for qemu-trivial@nongnu.org; Wed, 01 May 2013 12:54:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UXYdh-0006GR-Vm
-	for qemu-trivial@nongnu.org; Wed, 01 May 2013 11:08:15 -0400
-Received: from mail-gg0-x22e.google.com ([2607:f8b0:4002:c02::22e]:47326)
+	(envelope-from <mjt@tls.msk.ru>) id 1UXaIA-0005xj-3s
+	for qemu-trivial@nongnu.org; Wed, 01 May 2013 12:54:07 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:50352)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1UXYdh-0006GJ-Qc; Wed, 01 May 2013 11:08:13 -0400
-Received: by mail-gg0-f174.google.com with SMTP id k2so286239ggd.19
-	for <multiple recipients>; Wed, 01 May 2013 08:08:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
-	:cc:subject:references:in-reply-to:x-enigmail-version:content-type
-	:content-transfer-encoding;
-	bh=nQBANuQ5K45T6aMZ3ywA3cIxk/CKDzNvXlW09BhABpk=;
-	b=AHWubMbK3vQznbqyBwGBqXduzeMDq41t2vL1u2XgJZVsIIIHuJ0dMOqrHaCPGH+jnu
-	58soV1Yk77HxNGPJ0O7DapPaQYGYaPBXfJaR47h/vZOj8uiKZR9bsVZ75q5MOUFqxZka
-	eicBY6BGdX4i2H3Gu666GVr0n7QozjWef82+a+DBcxZHiBkIFFY70q0Ky7KY7VcBZ8lA
-	e4K97TSsJBRvSnNXcOUqKiSSM14SnobtmXGztsFU/sMee53n6egPSxUqLCVrgEXUZdK5
-	nOPj8SxCOu+bS1f5zz+vkjndPUZaGabg3g8VdGCdaUowk587YuAirWfe3FvbzBR1r1BZ
-	x1Lg==
-X-Received: by 10.236.82.70 with SMTP id n46mr2128354yhe.97.1367420893431;
-	Wed, 01 May 2013 08:08:13 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (93-34-176-20.ip50.fastwebnet.it.
-	[93.34.176.20])
-	by mx.google.com with ESMTPSA id j47sm5780531yhm.21.2013.05.01.08.08.11
-	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Wed, 01 May 2013 08:08:12 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <51812FCD.7050507@redhat.com>
-Date: Wed, 01 May 2013 17:07:57 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UXaI4-0005o0-Ot; Wed, 01 May 2013 12:54:00 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 26BF940073;
+	Wed,  1 May 2013 20:53:58 +0400 (MSK)
+Message-ID: <518148A4.1090306@msgid.tls.msk.ru>
+Date: Wed, 01 May 2013 20:53:56 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
 MIME-Version: 1.0
-To: David Gibson <david@gibson.dropbear.id.au>
-References: <1367288751-25163-1-git-send-email-aik@ozlabs.ru>
-	<517F7368.8010908@redhat.com>
-	<20130501032507.GL20202@truffula.fritz.box>
-In-Reply-To: <20130501032507.GL20202@truffula.fritz.box>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c02::22e
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] memory: give name every AddressSpace
+To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+References: <1367159247-13441-1-git-send-email-afaerber@suse.de>
+In-Reply-To: <1367159247-13441-1-git-send-email-afaerber@suse.de>
+X-Enigmail-Version: 1.6a1pre
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, agraf@suse.de, brogers@suse.com,
+	qemu-devel@nongnu.org, qemu-stable@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH for-1.5] configure: Pick up libseccomp
+ include path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,35 +46,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 May 2013 15:08:17 -0000
+X-List-Received-Date: Wed, 01 May 2013 16:54:09 -0000
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+28.04.2013 18:27, Andreas F=C3=A4rber wrote:
+> openSUSE 12.3 has seccomp.h in /usr/include/libseccomp-1.0.1,
+> so add `pkg-config --cflags libseccomp` output to QEMU_CFLAGS.
+>=20
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
 
-Il 01/05/2013 05:25, David Gibson ha scritto:
->>> Applied to iommu branch, thanks.
-> I don't see this patch at git://github.com/bonzini/qemu.git yet.
-> Did you need to do something to push it out?
+Thanks, applied to qemu-trivial tree (372e47e9b5e31c493823d7f512716644fb0=
+2d0fd).
 
-I just applied it locally for now.
+/mjt
 
-Paolo
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.19 (GNU/Linux)
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+>  configure | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/configure b/configure
+> index 21438d4..643153f 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1505,6 +1505,7 @@ libs_softmmu=3D"$libs_softmmu -lz"
+>  if test "$seccomp" !=3D "no" ; then
+>      if $pkg_config --atleast-version=3D1.0.0 libseccomp --modversion >=
+/dev/null 2>&1; then
+>          libs_softmmu=3D"$libs_softmmu `$pkg_config --libs libseccomp`"
+> +        QEMU_CFLAGS=3D"$QEMU_CFLAGS `$pkg_config --cflags libseccomp`"
+>  	seccomp=3D"yes"
+>      else
+>  	if test "$seccomp" =3D "yes"; then
 
-iQIcBAEBAgAGBQJRgS/NAAoJEBvWZb6bTYbyr2wP/0SE8WDVpcteMf0oO+W/o1jg
-nav1QqSiVWs6KbFR5uQsiLK3l+Rv1BKKf5FZoGiOSvHxyr7/tYpv6MmOAMYyKqVF
-+KsYZ5J8snL9OyZviSkUPvmYF/v8+MZxBAMJHB5ryjpZoDk/4y5aT0LrPl6NLeqy
-fkXToabzPFWHEWVwa6JkHgyS1IFxYM0zgobCv82TGypSAebded02BvrIzUV6jSI0
-iEjIAKdZiSK2pdgHnZFRHqd0I8+NHjeSaXXX5YxhtE0R3uCMNoRBiam9t5aGVIYb
-HLwGq94/ikf4gDnntkE6/J9zAwVcHltp97InGEhOQRP/71xgGjTbRVDn7v5kadwC
-UMZzGA+fBVhI80Zjnb280hQVPHihgicO3koaaEkW6zBDGuCZZtr2yocQFnVYRZhH
-CnQ5yUG6SZCgH+RlsIZ8mh/bEknH21+IF4xdTv5j3gSH8R5Y3I+l3KShTMDCcEfc
-+ItrdQQLJXMlPXXRCeG6N1+Hkg1VpcnhGBpfIXqUTgfJtvGqi+TzEMqt8KGeIMEf
-7YLfpHm7vd5kseBo6u85XScAcxPazfoSn8vTb0yFiU+YeSUstZzoAwoQg/7lzarB
-1ouWvNrT9plNywg2aMGO34tCQCSCDwMlsQ47HMGxKiCTlVEczz758Xki1NAURCTy
-uza3CdJb9OrYDQ5qeDOi
-=jcUq
------END PGP SIGNATURE-----
+
 
