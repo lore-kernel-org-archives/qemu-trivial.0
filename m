@@ -1,49 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UYLDC-00080j-93
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2013 15:00:06 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:54256)
+	id 1UYdGI-0002ep-Ok
+	for mharc-qemu-trivial@gnu.org; Sat, 04 May 2013 10:16:30 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:42936)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UYLD7-0007uF-GL
-	for qemu-trivial@nongnu.org; Fri, 03 May 2013 15:00:04 -0400
+	(envelope-from <hpoussin@reactos.org>) id 1UYdGG-0002bI-Kr
+	for qemu-trivial@nongnu.org; Sat, 04 May 2013 10:16:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UYLD4-0001sI-Tm
-	for qemu-trivial@nongnu.org; Fri, 03 May 2013 15:00:01 -0400
-Received: from e23smtp03.au.ibm.com ([202.81.31.145]:38257)
+	(envelope-from <hpoussin@reactos.org>) id 1UYdGF-0006e6-IE
+	for qemu-trivial@nongnu.org; Sat, 04 May 2013 10:16:28 -0400
+Received: from smtp1-g21.free.fr ([2a01:e0c:1:1599::10]:50641)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UYLD4-0001rw-C4
-	for qemu-trivial@nongnu.org; Fri, 03 May 2013 14:59:58 -0400
-Received: from /spool/local
-	by e23smtp03.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Sat, 4 May 2013 04:51:52 +1000
-Received: from d23dlp02.au.ibm.com (202.81.31.213)
-	by e23smtp03.au.ibm.com (202.81.31.209) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Sat, 4 May 2013 04:51:50 +1000
-Received: from d23relay03.au.ibm.com (d23relay03.au.ibm.com [9.190.235.21])
-	by d23dlp02.au.ibm.com (Postfix) with ESMTP id 35FB42BB0050;
-	Sat,  4 May 2013 04:59:49 +1000 (EST)
-Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
-	by d23relay03.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r43IxeYf23134416; Sat, 4 May 2013 04:59:42 +1000
-Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r43IxkB7017980; Sat, 4 May 2013 04:59:46 +1000
-Received: from localhost6.localdomain6 (titi.austin.ibm.com [9.41.105.190])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r43IxjD0017968; Sat, 4 May 2013 04:59:45 +1000
-Message-Id: <201305031859.r43IxjD0017968@d23av03.au.ibm.com>
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, Anthony Liguori <aliguori@us.ibm.com>
-In-Reply-To: <518200B7.5020703@msgid.tls.msk.ru>
-Date: Fri, 03 May 2013 18:59:44 -0000
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13050318-6102-0000-0000-0000036DC71D
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 202.81.31.145
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PULL] Trivial patches for 2013-05-02
+	(envelope-from <hpoussin@reactos.org>)
+	id 1UYdGC-0006dC-Bx; Sat, 04 May 2013 10:16:24 -0400
+Received: from localhost.localdomain (unknown [82.227.227.196])
+	by smtp1-g21.free.fr (Postfix) with ESMTP id 3483B940178;
+	Sat,  4 May 2013 16:16:17 +0200 (CEST)
+From: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+To: qemu-devel@nongnu.org
+Date: Sat,  4 May 2013 16:17:37 +0200
+Message-Id: <1367677057-6809-1-git-send-email-hpoussin@reactos.org>
+X-Mailer: git-send-email 1.7.10.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:e0c:1:1599::10
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+Subject: [Qemu-trivial] [PATCH for-1.5] audio: update documentation after
+	removing --audio-card-list option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,12 +41,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2013 19:00:04 -0000
+X-List-Received-Date: Sat, 04 May 2013 14:16:29 -0000
 
-Pulled.  Thanks.
+Commit 98af93fde2e37b5b0c8cee9036e028fe6df6446c removed the
+--audio-card-list option in configure, and commit
+8f3b664f6cc4153cc73941c941d54c4e499b7537 always compiled in
+the adlib, gus and cs4231a audio cards.
 
-Regards,
+Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+---
+ qemu-doc.texi |    4 ----
+ 1 file changed, 4 deletions(-)
 
-Anthony Liguori
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index 64493eb..5fc0eae 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -214,10 +214,6 @@ PCI UHCI USB controller and a virtual USB hub.
+=20
+ SMP is supported with up to 255 CPUs.
+=20
+-Note that adlib, gus and cs4231a are only available when QEMU was
+-configured with --audio-card-list option containing the name(s) of
+-required card(s).
+-
+ QEMU uses the PC BIOS from the Bochs project and the Plex86/Bochs LGPL
+ VGA BIOS.
+=20
+--=20
+1.7.10.4
 
 
