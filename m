@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UYzZ4-0006Zx-Db
-	for mharc-qemu-trivial@gnu.org; Sun, 05 May 2013 10:05:22 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:48320)
+	id 1UZNws-0003Nc-QR
+	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2013 12:07:34 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47933)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UYzZ2-0006WR-4X
-	for qemu-trivial@nongnu.org; Sun, 05 May 2013 10:05:20 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1UZNwo-0003M7-QD
+	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:07:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UYzZ1-0000bo-4C
-	for qemu-trivial@nongnu.org; Sun, 05 May 2013 10:05:20 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:42466 helo=mx2.suse.de)
+	(envelope-from <jan.kiszka@siemens.com>) id 1UZNwR-00088x-LW
+	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:07:30 -0400
+Received: from thoth.sbs.de ([192.35.17.2]:19821)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UYzYy-0000bL-Sx; Sun, 05 May 2013 10:05:17 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 175C6A5230;
-	Sun,  5 May 2013 16:05:16 +0200 (CEST)
-Message-ID: <51866716.4040508@suse.de>
-Date: Sun, 05 May 2013 16:05:10 +0200
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1UZNwR-00088S-By; Mon, 06 May 2013 12:07:07 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by thoth.sbs.de (8.13.6/8.13.6) with ESMTP id r46G75BQ010263;
+	Mon, 6 May 2013 18:07:05 +0200
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id r46G75ED006677;
+	Mon, 6 May 2013 18:07:05 +0200
+Message-ID: <5187D529.7010502@siemens.com>
+Date: Mon, 06 May 2013 18:07:05 +0200
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-To: =?UTF-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>,
-	Gerd Hoffmann <kraxel@redhat.com>
-References: <1367677057-6809-1-git-send-email-hpoussin@reactos.org>
-In-Reply-To: <1367677057-6809-1-git-send-email-hpoussin@reactos.org>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+To: qemu-trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-1.5] audio: update
- documentation after removing --audio-card-list option
+X-Received-From: 192.35.17.2
+Cc: qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] memory: Replace open-coded
+	memory_region_is_romd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,43 +44,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 May 2013 14:05:21 -0000
+X-List-Received-Date: Mon, 06 May 2013 16:07:33 -0000
 
-Am 04.05.2013 16:17, schrieb Herv=C3=A9 Poussineau:
-> Commit 98af93fde2e37b5b0c8cee9036e028fe6df6446c removed the
-> --audio-card-list option in configure, and commit
-> 8f3b664f6cc4153cc73941c941d54c4e499b7537 always compiled in
-> the adlib, gus and cs4231a audio cards.
->=20
-> Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
-> ---
->  qemu-doc.texi |    4 ----
->  1 file changed, 4 deletions(-)
->=20
-> diff --git a/qemu-doc.texi b/qemu-doc.texi
-> index 64493eb..5fc0eae 100644
-> --- a/qemu-doc.texi
-> +++ b/qemu-doc.texi
-> @@ -214,10 +214,6 @@ PCI UHCI USB controller and a virtual USB hub.
-> =20
->  SMP is supported with up to 255 CPUs.
-> =20
-> -Note that adlib, gus and cs4231a are only available when QEMU was
-> -configured with --audio-card-list option containing the name(s) of
-> -required card(s).
-> -
->  QEMU uses the PC BIOS from the Bochs project and the Plex86/Bochs LGPL
->  VGA BIOS.
-> =20
+Improves readability.
 
-Unrelated to this patch, but the last paragraph doesn't seem to be
-up-to-date either: We're no longer using PC BIOS but SeaBIOS for some
-time already, aren't we?
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+---
+ translate-all.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
+diff --git a/translate-all.c b/translate-all.c
+index da93608..0d84b0d 100644
+--- a/translate-all.c
++++ b/translate-all.c
+@@ -1359,7 +1359,7 @@ void tb_invalidate_phys_addr(hwaddr addr)
+     section = phys_page_find(address_space_memory.dispatch,
+                              addr >> TARGET_PAGE_BITS);
+     if (!(memory_region_is_ram(section->mr)
+-          || (section->mr->rom_device && section->mr->readable))) {
++          || memory_region_is_romd(section->mr))) {
+         return;
+     }
+     ram_addr = (memory_region_get_ram_addr(section->mr) & TARGET_PAGE_MASK)
+-- 
+1.7.3.4
 
