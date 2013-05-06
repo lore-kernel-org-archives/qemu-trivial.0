@@ -1,56 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UZOLY-0007zo-Qa
-	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2013 12:33:05 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56397)
+	id 1UZOUi-00031s-SF
+	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2013 12:42:32 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:58675)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UZOLV-0007uo-S2
-	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:33:02 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UZOUf-00030U-Dt
+	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:42:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UZOLS-0000Uj-00
-	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:32:58 -0400
-Received: from mail-yh0-x230.google.com ([2607:f8b0:4002:c01::230]:38443)
+	(envelope-from <peter.maydell@linaro.org>) id 1UZOUe-0003ov-Eo
+	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:42:29 -0400
+Received: from mail-la0-x231.google.com ([2a00:1450:4010:c03::231]:63500)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1UZOLP-0000Tr-2j; Mon, 06 May 2013 12:32:55 -0400
-Received: by mail-yh0-f48.google.com with SMTP id f35so729376yha.35
-	for <multiple recipients>; Mon, 06 May 2013 09:32:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
-	:cc:subject:references:in-reply-to:x-enigmail-version:content-type
-	:content-transfer-encoding;
-	bh=fMdN1evOOYQHrnVEAkVhAwpkhMWP56ns0YQwRSMVVFg=;
-	b=tyjhNKhkEoeaiLEY5KZcRDaEVkWfT8Fxt59LGzjttD8QETNxVElR1aw0nL3XjCNqK1
-	6DhkguGQpKhdM9pRgkpA0yjXpcUG+23cTJwLcnjRu5zRobb6xpqivxwWsum5+bWLPsh+
-	9j4elRpsyHaO2tpiOYXUvIMeHjUad5Ho5x+dq3G7w7gHBxVVWiX3UEZYFiu0igUMkfho
-	A869KlkvaKchvCYLUPBtGfRcvYlVqhjbuSpuA2AylsRJOBwVk7Vgw2QjOV8/mN9OAhY8
-	ueDQdh76piIaNdk3/Ju//mLJr6EV/whA3AEPiB9SJLdbcLd3Yt+UEboRZaT+Z2gi/p8Q
-	vapw==
-X-Received: by 10.236.134.194 with SMTP id s42mr18462092yhi.181.1367857974668; 
-	Mon, 06 May 2013 09:32:54 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (93-34-176-20.ip50.fastwebnet.it.
-	[93.34.176.20])
-	by mx.google.com with ESMTPSA id w67sm48611611yhk.7.2013.05.06.09.32.52
-	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Mon, 06 May 2013 09:32:53 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <5187DB2D.9080402@redhat.com>
-Date: Mon, 06 May 2013 18:32:45 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
+	(envelope-from <peter.maydell@linaro.org>) id 1UZOUe-0003nk-6r
+	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:42:28 -0400
+Received: by mail-la0-f49.google.com with SMTP id eh20so3446990lab.22
+	for <qemu-trivial@nongnu.org>; Mon, 06 May 2013 09:42:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=x-received:mime-version:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-type:x-gm-message-state;
+	bh=jB1VkCRNeVC5NSgCrgskUnBcmedXgcel+FiRTWwR9yc=;
+	b=YAarBFTcp2IpV2z01m1arkU+ZkQs672b0FCIM+tdpZRgiE9XHaqlBLNat/QmqAb0eK
+	KjJXP8ndcsJheo8F8TamZ7DsQrzETOBv/xeQsUPSfPnDz4cWP06+R2NWAusAQjfY1bqq
+	EutLZ/RJFdXiedjAcrBPIGKMJjqZtuqdlf9XXW2vroeJun+6IZe/qAR2m+ndYmRC58ab
+	/Mhp/rOdD2cDya0A2uVu1oHKjhPiVrRhKBxSN80yuMOi4QrJSfXYAoKlR8pkRT0Mvimu
+	jH4Yw/AvxrCSaG498DQU5yATtvUBubeGJ0JKWuw5rjKEW113fXGyOBf009AAZjEwzTji
+	wx7g==
+X-Received: by 10.112.167.168 with SMTP id zp8mr8210410lbb.58.1367858546957;
+	Mon, 06 May 2013 09:42:26 -0700 (PDT)
 MIME-Version: 1.0
-To: Jan Kiszka <jan.kiszka@siemens.com>
-References: <5187D656.2090501@siemens.com>
-In-Reply-To: <5187D656.2090501@siemens.com>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Received: by 10.112.156.193 with HTTP; Mon, 6 May 2013 09:42:06 -0700 (PDT)
+In-Reply-To: <5187D9A6.6050807@redhat.com>
+References: <5187D529.7010502@siemens.com> <5187D9A6.6050807@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 May 2013 17:42:06 +0100
+Message-ID: <CAFEAcA_SNzor4A0bOzi3qgB2AcVcYMAK7SfkvxAO+SZTq4hDew@mail.gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQnyyjiqVBhWYi5Dg5qdb7nCN1e9dt7wf51rG6jdvDypWkwzV8Wx7bgEb513rpQXiMr6TsOk
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c01::230
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] memory: Rename readable flag to romd_mode
+X-Received-From: 2a00:1450:4010:c03::231
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] memory: Replace open-coded
+	memory_region_is_romd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,41 +55,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 May 2013 16:33:03 -0000
+X-List-Received-Date: Mon, 06 May 2013 16:42:31 -0000
 
-Il 06/05/2013 18:12, Jan Kiszka ha scritto:
-> "Readable" is a very unfortunate name for this flag because even a
-> rom_device region will always be readable from the guest POV. What
-> differs is the mapping, just like the comments had to explain already.
-> Also, readable could currently be understood as being a generic region
-> flag, but it only applies to rom_device regions.
-> 
-> So name the flag and the function to modify it after the original term
-> "ROMD" which could also be interpreted as "ROM direct", i.e. ROM mode
-> with direct access. In any case, the scope if the flag is clearer now.
-> 
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
-> ---
-> 
-> Depends on "memory: Replace open-coded memory_region_is_romd", but I
-> don't think this patch is "trivial" as well, though it is just renaming
-> things. Just in case, I'm CCing the trivial list as well.
-> 
-> Paolo, or would you open a memory branch so that related stuff can flow
-> through one queue?
+On 6 May 2013 17:26, Paolo Bonzini <pbonzini@redhat.com> wrote:
+> Il 06/05/2013 18:07, Jan Kiszka ha scritto:
+>> Improves readability.
+>>
+>> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+>> ---
+>>  translate-all.c |    2 +-
+>>  1 files changed, 1 insertions(+), 1 deletions(-)
+>>
+>> diff --git a/translate-all.c b/translate-all.c
+>> index da93608..0d84b0d 100644
+>> --- a/translate-all.c
+>> +++ b/translate-all.c
+>> @@ -1359,7 +1359,7 @@ void tb_invalidate_phys_addr(hwaddr addr)
+>>      section = phys_page_find(address_space_memory.dispatch,
+>>                               addr >> TARGET_PAGE_BITS);
+>>      if (!(memory_region_is_ram(section->mr)
+>> -          || (section->mr->rom_device && section->mr->readable))) {
+>> +          || memory_region_is_romd(section->mr))) {
+>>          return;
+>>      }
+>>      ram_addr = (memory_region_get_ram_addr(section->mr) & TARGET_PAGE_MASK)
+>>
+>
+> Not trivial enough for qemu-trivial, let's open a memory branch for 1.6.
 
-I think this is more trivial than the other actually.  :)  (For code
-changes, I think trivial roughly means "if it compiles fine, it won't
-break anything").
+Well, I wouldn't necessarily put it in 1.5 this close to
+hardfreeze, but it looks fine for qemu-trivial to me.
+In particular you can comprehend the patch and confirm its
+correctness without having to have any larger understanding
+of the memory system.
 
-For now I applied both patches to my iommu branch.  I'll test it a bit
-more tomorrow and then post the IOMMU patches for review.  We should
-merge them and the subpage reorg soon in 1.6, since it is (together with
-ref/unref) the main serialization point for all the work on BQL-less
-dispatch.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-BTW, a "trivial" patch would be one that actually defines the term "BQL"
-somewhere in the code. :)
-
-Paolo
+-- PMM
 
