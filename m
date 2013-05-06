@@ -1,47 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UZOCn-0003WQ-L0
-	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2013 12:24:01 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:53251)
+	id 1UZOFA-0004WS-08
+	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2013 12:26:28 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54023)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UZOCk-0003TJ-HX
-	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:23:59 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1UZOF8-0004WJ-0Y
+	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:26:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UZOCj-0005Xi-BZ
-	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:23:58 -0400
-Received: from mail-gg0-x235.google.com ([2607:f8b0:4002:c02::235]:55702)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1UZOF6-0006Ip-O9
+	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:26:25 -0400
+Received: from mail-yh0-x236.google.com ([2607:f8b0:4002:c01::236]:58266)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1UZOCg-0005Vn-R5; Mon, 06 May 2013 12:23:54 -0400
-Received: by mail-gg0-f181.google.com with SMTP id q1so659355ggm.26
-	for <multiple recipients>; Mon, 06 May 2013 09:23:54 -0700 (PDT)
+	id 1UZOF6-0006If-I4; Mon, 06 May 2013 12:26:24 -0400
+Received: by mail-yh0-f54.google.com with SMTP id b12so743368yha.13
+	for <multiple recipients>; Mon, 06 May 2013 09:26:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer;
-	bh=I7hFcKQgxHwf1OEUzxwCNgqY3p8rz8XZX7j8FjanCcY=;
-	b=rZxbirZ5HjGHqcKYkVs5QjoK+WHrZs8IPm4b/6MHIhNwE37cq/9792lqIrYANh8J44
-	nFmHcBZauK7XWI2QrJiAqm/SdpQEPBJ1ms6fFexBXxPdVPVQeyiw+/pj0rFzXuIQwrim
-	FdGVrmSQT0Yyuz/DEJ5nu7ZsmqgkqyO5pOd3JpAMspCn/Fh4Q0g0T8ENDR2bJizc58Er
-	gVlm/GuYQvr/EChi7mjWa0KAlmRqICno9/GCHsyRGx4mb4jD+vKYhdm2i1l2ozl144st
-	T/zG4JjXlt9SFgmxDUcz/4E9PdsKZYPiEyjuO3GfoAoxoCa9QXORic7J2Yp+BrFDzb0O
-	fcbw==
-X-Received: by 10.236.139.75 with SMTP id b51mr18909612yhj.6.1367857434245;
-	Mon, 06 May 2013 09:23:54 -0700 (PDT)
+	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
+	:cc:subject:references:in-reply-to:x-enigmail-version:content-type
+	:content-transfer-encoding;
+	bh=Ik/V7K8/mF81o5OOAIauuhsy1ks7tJ56xZXs4WXMG+s=;
+	b=NwaYw+FQOlgUhKnptwiA3SZiRZ0qrsI7y5WzW4EZLS7GsrsnJC9h/z5wILBvpy5uNn
+	eqsZifpZE7IpveHiMnDHxDEc+JEbAW3fxHm2kOcWGB5+otJIoWmT7vwQoLK9QzbMIfPq
+	dFYXZn/K6JtAt30NFruwVtBDwPnDjz0smMkSvj8cWcAvVjoPmkwoxdXQehEq1NWRmzpm
+	ghqO3SK12F4Q7sVLi6rkDX09leYYCQ/fghEK56+RHwUEgoCRyduI/UblNuKhWhx2t+kU
+	mYqqB2ao/8C/8YTBN9k6hfRqu6btPc0yEMifWeF2UIXNd3VO09v7Fr3M6aTQtA47WDE/
+	xR8Q==
+X-Received: by 10.236.111.112 with SMTP id v76mr18881921yhg.20.1367857584161; 
+	Mon, 06 May 2013 09:26:24 -0700 (PDT)
 Received: from yakj.usersys.redhat.com (93-34-176-20.ip50.fastwebnet.it.
-	[93.34.176.20]) by mx.google.com with ESMTPSA id
-	v48sm48649859yhi.26.2013.05.06.09.23.51 for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Mon, 06 May 2013 09:23:53 -0700 (PDT)
+	[93.34.176.20])
+	by mx.google.com with ESMTPSA id n15sm48576298yhi.2.2013.05.06.09.26.22
+	for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Mon, 06 May 2013 09:26:23 -0700 (PDT)
 Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <5187D9A6.6050807@redhat.com>
+Date: Mon, 06 May 2013 18:26:14 +0200
 From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  6 May 2013 18:23:38 +0200
-Message-Id: <1367857418-14832-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.8.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
+MIME-Version: 1.0
+To: Jan Kiszka <jan.kiszka@siemens.com>
+References: <5187D529.7010502@siemens.com>
+In-Reply-To: <5187D529.7010502@siemens.com>
+X-Enigmail-Version: 1.5.1
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c02::235
-Cc: qemu-trivial@nongnu.org, david@gibson.dropbear.id.au
-Subject: [Qemu-trivial] [PATCH] docs: mention AddressSpaces in
-	docs/memory.txt
+X-Received-From: 2607:f8b0:4002:c01::236
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] memory: Replace open-coded
+	memory_region_is_romd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,37 +63,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 May 2013 16:24:00 -0000
+X-List-Received-Date: Mon, 06 May 2013 16:26:27 -0000
 
-Reported-by: David Gibson <david@gibson.dropbear.id.au>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- docs/memory.txt | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+Il 06/05/2013 18:07, Jan Kiszka ha scritto:
+> Improves readability.
+> 
+> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> ---
+>  translate-all.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+> 
+> diff --git a/translate-all.c b/translate-all.c
+> index da93608..0d84b0d 100644
+> --- a/translate-all.c
+> +++ b/translate-all.c
+> @@ -1359,7 +1359,7 @@ void tb_invalidate_phys_addr(hwaddr addr)
+>      section = phys_page_find(address_space_memory.dispatch,
+>                               addr >> TARGET_PAGE_BITS);
+>      if (!(memory_region_is_ram(section->mr)
+> -          || (section->mr->rom_device && section->mr->readable))) {
+> +          || memory_region_is_romd(section->mr))) {
+>          return;
+>      }
+>      ram_addr = (memory_region_get_ram_addr(section->mr) & TARGET_PAGE_MASK)
+> 
 
-diff --git a/docs/memory.txt b/docs/memory.txt
-index 5bbee8e..feb9fe9 100644
---- a/docs/memory.txt
-+++ b/docs/memory.txt
-@@ -15,10 +15,13 @@ The memory model provides support for
-  - setting up coalesced memory for kvm
-  - setting up ioeventfd regions for kvm
- 
--Memory is modelled as a tree (really acyclic graph) of MemoryRegion objects.
--The root of the tree is memory as seen from the CPU's viewpoint (the system
--bus).  Nodes in the tree represent other buses, memory controllers, and
--memory regions that have been rerouted.  Leaves are RAM and MMIO regions.
-+Memory is modelled as an acyclic graph of MemoryRegion objects.  Sinks
-+(leaves) are RAM and MMIO regions, while other nodes represent
-+buses, memory controllers, and memory regions that have been rerouted.
-+
-+In addition to MemoryRegion objects, the memory API provides AddressSpace
-+objects for every root and possibly for intermediate MemoryRegions too.
-+These represent memory as seen from the CPU or a device's viewpoint.
- 
- Types of regions
- ----------------
--- 
-1.8.2
+Not trivial enough for qemu-trivial, let's open a memory branch for 1.6.
 
+Any volunteers for co-maintaining it? :)
+
+Paolo
 
