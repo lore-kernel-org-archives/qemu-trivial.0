@@ -1,48 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UZOUi-00031s-SF
-	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2013 12:42:32 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58675)
+	id 1UZiqd-0000Qa-9K
+	for mharc-qemu-trivial@gnu.org; Tue, 07 May 2013 10:26:31 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:59938)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UZOUf-00030U-Dt
-	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:42:31 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1UZiqW-0000Gw-3a
+	for qemu-trivial@nongnu.org; Tue, 07 May 2013 10:26:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UZOUe-0003ov-Eo
-	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:42:29 -0400
-Received: from mail-la0-x231.google.com ([2a00:1450:4010:c03::231]:63500)
+	(envelope-from <jan.kiszka@siemens.com>) id 1UZiqR-0000WS-1z
+	for qemu-trivial@nongnu.org; Tue, 07 May 2013 10:26:24 -0400
+Received: from david.siemens.de ([192.35.17.14]:17718)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UZOUe-0003nk-6r
-	for qemu-trivial@nongnu.org; Mon, 06 May 2013 12:42:28 -0400
-Received: by mail-la0-f49.google.com with SMTP id eh20so3446990lab.22
-	for <qemu-trivial@nongnu.org>; Mon, 06 May 2013 09:42:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:mime-version:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type:x-gm-message-state;
-	bh=jB1VkCRNeVC5NSgCrgskUnBcmedXgcel+FiRTWwR9yc=;
-	b=YAarBFTcp2IpV2z01m1arkU+ZkQs672b0FCIM+tdpZRgiE9XHaqlBLNat/QmqAb0eK
-	KjJXP8ndcsJheo8F8TamZ7DsQrzETOBv/xeQsUPSfPnDz4cWP06+R2NWAusAQjfY1bqq
-	EutLZ/RJFdXiedjAcrBPIGKMJjqZtuqdlf9XXW2vroeJun+6IZe/qAR2m+ndYmRC58ab
-	/Mhp/rOdD2cDya0A2uVu1oHKjhPiVrRhKBxSN80yuMOi4QrJSfXYAoKlR8pkRT0Mvimu
-	jH4Yw/AvxrCSaG498DQU5yATtvUBubeGJ0JKWuw5rjKEW113fXGyOBf009AAZjEwzTji
-	wx7g==
-X-Received: by 10.112.167.168 with SMTP id zp8mr8210410lbb.58.1367858546957;
-	Mon, 06 May 2013 09:42:26 -0700 (PDT)
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1UZii6-0005lF-Of; Tue, 07 May 2013 10:17:43 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by david.siemens.de (8.13.6/8.13.6) with ESMTP id r47EHepP016986;
+	Tue, 7 May 2013 16:17:40 +0200
+Received: from mchn199C.mchp.siemens.de ([139.25.109.49])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id r47EHeiH030312;
+	Tue, 7 May 2013 16:17:40 +0200
+Message-ID: <51890D04.7030102@siemens.com>
+Date: Tue, 07 May 2013 16:17:40 +0200
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-Received: by 10.112.156.193 with HTTP; Mon, 6 May 2013 09:42:06 -0700 (PDT)
-In-Reply-To: <5187D9A6.6050807@redhat.com>
-References: <5187D529.7010502@siemens.com> <5187D9A6.6050807@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 May 2013 17:42:06 +0100
-Message-ID: <CAFEAcA_SNzor4A0bOzi3qgB2AcVcYMAK7SfkvxAO+SZTq4hDew@mail.gmail.com>
 To: Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnyyjiqVBhWYi5Dg5qdb7nCN1e9dt7wf51rG6jdvDypWkwzV8Wx7bgEb513rpQXiMr6TsOk
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c03::231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] memory: Replace open-coded
+References: <5187D529.7010502@siemens.com> <5187D9A6.6050807@redhat.com>
+In-Reply-To: <5187D9A6.6050807@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 192.35.17.14
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] memory: Replace open-coded
 	memory_region_is_romd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -55,9 +46,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 May 2013 16:42:31 -0000
+X-List-Received-Date: Tue, 07 May 2013 14:26:29 -0000
 
-On 6 May 2013 17:26, Paolo Bonzini <pbonzini@redhat.com> wrote:
+On 2013-05-06 18:26, Paolo Bonzini wrote:
 > Il 06/05/2013 18:07, Jan Kiszka ha scritto:
 >> Improves readability.
 >>
@@ -80,16 +71,20 @@ On 6 May 2013 17:26, Paolo Bonzini <pbonzini@redhat.com> wrote:
 >>      }
 >>      ram_addr = (memory_region_get_ram_addr(section->mr) & TARGET_PAGE_MASK)
 >>
->
+> 
 > Not trivial enough for qemu-trivial, let's open a memory branch for 1.6.
 
-Well, I wouldn't necessarily put it in 1.5 this close to
-hardfreeze, but it looks fine for qemu-trivial to me.
-In particular you can comprehend the patch and confirm its
-correctness without having to have any larger understanding
-of the memory system.
+Great, thanks.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> Any volunteers for co-maintaining it? :)
 
--- PMM
+Raising my hand, but not without remarking that I have some bandwidth
+issue ATM. But I will try my best.
+
+Jan
+
+-- 
+Siemens AG, Corporate Technology, CT RTC ITP SDP-DE
+Corporate Competence Center Embedded Linux
 
