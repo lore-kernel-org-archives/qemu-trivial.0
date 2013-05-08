@@ -1,49 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ua0xa-0005bx-Ss
-	for mharc-qemu-trivial@gnu.org; Wed, 08 May 2013 05:46:54 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:55082)
+	id 1Ua2Qi-0003RR-8P
+	for mharc-qemu-trivial@gnu.org; Wed, 08 May 2013 07:21:04 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:48294)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <donald.open@gmail.com>) id 1Ua0xW-0005UH-DH
-	for qemu-trivial@nongnu.org; Wed, 08 May 2013 05:46:51 -0400
+	(envelope-from <petar.jovanovic@rt-rk.com>) id 1Ua2Qb-0003Qy-87
+	for qemu-trivial@nongnu.org; Wed, 08 May 2013 07:21:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <donald.open@gmail.com>) id 1Ua0xV-0006bX-81
-	for qemu-trivial@nongnu.org; Wed, 08 May 2013 05:46:50 -0400
-Received: from mail-da0-x233.google.com ([2607:f8b0:400e:c00::233]:35093)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <donald.open@gmail.com>)
-	id 1Ua0xU-0006bG-NV; Wed, 08 May 2013 05:46:49 -0400
-Received: by mail-da0-f51.google.com with SMTP id h15so882006dan.38
-	for <multiple recipients>; Wed, 08 May 2013 02:46:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer
-	:in-reply-to:references;
-	bh=Qpieayzrea19rUfGHnQbQgGyq3N6XnShcs4w5GGmTlY=;
-	b=bpS+NkmS4GSnSKDBKWijC7NFkarINOgRDIwIVnmnysvMGx0GBrK0EJU3TSLqyOUo4Z
-	rprT2Bm6WROcENPpi7PQNlJvp0jNygKIt53XTHZ+/5v5AywtNtP0anSzP8Jww+i8Ixg0
-	o1YC+B2sgoEXjeahUXr0LkvVMTg3P9+1e+Reeky53l9AJhYcWSpcZ3LTyVxqLsHP3+8Z
-	W2r+qgTj02cwMRYUdewQhiHi8MwP0Cs56F+sgTIrngGbLO8Gc6PVJTdxeEA3Rf8ZWDxC
-	lUe5cTBMyEqan9Xr/bjyp6r6XuFacF2yK+j5KY87+1UlRenmUVYP46laMrUmUBHl0mvB
-	eRjw==
-X-Received: by 10.68.130.167 with SMTP id of7mr6769563pbb.169.1368006405443;
-	Wed, 08 May 2013 02:46:45 -0700 (PDT)
-Received: from localhost.localdomain ([202.108.130.138])
-	by mx.google.com with ESMTPSA id bl3sm7160741pbd.12.2013.05.08.02.46.39
-	for <multiple recipients>
-	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Wed, 08 May 2013 02:46:45 -0700 (PDT)
-Sender: Dong Xu Wang <donald.open@gmail.com>
-From: Trival <wdongxu@linux.vnet.ibm.com>
+	(envelope-from <petar.jovanovic@rt-rk.com>) id 1Ua2QX-0003zE-58
+	for qemu-trivial@nongnu.org; Wed, 08 May 2013 07:20:57 -0400
+Received: from mail.rt-rk.ftn.uns.ac.rs ([147.91.177.140]:53555
+	helo=mail.rt-rk.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <petar.jovanovic@rt-rk.com>) id 1Ua2QW-0003yh-QL
+	for qemu-trivial@nongnu.org; Wed, 08 May 2013 07:20:53 -0400
+Received: from mail.rt-rk.com (mail.localdomain [127.0.0.1])
+	by mail.rt-rk.com (Postfix) with SMTP id 8246425BD4C
+	for <qemu-trivial@nongnu.org>; Wed,  8 May 2013 13:20:49 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at rt-rk.com
+From: Petar Jovanovic <petar.jovanovic@rt-rk.com>
 To: qemu-trivial@nongnu.org
-Date: Wed,  8 May 2013 17:46:20 +0800
-Message-Id: <1368006380-3125-2-git-send-email-trivial@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1368006380-3125-1-git-send-email-trivial@linux.vnet.ibm.com>
-References: <1368006380-3125-1-git-send-email-trivial@linux.vnet.ibm.com>
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c00::233
-Cc: qemu-devel@nongnu.org, Trival <trivial@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH 2/2] remove needless semicolon
+Date: Wed,  8 May 2013 13:17:40 +0200
+Message-Id: <1368011861-57373-1-git-send-email-petar.jovanovic@rt-rk.com>
+X-Mailer: git-send-email 1.7.9.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 147.91.177.140
+Cc: petar.jovanovic@imgtec.com
+Subject: [Qemu-trivial] [PATCH] target-mips: fix incorrect behaviour for INSV
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,129 +36,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 May 2013 09:46:53 -0000
+X-List-Received-Date: Wed, 08 May 2013 11:21:02 -0000
 
-Signed-off-by: Trival <trivial@linux.vnet.ibm.com>
+From: Petar Jovanovic <petar.jovanovic@imgtec.com>
+
+Corner case for INSV instruction when size=32 has not been correctly
+implemented. The mask for size should be one bit wider, and preparing the
+filter variable should be aware of this case too.
+
+The test for INSV has been extended to include the case that triggers the
+bug.
+
+Signed-off-by: Petar Jovanovic <petar.jovanovic@imgtec.com>
 ---
- block/nbd.c                 | 2 +-
- fsdev/virtfs-proxy-helper.c | 4 ++--
- hw/9pfs/virtio-9p-local.c   | 2 +-
- hw/i386/pc_q35.c            | 2 +-
- hw/intc/imx_avic.c          | 2 +-
- hw/usb/host-linux.c         | 4 ++--
- qga/channel-win32.c         | 2 +-
- 7 files changed, 9 insertions(+), 9 deletions(-)
+ target-mips/dsp_helper.c         |    4 ++--
+ tests/tcg/mips/mips32-dsp/insv.c |   13 +++++++++++++
+ 2 files changed, 15 insertions(+), 2 deletions(-)
 
-diff --git a/block/nbd.c b/block/nbd.c
-index fab114b..30e3b78 100644
---- a/block/nbd.c
-+++ b/block/nbd.c
-@@ -609,7 +609,7 @@ static int nbd_co_discard(BlockDriverState *bs, int64_t sector_num,
-         return 0;
-     }
-     request.type = NBD_CMD_TRIM;
--    request.from = sector_num * 512;;
-+    request.from = sector_num * 512;
-     request.len = nb_sectors * 512;
+diff --git a/target-mips/dsp_helper.c b/target-mips/dsp_helper.c
+index 805247d..9212789 100644
+--- a/target-mips/dsp_helper.c
++++ b/target-mips/dsp_helper.c
+@@ -2921,7 +2921,7 @@ target_ulong helper_##name(CPUMIPSState *env, target_ulong rs,  \
+         return rt;                                              \
+     }                                                           \
+                                                                 \
+-    filter = ((int32_t)0x01 << size) - 1;                       \
++    filter = ((int64_t)0x01 << size) - 1;                       \
+     filter = filter << pos;                                     \
+     temprs = (rs << pos) & filter;                              \
+     temprt = rt & ~filter;                                      \
+@@ -2930,7 +2930,7 @@ target_ulong helper_##name(CPUMIPSState *env, target_ulong rs,  \
+     return (target_long)(ret_type)temp;                         \
+ }
  
-     nbd_coroutine_start(s, &request);
-diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-index 36f6616..713a7b2 100644
---- a/fsdev/virtfs-proxy-helper.c
-+++ b/fsdev/virtfs-proxy-helper.c
-@@ -248,7 +248,7 @@ static int send_fd(int sockfd, int fd)
- static int send_status(int sockfd, struct iovec *iovec, int status)
- {
-     ProxyHeader header;
--    int retval, msg_size;;
-+    int retval, msg_size;
+-BIT_INSV(insv, 0x1F, 0x1F, int32_t);
++BIT_INSV(insv, 0x1F, 0x3F, int32_t);
+ #ifdef TARGET_MIPS64
+ BIT_INSV(dinsv, 0x7F, 0x3F, target_long);
+ #endif
+diff --git a/tests/tcg/mips/mips32-dsp/insv.c b/tests/tcg/mips/mips32-dsp/insv.c
+index 243b007..9d67469 100644
+--- a/tests/tcg/mips/mips32-dsp/insv.c
++++ b/tests/tcg/mips/mips32-dsp/insv.c
+@@ -19,5 +19,18 @@ int main()
+         );
+     assert(rt == result);
  
-     if (status < 0) {
-         header.type = T_ERROR;
-@@ -381,7 +381,7 @@ static int send_response(int sock, struct iovec *iovec, int size)
-     proxy_marshal(iovec, 0, "dd", header.type, header.size);
-     retval = socket_write(sock, iovec->iov_base, header.size + PROXY_HDR_SZ);
-     if (retval < 0) {
--        return retval;;
-+        return retval;
-     }
++    dsp    = 0x1000;
++    rt     = 0xF0F0F0F0;
++    rs     = 0xA5A5A5A5;
++    result = 0xA5A5A5A5;
++
++    __asm
++        ("wrdsp %2\n\t"
++         "insv  %0, %1\n\t"
++         : "+r"(rt)
++         : "r"(rs), "r"(dsp)
++        );
++    assert(rt == result);
++
      return 0;
  }
-diff --git a/hw/9pfs/virtio-9p-local.c b/hw/9pfs/virtio-9p-local.c
-index be898ec..6ece6f7 100644
---- a/hw/9pfs/virtio-9p-local.c
-+++ b/hw/9pfs/virtio-9p-local.c
-@@ -878,7 +878,7 @@ static int local_remove(FsContext *ctx, const char *path)
-          * Now remove the name from parent directory
-          * .virtfs_metadata directory
-          */
--        err = remove(local_mapped_attr_path(ctx, path, buffer));;
-+        err = remove(local_mapped_attr_path(ctx, path, buffer));
-         if (err < 0 && errno != ENOENT) {
-             /*
-              * We didn't had the .virtfs_metadata file. May be file created
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 4160e2b..6825380 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -128,7 +128,7 @@ static void pc_q35_init(QEMUMachineInitArgs *args)
-     q35_host->mch.ram_memory = ram_memory;
-     q35_host->mch.pci_address_space = pci_memory;
-     q35_host->mch.system_memory = get_system_memory();
--    q35_host->mch.address_space_io = get_system_io();;
-+    q35_host->mch.address_space_io = get_system_io();
-     q35_host->mch.below_4g_mem_size = below_4g_mem_size;
-     q35_host->mch.above_4g_mem_size = above_4g_mem_size;
-     /* pci */
-diff --git a/hw/intc/imx_avic.c b/hw/intc/imx_avic.c
-index 4e280b6..ff45dcd 100644
---- a/hw/intc/imx_avic.c
-+++ b/hw/intc/imx_avic.c
-@@ -370,7 +370,7 @@ static void imx_avic_reset(DeviceState *dev)
- 
- static int imx_avic_init(SysBusDevice *dev)
- {
--    IMXAVICState *s = FROM_SYSBUS(IMXAVICState, dev);;
-+    IMXAVICState *s = FROM_SYSBUS(IMXAVICState, dev);
- 
-     memory_region_init_io(&s->iomem, &imx_avic_ops, s, "imx_avic", 0x1000);
-     sysbus_init_mmio(dev, &s->iomem);
-diff --git a/hw/usb/host-linux.c b/hw/usb/host-linux.c
-index 8994668..ca09a89 100644
---- a/hw/usb/host-linux.c
-+++ b/hw/usb/host-linux.c
-@@ -651,7 +651,7 @@ static void usb_host_handle_reset(USBDevice *dev)
- 
-     trace_usb_host_reset(s->bus_num, s->addr);
- 
--    usb_host_do_reset(s);;
-+    usb_host_do_reset(s);
- 
-     usb_host_claim_interfaces(s, 0);
-     usb_linux_update_endp_table(s);
-@@ -1429,7 +1429,7 @@ static void usb_host_exit_notifier(struct Notifier *n, void *data)
- 
-     usb_host_release_port(s);
-     if (s->fd != -1) {
--        usb_host_do_reset(s);;
-+        usb_host_do_reset(s);
-     }
- }
- 
-diff --git a/qga/channel-win32.c b/qga/channel-win32.c
-index 7ed98d7..8a303f3 100644
---- a/qga/channel-win32.c
-+++ b/qga/channel-win32.c
-@@ -268,7 +268,7 @@ static GIOStatus ga_channel_write(GAChannel *c, const char *buf, size_t size,
- 
- GIOStatus ga_channel_write_all(GAChannel *c, const char *buf, size_t size)
- {
--    GIOStatus status = G_IO_STATUS_NORMAL;;
-+    GIOStatus status = G_IO_STATUS_NORMAL;
-     size_t count;
- 
-     while (size) {
 -- 
-1.7.11.7
+1.7.9.5
 
 
