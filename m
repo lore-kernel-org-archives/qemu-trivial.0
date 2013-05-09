@@ -1,63 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UaLfi-0002m7-02
-	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2013 03:53:50 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49919)
+	id 1UaLgG-0003Oz-IW
+	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2013 03:54:24 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:50046)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1UaLff-0002lx-Ht
-	for qemu-trivial@nongnu.org; Thu, 09 May 2013 03:53:48 -0400
+	(envelope-from <donald.open@gmail.com>) id 1UaLgC-0003Ki-Sq
+	for qemu-trivial@nongnu.org; Thu, 09 May 2013 03:54:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1UaLfd-0006xP-I6
-	for qemu-trivial@nongnu.org; Thu, 09 May 2013 03:53:47 -0400
-Received: from e33.co.us.ibm.com ([32.97.110.151]:58873)
+	(envelope-from <donald.open@gmail.com>) id 1UaLgA-0007A3-Vr
+	for qemu-trivial@nongnu.org; Thu, 09 May 2013 03:54:20 -0400
+Received: from mail-ob0-x233.google.com ([2607:f8b0:4003:c01::233]:64547)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wdongxu@linux.vnet.ibm.com>) id 1UaLfd-0006vS-Bd
-	for qemu-trivial@nongnu.org; Thu, 09 May 2013 03:53:45 -0400
-Received: from /spool/local
-	by e33.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <wdongxu@linux.vnet.ibm.com>;
-	Thu, 9 May 2013 01:53:44 -0600
-Received: from d03dlp01.boulder.ibm.com (9.17.202.177)
-	by e33.co.us.ibm.com (192.168.1.133) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 9 May 2013 01:53:38 -0600
-Received: from d03relay03.boulder.ibm.com (d03relay03.boulder.ibm.com
-	[9.17.195.228])
-	by d03dlp01.boulder.ibm.com (Postfix) with ESMTP id 5D9DD1FF001F;
-	Thu,  9 May 2013 01:48:32 -0600 (MDT)
-Received: from d03av06.boulder.ibm.com (d03av06.boulder.ibm.com [9.17.195.245])
-	by d03relay03.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r497rbTg121854; Thu, 9 May 2013 01:53:38 -0600
-Received: from d03av06.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id r497uYmI003856; Thu, 9 May 2013 01:56:35 -0600
-Received: from [9.115.124.188] (dong.cn.ibm.com [9.115.124.188])
-	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r497uV4Z003738; Thu, 9 May 2013 01:56:32 -0600
-Message-ID: <518B55FD.2070503@linux.vnet.ibm.com>
-Date: Thu, 09 May 2013 15:53:33 +0800
+	(envelope-from <donald.open@gmail.com>)
+	id 1UaLgA-00079s-RK; Thu, 09 May 2013 03:54:18 -0400
+Received: by mail-ob0-f179.google.com with SMTP id xn12so2593013obc.24
+	for <multiple recipients>; Thu, 09 May 2013 00:54:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:sender:from:to:cc:subject:date:message-id:x-mailer;
+	bh=U/S3+qUo8IGbIpiVx0sTA2LUQntD5C0ig5YfPWU8v8A=;
+	b=Jo6Zez2Q1ks/foxyCrKI1bermXXoXWrpGI6a+pX3KTjLvEfA4Ud1AeP5K2EmIFJ4el
+	SnAHTdAImKfvbgua4Rw71qcD3/V9iDt1RDm28aJ8wbOcGUGCli8sS+MaKw8VdaK8+f++
+	Tyuew4XEuOHNq2I6iGTvgBbsjbv/En8hsBwA1ZkJ93FYKg+Te676Gj92A0p7zSgu+G6x
+	Cadzt2BJBMECqwcnutaLUSSFBseY0FugJrtH2/Jlh01l/O1+IMSx1Nqc8zBBdQWSqjq/
+	VqF3GT1m29+NZ5xG5mIqZ7NRAfWErRrr7EGvsGUDlWPQkxnMB0daRmebnCKepg69UrN+
+	pAUw==
+X-Received: by 10.182.226.162 with SMTP id rt2mr3654080obc.9.1368086058074;
+	Thu, 09 May 2013 00:54:18 -0700 (PDT)
+Received: from localhost.localdomain ([202.108.130.138])
+	by mx.google.com with ESMTPSA id jz6sm2344394oeb.3.2013.05.09.00.54.12
+	for <multiple recipients>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Thu, 09 May 2013 00:54:17 -0700 (PDT)
+Sender: Dong Xu Wang <donald.open@gmail.com>
 From: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64;
-	rv:17.0) Gecko/20130328 Thunderbird/17.0.5
-MIME-Version: 1.0
-To: Hu Tao <hutao@cn.fujitsu.com>
-References: <1368006380-3125-1-git-send-email-trivial@linux.vnet.ibm.com>
-	<1368006380-3125-2-git-send-email-trivial@linux.vnet.ibm.com>
-	<518A4A2E.200@msgid.tls.msk.ru> <87vc6t61te.fsf@codemonkey.ws>
-	<518B40CD.7030604@msgid.tls.msk.ru>
-	<20130509070813.GA30653@arch.fnst.cn.fujitsu.com>
-In-Reply-To: <20130509070813.GA30653@arch.fnst.cn.fujitsu.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13050907-2398-0000-0000-00001426DA76
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.110.151
-Cc: qemu-trivial@nongnu.org, Trival <trivial@linux.vnet.ibm.com>,
-	qemu-devel@nongnu.org, Anthony Liguori <anthony@codemonkey.ws>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] remove
-	needless	semicolon
+To: qemu-trivial@nongnu.org
+Date: Thu,  9 May 2013 15:53:49 +0800
+Message-Id: <1368086030-3847-1-git-send-email-wdongxu@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c01::233
+Cc: hutao@cn.fujitsu.com, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH 1/2] clean unnecessary code: don't check
+	g_strdup arg for NULL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,34 +53,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 May 2013 07:53:49 -0000
+X-List-Received-Date: Thu, 09 May 2013 07:54:23 -0000
 
-On 2013/5/9 15:08, Hu Tao wrote:
-> On Thu, May 09, 2013 at 10:23:09AM +0400, Michael Tokarev wrote:
->> 08.05.2013 17:25, Anthony Liguori wrote:
->>> Michael Tokarev <mjt@tls.msk.ru> writes:
->>>
->>>> 08.05.2013 13:46, Trival wrote:
->>>>> Signed-off-by: Trival <trivial@linux.vnet.ibm.com>
->
-> I think wdongxu probably wants HIS name and email go here. wdongxu, can
-> you resend your patches with:
->
-Sorry for the inconvenience, will re-send the patches.
->    Signed-off-by: <your real name> <wdongxu@linux.vnet.ibm.com>
->
-> ?
->
->>>
->>> Something went wrong in sending this.  This is not a valid SoB.
->>
->> So, do we not accept it?  Should I revert it in the
->> trivial-patches-next ?
->>
->> Thanks,
->>
->> /mjt
->
->
+Signed-off-by: Dong Xu Wang <wdongxu@linux.vnet.ibm.com>
+---
+ util/uri.c | 2 +-
+ vl.c       | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/util/uri.c b/util/uri.c
+index 4238729..e348c17 100644
+--- a/util/uri.c
++++ b/util/uri.c
+@@ -2162,7 +2162,7 @@ query_params_append (struct QueryParams *ps,
+     }
+ 
+     ps->p[ps->n].name = g_strdup(name);
+-    ps->p[ps->n].value = value ? g_strdup(value) : NULL;
++    ps->p[ps->n].value = g_strdup(value);
+     ps->p[ps->n].ignore = 0;
+     ps->n++;
+ 
+diff --git a/vl.c b/vl.c
+index 6e6225f..be0a93c 100644
+--- a/vl.c
++++ b/vl.c
+@@ -1215,7 +1215,7 @@ void add_boot_device_path(int32_t bootindex, DeviceState *dev,
+ 
+     node = g_malloc0(sizeof(FWBootEntry));
+     node->bootindex = bootindex;
+-    node->suffix = suffix ? g_strdup(suffix) : NULL;
++    node->suffix = g_strdup(suffix);
+     node->dev = dev;
+ 
+     QTAILQ_FOREACH(i, &fw_boot_order, link) {
+-- 
+1.7.11.7
 
 
