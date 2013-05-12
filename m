@@ -1,47 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UatSu-0001lJ-26
-	for mharc-qemu-trivial@gnu.org; Fri, 10 May 2013 15:58:52 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:56893)
+	id 1UbSWf-000124-Re
+	for mharc-qemu-trivial@gnu.org; Sun, 12 May 2013 05:25:06 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55647)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <i.mitsyanko@gmail.com>) id 1UatSp-0001g4-Q8
-	for qemu-trivial@nongnu.org; Fri, 10 May 2013 15:58:50 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UbSWb-0000wT-VF
+	for qemu-trivial@nongnu.org; Sun, 12 May 2013 05:25:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <i.mitsyanko@gmail.com>) id 1UatSn-00082w-9j
-	for qemu-trivial@nongnu.org; Fri, 10 May 2013 15:58:47 -0400
-Received: from mail-la0-x22d.google.com ([2a00:1450:4010:c03::22d]:44615)
+	(envelope-from <mjt@tls.msk.ru>) id 1UbSWa-0002ZF-SJ
+	for qemu-trivial@nongnu.org; Sun, 12 May 2013 05:25:01 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:49470)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <i.mitsyanko@gmail.com>)
-	id 1UatSf-0007gF-En; Fri, 10 May 2013 15:58:37 -0400
-Received: by mail-la0-f45.google.com with SMTP id fp12so4381799lab.18
-	for <multiple recipients>; Fri, 10 May 2013 12:58:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:from:to:cc:subject:date:message-id:x-mailer;
-	bh=viBrV1inLFihRrg5rKIP4IoraDx+EFCi+9Nd1DbTfRk=;
-	b=tJbeOSFyPNuSVqpDnHFOmp5EsXimVZqR3D0AAPJ9ufJor1nsWOiRIFNotzHK9INzi8
-	nUnN/cV4OeDgRz9l9bZrqpeLN7xxLLKwRCdKF2WPCqh/j1Gc7S5WgjJ2+MhmttALclG8
-	uDBoAWloDs6E+M2TiZ1kBHsCiSjy4MoG3NZ+Tl+/8uGwl6cvLXRtKHCEQKTVXdr44paA
-	JyovJ30zCa7uXn9YQ5HX4bGHEpsm1fTi3aabbQWLU9nL4FE3L9dDuakugjsQbu0ACTIk
-	wWsod7vFQVTUjvg3nK8F/6j1zsm7zD02UU5hnTvtBsM9UKejqDXbxC15ecH6NWUll1Yb
-	XNgw==
-X-Received: by 10.112.147.38 with SMTP id th6mr8235360lbb.119.1368215916210;
-	Fri, 10 May 2013 12:58:36 -0700 (PDT)
-Received: from localhost.localdomain ([79.164.42.118])
-	by mx.google.com with ESMTPSA id pm9sm1367435lbb.8.2013.05.10.12.58.33
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Fri, 10 May 2013 12:58:34 -0700 (PDT)
-From: Igor Mitsyanko <i.mitsyanko@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 10 May 2013 23:58:21 +0400
-Message-Id: <1368215901-55444-1-git-send-email-i.mitsyanko@gmail.com>
-X-Mailer: git-send-email 1.8.1.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c03::22d
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UbSWY-0002WQ-FK; Sun, 12 May 2013 05:24:58 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id E3D8E40759;
+	Sun, 12 May 2013 13:24:47 +0400 (MSK)
+Message-ID: <518F5FDE.2040108@msgid.tls.msk.ru>
+Date: Sun, 12 May 2013 13:24:46 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
+MIME-Version: 1.0
+To: Igor Mitsyanko <i.mitsyanko@gmail.com>
+References: <1368215901-55444-1-git-send-email-i.mitsyanko@gmail.com>
+In-Reply-To: <1368215901-55444-1-git-send-email-i.mitsyanko@gmail.com>
+X-Enigmail-Version: 1.6a1pre
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, aliguori@us.ibm.com,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, peter.maydell@linaro.org
-Subject: [Qemu-trivial] [PATCH V2] osdep.h: include sys/types.h for ssize_t
-	definition
+	qemu-devel@nongnu.org, peter.maydell@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH V2] osdep.h: include sys/types.h for
+ ssize_t definition
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,34 +46,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 May 2013 19:58:50 -0000
+X-List-Received-Date: Sun, 12 May 2013 09:25:03 -0000
 
-sys/types.h is taken out from "ifdef __OpenBSD__" guard. It should be
-safe for other systems, according to following survey:
-http://hacks.owlfolio.org/header-survey/
+10.05.2013 23:58, Igor Mitsyanko wrote:
+> sys/types.h is taken out from "ifdef __OpenBSD__" guard. It should be
+> safe for other systems, according to following survey:
+> http://hacks.owlfolio.org/header-survey/
+> 
+> This fixes build for CONFIG_IOVEC-less systems (mingw).
 
-This fixes build for CONFIG_IOVEC-less systems (mingw).
+Thanks, applied to the trivial patches queue.
 
-Signed-off-by: Igor Mitsyanko <i.mitsyanko@gmail.com>
----
- include/qemu/osdep.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 42545bc..3bcd4ab 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -5,8 +5,8 @@
- #include <stdarg.h>
- #include <stddef.h>
- #include <stdbool.h>
--#ifdef __OpenBSD__
- #include <sys/types.h>
-+#ifdef __OpenBSD__
- #include <sys/signal.h>
- #endif
- 
--- 
-1.8.1.4
-
+/mjt
 
