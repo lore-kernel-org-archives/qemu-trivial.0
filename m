@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ubvu4-0002my-02
-	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2013 12:47:12 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:45814)
+	id 1UbyzG-0001qz-2D
+	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2013 16:04:46 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:35495)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Ubvtz-0002fN-MJ
-	for qemu-trivial@nongnu.org; Mon, 13 May 2013 12:47:09 -0400
+	(envelope-from <green@moxielogic.com>) id 1UbyzC-0001lO-Hd
+	for qemu-trivial@nongnu.org; Mon, 13 May 2013 16:04:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Ubvtr-0004qN-Jm
-	for qemu-trivial@nongnu.org; Mon, 13 May 2013 12:47:07 -0400
-Received: from e23smtp05.au.ibm.com ([202.81.31.147]:52827)
+	(envelope-from <green@moxielogic.com>) id 1UbyzB-00011X-BS
+	for qemu-trivial@nongnu.org; Mon, 13 May 2013 16:04:42 -0400
+Received: from mail-gg0-x233.google.com ([2607:f8b0:4002:c02::233]:63673)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Ubvtr-0004pb-0R
-	for qemu-trivial@nongnu.org; Mon, 13 May 2013 12:46:59 -0400
-Received: from /spool/local
-	by e23smtp05.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Tue, 14 May 2013 02:41:30 +1000
-Received: from d23dlp01.au.ibm.com (202.81.31.203)
-	by e23smtp05.au.ibm.com (202.81.31.211) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 14 May 2013 02:41:27 +1000
-Received: from d23relay03.au.ibm.com (d23relay03.au.ibm.com [9.190.235.21])
-	by d23dlp01.au.ibm.com (Postfix) with ESMTP id 060032CE8051;
-	Tue, 14 May 2013 02:46:46 +1000 (EST)
-Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
-	by d23relay03.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r4DGkcxc22347832; Tue, 14 May 2013 02:46:38 +1000
-Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r4DGkjLn028015; Tue, 14 May 2013 02:46:45 +1000
-Received: from localhost6.localdomain6 (sig-9-65-248-82.mts.ibm.com
-	[9.65.248.82])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r4DGkgap027914; Tue, 14 May 2013 02:46:43 +1000
-Message-Id: <201305131646.r4DGkgap027914@d23av03.au.ibm.com>
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel <qemu-devel@nongnu.org>
-In-Reply-To: <518F61B9.9050803@msgid.tls.msk.ru>
-Date: Mon, 13 May 2013 16:46:42 -0000
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13051316-1396-0000-0000-000002F62373
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 202.81.31.147
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [GIT PULL for-1.5] Trivial patches for 2013-05-12
+	(envelope-from <green@moxielogic.com>) id 1UbyzB-00011K-7D
+	for qemu-trivial@nongnu.org; Mon, 13 May 2013 16:04:41 -0400
+Received: by mail-gg0-f179.google.com with SMTP id i2so1501001ggm.38
+	for <qemu-trivial@nongnu.org>; Mon, 13 May 2013 13:04:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=x-received:from:to:cc:subject:date:message-id:x-mailer
+	:x-gm-message-state;
+	bh=jFdKfSqGELFeHmAoY9IICzGgwGfffLdvyAxYtAkyHmY=;
+	b=i5LGVKuXsy8dSPRgj9LgsTv4A8+itAYR0cUn9EU/Uv50UM0yxJwXcHGkRaJrSVRLuV
+	IBt9321BTONwiIfDsyHvl8su2nM7IBQOKEBLNxpIixYUB1nTNg/StxiNoTwFaVUqsGQa
+	nxNIfUoTr7EcEQfZSrWTiYqtBlIRd4OKJP37rtH0v0ru3TQ2WhWpWCBDrxTlTv5o5Kac
+	A/WTkMvtRH9RwXSrbr4JseZPQRvnkL85RF9gb+td3JME/BhsccyLHKlLLOivdTWhBk2/
+	TcXpzO3QUmqOfGyWYPsXWhuyr5kUB7MTEgquwGG7zwA7G+LtINpwaLhXUimd6ByxQTe+
+	bJCg==
+X-Received: by 10.236.201.70 with SMTP id a46mr16379725yho.75.1368475480384;
+	Mon, 13 May 2013 13:04:40 -0700 (PDT)
+Received: from dev.moxielogic.com ([66.187.233.208])
+	by mx.google.com with ESMTPSA id
+	s20sm16939806yhh.17.2013.05.13.13.04.37 for <multiple recipients>
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Mon, 13 May 2013 13:04:39 -0700 (PDT)
+Received: by dev.moxielogic.com (sSMTP sendmail emulation);
+	Mon, 13 May 2013 16:04:34 -0400
+From: Anthony Green <green@moxielogic.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 13 May 2013 16:04:24 -0400
+Message-Id: <1368475464-3116-1-git-send-email-green@moxielogic.com>
+X-Mailer: git-send-email 1.8.1.4
+X-Gm-Message-State: ALoCoQmgsEbfM7jpsHmMd8L0nUA2pSkKp45PgkfAS3M39Hzq/NFSbPpJmeXK+PjpAB1kkND3iae1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4002:c02::233
+Cc: qemu-trivial@nongnu.org, Anthony Green <green@moxielogic.com>
+Subject: [Qemu-trivial] [PATCH moxie] Fix bug in tlb_fill.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,12 +56,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 May 2013 16:47:09 -0000
+X-List-Received-Date: Mon, 13 May 2013 20:04:44 -0000
 
-Pulled.  Thanks.
+Fix a simple bug in tlb_fill for moxie.  The port was mostly working
+before, which is why I only really noticed it recently.  Thanks to
+@jcmvbkbc for tracking it down.
 
-Regards,
+Signed-off-by: Anthony Green <green@moxielogic.com>
+---
+ target-moxie/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Anthony Liguori
+diff --git a/target-moxie/helper.c b/target-moxie/helper.c
+index 6e0ac2a..6c36c49 100644
+--- a/target-moxie/helper.c
++++ b/target-moxie/helper.c
+@@ -55,8 +55,8 @@ void tlb_fill(CPUMoxieState *env, target_ulong addr, int is_write, int mmu_idx,
+         if (retaddr) {
+             cpu_restore_state(env, retaddr);
+         }
++	cpu_loop_exit(env);
+     }
+-    cpu_loop_exit(env);
+ }
+ 
+ void helper_raise_exception(CPUMoxieState *env, int ex)
+-- 
+1.8.1.4
 
 
