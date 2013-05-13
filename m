@@ -1,44 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UblPP-0000hq-VC
-	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2013 01:34:52 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:32801)
+	id 1Ubvu4-0002my-02
+	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2013 12:47:12 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:45814)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UblPN-0000dw-Px
-	for qemu-trivial@nongnu.org; Mon, 13 May 2013 01:34:50 -0400
+	(envelope-from <aliguori@us.ibm.com>) id 1Ubvtz-0002fN-MJ
+	for qemu-trivial@nongnu.org; Mon, 13 May 2013 12:47:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UblPM-0000NC-9k
-	for qemu-trivial@nongnu.org; Mon, 13 May 2013 01:34:49 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:48160)
+	(envelope-from <aliguori@us.ibm.com>) id 1Ubvtr-0004qN-Jm
+	for qemu-trivial@nongnu.org; Mon, 13 May 2013 12:47:07 -0400
+Received: from e23smtp05.au.ibm.com ([202.81.31.147]:52827)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1UblPJ-0000MK-F7; Mon, 13 May 2013 01:34:45 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	858DE7280034; Mon, 13 May 2013 07:34:44 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id HUSnsArau70q; Mon, 13 May 2013 07:34:42 +0200 (CEST)
-Received: from [192.168.178.35] (p54AD9D19.dip0.t-ipconnect.de [84.173.157.25])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	46AC97280031; Mon, 13 May 2013 07:34:41 +0200 (CEST)
-Message-ID: <51907B71.2040906@weilnetz.de>
-Date: Mon, 13 May 2013 07:34:41 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
-MIME-Version: 1.0
-To: qiaonuohan@cn.fujitsu.com
-References: <1367987941-26040-1-git-send-email-qiaonuohan@cn.fujitsu.com>
-In-Reply-To: <1367987941-26040-1-git-send-email-qiaonuohan@cn.fujitsu.com>
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Remove twice include of
-	qemu-common.h
+	(envelope-from <aliguori@us.ibm.com>) id 1Ubvtr-0004pb-0R
+	for qemu-trivial@nongnu.org; Mon, 13 May 2013 12:46:59 -0400
+Received: from /spool/local
+	by e23smtp05.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Tue, 14 May 2013 02:41:30 +1000
+Received: from d23dlp01.au.ibm.com (202.81.31.203)
+	by e23smtp05.au.ibm.com (202.81.31.211) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 14 May 2013 02:41:27 +1000
+Received: from d23relay03.au.ibm.com (d23relay03.au.ibm.com [9.190.235.21])
+	by d23dlp01.au.ibm.com (Postfix) with ESMTP id 060032CE8051;
+	Tue, 14 May 2013 02:46:46 +1000 (EST)
+Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
+	by d23relay03.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r4DGkcxc22347832; Tue, 14 May 2013 02:46:38 +1000
+Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	r4DGkjLn028015; Tue, 14 May 2013 02:46:45 +1000
+Received: from localhost6.localdomain6 (sig-9-65-248-82.mts.ibm.com
+	[9.65.248.82])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r4DGkgap027914; Tue, 14 May 2013 02:46:43 +1000
+Message-Id: <201305131646.r4DGkgap027914@d23av03.au.ibm.com>
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel <qemu-devel@nongnu.org>
+In-Reply-To: <518F61B9.9050803@msgid.tls.msk.ru>
+Date: Mon, 13 May 2013 16:46:42 -0000
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13051316-1396-0000-0000-000002F62373
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 202.81.31.147
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [GIT PULL for-1.5] Trivial patches for 2013-05-12
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,32 +57,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 May 2013 05:34:51 -0000
+X-List-Received-Date: Mon, 13 May 2013 16:47:09 -0000
 
-Am 08.05.2013 06:39, schrieb qiaonuohan@cn.fujitsu.com:
-> From: Qiao Nuohan <qiaonuohan@cn.fujitsu.com>
->
-> This patch is used to remove twice include of "qemu-common.h" in
-> block/win32-aio.c
->
-> Signed-off-by: Qiao Nuohan <qiaonuohan@cn.fujitsu.com>
-> ---
->  block/win32-aio.c |    1 -
->  1 files changed, 0 insertions(+), 1 deletions(-)
->
-> diff --git a/block/win32-aio.c b/block/win32-aio.c
-> index 5d0fbbf..fcb7c75 100644
-> --- a/block/win32-aio.c
-> +++ b/block/win32-aio.c
-> @@ -25,7 +25,6 @@
->  #include "qemu/timer.h"
->  #include "block/block_int.h"
->  #include "qemu/module.h"
-> -#include "qemu-common.h"
->  #include "block/aio.h"
->  #include "raw-aio.h"
->  #include "qemu/event_notifier.h"
+Pulled.  Thanks.
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Regards,
+
+Anthony Liguori
 
 
