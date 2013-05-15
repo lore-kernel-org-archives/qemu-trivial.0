@@ -1,44 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UcUq0-0005Dr-3g
-	for mharc-qemu-trivial@gnu.org; Wed, 15 May 2013 02:05:20 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49782)
+	id 1UcX00-0005Wi-CU
+	for mharc-qemu-trivial@gnu.org; Wed, 15 May 2013 04:23:48 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:52624)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1UcUpw-0005Cm-U7
-	for qemu-trivial@nongnu.org; Wed, 15 May 2013 02:05:18 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UcWzx-0005Up-Gr
+	for qemu-trivial@nongnu.org; Wed, 15 May 2013 04:23:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1UcUpv-0005sH-M4
-	for qemu-trivial@nongnu.org; Wed, 15 May 2013 02:05:16 -0400
-Received: from [222.73.24.84] (port=25961 helo=song.cn.fujitsu.com)
+	(envelope-from <peter.maydell@linaro.org>) id 1UcWzu-0005ML-Ms
+	for qemu-trivial@nongnu.org; Wed, 15 May 2013 04:23:45 -0400
+Received: from mail-pb0-x22f.google.com ([2607:f8b0:400e:c01::22f]:54018)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>)
-	id 1UcUpv-0005rC-BP; Wed, 15 May 2013 02:05:15 -0400
-X-IronPort-AV: E=Sophos;i="4.87,675,1363104000"; 
-   d="scan'208";a="7273547"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 15 May 2013 14:02:13 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r4F651k5000318;
-	Wed, 15 May 2013 14:05:01 +0800
-Received: from localhost.localdomain ([10.167.233.156])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013051514035503-1244316 ;
-	Wed, 15 May 2013 14:03:55 +0800 
-From: Hu Tao <hutao@cn.fujitsu.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Wed, 15 May 2013 14:04:29 +0800
-Message-Id: <1368597869-30405-1-git-send-email-hutao@cn.fujitsu.com>
-X-Mailer: git-send-email 1.8.1.4
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/05/15 14:03:55,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/05/15 14:03:55,
-	Serialize complete at 2013/05/15 14:03:55
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: Anthony Green <green@moxielogic.com>
-Subject: [Qemu-trivial] [PATCH] target-moxie: replace target_phys_addr_t
-	with hwaddr
+	(envelope-from <peter.maydell@linaro.org>) id 1UcWzu-0005Ly-Gi
+	for qemu-trivial@nongnu.org; Wed, 15 May 2013 04:23:42 -0400
+Received: by mail-pb0-f47.google.com with SMTP id rr4so1159170pbb.6
+	for <qemu-trivial@nongnu.org>; Wed, 15 May 2013 01:23:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=x-received:mime-version:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-type:x-gm-message-state;
+	bh=R20/T+12bS5AIZ3nYri15EjCodQVEgO6+vA7WttQ0tk=;
+	b=WzeABgumDogcFHQlBZahjJ9dEZdZReacmQHPBQVosmvEWzAudlfLAldlScKpcKQsYN
+	DW5lsk/P8r87XkPA1jSEUo5WjxCagxLySqHug2JSRjnaCG1yW5vHGI6x8MzaF/LwVljs
+	bf+p6i9HPooUxbTFGvq171tLonWqebo7zuqQugZBfjdmLE5pmiZpQDNCoPbt6hHZtrpY
+	lEvZEs+abzXgCzq9/Kxh2Dj15kZrxqjnaIpTNV1tUXzLPf7Jtxyu9sQ8qZDrPsuCNBnJ
+	570orkJGeWdvR+9roCiv1iuDvdT6CVOqUzNAzyvphDVmfHUMvIebyc0ITqm0pPPmn1zh
+	GX7w==
+X-Received: by 10.66.222.69 with SMTP id qk5mr4249006pac.71.1368606221339;
+	Wed, 15 May 2013 01:23:41 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.70.25.69 with HTTP; Wed, 15 May 2013 01:23:21 -0700 (PDT)
+In-Reply-To: <1368597869-30405-1-git-send-email-hutao@cn.fujitsu.com>
+References: <1368597869-30405-1-git-send-email-hutao@cn.fujitsu.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 15 May 2013 09:23:21 +0100
+Message-ID: <CAFEAcA-vp5bPwmAZj3a6HH71XkZJizQNSSTbFdrSOU60QWZRGw@mail.gmail.com>
+To: Hu Tao <hutao@cn.fujitsu.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQnUpnOfeJ/YYXG3EKQHm+kZaXmxMTAUV8/lcrGl4FpC2szL4pgpZR0+FvGRJ1xFfgi5NO3t
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c01::22f
+Cc: qemu-trivial@nongnu.org, Anthony Green <green@moxielogic.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-moxie: replace
+ target_phys_addr_t with hwaddr
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,30 +55,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 May 2013 06:05:18 -0000
+X-List-Received-Date: Wed, 15 May 2013 08:23:46 -0000
 
-target_phys_addr_t has been already replaced by hwaddr, but this
-one is introduced after.
+On 15 May 2013 07:04, Hu Tao <hutao@cn.fujitsu.com> wrote:
+> target_phys_addr_t has been already replaced by hwaddr, but this
+> one is introduced after.
+>
+> Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
 
-Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
----
- target-moxie/helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/target-moxie/helper.c b/target-moxie/helper.c
-index 6e0ac2a..5cfe889 100644
---- a/target-moxie/helper.c
-+++ b/target-moxie/helper.c
-@@ -116,7 +116,7 @@ int cpu_moxie_handle_mmu_fault(CPUMoxieState *env, target_ulong address,
-     return 1;
- }
- 
--target_phys_addr_t cpu_get_phys_page_debug(CPUState *env, target_ulong addr)
-+hwaddr cpu_get_phys_page_debug(CPUState *env, target_ulong addr)
- {
-     return addr;
- }
--- 
-1.8.1.4
+This doesn't cause compile errors because it's in a bit
+of code that can never get compiled (it's inside a
+CONFIG_USER_ONLY block but there is no moxie-linux-user
+target in configure).
 
+thanks
+-- PMM
 
