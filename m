@@ -1,49 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UcX00-0005Wi-CU
-	for mharc-qemu-trivial@gnu.org; Wed, 15 May 2013 04:23:48 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:52624)
+	id 1Ud2WY-00022t-6e
+	for mharc-qemu-trivial@gnu.org; Thu, 16 May 2013 14:03:30 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:40908)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UcWzx-0005Up-Gr
-	for qemu-trivial@nongnu.org; Wed, 15 May 2013 04:23:46 -0400
+	(envelope-from <emaste@joule>) id 1Ud2WR-0001s2-Ei
+	for qemu-trivial@nongnu.org; Thu, 16 May 2013 14:03:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UcWzu-0005ML-Ms
-	for qemu-trivial@nongnu.org; Wed, 15 May 2013 04:23:45 -0400
-Received: from mail-pb0-x22f.google.com ([2607:f8b0:400e:c01::22f]:54018)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UcWzu-0005Ly-Gi
-	for qemu-trivial@nongnu.org; Wed, 15 May 2013 04:23:42 -0400
-Received: by mail-pb0-f47.google.com with SMTP id rr4so1159170pbb.6
-	for <qemu-trivial@nongnu.org>; Wed, 15 May 2013 01:23:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:mime-version:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type:x-gm-message-state;
-	bh=R20/T+12bS5AIZ3nYri15EjCodQVEgO6+vA7WttQ0tk=;
-	b=WzeABgumDogcFHQlBZahjJ9dEZdZReacmQHPBQVosmvEWzAudlfLAldlScKpcKQsYN
-	DW5lsk/P8r87XkPA1jSEUo5WjxCagxLySqHug2JSRjnaCG1yW5vHGI6x8MzaF/LwVljs
-	bf+p6i9HPooUxbTFGvq171tLonWqebo7zuqQugZBfjdmLE5pmiZpQDNCoPbt6hHZtrpY
-	lEvZEs+abzXgCzq9/Kxh2Dj15kZrxqjnaIpTNV1tUXzLPf7Jtxyu9sQ8qZDrPsuCNBnJ
-	570orkJGeWdvR+9roCiv1iuDvdT6CVOqUzNAzyvphDVmfHUMvIebyc0ITqm0pPPmn1zh
-	GX7w==
-X-Received: by 10.66.222.69 with SMTP id qk5mr4249006pac.71.1368606221339;
-	Wed, 15 May 2013 01:23:41 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.70.25.69 with HTTP; Wed, 15 May 2013 01:23:21 -0700 (PDT)
-In-Reply-To: <1368597869-30405-1-git-send-email-hutao@cn.fujitsu.com>
-References: <1368597869-30405-1-git-send-email-hutao@cn.fujitsu.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 15 May 2013 09:23:21 +0100
-Message-ID: <CAFEAcA-vp5bPwmAZj3a6HH71XkZJizQNSSTbFdrSOU60QWZRGw@mail.gmail.com>
-To: Hu Tao <hutao@cn.fujitsu.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnUpnOfeJ/YYXG3EKQHm+kZaXmxMTAUV8/lcrGl4FpC2szL4pgpZR0+FvGRJ1xFfgi5NO3t
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c01::22f
-Cc: qemu-trivial@nongnu.org, Anthony Green <green@moxielogic.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-moxie: replace
- target_phys_addr_t with hwaddr
+	(envelope-from <emaste@joule>) id 1Ud2WM-0006KZ-Em
+	for qemu-trivial@nongnu.org; Thu, 16 May 2013 14:03:23 -0400
+Received: from [137.122.64.71] (port=28416 helo=joule)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <emaste@joule>)
+	id 1Ud2WB-00065t-7l; Thu, 16 May 2013 14:03:07 -0400
+Received: from joule (localhost [127.0.0.1])
+	by joule (8.14.7/8.14.5) with ESMTP id r4GFWUtM015232;
+	Thu, 16 May 2013 11:32:30 -0400 (EDT) (envelope-from emaste@joule)
+Received: (from emaste@localhost)
+	by joule (8.14.7/8.14.5/Submit) id r4GFWTV5015231;
+	Thu, 16 May 2013 11:32:29 -0400 (EDT) (envelope-from emaste)
+From: Ed Maste <emaste@freebsd.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 16 May 2013 11:32:28 -0400
+Message-Id: <1368718348-15199-1-git-send-email-emaste@freebsd.org>
+X-Mailer: git-send-email 1.7.10.3
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 137.122.64.71
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH v2] Rename hexdump to avoid FreeBSD libutil
+	conflict
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,21 +39,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 May 2013 08:23:46 -0000
+X-List-Received-Date: Thu, 16 May 2013 18:03:28 -0000
 
-On 15 May 2013 07:04, Hu Tao <hutao@cn.fujitsu.com> wrote:
-> target_phys_addr_t has been already replaced by hwaddr, but this
-> one is introduced after.
->
-> Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
+On FreeBSD libutil is used for openpty(), but it also provides a hexdump()
+which conflicts with QEMU's.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Ed Maste <emaste@freebsd.org>
+---
+v1->v2: Add hexdump() use in iov.c
 
-This doesn't cause compile errors because it's in a bit
-of code that can never get compiled (it's inside a
-CONFIG_USER_ONLY block but there is no moxie-linux-user
-target in configure).
+If desired I can workaround this via #define hacks in qemu-common.h
+instead; please let me know and I will submit that patch.  This is needed
+to build on FreeBSD.
 
-thanks
--- PMM
+ hw/dma/pl330.c        |    4 ++--
+ include/qemu-common.h |    2 +-
+ util/hexdump.c        |    2 +-
+ util/iov.c            |    2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
+index 8b33138..60f5299 100644
+--- a/hw/dma/pl330.c
++++ b/hw/dma/pl330.c
+@@ -1157,7 +1157,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
+         if (PL330_ERR_DEBUG > 1) {
+             DB_PRINT("PL330 read from memory @%08x (size = %08x):\n",
+                       q->addr, len);
+-            hexdump((char *)buf, stderr, "", len);
++            qemu_hexdump((char *)buf, stderr, "", len);
+         }
+         fifo_res = pl330_fifo_push(&s->fifo, buf, len, q->tag);
+         if (fifo_res == PL330_FIFO_OK) {
+@@ -1189,7 +1189,7 @@ static int pl330_exec_cycle(PL330Chan *channel)
+             if (PL330_ERR_DEBUG > 1) {
+                 DB_PRINT("PL330 read from memory @%08x (size = %08x):\n",
+                          q->addr, len);
+-                hexdump((char *)buf, stderr, "", len);
++                qemu_hexdump((char *)buf, stderr, "", len);
+             }
+             if (q->inc) {
+                 q->addr += len;
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index 7f18b8e..b9057d1 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -443,7 +443,7 @@ int mod_utf8_codepoint(const char *s, size_t n, char **end);
+  * Hexdump a buffer to a file. An optional string prefix is added to every line
+  */
+ 
+-void hexdump(const char *buf, FILE *fp, const char *prefix, size_t size);
++void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size);
+ 
+ /* vector definitions */
+ #ifdef __ALTIVEC__
+diff --git a/util/hexdump.c b/util/hexdump.c
+index 0d0efc8..969b340 100644
+--- a/util/hexdump.c
++++ b/util/hexdump.c
+@@ -15,7 +15,7 @@
+ 
+ #include "qemu-common.h"
+ 
+-void hexdump(const char *buf, FILE *fp, const char *prefix, size_t size)
++void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size)
+ {
+     unsigned int b;
+ 
+diff --git a/util/iov.c b/util/iov.c
+index 78bbbe1..cc6e837 100644
+--- a/util/iov.c
++++ b/util/iov.c
+@@ -225,7 +225,7 @@ void iov_hexdump(const struct iovec *iov, const unsigned int iov_cnt,
+     size = size > limit ? limit : size;
+     buf = g_malloc(size);
+     iov_to_buf(iov, iov_cnt, 0, buf, size);
+-    hexdump(buf, fp, prefix, size);
++    qemu_hexdump(buf, fp, prefix, size);
+     g_free(buf);
+ }
+ 
+-- 
+1.7.10.3
+
 
