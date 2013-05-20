@@ -1,51 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UeTFG-0000ND-RS
-	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2013 12:47:34 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34147)
+	id 1UeTN7-0003St-EX
+	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2013 12:55:41 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36698)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UeTFE-0000MS-Br
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:47:33 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1UeTMw-0003R0-Ry
+	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:55:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UeTFA-0003Iy-GC
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:47:32 -0400
-Received: from mail-la0-x231.google.com ([2a00:1450:4010:c03::231]:57182)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1UeT4N-00082T-HH
+	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:36:24 -0400
+Received: from mail-gh0-f170.google.com ([209.85.160.170]:52805)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UeTFA-0003Ii-8G
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:47:28 -0400
-Received: by mail-la0-f49.google.com with SMTP id fp13so5899881lab.22
-	for <qemu-trivial@nongnu.org>; Mon, 20 May 2013 09:47:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-received:mime-version:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type:x-gm-message-state;
-	bh=ko8JOdITv8Q1jqgkvIx2vQqCldhvx0vY835BMI61ESM=;
-	b=LCJGKa3gtTq1mgiIRxFQLr0v8p+EexmxawY7GjDPYBYLUH9uru06PO5Pt8sjwWZkP3
-	YfEChH7j5iqLks8SAnPKrifMDCtlNcx8INh8oSX478EifzcoGpaOIzKp8vI0TAmgyoFk
-	vx8KID1PztcKdWOAD7ZGi7rM5s5fkmANjvJt4kfBzo2otxU0DnXsxolcFyyQ39ECe97D
-	PAgY1X/3UV9N/M2NZNott26B3vKfz1bR+lCV6d6WNNUXvOm7hqnukP70F0p3b5peUD5s
-	12xO1oeFGOm6Rz1EwScAyMZSu4zekLHen5uw7z1fQXkMjYTciVa75v/P4hUHIk7YLtr3
-	75Vw==
-X-Received: by 10.152.7.102 with SMTP id i6mr28557838laa.18.1369068446627;
-	Mon, 20 May 2013 09:47:26 -0700 (PDT)
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1UeT4C-0007zJ-B1; Mon, 20 May 2013 12:36:08 -0400
+Received: by mail-gh0-f170.google.com with SMTP id z10so1406924ghb.1
+	for <multiple recipients>; Mon, 20 May 2013 09:36:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
+	:cc:subject:references:in-reply-to:x-enigmail-version:content-type
+	:content-transfer-encoding;
+	bh=uul5twsNMJdtFA6iXUuSvB9z6su5+nQ2RsQqRKJ5xLY=;
+	b=Zw0iX7D8hP57oMsvjdSahjZ803rmFQrn7zILbDWmvcfBQmdUQZRVvPEL39HLoGu5mn
+	y/G8tYbIPk5onFlzGXR8D8/fh/sqF+aN+WS4z2c1fHbiKACCiEJECkW2I5iwBYwdEZLD
+	mGhKnivpU4+RyyXEnMFMtrrvpdoaabbEDFkXrQxZ/JyKvw4xdA7IsKEwlyiBe/52qxQm
+	zNO/RL6KTVuGRnFNrXVQcy1U/lt1SS0WGNbBdQhCjPBRyMDAI98Bx4x6I512q8gaQJas
+	5PGSxlvhaPyBuVOVK+4MIlBKotCYYA0QCsWFi9ldaNGLpmgA+5OwDLDcw0n4lagthASk
+	JHNQ==
+X-Received: by 10.236.187.10 with SMTP id x10mr20671368yhm.190.1369067767716; 
+	Mon, 20 May 2013 09:36:07 -0700 (PDT)
+Received: from yakj.usersys.redhat.com
+	(net-37-116-223-193.cust.dsl.vodafone.it. [37.116.223.193])
+	by mx.google.com with ESMTPSA id b70sm41226681yhm.3.2013.05.20.09.36.04
+	for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Mon, 20 May 2013 09:36:06 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <519A50EE.8040804@redhat.com>
+Date: Mon, 20 May 2013 18:35:58 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
 MIME-Version: 1.0
-Received: by 10.112.188.130 with HTTP; Mon, 20 May 2013 09:47:06 -0700 (PDT)
-In-Reply-To: <519A522F.80305@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-	<519A522F.80305@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 May 2013 17:47:06 +0100
-Message-ID: <CAFEAcA_VhTQvsE-XYa4pFZBXJq1kyMeOTp8ccxcLtriQJre+OA@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnL7S73+i8U0bQh2FQpFeENhYoae8WQEVmnDYeOsSMB9hxFdY4z5Cb14hmNdZcvZ+Aa1TKi
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c03::231
+In-Reply-To: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
+X-Enigmail-Version: 1.5.1
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.160.170
 Cc: Anthony Liguori <aliguori@us.ibm.com>, patches@linaro.org,
 	qemu-trivial@nongnu.org, John Rigby <john.rigby@linaro.org>,
-	qemu-devel@nongnu.org, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema.json: Reformat
- TargetType enum to one-per-line
+	qemu-devel@nongnu.org, =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [PATCH] qapi-schema.json: Reformat TargetType
+	enum to one-per-line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,21 +65,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 May 2013 16:47:34 -0000
+X-List-Received-Date: Mon, 20 May 2013 16:55:40 -0000
 
-On 20 May 2013 17:41, Eric Blake <eblake@redhat.com> wrote:
-> Yep, that raises (once again) the question of dynamic introspection -
-> there's a difference between the maximum amount of information known at
-> compile time, and the subset of enum values that are actually usable at
-> runtime.  This list is static (all known architectures)
+Il 20/05/2013 18:21, Peter Maydell ha scritto:
+> Reformat the qapi-schema TargetType enumeration so that it has just
+> one target architecture name per line. This allows patches for
+> adding new targets to just add a single line, rather than having
+> to reformat most of the list (resulting in a hard-to-check diff).
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> d15a9c23 is an example of what you get otherwise.
+> 
+> I would much prefer it if we autogenerated this list so you didn't
+> need to change this file at all to add a new target, but Anthony
+> is against that; so this is at least an improvement.
 
-It's not really static though for practical purposes. The user
-still has to be able to cope with "I know about architecture foo
-but it's not in the list" (if talking to an older qemu) or
-"the list contains architecture bar which I don't know about"
-(if talking to a newer qemu). I think the only thing we really
-need to avoid is changing the name of an existing architecture?
+I have queued a patch for 1.6 that would change this field to a free
+string.  There is no use of this enum, not even for introspection.  You
+don't need to know what targets were supported in the version that you
+compiled from.  Only one target is supported in this executable anyway.
 
-thanks
--- PMM
+Paolo
+
+>  qapi-schema.json |   30 ++++++++++++++++++++++++++----
+>  1 file changed, 26 insertions(+), 4 deletions(-)
+> 
+> diff --git a/qapi-schema.json b/qapi-schema.json
+> index 199744a..a8d361e 100644
+> --- a/qapi-schema.json
+> +++ b/qapi-schema.json
+> @@ -3018,10 +3018,32 @@
+>  # Since: 1.2.0
+>  ##
+>  { 'enum': 'TargetType',
+> -  'data': [ 'alpha', 'arm', 'cris', 'i386', 'lm32', 'm68k', 'microblazeel',
+> -            'microblaze', 'mips64el', 'mips64', 'mipsel', 'mips', 'moxie',
+> -            'or32', 'ppc64', 'ppcemb', 'ppc', 's390x', 'sh4eb', 'sh4',
+> -            'sparc64', 'sparc', 'unicore32', 'x86_64', 'xtensaeb', 'xtensa' ] }
+> +  'data': [ 'alpha',
+> +            'arm',
+> +            'cris',
+> +            'i386',
+> +            'lm32',
+> +            'm68k',
+> +            'microblazeel',
+> +            'microblaze',
+> +            'mips64el',
+> +            'mips64',
+> +            'mipsel',
+> +            'mips',
+> +            'moxie',
+> +            'or32',
+> +            'ppc64',
+> +            'ppcemb',
+> +            'ppc',
+> +            's390x',
+> +            'sh4eb',
+> +            'sh4',
+> +            'sparc64',
+> +            'sparc',
+> +            'unicore32',
+> +            'x86_64',
+> +            'xtensaeb',
+> +            'xtensa' ] }
+>  
+>  ##
+>  # @TargetInfo:
+> 
+
 
