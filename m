@@ -1,59 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UeTN7-0003St-EX
-	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2013 12:55:41 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:36698)
+	id 1UeTPJ-0005LU-2Q
+	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2013 12:57:57 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:37358)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UeTMw-0003R0-Ry
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:55:40 -0400
+	(envelope-from <eblake@redhat.com>) id 1UeTPB-00057N-V4
+	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:57:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UeT4N-00082T-HH
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:36:24 -0400
-Received: from mail-gh0-f170.google.com ([209.85.160.170]:52805)
+	(envelope-from <eblake@redhat.com>) id 1UeTP7-0007yN-5N
+	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:57:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43451)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1UeT4C-0007zJ-B1; Mon, 20 May 2013 12:36:08 -0400
-Received: by mail-gh0-f170.google.com with SMTP id z10so1406924ghb.1
-	for <multiple recipients>; Mon, 20 May 2013 09:36:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=x-received:sender:message-id:date:from:user-agent:mime-version:to
-	:cc:subject:references:in-reply-to:x-enigmail-version:content-type
-	:content-transfer-encoding;
-	bh=uul5twsNMJdtFA6iXUuSvB9z6su5+nQ2RsQqRKJ5xLY=;
-	b=Zw0iX7D8hP57oMsvjdSahjZ803rmFQrn7zILbDWmvcfBQmdUQZRVvPEL39HLoGu5mn
-	y/G8tYbIPk5onFlzGXR8D8/fh/sqF+aN+WS4z2c1fHbiKACCiEJECkW2I5iwBYwdEZLD
-	mGhKnivpU4+RyyXEnMFMtrrvpdoaabbEDFkXrQxZ/JyKvw4xdA7IsKEwlyiBe/52qxQm
-	zNO/RL6KTVuGRnFNrXVQcy1U/lt1SS0WGNbBdQhCjPBRyMDAI98Bx4x6I512q8gaQJas
-	5PGSxlvhaPyBuVOVK+4MIlBKotCYYA0QCsWFi9ldaNGLpmgA+5OwDLDcw0n4lagthASk
-	JHNQ==
-X-Received: by 10.236.187.10 with SMTP id x10mr20671368yhm.190.1369067767716; 
-	Mon, 20 May 2013 09:36:07 -0700 (PDT)
-Received: from yakj.usersys.redhat.com
-	(net-37-116-223-193.cust.dsl.vodafone.it. [37.116.223.193])
-	by mx.google.com with ESMTPSA id b70sm41226681yhm.3.2013.05.20.09.36.04
-	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Mon, 20 May 2013 09:36:06 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <519A50EE.8040804@redhat.com>
-Date: Mon, 20 May 2013 18:35:58 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <eblake@redhat.com>)
+	id 1UeTOv-0007wW-N1; Mon, 20 May 2013 12:57:33 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4KGvOSN008600
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 20 May 2013 12:57:24 -0400
+Received: from [10.3.113.113] (ovpn-113-113.phx2.redhat.com [10.3.113.113])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r4KGvNcx006051; Mon, 20 May 2013 12:57:23 -0400
+Message-ID: <519A55F3.8090101@redhat.com>
+Date: Mon, 20 May 2013 10:57:23 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
+	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
 MIME-Version: 1.0
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
+	<519A522F.80305@redhat.com>
+	<CAFEAcA_VhTQvsE-XYa4pFZBXJq1kyMeOTp8ccxcLtriQJre+OA@mail.gmail.com>
+In-Reply-To: <CAFEAcA_VhTQvsE-XYa4pFZBXJq1kyMeOTp8ccxcLtriQJre+OA@mail.gmail.com>
 X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.170
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="----enig2RKGSLADFRWMBJSWMJLOW"
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: Anthony Liguori <aliguori@us.ibm.com>, patches@linaro.org,
 	qemu-trivial@nongnu.org, John Rigby <john.rigby@linaro.org>,
-	qemu-devel@nongnu.org, =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH] qapi-schema.json: Reformat TargetType
-	enum to one-per-line
+	qemu-devel@nongnu.org, =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema.json: Reformat
+ TargetType enum to one-per-line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,73 +56,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 May 2013 16:55:40 -0000
+X-List-Received-Date: Mon, 20 May 2013 16:57:55 -0000
 
-Il 20/05/2013 18:21, Peter Maydell ha scritto:
-> Reformat the qapi-schema TargetType enumeration so that it has just
-> one target architecture name per line. This allows patches for
-> adding new targets to just add a single line, rather than having
-> to reformat most of the list (resulting in a hard-to-check diff).
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> d15a9c23 is an example of what you get otherwise.
-> 
-> I would much prefer it if we autogenerated this list so you didn't
-> need to change this file at all to add a new target, but Anthony
-> is against that; so this is at least an improvement.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+------enig2RKGSLADFRWMBJSWMJLOW
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-I have queued a patch for 1.6 that would change this field to a free
-string.  There is no use of this enum, not even for introspection.  You
-don't need to know what targets were supported in the version that you
-compiled from.  Only one target is supported in this executable anyway.
+On 05/20/2013 10:47 AM, Peter Maydell wrote:
+> On 20 May 2013 17:41, Eric Blake <eblake@redhat.com> wrote:
+>> Yep, that raises (once again) the question of dynamic introspection -
+>> there's a difference between the maximum amount of information known a=
+t
+>> compile time, and the subset of enum values that are actually usable a=
+t
+>> runtime.  This list is static (all known architectures)
+>=20
+> It's not really static though for practical purposes. The user
+> still has to be able to cope with "I know about architecture foo
+> but it's not in the list" (if talking to an older qemu) or
+> "the list contains architecture bar which I don't know about"
+> (if talking to a newer qemu). I think the only thing we really
+> need to avoid is changing the name of an existing architecture?
 
-Paolo
+I'm not talking about keeping the enum static as in unchanging in all
+future qemu releases, so much as static in that "at the time qemu was
+compiled, this was the list of architectures qemu knew about".  But what
+good does it do to know what other architectures the compile-time qemu
+knew about, when what we really care about is what does THIS qemu binary
+emulate.  And Paolo raised the point that what we really care about is
+static-per-binary - that is, each binary supports exactly one
+architecture (unless you are doing a LOT of work to support multi-arch
+emulation from a single binary!).
 
->  qapi-schema.json |   30 ++++++++++++++++++++++++++----
->  1 file changed, 26 insertions(+), 4 deletions(-)
-> 
-> diff --git a/qapi-schema.json b/qapi-schema.json
-> index 199744a..a8d361e 100644
-> --- a/qapi-schema.json
-> +++ b/qapi-schema.json
-> @@ -3018,10 +3018,32 @@
->  # Since: 1.2.0
->  ##
->  { 'enum': 'TargetType',
-> -  'data': [ 'alpha', 'arm', 'cris', 'i386', 'lm32', 'm68k', 'microblazeel',
-> -            'microblaze', 'mips64el', 'mips64', 'mipsel', 'mips', 'moxie',
-> -            'or32', 'ppc64', 'ppcemb', 'ppc', 's390x', 'sh4eb', 'sh4',
-> -            'sparc64', 'sparc', 'unicore32', 'x86_64', 'xtensaeb', 'xtensa' ] }
-> +  'data': [ 'alpha',
-> +            'arm',
-> +            'cris',
-> +            'i386',
-> +            'lm32',
-> +            'm68k',
-> +            'microblazeel',
-> +            'microblaze',
-> +            'mips64el',
-> +            'mips64',
-> +            'mipsel',
-> +            'mips',
-> +            'moxie',
-> +            'or32',
-> +            'ppc64',
-> +            'ppcemb',
-> +            'ppc',
-> +            's390x',
-> +            'sh4eb',
-> +            'sh4',
-> +            'sparc64',
-> +            'sparc',
-> +            'unicore32',
-> +            'x86_64',
-> +            'xtensaeb',
-> +            'xtensa' ] }
->  
->  ##
->  # @TargetInfo:
-> 
+Changing the name of an architecture would be reflected by having a
+different qemu-FOO binary name, right?  If that's the case, then
+introspection of which architectures are supported is done by listing
+all the matches to qemu-* in the directory where binaries are installed,
+and we don't need a QMP enum duplicating what the file system already
+tells us.
 
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+------enig2RKGSLADFRWMBJSWMJLOW
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.13 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJRmlXzAAoJEKeha0olJ0NqYxwH/3xY/FGqDFnpAo5msw6GWJEA
+1FaSBqhYcH45PfXX4EI7gpfWV7fmZHBWS2gRYjgSEGQeCD4TzjL5werjVgOiZakQ
+oKKaG0qmtXYnx5GFwHlRUrBdJ6GJCID/kdhmJC/zQWIrZ9gv6QviReBWSvlYdb7O
+7SDOZbZsXAWyt1Ajmpu0yDgE3xHmvRyU9TyoJncGqMD26oarwgjRIR4VxhBsBESl
+mdKHyY5ZPny2VsiW+wLeOL9cnklzvtWYae575GAihV+rBPsr2+N2lGo3uInA5Djx
+7LX/LCD6fsBZdKTnXmNWWI0XWTBMdE7S5f4z3D71e35oWuriXL9qQGlULZOUzlg=
+=mwN2
+-----END PGP SIGNATURE-----
+
+------enig2RKGSLADFRWMBJSWMJLOW--
 
