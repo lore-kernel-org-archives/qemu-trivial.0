@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UeTgI-00070x-RP
-	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2013 13:15:30 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43830)
+	id 1UeTh3-00084O-6P
+	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2013 13:16:17 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:44174)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UeTgA-0006ji-Ta
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 13:15:28 -0400
+	(envelope-from <eblake@redhat.com>) id 1UeTgx-0007xD-Iy
+	for qemu-trivial@nongnu.org; Mon, 20 May 2013 13:16:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UeTg5-00067G-Hl
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 13:15:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:20419)
+	(envelope-from <eblake@redhat.com>) id 1UeTgs-0006Jz-Ol
+	for qemu-trivial@nongnu.org; Mon, 20 May 2013 13:16:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38066)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1UeTfv-00062A-Sa; Mon, 20 May 2013 13:15:08 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4KHF5gr016195
+	(envelope-from <eblake@redhat.com>)
+	id 1UeT9H-0001NN-5k; Mon, 20 May 2013 12:41:23 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4KGfLh4022712
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 20 May 2013 13:15:05 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-19.ams2.redhat.com
-	[10.36.112.19])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r4KHEtBn025657; Mon, 20 May 2013 13:15:02 -0400
-Message-ID: <519A5A0B.9050301@redhat.com>
-Date: Mon, 20 May 2013 19:14:51 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	Mon, 20 May 2013 12:41:21 -0400
+Received: from [10.3.113.113] (ovpn-113-113.phx2.redhat.com [10.3.113.113])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r4KGfKCN029973; Mon, 20 May 2013 12:41:20 -0400
+Message-ID: <519A522F.80305@redhat.com>
+Date: Mon, 20 May 2013 10:41:19 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130311 Thunderbird/17.0.4
+	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
 MIME-Version: 1.0
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-	<519A50EE.8040804@redhat.com>
-	<CAFEAcA9sECvGhLgawnOcFWrgpNJqa-Vub_0BmR7vR7Vu=wkQAQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9sECvGhLgawnOcFWrgpNJqa-Vub_0BmR7vR7Vu=wkQAQ@mail.gmail.com>
+In-Reply-To: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
 X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="----enig2TJWOKEUWVGPCASKLSBCC"
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: Anthony Liguori <aliguori@us.ibm.com>, patches@linaro.org,
 	qemu-trivial@nongnu.org, John Rigby <john.rigby@linaro.org>,
 	qemu-devel@nongnu.org, =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH] qapi-schema.json: Reformat TargetType
-	enum to one-per-line
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema.json: Reformat
+ TargetType enum to one-per-line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,20 +54,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 May 2013 17:15:28 -0000
+X-List-Received-Date: Mon, 20 May 2013 17:16:16 -0000
 
-Il 20/05/2013 18:38, Peter Maydell ha scritto:
->> > I have queued a patch for 1.6 that would change this field to a free
->> > string.  There is no use of this enum, not even for introspection.  You
->> > don't need to know what targets were supported in the version that you
->> > compiled from.  Only one target is supported in this executable anyway.
-> That sounds like a better solution. Do you have a pointer to the
-> patch? I tried a quick list archive search but probably didn't
-> use the right keywords.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+------enig2TJWOKEUWVGPCASKLSBCC
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-No, I haven't quite tested it enough.
+On 05/20/2013 10:21 AM, Peter Maydell wrote:
+> Reformat the qapi-schema TargetType enumeration so that it has just
+> one target architecture name per line. This allows patches for
+> adding new targets to just add a single line, rather than having
+> to reformat most of the list (resulting in a hard-to-check diff).
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> d15a9c23 is an example of what you get otherwise.
+>=20
+> I would much prefer it if we autogenerated this list so you didn't
+> need to change this file at all to add a new target, but Anthony
+> is against that; so this is at least an improvement.
 
-I'll send an RFC shortly, as soon as compilation finishes.
+Yep, that raises (once again) the question of dynamic introspection -
+there's a difference between the maximum amount of information known at
+compile time, and the subset of enum values that are actually usable at
+runtime.  This list is static (all known architectures), depending on
+what solutions we come up with for dynamic introspection, maybe that
+solution will also have a way for generating enum types.
 
-Paolo
+>=20
+>  qapi-schema.json |   30 ++++++++++++++++++++++++++----
+>  1 file changed, 26 insertions(+), 4 deletions(-)
+
+At any rate, I see no harm in taking this patch as-is now, while we
+still spend time thinking about introspection.
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+------enig2TJWOKEUWVGPCASKLSBCC
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.13 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJRmlIvAAoJEKeha0olJ0NqbEMH/iuxC37nMLKCasfp41lcztUE
+iJycTUNceziqiFbRIlC5KKLj7/cTpG+Gqjbhz6TwPRphB4Et8sh9rXfNN2Mlv4l3
+5xAv/7ahA5h1fGlpCupoYJL0DE9F0hd17FRBVWhTworNmI7XWKFR0FAEE3MvQkgc
++Z+3kjpPY0xpDol1KU2G0EdQGRURKvhlxoKcMI5lA9c3Pm/cdqCEpoz/JULphofJ
++QX7Luo14dmaw+vdN3EAOnkvWwILgoZxluuJfQ6cOfiHphwaA79cm3+a+MKSbkZn
+NtpkZM773LREKatOQ1szo2M6o7rW8+WEj1DoSevk1afj/v18XhWWoxyH6Bo5kPY=
+=0EoN
+-----END PGP SIGNATURE-----
+
+------enig2TJWOKEUWVGPCASKLSBCC--
 
