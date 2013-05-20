@@ -1,45 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UeNz5-0007sW-FW
-	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2013 07:10:31 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:37568)
+	id 1UeT1F-0002MJ-EQ
+	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2013 12:33:05 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:57878)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UeNyy-0007jw-PC
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 07:10:29 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1UeT15-00022n-42
+	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:33:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UeNyu-0004kS-4O
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 07:10:24 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:48408)
+	(envelope-from <pm215@archaic.org.uk>) id 1UeT0x-0006fu-5M
+	for qemu-trivial@nongnu.org; Mon, 20 May 2013 12:32:55 -0400
+Received: from
+	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
+	([2001:8b0:1d0::1]:56976 helo=mnementh.archaic.org.uk)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1UeNyj-0004iZ-Jv; Mon, 20 May 2013 07:10:09 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	C5B057280034; Mon, 20 May 2013 13:10:08 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id gWqudSRb_1t9; Mon, 20 May 2013 13:10:02 +0200 (CEST)
-Received: from [192.168.178.35] (p54AD9AE9.dip0.t-ipconnect.de
-	[84.173.154.233])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	B4BF8728001E; Mon, 20 May 2013 13:10:01 +0200 (CEST)
-Message-ID: <519A0488.60608@weilnetz.de>
-Date: Mon, 20 May 2013 13:10:00 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Lei Li <lilei@linux.vnet.ibm.com>
-References: <1369041650-22056-1-git-send-email-lilei@linux.vnet.ibm.com>
-In-Reply-To: <1369041650-22056-1-git-send-email-lilei@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: Fix typo in
-	comment
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1UeSq2-00031h-K7; Mon, 20 May 2013 12:21:30 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.72)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1UeSpx-00007O-3G; Mon, 20 May 2013 17:21:25 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Mon, 20 May 2013 17:21:24 +0100
+Message-Id: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	John Rigby <john.rigby@linaro.org>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] qapi-schema.json: Reformat TargetType enum
+	to one-per-line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,28 +41,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 May 2013 11:10:29 -0000
+X-List-Received-Date: Mon, 20 May 2013 16:33:03 -0000
 
-Am 20.05.2013 11:20, schrieb Lei Li:
-> Signed-off-by: Lei Li <lilei@linux.vnet.ibm.com>
-> ---
->  linux-user/syscall.c |    2 +-
->  1 files changed, 1 insertions(+), 1 deletions(-)
->
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 30e93bc..72c6866 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -8236,7 +8236,7 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
->  #ifdef TARGET_NR_madvise
->      case TARGET_NR_madvise:
->          /* A straight passthrough may not be safe because qemu sometimes
-> -           turns private flie-backed mappings into anonymous mappings.
-> +           turns private file-backed mappings into anonymous mappings.
->             This will break MADV_DONTNEED.
->             This is a hint, so ignoring and returning success is ok.  */
->          ret = get_errno(0);
+Reformat the qapi-schema TargetType enumeration so that it has just
+one target architecture name per line. This allows patches for
+adding new targets to just add a single line, rather than having
+to reformat most of the list (resulting in a hard-to-check diff).
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+d15a9c23 is an example of what you get otherwise.
+
+I would much prefer it if we autogenerated this list so you didn't
+need to change this file at all to add a new target, but Anthony
+is against that; so this is at least an improvement.
+
+ qapi-schema.json |   30 ++++++++++++++++++++++++++----
+ 1 file changed, 26 insertions(+), 4 deletions(-)
+
+diff --git a/qapi-schema.json b/qapi-schema.json
+index 199744a..a8d361e 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -3018,10 +3018,32 @@
+ # Since: 1.2.0
+ ##
+ { 'enum': 'TargetType',
+-  'data': [ 'alpha', 'arm', 'cris', 'i386', 'lm32', 'm68k', 'microblazeel',
+-            'microblaze', 'mips64el', 'mips64', 'mipsel', 'mips', 'moxie',
+-            'or32', 'ppc64', 'ppcemb', 'ppc', 's390x', 'sh4eb', 'sh4',
+-            'sparc64', 'sparc', 'unicore32', 'x86_64', 'xtensaeb', 'xtensa' ] }
++  'data': [ 'alpha',
++            'arm',
++            'cris',
++            'i386',
++            'lm32',
++            'm68k',
++            'microblazeel',
++            'microblaze',
++            'mips64el',
++            'mips64',
++            'mipsel',
++            'mips',
++            'moxie',
++            'or32',
++            'ppc64',
++            'ppcemb',
++            'ppc',
++            's390x',
++            'sh4eb',
++            'sh4',
++            'sparc64',
++            'sparc',
++            'unicore32',
++            'x86_64',
++            'xtensaeb',
++            'xtensa' ] }
+ 
+ ##
+ # @TargetInfo:
+-- 
+1.7.9.5
 
 
