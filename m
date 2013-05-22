@@ -1,60 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uf8tI-0008Ku-NB
-	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 09:15:40 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:47800)
+	id 1Uf8zJ-0001WE-KT
+	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 09:21:53 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:49809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uf8tB-0008J2-V3
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:15:39 -0400
+	(envelope-from <emaste@freebsd.org>) id 1Uf8zD-0001S5-Dg
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:21:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uf8t7-00071A-1b
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:15:33 -0400
-Received: from e23smtp04.au.ibm.com ([202.81.31.146]:60167)
+	(envelope-from <emaste@freebsd.org>) id 1Uf8z8-0000yD-OQ
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:21:47 -0400
+Received: from [216.171.111.232] (port=22743 helo=freebsd.org)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uf8t6-000706-Fh
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:15:28 -0400
-Received: from /spool/local
-	by e23smtp04.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Wed, 22 May 2013 23:02:23 +1000
-Received: from d23dlp03.au.ibm.com (202.81.31.214)
-	by e23smtp04.au.ibm.com (202.81.31.210) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Wed, 22 May 2013 23:02:21 +1000
-Received: from d23relay04.au.ibm.com (d23relay04.au.ibm.com [9.190.234.120])
-	by d23dlp03.au.ibm.com (Postfix) with ESMTP id C148C357804A;
-	Wed, 22 May 2013 23:15:23 +1000 (EST)
-Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
-	by d23relay04.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r4MD1EgF22610088; Wed, 22 May 2013 23:01:15 +1000
-Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r4MDFMW7018586; Wed, 22 May 2013 23:15:23 +1000
-Received: from titi.na.relay.ibm.com (sig-9-65-241-117.mts.ibm.com
-	[9.65.241.117])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r4MDFBK8018352; Wed, 22 May 2013 23:15:15 +1000
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-In-Reply-To: <519A50EE.8040804@redhat.com>
-References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-	<519A50EE.8040804@redhat.com>
-User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
-	(x86_64-pc-linux-gnu)
-Date: Wed, 22 May 2013 08:15:11 -0500
-Message-ID: <871u8zp34w.fsf@codemonkey.ws>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13052213-9264-0000-0000-000003CC3C10
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 202.81.31.146
-Cc: qemu-trivial@nongnu.org, John Rigby <john.rigby@linaro.org>,
-	patches@linaro.org, qemu-devel@nongnu.org,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema.json: Reformat
-	TargetType enum to one-per-line
+	(envelope-from <emaste@freebsd.org>) id 1Uf8z8-0000xs-IK
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:21:42 -0400
+Received: from emaste (uid 1001) (envelope-from emaste@freebsd.org) id 9ced0
+	by freebsd.org (DragonFly Mail Agent 1);
+	Wed, 22 May 2013 09:21:40 -0400
+From: Ed Maste <emaste@freebsd.org>
+To: qemu-devel@nongnu.org
+Date: Wed, 22 May 2013 09:21:39 -0400
+Message-Id: <1369228899-74124-1-git-send-email-emaste@freebsd.org>
+X-Mailer: git-send-email 1.7.11.5
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
+X-Received-From: 216.171.111.232
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] configure: remove confusing file manipulation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,96 +35,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2013 13:15:39 -0000
+X-List-Received-Date: Wed, 22 May 2013 13:21:52 -0000
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
+The configure script had some code to manipulate config-host.ld~ (i.e.,
+a common backup filename), comparing it with the newly-generated file.
+I believe the sense of the comparison was backwards.
 
-> Il 20/05/2013 18:21, Peter Maydell ha scritto:
->> Reformat the qapi-schema TargetType enumeration so that it has just
->> one target architecture name per line. This allows patches for
->> adding new targets to just add a single line, rather than having
->> to reformat most of the list (resulting in a hard-to-check diff).
->> 
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->> d15a9c23 is an example of what you get otherwise.
->> 
->> I would much prefer it if we autogenerated this list so you didn't
->> need to change this file at all to add a new target, but Anthony
->> is against that; so this is at least an improvement.
->
-> I have queued a patch for 1.6 that would change this field to a free
-> string.  There is no use of this enum, not even for introspection.
+Since it seemed to serve little purpose anyway, remove it to avoid any
+confusion.
 
-I don't object to this, however..
+Signed-off-by: Ed Maste <emaste@freebsd.org>
+---
+ configure | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-> You
-> don't need to know what targets were supported in the version that you
-> compiled from.  Only one target is supported in this executable
-> anyway.
-
-It seems useful to me.  One day we may support multiple targets per
-executable.
-
-There's no obvious place where all of the possible targets are listed so
-from the point of view of someone trying to figure out what the
-platforms are while writing a management tool, it seems like a useful
-thing to have.
-
-We don't add targets very often...  are we optimizing for an uncommon
-scenario here?
-
-Regards,
-
-Anthony Liguori
-
->
-> Paolo
->
->>  qapi-schema.json |   30 ++++++++++++++++++++++++++----
->>  1 file changed, 26 insertions(+), 4 deletions(-)
->> 
->> diff --git a/qapi-schema.json b/qapi-schema.json
->> index 199744a..a8d361e 100644
->> --- a/qapi-schema.json
->> +++ b/qapi-schema.json
->> @@ -3018,10 +3018,32 @@
->>  # Since: 1.2.0
->>  ##
->>  { 'enum': 'TargetType',
->> -  'data': [ 'alpha', 'arm', 'cris', 'i386', 'lm32', 'm68k', 'microblazeel',
->> -            'microblaze', 'mips64el', 'mips64', 'mipsel', 'mips', 'moxie',
->> -            'or32', 'ppc64', 'ppcemb', 'ppc', 's390x', 'sh4eb', 'sh4',
->> -            'sparc64', 'sparc', 'unicore32', 'x86_64', 'xtensaeb', 'xtensa' ] }
->> +  'data': [ 'alpha',
->> +            'arm',
->> +            'cris',
->> +            'i386',
->> +            'lm32',
->> +            'm68k',
->> +            'microblazeel',
->> +            'microblaze',
->> +            'mips64el',
->> +            'mips64',
->> +            'mipsel',
->> +            'mips',
->> +            'moxie',
->> +            'or32',
->> +            'ppc64',
->> +            'ppcemb',
->> +            'ppc',
->> +            's390x',
->> +            'sh4eb',
->> +            'sh4',
->> +            'sparc64',
->> +            'sparc',
->> +            'unicore32',
->> +            'x86_64',
->> +            'xtensaeb',
->> +            'xtensa' ] }
->>  
->>  ##
->>  # @TargetInfo:
->> 
+diff --git a/configure b/configure
+index 5ae7e4a..cfdb564 100755
+--- a/configure
++++ b/configure
+@@ -4104,17 +4104,8 @@ if test "$gcov" = "yes" ; then
+ fi
+ 
+ # generate list of library paths for linker script
+-
+ $ld --verbose -v 2> /dev/null | grep SEARCH_DIR > ${config_host_ld}
+ 
+-if test -f ${config_host_ld}~ ; then
+-  if cmp -s $config_host_ld ${config_host_ld}~ ; then
+-    mv ${config_host_ld}~ $config_host_ld
+-  else
+-    rm ${config_host_ld}~
+-  fi
+-fi
+-
+ # use included Linux headers
+ if test "$linux" = "yes" ; then
+   mkdir -p linux-headers
+-- 
+1.7.11.5
 
 
