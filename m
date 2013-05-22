@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UfABl-0004wK-8p
-	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 10:38:49 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43955)
+	id 1UfHzM-0001ZB-QX
+	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 18:58:32 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:33275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UfABh-0004qr-Mf
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 10:38:47 -0400
+	(envelope-from <aliguori@us.ibm.com>) id 1UfHzD-0001PD-IQ
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 18:58:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UfABg-0003G6-Fi
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 10:38:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:29704)
+	(envelope-from <aliguori@us.ibm.com>) id 1UfHz8-0003df-U6
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 18:58:23 -0400
+Received: from e23smtp08.au.ibm.com ([202.81.31.141]:59505)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1UfABc-0003F6-JQ; Wed, 22 May 2013 10:38:40 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4MEcbkd002131
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 22 May 2013 10:38:37 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-39.ams2.redhat.com
-	[10.36.112.39])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r4MEcWSc018814; Wed, 22 May 2013 10:38:33 -0400
-Message-ID: <519CD863.3080205@redhat.com>
-Date: Wed, 22 May 2013 16:38:27 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Anthony Liguori <aliguori@us.ibm.com>
-References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-	<519A50EE.8040804@redhat.com> <871u8zp34w.fsf@codemonkey.ws>
-	<CAFEAcA90AJyBNtNxRa45y3zfWCj8tAq5jsqoDLmDTAZT0DK=2g@mail.gmail.com>
-	<87y5b7hyuo.fsf@codemonkey.ws>
-In-Reply-To: <87y5b7hyuo.fsf@codemonkey.ws>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	John Rigby <john.rigby@linaro.org>, patches@linaro.org,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Libvirt <libvir-list@redhat.com>,
-	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema.json: Reformat
- TargetType enum to one-per-line
+	(envelope-from <aliguori@us.ibm.com>) id 1UfHz8-0003d1-D6
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 18:58:18 -0400
+Received: from /spool/local
+	by e23smtp08.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Thu, 23 May 2013 08:55:32 +1000
+Received: from d23dlp01.au.ibm.com (202.81.31.203)
+	by e23smtp08.au.ibm.com (202.81.31.205) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 23 May 2013 08:55:31 +1000
+Received: from d23relay03.au.ibm.com (d23relay03.au.ibm.com [9.190.235.21])
+	by d23dlp01.au.ibm.com (Postfix) with ESMTP id 6B5E92CE8051;
+	Thu, 23 May 2013 08:57:59 +1000 (EST)
+Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
+	by d23relay03.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r4MMvo3621954666; Thu, 23 May 2013 08:57:51 +1000
+Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	r4MMvwQi004469; Thu, 23 May 2013 08:57:58 +1000
+Received: from localhost6.localdomain6 (sig-9-65-241-117.mts.ibm.com
+	[9.65.241.117])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r4MMvt60004422; Thu, 23 May 2013 08:57:56 +1000
+Message-Id: <201305222257.r4MMvt60004422@d23av03.au.ibm.com>
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
+In-Reply-To: <51977B44.1000302@msgid.tls.msk.ru>
+Date: Wed, 22 May 2013 22:57:55 -0000
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13052222-5140-0000-0000-000003404D76
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 202.81.31.141
+Subject: Re: [Qemu-trivial] [GIT PULL for-1.5] Trivial patches for 2013-05-18
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,31 +56,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2013 14:38:47 -0000
+X-List-Received-Date: Wed, 22 May 2013 22:58:29 -0000
 
-Il 22/05/2013 16:29, Anthony Liguori ha scritto:
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> 
->> On 22 May 2013 14:15, Anthony Liguori <aliguori@us.ibm.com> wrote:
->>> Paolo Bonzini <pbonzini@redhat.com> writes:
->>>> You
->>>> don't need to know what targets were supported in the version that you
->>>> compiled from.  Only one target is supported in this executable
->>>> anyway.
->>>
->>> It seems useful to me.  One day we may support multiple targets per
->>> executable.
->>
->> Why would you care about which architectures the executable supports?
->> What you actually want to know is which machine models are supported;
->> whether board foo happens to be ARM or PPC isn't really very interesting
->> IMHO.
-> 
-> That's a very good point.  It was the libvirt folks that requested
-> this.  Perhaps they can shed some light on the logic?
+Pulled.  Thanks.
 
-There is processor-dependent logic in libvirt, for example the CPUID bits.
+Regards,
 
-Paolo
+Anthony Liguori
 
 
