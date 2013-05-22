@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UeTh3-00084O-6P
-	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2013 13:16:17 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44174)
+	id 1Uf1h6-0002dV-S5
+	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 01:34:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:58494)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1UeTgx-0007xD-Iy
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 13:16:16 -0400
+	(envelope-from <hutao@cn.fujitsu.com>) id 1Uf1gx-0002Rf-Db
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 01:34:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1UeTgs-0006Jz-Ol
-	for qemu-trivial@nongnu.org; Mon, 20 May 2013 13:16:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38066)
+	(envelope-from <hutao@cn.fujitsu.com>) id 1Uf1gp-0008Ur-Iy
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 01:34:27 -0400
+Received: from [222.73.24.84] (port=23659 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1UeT9H-0001NN-5k; Mon, 20 May 2013 12:41:23 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4KGfLh4022712
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 20 May 2013 12:41:21 -0400
-Received: from [10.3.113.113] (ovpn-113-113.phx2.redhat.com [10.3.113.113])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r4KGfKCN029973; Mon, 20 May 2013 12:41:20 -0400
-Message-ID: <519A522F.80305@redhat.com>
-Date: Mon, 20 May 2013 10:41:19 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-X-Enigmail-Version: 1.5.1
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="----enig2TJWOKEUWVGPCASKLSBCC"
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Anthony Liguori <aliguori@us.ibm.com>, patches@linaro.org,
-	qemu-trivial@nongnu.org, John Rigby <john.rigby@linaro.org>,
-	qemu-devel@nongnu.org, =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema.json: Reformat
- TargetType enum to one-per-line
+	(envelope-from <hutao@cn.fujitsu.com>)
+	id 1Uf1gp-0008Rl-6o; Wed, 22 May 2013 01:34:19 -0400
+X-IronPort-AV: E=Sophos;i="4.87,719,1363104000"; 
+   d="scan'208";a="7330823"
+Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
+	by song.cn.fujitsu.com with ESMTP; 22 May 2013 13:31:12 +0800
+Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r4M5Y0Dr022017;
+	Wed, 22 May 2013 13:34:00 +0800
+Received: from G08FNSTD100614.fnst.cn.fujitsu.com ([10.167.233.156])
+	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
+	with ESMTP id 2013052213324247-1422186 ;
+	Wed, 22 May 2013 13:32:42 +0800 
+From: Hu Tao <hutao@cn.fujitsu.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 22 May 2013 13:33:12 +0800
+Message-Id: <c5d67e2881026c5d6cf22fe31bb6e657448da59a.1369193012.git.hutao@cn.fujitsu.com>
+X-Mailer: git-send-email 1.8.2.3
+In-Reply-To: <cover.1369193012.git.hutao@cn.fujitsu.com>
+References: <cover.1369193012.git.hutao@cn.fujitsu.com>
+X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
+	15, 2011) at 2013/05/22 13:32:42,
+	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
+	2011) at 2013/05/22 13:32:43,
+	Serialize complete at 2013/05/22 13:32:43
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 222.73.24.84
+Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
+	Jan Kiszka <jan.kiszka@siemens.com>,
+	Vasilis Liaskovitis <vasilis.liaskovitis@profitbricks.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Subject: [Qemu-trivial] [RFC PATCH v1 08/20] rtc: remove rtc_set_date
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,66 +54,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 May 2013 17:16:16 -0000
+X-List-Received-Date: Wed, 22 May 2013 05:34:34 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
-------enig2TJWOKEUWVGPCASKLSBCC
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Since it's not defined and used anywhere.
 
-On 05/20/2013 10:21 AM, Peter Maydell wrote:
-> Reformat the qapi-schema TargetType enumeration so that it has just
-> one target architecture name per line. This allows patches for
-> adding new targets to just add a single line, rather than having
-> to reformat most of the list (resulting in a hard-to-check diff).
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> d15a9c23 is an example of what you get otherwise.
->=20
-> I would much prefer it if we autogenerated this list so you didn't
-> need to change this file at all to add a new target, but Anthony
-> is against that; so this is at least an improvement.
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
+---
+ include/hw/timer/mc146818rtc.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-Yep, that raises (once again) the question of dynamic introspection -
-there's a difference between the maximum amount of information known at
-compile time, and the subset of enum values that are actually usable at
-runtime.  This list is static (all known architectures), depending on
-what solutions we come up with for dynamic introspection, maybe that
-solution will also have a way for generating enum types.
+diff --git a/include/hw/timer/mc146818rtc.h b/include/hw/timer/mc146818rtc.h
+index 753dda6..eaf6497 100644
+--- a/include/hw/timer/mc146818rtc.h
++++ b/include/hw/timer/mc146818rtc.h
+@@ -9,6 +9,5 @@
+ ISADevice *rtc_init(ISABus *bus, int base_year, qemu_irq intercept_irq);
+ void rtc_set_memory(ISADevice *dev, int addr, int val);
+ int rtc_get_memory(ISADevice *dev, int addr);
+-void rtc_set_date(ISADevice *dev, const struct tm *tm);
+ 
+ #endif /* !MC146818RTC_H */
+-- 
+1.8.2.3
 
->=20
->  qapi-schema.json |   30 ++++++++++++++++++++++++++----
->  1 file changed, 26 insertions(+), 4 deletions(-)
-
-At any rate, I see no harm in taking this patch as-is now, while we
-still spend time thinking about introspection.
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
-------enig2TJWOKEUWVGPCASKLSBCC
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.13 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJRmlIvAAoJEKeha0olJ0NqbEMH/iuxC37nMLKCasfp41lcztUE
-iJycTUNceziqiFbRIlC5KKLj7/cTpG+Gqjbhz6TwPRphB4Et8sh9rXfNN2Mlv4l3
-5xAv/7ahA5h1fGlpCupoYJL0DE9F0hd17FRBVWhTworNmI7XWKFR0FAEE3MvQkgc
-+Z+3kjpPY0xpDol1KU2G0EdQGRURKvhlxoKcMI5lA9c3Pm/cdqCEpoz/JULphofJ
-+QX7Luo14dmaw+vdN3EAOnkvWwILgoZxluuJfQ6cOfiHphwaA79cm3+a+MKSbkZn
-NtpkZM773LREKatOQ1szo2M6o7rW8+WEj1DoSevk1afj/v18XhWWoxyH6Bo5kPY=
-=0EoN
------END PGP SIGNATURE-----
-
-------enig2TJWOKEUWVGPCASKLSBCC--
 
