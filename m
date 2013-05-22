@@ -1,57 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uf90c-0002Q1-TE
-	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 09:23:14 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:50143)
+	id 1Uf9FU-0000iS-7t
+	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 09:38:36 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54213)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uf90X-0002ON-C6
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:23:14 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Uf9FQ-0000bi-KU
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:38:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uf90V-0001SD-SJ
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:23:09 -0400
-Received: from e23smtp03.au.ibm.com ([202.81.31.145]:44758)
+	(envelope-from <peter.maydell@linaro.org>) id 1Uf9FM-0006zF-1G
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:38:32 -0400
+Received: from mail-la0-x22d.google.com ([2a00:1450:4010:c03::22d]:38891)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uf90V-0001ON-9r
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:23:07 -0400
-Received: from /spool/local
-	by e23smtp03.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Wed, 22 May 2013 23:04:25 +1000
-Received: from d23dlp02.au.ibm.com (202.81.31.213)
-	by e23smtp03.au.ibm.com (202.81.31.209) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Wed, 22 May 2013 23:04:24 +1000
-Received: from d23relay04.au.ibm.com (d23relay04.au.ibm.com [9.190.234.120])
-	by d23dlp02.au.ibm.com (Postfix) with ESMTP id AEF0A2BB0050;
-	Wed, 22 May 2013 23:12:53 +1000 (EST)
-Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
-	by d23relay04.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r4MCwiuH21299220; Wed, 22 May 2013 22:58:45 +1000
-Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r4MDCqeF015573; Wed, 22 May 2013 23:12:52 +1000
-Received: from titi.na.relay.ibm.com (sig-9-65-241-117.mts.ibm.com
-	[9.65.241.117])
-	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r4MDCLp9014985; Wed, 22 May 2013 23:12:47 +1000
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-In-Reply-To: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
-	(x86_64-pc-linux-gnu)
-Date: Wed, 22 May 2013 08:12:21 -0500
-Message-ID: <874ndvp39m.fsf@codemonkey.ws>
+	(envelope-from <peter.maydell@linaro.org>) id 1Uf9FL-0006yB-RB
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:38:27 -0400
+Received: by mail-la0-f45.google.com with SMTP id ec20so1990092lab.18
+	for <qemu-trivial@nongnu.org>; Wed, 22 May 2013 06:38:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=XdsX8URhT0fcHqA0iY5M8tnjVd+REFqlVQuBVpH/xpw=;
+	b=i5O6uDkwcbLB+RaWoGw4uO8nUh9KHVraHrTS5r01Pa79YzQ4xETU4QwgAtSZ/PBX8B
+	kq+owo/6uwWrYEyYo3p99mSPwbl1s3I3SMHcHSRCeTewsOd0FluYQjhyhiIoRyJSnTGA
+	/eif/WsJ6gU06aknAQ6nj8aph153Ft6DigP4uBpoVYF9Yhjg5bo82DtdtFd1S//s/SUX
+	jNMmOHiSuvwBL+UE6TG5/Qzi+dRUt9JsuJK8ARnQ8sxEvz6Pm+OyxWYmx6yPqJ3lqlak
+	TVfAvp28We7ZdhwnAA4DsI78DlMEVqUBCenlTAs7kcDg7K9pp9HwktBBVHLwRweJeygf
+	HX8g==
+X-Received: by 10.112.6.6 with SMTP id w6mr4032297lbw.123.1369229906551; Wed,
+	22 May 2013 06:38:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13052213-6102-0000-0000-0000039145B5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 202.81.31.145
+Received: by 10.112.188.130 with HTTP; Wed, 22 May 2013 06:38:06 -0700 (PDT)
+In-Reply-To: <874ndvp39m.fsf@codemonkey.ws>
+References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
+	<874ndvp39m.fsf@codemonkey.ws>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 22 May 2013 14:38:06 +0100
+Message-ID: <CAFEAcA9OZs+NUG=50gBQKKgO9pxBTQGJ3YJAQav5NU+cWFZBXg@mail.gmail.com>
+To: Anthony Liguori <aliguori@us.ibm.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQmRPs+Q5s2E+Q/FxRpV2MQVo6qqkqoEkR8bwD/RclD4pD/6WqnE9ZkwRoTyeqYomC60NCAA
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c03::22d
 Cc: qemu-trivial@nongnu.org, John Rigby <john.rigby@linaro.org>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, patches@linaro.org
+	qemu-devel@nongnu.org, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	patches@linaro.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema.json: Reformat
-	TargetType enum to one-per-line
+ TargetType enum to one-per-line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,78 +57,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2013 13:23:14 -0000
+X-List-Received-Date: Wed, 22 May 2013 13:38:34 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> Reformat the qapi-schema TargetType enumeration so that it has just
-> one target architecture name per line. This allows patches for
-> adding new targets to just add a single line, rather than having
-> to reformat most of the list (resulting in a hard-to-check diff).
+On 22 May 2013 14:12, Anthony Liguori <aliguori@us.ibm.com> wrote:
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>> I would much prefer it if we autogenerated this list so you didn't
+>> need to change this file at all to add a new target, but Anthony
+>> is against that; so this is at least an improvement.
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> d15a9c23 is an example of what you get otherwise.
->
-> I would much prefer it if we autogenerated this list so you didn't
-> need to change this file at all to add a new target, but Anthony
-> is against that; so this is at least an improvement.
+> I don't object to autogenerating it.  I object to autogenerating based
+> on the selected targets.
 
-I don't object to autogenerating it.  I object to autogenerating based
-on the selected targets.
+I never suggested that -- what I proposed on IRC was that it
+could be autogenerated based on the contents of default-configs/.
+But if we're making it not-an-enum anyway the question is moot.
 
-The enum should be fixed regardless of what the configure line is.
-
-Regards,
-
-Anthony Liguori
-
->
->  qapi-schema.json |   30 ++++++++++++++++++++++++++----
->  1 file changed, 26 insertions(+), 4 deletions(-)
->
-> diff --git a/qapi-schema.json b/qapi-schema.json
-> index 199744a..a8d361e 100644
-> --- a/qapi-schema.json
-> +++ b/qapi-schema.json
-> @@ -3018,10 +3018,32 @@
->  # Since: 1.2.0
->  ##
->  { 'enum': 'TargetType',
-> -  'data': [ 'alpha', 'arm', 'cris', 'i386', 'lm32', 'm68k', 'microblazeel',
-> -            'microblaze', 'mips64el', 'mips64', 'mipsel', 'mips', 'moxie',
-> -            'or32', 'ppc64', 'ppcemb', 'ppc', 's390x', 'sh4eb', 'sh4',
-> -            'sparc64', 'sparc', 'unicore32', 'x86_64', 'xtensaeb', 'xtensa' ] }
-> +  'data': [ 'alpha',
-> +            'arm',
-> +            'cris',
-> +            'i386',
-> +            'lm32',
-> +            'm68k',
-> +            'microblazeel',
-> +            'microblaze',
-> +            'mips64el',
-> +            'mips64',
-> +            'mipsel',
-> +            'mips',
-> +            'moxie',
-> +            'or32',
-> +            'ppc64',
-> +            'ppcemb',
-> +            'ppc',
-> +            's390x',
-> +            'sh4eb',
-> +            'sh4',
-> +            'sparc64',
-> +            'sparc',
-> +            'unicore32',
-> +            'x86_64',
-> +            'xtensaeb',
-> +            'xtensa' ] }
->  
->  ##
->  # @TargetInfo:
-> -- 
-> 1.7.9.5
-
+thanks
+-- PMM
 
