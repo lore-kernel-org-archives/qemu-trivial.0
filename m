@@ -1,52 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uf9SJ-0003ZO-PP
-	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 09:51:51 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58112)
+	id 1UfA2L-0006PX-Dc
+	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 10:29:05 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:41101)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Uf9SD-0003ZC-Ny
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:51:50 -0400
+	(envelope-from <aliguori@us.ibm.com>) id 1UfA2C-0006NU-Pc
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 10:29:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Uf9S8-0002gJ-At
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:51:45 -0400
-Received: from mail-la0-x22f.google.com ([2a00:1450:4010:c03::22f]:50420)
+	(envelope-from <aliguori@us.ibm.com>) id 1UfA26-00087N-Tj
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 10:28:56 -0400
+Received: from e23smtp07.au.ibm.com ([202.81.31.140]:45019)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Uf9S8-0002fz-3w
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:51:40 -0400
-Received: by mail-la0-f47.google.com with SMTP id fq12so1963519lab.6
-	for <qemu-trivial@nongnu.org>; Wed, 22 May 2013 06:51:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:x-gm-message-state;
-	bh=DAT7eJUSvePfrbB4yfnxWtpXWlkUzutra6Zf1qEPH98=;
-	b=R9TbxsHkpuYvEy7ow0hwo64xrOlrkpSZZf1DCyjjXizTuj+YZCtzpC45pHWjMKpmms
-	GCjgfNbu4fzTyjcq9kFjfHeDlJBBjOx4kQReuAjyeA/FOGybiVjO2LFXwf6JJr0wi3fa
-	NmsC+1ROHAzMFGILMzZ/Qst6slY3XEsBqg+J/es2aN3wwyOnvVU//R48k0x7XeNgbNI8
-	KLC6b15O2mdB2BtsSMoEEGywkH4n17YFPP9+n0FcFaVcHC+W3vN+1xvG9rgl3rlbDtnz
-	QdJsHJxXw4Q9CGskJHXN3rEq2t4CffWNLKzJ0dffoXzXnQqyRc2+nt77FvGFZgVo7SQ4
-	llfQ==
-X-Received: by 10.152.5.37 with SMTP id p5mr4058119lap.13.1369230698863; Wed,
-	22 May 2013 06:51:38 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.188.130 with HTTP; Wed, 22 May 2013 06:51:17 -0700 (PDT)
-In-Reply-To: <871u8zp34w.fsf@codemonkey.ws>
+	(envelope-from <aliguori@us.ibm.com>) id 1UfA26-00086a-9M
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 10:28:50 -0400
+Received: from /spool/local
+	by e23smtp07.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Thu, 23 May 2013 00:18:21 +1000
+Received: from d23dlp03.au.ibm.com (202.81.31.214)
+	by e23smtp07.au.ibm.com (202.81.31.204) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 23 May 2013 00:18:18 +1000
+Received: from d23relay05.au.ibm.com (d23relay05.au.ibm.com [9.190.235.152])
+	by d23dlp03.au.ibm.com (Postfix) with ESMTP id 8181C3578051;
+	Thu, 23 May 2013 00:28:41 +1000 (EST)
+Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
+	by d23relay05.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r4MEELjN8454324; Thu, 23 May 2013 00:14:24 +1000
+Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	r4MEScaM019161; Thu, 23 May 2013 00:28:38 +1000
+Received: from titi.na.relay.ibm.com (sig-9-65-241-117.mts.ibm.com
+	[9.65.241.117])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r4MESTqq019073; Thu, 23 May 2013 00:28:33 +1000
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>
+In-Reply-To: <519CCD21.8090008@suse.de>
 References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
 	<519A50EE.8040804@redhat.com> <871u8zp34w.fsf@codemonkey.ws>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 22 May 2013 14:51:17 +0100
-Message-ID: <CAFEAcA90AJyBNtNxRa45y3zfWCj8tAq5jsqoDLmDTAZT0DK=2g@mail.gmail.com>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnkBHPP4mvwrIpFNQ0cF9SsIah4caYUZ0M37J3vLVbR/dedV1Vi9NQdeS2B2kpoKZUNT5f1
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c03::22f
-Cc: John Rigby <john.rigby@linaro.org>, patches@linaro.org,
+	<519CCD21.8090008@suse.de>
+User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
+	(x86_64-pc-linux-gnu)
+Date: Wed, 22 May 2013 09:28:29 -0500
+Message-ID: <871u8zjdgy.fsf@codemonkey.ws>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13052214-0260-0000-0000-0000030A17D5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 202.81.31.140
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	John Rigby <john.rigby@linaro.org>, patches@linaro.org,
 	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+	Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema.json: Reformat
- TargetType enum to one-per-line
+	TargetType enum to one-per-line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,22 +68,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2013 13:51:50 -0000
+X-List-Received-Date: Wed, 22 May 2013 14:29:03 -0000
 
-On 22 May 2013 14:15, Anthony Liguori <aliguori@us.ibm.com> wrote:
-> Paolo Bonzini <pbonzini@redhat.com> writes:
->> You
->> don't need to know what targets were supported in the version that you
->> compiled from.  Only one target is supported in this executable
->> anyway.
+Andreas F=C3=A4rber <afaerber@suse.de> writes:
+
+> Am 22.05.2013 15:15, schrieb Anthony Liguori:
+>> Paolo Bonzini <pbonzini@redhat.com> writes:
+>>=20
+>>> Il 20/05/2013 18:21, Peter Maydell ha scritto:
+>>>> Reformat the qapi-schema TargetType enumeration so that it has just
+>>>> one target architecture name per line. This allows patches for
+>>>> adding new targets to just add a single line, rather than having
+>>>> to reformat most of the list (resulting in a hard-to-check diff).
+>>>>
+>>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>>> ---
+>>>> d15a9c23 is an example of what you get otherwise.
+>>>>
+>>>> I would much prefer it if we autogenerated this list so you didn't
+>>>> need to change this file at all to add a new target, but Anthony
+>>>> is against that; so this is at least an improvement.
+>>>
+>>> I have queued a patch for 1.6 that would change this field to a free
+>>> string.  There is no use of this enum, not even for introspection.
+>>=20
+>> I don't object to this, however..
+>>=20
+>>> You
+>>> don't need to know what targets were supported in the version that you
+>>> compiled from.  Only one target is supported in this executable
+>>> anyway.
+>>=20
+>> It seems useful to me.  One day we may support multiple targets per
+>> executable.
+>>=20
+>> There's no obvious place where all of the possible targets are listed so
+>> from the point of view of someone trying to figure out what the
+>> platforms are while writing a management tool, it seems like a useful
+>> thing to have.
 >
-> It seems useful to me.  One day we may support multiple targets per
-> executable.
+> Does today's API allow for returning multiple enum values? I doubt
+> so...
 
-Why would you care about which architectures the executable supports?
-What you actually want to know is which machine models are supported;
-whether board foo happens to be ARM or PPC isn't really very interesting
-IMHO.
+Nope.
 
--- PMM
+>> We don't add targets very often...  are we optimizing for an uncommon
+>> scenario here?
+>
+> Well, lately every second release or so.
+>
+> More common is however that people start writing a new target and don't
+> submit it yet (ahem!) while another target gets added, and the current
+> form of rebreaking this block of enum values causes more conflicts
+
+Sounds like a good reason to submit the target upstream to me...
+
+> than
+> with Peter's proposal where the place to add new values is more likely
+> to differ between targets and becomes more secure to add to.
+
+There's no need to keep it in sorted order.  We should just add stuff to
+the end of the enum.
+
+Heck, if someone wants to send a patch to randomize the sort order,
+that'd be fine too :-)
+
+Regards,
+
+Anthony Liguori
+
+> So if we don't go for Paolo's string version,
+>
+> Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+>
+> One thought that crossed my mind was whether to put [ and ] on lines of
+> their own to aid adding before alpha and after xtensa, but apart from
+> aarch64 I couldn't think of such fringe target names. ;)
+>
+> Regards,
+> Andreas
+>
+> --=20
+> SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+> GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=
+=BCrnberg
+
 
