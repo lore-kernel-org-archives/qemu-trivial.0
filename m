@@ -1,48 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uf1h6-0002dV-S5
-	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 01:34:37 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:58494)
+	id 1Uf8tI-0008Ku-NB
+	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2013 09:15:40 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47800)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1Uf1gx-0002Rf-Db
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 01:34:34 -0400
+	(envelope-from <aliguori@us.ibm.com>) id 1Uf8tB-0008J2-V3
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:15:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1Uf1gp-0008Ur-Iy
-	for qemu-trivial@nongnu.org; Wed, 22 May 2013 01:34:27 -0400
-Received: from [222.73.24.84] (port=23659 helo=song.cn.fujitsu.com)
+	(envelope-from <aliguori@us.ibm.com>) id 1Uf8t7-00071A-1b
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:15:33 -0400
+Received: from e23smtp04.au.ibm.com ([202.81.31.146]:60167)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>)
-	id 1Uf1gp-0008Rl-6o; Wed, 22 May 2013 01:34:19 -0400
-X-IronPort-AV: E=Sophos;i="4.87,719,1363104000"; 
-   d="scan'208";a="7330823"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 22 May 2013 13:31:12 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r4M5Y0Dr022017;
-	Wed, 22 May 2013 13:34:00 +0800
-Received: from G08FNSTD100614.fnst.cn.fujitsu.com ([10.167.233.156])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013052213324247-1422186 ;
-	Wed, 22 May 2013 13:32:42 +0800 
-From: Hu Tao <hutao@cn.fujitsu.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 22 May 2013 13:33:12 +0800
-Message-Id: <c5d67e2881026c5d6cf22fe31bb6e657448da59a.1369193012.git.hutao@cn.fujitsu.com>
-X-Mailer: git-send-email 1.8.2.3
-In-Reply-To: <cover.1369193012.git.hutao@cn.fujitsu.com>
-References: <cover.1369193012.git.hutao@cn.fujitsu.com>
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/05/22 13:32:42,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/05/22 13:32:43,
-	Serialize complete at 2013/05/22 13:32:43
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
-	Jan Kiszka <jan.kiszka@siemens.com>,
-	Vasilis Liaskovitis <vasilis.liaskovitis@profitbricks.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [Qemu-trivial] [RFC PATCH v1 08/20] rtc: remove rtc_set_date
+	(envelope-from <aliguori@us.ibm.com>) id 1Uf8t6-000706-Fh
+	for qemu-trivial@nongnu.org; Wed, 22 May 2013 09:15:28 -0400
+Received: from /spool/local
+	by e23smtp04.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Wed, 22 May 2013 23:02:23 +1000
+Received: from d23dlp03.au.ibm.com (202.81.31.214)
+	by e23smtp04.au.ibm.com (202.81.31.210) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Wed, 22 May 2013 23:02:21 +1000
+Received: from d23relay04.au.ibm.com (d23relay04.au.ibm.com [9.190.234.120])
+	by d23dlp03.au.ibm.com (Postfix) with ESMTP id C148C357804A;
+	Wed, 22 May 2013 23:15:23 +1000 (EST)
+Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
+	by d23relay04.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r4MD1EgF22610088; Wed, 22 May 2013 23:01:15 +1000
+Received: from d23av03.au.ibm.com (loopback [127.0.0.1])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
+	r4MDFMW7018586; Wed, 22 May 2013 23:15:23 +1000
+Received: from titi.na.relay.ibm.com (sig-9-65-241-117.mts.ibm.com
+	[9.65.241.117])
+	by d23av03.au.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r4MDFBK8018352; Wed, 22 May 2013 23:15:15 +1000
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <519A50EE.8040804@redhat.com>
+References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
+	<519A50EE.8040804@redhat.com>
+User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
+	(x86_64-pc-linux-gnu)
+Date: Wed, 22 May 2013 08:15:11 -0500
+Message-ID: <871u8zp34w.fsf@codemonkey.ws>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13052213-9264-0000-0000-000003CC3C10
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 202.81.31.146
+Cc: qemu-trivial@nongnu.org, John Rigby <john.rigby@linaro.org>,
+	patches@linaro.org, qemu-devel@nongnu.org,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema.json: Reformat
+	TargetType enum to one-per-line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,28 +66,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2013 05:34:34 -0000
+X-List-Received-Date: Wed, 22 May 2013 13:15:39 -0000
 
-Since it's not defined and used anywhere.
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-Cc: qemu-trivial@nongnu.org
-Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
----
- include/hw/timer/mc146818rtc.h | 1 -
- 1 file changed, 1 deletion(-)
+> Il 20/05/2013 18:21, Peter Maydell ha scritto:
+>> Reformat the qapi-schema TargetType enumeration so that it has just
+>> one target architecture name per line. This allows patches for
+>> adding new targets to just add a single line, rather than having
+>> to reformat most of the list (resulting in a hard-to-check diff).
+>> 
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> d15a9c23 is an example of what you get otherwise.
+>> 
+>> I would much prefer it if we autogenerated this list so you didn't
+>> need to change this file at all to add a new target, but Anthony
+>> is against that; so this is at least an improvement.
+>
+> I have queued a patch for 1.6 that would change this field to a free
+> string.  There is no use of this enum, not even for introspection.
 
-diff --git a/include/hw/timer/mc146818rtc.h b/include/hw/timer/mc146818rtc.h
-index 753dda6..eaf6497 100644
---- a/include/hw/timer/mc146818rtc.h
-+++ b/include/hw/timer/mc146818rtc.h
-@@ -9,6 +9,5 @@
- ISADevice *rtc_init(ISABus *bus, int base_year, qemu_irq intercept_irq);
- void rtc_set_memory(ISADevice *dev, int addr, int val);
- int rtc_get_memory(ISADevice *dev, int addr);
--void rtc_set_date(ISADevice *dev, const struct tm *tm);
- 
- #endif /* !MC146818RTC_H */
--- 
-1.8.2.3
+I don't object to this, however..
+
+> You
+> don't need to know what targets were supported in the version that you
+> compiled from.  Only one target is supported in this executable
+> anyway.
+
+It seems useful to me.  One day we may support multiple targets per
+executable.
+
+There's no obvious place where all of the possible targets are listed so
+from the point of view of someone trying to figure out what the
+platforms are while writing a management tool, it seems like a useful
+thing to have.
+
+We don't add targets very often...  are we optimizing for an uncommon
+scenario here?
+
+Regards,
+
+Anthony Liguori
+
+>
+> Paolo
+>
+>>  qapi-schema.json |   30 ++++++++++++++++++++++++++----
+>>  1 file changed, 26 insertions(+), 4 deletions(-)
+>> 
+>> diff --git a/qapi-schema.json b/qapi-schema.json
+>> index 199744a..a8d361e 100644
+>> --- a/qapi-schema.json
+>> +++ b/qapi-schema.json
+>> @@ -3018,10 +3018,32 @@
+>>  # Since: 1.2.0
+>>  ##
+>>  { 'enum': 'TargetType',
+>> -  'data': [ 'alpha', 'arm', 'cris', 'i386', 'lm32', 'm68k', 'microblazeel',
+>> -            'microblaze', 'mips64el', 'mips64', 'mipsel', 'mips', 'moxie',
+>> -            'or32', 'ppc64', 'ppcemb', 'ppc', 's390x', 'sh4eb', 'sh4',
+>> -            'sparc64', 'sparc', 'unicore32', 'x86_64', 'xtensaeb', 'xtensa' ] }
+>> +  'data': [ 'alpha',
+>> +            'arm',
+>> +            'cris',
+>> +            'i386',
+>> +            'lm32',
+>> +            'm68k',
+>> +            'microblazeel',
+>> +            'microblaze',
+>> +            'mips64el',
+>> +            'mips64',
+>> +            'mipsel',
+>> +            'mips',
+>> +            'moxie',
+>> +            'or32',
+>> +            'ppc64',
+>> +            'ppcemb',
+>> +            'ppc',
+>> +            's390x',
+>> +            'sh4eb',
+>> +            'sh4',
+>> +            'sparc64',
+>> +            'sparc',
+>> +            'unicore32',
+>> +            'x86_64',
+>> +            'xtensaeb',
+>> +            'xtensa' ] }
+>>  
+>>  ##
+>>  # @TargetInfo:
+>> 
 
 
