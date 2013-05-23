@@ -1,48 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UfPV5-0006WY-TJ
-	for mharc-qemu-trivial@gnu.org; Thu, 23 May 2013 02:59:47 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39972)
+	id 1UfVD6-0002Qy-U1
+	for mharc-qemu-trivial@gnu.org; Thu, 23 May 2013 09:05:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:47870)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UfPV3-0006SZ-Hv
-	for qemu-trivial@nongnu.org; Thu, 23 May 2013 02:59:46 -0400
+	(envelope-from <afaerber@suse.de>) id 1UfVCz-0002AM-Dv
+	for qemu-trivial@nongnu.org; Thu, 23 May 2013 09:05:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UfPV2-0006NA-CP
-	for qemu-trivial@nongnu.org; Thu, 23 May 2013 02:59:45 -0400
-Received: from [222.73.24.84] (port=1092 helo=song.cn.fujitsu.com)
+	(envelope-from <afaerber@suse.de>) id 1UfVCu-0003w1-PR
+	for qemu-trivial@nongnu.org; Thu, 23 May 2013 09:05:29 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:56807 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1UfPUy-0006Lw-R3; Thu, 23 May 2013 02:59:41 -0400
-X-IronPort-AV: E=Sophos;i="4.87,726,1363104000"; 
-   d="scan'208";a="7342577"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 23 May 2013 14:56:18 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r4N6x8Tn017475;
-	Thu, 23 May 2013 14:59:08 +0800
-Received: from liguang.fnst.cn.fujitsu.com ([10.167.233.147])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013052314574858-1464763 ;
-	Thu, 23 May 2013 14:57:48 +0800 
-From: liguang <lig.fnst@cn.fujitsu.com>
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Date: Thu, 23 May 2013 14:58:43 +0800
-Message-Id: <1369292323-31762-3-git-send-email-lig.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1369292323-31762-1-git-send-email-lig.fnst@cn.fujitsu.com>
-References: <1369292323-31762-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	(envelope-from <afaerber@suse.de>)
+	id 1UfVCl-0003sI-TW; Thu, 23 May 2013 09:05:16 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 1E87BA5077;
+	Thu, 23 May 2013 15:05:14 +0200 (CEST)
+Message-ID: <519E1408.4060602@suse.de>
+Date: Thu, 23 May 2013 15:05:12 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
 MIME-Version: 1.0
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/05/23 14:57:48,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/05/23 14:57:48
-Content-Type: text/plain; charset=UTF-8
+To: liguang <lig.fnst@cn.fujitsu.com>
+References: <1369292323-31762-1-git-send-email-lig.fnst@cn.fujitsu.com>
+In-Reply-To: <1369292323-31762-1-git-send-email-lig.fnst@cn.fujitsu.com>
+X-Enigmail-Version: 1.6a1pre
+Content-Type: text/plain; charset=ISO-8859-15
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: liguang <lig.fnst@cn.fujitsu.com>
-Subject: [Qemu-trivial] [PATCH][v4 3/3] debugcon: fix compiler warning when
-	open DEBUG_DEBUGCON
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH][v4 1/3] debugcon: fix
+ always print "addr=0x0, val=0x0" bug when use DEBUG_DEBUGCON
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,52 +44,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 May 2013 06:59:46 -0000
+X-List-Received-Date: Thu, 23 May 2013 13:05:35 -0000
 
-compiler warnings:
-  CC    hw/char/debugcon.o
-hw/char/debugcon.c: In function =E2=80=98debugcon=5Fioport=5Fwrite=E2=80=99:
-hw/char/debugcon.c:58: warning: format =E2=80=98%02x=E2=80=99 expects type =
-=E2=80=98unsigned int=E2=80=99, but argument 3 has type =E2=80=98uint64=5Ft=
-=E2=80=99
-hw/char/debugcon.c: In function =E2=80=98debugcon=5Fioport=5Fread=E2=80=99:
-hw/char/debugcon.c:70: warning: format =E2=80=98%04x=E2=80=99 expects type =
-=E2=80=98unsigned int=E2=80=99, but argument 2 has type =E2=80=98hwaddr=E2=
-=80=99
+Am 23.05.2013 08:58, schrieb liguang:
+> when use DEBUG_DEBUGCON, screen spits:
+> debugcon: write addr=3D0x0000 val=3D0x00
+> Rdebugcon: write addr=3D0x0000 val=3D0x00
+> udebugcon: write addr=3D0x0000 val=3D0x00
+> ndebugcon: write addr=3D0x0000 val=3D0x00
+> ndebugcon: write addr=3D0x0000 val=3D0x00
+> idebugcon: write addr=3D0x0000 val=3D0x00
+> ndebugcon: write addr=3D0x0000 val=3D0x00
+> gdebugcon: write addr=3D0x0000 val=3D0x00
+>  debugcon: write addr=3D0x0000 val=3D0x00
+> odebugcon: write addr=3D0x0000 val=3D0x00
+> pdebugcon: write addr=3D0x0000 val=3D0x00
+> tdebugcon: write addr=3D0x0000 val=3D0x00
+> idebugcon: write addr=3D0x0000 val=3D0x00
+> odebugcon: write addr=3D0x0000 val=3D0x00
+> ndebugcon: write addr=3D0x0000 val=3D0x00
+>  debugcon: write addr=3D0x0000 val=3D0x00
+> rdebugcon: write addr=3D0x0000 val=3D0x00
+> odebugcon: write addr=3D0x0000 val=3D0x00
+> mdebugcon: write addr=3D0x0000 val=3D0x00
+>  debugcon: write addr=3D0x0000 val=3D0x00
+> adebugcon: write addr=3D0x0000 val=3D0x00
+> tdebugcon: write addr=3D0x0000 val=3D0x00
+>  debugcon: write addr=3D0x0000 val=3D0x00
+>=20
+> Oh, that's wrong, val is not always be 0.
+> this bug caused by lack of length modifier
+> for specifier 'x'.
+>=20
+> Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+> ---
+> v4: fix misleading subject
 
-Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
----
- hw/char/debugcon.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+As I've reminded before, please prepend a cover letter (0/x) when
+sending more than once patch!
 
-diff --git a/hw/char/debugcon.c b/hw/char/debugcon.c
-index 52fa0ab..3b0637d 100644
---- a/hw/char/debugcon.c
-+++ b/hw/char/debugcon.c
-@@ -55,7 +55,7 @@ static void debugcon=5Fioport=5Fwrite(void *opaque, hwadd=
-r addr, uint64=5Ft val,
-     unsigned char ch =3D val;
-=20
- #ifdef DEBUG=5FDEBUGCON
--    printf(" [debugcon: write addr=3D0x%04" HWADDR=5FPRIx " val=3D0x%02x]\=
-n", addr, val);
-+    printf(" [debugcon: write addr=3D0x%04" HWADDR=5FPRIx " val=3D0x%02" P=
-RIx64 "]\n", addr, val);
- #endif
-=20
-     qemu=5Fchr=5Ffe=5Fwrite(s->chr, &ch, 1);
-@@ -67,7 +67,7 @@ static uint64=5Ft debugcon=5Fioport=5Fread(void *opaque, =
-hwaddr addr, unsigned width)
-     DebugconState *s =3D opaque;
-=20
- #ifdef DEBUG=5FDEBUGCON
--    printf("debugcon: read addr=3D0x%04x\n", addr);
-+    printf("debugcon: read addr=3D0x%04" HWADDR=5FPRIx "\n", addr);
- #endif
-=20
-     return s->readback;
+> ---
+>  hw/char/debugcon.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>=20
+> diff --git a/hw/char/debugcon.c b/hw/char/debugcon.c
+> index 02c9577..7e41c90 100644
+> --- a/hw/char/debugcon.c
+> +++ b/hw/char/debugcon.c
+> @@ -55,7 +55,7 @@ static void debugcon_ioport_write(void *opaque, hwadd=
+r addr, uint64_t val,
+>      unsigned char ch =3D val;
+> =20
+>  #ifdef DEBUG_DEBUGCON
+> -    printf("debugcon: write addr=3D0x%04x val=3D0x%02x\n", addr, val);
+> +    printf("debugcon: write addr=3D0x%04" HWADDR_PRIx " val=3D0x%02x\n=
+", addr, val);
+
+Please merge 3/3 with this patch - the changes are pretty obviously
+correct, so you can shorten the commit message by dropping the example
+output.
+
+Andreas
+
+>  #endif
+> =20
+>      qemu_chr_fe_write(s->chr, &ch, 1);
+>=20
+
+
 --=20
-1.7.2.5
-
-=
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
