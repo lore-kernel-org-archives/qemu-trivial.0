@@ -1,42 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UgBvo-0002ji-Ve
-	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2013 06:42:36 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:48533)
+	id 1UgCRP-0008F2-7X
+	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2013 07:15:15 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54615)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UgBvj-0002cF-Aa
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 06:42:36 -0400
+	(envelope-from <afaerber@suse.de>) id 1UgCRF-0007z0-4y
+	for qemu-trivial@nongnu.org; Sat, 25 May 2013 07:15:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UgBvc-0001qi-DX
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 06:42:31 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46328)
+	(envelope-from <afaerber@suse.de>) id 1UgCR6-0003DO-L6
+	for qemu-trivial@nongnu.org; Sat, 25 May 2013 07:15:05 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:54998 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1UgBvQ-0001ne-DJ; Sat, 25 May 2013 06:42:12 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 319244197B;
-	Sat, 25 May 2013 14:42:10 +0400 (MSK)
-Message-ID: <51A09581.6030105@msgid.tls.msk.ru>
-Date: Sat, 25 May 2013 14:42:09 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:17.0) Gecko/17.0 Icedove/17.0
+	(envelope-from <afaerber@suse.de>)
+	id 1UgCQu-00039i-0U; Sat, 25 May 2013 07:14:44 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 4532CA41E0;
+	Sat, 25 May 2013 13:14:43 +0200 (CEST)
+Message-ID: <51A09D20.9010702@suse.de>
+Date: Sat, 25 May 2013 13:14:40 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
 MIME-Version: 1.0
-To: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-References: <1369363654-7063-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<51A08422.7030207@msgid.tls.msk.ru> <51A093F6.4070202@suse.de>
-In-Reply-To: <51A093F6.4070202@suse.de>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1369473597-7322-1-git-send-email-mjt@msgid.tls.msk.ru>
+In-Reply-To: <1369473597-7322-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-Enigmail-Version: 1.6a1pre
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
+Content-Type: text/plain; charset=ISO-8859-15
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, liguang <lig.fnst@cn.fujitsu.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] debugcon: fix some bugs
- when DEBUG_DEBUGCON
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH (trivial)] don't run
+ pkg-config for features explicitly disabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,30 +44,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 May 2013 10:42:36 -0000
+X-List-Received-Date: Sat, 25 May 2013 11:15:13 -0000
 
-25.05.2013 14:35, Andreas F=E4rber wrote:
-> Am 25.05.2013 11:28, schrieb Michael Tokarev:
-[]
->>> 	 debugcon: use fprintf(stderr...) instead of printf
->>
->> The subjects and commit messages are a bit inaccurate, and
->> as Andreas says, these may have been merged together, but
->> the inaccuracy is small (and mostly due to language barriers),
->> and the result is good anyway, with one patch doing one thing.
->>
->> So.. thanks, applied to the trivial-patches queue.
+Am 25.05.2013 11:19, schrieb Michael Tokarev:
+> We test pkg-config for curses and curl even if those are explicitly
+> disabled.  Move these tests inside `if "$feature" !=3D "no"' sections.
 >=20
-> NACK. If you want to apply 1-3, okay. But please unqueue 4/4, it makes
-> no sense as-is (just look at the stderr output to see what I mean) and
-> it pretends that I suggested that!
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 
-Actually I did just that, rebuild with DEBUG_DEBUGCON and looked
-at the output, -- because I didn't know how it works.  And you're
-right, it's not a good change ;)  But your email come before I was
-able to reply.  Unqueued.
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
-Thank you for noticing this.
+Andreas
 
-/mjt
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
