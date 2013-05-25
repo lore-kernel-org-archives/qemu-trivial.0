@@ -1,55 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UgAd4-0000yo-At
-	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2013 05:19:10 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:33367)
+	id 1UgAeG-0002As-4k
+	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2013 05:20:24 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:33610)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UgAcx-0000yT-Tf
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 05:19:08 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UgAe9-00021m-5g
+	for qemu-trivial@nongnu.org; Sat, 25 May 2013 05:20:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UgAct-0002BK-Ds
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 05:19:03 -0400
-Received: from mail-pa0-f49.google.com ([209.85.220.49]:50592)
+	(envelope-from <mjt@tls.msk.ru>) id 1UgAe3-0002bI-6s
+	for qemu-trivial@nongnu.org; Sat, 25 May 2013 05:20:17 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:52872)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UgAct-0002BE-7j
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 05:18:59 -0400
-Received: by mail-pa0-f49.google.com with SMTP id bi5so5191167pad.36
-	for <qemu-trivial@nongnu.org>; Sat, 25 May 2013 02:18:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:x-gm-message-state;
-	bh=vpa9PFCCBWhjuknTWcScjuKvmacA1t8sGQRYFpuuw+s=;
-	b=FYhGmKvArw29CbjSZn+Rbq7UxBvAWNESJnjaIDZzIFNqK9EPcedRYId0oC2gFLLNdt
-	BRXtXbS15fbHiu0scr/wlKzJDRubMf1lv5JYxPQ3L1Q44w9dMXLfbL+yt+SOtrjPMcbs
-	9nOHhe351oGX+6iApOGon96/wwq3ao4+sgiwhAv8URWz1P/v9UYrW8U1ErH8yRuNL+UI
-	01F0iHLs3KV4WxaWjyjX5axEsz3rBUQuslb7nvzY+BFC8Yz+jkvghEW//g/ypQwF3AzO
-	EL18sIh2kPk/4KyefCG5oWiGdfoT5y2Y/0pOrk5Z3/JqOhZ7/7+fcHP8AfQlmnL/vJm7
-	QlWw==
-X-Received: by 10.66.27.147 with SMTP id t19mr14558651pag.207.1369473538470;
-	Sat, 25 May 2013 02:18:58 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.70.118.66 with HTTP; Sat, 25 May 2013 02:18:37 -0700 (PDT)
-In-Reply-To: <519FDDBD.7030201@redhat.com>
-References: <1369066884-431-1-git-send-email-peter.maydell@linaro.org>
-	<519A50EE.8040804@redhat.com> <871u8zp34w.fsf@codemonkey.ws>
-	<CAFEAcA90AJyBNtNxRa45y3zfWCj8tAq5jsqoDLmDTAZT0DK=2g@mail.gmail.com>
-	<87y5b7hyuo.fsf@codemonkey.ws> <519FDDBD.7030201@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 25 May 2013 10:18:37 +0100
-Message-ID: <CAFEAcA-pQXbnwUy_=HOA3JLriT4uz7vP-srNUKeXB6bYBxCj0w@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQkW9IpAPonFyRUquZAKoGeljfweoJL6JdMJYz3+KNeIvkpHpk3Or8XnZuBMsYt0wUOWiyX9
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.220.49
-Cc: Anthony Liguori <aliguori@us.ibm.com>, patches@linaro.org,
-	qemu-trivial@nongnu.org, John Rigby <john.rigby@linaro.org>,
-	qemu-devel@nongnu.org, Libvirt <libvir-list@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?F=C3=A4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [libvirt] [Qemu-devel] [PATCH] qapi-schema.json:
- Reformat TargetType enum to one-per-line
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UgAdt-0002KC-A0; Sat, 25 May 2013 05:20:01 -0400
+Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id B40504197B;
+	Sat, 25 May 2013 13:20:00 +0400 (MSK)
+Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
+	id CE47D47A; Sat, 25 May 2013 13:19:58 +0400 (MSK)
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-trivial@nongnu.org
+Date: Sat, 25 May 2013 13:19:57 +0400
+Message-Id: <1369473597-7322-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH (trivial)] don't run pkg-config for features
+	explicitly disabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,24 +38,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 May 2013 09:19:08 -0000
+X-List-Received-Date: Sat, 25 May 2013 09:20:23 -0000
 
-On 24 May 2013 22:38, Eric Blake <eblake@redhat.com> wrote:
-> I think knowing the architecture (such as x86 vs. pseries ppc) is used
-> by libvirt to know what default devices the board supports (for example,
-> whether usb is present by default).
+We test pkg-config for curses and curl even if those are explicitly
+disabled.  Move these tests inside `if "$feature" != "no"' sections.
 
-...but this is a per-board question, since (for instance) some
-ARM boards have USB and some do not, some have PCI and some
-do not, and so on.
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ configure |   21 +++++++++------------
+ 1 file changed, 9 insertions(+), 12 deletions(-)
 
-> There's probably still room for
-> improvement for communication between libvirt and qemu on what exactly
-> is being supported, and knowing an architecture type may be too broad of
-> a knob compared to what is really wanted, except that I don't have a
-> good handle on what is really wanted.
+diff --git a/configure b/configure
+index 5ae7e4a..dff93f1 100755
+--- a/configure
++++ b/configure
+@@ -2154,13 +2154,12 @@ fi
+ 
+ ##########################################
+ # curses probe
+-if test "$mingw32" = "yes" ; then
++if test "$curses" != "no" ; then
++  if test "$mingw32" = "yes" ; then
+     curses_list="-lpdcurses"
+-else
++  else
+     curses_list="-lncurses:-lcurses:$($pkg_config --libs ncurses 2>/dev/null)"
+-fi
+-
+-if test "$curses" != "no" ; then
++  fi
+   curses_found=no
+   cat > $TMPC << EOF
+ #include <curses.h>
+@@ -2192,14 +2191,12 @@ fi
+ 
+ ##########################################
+ # curl probe
+-
+-if $pkg_config libcurl --modversion >/dev/null 2>&1; then
+-  curlconfig="$pkg_config libcurl"
+-else
+-  curlconfig=curl-config
+-fi
+-
+ if test "$curl" != "no" ; then
++  if $pkg_config libcurl --modversion >/dev/null 2>&1; then
++    curlconfig="$pkg_config libcurl"
++  else
++    curlconfig=curl-config
++  fi
+   cat > $TMPC << EOF
+ #include <curl/curl.h>
+ int main(void) { curl_easy_init(); curl_multi_setopt(0, 0, 0); return 0; }
+-- 
+1.7.10.4
 
-It does sound like we could use a more specific enquiry mechanism.
-
--- PMM
 
