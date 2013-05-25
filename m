@@ -1,46 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UgCgC-0006Wt-2X
-	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2013 07:30:32 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:33502)
+	id 1UgCo1-00019l-NG
+	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2013 07:38:37 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:36630)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1UgCg7-0006Pk-GE
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 07:30:30 -0400
+	(envelope-from <afaerber@suse.de>) id 1UgCnt-0000yB-DV
+	for qemu-trivial@nongnu.org; Sat, 25 May 2013 07:38:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1UgCg4-0000e6-2l
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 07:30:27 -0400
-Received: from mail-oa0-f50.google.com ([209.85.219.50]:42793)
+	(envelope-from <afaerber@suse.de>) id 1UgCns-0003tH-7E
+	for qemu-trivial@nongnu.org; Sat, 25 May 2013 07:38:29 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:55393 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>)
-	id 1UgCfv-0000br-Kl; Sat, 25 May 2013 07:30:15 -0400
-Received: by mail-oa0-f50.google.com with SMTP id l20so7216479oag.37
-	for <multiple recipients>; Sat, 25 May 2013 04:30:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:date
-	:x-google-sender-auth:message-id:subject:from:to:cc:content-type;
-	bh=F+v+A11W/gog6TX8GGuw4HH6ccSKR6IguqqO3RQFgPc=;
-	b=RMeyGg6ZPch3AifmXYj34EjTZIUiFTmiyTvxtcyitZlJB14yDpFYxA0uuj1MZIHZmk
-	jq7L2LfmLvHl4sur7K74kxdGlh8bt49tsRogjp6vsqGYZB0OqukwAWTD9QkUAEfL/qSl
-	tvf3hT1gzie3O2CqL9tARDACNgIbddB7xdrob7/BXgJhxWa7mPO8nDm7Z/iM0rRO0t3l
-	4GST+FIw9XcQVvD+ZdvF2at/D+vFxjef8vCV6aIdKB/q5GbOdsjFqzw4TBaBxT3KunY7
-	sMi2dv1736LU1eyZdZOENpaQpAgJZoyPSSURyEo/FoeJ8BZh9Ojo9jK/QIfYgwOxoTxE
-	83jA==
+	(envelope-from <afaerber@suse.de>)
+	id 1UgCno-0003sd-Kr; Sat, 25 May 2013 07:38:24 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 9900EA50DD;
+	Sat, 25 May 2013 13:38:23 +0200 (CEST)
+Message-ID: <51A0A2AC.6050506@suse.de>
+Date: Sat, 25 May 2013 13:38:20 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
 MIME-Version: 1.0
-X-Received: by 10.60.92.230 with SMTP id cp6mr14169974oeb.91.1369481414637;
-	Sat, 25 May 2013 04:30:14 -0700 (PDT)
-Sender: carpeddiem@gmail.com
-Received: by 10.60.149.194 with HTTP; Sat, 25 May 2013 04:30:14 -0700 (PDT)
-In-Reply-To: <51A03D24.5010306@msgid.tls.msk.ru>
+To: Michael Tokarev <mjt@tls.msk.ru>
 References: <1369426020-39060-1-git-send-email-emaste@freebsd.org>
 	<51A03D24.5010306@msgid.tls.msk.ru>
-Date: Sat, 25 May 2013 07:30:14 -0400
-X-Google-Sender-Auth: NajJVIoHNDzAhEfOKTnwZzLK9-c
-Message-ID: <CAPyFy2CJW4tnCJqARiddyi-b1uW6KCi6g4d_WgwEaPc5fX5f=Q@mail.gmail.com>
-From: Ed Maste <emaste@freebsd.org>
-To: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <51A03D24.5010306@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.6a1pre
 Content-Type: text/plain; charset=ISO-8859-1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.219.50
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: try pkg-config
  ncurses first
@@ -55,56 +45,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 May 2013 11:30:31 -0000
+X-List-Received-Date: Sat, 25 May 2013 11:38:37 -0000
 
-On 25 May 2013 00:25, Michael Tokarev <mjt@tls.msk.ru> wrote:
+Am 25.05.2013 06:25, schrieb Michael Tokarev:
 > 25.05.2013 00:07, Ed Maste wrote:
 >> When probing for ncurses, try pkg-config first rather than after
->> explicit -lncurses and -lcurses.  This fixes static linking in the case
->> that ncurses has additional dependencies, such as -ltinfo (as on FreeBSD).
->
+>> explicit -lncurses and -lcurses.  This fixes static linking in the cas=
+e
+>> that ncurses has additional dependencies, such as -ltinfo (as on FreeB=
+SD).
+>=20
 > This is not a FreeBSD-specific thing, this is the way how current
 > ncurses works -- they separated a bunch of functions into a new
 > library, libtinfo.
-
-Right, I don't mean to apply it was FreeBSD-specific.
-
-Presumably QEMU builds with --static on at least some Linux distros,
-so I assumed they must not have the external libtinfo dep for static
-linking (because they build libncurses.a with it built-in, say).
-
+>=20
 > But this is interesting.
->
+>=20
 > I'm not sure I agree with this approach.  When we're building using
 > shared library, libncurses.so already links with libtinfo.so, so we
 > don't need to link executable itself with libtinfo.so, since executable
 > itself uses none of its functions.
-
-Right, and pkg-config doesn't include -ltinfo when using dynamic linking.
-
+>=20
 > On the other hand, the current logic appears to be fine, -- we first
-> link with just -lncurses, and if that fails, we also try pkg-config --libs --
+> link with just -lncurses, and if that fails, we also try pkg-config --l=
+ibs --
 > because, maybe, we're linking statically and in that case, additional
 > libs from pkg-config may help.
 
-Except that the test snippet in configure will successfully link
-statically without -ltinfo, so configure doesn't make it to the
-pkg-config test.
+I think the submitter wanted to assure that pkg-config --libs ncurses is
+tried *before* falling back to -lcurses? (Rather than caring about the
+order of -lncurses vs. pkg-config --libs ncurses.)
 
 > From yet another point of view, we may use --as-needed linker flag
 > and just ignore all the above.
->
+>=20
 > Here, it is interesting to note that pkg-config does not actually do
 > the right thing in this case.  Because practically, it should have
 > one extra flag, something like --static-libs (or --libs --static),
 > and it should actually be different from plain --libs.
 
-In fact, it does:
+$pkg_config should already contain --static for static builds, so I see
+nothing wrong with this patch,
 
-feynman% pkg-config --libs ncurses
--L/usr/local/lib -lncurses
-feynman% pkg-config --static --libs ncurses
--L/usr/local/lib -lncurses -ltinfo
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
-and the configure script adds --static to QEMU_PKG_CONFIG_FLAGS when necessary.
+but maybe I'm missing something?
+
+One thing to note is that in an unfortunate layering violation unicore32
+uses curses, so static libs and their potential need to link in
+additional dependencies may be more than just a theoretical concern.
+
+Regards,
+Andreas
+
+> Anyway, I don't see a reason to apply this as it is.
+>=20
+> Thanks,
+>=20
+> /mjt
+>=20
+>>
+>> Signed-off-by: Ed Maste <emaste@freebsd.org>
+>> ---
+>>  configure | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/configure b/configure
+>> index cfdb564..7c99ef9 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -2157,7 +2157,7 @@ fi
+>>  if test "$mingw32" =3D "yes" ; then
+>>      curses_list=3D"-lpdcurses"
+>>  else
+>> -    curses_list=3D"-lncurses:-lcurses:$($pkg_config --libs ncurses 2>=
+/dev/null)"
+>> +    curses_list=3D"$($pkg_config --libs ncurses 2>/dev/null):-lncurse=
+s:-lcurses"
+>>  fi
+>> =20
+>>  if test "$curses" !=3D "no" ; then
+>>
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
