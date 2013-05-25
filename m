@@ -1,32 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UgAeG-0002As-4k
-	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2013 05:20:24 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:33610)
+	id 1UgAhU-0004PJ-1p
+	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2013 05:23:44 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:34301)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UgAe9-00021m-5g
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 05:20:23 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UgAhM-0004Ie-L1
+	for qemu-trivial@nongnu.org; Sat, 25 May 2013 05:23:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UgAe3-0002bI-6s
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 05:20:17 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52872)
+	(envelope-from <mjt@tls.msk.ru>) id 1UgAhF-0003bl-WE
+	for qemu-trivial@nongnu.org; Sat, 25 May 2013 05:23:36 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:50805)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1UgAdt-0002KC-A0; Sat, 25 May 2013 05:20:01 -0400
-Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id B40504197B;
-	Sat, 25 May 2013 13:20:00 +0400 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id CE47D47A; Sat, 25 May 2013 13:19:58 +0400 (MSK)
+	id 1UgAh1-0003OO-59; Sat, 25 May 2013 05:23:15 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 48A444197A;
+	Sat, 25 May 2013 13:23:14 +0400 (MSK)
+Message-ID: <51A08301.7010903@msgid.tls.msk.ru>
+Date: Sat, 25 May 2013 13:23:13 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-trivial@nongnu.org
-Date: Sat, 25 May 2013 13:19:57 +0400
-Message-Id: <1369473597-7322-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>
+References: <1369390765-32117-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1369390765-32117-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.6a1pre
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH (trivial)] don't run pkg-config for features
-	explicitly disabled
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Evgeny Voevodin <e.voevodin@samsung.com>,
+	qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>,
+	qemu-devel@nongnu.org, Paul Brook <paul@codesourcery.com>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH] Remove unnecessary break statements
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,59 +48,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 May 2013 09:20:23 -0000
+X-List-Received-Date: Sat, 25 May 2013 09:23:42 -0000
 
-We test pkg-config for curses and curl even if those are explicitly
-disabled.  Move these tests inside `if "$feature" != "no"' sections.
+24.05.2013 14:19, Stefan Weil wrote:
+> Fix these warnings from cppcheck:
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- configure |   21 +++++++++------------
- 1 file changed, 9 insertions(+), 12 deletions(-)
+Thanks, applied to the trivial patches tree.
 
-diff --git a/configure b/configure
-index 5ae7e4a..dff93f1 100755
---- a/configure
-+++ b/configure
-@@ -2154,13 +2154,12 @@ fi
- 
- ##########################################
- # curses probe
--if test "$mingw32" = "yes" ; then
-+if test "$curses" != "no" ; then
-+  if test "$mingw32" = "yes" ; then
-     curses_list="-lpdcurses"
--else
-+  else
-     curses_list="-lncurses:-lcurses:$($pkg_config --libs ncurses 2>/dev/null)"
--fi
--
--if test "$curses" != "no" ; then
-+  fi
-   curses_found=no
-   cat > $TMPC << EOF
- #include <curses.h>
-@@ -2192,14 +2191,12 @@ fi
- 
- ##########################################
- # curl probe
--
--if $pkg_config libcurl --modversion >/dev/null 2>&1; then
--  curlconfig="$pkg_config libcurl"
--else
--  curlconfig=curl-config
--fi
--
- if test "$curl" != "no" ; then
-+  if $pkg_config libcurl --modversion >/dev/null 2>&1; then
-+    curlconfig="$pkg_config libcurl"
-+  else
-+    curlconfig=curl-config
-+  fi
-   cat > $TMPC << EOF
- #include <curl/curl.h>
- int main(void) { curl_easy_init(); curl_multi_setopt(0, 0, 0); return 0; }
--- 
-1.7.10.4
-
+/mjt
 
