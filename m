@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ugqgg-0004et-LK
-	for mharc-qemu-trivial@gnu.org; Mon, 27 May 2013 02:13:42 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49434)
+	id 1UgtUy-0004q8-DH
+	for mharc-qemu-trivial@gnu.org; Mon, 27 May 2013 05:13:48 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:60026)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Ugqga-0004aO-RM
-	for qemu-trivial@nongnu.org; Mon, 27 May 2013 02:13:41 -0400
+	(envelope-from <kraxel@redhat.com>) id 1UgtUs-0004pN-TD
+	for qemu-trivial@nongnu.org; Mon, 27 May 2013 05:13:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1UgqgS-0006YL-Gr
-	for qemu-trivial@nongnu.org; Mon, 27 May 2013 02:13:36 -0400
-Received: from mail-ob0-x233.google.com ([2607:f8b0:4003:c01::233]:54096)
+	(envelope-from <kraxel@redhat.com>) id 1UgtUj-00022D-Rw
+	for qemu-trivial@nongnu.org; Mon, 27 May 2013 05:13:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51609)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1UgqgS-0006Xp-Ct
-	for qemu-trivial@nongnu.org; Mon, 27 May 2013 02:13:28 -0400
-Received: by mail-ob0-f179.google.com with SMTP id wo10so4151133obc.38
-	for <qemu-trivial@nongnu.org>; Sun, 26 May 2013 23:13:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
-	bh=Uc/rEHk/jy4Q5KRYSQOiCuk9BkeN+X8E8gbM7PCmCKk=;
-	b=cWxehW+GwRNjWgTTTfi969Jzq9shFK6COQv6QNahyb2IxGZaK+CYl6DC47AaPG9VIj
-	Cc7505/2kXOktRl5Xq5NhBoXdsNdnJsImhFLCCMRPMaS8V+3X4FlIYWwiGrTeak4v4/I
-	egB+6R45uUQArQ9iJOsshzL795H+hicoW0KRbGTJ/Z05oTiC2HptoJJVlX7Ljnd9IwMf
-	/9j8MOvshN+vFZfgjgY24KtHyleL2Rh1CAuPFxNVWvw8rme3SlEkxY/BZ4GJce+KCuhz
-	JdCsqIE1+cnMJzpFUAUKw/agQA2PRpFU0dVjrc6iiF5jAEu+qB2ruBnXaI8l9Stnqrm0
-	l47A==
-X-Received: by 10.60.94.113 with SMTP id db17mr9477826oeb.62.1369635205897;
-	Sun, 26 May 2013 23:13:25 -0700 (PDT)
-Received: from ka1.ozlabs.ibm.com (ibmaus65.lnk.telstra.net. [165.228.126.9])
-	by mx.google.com with ESMTPSA id
-	eq4sm29119565obb.5.2013.05.26.23.13.22 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 26 May 2013 23:13:24 -0700 (PDT)
-From: Alexey Kardashevskiy <aik@ozlabs.ru>
-To: qemu-devel@nongnu.org
-Date: Mon, 27 May 2013 16:13:15 +1000
-Message-Id: <1369635195-28279-1-git-send-email-aik@ozlabs.ru>
-X-Mailer: git-send-email 1.7.10.4
-X-Gm-Message-State: ALoCoQkS5KSjKLWAdNOlm3PPVeW65xRr1WTwa8Ak1slSqybvTscjJ+zKYQssK+K7YVkiHuRoOVHO
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c01::233
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] qemu: fix out of tree cross compile
+	(envelope-from <kraxel@redhat.com>)
+	id 1UgtUj-00021X-Kr; Mon, 27 May 2013 05:13:33 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4R9DUB1022127
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 27 May 2013 05:13:30 -0400
+Received: from rincewind.home.kraxel.org (ovpn-116-27.ams2.redhat.com
+	[10.36.116.27])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r4R9DRMD013312; Mon, 27 May 2013 05:13:28 -0400
+Message-ID: <51A323B4.2000101@redhat.com>
+Date: Mon, 27 May 2013 11:13:24 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130513 Thunderbird/17.0.6
+MIME-Version: 1.0
+To: liguang <lig.fnst@cn.fujitsu.com>
+References: <1369363654-7063-1-git-send-email-lig.fnst@cn.fujitsu.com>
+In-Reply-To: <1369363654-7063-1-git-send-email-lig.fnst@cn.fujitsu.com>
+X-Enigmail-Version: 1.5.1
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org,
+	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [PATCH 0/4] debugcon: fix some bugs when
+	DEBUG_DEBUGCON
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,30 +52,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 May 2013 06:13:41 -0000
+X-List-Received-Date: Mon, 27 May 2013 09:13:46 -0000
 
-QEMU uses headers from source directory, however the "asm" symlink was
-created in the build directory what broke KVM stuff compilation.
+On 05/24/13 04:47, liguang wrote:
+> when enable DEBUG_DEBUGCON, there are some message
+> printing bugs, so fix them.
 
-Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
----
- configure |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I'd suggest to either simply remove the debug printfs or turn them into
+tracepoints.
 
-diff --git a/configure b/configure
-index 5ae7e4a..9c3c5e5 100755
---- a/configure
-+++ b/configure
-@@ -4135,7 +4135,7 @@ if test "$linux" = "yes" ; then
-   esac
-     # For non-KVM architectures we will not have asm headers
-     if [ -e "$source_path/linux-headers/asm-$linux_arch" ]; then
--      symlink "$source_path/linux-headers/asm-$linux_arch" linux-headers/asm
-+      symlink "$source_path/linux-headers/asm-$linux_arch" $source_path/linux-headers/asm
-     fi
- fi
- 
--- 
-1.7.10.4
+cheers,
+  Gerd
+
 
 
