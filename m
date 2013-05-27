@@ -1,57 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ugy8t-000546-1J
-	for mharc-qemu-trivial@gnu.org; Mon, 27 May 2013 10:11:19 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:52692)
+	id 1UgyAo-0007Ta-0Y
+	for mharc-qemu-trivial@gnu.org; Mon, 27 May 2013 10:13:18 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:53475)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Ugy8n-0004z5-F4
-	for qemu-trivial@nongnu.org; Mon, 27 May 2013 10:11:16 -0400
+	(envelope-from <aik@ozlabs.ru>) id 1UgyAl-0007MZ-B3
+	for qemu-trivial@nongnu.org; Mon, 27 May 2013 10:13:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Ugy8j-0005MB-Ni
-	for qemu-trivial@nongnu.org; Mon, 27 May 2013 10:11:13 -0400
-Received: from mail-pb0-x234.google.com ([2607:f8b0:400e:c01::234]:33387)
+	(envelope-from <aik@ozlabs.ru>) id 1UgyAg-0006eJ-Fw
+	for qemu-trivial@nongnu.org; Mon, 27 May 2013 10:13:15 -0400
+Received: from mail-pd0-f180.google.com ([209.85.192.180]:61107)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Ugy8j-0005Ld-Ej
-	for qemu-trivial@nongnu.org; Mon, 27 May 2013 10:11:09 -0400
-Received: by mail-pb0-f52.google.com with SMTP id um15so6830424pbc.11
-	for <qemu-trivial@nongnu.org>; Mon, 27 May 2013 07:11:08 -0700 (PDT)
+	(envelope-from <aik@ozlabs.ru>) id 1UgyAg-0006e9-9X
+	for qemu-trivial@nongnu.org; Mon, 27 May 2013 10:13:10 -0400
+Received: by mail-pd0-f180.google.com with SMTP id 14so4187956pdc.25
+	for <qemu-trivial@nongnu.org>; Mon, 27 May 2013 07:13:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding
+	h=from:to:cc:subject:date:message-id:x-mailer:in-reply-to:references
 	:x-gm-message-state;
-	bh=15XqdoVP7+8BckLyvo4IYOaX/1tgIWO68OKIqDuAOFk=;
-	b=bnQnxWwFr3mzKwWlrjvvlof3B67EqvbIrnLLcmWnp5jIVR9npchae3I/7pxUDn9Fxs
-	FfVUPLldSdt70tRFnhgtsoDd1RTZVV+LipgnPsatX0M3FQwbpHnfjGI2oFlkssApreAS
-	DkbpHWP5uL43063muogG4mEYKQFH/GK+5xqoR+nw5shvhi2DtLKCnIg5+OWEE1/SOocH
-	8gX0JzPN7DxEygQVSFptDoI5w+ZDdMgsfPVfHF8DOJWKeF8Hy3K0NNcsBriq1RX+DpsN
-	dY16dFdDZK9+DKVkhJJ2KPCpEDdduD5YxzyFJh+PHAZY6EciUqbjw74HMQAKC9HA/4Mm
-	Yj3g==
-X-Received: by 10.66.49.104 with SMTP id t8mr27155260pan.65.1369663868489;
-	Mon, 27 May 2013 07:11:08 -0700 (PDT)
-Received: from aik.ozlabs.ibm.com (60-242-102-4.tpgi.com.au. [60.242.102.4])
-	by mx.google.com with ESMTPSA id
-	ue8sm30776259pac.14.2013.05.27.07.11.05 for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Mon, 27 May 2013 07:11:07 -0700 (PDT)
-Message-ID: <51A36976.80608@ozlabs.ru>
-Date: Tue, 28 May 2013 00:11:02 +1000
+	bh=qoT0xSkp+3i7Wx/UZykUQtkm9+L3Wy2bYHhO8dcLmn4=;
+	b=I6TwzoMDxQuWKYdkQjPGNtZfGtmkzJMs5Brte9il0HbsyUF10HYFYFGUECEZbIedl0
+	pEqO/5Ymw1ckwduho+pUhIyhXcmzz9Xih3W3orlkE6bbcqFhLGPTP1yeJddOmaK7T2aW
+	lDIRQYp2tlwoIwWDEDWK+dHQqTujsRMZwxCh/1NSoKAKX4cnLsK4ZHPt/a9SQ6o2y5iL
+	LVYaPqH9x7ZTbxjCndJmyvUL6JUBq3/xzGndVTOJT3nEIuYssiEH5faks5ws4NYPAtJL
+	L4jBbUPzpqQfG0PpNOv0TAvmf3xab2/SdkWKxx/nhTalP8LExedrd7kBc8doE+Cuqy4T
+	rVqw==
+X-Received: by 10.68.27.9 with SMTP id p9mr29076248pbg.139.1369663989505;
+	Mon, 27 May 2013 07:13:09 -0700 (PDT)
+Received: from ka1.ozlabs.ibm.com (ibmaus65.lnk.telstra.net. [165.228.126.9])
+	by mx.google.com with ESMTPSA id nt6sm289520pbb.4.2013.05.27.07.13.05
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Mon, 27 May 2013 07:13:07 -0700 (PDT)
 From: Alexey Kardashevskiy <aik@ozlabs.ru>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130402 Thunderbird/17.0.5
-MIME-Version: 1.0
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1369635195-28279-1-git-send-email-aik@ozlabs.ru>
-	<CAFEAcA_qOtFuVPem2mbK7TmM4rac-ZVmdn8HYRnkHPx5iiPSOg@mail.gmail.com>
-In-Reply-To: <CAFEAcA_qOtFuVPem2mbK7TmM4rac-ZVmdn8HYRnkHPx5iiPSOg@mail.gmail.com>
-Content-Type: text/plain; charset=KOI8-R
-Content-Transfer-Encoding: 7bit
-X-Gm-Message-State: ALoCoQm4Qq7WxEAMWiaLQfEUSRSaO2aPYZJNsNKNFGCHP/zSVdDqVl+n60XitLYyb2FWDdu/b3WM
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c01::234
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu: fix out of tree cross
-	compile
+Date: Tue, 28 May 2013 00:12:59 +1000
+Message-Id: <1369663979-25613-1-git-send-email-aik@ozlabs.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <51A36976.80608@ozlabs.ru>
+References: <51A36976.80608@ozlabs.ru>
+X-Gm-Message-State: ALoCoQn6hgnHJcY6e6S764sZ3L6u9EG2uAvX6a3kp/jv6Yo0epYVNgOEHmG8RECw/+4zXw8ZwRHe
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.192.180
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org,
+	qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] qemu: fix out of tree cross compile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,130 +57,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 May 2013 14:11:16 -0000
+X-List-Received-Date: Mon, 27 May 2013 14:13:16 -0000
 
-On 05/27/2013 08:24 PM, Peter Maydell wrote:
-> On 27 May 2013 07:13, Alexey Kardashevskiy <aik@ozlabs.ru> wrote:
->> QEMU uses headers from source directory, however the "asm" symlink was
->> created in the build directory what broke KVM stuff compilation.
->>
->> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
->> ---
->>  configure |    2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/configure b/configure
->> index 5ae7e4a..9c3c5e5 100755
->> --- a/configure
->> +++ b/configure
->> @@ -4135,7 +4135,7 @@ if test "$linux" = "yes" ; then
->>    esac
->>      # For non-KVM architectures we will not have asm headers
->>      if [ -e "$source_path/linux-headers/asm-$linux_arch" ]; then
->> -      symlink "$source_path/linux-headers/asm-$linux_arch" linux-headers/asm
->> +      symlink "$source_path/linux-headers/asm-$linux_arch" $source_path/linux-headers/asm
-> 
-> This is definitely wrong -- the asm symlink must be created
-> in the build tree, because you could have two build trees
-> which are building for different architectures and need
-> different symlink targets. (More generally, an out of tree
-> build should never create files in the source tree, because
-> the point of out of tree builds is to leave the source tree
-> in a pristine state.)
+The symlink to platform linux headers is made in the build tree by
+the configure script but gcc is not told to look for them there.
+The patch fixes this.
 
-Ok, ok. Then I'll post another patch in a a response to this.
+Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+---
+ configure |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> What is the actual bug here? QEMU builds fine for me, because
-> the build directory is also in the include path via "-I.".
-
-Does you build directory beside inside the source tree directory? I cannot
-see the other way for it to work. -I <blabla>/linux-headers must be added,
-"-I." is not enough.
-
-The actual bug is that it does not cross compile until I apply this or the
-other patch.
-
-This is how I run ./configure:
-/home/alexey/pcipassthru/qemu-impreza/configure
---source-path=/home/alexey/pcipassthru/qemu-impreza
---target-list=ppc64-softmmu
---cpu=ppc64
---cross-prefix=powerpc64-linux-
---prefix=/home/alexey/pcipassthru/lib4qemu/install
---extra-ldflags=-L/home/alexey/pcipassthru/lib4qemu/usr/lib64
-'--extra-cflags=--sysroot=/home/alexey/pcipassthru/lib4qemu/
--I/home/alexey/pcipassthru/lib4qemu/usr/include -D__EXCEPTIONS
--D__LONG_DOUBLE_128__ -D__NO_INLINE__ -Wno-redundant-decls
--Wno-missing-prototypes -Wmissing-include-dirs'
---disable-werror
---enable-fdt
---enable-attr
---enable-kvm
---enable-profiler
---disable-seccomp
---enable-trace-backend=stderr
---enable-debug
---disable-debug-tcg
---enable-debug-info
-
-This is where the compilation fails on:
-powerpc64-linux-gcc \
--I/home/alexey/pcipassthru/qemu-impreza/tcg
--I/home/alexey/pcipassthru/qemu-impreza/tcg/ppc64
--I/home/alexey/pcipassthru/qemu-impreza/linux-headers
--I.
--I/home/alexey/pcipassthru/qemu-impreza
--I/home/alexey/pcipassthru/qemu-impreza/include
--I/home/alexey/pcipassthru/qemu-impreza/target-ppc
--Itarget-ppc
--D_GNU_SOURCE
--D_FILE_OFFSET_BITS=64
--D_LARGEFILE_SOURCE
--Wstrict-prototypes
--Wredundant-decls -Wall
--Wundef
--Wwrite-strings
--Wmissing-prototypes
--fno-strict-aliasing
---sysroot=/home/alexey/pcipassthru/lib4qemu/
--I/home/alexey/pcipassthru/lib4qemu/usr/include
--D__EXCEPTIONS -D__LONG_DOUBLE_128__ -D__NO_INLINE__
--Wno-redundant-decls -Wno-missing-prototypes
--Wmissing-include-dirs  -Wendif-labels
--Wmissing-include-dirs -Wempty-body
--Wnested-externs -Wformat-security
--Wformat-y2k -Winit-self -Wignored-qualifiers
--Wold-style-declaration -Wold-style-definition
--Wtype-limits
--I/home/alexey/pcipassthru/lib4qemu/usr/include
--I/home/alexey/pcipassthru/lib4qemu/usr/include/p11-kit-1
--I/home/alexey/pcipassthru/lib4qemu/usr/include
--I/home/alexey/pcipassthru/lib4qemu/usr/include/libusb-1.0
--I/home/alexey/pcipassthru/lib4qemu/usr/include
--I/home/alexey/pcipassthru/lib4qemu/usr/include/pixman-1
--I../linux-headers
--I..
--I/home/alexey/pcipassthru/qemu-impreza/target-ppc
--DNEED_CPU_H
--I/home/alexey/pcipassthru/qemu-impreza/include
--pthread
--I/home/alexey/pcipassthru/lib4qemu/usr/include/glib-2.0
--I/home/alexey/pcipassthru/lib4qemu/usr/lib64/glib-2.0/include
--MMD -MP -MT target-ppc/kvm.o -MF target-ppc/kvm.d -g
--I/home/alexey/pcipassthru/lib4qemu/usr/include -c
--o target-ppc/kvm.o
-/home/alexey/pcipassthru/qemu-impreza/target-ppc/kvm.c
-/home/alexey/pcipassthru/qemu-impreza/hw/ppc/xics.c: In function
-'icp_get_kvm_state':
-/home/alexey/pcipassthru/qemu-impreza/hw/ppc/xics.c:186:15: error:
-'KVM_REG_PPC_ICP_STATE' undeclared (first use in this function)
-         .id = KVM_REG_PPC_ICP_STATE,
-               ^
-...
-
-
-
-
+diff --git a/configure b/configure
+index 5ae7e4a..5ba691a 100755
+--- a/configure
++++ b/configure
+@@ -547,7 +547,7 @@ Haiku)
+   if [ "$cpu" = "i386" -o "$cpu" = "x86_64" ] ; then
+     audio_possible_drivers="$audio_possible_drivers fmod"
+   fi
+-  QEMU_INCLUDES="-I\$(SRC_PATH)/linux-headers $QEMU_INCLUDES"
++  QEMU_INCLUDES="-I$(pwd)/linux-headers $QEMU_INCLUDES"
+ ;;
+ esac
+ 
 -- 
-Alexey
+1.7.10.4
+
 
