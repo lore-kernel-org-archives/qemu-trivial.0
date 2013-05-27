@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UgnRQ-00025n-QA
-	for mharc-qemu-trivial@gnu.org; Sun, 26 May 2013 22:45:44 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39441)
+	id 1Ugqgg-0004et-LK
+	for mharc-qemu-trivial@gnu.org; Mon, 27 May 2013 02:13:42 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:49434)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UgnRN-000213-5s
-	for qemu-trivial@nongnu.org; Sun, 26 May 2013 22:45:42 -0400
+	(envelope-from <aik@ozlabs.ru>) id 1Ugqga-0004aO-RM
+	for qemu-trivial@nongnu.org; Mon, 27 May 2013 02:13:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UgnRM-0006X6-8H
-	for qemu-trivial@nongnu.org; Sun, 26 May 2013 22:45:41 -0400
-Received: from [222.73.24.84] (port=38826 helo=song.cn.fujitsu.com)
+	(envelope-from <aik@ozlabs.ru>) id 1UgqgS-0006YL-Gr
+	for qemu-trivial@nongnu.org; Mon, 27 May 2013 02:13:36 -0400
+Received: from mail-ob0-x233.google.com ([2607:f8b0:4003:c01::233]:54096)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1UgnRE-0006UX-5a; Sun, 26 May 2013 22:45:32 -0400
-X-IronPort-AV: E=Sophos;i="4.87,747,1363104000"; 
-   d="scan'208";a="7374475"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 27 May 2013 10:42:39 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r4R2jSMP021014;
-	Mon, 27 May 2013 10:45:29 +0800
-Received: from liguang.fnst.cn.fujitsu.com ([10.167.233.147])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013052710440266-1547477 ;
-	Mon, 27 May 2013 10:44:02 +0800 
-From: liguang <lig.fnst@cn.fujitsu.com>
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Date: Mon, 27 May 2013 10:42:57 +0800
-Message-Id: <1369622578-27443-3-git-send-email-lig.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1369622578-27443-1-git-send-email-lig.fnst@cn.fujitsu.com>
-References: <1369622578-27443-1-git-send-email-lig.fnst@cn.fujitsu.com>
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/05/27 10:44:02,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/05/27 10:44:04,
-	Serialize complete at 2013/05/27 10:44:04
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Anthony Liguori <aliguori@us.ibm.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, liguang <lig.fnst@cn.fujitsu.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [Qemu-trivial] [PATCH 2/3] debugcon: beautify debugcon debug output
+	(envelope-from <aik@ozlabs.ru>) id 1UgqgS-0006Xp-Ct
+	for qemu-trivial@nongnu.org; Mon, 27 May 2013 02:13:28 -0400
+Received: by mail-ob0-f179.google.com with SMTP id wo10so4151133obc.38
+	for <qemu-trivial@nongnu.org>; Sun, 26 May 2013 23:13:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
+	bh=Uc/rEHk/jy4Q5KRYSQOiCuk9BkeN+X8E8gbM7PCmCKk=;
+	b=cWxehW+GwRNjWgTTTfi969Jzq9shFK6COQv6QNahyb2IxGZaK+CYl6DC47AaPG9VIj
+	Cc7505/2kXOktRl5Xq5NhBoXdsNdnJsImhFLCCMRPMaS8V+3X4FlIYWwiGrTeak4v4/I
+	egB+6R45uUQArQ9iJOsshzL795H+hicoW0KRbGTJ/Z05oTiC2HptoJJVlX7Ljnd9IwMf
+	/9j8MOvshN+vFZfgjgY24KtHyleL2Rh1CAuPFxNVWvw8rme3SlEkxY/BZ4GJce+KCuhz
+	JdCsqIE1+cnMJzpFUAUKw/agQA2PRpFU0dVjrc6iiF5jAEu+qB2ruBnXaI8l9Stnqrm0
+	l47A==
+X-Received: by 10.60.94.113 with SMTP id db17mr9477826oeb.62.1369635205897;
+	Sun, 26 May 2013 23:13:25 -0700 (PDT)
+Received: from ka1.ozlabs.ibm.com (ibmaus65.lnk.telstra.net. [165.228.126.9])
+	by mx.google.com with ESMTPSA id
+	eq4sm29119565obb.5.2013.05.26.23.13.22 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Sun, 26 May 2013 23:13:24 -0700 (PDT)
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+To: qemu-devel@nongnu.org
+Date: Mon, 27 May 2013 16:13:15 +1000
+Message-Id: <1369635195-28279-1-git-send-email-aik@ozlabs.ru>
+X-Mailer: git-send-email 1.7.10.4
+X-Gm-Message-State: ALoCoQkS5KSjKLWAdNOlm3PPVeW65xRr1WTwa8Ak1slSqybvTscjJ+zKYQssK+K7YVkiHuRoOVHO
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c01::233
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] qemu: fix out of tree cross compile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,32 +53,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 May 2013 02:45:42 -0000
+X-List-Received-Date: Mon, 27 May 2013 06:13:41 -0000
 
-use '[...msg...]' to separate debug console output
-from device debug output
+QEMU uses headers from source directory, however the "asm" symlink was
+created in the build directory what broke KVM stuff compilation.
 
-Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
 ---
- hw/char/debugcon.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ configure |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/char/debugcon.c b/hw/char/debugcon.c
-index cb31544..de73f1b 100644
---- a/hw/char/debugcon.c
-+++ b/hw/char/debugcon.c
-@@ -55,8 +55,8 @@ static void debugcon_ioport_write(void *opaque, hwaddr addr, uint64_t val,
-     unsigned char ch = val;
+diff --git a/configure b/configure
+index 5ae7e4a..9c3c5e5 100755
+--- a/configure
++++ b/configure
+@@ -4135,7 +4135,7 @@ if test "$linux" = "yes" ; then
+   esac
+     # For non-KVM architectures we will not have asm headers
+     if [ -e "$source_path/linux-headers/asm-$linux_arch" ]; then
+-      symlink "$source_path/linux-headers/asm-$linux_arch" linux-headers/asm
++      symlink "$source_path/linux-headers/asm-$linux_arch" $source_path/linux-headers/asm
+     fi
+ fi
  
- #ifdef DEBUG_DEBUGCON
--    printf("debugcon: write addr=0x%04" HWADDR_PRIx " val=0x%02"
--           PRIx64 "\n", addr, val);
-+    printf(" [debugcon: write addr=0x%04" HWADDR_PRIx " val=0x%02"
-+           PRIx64 "]\n", addr, val);
- #endif
- 
-     qemu_chr_fe_write(s->chr, &ch, 1);
 -- 
-1.7.2.5
+1.7.10.4
 
 
