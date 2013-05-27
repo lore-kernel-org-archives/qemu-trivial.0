@@ -1,38 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UgJtl-0006Ik-PV
-	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2013 15:13:01 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:40028)
+	id 1UgmRR-0007NL-5M
+	for mharc-qemu-trivial@gnu.org; Sun, 26 May 2013 21:41:41 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:57722)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UgJth-0006DE-RM
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 15:13:00 -0400
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UgmRI-000789-Bx
+	for qemu-trivial@nongnu.org; Sun, 26 May 2013 21:41:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UgJte-0006wF-Sb
-	for qemu-trivial@nongnu.org; Sat, 25 May 2013 15:12:57 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:35119 helo=mx2.suse.de)
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UgmRC-0005cX-OY
+	for qemu-trivial@nongnu.org; Sun, 26 May 2013 21:41:32 -0400
+Received: from [222.73.24.84] (port=22716 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UgJtY-0006ln-W8; Sat, 25 May 2013 15:12:49 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 43A37A50DD;
-	Sat, 25 May 2013 21:12:44 +0200 (CEST)
-Message-ID: <51A10D25.2010503@suse.de>
-Date: Sat, 25 May 2013 21:12:37 +0200
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
-MIME-Version: 1.0
-To: Brad Smith <brad@comstyle.com>
-References: <20130524230046.GA2671@rox.home.comstyle.com>
-In-Reply-To: <20130524230046.GA2671@rox.home.comstyle.com>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=ISO-8859-1
+	(envelope-from <lig.fnst@cn.fujitsu.com>)
+	id 1UgmR1-0005bI-Mp; Sun, 26 May 2013 21:41:15 -0400
+X-IronPort-AV: E=Sophos;i="4.87,747,1363104000"; 
+   d="scan'208";a="7373644"
+Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
+	by song.cn.fujitsu.com with ESMTP; 27 May 2013 09:38:21 +0800
+Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r4R1fAko014667;
+	Mon, 27 May 2013 09:41:11 +0800
+Received: from [10.167.233.147] ([10.167.233.147])
+	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
+	with ESMTP id 2013052709394129-1544947 ;
+	Mon, 27 May 2013 09:39:41 +0800 
+From: li guang <lig.fnst@cn.fujitsu.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <51A09581.6030105@msgid.tls.msk.ru>
+References: <1369363654-7063-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	<51A08422.7030207@msgid.tls.msk.ru> <51A093F6.4070202@suse.de>
+	<51A09581.6030105@msgid.tls.msk.ru>
+Date: Mon, 27 May 2013 09:40:53 +0800
+Message-ID: <1369618853.19028.20.camel@liguang.fnst.cn.fujitsu.com>
+Mime-Version: 1.0
+X-Mailer: Evolution 2.30.3 
+X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
+	15, 2011) at 2013/05/27 09:39:41,
+	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
+	2011) at 2013/05/27 09:39:46,
+	Serialize complete at 2013/05/27 09:39:46
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Remove OSS support for
-	OpenBSD
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 222.73.24.84
+Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] debugcon: fix some bugs
+ when DEBUG_DEBUGCON
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,22 +60,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 May 2013 19:13:00 -0000
+X-List-Received-Date: Mon, 27 May 2013 01:41:39 -0000
 
-Am 25.05.2013 01:01, schrieb Brad Smith:
-> Remove the OSS support for OpenBSD. The OSS API has not been usable
-> for quite some time.
+=E5=9C=A8 2013-05-25=E5=85=AD=E7=9A=84 14:42 +0400=EF=BC=8CMichael Tokarev=
+=E5=86=99=E9=81=93=EF=BC=9A
+> 25.05.2013 14:35, Andreas F=C3=A4rber wrote:
+> > Am 25.05.2013 11:28, schrieb Michael Tokarev:
+> []
+> >>> 	 debugcon: use fprintf(stderr...) instead of printf
+> >>
+> >> The subjects and commit messages are a bit inaccurate, and
+> >> as Andreas says, these may have been merged together, but
+> >> the inaccuracy is small (and mostly due to language barriers),
+> >> and the result is good anyway, with one patch doing one thing.
+> >>
+> >> So.. thanks, applied to the trivial-patches queue.
+> >=20
+> > NACK. If you want to apply 1-3, okay. But please unqueue 4/4, it makes
+> > no sense as-is (just look at the stderr output to see what I mean) and
+> > it pretends that I suggested that!
 >=20
-> Signed-off-by: Brad Smith <brad@comstyle.com>
+> Actually I did just that, rebuild with DEBUG_DEBUGCON and looked
+> at the output, -- because I didn't know how it works.  And you're
+> right, it's not a good change ;)  But your email come before I was
+> able to reply.  Unqueued.
 
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+Hi, Michael
 
-CC'ing qemu-trivial.
+do you queued patch 1-3?
+if so, I will only send one patch for comments from Andreas,
+otherwise, I will refactor all patches.
 
-Andreas
+Thanks!
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+
 
