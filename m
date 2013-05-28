@@ -1,50 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UhCkB-0007Ql-Fg
-	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2013 01:46:47 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:44398)
+	id 1UhFg1-0005Bv-SM
+	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2013 04:54:42 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:37700)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1UhCk4-0007Oi-A0
-	for qemu-trivial@nongnu.org; Tue, 28 May 2013 01:46:46 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1UhFfu-00052N-R4
+	for qemu-trivial@nongnu.org; Tue, 28 May 2013 04:54:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1UhCk2-0008Js-Ai
-	for qemu-trivial@nongnu.org; Tue, 28 May 2013 01:46:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36026)
+	(envelope-from <pbonzini@redhat.com>) id 1UhFfp-0002xM-0v
+	for qemu-trivial@nongnu.org; Tue, 28 May 2013 04:54:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:20561)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1UhCk2-0008JV-18; Tue, 28 May 2013 01:46:38 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4S5kVGR014408
+	(envelope-from <pbonzini@redhat.com>)
+	id 1UhFfd-0002uZ-Bb; Tue, 28 May 2013 04:54:17 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4S8sFpX014657
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 28 May 2013 01:46:32 -0400
-Received: from rincewind.home.kraxel.org (ovpn-116-31.ams2.redhat.com
-	[10.36.116.31])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r4S5kTfs003132; Tue, 28 May 2013 01:46:29 -0400
-Message-ID: <51A444B4.3020006@redhat.com>
-Date: Tue, 28 May 2013 07:46:28 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
+	Tue, 28 May 2013 04:54:15 -0400
+Received: from yakj.usersys.redhat.com (ovpn-112-37.ams2.redhat.com
+	[10.36.112.37])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r4S8s7h8014304; Tue, 28 May 2013 04:54:11 -0400
+Message-ID: <51A470A9.8000502@redhat.com>
+Date: Tue, 28 May 2013 10:54:01 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130513 Thunderbird/17.0.6
+	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
 MIME-Version: 1.0
-To: li guang <lig.fnst@cn.fujitsu.com>
-References: <1369363654-7063-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<51A323B4.2000101@redhat.com>
-	<1369701066.19028.53.camel@liguang.fnst.cn.fujitsu.com>
-In-Reply-To: <1369701066.19028.53.camel@liguang.fnst.cn.fujitsu.com>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
+References: <1369698254-32350-1-git-send-email-aik@ozlabs.ru>
+	<1369698583-32533-1-git-send-email-aik@ozlabs.ru>
+In-Reply-To: <1369698583-32533-1-git-send-email-aik@ozlabs.ru>
 X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	r4S5kVGR014408
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org,
-	=?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH 0/4] debugcon: fix some bugs when
-	DEBUG_DEBUGCON
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v3] qemu: fix out of tree cross compile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,37 +51,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 May 2013 05:46:46 -0000
+X-List-Received-Date: Tue, 28 May 2013 08:54:40 -0000
 
-On 05/28/13 02:31, li guang wrote:
-> =E5=9C=A8 2013-05-27=E4=B8=80=E7=9A=84 11:13 +0200=EF=BC=8CGerd Hoffman=
-n=E5=86=99=E9=81=93=EF=BC=9A
->> On 05/24/13 04:47, liguang wrote:
->>> when enable DEBUG_DEBUGCON, there are some message
->>> printing bugs, so fix them.
->>
->> I'd suggest to either simply remove the debug printfs or turn them int=
-o
->> tracepoints.
->>
->=20
-> sorry, why we simply remove debug message printing?
-> it's un-useful at all?
+Il 28/05/2013 01:49, Alexey Kardashevskiy ha scritto:
+> The symlink to "asm" platform linux headers is made in the build tree by
+> the configure script but gcc is not told to look for them there.
+> 
+> The patch fixes this.
+> 
+> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+> ---
+> 
+> The previous patch did not remove the old line adding includes. Early morning,
+> lack of focus :)
+> 
+> ---
+>  configure |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/configure b/configure
+> index 5ae7e4a..eca2a20 100755
+> --- a/configure
+> +++ b/configure
+> @@ -547,7 +547,7 @@ Haiku)
+>    if [ "$cpu" = "i386" -o "$cpu" = "x86_64" ] ; then
+>      audio_possible_drivers="$audio_possible_drivers fmod"
+>    fi
+> -  QEMU_INCLUDES="-I\$(SRC_PATH)/linux-headers $QEMU_INCLUDES"
+> +  QEMU_INCLUDES="-I\$(SRC_PATH)/linux-headers -I$(pwd)/linux-headers $QEMU_INCLUDES"
+>  ;;
+>  esac
+>  
+> 
 
-It's a case-by-case thing.
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Debug messages logging guest activity like port access tend to be useful
-for trouble-shooting.  They should be turned into tracepoints, so they
-can be toggled at runtime and integrate nicely with tracing tools.
-
-Sometimes debug messages are just leftovers and don't serve a real
-purpose (any more).  Then it is best to simply remove them.
-
-In the debugcon case I'd tend to simply remove them given how trivial
-the device is.  But if you prefer making them tracepoints I'm ok with tha=
-t.
-
-cheers,
-  Gerd
-
+Paolo
 
