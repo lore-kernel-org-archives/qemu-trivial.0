@@ -1,42 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UhaMv-0006wQ-BY
-	for mharc-qemu-trivial@gnu.org; Wed, 29 May 2013 03:00:21 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:33614)
+	id 1UhgG6-0001ov-Cp
+	for mharc-qemu-trivial@gnu.org; Wed, 29 May 2013 09:17:42 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:54749)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1UhaMt-0006u7-KO
-	for qemu-trivial@nongnu.org; Wed, 29 May 2013 03:00:20 -0400
+	(envelope-from <anthony@codemonkey.ws>) id 1UhgFu-0001Zt-Hw
+	for qemu-trivial@nongnu.org; Wed, 29 May 2013 09:17:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1UhaMr-0002DJ-NH
-	for qemu-trivial@nongnu.org; Wed, 29 May 2013 03:00:19 -0400
-Received: from goliath.siemens.de ([192.35.17.28]:25268)
+	(envelope-from <anthony@codemonkey.ws>) id 1UhgFr-00036F-P3
+	for qemu-trivial@nongnu.org; Wed, 29 May 2013 09:17:30 -0400
+Received: from mail-ob0-x229.google.com ([2607:f8b0:4003:c01::229]:37279)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>)
-	id 1UhaMk-0002AZ-1Y; Wed, 29 May 2013 03:00:10 -0400
-Received: from mail3.siemens.de (localhost [127.0.0.1])
-	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id r4T706YL004044;
-	Wed, 29 May 2013 09:00:06 +0200
-Received: from netbook.home ([146.254.78.143])
-	by mail3.siemens.de (8.13.6/8.13.6) with SMTP id r4T701Y8031467;
-	Wed, 29 May 2013 09:00:03 +0200
-Message-ID: <51A5A76E.6010205@siemens.com>
-Date: Wed, 29 May 2013 15:59:58 +0900
-From: Jan Kiszka <jan.kiszka@siemens.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <anthony@codemonkey.ws>) id 1UhgFr-00035l-Gm
+	for qemu-trivial@nongnu.org; Wed, 29 May 2013 09:17:27 -0400
+Received: by mail-ob0-f169.google.com with SMTP id up14so4011787obb.0
+	for <qemu-trivial@nongnu.org>; Wed, 29 May 2013 06:17:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=from:to:cc:subject:in-reply-to:references:user-agent:date
+	:message-id:mime-version:content-type:x-gm-message-state;
+	bh=EXE+pJyCZY0Im4ZY1VnsH8tH81zfbyPkOdJepKUAZZM=;
+	b=U7kOxn5yg7GHgY1Nt0fzcQcqqE7CMa5ozinbUFDabNc5HYsdwksh46HTTCzv1rPelr
+	CaWojG/xi0FmxLsh27BOefl2OLInOWUfDnZpDSLgd3j6hm9Hf56Sjo3YQ1LOTZha0Q+B
+	wa3h+9vDIJqE8K32rQHBMu+nynspU4daqeCvSMor4uuwObiZI42dZANtAVoEw5LJjJ+h
+	pFtjWruDpT7XEfyCbEnir6WreIkpVxZYnsr8n11Ma8KFF2ZdsQ0rJ7jhlZzdkmJpvvOm
+	kqAYSQhx/jlTbu5pQHYTGTkOA87lu/8CwkRvAOt9Sg4SQGPJbDMLT0Zwf7i3jrsfFuAG
+	pdJw==
+X-Received: by 10.182.111.199 with SMTP id ik7mr1571674obb.44.1369833446872;
+	Wed, 29 May 2013 06:17:26 -0700 (PDT)
+Received: from titi.smtp.gmail.com (cpe-70-112-157-87.austin.res.rr.com.
+	[70.112.157.87])
+	by mx.google.com with ESMTPSA id h4sm40774969oel.2.2013.05.29.06.17.25
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Wed, 29 May 2013 06:17:26 -0700 (PDT)
+From: Anthony Liguori <anthony@codemonkey.ws>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>, Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <1369698583-32533-1-git-send-email-aik@ozlabs.ru>
+References: <1369698254-32350-1-git-send-email-aik@ozlabs.ru>
+	<1369698583-32533-1-git-send-email-aik@ozlabs.ru>
+User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
+	(x86_64-pc-linux-gnu)
+Date: Wed, 29 May 2013 08:17:21 -0500
+Message-ID: <87fvx653j2.fsf@codemonkey.ws>
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1369687911-9731-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1369687911-9731-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 192.35.17.28
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH trivial] slirp: cleanup leftovers from
-	misc.h
+Content-Type: text/plain; charset=us-ascii
+X-Gm-Message-State: ALoCoQk6gM8XzKthUP4vO56C21wnkn2lVAEXt8LrxDioJK3qGd6/FEdNzm1qA6PiDtNCGWbvwEe7
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c01::229
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] qemu: fix out of tree
+	cross compile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,63 +64,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 May 2013 07:00:20 -0000
+X-List-Received-Date: Wed, 29 May 2013 13:17:39 -0000
 
-On 2013-05-28 05:51, Michael Tokarev wrote:
-> There are quite a few leftover declarations in slirp/misc.h.
-> Remove them.
-> 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Alexey Kardashevskiy <aik@ozlabs.ru> writes:
+
+> The symlink to "asm" platform linux headers is made in the build tree by
+> the configure script but gcc is not told to look for them there.
+>
+> The patch fixes this.
+>
+> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
 > ---
->  slirp/misc.h |   14 --------------
->  1 file changed, 14 deletions(-)
-> 
-> I'm not entirely sure we should do this, since this kind of
-> changes just moves us more and more away from the upstream, but...
+>
+> The previous patch did not remove the old line adding includes. Early morning,
+> lack of focus :)
 
-AFAIK, there is no upstream worth tracking, so this is fine.
+Please repost as a top level patch.
 
-Jan
+Regards,
 
-> 
-> diff --git a/slirp/misc.h b/slirp/misc.h
-> index cc36aeb..ba8beb1 100644
-> --- a/slirp/misc.h
-> +++ b/slirp/misc.h
-> @@ -20,8 +20,6 @@ struct ex_list {
->  char *strdup(const char *);
->  #endif
->  
-> -void do_wait(int);
-> -
->  #define EMU_NONE 0x0
->  
->  /* TCP emulations */
-> @@ -51,21 +49,9 @@ struct emu_t {
->      struct emu_t *next;
->  };
->  
-> -extern int x_port, x_server, x_display;
-> -
-> -int show_x(char *, struct socket *);
-> -void redir_x(uint32_t, int, int, int);
->  void slirp_insque(void *, void *);
->  void slirp_remque(void *);
->  int add_exec(struct ex_list **, int, char *, struct in_addr, int);
-> -int slirp_openpty(int *, int *);
->  int fork_exec(struct socket *so, const char *ex, int do_pty);
-> -void snooze_hup(int);
-> -void snooze(void);
-> -void relay(int);
-> -void add_emu(char *);
-> -void fd_nonblock(int);
-> -void fd_block(int);
-> -int rsh_exec(struct socket *, struct socket *, char *, char *, char *);
->  
->  #endif
-> 
+Anthony Liguori
 
--- 
-Siemens AG, Corporate Technology, CT RTC ITP SDP-DE
-Corporate Competence Center Embedded Linux
+
+
+>
+> ---
+>  configure |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/configure b/configure
+> index 5ae7e4a..eca2a20 100755
+> --- a/configure
+> +++ b/configure
+> @@ -547,7 +547,7 @@ Haiku)
+>    if [ "$cpu" = "i386" -o "$cpu" = "x86_64" ] ; then
+>      audio_possible_drivers="$audio_possible_drivers fmod"
+>    fi
+> -  QEMU_INCLUDES="-I\$(SRC_PATH)/linux-headers $QEMU_INCLUDES"
+> +  QEMU_INCLUDES="-I\$(SRC_PATH)/linux-headers -I$(pwd)/linux-headers $QEMU_INCLUDES"
+>  ;;
+>  esac
+>  
+> -- 
+> 1.7.10.4
 
