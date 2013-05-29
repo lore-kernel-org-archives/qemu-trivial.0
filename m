@@ -1,49 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UhG63-00009d-5r
-	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2013 05:21:35 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:43161)
+	id 1UhaMv-0006wQ-BY
+	for mharc-qemu-trivial@gnu.org; Wed, 29 May 2013 03:00:21 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:33614)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UhG5z-00009S-Kw
-	for qemu-trivial@nongnu.org; Tue, 28 May 2013 05:21:33 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1UhaMt-0006u7-KO
+	for qemu-trivial@nongnu.org; Wed, 29 May 2013 03:00:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UhG5x-0003Qr-Jm
-	for qemu-trivial@nongnu.org; Tue, 28 May 2013 05:21:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58844)
+	(envelope-from <jan.kiszka@siemens.com>) id 1UhaMr-0002DJ-NH
+	for qemu-trivial@nongnu.org; Wed, 29 May 2013 03:00:19 -0400
+Received: from goliath.siemens.de ([192.35.17.28]:25268)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1UhG5x-0003Qn-CZ; Tue, 28 May 2013 05:21:29 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4S9LRih021024
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 28 May 2013 05:21:27 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-37.ams2.redhat.com
-	[10.36.112.37])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r4S9LNlV014963; Tue, 28 May 2013 05:21:24 -0400
-Message-ID: <51A4770D.5010006@redhat.com>
-Date: Tue, 28 May 2013 11:21:17 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1UhaMk-0002AZ-1Y; Wed, 29 May 2013 03:00:10 -0400
+Received: from mail3.siemens.de (localhost [127.0.0.1])
+	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id r4T706YL004044;
+	Wed, 29 May 2013 09:00:06 +0200
+Received: from netbook.home ([146.254.78.143])
+	by mail3.siemens.de (8.13.6/8.13.6) with SMTP id r4T701Y8031467;
+	Wed, 29 May 2013 09:00:03 +0200
+Message-ID: <51A5A76E.6010205@siemens.com>
+Date: Wed, 29 May 2013 15:59:58 +0900
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-To: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-References: <1369698254-32350-1-git-send-email-aik@ozlabs.ru>
-	<1369698583-32533-1-git-send-email-aik@ozlabs.ru>
-	<51A470A9.8000502@redhat.com> <51A474EC.6070604@suse.de>
-In-Reply-To: <51A474EC.6070604@suse.de>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1369687911-9731-1-git-send-email-mjt@msgid.tls.msk.ru>
+In-Reply-To: <1369687911-9731-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-15
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	r4S9LRih021024
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] qemu: fix out of tree
-	cross compile
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 192.35.17.28
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH trivial] slirp: cleanup leftovers from
+	misc.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,57 +48,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 May 2013 09:21:33 -0000
+X-List-Received-Date: Wed, 29 May 2013 07:00:20 -0000
 
-Il 28/05/2013 11:12, Andreas F=E4rber ha scritto:
-> Am 28.05.2013 10:54, schrieb Paolo Bonzini:
->> Il 28/05/2013 01:49, Alexey Kardashevskiy ha scritto:
->>> The symlink to "asm" platform linux headers is made in the build tree=
- by
->>> the configure script but gcc is not told to look for them there.
->>>
->>> The patch fixes this.
->>>
->>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
->>> ---
->>>
->>> The previous patch did not remove the old line adding includes. Early=
- morning,
->>> lack of focus :)
->>>
->>> ---
->>>  configure |    2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/configure b/configure
->>> index 5ae7e4a..eca2a20 100755
->>> --- a/configure
->>> +++ b/configure
->>> @@ -547,7 +547,7 @@ Haiku)
->>>    if [ "$cpu" =3D "i386" -o "$cpu" =3D "x86_64" ] ; then
->>>      audio_possible_drivers=3D"$audio_possible_drivers fmod"
->>>    fi
->>> -  QEMU_INCLUDES=3D"-I\$(SRC_PATH)/linux-headers $QEMU_INCLUDES"
->>> +  QEMU_INCLUDES=3D"-I\$(SRC_PATH)/linux-headers -I$(pwd)/linux-heade=
-rs $QEMU_INCLUDES"
->>>  ;;
->>>  esac
->>> =20
->>>
->>
->> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
->=20
-> Hm, I see no other case of adding $(pwd) to QEMU_INCLUDES - shouldn't
-> this just be -Ilinux-headers?
+On 2013-05-28 05:51, Michael Tokarev wrote:
+> There are quite a few leftover declarations in slirp/misc.h.
+> Remove them.
+> 
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  slirp/misc.h |   14 --------------
+>  1 file changed, 14 deletions(-)
+> 
+> I'm not entirely sure we should do this, since this kind of
+> changes just moves us more and more away from the upstream, but...
 
-I think -Ilinux-headers would add
-<builddir>/x86_64-softmmu/linux-headers, which is wrong.
+AFAIK, there is no upstream worth tracking, so this is fine.
 
-> And might it make sense to give the build directory precedence over the
-> source directory?
+Jan
 
-It shouldn't matter.
+> 
+> diff --git a/slirp/misc.h b/slirp/misc.h
+> index cc36aeb..ba8beb1 100644
+> --- a/slirp/misc.h
+> +++ b/slirp/misc.h
+> @@ -20,8 +20,6 @@ struct ex_list {
+>  char *strdup(const char *);
+>  #endif
+>  
+> -void do_wait(int);
+> -
+>  #define EMU_NONE 0x0
+>  
+>  /* TCP emulations */
+> @@ -51,21 +49,9 @@ struct emu_t {
+>      struct emu_t *next;
+>  };
+>  
+> -extern int x_port, x_server, x_display;
+> -
+> -int show_x(char *, struct socket *);
+> -void redir_x(uint32_t, int, int, int);
+>  void slirp_insque(void *, void *);
+>  void slirp_remque(void *);
+>  int add_exec(struct ex_list **, int, char *, struct in_addr, int);
+> -int slirp_openpty(int *, int *);
+>  int fork_exec(struct socket *so, const char *ex, int do_pty);
+> -void snooze_hup(int);
+> -void snooze(void);
+> -void relay(int);
+> -void add_emu(char *);
+> -void fd_nonblock(int);
+> -void fd_block(int);
+> -int rsh_exec(struct socket *, struct socket *, char *, char *, char *);
+>  
+>  #endif
+> 
 
-Paolo
-
+-- 
+Siemens AG, Corporate Technology, CT RTC ITP SDP-DE
+Corporate Competence Center Embedded Linux
 
