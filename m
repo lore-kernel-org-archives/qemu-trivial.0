@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UiOj0-0001FU-N9
-	for mharc-qemu-trivial@gnu.org; Fri, 31 May 2013 08:46:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35058)
+	id 1UiOyH-0008HA-WB
+	for mharc-qemu-trivial@gnu.org; Fri, 31 May 2013 09:02:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38697)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1UiOiy-0001DV-Bt
-	for qemu-trivial@nongnu.org; Fri, 31 May 2013 08:46:29 -0400
+	(envelope-from <thomas@schwinge.name>) id 1UiOyC-0008GW-4q
+	for qemu-trivial@nongnu.org; Fri, 31 May 2013 09:02:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1UiOiw-0004sI-Qm
-	for qemu-trivial@nongnu.org; Fri, 31 May 2013 08:46:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:25058)
+	(envelope-from <thomas@schwinge.name>) id 1UiOy3-00025r-GS
+	for qemu-trivial@nongnu.org; Fri, 31 May 2013 09:02:12 -0400
+Received: from smtprelay02.ispgateway.de ([80.67.31.25]:47310)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1UiOit-0004rc-4g; Fri, 31 May 2013 08:46:23 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r4VCkMiv020354
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 31 May 2013 08:46:22 -0400
-Received: from [10.3.113.110] (ovpn-113-110.phx2.redhat.com [10.3.113.110])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r4VCkLtM019090; Fri, 31 May 2013 08:46:21 -0400
-Message-ID: <51A89B9D.9010404@redhat.com>
-Date: Fri, 31 May 2013 06:46:21 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
+	(envelope-from <thomas@schwinge.name>) id 1UiOy3-00025d-6T
+	for qemu-trivial@nongnu.org; Fri, 31 May 2013 09:02:03 -0400
+Received: from [217.84.5.141] (helo=stokes.schwinge.homeip.net)
+	by smtprelay02.ispgateway.de with esmtpa (Exim 4.68)
+	(envelope-from <thomas@schwinge.name>) id 1UiOy1-0001gv-6v
+	for qemu-trivial@nongnu.org; Fri, 31 May 2013 15:02:01 +0200
+Received: (qmail 3148 invoked from network); 31 May 2013 13:01:31 -0000
+Received: from feldtkeller.schwinge.homeip.net (192.168.111.172)
+	by stokes.schwinge.homeip.net with QMQP; 31 May 2013 13:01:31 -0000
+Received: (nullmailer pid 22943 invoked by uid 1000);
+	Fri, 31 May 2013 13:01:20 -0000
+From: Thomas Schwinge <thomas@codesourcery.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	pbonzini@redhat.com
+In-Reply-To: <CAFEAcA9LomV1rkJPPctUgxG0aJzCHiGr6VYSsSmaGytvQv9hUQ@mail.gmail.com>
+References: <1369993154-17690-1-git-send-email-thomas@codesourcery.com>
+	<51A89273.8010400@msgid.tls.msk.ru>
+	<CAFEAcA9LomV1rkJPPctUgxG0aJzCHiGr6VYSsSmaGytvQv9hUQ@mail.gmail.com>
+User-Agent: Notmuch/0.9-101-g81dad07 (http://notmuchmail.org) Emacs/23.4.1
+	(x86_64-pc-linux-gnu)
+Date: Fri, 31 May 2013 15:01:10 +0200
+Message-ID: <87ppw7fgmh.fsf@schwinge.name>
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <1370001627-11830-1-git-send-email-pbonzini@redhat.com>
-In-Reply-To: <1370001627-11830-1-git-send-email-pbonzini@redhat.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="----enig2DABIGSRIWSBGQCVFEKHP"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-stable@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] do not check pointers after
- dereferencing them
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha1; protocol="application/pgp-signature"
+X-Df-Sender: dGhvbWFzQHNjaHdpbmdlLm5hbWU=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 80.67.31.25
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fpu: Simplify
+	floatx80ToCommonNaN function.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,81 +53,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 May 2013 12:46:29 -0000
+X-List-Received-Date: Fri, 31 May 2013 13:02:17 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
-------enig2DABIGSRIWSBGQCVFEKHP
-Content-Type: text/plain; charset=UTF-8
+--=-=-=
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-On 05/31/2013 06:00 AM, Paolo Bonzini wrote:
-> Two instances, both spotted by Coverity.  In one, two blocks were
-> swapped.  In the other, the check is not needed anymore.
+Hi!
+
+On Fri, 31 May 2013 13:34:12 +0100, Peter Maydell <peter.maydell@linaro.org=
+> wrote:
+> On 31 May 2013 13:07, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> > Hmm. And where's the simplification?  Here's context diff for the same:
+> >
+> > *** fpu/softfloat-specialize.h.orig     2013-05-31 16:02:51.614710351 +=
+0400
+> > --- fpu/softfloat-specialize.h  2013-05-31 16:02:59.838820308 +0400
+> > ***************
+> > *** 936,946 ****
+> >       if ( floatx80_is_signaling_nan( a ) ) float_raise( float_flag_inv=
+alid STATUS_VAR);
+> > !     if ( a.low >> 63 ) {
+> > !         z.sign =3D a.high >> 15;
+> > !         z.low =3D 0;
+> > !         z.high =3D a.low << 1;
+> > !     } else {
+> > !         z.sign =3D floatx80_default_nan_high >> 15;
+> > !         z.low =3D 0;
+> > !         z.high =3D floatx80_default_nan_low << 1;
+> >       }
+> >       return z;
+> > --- 936,945 ----
+> >       if ( floatx80_is_signaling_nan( a ) ) float_raise( float_flag_inv=
+alid STATUS_VAR);
+> > !     /* Replace a Pseudo NaN with a default NaN.  */
+> > !     if (!(a.low >> 63)) {
+> > !         a.low =3D floatx80_default_nan_low;
+> > !         a.high =3D floatx80_default_nan_high;
+> >       }
+> > +     z.sign =3D a.high >> 15;
+> > +     z.low =3D 0;
+> > +     z.high =3D a.low << 1;
+> >       return z;
+> >
+> >
+> > Yes, your version is 3 lines shorter, because it
+> > does not have extra else{} (2 lines) and the
+> > remaining if() construct is one line shorter too,
+> > due to moving z.low=3D0 construct into common place.
+> >
+> > But I don't think your version is more readable, --
+> > before it was easy to understand what is going on,
+> > we had two easy case with all right stuff done for
+> > each case.  Now we do some preparation before, so
+> > the common case works.
 >=20
-> Cc: qemu-stable@nongnu.org
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  monitor.c |  2 +-
->  savevm.c  | 10 +++++-----
->  2 files changed, 6 insertions(+), 6 deletions(-)
+> I think you could make a reasonable argument for this
+> change being an improvement, because it makes it clear
+> what we're doing: if what we have is an x86 pseudo-NaN,
+> we replace it with the 80-bit default NaN, and then
+> proceed to do 80-bit-to-canonical conversion in the
+> usual way. The comment also explains why this if()
+> exists for the 80 bit case when it doesn't for the
+> equivalent 32 bit and 64 bit functions. As a code
+> change I actually quite like it.
 
-This version of the savevm.c fix is nicer than Stefan's attempt:
-https://lists.gnu.org/archive/html/qemu-devel/2013-05/msg04506.html
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
-> +++ b/savevm.c
-> @@ -322,16 +322,16 @@ QEMUFile *qemu_popen_cmd(const char *command, con=
-st char *mode)
->      FILE *stdio_file;
->      QEMUFileStdio *s;
-> =20
-> -    stdio_file =3D popen(command, mode);
-> -    if (stdio_file =3D=3D NULL) {
-> -        return NULL;
-> -    }
-> -
->      if (mode =3D=3D NULL || (mode[0] !=3D 'r' && mode[0] !=3D 'w') || =
-mode[1] !=3D 0) {
->          fprintf(stderr, "qemu_popen: Argument validity check failed\n"=
-);
->          return NULL;
->      }
-> =20
-> +    stdio_file =3D popen(command, mode);
-> +    if (stdio_file =3D=3D NULL) {
-> +        return NULL;
-> +    }
-> +
->      s =3D g_malloc0(sizeof(QEMUFileStdio));
-> =20
->      s->stdio_file =3D stdio_file;
->=20
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+Yes, this exactly is my reasoning: first, convert a x86 Pseudo NaN into a
+generic NaN, then do the floating-point type conversion itself).  I
+thought this would be obvious (and hence the patch trivial) -- hey, I
+even added a comment! -- but apparently what is obvious/trivial to one
+isn't to the other.  :-)
 
 
-------enig2DABIGSRIWSBGQCVFEKHP
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+> That said, I think any new patches to fpu/ need to
+> come with an explicit statement that they can be
+> licensed under the softfloat-2a license or GPLv2
+> or BSD (etc etc) so they aren't an obstacle to
+> the softfloat-2a-to-2b conversion that is in the works.
+> [cc'd Anthony so he can correct me if I'm wrong.]
+
+I hereby place this one contribution (which I think wouldn't constitute a
+copyrightable change anyway) into the Public Domain, allowing any kind of
+usage.
+
+
+Gr=C3=BC=C3=9Fe,
+ Thomas
+
+--=-=-=
+Content-Type: application/pgp-signature
 
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.13 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+Version: GnuPG v1.4.11 (GNU/Linux)
 
-iQEcBAEBCAAGBQJRqJudAAoJEKeha0olJ0NqFjgH/146PPOty+EcTKd6yB0hXhq2
-ujsDdOfMyC3ZDEQPgHiW3c1wT39xW5GhvyQBlXpNMDh9jnKcWN18gA26NLvhi0Sr
-q+XzSsEG0z8ZcoYaQ1Io7c+Oiv1OK89CeDQGrZFIc9bZ2l9s8VSgNaLjwXYNJv0c
-bie779ZfNoQ8k8b/x8fdez7EcKvvpiZdhK38fOscntibhbEG53rqL8DyW6WPUe/k
-A0+WHItCZNlcmjrMTImvwiyrp8A59U30KjYxXxtZW49lqtFdN+IHg+23OFv9yJI8
-MIImrTrX4/ysP/3sBUzsjKTY6MAY8+q2xg+lVZhftUJ2Ih2AT/wuNqDwxHUt308=
-=HOGI
+iQEcBAEBAgAGBQJRqJ8XAAoJENuKOtuXzphJcrIH/iJYe6JkzkGG96BG1IrsdM5Y
+QaBVDYWmdSIDHC2MuLLcB2KKcyRCCwOcLHZymPxlAfyDYLMjFoQfcfwUxPAPWuqD
+KA/W/1Uo7kDpJc2AS123tHptkdUeLsCk20bu6MiiQSzDfGzXS5kNdXpGdDs/LcMs
+8dgVM8K2WGa4GiGFbOnvb+1dudWQ9zVoH3SI4jXcwga0/NBdY8P2A/xZRfyLpddh
+x8ursDOB5/i1gsxIiAXI+MRZXjCJn+Ciyrz9zmiBPn7YQQm36usbdsxNCaBW3OUk
+3McbUpILpNfHNyc+TQT0ydsqYk+X2fSNGj99U6bBofHAm317TjY2j1k19dcdnVg=
+=3GrY
 -----END PGP SIGNATURE-----
-
-------enig2DABIGSRIWSBGQCVFEKHP--
+--=-=-=--
 
