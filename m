@@ -1,29 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uhgv1-0005pi-FF
-	for mharc-qemu-trivial@gnu.org; Wed, 29 May 2013 09:59:59 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:39626)
+	id 1UiLoZ-0002gq-Ik
+	for mharc-qemu-trivial@gnu.org; Fri, 31 May 2013 05:40:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50164)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1Uhguu-0005ov-Jm
-	for qemu-trivial@nongnu.org; Wed, 29 May 2013 09:59:57 -0400
+	(envelope-from <thomas@schwinge.name>) id 1UiLoW-0002cO-Ef
+	for qemu-trivial@nongnu.org; Fri, 31 May 2013 05:40:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1Uhgul-0001XS-Kz
-	for qemu-trivial@nongnu.org; Wed, 29 May 2013 09:59:52 -0400
-Received: from [216.171.111.232] (port=22260 helo=freebsd.org)
+	(envelope-from <thomas@schwinge.name>) id 1UiLoV-0006bm-6G
+	for qemu-trivial@nongnu.org; Fri, 31 May 2013 05:40:00 -0400
+Received: from smtprelay01.ispgateway.de ([80.67.31.39]:57700)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1Uhgul-0001XG-EF
-	for qemu-trivial@nongnu.org; Wed, 29 May 2013 09:59:43 -0400
-Received: from emaste (uid 1001) (envelope-from emaste@freebsd.org) id 9cc73
-	by freebsd.org (DragonFly Mail Agent 1);
-	Wed, 29 May 2013 09:59:42 -0400
-From: Ed Maste <emaste@freebsd.org>
+	(envelope-from <thomas@schwinge.name>) id 1UiLoV-0006bS-0F
+	for qemu-trivial@nongnu.org; Fri, 31 May 2013 05:39:59 -0400
+Received: from [217.84.5.141] (helo=stokes.schwinge.homeip.net)
+	by smtprelay01.ispgateway.de with esmtpa (Exim 4.68)
+	(envelope-from <thomas@schwinge.name>) id 1UiLoT-0007yc-1w
+	for qemu-trivial@nongnu.org; Fri, 31 May 2013 11:39:57 +0200
+Received: (qmail 910 invoked from network); 31 May 2013 09:39:39 -0000
+Received: from feldtkeller.schwinge.homeip.net (192.168.111.172)
+	by stokes.schwinge.homeip.net with QMQP; 31 May 2013 09:39:39 -0000
+Received: (nullmailer pid 17722 invoked by uid 1000);
+	Fri, 31 May 2013 09:39:28 -0000
+From: Thomas Schwinge <thomas@codesourcery.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 29 May 2013 09:58:29 -0400
-Message-Id: <1369835909-35664-1-git-send-email-emaste@freebsd.org>
-X-Mailer: git-send-email 1.7.11.5
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
-X-Received-From: 216.171.111.232
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] m25p80: Add Micron n25q032a
+Date: Fri, 31 May 2013 11:39:14 +0200
+Message-Id: <1369993154-17690-1-git-send-email-thomas@codesourcery.com>
+X-Mailer: git-send-email 1.7.10.4
+X-Df-Sender: dGhvbWFzQHNjaHdpbmdlLm5hbWU=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 80.67.31.39
+Cc: qemu-trivial@nongnu.org, Thomas Schwinge <thomas@codesourcery.com>
+Subject: [Qemu-trivial] [PATCH] fpu: Simplify floatx80ToCommonNaN function.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,29 +42,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 May 2013 13:59:58 -0000
+X-List-Received-Date: Fri, 31 May 2013 09:40:01 -0000
 
-Based on the datasheet at
-http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/N25Q/n25q_32mb_1_8v_65nm.pdf
-
-Signed-off-by: Ed Maste <emaste@freebsd.org>
+Signed-off-by: Thomas Schwinge <thomas@codesourcery.com>
 ---
- hw/block/m25p80.c | 1 +
- 1 file changed, 1 insertion(+)
+ fpu/softfloat-specialize.h |   15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 759c84d..a927a6b 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -123,6 +123,7 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+diff --git fpu/softfloat-specialize.h fpu/softfloat-specialize.h
+index 518f694..83add1a 100644
+--- fpu/softfloat-specialize.h
++++ fpu/softfloat-specialize.h
+@@ -934,15 +934,14 @@ static commonNaNT floatx80ToCommonNaN( floatx80 a STATUS_PARAM)
+     commonNaNT z;
  
-     /* Micron */
-+    { INFO("n25q032a",    0x20bb16,      0,  64 << 10,  64, ER_4K) },
-     { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, 0) },
-     { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, 0) },
-     { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
+     if ( floatx80_is_signaling_nan( a ) ) float_raise( float_flag_invalid STATUS_VAR);
+-    if ( a.low >> 63 ) {
+-        z.sign = a.high >> 15;
+-        z.low = 0;
+-        z.high = a.low << 1;
+-    } else {
+-        z.sign = floatx80_default_nan_high >> 15;
+-        z.low = 0;
+-        z.high = floatx80_default_nan_low << 1;
++    /* Replace a Pseudo NaN with a default NaN.  */
++    if (!(a.low >> 63)) {
++        a.low = floatx80_default_nan_low;
++        a.high = floatx80_default_nan_high;
+     }
++    z.sign = a.high >> 15;
++    z.low = 0;
++    z.high = a.low << 1;
+     return z;
+ }
+ 
 -- 
-1.7.11.5
+1.7.10.4
 
 
