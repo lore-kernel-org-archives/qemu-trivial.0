@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjSPh-0002EM-Tu
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2013 06:54:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55575)
+	id 1UjSak-0004RI-6m
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2013 07:06:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lekensteyn@gmail.com>) id 1UjSPc-0002Dd-CD
-	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 06:54:56 -0400
+	(envelope-from <Thomas_Schwinge@mentor.com>) id 1UjSad-0004Iy-9r
+	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 07:06:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lekensteyn@gmail.com>) id 1UjSPY-0006AE-J3
-	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 06:54:52 -0400
-Received: from mail-bk0-x236.google.com ([2a00:1450:4008:c01::236]:42158)
+	(envelope-from <Thomas_Schwinge@mentor.com>) id 1UjSaX-0001nm-QZ
+	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 07:06:15 -0400
+Received: from relay1.mentorg.com ([192.94.38.131]:54511)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lekensteyn@gmail.com>)
-	id 1UjSPY-00069w-9c; Mon, 03 Jun 2013 06:54:48 -0400
-Received: by mail-bk0-f54.google.com with SMTP id it19so307164bkc.13
-	for <multiple recipients>; Mon, 03 Jun 2013 03:54:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:user-agent:mime-version
-	:content-transfer-encoding:content-type;
-	bh=ifHWEnvw1K8VFP+vgh88EIOm+UMAtXAmxw46pHLjVpY=;
-	b=vR8EoFnk76YBehnD4GczAWsv5wcMl2zVEY2hW2+sQFCnl71lGzIZw5AS29e/zNOKjA
-	/vGrFcbVOFwicz6wnVsqhny7swQQbTxKiaJr65uFzWy8W2Z34j3dJnTi7+tuHvD9iFH2
-	SyfjfU/V4DZVb7SC4gh2xbx7ZM9+VS+MuQhAFwlMlcEIqHZ/RhJn55JbqKELBm+D3cOD
-	lFI512/EmBYxwS+nA/rYfiDmwj9Q9RbpgaoPSbYt/V4RcE3eYmQrDpNazXAKORMQ2g5w
-	O0VaSe5K1aOvbocpZ75/ng3RPw51NQmRv/8JWovNLzOuZF/rOAayszB+V8HfcaLHafAC
-	ELMQ==
-X-Received: by 10.205.75.3 with SMTP id yy3mr6319781bkb.80.1370256886678;
-	Mon, 03 Jun 2013 03:54:46 -0700 (PDT)
-Received: from al.localnet (al.lekensteyn.nl. [2001:470:1f15:b83::c0d1:f1ed])
-	by mx.google.com with ESMTPSA id
-	j8sm19990575bky.17.2013.06.03.03.54.44 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Mon, 03 Jun 2013 03:54:45 -0700 (PDT)
-From: Peter Wu <lekensteyn@gmail.com>
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Date: Mon, 03 Jun 2013 12:54:43 +0200
-Message-ID: <6745553.ZazUN2dGpZ@al>
-User-Agent: KMail/4.10.3 (Linux/3.9.1-1-custom; KDE/4.10.3; x86_64; ; )
+	(envelope-from <Thomas_Schwinge@mentor.com>)
+	id 1UjSaX-0001nV-KS; Mon, 03 Jun 2013 07:06:09 -0400
+Received: from svr-orw-exc-10.mgc.mentorg.com ([147.34.98.58])
+	by relay1.mentorg.com with esmtp 
+	id 1UjSaP-00078P-Gg from Thomas_Schwinge@mentor.com ;
+	Mon, 03 Jun 2013 04:06:01 -0700
+Received: from SVR-IES-FEM-01.mgc.mentorg.com ([137.202.0.104]) by
+	SVR-ORW-EXC-10.mgc.mentorg.com with Microsoft
+	SMTPSVC(6.0.3790.4675); Mon, 3 Jun 2013 04:06:01 -0700
+Received: from feldtkeller.schwinge.homeip.net (137.202.0.76) by
+	SVR-IES-FEM-01.mgc.mentorg.com (137.202.0.104) with Microsoft SMTP
+	Server id 14.2.247.3; Mon, 3 Jun 2013 12:05:59 +0100
+From: Thomas Schwinge <thomas@codesourcery.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA86uj7Er+1QadznCfTTEmDGK0NqVrWmvE365zNV1=j=3w@mail.gmail.com>
+References: <1369993154-17690-1-git-send-email-thomas@codesourcery.com>
+	<51A89273.8010400@msgid.tls.msk.ru>
+	<CAFEAcA9LomV1rkJPPctUgxG0aJzCHiGr6VYSsSmaGytvQv9hUQ@mail.gmail.com>
+	<87ppw7fgmh.fsf@schwinge.name>
+	<CAFEAcA86uj7Er+1QadznCfTTEmDGK0NqVrWmvE365zNV1=j=3w@mail.gmail.com>
+User-Agent: Notmuch/0.9-101-g81dad07 (http://notmuchmail.org) Emacs/23.4.1
+	(x86_64-pc-linux-gnu)
+Date: Mon, 3 Jun 2013 13:05:50 +0200
+Message-ID: <87k3mbfo8h.fsf@schwinge.name>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4008:c01::236
-Cc: Anthony Liguori <aliguori@us.ibm.com>
-Subject: [Qemu-trivial] [PATCH] qemu-doc,
-	help: update options/keys for GTK/SDL
+Content-Type: multipart/signed; boundary="=-=-="; micalg=pgp-sha1;
+	protocol="application/pgp-signature"
+X-OriginalArrivalTime: 03 Jun 2013 11:06:01.0418 (UTC)
+	FILETIME=[553C3AA0:01CE604A]
+X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
+	[fuzzy]
+X-Received-From: 192.94.38.131
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fpu: Simplify
+	floatx80ToCommonNaN function.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,174 +57,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Jun 2013 10:54:56 -0000
+X-List-Received-Date: Mon, 03 Jun 2013 11:06:19 -0000
 
-The GTK display type has been introduced in 1.5, replacing SDL as default. Some
-options only work with SDL and not GTK. This patch tries to address them.
+--=-=-=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-The `-display` option is updated with the new `gtk` option.
+Hi!
 
-The `-alt-grab` and `-ctrl-alt` options are not possible in GTK according to
-commit 5104a1f65088285ddf870aa641b9061064e8757d, this is now mentioned
-explicitly. Another related change is that only Ctrl-Alt-G can be used for
-(un)grbabing.
+On Fri, 31 May 2013 15:45:55 +0100, Peter Maydell <peter.maydell@linaro.org=
+> wrote:
+> On 31 May 2013 14:01, Thomas Schwinge <thomas@codesourcery.com> wrote:
+> > On Fri, 31 May 2013 13:34:12 +0100, Peter Maydell <peter.maydell@linaro=
+.org> wrote:
+> >> That said, I think any new patches to fpu/ need to
+> >> come with an explicit statement that they can be
+> >> licensed under the softfloat-2a license or GPLv2
+> >> or BSD (etc etc) so they aren't an obstacle to
+> >> the softfloat-2a-to-2b conversion that is in the works.
+> >> [cc'd Anthony so he can correct me if I'm wrong.]
+> >
+> > I hereby place this one contribution (which I think wouldn't constitute=
+ a
+> > copyrightable change anyway) into the Public Domain, allowing any kind =
+of
+> > usage.
+>=20
+> I think we'd generally suggest creative commons CC0 as being
+> in less of a legally grey area internationally than "public
+> domain", if you're happy with that.
 
-Window scaling seems also to be a SDL-specific feature and has been marked as
-such.
+Using Creative Commons' CC0 is likewise fine.
 
-Signed-off-by: Peter Wu <lekensteyn@gmail.com>
----
- qemu-doc.texi   | 18 ++++++++++++------
- qemu-options.hx | 28 ++++++++++++++++------------
- 2 files changed, 28 insertions(+), 18 deletions(-)
+> Either way,
+>=20
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/qemu-doc.texi b/qemu-doc.texi
-index 8022890..76bb4cd 100644
---- a/qemu-doc.texi
-+++ b/qemu-doc.texi
-@@ -275,9 +275,10 @@ targets do not need a disk image.
- @c man begin OPTIONS
- 
- During the graphical emulation, you can use special key combinations to change
--modes. The default key mappings are shown below, but if you use @code{-alt-grab}
--then the modifier is Ctrl-Alt-Shift (instead of Ctrl-Alt) and if you use
--@code{-ctrl-grab} then the modifier is the right Ctrl key (instead of Ctrl-Alt):
-+modes. The default key mappings are shown below. If you are using SDL display
-+mode instead of GTK, you can use @code{-alt-grab} to change the modifier to
-+Ctrl-Alt-Shift (instead of Ctrl-Alt) and @code{-ctrl-grab} to change it to right
-+Ctrl key (instead of Ctrl-Alt):
- 
- @table @key
- @item Ctrl-Alt-f
-@@ -294,7 +295,8 @@ Shrink the screen
- 
- @item Ctrl-Alt-u
- @kindex Ctrl-Alt-u
--Restore the screen's un-scaled dimensions
-+Restore the screen's un-scaled dimensions (SDL windows only, GTK does not
-+feature window scaling)
- 
- @item Ctrl-Alt-n
- @kindex Ctrl-Alt-n
-@@ -308,16 +310,20 @@ Monitor
- Serial port
- @end table
- 
-+@item Ctrl-Alt-G
-+@kindex Ctrl-Alt-G
-+Toggle mouse and keyboard grab in GTK mode.
-+
- @item Ctrl-Alt
- @kindex Ctrl-Alt
--Toggle mouse and keyboard grab.
-+Toggle mouse and keyboard grab in SDL windows.
- @end table
- 
- @kindex Ctrl-Up
- @kindex Ctrl-Down
- @kindex Ctrl-PageUp
- @kindex Ctrl-PageDown
--In the virtual consoles, you can use @key{Ctrl-Up}, @key{Ctrl-Down},
-+In the virtual consoles of SDL, you can use @key{Ctrl-Up}, @key{Ctrl-Down},
- @key{Ctrl-PageUp} and @key{Ctrl-PageDown} to move in the back log.
- 
- @kindex Ctrl-a h
-diff --git a/qemu-options.hx b/qemu-options.hx
-index bf94862..f7b0172 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -338,7 +338,7 @@ STEXI
- @item -name @var{name}
- @findex -name
- Sets the @var{name} of the guest.
--This name will be displayed in the SDL window caption.
-+This name will be displayed in the SDL and GTK window captions.
- The @var{name} will also be used for the VNC server.
- Also optionally set the top visible process name in Linux.
- ETEXI
-@@ -804,7 +804,7 @@ ETEXI
- 
- DEF("display", HAS_ARG, QEMU_OPTION_display,
-     "-display sdl[,frame=on|off][,alt_grab=on|off][,ctrl_grab=on|off]\n"
--    "            [,window_close=on|off]|curses|none|\n"
-+    "            [,window_close=on|off]|gtk|curses|none|\n"
-     "            vnc=<display>[,<optargs>]\n"
-     "                select display type\n", QEMU_ARCH_ALL)
- STEXI
-@@ -813,6 +813,8 @@ STEXI
- Select type of display to use. This option is a replacement for the
- old style -sdl/-curses/... options. Valid values for @var{type} are
- @table @option
-+@item gtk
-+Display video output via GTK which includes a menu bar.
- @item sdl
- Display video output via SDL (usually in a separate graphics
- window; see the SDL documentation for other possibilities).
-@@ -839,7 +841,7 @@ DEF("nographic", 0, QEMU_OPTION_nographic,
- STEXI
- @item -nographic
- @findex -nographic
--Normally, QEMU uses SDL to display the VGA output. With this option,
-+Normally, QEMU uses GTK to display the VGA output. With this option,
- you can totally disable graphical output so that QEMU is a simple
- command line application. The emulated serial port is redirected on
- the console. Therefore, you can still use QEMU to debug a Linux kernel
-@@ -852,7 +854,7 @@ DEF("curses", 0, QEMU_OPTION_curses,
- STEXI
- @item -curses
- @findex -curses
--Normally, QEMU uses SDL to display the VGA output.  With this option,
-+Normally, QEMU uses GTK to display the VGA output.  With this option,
- QEMU can display the VGA output when in text mode using a
- curses/ncurses interface.  Nothing is displayed in graphical mode.
- ETEXI
-@@ -869,27 +871,29 @@ workspace more convenient.
- ETEXI
- 
- DEF("alt-grab", 0, QEMU_OPTION_alt_grab,
--    "-alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)\n",
-+    "-alt-grab       use Ctrl-Alt-Shift to grab mouse in SDL (instead of Ctrl-Alt)\n",
-     QEMU_ARCH_ALL)
- STEXI
- @item -alt-grab
- @findex -alt-grab
--Use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt). Note that this also
--affects the special keys (for fullscreen, monitor-mode switching, etc).
-+Use Ctrl-Alt-Shift to grab mouse in SDL windows (instead of Ctrl-Alt). Note that
-+this also affects the special keys (for fullscreen, monitor-mode switching,
-+etc).
- ETEXI
- 
- DEF("ctrl-grab", 0, QEMU_OPTION_ctrl_grab,
--    "-ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)\n",
-+    "-ctrl-grab      use Right-Ctrl to grab mouse in SDL (instead of Ctrl-Alt)\n",
-     QEMU_ARCH_ALL)
- STEXI
- @item -ctrl-grab
- @findex -ctrl-grab
--Use Right-Ctrl to grab mouse (instead of Ctrl-Alt). Note that this also
--affects the special keys (for fullscreen, monitor-mode switching, etc).
-+Use Right-Ctrl to grab mouse in SDL windows (instead of Ctrl-Alt). Note that
-+this also affects the special keys (for fullscreen, monitor-mode switching,
-+etc).
- ETEXI
- 
- DEF("no-quit", 0, QEMU_OPTION_no_quit,
--    "-no-quit        disable SDL window close capability\n", QEMU_ARCH_ALL)
-+    "-no-quit        disable SDL and GTK window close capability\n", QEMU_ARCH_ALL)
- STEXI
- @item -no-quit
- @findex -no-quit
-@@ -1080,7 +1084,7 @@ DEF("vnc", HAS_ARG, QEMU_OPTION_vnc ,
- STEXI
- @item -vnc @var{display}[,@var{option}[,@var{option}[,...]]]
- @findex -vnc
--Normally, QEMU uses SDL to display the VGA output.  With this option,
-+Normally, QEMU uses GTK to display the VGA output.  With this option,
- you can have QEMU listen on VNC display @var{display} and redirect the VGA
- display over the VNC session.  It is very useful to enable the usb
- tablet device when using this option (option @option{-usbdevice
--- 
-1.8.3
+Thanks.
 
+
+Oh, and as I saw you wondering in the QEMU IRC channel, why I had
+bothered with this change anyway, the reason is that I have some further
+SoftFloat changes forthcoming, and in the course of these stumbled over
+that oddity in the floatx80ToCommonNaN function, and already submitted
+that one separately asnot related to my other changes.
+
+
+Gr=C3=BC=C3=9Fe,
+ Thomas
+
+--=-=-=
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iQEcBAEBAgAGBQJRrHiOAAoJENuKOtuXzphJKzAH+gOFy1MU8U6CIBDh2guwGtms
+5YQoj1RD3+AOPwQKbmg74bS8suXI3eUBJLMxjiQfJ9xfWKhrk+SBIZ694i122z81
+6SqkzzUn3PRFra5jwvfx2WR6anpaqR/9g414QBBLOkO2uvchFOcHItRHxhVP1LUV
+PhDshVEs0CWOTIWu7JU/1c3SXsaq6supl3XZzGM1+wfN/zIkpoSnT5tS/YNbMsWS
+FvzPvfsviCwHnaiTX3Zyll/q6upiM5Q6YHqOf9Wvz4vjr24HBpQ7NfNr/olJxg8G
+pfiTNpQPKAbnPKZYqz/F0s2m3Xz3GyzQv+LeoEghuUBiNByiHBWRMfPZSfvb6bM=
+=Aa+a
+-----END PGP SIGNATURE-----
+--=-=-=--
 
