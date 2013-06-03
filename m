@@ -1,41 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjU5q-0004oG-Dw
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2013 08:42:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56990)
+	id 1UjUYV-00073e-4r
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2013 09:12:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36441)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UjU5k-0004gx-By
-	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 08:42:33 -0400
+	(envelope-from <stefanha@redhat.com>) id 1UjUYJ-0006kW-49
+	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 09:12:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UjU5f-0008IR-EB
-	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 08:42:28 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:34947)
+	(envelope-from <stefanha@redhat.com>) id 1UjUYC-0002XD-OX
+	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 09:11:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:18133)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1UjU5U-0008Fi-RA; Mon, 03 Jun 2013 08:42:12 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 34E5A4063B;
-	Mon,  3 Jun 2013 16:42:10 +0400 (MSK)
-Received: from wh.tls.msk.ru (wh.tls.msk.ru [192.168.177.7])
-	by tsrv.corpit.ru (Postfix) with ESMTP id 22C5C48B;
-	Mon,  3 Jun 2013 16:42:10 +0400 (MSK)
-Message-ID: <51AC8F21.3070109@msgid.tls.msk.ru>
-Date: Mon, 03 Jun 2013 16:42:09 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:10.0.12) Gecko/20130116 Icedove/10.0.12
-MIME-Version: 1.0
+	(envelope-from <stefanha@redhat.com>)
+	id 1UjUXw-0002Uc-7z; Mon, 03 Jun 2013 09:11:36 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r53DBYc2001052
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 3 Jun 2013 09:11:34 -0400
+Received: from localhost (ovpn-112-30.ams2.redhat.com [10.36.112.30])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r53DBWMV019908; Mon, 3 Jun 2013 09:11:33 -0400
+Date: Mon, 3 Jun 2013 15:11:32 +0200
+From: Stefan Hajnoczi <stefanha@redhat.com>
 To: Eric Blake <eblake@redhat.com>
-References: <1370251243-20352-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<51AC8D38.90205@redhat.com>
-In-Reply-To: <51AC8D38.90205@redhat.com>
-X-Enigmail-Version: 1.4.1
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Message-ID: <20130603131132.GA29131@stefanha-thinkpad.redhat.com>
+References: <1370249911-19708-1-git-send-email-stefanha@redhat.com>
+	<1370249911-19708-3-git-send-email-stefanha@redhat.com>
+	<51AC8B6E.9040002@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <51AC8B6E.9040002@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] acpi: actually
- require either data= or file= for -acpitable
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Cam Macdonell <cam@cs.ualberta.ca>, qemu-devel@nongnu.org,
+	qemu-stable@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2 2/2] ivshmem: add missing error exit(2)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,44 +50,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Jun 2013 12:42:33 -0000
+X-List-Received-Date: Mon, 03 Jun 2013 13:12:09 -0000
 
-03.06.2013 16:34, Eric Blake wrote:
-> On 06/03/2013 03:20 AM, Michael Tokarev wrote:
->> Initially the code ensured that we have exactly one of data= or file= option for -acpitable.  But after some transformations, the condition becomes
->> 
->> if (has_data == has_file) { error }
->> 
->> to mean, probably, that both should not be set at the same time.  But this condition does not cover the case when neither is set, and we generate bogus acpi table in this case.
->> 
->> Instead, check if sum of the two is exactly 1.
->> 
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru> --- hw/acpi/core.c |    2 +- 1 file changed, 1 insertion(+), 1 deletion(-)
->> 
->> diff --git a/hw/acpi/core.c b/hw/acpi/core.c index 42eeace..2815d8c 100644 --- a/hw/acpi/core.c +++ b/hw/acpi/core.c @@ -249,7 +249,7 @@ void acpi_table_add(const QemuOpts *opts, Error **errp) if (err) { goto out; } -    if (hdrs->has_file == hdrs->has_data) {
+On Mon, Jun 03, 2013 at 06:26:22AM -0600, Eric Blake wrote:
+> On 06/03/2013 02:58 AM, Stefan Hajnoczi wrote:
+> > If the user fails to specify 'chardev' or 'shm' then we cannot continue.
+> > Exit right away so that we don't invoke shm_open(3) with a NULL pointer.
+> > 
+> > It would be nice to replace exit(1) with error returns in the PCI device
+> > .init() function, but leave that for another patch since exit(1) is
+> > currently used elsewhere.
+> > 
+> > Spotted by Coverity.
+> > 
+> > Cc: Cam Macdonell <cam@cs.ualberta.ca>
+> > Cc: qemu-stable@nongnu.org
+> > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> > ---
+> >  hw/misc/ivshmem.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> > 
+> > diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+> > index a19a6d6..5658f73 100644
+> > --- a/hw/misc/ivshmem.c
+> > +++ b/hw/misc/ivshmem.c
+> > @@ -735,6 +735,7 @@ static int pci_ivshmem_init(PCIDevice *dev)
+> >  
+> >          if (s->shmobj == NULL) {
+> >              fprintf(stderr, "Must specify 'chardev' or 'shm' to ivshmem\n");
+> > +            exit(1);
 > 
-> NACK.
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 > 
-> hdrs->has_file and hdrs->has_data are both bool.
+> However, I prefer exit(EXIT_FAILURE) rather than exit(1), to make it a
+> bit easier to grep for known failure exits.  Libvirt has a syntax
+> checker (taken from gnulib) that enforces such a style, if qemu would
+> like to adopt that style.
 
-Yup.
-
-> Pre-patch, the table of possible combinations is:
-> 
-> false == false => error message, zero given false == true => okay, exactly one given true == false => okay, exactly one given true == true => error message, two given
-> 
-> which is already what you want.
-
-Ok, you're right.  Thank you for spotting this!
-
-This function has another error -- if the file specified
-(either for data= or file=) can't be read, it happily
-continues instead of erroring out.  _That_ is the bug
-I tried to hunt but catched something else entirely ;)
-
-Will send a real fix later today... :)
-
-Thanks,
-
-/mjt
+I like EXIT_FAILURE too but the rest of the file inconsistently uses
+exit(1) and exit(-1).  I decided exit(1) was the least evil but the
+longer term fix is to return instead of exiting.
 
