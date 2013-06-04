@@ -1,49 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjqRS-00036G-Ko
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 08:34:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42911)
+	id 1UjsIy-0006nM-11
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 10:33:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51495)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UjqRN-00033d-OU
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 08:34:18 -0400
+	(envelope-from <carpeddiem@gmail.com>) id 1UjsIo-0006aM-Lu
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 10:33:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UjqRJ-0001nN-59
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 08:34:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:64837)
+	(envelope-from <carpeddiem@gmail.com>) id 1UjsIg-0005as-KK
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 10:33:33 -0400
+Received: from mail-qc0-x22a.google.com ([2607:f8b0:400d:c01::22a]:53833)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1UjqRE-0001mN-QY; Tue, 04 Jun 2013 08:34:08 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r54CY7Sf001676
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 4 Jun 2013 08:34:07 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-44.ams2.redhat.com
-	[10.36.112.44])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r54CY3Zl017993; Tue, 4 Jun 2013 08:34:04 -0400
-Message-ID: <51ADDEB2.3020904@redhat.com>
-Date: Tue, 04 Jun 2013 14:33:54 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
+	(envelope-from <carpeddiem@gmail.com>)
+	id 1UjsID-0005QD-LI; Tue, 04 Jun 2013 10:32:57 -0400
+Received: by mail-qc0-f170.google.com with SMTP id s11so176464qcw.29
+	for <multiple recipients>; Tue, 04 Jun 2013 07:32:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:date
+	:x-google-sender-auth:message-id:subject:from:to:cc:content-type;
+	bh=60ACxz7HTcwoFrcXkP8U1ZtsTMbYbxzxfvpnVPYahFU=;
+	b=XbZzHURvh0mOuu0v0LP+T6DwLo6IRVQAqy9T80h1ejrYa33sb04BTMWNw9gxOtuwUq
+	ah/4Xf99bsGfD39Rc+1H1AjUGQR9sp8P4dqPHGAPmeRnn7zrHLgymi4kerwHy8WDg3uo
+	NnNjdza0B2QJmGYxKPYUKybcBUY2yJrnUBzMuREqTwIr3f2stquqbUutepNYeXcL/BsH
+	R/rYZvUNykCuLKFWyPaPAiFfGMu2/JEotVJjZHYwQkGxtyq/nQVHTcqFxHkHd0yDDgNr
+	hvSYyQ/J3smamhS2/BKTxGgT727vXmzVaUsjxJGuGaloIFeI8LIrSKdeToUycA7x4SiD
+	RAkA==
 MIME-Version: 1.0
-To: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-References: <cover.1370237352.git.peter.crosthwaite@xilinx.com>
-	<54b43e8b5fe6acff6fe667062d412c0b224f92f6.1370237352.git.peter.crosthwaite@xilinx.com>
-	<51ADD2DD.3090909@suse.de>
-In-Reply-To: <51ADD2DD.3090909@suse.de>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-15
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	r54CY7Sf001676
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com,
-	peter.crosthwaite@xilinx.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 2/3] memory:
- as_update_topology_pass: Improve comments
+X-Received: by 10.229.134.134 with SMTP id j6mr9285043qct.117.1370356376959;
+	Tue, 04 Jun 2013 07:32:56 -0700 (PDT)
+Sender: carpeddiem@gmail.com
+Received: by 10.224.12.17 with HTTP; Tue, 4 Jun 2013 07:32:56 -0700 (PDT)
+In-Reply-To: <CAEgOgz6KQkHtLiw9p3qreYP980L+UedhXZ5vx3sJP1-k-DfF3g@mail.gmail.com>
+References: <1369835909-35664-1-git-send-email-emaste@freebsd.org>
+	<CAEgOgz6KQkHtLiw9p3qreYP980L+UedhXZ5vx3sJP1-k-DfF3g@mail.gmail.com>
+Date: Tue, 4 Jun 2013 10:32:56 -0400
+X-Google-Sender-Auth: VYZP_M4jPSZhvTwZBjqcXll8JUw
+Message-ID: <CAPyFy2BJ_JGG=xjLBaQpEbz6CqJQGF9yOsAZ3q2qJEyjugVDTw@mail.gmail.com>
+From: Ed Maste <emaste@freebsd.org>
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c01::22a
+Cc: qemu-trivial@nongnu.org, suneelg@xilinx.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] m25p80: Add Micron n25q032a
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,16 +54,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 12:34:19 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 14:33:42 -0000
 
-Il 04/06/2013 13:43, Andreas F=E4rber ha scritto:
-> Am 03.06.2013 07:32, schrieb peter.crosthwaite@xilinx.com:
->> > From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
->> >=20
->> > These comments we're a little difficult to read. First one had
-> While we're picky: "were" - Paolo can you fix up in your queue?
+On 4 June 2013 07:31, Peter Crosthwaite <peter.crosthwaite@xilinx.com> wrote:
+>>      /* Micron */
+>> +    { INFO("n25q032a",    0x20bb16,      0,  64 << 10,  64, ER_4K) },
+>
+> Does this have a11 and a13 variants as well?
+>
+>>      { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, 0) },
+>>      { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, 0) },
+>
+> And this looks odd, these parts don't support 4K erase as well?
 
-Of course.
-
-Paolo
+You're correct on both counts - I originally added the n25q032a based
+on the n25q256a entry, then sync'd the list with the one from the
+Linux kernel, and it's missing the 4K sector erase flag.  I'll send a
+followup patch to update all of the Micron entries.
 
