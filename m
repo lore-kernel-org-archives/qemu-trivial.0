@@ -1,49 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjyGT-0003pp-PS
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 16:55:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58851)
+	id 1UjyHK-0004ok-8A
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 16:56:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59048)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UjyGP-0003el-9n
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:55:31 -0400
+	(envelope-from <alevy@redhat.com>) id 1UjyHI-0004o3-1J
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:56:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UjyGO-0007m6-7p
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:55:29 -0400
-Received: from mail-la0-x22a.google.com ([2a00:1450:4010:c03::22a]:58843)
+	(envelope-from <alevy@redhat.com>) id 1UjyHH-0007vt-46
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:56:23 -0400
+Received: from mx3-phx2.redhat.com ([209.132.183.24]:52226)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UjyGO-0007lc-06
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:55:28 -0400
-Received: by mail-la0-f42.google.com with SMTP id eb20so721620lab.29
-	for <qemu-trivial@nongnu.org>; Tue, 04 Jun 2013 13:55:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:x-gm-message-state;
-	bh=OVhlpgjcXKTnFDvAKvcX91RHl2yy6oYderknMQ76Y+Y=;
-	b=Gazmz0JwCT08wxOUvLDNAWIegdP3mXPGpx9fymCwzx/3PuAhsNQnG5CSA7j+kdat3D
-	YsE3x32xPG5zAYP5RX/N9KOugHTg/0H766Y5q1ByImXWZvQdwjnE3Q8Exo68SjJ2Cfr5
-	4c8FfUfGYhqX16nhu0245t4VDXNOVI4HHTSVA9xtW/jACFDooyAkdVlnHeW/A6fFRe3L
-	lmTh9wrt2XcagtyolbUFxVB3H8qGrn79fZBLGteViFkTBatjzq1JL1LLOvdNKHyT3Tqs
-	1EQoIhvPBYIKYFHE7i0m5stX0RKRy62KHlOwT0LiRBFVledBG0FCRHZM38KgN5WaSG9D
-	2lwA==
-X-Received: by 10.112.120.170 with SMTP id ld10mr570414lbb.31.1370379326458;
-	Tue, 04 Jun 2013 13:55:26 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.2.39 with HTTP; Tue, 4 Jun 2013 13:55:06 -0700 (PDT)
-In-Reply-To: <1370377419-31788-3-git-send-email-alevy@redhat.com>
+	(envelope-from <alevy@redhat.com>)
+	id 1UjyHE-0007vR-K4; Tue, 04 Jun 2013 16:56:20 -0400
+Received: from zmail15.collab.prod.int.phx2.redhat.com
+	(zmail15.collab.prod.int.phx2.redhat.com [10.5.83.17])
+	by mx3-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id r54KuIet019036;
+	Tue, 4 Jun 2013 16:56:18 -0400
+Date: Tue, 4 Jun 2013 16:56:17 -0400 (EDT)
+From: Alon Levy <alevy@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <827414769.14303662.1370379377725.JavaMail.root@redhat.com>
+In-Reply-To: <CAFEAcA9oj-yCdsQck4oJPc__MyfrroMB2aFKSxTx1=PYfS2WCw@mail.gmail.com>
 References: <1370377419-31788-1-git-send-email-alevy@redhat.com>
-	<1370377419-31788-3-git-send-email-alevy@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Jun 2013 21:55:06 +0100
-Message-ID: <CAFEAcA9T6dgQFOuXCOL=oJY0MZy3ZYrxo5qPwOn12D35miqPcw@mail.gmail.com>
-To: Alon Levy <alevy@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnrFTzrDAQ49DXgSkzRa9AF89a1UM32twXX+MzkJ2dVjodUC67AocePLi/nf0JENFvOydTd
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c03::22a
+	<1370377419-31788-2-git-send-email-alevy@redhat.com>
+	<CAFEAcA9oj-yCdsQck4oJPc__MyfrroMB2aFKSxTx1=PYfS2WCw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.5.82.11]
+X-Mailer: Zimbra 8.0.3_GA_5664 (ZimbraWebClient - FF21 (Linux)/8.0.3_GA_5664)
+Thread-Topic: use qemu_pipe_non_block
+Thread-Index: uAILXgL8BgG+tc1XJQ/MYWbv9WpAjg==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 209.132.183.24
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/5] libcacard/vscclient:
- fix leakage of socket on error paths
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/5] use qemu_pipe_non_block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,14 +46,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 20:55:31 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 20:56:25 -0000
 
-On 4 June 2013 21:23, Alon Levy <alevy@redhat.com> wrote:
-> Spotted by Coverity.
->
-> Signed-off-by: Alon Levy <alevy@redhat.com>
+> On 4 June 2013 21:23, Alon Levy <alevy@redhat.com> wrote:
+> > --- a/hw/display/qxl.c
+> > +++ b/hw/display/qxl.c
+> > @@ -1797,15 +1797,11 @@ static void qxl_send_events(PCIQXLDevice *d,
+> > uint32_t events)
+> >
+> >  static void init_pipe_signaling(PCIQXLDevice *d)
+> >  {
+> > -    if (pipe(d->pipe) < 0) {
+> > -        fprintf(stderr, "%s:%s: qxl pipe creation failed\n",
+> > -                __FILE__, __func__);
+> > +    if (qxl_pipe_non_block(d->pipe)) {
+> 
+> Surely this can't compile? -- this function doesn't exist.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+I am abusing my right to post to this list, sorry. I didn't actually try to compile.
 
--- PMM
+> 
+> thanks
+> -- PMM
+> 
+> 
 
