@@ -1,29 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ujtdx-0002iu-Qp
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 11:59:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56249)
+	id 1Ujxm7-0001JH-St
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 16:24:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51948)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1Ujtdr-0002hW-P6
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 11:59:28 -0400
+	(envelope-from <alevy@redhat.com>) id 1Ujxm0-00018N-PU
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:24:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1Ujtdk-0000FR-Qk
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 11:59:23 -0400
-Received: from [216.171.111.232] (port=64419 helo=freebsd.org)
+	(envelope-from <alevy@redhat.com>) id 1Ujxlw-0005qP-7L
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:24:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63633)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1Ujtdk-0000Eg-JU
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 11:59:16 -0400
-Received: from emaste (uid 1001) (envelope-from emaste@freebsd.org) id 9ccb7
-	by freebsd.org (DragonFly Mail Agent 1);
-	Tue, 04 Jun 2013 11:59:15 -0400
-From: Ed Maste <emaste@freebsd.org>
-To: qemu-devel@nongnu.org
-Date: Tue,  4 Jun 2013 11:59:14 -0400
-Message-Id: <1370361554-91658-1-git-send-email-emaste@freebsd.org>
-X-Mailer: git-send-email 1.7.11.5
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
-X-Received-From: 216.171.111.232
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] block/m25p80: Update Micron entries
+	(envelope-from <alevy@redhat.com>)
+	id 1Ujxlm-0005oA-GT; Tue, 04 Jun 2013 16:23:50 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r54KNnYb005958
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 4 Jun 2013 16:23:49 -0400
+Received: from garlic.sbx07344.newyony.wayport.net (vpn1-5-107.ams2.redhat.com
+	[10.36.5.107])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r54KNeZf022345; Tue, 4 Jun 2013 16:23:44 -0400
+From: Alon Levy <alevy@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Tue,  4 Jun 2013 16:23:35 -0400
+Message-Id: <1370377419-31788-1-git-send-email-alevy@redhat.com>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH 1/5] oslib-posix: add qemu_pipe_non_block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,44 +40,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 15:59:29 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 20:24:10 -0000
 
-- Split 32Mb and 256Mb parts into a11 and a13 variants.
-- Add the 4K sector flag to the 128Mb parts.  (These entries were taken from
-  the Linux kernel list, which is missing the flag.)
-- Fill out the table of sizes with entries for 64Mb parts.
+Used by the followin patch.
 
-Prodded by Peter Crosthwaite.
-
-Signed-off-by: Ed Maste <emaste@freebsd.org>
+Signed-off-by: Alon Levy <alevy@redhat.com>
 ---
- hw/block/m25p80.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ include/qemu-common.h |  1 +
+ util/oslib-posix.c    | 19 +++++++++++++++++++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index a927a6b..8c3b7f0 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -123,10 +123,14 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index cb82ef3..c24d75c 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -232,6 +232,7 @@ ssize_t qemu_recv_full(int fd, void *buf, size_t count, int flags)
  
-     /* Micron */
--    { INFO("n25q032a",    0x20bb16,      0,  64 << 10,  64, ER_4K) },
--    { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, 0) },
--    { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, 0) },
--    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
-+    { INFO("n25q032a11",  0x20bb16,      0,  64 << 10,  64, ER_4K) },
-+    { INFO("n25q032a13",  0x20ba16,      0,  64 << 10,  64, ER_4K) },
-+    { INFO("n25q064a11",  0x20bb17,      0,  64 << 10, 128, ER_4K) },
-+    { INFO("n25q064a13",  0x20ba17,      0,  64 << 10, 128, ER_4K) },
-+    { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, ER_4K) },
-+    { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, ER_4K) },
-+    { INFO("n25q256a11",  0x20bb19,      0,  64 << 10, 512, ER_4K) },
-+    { INFO("n25q256a13",  0x20ba19,      0,  64 << 10, 512, ER_4K) },
+ #ifndef _WIN32
+ int qemu_pipe(int pipefd[2]);
++int qemu_pipe_non_block(int pipefd[2]);
+ #endif
  
-     /* Spansion -- single (large) sector size only, at least
-      * for the chips listed here (without boot sectors).
+ #ifdef _WIN32
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 3dc8b1b..bc2ce2e 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -188,6 +188,25 @@ int qemu_pipe(int pipefd[2])
+     return ret;
+ }
+ 
++int qemu_pipe_non_block(int pipefd[2])
++{
++    int ret;
++
++    ret = qemu_pipe(pipefd);
++    if (ret) {
++        return ret;
++    }
++    if (fcntl(card->pipe[0], F_SETFL, O_NONBLOCK) == -1) {
++        return -errno;
++    }
++    if (fcntl(card->pipe[1], F_SETFL, O_NONBLOCK) == -1) {
++        return -errno;
++    }
++    if (fcntl(card->pipe[0], F_SETOWN, getpid()) == -1) {
++        return -errno;
++    }
++}
++
+ int qemu_utimens(const char *path, const struct timespec *times)
+ {
+     struct timeval tv[2], tv_now;
 -- 
-1.7.11.5
+1.8.2.1
 
 
