@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjyWA-0001FK-Vh
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 17:11:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34777)
+	id 1UjyX4-00022N-56
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 17:12:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34971)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1UjyW7-0001B1-RD
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:11:45 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UjyX1-00020d-21
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:12:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1UjyW6-0004db-Go
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:11:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51649)
+	(envelope-from <peter.maydell@linaro.org>) id 1UjyX0-000544-8l
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:12:38 -0400
+Received: from mail-lb0-f171.google.com ([209.85.217.171]:35052)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1UjyW2-0004cA-It; Tue, 04 Jun 2013 17:11:38 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r54LBbOp027855
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 4 Jun 2013 17:11:37 -0400
-Received: from [10.3.113.96] (ovpn-113-96.phx2.redhat.com [10.3.113.96])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r54LBa5p020054; Tue, 4 Jun 2013 17:11:36 -0400
-Message-ID: <51AE5808.6000000@redhat.com>
-Date: Tue, 04 Jun 2013 15:11:36 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
+	(envelope-from <peter.maydell@linaro.org>) id 1UjyX0-00053s-1s
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:12:38 -0400
+Received: by mail-lb0-f171.google.com with SMTP id v5so1175857lbc.2
+	for <qemu-trivial@nongnu.org>; Tue, 04 Jun 2013 14:12:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=Rlo5pDK/7FHWlmmL+yXpGChfn70FKZMbLOhr2fff1nI=;
+	b=R/IzOMxeVmoZCOGiyA2dAEF2s3KefwbjPsWIZ+P0+CzZC7finRxGHR02jSK7pIEDHi
+	+BU4FT557/tdDGQulyYGHrYbr3vWXK6+yLQzfeO3W1Ew7UdMoLhJPwH/CH9xaRnLvVxU
+	HbrfSViIlAJjmNteQD+pxWAQLQQypKrsgRsc267bdXcT//X70ZUHPBF+yaV/lGC8ZCvb
+	3uy1N52NoZtXNzD5yDXkCvhv4hDMqIJOnvDcK2twh34PMkKxShuUadXmgrhvrXRE9Wp8
+	ajlTwWhs79aNPHA72x2XZA1JDnwMouuAuf/GK+wq5HhQ49xVTS3z59dLOJBno8wQa4P5
+	VEAw==
+X-Received: by 10.112.120.170 with SMTP id ld10mr595001lbb.31.1370380357103;
+	Tue, 04 Jun 2013 14:12:37 -0700 (PDT)
 MIME-Version: 1.0
-To: Alon Levy <alevy@redhat.com>
+Received: by 10.112.2.39 with HTTP; Tue, 4 Jun 2013 14:12:16 -0700 (PDT)
+In-Reply-To: <1370377419-31788-5-git-send-email-alevy@redhat.com>
 References: <1370377419-31788-1-git-send-email-alevy@redhat.com>
-In-Reply-To: <1370377419-31788-1-git-send-email-alevy@redhat.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="----enig2WMGCRMGRCIUORSDJFAJR"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+	<1370377419-31788-5-git-send-email-alevy@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Jun 2013 22:12:16 +0100
+Message-ID: <CAFEAcA8x34tG4SqR6J8GvPALcsGC+=U+53v=UkWsL=Dks8Z6Lg@mail.gmail.com>
+To: Alon Levy <alevy@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQkcP5w+5lcyClR25vyIg/jMKXNKbI7Xgiwt0fLf8eBih5NFuS5j/JIE2Vvibv15+OF1Fad0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.171
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/5] oslib-posix: add
-	qemu_pipe_non_block
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 5/5] libcacard/vscclient.c:
+ fix use of uninitialized variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,84 +55,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 21:11:45 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 21:12:40 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
-------enig2WMGCRMGRCIUORSDJFAJR
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On 4 June 2013 21:23, Alon Levy <alevy@redhat.com> wrote:
+> Found by Coverity.
+>
+> Signed-off-by: Alon Levy <alevy@redhat.com>
+> ---
+>  libcacard/vscclient.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
+> index 5180d29..4275c23 100644
+> --- a/libcacard/vscclient.c
+> +++ b/libcacard/vscclient.c
+> @@ -645,7 +645,7 @@ main(
+>      GIOChannel *channel_stdin;
+>      char *qemu_host;
+>      char *qemu_port;
+> -    VSCMsgHeader mhHeader;
+> +    VSCMsgHeader mhHeader = {0,};
 
-On 06/04/2013 02:23 PM, Alon Levy wrote:
-> Used by the followin patch.
+As far as I can see we only use this variable once:
 
-s/followin/following/
+    send_msg(VSC_Init, mhHeader.reader_id, &init, sizeof(init));
 
-> =20
-> +int qemu_pipe_non_block(int pipefd[2])
-> +{
-> +    int ret;
-> +
-> +    ret =3D qemu_pipe(pipefd);
+so wouldn't it be better just to directly pass a constant
+"0" to the send_msg() call? Hiding a single uint32_t in
+a struct seems a bit obscure.
 
-qemu_pipe() already uses pipe2() when available; it seems like it would
-be nicer to use pipe2's O_NONBLOCK option directly in one syscall (where
-supported) instead of having to make additional syscalls after the fact.
- Would it just be smarter to change the signature of qemu_pipe() to add
-a bool block parameter, and then change the 5 existing callers to pass
-false with your later patch in the series passing true, and do it
-without creating a new wrapper?
-
-> +    if (ret) {
-> +        return ret;
-> +    }
-> +    if (fcntl(card->pipe[0], F_SETFL, O_NONBLOCK) =3D=3D -1) {
-> +        return -errno;
-> +    }
-> +    if (fcntl(card->pipe[1], F_SETFL, O_NONBLOCK) =3D=3D -1) {
-> +        return -errno;
-
-Leaks fds.  If you're going to report error, then you must close the fds
-already created.
-
-> +    }
-> +    if (fcntl(card->pipe[0], F_SETOWN, getpid()) =3D=3D -1) {
-> +        return -errno;
-
-Same comment about fd leaks.
-
-This part seems like a useful change, IF you plan on using SIGIO and
-SIGURG signals; and it is something which pipe2() cannot optimize, so I
-can see why you are adding a new function instead of changing
-qemu_pipe() and adjust all its callers to pass an additional parameter.
- But are you really planning on using SIGIO/SIGURG?
-
-Furthermore, this is undefined behavior.  According to POSIX, use of
-F_SETOWN is only portable on sockets, not pipes.  It may work on Linux,
-but you'll need to be aware of what it does on other platforms.
-http://pubs.opengroup.org/onlinepubs/9699919799/functions/fcntl.html
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
-------enig2WMGCRMGRCIUORSDJFAJR
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.13 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJRrlgIAAoJEKeha0olJ0Nqb4sIAJ4vj/nKYf2B65JPThJ7we56
-Sfw1BxFH+bg5CyHgyqQ46nGeWH10t1lA+9VfFkTXlhD7N2dIPNEBhy7p5tO8Efj0
-YDKcLsFPxGX1t/luCFzZdlcsit+C+Sz4lqdAmf9O16WemeByOpBPJnJFB3ec5nnU
-+5CqsLyfnThneJk8PqSSmhLmImzVSdJeLN5vC2Yni3Qkt1k84EWrteatpGKvPowt
-Ksp2Mi0nR42TymmnXbUn4kAHYDSsfR+KU0+c0st/K64qnjkivlX/+rscyk2wMd2H
-6lXTbUKPACV6IOt406MZBaz7LWjnxz00wBaiFGlfPJxCK0sCuX4NOOxdbwfEtu4=
-=evgq
------END PGP SIGNATURE-----
-
-------enig2WMGCRMGRCIUORSDJFAJR--
+thanks
+-- PMM
 
