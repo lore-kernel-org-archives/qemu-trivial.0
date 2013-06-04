@@ -1,45 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjZJt-0002jw-MK
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2013 14:17:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49898)
+	id 1UjiNY-0005mC-RP
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2013 23:57:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45305)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1UjZJo-0002hX-JB
-	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 14:17:25 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UjiNW-0005ho-Ak
+	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 23:57:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1UjZJk-00026P-2B
-	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 14:17:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:24808)
+	(envelope-from <mjt@tls.msk.ru>) id 1UjiNU-0005eT-Tv
+	for qemu-trivial@nongnu.org; Mon, 03 Jun 2013 23:57:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:39369)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1UjZJj-00026H-QL; Mon, 03 Jun 2013 14:17:15 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r53IHEav002934
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 3 Jun 2013 14:17:14 -0400
-Received: from lacos-laptop.usersys.redhat.com (vpn1-4-126.ams2.redhat.com
-	[10.36.4.126])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r53IHCCr032677; Mon, 3 Jun 2013 14:17:13 -0400
-Message-ID: <51ACDE38.6050708@redhat.com>
-Date: Mon, 03 Jun 2013 20:19:36 +0200
-From: Laszlo Ersek <lersek@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130513 Thunderbird/17.0.6
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UjiNQ-0005da-Fl; Mon, 03 Jun 2013 23:57:40 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id DFA034076F;
+	Tue,  4 Jun 2013 07:57:38 +0400 (MSK)
+Message-ID: <51AD65B2.5010903@msgid.tls.msk.ru>
+Date: Tue, 04 Jun 2013 07:57:38 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1370251243-20352-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<51AC8D38.90205@redhat.com> <51AC8F21.3070109@msgid.tls.msk.ru>
-In-Reply-To: <51AC8F21.3070109@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
+To: Peter Wu <lekensteyn@gmail.com>
+References: <6745553.ZazUN2dGpZ@al>
+In-Reply-To: <6745553.ZazUN2dGpZ@al>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
 	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] acpi: actually
- require either data= or file= for -acpitable
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-doc,
+ help: update options/keys for GTK/SDL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,47 +46,187 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Jun 2013 18:17:25 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 03:57:47 -0000
 
-On 06/03/13 14:42, Michael Tokarev wrote:
-> 03.06.2013 16:34, Eric Blake wrote:
->> On 06/03/2013 03:20 AM, Michael Tokarev wrote:
->>> Initially the code ensured that we have exactly one of data= or file= option for -acpitable.  But after some transformations, the condition becomes
->>>
->>> if (has_data == has_file) { error }
->>>
->>> to mean, probably, that both should not be set at the same time.  But this condition does not cover the case when neither is set, and we generate bogus acpi table in this case.
->>>
->>> Instead, check if sum of the two is exactly 1.
->>>
->>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru> --- hw/acpi/core.c |    2 +- 1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/hw/acpi/core.c b/hw/acpi/core.c index 42eeace..2815d8c 100644 --- a/hw/acpi/core.c +++ b/hw/acpi/core.c @@ -249,7 +249,7 @@ void acpi_table_add(const QemuOpts *opts, Error **errp) if (err) { goto out; } -    if (hdrs->has_file == hdrs->has_data) {
->>
->> NACK.
->>
->> hdrs->has_file and hdrs->has_data are both bool.
+03.06.2013 14:54, Peter Wu wrote:
+> The GTK display type has been introduced in 1.5, replacing SDL as default. Some
+> options only work with SDL and not GTK. This patch tries to address them.
 > 
-> Yup.
+> The `-display` option is updated with the new `gtk` option.
 > 
->> Pre-patch, the table of possible combinations is:
->>
->> false == false => error message, zero given false == true => okay, exactly one given true == false => okay, exactly one given true == true => error message, two given
->>
->> which is already what you want.
+> The `-alt-grab` and `-ctrl-alt` options are not possible in GTK according to
+> commit 5104a1f65088285ddf870aa641b9061064e8757d, this is now mentioned
+> explicitly. Another related change is that only Ctrl-Alt-G can be used for
+> (un)grbabing.
 > 
-> Ok, you're right.  Thank you for spotting this!
-> 
-> This function has another error -- if the file specified
-> (either for data= or file=) can't be read, it happily
-> continues instead of erroring out.  _That_ is the bug
-> I tried to hunt but catched something else entirely ;)
-> 
-> Will send a real fix later today... :)
+> Window scaling seems also to be a SDL-specific feature and has been marked as
+> such.
 
-Please CC me; IIRC I sought to test this code reasonably deeply when I
-wrote / transformed it. I'm curious.
+This is a clear improvement.  However, we fail to mention VNC everywhere,
+which actually works pretty much like SDL.  This might go as a separate
+change however...
+
+See coments below...
+
+>  During the graphical emulation, you can use special key combinations to change
+> -modes. The default key mappings are shown below, but if you use @code{-alt-grab}
+> -then the modifier is Ctrl-Alt-Shift (instead of Ctrl-Alt) and if you use
+> -@code{-ctrl-grab} then the modifier is the right Ctrl key (instead of Ctrl-Alt):
+> +modes. The default key mappings are shown below. If you are using SDL display
+> +mode instead of GTK, you can use @code{-alt-grab} to change the modifier to
+> +Ctrl-Alt-Shift (instead of Ctrl-Alt) and @code{-ctrl-grab} to change it to right
+> +Ctrl key (instead of Ctrl-Alt):
+
+I'd made a reference to -display option here, and s/SDL display mode/SDL display/.
+
+Not a comment about this particular patch, but I think we should disallow
+-alt-grab for modes where it makes no sense (or at least warn about that
+usage).  For example, as stated, -alt-grab does not work for gtk, so we
+may as well warn in case `-display gtk -alt-grab'.  Ditto for -display none
+maybe.
+
+-alt-grab is also ignored by vnc -- should we change/fix that?
+
+>  @table @key
+>  @item Ctrl-Alt-f
+> @@ -294,7 +295,8 @@ Shrink the screen
+>  
+>  @item Ctrl-Alt-u
+>  @kindex Ctrl-Alt-u
+> -Restore the screen's un-scaled dimensions
+> +Restore the screen's un-scaled dimensions (SDL windows only, GTK does not
+> +feature window scaling)
+>  
+>  @item Ctrl-Alt-n
+>  @kindex Ctrl-Alt-n
+> @@ -308,16 +310,20 @@ Monitor
+>  Serial port
+>  @end table
+>  
+> +@item Ctrl-Alt-G
+> +@kindex Ctrl-Alt-G
+> +Toggle mouse and keyboard grab in GTK mode.
+> +
+>  @item Ctrl-Alt
+>  @kindex Ctrl-Alt
+> -Toggle mouse and keyboard grab.
+> +Toggle mouse and keyboard grab in SDL windows.
+>  @end table
+
+>  @kindex Ctrl-Up
+>  @kindex Ctrl-Down
+>  @kindex Ctrl-PageUp
+>  @kindex Ctrl-PageDown
+> -In the virtual consoles, you can use @key{Ctrl-Up}, @key{Ctrl-Down},
+> +In the virtual consoles of SDL, you can use @key{Ctrl-Up}, @key{Ctrl-Down},
+>  @key{Ctrl-PageUp} and @key{Ctrl-PageDown} to move in the back log.
+
+is it sdl-specific?
+
+>  @kindex Ctrl-a h
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index bf94862..f7b0172 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -338,7 +338,7 @@ STEXI
+>  @item -name @var{name}
+>  @findex -name
+>  Sets the @var{name} of the guest.
+> -This name will be displayed in the SDL window caption.
+> +This name will be displayed in the SDL and GTK window captions.
+>  The @var{name} will also be used for the VNC server.
+>  Also optionally set the top visible process name in Linux.
+>  ETEXI
+> @@ -804,7 +804,7 @@ ETEXI
+>  
+>  DEF("display", HAS_ARG, QEMU_OPTION_display,
+>      "-display sdl[,frame=on|off][,alt_grab=on|off][,ctrl_grab=on|off]\n"
+> -    "            [,window_close=on|off]|curses|none|\n"
+> +    "            [,window_close=on|off]|gtk|curses|none|\n"
+>      "            vnc=<display>[,<optargs>]\n"
+>      "                select display type\n", QEMU_ARCH_ALL)
+>  STEXI
+> @@ -813,6 +813,8 @@ STEXI
+>  Select type of display to use. This option is a replacement for the
+>  old style -sdl/-curses/... options. Valid values for @var{type} are
+>  @table @option
+> +@item gtk
+> +Display video output via GTK which includes a menu bar.
+
+s/which includes a menu bar/in a separate window/ (maybe mention
+the menu bar but this IMHO isn't an important detail).
+
+>  @item sdl
+>  Display video output via SDL (usually in a separate graphics
+>  window; see the SDL documentation for other possibilities).
+> @@ -839,7 +841,7 @@ DEF("nographic", 0, QEMU_OPTION_nographic,
+>  STEXI
+>  @item -nographic
+>  @findex -nographic
+> -Normally, QEMU uses SDL to display the VGA output. With this option,
+> +Normally, QEMU uses GTK to display the VGA output. With this option,
+>  you can totally disable graphical output so that QEMU is a simple
+>  command line application. The emulated serial port is redirected on
+>  the console. Therefore, you can still use QEMU to debug a Linux kernel
+> @@ -852,7 +854,7 @@ DEF("curses", 0, QEMU_OPTION_curses,
+>  STEXI
+>  @item -curses
+>  @findex -curses
+> -Normally, QEMU uses SDL to display the VGA output.  With this option,
+> +Normally, QEMU uses GTK to display the VGA output.  With this option,
+>  QEMU can display the VGA output when in text mode using a
+>  curses/ncurses interface.  Nothing is displayed in graphical mode.
+>  ETEXI
+> @@ -869,27 +871,29 @@ workspace more convenient.
+>  ETEXI
+>  
+>  DEF("alt-grab", 0, QEMU_OPTION_alt_grab,
+> -    "-alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)\n",
+> +    "-alt-grab       use Ctrl-Alt-Shift to grab mouse in SDL (instead of Ctrl-Alt)\n",
+>      QEMU_ARCH_ALL)
+>  STEXI
+>  @item -alt-grab
+>  @findex -alt-grab
+> -Use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt). Note that this also
+> -affects the special keys (for fullscreen, monitor-mode switching, etc).
+> +Use Ctrl-Alt-Shift to grab mouse in SDL windows (instead of Ctrl-Alt). Note that
+> +this also affects the special keys (for fullscreen, monitor-mode switching,
+> +etc).
+>  ETEXI
+>  
+>  DEF("ctrl-grab", 0, QEMU_OPTION_ctrl_grab,
+> -    "-ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)\n",
+> +    "-ctrl-grab      use Right-Ctrl to grab mouse in SDL (instead of Ctrl-Alt)\n",
+>      QEMU_ARCH_ALL)
+>  STEXI
+>  @item -ctrl-grab
+>  @findex -ctrl-grab
+> -Use Right-Ctrl to grab mouse (instead of Ctrl-Alt). Note that this also
+> -affects the special keys (for fullscreen, monitor-mode switching, etc).
+> +Use Right-Ctrl to grab mouse in SDL windows (instead of Ctrl-Alt). Note that
+> +this also affects the special keys (for fullscreen, monitor-mode switching,
+> +etc).
+>  ETEXI
+>  
+>  DEF("no-quit", 0, QEMU_OPTION_no_quit,
+> -    "-no-quit        disable SDL window close capability\n", QEMU_ARCH_ALL)
+> +    "-no-quit        disable SDL and GTK window close capability\n", QEMU_ARCH_ALL)
+>  STEXI
+>  @item -no-quit
+>  @findex -no-quit
+> @@ -1080,7 +1084,7 @@ DEF("vnc", HAS_ARG, QEMU_OPTION_vnc ,
+>  STEXI
+>  @item -vnc @var{display}[,@var{option}[,@var{option}[,...]]]
+>  @findex -vnc
+> -Normally, QEMU uses SDL to display the VGA output.  With this option,
+> +Normally, QEMU uses GTK to display the VGA output.  With this option,
+>  you can have QEMU listen on VNC display @var{display} and redirect the VGA
+>  display over the VNC session.  It is very useful to enable the usb
+>  tablet device when using this option (option @option{-usbdevice
+> 
+
 
 Thanks,
-Laszlo
+
+/mjt
 
