@@ -1,49 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjyX4-00022N-56
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 17:12:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34971)
+	id 1UjyzD-0008CO-7N
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 17:41:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40995)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UjyX1-00020d-21
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:12:40 -0400
+	(envelope-from <alevy@redhat.com>) id 1UjyzA-0008Bd-4y
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:41:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UjyX0-000544-8l
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:12:38 -0400
-Received: from mail-lb0-f171.google.com ([209.85.217.171]:35052)
+	(envelope-from <alevy@redhat.com>) id 1Ujyz9-0005gv-19
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:41:44 -0400
+Received: from mx4-phx2.redhat.com ([209.132.183.25]:45241)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UjyX0-00053s-1s
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:12:38 -0400
-Received: by mail-lb0-f171.google.com with SMTP id v5so1175857lbc.2
-	for <qemu-trivial@nongnu.org>; Tue, 04 Jun 2013 14:12:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:x-gm-message-state;
-	bh=Rlo5pDK/7FHWlmmL+yXpGChfn70FKZMbLOhr2fff1nI=;
-	b=R/IzOMxeVmoZCOGiyA2dAEF2s3KefwbjPsWIZ+P0+CzZC7finRxGHR02jSK7pIEDHi
-	+BU4FT557/tdDGQulyYGHrYbr3vWXK6+yLQzfeO3W1Ew7UdMoLhJPwH/CH9xaRnLvVxU
-	HbrfSViIlAJjmNteQD+pxWAQLQQypKrsgRsc267bdXcT//X70ZUHPBF+yaV/lGC8ZCvb
-	3uy1N52NoZtXNzD5yDXkCvhv4hDMqIJOnvDcK2twh34PMkKxShuUadXmgrhvrXRE9Wp8
-	ajlTwWhs79aNPHA72x2XZA1JDnwMouuAuf/GK+wq5HhQ49xVTS3z59dLOJBno8wQa4P5
-	VEAw==
-X-Received: by 10.112.120.170 with SMTP id ld10mr595001lbb.31.1370380357103;
-	Tue, 04 Jun 2013 14:12:37 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.2.39 with HTTP; Tue, 4 Jun 2013 14:12:16 -0700 (PDT)
-In-Reply-To: <1370377419-31788-5-git-send-email-alevy@redhat.com>
+	(envelope-from <alevy@redhat.com>)
+	id 1Ujyz8-0005go-Q7; Tue, 04 Jun 2013 17:41:42 -0400
+Received: from zmail15.collab.prod.int.phx2.redhat.com
+	(zmail15.collab.prod.int.phx2.redhat.com [10.5.83.17])
+	by mx4-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id r54LfflF009118;
+	Tue, 4 Jun 2013 17:41:41 -0400
+Date: Tue, 4 Jun 2013 17:41:41 -0400 (EDT)
+From: Alon Levy <alevy@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <378221460.14313718.1370382101151.JavaMail.root@redhat.com>
+In-Reply-To: <51AE5808.6000000@redhat.com>
 References: <1370377419-31788-1-git-send-email-alevy@redhat.com>
-	<1370377419-31788-5-git-send-email-alevy@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Jun 2013 22:12:16 +0100
-Message-ID: <CAFEAcA8x34tG4SqR6J8GvPALcsGC+=U+53v=UkWsL=Dks8Z6Lg@mail.gmail.com>
-To: Alon Levy <alevy@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQkcP5w+5lcyClR25vyIg/jMKXNKbI7Xgiwt0fLf8eBih5NFuS5j/JIE2Vvibv15+OF1Fad0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.171
+	<51AE5808.6000000@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.5.82.11]
+X-Mailer: Zimbra 8.0.3_GA_5664 (ZimbraWebClient - FF21 (Linux)/8.0.3_GA_5664)
+Thread-Topic: oslib-posix: add qemu_pipe_non_block
+Thread-Index: KxIGBlqbszGh4Le13+/fntUViwEEZg==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 209.132.183.25
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 5/5] libcacard/vscclient.c:
- fix use of uninitialized variable
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/5] oslib-posix: add
+	qemu_pipe_non_block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,35 +46,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 21:12:40 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 21:41:46 -0000
 
-On 4 June 2013 21:23, Alon Levy <alevy@redhat.com> wrote:
-> Found by Coverity.
->
-> Signed-off-by: Alon Levy <alevy@redhat.com>
-> ---
->  libcacard/vscclient.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
-> index 5180d29..4275c23 100644
-> --- a/libcacard/vscclient.c
-> +++ b/libcacard/vscclient.c
-> @@ -645,7 +645,7 @@ main(
->      GIOChannel *channel_stdin;
->      char *qemu_host;
->      char *qemu_port;
-> -    VSCMsgHeader mhHeader;
-> +    VSCMsgHeader mhHeader = {0,};
+> On 06/04/2013 02:23 PM, Alon Levy wrote:
+> > Used by the followin patch.
+> 
+> s/followin/following/
 
-As far as I can see we only use this variable once:
+Thanks.
 
-    send_msg(VSC_Init, mhHeader.reader_id, &init, sizeof(init));
+> 
+> >  
+> > +int qemu_pipe_non_block(int pipefd[2])
+> > +{
+> > +    int ret;
+> > +
+> > +    ret = qemu_pipe(pipefd);
+> 
+> qemu_pipe() already uses pipe2() when available; it seems like it would
+> be nicer to use pipe2's O_NONBLOCK option directly in one syscall (where
+> supported) instead of having to make additional syscalls after the fact.
+>  Would it just be smarter to change the signature of qemu_pipe() to add
+> a bool block parameter, and then change the 5 existing callers to pass
+> false with your later patch in the series passing true, and do it
+> without creating a new wrapper?
 
-so wouldn't it be better just to directly pass a constant
-"0" to the send_msg() call? Hiding a single uint32_t in
-a struct seems a bit obscure.
+Answered below.
 
-thanks
--- PMM
+> 
+> > +    if (ret) {
+> > +        return ret;
+> > +    }
+> > +    if (fcntl(card->pipe[0], F_SETFL, O_NONBLOCK) == -1) {
+> > +        return -errno;
+> > +    }
+> > +    if (fcntl(card->pipe[1], F_SETFL, O_NONBLOCK) == -1) {
+> > +        return -errno;
+> 
+> Leaks fds.  If you're going to report error, then you must close the fds
+> already created.
+
+As Peter pointed out, I should not go here, so I'll drop these checks, instead doing naked fcntl calls, so no fd leak possible (no returns).
+
+> 
+> > +    }
+> > +    if (fcntl(card->pipe[0], F_SETOWN, getpid()) == -1) {
+> > +        return -errno;
+> 
+> Same comment about fd leaks.
+> 
+> This part seems like a useful change, IF you plan on using SIGIO and
+> SIGURG signals; and it is something which pipe2() cannot optimize, so I
+> can see why you are adding a new function instead of changing
+> qemu_pipe() and adjust all its callers to pass an additional parameter.
+>  But are you really planning on using SIGIO/SIGURG?
+
+I don't plan on using those signals, so I'll add a parameter instead.
+
+> 
+> Furthermore, this is undefined behavior.  According to POSIX, use of
+> F_SETOWN is only portable on sockets, not pipes.  It may work on Linux,
+> but you'll need to be aware of what it does on other platforms.
+> http://pubs.opengroup.org/onlinepubs/9699919799/functions/fcntl.html
+> --
+> Eric Blake   eblake redhat com    +1-919-301-3266
+> Libvirt virtualization library http://libvirt.org
+> 
+> 
 
