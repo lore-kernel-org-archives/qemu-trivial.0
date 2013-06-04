@@ -1,36 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjxmD-0001SY-Di
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 16:24:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51999)
+	id 1UjxmM-0001jd-Mz
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 16:24:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52064)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1Ujxm7-0001Hx-Gc
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:24:16 -0400
+	(envelope-from <alevy@redhat.com>) id 1UjxmG-0001WB-7P
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:24:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1Ujxm2-0005sL-IA
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:24:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:21152)
+	(envelope-from <alevy@redhat.com>) id 1UjxmA-0005u6-V8
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:24:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:26248)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alevy@redhat.com>)
-	id 1Ujxls-0005pq-EW; Tue, 04 Jun 2013 16:23:56 -0400
+	id 1Ujxm1-0005ry-A9; Tue, 04 Jun 2013 16:24:05 -0400
 Received: from int-mx02.intmail.prod.int.phx2.redhat.com
 	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r54KNtwx009116
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r54KO41T010514
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 4 Jun 2013 16:23:55 -0400
+	Tue, 4 Jun 2013 16:24:04 -0400
 Received: from garlic.sbx07344.newyony.wayport.net (vpn1-5-107.ams2.redhat.com
 	[10.36.5.107])
 	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r54KNeZg022345; Tue, 4 Jun 2013 16:23:52 -0400
+	id r54KNeZh022345; Tue, 4 Jun 2013 16:23:58 -0400
 From: Alon Levy <alevy@redhat.com>
 To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue,  4 Jun 2013 16:23:36 -0400
-Message-Id: <1370377419-31788-2-git-send-email-alevy@redhat.com>
+Date: Tue,  4 Jun 2013 16:23:37 -0400
+Message-Id: <1370377419-31788-3-git-send-email-alevy@redhat.com>
 In-Reply-To: <1370377419-31788-1-git-send-email-alevy@redhat.com>
 References: <1370377419-31788-1-git-send-email-alevy@redhat.com>
 X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 2/5] use qemu_pipe_non_block
+Subject: [Qemu-trivial] [PATCH 3/5] libcacard/vscclient: fix leakage of
+	socket on error paths
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,59 +43,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 20:24:16 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 20:24:25 -0000
 
-This fixes six instances of unchecked fcntl return status, spotted by
-Coverity.
+Spotted by Coverity.
 
 Signed-off-by: Alon Levy <alevy@redhat.com>
 ---
- hw/display/qxl.c            | 10 +++-------
- hw/usb/ccid-card-emulated.c |  8 +++-----
- 2 files changed, 6 insertions(+), 12 deletions(-)
+ libcacard/vscclient.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/hw/display/qxl.c b/hw/display/qxl.c
-index 9e5b7ad..25c8c5a 100644
---- a/hw/display/qxl.c
-+++ b/hw/display/qxl.c
-@@ -1797,15 +1797,11 @@ static void qxl_send_events(PCIQXLDevice *d, uint32_t events)
- 
- static void init_pipe_signaling(PCIQXLDevice *d)
- {
--    if (pipe(d->pipe) < 0) {
--        fprintf(stderr, "%s:%s: qxl pipe creation failed\n",
--                __FILE__, __func__);
-+    if (qxl_pipe_non_block(d->pipe)) {
-+        fprintf(stderr, "%s:%s: qxl pipe creation failed: %s\n",
-+                __FILE__, __func__, stderror(errno));
-         exit(1);
+diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
+index ac23647..5180d29 100644
+--- a/libcacard/vscclient.c
++++ b/libcacard/vscclient.c
+@@ -618,18 +618,22 @@ connect_to_qemu(
+     if (ret != 0) {
+         /* Error */
+         fprintf(stderr, "getaddrinfo failed\n");
+-        return -1;
++        goto cleanup_socket;
      }
--    fcntl(d->pipe[0], F_SETFL, O_NONBLOCK);
--    fcntl(d->pipe[1], F_SETFL, O_NONBLOCK);
--    fcntl(d->pipe[0], F_SETOWN, getpid());
--
-     qemu_thread_get_self(&d->main);
-     qemu_set_fd_handler(d->pipe[0], pipe_read, NULL, d);
+ 
+     if (connect(sock, server->ai_addr, server->ai_addrlen) < 0) {
+         /* Error */
+         fprintf(stderr, "Could not connect\n");
+-        return -1;
++        goto cleanup_socket;
+     }
+     if (verbose) {
+         printf("Connected (sizeof Header=%zd)!\n", sizeof(VSCMsgHeader));
+     }
+     return sock;
++
++cleanup_socket:
++    closesocket(sock);
++    return -1;
  }
-diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
-index deb6d47..2e6942e 100644
---- a/hw/usb/ccid-card-emulated.c
-+++ b/hw/usb/ccid-card-emulated.c
-@@ -406,13 +406,11 @@ static void pipe_read(void *opaque)
  
- static int init_pipe_signaling(EmulatedState *card)
- {
--    if (pipe(card->pipe) < 0) {
--        DPRINTF(card, 2, "pipe creation failed\n");
-+    if (qemu_pipe_non_block(card->pipe) < 0) {
-+        DPRINTF(card, 2, "pipe creation failed: %s\n",
-+                strerror(errno));
-         return -1;
-     }
--    fcntl(card->pipe[0], F_SETFL, O_NONBLOCK);
--    fcntl(card->pipe[1], F_SETFL, O_NONBLOCK);
--    fcntl(card->pipe[0], F_SETOWN, getpid());
-     qemu_set_fd_handler(card->pipe[0], pipe_read, NULL, card);
+ int
+@@ -759,5 +763,6 @@ main(
+     g_io_channel_unref(channel_socket);
+     g_byte_array_unref(socket_to_send);
+ 
++    closesocket(sock);
      return 0;
  }
 -- 
