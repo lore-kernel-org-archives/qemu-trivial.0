@@ -1,57 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ujy8d-0000CW-0a
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 16:47:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57304)
+	id 1UjyAX-00012J-8T
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 16:49:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57603)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Ujy8b-0000AQ-9G
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:47:26 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UjyAV-000122-8s
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:49:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Ujy8a-0004vW-4z
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:47:24 -0400
-Received: from mail-qe0-f42.google.com ([209.85.128.42]:38872)
+	(envelope-from <peter.maydell@linaro.org>) id 1UjyAT-0005g0-KB
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:49:23 -0400
+Received: from mail-la0-x22b.google.com ([2a00:1450:4010:c03::22b]:57260)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1Ujy8W-0004mX-6A; Tue, 04 Jun 2013 16:47:20 -0400
-Received: by mail-qe0-f42.google.com with SMTP id s14so545535qeb.29
-	for <multiple recipients>; Tue, 04 Jun 2013 13:47:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:x-enigmail-version:content-type
-	:content-transfer-encoding;
-	bh=/hCN3igWVjzusVOCHXpMJ5DuCGGlPKAvqD48YzAm9Nk=;
-	b=uuHJsZrSSq3aKwmyNLizMhbHTKEQc9HPQKeP+8Vheoi/7HGLnxH/HQQ25gBtwNGxLu
-	D61PSemYZxt1I8TR19nuG2bJ7IGN5czDvjtldFhXVzdjV7Xdbjy/zrp5KLYuwpnEslw8
-	hYLtGBWw6rf0uuX6LJpwilzqLjOc0ZycmZZGb6f+7JfbLxCNowJJzyxh9aDxaK5m7lyt
-	IhRAkx8gH2wZSggN47F8uFdRCegCWMPTDFTY9VcwM/+4Xk+y4NMOZ0ynpNW3cTeJpkwZ
-	tZFZtyu+Drs9ZYUQuZRvsdpxKJc4G9JtV9ij+tNvvhJxeiMyXeC6aea/g0qpg0wuEvAf
-	zTIQ==
-X-Received: by 10.224.198.194 with SMTP id ep2mr24602945qab.51.1370378839745; 
-	Tue, 04 Jun 2013 13:47:19 -0700 (PDT)
-Received: from yakj.usersys.redhat.com
-	(net-37-116-217-184.cust.dsl.vodafone.it. [37.116.217.184])
-	by mx.google.com with ESMTPSA id c10sm56935800qag.2.2013.06.04.13.47.17
-	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Tue, 04 Jun 2013 13:47:18 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <51AE5249.3060401@redhat.com>
-Date: Tue, 04 Jun 2013 22:47:05 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
+	(envelope-from <peter.maydell@linaro.org>) id 1UjyAT-0005fj-DL
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:49:21 -0400
+Received: by mail-la0-f43.google.com with SMTP id gw10so718183lab.16
+	for <qemu-trivial@nongnu.org>; Tue, 04 Jun 2013 13:49:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=cFk2uEqKjFjC46sh1MpF7PKYv/CFchj+hk94REVrqBc=;
+	b=ae7dRFYxlbnJoBTSPOVHKTsCcDLdV26BUUMggra5dYdwbIjxMKEmVrppuioU3EvmkI
+	2Tpc9F+MDNMeJjcYZJslm9DgBUKXAB6lat3V+bY9H07STxKr4IKU5OUxVQ9MThMqS1Ju
+	/liEGsjeupfIsgK3Aazhb4fXEJrXv599NV11eef2XvZrZkRPhdF5ep9CCaQ9XnAVj6g6
+	2qQO1nTm0g56Wr+EgdbrOtkdZZLba8UPiKQP/IU9Oe2a+sVAvBnnp1j9obz6djjJxZcd
+	yO55jzE29Sh2cxluddC514fP0EnDI3LMZwWkiH9vJdW0+RMCVwYColqaL9Z29QZHQkLF
+	XxdQ==
+X-Received: by 10.112.35.69 with SMTP id f5mr13396462lbj.105.1370378959716;
+	Tue, 04 Jun 2013 13:49:19 -0700 (PDT)
 MIME-Version: 1.0
-To: Alon Levy <alevy@redhat.com>
+Received: by 10.112.2.39 with HTTP; Tue, 4 Jun 2013 13:48:59 -0700 (PDT)
+In-Reply-To: <1370377419-31788-1-git-send-email-alevy@redhat.com>
 References: <1370377419-31788-1-git-send-email-alevy@redhat.com>
-	<1370377419-31788-2-git-send-email-alevy@redhat.com>
-In-Reply-To: <1370377419-31788-2-git-send-email-alevy@redhat.com>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.42
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Jun 2013 21:48:59 +0100
+Message-ID: <CAFEAcA9r4iM-a-v4GhNzN53za5iToH5r3F-EEENRL5J5bziUQA@mail.gmail.com>
+To: Alon Levy <alevy@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQkWtv7Y1jKGLcqQNlCHXfVFO+WGQ7rknifIkFrKuPyppj/hFVkSiVe+a1wrmwiu9cDNi64I
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c03::22b
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 2/5] use qemu_pipe_non_block
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/5] oslib-posix: add
+	qemu_pipe_non_block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,15 +54,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 20:47:26 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 20:49:24 -0000
 
-Il 04/06/2013 22:23, Alon Levy ha scritto:
-> This fixes six instances of unchecked fcntl return status, spotted by
-> Coverity.
+On 4 June 2013 21:23, Alon Levy <alevy@redhat.com> wrote:
+>
+> +int qemu_pipe_non_block(int pipefd[2])
+> +{
+> +    int ret;
+> +
+> +    ret = qemu_pipe(pipefd);
+> +    if (ret) {
+> +        return ret;
+> +    }
+> +    if (fcntl(card->pipe[0], F_SETFL, O_NONBLOCK) == -1) {
+> +        return -errno;
+> +    }
+> +    if (fcntl(card->pipe[1], F_SETFL, O_NONBLOCK) == -1) {
+> +        return -errno;
+> +    }
 
-I think we're just assuming that they cannot fail...  I don't think we
-need the previous patch and this one, unless they help porting stuff to
-Windows.
+    qemu_set_nonblock(card->pipe[0]);
+    qemu_set_nonblock(card->pipe[1]);
 
-Paolo
+> +    if (fcntl(card->pipe[0], F_SETOWN, getpid()) == -1) {
+> +        return -errno;
+> +    }
+
+You should either just trust that the fcntl() succeeds
+(as we do in qemu_set_block() and friends), or you need
+to close the pipe fds on failure here.
+
+> +}
+
+You've forgotten to return anything at the end of the function.
+(surprised the compiler didn't pick that up, maybe it's
+one of the warnings that needs optimimisation turned on).
+
+thanks
+-- PMM
 
