@@ -1,37 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjpeR-0005cE-AO
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 07:43:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53427)
+	id 1UjqRS-00036G-Ko
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 08:34:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42911)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UjpeJ-0005QW-KN
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 07:43:41 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1UjqRN-00033d-OU
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 08:34:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UjpeI-0007Lg-17
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 07:43:35 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:55621 helo=mx2.suse.de)
+	(envelope-from <pbonzini@redhat.com>) id 1UjqRJ-0001nN-59
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 08:34:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:64837)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UjpeD-0007Kf-KW; Tue, 04 Jun 2013 07:43:29 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id E553EA51CB;
-	Tue,  4 Jun 2013 13:43:26 +0200 (CEST)
-Message-ID: <51ADD2DD.3090909@suse.de>
-Date: Tue, 04 Jun 2013 13:43:25 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
+	(envelope-from <pbonzini@redhat.com>)
+	id 1UjqRE-0001mN-QY; Tue, 04 Jun 2013 08:34:08 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r54CY7Sf001676
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 4 Jun 2013 08:34:07 -0400
+Received: from yakj.usersys.redhat.com (ovpn-112-44.ams2.redhat.com
+	[10.36.112.44])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r54CY3Zl017993; Tue, 4 Jun 2013 08:34:04 -0400
+Message-ID: <51ADDEB2.3020904@redhat.com>
+Date: Tue, 04 Jun 2013 14:33:54 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
+	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
 MIME-Version: 1.0
-To: peter.crosthwaite@xilinx.com, pbonzini@redhat.com
+To: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
 References: <cover.1370237352.git.peter.crosthwaite@xilinx.com>
 	<54b43e8b5fe6acff6fe667062d412c0b224f92f6.1370237352.git.peter.crosthwaite@xilinx.com>
-In-Reply-To: <54b43e8b5fe6acff6fe667062d412c0b224f92f6.1370237352.git.peter.crosthwaite@xilinx.com>
-X-Enigmail-Version: 1.6a1pre
+	<51ADD2DD.3090909@suse.de>
+In-Reply-To: <51ADD2DD.3090909@suse.de>
+X-Enigmail-Version: 1.5.1
 Content-Type: text/plain; charset=ISO-8859-15
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com, qemu-devel@nongnu.org
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	r54CY7Sf001676
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com,
+	peter.crosthwaite@xilinx.com, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 2/3] memory:
  as_update_topology_pass: Improve comments
 X-BeenThere: qemu-trivial@nongnu.org
@@ -45,65 +55,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 11:43:42 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 12:34:19 -0000
 
-Am 03.06.2013 07:32, schrieb peter.crosthwaite@xilinx.com:
-> From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
->=20
-> These comments we're a little difficult to read. First one had
+Il 04/06/2013 13:43, Andreas F=E4rber ha scritto:
+> Am 03.06.2013 07:32, schrieb peter.crosthwaite@xilinx.com:
+>> > From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+>> >=20
+>> > These comments we're a little difficult to read. First one had
+> While we're picky: "were" - Paolo can you fix up in your queue?
 
-While we're picky: "were" - Paolo can you fix up in your queue?
+Of course.
 
-Andreas
-
-> incorrect parenthesis. The part about attributes changing is
-> really applicable to the region being 'in both' rather than 'in
-> new'
->=20
-> Second comment has an obscure parenthetic about 'Logging may have
-> changed'. Made clearer, as this if is supposed to handle the case where
-> the memory region is unchanged (with the notable exception re logging).
->=20
-> Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-> ---
->=20
->  memory.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/memory.c b/memory.c
-> index 60e033b..7e710c4 100644
-> --- a/memory.c
-> +++ b/memory.c
-> @@ -719,7 +719,7 @@ static void address_space_update_topology_pass(Addr=
-essSpace *as,
->                  || int128_lt(frold->addr.start, frnew->addr.start)
->                  || (int128_eq(frold->addr.start, frnew->addr.start)
->                      && !flatrange_equal(frold, frnew)))) {
-> -            /* In old, but (not in new, or in new but attributes chang=
-ed). */
-> +            /* In old but not in new, or in both but attributes change=
-d. */
-> =20
->              if (!adding) {
->                  MEMORY_LISTENER_UPDATE_REGION(frold, as, Reverse, regi=
-on_del);
-> @@ -727,7 +727,7 @@ static void address_space_update_topology_pass(Addr=
-essSpace *as,
-> =20
->              ++iold;
->          } else if (frold && frnew && flatrange_equal(frold, frnew)) {
-> -            /* In both (logging may have changed) */
-> +            /* In both and unchanged (except logging may have changed)=
- */
-> =20
->              if (adding) {
->                  MEMORY_LISTENER_UPDATE_REGION(frnew, as, Forward, regi=
-on_nop);
->=20
-
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+Paolo
 
