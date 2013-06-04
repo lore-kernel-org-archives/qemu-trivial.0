@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjyAX-00012J-8T
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 16:49:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57603)
+	id 1UjyCA-0001yi-RD
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 16:51:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57941)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UjyAV-000122-8s
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:49:24 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UjyC8-0001y8-CP
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:51:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UjyAT-0005g0-KB
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:49:23 -0400
-Received: from mail-la0-x22b.google.com ([2a00:1450:4010:c03::22b]:57260)
+	(envelope-from <peter.maydell@linaro.org>) id 1UjyC7-00069F-Eq
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:51:04 -0400
+Received: from mail-lb0-f170.google.com ([209.85.217.170]:35029)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UjyAT-0005fj-DL
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:49:21 -0400
-Received: by mail-la0-f43.google.com with SMTP id gw10so718183lab.16
-	for <qemu-trivial@nongnu.org>; Tue, 04 Jun 2013 13:49:20 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1UjyC7-00068v-7I
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 16:51:03 -0400
+Received: by mail-lb0-f170.google.com with SMTP id t11so1167772lbd.29
+	for <qemu-trivial@nongnu.org>; Tue, 04 Jun 2013 13:51:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-type:x-gm-message-state;
-	bh=cFk2uEqKjFjC46sh1MpF7PKYv/CFchj+hk94REVrqBc=;
-	b=ae7dRFYxlbnJoBTSPOVHKTsCcDLdV26BUUMggra5dYdwbIjxMKEmVrppuioU3EvmkI
-	2Tpc9F+MDNMeJjcYZJslm9DgBUKXAB6lat3V+bY9H07STxKr4IKU5OUxVQ9MThMqS1Ju
-	/liEGsjeupfIsgK3Aazhb4fXEJrXv599NV11eef2XvZrZkRPhdF5ep9CCaQ9XnAVj6g6
-	2qQO1nTm0g56Wr+EgdbrOtkdZZLba8UPiKQP/IU9Oe2a+sVAvBnnp1j9obz6djjJxZcd
-	yO55jzE29Sh2cxluddC514fP0EnDI3LMZwWkiH9vJdW0+RMCVwYColqaL9Z29QZHQkLF
-	XxdQ==
-X-Received: by 10.112.35.69 with SMTP id f5mr13396462lbj.105.1370378959716;
-	Tue, 04 Jun 2013 13:49:19 -0700 (PDT)
+	bh=NrKgiCzMQ5Uu8fKuSKHYray+AmbrU1wzIHp84xza/vE=;
+	b=NYvDVIJYAkHdgL1InucpQByhdZEPnH+Wo70MwGODpCiA4zDyfRbKr2HYBHjYAJjox+
+	d9MiqZ1AT97GVH0sBH1OaQ4jD+9tsN4Uo2bhtvJYTncMGU0OB+pj39ac9+QcYZ7gsdch
+	ryfryIkhhop9vfNFTCYn5A2kK5E0jQEWustoh9s+7ach+Airp1OvgFYAm62bfmv7iWvP
+	b42l4SbpW6HRXaCbzXYuOHJAohqdyca6ViK3sSQfpPp8gNqXDtCqPf16z0vraqay2/Ey
+	fmL9jDhkqKQ7YLWdr/SnVq8y098+o+1gas+zmxUfT2Xy2EbSskNOq+hDhn1GhFzAGFNI
+	dwyQ==
+X-Received: by 10.112.120.170 with SMTP id ld10mr563956lbb.31.1370379061913;
+	Tue, 04 Jun 2013 13:51:01 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.112.2.39 with HTTP; Tue, 4 Jun 2013 13:48:59 -0700 (PDT)
-In-Reply-To: <1370377419-31788-1-git-send-email-alevy@redhat.com>
+Received: by 10.112.2.39 with HTTP; Tue, 4 Jun 2013 13:50:41 -0700 (PDT)
+In-Reply-To: <1370377419-31788-2-git-send-email-alevy@redhat.com>
 References: <1370377419-31788-1-git-send-email-alevy@redhat.com>
+	<1370377419-31788-2-git-send-email-alevy@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Jun 2013 21:48:59 +0100
-Message-ID: <CAFEAcA9r4iM-a-v4GhNzN53za5iToH5r3F-EEENRL5J5bziUQA@mail.gmail.com>
+Date: Tue, 4 Jun 2013 21:50:41 +0100
+Message-ID: <CAFEAcA9oj-yCdsQck4oJPc__MyfrroMB2aFKSxTx1=PYfS2WCw@mail.gmail.com>
 To: Alon Levy <alevy@redhat.com>
 Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQkWtv7Y1jKGLcqQNlCHXfVFO+WGQ7rknifIkFrKuPyppj/hFVkSiVe+a1wrmwiu9cDNi64I
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c03::22b
+X-Gm-Message-State: ALoCoQmsQfW1cMSHe3m6qc95CVjhcjNwT90cYO2G52xthZuUMftUClOUospm9C9EVE3npUhAGHYw
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.170
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/5] oslib-posix: add
-	qemu_pipe_non_block
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/5] use qemu_pipe_non_block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,41 +54,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 20:49:24 -0000
+X-List-Received-Date: Tue, 04 Jun 2013 20:51:06 -0000
 
 On 4 June 2013 21:23, Alon Levy <alevy@redhat.com> wrote:
+> --- a/hw/display/qxl.c
+> +++ b/hw/display/qxl.c
+> @@ -1797,15 +1797,11 @@ static void qxl_send_events(PCIQXLDevice *d, uint32_t events)
 >
-> +int qemu_pipe_non_block(int pipefd[2])
-> +{
-> +    int ret;
-> +
-> +    ret = qemu_pipe(pipefd);
-> +    if (ret) {
-> +        return ret;
-> +    }
-> +    if (fcntl(card->pipe[0], F_SETFL, O_NONBLOCK) == -1) {
-> +        return -errno;
-> +    }
-> +    if (fcntl(card->pipe[1], F_SETFL, O_NONBLOCK) == -1) {
-> +        return -errno;
-> +    }
+>  static void init_pipe_signaling(PCIQXLDevice *d)
+>  {
+> -    if (pipe(d->pipe) < 0) {
+> -        fprintf(stderr, "%s:%s: qxl pipe creation failed\n",
+> -                __FILE__, __func__);
+> +    if (qxl_pipe_non_block(d->pipe)) {
 
-    qemu_set_nonblock(card->pipe[0]);
-    qemu_set_nonblock(card->pipe[1]);
-
-> +    if (fcntl(card->pipe[0], F_SETOWN, getpid()) == -1) {
-> +        return -errno;
-> +    }
-
-You should either just trust that the fcntl() succeeds
-(as we do in qemu_set_block() and friends), or you need
-to close the pipe fds on failure here.
-
-> +}
-
-You've forgotten to return anything at the end of the function.
-(surprised the compiler didn't pick that up, maybe it's
-one of the warnings that needs optimimisation turned on).
+Surely this can't compile? -- this function doesn't exist.
 
 thanks
 -- PMM
