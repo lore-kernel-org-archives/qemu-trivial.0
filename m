@@ -1,40 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UjyzD-0008CO-7N
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2013 17:41:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40995)
+	id 1UkDNx-0004S1-W6
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2013 09:04:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43818)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1UjyzA-0008Bd-4y
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:41:46 -0400
+	(envelope-from <hpoussin@reactos.org>) id 1UkDNs-0004JJ-MD
+	for qemu-trivial@nongnu.org; Wed, 05 Jun 2013 09:04:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1Ujyz9-0005gv-19
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2013 17:41:44 -0400
-Received: from mx4-phx2.redhat.com ([209.132.183.25]:45241)
+	(envelope-from <hpoussin@reactos.org>) id 1UkDIh-0001Ot-Hp
+	for qemu-trivial@nongnu.org; Wed, 05 Jun 2013 08:58:56 -0400
+Received: from [101.78.175.194] (port=53987 helo=ibis.ibis)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>)
-	id 1Ujyz8-0005go-Q7; Tue, 04 Jun 2013 17:41:42 -0400
-Received: from zmail15.collab.prod.int.phx2.redhat.com
-	(zmail15.collab.prod.int.phx2.redhat.com [10.5.83.17])
-	by mx4-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id r54LfflF009118;
-	Tue, 4 Jun 2013 17:41:41 -0400
-Date: Tue, 4 Jun 2013 17:41:41 -0400 (EDT)
-From: Alon Levy <alevy@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <378221460.14313718.1370382101151.JavaMail.root@redhat.com>
-In-Reply-To: <51AE5808.6000000@redhat.com>
-References: <1370377419-31788-1-git-send-email-alevy@redhat.com>
-	<51AE5808.6000000@redhat.com>
+	(envelope-from <hpoussin@reactos.org>)
+	id 1UkDIc-0001K4-IM; Wed, 05 Jun 2013 08:58:46 -0400
+Received: from [172.19.126.47] (helo=localhost.localdomain)
+	by ibis.ibis with esmtp (Exim 4.70)
+	(envelope-from <hpoussin@reactos.org>)
+	id 1UkCd0-00061o-Ca; Wed, 05 Jun 2013 20:15:46 +0800
+From: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+To: qemu-devel@nongnu.org
+Date: Wed,  5 Jun 2013 20:16:42 +0800
+Message-Id: <1370434603-5394-1-git-send-email-hpoussin@reactos.org>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.5.82.11]
-X-Mailer: Zimbra 8.0.3_GA_5664 (ZimbraWebClient - FF21 (Linux)/8.0.3_GA_5664)
-Thread-Topic: oslib-posix: add qemu_pipe_non_block
-Thread-Index: KxIGBlqbszGh4Le13+/fntUViwEEZg==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 209.132.183.25
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/5] oslib-posix: add
-	qemu_pipe_non_block
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 101.78.175.194
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+Subject: [Qemu-trivial] [PATCH] cputlb: fix debug logs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,71 +41,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2013 21:41:46 -0000
+X-List-Received-Date: Wed, 05 Jun 2013 13:04:16 -0000
 
-> On 06/04/2013 02:23 PM, Alon Levy wrote:
-> > Used by the followin patch.
-> 
-> s/followin/following/
+'pd' variable has been removed in 06ef3525e1f271b6a842781a05eace5cf63b95c2.
 
-Thanks.
+Signed-off-by: Hervé Poussineau <hpoussin@reactos.org>
+---
+ cputlb.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> 
-> >  
-> > +int qemu_pipe_non_block(int pipefd[2])
-> > +{
-> > +    int ret;
-> > +
-> > +    ret = qemu_pipe(pipefd);
-> 
-> qemu_pipe() already uses pipe2() when available; it seems like it would
-> be nicer to use pipe2's O_NONBLOCK option directly in one syscall (where
-> supported) instead of having to make additional syscalls after the fact.
->  Would it just be smarter to change the signature of qemu_pipe() to add
-> a bool block parameter, and then change the 5 existing callers to pass
-> false with your later patch in the series passing true, and do it
-> without creating a new wrapper?
+diff --git a/cputlb.c b/cputlb.c
+index 86666c8..1230e9e 100644
+--- a/cputlb.c
++++ b/cputlb.c
+@@ -262,8 +262,8 @@ void tlb_set_page(CPUArchState *env, target_ulong vaddr,
+ 
+ #if defined(DEBUG_TLB)
+     printf("tlb_set_page: vaddr=" TARGET_FMT_lx " paddr=0x" TARGET_FMT_plx
+-           " prot=%x idx=%d pd=0x%08lx\n",
+-           vaddr, paddr, prot, mmu_idx, pd);
++           " prot=%x idx=%d\n",
++           vaddr, paddr, prot, mmu_idx);
+ #endif
+ 
+     address = vaddr;
+-- 
+1.7.10.4
 
-Answered below.
-
-> 
-> > +    if (ret) {
-> > +        return ret;
-> > +    }
-> > +    if (fcntl(card->pipe[0], F_SETFL, O_NONBLOCK) == -1) {
-> > +        return -errno;
-> > +    }
-> > +    if (fcntl(card->pipe[1], F_SETFL, O_NONBLOCK) == -1) {
-> > +        return -errno;
-> 
-> Leaks fds.  If you're going to report error, then you must close the fds
-> already created.
-
-As Peter pointed out, I should not go here, so I'll drop these checks, instead doing naked fcntl calls, so no fd leak possible (no returns).
-
-> 
-> > +    }
-> > +    if (fcntl(card->pipe[0], F_SETOWN, getpid()) == -1) {
-> > +        return -errno;
-> 
-> Same comment about fd leaks.
-> 
-> This part seems like a useful change, IF you plan on using SIGIO and
-> SIGURG signals; and it is something which pipe2() cannot optimize, so I
-> can see why you are adding a new function instead of changing
-> qemu_pipe() and adjust all its callers to pass an additional parameter.
->  But are you really planning on using SIGIO/SIGURG?
-
-I don't plan on using those signals, so I'll add a parameter instead.
-
-> 
-> Furthermore, this is undefined behavior.  According to POSIX, use of
-> F_SETOWN is only portable on sockets, not pipes.  It may work on Linux,
-> but you'll need to be aware of what it does on other platforms.
-> http://pubs.opengroup.org/onlinepubs/9699919799/functions/fcntl.html
-> --
-> Eric Blake   eblake redhat com    +1-919-301-3266
-> Libvirt virtualization library http://libvirt.org
-> 
-> 
 
