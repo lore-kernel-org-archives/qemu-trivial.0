@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UkNwG-0007AU-Jh
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2013 20:20:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38663)
+	id 1UkRMA-0007AA-JR
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2013 23:59:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42939)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UkNwA-0007AM-UY
-	for qemu-trivial@nongnu.org; Wed, 05 Jun 2013 20:20:23 -0400
+	(envelope-from <aik@ozlabs.ru>) id 1UkRM7-00078Z-K8
+	for qemu-trivial@nongnu.org; Wed, 05 Jun 2013 23:59:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UkNw5-0006uo-Pc
-	for qemu-trivial@nongnu.org; Wed, 05 Jun 2013 20:20:18 -0400
-Received: from [222.73.24.84] (port=61873 helo=song.cn.fujitsu.com)
+	(envelope-from <aik@ozlabs.ru>) id 1UkRM6-0007zR-OK
+	for qemu-trivial@nongnu.org; Wed, 05 Jun 2013 23:59:19 -0400
+Received: from mail-ie0-x22b.google.com ([2607:f8b0:4001:c03::22b]:43989)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1UkNw5-0006dT-Eq; Wed, 05 Jun 2013 20:20:13 -0400
-X-IronPort-AV: E=Sophos;i="4.87,810,1363104000"; 
-   d="scan'208";a="7472120"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 06 Jun 2013 08:17:04 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r560JuRJ026598;
-	Thu, 6 Jun 2013 08:19:56 +0800
-Received: from [10.167.233.147] ([10.167.233.147])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013060608181418-1875918 ;
-	Thu, 6 Jun 2013 08:18:14 +0800 
-From: li guang <lig.fnst@cn.fujitsu.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <1370467013-9270-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1370467013-9270-1-git-send-email-mjt@msgid.tls.msk.ru>
-Date: Thu, 06 Jun 2013 08:18:51 +0800
-Message-ID: <1370477931.17798.79.camel@liguang.fnst.cn.fujitsu.com>
-Mime-Version: 1.0
-X-Mailer: Evolution 2.30.3 
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/06/06 08:18:14,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/06/06 08:18:14,
-	Serialize complete at 2013/06/06 08:18:14
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH trivial] gitignore: unignore *.patch
+	(envelope-from <aik@ozlabs.ru>) id 1UkRM6-0007zJ-KD
+	for qemu-trivial@nongnu.org; Wed, 05 Jun 2013 23:59:18 -0400
+Received: by mail-ie0-f171.google.com with SMTP id s9so5895878iec.16
+	for <qemu-trivial@nongnu.org>; Wed, 05 Jun 2013 20:59:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
+	bh=gvN8g0fw9U18RcIgKLxTEH1NklhMgymoncjGvJsENYE=;
+	b=Wm9BiLm3gSscNtj4u+Nu92Cr6ZszoGPKlNgZLkRQxPQCse5/ZrZ1q9HEzGxK3zQH0t
+	fmmuXCDS4VnHqbjcuoq8Kj8GpBXAE5PzA0l0lpGTnGpGb5FADoWH7MsQq00UhP1Ni9tY
+	qVmhwmr91jbpSjoavQTrcOE8XHuQiuGQBzF7zV/O2By5l40MwSrRGdWZO7dr+Lelmy7a
+	O576YdsruqSq+SGOZnIJtLhO+Gt2NTAl8PWUTZ9nyccf15KzBLwyqh0dKN3toNP4zrVV
+	8COypPOQ6t4IfsmReYr7JbwTTVW06Xhrua+kcZ2a8Ur5fl1QF89RHkPnlQYokRtX/bGG
+	nhmA==
+X-Received: by 10.50.3.70 with SMTP id a6mr4691826iga.6.1370491157305;
+	Wed, 05 Jun 2013 20:59:17 -0700 (PDT)
+Received: from ka1.ozlabs.ibm.com (ibmaus65.lnk.telstra.net. [165.228.126.9])
+	by mx.google.com with ESMTPSA id
+	ik6sm9610874igb.3.2013.06.05.20.59.12 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Wed, 05 Jun 2013 20:59:16 -0700 (PDT)
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+To: David Gibson <david@gibson.dropbear.id.au>
+Date: Thu,  6 Jun 2013 13:59:04 +1000
+Message-Id: <1370491146-10778-1-git-send-email-aik@ozlabs.ru>
+X-Mailer: git-send-email 1.7.10.4
+X-Gm-Message-State: ALoCoQkalXMEh8uqj20siCV42lFuyIopO0pYAV6HyUVDoNB8qLt+kn+DeFa155B880dqEcYP6Bb2
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4001:c03::22b
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>,
+	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
+	Scott Wood <scottwood@freescale.com>
+Subject: [Qemu-trivial] [PATCH 0/2] header update request
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,46 +57,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2013 00:20:23 -0000
+X-List-Received-Date: Thu, 06 Jun 2013 03:59:21 -0000
 
-=E5=9C=A8 2013-06-06=E5=9B=9B=E7=9A=84 01:16 +0400=EF=BC=8CMichael Tokarev=
-=E5=86=99=E9=81=93=EF=BC=9A
-> This partially reverts:
->=20
->  commit 082369e62c5bbaba89f173c2b803bc24115bb111
->  Author: liguang <lig.fnst@cn.fujitsu.com>
->  Date:   Fri Mar 22 16:44:13 2013 +0800
->=20
->     gitignore: ignore more files
->=20
-> I'm not sure how this went in.  The thing is that
-> ignoring *.patch, in my opinion, is just wrong.
-> Especially for downstreams who apply patches for
-> real.
->=20
+We need new headers for live migration and in-kernel interrupt controller support.
+However just copying new headers breaks PPC so dummy kvm_arch_init_irq_routing() is
+required as well.
 
-ignore *.patch is convenient in my opinion, you can change
-if it bothered someone else.
 
-thanks!
+Alexey Kardashevskiy (1):
+  linux-headers: Update to v3.10-rc4
 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->  .gitignore |    1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/.gitignore b/.gitignore
-> index 64e9466..0fe114d 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -82,7 +82,6 @@ fsdev/virtfs-proxy-helper.pod
->  *.swp
->  *.orig
->  .pc
-> -*.patch
->  *.gcda
->  *.gcno
->  patches
+Scott Wood (1):
+  KVM: PPC: Add dummy kvm_arch_init_irq_routing()
 
+ linux-headers/asm-arm/kvm.h       |   12 ++---
+ linux-headers/asm-mips/kvm.h      |   55 +++++++++++++++++++++++
+ linux-headers/asm-mips/kvm_para.h |    1 +
+ linux-headers/asm-powerpc/kvm.h   |   89 +++++++++++++++++++++++++++++++++++++
+ linux-headers/asm-x86/kvm.h       |    1 -
+ linux-headers/linux/kvm.h         |   42 ++++++++++++++---
+ linux-headers/linux/vfio.h        |    1 +
+ linux-headers/linux/vhost.h       |   28 ++++++++++++
+ target-ppc/kvm.c                  |    4 ++
+ 9 files changed, 220 insertions(+), 13 deletions(-)
+ create mode 100644 linux-headers/asm-mips/kvm.h
+ create mode 100644 linux-headers/asm-mips/kvm_para.h
+
+-- 
+1.7.10.4
 
 
