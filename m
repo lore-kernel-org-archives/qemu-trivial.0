@@ -1,40 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UljPe-0001YY-Uu
-	for mharc-qemu-trivial@gnu.org; Sun, 09 Jun 2013 13:28:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39313)
+	id 1UlkQZ-0002QW-EK
+	for mharc-qemu-trivial@gnu.org; Sun, 09 Jun 2013 14:33:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51382)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UljPc-0001VM-5m
-	for qemu-trivial@nongnu.org; Sun, 09 Jun 2013 13:28:17 -0400
+	(envelope-from <anthony@codemonkey.ws>) id 1UlkQX-0002QE-11
+	for qemu-trivial@nongnu.org; Sun, 09 Jun 2013 14:33:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UljPb-0008LM-5c
-	for qemu-trivial@nongnu.org; Sun, 09 Jun 2013 13:28:16 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:41981 helo=mx2.suse.de)
+	(envelope-from <anthony@codemonkey.ws>) id 1UlkQV-0002fj-NT
+	for qemu-trivial@nongnu.org; Sun, 09 Jun 2013 14:33:16 -0400
+Received: from mail-oa0-x233.google.com ([2607:f8b0:4003:c02::233]:48895)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UljPZ-0008Ku-31; Sun, 09 Jun 2013 13:28:13 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 988F8A5211;
-	Sun,  9 Jun 2013 19:28:12 +0200 (CEST)
-Message-ID: <51B4BB28.2070307@suse.de>
-Date: Sun, 09 Jun 2013 19:28:08 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
+	(envelope-from <anthony@codemonkey.ws>) id 1UlkQV-0002fT-J2
+	for qemu-trivial@nongnu.org; Sun, 09 Jun 2013 14:33:15 -0400
+Received: by mail-oa0-f51.google.com with SMTP id i4so912521oah.24
+	for <qemu-trivial@nongnu.org>; Sun, 09 Jun 2013 11:33:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:x-gm-message-state;
+	bh=NenwlqJvJNKLPXrh7B1r2FQwyWmW/zazeiokAM8dFq4=;
+	b=dvdVBOabmMS8oj4yQs3A01mOtysQFpW3XmKpyHObaHqbsnCt8D6FvXs2PddYYdKOCl
+	so+mArJ7Q16sWN4cawjFpozR3JPBu9zi/jRb3ZKsaKknM6WXiALk44guX0sNNKyoVZ8y
+	j719hYouRPajJ5GhI5sZGb8+LA7mn+fDvFrIMBN7zT+hZbxDseL1TshcEavYGPdyF1Ez
+	CqcRn7Bw+AsrCJX0kdDK7ecMakBU9aXTTSD6HclhN8OA47GU0gCZ6PY0dPugVfzL45VT
+	hpBWXBer8rZl5T5tknzY7brEeJAHKaaSuz/d6i/91qqaxyM+mz+qETjXIoh+uVsRnqAK
+	XX3A==
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1370780536-28150-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1370780536-28150-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	"Vassili Karpov \(malc\)" <av1474@comtv.ru>,
+X-Received: by 10.60.77.10 with SMTP id o10mr5411345oew.86.1370802794457; Sun,
+	09 Jun 2013 11:33:14 -0700 (PDT)
+Received: by 10.60.144.198 with HTTP; Sun, 9 Jun 2013 11:33:14 -0700 (PDT)
+In-Reply-To: <11837115.9GZ72nQAUt@al>
+References: <11837115.9GZ72nQAUt@al>
+Date: Sun, 9 Jun 2013 13:33:14 -0500
+Message-ID: <CA+aC4ktaHDBRywD6fReNWW5eNmOkr-TGBYjGXY426uMF=GMftw@mail.gmail.com>
+From: Anthony Liguori <anthony@codemonkey.ws>
+To: Peter Wu <lekensteyn@gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1
+X-Gm-Message-State: ALoCoQmM1AdHivU80ggaB2UtaSc/8Cll6U2O7XDjc3F0/NS+C8QreZ7S+0tRd3CJfGkvnTJI7l8+
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c02::233
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
 	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] audio: Replace macro
- GCC_ATTR by GCC_FMT_ATTR and use inline functions
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gtk: implement -full-screen
+	and -no-frame
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,20 +55,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 09 Jun 2013 17:28:17 -0000
+X-List-Received-Date: Sun, 09 Jun 2013 18:33:18 -0000
 
-Am 09.06.2013 14:22, schrieb Stefan Weil:
-> GCC_ATTR was only used in audio_int.h, so it is now unused and
-> the definition can be removed from compiler.h.
->=20
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On Sun, Jun 9, 2013 at 5:30 AM, Peter Wu <lekensteyn@gmail.com> wrote:
+> Aiming for GTK as replacement for SDL, features like -full-screen and -no-frame
+> should also be implemented.
+>
+> Bringing the window into full-screen mode is done by faking activating the full
+> screen menu item with a NULL menu item (which currently is not used by
+> gd_menu_full_screen). This is done after showing the windows to make the cursor
+> and menu hidden.
+>
+> Signed-off-by: Peter Wu <lekensteyn@gmail.com>
+> ---
+>  include/ui/console.h |  2 +-
+>  ui/gtk.c             | 10 +++++++++-
+>  vl.c                 |  2 +-
+>  3 files changed, 11 insertions(+), 3 deletions(-)
+>
+> diff --git a/include/ui/console.h b/include/ui/console.h
+> index 4307b5f..7174ba9 100644
+> --- a/include/ui/console.h
+> +++ b/include/ui/console.h
+> @@ -339,6 +339,6 @@ int index_from_keycode(int code);
+>
+>  /* gtk.c */
+>  void early_gtk_display_init(void);
+> -void gtk_display_init(DisplayState *ds);
+> +void gtk_display_init(DisplayState *ds, int full_screen, int no_frame);
+>
+>  #endif
+> diff --git a/ui/gtk.c b/ui/gtk.c
+> index 3bc2842..3df2611 100644
+> --- a/ui/gtk.c
+> +++ b/ui/gtk.c
+> @@ -1433,7 +1433,7 @@ static const DisplayChangeListenerOps dcl_ops = {
+>      .dpy_cursor_define = gd_cursor_define,
+>  };
+>
+> -void gtk_display_init(DisplayState *ds)
+> +void gtk_display_init(DisplayState *ds, int full_screen, int no_frame)
+>  {
+>      GtkDisplayState *s = g_malloc0(sizeof(*s));
+>      char *filename;
+> @@ -1457,6 +1457,10 @@ void gtk_display_init(DisplayState *ds)
+>      s->scale_y = 1.0;
+>      s->free_scale = FALSE;
+>
+> +    if (no_frame) {
+> +        gtk_window_set_decorated(GTK_WINDOW(s->window), FALSE);
+> +    }
+> +
 
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+Is this really desirable?  Why do people use -no-frame?  I don't think
+we should carry over features from SDL just because they are there.
 
-Andreas
+>      setlocale(LC_ALL, "");
+>      bindtextdomain("qemu", CONFIG_QEMU_LOCALEDIR);
+>      textdomain("qemu");
+> @@ -1509,6 +1513,10 @@ void gtk_display_init(DisplayState *ds)
+>
+>      gtk_widget_show_all(s->window);
+>
+> +    if (full_screen) {
+> +        gd_menu_full_screen(NULL, s);
+> +    }
+> +
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+You should activate the menu item by using gtk_check_menu_item_set_active().
+
+Otherwise the menu with be out of sync with the UI state.
+
+Regards,
+
+Anthony Liguori
+
+>      register_displaychangelistener(&s->dcl);
+>
+>      global_state = s;
+> diff --git a/vl.c b/vl.c
+> index 47ab45d..5a00710 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -4347,7 +4347,7 @@ int main(int argc, char **argv, char **envp)
+>  #endif
+>  #if defined(CONFIG_GTK)
+>      case DT_GTK:
+> -        gtk_display_init(ds);
+> +        gtk_display_init(ds, full_screen, no_frame);
+>          break;
+>  #endif
+>      default:
+> --
+> 1.8.3
+>
+>
+>
 
