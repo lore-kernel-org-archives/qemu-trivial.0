@@ -1,49 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ulctr-0007K2-Fe
-	for mharc-qemu-trivial@gnu.org; Sun, 09 Jun 2013 06:31:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42902)
+	id 1Ulee0-0003Cg-JR
+	for mharc-qemu-trivial@gnu.org; Sun, 09 Jun 2013 08:22:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lekensteyn@gmail.com>) id 1Ulctm-0007D7-29
-	for qemu-trivial@nongnu.org; Sun, 09 Jun 2013 06:31:01 -0400
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Uledx-00038p-N2
+	for qemu-trivial@nongnu.org; Sun, 09 Jun 2013 08:22:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lekensteyn@gmail.com>) id 1Ulctj-0005Mh-Av
-	for qemu-trivial@nongnu.org; Sun, 09 Jun 2013 06:30:57 -0400
-Received: from mail-we0-x22f.google.com ([2a00:1450:400c:c03::22f]:51836)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Uledw-00037a-PA
+	for qemu-trivial@nongnu.org; Sun, 09 Jun 2013 08:22:45 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:50340
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lekensteyn@gmail.com>)
-	id 1Ulcte-0005MK-7e; Sun, 09 Jun 2013 06:30:50 -0400
-Received: by mail-we0-f175.google.com with SMTP id t59so4164807wes.34
-	for <multiple recipients>; Sun, 09 Jun 2013 03:30:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:user-agent:mime-version
-	:content-transfer-encoding:content-type;
-	bh=JnaJaDpu3EscMaQUEZ3mW30MaABfJyAX5Fq7cc+tFp8=;
-	b=GDozdnx0tEa9mAxnhQdB4lUOBzPUkuluFX9KHRkTsHUw3U7BXU0JexaOvncLLkvMqh
-	k5AP7YHL+qlBQ7HBMxo7k6Pd7zqZjKpB79HwKnOJqIrQMBl/A/Zep3k1vONsixJn2fEu
-	6KBtzAX4iiIUWZnDkkp7gT3VoVUtUccn67yI1op265eINQg3SxY2zIuj546T+Yv//UR5
-	wt4LI7seC0z2VENW7bd2PmXBZRRPON2l1mOYS41mT5uhKDE+Rku8G4Bl2RZbp5FiWkCh
-	mnxZnPm6TbCEGsgxcagNC751UQnutBtv6rfBrlXfd9A0pFeD9uTv+oydulsYh/TZbcJG
-	p9CA==
-X-Received: by 10.180.189.41 with SMTP id gf9mr2417257wic.32.1370773849129;
-	Sun, 09 Jun 2013 03:30:49 -0700 (PDT)
-Received: from al.localnet (al.lekensteyn.nl. [2001:470:1f15:b83::c0d1:f1ed])
-	by mx.google.com with ESMTPSA id
-	ft10sm5495661wib.7.2013.06.09.03.30.47 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 09 Jun 2013 03:30:48 -0700 (PDT)
-From: Peter Wu <lekensteyn@gmail.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Sun, 09 Jun 2013 12:30:45 +0200
-Message-ID: <11837115.9GZ72nQAUt@al>
-User-Agent: KMail/4.10.4 (Linux/3.9.1-1-custom; KDE/4.10.4; x86_64; ; )
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::22f
-Cc: Anthony Liguori <aliguori@us.ibm.com>
-Subject: [Qemu-trivial] [PATCH] gtk: implement -full-screen and -no-frame
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Uledu-000374-Nq; Sun, 09 Jun 2013 08:22:42 -0400
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id A4396181F1F; Sun,  9 Jun 2013 14:22:37 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial <qemu-trivial@nongnu.org>
+Date: Sun,  9 Jun 2013 14:22:16 +0200
+Message-Id: <1370780536-28150-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.198.45
+Cc: Stefan Weil <sw@weilnetz.de>, "Vassili Karpov \(malc\)" <av1474@comtv.ru>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] audio: Replace macro GCC_ATTR by
+	GCC_FMT_ATTR and use inline functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,85 +39,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 09 Jun 2013 10:31:01 -0000
+X-List-Received-Date: Sun, 09 Jun 2013 12:22:46 -0000
 
-Aiming for GTK as replacement for SDL, features like -full-screen and -no-frame
-should also be implemented.
+GCC_ATTR was only used in audio_int.h, so it is now unused and
+the definition can be removed from compiler.h.
 
-Bringing the window into full-screen mode is done by faking activating the full
-screen menu item with a NULL menu item (which currently is not used by
-gd_menu_full_screen). This is done after showing the windows to make the cursor
-and menu hidden.
-
-Signed-off-by: Peter Wu <lekensteyn@gmail.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- include/ui/console.h |  2 +-
- ui/gtk.c             | 10 +++++++++-
- vl.c                 |  2 +-
- 3 files changed, 11 insertions(+), 3 deletions(-)
+ audio/audio_int.h       |    8 +++-----
+ include/qemu/compiler.h |    3 ---
+ 2 files changed, 3 insertions(+), 8 deletions(-)
 
-diff --git a/include/ui/console.h b/include/ui/console.h
-index 4307b5f..7174ba9 100644
---- a/include/ui/console.h
-+++ b/include/ui/console.h
-@@ -339,6 +339,6 @@ int index_from_keycode(int code);
+diff --git a/audio/audio_int.h b/audio/audio_int.h
+index b9b0676..5a6284b 100644
+--- a/audio/audio_int.h
++++ b/audio/audio_int.h
+@@ -243,7 +243,7 @@ static inline int audio_ring_dist (int dst, int src, int len)
+     return (dst >= src) ? (dst - src) : (len - src + dst);
+ }
  
- /* gtk.c */
- void early_gtk_display_init(void);
--void gtk_display_init(DisplayState *ds);
-+void gtk_display_init(DisplayState *ds, int full_screen, int no_frame);
- 
- #endif
-diff --git a/ui/gtk.c b/ui/gtk.c
-index 3bc2842..3df2611 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -1433,7 +1433,7 @@ static const DisplayChangeListenerOps dcl_ops = {
-     .dpy_cursor_define = gd_cursor_define,
- };
- 
--void gtk_display_init(DisplayState *ds)
-+void gtk_display_init(DisplayState *ds, int full_screen, int no_frame)
+-static void GCC_ATTR dolog (const char *fmt, ...)
++static inline void GCC_FMT_ATTR(1, 2) dolog (const char *fmt, ...)
  {
-     GtkDisplayState *s = g_malloc0(sizeof(*s));
-     char *filename;
-@@ -1457,6 +1457,10 @@ void gtk_display_init(DisplayState *ds)
-     s->scale_y = 1.0;
-     s->free_scale = FALSE;
+     va_list ap;
  
-+    if (no_frame) {
-+        gtk_window_set_decorated(GTK_WINDOW(s->window), FALSE);
-+    }
-+
-     setlocale(LC_ALL, "");
-     bindtextdomain("qemu", CONFIG_QEMU_LOCALEDIR);
-     textdomain("qemu");
-@@ -1509,6 +1513,10 @@ void gtk_display_init(DisplayState *ds)
+@@ -253,7 +253,7 @@ static void GCC_ATTR dolog (const char *fmt, ...)
+ }
  
-     gtk_widget_show_all(s->window);
+ #ifdef DEBUG
+-static void GCC_ATTR ldebug (const char *fmt, ...)
++static inline void GCC_FMT_ATTR(1, 2) ldebug (const char *fmt, ...)
+ {
+     va_list ap;
  
-+    if (full_screen) {
-+        gd_menu_full_screen(NULL, s);
-+    }
-+
-     register_displaychangelistener(&s->dcl);
- 
-     global_state = s;
-diff --git a/vl.c b/vl.c
-index 47ab45d..5a00710 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4347,7 +4347,7 @@ int main(int argc, char **argv, char **envp)
+@@ -267,15 +267,13 @@ static void GCC_ATTR ldebug (const char *fmt, ...)
+ #elif defined NDEBUG && defined _MSC_VER
+ #define ldebug __noop
+ #else
+-static void GCC_ATTR ldebug (const char *fmt, ...)
++static inline void GCC_FMT_ATTR(1, 2) ldebug (const char *fmt, ...)
+ {
+     (void) fmt;
+ }
  #endif
- #if defined(CONFIG_GTK)
-     case DT_GTK:
--        gtk_display_init(ds);
-+        gtk_display_init(ds, full_screen, no_frame);
-         break;
  #endif
-     default:
+ 
+-#undef GCC_ATTR
+-
+ #define AUDIO_STRINGIFY_(n) #n
+ #define AUDIO_STRINGIFY(n) AUDIO_STRINGIFY_(n)
+ 
+diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+index 6175c24..155b358 100644
+--- a/include/qemu/compiler.h
++++ b/include/qemu/compiler.h
+@@ -38,11 +38,9 @@
+ #if defined __GNUC__
+ # if !QEMU_GNUC_PREREQ(4, 4)
+    /* gcc versions before 4.4.x don't support gnu_printf, so use printf. */
+-#  define GCC_ATTR __attribute__((__unused__, format(printf, 1, 2)))
+ #  define GCC_FMT_ATTR(n, m) __attribute__((format(printf, n, m)))
+ # else
+    /* Use gnu_printf when supported (qemu uses standard format strings). */
+-#  define GCC_ATTR __attribute__((__unused__, format(gnu_printf, 1, 2)))
+ #  define GCC_FMT_ATTR(n, m) __attribute__((format(gnu_printf, n, m)))
+ #  if defined(_WIN32)
+     /* Map __printf__ to __gnu_printf__ because we want standard format strings
+@@ -51,7 +49,6 @@
+ #  endif
+ # endif
+ #else
+-#define GCC_ATTR /**/
+ #define GCC_FMT_ATTR(n, m)
+ #endif
+ 
 -- 
-1.8.3
-
+1.7.10.4
 
 
