@@ -1,34 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Um1vu-0006ve-EF
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2013 09:14:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38512)
+	id 1Um1wY-00077y-U1
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2013 09:15:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38639)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1Um1vr-0006v0-Pj
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 09:14:48 -0400
+	(envelope-from <kwolf@redhat.com>) id 1Um1wX-00075h-An
+	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 09:15:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1Um1vn-00020Y-6j
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 09:14:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:4174)
+	(envelope-from <kwolf@redhat.com>) id 1Um1wV-0002L6-Vj
+	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 09:15:29 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40782)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1Um1vm-00020Q-VZ
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 09:14:43 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5ADEfb0029060
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK)
-	for <qemu-trivial@nongnu.org>; Mon, 10 Jun 2013 09:14:42 -0400
-Received: from choo.home.annexia.org (vpn1-6-48.ams2.redhat.com [10.36.6.48])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id r5ADEeKL018192; Mon, 10 Jun 2013 09:14:40 -0400
-From: "Richard W.M. Jones" <rjones@redhat.com>
-To: qemu-trivial@nongnu.org
-Date: Mon, 10 Jun 2013 14:14:35 +0100
-Message-Id: <1370870075-21570-1-git-send-email-rjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	(envelope-from <kwolf@redhat.com>)
+	id 1Um1wO-0002K2-Ow; Mon, 10 Jun 2013 09:15:20 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5ADFIdV029316
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 10 Jun 2013 09:15:18 -0400
+Received: from dhcp-200-207.str.redhat.com (dhcp-192-246.str.redhat.com
+	[10.33.192.246])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with SMTP
+	id r5ADFHWo024358; Mon, 10 Jun 2013 09:15:17 -0400
+Date: Mon, 10 Jun 2013 15:15:17 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Peter Wu <lekensteyn@gmail.com>
+Message-ID: <20130610131517.GG3636@dhcp-200-207.str.redhat.com>
+References: <11837115.9GZ72nQAUt@al>
+	<20130610123328.GF3636@dhcp-200-207.str.redhat.com>
+	<2282258.ks7pGhyqjl@al>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2282258.ks7pGhyqjl@al>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: stefanha@redhat.com
-Subject: [Qemu-trivial] [PATCH TRIVIAL] curl: Whitespace only changes.
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gtk: implement -full-screen
+	and -no-frame
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,33 +51,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jun 2013 13:14:48 -0000
+X-List-Received-Date: Mon, 10 Jun 2013 13:15:30 -0000
 
-From: "Richard W.M. Jones" <rjones@redhat.com>
+Am 10.06.2013 um 14:43 hat Peter Wu geschrieben:
+> On Monday 10 June 2013 14:33:28 Kevin Wolf wrote:
+> > Am 09.06.2013 um 12:30 hat Peter Wu geschrieben:
+> > > --- a/include/ui/console.h
+> > > +++ b/include/ui/console.h
+> > > @@ -339,6 +339,6 @@ int index_from_keycode(int code);
+> > >
+> > >  
+> > >  /* gtk.c */
+> > >  void early_gtk_display_init(void);
+> > >
+> > > -void gtk_display_init(DisplayState *ds);
+> > > +void gtk_display_init(DisplayState *ds, int full_screen, int no_frame);
+> > 
+> > Should the new arguments be bool?
+> 
+> Probably yes, but for consistency with the existing types I kept it as int. A 
+> future patch could change all uses of "int" to "bool" where 1 or 0 are used, 
+> do you prefer to use bool here anyway?
 
-Trivial patch to remove odd whitespace.
+Yes, if you have to respin anyway, I would prefer if you changed it to
+bool. I mean it's not a big deal, but it moves us one step closer to
+consistent use of bool for boolean values, so it can't be bad.
 
-Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
----
- block/curl.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I don't think we'll ever see one big conversion patch, but as the code
+is touched over time, ints abused as bools will slowly disappear if we
+don't introduce new instances.
 
-diff --git a/block/curl.c b/block/curl.c
-index bf31efe..781c49c 100644
---- a/block/curl.c
-+++ b/block/curl.c
-@@ -467,8 +467,8 @@ static int curl_open(BlockDriverState *bs, QDict *options, int flags)
-     // initialize the multi interface!
- 
-     s->multi = curl_multi_init();
--    curl_multi_setopt( s->multi, CURLMOPT_SOCKETDATA, s); 
--    curl_multi_setopt( s->multi, CURLMOPT_SOCKETFUNCTION, curl_sock_cb ); 
-+    curl_multi_setopt(s->multi, CURLMOPT_SOCKETDATA, s);
-+    curl_multi_setopt(s->multi, CURLMOPT_SOCKETFUNCTION, curl_sock_cb);
-     curl_multi_do(s);
- 
-     qemu_opts_del(opts);
--- 
-1.8.2.1
-
+Kevin
 
