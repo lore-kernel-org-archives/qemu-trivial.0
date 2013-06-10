@@ -1,55 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmA1a-0004rK-Pk
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2013 17:53:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59478)
+	id 1UmAWG-0003oH-Cf
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2013 18:24:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37278)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1UmA1X-0004qQ-RB
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 17:53:13 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UmAW9-0003mB-Js
+	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 18:24:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1UmA1V-0002T3-Ku
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 17:53:11 -0400
-Received: from mail-oa0-x234.google.com ([2607:f8b0:4003:c02::234]:52687)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UmAW2-00038o-KF
+	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 18:24:49 -0400
+Received: from mail-bk0-x22c.google.com ([2a00:1450:4008:c01::22c]:60756)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1UmA1V-0002Sp-H2
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 17:53:09 -0400
-Received: by mail-oa0-f52.google.com with SMTP id g12so1907450oah.11
-	for <qemu-trivial@nongnu.org>; Mon, 10 Jun 2013 14:53:08 -0700 (PDT)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UmAW2-00038Y-E9
+	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 18:24:42 -0400
+Received: by mail-bk0-f44.google.com with SMTP id r7so3614780bkg.3
+	for <qemu-trivial@nongnu.org>; Mon, 10 Jun 2013 15:24:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
-	h=from:to:subject:in-reply-to:references:user-agent:date:message-id
-	:mime-version:content-type:x-gm-message-state;
-	bh=OcZB4uBbfi2x7PkUT2h6MnVUWZxN4N7DHVBZqD4+rU0=;
-	b=JGCIRA1ZoVwi1iGnXyBqg7bUmQk5ExBCMu69bJexWLiARQmsrG2+oxLRRBfk4udkJb
-	poT4En6Ea9Q2C7NmvH6vFkG6n+lK6YmFD73EyvCVrVE/uTyiQGeB3z9cbC++Bu2MkjoR
-	nQ79UWgpwJaLg3lm2SzSvoKLEwqZ/wrOsY620F8+HWSFpJOLy/yhRVscVnVIvGQjxNW4
-	u9lzbKmvdqIBjmWCD0KWJguHAoc6z9IPXNOiYTqMQerqRmxnKoQfXttGlHDMH7d09DqM
-	TVI/LIEMa4r/bKMlCS/DnBwb4bqH/v4+k4M2pOeR4pFohv0q6mLeD99iSs3z6zKh8qjO
-	8WGQ==
-X-Received: by 10.60.121.106 with SMTP id lj10mr10082107oeb.128.1370901188856; 
-	Mon, 10 Jun 2013 14:53:08 -0700 (PDT)
-Received: from titi.smtp.gmail.com (cpe-70-112-157-87.austin.res.rr.com.
-	[70.112.157.87])
-	by mx.google.com with ESMTPSA id r4sm25045058oem.3.2013.06.10.14.53.07
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Mon, 10 Jun 2013 14:53:08 -0700 (PDT)
-From: Anthony Liguori <anthony@codemonkey.ws>
-To: Peter Wu <lekensteyn@gmail.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-In-Reply-To: <8922048.8EFbqlEaG9@al>
-References: <8922048.8EFbqlEaG9@al>
-User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
-	(x86_64-pc-linux-gnu)
-Date: Mon, 10 Jun 2013 16:53:06 -0500
-Message-ID: <871u894oql.fsf@codemonkey.ws>
+	h=mime-version:sender:in-reply-to:references:date
+	:x-google-sender-auth:message-id:subject:from:to:cc:content-type
+	:content-transfer-encoding:x-gm-message-state;
+	bh=EkT9wFWUkmfedcIthjZAhP4xKQNEKbM4SNJfAR53W4g=;
+	b=YPMf5OQ1ytSlIMsKmZkpgOlHRrwslRvnIbhuOjUHlFMe8jV9rlBe0o2RR/5V/ApKCq
+	Cp96H6fj3FI4ngpyV9oOMS8d62PhIqJtfcKeMr7Xjgo1oqaOR4+VQ4wN4fQzewPsI1jD
+	ZhG6D6KJw4e51gskzaDhGB3EVnX01IN3yL80LrdS96D/nikF8CENuyOKKPXMgCEzBank
+	SZ6r/JCYVjskSJqPxG+PE9Ip4rP/ZHqZKeqSxu8zNXemZ7n/fi0Ec4ogzrg/5/97l4/L
+	Kc4svrTJKrAlSStKMk8J58D9kxFI+YkcQ7+ujgElg7z043brAJvnslmOMA/56GXg8Q9G
+	1m1g==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-Gm-Message-State: ALoCoQmWUEDkHFoJJZP3rNHrTSCqZCejdug1eAJ/YFEa/YqZQtirM39nR0oVzZtGG8LRxsTXG+Gw
+X-Received: by 10.204.190.7 with SMTP id dg7mr1861945bkb.52.1370903081410;
+	Mon, 10 Jun 2013 15:24:41 -0700 (PDT)
+Sender: peter.crosthwaite@petalogix.com
+Received: by 10.204.35.136 with HTTP; Mon, 10 Jun 2013 15:24:41 -0700 (PDT)
+In-Reply-To: <51B5F0D3.2030504@msgid.tls.msk.ru>
+References: <cover.1370236013.git.peter.crosthwaite@xilinx.com>
+	<b61bfd22e26fd08d9cca73e875c6074a9664c49c.1370236013.git.peter.crosthwaite@xilinx.com>
+	<51B5EE24.5010400@msgid.tls.msk.ru>
+	<51B5F0D3.2030504@msgid.tls.msk.ru>
+Date: Tue, 11 Jun 2013 08:24:41 +1000
+X-Google-Sender-Auth: EVl9hKr5g1V30sQuOy0ZK4Zxg6U
+Message-ID: <CAEgOgz6w=VAtksHf5M_rLfSA8dj86UzfdzDfq2t3crNfaCETZg@mail.gmail.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Gm-Message-State: ALoCoQmSJWesbjuh/6lr+1AqKhJ2GtMgHW+KMV/G3Wo0vnjUV2V/C/CvmTcRW7dlgF5eu8UOpNcI
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c02::234
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Unbreak -no-quit for GTK
-	when SDL is disabled
+X-Received-From: 2a00:1450:4008:c01::22c
+Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com, aliguori@us.ibm.com,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 1/3] char/serial:
+	cosmetic fixes.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,94 +62,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jun 2013 21:53:13 -0000
+X-List-Received-Date: Mon, 10 Jun 2013 22:24:54 -0000
 
-Peter Wu <lekensteyn@gmail.com> writes:
+Hi Michael,
 
-> When QEMU is built without SDL support, -no-quit would print an error message
-> that SDL is disabled. Since GTK also supports -no-quit, enable the option when
-> GTK or SDL is enabled at compile time.
+On Tue, Jun 11, 2013 at 1:29 AM, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> 10.06.2013 19:17, Michael Tokarev =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
+>> 03.06.2013 09:12, peter.crosthwaite@xilinx.com wrote:
+>>> From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+>>>
+>>> Some cosmetic fixes to char/serial fixing some checkpatch errors.
+>>
+>> These are all cosmetic fixes indeed.  I weren't sure we're
+>> applying stylistic changes by its own.  But apparently
+>> people don't object so I don't see why not, either, except
+>> that I don't really want to open a can of worms with other
+>> stylistic patches to come ;)
+>>
+>> Applied all 3 to the trivial patches queue.
 >
-> While at it, do not create the no_quit variable when it is not used.
+> Actually I didn't apply these.  Since patch 2/3 weren't sent to
+> -trivial, and 3/3 does not apply without it, I'm not sure I want
+> to apply either of these.  Maybe all 3 should be sent to the same
+> tree?  Should I pick the 2/3 too, which wasn't submitted to
+> -trivial?
 >
-> Signed-off-by: Peter Wu <lekensteyn@gmail.com>
 
-Any harm in just making -no-quit unconditional?
-
-It's a nop for VNC and presumably for spice too but it's not incorrect
-AFAICT.
-
-Would be nice to drop #ifdefs if we can.
+Im happy for you to take all three as they have had a week of list
+time and 2/3 is cleanup only with no functional change. It's
+borderline as to whether its trivial.
 
 Regards,
+Peter
 
-Anthony Liguori
-
-> ---
->  include/sysemu/sysemu.h |  2 ++
->  vl.c                    | 13 +++++++++----
->  2 files changed, 11 insertions(+), 4 deletions(-)
+> Thank you!
 >
-> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-> index 2fb71af..b9b8e52 100644
-> --- a/include/sysemu/sysemu.h
-> +++ b/include/sysemu/sysemu.h
-> @@ -117,7 +117,9 @@ extern int smp_cpus;
->  extern int max_cpus;
->  extern int cursor_hide;
->  extern int graphic_rotate;
-> +#if defined(CONFIG_SDL) || defined(CONFIG_GTK)
->  extern int no_quit;
-> +#endif
->  extern int no_shutdown;
->  extern int semihosting_enabled;
->  extern int old_param;
-> diff --git a/vl.c b/vl.c
-> index cfd2d3e..74ab050 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -202,7 +202,9 @@ static int full_screen = 0;
->  #ifdef CONFIG_SDL
->  static int no_frame = 0;
->  #endif
-> +#if defined(CONFIG_SDL) || defined(CONFIG_GTK)
->  int no_quit = 0;
-> +#endif
->  CharDriverState *serial_hds[MAX_SERIAL_PORTS];
->  CharDriverState *parallel_hds[MAX_PARALLEL_PORTS];
->  CharDriverState *virtcon_hds[MAX_VIRTIO_CONSOLES];
-> @@ -3523,6 +3525,13 @@ int main(int argc, char **argv, char **envp)
->              case QEMU_OPTION_full_screen:
->                  full_screen = 1;
->                  break;
-> +            case QEMU_OPTION_no_quit:
-> +#if defined(CONFIG_SDL) || defined(CONFIG_GTK)
-> +                no_quit = 1;
-> +#else
-> +                fprintf(stderr, "SDL and GTK support are disabled\n");
-> +#endif
-> +                break;
->  #ifdef CONFIG_SDL
->              case QEMU_OPTION_no_frame:
->                  no_frame = 1;
-> @@ -3533,9 +3542,6 @@ int main(int argc, char **argv, char **envp)
->              case QEMU_OPTION_ctrl_grab:
->                  ctrl_grab = 1;
->                  break;
-> -            case QEMU_OPTION_no_quit:
-> -                no_quit = 1;
-> -                break;
->              case QEMU_OPTION_sdl:
->                  display_type = DT_SDL;
->                  break;
-> @@ -3543,7 +3549,6 @@ int main(int argc, char **argv, char **envp)
->              case QEMU_OPTION_no_frame:
->              case QEMU_OPTION_alt_grab:
->              case QEMU_OPTION_ctrl_grab:
-> -            case QEMU_OPTION_no_quit:
->              case QEMU_OPTION_sdl:
->                  fprintf(stderr, "SDL support is disabled\n");
->                  exit(1);
-> -- 
-> 1.8.3
+> /mjt
+>
+>
 
