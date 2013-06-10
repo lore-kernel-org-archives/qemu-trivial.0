@@ -1,43 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Um54h-000771-4Z
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2013 12:36:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40471)
+	id 1Um5Y6-0005FB-BJ
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2013 13:06:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48186)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1Um54a-0006vr-KB
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 12:36:05 -0400
+	(envelope-from <mst@redhat.com>) id 1Um5Y1-00055p-KG
+	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 13:06:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1Um54Z-000251-5x
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 12:36:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60277)
+	(envelope-from <mst@redhat.com>) id 1Um5Xy-0003ia-I3
+	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 13:06:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39074)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>)
-	id 1Um54V-00023n-EY; Mon, 10 Jun 2013 12:35:55 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5AGZstR023912
+	(envelope-from <mst@redhat.com>)
+	id 1Um5Xs-0003hB-J4; Mon, 10 Jun 2013 13:06:16 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5AH6ELH018188
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 10 Jun 2013 12:35:54 -0400
-Received: from localhost (vpn1-6-48.ams2.redhat.com [10.36.6.48])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r5AGZrd7024612; Mon, 10 Jun 2013 12:35:54 -0400
-Date: Mon, 10 Jun 2013 17:35:50 +0100
-From: "Richard W.M. Jones" <rjones@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20130610163550.GD4515@redhat.com>
-References: <1370870347-22080-1-git-send-email-rjones@redhat.com>
-	<51B5F21C.9020700@msgid.tls.msk.ru>
+	Mon, 10 Jun 2013 13:06:14 -0400
+Received: from redhat.com (vpn1-6-190.ams2.redhat.com [10.36.6.190])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id r5AH6Agx011643; Mon, 10 Jun 2013 13:06:11 -0400
+Date: Mon, 10 Jun 2013 20:06:49 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Message-ID: <20130610170649.GA31588@redhat.com>
+References: <1370439748-18092-1-git-send-email-hpoussin@reactos.org>
+	<51B2E26F.8030106@msgid.tls.msk.ru> <51B563CC.5040907@redhat.com>
+	<CAEgOgz6PmZ+gvhH9vVFiVqMvNXOBDn3Y+ny=tW+QHEu-eZ-LcQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <51B5F21C.9020700@msgid.tls.msk.ru>
-User-Agent: Mutt/1.5.20 (2009-12-10)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+In-Reply-To: <CAEgOgz6PmZ+gvhH9vVFiVqMvNXOBDn3Y+ny=tW+QHEu-eZ-LcQ@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, kwolf@redhat.com, qemu-devel@nongnu.org,
-	stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] curl: Don't set curl options on the
- handle just before it's going to be deleted.
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] ioport/memory: check that both .read and
+ .write callbacks are defined
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,67 +52,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jun 2013 16:36:05 -0000
+X-List-Received-Date: Mon, 10 Jun 2013 17:06:28 -0000
 
-On Mon, Jun 10, 2013 at 07:34:52PM +0400, Michael Tokarev wrote:
-> 10.06.2013 17:19, Richard W.M. Jones wrote:
-> > From: "Richard W.M. Jones" <rjones@redhat.com>
-> > 
-> > (Found by Kamil Dudka)
-> > 
-> > Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
-> > ---
-> >  block/curl.c | 1 -
-> >  1 file changed, 1 deletion(-)
-> > 
-> > diff --git a/block/curl.c b/block/curl.c
-> > index b634ccf..bf31efe 100644
-> > --- a/block/curl.c
-> > +++ b/block/curl.c
-> > @@ -453,7 +453,6 @@ static int curl_open(BlockDriverState *bs, QDict *options, int flags)
-> >          goto out;
-> >      curl_easy_getinfo(state->curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &d);
-> >      curl_easy_setopt(state->curl, CURLOPT_WRITEFUNCTION, (void *)curl_read_cb);
-> > -    curl_easy_setopt(state->curl, CURLOPT_NOBODY, 0);
-> >      if (d)
-> >          s->len = (size_t)d;
-> >      else if(!s->len)
+On Mon, Jun 10, 2013 at 07:14:45PM +1000, Peter Crosthwaite wrote:
+> Hi,
 > 
-> Adding a bit more context:
+> On Mon, Jun 10, 2013 at 3:27 PM, Gerd Hoffmann <kraxel@redhat.com> wrote:
+> >   Hi,
+> >
+> >> Maybe instead (or in addition to), we should provide a dummy
+> >> read or write functions -- instead of fixing each such occurence
+> >> to use its own dummy function
+> >
+> > Makes sense, especially for write where we can just ignore what the
+> > guest attempts to write.  Not sure we can have a generic handler for
+> > reads.  Maybe two, one which returns 0xff and one which returns 0x00.
+> >
 > 
+> FWIW, I have one in my tree that qemu_log(LOG_GUEST_ERROR's such
+> accesses that I use for unimplemented devices. It's worthwhile to trap
+> such accesses and speaking for the Xilinx LQSPI case, my preference is
+> for some form of failure rather than silent write-ignore. And can we
+> have an option where a invalid writes have consistent behavior with
+> unassigned accesses?
 > 
->     curl_easy_setopt(state->curl, CURLOPT_NOBODY, 1);
->     curl_easy_setopt(state->curl, CURLOPT_WRITEFUNCTION, (void *)curl_size_cb);
->     if (curl_easy_perform(state->curl))
->         goto out;
->     curl_easy_getinfo(state->curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &d);
->     curl_easy_setopt(state->curl, CURLOPT_WRITEFUNCTION, (void *)curl_read_cb);
-> =>> curl_easy_setopt(state->curl, CURLOPT_NOBODY, 0);
->     if (d)
->         s->len = (size_t)d;
->     else if(!s->len)
->         goto out;
->     DPRINTF("CURL: Size = %zd\n", s->len);
-> 
->     curl_clean_state(state);
->     curl_easy_cleanup(state->curl);
->     state->curl = NULL;
-> 
-> So indeed, the curl object is being removed here a few lines down the code.
-> 
-> But it looks like the previous call to curl_easy_setopt, to set WRITEFUNCTION,
-> is also not very useful. Should we probably want to remove that too, or don't
-> remove either of these?
+> Regards,
+> Peter
 
-Yes you're right.  For some reason I "saw" another call to
-curl_easy_perform which obviously isn't there in reality.  Will send a
-v2 patch shortly after I've done a bit of testing.
+Probably not a good idea. Ignoring unassigned addresses
+is very handy for compatibility: we can run new guests
+on old qemu and They don't crash or log errors.
 
-Rich.
-
--- 
-Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjones
-virt-top is 'top' for virtual machines.  Tiny program with many
-powerful monitoring features, net stats, disk stats, logging, etc.
-http://people.redhat.com/~rjones/virt-top
+> > cheers,
+> >   Gerd
+> >
+> >
 
