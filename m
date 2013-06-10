@@ -1,29 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Um0R5-00010Y-Js
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2013 07:38:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37294)
+	id 1Um0R7-00012Y-Nh
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2013 07:38:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37310)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1Um0R1-0000zO-RB
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 07:38:53 -0400
+	(envelope-from <rjones@redhat.com>) id 1Um0R3-0000zQ-GK
+	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 07:38:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1Um0R0-0003Ah-Ef
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 07:38:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38478)
+	(envelope-from <rjones@redhat.com>) id 1Um0R1-0003B0-Jw
+	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 07:38:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55138)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <rjones@redhat.com>)
-	id 1Um0R0-0003Aa-5Y; Mon, 10 Jun 2013 07:38:50 -0400
+	id 1Um0R1-0003As-D6; Mon, 10 Jun 2013 07:38:51 -0400
 Received: from int-mx10.intmail.prod.int.phx2.redhat.com
 	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5ABcn1s018621
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5ABcocw024582
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 10 Jun 2013 07:38:49 -0400
+	Mon, 10 Jun 2013 07:38:50 -0400
 Received: from choo.home.annexia.org (vpn1-6-48.ams2.redhat.com [10.36.6.48])
 	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id r5ABcjVa030500; Mon, 10 Jun 2013 07:38:46 -0400
+	ESMTP id r5ABcjVb030500; Mon, 10 Jun 2013 07:38:49 -0400
 From: "Richard W.M. Jones" <rjones@redhat.com>
 To: qemu-trivial@nongnu.org
-Date: Mon, 10 Jun 2013 12:38:42 +0100
-Message-Id: <1370864323-25679-1-git-send-email-rjones@redhat.com>
+Date: Mon, 10 Jun 2013 12:38:43 +0100
+Message-Id: <1370864323-25679-2-git-send-email-rjones@redhat.com>
+In-Reply-To: <1370864323-25679-1-git-send-email-rjones@redhat.com>
+References: <1370864323-25679-1-git-send-email-rjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
@@ -41,11 +43,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jun 2013 11:38:53 -0000
+X-List-Received-Date: Mon, 10 Jun 2013 11:38:54 -0000
 
-v2:
+From: "Richard W.M. Jones" <rjones@redhat.com>
 
-- Use qerror_report to report an error.
-- Return -EROFS instead of -ENOTSUP.
+Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
+Signed-off-by: Fam Zheng <famz@redhat.com>
+---
+ block/curl.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/block/curl.c b/block/curl.c
+index b8935fd..b634ccf 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -406,6 +406,12 @@ static int curl_open(BlockDriverState *bs, QDict *options, int flags)
+ 
+     static int inited = 0;
+ 
++    if (flags & BDRV_O_RDWR) {
++        qerror_report(ERROR_CLASS_GENERIC_ERROR,
++                      "curl block device does not support writes");
++        return -EROFS;
++    }
++
+     opts = qemu_opts_create_nofail(&runtime_opts);
+     qemu_opts_absorb_qdict(opts, options, &local_err);
+     if (error_is_set(&local_err)) {
+-- 
+1.8.2.1
 
 
