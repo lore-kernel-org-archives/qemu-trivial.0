@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmKKx-0002PF-7q
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 04:53:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45541)
+	id 1UmKMO-0003lN-IK
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 04:55:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lekensteyn@gmail.com>) id 1UmKKt-0002KM-4v
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 04:53:53 -0400
+	(envelope-from <lekensteyn@gmail.com>) id 1UmKML-0003gm-7Q
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 04:55:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lekensteyn@gmail.com>) id 1UmKKq-0002sD-3Y
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 04:53:51 -0400
-Received: from mail-bk0-x22d.google.com ([2a00:1450:4008:c01::22d]:37845)
+	(envelope-from <lekensteyn@gmail.com>) id 1UmKMI-0003Sd-7w
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 04:55:21 -0400
+Received: from mail-bk0-x230.google.com ([2a00:1450:4008:c01::230]:45123)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lekensteyn@gmail.com>)
-	id 1UmKKk-0002qw-L6; Tue, 11 Jun 2013 04:53:42 -0400
-Received: by mail-bk0-f45.google.com with SMTP id je9so2280462bkc.18
-	for <multiple recipients>; Tue, 11 Jun 2013 01:53:41 -0700 (PDT)
+	id 1UmKMC-0003Rd-5t; Tue, 11 Jun 2013 04:55:12 -0400
+Received: by mail-bk0-f48.google.com with SMTP id jf17so3744176bkc.7
+	for <multiple recipients>; Tue, 11 Jun 2013 01:55:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:user-agent:in-reply-to
-	:references:mime-version:content-transfer-encoding:content-type;
-	bh=nqI1q/aWTE/r0aRIwsiDkVkyZEFj6vMCeK9JQJaSJU8=;
-	b=VgBA/E6uEHINWosLTLX8U1Nx+kYHNwp/q3pDW9w0MdTmxNEXExWDYLSUvirhLo5qOV
-	OlxEPkQr4iFvgNocv48GqM3q647s5Ql4FkUGVnkXL8Dvs8OL/YeSeBXI0Y8AAvOzt+Zw
-	2QXPoCeJXBCEUMSqgp68B64Lw08IP1ooc8pWA1a9GS05pE/o/VT/GScQUnL0maa796yN
-	fuxVWbDD+V7xK9emoL69p9fRhevYIwPqiiq8R59pPD71MhhZQZvk6KHo9EyEozu1myv6
-	45MOv9RDAOgD730uD54mXJr4DT2vNMOwWntjoSkBd1DQqps9zuDvJuF8hkAlITm9h8Xo
-	Ku/A==
-X-Received: by 10.204.237.130 with SMTP id ko2mr2018146bkb.154.1370940821097; 
-	Tue, 11 Jun 2013 01:53:41 -0700 (PDT)
+	h=from:to:subject:date:message-id:user-agent:mime-version
+	:content-transfer-encoding:content-type;
+	bh=vCkWPej44HlNquj0k8Ny02xy2SxFDWffCNzS7SHbMDM=;
+	b=yhrUo1fjWADOqixHNDwVkqIg8gOqIlN3oc1o/Ic2wuJEw7vjDDTwtkDU0WDOiAfYC8
+	ebWBL9VRcLTR2KwRmQpi0O83KZThfd5M1n1idZteF/4BuuFQJ9wWOS13xcxFqWytFejc
+	QoyXIXIl0N4yRg2zND6pVNm3RTu9u2q/wNAl1RF/ylz2AwOM62vhpwvQX3UcNcUP2gPt
+	dU8K9rGkfeSlnh2huF6/GRbht269hQTWsCh3jsyAITiKyjxQMJL4yfGZar22NvlQ//Ya
+	CeyI0B5YSBFl9LC8TV7vrJ+PzleBfrNIzae4GM/mgwDIsVoaM8t9A0rOhA9FdNlHNImh
+	NFUQ==
+X-Received: by 10.204.228.136 with SMTP id je8mr2074477bkb.93.1370940911179;
+	Tue, 11 Jun 2013 01:55:11 -0700 (PDT)
 Received: from al.localnet (al.lekensteyn.nl. [2001:470:1f15:b83::c0d1:f1ed])
 	by mx.google.com with ESMTPSA id
-	rj5sm5122702bkb.1.2013.06.11.01.53.39 for <multiple recipients>
+	qw6sm4362784bkb.4.2013.06.11.01.55.09 for <multiple recipients>
 	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Tue, 11 Jun 2013 01:53:40 -0700 (PDT)
+	Tue, 11 Jun 2013 01:55:10 -0700 (PDT)
 From: Peter Wu <lekensteyn@gmail.com>
-To: Anthony Liguori <anthony@codemonkey.ws>
-Date: Tue, 11 Jun 2013 10:53:37 +0200
-Message-ID: <6223452.CkX1vrxQoH@al>
+To: Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Tue, 11 Jun 2013 10:55:08 +0200
+Message-ID: <6740398.i518s4jboP@al>
 User-Agent: KMail/4.10.4 (Linux/3.9.1-1-custom; KDE/4.10.4; x86_64; ; )
-In-Reply-To: <871u894oql.fsf@codemonkey.ws>
-References: <8922048.8EFbqlEaG9@al> <871u894oql.fsf@codemonkey.ws>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="us-ascii"
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4008:c01::22d
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Unbreak -no-quit for GTK
-	when SDL is disabled
+X-Received-From: 2a00:1450:4008:c01::230
+Subject: [Qemu-trivial] [PATCH] Unbreak -no-quit for GTK,
+	validate SDL options
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,132 +56,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2013 08:53:53 -0000
+X-List-Received-Date: Tue, 11 Jun 2013 08:55:24 -0000
 
-On Monday 10 June 2013 16:53:06 Anthony Liguori wrote:
-> Peter Wu <lekensteyn@gmail.com> writes:
-> > When QEMU is built without SDL support, -no-quit would print an error
-> > message that SDL is disabled. Since GTK also supports -no-quit, enable
-> > the option when GTK or SDL is enabled at compile time.
-> > 
-> > While at it, do not create the no_quit variable when it is not used.
-> > 
-> > Signed-off-by: Peter Wu <lekensteyn@gmail.com>
-> 
-> Any harm in just making -no-quit unconditional?
+Certain options (-no-frame, -alt-grab, -ctrl-grab) only make sense with SDL.
+When compiling without SDL, these options (and -no-quit) print an error message
+and exit qemu.
 
-No harm, there are just 4 bytes more memory wasted and some code, not a big 
-deal.
+In case QEMU is compiled with SDL support, the three aforementioned options
+still do not make sense with other display types. This patch addresses that
+issue by printing a warning. I have chosen not to exit QEMU afterwards because
+having the option is not harmful and before this patch it would be ignored
+anyway.
 
-> It's a nop for VNC and presumably for spice too but it's not incorrect
-> AFAICT.
-> 
-> Would be nice to drop #ifdefs if we can.
+By delaying the sanity check from compile-time with some ifdefs to run-time,
+-no-quit is now also properly supported when compiling without SDL.
 
-The readability should increase by dropping it. By the way, this integer 
-should really be a bool.
+Signed-off-by: Peter Wu <lekensteyn@gmail.com>
+---
+ vl.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-As shortly discussed on IRC, a better approach is testing for the sanity of 
-certain usages instead of ifdef'ing stuff. Having SDL compiled in and then 
-using VNC still does not make -alt-grab more valid.
+diff --git a/vl.c b/vl.c
+index cfd2d3e..29ab85c 100644
+--- a/vl.c
++++ b/vl.c
+@@ -3523,7 +3523,6 @@ int main(int argc, char **argv, char **envp)
+             case QEMU_OPTION_full_screen:
+                 full_screen = 1;
+                 break;
+-#ifdef CONFIG_SDL
+             case QEMU_OPTION_no_frame:
+                 no_frame = 1;
+                 break;
+@@ -3536,14 +3535,11 @@ int main(int argc, char **argv, char **envp)
+             case QEMU_OPTION_no_quit:
+                 no_quit = 1;
+                 break;
++#ifdef CONFIG_SDL
+             case QEMU_OPTION_sdl:
+                 display_type = DT_SDL;
+                 break;
+ #else
+-            case QEMU_OPTION_no_frame:
+-            case QEMU_OPTION_alt_grab:
+-            case QEMU_OPTION_ctrl_grab:
+-            case QEMU_OPTION_no_quit:
+             case QEMU_OPTION_sdl:
+                 fprintf(stderr, "SDL support is disabled\n");
+                 exit(1);
+@@ -4084,6 +4080,15 @@ int main(int argc, char **argv, char **envp)
+ #endif
+     }
+ 
++    if ((no_frame || alt_grab || ctrl_grab) && display_type != DT_SDL) {
++        fprintf(stderr, "-no-frame, -alt-grab and -ctrl-grab are only valid "
++                        "for SDL, ignoring option\n");
++    }
++    if (no_quit && (display_type != DT_GTK && display_type != DT_SDL)) {
++        fprintf(stderr, "-no-quit is only valid for GTK and SDL, "
++                        "ignoring option\n");
++    }
++
+ #if defined(CONFIG_GTK)
+     if (display_type == DT_GTK) {
+         early_gtk_display_init();
+-- 
+1.8.3
 
-Let's drop this patch, I will submit a new one which checks the option at run-
-time.
-
-Regards,
-Peter
-
-> Regards,
-> 
-> Anthony Liguori
-> 
-> > ---
-> > 
-> >  include/sysemu/sysemu.h |  2 ++
-> >  vl.c                    | 13 +++++++++----
-> >  2 files changed, 11 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-> > index 2fb71af..b9b8e52 100644
-> > --- a/include/sysemu/sysemu.h
-> > +++ b/include/sysemu/sysemu.h
-> > @@ -117,7 +117,9 @@ extern int smp_cpus;
-> > 
-> >  extern int max_cpus;
-> >  extern int cursor_hide;
-> >  extern int graphic_rotate;
-> > 
-> > +#if defined(CONFIG_SDL) || defined(CONFIG_GTK)
-> > 
-> >  extern int no_quit;
-> > 
-> > +#endif
-> > 
-> >  extern int no_shutdown;
-> >  extern int semihosting_enabled;
-> >  extern int old_param;
-> > 
-> > diff --git a/vl.c b/vl.c
-> > index cfd2d3e..74ab050 100644
-> > --- a/vl.c
-> > +++ b/vl.c
-> > @@ -202,7 +202,9 @@ static int full_screen = 0;
-> > 
-> >  #ifdef CONFIG_SDL
-> >  static int no_frame = 0;
-> >  #endif
-> > 
-> > +#if defined(CONFIG_SDL) || defined(CONFIG_GTK)
-> > 
-> >  int no_quit = 0;
-> > 
-> > +#endif
-> > 
-> >  CharDriverState *serial_hds[MAX_SERIAL_PORTS];
-> >  CharDriverState *parallel_hds[MAX_PARALLEL_PORTS];
-> >  CharDriverState *virtcon_hds[MAX_VIRTIO_CONSOLES];
-> > 
-> > @@ -3523,6 +3525,13 @@ int main(int argc, char **argv, char **envp)
-> > 
-> >              case QEMU_OPTION_full_screen:
-> >                  full_screen = 1;
-> >                  break;
-> > 
-> > +            case QEMU_OPTION_no_quit:
-> > +#if defined(CONFIG_SDL) || defined(CONFIG_GTK)
-> > +                no_quit = 1;
-> > +#else
-> > +                fprintf(stderr, "SDL and GTK support are disabled\n");
-> > +#endif
-> > +                break;
-> > 
-> >  #ifdef CONFIG_SDL
-> >  
-> >              case QEMU_OPTION_no_frame:
-> >                  no_frame = 1;
-> > 
-> > @@ -3533,9 +3542,6 @@ int main(int argc, char **argv, char **envp)
-> > 
-> >              case QEMU_OPTION_ctrl_grab:
-> >                  ctrl_grab = 1;
-> >                  break;
-> > 
-> > -            case QEMU_OPTION_no_quit:
-> > -                no_quit = 1;
-> > -                break;
-> > 
-> >              case QEMU_OPTION_sdl:
-> >                  display_type = DT_SDL;
-> >                  break;
-> > 
-> > @@ -3543,7 +3549,6 @@ int main(int argc, char **argv, char **envp)
-> > 
-> >              case QEMU_OPTION_no_frame:
-> >              case QEMU_OPTION_alt_grab:
-> > 
-> >              case QEMU_OPTION_ctrl_grab:
-> > -            case QEMU_OPTION_no_quit:
-> >              case QEMU_OPTION_sdl:
-> >                  fprintf(stderr, "SDL support is disabled\n");
-> >                  exit(1);
 
