@@ -1,45 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmGyf-0001zR-Kz
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 01:18:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56814)
+	id 1UmKKx-0002PF-7q
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 04:53:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45541)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UmGyc-0001tX-0W
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 01:18:39 -0400
+	(envelope-from <lekensteyn@gmail.com>) id 1UmKKt-0002KM-4v
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 04:53:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UmGya-000586-NX
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 01:18:37 -0400
-Received: from [222.73.24.84] (port=15804 helo=song.cn.fujitsu.com)
+	(envelope-from <lekensteyn@gmail.com>) id 1UmKKq-0002sD-3Y
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 04:53:51 -0400
+Received: from mail-bk0-x22d.google.com ([2a00:1450:4008:c01::22d]:37845)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1UmGya-00057o-D8; Tue, 11 Jun 2013 01:18:36 -0400
-X-IronPort-AV: E=Sophos;i="4.87,842,1363104000"; 
-   d="scan'208";a="7517756"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 11 Jun 2013 13:15:41 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5B5IXSP030275;
-	Tue, 11 Jun 2013 13:18:33 +0800
-Received: from liguang.fnst.cn.fujitsu.com ([10.167.233.147])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013061113164235-2018121 ;
-	Tue, 11 Jun 2013 13:16:42 +0800 
-From: liguang <lig.fnst@cn.fujitsu.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 11 Jun 2013 13:15:20 +0800
-Message-Id: <1370927720-4348-5-git-send-email-lig.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1370927720-4348-1-git-send-email-lig.fnst@cn.fujitsu.com>
-References: <1370927720-4348-1-git-send-email-lig.fnst@cn.fujitsu.com>
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/06/11 13:16:42,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/06/11 13:16:43,
-	Serialize complete at 2013/06/11 13:16:43
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: liguang <lig.fnst@cn.fujitsu.com>
-Subject: [Qemu-trivial] [PATCH 5/5] sd: pass bool parameter for sd_init
+	(envelope-from <lekensteyn@gmail.com>)
+	id 1UmKKk-0002qw-L6; Tue, 11 Jun 2013 04:53:42 -0400
+Received: by mail-bk0-f45.google.com with SMTP id je9so2280462bkc.18
+	for <multiple recipients>; Tue, 11 Jun 2013 01:53:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:user-agent:in-reply-to
+	:references:mime-version:content-transfer-encoding:content-type;
+	bh=nqI1q/aWTE/r0aRIwsiDkVkyZEFj6vMCeK9JQJaSJU8=;
+	b=VgBA/E6uEHINWosLTLX8U1Nx+kYHNwp/q3pDW9w0MdTmxNEXExWDYLSUvirhLo5qOV
+	OlxEPkQr4iFvgNocv48GqM3q647s5Ql4FkUGVnkXL8Dvs8OL/YeSeBXI0Y8AAvOzt+Zw
+	2QXPoCeJXBCEUMSqgp68B64Lw08IP1ooc8pWA1a9GS05pE/o/VT/GScQUnL0maa796yN
+	fuxVWbDD+V7xK9emoL69p9fRhevYIwPqiiq8R59pPD71MhhZQZvk6KHo9EyEozu1myv6
+	45MOv9RDAOgD730uD54mXJr4DT2vNMOwWntjoSkBd1DQqps9zuDvJuF8hkAlITm9h8Xo
+	Ku/A==
+X-Received: by 10.204.237.130 with SMTP id ko2mr2018146bkb.154.1370940821097; 
+	Tue, 11 Jun 2013 01:53:41 -0700 (PDT)
+Received: from al.localnet (al.lekensteyn.nl. [2001:470:1f15:b83::c0d1:f1ed])
+	by mx.google.com with ESMTPSA id
+	rj5sm5122702bkb.1.2013.06.11.01.53.39 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 11 Jun 2013 01:53:40 -0700 (PDT)
+From: Peter Wu <lekensteyn@gmail.com>
+To: Anthony Liguori <anthony@codemonkey.ws>
+Date: Tue, 11 Jun 2013 10:53:37 +0200
+Message-ID: <6223452.CkX1vrxQoH@al>
+User-Agent: KMail/4.10.4 (Linux/3.9.1-1-custom; KDE/4.10.4; x86_64; ; )
+In-Reply-To: <871u894oql.fsf@codemonkey.ws>
+References: <8922048.8EFbqlEaG9@al> <871u894oql.fsf@codemonkey.ws>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4008:c01::22d
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Unbreak -no-quit for GTK
+	when SDL is disabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,106 +58,132 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2013 05:18:40 -0000
+X-List-Received-Date: Tue, 11 Jun 2013 08:53:53 -0000
 
-Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
----
- hw/sd/milkymist-memcard.c |    2 +-
- hw/sd/omap_mmc.c          |    4 ++--
- hw/sd/pl181.c             |    2 +-
- hw/sd/pxa2xx_mmci.c       |    2 +-
- hw/sd/sdhci.c             |    2 +-
- hw/sd/ssi-sd.c            |    2 +-
- 6 files changed, 7 insertions(+), 7 deletions(-)
+On Monday 10 June 2013 16:53:06 Anthony Liguori wrote:
+> Peter Wu <lekensteyn@gmail.com> writes:
+> > When QEMU is built without SDL support, -no-quit would print an error
+> > message that SDL is disabled. Since GTK also supports -no-quit, enable
+> > the option when GTK or SDL is enabled at compile time.
+> > 
+> > While at it, do not create the no_quit variable when it is not used.
+> > 
+> > Signed-off-by: Peter Wu <lekensteyn@gmail.com>
+> 
+> Any harm in just making -no-quit unconditional?
 
-diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
-index d5944bc..61a8aad 100644
---- a/hw/sd/milkymist-memcard.c
-+++ b/hw/sd/milkymist-memcard.c
-@@ -250,7 +250,7 @@ static int milkymist_memcard_init(SysBusDevice *dev)
-     DriveInfo *dinfo;
- 
-     dinfo = drive_get_next(IF_SD);
--    s->card = sd_init(dinfo ? dinfo->bdrv : NULL, 0);
-+    s->card = sd_init(dinfo ? dinfo->bdrv : NULL, false);
-     s->enabled = dinfo ? bdrv_is_inserted(dinfo->bdrv) : 0;
- 
-     memory_region_init_io(&s->regs_region, &memcard_mmio_ops, s,
-diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-index d4079cd..ba9f4b3 100644
---- a/hw/sd/omap_mmc.c
-+++ b/hw/sd/omap_mmc.c
-@@ -592,7 +592,7 @@ struct omap_mmc_s *omap_mmc_init(hwaddr base,
-     memory_region_add_subregion(sysmem, base, &s->iomem);
- 
-     /* Instantiate the storage */
--    s->card = sd_init(bd, 0);
-+    s->card = sd_init(bd, false);
- 
-     return s;
- }
-@@ -617,7 +617,7 @@ struct omap_mmc_s *omap2_mmc_init(struct omap_target_agent_s *ta,
-     omap_l4_attach(ta, 0, &s->iomem);
- 
-     /* Instantiate the storage */
--    s->card = sd_init(bd, 0);
-+    s->card = sd_init(bd, false);
- 
-     s->cdet = qemu_allocate_irqs(omap_mmc_cover_cb, s, 1)[0];
-     sd_set_cb(s->card, NULL, s->cdet);
-diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
-index 2527296..e08fd04 100644
---- a/hw/sd/pl181.c
-+++ b/hw/sd/pl181.c
-@@ -485,7 +485,7 @@ static int pl181_init(SysBusDevice *dev)
-     sysbus_init_irq(dev, &s->irq[1]);
-     qdev_init_gpio_out(&s->busdev.qdev, s->cardstatus, 2);
-     dinfo = drive_get_next(IF_SD);
--    s->card = sd_init(dinfo ? dinfo->bdrv : NULL, 0);
-+    s->card = sd_init(dinfo ? dinfo->bdrv : NULL, false);
-     return 0;
- }
- 
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-index 2db1cab..0574d6b 100644
---- a/hw/sd/pxa2xx_mmci.c
-+++ b/hw/sd/pxa2xx_mmci.c
-@@ -538,7 +538,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
-     memory_region_add_subregion(sysmem, base, &s->iomem);
- 
-     /* Instantiate the actual storage */
--    s->card = sd_init(bd, 0);
-+    s->card = sd_init(bd, false);
- 
-     register_savevm(NULL, "pxa2xx_mmci", 0, 0,
-                     pxa2xx_mmci_save, pxa2xx_mmci_load, s);
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index e64899c..ddc260f 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1165,7 +1165,7 @@ static void sdhci_initfn(Object *obj)
-     DriveInfo *di;
- 
-     di = drive_get_next(IF_SD);
--    s->card = sd_init(di ? di->bdrv : NULL, 0);
-+    s->card = sd_init(di ? di->bdrv : NULL, false);
-     s->eject_cb = qemu_allocate_irqs(sdhci_insert_eject_cb, s, 1)[0];
-     s->ro_cb = qemu_allocate_irqs(sdhci_card_readonly_cb, s, 1)[0];
-     sd_set_cb(s->card, s->ro_cb, s->eject_cb);
-diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-index 4d3c4f6..d47e237 100644
---- a/hw/sd/ssi-sd.c
-+++ b/hw/sd/ssi-sd.c
-@@ -245,7 +245,7 @@ static int ssi_sd_init(SSISlave *dev)
- 
-     s->mode = SSI_SD_CMD;
-     dinfo = drive_get_next(IF_SD);
--    s->sd = sd_init(dinfo ? dinfo->bdrv : NULL, 1);
-+    s->sd = sd_init(dinfo ? dinfo->bdrv : NULL, true);
-     register_savevm(&dev->qdev, "ssi_sd", -1, 1, ssi_sd_save, ssi_sd_load, s);
-     return 0;
- }
--- 
-1.7.2.5
+No harm, there are just 4 bytes more memory wasted and some code, not a big 
+deal.
 
+> It's a nop for VNC and presumably for spice too but it's not incorrect
+> AFAICT.
+> 
+> Would be nice to drop #ifdefs if we can.
+
+The readability should increase by dropping it. By the way, this integer 
+should really be a bool.
+
+As shortly discussed on IRC, a better approach is testing for the sanity of 
+certain usages instead of ifdef'ing stuff. Having SDL compiled in and then 
+using VNC still does not make -alt-grab more valid.
+
+Let's drop this patch, I will submit a new one which checks the option at run-
+time.
+
+Regards,
+Peter
+
+> Regards,
+> 
+> Anthony Liguori
+> 
+> > ---
+> > 
+> >  include/sysemu/sysemu.h |  2 ++
+> >  vl.c                    | 13 +++++++++----
+> >  2 files changed, 11 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+> > index 2fb71af..b9b8e52 100644
+> > --- a/include/sysemu/sysemu.h
+> > +++ b/include/sysemu/sysemu.h
+> > @@ -117,7 +117,9 @@ extern int smp_cpus;
+> > 
+> >  extern int max_cpus;
+> >  extern int cursor_hide;
+> >  extern int graphic_rotate;
+> > 
+> > +#if defined(CONFIG_SDL) || defined(CONFIG_GTK)
+> > 
+> >  extern int no_quit;
+> > 
+> > +#endif
+> > 
+> >  extern int no_shutdown;
+> >  extern int semihosting_enabled;
+> >  extern int old_param;
+> > 
+> > diff --git a/vl.c b/vl.c
+> > index cfd2d3e..74ab050 100644
+> > --- a/vl.c
+> > +++ b/vl.c
+> > @@ -202,7 +202,9 @@ static int full_screen = 0;
+> > 
+> >  #ifdef CONFIG_SDL
+> >  static int no_frame = 0;
+> >  #endif
+> > 
+> > +#if defined(CONFIG_SDL) || defined(CONFIG_GTK)
+> > 
+> >  int no_quit = 0;
+> > 
+> > +#endif
+> > 
+> >  CharDriverState *serial_hds[MAX_SERIAL_PORTS];
+> >  CharDriverState *parallel_hds[MAX_PARALLEL_PORTS];
+> >  CharDriverState *virtcon_hds[MAX_VIRTIO_CONSOLES];
+> > 
+> > @@ -3523,6 +3525,13 @@ int main(int argc, char **argv, char **envp)
+> > 
+> >              case QEMU_OPTION_full_screen:
+> >                  full_screen = 1;
+> >                  break;
+> > 
+> > +            case QEMU_OPTION_no_quit:
+> > +#if defined(CONFIG_SDL) || defined(CONFIG_GTK)
+> > +                no_quit = 1;
+> > +#else
+> > +                fprintf(stderr, "SDL and GTK support are disabled\n");
+> > +#endif
+> > +                break;
+> > 
+> >  #ifdef CONFIG_SDL
+> >  
+> >              case QEMU_OPTION_no_frame:
+> >                  no_frame = 1;
+> > 
+> > @@ -3533,9 +3542,6 @@ int main(int argc, char **argv, char **envp)
+> > 
+> >              case QEMU_OPTION_ctrl_grab:
+> >                  ctrl_grab = 1;
+> >                  break;
+> > 
+> > -            case QEMU_OPTION_no_quit:
+> > -                no_quit = 1;
+> > -                break;
+> > 
+> >              case QEMU_OPTION_sdl:
+> >                  display_type = DT_SDL;
+> >                  break;
+> > 
+> > @@ -3543,7 +3549,6 @@ int main(int argc, char **argv, char **envp)
+> > 
+> >              case QEMU_OPTION_no_frame:
+> >              case QEMU_OPTION_alt_grab:
+> > 
+> >              case QEMU_OPTION_ctrl_grab:
+> > -            case QEMU_OPTION_no_quit:
+> >              case QEMU_OPTION_sdl:
+> >                  fprintf(stderr, "SDL support is disabled\n");
+> >                  exit(1);
 
