@@ -1,61 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmSI1-0007QB-F9
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 13:23:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44278)
+	id 1UmSIt-0008Mr-Np
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 13:24:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44575)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mohankumar.m@gmail.com>) id 1UmSHw-0007Pe-Mm
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 13:23:24 -0400
+	(envelope-from <sw@weilnetz.de>) id 1UmSIq-0008JB-TV
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 13:24:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mohankumar.m@gmail.com>) id 1UmSHs-0002e9-Vc
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 13:23:20 -0400
-Received: from e28smtp04.in.ibm.com ([122.248.162.4]:60924)
+	(envelope-from <sw@weilnetz.de>) id 1UmSIm-0002rW-7o
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 13:24:16 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41393)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mohankumar.m@gmail.com>) id 1UmSHs-0002do-AS
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 13:23:16 -0400
-Received: from /spool/local
-	by e28smtp04.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mohankumar.m@gmail.com>;
-	Tue, 11 Jun 2013 22:47:19 +0530
-Received: from d28dlp02.in.ibm.com (9.184.220.127)
-	by e28smtp04.in.ibm.com (192.168.1.134) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 11 Jun 2013 22:47:17 +0530
-Received: from d28relay05.in.ibm.com (d28relay05.in.ibm.com [9.184.220.62])
-	by d28dlp02.in.ibm.com (Postfix) with ESMTP id D06693940053;
-	Tue, 11 Jun 2013 22:53:07 +0530 (IST)
-Received: from d28av04.in.ibm.com (d28av04.in.ibm.com [9.184.220.66])
-	by d28relay05.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r5BHN11i18612402; Tue, 11 Jun 2013 22:53:02 +0530
-Received: from d28av04.in.ibm.com (loopback [127.0.0.1])
-	by d28av04.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r5BHN5RH027243; Wed, 12 Jun 2013 03:23:05 +1000
-Received: from explorer.ibm.com ([9.79.220.86])
-	by d28av04.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r5BHN2cd027042
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Wed, 12 Jun 2013 03:23:04 +1000
-From: "M. Mohan Kumar" <mohan@in.ibm.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <CAFEAcA8g7Ck_vdAraiEsKdYBi=VM8PRTCrA9UnA6GAa+JgXUoQ@mail.gmail.com>
-References: <1370897240-23490-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<CAFEAcA88zpSQTLWSwu6ci7rytTMxkWWqjE4jfb=0Svj+9P8NsQ@mail.gmail.com>
-	<51B7183E.6070203@msgid.tls.msk.ru>
-	<CAFEAcA8g7Ck_vdAraiEsKdYBi=VM8PRTCrA9UnA6GAa+JgXUoQ@mail.gmail.com>
-User-Agent: Notmuch/0.13.2 (http://notmuchmail.org) Emacs/24.1.1
-	(x86_64-redhat-linux-gnu)
-Date: Tue, 11 Jun 2013 22:53:02 +0530
-Message-ID: <87ehc8tvd5.fsf@gmail.com>
+	(envelope-from <sw@weilnetz.de>)
+	id 1UmSIj-0002qq-Av; Tue, 11 Jun 2013 13:24:09 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	4244D728097F; Tue, 11 Jun 2013 19:24:07 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id v5UMIrYH7KHg; Tue, 11 Jun 2013 19:24:05 +0200 (CEST)
+Received: from [192.168.178.35] (p54ADAB1E.dip0.t-ipconnect.de [84.173.171.30])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	5EC89728097B; Tue, 11 Jun 2013 19:24:05 +0200 (CEST)
+Message-ID: <51B75D34.7000401@weilnetz.de>
+Date: Tue, 11 Jun 2013 19:24:04 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13061117-5564-0000-0000-00000850D088
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 122.248.162.4
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] configure:
-	explicitly disable virtfs if softmmu=no
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1370780536-28150-1-git-send-email-sw@weilnetz.de>
+	<51B71A5B.7040001@msgid.tls.msk.ru>
+In-Reply-To: <51B71A5B.7040001@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 78.47.199.172
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] audio: Replace macro GCC_ATTR by
+ GCC_FMT_ATTR and use inline functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,120 +51,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2013 17:23:24 -0000
+X-List-Received-Date: Tue, 11 Jun 2013 17:24:18 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Am 11.06.2013 14:38, schrieb Michael Tokarev:
+> [Removing malc's email since it bounces]
+> 09.06.2013 16:22, Stefan Weil wrote:
+>> GCC_ATTR was only used in audio_int.h, so it is now unused and
+>> the definition can be removed from compiler.h.
+>>
+>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-How about this approach?
-
-[PATCH] configure: Disable virtfs if softmmu not enabled
-
-Signed-off-by: M. Mohan Kumar <mohan@in.ibm.com>
----
- configure | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
-
-diff --git a/configure b/configure
-index 1654413..88c2b0f 100755
---- a/configure
-+++ b/configure
-@@ -3404,8 +3404,9 @@ if test "$want_tools" = "yes" ; then
-     tools="qemu-nbd\$(EXESUF) $tools"
-   fi
- fi
--if test "$softmmu" = yes ; then
--  if test "$virtfs" != no ; then
-+
-+if test "$virtfs" != no ; then
-+  if test "$softmmu" = yes ; then
-     if test "$cap" = yes && test "$linux" = yes && test "$attr" = yes ; then
-       virtfs=yes
-       tools="$tools fsdev/virtfs-proxy-helper\$(EXESUF)"
-@@ -3415,6 +3416,12 @@ if test "$softmmu" = yes ; then
-       fi
-       virtfs=no
-     fi
-+  else
-+    if test "$virtfs" = yes; then
-+      error_exit "VirtFS is supported only on Linux and requires softmmu"
-+    else
-+     virtfs=no
-+    fi
-   fi
-   if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
-     if [ "$guest_agent" = "yes" ]; then
--- 
-1.7.11.7
-
-Tested with following configure options
-
-$ ./configure '--target-list=x86_64-linux-user' --disable-system
 [snip]
-VirtFS support    no
 
-$ ./configure '--target-list=x86_64-linux-user' --disable-system --enable-virtfs
-
-ERROR: VirtFS is supported only on Linux and requires softmmu
-
-$ ./configure '--target-list=x86_64-softmmu' --enable-virtfs
-[snip]
-VirtFS support    yes
-
-$ ./configure '--target-list=x86_64-softmmu'
-VirtFS support    yes
-
-
-
-> On 11 June 2013 13:29, Michael Tokarev <mjt@tls.msk.ru> wrote:
->> 11.06.2013 01:45, Peter Maydell wrote:
->>> This doesn't feel to me like it's quite the right way
->>> to fix this bug. The current code in configure seems
->>> to tangle up (a) was virtfs requested and can we do it?
->>> with (b) what do we need to do if it was? (build some
->>> extra tools) and (c) when does it make sense? not for
->>> linux-user targets. So you end up with an 'else virtfs=no'
->>> clause added in an odd place. If the mess was untangled
->>> then this probably wouldn't be necessary.
->>
->> Um. I don't think that tangling is a bad thing really.
->> Having different variables or options for it will be
->> too bloated, in my opinion.  I don't think there should
->> be anything done with it.
+> This change (adding `inline') causes build failure with at least with g=
+cc-4.7:
 >
-> I don't want more variables. I just don't think we
-> should have "if not softmmu then do some other thing";
-> just check for whether the user asked for virtfs and
-> we can do it, and if so set virtfs=yes.
+> audio/wavaudio.c: In function =91dolog=92:
+> audio/audio_int.h:246:100: error: function =91dolog=92 can never be inl=
+ined because it uses variable argument lists
 >
->> How about something like this:
->>
->> --- a/configure
->> +++ b/configure
->> @@ -3810,7 +3810,7 @@ fi
->>  if test "$libattr" = "yes" ; then
->>    echo "CONFIG_LIBATTR=y" >> $config_host_mak
->>  fi
->> -if test "$virtfs" = "yes" ; then
->> +if test "$virtfs" = "yes" && test "$target_softmmu" = "yes" ; then
->>    echo "CONFIG_VIRTFS=y" >> $config_host_mak
->>  fi
+> $ gcc --version
+> gcc (Debian 4.7.2-5) 4.7.2
 >
-> This seems like a step backwards to me. virtfs=yes should
-> just translate straight to CONFIG_VIRTFS and the makefile
-> should just not care if it's set if we happen not to be
-> building anything virtfs related.
+> I think the addition of inline should be dropped here and in other
+> similar places (the rest is ok).
 >
->>> Also, disabling building tools and docs in general seems
->>> broken: --disable-tools disables building qemu-img, for
->>> instance, but not its documentation. So maybe we should
->>> fix this by generally making sure we don't build the docs
->>> unless we build the tool as well.
->>
->> This has been addressed by a separate patch sent by afaerber.
+> I can do that myself if you want.
 >
-> That patch didn't touch anything virtfs proxy related.
+> Alternatively these functions can be turned into varargs #defines.
 >
-> thanks
-> -- PMM
+> Thanks,
+>
+> /mjt
+
+Thank you for reporting this compiler problem. I did not see
+it because I configured with -enable-debugwhich disables
+inline functions.
+
+I'll send a new patch which uses macros.
+
+Regards
+Stefan
 
 
