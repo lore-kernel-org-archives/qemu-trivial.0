@@ -1,41 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmTAV-0007JJ-2h
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 14:19:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33962)
+	id 1UmU8p-0006cT-Rv
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 15:22:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52758)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UmTAO-000790-Bf
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 14:19:41 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UmU8k-0006bO-PK
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 15:22:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UmTAM-0004vX-F2
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 14:19:36 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59968)
+	(envelope-from <peter.maydell@linaro.org>) id 1UmU8j-0000Wo-Be
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 15:21:58 -0400
+Received: from mail-la0-x22c.google.com ([2a00:1450:4010:c03::22c]:34731)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1UmTAJ-0004ti-F7; Tue, 11 Jun 2013 14:19:31 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8C4F0412FA;
-	Tue, 11 Jun 2013 22:19:22 +0400 (MSK)
-Message-ID: <51B76A28.5030008@msgid.tls.msk.ru>
-Date: Tue, 11 Jun 2013 22:19:20 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:17.0) Gecko/17.0 Icedove/17.0
+	(envelope-from <peter.maydell@linaro.org>) id 1UmU8j-0000WS-4v
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 15:21:57 -0400
+Received: by mail-la0-f44.google.com with SMTP id er20so7308410lab.31
+	for <qemu-trivial@nongnu.org>; Tue, 11 Jun 2013 12:21:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=AMf8A+dM1qDjyqf1mKyXeMEJNtyPF/PIWv6g6h7XeTU=;
+	b=C24WbH21qWn8WL50GFY6tCh1TcOB0UUlH0LhEKUO+OFWXGO9fK83kir2fCI2rEfc8M
+	GnWQ6wOKutb3YefYKRw6PzFJ6rNR5iX4nLUud+Y0uJGi1l332KykUr6sR7WR9tU1uU0z
+	JYz9Sp8Gg2grJtKEe9uYnAywrBR7zGWYLFB/Tb/sYQWg4XzRDz1W87c87N7EFVRug/Ty
+	udzKHCTtbw42PFPl9U10NNiTrCyl5XggcEXBHJs07EI7TTk1Vc5vza9XZvclt6rNQPE2
+	tU6ii2Q+sDcrW37HprdsKA8OiLVcfnI53oESsXY7jPcQ0/BHLzFygLzQOctEchX4nWps
+	tEIg==
+X-Received: by 10.152.116.7 with SMTP id js7mr7989935lab.7.1370978515626; Tue,
+	11 Jun 2013 12:21:55 -0700 (PDT)
 MIME-Version: 1.0
-To: "M. Mohan Kumar" <mohan@in.ibm.com>
+Received: by 10.112.138.200 with HTTP; Tue, 11 Jun 2013 12:21:35 -0700 (PDT)
+In-Reply-To: <51B76A28.5030008@msgid.tls.msk.ru>
 References: <1370897240-23490-1-git-send-email-mjt@msgid.tls.msk.ru>
 	<CAFEAcA88zpSQTLWSwu6ci7rytTMxkWWqjE4jfb=0Svj+9P8NsQ@mail.gmail.com>
 	<51B7183E.6070203@msgid.tls.msk.ru>
 	<CAFEAcA8g7Ck_vdAraiEsKdYBi=VM8PRTCrA9UnA6GAa+JgXUoQ@mail.gmail.com>
-	<87ehc8tvd5.fsf@gmail.com>
-In-Reply-To: <87ehc8tvd5.fsf@gmail.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	<87ehc8tvd5.fsf@gmail.com> <51B76A28.5030008@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 11 Jun 2013 20:21:35 +0100
+Message-ID: <CAFEAcA8qdw+_6VkC1SNj5J9w-XHaeM+gPymFOoO1PGQfhXTMHw@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQkaQntyTTmCiun7c5vkjhLel7UZOVoBzCqpBTklRSy9ZGrqUSuDQBj3ih3ecpUm9O4W8o4R
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c03::22c
+Cc: qemu-trivial@nongnu.org, "M. Mohan Kumar" <mohan@in.ibm.com>,
 	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] configure:
  explicitly disable virtfs if softmmu=no
@@ -50,56 +59,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2013 18:19:41 -0000
+X-List-Received-Date: Tue, 11 Jun 2013 19:22:01 -0000
 
-11.06.2013 21:23, M. Mohan Kumar wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> 
-> How about this approach?
+On 11 June 2013 19:19, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> FWIW, I still don't understand what Peter Maydell dislikes
+> in a simplest case I posted initially, where we merely ignore
+> (disable) virtfs in case !softmmu.
 
-Well, this is definitely wrong :)
+It just seems to me that rather than fixing a bug in the
+makefile (it still tries to build docs for the tools even
+when the tools aren't being built) you're trying to tweak
+the configure script to avoid generating the combinations
+of config values that trigger the makefile bug.
 
-> -if test "$softmmu" = yes ; then
-> -  if test "$virtfs" != no ; then
-> +
-> +if test "$virtfs" != no ; then
-> +  if test "$softmmu" = yes ; then
->      if test "$cap" = yes && test "$linux" = yes && test "$attr" = yes ; then
->        virtfs=yes
->        tools="$tools fsdev/virtfs-proxy-helper\$(EXESUF)"
-> @@ -3415,6 +3416,12 @@ if test "$softmmu" = yes ; then
->        fi
->        virtfs=no
->      fi
-> +  else
-> +    if test "$virtfs" = yes; then
-> +      error_exit "VirtFS is supported only on Linux and requires softmmu"
-> +    else
-> +     virtfs=no
-> +    fi
->    fi
->    if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
->      if [ "$guest_agent" = "yes" ]; then
-
-Now this "if [ $linux..." test is only checked
-if $virtfs != no.  Before, it was checked when
-$softmmu != no...
-
-FWIW, I still don't understand what Peter Maydell dislikes
-in a simplest case I posted initially, where we merely ignore
-(disable) virtfs in case !softmmu.  We should probably do the
-same for alot of other features which makes sense only if
-softmmu==yes, and omit many configure tests which are still
-done even if softmmu is disabled, but that's a different
-patch for sure.  Maube we should separate out this last linux|bsd|solaris
-test and add another if softmmu there, for readability, so that
-disabling of virtfs will be closer to other virtfs tests.
-
-I applied my initial patch to our debian tree to fix build
-failure for now, because else it fails during build.
-
-Thanks,
-
-/mjt
-
+-- PMM
 
