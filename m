@@ -1,34 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmMWs-0006ui-MB
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 07:14:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49428)
+	id 1UmMft-0000zL-MO
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 07:23:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51252)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UmMWq-0006rK-7V
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 07:14:21 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UmMfr-0000vC-8s
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 07:23:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UmMWk-0004QB-LS
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 07:14:20 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:41796 helo=mx2.suse.de)
+	(envelope-from <mjt@tls.msk.ru>) id 1UmMfq-0007Fv-6p
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 07:23:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42578)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UmMWY-0004NO-KQ; Tue, 11 Jun 2013 07:14:02 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id E0852A5077;
-	Tue, 11 Jun 2013 13:14:01 +0200 (CEST)
-From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-To: qemu-devel@nongnu.org
-Date: Tue, 11 Jun 2013 13:13:58 +0200
-Message-Id: <1370949238-2770-1-git-send-email-afaerber@suse.de>
-X-Mailer: git-send-email 1.8.1.4
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UmMfm-0007Dq-HX; Tue, 11 Jun 2013 07:23:34 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 05C1E411FC;
+	Tue, 11 Jun 2013 15:23:33 +0400 (MSK)
+Message-ID: <51B708B2.2060104@msgid.tls.msk.ru>
+Date: Tue, 11 Jun 2013 15:23:30 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>, brogers@suse.com
-Subject: [Qemu-trivial] [PATCH] Makefile: Install qemu-img and qemu-nbd man
-	pages only if built
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+References: <cover.1370236013.git.peter.crosthwaite@xilinx.com>
+	<CAEgOgz5Voft7RUCnEbCmqEhwOkyzZ44EDRX62q7jbdCS8TBsQg@mail.gmail.com>
+In-Reply-To: <CAEgOgz5Voft7RUCnEbCmqEhwOkyzZ44EDRX62q7jbdCS8TBsQg@mail.gmail.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com, aliguori@us.ibm.com,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v1 0/3] Serial cleanup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,39 +46,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2013 11:14:21 -0000
+X-List-Received-Date: Tue, 11 Jun 2013 11:23:40 -0000
 
-When splitting openSUSE's qemu and qemu-linux-user packages we noticed
-that for linux-user-only builds unrelated man pages got installed.
-It's surely possible to delete them before packaging, but not installing
-them in the first place seems more logical.
+10.06.2013 14:23, Peter Crosthwaite wrote:
+> Ping!
+> 
+> Any objections to this one going in? perhaps even via trivial queue?
 
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
----
- Makefile | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Actually applied all 3 (including 2/3 which weren't submitted to -trivial --
+I had some fun verifying it :) to the trivial-patches queue.
 
-diff --git a/Makefile b/Makefile
-index 306e7bd..3cfa7d0 100644
---- a/Makefile
-+++ b/Makefile
-@@ -306,10 +306,13 @@ install-doc: $(DOCS)
- 	$(INSTALL_DATA) QMP/qmp-commands.txt "$(DESTDIR)$(qemu_docdir)"
- ifdef CONFIG_POSIX
- 	$(INSTALL_DIR) "$(DESTDIR)$(mandir)/man1"
--	$(INSTALL_DATA) qemu.1 qemu-img.1 "$(DESTDIR)$(mandir)/man1"
-+	$(INSTALL_DATA) qemu.1 "$(DESTDIR)$(mandir)/man1"
-+ifneq ($(TOOLS),)
-+	$(INSTALL_DATA) qemu-img.1 "$(DESTDIR)$(mandir)/man1"
- 	$(INSTALL_DIR) "$(DESTDIR)$(mandir)/man8"
- 	$(INSTALL_DATA) qemu-nbd.8 "$(DESTDIR)$(mandir)/man8"
- endif
-+endif
- ifdef CONFIG_VIRTFS
- 	$(INSTALL_DIR) "$(DESTDIR)$(mandir)/man1"
- 	$(INSTALL_DATA) fsdev/virtfs-proxy-helper.1 "$(DESTDIR)$(mandir)/man1"
---=20
-1.8.1.4
+Thanks!
 
+/mjt
 
