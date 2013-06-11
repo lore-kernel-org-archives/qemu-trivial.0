@@ -1,40 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmNu2-00028h-Ht
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 08:42:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41800)
+	id 1UmQ5E-0001uA-13
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 11:02:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52565)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UmNtv-0001xj-B3
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 08:42:20 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UmQ58-0001lw-3R
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 11:02:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UmNtu-0006QE-0W
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 08:42:15 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:46417 helo=mx2.suse.de)
+	(envelope-from <peter.maydell@linaro.org>) id 1UmQ56-00025F-ES
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 11:01:58 -0400
+Received: from mail-la0-x232.google.com ([2a00:1450:4010:c03::232]:34275)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UmNtq-0006Pk-H6; Tue, 11 Jun 2013 08:42:10 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 064ECA5077;
-	Tue, 11 Jun 2013 14:42:10 +0200 (CEST)
-Message-ID: <51B71B21.9060407@suse.de>
-Date: Tue, 11 Jun 2013 14:42:09 +0200
-From: =?windows-1252?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
+	(envelope-from <peter.maydell@linaro.org>) id 1UmQ56-000256-7l
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 11:01:56 -0400
+Received: by mail-la0-f50.google.com with SMTP id dy20so4642637lab.23
+	for <qemu-trivial@nongnu.org>; Tue, 11 Jun 2013 08:01:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=/TlsT0lZIyuEeuTafIFM9U+YHkviwMPIrVBuUqTTE80=;
+	b=OFdrxwBvLN5GWYEi8YpSVndzVrArIhBQboIGufKtZ6W9k0O4QJkrStsapmaSGi4CHO
+	peCrN4c0l4wvjUHayGfaTJiRKy58caODTklGsXWw21B9drDd0lFu6wMhMM9BD4ZKS6rI
+	EPZVe6Ga18Qb5qHZ8jdRJlc0WrtJJCUXdJ/nqDaqK2uoxD0V03Spykor/Dr7CEAa+jz3
+	v+KL9IahBKiCpEwNZH2/OxLE6XMN5KOoWbPReYyRdVrpyUggUNjTrWDuxEYWQcQdVs8u
+	eSwmwWvvxRYx1GaBq3FtqWOLTPb6oLB2AKMXGv/hv08dy8D4btKQMc3Q0uEaG1nh/ri3
+	/tUw==
+X-Received: by 10.152.19.4 with SMTP id a4mr7555867lae.37.1370962915072; Tue,
+	11 Jun 2013 08:01:55 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 10.112.138.200 with HTTP; Tue, 11 Jun 2013 08:01:34 -0700 (PDT)
+In-Reply-To: <51B7183E.6070203@msgid.tls.msk.ru>
+References: <1370897240-23490-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<CAFEAcA88zpSQTLWSwu6ci7rytTMxkWWqjE4jfb=0Svj+9P8NsQ@mail.gmail.com>
+	<51B7183E.6070203@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 11 Jun 2013 16:01:34 +0100
+Message-ID: <CAFEAcA8g7Ck_vdAraiEsKdYBi=VM8PRTCrA9UnA6GAa+JgXUoQ@mail.gmail.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1370780536-28150-1-git-send-email-sw@weilnetz.de>
-	<51B71A5B.7040001@msgid.tls.msk.ru>
-In-Reply-To: <51B71A5B.7040001@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] audio: Replace macro
- GCC_ATTR by GCC_FMT_ATTR and use inline functions
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQnE2hRPVGsU2+zw0XZNwFFMmbDtNSJbJESkVwFv1gwLN9k9ENk7IAnB633TWjV54cVy1KEu
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c03::232
+Cc: qemu-trivial@nongnu.org, "M. Mohan Kumar" <mohan@in.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] configure:
+ explicitly disable virtfs if softmmu=no
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,63 +57,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2013 12:42:20 -0000
+X-List-Received-Date: Tue, 11 Jun 2013 15:02:02 -0000
 
-Am 11.06.2013 14:38, schrieb Michael Tokarev:
-> [Removing malc's email since it bounces]
-> 09.06.2013 16:22, Stefan Weil wrote:
->> GCC_ATTR was only used in audio_int.h, so it is now unused and
->> the definition can be removed from compiler.h.
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>  audio/audio_int.h       |    8 +++-----
->>  include/qemu/compiler.h |    3 ---
->>  2 files changed, 3 insertions(+), 8 deletions(-)
->>
->> diff --git a/audio/audio_int.h b/audio/audio_int.h
->> index b9b0676..5a6284b 100644
->> --- a/audio/audio_int.h
->> +++ b/audio/audio_int.h
->> @@ -243,7 +243,7 @@ static inline int audio_ring_dist (int dst, int sr=
-c, int len)
->>      return (dst >=3D src) ? (dst - src) : (len - src + dst);
->>  }
->> =20
->> -static void GCC_ATTR dolog (const char *fmt, ...)
->> +static inline void GCC_FMT_ATTR(1, 2) dolog (const char *fmt, ...)
->=20
-> This change (adding `inline') causes build failure with at least with g=
-cc-4.7:
->=20
-> audio/wavaudio.c: In function =91dolog=92:
-> audio/audio_int.h:246:100: error: function =91dolog=92 can never be inl=
-ined because it uses variable argument lists
->=20
-> $ gcc --version
-> gcc (Debian 4.7.2-5) 4.7.2
->=20
-> I think the addition of inline should be dropped here and in other
-> similar places (the rest is ok).
->=20
-> I can do that myself if you want.
+On 11 June 2013 13:29, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> 11.06.2013 01:45, Peter Maydell wrote:
+>> This doesn't feel to me like it's quite the right way
+>> to fix this bug. The current code in configure seems
+>> to tangle up (a) was virtfs requested and can we do it?
+>> with (b) what do we need to do if it was? (build some
+>> extra tools) and (c) when does it make sense? not for
+>> linux-user targets. So you end up with an 'else virtfs=no'
+>> clause added in an odd place. If the mess was untangled
+>> then this probably wouldn't be necessary.
+>
+> Um. I don't think that tangling is a bad thing really.
+> Having different variables or options for it will be
+> too bloated, in my opinion.  I don't think there should
+> be anything done with it.
 
-But having a static function in the header still needs the __unused__
-attribute, which this patch tries to remove, doesn't it?
+I don't want more variables. I just don't think we
+should have "if not softmmu then do some other thing";
+just check for whether the user asked for virtfs and
+we can do it, and if so set virtfs=yes.
 
-Andreas
+> How about something like this:
+>
+> --- a/configure
+> +++ b/configure
+> @@ -3810,7 +3810,7 @@ fi
+>  if test "$libattr" = "yes" ; then
+>    echo "CONFIG_LIBATTR=y" >> $config_host_mak
+>  fi
+> -if test "$virtfs" = "yes" ; then
+> +if test "$virtfs" = "yes" && test "$target_softmmu" = "yes" ; then
+>    echo "CONFIG_VIRTFS=y" >> $config_host_mak
+>  fi
 
->=20
-> Alternatively these functions can be turned into varargs #defines.
->=20
-> Thanks,
->=20
-> /mjt
->=20
+This seems like a step backwards to me. virtfs=yes should
+just translate straight to CONFIG_VIRTFS and the makefile
+should just not care if it's set if we happen not to be
+building anything virtfs related.
 
+>> Also, disabling building tools and docs in general seems
+>> broken: --disable-tools disables building qemu-img, for
+>> instance, but not its documentation. So maybe we should
+>> fix this by generally making sure we don't build the docs
+>> unless we build the tool as well.
+>
+> This has been addressed by a separate patch sent by afaerber.
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+That patch didn't touch anything virtfs proxy related.
+
+thanks
+-- PMM
 
