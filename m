@@ -1,59 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmKmi-00045J-LR
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 05:22:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52819)
+	id 1UmKos-0005QI-Cl
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 05:24:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53303)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mohankumar.m@gmail.com>) id 1UmKme-000417-41
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 05:22:35 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UmKoo-0005PR-L4
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 05:24:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mohankumar.m@gmail.com>) id 1UmKmX-0003Yy-LU
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 05:22:32 -0400
-Received: from e28smtp02.in.ibm.com ([122.248.162.2]:56172)
+	(envelope-from <peter.maydell@linaro.org>) id 1UmKon-00045M-EO
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 05:24:46 -0400
+Received: from mail-lb0-f174.google.com ([209.85.217.174]:42057)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mohankumar.m@gmail.com>) id 1UmKmX-0003Y8-0o
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 05:22:25 -0400
-Received: from /spool/local
-	by e28smtp02.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mohankumar.m@gmail.com>;
-	Tue, 11 Jun 2013 14:44:56 +0530
-Received: from d28dlp02.in.ibm.com (9.184.220.127)
-	by e28smtp02.in.ibm.com (192.168.1.132) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 11 Jun 2013 14:44:55 +0530
-Received: from d28relay04.in.ibm.com (d28relay04.in.ibm.com [9.184.220.61])
-	by d28dlp02.in.ibm.com (Postfix) with ESMTP id 0683C3940043;
-	Tue, 11 Jun 2013 14:52:17 +0530 (IST)
-Received: from d28av04.in.ibm.com (d28av04.in.ibm.com [9.184.220.66])
-	by d28relay04.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r5B9M9CC28770546; Tue, 11 Jun 2013 14:52:09 +0530
-Received: from d28av04.in.ibm.com (loopback [127.0.0.1])
-	by d28av04.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r5B9ME8D011994; Tue, 11 Jun 2013 19:22:14 +1000
-Received: from explorer.ibm.com (explorer.in.ibm.com [9.124.31.139])
-	by d28av04.in.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r5B9MDcB011936
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Tue, 11 Jun 2013 19:22:14 +1000
-From: "M. Mohan Kumar" <mohan@in.ibm.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <51B63DBE.2010903@msgid.tls.msk.ru>
-References: <1370897240-23490-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<51B63DBE.2010903@msgid.tls.msk.ru>
-User-Agent: Notmuch/0.13.2 (http://notmuchmail.org) Emacs/24.1.1
-	(x86_64-redhat-linux-gnu)
-Date: Tue, 11 Jun 2013 14:52:13 +0530
-Message-ID: <87li6ht322.fsf@gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1UmKon-00045F-6d
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 05:24:45 -0400
+Received: by mail-lb0-f174.google.com with SMTP id x10so5127901lbi.5
+	for <qemu-trivial@nongnu.org>; Tue, 11 Jun 2013 02:24:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=zPBlf+JsmZ8pcIcSUvxEifK65YUWJ95LpM8qXGHwVKo=;
+	b=QY+0FBS0Emi62xami8NC3fe459VwP3n3kkJXPy3ADU/wKyC1q1KqHlNruqgesqKx0H
+	4kI2v+ucE1QvTJnSnciu5/W4rssPflflxpEsJelqWSeTu1oCaJN6vaE2lHVDS1M7tjxt
+	hZDNR/bhM4X47a7T9DkVmnBJYwWRG12w0O9Uy6NDfLrufcKdTsAHb4UvGShkQFMrmuXv
+	CTv5gWhitbF8bVS2YVAmDDWkQJnOQNVwleIKvw9GU4BnKuQX8LzzCeEoNBQCLiWAf3D1
+	w7xsYtFRPylSVIor0fEvS035wpzlZV3Zn/iAfIo5ECewUsCQldbV9oYL6uX99LjLxP3H
+	LN4w==
+X-Received: by 10.112.189.101 with SMTP id gh5mr8298984lbc.73.1370942684137;
+	Tue, 11 Jun 2013 02:24:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13061109-5816-0000-0000-000008634A9D
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 122.248.162.2
+Received: by 10.112.138.200 with HTTP; Tue, 11 Jun 2013 02:24:24 -0700 (PDT)
+In-Reply-To: <87li6ht322.fsf@gmail.com>
+References: <1370897240-23490-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<51B63DBE.2010903@msgid.tls.msk.ru> <87li6ht322.fsf@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 11 Jun 2013 10:24:24 +0100
+Message-ID: <CAFEAcA9LtaGBDQjVY-z3ETCNsewVq3tVpu=ksHn9vUC1qaPfOQ@mail.gmail.com>
+To: "M. Mohan Kumar" <mohan@in.ibm.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQkb2ZymTfzWUl8knc0O0IzvSfj87gcNRu8E264OLTrH+Trj/j7eLG4vCWWOXAOWrMO+ik6U
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.174
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH trivial] configure: explicitly disable
-	virtfs if softmmu=no
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] configure:
+ explicitly disable virtfs if softmmu=no
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,53 +55,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2013 09:22:35 -0000
+X-List-Received-Date: Tue, 11 Jun 2013 09:24:48 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+On 11 June 2013 10:22, M. Mohan Kumar <mohan@in.ibm.com> wrote:
+> I tried ./configure --disable-system --enable-virtfs and make. But didnt
+> face any build failure. Could you please share your build failure
+> information? virtfs-proxy-helper.1 is created inside the fsdev folder.
 
-> 11.06.2013 00:47, Michael Tokarev wrote:
->> Or else
->> 
->>  ./configure --disable-system --enable-virtfs
->> 
->> (which makes no sense by its own but does not error out)
->> will fail to build, because it will define CONFIG_VIRTFS,
->> and the makefile will try to build virtfs-proxy-helper
->> manpage (but not the executable).
->
-> The build fails in this case in a separate build tree, because
-> the fsdev directory is not created and scripts/texi2pod.pl
-> will be called with output = fsdev/virtfs-proxy-helper.pod,
-> which can't be created because fsdev/ does not exist.
->
+Michael wrote "The build fails in this case in a separate build
+tree" but your configure line suggests you were building inside
+the source tree.
 
-Hi,
-
-I tried ./configure --disable-system --enable-virtfs and make. But didnt
-face any build failure. Could you please share your build failure
-information? virtfs-proxy-helper.1 is created inside the fsdev folder.
-
->> 
->> Cc: qemu-trivial@nongnu.org
->> Cc: M. Mohan Kumar <mohan@in.ibm.com>
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->> ---
->>  configure |    2 ++
->>  1 file changed, 2 insertions(+)
->> 
->> diff --git a/configure b/configure
->> index a3f0b7a..0ff0380 100755
->> --- a/configure
->> +++ b/configure
->> @@ -3423,6 +3423,8 @@ if test "$softmmu" = yes ; then
->>        tools="qemu-ga\$(EXESUF) $tools"
->>      fi
->>    fi
->> +else
->> +  virtfs=no
->>  fi
->>  
->>  # Mac OS X ships with a broken assembler
->> 
-
+thanks
+-- PMM
 
