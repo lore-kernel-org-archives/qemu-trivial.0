@@ -1,54 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmCez-0004ij-RA
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2013 20:42:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39744)
+	id 1UmGxG-000898-Cl
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 01:17:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56564)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UmCeu-0004hg-5H
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 20:42:04 -0400
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UmGxD-00088D-Er
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 01:17:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UmCep-0002Q0-GL
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 20:42:00 -0400
-Received: from mail-bk0-x22a.google.com ([2a00:1450:4008:c01::22a]:52905)
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UmGxC-0004m4-AW
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 01:17:11 -0400
+Received: from [222.73.24.84] (port=61213 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UmCep-0002Pq-A2
-	for qemu-trivial@nongnu.org; Mon, 10 Jun 2013 20:41:55 -0400
-Received: by mail-bk0-f42.google.com with SMTP id jk13so3661410bkc.1
-	for <qemu-trivial@nongnu.org>; Mon, 10 Jun 2013 17:41:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:date
-	:x-google-sender-auth:message-id:subject:from:to:cc:content-type
-	:x-gm-message-state;
-	bh=SSTscuu+zOkwV6lctqmX1mqNHVH5UTgHwL1lzss/DNE=;
-	b=NaK4Dd9BU9JWhXEr/7uVgxZHedJZlRFrVl906hLdfLCQaSod7Yyk4QhHbfdef+1GyK
-	6KXIIgJI2mq8pnSweY/TGAlQ5P10dbFQClTbnF4iuhPCtLmMAesKM1XuQED6mTqIzUhW
-	SJkJ/sLUx3+W9phkJymjTLhF+5MqAacXLnKMdCO3x0me7csoPvQLhSEaKPNP6HrKklxg
-	JZZUbE/ASWOhIVoJSr+fa9NvPgiKH3hB39WVG7gZRf5BC7JZvHkOwcI4JN8o5wbVynJZ
-	wbCbAM7uSfLNSgARJ7REbCs/5L/ASSK76WMCyoJToC4VQKfOZKDjeZIEcuKFAfH5/oUE
-	bPmA==
-MIME-Version: 1.0
-X-Received: by 10.205.34.132 with SMTP id ss4mr1880590bkb.125.1370911314051;
-	Mon, 10 Jun 2013 17:41:54 -0700 (PDT)
-Sender: peter.crosthwaite@petalogix.com
-Received: by 10.204.35.136 with HTTP; Mon, 10 Jun 2013 17:41:53 -0700 (PDT)
-In-Reply-To: <51B26065.3000705@msgid.tls.msk.ru>
-References: <cover.1370572420.git.peter.crosthwaite@xilinx.com>
-	<1ec46fbd250efe78699a1e4cf6838c0c88f4acc7.1370572420.git.peter.crosthwaite@xilinx.com>
-	<CAEgOgz7vk_8z+KzFMfj0iWjLPeykkLUP4ePu8AECLSHn1t3KcQ@mail.gmail.com>
-	<51B26065.3000705@msgid.tls.msk.ru>
-Date: Tue, 11 Jun 2013 10:41:53 +1000
-X-Google-Sender-Auth: Kyhf7L-rfGvZIj9S6vc3wzCMa6E
-Message-ID: <CAEgOgz7RRbcT_0Vyga=NQv-8cAjthm4Gn8RzZrTvfGdu3KRpAA@mail.gmail.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=ISO-8859-1
-X-Gm-Message-State: ALoCoQkn89ELn1frRG3xwEGKYzGGBMR9C8A3iD3rzyTExbTrYTtrDh7Z4eAVHarsSGWfxwXUtozu
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4008:c01::22a
-Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 1/5] intc/xilinx_intc:
-	Use qemu_set_irq
+	(envelope-from <lig.fnst@cn.fujitsu.com>)
+	id 1UmGxB-0004gW-WC; Tue, 11 Jun 2013 01:17:10 -0400
+X-IronPort-AV: E=Sophos;i="4.87,842,1363104000"; 
+   d="scan'208";a="7517744"
+Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
+	by song.cn.fujitsu.com with ESMTP; 11 Jun 2013 13:14:09 +0800
+Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5B5H2oA030066;
+	Tue, 11 Jun 2013 13:17:02 +0800
+Received: from liguang.fnst.cn.fujitsu.com ([10.167.233.147])
+	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
+	with ESMTP id 2013061113151127-2018033 ;
+	Tue, 11 Jun 2013 13:15:11 +0800 
+From: liguang <lig.fnst@cn.fujitsu.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Tue, 11 Jun 2013 13:15:16 +0800
+Message-Id: <1370927720-4348-1-git-send-email-lig.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 1.7.2.5
+X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
+	15, 2011) at 2013/06/11 13:15:11,
+	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
+	2011) at 2013/06/11 13:15:11,
+	Serialize complete at 2013/06/11 13:15:11
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 222.73.24.84
+Cc: liguang <lig.fnst@cn.fujitsu.com>
+Subject: [Qemu-trivial] [PATCH 1/5] vnc: pass bool pararmeter for vnc_connect
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,24 +49,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2013 00:42:04 -0000
+X-List-Received-Date: Tue, 11 Jun 2013 05:17:13 -0000
 
-On Sat, Jun 8, 2013 at 8:36 AM, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 07.06.2013 06:39, Peter Crosthwaite wrote:
->>> Use qemu_set_irq rather than if-elsing qemu_irq_(lower|raise). No
->>> functional change, just reduces verbosity.
->
-> Thanks, applied to the trivial patches queue.
->
+type last parameter of vnc_connect if bool,
+so pass 'false' instead of '0' for it.
 
-Thanks,
+Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+---
+ ui/vnc.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
 
-I need to respin the later patches in this series but as you have
-taken this ill drop it from the respin. No conflict issues.
+diff --git a/ui/vnc.c b/ui/vnc.c
+index dfc7459..7d22660 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -3283,7 +3283,7 @@ void vnc_display_open(DisplayState *ds, const char *display, Error **errp)
+         if (csock < 0) {
+             goto fail;
+         }
+-        vnc_connect(vs, csock, 0, 0);
++        vnc_connect(vs, csock, 0, false);
+     } else {
+         /* listen for connects */
+         char *dpy;
+@@ -3345,5 +3345,5 @@ void vnc_display_add_client(DisplayState *ds, int csock, int skipauth)
+ {
+     VncDisplay *vs = vnc_display;
+ 
+-    vnc_connect(vs, csock, skipauth, 0);
++    vnc_connect(vs, csock, skipauth, false);
+ }
+-- 
+1.7.2.5
 
-Regards,
-Peter
-
-> /mjt
->
 
