@@ -1,45 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmSIt-0008Mr-Np
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 13:24:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44575)
+	id 1UmSVj-0003RB-Ik
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2013 13:37:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47976)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UmSIq-0008JB-TV
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 13:24:18 -0400
+	(envelope-from <sw@weilnetz.de>) id 1UmSVg-0003MB-7Q
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 13:37:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1UmSIm-0002rW-7o
-	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 13:24:16 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:41393)
+	(envelope-from <sw@weilnetz.de>) id 1UmSVe-0007Nb-W6
+	for qemu-trivial@nongnu.org; Tue, 11 Jun 2013 13:37:32 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:46452)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <sw@weilnetz.de>)
-	id 1UmSIj-0002qq-Av; Tue, 11 Jun 2013 13:24:09 -0400
+	id 1UmSVb-0007Mx-Ew; Tue, 11 Jun 2013 13:37:27 -0400
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	4244D728097F; Tue, 11 Jun 2013 19:24:07 +0200 (CEST)
+	4375D728097F; Tue, 11 Jun 2013 19:37:26 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from v220110690675601.yourvserver.net ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id v5UMIrYH7KHg; Tue, 11 Jun 2013 19:24:05 +0200 (CEST)
+	with ESMTP id qt1YkAPNtCxh; Tue, 11 Jun 2013 19:37:24 +0200 (CEST)
 Received: from [192.168.178.35] (p54ADAB1E.dip0.t-ipconnect.de [84.173.171.30])
 	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	5EC89728097B; Tue, 11 Jun 2013 19:24:05 +0200 (CEST)
-Message-ID: <51B75D34.7000401@weilnetz.de>
-Date: Tue, 11 Jun 2013 19:24:04 +0200
+	CD7A0728097B; Tue, 11 Jun 2013 19:37:23 +0200 (CEST)
+Message-ID: <51B76053.4070101@weilnetz.de>
+Date: Tue, 11 Jun 2013 19:37:23 +0200
 From: Stefan Weil <sw@weilnetz.de>
 User-Agent: Mozilla/5.0 (X11; Linux i686;
 	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1370780536-28150-1-git-send-email-sw@weilnetz.de>
-	<51B71A5B.7040001@msgid.tls.msk.ru>
-In-Reply-To: <51B71A5B.7040001@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: quoted-printable
+To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+References: <1370896582-11910-1-git-send-email-sw@weilnetz.de>
+	<alpine.DEB.2.02.1306111200260.4548@kaball.uk.xensource.com>
+In-Reply-To: <alpine.DEB.2.02.1306111200260.4548@kaball.uk.xensource.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] audio: Replace macro GCC_ATTR by
- GCC_FMT_ATTR and use inline functions
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, xen-devel@lists.xensource.com,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] hw/xen: Use g_free instead of free and
+ fix potential memory leaks
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,44 +52,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2013 17:24:18 -0000
+X-List-Received-Date: Tue, 11 Jun 2013 17:37:34 -0000
 
-Am 11.06.2013 14:38, schrieb Michael Tokarev:
-> [Removing malc's email since it bounces]
-> 09.06.2013 16:22, Stefan Weil wrote:
->> GCC_ATTR was only used in audio_int.h, so it is now unused and
->> the definition can be removed from compiler.h.
+Am 11.06.2013 13:02, schrieb Stefano Stabellini:
+> On Mon, 10 Jun 2013, Stefan Weil wrote:
+>> The wrong functions and the missing calls of g_free were reported
+>> by cppcheck.
 >>
 >> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Acked-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+>
+> Are you happy to get this patch upstream via qemu-trivial? Or do you
+> want me to pick it up?
 
-[snip]
+Thank you for the review.
 
-> This change (adding `inline') causes build failure with at least with g=
-cc-4.7:
->
-> audio/wavaudio.c: In function =91dolog=92:
-> audio/audio_int.h:246:100: error: function =91dolog=92 can never be inl=
-ined because it uses variable argument lists
->
-> $ gcc --version
-> gcc (Debian 4.7.2-5) 4.7.2
->
-> I think the addition of inline should be dropped here and in other
-> similar places (the rest is ok).
->
-> I can do that myself if you want.
->
-> Alternatively these functions can be turned into varargs #defines.
->
-> Thanks,
->
-> /mjt
-
-Thank you for reporting this compiler problem. I did not see
-it because I configured with -enable-debugwhich disables
-inline functions.
-
-I'll send a new patch which uses macros.
+qemu-trivial is fine, and Michael already applied the patch.
 
 Regards
 Stefan
