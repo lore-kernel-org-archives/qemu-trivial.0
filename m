@@ -1,47 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Umm4m-0007SA-7w
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jun 2013 10:31:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57247)
+	id 1Umm76-00010q-0M
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jun 2013 10:33:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57791)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1Umm4g-0007QZ-RD
-	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 10:31:01 -0400
+	(envelope-from <agraf@suse.de>) id 1Umm74-0000xj-3N
+	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 10:33:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1Umm4d-0004TZ-4N
-	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 10:30:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43178)
+	(envelope-from <agraf@suse.de>) id 1Umm73-0005Sc-1z
+	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 10:33:26 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:41856 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1Umm4c-0004Sy-Sd; Wed, 12 Jun 2013 10:30:55 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5CEUftX013997
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 12 Jun 2013 10:30:41 -0400
-Received: from lacos-laptop.usersys.redhat.com (vpn1-7-250.ams2.redhat.com
-	[10.36.7.250])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r5CEUc6X029966; Wed, 12 Jun 2013 10:30:39 -0400
-Message-ID: <51B8869E.2030801@redhat.com>
-Date: Wed, 12 Jun 2013 16:33:02 +0200
-From: Laszlo Ersek <lersek@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130513 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1370467013-9270-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<CAFEAcA9cb2k_=c10cV5C3zi-kbhrNwahEtZF4L08GO8N=ub=cA@mail.gmail.com>
-	<51B860CC.1000309@msgid.tls.msk.ru>
-In-Reply-To: <51B860CC.1000309@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <agraf@suse.de>)
+	id 1Umm6y-0005QW-4V; Wed, 12 Jun 2013 10:33:20 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 25333A3B99;
+	Wed, 12 Jun 2013 16:33:16 +0200 (CEST)
+Mime-Version: 1.0 (Apple Message framework v1278)
+Content-Type: text/plain; charset=us-ascii
+From: Alexander Graf <agraf@suse.de>
+In-Reply-To: <1371047245-19221-1-git-send-email-aik@ozlabs.ru>
+Date: Wed, 12 Jun 2013 16:33:14 +0200
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org,
-	liguang <lig.fnst@cn.fujitsu.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] gitignore: unignore
-	*.patch
+Message-Id: <9CFAF006-9051-4997-9213-1BD87191EE9E@suse.de>
+References: <1371047245-19221-1-git-send-email-aik@ozlabs.ru>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
+X-Mailer: Apple Mail (2.1278)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
+	David Gibson <david@gibson.dropbear.id.au>
+Subject: Re: [Qemu-trivial] [PATCH] spapr: add yet another maintainer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,38 +42,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jun 2013 14:31:02 -0000
+X-List-Received-Date: Wed, 12 Jun 2013 14:33:27 -0000
 
-On 06/12/13 13:51, Michael Tokarev wrote:
-> 06.06.2013 01:22, Peter Maydell wrote:
->> Personally I think a lot of the random rubbish in
->> our .gitignore is bogus and should be removed.
->> Basically anything that's an editor dropping or
->> .patch or TAGS file or similar is a local workflow
->> thing and should be dealt with by setting up a global
->> ignorefile in your local git config. The only
->> things in the .gitignore in the public repo should
->> be files which QEMU's build process itself creates.
->>
->> But I know not everybody agrees with this, which is
->> why all this stuff is in the .gitignore :-)
+
+On 12.06.2013, at 16:27, Alexey Kardashevskiy wrote:
+
+> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+> ---
+> MAINTAINERS |    1 +
+> 1 file changed, 1 insertion(+)
 > 
-> I'm one of the few who completely agrees, there's no
-> place for various random rubbery in there, only things
-> which are really generated during build should be there.
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 13c0cc5..1e00bb1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -430,6 +430,7 @@ F: hw/isa/pc87312.[hc]
+> sPAPR
+> M: David Gibson <david@gibson.dropbear.id.au>
+
+David should get removed here then, no?
+
+
+Alex
+
+> M: Alexander Graf <agraf@suse.de>
+> +M: Alexey Kardashevskiy <aik@ozlabs.ru>
+> L: qemu-ppc@nongnu.org
+> S: Supported
+> F: hw/*/spapr*
+> -- 
+> 1.7.10.4
 > 
-> I'd really love to remove all the cruft.  But who else
-> disagrees?
 
-I agree that .gitignore should list only files produced by the build
-process. Anything else can be added to a global ignore file (which I
-haven't heard of before, but it probably does exist :)), *or* to
-
-  .git/info/exclude
-
-(recommended by Eric Blake to me some months back)
-
-This file is not tracked like .gitignore, but it doesn't need tracking.
-
-Laszlo
 
