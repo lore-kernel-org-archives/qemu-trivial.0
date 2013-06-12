@@ -1,56 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmkVU-0002Za-8n
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jun 2013 08:50:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57811)
+	id 1Umm1W-0003l1-5V
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jun 2013 10:27:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UmkVO-0002Qu-HZ
-	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 08:50:31 -0400
+	(envelope-from <aik@ozlabs.ru>) id 1Umm1T-0003ki-MY
+	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 10:27:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1UmkVJ-0008B0-Qn
-	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 08:50:26 -0400
-Received: from mail-qa0-x22b.google.com ([2607:f8b0:400d:c00::22b]:61667)
+	(envelope-from <aik@ozlabs.ru>) id 1Umm1Q-000340-Hq
+	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 10:27:39 -0400
+Received: from mail-pd0-f182.google.com ([209.85.192.182]:57741)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1UmkVG-0008A8-Vn; Wed, 12 Jun 2013 08:50:19 -0400
-Received: by mail-qa0-f43.google.com with SMTP id d13so288099qak.16
-	for <multiple recipients>; Wed, 12 Jun 2013 05:50:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:x-enigmail-version:content-type
-	:content-transfer-encoding;
-	bh=k1floIIeHOHRl8sSIdyoQH/RwKdwTJa1o6srpEDkmJM=;
-	b=UW829hPUmLXTymIe4R6agIRL3xVwmu6ndDLw9MT8AyYzj08pTiBiY8mXfxjVEjW2Q1
-	Pu/MmBZ47MhI8nvAjDwcoxOmGzvpK9euQXTyHsaPLJimUCgWfi4IXmk8R0/frwRnTkn2
-	YeEGzML/kGn3p2uSgWL17qBpZU4S1QV4vfg5s0czXBC0rHFZYptPEbWU2tJWAhJ/kN8s
-	FXzv5/X0iRkAUFXjgDMbHtiiCh5nvWlGUGicZqy3mi3LQOVe7QvXp/5faDbw2seuEVNO
-	ng7yCihNcgIHTmxeHtG9PcuROrPP8tBH6XDLpT7ek8ePjrTk3D+SPUN7vBAebYOKL+rg
-	Afzw==
-X-Received: by 10.49.24.226 with SMTP id x2mr22648990qef.64.1371041418441;
-	Wed, 12 Jun 2013 05:50:18 -0700 (PDT)
-Received: from yakj.usersys.redhat.com ([64.251.112.55])
-	by mx.google.com with ESMTPSA id j3sm25887030qav.1.2013.06.12.05.50.16
-	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Wed, 12 Jun 2013 05:50:17 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <51B86E88.2020405@redhat.com>
-Date: Wed, 12 Jun 2013 08:50:16 -0400
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1371040588-17938-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1371040588-17938-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c00::22b
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH trivial] main-loop: do not include
- slirp/slirp.h, use libslirp.h instead
+	(envelope-from <aik@ozlabs.ru>) id 1Umm1Q-00033d-Bc
+	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 10:27:36 -0400
+Received: by mail-pd0-f182.google.com with SMTP id r10so3861650pdi.41
+	for <qemu-trivial@nongnu.org>; Wed, 12 Jun 2013 07:27:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
+	bh=dNRxTxQJKRb15ghLsr5C+N9gzDwr5OvYVmb7YXpc6GU=;
+	b=MPX/2PvH/5EE8A8IhGkQTM33gm/wDgA4JPxSc+wvvJdE6tcnoWRFR3BtsmXIKh/7ox
+	g721u/WFS48UXlp8lv2SzEFOUJ9JgYJKnpIFpkP04z6MmUTXIQSy1ER0EWjqYDscLlis
+	dmqbpSmd+iy7ja5Df88H22qM4wbYYKUfF/R7di6BRaJJXAM3oZBK6z88dF4ecdOIWd4X
+	y9T+TMnwZfzEYu4qnd85dsgsKY/SkANmKDTGKJlms9WvKgwCGOTZPwPl33LLlNX5yBuS
+	iRra64vXPML/pXLTa6XGHfTzN+3WeRCLyukolFWD2NY210io9d/hRhb91MOyfAMycD8c
+	Fnvw==
+X-Received: by 10.68.132.34 with SMTP id or2mr19826725pbb.99.1371047255266;
+	Wed, 12 Jun 2013 07:27:35 -0700 (PDT)
+Received: from ka1.ozlabs.ibm.com (ibmaus65.lnk.telstra.net. [165.228.126.9])
+	by mx.google.com with ESMTPSA id
+	so3sm21530926pac.14.2013.06.12.07.27.31 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Wed, 12 Jun 2013 07:27:33 -0700 (PDT)
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+To: qemu-devel@nongnu.org
+Date: Thu, 13 Jun 2013 00:27:25 +1000
+Message-Id: <1371047245-19221-1-git-send-email-aik@ozlabs.ru>
+X-Mailer: git-send-email 1.7.10.4
+X-Gm-Message-State: ALoCoQlqmu7/1/hNqvo/R823tSN55nGRgaaO8L4yWXI8nQ7Nj6raC2jfbgxXeIA1+5pZlowDI4kH
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.192.182
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>,
+	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	Alexander Graf <agraf@suse.de>, qemu-trivial@nongnu.org,
+	qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
+Subject: [Qemu-trivial] [PATCH] spapr: add yet another maintainer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,20 +56,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jun 2013 12:50:31 -0000
+X-List-Received-Date: Wed, 12 Jun 2013 14:27:41 -0000
 
-Il 12/06/2013 08:36, Michael Tokarev ha scritto:
-> 
-> Including slirp/slirp.h is somewhat dangerous since it redefines
-> errno on WIN32, so any file including it may misbehave wrt errno.
-> 
-> Unfortunately libslirp isn't self-contained, it needs declaration
-> of struct in_addr, which is provided by qemu/sockets.h.  Maybe
-> instead of #including qemu/sockets.h before libslirp.h, it is
-> better to make the latter self-contained.
+Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+---
+ MAINTAINERS |    1 +
+ 1 file changed, 1 insertion(+)
 
-Yeah, but I agree with having the smallest patch for now.
-
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 13c0cc5..1e00bb1 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -430,6 +430,7 @@ F: hw/isa/pc87312.[hc]
+ sPAPR
+ M: David Gibson <david@gibson.dropbear.id.au>
+ M: Alexander Graf <agraf@suse.de>
++M: Alexey Kardashevskiy <aik@ozlabs.ru>
+ L: qemu-ppc@nongnu.org
+ S: Supported
+ F: hw/*/spapr*
+-- 
+1.7.10.4
 
 
