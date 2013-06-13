@@ -1,55 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UmvXz-0002BA-VF
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jun 2013 20:37:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37220)
+	id 1UmvY1-0002DM-56
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jun 2013 20:37:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37659)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Umv5o-0001Sk-Fo
-	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 20:08:46 -0400
+	(envelope-from <agraf@suse.de>) id 1Umv7w-0004Bi-5S
+	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 20:10:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Umv5l-0001Ks-HP
-	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 20:08:44 -0400
-Received: from mail-pa0-x229.google.com ([2607:f8b0:400e:c03::229]:40098)
+	(envelope-from <agraf@suse.de>) id 1Umv7u-0001wI-8D
+	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 20:10:56 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:60366 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Umv5l-0001KU-AG
-	for qemu-trivial@nongnu.org; Wed, 12 Jun 2013 20:08:41 -0400
-Received: by mail-pa0-f41.google.com with SMTP id bj3so6228717pad.0
-	for <qemu-trivial@nongnu.org>; Wed, 12 Jun 2013 17:08:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding
-	:x-gm-message-state;
-	bh=k3GGPtD0phaELgENFovcqCy/ANnthXJzREScJDXBvu4=;
-	b=WdllxwAxC9y/bh/Dv0DLtennjsjvXgTktvILGzYPm7eyykwpkr7EZzO+NolHhPIouN
-	mB5m0y7e/F9CSIQYCNpixGRuQ7e4wj1IrEPyEu/isrlsxuMK97arxNnRMgp831TBpZ+X
-	YiabtP75dA55aCGD7BDhPZeKmnF3gg0/+9AIld3O1gnPo+qvpP1wDWfx6d/czJiLWRor
-	NeKCycpwb6bwI+VkXOU4oJoNcYN9Lwuai8al3wA+O3MwN6SR4UvCakPFu2yFWfIeUJjE
-	4QDgG62Dt4z+efyW7zCVp35xgOhqJj6e1GTUT3TISPx9kvnIZok6+D6KgleR69k1xjt2
-	4aew==
-X-Received: by 10.66.0.97 with SMTP id 1mr277309pad.201.1371082119688;
-	Wed, 12 Jun 2013 17:08:39 -0700 (PDT)
-Received: from aik.ozlabs.ibm.com (60-242-102-4.tpgi.com.au. [60.242.102.4])
-	by mx.google.com with ESMTPSA id
-	ag4sm20905960pbc.20.2013.06.12.17.08.35 for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Wed, 12 Jun 2013 17:08:38 -0700 (PDT)
-Message-ID: <51B90D81.1020000@ozlabs.ru>
-Date: Thu, 13 Jun 2013 10:08:33 +1000
-From: Alexey Kardashevskiy <aik@ozlabs.ru>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Alexander Graf <agraf@suse.de>
+	(envelope-from <agraf@suse.de>)
+	id 1Umv7o-0001uH-8V; Wed, 12 Jun 2013 20:10:48 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id B8825A535C;
+	Thu, 13 Jun 2013 02:10:46 +0200 (CEST)
+Mime-Version: 1.0 (Apple Message framework v1278)
+Content-Type: text/plain; charset=koi8-r
+From: Alexander Graf <agraf@suse.de>
+In-Reply-To: <51B90D81.1020000@ozlabs.ru>
+Date: Thu, 13 Jun 2013 02:10:43 +0200
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <EF248D0E-36D7-403D-83BF-8F966459D299@suse.de>
 References: <1371047245-19221-1-git-send-email-aik@ozlabs.ru>
 	<9CFAF006-9051-4997-9213-1BD87191EE9E@suse.de>
-In-Reply-To: <9CFAF006-9051-4997-9213-1BD87191EE9E@suse.de>
-Content-Type: text/plain; charset=KOI8-R
-Content-Transfer-Encoding: 7bit
-X-Gm-Message-State: ALoCoQkMNFPIbCiLKEZd/3tXjBhIGD7u1YC7eP7OlvV3zsiTEi9VZd0qDeP2cc6I0vXdyFMj/1Yb
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c03::229
-X-Mailman-Approved-At: Wed, 12 Jun 2013 20:37:49 -0400
+	<51B90D81.1020000@ozlabs.ru>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
+X-Mailer: Apple Mail (2.1278)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+X-Mailman-Approved-At: Wed, 12 Jun 2013 20:37:52 -0400
 Cc: qemu-trivial@nongnu.org, Benjamin Herrenschmidt <benh@kernel.crashing.org>,
 	qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
 	David Gibson <david@gibson.dropbear.id.au>
@@ -65,46 +45,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jun 2013 00:08:46 -0000
-
-On 06/13/2013 12:33 AM, Alexander Graf wrote:
-> 
-> On 12.06.2013, at 16:27, Alexey Kardashevskiy wrote:
-> 
->> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
->> ---
->> MAINTAINERS |    1 +
->> 1 file changed, 1 insertion(+)
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 13c0cc5..1e00bb1 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -430,6 +430,7 @@ F: hw/isa/pc87312.[hc]
->> sPAPR
->> M: David Gibson <david@gibson.dropbear.id.au>
-> 
-> David should get removed here then, no?
-
-Well, at least sometime he is a qemu-ppc maintainer :) Don't know and I am
-not the one to decide.
+X-List-Received-Date: Thu, 13 Jun 2013 00:10:57 -0000
 
 
-> 
-> 
-> Alex
-> 
->> M: Alexander Graf <agraf@suse.de>
->> +M: Alexey Kardashevskiy <aik@ozlabs.ru>
->> L: qemu-ppc@nongnu.org
->> S: Supported
->> F: hw/*/spapr*
->> -- 
->> 1.7.10.4
->>
-> 
+On 13.06.2013, at 02:08, Alexey Kardashevskiy wrote:
+
+> On 06/13/2013 12:33 AM, Alexander Graf wrote:
+>>=20
+>> On 12.06.2013, at 16:27, Alexey Kardashevskiy wrote:
+>>=20
+>>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+>>> ---
+>>> MAINTAINERS |    1 +
+>>> 1 file changed, 1 insertion(+)
+>>>=20
+>>> diff --git a/MAINTAINERS b/MAINTAINERS
+>>> index 13c0cc5..1e00bb1 100644
+>>> --- a/MAINTAINERS
+>>> +++ b/MAINTAINERS
+>>> @@ -430,6 +430,7 @@ F: hw/isa/pc87312.[hc]
+>>> sPAPR
+>>> M: David Gibson <david@gibson.dropbear.id.au>
+>>=20
+>> David should get removed here then, no?
+>=20
+> Well, at least sometime he is a qemu-ppc maintainer :) Don't know and =
+I am
+> not the one to decide.
+
+Yup, hence David should send a patch to remove himself and add you =
+instead, if that's what he sees fit. Otherwise I'd like a patch from =
+David removing himself only for now.
 
 
--- 
-Alexey
+Alex
+
 
