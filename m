@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnElC-0002dM-Iy
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2013 17:08:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45823)
+	id 1UnElD-0002eN-3a
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2013 17:08:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47668)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1Un12v-0008BG-Fu
-	for qemu-trivial@nongnu.org; Thu, 13 Jun 2013 02:30:13 -0400
+	(envelope-from <hutao@cn.fujitsu.com>) id 1Un59B-0001h6-3g
+	for qemu-trivial@nongnu.org; Thu, 13 Jun 2013 06:52:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1Un12r-0001Ne-A3
-	for qemu-trivial@nongnu.org; Thu, 13 Jun 2013 02:30:09 -0400
-Received: from ozlabs.org ([2402:b800:7003:1:1::1]:52592)
+	(envelope-from <hutao@cn.fujitsu.com>) id 1Un59A-0007sJ-13
+	for qemu-trivial@nongnu.org; Thu, 13 Jun 2013 06:52:53 -0400
+Received: from [222.73.24.84] (port=11064 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>)
-	id 1Un12a-000164-5k; Thu, 13 Jun 2013 02:29:48 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 98E6B2C009C; Thu, 13 Jun 2013 16:29:44 +1000 (EST)
-Date: Thu, 13 Jun 2013 15:52:47 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Alexander Graf <agraf@suse.de>
-Message-ID: <20130613055247.GA9218@voom.bne.redhat.com>
-References: <1371047245-19221-1-git-send-email-aik@ozlabs.ru>
-	<9CFAF006-9051-4997-9213-1BD87191EE9E@suse.de>
-	<51B90D81.1020000@ozlabs.ru>
-	<EF248D0E-36D7-403D-83BF-8F966459D299@suse.de>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="d6Gm4EdcadzBjdND"
-Content-Disposition: inline
-In-Reply-To: <EF248D0E-36D7-403D-83BF-8F966459D299@suse.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2402:b800:7003:1:1::1
+	(envelope-from <hutao@cn.fujitsu.com>)
+	id 1Un596-0007o0-PA; Thu, 13 Jun 2013 06:52:49 -0400
+X-IronPort-AV: E=Sophos;i="4.87,858,1363104000"; 
+   d="scan'208";a="7536754"
+Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
+	by song.cn.fujitsu.com with ESMTP; 13 Jun 2013 18:49:42 +0800
+Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5DAqZDt009320;
+	Thu, 13 Jun 2013 18:52:35 +0800
+Received: from G08FNSTD100614.fnst.cn.fujitsu.com ([10.167.233.156])
+	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
+	with ESMTP id 2013061318504038-2095058 ;
+	Thu, 13 Jun 2013 18:50:40 +0800 
+From: Hu Tao <hutao@cn.fujitsu.com>
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Date: Thu, 13 Jun 2013 18:51:47 +0800
+Message-Id: <1371120709-18923-1-git-send-email-hutao@cn.fujitsu.com>
+X-Mailer: git-send-email 1.8.2.3
+X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
+	15, 2011) at 2013/06/13 18:50:40,
+	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
+	2011) at 2013/06/13 18:50:41,
+	Serialize complete at 2013/06/13 18:50:41
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 222.73.24.84
 X-Mailman-Approved-At: Thu, 13 Jun 2013 17:08:43 -0400
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org,
-	qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
-	Benjamin Herrenschmidt <benh@kernel.crashing.org>
-Subject: Re: [Qemu-trivial] [PATCH] spapr: add yet another maintainer
+Subject: [Qemu-trivial] [PATCH] fix some printf errors when debug is enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,63 +49,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jun 2013 06:30:14 -0000
+X-List-Received-Date: Thu, 13 Jun 2013 10:52:54 -0000
 
 
---d6Gm4EdcadzBjdND
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
+---
+ cputlb.c        | 4 ++--
+ hw/acpi/piix4.c | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-On Thu, Jun 13, 2013 at 02:10:43AM +0200, Alexander Graf wrote:
->=20
-> On 13.06.2013, at 02:08, Alexey Kardashevskiy wrote:
->=20
-> > On 06/13/2013 12:33 AM, Alexander Graf wrote:
-> >>=20
-> >> On 12.06.2013, at 16:27, Alexey Kardashevskiy wrote:
-> >>=20
-> >>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
-> >>> ---
-> >>> MAINTAINERS |    1 +
-> >>> 1 file changed, 1 insertion(+)
-> >>>=20
-> >>> diff --git a/MAINTAINERS b/MAINTAINERS
-> >>> index 13c0cc5..1e00bb1 100644
-> >>> --- a/MAINTAINERS
-> >>> +++ b/MAINTAINERS
-> >>> @@ -430,6 +430,7 @@ F: hw/isa/pc87312.[hc]
-> >>> sPAPR
-> >>> M: David Gibson <david@gibson.dropbear.id.au>
-> >>=20
-> >> David should get removed here then, no?
-> >=20
-> > Well, at least sometime he is a qemu-ppc maintainer :) Don't know and I=
- am
-> > not the one to decide.
->=20
-> Yup, hence David should send a patch to remove himself and add you
-> instead, if that's what he sees fit. Otherwise I'd like a patch from
-> David removing himself only for now.
+diff --git a/cputlb.c b/cputlb.c
+index 86666c8..1230e9e 100644
+--- a/cputlb.c
++++ b/cputlb.c
+@@ -262,8 +262,8 @@ void tlb_set_page(CPUArchState *env, target_ulong vaddr,
+ 
+ #if defined(DEBUG_TLB)
+     printf("tlb_set_page: vaddr=" TARGET_FMT_lx " paddr=0x" TARGET_FMT_plx
+-           " prot=%x idx=%d pd=0x%08lx\n",
+-           vaddr, paddr, prot, mmu_idx, pd);
++           " prot=%x idx=%d\n",
++           vaddr, paddr, prot, mmu_idx);
+ #endif
+ 
+     address = vaddr;
+diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+index e6525ac..eafa76f 100644
+--- a/hw/acpi/piix4.c
++++ b/hw/acpi/piix4.c
+@@ -518,7 +518,7 @@ static uint64_t gpe_readb(void *opaque, hwaddr addr, unsigned width)
+     PIIX4PMState *s = opaque;
+     uint32_t val = acpi_gpe_ioport_readb(&s->ar, addr);
+ 
+-    PIIX4_DPRINTF("gpe read %x == %x\n", addr, val);
++    PIIX4_DPRINTF("gpe read %lx == %x\n", addr, val);
+     return val;
+ }
+ 
+@@ -530,7 +530,7 @@ static void gpe_writeb(void *opaque, hwaddr addr, uint64_t val,
+     acpi_gpe_ioport_writeb(&s->ar, addr, val);
+     pm_update_sci(s);
+ 
+-    PIIX4_DPRINTF("gpe write %x <== %d\n", addr, val);
++    PIIX4_DPRINTF("gpe write %lx <== %lu\n", addr, val);
+ }
+ 
+ static const MemoryRegionOps piix4_gpe_ops = {
+@@ -579,7 +579,7 @@ static void pci_write(void *opaque, hwaddr addr, uint64_t data,
+     switch (addr) {
+     case PCI_EJ_BASE - PCI_HOTPLUG_ADDR:
+         acpi_piix_eject_slot(opaque, (uint32_t)data);
+-        PIIX4_DPRINTF("pciej write %" HWADDR_PRIx " <== % " PRIu64 "\n",
++        PIIX4_DPRINTF("pciej write %" HWADDR_PRIx " <== %" PRIu64 "\n",
+                       addr, data);
+         break;
+     default:
+-- 
+1.8.2.3
 
-Yeah, I've been meaning to.  Just very busy this week.
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---d6Gm4EdcadzBjdND
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.13 (GNU/Linux)
-
-iEYEARECAAYFAlG5Xi8ACgkQaILKxv3ab8a1HACeKSffEFTp5C1/Wjous8moHldc
-xIYAnRDcFCgP1/l9b53LVhQYEs9RHddF
-=BFE5
------END PGP SIGNATURE-----
-
---d6Gm4EdcadzBjdND--
 
