@@ -1,53 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnVzl-00036Q-3Y
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 11:32:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34128)
+	id 1UnZNc-0002MU-JB
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 15:09:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45263)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UnTe8-0004Cb-Qd
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 09:02:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UnZNa-0002Ih-1U
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 15:09:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UnTe7-0000vv-K9
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 09:02:28 -0400
-Received: from mail-bk0-x22c.google.com ([2a00:1450:4008:c01::22c]:37417)
+	(envelope-from <mjt@tls.msk.ru>) id 1UnZNY-0004Jg-Oy
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 15:09:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44847)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UnTe7-0000vj-DU
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 09:02:27 -0400
-Received: by mail-bk0-f44.google.com with SMTP id r7so257984bkg.3
-	for <qemu-trivial@nongnu.org>; Fri, 14 Jun 2013 06:02:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:date
-	:x-google-sender-auth:message-id:subject:from:to:cc:content-type
-	:x-gm-message-state;
-	bh=p3d4hwFjnUshMZpIM8y0z2egQya1Gqx7q5RLPilLXi8=;
-	b=pUKH9EJfK9flqN3wn6cIApAAeoEvVxdlqYqoesF2CaH39H5HCg4Sg5cYzeRBHoZk92
-	uwFFwM5lyl5SdNoqRxbd+SIqpE7//DuVVcTdZiUSfIaTjk6KuDZ84EV71Fn7wZffEtBB
-	0Lse01FIzcehHS1GRAMWg6X2xTZihoEdburR1AsPPKLMMGGCRqh0lQNuwyUEmJl0rA1r
-	JmV53+1ofl2fxcNXOCUZ0uispwAVXtc9b6QDllVWhscUZA0EUZcCAkpdBushLaPYl78P
-	U/m9x35A66Qa77u/gV/78WKBx04v3rl+iWVDkAp3u1iX5B7jBz2mSyRB9FVGzo3bakrv
-	wG+Q==
-MIME-Version: 1.0
-X-Received: by 10.204.190.7 with SMTP id dg7mr337748bkb.52.1371214946109; Fri,
-	14 Jun 2013 06:02:26 -0700 (PDT)
-Sender: peter.crosthwaite@petalogix.com
-Received: by 10.204.35.136 with HTTP; Fri, 14 Jun 2013 06:02:25 -0700 (PDT)
-In-Reply-To: <1371120709-18923-3-git-send-email-hutao@cn.fujitsu.com>
-References: <1371120709-18923-1-git-send-email-hutao@cn.fujitsu.com>
-	<1371120709-18923-3-git-send-email-hutao@cn.fujitsu.com>
-Date: Fri, 14 Jun 2013 23:02:25 +1000
-X-Google-Sender-Auth: dx8FHTvS-WmaE_GhQEm52Va0VSA
-Message-ID: <CAEgOgz5MM5eWWMNF=XnZDyds9Y1rG650xB9CDaEx1BWW4EfHHw@mail.gmail.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: Hu Tao <hutao@cn.fujitsu.com>
-Content-Type: text/plain; charset=ISO-8859-1
-X-Gm-Message-State: ALoCoQlGk+yrBQ7P2oVZ7Tg2igWQYyrGUnwK6OkbPMvFZ40Sgz5RHxe4+VHQDiGlhhnWIcPfPyj4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4008:c01::22c
-X-Mailman-Approved-At: Fri, 14 Jun 2013 11:32:54 -0400
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] remove call to
-	type_initialize in object_new_with_type
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UnZNW-0004IS-CR; Fri, 14 Jun 2013 15:09:42 -0400
+Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id D3BFE41664;
+	Fri, 14 Jun 2013 23:09:39 +0400 (MSK)
+Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
+	id C162150A; Fri, 14 Jun 2013 23:09:37 +0400 (MSK)
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: Anthony Liguori <aliguori@us.ibm.com>
+Date: Fri, 14 Jun 2013 23:09:35 +0400
+Message-Id: <1371236976-22500-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Peter Wu <lekensteyn@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+	=?UTF-8?q?Vincent=20Stehl=C3=A9?= <vincent.stehle@freescale.com>
+Subject: [Qemu-trivial] [PATCH] Revert "Unbreak -no-quit for GTK,
+	validate SDL options"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,61 +40,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 13:02:31 -0000
+X-List-Received-Date: Fri, 14 Jun 2013 19:09:47 -0000
 
-Hi Hu,
+This reverts commit 047d4e151dd462915786a4fddc12f774d0028af5.
 
-On Thu, Jun 13, 2013 at 8:51 PM, Hu Tao <hutao@cn.fujitsu.com> wrote:
-> Since it's called in object_initialize_with_type later.
->
-> Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
-> ---
->  qom/object.c | 3 ---
->  1 file changed, 3 deletions(-)
->
-> diff --git a/qom/object.c b/qom/object.c
-> index 803b94b..38dc45e 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -406,9 +406,6 @@ Object *object_new_with_type(Type type)
->  {
->      Object *obj;
->
-> -    g_assert(type != NULL);
-> -    type_initialize(type);
-> -
->      obj = g_malloc(type->instance_size);
+The commit in question introduced old/legacy options (-no-quit
+and some more) for the new interface type (gtk), -- on the
+second thought I think we shouldn't do that, instead, we should
+use the display-specific options (like -display sdl,frame=no),
+and should not extend the legacy interface further which makes
+messy quite fast.
 
-type->instance_size may be lazily set by type_initilize, so I think
-this malloc will break for classes that inherit their instance size.
-Some relevant code (qom/object.c):
+And more, that change broke build without sdl, by referring to
+`no_frame' variable which were guarded by #if SDL.
 
-228 static void type_initialize(TypeImpl *ti)
- 229 {
-[snip]
- 236     ti->class_size = type_class_get_size(ti);
- 237     ti->instance_size = type_object_get_size(ti);
+So reverting it for now I thinks is the best option.  Further
+plan, I think, is to make the documentation more clear that
+these options are legacy.
 
- 176 static size_t type_object_get_size(TypeImpl *ti)
- 177 {
- 178     if (ti->instance_size) {
- 179         return ti->instance_size;
- 180     }
- 181
- 182     if (type_has_parent(ti)) {
- 183         return type_object_get_size(type_get_parent(ti));
- 184     }
- 185
- 186     return 0;
- 187 }
+Cc: Peter Wu <lekensteyn@gmail.com>
+Cc: qemu-trivial@nongnu.org
+Signed-off-By: Michael Tokarev <mjt@tls.msk.ru>
+---
+ vl.c |   15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
-Regards,
-Peter
+diff --git a/vl.c b/vl.c
+index 9f8fd6e..169c807 100644
+--- a/vl.c
++++ b/vl.c
+@@ -3524,6 +3524,7 @@ int main(int argc, char **argv, char **envp)
+             case QEMU_OPTION_full_screen:
+                 full_screen = 1;
+                 break;
++#ifdef CONFIG_SDL
+             case QEMU_OPTION_no_frame:
+                 no_frame = 1;
+                 break;
+@@ -3536,11 +3537,14 @@ int main(int argc, char **argv, char **envp)
+             case QEMU_OPTION_no_quit:
+                 no_quit = 1;
+                 break;
+-#ifdef CONFIG_SDL
+             case QEMU_OPTION_sdl:
+                 display_type = DT_SDL;
+                 break;
+ #else
++            case QEMU_OPTION_no_frame:
++            case QEMU_OPTION_alt_grab:
++            case QEMU_OPTION_ctrl_grab:
++            case QEMU_OPTION_no_quit:
+             case QEMU_OPTION_sdl:
+                 fprintf(stderr, "SDL support is disabled\n");
+                 exit(1);
+@@ -4081,15 +4085,6 @@ int main(int argc, char **argv, char **envp)
+ #endif
+     }
+ 
+-    if ((no_frame || alt_grab || ctrl_grab) && display_type != DT_SDL) {
+-        fprintf(stderr, "-no-frame, -alt-grab and -ctrl-grab are only valid "
+-                        "for SDL, ignoring option\n");
+-    }
+-    if (no_quit && (display_type != DT_GTK && display_type != DT_SDL)) {
+-        fprintf(stderr, "-no-quit is only valid for GTK and SDL, "
+-                        "ignoring option\n");
+-    }
+-
+ #if defined(CONFIG_GTK)
+     if (display_type == DT_GTK) {
+         early_gtk_display_init();
+-- 
+1.7.10.4
 
->      object_initialize_with_type(obj, type);
->      obj->free = g_free;
-> --
-> 1.8.2.3
->
->
 
