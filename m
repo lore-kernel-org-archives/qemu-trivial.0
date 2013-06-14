@@ -1,34 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnRiJ-0006jA-Dn
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:58:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57034)
+	id 1UnRjc-0000KF-L7
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 07:00:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57556)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRiB-0006d6-7B
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:58:33 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRja-0000Jg-BK
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:59:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRi8-0006h7-0z
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:58:31 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36494)
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRjY-00075y-Co
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:59:58 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60338)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1UnRi0-0006dQ-7v; Fri, 14 Jun 2013 06:58:20 -0400
+	id 1UnRjV-00075C-3l; Fri, 14 Jun 2013 06:59:53 -0400
 Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 77CC241661;
-	Fri, 14 Jun 2013 14:58:19 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 5E38541660;
+	Fri, 14 Jun 2013 14:59:52 +0400 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id 6081D51A; Fri, 14 Jun 2013 14:50:47 +0400 (MSK)
+	id 1678B525; Fri, 14 Jun 2013 14:50:48 +0400 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri, 14 Jun 2013 14:50:24 +0400
-Message-Id: <1371207042-17980-9-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 14 Jun 2013 14:50:38 +0400
+Message-Id: <1371207042-17980-23-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 08/26] char/serial: Use generic Fifo8
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Alon Levy <alevy@redhat.com>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 22/26] libcacard/vscclient: fix leakage of
+	socket on error paths
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,274 +41,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 10:58:33 -0000
+X-List-Received-Date: Fri, 14 Jun 2013 10:59:59 -0000
 
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+From: Alon Levy <alevy@redhat.com>
 
-Use the generic Fifo8 helper provided by QEMU, rather than re-implement
-privately.
+Spotted by Coverity.
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Signed-off-by: Alon Levy <alevy@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/char/serial.c         |   98 ++++++++++++++++------------------------------
- include/hw/char/serial.h |   15 +++----
- 2 files changed, 39 insertions(+), 74 deletions(-)
+ libcacard/vscclient.c |    9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index bd6813e..0a2b6c9 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -92,8 +92,6 @@
- #define UART_FCR_RFR        0x02    /* RCVR Fifo Reset */
- #define UART_FCR_FE         0x01    /* FIFO Enable */
- 
--#define XMIT_FIFO           0
--#define RECV_FIFO           1
- #define MAX_XMIT_RETRY      4
- 
- #ifdef DEBUG_SERIAL
-@@ -106,50 +104,14 @@ do {} while (0)
- 
- static void serial_receive1(void *opaque, const uint8_t *buf, int size);
- 
--static void fifo_clear(SerialState *s, int fifo)
-+static inline void recv_fifo_put(SerialState *s, uint8_t chr)
- {
--    SerialFIFO *f = (fifo) ? &s->recv_fifo : &s->xmit_fifo;
--    memset(f->data, 0, UART_FIFO_LENGTH);
--    f->count = 0;
--    f->head = 0;
--    f->tail = 0;
--}
--
--static int fifo_put(SerialState *s, int fifo, uint8_t chr)
--{
--    SerialFIFO *f = (fifo) ? &s->recv_fifo : &s->xmit_fifo;
--
-     /* Receive overruns do not overwrite FIFO contents. */
--    if (fifo == XMIT_FIFO || f->count < UART_FIFO_LENGTH) {
--
--        f->data[f->head++] = chr;
--
--        if (f->head == UART_FIFO_LENGTH)
--            f->head = 0;
--    }
--
--    if (f->count < UART_FIFO_LENGTH)
--        f->count++;
--    else if (fifo == RECV_FIFO)
-+    if (!fifo8_is_full(&s->recv_fifo)) {
-+        fifo8_push(&s->recv_fifo, chr);
-+    } else {
-         s->lsr |= UART_LSR_OE;
--
--    return 1;
--}
--
--static uint8_t fifo_get(SerialState *s, int fifo)
--{
--    SerialFIFO *f = (fifo) ? &s->recv_fifo : &s->xmit_fifo;
--    uint8_t c;
--
--    if(f->count == 0)
--        return 0;
--
--    c = f->data[f->tail++];
--    if (f->tail == UART_FIFO_LENGTH)
--        f->tail = 0;
--    f->count--;
--
--    return c;
-+    }
- }
- 
- static void serial_update_irq(SerialState *s)
-@@ -165,7 +127,7 @@ static void serial_update_irq(SerialState *s)
-         tmp_iir = UART_IIR_CTI;
-     } else if ((s->ier & UART_IER_RDI) && (s->lsr & UART_LSR_DR) &&
-                (!(s->fcr & UART_FCR_FE) ||
--                s->recv_fifo.count >= s->recv_fifo.itl)) {
-+                s->recv_fifo.num >= s->recv_fifo_itl)) {
-         tmp_iir = UART_IIR_RDI;
-     } else if ((s->ier & UART_IER_THRI) && s->thr_ipending) {
-         tmp_iir = UART_IIR_THRI;
-@@ -262,8 +224,9 @@ static gboolean serial_xmit(GIOChannel *chan, GIOCondition cond, void *opaque)
- 
-     if (s->tsr_retry <= 0) {
-         if (s->fcr & UART_FCR_FE) {
--            s->tsr = fifo_get(s,XMIT_FIFO);
--            if (!s->xmit_fifo.count) {
-+            s->tsr = fifo8_is_full(&s->xmit_fifo) ?
-+                        0 : fifo8_pop(&s->xmit_fifo);
-+            if (!s->xmit_fifo.num) {
-                 s->lsr |= UART_LSR_THRE;
-             }
-         } else if ((s->lsr & UART_LSR_THRE)) {
-@@ -317,7 +280,11 @@ static void serial_ioport_write(void *opaque, hwaddr addr, uint64_t val,
-         } else {
-             s->thr = (uint8_t) val;
-             if(s->fcr & UART_FCR_FE) {
--                fifo_put(s, XMIT_FIFO, s->thr);
-+                /* xmit overruns overwrite data, so make space if needed */
-+                if (fifo8_is_full(&s->xmit_fifo)) {
-+                    fifo8_pop(&s->xmit_fifo);
-+                }
-+                fifo8_push(&s->xmit_fifo, s->thr);
-                 s->thr_ipending = 0;
-                 s->lsr &= ~UART_LSR_TEMT;
-                 s->lsr &= ~UART_LSR_THRE;
-@@ -368,28 +335,28 @@ static void serial_ioport_write(void *opaque, hwaddr addr, uint64_t val,
-         if (val & UART_FCR_RFR) {
-             qemu_del_timer(s->fifo_timeout_timer);
-             s->timeout_ipending=0;
--            fifo_clear(s,RECV_FIFO);
-+            fifo8_reset(&s->recv_fifo);
-         }
- 
-         if (val & UART_FCR_XFR) {
--            fifo_clear(s,XMIT_FIFO);
-+            fifo8_reset(&s->xmit_fifo);
-         }
- 
-         if (val & UART_FCR_FE) {
-             s->iir |= UART_IIR_FE;
--            /* Set RECV_FIFO trigger Level */
-+            /* Set recv_fifo trigger Level */
-             switch (val & 0xC0) {
-             case UART_FCR_ITL_1:
--                s->recv_fifo.itl = 1;
-+                s->recv_fifo_itl = 1;
-                 break;
-             case UART_FCR_ITL_2:
--                s->recv_fifo.itl = 4;
-+                s->recv_fifo_itl = 4;
-                 break;
-             case UART_FCR_ITL_3:
--                s->recv_fifo.itl = 8;
-+                s->recv_fifo_itl = 8;
-                 break;
-             case UART_FCR_ITL_4:
--                s->recv_fifo.itl = 14;
-+                s->recv_fifo_itl = 14;
-                 break;
-             }
-         } else
-@@ -461,8 +428,9 @@ static uint64_t serial_ioport_read(void *opaque, hwaddr addr, unsigned size)
-             ret = s->divider & 0xff;
-         } else {
-             if(s->fcr & UART_FCR_FE) {
--                ret = fifo_get(s,RECV_FIFO);
--                if (s->recv_fifo.count == 0) {
-+                ret = fifo8_is_full(&s->recv_fifo) ?
-+                            0 : fifo8_pop(&s->recv_fifo);
-+                if (s->recv_fifo.num == 0) {
-                     s->lsr &= ~(UART_LSR_DR | UART_LSR_BI);
-                 } else {
-                     qemu_mod_timer(s->fifo_timeout_timer, qemu_get_clock_ns (vm_clock) + s->char_transmit_time * 4);
-@@ -536,7 +504,7 @@ static uint64_t serial_ioport_read(void *opaque, hwaddr addr, unsigned size)
- static int serial_can_receive(SerialState *s)
- {
-     if(s->fcr & UART_FCR_FE) {
--        if (s->recv_fifo.count < UART_FIFO_LENGTH) {
-+        if (s->recv_fifo.num < UART_FIFO_LENGTH) {
-             /*
-              * Advertise (fifo.itl - fifo.count) bytes when count < ITL, and 1
-              * if above. If UART_FIFO_LENGTH - fifo.count is advertised the
-@@ -544,8 +512,8 @@ static int serial_can_receive(SerialState *s)
-              * the guest has a chance to respond, effectively overriding the ITL
-              * that the guest has set.
-              */
--            return (s->recv_fifo.count <= s->recv_fifo.itl) ?
--                        s->recv_fifo.itl - s->recv_fifo.count : 1;
-+            return (s->recv_fifo.num <= s->recv_fifo_itl) ?
-+                        s->recv_fifo_itl - s->recv_fifo.num : 1;
-         } else {
-             return 0;
-         }
-@@ -558,7 +526,7 @@ static void serial_receive_break(SerialState *s)
- {
-     s->rbr = 0;
-     /* When the LSR_DR is set a null byte is pushed into the fifo */
--    fifo_put(s, RECV_FIFO, '\0');
-+    recv_fifo_put(s, '\0');
-     s->lsr |= UART_LSR_BI | UART_LSR_DR;
-     serial_update_irq(s);
- }
-@@ -566,7 +534,7 @@ static void serial_receive_break(SerialState *s)
- /* There's data in recv_fifo and s->rbr has not been read for 4 char transmit times */
- static void fifo_timeout_int (void *opaque) {
-     SerialState *s = opaque;
--    if (s->recv_fifo.count) {
-+    if (s->recv_fifo.num) {
-         s->timeout_ipending = 1;
-         serial_update_irq(s);
+diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
+index ac23647..5180d29 100644
+--- a/libcacard/vscclient.c
++++ b/libcacard/vscclient.c
+@@ -618,18 +618,22 @@ connect_to_qemu(
+     if (ret != 0) {
+         /* Error */
+         fprintf(stderr, "getaddrinfo failed\n");
+-        return -1;
++        goto cleanup_socket;
      }
-@@ -588,7 +556,7 @@ static void serial_receive1(void *opaque, const uint8_t *buf, int size)
-     if(s->fcr & UART_FCR_FE) {
-         int i;
-         for (i = 0; i < size; i++) {
--            fifo_put(s, RECV_FIFO, buf[i]);
-+            recv_fifo_put(s, buf[i]);
-         }
-         s->lsr |= UART_LSR_DR;
-         /* call the timeout receive callback in 4 char transmit time */
-@@ -668,8 +636,8 @@ static void serial_reset(void *opaque)
-     s->char_transmit_time = (get_ticks_per_sec() / 9600) * 10;
-     s->poll_msl = 0;
  
--    fifo_clear(s,RECV_FIFO);
--    fifo_clear(s,XMIT_FIFO);
-+    fifo8_reset(&s->recv_fifo);
-+    fifo8_reset(&s->xmit_fifo);
- 
-     s->last_xmit_ts = qemu_get_clock_ns(vm_clock);
- 
-@@ -692,6 +660,8 @@ void serial_init_core(SerialState *s)
- 
-     qemu_chr_add_handlers(s->chr, serial_can_receive1, serial_receive1,
-                           serial_event, s);
-+    fifo8_create(&s->recv_fifo, UART_FIFO_LENGTH);
-+    fifo8_create(&s->xmit_fifo, UART_FIFO_LENGTH);
+     if (connect(sock, server->ai_addr, server->ai_addrlen) < 0) {
+         /* Error */
+         fprintf(stderr, "Could not connect\n");
+-        return -1;
++        goto cleanup_socket;
+     }
+     if (verbose) {
+         printf("Connected (sizeof Header=%zd)!\n", sizeof(VSCMsgHeader));
+     }
+     return sock;
++
++cleanup_socket:
++    closesocket(sock);
++    return -1;
  }
  
- void serial_exit_core(SerialState *s)
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index bca79f1..9ab81f6 100644
---- a/include/hw/char/serial.h
-+++ b/include/hw/char/serial.h
-@@ -28,17 +28,10 @@
- #include "hw/hw.h"
- #include "sysemu/sysemu.h"
- #include "exec/memory.h"
-+#include "qemu/fifo8.h"
+ int
+@@ -759,5 +763,6 @@ main(
+     g_io_channel_unref(channel_socket);
+     g_byte_array_unref(socket_to_send);
  
- #define UART_FIFO_LENGTH    16      /* 16550A Fifo Length */
- 
--typedef struct SerialFIFO {
--    uint8_t data[UART_FIFO_LENGTH];
--    uint8_t count;
--    uint8_t itl;                        /* Interrupt Trigger Level */
--    uint8_t tail;
--    uint8_t head;
--} SerialFIFO;
--
- struct SerialState {
-     uint16_t divider;
-     uint8_t rbr; /* receive register */
-@@ -67,8 +60,10 @@ struct SerialState {
- 
-     /* Time when the last byte was successfully sent out of the tsr */
-     uint64_t last_xmit_ts;
--    SerialFIFO recv_fifo;
--    SerialFIFO xmit_fifo;
-+    Fifo8 recv_fifo;
-+    Fifo8 xmit_fifo;
-+    /* Interrupt trigger level for recv_fifo */
-+    uint8_t recv_fifo_itl;
- 
-     struct QEMUTimer *fifo_timeout_timer;
-     int timeout_ipending;           /* timeout interrupt pending state */
++    closesocket(sock);
+     return 0;
+ }
 -- 
 1.7.10.4
 
