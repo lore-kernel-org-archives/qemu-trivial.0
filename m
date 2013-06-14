@@ -1,34 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnRax-00054p-RN
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:51:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54886)
+	id 1UnRca-0007Sq-CW
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:52:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55483)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRar-0004uT-Ld
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:51:01 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRcW-0007M2-1M
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:52:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRap-0004JL-4z
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:50:57 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:41789)
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRcU-00052v-Jt
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:52:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42549)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1UnRaj-0004GD-Pn; Fri, 14 Jun 2013 06:50:49 -0400
-Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1B17241661;
-	Fri, 14 Jun 2013 14:50:49 +0400 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id 0DCF71A3; Fri, 14 Jun 2013 14:50:47 +0400 (MSK)
+	id 1UnRcR-00051I-06; Fri, 14 Jun 2013 06:52:35 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 07A734165A;
+	Fri, 14 Jun 2013 14:52:33 +0400 (MSK)
+Message-ID: <51BAF5F0.7030906@msgid.tls.msk.ru>
+Date: Fri, 14 Jun 2013 14:52:32 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri, 14 Jun 2013 14:50:18 +0400
-Message-Id: <1371207042-17980-3-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
+MIME-Version: 1.0
+To: Michael Tokarev <mjt@tls.msk.ru>
 References: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
+In-Reply-To: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
 	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 02/26] gitignore: unignore *.patch
+Subject: Re: [Qemu-trivial] [PULL 00/26] Trivial-patches pull request for
+	2013-06-14
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,39 +46,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 10:51:01 -0000
+X-List-Received-Date: Fri, 14 Jun 2013 10:52:42 -0000
 
-This partially reverts:
+14.06.2013 14:50, Michael Tokarev wrote:
+> are available in the git repository at:
+> 
+>   git://git.corpit.ru/qemu.git trivial-patches-next
 
- commit 082369e62c5bbaba89f173c2b803bc24115bb111
- Author: liguang <lig.fnst@cn.fujitsu.com>
- Date:   Fri Mar 22 16:44:13 2013 +0800
+And this is the same as
 
-    gitignore: ignore more files
+    git://git.corpit.ru/qemu.git trivial-patches
 
-I'm not sure how this went in.  The thing is that
-ignoring *.patch, in my opinion, is just wrong.
-Especially for downstreams who apply patches for
-real.
+ *Sigh*.
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- .gitignore |    1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/.gitignore b/.gitignore
-index 64e9466..0fe114d 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -82,7 +82,6 @@ fsdev/virtfs-proxy-helper.pod
- *.swp
- *.orig
- .pc
--*.patch
- *.gcda
- *.gcno
- patches
--- 
-1.7.10.4
-
+/mjt
 
