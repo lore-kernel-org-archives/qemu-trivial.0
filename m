@@ -1,37 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnRiG-0006is-RL
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:58:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57025)
+	id 1UnUj3-00075P-4S
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 10:11:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52740)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRiA-0006bT-GU
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:58:32 -0400
+	(envelope-from <afaerber@suse.de>) id 1UnUiz-00070c-Oz
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 10:11:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRi6-0006gd-Mu
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:58:30 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46991)
+	(envelope-from <afaerber@suse.de>) id 1UnUiy-0000Pd-DL
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 10:11:33 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:48162 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1UnRhz-0006d3-VO; Fri, 14 Jun 2013 06:58:20 -0400
-Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3CC3B4165F;
-	Fri, 14 Jun 2013 14:58:19 +0400 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id 541D2519; Fri, 14 Jun 2013 14:50:47 +0400 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri, 14 Jun 2013 14:50:23 +0400
-Message-Id: <1371207042-17980-8-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
+	(envelope-from <afaerber@suse.de>)
+	id 1UnUin-0000My-DJ; Fri, 14 Jun 2013 10:11:21 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 56A5EA0FED;
+	Fri, 14 Jun 2013 16:11:20 +0200 (CEST)
+Message-ID: <51BB2488.1020309@suse.de>
+Date: Fri, 14 Jun 2013 16:11:20 +0200
+From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
 MIME-Version: 1.0
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1370434603-5394-1-git-send-email-hpoussin@reactos.org>
+	<51AF96C5.5000507@msgid.tls.msk.ru>
+In-Reply-To: <51AF96C5.5000507@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.6a1pre
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 07/26] char/serial: cosmetic fixes.
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Blue Swirl <blauwirbel@gmail.com>,
+	=?UTF-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel]  [PATCH] cputlb: fix debug logs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,92 +46,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 10:58:33 -0000
+X-List-Received-Date: Fri, 14 Jun 2013 14:11:35 -0000
 
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Am 05.06.2013 21:51, schrieb Michael Tokarev:
+> 05.06.2013 16:16, Herv=C3=A9 Poussineau wrote:
+>> 'pd' variable has been removed in 06ef3525e1f271b6a842781a05eace5cf63b=
+95c2.
+>=20
+> It's been removed indeed, but the value has been replaced by using
+> a MemoryRegionSection instead.  I understand current code is wrong
+> when DEBUG_TLB is #defined, but I think it is also wrong to just
+> remove this value in printf.  The question is whenever this debugging
+> is useful now, and whenever this now-missing value is interesting
+> for that and should be provided by other means.  Maybe we may just
+> remove whole thing here and everywhere.
 
-Some cosmetic fixes to char/serial fixing some checkpatch errors.
+I interpret it as logging the function arguments, so dropping it sounded
+like the right solution to me. Would be nice to turn it into a
+tracepoint or at least some DPRINTF() macro that gets compile-tested.
 
-Cc: qemu-trivial@nongnu.org
+Andreas
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/char/serial.c |   30 +++++++++++++++++++-----------
- 1 file changed, 19 insertions(+), 11 deletions(-)
+>=20
+> Cc'ing authors.
+>=20
+> While this patch looks really trivial, it is something which is of
+> use by the subsystem maintainer(s) at their disposal.
+>=20
+> Thanks,
+>=20
+> /mjt
+>=20
+>> Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+>> ---
+>>  cputlb.c |    4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/cputlb.c b/cputlb.c
+>> index 86666c8..1230e9e 100644
+>> --- a/cputlb.c
+>> +++ b/cputlb.c
+>> @@ -262,8 +262,8 @@ void tlb_set_page(CPUArchState *env, target_ulong =
+vaddr,
+>> =20
+>>  #if defined(DEBUG_TLB)
+>>      printf("tlb_set_page: vaddr=3D" TARGET_FMT_lx " paddr=3D0x" TARGE=
+T_FMT_plx
+>> -           " prot=3D%x idx=3D%d pd=3D0x%08lx\n",
+>> -           vaddr, paddr, prot, mmu_idx, pd);
+>> +           " prot=3D%x idx=3D%d\n",
+>> +           vaddr, paddr, prot, mmu_idx);
+>>  #endif
+>> =20
+>>      address =3D vaddr;
+>>
+>=20
+>=20
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 66b6348..bd6813e 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -263,8 +263,9 @@ static gboolean serial_xmit(GIOChannel *chan, GIOCond=
-ition cond, void *opaque)
-     if (s->tsr_retry <=3D 0) {
-         if (s->fcr & UART_FCR_FE) {
-             s->tsr =3D fifo_get(s,XMIT_FIFO);
--            if (!s->xmit_fifo.count)
-+            if (!s->xmit_fifo.count) {
-                 s->lsr |=3D UART_LSR_THRE;
-+            }
-         } else if ((s->lsr & UART_LSR_THRE)) {
-             return FALSE;
-         } else {
-@@ -461,10 +462,11 @@ static uint64_t serial_ioport_read(void *opaque, hw=
-addr addr, unsigned size)
-         } else {
-             if(s->fcr & UART_FCR_FE) {
-                 ret =3D fifo_get(s,RECV_FIFO);
--                if (s->recv_fifo.count =3D=3D 0)
-+                if (s->recv_fifo.count =3D=3D 0) {
-                     s->lsr &=3D ~(UART_LSR_DR | UART_LSR_BI);
--                else
-+                } else {
-                     qemu_mod_timer(s->fifo_timeout_timer, qemu_get_clock=
-_ns (vm_clock) + s->char_transmit_time * 4);
-+                }
-                 s->timeout_ipending =3D 0;
-             } else {
-                 ret =3D s->rbr;
-@@ -534,15 +536,21 @@ static uint64_t serial_ioport_read(void *opaque, hw=
-addr addr, unsigned size)
- static int serial_can_receive(SerialState *s)
- {
-     if(s->fcr & UART_FCR_FE) {
--        if(s->recv_fifo.count < UART_FIFO_LENGTH)
--        /* Advertise (fifo.itl - fifo.count) bytes when count < ITL, and=
- 1 if above. If UART_FIFO_LENGTH - fifo.count is
--        advertised the effect will be to almost always fill the fifo com=
-pletely before the guest has a chance to respond,
--        effectively overriding the ITL that the guest has set. */
--             return (s->recv_fifo.count <=3D s->recv_fifo.itl) ? s->recv=
-_fifo.itl - s->recv_fifo.count : 1;
--        else
--             return 0;
-+        if (s->recv_fifo.count < UART_FIFO_LENGTH) {
-+            /*
-+             * Advertise (fifo.itl - fifo.count) bytes when count < ITL,=
- and 1
-+             * if above. If UART_FIFO_LENGTH - fifo.count is advertised =
-the
-+             * effect will be to almost always fill the fifo completely =
-before
-+             * the guest has a chance to respond, effectively overriding=
- the ITL
-+             * that the guest has set.
-+             */
-+            return (s->recv_fifo.count <=3D s->recv_fifo.itl) ?
-+                        s->recv_fifo.itl - s->recv_fifo.count : 1;
-+        } else {
-+            return 0;
-+        }
-     } else {
--    return !(s->lsr & UART_LSR_DR);
-+        return !(s->lsr & UART_LSR_DR);
-     }
- }
-=20
+
 --=20
-1.7.10.4
-
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
+rnberg
 
