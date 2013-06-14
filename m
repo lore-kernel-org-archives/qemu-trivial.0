@@ -1,40 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnUj3-00075P-4S
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 10:11:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52740)
+	id 1UnVzl-00037D-BI
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 11:32:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35591)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UnUiz-00070c-Oz
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 10:11:34 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UnThp-0005ti-8a
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 09:06:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UnUiy-0000Pd-DL
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 10:11:33 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:48162 helo=mx2.suse.de)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UnThk-0002NT-6e
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 09:06:17 -0400
+Received: from mail-bk0-x22a.google.com ([2a00:1450:4008:c01::22a]:42986)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UnUin-0000My-DJ; Fri, 14 Jun 2013 10:11:21 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 56A5EA0FED;
-	Fri, 14 Jun 2013 16:11:20 +0200 (CEST)
-Message-ID: <51BB2488.1020309@suse.de>
-Date: Fri, 14 Jun 2013 16:11:20 +0200
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UnThk-0002N8-0G
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 09:06:12 -0400
+Received: by mail-bk0-f42.google.com with SMTP id jk13so260041bkc.1
+	for <qemu-trivial@nongnu.org>; Fri, 14 Jun 2013 06:06:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:date
+	:x-google-sender-auth:message-id:subject:from:to:cc:content-type
+	:x-gm-message-state;
+	bh=tafjcKcdDOrjgo1hdbh/8TATAnQ5uLWf9U+HdzUc14I=;
+	b=G95D+wCn3B2wwpJbLjaSre9ERuYVA2dOovdjiEoE0uUWcSGyKkAcCf8ZNYWtW9TaF3
+	AwQUtOyG2zsZWJM7mILmzrL+Ad/q31b79k0w4BjGmiEE/Wrp3KpysaKnIX9xZrHaZSxo
+	F5sjecRNqPo4bsjEy2vANHqJtH2Qy5m/Y99Rb9BgEYCqfjtGAn3PNv6qqtiVkQ96hC9g
+	wSw5qv/HeYBAdn6ujHLc4ooXWQwUMHkU+WcyNrc3s2rASfLyzvFg8h+hM71Pv8Ps4zGi
+	QsnHq/xzzfm0SdRUhosr97v1lUvA9wt2100eCZAQzAKrrQxbTwkYMGhB04FSNTfhidP0
+	X6xg==
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1370434603-5394-1-git-send-email-hpoussin@reactos.org>
-	<51AF96C5.5000507@msgid.tls.msk.ru>
-In-Reply-To: <51AF96C5.5000507@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Blue Swirl <blauwirbel@gmail.com>,
-	=?UTF-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel]  [PATCH] cputlb: fix debug logs
+X-Received: by 10.204.191.132 with SMTP id dm4mr335892bkb.66.1371215171115;
+	Fri, 14 Jun 2013 06:06:11 -0700 (PDT)
+Sender: peter.crosthwaite@petalogix.com
+Received: by 10.204.35.136 with HTTP; Fri, 14 Jun 2013 06:06:11 -0700 (PDT)
+In-Reply-To: <20130614070921.GG13787@G08FNSTD100614.fnst.cn.fujitsu.com>
+References: <1371120709-18923-1-git-send-email-hutao@cn.fujitsu.com>
+	<1371120709-18923-3-git-send-email-hutao@cn.fujitsu.com>
+	<20130614070921.GG13787@G08FNSTD100614.fnst.cn.fujitsu.com>
+Date: Fri, 14 Jun 2013 23:06:11 +1000
+X-Google-Sender-Auth: pMP-fkb-vWjB20-s1xX3kfBJIoY
+Message-ID: <CAEgOgz6j7mFZHATJ_AOoTgOBvW77s1KS8uJ6H3MmR_ZyV1hfUA@mail.gmail.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: Hu Tao <hutao@cn.fujitsu.com>
+Content-Type: text/plain; charset=ISO-8859-1
+X-Gm-Message-State: ALoCoQlCxsPyNfcHTUhKwoiHoW/+8QTMaRAiyTCgaz4n6iS7l7LYFKYlvUYO7+MiYOIvBWuQWQUF
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4008:c01::22a
+X-Mailman-Approved-At: Fri, 14 Jun 2013 11:32:54 -0400
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] remove call to
+	type_initialize in object_new_with_type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,66 +60,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 14:11:35 -0000
+X-List-Received-Date: Fri, 14 Jun 2013 13:06:21 -0000
 
-Am 05.06.2013 21:51, schrieb Michael Tokarev:
-> 05.06.2013 16:16, Herv=C3=A9 Poussineau wrote:
->> 'pd' variable has been removed in 06ef3525e1f271b6a842781a05eace5cf63b=
-95c2.
->=20
-> It's been removed indeed, but the value has been replaced by using
-> a MemoryRegionSection instead.  I understand current code is wrong
-> when DEBUG_TLB is #defined, but I think it is also wrong to just
-> remove this value in printf.  The question is whenever this debugging
-> is useful now, and whenever this now-missing value is interesting
-> for that and should be provided by other means.  Maybe we may just
-> remove whole thing here and everywhere.
-
-I interpret it as logging the function arguments, so dropping it sounded
-like the right solution to me. Would be nice to turn it into a
-tracepoint or at least some DPRINTF() macro that gets compile-tested.
-
-Andreas
-
->=20
-> Cc'ing authors.
->=20
-> While this patch looks really trivial, it is something which is of
-> use by the subsystem maintainer(s) at their disposal.
->=20
-> Thanks,
->=20
-> /mjt
->=20
->> Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+On Fri, Jun 14, 2013 at 5:09 PM, Hu Tao <hutao@cn.fujitsu.com> wrote:
+> On Thu, Jun 13, 2013 at 06:51:49PM +0800, Hu Tao wrote:
+>> Since it's called in object_initialize_with_type later.
+>>
+>> Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
 >> ---
->>  cputlb.c |    4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>  qom/object.c | 3 ---
+>>  1 file changed, 3 deletions(-)
 >>
->> diff --git a/cputlb.c b/cputlb.c
->> index 86666c8..1230e9e 100644
->> --- a/cputlb.c
->> +++ b/cputlb.c
->> @@ -262,8 +262,8 @@ void tlb_set_page(CPUArchState *env, target_ulong =
-vaddr,
->> =20
->>  #if defined(DEBUG_TLB)
->>      printf("tlb_set_page: vaddr=3D" TARGET_FMT_lx " paddr=3D0x" TARGE=
-T_FMT_plx
->> -           " prot=3D%x idx=3D%d pd=3D0x%08lx\n",
->> -           vaddr, paddr, prot, mmu_idx, pd);
->> +           " prot=3D%x idx=3D%d\n",
->> +           vaddr, paddr, prot, mmu_idx);
->>  #endif
->> =20
->>      address =3D vaddr;
+>> diff --git a/qom/object.c b/qom/object.c
+>> index 803b94b..38dc45e 100644
+>> --- a/qom/object.c
+>> +++ b/qom/object.c
+>> @@ -406,9 +406,6 @@ Object *object_new_with_type(Type type)
+>>  {
+>>      Object *obj;
 >>
->=20
->=20
+>> -    g_assert(type != NULL);
+>> -    type_initialize(type);
+>> -
+>>      obj = g_malloc(type->instance_size);
+>
+> Well, type->instance_size has to be initialized before this.
+>
 
+Missed this reply. Thanks for catching. Sorry for the noise.
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
+Regards,
+Peter
+
+>>      object_initialize_with_type(obj, type);
+>>      obj->free = g_free;
+>> --
+>> 1.8.2.3
+>>
+>
 
