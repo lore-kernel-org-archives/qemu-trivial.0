@@ -1,38 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnRiF-0006ik-W5
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:58:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56997)
+	id 1UnRiE-0006ig-6I
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:58:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56974)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRi9-0006Z3-Ck
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:58:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRi7-0006W6-Om
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:58:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRi6-0006gR-8I
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:58:29 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57993)
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRi6-0006gK-3V
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:58:27 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:33574)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1UnRi0-0006df-A8; Fri, 14 Jun 2013 06:58:20 -0400
+	id 1UnRi0-0006d5-3T; Fri, 14 Jun 2013 06:58:20 -0400
 Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 924DE41662;
+	by isrv.corpit.ru (Postfix) with ESMTP id 5929841660;
 	Fri, 14 Jun 2013 14:58:19 +0400 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id 6CEF5517; Fri, 14 Jun 2013 14:50:47 +0400 (MSK)
+	id 56AC3529; Fri, 14 Jun 2013 14:50:48 +0400 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri, 14 Jun 2013 14:50:25 +0400
-Message-Id: <1371207042-17980-10-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 14 Jun 2013 14:50:42 +0400
+Message-Id: <1371207042-17980-27-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+Cc: qemu-trivial@nongnu.org, Hu Tao <hutao@cn.fujitsu.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 09/26] char/serial: serial_ioport_write:
-	Factor out common code
+Subject: [Qemu-trivial] [PULL 26/26] piix: fix some printf errors when debug
+	is enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,48 +41,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 10:58:31 -0000
+X-List-Received-Date: Fri, 14 Jun 2013 10:58:30 -0000
 
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+From: Hu Tao <hutao@cn.fujitsu.com>
 
-These three lines are common to both FIFO and regular mode. Just factor
-them out to outside the if rather than replicate the same lines inside
-both if and else.
+And use PRIxxx macros if possible.
 
-Cc: qemu-trivial@nongnu.org
-
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/char/serial.c |   10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ hw/acpi/piix4.c |   12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 0a2b6c9..017610e 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -285,15 +285,11 @@ static void serial_ioport_write(void *opaque, hwadd=
-r addr, uint64_t val,
-                     fifo8_pop(&s->xmit_fifo);
-                 }
-                 fifo8_push(&s->xmit_fifo, s->thr);
--                s->thr_ipending =3D 0;
-                 s->lsr &=3D ~UART_LSR_TEMT;
--                s->lsr &=3D ~UART_LSR_THRE;
--                serial_update_irq(s);
--            } else {
--                s->thr_ipending =3D 0;
--                s->lsr &=3D ~UART_LSR_THRE;
--                serial_update_irq(s);
-             }
-+            s->thr_ipending =3D 0;
-+            s->lsr &=3D ~UART_LSR_THRE;
-+            serial_update_irq(s);
-             serial_xmit(NULL, G_IO_OUT, s);
-         }
+diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+index e6525ac..756df3b 100644
+--- a/hw/acpi/piix4.c
++++ b/hw/acpi/piix4.c
+@@ -518,7 +518,7 @@ static uint64_t gpe_readb(void *opaque, hwaddr addr, unsigned width)
+     PIIX4PMState *s = opaque;
+     uint32_t val = acpi_gpe_ioport_readb(&s->ar, addr);
+ 
+-    PIIX4_DPRINTF("gpe read %x == %x\n", addr, val);
++    PIIX4_DPRINTF("gpe read %" HWADDR_PRIx " == %" PRIu32 "\n", addr, val);
+     return val;
+ }
+ 
+@@ -530,7 +530,7 @@ static void gpe_writeb(void *opaque, hwaddr addr, uint64_t val,
+     acpi_gpe_ioport_writeb(&s->ar, addr, val);
+     pm_update_sci(s);
+ 
+-    PIIX4_DPRINTF("gpe write %x <== %d\n", addr, val);
++    PIIX4_DPRINTF("gpe write %" HWADDR_PRIx " <== %" PRIu64 "\n", addr, val);
+ }
+ 
+ static const MemoryRegionOps piix4_gpe_ops = {
+@@ -553,15 +553,15 @@ static uint64_t pci_read(void *opaque, hwaddr addr, unsigned int size)
+         /* Manufacture an "up" value to cause a device check on any hotplug
+          * slot with a device.  Extra device checks are harmless. */
+         val = s->pci0_slot_device_present & s->pci0_hotplug_enable;
+-        PIIX4_DPRINTF("pci_up_read %x\n", val);
++        PIIX4_DPRINTF("pci_up_read %" PRIu32 "\n", val);
          break;
---=20
+     case PCI_DOWN_BASE - PCI_HOTPLUG_ADDR:
+         val = s->pci0_status.down;
+-        PIIX4_DPRINTF("pci_down_read %x\n", val);
++        PIIX4_DPRINTF("pci_down_read %" PRIu32 "\n", val);
+         break;
+     case PCI_EJ_BASE - PCI_HOTPLUG_ADDR:
+         /* No feature defined yet */
+-        PIIX4_DPRINTF("pci_features_read %x\n", val);
++        PIIX4_DPRINTF("pci_features_read %" PRIu32 "\n", val);
+         break;
+     case PCI_RMV_BASE - PCI_HOTPLUG_ADDR:
+         val = s->pci0_hotplug_enable;
+@@ -579,7 +579,7 @@ static void pci_write(void *opaque, hwaddr addr, uint64_t data,
+     switch (addr) {
+     case PCI_EJ_BASE - PCI_HOTPLUG_ADDR:
+         acpi_piix_eject_slot(opaque, (uint32_t)data);
+-        PIIX4_DPRINTF("pciej write %" HWADDR_PRIx " <== % " PRIu64 "\n",
++        PIIX4_DPRINTF("pciej write %" HWADDR_PRIx " <== %" PRIu64 "\n",
+                       addr, data);
+         break;
+     default:
+-- 
 1.7.10.4
 
 
