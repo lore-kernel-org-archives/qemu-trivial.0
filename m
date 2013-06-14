@@ -1,35 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnRgv-00047M-8r
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:57:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56592)
+	id 1UnRgw-00049A-Ho
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:57:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRgp-0003vR-OD
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:57:09 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRgs-000409-1L
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:57:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRgn-0006Np-Lv
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:57:07 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52947)
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRgo-0006Oo-PL
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:57:09 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:46846)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1UnRgi-0006Dr-Uq; Fri, 14 Jun 2013 06:57:01 -0400
+	id 1UnRgi-0006DD-89; Fri, 14 Jun 2013 06:57:00 -0400
 Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id F2FA441667;
+	by isrv.corpit.ru (Postfix) with ESMTP id 7ADFB4165F;
 	Fri, 14 Jun 2013 14:56:59 +0400 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id C2A1E51F; Fri, 14 Jun 2013 14:50:47 +0400 (MSK)
+	id 2FF5B526; Fri, 14 Jun 2013 14:50:48 +0400 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri, 14 Jun 2013 14:50:32 +0400
-Message-Id: <1371207042-17980-17-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 14 Jun 2013 14:50:40 +0400
+Message-Id: <1371207042-17980-25-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 16/26] hw/xen: Use g_free instead of free and
-	fix potential memory leaks
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 24/26] create qemu_openpty_raw() helper
+	function and move it to a separate file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,87 +44,387 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 10:57:09 -0000
+X-List-Received-Date: Fri, 14 Jun 2013 10:57:11 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+In two places qemu uses openpty() which is very system-dependent,
+and in both places the pty is switched to raw mode as well.
+Make a wrapper function which does both steps, and move all the
+system-dependent complexity into a separate file, together
+with static/local implementations of openpty() and cfmakeraw()
+from qemu-char.c.
 
-The wrong functions and the missing calls of g_free were reported
-by cppcheck.
+It is in a separate file, not part of oslib-posix.c, because
+openpty() often resides in -lutil which is not linked to
+every program qemu builds.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Acked-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+This change removes #including of <pty.h>, <termios.h>
+and other rather specific system headers out of qemu-common.h,
+which isn't a place for such specific headers really.
+
+This version has been verified to build correctly on Linux,
+OpenBSD, FreeBSD and OpenIndiana.  On the latter it lets qemu
+to be built with gtk gui which were not possible there due to
+missing openpty() and cfmakeraw().
+
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Tested-by: Andreas F=C3=A4rber <andreas.faerber@web.de>
 ---
- hw/xen/xen_pt_config_init.c |    4 ++--
- xen-all.c                   |    8 +++++---
- 2 files changed, 7 insertions(+), 5 deletions(-)
+ include/qemu-common.h |   15 +-----
+ qemu-char.c           |   77 ++--------------------------
+ ui/gtk.c              |   12 ++---
+ util/Makefile.objs    |    2 +-
+ util/qemu-openpty.c   |  135 +++++++++++++++++++++++++++++++++++++++++++=
+++++++
+ 5 files changed, 146 insertions(+), 95 deletions(-)
+ create mode 100644 util/qemu-openpty.c
 
-diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
-index 01872db..8ccc2e4 100644
---- a/hw/xen/xen_pt_config_init.c
-+++ b/hw/xen/xen_pt_config_init.c
-@@ -1777,12 +1777,12 @@ static int xen_pt_config_reg_init(XenPCIPassthroughState *s,
-         rc = reg->init(s, reg_entry->reg,
-                        reg_grp->base_offset + reg->offset, &data);
-         if (rc < 0) {
--            free(reg_entry);
-+            g_free(reg_entry);
-             return rc;
-         }
-         if (data == XEN_PT_INVALID_REG) {
-             /* free unused BAR register entry */
--            free(reg_entry);
-+            g_free(reg_entry);
-             return 0;
-         }
-         /* set register value */
-diff --git a/xen-all.c b/xen-all.c
-index bc105f1..1a1d7bb 100644
---- a/xen-all.c
-+++ b/xen-all.c
-@@ -389,7 +389,7 @@ static int xen_remove_from_physmap(XenIOState *state,
-     if (state->log_for_dirtybit == physmap) {
-         state->log_for_dirtybit = NULL;
-     }
--    free(physmap);
-+    g_free(physmap);
- 
-     return 0;
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index ed8b6e2..3c91375 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -42,19 +42,6 @@
+ #include <signal.h>
+ #include "glib-compat.h"
+=20
+-#if defined(__GLIBC__)
+-# include <pty.h>
+-#elif defined CONFIG_BSD
+-# include <termios.h>
+-# if defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__Dr=
+agonFly__)
+-#  include <libutil.h>
+-# else
+-#  include <util.h>
+-# endif
+-#elif defined CONFIG_SOLARIS
+-# include <stropts.h>
+-#endif
+-
+ #ifdef _WIN32
+ #include "sysemu/os-win32.h"
+ #endif
+@@ -235,6 +222,8 @@ ssize_t qemu_recv_full(int fd, void *buf, size_t coun=
+t, int flags)
+=20
+ #ifndef _WIN32
+ int qemu_pipe(int pipefd[2]);
++/* like openpty() but also makes it raw; return master fd */
++int qemu_openpty_raw(int *aslave, char *pty_name);
+ #endif
+=20
+ #ifdef _WIN32
+diff --git a/qemu-char.c b/qemu-char.c
+index 596bf9e..2c3cfe6 100644
+--- a/qemu-char.c
++++ b/qemu-char.c
+@@ -964,63 +964,6 @@ static CharDriverState *qemu_chr_open_stdio(ChardevS=
+tdio *opts)
+     return chr;
  }
-@@ -1030,7 +1030,7 @@ static void xen_read_physmap(XenIOState *state)
-                 xen_domid, entries[i]);
-         value = xs_read(state->xenstore, 0, path, &len);
-         if (value == NULL) {
--            free(physmap);
-+            g_free(physmap);
-             continue;
-         }
-         physmap->start_addr = strtoull(value, NULL, 16);
-@@ -1041,7 +1041,7 @@ static void xen_read_physmap(XenIOState *state)
-                 xen_domid, entries[i]);
-         value = xs_read(state->xenstore, 0, path, &len);
-         if (value == NULL) {
--            free(physmap);
-+            g_free(physmap);
-             continue;
-         }
-         physmap->size = strtoull(value, NULL, 16);
-@@ -1069,12 +1069,14 @@ int xen_hvm_init(void)
-     state->xce_handle = xen_xc_evtchn_open(NULL, 0);
-     if (state->xce_handle == XC_HANDLER_INITIAL_VALUE) {
-         perror("xen: event channel open");
-+        g_free(state);
-         return -errno;
+=20
+-#ifdef __sun__
+-/* Once Solaris has openpty(), this is going to be removed. */
+-static int openpty(int *amaster, int *aslave, char *name,
+-                   struct termios *termp, struct winsize *winp)
+-{
+-        const char *slave;
+-        int mfd =3D -1, sfd =3D -1;
+-
+-        *amaster =3D *aslave =3D -1;
+-
+-        mfd =3D open("/dev/ptmx", O_RDWR | O_NOCTTY);
+-        if (mfd < 0)
+-                goto err;
+-
+-        if (grantpt(mfd) =3D=3D -1 || unlockpt(mfd) =3D=3D -1)
+-                goto err;
+-
+-        if ((slave =3D ptsname(mfd)) =3D=3D NULL)
+-                goto err;
+-
+-        if ((sfd =3D open(slave, O_RDONLY | O_NOCTTY)) =3D=3D -1)
+-                goto err;
+-
+-        if (ioctl(sfd, I_PUSH, "ptem") =3D=3D -1 ||
+-            (termp !=3D NULL && tcgetattr(sfd, termp) < 0))
+-                goto err;
+-
+-        if (amaster)
+-                *amaster =3D mfd;
+-        if (aslave)
+-                *aslave =3D sfd;
+-        if (winp)
+-                ioctl(sfd, TIOCSWINSZ, winp);
+-
+-        return 0;
+-
+-err:
+-        if (sfd !=3D -1)
+-                close(sfd);
+-        close(mfd);
+-        return -1;
+-}
+-
+-static void cfmakeraw (struct termios *termios_p)
+-{
+-        termios_p->c_iflag &=3D
+-                ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL|IXON);
+-        termios_p->c_oflag &=3D ~OPOST;
+-        termios_p->c_lflag &=3D ~(ECHO|ECHONL|ICANON|ISIG|IEXTEN);
+-        termios_p->c_cflag &=3D ~(CSIZE|PARENB);
+-        termios_p->c_cflag |=3D CS8;
+-
+-        termios_p->c_cc[VMIN] =3D 0;
+-        termios_p->c_cc[VTIME] =3D 0;
+-}
+-#endif
+-
+ #if defined(__linux__) || defined(__sun__) || defined(__FreeBSD__) \
+     || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFl=
+y__) \
+     || defined(__GLIBC__)
+@@ -1192,34 +1135,24 @@ static CharDriverState *qemu_chr_open_pty(const c=
+har *id,
+ {
+     CharDriverState *chr;
+     PtyCharDriver *s;
+-    struct termios tty;
+     int master_fd, slave_fd;
+-#if defined(__OpenBSD__) || defined(__DragonFly__)
+     char pty_name[PATH_MAX];
+-#define q_ptsname(x) pty_name
+-#else
+-    char *pty_name =3D NULL;
+-#define q_ptsname(x) ptsname(x)
+-#endif
+=20
+-    if (openpty(&master_fd, &slave_fd, pty_name, NULL, NULL) < 0) {
++    master_fd =3D qemu_openpty_raw(&slave_fd, pty_name);
++    if (master_fd < 0) {
+         return NULL;
      }
- 
-     state->xenstore = xs_daemon_open();
-     if (state->xenstore == NULL) {
-         perror("xen: xenstore open");
-+        g_free(state);
-         return -errno;
-     }
- 
--- 
+=20
+-    /* Set raw attributes on the pty. */
+-    tcgetattr(slave_fd, &tty);
+-    cfmakeraw(&tty);
+-    tcsetattr(slave_fd, TCSAFLUSH, &tty);
+     close(slave_fd);
+=20
+     chr =3D g_malloc0(sizeof(CharDriverState));
+=20
+-    chr->filename =3D g_strdup_printf("pty:%s", q_ptsname(master_fd));
+-    ret->pty =3D g_strdup(q_ptsname(master_fd));
++    chr->filename =3D g_strdup_printf("pty:%s", pty_name);
++    ret->pty =3D g_strdup(pty_name);
+     ret->has_pty =3D true;
+=20
+     fprintf(stderr, "char device redirected to %s (label %s)\n",
+-            q_ptsname(master_fd), id);
++            pty_name, id);
+=20
+     s =3D g_malloc0(sizeof(PtyCharDriver));
+     chr->opaque =3D s;
+diff --git a/ui/gtk.c b/ui/gtk.c
+index e314dba..50a6993 100644
+--- a/ui/gtk.c
++++ b/ui/gtk.c
+@@ -1160,8 +1160,7 @@ static GSList *gd_vc_init(GtkDisplayState *s, Virtu=
+alConsole *vc, int index, GSL
+     GIOChannel *chan;
+     GtkWidget *scrolled_window;
+     GtkAdjustment *vadjustment;
+-    int master_fd, slave_fd, ret;
+-    struct termios tty;
++    int master_fd, slave_fd;
+=20
+     snprintf(buffer, sizeof(buffer), "vc%d", index);
+     snprintf(path, sizeof(path), "<QEMU>/View/VC%d", index);
+@@ -1181,13 +1180,8 @@ static GSList *gd_vc_init(GtkDisplayState *s, Virt=
+ualConsole *vc, int index, GSL
+=20
+     vc->terminal =3D vte_terminal_new();
+=20
+-    ret =3D openpty(&master_fd, &slave_fd, NULL, NULL, NULL);
+-    g_assert(ret !=3D -1);
+-
+-    /* Set raw attributes on the pty. */
+-    tcgetattr(slave_fd, &tty);
+-    cfmakeraw(&tty);
+-    tcsetattr(slave_fd, TCSAFLUSH, &tty);
++    master_fd =3D qemu_openpty_raw(&slave_fd, NULL);
++    g_assert(master_fd !=3D -1);
+=20
+ #if VTE_CHECK_VERSION(0, 26, 0)
+     pty =3D vte_pty_new_foreign(master_fd, NULL);
+diff --git a/util/Makefile.objs b/util/Makefile.objs
+index 4a1bd4e..dc72ab0 100644
+--- a/util/Makefile.objs
++++ b/util/Makefile.objs
+@@ -1,6 +1,6 @@
+ util-obj-y =3D osdep.o cutils.o unicode.o qemu-timer-common.o
+ util-obj-$(CONFIG_WIN32) +=3D oslib-win32.o qemu-thread-win32.o event_no=
+tifier-win32.o
+-util-obj-$(CONFIG_POSIX) +=3D oslib-posix.o qemu-thread-posix.o event_no=
+tifier-posix.o
++util-obj-$(CONFIG_POSIX) +=3D oslib-posix.o qemu-thread-posix.o event_no=
+tifier-posix.o qemu-openpty.o
+ util-obj-y +=3D envlist.o path.o host-utils.o cache-utils.o module.o
+ util-obj-y +=3D bitmap.o bitops.o hbitmap.o
+ util-obj-y +=3D fifo8.o
+diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
+new file mode 100644
+index 0000000..4febfe9
+--- /dev/null
++++ b/util/qemu-openpty.c
+@@ -0,0 +1,135 @@
++/*
++ * qemu-openpty.c
++ *
++ * Copyright (c) 2003-2008 Fabrice Bellard
++ * Copyright (c) 2010 Red Hat, Inc.
++ *
++ * Wrapper function qemu_openpty() implementation.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
++ * of this software and associated documentation files (the "Software"),=
+ to deal
++ * in the Software without restriction, including without limitation the=
+ rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be includ=
+ed in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
++ * THE SOFTWARE.
++ */
++
++/*
++ * This is not part of oslib-posix.c because this function
++ * uses openpty() which often in -lutil, and if we add this
++ * dependency to oslib-posix.o, every app will have to be
++ * linked with -lutil.
++ */
++
++#include "config-host.h"
++#include "qemu-common.h"
++
++#if defined(__GLIBC__)
++# include <pty.h>
++#elif defined CONFIG_BSD
++# include <termios.h>
++# if defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__Dr=
+agonFly__)
++#  include <libutil.h>
++# else
++#  include <util.h>
++# endif
++#elif defined CONFIG_SOLARIS
++# include <termios.h>
++# include <stropts.h>
++#endif
++
++#ifdef __sun__
++/* Once Solaris has openpty(), this is going to be removed. */
++static int openpty(int *amaster, int *aslave, char *name,
++                   struct termios *termp, struct winsize *winp)
++{
++        const char *slave;
++        int mfd =3D -1, sfd =3D -1;
++
++        *amaster =3D *aslave =3D -1;
++
++        mfd =3D open("/dev/ptmx", O_RDWR | O_NOCTTY);
++        if (mfd < 0)
++                goto err;
++
++        if (grantpt(mfd) =3D=3D -1 || unlockpt(mfd) =3D=3D -1)
++                goto err;
++
++        if ((slave =3D ptsname(mfd)) =3D=3D NULL)
++                goto err;
++
++        if ((sfd =3D open(slave, O_RDONLY | O_NOCTTY)) =3D=3D -1)
++                goto err;
++
++        if (ioctl(sfd, I_PUSH, "ptem") =3D=3D -1 ||
++            (termp !=3D NULL && tcgetattr(sfd, termp) < 0))
++                goto err;
++
++        if (amaster)
++                *amaster =3D mfd;
++        if (aslave)
++                *aslave =3D sfd;
++        if (winp)
++                ioctl(sfd, TIOCSWINSZ, winp);
++
++        return 0;
++
++err:
++        if (sfd !=3D -1)
++                close(sfd);
++        close(mfd);
++        return -1;
++}
++
++static void cfmakeraw (struct termios *termios_p)
++{
++        termios_p->c_iflag &=3D
++                ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL|IXON);
++        termios_p->c_oflag &=3D ~OPOST;
++        termios_p->c_lflag &=3D ~(ECHO|ECHONL|ICANON|ISIG|IEXTEN);
++        termios_p->c_cflag &=3D ~(CSIZE|PARENB);
++        termios_p->c_cflag |=3D CS8;
++
++        termios_p->c_cc[VMIN] =3D 0;
++        termios_p->c_cc[VTIME] =3D 0;
++}
++#endif
++
++int qemu_openpty_raw(int *aslave, char *pty_name)
++{
++    int amaster;
++    struct termios tty;
++#if defined(__OpenBSD__) || defined(__DragonFly__)
++    char pty_buf[PATH_MAX];
++#define q_ptsname(x) pty_buf
++#else
++    char *pty_buf =3D NULL;
++#define q_ptsname(x) ptsname(x)
++#endif
++
++    if (openpty(&amaster, aslave, pty_buf, NULL, NULL) < 0) {
++        return -1;
++    }
++
++    /* Set raw attributes on the pty. */
++    tcgetattr(*aslave, &tty);
++    cfmakeraw(&tty);
++    tcsetattr(*aslave, TCSAFLUSH, &tty);
++
++    if (pty_name) {
++        strcpy(pty_name, q_ptsname(amaster));
++    }
++
++    return amaster;
++}
+--=20
 1.7.10.4
 
 
