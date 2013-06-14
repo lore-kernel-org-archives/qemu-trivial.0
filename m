@@ -1,34 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnRgu-00046V-UV
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:57:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56590)
+	id 1UnRgw-00049K-RB
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:57:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRgp-0003vQ-Ne
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:57:09 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRgp-0003v5-Bc
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:57:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnRgn-0006NY-Eq
+	(envelope-from <mjt@tls.msk.ru>) id 1UnRgn-0006Nf-I8
 	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:57:07 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:34929)
+Received: from isrv.corpit.ru ([86.62.121.231]:59844)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1UnRgi-0006DH-BJ; Fri, 14 Jun 2013 06:57:00 -0400
+	id 1UnRgi-0006DS-Jo; Fri, 14 Jun 2013 06:57:00 -0400
 Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 912AE41660;
+	by isrv.corpit.ru (Postfix) with ESMTP id D68AE41664;
 	Fri, 14 Jun 2013 14:56:59 +0400 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id 7968851B; Fri, 14 Jun 2013 14:50:47 +0400 (MSK)
+	id AD0A151E; Fri, 14 Jun 2013 14:50:47 +0400 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri, 14 Jun 2013 14:50:26 +0400
-Message-Id: <1371207042-17980-11-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 14 Jun 2013 14:50:30 +0400
+Message-Id: <1371207042-17980-15-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Wu <lekensteyn@gmail.com>,
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 10/26] gtk: implement -full-screen
+Subject: [Qemu-trivial] [PULL 14/26] hw/scsi: Don't increment a boolean value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,78 +40,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 10:57:09 -0000
+X-List-Received-Date: Fri, 14 Jun 2013 10:57:12 -0000
 
-From: Peter Wu <lekensteyn@gmail.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Aiming for GTK as replacement for SDL, a feature like -full-screen should also
-be implemented.
+This fixes a warning from cppcheck.
 
-Bringing the window into full-screen mode is done by activating the "Fullscreen"
-menu item. This is done after showing the windows to make the cursor and menu
-hidden.
-
-v2: drop -no-frame implementation, use booleans instead of ints and ensure
-    consistency between ui state and menu.
-
-Signed-off-by: Peter Wu <lekensteyn@gmail.com>
-Reviewed-by: Anthony Liguori <aliguori@us.ibm.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/ui/console.h |    2 +-
- ui/gtk.c             |    6 +++++-
- vl.c                 |    2 +-
- 3 files changed, 7 insertions(+), 3 deletions(-)
+ hw/scsi/vmw_pvscsi.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/ui/console.h b/include/ui/console.h
-index 4307b5f..f1d79f9 100644
---- a/include/ui/console.h
-+++ b/include/ui/console.h
-@@ -339,6 +339,6 @@ int index_from_keycode(int code);
+diff --git a/hw/scsi/vmw_pvscsi.c b/hw/scsi/vmw_pvscsi.c
+index 48d12f4..446f723 100644
+--- a/hw/scsi/vmw_pvscsi.c
++++ b/hw/scsi/vmw_pvscsi.c
+@@ -389,7 +389,7 @@ pvscsi_process_completion_queue(void *opaque)
+         QTAILQ_REMOVE(&s->completion_queue, pvscsi_req, next);
+         pvscsi_cmp_ring_put(s, &pvscsi_req->cmp);
+         g_free(pvscsi_req);
+-        has_completed++;
++        has_completed = true;
+     }
  
- /* gtk.c */
- void early_gtk_display_init(void);
--void gtk_display_init(DisplayState *ds);
-+void gtk_display_init(DisplayState *ds, bool full_screen);
- 
- #endif
-diff --git a/ui/gtk.c b/ui/gtk.c
-index 63f6081..e314dba 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -1435,7 +1435,7 @@ static const DisplayChangeListenerOps dcl_ops = {
-     .dpy_cursor_define = gd_cursor_define,
- };
- 
--void gtk_display_init(DisplayState *ds)
-+void gtk_display_init(DisplayState *ds, bool full_screen)
- {
-     GtkDisplayState *s = g_malloc0(sizeof(*s));
-     char *filename;
-@@ -1511,6 +1511,10 @@ void gtk_display_init(DisplayState *ds)
- 
-     gtk_widget_show_all(s->window);
- 
-+    if (full_screen) {
-+        gtk_menu_item_activate(GTK_MENU_ITEM(s->full_screen_item));
-+    }
-+
-     register_displaychangelistener(&s->dcl);
- 
-     global_state = s;
-diff --git a/vl.c b/vl.c
-index 180fdde..169c807 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4348,7 +4348,7 @@ int main(int argc, char **argv, char **envp)
- #endif
- #if defined(CONFIG_GTK)
-     case DT_GTK:
--        gtk_display_init(ds);
-+        gtk_display_init(ds, full_screen);
-         break;
- #endif
-     default:
+     if (has_completed) {
 -- 
 1.7.10.4
 
