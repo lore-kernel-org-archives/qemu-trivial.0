@@ -1,38 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnR3Z-0001fa-4x
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:16:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47816)
+	id 1UnR79-0003Xg-1L
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 06:20:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48750)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnR3W-0001Wy-2b
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:16:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UnR77-0003V5-8j
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:20:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnR3V-0001Jw-7X
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:16:30 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:35082)
+	(envelope-from <mjt@tls.msk.ru>) id 1UnR75-0002m4-Tc
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 06:20:13 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:47857)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1UnR3S-0001JC-G7; Fri, 14 Jun 2013 06:16:26 -0400
+	id 1UnR6w-0002Yg-Pr; Fri, 14 Jun 2013 06:20:03 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id CAB344165A;
-	Fri, 14 Jun 2013 14:16:24 +0400 (MSK)
-Message-ID: <51BAED77.2010308@msgid.tls.msk.ru>
-Date: Fri, 14 Jun 2013 14:16:23 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id B8FDB4165A;
+	Fri, 14 Jun 2013 14:20:01 +0400 (MSK)
+Message-ID: <51BAEE51.8040908@msgid.tls.msk.ru>
+Date: Fri, 14 Jun 2013 14:20:01 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
 	rv:17.0) Gecko/17.0 Icedove/17.0
 MIME-Version: 1.0
-To: =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>
-References: <1370434603-5394-1-git-send-email-hpoussin@reactos.org>
-In-Reply-To: <1370434603-5394-1-git-send-email-hpoussin@reactos.org>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
+References: <1371047245-19221-1-git-send-email-aik@ozlabs.ru>
+In-Reply-To: <1371047245-19221-1-git-send-email-aik@ozlabs.ru>
 X-Enigmail-Version: 1.5.1
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] cputlb: fix debug logs
+Cc: qemu-trivial@nongnu.org, Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
+Subject: Re: [Qemu-trivial] [PATCH] spapr: add yet another maintainer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,13 +46,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 10:16:31 -0000
+X-List-Received-Date: Fri, 14 Jun 2013 10:20:14 -0000
 
-05.06.2013 16:16, Herv=E9 Poussineau wrote:
-> 'pd' variable has been removed in 06ef3525e1f271b6a842781a05eace5cf63b9=
-5c2.
+12.06.2013 18:27, Alexey Kardashevskiy wrote:
+> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+> ---
+>  MAINTAINERS |    1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 13c0cc5..1e00bb1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -430,6 +430,7 @@ F: hw/isa/pc87312.[hc]
+>  sPAPR
+>  M: David Gibson <david@gibson.dropbear.id.au>
+>  M: Alexander Graf <agraf@suse.de>
+> +M: Alexey Kardashevskiy <aik@ozlabs.ru>
 
-Thanks, applied to the trivial patches queue.
+Since apparently there was no objections, I'm applying this to -trivial.
+However, such things, even if trivial, are better be handled via the
+corresponding arch tree (in this case the ppc tree).
+
+Thanks,
 
 /mjt
 
