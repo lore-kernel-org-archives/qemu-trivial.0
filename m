@@ -1,34 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UnZNc-0002MU-JB
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 15:09:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45263)
+	id 1Unfhj-00041W-4W
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2013 21:54:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44300)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnZNa-0002Ih-1U
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 15:09:46 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1Unfhd-0003t0-Lv
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 21:54:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UnZNY-0004Jg-Oy
-	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 15:09:45 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:44847)
+	(envelope-from <dgibson@ozlabs.org>) id 1UnfhZ-0003Il-I9
+	for qemu-trivial@nongnu.org; Fri, 14 Jun 2013 21:54:53 -0400
+Received: from ozlabs.org ([2402:b800:7003:1:1::1]:54985)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1UnZNW-0004IS-CR; Fri, 14 Jun 2013 15:09:42 -0400
-Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id D3BFE41664;
-	Fri, 14 Jun 2013 23:09:39 +0400 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id C162150A; Fri, 14 Jun 2013 23:09:37 +0400 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri, 14 Jun 2013 23:09:35 +0400
-Message-Id: <1371236976-22500-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Wu <lekensteyn@gmail.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	=?UTF-8?q?Vincent=20Stehl=C3=A9?= <vincent.stehle@freescale.com>
-Subject: [Qemu-trivial] [PATCH] Revert "Unbreak -no-quit for GTK,
-	validate SDL options"
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1UnfhI-0003GG-Lz; Fri, 14 Jun 2013 21:54:32 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 7D4882C009F; Sat, 15 Jun 2013 11:54:30 +1000 (EST)
+Date: Sat, 15 Jun 2013 11:52:36 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Alexander Graf <agraf@suse.de>
+Message-ID: <20130615015236.GC9218@voom.bne.redhat.com>
+References: <1371047245-19221-1-git-send-email-aik@ozlabs.ru>
+	<9CFAF006-9051-4997-9213-1BD87191EE9E@suse.de>
+	<51B90D81.1020000@ozlabs.ru>
+	<EF248D0E-36D7-403D-83BF-8F966459D299@suse.de>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="raC6veAxrt5nqIoY"
+Content-Disposition: inline
+In-Reply-To: <EF248D0E-36D7-403D-83BF-8F966459D299@suse.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2402:b800:7003:1:1::1
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org,
+	qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
+	Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Subject: Re: [Qemu-trivial] [PATCH] spapr: add yet another maintainer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,76 +46,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2013 19:09:47 -0000
+X-List-Received-Date: Sat, 15 Jun 2013 01:54:58 -0000
 
-This reverts commit 047d4e151dd462915786a4fddc12f774d0028af5.
 
-The commit in question introduced old/legacy options (-no-quit
-and some more) for the new interface type (gtk), -- on the
-second thought I think we shouldn't do that, instead, we should
-use the display-specific options (like -display sdl,frame=no),
-and should not extend the legacy interface further which makes
-messy quite fast.
+--raC6veAxrt5nqIoY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-And more, that change broke build without sdl, by referring to
-`no_frame' variable which were guarded by #if SDL.
+On Thu, Jun 13, 2013 at 02:10:43AM +0200, Alexander Graf wrote:
+>=20
+> On 13.06.2013, at 02:08, Alexey Kardashevskiy wrote:
+>=20
+> > On 06/13/2013 12:33 AM, Alexander Graf wrote:
+> >>=20
+> >> On 12.06.2013, at 16:27, Alexey Kardashevskiy wrote:
+> >>=20
+> >>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+> >>> ---
+> >>> MAINTAINERS |    1 +
+> >>> 1 file changed, 1 insertion(+)
+> >>>=20
+> >>> diff --git a/MAINTAINERS b/MAINTAINERS
+> >>> index 13c0cc5..1e00bb1 100644
+> >>> --- a/MAINTAINERS
+> >>> +++ b/MAINTAINERS
+> >>> @@ -430,6 +430,7 @@ F: hw/isa/pc87312.[hc]
+> >>> sPAPR
+> >>> M: David Gibson <david@gibson.dropbear.id.au>
+> >>=20
+> >> David should get removed here then, no?
+> >=20
+> > Well, at least sometime he is a qemu-ppc maintainer :) Don't know and I=
+ am
+> > not the one to decide.
+>=20
+> Yup, hence David should send a patch to remove himself and add you
+> instead, if that's what he sees fit. Otherwise I'd like a patch from
+> David removing himself only for now.
 
-So reverting it for now I thinks is the best option.  Further
-plan, I think, is to make the documentation more clear that
-these options are legacy.
+I've send an updated version through to you.
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-Cc: Peter Wu <lekensteyn@gmail.com>
-Cc: qemu-trivial@nongnu.org
-Signed-off-By: Michael Tokarev <mjt@tls.msk.ru>
----
- vl.c |   15 +++++----------
- 1 file changed, 5 insertions(+), 10 deletions(-)
+--raC6veAxrt5nqIoY
+Content-Type: application/pgp-signature
 
-diff --git a/vl.c b/vl.c
-index 9f8fd6e..169c807 100644
---- a/vl.c
-+++ b/vl.c
-@@ -3524,6 +3524,7 @@ int main(int argc, char **argv, char **envp)
-             case QEMU_OPTION_full_screen:
-                 full_screen = 1;
-                 break;
-+#ifdef CONFIG_SDL
-             case QEMU_OPTION_no_frame:
-                 no_frame = 1;
-                 break;
-@@ -3536,11 +3537,14 @@ int main(int argc, char **argv, char **envp)
-             case QEMU_OPTION_no_quit:
-                 no_quit = 1;
-                 break;
--#ifdef CONFIG_SDL
-             case QEMU_OPTION_sdl:
-                 display_type = DT_SDL;
-                 break;
- #else
-+            case QEMU_OPTION_no_frame:
-+            case QEMU_OPTION_alt_grab:
-+            case QEMU_OPTION_ctrl_grab:
-+            case QEMU_OPTION_no_quit:
-             case QEMU_OPTION_sdl:
-                 fprintf(stderr, "SDL support is disabled\n");
-                 exit(1);
-@@ -4081,15 +4085,6 @@ int main(int argc, char **argv, char **envp)
- #endif
-     }
- 
--    if ((no_frame || alt_grab || ctrl_grab) && display_type != DT_SDL) {
--        fprintf(stderr, "-no-frame, -alt-grab and -ctrl-grab are only valid "
--                        "for SDL, ignoring option\n");
--    }
--    if (no_quit && (display_type != DT_GTK && display_type != DT_SDL)) {
--        fprintf(stderr, "-no-quit is only valid for GTK and SDL, "
--                        "ignoring option\n");
--    }
--
- #if defined(CONFIG_GTK)
-     if (display_type == DT_GTK) {
-         early_gtk_display_init();
--- 
-1.7.10.4
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.13 (GNU/Linux)
 
+iEYEARECAAYFAlG7yOQACgkQaILKxv3ab8bf7gCeI5tmMePdXwrBavQ/NsB/FQ7z
+VAEAnjaRxWaHCOyarPb8WMk2ZB44hWMA
+=amdb
+-----END PGP SIGNATURE-----
+
+--raC6veAxrt5nqIoY--
 
