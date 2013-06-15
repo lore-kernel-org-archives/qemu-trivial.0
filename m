@@ -1,32 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Unnw2-0007kV-Jc
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Jun 2013 06:42:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46041)
+	id 1UnoIb-00059o-8s
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Jun 2013 07:05:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49549)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Unnw0-0007i2-FO
-	for qemu-trivial@nongnu.org; Sat, 15 Jun 2013 06:42:17 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UnoIY-00056Y-Ax
+	for qemu-trivial@nongnu.org; Sat, 15 Jun 2013 07:05:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Unnvz-0004ge-DU
-	for qemu-trivial@nongnu.org; Sat, 15 Jun 2013 06:42:16 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57547)
+	(envelope-from <mjt@tls.msk.ru>) id 1UnoIX-0002st-1Z
+	for qemu-trivial@nongnu.org; Sat, 15 Jun 2013 07:05:34 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:45883)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Unnvw-0004g7-7J; Sat, 15 Jun 2013 06:42:12 -0400
-Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7B20941740;
-	Sat, 15 Jun 2013 14:42:09 +0400 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id B767051B; Sat, 15 Jun 2013 14:42:07 +0400 (MSK)
+	id 1UnoIV-0002sQ-28; Sat, 15 Jun 2013 07:05:31 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 78F2E41740;
+	Sat, 15 Jun 2013 15:05:28 +0400 (MSK)
+Message-ID: <51BC4A77.7020308@msgid.tls.msk.ru>
+Date: Sat, 15 Jun 2013 15:05:27 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Sat, 15 Jun 2013 14:42:03 +0400
-Message-Id: <1371292923-28105-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
+MIME-Version: 1.0
+To: Peter Wu <lekensteyn@gmail.com>
+References: <1371292923-28105-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<12048990.5frBUX2jFf@al>
+In-Reply-To: <12048990.5frBUX2jFf@al>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Wu <lekensteyn@gmail.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH trivial] vl: always define no_frame
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH trivial] vl: always define no_frame
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,41 +46,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Jun 2013 10:42:17 -0000
+X-List-Received-Date: Sat, 15 Jun 2013 11:05:35 -0000
 
-Commit 047d4e151dd46 "Unbreak -no-quit for GTK, validate SDL options" broke
-build of qemu without sdl, by referencing `no_frame' variable which is defined
-inside #if SDL block.  Fix that by defining that variable unconditionally.
+15.06.2013 14:51, Peter Wu wrote:
+> On Saturday 15 June 2013 14:42:03 Michael Tokarev wrote:
+> 
+>> Commit 047d4e151dd46 "Unbreak -no-quit for GTK, validate SDL options" broke
+>> build of qemu without sdl, by referencing `no_frame' variable which is
+>> defined inside #if SDL block. Fix that by defining that variable
+>> unconditionally.
+> 
+> Reviewed-by: Peter Wu <lekensteyn@gmail.com>
 
-This is a better fix for the build issue introduced by that patch than
-a revert.  This change keeps the new functinality introduced by that patch
-and just fixes the compilation.  It still is not a complete fix around the
-original issue (not working -no-frame et al with -display gtk), because it
-makes only the legacy interface working, not the new suboption interface,
-so a few more changes are needed.
+Thanks!
 
-Cc: Peter Wu <lekensteyn@gmail.com>
-Cc: qemu-trivial@nongnu.org
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- vl.c |    2 --
- 1 file changed, 2 deletions(-)
+> As for the discussion about legacy options[1], are there plans to remove `-sdl` (replaced by `-display sdl`) and move the `-*-grab` and `-no-frame` to `-display sdl` options? If that is the idea, what about printing a message that the mentioned options are deprecated and removed in a future version?
 
-diff --git a/vl.c b/vl.c
-index 9f8fd6e..f94ec9c 100644
---- a/vl.c
-+++ b/vl.c
-@@ -199,9 +199,7 @@ static int rtc_date_offset = -1; /* -1 means no change */
- QEMUClock *rtc_clock;
- int vga_interface_type = VGA_NONE;
- static int full_screen = 0;
--#ifdef CONFIG_SDL
- static int no_frame = 0;
--#endif
- int no_quit = 0;
- CharDriverState *serial_hds[MAX_SERIAL_PORTS];
- CharDriverState *parallel_hds[MAX_PARALLEL_PORTS];
--- 
-1.7.10.4
+This is already done for sdl, see select_display() function in vl.c --
+it handles -display sdl,frame={on|off},...
 
+It is unlikely the old options will be removed any time soon, and
+these will not likely print any warnings either -- this hasn't done
+for lots of other old options (-stdvga for example).
+
+Thanks,
+
+/mjt
 
