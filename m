@@ -1,34 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UoFPk-00069e-Jr
-	for mharc-qemu-trivial@gnu.org; Sun, 16 Jun 2013 12:02:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48316)
+	id 1UoFPm-0006DX-Lc
+	for mharc-qemu-trivial@gnu.org; Sun, 16 Jun 2013 12:02:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50032)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1Uo8xI-00046t-V3
-	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 05:09:01 -0400
+	id 1Uo97g-0006MP-ET
+	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 05:19:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1Uo8xH-0001bP-Pd
-	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 05:09:00 -0400
-Received: from [2a03:4000:2:362::1] (port=44420
+	id 1Uo97f-0004TU-2C
+	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 05:19:44 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:32770
 	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1Uo8xF-0001b8-Jz; Sun, 16 Jun 2013 05:08:57 -0400
+	id 1Uo97c-0004Sn-Js; Sun, 16 Jun 2013 05:19:40 -0400
 Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id 87169182F21; Sun, 16 Jun 2013 11:08:53 +0200 (CEST)
+	id 30D1F182F35; Sun, 16 Jun 2013 11:19:38 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-trivial <qemu-trivial@nongnu.org>
-Date: Sun, 16 Jun 2013 11:08:52 +0200
-Message-Id: <1371373732-12003-1-git-send-email-sw@weilnetz.de>
+Date: Sun, 16 Jun 2013 11:19:31 +0200
+Message-Id: <1371374371-17492-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
-X-Mailman-Approved-At: Sun, 16 Jun 2013 12:02:47 -0400
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] libcacard: Fix cppcheck warning and remove
-	unneeded code
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.198.45
+X-Mailman-Approved-At: Sun, 16 Jun 2013 12:02:48 -0400
+Cc: Stefan Weil <sw@weilnetz.de>, "Vassili Karpov \(malc\)" <av1474@comtv.ru>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] audio: Replace static functions in header
+	file by macros, remove GCC_ATTR
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,86 +40,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 16 Jun 2013 09:09:02 -0000
+X-List-Received-Date: Sun, 16 Jun 2013 09:19:45 -0000
 
-The local function vcard_emul_alloc_arrays always returned PR_TRUE.
-Therefore cppcheck complained about code which handled the
-non-existent PR_FALSE case.
+Using macros instead of static functions for dolog and for ldebug
+simplifies the code and can also reduce the total code size.
 
-Remove the function's return value and the dead code.
+GCC_ATTR was only used in audio_int.h, so it is now unused and
+the definition can be removed from compiler.h.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- libcacard/vcard_emul_nss.c |   22 ++++++----------------
- 1 file changed, 6 insertions(+), 16 deletions(-)
+ audio/audio_int.h       |   31 +++----------------------------
+ include/qemu/compiler.h |    3 ---
+ 2 files changed, 3 insertions(+), 31 deletions(-)
 
-diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
-index 1a3e568..fb429b1 100644
---- a/libcacard/vcard_emul_nss.c
-+++ b/libcacard/vcard_emul_nss.c
-@@ -90,17 +90,13 @@ static int nss_emul_init;
- /*
-  * allocate the set of arrays for certs, cert_len, key
-  */
--static PRBool
-+static void
- vcard_emul_alloc_arrays(unsigned char ***certsp, int **cert_lenp,
-                         VCardKey ***keysp, int cert_count)
- {
--    *certsp = NULL;
--    *cert_lenp = NULL;
--    *keysp = NULL;
-     *certsp = (unsigned char **)g_malloc(sizeof(unsigned char *)*cert_count);
-     *cert_lenp = (int *)g_malloc(sizeof(int)*cert_count);
-     *keysp = (VCardKey **)g_malloc(sizeof(VCardKey *)*cert_count);
--    return PR_TRUE;
+diff --git a/audio/audio_int.h b/audio/audio_int.h
+index b9b0676..fd019a0 100644
+--- a/audio/audio_int.h
++++ b/audio/audio_int.h
+@@ -243,38 +243,13 @@ static inline int audio_ring_dist (int dst, int src, int len)
+     return (dst >= src) ? (dst - src) : (len - src + dst);
  }
  
- /*
-@@ -601,7 +597,6 @@ vcard_emul_mirror_card(VReader *vreader)
-     int *cert_len;
-     VCardKey **keys;
-     PK11SlotInfo *slot;
--    PRBool ret;
-     VCard *card;
+-static void GCC_ATTR dolog (const char *fmt, ...)
+-{
+-    va_list ap;
+-
+-    va_start (ap, fmt);
+-    AUD_vlog (AUDIO_CAP, fmt, ap);
+-    va_end (ap);
+-}
++#define dolog(fmt, ...) AUD_log(AUDIO_CAP, fmt, ## __VA_ARGS__)
  
-     slot = vcard_emul_reader_get_slot(vreader);
-@@ -627,10 +622,7 @@ vcard_emul_mirror_card(VReader *vreader)
-     }
+ #ifdef DEBUG
+-static void GCC_ATTR ldebug (const char *fmt, ...)
+-{
+-    va_list ap;
+-
+-    va_start (ap, fmt);
+-    AUD_vlog (AUDIO_CAP, fmt, ap);
+-    va_end (ap);
+-}
++#define ldebug(fmt, ...) AUD_log(AUDIO_CAP, fmt, ## __VA_ARGS__)
+ #else
+-#if defined NDEBUG && defined __GNUC__
+-#define ldebug(...)
+-#elif defined NDEBUG && defined _MSC_VER
+-#define ldebug __noop
+-#else
+-static void GCC_ATTR ldebug (const char *fmt, ...)
+-{
+-    (void) fmt;
+-}
++#define ldebug(fmt, ...) (void)0
+ #endif
+-#endif
+-
+-#undef GCC_ATTR
  
-     /* allocate the arrays */
--    ret = vcard_emul_alloc_arrays(&certs, &cert_len, &keys, cert_count);
--    if (ret == PR_FALSE) {
--        return NULL;
--    }
-+    vcard_emul_alloc_arrays(&certs, &cert_len, &keys, cert_count);
+ #define AUDIO_STRINGIFY_(n) #n
+ #define AUDIO_STRINGIFY(n) AUDIO_STRINGIFY_(n)
+diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+index 6175c24..155b358 100644
+--- a/include/qemu/compiler.h
++++ b/include/qemu/compiler.h
+@@ -38,11 +38,9 @@
+ #if defined __GNUC__
+ # if !QEMU_GNUC_PREREQ(4, 4)
+    /* gcc versions before 4.4.x don't support gnu_printf, so use printf. */
+-#  define GCC_ATTR __attribute__((__unused__, format(printf, 1, 2)))
+ #  define GCC_FMT_ATTR(n, m) __attribute__((format(printf, n, m)))
+ # else
+    /* Use gnu_printf when supported (qemu uses standard format strings). */
+-#  define GCC_ATTR __attribute__((__unused__, format(gnu_printf, 1, 2)))
+ #  define GCC_FMT_ATTR(n, m) __attribute__((format(gnu_printf, n, m)))
+ #  if defined(_WIN32)
+     /* Map __printf__ to __gnu_printf__ because we want standard format strings
+@@ -51,7 +49,6 @@
+ #  endif
+ # endif
+ #else
+-#define GCC_ATTR /**/
+ #define GCC_FMT_ATTR(n, m)
+ #endif
  
-     /* fill in the arrays */
-     cert_count = 0;
-@@ -878,7 +870,7 @@ VCardEmulError
- vcard_emul_init(const VCardEmulOptions *options)
- {
-     SECStatus rv;
--    PRBool ret, has_readers = PR_FALSE;
-+    PRBool has_readers = PR_FALSE;
-     VReader *vreader;
-     VReaderEmul *vreader_emul;
-     SECMODListLock *module_lock;
-@@ -944,11 +936,9 @@ vcard_emul_init(const VCardEmulOptions *options)
-         vreader_add_reader(vreader);
-         cert_count = options->vreader[i].cert_count;
- 
--        ret = vcard_emul_alloc_arrays(&certs, &cert_len, &keys,
--                                      options->vreader[i].cert_count);
--        if (ret == PR_FALSE) {
--            continue;
--        }
-+        vcard_emul_alloc_arrays(&certs, &cert_len, &keys,
-+                                options->vreader[i].cert_count);
-+
-         cert_count = 0;
-         for (j = 0; j < options->vreader[i].cert_count; j++) {
-             /* we should have a better way of identifying certs than by
 -- 
 1.7.10.4
 
