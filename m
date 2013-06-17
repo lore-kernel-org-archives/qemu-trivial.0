@@ -1,39 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UoNl4-0006l4-RI
-	for mharc-qemu-trivial@gnu.org; Sun, 16 Jun 2013 20:57:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57998)
+	id 1UoOx6-0002ay-6n
+	for mharc-qemu-trivial@gnu.org; Sun, 16 Jun 2013 22:13:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40987)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UoNl1-0006fw-M9
-	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 20:57:20 -0400
+	(envelope-from <hutao@cn.fujitsu.com>) id 1UoOx3-0002a9-3o
+	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 22:13:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UoNl0-0007Oa-Mq
-	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 20:57:19 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:47068 helo=mx2.suse.de)
+	(envelope-from <hutao@cn.fujitsu.com>) id 1UoOx1-0003l3-5E
+	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 22:13:49 -0400
+Received: from [222.73.24.84] (port=14293 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UoNkx-0007O0-GB; Sun, 16 Jun 2013 20:57:15 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id C18F9A50E4;
-	Mon, 17 Jun 2013 02:57:14 +0200 (CEST)
-Message-ID: <51BE5EE8.5070607@suse.de>
-Date: Mon, 17 Jun 2013 02:57:12 +0200
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
+	(envelope-from <hutao@cn.fujitsu.com>)
+	id 1UoOx0-0003kV-QZ; Sun, 16 Jun 2013 22:13:47 -0400
+X-IronPort-AV: E=Sophos;i="4.87,877,1363104000"; 
+   d="scan'208";a="7570876"
+Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
+	by song.cn.fujitsu.com with ESMTP; 17 Jun 2013 10:10:49 +0800
+Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5H2DfBD031189;
+	Mon, 17 Jun 2013 10:13:43 +0800
+Received: from localhost ([10.167.233.156])
+	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
+	with ESMTP id 2013061710080297-2175563 ;
+	Mon, 17 Jun 2013 10:08:02 +0800 
+Date: Mon, 17 Jun 2013 10:09:16 +0800
+From: Hu Tao <hutao@cn.fujitsu.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20130617020916.GE6416@G08FNSTD100614.fnst.cn.fujitsu.com>
+References: <51B9A88C.3080105@suse.de>
+	<1371193890-1098-1-git-send-email-hutao@cn.fujitsu.com>
+	<51BAF01A.1000507@msgid.tls.msk.ru>
 MIME-Version: 1.0
-To: Vladimir Senkov <hangup@gmail.com>
-References: <CAEgEybqrZ50JD5jmf9ge2g1VgNB5XE4wLkfxvB6qBe89vjP8Zw@mail.gmail.com>
-In-Reply-To: <CAEgEybqrZ50JD5jmf9ge2g1VgNB5XE4wLkfxvB6qBe89vjP8Zw@mail.gmail.com>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=ISO-8859-1
+In-Reply-To: <51BAF01A.1000507@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
+	15, 2011) at 2013/06/17 10:08:03,
+	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
+	2011) at 2013/06/17 10:11:43
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Peter Crosthwaite <peter.crosthwaite@xilinx.com>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] copy&paste error in serial.c causes
- a crash when attempting to read from UART (if there is no data to be read)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 222.73.24.84
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2] piix: fix some printf errors when
+ debug is enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,50 +57,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jun 2013 00:57:20 -0000
+X-List-Received-Date: Mon, 17 Jun 2013 02:13:50 -0000
 
-Am 17.06.2013 02:43, schrieb Vladimir Senkov:
-> From 032bdc94c6369aa7b578182cdad8038ebb2b8cd1 Mon Sep 17 00:00:00 2001
-> From: Vladimir Senkov <hangup@gmail.com <mailto:hangup@gmail.com>>
-> Date: Sun, 16 Jun 2013 20:30:52 -0400
-> Subject: [PATCH] fixed a copy&paste error in serial.c
+On Fri, Jun 14, 2013 at 02:27:38PM +0400, Michael Tokarev wrote:
+> 14.06.2013 11:11, Hu Tao wrote:
+> > And use PRIxxx macros if possible.
 >=20
-> Signed-off-by: Vladimir Senkov <hangup@gmail.com <mailto:hangup@gmail.c=
-om>>
-
-Patch is HTML-damaged unfortunately, we recommend git-send-email:
-http://wiki.qemu.org/Contribute/SubmitAPatch
-
-But since the patch is so trivial, maybe Peter or Michael can fix it up?
-
-Regards,
-Andreas
-
-> ---
->  hw/char/serial.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Thanks, applied to the trivial patches queue, on top of the patch
+> by Herv=C3=A9 Poussineau which I mentioned before.
 >=20
-> diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index b537e42..6382f98 100644
-> --- a/hw/char/serial.c
-> +++ b/hw/char/serial.c
-> @@ -424,7 +424,7 @@ static uint64_t serial_ioport_read(void *opaque,
-> hwaddr addr, unsigned size)
->              ret =3D s->divider & 0xff;
->          } else {
->              if(s->fcr & UART_FCR_FE) {
-> -                ret =3D fifo8_is_full(&s->recv_fifo) ?
-> +                ret =3D fifo8_is_empty(&s->recv_fifo) ?
->                              0 : fifo8_pop(&s->recv_fifo);
->                  if (s->recv_fifo.num =3D=3D 0) {
->                      s->lsr &=3D ~(UART_LSR_DR | UART_LSR_BI);
-> --
-> 1.8.1.2
->=20
+> /mjt
 
+Thanks!
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+=
 
