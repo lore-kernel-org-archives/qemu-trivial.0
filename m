@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UoGjC-00054r-0k
-	for mharc-qemu-trivial@gnu.org; Sun, 16 Jun 2013 13:26:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35963)
+	id 1UoNl4-0006l4-RI
+	for mharc-qemu-trivial@gnu.org; Sun, 16 Jun 2013 20:57:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57998)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UoGjA-00053B-06
-	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 13:26:57 -0400
+	(envelope-from <afaerber@suse.de>) id 1UoNl1-0006fw-M9
+	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 20:57:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UoGj9-0001sY-20
-	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 13:26:55 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:34394 helo=mx2.suse.de)
+	(envelope-from <afaerber@suse.de>) id 1UoNl0-0007Oa-Mq
+	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 20:57:19 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:47068 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <afaerber@suse.de>)
-	id 1UoGj5-0001mZ-Dn; Sun, 16 Jun 2013 13:26:51 -0400
+	id 1UoNkx-0007O0-GB; Sun, 16 Jun 2013 20:57:15 -0400
 Received: from relay1.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id CD6ACA50DD;
-	Sun, 16 Jun 2013 19:26:49 +0200 (CEST)
-Message-ID: <51BDF556.9040807@suse.de>
-Date: Sun, 16 Jun 2013 19:26:46 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+	by mx2.suse.de (Postfix) with ESMTP id C18F9A50E4;
+	Mon, 17 Jun 2013 02:57:14 +0200 (CEST)
+Message-ID: <51BE5EE8.5070607@suse.de>
+Date: Mon, 17 Jun 2013 02:57:12 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
 Organization: SUSE LINUX Products GmbH
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:17.0) Gecko/20130510 Thunderbird/17.0.6
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1371292923-28105-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1371292923-28105-1-git-send-email-mjt@msgid.tls.msk.ru>
+To: Vladimir Senkov <hangup@gmail.com>
+References: <CAEgEybqrZ50JD5jmf9ge2g1VgNB5XE4wLkfxvB6qBe89vjP8Zw@mail.gmail.com>
+In-Reply-To: <CAEgEybqrZ50JD5jmf9ge2g1VgNB5XE4wLkfxvB6qBe89vjP8Zw@mail.gmail.com>
 X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=ISO-8859-15
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
 X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	Peter Wu <lekensteyn@gmail.com>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] vl: always define
-	no_frame
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Crosthwaite <peter.crosthwaite@xilinx.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] copy&paste error in serial.c causes
+ a crash when attempting to read from UART (if there is no data to be read)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,37 +45,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 16 Jun 2013 17:26:57 -0000
+X-List-Received-Date: Mon, 17 Jun 2013 00:57:20 -0000
 
-Am 15.06.2013 12:42, schrieb Michael Tokarev:
-> Commit 047d4e151dd46 "Unbreak -no-quit for GTK, validate SDL options" b=
-roke
-> build of qemu without sdl, by referencing `no_frame' variable which is =
-defined
-> inside #if SDL block.  Fix that by defining that variable unconditional=
-ly.
+Am 17.06.2013 02:43, schrieb Vladimir Senkov:
+> From 032bdc94c6369aa7b578182cdad8038ebb2b8cd1 Mon Sep 17 00:00:00 2001
+> From: Vladimir Senkov <hangup@gmail.com <mailto:hangup@gmail.com>>
+> Date: Sun, 16 Jun 2013 20:30:52 -0400
+> Subject: [PATCH] fixed a copy&paste error in serial.c
 >=20
-> This is a better fix for the build issue introduced by that patch than
-> a revert.  This change keeps the new functinality introduced by that pa=
-tch
-> and just fixes the compilation.  It still is not a complete fix around =
-the
-> original issue (not working -no-frame et al with -display gtk), because=
- it
-> makes only the legacy interface working, not the new suboption interfac=
-e,
-> so a few more changes are needed.
->=20
-> Cc: Peter Wu <lekensteyn@gmail.com>
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> Signed-off-by: Vladimir Senkov <hangup@gmail.com <mailto:hangup@gmail.c=
+om>>
 
-Tested-by: Andreas F=E4rber <afaerber@suse.de>
+Patch is HTML-damaged unfortunately, we recommend git-send-email:
+http://wiki.qemu.org/Contribute/SubmitAPatch
 
-Unbreaks my headless ppc build.
+But since the patch is so trivial, maybe Peter or Michael can fix it up?
 
-Thanks,
+Regards,
 Andreas
+
+> ---
+>  hw/char/serial.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/hw/char/serial.c b/hw/char/serial.c
+> index b537e42..6382f98 100644
+> --- a/hw/char/serial.c
+> +++ b/hw/char/serial.c
+> @@ -424,7 +424,7 @@ static uint64_t serial_ioport_read(void *opaque,
+> hwaddr addr, unsigned size)
+>              ret =3D s->divider & 0xff;
+>          } else {
+>              if(s->fcr & UART_FCR_FE) {
+> -                ret =3D fifo8_is_full(&s->recv_fifo) ?
+> +                ret =3D fifo8_is_empty(&s->recv_fifo) ?
+>                              0 : fifo8_pop(&s->recv_fifo);
+>                  if (s->recv_fifo.num =3D=3D 0) {
+>                      s->lsr &=3D ~(UART_LSR_DR | UART_LSR_BI);
+> --
+> 1.8.1.2
+>=20
+
 
 --=20
 SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
