@@ -1,42 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UoVJs-00013Y-1k
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2013 05:01:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42593)
+	id 1UoYwc-0003rD-5d
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2013 08:54:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46695)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UoVJm-0000ww-2V
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 05:01:46 -0400
+	(envelope-from <stefanha@gmail.com>) id 1UoYwV-0003qE-19
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 08:54:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UoVJh-0006cd-Ft
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 05:01:42 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46726)
+	(envelope-from <stefanha@gmail.com>) id 1UoYwQ-00033E-I5
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 08:53:54 -0400
+Received: from mail-we0-x234.google.com ([2a00:1450:400c:c03::234]:55222)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1UoVJX-0006Yz-E0; Mon, 17 Jun 2013 05:01:27 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8C9B841902;
-	Mon, 17 Jun 2013 13:01:24 +0400 (MSK)
-Message-ID: <51BED063.7010504@msgid.tls.msk.ru>
-Date: Mon, 17 Jun 2013 13:01:23 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:17.0) Gecko/17.0 Icedove/17.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1UoYwQ-000332-Bl; Mon, 17 Jun 2013 08:53:50 -0400
+Received: by mail-we0-f180.google.com with SMTP id w56so2344229wes.11
+	for <multiple recipients>; Mon, 17 Jun 2013 05:53:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=3racs4FEJYBx7nm1hCOf9I5IbPuvC159ZJ8G0FMEkro=;
+	b=UepF6YYQXIcoGyH6TM13t2jDOKB2K0QG0xqjRoeDH4jaXvsV+B/0MIPbIcwTeG004r
+	8cbx81/l9SGJx+8ij3Ni89toua0gRUPno68YpIe+v3TKck1vucSDDnYIgxoW74I58hl7
+	0OtUEK62azGBj5azNZDBbTC0MDnrxjSKHBh07PDUAmjl1kDdEe1wbYozblXxDFgm8tll
+	wNppEOZZ8RNfrKsf6mDNJsXYH2uoBeYuT8vGKvoPCArlvm+ptk0gJ76Ve7NzkI13gtmo
+	pPFIOyiQKtbqi73KxeGYtyv0qTjaD5nl1a8Hp1OVOdI279l0tKBETONj07tYGyEjkwSz
+	jnmw==
+X-Received: by 10.181.12.11 with SMTP id em11mr4785852wid.61.1371473629117;
+	Mon, 17 Jun 2013 05:53:49 -0700 (PDT)
+Received: from localhost (178-26-141-215-dynip.superkabel.de. [178.26.141.215])
+	by mx.google.com with ESMTPSA id i1sm10653332wiz.6.2013.06.17.05.53.47
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Mon, 17 Jun 2013 05:53:48 -0700 (PDT)
+Date: Mon, 17 Jun 2013 14:53:46 +0200
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20130617125346.GF30145@stefanha-thinkpad.redhat.com>
+References: <1371394865-19485-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-To: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-References: <1371455050-9523-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<1371455050-9523-3-git-send-email-mjt@msgid.tls.msk.ru>
-	<51BEC22A.80101@suse.de>
-In-Reply-To: <51BEC22A.80101@suse.de>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: Vladimir Senkov <hangup@gmail.com>, qemu-trivial@nongnu.org,
-	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL trivial/urgent 2/2] fixed a
- copy&paste error in serial.c
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1371394865-19485-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c03::234
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-img: Add missing
+	GCC_FMT_ATTR
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,17 +58,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jun 2013 09:01:47 -0000
+X-List-Received-Date: Mon, 17 Jun 2013 12:54:00 -0000
 
-17.06.2013 12:00, Andreas F=E4rber wrote:
-> Any chance to get the subject improved before the pull is accepted?
-> E.g., "serial: Fix a copy&paste error" or "char/serial: ..."
+On Sun, Jun 16, 2013 at 05:01:05PM +0200, Stefan Weil wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  qemu-img.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Fixed in the git tree --
- http://git.corpit.ru/?p=3Dqemu.git;a=3Dshortlog;h=3Drefs/heads/trivial-p=
-atches
-
-Thanks!
-
-/mjt
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
