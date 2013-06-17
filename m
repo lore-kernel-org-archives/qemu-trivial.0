@@ -1,42 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uomw0-0005ln-NF
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2013 23:50:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33149)
+	id 1Uoq8G-00021b-IG
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 03:15:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39503)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Uomvx-0005gg-Ms
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:50:18 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UoiZA-0002Me-UP
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 19:10:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Uomvw-0001TT-AM
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:50:17 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:35334)
+	(envelope-from <peter.maydell@linaro.org>) id 1UoiZA-0000o0-5j
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 19:10:28 -0400
+Received: from mail-la0-x22e.google.com ([2a00:1450:4010:c03::22e]:48176)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Uomvt-0001Sv-T4; Mon, 17 Jun 2013 23:50:14 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8A71541974;
-	Tue, 18 Jun 2013 07:50:12 +0400 (MSK)
-Message-ID: <51BFD8F3.8050807@msgid.tls.msk.ru>
-Date: Tue, 18 Jun 2013 07:50:11 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:17.0) Gecko/17.0 Icedove/17.0
+	(envelope-from <peter.maydell@linaro.org>) id 1UoiZ9-0000ns-VB
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 19:10:28 -0400
+Received: by mail-la0-f46.google.com with SMTP id eg20so2982221lab.19
+	for <qemu-trivial@nongnu.org>; Mon, 17 Jun 2013 16:10:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding:x-gm-message-state;
+	bh=w6mWx17t6s8bmq7oKt0CLO0wpkp+b/7fAegJeIirSCY=;
+	b=FYjD1BG2mgLaGIdOhHZ3CAP/v5X74/qQwopQmGQxNyZ5Ge6Zt3///elaTg1qKbcOOn
+	ntKesqSFNWh4Wrt80LBWUDla3ddG4/ZvQGJiXxSdn7jlDK1k5havxuHQgdRJwIufnH4C
+	Z+TjII/t194v5H+W8rS5IU/gM6fDX9qhT47e+o+Hcw1zAu1yHsc3jmb8pUBxhj1t1N+t
+	Dmry+E5B7VyZJhyH71E6v4ON9mh1OT0Wk6puRx9Ped4NM60oAsrxcO2ZJmu7C5Wgqzjb
+	fAhf+gYZffJLkkoI9Jf+/2+Tg09dTYvC42U0BoFZeBnPhOXQ7MJZnD6jsBWDUCQA+nGM
+	txjQ==
+X-Received: by 10.152.22.232 with SMTP id h8mr4635935laf.37.1371510626947;
+	Mon, 17 Jun 2013 16:10:26 -0700 (PDT)
 MIME-Version: 1.0
-To: li guang <lig.fnst@cn.fujitsu.com>
-References: <1370927720-4348-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<1370927720-4348-4-git-send-email-lig.fnst@cn.fujitsu.com>
-	<51B70B35.3090305@msgid.tls.msk.ru>
-	<1371522779.31705.29.camel@liguang.fnst.cn.fujitsu.com>
-In-Reply-To: <1371522779.31705.29.camel@liguang.fnst.cn.fujitsu.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
+Received: by 10.112.138.200 with HTTP; Mon, 17 Jun 2013 16:10:06 -0700 (PDT)
+In-Reply-To: <1371510546-28585-1-git-send-email-afaerber@suse.de>
+References: <1371510546-28585-1-git-send-email-afaerber@suse.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 Jun 2013 00:10:06 +0100
+Message-ID: <CAFEAcA9DdczMS-skHxVdUOO4F3KkLeF7pMqxjuQGhrKnBgBg=A@mail.gmail.com>
+To: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
+X-Gm-Message-State: ALoCoQkAdgATtr1KuUyO1e8TTm4Qrc1fuCLsJjFvnPn6fEkxur2EZWTb+rH/ml2o13QLx2DX1my2
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c03::22e
+X-Mailman-Approved-At: Tue, 18 Jun 2013 03:15:10 -0400
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/5] memory: use '=' instead
- of '|=' for memory_region_update_pending
+Subject: Re: [Qemu-trivial] [PATCH] configure: Fix "ERROR: ERROR: " for
+	missing/incompatible DTC
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,40 +56,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jun 2013 03:50:18 -0000
+X-List-Received-Date: Mon, 17 Jun 2013 23:10:30 -0000
 
-18.06.2013 06:32, li guang =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
-> =E5=9C=A8 2013-06-11=E4=BA=8C=E7=9A=84 15:34 +0400=EF=BC=8CMichael Toka=
-rev=E5=86=99=E9=81=93=EF=BC=9A
->> 11.06.2013 09:15, liguang wrote:
->>> because memory_region_update_pending is bool
->>>
->>> Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
->>> ---
->>>  memory.c |   18 +++++++++---------
->>>  1 files changed, 9 insertions(+), 9 deletions(-)
->>>
->>> diff --git a/memory.c b/memory.c
->>> index 5cb8f4a..d99eecd 100644
->>> --- a/memory.c
->>> +++ b/memory.c
->>> @@ -1114,7 +1114,7 @@ void memory_region_set_log(MemoryRegion *mr, bo=
-ol log, unsigned client)
->>> =20
->>>      memory_region_transaction_begin();
->>>      mr->dirty_log_mask =3D (mr->dirty_log_mask & ~mask) | (log * mas=
-k);
->>> -    memory_region_update_pending |=3D mr->enabled;
->>> +    memory_region_update_pending =3D mr->enabled;
->>
->> This is wrong, and the original code was right.  Here and in all other=
- places.
->=20
-> Is it valid to do '|' operation for boolean?
+On 18 June 2013 00:09, Andreas F=C3=A4rber <afaerber@suse.de> wrote:
+> error_exit already prepends "ERROR: ", so no need to print it manually.
 
-Yes it is.  Why do you think it might be problematic?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Thanks,
-
-/mjt
+-- PMM
 
