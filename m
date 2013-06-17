@@ -1,50 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UoOx9-0002ga-Eu
-	for mharc-qemu-trivial@gnu.org; Sun, 16 Jun 2013 22:13:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41028)
+	id 1UoSnb-00045K-Gu
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2013 02:20:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58102)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1UoOx5-0002aN-Md
-	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 22:13:52 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UoSnY-00040X-KW
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 02:20:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1UoOx4-0003m3-Pw
-	for qemu-trivial@nongnu.org; Sun, 16 Jun 2013 22:13:51 -0400
-Received: from [222.73.24.84] (port=14293 helo=song.cn.fujitsu.com)
+	(envelope-from <mjt@tls.msk.ru>) id 1UoSnX-0003ha-QK
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 02:20:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:51985)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>)
-	id 1UoOx2-0003kV-0a; Sun, 16 Jun 2013 22:13:48 -0400
-X-IronPort-AV: E=Sophos;i="4.87,877,1363104000"; 
-   d="scan'208";a="7570877"
-Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 17 Jun 2013 10:10:49 +0800
-Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5H2Df9B031188;
-	Mon, 17 Jun 2013 10:13:43 +0800
-Received: from localhost ([10.167.233.156])
-	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013061710073564-2175559 ;
-	Mon, 17 Jun 2013 10:07:35 +0800 
-Date: Mon, 17 Jun 2013 10:08:49 +0800
-From: Hu Tao <hutao@cn.fujitsu.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20130617020849.GD6416@G08FNSTD100614.fnst.cn.fujitsu.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UoSnV-0003h4-8J; Mon, 17 Jun 2013 02:20:13 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 8C1E541629;
+	Mon, 17 Jun 2013 10:20:11 +0400 (MSK)
+Message-ID: <51BEAA9B.500@msgid.tls.msk.ru>
+Date: Mon, 17 Jun 2013 10:20:11 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
+MIME-Version: 1.0
+To: Hu Tao <hutao@cn.fujitsu.com>
 References: <1371120709-18923-1-git-send-email-hutao@cn.fujitsu.com>
 	<1371120709-18923-2-git-send-email-hutao@cn.fujitsu.com>
 	<51B9A766.6070706@suse.de>
-MIME-Version: 1.0
-In-Reply-To: <51B9A766.6070706@suse.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/06/17 10:07:35,
-	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/06/17 10:11:43
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+	<20130617020849.GD6416@G08FNSTD100614.fnst.cn.fujitsu.com>
+In-Reply-To: <20130617020849.GD6416@G08FNSTD100614.fnst.cn.fujitsu.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 222.73.24.84
-Cc: qemu-trivial@nongnu.org, Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fix typo: apci -> acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -57,21 +48,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jun 2013 02:13:52 -0000
+X-List-Received-Date: Mon, 17 Jun 2013 06:20:18 -0000
 
-Michael,
-
-On Thu, Jun 13, 2013 at 01:05:10PM +0200, Andreas F=C3=A4rber wrote:
-> Am 13.06.2013 12:51, schrieb Hu Tao:
-> > Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
-> > ---
-> >  hw/acpi/ich9.c  | 4 ++--
-> >  hw/acpi/piix4.c | 6 +++---
-> >  2 files changed, 5 insertions(+), 5 deletions(-)
+17.06.2013 06:08, Hu Tao wrote:
+> Michael,
 >=20
-> Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+> On Thu, Jun 13, 2013 at 01:05:10PM +0200, Andreas F=C3=A4rber wrote:
+>> Am 13.06.2013 12:51, schrieb Hu Tao:
+>>> Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
+>>> ---
+>>>  hw/acpi/ich9.c  | 4 ++--
+>>>  hw/acpi/piix4.c | 6 +++---
+>>>  2 files changed, 5 insertions(+), 5 deletions(-)
+>>
+>> Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+>=20
+> Would you like to pick up this one?
 
-Would you like to pick up this one?
+Yes I will, together with a bunch of other patches
+posted to -trivial.  This patch was a bit too late
+for previous week pull so it missed that.
 
-=
+Thanks,
+
+/mjt
 
