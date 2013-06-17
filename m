@@ -1,54 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uogp1-0005up-J1
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2013 17:18:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46137)
+	id 1UoiY4-0000g0-Ns
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2013 19:09:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39370)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uogoz-0005qh-CM
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 17:18:42 -0400
+	(envelope-from <afaerber@suse.de>) id 1UoiY2-0000d3-LH
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 19:09:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uogoy-0000QZ-Ij
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 17:18:41 -0400
-Received: from e7.ny.us.ibm.com ([32.97.182.137]:52239)
+	(envelope-from <afaerber@suse.de>) id 1UoiY1-0000QS-NU
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 19:09:18 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:36579 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uogoy-0000QR-FZ
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 17:18:40 -0400
-Received: from /spool/local
-	by e7.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Mon, 17 Jun 2013 17:18:40 -0400
-Received: from d01dlp03.pok.ibm.com (9.56.250.168)
-	by e7.ny.us.ibm.com (192.168.1.107) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 17 Jun 2013 17:18:37 -0400
-Received: from d01relay04.pok.ibm.com (d01relay04.pok.ibm.com [9.56.227.236])
-	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id 31F25C90042;
-	Mon, 17 Jun 2013 17:18:36 -0400 (EDT)
-Received: from d03av05.boulder.ibm.com (d03av05.boulder.ibm.com [9.17.195.85])
-	by d01relay04.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r5HLHXCN265540; Mon, 17 Jun 2013 17:17:34 -0400
-Received: from d03av05.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av05.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id r5HLHVwd022970; Mon, 17 Jun 2013 15:17:31 -0600
-Received: from localhost6.localdomain6 (sig-9-65-233-77.mts.ibm.com
-	[9.65.233.77])
-	by d03av05.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r5HLHTFq022747; Mon, 17 Jun 2013 15:17:29 -0600
-Message-Id: <201306172117.r5HLHTFq022747@d03av05.boulder.ibm.com>
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, Anthony Liguori <aliguori@us.ibm.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <1371207042-17980-1-git-send-email-mjt@msgid.tls.msk.ru>
-Date: Mon, 17 Jun 2013 21:17:16 -0000
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13061721-5806-0000-0000-000021BF48F8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.182.137
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PULL 00/26] Trivial-patches pull request for
-	2013-06-14
+	(envelope-from <afaerber@suse.de>)
+	id 1UoiXy-0000OY-7k; Mon, 17 Jun 2013 19:09:14 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 8C203A41E0;
+	Tue, 18 Jun 2013 01:09:13 +0200 (CEST)
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+To: qemu-devel@nongnu.org
+Date: Tue, 18 Jun 2013 01:09:06 +0200
+Message-Id: <1371510546-28585-1-git-send-email-afaerber@suse.de>
+X-Mailer: git-send-email 1.8.1.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Subject: [Qemu-trivial] [PATCH] configure: Fix "ERROR: ERROR: " for
+	missing/incompatible DTC
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,12 +40,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jun 2013 21:18:42 -0000
+X-List-Received-Date: Mon, 17 Jun 2013 23:09:19 -0000
 
-Pulled.  Thanks.
+error_exit already prepends "ERROR: ", so no need to print it manually.
 
-Regards,
+Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Anthony Liguori
+diff --git a/configure b/configure
+index ad32f87..bb126e8 100755
+--- a/configure
++++ b/configure
+@@ -2529,7 +2529,7 @@ EOF
+     fdt_libs=3D"-L\$(BUILD_DIR)/dtc/libfdt $fdt_libs"
+   elif test "$fdt" =3D "yes" ; then
+     # have neither and want - prompt for system/submodule install
+-    error_exit "ERROR: DTC not present. Your options:" \
++    error_exit "DTC not present. Your options:" \
+         "  (1) Preferred: Install the DTC devel package" \
+         "  (2) Fetch the DTC submodule, using:" \
+         "      git submodule update --init dtc"
+--=20
+1.8.1.4
 
 
