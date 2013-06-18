@@ -1,46 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uoq8Z-0002dO-Kr
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 03:15:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33028)
+	id 1Uoq8c-0002i3-1D
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 03:15:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39913)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UomvX-0004ud-2j
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:49:52 -0400
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UonSn-00043J-Cp
+	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 00:24:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UomvV-00018C-I6
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:49:50 -0400
-Received: from [222.73.24.84] (port=54261 helo=song.cn.fujitsu.com)
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UonSm-0003tN-5A
+	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 00:24:13 -0400
+Received: from [222.73.24.84] (port=1753 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1UomvU-00017P-S2; Mon, 17 Jun 2013 23:49:49 -0400
+	id 1UonSj-0003qI-8g; Tue, 18 Jun 2013 00:24:09 -0400
 X-IronPort-AV: E=Sophos;i="4.87,886,1363104000"; 
-   d="scan'208";a="7584456"
+   d="scan'208";a="7584824"
 Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 18 Jun 2013 11:46:53 +0800
+	by song.cn.fujitsu.com with ESMTP; 18 Jun 2013 12:21:10 +0800
 Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5I3nlxM016580;
-	Tue, 18 Jun 2013 11:49:47 +0800
-Received: from liguang.fnst.cn.fujitsu.com ([10.167.233.147])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5I4NPwE018407;
+	Tue, 18 Jun 2013 12:23:58 +0800
+Received: from [10.167.233.147] ([10.167.233.147])
 	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013061811474501-2222953 ;
-	Tue, 18 Jun 2013 11:47:45 +0800 
-From: liguang <lig.fnst@cn.fujitsu.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 18 Jun 2013 11:45:37 +0800
-Message-Id: <1371527137-16949-5-git-send-email-lig.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1371527137-16949-1-git-send-email-lig.fnst@cn.fujitsu.com>
-References: <1371527137-16949-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	with ESMTP id 2013061812080885-2223607 ;
+	Tue, 18 Jun 2013 12:08:08 +0800 
+From: li guang <lig.fnst@cn.fujitsu.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <51BFD8F3.8050807@msgid.tls.msk.ru>
+References: <1370927720-4348-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	<1370927720-4348-4-git-send-email-lig.fnst@cn.fujitsu.com>
+	<51B70B35.3090305@msgid.tls.msk.ru>
+	<1371522779.31705.29.camel@liguang.fnst.cn.fujitsu.com>
+	<51BFD8F3.8050807@msgid.tls.msk.ru>
+Date: Tue, 18 Jun 2013 12:08:00 +0800
+Message-ID: <1371528480.31705.43.camel@liguang.fnst.cn.fujitsu.com>
+Mime-Version: 1.0
+X-Mailer: Evolution 2.30.3 
 X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/06/18 11:47:45,
+	15, 2011) at 2013/06/18 12:08:08,
 	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/06/18 11:47:45,
-	Serialize complete at 2013/06/18 11:47:45
+	2011) at 2013/06/18 12:22:01,
+	Serialize complete at 2013/06/18 12:22:01
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 222.73.24.84
-X-Mailman-Approved-At: Tue, 18 Jun 2013 03:15:29 -0400
-Cc: liguang <lig.fnst@cn.fujitsu.com>
-Subject: [Qemu-trivial] [PATCH v2 5/5] ui: boolize 'full_screen'
+X-Mailman-Approved-At: Tue, 18 Jun 2013 03:15:32 -0400
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/5] memory: use '=' instead
+ of '|=' for memory_region_update_pending
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,99 +60,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jun 2013 03:49:52 -0000
+X-List-Received-Date: Tue, 18 Jun 2013 04:24:14 -0000
 
-full_screen parameter for functions sdl_display_init,
-cocoa_display_init, curses_display_init should be
-boolized by actual usage.
-also boolize 'full_screen' in vl.c
+=E5=9C=A8 2013-06-18=E4=BA=8C=E7=9A=84 07:50 +0400=EF=BC=8CMichael Tokarev=
+=E5=86=99=E9=81=93=EF=BC=9A
+> 18.06.2013 06:32, li guang =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
+> > =E5=9C=A8 2013-06-11=E4=BA=8C=E7=9A=84 15:34 +0400=EF=BC=8CMichael Toka=
+rev=E5=86=99=E9=81=93=EF=BC=9A
+> >> 11.06.2013 09:15, liguang wrote:
+> >>> because memory_region_update_pending is bool
+> >>>
+> >>> Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+> >>> ---
+> >>>  memory.c |   18 +++++++++---------
+> >>>  1 files changed, 9 insertions(+), 9 deletions(-)
+> >>>
+> >>> diff --git a/memory.c b/memory.c
+> >>> index 5cb8f4a..d99eecd 100644
+> >>> --- a/memory.c
+> >>> +++ b/memory.c
+> >>> @@ -1114,7 +1114,7 @@ void memory_region_set_log(MemoryRegion *mr, bo=
+ol log, unsigned client)
+> >>> =20
+> >>>      memory_region_transaction_begin();
+> >>>      mr->dirty_log_mask =3D (mr->dirty_log_mask & ~mask) | (log * mas=
+k);
+> >>> -    memory_region_update_pending |=3D mr->enabled;
+> >>> +    memory_region_update_pending =3D mr->enabled;
+> >>
+> >> This is wrong, and the original code was right.  Here and in all other=
+ places.
+> >=20
+> > Is it valid to do '|' operation for boolean?
+>=20
+> Yes it is.  Why do you think it might be problematic?
+>=20
 
-it may be bold for cocoa, so if it hurts,
-these changes can be dropped.
+No problem now,
 
-Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
----
- include/ui/console.h |    6 +++---
- ui/curses.c          |    2 +-
- ui/sdl.c             |    2 +-
- vl.c                 |    4 ++--
- 4 files changed, 7 insertions(+), 7 deletions(-)
+Thanks!
 
-diff --git a/include/ui/console.h b/include/ui/console.h
-index 98edf41..e927229 100644
---- a/include/ui/console.h
-+++ b/include/ui/console.h
-@@ -306,10 +306,10 @@ CharDriverState *vc_init(ChardevVC *vc);
- void register_vc_handler(VcHandler *handler);
- 
- /* sdl.c */
--void sdl_display_init(DisplayState *ds, int full_screen, int no_frame);
-+void sdl_display_init(DisplayState *ds, bool full_screen, int no_frame);
- 
- /* cocoa.m */
--void cocoa_display_init(DisplayState *ds, int full_screen);
-+void cocoa_display_init(DisplayState *ds, bool full_screen);
- 
- /* vnc.c */
- void vnc_display_init(DisplayState *ds);
-@@ -331,7 +331,7 @@ static inline int vnc_display_pw_expire(DisplayState *ds, time_t expires)
- #endif
- 
- /* curses.c */
--void curses_display_init(DisplayState *ds, int full_screen);
-+void curses_display_init(DisplayState *ds, bool full_screen);
- 
- /* input.c */
- int index_from_key(const char *key);
-diff --git a/ui/curses.c b/ui/curses.c
-index 289a955..aaee070 100644
---- a/ui/curses.c
-+++ b/ui/curses.c
-@@ -336,7 +336,7 @@ static const DisplayChangeListenerOps dcl_ops = {
-     .dpy_text_cursor = curses_cursor_position,
- };
- 
--void curses_display_init(DisplayState *ds, int full_screen)
-+void curses_display_init(DisplayState *ds, bool full_screen)
- {
- #ifndef _WIN32
-     if (!isatty(1)) {
-diff --git a/ui/sdl.c b/ui/sdl.c
-index 39a42d6..643e095 100644
---- a/ui/sdl.c
-+++ b/ui/sdl.c
-@@ -868,7 +868,7 @@ static const DisplayChangeListenerOps dcl_ops = {
-     .dpy_cursor_define = sdl_mouse_define,
- };
- 
--void sdl_display_init(DisplayState *ds, int full_screen, int no_frame)
-+void sdl_display_init(DisplayState *ds, bool full_screen, int no_frame)
- {
-     int flags;
-     uint8_t data = 0;
-diff --git a/vl.c b/vl.c
-index f94ec9c..d474f76 100644
---- a/vl.c
-+++ b/vl.c
-@@ -198,7 +198,7 @@ static int rtc_utc = 1;
- static int rtc_date_offset = -1; /* -1 means no change */
- QEMUClock *rtc_clock;
- int vga_interface_type = VGA_NONE;
--static int full_screen = 0;
-+static bool full_screen = false;
- static int no_frame = 0;
- int no_quit = 0;
- CharDriverState *serial_hds[MAX_SERIAL_PORTS];
-@@ -3520,7 +3520,7 @@ int main(int argc, char **argv, char **envp)
- 		loadvm = optarg;
- 		break;
-             case QEMU_OPTION_full_screen:
--                full_screen = 1;
-+                full_screen = true;
-                 break;
-             case QEMU_OPTION_no_frame:
-                 no_frame = 1;
--- 
-1.7.2.5
 
 
