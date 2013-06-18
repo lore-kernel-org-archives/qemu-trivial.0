@@ -1,47 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uoq8e-0002ly-8M
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 03:15:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57278)
+	id 1Uotrp-0007pv-8g
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 07:14:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46737)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Uoobt-0003zC-Br
-	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 01:37:42 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Uotrl-0007kk-7b
+	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 07:14:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Uoobs-0002uj-HB
-	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 01:37:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46801)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Uotrj-0000r9-Vi
+	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 07:14:25 -0400
+Received: from mail-pb0-x233.google.com ([2607:f8b0:400e:c01::233]:47092)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1Uoobq-0002uD-Fa; Tue, 18 Jun 2013 01:37:38 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5I5bYBL030424
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 18 Jun 2013 01:37:35 -0400
-Received: from rincewind.home.kraxel.org (ovpn-116-37.ams2.redhat.com
-	[10.36.116.37])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r5I5bVtM013206; Tue, 18 Jun 2013 01:37:33 -0400
-Message-ID: <51BFF21A.7050008@redhat.com>
-Date: Tue, 18 Jun 2013 07:37:30 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130513 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1371487106-17194-1-git-send-email-anthony.perard@citrix.com>
-	<51BFCDA1.8040507@msgid.tls.msk.ru>
-In-Reply-To: <51BFCDA1.8040507@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Tue, 18 Jun 2013 03:15:35 -0400
-Cc: Anthony PERARD <anthony.perard@citrix.com>, qemu-trivial@nongnu.org,
-	Alon Levy <alevy@redhat.com>, QEMU-devel <qemu-devel@nongnu.org>,
-	qemu-stable <qemu-stable@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] qxl: Fix QXLRam initialisation.
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Uotrj-0000qz-PI
+	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 07:14:23 -0400
+Received: by mail-pb0-f51.google.com with SMTP id um15so3793593pbc.38
+	for <qemu-trivial@nongnu.org>; Tue, 18 Jun 2013 04:14:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id:x-mailer:in-reply-to
+	:references:x-gm-message-state;
+	bh=bT+2q4pktkWsqbpNi3R1x5lZGtTGfSdth9IrZWIkmn4=;
+	b=hxyIr/I9yfMl15r+NQWV9gqAb62dBUdiQXR4CMdHHMygF/z8dAzToEY9jK7GB+2Pk5
+	yFTVyF/DhvUFiuFt0W9SmtPRkDHFtWWAwElWSFn6d5oo051LnmZZ4LQMoFbl4t687NEU
+	JJEJ0jgWayOSJorzLaw1Gmvcpff6FsFP+IAcLrDXG0E8MZqoMFFPNAELFxvz0CJoiYeM
+	I361NTmx5Pfj5qW3HK3kYJxddNUZrX4MG6E8w/QYiSTPpWr2/OTnb5+kH2tb5ZInaD1Y
+	N7BWFq12YhlMM2UZS8SeEPmms2UO0c9lo5r4oz7DDuDufyo+pSWrZqiB3e6GTZ+0HuT8
+	22XQ==
+X-Received: by 10.66.9.72 with SMTP id x8mr1780967paa.13.1371554063079;
+	Tue, 18 Jun 2013 04:14:23 -0700 (PDT)
+Received: from localhost ([203.126.243.116]) by mx.google.com with ESMTPSA id
+	pm7sm17829888pbb.31.2013.06.18.04.14.16 for <multiple recipients>
+	(version=TLSv1.1 cipher=RC4-SHA bits=128/128);
+	Tue, 18 Jun 2013 04:14:22 -0700 (PDT)
+Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
+From: peter.crosthwaite@xilinx.com
+To: qemu-devel@nongnu.org
+Date: Tue, 18 Jun 2013 21:08:02 +1000
+Message-Id: <f65ba24ae67c04af46940c8cc67093894af97871.1371553360.git.peter.crosthwaite@xilinx.com>
+X-Mailer: git-send-email 1.8.3.rc1.44.gb387c77.dirty
+In-Reply-To: <cover.1371553360.git.peter.crosthwaite@xilinx.com>
+References: <cover.1371553360.git.peter.crosthwaite@xilinx.com>
+X-Gm-Message-State: ALoCoQn1kYEpttDrMZpmLJnsvAKov5eK86lAGgZNnIBq5tgI/fhadMYku9YFj+2dD4s2nhpJHCYX
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c01::233
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
+	Peter Crosthwaite <peter.crosthwaite@xilinx.com>, edgar.iglesias@gmail.com
+Subject: [Qemu-trivial] [PATCH v1 1/5] block/nand: Factor out common code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,29 +57,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jun 2013 05:37:42 -0000
+X-List-Received-Date: Tue, 18 Jun 2013 11:14:27 -0000
 
-  Hi,
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 
->> If memory is set to 0xc2c2.., it leads to a spice-critical error when
->> trying to start qxl.
+Most of this computation of s->iolen is the same for both the if and
+else paths here. Factor out the common parts outside the if.
 
-> But maybe instead of doing it this way, we should just memset the
-> whole thing to 0, to avoid similar bugs in the future?  Are there
-> any arches out there which have cpu_to_le32(0) != 0 ?
+Cc: qemu-trivial@nongnu.org
 
-On qemu + kvm guest memory (including pci device memory where this lives
-in) _is_ zero initialized.
+Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+---
 
-IIRC xen has a debug mode where it fills memory with non-zero values
-instead, for debugging / testing purposes, and this is where things blow up.
+ hw/block/nand.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-So while the fix is clearly correct, the patch isn't as critical as it
-initially looks like.
-
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-
-cheers,
-  Gerd
+diff --git a/hw/block/nand.c b/hw/block/nand.c
+index 087ca14..6309f93 100644
+--- a/hw/block/nand.c
++++ b/hw/block/nand.c
+@@ -272,10 +272,10 @@ static void nand_command(NANDFlashState *s)
+             break;
+         offset = s->addr & ((1 << s->addr_shift) - 1);
+         s->blk_load(s, s->addr, offset);
+-        if (s->gnd)
+-            s->iolen = (1 << s->page_shift) - offset;
+-        else
+-            s->iolen = (1 << s->page_shift) + (1 << s->oob_shift) - offset;
++        s->iolen = (1 << s->page_shift) - offset;
++        if (!s->gnd) {
++            s->iolen += 1 << s->oob_shift;
++        }
+         break;
+ 
+     case NAND_CMD_RESET:
+-- 
+1.8.3.rc1.44.gb387c77.dirty
 
 
