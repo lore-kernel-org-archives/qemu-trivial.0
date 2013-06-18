@@ -1,47 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uoq8V-0002Ud-0l
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 03:15:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60982)
+	id 1Uoq8O-0002JA-Th
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 03:15:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1Uomum-0003ev-Ko
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:49:05 -0400
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1Uoloj-0004kX-M2
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 22:38:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1Uomul-0000xE-Px
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:49:04 -0400
-Received: from [222.73.24.84] (port=15121 helo=song.cn.fujitsu.com)
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1Uoloi-0004Xb-OG
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 22:38:45 -0400
+Received: from [222.73.24.84] (port=65325 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1Uomul-0000x1-Fb; Mon, 17 Jun 2013 23:49:03 -0400
-X-IronPort-AV: E=Sophos;i="4.87,886,1363104000"; 
-   d="scan'208";a="7584450"
+	id 1Uoloe-0004Wb-TP; Mon, 17 Jun 2013 22:38:41 -0400
+X-IronPort-AV: E=Sophos;i="4.87,885,1363104000"; 
+   d="scan'208";a="7583516"
 Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 18 Jun 2013 11:46:07 +0800
+	by song.cn.fujitsu.com with ESMTP; 18 Jun 2013 10:35:44 +0800
 Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5I3n1hj016535;
-	Tue, 18 Jun 2013 11:49:01 +0800
-Received: from liguang.fnst.cn.fujitsu.com ([10.167.233.147])
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5I2ccdR011000;
+	Tue, 18 Jun 2013 10:38:38 +0800
+Received: from [10.167.233.147] ([10.167.233.147])
 	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013061811465882-2222907 ;
-	Tue, 18 Jun 2013 11:46:58 +0800 
-From: liguang <lig.fnst@cn.fujitsu.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 18 Jun 2013 11:45:35 +0800
-Message-Id: <1371527137-16949-3-git-send-email-lig.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.7.2.5
-In-Reply-To: <1371527137-16949-1-git-send-email-lig.fnst@cn.fujitsu.com>
-References: <1371527137-16949-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	with ESMTP id 2013061810363674-2220702 ;
+	Tue, 18 Jun 2013 10:36:36 +0800 
+From: li guang <lig.fnst@cn.fujitsu.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <51BFC780.4090204@msgid.tls.msk.ru>
+References: <1370927720-4348-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	<51B70F11.7090101@msgid.tls.msk.ru> <51BFC780.4090204@msgid.tls.msk.ru>
+Date: Tue, 18 Jun 2013 10:36:29 +0800
+Message-ID: <1371522989.31705.32.camel@liguang.fnst.cn.fujitsu.com>
+Mime-Version: 1.0
+X-Mailer: Evolution 2.30.3 
 X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/06/18 11:46:58,
+	15, 2011) at 2013/06/18 10:36:36,
 	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/06/18 11:46:59,
-	Serialize complete at 2013/06/18 11:46:59
+	2011) at 2013/06/18 10:36:37,
+	Serialize complete at 2013/06/18 10:36:37
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 222.73.24.84
-X-Mailman-Approved-At: Tue, 18 Jun 2013 03:15:26 -0400
-Cc: liguang <lig.fnst@cn.fujitsu.com>
-Subject: [Qemu-trivial] [PATCH v2 3/5] qemu-char: use bool in
-	qemu_chr_open_socket
+X-Mailman-Approved-At: Tue, 18 Jun 2013 03:15:20 -0400
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 1/5] vnc: pass bool pararmeter for
+ vnc_connect
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,49 +57,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jun 2013 03:49:05 -0000
+X-List-Received-Date: Tue, 18 Jun 2013 02:38:47 -0000
 
-local variables is_* should be bool by usage,
-and last parameter of qemu_opt_get_bool is bool,
-so pass true/false for it.
+=E5=9C=A8 2013-06-18=E4=BA=8C=E7=9A=84 06:35 +0400=EF=BC=8CMichael Tokarev=
+=E5=86=99=E9=81=93=EF=BC=9A
+> 11.06.2013 15:50, Michael Tokarev wrote:
+> > 11.06.2013 09:15, liguang wrote:
+> >> type last parameter of vnc_connect if bool,
+> >> so pass 'false' instead of '0' for it.
+> >=20
+> > There's another parameter in here, `skipauth', which should be
+> > bool in vnc_connect(), and should be bool in vnc_display_add_client()
+> > too.
+> >=20
+> > Also, there's no big point in splitting 1/5 and 2/5 (vnc_listen_read),
+> > I think.
+> >=20
+> > Does something like the below look ok? (not even compile-tested)
+> > (and I'd really rename `skipauth' to `doauth' everywhere, to mean
+> > exactly the opposite so that we don't have double negatives, but
+> > it is too late already)
+>=20
+> Hello.
+>=20
+> Do you want/plan to respin the series, addressing comments?
+> Are you okay with my version?
+>=20
 
-Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
----
- qemu-char.c |   20 ++++++++++----------
- 1 files changed, 10 insertions(+), 10 deletions(-)
+Yes, I'm little busy now, but I'll re-spin as soon as possible.
 
-diff --git a/qemu-char.c b/qemu-char.c
-index 2c3cfe6..0d695e0 100644
---- a/qemu-char.c
-+++ b/qemu-char.c
-@@ -2679,16 +2679,16 @@ static CharDriverState *qemu_chr_open_socket(QemuOpts *opts)
-     CharDriverState *chr = NULL;
-     Error *local_err = NULL;
-     int fd = -1;
--    int is_listen;
--    int is_waitconnect;
--    int do_nodelay;
--    int is_unix;
--    int is_telnet;
--
--    is_listen      = qemu_opt_get_bool(opts, "server", 0);
--    is_waitconnect = qemu_opt_get_bool(opts, "wait", 1);
--    is_telnet      = qemu_opt_get_bool(opts, "telnet", 0);
--    do_nodelay     = !qemu_opt_get_bool(opts, "delay", 1);
-+    bool is_listen;
-+    bool is_waitconnect;
-+    bool do_nodelay;
-+    bool is_unix;
-+    bool is_telnet;
-+
-+    is_listen      = qemu_opt_get_bool(opts, "server", false);
-+    is_waitconnect = qemu_opt_get_bool(opts, "wait", true);
-+    is_telnet      = qemu_opt_get_bool(opts, "telnet", false);
-+    do_nodelay     = !qemu_opt_get_bool(opts, "delay", true);
-     is_unix        = qemu_opt_get(opts, "path") != NULL;
-     if (!is_listen)
-         is_waitconnect = 0;
--- 
-1.7.2.5
+
 
 
