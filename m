@@ -1,46 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UovFE-0002pg-9R
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 08:42:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40759)
+	id 1UovlE-0003lY-DT
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 09:15:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59572)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony.perard@citrix.com>) id 1UovF9-0002eN-TR
-	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 08:42:42 -0400
+	(envelope-from <armbru@pond.sub.org>) id 1Uoqv6-0004Vz-8w
+	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 04:05:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony.perard@citrix.com>) id 1UovF5-0004V0-9m
-	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 08:42:39 -0400
-Received: from smtp.citrix.com ([66.165.176.89]:57406)
+	(envelope-from <armbru@pond.sub.org>) id 1Uoqv4-0007il-3t
+	for qemu-trivial@nongnu.org; Tue, 18 Jun 2013 04:05:39 -0400
+Received: from oxygen.pond.sub.org ([78.46.104.156]:54461)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony.perard@citrix.com>)
-	id 1UovF2-0004UQ-EJ; Tue, 18 Jun 2013 08:42:32 -0400
-X-IronPort-AV: E=Sophos;i="4.87,888,1363132800"; d="scan'208";a="31829859"
-Received: from accessns.citrite.net (HELO FTLPEX01CL01.citrite.net)
-	([10.9.154.239]) by FTLPIPO01.CITRIX.COM with ESMTP/TLS/AES128-SHA;
-	18 Jun 2013 12:42:31 +0000
-Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
-	(10.13.107.78) with Microsoft SMTP Server id 14.2.342.4;
-	Tue, 18 Jun 2013 08:42:31 -0400
-Received: from [10.80.3.61]	by ukmail1.uk.xensource.com with esmtp (Exim 4.69)
-	(envelope-from <anthony.perard@citrix.com>)	id 1UovF0-0002un-KS;
-	Tue, 18 Jun 2013 13:42:30 +0100
-Message-ID: <51C055B6.9070401@citrix.com>
-Date: Tue, 18 Jun 2013 13:42:30 +0100
-From: Anthony PERARD <anthony.perard@citrix.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Gerd Hoffmann <kraxel@redhat.com>
-References: <1371487106-17194-1-git-send-email-anthony.perard@citrix.com>
-	<51BFCDA1.8040507@msgid.tls.msk.ru> <51BFF21A.7050008@redhat.com>
-In-Reply-To: <51BFF21A.7050008@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.165.176.89
-Cc: qemu-trivial@nongnu.org, Alon Levy <alevy@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, QEMU-devel <qemu-devel@nongnu.org>,
-	qemu-stable <qemu-stable@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] qxl: Fix QXLRam initialisation.
+	(envelope-from <armbru@pond.sub.org>)
+	id 1Uoqut-0007fh-Ii; Tue, 18 Jun 2013 04:05:27 -0400
+Received: from blackfin.pond.sub.org (p5B32A651.dip0.t-ipconnect.de
+	[91.50.166.81])
+	by oxygen.pond.sub.org (Postfix) with ESMTPA id 3E150A4617;
+	Tue, 18 Jun 2013 10:05:24 +0200 (CEST)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 75FF7200B4; Tue, 18 Jun 2013 10:05:23 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 18 Jun 2013 10:05:23 +0200
+Message-Id: <1371542723-926-1-git-send-email-armbru@redhat.com>
+X-Mailer: git-send-email 1.7.11.7
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 78.46.104.156
+X-Mailman-Approved-At: Tue, 18 Jun 2013 09:15:46 -0400
+Cc: qemu-trivial@nongnu.org, berrange@redhat.com, qemu-stable@nongnu.org
+Subject: [Qemu-trivial] [PATCH] acl: acl_add can't insert before last list
+	element, fix
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,22 +40,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jun 2013 12:42:42 -0000
+X-List-Received-Date: Tue, 18 Jun 2013 08:05:42 -0000
 
-Hi,
+Watch this:
 
-On 18/06/13 06:37, Gerd Hoffmann wrote:
-> IIRC xen has a debug mode where it fills memory with non-zero values
-> instead, for debugging / testing purposes, and this is where things blow up.
->
-> So while the fix is clearly correct, the patch isn't as critical as it
-> initially looks like.
+    $ upstream-qemu -nodefaults -S -vnc :0,acl,sasl -monitor stdio
+    QEMU 1.5.50 monitor - type 'help' for more information
+    (qemu) acl_add vnc.username drei allow
+    acl: added rule at position 1
+    (qemu) acl_show vnc.username
+    policy: deny
+    1: allow drei
+    (qemu) acl_add vnc.username zwei allow 1
+    acl: added rule at position 2
+    (qemu) acl_show vnc.username
+    policy: deny
+    1: allow drei
+    2: allow zwei
+    (qemu) acl_add vnc.username eins allow 1
+    acl: added rule at position 1
+    (qemu) acl_show vnc.username
+    policy: deny
+    1: allow eins
+    2: allow drei
+    3: allow zwei
 
-Indeed, it's not critical. There is other issue with Xen before to get
-QXL running.
+The second acl_add inserts at position 2 instead of 1.
 
-Regards,
+Root cause is an off-by-one in qemu_acl_insert(): when index ==
+acl->nentries, it appends instead of inserting before the last list
+element.
 
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ util/acl.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/util/acl.c b/util/acl.c
+index a7f33ff..938b7ae 100644
+--- a/util/acl.c
++++ b/util/acl.c
+@@ -138,9 +138,9 @@ int qemu_acl_insert(qemu_acl *acl,
+ 
+     if (index <= 0)
+         return -1;
+-    if (index >= acl->nentries)
++    if (index > acl->nentries) {
+         return qemu_acl_append(acl, deny, match);
+-
++    }
+ 
+     entry = g_malloc(sizeof(*entry));
+     entry->match = g_strdup(match);
 -- 
-Anthony PERARD
+1.7.11.7
+
 
