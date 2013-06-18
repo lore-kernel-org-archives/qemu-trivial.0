@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Uoq8Y-0002aj-C3
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 03:15:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33008)
+	id 1Uoq8Z-0002dO-Kr
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jun 2013 03:15:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33028)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UomvU-0004s8-LG
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:49:50 -0400
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UomvX-0004ud-2j
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:49:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UomvT-00017h-LL
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:49:48 -0400
+	(envelope-from <lig.fnst@cn.fujitsu.com>) id 1UomvV-00018C-I6
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 23:49:50 -0400
 Received: from [222.73.24.84] (port=54261 helo=song.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lig.fnst@cn.fujitsu.com>)
-	id 1UomvT-00017P-8h; Mon, 17 Jun 2013 23:49:47 -0400
+	id 1UomvU-00017P-S2; Mon, 17 Jun 2013 23:49:49 -0400
 X-IronPort-AV: E=Sophos;i="4.87,886,1363104000"; 
-   d="scan'208";a="7584455"
+   d="scan'208";a="7584456"
 Received: from unknown (HELO tang.cn.fujitsu.com) ([10.167.250.3])
-	by song.cn.fujitsu.com with ESMTP; 18 Jun 2013 11:46:50 +0800
+	by song.cn.fujitsu.com with ESMTP; 18 Jun 2013 11:46:53 +0800
 Received: from fnstmail02.fnst.cn.fujitsu.com (tang.cn.fujitsu.com [127.0.0.1])
-	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5I3niZL016577;
-	Tue, 18 Jun 2013 11:49:44 +0800
+	by tang.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id r5I3nlxM016580;
+	Tue, 18 Jun 2013 11:49:47 +0800
 Received: from liguang.fnst.cn.fujitsu.com ([10.167.233.147])
 	by fnstmail02.fnst.cn.fujitsu.com (Lotus Domino Release 8.5.3)
-	with ESMTP id 2013061811474255-2222949 ;
-	Tue, 18 Jun 2013 11:47:42 +0800 
+	with ESMTP id 2013061811474501-2222953 ;
+	Tue, 18 Jun 2013 11:47:45 +0800 
 From: liguang <lig.fnst@cn.fujitsu.com>
 To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 18 Jun 2013 11:45:36 +0800
-Message-Id: <1371527137-16949-4-git-send-email-lig.fnst@cn.fujitsu.com>
+Date: Tue, 18 Jun 2013 11:45:37 +0800
+Message-Id: <1371527137-16949-5-git-send-email-lig.fnst@cn.fujitsu.com>
 X-Mailer: git-send-email 1.7.2.5
 In-Reply-To: <1371527137-16949-1-git-send-email-lig.fnst@cn.fujitsu.com>
 References: <1371527137-16949-1-git-send-email-lig.fnst@cn.fujitsu.com>
 X-MIMETrack: Itemize by SMTP Server on mailserver/fnst(Release 8.5.3|September
-	15, 2011) at 2013/06/18 11:47:42,
+	15, 2011) at 2013/06/18 11:47:45,
 	Serialize by Router on mailserver/fnst(Release 8.5.3|September 15,
-	2011) at 2013/06/18 11:47:42,
-	Serialize complete at 2013/06/18 11:47:42
+	2011) at 2013/06/18 11:47:45,
+	Serialize complete at 2013/06/18 11:47:45
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 222.73.24.84
-X-Mailman-Approved-At: Tue, 18 Jun 2013 03:15:28 -0400
+X-Mailman-Approved-At: Tue, 18 Jun 2013 03:15:29 -0400
 Cc: liguang <lig.fnst@cn.fujitsu.com>
-Subject: [Qemu-trivial] [PATCH v2 4/5] sd: pass bool parameter for sd_init
+Subject: [Qemu-trivial] [PATCH v2 5/5] ui: boolize 'full_screen'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,105 +52,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jun 2013 03:49:51 -0000
+X-List-Received-Date: Tue, 18 Jun 2013 03:49:52 -0000
+
+full_screen parameter for functions sdl_display_init,
+cocoa_display_init, curses_display_init should be
+boolized by actual usage.
+also boolize 'full_screen' in vl.c
+
+it may be bold for cocoa, so if it hurts,
+these changes can be dropped.
 
 Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
 ---
- hw/sd/milkymist-memcard.c |    2 +-
- hw/sd/omap_mmc.c          |    4 ++--
- hw/sd/pl181.c             |    2 +-
- hw/sd/pxa2xx_mmci.c       |    2 +-
- hw/sd/sdhci.c             |    2 +-
- hw/sd/ssi-sd.c            |    2 +-
- 6 files changed, 7 insertions(+), 7 deletions(-)
+ include/ui/console.h |    6 +++---
+ ui/curses.c          |    2 +-
+ ui/sdl.c             |    2 +-
+ vl.c                 |    4 ++--
+ 4 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
-index d5944bc..61a8aad 100644
---- a/hw/sd/milkymist-memcard.c
-+++ b/hw/sd/milkymist-memcard.c
-@@ -250,7 +250,7 @@ static int milkymist_memcard_init(SysBusDevice *dev)
-     DriveInfo *dinfo;
+diff --git a/include/ui/console.h b/include/ui/console.h
+index 98edf41..e927229 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -306,10 +306,10 @@ CharDriverState *vc_init(ChardevVC *vc);
+ void register_vc_handler(VcHandler *handler);
  
-     dinfo = drive_get_next(IF_SD);
--    s->card = sd_init(dinfo ? dinfo->bdrv : NULL, 0);
-+    s->card = sd_init(dinfo ? dinfo->bdrv : NULL, false);
-     s->enabled = dinfo ? bdrv_is_inserted(dinfo->bdrv) : 0;
+ /* sdl.c */
+-void sdl_display_init(DisplayState *ds, int full_screen, int no_frame);
++void sdl_display_init(DisplayState *ds, bool full_screen, int no_frame);
  
-     memory_region_init_io(&s->regs_region, &memcard_mmio_ops, s,
-diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-index d4079cd..ba9f4b3 100644
---- a/hw/sd/omap_mmc.c
-+++ b/hw/sd/omap_mmc.c
-@@ -592,7 +592,7 @@ struct omap_mmc_s *omap_mmc_init(hwaddr base,
-     memory_region_add_subregion(sysmem, base, &s->iomem);
+ /* cocoa.m */
+-void cocoa_display_init(DisplayState *ds, int full_screen);
++void cocoa_display_init(DisplayState *ds, bool full_screen);
  
-     /* Instantiate the storage */
--    s->card = sd_init(bd, 0);
-+    s->card = sd_init(bd, false);
+ /* vnc.c */
+ void vnc_display_init(DisplayState *ds);
+@@ -331,7 +331,7 @@ static inline int vnc_display_pw_expire(DisplayState *ds, time_t expires)
+ #endif
  
-     return s;
- }
-@@ -617,7 +617,7 @@ struct omap_mmc_s *omap2_mmc_init(struct omap_target_agent_s *ta,
-     omap_l4_attach(ta, 0, &s->iomem);
+ /* curses.c */
+-void curses_display_init(DisplayState *ds, int full_screen);
++void curses_display_init(DisplayState *ds, bool full_screen);
  
-     /* Instantiate the storage */
--    s->card = sd_init(bd, 0);
-+    s->card = sd_init(bd, false);
+ /* input.c */
+ int index_from_key(const char *key);
+diff --git a/ui/curses.c b/ui/curses.c
+index 289a955..aaee070 100644
+--- a/ui/curses.c
++++ b/ui/curses.c
+@@ -336,7 +336,7 @@ static const DisplayChangeListenerOps dcl_ops = {
+     .dpy_text_cursor = curses_cursor_position,
+ };
  
-     s->cdet = qemu_allocate_irqs(omap_mmc_cover_cb, s, 1)[0];
-     sd_set_cb(s->card, NULL, s->cdet);
-diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
-index 2527296..e08fd04 100644
---- a/hw/sd/pl181.c
-+++ b/hw/sd/pl181.c
-@@ -485,7 +485,7 @@ static int pl181_init(SysBusDevice *dev)
-     sysbus_init_irq(dev, &s->irq[1]);
-     qdev_init_gpio_out(&s->busdev.qdev, s->cardstatus, 2);
-     dinfo = drive_get_next(IF_SD);
--    s->card = sd_init(dinfo ? dinfo->bdrv : NULL, 0);
-+    s->card = sd_init(dinfo ? dinfo->bdrv : NULL, false);
-     return 0;
- }
+-void curses_display_init(DisplayState *ds, int full_screen)
++void curses_display_init(DisplayState *ds, bool full_screen)
+ {
+ #ifndef _WIN32
+     if (!isatty(1)) {
+diff --git a/ui/sdl.c b/ui/sdl.c
+index 39a42d6..643e095 100644
+--- a/ui/sdl.c
++++ b/ui/sdl.c
+@@ -868,7 +868,7 @@ static const DisplayChangeListenerOps dcl_ops = {
+     .dpy_cursor_define = sdl_mouse_define,
+ };
  
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-index 2db1cab..0574d6b 100644
---- a/hw/sd/pxa2xx_mmci.c
-+++ b/hw/sd/pxa2xx_mmci.c
-@@ -538,7 +538,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
-     memory_region_add_subregion(sysmem, base, &s->iomem);
- 
-     /* Instantiate the actual storage */
--    s->card = sd_init(bd, 0);
-+    s->card = sd_init(bd, false);
- 
-     register_savevm(NULL, "pxa2xx_mmci", 0, 0,
-                     pxa2xx_mmci_save, pxa2xx_mmci_load, s);
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index e64899c..ddc260f 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1165,7 +1165,7 @@ static void sdhci_initfn(Object *obj)
-     DriveInfo *di;
- 
-     di = drive_get_next(IF_SD);
--    s->card = sd_init(di ? di->bdrv : NULL, 0);
-+    s->card = sd_init(di ? di->bdrv : NULL, false);
-     s->eject_cb = qemu_allocate_irqs(sdhci_insert_eject_cb, s, 1)[0];
-     s->ro_cb = qemu_allocate_irqs(sdhci_card_readonly_cb, s, 1)[0];
-     sd_set_cb(s->card, s->ro_cb, s->eject_cb);
-diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-index 4d3c4f6..d47e237 100644
---- a/hw/sd/ssi-sd.c
-+++ b/hw/sd/ssi-sd.c
-@@ -245,7 +245,7 @@ static int ssi_sd_init(SSISlave *dev)
- 
-     s->mode = SSI_SD_CMD;
-     dinfo = drive_get_next(IF_SD);
--    s->sd = sd_init(dinfo ? dinfo->bdrv : NULL, 1);
-+    s->sd = sd_init(dinfo ? dinfo->bdrv : NULL, true);
-     register_savevm(&dev->qdev, "ssi_sd", -1, 1, ssi_sd_save, ssi_sd_load, s);
-     return 0;
- }
+-void sdl_display_init(DisplayState *ds, int full_screen, int no_frame)
++void sdl_display_init(DisplayState *ds, bool full_screen, int no_frame)
+ {
+     int flags;
+     uint8_t data = 0;
+diff --git a/vl.c b/vl.c
+index f94ec9c..d474f76 100644
+--- a/vl.c
++++ b/vl.c
+@@ -198,7 +198,7 @@ static int rtc_utc = 1;
+ static int rtc_date_offset = -1; /* -1 means no change */
+ QEMUClock *rtc_clock;
+ int vga_interface_type = VGA_NONE;
+-static int full_screen = 0;
++static bool full_screen = false;
+ static int no_frame = 0;
+ int no_quit = 0;
+ CharDriverState *serial_hds[MAX_SERIAL_PORTS];
+@@ -3520,7 +3520,7 @@ int main(int argc, char **argv, char **envp)
+ 		loadvm = optarg;
+ 		break;
+             case QEMU_OPTION_full_screen:
+-                full_screen = 1;
++                full_screen = true;
+                 break;
+             case QEMU_OPTION_no_frame:
+                 no_frame = 1;
 -- 
 1.7.2.5
 
