@@ -1,34 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UoiY4-0000g0-Ns
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2013 19:09:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39370)
+	id 1Uoliv-0007SE-EN
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2013 22:32:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47939)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UoiY2-0000d3-LH
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 19:09:19 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Uolit-0007PE-He
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 22:32:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UoiY1-0000QS-NU
-	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 19:09:18 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:36579 helo=mx2.suse.de)
+	(envelope-from <mjt@tls.msk.ru>) id 1Uolis-0002fF-Mg
+	for qemu-trivial@nongnu.org; Mon, 17 Jun 2013 22:32:43 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60763)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UoiXy-0000OY-7k; Mon, 17 Jun 2013 19:09:14 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 8C203A41E0;
-	Tue, 18 Jun 2013 01:09:13 +0200 (CEST)
-From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-To: qemu-devel@nongnu.org
-Date: Tue, 18 Jun 2013 01:09:06 +0200
-Message-Id: <1371510546-28585-1-git-send-email-afaerber@suse.de>
-X-Mailer: git-send-email 1.8.1.4
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Uoliq-0002eq-OU; Mon, 17 Jun 2013 22:32:40 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id A7637418E5;
+	Tue, 18 Jun 2013 06:32:39 +0400 (MSK)
+Message-ID: <51BFC6C6.4050009@msgid.tls.msk.ru>
+Date: Tue, 18 Jun 2013 06:32:38 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [Qemu-trivial] [PATCH] configure: Fix "ERROR: ERROR: " for
-	missing/incompatible DTC
+To: Stefan Weil <sw@weilnetz.de>
+References: <1371382645-20912-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1371382645-20912-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] kvm: Fix potential resource leak
+ (missing fclose)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,29 +45,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jun 2013 23:09:19 -0000
+X-List-Received-Date: Tue, 18 Jun 2013 02:32:44 -0000
 
-error_exit already prepends "ERROR: ", so no need to print it manually.
+Thanks, applied all of the following:
 
-Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
----
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ kvm: Fix potential resource leak (missing fclose)
+ savevm: Fix potential memory leak
+ audio: Replace static functions in header file by macros, remove GCC_ATTR
+ libcacard: Fix cppcheck warning and remove unneeded code
 
-diff --git a/configure b/configure
-index ad32f87..bb126e8 100755
---- a/configure
-+++ b/configure
-@@ -2529,7 +2529,7 @@ EOF
-     fdt_libs=3D"-L\$(BUILD_DIR)/dtc/libfdt $fdt_libs"
-   elif test "$fdt" =3D "yes" ; then
-     # have neither and want - prompt for system/submodule install
--    error_exit "ERROR: DTC not present. Your options:" \
-+    error_exit "DTC not present. Your options:" \
-         "  (1) Preferred: Install the DTC devel package" \
-         "  (2) Fetch the DTC submodule, using:" \
-         "      git submodule update --init dtc"
---=20
-1.8.1.4
+to the trivial patch queue.
 
+/mjt
 
