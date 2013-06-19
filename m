@@ -1,55 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UpDWn-0004pf-T6
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Jun 2013 04:14:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39509)
+	id 1UpDai-0006hk-Fy
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Jun 2013 04:18:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40401)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UpDWj-0004lH-SM
-	for qemu-trivial@nongnu.org; Wed, 19 Jun 2013 04:14:04 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UpDag-0006g4-Rh
+	for qemu-trivial@nongnu.org; Wed, 19 Jun 2013 04:18:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UpDWh-0000w7-3P
-	for qemu-trivial@nongnu.org; Wed, 19 Jun 2013 04:14:01 -0400
-Received: from mail-bk0-x236.google.com ([2a00:1450:4008:c01::236]:53714)
+	(envelope-from <mjt@tls.msk.ru>) id 1UpDaf-00026R-MO
+	for qemu-trivial@nongnu.org; Wed, 19 Jun 2013 04:18:06 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:33151)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UpDWg-0000vr-TO
-	for qemu-trivial@nongnu.org; Wed, 19 Jun 2013 04:13:59 -0400
-Received: by mail-bk0-f54.google.com with SMTP id it16so2208013bkc.13
-	for <qemu-trivial@nongnu.org>; Wed, 19 Jun 2013 01:13:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:date
-	:x-google-sender-auth:message-id:subject:from:to:cc:content-type
-	:x-gm-message-state;
-	bh=tLCxhSz33jy3ZKFUJn+A+LR/cPkevR9F/2ydhVYDX9A=;
-	b=oDdcHavBvkGSWoMcFzhYCy6yLc0TBJCBR3WlVi+DVlLxCDKb7MLuEZ7IBdAiqMrApG
-	y/kUNiympF667l+8QgiKJGtJd3pOO7uSgU59U4d8dh/3AcyENJ6pJZNm3DCDhjaDqwLS
-	0nwPStSQwtgtb64/1JlUwZ4doq5BvsPwUwqGtDI38fUrHigHwGzDgmOQQdm12RYquVzC
-	3Egh2NRz6HZDeQVR/Zi5DtrEfMpcvarzYwU0BwK6Tv1k24kYPxxZqkTcOKjyc15RCc9K
-	PgbFpXdLhl3hSUVGIKH/NYtJl1GtKDae293zgzn71upu4H1xPV6s2/vYrWqznzL7x14z
-	LV0A==
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UpDac-00025k-J9; Wed, 19 Jun 2013 04:18:02 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 231AB41974;
+	Wed, 19 Jun 2013 12:18:01 +0400 (MSK)
+Message-ID: <51C16937.6060405@msgid.tls.msk.ru>
+Date: Wed, 19 Jun 2013 12:17:59 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/17.0 Icedove/17.0
 MIME-Version: 1.0
-X-Received: by 10.204.55.201 with SMTP id v9mr221022bkg.149.1371629637819;
-	Wed, 19 Jun 2013 01:13:57 -0700 (PDT)
-Sender: peter.crosthwaite@petalogix.com
-Received: by 10.204.35.136 with HTTP; Wed, 19 Jun 2013 01:13:57 -0700 (PDT)
-In-Reply-To: <51C16755.9050700@msgid.tls.msk.ru>
-References: <cover.1371553360.git.peter.crosthwaite@xilinx.com>
-	<f65ba24ae67c04af46940c8cc67093894af97871.1371553360.git.peter.crosthwaite@xilinx.com>
-	<51C16755.9050700@msgid.tls.msk.ru>
-Date: Wed, 19 Jun 2013 18:13:57 +1000
-X-Google-Sender-Auth: w5PDFo5oK7c4-Dckx-4NdZL9C44
-Message-ID: <CAEgOgz4rOGjnaHEV9v88SiLS3MpWTrpfaf2B7yw9mU-B5GYq9Q@mail.gmail.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=ISO-8859-1
-X-Gm-Message-State: ALoCoQm6q413C4rF5i3YCKtLpoUtHGxRaZ2jwQi5N2xGS/ftItsQRD6Kje65BkZeHm0M8W79wg5b
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4008:c01::236
-Cc: Kevin Wolf <kwolf@redhat.com>, peter.maydell@linaro.org,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>, edgar.iglesias@gmail.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 1/5] block/nand: Factor
- out common code
+To: liguang <lig.fnst@cn.fujitsu.com>
+References: <1371527137-16949-1-git-send-email-lig.fnst@cn.fujitsu.com>
+In-Reply-To: <1371527137-16949-1-git-send-email-lig.fnst@cn.fujitsu.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2 1/5] vnc: pass bool parameter for some
+ functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,68 +45,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Jun 2013 08:14:04 -0000
+X-List-Received-Date: Wed, 19 Jun 2013 08:18:08 -0000
 
-Hi Michael,
+18.06.2013 07:45, liguang wrote:
+> last parameters of vnc_listen_read,vnc_connect are bool,
+> so pass 'false/true' instead of '0/1' for them.
+>=20
+> Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+> Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
 
-On Wed, Jun 19, 2013 at 6:09 PM, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 18.06.2013 15:08, peter.crosthwaite@xilinx.com wrote:
->> From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
->>
->> Most of this computation of s->iolen is the same for both the if and
->> else paths here. Factor out the common parts outside the if.
->>
->> Cc: qemu-trivial@nongnu.org
->>
->> Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
->> ---
->>
->>  hw/block/nand.c | 8 ++++----
->>  1 file changed, 4 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/block/nand.c b/hw/block/nand.c
->> index 087ca14..6309f93 100644
->> --- a/hw/block/nand.c
->> +++ b/hw/block/nand.c
->> @@ -272,10 +272,10 @@ static void nand_command(NANDFlashState *s)
->>              break;
->>          offset = s->addr & ((1 << s->addr_shift) - 1);
->>          s->blk_load(s, s->addr, offset);
->> -        if (s->gnd)
->> -            s->iolen = (1 << s->page_shift) - offset;
->> -        else
->> -            s->iolen = (1 << s->page_shift) + (1 << s->oob_shift) - offset;
->> +        s->iolen = (1 << s->page_shift) - offset;
->> +        if (!s->gnd) {
->> +            s->iolen += 1 << s->oob_shift;
->> +        }
->
-> Hm.  Can s->iolen become negative here?
->
-> addr_shift can be either less or greather than page_shift.  When addr_shift
-> is larger than page_shift (addr_shift=16, page_shift=11), offset may be up
-> to 65535, in which case s->iolen may be -63487, even without additional
-> oob_shift.
->
-> I dunno if this is a concern, just.. asking.
->
-> Besides, exactly the same expression is used in nand_getio() down this file,
-> maybe a common function is in order? :)
->
-> And looking at this file, I think it deserves some good type changes.  For
-> example, all these _shift are unsigned, and most are actually used as masks,
-> in form (1<<shift), instead of directly (except of erase_shift).
->
+I think I'll apply my version instead, -- which converts remaining argume=
+nts
+of functions your patch touches (so that we don't have this:
 
-All sounds fair. Ill have another look in the context of type
-changing, and factoring out some commonality. Your able to take P2
-without conflict? :)
+> -        vnc_connect(vs, csock, 0, 0);
+> +        vnc_connect(vs, csock, 0, false);
 
-Regards,
-Peter
+where 3rd argument is also a bool), and which combines your patches 1/5
+and 2/5 into one.
 
-> Thanks,
->
-> /mjt
->
+I'll resend it again in a top-level message.
+
+Thanks,
+
+/mjt
 
