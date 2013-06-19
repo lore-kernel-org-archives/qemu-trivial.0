@@ -1,39 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UpDtF-0006g0-PX
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Jun 2013 04:37:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45734)
+	id 1UpDvO-0008Lz-Nj
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Jun 2013 04:39:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46372)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UpDtD-0006di-Jw
-	for qemu-trivial@nongnu.org; Wed, 19 Jun 2013 04:37:16 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UpDvM-0008Is-I5
+	for qemu-trivial@nongnu.org; Wed, 19 Jun 2013 04:39:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UpDtC-00009I-D5
-	for qemu-trivial@nongnu.org; Wed, 19 Jun 2013 04:37:15 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:45135)
+	(envelope-from <mjt@tls.msk.ru>) id 1UpDvL-0000sF-6P
+	for qemu-trivial@nongnu.org; Wed, 19 Jun 2013 04:39:28 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57327)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1UpDt5-00008k-M8; Wed, 19 Jun 2013 04:37:07 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2730B41974;
-	Wed, 19 Jun 2013 12:37:06 +0400 (MSK)
-Message-ID: <51C16DB0.1090905@msgid.tls.msk.ru>
-Date: Wed, 19 Jun 2013 12:37:04 +0400
+	id 1UpDvI-0000rP-Bs; Wed, 19 Jun 2013 04:39:24 -0400
+Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id B232041974;
+	Wed, 19 Jun 2013 12:39:23 +0400 (MSK)
+Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
+	id ACE0251E; Wed, 19 Jun 2013 12:39:21 +0400 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:17.0) Gecko/17.0 Icedove/17.0
-MIME-Version: 1.0
 To: liguang <lig.fnst@cn.fujitsu.com>
-References: <1371527137-16949-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<1371527137-16949-5-git-send-email-lig.fnst@cn.fujitsu.com>
-In-Reply-To: <1371527137-16949-5-git-send-email-lig.fnst@cn.fujitsu.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Date: Wed, 19 Jun 2013 12:39:17 +0400
+Message-Id: <1371631157-18096-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2 5/5] ui: boolize 'full_screen'
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH trivial] vnc: use booleans for vnc_connect,
+	vnc_listen_read and vnc_display_add_client
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,41 +39,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Jun 2013 08:37:16 -0000
+X-List-Received-Date: Wed, 19 Jun 2013 08:39:29 -0000
 
-18.06.2013 07:45, liguang wrote:
-[]
-> -void sdl_display_init(DisplayState *ds, int full_screen, int no_frame);
-> +void sdl_display_init(DisplayState *ds, bool full_screen, int no_frame);
+Some arguments to these functions are booleans - either by declaration,
+or by actual usage, but sometimes value of 0 or 1 is passed for a bool,
+and sometimes it is declared as int but a bool value, or true/false,
+is passed to it instead.  Clean it up a bit.
 
-The same applies to no_frame, isn't it?
+Cc: liguang <lig.fnst@cn.fujitsu.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ include/ui/console.h |    2 +-
+ ui/vnc.c             |   15 ++++++++-------
+ 2 files changed, 9 insertions(+), 8 deletions(-)
 
-These conversions to bool are like this -- "thankless", because there are
-so many of them all around, you touch one place and it becomes obvious
-that nearby places should be touched too.  Like this:
+diff --git a/include/ui/console.h b/include/ui/console.h
+index f1d79f9..98edf41 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -314,7 +314,7 @@ void cocoa_display_init(DisplayState *ds, int full_screen);
+ /* vnc.c */
+ void vnc_display_init(DisplayState *ds);
+ void vnc_display_open(DisplayState *ds, const char *display, Error **errp);
+-void vnc_display_add_client(DisplayState *ds, int csock, int skipauth);
++void vnc_display_add_client(DisplayState *ds, int csock, bool skipauth);
+ char *vnc_display_local_addr(DisplayState *ds);
+ #ifdef CONFIG_VNC
+ int vnc_display_password(DisplayState *ds, const char *password);
+diff --git a/ui/vnc.c b/ui/vnc.c
+index dfc7459..5601cc3 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -2771,7 +2771,8 @@ static void vnc_refresh(DisplayChangeListener *dcl)
+     }
+ }
+ 
+-static void vnc_connect(VncDisplay *vd, int csock, int skipauth, bool websocket)
++static void vnc_connect(VncDisplay *vd, int csock,
++                        bool skipauth, bool websocket)
+ {
+     VncState *vs = g_malloc0(sizeof(VncState));
+     int i;
+@@ -2883,19 +2884,19 @@ static void vnc_listen_read(void *opaque, bool websocket)
+     }
+ 
+     if (csock != -1) {
+-        vnc_connect(vs, csock, 0, websocket);
++        vnc_connect(vs, csock, false, websocket);
+     }
+ }
+ 
+ static void vnc_listen_regular_read(void *opaque)
+ {
+-    vnc_listen_read(opaque, 0);
++    vnc_listen_read(opaque, false);
+ }
+ 
+ #ifdef CONFIG_VNC_WS
+ static void vnc_listen_websocket_read(void *opaque)
+ {
+-    vnc_listen_read(opaque, 1);
++    vnc_listen_read(opaque, true);
+ }
+ #endif /* CONFIG_VNC_WS */
+ 
+@@ -3283,7 +3284,7 @@ void vnc_display_open(DisplayState *ds, const char *display, Error **errp)
+         if (csock < 0) {
+             goto fail;
+         }
+-        vnc_connect(vs, csock, 0, 0);
++        vnc_connect(vs, csock, false, false);
+     } else {
+         /* listen for connects */
+         char *dpy;
+@@ -3341,9 +3342,9 @@ fail:
+ #endif /* CONFIG_VNC_WS */
+ }
+ 
+-void vnc_display_add_client(DisplayState *ds, int csock, int skipauth)
++void vnc_display_add_client(DisplayState *ds, int csock, bool skipauth)
+ {
+     VncDisplay *vs = vnc_display;
+ 
+-    vnc_connect(vs, csock, skipauth, 0);
++    vnc_connect(vs, csock, skipauth, false);
+ }
+-- 
+1.7.10.4
 
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -198,7 +198,7 @@ static int rtc_utc = 1;
->  static int rtc_date_offset = -1; /* -1 means no change */
->  QEMUClock *rtc_clock;
->  int vga_interface_type = VGA_NONE;
-> -static int full_screen = 0;
-> +static bool full_screen = false;
->  static int no_frame = 0;
->  int no_quit = 0;
-
-This no_quit is bool too... :) But I think _this_ one might be in a
-separate patch.  But it is also display-specific.
-
-Besides, I think we should rewamp this display init thing entirely,
-making displays to be modules and implementing options parsing
-properly.
-
-I think I'll do that today, and will convert these to bools while
-at it.
-
-Thanks,
-
-/mjt
 
