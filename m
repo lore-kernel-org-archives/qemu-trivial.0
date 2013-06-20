@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UpmEI-0006dT-Ap
+	id 1UpmEI-0006d1-5F
 	for mharc-qemu-trivial@gnu.org; Thu, 20 Jun 2013 17:17:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43326)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1Upi5O-0005QY-9W
-	for qemu-trivial@nongnu.org; Thu, 20 Jun 2013 12:51:51 -0400
+	(envelope-from <mst@redhat.com>) id 1Upgwe-0002Vn-Iq
+	for qemu-trivial@nongnu.org; Thu, 20 Jun 2013 11:38:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1Upi5M-0000fU-G7
-	for qemu-trivial@nongnu.org; Thu, 20 Jun 2013 12:51:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33789)
+	(envelope-from <mst@redhat.com>) id 1Upgwb-0000Ui-Ay
+	for qemu-trivial@nongnu.org; Thu, 20 Jun 2013 11:38:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:11050)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>)
-	id 1Upi5E-0000bB-Ba; Thu, 20 Jun 2013 12:51:40 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5KGpWmU001274
+	(envelope-from <mst@redhat.com>)
+	id 1UpgwM-0000SO-Iu; Thu, 20 Jun 2013 11:38:26 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5KFc4V6016299
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 20 Jun 2013 12:51:33 -0400
-Received: from [10.3.113.96] (ovpn-113-96.phx2.redhat.com [10.3.113.96])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r5KGpUTa017965; Thu, 20 Jun 2013 12:51:30 -0400
-Message-ID: <1371747090.32709.61.camel@ul30vt.home>
-From: Alex Williamson <alex.williamson@redhat.com>
+	Thu, 20 Jun 2013 11:38:04 -0400
+Received: from redhat.com (vpn1-4-248.ams2.redhat.com [10.36.4.248])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id r5KFbt2N018886; Thu, 20 Jun 2013 11:37:56 -0400
+Date: Thu, 20 Jun 2013 18:38:39 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Alexey Kardashevskiy <aik@ozlabs.ru>
-Date: Thu, 20 Jun 2013 10:51:30 -0600
-In-Reply-To: <1371737338-25148-1-git-send-email-aik@ozlabs.ru>
+Message-ID: <20130620153839.GA18645@redhat.com>
 References: <1371737338-25148-1-git-send-email-aik@ozlabs.ru>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1371737338-25148-1-git-send-email-aik@ozlabs.ru>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 X-Mailman-Approved-At: Thu, 20 Jun 2013 17:17:16 -0400
-Cc: Anthony Liguori <aliguori@us.ibm.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+Cc: Anthony Liguori <aliguori@us.ibm.com>, qemu-trivial@nongnu.org,
 	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
 	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	Alex Williamson <alex.williamson@redhat.com>,
 	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Paul Mackerras <paulus@samba.org>,
 	David Gibson <david@gibson.dropbear.id.au>
@@ -53,9 +53,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Jun 2013 16:51:52 -0000
+X-List-Received-Date: Thu, 20 Jun 2013 15:38:49 -0000
 
-On Fri, 2013-06-21 at 00:08 +1000, Alexey Kardashevskiy wrote:
+On Fri, Jun 21, 2013 at 12:08:58AM +1000, Alexey Kardashevskiy wrote:
 > At the moment QEMU creates a route for every MSI IRQ.
 > 
 > Now we are about to add IRQFD support on PPC64-pseries platform.
@@ -78,21 +78,8 @@ On Fri, 2013-06-21 at 00:08 +1000, Alexey Kardashevskiy wrote:
 > 
 > For some reason which I do not really understand (limited GSI numbers?)
 > the existing code always adds routing and I do not see why we would need it.
-
-It's an IOAPIC, a pin gets toggled from the device and an MSI message
-gets written to the CPU.  So the route allocates and programs the
-pin->MSI, then we tell it what notifier triggers that pin.
-
-On x86 the MSI vector doesn't encode any information about the device
-sending the MSI, here you seem to be able to figure out the device and
-vector space number from the address.  Then your pin to MSI is
-effectively fixed.  So why isn't this just your
-kvm_irqchip_add_msi_route function?  On pSeries it's a lookup, on x86
-it's a allocate and program.  What does kvm_irqchip_add_msi_route do on
-pSeries today?  Thanks,
-
-Alex
-
+> 
+> Thanks!
 > ---
 >  hw/misc/vfio.c           |   11 +++++++++--
 >  hw/pci/pci.c             |   13 +++++++++++++
@@ -171,6 +158,10 @@ Alex
 > +    int ndev = addr >> 16;
 > +    int vec = ((addr & 0xFFFF) >> 2) | msg.data;
 > +    uint32_t irq = sphb->msi_table[ndev].irq + vec;
+
+This array seems to be SPAPR_MSIX_MAX_DEVS in size, no?
+Won't this overflow if ndev is large?
+
 > +
 > +    return (int)irq;
 > +}
@@ -274,7 +265,6 @@ Alex
 >      pci_hotplug_fn hotplug;
 >      DeviceState *hotplug_qdev;
 >      void *irq_opaque;
-
-
-
+> -- 
+> 1.7.10.4
 
