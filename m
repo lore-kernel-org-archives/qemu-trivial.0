@@ -1,63 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UphsI-00070G-NT
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Jun 2013 12:38:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39114)
+	id 1UpmEI-0006dT-Ap
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Jun 2013 17:17:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43326)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1UphsE-0006oS-5d
-	for qemu-trivial@nongnu.org; Thu, 20 Jun 2013 12:38:16 -0400
+	(envelope-from <alex.williamson@redhat.com>) id 1Upi5O-0005QY-9W
+	for qemu-trivial@nongnu.org; Thu, 20 Jun 2013 12:51:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uphs9-0003oX-FD
-	for qemu-trivial@nongnu.org; Thu, 20 Jun 2013 12:38:14 -0400
-Received: from e9.ny.us.ibm.com ([32.97.182.139]:51796)
+	(envelope-from <alex.williamson@redhat.com>) id 1Upi5M-0000fU-G7
+	for qemu-trivial@nongnu.org; Thu, 20 Jun 2013 12:51:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33789)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1Uphs9-0003oM-Bh
-	for qemu-trivial@nongnu.org; Thu, 20 Jun 2013 12:38:09 -0400
-Received: from /spool/local
-	by e9.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Thu, 20 Jun 2013 12:38:06 -0400
-Received: from d01dlp03.pok.ibm.com (9.56.250.168)
-	by e9.ny.us.ibm.com (192.168.1.109) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 20 Jun 2013 12:37:59 -0400
-Received: from d01relay01.pok.ibm.com (d01relay01.pok.ibm.com [9.56.227.233])
-	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id 12BE8C90045;
-	Thu, 20 Jun 2013 12:37:58 -0400 (EDT)
-Received: from d01av04.pok.ibm.com (d01av04.pok.ibm.com [9.56.224.64])
-	by d01relay01.pok.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r5KGbwrD268636; Thu, 20 Jun 2013 12:37:58 -0400
-Received: from d01av04.pok.ibm.com (loopback [127.0.0.1])
-	by d01av04.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP id
-	r5KGbweQ016532; Thu, 20 Jun 2013 12:37:58 -0400
-Received: from titi.na.relay.ibm.com ([9.41.105.234])
-	by d01av04.pok.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r5KGbaRB014658; Thu, 20 Jun 2013 12:37:55 -0400
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel@nongnu.org
+	(envelope-from <alex.williamson@redhat.com>)
+	id 1Upi5E-0000bB-Ba; Thu, 20 Jun 2013 12:51:40 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5KGpWmU001274
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Thu, 20 Jun 2013 12:51:33 -0400
+Received: from [10.3.113.96] (ovpn-113-96.phx2.redhat.com [10.3.113.96])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r5KGpUTa017965; Thu, 20 Jun 2013 12:51:30 -0400
+Message-ID: <1371747090.32709.61.camel@ul30vt.home>
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
+Date: Thu, 20 Jun 2013 10:51:30 -0600
 In-Reply-To: <1371737338-25148-1-git-send-email-aik@ozlabs.ru>
 References: <1371737338-25148-1-git-send-email-aik@ozlabs.ru>
-User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
-	(x86_64-pc-linux-gnu)
-Date: Thu, 20 Jun 2013 11:37:36 -0500
-Message-ID: <874ncshh67.fsf@codemonkey.ws>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13062016-7182-0000-0000-00000770763C
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.182.139
-Cc: "Michael S . Tsirkin" <mst@redhat.com>,
-	Alexey Kardashevskiy <aik@ozlabs.ru>,
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Thu, 20 Jun 2013 17:17:16 -0400
+Cc: Anthony Liguori <aliguori@us.ibm.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
 	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
-	Alexander Graf <agraf@suse.de>, qemu-trivial@nongnu.org,
-	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
 	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Paul Mackerras <paulus@samba.org>,
 	David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] RFC kvm irqfd: add directly
-	mapped MSI IRQ support
+Subject: Re: [Qemu-trivial] [PATCH] RFC kvm irqfd: add directly mapped MSI
+	IRQ support
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,12 +53,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Jun 2013 16:38:17 -0000
+X-List-Received-Date: Thu, 20 Jun 2013 16:51:52 -0000
 
-Alexey Kardashevskiy <aik@ozlabs.ru> writes:
-
+On Fri, 2013-06-21 at 00:08 +1000, Alexey Kardashevskiy wrote:
 > At the moment QEMU creates a route for every MSI IRQ.
->
+> 
 > Now we are about to add IRQFD support on PPC64-pseries platform.
 > pSeries already has in-kernel emulated interrupt controller with
 > 8192 IRQs. Also, pSeries PHB already supports MSIMessage to IRQ
@@ -82,21 +65,34 @@ Alexey Kardashevskiy <aik@ozlabs.ru> writes:
 > Specifically, the pSeries guest does not touch MSIMessage's at
 > all, instead it uses rtas_ibm_change_msi and rtas_ibm_query_interrupt_source
 > rtas calls to do the mapping.
->
+> 
 > Therefore we do not really need more routing than we got already.
 > The patch introduces the infrastructure to enable direct IRQ mapping.
->
+> 
 > Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
->
+> 
 > ---
->
+> 
 > The patch is raw and ugly indeed, I made it only to demonstrate
 > the idea and see if it has right to live or not.
->
+> 
 > For some reason which I do not really understand (limited GSI numbers?)
 > the existing code always adds routing and I do not see why we would need it.
->
-> Thanks!
+
+It's an IOAPIC, a pin gets toggled from the device and an MSI message
+gets written to the CPU.  So the route allocates and programs the
+pin->MSI, then we tell it what notifier triggers that pin.
+
+On x86 the MSI vector doesn't encode any information about the device
+sending the MSI, here you seem to be able to figure out the device and
+vector space number from the address.  Then your pin to MSI is
+effectively fixed.  So why isn't this just your
+kvm_irqchip_add_msi_route function?  On pSeries it's a lookup, on x86
+it's a allocate and program.  What does kvm_irqchip_add_msi_route do on
+pSeries today?  Thanks,
+
+Alex
+
 > ---
 >  hw/misc/vfio.c           |   11 +++++++++--
 >  hw/pci/pci.c             |   13 +++++++++++++
@@ -105,7 +101,7 @@ Alexey Kardashevskiy <aik@ozlabs.ru> writes:
 >  include/hw/pci/pci.h     |    4 ++++
 >  include/hw/pci/pci_bus.h |    1 +
 >  6 files changed, 60 insertions(+), 8 deletions(-)
->
+> 
 > diff --git a/hw/misc/vfio.c b/hw/misc/vfio.c
 > index 14aac04..2d9eef7 100644
 > --- a/hw/misc/vfio.c
@@ -132,14 +128,6 @@ Alexey Kardashevskiy <aik@ozlabs.ru> writes:
 > +        if (vector->virq < 0) {
 > +            vector->virq = kvm_irqchip_add_msi_route(kvm_state, msg);
 > +        }
-
-I don't understand why you're adding a pci level hook verses just having
-a kvmppc specific hook in the kvm_irqchip_add_msi_route function..
-
-Regards,
-
-Anthony Liguori
-
 >          if (vector->virq < 0 ||
 >              kvm_irqchip_add_irqfd_notifier(kvm_state, &vector->interrupt,
 >                                             vector->virq) < 0) {
@@ -286,7 +274,7 @@ Anthony Liguori
 >      pci_hotplug_fn hotplug;
 >      DeviceState *hotplug_qdev;
 >      void *irq_opaque;
-> -- 
-> 1.7.10.4
+
+
 
 
