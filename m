@@ -1,40 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Upyk1-00069V-SQ
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Jun 2013 06:38:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42703)
+	id 1Uq0xM-0004WU-9L
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Jun 2013 09:00:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53457)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Upyjo-0005k0-4S
-	for qemu-trivial@nongnu.org; Fri, 21 Jun 2013 06:38:44 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1Uq0xD-0004OI-A1
+	for qemu-trivial@nongnu.org; Fri, 21 Jun 2013 09:00:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Upyjj-0007nQ-9j
-	for qemu-trivial@nongnu.org; Fri, 21 Jun 2013 06:38:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56649)
+	(envelope-from <pm215@archaic.org.uk>) id 1Uq0xA-0005vf-JE
+	for qemu-trivial@nongnu.org; Fri, 21 Jun 2013 09:00:39 -0400
+Received: from
+	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
+	([2001:8b0:1d0::1]:58030 helo=mnementh.archaic.org.uk)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1Upyjd-0007jB-2w; Fri, 21 Jun 2013 06:38:29 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5LAcS3T002316
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 21 Jun 2013 06:38:28 -0400
-Received: from rincewind.home.kraxel.org (ovpn-116-29.ams2.redhat.com
-	[10.36.116.29])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r5LAcR4W025413; Fri, 21 Jun 2013 06:38:28 -0400
-Received: by rincewind.home.kraxel.org (Postfix, from userid 500)
-	id 0E94643276; Fri, 21 Jun 2013 12:38:26 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Uq0wx-0005tw-LA; Fri, 21 Jun 2013 09:00:23 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Uq0wr-00075h-2J; Fri, 21 Jun 2013 14:00:17 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Fri, 21 Jun 2013 12:38:23 +0200
-Message-Id: <1371811105-730-12-git-send-email-kraxel@redhat.com>
-In-Reply-To: <1371811105-730-1-git-send-email-kraxel@redhat.com>
-References: <1371811105-730-1-git-send-email-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [Qemu-trivial] [PATCH 11/13] qemu-char: add -chardev mux support
+Date: Fri, 21 Jun 2013 14:00:17 +0100
+Message-Id: <1371819617-27232-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+	David Gibson <david@gibson.dropbear.id.au>, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] Makefile: pass include directives to dtc via
+	CPPFLAGS, not CFLAGS
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,60 +40,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Jun 2013 10:38:45 -0000
+X-List-Received-Date: Fri, 21 Jun 2013 13:00:46 -0000
 
-Allow to explicitly create mux chardevs on the command line,
-like you can using QMP.
+The dtc submodule's makefile expects -I include directives to be
+in CPPFLAGS, not CFLAGS. Getting this wrong meant that the include
+directive would not be applied when generating the dependency .d
+files. This in turn meant that we couldn't build libfdt when
+doing an out of tree build with clang. (gcc's dependency output
+is slightly different from clang in this situation so it happened
+to work.)
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- qemu-char.c |   18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+Tracking this down was not made any easier by make bug
+http://savannah.gnu.org/bugs/index.php?15110 which meant that
+make silently exited without saying anything about what was wrong...
 
-diff --git a/qemu-char.c b/qemu-char.c
-index 65c0c48..c83ff21 100644
---- a/qemu-char.c
-+++ b/qemu-char.c
-@@ -3122,6 +3122,19 @@ static void qemu_chr_parse_memory(QemuOpts *opts, ChardevBackend *backend,
-     }
- }
+ Makefile |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3cfa7d0..c06bfab 100644
+--- a/Makefile
++++ b/Makefile
+@@ -146,10 +146,11 @@ $(SRC_PATH)/pixman/configure:
+ 	(cd $(SRC_PATH)/pixman; autoreconf -v --install)
  
-+static void qemu_chr_parse_mux(QemuOpts *opts, ChardevBackend *backend,
-+                               Error **errp)
-+{
-+    const char *chardev = qemu_opt_get(opts, "chardev");
-+
-+    if (chardev == NULL) {
-+        error_setg(errp, "chardev: mux: no chardev given");
-+        return;
-+    }
-+    backend->mux = g_new0(ChardevMux, 1);
-+    backend->mux->chardev = g_strdup(chardev);
-+}
-+
- typedef struct CharDriver {
-     const char *name;
-     /* old, pre qapi */
-@@ -3488,6 +3501,9 @@ QemuOptsList qemu_chardev_opts = {
-         },{
-             .name = "size",
-             .type = QEMU_OPT_SIZE,
-+        },{
-+            .name = "chardev",
-+            .type = QEMU_OPT_STRING,
-         },
-         { /* end of list */ }
-     },
-@@ -3778,6 +3794,8 @@ static void register_types(void)
-     register_char_driver_qapi("console", CHARDEV_BACKEND_KIND_CONSOLE, NULL);
-     register_char_driver_qapi("pipe", CHARDEV_BACKEND_KIND_PIPE,
-                               qemu_chr_parse_pipe);
-+    register_char_driver_qapi("mux", CHARDEV_BACKEND_KIND_MUX,
-+                              qemu_chr_parse_mux);
- }
+ DTC_MAKE_ARGS=-I$(SRC_PATH)/dtc VPATH=$(SRC_PATH)/dtc -C dtc V="$(V)" LIBFDT_srcdir=$(SRC_PATH)/dtc/libfdt
+-DTC_CFLAGS=$(CFLAGS) $(QEMU_CFLAGS) -I$(BUILD_DIR)/dtc -I$(SRC_PATH)/dtc -I$(SRC_PATH)/dtc/libfdt
++DTC_CFLAGS=$(CFLAGS) $(QEMU_CFLAGS)
++DTC_CPPFLAGS=-I$(BUILD_DIR)/dtc -I$(SRC_PATH)/dtc -I$(SRC_PATH)/dtc/libfdt
  
- type_init(register_types);
+ subdir-dtc:dtc/libfdt dtc/tests
+-	$(call quiet-command,$(MAKE) $(DTC_MAKE_ARGS) CFLAGS="$(DTC_CFLAGS)" LDFLAGS="$(LDFLAGS)" ARFLAGS="$(ARFLAGS)" CC="$(CC)" AR="$(AR)" LD="$(LD)" $(SUBDIR_MAKEFLAGS) libfdt/libfdt.a,)
++	$(call quiet-command,$(MAKE) $(DTC_MAKE_ARGS) CPPFLAGS="$(DTC_CPPFLAGS)" CFLAGS="$(DTC_CFLAGS)" LDFLAGS="$(LDFLAGS)" ARFLAGS="$(ARFLAGS)" CC="$(CC)" AR="$(AR)" LD="$(LD)" $(SUBDIR_MAKEFLAGS) libfdt/libfdt.a,)
+ 
+ dtc/%:
+ 	mkdir -p $@
 -- 
-1.7.9.7
+1.7.9.5
 
 
