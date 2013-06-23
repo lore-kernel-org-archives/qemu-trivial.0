@@ -1,51 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UqloL-0004m7-Mj
-	for mharc-qemu-trivial@gnu.org; Sun, 23 Jun 2013 11:02:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46765)
+	id 1Uqlro-0005ur-2L
+	for mharc-qemu-trivial@gnu.org; Sun, 23 Jun 2013 11:06:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47351)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1UqloJ-0004ki-LX
-	for qemu-trivial@nongnu.org; Sun, 23 Jun 2013 11:02:36 -0400
+	(envelope-from <anthony@codemonkey.ws>) id 1Uqlrk-0005sd-DG
+	for qemu-trivial@nongnu.org; Sun, 23 Jun 2013 11:06:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1UqloG-0003a9-K8
-	for qemu-trivial@nongnu.org; Sun, 23 Jun 2013 11:02:35 -0400
-Received: from mail-ob0-x22d.google.com ([2607:f8b0:4003:c01::22d]:56144)
+	(envelope-from <anthony@codemonkey.ws>) id 1Uqlri-0004dG-6p
+	for qemu-trivial@nongnu.org; Sun, 23 Jun 2013 11:06:08 -0400
+Received: from mail-ob0-x231.google.com ([2607:f8b0:4003:c01::231]:56036)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1UqloG-0003Zr-FW
-	for qemu-trivial@nongnu.org; Sun, 23 Jun 2013 11:02:32 -0400
-Received: by mail-ob0-f173.google.com with SMTP id wc20so10181611obb.32
-	for <qemu-trivial@nongnu.org>; Sun, 23 Jun 2013 08:02:31 -0700 (PDT)
+	(envelope-from <anthony@codemonkey.ws>) id 1Uqlri-0004d1-1P
+	for qemu-trivial@nongnu.org; Sun, 23 Jun 2013 11:06:06 -0400
+Received: by mail-ob0-f177.google.com with SMTP id ta17so9844894obb.8
+	for <qemu-trivial@nongnu.org>; Sun, 23 Jun 2013 08:06:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
 	:cc:content-type:x-gm-message-state;
-	bh=CiiwRTo/r4v0D5m5uN7XU3qHxgwoTNDtLC6X+3kLVfY=;
-	b=Eyc4T646Xe3BzmWum5mApCmMPEu6SwFom+5qW3lu+hAtlxzwWmiPMnrovXJOyfwD/a
-	qE0NsNownmI84HCNLzL1aiTwqeiYqBcjaOhfjxX52aRh91KzBcEUUvWVdJZJ4TW+IdDo
-	8GF+lKCBYv8BgjYfuMwP6FPppO/dYgkVUBT8DTyZiI+4kfXUFxGd/FOcqFLqH3C9PAd0
-	C9EBNUoCo8JVU7njx17oetj0Lxa2/EszMgVptTQSCOr09vl+LRxPpiWRdaQeWy1aTc0N
-	U5h82IDG0WiVGMSSHmycorc1/SJKT5rFd+2yy4jlQSE+7X3DF8ElMLCRAPMMKP39LCDK
-	vELQ==
+	bh=UiPlGxm7D7K48A04wXKvHvfXU5bjyM1/KoiU4MUKBKQ=;
+	b=ajgeuLa6ETgHb0JF3pi9sE7DbFH40V7LwKqDAan9Chmeumcrxo1NSn07XsmByWAXv/
+	mccRg0/CGr70x98MOg0vaaToCmoy0JqruQjBGRD0J5/xPALgFmEQmwmMLZ1eWvrSEPi5
+	ChHjFyan7Wx1VR36i3FvNBy1NLtb+dGEKd38S/H4QNFfzkXoFUyt0/y6dH0rF5eWo5tl
+	2z8zCdhDyLeV9jUCbt+edfb8BqJtOiH45oSR3tRQySC8f2Xlzr9VSA5flbGkSxaqrasi
+	lJrzolCpL4ERCOF3mmMcfyeIlrE1VbRnCUVjkpUecgNow5J5gG5E8kAqom7RlFp0Oq/v
+	mKyw==
 MIME-Version: 1.0
-X-Received: by 10.60.55.164 with SMTP id t4mr9764063oep.50.1371999751347; Sun,
-	23 Jun 2013 08:02:31 -0700 (PDT)
-Received: by 10.60.135.225 with HTTP; Sun, 23 Jun 2013 08:02:31 -0700 (PDT)
-In-Reply-To: <20130623140736.GB20842@redhat.com>
+X-Received: by 10.60.80.39 with SMTP id o7mr9864358oex.60.1371999965491; Sun,
+	23 Jun 2013 08:06:05 -0700 (PDT)
+Received: by 10.60.135.225 with HTTP; Sun, 23 Jun 2013 08:06:05 -0700 (PDT)
+In-Reply-To: <1371789981.30572.114.camel@ul30vt.home>
 References: <1371737338-25148-1-git-send-email-aik@ozlabs.ru>
-	<874ncshh67.fsf@codemonkey.ws> <51C39578.6020204@ozlabs.ru>
-	<20130623140736.GB20842@redhat.com>
-Date: Sun, 23 Jun 2013 10:02:31 -0500
-Message-ID: <CA+aC4ksTsWTH23F2jXYPXGk4Ya7JD1a7Q8p7xD65vOiD57Z=qQ@mail.gmail.com>
+	<1371747090.32709.61.camel@ul30vt.home>
+	<51C3B2E4.7000807@ozlabs.ru>
+	<1371782063.30572.74.camel@ul30vt.home> <51C3BF3E.20901@ozlabs.ru>
+	<1371789981.30572.114.camel@ul30vt.home>
+Date: Sun, 23 Jun 2013 10:06:05 -0500
+Message-ID: <CA+aC4kvDQW=-V3-8y-0WQrn-SZh+4jcs+FWLfGa5+VdcE01rxg@mail.gmail.com>
 From: Anthony Liguori <anthony@codemonkey.ws>
-To: "Michael S. Tsirkin" <mst@redhat.com>
+To: Alex Williamson <alex.williamson@redhat.com>
 Content-Type: text/plain; charset=ISO-8859-1
-X-Gm-Message-State: ALoCoQltG9vb3f4xKHauwH4mFj7xhPKBgb/OVjt1u6jrSlTyqFgp2MJNoSeKl4gWkOFUwTjjaZcy
+X-Gm-Message-State: ALoCoQkUendPztXBY4VqFuY9psNiSLaqKr/sBC8xPEBGwBlIn9S/nu0CjqpB69ouFPjGq3lhk18g
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c01::22d
-Cc: Anthony Liguori <aliguori@us.ibm.com>, Alexey Kardashevskiy <aik@ozlabs.ru>,
-	qemu-devel <qemu-devel@nongnu.org>,
+X-Received-From: 2607:f8b0:4003:c01::231
+Cc: Anthony Liguori <aliguori@us.ibm.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel <qemu-devel@nongnu.org>,
 	Alexander Graf <agraf@suse.de>, qemu-trivial@nongnu.org,
-	Alex Williamson <alex.williamson@redhat.com>,
 	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Paul Mackerras <paulus@samba.org>,
 	David Gibson <david@gibson.dropbear.id.au>
@@ -62,52 +64,253 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 23 Jun 2013 15:02:36 -0000
+X-List-Received-Date: Sun, 23 Jun 2013 15:06:10 -0000
 
-On Sun, Jun 23, 2013 at 9:07 AM, Michael S. Tsirkin <mst@redhat.com> wrote:
-> On Fri, Jun 21, 2013 at 09:51:20AM +1000, Alexey Kardashevskiy wrote:
->> And kvm_irqchip_add_msi_route does not have any link to a device or a bus
->> so I'll have to walk through all PHBs in system and see if PHB's MSI window
->> is the one from MSIMessage and convert MSIMessage to virq. Pretty easy and
->> quick but still dirty hack, would it be better?
+On Thu, Jun 20, 2013 at 11:46 PM, Alex Williamson
+<alex.williamson@redhat.com> wrote:
+> On Fri, 2013-06-21 at 12:49 +1000, Alexey Kardashevskiy wrote:
+>> On 06/21/2013 12:34 PM, Alex Williamson wrote:
+>>
+>>
+>> Do not follow you, sorry. For x86, is it that MSI routing table which is
+>> updated via KVM_SET_GSI_ROUTING in KVM? When there is no KVM, what piece of
+>> code responds on msi_notify() in qemu-x86 and does qemu_irq_pulse()?
 >
-> Yes I think that's fine really.
+> vfio_msi_interrupt->msi[x]_notify->stl_le_phys(msg.address, msg.data)
 >
-> Basically devices all speak MSIMessage as they should -
-> this is what the PCI spec says.
-> On all normal systems guests also speak MSIMessage so
-> the API which uses these makes sense for kvm.
+> This writes directly to the interrupt block on the vCPU.  With KVM, the
+> in-kernel APIC does the same write, where the pin to MSIMessage is setup
+> by kvm_irqchip_add_msi_route and the pin is pulled by an irqfd.
 
-There is no difference between Power and x86 in how they handle MSI.
-MSI is not a concept in the APIC or processor.  MSI interrupts are
-handled by the PHB and delivered through the I/O APIC using the
-information in the address/data.
+What is this "interrupt block on the vCPU" you speak of?  I reviewed
+the SDM and see nothing in the APIC protocol or the brief description
+of MSI as a PCI concept that would indicate anything except that the
+PHB handles MSI writes and feeds them to the I/O APIC.
 
-I've always assumed that the kernel knows about MSI just because PCI
-passthrough needs it for whatever reason.  It's not part of the APIC
-complex and it is weird to have MSI decoding information in the
-kernel.
+In fact, the wikipedia article on MSI has:
 
-> Except, ppc architecture in its wisdom decided to hide this
-> in firmware.  QEMU does not have firmware so the translation
-> has to be maintained in QEMU powerpc code.
+"A common misconception with Message Signaled Interrupts is that they
+allow the device to send data to a processor as part of the interrupt.
+The data that is sent as part of the write is used by the chipset to
+determine which interrupt to trigger on which processor; it is not
+available for the device to communicate additional information to the
+interrupt handler."
 
-To be clear: instead of writing to an address with a load/store, Power
-has a hypercall to do this.  The hypercall is hidden behind a firmware
-abstract layer (RTAS) but it's still just a hypercall.
+> Do I understand that on POWER the MSI from the device is intercepted at
+> the PHB and converted to an IRQ that's triggered by some means other
+> than a MSI write?
 
-It uses a hypercall simply because Power was designed to not require
-MMIO trapping.  It's much like Xen PV in that regard.
-
-It doesn't make a lot of sense to have Power do MSI decoding in
-userspace while x86 does it in the kernel.  I assume the kernel
-doesn't have enough information to do the translation on Power?
+This is exactly the same thing that happens on x86, no?  Can you point
+me to something in the SDM that says otherwise?
 
 Regards,
 
 Anthony Liguori
 
-> --
-> MST
+>  So to correctly model the hardware, vfio should do a
+> msi_notify() that does a stl_le_phys that terminates at this IRQ
+> remapper thing and in turn toggles a qemu_irq.  MSIMessage is only
+> extraneous data if you want to skip over hardware blocks.
+>
+> Maybe you could add a device parameter to kvm_irqchip_add_msi_route so
+> that it can be implemented on POWER without this pci_bus_map_msi
+> interface that seems very unique to POWER.  Thanks,
+>
+> Alex
+>
+>> >>>> ---
+>> >>>>  hw/misc/vfio.c           |   11 +++++++++--
+>> >>>>  hw/pci/pci.c             |   13 +++++++++++++
+>> >>>>  hw/ppc/spapr_pci.c       |   13 +++++++++++++
+>> >>>>  hw/virtio/virtio-pci.c   |   26 ++++++++++++++++++++------
+>> >>>>  include/hw/pci/pci.h     |    4 ++++
+>> >>>>  include/hw/pci/pci_bus.h |    1 +
+>> >>>>  6 files changed, 60 insertions(+), 8 deletions(-)
+>> >>>>
+>> >>>> diff --git a/hw/misc/vfio.c b/hw/misc/vfio.c
+>> >>>> index 14aac04..2d9eef7 100644
+>> >>>> --- a/hw/misc/vfio.c
+>> >>>> +++ b/hw/misc/vfio.c
+>> >>>> @@ -639,7 +639,11 @@ static int vfio_msix_vector_do_use(PCIDevice *pdev, unsigned int nr,
+>> >>>>       * Attempt to enable route through KVM irqchip,
+>> >>>>       * default to userspace handling if unavailable.
+>> >>>>       */
+>> >>>> -    vector->virq = msg ? kvm_irqchip_add_msi_route(kvm_state, *msg) : -1;
+>> >>>> +
+>> >>>> +    vector->virq = msg ? pci_bus_map_msi(vdev->pdev.bus, *msg) : -1;
+>> >>>> +    if (vector->virq < 0) {
+>> >>>> +        vector->virq = msg ? kvm_irqchip_add_msi_route(kvm_state, *msg) : -1;
+>> >>>> +    }
+>> >>>>      if (vector->virq < 0 ||
+>> >>>>          kvm_irqchip_add_irqfd_notifier(kvm_state, &vector->interrupt,
+>> >>>>                                         vector->virq) < 0) {
+>> >>>> @@ -807,7 +811,10 @@ retry:
+>> >>>>           * Attempt to enable route through KVM irqchip,
+>> >>>>           * default to userspace handling if unavailable.
+>> >>>>           */
+>> >>>> -        vector->virq = kvm_irqchip_add_msi_route(kvm_state, msg);
+>> >>>> +        vector->virq = pci_bus_map_msi(vdev->pdev.bus, msg);
+>> >>>> +        if (vector->virq < 0) {
+>> >>>> +            vector->virq = kvm_irqchip_add_msi_route(kvm_state, msg);
+>> >>>> +        }
+>> >>>>          if (vector->virq < 0 ||
+>> >>>>              kvm_irqchip_add_irqfd_notifier(kvm_state, &vector->interrupt,
+>> >>>>                                             vector->virq) < 0) {
+>> >>>> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+>> >>>> index a976e46..a9875e9 100644
+>> >>>> --- a/hw/pci/pci.c
+>> >>>> +++ b/hw/pci/pci.c
+>> >>>> @@ -1254,6 +1254,19 @@ void pci_device_set_intx_routing_notifier(PCIDevice *dev,
+>> >>>>      dev->intx_routing_notifier = notifier;
+>> >>>>  }
+>> >>>>
+>> >>>> +void pci_bus_set_map_msi_fn(PCIBus *bus, pci_map_msi_fn map_msi_fn)
+>> >>>> +{
+>> >>>> +    bus->map_msi = map_msi_fn;
+>> >>>> +}
+>> >>>> +
+>> >>>> +int pci_bus_map_msi(PCIBus *bus, MSIMessage msg)
+>> >>>> +{
+>> >>>> +    if (bus->map_msi) {
+>> >>>> +        return bus->map_msi(bus, msg);
+>> >>>> +    }
+>> >>>> +    return -1;
+>> >>>> +}
+>> >>>> +
+>> >>>>  /*
+>> >>>>   * PCI-to-PCI bridge specification
+>> >>>>   * 9.1: Interrupt routing. Table 9-1
+>> >>>> diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+>> >>>> index 80408c9..9ef9a29 100644
+>> >>>> --- a/hw/ppc/spapr_pci.c
+>> >>>> +++ b/hw/ppc/spapr_pci.c
+>> >>>> @@ -500,6 +500,18 @@ static void spapr_msi_write(void *opaque, hwaddr addr,
+>> >>>>      qemu_irq_pulse(xics_get_qirq(spapr->icp, irq));
+>> >>>>  }
+>> >>>>
+>> >>>> +static int spapr_msi_get_irq(PCIBus *bus, MSIMessage msg)
+>> >>>> +{
+>> >>>> +    DeviceState *par = bus->qbus.parent;
+>> >>>> +    sPAPRPHBState *sphb = (sPAPRPHBState *) par;
+>> >>>> +    unsigned long addr = msg.address - sphb->msi_win_addr;
+>> >>>> +    int ndev = addr >> 16;
+>> >>>> +    int vec = ((addr & 0xFFFF) >> 2) | msg.data;
+>> >>>> +    uint32_t irq = sphb->msi_table[ndev].irq + vec;
+>> >>>> +
+>> >>>> +    return (int)irq;
+>> >>>> +}
+>> >>>> +
+>> >>>>  static const MemoryRegionOps spapr_msi_ops = {
+>> >>>>      /* There is no .read as the read result is undefined by PCI spec */
+>> >>>>      .read = NULL,
+>> >>>> @@ -664,6 +676,7 @@ static int _spapr_phb_init(SysBusDevice *s)
+>> >>>>
+>> >>>>          sphb->lsi_table[i].irq = irq;
+>> >>>>      }
+>> >>>> +    pci_bus_set_map_msi_fn(bus, spapr_msi_get_irq);
+>> >>>>
+>> >>>>      return 0;
+>> >>>>  }
+>> >>>> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+>> >>>> index d309416..587f53e 100644
+>> >>>> --- a/hw/virtio/virtio-pci.c
+>> >>>> +++ b/hw/virtio/virtio-pci.c
+>> >>>> @@ -472,6 +472,8 @@ static unsigned virtio_pci_get_features(DeviceState *d)
+>> >>>>      return proxy->host_features;
+>> >>>>  }
+>> >>>>
+>> >>>> +extern int spapr_msi_get_irq(PCIBus *bus, MSIMessage *msg);
+>> >>>> +
+>> >>>>  static int kvm_virtio_pci_vq_vector_use(VirtIOPCIProxy *proxy,
+>> >>>>                                          unsigned int queue_no,
+>> >>>>                                          unsigned int vector,
+>> >>>> @@ -481,7 +483,10 @@ static int kvm_virtio_pci_vq_vector_use(VirtIOPCIProxy *proxy,
+>> >>>>      int ret;
+>> >>>>
+>> >>>>      if (irqfd->users == 0) {
+>> >>>> -        ret = kvm_irqchip_add_msi_route(kvm_state, msg);
+>> >>>> +        ret = pci_bus_map_msi(proxy->pci_dev.bus, msg);
+>> >>>> +        if (ret < 0) {
+>> >>>> +            ret = kvm_irqchip_add_msi_route(kvm_state, msg);
+>> >>>> +        }
+>> >>>>          if (ret < 0) {
+>> >>>>              return ret;
+>> >>>>          }
+>> >>>> @@ -609,14 +614,23 @@ static int virtio_pci_vq_vector_unmask(VirtIOPCIProxy *proxy,
+>> >>>>      VirtQueue *vq = virtio_get_queue(proxy->vdev, queue_no);
+>> >>>>      EventNotifier *n = virtio_queue_get_guest_notifier(vq);
+>> >>>>      VirtIOIRQFD *irqfd;
+>> >>>> -    int ret = 0;
+>> >>>> +    int ret = 0, tmp;
+>> >>>>
+>> >>>>      if (proxy->vector_irqfd) {
+>> >>>>          irqfd = &proxy->vector_irqfd[vector];
+>> >>>> -        if (irqfd->msg.data != msg.data || irqfd->msg.address != msg.address) {
+>> >>>> -            ret = kvm_irqchip_update_msi_route(kvm_state, irqfd->virq, msg);
+>> >>>> -            if (ret < 0) {
+>> >>>> -                return ret;
+>> >>>> +
+>> >>>> +        tmp = pci_bus_map_msi(proxy->pci_dev.bus, msg);
+>> >>>> +        if (tmp >= 0) {
+>> >>>> +            if (irqfd->virq != tmp) {
+>> >>>> +                fprintf(stderr, "FIXME: MSI(-X) vector has changed from %X to %x\n",
+>> >>>> +                        irqfd->virq, tmp);
+>> >>>> +            }
+>> >>>> +        } else {
+>> >>>> +            if (irqfd->msg.data != msg.data || irqfd->msg.address != msg.address) {
+>> >>>> +                ret = kvm_irqchip_update_msi_route(kvm_state, irqfd->virq, msg);
+>> >>>> +                if (ret < 0) {
+>> >>>> +                    return ret;
+>> >>>> +                }
+>> >>>>              }
+>> >>>>          }
+>> >>>>      }
+>> >>>> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+>> >>>> index 8797802..632739a 100644
+>> >>>> --- a/include/hw/pci/pci.h
+>> >>>> +++ b/include/hw/pci/pci.h
+>> >>>> @@ -332,6 +332,7 @@ MemoryRegion *pci_address_space_io(PCIDevice *dev);
+>> >>>>  typedef void (*pci_set_irq_fn)(void *opaque, int irq_num, int level);
+>> >>>>  typedef int (*pci_map_irq_fn)(PCIDevice *pci_dev, int irq_num);
+>> >>>>  typedef PCIINTxRoute (*pci_route_irq_fn)(void *opaque, int pin);
+>> >>>> +typedef int (*pci_map_msi_fn)(PCIBus *bus, MSIMessage msg);
+>> >>>>
+>> >>>>  typedef enum {
+>> >>>>      PCI_HOTPLUG_DISABLED,
+>> >>>> @@ -375,6 +376,9 @@ bool pci_intx_route_changed(PCIINTxRoute *old, PCIINTxRoute *new);
+>> >>>>  void pci_bus_fire_intx_routing_notifier(PCIBus *bus);
+>> >>>>  void pci_device_set_intx_routing_notifier(PCIDevice *dev,
+>> >>>>                                            PCIINTxRoutingNotifier notifier);
+>> >>>> +void pci_bus_set_map_msi_fn(PCIBus *bus, pci_map_msi_fn map_msi_fn);
+>> >>>> +int pci_bus_map_msi(PCIBus *bus, MSIMessage msg);
+>> >>>> +
+>> >>>>  void pci_device_reset(PCIDevice *dev);
+>> >>>>  void pci_bus_reset(PCIBus *bus);
+>> >>>>
+>> >>>> diff --git a/include/hw/pci/pci_bus.h b/include/hw/pci/pci_bus.h
+>> >>>> index 66762f6..81efd2b 100644
+>> >>>> --- a/include/hw/pci/pci_bus.h
+>> >>>> +++ b/include/hw/pci/pci_bus.h
+>> >>>> @@ -16,6 +16,7 @@ struct PCIBus {
+>> >>>>      pci_set_irq_fn set_irq;
+>> >>>>      pci_map_irq_fn map_irq;
+>> >>>>      pci_route_irq_fn route_intx_to_irq;
+>> >>>> +    pci_map_msi_fn map_msi;
+>> >>>>      pci_hotplug_fn hotplug;
+>> >>>>      DeviceState *hotplug_qdev;
+>> >>>>      void *irq_opaque;
+>> >>>
+>> >>>
+>> >>>
+>> >>
+>> >>
+>> >
+>> >
+>> >
+>>
+>>
+>
+>
+>
 >
 
