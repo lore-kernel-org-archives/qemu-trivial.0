@@ -1,46 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ur1uy-0007rL-1v
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 04:14:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32820)
+	id 1Ur25I-0004UL-QO
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 04:25:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35343)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Ur1uv-0007jd-C3
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 04:14:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Ur25G-0004Q0-4d
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 04:25:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Ur1uu-0004Ki-BV
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 04:14:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:13876)
+	(envelope-from <mjt@tls.msk.ru>) id 1Ur25E-0008BO-Uu
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 04:25:10 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:45288)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Ur1uq-0004Jw-Pe; Mon, 24 Jun 2013 04:14:24 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5O8EOKt004374
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 24 Jun 2013 04:14:24 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-48.ams2.redhat.com
-	[10.36.116.48])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r5O8ENrx019379; Mon, 24 Jun 2013 04:14:23 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id B4F95200B4; Mon, 24 Jun 2013 10:14:22 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Ur256-0007tE-Iw; Mon, 24 Jun 2013 04:25:00 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 0DE274266D;
+	Mon, 24 Jun 2013 12:24:59 +0400 (MSK)
+Message-ID: <51C80259.5020102@msgid.tls.msk.ru>
+Date: Mon, 24 Jun 2013 12:24:57 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/20130529 Icedove/17.0.5
+MIME-Version: 1.0
+To: Markus Armbruster <armbru@redhat.com>
 References: <1372055996-4072-1-git-send-email-kraxel@redhat.com>
 	<51C7F2B9.6050707@msgid.tls.msk.ru>
-Date: Mon, 24 Jun 2013 10:14:22 +0200
-In-Reply-To: <51C7F2B9.6050707@msgid.tls.msk.ru> (Michael Tokarev's message of
-	"Mon, 24 Jun 2013 11:18:17 +0400")
-Message-ID: <87a9mgrkm9.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	<87a9mgrkm9.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87a9mgrkm9.fsf@blackfin.pond.sub.org>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
 	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 00/13] A bunch of little
-	socket + chardev fixes
+ socket + chardev fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,23 +48,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jun 2013 08:14:30 -0000
+X-List-Received-Date: Mon, 24 Jun 2013 08:25:11 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+24.06.2013 12:14, Markus Armbruster wrote:
+> Michael Tokarev <mjt@tls.msk.ru> writes:
+[]
+>> Thank you Gerd, applied all series to the trivial-patches queue,
+>> with two edits:
+>>
+>>>   qemu-char: use ChardevBackendKind in in CharDriver
+>>>   qemu-char: report udb backend errors
+>>
+>> fxed these :)
+> 
+> My commit message nitpicks aren't worth a respin.  Perhaps you want to
+> fix them in your tree.
 
-> 24.06.2013 10:39, Gerd Hoffmann wrote:
->>   Hi,
->> 
->> Here is v2 of the series, addressing Michaels review comments.
->
-> Thank you Gerd, applied all series to the trivial-patches queue,
-> with two edits:
->
->>   qemu-char: use ChardevBackendKind in in CharDriver
->>   qemu-char: report udb backend errors
->
-> fxed these :)
+I'm not sure I understand what you're saying.  I fixed them
+in my tree while applying, and that's exactly what I said --
+"applied all..fixed these".  What does not worth what?
 
-My commit message nitpicks aren't worth a respin.  Perhaps you want to
-fix them in your tree.
+Thanks,
+
+/mjt
+
 
