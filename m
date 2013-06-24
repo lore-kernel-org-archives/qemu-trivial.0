@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ur74Y-0004SK-7A
+	id 1Ur74Y-0004Sm-HO
 	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 09:44:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47838)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56526)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gleb@redhat.com>) id 1Ur63r-0004bh-5Q
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 08:40:00 -0400
+	(envelope-from <gleb@redhat.com>) id 1Ur6UA-0005wT-Sl
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 09:07:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gleb@redhat.com>) id 1Ur63o-0005fI-QW
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 08:39:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:26841)
+	(envelope-from <gleb@redhat.com>) id 1Ur6U9-0008CC-66
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 09:07:10 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52673)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <gleb@redhat.com>)
-	id 1Ur63h-0005db-VU; Mon, 24 Jun 2013 08:39:50 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5OCdk00018486
+	id 1Ur6Tt-00088f-PP; Mon, 24 Jun 2013 09:06:53 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5OD6mo9021830
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 24 Jun 2013 08:39:46 -0400
+	Mon, 24 Jun 2013 09:06:48 -0400
 Received: from dhcp-1-237.tlv.redhat.com (dhcp-4-26.tlv.redhat.com
 	[10.35.4.26])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r5OCdiB9013715; Mon, 24 Jun 2013 08:39:45 -0400
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r5OD6hZI030911; Mon, 24 Jun 2013 09:06:43 -0400
 Received: by dhcp-1-237.tlv.redhat.com (Postfix, from userid 13519)
-	id A370018D406; Mon, 24 Jun 2013 15:39:43 +0300 (IDT)
-Date: Mon, 24 Jun 2013 15:39:43 +0300
+	id DAA8718D3DE; Mon, 24 Jun 2013 16:06:42 +0300 (IDT)
+Date: Mon, 24 Jun 2013 16:06:42 +0300
 From: Gleb Natapov <gleb@redhat.com>
 To: Anthony Liguori <anthony@codemonkey.ws>
-Message-ID: <20130624123943.GI18508@redhat.com>
+Message-ID: <20130624130642.GJ18508@redhat.com>
 References: <1371737338-25148-1-git-send-email-aik@ozlabs.ru>
-	<874ncshh67.fsf@codemonkey.ws> <51C39578.6020204@ozlabs.ru>
-	<20130623140736.GB20842@redhat.com>
-	<CA+aC4ksTsWTH23F2jXYPXGk4Ya7JD1a7Q8p7xD65vOiD57Z=qQ@mail.gmail.com>
-	<1372023554.3944.111.camel@pasglop>
-	<CA+aC4kt9GqL9JGE7z5e0d0pDROqPBBMqzo00Yv58oxR_=Lf48Q@mail.gmail.com>
-	<1372049162.30572.172.camel@ul30vt.home>
-	<87y59zbst8.fsf@codemonkey.ws>
+	<1371747090.32709.61.camel@ul30vt.home>
+	<51C3B2E4.7000807@ozlabs.ru>
+	<1371782063.30572.74.camel@ul30vt.home> <51C3BF3E.20901@ozlabs.ru>
+	<1371789981.30572.114.camel@ul30vt.home>
+	<CA+aC4kvDQW=-V3-8y-0WQrn-SZh+4jcs+FWLfGa5+VdcE01rxg@mail.gmail.com>
+	<20130624071338.GZ5832@redhat.com> <87sj07bsf3.fsf@codemonkey.ws>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <87y59zbst8.fsf@codemonkey.ws>
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+In-Reply-To: <87sj07bsf3.fsf@codemonkey.ws>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 X-Mailman-Approved-At: Mon, 24 Jun 2013 09:44:44 -0400
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel <qemu-devel@nongnu.org>,
+Cc: "Michael S . Tsirkin" <mst@redhat.com>,
+	Alexey Kardashevskiy <aik@ozlabs.ru>, Alexander Graf <agraf@suse.de>,
+	qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org,
 	Alex Williamson <alex.williamson@redhat.com>,
 	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Paul Mackerras <paulus@samba.org>,
 	David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-ppc] [PATCH] RFC kvm irqfd:
- add directly mapped MSI IRQ support
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] RFC kvm irqfd: add directly
+ mapped MSI IRQ support
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,37 +62,105 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jun 2013 12:40:00 -0000
+X-List-Received-Date: Mon, 24 Jun 2013 13:07:12 -0000
 
-On Mon, Jun 24, 2013 at 07:24:03AM -0500, Anthony Liguori wrote:
-> Alex Williamson <alex.williamson@redhat.com> writes:
+On Mon, Jun 24, 2013 at 07:32:32AM -0500, Anthony Liguori wrote:
+> Gleb Natapov <gleb@redhat.com> writes:
 > 
-> > On Sun, 2013-06-23 at 16:58 -0500, Anthony Liguori wrote:
-> >> Yeah, but none of this is Power specific...  so we can do the same for x86, no?
+> > On Sun, Jun 23, 2013 at 10:06:05AM -0500, Anthony Liguori wrote:
+> >> On Thu, Jun 20, 2013 at 11:46 PM, Alex Williamson
+> >> <alex.williamson@redhat.com> wrote:
+> >> > On Fri, 2013-06-21 at 12:49 +1000, Alexey Kardashevskiy wrote:
+> >> >> On 06/21/2013 12:34 PM, Alex Williamson wrote:
+> >> >>
+> >> >>
+> >> >> Do not follow you, sorry. For x86, is it that MSI routing table which is
+> >> >> updated via KVM_SET_GSI_ROUTING in KVM? When there is no KVM, what piece of
+> >> >> code responds on msi_notify() in qemu-x86 and does qemu_irq_pulse()?
+> >> >
+> >> > vfio_msi_interrupt->msi[x]_notify->stl_le_phys(msg.address, msg.data)
+> >> >
+> >> > This writes directly to the interrupt block on the vCPU.  With KVM, the
+> >> > in-kernel APIC does the same write, where the pin to MSIMessage is setup
+> >> > by kvm_irqchip_add_msi_route and the pin is pulled by an irqfd.
 > >> 
-> >> I'm still trying to wrap my head around why we need MSI knowledge at
-> >> all in the kernel for x86.  I presume it's to fast-path irqfd when
-> >> doing vhost?
-> >
-> > Or device assignment.  Any paths where we want to inject an MSI
-> > interrupt without going through userspace.  Thanks,
+> >> What is this "interrupt block on the vCPU" you speak of?  I reviewed
+> > FEE00000H address as seen from PCI bus is a special address range (see
+> > 10.11.1 in SDM).
 > 
-> With VFIO, we use irqfd, if we program the irqfd as the underlying IRQ
-> that MSI would route to, isn't that sufficient?
+> Ack.
 > 
-Not sure I understand what you mean by IRQ here, there is no "IRQ pin"
-on x86 CPU with APIC architecture (there is ExtINT but it is not
-relevant here). If by IRQ you mean "information needed to inject
-interrupt through APIC" then this is how things work now.
+> > Any write by a PCI device to that address range is
+> > interpreted as MSI. We do not model this correctly in QEMU yet since
+> > all devices, including vcpus, see exactly same memory map.
+> 
+> This should be a per-device mapping, yes.  But I'm not sure that VCPUs
+> should even see anything.  I don't think a VCPU can generate an MSI
+> interrupt by writing to this location.
+> 
+No, and lower 4k of this space is where APIC is mapped as seen from CPU.
 
-> That's more or less what Ben is proposing for Power...
+> >> the SDM and see nothing in the APIC protocol or the brief description
+> >> of MSI as a PCI concept that would indicate anything except that the
+> >> PHB handles MSI writes and feeds them to the I/O APIC.
+> >> 
+> > I/O APIC? Did you mean APIC, but even that will probably be incorrect.
+> > I'd say it translates the data to APIC bus message. And with interrupt
+> > remapping there is more magic happens between MSI and APIC bus.
+> 
+> I think the wording in the SDM allows either.
+> 
+SDM says nothing about it, but since we are guessing anyway my last guess
+would be I/O APIC.  I/O APIC has well defined role: it detects level/edge
+interrupts on an input pins and send preconfigured APIC message to APIC
+bus if one is detected. In fact its even mapped at different address
+0FEC00000H. Of course since I/O APIC and the logic that maps MSI writes
+to APIC bus message are probably on the same chips anyway you can call
+this logic a part of I/O APIC, but this is stretching it too much IMO :)
+
+> >> In fact, the wikipedia article on MSI has:
+> >> 
+> >> "A common misconception with Message Signaled Interrupts is that they
+> >> allow the device to send data to a processor as part of the interrupt.
+> >> The data that is sent as part of the write is used by the chipset to
+> >> determine which interrupt to trigger on which processor; it is not
+> >> available for the device to communicate additional information to the
+> >> interrupt handler."
+> >> 
+> > Not sure who claimed otherwise.
+> 
+> So to summarize:
+> 
+> 1) MSI writes are intercepted by the PHB and generates an appropriate
+>    IRQ.
+> 
+> 2) The PHB has a tuple of (src device, address, data) plus whatever
+>    information it maintains to do the translation.
+> 
+> 3) On Power, we can have multiple PHBs.
+> 
+Looks like that means we need to put more information into the kernel,
+not less.
+
+> 4) The kernel interface assumes a single flat table mapping (address,
+>    data) to interrupts.  We try to keep that table up-to-date in QEMU.
+> 
+> 5) The reason the kernel has MSI info at all is to allow for IRQFDs to
+>    generate MSI interrupts.
+> 
+> Is there anything that prevents us from using IRQFDs corresponding to
+> the target of an MSI mapping and get rid of the MSI info in the kernel?
+> 
+Again, you assume that x86 has some pin that MSI triggers. This is not
+the case; address/data is minimum that is needed to inject interrupt
+there (or moving APIC into userspace, since this is where "translation"
+is happening).
+
+> It seems like the only sane way to actually support (2) and (3).
 > 
 > Regards,
 > 
 > Anthony Liguori
-> 
-> >
-> > Alex
 
 --
 			Gleb.
