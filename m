@@ -1,39 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ur12l-0006K1-VL
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 03:18:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49843)
+	id 1Ur1pN-0007SF-Kx
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 04:08:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59936)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Ur12j-0006E0-2T
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 03:18:30 -0400
+	(envelope-from <armbru@redhat.com>) id 1Ur1pK-0007Nt-FU
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 04:08:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Ur12i-00033h-5W
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 03:18:28 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36151)
+	(envelope-from <armbru@redhat.com>) id 1Ur1pJ-0002iW-D0
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 04:08:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:28029)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Ur12g-0002w3-6o; Mon, 24 Jun 2013 03:18:26 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3DD0C42664;
-	Mon, 24 Jun 2013 11:18:18 +0400 (MSK)
-Message-ID: <51C7F2B9.6050707@msgid.tls.msk.ru>
-Date: Mon, 24 Jun 2013 11:18:17 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:17.0) Gecko/20130529 Icedove/17.0.5
-MIME-Version: 1.0
+	(envelope-from <armbru@redhat.com>)
+	id 1Ur1pG-0002d3-74; Mon, 24 Jun 2013 04:08:38 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5O88bNe012586
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 24 Jun 2013 04:08:37 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-48.ams2.redhat.com
+	[10.36.116.48])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r5O88a9p006334; Mon, 24 Jun 2013 04:08:36 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id ED09C200B4; Mon, 24 Jun 2013 10:08:35 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
 To: Gerd Hoffmann <kraxel@redhat.com>
 References: <1372055996-4072-1-git-send-email-kraxel@redhat.com>
-In-Reply-To: <1372055996-4072-1-git-send-email-kraxel@redhat.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+	<1372055996-4072-8-git-send-email-kraxel@redhat.com>
+Date: Mon, 24 Jun 2013 10:08:35 +0200
+In-Reply-To: <1372055996-4072-8-git-send-email-kraxel@redhat.com> (Gerd
+	Hoffmann's message of "Mon, 24 Jun 2013 08:39:50 +0200")
+Message-ID: <87ppvcylq4.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2 00/13] A bunch of little socket +
- chardev fixes
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 07/13] qemu-char: fix
+	documentation for telnet+wait socket flags
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,20 +52,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jun 2013 07:18:30 -0000
+X-List-Received-Date: Mon, 24 Jun 2013 08:08:43 -0000
 
-24.06.2013 10:39, Gerd Hoffmann wrote:
->   Hi,
-> 
-> Here is v2 of the series, addressing Michaels review comments.
+Gerd Hoffmann <kraxel@redhat.com> writes:
 
-Thank you Gerd, applied all series to the trivial-patches queue,
-with two edits:
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> ---
+>  qapi-schema.json |    7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+>
+> diff --git a/qapi-schema.json b/qapi-schema.json
+> index a80ee40..a29ce57 100644
+> --- a/qapi-schema.json
+> +++ b/qapi-schema.json
+> @@ -3185,10 +3185,11 @@
+>  # @addr: socket address to listen on (server=true)
+>  #        or connect to (server=false)
+>  # @server: #optional create server socket (default: true)
+> -# @wait: #optional wait for connect (not used for server
+> -#        sockets, default: false)
+> +# @wait: #optional wait for incoming connection on server
+> +#        sockets (default: false).
+>  # @nodelay: #optional set TCP_NODELAY socket option (default: false)
+> -# @telnet: #optional enable telnet protocol (default: false)
+> +# @telnet: #optional enable telnet protocol on server
+> +#          sockets (default: false)
+>  #
+>  # Since: 1.4
+>  ##
 
->   qemu-char: use ChardevBackendKind in in CharDriver
->   qemu-char: report udb backend errors
+Yes, both options apply only with server=true (I double-checked).
 
-fxed these :)
+Curiously, qemu_chr_open_socket_fd() puts "telnet" into chr->filename
+regardless of server.
 
-/mjt
+qemu_chr_open_socket() has
+
+    if (!is_listen)
+        is_waitconnect = 0;
+
+Should this perhaps be
+
+    if (!is_listen) {
+        is_waitconnect = 0;
+        is_telnet = 0;
+    }
+
+?
 
