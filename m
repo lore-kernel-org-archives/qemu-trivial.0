@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UqyfV-0005vU-OK
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 00:46:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51450)
+	id 1Ur02O-00050k-Rm
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 02:14:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36562)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1UqyfS-0005qt-Rs
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 00:46:20 -0400
+	(envelope-from <kraxel@redhat.com>) id 1Ur02M-0004xS-Kv
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 02:14:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1UqyfR-0004g9-Jd
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 00:46:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:6151)
+	(envelope-from <kraxel@redhat.com>) id 1Ur02L-0007Kl-Se
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 02:14:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44200)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>)
-	id 1UqyfL-0004e2-MK; Mon, 24 Jun 2013 00:46:11 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5O4k5CE020277
+	(envelope-from <kraxel@redhat.com>)
+	id 1Ur02J-0007K5-On; Mon, 24 Jun 2013 02:13:59 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5O6DwLF003896
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 24 Jun 2013 00:46:05 -0400
-Received: from [10.3.113.38] (ovpn-113-38.phx2.redhat.com [10.3.113.38])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r5O4k3K0003458; Mon, 24 Jun 2013 00:46:03 -0400
-Message-ID: <1372049162.30572.172.camel@ul30vt.home>
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Anthony Liguori <anthony@codemonkey.ws>
-Date: Sun, 23 Jun 2013 22:46:02 -0600
-In-Reply-To: <CA+aC4kt9GqL9JGE7z5e0d0pDROqPBBMqzo00Yv58oxR_=Lf48Q@mail.gmail.com>
-References: <1371737338-25148-1-git-send-email-aik@ozlabs.ru>
-	<874ncshh67.fsf@codemonkey.ws> <51C39578.6020204@ozlabs.ru>
-	<20130623140736.GB20842@redhat.com>
-	<CA+aC4ksTsWTH23F2jXYPXGk4Ya7JD1a7Q8p7xD65vOiD57Z=qQ@mail.gmail.com>
-	<1372023554.3944.111.camel@pasglop>
-	<CA+aC4kt9GqL9JGE7z5e0d0pDROqPBBMqzo00Yv58oxR_=Lf48Q@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
+	Mon, 24 Jun 2013 02:13:58 -0400
+Received: from rincewind.home.kraxel.org (ovpn-116-31.ams2.redhat.com
+	[10.36.116.31])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r5O6Dsmq029471; Mon, 24 Jun 2013 02:13:57 -0400
+Message-ID: <51C7E3A2.3050301@redhat.com>
+Date: Mon, 24 Jun 2013 08:13:54 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130513 Thunderbird/17.0.6
+MIME-Version: 1.0
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1371811105-730-1-git-send-email-kraxel@redhat.com>
+	<1371811105-730-2-git-send-email-kraxel@redhat.com>
+	<51C4985E.1020204@msgid.tls.msk.ru>
+In-Reply-To: <51C4985E.1020204@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.5.1
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: Anthony Liguori <aliguori@us.ibm.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
-	qemu-devel <qemu-devel@nongnu.org>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Paul Mackerras <paulus@samba.org>,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [Qemu-devel] [PATCH] RFC kvm irqfd:
- add directly mapped MSI IRQ support
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 01/13] qemu-socket: zero-initialize
+	SocketAddress
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,34 +52,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jun 2013 04:46:20 -0000
+X-List-Received-Date: Mon, 24 Jun 2013 06:14:03 -0000
 
-On Sun, 2013-06-23 at 16:58 -0500, Anthony Liguori wrote:
-> On Sun, Jun 23, 2013 at 4:39 PM, Benjamin Herrenschmidt
-> <benh@kernel.crashing.org> wrote:
-> > On Sun, 2013-06-23 at 10:02 -0500, Anthony Liguori wrote:
-> >> It doesn't make a lot of sense to have Power do MSI decoding in
-> >> userspace while x86 does it in the kernel.  I assume the kernel
-> >> doesn't have enough information to do the translation on Power?
-> >
-> > Well, it would need the host bridge which it doesn't have and it
-> > would need a concept of mapping that to interrupt numbers which
-> > we don't want in the kernel.
-> >
-> > We can keep the kernel side a LOT simpler (completely avoiding
-> > the whole route bloatware) by sticking to our "simple" direct map kernel
-> > stuff and doing the mapping from address/data to interrupts in qemu, so
-> > we'll stick to that.
+On 06/21/13 20:15, Michael Tokarev wrote:
+> 21.06.2013 14:38, Gerd Hoffmann wrote:
+>> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+>> ---
+>>  util/qemu-sockets.c |    2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+>> index fdd8dc4..364bd8c 100644
+>> --- a/util/qemu-sockets.c
+>> +++ b/util/qemu-sockets.c
+>> @@ -855,7 +855,7 @@ SocketAddress *socket_parse(const char *str, Error **errp)
+>>  {
+>>      SocketAddress *addr = NULL;
+>>  
+>> -    addr = g_new(SocketAddress, 1);
+>> +    addr = g_new0(SocketAddress, 1);
 > 
-> Yeah, but none of this is Power specific...  so we can do the same for x86, no?
+> While at it we can remove the =NULL assignment too, guess, someting like this:
 > 
-> I'm still trying to wrap my head around why we need MSI knowledge at
-> all in the kernel for x86.  I presume it's to fast-path irqfd when
-> doing vhost?
+> --- a/util/qemu-sockets.c
+> +++ b/util/qemu-sockets.c
+> @@ -848,9 +848,7 @@ int unix_nonblocking_connect(const char *path,
+> 
+>  SocketAddress *socket_parse(const char *str, Error **errp)
+>  {
+> -    SocketAddress *addr = NULL;
+> -
+> -    addr = g_new(SocketAddress, 1);
+> +    SocketAddress *addr = addr = g_new0(SocketAddress, 1);
+>      if (strstart(str, "unix:", NULL)) {
+>          if (str[5] == '\0') {
+>              error_setg(errp, "invalid Unix socket address");
+> 
+> Is that okay with you? :)
 
-Or device assignment.  Any paths where we want to inject an MSI
-interrupt without going through userspace.  Thanks,
+Yes.
 
-Alex
+> And not that the original issue is a big issue really, because
+> in each case each relevant field is initialized.
+
+Except in the error cases.
+
+cheers,
+  Gerd
+
 
 
