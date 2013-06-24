@@ -1,41 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ur8Wd-0002kd-EL
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 11:17:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38798)
+	id 1Ur9kj-0005nD-5j
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 12:36:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38030)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1Ur8Wa-0002el-BW
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 11:17:49 -0400
+	(envelope-from <gleb@redhat.com>) id 1Ur9kb-0005aY-FY
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 12:36:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1Ur8WW-0005qV-K5
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 11:17:48 -0400
-Received: from mail-gh0-x22d.google.com ([2607:f8b0:4002:c05::22d]:65199)
+	(envelope-from <gleb@redhat.com>) id 1Ur9kW-0007J8-FF
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 12:36:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63176)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1Ur8WW-0005qI-H6
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 11:17:44 -0400
-Received: by mail-gh0-f173.google.com with SMTP id g16so3492598ghb.32
-	for <qemu-trivial@nongnu.org>; Mon, 24 Jun 2013 08:17:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=from:to:cc:subject:in-reply-to:references:user-agent:date
-	:message-id:mime-version:content-type:x-gm-message-state;
-	bh=TTs3OtzNpjK9z0JVcHxU/aD/X6zmsdnDPpojFgUbM7c=;
-	b=oOVZgz9eGhg/aqt9SKQ+OlHfy3k/DMpvjaTZ0hB9cGXp4er7g5x6oMGysfiKWXry/j
-	lag1glRJ0atG7ApMcJ08YrxX+DFzAbvNGWoMIm7PwDZfqfBgYRIUcHvhXgyTqGbmXnQz
-	cQ33fGZquaA1DZ21ZX8G9/dLuI1N3HBrVAeloXyY9+Om2h4S+xv0zech/4kI/OpA+SiP
-	7BZJXhc7wwmqVWBetwIyprpbi1F5x9KKJgxk/kap4LzzUHD+hM1HH67Kh7H3JpNYA9T6
-	8k2XRHqtXybnhO/G0lH///3QjZ0RjGQET5FK+ulPCGJULOKAeIbj/Q0/3mwhfg1Qo1Tm
-	zh6A==
-X-Received: by 10.236.203.232 with SMTP id f68mr12982285yho.191.1372087063801; 
-	Mon, 24 Jun 2013 08:17:43 -0700 (PDT)
-Received: from titi.smtp.gmail.com (cpe-70-112-157-87.austin.res.rr.com.
-	[70.112.157.87])
-	by mx.google.com with ESMTPSA id o32sm31098173yhi.5.2013.06.24.08.17.42
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Mon, 24 Jun 2013 08:17:43 -0700 (PDT)
-From: Anthony Liguori <anthony@codemonkey.ws>
-To: Alexander Graf <agraf@suse.de>
-In-Reply-To: <92A47132-AAC5-4F7C-ACF7-2E817C70EDEF@suse.de>
+	(envelope-from <gleb@redhat.com>)
+	id 1Ur9kC-00078G-5U; Mon, 24 Jun 2013 12:35:56 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5OGZqLR020227
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 24 Jun 2013 12:35:52 -0400
+Received: from dhcp-1-237.tlv.redhat.com (dhcp-4-26.tlv.redhat.com
+	[10.35.4.26])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r5OGZofq031503; Mon, 24 Jun 2013 12:35:50 -0400
+Received: by dhcp-1-237.tlv.redhat.com (Postfix, from userid 13519)
+	id A7E3118D3DE; Mon, 24 Jun 2013 19:35:49 +0300 (IDT)
+Date: Mon, 24 Jun 2013 19:35:49 +0300
+From: Gleb Natapov <gleb@redhat.com>
+To: Anthony Liguori <anthony@codemonkey.ws>
+Message-ID: <20130624163549.GA8351@redhat.com>
 References: <1371747090.32709.61.camel@ul30vt.home>
 	<51C3B2E4.7000807@ozlabs.ru>
 	<1371782063.30572.74.camel@ul30vt.home> <51C3BF3E.20901@ozlabs.ru>
@@ -43,27 +34,22 @@ References: <1371747090.32709.61.camel@ul30vt.home>
 	<CA+aC4kvDQW=-V3-8y-0WQrn-SZh+4jcs+FWLfGa5+VdcE01rxg@mail.gmail.com>
 	<20130624071338.GZ5832@redhat.com> <87sj07bsf3.fsf@codemonkey.ws>
 	<20130624130642.GJ18508@redhat.com> <87hagnhbsz.fsf@codemonkey.ws>
-	<20130624134111.GA1109@redhat.com> <87zjufy40q.fsf@codemonkey.ws>
-	<92A47132-AAC5-4F7C-ACF7-2E817C70EDEF@suse.de>
-User-Agent: Notmuch/0.15.2+77~g661dcf8 (http://notmuchmail.org) Emacs/23.3.1
-	(x86_64-pc-linux-gnu)
-Date: Mon, 24 Jun 2013 10:17:41 -0500
-Message-ID: <878v1za67e.fsf@codemonkey.ws>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-X-Gm-Message-State: ALoCoQlsf6z3F9xW7gfowA5w+LWkNkilpnJCOn/LDjXEYdUVLGhAIoDv+bF19hUSYQ+1pQ2L5+iR
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c05::22d
-Cc: Gleb Natapov <gleb@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Alexey Kardashevskiy <aik@ozlabs.ru>,
+Content-Disposition: inline
+In-Reply-To: <87hagnhbsz.fsf@codemonkey.ws>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: "Michael S . Tsirkin" <mst@redhat.com>,
+	Alexey Kardashevskiy <aik@ozlabs.ru>, Alexander Graf <agraf@suse.de>,
 	qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org,
 	Alex Williamson <alex.williamson@redhat.com>,
 	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Paul Mackerras <paulus@samba.org>,
 	David Gibson <david@gibson.dropbear.id.au>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] RFC kvm irqfd: add directly
-	mapped MSI IRQ support
+ mapped MSI IRQ support
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -75,73 +61,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jun 2013 15:17:49 -0000
+X-List-Received-Date: Mon, 24 Jun 2013 16:36:27 -0000
 
-Alexander Graf <agraf@suse.de> writes:
+On Mon, Jun 24, 2013 at 08:34:52AM -0500, Anthony Liguori wrote:
+> Gleb Natapov <gleb@redhat.com> writes:
+> 
+> > On Mon, Jun 24, 2013 at 07:32:32AM -0500, Anthony Liguori wrote:
+> >> Gleb Natapov <gleb@redhat.com> writes:
+> >> 
+> >> This should be a per-device mapping, yes.  But I'm not sure that VCPUs
+> >> should even see anything.  I don't think a VCPU can generate an MSI
+> >> interrupt by writing to this location.
+> >> 
+> > No, and lower 4k of this space is where APIC is mapped as seen from CPU.
+> >> Is there anything that prevents us from using IRQFDs corresponding to
+> >> the target of an MSI mapping and get rid of the MSI info in the kernel?
+> >> 
+> > Again, you assume that x86 has some pin that MSI triggers. This is not
+> > the case; address/data is minimum that is needed to inject interrupt
+> > there (or moving APIC into userspace, since this is where "translation"
+> > is happening).
+> 
+> An APIC message contains:
+> 
+> 1) Destination Mode
+> 2) Delivery mode
+> 3) Level
+> 4) Trigger mode
+> 5) Vector
+> 6) Destination
+> 
+> Which is more or less what the MSI addr/data pair encodes.
+> 
+Not if interrupt remapping is in use.
 
-> On 24.06.2013, at 16:31, Anthony Liguori wrote:
->
->> "Michael S. Tsirkin" <mst@redhat.com> writes:
->> 
->>> On Mon, Jun 24, 2013 at 08:34:52AM -0500, Anthony Liguori wrote:
->>>> Gleb Natapov <gleb@redhat.com> writes:
->>>> 
->>>> Isn't this more or less what Avi's previous proposal was around changing
->>>> the APIC interfaces to userspace?
->>>> 
->>>> Regards,
->>>> 
->>>> Anthony Liguori
->>> 
->>> While that's not very elegant, I think we can use the existing
->>> interface for this: just encode things in a fake
->>> "msi message" in the format that kernel expects.
->> 
->> This is, in fact, exactly what we do today.  The MSI interfaces aren't
->> for MSI.  They are for sending messages to the APIC bus.  What we should
->> do is:
->> 
->> #define KVM_SIGNAL_LAPIC	KVM_SIGNAL_MSI
->> #define KVM_IRQ_ROUTING_LAPIC	KVM_IRQ_ROUTING_MSI
->> 
->> And switch to using the new #defines in QEMU.  That would make it more
->> obvious where we need to refactor things.  We currently hard code
->> routing via a local APIC with MSI.  We need to change this into a bus
->> specific function that can choose the right interface.
->> 
->> I think Power is fine with just doing all routing through the irqchip
->> interface.  We may need other routing interfaces for other architectures
->> though.
->
-> I'm not quite sure what problem exactly you're trying to solve
-> here. The main user of MSI injects through irqfd are in the kernel and
-> definitely want a fast path to inject those without any involvement of
-> QEMU at all.
+> But we can certainly have a userspace interface to inject such a message
+> into the LAPICs.  In fact, this is more or less what KVM_SIGNAL_MSI is
+> doing except that it's called MSI and encodes things in an addr/pair.
+> 
+Good that it does that otherwise it would have been broken after
+interrupt remapping implementation.
 
-Internally the communication between the IO APIC and LAPICs uses a
-protocol that does not map to a simple "pin numbering".
+> Such an interface would also allow for a QEMU implementation of an IO
+> APIC while still having the in-kernel LAPIC.
+> 
+Yes.
 
-Because we implement the IO APIC in the kernel, the kernel interface can
-be pin numbering more or less.
+> It would also allow QEMU to do per-device MSI decoding.
+> 
+Why can't it be done now with existing interfaces?
 
-But MSI bypasses the IO APIC (potentially at least) which means that we
-need a userspace interface for sending APIC messages.
+> Isn't this more or less what Avi's previous proposal was around changing
+> the APIC interfaces to userspace?
+> 
+Avi actually was against adding KVM_SIGNAL_MSI initially since it
+duplicated the functionality we already had. Don't remember how Jan
+managed to persuade him in the end :)
 
-Unfortunately, when this was added to support MSI, this was called "MSI"
-but it is most certainly not.
-
-In the very least, you also need the bus state + the source device to do
-proper MSI translation.  We get around this by assigning global MSI
-addresses and only having a single PHB.
-
-If you make those assumptions, then the APIC protocol looks a lot like
-an MSI address/data pair.
-
-Regards,
-
-Anthony Liguori
-
->
->
-> Alex
+--
+			Gleb.
 
