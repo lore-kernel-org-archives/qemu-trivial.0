@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ur0Rs-00052b-Ek
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 02:40:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41089)
+	id 1Ur12l-0006K1-VL
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jun 2013 03:18:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49843)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Ur0Re-0004U9-Ks
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 02:40:17 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Ur12j-0006E0-2T
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 03:18:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Ur0Rb-0007Gu-Oy
-	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 02:40:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:9170)
+	(envelope-from <mjt@tls.msk.ru>) id 1Ur12i-00033h-5W
+	for qemu-trivial@nongnu.org; Mon, 24 Jun 2013 03:18:28 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:36151)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1Ur0RT-0006xr-R5; Mon, 24 Jun 2013 02:39:59 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5O6dxEB002221
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 24 Jun 2013 02:39:59 -0400
-Received: from rincewind.home.kraxel.org (ovpn-116-31.ams2.redhat.com
-	[10.36.116.31])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r5O6dwg6010913; Mon, 24 Jun 2013 02:39:58 -0400
-Received: by rincewind.home.kraxel.org (Postfix, from userid 500)
-	id E20784173E; Mon, 24 Jun 2013 08:39:56 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 24 Jun 2013 08:39:48 +0200
-Message-Id: <1372055996-4072-6-git-send-email-kraxel@redhat.com>
-In-Reply-To: <1372055996-4072-1-git-send-email-kraxel@redhat.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Ur12g-0002w3-6o; Mon, 24 Jun 2013 03:18:26 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3DD0C42664;
+	Mon, 24 Jun 2013 11:18:18 +0400 (MSK)
+Message-ID: <51C7F2B9.6050707@msgid.tls.msk.ru>
+Date: Mon, 24 Jun 2013 11:18:17 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/20130529 Icedove/17.0.5
+MIME-Version: 1.0
+To: Gerd Hoffmann <kraxel@redhat.com>
 References: <1372055996-4072-1-git-send-email-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+In-Reply-To: <1372055996-4072-1-git-send-email-kraxel@redhat.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: [Qemu-trivial] [PATCH v2 05/13] qemu-char: use more specific
-	error_setg_* variants
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2 00/13] A bunch of little socket +
+ chardev fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,36 +45,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jun 2013 06:40:18 -0000
+X-List-Received-Date: Mon, 24 Jun 2013 07:18:30 -0000
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
----
- qemu-char.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+24.06.2013 10:39, Gerd Hoffmann wrote:
+>   Hi,
+> 
+> Here is v2 of the series, addressing Michaels review comments.
 
-diff --git a/qemu-char.c b/qemu-char.c
-index ee7c70e..cfc68cd 100644
---- a/qemu-char.c
-+++ b/qemu-char.c
-@@ -2604,7 +2604,7 @@ static CharDriverState *qemu_chr_open_socket_fd(int fd, bool do_nodelay,
- 
-     memset(&ss, 0, ss_len);
-     if (getsockname(fd, (struct sockaddr *) &ss, &ss_len) != 0) {
--        error_setg(errp, "getsockname: %s", strerror(errno));
-+        error_setg_errno(errp, errno, "getsockname");
-         return NULL;
-     }
- 
-@@ -3536,7 +3536,7 @@ static int qmp_chardev_open_file_source(char *src, int flags,
- 
-     TFR(fd = qemu_open(src, flags, 0666));
-     if (fd == -1) {
--        error_setg(errp, "open %s: %s", src, strerror(errno));
-+        error_setg_file_open(errp, errno, src);
-     }
-     return fd;
- }
--- 
-1.7.9.7
+Thank you Gerd, applied all series to the trivial-patches queue,
+with two edits:
 
+>   qemu-char: use ChardevBackendKind in in CharDriver
+>   qemu-char: report udb backend errors
+
+fxed these :)
+
+/mjt
 
