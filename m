@@ -1,52 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UsakT-0001RU-C4
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2013 11:38:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36509)
+	id 1UsdFB-00016b-0U
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2013 14:18:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57264)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UsakQ-0001O3-8p
-	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 11:38:07 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UsdF4-0000tR-Ju
+	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 14:17:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1UsakN-0006Jp-R4
-	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 11:38:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:28682)
+	(envelope-from <mjt@tls.msk.ru>) id 1UsdF2-000576-BI
+	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 14:17:54 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44730)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1UsakN-0006Jj-IG; Fri, 28 Jun 2013 11:38:03 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5SFc04h016603
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 28 Jun 2013 11:38:00 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-50.ams2.redhat.com
-	[10.36.112.50])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r5SFbvfw028558; Fri, 28 Jun 2013 11:37:58 -0400
-Message-ID: <51CDADD2.2010405@redhat.com>
-Date: Fri, 28 Jun 2013 17:37:54 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Ed Maste <emaste@freebsd.org>
-References: <1372101677-46175-1-git-send-email-emaste@freebsd.org>
-	<51CD669A.1010100@msgid.tls.msk.ru>
-	<CAPyFy2Bzh-nK7zkc3JwvPEd4AYH0CriA1vu_kGqoCXdaAk0i1A@mail.gmail.com>
-	<51CD8985.6020401@redhat.com>
-	<CAFEAcA-M9RnRv8TZjcY8C1KgRj+2k8JT1QKrtHhfo6BafNQQWQ@mail.gmail.com>
-	<51CDA1E7.9000100@redhat.com>
-	<CAFEAcA-8n0GEYd3Rif-XGaPaC1vwKk_eYJKu2Z8VMyKp-0-nfw@mail.gmail.com>
-	<51CDA797.9000803@redhat.com>
-	<CAPyFy2D8wnCkKMF4TAB=PFt0y8Ld2LmYA=17D_sakdvR7Mkjtw@mail.gmail.com>
-In-Reply-To: <CAPyFy2D8wnCkKMF4TAB=PFt0y8Ld2LmYA=17D_sakdvR7Mkjtw@mail.gmail.com>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UsdEz-000554-Hp; Fri, 28 Jun 2013 14:17:49 -0400
+Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id F399B42BCC;
+	Fri, 28 Jun 2013 22:17:46 +0400 (MSK)
+Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
+	id 3D35D1A3; Fri, 28 Jun 2013 22:17:45 +0400 (MSK)
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: Anthony Liguori <aliguori@us.ibm.com>
+Date: Fri, 28 Jun 2013 22:17:32 +0400
+Message-Id: <1372443465-22384-2-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1372443465-22384-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1372443465-22384-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] tls.h: Enable TLS on FreeBSD
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 01/14] qemu-socket: zero-initialize
+	SocketAddress
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,34 +41,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jun 2013 15:38:07 -0000
+X-List-Received-Date: Fri, 28 Jun 2013 18:17:57 -0000
 
-Il 28/06/2013 17:35, Ed Maste ha scritto:
-> On 28 June 2013 11:11, Paolo Bonzini <pbonzini@redhat.com> wrote:
->> And of course if bsd-user supported 1:1 mapping between guest and host
->> threads on FreeBSD, cpu_single_env would have to be thread-local.
-> 
-> This is the case for the bsd-user work that Stacey posted at the
-> beginning of the week and is currently being revised after the initial
-> round of comments.
-> 
-> Can you comment on how quickly your tls work is expected to arrive?
-> We'll have to rebase on top of it, if it's in the next few days or so.
+From: Gerd Hoffmann <kraxel@redhat.com>
 
-Maybe a week or two.
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ util/qemu-sockets.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-To simplify rebase, if you want you can take the conflicting patch from
-http://article.gmane.org/gmane.comp.emulators.qemu/216583/raw.
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index 96eca2a..86fb09c 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -848,9 +848,9 @@ int unix_nonblocking_connect(const char *path,
+ 
+ SocketAddress *socket_parse(const char *str, Error **errp)
+ {
+-    SocketAddress *addr = NULL;
++    SocketAddress *addr;
+ 
+-    addr = g_new(SocketAddress, 1);
++    addr = g_new0(SocketAddress, 1);
+     if (strstart(str, "unix:", NULL)) {
+         if (str[5] == '\0') {
+             error_setg(errp, "invalid Unix socket address");
+-- 
+1.7.10.4
 
->  If it's longer than that we'll need this change as a prerequisite for
-> the bsd-user work.
-> 
-> After Peter suggested splitting this change out I sent it to -trivial
-> because I already had it in a test tree, and it has no effect on
-> non-FreeBSD hosts.  If it's really objectionable right now we can
-> include it with v2 of the bsd-user series.
-
-Yes, that would be preferrable, either with or without the patch above.
-
-Paolo
 
