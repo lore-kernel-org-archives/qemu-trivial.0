@@ -1,50 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Usa5S-0007sF-5H
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2013 10:55:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51715)
+	id 1UsaKk-0004fA-AL
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2013 11:11:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56065)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Usa5P-0007qH-3A
-	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 10:55:44 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1UsaKh-0004dK-1s
+	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 11:11:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Usa5M-0007Oy-R4
-	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 10:55:42 -0400
-Received: from mail-lb0-f181.google.com ([209.85.217.181]:52345)
+	(envelope-from <pbonzini@redhat.com>) id 1UsaKf-0004kM-Mz
+	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 11:11:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35625)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Usa5M-0007Oj-G3
-	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 10:55:40 -0400
-Received: by mail-lb0-f181.google.com with SMTP id w10so1075548lbi.40
-	for <qemu-trivial@nongnu.org>; Fri, 28 Jun 2013 07:55:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:x-gm-message-state;
-	bh=ydlRNI+F6WOOgTCMAgoUd3zrGMVBFg6EQ5+uP+9rPbU=;
-	b=m2kQ7a4fdgINMhPCoO2SZ1CGEaoXBe4rhXIFXBSIb6xnvVYpADnvRA6fEmTztgk9aL
-	9SF6IGIS6GnDcwJvF96AqdKeNlOMcUFStAoluyw8n3BDcXVM8O5ch45xiTIeRXinHCAf
-	oWhkfdK5TLEzyv94jHjWJ13JjwVIIkGFkym4KiWTyeYjWoGjUYCLtE1meIsGL0SbtjIZ
-	OFmt1DWPUzwZ2xElyK+p/Y3YNCtC0QJ6+M2xD+67Vt1ZF18Awz83ovyvL5wxwZVN3mrf
-	ExtdzhWVxi2Vu1bU2a+k92GDeC+wVEMmsr3l2dqLn7hv3/2384o3WLm4ooN3mls2y+qZ
-	pcPg==
-X-Received: by 10.112.135.99 with SMTP id pr3mr6590533lbb.23.1372431339397;
-	Fri, 28 Jun 2013 07:55:39 -0700 (PDT)
+	(envelope-from <pbonzini@redhat.com>)
+	id 1UsaKf-0004kH-EL; Fri, 28 Jun 2013 11:11:29 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r5SFBQs5018882
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 28 Jun 2013 11:11:26 -0400
+Received: from yakj.usersys.redhat.com (ovpn-112-50.ams2.redhat.com
+	[10.36.112.50])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r5SFBMZV014878; Fri, 28 Jun 2013 11:11:23 -0400
+Message-ID: <51CDA797.9000803@redhat.com>
+Date: Fri, 28 Jun 2013 17:11:19 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130514 Thunderbird/17.0.6
 MIME-Version: 1.0
-Received: by 10.112.97.146 with HTTP; Fri, 28 Jun 2013 07:55:19 -0700 (PDT)
-In-Reply-To: <51CDA1E7.9000100@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1372101677-46175-1-git-send-email-emaste@freebsd.org>
 	<51CD669A.1010100@msgid.tls.msk.ru>
 	<CAPyFy2Bzh-nK7zkc3JwvPEd4AYH0CriA1vu_kGqoCXdaAk0i1A@mail.gmail.com>
 	<51CD8985.6020401@redhat.com>
 	<CAFEAcA-M9RnRv8TZjcY8C1KgRj+2k8JT1QKrtHhfo6BafNQQWQ@mail.gmail.com>
 	<51CDA1E7.9000100@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 28 Jun 2013 15:55:19 +0100
-Message-ID: <CAFEAcA-8n0GEYd3Rif-XGaPaC1vwKk_eYJKu2Z8VMyKp-0-nfw@mail.gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
+	<CAFEAcA-8n0GEYd3Rif-XGaPaC1vwKk_eYJKu2Z8VMyKp-0-nfw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-8n0GEYd3Rif-XGaPaC1vwKk_eYJKu2Z8VMyKp-0-nfw@mail.gmail.com>
+X-Enigmail-Version: 1.5.1
 Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQnwhMCvPJVGivZnW25WifCifCsvFCIm9JgeB+dzsYvtuFIxsV7lBHQmIA/q7KPeIPfRUHYG
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.181
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [PATCH] tls.h: Enable TLS on FreeBSD
@@ -59,17 +56,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jun 2013 14:55:44 -0000
+X-List-Received-Date: Fri, 28 Jun 2013 15:11:32 -0000
 
-On 28 June 2013 15:47, Paolo Bonzini <pbonzini@redhat.com> wrote:
-> Il 28/06/2013 15:05, Peter Maydell ha scritto:
->> I don't understand what you mean by "no need for it". We are
->> already multithreaded in system mode, so this is simply
->> making FreeBSD do the same thing as Linux.
->
-> cpu_single_env is protected by the BQL unless you're running on KVM.
+Il 28/06/2013 16:55, Peter Maydell ha scritto:
+>>> >> I don't understand what you mean by "no need for it". We are
+>>> >> already multithreaded in system mode, so this is simply
+>>> >> making FreeBSD do the same thing as Linux.
+>> >
+>> > cpu_single_env is protected by the BQL unless you're running on KVM.
+> That doesn't make it magically not a per-thread variable.
 
-That doesn't make it magically not a per-thread variable.
+If it were possible to say "make cpu_single_env magically not per-thread
+on Linux/TCG", I'd be all for it!
 
--- PMM
+But I _can_ make cpu_single_env not per-thread on FreeBSD/TCG, because
+no one needs per-thread cpu_single_env on FreeBSD.
+
+If we could drop support for platforms that lack __thread (or some other
+fast TLS mechanism), then it would be another story of course.  We would
+not have to do things like this for qtest:
+
+    while (1) {
+        cpu_single_env = NULL;
+        qemu_mutex_unlock_iothread();
+        do {
+            int sig;
+            r = sigwait(&waitset, &sig);
+        } while (r == -1 && (errno == EAGAIN || errno == EINTR));
+        if (r == -1) {
+            perror("sigwait");
+            exit(1);
+        }
+        qemu_mutex_lock_iothread();
+        cpu_single_env = env;
+        qemu_wait_io_event_common(cpu);
+    }
+
+or similarly set cpu_single_env in cpu_exec.
+
+And of course if bsd-user supported 1:1 mapping between guest and host
+threads on FreeBSD, cpu_single_env would have to be thread-local.
+
+Paolo
 
