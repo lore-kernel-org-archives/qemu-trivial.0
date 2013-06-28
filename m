@@ -1,32 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UsRsk-0005OH-7C
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2013 02:10:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41729)
+	id 1UsW0K-000771-BD
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2013 06:34:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59954)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UsRsi-0005Lc-Rs
-	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 02:10:05 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UsW0H-00074L-Uv
+	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 06:34:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1UsRsi-0006po-0Z
-	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 02:10:04 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:55280)
+	(envelope-from <mjt@tls.msk.ru>) id 1UsW0H-0004T9-0h
+	for qemu-trivial@nongnu.org; Fri, 28 Jun 2013 06:34:09 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:35814)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1UsRsc-0006QG-TZ; Fri, 28 Jun 2013 02:09:59 -0400
-Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 93BA742B42;
-	Fri, 28 Jun 2013 10:09:51 +0400 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id A646F56B; Fri, 28 Jun 2013 10:09:49 +0400 (MSK)
+	id 1UsW0D-0004RZ-B6; Fri, 28 Jun 2013 06:34:05 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 778EC42B0C;
+	Fri, 28 Jun 2013 14:34:02 +0400 (MSK)
+Received: from wh.tls.msk.ru (wh.tls.msk.ru [192.168.177.7])
+	by tsrv.corpit.ru (Postfix) with ESMTP id 33BAB3E;
+	Fri, 28 Jun 2013 14:34:02 +0400 (MSK)
+Message-ID: <51CD669A.1010100@msgid.tls.msk.ru>
+Date: Fri, 28 Jun 2013 14:34:02 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-trivial@nongnu.org
-Date: Fri, 28 Jun 2013 10:09:48 +0400
-Message-Id: <1372399788-12661-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:10.0.12) Gecko/20130116 Icedove/10.0.12
+MIME-Version: 1.0
+To: Ed Maste <emaste@freebsd.org>
+References: <1372101677-46175-1-git-send-email-emaste@freebsd.org>
+In-Reply-To: <1372101677-46175-1-git-send-email-emaste@freebsd.org>
+X-Enigmail-Version: 1.4.1
+Content-Type: text/plain; charset=KOI8-R
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: Kevin O'Connor <kevin@koconnor.net>, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH trivial] doc: we use seabios, not bochs bios
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH] tls.h: Enable TLS on FreeBSD
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,27 +46,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jun 2013 06:10:05 -0000
+X-List-Received-Date: Fri, 28 Jun 2013 10:34:11 -0000
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- qemu-doc.texi |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+24.06.2013 23:21, Ed Maste wrote:
+> Signed-off-by: Ed Maste <emaste@freebsd.org>
+> ---
+> I have had this in a local tree for some time, and it is needed by the
+> BSD-user work that is now being proposed.
 
-diff --git a/qemu-doc.texi b/qemu-doc.texi
-index 8022890..185dd47 100644
---- a/qemu-doc.texi
-+++ b/qemu-doc.texi
-@@ -214,7 +214,7 @@ PCI UHCI USB controller and a virtual USB hub.
- 
- SMP is supported with up to 255 CPUs.
- 
--QEMU uses the PC BIOS from the Bochs project and the Plex86/Bochs LGPL
-+QEMU uses the PC BIOS from the Seabios project and the Plex86/Bochs LGPL
- VGA BIOS.
- 
- QEMU uses YM3812 emulation by Tatsuyuki Satoh.
--- 
-1.7.10.4
+So I'm not applying this to -trivial, because it caused quite some
+discussion.  If nevertheless it's okay to apply it, please let me know.
 
+/mjt
 
