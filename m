@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UtVo8-0006Fb-0x
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jul 2013 00:33:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50005)
+	id 1UtW4e-0000IY-SV
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jul 2013 00:50:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UtVo3-0006FJ-8H
-	for qemu-trivial@nongnu.org; Mon, 01 Jul 2013 00:33:41 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UtW4a-0000HT-7M
+	for qemu-trivial@nongnu.org; Mon, 01 Jul 2013 00:50:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UtVo1-0003Hr-My
-	for qemu-trivial@nongnu.org; Mon, 01 Jul 2013 00:33:39 -0400
-Received: from mail-vc0-f171.google.com ([209.85.220.171]:37740)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UtW4X-0002II-ML
+	for qemu-trivial@nongnu.org; Mon, 01 Jul 2013 00:50:44 -0400
+Received: from mail-ve0-f169.google.com ([209.85.128.169]:40227)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UtVo1-0003HF-IC
-	for qemu-trivial@nongnu.org; Mon, 01 Jul 2013 00:33:37 -0400
-Received: by mail-vc0-f171.google.com with SMTP id gd11so1712955vcb.16
-	for <qemu-trivial@nongnu.org>; Sun, 30 Jun 2013 21:33:35 -0700 (PDT)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1UtW4X-0002Hg-Ap
+	for qemu-trivial@nongnu.org; Mon, 01 Jul 2013 00:50:41 -0400
+Received: by mail-ve0-f169.google.com with SMTP id m1so3367262ves.14
+	for <qemu-trivial@nongnu.org>; Sun, 30 Jun 2013 21:50:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=google.com; s=20120113;
 	h=mime-version:sender:in-reply-to:references:date
 	:x-google-sender-auth:message-id:subject:from:to:cc:content-type
 	:content-transfer-encoding:x-gm-message-state;
-	bh=0I8d3d2TXkwoP9L5xfnAT45UzDaPQPlDyh+5uKY1AgE=;
-	b=OE1o7zVH0gamzz6hYmNFxZkXYiMkUszr4Xx9RydNPIHBH5eenR+734Vz7lBbq2WhB8
-	QyDNGqK9kB+p6u04d2VhV/MLIcZuti148tvTPw5cNJsaKtPhyJJsnIelpL+EBAGKXyqd
-	NkZ43ALFb89USUQCPCF+dYHWhDkRUE6TotpC5D/wb5XNZfULyM6b7zIKJ7YoZhGAMQuO
-	Ddg1GD7N2U3CtDaxGph32fSW8rigqBqiAuPKUhJ7tDtsL+YxBvp5AgN1Nlu/a+2QXBYk
-	53c5nisfNPcMk/Emt6hQLypfYGvMLQ+Kf0fP4VIvg3cNtVe8kEl8I9jJEkUDnjVax9wO
-	3NeA==
+	bh=6VRAEJDtst+eDmwaUEvpBaC/G7OXRKWQH8PUpaOXcxI=;
+	b=BO68FCgdEYw5YWKfAsF3aYDGmq1x9I547PaPWlWgRgn8wcp79RTCPhMkREtjoAXBbZ
+	yffagP9TYRoXm265fi3mZZy4L5e3YHtumFKymahn8YcFDmHJzTuz8UParrgT7ajcWm8N
+	1jeDhaok0Wy+6h3+NEbmQAWnlbFqhAcLrIS/hQWn3+zhaGsCoXeprbE2U+p8K4qTggvs
+	KF/kOczvO81q4o+0OxCT0wh0NezWPj+ahdjfZmBR2Qdn43yAIlth+MiXnDu8n9hm5ZIC
+	kTNZ3eDCmZVylRe6syXPoP4XzkjDV6eK31qnbo9L0UgsCqDl+qTrMP0Vq+8nAhokd5NX
+	8y8Q==
 MIME-Version: 1.0
-X-Received: by 10.52.163.67 with SMTP id yg3mr7726919vdb.14.1372653215792;
-	Sun, 30 Jun 2013 21:33:35 -0700 (PDT)
+X-Received: by 10.220.143.140 with SMTP id v12mr9013687vcu.95.1372654240409;
+	Sun, 30 Jun 2013 21:50:40 -0700 (PDT)
 Sender: peter.crosthwaite@petalogix.com
-Received: by 10.220.224.201 with HTTP; Sun, 30 Jun 2013 21:33:35 -0700 (PDT)
+Received: by 10.220.224.201 with HTTP; Sun, 30 Jun 2013 21:50:40 -0700 (PDT)
 In-Reply-To: <51D00BF1.5070900@suse.de>
 References: <cover.1372055322.git.peter.crosthwaite@xilinx.com>
 	<51D00BF1.5070900@suse.de>
-Date: Mon, 1 Jul 2013 14:33:35 +1000
-X-Google-Sender-Auth: hcCVgBZ6nfWi175vGH1umiyURpw
-Message-ID: <CAEgOgz4XdjfpSXh36zKkFvfsaTArRhMYPODLhk82pDnQOOk-+w@mail.gmail.com>
+Date: Mon, 1 Jul 2013 14:50:40 +1000
+X-Google-Sender-Auth: TrekzBe5CLe_Cu5n8YJLqBYm-B8
+Message-ID: <CAEgOgz5na8X9-UNYCiY3HbceG1QHG7eB-uomgqXQ9FgSBjL9hQ@mail.gmail.com>
 From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 To: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: quoted-printable
-X-Gm-Message-State: ALoCoQkZQt2RLWdBJ1NrUYFexhEOlXNFPe78vfIF6rL2fyrglm3om2a3LqYJTpDEn9K/MPjpDWkg
+X-Gm-Message-State: ALoCoQm7cA8R0kK0Gfv1UNVrIniS/2FebE2IkpauV3zXdoor/t1hSuzzqASg6YUx9K+DfNilAyoD
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.220.171
+X-Received-From: 209.85.128.169
 Cc: mst@redhat.com, qemu-trivial <qemu-trivial@nongnu.org>,
 	qemu-devel@nongnu.org, Blue Swirl <blauwirbel@gmail.com>,
 	Anthony Liguori <anthony@codemonkey.ws>, pbonzini@redhat.com,
@@ -62,9 +62,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jul 2013 04:33:42 -0000
+X-List-Received-Date: Mon, 01 Jul 2013 04:50:47 -0000
 
 Hi Andreas,
+
+Thanks for the review and fixups. ACK to all modifications and
+squashes as commented.
+
+Regards,
+Peter
 
 On Sun, Jun 30, 2013 at 8:44 PM, Andreas F=E4rber <afaerber@suse.de> wrote:
 > Hi Peter,
@@ -123,9 +129,6 @@ On Sun, Jun 30, 2013 at 8:44 PM, Andreas F=E4rber <afaerber@suse.de> wrote:
 > As requested, I've started picking up QOM type/cast/realize patches on:
 >
 > git://github.com/afaerber/qemu-cpu.git qom-next
-
-Perhaps this is becoming the "qom-devices" queue?
-
 > https://github.com/afaerber/qemu-cpu/commits/qom-next
 >
 > (Not to be confused with my qom-cpu / qom-cpu-next CPU trees.)
@@ -140,20 +143,10 @@ Perhaps this is becoming the "qom-devices" queue?
 > comments and/or minor changes for some of them. Noticing some
 > incompleteness, I will reiterate over them.
 >
-
-I think the incompleteness comes from the fact that my series is only
-worrying about type PCI_DEVICE. I have left alone QOM cast issues for
-casts that are not to/from or through TYPE_PCI_DEVICE, so there are
-instances where a QOM cast macro may be introduces but not used.
-
 > Whether I send a pull when we're all happy with it or whether we let
 > submaintainers pick/pull by subsystem at some point doesn't matter to
 > me, as long as we can join efforts to make QOM realize reality soon. :)
 >
-
-I think getting it all into one giant queue then we can centralise
-testing a little better.
-
 >>   isa/*: QOM casting sweep
 >>   pci/*: QOM casting sweep
 >>   pci-bridge/pci_bridge_dev: Don't use DO_UPCAST
@@ -179,38 +172,6 @@ testing a little better.
 > But maybe I'm missing something? What exactly was the motivation behind
 > the series? Do you have a follow-up?
 >
-
-I have an experimental series out-of-tree (change the parent type of
-TYPE_PCI_DEVICE to TYPE_SYSBUS) to remove the need to coreify devices
-for use as both sysbus and PCI (e.g. EHCI). These casts get in the way
-of that series.
-
-I really want to make it clear though, that this series is legitimate
-cleanup without that goal, so I didn't want to tangle this series in
-that much-longer discussion.
-
-So this series specifically is a compile bug chase on:
-
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index 6ef1f97..5f607b3 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -217,7 +217,6 @@ typedef void (*MSIVectorPollNotifier)(PCIDevice *dev,
-                                       unsigned int vector_end);
-
- struct PCIDevice {
--    DeviceState qdev;
-
-     /* PCI config space */
-     uint8_t *config;
-
-FWIW, one could actually remove all parent_obj fields from QOM structs
-(just like this) and the tree should compile, good way to catch all
-legacy casts.
-
-Regards,
-Peter
-
 > Regards,
 > Andreas
 >
