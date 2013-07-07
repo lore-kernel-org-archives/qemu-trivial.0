@@ -1,43 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UvFPF-00010T-1N
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Jul 2013 19:27:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50225)
+	id 1UvvWL-0006zR-UC
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Jul 2013 16:25:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44286)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UvFPC-0000ty-1M
-	for qemu-trivial@nongnu.org; Fri, 05 Jul 2013 19:27:11 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1UvvWH-0006sY-PM
+	for qemu-trivial@nongnu.org; Sun, 07 Jul 2013 16:25:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1UvFPA-0005n9-MH
-	for qemu-trivial@nongnu.org; Fri, 05 Jul 2013 19:27:09 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:41088 helo=mx2.suse.de)
+	(envelope-from <stefan@weilnetz.de>) id 1UvvWF-0005Ok-2O
+	for qemu-trivial@nongnu.org; Sun, 07 Jul 2013 16:25:17 -0400
+Received: from v220110690675601.yourvserver.net ([78.47.199.172]:56862)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1UvFP1-0005ij-MI; Fri, 05 Jul 2013 19:26:59 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 1EA7DA4EB7;
-	Sat,  6 Jul 2013 01:26:58 +0200 (CEST)
-Message-ID: <51D7563C.90000@suse.de>
-Date: Sat, 06 Jul 2013 01:26:52 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130620 Thunderbird/17.0.7
-MIME-Version: 1.0
-To: qemu-devel <qemu-devel@nongnu.org>,
-	Anthony Liguori <anthony@codemonkey.ws>,
-	Scott Wood <scottwood@freescale.com>, Blue Swirl <blauwirbel@gmail.com>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-trivial <qemu-trivial@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	qemu-ppc <qemu-ppc@nongnu.org>, Hu Tao <hutao@cn.fujitsu.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [Qemu-trivial] ANN: DeveloperNews - a qemu-devel digest for
-	maintainers and contributors
+	(envelope-from <stefan@weilnetz.de>)
+	id 1UvvWA-0005N8-0G; Sun, 07 Jul 2013 16:25:10 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	A284F72819DE; Sun,  7 Jul 2013 22:25:07 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id VMM0nU4z5SJD; Sun,  7 Jul 2013 22:25:05 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id BAC8F72819DF; Sun,  7 Jul 2013 22:25:05 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Sun,  7 Jul 2013 22:25:02 +0200
+Message-Id: <1373228703-26226-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 78.47.199.172
+Cc: Jan Kiszka <jan.kiszka@siemens.com>, Anthony Liguori <aliguori@us.ibm.com>,
+	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] Spelling fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,45 +43,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Jul 2013 23:27:11 -0000
+X-List-Received-Date: Sun, 07 Jul 2013 20:25:20 -0000
 
-Hello everyone,
+* it's -> its
+* of cause -> of course
+* grammar fix in ui/vnc-enc-zywrle.h
 
-Inspired by a complaint from Scott about information getting lost
-amongst qemu-devel mails, and spawning a qemu-announce mailing list
-being out of my powers, I have started a simple Wiki page:
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ qapi-schema.json    |    2 +-
+ slirp/if.c          |    2 +-
+ ui/vnc-enc-zywrle.h |    6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-http://wiki.qemu.org/DeveloperNews
+diff --git a/qapi-schema.json b/qapi-schema.json
+index 5b0fb3b..1efad03 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -1664,7 +1664,7 @@
+ #
+ # Since: 0.14.0
+ #
+-# Notes: This command only exists as a stop-gap.  It's use is highly
++# Notes: This command only exists as a stop-gap.  Its use is highly
+ #        discouraged.  The semantics of this command are not guaranteed.
+ #
+ #        Known limitations:
+diff --git a/slirp/if.c b/slirp/if.c
+index dcd5faf..3db3a30 100644
+--- a/slirp/if.c
++++ b/slirp/if.c
+@@ -142,7 +142,7 @@ diddit:
+ 
+ /*
+  * Send a packet
+- * We choose a packet based on it's position in the output queues;
++ * We choose a packet based on its position in the output queues;
+  * If there are packets on the fastq, they are sent FIFO, before
+  * everything else.  Otherwise we choose the first packet from the
+  * batchq and send it.  the next packet chosen will be from the session
+diff --git a/ui/vnc-enc-zywrle.h b/ui/vnc-enc-zywrle.h
+index 1ff40b1..addee55 100644
+--- a/ui/vnc-enc-zywrle.h
++++ b/ui/vnc-enc-zywrle.h
+@@ -305,9 +305,9 @@ static inline void harr(int8_t *px0, int8_t *px1)
+    |L1H0H1H0|L1H0H1H0|L1H0H1H0|L1H0H1H0| : level 1
+ 
+  In this method, H/L and X0/X1 is always same position.
+- This lead us to more speed and less memory.
+- Of cause, the result of both method is quite same
+- because it's only difference that coefficient position.
++ This leads us to more speed and less memory.
++ Of course, the result of both methods is quite same
++ because its only difference is that coefficient position.
+ */
+ static inline void wavelet_level(int *data, int size, int l, int skip_pixel)
+ {
+-- 
+1.7.10.4
 
-The idea is to have a brief summary of decisions and code changes that
-affect all maintainers and/or contributors, with references into
-qemu-devel archive or git.qemu.org or developers' blogs for more info,
-latest news sorted first.
-For example, to aid in getting up to speed after a four-week vacation,
-and to aid hobbyists in coping with the sheer incredible list volume.
-
-Self-explanatory that this will only work when information there is less
-than on qemu-devel (i.e., not every PULL or patchset linked).
-The intended scope is not random news about what changed in qemu.git but
-code changes that require fellow developers to rebase or to adopt new
-patterns and conventions and review criteria. The removal of some
-function does not necessarily need to be documented there (anyone
-building against latest master would notice a breakage) but whenever
-there's old and new ways to do things, we can advise which to choose.
-
-The initial contents is of course biased to what's close to my heart;
-but it's a Wiki, so for instance Stefan H. could add a bullet point
-about new devices please using new asynchronous block layer APIs only.
-
-Obviously adding Wiki contents is work, it cannot replace cover letters
-or commit messages, but after the n-th reply pages like SubmitAPatch or
-QOMConventions have become very handy to refer to.
-
-Regards,
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
 
