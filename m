@@ -1,37 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UvvWL-0006zR-UC
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Jul 2013 16:25:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44286)
+	id 1UvxVw-0008C4-Od
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Jul 2013 18:33:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39290)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1UvvWH-0006sY-PM
-	for qemu-trivial@nongnu.org; Sun, 07 Jul 2013 16:25:20 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1UvxVt-0008Aw-PI
+	for qemu-trivial@nongnu.org; Sun, 07 Jul 2013 18:33:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1UvvWF-0005Ok-2O
-	for qemu-trivial@nongnu.org; Sun, 07 Jul 2013 16:25:17 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:56862)
+	(envelope-from <peter.maydell@linaro.org>) id 1UvxVs-0003CC-TO
+	for qemu-trivial@nongnu.org; Sun, 07 Jul 2013 18:33:01 -0400
+Received: from mail-la0-f44.google.com ([209.85.215.44]:65318)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1UvvWA-0005N8-0G; Sun, 07 Jul 2013 16:25:10 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	A284F72819DE; Sun,  7 Jul 2013 22:25:07 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id VMM0nU4z5SJD; Sun,  7 Jul 2013 22:25:05 +0200 (CEST)
-Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
-	id BAC8F72819DF; Sun,  7 Jul 2013 22:25:05 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Sun,  7 Jul 2013 22:25:02 +0200
-Message-Id: <1373228703-26226-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: Jan Kiszka <jan.kiszka@siemens.com>, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] Spelling fixes
+	(envelope-from <peter.maydell@linaro.org>) id 1UvxVs-0003Bw-MA
+	for qemu-trivial@nongnu.org; Sun, 07 Jul 2013 18:33:00 -0400
+Received: by mail-la0-f44.google.com with SMTP id er20so3284061lab.3
+	for <qemu-trivial@nongnu.org>; Sun, 07 Jul 2013 15:32:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=WDexkGm2Mw6QSTwjs4BUl0kwPDCUVeb7oJksQY+m+kU=;
+	b=l31vPxrnQo6xK0eXIzPjCVCYwewbcst5kTEKkfEaqJUctlakFnMHsJSBRqUMg8vzPd
+	hAswKHsybqW+omXpgRDYVSsIApDNnkB8cDrXDi1W2QUQDqtxBqYjGcDonXjzB50TBDWL
+	hgKq5Mw1hWdf1d8bMfLK33BthE05qWUFXzT+wX3HA3LIGF4u4djTt4SPj26Z1bcRMlUU
+	zVPXt0/tmjGE9euUJStisDHb5vVcoJ6h6R6X+ZRD011lwoxOkcJ/SgqFUCL1vMQU0Km9
+	WKR7UOvUcUB7sEcTLc8T3CSCkBqpUSiMd0BID9Hd4zDTAjMczBdFq23Y0quaG0tM5zYf
+	KoJw==
+X-Received: by 10.112.132.7 with SMTP id oq7mr9376264lbb.2.1373236378815; Sun,
+	07 Jul 2013 15:32:58 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.97.146 with HTTP; Sun, 7 Jul 2013 15:32:38 -0700 (PDT)
+In-Reply-To: <037D60EF2A5746E468BF0A04@nimrod.local>
+References: <1373228703-26226-1-git-send-email-sw@weilnetz.de>
+	<037D60EF2A5746E468BF0A04@nimrod.local>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 7 Jul 2013 23:32:38 +0100
+Message-ID: <CAFEAcA9V_THiPwVwv-gYH14h2kujDnWpGAOSBd95C9W56p3AuQ@mail.gmail.com>
+To: Alex Bligh <alex@alex.org.uk>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQl3wxoBacUuEEHrzO5TLeDfjKnmbypTmd5orSeZBWT9GMnIe+OUOFT0ZEJrPOoTBHqIuX3t
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.44
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel@nongnu.org,
+	Jan Kiszka <jan.kiszka@siemens.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Spelling fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,63 +56,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Jul 2013 20:25:20 -0000
+X-List-Received-Date: Sun, 07 Jul 2013 22:33:03 -0000
 
-* it's -> its
-* of cause -> of course
-* grammar fix in ui/vnc-enc-zywrle.h
+On 7 July 2013 23:05, Alex Bligh <alex@alex.org.uk> wrote:
+>
+>
+> --On 7 July 2013 22:25:02 +0200 Stefan Weil <sw@weilnetz.de> wrote:
+>
+>> --- a/ui/vnc-enc-zywrle.h
+>> +++ b/ui/vnc-enc-zywrle.h
+>> @@ -305,9 +305,9 @@ static inline void harr(int8_t *px0, int8_t *px1)
+>>     |L1H0H1H0|L1H0H1H0|L1H0H1H0|L1H0H1H0| : level 1
+>>
+>>   In this method, H/L and X0/X1 is always same position.
+>> - This lead us to more speed and less memory.
+>> - Of cause, the result of both method is quite same
+>> - because it's only difference that coefficient position.
+>> + This leads us to more speed and less memory.
+>> + Of course, the result of both methods is quite same
+>> + because its only difference is that coefficient position.
+>>  */
+>>  static inline void wavelet_level(int *data, int size, int l, int
+>> skip_pixel)  {
+>
+>
+> If we're doing spelling/grammar fixes, that should be "is quite the same"
+> and "that of coefficient position".
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- qapi-schema.json    |    2 +-
- slirp/if.c          |    2 +-
- ui/vnc-enc-zywrle.h |    6 +++---
- 3 files changed, 5 insertions(+), 5 deletions(-)
+"is quite the same" isn't idiomatic English either. I can't
+tell if the author meant "is quite similar" or "is exactly
+the same", so we probably shouldn't change the text unless
+we can work out which one is right...
 
-diff --git a/qapi-schema.json b/qapi-schema.json
-index 5b0fb3b..1efad03 100644
---- a/qapi-schema.json
-+++ b/qapi-schema.json
-@@ -1664,7 +1664,7 @@
- #
- # Since: 0.14.0
- #
--# Notes: This command only exists as a stop-gap.  It's use is highly
-+# Notes: This command only exists as a stop-gap.  Its use is highly
- #        discouraged.  The semantics of this command are not guaranteed.
- #
- #        Known limitations:
-diff --git a/slirp/if.c b/slirp/if.c
-index dcd5faf..3db3a30 100644
---- a/slirp/if.c
-+++ b/slirp/if.c
-@@ -142,7 +142,7 @@ diddit:
- 
- /*
-  * Send a packet
-- * We choose a packet based on it's position in the output queues;
-+ * We choose a packet based on its position in the output queues;
-  * If there are packets on the fastq, they are sent FIFO, before
-  * everything else.  Otherwise we choose the first packet from the
-  * batchq and send it.  the next packet chosen will be from the session
-diff --git a/ui/vnc-enc-zywrle.h b/ui/vnc-enc-zywrle.h
-index 1ff40b1..addee55 100644
---- a/ui/vnc-enc-zywrle.h
-+++ b/ui/vnc-enc-zywrle.h
-@@ -305,9 +305,9 @@ static inline void harr(int8_t *px0, int8_t *px1)
-    |L1H0H1H0|L1H0H1H0|L1H0H1H0|L1H0H1H0| : level 1
- 
-  In this method, H/L and X0/X1 is always same position.
-- This lead us to more speed and less memory.
-- Of cause, the result of both method is quite same
-- because it's only difference that coefficient position.
-+ This leads us to more speed and less memory.
-+ Of course, the result of both methods is quite same
-+ because its only difference is that coefficient position.
- */
- static inline void wavelet_level(int *data, int size, int l, int skip_pixel)
- {
--- 
-1.7.10.4
-
+-- PMM
 
