@@ -1,35 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UwaBT-0004AT-8v
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jul 2013 11:50:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33508)
+	id 1Uwf3n-0005oo-TA
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jul 2013 17:02:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45464)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>) id 1UwYaN-0002yJ-9q
-	for qemu-trivial@nongnu.org; Tue, 09 Jul 2013 10:08:08 -0400
+	(envelope-from <dkoch@verizon.com>) id 1UwbtK-0001Sn-6D
+	for qemu-trivial@nongnu.org; Tue, 09 Jul 2013 13:39:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>) id 1UwYaL-0006Z0-LD
-	for qemu-trivial@nongnu.org; Tue, 09 Jul 2013 10:08:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56691)
+	(envelope-from <dkoch@verizon.com>) id 1UwbtG-0000aK-Bb
+	for qemu-trivial@nongnu.org; Tue, 09 Jul 2013 13:39:54 -0400
+Received: from omzsmtpe02.verizonbusiness.com ([199.249.25.209]:12698)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>)
-	id 1UwYaL-0006Yn-D6; Tue, 09 Jul 2013 10:08:05 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r69E84qJ010408
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 9 Jul 2013 10:08:04 -0400
-Received: from colepc.redhat.com (ovpn-113-136.phx2.redhat.com [10.3.113.136])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id r69E82YN029324; Tue, 9 Jul 2013 10:08:02 -0400
-From: Cole Robinson <crobinso@redhat.com>
-To: qemu-trivial <qemu-trivial@nongnu.org>
-Date: Tue,  9 Jul 2013 10:07:53 -0400
-Message-Id: <bf191bb787ac58df8e34e988bad62ffd130856e0.1373378873.git.crobinso@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Tue, 09 Jul 2013 11:50:29 -0400
-Cc: qemu-devel@nongnu.org, Cole Robinson <crobinso@redhat.com>
-Subject: [Qemu-trivial] [PATCH] Fix command example in qemu.sasl
+	(envelope-from <dkoch@verizon.com>)
+	id 1UwbtA-0000Xf-Ai; Tue, 09 Jul 2013 13:39:44 -0400
+X-IronPort-Anti-Spam-Filtered: false
+Received: from omzsmtpi01.vzbi.com ([165.122.46.171])
+	by omzsmtpe02.verizonbusiness.com with ESMTP; 09 Jul 2013 17:39:41 +0000
+From: Don Koch <dkoch@verizon.com>
+X-IronPort-AV: E=Sophos;i="4.87,1029,1363132800"; d="scan'208";a="176580364"
+Received: from unknown (HELO MIA20725CAS892.apps.tmrk.corp) ([162.47.0.51])
+	by omzsmtpi01.vzbi.com with ESMTP; 09 Jul 2013 17:39:39 +0000
+Received: from yoyo.cloudswitch.com (10.25.25.113) by
+	MIA20725CAS892.apps.tmrk.corp (10.1.3.224) with Microsoft SMTP Server
+	(TLS) id 14.2.318.1; Tue, 9 Jul 2013 13:36:10 -0400
+To: <qemu-devel@nongnu.org>
+Date: Tue, 9 Jul 2013 13:36:05 -0400
+Message-ID: <1373391365-7992-1-git-send-email-dkoch@terremark.com>
+X-Mailer: git-send-email 1.7.11.7
+MIME-Version: 1.0
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 199.249.25.209
+X-Mailman-Approved-At: Tue, 09 Jul 2013 17:02:54 -0400
+Cc: qemu-trivial@nongnu.org, Don Koch <dkoch@verizon.com>, mst@redhat.com
+Subject: [Qemu-trivial] [PATCH] Fix BRDIGE typo.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,29 +45,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jul 2013 14:08:10 -0000
+X-List-Received-Date: Tue, 09 Jul 2013 17:39:58 -0000
 
-sasldblistusers2 doesn't have a '-a' option
+From: Don Koch <dkoch@verizon.com>
 
-Signed-off-by: Cole Robinson <crobinso@redhat.com>
+Fix typo in PCI_CLASS_BRDIGE_PCI_INF_SUB.
+
+Signed-off-by: Don Koch <dkoch@verizon.com>
 ---
- qemu.sasl | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/pci-bridge/i82801b11.c | 2 +-
+ include/hw/pci/pci_ids.h  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/qemu.sasl b/qemu.sasl
-index cf19cf8..9dc8323 100644
---- a/qemu.sasl
-+++ b/qemu.sasl
-@@ -26,7 +26,7 @@ keytab: /etc/qemu/krb5.tab
+diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
+index 5807a92..b98bfb0 100644
+--- a/hw/pci-bridge/i82801b11.c
++++ b/hw/pci-bridge/i82801b11.c
+@@ -69,7 +69,7 @@ static int i82801b11_bridge_initfn(PCIDevice *d)
+     if (rc < 0) {
+         goto err_bridge;
+     }
+-    pci_config_set_prog_interface(d->config, PCI_CLASS_BRDIGE_PCI_INF_SUB);
++    pci_config_set_prog_interface(d->config, PCI_CLASS_BRIDGE_PCI_INF_SUB);
+     return 0;
  
- # If using digest-md5 for username/passwds, then this is the file
- # containing the passwds. Use 'saslpasswd2 -a qemu [username]'
--# to add entries, and 'sasldblistusers2 -a qemu' to browse it
-+# to add entries, and 'sasldblistusers2 -f [sasldb_path]' to browse it
- sasldb_path: /etc/qemu/passwd.db
+ err_bridge:
+diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
+index 08f8161..d7933bf 100644
+--- a/include/hw/pci/pci_ids.h
++++ b/include/hw/pci/pci_ids.h
+@@ -39,7 +39,7 @@
+ #define PCI_CLASS_BRIDGE_HOST            0x0600
+ #define PCI_CLASS_BRIDGE_ISA             0x0601
+ #define PCI_CLASS_BRIDGE_PCI             0x0604
+-#define PCI_CLASS_BRDIGE_PCI_INF_SUB     0x01
++#define PCI_CLASS_BRIDGE_PCI_INF_SUB     0x01
+ #define PCI_CLASS_BRIDGE_OTHER           0x0680
  
- 
+ #define PCI_CLASS_COMMUNICATION_SERIAL   0x0700
 -- 
-1.8.3.1
+1.7.11.7
 
 
