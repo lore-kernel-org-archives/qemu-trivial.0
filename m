@@ -1,51 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UyJKf-0006oY-FD
-	for mharc-qemu-trivial@gnu.org; Sun, 14 Jul 2013 06:15:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55575)
+	id 1UyeG1-0000wQ-FN
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2013 04:35:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52781)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UyJKd-0006mx-QW
-	for qemu-trivial@nongnu.org; Sun, 14 Jul 2013 06:15:08 -0400
+	(envelope-from <mst@redhat.com>) id 1UyeFw-0000tG-0h
+	for qemu-trivial@nongnu.org; Mon, 15 Jul 2013 04:35:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UyJKa-0001i4-Vj
-	for qemu-trivial@nongnu.org; Sun, 14 Jul 2013 06:15:07 -0400
-Received: from mail-lb0-f171.google.com ([209.85.217.171]:54371)
+	(envelope-from <mst@redhat.com>) id 1UyeFs-0003KV-Nu
+	for qemu-trivial@nongnu.org; Mon, 15 Jul 2013 04:35:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:22375)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1UyJKa-0001cg-Pq
-	for qemu-trivial@nongnu.org; Sun, 14 Jul 2013 06:15:04 -0400
-Received: by mail-lb0-f171.google.com with SMTP id 13so8693619lba.16
-	for <qemu-trivial@nongnu.org>; Sun, 14 Jul 2013 03:15:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:x-gm-message-state;
-	bh=eQFN1f7rRZkmU8Nxkw8cSwyf4EP5fYdO1c9AX8ZtS1E=;
-	b=eRJF9X59B/mM+Gng3yaCtVO3SgtciwVo7fDaip3KJoRlUzonHmZWgtg6zSG+6lf6kc
-	pJzSCfIg4vgsX/BYORizLlGctAQ9OzjOfvpKJAQesOqVqgtAPS4qtro1PcPGmgu8rW6D
-	K4d5Wzw5NviTrzLC/wo982EazpsVvH+LONKea1vD9SIwMWxHQw2GAFqwCxHZJAxsHUuB
-	VqGO2DmuEO8D6XLhrMkhhzsiT+sx6xypQ8ICMc/Rn28JWppy0hYOYXc+SBKX6qOiTsZi
-	TWx4fWxZ7MsncPZ/yu2QwNbuk64E1GEfoFEX68x/pb6Hnna8JmBt4ttziDKhzzR9GyvM
-	/biQ==
-X-Received: by 10.112.132.7 with SMTP id oq7mr22415990lbb.2.1373796903116;
-	Sun, 14 Jul 2013 03:15:03 -0700 (PDT)
+	(envelope-from <mst@redhat.com>)
+	id 1UyeFl-0003Hr-W2; Mon, 15 Jul 2013 04:35:30 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r6F8ZRal031943
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 15 Jul 2013 04:35:28 -0400
+Received: from redhat.com (vpn1-4-193.ams2.redhat.com [10.36.4.193])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with SMTP
+	id r6F8ZPrN006991; Mon, 15 Jul 2013 04:35:26 -0400
+Date: Mon, 15 Jul 2013 11:36:46 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Don Koch <dkoch@verizon.com>
+Message-ID: <20130715083646.GB32386@redhat.com>
+References: <1373391365-7992-1-git-send-email-dkoch@terremark.com>
 MIME-Version: 1.0
-Received: by 10.112.97.146 with HTTP; Sun, 14 Jul 2013 03:14:43 -0700 (PDT)
-In-Reply-To: <CAPyFy2BW9+hLC=7+oxnyiA17Lm484VgaQRz8S-RaV_vv92LoHg@mail.gmail.com>
-References: <1373660992-92075-1-git-send-email-emaste@freebsd.org>
-	<51E11A1B.2020503@msgid.tls.msk.ru>
-	<CAPyFy2BW9+hLC=7+oxnyiA17Lm484VgaQRz8S-RaV_vv92LoHg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 14 Jul 2013 11:14:43 +0100
-Message-ID: <CAFEAcA9-ahq0LEVpOf9Ywra7e0CxcCP041+BiX+abnG=_daZyQ@mail.gmail.com>
-To: Ed Maste <emaste@freebsd.org>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQkyVcnQ8gCn7Em0gZ9q8CuWanGATv5Zm8Rrl9NYZFRwIG92gaNbs6ruk2FlluiSqu8WtPXm
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.171
-Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: reorder include to
- fix FreeBSD build failure
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1373391365-7992-1-git-send-email-dkoch@terremark.com>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] Fix BRDIGE typo.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,14 +45,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 14 Jul 2013 10:15:08 -0000
+X-List-Received-Date: Mon, 15 Jul 2013 08:35:43 -0000
 
-On 13 July 2013 23:35, Ed Maste <emaste@freebsd.org> wrote:
-> I'm not sure that anonymous union support is universal across
-> all compilers used to build QEMU though - do you know?
+On Tue, Jul 09, 2013 at 01:36:05PM -0400, Don Koch wrote:
+> From: Don Koch <dkoch@verizon.com>
+> 
+> Fix typo in PCI_CLASS_BRDIGE_PCI_INF_SUB.
+> 
+> Signed-off-by: Don Koch <dkoch@verizon.com>
 
-A quick grep shows we already use anonymous unions in
-a few places, so it must be OK.
+Applied, thanks.
 
--- PMM
+> ---
+>  hw/pci-bridge/i82801b11.c | 2 +-
+>  include/hw/pci/pci_ids.h  | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
+> index 5807a92..b98bfb0 100644
+> --- a/hw/pci-bridge/i82801b11.c
+> +++ b/hw/pci-bridge/i82801b11.c
+> @@ -69,7 +69,7 @@ static int i82801b11_bridge_initfn(PCIDevice *d)
+>      if (rc < 0) {
+>          goto err_bridge;
+>      }
+> -    pci_config_set_prog_interface(d->config, PCI_CLASS_BRDIGE_PCI_INF_SUB);
+> +    pci_config_set_prog_interface(d->config, PCI_CLASS_BRIDGE_PCI_INF_SUB);
+>      return 0;
+>  
+>  err_bridge:
+> diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
+> index 08f8161..d7933bf 100644
+> --- a/include/hw/pci/pci_ids.h
+> +++ b/include/hw/pci/pci_ids.h
+> @@ -39,7 +39,7 @@
+>  #define PCI_CLASS_BRIDGE_HOST            0x0600
+>  #define PCI_CLASS_BRIDGE_ISA             0x0601
+>  #define PCI_CLASS_BRIDGE_PCI             0x0604
+> -#define PCI_CLASS_BRDIGE_PCI_INF_SUB     0x01
+> +#define PCI_CLASS_BRIDGE_PCI_INF_SUB     0x01
+>  #define PCI_CLASS_BRIDGE_OTHER           0x0680
+>  
+>  #define PCI_CLASS_COMMUNICATION_SERIAL   0x0700
+> -- 
+> 1.7.11.7
 
