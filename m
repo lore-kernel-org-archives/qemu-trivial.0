@@ -1,41 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1UzNAk-0003VV-Jp
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2013 04:33:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39288)
+	id 1UzNVp-0001E0-PQ
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2013 04:55:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44353)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1UzNAf-0003U1-7h
-	for qemu-trivial@nongnu.org; Wed, 17 Jul 2013 04:33:17 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1UzNVn-000190-6L
+	for qemu-trivial@nongnu.org; Wed, 17 Jul 2013 04:55:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1UzNAb-0000Hv-3T
-	for qemu-trivial@nongnu.org; Wed, 17 Jul 2013 04:33:13 -0400
-Received: from thoth.sbs.de ([192.35.17.2]:30997)
+	(envelope-from <mjt@tls.msk.ru>) id 1UzNVl-0007eI-RA
+	for qemu-trivial@nongnu.org; Wed, 17 Jul 2013 04:55:03 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40099)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>)
-	id 1UzNAa-0000HW-Ps; Wed, 17 Jul 2013 04:33:09 -0400
-Received: from mail1.siemens.de (localhost [127.0.0.1])
-	by thoth.sbs.de (8.13.6/8.13.6) with ESMTP id r6H8WvPa013471;
-	Wed, 17 Jul 2013 10:32:58 +0200
-Received: from mchn199C.mchp.siemens.de ([139.25.40.156])
-	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id r6H8Wv28016131;
-	Wed, 17 Jul 2013 10:32:57 +0200
-Message-ID: <51E656B9.6090600@siemens.com>
-Date: Wed, 17 Jul 2013 10:32:57 +0200
-From: Jan Kiszka <jan.kiszka@siemens.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1UzNVi-0007Zv-Qm; Wed, 17 Jul 2013 04:54:58 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id A0AC541A27;
+	Wed, 17 Jul 2013 12:54:55 +0400 (MSK)
+Message-ID: <51E65BDE.60402@msgid.tls.msk.ru>
+Date: Wed, 17 Jul 2013 12:54:54 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/20130704 Icedove/17.0.7
 MIME-Version: 1.0
-To: Ed Maste <emaste@freebsd.org>
+To: Jan Kiszka <jan.kiszka@siemens.com>
 References: <1373660992-92075-1-git-send-email-emaste@freebsd.org>
 	<51E11A1B.2020503@msgid.tls.msk.ru>
 	<CAPyFy2BW9+hLC=7+oxnyiA17Lm484VgaQRz8S-RaV_vv92LoHg@mail.gmail.com>
-In-Reply-To: <CAPyFy2BW9+hLC=7+oxnyiA17Lm484VgaQRz8S-RaV_vv92LoHg@mail.gmail.com>
+	<51E656B9.6090600@siemens.com>
+In-Reply-To: <51E656B9.6090600@siemens.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 192.35.17.2
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
 Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>
+	qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: reorder include to
  fix FreeBSD build failure
 X-BeenThere: qemu-trivial@nongnu.org
@@ -49,38 +49,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2013 08:33:17 -0000
+X-List-Received-Date: Wed, 17 Jul 2013 08:55:04 -0000
 
-On 2013-07-14 00:35, Ed Maste wrote:
-> On 13 July 2013 05:12, Michael Tokarev <mjt@tls.msk.ru<mailto:mjt@tls.msk.ru>> wrote:
-> Remaining:
-> 
-> struct mbuf {
->         union M_dat {
->                 char    m_dat_[1]; /* ANSI don't like 0 sized arrays */
->                 char    *m_ext_;
->         } M_dat;
-> };
-> 
-> #define m_dat           M_dat.m_dat_
-> #define m_ext           M_dat.m_ext_
-> 
-> This can be done by using an unnamed union, ie, by omitting
-> 
-> Yeah, struct mbuf and those #defines date back to the beginning of BSD networking.
-> 
-> I think we're probably unconcerned with a slirp upstream at this point, so such a change seems reasonable. 
+17.07.2013 12:32, Jan Kiszka wrote:
+> No problem, as Peter already said. Please provide an according patch.
 
-Indeed, they are always welcome. There is no point in tracking upstream
-anymore.
+http://thread.gmane.org/gmane.comp.emulators.qemu/221949/focus=221975
+ (an attachtment there)
+http://git.corpit.ru/?p=qemu.git;a=commitdiff;h=2915c3b20260b1a653fced3b584d0c2b012880dc
 
-> I'm not sure that anonymous union support is universal across all compilers used to build QEMU though - do you know?
+Thanks,
 
-No problem, as Peter already said. Please provide an according patch.
-
-Jan
-
--- 
-Siemens AG, Corporate Technology, CT RTC ITP SES-DE
-Corporate Competence Center Embedded Linux
+/mjt
 
