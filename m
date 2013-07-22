@@ -1,50 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V0v67-0006re-EU
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Jul 2013 10:58:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50594)
+	id 1V19jT-0001X7-18
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jul 2013 02:36:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53455)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1V0v65-0006os-5M
-	for qemu-trivial@nongnu.org; Sun, 21 Jul 2013 10:58:53 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1V19jR-0001VA-Hz
+	for qemu-trivial@nongnu.org; Mon, 22 Jul 2013 02:36:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1V0v64-0004Yd-1u
-	for qemu-trivial@nongnu.org; Sun, 21 Jul 2013 10:58:53 -0400
-Received: from v220110690675601.yourvserver.net ([78.47.199.172]:35053)
+	(envelope-from <jan.kiszka@siemens.com>) id 1V19jQ-0005Dg-EO
+	for qemu-trivial@nongnu.org; Mon, 22 Jul 2013 02:36:29 -0400
+Received: from goliath.siemens.de ([192.35.17.28]:32435)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1V0v60-0004X8-ET; Sun, 21 Jul 2013 10:58:48 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	B5B8B72809FE; Sun, 21 Jul 2013 16:58:46 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id DCpjX8I94mWH; Sun, 21 Jul 2013 16:58:35 +0200 (CEST)
-Received: from [192.168.178.35] (p54ADAE42.dip0.t-ipconnect.de [84.173.174.66])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	D7E447280079; Sun, 21 Jul 2013 16:58:34 +0200 (CEST)
-Message-ID: <51EBF71A.3050300@weilnetz.de>
-Date: Sun, 21 Jul 2013 16:58:34 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130623 Thunderbird/17.0.7
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1V19jO-0005DN-7r; Mon, 22 Jul 2013 02:36:26 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id r6M6aJCL016802;
+	Mon, 22 Jul 2013 08:36:19 +0200
+Received: from mchn199C.mchp.siemens.de ([146.254.78.2])
+	by mail1.siemens.de (8.13.6/8.13.6) with SMTP id r6M6aIqj011947;
+	Mon, 22 Jul 2013 08:36:18 +0200
+Message-ID: <51ECD2E2.2070000@siemens.com>
+Date: Mon, 22 Jul 2013 08:36:18 +0200
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-To: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-References: <1373647719-32757-1-git-send-email-sw@weilnetz.de>
-	<51E4E011.70407@weilnetz.de> <51E846AC.5070309@weilnetz.de>
-	<F63092DE-7795-4009-AB16-68BE6EC53F94@suse.de>
-	<51E98C93.8010508@weilnetz.de> <51EA9DBA.4080400@suse.de>
-In-Reply-To: <51EA9DBA.4080400@suse.de>
-X-Enigmail-Version: 1.4.6
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 78.47.199.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Blue Swirl <blauwirbel@gmail.com>,
-	Anthony Liguori <aliguori@us.ibm.com>, Alexander Graf <agraf@suse.de>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] PPC: dbdma: macio: Fix
- format specifiers (build regression)
+To: Liu Ping Fan <qemulist@gmail.com>
+References: <1374396185-10870-1-git-send-email-pingfank@linux.vnet.ibm.com>
+	<1374396185-10870-4-git-send-email-pingfank@linux.vnet.ibm.com>
+In-Reply-To: <1374396185-10870-4-git-send-email-pingfank@linux.vnet.ibm.com>
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 192.35.17.28
+Cc: Kevin Wolf <kwolf@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+	qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+	Alex Bligh <alex@alex.org.uk>, Anthony Liguori <anthony@codemonkey.ws>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [RFC 3/8] timer: make timers_state static
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,24 +49,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Jul 2013 14:58:54 -0000
+X-List-Received-Date: Mon, 22 Jul 2013 06:36:30 -0000
 
-Am 20.07.2013 16:24, schrieb Andreas F=E4rber:
->
-> Anthony recently stated very clearly that in order for him to pick up a
-> patch it needs to have a Reviewed-by. This one only got an Acked-by.
+On 2013-07-21 10:43, Liu Ping Fan wrote:
+> Signed-off-by: Liu Ping Fan <pingfank@linux.vnet.ibm.com>
+> ---
+>  cpus.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/cpus.c b/cpus.c
+> index 61e86a8..4254ca9 100644
+> --- a/cpus.c
+> +++ b/cpus.c
+> @@ -112,7 +112,7 @@ typedef struct TimersState {
+>      int64_t dummy;
+>  } TimersState;
+>  
+> -TimersState timers_state;
+> +static TimersState timers_state;
+>  
+>  /* Return the virtual CPU time, based on the instruction counter.  */
+>  int64_t cpu_get_icount(void)
+> 
 
+Could go in directly via trivial IMHO.
 
-No rule without exception. When I look at the list of patches
-which were picked up recently, I see lots of patches without
-a Reviewed-by.
+Reviewed-by: Jan Kiszka <jan.kiszka@siemens.com>
 
-I still think that build regressions should be fixed
-very fast and don't understand why it takes so long:
-
-http://patchwork.ozlabs.org/patch/257203/ (2013-07-05)
-http://patchwork.ozlabs.org/patch/258774/ (2013-07-12)
-
-Do we need more people with commit rights?
-
+-- 
+Siemens AG, Corporate Technology, CT RTC ITP SES-DE
+Corporate Competence Center Embedded Linux
 
