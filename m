@@ -1,31 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V1fxp-0005Kt-B4
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jul 2013 13:01:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53731)
+	id 1V1g5V-0007tB-Bj
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jul 2013 13:09:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56137)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <petar.jovanovic@rt-rk.com>) id 1V1fxg-0005AX-2M
-	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 13:01:27 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1V1g5T-0007rG-Fo
+	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 13:09:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <petar.jovanovic@rt-rk.com>) id 1V1fxL-0004dY-0D
-	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 13:01:19 -0400
-Received: from mail.rt-rk.ftn.uns.ac.rs ([147.91.177.140]:43911
-	helo=mail.rt-rk.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <petar.jovanovic@rt-rk.com>) id 1V1fxK-0004d0-O5
-	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 13:00:58 -0400
-Received: from mail.rt-rk.com (mail.localdomain [127.0.0.1])
-	by mail.rt-rk.com (Postfix) with SMTP id 9B5EF25B4F0
-	for <qemu-trivial@nongnu.org>; Tue, 23 Jul 2013 19:00:55 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at rt-rk.com
-From: Petar Jovanovic <petar.jovanovic@rt-rk.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 23 Jul 2013 19:00:10 +0200
-Message-Id: <1374598810-78021-1-git-send-email-petar.jovanovic@rt-rk.com>
-X-Mailer: git-send-email 1.7.9.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 147.91.177.140
-Cc: qemu-trivial@nongnu.org, riku.voipio@linaro.org, petar.jovanovic@imgtec.com
-Subject: [Qemu-trivial] [PATCH] linux-user: correct argument number for
-	sys_mremap and sys_splice
+	(envelope-from <mjt@tls.msk.ru>) id 1V1g5S-0007Sy-1S
+	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 13:09:23 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:45831)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1V1g5O-0007S4-Gj; Tue, 23 Jul 2013 13:09:18 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 1AE73429A5;
+	Tue, 23 Jul 2013 21:09:15 +0400 (MSK)
+Message-ID: <51EEB8BA.7040405@msgid.tls.msk.ru>
+Date: Tue, 23 Jul 2013 21:09:14 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
+	rv:17.0) Gecko/20130704 Icedove/17.0.7
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>
+References: <1371377676-18809-1-git-send-email-sw@weilnetz.de>
+	<87fvvubt9s.fsf@in.ibm.com> <51E98F49.7010300@weilnetz.de>
+In-Reply-To: <51E98F49.7010300@weilnetz.de>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Anthony Liguori <aliguori@us.ibm.com>, "M. Mohan Kumar" <mohan@in.ibm.com>,
+	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/9pfs: Fix potential
+ memory leak and avoid reuse of freed memory
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,44 +49,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jul 2013 17:01:27 -0000
+X-List-Received-Date: Tue, 23 Jul 2013 17:09:24 -0000
 
-From: Petar Jovanovic <petar.jovanovic@imgtec.com>
+19.07.2013 23:11, Stefan Weil wrote:
+> Am 04.07.2013 10:53, schrieb M. Mohan Kumar:
+>> Stefan Weil <sw@weilnetz.de> writes:
+>>
+>>> The leak was reported by cppcheck.
+>>>
+>>> Function proxy_init also calls g_free for ctx->fs_root.
+>>> Avoid reuse of this memory by setting ctx->fs_root to NULL.
+>>>
+>>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>> Reviewed-by: M. Mohan Kumar <mohan@in.ibm.com>
 
-sys_mremap missed 5th argument (new_address), which caused examples that
-remap to a specific address to fail.
-sys_splice missed 5th and 6th argument which caused different examples to
-fail.
-This change has an effect on MIPS target only.
+Thanks, applied to the trivial patches queue.
 
-Signed-off-by: Petar Jovanovic <petar.jovanovic@imgtec.com>
----
- linux-user/main.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 99c3b3f..1c20229 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -1957,7 +1957,7 @@ static const uint8_t mips_syscall_args[] = {
- 	MIPS_SYS(sys_sched_get_priority_min, 1)
- 	MIPS_SYS(sys_sched_rr_get_interval, 2)	/* 4165 */
- 	MIPS_SYS(sys_nanosleep,	2)
--	MIPS_SYS(sys_mremap	, 4)
-+	MIPS_SYS(sys_mremap	, 5)
- 	MIPS_SYS(sys_accept	, 3)
- 	MIPS_SYS(sys_bind	, 3)
- 	MIPS_SYS(sys_connect	, 3)	/* 4170 */
-@@ -2094,7 +2094,7 @@ static const uint8_t mips_syscall_args[] = {
- 	MIPS_SYS(sys_pselect6, 6)
- 	MIPS_SYS(sys_ppoll, 5)
- 	MIPS_SYS(sys_unshare, 1)
--	MIPS_SYS(sys_splice, 4)
-+	MIPS_SYS(sys_splice, 6)
- 	MIPS_SYS(sys_sync_file_range, 7) /* 4305 */
- 	MIPS_SYS(sys_tee, 4)
- 	MIPS_SYS(sys_vmsplice, 4)
--- 
-1.7.9.5
-
+/mjt
 
