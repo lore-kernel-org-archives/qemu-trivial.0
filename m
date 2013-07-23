@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V1gYy-0003rD-US
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jul 2013 13:39:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39450)
+	id 1V1ixK-0003Wz-15
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jul 2013 16:13:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57660)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1V1gYw-0003r1-BB
-	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 13:39:51 -0400
+	(envelope-from <sw@weilnetz.de>) id 1V1ixH-0003U7-Iv
+	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 16:13:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1V1gYv-0002qL-7R
-	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 13:39:50 -0400
-Received: from mail-lb0-f169.google.com ([209.85.217.169]:46746)
+	(envelope-from <sw@weilnetz.de>) id 1V1ixG-0007ov-IR
+	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 16:13:07 -0400
+Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:43385)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1V1gT6-0000VA-IM
-	for qemu-trivial@nongnu.org; Tue, 23 Jul 2013 13:33:48 -0400
-Received: by mail-lb0-f169.google.com with SMTP id d10so6592279lbj.28
-	for <qemu-trivial@nongnu.org>; Tue, 23 Jul 2013 10:33:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:x-gm-message-state;
-	bh=WOzOCDw1q4X1Fq4wOoKqfxn37tqdu9lhd0gNFTGs+qk=;
-	b=k/IyRvs87QowhUjl2xETEgwIrTQUWvCOZiEL/G9woynDsKjVM9imEiP99br8sAn0oC
-	re8Mb6UbVKi9LTBVlhH6aA3MDX47bx5L22rvNneHhKehXNckMafyrvFKZx6gLY+mFF+Q
-	n2QNNcCj/rQYCBrCXbw5/8/rnCnUsrOT6Kae1QC3C+36soldLG7XQNg7UtkyTWJnHORG
-	1DcMJ00HrVUR4RQVwfOMM9KnpQD2RwCQmQtXSf4pRX/wIP+BGLDSLVf5mKEVxfPYjEPA
-	fsxYacQl/4dmz86qLRCboBaQDy5u4DH9RTGcXO9YmOE5Wi/VUoNH/M3SSAlq2A/tIZ99
-	PvZA==
-X-Received: by 10.152.4.163 with SMTP id l3mr15234897lal.60.1374600827418;
-	Tue, 23 Jul 2013 10:33:47 -0700 (PDT)
+	(envelope-from <sw@weilnetz.de>)
+	id 1V1ixE-0007nQ-03; Tue, 23 Jul 2013 16:13:04 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 8821914F4AD;
+	Tue, 23 Jul 2013 22:13:08 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at uni-mannheim.de
+Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
+	by localhost (mail-r86.rz.uni-mannheim.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id WBQznPnZ4oSa; Tue, 23 Jul 2013 22:13:06 +0200 (CEST)
+Received: from [192.168.178.35] (p54AD9D53.dip0.t-ipconnect.de [84.173.157.83])
+	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPSA id A4F3E14F27D;
+	Tue, 23 Jul 2013 22:13:06 +0200 (CEST)
+Message-ID: <51EEE3CB.5030300@weilnetz.de>
+Date: Tue, 23 Jul 2013 22:12:59 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:17.0) Gecko/20130623 Thunderbird/17.0.7
 MIME-Version: 1.0
-Received: by 10.112.13.2 with HTTP; Tue, 23 Jul 2013 10:33:27 -0700 (PDT)
-In-Reply-To: <51EEBAD6.4020607@msgid.tls.msk.ru>
-References: <1374598810-78021-1-git-send-email-petar.jovanovic@rt-rk.com>
-	<51EEBAD6.4020607@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 23 Jul 2013 18:33:27 +0100
-Message-ID: <CAFEAcA87Vf5OOMNtnNhWMsRBJWr7WG3LBut9b5rW-iC9=n32mg@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-Gm-Message-State: ALoCoQn6D77XIPP8JqgIwd0e8YJvpeLMcI6fh2MwiaH+fX8p1bIMoqjEjCr4goNs3ngLK+Lczs8d
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.169
-Cc: qemu-trivial@nongnu.org, petar.jovanovic@imgtec.com, riku.voipio@linaro.org,
-	Petar Jovanovic <petar.jovanovic@rt-rk.com>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: correct
- argument number for sys_mremap and sys_splice
+To: Anthony Liguori <aliguori@us.ibm.com>
+References: <1373057744-20278-1-git-send-email-sw@weilnetz.de>
+	<51E4D733.6090908@weilnetz.de> <51E84766.20603@weilnetz.de>
+In-Reply-To: <51E84766.20603@weilnetz.de>
+X-Enigmail-Version: 1.4.6
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 134.155.96.80
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] po/Makefile: Fix
+ regression and some minor issues
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,53 +52,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jul 2013 17:39:51 -0000
+X-List-Received-Date: Tue, 23 Jul 2013 20:13:08 -0000
 
-On 23 July 2013 18:18, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 23.07.2013 21:00, Petar Jovanovic wrote:
->> From: Petar Jovanovic <petar.jovanovic@imgtec.com>
->>
->> sys_mremap missed 5th argument (new_address), which caused examples that
->> remap to a specific address to fail.
->> sys_splice missed 5th and 6th argument which caused different examples to
->> fail.
->> This change has an effect on MIPS target only.
+Am 18.07.2013 21:52, schrieb Stefan Weil:
+> Am 16.07.2013 07:16, schrieb Stefan Weil:
+>> Am 05.07.2013 22:55, schrieb Stefan Weil:
+>>> These patches are included:
+>>>
+>>> [PATCH 1/4] po/Makefile: Fix and improve help message
+>>> [PATCH 2/4] po/Makefile: Fix *.mo generation for out-of-tree builds
+>>> [PATCH 3/4] po/Makefile: Fix generation of messages.po
+>>> [PATCH 4/4] po/Makefile: Use macro quiet-command for nice looking
+>>>
+>>> Regards
+>>> Stefan W.
+>> Ping?
+> Ping^2
 >
-> While splice is obvious and appears to be correct, with mremap I'm not
-> this sure.
 
-This table in QEMU corresponds to the table in the kernel
-in arch/mips/kernel/scall32-o32.S and should generally have
-the same numbers in it.
+Ping^3
 
-The fix to mremap corresponds to Linux kernel commit 7dbdf43c
-(from 2006); the fix to splice is 08d30879 (from 2008).
+Who is maintaining GTK? Anthony?
 
-> On the other hand, sys_open is also declared as having 3
-> arguments while the 3rd one (mode) is also optional,
+Is there any chance to get some of the issues which
+are addressed by this series fixed in the next version of
+QEMU?
 
-Yes. All the number-of-arguments param does is cause
-the main.c code to fish the extra arguments out of the stack,
-since the MIPS 32 bit ABI doesn't have enough registers for
-all of them to be in registers. If the argument is optional
-and isn't used in this case, it means we've just copied
-garbage as the arg6/7/8 param to do_syscall(), which is
-exactly the same situation as if the guest ABI put all
-syscall args in registers.
+Patch 1 certainly could also be applied via qemu-trivial,
+maybe some of the others, too. See
+http://patchwork.ozlabs.org/patch/257202/.
 
-> until your last comment which states that the change has only effect
-> on MIPS.  Which is quite puzzling to me
+Stefan
 
-It's trivially obvious that it only has effect on MIPS,
-because it's patching a piece of code which is inside
-an #ifdef TARGET_MIPS guard.
-
-Petar: I think it would be a good idea if you checked
-the whole of our table against a recent kernel and made
-sure we're in sync for everything, rather than fixing
-things one at a time.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
--- PMM
 
