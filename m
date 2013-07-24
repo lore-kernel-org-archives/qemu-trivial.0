@@ -1,51 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V1zak-0000kp-1m
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Jul 2013 09:58:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36672)
+	id 1V22ot-0002bC-Re
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jul 2013 13:25:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46844)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1V1zaf-0000fk-EG
-	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 09:58:56 -0400
+	(envelope-from <Petar.Jovanovic@imgtec.com>) id 1V21rG-0005VX-G5
+	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 12:24:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1V1zaZ-0000Uc-8E
-	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 09:58:53 -0400
-Received: from mail-qe0-x235.google.com ([2607:f8b0:400d:c02::235]:58808)
+	(envelope-from <Petar.Jovanovic@imgtec.com>) id 1V21rD-0002Rv-Nv
+	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 12:24:10 -0400
+Received: from multi.imgtec.com ([194.200.65.239]:19162)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>)
-	id 1V1zaU-0000T9-4P; Wed, 24 Jul 2013 09:58:42 -0400
-Received: by mail-qe0-f53.google.com with SMTP id f6so2423507qej.40
-	for <multiple recipients>; Wed, 24 Jul 2013 06:58:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:date
-	:x-google-sender-auth:message-id:subject:from:to:cc:content-type;
-	bh=lrE+hJVkjPwYz1xzLcTTrko3wtYbB+W+v1h746FuVck=;
-	b=Hah+Wo5ulzmw1gQOJhHAPyM26aey599XOMfYP4OyXkI1iRTL1Ijl2IFjBOTb0q/O0k
-	YSM5gTQLDliwcIibwGa3H69elAw0xA+7mEswmMOg+SED5aQl2NkOwpFp328fYM99mujT
-	LNvf1eES+oAybW7BLo934eeeDhst2n69WnU7Y68xmNorRUI4otFRS08ztceh4QBp86Dg
-	ewXicp1CCOFWlOPZzihPcLWPfZlnxQmwRHcXQKm4CZfLyJ2kRhmS+TZGAYKT4V/GYSV9
-	vZEu3AgZginnCBNC2Vz7FFI4xLBMT1G2Z2tcZqQzKMEgOTCCRSYWZXUTGLZaQETYCOja
-	cCAw==
+	(envelope-from <Petar.Jovanovic@imgtec.com>)
+	id 1V21rD-0002Ri-Hz; Wed, 24 Jul 2013 12:24:07 -0400
+From: Petar Jovanovic <Petar.Jovanovic@imgtec.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
+Thread-Topic: [Qemu-devel] [Qemu-trivial] [PATCH] linux-user: correct
+	argument number for sys_mremap and sys_splice
+Thread-Index: AQHOh8Y1woQcnX7M6EG14suwj+zQtply9wYAgAAEQICAAQgSEg==
+Date: Wed, 24 Jul 2013 16:22:50 +0000
+Message-ID: <56EA75BA695AE044ACFB41322F6D2BF40223EA68@BADAG02.ba.imgtec.org>
+References: <1374598810-78021-1-git-send-email-petar.jovanovic@rt-rk.com>
+	<51EEBAD6.4020607@msgid.tls.msk.ru>,
+	<CAFEAcA87Vf5OOMNtnNhWMsRBJWr7WG3LBut9b5rW-iC9=n32mg@mail.gmail.com>
+In-Reply-To: <CAFEAcA87Vf5OOMNtnNhWMsRBJWr7WG3LBut9b5rW-iC9=n32mg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [192.168.64.117]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Received: by 10.49.63.103 with SMTP id f7mr43901903qes.89.1374674321074;
-	Wed, 24 Jul 2013 06:58:41 -0700 (PDT)
-Sender: carpeddiem@gmail.com
-Received: by 10.224.209.6 with HTTP; Wed, 24 Jul 2013 06:58:41 -0700 (PDT)
-In-Reply-To: <87ob9sjd6j.fsf@codemonkey.ws>
-References: <1374225073-12959-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<CAPyFy2BLhkY6hRhadiwP8xeqAyTBLNuG2rT+GuT+bNUQj5EZ5g@mail.gmail.com>
-	<87ob9sjd6j.fsf@codemonkey.ws>
-Date: Wed, 24 Jul 2013 09:58:41 -0400
-X-Google-Sender-Auth: CcyFE6aW2mA5GTJArDf_dEVPtNI
-Message-ID: <CAPyFy2Bj0p_-UfyEAyUkmnh2M1wBzjw20BhQ9qXVzKCSfHszUg@mail.gmail.com>
-From: Ed Maste <emaste@freebsd.org>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Content-Type: text/plain; charset=ISO-8859-1
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c02::235
+X-SEF-Processed: 7_3_0_01192__2013_07_24_17_24_05
+X-detected-operating-system: by eggs.gnu.org: Windows XP
+X-Received-From: 194.200.65.239
+X-Mailman-Approved-At: Wed, 24 Jul 2013 13:25:46 -0400
 Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL trivial 0/5] trivial patches
- for 2013-07-19
+	"riku.voipio@linaro.org" <riku.voipio@linaro.org>,
+	Petar Jovanovic <petar.jovanovic@rt-rk.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: correct
+ argument number for sys_mremap and sys_splice
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,23 +52,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jul 2013 13:58:56 -0000
+X-List-Received-Date: Wed, 24 Jul 2013 16:24:13 -0000
 
-On 24 July 2013 09:32, Anthony Liguori <aliguori@us.ibm.com> wrote:
-> Ed Maste <emaste@freebsd.org> writes:
->
->> On 19 July 2013 05:11, Michael Tokarev <mjt@tls.msk.ru> wrote:
->>> This is another trivial-patches pull request.  This time
->>> we have just 5 patches accumulated in two (!) weeks period.
->>> Please consider apply.
->> ...
->>> Michael Tokarev (2):
->>>       slirp: remove mbuf(m_hdr,m_dat) indirection
->>
->> Any idea when this might get pulled?  The FreeBSD build is broken
->> until this slirp fix makes it in.
->
-> Two days ago.
+=0A=
+________________________________________=0A=
+From: Peter Maydell [peter.maydell@linaro.org]=0A=
+Sent: Tuesday, July 23, 2013 7:33 PM=0A=
+To: Michael Tokarev=0A=
+Cc: Petar Jovanovic; qemu-trivial@nongnu.org; riku.voipio@linaro.org; qemu-=
+devel@nongnu.org; Petar Jovanovic=0A=
+Subject: Re: [Qemu-devel] [Qemu-trivial] [PATCH] linux-user: correct argume=
+nt number for sys_mremap and sys_splice=0A=
+=0A=
+> Petar: I think it would be a good idea if you checked=0A=
+> the whole of our table against a recent kernel and made=0A=
+> sure we're in sync for everything, rather than fixing=0A=
+> things one at a time.=0A=
+>=0A=
+=0A=
+I did, this is how I came up with these two system calls.=0A=
+=0A=
+Here are all the differences:=0A=
+=0A=
+Syscall             Qemu    Kernel=0A=
+=0A=
+sys_acct            0    1=0A=
+sys_epoll_wait      3    4=0A=
+sys_fdatasync       0    1=0A=
+sys_lookup_dcookie  3    4=0A=
+sys_mremap          4    5=0A=
+sys_quotactl        0    4=0A=
+sys_sigaltstack     2    0=0A=
+sys_splice          4    6=0A=
+sys_waitid          4    5=0A=
+=0A=
+=0A=
+So, we are not fully in sync, but the rest of it will not cause any=0A=
+problems. In the existing QEMU code in cpu_loop(CPUMIPSState *env)=0A=
+first four arguments are always passed, so for sys_acct, sys_epoll_wait,=0A=
+sys_fdatasync, sys_quotactl, sys_lookup_dcookie and sys_sigaltstack=0A=
+the differences do not matter.=0A=
+=0A=
+For sys_splice and sys_mremap, the difference is important so I=0A=
+added this change and came up with test cases.=0A=
+=0A=
+The last on the list is sys_waitid, the difference could be important yet=
+=0A=
+it still is not, since the host part does not seem to make use of it.=0A=
+=0A=
+Considering the turn-around times for code reviews and getting the changes=
+=0A=
+in, I am guided by "If it ain't broke, don't fix it", otherwise I would=0A=
+change the other values for clarity and readability, I would also change=0A=
+tabs/spaces mix in the table mips_syscall_args, etc.=0A=
+=0A=
+Regards,=0A=
+Petar=
 
-Ahh, sorry - I was somehow pulling from a local mirror that got stuck.
 
