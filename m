@@ -1,50 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V1z1N-0004av-L2
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Jul 2013 09:22:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55064)
+	id 1V1z7Y-0007SL-3J
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jul 2013 09:28:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56725)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1V1z1F-0004MS-Nw
-	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 09:22:23 -0400
+	(envelope-from <afaerber@suse.de>) id 1V1z7W-0007Po-Fv
+	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 09:28:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1V1z1D-00041G-6D
-	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 09:22:17 -0400
-Received: from mail-qe0-x22d.google.com ([2607:f8b0:400d:c02::22d]:35260)
+	(envelope-from <afaerber@suse.de>) id 1V1z7V-0006PX-Ck
+	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 09:28:46 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:57717 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>)
-	id 1V1z16-0003zp-JX; Wed, 24 Jul 2013 09:22:08 -0400
-Received: by mail-qe0-f45.google.com with SMTP id w7so5320971qeb.4
-	for <multiple recipients>; Wed, 24 Jul 2013 06:22:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:date
-	:x-google-sender-auth:message-id:subject:from:to:cc:content-type;
-	bh=8+y6BcD3hP2P0wWnQhKgCY6NCp4V6CWMx8RoVrHS7Ow=;
-	b=tePsAPw+3zTixUN5wMCdck72x7RslNV56OcGypw0TPTWyUHJKn3nwTIUoqehUrFDV6
-	rpGbNlRFM9Xf6vNNuRcUehxsW40CpoZJDriDP9lIET1pSQ4AWuprW9wpjzJZk2G3VdbO
-	triob8+B5zB96iFbYnmVajKpwPLWJstBCfW4hTsavlz6G/6SoErpEyv9tbQr2Hlw9GMs
-	om6XX99uyg8zNmL9T+qdI5KU5BwVvfTFA1VrmnjUSDzl1BwsLzOMY3Q0t/5TyHSYhaQr
-	/GZpADGqTkEM6Gi1WO6zFQ0OlR1tx2O0o3p1iq5pCDtdVxVgUzwFbQbAigBlJGnBUGx/
-	MEDg==
+	(envelope-from <afaerber@suse.de>)
+	id 1V1z7R-0006Nq-F9; Wed, 24 Jul 2013 09:28:41 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 1BCADA3B99;
+	Wed, 24 Jul 2013 15:28:40 +0200 (CEST)
+Message-ID: <51EFD685.7010403@suse.de>
+Date: Wed, 24 Jul 2013 15:28:37 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130620 Thunderbird/17.0.7
 MIME-Version: 1.0
-X-Received: by 10.224.180.133 with SMTP id bu5mr43958059qab.50.1374672127372; 
-	Wed, 24 Jul 2013 06:22:07 -0700 (PDT)
-Sender: carpeddiem@gmail.com
-Received: by 10.224.209.6 with HTTP; Wed, 24 Jul 2013 06:22:07 -0700 (PDT)
-In-Reply-To: <1374225073-12959-3-git-send-email-mjt@msgid.tls.msk.ru>
+To: Ed Maste <emaste@freebsd.org>
 References: <1374225073-12959-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<1374225073-12959-3-git-send-email-mjt@msgid.tls.msk.ru>
-Date: Wed, 24 Jul 2013 09:22:07 -0400
-X-Google-Sender-Auth: xSubl8CHGaDdzEW8k9hIeYD7wZM
-Message-ID: <CAPyFy2DW_ca4PK5Y4-P4e4uh34B6VO_XduWOMwEoeqc4TYRoNA@mail.gmail.com>
-From: Ed Maste <emaste@freebsd.org>
-To: Michael Tokarev <mjt@tls.msk.ru>
+	<CAPyFy2BLhkY6hRhadiwP8xeqAyTBLNuG2rT+GuT+bNUQj5EZ5g@mail.gmail.com>
+In-Reply-To: <CAPyFy2BLhkY6hRhadiwP8xeqAyTBLNuG2rT+GuT+bNUQj5EZ5g@mail.gmail.com>
+X-Enigmail-Version: 1.6a1pre
 Content-Type: text/plain; charset=ISO-8859-1
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c02::22d
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
 Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PULL trivial 2/5] slirp: remove mbuf(m_hdr,
- m_dat) indirection
+	Anthony Liguori <aliguori@us.ibm.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL trivial 0/5] trivial patches
+ for 2013-07-19
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,13 +47,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jul 2013 13:22:23 -0000
+X-List-Received-Date: Wed, 24 Jul 2013 13:28:47 -0000
 
-On 19 July 2013 05:11, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> ---
->  slirp/mbuf.h     |   51 ++++++++++++++++++---------------------------------
->  slirp/tcp_subr.c |   12 ++++++------
->  2 files changed, 24 insertions(+), 39 deletions(-)
+Am 24.07.2013 14:24, schrieb Ed Maste:
+> On 19 July 2013 05:11, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>> This is another trivial-patches pull request.  This time
+>> we have just 5 patches accumulated in two (!) weeks period.
+>> Please consider apply.
+> ...
+>> Michael Tokarev (2):
+>>       slirp: remove mbuf(m_hdr,m_dat) indirection
+>=20
+> Any idea when this might get pulled?  The FreeBSD build is broken
+> until this slirp fix makes it in.
 
-Tested-by: Ed Maste <emaste@freebsd.org>
+What problem are you seeing? The pull is already merged apparently.
+
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
