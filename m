@@ -1,46 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V22ot-0002bC-Re
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Jul 2013 13:25:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46844)
+	id 1V23BV-00016S-SF
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jul 2013 13:49:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38956)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Petar.Jovanovic@imgtec.com>) id 1V21rG-0005VX-G5
-	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 12:24:13 -0400
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1V23BT-00011X-3k
+	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 13:49:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Petar.Jovanovic@imgtec.com>) id 1V21rD-0002Rv-Nv
-	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 12:24:10 -0400
-Received: from multi.imgtec.com ([194.200.65.239]:19162)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1V23BR-0007bq-Fk
+	for qemu-trivial@nongnu.org; Wed, 24 Jul 2013 13:49:07 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:45395
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Petar.Jovanovic@imgtec.com>)
-	id 1V21rD-0002Ri-Hz; Wed, 24 Jul 2013 12:24:07 -0400
-From: Petar Jovanovic <Petar.Jovanovic@imgtec.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
-Thread-Topic: [Qemu-devel] [Qemu-trivial] [PATCH] linux-user: correct
-	argument number for sys_mremap and sys_splice
-Thread-Index: AQHOh8Y1woQcnX7M6EG14suwj+zQtply9wYAgAAEQICAAQgSEg==
-Date: Wed, 24 Jul 2013 16:22:50 +0000
-Message-ID: <56EA75BA695AE044ACFB41322F6D2BF40223EA68@BADAG02.ba.imgtec.org>
-References: <1374598810-78021-1-git-send-email-petar.jovanovic@rt-rk.com>
-	<51EEBAD6.4020607@msgid.tls.msk.ru>,
-	<CAFEAcA87Vf5OOMNtnNhWMsRBJWr7WG3LBut9b5rW-iC9=n32mg@mail.gmail.com>
-In-Reply-To: <CAFEAcA87Vf5OOMNtnNhWMsRBJWr7WG3LBut9b5rW-iC9=n32mg@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [192.168.64.117]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-SEF-Processed: 7_3_0_01192__2013_07_24_17_24_05
-X-detected-operating-system: by eggs.gnu.org: Windows XP
-X-Received-From: 194.200.65.239
-X-Mailman-Approved-At: Wed, 24 Jul 2013 13:25:46 -0400
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"riku.voipio@linaro.org" <riku.voipio@linaro.org>,
-	Petar Jovanovic <petar.jovanovic@rt-rk.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: correct
- argument number for sys_mremap and sys_splice
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1V23BO-0007at-1M; Wed, 24 Jul 2013 13:49:02 -0400
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id C2ED617F708; Wed, 24 Jul 2013 19:48:57 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial <qemu-trivial@nongnu.org>
+Date: Wed, 24 Jul 2013 19:48:56 +0200
+Message-Id: <1374688136-7733-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.198.45
+Cc: Kevin Wolf <kwolf@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel <qemu-devel@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [Qemu-trivial] [PATCH] misc: Fix new typos in comments and strings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,61 +39,105 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jul 2013 16:24:13 -0000
+X-List-Received-Date: Wed, 24 Jul 2013 17:49:08 -0000
 
-=0A=
-________________________________________=0A=
-From: Peter Maydell [peter.maydell@linaro.org]=0A=
-Sent: Tuesday, July 23, 2013 7:33 PM=0A=
-To: Michael Tokarev=0A=
-Cc: Petar Jovanovic; qemu-trivial@nongnu.org; riku.voipio@linaro.org; qemu-=
-devel@nongnu.org; Petar Jovanovic=0A=
-Subject: Re: [Qemu-devel] [Qemu-trivial] [PATCH] linux-user: correct argume=
-nt number for sys_mremap and sys_splice=0A=
-=0A=
-> Petar: I think it would be a good idea if you checked=0A=
-> the whole of our table against a recent kernel and made=0A=
-> sure we're in sync for everything, rather than fixing=0A=
-> things one at a time.=0A=
->=0A=
-=0A=
-I did, this is how I came up with these two system calls.=0A=
-=0A=
-Here are all the differences:=0A=
-=0A=
-Syscall             Qemu    Kernel=0A=
-=0A=
-sys_acct            0    1=0A=
-sys_epoll_wait      3    4=0A=
-sys_fdatasync       0    1=0A=
-sys_lookup_dcookie  3    4=0A=
-sys_mremap          4    5=0A=
-sys_quotactl        0    4=0A=
-sys_sigaltstack     2    0=0A=
-sys_splice          4    6=0A=
-sys_waitid          4    5=0A=
-=0A=
-=0A=
-So, we are not fully in sync, but the rest of it will not cause any=0A=
-problems. In the existing QEMU code in cpu_loop(CPUMIPSState *env)=0A=
-first four arguments are always passed, so for sys_acct, sys_epoll_wait,=0A=
-sys_fdatasync, sys_quotactl, sys_lookup_dcookie and sys_sigaltstack=0A=
-the differences do not matter.=0A=
-=0A=
-For sys_splice and sys_mremap, the difference is important so I=0A=
-added this change and came up with test cases.=0A=
-=0A=
-The last on the list is sys_waitid, the difference could be important yet=
-=0A=
-it still is not, since the host part does not seem to make use of it.=0A=
-=0A=
-Considering the turn-around times for code reviews and getting the changes=
-=0A=
-in, I am guided by "If it ain't broke, don't fix it", otherwise I would=0A=
-change the other values for clarity and readability, I would also change=0A=
-tabs/spaces mix in the table mips_syscall_args, etc.=0A=
-=0A=
-Regards,=0A=
-Petar=
+All these typos were found by codespell.
+
+sould -> should
+emperical -> empirical
+intialization -> initialization
+successfuly -> successfully
+gaurantee -> guarantee
+
+Fix also another error (before before) in the same context.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ block/vhdx.h               |    2 +-
+ docs/rdma.txt              |    2 +-
+ hw/virtio/virtio-balloon.c |    4 ++--
+ hw/xen/xen_pt.c            |    3 ++-
+ migration-rdma.c           |    4 ++--
+ 5 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/block/vhdx.h b/block/vhdx.h
+index c3b64c6..fb687ed 100644
+--- a/block/vhdx.h
++++ b/block/vhdx.h
+@@ -168,7 +168,7 @@ typedef struct QEMU_PACKED VHDXLogEntryHeader {
+                                            vhdx_header.  If not found in
+                                            vhdx_header, it is invalid */
+     uint64_t    flushed_file_offset;    /* see spec for full details - this
+-                                           sould be vhdx file size in bytes */
++                                           should be vhdx file size in bytes */
+     uint64_t    last_file_offset;       /* size in bytes that all allocated
+                                            file structures fit into */
+ } VHDXLogEntryHeader;
+diff --git a/docs/rdma.txt b/docs/rdma.txt
+index 45d1c8a..8d1e003 100644
+--- a/docs/rdma.txt
++++ b/docs/rdma.txt
+@@ -199,7 +199,7 @@ Version #1 requires that all server implementations of the protocol must
+ check this field and register all requests found in the array of commands located
+ in the data portion and return an equal number of results in the response.
+ The maximum number of repeats is hard-coded to 4096. This is a conservative
+-limit based on the maximum size of a SEND message along with emperical
++limit based on the maximum size of a SEND message along with empirical
+ observations on the maximum future benefit of simultaneous page registrations.
+ 
+ The 'type' field has 12 different command values:
+diff --git a/hw/virtio/virtio-balloon.c b/hw/virtio/virtio-balloon.c
+index 3fa72a9..337cfa5 100644
+--- a/hw/virtio/virtio-balloon.c
++++ b/hw/virtio/virtio-balloon.c
+@@ -53,8 +53,8 @@ static const char *balloon_stat_names[] = {
+ /*
+  * reset_stats - Mark all items in the stats array as unset
+  *
+- * This function needs to be called at device intialization and before
+- * before updating to a set of newly-generated stats.  This will ensure that no
++ * This function needs to be called at device initialization and before
++ * updating to a set of newly-generated stats.  This will ensure that no
+  * stale values stick around in case the guest reports a subset of the supported
+  * statistics.
+  */
+diff --git a/hw/xen/xen_pt.c b/hw/xen/xen_pt.c
+index d7ee774..d15a729 100644
+--- a/hw/xen/xen_pt.c
++++ b/hw/xen/xen_pt.c
+@@ -756,7 +756,8 @@ static int xen_pt_initfn(PCIDevice *d)
+ out:
+     memory_listener_register(&s->memory_listener, &address_space_memory);
+     memory_listener_register(&s->io_listener, &address_space_io);
+-    XEN_PT_LOG(d, "Real physical device %02x:%02x.%d registered successfuly!\n",
++    XEN_PT_LOG(d,
++               "Real physical device %02x:%02x.%d registered successfully!\n",
+                s->hostaddr.bus, s->hostaddr.slot, s->hostaddr.function);
+ 
+     return 0;
+diff --git a/migration-rdma.c b/migration-rdma.c
+index d044830..4828738 100644
+--- a/migration-rdma.c
++++ b/migration-rdma.c
+@@ -2494,7 +2494,7 @@ static int qemu_rdma_close(void *opaque)
+  *    @size == 0 :
+  *        A 'hint' or 'advice' that means that we wish to speculatively
+  *        and asynchronously unregister this memory. In this case, there is no
+- *        gaurantee that the unregister will actually happen, for example,
++ *        guarantee that the unregister will actually happen, for example,
+  *        if the memory is being actively transmitted. Additionally, the memory
+  *        may be re-registered at any future time if a write within the same
+  *        chunk was requested again, even if you attempted to unregister it
+@@ -2570,7 +2570,7 @@ static size_t qemu_rdma_save_page(QEMUFile *f, void *opaque,
+         qemu_rdma_signal_unregister(rdma, index, chunk, 0);
+ 
+         /*
+-         * TODO: Synchronous, gauranteed unregistration (should not occur during
++         * TODO: Synchronous, guaranteed unregistration (should not occur during
+          * fast-path). Otherwise, unregisters will process on the next call to
+          * qemu_rdma_drain_cq()
+         if (size < 0) {
+-- 
+1.7.10.4
 
 
