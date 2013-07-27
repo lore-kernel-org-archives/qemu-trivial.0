@@ -1,35 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V2z1T-0003r1-6L
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Jul 2013 03:34:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40540)
+	id 1V2z1U-0003s7-1E
+	for mharc-qemu-trivial@gnu.org; Sat, 27 Jul 2013 03:34:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40542)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V2z1R-0003nC-0S
-	for qemu-trivial@nongnu.org; Sat, 27 Jul 2013 03:34:37 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1V2z1R-0003nS-5C
+	for qemu-trivial@nongnu.org; Sat, 27 Jul 2013 03:34:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V2z1P-0006AC-7g
-	for qemu-trivial@nongnu.org; Sat, 27 Jul 2013 03:34:36 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:45097)
+	(envelope-from <mjt@tls.msk.ru>) id 1V2z1Q-0006AR-1X
+	for qemu-trivial@nongnu.org; Sat, 27 Jul 2013 03:34:37 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:45966)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1V2z1M-00068r-C6; Sat, 27 Jul 2013 03:34:32 -0400
+	id 1V2z1M-00068y-Pn; Sat, 27 Jul 2013 03:34:32 -0400
 Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id B40F842F73;
-	Sat, 27 Jul 2013 11:34:31 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 153A442FBF;
+	Sat, 27 Jul 2013 11:34:32 +0400 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id 413B0202884; Sat, 27 Jul 2013 11:33:28 +0400 (MSK)
+	id 4D3A5202881; Sat, 27 Jul 2013 11:33:28 +0400 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: anthony@codemonkey.ws
-Date: Sat, 27 Jul 2013 11:33:17 +0400
-Message-Id: <1374910406-15273-3-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Sat, 27 Jul 2013 11:33:24 +0400
+Message-Id: <1374910406-15273-10-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1374910406-15273-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1374910406-15273-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Liu Ping Fan <pingfank@linux.vnet.ibm.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Liguori <aliguori@us.ibm.com>,
+	Ramkumar Ramachandra <artagnon@gmail.com>,
+	qemu-trivial@nongnu.org, Marcelo Tosatti <mtosatti@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>,
-	Liu Ping Fan <qemulist@gmail.com>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL trivial 02/11] timer: make timers_state static
+	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [Qemu-trivial] [PULL trivial 09/11] qemu-options: mention C-a h in
+	the -nographic doc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,28 +48,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 27 Jul 2013 07:34:38 -0000
 
-From: Liu Ping Fan <qemulist@gmail.com>
+From: Ramkumar Ramachandra <artagnon@gmail.com>
 
-Signed-off-by: Liu Ping Fan <pingfank@linux.vnet.ibm.com>
-Reviewed-by: Jan Kiszka <jan.kiszka@siemens.com>
+Otherwise, a new user will be wondering how to switch between the
+console and monitor.
+
+Cc: Anthony Liguori <aliguori@us.ibm.com>
+Cc: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
+Cc: Marcelo Tosatti <mtosatti@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Ramkumar Ramachandra <artagnon@gmail.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- cpus.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ qemu-options.hx |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/cpus.c b/cpus.c
-index ca6b886..0f65e76 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -112,7 +112,7 @@ typedef struct TimersState {
-     int64_t dummy;
- } TimersState;
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 2dbfd42..25ecb55 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -844,7 +844,8 @@ you can totally disable graphical output so that QEMU is a simple
+ command line application. The emulated serial port is redirected on
+ the console and muxed with the monitor (unless redirected elsewhere
+ explicitly). Therefore, you can still use QEMU to debug a Linux kernel
+-with a serial console.
++with a serial console.  Use @key{C-a h} for help on switching between
++the console and monitor.
+ ETEXI
  
--TimersState timers_state;
-+static TimersState timers_state;
- 
- /* Return the virtual CPU time, based on the instruction counter.  */
- int64_t cpu_get_icount(void)
+ DEF("curses", 0, QEMU_OPTION_curses,
 -- 
 1.7.10.4
 
