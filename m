@@ -1,35 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V2z1i-0004K6-EB
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Jul 2013 03:34:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40646)
+	id 1V3Jwu-0000O6-VL
+	for mharc-qemu-trivial@gnu.org; Sun, 28 Jul 2013 01:55:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36962)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V2z1f-0004F2-MW
-	for qemu-trivial@nongnu.org; Sat, 27 Jul 2013 03:34:52 -0400
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1V3Jwo-0000Ex-HC
+	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 01:55:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V2z1e-0006Vw-M7
-	for qemu-trivial@nongnu.org; Sat, 27 Jul 2013 03:34:51 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:40226)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1V3Jwj-0008It-Gq
+	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 01:55:14 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:51868
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1V2z1c-0006RE-RF; Sat, 27 Jul 2013 03:34:48 -0400
-Received: from gandalf.tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3879E42F73;
-	Sat, 27 Jul 2013 11:34:48 +0400 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
-	id 532D720288A; Sat, 27 Jul 2013 11:33:28 +0400 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: anthony@codemonkey.ws
-Date: Sat, 27 Jul 2013 11:33:26 +0400
-Message-Id: <1374910406-15273-12-git-send-email-mjt@msgid.tls.msk.ru>
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1V3JwZ-00081S-Kh; Sun, 28 Jul 2013 01:54:59 -0400
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id 2BEF21819C6; Sun, 28 Jul 2013 07:54:56 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial <qemu-trivial@nongnu.org>
+Date: Sun, 28 Jul 2013 07:54:55 +0200
+Message-Id: <1374990895-25584-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1374910406-15273-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1374910406-15273-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL trivial 11/11] target-mips: Remove assignment
-	to a variable which is never used
+X-Received-From: 37.221.198.45
+Cc: Stefan Weil <sw@weilnetz.de>, Jan Kiszka <jan.kiszka@web.de>,
+	qemu-devel <qemu-devel@nongnu.org>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Subject: [Qemu-trivial] [PATCH] musicpal: Fix typo in name of local function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,35 +42,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 27 Jul 2013 07:34:52 -0000
+X-List-Received-Date: Sun, 28 Jul 2013 05:55:19 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
-
-This assignment causes a compiler warning for compilations with the compiler
-option -Wunused-but-set-variable (which is included with -Wextra).
-
-Removing it allows using -Wextra for QEMU code without suppressing too many
-extra warnings.
+The misspelling was spotted by Andreas F=C3=A4rber.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- target-mips/op_helper.c |    1 -
- 1 file changed, 1 deletion(-)
+ hw/arm/musicpal.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
-index 5cf1c3f..b828375 100644
---- a/target-mips/op_helper.c
-+++ b/target-mips/op_helper.c
-@@ -1735,7 +1735,6 @@ target_ulong helper_evpe(CPUMIPSState *env)
- void helper_fork(target_ulong arg1, target_ulong arg2)
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index b06d442..ddddd27 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -534,7 +534,7 @@ static void lcd_invalidate(void *opaque)
  {
-     // arg1 = rt, arg2 = rs
--    arg1 = 0;
-     // TODO: store to TC register
  }
- 
--- 
+=20
+-static void musicpal_lcd_gpio_brigthness_in(void *opaque, int irq, int l=
+evel)
++static void musicpal_lcd_gpio_brightness_in(void *opaque, int irq, int l=
+evel)
+ {
+     musicpal_lcd_state *s =3D opaque;
+     s->brightness &=3D ~(1 << irq);
+@@ -619,7 +619,7 @@ static int musicpal_lcd_init(SysBusDevice *dev)
+     s->con =3D graphic_console_init(DEVICE(dev), &musicpal_gfx_ops, s);
+     qemu_console_resize(s->con, 128*3, 64*3);
+=20
+-    qdev_init_gpio_in(&dev->qdev, musicpal_lcd_gpio_brigthness_in, 3);
++    qdev_init_gpio_in(&dev->qdev, musicpal_lcd_gpio_brightness_in, 3);
+=20
+     return 0;
+ }
+--=20
 1.7.10.4
 
 
