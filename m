@@ -1,44 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V3KIw-0006SH-JY
-	for mharc-qemu-trivial@gnu.org; Sun, 28 Jul 2013 02:18:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41503)
+	id 1V3NZI-0001hd-JN
+	for mharc-qemu-trivial@gnu.org; Sun, 28 Jul 2013 05:47:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45534)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1V3KIq-0006Q1-7M
-	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 02:18:06 -0400
+	(envelope-from <afaerber@suse.de>) id 1V3NZA-0001XD-If
+	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 05:47:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1V3KIh-0006eJ-G4
-	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 02:18:00 -0400
-Received: from mout.web.de ([212.227.15.4]:59154)
+	(envelope-from <afaerber@suse.de>) id 1V3NZ5-0007C4-9j
+	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 05:47:04 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:56859 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1V3KIh-0006e7-6P
-	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 02:17:51 -0400
-Received: from mchn199C.mchp.siemens.de ([95.157.58.223]) by smtp.web.de
-	(mrweb002) with ESMTPSA (Nemesis) id 0M8hdL-1U8rja37ml-00wGke for
-	<qemu-trivial@nongnu.org>; Sun, 28 Jul 2013 08:17:50 +0200
-Message-ID: <51F4B78D.3010203@web.de>
-Date: Sun, 28 Jul 2013 08:17:49 +0200
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <afaerber@suse.de>)
+	id 1V3NYu-0007B8-9m; Sun, 28 Jul 2013 05:46:48 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id ABB06A4EB7;
+	Sun, 28 Jul 2013 11:46:47 +0200 (CEST)
+Message-ID: <51F4E884.4010509@suse.de>
+Date: Sun, 28 Jul 2013 11:46:44 +0200
+From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130620 Thunderbird/17.0.7
 MIME-Version: 1.0
 To: Stefan Weil <sw@weilnetz.de>
 References: <1374990895-25584-1-git-send-email-sw@weilnetz.de>
 In-Reply-To: <1374990895-25584-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.5.2
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="3DwkggDSNg2weBDFKiVS2IuTLvnf6OB15"
-X-Provags-ID: V03:K0:d42cB8KQI1rg1dKcFgX7JAZX/Xl60EV0GvuJl1pbdRBt1FvioL9
-	VBGwepOg7MI77WODOZTk5uZ10xCmx3zOJF80zxyb0q6olX0mqmOt+XWgx4S8PXmbWmsi/6K
-	GxARO+cmk9OVFOs/2CjRiXq7MtPnAjg7r3pIforqkp2KY6g//rFU/ieJxC7/n8CUfnvSVV/
-	jbLYHt00sHGslJg2ogHsg==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 212.227.15.4
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	=?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH] musicpal: Fix typo in name of local
-	function
+X-Enigmail-Version: 1.6a1pre
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] musicpal: Fix typo in name
+	of local function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,14 +45,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 28 Jul 2013 06:18:06 -0000
+X-List-Received-Date: Sun, 28 Jul 2013 09:47:11 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---3DwkggDSNg2weBDFKiVS2IuTLvnf6OB15
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-On 2013-07-28 07:54, Stefan Weil wrote:
+Am 28.07.2013 07:54, schrieb Stefan Weil:
 > The misspelling was spotted by Andreas F=C3=A4rber.
 >=20
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
@@ -85,31 +75,26 @@ On 2013-07-28 07:54, Stefan Weil wrote:
 ;
 >      qemu_console_resize(s->con, 128*3, 64*3);
 > =20
-> -    qdev_init_gpio_in(&dev->qdev, musicpal_lcd_gpio_brigthness_in, 3);=
-
-> +    qdev_init_gpio_in(&dev->qdev, musicpal_lcd_gpio_brightness_in, 3);=
-
+> -    qdev_init_gpio_in(&dev->qdev, musicpal_lcd_gpio_brigthness_in, 3);
+> +    qdev_init_gpio_in(&dev->qdev, musicpal_lcd_gpio_brightness_in, 3);
 > =20
 >      return 0;
 >  }
->=20
 
-Reviewed-by: Jan Kiszka <jan.kiszka@web.de>
+Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
 
+but to clarify: I had notified you not to send this small patch, which
+now conflicts with my argument cleanup, but to add this typo to your
+blacklist to check the whole codebase for similar typos. Are there none?
 
---3DwkggDSNg2weBDFKiVS2IuTLvnf6OB15
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+But since this is a sensible cleanup anyway, I'll just put a copy into
+my queue before the refactoring, to avoid merge conflicts with -trivial.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.16 (GNU/Linux)
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+Thanks,
+Andreas
 
-iEYEARECAAYFAlH0t40ACgkQitSsb3rl5xSZdwCgiAF0palJfdAVK+XMiVjh1Ojl
-6CsAnjmyDBSd6E9X2CYigIMED+YhlmUv
-=R9d5
------END PGP SIGNATURE-----
-
---3DwkggDSNg2weBDFKiVS2IuTLvnf6OB15--
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
+rnberg
 
