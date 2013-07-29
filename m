@@ -1,41 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V3i67-0004XF-Tx
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jul 2013 03:42:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42616)
+	id 1V3tzj-0003Mo-L2
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jul 2013 16:24:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44371)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1V3i61-0004Oe-HI
-	for qemu-trivial@nongnu.org; Mon, 29 Jul 2013 03:42:26 -0400
+	(envelope-from <aliguori@us.ibm.com>) id 1V3tzW-0002xb-Cp
+	for qemu-trivial@nongnu.org; Mon, 29 Jul 2013 16:24:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1V3i5v-00089C-7T
-	for qemu-trivial@nongnu.org; Mon, 29 Jul 2013 03:42:21 -0400
-Received: from hall.aurel32.net ([2001:470:1f0b:4a8::1]:56974)
+	(envelope-from <aliguori@us.ibm.com>) id 1V3tzM-0005ny-TJ
+	for qemu-trivial@nongnu.org; Mon, 29 Jul 2013 16:24:26 -0400
+Received: from e37.co.us.ibm.com ([32.97.110.158]:34060)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1V3i5u-000894-Pr; Mon, 29 Jul 2013 03:42:15 -0400
-Received: from anguille.univ-lyon1.fr ([134.214.4.207] helo=ohm.aurel32.net)
-	by hall.aurel32.net with esmtpsa (TLS1.2:DHE_RSA_AES_128_CBC_SHA1:128)
-	(Exim 4.80) (envelope-from <aurelien@aurel32.net>)
-	id 1V3i5t-0007br-38; Mon, 29 Jul 2013 09:42:13 +0200
-Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1V3i5n-0003Ax-Kg; Mon, 29 Jul 2013 09:42:07 +0200
-Date: Mon, 29 Jul 2013 09:42:07 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20130729074207.GB5686@ohm.aurel32.net>
-References: <1374910406-15273-1-git-send-email-mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
-In-Reply-To: <1374910406-15273-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: Mutt 1.5.21 (2010-09-15)
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:470:1f0b:4a8::1
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, anthony@codemonkey.ws
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL trivial 00/11] trivial
-	patches for 2013-07-27
+	(envelope-from <aliguori@us.ibm.com>) id 1V3tzM-0005mE-Lj
+	for qemu-trivial@nongnu.org; Mon, 29 Jul 2013 16:24:16 -0400
+Received: from /spool/local
+	by e37.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
+	Mon, 29 Jul 2013 14:24:15 -0600
+Received: from d03dlp03.boulder.ibm.com (9.17.202.179)
+	by e37.co.us.ibm.com (192.168.1.137) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Mon, 29 Jul 2013 14:24:04 -0600
+Received: from d03relay02.boulder.ibm.com (d03relay02.boulder.ibm.com
+	[9.17.195.227])
+	by d03dlp03.boulder.ibm.com (Postfix) with ESMTP id C8DD119D8043;
+	Mon, 29 Jul 2013 14:23:51 -0600 (MDT)
+Received: from d03av01.boulder.ibm.com (d03av01.boulder.ibm.com [9.17.195.167])
+	by d03relay02.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r6TKO0VK153994; Mon, 29 Jul 2013 14:24:01 -0600
+Received: from d03av01.boulder.ibm.com (loopback [127.0.0.1])
+	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
+	id r6TKO0p0008490; Mon, 29 Jul 2013 14:24:00 -0600
+Received: from localhost6.localdomain6 (sig-9-65-227-166.mts.ibm.com
+	[9.65.227.166])
+	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
+	r6TKNwEM008351; Mon, 29 Jul 2013 14:23:59 -0600
+Message-Id: <201307292023.r6TKNwEM008351@d03av01.boulder.ibm.com>
+From: Anthony Liguori <aliguori@us.ibm.com>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel@nongnu.org
+In-Reply-To: <1375073319-17488-1-git-send-email-aik@ozlabs.ru>
+Date: Mon, 29 Jul 2013 20:23:57 -0000
+X-TM-AS-MML: No
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13072920-7408-0000-0000-000012705313
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 32.97.110.158
+Cc: Anthony Liguori <aliguori@us.ibm.com>, Alexey Kardashevskiy <aik@ozlabs.ru>,
+	Alexander Graf <agraf@suse.de>, qemu-trivial@nongnu.org,
+	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] spapr-vscsi: fix SOLNT bit in SRP_RSP
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,77 +60,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Jul 2013 07:42:26 -0000
+X-List-Received-Date: Mon, 29 Jul 2013 20:24:37 -0000
 
-On Sat, Jul 27, 2013 at 11:33:15AM +0400, Michael Tokarev wrote:
-> We collected a few more trivial patches this week, including a compile
-> failure fix for 32bit builds by Stefan Weil.
-> 
-> Please pull.
-> 
-> The following changes since commit 200a06397f5d3e982028fd78b25b420507ade021:
-> 
->   Merge remote-tracking branch 'afaerber/tags/qom-cpu-for-anthony' into staging (2013-07-26 17:53:19 -0500)
-> 
-> are available in the git repository at:
-> 
-> 
->   git://git.corpit.ru/qemu.git trivial-patches
-> 
-> for you to fetch changes up to 6c86f405efd6532b58ad1b607cc9f11e856ef5ca:
-> 
->   target-mips: Remove assignment to a variable which is never used (2013-07-27 11:22:54 +0400)
-> 
-> ----------------------------------------------------------------
-> Liu Ping Fan (1):
->       timer: make timers_state static
-> 
-> Petar Jovanovic (1):
->       linux-user: correct argument number for sys_mremap and sys_splice
-> 
-> Ramkumar Ramachandra (1):
->       qemu-options: mention C-a h in the -nographic doc
-> 
-> Stefan Weil (8):
->       aes: Remove unused code (NDEBUG, u16)
->       hw/9pfs: Fix potential memory leak and avoid reuse of freed memory
->       exec: Remove env from list of poisoned names
->       watchdog: Remove break after exit
->       PPC: dbdma: macio: Fix format specifiers (build regression)
->       misc: Fix new typos in comments and strings
->       misc: Use g_assert_not_reached for code which is expected to be unreachable
->       target-mips: Remove assignment to a variable which is never used
-> 
->  block/vhdx.h                       |    2 +-
->  blockdev.c                         |    2 +-
->  cpus.c                             |    2 +-
->  docs/rdma.txt                      |    2 +-
->  hw/9pfs/virtio-9p-proxy.c          |    2 ++
->  hw/ide/macio.c                     |    9 +++++----
->  hw/net/vmxnet3.c                   |   16 ++++++++--------
->  hw/net/vmxnet_tx_pkt.c             |    2 +-
->  hw/usb/hcd-ehci.c                  |    8 ++++----
->  hw/virtio/virtio-balloon.c         |    4 ++--
->  hw/watchdog/watchdog.c             |    1 -
->  hw/xen/xen_pt.c                    |    3 ++-
->  include/exec/poison.h              |    1 -
->  linux-user/main.c                  |    4 ++--
->  migration-rdma.c                   |    4 ++--
->  net/eth.c                          |    2 +-
->  qdev-monitor.c                     |    4 ++--
->  qemu-options.hx                    |    3 ++-
->  target-arm/helper.c                |    2 +-
->  target-mips/op_helper.c            |    1 -
->  tests/test-qmp-input-visitor.c     |    2 +-
->  tests/test-qmp-output-visitor.c    |    4 ++--
->  tests/test-visitor-serialization.c |    8 ++++----
->  util/aes.c                         |    5 -----
->  24 files changed, 45 insertions(+), 48 deletions(-)
-> 
+Applied.  Thanks.
 
-Thanks, pulled.
+Regards,
 
--- 
-Aurelien Jarno                          GPG: 1024D/F1BCDB73
-aurelien@aurel32.net                 http://www.aurel32.net
+Anthony Liguori
+
 
