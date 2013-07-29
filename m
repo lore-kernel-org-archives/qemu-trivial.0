@@ -1,41 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V3ZcG-0001zD-CS
-	for mharc-qemu-trivial@gnu.org; Sun, 28 Jul 2013 18:39:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56652)
+	id 1V3fOL-0004SP-23
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jul 2013 00:49:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58959)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1V3Zc9-0001vZ-JJ
-	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 18:39:03 -0400
+	(envelope-from <aik@ozlabs.ru>) id 1V3fOD-0004RK-1y
+	for qemu-trivial@nongnu.org; Mon, 29 Jul 2013 00:49:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1V3Zc3-00065B-T9
-	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 18:38:57 -0400
-Received: from hall.aurel32.net ([88.191.116.210]:57270)
+	(envelope-from <aik@ozlabs.ru>) id 1V3fO6-0003ym-8t
+	for qemu-trivial@nongnu.org; Mon, 29 Jul 2013 00:48:56 -0400
+Received: from mail-pa0-f43.google.com ([209.85.220.43]:46276)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1V3Zc3-000655-O7
-	for qemu-trivial@nongnu.org; Sun, 28 Jul 2013 18:38:51 -0400
-Received: from [2001:470:d4ed:1:2db:dfff:fe14:52d] (helo=ohm.aurel32.net)
-	by hall.aurel32.net with esmtpsa (TLS1.2:DHE_RSA_AES_128_CBC_SHA1:128)
-	(Exim 4.80) (envelope-from <aurelien@aurel32.net>)
-	id 1V3Zc1-0002vn-2U; Mon, 29 Jul 2013 00:38:49 +0200
-Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1V3Zby-0004Tk-9I; Mon, 29 Jul 2013 00:38:46 +0200
-Date: Mon, 29 Jul 2013 00:38:46 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Petar Jovanovic <petar.jovanovic@rt-rk.com>
-Message-ID: <20130728223846.GA15063@ohm.aurel32.net>
-References: <1374598810-78021-1-git-send-email-petar.jovanovic@rt-rk.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
-In-Reply-To: <1374598810-78021-1-git-send-email-petar.jovanovic@rt-rk.com>
-X-Mailer: Mutt 1.5.21 (2010-09-15)
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 88.191.116.210
-Cc: qemu-trivial@nongnu.org, riku.voipio@linaro.org, qemu-devel@nongnu.org,
-	petar.jovanovic@imgtec.com
-Subject: Re: [Qemu-trivial] [PATCH] linux-user: correct argument number for
- sys_mremap and sys_splice
+	(envelope-from <aik@ozlabs.ru>) id 1V3fO6-0003y2-3I
+	for qemu-trivial@nongnu.org; Mon, 29 Jul 2013 00:48:50 -0400
+Received: by mail-pa0-f43.google.com with SMTP id hz10so4376824pad.30
+	for <qemu-trivial@nongnu.org>; Sun, 28 Jul 2013 21:48:48 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:x-mailer:x-gm-message-state;
+	bh=ZktANUMwIbdx5KqYksTSk/w22PZ/uTWtPEAWs8iNqkE=;
+	b=G3UjIhyidDMypGa/yvZ573dO+N2ldyEIuZglo/P5hquX1FPPrXNSrT9KgJmwqmfo/R
+	WXFO7q6zoTIelwY9TwOT5SsbCeYOXoq00FfcIUQihJ4gdMrBiccLnvhoHqfc42unkCzB
+	ClrwKZB5/IkqRs0ZA/YbmzeJ3/3j1+/ydRhIJuvPbHDus2SbiKs0af5XTd+xRe5laU40
+	ovaFjugPrb48aI75MZAj9gprCosBZ+7N2CC8JoEdFpNsmxFMF96RpVlOsD2mLp5cxYAd
+	j2bzTplyXaDy40WGxXB08tp8W60q95aX2/sTLl0yAL5oKJQhaEPUMNZsB6QwX0JgD7BJ
+	3Z/A==
+X-Received: by 10.66.123.5 with SMTP id lw5mr46265357pab.83.1375073328667;
+	Sun, 28 Jul 2013 21:48:48 -0700 (PDT)
+Received: from ka1.ozlabs.ibm.com (ibmaus65.lnk.telstra.net. [165.228.126.9])
+	by mx.google.com with ESMTPSA id
+	il4sm74436860pbb.36.2013.07.28.21.48.44 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Sun, 28 Jul 2013 21:48:47 -0700 (PDT)
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+To: qemu-devel@nongnu.org
+Date: Mon, 29 Jul 2013 14:48:39 +1000
+Message-Id: <1375073319-17488-1-git-send-email-aik@ozlabs.ru>
+X-Mailer: git-send-email 1.8.3.2
+X-Gm-Message-State: ALoCoQmeXKUsknwgRgx8D+3/CmReTwSGNMSzRzr4BBYrw6Orh3qlybtOmIWIBAzO6BX1OCdtaLTa
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.220.43
+Cc: Anthony Liguori <aliguori@us.ibm.com>, Alexey Kardashevskiy <aik@ozlabs.ru>,
+	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	Alexander Graf <agraf@suse.de>, qemu-trivial@nongnu.org,
+	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [Qemu-trivial] [PATCH] spapr-vscsi: fix SOLNT bit in SRP_RSP
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,49 +56,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 28 Jul 2013 22:39:03 -0000
+X-List-Received-Date: Mon, 29 Jul 2013 04:49:03 -0000
 
-On Tue, Jul 23, 2013 at 07:00:10PM +0200, Petar Jovanovic wrote:
-> From: Petar Jovanovic <petar.jovanovic@imgtec.com>
-> 
-> sys_mremap missed 5th argument (new_address), which caused examples that
-> remap to a specific address to fail.
-> sys_splice missed 5th and 6th argument which caused different examples to
-> fail.
-> This change has an effect on MIPS target only.
-> 
-> Signed-off-by: Petar Jovanovic <petar.jovanovic@imgtec.com>
-> ---
->  linux-user/main.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index 99c3b3f..1c20229 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -1957,7 +1957,7 @@ static const uint8_t mips_syscall_args[] = {
->  	MIPS_SYS(sys_sched_get_priority_min, 1)
->  	MIPS_SYS(sys_sched_rr_get_interval, 2)	/* 4165 */
->  	MIPS_SYS(sys_nanosleep,	2)
-> -	MIPS_SYS(sys_mremap	, 4)
-> +	MIPS_SYS(sys_mremap	, 5)
->  	MIPS_SYS(sys_accept	, 3)
->  	MIPS_SYS(sys_bind	, 3)
->  	MIPS_SYS(sys_connect	, 3)	/* 4170 */
-> @@ -2094,7 +2094,7 @@ static const uint8_t mips_syscall_args[] = {
->  	MIPS_SYS(sys_pselect6, 6)
->  	MIPS_SYS(sys_ppoll, 5)
->  	MIPS_SYS(sys_unshare, 1)
-> -	MIPS_SYS(sys_splice, 4)
-> +	MIPS_SYS(sys_splice, 6)
->  	MIPS_SYS(sys_sync_file_range, 7) /* 4305 */
->  	MIPS_SYS(sys_tee, 4)
->  	MIPS_SYS(sys_vmsplice, 4)
+The driver calculates SOLNT bit from UCSOLNT and  SCSOLNT bits from
+the request. The iu pointer has a type of srp_iu* which points to a union,
+so cmd and rsp overlap. As the vscsi_send_rsp function calls
+memset(iu, 0, sizeof(rsp)), it clears first 36 bytes of both cmd and rsp
+so cmd.sol_not is always zero at the moment of calculating rsp.sol_not.
 
-Thanks, applied.
+This fixes the bug.
 
+Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+---
 
+Is that really trivial? I am not so sure but put qemu-trivial@ to copy :)
+
+---
+
+ hw/scsi/spapr_vscsi.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
+index 55b44b9..541ffcc 100644
+--- a/hw/scsi/spapr_vscsi.c
++++ b/hw/scsi/spapr_vscsi.c
+@@ -217,6 +217,7 @@ static int vscsi_send_rsp(VSCSIState *s, vscsi_req *req,
+     union viosrp_iu *iu = &req->iu;
+     uint64_t tag = iu->srp.rsp.tag;
+     int total_len = sizeof(iu->srp.rsp);
++    uint8_t sol_not = iu->srp.cmd.sol_not;
+ 
+     dprintf("VSCSI: Sending resp status: 0x%x, "
+             "res_in: %d, res_out: %d\n", status, res_in, res_out);
+@@ -249,7 +250,7 @@ static int vscsi_send_rsp(VSCSIState *s, vscsi_req *req,
+     /* Handle success vs. failure */
+     iu->srp.rsp.status = status;
+     if (status) {
+-        iu->srp.rsp.sol_not = (iu->srp.cmd.sol_not & 0x04) >> 2;
++        iu->srp.rsp.sol_not = (sol_not & 0x04) >> 2;
+         if (req->senselen) {
+             req->iu.srp.rsp.flags |= SRP_RSP_FLAG_SNSVALID;
+             req->iu.srp.rsp.sense_data_len = cpu_to_be32(req->senselen);
+@@ -257,7 +258,7 @@ static int vscsi_send_rsp(VSCSIState *s, vscsi_req *req,
+             total_len += req->senselen;
+         }
+     } else {
+-        iu->srp.rsp.sol_not = (iu->srp.cmd.sol_not & 0x02) >> 1;
++        iu->srp.rsp.sol_not = (sol_not & 0x02) >> 1;
+     }
+ 
+     vscsi_send_iu(s, req, total_len, VIOSRP_SRP_FORMAT);
 -- 
-Aurelien Jarno                          GPG: 1024D/F1BCDB73
-aurelien@aurel32.net                 http://www.aurel32.net
+1.8.3.2
+
 
