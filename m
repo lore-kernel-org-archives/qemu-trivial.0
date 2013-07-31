@@ -1,34 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V4Gjf-0005vh-TH
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jul 2013 16:41:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43285)
+	id 1V4OXC-0007rn-05
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Jul 2013 01:01:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43522)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1V4Gjd-0005r2-DB
-	for qemu-trivial@nongnu.org; Tue, 30 Jul 2013 16:41:34 -0400
+	id 1V4OX4-0007j7-2Q
+	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 01:01:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1V4Gjc-000773-1B
-	for qemu-trivial@nongnu.org; Tue, 30 Jul 2013 16:41:33 -0400
-Received: from [2a03:4000:2:362::1] (port=40067
+	id 1V4OWz-0006GW-4d
+	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 01:01:05 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:57376
 	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1V4GjY-00074t-P2; Tue, 30 Jul 2013 16:41:28 -0400
+	id 1V4OWp-0006C9-7f; Wed, 31 Jul 2013 01:00:51 -0400
 Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id 61D91183F6E; Tue, 30 Jul 2013 22:41:24 +0200 (CEST)
+	id BBD7D17F93A; Wed, 31 Jul 2013 07:00:47 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-trivial <qemu-trivial@nongnu.org>
-Date: Tue, 30 Jul 2013 22:41:23 +0200
-Message-Id: <1375216883-23969-1-git-send-email-sw@weilnetz.de>
+Date: Wed, 31 Jul 2013 07:00:47 +0200
+Message-Id: <1375246847-30624-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.198.45
 Cc: Stefan Weil <sw@weilnetz.de>, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel <qemu-devel@nongnu.org>, Marcel Apfelbaum <marcel.a@redhat.com>
-Subject: [Qemu-trivial] [PATCH for 1.6] tci: Fix broken build (compiler
-	warning caused by redefined macro BIT)
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH for 1.6] hw/core: Fix wrong left shift (build
+	regression)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,34 +42,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jul 2013 20:41:34 -0000
+X-List-Received-Date: Wed, 31 Jul 2013 05:01:12 -0000
 
-The definition of macro BIT in tci/tcg-target.c now conflicts with the
-definition of the same macro in includes qemu/bitops.h.
+Shifting a long int (32 bit) by 40 bit positions won't work.
+Compiler message:
 
-This conflict was triggered by a recent change in the include chain of
-tcg.c (probably commit 949fc82314cc84162e64a5323764527a542421ce).
+hw/core/qdev-properties.c: In function =E2=80=98print_size=E2=80=99:
+hw/core/qdev-properties.c:1180:5: warning: left shift count >=3D width of=
+ type
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- tcg/tci/tcg-target.c |    3 ---
- 1 file changed, 3 deletions(-)
+ hw/core/qdev-properties.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tcg/tci/tcg-target.c b/tcg/tci/tcg-target.c
-index d1241b5..e118bc7 100644
---- a/tcg/tci/tcg-target.c
-+++ b/tcg/tci/tcg-target.c
-@@ -34,9 +34,6 @@
-         tcg_abort(); \
-     } while (0)
- 
--/* Single bit n. */
--#define BIT(n) (1 << (n))
--
- /* Bitfield n...m (in 32 bit value). */
- #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
- 
--- 
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index 8d43a8d..e82ab87 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -1177,7 +1177,7 @@ static int print_size(DeviceState *dev, Property *p=
+rop, char *dest, size_t len)
+     int i =3D 0;
+     uint64_t div;
+=20
+-    for (div =3D (long int)1 << 40; !(*ptr / div) ; div >>=3D 10) {
++    for (div =3D 1ULL << 40; !(*ptr / div); div >>=3D 10) {
+         i++;
+     }
+     return snprintf(dest, len, "%0.03f%c", (double)*ptr/div, suffixes[i]=
+);
+--=20
 1.7.10.4
 
 
