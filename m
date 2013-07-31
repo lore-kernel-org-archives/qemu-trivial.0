@@ -1,40 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V4e6W-0005Df-Cs
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jul 2013 17:38:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58175)
+	id 1V4g9g-00018i-KG
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Jul 2013 19:50:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57622)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1V4e6O-0005DB-Cv
-	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 17:38:42 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1V4g9a-0000ye-8m
+	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 19:50:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1V4V8X-0007R9-9s
-	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 08:04:19 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:59007 helo=mx2.suse.de)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1V4g9U-00026Q-5i
+	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 19:50:02 -0400
+Received: from mail-bk0-f50.google.com ([209.85.214.50]:55080)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1V4V8K-0007MH-I4; Wed, 31 Jul 2013 08:04:00 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 79A7BA3B99;
-	Wed, 31 Jul 2013 14:03:59 +0200 (CEST)
-Message-ID: <51F8FD2C.1010002@suse.de>
-Date: Wed, 31 Jul 2013 14:03:56 +0200
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130620 Thunderbird/17.0.7
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1V4g9T-00026A-VC
+	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 19:49:56 -0400
+Received: by mail-bk0-f50.google.com with SMTP id ik8so459238bkc.9
+	for <qemu-trivial@nongnu.org>; Wed, 31 Jul 2013 16:49:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:date
+	:x-google-sender-auth:message-id:subject:from:to:cc:content-type
+	:x-gm-message-state;
+	bh=nJQ71WDqDLLcFo4vpdXI4bbZqXuBSTElvwvv7fp4PpE=;
+	b=FI3EiF7yL+QywYuOR5cgscAA5XiSPHCYuy/gxTlEu6LZZU6lHU77B7/V+Ep4vR8EvQ
+	+4eaBnTtzxqeQEj+vESMVE3b+dCwn/nD5ZlbocabF3c9xfedBcVQYNGxMrizQS/w55PF
+	m5k7793QbNY/73BHqmsJBPj1B8MaVY6gqDIkfRgysImOt7JI8pEoGykr0CK7vQmVRf92
+	IAH4Qbnsj2sgV2BEnbrf4iuI2T9Rdvt1lootE+FUzHR4nkJqd5kROzvxdeIa9ehw59V0
+	Q0Y8STr77xAHkbqfR6v7yv+qFQFTVoYaCxhSlANdatteaVPWOy/mNI1SV0n1Y7604FpM
+	Rzow==
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
-References: <1375266255-22207-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<51F8E68F.4030006@msgid.tls.msk.ru>
-	<CAFEAcA8UZRQAv9NLRcyvUffXMKMM01FauUDvmxiGRwHJzmUM1g@mail.gmail.com>
-In-Reply-To: <CAFEAcA8UZRQAv9NLRcyvUffXMKMM01FauUDvmxiGRwHJzmUM1g@mail.gmail.com>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-ga: build it even if
-	!system
+X-Received: by 10.204.3.10 with SMTP id 10mr10019604bkl.93.1375314594343; Wed,
+	31 Jul 2013 16:49:54 -0700 (PDT)
+Sender: peter.crosthwaite@petalogix.com
+Received: by 10.204.229.206 with HTTP; Wed, 31 Jul 2013 16:49:54 -0700 (PDT)
+In-Reply-To: <51C16755.9050700@msgid.tls.msk.ru>
+References: <cover.1371553360.git.peter.crosthwaite@xilinx.com>
+	<f65ba24ae67c04af46940c8cc67093894af97871.1371553360.git.peter.crosthwaite@xilinx.com>
+	<51C16755.9050700@msgid.tls.msk.ru>
+Date: Thu, 1 Aug 2013 09:49:54 +1000
+X-Google-Sender-Auth: FeYUaa2L5DGKh9Vh_ouklrsTd1M
+Message-ID: <CAEgOgz5ann=BwYLpQ1pzpPdAAn2rjwT0vn9MXY9=Df3LTjxw=A@mail.gmail.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=ISO-8859-1
+X-Gm-Message-State: ALoCoQnQpSzK7SmIJ/2G049v2EhMPeh2WfmThMRSn2DOB9TGHCw40XVT4FOAdqgmR9vaJJUgTXPv
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.214.50
+Cc: Kevin Wolf <kwolf@redhat.com>, peter.maydell@linaro.org,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>, edgar.iglesias@gmail.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 1/5] block/nand: Factor
+ out common code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,34 +61,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Jul 2013 21:38:42 -0000
+X-List-Received-Date: Wed, 31 Jul 2013 23:50:06 -0000
 
-Am 31.07.2013 13:05, schrieb Peter Maydell:
-> On 31 July 2013 11:27, Michael Tokarev <mjt@tls.msk.ru> wrote:
->> 31.07.2013 14:24, Michael Tokarev wrote:
->>> Move qemu-ga build check out of if softmmu.. into if tools section.
->>> We want to build qemu-ga for _guest_ even if system build isn't
->>> done.  It is controlled separately using --enable-guest-agent.
+On Wed, Jun 19, 2013 at 6:09 PM, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> 18.06.2013 15:08, peter.crosthwaite@xilinx.com wrote:
+>> From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 >>
->> Actually the more I think about it... Maybe it shouldn't depend
->> on --enable-tools either, but should be an independent option.
->> Because it isn't really a tool.
->=20
-> This seems to me to be unnecessarily breaking things down
-> into very finely divided categories. I think putting it
-> in --enable-tools is fine.
+>> Most of this computation of s->iolen is the same for both the if and
+>> else paths here. Factor out the common parts outside the if.
+>>
+>> Cc: qemu-trivial@nongnu.org
+>>
+>> Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+>> ---
+>>
+>>  hw/block/nand.c | 8 ++++----
+>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/block/nand.c b/hw/block/nand.c
+>> index 087ca14..6309f93 100644
+>> --- a/hw/block/nand.c
+>> +++ b/hw/block/nand.c
+>> @@ -272,10 +272,10 @@ static void nand_command(NANDFlashState *s)
+>>              break;
+>>          offset = s->addr & ((1 << s->addr_shift) - 1);
+>>          s->blk_load(s, s->addr, offset);
+>> -        if (s->gnd)
+>> -            s->iolen = (1 << s->page_shift) - offset;
+>> -        else
+>> -            s->iolen = (1 << s->page_shift) + (1 << s->oob_shift) - offset;
+>> +        s->iolen = (1 << s->page_shift) - offset;
+>> +        if (!s->gnd) {
+>> +            s->iolen += 1 << s->oob_shift;
+>> +        }
+>
+> Hm.  Can s->iolen become negative here?
+>
+> addr_shift can be either less or greather than page_shift.  When addr_shift
+> is larger than page_shift (addr_shift=16, page_shift=11), offset may be up
+> to 65535, in which case s->iolen may be -63487, even without additional
+> oob_shift.
+>
+> I dunno if this is a concern, just.. asking.
+>
+> Besides, exactly the same expression is used in nand_getio() down this file,
+> maybe a common function is in order? :)
+>
 
-I disagree. Think about building a Windows guest agent: You don't need
-qemu-img (tools) on a Windows guest, and mjt is right that it shouldn't
-be coupled to building any qemu-system-*.
+Factored this out. Just added it to nand_blk_load_XXX().
 
-However it looks as if the linux/bsd/solaris checks got lost in the patch=
-?
+Regards,
+Peter
 
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
+> And looking at this file, I think it deserves some good type changes.  For
+> example, all these _shift are unsigned, and most are actually used as masks,
+> in form (1<<shift), instead of directly (except of erase_shift).
+>
+> Thanks,
+>
+> /mjt
+>
 
