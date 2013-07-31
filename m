@@ -1,35 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V4YCc-0000f1-Ik
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jul 2013 11:20:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49604)
+	id 1V4YW7-0003vm-4B
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Jul 2013 11:40:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35717)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V4YCW-0000ed-1c
-	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 11:20:37 -0400
+	(envelope-from <marcel.a@redhat.com>) id 1V4QQm-0006Sv-8I
+	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 03:02:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V4Y2G-00025F-Sa
-	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 11:10:01 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:56121)
+	(envelope-from <marcel.a@redhat.com>) id 1V4QQh-0001aB-DY
+	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 03:02:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50686)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1V4Y2B-00023x-Ev; Wed, 31 Jul 2013 11:09:51 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 16F44435BE;
-	Wed, 31 Jul 2013 19:09:50 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 03D0A4C3;
-	Wed, 31 Jul 2013 19:09:50 +0400 (MSK)
-Received: (nullmailer pid 25000 invoked by uid 1000);
-	Wed, 31 Jul 2013 15:09:49 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Wed, 31 Jul 2013 19:09:47 +0400
-Message-Id: <1375283387-24965-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <marcel.a@redhat.com>)
+	id 1V4QQh-0001Zo-6L; Wed, 31 Jul 2013 03:02:39 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r6V72cmF011181
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 31 Jul 2013 03:02:38 -0400
+Received: from [10.35.201.190] (vpn-201-190.tlv.redhat.com [10.35.201.190])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r6V72ZlD000973; Wed, 31 Jul 2013 03:02:36 -0400
+Message-ID: <1375254138.2561.5.camel@localhost.localdomain>
+From: Marcel Apfelbaum <marcel.a@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Date: Wed, 31 Jul 2013 10:02:18 +0300
+In-Reply-To: <1375216883-23969-1-git-send-email-sw@weilnetz.de>
+References: <1375216883-23969-1-git-send-email-sw@weilnetz.de>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Laszlo Ersek <lersek@redhat.com>
-Subject: [Qemu-trivial] [PATCH v3] qemu-ga: build it even if !system
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Wed, 31 Jul 2013 11:40:46 -0400
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH for 1.6] tci: Fix broken build (compiler
+ warning caused by redefined macro BIT)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,54 +48,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Jul 2013 15:20:37 -0000
+X-List-Received-Date: Wed, 31 Jul 2013 07:02:49 -0000
 
-Move qemu-ga build check out of if softmmu.. into its own section.
-We want to build qemu-ga for _guest_ even if system build isn't
-done.  It is controlled separately using --enable-guest-agent.
-Additionally, give error message if guest agent is requested but
-not supported.
+On Tue, 2013-07-30 at 22:41 +0200, Stefan Weil wrote:
+> The definition of macro BIT in tci/tcg-target.c now conflicts with the
+> definition of the same macro in includes qemu/bitops.h.
+> 
+> This conflict was triggered by a recent change in the include chain of
+> tcg.c (probably commit 949fc82314cc84162e64a5323764527a542421ce).
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- configure |   11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+I would add explicit "#include qemu/bitops.h"
+For some reason the compilation was ok when the path was submitted,
+thanks!
+Marcel
 
-v2: do not couple it with --enable-tools
-v3: use proper commit, use correct if yes/no conditions
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  tcg/tci/tcg-target.c |    3 ---
+>  1 file changed, 3 deletions(-)
+> 
+> diff --git a/tcg/tci/tcg-target.c b/tcg/tci/tcg-target.c
+> index d1241b5..e118bc7 100644
+> --- a/tcg/tci/tcg-target.c
+> +++ b/tcg/tci/tcg-target.c
+> @@ -34,9 +34,6 @@
+>          tcg_abort(); \
+>      } while (0)
+>  
+> -/* Single bit n. */
+> -#define BIT(n) (1 << (n))
+> -
+>  /* Bitfield n...m (in 32 bit value). */
+>  #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
+>  
 
-diff --git a/configure b/configure
-index f0761ea..293f167 100755
---- a/configure
-+++ b/configure
-@@ -231,7 +231,7 @@ libusb=""
- usb_redir=""
- glx=""
- zlib="yes"
--guest_agent="yes"
-+guest_agent=""
- want_tools="yes"
- libiscsi=""
- coroutine=""
-@@ -3444,10 +3444,15 @@ if test "$softmmu" = yes ; then
-       virtfs=no
-     fi
-   fi
-+fi
-+if [ "$guest_agent" != "no" ]; then
-   if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
--    if [ "$guest_agent" = "yes" ]; then
-       tools="qemu-ga\$(EXESUF) $tools"
--    fi
-+      guest_agent=yes
-+  elif [ "$guest_agent" != yes ]; then
-+      guest_agent=no
-+  else
-+      error_exit "Guest agent is not supported on this platform"
-   fi
- fi
- 
--- 
-1.7.10.4
 
 
