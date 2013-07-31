@@ -1,39 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V4SQ0-0001em-1t
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jul 2013 05:10:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50599)
+	id 1V4TgH-0001Qt-ER
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Jul 2013 06:30:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51205)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1V4SPt-0001eH-7Y
-	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 05:10:02 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1V4TgB-0001QT-2F
+	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 06:30:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1V4R35-0001P0-C2
-	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 03:42:37 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:41399 helo=mx2.suse.de)
+	(envelope-from <mjt@tls.msk.ru>) id 1V4TaB-0006hP-9G
+	for qemu-trivial@nongnu.org; Wed, 31 Jul 2013 06:24:47 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38048)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1V4R2i-0001Dh-25; Wed, 31 Jul 2013 03:41:56 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 648DFA4EB7;
-	Wed, 31 Jul 2013 09:41:55 +0200 (CEST)
-Message-ID: <51F8BFC0.1050306@suse.de>
-Date: Wed, 31 Jul 2013 09:41:52 +0200
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130620 Thunderbird/17.0.7
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1375246847-30624-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1375246847-30624-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 1.6] hw/core: Fix wrong
- left shift (build regression)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1V4TZz-0006Ie-Q3; Wed, 31 Jul 2013 06:24:28 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id A42CC43565;
+	Wed, 31 Jul 2013 14:24:16 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 889FE4C3;
+	Wed, 31 Jul 2013 14:24:16 +0400 (MSK)
+Received: (nullmailer pid 22242 invoked by uid 1000);
+	Wed, 31 Jul 2013 10:24:16 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Wed, 31 Jul 2013 14:24:15 +0400
+Message-Id: <1375266255-22207-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PATCH] qemu-ga: build it even if !system
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,47 +40,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Jul 2013 09:10:02 -0000
+X-List-Received-Date: Wed, 31 Jul 2013 10:30:56 -0000
 
-Am 31.07.2013 07:00, schrieb Stefan Weil:
-> Shifting a long int (32 bit) by 40 bit positions won't work.
-> Compiler message:
->=20
-> hw/core/qdev-properties.c: In function =E2=80=98print_size=E2=80=99:
-> hw/core/qdev-properties.c:1180:5: warning: left shift count >=3D width =
-of type
->=20
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  hw/core/qdev-properties.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Move qemu-ga build check out of if softmmu.. into if tools section.
+We want to build qemu-ga for _guest_ even if system build isn't
+done.  It is controlled separately using --enable-guest-agent.
 
-Compare rth's patch:
-http://patchwork.ozlabs.org/patch/263513/
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ configure |    8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-Andreas
+diff --git a/configure b/configure
+index f0761ea..0105fd2 100755
+--- a/configure
++++ b/configure
+@@ -3430,6 +3430,9 @@ if test "$want_tools" = "yes" ; then
+   tools="qemu-img\$(EXESUF) qemu-io\$(EXESUF) $tools"
+   if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
+     tools="qemu-nbd\$(EXESUF) $tools"
++    if [ "$guest_agent" = "yes" ]; then
++      tools="qemu-ga\$(EXESUF) $tools"
++    fi
+   fi
+ fi
+ if test "$softmmu" = yes ; then
+@@ -3444,11 +3447,6 @@ if test "$softmmu" = yes ; then
+       virtfs=no
+     fi
+   fi
+-  if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
+-    if [ "$guest_agent" = "yes" ]; then
+-      tools="qemu-ga\$(EXESUF) $tools"
+-    fi
+-  fi
+ fi
+ 
+ # Mac OS X ships with a broken assembler
+-- 
+1.7.10.4
 
->=20
-> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-> index 8d43a8d..e82ab87 100644
-> --- a/hw/core/qdev-properties.c
-> +++ b/hw/core/qdev-properties.c
-> @@ -1177,7 +1177,7 @@ static int print_size(DeviceState *dev, Property =
-*prop, char *dest, size_t len)
->      int i =3D 0;
->      uint64_t div;
-> =20
-> -    for (div =3D (long int)1 << 40; !(*ptr / div) ; div >>=3D 10) {
-> +    for (div =3D 1ULL << 40; !(*ptr / div); div >>=3D 10) {
->          i++;
->      }
->      return snprintf(dest, len, "%0.03f%c", (double)*ptr/div, suffixes[=
-i]);
->=20
-
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
 
