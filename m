@@ -1,55 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V4pwp-0001qw-BE
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Aug 2013 06:17:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39032)
+	id 1V4tVZ-0007Yy-8m
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Aug 2013 10:05:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37518)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1V4pwf-0001eI-Mc
-	for qemu-trivial@nongnu.org; Thu, 01 Aug 2013 06:17:30 -0400
+	(envelope-from <famz@redhat.com>) id 1V4psb-0000Hv-40
+	for qemu-trivial@nongnu.org; Thu, 01 Aug 2013 06:13:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1V4pwX-00071t-8b
-	for qemu-trivial@nongnu.org; Thu, 01 Aug 2013 06:17:21 -0400
-Received: from mail-we0-x22b.google.com ([2a00:1450:400c:c03::22b]:62591)
+	(envelope-from <famz@redhat.com>) id 1V4psU-0005Fm-Tk
+	for qemu-trivial@nongnu.org; Thu, 01 Aug 2013 06:13:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34099)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1V4pPJ-0002oH-0b; Thu, 01 Aug 2013 05:42:53 -0400
-Received: by mail-we0-f171.google.com with SMTP id q55so1499444wes.16
-	for <multiple recipients>; Thu, 01 Aug 2013 02:42:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=28ROo7v9WuZlYMLYd2mCnJjuqbUt4Hb+0vJ9DOgkPnA=;
-	b=Rtrtu+Ic6iVJj+nKBhxmk2laWm3DOl/KD7cknajng3wdK1Bof9mW/1HgKN5eiMO0T9
-	ULJnF+m2cUgtX6qFg92tX9EseFS7Uvvn0hsQChgNcW+JU/24CbcRWwcWi3pdSn1VziPE
-	THb9QZ4qdlQoDoJvKCrBnNd9Ju1iwyN74CWBJDTKPuc+QH/8R7PEojHOhdBbJ34Rk5jS
-	QUQNiSo1r/CCqwsioup36ok6GwNYCMAMeeUSGJVxwCiZ99bxQYbrta1ag/WPnHQilIRX
-	zTEddZ/p/NqXKFzxVJKyPCBWMVwc7lh0DCpdN/qefMcxoiLmiYiUdi6PqKJDhFXbrj1r
-	ieSw==
-X-Received: by 10.194.87.9 with SMTP id t9mr578412wjz.39.1375350172080;
-	Thu, 01 Aug 2013 02:42:52 -0700 (PDT)
-Received: from localhost (178-26-138-183-dynip.superkabel.de. [178.26.138.183])
-	by mx.google.com with ESMTPSA id fs8sm2345610wib.0.2013.08.01.02.42.50
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Thu, 01 Aug 2013 02:42:51 -0700 (PDT)
-Date: Thu, 1 Aug 2013 11:42:49 +0200
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: "Richard W.M. Jones" <rjones@redhat.com>
-Message-ID: <20130801094249.GD29838@stefanha-thinkpad.redhat.com>
-References: <1375305626-26972-1-git-send-email-rjones@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1375305626-26972-1-git-send-email-rjones@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::22b
-Cc: qemu-trivial@nongnu.org, sw@weilnetz.de, qemu-devel@nongnu.org,
-	afaerber@suse.de
-Subject: Re: [Qemu-trivial] [PATCH v3] block/iscsi.c: Fix printf format
-	error.
+	(envelope-from <famz@redhat.com>)
+	id 1V4psE-0005AJ-T6; Thu, 01 Aug 2013 06:12:47 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r71ACijg010506
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Thu, 1 Aug 2013 06:12:45 -0400
+Received: from T430s.nay.redhat.com ([10.66.6.13])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r71ACeVl031219; Thu, 1 Aug 2013 06:12:41 -0400
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Thu,  1 Aug 2013 18:12:17 +0800
+Message-Id: <1375351937-17893-1-git-send-email-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Thu, 01 Aug 2013 10:05:35 -0400
+Cc: Fam Zheng <famz@redhat.com>, mjt@tls.msk.ru
+Subject: [Qemu-trivial] [PATCH] vmdk: fix comment for vmdk_co_write_zeroes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,24 +41,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Aug 2013 10:17:30 -0000
+X-List-Received-Date: Thu, 01 Aug 2013 10:13:17 -0000
 
-On Wed, Jul 31, 2013 at 10:20:26PM +0100, Richard W.M. Jones wrote:
-> From: "Richard W.M. Jones" <rjones@redhat.com>
-> 
-> The error on armv7hl was:
-> 
-> block/iscsi.c: In function ‘is_request_lun_aligned’:
-> block/iscsi.c:251:26: error: format ‘%ld’ expects argument of type ‘long int’, but argument 3 has type ‘int64_t’ [-Werror=format=]
->                           iscsilun->block_size, sector_num, nb_sectors);
->                           ^
-> 
-> This also splits the long line to comply with qemu coding guidelines.
-> 
-> Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
-> ---
->  block/iscsi.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+The comment was truncated. Add the missing parts, especially explain why
+we need zero_dry_run.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Fam Zheng <famz@redhat.com>
+---
+ block/vmdk.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/block/vmdk.c b/block/vmdk.c
+index 3756333..e6c50b1 100644
+--- a/block/vmdk.c
++++ b/block/vmdk.c
+@@ -1200,8 +1200,10 @@ static coroutine_fn int vmdk_co_read(BlockDriverState *bs, int64_t sector_num,
+ /**
+  * vmdk_write:
+  * @zeroed:       buf is ignored (data is zero), use zeroed_grain GTE feature
+- * if possible, otherwise return -ENOTSUP.
+- * @zero_dry_run: used for zeroed == true only, don't update L2 table, just
++ *                if possible, otherwise return -ENOTSUP.
++ * @zero_dry_run: used for zeroed == true only, don't update L2 table, just try
++ *                with each cluster. By dry run we can find if the zero write
++ *                is possible without modifying image data.
+  *
+  * Returns: error code with 0 for success.
+  */
+@@ -1328,6 +1330,8 @@ static int coroutine_fn vmdk_co_write_zeroes(BlockDriverState *bs,
+     int ret;
+     BDRVVmdkState *s = bs->opaque;
+     qemu_co_mutex_lock(&s->lock);
++    /* write zeroes could fail if sectors not aligned to cluster, test it with
++     * dry_run == true before really updating image */
+     ret = vmdk_write(bs, sector_num, NULL, nb_sectors, true, true);
+     if (!ret) {
+         ret = vmdk_write(bs, sector_num, NULL, nb_sectors, true, false);
+-- 
+1.8.3.4
+
 
