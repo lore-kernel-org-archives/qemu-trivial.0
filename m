@@ -1,40 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V5HGI-0007Hr-BY
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 11:27:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55565)
+	id 1V5MnK-00073o-R0
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 17:21:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52612)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1V5HGA-00075s-Nz
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 11:27:25 -0400
+	(envelope-from <chouteau@adacore.com>) id 1V5MnF-0006xG-8y
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 17:21:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1V5HG4-0006Bx-Ba
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 11:27:18 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:50358 helo=mx2.suse.de)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1V5GnW-0004Bs-4s; Fri, 02 Aug 2013 10:57:42 -0400
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 56DE0A51CB;
-	Fri,  2 Aug 2013 16:57:40 +0200 (CEST)
-Message-ID: <51FBC8E0.7070807@suse.de>
-Date: Fri, 02 Aug 2013 16:57:36 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130620 Thunderbird/17.0.7
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1375453248-7178-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<1375453248-7178-2-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1375453248-7178-2-git-send-email-mjt@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.6a1pre
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 1/4] qemu-ga: build it even
-	if !system
+	(envelope-from <chouteau@adacore.com>) id 1V5GXT-0006Kj-Ie
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:41:17 -0400
+Received: from mel.act-europe.fr ([194.98.77.210]:34787
+	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chouteau@adacore.com>)
+	id 1V5En1-00084D-6F; Fri, 02 Aug 2013 08:49:03 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 5EACC2658BBC;
+	Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qCgyw7EndEQk; Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
+Received: from PomPomGalli.act-europe.fr (pompomgalli.act-europe.fr
+	[10.10.1.88])
+	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 4CF242658BB9;
+	Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
+From: Fabien Chouteau <chouteau@adacore.com>
+To: qemu-trivial@nongnu.org
+Date: Fri,  2 Aug 2013 14:48:28 +0200
+Message-Id: <1375447708-14545-2-git-send-email-chouteau@adacore.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1375447708-14545-1-git-send-email-chouteau@adacore.com>
+References: <1375447708-14545-1-git-send-email-chouteau@adacore.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 194.98.77.210
+Cc: qemu-devel@nongnu.org, lcapitulino@redhat.com
+Subject: [Qemu-trivial] [PATCH 2/2] Add ARM registers definitions in Monitor
+	commands
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,62 +47,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Aug 2013 15:27:25 -0000
-
-Am 02.08.2013 16:20, schrieb Michael Tokarev:
-> Move qemu-ga build check out of if softmmu.. into its own section.
-> We want to build qemu-ga for _guest_ even if system build isn't
-> done.  It is controlled separately using --enable-guest-agent.
-> Additionally, give error message if guest agent is requested but
-> not supported.
->=20
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->  configure |   11 ++++++++---
->  1 file changed, 8 insertions(+), 3 deletions(-)
->=20
-> diff --git a/configure b/configure
-> index f0761ea..293f167 100755
-> --- a/configure
-> +++ b/configure
-> @@ -231,7 +231,7 @@ libusb=3D""
->  usb_redir=3D""
->  glx=3D""
->  zlib=3D"yes"
-> -guest_agent=3D"yes"
-> +guest_agent=3D""
->  want_tools=3D"yes"
->  libiscsi=3D""
->  coroutine=3D""
-> @@ -3444,10 +3444,15 @@ if test "$softmmu" =3D yes ; then
->        virtfs=3Dno
->      fi
->    fi
-> +fi
-> +if [ "$guest_agent" !=3D "no" ]; then
->    if [ "$linux" =3D "yes" -o "$bsd" =3D "yes" -o "$solaris" =3D "yes" =
-] ; then
-> -    if [ "$guest_agent" =3D "yes" ]; then
->        tools=3D"qemu-ga\$(EXESUF) $tools"
-> -    fi
-> +      guest_agent=3Dyes
-> +  elif [ "$guest_agent" !=3D yes ]; then
-> +      guest_agent=3Dno
-> +  else
-> +      error_exit "Guest agent is not supported on this platform"
->    fi
->  fi
-
-You are mixing 2- and 4-char indentation here...
-
-Andreas
-
-> =20
->=20
+X-List-Received-Date: Fri, 02 Aug 2013 21:21:54 -0000
 
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
+---
+ monitor.c |   17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/monitor.c b/monitor.c
+index 5dc0aa9..78e93af 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -3167,6 +3167,23 @@ static const MonitorDef monitor_defs[] = {
+     { "cleanwin", offsetof(CPUSPARCState, cleanwin) },
+     { "fprs", offsetof(CPUSPARCState, fprs) },
+ #endif
++#elif defined(TARGET_ARM)
++    { "r0",     offsetof(CPUARMState, regs[0])  },
++    { "r1",     offsetof(CPUARMState, regs[1])  },
++    { "r2",     offsetof(CPUARMState, regs[2])  },
++    { "r3",     offsetof(CPUARMState, regs[3])  },
++    { "r4",     offsetof(CPUARMState, regs[4])  },
++    { "r5",     offsetof(CPUARMState, regs[5])  },
++    { "r6",     offsetof(CPUARMState, regs[6])  },
++    { "r7",     offsetof(CPUARMState, regs[7])  },
++    { "r8",     offsetof(CPUARMState, regs[8])  },
++    { "r9",     offsetof(CPUARMState, regs[9])  },
++    { "r10",    offsetof(CPUARMState, regs[10]) },
++    { "r11",    offsetof(CPUARMState, regs[11]) },
++    { "r12",    offsetof(CPUARMState, regs[12]) },
++    { "r13|sp", offsetof(CPUARMState, regs[13]) },
++    { "r14|lr", offsetof(CPUARMState, regs[14]) },
++    { "r15|pc", offsetof(CPUARMState, regs[15]) },
+ #endif
+     { NULL },
+ };
+-- 
+1.7.9.5
+
 
