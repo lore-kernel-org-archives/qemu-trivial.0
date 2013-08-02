@@ -1,38 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V5GEX-00017c-Ec
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 10:21:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57400)
+	id 1V5GEZ-0001DN-VE
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 10:21:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57425)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V5GEQ-0000uD-UD
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:32 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1V5GET-0000yg-D8
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V5GEL-0007I0-Pi
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:26 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:34034)
+	(envelope-from <mjt@tls.msk.ru>) id 1V5GEO-0007Iv-Oz
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:29 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:50438)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1V5GEB-0007FA-IL; Fri, 02 Aug 2013 10:21:11 -0400
+	id 1V5GEE-0007Fy-8d; Fri, 02 Aug 2013 10:21:14 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id E6C4340422;
-	Fri,  2 Aug 2013 18:21:08 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id A5A0C40424;
+	Fri,  2 Aug 2013 18:21:13 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 85CC14A2;
-	Fri,  2 Aug 2013 18:21:08 +0400 (MSK)
-Received: (nullmailer pid 7219 invoked by uid 1000);
-	Fri, 02 Aug 2013 14:21:07 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 92A604A2;
+	Fri,  2 Aug 2013 18:21:13 +0400 (MSK)
+Received: (nullmailer pid 7225 invoked by uid 1000);
+	Fri, 02 Aug 2013 14:21:12 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri,  2 Aug 2013 18:20:44 +0400
-Message-Id: <1375453248-7178-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri,  2 Aug 2013 18:20:46 +0400
+Message-Id: <1375453248-7178-3-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1375453248-7178-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1375453248-7178-1-git-send-email-mjt@msgid.tls.msk.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 0/4] trivial patches for 2013-08-02
+	"Richard W.M. Jones" <rjones@redhat.com>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 2/4] block/iscsi.c: Fix printf format error.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,39 +46,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Aug 2013 14:21:32 -0000
+X-List-Received-Date: Fri, 02 Aug 2013 14:21:34 -0000
 
-The following changes since commit 2ddc463725d0fa24e0910fba77fef2777fa94a=
-74:
+From: "Richard W.M. Jones" <rjones@redhat.com>
 
-  Merge remote-tracking branch 'afaerber/tags/qom-cpu-for-anthony' into s=
-taging (2013-08-01 17:09:35 -0500)
+The error on armv7hl was:
 
-are available in the git repository at:
+block/iscsi.c: In function =E2=80=98is_request_lun_aligned=E2=80=99:
+block/iscsi.c:251:26: error: format =E2=80=98%ld=E2=80=99 expects argumen=
+t of type =E2=80=98long int=E2=80=99, but argument 3 has type =E2=80=98in=
+t64_t=E2=80=99 [-Werror=3Dformat=3D]
+                          iscsilun->block_size, sector_num, nb_sectors);
+                          ^
 
-  git://git.corpit.ru/qemu.git trivial-patches
+This also splits the long line to comply with qemu coding guidelines.
 
-for you to fetch changes up to 8e50724313895a87057cc243ad805f2eb21feb9f:
-
-  vmdk: fix comment for vmdk_co_write_zeroes (2013-08-02 18:07:04 +0400)
-
-----------------------------------------------------------------
-Fam Zheng (1):
-      vmdk: fix comment for vmdk_co_write_zeroes
-
-Michael S. Tsirkin (1):
-      memory.c: drop kvm.h dependency
-
-Michael Tokarev (1):
-      qemu-ga: build it even if !system
-
-Richard W.M. Jones (1):
-      block/iscsi.c: Fix printf format error.
-
+Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
  block/iscsi.c |    4 +++-
- block/vmdk.c  |    8 ++++++--
- configure     |   11 ++++++++---
- memory.c      |    1 -
- 4 files changed, 17 insertions(+), 7 deletions(-)
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/block/iscsi.c b/block/iscsi.c
+index 5f28c6a..e7c1c2b 100644
+--- a/block/iscsi.c
++++ b/block/iscsi.c
+@@ -247,7 +247,9 @@ static bool is_request_lun_aligned(int64_t sector_num=
+, int nb_sectors,
+ {
+     if ((sector_num * BDRV_SECTOR_SIZE) % iscsilun->block_size ||
+         (nb_sectors * BDRV_SECTOR_SIZE) % iscsilun->block_size) {
+-            error_report("iSCSI misaligned request: iscsilun->block_size=
+ %u, sector_num %ld, nb_sectors %d",
++            error_report("iSCSI misaligned request: "
++                         "iscsilun->block_size %u, sector_num %" PRIi64
++                         ", nb_sectors %d",
+                          iscsilun->block_size, sector_num, nb_sectors);
+             return 0;
+     }
+--=20
+1.7.10.4
 
 
