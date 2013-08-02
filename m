@@ -1,41 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V5MnK-00073o-R0
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 17:21:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52612)
+	id 1V5Ms6-0001v7-8A
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 17:26:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55229)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1V5MnF-0006xG-8y
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 17:21:54 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1V5Mrz-0001u1-5B
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 17:26:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1V5GXT-0006Kj-Ie
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:41:17 -0400
-Received: from mel.act-europe.fr ([194.98.77.210]:34787
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1V5En1-00084D-6F; Fri, 02 Aug 2013 08:49:03 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 5EACC2658BBC;
-	Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qCgyw7EndEQk; Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
-Received: from PomPomGalli.act-europe.fr (pompomgalli.act-europe.fr
-	[10.10.1.88])
-	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 4CF242658BB9;
-	Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
-From: Fabien Chouteau <chouteau@adacore.com>
-To: qemu-trivial@nongnu.org
-Date: Fri,  2 Aug 2013 14:48:28 +0200
-Message-Id: <1375447708-14545-2-git-send-email-chouteau@adacore.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1375447708-14545-1-git-send-email-chouteau@adacore.com>
-References: <1375447708-14545-1-git-send-email-chouteau@adacore.com>
+	(envelope-from <mjt@tls.msk.ru>) id 1V5G1h-0002Pz-6q
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:08:23 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60422)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1V5G1Z-0002OH-JI; Fri, 02 Aug 2013 10:08:09 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 03AEF40414;
+	Fri,  2 Aug 2013 18:08:09 +0400 (MSK)
+Message-ID: <51FBBD48.4030309@msgid.tls.msk.ru>
+Date: Fri, 02 Aug 2013 18:08:08 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130704 Icedove/17.0.7
+MIME-Version: 1.0
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <20130801075529.GA3177@redhat.com>
+	<1891063913.8014575.1375346398856.JavaMail.root@redhat.com>
+In-Reply-To: <1891063913.8014575.1375346398856.JavaMail.root@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 194.98.77.210
-Cc: qemu-devel@nongnu.org, lcapitulino@redhat.com
-Subject: [Qemu-trivial] [PATCH 2/2] Add ARM registers definitions in Monitor
-	commands
+X-Received-From: 86.62.121.231
+Cc: Anthony Liguori <aliguori@us.ibm.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+	Jan Kiszka <jan.kiszka@siemens.com>, qemu-devel@nongnu.org,
+	Avi Kivity <avi.kivity@gmail.com>, Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH] memory.c: drop kvm.h dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,43 +46,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Aug 2013 21:21:54 -0000
+X-List-Received-Date: Fri, 02 Aug 2013 21:26:49 -0000
 
+01.08.2013 12:39, Paolo Bonzini wrote:
+>> memory.c does not use any kvm specific interfaces,
+>> don't include kvm.h
 
-Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
----
- monitor.c |   17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+Thanks, applied to the trivial patches queue.
 
-diff --git a/monitor.c b/monitor.c
-index 5dc0aa9..78e93af 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -3167,6 +3167,23 @@ static const MonitorDef monitor_defs[] = {
-     { "cleanwin", offsetof(CPUSPARCState, cleanwin) },
-     { "fprs", offsetof(CPUSPARCState, fprs) },
- #endif
-+#elif defined(TARGET_ARM)
-+    { "r0",     offsetof(CPUARMState, regs[0])  },
-+    { "r1",     offsetof(CPUARMState, regs[1])  },
-+    { "r2",     offsetof(CPUARMState, regs[2])  },
-+    { "r3",     offsetof(CPUARMState, regs[3])  },
-+    { "r4",     offsetof(CPUARMState, regs[4])  },
-+    { "r5",     offsetof(CPUARMState, regs[5])  },
-+    { "r6",     offsetof(CPUARMState, regs[6])  },
-+    { "r7",     offsetof(CPUARMState, regs[7])  },
-+    { "r8",     offsetof(CPUARMState, regs[8])  },
-+    { "r9",     offsetof(CPUARMState, regs[9])  },
-+    { "r10",    offsetof(CPUARMState, regs[10]) },
-+    { "r11",    offsetof(CPUARMState, regs[11]) },
-+    { "r12",    offsetof(CPUARMState, regs[12]) },
-+    { "r13|sp", offsetof(CPUARMState, regs[13]) },
-+    { "r14|lr", offsetof(CPUARMState, regs[14]) },
-+    { "r15|pc", offsetof(CPUARMState, regs[15]) },
- #endif
-     { NULL },
- };
--- 
-1.7.9.5
+/mjt
 
 
