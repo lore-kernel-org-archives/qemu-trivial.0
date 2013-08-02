@@ -1,40 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V5Ms6-0001v7-8A
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 17:26:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55229)
+	id 1V5Mv5-0003jP-S8
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 17:29:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56999)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V5Mrz-0001u1-5B
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 17:26:49 -0400
+	(envelope-from <chouteau@adacore.com>) id 1V5Mv0-0003aq-0F
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 17:29:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V5G1h-0002Pz-6q
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:08:23 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:60422)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1V5G1Z-0002OH-JI; Fri, 02 Aug 2013 10:08:09 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 03AEF40414;
-	Fri,  2 Aug 2013 18:08:09 +0400 (MSK)
-Message-ID: <51FBBD48.4030309@msgid.tls.msk.ru>
-Date: Fri, 02 Aug 2013 18:08:08 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130704 Icedove/17.0.7
-MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <20130801075529.GA3177@redhat.com>
-	<1891063913.8014575.1375346398856.JavaMail.root@redhat.com>
-In-Reply-To: <1891063913.8014575.1375346398856.JavaMail.root@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+	(envelope-from <chouteau@adacore.com>) id 1V5EqW-00012B-9f
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 08:52:44 -0400
+Received: from mel.act-europe.fr ([194.98.77.210]:34786
+	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chouteau@adacore.com>)
+	id 1V5En1-00084C-6J; Fri, 02 Aug 2013 08:49:03 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 5CDB02658BBA;
+	Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pieuOLxekvMx; Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
+Received: from PomPomGalli.act-europe.fr (pompomgalli.act-europe.fr
+	[10.10.1.88])
+	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id F3F4E2658B96;
+	Fri,  2 Aug 2013 14:48:31 +0200 (CEST)
+From: Fabien Chouteau <chouteau@adacore.com>
+To: qemu-trivial@nongnu.org
+Date: Fri,  2 Aug 2013 14:48:27 +0200
+Message-Id: <1375447708-14545-1-git-send-email-chouteau@adacore.com>
+X-Mailer: git-send-email 1.7.9.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: Anthony Liguori <aliguori@us.ibm.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	Jan Kiszka <jan.kiszka@siemens.com>, qemu-devel@nongnu.org,
-	Avi Kivity <avi.kivity@gmail.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] memory.c: drop kvm.h dependency
+X-Received-From: 194.98.77.210
+Cc: qemu-devel@nongnu.org, lcapitulino@redhat.com
+Subject: [Qemu-trivial] [PATCH 1/2] Improve Monitor disas with symbol lookup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,14 +44,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Aug 2013 21:26:49 -0000
+X-List-Received-Date: Fri, 02 Aug 2013 21:29:54 -0000
 
-01.08.2013 12:39, Paolo Bonzini wrote:
->> memory.c does not use any kvm specific interfaces,
->> don't include kvm.h
+Part of M731-018.
 
-Thanks, applied to the trivial patches queue.
+Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
+---
+ disas.c |   16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
 
-/mjt
+diff --git a/disas.c b/disas.c
+index 71007fb..3ffb3ae 100644
+--- a/disas.c
++++ b/disas.c
+@@ -480,11 +480,19 @@ void monitor_disas(Monitor *mon, CPUArchState *env,
+ #endif
+ 
+     for(i = 0; i < nb_insn; i++) {
+-	monitor_printf(mon, "0x" TARGET_FMT_lx ":  ", pc);
++        const char *sym = lookup_symbol(pc);
++
++        monitor_printf(mon, "0x" TARGET_FMT_lx " ", pc);
++        if (sym[0] != '\0') {
++            monitor_printf(mon, "<%s>:  ", sym);
++        } else {
++            monitor_printf(mon, ":  ");
++        }
+         count = print_insn(pc, &s.info);
+-	monitor_printf(mon, "\n");
+-	if (count < 0)
+-	    break;
++        monitor_printf(mon, "\n");
++        if (count < 0) {
++            break;
++        }
+         pc += count;
+     }
+ }
+-- 
+1.7.9.5
 
 
