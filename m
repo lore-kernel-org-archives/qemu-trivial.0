@@ -1,37 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V5GEZ-0001D8-J8
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 10:21:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57418)
+	id 1V5HGI-0007Hr-BY
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 11:27:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55565)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V5GES-0000y0-RR
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:33 -0400
+	(envelope-from <afaerber@suse.de>) id 1V5HGA-00075s-Nz
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 11:27:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V5GEN-0007If-TF
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:28 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:34134)
+	(envelope-from <afaerber@suse.de>) id 1V5HG4-0006Bx-Ba
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 11:27:18 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:50358 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1V5GED-0007Fu-Oz; Fri, 02 Aug 2013 10:21:13 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2DDCD40422;
-	Fri,  2 Aug 2013 18:21:13 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1E93D4A2;
-	Fri,  2 Aug 2013 18:21:13 +0400 (MSK)
-Received: (nullmailer pid 7222 invoked by uid 1000);
-	Fri, 02 Aug 2013 14:21:12 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri,  2 Aug 2013 18:20:45 +0400
-Message-Id: <1375453248-7178-2-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1375453248-7178-1-git-send-email-mjt@msgid.tls.msk.ru>
+	(envelope-from <afaerber@suse.de>)
+	id 1V5GnW-0004Bs-4s; Fri, 02 Aug 2013 10:57:42 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 56DE0A51CB;
+	Fri,  2 Aug 2013 16:57:40 +0200 (CEST)
+Message-ID: <51FBC8E0.7070807@suse.de>
+Date: Fri, 02 Aug 2013 16:57:36 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130620 Thunderbird/17.0.7
+MIME-Version: 1.0
+To: Michael Tokarev <mjt@tls.msk.ru>
 References: <1375453248-7178-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	<1375453248-7178-2-git-send-email-mjt@msgid.tls.msk.ru>
+In-Reply-To: <1375453248-7178-2-git-send-email-mjt@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.6a1pre
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
 	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 1/4] qemu-ga: build it even if !system
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 1/4] qemu-ga: build it even
+	if !system
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,51 +46,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Aug 2013 14:21:34 -0000
+X-List-Received-Date: Fri, 02 Aug 2013 15:27:25 -0000
 
-Move qemu-ga build check out of if softmmu.. into its own section.
-We want to build qemu-ga for _guest_ even if system build isn't
-done.  It is controlled separately using --enable-guest-agent.
-Additionally, give error message if guest agent is requested but
-not supported.
+Am 02.08.2013 16:20, schrieb Michael Tokarev:
+> Move qemu-ga build check out of if softmmu.. into its own section.
+> We want to build qemu-ga for _guest_ even if system build isn't
+> done.  It is controlled separately using --enable-guest-agent.
+> Additionally, give error message if guest agent is requested but
+> not supported.
+>=20
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  configure |   11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/configure b/configure
+> index f0761ea..293f167 100755
+> --- a/configure
+> +++ b/configure
+> @@ -231,7 +231,7 @@ libusb=3D""
+>  usb_redir=3D""
+>  glx=3D""
+>  zlib=3D"yes"
+> -guest_agent=3D"yes"
+> +guest_agent=3D""
+>  want_tools=3D"yes"
+>  libiscsi=3D""
+>  coroutine=3D""
+> @@ -3444,10 +3444,15 @@ if test "$softmmu" =3D yes ; then
+>        virtfs=3Dno
+>      fi
+>    fi
+> +fi
+> +if [ "$guest_agent" !=3D "no" ]; then
+>    if [ "$linux" =3D "yes" -o "$bsd" =3D "yes" -o "$solaris" =3D "yes" =
+] ; then
+> -    if [ "$guest_agent" =3D "yes" ]; then
+>        tools=3D"qemu-ga\$(EXESUF) $tools"
+> -    fi
+> +      guest_agent=3Dyes
+> +  elif [ "$guest_agent" !=3D yes ]; then
+> +      guest_agent=3Dno
+> +  else
+> +      error_exit "Guest agent is not supported on this platform"
+>    fi
+>  fi
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- configure |   11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+You are mixing 2- and 4-char indentation here...
 
-diff --git a/configure b/configure
-index f0761ea..293f167 100755
---- a/configure
-+++ b/configure
-@@ -231,7 +231,7 @@ libusb=""
- usb_redir=""
- glx=""
- zlib="yes"
--guest_agent="yes"
-+guest_agent=""
- want_tools="yes"
- libiscsi=""
- coroutine=""
-@@ -3444,10 +3444,15 @@ if test "$softmmu" = yes ; then
-       virtfs=no
-     fi
-   fi
-+fi
-+if [ "$guest_agent" != "no" ]; then
-   if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
--    if [ "$guest_agent" = "yes" ]; then
-       tools="qemu-ga\$(EXESUF) $tools"
--    fi
-+      guest_agent=yes
-+  elif [ "$guest_agent" != yes ]; then
-+      guest_agent=no
-+  else
-+      error_exit "Guest agent is not supported on this platform"
-   fi
- fi
- 
--- 
-1.7.10.4
+Andreas
 
+> =20
+>=20
+
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
