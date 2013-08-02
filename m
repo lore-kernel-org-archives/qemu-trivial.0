@@ -1,55 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V5EZo-0006y3-Ji
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 08:35:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45189)
+	id 1V5G1Q-0004xW-W0
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 10:08:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51991)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1V5EZX-0006s4-Va
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 08:35:23 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1V5G1J-0004mt-EK
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:07:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1V5EZO-00037d-B0
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 08:35:07 -0400
-Received: from e32.co.us.ibm.com ([32.97.110.150]:53237)
+	(envelope-from <mjt@tls.msk.ru>) id 1V5G1D-0002HJ-Fh
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:07:53 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:45394)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aliguori@us.ibm.com>) id 1V5EZO-000376-3y
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 08:34:58 -0400
-Received: from /spool/local
-	by e32.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aliguori@us.ibm.com>;
-	Fri, 2 Aug 2013 06:34:55 -0600
-Received: from d03dlp01.boulder.ibm.com (9.17.202.177)
-	by e32.co.us.ibm.com (192.168.1.132) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 2 Aug 2013 06:34:53 -0600
-Received: from d03relay04.boulder.ibm.com (d03relay04.boulder.ibm.com
-	[9.17.195.106])
-	by d03dlp01.boulder.ibm.com (Postfix) with ESMTP id D08B41FF0055;
-	Fri,  2 Aug 2013 06:29:28 -0600 (MDT)
-Received: from d03av06.boulder.ibm.com (d03av06.boulder.ibm.com [9.17.195.245])
-	by d03relay04.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r72CYqk0285166; Fri, 2 Aug 2013 06:34:52 -0600
-Received: from d03av06.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id r72CbYTs025333; Fri, 2 Aug 2013 06:37:34 -0600
-Received: from localhost6.localdomain6 ([9.49.221.255])
-	by d03av06.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r72CbPfq025068; Fri, 2 Aug 2013 06:37:27 -0600
-Message-Id: <201308021237.r72CbPfq025068@d03av06.boulder.ibm.com>
-From: Anthony Liguori <aliguori@us.ibm.com>
-To: Stefan Weil <sw@weilnetz.de>, qemu-trivial <qemu-trivial@nongnu.org>,
-	Stefan Weil <sw@weilnetz.de>
-In-Reply-To: <1375216883-23969-1-git-send-email-sw@weilnetz.de>
-Date: Fri, 02 Aug 2013 12:34:42 -0000
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13080212-5406-0000-0000-00000B06FE92
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.110.150
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel <qemu-devel@nongnu.org>,
-	Marcel Apfelbaum <marcel.a@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH for 1.6] tci: Fix broken build (compiler
- warning caused by redefined macro BIT)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1V5G11-0002BC-9k; Fri, 02 Aug 2013 10:07:35 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 6459A40414;
+	Fri,  2 Aug 2013 18:07:24 +0400 (MSK)
+Message-ID: <51FBBD1B.4010108@msgid.tls.msk.ru>
+Date: Fri, 02 Aug 2013 18:07:23 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130704 Icedove/17.0.7
+MIME-Version: 1.0
+To: Fam Zheng <famz@redhat.com>
+References: <1375351937-17893-1-git-send-email-famz@redhat.com>
+In-Reply-To: <1375351937-17893-1-git-send-email-famz@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] vmdk: fix comment for
+	vmdk_co_write_zeroes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,12 +43,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Aug 2013 12:35:23 -0000
+X-List-Received-Date: Fri, 02 Aug 2013 14:07:59 -0000
 
-Applied.  Thanks.
+01.08.2013 14:12, Fam Zheng wrote:
+> The comment was truncated. Add the missing parts, especially explain why
+> we need zero_dry_run.
+>
 
-Regards,
+Thanks, applied to the trivial patches queue.
 
-Anthony Liguori
-
+/mjt
 
