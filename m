@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V5GEd-0001KU-C1
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 10:21:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57473)
+	id 1V5GEZ-0001D8-J8
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 10:21:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57418)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V5GEV-00014j-Tr
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:37 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1V5GES-0000y0-RR
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V5GEQ-0007JK-Pv
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:31 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:41935)
+	(envelope-from <mjt@tls.msk.ru>) id 1V5GEN-0007If-TF
+	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 10:21:28 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:34134)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1V5GEF-0007GL-0N; Fri, 02 Aug 2013 10:21:15 -0400
+	id 1V5GED-0007Fu-Oz; Fri, 02 Aug 2013 10:21:13 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 6CFF040425;
-	Fri,  2 Aug 2013 18:21:14 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 2DDCD40422;
+	Fri,  2 Aug 2013 18:21:13 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 5D2924DA;
-	Fri,  2 Aug 2013 18:21:14 +0400 (MSK)
-Received: (nullmailer pid 7231 invoked by uid 1000);
-	Fri, 02 Aug 2013 14:21:13 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 1E93D4A2;
+	Fri,  2 Aug 2013 18:21:13 +0400 (MSK)
+Received: (nullmailer pid 7222 invoked by uid 1000);
+	Fri, 02 Aug 2013 14:21:12 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Anthony Liguori <aliguori@us.ibm.com>
-Date: Fri,  2 Aug 2013 18:20:48 +0400
-Message-Id: <1375453248-7178-5-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri,  2 Aug 2013 18:20:45 +0400
+Message-Id: <1375453248-7178-2-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1375453248-7178-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1375453248-7178-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 4/4] vmdk: fix comment for vmdk_co_write_zeroes
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 1/4] qemu-ga: build it even if !system
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,45 +43,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Aug 2013 14:21:37 -0000
+X-List-Received-Date: Fri, 02 Aug 2013 14:21:34 -0000
 
-From: Fam Zheng <famz@redhat.com>
+Move qemu-ga build check out of if softmmu.. into its own section.
+We want to build qemu-ga for _guest_ even if system build isn't
+done.  It is controlled separately using --enable-guest-agent.
+Additionally, give error message if guest agent is requested but
+not supported.
 
-The comment was truncated. Add the missing parts, especially explain why
-we need zero_dry_run.
-
-Signed-off-by: Fam Zheng <famz@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- block/vmdk.c |    8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ configure |   11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-diff --git a/block/vmdk.c b/block/vmdk.c
-index 3756333..e6c50b1 100644
---- a/block/vmdk.c
-+++ b/block/vmdk.c
-@@ -1200,8 +1200,10 @@ static coroutine_fn int vmdk_co_read(BlockDriverState *bs, int64_t sector_num,
- /**
-  * vmdk_write:
-  * @zeroed:       buf is ignored (data is zero), use zeroed_grain GTE feature
-- * if possible, otherwise return -ENOTSUP.
-- * @zero_dry_run: used for zeroed == true only, don't update L2 table, just
-+ *                if possible, otherwise return -ENOTSUP.
-+ * @zero_dry_run: used for zeroed == true only, don't update L2 table, just try
-+ *                with each cluster. By dry run we can find if the zero write
-+ *                is possible without modifying image data.
-  *
-  * Returns: error code with 0 for success.
-  */
-@@ -1328,6 +1330,8 @@ static int coroutine_fn vmdk_co_write_zeroes(BlockDriverState *bs,
-     int ret;
-     BDRVVmdkState *s = bs->opaque;
-     qemu_co_mutex_lock(&s->lock);
-+    /* write zeroes could fail if sectors not aligned to cluster, test it with
-+     * dry_run == true before really updating image */
-     ret = vmdk_write(bs, sector_num, NULL, nb_sectors, true, true);
-     if (!ret) {
-         ret = vmdk_write(bs, sector_num, NULL, nb_sectors, true, false);
+diff --git a/configure b/configure
+index f0761ea..293f167 100755
+--- a/configure
++++ b/configure
+@@ -231,7 +231,7 @@ libusb=""
+ usb_redir=""
+ glx=""
+ zlib="yes"
+-guest_agent="yes"
++guest_agent=""
+ want_tools="yes"
+ libiscsi=""
+ coroutine=""
+@@ -3444,10 +3444,15 @@ if test "$softmmu" = yes ; then
+       virtfs=no
+     fi
+   fi
++fi
++if [ "$guest_agent" != "no" ]; then
+   if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
+-    if [ "$guest_agent" = "yes" ]; then
+       tools="qemu-ga\$(EXESUF) $tools"
+-    fi
++      guest_agent=yes
++  elif [ "$guest_agent" != yes ]; then
++      guest_agent=no
++  else
++      error_exit "Guest agent is not supported on this platform"
+   fi
+ fi
+ 
 -- 
 1.7.10.4
 
