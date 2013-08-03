@@ -1,38 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V5Mv5-0003jP-S8
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Aug 2013 17:29:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56999)
+	id 1V5kuk-0006TS-QG
+	for mharc-qemu-trivial@gnu.org; Sat, 03 Aug 2013 19:07:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41559)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1V5Mv0-0003aq-0F
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 17:29:54 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1V5kue-0006Sw-TN
+	for qemu-trivial@nongnu.org; Sat, 03 Aug 2013 19:07:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1V5EqW-00012B-9f
-	for qemu-trivial@nongnu.org; Fri, 02 Aug 2013 08:52:44 -0400
-Received: from mel.act-europe.fr ([194.98.77.210]:34786
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1V5En1-00084C-6J; Fri, 02 Aug 2013 08:49:03 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 5CDB02658BBA;
-	Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pieuOLxekvMx; Fri,  2 Aug 2013 14:48:32 +0200 (CEST)
-Received: from PomPomGalli.act-europe.fr (pompomgalli.act-europe.fr
-	[10.10.1.88])
-	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id F3F4E2658B96;
-	Fri,  2 Aug 2013 14:48:31 +0200 (CEST)
-From: Fabien Chouteau <chouteau@adacore.com>
-To: qemu-trivial@nongnu.org
-Date: Fri,  2 Aug 2013 14:48:27 +0200
-Message-Id: <1375447708-14545-1-git-send-email-chouteau@adacore.com>
-X-Mailer: git-send-email 1.7.9.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 194.98.77.210
-Cc: qemu-devel@nongnu.org, lcapitulino@redhat.com
-Subject: [Qemu-trivial] [PATCH 1/2] Improve Monitor disas with symbol lookup
+	(envelope-from <peter.maydell@linaro.org>) id 1V5kuZ-0000fY-U0
+	for qemu-trivial@nongnu.org; Sat, 03 Aug 2013 19:07:04 -0400
+Received: from mail-lb0-f182.google.com ([209.85.217.182]:33354)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1V5kuZ-0000fM-Nt
+	for qemu-trivial@nongnu.org; Sat, 03 Aug 2013 19:06:59 -0400
+Received: by mail-lb0-f182.google.com with SMTP id v20so1239041lbc.41
+	for <qemu-trivial@nongnu.org>; Sat, 03 Aug 2013 16:06:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=JOxz9+r6ioCFryiAESHPJs2J3/yMHdINOLAAkQa6xdo=;
+	b=bMwwcbJjS4IOBQRC6GQQxMB+0RZsaFP9cWPyWw3Ekm4vNgvsNj2DYkq+XVQ3g1NyRR
+	2TMPS2dXprZcBAdoKjYMaY+fMlvIpgxkEDGUR/4XF7oxwsStXauJM1goa/cG7gfJbWEY
+	qNotAjhggYiSGm/hzmTDuGObxstD29ACJlIqnEnlPTX5VcunRMt5yzeinuBzv5S3resV
+	ZOMvQ9LobbhRvklFk+PglSg2mdm4O5/lg+O7X+0XNQiL2CI1Ty1/egHa+iW7ihkk2TaU
+	HL9pOSVUDfiwn4hP07ANAm473GzWlM3d227yrHRMdnUy+Jbd62vQ3DxMHu5Eht5XvsWC
+	Hk8A==
+X-Received: by 10.152.22.65 with SMTP id b1mr5568516laf.46.1375571218835; Sat,
+	03 Aug 2013 16:06:58 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.13.2 with HTTP; Sat, 3 Aug 2013 16:06:37 -0700 (PDT)
+In-Reply-To: <CAKyx-3MMkqKw3GXxSR=NizeBHhE+pYyONUX+0mtOgu5h3kix9g@mail.gmail.com>
+References: <CAKyx-3MMkqKw3GXxSR=NizeBHhE+pYyONUX+0mtOgu5h3kix9g@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 4 Aug 2013 00:06:37 +0100
+Message-ID: <CAFEAcA8VPg-WDf+Xf3j=7Q--NJgc1+2n6zg6M=pX+idkA-zyEw@mail.gmail.com>
+To: G 3 <programmingkidx@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQlf2Z29pITAKK60fH1/5daF+KJBfiaCJPSgJkPpodNAvH358IN0pMJ/TIfVa/QCHdo6QLsW
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.182
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, afaerber@suse.de,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Adds the ability to use
+ the command key in the guest operating system.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,44 +55,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Aug 2013 21:29:54 -0000
+X-List-Received-Date: Sat, 03 Aug 2013 23:07:09 -0000
 
-Part of M731-018.
+On 3 August 2013 23:52, G 3 <programmingkidx@gmail.com> wrote:
+> This patch adds the ability to use the command key in the guest
+>  operating system. Just add -command-key 55 to the command line
+>  options sent to QEMU to use this feature.
+>
+> I have checked the patch by sending it thru checkpatch.pl this time. I also
+> made a bunch of style changes to more closely match QEMU's suggested coding
+> style.
+>
+> signed-off-by: John Arbuckle <programmingkidx@gmail.com>
+>
+> ---
+>  ui/cocoa.m |  114
+> ++++++++++++++++++++++++++++++++++++++++++++++++++++++-----
+>  1 files changed, 104 insertions(+), 10 deletions(-)
 
-Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
----
- disas.c |   16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+This definitely isn't "trivial".
 
-diff --git a/disas.c b/disas.c
-index 71007fb..3ffb3ae 100644
---- a/disas.c
-+++ b/disas.c
-@@ -480,11 +480,19 @@ void monitor_disas(Monitor *mon, CPUArchState *env,
- #endif
- 
-     for(i = 0; i < nb_insn; i++) {
--	monitor_printf(mon, "0x" TARGET_FMT_lx ":  ", pc);
-+        const char *sym = lookup_symbol(pc);
-+
-+        monitor_printf(mon, "0x" TARGET_FMT_lx " ", pc);
-+        if (sym[0] != '\0') {
-+            monitor_printf(mon, "<%s>:  ", sym);
-+        } else {
-+            monitor_printf(mon, ":  ");
-+        }
-         count = print_insn(pc, &s.info);
--	monitor_printf(mon, "\n");
--	if (count < 0)
--	    break;
-+        monitor_printf(mon, "\n");
-+        if (count < 0) {
-+            break;
-+        }
-         pc += count;
-     }
- }
--- 
-1.7.9.5
+I'm also really unconvinced that this is the right way to handle
+this: adding a new cocoa-UI-only command line option which takes
+a magic number looks very odd.
 
+thanks
+-- PMM
 
