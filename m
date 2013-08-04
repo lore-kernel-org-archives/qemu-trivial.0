@@ -1,55 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V5lUC-0007XB-Tm
-	for mharc-qemu-trivial@gnu.org; Sat, 03 Aug 2013 19:43:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47468)
+	id 1V5unJ-0003Lb-Vl
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Aug 2013 05:40:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58958)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <programmingkidx@gmail.com>) id 1V5lU5-0007Wx-DJ
-	for qemu-trivial@nongnu.org; Sat, 03 Aug 2013 19:43:46 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1V5unD-0003DW-MA
+	for qemu-trivial@nongnu.org; Sun, 04 Aug 2013 05:40:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <programmingkidx@gmail.com>) id 1V5lTz-0003vD-LX
-	for qemu-trivial@nongnu.org; Sat, 03 Aug 2013 19:43:41 -0400
-Received: from mail-qe0-x22d.google.com ([2607:f8b0:400d:c02::22d]:65330)
+	(envelope-from <peter.maydell@linaro.org>) id 1V5un2-0006Xz-Va
+	for qemu-trivial@nongnu.org; Sun, 04 Aug 2013 05:40:03 -0400
+Received: from mail-la0-f48.google.com ([209.85.215.48]:32937)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <programmingkidx@gmail.com>)
-	id 1V5lTo-0003tK-F6; Sat, 03 Aug 2013 19:43:24 -0400
-Received: by mail-qe0-f45.google.com with SMTP id x7so1069384qeu.18
-	for <multiple recipients>; Sat, 03 Aug 2013 16:43:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:mime-version:content-type:from:in-reply-to:date:cc
-	:content-transfer-encoding:message-id:references:to:x-mailer;
-	bh=H5M9iT3Hmsf6OtoDyjNFPFJmGSBBmWzEOLqYMNHhZ0Q=;
-	b=ePV3jIJ+goJ8SHhj09EhSn5fYWhvp4DuIJVj2SNLeuyouac3l6XhDaSZPChxcOOehj
-	OJ0AVtaHEZZU2BDXpl892Pv8tR8JV7RkZpUz7bQuI2iGRPvrtKoYxsctZjuwJyfCdyAu
-	L0KEqNjhYRibjIsnrk0vXoQhwSzOqywIS76vkWfHpyEAuPQZ5gqF8sWCUsw77c+Rv+ED
-	f5IZ+mIII8tkw32AzDvxL6qXWjB/UUK9lykAhoUPUxnt7BOERdkb55M7YG7REl+W+b4r
-	2racYk9A+XjCJFMtDr7szIS7y4cSJjz2zbsJpgWPLwjprnBZKMtcNtaNKhspAg9UWmOO
-	dytQ==
-X-Received: by 10.224.50.204 with SMTP id a12mr20223349qag.17.1375573403823;
-	Sat, 03 Aug 2013 16:43:23 -0700 (PDT)
-Received: from [192.168.0.2] (d14-69-153-26.try.wideopenwest.com.
-	[69.14.26.153])
-	by mx.google.com with ESMTPSA id d1sm7059711qag.6.2013.08.03.16.43.22
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sat, 03 Aug 2013 16:43:23 -0700 (PDT)
-Mime-Version: 1.0 (Apple Message framework v1084)
-Content-Type: text/plain; charset=us-ascii
-From: Programmingkid <programmingkidx@gmail.com>
-In-Reply-To: <CAFEAcA8VPg-WDf+Xf3j=7Q--NJgc1+2n6zg6M=pX+idkA-zyEw@mail.gmail.com>
-Date: Sat, 3 Aug 2013 19:43:21 -0400
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <358B0F62-7043-432E-8B49-F95CD1B82443@gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1V5un2-0006Xc-Oc
+	for qemu-trivial@nongnu.org; Sun, 04 Aug 2013 05:39:52 -0400
+Received: by mail-la0-f48.google.com with SMTP id hi8so1355837lab.21
+	for <qemu-trivial@nongnu.org>; Sun, 04 Aug 2013 02:39:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=google.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:x-gm-message-state;
+	bh=ZAsctjx7wIIv5d5+9R9DoIpL5ylEz2BKh6+qR1ea26Y=;
+	b=nvE91Z40QRpPhq6jpn70/fIgL6uxFa/c6SUQOnFabFkcw2rMGEUJmnvIqZUJ2rNGFG
+	zrlSXwB5aRW5L8wIgWSPjPAh5PDvxe2ck2Zkjo1WA2Zp23+bFNEM7KKJnuVdMeMHsm8P
+	dhEBh5dWceFE/lmIH/B3dv2fSvPApSqrgf66ESv5YdFtlIOPcTJLmhRFtAMs+JCLDit6
+	mhFcCpWDbQsROIkOQ11w9DVWinlBtDY7cbQMl68/agXrwWy/Odld6gn0vFBh40rpd3Ko
+	ZGyKCYKs6MCNW3V6h6qdrW/BMumLO8vdjskCOQxOv0evE2+FRiTFSnp/0xzGqGppygX+
+	0ZPQ==
+X-Received: by 10.152.22.65 with SMTP id b1mr6242855laf.46.1375609191304; Sun,
+	04 Aug 2013 02:39:51 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.13.2 with HTTP; Sun, 4 Aug 2013 02:39:31 -0700 (PDT)
+In-Reply-To: <358B0F62-7043-432E-8B49-F95CD1B82443@gmail.com>
 References: <CAKyx-3MMkqKw3GXxSR=NizeBHhE+pYyONUX+0mtOgu5h3kix9g@mail.gmail.com>
 	<CAFEAcA8VPg-WDf+Xf3j=7Q--NJgc1+2n6zg6M=pX+idkA-zyEw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.1084)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c02::22d
+	<358B0F62-7043-432E-8B49-F95CD1B82443@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 4 Aug 2013 10:39:31 +0100
+Message-ID: <CAFEAcA8Gh+jys24Ejjp+6ccTxQFhmvdhmfvzEO_B04yzredL=A@mail.gmail.com>
+To: Programmingkid <programmingkidx@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-Gm-Message-State: ALoCoQmtY989Q5+I91DYbyl8PfVS4L5Q6FdHcnrt5AkFVV9AiaSwDnAGN2d+7014VPrrq/mJEcE7
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.48
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, afaerber@suse.de,
 	qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Adds the ability to use
-	the command key in the guest operating system.
+ the command key in the guest operating system.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,47 +57,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 03 Aug 2013 23:43:47 -0000
+X-List-Received-Date: Sun, 04 Aug 2013 09:40:08 -0000
 
+On 4 August 2013 00:43, Programmingkid <programmingkidx@gmail.com> wrote:
+>
+> On Aug 3, 2013, at 7:06 PM, Peter Maydell wrote:
+>
+>> On 3 August 2013 23:52, G 3 <programmingkidx@gmail.com> wrote:
+>>> This patch adds the ability to use the command key in the guest
+>>> operating system. Just add -command-key 55 to the command line
+>>> options sent to QEMU to use this feature.
+>>>
+>>> I have checked the patch by sending it thru checkpatch.pl this time. I also
+>>> made a bunch of style changes to more closely match QEMU's suggested coding
+>>> style.
+>>>
+>>> signed-off-by: John Arbuckle <programmingkidx@gmail.com>
+>>>
+>>> ---
+>>> ui/cocoa.m |  114
+>>> ++++++++++++++++++++++++++++++++++++++++++++++++++++++-----
+>>> 1 files changed, 104 insertions(+), 10 deletions(-)
+>>
+>> This definitely isn't "trivial".
+>>
+>> I'm also really unconvinced that this is the right way to handle
+>> this: adding a new cocoa-UI-only command line option which takes
+>> a magic number looks very odd.
 
-On Aug 3, 2013, at 7:06 PM, Peter Maydell wrote:
+> Why don't you think it is trivial?
 
-> On 3 August 2013 23:52, G 3 <programmingkidx@gmail.com> wrote:
->> This patch adds the ability to use the command key in the guest
->> operating system. Just add -command-key 55 to the command line
->> options sent to QEMU to use this feature.
->>=20
->> I have checked the patch by sending it thru checkpatch.pl this time. =
-I also
->> made a bunch of style changes to more closely match QEMU's suggested =
-coding
->> style.
->>=20
->> signed-off-by: John Arbuckle <programmingkidx@gmail.com>
->>=20
->> ---
->> ui/cocoa.m |  114
->> ++++++++++++++++++++++++++++++++++++++++++++++++++++++-----
->> 1 files changed, 104 insertions(+), 10 deletions(-)
->=20
-> This definitely isn't "trivial".
->=20
-> I'm also really unconvinced that this is the right way to handle
-> this: adding a new cocoa-UI-only command line option which takes
-> a magic number looks very odd.
->=20
-> thanks
-> -- PMM
+It's over 100 lines long; it's not "obviously correct"; it adds
+a new command line switch; cocoa.m has a listed maintainer.
 
-Why don't you think it is trivial? There aren't many cocoa-ui users. =
-This patch falls into a very small and little used area of QEMU. I think =
-that makes this patch a trivial one.=20
+> The way of how to handle send the command key into the guest operating
+> system has already been discussed. This way lets the user decide at
+> runtime how best to handle the command key. The magic number you talk
+> about is actually a virtual key value. Every key has their own
+> virtual key.
 
-The way of how to handle send the command key into the guest operating =
-system has already been discussed. This way lets the user decide at =
-runtime how best to handle the command key. The magic number you talk =
-about is actually a virtual key value. Every key has their own virtual =
-key.
+Right, but I don't have to specify anything about any other
+key on the keyboard, why should command be special?
 
-Do you have your own idea as to how to handle the command key?=20=
+> Do you have your own idea as to how to handle the command key?
+
+"Should the QEMU UI use the menu-accelerator key for menus or
+should it pass it through to the guest" is a generic UI front-end
+problem; any solution should not be specific to a single UI,
+we should handle it the same way for all front-ends.
+
+-- PMM
 
