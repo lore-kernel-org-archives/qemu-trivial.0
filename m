@@ -1,58 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V62wk-0000zo-Ec
-	for mharc-qemu-trivial@gnu.org; Sun, 04 Aug 2013 14:22:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47447)
+	id 1V63QN-0002Av-1g
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Aug 2013 14:53:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52526)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <programmingkidx@gmail.com>) id 1V62wd-0000yS-I8
-	for qemu-trivial@nongnu.org; Sun, 04 Aug 2013 14:22:24 -0400
+	(envelope-from <programmingkidx@gmail.com>) id 1V63QC-00026M-BW
+	for qemu-trivial@nongnu.org; Sun, 04 Aug 2013 14:53:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <programmingkidx@gmail.com>) id 1V62wY-0001N6-3h
-	for qemu-trivial@nongnu.org; Sun, 04 Aug 2013 14:22:19 -0400
-Received: from mail-qe0-x233.google.com ([2607:f8b0:400d:c02::233]:44299)
+	(envelope-from <programmingkidx@gmail.com>) id 1V63Q3-0003qF-T7
+	for qemu-trivial@nongnu.org; Sun, 04 Aug 2013 14:52:52 -0400
+Received: from mail-qa0-x235.google.com ([2607:f8b0:400d:c00::235]:61023)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <programmingkidx@gmail.com>)
-	id 1V62wY-0001N1-0n; Sun, 04 Aug 2013 14:22:14 -0400
-Received: by mail-qe0-f51.google.com with SMTP id nd7so1308588qeb.38
-	for <multiple recipients>; Sun, 04 Aug 2013 11:22:13 -0700 (PDT)
+	id 1V63Pm-0003mZ-1Y; Sun, 04 Aug 2013 14:52:26 -0400
+Received: by mail-qa0-f53.google.com with SMTP id hu14so581842qab.5
+	for <multiple recipients>; Sun, 04 Aug 2013 11:52:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=subject:mime-version:content-type:from:in-reply-to:date:cc
 	:content-transfer-encoding:message-id:references:to:x-mailer;
-	bh=GY1a8+rUEV0ItzLvi6qqGvwV8JxyKlA79Ff1g67u5sE=;
-	b=KJ7iAvutw8ACYVkk7jPig5iKpoyQLsWBCdUWgw1VUWqucWs++O/3gx1qhpNWR5dfUc
-	qbLiFlVrtx0ujtUur2UGwoTwD1I9vmXeacOuT8hUrsiEQKMZDCvFwiLjA8QP2TYstpo5
-	k7POt/igRE5ZghCtoRITpUDxaL3dQbt4mnjEGkJHC4KAcXFs36Mk+rsmeBhQ7kgsaovW
-	RVkTia4yi16i02mdFJ+hpdYLGbVu9iLJQ6/i5ejEOC+fVgmfbp/6uvlDxB7KOIJgRCb/
-	fdRbcioztDJZCV3TYf7Gu9tC8aAVBleSpSSbVIjVPnchEDbr4Rp+V3JrTilnfu6cNT67
-	sO2w==
-X-Received: by 10.224.49.130 with SMTP id v2mr23715229qaf.75.1375640533619;
-	Sun, 04 Aug 2013 11:22:13 -0700 (PDT)
+	bh=UuP8lJhmbmv+ceEyJmcdJPbyFSvTLoVBF5e1fZZyT3M=;
+	b=e6uPgk+1pnm2WFkzcVWIl5jroZlSIVLV/u+JT4MR3Yp0lfR6CAtZJrKkFKPyBidpUw
+	yrYtgQQi0lp+/ywTFajj7Imfsc2ABCIFx71dfBNKc0kZjjWx9yPN2WYhWlwVGt1rcpDp
+	mARuuJsLGik+RuWY+y2KT0sWQ/Pw5p75S2iT8PHa9ofNhuxMuE7pspA1qEenk2QjFgAQ
+	xX/oYgPUpCAuS7ujtCUoh5AZMJCoS43MojtFI3n+cS6TUArx81HbmfttY5Xm2QcEH5nR
+	YAbtHtYdGv7YLeMB4sV/fUADnr7BLIdC1KY0JPBhd3FriKVE4+Pn/X94pxgjVCzmzrKa
+	R4XQ==
+X-Received: by 10.229.158.3 with SMTP id d3mr5106591qcx.72.1375642345572;
+	Sun, 04 Aug 2013 11:52:25 -0700 (PDT)
 Received: from [192.168.0.2] (d14-69-153-26.try.wideopenwest.com.
 	[69.14.26.153])
-	by mx.google.com with ESMTPSA id lk8sm62633qeb.3.2013.08.04.11.22.12
+	by mx.google.com with ESMTPSA id nh4sm1983053qeb.6.2013.08.04.11.52.24
 	for <multiple recipients>
 	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 04 Aug 2013 11:22:12 -0700 (PDT)
+	Sun, 04 Aug 2013 11:52:24 -0700 (PDT)
 Mime-Version: 1.0 (Apple Message framework v1084)
 Content-Type: text/plain; charset=us-ascii
 From: Programmingkid <programmingkidx@gmail.com>
-In-Reply-To: <CA+aC4ktgrnt__57o9uA+Er0Qe7HU5qy10n3XWUY6gy+q9D781Q@mail.gmail.com>
-Date: Sun, 4 Aug 2013 14:22:11 -0400
+In-Reply-To: <CAFEAcA81WMKSYnPWFrAF79qOxumtLRHEQjif1RSMO4yxvVc1-A@mail.gmail.com>
+Date: Sun, 4 Aug 2013 14:52:22 -0400
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <B9B3E155-9B81-4E76-9166-404D66513F9F@gmail.com>
+Message-Id: <2A318D54-11AD-4C05-B5A3-54F35E906571@gmail.com>
 References: <CAKyx-3MMkqKw3GXxSR=NizeBHhE+pYyONUX+0mtOgu5h3kix9g@mail.gmail.com>
 	<CAFEAcA8VPg-WDf+Xf3j=7Q--NJgc1+2n6zg6M=pX+idkA-zyEw@mail.gmail.com>
 	<358B0F62-7043-432E-8B49-F95CD1B82443@gmail.com>
 	<CAFEAcA8Gh+jys24Ejjp+6ccTxQFhmvdhmfvzEO_B04yzredL=A@mail.gmail.com>
-	<CA+aC4ktgrnt__57o9uA+Er0Qe7HU5qy10n3XWUY6gy+q9D781Q@mail.gmail.com>
-To: Anthony Liguori <anthony@codemonkey.ws>
+	<9A748A2F-42CF-4600-AE57-5B013DBC02F2@gmail.com>
+	<CAFEAcA81WMKSYnPWFrAF79qOxumtLRHEQjif1RSMO4yxvVc1-A@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 X-Mailer: Apple Mail (2.1084)
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c02::233
+X-Received-From: 2607:f8b0:400d:c00::235
 Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+	"qemu-ppc@nongnu.org list:PowerPC" <qemu-ppc@nongnu.org>,
 	=?iso-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>,
-	qemu-devel <qemu-devel@nongnu.org>
+	qemu-devel qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Adds the ability to use
 	the command key in the guest operating system.
 X-BeenThere: qemu-trivial@nongnu.org
@@ -66,37 +67,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 Aug 2013 18:22:25 -0000
+X-List-Received-Date: Sun, 04 Aug 2013 18:53:02 -0000
 
 
-On Aug 4, 2013, at 7:58 AM, Anthony Liguori wrote:
+On Aug 4, 2013, at 2:07 PM, Peter Maydell wrote:
 
-> On Sun, Aug 4, 2013 at 4:39 AM, Peter Maydell =
-<peter.maydell@linaro.org> wrote:
+> On 4 August 2013 18:53, Programmingkid <programmingkidx@gmail.com> =
+wrote:
+>> On Aug 4, 2013, at 5:39 AM, Peter Maydell wrote
+>>> Right, but I don't have to specify anything about any other
+>>> key on the keyboard, why should command be special?
 >>=20
->> "Should the QEMU UI use the menu-accelerator key for menus or
->> should it pass it through to the guest" is a generic UI front-end
->> problem; any solution should not be specific to a single UI,
->> we should handle it the same way for all front-ends.
+>> The command key is used to send commands to an application. When
+>> the user runs Mac OS X in QEMU, and the host operating system is
+>> Mac OS X, this can cause problems.
 >=20
+> Yes, I understand the problem. Why is this any different to
+> the similar issue with the menu-key or the Windows key in Windows
+> (where you also might want to pass it through to the guest,
+> or have it handled outside the guest).
 
-Ok. I guess that sounds like a good idea, but hard to implement. I don't =
-think any single piece of code could be applied to all the different =
-UI's. There is SDL, GTK, Cocoa, and who knows what else to handle. Each =
-UI library would need its own code to deal with the meta key issue.=20
+I don't use QEMU on a PC, so I don't have experience with this issue. =
+But it does sound like the problem I had on Mac OS X. For anyone who =
+uses QEMU on Windows, is the control key used to send commands to QEMU, =
+and sent to the guest operating system? I'm wondering if someone out =
+there uses a Windows guest on a Windows host can help us with this =
+issue.=20
 
-> The right way to handle this would be to access the hardware keycode
-> and avoid the keymap table entirely.  I'm sure there is such an API in
-> Cocoa...
 >=20
-> Regards,
->=20
-> Anthony Liguori
+>>>> Do you have your own idea as to how to handle the command key?
+>>>=20
+>>> "Should the QEMU UI use the menu-accelerator key for menus or
+>>> should it pass it through to the guest" is a generic UI front-end
+>>> problem; any solution should not be specific to a single UI,
+>>> we should handle it the same way for all front-ends.
 
-Your idea does have a few issues with it. This might work with a Mac =
-guest on a Mac host, but what about a PC guest on a Mac host? A PC =
-operating system like Windows 95 would probably not be able to recognize =
-a Macintosh keyboard. The current strategy in cocoa.m is to emulate a =
-pc/xt keyboard. This kind of keyboard works for a lot of different guest =
-operating systems - including Mac OS X.=20=
+The problem with this idea is each UI has its own implementation =
+library: SDL, GTK, Cocoa. Each UI would have to have its solution coded =
+differently. There is no one size fits all solution. I honestly don't =
+know if this is an issue with the SDL and GTK UI's.=20=
 
