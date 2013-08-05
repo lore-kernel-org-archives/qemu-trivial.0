@@ -1,33 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V6PSZ-0001tI-3G
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Aug 2013 14:24:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44313)
+	id 1V6QH4-0000dt-MU
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Aug 2013 15:16:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57964)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1V6PSU-0001o1-4o
-	for qemu-trivial@nongnu.org; Mon, 05 Aug 2013 14:24:44 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1V6QGz-0000Rq-FV
+	for qemu-trivial@nongnu.org; Mon, 05 Aug 2013 15:16:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1V6PSQ-0007c2-Ty
-	for qemu-trivial@nongnu.org; Mon, 05 Aug 2013 14:24:42 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1V6QGw-0003Lx-MB
+	for qemu-trivial@nongnu.org; Mon, 05 Aug 2013 15:16:53 -0400
 Received: from
 	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
-	([2001:8b0:1d0::1]:59109 helo=mnementh.archaic.org.uk)
+	([2001:8b0:1d0::1]:59112 helo=mnementh.archaic.org.uk)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1V6PSJ-0007ZC-5Q; Mon, 05 Aug 2013 14:24:31 -0400
+	id 1V6QGo-0003KZ-Ez; Mon, 05 Aug 2013 15:16:42 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1V6PSF-0005lL-6b; Mon, 05 Aug 2013 19:24:27 +0100
+	id 1V6QGm-0005ma-LU; Mon, 05 Aug 2013 20:16:40 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon,  5 Aug 2013 19:24:27 +0100
-Message-Id: <1375727067-22126-1-git-send-email-peter.maydell@linaro.org>
+Date: Mon,  5 Aug 2013 20:16:40 +0100
+Message-Id: <1375730200-22203-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, Jia Liu <proljc@gmail.com>, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] hw/openrisc/openrisc_sim: Avoid using
-	uninitialised variable 'entry'
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] configure: disable clang -Wstring-plus-int
+	warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,42 +39,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Aug 2013 18:24:45 -0000
+X-List-Received-Date: Mon, 05 Aug 2013 19:16:57 -0000
 
-clang warns that cpu_openrisc_load_kernel() can use 'entry' uninitialized:
+Some versions of clang will warn about adding integers to strings:
 
-hw/openrisc/openrisc_sim.c:69:9: error: variable 'entry' is used
-      uninitialized whenever '&&' condition is false [-Werror,-Wsometimes-uninitialized]
-    if (kernel_filename && !qtest_enabled()) {
-        ^~~~~~~~~~~~~~~
-hw/openrisc/openrisc_sim.c:91:19: note: uninitialized use occurs here
-    cpu->env.pc = entry;
-                  ^~~~~
+disas/i386.c:4753:23: error: adding 'char' to a string does not append
+      to the string [-Werror,-Wstring-plus-int]
+      oappend ("%es:" + intel_syntax);
+               ~~~~~~~^~~~~~~~~~~~~~
+disas/i386.c:4753:23: note: use array indexing to silence this warning
+      oappend ("%es:" + intel_syntax);
+                      ^
+               &      [             ]
 
-Fix this by not attempting to change the CPU's starting PC unless
-we actually loaded a kernel.
+disas/i386.c uses this idiom to to skip a "%" prefix if using intel
+rather than AT&T syntax. This seems like a reasonable  thing to do,
+and I don't think anybody contributing to QEMU is likely to believe
+that '+' is a string concatenation operator in C, so just disable
+-Wstring-plus-int.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/openrisc/openrisc_sim.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ configure |    1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-index a08f27c..4595fa9 100644
---- a/hw/openrisc/openrisc_sim.c
-+++ b/hw/openrisc/openrisc_sim.c
-@@ -86,9 +86,9 @@ static void cpu_openrisc_load_kernel(ram_addr_t ram_size,
-                     kernel_filename);
-             exit(1);
-         }
--    }
- 
--    cpu->env.pc = entry;
-+        cpu->env.pc = entry;
-+    }
- }
- 
- static void openrisc_sim_init(QEMUMachineInitArgs *args)
+diff --git a/configure b/configure
+index a3bd9be..a1d1701 100755
+--- a/configure
++++ b/configure
+@@ -1204,6 +1204,7 @@ gcc_flags="-Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers $gcc_
+ gcc_flags="-Wmissing-include-dirs -Wempty-body -Wnested-externs $gcc_flags"
+ gcc_flags="-Wendif-labels $gcc_flags"
+ gcc_flags="-Wno-initializer-overrides $gcc_flags"
++gcc_flags="-Wno-string-plus-int $gcc_flags"
+ # Note that we do not add -Werror to gcc_flags here, because that would
+ # enable it for all configure tests. If a configure test failed due
+ # to -Werror this would just silently disable some features,
 -- 
 1.7.9.5
 
