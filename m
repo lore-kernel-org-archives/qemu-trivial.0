@@ -1,33 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V6QH4-0000dt-MU
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Aug 2013 15:16:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57964)
+	id 1V6bbX-0004hC-LK
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Aug 2013 03:22:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58719)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1V6QGz-0000Rq-FV
-	for qemu-trivial@nongnu.org; Mon, 05 Aug 2013 15:16:57 -0400
+	(envelope-from <armbru@redhat.com>) id 1V6bbQ-0004X8-If
+	for qemu-trivial@nongnu.org; Tue, 06 Aug 2013 03:22:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1V6QGw-0003Lx-MB
-	for qemu-trivial@nongnu.org; Mon, 05 Aug 2013 15:16:53 -0400
-Received: from
-	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
-	([2001:8b0:1d0::1]:59112 helo=mnementh.archaic.org.uk)
+	(envelope-from <armbru@redhat.com>) id 1V6bbL-00045O-RL
+	for qemu-trivial@nongnu.org; Tue, 06 Aug 2013 03:22:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56152)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1V6QGo-0003KZ-Ez; Mon, 05 Aug 2013 15:16:42 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1V6QGm-0005ma-LU; Mon, 05 Aug 2013 20:16:40 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Mon,  5 Aug 2013 20:16:40 +0100
-Message-Id: <1375730200-22203-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] configure: disable clang -Wstring-plus-int
-	warning
+	(envelope-from <armbru@redhat.com>)
+	id 1V6bb8-00043I-OB; Tue, 06 Aug 2013 03:22:26 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r767MO9D024234
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 6 Aug 2013 03:22:24 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-43.ams2.redhat.com
+	[10.36.116.43])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r767MNHU005507; Tue, 6 Aug 2013 03:22:23 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id C8290200B7; Tue,  6 Aug 2013 09:22:22 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1375730200-22203-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 06 Aug 2013 09:22:22 +0200
+In-Reply-To: <1375730200-22203-1-git-send-email-peter.maydell@linaro.org>
+	(Peter Maydell's message of "Mon, 5 Aug 2013 20:16:40 +0100")
+Message-ID: <87d2pr1dxt.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: disable clang
+	-Wstring-plus-int warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,43 +50,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Aug 2013 19:16:57 -0000
+X-List-Received-Date: Tue, 06 Aug 2013 07:22:49 -0000
 
-Some versions of clang will warn about adding integers to strings:
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-disas/i386.c:4753:23: error: adding 'char' to a string does not append
-      to the string [-Werror,-Wstring-plus-int]
-      oappend ("%es:" + intel_syntax);
-               ~~~~~~~^~~~~~~~~~~~~~
-disas/i386.c:4753:23: note: use array indexing to silence this warning
-      oappend ("%es:" + intel_syntax);
-                      ^
-               &      [             ]
+> Some versions of clang will warn about adding integers to strings:
+>
+> disas/i386.c:4753:23: error: adding 'char' to a string does not append
+>       to the string [-Werror,-Wstring-plus-int]
+>       oappend ("%es:" + intel_syntax);
+>                ~~~~~~~^~~~~~~~~~~~~~
+> disas/i386.c:4753:23: note: use array indexing to silence this warning
+>       oappend ("%es:" + intel_syntax);
+>                       ^
+>                &      [             ]
+>
+> disas/i386.c uses this idiom to to skip a "%" prefix if using intel
+> rather than AT&T syntax. This seems like a reasonable  thing to do,
+> and I don't think anybody contributing to QEMU is likely to believe
+> that '+' is a string concatenation operator in C, so just disable
+> -Wstring-plus-int.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-disas/i386.c uses this idiom to to skip a "%" prefix if using intel
-rather than AT&T syntax. This seems like a reasonable  thing to do,
-and I don't think anybody contributing to QEMU is likely to believe
-that '+' is a string concatenation operator in C, so just disable
--Wstring-plus-int.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- configure |    1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/configure b/configure
-index a3bd9be..a1d1701 100755
---- a/configure
-+++ b/configure
-@@ -1204,6 +1204,7 @@ gcc_flags="-Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers $gcc_
- gcc_flags="-Wmissing-include-dirs -Wempty-body -Wnested-externs $gcc_flags"
- gcc_flags="-Wendif-labels $gcc_flags"
- gcc_flags="-Wno-initializer-overrides $gcc_flags"
-+gcc_flags="-Wno-string-plus-int $gcc_flags"
- # Note that we do not add -Werror to gcc_flags here, because that would
- # enable it for all configure tests. If a configure test failed due
- # to -Werror this would just silently disable some features,
--- 
-1.7.9.5
-
+Yes, please.
 
