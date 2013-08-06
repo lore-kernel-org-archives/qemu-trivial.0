@@ -1,44 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V6bbX-0004hC-LK
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Aug 2013 03:22:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58719)
+	id 1V6iEF-0003hH-2T
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Aug 2013 10:27:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50007)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1V6bbQ-0004X8-If
-	for qemu-trivial@nongnu.org; Tue, 06 Aug 2013 03:22:49 -0400
+	(envelope-from <proljc@gmail.com>) id 1V6W0f-0000Hs-S1
+	for qemu-trivial@nongnu.org; Mon, 05 Aug 2013 21:24:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1V6bbL-00045O-RL
-	for qemu-trivial@nongnu.org; Tue, 06 Aug 2013 03:22:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56152)
+	(envelope-from <proljc@gmail.com>) id 1V6W0e-0001S7-Ld
+	for qemu-trivial@nongnu.org; Mon, 05 Aug 2013 21:24:25 -0400
+Received: from mail-wg0-x230.google.com ([2a00:1450:400c:c00::230]:35983)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1V6bb8-00043I-OB; Tue, 06 Aug 2013 03:22:26 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r767MO9D024234
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 6 Aug 2013 03:22:24 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-43.ams2.redhat.com
-	[10.36.116.43])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r767MNHU005507; Tue, 6 Aug 2013 03:22:23 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id C8290200B7; Tue,  6 Aug 2013 09:22:22 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1375730200-22203-1-git-send-email-peter.maydell@linaro.org>
-Date: Tue, 06 Aug 2013 09:22:22 +0200
-In-Reply-To: <1375730200-22203-1-git-send-email-peter.maydell@linaro.org>
-	(Peter Maydell's message of "Mon, 5 Aug 2013 20:16:40 +0100")
-Message-ID: <87d2pr1dxt.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.1 (gnu/linux)
+	(envelope-from <proljc@gmail.com>)
+	id 1V6W0b-0001P6-Py; Mon, 05 Aug 2013 21:24:21 -0400
+Received: by mail-wg0-f48.google.com with SMTP id f12so2977645wgh.3
+	for <multiple recipients>; Mon, 05 Aug 2013 18:24:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=C/8dRYv0Iu7vRdLZrl0tjSBdKBlP7ec33RqZfaYxwTE=;
+	b=ks39vo52JmFOrPMjOJSoPLLs+maqxvUP24l3j0tEMvHzcL0Uq5joISwHX//zYbjYYT
+	0X568ZVK+jPqVSEw812JWzTehGTe2cnjq8owmjsGMGQO6jiHurtbeqvtZ7GerczJkXmu
+	3+5qS/eK7Trf2foeSH1DUlmqyHWeUtUxLXbkcqmYNBdcf/ynxhW4JIGl6VDHsUPqevJZ
+	NBGL8MI/QgtJPIIozZ1gpnKlERnwgXci5QjzoxDePpnERqNPTo5VVt1ALAhlLjzI6VWo
+	o3qdmcWz3DChJzYJqyYoY2GJtVaPEW/4QswnXto9Cmr40m5JjVr3L7rCF5MRD1w7GGJ4
+	JD1A==
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: disable clang
-	-Wstring-plus-int warning
+X-Received: by 10.194.249.103 with SMTP id yt7mr14889645wjc.80.1375752260660; 
+	Mon, 05 Aug 2013 18:24:20 -0700 (PDT)
+Received: by 10.194.21.232 with HTTP; Mon, 5 Aug 2013 18:24:20 -0700 (PDT)
+In-Reply-To: <1375727067-22126-1-git-send-email-peter.maydell@linaro.org>
+References: <1375727067-22126-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 6 Aug 2013 09:24:20 +0800
+Message-ID: <CAJBMM-vUKZLM1sbCJPU7S0X2236R8LUPCgwfxzoR920TtqFzAg@mail.gmail.com>
+From: Jia Liu <proljc@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c00::230
+X-Mailman-Approved-At: Tue, 06 Aug 2013 10:27:14 -0400
+Cc: qemu-trivial@nongnu.org, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] hw/openrisc/openrisc_sim: Avoid using
+ uninitialised variable 'entry'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,28 +54,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Aug 2013 07:22:49 -0000
+X-List-Received-Date: Tue, 06 Aug 2013 01:24:26 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Hi Peter,
 
-> Some versions of clang will warn about adding integers to strings:
+On Tue, Aug 6, 2013 at 2:24 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> clang warns that cpu_openrisc_load_kernel() can use 'entry' uninitialized:
 >
-> disas/i386.c:4753:23: error: adding 'char' to a string does not append
->       to the string [-Werror,-Wstring-plus-int]
->       oappend ("%es:" + intel_syntax);
->                ~~~~~~~^~~~~~~~~~~~~~
-> disas/i386.c:4753:23: note: use array indexing to silence this warning
->       oappend ("%es:" + intel_syntax);
->                       ^
->                &      [             ]
+> hw/openrisc/openrisc_sim.c:69:9: error: variable 'entry' is used
+>       uninitialized whenever '&&' condition is false [-Werror,-Wsometimes-uninitialized]
+>     if (kernel_filename && !qtest_enabled()) {
+>         ^~~~~~~~~~~~~~~
+> hw/openrisc/openrisc_sim.c:91:19: note: uninitialized use occurs here
+>     cpu->env.pc = entry;
+>                   ^~~~~
 >
-> disas/i386.c uses this idiom to to skip a "%" prefix if using intel
-> rather than AT&T syntax. This seems like a reasonable  thing to do,
-> and I don't think anybody contributing to QEMU is likely to believe
-> that '+' is a string concatenation operator in C, so just disable
-> -Wstring-plus-int.
+> Fix this by not attempting to change the CPU's starting PC unless
+> we actually loaded a kernel.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/openrisc/openrisc_sim.c |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
+> index a08f27c..4595fa9 100644
+> --- a/hw/openrisc/openrisc_sim.c
+> +++ b/hw/openrisc/openrisc_sim.c
+> @@ -86,9 +86,9 @@ static void cpu_openrisc_load_kernel(ram_addr_t ram_size,
+>                      kernel_filename);
+>              exit(1);
+>          }
+> -    }
+>
+> -    cpu->env.pc = entry;
+> +        cpu->env.pc = entry;
+> +    }
+>  }
+>
+>  static void openrisc_sim_init(QEMUMachineInitArgs *args)
 
-Yes, please.
+Thank you for using clang test it.
+
+Reviewed-by: Jia Liu <proljc@gmail.com>
+
+> --
+> 1.7.9.5
+>
+
+Regards,
+Jia
 
