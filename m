@@ -1,33 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V8Ssc-0005dV-8Y
-	for mharc-qemu-trivial@gnu.org; Sun, 11 Aug 2013 06:28:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38212)
+	id 1V9GGI-0004Vr-Gy
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Aug 2013 11:11:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47926)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V8SsU-0005TG-SO
-	for qemu-trivial@nongnu.org; Sun, 11 Aug 2013 06:28:08 -0400
+	(envelope-from <hpoussin@reactos.org>) id 1V9Bz1-0005Af-2W
+	for qemu-trivial@nongnu.org; Tue, 13 Aug 2013 06:37:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1V8SsO-0002Jh-NF
-	for qemu-trivial@nongnu.org; Sun, 11 Aug 2013 06:28:02 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52536)
+	(envelope-from <hpoussin@reactos.org>) id 1V9Byv-0006xb-HF
+	for qemu-trivial@nongnu.org; Tue, 13 Aug 2013 06:37:47 -0400
+Received: from smtp4-g21.free.fr ([2a01:e0c:1:1599::13]:55491)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1V8SsC-0001xD-9u; Sun, 11 Aug 2013 06:27:44 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 38E954000A;
-	Sun, 11 Aug 2013 14:27:32 +0400 (MSK)
-Message-ID: <52076713.9030609@msgid.tls.msk.ru>
-Date: Sun, 11 Aug 2013 14:27:31 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130704 Icedove/17.0.7
+	(envelope-from <hpoussin@reactos.org>)
+	id 1V9Byj-0006s7-Od; Tue, 13 Aug 2013 06:37:30 -0400
+Received: from localhost.localdomain (unknown [82.227.227.196])
+	by smtp4-g21.free.fr (Postfix) with ESMTP id E27C24C803D;
+	Tue, 13 Aug 2013 12:37:16 +0200 (CEST)
+From: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+To: qemu-devel@nongnu.org
+Date: Tue, 13 Aug 2013 12:38:34 +0200
+Message-Id: <1376390314-17544-1-git-send-email-hpoussin@reactos.org>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-To: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [VAC] mjt is at vacation
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:e0c:1:1599::13
+X-Mailman-Approved-At: Tue, 13 Aug 2013 11:11:53 -0400
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+Subject: [Qemu-trivial] [PATCH for-1.6] isa: fix documentation of
+	isa_register_portio_list
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,14 +42,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Aug 2013 10:28:09 -0000
+X-List-Received-Date: Tue, 13 Aug 2013 10:37:52 -0000
 
-We're going to a (hopefully) 3-week vacation starting
-today, and I don't expect any internet access there.
-So I wont be able to handle trivial-patches during
-this time (till Aug-2013).
 
-Thanks,
+Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+---
+ include/hw/isa/isa.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-/mjt
+diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
+index 495bcf3..fa45a5b 100644
+--- a/include/hw/isa/isa.h
++++ b/include/hw/isa/isa.h
+@@ -78,7 +78,7 @@ void isa_register_ioport(ISADevice *dev, MemoryRegion *=
+io, uint16_t start);
+  * @dev: the ISADevice against which these are registered; may be NULL.
+  * @start: the base I/O port against which the portio->offset is applied=
+.
+  * @portio: the ports, sorted by offset.
+- * @opaque: passed into the old_portio callbacks.
++ * @opaque: passed into the portio callbacks.
+  * @name: passed into memory_region_init_io.
+  */
+ void isa_register_portio_list(ISADevice *dev, uint16_t start,
+--=20
+1.7.10.4
+
 
