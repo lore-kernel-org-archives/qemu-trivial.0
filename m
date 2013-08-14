@@ -1,36 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V9Xgi-0003zj-M7
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2013 05:48:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52291)
+	id 1V9b2H-0001CA-T8
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2013 09:22:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1V9Xgc-0003r4-7k
-	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 05:48:19 -0400
+	(envelope-from <stefanha@gmail.com>) id 1V9b26-0000z1-Uk
+	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 09:22:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1V9XgV-0000AX-NP
-	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 05:48:14 -0400
-Received: from smtp1-g21.free.fr ([2a01:e0c:1:1599::10]:34995)
+	(envelope-from <stefanha@gmail.com>) id 1V9b1y-00066o-Ib
+	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 09:22:38 -0400
+Received: from mail-ee0-x22c.google.com ([2a00:1450:4013:c00::22c]:51628)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>)
-	id 1V9XgK-000075-2w; Wed, 14 Aug 2013 05:47:56 -0400
-Received: from localhost.localdomain (unknown [82.227.227.196])
-	by smtp1-g21.free.fr (Postfix) with ESMTP id 4B7C494016F;
-	Wed, 14 Aug 2013 11:47:49 +0200 (CEST)
-From: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-To: qemu-devel@nongnu.org
-Date: Wed, 14 Aug 2013 11:49:04 +0200
-Message-Id: <1376473744-18435-1-git-send-email-hpoussin@reactos.org>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <stefanha@gmail.com>)
+	id 1V9b1h-00061r-3v; Wed, 14 Aug 2013 09:22:13 -0400
+Received: by mail-ee0-f44.google.com with SMTP id b47so4845883eek.17
+	for <multiple recipients>; Wed, 14 Aug 2013 06:22:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=Pr7qw9QozkWGmjIRfGLu+z0EX8D0+6klVYH9m1Do8r4=;
+	b=A11hORM7TH+zwM3NtkJnYIad2AE1mAgMH/5RAwqCdSae2EJgA6lnZpgF2w7rE39bDH
+	1FdhxnI6nYcWu5mnF6FYEuxwL4nO0F8n1AF4WWAdn1FxlBi3DA3ytbTXK23IlPnTtKOS
+	x9YE2rY4/bhuvOMEHcYRVMoImgrxPhSBV7df2y0HNKl5moR3lh4R29fHunZ3/mQC0EtG
+	XsdHbHaz6IXt1XYhY7I03JS86ixn0Q2idShhmfyse3BIU31FyhzJoJMn2XOfobP3zR9t
+	CoUCIUmGQ/OC5CRzphH32xiQ42qiHPUOpM6s988NKKXIyrUAddboZfN7HCoUALAkzo+V
+	MPRw==
+X-Received: by 10.14.113.137 with SMTP id a9mr14714714eeh.3.1376486532304;
+	Wed, 14 Aug 2013 06:22:12 -0700 (PDT)
+Received: from localhost (178-26-138-183-dynip.superkabel.de. [178.26.138.183])
+	by mx.google.com with ESMTPSA id
+	bp43sm75116955eeb.4.2013.08.14.06.22.10 for <multiple recipients>
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Wed, 14 Aug 2013 06:22:11 -0700 (PDT)
+Date: Wed, 14 Aug 2013 15:22:09 +0200
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: "M. Mohan Kumar" <mohan@in.ibm.com>
+Message-ID: <20130814132209.GB26698@stefanha-thinkpad.redhat.com>
+References: <1376483201-13466-1-git-send-email-mohan@in.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1376483201-13466-1-git-send-email-mohan@in.ibm.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a01:e0c:1:1599::10
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	aliguori@us.ibm.com, av1474@comtv.ru
-Subject: [Qemu-trivial] [PATCH for-1.6] adlib: sort offsets in portio
-	registration
+X-Received-From: 2a00:1450:4013:c00::22c
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH for-1.6] block: Dont ignore previously
+	set bdrv_flags
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,33 +59,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Aug 2013 09:48:20 -0000
+X-List-Received-Date: Wed, 14 Aug 2013 13:22:48 -0000
 
-This fixes the following assert when -device adlib is used:
-ioport.c:240: portio_list_add: Assertion `pio->offset >=3D off_last' fail=
-ed.
+On Wed, Aug 14, 2013 at 05:56:41PM +0530, M. Mohan Kumar wrote:
+> From: "M. Mohan Kumar" <mohan@in.ibm.com>
+> 
+> bdrv_flags is set by bdrv_parse_discard_flags(), but later it is reset
+> to zero.
+> 
+> Signed-off-by: M. Mohan Kumar <mohan@in.ibm.com>
+> ---
+>  blockdev.c | 1 -
+>  1 file changed, 1 deletion(-)
 
-Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
----
- hw/audio/adlib.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Anthony: Please merge this directly into QEMU 1.6, it's a regression
+from QEMU 1.5.
 
-diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
-index 0421d47..db4a953 100644
---- a/hw/audio/adlib.c
-+++ b/hw/audio/adlib.c
-@@ -284,9 +284,9 @@ static void Adlib_fini (AdlibState *s)
- }
-=20
- static MemoryRegionPortio adlib_portio_list[] =3D {
--    { 0x388, 4, 1, .read =3D adlib_read, .write =3D adlib_write, },
-     { 0, 4, 1, .read =3D adlib_read, .write =3D adlib_write, },
-     { 0, 2, 1, .read =3D adlib_read, .write =3D adlib_write, },
-+    { 0x388, 4, 1, .read =3D adlib_read, .write =3D adlib_write, },
-     PORTIO_END_OF_LIST(),
- };
-=20
---=20
-1.7.10.4
-
+Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
 
