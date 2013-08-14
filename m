@@ -1,50 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V9dcq-0001B6-Ku
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2013 12:08:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60898)
+	id 1V9evf-0005RK-Sq
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2013 13:32:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59800)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1V9dcg-0000ys-9q
-	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 12:08:43 -0400
+	(envelope-from <mohan@in.ibm.com>) id 1V9aAT-0005Mr-MY
+	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 08:27:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1V9dcY-0006kA-B4
-	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 12:08:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52527)
+	(envelope-from <mohan@in.ibm.com>) id 1V9aAK-0001Pu-GG
+	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 08:27:13 -0400
+Received: from e28smtp09.in.ibm.com ([122.248.162.9]:45488)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1V9dcQ-0006iA-0g; Wed, 14 Aug 2013 12:08:18 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r7EG8FN7016312
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 14 Aug 2013 12:08:15 -0400
-Received: from [10.3.113.47] (ovpn-113-47.phx2.redhat.com [10.3.113.47])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r7EG8EjA009524; Wed, 14 Aug 2013 12:08:14 -0400
-Message-ID: <520BAB6E.4050806@redhat.com>
-Date: Wed, 14 Aug 2013 10:08:14 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
-MIME-Version: 1.0
-To: Taimoor Mirza <taimoor.mrza@gmail.com>
-References: <1376424027-26208-1-git-send-email-tmirza@codesourcery.com>
-	<1376427925-26767-1-git-send-email-tmirza@codesourcery.com>
-	<520AA338.2010408@redhat.com>
-	<CAO6-N=biX38qFJjH5OjUE=XXnB22k+igutDq+gzhhd=kP6XBLA@mail.gmail.com>
-In-Reply-To: <CAO6-N=biX38qFJjH5OjUE=XXnB22k+igutDq+gzhhd=kP6XBLA@mail.gmail.com>
-X-Enigmail-Version: 1.5.2
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="0n3Vhc8J1nxmc4XuVPad4JbelLllOT37F"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Taimoor Mirza <tmirza@codesourcery.com>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Port redirection
- option behave differently on Linux and Windows
+	(envelope-from <mohan@in.ibm.com>) id 1V9aAJ-0001Or-Uf
+	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 08:27:04 -0400
+Received: from /spool/local
+	by e28smtp09.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <mohan@in.ibm.com>;
+	Wed, 14 Aug 2013 17:51:10 +0530
+Received: from d28dlp01.in.ibm.com (9.184.220.126)
+	by e28smtp09.in.ibm.com (192.168.1.139) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Wed, 14 Aug 2013 17:51:07 +0530
+Received: from d28relay02.in.ibm.com (d28relay02.in.ibm.com [9.184.220.59])
+	by d28dlp01.in.ibm.com (Postfix) with ESMTP id 5F8F0E0053;
+	Wed, 14 Aug 2013 17:57:13 +0530 (IST)
+Received: from d28av04.in.ibm.com (d28av04.in.ibm.com [9.184.220.66])
+	by d28relay02.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	r7ECSEsC35258576; Wed, 14 Aug 2013 17:58:15 +0530
+Received: from d28av04.in.ibm.com (localhost [127.0.0.1])
+	by d28av04.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	r7ECQn4o013226; Wed, 14 Aug 2013 17:56:49 +0530
+Received: from explorer.in.ibm.com ([9.77.123.113])
+	by d28av04.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	r7ECQi37012922; Wed, 14 Aug 2013 17:56:46 +0530
+From: "M. Mohan Kumar" <mohan@in.ibm.com>
+To: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
+Date: Wed, 14 Aug 2013 17:56:41 +0530
+Message-Id: <1376483201-13466-1-git-send-email-mohan@in.ibm.com>
+X-Mailer: git-send-email 1.7.11.7
+X-TM-AS-MML: No
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 13081412-2674-0000-0000-00000A3BED40
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 122.248.162.9
+X-Mailman-Approved-At: Wed, 14 Aug 2013 13:32:14 -0400
+Cc: "M. Mohan Kumar" <mohan@in.ibm.com>
+Subject: [Qemu-trivial] [PATCH 1/1] block: Dont ignore previously set
+	bdrv_flags
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,63 +58,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Aug 2013 16:08:43 -0000
+X-List-Received-Date: Wed, 14 Aug 2013 12:27:23 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---0n3Vhc8J1nxmc4XuVPad4JbelLllOT37F
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+From: "M. Mohan Kumar" <mohan@in.ibm.com>
 
-On 08/14/2013 09:49 AM, Taimoor Mirza wrote:
-> On Wed, Aug 14, 2013 at 2:20 AM, Eric Blake <eblake@redhat.com> wrote:
->> On 08/13/2013 03:05 PM, Taimoor wrote:
->>> From: Taimoor Mirza <tmirza@codesourcery.com>
->>>
->>> port redirection code uses SO_REUSEADDR socket option before binding =
-to
->>> host port. Behavior of SO_REUSEADDR is different on Windows and Linux=
-=2E
->>> Relaunching QEMU with same host and guest port redirection values on =
-Linux
->>> throws error but on Windows it does not throw any error.
->>> Problem is discussed in http://lists.gnu.org/archive/html/qemu-devel/=
-2013-04/msg03089.html
->>
->> When resending a patch, please use a v2 in the subject line (git
->> send-email --subject-prefix PATCHv2), send as a top-level thread, and
->> include a changelog after the --- divider that explains what changed
->> from v1.  See http://wiki.qemu.org/Contribute/SubmitAPatch for more hi=
-nts.
->=20
->=20
-> Thanks Eric. Should I resend with changelog of v2 and v2 in subject lin=
-e?
+bdrv_flags is set by bdrv_parse_discard_flags(), but later it is reset
+to zero.
 
-Yes, doing so will give it better visibility.
+Signed-off-by: M. Mohan Kumar <mohan@in.ibm.com>
+---
+ blockdev.c | 1 -
+ 1 file changed, 1 deletion(-)
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+diff --git a/blockdev.c b/blockdev.c
+index e174b7d..bc7016a 100644
+--- a/blockdev.c
++++ b/blockdev.c
+@@ -454,7 +454,6 @@ static DriveInfo *blockdev_init(QemuOpts *all_opts,
+         }
+     }
+ 
+-    bdrv_flags = 0;
+     if (qemu_opt_get_bool(opts, "cache.writeback", true)) {
+         bdrv_flags |= BDRV_O_CACHE_WB;
+     }
+-- 
+1.7.11.7
 
-
---0n3Vhc8J1nxmc4XuVPad4JbelLllOT37F
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.14 (GNU/Linux)
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJSC6tuAAoJEKeha0olJ0NqWyMH/iHd9IP5DbXa5s5GDKY67Vm1
-tHUTBHPwxE6OHmVIsVkKKYHadLAuGC9DOo1sFeWM7sUJclk4x72KoSh1VdI/tytt
-BnicxtMXOokFuBL+jhgNtil/CVokBTcumZifQxuJWQuabugKCqpAtnhyeyWkLdMB
-AdShV/m+IUgnxNbR35nMC6ahW+nFYK4A3icMmHzT5TOtTk5ok/rc4qdec31o6Kfz
-//MHfOGXE8aE/PdAgEZdWMS4PaF8El39D/pDeHqCj4Q1t/hwkuMFNktfzIZWOZOI
-egnGs1282Igdxz2sCJ/hx4ShpAtsSHyQFe/h2+akgCs98mIG9c9CqEO9Mb6y29Y=
-=Kf8e
------END PGP SIGNATURE-----
-
---0n3Vhc8J1nxmc4XuVPad4JbelLllOT37F--
 
