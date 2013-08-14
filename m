@@ -1,53 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1V9b2H-0001CA-T8
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2013 09:22:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44033)
+	id 1V9dKu-0005G3-Rt
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2013 11:50:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54975)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1V9b26-0000z1-Uk
-	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 09:22:48 -0400
+	(envelope-from <taimoor.mrza@gmail.com>) id 1V9dKm-0004t8-Vh
+	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 11:50:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1V9b1y-00066o-Ib
-	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 09:22:38 -0400
-Received: from mail-ee0-x22c.google.com ([2a00:1450:4013:c00::22c]:51628)
+	(envelope-from <taimoor.mrza@gmail.com>) id 1V9dKf-00076a-ND
+	for qemu-trivial@nongnu.org; Wed, 14 Aug 2013 11:50:04 -0400
+Received: from mail-wi0-x229.google.com ([2a00:1450:400c:c05::229]:50684)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1V9b1h-00061r-3v; Wed, 14 Aug 2013 09:22:13 -0400
-Received: by mail-ee0-f44.google.com with SMTP id b47so4845883eek.17
-	for <multiple recipients>; Wed, 14 Aug 2013 06:22:12 -0700 (PDT)
+	(envelope-from <taimoor.mrza@gmail.com>)
+	id 1V9dKV-00074y-QG; Wed, 14 Aug 2013 11:49:47 -0400
+Received: by mail-wi0-f169.google.com with SMTP id f14so1873938wiw.0
+	for <multiple recipients>; Wed, 14 Aug 2013 08:49:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=Pr7qw9QozkWGmjIRfGLu+z0EX8D0+6klVYH9m1Do8r4=;
-	b=A11hORM7TH+zwM3NtkJnYIad2AE1mAgMH/5RAwqCdSae2EJgA6lnZpgF2w7rE39bDH
-	1FdhxnI6nYcWu5mnF6FYEuxwL4nO0F8n1AF4WWAdn1FxlBi3DA3ytbTXK23IlPnTtKOS
-	x9YE2rY4/bhuvOMEHcYRVMoImgrxPhSBV7df2y0HNKl5moR3lh4R29fHunZ3/mQC0EtG
-	XsdHbHaz6IXt1XYhY7I03JS86ixn0Q2idShhmfyse3BIU31FyhzJoJMn2XOfobP3zR9t
-	CoUCIUmGQ/OC5CRzphH32xiQ42qiHPUOpM6s988NKKXIyrUAddboZfN7HCoUALAkzo+V
-	MPRw==
-X-Received: by 10.14.113.137 with SMTP id a9mr14714714eeh.3.1376486532304;
-	Wed, 14 Aug 2013 06:22:12 -0700 (PDT)
-Received: from localhost (178-26-138-183-dynip.superkabel.de. [178.26.138.183])
-	by mx.google.com with ESMTPSA id
-	bp43sm75116955eeb.4.2013.08.14.06.22.10 for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Wed, 14 Aug 2013 06:22:11 -0700 (PDT)
-Date: Wed, 14 Aug 2013 15:22:09 +0200
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: "M. Mohan Kumar" <mohan@in.ibm.com>
-Message-ID: <20130814132209.GB26698@stefanha-thinkpad.redhat.com>
-References: <1376483201-13466-1-git-send-email-mohan@in.ibm.com>
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=LpZ/rVi5Z0HzlbShFXL/HhiYVZVUH5ByXY++zjKV3EQ=;
+	b=SqyIELaMlPrkMYXnMQb/jRGNkaf143cuKmUGPDpYYIQG0r/1ZMxOEsER5Ez/6M67OP
+	Zi8Vr9hEtGPm969bO+BrEopqTL+dyo4NK4av8qX8l/XMM5hNebWvGXGDWoTMQnSndQvL
+	M0NBCBg170e1cxE34VTXZ8pkJ4prg6JcBM4yuSl1EELY/yNV1SHjHdoEIeOytQNJrZNL
+	qXa8tasVElJuRdo0S29e/GI5T8IfqgQLoss+X+LOuWpeaNdB2zoN5iruzdL+9g5kzYfl
+	fU9Hg7t4d8Ry8GqSSMD4Cnj2REWw4kI8ytbqNE2V8B8prfzt4T2qNwfjftyglVEubTpQ
+	7ivg==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1376483201-13466-1-git-send-email-mohan@in.ibm.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Received: by 10.180.77.164 with SMTP id t4mr2460908wiw.58.1376495386352;
+	Wed, 14 Aug 2013 08:49:46 -0700 (PDT)
+Received: by 10.194.24.161 with HTTP; Wed, 14 Aug 2013 08:49:46 -0700 (PDT)
+In-Reply-To: <520AA338.2010408@redhat.com>
+References: <1376424027-26208-1-git-send-email-tmirza@codesourcery.com>
+	<1376427925-26767-1-git-send-email-tmirza@codesourcery.com>
+	<520AA338.2010408@redhat.com>
+Date: Wed, 14 Aug 2013 20:49:46 +0500
+Message-ID: <CAO6-N=biX38qFJjH5OjUE=XXnB22k+igutDq+gzhhd=kP6XBLA@mail.gmail.com>
+From: Taimoor Mirza <taimoor.mrza@gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4013:c00::22c
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	Anthony Liguori <aliguori@us.ibm.com>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH for-1.6] block: Dont ignore previously
-	set bdrv_flags
+X-Received-From: 2a00:1450:400c:c05::229
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Taimoor Mirza <tmirza@codesourcery.com>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Port redirection
+ option behave differently on Linux and Windows
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,21 +55,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Aug 2013 13:22:48 -0000
+X-List-Received-Date: Wed, 14 Aug 2013 15:50:12 -0000
 
-On Wed, Aug 14, 2013 at 05:56:41PM +0530, M. Mohan Kumar wrote:
-> From: "M. Mohan Kumar" <mohan@in.ibm.com>
-> 
-> bdrv_flags is set by bdrv_parse_discard_flags(), but later it is reset
-> to zero.
-> 
-> Signed-off-by: M. Mohan Kumar <mohan@in.ibm.com>
-> ---
->  blockdev.c | 1 -
->  1 file changed, 1 deletion(-)
+On Wed, Aug 14, 2013 at 2:20 AM, Eric Blake <eblake@redhat.com> wrote:
+> On 08/13/2013 03:05 PM, Taimoor wrote:
+>> From: Taimoor Mirza <tmirza@codesourcery.com>
+>>
+>> port redirection code uses SO_REUSEADDR socket option before binding to
+>> host port. Behavior of SO_REUSEADDR is different on Windows and Linux.
+>> Relaunching QEMU with same host and guest port redirection values on Linux
+>> throws error but on Windows it does not throw any error.
+>> Problem is discussed in http://lists.gnu.org/archive/html/qemu-devel/2013-04/msg03089.html
+>
+> When resending a patch, please use a v2 in the subject line (git
+> send-email --subject-prefix PATCHv2), send as a top-level thread, and
+> include a changelog after the --- divider that explains what changed
+> from v1.  See http://wiki.qemu.org/Contribute/SubmitAPatch for more hints.
 
-Anthony: Please merge this directly into QEMU 1.6, it's a regression
-from QEMU 1.5.
 
-Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+Thanks Eric. Should I resend with changelog of v2 and v2 in subject line?
+>
+> --
+> Eric Blake   eblake redhat com    +1-919-301-3266
+> Libvirt virtualization library http://libvirt.org
+>
 
