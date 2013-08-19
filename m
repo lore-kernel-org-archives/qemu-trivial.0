@@ -1,61 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VBQ3G-0003AN-0y
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Aug 2013 10:03:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33768)
+	id 1VBQ8n-0006O2-Jo
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Aug 2013 10:09:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57301)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mrhines@linux.vnet.ibm.com>) id 1VBOfM-0004bR-9A
-	for qemu-trivial@nongnu.org; Mon, 19 Aug 2013 08:34:44 -0400
+	(envelope-from <chouteau@adacore.com>) id 1VBQ8h-0006HG-Vu
+	for qemu-trivial@nongnu.org; Mon, 19 Aug 2013 10:09:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mrhines@linux.vnet.ibm.com>) id 1VBOfD-00046B-Os
-	for qemu-trivial@nongnu.org; Mon, 19 Aug 2013 08:34:36 -0400
-Received: from e32.co.us.ibm.com ([32.97.110.150]:44757)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mrhines@linux.vnet.ibm.com>) id 1VBOfD-00045n-JG
-	for qemu-trivial@nongnu.org; Mon, 19 Aug 2013 08:34:27 -0400
-Received: from /spool/local
-	by e32.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mrhines@linux.vnet.ibm.com>;
-	Mon, 19 Aug 2013 06:34:26 -0600
-Received: from d03dlp02.boulder.ibm.com (9.17.202.178)
-	by e32.co.us.ibm.com (192.168.1.132) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 19 Aug 2013 06:34:23 -0600
-Received: from d03relay03.boulder.ibm.com (d03relay03.boulder.ibm.com
-	[9.17.195.228])
-	by d03dlp02.boulder.ibm.com (Postfix) with ESMTP id B7ABB3E40045;
-	Mon, 19 Aug 2013 06:33:58 -0600 (MDT)
-Received: from d03av03.boulder.ibm.com (d03av03.boulder.ibm.com [9.17.195.169])
-	by d03relay03.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r7JCYMRq193376; Mon, 19 Aug 2013 06:34:22 -0600
-Received: from d03av03.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av03.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id r7JCYMGe013152; Mon, 19 Aug 2013 06:34:22 -0600
-Received: from [172.16.1.222] (klinux.watson.ibm.com [9.2.208.21])
-	by d03av03.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r7JCYLHg013098; Mon, 19 Aug 2013 06:34:21 -0600
-Message-ID: <521210CD.8080600@linux.vnet.ibm.com>
-Date: Mon, 19 Aug 2013 08:34:21 -0400
-From: "Michael R. Hines" <mrhines@linux.vnet.ibm.com>
+	(envelope-from <chouteau@adacore.com>) id 1VBQ8d-00061H-De
+	for qemu-trivial@nongnu.org; Mon, 19 Aug 2013 10:08:59 -0400
+Received: from mel.act-europe.fr ([194.98.77.210]:33483
+	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chouteau@adacore.com>)
+	id 1VBQ8U-0005zJ-Av; Mon, 19 Aug 2013 10:08:46 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 41F8A265C28A;
+	Mon, 19 Aug 2013 16:08:15 +0200 (CEST)
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id R3buxAmHriX8; Mon, 19 Aug 2013 16:08:15 +0200 (CEST)
+Received: from [10.10.1.88] (pompomgalli.act-europe.fr [10.10.1.88])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 04ED6265B47A;
+	Mon, 19 Aug 2013 16:08:15 +0200 (CEST)
+Message-ID: <521226CF.4050202@adacore.com>
+Date: Mon, 19 Aug 2013 16:08:15 +0200
+From: Fabien Chouteau <chouteau@adacore.com>
 User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
+	rv:17.0) Gecko/20130623 Thunderbird/17.0.7
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <1376879228-32505-1-git-send-email-mrhines@linux.vnet.ibm.com>
-	<5211E5D2.9060903@redhat.com>
-In-Reply-To: <5211E5D2.9060903@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1375447708-14545-1-git-send-email-chouteau@adacore.com>
+	<CAFEAcA_yfEtT=JXfa56A8Fa1a=yHMY8NPdPf02j=f+8Fqfjzjg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_yfEtT=JXfa56A8Fa1a=yHMY8NPdPf02j=f+8Fqfjzjg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13081912-5406-0000-0000-00000B95BFC2
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.110.150
-X-Mailman-Approved-At: Mon, 19 Aug 2013 10:03:20 -0400
-Cc: yamahata@private.email.ne.jp, aliguori@us.ibm.com, quintela@redhat.com,
-	qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
-	owasserm@redhat.com, mrhines@us.ibm.com
-Subject: Re: [Qemu-trivial] [PATCH for-1.6] rdma: silly ipv6 bugfix
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 194.98.77.210
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, lcapitulino@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] Improve Monitor disas
+	with symbol lookup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,29 +51,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Aug 2013 12:34:44 -0000
+X-List-Received-Date: Mon, 19 Aug 2013 14:09:04 -0000
 
-On 08/19/2013 05:30 AM, Paolo Bonzini wrote:
-> Il 19/08/2013 04:27, mrhines@linux.vnet.ibm.com ha scritto:
->> From: "Michael R. Hines" <mrhines@us.ibm.com>
->>
->> My bad - but it's very important for us to warn the user that
->> IPv6 is broken on RoCE in linux right now, until linux releases
->> a fixed version.
-> 1.6 has sailed already, so the right thing to do now is to add a
->
-> Cc: qemu-stable@nongnu.org
->
-> tag before Signed-off-by.  This will ensure that the patch will be
-> considered for 1.6.1.
->
-> I have already CCed the mailing list on this message, so there is
-> nothing you need to do for this particular patch.
->
-> Paolo
+On 08/19/2013 10:33 AM, Peter Maydell wrote:
+> On 2 August 2013 13:48, Fabien Chouteau <chouteau@adacore.com> wrote:
+>> Part of M731-018.
+> 
+> What is this a reference to?
+> 
 
-Understood. Thank you.
+I'm sorry this is not supposed to be here. Do you have comments before I
+resend the patch?
 
-- Michael
+Regards,
 
+-- 
+Fabien Chouteau
 
