@@ -1,34 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VCuME-0004HJ-KT
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2013 12:37:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38405)
+	id 1VCuS7-0007rD-Hq
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2013 12:43:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39946)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1VCuM9-0004AI-FJ
-	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 12:37:04 -0400
+	(envelope-from <eblake@redhat.com>) id 1VCuS1-0007kK-1Y
+	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 12:43:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1VCuM6-0000HT-9E
-	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 12:37:01 -0400
-Received: from
-	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
-	([2001:8b0:1d0::1]:59457 helo=mnementh.archaic.org.uk)
+	(envelope-from <eblake@redhat.com>) id 1VCuRv-0003rU-Mu
+	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 12:43:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53422)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1VCuLy-0000Cv-2i; Fri, 23 Aug 2013 12:36:50 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1VCuLw-0002Lu-LD; Fri, 23 Aug 2013 17:36:48 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 23 Aug 2013 17:36:48 +0100
-Message-Id: <1377275808-9017-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
+	(envelope-from <eblake@redhat.com>)
+	id 1VCuRm-0003mZ-8H; Fri, 23 Aug 2013 12:42:50 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r7NGgmS3003505
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 23 Aug 2013 12:42:48 -0400
+Received: from [10.3.113.37] (ovpn-113-37.phx2.redhat.com [10.3.113.37])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r7NGglYn008115; Fri, 23 Aug 2013 12:42:47 -0400
+Message-ID: <52179107.9070302@redhat.com>
+Date: Fri, 23 Aug 2013 10:42:47 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
+MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1377275808-9017-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1377275808-9017-1-git-send-email-peter.maydell@linaro.org>
+X-Enigmail-Version: 1.5.2
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="JHJBtiFx3WpQgUCJu8KNlDIvUC5gMX2PK"
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] slirp/arp_table.c: Avoid shifting into sign
-	bit of signed integers
+	qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp/arp_table.c: Avoid
+ shifting into sign bit of signed integers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,40 +53,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Aug 2013 16:37:04 -0000
+X-List-Received-Date: Fri, 23 Aug 2013 16:43:09 -0000
 
-"0xf << 28" shifts right into the sign bit, since 0xf is a signed
-integer. Use the 'U' suffix to force an unsigned shift to avoid
-this undefined behaviour and a clang sanitizer warning.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--JHJBtiFx3WpQgUCJu8KNlDIvUC5gMX2PK
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- slirp/arp_table.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On 08/23/2013 10:36 AM, Peter Maydell wrote:
+> "0xf << 28" shifts right into the sign bit, since 0xf is a signed
+> integer. Use the 'U' suffix to force an unsigned shift to avoid
+> this undefined behaviour and a clang sanitizer warning.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  slirp/arp_table.c |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/slirp/arp_table.c b/slirp/arp_table.c
-index bf698c1..ecdb0ba 100644
---- a/slirp/arp_table.c
-+++ b/slirp/arp_table.c
-@@ -38,7 +38,7 @@ void arp_table_add(Slirp *slirp, uint32_t ip_addr, uint8_t ethaddr[ETH_ALEN])
-                 ethaddr[3], ethaddr[4], ethaddr[5]));
- 
-     /* Check 0.0.0.0/8 invalid source-only addresses */
--    if ((ip_addr & htonl(~(0xf << 28))) == 0) {
-+    if ((ip_addr & htonl(~(0xfU << 28))) == 0) {
-         return;
-     }
- 
-@@ -74,7 +74,7 @@ bool arp_table_search(Slirp *slirp, uint32_t ip_addr,
-     DEBUG_ARG("ip = 0x%x", ip_addr);
- 
-     /* Check 0.0.0.0/8 invalid source-only addresses */
--    assert((ip_addr & htonl(~(0xf << 28))) != 0);
-+    assert((ip_addr & htonl(~(0xfU << 28))) != 0);
- 
-     /* If broadcast address */
-     if (ip_addr == 0xffffffff || ip_addr == broadcast_addr) {
--- 
-1.7.9.5
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--JHJBtiFx3WpQgUCJu8KNlDIvUC5gMX2PK
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.14 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJSF5EHAAoJEKeha0olJ0Nqa4sH/ikCj2zeLkyMurctQ6aQDEUI
+NCqG18j9QQsw+pg3DTXvreoIpy5WHrJr9AmyDmPXYNgG0K5fbDdilgtlG7xIaVLJ
+a0C8ydtdMJXquYv0U6pIVyv4mFRAFT94fgjQ2J84J2TEeh8CPS3395MghwsbK+mf
+PPAjLhGwZz82lGnXa5bFr5hjHZ6vPCdA/vLLWP6NFmHx4aFLyy1C6a/p3kIuEkF9
+Gog+e64PSzLL/R0Ya7Ar4SFmYxX/tq8jBVY6mRpyNpKRMHVq1KoasYojdYwkSvcX
+atUxwDXnEhh6E29pWrIQmHhpjGQLByNWUqeoynqnLII+5jGfxL1jWIo6om6QrLo=
+=hYnq
+-----END PGP SIGNATURE-----
+
+--JHJBtiFx3WpQgUCJu8KNlDIvUC5gMX2PK--
 
