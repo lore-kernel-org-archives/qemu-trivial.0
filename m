@@ -1,32 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VCaac-0002zH-Sm
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Aug 2013 15:30:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49249)
+	id 1VCu2b-000330-FS
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2013 12:16:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32884)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VCaaV-0002tF-21
-	for qemu-trivial@nongnu.org; Thu, 22 Aug 2013 15:30:36 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1VCu2W-0002uZ-J6
+	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 12:16:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VCaaQ-0005bX-3r
-	for qemu-trivial@nongnu.org; Thu, 22 Aug 2013 15:30:30 -0400
-Received: from qemu.weilnetz.de ([37.221.198.45]:51938
-	helo=v2201305906712890.yourvserver.net)
+	(envelope-from <pm215@archaic.org.uk>) id 1VCu2T-000518-Om
+	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 12:16:44 -0400
+Received: from
+	1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa
+	([2001:8b0:1d0::1]:59444 helo=mnementh.archaic.org.uk)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VCaaF-0005XN-S4; Thu, 22 Aug 2013 15:30:15 -0400
-Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id DC70417F56C; Thu, 22 Aug 2013 21:30:10 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>
-Date: Thu, 22 Aug 2013 21:30:09 +0200
-Message-Id: <1377199809-12208-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1VCu2N-0004xI-4b; Fri, 23 Aug 2013 12:16:35 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1VCu2L-0002IM-HN; Fri, 23 Aug 2013 17:16:33 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Fri, 23 Aug 2013 17:16:31 +0100
+Message-Id: <1377274593-8797-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.198.45
-Cc: Stefan Weil <sw@weilnetz.de>, Luiz Capitulino <lcapitulino@redhat.com>
-Subject: [Qemu-trivial] [PATCH] monitor: Add missing attributes to local
-	function
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	patches@linaro.org
+Subject: [Qemu-trivial] [PATCH 0/2] lsi53c895a: avoid integer undefined
+	behaviours
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,31 +40,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Aug 2013 19:30:36 -0000
+X-List-Received-Date: Fri, 23 Aug 2013 16:16:47 -0000
 
-Function expr_error gets a format string and variable arguments like printf.
-It also never returns. Add the necessary attributes.
+More patches to fix clang sanitizer warnings; in this case we
+can fix them and clean up the code a bit by replacing hand-coded
+operations with functions from the bitops header.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- monitor.c |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Peter Maydell (2):
+  hw/scsi/lsi53c895a: Use sextract32 for sign-extension
+  hw/scsi/lsi53c895a: Use deposit32 rather than handcoded shift/mask
 
-diff --git a/monitor.c b/monitor.c
-index da9c9a2..6413d44 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -3171,7 +3171,8 @@ static const MonitorDef monitor_defs[] = {
-     { NULL },
- };
- 
--static void expr_error(Monitor *mon, const char *fmt, ...)
-+static void GCC_FMT_ATTR(2, 3) QEMU_NORETURN
-+expr_error(Monitor *mon, const char *fmt, ...)
- {
-     va_list ap;
-     va_start(ap, fmt);
+ hw/scsi/lsi53c895a.c |   19 ++++++-------------
+ 1 file changed, 6 insertions(+), 13 deletions(-)
+
 -- 
-1.7.10.4
+1.7.9.5
 
 
