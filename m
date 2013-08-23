@@ -1,40 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VCuew-0003ka-6S
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2013 12:56:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42966)
+	id 1VCwOz-00017b-OY
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2013 14:48:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39742)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1VCueo-0003Zi-2E
-	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 12:56:23 -0400
+	(envelope-from <sw@weilnetz.de>) id 1VCwOs-0000xD-8h
+	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 14:48:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1VCuei-0003fo-QX
-	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 12:56:17 -0400
-Received: from goliath.siemens.de ([192.35.17.28]:32753)
+	(envelope-from <sw@weilnetz.de>) id 1VCwOm-0008Rk-Vh
+	for qemu-trivial@nongnu.org; Fri, 23 Aug 2013 14:47:58 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:53689)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>)
-	id 1VCueT-0003XJ-0d; Fri, 23 Aug 2013 12:55:57 -0400
-Received: from mail1.siemens.de (localhost [127.0.0.1])
-	by goliath.siemens.de (8.13.6/8.13.6) with ESMTP id r7NGttMk031842;
-	Fri, 23 Aug 2013 18:55:55 +0200
-Received: from mchn199C.mchp.siemens.de ([139.25.40.156])
-	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id r7NGtsR6014913;
-	Fri, 23 Aug 2013 18:55:55 +0200
-Message-ID: <5217941A.2090208@siemens.com>
-Date: Fri, 23 Aug 2013 18:55:54 +0200
-From: Jan Kiszka <jan.kiszka@siemens.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <sw@weilnetz.de>)
+	id 1VCwOa-0008Lp-4G; Fri, 23 Aug 2013 14:47:40 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	8241B7281C18; Fri, 23 Aug 2013 20:47:37 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id CBEw9ubn1_gu; Fri, 23 Aug 2013 20:47:26 +0200 (CEST)
+Received: from [192.168.0.103] (p54840ACD.dip0.t-ipconnect.de [84.132.10.205])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	1ADBF7280101; Fri, 23 Aug 2013 20:47:24 +0200 (CEST)
+Message-ID: <5217AE38.3060105@weilnetz.de>
+Date: Fri, 23 Aug 2013 20:47:20 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:17.0) Gecko/20130803 Thunderbird/17.0.8
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1377275808-9017-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1377275808-9017-1-git-send-email-peter.maydell@linaro.org>
+To: Christoffer Dall <christoffer.dall@linaro.org>
+References: <1377279256-4303-1-git-send-email-christoffer.dall@linaro.org>
+In-Reply-To: <1377279256-4303-1-git-send-email-christoffer.dall@linaro.org>
+X-Enigmail-Version: 1.4.6
 Content-Type: text/plain; charset=ISO-8859-15
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 192.35.17.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH] slirp/arp_table.c: Avoid shifting into
- sign bit of signed integers
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, linaro-kernel@lists.linaro.org,
+	qemu-devel@nongnu.org, patches@linaro.org, kvmarm@lists.cs.columbia.edu
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] migration: Fix debug
+	print type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,45 +52,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Aug 2013 16:56:24 -0000
+X-List-Received-Date: Fri, 23 Aug 2013 18:48:03 -0000
 
-On 2013-08-23 18:36, Peter Maydell wrote:
-> "0xf << 28" shifts right into the sign bit, since 0xf is a signed
-> integer. Use the 'U' suffix to force an unsigned shift to avoid
-> this undefined behaviour and a clang sanitizer warning.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Am 23.08.2013 19:34, schrieb Christoffer Dall:
+> The printf args are uint64_t and with -Werr QEMU doesn't compile with
+> migration debugging turned on unless this is fixed.  Fix it.
+>
+> Signed-off-by: Christoffer Dall <christoffer.dall@linaro.org>
 > ---
->  slirp/arp_table.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/slirp/arp_table.c b/slirp/arp_table.c
-> index bf698c1..ecdb0ba 100644
-> --- a/slirp/arp_table.c
-> +++ b/slirp/arp_table.c
-> @@ -38,7 +38,7 @@ void arp_table_add(Slirp *slirp, uint32_t ip_addr, uint8_t ethaddr[ETH_ALEN])
->                  ethaddr[3], ethaddr[4], ethaddr[5]));
->  
->      /* Check 0.0.0.0/8 invalid source-only addresses */
-> -    if ((ip_addr & htonl(~(0xf << 28))) == 0) {
-> +    if ((ip_addr & htonl(~(0xfU << 28))) == 0) {
->          return;
->      }
->  
-> @@ -74,7 +74,7 @@ bool arp_table_search(Slirp *slirp, uint32_t ip_addr,
->      DEBUG_ARG("ip = 0x%x", ip_addr);
->  
->      /* Check 0.0.0.0/8 invalid source-only addresses */
-> -    assert((ip_addr & htonl(~(0xf << 28))) != 0);
-> +    assert((ip_addr & htonl(~(0xfU << 28))) != 0);
->  
->      /* If broadcast address */
->      if (ip_addr == 0xffffffff || ip_addr == broadcast_addr) {
-> 
+>
+> [Changelog v1 -> v2]:
+>   - Use PRIu64 instead of %llu
+>
+>  migration.c |    3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/migration.c b/migration.c
+> index 1402fa7..e9b83f6 100644
+> --- a/migration.c
+> +++ b/migration.c
+> @@ -566,7 +566,8 @@ static void *migration_thread(void *opaque)
+>          if (!qemu_file_rate_limit(s->file)) {
+>              DPRINTF("iterate\n");
+>              pending_size = qemu_savevm_state_pending(s->file, max_size);
+> -            DPRINTF("pending size %lu max %lu\n", pending_size, max_size);
+> +            DPRINTF("pending size %" PRIu64 " max %" PRIu64 "\n",
+> +                    pending_size, max_size);
+>              if (pending_size && pending_size >= max_size) {
+>                  qemu_savevm_state_iterate(s->file);
+>              } else {
 
-Acked-by: Jan Kiszka <jan.kiszka@siemens.com>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
--- 
-Siemens AG, Corporate Technology, CT RTC ITP SES-DE
-Corporate Competence Center Embedded Linux
+max_size is not uint64_t but int64_t, so PRId64 would be even better
+for that argument, but I don't think this is worth an additional iteration.
+
+CC'ing qemu-trivial, the patch can be applied there.
+
+Regards,
+Stefan
+
 
