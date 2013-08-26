@@ -1,44 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VDrZ3-0007V9-Ez
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Aug 2013 03:50:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52497)
+	id 1VDv8o-0005lF-6Z
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Aug 2013 07:39:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45053)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1VDrYw-0007NQ-TJ
-	for qemu-trivial@nongnu.org; Mon, 26 Aug 2013 03:50:16 -0400
+	(envelope-from <stefanha@redhat.com>) id 1VDv8g-0005b2-PZ
+	for qemu-trivial@nongnu.org; Mon, 26 Aug 2013 07:39:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1VDrYq-0001qU-Ut
-	for qemu-trivial@nongnu.org; Mon, 26 Aug 2013 03:50:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:30133)
+	(envelope-from <stefanha@redhat.com>) id 1VDv8a-00069t-Rl
+	for qemu-trivial@nongnu.org; Mon, 26 Aug 2013 07:39:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:61763)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1VDrYe-0001bh-JF; Mon, 26 Aug 2013 03:49:52 -0400
+	(envelope-from <stefanha@redhat.com>)
+	id 1VDv8N-00066I-TB; Mon, 26 Aug 2013 07:39:00 -0400
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r7Q7nom1025711
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r7QBcwEU032517
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 26 Aug 2013 03:49:50 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-45.ams2.redhat.com
-	[10.36.112.45])
+	Mon, 26 Aug 2013 07:38:58 -0400
+Received: from localhost (ovpn-112-23.ams2.redhat.com [10.36.112.23])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r7Q7ngQa006965; Mon, 26 Aug 2013 03:49:48 -0400
-Message-ID: <521B0895.7070509@redhat.com>
-Date: Mon, 26 Aug 2013 09:49:41 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1377274593-8797-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1377274593-8797-1-git-send-email-peter.maydell@linaro.org>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
+	id r7QBctOF005276; Mon, 26 Aug 2013 07:38:56 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: <qemu-devel@nongnu.org>
+Date: Mon, 26 Aug 2013 13:38:50 +0200
+Message-Id: <1377517130-12343-1-git-send-email-stefanha@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH 0/2] lsi53c895a: avoid integer undefined
-	behaviours
+Cc: qemu-trivial@nongnu.org, Fam Zheng <famz@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [Qemu-trivial] [PATCH] curl: qemu_bh_new() can never return NULL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,22 +41,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Aug 2013 07:50:17 -0000
+X-List-Received-Date: Mon, 26 Aug 2013 11:39:24 -0000
 
-Il 23/08/2013 18:16, Peter Maydell ha scritto:
-> More patches to fix clang sanitizer warnings; in this case we
-> can fix them and clean up the code a bit by replacing hand-coded
-> operations with functions from the bitops header.
-> 
-> Peter Maydell (2):
->   hw/scsi/lsi53c895a: Use sextract32 for sign-extension
->   hw/scsi/lsi53c895a: Use deposit32 rather than handcoded shift/mask
-> 
->  hw/scsi/lsi53c895a.c |   19 ++++++-------------
->  1 file changed, 6 insertions(+), 13 deletions(-)
-> 
+Drop error code path which cannot be taken since qemu_bh_new() does not
+return NULL.
 
-Applied both to scsi-next, thanks.
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ block/curl.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-Paolo
+diff --git a/block/curl.c b/block/curl.c
+index e566855..ca2cedc 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -572,12 +572,6 @@ static BlockDriverAIOCB *curl_aio_readv(BlockDriverState *bs,
+     acb->nb_sectors = nb_sectors;
+ 
+     acb->bh = qemu_bh_new(curl_readv_bh_cb, acb);
+-
+-    if (!acb->bh) {
+-        DPRINTF("CURL: qemu_bh_new failed\n");
+-        return NULL;
+-    }
+-
+     qemu_bh_schedule(acb->bh);
+     return &acb->common;
+ }
+-- 
+1.8.3.1
+
 
