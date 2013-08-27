@@ -1,33 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VEfwV-00074e-4n
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2013 09:37:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39746)
+	id 1VEfwY-00078K-RF
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2013 09:37:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40338)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Yongbok.Kim@imgtec.com>) id 1VEMRp-0003d8-Fj
-	for qemu-trivial@nongnu.org; Tue, 27 Aug 2013 12:48:57 -0400
+	(envelope-from <antonynpavlov@gmail.com>) id 1VEQuZ-0002ru-0v
+	for qemu-trivial@nongnu.org; Tue, 27 Aug 2013 17:34:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Yongbok.Kim@imgtec.com>) id 1VEMRl-0003ha-0I
-	for qemu-trivial@nongnu.org; Tue, 27 Aug 2013 12:48:53 -0400
-Received: from multi.imgtec.com ([194.200.65.239]:53234)
+	(envelope-from <antonynpavlov@gmail.com>) id 1VEQuQ-0004wT-27
+	for qemu-trivial@nongnu.org; Tue, 27 Aug 2013 17:34:50 -0400
+Received: from mail-la0-x22b.google.com ([2a00:1450:4010:c03::22b]:35177)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Yongbok.Kim@imgtec.com>)
-	id 1VEMRk-0003hE-RO; Tue, 27 Aug 2013 12:48:48 -0400
-From: Yongbok Kim <yongbok.kim@imgtec.com>
-To: <qemu-devel@nongnu.org>
-Date: Tue, 27 Aug 2013 17:48:36 +0100
-Message-ID: <1377622116-37650-1-git-send-email-yongbok.kim@imgtec.com>
-X-Mailer: git-send-email 1.7.4
+	(envelope-from <antonynpavlov@gmail.com>) id 1VEQuP-0004wI-Px
+	for qemu-trivial@nongnu.org; Tue, 27 Aug 2013 17:34:41 -0400
+Received: by mail-la0-f43.google.com with SMTP id ep20so3977341lab.2
+	for <qemu-trivial@nongnu.org>; Tue, 27 Aug 2013 14:34:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:mime-version:content-type
+	:content-transfer-encoding;
+	bh=Wv8MDoiAcdZj9FDvi/rJjBKv9qr+SvX5Ci93bLRpvzo=;
+	b=KyrFDuwys0gRDSthrTUKq+4tZxCW8Uy4eeqoflZFcD1X5jmtoInZWeWwGP631yIYWq
+	BqhFlhOcN70uKNlFTS49pe57GtlPRbJr6wngIi/o8UZJMWah1+oVWql/Es1m0Nlqn/K+
+	KYLISZlEiMezqAcAV9D4g3ujZb3EsmBCnDdTUQMwri/IigHce5zsKWQRFZUG+UX+fdUX
+	Op1CUeHoYAT+O4IUEFDVDGY5E7meXsXFFEQaUiy+0nteqBrtCLD8JCHhWrCRE/m5TMco
+	Gk+0DMocUNvkuNkZnNAmgXs1AarStE70SHsFV2jBzEiVuckoPFlUSo0UJwbGZ0wq3siX
+	fCCw==
+X-Received: by 10.152.121.65 with SMTP id li1mr3897618lab.31.1377639280411;
+	Tue, 27 Aug 2013 14:34:40 -0700 (PDT)
+Received: from localhost.localdomain (ppp37-190-57-26.pppoe.spdop.ru.
+	[37.190.57.26])
+	by mx.google.com with ESMTPSA id ua4sm7924705lbb.17.1969.12.31.16.00.00
+	(version=TLSv1.2 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 27 Aug 2013 14:34:39 -0700 (PDT)
+From: Antony Pavlov <antonynpavlov@gmail.com>
+To: qemu-trivial@nongnu.org
+Date: Wed, 28 Aug 2013 01:32:14 +0400
+Message-Id: <1377639134-22804-1-git-send-email-antonynpavlov@gmail.com>
+X-Mailer: git-send-email 1.8.4.rc3
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [192.168.14.85]
-X-SEF-Processed: 7_3_0_01192__2013_08_27_17_48_48
-X-detected-operating-system: by eggs.gnu.org: Windows XP
-X-Received-From: 194.200.65.239
-X-Mailman-Approved-At: Wed, 28 Aug 2013 09:37:46 -0400
-Cc: qemu-trivial@nongnu.org, yongbok.kim@imgtec.com, james.hogan@imgtec.com
-Subject: [Qemu-trivial] [PATCH] target-mips: fix get_physical_address() #if
-	0 build error
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c03::22b
+X-Mailman-Approved-At: Wed, 28 Aug 2013 09:37:52 -0400
+Cc: Antony Pavlov <antonynpavlov@gmail.com>
+Subject: [Qemu-trivial] [PATCH] pflash_cfi02.c: fix debug macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,41 +56,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Aug 2013 16:48:58 -0000
+X-List-Received-Date: Tue, 27 Aug 2013 21:34:59 -0000
 
-From: James Hogan <james.hogan@imgtec.com>
+If PFLASH_DEBUG is enabled then we have some build errors:
 
-In get_physical_address() is a qemu_log() call inside an #if 0 block.
-When enabled the following build error is hit:
+hw/block/pflash_cfi02.c: In function ‘pflash_timer’:
+hw/block/pflash_cfi02.c:128:5: error: expected ‘)’ before string constant
+hw/block/pflash_cfi02.c:128:5: error: too few arguments to function ‘fprintf’
 
-target-mips/helper.c In function ‘get_physical_address’:
-target-mips/helper.c:220:13: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘hwaddr’ [-Werror=format]
+This patch fixes the problem.
 
-Fix the *physical (hwaddr) formatting by using "%"HWADDR_PRIx instead of
-TARGET_FMT_lx.
-
-Signed-off-by: James Hogan <james.hogan@imgtec.com>
-Cc: Aurelien Jarno <aurelien@aurel32.net>
-Signed-off-by: Yongbok Kim <yongbok.kim@imgtec.com>
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
 ---
- target-mips/helper.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ hw/block/pflash_cfi02.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target-mips/helper.c b/target-mips/helper.c
-index 6feef7b..33e0e88 100644
---- a/target-mips/helper.c
-+++ b/target-mips/helper.c
-@@ -193,7 +193,7 @@ static int get_physical_address (CPUMIPSState *env, hwaddr *physical,
-         }
-     }
- #if 0
--    qemu_log(TARGET_FMT_lx " %d %d => " TARGET_FMT_lx " %d (%d)\n",
-+    qemu_log(TARGET_FMT_lx " %d %d => %" HWADDR_PRIx " %d (%d)\n",
-             address, rw, access_type, *physical, *prot, ret);
- #endif
- 
+diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+index 99445b0..8d4b828 100644
+--- a/hw/block/pflash_cfi02.c
++++ b/hw/block/pflash_cfi02.c
+@@ -47,7 +47,7 @@
+ #ifdef PFLASH_DEBUG
+ #define DPRINTF(fmt, ...)                                  \
+ do {                                                       \
+-    fprintf(stderr "PFLASH: " fmt , ## __VA_ARGS__);       \
++    fprintf(stderr, "PFLASH: " fmt , ## __VA_ARGS__);       \
+ } while (0)
+ #else
+ #define DPRINTF(fmt, ...) do { } while (0)
 -- 
-1.7.4
-
+1.8.4.rc3
 
 
