@@ -1,49 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VEavJ-0001hK-E6
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2013 04:16:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56366)
+	id 1VEfw9-0006cw-9b
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2013 09:37:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45874)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VEavD-0001av-Tq
-	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 04:16:16 -0400
+	(envelope-from <JKrupa@suse.com>) id 1VEKyq-0005MR-KJ
+	for qemu-trivial@nongnu.org; Tue, 27 Aug 2013 11:14:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VEav8-00059B-B3
-	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 04:16:11 -0400
-Received: from mail-lb0-f172.google.com ([209.85.217.172]:54236)
+	(envelope-from <JKrupa@suse.com>) id 1VEKyk-0006uU-M9
+	for qemu-trivial@nongnu.org; Tue, 27 Aug 2013 11:14:52 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:46281 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VEav8-00058w-4l
-	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 04:16:06 -0400
-Received: by mail-lb0-f172.google.com with SMTP id v1so3561023lbd.3
-	for <qemu-trivial@nongnu.org>; Wed, 28 Aug 2013 01:16:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=google.com; s=20120113;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=lDYfBJrOAbl+cJGffzM/4WrZlbt0yRSiL0l62hAvEkQ=;
-	b=NjlOULtOwEFyT4Rf6v7msWk71cqW7yqLPrlA+UyhiyNQzz6gGmxPu/n0JsvlZ05SB2
-	R0M0iGW2RCELjE/GNzY4cnY46Ei5k5PawvhksCjlmst58yotyRt0LmpACPR4DHW+wmUl
-	Lw3jTOdB20cun2spr2ihojF1pls0l5Widn/cIFyR1M+WPd4zzAldCHLtlHpYiBPVCqzG
-	iJ2hqK94xkOU+N4GeyfsoXDr/de7G4aPAc8Ua4rtxbD315xmNeMXeym1P50PpkmivNle
-	9aESgYH9oeN4JvlMWaoo51Ell9liNm+UPGUmYLppF+z2KtfszK6/fI1t3tkB4F2bZQOi
-	wuZw==
-X-Gm-Message-State: ALoCoQkgYdXMP7lpSQxybpqV8jImYAaJbEk88TN37s9+Qv58NY5PbVQmPOwJ6+tmHJNynTR4DOrX
-X-Received: by 10.112.29.17 with SMTP id f17mr48103lbh.45.1377677764305; Wed,
-	28 Aug 2013 01:16:04 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.169.70 with HTTP; Wed, 28 Aug 2013 01:15:44 -0700 (PDT)
-In-Reply-To: <1377664796-11698-1-git-send-email-sw@weilnetz.de>
-References: <1377664796-11698-1-git-send-email-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 28 Aug 2013 09:15:44 +0100
-Message-ID: <CAFEAcA8uJGphig_gzc2hrJCHejjq1qW-eq7NXScDHWVRRk7KeA@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Paul Brook <paul@codesourcery.com>
-Subject: Re: [Qemu-trivial] [PATCH] target-arm: Report unimplemented opcodes
-	(LOG_UNIMP)
+	(envelope-from <JKrupa@suse.com>)
+	id 1VEKyY-0006rr-8d; Tue, 27 Aug 2013 11:14:34 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id A2B15A52D9;
+	Tue, 27 Aug 2013 17:14:32 +0200 (CEST)
+From: Jan Krupa <JKrupa@suse.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 27 Aug 2013 17:14:47 +0200
+Message-Id: <1377616488-16491-3-git-send-email-JKrupa@suse.com>
+X-Mailer: git-send-email 1.6.0.2
+In-Reply-To: <1377616488-16491-2-git-send-email-JKrupa@suse.com>
+References: <1377616488-16491-1-git-send-email-JKrupa@suse.com>
+	<1377616488-16491-2-git-send-email-JKrupa@suse.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+X-Mailman-Approved-At: Wed, 28 Aug 2013 09:37:28 -0400
+Cc: qemu-trivial@nongnu.org, Jan Krupa <jkrupa@suse.com>, anthony@codemonkey.ws
+Subject: [Qemu-trivial] [PATCH 2/3] qemu-char: add Czech keymap file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,50 +39,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Aug 2013 08:16:16 -0000
+X-List-Received-Date: Tue, 27 Aug 2013 15:14:58 -0000
 
-On 28 August 2013 05:39, Stefan Weil <sw@weilnetz.de> wrote:
-> These unimplemented opcodes are handled like illegal opcodes, but
-> they are used in existing code. We should at least report when they
-> are executed.
+This patch adds Czech keyboard layout to available keymap files.
 
-Yeah, seems reasonable. (There might be other unimplemented
-bits lurking too but we can add logging when we find them.)
+Signed-off-by: Jan Krupa <jkrupa@suse.com>
+---
+ pc-bios/keymaps/cz |   94 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 files changed, 94 insertions(+), 0 deletions(-)
+ create mode 100644 pc-bios/keymaps/cz
 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+diff --git a/pc-bios/keymaps/cz b/pc-bios/keymaps/cz
+new file mode 100644
+index 0000000..6584bfb
+--- /dev/null
++++ b/pc-bios/keymaps/cz
+@@ -0,0 +1,94 @@
++include common
++
++# Czech qwertz layout
++# comments are czech descriptions of the characters
++
++# -----------
++#  First row
++# -----------
++
++# strednik, kolecko
++semicolon 0x29
++dead_abovering 0x29 shift
++
++# numbers
++plus 0x2
++1 0x2 shift
++ecaron 0x3
++2 0x3 shift
++scaron 0x4
++3 0x4 shift
++ccaron 0x5
++4 0x5 shift
++rcaron 0x6
++5 0x6 shift
++zcaron 0x7
++6 0x7 shift
++yacute 0x8
++7 0x8 shift
++aacute 0x9
++8 0x9 shift
++iacute 0xa
++9 0xa shift
++eacute 0xb
++0 0xb shift
++
++# rovnitko
++equal 0x0c
++percent 0x0c shift
++
++# carka, hacek
++dead_acute 0x0d
++dead_caron 0x0d shift
++
++# ------------
++#  Second row
++# ------------
++
++z 0x15 addupper
++
++# u s carkou, zpetne lomitko
++uacute 0x1a
++slash 0x1a shift
++
++# prava zavorka, leva zavorka
++parenright 0x1b
++parenleft 0x1b shift
++
++# -----------
++#  Third row
++# -----------
++
++# u s krouzkem, uvozovky
++uring 0x27
++quotedbl 0x27 shift
++
++# paragraf, vykricnik
++section 0x28
++exclam 0x28 shift
++
++# vodorovna dvojtecka, apostrof
++dead_diaeresis 0x2b
++apostrophe 0x2b shift
++
++# ------------
++#  Fourth row
++# ------------
++
++# zpetne lomitko, roura
++backslash 0x2b
++bar 0x2b shift
++
++y 0x2c addupper
++
++# carka, otaznik
++comma 0x33
++question 0x33 shift
++
++# tecka, dvojtecka
++period 0x34
++colon 0x34 shift
++
++# minus, podtrzitko
++minus 0x35
++underscore 0x35 shift
+-- 
+1.6.0.2
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-> When running a QEMU system emulation of an ARM system
-> (Raspberry PI), Linux booted, but when I tried to run a
-> user session, it terminated without error message.
->
-> It took me some time to see that bash got an illegal
-> instruction exception. It was caused by ARM opcode 'setend'
-> which is not implemented in QEMU's ARM emulation.
-> The patch should help detecting similar scenarios in
-> the future.
->
-> Raspberry PI uses 'setend' in an optimized version of
-> memcmp, so lots of other executables also fail with QEMU.
->
-> As a workaround, the preloading of that optimized code
-> can be removed. Of course an improved QEMU emulation
-> would be better.
-
-setend is kinda hard to emulate[*] and it's generally not used
-by anything (except this weird memcmp implementation).
-I'm inclined to think this "optimized" version of memcmp is a
-bad idea -- I think setend is expensive on hardware, and I've
-never seen it suggested by any of the toolchain folks who
-do work on optimised versions of string routines. OTOH I
-haven't run any benchmarks and hopefully whoever wrote
-that rpi code did.
-
-[*] not impossible, we already do something on the ppc
-that's similar; however I'd really want to take the time to
-figure out how to do endianness swapping "properly"
-and what qemu does currently before messing with it.
-
--- PMM
 
