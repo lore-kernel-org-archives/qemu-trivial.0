@@ -1,32 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VEjXl-0004UO-3Q
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2013 13:28:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45779)
+	id 1VEk8u-0004zm-G4
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2013 14:06:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57020)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VEjXe-0003uF-TX
-	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 13:28:31 -0400
+	(envelope-from <rth7680@gmail.com>) id 1VEk8n-0004r2-Fk
+	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 14:06:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VEjXa-0005mz-0l
-	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 13:28:26 -0400
-Received: from qemu.weilnetz.de ([37.221.198.45]:36063
-	helo=v2201305906712890.yourvserver.net)
+	(envelope-from <rth7680@gmail.com>) id 1VEk8i-0002H1-Mt
+	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 14:06:49 -0400
+Received: from mail-yh0-x231.google.com ([2607:f8b0:4002:c01::231]:45900)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VEjXQ-0005ZZ-2r; Wed, 28 Aug 2013 13:28:12 -0400
-Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id 82870180117; Wed, 28 Aug 2013 19:28:07 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>
-Date: Wed, 28 Aug 2013 19:28:06 +0200
-Message-Id: <1377710886-25198-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.198.45
-Cc: Stefan Weil <sw@weilnetz.de>, Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-trivial] [PATCH] tci: Remove function tcg_out64 (fix broken
-	build)
+	(envelope-from <rth7680@gmail.com>)
+	id 1VEk8Y-0002Fv-TH; Wed, 28 Aug 2013 14:06:34 -0400
+Received: by mail-yh0-f49.google.com with SMTP id v1so1690300yhn.8
+	for <multiple recipients>; Wed, 28 Aug 2013 11:06:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=GV/LWD/OoEreMl21Z6vrDpjm5Iwe/lLj13Bk1cOlXzY=;
+	b=woTYjmecy8qKi+I97e7Li11BPcLxtKZvYlxlXTap7OEWVJ8GRmBKBrVgqnUZSW1Wqf
+	WMdED0FgpktgG/i+8+TDmdZDOSm8Q/Lp6xtHrYGRG/9FLh+gp/dcVOtEdqdAKuLe+aB8
+	VMvg3JCytuxWOl26nlmUhAF8BIHmclX9wU/SbykC+hLC9LV8vvgEAQicZRYOdXz/Uy7F
+	BTPt2/GIXUSkv0deJb6gbHrvy3Rd6WInRTxXztoXC1mYeJWvQXaWp0YwzM5oV+4f3RE9
+	UwG8+LbdQuYaC2UwEiyP3I09YdrS5QNDZ76QjDCK8MIQ/tZPadj0DbYpciwWjWw8AVm3
+	khXA==
+X-Received: by 10.236.154.197 with SMTP id h45mr26372180yhk.22.1377713194359; 
+	Wed, 28 Aug 2013 11:06:34 -0700 (PDT)
+Received: from anchor.twiddle.net
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by mx.google.com with ESMTPSA id
+	t22sm21733741yhd.19.1969.12.31.16.00.00
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Wed, 28 Aug 2013 11:06:33 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Message-ID: <521E3C25.6090602@twiddle.net>
+Date: Wed, 28 Aug 2013 11:06:29 -0700
+From: Richard Henderson <rth@twiddle.net>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>
+References: <1377710886-25198-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1377710886-25198-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4002:c01::231
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] tci: Remove function tcg_out64 (fix
+	broken build)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,36 +62,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Aug 2013 17:28:32 -0000
+X-List-Received-Date: Wed, 28 Aug 2013 18:06:54 -0000
 
-Commit ac26eb69a311396668809eadbf7ff4e623447d4c added tcg_out64 to tcg/tcg.c.
-tcg/tci/tcg-target.c already had a nearly identical implementation which is
-now removed to fix a compiler error.
+On 08/28/2013 10:28 AM, Stefan Weil wrote:
+> Commit ac26eb69a311396668809eadbf7ff4e623447d4c added tcg_out64 to tcg/tcg.c.
+> tcg/tci/tcg-target.c already had a nearly identical implementation which is
+> now removed to fix a compiler error.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- tcg/tci/tcg-target.c |    7 -------
- 1 file changed, 7 deletions(-)
+Oops, yes.
 
-diff --git a/tcg/tci/tcg-target.c b/tcg/tci/tcg-target.c
-index e118bc7..eb23832 100644
---- a/tcg/tci/tcg-target.c
-+++ b/tcg/tci/tcg-target.c
-@@ -415,13 +415,6 @@ static void tcg_out_i(TCGContext *s, tcg_target_ulong v)
-     s->code_ptr += sizeof(tcg_target_ulong);
- }
- 
--/* Write 64 bit value. */
--static void tcg_out64(TCGContext *s, uint64_t v)
--{
--    *(uint64_t *)s->code_ptr = v;
--    s->code_ptr += sizeof(v);
--}
--
- /* Write opcode. */
- static void tcg_out_op_t(TCGContext *s, TCGOpcode op)
- {
--- 
-1.7.10.4
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
+
+r~
 
