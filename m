@@ -1,56 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VEPGP-0006Nb-DL
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2013 15:49:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48976)
+	id 1VEXY6-0007hT-G2
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2013 00:40:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53632)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1VEPGF-0005vT-V0
-	for qemu-trivial@nongnu.org; Tue, 27 Aug 2013 15:49:16 -0400
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VEXY3-0007cl-Vu
+	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 00:40:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1VEPG7-0008N6-HL
-	for qemu-trivial@nongnu.org; Tue, 27 Aug 2013 15:49:07 -0400
-Received: from mail-ye0-x22d.google.com ([2607:f8b0:4002:c04::22d]:50041)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VEXY3-0005Y3-20
+	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 00:40:03 -0400
+Received: from [2a03:4000:2:362::1] (port=46711
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1VEPFq-0008L3-I3; Tue, 27 Aug 2013 15:48:42 -0400
-Received: by mail-ye0-f173.google.com with SMTP id g12so1310008yee.4
-	for <multiple recipients>; Tue, 27 Aug 2013 12:48:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=d8EcAQezZ3Wibg7RHzLV0yCH1ytqClWENaRmsX4ekOw=;
-	b=Pi5WIVKXwomwmZ4LHemLDgE+rHlBZd1BCO24N0uaC7K34CaRvH56tABAFhkytLrA+O
-	lpa1LGAr08ISFQb2pb3+SSH9DoP3dEhVx64XFLi4ddhLjtZYr+I0ZdNpQXxA+hU7ejYU
-	Fttp8OBMLCfPilyTHGqOOPlI4Fy5medYZuMUVRi8RmCHCHomOC0KcNqdRSYbO7K4DaaO
-	EEqskX1FbPvzRzi2iKqrt8EmIfyqghHV2Rx80nOnnyUXNMhBCGvEK3/pPwLkliPYDhFs
-	nbtljrJ7GKXPkXEUGGgcTH1bSwHj9v2WLRSEFfeIwDJP/pjTXgn0rYZFHPJUbVk+WKEH
-	fb3g==
-X-Received: by 10.236.181.194 with SMTP id l42mr21208070yhm.26.1377632921952; 
-	Tue, 27 Aug 2013 12:48:41 -0700 (PDT)
-Received: from anchor.twiddle.net
-	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
-	by mx.google.com with ESMTPSA id
-	f67sm26358170yhi.10.1969.12.31.16.00.00
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Tue, 27 Aug 2013 12:48:40 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Message-ID: <521D028F.1070505@twiddle.net>
-Date: Tue, 27 Aug 2013 12:48:31 -0700
-From: Richard Henderson <rth@twiddle.net>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
-MIME-Version: 1.0
-To: Yongbok Kim <yongbok.kim@imgtec.com>
-References: <1377622116-37650-1-git-send-email-yongbok.kim@imgtec.com>
-In-Reply-To: <1377622116-37650-1-git-send-email-yongbok.kim@imgtec.com>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VEXY0-0005Rg-IP; Wed, 28 Aug 2013 00:40:00 -0400
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id 4284B17FCC5; Wed, 28 Aug 2013 06:39:57 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>
+Date: Wed, 28 Aug 2013 06:39:56 +0200
+Message-Id: <1377664796-11698-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c04::22d
-Cc: qemu-trivial@nongnu.org, james.hogan@imgtec.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-mips: fix
- get_physical_address() #if 0 build error
+X-Received-From: 2a03:4000:2:362::1
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Paul Brook <paul@codesourcery.com>, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] target-arm: Report unimplemented opcodes
+	(LOG_UNIMP)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,20 +40,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Aug 2013 19:49:16 -0000
+X-List-Received-Date: Wed, 28 Aug 2013 04:40:04 -0000
 
-On 08/27/2013 09:48 AM, Yongbok Kim wrote:
->  #if 0
-> -    qemu_log(TARGET_FMT_lx " %d %d => " TARGET_FMT_lx " %d (%d)\n",
-> +    qemu_log(TARGET_FMT_lx " %d %d => %" HWADDR_PRIx " %d (%d)\n",
->              address, rw, access_type, *physical, *prot, ret);
->  #endif
+These unimplemented opcodes are handled like illegal opcodes, but
+they are used in existing code. We should at least report when they
+are executed.
 
-While by itself correct, consider converting this to the trace infrastructure
-(with uint64_t instead of hwaddr).
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
-If it's not worth a trace, it's probably not worth keeping at all.
+When running a QEMU system emulation of an ARM system
+(Raspberry PI), Linux booted, but when I tried to run a
+user session, it terminated without error message.
 
+It took me some time to see that bash got an illegal
+instruction exception. It was caused by ARM opcode 'setend'
+which is not implemented in QEMU's ARM emulation.
+The patch should help detecting similar scenarios in
+the future.
 
-r~
+Raspberry PI uses 'setend' in an optimized version of
+memcmp, so lots of other executables also fail with QEMU.
+
+As a workaround, the preloading of that optimized code
+can be removed. Of course an improved QEMU emulation
+would be better.
+
+Regards,
+Stefan
+
+ target-arm/translate.c |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index d1e8538..92d9f16 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -6715,6 +6715,7 @@ static void disas_arm_insn(CPUARMState * env, DisasContext *s)
+             /* setend */
+             if (((insn >> 9) & 1) != s->bswap_code) {
+                 /* Dynamic endianness switching not implemented. */
++                qemu_log_mask(LOG_UNIMP, "arm: unimplemented setend\n");
+                 goto illegal_op;
+             }
+             return;
+@@ -8740,6 +8741,8 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+ 
+                 if (insn & (1 << 26)) {
+                     /* Secure monitor call (v6Z) */
++                    qemu_log_mask(LOG_UNIMP,
++                                  "arm: unimplemented secure monitor call\n");
+                     goto illegal_op; /* not implemented.  */
+                 } else {
+                     op = (insn >> 20) & 7;
+@@ -9779,6 +9782,7 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+                 ARCH(6);
+                 if (((insn >> 3) & 1) != s->bswap_code) {
+                     /* Dynamic endianness switching not implemented. */
++                    qemu_log_mask(LOG_UNIMP, "arm: unimplemented setend\n");
+                     goto illegal_op;
+                 }
+                 break;
+-- 
+1.7.10.4
+
 
