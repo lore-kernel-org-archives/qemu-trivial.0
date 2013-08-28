@@ -1,56 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VEk8u-0004zm-G4
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2013 14:06:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57020)
+	id 1VEmtb-0003b5-BU
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2013 17:03:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37203)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1VEk8n-0004r2-Fk
-	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 14:06:54 -0400
+	(envelope-from <aurelien@aurel32.net>) id 1VEmtY-0003XZ-HT
+	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 17:03:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1VEk8i-0002H1-Mt
-	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 14:06:49 -0400
-Received: from mail-yh0-x231.google.com ([2607:f8b0:4002:c01::231]:45900)
+	(envelope-from <aurelien@aurel32.net>) id 1VEmtX-0006tU-Cr
+	for qemu-trivial@nongnu.org; Wed, 28 Aug 2013 17:03:16 -0400
+Received: from hall.aurel32.net ([2001:470:1f0b:4a8::1]:35127)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1VEk8Y-0002Fv-TH; Wed, 28 Aug 2013 14:06:34 -0400
-Received: by mail-yh0-f49.google.com with SMTP id v1so1690300yhn.8
-	for <multiple recipients>; Wed, 28 Aug 2013 11:06:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=GV/LWD/OoEreMl21Z6vrDpjm5Iwe/lLj13Bk1cOlXzY=;
-	b=woTYjmecy8qKi+I97e7Li11BPcLxtKZvYlxlXTap7OEWVJ8GRmBKBrVgqnUZSW1Wqf
-	WMdED0FgpktgG/i+8+TDmdZDOSm8Q/Lp6xtHrYGRG/9FLh+gp/dcVOtEdqdAKuLe+aB8
-	VMvg3JCytuxWOl26nlmUhAF8BIHmclX9wU/SbykC+hLC9LV8vvgEAQicZRYOdXz/Uy7F
-	BTPt2/GIXUSkv0deJb6gbHrvy3Rd6WInRTxXztoXC1mYeJWvQXaWp0YwzM5oV+4f3RE9
-	UwG8+LbdQuYaC2UwEiyP3I09YdrS5QNDZ76QjDCK8MIQ/tZPadj0DbYpciwWjWw8AVm3
-	khXA==
-X-Received: by 10.236.154.197 with SMTP id h45mr26372180yhk.22.1377713194359; 
-	Wed, 28 Aug 2013 11:06:34 -0700 (PDT)
-Received: from anchor.twiddle.net
-	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
-	by mx.google.com with ESMTPSA id
-	t22sm21733741yhd.19.1969.12.31.16.00.00
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Wed, 28 Aug 2013 11:06:33 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Message-ID: <521E3C25.6090602@twiddle.net>
-Date: Wed, 28 Aug 2013 11:06:29 -0700
-From: Richard Henderson <rth@twiddle.net>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
+	(envelope-from <aurelien@aurel32.net>)
+	id 1VEmtU-0006pC-Dt; Wed, 28 Aug 2013 17:03:12 -0400
+Received: from [2001:470:d4ed:1:2db:dfff:fe14:52d] (helo=ohm.aurel32.net)
+	by hall.aurel32.net with esmtpsa (TLS1.2:DHE_RSA_AES_128_CBC_SHA1:128)
+	(Exim 4.80) (envelope-from <aurelien@aurel32.net>)
+	id 1VEmtT-0003sz-I7; Wed, 28 Aug 2013 23:03:11 +0200
+Received: from aurel32 by ohm.aurel32.net with local (Exim 4.80)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1VEmtS-0007Pv-1e; Wed, 28 Aug 2013 23:03:10 +0200
+Date: Wed, 28 Aug 2013 23:03:10 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Yongbok Kim <yongbok.kim@imgtec.com>
+Message-ID: <20130828210310.GE5908@ohm.aurel32.net>
+References: <1377622116-37650-1-git-send-email-yongbok.kim@imgtec.com>
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1377710886-25198-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1377710886-25198-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1377622116-37650-1-git-send-email-yongbok.kim@imgtec.com>
+X-Mailer: Mutt 1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c01::231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] tci: Remove function tcg_out64 (fix
-	broken build)
+X-Received-From: 2001:470:1f0b:4a8::1
+Cc: qemu-trivial@nongnu.org, james.hogan@imgtec.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-mips: fix
+ get_physical_address() #if 0 build error
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,19 +48,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Aug 2013 18:06:54 -0000
+X-List-Received-Date: Wed, 28 Aug 2013 21:03:17 -0000
 
-On 08/28/2013 10:28 AM, Stefan Weil wrote:
-> Commit ac26eb69a311396668809eadbf7ff4e623447d4c added tcg_out64 to tcg/tcg.c.
-> tcg/tci/tcg-target.c already had a nearly identical implementation which is
-> now removed to fix a compiler error.
+On Tue, Aug 27, 2013 at 05:48:36PM +0100, Yongbok Kim wrote:
+> From: James Hogan <james.hogan@imgtec.com>
 > 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> In get_physical_address() is a qemu_log() call inside an #if 0 block.
+> When enabled the following build error is hit:
+> 
+> target-mips/helper.c In function ‘get_physical_address’:
+> target-mips/helper.c:220:13: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘hwaddr’ [-Werror=format]
+> 
+> Fix the *physical (hwaddr) formatting by using "%"HWADDR_PRIx instead of
+> TARGET_FMT_lx.
+> 
+> Signed-off-by: James Hogan <james.hogan@imgtec.com>
+> Cc: Aurelien Jarno <aurelien@aurel32.net>
+> Signed-off-by: Yongbok Kim <yongbok.kim@imgtec.com>
+> ---
+>  target-mips/helper.c |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+> 
+> diff --git a/target-mips/helper.c b/target-mips/helper.c
+> index 6feef7b..33e0e88 100644
+> --- a/target-mips/helper.c
+> +++ b/target-mips/helper.c
+> @@ -193,7 +193,7 @@ static int get_physical_address (CPUMIPSState *env, hwaddr *physical,
+>          }
+>      }
+>  #if 0
+> -    qemu_log(TARGET_FMT_lx " %d %d => " TARGET_FMT_lx " %d (%d)\n",
+> +    qemu_log(TARGET_FMT_lx " %d %d => %" HWADDR_PRIx " %d (%d)\n",
+>              address, rw, access_type, *physical, *prot, ret);
+>  #endif
 
-Oops, yes.
-
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+Thanks, applied.
 
 
-r~
+-- 
+Aurelien Jarno                          GPG: 1024D/F1BCDB73
+aurelien@aurel32.net                 http://www.aurel32.net
 
