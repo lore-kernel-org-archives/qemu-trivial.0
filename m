@@ -1,46 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VFFud-0001fn-Gc
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Aug 2013 00:02:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53459)
+	id 1VFMVH-0001EC-Lq
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Aug 2013 07:04:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43661)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VFFuW-0001X5-GX
-	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 00:02:17 -0400
+	(envelope-from <jan.kiszka@siemens.com>) id 1VFMVA-00014o-L9
+	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 07:04:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VFFuR-0004YO-5H
-	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 00:02:12 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:38206)
+	(envelope-from <jan.kiszka@siemens.com>) id 1VFMV5-0002HG-Cp
+	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 07:04:28 -0400
+Received: from david.siemens.de ([192.35.17.14]:17645)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1VFFuG-0004Xa-5J; Fri, 30 Aug 2013 00:01:56 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	A289772819EA; Fri, 30 Aug 2013 06:01:54 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id kv4l3kJL9GDA; Fri, 30 Aug 2013 06:01:52 +0200 (CEST)
-Received: from [192.168.178.35] (p54AD81C0.dip0.t-ipconnect.de
-	[84.173.129.192])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	6C4FC72819DE; Fri, 30 Aug 2013 06:01:52 +0200 (CEST)
-Message-ID: <5220192E.5040301@weilnetz.de>
-Date: Fri, 30 Aug 2013 06:01:50 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130803 Thunderbird/17.0.8
+	(envelope-from <jan.kiszka@siemens.com>)
+	id 1VFMUu-0002Dn-D6; Fri, 30 Aug 2013 07:04:12 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by david.siemens.de (8.13.6/8.13.6) with ESMTP id r7UB45hL011698;
+	Fri, 30 Aug 2013 13:04:05 +0200
+Received: from mchn199C.mchp.siemens.de ([139.25.40.156])
+	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id r7UB45GH016439;
+	Fri, 30 Aug 2013 13:04:05 +0200
+Message-ID: <52207C25.9070302@siemens.com>
+Date: Fri, 30 Aug 2013 13:04:05 +0200
+From: Jan Kiszka <jan.kiszka@siemens.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-To: Alex Bligh <alex@alex.org.uk>
-References: <1377815534-13608-1-git-send-email-alex@alex.org.uk>
-In-Reply-To: <1377815534-13608-1-git-send-email-alex@alex.org.uk>
-X-Enigmail-Version: 1.4.6
+To: Taimoor <taimoor.mrza@gmail.com>, Stefan Weil <weil@mail.berlios.de>
+References: <1376594735-7433-1-git-send-email-tmirza@codesourcery.com>
+In-Reply-To: <1376594735-7433-1-git-send-email-tmirza@codesourcery.com>
 Content-Type: text/plain; charset=ISO-8859-15
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCHv2] aio / timers: use g_usleep() not
-	sleep()
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 192.35.17.14
+Cc: qemu-trivial@nongnu.org, Taimoor Mirza <tmirza@codesourcery.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v3] slirp: Port redirection option behave
+ differently on Linux and Windows
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,54 +47,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Aug 2013 04:02:18 -0000
+X-List-Received-Date: Fri, 30 Aug 2013 11:04:34 -0000
 
-Am 30.08.2013 00:32, schrieb Alex Bligh:
-> sleep() apparently doesn't exist under mingw. Use g_usleep for
-> portability.
->
-> Signed-off-by: Alex Bligh <alex@alex.org.uk>
+On 2013-08-15 21:25, Taimoor wrote:
+> From: Taimoor Mirza <tmirza@codesourcery.com>
+> 
+> port redirection code uses SO_REUSEADDR socket option before binding to
+> host port. Behavior of SO_REUSEADDR is different on Windows and Linux.
+> Relaunching QEMU with same host and guest port redirection values on Linux
+> throws error but on Windows it does not throw any error.
+> Problem is discussed in http://lists.gnu.org/archive/html/qemu-devel/2013-04/msg03089.html
+> 
+> Signed-off-by: Taimoor Mirza <tmirza@codesourcery.com>
 > ---
->  tests/test-aio.c |    6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/tests/test-aio.c b/tests/test-aio.c
-> index 4215701..c4fe0fc 100644
-> --- a/tests/test-aio.c
-> +++ b/tests/test-aio.c
-> @@ -400,7 +400,7 @@ static void test_timer_schedule(void)
->      g_assert(!aio_poll(ctx, false));
->      g_assert_cmpint(data.n, ==, 0);
+> Changes in v3:
+> - Removed extra commit
+> 
+> Changes in v2:
+> - Changed #ifdef to #ifndef as SO_REUSEADDR should not be set in case of Windows.
+> 
+>  slirp/socket.c |    2 ++
+>  1 files changed, 2 insertions(+), 0 deletions(-)
+> 
+> diff --git a/slirp/socket.c b/slirp/socket.c
+> index 8e8819c..25d60e7 100644
+> --- a/slirp/socket.c
+> +++ b/slirp/socket.c
+> @@ -627,7 +627,9 @@ tcp_listen(Slirp *slirp, uint32_t haddr, u_int hport, uint32_t laddr,
+>  	addr.sin_port = hport;
 >  
-> -    sleep(1);
-> +    g_usleep(1 * G_USEC_PER_SEC);
->      g_assert_cmpint(data.n, ==, 0);
->  
->      g_assert(aio_poll(ctx, false));
-> @@ -736,7 +736,7 @@ static void test_source_timer_schedule(void)
->  
->      g_assert_cmpint(data.n, ==, 0);
->  
-> -    sleep(1);
-> +    g_usleep(1 * G_USEC_PER_SEC);
->      g_assert_cmpint(data.n, ==, 0);
->  
->      g_assert(g_main_context_iteration(NULL, false));
-> @@ -746,7 +746,7 @@ static void test_source_timer_schedule(void)
->      do {
->          g_assert(g_main_context_iteration(NULL, true));
->      } while (qemu_clock_get_ns(data.clock_type) <= expiry);
-> -    sleep(1);
-> +    g_usleep(1 * G_USEC_PER_SEC);
->      g_main_context_iteration(NULL, false);
->  
->      g_assert_cmpint(data.n, ==, 2);
+>  	if (((s = qemu_socket(AF_INET,SOCK_STREAM,0)) < 0) ||
+> +#ifndef _WIN32
+>  	    (qemu_setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(int)) < 0) ||
+> +#endif
+>  	    (bind(s,(struct sockaddr *)&addr, sizeof(addr)) < 0) ||
+>  	    (listen(s,1) < 0)) {
+>  		int tmperrno = errno; /* Don't clobber the real reason we failed */
+> 
 
+Stefan, can you ack this? Then I would pick it up for the slirp queue.
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Thanks,
+Jan
 
-I cc'ed the mail to qemu-trivial, so it can be applied there.
-
-Stefan
-
+-- 
+Siemens AG, Corporate Technology, CT RTC ITP SES-DE
+Corporate Competence Center Embedded Linux
 
