@@ -1,41 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VFMVH-0001EC-Lq
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Aug 2013 07:04:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43661)
+	id 1VFQtI-0007GK-Cc
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Aug 2013 11:45:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41998)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1VFMVA-00014o-L9
-	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 07:04:33 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1VFQtB-0007BW-Bm
+	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 11:45:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1VFMV5-0002HG-Cp
-	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 07:04:28 -0400
-Received: from david.siemens.de ([192.35.17.14]:17645)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1VFQt5-0006b2-SD
+	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 11:45:33 -0400
+Received: from mail-qe0-x229.google.com ([2607:f8b0:400d:c02::229]:44405)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>)
-	id 1VFMUu-0002Dn-D6; Fri, 30 Aug 2013 07:04:12 -0400
-Received: from mail1.siemens.de (localhost [127.0.0.1])
-	by david.siemens.de (8.13.6/8.13.6) with ESMTP id r7UB45hL011698;
-	Fri, 30 Aug 2013 13:04:05 +0200
-Received: from mchn199C.mchp.siemens.de ([139.25.40.156])
-	by mail1.siemens.de (8.13.6/8.13.6) with ESMTP id r7UB45GH016439;
-	Fri, 30 Aug 2013 13:04:05 +0200
-Message-ID: <52207C25.9070302@siemens.com>
-Date: Fri, 30 Aug 2013 13:04:05 +0200
-From: Jan Kiszka <jan.kiszka@siemens.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1VFQsr-0006Y2-8f; Fri, 30 Aug 2013 11:45:13 -0400
+Received: by mail-qe0-f41.google.com with SMTP id ff1so1308901qeb.28
+	for <multiple recipients>; Fri, 30 Aug 2013 08:45:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=HxhTXow1RA67iOaHIcnW/Oar/t0sk3XW6HOMdXUinBc=;
+	b=In27W9jVxDq3t0N5Jd2/wujCwlfBCAEviwOV0i0bWh87Cg6+bE1HLk/ti1rlHHAUF1
+	kfxYvEsDzYKgf3RXgZT0hC5uQ8Ie6RuhWC1vubMBxEv7dRVMLbi5BOTfvEOSV1GK0lRD
+	3h+30ZA69hY1K/iKFUhmxTrvO+EhYh+a/80/fJaQYzdLq+HazpcIRbwPk7HrQEht7Act
+	4UMfVjYsdBMeFGBawUQ7AqV/MMcqE2mxgqdehwe+Ie62/trpCtwKOdyFpCXuF+V5XFlb
+	UplO08x9y6cz/1MrJK3sT6wWxv66RPlZlLzOFLOdr/A5iCdLP8kL7rX5lTd9mMFOX/HU
+	8sdQ==
+X-Received: by 10.49.47.84 with SMTP id b20mr9794237qen.83.1377877512222;
+	Fri, 30 Aug 2013 08:45:12 -0700 (PDT)
+Received: from yakj.usersys.redhat.com
+	(net-37-117-144-28.cust.dsl.vodafone.it. [37.117.144.28])
+	by mx.google.com with ESMTPSA id a7sm50802992qeg.2.1969.12.31.16.00.00
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Fri, 30 Aug 2013 08:45:10 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <5220BDFF.2010906@redhat.com>
+Date: Fri, 30 Aug 2013 17:45:03 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
 MIME-Version: 1.0
-To: Taimoor <taimoor.mrza@gmail.com>, Stefan Weil <weil@mail.berlios.de>
-References: <1376594735-7433-1-git-send-email-tmirza@codesourcery.com>
-In-Reply-To: <1376594735-7433-1-git-send-email-tmirza@codesourcery.com>
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 192.35.17.14
-Cc: qemu-trivial@nongnu.org, Taimoor Mirza <tmirza@codesourcery.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v3] slirp: Port redirection option behave
- differently on Linux and Windows
+To: =?UTF-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>
+References: <1376473744-18435-1-git-send-email-hpoussin@reactos.org>
+In-Reply-To: <1376473744-18435-1-git-send-email-hpoussin@reactos.org>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c02::229
+Cc: qemu-trivial@nongnu.org, aliguori@us.ibm.com, av1474@comtv.ru,
+	qemu-devel@nongnu.org, qemu-stable@nongnu.org
+Subject: [Qemu-trivial] PING Re: [PATCH for-1.6] adlib: sort offsets in
+	portio registration
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,50 +62,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Aug 2013 11:04:34 -0000
+X-List-Received-Date: Fri, 30 Aug 2013 15:45:39 -0000
 
-On 2013-08-15 21:25, Taimoor wrote:
-> From: Taimoor Mirza <tmirza@codesourcery.com>
+Il 14/08/2013 11:49, Hervé Poussineau ha scritto:
+> This fixes the following assert when -device adlib is used:
+> ioport.c:240: portio_list_add: Assertion `pio->offset >= off_last' failed.
 > 
-> port redirection code uses SO_REUSEADDR socket option before binding to
-> host port. Behavior of SO_REUSEADDR is different on Windows and Linux.
-> Relaunching QEMU with same host and guest port redirection values on Linux
-> throws error but on Windows it does not throw any error.
-> Problem is discussed in http://lists.gnu.org/archive/html/qemu-devel/2013-04/msg03089.html
-> 
-> Signed-off-by: Taimoor Mirza <tmirza@codesourcery.com>
+> Signed-off-by: Hervé Poussineau <hpoussin@reactos.org>
 > ---
-> Changes in v3:
-> - Removed extra commit
+>  hw/audio/adlib.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Changes in v2:
-> - Changed #ifdef to #ifndef as SO_REUSEADDR should not be set in case of Windows.
-> 
->  slirp/socket.c |    2 ++
->  1 files changed, 2 insertions(+), 0 deletions(-)
-> 
-> diff --git a/slirp/socket.c b/slirp/socket.c
-> index 8e8819c..25d60e7 100644
-> --- a/slirp/socket.c
-> +++ b/slirp/socket.c
-> @@ -627,7 +627,9 @@ tcp_listen(Slirp *slirp, uint32_t haddr, u_int hport, uint32_t laddr,
->  	addr.sin_port = hport;
+> diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
+> index 0421d47..db4a953 100644
+> --- a/hw/audio/adlib.c
+> +++ b/hw/audio/adlib.c
+> @@ -284,9 +284,9 @@ static void Adlib_fini (AdlibState *s)
+>  }
 >  
->  	if (((s = qemu_socket(AF_INET,SOCK_STREAM,0)) < 0) ||
-> +#ifndef _WIN32
->  	    (qemu_setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(int)) < 0) ||
-> +#endif
->  	    (bind(s,(struct sockaddr *)&addr, sizeof(addr)) < 0) ||
->  	    (listen(s,1) < 0)) {
->  		int tmperrno = errno; /* Don't clobber the real reason we failed */
+>  static MemoryRegionPortio adlib_portio_list[] = {
+> -    { 0x388, 4, 1, .read = adlib_read, .write = adlib_write, },
+>      { 0, 4, 1, .read = adlib_read, .write = adlib_write, },
+>      { 0, 2, 1, .read = adlib_read, .write = adlib_write, },
+> +    { 0x388, 4, 1, .read = adlib_read, .write = adlib_write, },
+>      PORTIO_END_OF_LIST(),
+>  };
+>  
 > 
 
-Stefan, can you ack this? Then I would pick it up for the slirp queue.
-
-Thanks,
-Jan
-
--- 
-Siemens AG, Corporate Technology, CT RTC ITP SES-DE
-Corporate Competence Center Embedded Linux
+Ping, and Cc to qemu-stable
 
