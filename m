@@ -1,41 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VFSRm-0006Wz-V6
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Aug 2013 13:25:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36727)
+	id 1VFV9f-0000h9-Aq
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Aug 2013 16:18:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33239)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1VFSRg-0006KF-Gg
-	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 13:25:21 -0400
+	(envelope-from <eblake@redhat.com>) id 1VFUUN-0005ve-Ip
+	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 15:36:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1VFSRb-0000B0-AL
-	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 13:25:16 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:51485 helo=mx2.suse.de)
+	(envelope-from <eblake@redhat.com>) id 1VFUUD-0002OH-2j
+	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 15:36:11 -0400
+Received: from qmta12.emeryville.ca.mail.comcast.net ([76.96.27.227]:43716)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1VFSRQ-0008Ik-J2; Fri, 30 Aug 2013 13:25:00 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 086A6A52D7;
-	Fri, 30 Aug 2013 19:25:00 +0200 (CEST)
-Message-ID: <5220D568.8080103@suse.de>
-Date: Fri, 30 Aug 2013 19:24:56 +0200
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130801 Thunderbird/17.0.8
+	(envelope-from <eblake@redhat.com>) id 1VFUUC-0002Nm-8v
+	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 15:36:00 -0400
+Received: from omta22.emeryville.ca.mail.comcast.net ([76.96.30.89])
+	by qmta12.emeryville.ca.mail.comcast.net with comcast
+	id K4CY1m0031vN32c017bzjy; Fri, 30 Aug 2013 19:35:59 +0000
+Received: from red.redhat.com ([24.10.250.254])
+	by omta22.emeryville.ca.mail.comcast.net with comcast
+	id K7bt1m00S5W4ddU8i7bxCS; Fri, 30 Aug 2013 19:35:58 +0000
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Fri, 30 Aug 2013 13:35:53 -0600
+Message-Id: <1377891353-10682-1-git-send-email-eblake@redhat.com>
+X-Mailer: git-send-email 1.8.3.1
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?B?SGVydsOpIFBvdXNzaW5lYXU=?= <hpoussin@reactos.org>
-References: <1376390314-17544-1-git-send-email-hpoussin@reactos.org>
-	<5220BE16.6090103@redhat.com> <5220C0B7.4030108@suse.de>
-	<5220C226.1080905@redhat.com>
-In-Reply-To: <5220C226.1080905@redhat.com>
-X-Enigmail-Version: 1.5.2
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] PING Re: [PATCH for-1.6] isa: fix
- documentation of isa_register_portio_list
+Content-Transfer-Encoding: 8bit
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
+	s=q20121106; t=1377891359;
+	bh=fgrCdiUec/hmRLEl5guS+VsxGwObJaO4LgxNtirNxVs=;
+	h=Received:Received:From:To:Subject:Date:Message-Id:MIME-Version:
+	Content-Type;
+	b=WA6l4wVyfwahTteZmlnZru36IDW9sqwShhg1GOu+wfex74NWcJhLv0N+7dIFv8UpD
+	AC7gNMz1+udVBbA5+K0bLTuJjkqIw6f+cX8vmu/Z/IywXVWMFa5g67dVsrAynWZnkX
+	s+omZFaqecjv5mh0XRSdbG6Y2zVbM8eZcs5p1+9e+lC1JjlLuWXRjf8BwiTl9HXp3W
+	zFccu9+6HOWKxJS6I6EdhnTT6b5Uq7vY6AdfAOy+ZuqDIsK35LTx0OtVyhBjKEkUm3
+	wKMa4il841JE2rzKAOysv9adyg16yFabHfaFnroEpihg2EEuwLN0SZ67PMci6rXwTB
+	zXNZBDjhS9yLw==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 76.96.27.227
+Cc: benoit@irqsave.net, lcapitulino@redhat.com
+Subject: [Qemu-trivial] [PATCH] qmp: fix integer usage in examples
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,61 +53,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Aug 2013 17:25:21 -0000
+X-List-Received-Date: Fri, 30 Aug 2013 20:18:50 -0000
 
-Am 30.08.2013 18:02, schrieb Paolo Bonzini:
-> Il 30/08/2013 17:56, Andreas F=C3=A4rber ha scritto:
->> Am 30.08.2013 17:45, schrieb Paolo Bonzini:
->>> Il 13/08/2013 12:38, Herv=C3=A9 Poussineau ha scritto:
->>>>
->>>> Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
->>>> ---
->>>>  include/hw/isa/isa.h |    2 +-
->>>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
->>>> index 495bcf3..fa45a5b 100644
->>>> --- a/include/hw/isa/isa.h
->>>> +++ b/include/hw/isa/isa.h
->>>> @@ -78,7 +78,7 @@ void isa_register_ioport(ISADevice *dev, MemoryReg=
-ion *io, uint16_t start);
->>>>   * @dev: the ISADevice against which these are registered; may be N=
-ULL.
->>>>   * @start: the base I/O port against which the portio->offset is ap=
-plied.
->>>>   * @portio: the ports, sorted by offset.
->>>> - * @opaque: passed into the old_portio callbacks.
->>>> + * @opaque: passed into the portio callbacks.
->>>>   * @name: passed into memory_region_init_io.
->>>>   */
->>>>  void isa_register_portio_list(ISADevice *dev, uint16_t start,
->>>>
->>>
->>> Ping.
->>
->> If you actually give it a Reviewed-by I can take it through qom-next.
->>
->> Commit message does not point to a commit X for trivial verification
->> that it is in fact correct since X.
->=20
-> Commit b40acf9 (ioport: Switch dispatching to memory core layer,
-> 2013-06-24) removed all instances of old_portio
+* qmp-commands.hx (block_set_io_throttle): Use correct type.
 
-Thanks, I've copied it into the commit message and consider this an
-Acked-by. Applied to qom-next:
-https://github.com/afaerber/qemu-cpu/commits/qom-next
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
 
-Andreas
+Noticed while reviewing Benoît's series of "Continuous Leaky Bucket
+Throttling" - depending on whose patch goes in first, the other
+will have to rebase...
 
-> except this, one in
-> docs/memory.txt, and one in hw/ppc/spapr_pci.c.
->=20
-> Paolo
->=20
+ qmp-commands.hx | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
+diff --git a/qmp-commands.hx b/qmp-commands.hx
+index bb09e72..87cfdce 100644
+--- a/qmp-commands.hx
++++ b/qmp-commands.hx
+@@ -1412,12 +1412,12 @@ Arguments:
+ Example:
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
+ -> { "execute": "block_set_io_throttle", "arguments": { "device": "virtio0",
+-                                               "bps": "1000000",
+-                                               "bps_rd": "0",
+-                                               "bps_wr": "0",
+-                                               "iops": "0",
+-                                               "iops_rd": "0",
+-                                               "iops_wr": "0" } }
++                                               "bps": 1000000,
++                                               "bps_rd": 0,
++                                               "bps_wr": 0,
++                                               "iops": 0,
++                                               "iops_rd": 0,
++                                               "iops_wr": 0 } }
+ <- { "return": {} }
+
+ EQMP
+-- 
+1.8.3.1
+
 
