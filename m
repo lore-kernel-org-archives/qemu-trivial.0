@@ -1,54 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VF33T-0007vA-9v
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Aug 2013 10:18:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38459)
+	id 1VFFud-0001fn-Gc
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Aug 2013 00:02:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53459)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@eu.citrix.com>)
-	id 1VF02i-00028z-UY
-	for qemu-trivial@nongnu.org; Thu, 29 Aug 2013 07:05:41 -0400
+	(envelope-from <sw@weilnetz.de>) id 1VFFuW-0001X5-GX
+	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 00:02:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@eu.citrix.com>)
-	id 1VF02d-00085l-Ag
-	for qemu-trivial@nongnu.org; Thu, 29 Aug 2013 07:05:36 -0400
-Received: from smtp02.citrix.com ([66.165.176.63]:58067)
+	(envelope-from <sw@weilnetz.de>) id 1VFFuR-0004YO-5H
+	for qemu-trivial@nongnu.org; Fri, 30 Aug 2013 00:02:12 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:38206)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@eu.citrix.com>)
-	id 1VF02T-00082z-BJ; Thu, 29 Aug 2013 07:05:21 -0400
-X-IronPort-AV: E=Sophos;i="4.89,982,1367971200"; d="scan'208";a="46354563"
-Received: from accessns.citrite.net (HELO FTLPEX01CL01.citrite.net)
-	([10.9.154.239])
-	by FTLPIPO02.CITRIX.COM with ESMTP; 29 Aug 2013 11:05:20 +0000
-Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
-	(10.13.107.78) with Microsoft SMTP Server id 14.2.342.4;
-	Thu, 29 Aug 2013 07:05:19 -0400
-Received: from kaball.uk.xensource.com ([10.80.2.59])	by
-	ukmail1.uk.xensource.com with esmtp (Exim 4.69)	(envelope-from
-	<stefano.stabellini@eu.citrix.com>)	id 1VF02R-0001eV-Nb;
-	Thu, 29 Aug 2013 12:05:19 +0100
-Date: Thu, 29 Aug 2013 12:05:08 +0100
-From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-X-X-Sender: sstabellini@kaball.uk.xensource.com
-To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-In-Reply-To: <alpine.DEB.2.02.1308291159290.6397@kaball.uk.xensource.com>
-Message-ID: <alpine.DEB.2.02.1308291204050.6397@kaball.uk.xensource.com>
-References: <1376664409-2695-1-git-send-email-anthony.perard@citrix.com>
-	<521B6DA5.1010801@m2r.biz> <521F0735.4090102@m2r.biz>
-	<alpine.DEB.2.02.1308291159290.6397@kaball.uk.xensource.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+	(envelope-from <sw@weilnetz.de>)
+	id 1VFFuG-0004Xa-5J; Fri, 30 Aug 2013 00:01:56 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	A289772819EA; Fri, 30 Aug 2013 06:01:54 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id kv4l3kJL9GDA; Fri, 30 Aug 2013 06:01:52 +0200 (CEST)
+Received: from [192.168.178.35] (p54AD81C0.dip0.t-ipconnect.de
+	[84.173.129.192])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	6C4FC72819DE; Fri, 30 Aug 2013 06:01:52 +0200 (CEST)
+Message-ID: <5220192E.5040301@weilnetz.de>
+Date: Fri, 30 Aug 2013 06:01:50 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:17.0) Gecko/20130803 Thunderbird/17.0.8
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-X-DLP: MIA2
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.165.176.63
-X-Mailman-Approved-At: Thu, 29 Aug 2013 10:18:34 -0400
-Cc: qemu-trivial@nongnu.org, QEMU-devel <qemu-devel@nongnu.org>,
-	Xen Devel <xen-devel@lists.xen.org>, Fabio Fantoni <fabio.fantoni@m2r.biz>,
-	Stefano Stabellini <stefano.stabellini@citrix.com>,
-	Anthony Liguori <anthony@codemonkey.ws>,
-	Anthony PERARD <anthony.perard@citrix.com>
-Subject: Re: [Qemu-trivial] [Xen-devel] [PATCH for v1.6] pc: Fix
- initialization of the ram_memory variable.
+To: Alex Bligh <alex@alex.org.uk>
+References: <1377815534-13608-1-git-send-email-alex@alex.org.uk>
+In-Reply-To: <1377815534-13608-1-git-send-email-alex@alex.org.uk>
+X-Enigmail-Version: 1.4.6
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCHv2] aio / timers: use g_usleep() not
+	sleep()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,33 +52,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Aug 2013 11:05:41 -0000
+X-List-Received-Date: Fri, 30 Aug 2013 04:02:18 -0000
 
-On Thu, 29 Aug 2013, Stefano Stabellini wrote:
-> On Thu, 29 Aug 2013, Fabio Fantoni wrote:
-> > Il 26/08/2013 17:00, Fabio Fantoni ha scritto:
-> > > Il 16/08/2013 16:46, Anthony PERARD ha scritto:
-> > > > In some cases (Xen), it will not be initialized before to be used. This
-> > > > leads to segv.
-> > > > 
-> > > > Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
-> > > 
-> > > Tested-by: Fabio Fantoni <fabio.fantoni@m2r.biz>
-> > > This patch have solved the critical regression of all hvm domUs that
-> > > prevented domUs starting with qemu 1.6.
-> > > 
-> > 
-> > I not see this patch on git for now, I think is urgent apply this patch or
-> > solve the problem in other way because qemu 1.6 is unusable at all for hvm
-> > domUs on xen and 1.5.x doesn't works with hvm domUs with ram > 2gb, with qemu
-> > 1.6 the regression of > 2 gb ram is solved but without this patch doesn't
-> > works at all.
-> > Thanks for any reply and sorry for my bad english.
-> 
-> Sorry, you are right. I know about this patch, it's in my queue. I
-> haven't had the time to send it upstream yet.
+Am 30.08.2013 00:32, schrieb Alex Bligh:
+> sleep() apparently doesn't exist under mingw. Use g_usleep for
+> portability.
+>
+> Signed-off-by: Alex Bligh <alex@alex.org.uk>
+> ---
+>  tests/test-aio.c |    6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/tests/test-aio.c b/tests/test-aio.c
+> index 4215701..c4fe0fc 100644
+> --- a/tests/test-aio.c
+> +++ b/tests/test-aio.c
+> @@ -400,7 +400,7 @@ static void test_timer_schedule(void)
+>      g_assert(!aio_poll(ctx, false));
+>      g_assert_cmpint(data.n, ==, 0);
+>  
+> -    sleep(1);
+> +    g_usleep(1 * G_USEC_PER_SEC);
+>      g_assert_cmpint(data.n, ==, 0);
+>  
+>      g_assert(aio_poll(ctx, false));
+> @@ -736,7 +736,7 @@ static void test_source_timer_schedule(void)
+>  
+>      g_assert_cmpint(data.n, ==, 0);
+>  
+> -    sleep(1);
+> +    g_usleep(1 * G_USEC_PER_SEC);
+>      g_assert_cmpint(data.n, ==, 0);
+>  
+>      g_assert(g_main_context_iteration(NULL, false));
+> @@ -746,7 +746,7 @@ static void test_source_timer_schedule(void)
+>      do {
+>          g_assert(g_main_context_iteration(NULL, true));
+>      } while (qemu_clock_get_ns(data.clock_type) <= expiry);
+> -    sleep(1);
+> +    g_usleep(1 * G_USEC_PER_SEC);
+>      g_main_context_iteration(NULL, false);
+>  
+>      g_assert_cmpint(data.n, ==, 2);
 
-And by that, I mean I haven't looked at it yet, even though I know it
-solves an outstanding issue. It might not be the right fix, as Peter
-suggested.
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+I cc'ed the mail to qemu-trivial, so it can be applied there.
+
+Stefan
+
 
