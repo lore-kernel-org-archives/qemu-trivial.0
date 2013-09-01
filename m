@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VG9N9-0001oQ-6d
-	for mharc-qemu-trivial@gnu.org; Sun, 01 Sep 2013 11:15:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50870)
+	id 1VG9R6-0002qH-Rh
+	for mharc-qemu-trivial@gnu.org; Sun, 01 Sep 2013 11:19:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51556)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VG9N2-0001gT-9K
-	for qemu-trivial@nongnu.org; Sun, 01 Sep 2013 11:15:26 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1VG9R0-0002hC-Oo
+	for qemu-trivial@nongnu.org; Sun, 01 Sep 2013 11:19:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VG9Mw-00052Q-9e
-	for qemu-trivial@nongnu.org; Sun, 01 Sep 2013 11:15:20 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:41113)
+	(envelope-from <mjt@tls.msk.ru>) id 1VG9Qv-0005wo-Sj
+	for qemu-trivial@nongnu.org; Sun, 01 Sep 2013 11:19:26 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57935)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VG9Mk-0004o6-1q; Sun, 01 Sep 2013 11:15:02 -0400
+	id 1VG9Ql-0005ur-8v; Sun, 01 Sep 2013 11:19:11 -0400
 Received: from gandalf.local (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 47776400BA;
-	Sun,  1 Sep 2013 19:15:01 +0400 (MSK)
-Message-ID: <522359F5.60202@msgid.tls.msk.ru>
-Date: Sun, 01 Sep 2013 19:15:01 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 4E987400BA;
+	Sun,  1 Sep 2013 19:19:10 +0400 (MSK)
+Message-ID: <52235AEE.10103@msgid.tls.msk.ru>
+Date: Sun, 01 Sep 2013 19:19:10 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:17.0) Gecko/20130827 Icedove/17.0.8
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1377609161-25108-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1377609161-25108-1-git-send-email-sw@weilnetz.de>
+To: Jan Krupa <JKrupa@suse.com>
+References: <1377616488-16491-1-git-send-email-JKrupa@suse.com>
+	<1377616488-16491-2-git-send-email-JKrupa@suse.com>
+	<1377616488-16491-3-git-send-email-JKrupa@suse.com>
+In-Reply-To: <1377616488-16491-3-git-send-email-JKrupa@suse.com>
 Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] configure: Don't write .pyc files by
- default (python -B)
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, anthony@codemonkey.ws
+Subject: Re: [Qemu-trivial] [PATCH 2/3] qemu-char: add Czech keymap file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,22 +44,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 01 Sep 2013 15:15:26 -0000
+X-List-Received-Date: Sun, 01 Sep 2013 15:19:31 -0000
 
-27.08.2013 17:12, Stefan Weil wrote:
-> When a Python script is run, Python normally writes bytecode into a .pyc file.
-> QEMU's build process uses several Python scripts which are called from
-> configure or make.
+27.08.2013 19:14, Jan Krupa wrote:
+> This patch adds Czech keyboard layout to available keymap files.
 >
-> The generated .pyc files take disk space without being of much use, because
-> those scripts are short, not time critical and only called a few times.
->
-> Python's option -B disables writing of .pyc files. QEMU now uses "python -B"
-> as default, but it is still possible to choose a different call by passing
-> --python=PYTHON to configure.
+> Signed-off-by: Jan Krupa <jkrupa@suse.com>
+> ---
+>   pc-bios/keymaps/cz |   94 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>   1 files changed, 94 insertions(+), 0 deletions(-)
+>   create mode 100644 pc-bios/keymaps/cz
 
-Yay, thank you for this!
-Applied to the trivial-patches queue.
+This file is useles without a corresponding change to Makefile
+(search for KEYMAPS= there).  Please add it there as well (either
+in a separate patch or include it into this one).
+
+Speaking of the keymap itself, and of the chars added in patch1,
+I for one can't verify these, so I take it as granted.  After
+all, this appears to be first attempt to implement cz keymap
+in all these years...
+
+Thanks,
 
 /mjt
 
