@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VGRth-0001UM-6I
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Sep 2013 07:02:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45126)
+	id 1VGS2o-00014K-K0
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Sep 2013 07:11:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46959)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VGRta-0001JU-PO
-	for qemu-trivial@nongnu.org; Mon, 02 Sep 2013 07:02:14 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1VGS2j-0000sk-6g
+	for qemu-trivial@nongnu.org; Mon, 02 Sep 2013 07:11:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VGRtW-0005PR-1q
-	for qemu-trivial@nongnu.org; Mon, 02 Sep 2013 07:02:10 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:50767)
+	(envelope-from <mjt@tls.msk.ru>) id 1VGS2f-00008A-4j
+	for qemu-trivial@nongnu.org; Mon, 02 Sep 2013 07:11:37 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:50080)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VGRtN-0005LY-Hn; Mon, 02 Sep 2013 07:01:57 -0400
+	id 1VGS2V-00005u-SB; Mon, 02 Sep 2013 07:11:24 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id C9E2140234;
-	Mon,  2 Sep 2013 15:01:56 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 36D2040242;
+	Mon,  2 Sep 2013 15:11:21 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id B3C0B20D;
-	Mon,  2 Sep 2013 15:01:56 +0400 (MSK)
-Received: (nullmailer pid 14623 invoked by uid 1000);
-	Mon, 02 Sep 2013 11:01:56 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 08A07214;
+	Mon,  2 Sep 2013 15:01:58 +0400 (MSK)
+Received: (nullmailer pid 14647 invoked by uid 1000);
+	Mon, 02 Sep 2013 11:01:57 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@us.ibm.com
-Date: Mon,  2 Sep 2013 15:01:21 +0400
-Message-Id: <1378119695-14568-2-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Mon,  2 Sep 2013 15:01:31 +0400
+Message-Id: <1378119695-14568-12-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1378119695-14568-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1378119695-14568-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Taimoor Mirza <tmirza@codesourcery.com>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 01/15] slirp: Port redirection option behave
-	differently on Linux and Windows
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 11/15] target-arm: Report unimplemented
+	opcodes (LOG_UNIMP)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,36 +44,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Sep 2013 11:02:15 -0000
+X-List-Received-Date: Mon, 02 Sep 2013 11:11:41 -0000
 
-From: Taimoor Mirza <tmirza@codesourcery.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-port redirection code uses SO_REUSEADDR socket option before binding to
-host port. Behavior of SO_REUSEADDR is different on Windows and Linux.
-Relaunching QEMU with same host and guest port redirection values on Linux
-throws error but on Windows it does not throw any error.
-Problem is discussed in http://lists.gnu.org/archive/html/qemu-devel/2013-04/msg03089.html
+These unimplemented opcodes are handled like illegal opcodes, but
+they are used in existing code. We should at least report when they
+are executed.
 
-Signed-off-by: Taimoor Mirza <tmirza@codesourcery.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- slirp/socket.c |    2 ++
- 1 file changed, 2 insertions(+)
+ target-arm/translate.c |    4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/slirp/socket.c b/slirp/socket.c
-index 8e8819c..25d60e7 100644
---- a/slirp/socket.c
-+++ b/slirp/socket.c
-@@ -627,7 +627,9 @@ tcp_listen(Slirp *slirp, uint32_t haddr, u_int hport, uint32_t laddr,
- 	addr.sin_port = hport;
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index d1e8538..92d9f16 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -6715,6 +6715,7 @@ static void disas_arm_insn(CPUARMState * env, DisasContext *s)
+             /* setend */
+             if (((insn >> 9) & 1) != s->bswap_code) {
+                 /* Dynamic endianness switching not implemented. */
++                qemu_log_mask(LOG_UNIMP, "arm: unimplemented setend\n");
+                 goto illegal_op;
+             }
+             return;
+@@ -8740,6 +8741,8 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
  
- 	if (((s = qemu_socket(AF_INET,SOCK_STREAM,0)) < 0) ||
-+#ifndef _WIN32
- 	    (qemu_setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(int)) < 0) ||
-+#endif
- 	    (bind(s,(struct sockaddr *)&addr, sizeof(addr)) < 0) ||
- 	    (listen(s,1) < 0)) {
- 		int tmperrno = errno; /* Don't clobber the real reason we failed */
+                 if (insn & (1 << 26)) {
+                     /* Secure monitor call (v6Z) */
++                    qemu_log_mask(LOG_UNIMP,
++                                  "arm: unimplemented secure monitor call\n");
+                     goto illegal_op; /* not implemented.  */
+                 } else {
+                     op = (insn >> 20) & 7;
+@@ -9779,6 +9782,7 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+                 ARCH(6);
+                 if (((insn >> 3) & 1) != s->bswap_code) {
+                     /* Dynamic endianness switching not implemented. */
++                    qemu_log_mask(LOG_UNIMP, "arm: unimplemented setend\n");
+                     goto illegal_op;
+                 }
+                 break;
 -- 
 1.7.10.4
 
