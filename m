@@ -1,57 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VGUbS-0006w5-K8
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Sep 2013 09:55:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46069)
+	id 1VGkxA-0003Rs-Dk
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2013 03:23:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38915)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Taimoor_Mirza@mentor.com>) id 1VGJ4q-0001Cl-MU
-	for qemu-trivial@nongnu.org; Sun, 01 Sep 2013 21:37:18 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1VGkx3-0003Dl-5B
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 03:23:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Taimoor_Mirza@mentor.com>) id 1VGJ4l-0007be-7v
-	for qemu-trivial@nongnu.org; Sun, 01 Sep 2013 21:37:12 -0400
-Received: from relay1.mentorg.com ([192.94.38.131]:41135)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1VGkwy-0006H1-53
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 03:23:01 -0400
+Received: from mail-ea0-x22c.google.com ([2a00:1450:4013:c01::22c]:46099)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Taimoor_Mirza@mentor.com>)
-	id 1VGJ4l-0007bY-1l; Sun, 01 Sep 2013 21:37:07 -0400
-Received: from svr-orw-exc-10.mgc.mentorg.com ([147.34.98.58])
-	by relay1.mentorg.com with esmtp 
-	id 1VGJ4f-0004KJ-Ae from Taimoor_Mirza@mentor.com ;
-	Sun, 01 Sep 2013 18:37:01 -0700
-Received: from SVR-IES-FEM-01.mgc.mentorg.com ([137.202.0.104]) by
-	SVR-ORW-EXC-10.mgc.mentorg.com with Microsoft
-	SMTPSVC(6.0.3790.4675); Sun, 1 Sep 2013 18:37:01 -0700
-Received: from EU-MBX-02.mgc.mentorg.com ([169.254.3.165]) by
-	SVR-IES-FEM-01.mgc.mentorg.com ([137.202.0.104]) with mapi id
-	14.02.0247.003; Mon, 2 Sep 2013 02:37:00 +0100
-From: "Mirza, Taimoor" <Taimoor_Mirza@mentor.com>
-To: Stefan Weil <sw@weilnetz.de>, Michael Tokarev <mjt@tls.msk.ru>
-Thread-Topic: [Qemu-trivial] [PATCH v3] slirp: Port redirection option
-	behave differently on Linux and Windows
-Thread-Index: AQHOme2IzAAA3KpqSkGC4FT9cjQQA5mtnKmAgANzfwCAAAeAgIAArXT8
-Date: Mon, 2 Sep 2013 01:36:59 +0000
-Message-ID: <329C84666C5EA34DAB3CD0561FC4617EDEF06682@EU-MBX-02.mgc.mentorg.com>
-References: <1376594735-7433-1-git-send-email-tmirza@codesourcery.com>
-	<52207C25.9070302@siemens.com>
-	<52236146.3050801@msgid.tls.msk.ru>,<52236791.9000900@weilnetz.de>
-In-Reply-To: <52236791.9000900@weilnetz.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [137.202.0.69]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1VGkwn-0005yi-MN; Tue, 03 Sep 2013 03:22:45 -0400
+Received: by mail-ea0-f172.google.com with SMTP id r16so2782281ead.17
+	for <multiple recipients>; Tue, 03 Sep 2013 00:22:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=d+kZaa2WaVSGsCIHLzaSAf1RIA9pz84foIbuEVNTWvQ=;
+	b=mDGDq0Z83sww6B8JyXl/25hRYTwmQ2jWZOgwEbK7hle04uAxqOqEwkp20wUeNmhbch
+	2eAJ+uLBaBO2Z9X30SU4N4ctCprhEvP8VS5mCJN1wbxHTyi4hElh4mAb16llV98i5Uak
+	Y70Gy4UR2NFrKVmyrfrV8JHHCcAuuxnEqLTRkhE6m9PWnwNiL7aA8VxPms3C8HrtHuA/
+	4DAElHUYm8QibCWjSlFB+aYKn4qoMCDlAnoUey9Q80DA/yctH/U7H4u1/YrvUBpGxirI
+	yZ1F9yLcbhFGgLBYDgHkZOBtP4BZrBdvVWYbwLSrxsD1JVuNJNrjUrklMlchEp6ETzYK
+	pY3g==
+X-Received: by 10.14.99.193 with SMTP id x41mr2063373eef.52.1378192964726;
+	Tue, 03 Sep 2013 00:22:44 -0700 (PDT)
+Received: from yakj.usersys.redhat.com
+	(net-37-117-144-28.cust.dsl.vodafone.it. [37.117.144.28])
+	by mx.google.com with ESMTPSA id m54sm29040394eex.2.1969.12.31.16.00.00
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Tue, 03 Sep 2013 00:22:43 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <52258E44.9010704@redhat.com>
+Date: Tue, 03 Sep 2013 09:22:44 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
 MIME-Version: 1.0
-X-OriginalArrivalTime: 02 Sep 2013 01:37:01.0574 (UTC)
-	FILETIME=[EBE4B260:01CEA77C]
-X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
-	[fuzzy]
-X-Received-From: 192.94.38.131
-X-Mailman-Approved-At: Mon, 02 Sep 2013 09:55:37 -0400
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Jan Kiszka <jan.kiszka@siemens.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH v3] slirp: Port redirection option behave
- differently on Linux and Windows
+To: liguang <lig.fnst@cn.fujitsu.com>
+References: <1378191917-6964-1-git-send-email-lig.fnst@cn.fujitsu.com>
+In-Reply-To: <1378191917-6964-1-git-send-email-lig.fnst@cn.fujitsu.com>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c01::22c
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
+	qemu-devel <qemu-devel@nongnu.org>,
+	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH] cputlb: remove dead function
+	tlb_update_dirty
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,68 +64,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Sep 2013 01:37:18 -0000
+X-List-Received-Date: Tue, 03 Sep 2013 07:23:06 -0000
 
-Hi Guys,=0A=
-=0A=
-Thanks for reviewing the patch. Only difference between v2 and v3 is that v=
-2 had an extra character added at top of the file (socket.c). This was remo=
-ved in v3.=0A=
-=0A=
-Regards,=0A=
-Taimoor=0A=
-=0A=
-=0A=
-________________________________________=0A=
-From: Stefan Weil [sw@weilnetz.de]=0A=
-Sent: Sunday, September 01, 2013 9:13 PM=0A=
-To: Michael Tokarev=0A=
-Cc: Jan Kiszka; qemu-trivial@nongnu.org; Mirza, Taimoor; qemu-devel@nongnu.=
-org=0A=
-Subject: Re: [Qemu-trivial] [PATCH v3] slirp: Port redirection option behav=
-e differently on Linux and Windows=0A=
-=0A=
-Am 01.09.2013 17:46, schrieb Michael Tokarev:=0A=
-> 30.08.2013 15:04, Jan Kiszka wrote:=0A=
->> On 2013-08-15 21:25, Taimoor wrote:=0A=
->>> From: Taimoor Mirza <tmirza@codesourcery.com>=0A=
->>>=0A=
->>> port redirection code uses SO_REUSEADDR socket option before binding to=
-=0A=
->>> host port. Behavior of SO_REUSEADDR is different on Windows and Linux.=
-=0A=
->>> Relaunching QEMU with same host and guest port redirection values on=0A=
->>> Linux=0A=
->>> throws error but on Windows it does not throw any error.=0A=
->>> Problem is discussed in=0A=
->>> http://lists.gnu.org/archive/html/qemu-devel/2013-04/msg03089.html=0A=
-> []=0A=
->> Stefan, can you ack this? Then I would pick it up for the slirp queue.=
-=0A=
->=0A=
-> I remember having exactly the same issue myself a few years back with=0A=
-> the difference of SO_REUSEADDR behavour on windows and *nix, and the=0A=
-> suggested change appears to be correct.  So you can count on my=0A=
->=0A=
-> Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>=0A=
->=0A=
-> as well.=0A=
->=0A=
-> I applied the v2 of this patch (with a trivial fix) to trivial queue=0A=
-> (before seeing this v3), I can remove it if you like.=0A=
->=0A=
-> Thanks,=0A=
->=0A=
-> /mjt=0A=
-=0A=
-Hi Michael,=0A=
-=0A=
-thanks for your review of this patch. I had no opportunity to test=0A=
-it myself, but I also think that it is fine.=0A=
-=0A=
-(v2 + trivial fix) should be identical to v3, so this looks good, too.=0A=
-=0A=
-Cheers,=0A=
-Stefan=0A=
-=0A=
+Il 03/09/2013 09:05, liguang ha scritto:
+> Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+> ---
+>  cputlb.c |   15 ---------------
+>  1 files changed, 0 insertions(+), 15 deletions(-)
+> 
+> diff --git a/cputlb.c b/cputlb.c
+> index 977c0ca..08e50e0 100644
+> --- a/cputlb.c
+> +++ b/cputlb.c
+> @@ -169,21 +169,6 @@ static inline ram_addr_t qemu_ram_addr_from_host_nofail(void *ptr)
+>      return ram_addr;
+>  }
+>  
+> -static inline void tlb_update_dirty(CPUTLBEntry *tlb_entry)
+> -{
+> -    ram_addr_t ram_addr;
+> -    void *p;
+> -
+> -    if (tlb_is_dirty_ram(tlb_entry)) {
+> -        p = (void *)(uintptr_t)((tlb_entry->addr_write & TARGET_PAGE_MASK)
+> -            + tlb_entry->addend);
+> -        ram_addr = qemu_ram_addr_from_host_nofail(p);
+> -        if (!cpu_physical_memory_is_dirty(ram_addr)) {
+> -            tlb_entry->addr_write |= TLB_NOTDIRTY;
+> -        }
+> -    }
+> -}
+> -
+>  void cpu_tlb_reset_dirty_all(ram_addr_t start1, ram_addr_t length)
+>  {
+>      CPUState *cpu;
+> 
+
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+
+and CCing qemu-trivial.
+
+Paolo
 
