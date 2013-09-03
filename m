@@ -1,53 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VGmIG-0000HJ-Aj
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2013 04:49:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56844)
+	id 1VGmvY-0002o2-OI
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2013 05:29:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37230)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VGmI9-0000EZ-5r
-	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 04:48:58 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1VGmvS-0002lp-N3
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 05:29:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VGmI3-0006OP-RE
-	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 04:48:53 -0400
-Received: from mail-lb0-f172.google.com ([209.85.217.172]:35793)
+	(envelope-from <peter.maydell@linaro.org>) id 1VGmvM-0001ar-Ds
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 05:29:30 -0400
+Received: from mail-la0-f42.google.com ([209.85.215.42]:50275)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VGmI3-0006O8-Ju
-	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 04:48:47 -0400
-Received: by mail-lb0-f172.google.com with SMTP id x18so4778158lbi.3
-	for <qemu-trivial@nongnu.org>; Tue, 03 Sep 2013 01:48:45 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1VGmvM-0001aZ-7z
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 05:29:24 -0400
+Received: by mail-la0-f42.google.com with SMTP id ep20so4487383lab.1
+	for <qemu-trivial@nongnu.org>; Tue, 03 Sep 2013 02:29:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=Qe73eBSVOpxVDFNW2yaaSPwKfCkTkj+xPtv+OzEmza8=;
-	b=XZ5EZtQC+wgeQbTw/yNpLlUfdw22tmB8roNza7peAEe4QB7izCsflRdpVI+D3gz86g
-	xxUv8M8gfdK5rahlbxXQkgW7JZf3dvQeR3UnVxUyeQwhysQ8kjwfIzwrUrVfYO04/Zjy
-	wb4cNEMdohNWKbQ2CYuTK2ku3OQS0LmZyH6SFcWflbICCxLNPKjRymi35jTO9o/p2jAa
-	awpSM86/7OukBlzsec1PicTe8Hf7NiwPnqdrsJGgQGv2ye/yk/L/N0tgaCyAzTKLbRYy
-	6+sfdyYX5EG1sXOEdXfSEFe4KFG0EbEKMTQWSFFqB+OJ/mlIK9kzUDWPU7cSnunJJZ+8
-	W9fg==
-X-Gm-Message-State: ALoCoQkt4tbG95uTLjRYMBfKk4JwDBCcWZ8Nu2GAyXbyHayaztUXhoGftokKL4a0Npup+Et09DdO
-X-Received: by 10.152.228.130 with SMTP id si2mr1025063lac.32.1378198125796;
-	Tue, 03 Sep 2013 01:48:45 -0700 (PDT)
+	:message-id:subject:to:cc:content-type;
+	bh=qkmKbfqNjONecpQSkwg7APC+VxFkkBzS5FRVs6c4K+4=;
+	b=h3rFl/VztoFkk3Sbv8fVuStOw4rtyURZgVa2wtR1YPDIWypnZnZRDg+7ow7qVSJmF8
+	ZB4J6WmD7Ij/9h0uuEuqoykvEoSSgYVowaxnhfrXPFSmG/yCKch91o9AUkofSzi6a1MB
+	yuJq4UNZ8MnRk/QmDPfzWx3sEZMNs+12f3SIg22lZVDdDR/t4MyrMtGWC6S4tw886JjN
+	jzCe61kWEzo3zOSNoXtccIq8LFY61AhSmz1BH947a2ktP5Jq5liqdUBbJaXHFRP95/MO
+	Z7Fs0YqDGkH4pvS43o6hJ/EQG+tQX5k0gMPt7tPsOPU99snuNMYOurA3ktVED9dgthyc
+	UwEQ==
+X-Gm-Message-State: ALoCoQkzLfADWNAwWeVUmu/vxZYkx+mYWTt1oRIuUnNTM32Ha9ab2VvIno4717ysJN5GFpXY9mZD
+X-Received: by 10.152.116.7 with SMTP id js7mr25694546lab.11.1378200563107;
+	Tue, 03 Sep 2013 02:29:23 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.112.169.70 with HTTP; Tue, 3 Sep 2013 01:48:25 -0700 (PDT)
-In-Reply-To: <52259F6E.3000205@suse.de>
-References: <1378191917-6964-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<52258E44.9010704@redhat.com> <52259F6E.3000205@suse.de>
+Received: by 10.112.169.70 with HTTP; Tue, 3 Sep 2013 02:29:03 -0700 (PDT)
+In-Reply-To: <1378196857-27541-1-git-send-email-aik@ozlabs.ru>
+References: <1378196857-27541-1-git-send-email-aik@ozlabs.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Sep 2013 09:48:25 +0100
-Message-ID: <CAFEAcA-oVhBNN3UkKHf2OogGwkUdqrJQBk51r+MDguxAFRGjyQ@mail.gmail.com>
-To: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Date: Tue, 3 Sep 2013 10:29:03 +0100
+Message-ID: <CAFEAcA8Jp=SQsC3RpxahF1RFRtX2nHOS2690XiT9Jnpn0jGk_g@mail.gmail.com>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.217.172
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
-	qemu-devel <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
-	Paolo Bonzini <pbonzini@redhat.com>, liguang <lig.fnst@cn.fujitsu.com>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] cputlb: remove dead function
-	tlb_update_dirty
+X-Received-From: 209.85.215.42
+Cc: kvm-devel <kvm@vger.kernel.org>, Gleb Natapov <gleb@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-headers: update to
+	3.11
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,16 +57,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Sep 2013 08:48:58 -0000
+X-List-Received-Date: Tue, 03 Sep 2013 09:29:35 -0000
 
-On 3 September 2013 09:35, Andreas F=C3=A4rber <afaerber@suse.de> wrote:
-> I also don't understand why qemu-trivial is suddenly picking up Stefan's
-> arm translation patch, it used to be for unmaintained areas only. But
-> arm is not my problem.
+On 3 September 2013 09:27, Alexey Kardashevskiy <aik@ozlabs.ru> wrote:
+> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+> ---
+>
+> I need this update as VFIO on PPC64/pseries got in upstream kernel
+> and this is required by VFIO-SPAPR bits in QEMU. Others may find this
+> update useful too :)
+> ---
+>  linux-headers/asm-arm64/kvm.h       | 168 ++++++++++++++++++++++++++++++++++++
+>  linux-headers/asm-arm64/kvm_para.h  |   1 +
+>  linux-headers/asm-mips/kvm.h        |  81 +++++++++--------
+>  linux-headers/linux/kvm.h           |   3 +
+>  linux-headers/linux/vfio.h          |  42 ++++++++-
+>  linux-headers/linux/virtio_config.h |   3 +
+>  6 files changed, 254 insertions(+), 44 deletions(-)
+>  create mode 100644 linux-headers/asm-arm64/kvm.h
+>  create mode 100644 linux-headers/asm-arm64/kvm_para.h
 
-Yeah, I wasn't expecting that either. But I'd reviewed it and it
-wasn't a big change that was likely to conflict with anything else
-in my queue, so I didn't feel like making a fuss about it.
+I think this should go in via the KVM tree, not trivial.
 
+thanks
 -- PMM
 
