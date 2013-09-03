@@ -1,44 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VGtsL-0007u9-Pn
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2013 12:54:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42292)
+	id 1VGvLf-0001Uh-9y
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2013 14:29:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33484)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1VGtsD-0007hC-1c
-	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 12:54:44 -0400
+	(envelope-from <sw@weilnetz.de>) id 1VGvLY-0001P5-7e
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 14:29:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1VGts5-000713-DO
-	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 12:54:36 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:45762 helo=mx2.suse.de)
+	(envelope-from <sw@weilnetz.de>) id 1VGvLR-0002ua-43
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 14:29:00 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:37116)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1VGtrq-0006zU-EC; Tue, 03 Sep 2013 12:54:14 -0400
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id E3719A51B7;
-	Tue,  3 Sep 2013 18:54:12 +0200 (CEST)
-Message-ID: <52261431.5050705@suse.de>
-Date: Tue, 03 Sep 2013 18:54:09 +0200
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130801 Thunderbird/17.0.8
+	(envelope-from <sw@weilnetz.de>) id 1VGvLQ-0002uW-Td
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 14:28:53 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	C542272819E4; Tue,  3 Sep 2013 20:28:50 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 1KaZzTYHALUz; Tue,  3 Sep 2013 20:28:48 +0200 (CEST)
+Received: from [192.168.178.35] (p54AD8396.dip0.t-ipconnect.de
+	[84.173.131.150])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	7B92972800FD; Tue,  3 Sep 2013 20:28:48 +0200 (CEST)
+Message-ID: <52262A5E.2010507@weilnetz.de>
+Date: Tue, 03 Sep 2013 20:28:46 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:17.0) Gecko/20130803 Thunderbird/17.0.8
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1378191917-6964-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<52258E44.9010704@redhat.com> <52259F6E.3000205@suse.de>
-	<5225C559.2030601@msgid.tls.msk.ru>
-In-Reply-To: <5225C559.2030601@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 195.135.220.15
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-trivial <qemu-trivial@nongnu.org>,
-	Jan Kiszka <jan.kiszka@siemens.com>, Alexander Graf <agraf@suse.de>,
-	qemu-devel <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	liguang <lig.fnst@cn.fujitsu.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] cputlb: remove dead function
-	tlb_update_dirty
+To: qemu-devel <qemu-devel@nongnu.org>
+References: <1377063869-16834-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1377063869-16834-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.4.6
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: qemu-trivial <qemu-trivial@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] configure: Enable extra compiler warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,88 +51,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Sep 2013 16:54:44 -0000
+X-List-Received-Date: Tue, 03 Sep 2013 18:29:05 -0000
 
-Am 03.09.2013 13:17, schrieb Michael Tokarev:
-> 03.09.2013 12:35, Andreas F=E4rber wrote:
->> I also don't understand why qemu-trivial is suddenly picking up Stefan=
-'s
->> arm translation patch, it used to be for unmaintained areas only. But
->> arm is not my problem.
->=20
-> Which patch you're talking about?  Is it "target-arm: Report unimplemen=
-ted
-> opcodes (LOG_UNIMP)" ?
+Am 21.08.2013 07:44, schrieb Stefan Weil:
+> Compiler option -Wextra enables an additional set of compiler warnings.
+>
+> Some of these warnings were already enabled explicitly in QEMU:
+> -Wold-style-declaration, -Wtype-limits, -Wignored-qualifiers and
+> -Wempty-body are now redundant and can be removed.
+>
+> Others don't work with the current code and must be disabled to
+> avoid warnings: -Wno-missing-field-initializers, -Wno-override-init,
+> -Wno-sign-compare and -Wno-unused-parameter.
+>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+> This is a rather old and long tested patch: I use -Wextra in my
+> QEMU builds for more than a year now. At least one bug was found
+> by using this warning level (see commit
+> b22dd1243f38286263d40496ce5298a8a7d96eea).
+>
+> My tests include Linux and Windows hosts (gcc), but not BSD based hosts,
+> so maybe those hosts might need additional code fixes.
+> clang reports lots of -Wunused-value warnings.
+>
+> Regards,
+> Stefan
+>
+>  configure |   14 +++++++++-----
+>  1 file changed, 9 insertions(+), 5 deletions(-)
 
-Yes.
+Ping? I'd appreciate getting this patch committed.
+Is it trivial enough for qemu-trivial?
 
->  If yes, that one appears to be trivial as it just
-> adds some logging before failing an instruction and should not conflict
-> with other work being done in this area.  Perhaps I was too aggressive
-> while picking up the backlog.  We should just draw the line *somewhere*=
-, --
+Stefan
 
-Right, that line is what I'm reminding about here. I feel that lately an
-increasing number of contributors and reviewers are deferring patches to
-qemu-trivial that don't really belong there IMO. That Anthony doesn't
-scale to cover Blue's maintainer work as well shouldn't lead to a surge
-on qemu-trivial.
+See also http://patchwork.ozlabs.org/patch/268687/
 
-> eg, it sure is possible to reject spelling fixes for maintained areas
-> from -trivial (like this arm tree), - will this be productive?
-
-No, spelling fixes are not a concern to me as they are rather unlikely
-to cause conflicts with patches being queued by submaintainers. :)
-
-> This change (cputlb: remove dead function) appears to be "trivial enoug=
-h"
-> for me (after looking at the usage history of this function), and I'd
-> pick it up without this Andreas's request, too.
-
-Yes. This one here would've been okay usually, as there is no official
-maintainer for cputlb.c and it's trivial in the sense that a git-grep
-confirms it to be okay. I was just annoyed that I had to defer my pull
-twice (sent it out now) because s390x added two CPU loops and then once
-that was merged ppc added another loop, too. My upcoming 35+ patch
-series qom-cpu-13 may hopefully explain the rest once you see it.
-
-> As for the "suddenly" - it's not really suddenly, it's because it
-> has been Cc'd to -trivial (by someone who submitted lots of good
-> trivial patches before) and actually looks trivial, too.  And also
-> because subsystem maintainer added his Reviewed-by, apparently (or
-> hopefully) after noticing it's submitted to -trivial.  I also Cc'd
-> both maintainers in my notice that it's been applied to -trivial.
-
-"Suddenly" in the sense that the prupose of qemu-trivial used to be
-handling patches that would otherwise fall through the cracks.
-
-So by my understanding, e.g., "target-arm:" =3D> !trivial, and I would've
-expected there to be some on-list communication between PMM and you
-before CC'ing someone on a "thanks, applied" after the fact.
-By contrast, if there's a change to configure or "Fix spelling of" etc.
-then you picking it up is highly appreciated. I just don't want
-qemu-trivial becoming the least-resistance way of getting patches into
-qemu.git that might otherwise get bounced/changed by submaintainers.
-
-Also, I am seeing Paolo pull in huge memory changes but now pinging the
-breakage fixes rather than assembling a pull to fix the fallout. ;)
-
-Similarly target-i386 TCG is not suited for qemu-trivial IMO, instead
-rth or someone who works on and/or reviews it (rth?) should volunteer as
-proper maintainer. With the larger part of the community using KVM these
-days, we simply can't have that be handled by the community at large any
-more.
-
-So yes, I know you were on vacation and you seem eager to take up work
-again, that's great; I'm just cautioning that CC'ing everything on
-qemu-trivial (not your fault, you're on the receiving end) can't be the
-new solution, so feel encouraged to push back a little. :)
-
-Cheers,
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
 
