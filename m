@@ -1,49 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VGtE5-0003MZ-Dz
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2013 12:13:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54404)
+	id 1VGtsL-0007u9-Pn
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2013 12:54:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42292)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1VGtDx-0003Ao-PB
-	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 12:13:07 -0400
+	(envelope-from <afaerber@suse.de>) id 1VGtsD-0007hC-1c
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 12:54:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1VGtDr-0000Mx-Ks
-	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 12:13:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34913)
+	(envelope-from <afaerber@suse.de>) id 1VGts5-000713-DO
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 12:54:36 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:45762 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>)
-	id 1VGtDf-0008Ua-2S; Tue, 03 Sep 2013 12:12:43 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r83GCfPU013257
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 3 Sep 2013 12:12:41 -0400
-Received: from [10.3.113.8] ([10.3.113.8])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r83GCeO4019803; Tue, 3 Sep 2013 12:12:40 -0400
-Message-ID: <1378224760.3246.45.camel@ul30vt.home>
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 03 Sep 2013 10:12:40 -0600
-In-Reply-To: <CAFEAcA_MN9jv3QnHGm1785kp2aqKgO1k-R_3QmR39094FbwsZQ@mail.gmail.com>
-References: <1378196857-27541-1-git-send-email-aik@ozlabs.ru>
-	<CAFEAcA8Jp=SQsC3RpxahF1RFRtX2nHOS2690XiT9Jnpn0jGk_g@mail.gmail.com>
-	<5225AC9A.2090601@ozlabs.ru> <5225BD32.8030001@siemens.com>
-	<52260025.3050704@ozlabs.ru>
-	<CAFEAcA8b26fm17sUZ=aUeETVD9q2AahkXQDLQWuRJGM9JMMqkQ@mail.gmail.com>
-	<5226048E.2090004@ozlabs.ru> <1378223912.3246.36.camel@ul30vt.home>
-	<CAFEAcA_MN9jv3QnHGm1785kp2aqKgO1k-R_3QmR39094FbwsZQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: kvm-devel <kvm@vger.kernel.org>, Gleb Natapov <gleb@redhat.com>,
-	Alexey Kardashevskiy <aik@ozlabs.ru>, Jan Kiszka <jan.kiszka@siemens.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-headers: update to
-	3.11
+	(envelope-from <afaerber@suse.de>)
+	id 1VGtrq-0006zU-EC; Tue, 03 Sep 2013 12:54:14 -0400
+Received: from relay1.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id E3719A51B7;
+	Tue,  3 Sep 2013 18:54:12 +0200 (CEST)
+Message-ID: <52261431.5050705@suse.de>
+Date: Tue, 03 Sep 2013 18:54:09 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130801 Thunderbird/17.0.8
+MIME-Version: 1.0
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1378191917-6964-1-git-send-email-lig.fnst@cn.fujitsu.com>
+	<52258E44.9010704@redhat.com> <52259F6E.3000205@suse.de>
+	<5225C559.2030601@msgid.tls.msk.ru>
+In-Reply-To: <5225C559.2030601@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-trivial <qemu-trivial@nongnu.org>,
+	Jan Kiszka <jan.kiszka@siemens.com>, Alexander Graf <agraf@suse.de>,
+	qemu-devel <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	liguang <lig.fnst@cn.fujitsu.com>, Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH] cputlb: remove dead function
+	tlb_update_dirty
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,25 +50,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Sep 2013 16:13:07 -0000
+X-List-Received-Date: Tue, 03 Sep 2013 16:54:44 -0000
 
-On Tue, 2013-09-03 at 17:03 +0100, Peter Maydell wrote:
-> On 3 September 2013 16:58, Alex Williamson <alex.williamson@redhat.com> wrote:
-> > I was under the impression that we were only ever updating linux-headers
-> > from mainline, never from kvm-next.
-> 
-> Looking at the git history, it's variable. Four of the
-> last 10 updates were from somewhere other than mainline.
-> In any case this is the kind of policy decision that
-> means updates should go via the QEMU KVM maintainers :-)
+Am 03.09.2013 13:17, schrieb Michael Tokarev:
+> 03.09.2013 12:35, Andreas F=E4rber wrote:
+>> I also don't understand why qemu-trivial is suddenly picking up Stefan=
+'s
+>> arm translation patch, it used to be for unmaintained areas only. But
+>> arm is not my problem.
+>=20
+> Which patch you're talking about?  Is it "target-arm: Report unimplemen=
+ted
+> opcodes (LOG_UNIMP)" ?
 
-Seems like every update except ppc has come from mainline.  Personally,
-I don't think it makes sense anymore.  QEMU has scope beyond KVM and it
-makes about as much sense to snapshot kvm.git as it does to snapshot my
-vfio next branch or Michael's virtio queue.  If we only pull from
-mainline we never have to worry about regressing something that isn't
-actually upstream yet.  Thanks,
+Yes.
 
-Alex
+>  If yes, that one appears to be trivial as it just
+> adds some logging before failing an instruction and should not conflict
+> with other work being done in this area.  Perhaps I was too aggressive
+> while picking up the backlog.  We should just draw the line *somewhere*=
+, --
 
+Right, that line is what I'm reminding about here. I feel that lately an
+increasing number of contributors and reviewers are deferring patches to
+qemu-trivial that don't really belong there IMO. That Anthony doesn't
+scale to cover Blue's maintainer work as well shouldn't lead to a surge
+on qemu-trivial.
+
+> eg, it sure is possible to reject spelling fixes for maintained areas
+> from -trivial (like this arm tree), - will this be productive?
+
+No, spelling fixes are not a concern to me as they are rather unlikely
+to cause conflicts with patches being queued by submaintainers. :)
+
+> This change (cputlb: remove dead function) appears to be "trivial enoug=
+h"
+> for me (after looking at the usage history of this function), and I'd
+> pick it up without this Andreas's request, too.
+
+Yes. This one here would've been okay usually, as there is no official
+maintainer for cputlb.c and it's trivial in the sense that a git-grep
+confirms it to be okay. I was just annoyed that I had to defer my pull
+twice (sent it out now) because s390x added two CPU loops and then once
+that was merged ppc added another loop, too. My upcoming 35+ patch
+series qom-cpu-13 may hopefully explain the rest once you see it.
+
+> As for the "suddenly" - it's not really suddenly, it's because it
+> has been Cc'd to -trivial (by someone who submitted lots of good
+> trivial patches before) and actually looks trivial, too.  And also
+> because subsystem maintainer added his Reviewed-by, apparently (or
+> hopefully) after noticing it's submitted to -trivial.  I also Cc'd
+> both maintainers in my notice that it's been applied to -trivial.
+
+"Suddenly" in the sense that the prupose of qemu-trivial used to be
+handling patches that would otherwise fall through the cracks.
+
+So by my understanding, e.g., "target-arm:" =3D> !trivial, and I would've
+expected there to be some on-list communication between PMM and you
+before CC'ing someone on a "thanks, applied" after the fact.
+By contrast, if there's a change to configure or "Fix spelling of" etc.
+then you picking it up is highly appreciated. I just don't want
+qemu-trivial becoming the least-resistance way of getting patches into
+qemu.git that might otherwise get bounced/changed by submaintainers.
+
+Also, I am seeing Paolo pull in huge memory changes but now pinging the
+breakage fixes rather than assembling a pull to fix the fallout. ;)
+
+Similarly target-i386 TCG is not suited for qemu-trivial IMO, instead
+rth or someone who works on and/or reviews it (rth?) should volunteer as
+proper maintainer. With the larger part of the community using KVM these
+days, we simply can't have that be handled by the community at large any
+more.
+
+So yes, I know you were on vacation and you seem eager to take up work
+again, that's great; I'm just cautioning that CC'ing everything on
+qemu-trivial (not your fault, you're on the receiving end) can't be the
+new solution, so feel encouraged to push back a little. :)
+
+Cheers,
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
