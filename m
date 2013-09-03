@@ -1,57 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VGmBE-0003en-Lo
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2013 04:41:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55210)
+	id 1VGmIG-0000HJ-Aj
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2013 04:49:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56844)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1VGmB7-0003dT-SZ
-	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 04:41:42 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1VGmI9-0000EZ-5r
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 04:48:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1VGmB2-0003zO-AC
-	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 04:41:37 -0400
-Received: from mail-ea0-x22a.google.com ([2a00:1450:4013:c01::22a]:60467)
+	(envelope-from <peter.maydell@linaro.org>) id 1VGmI3-0006OP-RE
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 04:48:53 -0400
+Received: from mail-lb0-f172.google.com ([209.85.217.172]:35793)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1VGmB2-0003z8-3c; Tue, 03 Sep 2013 04:41:32 -0400
-Received: by mail-ea0-f170.google.com with SMTP id h14so2834847eak.29
-	for <multiple recipients>; Tue, 03 Sep 2013 01:41:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=JusFhQh/CwhVRAgC1HBh+mMm++dRzD1rN88VIhyaQ+Y=;
-	b=MZ5BvrVd200MFRTdQoivOioNBkGkZQyHVTtpmrm88BDQS8/k7qyH2he+JAOZqJuCSB
-	dRU0w1r3snTfWdjPgGdkFgPL0TgnnALqobzmxbMlyU5sVs3A2OoNt6hITEqLw2xrigrU
-	1fAZy+FnQ0SPTYeMUEgzR+yMdQayNyztGtF5ylmLWQk7FE5z/mBQo+HjLRS0VEuSaqzT
-	SYbcJMVSJXqjRdajAbr6MvDUyKEQ7/mq79EFxJQmL0v2KXJFBqKAYlFNb462MSM2RwNV
-	JI+qSzOXuQE2TvnV1Xr7ZSTTsa+IdRArzar0VIGFeYmyFTOebYRdduepYAd6n7s50ad8
-	YCvw==
-X-Received: by 10.14.224.198 with SMTP id x46mr1940788eep.53.1378197691124;
-	Tue, 03 Sep 2013 01:41:31 -0700 (PDT)
-Received: from yakj.usersys.redhat.com
-	(net-37-117-144-28.cust.dsl.vodafone.it. [37.117.144.28])
-	by mx.google.com with ESMTPSA id a6sm29535570eei.10.1969.12.31.16.00.00
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Tue, 03 Sep 2013 01:41:30 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <5225A0BA.9000609@redhat.com>
-Date: Tue, 03 Sep 2013 10:41:30 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
+	(envelope-from <peter.maydell@linaro.org>) id 1VGmI3-0006O8-Ju
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 04:48:47 -0400
+Received: by mail-lb0-f172.google.com with SMTP id x18so4778158lbi.3
+	for <qemu-trivial@nongnu.org>; Tue, 03 Sep 2013 01:48:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=Qe73eBSVOpxVDFNW2yaaSPwKfCkTkj+xPtv+OzEmza8=;
+	b=XZ5EZtQC+wgeQbTw/yNpLlUfdw22tmB8roNza7peAEe4QB7izCsflRdpVI+D3gz86g
+	xxUv8M8gfdK5rahlbxXQkgW7JZf3dvQeR3UnVxUyeQwhysQ8kjwfIzwrUrVfYO04/Zjy
+	wb4cNEMdohNWKbQ2CYuTK2ku3OQS0LmZyH6SFcWflbICCxLNPKjRymi35jTO9o/p2jAa
+	awpSM86/7OukBlzsec1PicTe8Hf7NiwPnqdrsJGgQGv2ye/yk/L/N0tgaCyAzTKLbRYy
+	6+sfdyYX5EG1sXOEdXfSEFe4KFG0EbEKMTQWSFFqB+OJ/mlIK9kzUDWPU7cSnunJJZ+8
+	W9fg==
+X-Gm-Message-State: ALoCoQkt4tbG95uTLjRYMBfKk4JwDBCcWZ8Nu2GAyXbyHayaztUXhoGftokKL4a0Npup+Et09DdO
+X-Received: by 10.152.228.130 with SMTP id si2mr1025063lac.32.1378198125796;
+	Tue, 03 Sep 2013 01:48:45 -0700 (PDT)
 MIME-Version: 1.0
-To: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Received: by 10.112.169.70 with HTTP; Tue, 3 Sep 2013 01:48:25 -0700 (PDT)
+In-Reply-To: <52259F6E.3000205@suse.de>
 References: <1378191917-6964-1-git-send-email-lig.fnst@cn.fujitsu.com>
 	<52258E44.9010704@redhat.com> <52259F6E.3000205@suse.de>
-In-Reply-To: <52259F6E.3000205@suse.de>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4013:c01::22a
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-trivial <qemu-trivial@nongnu.org>,
-	Jan Kiszka <jan.kiszka@siemens.com>, Alexander Graf <agraf@suse.de>,
-	qemu-devel <qemu-devel@nongnu.org>, liguang <lig.fnst@cn.fujitsu.com>,
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Sep 2013 09:48:25 +0100
+Message-ID: <CAFEAcA-oVhBNN3UkKHf2OogGwkUdqrJQBk51r+MDguxAFRGjyQ@mail.gmail.com>
+To: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.172
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
+	qemu-devel <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
+	Paolo Bonzini <pbonzini@redhat.com>, liguang <lig.fnst@cn.fujitsu.com>,
 	Richard Henderson <rth@twiddle.net>
 Subject: Re: [Qemu-trivial] [PATCH] cputlb: remove dead function
 	tlb_update_dirty
@@ -66,65 +59,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Sep 2013 08:41:43 -0000
+X-List-Received-Date: Tue, 03 Sep 2013 08:48:58 -0000
 
-Il 03/09/2013 10:35, Andreas Färber ha scritto:
-> Am 03.09.2013 09:22, schrieb Paolo Bonzini:
->> Il 03/09/2013 09:05, liguang ha scritto:
->>> Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
->>> ---
->>>  cputlb.c |   15 ---------------
->>>  1 files changed, 0 insertions(+), 15 deletions(-)
->>>
->>> diff --git a/cputlb.c b/cputlb.c
->>> index 977c0ca..08e50e0 100644
->>> --- a/cputlb.c
->>> +++ b/cputlb.c
->>> @@ -169,21 +169,6 @@ static inline ram_addr_t qemu_ram_addr_from_host_nofail(void *ptr)
->>>      return ram_addr;
->>>  }
->>>  
->>> -static inline void tlb_update_dirty(CPUTLBEntry *tlb_entry)
->>> -{
->>> -    ram_addr_t ram_addr;
->>> -    void *p;
->>> -
->>> -    if (tlb_is_dirty_ram(tlb_entry)) {
->>> -        p = (void *)(uintptr_t)((tlb_entry->addr_write & TARGET_PAGE_MASK)
->>> -            + tlb_entry->addend);
->>> -        ram_addr = qemu_ram_addr_from_host_nofail(p);
->>> -        if (!cpu_physical_memory_is_dirty(ram_addr)) {
->>> -            tlb_entry->addr_write |= TLB_NOTDIRTY;
->>> -        }
->>> -    }
->>> -}
->>> -
->>>  void cpu_tlb_reset_dirty_all(ram_addr_t start1, ram_addr_t length)
->>>  {
->>>      CPUState *cpu;
->>>
->>
->> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
->>
->> and CCing qemu-trivial.
-> 
-> Negative, please keep qemu-trivial out of this. My qom-cpu pull was
-> already blocked by the s390 and ppc pulls, so let's not add yet another
-> potentially interfering one to the mix.
-> 
-> IF rth agrees as TCG maintainer that this is not needed in any of his
-> upcoming refactorings then I'll queue it on qom-cpu. My upcoming
-> qom-cpu-13 series touches upon pretty much every core CPU file
-> perceivable, including this cputlb.c.
-
-Sure.
-
+On 3 September 2013 09:35, Andreas F=C3=A4rber <afaerber@suse.de> wrote:
 > I also don't understand why qemu-trivial is suddenly picking up Stefan's
 > arm translation patch, it used to be for unmaintained areas only. But
 > arm is not my problem.
 
-That patch is also not "trivial", too.
+Yeah, I wasn't expecting that either. But I'd reviewed it and it
+wasn't a big change that was likely to conflict with anything else
+in my queue, so I didn't feel like making a fuss about it.
 
-Paolo
-
+-- PMM
 
