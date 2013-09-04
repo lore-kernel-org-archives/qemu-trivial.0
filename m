@@ -1,53 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VHAoW-0007oV-Dl
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Sep 2013 06:59:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50850)
+	id 1VHDOn-00015I-67
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Sep 2013 09:45:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38044)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1VHAoP-0007oH-An
-	for qemu-trivial@nongnu.org; Wed, 04 Sep 2013 06:59:55 -0400
+	(envelope-from <jano.vesely@gmail.com>) id 1VH2Kh-0001G8-KC
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 21:56:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1VHAoJ-00020N-9w
-	for qemu-trivial@nongnu.org; Wed, 04 Sep 2013 06:59:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51580)
+	(envelope-from <jano.vesely@gmail.com>) id 1VH2Ke-0005Su-Hm
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 21:56:35 -0400
+Received: from mail-ob0-x22c.google.com ([2607:f8b0:4003:c01::22c]:55524)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1VHAoJ-00020H-1o; Wed, 04 Sep 2013 06:59:43 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r84AxT5R030953
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 4 Sep 2013 06:59:30 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-36.ams2.redhat.com
-	[10.36.112.36])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r84AxMSW020643; Wed, 4 Sep 2013 06:59:23 -0400
-Message-ID: <5227128D.705@redhat.com>
-Date: Wed, 04 Sep 2013 12:59:25 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
+	(envelope-from <jano.vesely@gmail.com>) id 1VH2Ke-0005Sn-CP
+	for qemu-trivial@nongnu.org; Tue, 03 Sep 2013 21:56:32 -0400
+Received: by mail-ob0-f172.google.com with SMTP id er7so6741356obc.31
+	for <qemu-trivial@nongnu.org>; Tue, 03 Sep 2013 18:56:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:date:message-id:subject:from:to:content-type;
+	bh=0ChPP6c+Hqu6WFcKyayJvd96Ca4jsoIbwTQ72QtInpQ=;
+	b=sIJUaqNETqiRch2LJBK59Wp6qJyQ8P8xiqQpCUuZWS9vDA6LGntI3MYtD+ntxlDoSx
+	kLp7v7VO6bHnXznJWIZIpOKGNncnJKfatcHWFjvGZcVUCQRY8lTbukTv7T0/QCZlGzk7
+	oLxU2jmgGOEQ0eivzaOnuuaJj2g912cuShqCy18V4hKXxA9qEicRI9RdksZDWPk2AqGo
+	SD1Ke8sMoci4Bq4IojkvkVY5EQKinzrlu6eDryderT5LTQz5EyR+dxqrBQblj5o41z08
+	VO8GSIZH8ljy1bU4JGSJccAJq6jQI0Ew1H+45DxiEk4oxjKC31aP6aKnkjhvjnuQtA8m
+	XXww==
 MIME-Version: 1.0
-To: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-References: <1378191917-6964-1-git-send-email-lig.fnst@cn.fujitsu.com>
-	<52258E44.9010704@redhat.com> <52259F6E.3000205@suse.de>
-	<5225C559.2030601@msgid.tls.msk.ru> <52261431.5050705@suse.de>
-In-Reply-To: <52261431.5050705@suse.de>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-1
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	r84AxT5R030953
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-trivial <qemu-trivial@nongnu.org>,
-	Jan Kiszka <jan.kiszka@siemens.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Alexander Graf <agraf@suse.de>,
-	qemu-devel <qemu-devel@nongnu.org>, liguang <lig.fnst@cn.fujitsu.com>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] cputlb: remove dead function
-	tlb_update_dirty
+X-Received: by 10.182.250.163 with SMTP id zd3mr322227obc.20.1378259791377;
+	Tue, 03 Sep 2013 18:56:31 -0700 (PDT)
+Received: by 10.60.18.200 with HTTP; Tue, 3 Sep 2013 18:56:31 -0700 (PDT)
+Date: Tue, 3 Sep 2013 21:56:31 -0400
+Message-ID: <CA+K+NcRuDrKRLNzCuvHkdkj=dNyvj_swbpgiuMi-vH8nx6+kfg@mail.gmail.com>
+From: =?UTF-8?B?SsOhbiBWZXNlbMO9?= <jano.vesely@gmail.com>
+To: QEMU <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c01::22c
+X-Mailman-Approved-At: Wed, 04 Sep 2013 09:45:30 -0400
+Subject: [Qemu-trivial] [PATCH] configure: Undef _FORTIFY_SOURCE before
+	redefining it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,15 +49,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Sep 2013 10:59:55 -0000
+X-List-Received-Date: Wed, 04 Sep 2013 01:56:36 -0000
 
-Il 03/09/2013 18:54, Andreas F=E4rber ha scritto:
-> Also, I am seeing Paolo pull in huge memory changes but now pinging the
-> breakage fixes rather than assembling a pull to fix the fallout. ;)
+This patch fixes the following  warning/error with compilers that
+define _FORTIFY_SOURE by default:
+<command-line>:0:0: error: "_FORTIFY_SOURCE" redefined [-Werror]
+stubs/dump.c:1:0: note: this is the location of the previous definition
 
-Well, I didn't put myself as memory maintainer for a reason. :)  But it
-looks like a pull request is the best thing to do, so I'll find some
-time this week to make one.
+Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Paolo
+diff --git a/configure b/configure
+index e989609..24e5b00 100755
+--- a/configure
++++ b/configure
+@@ -3419,7 +3419,7 @@ if test "$gcov" = "yes" ; then
+   CFLAGS="-fprofile-arcs -ftest-coverage -g $CFLAGS"
+   LDFLAGS="-fprofile-arcs -ftest-coverage $LDFLAGS"
+ elif test "$debug" = "no" ; then
+-  CFLAGS="-O2 -D_FORTIFY_SOURCE=2 $CFLAGS"
++  CFLAGS="-O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 $CFLAGS"
+ fi
+
+
+-- 
+1.8.1.5
 
