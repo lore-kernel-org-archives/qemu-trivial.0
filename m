@@ -1,62 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VHSjP-000631-At
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Sep 2013 02:07:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39849)
+	id 1VHXIA-0003i1-Lo
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Sep 2013 07:00:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38679)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1VHSjF-0005qM-JH
-	for qemu-trivial@nongnu.org; Thu, 05 Sep 2013 02:07:49 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1VHXI4-0003hk-Bd
+	for qemu-trivial@nongnu.org; Thu, 05 Sep 2013 07:00:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1VHSj7-0004p3-4q
-	for qemu-trivial@nongnu.org; Thu, 05 Sep 2013 02:07:41 -0400
-Received: from mail-ee0-x22e.google.com ([2a00:1450:4013:c00::22e]:43383)
+	(envelope-from <peter.maydell@linaro.org>) id 1VHXHz-0006Er-JM
+	for qemu-trivial@nongnu.org; Thu, 05 Sep 2013 06:59:56 -0400
+Received: from mail-lb0-f175.google.com ([209.85.217.175]:34391)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1VHSiq-0004ni-3z; Thu, 05 Sep 2013 02:07:16 -0400
-Received: by mail-ee0-f46.google.com with SMTP id c13so202583eek.33
-	for <multiple recipients>; Wed, 04 Sep 2013 23:07:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=isWxWfu6wdCkh9goA9BSsBNLXZvkXxBzOFXcMzFYI/g=;
-	b=Hx7IT/aysl5bItNmUAN1YGmfomtndfQGFne9yiloXri1pU5HK4eppWSP+MXRCo5Lxl
-	tgxVHfus27o2yG9j9hXwGb1zdjm2DNE0YnUyL/71UL79K5G3WH/T2WJKtdgjsjUdTqYD
-	yidtWjis9Id10HLbZFxtvdQLpBnj0lCCkHwgf3fpiBHHsG4dmAROEtqlQ00yh/E98lHX
-	tOzAXWCa9loPOwdkQP3q5w/mktvkR/88zwkKhERGD0wNeBaw+SaWrQDCQ35ZgfDc/T47
-	S7NhqpUC56849f3A6fZexxaUXKOZEXHgnUgaLfZbsHYjGUIKCwvrNCXxZIZVrhV+qugw
-	4O9g==
-X-Received: by 10.14.194.131 with SMTP id m3mr10813701een.45.1378361235285;
-	Wed, 04 Sep 2013 23:07:15 -0700 (PDT)
-Received: from yakj.usersys.redhat.com
-	(net-37-117-144-28.cust.dsl.vodafone.it. [37.117.144.28])
-	by mx.google.com with ESMTPSA id p5sm45714194eeg.5.1969.12.31.16.00.00
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Wed, 04 Sep 2013 23:07:14 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <52281F93.4070805@redhat.com>
-Date: Thu, 05 Sep 2013 08:07:15 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
+	(envelope-from <peter.maydell@linaro.org>) id 1VHXHz-0006Ef-Cf
+	for qemu-trivial@nongnu.org; Thu, 05 Sep 2013 06:59:51 -0400
+Received: by mail-lb0-f175.google.com with SMTP id y6so1508717lbh.34
+	for <qemu-trivial@nongnu.org>; Thu, 05 Sep 2013 03:59:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=duQ9LJ0q9QCXkGGumN7uq/iIiI3FHypAb30uvJltXYM=;
+	b=El+hFAxJVB9xux1tDJ7ZRE1KjrAtbYDaln3Gu4FY/47zL8aGKf6CvIiF8jBlNQT6ia
+	i+E5D1d9OhJQXLaXo6oO6PuRL4QwzteujB2NZ7rWNz1TkJQnjhUQ+GYHTNDJ5n9bF+13
+	ZIOwV9HbU8jlIndmvVJZP+f6FYs42XsHJ1vjYOO6XAjwrkX7Kvm9zoCMPcAJCtTFfI0l
+	AO3vVDU2nCrSQNguyKTRZJpCKC+TC40BuxJy3wOGmG7M5ck9KDt/tBBh0lTbewQFsH2W
+	kWVyv0KTakCiq7/EK9d9NlKw+Lco0j7sHgsSz3m14lxUe7VAcr3lvYYgvMorHmwt6Vjw
+	d19A==
+X-Gm-Message-State: ALoCoQk1hU9Lx1mQr9iXLRbq0fn7KvePntJbNO9SO+57+Njm1Tr+3rxgwF7eBVCC7+I98wFevPSw
+X-Received: by 10.152.120.73 with SMTP id la9mr6956355lab.3.1378378790346;
+	Thu, 05 Sep 2013 03:59:50 -0700 (PDT)
 MIME-Version: 1.0
-To: Alexey Kardashevskiy <aik@ozlabs.ru>
-References: <1378196857-27541-1-git-send-email-aik@ozlabs.ru>
-	<CAFEAcA8Jp=SQsC3RpxahF1RFRtX2nHOS2690XiT9Jnpn0jGk_g@mail.gmail.com>
-	<5225AC9A.2090601@ozlabs.ru> <5225BD32.8030001@siemens.com>
-	<52260025.3050704@ozlabs.ru> <522601AB.1050901@redhat.com>
-	<5227F79B.8090804@ozlabs.ru>
-In-Reply-To: <5227F79B.8090804@ozlabs.ru>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=KOI8-R
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4013:c00::22e
-Cc: Peter Maydell <peter.maydell@linaro.org>, kvm-devel <kvm@vger.kernel.org>,
-	Gleb Natapov <gleb@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Jan Kiszka <jan.kiszka@siemens.com>, Michael Tokarev <mjt@tls.msk.ru>,
+Received: by 10.112.169.70 with HTTP; Thu, 5 Sep 2013 03:59:30 -0700 (PDT)
+In-Reply-To: <58dbd819c4270169fa26487cf1e7220b11c363ac.1378378402.git.mprivozn@redhat.com>
+References: <58dbd819c4270169fa26487cf1e7220b11c363ac.1378378402.git.mprivozn@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Sep 2013 11:59:30 +0100
+Message-ID: <CAFEAcA87oO3KC3H-B+kXxNzPHbaoxYr=tYWoLO1HdPqUY45Bag@mail.gmail.com>
+To: Michal Privoznik <mprivozn@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.175
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-headers: update to
-	3.11
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RESEND] configure: Undefine
+ _FORTIFY_SOURCE prior using it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -68,22 +55,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Sep 2013 06:07:50 -0000
+X-List-Received-Date: Thu, 05 Sep 2013 11:00:01 -0000
 
-Il 05/09/2013 05:16, Alexey Kardashevskiy ha scritto:
->>> >> Sorry for my ignorance, but this is The Kernel, it is already there, broken
->>> >> or not, even if it is broken, qemu cannot stay isolated, no?
->>> >> This is a mechanical change, no more.
->> > 
->> > It's a matter of keeping things bisectable.  If we can detect a
->> > breakage, we can first work around it, and then apply the header update.
->> >  And if we don't detect it, maintainers usually send pull requests when
->> > they have time to work on breakage caused by their patches.
-> 
-> I can see the discussion but I do not see if anyone is going to pull this
-> through any tree. Please, somebody, pull. Thanks.
+On 5 September 2013 11:54, Michal Privoznik <mprivozn@redhat.com> wrote:
+> Currently, we are enforcing the _FORTIFY_SOURCE=2 without any
+> previous detection if the macro has been already defined, e.g.
+> by environment, or is just enabled by compiler by default.
+>
+> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
 
-It will go in through the KVM tree, probably sometime next week.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Paolo
+-- PMM
 
