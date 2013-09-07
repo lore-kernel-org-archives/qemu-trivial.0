@@ -1,50 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VI2ad-0007Wl-V4
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Sep 2013 16:25:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51987)
+	id 1VINkJ-0008Uz-C2
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Sep 2013 15:00:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32804)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1VI2aV-0007Hl-NF
-	for qemu-trivial@nongnu.org; Fri, 06 Sep 2013 16:25:09 -0400
+	(envelope-from <sw@weilnetz.de>) id 1VINkC-0008Ms-Hh
+	for qemu-trivial@nongnu.org; Sat, 07 Sep 2013 15:00:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1VI2aP-0001xT-LL
-	for qemu-trivial@nongnu.org; Fri, 06 Sep 2013 16:25:03 -0400
-Received: from mail-qe0-x234.google.com ([2607:f8b0:400d:c02::234]:43454)
+	(envelope-from <sw@weilnetz.de>) id 1VINk7-0000Ia-67
+	for qemu-trivial@nongnu.org; Sat, 07 Sep 2013 15:00:28 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:56391)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1VI2aD-0001ue-Hp; Fri, 06 Sep 2013 16:24:45 -0400
-Received: by mail-qe0-f52.google.com with SMTP id i11so1971936qej.39
-	for <multiple recipients>; Fri, 06 Sep 2013 13:24:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:mime-version:content-type
-	:content-transfer-encoding;
-	bh=yUfNFmLx1VKkEt4qEkadZNbntJ+OBjoWxFs5rUpf9ts=;
-	b=KgbR99P8n9XwGxHkY0OEAy2GABDZ0kA4kichKzdmDfdX22Doe/nbT59AZZBVN65w1M
-	s10NmgoaO0et+pxllRV53jq0n09oxijnZFAw6Y+lcuNjPYcR6WQNUgqcqMTEDdE4aW3D
-	+qDnAvdNWqIlX/TezNxboj1Zeu0QuDhfP5wbWVy4qqk/mfthjm73s+A3rWE04iug7lKN
-	I9Rxi9gbIut0ppTE1UGNavYvMh1Z0iIBosGWi79XQQS4GmLq2fLuCucfzHBudpyO1Fkk
-	W/SiJm8L31NbipkwgdOdCVQnHSTiuZcEZyFjU8CNC8FP12sETx45HmVNKFzBrKFcluU/
-	tluA==
-X-Received: by 10.224.97.3 with SMTP id j3mr4628633qan.87.1378499084988;
-	Fri, 06 Sep 2013 13:24:44 -0700 (PDT)
-Received: from anchor.com (50-194-63-110-static.hfc.comcastbusiness.net.
-	[50.194.63.110])
-	by mx.google.com with ESMTPSA id g3sm7306964qas.6.1969.12.31.16.00.00
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Fri, 06 Sep 2013 13:24:44 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-From: Richard Henderson <rth@twiddle.net>
-To: qemu-devel@nongnu.org
-Date: Fri,  6 Sep 2013 13:24:11 -0700
-Message-Id: <1378499051-25832-1-git-send-email-rth@twiddle.net>
-X-Mailer: git-send-email 1.8.1.4
+	(envelope-from <sw@weilnetz.de>)
+	id 1VINjw-0000Fv-56; Sat, 07 Sep 2013 15:00:12 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	96ADB72819E7; Sat,  7 Sep 2013 21:00:09 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 1AzfrmxJGD9f; Sat,  7 Sep 2013 21:00:07 +0200 (CEST)
+Received: from [192.168.178.35] (p54AD9804.dip0.t-ipconnect.de [84.173.152.4])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	91C9872819DE; Sat,  7 Sep 2013 21:00:07 +0200 (CEST)
+Message-ID: <522B77B7.8010700@weilnetz.de>
+Date: Sat, 07 Sep 2013 21:00:07 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:17.0) Gecko/20130803 Thunderbird/17.0.8
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c02::234
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] tcg-sparc: Fix parenthesis warning
+To: qemu-trivial <qemu-trivial@nongnu.org>
+References: <1374769498-22383-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1374769498-22383-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.4.6
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] Makefile: Remove some more files when
+	cleaning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,29 +51,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Sep 2013 20:25:09 -0000
+X-List-Received-Date: Sat, 07 Sep 2013 19:00:34 -0000
 
-error: suggest parentheses around comparison in operand of ‘&’ [-Werror=parentheses]
+Am 25.07.2013 18:24, schrieb Stefan Weil:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  Makefile |    4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/Makefile b/Makefile
+> index 29f1043..80aeb18 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -237,7 +237,8 @@ clean:
+>  	find . -name '*.[oda]' -type f -exec rm -f {} +
+>  	find . -name '*.l[oa]' -type f -exec rm -f {} +
+>  	rm -f $(TOOLS) $(HELPERS-y) qemu-ga TAGS cscope.* *.pod *~ */*~
+> -	rm -Rf .libs
+> +	rm -f fsdev/*.pod
+> +	rm -rf .libs */.libs
+>  	rm -f qemu-img-cmds.h
+>  	@# May not be present in GENERATED_HEADERS
+>  	rm -f trace/generated-tracers-dtrace.dtrace*
+> @@ -262,6 +263,7 @@ qemu-%.tar.bz2:
+>  distclean: clean
+>  	rm -f config-host.mak config-host.h* config-host.ld $(DOCS) qemu-options.texi qemu-img-cmds.texi qemu-monitor.texi
+>  	rm -f config-all-devices.mak config-all-disas.mak
+> +	rm -f po/*.mo
+>  	rm -f roms/seabios/config.mak roms/vgabios/config.mak
+>  	rm -f qemu-doc.info qemu-doc.aux qemu-doc.cp qemu-doc.cps qemu-doc.dvi
+>  	rm -f qemu-doc.fn qemu-doc.fns qemu-doc.info qemu-doc.ky qemu-doc.kys
 
-Signed-off-by: Richard Henderson <rth@twiddle.net>
----
- tcg/sparc/tcg-target.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tcg/sparc/tcg-target.h b/tcg/sparc/tcg-target.h
-index 2edf858..1ff2922 100644
---- a/tcg/sparc/tcg-target.h
-+++ b/tcg/sparc/tcg-target.h
-@@ -153,7 +153,7 @@ typedef enum {
- static inline void flush_icache_range(uintptr_t start, uintptr_t stop)
- {
-     uintptr_t p;
--    for (p = start & -8; p < (stop + 7) & -8; p += 8) {
-+    for (p = start & -8; p < ((stop + 7) & -8); p += 8) {
-         __asm__ __volatile__("flush\t%0" : : "r" (p));
-     }
- }
--- 
-1.8.1.4
+Ping?
 
 
