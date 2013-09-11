@@ -1,42 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VJgLA-0000c2-Ew
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2013 05:04:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48445)
+	id 1VJkgm-0000lt-06
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2013 09:42:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47327)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1VJfVr-0000Sy-Vt
-	for qemu-trivial@nongnu.org; Wed, 11 Sep 2013 04:11:04 -0400
+	(envelope-from <gabriel@kerneis.info>) id 1VJkge-0000jh-LG
+	for qemu-trivial@nongnu.org; Wed, 11 Sep 2013 09:42:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1VJfVn-00006a-AU
-	for qemu-trivial@nongnu.org; Wed, 11 Sep 2013 04:10:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:62610)
+	(envelope-from <gabriel@kerneis.info>) id 1VJkgY-0003bt-Hj
+	for qemu-trivial@nongnu.org; Wed, 11 Sep 2013 09:42:28 -0400
+Received: from wanbli.kerneis.info ([176.31.113.173]:60982)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>)
-	id 1VJfVm-00006U-K8; Wed, 11 Sep 2013 04:10:55 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8B8AqIq010608
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 11 Sep 2013 04:10:52 -0400
-Received: from nial.usersys.redhat.com (dhcp-1-126.brq.redhat.com
-	[10.34.1.126])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r8B8Aorl012075; Wed, 11 Sep 2013 04:10:51 -0400
-Date: Wed, 11 Sep 2013 10:10:22 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Anthony PERARD <anthony.perard@citrix.com>
-Message-ID: <20130911101022.2841cad3@nial.usersys.redhat.com>
-In-Reply-To: <1378830978-27578-1-git-send-email-anthony.perard@citrix.com>
-References: <1378830978-27578-1-git-send-email-anthony.perard@citrix.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+	(envelope-from <gabriel@kerneis.info>) id 1VJkgY-0003bl-CN
+	for qemu-trivial@nongnu.org; Wed, 11 Sep 2013 09:42:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=kerneis.info;
+	s=wanbli-rsa1; h=Message-Id:Date:Subject:Cc:To:From;
+	bh=U/KCZKo6ejkLWCssoa4bBP1VcxiHz04xWu0NPHZnOSY=; 
+	b=SjP2AlAcWrZ6EAWrfSPVoLtpds34XY6nU2LqKKOB8Ngp1lnUMoKAdrh4QTfSiqQBU4PMPflS1XVLvZTxYoqtrD0IHyCXFDH19XNME8bALb89fNw/IOsa4uocI6+dx0hrUCa+YPdFq95ZVLiUYALoaQMm+7bNiZKJ6cnYVBN1HSs=;
+Received: from wowasieco.sm.cl.cam.ac.uk ([128.232.60.22] helo=localhost)
+	by wanbli.kerneis.info with esmtpsa
+	(TLS1.2:DHE_RSA_AES_128_CBC_SHA1:128) (Exim 4.80)
+	(envelope-from <gabriel@kerneis.info>)
+	id 1VJkgQ-0007s2-Fb; Wed, 11 Sep 2013 13:42:14 +0000
+From: Gabriel Kerneis <gabriel@kerneis.info>
+To: qemu-devel@nongnu.org
+Date: Wed, 11 Sep 2013 14:41:52 +0100
+Message-Id: <1378906912-14015-1-git-send-email-gabriel@kerneis.info>
+X-Mailer: git-send-email 1.7.10.4
+X-SA-Exim-Connect-IP: 128.232.60.22
+X-SA-Exim-Mail-From: gabriel@kerneis.info
+X-SA-Exim-Scanned: No (on wanbli.kerneis.info); SAEximRunCond expanded to false
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Wed, 11 Sep 2013 05:03:58 -0400
-Cc: qemu-trivial@nongnu.org, QEMU-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs: Fix IO port number
- for CPU present bitmap.
+X-Received-From: 176.31.113.173
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: [Qemu-trivial] [PATCH] Quote extra_cflags in config-host.mak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,29 +44,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Sep 2013 08:11:04 -0000
+X-List-Received-Date: Wed, 11 Sep 2013 13:42:34 -0000
 
-On Tue, 10 Sep 2013 17:36:18 +0100
-Anthony PERARD <anthony.perard@citrix.com> wrote:
+The variable extra_cflags needs to be quoted in config-host.mak,
+in particular because it might contain parentheses that would
+otherwise be interpreted by the shell when reloading the file.
 
-> Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
-> ---
->  docs/specs/acpi_cpu_hotplug.txt | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/docs/specs/acpi_cpu_hotplug.txt b/docs/specs/acpi_cpu_hotplug.txt
-> index 5dec0c5..f6f5774 100644
-> --- a/docs/specs/acpi_cpu_hotplug.txt
-> +++ b/docs/specs/acpi_cpu_hotplug.txt
-> @@ -10,7 +10,7 @@ ACPI GPE block (IO ports 0xafe0-0xafe3, byte access):
->  Generic ACPI GPE block. Bit 2 (GPE.2) used to notify CPU
->  hot-add/remove event to ACPI BIOS, via SCI interrupt.
->  
-> -CPU present bitmap (IO port 0xaf00-0xae1f, 1-byte access):
-> +CPU present bitmap (IO port 0xaf00-0xaf1f, 1-byte access):
->  ---------------------------------------------------------------
->  One bit per CPU. Bit position reflects corresponding CPU APIC ID.
->  Read-only.
+For instance, if one wants to define some attribute with configure:
 
-Reviewd-By: Igor Mammedov <imammedo@redhat.com>
+./configure --extra-cflags="-Dcoroutine_fn='__attribute__((coroutine_fn))'"
+
+A more robust approach would be to escape every variable properly, but
+there is no portable equivalent to bash's "printf %q" solution. The
+current patch, while not bullet-proof, works well in the common case.
+
+Signed-off-by: Gabriel Kerneis <gabriel@kerneis.info>
+---
+ configure |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index e989609..23114de 100755
+--- a/configure
++++ b/configure
+@@ -3681,7 +3681,7 @@ if test "$mingw32" = "no" ; then
+   echo "qemu_localstatedir=$local_statedir" >> $config_host_mak
+ fi
+ echo "qemu_helperdir=$libexecdir" >> $config_host_mak
+-echo "extra_cflags=$EXTRA_CFLAGS" >> $config_host_mak
++echo "extra_cflags=\"$EXTRA_CFLAGS\"" >> $config_host_mak
+ echo "extra_ldflags=$EXTRA_LDFLAGS" >> $config_host_mak
+ echo "qemu_localedir=$qemu_localedir" >> $config_host_mak
+ echo "libs_softmmu=$libs_softmmu" >> $config_host_mak
+-- 
+1.7.10.4
+
 
