@@ -1,38 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VJm7w-0006xT-Uy
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2013 11:14:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44260)
+	id 1VJm9r-0008Sm-6q
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2013 11:16:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45469)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gabriel@kerneis.info>) id 1VJm7p-0006oR-JF
-	for qemu-trivial@nongnu.org; Wed, 11 Sep 2013 11:14:43 -0400
+	(envelope-from <gabriel@kerneis.info>) id 1VJm9k-0008JQ-JQ
+	for qemu-trivial@nongnu.org; Wed, 11 Sep 2013 11:16:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gabriel@kerneis.info>) id 1VJm7k-0000Np-1g
-	for qemu-trivial@nongnu.org; Wed, 11 Sep 2013 11:14:37 -0400
-Received: from wanbli.kerneis.info ([2001:41d0:8:38ad::1]:42186)
+	(envelope-from <gabriel@kerneis.info>) id 1VJm9f-0001DJ-2m
+	for qemu-trivial@nongnu.org; Wed, 11 Sep 2013 11:16:36 -0400
+Received: from wanbli.kerneis.info ([2001:41d0:8:38ad::1]:42192)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <gabriel@kerneis.info>)
-	id 1VJm7j-0000Ni-OJ; Wed, 11 Sep 2013 11:14:31 -0400
+	id 1VJm9e-0001D6-QE; Wed, 11 Sep 2013 11:16:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=kerneis.info;
 	s=wanbli-rsa1; 
 	h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date;
-	bh=5c1mVBUOwe9wOGAeoxAEcA0BF7Ny1i05sLG3ngCVVMM=; 
-	b=X+4Z/YLVIlMBTDe/8MKrkK+KJoHrgCVg8wGD/l3YMRpFtQFnAwIClFacRkAF4It72vvScjVjwPGa3GqAN0qS3r8eFHrVF2yUXgogrNqdbTSpnDDzJuu4Pna49QOejcWJTFD/pXYO4CuXOZOU+xXGp9z9Npinr+aQQiRJ/8mi44E=;
+	bh=SZG8i4PzN3PogtNeMvhzoV1VYwX3Uz/MJvzpFHR/iIU=; 
+	b=8STxZ1dtQRL8GMW1lpvvl+fhKLOeE7O2Csvwf5Ea89cqYfLMxSVoRMQXbtnjuW7r8nwTfozROscBM2WVtK6iGggNih9TN3FR6DPJVFagoUHIqJYsAWaz8mEuSL8HSqTrLl9uVPpfJcD1fb/RIubLE3EPUHsOig0dMoFrMKqH4/4=;
 Received: from wowasieco.sm.cl.cam.ac.uk ([128.232.60.22] helo=localhost)
 	by wanbli.kerneis.info with esmtpsa
 	(TLS1.2:DHE_RSA_AES_128_CBC_SHA1:128) (Exim 4.80)
 	(envelope-from <gabriel@kerneis.info>)
-	id 1VJm7h-0002cr-Jj; Wed, 11 Sep 2013 15:14:29 +0000
-Date: Wed, 11 Sep 2013 16:14:28 +0100
+	id 1VJm9d-0002jG-Mt; Wed, 11 Sep 2013 15:16:29 +0000
+Date: Wed, 11 Sep 2013 16:16:28 +0100
 From: Gabriel Kerneis <gabriel@kerneis.info>
 To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20130911151428.GA22569@kerneis.info>
+Message-ID: <20130911151628.GB22569@kerneis.info>
 References: <1378906912-14015-1-git-send-email-gabriel@kerneis.info>
 	<523077CE.6070303@redhat.com> <20130911144230.GA15227@kerneis.info>
 	<523083EF.7050203@redhat.com> <20130911150137.GC15227@kerneis.info>
+	<52308701.1020706@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20130911150137.GC15227@kerneis.info>
+In-Reply-To: <52308701.1020706@redhat.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-SA-Exim-Connect-IP: 128.232.60.22
 X-SA-Exim-Mail-From: gabriel@kerneis.info
@@ -55,23 +56,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Sep 2013 15:14:43 -0000
+X-List-Received-Date: Wed, 11 Sep 2013 15:16:42 -0000
 
-On Wed, Sep 11, 2013 at 04:01:37PM +0100, Gabriel Kerneis wrote:
-> On Wed, Sep 11, 2013 at 04:53:35PM +0200, Paolo Bonzini wrote:
-> > Oh, then it's this line in configure that has to be changed to do proper
-> > quoting.
-> > 
-> > printf "# Configured with:" >> $config_host_mak
-> > printf " '%s'" "$0" "$@" >> $config_host_mak
+On Wed, Sep 11, 2013 at 05:06:41PM +0200, Paolo Bonzini wrote:
+> > The line that has to be fixed is
+> > really the line starting with "extra_cflags=" in config-host.mak (well,
+> > at least in my experience - my patch does not touch the first line, at
+> > it still solves the issue).
 > 
-> No, this line has absolutely nothing to do with it.
+> Yeah, what I'm missing now is why your patch works.
 
-I'm sorry, you are correct. I was confused because I did not try your
-proposal from a clean build directory, running into a chicken-and-egg
-issue.
-
-I'll propose an updated patch.
+That is indeed very mysterious :-)
 
 -- 
 Gabriel
