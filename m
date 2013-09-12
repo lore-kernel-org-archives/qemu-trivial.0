@@ -1,34 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VKBT0-0005PM-4Z
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2013 14:18:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53335)
+	id 1VKBYy-0007te-DJ
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2013 14:24:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54457)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VKBSu-0005ER-8k
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 14:18:09 -0400
+	(envelope-from <damien.millescamps@6wind.com>) id 1VKBYr-0007kL-9i
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 14:24:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VKBSs-0003tK-SU
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 14:18:04 -0400
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:50199
-	helo=v2201305906712890.yourvserver.net)
+	(envelope-from <damien.millescamps@6wind.com>) id 1VKBYe-0005P1-VL
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 14:24:13 -0400
+Received: from mail-wi0-f180.google.com ([209.85.212.180]:47205)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VKBSp-0003sd-Kp; Thu, 12 Sep 2013 14:17:59 -0400
-Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id 17A66180651; Thu, 12 Sep 2013 20:17:57 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel <qemu-devel@nongnu.org>
-Date: Thu, 12 Sep 2013 20:17:50 +0200
-Message-Id: <1379009870-18323-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	qemu-stable <qemu-stable@nongnu.org>, Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-trivial] [PATCH] tci: Fix qemu-alpha on 32 bit hosts (wrong
-	assertions)
+	(envelope-from <damien.millescamps@6wind.com>) id 1VKBYe-0005N7-Oq
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 14:24:00 -0400
+Received: by mail-wi0-f180.google.com with SMTP id hj3so192024wib.13
+	for <qemu-trivial@nongnu.org>; Thu, 12 Sep 2013 11:23:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=m9Yw3aj9Nqm2hrzzwS78en1aiC2ySJwHeWXOmmSiYk8=;
+	b=bgdmn5dlhgwYdrR5S447vyeEaQEzfbB2PJbGsOdjTD6jIPr0zBRMiYqBV4QWHERMFU
+	y9QCHwbNrQC3V5wdLIwtbpS+cJMekmRpAg11hagisn238ePYNC9RprByud1wC9gYFsz8
+	CblSvgz43gotqnAgFeq+Xr0SlGOLXQKfDljPpes3nz4QITCaxGvmBOd8juQtfuNIkHXG
+	LOSyLK3BFRe9UDVEIkK26EQysp5OQvF7gSYe7lVCHBVnbXI3pi8kwdOzcI9IQeOUCWoB
+	9VwCJQydXdHySZ2Z7nZQOxeQnX7GuLiV4AJfEvDN86uJJPAUcsW6XGvq28IIkgc/qzIO
+	oTAA==
+X-Gm-Message-State: ALoCoQk0vkYZ3bgzLuPPTu0GMK8L6nHs7rOAznwjEb445drNsVKNfKLPaf1bIPpI3aSbTgUmXKQY
+X-Received: by 10.194.5.35 with SMTP id p3mr2940847wjp.47.1379010238659;
+	Thu, 12 Sep 2013 11:23:58 -0700 (PDT)
+Received: from 6wind.com (guy78-3-82-239-227-177.fbx.proxad.net.
+	[82.239.227.177])
+	by mx.google.com with ESMTPSA id ey4sm6345335wic.11.1969.12.31.16.00.00
+	(version=TLSv1.1 cipher=RC4-SHA bits=128/128);
+	Thu, 12 Sep 2013 11:23:57 -0700 (PDT)
+From: Damien Millescamps <damien.millescamps@6wind.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 12 Sep 2013 20:23:48 +0200
+Message-Id: <1379010228-15324-1-git-send-email-damien.millescamps@6wind.com>
+X-Mailer: git-send-email 1.7.2.5
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.212.180
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] ivshmem: allow the sharing of hugepages
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,124 +53,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Sep 2013 18:18:09 -0000
+X-List-Received-Date: Thu, 12 Sep 2013 18:24:19 -0000
 
-Debian busybox-static for alpha has a load address of 0x0000000120000000
-which is mapped to 0x0000000020000000 for 32 bit hosts.
+According to shm_open specifications:
 
-qemu-alpha uses the TCG opcodes qemu_ld32, qemu_ld64, qemu_st32 and
-qemu_st64 which all raise the assertion (taddr == host_addr).
+ A shared memory object should be identified by a name of the form /somename;
+ that is, a null-terminated string of up to NAME_MAX (i.e., 255) characters
+ consisting of an initial slash, followed by one or more characters, none of
+ which are slashes.
 
-Remove all assertions of this type because they are either wrong or
-unnecessary (when sizeof(tcg_target_ulong) >= sizeof(target_ulong)).
+This patch permits to share memory areas that do not specifically belong to
+/dev/shmem.
 
-Cc: qemu-stable <qemu-stable@nongnu.org>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+A use case for this patch is sharing huge pages available through a
+hugetlbfs mountpoint.
+
+Signed-off-by: Damien Millescamps <damien.millescamps@6wind.com>
 ---
- tci.c |   12 ------------
- 1 file changed, 12 deletions(-)
+ hw/misc/ivshmem.c |   16 +++++++++++++++-
+ 1 files changed, 15 insertions(+), 1 deletions(-)
 
-diff --git a/tci.c b/tci.c
-index cea7234..0202ed9 100644
---- a/tci.c
-+++ b/tci.c
-@@ -1093,7 +1093,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             tmp8 = helper_ldb_mmu(env, taddr, tci_read_i(&tb_ptr));
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             tmp8 = *(uint8_t *)(host_addr + GUEST_BASE);
- #endif
-             tci_write_reg8(t0, tmp8);
-@@ -1105,7 +1104,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             tmp8 = helper_ldb_mmu(env, taddr, tci_read_i(&tb_ptr));
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             tmp8 = *(uint8_t *)(host_addr + GUEST_BASE);
- #endif
-             tci_write_reg8s(t0, tmp8);
-@@ -1117,7 +1115,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             tmp16 = helper_ldw_mmu(env, taddr, tci_read_i(&tb_ptr));
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             tmp16 = tswap16(*(uint16_t *)(host_addr + GUEST_BASE));
- #endif
-             tci_write_reg16(t0, tmp16);
-@@ -1129,7 +1126,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             tmp16 = helper_ldw_mmu(env, taddr, tci_read_i(&tb_ptr));
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             tmp16 = tswap16(*(uint16_t *)(host_addr + GUEST_BASE));
- #endif
-             tci_write_reg16s(t0, tmp16);
-@@ -1142,7 +1138,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             tmp32 = helper_ldl_mmu(env, taddr, tci_read_i(&tb_ptr));
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             tmp32 = tswap32(*(uint32_t *)(host_addr + GUEST_BASE));
- #endif
-             tci_write_reg32(t0, tmp32);
-@@ -1154,7 +1149,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             tmp32 = helper_ldl_mmu(env, taddr, tci_read_i(&tb_ptr));
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             tmp32 = tswap32(*(uint32_t *)(host_addr + GUEST_BASE));
- #endif
-             tci_write_reg32s(t0, tmp32);
-@@ -1167,7 +1161,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             tmp32 = helper_ldl_mmu(env, taddr, tci_read_i(&tb_ptr));
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             tmp32 = tswap32(*(uint32_t *)(host_addr + GUEST_BASE));
- #endif
-             tci_write_reg32(t0, tmp32);
-@@ -1182,7 +1175,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             tmp64 = helper_ldq_mmu(env, taddr, tci_read_i(&tb_ptr));
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             tmp64 = tswap64(*(uint64_t *)(host_addr + GUEST_BASE));
- #endif
-             tci_write_reg(t0, tmp64);
-@@ -1198,7 +1190,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             helper_stb_mmu(env, taddr, t0, t2);
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             *(uint8_t *)(host_addr + GUEST_BASE) = t0;
- #endif
-             break;
-@@ -1210,7 +1201,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             helper_stw_mmu(env, taddr, t0, t2);
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             *(uint16_t *)(host_addr + GUEST_BASE) = tswap16(t0);
- #endif
-             break;
-@@ -1222,7 +1212,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             helper_stl_mmu(env, taddr, t0, t2);
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             *(uint32_t *)(host_addr + GUEST_BASE) = tswap32(t0);
- #endif
-             break;
-@@ -1234,7 +1223,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             helper_stq_mmu(env, taddr, tmp64, t2);
- #else
-             host_addr = (tcg_target_ulong)taddr;
--            assert(taddr == host_addr);
-             *(uint64_t *)(host_addr + GUEST_BASE) = tswap64(tmp64);
- #endif
-             break;
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index 2838866..9020bb2 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -751,9 +751,23 @@ static int pci_ivshmem_init(PCIDevice *dev)
+ 
+         IVSHMEM_DPRINTF("using shm_open (shm object = %s)\n", s->shmobj);
+ 
++        /* 
++         * A shared memory object should be identified by a name of the form /somename; 
++         * that is, a null-terminated string of up to NAME_MAX (i.e., 255) characters 
++         * consisting of an initial slash, followed by one or more characters, none of 
++         * which are slashes.
++         */
++        if (s->shmobj && s->shmobj[0] == '/' && strstr(&s->shmobj[1], "/")) {
++            /* This can't be a shared memory object. */
++            fd = open(s->shmobj, O_RDWR);
++            if (fd < 0) {
++                perror("ivshmem - open");
++                exit(-1);
++            }
++        }
+         /* try opening with O_EXCL and if it succeeds zero the memory
+          * by truncating to 0 */
+-        if ((fd = shm_open(s->shmobj, O_CREAT|O_RDWR|O_EXCL,
++        else if ((fd = shm_open(s->shmobj, O_CREAT|O_RDWR|O_EXCL,
+                         S_IRWXU|S_IRWXG|S_IRWXO)) > 0) {
+            /* truncate file to length PCI device's memory */
+             if (ftruncate(fd, s->ivshmem_size) != 0) {
 -- 
-1.7.10.4
+1.7.2.5
 
 
