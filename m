@@ -1,46 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VK2ak-0005rB-OO
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2013 04:49:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36100)
+	id 1VK2dS-0007Tu-N8
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2013 04:52:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36584)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VK2ae-0005q8-I8
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 04:49:32 -0400
+	(envelope-from <stefanha@gmail.com>) id 1VK2dL-0007Jc-QR
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 04:52:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VK2aZ-0004OZ-RX
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 04:49:28 -0400
-Received: from mail-la0-f41.google.com ([209.85.215.41]:47395)
+	(envelope-from <stefanha@gmail.com>) id 1VK2dG-0004z5-8e
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 04:52:15 -0400
+Received: from mail-ee0-x22a.google.com ([2a00:1450:4013:c00::22a]:42539)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VK2aZ-0004OH-Kh
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 04:49:23 -0400
-Received: by mail-la0-f41.google.com with SMTP id ec20so8338298lab.14
-	for <qemu-trivial@nongnu.org>; Thu, 12 Sep 2013 01:49:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=AQEz0+QoFjLt09bNT3FQjAITxbzDOvdETRmVIOCGTIc=;
-	b=EnyM1f6XEvmL+quUW/wTl9PPEy1H7LTkScVSC5ZuIJkUoxzop9cGzbrC9lNMyk3mdF
-	M+iaJKb9GW7/cFrCKRdi+bgm0F+WWV2u9lsFmk0LMp0ifYxPrlj7z8AIZhzjxtZajLa7
-	NYpsAE13kCfYXmNybHD+dIqEwfAAQweyy0RKt+yD0aRKib9/iCYjZbcg65DbV2IM4iq2
-	f3ar9sZntdEpaEil6ClLQctFq0n9zH/1n4ldrxN2BcsKsTJzcJ5Vb5Oj6yAvcq64bjtO
-	sL+bipXlcv3S3tAF9QsDb0PdT4PcpP1ivnRyOHgx40/BV+J0uIsjtlEfVbBWhBD90i1j
-	cK+w==
-X-Gm-Message-State: ALoCoQloAkvTE/pYU5a3YIdm4PcLzgymu5DO9r7iD5qk6NP0en97O8IjakgwzvGzf44NOyRp2anX
-X-Received: by 10.152.10.99 with SMTP id h3mr5273706lab.13.1378975762527; Thu,
-	12 Sep 2013 01:49:22 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.161.232 with HTTP; Thu, 12 Sep 2013 01:49:02 -0700 (PDT)
-In-Reply-To: <5230F7D1.9090009@twiddle.net>
+	(envelope-from <stefanha@gmail.com>)
+	id 1VK2d4-0004x9-Mt; Thu, 12 Sep 2013 04:51:58 -0400
+Received: by mail-ee0-f42.google.com with SMTP id b45so5178393eek.29
+	for <multiple recipients>; Thu, 12 Sep 2013 01:51:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=q0i/9Tf00Ryaeql3NmZTpri78h+KTOo+6bUMmncNTk8=;
+	b=C6PV/q87AexE0YY/5iMD55qVHbWWABwWb8i1pBYFjvB79hDeLh8qtB1cmBKMMeHnbA
+	8fn29YARqIMRYq3BxuOf+/wvtBJk+Tu8pqayKwhFVtRBMLgqnZMokT7RXOmtU/gHMysv
+	XPQhLM7Mb8Q+Mi7vsPKR5hJXWFCPge+tDrEd7rwq+9I8DIo70m2OhC8RoWN/CdBv/ANO
+	92EGJ3IkOg02W2M4R0zw/F+0VrtkyxiDQeed61VRBlBehq20J2AKVSVIBIWoT4Xco5er
+	M6rKghzuOHTL8OBY/qYNnodC1etwb7Ixeocb9DX46r0vL0yQNNfkhCMW9eRpG/22QcUR
+	Ctxw==
+X-Received: by 10.14.223.134 with SMTP id v6mr889eep.88.1378975917499;
+	Thu, 12 Sep 2013 01:51:57 -0700 (PDT)
+Received: from localhost (188-193-160-156-dynip.superkabel.de.
+	[188.193.160.156])
+	by mx.google.com with ESMTPSA id r48sm3892187eev.14.1969.12.31.16.00.00
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Thu, 12 Sep 2013 01:51:57 -0700 (PDT)
+Date: Thu, 12 Sep 2013 10:51:55 +0200
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Richard Henderson <rth@twiddle.net>
+Message-ID: <20130912085155.GH1965@stefanha-thinkpad.redhat.com>
 References: <5230F7D1.9090009@twiddle.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Sep 2013 09:49:02 +0100
-Message-ID: <CAFEAcA_c1Qja2geB9wzmR3rLG8dq=V38cGVyYaqip5uEZrdgCQ@mail.gmail.com>
-To: Richard Henderson <rth@twiddle.net>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.41
-Cc: qemu-devel <qemu-devel@nongnu.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5230F7D1.9090009@twiddle.net>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c00::22a
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] Ping
 	http://patchwork.ozlabs.org/patch/251410/
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,13 +59,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Sep 2013 08:49:33 -0000
+X-List-Received-Date: Thu, 12 Sep 2013 08:52:21 -0000
 
-On 12 September 2013 00:08, Richard Henderson <rth@twiddle.net> wrote:
+On Wed, Sep 11, 2013 at 04:08:01PM -0700, Richard Henderson wrote:
 > There have been two patches posted for this uninitialized warning, outstanding
 > since June 14.  I still encounter this daily...
 
-Looks like material for -trivial to me, cc'ing.
+I'm still happy with the patch.
 
--- PMM
+Michael: Do you want to take this through the trivial patches tree?
+
+Stefan
 
