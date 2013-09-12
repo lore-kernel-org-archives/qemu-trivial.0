@@ -1,53 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VK2dS-0007Tu-N8
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2013 04:52:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36584)
+	id 1VK7fT-0005xo-2b
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2013 10:14:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57554)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1VK2dL-0007Jc-QR
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 04:52:21 -0400
+	(envelope-from <andreas.faerber@web.de>) id 1VK7fL-0005wf-Ld
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 10:14:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1VK2dG-0004z5-8e
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 04:52:15 -0400
-Received: from mail-ee0-x22a.google.com ([2a00:1450:4013:c00::22a]:42539)
+	(envelope-from <andreas.faerber@web.de>) id 1VK7fF-0000Cq-Rs
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 10:14:39 -0400
+Received: from mout.web.de ([212.227.15.14]:60441)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1VK2d4-0004x9-Mt; Thu, 12 Sep 2013 04:51:58 -0400
-Received: by mail-ee0-f42.google.com with SMTP id b45so5178393eek.29
-	for <multiple recipients>; Thu, 12 Sep 2013 01:51:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=q0i/9Tf00Ryaeql3NmZTpri78h+KTOo+6bUMmncNTk8=;
-	b=C6PV/q87AexE0YY/5iMD55qVHbWWABwWb8i1pBYFjvB79hDeLh8qtB1cmBKMMeHnbA
-	8fn29YARqIMRYq3BxuOf+/wvtBJk+Tu8pqayKwhFVtRBMLgqnZMokT7RXOmtU/gHMysv
-	XPQhLM7Mb8Q+Mi7vsPKR5hJXWFCPge+tDrEd7rwq+9I8DIo70m2OhC8RoWN/CdBv/ANO
-	92EGJ3IkOg02W2M4R0zw/F+0VrtkyxiDQeed61VRBlBehq20J2AKVSVIBIWoT4Xco5er
-	M6rKghzuOHTL8OBY/qYNnodC1etwb7Ixeocb9DX46r0vL0yQNNfkhCMW9eRpG/22QcUR
-	Ctxw==
-X-Received: by 10.14.223.134 with SMTP id v6mr889eep.88.1378975917499;
-	Thu, 12 Sep 2013 01:51:57 -0700 (PDT)
-Received: from localhost (188-193-160-156-dynip.superkabel.de.
-	[188.193.160.156])
-	by mx.google.com with ESMTPSA id r48sm3892187eev.14.1969.12.31.16.00.00
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Thu, 12 Sep 2013 01:51:57 -0700 (PDT)
-Date: Thu, 12 Sep 2013 10:51:55 +0200
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Richard Henderson <rth@twiddle.net>
-Message-ID: <20130912085155.GH1965@stefanha-thinkpad.redhat.com>
-References: <5230F7D1.9090009@twiddle.net>
+	(envelope-from <andreas.faerber@web.de>) id 1VK7fF-0000CY-Hp
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 10:14:33 -0400
+Received: from envy.site ([195.135.221.2]) by smtp.web.de (mrweb102) with
+	ESMTPSA (Nemesis) id 0Lrb3x-1W4xfG1bp7-013RIg for
+	<qemu-trivial@nongnu.org>; Thu, 12 Sep 2013 16:14:31 +0200
+Message-ID: <5231CC3F.30001@web.de>
+Date: Thu, 12 Sep 2013 16:14:23 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130801 Thunderbird/17.0.8
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <5230F7D1.9090009@twiddle.net>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4013:c00::22a
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] Ping
-	http://patchwork.ozlabs.org/patch/251410/
+To: famz@redhat.com, Peter Maydell <peter.maydell@linaro.org>
+References: <1378918197-9036-1-git-send-email-peter.maydell@linaro.org>
+	<20130912012318.GA9134@T430s.nay.redhat.com>
+In-Reply-To: <20130912012318.GA9134@T430s.nay.redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:deqM7GUghTWB6decIdgP1QNv0RAnQ8rSrufd/on2Ysdetu4pyQH
+	RXVj30mh45GC/iW/1Ly+joRUG+KxEts5/E++ri2mCsfaN2jyEOM2ztEgLYqOF1ThMBX6toV
+	+VHst/oMOy9H50KO5qpZCPFcExWTBDEtj4yQJbtJdJ5pDBHSjQCiFxsvtIkVK7za13WvMCV
+	1kTWBfmzO9UkaTlJ6yUyg==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 212.227.15.14
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] ui/Makefile.objs: delete unnecessary
+	cocoa.o dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,15 +48,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Sep 2013 08:52:21 -0000
+X-List-Received-Date: Thu, 12 Sep 2013 14:14:45 -0000
 
-On Wed, Sep 11, 2013 at 04:08:01PM -0700, Richard Henderson wrote:
-> There have been two patches posted for this uninitialized warning, outstanding
-> since June 14.  I still encounter this daily...
+Am 12.09.2013 03:23, schrieb Fam Zheng:
+> On Wed, 09/11 17:49, Peter Maydell wrote:
+>> Delete an unnecessary dependency for cocoa.o; we already have
+>> a general rule that tells Make that we can build a .o file
+>> from a .m source using an ObjC compiler, so this specific
+>> rule is unnecessary. Further, it is using the dubious construct
+>> "$(SRC_PATH)/$(obj)" to get at the source directory, which will
+>> break when $(obj) is redefined as part of the preparation for
+>> per-object library support.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> This needs to go in before Fam's patchset for modules
+>> can be applied, either via a cocoa maintainer queue or via
+>> -trivial or just as a first patch on the front of Fam's
+>> patches if they would otherwise be being held up by this.
+>>
+> 
+> Sure, I'll apply to my tree and rebase if it's merged.
 
-I'm still happy with the patch.
+If it works, fine with me:
 
-Michael: Do you want to take this through the trivial patches tree?
+Reviewed-by: Andreas Färber <andreas.faerber@web.de>
 
-Stefan
+I don't think I have any other Cocoa patches queued - or did I miss a
+more acceptable version of the command-key workaround?
+
+Regards,
+Andreas
+
+> 
+> Thanks,
+> 
+> Fam
+> 
+>>  ui/Makefile.objs | 2 --
+>>  1 file changed, 2 deletions(-)
+>>
+>> diff --git a/ui/Makefile.objs b/ui/Makefile.objs
+>> index 6ddc0de..f33be47 100644
+>> --- a/ui/Makefile.objs
+>> +++ b/ui/Makefile.objs
+>> @@ -17,6 +17,4 @@ common-obj-$(CONFIG_GTK) += gtk.o x_keymap.o
+>>  
+>>  $(obj)/sdl.o $(obj)/sdl_zoom.o: QEMU_CFLAGS += $(SDL_CFLAGS) 
+>>  
+>> -$(obj)/cocoa.o: $(SRC_PATH)/$(obj)/cocoa.m
+>> -
+>>  $(obj)/gtk.o: QEMU_CFLAGS += $(GTK_CFLAGS) $(VTE_CFLAGS)
+>> -- 
+>> 1.7.11.4
+>>
+
 
