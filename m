@@ -1,40 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VK7fT-0005xo-2b
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2013 10:14:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57554)
+	id 1VK7le-0000l3-JG
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2013 10:21:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58878)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1VK7fL-0005wf-Ld
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 10:14:45 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1VK7lX-0000iT-Ka
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 10:21:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1VK7fF-0000Cq-Rs
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 10:14:39 -0400
-Received: from mout.web.de ([212.227.15.14]:60441)
+	(envelope-from <peter.maydell@linaro.org>) id 1VK7lR-00026f-OH
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 10:21:03 -0400
+Received: from mail-lb0-f179.google.com ([209.85.217.179]:54687)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas.faerber@web.de>) id 1VK7fF-0000CY-Hp
-	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 10:14:33 -0400
-Received: from envy.site ([195.135.221.2]) by smtp.web.de (mrweb102) with
-	ESMTPSA (Nemesis) id 0Lrb3x-1W4xfG1bp7-013RIg for
-	<qemu-trivial@nongnu.org>; Thu, 12 Sep 2013 16:14:31 +0200
-Message-ID: <5231CC3F.30001@web.de>
-Date: Thu, 12 Sep 2013 16:14:23 +0200
-From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <andreas.faerber@web.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130801 Thunderbird/17.0.8
+	(envelope-from <peter.maydell@linaro.org>) id 1VK7lR-000269-Ge
+	for qemu-trivial@nongnu.org; Thu, 12 Sep 2013 10:20:57 -0400
+Received: by mail-lb0-f179.google.com with SMTP id x18so942074lbi.38
+	for <qemu-trivial@nongnu.org>; Thu, 12 Sep 2013 07:20:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=89Nja3QmonMFFJLQOD3btG27HQIcqgKq1gJKiEn46VM=;
+	b=QBQAiGKTXpOY9Xf9F5cHPa0n5s0RiWY3fdmjK1vJRrxrJdABVVUIZK+M79fg5hTTZx
+	uTRUL2K6vuEkjyI5YmyHn1xn5V+imLydblRICjQeScGwQfRz/ljeX6gXEdBIrtcEnJFy
+	7ifjYvPE1Q8CAW2Hu+3zft4pJY7pufs9VrL+uyR3q4u6V9XTv0GVIM/+9DPttcF8nKbQ
+	+lu6SQkki0B5TLkN8qpL1TTyfkkVF7pp2ZxehRGCrv+5vTduFh+d8lj8gpPhpNjJeCiI
+	C8bld4x/XiCMGk08GZ0apDyr3tJ6Ho1gTEgorfEIMLDqUBHB62ZmVRkxfYcicn1RZHDb
+	nl8A==
+X-Gm-Message-State: ALoCoQklFqXJXvoIusQYPXWzj6+MFHuhKA2qVuKAoWwDvGXj4q3b6WWTPYwp/Tj5cxUy5z/yQNIE
+X-Received: by 10.152.10.99 with SMTP id h3mr6429200lab.13.1378995655634; Thu,
+	12 Sep 2013 07:20:55 -0700 (PDT)
 MIME-Version: 1.0
-To: famz@redhat.com, Peter Maydell <peter.maydell@linaro.org>
+Received: by 10.112.161.232 with HTTP; Thu, 12 Sep 2013 07:20:35 -0700 (PDT)
+In-Reply-To: <5231CC3F.30001@web.de>
 References: <1378918197-9036-1-git-send-email-peter.maydell@linaro.org>
-	<20130912012318.GA9134@T430s.nay.redhat.com>
-In-Reply-To: <20130912012318.GA9134@T430s.nay.redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:deqM7GUghTWB6decIdgP1QNv0RAnQ8rSrufd/on2Ysdetu4pyQH
-	RXVj30mh45GC/iW/1Ly+joRUG+KxEts5/E++ri2mCsfaN2jyEOM2ztEgLYqOF1ThMBX6toV
-	+VHst/oMOy9H50KO5qpZCPFcExWTBDEtj4yQJbtJdJ5pDBHSjQCiFxsvtIkVK7za13WvMCV
-	1kTWBfmzO9UkaTlJ6yUyg==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 212.227.15.14
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, patches@linaro.org
+	<20130912012318.GA9134@T430s.nay.redhat.com> <5231CC3F.30001@web.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Sep 2013 15:20:35 +0100
+Message-ID: <CAFEAcA_9zYRpd1szJs=DaoPtAB01gBfeV4vYJiPrS9UxX6sQWQ@mail.gmail.com>
+To: =?UTF-8?Q?Andreas_F=C3=A4rber?= <andreas.faerber@web.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.179
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Fam Zheng <famz@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
 Subject: Re: [Qemu-trivial] [PATCH] ui/Makefile.objs: delete unnecessary
 	cocoa.o dependency
 X-BeenThere: qemu-trivial@nongnu.org
@@ -48,59 +58,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Sep 2013 14:14:45 -0000
+X-List-Received-Date: Thu, 12 Sep 2013 14:21:08 -0000
 
-Am 12.09.2013 03:23, schrieb Fam Zheng:
-> On Wed, 09/11 17:49, Peter Maydell wrote:
->> Delete an unnecessary dependency for cocoa.o; we already have
->> a general rule that tells Make that we can build a .o file
->> from a .m source using an ObjC compiler, so this specific
->> rule is unnecessary. Further, it is using the dubious construct
->> "$(SRC_PATH)/$(obj)" to get at the source directory, which will
->> break when $(obj) is redefined as part of the preparation for
->> per-object library support.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->> This needs to go in before Fam's patchset for modules
->> can be applied, either via a cocoa maintainer queue or via
->> -trivial or just as a first patch on the front of Fam's
->> patches if they would otherwise be being held up by this.
->>
-> 
-> Sure, I'll apply to my tree and rebase if it's merged.
+On 12 September 2013 15:14, Andreas F=C3=A4rber <andreas.faerber@web.de> wr=
+ote:
+> I don't think I have any other Cocoa patches queued - or did I miss a
+> more acceptable version of the command-key workaround?
 
-If it works, fine with me:
+http://lists.nongnu.org/archive/html/qemu-devel/2013-08/msg02300.html
+is the latest on that front: it is no longer trying to
+add new command line options, at least. It was on my
+todo list to look at and test but I never got round
+to it :-(
 
-Reviewed-by: Andreas Färber <andreas.faerber@web.de>
-
-I don't think I have any other Cocoa patches queued - or did I miss a
-more acceptable version of the command-key workaround?
-
-Regards,
-Andreas
-
-> 
-> Thanks,
-> 
-> Fam
-> 
->>  ui/Makefile.objs | 2 --
->>  1 file changed, 2 deletions(-)
->>
->> diff --git a/ui/Makefile.objs b/ui/Makefile.objs
->> index 6ddc0de..f33be47 100644
->> --- a/ui/Makefile.objs
->> +++ b/ui/Makefile.objs
->> @@ -17,6 +17,4 @@ common-obj-$(CONFIG_GTK) += gtk.o x_keymap.o
->>  
->>  $(obj)/sdl.o $(obj)/sdl_zoom.o: QEMU_CFLAGS += $(SDL_CFLAGS) 
->>  
->> -$(obj)/cocoa.o: $(SRC_PATH)/$(obj)/cocoa.m
->> -
->>  $(obj)/gtk.o: QEMU_CFLAGS += $(GTK_CFLAGS) $(VTE_CFLAGS)
->> -- 
->> 1.7.11.4
->>
-
+-- PMM
 
