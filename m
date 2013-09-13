@@ -1,40 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VKP54-0007or-IY
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2013 04:50:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37521)
+	id 1VKSYK-00037T-64
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2013 08:32:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52087)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1VKP4y-0007gE-8o
-	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 04:50:21 -0400
+	(envelope-from <anthony@codemonkey.ws>) id 1VKSYD-00033L-UG
+	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 08:32:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1VKP4s-0002Lf-Ni
-	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 04:50:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:19965)
+	(envelope-from <anthony@codemonkey.ws>) id 1VKSY4-0006mI-Vw
+	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 08:32:41 -0400
+Received: from mail-ob0-f173.google.com ([209.85.214.173]:61054)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1VKP4e-00024B-Cy; Fri, 13 Sep 2013 04:49:56 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8D8ntH8010257
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 13 Sep 2013 04:49:55 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-22.ams2.redhat.com
-	[10.36.116.22])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r8D8nqbo018843
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 13 Sep 2013 04:49:54 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 0F450200BC; Fri, 13 Sep 2013 10:49:52 +0200 (CEST)
-From: armbru@redhat.com
-To: qemu-devel@nongnu.org
-Date: Fri, 13 Sep 2013 10:49:51 +0200
-Message-Id: <1379062191-7475-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] trace-events: Clean up with
-	scripts/cleanup-trace-events.pl again
+	(envelope-from <anthony@codemonkey.ws>) id 1VKSY4-0006m7-Qz
+	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 08:32:32 -0400
+Received: by mail-ob0-f173.google.com with SMTP id vb8so1017995obc.32
+	for <qemu-trivial@nongnu.org>; Fri, 13 Sep 2013 05:32:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=LN5IPFlOujWQByBl29fWRBy/x8qlJpSljTLlEioFC5o=;
+	b=A08edgc2+RIEzc0D50HhLQI9GjiXBDX/YsOS0NPQa/R2WikaKddYw5L1wXG7+SxyWC
+	7pMy1C0D0Bd+fbqfJDJo0I7BxrfghGZgpQcN8ptqxjhxxR0qOjDxCzNgi9qVM3cZbJY5
+	69eiK6seRtidFnwWV/9fcmKH6A/e6LW6pjHBoO624GcDRAgVmgc8fOZi6ZhVBKsEzq2V
+	CqKXSRoM6UBRbseEdDiqJkEbjfPysxnrTKUbifKl6ZWgzGKfDMGlrvXYdvEoiF+VHYJB
+	TCiAciASREsHZAD2wQYyDHvor60Em2j9AIiV+KhS1t+08U8kgvUwCwSRqLyLm1oelXyj
+	cxZg==
+X-Gm-Message-State: ALoCoQnqXnnOQ8QbYJX5Dfocp5QK7auz+tpJYNEnRjesNfgGv5a0/d/LLM1SXWvkQyA3tni0WA8l
+MIME-Version: 1.0
+X-Received: by 10.60.50.135 with SMTP id c7mr11856765oeo.41.1379075552203;
+	Fri, 13 Sep 2013 05:32:32 -0700 (PDT)
+Received: by 10.60.54.104 with HTTP; Fri, 13 Sep 2013 05:32:32 -0700 (PDT)
+In-Reply-To: <5232AB6D.7020609@weilnetz.de>
+References: <5232A934.90701@redhat.com>
+	<5232AB6D.7020609@weilnetz.de>
+Date: Fri, 13 Sep 2013 07:32:32 -0500
+Message-ID: <CA+aC4kt4uGZoxBUGk=VZiHvT1T=7NMZm1yU7OQhaLogjt9Vaog@mail.gmail.com>
+From: Anthony Liguori <anthony@codemonkey.ws>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.214.173
+Cc: qemu-trivial@nongnu.org, Michal Privoznik <mprivozn@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] Wiki vandalism
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,46 +55,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Sep 2013 08:50:21 -0000
+X-List-Received-Date: Fri, 13 Sep 2013 12:32:46 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+On Fri, Sep 13, 2013 at 1:06 AM, Stefan Weil <sw@weilnetz.de> wrote:
+> Am 13.09.2013 07:57, schrieb Michal Privoznik:
+>> So I've just got another trivial patch ACKed. Yay! So I wanted to check
+>> it out in the next-trivial branch. Therefore I went on the qemu-trivial
+>> wiki and found two things:
+>>
+>> 1) Plenty of wiki vandalism (tracked down to user Jennypear [2]), e.g.
+>> appending ads in URL form to several pages [2]
+>>
+>> 2) The url for trivial patches repo is outdated.
+>>
+>> Michal
+>>
+>> 1: http://wiki.qemu.org/Special:Contributions/Jennypear
+>>
+>> 2:
+>> http://wiki.qemu.org/index.php?title=Google_Summer_of_Code_2011&diff=prev&oldid=1694
+>>
+>
+> Thanks for reporting.
+>
+> Anthony, please disable that user account. I started fixing the
+> vandalized pages.
 
-Event qxl_render_blit_guest_primary_initialized is unused since commit
-c58c7b9, drop it.
+Done.  Thanks for reporting!
 
-Commit 42e5b4c moved hw/ppc/xics.c to hw/intc/xics.c without updating
-the comment in trace-events.
+Regards,
 
-"scripts/cleanup-trace-events.pl trace-events | diff trace-events" is
-now clean again.
+Anthony Liguori
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- trace-events | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/trace-events b/trace-events
-index d4dba24..9a1347b 100644
---- a/trace-events
-+++ b/trace-events
-@@ -1109,7 +1109,6 @@ qemu_spice_wakeup(uint32_t qid) "%d"
- qemu_spice_create_update(uint32_t left, uint32_t right, uint32_t top, uint32_t bottom) "lr %d -> %d,  tb -> %d -> %d"
- 
- # hw/display/qxl-render.c
--qxl_render_blit_guest_primary_initialized(void) ""
- qxl_render_blit(int32_t stride, int32_t left, int32_t right, int32_t top, int32_t bottom) "stride=%d [%d, %d, %d, %d]"
- qxl_render_guest_primary_resized(int32_t width, int32_t height, int32_t stride, int32_t bytes_pp, int32_t bits_pp) "%dx%d, stride %d, bpp %d, depth %d"
- qxl_render_update_area_done(void *cookie) "%p"
-@@ -1122,7 +1121,7 @@ spapr_pci_rtas_ibm_query_interrupt_source_number(unsigned ioa, unsigned intr) "q
- spapr_pci_msi_write(uint64_t addr, uint64_t data, uint32_t dt_irq) "@%"PRIx64"<=%"PRIx64" IRQ %u"
- spapr_pci_lsi_set(const char *busname, int pin, uint32_t irq) "%s PIN%d IRQ %u"
- 
--# hw/ppc/xics.c
-+# hw/intc/xics.c
- xics_icp_check_ipi(int server, uint8_t mfrr) "CPU %d can take IPI mfrr=%#x"
- xics_icp_accept(uint32_t old_xirr, uint32_t new_xirr) "icp_accept: XIRR %#"PRIx32"->%#"PRIx32
- xics_icp_eoi(int server, uint32_t xirr, uint32_t new_xirr) "icp_eoi: server %d given XIRR %#"PRIx32" new XIRR %#"PRIx32
--- 
-1.8.1.4
-
+>
 
