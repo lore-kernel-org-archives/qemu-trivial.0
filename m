@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VKMXC-0006aR-Q5
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2013 02:07:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41143)
+	id 1VKP54-0007or-IY
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2013 04:50:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37521)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VKMX5-0006Qi-Qo
-	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 02:07:13 -0400
+	(envelope-from <armbru@redhat.com>) id 1VKP4y-0007gE-8o
+	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 04:50:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VKMX0-00025C-0a
-	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 02:07:07 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:56591)
+	(envelope-from <armbru@redhat.com>) id 1VKP4s-0002Lf-Ni
+	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 04:50:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:19965)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1VKMWo-00023Y-6I; Fri, 13 Sep 2013 02:06:50 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	0125072819E8; Fri, 13 Sep 2013 08:06:49 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id mozP4cvxPXB6; Fri, 13 Sep 2013 08:06:38 +0200 (CEST)
-Received: from [192.168.178.35] (p54ADB18A.dip0.t-ipconnect.de
-	[84.173.177.138])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	C19F5728004C; Fri, 13 Sep 2013 08:06:37 +0200 (CEST)
-Message-ID: <5232AB6D.7020609@weilnetz.de>
-Date: Fri, 13 Sep 2013 08:06:37 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130803 Thunderbird/17.0.8
-MIME-Version: 1.0
-To: Anthony Liguori <anthony@codemonkey.ws>
-References: <5232A934.90701@redhat.com>
-In-Reply-To: <5232A934.90701@redhat.com>
-X-Enigmail-Version: 1.4.6
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+	(envelope-from <armbru@redhat.com>)
+	id 1VKP4e-00024B-Cy; Fri, 13 Sep 2013 04:49:56 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8D8ntH8010257
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 13 Sep 2013 04:49:55 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-22.ams2.redhat.com
+	[10.36.116.22])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r8D8nqbo018843
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Fri, 13 Sep 2013 04:49:54 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 0F450200BC; Fri, 13 Sep 2013 10:49:52 +0200 (CEST)
+From: armbru@redhat.com
+To: qemu-devel@nongnu.org
+Date: Fri, 13 Sep 2013 10:49:51 +0200
+Message-Id: <1379062191-7475-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial@nongnu.org, Michal Privoznik <mprivozn@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] Wiki vandalism
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] trace-events: Clean up with
+	scripts/cleanup-trace-events.pl again
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,29 +46,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Sep 2013 06:07:13 -0000
+X-List-Received-Date: Fri, 13 Sep 2013 08:50:21 -0000
 
-Am 13.09.2013 07:57, schrieb Michal Privoznik:
-> So I've just got another trivial patch ACKed. Yay! So I wanted to check
-> it out in the next-trivial branch. Therefore I went on the qemu-trivial
-> wiki and found two things:
->
-> 1) Plenty of wiki vandalism (tracked down to user Jennypear [2]), e.g.
-> appending ads in URL form to several pages [2]
->
-> 2) The url for trivial patches repo is outdated.
->
-> Michal
->
-> 1: http://wiki.qemu.org/Special:Contributions/Jennypear
->
-> 2:
-> http://wiki.qemu.org/index.php?title=Google_Summer_of_Code_2011&diff=prev&oldid=1694
->
+From: Markus Armbruster <armbru@redhat.com>
 
-Thanks for reporting.
+Event qxl_render_blit_guest_primary_initialized is unused since commit
+c58c7b9, drop it.
 
-Anthony, please disable that user account. I started fixing the
-vandalized pages.
+Commit 42e5b4c moved hw/ppc/xics.c to hw/intc/xics.c without updating
+the comment in trace-events.
+
+"scripts/cleanup-trace-events.pl trace-events | diff trace-events" is
+now clean again.
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ trace-events | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/trace-events b/trace-events
+index d4dba24..9a1347b 100644
+--- a/trace-events
++++ b/trace-events
+@@ -1109,7 +1109,6 @@ qemu_spice_wakeup(uint32_t qid) "%d"
+ qemu_spice_create_update(uint32_t left, uint32_t right, uint32_t top, uint32_t bottom) "lr %d -> %d,  tb -> %d -> %d"
+ 
+ # hw/display/qxl-render.c
+-qxl_render_blit_guest_primary_initialized(void) ""
+ qxl_render_blit(int32_t stride, int32_t left, int32_t right, int32_t top, int32_t bottom) "stride=%d [%d, %d, %d, %d]"
+ qxl_render_guest_primary_resized(int32_t width, int32_t height, int32_t stride, int32_t bytes_pp, int32_t bits_pp) "%dx%d, stride %d, bpp %d, depth %d"
+ qxl_render_update_area_done(void *cookie) "%p"
+@@ -1122,7 +1121,7 @@ spapr_pci_rtas_ibm_query_interrupt_source_number(unsigned ioa, unsigned intr) "q
+ spapr_pci_msi_write(uint64_t addr, uint64_t data, uint32_t dt_irq) "@%"PRIx64"<=%"PRIx64" IRQ %u"
+ spapr_pci_lsi_set(const char *busname, int pin, uint32_t irq) "%s PIN%d IRQ %u"
+ 
+-# hw/ppc/xics.c
++# hw/intc/xics.c
+ xics_icp_check_ipi(int server, uint8_t mfrr) "CPU %d can take IPI mfrr=%#x"
+ xics_icp_accept(uint32_t old_xirr, uint32_t new_xirr) "icp_accept: XIRR %#"PRIx32"->%#"PRIx32
+ xics_icp_eoi(int server, uint32_t xirr, uint32_t new_xirr) "icp_eoi: server %d given XIRR %#"PRIx32" new XIRR %#"PRIx32
+-- 
+1.8.1.4
 
 
