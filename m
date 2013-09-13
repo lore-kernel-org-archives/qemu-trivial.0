@@ -1,49 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VKSYK-00037T-64
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2013 08:32:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52087)
+	id 1VKVWR-0006hj-6u
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2013 11:43:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45868)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1VKSYD-00033L-UG
-	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 08:32:46 -0400
+	(envelope-from <tobias@markus-regensburg.de>) id 1VKU3k-00027A-4e
+	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 10:09:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1VKSY4-0006mI-Vw
-	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 08:32:41 -0400
-Received: from mail-ob0-f173.google.com ([209.85.214.173]:61054)
+	(envelope-from <tobias@markus-regensburg.de>) id 1VKU3f-0001q6-67
+	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 10:09:20 -0400
+Received: from mo6-p00-ob.rzone.de ([2a01:238:20a:202:5300::1]:17836)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anthony@codemonkey.ws>) id 1VKSY4-0006m7-Qz
-	for qemu-trivial@nongnu.org; Fri, 13 Sep 2013 08:32:32 -0400
-Received: by mail-ob0-f173.google.com with SMTP id vb8so1017995obc.32
-	for <qemu-trivial@nongnu.org>; Fri, 13 Sep 2013 05:32:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=LN5IPFlOujWQByBl29fWRBy/x8qlJpSljTLlEioFC5o=;
-	b=A08edgc2+RIEzc0D50HhLQI9GjiXBDX/YsOS0NPQa/R2WikaKddYw5L1wXG7+SxyWC
-	7pMy1C0D0Bd+fbqfJDJo0I7BxrfghGZgpQcN8ptqxjhxxR0qOjDxCzNgi9qVM3cZbJY5
-	69eiK6seRtidFnwWV/9fcmKH6A/e6LW6pjHBoO624GcDRAgVmgc8fOZi6ZhVBKsEzq2V
-	CqKXSRoM6UBRbseEdDiqJkEbjfPysxnrTKUbifKl6ZWgzGKfDMGlrvXYdvEoiF+VHYJB
-	TCiAciASREsHZAD2wQYyDHvor60Em2j9AIiV+KhS1t+08U8kgvUwCwSRqLyLm1oelXyj
-	cxZg==
-X-Gm-Message-State: ALoCoQnqXnnOQ8QbYJX5Dfocp5QK7auz+tpJYNEnRjesNfgGv5a0/d/LLM1SXWvkQyA3tni0WA8l
+	(envelope-from <tobias@markus-regensburg.de>)
+	id 1VKU3V-0001nt-5r; Fri, 13 Sep 2013 10:09:05 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; t=1379081342; l=2165;
+	s=domk; d=markus-regensburg.de;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:
+	Subject:CC:To:MIME-Version:From:Date:X-RZG-CLASS-ID:X-RZG-AUTH;
+	bh=wyopiEy3Ml831vW6Oj5BdEbf73c=;
+	b=xnWytY8UNIW3c5RoQRrTGZKVWg/MHCPJQHFbC0OPv/DCn9xoQmuUWklxYU3wDMBoN0b
+	ZM6DGfbo5sIw+x4JqHWgqqhCwGWCgJEeJmlozNYgHSJtROkdjPxBea1/FeCXqI99JzDow
+	WMLZke97L2ubnNF0oNf+XrC16MG1A4feyYE=
+X-RZG-AUTH: :OGMGfEG7W/Jia0H4RdpQ6UBM+orSOYYzpexsp56HbPjosKXQJaSMgJFcBw0GfpbxotVoKyJnbjpb
+X-RZG-CLASS-ID: mo00
+Received: from [192.168.6.136]
+	(178-26-198-212-dynip.superkabel.de [178.26.198.212])
+	by smtp.strato.de (RZmta 32.1 DYNA|AUTH)
+	with (TLSv1.0:ECDHE-RSA-AES256-SHA encrypted) ESMTPSA id x03925p8DCVdG5
+	; Fri, 13 Sep 2013 16:08:59 +0200 (CEST)
+Message-ID: <52331BA9.4000906@markus-regensburg.de>
+Date: Fri, 13 Sep 2013 16:05:29 +0200
+From: Tobias Markus <tobias@markus-regensburg.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130806 Thunderbird/17.0.8
 MIME-Version: 1.0
-X-Received: by 10.60.50.135 with SMTP id c7mr11856765oeo.41.1379075552203;
-	Fri, 13 Sep 2013 05:32:32 -0700 (PDT)
-Received: by 10.60.54.104 with HTTP; Fri, 13 Sep 2013 05:32:32 -0700 (PDT)
-In-Reply-To: <5232AB6D.7020609@weilnetz.de>
-References: <5232A934.90701@redhat.com>
-	<5232AB6D.7020609@weilnetz.de>
-Date: Fri, 13 Sep 2013 07:32:32 -0500
-Message-ID: <CA+aC4kt4uGZoxBUGk=VZiHvT1T=7NMZm1yU7OQhaLogjt9Vaog@mail.gmail.com>
-From: Anthony Liguori <anthony@codemonkey.ws>
-To: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+References: <5219DA56.4090702@markus-regensburg.de>
+In-Reply-To: <5219DA56.4090702@markus-regensburg.de>
+X-Enigmail-Version: 1.5.2
 Content-Type: text/plain; charset=ISO-8859-1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.214.173
-Cc: qemu-trivial@nongnu.org, Michal Privoznik <mprivozn@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] Wiki vandalism
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:238:20a:202:5300::1
+X-Mailman-Approved-At: Fri, 13 Sep 2013 11:43:01 -0400
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	=?ISO-8859-1?Q?Andreas_F=E4rbe?= =?ISO-8859-1?Q?r?= <afaerber@suse.de>,
+	Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-trivial] [Qemu-devel] PING Re: [PATCH v3] target-i386: Fix
+	segment cache dump
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,37 +59,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Sep 2013 12:32:46 -0000
+X-List-Received-Date: Fri, 13 Sep 2013 14:09:25 -0000
 
-On Fri, Sep 13, 2013 at 1:06 AM, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 13.09.2013 07:57, schrieb Michal Privoznik:
->> So I've just got another trivial patch ACKed. Yay! So I wanted to check
->> it out in the next-trivial branch. Therefore I went on the qemu-trivial
->> wiki and found two things:
->>
->> 1) Plenty of wiki vandalism (tracked down to user Jennypear [2]), e.g.
->> appending ads in URL form to several pages [2]
->>
->> 2) The url for trivial patches repo is outdated.
->>
->> Michal
->>
->> 1: http://wiki.qemu.org/Special:Contributions/Jennypear
->>
->> 2:
->> http://wiki.qemu.org/index.php?title=Google_Summer_of_Code_2011&diff=prev&oldid=1694
->>
->
-> Thanks for reporting.
->
-> Anthony, please disable that user account. I started fixing the
-> vandalized pages.
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-Done.  Thanks for reporting!
+On 08/25/2013 12:20 PM, Tobias Markus wrote:
+> When in Long Mode, cpu_x86_seg_cache() logs "DS16" because the
+> Default operation size bit (D/B bit) is not set for Long Mode Data
+> Segments since there are only Data Segments in Long Mode and no
+> explicit 16/32/64-bit Descriptors. This patch fixes this by
+> checking the Long Mode Active bit of the hidden flags variable and
+> logging "DS" if it is set. (I.e. in Long Mode all Data Segments are
+> logged as "DS")
+> 
+> Signed-off-by: Tobias Markus <tobias@markus-regensburg.de> --- v3:
+> * Manually Break Lines * Again change line wrapping as suggested by
+> Eric Blake v2: * Fix line wrapping as suggested in IRC * Break the
+> line Note that alternatively, Data Segments in Long Mode could be
+> logged as "DS64" to avoid confusion about the missing 64 postfix.
+> (But that would be, strictly speaking, wrong because there are only
+> DSs and no DS16/32/64 in Long Mode.) PS: This is my first
+> contribution to an Open Source Project and I would be very happy
+> about constructive feedback, especially about possible wrong line
+> wrapping. target-i386/helper.c | 4 +++- 1 file changed, 3
+> insertions(+), 1 deletion(-)
+> 
+> diff --git a/target-i386/helper.c b/target-i386/helper.c index
+> bf3e2ac..0edb93b 100644 --- a/target-i386/helper.c +++
+> b/target-i386/helper.c @@ -147,7 +147,9 @@
+> cpu_x86_dump_seg_cache(CPUX86State *env, FILE *f, fprintf_function
+> cpu_fprintf, cpu_fprintf(f, " [%c%c", (sc->flags & DESC_C_MASK) ?
+> 'C' : '-', (sc->flags & DESC_R_MASK) ? 'R' : '-'); } else { -
+> cpu_fprintf(f, (sc->flags & DESC_B_MASK) ? "DS  " : "DS16"); +
+> cpu_fprintf(f, +                        (sc->flags & DESC_B_MASK ||
+> env->hflags & HF_LMA_MASK) +                        ? "DS  " :
+> "DS16"); cpu_fprintf(f, " [%c%c", (sc->flags & DESC_E_MASK) ? 'E' :
+> '-', (sc->flags & DESC_W_MASK) ? 'W' : '-'); }
+> 
 
-Regards,
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.21 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-Anthony Liguori
-
->
+iEYEARECAAYFAlIzG6kACgkQAO6N0EYmC9ZTGQCfXUfs8zrnlwOAtLqqbKW1F8Z/
+PjEAoJGDaLQGzQ/qYEOEo0KpO4ZhE7kE
+=Lfdr
+-----END PGP SIGNATURE-----
 
