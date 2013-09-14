@@ -1,37 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VKw81-0000mR-Ce
-	for mharc-qemu-trivial@gnu.org; Sat, 14 Sep 2013 16:07:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51268)
+	id 1VKw88-000124-Q5
+	for mharc-qemu-trivial@gnu.org; Sat, 14 Sep 2013 16:07:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51294)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VKw7z-0000k7-FJ
-	for qemu-trivial@nongnu.org; Sat, 14 Sep 2013 16:07:36 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1VKw82-0000pr-Rb
+	for qemu-trivial@nongnu.org; Sat, 14 Sep 2013 16:07:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VKw7y-0003XG-EU
-	for qemu-trivial@nongnu.org; Sat, 14 Sep 2013 16:07:35 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58448)
+	(envelope-from <mjt@tls.msk.ru>) id 1VKw81-0003Xt-Si
+	for qemu-trivial@nongnu.org; Sat, 14 Sep 2013 16:07:38 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:49721)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VKw7w-0003WL-H5; Sat, 14 Sep 2013 16:07:32 -0400
+	id 1VKw7w-0003WK-HF; Sat, 14 Sep 2013 16:07:32 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 07F2A4114E;
+	by isrv.corpit.ru (Postfix) with ESMTP id 09479411BE;
 	Sun, 15 Sep 2013 00:07:31 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 8C79C501;
+	by tsrv.corpit.ru (Postfix) with SMTP id E0BE450C;
 	Sat, 14 Sep 2013 23:47:44 +0400 (MSK)
-Received: (nullmailer pid 7717 invoked by uid 1000);
-	Sat, 14 Sep 2013 19:47:44 -0000
+Received: (nullmailer pid 7706 invoked by uid 1000);
+	Sat, 14 Sep 2013 19:47:43 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@us.ibm.com
-Date: Sat, 14 Sep 2013 23:47:38 +0400
-Message-Id: <1379188061-7634-13-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Sat, 14 Sep 2013 23:47:34 +0400
+Message-Id: <1379188061-7634-9-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1379188061-7634-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1379188061-7634-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: Tobias Markus <tobias@markus-regensburg.de>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 12/15] target-i386: Fix segment cache dump
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+	qemu-stable <qemu-stable@nongnu.org>
+Subject: [Qemu-trivial] [PULL 08/15] tci: Fix qemu-alpha on 32 bit hosts
+	(wrong assertions)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,40 +45,127 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Sep 2013 20:07:36 -0000
+X-List-Received-Date: Sat, 14 Sep 2013 20:07:43 -0000
 
-From: Tobias Markus <tobias@markus-regensburg.de>
+From: Stefan Weil <sw@weilnetz.de>
 
-When in Long Mode, cpu_x86_seg_cache() logs "DS16" because the Default
-operation size bit (D/B bit) is not set for Long Mode Data Segments since
-there are only Data Segments in Long Mode and no explicit 16/32/64-bit
-Descriptors.
-This patch fixes this by checking the Long Mode Active bit of the hidden
-flags variable and logging "DS" if it is set. (I.e. in Long Mode all Data
-Segments are logged as "DS")
+Debian busybox-static for alpha has a load address of 0x0000000120000000
+which is mapped to 0x0000000020000000 for 32 bit hosts.
 
-Signed-off-by: Tobias Markus <tobias@markus-regensburg.de>
+qemu-alpha uses the TCG opcodes qemu_ld32, qemu_ld64, qemu_st32 and
+qemu_st64 which all raise the assertion (taddr == host_addr).
+
+Remove all assertions of this type because they are either wrong or
+unnecessary (when sizeof(tcg_target_ulong) >= sizeof(target_ulong)).
+
+Cc: qemu-stable <qemu-stable@nongnu.org>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Reviewed-by: Richard Henderson <rth@twiddle.net>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- target-i386/helper.c |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ tci.c |   12 ------------
+ 1 file changed, 12 deletions(-)
 
-diff --git a/target-i386/helper.c b/target-i386/helper.c
-index 7c58e27..eef3334 100644
---- a/target-i386/helper.c
-+++ b/target-i386/helper.c
-@@ -147,7 +147,9 @@ cpu_x86_dump_seg_cache(CPUX86State *env, FILE *f, fprintf_function cpu_fprintf,
-             cpu_fprintf(f, " [%c%c", (sc->flags & DESC_C_MASK) ? 'C' : '-',
-                         (sc->flags & DESC_R_MASK) ? 'R' : '-');
-         } else {
--            cpu_fprintf(f, (sc->flags & DESC_B_MASK) ? "DS  " : "DS16");
-+            cpu_fprintf(f,
-+                        (sc->flags & DESC_B_MASK || env->hflags & HF_LMA_MASK)
-+                        ? "DS  " : "DS16");
-             cpu_fprintf(f, " [%c%c", (sc->flags & DESC_E_MASK) ? 'E' : '-',
-                         (sc->flags & DESC_W_MASK) ? 'W' : '-');
-         }
+diff --git a/tci.c b/tci.c
+index 18c888e..6d64891 100644
+--- a/tci.c
++++ b/tci.c
+@@ -1085,7 +1085,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             tmp8 = helper_ldb_mmu(env, taddr, tci_read_i(&tb_ptr));
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             tmp8 = *(uint8_t *)(host_addr + GUEST_BASE);
+ #endif
+             tci_write_reg8(t0, tmp8);
+@@ -1097,7 +1096,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             tmp8 = helper_ldb_mmu(env, taddr, tci_read_i(&tb_ptr));
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             tmp8 = *(uint8_t *)(host_addr + GUEST_BASE);
+ #endif
+             tci_write_reg8s(t0, tmp8);
+@@ -1109,7 +1107,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             tmp16 = helper_ldw_mmu(env, taddr, tci_read_i(&tb_ptr));
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             tmp16 = tswap16(*(uint16_t *)(host_addr + GUEST_BASE));
+ #endif
+             tci_write_reg16(t0, tmp16);
+@@ -1121,7 +1118,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             tmp16 = helper_ldw_mmu(env, taddr, tci_read_i(&tb_ptr));
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             tmp16 = tswap16(*(uint16_t *)(host_addr + GUEST_BASE));
+ #endif
+             tci_write_reg16s(t0, tmp16);
+@@ -1134,7 +1130,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             tmp32 = helper_ldl_mmu(env, taddr, tci_read_i(&tb_ptr));
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             tmp32 = tswap32(*(uint32_t *)(host_addr + GUEST_BASE));
+ #endif
+             tci_write_reg32(t0, tmp32);
+@@ -1146,7 +1141,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             tmp32 = helper_ldl_mmu(env, taddr, tci_read_i(&tb_ptr));
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             tmp32 = tswap32(*(uint32_t *)(host_addr + GUEST_BASE));
+ #endif
+             tci_write_reg32s(t0, tmp32);
+@@ -1159,7 +1153,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             tmp32 = helper_ldl_mmu(env, taddr, tci_read_i(&tb_ptr));
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             tmp32 = tswap32(*(uint32_t *)(host_addr + GUEST_BASE));
+ #endif
+             tci_write_reg32(t0, tmp32);
+@@ -1174,7 +1167,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             tmp64 = helper_ldq_mmu(env, taddr, tci_read_i(&tb_ptr));
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             tmp64 = tswap64(*(uint64_t *)(host_addr + GUEST_BASE));
+ #endif
+             tci_write_reg(t0, tmp64);
+@@ -1190,7 +1182,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             helper_stb_mmu(env, taddr, t0, t2);
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             *(uint8_t *)(host_addr + GUEST_BASE) = t0;
+ #endif
+             break;
+@@ -1202,7 +1193,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             helper_stw_mmu(env, taddr, t0, t2);
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             *(uint16_t *)(host_addr + GUEST_BASE) = tswap16(t0);
+ #endif
+             break;
+@@ -1214,7 +1204,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             helper_stl_mmu(env, taddr, t0, t2);
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             *(uint32_t *)(host_addr + GUEST_BASE) = tswap32(t0);
+ #endif
+             break;
+@@ -1226,7 +1215,6 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             helper_stq_mmu(env, taddr, tmp64, t2);
+ #else
+             host_addr = (tcg_target_ulong)taddr;
+-            assert(taddr == host_addr);
+             *(uint64_t *)(host_addr + GUEST_BASE) = tswap64(tmp64);
+ #endif
+             break;
 -- 
 1.7.10.4
 
