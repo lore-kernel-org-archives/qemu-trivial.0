@@ -1,34 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VLT7S-00060Z-TM
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Sep 2013 03:21:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33307)
+	id 1VLTNW-0000ql-Ac
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Sep 2013 03:37:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39066)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1VLT7L-0005qU-9q
-	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 03:21:13 -0400
+	(envelope-from <benoit.canet@irqsave.net>) id 1VLTNQ-0000h0-4c
+	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 03:37:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1VLT7F-0001wF-85
-	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 03:21:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:24202)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1VLT72-0001uc-SD; Mon, 16 Sep 2013 03:20:49 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8G7KhQG011720
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 16 Sep 2013 03:20:43 -0400
-Received: from T430s.nay.redhat.com ([10.66.6.17])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r8G7KeXY028510; Mon, 16 Sep 2013 03:20:42 -0400
-From: Fam Zheng <famz@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 16 Sep 2013 15:20:40 +0800
-Message-Id: <1379316040-19320-1-git-send-email-famz@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, benoit.canet@irqsave.net
-Subject: [Qemu-trivial] [PATCH] tests/.gitignore: ignore test-throttle
+	(envelope-from <benoit.canet@irqsave.net>) id 1VLTNL-0007VI-29
+	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 03:37:44 -0400
+Received: from nodalink.pck.nerim.net ([62.212.105.220]:35694
+	helo=paradis.irqsave.net) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <benoit.canet@irqsave.net>)
+	id 1VLTMP-0006wj-Pb; Mon, 16 Sep 2013 03:36:42 -0400
+Received: by paradis.irqsave.net (Postfix, from userid 1002)
+	id 300E987468E; Mon, 16 Sep 2013 09:36:38 +0200 (CEST)
+Received: from irqsave.net (unknown [192.168.77.1])
+	by paradis.irqsave.net (Postfix) with ESMTP id 423BD874648;
+	Mon, 16 Sep 2013 09:36:35 +0200 (CEST)
+Date: Mon, 16 Sep 2013 09:38:30 +0200
+From: =?iso-8859-1?Q?Beno=EEt?= Canet <benoit.canet@irqsave.net>
+To: Fam Zheng <famz@redhat.com>
+Message-ID: <20130916073830.GA5105@irqsave.net>
+References: <1379316040-19320-1-git-send-email-famz@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <1379316040-19320-1-git-send-email-famz@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 62.212.105.220
+Cc: qemu-trivial@nongnu.org, benoit.canet@irqsave.net, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/.gitignore: ignore
+	test-throttle
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,26 +44,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Sep 2013 07:21:13 -0000
+X-List-Received-Date: Mon, 16 Sep 2013 07:37:49 -0000
 
-Signed-off-by: Fam Zheng <famz@redhat.com>
----
- tests/.gitignore | 1 +
- 1 file changed, 1 insertion(+)
+Le Monday 16 Sep 2013 =E0 15:20:40 (+0800), Fam Zheng a =E9crit :
+> Signed-off-by: Fam Zheng <famz@redhat.com>
+> ---
+>  tests/.gitignore | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/tests/.gitignore b/tests/.gitignore
+> index d11cc22..ae5280e 100644
+> --- a/tests/.gitignore
+> +++ b/tests/.gitignore
+> @@ -5,6 +5,7 @@ check-qjson
+>  check-qlist
+>  check-qstring
+>  test-aio
+> +test-throttle
+>  test-cutils
+>  test-hbitmap
+>  test-iov
+> --=20
+> 1.8.3.1
+>=20
+>=20
 
-diff --git a/tests/.gitignore b/tests/.gitignore
-index d11cc22..ae5280e 100644
---- a/tests/.gitignore
-+++ b/tests/.gitignore
-@@ -5,6 +5,7 @@ check-qjson
- check-qlist
- check-qstring
- test-aio
-+test-throttle
- test-cutils
- test-hbitmap
- test-iov
--- 
-1.8.3.1
-
+Reviewed-by: Benoit Canet <benoit@irqsave.net>
 
