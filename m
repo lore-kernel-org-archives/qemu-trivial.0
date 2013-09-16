@@ -1,57 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VLZ5r-000701-Bc
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Sep 2013 09:43:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38509)
+	id 1VLZ8H-0008JR-PL
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Sep 2013 09:46:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39384)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.millescamps@6wind.com>) id 1VLZ5i-0006yW-5S
-	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 09:43:57 -0400
+	(envelope-from <damien.millescamps@6wind.com>) id 1VLZ8A-0008Hb-DI
+	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 09:46:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.millescamps@6wind.com>) id 1VLZ5Z-0001VZ-Ok
-	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 09:43:50 -0400
-Received: from mail-bk0-f44.google.com ([209.85.214.44]:47380)
+	(envelope-from <damien.millescamps@6wind.com>) id 1VLZ82-0002FJ-VP
+	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 09:46:22 -0400
+Received: from mail-bk0-f42.google.com ([209.85.214.42]:34140)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.millescamps@6wind.com>) id 1VLZ5Z-0001VM-IM
-	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 09:43:41 -0400
-Received: by mail-bk0-f44.google.com with SMTP id mz10so1519473bkb.17
-	for <qemu-trivial@nongnu.org>; Mon, 16 Sep 2013 06:43:40 -0700 (PDT)
+	(envelope-from <damien.millescamps@6wind.com>) id 1VLZ82-0002F0-M8
+	for qemu-trivial@nongnu.org; Mon, 16 Sep 2013 09:46:14 -0400
+Received: by mail-bk0-f42.google.com with SMTP id my10so1582070bkb.1
+	for <qemu-trivial@nongnu.org>; Mon, 16 Sep 2013 06:46:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:message-id:date:from:organization:user-agent
-	:mime-version:to:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=jcogMtcxwCAWKv6+1kIy9v5XECOhTBTuOB+mA+0Kr5w=;
-	b=dal+ywzskAylB3sZipBbxs9Kvr+VHazu0E2WmvewjzcARXR+bSNJqUg9ix9gWyubMv
-	II/DDWE7s5sRNum6CEPSzguQsEg3YzPy190eMhBJDKv5zwAhob0vXMZDzbikIbwGP844
-	2dOq7zIEtXfmqTPL1gaFpCtPvvh1shLaj91OiU8jJ1bRUVJytO0NjTtCsiaoUiQqoVHS
-	voxC3cCp9t2+4MWBPKgsl4DlnpSnk/NjP99Mmz6rxZYrH3+tIqW3biQv7XNK8Awx7syx
-	wJH/7valX2Akgo39J66mhDUbpqexeuUPeRkfelYdx9adUZTqiEzZ0hyrYiAxUfJQ4qvo
-	uvrQ==
-X-Gm-Message-State: ALoCoQmtBVoz1civOjCi91FEkMW8QHQur0ZhO7brWL71McBIRFHK+jYJgF6a+NgNqRoNHwSlIDB9
-X-Received: by 10.204.226.135 with SMTP id iw7mr24594759bkb.4.1379339020348;
-	Mon, 16 Sep 2013 06:43:40 -0700 (PDT)
-Received: from [192.168.0.11] ([81.56.67.82])
-	by mx.google.com with ESMTPSA id z6sm7647694bkn.8.1969.12.31.16.00.00
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Mon, 16 Sep 2013 06:43:39 -0700 (PDT)
-Message-ID: <52370A95.3000103@6wind.com>
-Date: Mon, 16 Sep 2013 15:41:41 +0200
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=/BOdhMU7Q50KCSwIZ72H6muCyWw2bmVWWsvHLMIWSoI=;
+	b=V85Sj3WrFtG36yLKOu0b/dP7XCyM1IQaplEh7OJsuM+0Lp13xtBjrb/K2TCwZVnOgl
+	BzKAqJJVY4y+t4uqeU7BK3Wqqaldbo4qxem4JWsdqGvBUBd0aXJtbjYlvPtBQgOXHta9
+	Sgn95yXSFyvxpLwXI3xUaSAF04gK+f3n/y6UKWCsZ+5syuUxL3zsZGOj8a7te2hPDGTY
+	noEVeiapRfDersg0jDiPoS2z9B8Xy3lECzwUMqVSrW5vU5ajapl1c3ucS+p7rE9XQcmb
+	RbPIyKFBkg/QmuNIHM6qvsoo2hpYrKSwWEosgScoC9UFrGuKHn+46MDBpAyDpEiioHT3
+	NEhg==
+X-Gm-Message-State: ALoCoQm3NLpLWohqiRZoyh4P2nOsWYoXxMmBZWK/cHpAg1iM6c6bhhqvwQpkOmetQTnK42zX2bMY
+X-Received: by 10.205.36.70 with SMTP id sz6mr24008255bkb.12.1379339173654;
+	Mon, 16 Sep 2013 06:46:13 -0700 (PDT)
+Received: from 6wind.com (guy78-3-82-239-227-177.fbx.proxad.net.
+	[82.239.227.177])
+	by mx.google.com with ESMTPSA id zl3sm7702315bkb.4.1969.12.31.16.00.00
+	(version=TLSv1.1 cipher=RC4-SHA bits=128/128);
+	Mon, 16 Sep 2013 06:46:12 -0700 (PDT)
 From: Damien Millescamps <damien.millescamps@6wind.com>
-Organization: 6WIND S.A.
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:17.0) Gecko/20130801 Thunderbird/17.0.8
-MIME-Version: 1.0
-To: "Daniel P. Berrange" <berrange@redhat.com>
-References: <1379336175-822-1-git-send-email-damien.millescamps@6wind.com>
-	<20130916130753.GM6005@redhat.com>
-In-Reply-To: <20130916130753.GM6005@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Mon, 16 Sep 2013 15:46:07 +0200
+Message-Id: <1379339167-1428-1-git-send-email-damien.millescamps@6wind.com>
+X-Mailer: git-send-email 1.7.2.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.214.44
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RESEND] ivshmem: allow the
-	sharing of hugepages
+X-Received-From: 209.85.214.42
+Cc: qemu-trivial@nongnu.org, berrange@redhat.com
+Subject: [Qemu-trivial] [PATCH v3] ivshmem: allow the sharing of hugepages
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,31 +53,129 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Sep 2013 13:43:57 -0000
+X-List-Received-Date: Mon, 16 Sep 2013 13:46:28 -0000
 
-On 09/16/2013 03:07 PM, Daniel P. Berrange wrote:
-> IME this kind of auto-magical fallback behaviour is a bad idea. If we
-> want to support non-SHM files for the ivshmem device, then it should
-> be done with an explicit command line property. eg where we currently
-> have a 'size' and 'shm' property on the cli:
->
->    -device ivshmem,size=24124324,shm=nameofshmobj
->
-> it could allow an alternative 'file' property to point to a pre-created
-> filename
->
->    -device ivshmem,file=/some/file/path
-This patch was based on the fact that in the glibc, shm_open() is
-nothing more than an open() with /dev/shm/ prepended to the shared
-memory object name. Hence, only a small modification was needed to
-change this behavior.
+This patch permits to share memory areas that do not specifically belong to
+/dev/shm. In such case, the file must be already present when launching qemu.
+A new parameter 'file' has been added to specify the file to use.
 
-Indeed, having different parameters to specify between a file and a
-POSIX shared memory object should be clearer for the user experience.
+A use case for this patch is sharing huge pages available through a
+hugetlbfs mountpoint.
 
-I have reworked the patch and will send it asap.
+Signed-off-by: Damien Millescamps <damien.millescamps@6wind.com>
+---
+ docs/specs/ivshmem_device_spec.txt |    5 ++-
+ hw/misc/ivshmem.c                  |   52 +++++++++++++++++++++++------------
+ 2 files changed, 37 insertions(+), 20 deletions(-)
 
-Thanks,
+diff --git a/docs/specs/ivshmem_device_spec.txt b/docs/specs/ivshmem_device_spec.txt
+index 667a862..3137e60 100644
+--- a/docs/specs/ivshmem_device_spec.txt
++++ b/docs/specs/ivshmem_device_spec.txt
+@@ -4,8 +4,9 @@ Device Specification for Inter-VM shared memory device
+ 
+ The Inter-VM shared memory device is designed to share a region of memory to
+ userspace in multiple virtual guests.  The memory region does not belong to any
+-guest, but is a POSIX memory object on the host.  Optionally, the device may
+-support sending interrupts to other guests sharing the same memory region.
++guest, but is a either a POSIX memory object or a mmap'd file (such as a
++hugepage) on the host.  Optionally, the device may support sending interrupts
++to other guests sharing the same memory region.
+ 
+ 
+ The Inter-VM PCI device
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index 2838866..a9f268d 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -98,6 +98,7 @@ typedef struct IVShmemState {
+     Error *migration_blocker;
+ 
+     char * shmobj;
++    char * fileobj;
+     char * sizearg;
+     char * role;
+     int role_val;   /* scalar to avoid multiple string comparisons */
+@@ -715,9 +716,9 @@ static int pci_ivshmem_init(PCIDevice *dev)
+         /* if we get a UNIX socket as the parameter we will talk
+          * to the ivshmem server to receive the memory region */
+ 
+-        if (s->shmobj != NULL) {
++        if (s->shmobj != NULL || s->fileobj != NULL) {
+             fprintf(stderr, "WARNING: do not specify both 'chardev' "
+-                                                "and 'shm' with ivshmem\n");
++                            "and 'shm' or 'file' with ivshmem\n");
+         }
+ 
+         IVSHMEM_DPRINTF("using shared memory server (socket = %s)\n",
+@@ -743,28 +744,42 @@ static int pci_ivshmem_init(PCIDevice *dev)
+     } else {
+         /* just map the file immediately, we're not using a server */
+         int fd;
++        int is_shm = !!(s->shmobj != NULL);
++        int is_file = !!(s->fileobj != NULL);
+ 
+-        if (s->shmobj == NULL) {
+-            fprintf(stderr, "Must specify 'chardev' or 'shm' to ivshmem\n");
++        if (!(is_shm ^ is_file)) {
++            fprintf(stderr, "Must specify one, and only one, in 'chardev',"
++                            "  'file'  or 'shm' to ivshmem\n");
+             exit(1);
+         }
+ 
+-        IVSHMEM_DPRINTF("using shm_open (shm object = %s)\n", s->shmobj);
+-
+-        /* try opening with O_EXCL and if it succeeds zero the memory
+-         * by truncating to 0 */
+-        if ((fd = shm_open(s->shmobj, O_CREAT|O_RDWR|O_EXCL,
+-                        S_IRWXU|S_IRWXG|S_IRWXO)) > 0) {
+-           /* truncate file to length PCI device's memory */
+-            if (ftruncate(fd, s->ivshmem_size) != 0) {
+-                fprintf(stderr, "ivshmem: could not truncate shared file\n");
++        if (is_shm) {
++            IVSHMEM_DPRINTF("using shm_open (shm object = %s)\n", s->shmobj);
++
++            /* try opening with O_EXCL and if it succeeds zero the memory
++             * by truncating to 0 */
++            if ((fd = shm_open(s->shmobj, O_CREAT|O_RDWR|O_EXCL,
++                            S_IRWXU|S_IRWXG|S_IRWXO)) > 0) {
++               /* truncate file to length PCI device's memory */
++                if (ftruncate(fd, s->ivshmem_size) != 0) {
++                    fprintf(stderr, "ivshmem: could not truncate"
++                                    " shared file\n");
++                }
++
++            } else if ((fd = shm_open(s->shmobj, O_CREAT|O_RDWR,
++                            S_IRWXU|S_IRWXG|S_IRWXO)) < 0) {
++                fprintf(stderr, "ivshmem: could not open shared file\n");
++                exit(-1);
+             }
++        } else {
++            IVSHMEM_DPRINTF("using open (file object = %s)\n", s->fileobj);
+ 
+-        } else if ((fd = shm_open(s->shmobj, O_CREAT|O_RDWR,
+-                        S_IRWXU|S_IRWXG|S_IRWXO)) < 0) {
+-            fprintf(stderr, "ivshmem: could not open shared file\n");
+-            exit(-1);
+-
++            /* try opening a mmap's file. This file must have been previously
++             * created on the host */
++            if ((fd = open(s->fileobj, O_RDWR)) < 0) {
++                fprintf(stderr, "ivshmem: could not open mmap'd file\n");
++                exit(-1);
++            }
+         }
+ 
+         if (check_shm_size(s, fd) == -1) {
+@@ -804,6 +819,7 @@ static Property ivshmem_properties[] = {
+     DEFINE_PROP_BIT("ioeventfd", IVShmemState, features, IVSHMEM_IOEVENTFD, false),
+     DEFINE_PROP_BIT("msi", IVShmemState, features, IVSHMEM_MSI, true),
+     DEFINE_PROP_STRING("shm", IVShmemState, shmobj),
++    DEFINE_PROP_STRING("file", IVShmemState, fileobj),
+     DEFINE_PROP_STRING("role", IVShmemState, role),
+     DEFINE_PROP_UINT32("use64", IVShmemState, ivshmem_64bit, 1),
+     DEFINE_PROP_END_OF_LIST(),
 -- 
-Damien
+1.7.2.5
+
 
