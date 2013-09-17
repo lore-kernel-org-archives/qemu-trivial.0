@@ -1,47 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VLyJI-000518-6y
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2013 12:39:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41926)
+	id 1VLyN8-0007KK-Ry
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2013 12:43:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42989)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VLyJB-0004tC-AS
-	for qemu-trivial@nongnu.org; Tue, 17 Sep 2013 12:39:31 -0400
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VLyN6-0007Gk-Dr
+	for qemu-trivial@nongnu.org; Tue, 17 Sep 2013 12:43:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VLyJ5-0007B6-9L
-	for qemu-trivial@nongnu.org; Tue, 17 Sep 2013 12:39:25 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:58588)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VLyN1-0000LP-OU
+	for qemu-trivial@nongnu.org; Tue, 17 Sep 2013 12:43:28 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:60737
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1VLyIs-00078O-SG; Tue, 17 Sep 2013 12:39:07 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	6612A72819E9; Tue, 17 Sep 2013 18:39:05 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id cg19SrJlvm1z; Tue, 17 Sep 2013 18:38:54 +0200 (CEST)
-Received: from [192.168.178.35] (p54ADBB22.dip0.t-ipconnect.de [84.173.187.34])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	242CD72819DE; Tue, 17 Sep 2013 18:38:54 +0200 (CEST)
-Message-ID: <5238859C.2040908@weilnetz.de>
-Date: Tue, 17 Sep 2013 18:38:52 +0200
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VLyMz-0000Kl-36; Tue, 17 Sep 2013 12:43:21 -0400
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id 325821806BE; Tue, 17 Sep 2013 18:43:17 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:17.0) Gecko/20130803 Thunderbird/17.0.8
+To: qemu-devel <qemu-devel@nongnu.org>
+Date: Tue, 17 Sep 2013 18:43:16 +0200
+Message-Id: <1379436196-27506-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-To: Anthony Liguori <anthony@codemonkey.ws>
-References: <1379188061-7634-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<CA+aC4kv6ijDVhjLSK6LgqmdHbVVJgFEokD3TCYsx9-sT1hZ3+A@mail.gmail.com>
-In-Reply-To: <CA+aC4kv6ijDVhjLSK6LgqmdHbVVJgFEokD3TCYsx9-sT1hZ3+A@mail.gmail.com>
-X-Enigmail-Version: 1.4.6
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/15] trivial patches for
-	2013-09-14
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] block: Fix compiler warning
+	(-Werror=uninitialized)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,46 +43,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Sep 2013 16:39:31 -0000
+X-List-Received-Date: Tue, 17 Sep 2013 16:43:29 -0000
 
-Am 17.09.2013 17:06, schrieb Anthony Liguori:
-> On Sat, Sep 14, 2013 at 2:47 PM, Michael Tokarev <mjt@tls.msk.ru> wrote=
-:
->> Just a bit late but here's the next trivial-patches pull request.
->>
->> Thanks,
-> Breaks the build:
->
-> /home/anthony/git/qemu/cpu-exec.c: In function =E2=80=98cpu_alpha_exec=E2=
-=80=99:
-> /home/anthony/git/qemu/cpu-exec.c:204:15: error: variable =E2=80=98cpu=E2=
-=80=99 might
-> be clobbered by =E2=80=98longjmp=E2=80=99 or =E2=80=98vfork=E2=80=99 [-=
-Werror=3Dclobbered]
-> /home/anthony/git/qemu/cpu-exec.c:202:28: error: argument =E2=80=98env=E2=
-=80=99 might
-> be clobbered by =E2=80=98longjmp=E2=80=99 or =E2=80=98vfork=E2=80=99 [-=
-Werror=3Dclobbered]
-> cc1: all warnings being treated as errors
->
-> I think it's one of the warning patches from Stefan.  I cannot bisect
-> here.  My gcc info is below:
+The patch fixes a warning from gcc (Debian 4.6.3-14+rpi1) 4.6.3:
 
-Yes, it's the new -Wextra compiler (see "configure: Enable extra
-compiler warnings").
-Some versions of gcc complain about this code in cpu-exec.c:
+block/stream.c:141:22: error:
+=E2=80=98copy=E2=80=99 may be used uninitialized in this function [-Werro=
+r=3Duninitialized]
 
-            /* Reload env after longjmp - the compiler may have smashed a=
-ll
-             * local variables as longjmp is marked 'noreturn'. */
-            cpu =3D current_cpu;
-            env =3D cpu->env_ptr;
+This is not a real bug - a better compiler would not complain.
 
-I think that lines can be simply removed (which also fixes the warning).
-Please apply the trivial patches without my -Wextra patch or wait until
-I have sent a patch to fix cpu-exec.c.
+Now 'copy' has always a defined value, so the check for ret >=3D 0
+can be removed.
 
-Regards
-Stefan
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ block/stream.c |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/block/stream.c b/block/stream.c
+index 078ce4a..fc19194 100644
+--- a/block/stream.c
++++ b/block/stream.c
+@@ -108,7 +108,7 @@ static void coroutine_fn stream_run(void *opaque)
+=20
+     for (sector_num =3D 0; sector_num < end; sector_num +=3D n) {
+         uint64_t delay_ns =3D 0;
+-        bool copy;
++        bool copy =3D false;
+=20
+ wait:
+         /* Note that even when no rate limit is applied we need to yield
+@@ -123,7 +123,6 @@ wait:
+                                 STREAM_BUFFER_SIZE / BDRV_SECTOR_SIZE, &=
+n);
+         if (ret =3D=3D 1) {
+             /* Allocated in the top, no need to copy.  */
+-            copy =3D false;
+         } else if (ret >=3D 0) {
+             /* Copy if allocated in the intermediate images.  Limit to t=
+he
+              * known-unallocated area [sector_num, sector_num+n).  */
+@@ -138,7 +137,7 @@ wait:
+             copy =3D (ret =3D=3D 1);
+         }
+         trace_stream_one_iteration(s, sector_num, n, ret);
+-        if (ret >=3D 0 && copy) {
++        if (copy) {
+             if (s->common.speed) {
+                 delay_ns =3D ratelimit_calculate_delay(&s->limit, n);
+                 if (delay_ns > 0) {
+--=20
+1.7.10.4
 
 
