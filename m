@@ -1,32 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VM24C-0006Ns-EG
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2013 16:40:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37192)
+	id 1VM2la-0002L9-07
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2013 17:25:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45200)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VM249-0006IZ-3z
-	for qemu-trivial@nongnu.org; Tue, 17 Sep 2013 16:40:10 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1VM2lU-0002Es-7p
+	for qemu-trivial@nongnu.org; Tue, 17 Sep 2013 17:25:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VM242-0000Dy-7x
-	for qemu-trivial@nongnu.org; Tue, 17 Sep 2013 16:40:09 -0400
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:32864
-	helo=v2201305906712890.yourvserver.net)
+	(envelope-from <peter.maydell@linaro.org>) id 1VM2lL-0004iT-W1
+	for qemu-trivial@nongnu.org; Tue, 17 Sep 2013 17:24:56 -0400
+Received: from mail-lb0-f181.google.com ([209.85.217.181]:41093)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VM23z-0008VA-Pd; Tue, 17 Sep 2013 16:39:59 -0400
-Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id 92A7A18911F; Tue, 17 Sep 2013 22:39:56 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel <qemu-devel@nongnu.org>
-Date: Tue, 17 Sep 2013 22:39:55 +0200
-Message-Id: <1379450395-13460-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] kvm: Fix compiler warning (clang)
+	(envelope-from <peter.maydell@linaro.org>) id 1VM2lL-0004i8-Oq
+	for qemu-trivial@nongnu.org; Tue, 17 Sep 2013 17:24:47 -0400
+Received: by mail-lb0-f181.google.com with SMTP id u14so5781629lbd.26
+	for <qemu-trivial@nongnu.org>; Tue, 17 Sep 2013 14:24:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=wvX4ug6w8XGfrwq64tw5Xvo07hk6Z5x6YtBdezOsNhc=;
+	b=a1f2kQ64mZRc9FjOYv9ZDgrZH5QnPoTV7AsM78nVzhYOKyRQJNso72tcDN++9WLgSB
+	NBemLtH942NVof27A/7t1hoG114vELkNTsL+YBEGYHXt0dWXaAiBvuI8dvjEGEi28lnD
+	A+FbA9MZP8NDAB5clLzCqG2aN4ibf9TSSoXiUa4wq3T/mVVD/4lrXgbhH6EyLkKo0/EX
+	qhRbpX4k80C2oWDo26+evrofrFtU6B+SnAlIqu0Zgbuwj1qaefG0HNnBr7Qm9APF9Qbw
+	tnJoP8sxIGttzxILQewCX/e2PTvmLXJqVQu2hQICITm5UOJnHYvb/jUGsCK3nE1HJCLL
+	Z9kg==
+X-Gm-Message-State: ALoCoQkYRckXZQ4Hm+t7mTLfnwYPVFdF5tammeKTyWhtTStXCYMaqrUUuoxteebJ7gpsgOrhfwCD
+X-Received: by 10.112.198.39 with SMTP id iz7mr12527588lbc.24.1379453086739;
+	Tue, 17 Sep 2013 14:24:46 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.161.232 with HTTP; Tue, 17 Sep 2013 14:24:26 -0700 (PDT)
+In-Reply-To: <1379437402-30804-1-git-send-email-sw@weilnetz.de>
+References: <1379437402-30804-1-git-send-email-sw@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Sep 2013 22:24:26 +0100
+Message-ID: <CAFEAcA-GzhJUud44EC14zyi0JEwYAer-wHuE9SyE5rzubOUdMA@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.181
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
+	qemu-devel <qemu-devel@nongnu.org>, Anthony Liguori <anthony@codemonkey.ws>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] cpu-exec: Fix compiler
+	warning (-Werror=clobbered)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,32 +55,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Sep 2013 20:40:10 -0000
+X-List-Received-Date: Tue, 17 Sep 2013 21:25:01 -0000
 
-Report from clang analyzer:
+On 17 September 2013 18:03, Stefan Weil <sw@weilnetz.de> wrote:
+> could you please review this patch which removes code added by you earlier?
+> I have run tests with the old code and assertions to see whether the values
+> were really smashed. They never were, and from the documentation of setjmp
+> I'd not expect that they ever might be.
 
-clock.c:42:15: warning:
-Value stored to 'cpu' during its initialization is never read
+We had a discussion about this back in 2011. Any compiler which needs
+these statements is definitely buggy -- the C standard mandates that
+they're not needed. Unfortunately Jan never said what compiler he
+was using; obviously the ones the rest of us were using at the time
+didn't have the bug.
+http://patchwork.ozlabs.org/patch/102980/ has the discussion.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- hw/i386/kvm/clock.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/i386/kvm/clock.c b/hw/i386/kvm/clock.c
-index 92aabb8..383938d 100644
---- a/hw/i386/kvm/clock.c
-+++ b/hw/i386/kvm/clock.c
-@@ -39,7 +39,7 @@ static void kvmclock_vm_state_change(void *opaque, int running,
-                                      RunState state)
- {
-     KVMClockState *s = opaque;
--    CPUState *cpu = first_cpu;
-+    CPUState *cpu;
-     int cap_clock_ctrl = kvm_check_extension(kvm_state, KVM_CAP_KVMCLOCK_CTRL);
-     int ret;
- 
--- 
-1.7.10.4
-
+-- PMM
 
