@@ -1,38 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VN3LN-0004bK-EM
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2013 12:14:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39405)
+	id 1VN3Nc-0005tp-6E
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2013 12:16:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39937)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VN3LG-0004RU-D4
-	for qemu-trivial@nongnu.org; Fri, 20 Sep 2013 12:14:08 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1VN3NU-0005jx-Ts
+	for qemu-trivial@nongnu.org; Fri, 20 Sep 2013 12:16:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VN3LA-00037I-E5
-	for qemu-trivial@nongnu.org; Fri, 20 Sep 2013 12:14:02 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:39780)
+	(envelope-from <mjt@tls.msk.ru>) id 1VN3NO-0003wi-VZ
+	for qemu-trivial@nongnu.org; Fri, 20 Sep 2013 12:16:20 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:59451)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VN3Kx-00034n-RQ; Fri, 20 Sep 2013 12:13:44 -0400
+	id 1VN3NC-0003vK-In; Fri, 20 Sep 2013 12:16:02 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4285C419B2;
-	Fri, 20 Sep 2013 20:13:43 +0400 (MSK)
-Message-ID: <523C7437.3020101@msgid.tls.msk.ru>
-Date: Fri, 20 Sep 2013 20:13:43 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 03AC4419B2;
+	Fri, 20 Sep 2013 20:16:02 +0400 (MSK)
+Message-ID: <523C74C1.801@msgid.tls.msk.ru>
+Date: Fri, 20 Sep 2013 20:16:01 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:17.0) Gecko/20130827 Icedove/17.0.8
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1379483296-20374-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1379483296-20374-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+To: Fam Zheng <famz@redhat.com>
+References: <1379316040-19320-1-git-send-email-famz@redhat.com>
+In-Reply-To: <1379316040-19320-1-git-send-email-famz@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] exec: Fix broken build for MinGW
-	(regression)
+Cc: qemu-trivial@nongnu.org, benoit.canet@irqsave.net, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] tests/.gitignore: ignore test-throttle
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,23 +42,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Sep 2013 16:14:08 -0000
-
-18.09.2013 09:48, Stefan Weil wrote:
-> Commit 3435f39513a104294b5e3bbf3612047028d25cfc reduced the ifdeffery w=
-ith
-> this result for MinGW:
->
-> exec.c: In function =E2=80=98qemu_ram_free=E2=80=99:
-> exec.c:1239:17: warning:
->   implicit declaration of function =E2=80=98munmap=E2=80=99 [-Wimplicit=
--function-declaration]
-> exec.c:1239:17: warning:
->   nested extern declaration of =E2=80=98munmap=E2=80=99 [-Wnested-exter=
-ns]
-> exec.c:1239: undefined reference to `munmap'
->
-> Add some ifdeffery again to fix this.
+X-List-Received-Date: Fri, 20 Sep 2013 16:16:27 -0000
 
 Thanks, applied to the trivial patches queue.
 
