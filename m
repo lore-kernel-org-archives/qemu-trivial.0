@@ -1,38 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VN42X-0005Ox-Nx
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2013 12:58:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50343)
+	id 1VN42c-0005bD-Sn
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2013 12:58:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50397)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VN42S-0005Gb-M9
-	for qemu-trivial@nongnu.org; Fri, 20 Sep 2013 12:58:45 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1VN42X-0005PC-Ti
+	for qemu-trivial@nongnu.org; Fri, 20 Sep 2013 12:58:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VN42N-0000Ic-W8
-	for qemu-trivial@nongnu.org; Fri, 20 Sep 2013 12:58:40 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:33108)
+	(envelope-from <mjt@tls.msk.ru>) id 1VN42T-0000LV-Hr
+	for qemu-trivial@nongnu.org; Fri, 20 Sep 2013 12:58:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:52158)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VN42B-0000EE-9V; Fri, 20 Sep 2013 12:58:23 -0400
+	id 1VN42B-0000ED-9Z; Fri, 20 Sep 2013 12:58:23 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id B975D419BE;
+	by isrv.corpit.ru (Postfix) with ESMTP id DD2E5419CA;
 	Fri, 20 Sep 2013 20:58:20 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 93C6020A;
+	by tsrv.corpit.ru (Postfix) with SMTP id C0933213;
 	Fri, 20 Sep 2013 20:58:20 +0400 (MSK)
-Received: (nullmailer pid 32159 invoked by uid 1000);
+Received: (nullmailer pid 32162 invoked by uid 1000);
 	Fri, 20 Sep 2013 16:58:20 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@us.ibm.com
-Date: Fri, 20 Sep 2013 20:57:59 +0400
-Message-Id: <1379696296-32105-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 20 Sep 2013 20:58:00 +0400
+Message-Id: <1379696296-32105-2-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1379696296-32105-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1379696296-32105-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 00/17] Trivial patches for 2013-09-20
+Cc: qemu-trivial@nongnu.org, Michal Privoznik <mprivozn@redhat.com>,
+	Jan Vesely <jano.vesely@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 01/17] configure: Undefine _FORTIFY_SOURCE
+	prior using it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,86 +45,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Sep 2013 16:58:45 -0000
+X-List-Received-Date: Fri, 20 Sep 2013 16:58:50 -0000
 
-Here is another trivial-patches pull request, which includes patches
-from previous week (with fixes for build failures -- one patch fixed
-and one removed) plus a few more patches accumulated during this week.
+From: Michal Privoznik <mprivozn@redhat.com>
 
-Please pull.
+Currently, we are enforcing the _FORTIFY_SOURCE=2 without any
+previous detection if the macro has been already defined, e.g.
+by environment, or is just enabled by compiler by default.
 
-Thanks,
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ configure |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-/mjt
+diff --git a/configure b/configure
+index 1b6f68b..8ad42bc 100755
+--- a/configure
++++ b/configure
+@@ -3520,7 +3520,7 @@ if test "$gcov" = "yes" ; then
+   CFLAGS="-fprofile-arcs -ftest-coverage -g $CFLAGS"
+   LDFLAGS="-fprofile-arcs -ftest-coverage $LDFLAGS"
+ elif test "$debug" = "no" ; then
+-  CFLAGS="-O2 -D_FORTIFY_SOURCE=2 $CFLAGS"
++  CFLAGS="-O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 $CFLAGS"
+ fi
+ 
+ 
+-- 
+1.7.10.4
 
-The following changes since commit 6c2679fc19560699679200fb42ab4659bcbe7f=
-79:
-
-  Merge remote-tracking branch 'kiszka/queues/slirp' into staging (2013-0=
-9-17 10:01:24 -0500)
-
-are available in the git repository at:
-
-
-  git://git.corpit.ru/qemu.git trivial-patches
-
-for you to fetch changes up to 7a1c0d200f3ca5be48f7034c6ed5458e490f8816:
-
-  tests/.gitignore: ignore test-throttle (2013-09-20 20:15:33 +0400)
-
-----------------------------------------------------------------
-Anthony PERARD (1):
-      docs: Fix IO port number for CPU present bitmap.
-
-Fam Zheng (1):
-      tests/.gitignore: ignore test-throttle
-
-Markus Armbruster (1):
-      trace-events: Clean up with scripts/cleanup-trace-events.pl again
-
-Michael Tokarev (2):
-      vscclient: remove unnecessary use of uninitialized variable
-      iov: avoid "orig_len may be used unitialized" warning
-
-Michal Privoznik (1):
-      configure: Undefine _FORTIFY_SOURCE prior using it
-
-Richard Henderson (1):
-      tcg-sparc: Fix parenthesis warning
-
-Richard W.M. Jones (1):
-      q35: Fix typo in constant DEFUALT -> DEFAULT.
-
-Stefan Weil (8):
-      *-user: Fix typo in comment (ulocking -> unlocking)
-      translate-all: Fix formatting of dump output
-      MAINTAINERS: Add missing entry to filelist for TCI target
-      *-user: Improve documentation for lock_user function
-      tci: Fix qemu-alpha on 32 bit hosts (wrong assertions)
-      Makefile: Remove some more files when cleaning
-      kvm: Fix compiler warning (clang)
-      exec: Fix broken build for MinGW (regression)
-
-Tobias Markus (1):
-      target-i386: Fix segment cache dump
-
- MAINTAINERS                     |    1 +
- Makefile                        |    4 +++-
- bsd-user/qemu.h                 |    6 +++---
- configure                       |    2 +-
- docs/specs/acpi_cpu_hotplug.txt |    2 +-
- exec.c                          |    2 ++
- hw/i386/kvm/clock.c             |    2 +-
- hw/pci-host/q35.c               |    2 +-
- include/hw/pci-host/q35.h       |    2 +-
- libcacard/vscclient.c           |    3 +--
- linux-user/qemu.h               |    6 +++---
- target-i386/helper.c            |    4 +++-
- tcg/sparc/tcg-target.h          |    2 +-
- tci.c                           |   12 ------------
- tests/.gitignore                |    1 +
- trace-events                    |    3 +--
- translate-all.c                 |    5 +++--
- util/iov.c                      |   10 ++++------
- 18 files changed, 31 insertions(+), 38 deletions(-)
 
