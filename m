@@ -1,42 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VNTlP-00066s-Jb
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Sep 2013 16:26:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35468)
+	id 1VNctU-0002c4-Ok
+	for mharc-qemu-trivial@gnu.org; Sun, 22 Sep 2013 02:11:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1VNTlO-00066l-9B
-	for qemu-trivial@nongnu.org; Sat, 21 Sep 2013 16:26:46 -0400
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VNctO-0002UF-QE
+	for qemu-trivial@nongnu.org; Sun, 22 Sep 2013 02:11:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1VNTlN-0004uP-CX
-	for qemu-trivial@nongnu.org; Sat, 21 Sep 2013 16:26:46 -0400
-Received: from mail-ob0-x233.google.com ([2607:f8b0:4003:c01::233]:33354)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VNctJ-0003lQ-SN
+	for qemu-trivial@nongnu.org; Sun, 22 Sep 2013 02:11:38 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:58214
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>)
-	id 1VNTlK-0004tt-I2; Sat, 21 Sep 2013 16:26:42 -0400
-Received: by mail-ob0-f179.google.com with SMTP id wn1so2142962obc.38
-	for <multiple recipients>; Sat, 21 Sep 2013 13:26:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:date:message-id:subject:from:to:content-type;
-	bh=EtDqXRTvsUaHJN7rHwQ2dXysATkWQLWw4qOZjqHAstI=;
-	b=zj0s7Om5b7k9ZgxJAfeP/M6nJugwskCenjD4qjxBOg/pANoWLL2UGRcQhrCUMs+opQ
-	a9P5vV5BmJnhRvfwhBUvUw11zXEkkMrpRbazipFuRNH+S6Y2Ifd3pYhZhS88/9jFs1Zy
-	YgqHY4AO9mjc4FzMPicHhdu2tvQH6opYxpa+oxFrL/nF4wGUrGCsbzWU550w2lX0MUeo
-	hk/0VXHkzFfsy2WQ4IInJtdJX492lL0P9cw8c/LorMccljIqcEu6GETJLZMpxxmycIwl
-	S76wFE/xtUgtmm461y97tL+Gy1Y11ke+J2izsfcVFcDTZbHqhi7vthO1CCi5BomnXa6m
-	verw==
-MIME-Version: 1.0
-X-Received: by 10.60.44.193 with SMTP id g1mr58865oem.47.1379795201712; Sat,
-	21 Sep 2013 13:26:41 -0700 (PDT)
-Received: by 10.60.18.200 with HTTP; Sat, 21 Sep 2013 13:26:41 -0700 (PDT)
-Date: Sat, 21 Sep 2013 16:26:41 -0400
-Message-ID: <CA+K+NcStLJod1P3MhWqPJ=jhfMwMuV_cxuivi-QXduwnT2uwqg@mail.gmail.com>
-From: =?UTF-8?B?SsOhbiBWZXNlbMO9?= <jano.vesely@gmail.com>
-To: QEMU <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c01::233
-Subject: [Qemu-trivial] [PATCH] pci-ohci: Add missing 'break' in
-	ohci_service_td
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VNct9-0003kG-SP; Sun, 22 Sep 2013 02:11:23 -0400
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id E324317FE86; Sun, 22 Sep 2013 08:11:19 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel <qemu-devel@nongnu.org>
+Date: Sun, 22 Sep 2013 08:11:19 +0200
+Message-Id: <1379830279-23376-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.198.45
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH v2] translate-all: Fix formatting of dump
+	output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,31 +38,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Sep 2013 20:26:47 -0000
+X-List-Received-Date: Sun, 22 Sep 2013 06:11:43 -0000
 
-Device communication errors need to be reported to driver.
-Add a debug message while at it.
+The page dump writes a table with 3 abi_ulong values in each row.
+These values take 8 or 16 characters (depending on sizeof abi_ulong).
 
-Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
+Fix the table headings to be aligned with the table columns.
+
+old:
+start    end      size     prot
+0000000120000000-000000012021e000 000000000021e000 rwx
+0000004000000000-0000004000002000 0000000000002000 ---
+0000004000002000-0000004000802000 0000000000800000 rw-
+
+new:
+start            end              size             prot
+0000000120000000-000000012021e000 000000000021e000 rwx
+0000004000000000-0000004000002000 0000000000002000 ---
+0000004000002000-0000004000802000 0000000000800000 rw-
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/usb/hcd-ohci.c | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-index 35f0878..0396e33 100644
---- a/hw/usb/hcd-ohci.c
-+++ b/hw/usb/hcd-ohci.c
-@@ -1143,7 +1143,9 @@ static int ohci_service_td(OHCIState *ohci,
-struct ohci_ed *ed)
-             switch (ret) {
-             case USB_RET_IOERROR:
-             case USB_RET_NODEV:
-+                DPRINTF("usb-ohci: got DEV ERROR\n");
-                 OHCI_SET_BM(td.flags, TD_CC, OHCI_CC_DEVICENOTRESPONDING);
-+                break;
-             case USB_RET_NAK:
-                 DPRINTF("usb-ohci: got NAK\n");
-                 return 1;
+v2:
+'length' is now an int value instead of a size_t.
+Compilers require an int for the '*' flag.
+size_t causes a compiler warning in some configurations.
+
+ translate-all.c |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/translate-all.c b/translate-all.c
+index 2c923c6..e7aff92 100644
+--- a/translate-all.c
++++ b/translate-all.c
+@@ -1679,8 +1679,9 @@ static int dump_region(void *priv, abi_ulong start,
+ /* dump memory mappings */
+ void page_dump(FILE *f)
+ {
+-    (void) fprintf(f, "%-8s %-8s %-8s %s\n",
+-            "start", "end", "size", "prot");
++    const int length = sizeof(abi_ulong) * 2;
++    (void) fprintf(f, "%-*s %-*s %-*s %s\n",
++            length, "start", length, "end", length, "size", "prot");
+     walk_memory_regions(f, dump_region);
+ }
+ 
 -- 
-1.8.1.5
+1.7.10.4
+
 
