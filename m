@@ -1,59 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VOaeT-0002wK-3E
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2013 18:00:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51611)
+	id 1VOcR7-000584-0v
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2013 19:54:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43778)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1VOaeI-0002qF-CY
-	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 18:00:11 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1VOcQz-00053l-QH
+	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 19:54:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1VOae8-0001Or-I6
-	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 18:00:02 -0400
-Received: from e37.co.us.ibm.com ([32.97.110.158]:37481)
+	(envelope-from <peter.maydell@linaro.org>) id 1VOcQr-0000DQ-HX
+	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 19:54:25 -0400
+Received: from mail-la0-f41.google.com ([209.85.215.41]:38985)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1VOae8-0001OY-AL
-	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 17:59:52 -0400
-Received: from /spool/local
-	by e37.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
-	Tue, 24 Sep 2013 15:59:51 -0600
-Received: from d03dlp02.boulder.ibm.com (9.17.202.178)
-	by e37.co.us.ibm.com (192.168.1.137) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 24 Sep 2013 15:59:49 -0600
-Received: from d03relay03.boulder.ibm.com (d03relay03.boulder.ibm.com
-	[9.17.195.228])
-	by d03dlp02.boulder.ibm.com (Postfix) with ESMTP id 773653E4003E;
-	Tue, 24 Sep 2013 15:59:48 -0600 (MDT)
-Received: from d03av01.boulder.ibm.com (d03av01.boulder.ibm.com [9.17.195.167])
-	by d03relay03.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	r8OLxm4g312028; Tue, 24 Sep 2013 15:59:48 -0600
-Received: from d03av01.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVout) with ESMTP
-	id r8OLxln5032333; Tue, 24 Sep 2013 15:59:47 -0600
-Received: from localhost ([9.41.105.206])
-	by d03av01.boulder.ibm.com (8.14.4/8.13.1/NCO v10.0 AVin) with ESMTP id
-	r8OLxks8032304; Tue, 24 Sep 2013 15:59:46 -0600
-Content-Type: text/plain; charset="utf-8"
+	(envelope-from <peter.maydell@linaro.org>) id 1VOcQr-0000DE-Ak
+	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 19:54:17 -0400
+Received: by mail-la0-f41.google.com with SMTP id ec20so4419405lab.28
+	for <qemu-trivial@nongnu.org>; Tue, 24 Sep 2013 16:54:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=4o02mjAEw4HiPeG9x6K09tshgg4R2rk7zXcZ0f5DUJ0=;
+	b=LPCiYyz/sJsgSD78BhwNmjjS6Rlc2zga6NY0NTE1KnCJlPnj1AfHtToeV/xpKkXNVX
+	ULrNEm/nmrdBpEAtxoW0/xPpY2sXMQGj5eyTMANYs5tJNjAEmSftMUtTb1uzKx/lvQoD
+	HgwWlVnZfcRmQvn53Ny/UboNjCCC5klSbnE6UbSzcLQualeyd1YovtjTqHJMJDOiC626
+	w5Plv3UOTqB/tHT9wIFO/GdYkxBtV7JmJ8GB876QTa2HQpUolqyY3s4Au6XWS2vUNteh
+	8BoXEMFIjoEYMyAhAiebI1wHiXVYy0mioJ/gUFwqHlMuldKJvoDd4+pH7ID85XlW03CX
+	A4Yw==
+X-Gm-Message-State: ALoCoQnF+SgEBhEUnnT3zbu4wQrxefxFk/xTv3IOl0N49q00APLEqX+KZ9N+6kE6SIq+IfLCN3m8
+X-Received: by 10.152.29.103 with SMTP id j7mr26599495lah.7.1380066856049;
+	Tue, 24 Sep 2013 16:54:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-In-Reply-To: <20130924215822.25429.16708@loki>
-References: <1375789738-28034-1-git-send-email-stefanha@redhat.com>
-	<20130924215822.25429.16708@loki>
-Message-ID: <20130924215946.25429.75793@loki>
-User-Agent: alot/0.3.4
-Date: Tue, 24 Sep 2013 16:59:46 -0500
-X-TM-AS-MML: No
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13092421-7164-0000-0000-000001E47CB9
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 32.97.110.158
-Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@us.ibm.com>,
-	qemu-stable@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-stable] [PATCH for-1.6] qemu-timer: fix
- get_clock() gettimeofday() fallback #ifdef
+Received: by 10.112.161.232 with HTTP; Tue, 24 Sep 2013 16:53:55 -0700 (PDT)
+In-Reply-To: <1380041161-13266-4-git-send-email-chouteau@adacore.com>
+References: <1380041161-13266-1-git-send-email-chouteau@adacore.com>
+	<1380041161-13266-4-git-send-email-chouteau@adacore.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 25 Sep 2013 08:53:55 +0900
+Message-ID: <CAFEAcA9A1JD7hPqZ5Y5d4UDFSa4DqJZOz_yTrjH92B7h8N-Lug@mail.gmail.com>
+To: Fabien Chouteau <chouteau@adacore.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.41
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH 3/3] Add ARM registers definitions in
+	Monitor commands
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,47 +58,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Sep 2013 22:00:11 -0000
+X-List-Received-Date: Tue, 24 Sep 2013 23:54:30 -0000
 
-Quoting Michael Roth (2013-09-24 16:58:22)
-> Quoting Stefan Hajnoczi (2013-08-06 06:48:58)
-> > If CLOCK_MONOTONIC is not defined by system headers we use
-> > gettimeofday(2).  Apparently this is not used very often since no one
-> > noticed the #ifdef was actually broken and left the function definition
-> > unterminated.
-> > =
+On 25 September 2013 01:46, Fabien Chouteau <chouteau@adacore.com> wrote:
+> --- a/monitor.c
+> +++ b/monitor.c
+> @@ -3351,6 +3351,23 @@ static const MonitorDef monitor_defs[] = {
+>      { "cleanwin", offsetof(CPUSPARCState, cleanwin) },
+>      { "fprs", offsetof(CPUSPARCState, fprs) },
+>  #endif
+> +#elif defined(TARGET_ARM)
+> +    { "r0",     offsetof(CPUARMState, regs[0])  },
+> +    { "r1",     offsetof(CPUARMState, regs[1])  },
+> +    { "r2",     offsetof(CPUARMState, regs[2])  },
+> +    { "r3",     offsetof(CPUARMState, regs[3])  },
+> +    { "r4",     offsetof(CPUARMState, regs[4])  },
+> +    { "r5",     offsetof(CPUARMState, regs[5])  },
+> +    { "r6",     offsetof(CPUARMState, regs[6])  },
+> +    { "r7",     offsetof(CPUARMState, regs[7])  },
+> +    { "r8",     offsetof(CPUARMState, regs[8])  },
+> +    { "r9",     offsetof(CPUARMState, regs[9])  },
+> +    { "r10",    offsetof(CPUARMState, regs[10]) },
+> +    { "r11",    offsetof(CPUARMState, regs[11]) },
+> +    { "r12",    offsetof(CPUARMState, regs[12]) },
+> +    { "r13|sp", offsetof(CPUARMState, regs[13]) },
+> +    { "r14|lr", offsetof(CPUARMState, regs[14]) },
+> +    { "r15|pc", offsetof(CPUARMState, regs[15]) },
+>  #endif
 
-> > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> =
+No, I really don't want to see another target #ifdef ladder, please.
+Put a 'static const MonitorDef *monitor_defs;' into CPUClass,
+and initialize it in each target's class init function, please.
+(You'll need to move the appropriate sections of the current
+static array in monitor.c plus the per-target functions that
+it references into target-*/cpu.c.) Look at gdb_num_core_regs
+as an example of where we made this kind of abstraction.
 
-> Ping, looking to pull this in for stable.
-
-Bah, ignore this. Didn't see previous discussion.
-
-> =
-
-> > ---
-> >  include/qemu/timer.h | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > =
-
-> > diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-> > index 9dd206c..e3299b8 100644
-> > --- a/include/qemu/timer.h
-> > +++ b/include/qemu/timer.h
-> > @@ -125,8 +125,8 @@ static inline int64_t get_clock(void)
-> >             changes, so it should be avoided. */
-> >          return get_clock_realtime();
-> >      }
-> > -}
-> >  #endif
-> > +}
-> > =
-
-> >  void qemu_get_timer(QEMUFile *f, QEMUTimer *ts);
-> >  void qemu_put_timer(QEMUFile *f, QEMUTimer *ts);
-> > -- =
-
-> > 1.8.1.4
-
+-- PMM
 
