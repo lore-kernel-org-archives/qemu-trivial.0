@@ -1,43 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VONIJ-0008De-7t
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2013 03:44:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55122)
+	id 1VOVkq-0003WB-SA
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2013 12:46:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39459)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1VONIB-0007z2-7h
-	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 03:44:25 -0400
+	(envelope-from <chouteau@adacore.com>) id 1VOVkk-0003Lz-SZ
+	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 12:46:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1VONI5-0002PI-8a
-	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 03:44:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:26024)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1VONHd-0002J5-F3; Tue, 24 Sep 2013 03:43:45 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8O7hhhX018000
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 24 Sep 2013 03:43:43 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-38.ams2.redhat.com
-	[10.36.116.38])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r8O7heEQ012505
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 24 Sep 2013 03:43:42 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 4BB48200C0; Tue, 24 Sep 2013 09:43:40 +0200 (CEST)
-From: armbru@redhat.com
-To: qemu-devel@nongnu.org
-Date: Tue, 24 Sep 2013 09:43:38 +0200
-Message-Id: <1380008620-13796-1-git-send-email-armbru@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <chouteau@adacore.com>) id 1VOVkg-0005n6-Ar
+	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 12:46:22 -0400
+Received: from mel.act-europe.fr ([194.98.77.210]:43961
+	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chouteau@adacore.com>)
+	id 1VOVkX-0005kH-3n; Tue, 24 Sep 2013 12:46:09 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 9BBF22666376;
+	Tue, 24 Sep 2013 18:46:07 +0200 (CEST)
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Hkjcnt4Q9Nlx; Tue, 24 Sep 2013 18:46:07 +0200 (CEST)
+Received: from PomPomGalli.act-europe.fr (pompomgalli.act-europe.fr
+	[10.10.1.88])
+	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 82FFF2666378;
+	Tue, 24 Sep 2013 18:46:07 +0200 (CEST)
+From: Fabien Chouteau <chouteau@adacore.com>
+To: qemu-trivial@nongnu.org
+Date: Tue, 24 Sep 2013 18:46:00 +0200
+Message-Id: <1380041161-13266-3-git-send-email-chouteau@adacore.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1380041161-13266-1-git-send-email-chouteau@adacore.com>
+References: <1380041161-13266-1-git-send-email-chouteau@adacore.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, lersek@redhat.com, afaerber@suse.de,
-	anthony@codemonkey.ws, qemu-stable@nongnu.org
-Subject: [Qemu-trivial] [PATCH v3 0/2] tests: Fixes for in-tree build
+X-Received-From: 194.98.77.210
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, afaerber@suse.de,
+	lcapitulino@redhat.com
+Subject: [Qemu-trivial] [PATCH 2/3] Improve Monitor disas with symbol lookup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,25 +47,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Sep 2013 07:44:25 -0000
+X-List-Received-Date: Tue, 24 Sep 2013 16:46:27 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
 
-Hasn't gotten maintainer attention for two months.  Retrying via
-qemu-trivial.
+Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
+---
+ disas.c |   10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-v3: Trivially rebased
-v2: Nominate for qemu-stable (Andreas)
-
-Markus Armbruster (2):
-  tests: Fix schema parser test for in-tree build
-  tests: Update .gitignore for test-int128 and test-bitops
-
- tests/.gitignore | 3 +++
- tests/Makefile   | 8 ++++----
- 2 files changed, 7 insertions(+), 4 deletions(-)
-
+diff --git a/disas.c b/disas.c
+index 32407de..c83bf5b 100644
+--- a/disas.c
++++ b/disas.c
+@@ -507,7 +507,15 @@ void monitor_disas(Monitor *mon, CPUArchState *env,
+ #endif
+ 
+     for (i = 0; i < nb_insn; i++) {
+-        monitor_printf(mon, "0x" TARGET_FMT_lx ":  ", pc);
++        const char *sym = lookup_symbol(pc);
++
++        monitor_printf(mon, "0x" TARGET_FMT_lx, pc);
++        if (sym[0] != '\0') {
++            monitor_printf(mon, " <%s>:  ", sym);
++        } else {
++            monitor_printf(mon, ":  ");
++        }
++
+         count = print_insn(pc, &s.info);
+         monitor_printf(mon, "\n");
+         if (count < 0) {
 -- 
-1.8.1.4
+1.7.9.5
 
 
