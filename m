@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VOVlP-0004TV-Ds
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2013 12:47:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39681)
+	id 1VOWUl-0007Il-S4
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2013 13:33:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50327)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1VOVlJ-0004JJ-PF
-	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 12:47:02 -0400
+	(envelope-from <afaerber@suse.de>) id 1VOWUf-0007AP-8i
+	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 13:33:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1VOVlC-0006A2-RO
-	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 12:46:57 -0400
-Received: from mel.act-europe.fr ([194.98.77.210]:43995
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1VOVl0-0005sB-5h; Tue, 24 Sep 2013 12:46:38 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id A04282666378;
-	Tue, 24 Sep 2013 18:46:07 +0200 (CEST)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VifLjIN48Emj; Tue, 24 Sep 2013 18:46:07 +0200 (CEST)
-Received: from PomPomGalli.act-europe.fr (pompomgalli.act-europe.fr
-	[10.10.1.88])
-	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 8FD8E2666379;
-	Tue, 24 Sep 2013 18:46:07 +0200 (CEST)
-From: Fabien Chouteau <chouteau@adacore.com>
-To: qemu-trivial@nongnu.org
-Date: Tue, 24 Sep 2013 18:46:01 +0200
-Message-Id: <1380041161-13266-4-git-send-email-chouteau@adacore.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1380041161-13266-1-git-send-email-chouteau@adacore.com>
+	(envelope-from <afaerber@suse.de>) id 1VOWUa-0003ly-4N
+	for qemu-trivial@nongnu.org; Tue, 24 Sep 2013 13:33:49 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:33532 helo=mx2.suse.de)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <afaerber@suse.de>)
+	id 1VOWUP-0003k0-Vk; Tue, 24 Sep 2013 13:33:34 -0400
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id CB29EA52C6;
+	Tue, 24 Sep 2013 19:33:26 +0200 (CEST)
+Message-ID: <5241CCE3.4090403@suse.de>
+Date: Tue, 24 Sep 2013 19:33:23 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130801 Thunderbird/17.0.8
+MIME-Version: 1.0
+To: Fabien Chouteau <chouteau@adacore.com>
 References: <1380041161-13266-1-git-send-email-chouteau@adacore.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 194.98.77.210
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, afaerber@suse.de,
+	<1380041161-13266-2-git-send-email-chouteau@adacore.com>
+In-Reply-To: <1380041161-13266-2-git-send-email-chouteau@adacore.com>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
 	lcapitulino@redhat.com
-Subject: [Qemu-trivial] [PATCH 3/3] Add ARM registers definitions in Monitor
-	commands
+Subject: Re: [Qemu-trivial] [PATCH 1/3] Fix coding style
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,43 +45,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Sep 2013 16:47:02 -0000
+X-List-Received-Date: Tue, 24 Sep 2013 17:33:54 -0000
 
+Am 24.09.2013 18:45, schrieb Fabien Chouteau:
+> Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
+> ---
+>  disas.c |   11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
 
-Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
----
- monitor.c |   17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
-diff --git a/monitor.c b/monitor.c
-index 74f3f1b..e40c20d 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -3351,6 +3351,23 @@ static const MonitorDef monitor_defs[] = {
-     { "cleanwin", offsetof(CPUSPARCState, cleanwin) },
-     { "fprs", offsetof(CPUSPARCState, fprs) },
- #endif
-+#elif defined(TARGET_ARM)
-+    { "r0",     offsetof(CPUARMState, regs[0])  },
-+    { "r1",     offsetof(CPUARMState, regs[1])  },
-+    { "r2",     offsetof(CPUARMState, regs[2])  },
-+    { "r3",     offsetof(CPUARMState, regs[3])  },
-+    { "r4",     offsetof(CPUARMState, regs[4])  },
-+    { "r5",     offsetof(CPUARMState, regs[5])  },
-+    { "r6",     offsetof(CPUARMState, regs[6])  },
-+    { "r7",     offsetof(CPUARMState, regs[7])  },
-+    { "r8",     offsetof(CPUARMState, regs[8])  },
-+    { "r9",     offsetof(CPUARMState, regs[9])  },
-+    { "r10",    offsetof(CPUARMState, regs[10]) },
-+    { "r11",    offsetof(CPUARMState, regs[11]) },
-+    { "r12",    offsetof(CPUARMState, regs[12]) },
-+    { "r13|sp", offsetof(CPUARMState, regs[13]) },
-+    { "r14|lr", offsetof(CPUARMState, regs[14]) },
-+    { "r15|pc", offsetof(CPUARMState, regs[15]) },
- #endif
-     { NULL },
- };
--- 
-1.7.9.5
+Andreas
 
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
