@@ -1,48 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VOogx-0004vn-Hw
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Sep 2013 08:59:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53573)
+	id 1VOrAs-0000ME-1k
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Sep 2013 11:38:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38630)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1VOnGs-0008Qc-D9
-	for qemu-trivial@nongnu.org; Wed, 25 Sep 2013 07:28:47 -0400
+	(envelope-from <chouteau@adacore.com>) id 1VOrAk-0000B5-5W
+	for qemu-trivial@nongnu.org; Wed, 25 Sep 2013 11:38:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1VOnGn-0004Bo-9m
-	for qemu-trivial@nongnu.org; Wed, 25 Sep 2013 07:28:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:62771)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1VOnGd-0004AE-An; Wed, 25 Sep 2013 07:28:27 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8PBSQ9D014678
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 25 Sep 2013 07:28:26 -0400
-Received: from dhcp-200-207.str.redhat.com (ovpn-116-67.ams2.redhat.com
-	[10.36.116.67])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r8PBSNhM008054; Wed, 25 Sep 2013 07:28:24 -0400
-Date: Wed, 25 Sep 2013 13:28:21 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20130925112821.GE2898@dhcp-200-207.str.redhat.com>
-References: <1379830750-23801-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <chouteau@adacore.com>) id 1VOrAe-0001lb-5D
+	for qemu-trivial@nongnu.org; Wed, 25 Sep 2013 11:38:38 -0400
+Received: from mel.act-europe.fr ([194.98.77.210]:59152
+	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chouteau@adacore.com>)
+	id 1VOrAR-0001jY-LB; Wed, 25 Sep 2013 11:38:19 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 6DBFA2682D53;
+	Wed, 25 Sep 2013 17:38:18 +0200 (CEST)
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HjKcb5hBKF2G; Wed, 25 Sep 2013 17:38:18 +0200 (CEST)
+Received: from [10.10.1.88] (pompomgalli.act-europe.fr [10.10.1.88])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 5CD6E2682B9D;
+	Wed, 25 Sep 2013 17:38:15 +0200 (CEST)
+Message-ID: <5243035D.4080200@adacore.com>
+Date: Wed, 25 Sep 2013 17:38:05 +0200
+From: Fabien Chouteau <chouteau@adacore.com>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:17.0) Gecko/20130803 Thunderbird/17.0.8
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1379830750-23801-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	r8PBSQ9D014678
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1380041161-13266-1-git-send-email-chouteau@adacore.com>
+	<1380041161-13266-4-git-send-email-chouteau@adacore.com>
+	<CAFEAcA9A1JD7hPqZ5Y5d4UDFSa4DqJZOz_yTrjH92B7h8N-Lug@mail.gmail.com>
+In-Reply-To: <CAFEAcA9A1JD7hPqZ5Y5d4UDFSa4DqJZOz_yTrjH92B7h8N-Lug@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Wed, 25 Sep 2013 08:59:39 -0400
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <andreas.faerber@web.de>,
-	qemu-devel <qemu-devel@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] block: Fix compiler warning
-	(-Werror=uninitialized)
+X-Received-From: 194.98.77.210
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH 3/3] Add ARM registers definitions in
+	Monitor commands
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,23 +55,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Sep 2013 11:28:47 -0000
+X-List-Received-Date: Wed, 25 Sep 2013 15:38:44 -0000
 
-Am 22.09.2013 um 08:19 hat Stefan Weil geschrieben:
-> The patch fixes a warning from gcc (Debian 4.6.3-14+rpi1) 4.6.3:
->=20
-> block/stream.c:141:22: error:
-> =E2=80=98copy=E2=80=99 may be used uninitialized in this function [-Wer=
-ror=3Duninitialized]
->=20
-> This is not a real bug - a better compiler would not complain.
->=20
-> Now 'copy' has always a defined value, so the check for ret >=3D 0
-> can be removed.
->=20
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On 09/25/2013 01:53 AM, Peter Maydell wrote:
+> 
+> No, I really don't want to see another target #ifdef ladder, please.
+> Put a 'static const MonitorDef *monitor_defs;' into CPUClass,
+> and initialize it in each target's class init function, please.
+> (You'll need to move the appropriate sections of the current
+> static array in monitor.c plus the per-target functions that
+> it references into target-*/cpu.c.) Look at gdb_num_core_regs
+> as an example of where we made this kind of abstraction.
+> 
 
-Thanks, applied to the block branch.
+I tried already. Where whould you put the declaration of MonitorDef type?
 
-Kevin
+-- 
+Fabien Chouteau
 
