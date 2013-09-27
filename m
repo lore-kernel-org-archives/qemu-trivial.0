@@ -1,58 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VPDUr-00010y-EH
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2013 11:28:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38460)
+	id 1VPSU7-0005bI-Jb
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2013 03:29:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46595)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VPDUl-0000zy-Mh
-	for qemu-trivial@nongnu.org; Thu, 26 Sep 2013 11:28:52 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1VPSTz-0005Qt-D8
+	for qemu-trivial@nongnu.org; Fri, 27 Sep 2013 03:29:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VPDUh-0005FQ-28
-	for qemu-trivial@nongnu.org; Thu, 26 Sep 2013 11:28:47 -0400
-Received: from mail-la0-f50.google.com ([209.85.215.50]:50100)
+	(envelope-from <pbonzini@redhat.com>) id 1VPSTt-0004da-E2
+	for qemu-trivial@nongnu.org; Fri, 27 Sep 2013 03:28:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56330)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VPDUg-0005FG-R2
-	for qemu-trivial@nongnu.org; Thu, 26 Sep 2013 11:28:42 -0400
-Received: by mail-la0-f50.google.com with SMTP id gx14so1073108lab.23
-	for <qemu-trivial@nongnu.org>; Thu, 26 Sep 2013 08:28:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=MZT4ejiecVEhswZU5ZIrS3o/SQpwI31MJbHEtL9iFRg=;
-	b=aAeIdoyzHMhjnXVcg1vIdrLkCW49/q5JPINg9zn+WkA0J3btJ7W5iWOOJp24tbWa6C
-	2gNZA7bxfwJY/y3/3sjmBYgSZRf1098cQKlH3qujwz4CJVYSV4vXw+nTWJg2O02qmQU7
-	CCC3fni+TK81piHOEe3cvMwZECkl4q1kczrG6Pym3tJDZbsigdTHNsAMnIywSGH07xUp
-	xzsuX1x4mSgJpd6cMJ4+wjfp9+9x/lswPcSggjTwbjVe+h0wTzNO4jBNHWFK5kKTqyeO
-	4QZJhWdFrL+9eHQYxUdEWapHZs7tFWkCHmVpeehsWwQDE2WaSigS/uzXrmratoIBRWfY
-	nJMA==
-X-Gm-Message-State: ALoCoQnlvbuOTBnlEF2G9FQpAyd/3otsTPtx0cjtg4LV7wOnWhIV7jFdfOF5nnYkQ0qVXxrkWAgY
-X-Received: by 10.152.87.143 with SMTP id ay15mr1196386lab.2.1380209321865;
-	Thu, 26 Sep 2013 08:28:41 -0700 (PDT)
+	(envelope-from <pbonzini@redhat.com>)
+	id 1VPSTg-0004cX-Pt; Fri, 27 Sep 2013 03:28:40 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8R7SaMj008924
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 27 Sep 2013 03:28:37 -0400
+Received: from yakj.usersys.redhat.com (ovpn-112-42.ams2.redhat.com
+	[10.36.112.42])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r8R7SInt002137; Fri, 27 Sep 2013 03:28:26 -0400
+Message-ID: <524533A1.6030305@redhat.com>
+Date: Fri, 27 Sep 2013 09:28:33 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
 MIME-Version: 1.0
-Received: by 10.112.161.232 with HTTP; Thu, 26 Sep 2013 08:28:21 -0700 (PDT)
-In-Reply-To: <524449CA.5080706@adacore.com>
-References: <1380041161-13266-1-git-send-email-chouteau@adacore.com>
-	<1380041161-13266-4-git-send-email-chouteau@adacore.com>
-	<CAFEAcA9A1JD7hPqZ5Y5d4UDFSa4DqJZOz_yTrjH92B7h8N-Lug@mail.gmail.com>
-	<5243035D.4080200@adacore.com>
-	<CAFEAcA-4hahHS57XM8Pb+SMdjNnJO9f45HRhWYtpx5Xg7dBLqQ@mail.gmail.com>
-	<52430F79.6050202@adacore.com>
-	<CAFEAcA8EfFnyvXyqUVcQNz3NR-sf9dgtEiiK92p4Be0nUbd_7g@mail.gmail.com>
-	<524449CA.5080706@adacore.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Sep 2013 00:28:21 +0900
-Message-ID: <CAFEAcA8zEbV5gnKGB_qA16PP+0kXrVD4Jcs8QkkRj_OsqHwS+A@mail.gmail.com>
-To: Fabien Chouteau <chouteau@adacore.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.50
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Luiz Capitulino <lcapitulino@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/3] Add ARM registers
-	definitions in Monitor commands
+To: Amos Kong <akong@redhat.com>
+References: <1380245138-9716-1-git-send-email-akong@redhat.com>
+In-Reply-To: <1380245138-9716-1-git-send-email-akong@redhat.com>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, peter.maydell@linaro.org,
+	qemu-devel@nongnu.org, anthony@codemonkey.ws
+Subject: Re: [Qemu-trivial] [PATCH] exec: cleanup DEBUG_SUBPAGE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,42 +50,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Sep 2013 15:28:52 -0000
+X-List-Received-Date: Fri, 27 Sep 2013 07:29:05 -0000
 
-On 26 September 2013 23:50, Fabien Chouteau <chouteau@adacore.com> wrote:
-> On 09/26/2013 02:05 AM, Peter Maydell wrote:
->> On 26 September 2013 01:29, Fabien Chouteau <chouteau@adacore.com> wrote:
->>> I think that's what I did. I think the problem was to include
->>> 'monitor.h' in 'target-*/cpu.c'.
->>
->> Why doesn't that work?
->
-> The problem is use of 'target_long' in 'monitor.h'.
+Michael, want to pick this up for -trivial?
 
-Oh, right, the problem isn't including monitor.h from cpu.c,
-it's that some target-independent source files include
-monitor.h so you can't put target-dependent types like
-target_long in it. There are two fixes for this that spring
-to mind:
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-(1) lazy approach, wrap the MonitorDef structure
-definition in #ifdef NEED_CPU_H/#endif.
+Il 27/09/2013 03:25, Amos Kong ha scritto:
+> Touched some error after enabling DEBUG_SUBPAGE.
+> 
+> Signed-off-by: Amos Kong <akong@redhat.com>
+> ---
+>  exec.c | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
+> 
+> diff --git a/exec.c b/exec.c
+> index 07aa2c6..5aef833 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -1573,7 +1573,7 @@ static uint64_t subpage_read(void *opaque, hwaddr addr,
+>      uint8_t buf[4];
+>  
+>  #if defined(DEBUG_SUBPAGE)
+> -    printf("%s: subpage %p len %d addr " TARGET_FMT_plx "\n", __func__,
+> +    printf("%s: subpage %p len %u addr " TARGET_FMT_plx "\n", __func__,
+>             subpage, len, addr);
+>  #endif
+>      address_space_read(subpage->as, addr + subpage->base, buf, len);
+> @@ -1596,7 +1596,7 @@ static void subpage_write(void *opaque, hwaddr addr,
+>      uint8_t buf[4];
+>  
+>  #if defined(DEBUG_SUBPAGE)
+> -    printf("%s: subpage %p len %d addr " TARGET_FMT_plx
+> +    printf("%s: subpage %p len %u addr " TARGET_FMT_plx
+>             " value %"PRIx64"\n",
+>             __func__, subpage, len, addr, value);
+>  #endif
+> @@ -1617,16 +1617,16 @@ static void subpage_write(void *opaque, hwaddr addr,
+>  }
+>  
+>  static bool subpage_accepts(void *opaque, hwaddr addr,
+> -                            unsigned size, bool is_write)
+> +                            unsigned len, bool is_write)
+>  {
+>      subpage_t *subpage = opaque;
+>  #if defined(DEBUG_SUBPAGE)
+> -    printf("%s: subpage %p %c len %d addr " TARGET_FMT_plx "\n",
+> +    printf("%s: subpage %p %c len %u addr " TARGET_FMT_plx "\n",
+>             __func__, subpage, is_write ? 'w' : 'r', len, addr);
+>  #endif
+>  
+>      return address_space_access_valid(subpage->as, addr + subpage->base,
+> -                                      size, is_write);
+> +                                      len, is_write);
+>  }
+>  
+>  static const MemoryRegionOps subpage_ops = {
+> @@ -1646,8 +1646,8 @@ static int subpage_register (subpage_t *mmio, uint32_t start, uint32_t end,
+>      idx = SUBPAGE_IDX(start);
+>      eidx = SUBPAGE_IDX(end);
+>  #if defined(DEBUG_SUBPAGE)
+> -    printf("%s: %p start %08x end %08x idx %08x eidx %08x mem %ld\n", __func__,
+> -           mmio, start, end, idx, eidx, memory);
+> +    printf("%s: %p start %08x end %08x idx %08x eidx %08x section %d\n",
+> +           __func__, mmio, start, end, idx, eidx, section);
+>  #endif
+>      for (; idx <= eidx; idx++) {
+>          mmio->sub_section[idx] = section;
+> @@ -1668,8 +1668,8 @@ static subpage_t *subpage_init(AddressSpace *as, hwaddr base)
+>                            "subpage", TARGET_PAGE_SIZE);
+>      mmio->iomem.subpage = true;
+>  #if defined(DEBUG_SUBPAGE)
+> -    printf("%s: %p base " TARGET_FMT_plx " len %08x %d\n", __func__,
+> -           mmio, base, TARGET_PAGE_SIZE, subpage_memory);
+> +    printf("%s: %p base " TARGET_FMT_plx " len %08x\n", __func__,
+> +           mmio, base, TARGET_PAGE_SIZE);
+>  #endif
+>      subpage_register(mmio, 0, TARGET_PAGE_SIZE-1, PHYS_SECTION_UNASSIGNED);
+>  
+> 
 
-(2) the "remove target-specificisms from what should
-be generic code" approach:
- * make MonitorDef use uint64_t rather than target_long
-   for the getter function return type
- * propagate that type change into functions like
-   get_monitor_def and its callsite in expr_unary
- * make the types recognized by get_monitor_def be
-   MD_I32 or MD_I64, and not MD_TLONG
- * make the per-target MonitorDef array entries which
-   currently implicitly use MD_TLONG instead either
-   (a) use MD_I32 or MD_I64 if they're targets which
-   really only have one width or (b) use a locally #defined
-   MD_TLONG if they're accessing CPU struct fields which
-   really are target_long and the CPU comes in both 32
-   and 64 bit variants.
-
--- PMM
 
