@@ -1,38 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VQMyb-0004GB-H6
-	for mharc-qemu-trivial@gnu.org; Sun, 29 Sep 2013 15:48:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38548)
+	id 1VQN34-0005Nq-8x
+	for mharc-qemu-trivial@gnu.org; Sun, 29 Sep 2013 15:52:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39152)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VQMyU-00046H-9I
-	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 15:48:20 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1VQN2x-0005E2-NJ
+	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 15:52:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VQMyO-0003Vj-1T
-	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 15:48:14 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:39020)
+	(envelope-from <mjt@tls.msk.ru>) id 1VQN2t-0004q1-4C
+	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 15:52:51 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:41906)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VQMyB-0003U3-Jp; Sun, 29 Sep 2013 15:47:55 -0400
+	id 1VQN2k-0004oo-Eh; Sun, 29 Sep 2013 15:52:38 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 892F54292C;
-	Sun, 29 Sep 2013 23:47:54 +0400 (MSK)
-Message-ID: <524883EA.2090305@msgid.tls.msk.ru>
-Date: Sun, 29 Sep 2013 23:47:54 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 254B4429EB;
+	Sun, 29 Sep 2013 23:52:37 +0400 (MSK)
+Message-ID: <52488505.90903@msgid.tls.msk.ru>
+Date: Sun, 29 Sep 2013 23:52:37 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:17.0) Gecko/20130922 Icedove/17.0.9
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1380469880-19448-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1380469880-19448-1-git-send-email-sw@weilnetz.de>
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <1378625945-15525-1-git-send-email-linux@roeck-us.net>
+	<5233E059.8090402@roeck-us.net> <52487BAB.4010703@redhat.com>
+In-Reply-To: <52487BAB.4010703@redhat.com>
 Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] hw/alpha: Fix compiler warning (integer
- constant is too large)
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Rob Landley <rob@landley.net>, qemu-devel@nongnu.org,
+	Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [Qemu-trivial] [PATCH] sh4: Fix serial line access for Linux
+ kernels later than 3.2
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,22 +47,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 Sep 2013 19:48:20 -0000
+X-List-Received-Date: Sun, 29 Sep 2013 19:52:56 -0000
 
-29.09.2013 19:51, Stefan Weil wrote:
->  From buildbot default_i386_rhel61:
+29.09.2013 23:12, Paolo Bonzini wrote:
+> sh4 is ~orphan so nobody should complain if qemu-trivial picks this up
+> as well.
 >
->    CC    alpha-softmmu/hw/alpha/typhoon.o
-> hw/alpha/typhoon.c: In function 'typhoon_translate_iommu':
-> hw/alpha/typhoon.c:703: warning: integer constant is too large for 'long' type
-> hw/alpha/typhoon.c:703: warning: integer constant is too large for 'long' type
+> Paolo
+>
+> Il 14/09/2013 06:04, Guenter Roeck ha scritto:
+>> On 09/08/2013 12:39 AM, Guenter Roeck wrote:
+>>> With Linux kernel version 3.3 or later, qemu fails with the following
+>>> message:
+>>>
+>>> sh_serial: unsupported read from 0x18
+>>>     Aborted
+>>>
+>>> Reported-and-analyzed-by: Rob Landley <rob@landley.net>
+>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>>
+>> ping ...
+>>
+>>> ---
+>>> See http://lists.nongnu.org/archive/html/qemu-devel/2012-07/msg03870.html
+>>> for Rob's analysis of the problem. Unfortunately, the patch never made it
+>>> into qemu.
 
 Thanks, applied to the trivial patches queue.
-
-> I used lower case 'ull' because the rest of the code writes it that way
-> although I personally prefer 0xfffffffffffULL to 0xfffffffffffull.
-
-Yea, "full" looks a bit odd here :)
 
 /mjt
 
