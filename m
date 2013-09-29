@@ -1,48 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VQNP7-0001Iq-Lf
-	for mharc-qemu-trivial@gnu.org; Sun, 29 Sep 2013 16:15:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42138)
+	id 1VQNPg-00023f-LN
+	for mharc-qemu-trivial@gnu.org; Sun, 29 Sep 2013 16:16:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42215)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VQNOy-0001Eu-U3
-	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 16:15:44 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1VQNPY-0001qf-M1
+	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 16:16:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VQNOr-0002d5-6y
-	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 16:15:36 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:60200)
+	(envelope-from <mjt@tls.msk.ru>) id 1VQNPS-0002kZ-NG
+	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 16:16:12 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:36676)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1VQNOc-0002Zl-DQ; Sun, 29 Sep 2013 16:15:14 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	8144872809F1; Sun, 29 Sep 2013 22:15:13 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id pQGZH3ZV6TBa; Sun, 29 Sep 2013 22:15:11 +0200 (CEST)
-Received: from [192.168.178.35] (p54AD8DCF.dip0.t-ipconnect.de
-	[84.173.141.207])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	81E2C72809F0; Sun, 29 Sep 2013 22:15:11 +0200 (CEST)
-Message-ID: <52488A4E.5010902@weilnetz.de>
-Date: Sun, 29 Sep 2013 22:15:10 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1VQNPG-0002gn-8v; Sun, 29 Sep 2013 16:15:54 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 97C06429EB;
+	Mon, 30 Sep 2013 00:15:53 +0400 (MSK)
+Message-ID: <52488A79.8010803@msgid.tls.msk.ru>
+Date: Mon, 30 Sep 2013 00:15:53 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130922 Icedove/17.0.9
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1380362114-29476-1-git-send-email-sw@weilnetz.de>
-	<52488325.5090702@msgid.tls.msk.ru>
-In-Reply-To: <52488325.5090702@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+To: =?UTF-8?B?SsOhbiBWZXNlbMO9?= <jano.vesely@gmail.com>
+References: <CA+K+NcStLJod1P3MhWqPJ=jhfMwMuV_cxuivi-QXduwnT2uwqg@mail.gmail.com>
+In-Reply-To: <CA+K+NcStLJod1P3MhWqPJ=jhfMwMuV_cxuivi-QXduwnT2uwqg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
-	qemu-devel <qemu-devel@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] block: Remove unused assignment (fixes
- warning from clang)
+X-Received-From: 86.62.121.231
+Cc: QEMU <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] pci-ohci: Add missing 'break' in
+	ohci_service_td
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,44 +44,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 Sep 2013 20:15:44 -0000
+X-List-Received-Date: Sun, 29 Sep 2013 20:16:19 -0000
 
-Am 29.09.2013 21:44, schrieb Michael Tokarev:
-> 28.09.2013 13:55, Stefan Weil wrote:
-[...]
->> diff --git a/blockdev.c b/blockdev.c
->> index 8aa66a9..8c83f6f 100644
->> --- a/blockdev.c
->> +++ b/blockdev.c
->> @@ -1926,7 +1926,6 @@ void qmp_drive_mirror(const char *device, const
->> char *target,
->>       } else {
->>           switch (mode) {
->>           case NEW_IMAGE_MODE_EXISTING:
->> -            ret = 0;
->>               break;
+22.09.2013 00:26, J=C3=A1n Vesel=C3=BD wrote:
+> Device communication errors need to be reported to driver.
+> Add a debug message while at it.
 >
-> While this one is obviously unused assignment,
-> there's on more usage of `ret' variable in this
-> function, -- it is to store the return value
-> from bdrv_open():
+> Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
+> ---
+>   hw/usb/hcd-ohci.c | 2 ++
+>   1 file changed, 2 insertions(+)
 >
->     ret = bdrv_open(target_bs, target, NULL, flags |
-> BDRV_O_NO_BACKING, drv,
->                     &local_err);
->     if (ret < 0) {...
->
-> What's the rule about converting that into if() ?
->
-> Thanks,
->
-> /mjt
+> diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+> index 35f0878..0396e33 100644
+> --- a/hw/usb/hcd-ohci.c
+> +++ b/hw/usb/hcd-ohci.c
+> @@ -1143,7 +1143,9 @@ static int ohci_service_td(OHCIState *ohci,
+> struct ohci_ed *ed)
+>               switch (ret) {
+>               case USB_RET_IOERROR:
+>               case USB_RET_NODEV:
+> +                DPRINTF("usb-ohci: got DEV ERROR\n");
 
-Is there a rule for cases like that? This pattern is very common in QEMU
-code
-(several occurrences in blockdev.c). Should we eliminate the 'ret' variable?
-I don't think it's worth the effort.
+why is this "DEV ERROR" ?  Note it is about 2 case statements, not one.
 
-Stefan
+>                   OHCI_SET_BM(td.flags, TD_CC, OHCI_CC_DEVICENOTRESPOND=
+ING);
+> +                break;
+>               case USB_RET_NAK:
+>                   DPRINTF("usb-ohci: got NAK\n");
+>                   return 1;
 
+While the actual interesting change (adding break) looks
+correct, and the whole thing is trivial indeed, this area
+has a maintainer, -- Cc'ing Gerd for this.  If he's okay
+I'll pick it up.
+
+Thanks,
+
+/mjt
 
