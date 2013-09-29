@@ -1,38 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VQNPg-00023f-LN
-	for mharc-qemu-trivial@gnu.org; Sun, 29 Sep 2013 16:16:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42215)
+	id 1VQNgg-0005MK-O3
+	for mharc-qemu-trivial@gnu.org; Sun, 29 Sep 2013 16:33:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44484)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VQNPY-0001qf-M1
-	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 16:16:18 -0400
+	(envelope-from <sw@weilnetz.de>) id 1VQNgZ-00058L-V9
+	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 16:33:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VQNPS-0002kZ-NG
-	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 16:16:12 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36676)
+	(envelope-from <sw@weilnetz.de>) id 1VQNgV-0007f0-88
+	for qemu-trivial@nongnu.org; Sun, 29 Sep 2013 16:33:47 -0400
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=33100
+	helo=v220110690675601.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1VQNPG-0002gn-8v; Sun, 29 Sep 2013 16:15:54 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 97C06429EB;
-	Mon, 30 Sep 2013 00:15:53 +0400 (MSK)
-Message-ID: <52488A79.8010803@msgid.tls.msk.ru>
-Date: Mon, 30 Sep 2013 00:15:53 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130922 Icedove/17.0.9
+	(envelope-from <sw@weilnetz.de>)
+	id 1VQNgL-0007eE-1I; Sun, 29 Sep 2013 16:33:33 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	295BE72809F1; Sun, 29 Sep 2013 22:33:31 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id orm1f1lMZX0b; Sun, 29 Sep 2013 22:33:29 +0200 (CEST)
+Received: from [192.168.178.35] (p54AD8DCF.dip0.t-ipconnect.de
+	[84.173.141.207])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	E049372809F0; Sun, 29 Sep 2013 22:33:28 +0200 (CEST)
+Message-ID: <52488E98.3060505@weilnetz.de>
+Date: Sun, 29 Sep 2013 22:33:28 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:24.0) Gecko/20100101 Thunderbird/24.0
 MIME-Version: 1.0
-To: =?UTF-8?B?SsOhbiBWZXNlbMO9?= <jano.vesely@gmail.com>
-References: <CA+K+NcStLJod1P3MhWqPJ=jhfMwMuV_cxuivi-QXduwnT2uwqg@mail.gmail.com>
-In-Reply-To: <CA+K+NcStLJod1P3MhWqPJ=jhfMwMuV_cxuivi-QXduwnT2uwqg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: QEMU <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] pci-ohci: Add missing 'break' in
-	ohci_service_td
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1380469272-19230-1-git-send-email-sw@weilnetz.de>
+	<52488A00.6000405@msgid.tls.msk.ru>
+In-Reply-To: <52488A00.6000405@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] migration: Fix compiler warning ('caps'
+ may be used uninitialized)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,43 +55,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 Sep 2013 20:16:19 -0000
+X-List-Received-Date: Sun, 29 Sep 2013 20:33:53 -0000
 
-22.09.2013 00:26, J=C3=A1n Vesel=C3=BD wrote:
-> Device communication errors need to be reported to driver.
-> Add a debug message while at it.
+Am 29.09.2013 22:13, schrieb Michael Tokarev:
+> 29.09.2013 19:41, Stefan Weil wrote:
+>> The QEMU buildbot default_i386_debian_6_0 shows this warning:
+>>
+>>    CC    migration.o
+>> migration.c: In function 'qmp_query_migrate_capabilities':
+>> migration.c:149: warning:
+>>   'caps' may be used uninitialized in this function
 >
-> Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
-> ---
->   hw/usb/hcd-ohci.c | 2 ++
->   1 file changed, 2 insertions(+)
+> Gah, how disgusting.  The code is correct, yet gcc complains
+> needlessly...
+
+That's not the first time where we help the compiler by modifying the code.
+
 >
-> diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-> index 35f0878..0396e33 100644
-> --- a/hw/usb/hcd-ohci.c
-> +++ b/hw/usb/hcd-ohci.c
-> @@ -1143,7 +1143,9 @@ static int ohci_service_td(OHCIState *ohci,
-> struct ohci_ed *ed)
->               switch (ret) {
->               case USB_RET_IOERROR:
->               case USB_RET_NODEV:
-> +                DPRINTF("usb-ohci: got DEV ERROR\n");
+>> While changing this code, I also replaced g_malloc0
+>> by the type safe g_new0.
+>>
+>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>> ---
+>>
+>> Buildbot URL:
+>> http://buildbot.b1-systems.de/qemu/builders/default_i386_debian_6_0/builds/775/steps/compile/logs/stdio
+>>
+>>
+>>   migration.c |   12 +++++-------
+>>   1 file changed, 5 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/migration.c b/migration.c
+>> index 200d404..8dcb6ce 100644
+>> --- a/migration.c
+>> +++ b/migration.c
+>> @@ -145,17 +145,15 @@ uint64_t migrate_max_downtime(void)
+>>
+>>   MigrationCapabilityStatusList *qmp_query_migrate_capabilities(Error
+>> **errp)
+>>   {
+>> -    MigrationCapabilityStatusList *head = NULL;
+>> -    MigrationCapabilityStatusList *caps;
+>> +    MigrationCapabilityStatusList *head =
+>> +        g_new0(MigrationCapabilityStatusList, 1);
+>> +    MigrationCapabilityStatusList *caps = head;
+>>       MigrationState *s = migrate_get_current();
+>>       int i;
+>>
+>>       for (i = 0; i < MIGRATION_CAPABILITY_MAX; i++) {
+>> -        if (head == NULL) {
+>> -            head = g_malloc0(sizeof(*caps));
+>> -            caps = head;
+>> -        } else {
+>> -            caps->next = g_malloc0(sizeof(*caps));
+>> +        if (i > 0) {
+>> +            caps->next = g_new0(MigrationCapabilityStatusList, i);
+>>               caps = caps->next;
+>>           }
+>
+> But this assumes that MIGRATION_CAPABILITY_MAX > 0 ! ;)
+> Ie, that there's at least one entry (head) in the list.
+> Do we care?
 
-why is this "DEV ERROR" ?  Note it is about 2 case statements, not one.
+I thought of MIGRATION_CAPABILITY_MAX == 0, too. In current QEMU it's
+defined in
 
->                   OHCI_SET_BM(td.flags, TD_CC, OHCI_CC_DEVICENOTRESPOND=
-ING);
-> +                break;
->               case USB_RET_NAK:
->                   DPRINTF("usb-ohci: got NAK\n");
->                   return 1;
+qapi-types.h:    MIGRATION_CAPABILITY_MAX = 4,
 
-While the actual interesting change (adding break) looks
-correct, and the whole thing is trivial indeed, this area
-has a maintainer, -- Cc'ing Gerd for this.  If he's okay
-I'll pick it up.
+If there will be no MigrationCapability at all in the future,
+we should care about removing the code, not handle the 0 case.
+But of course we could add an assertion (feel free to add one,
+or I send an update).
 
-Thanks,
+Should we fix the callers, too? Today, they assume that the function
+might return NULL (= no MigrationCapabilityexists).
 
-/mjt
+>
+> Previous code was more natural, so to say...
+>
+> I'd just initialize `caps' to the same NULL as `head'
+> initially...  Or maybe change for() into do..while()..
+> Dunno, somehow I don't like the new code much, either ;)
+>
+> Thanks,
+>
+> /mjt
+
 
