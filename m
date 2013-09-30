@@ -1,49 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VQZD9-0004WW-IB
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Sep 2013 04:52:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47285)
+	id 1VQZbD-0004re-AT
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Sep 2013 05:17:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54829)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1VQZD2-0004Nx-Mo
-	for qemu-trivial@nongnu.org; Mon, 30 Sep 2013 04:52:09 -0400
+	(envelope-from <stefanha@redhat.com>) id 1VQZb4-0004cn-W6
+	for qemu-trivial@nongnu.org; Mon, 30 Sep 2013 05:17:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1VQZCx-0005Qp-Mo
-	for qemu-trivial@nongnu.org; Mon, 30 Sep 2013 04:52:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58157)
+	(envelope-from <stefanha@redhat.com>) id 1VQZay-0005GH-UD
+	for qemu-trivial@nongnu.org; Mon, 30 Sep 2013 05:16:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:9876)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1VQZCe-0005OW-Np; Mon, 30 Sep 2013 04:51:40 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8U8pdAC023854
+	(envelope-from <stefanha@redhat.com>)
+	id 1VQZam-0005CP-IE; Mon, 30 Sep 2013 05:16:36 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8U9GZbo001677
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 30 Sep 2013 04:51:39 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-35.ams2.redhat.com
-	[10.36.116.35])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r8U8pa4R022306
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 30 Sep 2013 04:51:37 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 84789200BF; Mon, 30 Sep 2013 10:51:35 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1380008620-13796-1-git-send-email-armbru@redhat.com>
-	<1380008620-13796-2-git-send-email-armbru@redhat.com>
-	<524880C3.6000801@msgid.tls.msk.ru>
-Date: Mon, 30 Sep 2013 10:51:35 +0200
-In-Reply-To: <524880C3.6000801@msgid.tls.msk.ru> (Michael Tokarev's message of
-	"Sun, 29 Sep 2013 23:34:27 +0400")
-Message-ID: <87y56eitew.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
+	Mon, 30 Sep 2013 05:16:35 -0400
+Received: from localhost (ovpn-112-44.ams2.redhat.com [10.36.112.44])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r8U9GYGM004001; Mon, 30 Sep 2013 05:16:35 -0400
+Date: Mon, 30 Sep 2013 11:16:33 +0200
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20130930091633.GG16558@stefanha-thinkpad.redhat.com>
+References: <1380362114-29476-1-git-send-email-sw@weilnetz.de>
+	<52488325.5090702@msgid.tls.msk.ru> <52488A4E.5010902@weilnetz.de>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <52488A4E.5010902@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org, qemu-devel@nongnu.org,
-	anthony@codemonkey.ws, lersek@redhat.com, afaerber@suse.de
-Subject: Re: [Qemu-trivial] [PATCH v3 1/2] tests: Fix schema parser test for
-	in-tree build
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] block: Remove unused assignment (fixes
+ warning from clang)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,37 +49,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Sep 2013 08:52:09 -0000
+X-List-Received-Date: Mon, 30 Sep 2013 09:17:01 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+On Sun, Sep 29, 2013 at 10:15:10PM +0200, Stefan Weil wrote:
+> Am 29.09.2013 21:44, schrieb Michael Tokarev:
+> > 28.09.2013 13:55, Stefan Weil wrote:
+> [...]
+> >> diff --git a/blockdev.c b/blockdev.c
+> >> index 8aa66a9..8c83f6f 100644
+> >> --- a/blockdev.c
+> >> +++ b/blockdev.c
+> >> @@ -1926,7 +1926,6 @@ void qmp_drive_mirror(const char *device, const
+> >> char *target,
+> >>       } else {
+> >>           switch (mode) {
+> >>           case NEW_IMAGE_MODE_EXISTING:
+> >> -            ret = 0;
+> >>               break;
+> >
+> > While this one is obviously unused assignment,
+> > there's on more usage of `ret' variable in this
+> > function, -- it is to store the return value
+> > from bdrv_open():
+> >
+> >     ret = bdrv_open(target_bs, target, NULL, flags |
+> > BDRV_O_NO_BACKING, drv,
+> >                     &local_err);
+> >     if (ret < 0) {...
+> >
+> > What's the rule about converting that into if() ?
+> >
+> > Thanks,
+> >
+> > /mjt
+> 
+> Is there a rule for cases like that? This pattern is very common in QEMU
+> code
+> (several occurrences in blockdev.c). Should we eliminate the 'ret' variable?
+> I don't think it's worth the effort.
 
-> 24.09.2013 11:43, armbru@redhat.com wrote:
->> From: Markus Armbruster <armbru@redhat.com>
->>
->> Commit 4f193e3 added the test, but screwed up in-tree builds
->> (SRCDIR=.): the tests's output overwrites the expected output, and is
->> thus compared to itself.
->
-> []
->>   .PHONY: $(patsubst %, check-%, $(check-qapi-schema-y))
->>   $(patsubst %, check-%, $(check-qapi-schema-y)): check-%.json:
->> $(SRC_PATH)/%.json
->> - $(call quiet-command, PYTHONPATH=$(SRC_PATH)/scripts $(PYTHON)
->> $(SRC_PATH)/tests/qapi-schema/test-qapi.py <$^ >$*.out 2>$*.err;
->> echo $$? >$*.exit, " TEST $*.out")
->> -	@diff -q $(SRC_PATH)/$*.out $*.out
->> -	@diff -q $(SRC_PATH)/$*.err $*.err
->> -	@diff -q $(SRC_PATH)/$*.exit $*.exit
->> + $(call quiet-command, PYTHONPATH=$(SRC_PATH)/scripts $(PYTHON)
->> $(SRC_PATH)/tests/qapi-schema/test-qapi.py <$^ >$*.test.out
->> 2>$*.test.err; echo $$? >$*.test.exit, " TEST $*.out")
->> +	@diff -q $(SRC_PATH)/$*.out $*.test.out
->> +	@diff -q $(SRC_PATH)/$*.err $*.test.err
->> +	@diff -q $(SRC_PATH)/$*.exit $*.test.exit
->
-> Hmm.  Maybe these new files should be cleaned up somehow by
-> `make clean' ?
+Me neither.  There is a minor style difference between putting
+everything into the if statement and using a variable to split up a
+potentially complicated if statement.
 
-Guess so.  However, "make clean" doesn't clean *anything* in tests/
-right now.  Separate fix?
+Both approaches are usually okay.
+
+Stefan
 
