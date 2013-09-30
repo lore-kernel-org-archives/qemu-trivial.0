@@ -1,40 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VQYNh-0003p6-Vl
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Sep 2013 03:59:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39847)
+	id 1VQZD9-0004WW-IB
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Sep 2013 04:52:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47285)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VQYNa-0003fe-Bm
-	for qemu-trivial@nongnu.org; Mon, 30 Sep 2013 03:59:00 -0400
+	(envelope-from <armbru@redhat.com>) id 1VQZD2-0004Nx-Mo
+	for qemu-trivial@nongnu.org; Mon, 30 Sep 2013 04:52:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VQYNU-0006nq-Cv
-	for qemu-trivial@nongnu.org; Mon, 30 Sep 2013 03:58:54 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58822)
+	(envelope-from <armbru@redhat.com>) id 1VQZCx-0005Qp-Mo
+	for qemu-trivial@nongnu.org; Mon, 30 Sep 2013 04:52:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58157)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1VQYNH-0006lV-Hl; Mon, 30 Sep 2013 03:58:35 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id EDD5042A39;
-	Mon, 30 Sep 2013 11:58:33 +0400 (MSK)
-Message-ID: <52492F29.2010305@msgid.tls.msk.ru>
-Date: Mon, 30 Sep 2013 11:58:33 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130922 Icedove/17.0.9
+	(envelope-from <armbru@redhat.com>)
+	id 1VQZCe-0005OW-Np; Mon, 30 Sep 2013 04:51:40 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r8U8pdAC023854
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 30 Sep 2013 04:51:39 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-35.ams2.redhat.com
+	[10.36.116.35])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r8U8pa4R022306
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Mon, 30 Sep 2013 04:51:37 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 84789200BF; Mon, 30 Sep 2013 10:51:35 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1380008620-13796-1-git-send-email-armbru@redhat.com>
+	<1380008620-13796-2-git-send-email-armbru@redhat.com>
+	<524880C3.6000801@msgid.tls.msk.ru>
+Date: Mon, 30 Sep 2013 10:51:35 +0200
+In-Reply-To: <524880C3.6000801@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Sun, 29 Sep 2013 23:34:27 +0400")
+Message-ID: <87y56eitew.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
 MIME-Version: 1.0
-To: Gerd Hoffmann <kraxel@redhat.com>
-References: <CA+K+NcStLJod1P3MhWqPJ=jhfMwMuV_cxuivi-QXduwnT2uwqg@mail.gmail.com>
-	<52488A79.8010803@msgid.tls.msk.ru>
-	<1380522773.3922.15.camel@nilsson.home.kraxel.org>
-In-Reply-To: <1380522773.3922.15.camel@nilsson.home.kraxel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: =?UTF-8?B?SsOhbiBWZXNlbMO9?= <jano.vesely@gmail.com>,
-	QEMU <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] pci-ohci: Add missing 'break' in
-	ohci_service_td
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org, qemu-devel@nongnu.org,
+	anthony@codemonkey.ws, lersek@redhat.com, afaerber@suse.de
+Subject: Re: [Qemu-trivial] [PATCH v3 1/2] tests: Fix schema parser test for
+	in-tree build
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,23 +55,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Sep 2013 07:59:00 -0000
+X-List-Received-Date: Mon, 30 Sep 2013 08:52:09 -0000
 
-30.09.2013 10:32, Gerd Hoffmann wrote:
->    Hi,
+Michael Tokarev <mjt@tls.msk.ru> writes:
+
+> 24.09.2013 11:43, armbru@redhat.com wrote:
+>> From: Markus Armbruster <armbru@redhat.com>
+>>
+>> Commit 4f193e3 added the test, but screwed up in-tree builds
+>> (SRCDIR=.): the tests's output overwrites the expected output, and is
+>> thus compared to itself.
 >
->> While the actual interesting change (adding break) looks
->> correct, and the whole thing is trivial indeed, this area
->> has a maintainer, -- Cc'ing Gerd for this.  If he's okay
->> I'll pick it up.
+> []
+>>   .PHONY: $(patsubst %, check-%, $(check-qapi-schema-y))
+>>   $(patsubst %, check-%, $(check-qapi-schema-y)): check-%.json:
+>> $(SRC_PATH)/%.json
+>> - $(call quiet-command, PYTHONPATH=$(SRC_PATH)/scripts $(PYTHON)
+>> $(SRC_PATH)/tests/qapi-schema/test-qapi.py <$^ >$*.out 2>$*.err;
+>> echo $$? >$*.exit, " TEST $*.out")
+>> -	@diff -q $(SRC_PATH)/$*.out $*.out
+>> -	@diff -q $(SRC_PATH)/$*.err $*.err
+>> -	@diff -q $(SRC_PATH)/$*.exit $*.exit
+>> + $(call quiet-command, PYTHONPATH=$(SRC_PATH)/scripts $(PYTHON)
+>> $(SRC_PATH)/tests/qapi-schema/test-qapi.py <$^ >$*.test.out
+>> 2>$*.test.err; echo $$? >$*.test.exit, " TEST $*.out")
+>> +	@diff -q $(SRC_PATH)/$*.out $*.test.out
+>> +	@diff -q $(SRC_PATH)/$*.err $*.test.err
+>> +	@diff -q $(SRC_PATH)/$*.exit $*.test.exit
 >
-> Patch is fine.
+> Hmm.  Maybe these new files should be cleaned up somehow by
+> `make clean' ?
 
-No, I didn't ask whenever the patch is fine, I wanted to
-ensure you wont blame me for accepting a trivial patch
-for an area which has an active maintainer... ;)
-
-Thanks, queued up for trivial-patches!
-
-/mjt
+Guess so.  However, "make clean" doesn't clean *anything* in tests/
+right now.  Separate fix?
 
