@@ -1,37 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VQy8N-0007F2-GL
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Oct 2013 07:28:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53011)
+	id 1VQyII-0002Rs-IO
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Oct 2013 07:39:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1VQy8G-00073o-Da
-	for qemu-trivial@nongnu.org; Tue, 01 Oct 2013 07:28:54 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1VQyIC-0002LT-US
+	for qemu-trivial@nongnu.org; Tue, 01 Oct 2013 07:39:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1VQy8A-0006qM-By
-	for qemu-trivial@nongnu.org; Tue, 01 Oct 2013 07:28:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59026)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1VQyI8-0004WW-9j
+	for qemu-trivial@nongnu.org; Tue, 01 Oct 2013 07:39:04 -0400
+Received: from mail-qe0-x231.google.com ([2607:f8b0:400d:c02::231]:60609)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>)
-	id 1VQy7y-0006m7-3W; Tue, 01 Oct 2013 07:28:30 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r91BSQJN019340
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 1 Oct 2013 07:28:26 -0400
-Received: from localhost.localdomain.com (dhcp-1-155.lcy.redhat.com
-	[10.32.224.155])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r91BSOI2006754; Tue, 1 Oct 2013 07:28:25 -0400
-From: "Daniel P. Berrange" <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  1 Oct 2013 12:28:17 +0100
-Message-Id: <1380626897-500-1-git-send-email-berrange@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>,
-	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>,
-	Anthony Liguori <anthony@codemonkey.ws>
-Subject: [Qemu-trivial] [PATCH] hw/9pfs: Fix errno value for xattr functions
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1VQyHy-0004VH-PH; Tue, 01 Oct 2013 07:38:50 -0400
+Received: by mail-qe0-f49.google.com with SMTP id s14so4758135qeb.8
+	for <multiple recipients>; Tue, 01 Oct 2013 04:38:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=UvrsdDsavgarTg7peRQoTWqVTxavosyQfHD6ukKJTgQ=;
+	b=gXiQUOHIXXTUDUIQSmQied2997xXYO0NTMht6R5/cymWO/pkW6XCxLVdvFL1CZbF3X
+	RpzZnrBswJZHkY96G12m/z4/1q3KvsdY3QAgpGxK4P5/gjAPilkCi5Sc+MGGM1g9PGn0
+	xY54jDsu9Gq3czGU0Pi0b6RZr98O7SDYDSHmaRX2fZ8wKVu+Hk9oETMVXR1+4Onnlgd5
+	Sl/PekAYpNVZEs+jZtEHCm/CxgAootb9p4MliDAVnKRiZR4HWTlqghiMKCWH8boa82iU
+	JPZqQFjuIZpBYL5n4D+zaHmoZ5BCzHvzdF5er0wiC1XV/2RYFaFu8mXy34fgfcDJoFLt
+	cimA==
+X-Received: by 10.224.137.68 with SMTP id v4mr39387548qat.31.1380627529561;
+	Tue, 01 Oct 2013 04:38:49 -0700 (PDT)
+Received: from yakj.usersys.redhat.com (net-2-39-10-130.cust.dsl.vodafone.it.
+	[2.39.10.130])
+	by mx.google.com with ESMTPSA id r5sm11774803qaj.13.1969.12.31.16.00.00
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Tue, 01 Oct 2013 04:38:48 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <524AB45A.6050805@redhat.com>
+Date: Tue, 01 Oct 2013 13:39:06 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130923 Thunderbird/17.0.9
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>
+References: <1380469272-19230-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1380469272-19230-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c02::231
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] migration: Fix compiler warning ('caps'
+	may be used uninitialized)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,74 +61,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Oct 2013 11:28:54 -0000
+X-List-Received-Date: Tue, 01 Oct 2013 11:39:09 -0000
 
-From: "Daniel P. Berrange" <berrange@redhat.com>
+Il 29/09/2013 17:41, Stefan Weil ha scritto:
+> The QEMU buildbot default_i386_debian_6_0 shows this warning:
+> 
+>   CC    migration.o
+> migration.c: In function 'qmp_query_migrate_capabilities':
+> migration.c:149: warning:
+>  'caps' may be used uninitialized in this function
+> 
+> While changing this code, I also replaced g_malloc0
+> by the type safe g_new0.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+> 
+> Buildbot URL:
+> http://buildbot.b1-systems.de/qemu/builders/default_i386_debian_6_0/builds/775/steps/compile/logs/stdio
+> 
+>  migration.c |   12 +++++-------
+>  1 file changed, 5 insertions(+), 7 deletions(-)
+> 
+> diff --git a/migration.c b/migration.c
+> index 200d404..8dcb6ce 100644
+> --- a/migration.c
+> +++ b/migration.c
+> @@ -145,17 +145,15 @@ uint64_t migrate_max_downtime(void)
+>  
+>  MigrationCapabilityStatusList *qmp_query_migrate_capabilities(Error **errp)
+>  {
+> -    MigrationCapabilityStatusList *head = NULL;
+> -    MigrationCapabilityStatusList *caps;
+> +    MigrationCapabilityStatusList *head =
+> +        g_new0(MigrationCapabilityStatusList, 1);
+> +    MigrationCapabilityStatusList *caps = head;
+>      MigrationState *s = migrate_get_current();
+>      int i;
+>  
+>      for (i = 0; i < MIGRATION_CAPABILITY_MAX; i++) {
+> -        if (head == NULL) {
+> -            head = g_malloc0(sizeof(*caps));
+> -            caps = head;
+> -        } else {
+> -            caps->next = g_malloc0(sizeof(*caps));
+> +        if (i > 0) {
+> +            caps->next = g_new0(MigrationCapabilityStatusList, i);
+>              caps = caps->next;
+>          }
+>          caps->value =
+> 
 
-If there is no operation driver for the xattr type the
-functions return '-1' and set errno to '-EOPNOTSUPP'.
-When the calling code sets 'ret = -errno' this turns
-into a large positive number.
+What about
 
-In Linux 3.11, the kernel has switched to using 9p
-version 9p2000.L, instead of 9p2000.u, which enables
-support for xattr operations. This on its own is harmless,
-but for another change which makes it request the xattr
-with a name 'security.capability'.
+    MigrationCapabilityStatusList *head = NULL;
+    MigrationCapabilityStatusList **p_tail = &head;
+    MigrationState *s = migrate_get_current();
+    int i;
 
-The result is that the guest sees a succesful return
-of 95 bytes of data, instead of a failure with errno
-set to 95. Since the kernel expects a maximum of 20
-bytes for an xattr return this gets translated to the
-unexpected errno ERANGE.
-
-This all means that when running a binary off a 9p fs
-in 3.11 kernels you get a fun result of:
-
-  # ./date
-  sh: ./date: Numerical result out of range
-
-The only workaround is to pass 'version=9p2000.u' when
-mounting the 9p fs in the guest, to disable all use of
-xattrs.
-
-Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
----
- hw/9pfs/virtio-9p-xattr.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/hw/9pfs/virtio-9p-xattr.c b/hw/9pfs/virtio-9p-xattr.c
-index 90ae565..3fae557 100644
---- a/hw/9pfs/virtio-9p-xattr.c
-+++ b/hw/9pfs/virtio-9p-xattr.c
-@@ -36,7 +36,7 @@ ssize_t v9fs_get_xattr(FsContext *ctx, const char *path,
-     if (xops) {
-         return xops->getxattr(ctx, path, name, value, size);
-     }
--    errno = -EOPNOTSUPP;
-+    errno = EOPNOTSUPP;
-     return -1;
- }
- 
-@@ -123,7 +123,7 @@ int v9fs_set_xattr(FsContext *ctx, const char *path, const char *name,
-     if (xops) {
-         return xops->setxattr(ctx, path, name, value, size, flags);
-     }
--    errno = -EOPNOTSUPP;
-+    errno = EOPNOTSUPP;
-     return -1;
- 
- }
-@@ -135,7 +135,7 @@ int v9fs_remove_xattr(FsContext *ctx,
-     if (xops) {
-         return xops->removexattr(ctx, path, name);
-     }
--    errno = -EOPNOTSUPP;
-+    errno = EOPNOTSUPP;
-     return -1;
- 
- }
--- 
-1.8.3.1
-
+    for (i = 0; i < MIGRATION_CAPABILITY_MAX; i++) {
+        MigrationCapabilityStatusList *caps = g_malloc0(sizeof(*caps));
+        caps->value =
+            ...
+        *p_next = caps;
+        p_next = &caps->next;
+    }
 
