@@ -1,49 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VQv02-0001FQ-Vw
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Oct 2013 04:08:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39203)
+	id 1VQy8N-0007F2-GL
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Oct 2013 07:28:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53011)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1VQuzv-00016d-Ox
-	for qemu-trivial@nongnu.org; Tue, 01 Oct 2013 04:08:04 -0400
+	(envelope-from <berrange@redhat.com>) id 1VQy8G-00073o-Da
+	for qemu-trivial@nongnu.org; Tue, 01 Oct 2013 07:28:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1VQuzq-0004aZ-SE
-	for qemu-trivial@nongnu.org; Tue, 01 Oct 2013 04:07:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58016)
+	(envelope-from <berrange@redhat.com>) id 1VQy8A-0006qM-By
+	for qemu-trivial@nongnu.org; Tue, 01 Oct 2013 07:28:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59026)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1VQuzg-0004Xa-Os; Tue, 01 Oct 2013 04:07:44 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9187hic014628
+	(envelope-from <berrange@redhat.com>)
+	id 1VQy7y-0006m7-3W; Tue, 01 Oct 2013 07:28:30 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r91BSQJN019340
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 1 Oct 2013 04:07:43 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-37.ams2.redhat.com
-	[10.36.116.37])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r9187e0G015691
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 1 Oct 2013 04:07:41 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id A4AB9200BF; Tue,  1 Oct 2013 10:07:39 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-References: <1380469272-19230-1-git-send-email-sw@weilnetz.de>
-	<52488A00.6000405@msgid.tls.msk.ru> <52488E98.3060505@weilnetz.de>
-	<871u46iq96.fsf@blackfin.pond.sub.org> <5249E4CD.1050605@weilnetz.de>
-Date: Tue, 01 Oct 2013 10:07:39 +0200
-In-Reply-To: <5249E4CD.1050605@weilnetz.de> (Stefan Weil's message of "Mon, 30
-	Sep 2013 22:53:33 +0200")
-Message-ID: <878uydh0s4.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+	Tue, 1 Oct 2013 07:28:26 -0400
+Received: from localhost.localdomain.com (dhcp-1-155.lcy.redhat.com
+	[10.32.224.155])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r91BSOI2006754; Tue, 1 Oct 2013 07:28:25 -0400
+From: "Daniel P. Berrange" <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  1 Oct 2013 12:28:17 +0100
+Message-Id: <1380626897-500-1-git-send-email-berrange@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] migration: Fix compiler
-	warning ('caps' may be used uninitialized)
+Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>,
+	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>,
+	Anthony Liguori <anthony@codemonkey.ws>
+Subject: [Qemu-trivial] [PATCH] hw/9pfs: Fix errno value for xattr functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,40 +43,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Oct 2013 08:08:05 -0000
+X-List-Received-Date: Tue, 01 Oct 2013 11:28:54 -0000
 
-Stefan Weil <sw@weilnetz.de> writes:
+From: "Daniel P. Berrange" <berrange@redhat.com>
 
-> Am 30.09.2013 11:59, schrieb Markus Armbruster:
->> Stefan Weil <sw@weilnetz.de> writes:
->>> Am 29.09.2013 22:13, schrieb Michael Tokarev:
->>>> 29.09.2013 19:41, Stefan Weil wrote:
->>>>> The QEMU buildbot default_i386_debian_6_0 shows this warning:
->>>>>
->>>>>    CC    migration.o
->>>>> migration.c: In function 'qmp_query_migrate_capabilities':
->>>>> migration.c:149: warning:
->>>>>   'caps' may be used uninitialized in this function
->>>> Gah, how disgusting.  The code is correct, yet gcc complains
->>>> needlessly...
->>> That's not the first time where we help the compiler by modifying the code.
->> It's also not the first time where attempting to "help" the compiler
->> made code less readable, or even less correct.  So let's be just as
->> careful as with "real" changes.
->
-> Well, I try to do my best. ;-)
->
-> Is there anything wrong with my patch? I think the code looks cleaner
-> than before.
+If there is no operation driver for the xattr type the
+functions return '-1' and set errno to '-EOPNOTSUPP'.
+When the calling code sets 'ret = -errno' this turns
+into a large positive number.
 
-Michael disagrees, and I can see his points.
+In Linux 3.11, the kernel has switched to using 9p
+version 9p2000.L, instead of 9p2000.u, which enables
+support for xattr operations. This on its own is harmless,
+but for another change which makes it request the xattr
+with a name 'security.capability'.
 
-> If there is a better way to fix the problem that's fine, too.
->
-> The problem withthe buildbot showing a compiler warning exists and we
-> should fix it somehow.
+The result is that the guest sees a succesful return
+of 95 bytes of data, instead of a failure with errno
+set to 95. Since the kernel expects a maximum of 20
+bytes for an xattr return this gets translated to the
+unexpected errno ERANGE.
 
-The warning is bogus, and current compilers don't seem to emit it.  If
-you can remove the warning by improving the code (or at least not making
-it worse), then go right ahead anyway.
+This all means that when running a binary off a 9p fs
+in 3.11 kernels you get a fun result of:
+
+  # ./date
+  sh: ./date: Numerical result out of range
+
+The only workaround is to pass 'version=9p2000.u' when
+mounting the 9p fs in the guest, to disable all use of
+xattrs.
+
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+---
+ hw/9pfs/virtio-9p-xattr.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hw/9pfs/virtio-9p-xattr.c b/hw/9pfs/virtio-9p-xattr.c
+index 90ae565..3fae557 100644
+--- a/hw/9pfs/virtio-9p-xattr.c
++++ b/hw/9pfs/virtio-9p-xattr.c
+@@ -36,7 +36,7 @@ ssize_t v9fs_get_xattr(FsContext *ctx, const char *path,
+     if (xops) {
+         return xops->getxattr(ctx, path, name, value, size);
+     }
+-    errno = -EOPNOTSUPP;
++    errno = EOPNOTSUPP;
+     return -1;
+ }
+ 
+@@ -123,7 +123,7 @@ int v9fs_set_xattr(FsContext *ctx, const char *path, const char *name,
+     if (xops) {
+         return xops->setxattr(ctx, path, name, value, size, flags);
+     }
+-    errno = -EOPNOTSUPP;
++    errno = EOPNOTSUPP;
+     return -1;
+ 
+ }
+@@ -135,7 +135,7 @@ int v9fs_remove_xattr(FsContext *ctx,
+     if (xops) {
+         return xops->removexattr(ctx, path, name);
+     }
+-    errno = -EOPNOTSUPP;
++    errno = EOPNOTSUPP;
+     return -1;
+ 
+ }
+-- 
+1.8.3.1
+
 
