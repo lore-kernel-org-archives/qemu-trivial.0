@@ -1,43 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VSO1c-0003dF-Di
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Oct 2013 05:19:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58735)
+	id 1VSOE9-0005Kz-5O
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Oct 2013 05:32:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60469)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VSO1V-0003Um-VO
-	for qemu-trivial@nongnu.org; Sat, 05 Oct 2013 05:19:46 -0400
+	(envelope-from <sw@weilnetz.de>) id 1VSODz-00059C-9T
+	for qemu-trivial@nongnu.org; Sat, 05 Oct 2013 05:32:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VSO1R-0004SX-2u
-	for qemu-trivial@nongnu.org; Sat, 05 Oct 2013 05:19:41 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57478)
+	(envelope-from <sw@weilnetz.de>) id 1VSODq-0008RP-QK
+	for qemu-trivial@nongnu.org; Sat, 05 Oct 2013 05:32:35 -0400
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=36624
+	helo=v220110690675601.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1VSO1G-0004Qa-UG; Sat, 05 Oct 2013 05:19:27 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4BC8840AC6;
-	Sat,  5 Oct 2013 13:19:26 +0400 (MSK)
-Message-ID: <524FD99E.8020205@msgid.tls.msk.ru>
-Date: Sat, 05 Oct 2013 13:19:26 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130922 Icedove/17.0.9
+	(envelope-from <sw@weilnetz.de>)
+	id 1VSODW-0008N2-9c; Sat, 05 Oct 2013 05:32:06 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	2533272819E0; Sat,  5 Oct 2013 11:32:04 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id TACU6kBLAV8l; Sat,  5 Oct 2013 11:31:49 +0200 (CEST)
+Received: from [192.168.178.35] (p54ADB5CB.dip0.t-ipconnect.de
+	[84.173.181.203])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	CD5C272809F0; Sat,  5 Oct 2013 11:31:48 +0200 (CEST)
+Message-ID: <524FDC81.2090008@weilnetz.de>
+Date: Sat, 05 Oct 2013 11:31:45 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:24.0) Gecko/20100101 Thunderbird/24.0
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <1380469272-19230-1-git-send-email-sw@weilnetz.de>	<52488A00.6000405@msgid.tls.msk.ru>
-	<52488E98.3060505@weilnetz.de>
-	<871u46iq96.fsf@blackfin.pond.sub.org>
-	<5249E4CD.1050605@weilnetz.de> <524C6DD0.9070605@msgid.tls.msk.ru>
-	<524C80ED.3020507@weilnetz.de> <524D2745.8060906@redhat.com>
-	<524FD8B2.9090201@msgid.tls.msk.ru>
-In-Reply-To: <524FD8B2.9090201@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	Markus Armbruster <armbru@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] migration: Fix compiler
- warning ('caps' may be used uninitialized)
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1380746429-634-1-git-send-email-sw@weilnetz.de>
+	<524FD777.40303@msgid.tls.msk.ru>
+In-Reply-To: <524FD777.40303@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] util/path: Fix type which is longer than
+ 8 bit for MinGW
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,45 +55,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Oct 2013 09:19:46 -0000
+X-List-Received-Date: Sat, 05 Oct 2013 09:32:44 -0000
 
-05.10.2013 13:15, Michael Tokarev =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
-> Okay.  This takes just too long and too many people
-> are affected.  I'll just set the variable in question
-> (caps) to NULL at entry for now, -- it is not a critical
-> path and the current code is correct anyway.  This is
-> becoming ridiculous, when there are so many different
-> opinions about such a trivial thing, with the result
-> being that nothing is fixed.  Setting it to NULL at
-> least will let a buildbot to be fixed for now.
-
-Forgot the patch itself.  It is the shortest from all
-already proposed ;)
-
-Author: Michael Tokarev <mjt@tls.msk.ru>
-Date:   Sat Oct 5 13:18:28 2013 +0400
-
-     migration: Fix compiler warning ('caps' may be used uninitialized)
-
-     Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-
-diff --git a/migration.c b/migration.c
-index b4f8462..2b1ab20 100644
---- a/migration.c
-+++ b/migration.c
-@@ -150,6 +150,7 @@ MigrationCapabilityStatusList *qmp_query_migrate_capa=
-bilitie
-      MigrationState *s =3D migrate_get_current();
-      int i;
-
-+    caps =3D NULL; /* silence compiler warning */
-      for (i =3D 0; i < MIGRATION_CAPABILITY_MAX; i++) {
-          if (head =3D=3D NULL) {
-              head =3D g_malloc0(sizeof(*caps));
+Am 05.10.2013 11:10, schrieb Michael Tokarev:
+> 03.10.2013 00:40, Stefan Weil wrote:
+>> While dirent->d_type is 8 bit for most systems, it is 32 bit for MinGW.
+>> Reducing it to 8 bit results in a compiler warning because the macro
+>> is_dir_maybe compares that 8 bit value with 32 bit constants.
+>>
+>> Using 'unsigned' instead of 'unsigned char' matches the declaration for
+>> MinGW and does not harm the other systems.
+>>
+>> MinGW-w32 is not affected: it does not declare d_type.
+>
+> That's a good one.
+>
+> What's the diff between mingw-w32 and mingw?
+>
+> At any rate, there's - I think - no need to declare it as 'char',
+> int or unsigned should be just fine.
+>
+> Thanks, applied to the trivial patches queue.
+>
+> /mjt
 
 
-Thanks,
+It should be MinGW-w64, not MinGW-w32, because that is the
+official project name. Perhaps you can correct that in the commit comment.
+But even the MinGW-w64 developers use mingw-w32 when they speak of
+MinGW-w64 for 32 bit Windows, so MinGW-w32 is not completely wrong:
+http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Automated%20Builds/
 
-/mjt
+MinGW-w64 is a fork of the original MinGW. The main difference is
+that MinGW-w64 supports 32 bit and 64 bit compilers, while MinGW
+only supports 32 bit. IMHO MinGW-w64 is better maintained.
+
+For QEMU, I prefer MinGW-w64 because it allows builds without
+compiler warnings, so I can use -Werror.
+
+MinGW-w64's dirent.h does not declare d_type and the related macros
+DT_DIR, DT_LINK and DT_UNKNOWN. These macros are checked in
+the conditional compilation in util/path.c.
+
+Stefan
 
 
