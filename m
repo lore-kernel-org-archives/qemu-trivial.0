@@ -1,38 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VSkxv-0006uW-Kv
+	id 1VSkxv-0006v4-Pp
 	for mharc-qemu-trivial@gnu.org; Sun, 06 Oct 2013 05:49:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49733)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49728)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VSkxp-0006gZ-Cw
+	(envelope-from <mjt@tls.msk.ru>) id 1VSkxp-0006fi-39
 	for qemu-trivial@nongnu.org; Sun, 06 Oct 2013 05:49:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VSkxk-0006TE-PF
+	(envelope-from <mjt@tls.msk.ru>) id 1VSkxk-0006T2-6r
 	for qemu-trivial@nongnu.org; Sun, 06 Oct 2013 05:49:25 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59182)
+Received: from isrv.corpit.ru ([86.62.121.231]:47356)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VSkxa-0006PU-6U; Sun, 06 Oct 2013 05:49:10 -0400
+	id 1VSkxa-0006PT-6Q; Sun, 06 Oct 2013 05:49:10 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 59DFE40D04;
+	by isrv.corpit.ru (Postfix) with ESMTP id 3EA5A40D01;
 	Sun,  6 Oct 2013 13:49:09 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 15AED50F;
+	by tsrv.corpit.ru (Postfix) with SMTP id C946251E;
 	Sun,  6 Oct 2013 13:33:03 +0400 (MSK)
-Received: (nullmailer pid 25813 invoked by uid 1000);
+Received: (nullmailer pid 25818 invoked by uid 1000);
 	Sun, 06 Oct 2013 09:33:02 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@us.ibm.com
-Date: Sun,  6 Oct 2013 13:32:52 +0400
-Message-Id: <1381051979-25742-8-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Sun,  6 Oct 2013 13:32:54 +0400
+Message-Id: <1381051979-25742-10-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1381051979-25742-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1381051979-25742-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 07/14] hw/alpha: Fix compiler warning (integer
-	constant is too large)
+Cc: =?UTF-8?q?J=C3=A1n=20Vesel=C3=BD?= <jano.vesely@gmail.com>,
+	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 09/14] pci-ohci: Add missing 'break' in
+	ohci_service_td
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,38 +48,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Oct 2013 09:49:29 -0000
+X-List-Received-Date: Sun, 06 Oct 2013 09:49:30 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: J=C3=A1n Vesel=C3=BD <jano.vesely@gmail.com>
 
-From buildbot default_i386_rhel61:
+Device communication errors need to be reported to driver.
+Add a debug message while at it.
 
-  CC    alpha-softmmu/hw/alpha/typhoon.o
-hw/alpha/typhoon.c: In function 'typhoon_translate_iommu':
-hw/alpha/typhoon.c:703: warning: integer constant is too large for 'long' type
-hw/alpha/typhoon.c:703: warning: integer constant is too large for 'long' type
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Acked-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
+Acked-by: Gerd Hoffmann <kraxel@gmail.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/alpha/typhoon.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/usb/hcd-ohci.c |    2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
-index aac9a32..59e1bb8 100644
---- a/hw/alpha/typhoon.c
-+++ b/hw/alpha/typhoon.c
-@@ -700,7 +700,7 @@ static IOMMUTLBEntry typhoon_translate_iommu(MemoryRegion *iommu, hwaddr addr)
-             }
-         }
- 
--        if (addr >= 0x80000000000 && addr <= 0xfffffffffff) {
-+        if (addr >= 0x80000000000ull && addr <= 0xfffffffffffull) {
-             /* Check the fourth window for DAC enable and window enable.  */
-             if ((pchip->win[3].wba & 0x80000000001ull) == 0x80000000001ull) {
-                 uint64_t pte_addr;
--- 
+diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+index 35f0878..0396e33 100644
+--- a/hw/usb/hcd-ohci.c
++++ b/hw/usb/hcd-ohci.c
+@@ -1143,7 +1143,9 @@ static int ohci_service_td(OHCIState *ohci, struct =
+ohci_ed *ed)
+             switch (ret) {
+             case USB_RET_IOERROR:
+             case USB_RET_NODEV:
++                DPRINTF("usb-ohci: got DEV ERROR\n");
+                 OHCI_SET_BM(td.flags, TD_CC, OHCI_CC_DEVICENOTRESPONDING=
+);
++                break;
+             case USB_RET_NAK:
+                 DPRINTF("usb-ohci: got NAK\n");
+                 return 1;
+--=20
 1.7.10.4
 
 
