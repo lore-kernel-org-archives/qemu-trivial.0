@@ -1,42 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VSky0-00075S-IO
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Oct 2013 05:49:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49775)
+	id 1VULjh-0005Cd-DL
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Oct 2013 15:17:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36084)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VSkxv-0006uG-Gt
-	for qemu-trivial@nongnu.org; Sun, 06 Oct 2013 05:49:35 -0400
+	(envelope-from <sw@weilnetz.de>) id 1VULeR-0002xe-F7
+	for qemu-trivial@nongnu.org; Thu, 10 Oct 2013 15:12:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VSkxr-0006Ux-IU
-	for qemu-trivial@nongnu.org; Sun, 06 Oct 2013 05:49:31 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59902)
+	(envelope-from <sw@weilnetz.de>) id 1VULeL-0008TB-Gd
+	for qemu-trivial@nongnu.org; Thu, 10 Oct 2013 15:11:59 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:55037)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1VSkxa-0006PY-70; Sun, 06 Oct 2013 05:49:10 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3D21540CAE;
-	Sun,  6 Oct 2013 13:49:09 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 6622852C;
-	Sun,  6 Oct 2013 13:33:04 +0400 (MSK)
-Received: (nullmailer pid 25820 invoked by uid 1000);
-	Sun, 06 Oct 2013 09:33:02 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: aliguori@us.ibm.com
-Date: Sun,  6 Oct 2013 13:32:55 +0400
-Message-Id: <1381051979-25742-11-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1381051979-25742-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1381051979-25742-1-git-send-email-mjt@msgid.tls.msk.ru>
+	(envelope-from <sw@weilnetz.de>)
+	id 1VULe8-0008IV-74; Thu, 10 Oct 2013 15:11:40 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	318D672809F4; Thu, 10 Oct 2013 21:11:39 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id F1u5EaA6xi0z; Thu, 10 Oct 2013 21:11:37 +0200 (CEST)
+Received: from [192.168.178.35] (p54ADB22B.dip0.t-ipconnect.de [84.173.178.43])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	719FA72809F1; Thu, 10 Oct 2013 21:11:36 +0200 (CEST)
+Message-ID: <5256FBE7.80207@weilnetz.de>
+Date: Thu, 10 Oct 2013 21:11:35 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:24.0) Gecko/20100101 Thunderbird/24.0
 MIME-Version: 1.0
+To: Corentin Chary <corentincj@iksaif.net>
+References: <1373228703-26226-1-git-send-email-sw@weilnetz.de>	<037D60EF2A5746E468BF0A04@nimrod.local>	<CAFEAcA9V_THiPwVwv-gYH14h2kujDnWpGAOSBd95C9W56p3AuQ@mail.gmail.com>	<51DA438A.8060903@weilnetz.de>
+	<CAHR064g-jOt7XaY4G9a7MZRs_qd9REnyyGn8D=mrRoY+J-bXUA@mail.gmail.com>
+In-Reply-To: <CAHR064g-jOt7XaY4G9a7MZRs_qd9REnyyGn8D=mrRoY+J-bXUA@mail.gmail.com>
+X-Enigmail-Version: 1.5.2
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	qemu-stable <qemu-stable@nongnu.org>
-Subject: [Qemu-trivial] [PULL 10/14] qemu-char: Fix potential out of bounds
-	access to local arrays
+X-Received-From: 37.221.199.173
+Cc: Peter Maydell <peter.maydell@linaro.org>, Alex Bligh <alex@alex.org.uk>,
+	qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	Qemu-development List <qemu-devel@nongnu.org>,
+	Anthony Liguori <anthony@codemonkey.ws>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Spelling fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,54 +54,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Oct 2013 09:49:35 -0000
+X-List-Received-Date: Thu, 10 Oct 2013 19:12:06 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+Am 08.07.2013 17:14, schrieb Corentin Chary:
+> The comments (and most of the code) are from libvncserver (and,
+> earlier, from "THE 'ZYWRLE' VNC CODEC SOURCE CODE. " as described in
+> the header):
+>
+> http://fastdroid-vnc.googlecode.com/svn-history/r3/trunk/LibVNCServer-0.9.7/libvncserver/zywrletemplate.c
+>
 
-Latest gcc-4.8 supports a new option -fsanitize=3Daddress which activates
-an AddressSanitizer. This AddressSanitizer stops the QEMU system emulatio=
-n
-very early because two character arrays of size 8 are potentially written
-with 9 bytes.
+Then I suggest to apply my patch as it is. It fixes two locations and
+improves a third one a little bit.
 
-Commit 6ea314d91439741e95772dfbab98b4135e04bebb added the code.
-
-There is no obvious reason why width or height could need 8 characters,
-so reduce it to 7 characters which together with the terminating '\0'
-fit into the arrays.
-
-Cc: qemu-stable <qemu-stable@nongnu.org>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Alex Benn=C3=A9e <alex@bennee.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- qemu-char.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/qemu-char.c b/qemu-char.c
-index f7f5464..6d393e6 100644
---- a/qemu-char.c
-+++ b/qemu-char.c
-@@ -2989,11 +2989,11 @@ QemuOpts *qemu_chr_parse_compat(const char *label=
-, const char *filename)
-     if (strstart(filename, "vc", &p)) {
-         qemu_opt_set(opts, "backend", "vc");
-         if (*p =3D=3D ':') {
--            if (sscanf(p+1, "%8[0-9]x%8[0-9]", width, height) =3D=3D 2) =
-{
-+            if (sscanf(p+1, "%7[0-9]x%7[0-9]", width, height) =3D=3D 2) =
-{
-                 /* pixels */
-                 qemu_opt_set(opts, "width", width);
-                 qemu_opt_set(opts, "height", height);
--            } else if (sscanf(p+1, "%8[0-9]Cx%8[0-9]C", width, height) =3D=
-=3D 2) {
-+            } else if (sscanf(p+1, "%7[0-9]Cx%7[0-9]C", width, height) =3D=
-=3D 2) {
-                 /* chars */
-                 qemu_opt_set(opts, "cols", width);
-                 qemu_opt_set(opts, "rows", height);
---=20
-1.7.10.4
+Stefan
 
 
