@@ -1,48 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VULjh-0005Cd-DL
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Oct 2013 15:17:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36084)
+	id 1VULck-0002In-NC
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Oct 2013 15:10:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60071)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VULeR-0002xe-F7
-	for qemu-trivial@nongnu.org; Thu, 10 Oct 2013 15:12:05 -0400
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VULMs-00047I-82
+	for qemu-trivial@nongnu.org; Thu, 10 Oct 2013 14:53:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VULeL-0008TB-Gd
-	for qemu-trivial@nongnu.org; Thu, 10 Oct 2013 15:11:59 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:55037)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VULMq-0002A7-VA
+	for qemu-trivial@nongnu.org; Thu, 10 Oct 2013 14:53:50 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:44408
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1VULe8-0008IV-74; Thu, 10 Oct 2013 15:11:40 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	318D672809F4; Thu, 10 Oct 2013 21:11:39 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id F1u5EaA6xi0z; Thu, 10 Oct 2013 21:11:37 +0200 (CEST)
-Received: from [192.168.178.35] (p54ADB22B.dip0.t-ipconnect.de [84.173.178.43])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	719FA72809F1; Thu, 10 Oct 2013 21:11:36 +0200 (CEST)
-Message-ID: <5256FBE7.80207@weilnetz.de>
-Date: Thu, 10 Oct 2013 21:11:35 +0200
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VULMo-00029J-4V; Thu, 10 Oct 2013 14:53:46 -0400
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id C284717FC91; Thu, 10 Oct 2013 20:53:41 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.0
-MIME-Version: 1.0
-To: Corentin Chary <corentincj@iksaif.net>
-References: <1373228703-26226-1-git-send-email-sw@weilnetz.de>	<037D60EF2A5746E468BF0A04@nimrod.local>	<CAFEAcA9V_THiPwVwv-gYH14h2kujDnWpGAOSBd95C9W56p3AuQ@mail.gmail.com>	<51DA438A.8060903@weilnetz.de>
-	<CAHR064g-jOt7XaY4G9a7MZRs_qd9REnyyGn8D=mrRoY+J-bXUA@mail.gmail.com>
-In-Reply-To: <CAHR064g-jOt7XaY4G9a7MZRs_qd9REnyyGn8D=mrRoY+J-bXUA@mail.gmail.com>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: Peter Maydell <peter.maydell@linaro.org>, Alex Bligh <alex@alex.org.uk>,
-	qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	Qemu-development List <qemu-devel@nongnu.org>,
-	Anthony Liguori <anthony@codemonkey.ws>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Spelling fixes
+To: qemu-devel <qemu-devel@nongnu.org>
+Date: Thu, 10 Oct 2013 20:53:40 +0200
+Message-Id: <1381431220-31946-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>,
+	Stefan Weil <sw@weilnetz.de>, Alexander Graf <agraf@suse.de>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-trivial] [PATCH] misc: New spelling fixes in comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,19 +40,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Oct 2013 19:12:06 -0000
+X-List-Received-Date: Thu, 10 Oct 2013 18:53:51 -0000
 
-Am 08.07.2013 17:14, schrieb Corentin Chary:
-> The comments (and most of the code) are from libvncserver (and,
-> earlier, from "THE 'ZYWRLE' VNC CODEC SOURCE CODE. " as described in
-> the header):
->
-> http://fastdroid-vnc.googlecode.com/svn-history/r3/trunk/LibVNCServer-0.9.7/libvncserver/zywrletemplate.c
->
+compatiblity -> compatibility
+continously -> continuously
+existance -> existence
+usefull -> useful
+shoudl -> should
 
-Then I suggest to apply my patch as it is. It fixes two locations and
-improves a third one a little bit.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ block/iscsi.c            |    2 +-
+ hw/ppc/spapr.c           |    2 +-
+ target-alpha/translate.c |    2 +-
+ tests/test-throttle.c    |    4 ++--
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
-Stefan
+diff --git a/block/iscsi.c b/block/iscsi.c
+index 6152ef1..58e3c3d 100644
+--- a/block/iscsi.c
++++ b/block/iscsi.c
+@@ -866,7 +866,7 @@ retry:
+         /* in case the get_lba_status_callout fails (i.e.
+          * because the device is busy or the cmd is not
+          * supported) we pretend all blocks are allocated
+-         * for backwards compatiblity */
++         * for backwards compatibility */
+         goto out;
+     }
+ 
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 004184d..74aa5cc 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -120,7 +120,7 @@ int spapr_allocate_irq_block(int num, bool lsi, bool msi)
+      * it has to be aligned to num to support multiple
+      * MSI vectors. MSI-X is not affected by this.
+      * The hint is used for the first IRQ, the rest should
+-     * be allocated continously.
++     * be allocated continuously.
+      */
+     if (msi) {
+         assert((num == 1) || (num == 2) || (num == 4) ||
+diff --git a/target-alpha/translate.c b/target-alpha/translate.c
+index 28ce436..0b7dce0 100644
+--- a/target-alpha/translate.c
++++ b/target-alpha/translate.c
+@@ -1624,7 +1624,7 @@ static ExitStatus gen_call_pal(DisasContext *ctx, int palcode)
+         tcg_temp_free(pc);
+ 
+         /* Since the destination is running in PALmode, we don't really
+-           need the page permissions check.  We'll see the existance of
++           need the page permissions check.  We'll see the existence of
+            the page when we create the TB, and we'll flush all TBs if
+            we change the PAL base register.  */
+         if (!ctx->singlestep_enabled && !(ctx->tb->cflags & CF_LAST_IO)) {
+diff --git a/tests/test-throttle.c b/tests/test-throttle.c
+index 7608126..1d4ffd3 100644
+--- a/tests/test-throttle.c
++++ b/tests/test-throttle.c
+@@ -18,7 +18,7 @@ LeakyBucket    bkt;
+ ThrottleConfig cfg;
+ ThrottleState  ts;
+ 
+-/* usefull function */
++/* useful function */
+ static bool double_cmp(double x, double y)
+ {
+     return fabsl(x - y) < 1e-6;
+@@ -320,7 +320,7 @@ static void test_have_timer(void)
+     /* zero the structure */
+     memset(&ts, 0, sizeof(ts));
+ 
+-    /* no timer set shoudl return false */
++    /* no timer set should return false */
+     g_assert(!throttle_have_timer(&ts));
+ 
+     /* init the structure */
+-- 
+1.7.10.4
 
 
