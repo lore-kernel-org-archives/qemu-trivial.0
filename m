@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VUi6n-0006s6-GZ
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2013 15:10:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48613)
+	id 1VUi8m-00004v-9F
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2013 15:12:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49155)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VUi6h-0006oh-7u
-	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 15:10:43 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1VUi8g-0008Px-8U
+	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 15:12:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VUi6a-0007Bj-BW
-	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 15:10:39 -0400
-Received: from mail-la0-f41.google.com ([209.85.215.41]:46610)
+	(envelope-from <peter.maydell@linaro.org>) id 1VUi8V-00083y-I1
+	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 15:12:42 -0400
+Received: from mail-la0-f45.google.com ([209.85.215.45]:56465)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VUi6a-0007BR-4V
-	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 15:10:32 -0400
-Received: by mail-la0-f41.google.com with SMTP id ec20so3903712lab.28
-	for <qemu-trivial@nongnu.org>; Fri, 11 Oct 2013 12:10:31 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1VUi8V-00083X-BP
+	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 15:12:31 -0400
+Received: by mail-la0-f45.google.com with SMTP id eh20so3814002lab.18
+	for <qemu-trivial@nongnu.org>; Fri, 11 Oct 2013 12:12:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=1IoAihvZu5mpRxqmO/3FLg3T/HUPQqhNXHoTGuQDdUw=;
-	b=PBQItexnuFrJ/bHVzMO2+5FmY4EIQ02Z6edZIZnzV0yoOU2qgkLUPa+tcCODLOHG1S
-	D8tmUHorQvi7aN2ZnUcQYh2f19SvRifWYRi/HZQ5KG26TWGJFDDrvdVmVU444/eNAEEK
-	euz1cCqVDLqPKSITyxujYcFcyrN4CUXaM6aV9AO06xgkwu3jM/COHLrgYHYmUAmokmn3
-	ffqeXapmigrplbBZEoLmt01Fln4Z2VPC1XH3Hh+KLet+UczT6Gi4KFm1C+karaun5/lA
-	f87x+e883XzUZ12rhdLh6HUkXKYKct6hSHzqzQ+J8cGsJ98TmP+pP5SROgTnbwQ6xK+r
-	+T7w==
-X-Gm-Message-State: ALoCoQnuIri8FUSHamOdAAKFCZSw8i+PmdMFyxG7GliAr4xuQWlvF6Y2PM2Vt/SZyfGeyIpWuJhr
-X-Received: by 10.152.10.99 with SMTP id h3mr17663763lab.13.1381518631241;
-	Fri, 11 Oct 2013 12:10:31 -0700 (PDT)
+	bh=h/xEOoLAnNxzENMruqfTrYaf6uxd5jRI6ej9YnusNyw=;
+	b=mqsQ75pObumVnNbObK1IEKgQz4FfEbjQS1ot2EdyxHG5xxJp0kvdTJsRFNZe1yD/Mg
+	bYHfjRNLy5gpIIMnVE/jyREE5QWcsBFhLzgIycd9Qily1Nc1WHv5yqM8+PPmJvioFjvt
+	PjaNXiHGetDTTrsKrMhdaT/Y+1BuK7tYG1jbsH0ZdpE8IczTNy0MBvp93Oe8ii3pdoBX
+	Jqd4eJl9SJXRcyQENThfD5Gd264+D/jOgPvl0VnAvkxbH+KI9Yq+lxhRGZUIptmYQxLl
+	bZ8oGNsAF7lDU+TIRSNYn0X1bCl8jzjRKxdgC0NbqzKX6VDD5HT1h+bJfjD+6T8RZr64
+	DCLg==
+X-Gm-Message-State: ALoCoQlanSVpWHGQA29yPvoj/zDv2snWiaLzaU8Y3/Ki5H94G8SWRmOP2JwpQ8/ugHcRbGUOAgK/
+X-Received: by 10.152.3.42 with SMTP id 10mr17806246laz.22.1381518750159; Fri,
+	11 Oct 2013 12:12:30 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.112.161.232 with HTTP; Fri, 11 Oct 2013 12:10:11 -0700 (PDT)
-In-Reply-To: <1381496638-29127-1-git-send-email-petar.jovanovic@rt-rk.com>
-References: <1381496638-29127-1-git-send-email-petar.jovanovic@rt-rk.com>
+Received: by 10.112.161.232 with HTTP; Fri, 11 Oct 2013 12:12:10 -0700 (PDT)
+In-Reply-To: <1381518382-6105-1-git-send-email-sw@weilnetz.de>
+References: <1381518382-6105-1-git-send-email-sw@weilnetz.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 12 Oct 2013 04:10:11 +0900
-Message-ID: <CAFEAcA8HGFUT8P3unP0FfaxsrORm1uHewEb_8DrKFqXqY8wtJg@mail.gmail.com>
-To: Petar Jovanovic <petar.jovanovic@rt-rk.com>
+Date: Sat, 12 Oct 2013 04:12:10 +0900
+Message-ID: <CAFEAcA9Stuakd5tytT_65j4mUtKUyXtGQAG3Htvei0k3HU5WWA@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.215.41
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Riku Voipio <riku.voipio@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Petar Jovanovic <petar.jovanovic@imgtec.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: pass correct
-	parameter to do_shmctl()
+X-Received-From: 209.85.215.45
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
+	Alex Bligh <alex@alex.org.uk>, qemu-devel <qemu-devel@nongnu.org>,
+	Anthony Liguori <anthony@codemonkey.ws>
+Subject: Re: [Qemu-trivial] [PATCH v2] misc: Spelling and other fixes in
+	comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,20 +56,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Oct 2013 19:10:43 -0000
+X-List-Received-Date: Fri, 11 Oct 2013 19:12:46 -0000
 
-On 11 October 2013 22:03, Petar Jovanovic <petar.jovanovic@rt-rk.com> wrote:
-> From: Petar Jovanovic <petar.jovanovic@imgtec.com>
+On 12 October 2013 04:06, Stefan Weil <sw@weilnetz.de> wrote:
+> * it's -> its
+> * Grammar fix in ui/vnc-enc-zywrle.h. In the same context
+>   a sentence with unclear meaning which could not be fixed was removed.
 >
-> Fix shmctl issue by passing correct parameter buf to do_shmctl().
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>
+> This is an update of patch http://patchwork.ozlabs.org/patch/257416/
+> (Spelling fixes).
+>
+> v2: Don't try to fix a strange sentence in ui/vnc-enc-zywrle.h - remove it.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+What? I thought you meant "remove that part of the change from
+the patch", not "remove the sentence altogether". Please leave
+it in place so that anybody in future who needs to try to understand
+this code has the maximum available amount of clues.
 
-It would be nice if you gave more detail than "shmctl issue"...
-(for instance there are some known issues that affect some
-architectures but not others, cf
-http://lists.gnu.org/archive/html/qemu-devel/2013-02/msg00447.html)
-
-thanks
 -- PMM
 
