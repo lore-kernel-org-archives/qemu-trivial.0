@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VURcw-0005wi-K1
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Oct 2013 21:34:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53972)
+	id 1VUVvL-00076t-JD
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2013 02:10:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35109)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VURcq-0005w0-Vn
-	for qemu-trivial@nongnu.org; Thu, 10 Oct 2013 21:34:49 -0400
+	(envelope-from <sw@weilnetz.de>) id 1VUVvF-0006xn-Nv
+	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 02:10:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VURcm-00051c-Jk
-	for qemu-trivial@nongnu.org; Thu, 10 Oct 2013 21:34:44 -0400
-Received: from mail-la0-f53.google.com ([209.85.215.53]:60154)
+	(envelope-from <sw@weilnetz.de>) id 1VUVvB-00046L-0w
+	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 02:10:01 -0400
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=45310
+	helo=v220110690675601.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VURcm-00051S-Cx
-	for qemu-trivial@nongnu.org; Thu, 10 Oct 2013 21:34:40 -0400
-Received: by mail-la0-f53.google.com with SMTP id el20so2742416lab.26
-	for <qemu-trivial@nongnu.org>; Thu, 10 Oct 2013 18:34:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=ndCSmaumidf6dVc7dA7r5EOszLjbT0I4fJYmJGki/No=;
-	b=azFd5+PMVg3WpC4IP2IZkZcR7X4j4KcBQVhKLbQHzCzFVU0BgERjwgyoqaQjzbBDHE
-	ownuKBr58msZ52hnzWIOtvvlruomSxCAGmHv4UA+kt8kmFHUUSQA7Q1d7tRrBFDO2IW/
-	nBuL89mvKCgXm3tTLJrEwXJRknTT0mvE77wnVdjcjdAh61WPrWg2Jn4T14HJQ7qC5wXj
-	+5iRpDKuKZj/viRIjRyGi6Ds+effFOdDXQpUfp779hhxwbXEPjTx0LyuM4+e30z9V4Uh
-	gJ16ru08CzRpAcvg4qrCRZ2D3BB2kzwMJc4tm4nh5fAvDUCDoTmZrM8MmcZ77LSIS/bw
-	c+Wg==
-X-Gm-Message-State: ALoCoQnpmCQFJ2CPTUsrO39kVOZsHiWe//PfPjskSJcPZ0aXYSex/lcW/mTFK0ZrP5PDCADe7f0C
-X-Received: by 10.152.3.201 with SMTP id e9mr14110184lae.24.1381455279330;
-	Thu, 10 Oct 2013 18:34:39 -0700 (PDT)
+	(envelope-from <sw@weilnetz.de>)
+	id 1VUVv0-00044w-9X; Fri, 11 Oct 2013 02:09:46 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	4383072819E7; Fri, 11 Oct 2013 08:09:45 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id PmGzFJ8TKDEz; Fri, 11 Oct 2013 08:09:43 +0200 (CEST)
+Received: from [192.168.178.35] (p54AD83DB.dip0.t-ipconnect.de
+	[84.173.131.219])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	C898D72809F3; Fri, 11 Oct 2013 08:09:42 +0200 (CEST)
+Message-ID: <52579626.8020507@weilnetz.de>
+Date: Fri, 11 Oct 2013 08:09:42 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:24.0) Gecko/20100101 Thunderbird/24.0
 MIME-Version: 1.0
-Received: by 10.112.161.232 with HTTP; Thu, 10 Oct 2013 18:34:18 -0700 (PDT)
-In-Reply-To: <5256FBE7.80207@weilnetz.de>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1373228703-26226-1-git-send-email-sw@weilnetz.de>
 	<037D60EF2A5746E468BF0A04@nimrod.local>
 	<CAFEAcA9V_THiPwVwv-gYH14h2kujDnWpGAOSBd95C9W56p3AuQ@mail.gmail.com>
 	<51DA438A.8060903@weilnetz.de>
 	<CAHR064g-jOt7XaY4G9a7MZRs_qd9REnyyGn8D=mrRoY+J-bXUA@mail.gmail.com>
 	<5256FBE7.80207@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 11 Oct 2013 10:34:18 +0900
-Message-ID: <CAFEAcA_KEnRRUCp87K55RanQWHXr2gPBvtk2uQc7hCwjo6S94g@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
+	<CAFEAcA_KEnRRUCp87K55RanQWHXr2gPBvtk2uQc7hCwjo6S94g@mail.gmail.com>
+In-Reply-To: <CAFEAcA_KEnRRUCp87K55RanQWHXr2gPBvtk2uQc7hCwjo6S94g@mail.gmail.com>
+X-Enigmail-Version: 1.5.2
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.53
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
 Cc: Alex Bligh <alex@alex.org.uk>, Corentin Chary <corentincj@iksaif.net>,
 	Jan Kiszka <jan.kiszka@siemens.com>,
 	Qemu-development List <qemu-devel@nongnu.org>,
@@ -62,23 +63,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Oct 2013 01:34:49 -0000
+X-List-Received-Date: Fri, 11 Oct 2013 06:10:06 -0000
 
-On 11 October 2013 04:11, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 08.07.2013 17:14, schrieb Corentin Chary:
->> The comments (and most of the code) are from libvncserver (and,
->> earlier, from "THE 'ZYWRLE' VNC CODEC SOURCE CODE. " as described in
->> the header):
->>
->> http://fastdroid-vnc.googlecode.com/svn-history/r3/trunk/LibVNCServer-0.9.7/libvncserver/zywrletemplate.c
->>
+Am 11.10.2013 03:34, schrieb Peter Maydell:
+> On 11 October 2013 04:11, Stefan Weil <sw@weilnetz.de> wrote:
+>> Am 08.07.2013 17:14, schrieb Corentin Chary:
+>>> The comments (and most of the code) are from libvncserver (and,
+>>> earlier, from "THE 'ZYWRLE' VNC CODEC SOURCE CODE. " as described in
+>>> the header):
+>>>
+>>> http://fastdroid-vnc.googlecode.com/svn-history/r3/trunk/LibVNCServer-0.9.7/libvncserver/zywrletemplate.c
+>>>
+>> Then I suggest to apply my patch as it is. It fixes two locations and
+>> improves a third one a little bit.
+> Disagree. If we don't understand the intention of the original
+> author we should leave the text as is rather than changing it
+> in a way which might be incorrect.
 >
-> Then I suggest to apply my patch as it is. It fixes two locations and
-> improves a third one a little bit.
+> -- PMM
 
-Disagree. If we don't understand the intention of the original
-author we should leave the text as is rather than changing it
-in a way which might be incorrect.
+- This lead us to more speed and less memory.
+- Of cause, the result of both method is quite same
+- because it's only difference that coefficient position.
++ This leads us to more speed and less memory.
++ Of course, the result of both methods is quite same
++ because its only difference is that coefficient position.
 
--- PMM
+
+Would you agree on fixing the first line only and removing the two following lines?
+
+Stefan
+
+
 
