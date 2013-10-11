@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VUlaX-0000E4-NU
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2013 18:53:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36692)
+	id 1VUlaY-0000Gm-VJ
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2013 18:53:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42263)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dkoch@verizon.com>) id 1VUjMQ-0002PX-BM
-	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 16:31:03 -0400
+	(envelope-from <dkoch@verizon.com>) id 1VUji0-0001AD-7a
+	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 16:53:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dkoch@verizon.com>) id 1VUjML-0005e0-6L
-	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 16:30:58 -0400
-Received: from omzsmtpe02.verizonbusiness.com ([199.249.25.209]:57968)
+	(envelope-from <dkoch@verizon.com>) id 1VUjht-0004I2-GC
+	for qemu-trivial@nongnu.org; Fri, 11 Oct 2013 16:53:16 -0400
+Received: from omzsmtpe01.verizonbusiness.com ([199.249.25.210]:48259)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <dkoch@verizon.com>)
-	id 1VUjMA-0005ZQ-4W; Fri, 11 Oct 2013 16:30:42 -0400
+	id 1VUjht-0004Hx-B1; Fri, 11 Oct 2013 16:53:09 -0400
 X-IronPort-Anti-Spam-Filtered: false
-Received: from unknown (HELO fldsmtpi01.verizon.com) ([166.68.71.143])
-	by omzsmtpe02.verizonbusiness.com with ESMTP; 11 Oct 2013 20:30:34 +0000
-X-IronPort-AV: E=Sophos;i="4.93,1082,1378857600"; d="scan'208";a="579740455"
+Received: from unknown (HELO fldsmtpi03.verizon.com) ([166.68.71.145])
+	by omzsmtpe01.verizonbusiness.com with ESMTP; 11 Oct 2013 20:53:09 +0000
+X-IronPort-AV: E=Sophos;i="4.93,1082,1378857600"; d="scan'208";a="568184983"
 Received: from unknown (HELO MIA20725CAS892.apps.tmrk.corp) ([162.47.0.51])
-	by fldsmtpi01.verizon.com with ESMTP; 11 Oct 2013 20:30:33 +0000
+	by fldsmtpi03.verizon.com with ESMTP; 11 Oct 2013 20:53:07 +0000
 Received: from yoyo.cloudswitch.com (10.25.25.113) by
 	MIA20725CAS892.apps.tmrk.corp (10.1.3.224) with Microsoft SMTP Server
-	(TLS) id 14.2.318.1; Fri, 11 Oct 2013 16:29:00 -0400
-Message-ID: <52585F8B.6080604@cloudswitch.com>
-Date: Fri, 11 Oct 2013 16:28:59 -0400
+	(TLS) id 14.2.318.1; Fri, 11 Oct 2013 16:51:20 -0400
+Message-ID: <525864C7.3040604@cloudswitch.com>
+Date: Fri, 11 Oct 2013 16:51:19 -0400
 From: Don Koch <dkoch@cloudswitch.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:17.0) Gecko/20130805 Thunderbird/17.0.8
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
+To: Stefan Weil <sw@weilnetz.de>
 References: <1381520073-32674-1-git-send-email-sw@weilnetz.de>
-	<52585983.1000606@terremark.com>
-	<CAFEAcA8QMiNuBMN0=DmXA8RqV9iVdoD-weGF04njKCGw1nbbyg@mail.gmail.com>
-In-Reply-To: <CAFEAcA8QMiNuBMN0=DmXA8RqV9iVdoD-weGF04njKCGw1nbbyg@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+	<52585983.1000606@terremark.com> <52585AD0.9090105@weilnetz.de>
+In-Reply-To: <52585AD0.9090105@weilnetz.de>
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 199.249.25.209
-X-Mailman-Approved-At: Fri, 11 Oct 2013 18:53:39 -0400
+X-Received-From: 199.249.25.210
+X-Mailman-Approved-At: Fri, 11 Oct 2013 18:53:40 -0400
 Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>,
-	Stefan Weil <sw@weilnetz.de>, qemu-devel <qemu-devel@nongnu.org>,
-	Don Koch <dkoch@verizon.com>, Alexander Graf <agraf@suse.de>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Richard Henderson <rth@twiddle.net>
+	qemu-devel <qemu-devel@nongnu.org>, Don Koch <dkoch@verizon.com>, Alexander
+	Graf <agraf@suse.de>, Stefan Hajnoczi <stefanha@redhat.com>, Richard
+	Henderson <rth@twiddle.net>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] misc: Spelling and
 	grammar fixes in comments
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,10 +54,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Oct 2013 20:31:03 -0000
+X-List-Received-Date: Fri, 11 Oct 2013 20:53:21 -0000
 
-On 10/11/2013 04:10 PM, Peter Maydell wrote:
-> On 12 October 2013 05:03, Don Koch <dkoch@verizon.com> wrote:
+On 10/11/2013 04:08 PM, Stefan Weil wrote:
+> Am 11.10.2013 22:03, schrieb Don Koch:
 >> On 10/11/2013 03:34 PM, Stefan Weil wrote:
 >>> * it's -> its
 >>> * grammar fix in ui/vnc-enc-zywrle.h
@@ -70,7 +69,45 @@ On 10/11/2013 04:10 PM, Peter Maydell wrote:
 >>>
 >>> v3:
 >>> Don't try to improve a strange sentence in the same context ("Of cause [...]").
-> 
+>>>
+>>>  qapi-schema.json    |    2 +-
+>>>  slirp/if.c          |    2 +-
+>>>  ui/vnc-enc-zywrle.h |    2 +-
+>>>  3 files changed, 3 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/qapi-schema.json b/qapi-schema.json
+>>> index 60f3fd1..a003aa1 100644
+>>> --- a/qapi-schema.json
+>>> +++ b/qapi-schema.json
+>>> @@ -1914,7 +1914,7 @@
+>>>  #
+>>>  # Since: 0.14.0
+>>>  #
+>>> -# Notes: This command only exists as a stop-gap.  It's use is highly
+>>> +# Notes: This command only exists as a stop-gap.  Its use is highly
+>>>  #        discouraged.  The semantics of this command are not guaranteed.
+>>>  #
+>>>  #        Known limitations:
+>>> diff --git a/slirp/if.c b/slirp/if.c
+>>> index 87ca8a5..fb7acf8 100644
+>>> --- a/slirp/if.c
+>>> +++ b/slirp/if.c
+>>> @@ -142,7 +142,7 @@ diddit:
+>>>  
+>>>  /*
+>>>   * Send a packet
+>>> - * We choose a packet based on it's position in the output queues;
+>>> + * We choose a packet based on its position in the output queues;
+>>>   * If there are packets on the fastq, they are sent FIFO, before
+>>>   * everything else.  Otherwise we choose the first packet from the
+>>>   * batchq and send it.  the next packet chosen will be from the session
+>>> diff --git a/ui/vnc-enc-zywrle.h b/ui/vnc-enc-zywrle.h
+>>> index 1ff40b1..d436d58 100644
+>>> --- a/ui/vnc-enc-zywrle.h
+>>> +++ b/ui/vnc-enc-zywrle.h
+>>> @@ -305,7 +305,7 @@ static inline void harr(int8_t *px0, int8_t *px1)
+>>>     |L1H0H1H0|L1H0H1H0|L1H0H1H0|L1H0H1H0| : level 1
+>>>  
 >>>   In this method, H/L and X0/X1 is always same position.
 >>> - This lead us to more speed and less memory.
 >>> + This leads us to more speed and less memory.
@@ -78,25 +115,35 @@ On 10/11/2013 04:10 PM, Peter Maydell wrote:
 >>>   because it's only difference that coefficient position.
 >>>  */
 >>>
->>
 >> Since you're in the neighborhood, this paragraph needs more fixes:
-> 
-> No, see the note above and the previous discussion.
-
-In that case, there in no point in fixing just the lead/leads typo.
-
+>>
 >>  In this method, H/L and X0/X1 is always in the same position.
+> 
+> Shouldn't it be "are always"? :-)
+
+Yes. I got swamped by the other typos. :-)
+> 
 >>  This leads us to more speed and less memory.
 >>  Of course, the result of both methods is the same
 >>  because the only difference is the coefficient position.
+>>
+>> Thanks,
+>> -d
 > 
-> Unless you want to say you've reviewed the code and
-> are completely confident that the original author meant
-> "the same" or "exactly the same" and not "quite similar"
-> then we need to leave the original wording alone.
-> 
-> -- PMM
-> 
+> Maybe. Please let us fix that in a later patch.\
+
+Works for me.
+
+> See also the previous discussion
+> (http://patchwork.ozlabs.org/patch/257416/).
+
+I had unfortunately deleted that thread when I saw there was an update.
+*sigh*
+
+> Regards,
+> Stefan
+
+Reviewed-By: Don Koch <dkoch@verizon.com>
 
 -d
 
