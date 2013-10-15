@@ -1,35 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VW4MM-0004l0-8M
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Oct 2013 09:08:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38478)
+	id 1VW4fj-00010n-TK
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Oct 2013 09:28:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42800)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1VW4ME-0004aL-4b
-	for qemu-trivial@nongnu.org; Tue, 15 Oct 2013 09:08:24 -0400
+	(envelope-from <lcapitulino@redhat.com>) id 1VW4fd-0000op-50
+	for qemu-trivial@nongnu.org; Tue, 15 Oct 2013 09:28:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1VW4M8-0006tL-4h
-	for qemu-trivial@nongnu.org; Tue, 15 Oct 2013 09:08:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:1141)
+	(envelope-from <lcapitulino@redhat.com>) id 1VW4fX-0004Qr-45
+	for qemu-trivial@nongnu.org; Tue, 15 Oct 2013 09:28:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59028)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1VW4Lu-0006rR-Iq; Tue, 15 Oct 2013 09:07:58 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9FD7vxu024583
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1VW4fK-0004PA-H3; Tue, 15 Oct 2013 09:28:02 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9FDRwoO019247
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 15 Oct 2013 09:07:57 -0400
-Received: from lacos-laptop.usersys.redhat.com (vpn1-6-138.ams2.redhat.com
-	[10.36.6.138])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r9FD7umO001605; Tue, 15 Oct 2013 09:07:56 -0400
-From: Laszlo Ersek <lersek@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 15 Oct 2013 15:10:35 +0200
-Message-Id: <1381842635-21699-1-git-send-email-lersek@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+	Tue, 15 Oct 2013 09:27:59 -0400
+Received: from localhost (ovpn-113-75.phx2.redhat.com [10.3.113.75])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r9FDRtOQ000708; Tue, 15 Oct 2013 09:27:56 -0400
+Date: Tue, 15 Oct 2013 09:27:55 -0400
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Fam Zheng <famz@redhat.com>
+Message-ID: <20131015092755.03a89e89@redhat.com>
+In-Reply-To: <1381805919-11572-1-git-send-email-famz@redhat.com>
+References: <1381805919-11572-1-git-send-email-famz@redhat.com>
+Organization: Red Hat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] move test-* from .gitignore to
-	tests/.gitignore
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] .gitignore: ignore qmp-commands.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,71 +46,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Oct 2013 13:08:24 -0000
+X-List-Received-Date: Tue, 15 Oct 2013 13:28:27 -0000
 
-Also sort the test-* entries in the latter.
+On Tue, 15 Oct 2013 10:58:39 +0800
+Fam Zheng <famz@redhat.com> wrote:
 
-Signed-off-by: Laszlo Ersek <lersek@redhat.com>
----
- .gitignore       |  9 ---------
- tests/.gitignore | 11 +++++++++--
- 2 files changed, 9 insertions(+), 11 deletions(-)
+> This file is moved out from QMP/ to BUILD dir, change the ignore file
+> too.
+> 
+> Signed-off-by: Fam Zheng <famz@redhat.com>
 
-diff --git a/.gitignore b/.gitignore
-index 8e1b73f..7f4c106 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -45,15 +45,6 @@ qemu-bridge-helper
- qemu-monitor.texi
- vscclient
- QMP/qmp-commands.txt
--test-bitops
--test-coroutine
--test-int128
--test-opts-visitor
--test-qmp-input-visitor
--test-qmp-output-visitor
--test-string-input-visitor
--test-string-output-visitor
--test-visitor-serialization
- fsdev/virtfs-proxy-helper
- fsdev/virtfs-proxy-helper.1
- fsdev/virtfs-proxy-helper.pod
-diff --git a/tests/.gitignore b/tests/.gitignore
-index 425757c..dbed60f 100644
---- a/tests/.gitignore
-+++ b/tests/.gitignore
-@@ -6,20 +6,27 @@ check-qlist
- check-qstring
- test-aio
- test-bitops
--test-throttle
-+test-coroutine
- test-cutils
- test-hbitmap
- test-int128
- test-iov
- test-mul64
-+test-opts-visitor
- test-qapi-types.[ch]
- test-qapi-visit.[ch]
- test-qdev-global-props
--test-qmp-commands.h
- test-qmp-commands
-+test-qmp-commands.h
- test-qmp-input-strict
-+test-qmp-input-visitor
- test-qmp-marshal.c
-+test-qmp-output-visitor
-+test-string-input-visitor
-+test-string-output-visitor
- test-thread-pool
-+test-throttle
-+test-visitor-serialization
- test-x86-cpuid
- test-xbzrle
- *-test
--- 
-1.8.3.1
+Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
+
+PS: Assuming this will be taken by Michael.
+
+> ---
+>  .gitignore | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/.gitignore b/.gitignore
+> index 8e1b73f..5584b5f 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -44,7 +44,7 @@ qemu-ga
+>  qemu-bridge-helper
+>  qemu-monitor.texi
+>  vscclient
+> -QMP/qmp-commands.txt
+> +qmp-commands.txt
+>  test-bitops
+>  test-coroutine
+>  test-int128
 
 
