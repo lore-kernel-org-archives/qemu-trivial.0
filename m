@@ -1,43 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VZI9r-0008Va-VC
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2013 06:28:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33443)
+	id 1VZa21-0000tw-RC
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2013 01:33:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59541)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1VZI9l-0008Th-07
-	for qemu-trivial@nongnu.org; Thu, 24 Oct 2013 06:28:49 -0400
+	(envelope-from <eblake@redhat.com>) id 1VZa1w-0000nP-BV
+	for qemu-trivial@nongnu.org; Fri, 25 Oct 2013 01:33:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1VZI9g-0003mu-CE
-	for qemu-trivial@nongnu.org; Thu, 24 Oct 2013 06:28:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56312)
+	(envelope-from <eblake@redhat.com>) id 1VZa1s-0006fq-47
+	for qemu-trivial@nongnu.org; Fri, 25 Oct 2013 01:33:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:5885)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1VZI9g-0003mo-4D; Thu, 24 Oct 2013 06:28:40 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9OASbXc028161
+	(envelope-from <eblake@redhat.com>)
+	id 1VZa1j-0006dd-Av; Fri, 25 Oct 2013 01:33:39 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9P5XZDO002978
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 24 Oct 2013 06:28:37 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-46.ams2.redhat.com
-	[10.36.112.46])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r9OASZlK004312; Thu, 24 Oct 2013 06:28:36 -0400
-Message-ID: <5268F652.4070109@redhat.com>
-Date: Thu, 24 Oct 2013 11:28:34 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
+	Fri, 25 Oct 2013 01:33:35 -0400
+Received: from [10.3.113.77] (ovpn-113-77.phx2.redhat.com [10.3.113.77])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r9P5XXjt011865; Fri, 25 Oct 2013 01:33:34 -0400
+Message-ID: <526A02AD.3080903@redhat.com>
+Date: Fri, 25 Oct 2013 06:33:33 +0100
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130923 Thunderbird/17.0.9
+	rv:24.0) Gecko/20100101 Thunderbird/24.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1382344550-10769-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1382344550-10769-1-git-send-email-mjt@msgid.tls.msk.ru>
+To: Weng Fan <wengfan-fnst@cn.fujitsu.com>,
+	"Qemu-devel@nongnu.org" <Qemu-devel@nongnu.org>,
+	qemu-trivial <qemu-trivial@nongnu.org>
+References: <5269E751.8090107@cn.fujitsu.com>
+In-Reply-To: <5269E751.8090107@cn.fujitsu.com>
 X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="fgQTUv2KKh2wlJVbFGFqPlKlSWWRJjGA7"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] configure: create fsdev/ directory
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] docs/ccid.txt: fix the
+	typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,40 +53,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Oct 2013 10:28:49 -0000
+X-List-Received-Date: Fri, 25 Oct 2013 05:33:56 -0000
 
-Il 21/10/2013 09:35, Michael Tokarev ha scritto:
-> In some cases when building with parallelism (make -jN),
-> build fails because the directory where output files are
-> supposed to be does not exist.  In particular, when make
-> decides to build virtfs-proxy-helper.1 before other files
-> in fsdev/, build will fail with the following error:
-> 
-> perl -Ww -- BUILDDIR/scripts/texi2pod.pl BUILDDIR/fsdev/virtfs-proxy-helper.texi fsdev/virtfs-proxy-helper.pod && pod2man --utf8 --section=1 --center=" " --release=" " fsdev/virtfs-proxy-helper.pod > fsdev/virtfs-proxy-helper.1
-> opening "fsdev/virtfs-proxy-helper.pod": No such file or directory
-> 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--fgQTUv2KKh2wlJVbFGFqPlKlSWWRJjGA7
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+[adding qemu-trivial]
+
+On 10/25/2013 04:36 AM, Weng Fan wrote:
+> From: WengFan <wengfan-fnst@cn.fujitsu.com>
+> Date: Wed, 25 Oct 2013 11:18:22 -0400
+> Subject: [PATCH 1/1] fix the typo
+>=20
+> Signed-off-by: WengFan <wengfan-fnst@cn.fujitsu.com>
 > ---
->  configure |    1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/configure b/configure
-> index 57ee62a..61bb27c 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4647,6 +4647,7 @@ fi
->  
->  # build tree in object directory in case the source is not in the current directory
->  DIRS="tests tests/tcg tests/tcg/cris tests/tcg/lm32 tests/libqos tests/qapi-schema tests/tcg/xtensa tests/qemu-iotests"
-> +DIRS="$DIRS fsdev"
->  DIRS="$DIRS pc-bios/optionrom pc-bios/spapr-rtas pc-bios/s390-ccw"
->  DIRS="$DIRS roms/seabios roms/vgabios"
->  DIRS="$DIRS qapi-generated"
-> 
+>  qemu-master/docs/ccid.txt |    2 +-
+>  1 files changed, 1 insertions(+), 1 deletions(-)
+>=20
+> diff --git a/qemu-master/docs/ccid.txt b/qemu-master/docs/ccid.txt
+> index 8bbaa94..83c174d 100644
+> --- a/qemu-master/docs/ccid.txt
+> +++ b/qemu-master/docs/ccid.txt
+> @@ -52,7 +52,7 @@ Configuring and building:
+>  Assuming you have a working smartcard on the host with the current
+>  user, using NSS, qemu acts as another NSS client using ccid-card-emula=
+ted:
+>=20
+> -    qemu -usb -device usb-ccid -device ccid-card-emualated
+> +    qemu -usb -device usb-ccid -device ccid-card-emulated
+>=20
+>  4. Using ccid-card-emulated with certificates
+>=20
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Please queue it through trivial.
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-Paolo
+
+--fgQTUv2KKh2wlJVbFGFqPlKlSWWRJjGA7
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.15 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJSagKtAAoJEKeha0olJ0NqdiAIAIzWvGCpQmCh8ykUCi4IPfAN
+7p91CecjglmEl2h7WMpRJolayz905cADEMXwJgi4rZJq21S+Fr0lzxDQiUbemHco
+mrh8ubYORJikIY2SkyV73QyOkUbUpp0CAz6anUIDlNf3OHTokYKeScR5OsVNMhuL
+eHOyBt2YkFXgkJbM4CEHTupE/WF13SqpGJANDqfe7EQdBLwyHjBGYlTInDI9iMEt
+00fk113DGQGLxVx+4hnqNvBD/9MDhcB+CjYDg9b4ZffoHIpz4mYLNEq7aypGat2k
+eC++oKi3trq9l2BqFHHZZFrVGHpFeRVcoE2uoCldhjQ6xcnfZ0fy1D/pY5WUaF4=
+=GVQX
+-----END PGP SIGNATURE-----
+
+--fgQTUv2KKh2wlJVbFGFqPlKlSWWRJjGA7--
 
