@@ -1,52 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vb0wt-00058X-RQ
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Oct 2013 00:30:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52326)
+	id 1Vb1j6-0002gV-DR
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Oct 2013 01:20:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60322)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <antonynpavlov@gmail.com>) id 1Vb0wj-00052d-BX
-	for qemu-trivial@nongnu.org; Tue, 29 Oct 2013 00:30:33 -0400
+	(envelope-from <sw@weilnetz.de>) id 1Vb1iy-0002Wq-T6
+	for qemu-trivial@nongnu.org; Tue, 29 Oct 2013 01:20:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <antonynpavlov@gmail.com>) id 1Vb0wa-0004EL-Rf
-	for qemu-trivial@nongnu.org; Tue, 29 Oct 2013 00:30:25 -0400
-Received: from mail-lb0-x234.google.com ([2a00:1450:4010:c04::234]:54116)
+	(envelope-from <sw@weilnetz.de>) id 1Vb1it-0001QT-8t
+	for qemu-trivial@nongnu.org; Tue, 29 Oct 2013 01:20:16 -0400
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=58547
+	helo=v220110690675601.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <antonynpavlov@gmail.com>)
-	id 1Vb0wJ-0003a4-Ne; Tue, 29 Oct 2013 00:29:59 -0400
-Received: by mail-lb0-f180.google.com with SMTP id y6so3509677lbh.25
-	for <multiple recipients>; Mon, 28 Oct 2013 21:29:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:mime-version:content-type
-	:content-transfer-encoding;
-	bh=MF05tcrlHcljvERy1pQrCKb7fR+0zlkoN92fnCNOZlk=;
-	b=E300WC88s2cw3BAC5OJR07PiILWCZ4AC/mdZIX9mQGUg4vYkMiC00egBL6SBUyAPnZ
-	3/sYI+M0XqJ/RWH4CDV4/3DKoyfwOol/d6LtszHt0NawgqeX4DSG2WKFZS33Nz1TTCbU
-	m57zL/L8Htw+voUGMRwjg1UWGvu9NDzeKjdRNgcBlfrHhYkmtNvKwF1uRK2QiAiIVBSn
-	bdK+0UXncgOf8EYOTIrbIcEfaLv2BKimddZVPzTiHs800lPgbJ4Sw1jZC2ABRAwwQvQh
-	f4Jtw70nxovgQ5lsZwCmpRigr3qKWlQu9DqI6pVcS788sWWERMLyHdjPKcMIbWMetCRu
-	0xPw==
-X-Received: by 10.152.45.42 with SMTP id j10mr16369975lam.15.1383020998043;
-	Mon, 28 Oct 2013 21:29:58 -0700 (PDT)
-Received: from localhost.localdomain
-	(broadband-95-84-154-9.nationalcablenetworks.ru. [95.84.154.9])
-	by mx.google.com with ESMTPSA id oc1sm15162637lbb.3.2013.10.28.21.29.56
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 28 Oct 2013 21:29:56 -0700 (PDT)
-From: Antony Pavlov <antonynpavlov@gmail.com>
-To: Anthony Liguori <aliguori@amazon.com>
-Date: Tue, 29 Oct 2013 08:36:31 +0400
-Message-Id: <1383021391-3152-1-git-send-email-antonynpavlov@gmail.com>
-X-Mailer: git-send-email 1.8.4.rc3
+	(envelope-from <sw@weilnetz.de>)
+	id 1Vb1ih-0000ov-Ro; Tue, 29 Oct 2013 01:19:59 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	E205B72801A2; Tue, 29 Oct 2013 06:19:57 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id iSolX6XDvEmB; Tue, 29 Oct 2013 06:19:47 +0100 (CET)
+Received: from [192.168.178.35] (p54ADA977.dip0.t-ipconnect.de
+	[84.173.169.119])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	06AB1728019C; Tue, 29 Oct 2013 06:19:46 +0100 (CET)
+Message-ID: <526F4571.7080807@weilnetz.de>
+Date: Tue, 29 Oct 2013 06:19:45 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:24.0) Gecko/20100101 Thunderbird/24.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf8
-Content-Transfer-Encoding: 8bit
+To: Antony Pavlov <antonynpavlov@gmail.com>, 
+	Anthony Liguori <aliguori@amazon.com>
+References: <1383021391-3152-1-git-send-email-antonynpavlov@gmail.com>
+In-Reply-To: <1383021391-3152-1-git-send-email-antonynpavlov@gmail.com>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4010:c04::234
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Antony Pavlov <antonynpavlov@gmail.com>
-Subject: [Qemu-trivial] [PATCH] vl: fix build when configured with no
-	graphic support
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl: fix build when
+ configured with no graphic support
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,45 +55,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Oct 2013 04:30:34 -0000
+X-List-Received-Date: Tue, 29 Oct 2013 05:20:22 -0000
 
-The following error occurs when building no graphic output support:
+Am 29.10.2013 05:36, schrieb Antony Pavlov:
+> The following error occurs when building no graphic output support:
+>
+>   vl.c: In function =E2=80=98main=E2=80=99:
+>   vl.c:2829:19: error: variable =E2=80=98ds=E2=80=99 set but not used [=
+-Werror=3Dunused-but-set-variable]
+>        DisplayState *ds;
+>                      ^
+>   cc1: all warnings being treated as errors
+>
+> To reproduce this issue, just run:
+>
+>   $ ./configure \
+>       --disable-curses \
+>       --disable-sdl \
+>       --disable-cocoa \
+>       --disable-gtk \
+>       --disable-vnc \
+>       --enable-werror
+>   $ make vl.o
+>
+> Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+> ---
+>  vl.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/vl.c b/vl.c
+> index b42ac67..8fbf25e 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -4269,6 +4269,7 @@ int main(int argc, char **argv, char **envp)
+>      /* init local displays */
+>      switch (display_type) {
+>      case DT_NOGRAPHIC:
+> +        (void)ds;
+>          break;
+>  #if defined(CONFIG_CURSES)
+>      case DT_CURSES:
 
-  vl.c: In function ‘main’:
-  vl.c:2829:19: error: variable ‘ds’ set but not used [-Werror=unused-but-set-variable]
-       DisplayState *ds;
-                     ^
-  cc1: all warnings being treated as errors
-
-To reproduce this issue, just run:
-
-  $ ./configure \
-      --disable-curses \
-      --disable-sdl \
-      --disable-cocoa \
-      --disable-gtk \
-      --disable-vnc \
-      --enable-werror
-  $ make vl.o
-
-Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
----
- vl.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/vl.c b/vl.c
-index b42ac67..8fbf25e 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4269,6 +4269,7 @@ int main(int argc, char **argv, char **envp)
-     /* init local displays */
-     switch (display_type) {
-     case DT_NOGRAPHIC:
-+        (void)ds;
-         break;
- #if defined(CONFIG_CURSES)
-     case DT_CURSES:
--- 
-1.8.4.rc3
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
 
