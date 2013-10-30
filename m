@@ -1,34 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VbPeV-0002Rr-5F
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Oct 2013 02:53:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44687)
+	id 1VbQmf-0005wC-Ey
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Oct 2013 04:05:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57410)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1VbPeN-0002RD-MD
-	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 02:53:13 -0400
+	(envelope-from <kraxel@redhat.com>) id 1VbQmX-0005oZ-KL
+	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 04:05:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1VbPeH-00071J-I9
-	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 02:53:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49120)
+	(envelope-from <kraxel@redhat.com>) id 1VbQmR-00048n-KV
+	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 04:05:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54732)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>)
-	id 1VbPeH-000715-9t; Wed, 30 Oct 2013 02:53:01 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9U6quCV017703
+	(envelope-from <kraxel@redhat.com>)
+	id 1VbQmB-00046I-SJ; Wed, 30 Oct 2013 04:05:16 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9U85E6M013928
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 30 Oct 2013 02:52:58 -0400
-Received: from amosk.info.com ([10.66.7.151])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id r9U6qkH8000749; Wed, 30 Oct 2013 02:52:48 -0400
-From: Amos Kong <akong@redhat.com>
-To: kwolf@redhat.com, qemu-trivial@nongnu.org
-Date: Wed, 30 Oct 2013 14:52:45 +0800
-Message-Id: <1383115965-22360-1-git-send-email-akong@redhat.com>
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+	Wed, 30 Oct 2013 04:05:14 -0400
+Received: from [10.36.4.1] (vpn1-4-1.ams2.redhat.com [10.36.4.1])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id r9U85Bdv003217; Wed, 30 Oct 2013 04:05:12 -0400
+Message-ID: <1383120311.22559.0.camel@nilsson.home.kraxel.org>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Wed, 30 Oct 2013 09:05:11 +0100
+In-Reply-To: <1383057871-3897-1-git-send-email-stefanha@redhat.com>
+References: <1383057871-3897-1-git-send-email-stefanha@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: mjt@tls.msk.ru, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] move BlockdevRef definition before using it
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2] usb: drop unused USBNetState.inpkt
+	field
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,71 +46,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Oct 2013 06:53:13 -0000
+X-List-Received-Date: Wed, 30 Oct 2013 08:05:43 -0000
 
-From: Amos Kong <kongjianjun@gmail.com>
+On Di, 2013-10-29 at 15:44 +0100, Stefan Hajnoczi wrote:
+> -    USBPacket *inpkt;
 
-@BlockdevRef is used in @BlockdevOptionsGenericFormat and
-@BlockdevOptionsGenericCOWFormat.
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 
-Signed-off-by: Amos Kong <kongjianjun@gmail.com>
----
- qapi-schema.json | 34 +++++++++++++++++-----------------
- 1 file changed, 17 insertions(+), 17 deletions(-)
+cheers,
+  Gerd
 
-diff --git a/qapi-schema.json b/qapi-schema.json
-index 60f3fd1..8af8187 100644
---- a/qapi-schema.json
-+++ b/qapi-schema.json
-@@ -4061,6 +4061,23 @@
-             '*rw': 'bool' } }
- 
- ##
-+# @BlockdevRef
-+#
-+# Reference to a block device.
-+#
-+# @definition:      defines a new block device inline
-+# @reference:       references the ID of an existing block device. An
-+#                   empty string means that no block device should be
-+#                   referenced.
-+#
-+# Since: 1.7
-+##
-+{ 'union': 'BlockdevRef',
-+  'discriminator': {},
-+  'data': { 'definition': 'BlockdevOptions',
-+            'reference': 'str' } }
-+
-+##
- # @BlockdevOptionsGenericFormat
- #
- # Driver specific block device options for image format that have no option
-@@ -4162,23 +4179,6 @@
-   } }
- 
- ##
--# @BlockdevRef
--#
--# Reference to a block device.
--#
--# @definition:      defines a new block device inline
--# @reference:       references the ID of an existing block device. An
--#                   empty string means that no block device should be
--#                   referenced.
--#
--# Since: 1.7
--##
--{ 'union': 'BlockdevRef',
--  'discriminator': {},
--  'data': { 'definition': 'BlockdevOptions',
--            'reference': 'str' } }
--
--##
- # @blockdev-add:
- #
- # Creates a new block device.
--- 
-1.8.3.1
 
 
