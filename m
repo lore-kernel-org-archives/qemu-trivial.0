@@ -1,39 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VbFg0-0007HU-RG
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Oct 2013 16:14:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48942)
+	id 1VbPeV-0002Rr-5F
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Oct 2013 02:53:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44687)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <benoit.canet@irqsave.net>) id 1VbFfu-00079f-4i
-	for qemu-trivial@nongnu.org; Tue, 29 Oct 2013 16:14:07 -0400
+	(envelope-from <akong@redhat.com>) id 1VbPeN-0002RD-MD
+	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 02:53:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <benoit.canet@irqsave.net>) id 1VbFfp-0001pD-4t
-	for qemu-trivial@nongnu.org; Tue, 29 Oct 2013 16:14:02 -0400
-Received: from nodalink.pck.nerim.net ([62.212.105.220]:37848
-	helo=paradis.irqsave.net) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <benoit.canet@irqsave.net>)
-	id 1VbFfe-0001oV-Qk; Tue, 29 Oct 2013 16:13:47 -0400
-Received: by paradis.irqsave.net (Postfix, from userid 1002)
-	id 4F5148746D9; Tue, 29 Oct 2013 21:13:44 +0100 (CET)
-Received: from irqsave.net (unknown [192.168.77.2])
-	by paradis.irqsave.net (Postfix) with ESMTP id 924FC8746C4;
-	Tue, 29 Oct 2013 21:13:42 +0100 (CET)
-Date: Tue, 29 Oct 2013 21:13:42 +0100
-From: =?iso-8859-1?Q?Beno=EEt?= Canet <benoit.canet@irqsave.net>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Message-ID: <20131029201341.GC2948@irqsave.net>
-References: <1383057871-3897-1-git-send-email-stefanha@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <1383057871-3897-1-git-send-email-stefanha@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 62.212.105.220
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] usb: drop unused
-	USBNetState.inpkt field
+	(envelope-from <akong@redhat.com>) id 1VbPeH-00071J-I9
+	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 02:53:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49120)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <akong@redhat.com>)
+	id 1VbPeH-000715-9t; Wed, 30 Oct 2013 02:53:01 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9U6quCV017703
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 30 Oct 2013 02:52:58 -0400
+Received: from amosk.info.com ([10.66.7.151])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r9U6qkH8000749; Wed, 30 Oct 2013 02:52:48 -0400
+From: Amos Kong <akong@redhat.com>
+To: kwolf@redhat.com, qemu-trivial@nongnu.org
+Date: Wed, 30 Oct 2013 14:52:45 +0800
+Message-Id: <1383115965-22360-1-git-send-email-akong@redhat.com>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: mjt@tls.msk.ru, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] move BlockdevRef definition before using it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,29 +40,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Oct 2013 20:14:07 -0000
+X-List-Received-Date: Wed, 30 Oct 2013 06:53:13 -0000
 
-Le Tuesday 29 Oct 2013 =E0 15:44:31 (+0100), Stefan Hajnoczi a =E9crit :
-> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
->  hw/usb/dev-network.c | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/hw/usb/dev-network.c b/hw/usb/dev-network.c
-> index 660d774..4c532b7 100644
-> --- a/hw/usb/dev-network.c
-> +++ b/hw/usb/dev-network.c
-> @@ -637,7 +637,6 @@ typedef struct USBNetState {
->      unsigned int out_ptr;
->      uint8_t out_buf[2048];
-> =20
-> -    USBPacket *inpkt;
->      unsigned int in_ptr, in_len;
->      uint8_t in_buf[2048];
-> =20
-> --=20
-> 1.8.3.1
->=20
->=20
-Reviewed-by: Benoit Canet <benoit@irqsave.net>
+From: Amos Kong <kongjianjun@gmail.com>
+
+@BlockdevRef is used in @BlockdevOptionsGenericFormat and
+@BlockdevOptionsGenericCOWFormat.
+
+Signed-off-by: Amos Kong <kongjianjun@gmail.com>
+---
+ qapi-schema.json | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/qapi-schema.json b/qapi-schema.json
+index 60f3fd1..8af8187 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -4061,6 +4061,23 @@
+             '*rw': 'bool' } }
+ 
+ ##
++# @BlockdevRef
++#
++# Reference to a block device.
++#
++# @definition:      defines a new block device inline
++# @reference:       references the ID of an existing block device. An
++#                   empty string means that no block device should be
++#                   referenced.
++#
++# Since: 1.7
++##
++{ 'union': 'BlockdevRef',
++  'discriminator': {},
++  'data': { 'definition': 'BlockdevOptions',
++            'reference': 'str' } }
++
++##
+ # @BlockdevOptionsGenericFormat
+ #
+ # Driver specific block device options for image format that have no option
+@@ -4162,23 +4179,6 @@
+   } }
+ 
+ ##
+-# @BlockdevRef
+-#
+-# Reference to a block device.
+-#
+-# @definition:      defines a new block device inline
+-# @reference:       references the ID of an existing block device. An
+-#                   empty string means that no block device should be
+-#                   referenced.
+-#
+-# Since: 1.7
+-##
+-{ 'union': 'BlockdevRef',
+-  'discriminator': {},
+-  'data': { 'definition': 'BlockdevOptions',
+-            'reference': 'str' } }
+-
+-##
+ # @blockdev-add:
+ #
+ # Creates a new block device.
+-- 
+1.8.3.1
+
 
