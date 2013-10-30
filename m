@@ -1,40 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VbQmf-0005wC-Ey
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Oct 2013 04:05:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57410)
+	id 1VbUwy-0001Nt-VO
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Oct 2013 08:32:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54663)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1VbQmX-0005oZ-KL
-	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 04:05:43 -0400
+	(envelope-from <eblake@redhat.com>) id 1VbUws-0001Nk-HV
+	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 08:32:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1VbQmR-00048n-KV
-	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 04:05:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54732)
+	(envelope-from <eblake@redhat.com>) id 1VbUwn-0007NH-K3
+	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 08:32:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:64876)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1VbQmB-00046I-SJ; Wed, 30 Oct 2013 04:05:16 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9U85E6M013928
+	(envelope-from <eblake@redhat.com>)
+	id 1VbUwn-0007ND-Ax; Wed, 30 Oct 2013 08:32:29 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id r9UCWQmv027618
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 30 Oct 2013 04:05:14 -0400
-Received: from [10.36.4.1] (vpn1-4-1.ams2.redhat.com [10.36.4.1])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id r9U85Bdv003217; Wed, 30 Oct 2013 04:05:12 -0400
-Message-ID: <1383120311.22559.0.camel@nilsson.home.kraxel.org>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Date: Wed, 30 Oct 2013 09:05:11 +0100
-In-Reply-To: <1383057871-3897-1-git-send-email-stefanha@redhat.com>
-References: <1383057871-3897-1-git-send-email-stefanha@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	Wed, 30 Oct 2013 08:32:26 -0400
+Received: from [10.3.113.57] (ovpn-113-57.phx2.redhat.com [10.3.113.57])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id r9UCWJlD020598; Wed, 30 Oct 2013 08:32:20 -0400
+Message-ID: <5270FC53.5060002@redhat.com>
+Date: Wed, 30 Oct 2013 06:32:19 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.0
+MIME-Version: 1.0
+To: Amos Kong <kongjianjun@gmail.com>, Amos Kong <akong@redhat.com>
+References: <1383115965-22360-1-git-send-email-akong@redhat.com>
+	<CAFeW=pYtDWzZo8CRtp_CzJFAtt4_ycZRG-45i+agEM6uz-4R=g@mail.gmail.com>
+In-Reply-To: <CAFeW=pYtDWzZo8CRtp_CzJFAtt4_ycZRG-45i+agEM6uz-4R=g@mail.gmail.com>
+X-Enigmail-Version: 1.6
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="t9esTTvJkQ5aTKGr0cUGBMowkwGU4Hx4h"
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] usb: drop unused USBNetState.inpkt
-	field
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] move BlockdevRef definition
+ before using it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,15 +54,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Oct 2013 08:05:43 -0000
+X-List-Received-Date: Wed, 30 Oct 2013 12:32:39 -0000
 
-On Di, 2013-10-29 at 15:44 +0100, Stefan Hajnoczi wrote:
-> -    USBPacket *inpkt;
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--t9esTTvJkQ5aTKGr0cUGBMowkwGU4Hx4h
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+On 10/30/2013 01:04 AM, Amos Kong wrote:
+> On Wed, Oct 30, 2013 at 2:52 PM, Amos Kong <akong@redhat.com> wrote:
+>>
+>> From: Amos Kong <kongjianjun@gmail.com>
+>>
+>> @BlockdevRef is used in @BlockdevOptionsGenericFormat and
+>> @BlockdevOptionsGenericCOWFormat.
+>=20
+> NACK this patch.
+>=20
+> @BlockdevOptions is used in @BlockdevRef, this change is meaningless.
 
-cheers,
-  Gerd
+Furthermore, qapi allows circular recursive types, so we can't do full
+topological sorting (the generator handles a reference to a type before
+its declaration just fine, as long as all names encountered in the file
+can be resolved at the time the complete file has been parsed).
+
+If anything, I think that alphabetical ordering _might_ make it easier
+to find types, instead of the current ad hoc ordering.  Also, at one
+point there was a patch proposed to allow file inclusion, where you
+could break out related types/commands into a secondary file rather than
+cramming everything into qapi-schema.json, but I don't know if that's
+worth reviving.
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
+--t9esTTvJkQ5aTKGr0cUGBMowkwGU4Hx4h
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.15 (GNU/Linux)
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJScPxTAAoJEKeha0olJ0Nq6WgH/1SK7UwxC5Z7JGojkVp1yUUF
+Tvya71a6blzWONH1Aif7VaAiWh2Bxx/DIrUynnqJPklch+kXvA6qxNYlPj0ZkcEF
+3ARRsfrUOjTBXOoxHNngQKmLplpmx9knF11EtiAV1i3s1BnGS6px78s2cH/b0QxP
+CwHAMvHLcgcf5sQTpfB6y+2xpNH/+4FUm6+E7EsDTBJGpWp4YgU9wmHH5KNtGA5P
+mVoCHmHrlSBs4mF9qhYojgR2e0KZCxDk4pAezPOGF0Pm/rdCqgsjxXs18Tl1u7ju
+2skkEjITVnaZfET8iNQUaVwau7O1Sq8Ki5VySUP3JPL4XrdpoWxiv1hoZcTZ5SU=
+=CQB1
+-----END PGP SIGNATURE-----
+
+--t9esTTvJkQ5aTKGr0cUGBMowkwGU4Hx4h--
 
