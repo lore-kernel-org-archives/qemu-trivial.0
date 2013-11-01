@@ -1,48 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VbaUf-0005ai-OL
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Oct 2013 14:27:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46509)
+	id 1VcBXv-0006uE-Ff
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Nov 2013 06:01:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34162)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kongjianjun@gmail.com>) id 1VbPpV-0004Pd-Hb
-	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 03:04:38 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1VcBXo-0006iN-IK
+	for qemu-trivial@nongnu.org; Fri, 01 Nov 2013 06:01:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kongjianjun@gmail.com>) id 1VbPpU-00023e-Hw
-	for qemu-trivial@nongnu.org; Wed, 30 Oct 2013 03:04:37 -0400
-Received: from mail-we0-x234.google.com ([2a00:1450:400c:c03::234]:42418)
+	(envelope-from <mjt@tls.msk.ru>) id 1VcBXi-0005yc-KC
+	for qemu-trivial@nongnu.org; Fri, 01 Nov 2013 06:01:32 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:52720)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kongjianjun@gmail.com>)
-	id 1VbPpP-00022D-Ua; Wed, 30 Oct 2013 03:04:32 -0400
-Received: by mail-we0-f180.google.com with SMTP id q59so847317wes.39
-	for <multiple recipients>; Wed, 30 Oct 2013 00:04:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=S7TVyAT/j7dZez0S7GlVqd5WtcPpX1UxJIUc6VrMQ7g=;
-	b=ZQD2kEEni6AE5QVwzlQ2zHzFn5rilv3+oq3WrhaBXNaTEOA6XWVgPfrwx4EA23voxf
-	T6XIRn7SkcDaPgA4ZHrHzEkRyvIJynxNa4oQWqXO3vmVNOLA1ipTmJy3P++pVMRHgMsL
-	ahphs44uRT4P0X9lYPLnyuHGFWJlWD6WxMWky+nuh9gNnRYqnS+4efMzJr1M8BESMSQE
-	eZe/4aTaH6Le5ZW6nBUN2NpfraahhIorMAlSUYP6svIaAHigalWt8AMXrILp7LjP0cpL
-	CSNYJLg3kCA7XTu272S6wJkfyxWGP6668jIFU5IBFVBn7CApPQlr4jv85SFZJtpcUGez
-	LN+Q==
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1VcBXW-0005vK-89; Fri, 01 Nov 2013 06:01:14 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 5B73D4003C;
+	Fri,  1 Nov 2013 14:01:13 +0400 (MSK)
+Message-ID: <52737BE9.4070509@msgid.tls.msk.ru>
+Date: Fri, 01 Nov 2013 14:01:13 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130922 Icedove/17.0.9
 MIME-Version: 1.0
-X-Received: by 10.180.12.198 with SMTP id a6mr1286452wic.38.1383116670459;
-	Wed, 30 Oct 2013 00:04:30 -0700 (PDT)
-Received: by 10.194.203.164 with HTTP; Wed, 30 Oct 2013 00:04:30 -0700 (PDT)
-In-Reply-To: <1383115965-22360-1-git-send-email-akong@redhat.com>
-References: <1383115965-22360-1-git-send-email-akong@redhat.com>
-Date: Wed, 30 Oct 2013 15:04:30 +0800
-Message-ID: <CAFeW=pYtDWzZo8CRtp_CzJFAtt4_ycZRG-45i+agEM6uz-4R=g@mail.gmail.com>
-From: Amos Kong <kongjianjun@gmail.com>
-To: Amos Kong <akong@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::234
-X-Mailman-Approved-At: Wed, 30 Oct 2013 14:27:48 -0400
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] move BlockdevRef definition
-	before using it
+To: Jan Krupa <JKrupa@suse.com>
+References: <3ad0fae079609a3ae01272ad5073708daec40c66.1381925918.git.JKrupa@suse.com>
+In-Reply-To: <3ad0fae079609a3ae01272ad5073708daec40c66.1381925918.git.JKrupa@suse.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+	Anthony Liguori <anthony@codemonkey.ws>
+Subject: Re: [Qemu-trivial] [v2,
+	1/4] qemu-char: add Czech characters to VNC keysyms
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,78 +44,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Oct 2013 07:04:38 -0000
+X-List-Received-Date: Fri, 01 Nov 2013 10:01:38 -0000
 
-On Wed, Oct 30, 2013 at 2:52 PM, Amos Kong <akong@redhat.com> wrote:
->
-> From: Amos Kong <kongjianjun@gmail.com>
->
-> @BlockdevRef is used in @BlockdevOptionsGenericFormat and
-> @BlockdevOptionsGenericCOWFormat.
+16.10.2013 16:40, Jan Krupa wrote:
+> This patch adds missing Czech characters to the VNC keysym table.
 
-NACK this patch.
+Thanks, applied to the trivial-patches queue.
 
-@BlockdevOptions is used in @BlockdevRef, this change is meaningless.
-
-> Signed-off-by: Amos Kong <kongjianjun@gmail.com>
-> ---
->  qapi-schema.json | 34 +++++++++++++++++-----------------
->  1 file changed, 17 insertions(+), 17 deletions(-)
->
-> diff --git a/qapi-schema.json b/qapi-schema.json
-> index 60f3fd1..8af8187 100644
-> --- a/qapi-schema.json
-> +++ b/qapi-schema.json
-> @@ -4061,6 +4061,23 @@
->              '*rw': 'bool' } }
->
->  ##
-> +# @BlockdevRef
-> +#
-> +# Reference to a block device.
-> +#
-> +# @definition:      defines a new block device inline
-> +# @reference:       references the ID of an existing block device. An
-> +#                   empty string means that no block device should be
-> +#                   referenced.
-> +#
-> +# Since: 1.7
-> +##
-> +{ 'union': 'BlockdevRef',
-> +  'discriminator': {},
-> +  'data': { 'definition': 'BlockdevOptions',
-> +            'reference': 'str' } }
-> +
-> +##
->  # @BlockdevOptionsGenericFormat
->  #
->  # Driver specific block device options for image format that have no option
-> @@ -4162,23 +4179,6 @@
->    } }
->
->  ##
-> -# @BlockdevRef
-> -#
-> -# Reference to a block device.
-> -#
-> -# @definition:      defines a new block device inline
-> -# @reference:       references the ID of an existing block device. An
-> -#                   empty string means that no block device should be
-> -#                   referenced.
-> -#
-> -# Since: 1.7
-> -##
-> -{ 'union': 'BlockdevRef',
-> -  'discriminator': {},
-> -  'data': { 'definition': 'BlockdevOptions',
-> -            'reference': 'str' } }
-> -
-> -##
->  # @blockdev-add:
->  #
->  # Creates a new block device.
-> --
-> 1.8.3.1
->
->
+/mjt
 
