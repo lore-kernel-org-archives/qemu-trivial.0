@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VcBZD-00086W-2h
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Nov 2013 06:02:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34556)
+	id 1VcBiv-0003pQ-19
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Nov 2013 06:13:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36170)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VcBZ5-0007v6-KV
-	for qemu-trivial@nongnu.org; Fri, 01 Nov 2013 06:02:57 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1VcBin-0003fC-RZ
+	for qemu-trivial@nongnu.org; Fri, 01 Nov 2013 06:12:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VcBYz-0006M9-JZ
-	for qemu-trivial@nongnu.org; Fri, 01 Nov 2013 06:02:51 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36401)
+	(envelope-from <mjt@tls.msk.ru>) id 1VcBih-0003Yr-Sw
+	for qemu-trivial@nongnu.org; Fri, 01 Nov 2013 06:12:53 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:35714)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VcBYn-0006Ii-DO; Fri, 01 Nov 2013 06:02:33 -0400
+	id 1VcBiS-0003Kz-TN; Fri, 01 Nov 2013 06:12:33 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id ABE8C4003C;
-	Fri,  1 Nov 2013 14:02:32 +0400 (MSK)
-Message-ID: <52737C38.5090300@msgid.tls.msk.ru>
-Date: Fri, 01 Nov 2013 14:02:32 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 3FD8E4003C;
+	Fri,  1 Nov 2013 14:12:32 +0400 (MSK)
+Message-ID: <52737E90.8050307@msgid.tls.msk.ru>
+Date: Fri, 01 Nov 2013 14:12:32 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:17.0) Gecko/20130922 Icedove/17.0.9
 MIME-Version: 1.0
-To: Jan Krupa <JKrupa@suse.com>
-References: <8f4fa5abe5690da612b33b2dd2602098e0e1820d.1381925918.git.JKrupa@suse.com>
-In-Reply-To: <8f4fa5abe5690da612b33b2dd2602098e0e1820d.1381925918.git.JKrupa@suse.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Stefan Hajnoczi <stefanha@redhat.com>
+References: <1383057871-3897-1-git-send-email-stefanha@redhat.com>
+In-Reply-To: <1383057871-3897-1-git-send-email-stefanha@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
-	Anthony Liguori <anthony@codemonkey.ws>
-Subject: Re: [Qemu-trivial] [v2,2/4] qemu-char: add Czech keymap file
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH v2] usb: drop unused USBNetState.inpkt
+ field
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,16 +44,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Nov 2013 10:02:57 -0000
+X-List-Received-Date: Fri, 01 Nov 2013 10:13:00 -0000
 
-16.10.2013 16:40, Jan Krupa wrote:
-> This patch adds Czech keyboard layout to available keymap files
-> and Makefile.
+29.10.2013 18:44, Stefan Hajnoczi wrote:
+[]
 
 Thanks, applied to the trivial-patches queue.
 
-Again, I rely solely on you for the correctness of the keymap itself.
-I'm sorry this took so long.
-
 /mjt
+
 
