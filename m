@@ -1,37 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VdQBa-0004i9-Jd
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2013 14:51:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43890)
+	id 1VdQRN-0002qI-5E
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2013 15:08:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47229)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VdQBW-0004bg-GB
-	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 14:51:39 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1VdQRG-0002g4-1D
+	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:07:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VdQBR-0002h4-QK
-	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 14:51:38 -0500
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:33572
-	helo=v2201305906712890.yourvserver.net)
+	(envelope-from <peter.maydell@linaro.org>) id 1VdQR5-0001rj-Em
+	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:07:53 -0500
+Received: from mail-la0-f41.google.com ([209.85.215.41]:45855)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VdQBO-0002f5-M9; Mon, 04 Nov 2013 14:51:30 -0500
-Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id BE1E6180021; Mon,  4 Nov 2013 20:51:26 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel <qemu-devel@nongnu.org>
-Date: Mon,  4 Nov 2013 20:51:25 +0100
-Message-Id: <1383594685-19332-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <peter.maydell@linaro.org>) id 1VdQR5-0001r0-7t
+	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:07:43 -0500
+Received: by mail-la0-f41.google.com with SMTP id ea20so451174lab.0
+	for <qemu-trivial@nongnu.org>; Mon, 04 Nov 2013 12:07:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=eUdeUgrZd89QcVSTP/ktwq1PtJOUIuCOFvnIGJs3Nio=;
+	b=IqPQDb74SajDUeH8nvPczLxXXh3yNu41LS3FiKVc8KuN81RgfKIAae1kki9G8v/BvV
+	0VKQJVd8EICJZ2c1JpL1zhL56lV8EKy+pEJvvchuKEkfGRpjA1ALltFQvBt/Vodwa+T8
+	tk36h93QYMMOqQlC3jnXZdff/SEK8pQr6Bx1C9iyK4yZwSKU+20q8njBDjRAwhk/UpXs
+	u60bMxQskFULbAyO/78QABmcI1j1wlJJEMKD6WKnwTtW0mr4r1jWNBBocIuVZPySI/0V
+	o7mHVo7CgwCHrMgWTDBN7DW8bjDV5f11hmAoM+8JDwgB40su+KteQTpnAmAx/Ja019Nj
+	5BQg==
+X-Gm-Message-State: ALoCoQlcnqWPygavHNoVlSU3R52GU6b2xGBmPTxLfXvsvame2tqJ9j3i3gZMDyi/0HRJZ80Z9wBH
+X-Received: by 10.152.3.42 with SMTP id 10mr13359666laz.22.1383595662299; Mon,
+	04 Nov 2013 12:07:42 -0800 (PST)
 MIME-Version: 1.0
+Received: by 10.112.161.232 with HTTP; Mon, 4 Nov 2013 12:07:22 -0800 (PST)
+In-Reply-To: <1383594685-19332-1-git-send-email-sw@weilnetz.de>
+References: <1383594685-19332-1-git-send-email-sw@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Nov 2013 20:07:22 +0000
+Message-ID: <CAFEAcA9-YvQPprbt1+KCG0ov44-gbvaPx-gtX4yyd5fzfcX3UA@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.41
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
 	Anthony Liguori <aliguori@amazon.com>
-Subject: [Qemu-trivial] [PATCH] gtk: Fix compiler warnings with
-	-Werror=sign-compare
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gtk: Fix compiler warnings
+	with -Werror=sign-compare
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,50 +56,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Nov 2013 19:51:41 -0000
+X-List-Received-Date: Mon, 04 Nov 2013 20:07:59 -0000
 
-With -Werror=3Dsign-compare (not enabled by default), gcc shows these err=
+On 4 November 2013 19:51, Stefan Weil <sw@weilnetz.de> wrote:
+> With -Werror=3Dsign-compare (not enabled by default), gcc shows these err=
 ors:
-
-ui/gtk.c: In function =E2=80=98gtk_release_modifiers=E2=80=99:
-ui/gtk.c:288:19: error:
- comparison between signed and unsigned integer expressions [-Werror=3Dsi=
+>
+> ui/gtk.c: In function =E2=80=98gtk_release_modifiers=E2=80=99:
+> ui/gtk.c:288:19: error:
+>  comparison between signed and unsigned integer expressions [-Werror=3Dsi=
 gn-compare]
-ui/gtk.c: In function =E2=80=98gd_key_event=E2=80=99:
-ui/gtk.c:746:19: error:
- comparison between signed and unsigned integer expressions [-Werror=3Dsi=
+> ui/gtk.c: In function =E2=80=98gd_key_event=E2=80=99:
+> ui/gtk.c:746:19: error:
+>  comparison between signed and unsigned integer expressions [-Werror=3Dsi=
 gn-compare]
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- ui/gtk.c |    5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+If this warning is going to complain about entirely
+safe and idiomatic code like
 
-diff --git a/ui/gtk.c b/ui/gtk.c
-index b5f4f0b..79efda1 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -273,7 +273,8 @@ static void gd_update_full_redraw(GtkDisplayState *s)
-=20
- static void gtk_release_modifiers(GtkDisplayState *s)
- {
--    int i, keycode;
-+    unsigned i;
-+    int keycode;
-=20
-     if (!gd_on_vga(s)) {
-         return;
-@@ -714,7 +715,7 @@ static gboolean gd_key_event(GtkWidget *widget, GdkEv=
-entKey *key, void *opaque)
-     GtkDisplayState *s =3D opaque;
-     int gdk_keycode;
-     int qemu_keycode;
--    int i;
-+    unsigned i;
-=20
-     gdk_keycode =3D key->hardware_keycode;
-=20
---=20
-1.7.10.4
+   int i;
+   static const int some_array[] =3D {
+       0x2a, 0x36, 0x1d, 0x9d, 0x38, 0xb8, 0xdb, 0xdd,
+   };
 
+   for (i =3D 0; i < ARRAY_SIZE(some_array); i++) {
+       ...
+   }
+
+then I think it is more trouble than it is worth and we
+should leave it disabled.
+
+thanks
+-- PMM
 
