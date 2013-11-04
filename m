@@ -1,46 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VdQRN-0002qI-5E
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2013 15:08:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47229)
+	id 1VdQhG-0000v0-Lh
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2013 15:24:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51076)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VdQRG-0002g4-1D
-	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:07:58 -0500
+	(envelope-from <sw@weilnetz.de>) id 1VdQh8-0000mT-T9
+	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:24:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VdQR5-0001rj-Em
-	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:07:53 -0500
-Received: from mail-la0-f41.google.com ([209.85.215.41]:45855)
+	(envelope-from <sw@weilnetz.de>) id 1VdQh3-0001Ei-Ep
+	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:24:18 -0500
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:47371)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VdQR5-0001r0-7t
-	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:07:43 -0500
-Received: by mail-la0-f41.google.com with SMTP id ea20so451174lab.0
-	for <qemu-trivial@nongnu.org>; Mon, 04 Nov 2013 12:07:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=eUdeUgrZd89QcVSTP/ktwq1PtJOUIuCOFvnIGJs3Nio=;
-	b=IqPQDb74SajDUeH8nvPczLxXXh3yNu41LS3FiKVc8KuN81RgfKIAae1kki9G8v/BvV
-	0VKQJVd8EICJZ2c1JpL1zhL56lV8EKy+pEJvvchuKEkfGRpjA1ALltFQvBt/Vodwa+T8
-	tk36h93QYMMOqQlC3jnXZdff/SEK8pQr6Bx1C9iyK4yZwSKU+20q8njBDjRAwhk/UpXs
-	u60bMxQskFULbAyO/78QABmcI1j1wlJJEMKD6WKnwTtW0mr4r1jWNBBocIuVZPySI/0V
-	o7mHVo7CgwCHrMgWTDBN7DW8bjDV5f11hmAoM+8JDwgB40su+KteQTpnAmAx/Ja019Nj
-	5BQg==
-X-Gm-Message-State: ALoCoQlcnqWPygavHNoVlSU3R52GU6b2xGBmPTxLfXvsvame2tqJ9j3i3gZMDyi/0HRJZ80Z9wBH
-X-Received: by 10.152.3.42 with SMTP id 10mr13359666laz.22.1383595662299; Mon,
-	04 Nov 2013 12:07:42 -0800 (PST)
+	(envelope-from <sw@weilnetz.de>)
+	id 1VdQgs-00019W-Eb; Mon, 04 Nov 2013 15:24:02 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	7CE5A728004C; Mon,  4 Nov 2013 21:24:00 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id fg43s27_ioAw; Mon,  4 Nov 2013 21:23:58 +0100 (CET)
+Received: from [192.168.178.35] (p54ADAF56.dip0.t-ipconnect.de [84.173.175.86])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	5BD7A7280042; Mon,  4 Nov 2013 21:23:58 +0100 (CET)
+Message-ID: <5278025D.1000201@weilnetz.de>
+Date: Mon, 04 Nov 2013 21:23:57 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:24.0) Gecko/20100101 Thunderbird/24.1.0
 MIME-Version: 1.0
-Received: by 10.112.161.232 with HTTP; Mon, 4 Nov 2013 12:07:22 -0800 (PST)
-In-Reply-To: <1383594685-19332-1-git-send-email-sw@weilnetz.de>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1383594685-19332-1-git-send-email-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Nov 2013 20:07:22 +0000
-Message-ID: <CAFEAcA9-YvQPprbt1+KCG0ov44-gbvaPx-gtX4yyd5fzfcX3UA@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
+	<CAFEAcA9-YvQPprbt1+KCG0ov44-gbvaPx-gtX4yyd5fzfcX3UA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9-YvQPprbt1+KCG0ov44-gbvaPx-gtX4yyd5fzfcX3UA@mail.gmail.com>
+X-Enigmail-Version: 1.5.2
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.41
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
 	Anthony Liguori <aliguori@amazon.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gtk: Fix compiler warnings
@@ -56,36 +53,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Nov 2013 20:07:59 -0000
+X-List-Received-Date: Mon, 04 Nov 2013 20:24:24 -0000
 
-On 4 November 2013 19:51, Stefan Weil <sw@weilnetz.de> wrote:
-> With -Werror=3Dsign-compare (not enabled by default), gcc shows these err=
-ors:
+Am 04.11.2013 21:07, schrieb Peter Maydell:
+> On 4 November 2013 19:51, Stefan Weil <sw@weilnetz.de> wrote:
+>> With -Werror=3Dsign-compare (not enabled by default), gcc shows these =
+errors:
+>>
+>> ui/gtk.c: In function =E2=80=98gtk_release_modifiers=E2=80=99:
+>> ui/gtk.c:288:19: error:
+>>  comparison between signed and unsigned integer expressions [-Werror=3D=
+sign-compare]
+>> ui/gtk.c: In function =E2=80=98gd_key_event=E2=80=99:
+>> ui/gtk.c:746:19: error:
+>>  comparison between signed and unsigned integer expressions [-Werror=3D=
+sign-compare]
+> If this warning is going to complain about entirely
+> safe and idiomatic code like
 >
-> ui/gtk.c: In function =E2=80=98gtk_release_modifiers=E2=80=99:
-> ui/gtk.c:288:19: error:
->  comparison between signed and unsigned integer expressions [-Werror=3Dsi=
-gn-compare]
-> ui/gtk.c: In function =E2=80=98gd_key_event=E2=80=99:
-> ui/gtk.c:746:19: error:
->  comparison between signed and unsigned integer expressions [-Werror=3Dsi=
-gn-compare]
+>    int i;
+>    static const int some_array[] =3D {
+>        0x2a, 0x36, 0x1d, 0x9d, 0x38, 0xb8, 0xdb, 0xdd,
+>    };
+>
+>    for (i =3D 0; i < ARRAY_SIZE(some_array); i++) {
+>        ...
+>    }
+>
+> then I think it is more trouble than it is worth and we
+> should leave it disabled.
+>
+> thanks
+> -- PMM
 
-If this warning is going to complain about entirely
-safe and idiomatic code like
+Yes, we should leave it disabled for simple practical reasons: there are
+too many warnings of this kind, so I don't expect they will be fixed in
+the near future (I have no plan to send patches to fix them all - this
+one was just in my way).
 
-   int i;
-   static const int some_array[] =3D {
-       0x2a, 0x36, 0x1d, 0x9d, 0x38, 0xb8, 0xdb, 0xdd,
-   };
+And yes, we should fix code which can be improved as easily as in the
+above example. ARRAY_SIZE happens to be an unsigned size_t, so comparing
+it to an unsigned value is better IMHO (I'm aware that there were
+already discussions about using signed or unsigned integers).
 
-   for (i =3D 0; i < ARRAY_SIZE(some_array); i++) {
-       ...
-   }
+-Wsign-compare is like other compiler warnings: it can detect some
+really unwanted code, but a human reviewer won't always agree on the
+results.It might be a good idea to support it somewhere in the far future=
+.
 
-then I think it is more trouble than it is worth and we
-should leave it disabled.
+Stefan
 
-thanks
--- PMM
 
