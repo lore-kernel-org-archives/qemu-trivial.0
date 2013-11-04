@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VdQhG-0000v0-Lh
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2013 15:24:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51076)
+	id 1VdQsi-0004Uo-1N
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2013 15:36:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54484)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VdQh8-0000mT-T9
-	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:24:24 -0500
+	(envelope-from <lersek@redhat.com>) id 1VdQsc-0004R7-6o
+	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:36:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VdQh3-0001Ei-Ep
-	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:24:18 -0500
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:47371)
+	(envelope-from <lersek@redhat.com>) id 1VdQsV-0007TW-8h
+	for qemu-trivial@nongnu.org; Mon, 04 Nov 2013 15:36:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:25855)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1VdQgs-00019W-Eb; Mon, 04 Nov 2013 15:24:02 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	7CE5A728004C; Mon,  4 Nov 2013 21:24:00 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id fg43s27_ioAw; Mon,  4 Nov 2013 21:23:58 +0100 (CET)
-Received: from [192.168.178.35] (p54ADAF56.dip0.t-ipconnect.de [84.173.175.86])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	5BD7A7280042; Mon,  4 Nov 2013 21:23:58 +0100 (CET)
-Message-ID: <5278025D.1000201@weilnetz.de>
-Date: Mon, 04 Nov 2013 21:23:57 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.1.0
+	(envelope-from <lersek@redhat.com>)
+	id 1VdQsU-0007Sb-Gz; Mon, 04 Nov 2013 15:36:02 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rA4KZvco009739
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 4 Nov 2013 15:35:58 -0500
+Received: from lacos-laptop.usersys.redhat.com (vpn1-6-80.ams2.redhat.com
+	[10.36.6.80])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id rA4KZtn9005666; Mon, 4 Nov 2013 15:35:56 -0500
+Message-ID: <527805D2.3000107@redhat.com>
+Date: Mon, 04 Nov 2013 21:38:42 +0100
+From: Laszlo Ersek <lersek@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130912 Thunderbird/17.0.9
 MIME-Version: 1.0
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <1383594685-19332-1-git-send-email-sw@weilnetz.de>
 	<CAFEAcA9-YvQPprbt1+KCG0ov44-gbvaPx-gtX4yyd5fzfcX3UA@mail.gmail.com>
 In-Reply-To: <CAFEAcA9-YvQPprbt1+KCG0ov44-gbvaPx-gtX4yyd5fzfcX3UA@mail.gmail.com>
-X-Enigmail-Version: 1.5.2
 Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	rA4KZvco009739
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Anthony Liguori <aliguori@amazon.com>
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel <qemu-devel@nongnu.org>, Anthony Liguori <aliguori@amazon.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gtk: Fix compiler warnings
 	with -Werror=sign-compare
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,9 +53,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Nov 2013 20:24:24 -0000
+X-List-Received-Date: Mon, 04 Nov 2013 20:36:15 -0000
 
-Am 04.11.2013 21:07, schrieb Peter Maydell:
+On 11/04/13 21:07, Peter Maydell wrote:
 > On 4 November 2013 19:51, Stefan Weil <sw@weilnetz.de> wrote:
 >> With -Werror=3Dsign-compare (not enabled by default), gcc shows these =
 errors:
@@ -68,39 +68,22 @@ sign-compare]
 >> ui/gtk.c:746:19: error:
 >>  comparison between signed and unsigned integer expressions [-Werror=3D=
 sign-compare]
+>=20
 > If this warning is going to complain about entirely
 > safe and idiomatic code like
->
+>=20
 >    int i;
 >    static const int some_array[] =3D {
 >        0x2a, 0x36, 0x1d, 0x9d, 0x38, 0xb8, 0xdb, 0xdd,
 >    };
->
+>=20
 >    for (i =3D 0; i < ARRAY_SIZE(some_array); i++) {
 >        ...
 >    }
->
-> then I think it is more trouble than it is worth and we
-> should leave it disabled.
->
-> thanks
-> -- PMM
 
-Yes, we should leave it disabled for simple practical reasons: there are
-too many warnings of this kind, so I don't expect they will be fixed in
-the near future (I have no plan to send patches to fix them all - this
-one was just in my way).
+(Entirely safe, and completely non-idiomatic: "i" should be size_t, as
+that is the type of the sizeof operator's result.)
 
-And yes, we should fix code which can be improved as easily as in the
-above example. ARRAY_SIZE happens to be an unsigned size_t, so comparing
-it to an unsigned value is better IMHO (I'm aware that there were
-already discussions about using signed or unsigned integers).
-
--Wsign-compare is like other compiler warnings: it can detect some
-really unwanted code, but a human reviewer won't always agree on the
-results.It might be a good idea to support it somewhere in the far future=
-.
-
-Stefan
-
+Laszlo
+/me apologizes for the raging pedantry
 
