@@ -1,43 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VdqLj-0002w0-Ry
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2013 18:47:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37173)
+	id 1VduW6-000678-Ks
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2013 23:14:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58846)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>) id 1VdqLb-0002in-KM
-	for qemu-trivial@nongnu.org; Tue, 05 Nov 2013 18:47:53 -0500
+	(envelope-from <whitearchey@gmail.com>) id 1VdsJb-0007R3-VO
+	for qemu-trivial@nongnu.org; Tue, 05 Nov 2013 20:54:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>) id 1VdqLV-0006wo-Lu
-	for qemu-trivial@nongnu.org; Tue, 05 Nov 2013 18:47:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:12971)
+	(envelope-from <whitearchey@gmail.com>) id 1VdsJT-0007jk-GI
+	for qemu-trivial@nongnu.org; Tue, 05 Nov 2013 20:53:51 -0500
+Received: from mail-la0-x22d.google.com ([2a00:1450:4010:c03::22d]:40775)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>)
-	id 1VdqLJ-0006uQ-8d; Tue, 05 Nov 2013 18:47:29 -0500
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rA5NlSsJ023967
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 5 Nov 2013 18:47:28 -0500
-Received: from colepc.home (ovpn-113-128.phx2.redhat.com [10.3.113.128])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id rA5NlRWf008037; Tue, 5 Nov 2013 18:47:27 -0500
-Message-ID: <5279838F.8060008@redhat.com>
-Date: Tue, 05 Nov 2013 18:47:27 -0500
-From: Cole Robinson <crobinso@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.1.0
+	(envelope-from <whitearchey@gmail.com>) id 1VdsJT-0007je-8g
+	for qemu-trivial@nongnu.org; Tue, 05 Nov 2013 20:53:43 -0500
+Received: by mail-la0-f45.google.com with SMTP id el20so1225154lab.32
+	for <qemu-trivial@nongnu.org>; Tue, 05 Nov 2013 17:53:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=content-type:date:subject:cc:to:mime-version
+	:content-transfer-encoding:from:message-id:user-agent;
+	bh=TTItgtycK5Z/cXZmPBEOhHqB5VjuR7lD2LyhvrOz6NQ=;
+	b=E8lFrtXsh5Wr+t5onIy+SSnyiqwpx+D1d/KlQZyuU4Dppbt9hpw+Z0VVlN7c7sZm2B
+	u64qRElpAxsje0srJOiKcvVKvVM+lnZNweFG7q6pXxUA87avWyE2v1lSfvwx1t7bB9Om
+	sZWQomGiJ9MC9Mrt0/ShkZJAVg5szxgVf2ZIiSrPmzRIOfEG5lnxsZR4Lc28w/3GKUAp
+	jF0I8lVLXIySAfZqyNwlsixgJzZTbEWTv89jXtxWjG1qT3wNCSpg9/1ge/rGaAbY5uws
+	5m6PWjPOeSjr1eiLFuh6MZUefM/HU+//B/WKTw/5No68OWHwSKqsaevF/qviOeLjVjlw
+	vz/A==
+X-Received: by 10.152.5.162 with SMTP id t2mr392409lat.1.1383702821536;
+	Tue, 05 Nov 2013 17:53:41 -0800 (PST)
+Received: from whitewind-arch ([193.169.1.2])
+	by mx.google.com with ESMTPSA id e4sm22239638lba.15.2013.11.05.17.53.39
+	for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Tue, 05 Nov 2013 17:53:40 -0800 (PST)
+Content-Type: text/plain; charset=utf-8; format=flowed; delsp=yes
+Date: Wed, 06 Nov 2013 10:54:04 +0900
+To: qemu-trivial@nongnu.org
 MIME-Version: 1.0
-To: qemu-devel@nongnu.org
-References: <1d038bb1867cd9c72ba555ab40d4c891df71c5f5.1381506642.git.crobinso@redhat.com>
-In-Reply-To: <1d038bb1867cd9c72ba555ab40d4c891df71c5f5.1381506642.git.crobinso@redhat.com>
-Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, alex.williamson@redhat.com, armbru@redhat.com,
-	mst@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH v2] pci-assign: Fix error_report of
-	pci-stub message
+From: whitearchey <whitearchey@gmail.com>
+Message-ID: <op.w53t8fe2cb68cn@whitewind-arch>
+User-Agent: Opera Mail/12.16 (Linux)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c03::22d
+X-Mailman-Approved-At: Tue, 05 Nov 2013 23:14:53 -0500
+Subject: [Qemu-trivial] [PATCH] qga: Fix shutdown command of guest agent to
+	work with SysV
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,76 +56,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Nov 2013 23:47:54 -0000
+X-List-Received-Date: Wed, 06 Nov 2013 01:54:00 -0000
 
-cc-ing qemu-trivial since this hasn't been picked up yet AFAICT.
+For now guest agent uses following command to shutdown system:
+shutdown -P +0 "blabla"
+but this syntax works only with shutdown command from systemd or upstart,
+because SysV shutdown requires -h switch.
 
-- Cole
+Following patch changes the command so it works with systemd, upstart and SysV
 
-On 10/11/2013 11:52 AM, Cole Robinson wrote:
-> Using multiple calls to error_report here means every line is
-> prefaced with the (potentially long) pci-assign command line
-> arguments.
-> 
-> Use a single error_printf to preserve the intended formatting.
-> Since this code path is always preceded by an error_report call,
-> we don't lose the command line reporting.
-> 
-> Signed-off-by: Cole Robinson <crobinso@redhat.com>
-> ---
-> 
-> v2: Switch to error_printf
-> 
->  hw/i386/kvm/pci-assign.c | 36 ++++++++++++++++--------------------
->  1 file changed, 16 insertions(+), 20 deletions(-)
-> 
-> diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
-> index 5618173..f013a1c 100644
-> --- a/hw/i386/kvm/pci-assign.c
-> +++ b/hw/i386/kvm/pci-assign.c
-> @@ -791,26 +791,22 @@ static void assign_failed_examine(AssignedDevice *dev)
->          goto fail;
->      }
->  
-> -    error_report("*** The driver '%s' is occupying your device "
-> -                 "%04x:%02x:%02x.%x.",
-> -                 ns, dev->host.domain, dev->host.bus, dev->host.slot,
-> -                 dev->host.function);
-> -    error_report("***");
-> -    error_report("*** You can try the following commands to free it:");
-> -    error_report("***");
-> -    error_report("*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub/"
-> -                 "new_id", vendor_id, device_id);
-> -    error_report("*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/"
-> -                 "%s/unbind",
-> -                 dev->host.domain, dev->host.bus, dev->host.slot,
-> -                 dev->host.function, ns);
-> -    error_report("*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/"
-> -                 "pci-stub/bind",
-> -                 dev->host.domain, dev->host.bus, dev->host.slot,
-> -                 dev->host.function);
-> -    error_report("*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub"
-> -                 "/remove_id", vendor_id, device_id);
-> -    error_report("***");
-> +    error_printf("*** The driver '%s' is occupying your device "
-> +        "%04x:%02x:%02x.%x.\n"
-> +        "***\n"
-> +        "*** You can try the following commands to free it:\n"
-> +        "***\n"
-> +        "*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub/new_id\n"
-> +        "*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/%s/unbind\n"
-> +        "*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/"
-> +        "pci-stub/bind\n"
-> +        "*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub/remove_id\n"
-> +        "***",
-> +        ns, dev->host.domain, dev->host.bus, dev->host.slot,
-> +        dev->host.function, vendor_id, device_id,
-> +        dev->host.domain, dev->host.bus, dev->host.slot, dev->host.function,
-> +        ns, dev->host.domain, dev->host.bus, dev->host.slot,
-> +        dev->host.function, vendor_id, device_id);
->  
->      return;
->  
-> 
+Signed-off-by: Michael Avdienko <whitearchey@gmail.com>
+---
+  qga/commands-posix.c | 2 +-
+  1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index f453132..10682f5 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -99,7 +99,7 @@ void qmp_guest_shutdown(bool has_mode, const char *mode, Error **err)
+          reopen_fd_to_null(1);
+          reopen_fd_to_null(2);
+
+-        execle("/sbin/shutdown", "shutdown", shutdown_flag, "+0",
++        execle("/sbin/shutdown", "shutdown", "-h", shutdown_flag, "+0",
+                 "hypervisor initiated shutdown", (char*)NULL, environ);
+          _exit(EXIT_FAILURE);
+      } else if (pid < 0) {
+-- 
+1.8.4.2
 
