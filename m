@@ -1,54 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VeFaw-0003jo-Oe
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Nov 2013 21:45:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53645)
+	id 1VfUwK-0004RD-9K
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Nov 2013 08:20:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53284)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <whitearchey@gmail.com>) id 1VeFao-0003fB-CM
-	for qemu-trivial@nongnu.org; Wed, 06 Nov 2013 21:45:16 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VfUwD-0004Ka-Uk
+	for qemu-trivial@nongnu.org; Sun, 10 Nov 2013 08:20:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <whitearchey@gmail.com>) id 1VeFai-00008h-Re
-	for qemu-trivial@nongnu.org; Wed, 06 Nov 2013 21:45:10 -0500
-Received: from mail-lb0-x230.google.com ([2a00:1450:4010:c04::230]:55515)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VfUwC-0005If-O5
+	for qemu-trivial@nongnu.org; Sun, 10 Nov 2013 08:20:25 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:45242
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <whitearchey@gmail.com>)
-	id 1VeFai-0008VE-Jm; Wed, 06 Nov 2013 21:45:04 -0500
-Received: by mail-lb0-f176.google.com with SMTP id z5so411985lbh.7
-	for <multiple recipients>; Wed, 06 Nov 2013 18:45:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=content-type:to:subject:references:date:cc:mime-version
-	:content-transfer-encoding:from:message-id:in-reply-to:user-agent;
-	bh=RV4h+Aih6CqWtIWBe+C/siTKxUba5xhCztnBFj/T7QA=;
-	b=cEGgK7tDZnj1hcd0jLGGcS2uXdy7jrdeyyPNtYRFgOxLvG+P7VTgwVUNLDqkyOPHb0
-	f+/ffEsZlJnoqa8yi2FUwmMkH7hf48wm+HgAlXK1DOXgTR99fNei36hBY3+DKyACawbn
-	1GokuKxKsnFwDYOcYOmWj+C9NDZhkK/MV0LKbnM+qnHNzad5L/hYyYkDF1zt5l8cdrXQ
-	pgE2xZJPkJyRtnkSnpYCoAmGLj11JCgw0gYoUHUuk3Rs1hGrd1VRfS6H9KbMT39esKjf
-	aQBOhLubjie1HyBdJBJDe2/DFk0oSpaa29SYMnTU2HKaV9fD2XYOXWawqUS23YG0GDKk
-	25Xw==
-X-Received: by 10.152.120.33 with SMTP id kz1mr4437920lab.26.1383792302862;
-	Wed, 06 Nov 2013 18:45:02 -0800 (PST)
-Received: from whitewind-arch ([193.169.1.2])
-	by mx.google.com with ESMTPSA id mr1sm1186576lbc.16.2013.11.06.18.45.00
-	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Wed, 06 Nov 2013 18:45:01 -0800 (PST)
-Content-Type: text/plain; charset=utf-8; format=flowed; delsp=yes
-To: "Michael Tokarev" <mjt@tls.msk.ru>
-References: <op.w53t8fe2cb68cn@whitewind-arch>
-	<527A09E4.7090605@msgid.tls.msk.ru>
-Date: Thu, 07 Nov 2013 11:45:25 +0900
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-From: whitearchey <whitearchey@gmail.com>
-Message-ID: <op.w55q9zz9cb68cn@whitewind-arch>
-In-Reply-To: <527A09E4.7090605@msgid.tls.msk.ru>
-User-Agent: Opera Mail/12.16 (Linux)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VfUwA-0005Hv-71; Sun, 10 Nov 2013 08:20:22 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id C75AC18088C; Sun, 10 Nov 2013 14:20:18 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel <qemu-devel@nongnu.org>
+Date: Sun, 10 Nov 2013 14:20:17 +0100
+Message-Id: <1384089617-4084-2-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1384089617-4084-1-git-send-email-sw@weilnetz.de>
+References: <1384089617-4084-1-git-send-email-sw@weilnetz.de>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4010:c04::230
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] qga: Fix shutdown command of guest agent
- to work with SysV
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Gerd Hoffmann <kraxel@redhat.com>, Anthony Liguori <aliguori@amazon.com>
+Subject: [Qemu-trivial] [PATCH 2/2] trace: Remove trace.h from
+	hw/usb/hcd-ehci.h (less dependencies)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,55 +42,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Nov 2013 02:45:16 -0000
+X-List-Received-Date: Sun, 10 Nov 2013 13:20:28 -0000
 
-On Wed, 06 Nov 2013 18:20:36 +0900, Michael Tokarev <mjt@tls.msk.ru> wrote:
+This reduces the dependencies on trace.h.
+Only one source file which needs hcd-ehci.h also needs trace.h.
 
-> 06.11.2013 05:54, whitearchey wrote:
->> For now guest agent uses following command to shutdown system:
->> shutdown -P +0 "blabla"
->> but this syntax works only with shutdown command from systemd or upstart,
->> because SysV shutdown requires -h switch.
->>
->> Following patch changes the command so it works with systemd, upstart and SysV
->
-> While the patch is one-liner indeed, it is a bit more than trivial.
-> Because it changes things in a non-obvious way, especially when
-> multiple systems are concerned.  Cc'ing qemu-devel@ due to this.
->
->> --- a/qga/commands-posix.c
->> +++ b/qga/commands-posix.c
->> -        execle("/sbin/shutdown", "shutdown", shutdown_flag, "+0",
->> +        execle("/sbin/shutdown", "shutdown", "-h", shutdown_flag, "+0",
->
-> Note that shutdown command is not in POSIX, despite the fact
-> that this is put into commands-posix.c
->
-> Note also that even shutdown from sysvinit on linux has another
-> option, -P, which mean poweroff, while -h means "halt OR poweroff"
-> (the latter is a bit unclear).
-With upstart/systemd qga use one of thee commands, depending on 'mode' parameter:
-   shutdown -P +0 "..."
-   shutdown -H +0 "..."
-   shutdown -r +0 "..."
-SysV equivalents for these are:
-   shutdown -h -P +0 "..."
-   shutdown -h -H +0 "..."
-   shutdown -h -r +0 "..."
-and these retain their meaning with upstart/systemd.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
->
-> Does the same work on other *nixes?  *BSD?  Solaris?
->
-No, it doesn't. But existing code also does not work.
-According to FreeBSD manpages, shutdown does not accept -P and -H options. Commands should be:
-   shutdown -p +0 "..."
-   shutdown -h +0 "..."
-   shutdown -r +0 "..."
+This patch reduces the number of .o files which depend on trace.h
+in a default QEMU build from 382 to 379.
 
-shutdown in Solaris does not accept any of -hHpPr and does not accept time in "+0" format
+That's not a big reduction, but now there is no longer a .h file
+which directly includes trace.h, so future improvements (splitting
+trace headers, one header per source file, no longer compile 379
+files after each change of trace-events) are easier to implement.
 
-> Thanks,
->
-> /mjt
+ hw/usb/hcd-ehci.c |    1 +
+ hw/usb/hcd-ehci.h |    1 -
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index 22bdbf4..0ba38c9 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include "hw/usb/hcd-ehci.h"
++#include "trace.h"
+ 
+ /* Capability Registers Base Address - section 2.2 */
+ #define CAPLENGTH        0x0000  /* 1-byte, 0x0001 reserved */
+diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
+index 065c9fa..1ad4b96 100644
+--- a/hw/usb/hcd-ehci.h
++++ b/hw/usb/hcd-ehci.h
+@@ -21,7 +21,6 @@
+ #include "qemu/timer.h"
+ #include "hw/usb.h"
+ #include "monitor/monitor.h"
+-#include "trace.h"
+ #include "sysemu/dma.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/pci/pci.h"
+-- 
+1.7.9.5
+
 
