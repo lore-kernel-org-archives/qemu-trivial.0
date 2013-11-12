@@ -1,41 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VfnjY-00022D-Le
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Nov 2013 04:24:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36350)
+	id 1Vg9q6-0007ou-6r
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Nov 2013 04:00:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34820)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1VfnjR-0001rB-Ki
-	for qemu-trivial@nongnu.org; Mon, 11 Nov 2013 04:24:35 -0500
+	(envelope-from <whitearchey@gmail.com>) id 1Vg9pz-0007nW-AP
+	for qemu-trivial@nongnu.org; Tue, 12 Nov 2013 04:00:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1VfnjL-0001D1-MZ
-	for qemu-trivial@nongnu.org; Mon, 11 Nov 2013 04:24:29 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43447)
+	(envelope-from <whitearchey@gmail.com>) id 1Vg9pu-0003F7-Kq
+	for qemu-trivial@nongnu.org; Tue, 12 Nov 2013 04:00:43 -0500
+Received: from mail-lb0-x230.google.com ([2a00:1450:4010:c04::230]:39702)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1Vfnj9-000159-9f; Mon, 11 Nov 2013 04:24:11 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rAB9O9Tt015906
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 11 Nov 2013 04:24:09 -0500
-Received: from [10.36.7.13] (vpn1-7-13.ams2.redhat.com [10.36.7.13])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id rAB9O6ST019547; Mon, 11 Nov 2013 04:24:07 -0500
-Message-ID: <1384161846.32143.15.camel@nilsson.home.kraxel.org>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Date: Mon, 11 Nov 2013 10:24:06 +0100
-In-Reply-To: <1384095856-15284-1-git-send-email-sw@weilnetz.de>
-References: <1384095856-15284-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
+	(envelope-from <whitearchey@gmail.com>)
+	id 1Vg9pu-0003Du-1Y; Tue, 12 Nov 2013 04:00:38 -0500
+Received: by mail-lb0-f176.google.com with SMTP id p9so1632606lbv.35
+	for <multiple recipients>; Tue, 12 Nov 2013 01:00:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=content-type:to:subject:references:date:cc:mime-version
+	:content-transfer-encoding:from:message-id:in-reply-to:user-agent;
+	bh=njnUpEnwhvbmFj/vVCbr+6g6B8gFf2DF41sVGXArGA8=;
+	b=S7Z9DFIaIlmQxsnWV9BO/BsgPd+eCFaWiLh8VPer8AbNk4/h6+XckwZKBOymOX7r1J
+	Hv3WFLhgwbT+kYTCAVSmCWDt3clXVoZPr7lQnsdzkbrIzapnbqDV3B7pFgfC81/NjftL
+	AEpiIOEvgfJ73owVUCbFrdeYuJc4qXQyfnxu9mZtKMOIPQjh2MctzV24tWBo6nDVZKta
+	NYpMmuo+kkWiU++YOLhxW8oEp3bFjWZZiIoDCJtZKRQwzuLL1zs9uwdbPCegBsoajWDA
+	+e7afZ8JtOVjql3/KGPJvDuTrX7Zh2TZVy9ryFsU71k1yhqAbwmNZGa53BjwjxPPjMix
+	Ps5Q==
+X-Received: by 10.152.10.99 with SMTP id h3mr26790675lab.13.1384246836295;
+	Tue, 12 Nov 2013 01:00:36 -0800 (PST)
+Received: from whitewind-arch ([193.169.1.2])
+	by mx.google.com with ESMTPSA id e10sm3560233laa.6.2013.11.12.01.00.34
+	for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Tue, 12 Nov 2013 01:00:35 -0800 (PST)
+Content-Type: text/plain; charset=utf-8; format=flowed; delsp=yes
+To: "Michael Tokarev" <mjt@tls.msk.ru>
+References: <op.w53t8fe2cb68cn@whitewind-arch>
+	<527A09E4.7090605@msgid.tls.msk.ru> <op.w55q9zz9cb68cn@whitewind-arch>
+Date: Tue, 12 Nov 2013 18:01:02 +0900
+MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
-	Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] console: Replace
- conditional debug messages by trace methods
+From: whitearchey <whitearchey@gmail.com>
+Message-ID: <op.w6fhz019cb68cn@whitewind-arch>
+In-Reply-To: <op.w55q9zz9cb68cn@whitewind-arch>
+User-Agent: Opera Mail/12.16 (Linux)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c04::230
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] qga: Fix shutdown command of guest agent
+ to work with SysV
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,17 +60,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Nov 2013 09:24:35 -0000
+X-List-Received-Date: Tue, 12 Nov 2013 09:00:48 -0000
 
-On So, 2013-11-10 at 16:04 +0100, Stefan Weil wrote:
-> +console_putchar_csi(int esc_param0, int esc_param1, int ch, int
-> nb_esc_params) "escape sequence CSI%d;%d%c, %d parameters"
-> +console_putchar_unhandled(int ch) "unhandled escape character '%c'"
+What about patch? Will it be applied? Or should it be rewritten?
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+On Thu, 07 Nov 2013 11:45:25 +0900, whitearchey <whitearchey@gmail.com> wrote:
 
-cheers,
-  Gerd
+> On Wed, 06 Nov 2013 18:20:36 +0900, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>
+>> 06.11.2013 05:54, whitearchey wrote:
+>>> For now guest agent uses following command to shutdown system:
+>>> shutdown -P +0 "blabla"
+>>> but this syntax works only with shutdown command from systemd or upstart,
+>>> because SysV shutdown requires -h switch.
+>>>
+>>> Following patch changes the command so it works with systemd, upstart and SysV
+>>
+>> While the patch is one-liner indeed, it is a bit more than trivial.
+>> Because it changes things in a non-obvious way, especially when
+>> multiple systems are concerned.  Cc'ing qemu-devel@ due to this.
+>>
+>>> --- a/qga/commands-posix.c
+>>> +++ b/qga/commands-posix.c
+>>> -        execle("/sbin/shutdown", "shutdown", shutdown_flag, "+0",
+>>> +        execle("/sbin/shutdown", "shutdown", "-h", shutdown_flag, "+0",
+>>
+>> Note that shutdown command is not in POSIX, despite the fact
+>> that this is put into commands-posix.c
+>>
+>> Note also that even shutdown from sysvinit on linux has another
+>> option, -P, which mean poweroff, while -h means "halt OR poweroff"
+>> (the latter is a bit unclear).
+> With upstart/systemd qga use one of thee commands, depending on 'mode' parameter:
+>    shutdown -P +0 "..."
+>    shutdown -H +0 "..."
+>    shutdown -r +0 "..."
+> SysV equivalents for these are:
+>    shutdown -h -P +0 "..."
+>    shutdown -h -H +0 "..."
+>    shutdown -h -r +0 "..."
+> and these retain their meaning with upstart/systemd.
+>
+>>
+>> Does the same work on other *nixes?  *BSD?  Solaris?
+>>
+> No, it doesn't. But existing code also does not work.
+> According to FreeBSD manpages, shutdown does not accept -P and -H options. Commands should be:
+>    shutdown -p +0 "..."
+>    shutdown -h +0 "..."
+>    shutdown -r +0 "..."
+>
+> shutdown in Solaris does not accept any of -hHpPr and does not accept time in "+0" format
+>
+>> Thanks,
+>>
+>> /mjt
 
 
+-- 
+Using Opera's revolutionary email client: http://www.opera.com/mail/
 
