@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VgaNk-0001QN-B8
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Nov 2013 08:21:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58838)
+	id 1VgaNl-0001Sz-ML
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Nov 2013 08:21:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58850)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VgaNc-0001BR-Me
-	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:21:17 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1VgaNd-0001C8-A4
+	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:21:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VgaNY-0005Pn-9R
-	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:21:12 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:47201)
+	(envelope-from <mjt@tls.msk.ru>) id 1VgaNY-0005Pt-DG
+	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:21:13 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:57222)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VgaNL-0005NT-Fw; Wed, 13 Nov 2013 08:20:55 -0500
+	id 1VgaNL-0005NU-GA; Wed, 13 Nov 2013 08:20:55 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1146F4175D;
+	by isrv.corpit.ru (Postfix) with ESMTP id 21BB84175F;
 	Wed, 13 Nov 2013 17:20:53 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 4E14F53D;
+	by tsrv.corpit.ru (Postfix) with SMTP id 2726953A;
 	Wed, 13 Nov 2013 17:01:26 +0400 (MSK)
-Received: (nullmailer pid 16063 invoked by uid 1000);
+Received: (nullmailer pid 16048 invoked by uid 1000);
 	Wed, 13 Nov 2013 13:01:24 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Anthony Liguori <aliguori@amazon.com>
-Date: Wed, 13 Nov 2013 17:01:18 +0400
-Message-Id: <1384347680-15976-15-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Wed, 13 Nov 2013 17:01:12 +0400
+Message-Id: <1384347680-15976-9-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1384347680-15976-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1384347680-15976-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 14/16] console: Replace conditional debug
-	messages by trace methods
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org, Cole Robinson <crobinso@redhat.com>
+Subject: [Qemu-trivial] [PULL 08/16] pci-assign: Fix error_report of
+	pci-stub message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,67 +44,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Nov 2013 13:21:17 -0000
+X-List-Received-Date: Wed, 13 Nov 2013 13:21:18 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Cole Robinson <crobinso@redhat.com>
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+Using multiple calls to error_report here means every line is
+prefaced with the (potentially long) pci-assign command line
+arguments.
+
+Use a single error_printf to preserve the intended formatting.
+Since this code path is always preceded by an error_report call,
+we don't lose the command line reporting.
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- trace-events |    2 ++
- ui/console.c |   11 +++--------
- 2 files changed, 5 insertions(+), 8 deletions(-)
+ hw/i386/kvm/pci-assign.c |   36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
 
-diff --git a/trace-events b/trace-events
-index 8695e9e..d196234 100644
---- a/trace-events
-+++ b/trace-events
-@@ -1010,6 +1010,8 @@ dma_map_wait(void *dbs) "dbs=%p"
+diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
+index 011764f..aae4309 100644
+--- a/hw/i386/kvm/pci-assign.c
++++ b/hw/i386/kvm/pci-assign.c
+@@ -791,26 +791,22 @@ static void assign_failed_examine(AssignedDevice *dev)
+         goto fail;
+     }
  
- # ui/console.c
- console_gfx_new(void) ""
-+console_putchar_csi(int esc_param0, int esc_param1, int ch, int nb_esc_params) "escape sequence CSI%d;%d%c, %d parameters"
-+console_putchar_unhandled(int ch) "unhandled escape character '%c'"
- console_txt_new(int w, int h) "%dx%d"
- console_select(int nr) "%d"
- console_refresh(int interval) "interval %d ms"
-diff --git a/ui/console.c b/ui/console.c
-index 61ed219..586fc6d 100644
---- a/ui/console.c
-+++ b/ui/console.c
-@@ -29,7 +29,6 @@
- #include "sysemu/char.h"
- #include "trace.h"
+-    error_report("*** The driver '%s' is occupying your device "
+-                 "%04x:%02x:%02x.%x.",
+-                 ns, dev->host.domain, dev->host.bus, dev->host.slot,
+-                 dev->host.function);
+-    error_report("***");
+-    error_report("*** You can try the following commands to free it:");
+-    error_report("***");
+-    error_report("*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub/"
+-                 "new_id", vendor_id, device_id);
+-    error_report("*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/"
+-                 "%s/unbind",
+-                 dev->host.domain, dev->host.bus, dev->host.slot,
+-                 dev->host.function, ns);
+-    error_report("*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/"
+-                 "pci-stub/bind",
+-                 dev->host.domain, dev->host.bus, dev->host.slot,
+-                 dev->host.function);
+-    error_report("*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub"
+-                 "/remove_id", vendor_id, device_id);
+-    error_report("***");
++    error_printf("*** The driver '%s' is occupying your device "
++        "%04x:%02x:%02x.%x.\n"
++        "***\n"
++        "*** You can try the following commands to free it:\n"
++        "***\n"
++        "*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub/new_id\n"
++        "*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/%s/unbind\n"
++        "*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/"
++        "pci-stub/bind\n"
++        "*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub/remove_id\n"
++        "***",
++        ns, dev->host.domain, dev->host.bus, dev->host.slot,
++        dev->host.function, vendor_id, device_id,
++        dev->host.domain, dev->host.bus, dev->host.slot, dev->host.function,
++        ns, dev->host.domain, dev->host.bus, dev->host.slot,
++        dev->host.function, vendor_id, device_id);
  
--//#define DEBUG_CONSOLE
- #define DEFAULT_BACKSCROLL 512
- #define MAX_CONSOLES 12
- #define CONSOLE_CURSOR_PERIOD 500
-@@ -867,10 +866,8 @@ static void console_putchar(QemuConsole *s, int ch)
-                 s->nb_esc_params++;
-             if (ch == ';')
-                 break;
--#ifdef DEBUG_CONSOLE
--            fprintf(stderr, "escape sequence CSI%d;%d%c, %d parameters\n",
--                    s->esc_params[0], s->esc_params[1], ch, s->nb_esc_params);
--#endif
-+            trace_console_putchar_csi(s->esc_params[0], s->esc_params[1],
-+                                      ch, s->nb_esc_params);
-             s->state = TTY_STATE_NORM;
-             switch(ch) {
-             case 'A':
-@@ -984,9 +981,7 @@ static void console_putchar(QemuConsole *s, int ch)
-                 s->y = s->y_saved;
-                 break;
-             default:
--#ifdef DEBUG_CONSOLE
--                fprintf(stderr, "unhandled escape character '%c'\n", ch);
--#endif
-+                trace_console_putchar_unhandled(ch);
-                 break;
-             }
-             break;
+     return;
+ 
 -- 
 1.7.10.4
 
