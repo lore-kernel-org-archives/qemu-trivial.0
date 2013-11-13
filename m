@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VgaNl-0001Sz-ML
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Nov 2013 08:21:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58850)
+	id 1VgaNj-0001P1-OG
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Nov 2013 08:21:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58830)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VgaNd-0001C8-A4
-	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:21:18 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1VgaNc-0001Ab-8x
+	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:21:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VgaNY-0005Pt-DG
-	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:21:13 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:57222)
+	(envelope-from <mjt@tls.msk.ru>) id 1VgaNX-0005Pi-T7
+	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:21:12 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:55728)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VgaNL-0005NU-GA; Wed, 13 Nov 2013 08:20:55 -0500
+	id 1VgaNL-0005NX-G6; Wed, 13 Nov 2013 08:20:55 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 21BB84175F;
+	by isrv.corpit.ru (Postfix) with ESMTP id 1993A4175E;
 	Wed, 13 Nov 2013 17:20:53 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 2726953A;
-	Wed, 13 Nov 2013 17:01:26 +0400 (MSK)
-Received: (nullmailer pid 16048 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 2A77E528;
+	Wed, 13 Nov 2013 17:01:25 +0400 (MSK)
+Received: (nullmailer pid 16057 invoked by uid 1000);
 	Wed, 13 Nov 2013 13:01:24 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Anthony Liguori <aliguori@amazon.com>
-Date: Wed, 13 Nov 2013 17:01:12 +0400
-Message-Id: <1384347680-15976-9-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Wed, 13 Nov 2013 17:01:16 +0400
+Message-Id: <1384347680-15976-13-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1384347680-15976-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1384347680-15976-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org, Cole Robinson <crobinso@redhat.com>
-Subject: [Qemu-trivial] [PULL 08/16] pci-assign: Fix error_report of
-	pci-stub message
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 12/16] trace: Remove trace.h from console.h
+	(less dependencies)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,72 +44,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Nov 2013 13:21:18 -0000
+X-List-Received-Date: Wed, 13 Nov 2013 13:21:17 -0000
 
-From: Cole Robinson <crobinso@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Using multiple calls to error_report here means every line is
-prefaced with the (potentially long) pci-assign command line
-arguments.
+This reduces the dependencies on trace.h.
+Only two source files which need console.h also need trace.h.
 
-Use a single error_printf to preserve the intended formatting.
-Since this code path is always preceded by an error_report call,
-we don't lose the command line reporting.
-
-Signed-off-by: Cole Robinson <crobinso@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/i386/kvm/pci-assign.c |   36 ++++++++++++++++--------------------
- 1 file changed, 16 insertions(+), 20 deletions(-)
+ hw/display/vmware_vga.c |    1 +
+ include/ui/console.h    |    1 -
+ ui/console.c            |    1 +
+ 3 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
-index 011764f..aae4309 100644
---- a/hw/i386/kvm/pci-assign.c
-+++ b/hw/i386/kvm/pci-assign.c
-@@ -791,26 +791,22 @@ static void assign_failed_examine(AssignedDevice *dev)
-         goto fail;
-     }
+diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+index a6a8cdc..aba292c 100644
+--- a/hw/display/vmware_vga.c
++++ b/hw/display/vmware_vga.c
+@@ -23,6 +23,7 @@
+  */
+ #include "hw/hw.h"
+ #include "hw/loader.h"
++#include "trace.h"
+ #include "ui/console.h"
+ #include "hw/pci/pci.h"
  
--    error_report("*** The driver '%s' is occupying your device "
--                 "%04x:%02x:%02x.%x.",
--                 ns, dev->host.domain, dev->host.bus, dev->host.slot,
--                 dev->host.function);
--    error_report("***");
--    error_report("*** You can try the following commands to free it:");
--    error_report("***");
--    error_report("*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub/"
--                 "new_id", vendor_id, device_id);
--    error_report("*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/"
--                 "%s/unbind",
--                 dev->host.domain, dev->host.bus, dev->host.slot,
--                 dev->host.function, ns);
--    error_report("*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/"
--                 "pci-stub/bind",
--                 dev->host.domain, dev->host.bus, dev->host.slot,
--                 dev->host.function);
--    error_report("*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub"
--                 "/remove_id", vendor_id, device_id);
--    error_report("***");
-+    error_printf("*** The driver '%s' is occupying your device "
-+        "%04x:%02x:%02x.%x.\n"
-+        "***\n"
-+        "*** You can try the following commands to free it:\n"
-+        "***\n"
-+        "*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub/new_id\n"
-+        "*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/%s/unbind\n"
-+        "*** $ echo \"%04x:%02x:%02x.%x\" > /sys/bus/pci/drivers/"
-+        "pci-stub/bind\n"
-+        "*** $ echo \"%04x %04x\" > /sys/bus/pci/drivers/pci-stub/remove_id\n"
-+        "***",
-+        ns, dev->host.domain, dev->host.bus, dev->host.slot,
-+        dev->host.function, vendor_id, device_id,
-+        dev->host.domain, dev->host.bus, dev->host.slot, dev->host.function,
-+        ns, dev->host.domain, dev->host.bus, dev->host.slot,
-+        dev->host.function, vendor_id, device_id);
+diff --git a/include/ui/console.h b/include/ui/console.h
+index 98edf41..4156a87 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -6,7 +6,6 @@
+ #include "qapi/qmp/qdict.h"
+ #include "qemu/notify.h"
+ #include "monitor/monitor.h"
+-#include "trace.h"
+ #include "qapi-types.h"
+ #include "qapi/error.h"
  
-     return;
+diff --git a/ui/console.c b/ui/console.c
+index 199ba69..61ed219 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -27,6 +27,7 @@
+ #include "qemu/timer.h"
+ #include "qmp-commands.h"
+ #include "sysemu/char.h"
++#include "trace.h"
  
+ //#define DEBUG_CONSOLE
+ #define DEFAULT_BACKSCROLL 512
 -- 
 1.7.10.4
 
