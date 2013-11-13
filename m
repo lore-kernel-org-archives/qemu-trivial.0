@@ -1,37 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vga4r-0000U0-KG
+	id 1Vga4r-0000Uw-Uh
 	for mharc-qemu-trivial@gnu.org; Wed, 13 Nov 2013 08:01:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53996)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54005)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vga4j-0000Fi-SM
-	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:01:46 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Vga4k-0000GZ-FF
+	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:01:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vga4f-0006wM-49
-	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:01:41 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:47033)
+	(envelope-from <mjt@tls.msk.ru>) id 1Vga4f-0006wb-K3
+	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 08:01:42 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:60081)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Vga4T-0006qk-Mz; Wed, 13 Nov 2013 08:01:25 -0500
+	id 1Vga4U-0006rM-GH; Wed, 13 Nov 2013 08:01:26 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id CE35341756;
-	Wed, 13 Nov 2013 17:01:24 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 033F141757;
+	Wed, 13 Nov 2013 17:01:25 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id BC9C950F;
+	by tsrv.corpit.ru (Postfix) with SMTP id D3CD5525;
 	Wed, 13 Nov 2013 17:01:24 +0400 (MSK)
-Received: (nullmailer pid 16034 invoked by uid 1000);
+Received: (nullmailer pid 16053 invoked by uid 1000);
 	Wed, 13 Nov 2013 13:01:24 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Anthony Liguori <aliguori@amazon.com>
-Date: Wed, 13 Nov 2013 17:01:06 +0400
-Message-Id: <1384347680-15976-3-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Wed, 13 Nov 2013 17:01:14 +0400
+Message-Id: <1384347680-15976-11-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1384347680-15976-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1384347680-15976-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Jan Krupa <jkrupa@suse.com>,
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 02/16] qemu-char: add Czech keymap file
+Subject: [Qemu-trivial] [PULL 10/16] qga: Fix compilation for old versions
+	of MinGW
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,135 +47,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Nov 2013 13:01:46 -0000
+X-List-Received-Date: Wed, 13 Nov 2013 13:01:47 -0000
 
-From: Jan Krupa <JKrupa@suse.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-This patch adds Czech keyboard layout to available keymap files
-and Makefile.
+While MinGW-w64 can compile the qga code, MinGW from Debian lenny
+(gcc-mingw32 4.4.2-3) shows these errors:
 
-Signed-off-by: Jan Krupa <jkrupa@suse.com>
+In file included from qga/vss-win32.c:17:
+qga/vss-win32/requester.h:31:
+ error: expected =C2=BB=3D=C2=AB, =C2=BB,=C2=AB, =C2=BB;=C2=AB, =C2=BBasm=
+=C2=AB or =C2=BB__attribute__=C2=AB before =C2=BBrequester_init=C2=AB
+qga/vss-win32/requester.h:32:
+ error: expected =C2=BB=3D=C2=AB, =C2=BB,=C2=AB, =C2=BB;=C2=AB, =C2=BBasm=
+=C2=AB or =C2=BB__attribute__=C2=AB before =C2=BBrequester_deinit=C2=AB
+
+The macro STDAPI is unknown, so add the missing include file which
+defines it.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- Makefile           |    2 +-
- pc-bios/keymaps/cz |   94 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 95 insertions(+), 1 deletion(-)
- create mode 100644 pc-bios/keymaps/cz
+ qga/vss-win32/requester.h |    1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Makefile b/Makefile
-index b15003f..55817c1 100644
---- a/Makefile
-+++ b/Makefile
-@@ -280,7 +280,7 @@ distclean: clean
- KEYMAPS=da     en-gb  et  fr     fr-ch  is  lt  modifiers  no  pt-br  sv \
- ar      de     en-us  fi  fr-be  hr     it  lv  nl         pl  ru     th \
- common  de-ch  es     fo  fr-ca  hu     ja  mk  nl-be      pt  sl     tr \
--bepo
-+bepo    cz
- 
- ifdef INSTALL_BLOBS
- BLOBS=bios.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
-diff --git a/pc-bios/keymaps/cz b/pc-bios/keymaps/cz
-new file mode 100644
-index 0000000..6584bfb
---- /dev/null
-+++ b/pc-bios/keymaps/cz
-@@ -0,0 +1,94 @@
-+include common
-+
-+# Czech qwertz layout
-+# comments are czech descriptions of the characters
-+
-+# -----------
-+#  First row
-+# -----------
-+
-+# strednik, kolecko
-+semicolon 0x29
-+dead_abovering 0x29 shift
-+
-+# numbers
-+plus 0x2
-+1 0x2 shift
-+ecaron 0x3
-+2 0x3 shift
-+scaron 0x4
-+3 0x4 shift
-+ccaron 0x5
-+4 0x5 shift
-+rcaron 0x6
-+5 0x6 shift
-+zcaron 0x7
-+6 0x7 shift
-+yacute 0x8
-+7 0x8 shift
-+aacute 0x9
-+8 0x9 shift
-+iacute 0xa
-+9 0xa shift
-+eacute 0xb
-+0 0xb shift
-+
-+# rovnitko
-+equal 0x0c
-+percent 0x0c shift
-+
-+# carka, hacek
-+dead_acute 0x0d
-+dead_caron 0x0d shift
-+
-+# ------------
-+#  Second row
-+# ------------
-+
-+z 0x15 addupper
-+
-+# u s carkou, zpetne lomitko
-+uacute 0x1a
-+slash 0x1a shift
-+
-+# prava zavorka, leva zavorka
-+parenright 0x1b
-+parenleft 0x1b shift
-+
-+# -----------
-+#  Third row
-+# -----------
-+
-+# u s krouzkem, uvozovky
-+uring 0x27
-+quotedbl 0x27 shift
-+
-+# paragraf, vykricnik
-+section 0x28
-+exclam 0x28 shift
-+
-+# vodorovna dvojtecka, apostrof
-+dead_diaeresis 0x2b
-+apostrophe 0x2b shift
-+
-+# ------------
-+#  Fourth row
-+# ------------
-+
-+# zpetne lomitko, roura
-+backslash 0x2b
-+bar 0x2b shift
-+
-+y 0x2c addupper
-+
-+# carka, otaznik
-+comma 0x33
-+question 0x33 shift
-+
-+# tecka, dvojtecka
-+period 0x34
-+colon 0x34 shift
-+
-+# minus, podtrzitko
-+minus 0x35
-+underscore 0x35 shift
--- 
+diff --git a/qga/vss-win32/requester.h b/qga/vss-win32/requester.h
+index cffec01..374f9b8 100644
+--- a/qga/vss-win32/requester.h
++++ b/qga/vss-win32/requester.h
+@@ -13,6 +13,7 @@
+ #ifndef VSS_WIN32_REQUESTER_H
+ #define VSS_WIN32_REQUESTER_H
+=20
++#include <basetyps.h>           /* STDAPI */
+ #include "qemu/compiler.h"
+=20
+ #ifdef __cplusplus
+--=20
 1.7.10.4
 
 
