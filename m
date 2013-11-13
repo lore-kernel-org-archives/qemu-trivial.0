@@ -1,54 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vg9q6-0007ou-6r
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Nov 2013 04:00:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34820)
+	id 1VgZ1M-0001jc-Nr
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Nov 2013 06:54:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37874)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <whitearchey@gmail.com>) id 1Vg9pz-0007nW-AP
-	for qemu-trivial@nongnu.org; Tue, 12 Nov 2013 04:00:47 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1VgZ1F-0001aw-Nq
+	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 06:54:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <whitearchey@gmail.com>) id 1Vg9pu-0003F7-Kq
-	for qemu-trivial@nongnu.org; Tue, 12 Nov 2013 04:00:43 -0500
-Received: from mail-lb0-x230.google.com ([2a00:1450:4010:c04::230]:39702)
+	(envelope-from <mjt@tls.msk.ru>) id 1VgZ1A-0000gF-Ok
+	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 06:54:01 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:56684)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <whitearchey@gmail.com>)
-	id 1Vg9pu-0003Du-1Y; Tue, 12 Nov 2013 04:00:38 -0500
-Received: by mail-lb0-f176.google.com with SMTP id p9so1632606lbv.35
-	for <multiple recipients>; Tue, 12 Nov 2013 01:00:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=content-type:to:subject:references:date:cc:mime-version
-	:content-transfer-encoding:from:message-id:in-reply-to:user-agent;
-	bh=njnUpEnwhvbmFj/vVCbr+6g6B8gFf2DF41sVGXArGA8=;
-	b=S7Z9DFIaIlmQxsnWV9BO/BsgPd+eCFaWiLh8VPer8AbNk4/h6+XckwZKBOymOX7r1J
-	Hv3WFLhgwbT+kYTCAVSmCWDt3clXVoZPr7lQnsdzkbrIzapnbqDV3B7pFgfC81/NjftL
-	AEpiIOEvgfJ73owVUCbFrdeYuJc4qXQyfnxu9mZtKMOIPQjh2MctzV24tWBo6nDVZKta
-	NYpMmuo+kkWiU++YOLhxW8oEp3bFjWZZiIoDCJtZKRQwzuLL1zs9uwdbPCegBsoajWDA
-	+e7afZ8JtOVjql3/KGPJvDuTrX7Zh2TZVy9ryFsU71k1yhqAbwmNZGa53BjwjxPPjMix
-	Ps5Q==
-X-Received: by 10.152.10.99 with SMTP id h3mr26790675lab.13.1384246836295;
-	Tue, 12 Nov 2013 01:00:36 -0800 (PST)
-Received: from whitewind-arch ([193.169.1.2])
-	by mx.google.com with ESMTPSA id e10sm3560233laa.6.2013.11.12.01.00.34
-	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Tue, 12 Nov 2013 01:00:35 -0800 (PST)
-Content-Type: text/plain; charset=utf-8; format=flowed; delsp=yes
-To: "Michael Tokarev" <mjt@tls.msk.ru>
-References: <op.w53t8fe2cb68cn@whitewind-arch>
-	<527A09E4.7090605@msgid.tls.msk.ru> <op.w55q9zz9cb68cn@whitewind-arch>
-Date: Tue, 12 Nov 2013 18:01:02 +0900
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1VgZ10-0000bZ-2e; Wed, 13 Nov 2013 06:53:46 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 11EBC41736;
+	Wed, 13 Nov 2013 15:53:35 +0400 (MSK)
+Message-ID: <5283683F.9020102@msgid.tls.msk.ru>
+Date: Wed, 13 Nov 2013 15:53:35 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130922 Icedove/17.0.9
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-From: whitearchey <whitearchey@gmail.com>
-Message-ID: <op.w6fhz019cb68cn@whitewind-arch>
-In-Reply-To: <op.w55q9zz9cb68cn@whitewind-arch>
-User-Agent: Opera Mail/12.16 (Linux)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c04::230
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] qga: Fix shutdown command of guest agent
- to work with SysV
+To: Stefan Weil <sw@weilnetz.de>
+References: <1384105751-12815-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1384105751-12815-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
+	Anthony Liguori <aliguori@amazon.com>
+Subject: Re: [Qemu-trivial] [PATCH for 1.7] qga: Fix compilation for old
+ versions of MinGW
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,63 +46,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Nov 2013 09:00:48 -0000
+X-List-Received-Date: Wed, 13 Nov 2013 11:54:06 -0000
 
-What about patch? Will it be applied? Or should it be rewritten?
+10.11.2013 21:49, Stefan Weil wrote:
+> While MinGW-w64 can compile the qga code, MinGW from Ubuntu lenny
+> (gcc-mingw32 4.4.2-3) shows these errors:
 
-On Thu, 07 Nov 2013 11:45:25 +0900, whitearchey <whitearchey@gmail.com> wrote:
+I guess you mean Debian lenny, not Ubuntu lenny here ;)  And lenny
+is an "old-old-stable" Debian release - it was before squeeze which
+is now oldstable.  Lenny has been released at 14 Feb 2009...
 
-> On Wed, 06 Nov 2013 18:20:36 +0900, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
->> 06.11.2013 05:54, whitearchey wrote:
->>> For now guest agent uses following command to shutdown system:
->>> shutdown -P +0 "blabla"
->>> but this syntax works only with shutdown command from systemd or upstart,
->>> because SysV shutdown requires -h switch.
->>>
->>> Following patch changes the command so it works with systemd, upstart and SysV
->>
->> While the patch is one-liner indeed, it is a bit more than trivial.
->> Because it changes things in a non-obvious way, especially when
->> multiple systems are concerned.  Cc'ing qemu-devel@ due to this.
->>
->>> --- a/qga/commands-posix.c
->>> +++ b/qga/commands-posix.c
->>> -        execle("/sbin/shutdown", "shutdown", shutdown_flag, "+0",
->>> +        execle("/sbin/shutdown", "shutdown", "-h", shutdown_flag, "+0",
->>
->> Note that shutdown command is not in POSIX, despite the fact
->> that this is put into commands-posix.c
->>
->> Note also that even shutdown from sysvinit on linux has another
->> option, -P, which mean poweroff, while -h means "halt OR poweroff"
->> (the latter is a bit unclear).
-> With upstart/systemd qga use one of thee commands, depending on 'mode' parameter:
->    shutdown -P +0 "..."
->    shutdown -H +0 "..."
->    shutdown -r +0 "..."
-> SysV equivalents for these are:
->    shutdown -h -P +0 "..."
->    shutdown -h -H +0 "..."
->    shutdown -h -r +0 "..."
-> and these retain their meaning with upstart/systemd.
->
->>
->> Does the same work on other *nixes?  *BSD?  Solaris?
->>
-> No, it doesn't. But existing code also does not work.
-> According to FreeBSD manpages, shutdown does not accept -P and -H options. Commands should be:
->    shutdown -p +0 "..."
->    shutdown -h +0 "..."
->    shutdown -r +0 "..."
->
-> shutdown in Solaris does not accept any of -hHpPr and does not accept time in "+0" format
->
->> Thanks,
->>
->> /mjt
+> In file included from qga/vss-win32.c:17:
+> qga/vss-win32/requester.h:31:
+>  error: expected =C2=BB=3D=C2=AB, =C2=BB,=C2=AB, =C2=BB;=C2=AB, =C2=BBa=
+sm=C2=AB or =C2=BB__attribute__=C2=AB before =C2=BBrequester_init=C2=AB
+> qga/vss-win32/requester.h:32:
+>  error: expected =C2=BB=3D=C2=AB, =C2=BB,=C2=AB, =C2=BB;=C2=AB, =C2=BBa=
+sm=C2=AB or =C2=BB__attribute__=C2=AB before =C2=BBrequester_deinit=C2=AB
+>=20
+> The macro STDAPI is unknown, so add the missing include file which
+> defines it.
+>=20
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>=20
+> This patch also fixes the same error on the MinGW buildbot.
+> I did not notice it earlier because I usually compile with MinGW-w64.
+>=20
+> Regards,
+> Stefan
+>=20
+>  qga/vss-win32/requester.h |    1 +
+>  1 file changed, 1 insertion(+)
 
+Thanks, applied to the trivial-patches queue, with s/Ubuntu/Debian/ - hop=
+efully
+this is okay :)
 
--- 
-Using Opera's revolutionary email client: http://www.opera.com/mail/
+/mjt
 
