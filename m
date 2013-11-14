@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VgffQ-0007u8-OS
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Nov 2013 13:59:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34297)
+	id 1VgyAe-0005aj-C1
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Nov 2013 09:45:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57692)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VgffF-0007da-Qt
-	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 13:59:54 -0500
+	(envelope-from <stefanha@gmail.com>) id 1VgyAa-0005Up-QG
+	for qemu-trivial@nongnu.org; Thu, 14 Nov 2013 09:45:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Vgff7-000758-DD
-	for qemu-trivial@nongnu.org; Wed, 13 Nov 2013 13:59:45 -0500
-Received: from [2a03:4000:1::4e2f:c7ac:d] (port=51700
-	helo=v220110690675601.yourvserver.net)
+	(envelope-from <stefanha@gmail.com>) id 1VgyAZ-00052B-B7
+	for qemu-trivial@nongnu.org; Thu, 14 Nov 2013 09:45:20 -0500
+Received: from mail-oa0-x234.google.com ([2607:f8b0:4003:c02::234]:63206)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1Vgfeq-0006ot-49; Wed, 13 Nov 2013 13:59:20 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	C3A2372801A1; Wed, 13 Nov 2013 19:59:18 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id u5C8WvmJ9Zht; Wed, 13 Nov 2013 19:59:17 +0100 (CET)
-Received: from [192.168.178.35] (p54AD829C.dip0.t-ipconnect.de
-	[84.173.130.156])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	D33B77280100; Wed, 13 Nov 2013 19:59:16 +0100 (CET)
-Message-ID: <5283CC04.4030906@weilnetz.de>
-Date: Wed, 13 Nov 2013 19:59:16 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.1.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1VgyAU-00051P-OE; Thu, 14 Nov 2013 09:45:14 -0500
+Received: by mail-oa0-f52.google.com with SMTP id o6so2284693oag.25
+	for <multiple recipients>; Thu, 14 Nov 2013 06:45:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=tsBKBOy9eM5iY6jOHlqW1O6u3UBCJ0Jq6hGoS3OEvqw=;
+	b=DQJW/+8TVxyW+tmQJYBNlCFdj7UiJ28fsWpyPzvWH2G6qFzkPpxdEKVYvGXqaWVH2O
+	8YcFhBnYUfLlAUkyrA5hqqrZsEvcFYtNlmCs+Uwg6q7nKTX5xetcTx+yghgnxKllSeJS
+	FK1T2gVl+QD36TMszW1b+KAqWwt/0RkZlk+r17jBMTJHtVpCmseOrqNGqrr92VlyDYli
+	n8VdDclkHWBgYUX9zaXlrAV0ODRIhA9RtcVCZ1SWG9BxRXFmkaaKbyGw+xhtPUYjQ6FW
+	KqdAkQzvUr3PNcgexpQapZ4M3A9cEca1+JPyN+rskq9DDyg583S714WjvR+etNZS/z5d
+	S7Ag==
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1384347680-15976-1-git-send-email-mjt@msgid.tls.msk.ru>	<5283BF4E.1020009@weilnetz.de>
-	<5283C3EE.7020300@msgid.tls.msk.ru>
-In-Reply-To: <5283C3EE.7020300@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-Received: by 10.60.144.230 with SMTP id sp6mr1732088oeb.29.1384440313637;
+	Thu, 14 Nov 2013 06:45:13 -0800 (PST)
+Received: by 10.76.74.135 with HTTP; Thu, 14 Nov 2013 06:45:13 -0800 (PST)
+In-Reply-To: <1377609161-25108-1-git-send-email-sw@weilnetz.de>
+References: <1377609161-25108-1-git-send-email-sw@weilnetz.de>
+Date: Thu, 14 Nov 2013 15:45:13 +0100
+Message-ID: <CAJSP0QVu2gZRu5t9MjO9MHphvJyiRU7W5MCyKZ2q3GWLffxCHw@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-1
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a03:4000:1::4e2f:c7ac:d
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/16] [for-1.7] Trivial
-	patches for 2013-11-13
+X-Received-From: 2607:f8b0:4003:c02::234
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] configure: Don't write .pyc files by
+ default (python -B)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,34 +52,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Nov 2013 18:59:55 -0000
+X-List-Received-Date: Thu, 14 Nov 2013 14:45:22 -0000
 
-Am 13.11.2013 19:24, schrieb Michael Tokarev:
-> 13.11.2013 22:05, Stefan Weil wrote: []
->> The two trace.h related patches moved include statements from .h
->> files to .c files. I compiled the resulting code on 64 bit Linux,
->> also with cross compilation for MinGW, so win* won't be a problem.
->> Nevertheless there remains a risk because my builds don't include all
->> QEMU options (especially not spice, rbd, nss, libusb, seccomp). Both
->> patches were not marked for 1.7, so please skip them when pulling for
->> 1.7. 
-> How about all other patches, because none of them were marked for 1.7?
-> Thanks, /mjt
+On Tue, Aug 27, 2013 at 3:12 PM, Stefan Weil <sw@weilnetz.de> wrote:
+> When a Python script is run, Python normally writes bytecode into a .pyc file.
+> QEMU's build process uses several Python scripts which are called from
+> configure or make.
+>
+> The generated .pyc files take disk space without being of much use, because
+> those scripts are short, not time critical and only called a few times.
+>
+> Python's option -B disables writing of .pyc files. QEMU now uses "python -B"
+> as default, but it is still possible to choose a different call by passing
+> --python=PYTHON to configure.
+>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>
+> It was necessary to change from "$python" to simply $python in the
+> Python test. This should not matter: we already have a simple $python
+> in configure, and Python wants to be installed in a path without
+> spaces.
+>
+> Stefan
+>
+>  configure |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/configure b/configure
+> index 0a55c20..db69327 100755
+> --- a/configure
+> +++ b/configure
+> @@ -568,7 +568,7 @@ fi
+>
+>  : ${make=${MAKE-make}}
+>  : ${install=${INSTALL-install}}
+> -: ${python=${PYTHON-python}}
+> +: ${python=${PYTHON-python -B}}
+>  : ${smbd=${SMBD-/usr/sbin/smbd}}
+>
+>  # Default objcc to clang if available, otherwise use CC
+> @@ -1348,7 +1348,7 @@ fi
+>
+>  # Note that if the Python conditional here evaluates True we will exit
+>  # with status 1 which is a shell 'false' value.
+> -if ! "$python" -c 'import sys; sys.exit(sys.version_info < (2,4) or sys.version_info >= (3,))'; then
+> +if ! $python -c 'import sys; sys.exit(sys.version_info < (2,4) or sys.version_info >= (3,))'; then
+>    error_exit "Cannot use '$python', Python 2.4 or later is required." \
+>        "Note that Python 3 or later is not yet supported." \
+>        "Use --python=/path/to/python to specify a supported Python."
+> --
+> 1.7.10.4
 
-This one was marked for 1.7 and is needed to fix the MinGW buildbots:
+This patch breaks ./configure on RHEL 5 and other older distros that
+use Python 2.4.
 
-qga: Fix compilation for old versions of MinGW
+The version test in ./configure fails because the python interpreter
+does not accept the -B option:
+http://buildbot.b1-systems.de/qemu/builders/default_x86_64_rhel5/builds/762/steps/configure/logs/stdio
 
-This one was not marked, but is safe (although it can also wait until
-after 1.7):
+Can you add -B after version detection, if available?  (No .pyc is
+generated for statements evaluated on the command-line during version
+detection.)
 
-console: Remove unused debug code
-
-All other of my patches here can wait.
-
-Cheers,
 Stefan
-
-
-
 
