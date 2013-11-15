@@ -1,49 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vh1U3-0004IR-2f
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Nov 2013 13:17:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49556)
+	id 1VhDPr-0003Zj-EF
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Nov 2013 02:02:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49606)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Vh1Ty-0004IB-4K
-	for qemu-trivial@nongnu.org; Thu, 14 Nov 2013 13:17:38 -0500
+	(envelope-from <sw@weilnetz.de>) id 1VhDPl-0003SF-3j
+	for qemu-trivial@nongnu.org; Fri, 15 Nov 2013 02:02:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Vh1Tt-0004vL-Pf
-	for qemu-trivial@nongnu.org; Thu, 14 Nov 2013 13:17:34 -0500
-Received: from mail-la0-f42.google.com ([209.85.215.42]:64684)
+	(envelope-from <sw@weilnetz.de>) id 1VhDPf-0005Am-G7
+	for qemu-trivial@nongnu.org; Fri, 15 Nov 2013 02:02:01 -0500
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:45121)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Vh1Tt-0004v6-IA
-	for qemu-trivial@nongnu.org; Thu, 14 Nov 2013 13:17:29 -0500
-Received: by mail-la0-f42.google.com with SMTP id ec20so1925659lab.15
-	for <qemu-trivial@nongnu.org>; Thu, 14 Nov 2013 10:17:28 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=RtGG1ZERU2PtwsMrAiSdIN69NZpmDaDzLdc2RlNA4yw=;
-	b=ND8aTg5uZEGuDhUKKGZod7M1xEjzkGQld6vXxMByq538daHLQhflTAO/yMirul/wV1
-	OB1Loh0Z/8ecr7yMtx5ox3mu9pMTl1jHVS56oxSNvb/Vfaat7fdShND7YD3I03KcMMME
-	a8iw/gbkBg2NwtHsApBX4UTGAnT13fz8Dr1UoBVjgY7Gkop8nOgPSy46eBnK0Fliujy9
-	UjheebYqkeFIsySxcKPRWZA7KcrsZS4Ad9gmvkp1sD9B8jOWw+eAHSs0FHIQ64QBmPyL
-	cdWwuh7r0py1UpL0i/U2WGCvDLwCG65SUl4PweQfR7hQGdOeTwaAjijkuL2KQXGIwh5Y
-	p1nA==
-X-Gm-Message-State: ALoCoQktP9AkmEOZpnDqr86EI73tYGdxq2eXfXKFV/0HY4Uv75ynNfQ/tM2pdOTnRvUJtzZt+yew
-X-Received: by 10.152.225.129 with SMTP id rk1mr501549lac.74.1384453048398;
-	Thu, 14 Nov 2013 10:17:28 -0800 (PST)
+	(envelope-from <sw@weilnetz.de>)
+	id 1VhDPS-00055S-84; Fri, 15 Nov 2013 02:01:42 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	432AB728019E; Fri, 15 Nov 2013 08:01:41 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id QqgkS84QqWTG; Fri, 15 Nov 2013 08:01:39 +0100 (CET)
+Received: from [192.168.178.35] (p54AD808C.dip0.t-ipconnect.de
+	[84.173.128.140])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	93D46728004B; Fri, 15 Nov 2013 08:01:38 +0100 (CET)
+Message-ID: <5285C6D1.2080503@weilnetz.de>
+Date: Fri, 15 Nov 2013 08:01:37 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:24.0) Gecko/20100101 Thunderbird/24.1.0
 MIME-Version: 1.0
-Received: by 10.112.161.232 with HTTP; Thu, 14 Nov 2013 10:17:08 -0800 (PST)
-In-Reply-To: <1384452423-7831-1-git-send-email-sw@weilnetz.de>
-References: <1384452423-7831-1-git-send-email-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 14 Nov 2013 18:17:08 +0000
-Message-ID: <CAFEAcA9utL_JFX-wqLGMnRdKttkiw2JiADOXGfJJ=PMvb3w=VQ@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.42
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH (1.7?)] configure: Use -B
- switch only for Python versions which support it
+To: Luigi Rizzo <rizzo@iet.unipi.it>, qemu-devel <qemu-devel@nongnu.org>
+References: <CA+hQ2+j+Ww4OhHL2tMFdYHaH4FVvtCqYAVCRmbzOBfij=GJVBA@mail.gmail.com>
+In-Reply-To: <CA+hQ2+j+Ww4OhHL2tMFdYHaH4FVvtCqYAVCRmbzOBfij=GJVBA@mail.gmail.com>
+X-Enigmail-Version: 1.5.2
+Content-Type: multipart/alternative;
+	boundary="------------010202090808050104000402"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] better interpreter
+	specification for scripts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,71 +52,170 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Nov 2013 18:17:38 -0000
+X-List-Received-Date: Fri, 15 Nov 2013 07:02:06 -0000
 
-On 14 November 2013 18:07, Stefan Weil <sw@weilnetz.de> wrote:
-> Commit 1d984a67a95d88f3e708b077dab8adeb47c38c93 added the -B switch
-> unconditionally. This breaks Python versions before 2.6 which don't
-> support that switch.
+This is a multi-part message in MIME format.
+--------------010202090808050104000402
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+
+Am 15.11.2013 07:51, schrieb Luigi Rizzo:
+> some of the new scripts in scripts/ specify a interpreter path
+> which is not always pointing to the right place.
+> I see that an alternative format is also being used
+>         #!/usr/bin/env <interpreter_name>
+> which seems to work better.
 >
-> Now configure adds -B only if it is accepted by the Python interpreter.
+> The patch below is merely to let master compile on FreeBSD,
+> but there are other offending files that can be found with
+>  grep '#!' scripts/*
+
+There is no need to fix acpi_extract.py here, because the error is in
+hw/i386/Makefile.objs:
+
+It should call the script using $(PYTHON). Otherwise it won't use the
+Python interpreter
+which was specified when configure was called with
+--python=PYTHON-INTERPRETER.
+
+wrong: hw/i386/Makefile.objs:  $(call quiet-command, $(SRC_PATH)/scripts/...
+
+correct: hw/i386/Makefile.objs:  $(call quiet-command, $(PYTHON)
+$(SRC_PATH)/scripts/...
+
+This should be fixed for QEMU 1.7 (send patch with [PATCH for 1.7]).
+
+Stefan
+
 >
-> This modification introduces a small incompatiblity because -B might now
-> also be added when configure was called with --python=PYTHON_INTERPRETER.
-
-That sounds like it's fixing a bug to me. If we think -B
-is right then we should be using it whether we defaulted
-to 'python' or the user passed us /usr/local/bin/python2
-or whatever.
-
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Luigi Rizzo <rizzo@iet.unipi.it
+> <mailto:rizzo@iet.unipi.it>>
 > ---
->  configure |    9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
+>  scripts/acpi_extract.py | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> This is an optional patch. We need it for Python versions older than 5 years
-> if we don't want to use the workaround --python=python.
+> diff --git a/scripts/acpi_extract.py b/scripts/acpi_extract.py
+> index 22ea468..66c1b3e 100755
+> --- a/scripts/acpi_extract.py
+> +++ b/scripts/acpi_extract.py
+> @@ -1,4 +1,4 @@
+> -#!/usr/bin/python
+> +#!/usr/bin/env python
+>  # Copyright (C) 2011 Red Hat, Inc., Michael S. Tsirkin
+> <mst@redhat.com <mailto:mst@redhat.com>>
+>  #
+>  # This program is free software; you can redistribute it and/or modify
+> --
+> 1.8.1.2
 >
-> I don't think it is needed for 1.7, but maybe other people think different.
 
-I think that as long as our requirements list says
-python 2.4 is the minimum then bugs that mean we don't work
-on that are fair game for fixing during hardfreeze; and
-this is a pretty simple and safe fix. I think it's better
-to put it into the release than deal with people after
-release trying to run it on RHEL-whatever that doesn't
-have a newer python.
 
-> diff --git a/configure b/configure
-> index 9a02610..3c25816 100755
-> --- a/configure
-> +++ b/configure
-> @@ -593,7 +593,7 @@ fi
->
->  : ${make=${MAKE-make}}
->  : ${install=${INSTALL-install}}
-> -: ${python=${PYTHON-python -B}}
-> +: ${python=${PYTHON-python}}
->  : ${smbd=${SMBD-/usr/sbin/smbd}}
->
->  # Default objcc to clang if available, otherwise use CC
-> @@ -1420,6 +1420,13 @@ if ! $python -c 'import sys; sys.exit(sys.version_info < (2,4) or sys.version_in
->        "Use --python=/path/to/python to specify a supported Python."
->  fi
->
-> +# The -B switch was added in Python 2.6.
-> +# If it is supplied, compiled files are not written.
-> +# Use it for Python versions which support it.
-> +if $python -B -c 'import sys; sys.exit(0)' 2>/dev/null; then
-> +  $python="$python -B"
-> +fi
-> +
->  if test -z "${target_list+xxx}" ; then
->      target_list="$default_target_list"
->  else
+--------------010202090808050104000402
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    <div class="moz-cite-prefix">Am 15.11.2013 07:51, schrieb Luigi
+      Rizzo:<br>
+    </div>
+    <blockquote
+cite="mid:CA+hQ2+j+Ww4OhHL2tMFdYHaH4FVvtCqYAVCRmbzOBfij=GJVBA@mail.gmail.com"
+      type="cite">
+      <div dir="ltr">
+        <div class="gmail_default">
+          <div class="gmail_default"><font face="courier new, monospace">some
+              of the new scripts in scripts/ specify a interpreter path</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">which
+              is not always pointing to the right place.</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">I
+              see that an alternative format is also being used</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">&nbsp;
+              &nbsp; &nbsp; &nbsp; #!/usr/bin/env &lt;interpreter_name&gt;</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">which
+              seems to work better.</font></div>
+          <div class="gmail_default"><font face="courier new, monospace"><br>
+            </font></div>
+          <div class="gmail_default"><font face="courier new, monospace">The
+              patch below is merely to let master compile on FreeBSD,</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">but
+              there are other offending files that can be found with</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">&nbsp;grep
+              '#!' scripts/*</font></div>
+        </div>
+      </div>
+    </blockquote>
+    <br>
+    There is no need to fix acpi_extract.py here, because the error is
+    in hw/i386/Makefile.objs:<br>
+    <br>
+    It should call the script using $(PYTHON). Otherwise it won't use
+    the Python interpreter<br>
+    which was specified when configure was called with
+    --python=PYTHON-INTERPRETER.<br>
+    <br>
+    wrong: hw/i386/Makefile.objs:&nbsp; $(call quiet-command,
+    $(SRC_PATH)/scripts/...<br>
+    <br>
+    correct: hw/i386/Makefile.objs:&nbsp; $(call quiet-command, $(PYTHON)
+    $(SRC_PATH)/scripts/...<br>
+    <br>
+    This should be fixed for QEMU 1.7 (send patch with [PATCH for 1.7]).<br>
+    <br>
+    Stefan<br>
+    <br>
+    <blockquote
+cite="mid:CA+hQ2+j+Ww4OhHL2tMFdYHaH4FVvtCqYAVCRmbzOBfij=GJVBA@mail.gmail.com"
+      type="cite">
+      <div dir="ltr">
+        <div class="gmail_default">
+          <div class="gmail_default"><font face="courier new, monospace"><br>
+            </font></div>
+          <div class="gmail_default"><font face="courier new, monospace">Signed-off-by:
+              Luigi Rizzo &lt;<a moz-do-not-send="true"
+                href="mailto:rizzo@iet.unipi.it">rizzo@iet.unipi.it</a>&gt;</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">---</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">&nbsp;scripts/acpi_extract.py
+              | 2 +-</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">&nbsp;1
+              file changed, 1 insertion(+), 1 deletion(-)</font></div>
+          <div class="gmail_default"><font face="courier new, monospace"><br>
+            </font></div>
+          <div class="gmail_default"><font face="courier new, monospace">diff
+              --git a/scripts/acpi_extract.py b/scripts/acpi_extract.py</font></div>
+          <div class="gmail_default">
+            <font face="courier new, monospace">index 22ea468..66c1b3e
+              100755</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">---
+              a/scripts/acpi_extract.py</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">+++
+              b/scripts/acpi_extract.py</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">@@
+              -1,4 +1,4 @@</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">-#!/usr/bin/python</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">+#!/usr/bin/env
+              python</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">&nbsp;#
+              Copyright (C) 2011 Red Hat, Inc., Michael S. Tsirkin &lt;<a
+                moz-do-not-send="true" href="mailto:mst@redhat.com">mst@redhat.com</a>&gt;</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">&nbsp;#</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">&nbsp;#
+              This program is free software; you can redistribute it
+              and/or modify</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">--</font></div>
+          <div class="gmail_default"><font face="courier new, monospace">1.8.1.2</font></div>
+          <div style="font-family:'courier new',monospace"><br>
+          </div>
+        </div>
+      </div>
+    </blockquote>
+    <br>
+  </body>
+</html>
 
-thanks
--- PMM
+--------------010202090808050104000402--
 
