@@ -1,48 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VhcyM-0000a3-FK
-	for mharc-qemu-trivial@gnu.org; Sat, 16 Nov 2013 05:19:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34308)
+	id 1Vhdm3-0004nN-EV
+	for mharc-qemu-trivial@gnu.org; Sat, 16 Nov 2013 06:10:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42107)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VhcyI-0000Tb-0B
-	for qemu-trivial@nongnu.org; Sat, 16 Nov 2013 05:19:26 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1Vhdlw-0004mH-K5
+	for qemu-trivial@nongnu.org; Sat, 16 Nov 2013 06:10:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VhcyD-0003kK-Rt
-	for qemu-trivial@nongnu.org; Sat, 16 Nov 2013 05:19:21 -0500
-Received: from [2a03:4000:1::4e2f:c7ac:d] (port=47371
-	helo=v220110690675601.yourvserver.net)
+	(envelope-from <peter.maydell@linaro.org>) id 1Vhdlr-00011o-CJ
+	for qemu-trivial@nongnu.org; Sat, 16 Nov 2013 06:10:40 -0500
+Received: from mail-lb0-f170.google.com ([209.85.217.170]:57224)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1Vhcy5-0003UQ-6b; Sat, 16 Nov 2013 05:19:09 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	69B70728019E; Sat, 16 Nov 2013 11:19:07 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id QLNgoSJhrPAz; Sat, 16 Nov 2013 11:19:05 +0100 (CET)
-Received: from [192.168.178.35] (p54AD85D3.dip0.t-ipconnect.de
-	[84.173.133.211])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	648197280100; Sat, 16 Nov 2013 11:19:05 +0100 (CET)
-Message-ID: <52874698.7080000@weilnetz.de>
-Date: Sat, 16 Nov 2013 11:19:04 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.1.0
+	(envelope-from <peter.maydell@linaro.org>) id 1Vhdlr-00011g-22
+	for qemu-trivial@nongnu.org; Sat, 16 Nov 2013 06:10:35 -0500
+Received: by mail-lb0-f170.google.com with SMTP id z5so3505287lbh.15
+	for <qemu-trivial@nongnu.org>; Sat, 16 Nov 2013 03:10:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=PWpMoWzQUKydMv03g4dK1QtOqqjzBVgpkvrg8MNZFn0=;
+	b=NPehWpQt+X6rxUGBXtQvH6LTrZexSaKiIBtzhIQQyJmhwAUy4UxhfMPJ8T698xXjGw
+	D46UHC82QrYqUlvN7vZCVyogretaPcvigEhqztXT0moX+zOiKN3VOvLw+9bXWvz1b7k9
+	S9/FS6YLNONFKDAdhw1PCzIuQCLMiQukN5bzMvtzuOnDPEj7u1dwi16TFIxs3cR4kJsx
+	cwz95inFyppC6NYNteyl32x+RQmuwiVZR6Hw+Q7RF47sDGF0XbUHplRusxVbJvmXJcSb
+	+TBeyHIEaQk0S8lgXHgomGsCe+vWeNMMVM9RvkalT/I0dtqZ/f/1iJtgjskYLrxaMLRL
+	VdcA==
+X-Gm-Message-State: ALoCoQnTpMro17cwrPBnd9pHud2lwEDleN+8juglKcOuQD8XFnqiPJWLsiluG8Ru6MSMOkzqdWX1
+X-Received: by 10.152.4.230 with SMTP id n6mr6408410lan.1.1384600233110; Sat,
+	16 Nov 2013 03:10:33 -0800 (PST)
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-References: <1384596884-29358-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1384596884-29358-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.5.2
+Received: by 10.112.161.232 with HTTP; Sat, 16 Nov 2013 03:10:13 -0800 (PST)
+In-Reply-To: <528743FA.50508@msgid.tls.msk.ru>
+References: <1384452423-7831-1-git-send-email-sw@weilnetz.de>
+	<528743FA.50508@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 16 Nov 2013 11:10:13 +0000
+Message-ID: <CAFEAcA83Q1nQtHWB+BRByfw+FzP-O7j9h5Dgch9Oya1nbOQf1g@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:1::4e2f:c7ac:d
-Cc: Luigi Rizzo <rizzo@iet.unipi.it>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] hw/i386/Makefile.obj: use $(PYTHON) to
- run .py scripts consistently
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.170
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel <qemu-devel@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH (1.7?)] configure: Use -B
+ switch only for Python versions which support it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,45 +56,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 16 Nov 2013 10:19:26 -0000
+X-List-Received-Date: Sat, 16 Nov 2013 11:10:45 -0000
 
-Am 16.11.2013 11:14, schrieb Michael Tokarev:
-> $(PYTHON) is a Make variable which is set by configure.
-> In all other places over the tree, .py files are run from
-> Makefiles using this variable, except of a single leftover
-> in hw/i386/Makefile.obj (and a nearby place in there uses
-> $(PYTHON) correctly).  Fix this leftover too.
+On 16 November 2013 10:07, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> 14.11.2013 22:07, Stefan Weil wrote:
+>> Commit 1d984a67a95d88f3e708b077dab8adeb47c38c93 added the -B switch
+>> unconditionally. This breaks Python versions before 2.6 which don't
+>> support that switch.
+>>
+>> Now configure adds -B only if it is accepted by the Python interpreter.
+>>
+>> This modification introduces a small incompatiblity because -B might now
+>> also be added when configure was called with --python=PYTHON_INTERPRETER.
 >
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> Cc: Luigi Rizzo <rizzo@iet.unipi.it>
-> Cc: Stefan Weil <sw@weilnetz.de>
->
-> --
-> mjt: I want to apply this to trivial-patches for-1.7
-> ---
->  hw/i386/Makefile.objs |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/i386/Makefile.objs b/hw/i386/Makefile.objs
-> index 185aacb..09ac433 100644
-> --- a/hw/i386/Makefile.objs
-> +++ b/hw/i386/Makefile.objs
-> @@ -20,7 +20,7 @@ hw/i386/%.hex: $(SRC_PATH)/hw/i386/%.dsl $(SRC_PATH)/scripts/acpi_extract_prepro
->  	$(call quiet-command, cpp -P $< -o $*.dsl.i.orig, "  CPP $(TARGET_DIR)$*.dsl.i.orig")
->  	$(call quiet-command, $(PYTHON) $(SRC_PATH)/scripts/acpi_extract_preprocess.py $*.dsl.i.orig > $*.dsl.i, "  ACPI_PREPROCESS $(TARGET_DIR)$*.dsl.i")
->  	$(call quiet-command, $(IASL) $(call iasl-option,$(IASL),-Pn,) -vs -l -tc -p $* $*.dsl.i $(if $(V), , > /dev/null) 2>&1 ,"  IASL $(TARGET_DIR)$*.dsl.i")
-> -	$(call quiet-command, $(SRC_PATH)/scripts/acpi_extract.py $*.lst > $*.off, "  ACPI_EXTRACT $(TARGET_DIR)$*.off")
-> +	$(call quiet-command, $(PYTHON) $(SRC_PATH)/scripts/acpi_extract.py $*.lst > $*.off, "  ACPI_EXTRACT $(TARGET_DIR)$*.off")
->  	$(call quiet-command, cat $*.off > $@, "  CAT $(TARGET_DIR)$@")
->  else
->  #IASL Not present. Restore pre-generated hex files.
+> Thanks, applied to the trivial-patches queue, with the spelling fix in comment.
 
+Just a question since we were discussing this on IRC -- are you going
+to remove the non-buildfix/bugfix patches from the trivial queue so
+the buildfixes go into 1.7?
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
-Yes, this is a bug fix which should be included in QEMU 1.7.
-
-Regards,
-Stefan
-
+thanks
+-- PMM
 
