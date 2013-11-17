@@ -1,40 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vi99L-00038E-Jm
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Nov 2013 15:40:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50458)
+	id 1Vi9d5-0003XX-JJ
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Nov 2013 16:11:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55427)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vi99C-0002zU-VT
-	for qemu-trivial@nongnu.org; Sun, 17 Nov 2013 15:40:52 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vi9d3-0003UZ-AF
+	for qemu-trivial@nongnu.org; Sun, 17 Nov 2013 16:11:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vi996-0003A5-W8
-	for qemu-trivial@nongnu.org; Sun, 17 Nov 2013 15:40:46 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:33248)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vi9d2-0003AZ-I2
+	for qemu-trivial@nongnu.org; Sun, 17 Nov 2013 16:11:37 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:56365
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Vi98u-00039R-Hd; Sun, 17 Nov 2013 15:40:28 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0653341E3B;
-	Mon, 18 Nov 2013 00:40:25 +0400 (MSK)
-Message-ID: <528929B8.9010706@msgid.tls.msk.ru>
-Date: Mon, 18 Nov 2013 00:40:24 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131103 Icedove/17.0.10
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1384711222-8916-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1384711222-8916-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
-	Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [PATCH for 1.7] acpi-build: Fix compiler warning
- (missing gnu_printf format attribute)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vi9cu-00033l-9Z; Sun, 17 Nov 2013 16:11:28 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id ED9281802A3; Sun, 17 Nov 2013 22:11:24 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: 
+Date: Sun, 17 Nov 2013 22:11:23 +0100
+Message-Id: <1384722683-17205-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] libcacard/cac: Remove unused statement
+	(value stored is never read)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,26 +40,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Nov 2013 20:40:53 -0000
+X-List-Received-Date: Sun, 17 Nov 2013 21:11:38 -0000
 
-17.11.2013 22:00, Stefan Weil wrote:
-> gcc 4.8.2 reports this warning when extra warnings are enabled (-Wextra=
-):
->=20
->   CC    m68k-softmmu/hw/m68k/mcf5206.o
-> hw/i386/acpi-build.c: In function =E2=80=98build_append_nameseg=E2=80=99=
-:
-> hw/i386/acpi-build.c:294:5: error:
->  function might be possible candidate for =E2=80=98gnu_printf=E2=80=99 =
-format attribute [-Werror=3Dsuggest-attribute=3Dformat]
->      g_string_vprintf(s, format, args);
->      ^
+Warning from ccc-analyzer:
 
-Why are you sending for-1.7 patches which fixes issues which are not
-present in 1.7?  As far as I can see, -Wextra isn't enabled in 1.7, is it=
-?
+libcacard/cac.c:192:13: warning: Value stored to 'ret' is never read
+            ret = VCARD_DONE;
+            ^     ~~~~~~~~~~
 
-Thanks,
+Here 'ret' is assigned a value inside of a switch statement and also after
+that switch statement.
 
-/mjt
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+
+This patch is not needed for 1.7 (although I think that it is safe).
+
+ libcacard/cac.c |    1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libcacard/cac.c b/libcacard/cac.c
+index 7a06b5a..74ef3e3 100644
+--- a/libcacard/cac.c
++++ b/libcacard/cac.c
+@@ -189,7 +189,6 @@ cac_applet_pki_process_apdu(VCard *card, VCardAPDU *apdu,
+             pki_applet->sign_buffer = sign_buffer;
+             pki_applet->sign_buffer_len = size;
+             *response = vcard_make_response(VCARD7816_STATUS_SUCCESS);
+-            ret = VCARD_DONE;
+             break;
+         case 0x00:
+             /* we now have the whole buffer, do the operation, result will be
+-- 
+1.7.10.4
+
 
