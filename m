@@ -1,57 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vkn1Z-00055p-SU
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Nov 2013 22:39:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41988)
+	id 1Vkv3S-00011P-MH
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Nov 2013 07:14:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59234)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Vkn1O-00052u-O7
-	for qemu-trivial@nongnu.org; Sun, 24 Nov 2013 22:39:46 -0500
+	(envelope-from <armbru@redhat.com>) id 1Vkv3K-0000oh-5k
+	for qemu-trivial@nongnu.org; Mon, 25 Nov 2013 07:14:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Vkn1G-0005LJ-B2
-	for qemu-trivial@nongnu.org; Sun, 24 Nov 2013 22:39:38 -0500
-Received: from e23smtp05.au.ibm.com ([202.81.31.147]:34002)
+	(envelope-from <armbru@redhat.com>) id 1Vkv3D-0000Qd-UM
+	for qemu-trivial@nongnu.org; Mon, 25 Nov 2013 07:14:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46912)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1Vkn1F-0005Jp-Fd
-	for qemu-trivial@nongnu.org; Sun, 24 Nov 2013 22:39:30 -0500
-Received: from /spool/local
-	by e23smtp05.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aik@ozlabs.ru>;
-	Mon, 25 Nov 2013 13:39:16 +1000
-Received: from d23dlp03.au.ibm.com (202.81.31.214)
-	by e23smtp05.au.ibm.com (202.81.31.211) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 25 Nov 2013 13:39:14 +1000
-Received: from d23relay04.au.ibm.com (d23relay04.au.ibm.com [9.190.234.120])
-	by d23dlp03.au.ibm.com (Postfix) with ESMTP id 30D773578050;
-	Mon, 25 Nov 2013 14:39:14 +1100 (EST)
-Received: from d23av01.au.ibm.com (d23av01.au.ibm.com [9.190.234.96])
-	by d23relay04.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	rAP3LLdM62718180; Mon, 25 Nov 2013 14:21:21 +1100
-Received: from d23av01.au.ibm.com (localhost [127.0.0.1])
-	by d23av01.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	rAP3dDhm006923; Mon, 25 Nov 2013 14:39:13 +1100
-Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.190.163.12])
-	by d23av01.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	rAP3dDbK006920; Mon, 25 Nov 2013 14:39:13 +1100
-Received: from bran.ozlabs.ibm.com (haven.au.ibm.com [9.190.164.82])
-	by ozlabs.au.ibm.com (Postfix) with ESMTP id 32A34A011E;
-	Mon, 25 Nov 2013 14:39:13 +1100 (EST)
-Received: from ka1.ozlabs.ibm.com (ka1.ozlabs.ibm.com [10.61.145.11])
-	by bran.ozlabs.ibm.com (Postfix) with ESMTP id C0A8F16A963;
-	Mon, 25 Nov 2013 14:39:12 +1100 (EST)
-From: Alexey Kardashevskiy <aik@ozlabs.ru>
+	(envelope-from <armbru@redhat.com>)
+	id 1Vkv31-0000OA-Cb; Mon, 25 Nov 2013 07:13:51 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rAPCDnVm016932
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 25 Nov 2013 07:13:50 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-103.ams2.redhat.com
+	[10.36.116.103])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id rAPCDk8A029071
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Mon, 25 Nov 2013 07:13:48 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 9F6C5200CD; Mon, 25 Nov 2013 13:08:18 +0100 (CET)
+From: armbru@redhat.com
 To: qemu-devel@nongnu.org
-Date: Mon, 25 Nov 2013 14:39:10 +1100
-Message-Id: <1385350750-21468-1-git-send-email-aik@ozlabs.ru>
-X-Mailer: git-send-email 1.8.4.rc4
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 13112503-1396-0000-0000-000003EBD3F6
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 202.81.31.147
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] vl: remove (max_cpus > 255) check from
-	smp_parse
+Date: Mon, 25 Nov 2013 13:08:18 +0100
+Message-Id: <1385381298-3335-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
+Subject: [Qemu-trivial] [PATCH] trace-events: Clean up after removal of old
+	usb-host code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,35 +46,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Nov 2013 03:39:47 -0000
+X-List-Received-Date: Mon, 25 Nov 2013 12:14:16 -0000
 
-Since modern POWER7/POWER8 chips can have more that 256 CPU threads
-(>2000 actually), remove this check from smp_parse.
+From: Markus Armbruster <armbru@redhat.com>
 
-The CPUs number is still checked against machine->max_cpus and this check
-should be enough not to break other archs.
+Commit b5613fd neglected to drop the trace events along with the code.
 
-Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- vl.c | 4 ----
- 1 file changed, 4 deletions(-)
+ trace-events | 13 -------------
+ 1 file changed, 13 deletions(-)
 
-diff --git a/vl.c b/vl.c
-index 8d5d874..e6ed260 100644
---- a/vl.c
-+++ b/vl.c
-@@ -1420,10 +1420,6 @@ static void smp_parse(QemuOpts *opts)
-         max_cpus = smp_cpus;
-     }
+diff --git a/trace-events b/trace-events
+index 8695e9e..14c7c92 100644
+--- a/trace-events
++++ b/trace-events
+@@ -427,45 +427,32 @@ usb_uas_tmf_abort_task(int addr, uint16_t tag, uint16_t task_tag) "dev %d, tag 0
+ usb_uas_tmf_logical_unit_reset(int addr, uint16_t tag, int lun) "dev %d, tag 0x%x, lun %d"
+ usb_uas_tmf_unsupported(int addr, uint16_t tag, uint32_t function) "dev %d, tag 0x%x, function 0x%x"
  
--    if (max_cpus > 255) {
--        fprintf(stderr, "Unsupported number of maxcpus\n");
--        exit(1);
--    }
-     if (max_cpus < smp_cpus) {
-         fprintf(stderr, "maxcpus must be equal to or greater than smp\n");
-         exit(1);
+-# hw/usb/host-linux.c
+ # hw/usb/host-libusb.c
+ usb_host_open_started(int bus, int addr) "dev %d:%d"
+ usb_host_open_success(int bus, int addr) "dev %d:%d"
+ usb_host_open_failure(int bus, int addr) "dev %d:%d"
+-usb_host_disconnect(int bus, int addr) "dev %d:%d"
+ usb_host_close(int bus, int addr) "dev %d:%d"
+ usb_host_attach_kernel(int bus, int addr, int interface) "dev %d:%d, if %d"
+ usb_host_detach_kernel(int bus, int addr, int interface) "dev %d:%d, if %d"
+ usb_host_set_address(int bus, int addr, int config) "dev %d:%d, address %d"
+ usb_host_set_config(int bus, int addr, int config) "dev %d:%d, config %d"
+ usb_host_set_interface(int bus, int addr, int interface, int alt) "dev %d:%d, interface %d, alt %d"
+-usb_host_claim_interfaces(int bus, int addr, int config, int nif) "dev %d:%d, config %d, nif %d"
+ usb_host_claim_interface(int bus, int addr, int config, int interface) "dev %d:%d, config %d, if %d"
+-usb_host_release_interfaces(int bus, int addr) "dev %d:%d"
+ usb_host_release_interface(int bus, int addr, int interface) "dev %d:%d, if %d"
+ usb_host_req_control(int bus, int addr, void *p, int req, int value, int index) "dev %d:%d, packet %p, req 0x%x, value %d, index %d"
+ usb_host_req_data(int bus, int addr, void *p, int in, int ep, int size) "dev %d:%d, packet %p, in %d, ep %d, size %d"
+ usb_host_req_complete(int bus, int addr, void *p, int status, int length) "dev %d:%d, packet %p, status %d, length %d"
+ usb_host_req_emulated(int bus, int addr, void *p, int status) "dev %d:%d, packet %p, status %d"
+ usb_host_req_canceled(int bus, int addr, void *p) "dev %d:%d, packet %p"
+-usb_host_urb_submit(int bus, int addr, void *aurb, int length, int more) "dev %d:%d, aurb %p, length %d, more %d"
+-usb_host_urb_complete(int bus, int addr, void *aurb, int status, int length, int more) "dev %d:%d, aurb %p, status %d, length %d, more %d"
+-usb_host_urb_canceled(int bus, int addr, void *aurb) "dev %d:%d, aurb %p"
+-usb_host_ep_set_halt(int bus, int addr, int ep) "dev %d:%d, ep %d"
+-usb_host_ep_clear_halt(int bus, int addr, int ep) "dev %d:%d, ep %d"
+ usb_host_iso_start(int bus, int addr, int ep) "dev %d:%d, ep %d"
+ usb_host_iso_stop(int bus, int addr, int ep) "dev %d:%d, ep %d"
+ usb_host_iso_out_of_bufs(int bus, int addr, int ep) "dev %d:%d, ep %d"
+-usb_host_iso_many_urbs(int bus, int addr, int count) "dev %d:%d, count %d"
+ usb_host_reset(int bus, int addr) "dev %d:%d"
+ usb_host_auto_scan_enabled(void)
+ usb_host_auto_scan_disabled(void)
+-usb_host_claim_port(int bus, int hub, int port) "bus %d, hub addr %d, port %d"
+-usb_host_parse_device(int bus, int addr, int vendor, int product) "dev %d:%d, id %04x:%04x"
+ usb_host_parse_config(int bus, int addr, int value, int active) "dev %d:%d, value %d, active %d"
+ usb_host_parse_interface(int bus, int addr, int num, int alt, int active) "dev %d:%d, num %d, alt %d, active %d"
+ usb_host_parse_endpoint(int bus, int addr, int ep, const char *dir, const char *type, int active) "dev %d:%d, ep %d, %s, %s, active %d"
+-usb_host_parse_unknown(int bus, int addr, int len, int type) "dev %d:%d, len %d, type %d"
+ usb_host_parse_error(int bus, int addr, const char *errmsg) "dev %d:%d, msg %s"
+ 
+ # hw/scsi/scsi-bus.c
 -- 
-1.8.4.rc4
+1.8.1.4
 
 
