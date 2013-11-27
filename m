@@ -1,41 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vl27Z-00055e-Ik
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Nov 2013 14:47:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35118)
+	id 1VlZoR-0003NS-9e
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Nov 2013 02:45:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50523)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vl27T-0004wn-P9
-	for qemu-trivial@nongnu.org; Mon, 25 Nov 2013 14:47:00 -0500
+	(envelope-from <famz@redhat.com>) id 1VlZoI-0003LF-Qi
+	for qemu-trivial@nongnu.org; Wed, 27 Nov 2013 02:45:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vl27P-0007X4-Ae
-	for qemu-trivial@nongnu.org; Mon, 25 Nov 2013 14:46:55 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:59945)
+	(envelope-from <famz@redhat.com>) id 1VlZoC-0004gD-RH
+	for qemu-trivial@nongnu.org; Wed, 27 Nov 2013 02:45:22 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60783)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Vl278-0007TH-Vi; Mon, 25 Nov 2013 14:46:35 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4173D43359;
-	Mon, 25 Nov 2013 23:41:08 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1AE86207;
-	Mon, 25 Nov 2013 23:41:08 +0400 (MSK)
-Received: (nullmailer pid 13237 invoked by uid 1000);
-	Mon, 25 Nov 2013 19:41:08 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: Anthony Liguori <aliguori@amazon.com>
-Date: Mon, 25 Nov 2013 23:41:05 +0400
-Message-Id: <1385408466-13183-3-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1385408466-13183-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1385408466-13183-1-git-send-email-mjt@msgid.tls.msk.ru>
+	(envelope-from <famz@redhat.com>)
+	id 1VlZoC-0004g3-JY; Wed, 27 Nov 2013 02:45:16 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rAR7jDN4023442
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 27 Nov 2013 02:45:13 -0500
+Received: from [10.66.6.190] ([10.66.6.190])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id rAR7jB4U017781; Wed, 27 Nov 2013 02:45:11 -0500
+Message-ID: <5295A302.3050403@redhat.com>
+Date: Wed, 27 Nov 2013 15:45:06 +0800
+From: Fam Zheng <famz@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.1.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+To: Zhi Yong Wu <zwu.kernel@gmail.com>, qemu-trivial@nongnu.org
+References: <1385537726-27219-1-git-send-email-zwu.kernel@gmail.com>
+In-Reply-To: <1385537726-27219-1-git-send-email-zwu.kernel@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	rAR7jDN4023442
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 2/3] acpi-build: Fix compiler warning (missing
-	gnu_printf format attribute)
+X-Received-From: 209.132.183.28
+Cc: Zhi Yong Wu <wuzhy@linux.vnet.ibm.com>, mjt@tls.msk.ru,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtio-net: fix the indent
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,64 +50,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Nov 2013 19:47:00 -0000
+X-List-Received-Date: Wed, 27 Nov 2013 07:45:29 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+On 2013=E5=B9=B411=E6=9C=8827=E6=97=A5 15:35, Zhi Yong Wu wrote:
+> From: Zhi Yong Wu <wuzhy@linux.vnet.ibm.com>
+>
+> Signed-off-by: Zhi Yong Wu <wuzhy@linux.vnet.ibm.com>
+> ---
+>   hw/net/virtio-net.c |    2 +-
+>   1 files changed, 1 insertions(+), 1 deletions(-)
+>
+> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> index b75c753..90eca9a 100644
+> --- a/hw/net/virtio-net.c
+> +++ b/hw/net/virtio-net.c
+> @@ -1428,7 +1428,7 @@ static NetClientInfo net_virtio_info =3D {
+>       .size =3D sizeof(NICState),
+>       .can_receive =3D virtio_net_can_receive,
+>       .receive =3D virtio_net_receive,
+> -        .cleanup =3D virtio_net_cleanup,
+> +    .cleanup =3D virtio_net_cleanup,
+>       .link_status_changed =3D virtio_net_set_link_status,
+>       .query_rx_filter =3D virtio_net_query_rxfilter,
+>   };
+>
 
-gcc 4.8.2 reports this warning when extra warnings are enabled (-Wextra):
-
-  CC    m68k-softmmu/hw/m68k/mcf5206.o
-hw/i386/acpi-build.c: In function =E2=80=98build_append_nameseg=E2=80=99:
-hw/i386/acpi-build.c:294:5: error:
- function might be possible candidate for =E2=80=98gnu_printf=E2=80=99 fo=
-rmat attribute [-Werror=3Dsuggest-attribute=3Dformat]
-     g_string_vprintf(s, format, args);
-     ^
-
-When this warning is fixed, there is a new compiler warning:
-
-  CC    i386-softmmu/hw/i386/acpi-build.o
-hw/i386/acpi-build.c: In function =E2=80=98build_append_notify=E2=80=99:
-hw/i386/acpi-build.c:632:5: error:
- format not a string literal and no format arguments [-Werror=3Dformat-se=
-curity]
-     build_append_nameseg(method, name);
-     ^
-
-This is fixed here, too.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/i386/acpi-build.c |    5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 5f36e7e..4d2e641 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -285,7 +285,8 @@ static inline void build_append_array(GArray *array, =
-GArray *val)
-     g_array_append_vals(array, val->data, val->len);
- }
-=20
--static void build_append_nameseg(GArray *array, const char *format, ...)
-+static void GCC_FMT_ATTR(2, 3)
-+build_append_nameseg(GArray *array, const char *format, ...)
- {
-     /* It would be nicer to use g_string_vprintf but it's only there in =
-2.22 */
-     char s[] =3D "XXXX";
-@@ -632,7 +633,7 @@ build_append_notify(GArray *device, const char *name,
-     GArray *method =3D build_alloc_array();
-     uint8_t op =3D 0x14; /* MethodOp */
-=20
--    build_append_nameseg(method, name);
-+    build_append_nameseg(method, "%s", name);
-     build_append_byte(method, 0x02); /* MethodFlags: ArgCount */
-     for (i =3D skip; i < count; i++) {
-         GArray *target =3D build_alloc_array();
---=20
-1.7.10.4
-
+Reviewed-by: Fam Zheng <famz@redhat.com>
 
