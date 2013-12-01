@@ -1,40 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vm2dT-0004Hb-NA
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Nov 2013 09:32:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58254)
+	id 1Vn1nB-0005Xu-6r
+	for mharc-qemu-trivial@gnu.org; Sun, 01 Dec 2013 02:50:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48651)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Vm2dK-0003zG-KR
-	for qemu-trivial@nongnu.org; Thu, 28 Nov 2013 09:32:06 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vn1n5-0005O9-CT
+	for qemu-trivial@nongnu.org; Sun, 01 Dec 2013 02:50:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Vm2dE-00070t-IE
-	for qemu-trivial@nongnu.org; Thu, 28 Nov 2013 09:31:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:13828)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vn1n0-0005LG-EE
+	for qemu-trivial@nongnu.org; Sun, 01 Dec 2013 02:50:07 -0500
+Received: from qemu.weilnetz.de ([37.221.198.45]:50229
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1Vm2d0-0006w0-AU; Thu, 28 Nov 2013 09:31:38 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rASEVbkg006541
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 28 Nov 2013 09:31:37 -0500
-Received: from [10.36.4.184] (vpn1-4-184.ams2.redhat.com [10.36.4.184])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id rASEVZtI012089; Thu, 28 Nov 2013 09:31:36 -0500
-Message-ID: <1385649095.13867.56.camel@nilsson.home.kraxel.org>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: armbru@redhat.com
-Date: Thu, 28 Nov 2013 15:31:35 +0100
-In-Reply-To: <1385381298-3335-1-git-send-email-armbru@redhat.com>
-References: <1385381298-3335-1-git-send-email-armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vn1mq-0005Fc-0g; Sun, 01 Dec 2013 02:49:52 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id C49DE1804A6; Sun,  1 Dec 2013 08:49:47 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel <qemu-devel@nongnu.org>
+Date: Sun,  1 Dec 2013 08:49:47 +0100
+Message-Id: <1385884187-10987-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] trace-events: Clean up after removal of
- old usb-host code
+X-Received-From: 37.221.198.45
+Cc: Blue Swirl <blauwirbel@gmail.com>, Jia Liu <proljc@gmail.com>,
+	qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Alexander Graf <agraf@suse.de>,
+	Peter Crosthwaite <peter.crosthwaite@petalogix.com>,
+	Anthony Liguori <aliguori@amazon.com>, Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-trivial] [PATCH] misc: Replace 'struct QEMUTimer' by
+	'QEMUTimer'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,17 +42,214 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Nov 2013 14:32:06 -0000
+X-List-Received-Date: Sun, 01 Dec 2013 07:50:12 -0000
 
-On Mo, 2013-11-25 at 13:08 +0100, armbru@redhat.com wrote:
-> From: Markus Armbruster <armbru@redhat.com>
-> 
-> Commit b5613fd neglected to drop the trace events along with the code.
+Most code already used QEMUTimer without the redundant 'struct' keyword.
 
-Added to usb patch queue.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/char/cadence_uart.c   |    4 ++--
+ hw/ppc/ppc.c             |    6 +++---
+ hw/ppc/ppc405_uc.c       |    2 +-
+ hw/ppc/ppc_booke.c       |    4 ++--
+ hw/timer/m48t59.c        |    4 ++--
+ include/hw/char/serial.h |    4 ++--
+ include/hw/ppc/ppc.h     |    4 ++--
+ target-alpha/cpu-qom.h   |    2 +-
+ target-mips/cpu.h        |    2 +-
+ target-openrisc/cpu.h    |    2 +-
+ target-sparc/cpu.h       |    2 +-
+ ui/console.c             |    2 +-
+ 12 files changed, 19 insertions(+), 19 deletions(-)
 
-thanks,
-  Gerd
-
+diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+index f8ccbdd..f18db53 100644
+--- a/hw/char/cadence_uart.c
++++ b/hw/char/cadence_uart.c
+@@ -120,8 +120,8 @@ typedef struct {
+     uint64_t char_tx_time;
+     CharDriverState *chr;
+     qemu_irq irq;
+-    struct QEMUTimer *fifo_trigger_handle;
+-    struct QEMUTimer *tx_time_handle;
++    QEMUTimer *fifo_trigger_handle;
++    QEMUTimer *tx_time_handle;
+ } UartState;
+ 
+ static void uart_update_status(UartState *s)
+diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+index bf2d3d4..114be64 100644
+--- a/hw/ppc/ppc.c
++++ b/hw/ppc/ppc.c
+@@ -684,7 +684,7 @@ static inline void cpu_ppc_hdecr_excp(PowerPCCPU *cpu)
+ }
+ 
+ static void __cpu_ppc_store_decr(PowerPCCPU *cpu, uint64_t *nextp,
+-                                 struct QEMUTimer *timer,
++                                 QEMUTimer *timer,
+                                  void (*raise_excp)(PowerPCCPU *),
+                                  uint32_t decr, uint32_t value,
+                                  int is_excp)
+@@ -856,9 +856,9 @@ typedef struct ppc40x_timer_t ppc40x_timer_t;
+ struct ppc40x_timer_t {
+     uint64_t pit_reload;  /* PIT auto-reload value        */
+     uint64_t fit_next;    /* Tick for next FIT interrupt  */
+-    struct QEMUTimer *fit_timer;
++    QEMUTimer *fit_timer;
+     uint64_t wdt_next;    /* Tick for next WDT interrupt  */
+-    struct QEMUTimer *wdt_timer;
++    QEMUTimer *wdt_timer;
+ 
+     /* 405 have the PIT, 440 have a DECR.  */
+     unsigned int decr_excp;
+diff --git a/hw/ppc/ppc405_uc.c b/hw/ppc/ppc405_uc.c
+index 6d6a7f1..8109f92 100644
+--- a/hw/ppc/ppc405_uc.c
++++ b/hw/ppc/ppc405_uc.c
+@@ -1234,7 +1234,7 @@ struct ppc4xx_gpt_t {
+     MemoryRegion iomem;
+     int64_t tb_offset;
+     uint32_t tb_freq;
+-    struct QEMUTimer *timer;
++    QEMUTimer *timer;
+     qemu_irq irqs[5];
+     uint32_t oe;
+     uint32_t ol;
+diff --git a/hw/ppc/ppc_booke.c b/hw/ppc/ppc_booke.c
+index b421620..d839960 100644
+--- a/hw/ppc/ppc_booke.c
++++ b/hw/ppc/ppc_booke.c
+@@ -64,10 +64,10 @@ typedef struct booke_timer_t booke_timer_t;
+ struct booke_timer_t {
+ 
+     uint64_t fit_next;
+-    struct QEMUTimer *fit_timer;
++    QEMUTimer *fit_timer;
+ 
+     uint64_t wdt_next;
+-    struct QEMUTimer *wdt_timer;
++    QEMUTimer *wdt_timer;
+ 
+     uint32_t flags;
+ };
+diff --git a/hw/timer/m48t59.c b/hw/timer/m48t59.c
+index d3d78ec..be0592b 100644
+--- a/hw/timer/m48t59.c
++++ b/hw/timer/m48t59.c
+@@ -61,8 +61,8 @@ struct M48t59State {
+     time_t   stop_time;
+     /* Alarm & watchdog */
+     struct tm alarm;
+-    struct QEMUTimer *alrm_timer;
+-    struct QEMUTimer *wd_timer;
++    QEMUTimer *alrm_timer;
++    QEMUTimer *wd_timer;
+     /* NVRAM storage */
+     uint8_t *buffer;
+     /* Model parameters */
+diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+index 85f58ac..f431764 100644
+--- a/include/hw/char/serial.h
++++ b/include/hw/char/serial.h
+@@ -65,13 +65,13 @@ struct SerialState {
+     /* Interrupt trigger level for recv_fifo */
+     uint8_t recv_fifo_itl;
+ 
+-    struct QEMUTimer *fifo_timeout_timer;
++    QEMUTimer *fifo_timeout_timer;
+     int timeout_ipending;           /* timeout interrupt pending state */
+ 
+     uint64_t char_transmit_time;    /* time to transmit a char in ticks */
+     int poll_msl;
+ 
+-    struct QEMUTimer *modem_status_poll;
++    QEMUTimer *modem_status_poll;
+     MemoryRegion io;
+ };
+ 
+diff --git a/include/hw/ppc/ppc.h b/include/hw/ppc/ppc.h
+index 132ab97..835418a 100644
+--- a/include/hw/ppc/ppc.h
++++ b/include/hw/ppc/ppc.h
+@@ -24,10 +24,10 @@ struct ppc_tb_t {
+     /* Decrementer management */
+     uint64_t decr_next;    /* Tick for next decr interrupt    */
+     uint32_t decr_freq;    /* decrementer frequency           */
+-    struct QEMUTimer *decr_timer;
++    QEMUTimer *decr_timer;
+     /* Hypervisor decrementer management */
+     uint64_t hdecr_next;    /* Tick for next hdecr interrupt  */
+-    struct QEMUTimer *hdecr_timer;
++    QEMUTimer *hdecr_timer;
+     uint64_t purr_load;
+     uint64_t purr_start;
+     void *opaque;
+diff --git a/target-alpha/cpu-qom.h b/target-alpha/cpu-qom.h
+index 2ebc9bc..198f1b1 100644
+--- a/target-alpha/cpu-qom.h
++++ b/target-alpha/cpu-qom.h
+@@ -62,7 +62,7 @@ typedef struct AlphaCPU {
+     CPUAlphaState env;
+ 
+     /* This alarm doesn't exist in real hardware; we wish it did.  */
+-    struct QEMUTimer *alarm_timer;
++    QEMUTimer *alarm_timer;
+ } AlphaCPU;
+ 
+ static inline AlphaCPU *alpha_env_get_cpu(CPUAlphaState *env)
+diff --git a/target-mips/cpu.h b/target-mips/cpu.h
+index a29c82f..9caf447 100644
+--- a/target-mips/cpu.h
++++ b/target-mips/cpu.h
+@@ -476,7 +476,7 @@ struct CPUMIPSState {
+ 
+     const mips_def_t *cpu_model;
+     void *irq[8];
+-    struct QEMUTimer *timer; /* Internal timer */
++    QEMUTimer *timer; /* Internal timer */
+ };
+ 
+ #include "cpu-qom.h"
+diff --git a/target-openrisc/cpu.h b/target-openrisc/cpu.h
+index 0f9efdf..51d6afd 100644
+--- a/target-openrisc/cpu.h
++++ b/target-openrisc/cpu.h
+@@ -307,7 +307,7 @@ typedef struct CPUOpenRISCState {
+ #ifndef CONFIG_USER_ONLY
+     CPUOpenRISCTLBContext * tlb;
+ 
+-    struct QEMUTimer *timer;
++    QEMUTimer *timer;
+     uint32_t ttmr;          /* Timer tick mode register */
+     uint32_t ttcr;          /* Timer tick count register */
+ 
+diff --git a/target-sparc/cpu.h b/target-sparc/cpu.h
+index 41194ec..c519063 100644
+--- a/target-sparc/cpu.h
++++ b/target-sparc/cpu.h
+@@ -370,7 +370,7 @@ struct CPUTimer
+     uint32_t    disabled;
+     uint64_t    disabled_mask;
+     int64_t     clock_offset;
+-    struct QEMUTimer  *qtimer;
++    QEMUTimer  *qtimer;
+ };
+ 
+ typedef struct CPUTimer CPUTimer;
+diff --git a/ui/console.c b/ui/console.c
+index 199ba69..4187263 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -161,7 +161,7 @@ struct QemuConsole {
+ };
+ 
+ struct DisplayState {
+-    struct QEMUTimer *gui_timer;
++    QEMUTimer *gui_timer;
+     uint64_t last_update;
+     uint64_t update_interval;
+     bool refreshing;
+-- 
+1.7.10.4
 
 
