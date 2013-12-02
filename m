@@ -1,39 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VnWyg-0002fn-JB
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Dec 2013 12:08:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46555)
+	id 1VnX9S-0006yU-VO
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Dec 2013 12:19:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49375)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VnWyX-0002Ub-SK
-	for qemu-trivial@nongnu.org; Mon, 02 Dec 2013 12:08:07 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1VnX9J-0006oQ-Ez
+	for qemu-trivial@nongnu.org; Mon, 02 Dec 2013 12:19:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VnWyR-00033z-Sx
-	for qemu-trivial@nongnu.org; Mon, 02 Dec 2013 12:08:01 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:53556)
+	(envelope-from <mjt@tls.msk.ru>) id 1VnX9D-00073U-FN
+	for qemu-trivial@nongnu.org; Mon, 02 Dec 2013 12:19:09 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:52939)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VnWyE-00030r-Og; Mon, 02 Dec 2013 12:07:42 -0500
+	id 1VnX91-00072C-6A; Mon, 02 Dec 2013 12:18:51 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 14B00405E8;
-	Mon,  2 Dec 2013 21:07:42 +0400 (MSK)
-Message-ID: <529CBE5E.9020406@msgid.tls.msk.ru>
-Date: Mon, 02 Dec 2013 21:07:42 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 6187D405E8;
+	Mon,  2 Dec 2013 21:18:48 +0400 (MSK)
+Message-ID: <529CC0F8.2070803@msgid.tls.msk.ru>
+Date: Mon, 02 Dec 2013 21:18:48 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:17.0) Gecko/20131103 Icedove/17.0.10
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1384722738-17345-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1384722738-17345-1-git-send-email-sw@weilnetz.de>
+To: Don Koch <dkoch@verizon.com>
+References: <528BC3B7.2090205@terremark.com>
+In-Reply-To: <528BC3B7.2090205@terremark.com>
 X-Enigmail-Version: 1.5.1
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] libcacard/vcard_emul_nss: Remove unused
- statement (value stored is never read)
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+	Anthony Liguori <aliguori@amazon.com>
+Subject: Re: [Qemu-trivial] [PATCH v2] Don't crash on keyboard input with no
+ handler
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,17 +46,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Dec 2013 17:08:08 -0000
+X-List-Received-Date: Mon, 02 Dec 2013 17:19:15 -0000
 
-18.11.2013 01:12, Stefan Weil wrote:
-> Warning from ccc-analyzer:
+20.11.2013 00:01, Don Koch wrote:
+> Prevent a call to put_kbd if null.
 > 
-> libcacard/vcard_emul_nss.c:937:9: warning:
->  Value stored to 'cert_count' is never read
->         cert_count = options->vreader[i].cert_count;
->         ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> On shutdown of some OSes, the keyboard handler goes away before the
+> system is down. If a key is typed during this window, qemu crashes.
 
-Applied to trivial patches, thank you!
+Thanks, applied to the trivial patches queue.
 
 /mjt
 
