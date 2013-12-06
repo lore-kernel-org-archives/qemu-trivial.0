@@ -1,51 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vp11e-00037R-6W
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:25:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51593)
+	id 1Vp19D-0003V8-JF
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:33:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53485)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Vp10r-0002Dx-Cz
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:24:37 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp195-0002qH-Oi
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:33:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Vp10n-0000Q7-9q
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:24:33 -0500
-Received: from mail-pb0-f48.google.com ([209.85.160.48]:47238)
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp191-0002t9-Ag
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:33:03 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:43834)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Vp10n-0000Pz-3n
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:24:29 -0500
-Received: by mail-pb0-f48.google.com with SMTP id md12so1609228pbc.21
-	for <qemu-trivial@nongnu.org>; Fri, 06 Dec 2013 11:24:28 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=Ul0apiFlL+Aqob8qQwUArVtQQgBS3QWflphWawqOjfw=;
-	b=Gy5bsaqqCDRRvEeoXevuLjx+NG4NbCTwO6HCEEIuS26u2mJhudLWq8Y2L+ucgTCE2n
-	axWkhA+9PKh28eXteN0y15FiE3FeDwWnDVfq3qfNBqaOAI8RXppK27j4cK2JH7wixQZI
-	LUn7rjhFVEwHQBVyllHeI4q+/y1NP6DjcFqRbjx5oC6oqbR+5mMTqVlSWpH+i9nBDVSQ
-	iptI2w2KwZHvap+wyOsmiUk/KuWTZXENT0clSCqBnRTfsZytYyiECpJtr8f71DWZQr5F
-	f0t1ObBNTWA/IYSjV8bfKSSmd/9dZ5mVaHF/hn6HrQn6N4Ezd2MI6KBWDKMybH0oOndh
-	4KrA==
-X-Gm-Message-State: ALoCoQljrHYznpbrMeXF1nphlnDztxHkMJH8kmjNCVTp2cjtQ4EZ3kfnOicgiWYGgYR0UaCpQTTW
-X-Received: by 10.66.160.2 with SMTP id xg2mr5973238pab.23.1386357868179; Fri,
-	06 Dec 2013 11:24:28 -0800 (PST)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Vp18q-0002qR-EM; Fri, 06 Dec 2013 14:32:48 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 55DEA40DD3;
+	Fri,  6 Dec 2013 23:32:47 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id CF9BB5E0;
+	Fri,  6 Dec 2013 23:15:44 +0400 (MSK)
+Received: (nullmailer pid 19222 invoked by uid 1000);
+	Fri, 06 Dec 2013 19:15:43 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: aliguori@amazon.com
+Date: Fri,  6 Dec 2013 23:15:34 +0400
+Message-Id: <1386357341-19147-8-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
 MIME-Version: 1.0
-Received: by 10.70.82.227 with HTTP; Fri, 6 Dec 2013 11:24:08 -0800 (PST)
-In-Reply-To: <52A221B9.4040407@msgid.tls.msk.ru>
-References: <1386355410-10805-1-git-send-email-sw@weilnetz.de>
-	<52A221B9.4040407@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Dec 2013 19:24:08 +0000
-Message-ID: <CAFEAcA-fp1rZunk=20dTK1henUHnSk3tNSFT-aFxwPkb+VW8Mw@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.48
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel <qemu-devel@nongnu.org>,
-	Mark Langsdorf <mark.langsdorf@calxeda.com>
-Subject: Re: [Qemu-trivial] [PATCH] hw/arm/highbank: Simplify code (memory
- region in device state)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 07/14] qobject: Fix compiler warning (missing
+	gnu_printf format attribute)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,55 +47,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Dec 2013 19:25:20 -0000
+X-List-Received-Date: Fri, 06 Dec 2013 19:33:08 -0000
 
-On 6 December 2013 19:12, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 06.12.2013 22:43, Stefan Weil wrote:
->> The memory region can be included by value instead of by reference in the
->> device state (like it is done in other SoCs).
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>  hw/arm/highbank.c |    7 +++----
->>  1 file changed, 3 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
->> index fe98ef1..54384b3 100644
->> --- a/hw/arm/highbank.c
->> +++ b/hw/arm/highbank.c
->> @@ -125,7 +125,7 @@ typedef struct {
->>      SysBusDevice parent_obj;
->>      /*< public >*/
->>
->> -    MemoryRegion *iomem;
->> +    MemoryRegion iomem;
->>      uint32_t regs[NUM_REGS];
->>  } HighbankRegsState;
->
-> Don't we have active maintainer for arm? (Who is Cc'd on the original patch).
+From: Stefan Weil <sw@weilnetz.de>
 
-Yeah, and there's highbank related patches currently going through
-review so it might be better for me to take this in the target-arm queue
-(though for a trivial one like this it doesn't make much difference).
+gcc 4.8.2 reports this warning when extra warnings are enabled (-Wextra):
 
->> @@ -154,10 +154,9 @@ static int highbank_regs_init(SysBusDevice *dev)
->>  {
->>      HighbankRegsState *s = HIGHBANK_REGISTERS(dev);
->>
->> -    s->iomem = g_new(MemoryRegion, 1);
->> -    memory_region_init_io(s->iomem, OBJECT(s), &hb_mem_ops, s->regs,
->> +    memory_region_init_io(&s->iomem, OBJECT(s), &hb_mem_ops, s->regs,
->>                            "highbank_regs", 0x1000);
->
-> I know right to nothing about arm, does it have any alignment requiriments,
-> which may break here?
+  CC    qobject/qerror.o
+qobject/qerror.c: In function =E2=80=98qerror_from_info=E2=80=99:
+qobject/qerror.c:53:5: error:
+ function might be possible candidate for =E2=80=98gnu_printf=E2=80=99 fo=
+rmat attribute [-Werror=3Dsuggest-attribute=3Dformat]
+     qerr->err_msg =3D g_strdup_vprintf(fmt, *va);
+     ^
 
-Hmm? This is just putting the MemoryRegion struct in the HighBankRegsState
-structure rather than allocating it via g_new(). That's all host related
-and in any case is the host C compiler's problem to deal with.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qobject/qerror.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/qobject/qerror.c b/qobject/qerror.c
+index 3aee1cf..fc8331a 100644
+--- a/qobject/qerror.c
++++ b/qobject/qerror.c
+@@ -42,8 +42,8 @@ static QError *qerror_new(void)
+  *
+  * Return strong reference.
+  */
+-static QError *qerror_from_info(ErrorClass err_class, const char *fmt,
+-                                va_list *va)
++static QError * GCC_FMT_ATTR(2, 0)
++qerror_from_info(ErrorClass err_class, const char *fmt, va_list *va)
+ {
+     QError *qerr;
+=20
+--=20
+1.7.10.4
 
-thanks
--- PMM
 
