@@ -1,47 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vox1O-0002Ck-9H
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 10:08:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40716)
+	id 1Vp0NI-0007ri-G3
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 13:43:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39198)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Vox1E-00022f-3z
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 10:08:48 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vp0NF-0007o3-P4
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 13:43:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Vox15-0002cj-Nl
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 10:08:40 -0500
-Received: from mail-ee0-x22e.google.com ([2a00:1450:4013:c00::22e]:41788)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vp0NE-0003qf-V7
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 13:43:37 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:52105
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1Vox0o-0002Wz-KU; Fri, 06 Dec 2013 10:08:14 -0500
-Received: by mail-ee0-f46.google.com with SMTP id d49so357247eek.19
-	for <multiple recipients>; Fri, 06 Dec 2013 07:08:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=wCUMHDnFqHFBgpras8QAjGuoMjLYADwBs4XZKfMEEhI=;
-	b=K1eEv79ftpKg+maLGhyKd7uMKf69emXipQuVaw5hmpuVVLyoc3dXKlcR3WqIs0rp41
-	0ft7a0bXWgLlHvzBstHiQ0/UykoxxaapGBEeBbjRUOP25g53fNvkJ4SITs3n0xt7Glo5
-	1RUL5jzwjgGVdDpyCjQYvq8JNquaW7RNKXnz3eYdghnaJXsA/1mj7GcnSpPpgHKsGliY
-	E5BI8eBT01cursFJdePD5nDC/b/OH65MVNd1RTWY5ANqxOMyh0W6dVmL3RGQo/PC9iLM
-	U9vIU1ydOfx7HiqkwU1zS3vaPGJYmaMAUeWsEcB7kmGW07DQ8OJJCs6JQJNabJUJBP9Y
-	sbZQ==
-X-Received: by 10.14.101.4 with SMTP id a4mr2952851eeg.28.1386342493400;
-	Fri, 06 Dec 2013 07:08:13 -0800 (PST)
-Received: from localhost.localdomain (net-2-35-202-54.cust.dsl.vodafone.it.
-	[2.35.202.54])
-	by mx.google.com with ESMTPSA id g7sm69801132eet.12.2013.12.06.07.08.11
-	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Fri, 06 Dec 2013 07:08:12 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri,  6 Dec 2013 16:08:05 +0100
-Message-Id: <1386342485-8656-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.7.1
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vp0ND-0003px-0n; Fri, 06 Dec 2013 13:43:35 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id 4280A180577; Fri,  6 Dec 2013 19:43:31 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel <qemu-devel@nongnu.org>
+Date: Fri,  6 Dec 2013 19:43:30 +0100
+Message-Id: <1386355410-10805-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4013:c00::22e
-Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org
-Subject: [Qemu-trivial] [PATCH] help: add id suboption to -iscsi
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Mark Langsdorf <mark.langsdorf@calxeda.com>, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] hw/arm/highbank: Simplify code (memory
+	region in device state)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,27 +40,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Dec 2013 15:08:48 -0000
+X-List-Received-Date: Fri, 06 Dec 2013 18:43:38 -0000
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+The memory region can be included by value instead of by reference in the
+device state (like it is done in other SoCs).
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- qemu-options.hx |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ hw/arm/highbank.c |    7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 8b94264..7f12f02 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -2089,7 +2089,7 @@ ETEXI
- DEF("iscsi", HAS_ARG, QEMU_OPTION_iscsi,
-     "-iscsi [user=user][,password=password]\n"
-     "       [,header-digest=CRC32C|CR32C-NONE|NONE-CRC32C|NONE\n"
--    "       [,initiator-name=iqn]\n"
-+    "       [,initiator-name=initiator-iqn][,id=target-iqn]\n"
-     "                iSCSI session parameters\n", QEMU_ARCH_ALL)
- STEXI
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index fe98ef1..54384b3 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -125,7 +125,7 @@ typedef struct {
+     SysBusDevice parent_obj;
+     /*< public >*/
  
+-    MemoryRegion *iomem;
++    MemoryRegion iomem;
+     uint32_t regs[NUM_REGS];
+ } HighbankRegsState;
+ 
+@@ -154,10 +154,9 @@ static int highbank_regs_init(SysBusDevice *dev)
+ {
+     HighbankRegsState *s = HIGHBANK_REGISTERS(dev);
+ 
+-    s->iomem = g_new(MemoryRegion, 1);
+-    memory_region_init_io(s->iomem, OBJECT(s), &hb_mem_ops, s->regs,
++    memory_region_init_io(&s->iomem, OBJECT(s), &hb_mem_ops, s->regs,
+                           "highbank_regs", 0x1000);
+-    sysbus_init_mmio(dev, s->iomem);
++    sysbus_init_mmio(dev, &s->iomem);
+ 
+     return 0;
+ }
 -- 
-1.7.1
+1.7.10.4
 
 
