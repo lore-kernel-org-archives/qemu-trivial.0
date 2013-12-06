@@ -1,52 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VoBt4-0007wX-HC
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Dec 2013 07:49:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56878)
+	id 1Vox1O-0002Ck-9H
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 10:08:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40716)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1VoBsz-0007sw-LW
-	for qemu-trivial@nongnu.org; Wed, 04 Dec 2013 07:49:05 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1Vox1E-00022f-3z
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 10:08:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1VoBsv-0001kT-0p
-	for qemu-trivial@nongnu.org; Wed, 04 Dec 2013 07:49:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:22978)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1Vox15-0002cj-Nl
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 10:08:40 -0500
+Received: from mail-ee0-x22e.google.com ([2a00:1450:4013:c00::22e]:41788)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1VoBsu-0001kN-P2; Wed, 04 Dec 2013 07:48:56 -0500
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rB4CmnEG025761
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 4 Dec 2013 07:48:50 -0500
-Received: from localhost (ovpn-113-108.phx2.redhat.com [10.3.113.108])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id rB4Cmlkv010930; Wed, 4 Dec 2013 07:48:48 -0500
-Date: Wed, 4 Dec 2013 10:48:47 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Alexey Kardashevskiy <aik@ozlabs.ru>
-Message-ID: <20131204124847.GK2340@otherpad.lan.raisama.net>
-References: <1385350750-21468-1-git-send-email-aik@ozlabs.ru>
-	<529CBE15.8010206@msgid.tls.msk.ru> <529D0533.7090402@suse.de>
-	<529D11C5.2080505@ozlabs.ru> <529DDD08.4030206@suse.de>
-	<20131203144740.GL22837@otherpad.lan.raisama.net>
-	<529EC2C3.3050703@ozlabs.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <529EC2C3.3050703@ozlabs.ru>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	rB4CmnEG025761
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Wanlong Gao <gaowanlong@cn.fujitsu.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl: remove (max_cpus > 255)
- check from smp_parse
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1Vox0o-0002Wz-KU; Fri, 06 Dec 2013 10:08:14 -0500
+Received: by mail-ee0-f46.google.com with SMTP id d49so357247eek.19
+	for <multiple recipients>; Fri, 06 Dec 2013 07:08:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id;
+	bh=wCUMHDnFqHFBgpras8QAjGuoMjLYADwBs4XZKfMEEhI=;
+	b=K1eEv79ftpKg+maLGhyKd7uMKf69emXipQuVaw5hmpuVVLyoc3dXKlcR3WqIs0rp41
+	0ft7a0bXWgLlHvzBstHiQ0/UykoxxaapGBEeBbjRUOP25g53fNvkJ4SITs3n0xt7Glo5
+	1RUL5jzwjgGVdDpyCjQYvq8JNquaW7RNKXnz3eYdghnaJXsA/1mj7GcnSpPpgHKsGliY
+	E5BI8eBT01cursFJdePD5nDC/b/OH65MVNd1RTWY5ANqxOMyh0W6dVmL3RGQo/PC9iLM
+	U9vIU1ydOfx7HiqkwU1zS3vaPGJYmaMAUeWsEcB7kmGW07DQ8OJJCs6JQJNabJUJBP9Y
+	sbZQ==
+X-Received: by 10.14.101.4 with SMTP id a4mr2952851eeg.28.1386342493400;
+	Fri, 06 Dec 2013 07:08:13 -0800 (PST)
+Received: from localhost.localdomain (net-2-35-202-54.cust.dsl.vodafone.it.
+	[2.35.202.54])
+	by mx.google.com with ESMTPSA id g7sm69801132eet.12.2013.12.06.07.08.11
+	for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Fri, 06 Dec 2013 07:08:12 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri,  6 Dec 2013 16:08:05 +0100
+Message-Id: <1386342485-8656-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.7.1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c00::22e
+Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org
+Subject: [Qemu-trivial] [PATCH] help: add id suboption to -iscsi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,117 +53,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Dec 2013 12:49:06 -0000
+X-List-Received-Date: Fri, 06 Dec 2013 15:08:48 -0000
 
-On Wed, Dec 04, 2013 at 04:50:59PM +1100, Alexey Kardashevskiy wrote:
-> On 12/04/2013 01:47 AM, Eduardo Habkost wrote:
-> > On Tue, Dec 03, 2013 at 02:30:48PM +0100, Andreas F=E4rber wrote:
-> >> Am 03.12.2013 00:03, schrieb Alexey Kardashevskiy:
-> >>> On 12/03/2013 09:09 AM, Andreas F=E4rber wrote:
-> >>>> Am 02.12.2013 18:06, schrieb Michael Tokarev:
-> >>>>> 25.11.2013 07:39, Alexey Kardashevskiy wrote:
-> >>>>>> Since modern POWER7/POWER8 chips can have more that 256 CPU thre=
-ads
-> >>>>>> (>2000 actually), remove this check from smp_parse.
-> >>>>>>
-> >>>>>> The CPUs number is still checked against machine->max_cpus and t=
-his check
-> >>>>>> should be enough not to break other archs.
-> >>>>
-> >>>> "should be" is not exactly the highest level of confidence for a
-> >>>> "trivial" patch... :/
-> >> [...]
-> >>>> Alexey, did you actually check that, e.g., x86 machines don't brea=
-k with
-> >>>> 256 or 257 CPUs now?
-> >>>
-> >>> PC_DEFAULT_MACHINE_OPTIONS sets it to 255. And I cannot find any ma=
-chine
-> >>> which would not define max_cpus, have I missed any?
-> >>
-> >> If you've actually *checked* the other machines' code then fine with=
- me,
-> >> just say so in the commit message. :)
-> >=20
-> > I just grepped for "max_cpus" and checked every match. The largest
-> > values I found were:
-> >=20
-> > hw/ppc/spapr.c: 256
-> > s390: 255
-> > pc: 255
-> >=20
-> > All the rest had values <=3D 32.
-> >=20
-> > Machines with missing max_cpus value shouldn't be a problem, as
-> > max_cpus=3D=3D0 is interpreted as 1 by the vl.c code.
-> >=20
-> > But we still need to add a check for max_cpus > machine->max_cpus to
-> > vl.c, before we eliminate the smp_parse() check.
->=20
->=20
-> Since smp_parse() checks if (max_cpus >=3D smp_cpus), this should just =
-work:
->=20
-> diff --git a/vl.c b/vl.c
-> index e6ed260..544165a 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -3882,9 +3882,9 @@ int main(int argc, char **argv, char **envp)
->      smp_parse(qemu_opts_find(qemu_find_opts("smp-opts"), NULL));
->=20
->      machine->max_cpus =3D machine->max_cpus ?: 1; /* Default to UP */
-> -    if (smp_cpus > machine->max_cpus) {
-> +    if (max_cpus > machine->max_cpus) {
->          fprintf(stderr, "Number of SMP cpus requested (%d), exceeds ma=
-x cpus "
-> -                "supported by machine `%s' (%d)\n", smp_cpus,  machine=
-->name,
-> +                "supported by machine `%s' (%d)\n", max_cpus,  machine=
-->name,
->                  machine->max_cpus);
->          exit(1);
->      }
->=20
->=20
-> > There's also this, at main():
-> >=20
-> >         if (i =3D=3D nb_numa_nodes) {
-> >             for (i =3D 0; i < max_cpus; i++) {
-> >                 set_bit(i, node_cpumask[i % nb_numa_nodes]);
-> >             }
-> >         }
-> >=20
-> > node_cpumask[] is initialized using bitmap_new(MAX_CPUMASK_BITS), and
-> > MAX_CPUMASK_BITS is 255. To fix this, we can initialize node_cpumask[=
-] using
-> > max_cpus instead, if we initialize it after smp_parse().
->=20
->=20
-> Nope. At the moment when we parse -numa in vl.c, we may not know yet wh=
-at
-> machine is going to be used and machines can have different max_cpus.
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ qemu-options.hx |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
-This will be changed by:
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 8b94264..7f12f02 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -2089,7 +2089,7 @@ ETEXI
+ DEF("iscsi", HAS_ARG, QEMU_OPTION_iscsi,
+     "-iscsi [user=user][,password=password]\n"
+     "       [,header-digest=CRC32C|CR32C-NONE|NONE-CRC32C|NONE\n"
+-    "       [,initiator-name=iqn]\n"
++    "       [,initiator-name=initiator-iqn][,id=target-iqn]\n"
+     "                iSCSI session parameters\n", QEMU_ARCH_ALL)
+ STEXI
+ 
+-- 
+1.7.1
 
-  Subject: [PATCH V17 04/11] NUMA: convert -numa option to use OptsVisito=
-r
-  Message-Id: <1386143939-19142-5-git-send-email-gaowanlong@cn.fujitsu.co=
-m>
-  http://article.gmane.org/gmane.comp.emulators.qemu/244826
-
->=20
-> For now, I would simply change MAX_CPUMASK_BITS to something crazy, lik=
-e
-> 16384 (2KB per numa node), I hope QEMU can survive such a memory waste =
-:)
->=20
-> Ok?
-
-I'm OK with that as long the code has proper checks in case max_cpus
-gets set to a crazily large value (larger than MAX_CPUMASK_BITS) in the
-far future, or if we prevent max_cpus from being larger than
-MAX_CPUMASK_BITS.
-
---=20
-Eduardo
 
