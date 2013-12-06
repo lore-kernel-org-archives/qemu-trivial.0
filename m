@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vp0zU-00089U-9P
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:23:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51260)
+	id 1Vp0zV-0008B6-2E
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:23:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51291)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp0zO-0007vT-B8
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:23:03 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp0zP-0007y9-Ea
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:23:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp0zK-0008Gb-5V
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:23:02 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:41185)
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp0zO-0008HX-H8
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:23:03 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:38909)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Vp0zB-0008An-9V; Fri, 06 Dec 2013 14:22:49 -0500
+	id 1Vp0zB-0008Am-9Z; Fri, 06 Dec 2013 14:22:49 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id CC9FC40DD3;
+	by isrv.corpit.ru (Postfix) with ESMTP id 8E18840D77;
 	Fri,  6 Dec 2013 23:22:47 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 7E4B0607;
-	Fri,  6 Dec 2013 23:15:45 +0400 (MSK)
-Received: (nullmailer pid 19234 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id F34F35FC;
+	Fri,  6 Dec 2013 23:15:44 +0400 (MSK)
+Received: (nullmailer pid 19231 invoked by uid 1000);
 	Fri, 06 Dec 2013 19:15:44 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@amazon.com
-Date: Fri,  6 Dec 2013 23:15:39 +0400
-Message-Id: <1386357341-19147-13-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri,  6 Dec 2013 23:15:38 +0400
+Message-Id: <1386357341-19147-12-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org, Don Koch <dkoch@verizon.com>
-Subject: [Qemu-trivial] [PULL 12/14] Don't crash on keyboard input with no
-	handler
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 11/14] libcacard/vcard_emul_nss: Remove unused
+	statement (value stored is never read)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,34 +44,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Dec 2013 19:23:03 -0000
+X-List-Received-Date: Fri, 06 Dec 2013 19:23:04 -0000
 
-From: Don Koch <dkoch@verizon.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Prevent a call to put_kbd if null.
+Warning from ccc-analyzer:
 
-On shutdown of some OSes, the keyboard handler goes away before the
-system is down. If a key is typed during this window, qemu crashes.
+libcacard/vcard_emul_nss.c:937:9: warning:
+ Value stored to 'cert_count' is never read
+        cert_count = options->vreader[i].cert_count;
+        ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Signed-off-by: Don Koch <dkoch@verizon.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- ui/input.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ libcacard/vcard_emul_nss.c |    1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/ui/input.c b/ui/input.c
-index 10d8c05..1c70f60 100644
---- a/ui/input.c
-+++ b/ui/input.c
-@@ -414,7 +414,7 @@ void kbd_put_keycode(int keycode)
-     if (!runstate_is_running() && !runstate_check(RUN_STATE_SUSPENDED)) {
-         return;
-     }
--    if (entry) {
-+    if (entry && entry->put_kbd) {
-         entry->put_kbd(entry->opaque, keycode);
-     }
- }
+diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
+index fb429b1..ee2dfae 100644
+--- a/libcacard/vcard_emul_nss.c
++++ b/libcacard/vcard_emul_nss.c
+@@ -934,7 +934,6 @@ vcard_emul_init(const VCardEmulOptions *options)
+         vreader = vreader_new(options->vreader[i].vname, vreader_emul,
+                               vreader_emul_delete);
+         vreader_add_reader(vreader);
+-        cert_count = options->vreader[i].cert_count;
+ 
+         vcard_emul_alloc_arrays(&certs, &cert_len, &keys,
+                                 options->vreader[i].cert_count);
 -- 
 1.7.10.4
 
