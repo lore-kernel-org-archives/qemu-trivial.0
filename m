@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vp0sg-0004MV-NN
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:16:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49258)
+	id 1Vp0sh-0004P9-Uw
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:16:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49266)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sa-000455-F1
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:04 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sb-00048E-Ky
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sV-0006Cd-O0
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:00 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:56581)
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sX-0006Cy-3r
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:01 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:42515)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Vp0sL-00067Z-02; Fri, 06 Dec 2013 14:15:45 -0500
+	id 1Vp0sL-00067h-Au; Fri, 06 Dec 2013 14:15:45 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 346A940DCF;
+	by isrv.corpit.ru (Postfix) with ESMTP id 90BB740DD2;
 	Fri,  6 Dec 2013 23:15:44 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 0CAD45FC;
+	by tsrv.corpit.ru (Postfix) with SMTP id 7C3515FC;
 	Fri,  6 Dec 2013 23:15:44 +0400 (MSK)
-Received: (nullmailer pid 19211 invoked by uid 1000);
+Received: (nullmailer pid 19218 invoked by uid 1000);
 	Fri, 06 Dec 2013 19:15:43 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@amazon.com
-Date: Fri,  6 Dec 2013 23:15:29 +0400
-Message-Id: <1386357341-19147-3-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri,  6 Dec 2013 23:15:32 +0400
+Message-Id: <1386357341-19147-6-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 02/14] trace: Remove trace.h from
-	hw/usb/hcd-ehci.h (less dependencies)
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 05/14] .gitignore: Ignore config.status
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,44 +43,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Dec 2013 19:16:05 -0000
+X-List-Received-Date: Fri, 06 Dec 2013 19:16:06 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Fam Zheng <famz@redhat.com>
 
-This reduces the dependencies on trace.h.
-Only one source file which needs hcd-ehci.h also needs trace.h.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Fam Zheng <famz@redhat.com>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/usb/hcd-ehci.c |    1 +
- hw/usb/hcd-ehci.h |    1 -
- 2 files changed, 1 insertion(+), 1 deletion(-)
+ .gitignore |    1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 22bdbf4..0ba38c9 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -28,6 +28,7 @@
-  */
- 
- #include "hw/usb/hcd-ehci.h"
-+#include "trace.h"
- 
- /* Capability Registers Base Address - section 2.2 */
- #define CAPLENGTH        0x0000  /* 1-byte, 0x0001 reserved */
-diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
-index 065c9fa..1ad4b96 100644
---- a/hw/usb/hcd-ehci.h
-+++ b/hw/usb/hcd-ehci.h
-@@ -21,7 +21,6 @@
- #include "qemu/timer.h"
- #include "hw/usb.h"
- #include "monitor/monitor.h"
--#include "trace.h"
- #include "sysemu/dma.h"
- #include "sysemu/sysemu.h"
- #include "hw/pci/pci.h"
+diff --git a/.gitignore b/.gitignore
+index 5584b5f..1c9d63d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -3,6 +3,7 @@ config-all-devices.*
+ config-all-disas.*
+ config-host.*
+ config-target.*
++config.status
+ trace/generated-tracers.h
+ trace/generated-tracers.c
+ trace/generated-tracers-dtrace.h
 -- 
 1.7.10.4
 
