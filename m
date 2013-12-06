@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vp0sl-0004Vk-33
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:16:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49294)
+	id 1Vp0sn-0004bO-3T
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:16:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49300)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sd-0004Dw-Lw
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:08 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sf-0004Jd-GN
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sZ-0006DP-8X
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:03 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:56474)
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sZ-0006DN-85
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:05 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:39682)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Vp0sL-00067b-09; Fri, 06 Dec 2013 14:15:45 -0500
+	id 1Vp0sL-00067T-0H; Fri, 06 Dec 2013 14:15:45 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 5B56A40DD0;
+	by isrv.corpit.ru (Postfix) with ESMTP id 0A97640DCE;
 	Fri,  6 Dec 2013 23:15:44 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 3E7B652D;
-	Fri,  6 Dec 2013 23:15:44 +0400 (MSK)
-Received: (nullmailer pid 19209 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id D8A965E0;
+	Fri,  6 Dec 2013 23:15:43 +0400 (MSK)
+Received: (nullmailer pid 19215 invoked by uid 1000);
 	Fri, 06 Dec 2013 19:15:43 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@amazon.com
-Date: Fri,  6 Dec 2013 23:15:28 +0400
-Message-Id: <1386357341-19147-2-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri,  6 Dec 2013 23:15:31 +0400
+Message-Id: <1386357341-19147-5-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
@@ -31,8 +31,8 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 01/14] trace: Remove trace.h from console.h
-	(less dependencies)
+Subject: [Qemu-trivial] [PULL 04/14] gtk: Replace conditional debug messages
+	by trace methods
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,57 +44,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Dec 2013 19:16:08 -0000
+X-List-Received-Date: Fri, 06 Dec 2013 19:16:10 -0000
 
 From: Stefan Weil <sw@weilnetz.de>
-
-This reduces the dependencies on trace.h.
-Only two source files which need console.h also need trace.h.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/display/vmware_vga.c |    1 +
- include/ui/console.h    |    1 -
- ui/console.c            |    1 +
- 3 files changed, 2 insertions(+), 1 deletion(-)
+ trace-events |    5 +++++
+ ui/gtk.c     |   19 +++++--------------
+ 2 files changed, 10 insertions(+), 14 deletions(-)
 
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index a6a8cdc..aba292c 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -23,6 +23,7 @@
-  */
- #include "hw/hw.h"
- #include "hw/loader.h"
+diff --git a/trace-events b/trace-events
+index d196234..bc6788f 100644
+--- a/trace-events
++++ b/trace-events
+@@ -1022,6 +1022,11 @@ displaychangelistener_register(void *dcl, const char *name) "%p [ %s ]"
+ displaychangelistener_unregister(void *dcl, const char *name) "%p [ %s ]"
+ ppm_save(const char *filename, void *display_surface) "%s surface=%p"
+ 
++# ui/gtk.c
++gd_switch(int width, int height) "width=%d, height=%d"
++gd_update(int x, int y, int w, int h) "x=%d, y=%d, w=%d, h=%d"
++gd_key_event(int gdk_keycode, int qemu_keycode, const char *action) "translated GDK keycode %d to QEMU keycode %d (%s)"
++
+ # hw/display/vmware_vga.c
+ vmware_value_read(uint32_t index, uint32_t value) "index %d, value 0x%x"
+ vmware_value_write(uint32_t index, uint32_t value) "index %d, value 0x%x"
+diff --git a/ui/gtk.c b/ui/gtk.c
+index b5f4f0b..6316f5b 100644
+--- a/ui/gtk.c
++++ b/ui/gtk.c
+@@ -53,6 +53,7 @@
+ #include <vte/vte.h>
+ #include <math.h>
+ 
 +#include "trace.h"
  #include "ui/console.h"
- #include "hw/pci/pci.h"
- 
-diff --git a/include/ui/console.h b/include/ui/console.h
-index 98edf41..4156a87 100644
---- a/include/ui/console.h
-+++ b/include/ui/console.h
-@@ -6,7 +6,6 @@
- #include "qapi/qmp/qdict.h"
- #include "qemu/notify.h"
- #include "monitor/monitor.h"
--#include "trace.h"
- #include "qapi-types.h"
- #include "qapi/error.h"
- 
-diff --git a/ui/console.c b/ui/console.c
-index 199ba69..61ed219 100644
---- a/ui/console.c
-+++ b/ui/console.c
-@@ -27,6 +27,7 @@
- #include "qemu/timer.h"
+ #include "sysemu/sysemu.h"
  #include "qmp-commands.h"
+@@ -60,14 +61,6 @@
+ #include "keymaps.h"
  #include "sysemu/char.h"
-+#include "trace.h"
  
- //#define DEBUG_CONSOLE
- #define DEFAULT_BACKSCROLL 512
+-//#define DEBUG_GTK
+-
+-#ifdef DEBUG_GTK
+-#define DPRINTF(fmt, ...) printf(fmt, ## __VA_ARGS__)
+-#else
+-#define DPRINTF(fmt, ...) do { } while (0)
+-#endif
+-
+ #define MAX_VCS 10
+ 
+ 
+@@ -302,7 +295,7 @@ static void gd_update(DisplayChangeListener *dcl,
+     int fbw, fbh;
+     int ww, wh;
+ 
+-    DPRINTF("update(x=%d, y=%d, w=%d, h=%d)\n", x, y, w, h);
++    trace_gd_update(x, y, w, h);
+ 
+     if (s->convert) {
+         pixman_image_composite(PIXMAN_OP_SRC, s->ds->image, NULL, s->convert,
+@@ -396,8 +389,7 @@ static void gd_switch(DisplayChangeListener *dcl,
+     GtkDisplayState *s = container_of(dcl, GtkDisplayState, dcl);
+     bool resized = true;
+ 
+-    DPRINTF("resize(width=%d, height=%d)\n",
+-            surface_width(surface), surface_height(surface));
++    trace_gd_switch(surface_width(surface), surface_height(surface));
+ 
+     if (s->surface) {
+         cairo_surface_destroy(s->surface);
+@@ -732,9 +724,8 @@ static gboolean gd_key_event(GtkWidget *widget, GdkEventKey *key, void *opaque)
+         qemu_keycode = 0;
+     }
+ 
+-    DPRINTF("translated GDK keycode %d to QEMU keycode %d (%s)\n",
+-            gdk_keycode, qemu_keycode,
+-            (key->type == GDK_KEY_PRESS) ? "down" : "up");
++    trace_gd_key_event(gdk_keycode, qemu_keycode,
++                       (key->type == GDK_KEY_PRESS) ? "down" : "up");
+ 
+     for (i = 0; i < ARRAY_SIZE(modifier_keycode); i++) {
+         if (qemu_keycode == modifier_keycode[i]) {
 -- 
 1.7.10.4
 
