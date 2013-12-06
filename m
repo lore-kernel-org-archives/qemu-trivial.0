@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vp0sn-0004bO-3T
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:16:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49300)
+	id 1Vp0zU-00089U-9P
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:23:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51260)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sf-0004Jd-GN
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:09 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp0zO-0007vT-B8
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:23:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp0sZ-0006DN-85
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:16:05 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:39682)
+	(envelope-from <mjt@tls.msk.ru>) id 1Vp0zK-0008Gb-5V
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:23:02 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:41185)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Vp0sL-00067T-0H; Fri, 06 Dec 2013 14:15:45 -0500
+	id 1Vp0zB-0008An-9V; Fri, 06 Dec 2013 14:22:49 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0A97640DCE;
-	Fri,  6 Dec 2013 23:15:44 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id CC9FC40DD3;
+	Fri,  6 Dec 2013 23:22:47 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id D8A965E0;
-	Fri,  6 Dec 2013 23:15:43 +0400 (MSK)
-Received: (nullmailer pid 19215 invoked by uid 1000);
-	Fri, 06 Dec 2013 19:15:43 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 7E4B0607;
+	Fri,  6 Dec 2013 23:15:45 +0400 (MSK)
+Received: (nullmailer pid 19234 invoked by uid 1000);
+	Fri, 06 Dec 2013 19:15:44 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@amazon.com
-Date: Fri,  6 Dec 2013 23:15:31 +0400
-Message-Id: <1386357341-19147-5-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri,  6 Dec 2013 23:15:39 +0400
+Message-Id: <1386357341-19147-13-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 04/14] gtk: Replace conditional debug messages
-	by trace methods
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org, Don Koch <dkoch@verizon.com>
+Subject: [Qemu-trivial] [PULL 12/14] Don't crash on keyboard input with no
+	handler
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,91 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Dec 2013 19:16:10 -0000
+X-List-Received-Date: Fri, 06 Dec 2013 19:23:03 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Don Koch <dkoch@verizon.com>
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Prevent a call to put_kbd if null.
+
+On shutdown of some OSes, the keyboard handler goes away before the
+system is down. If a key is typed during this window, qemu crashes.
+
+Signed-off-by: Don Koch <dkoch@verizon.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- trace-events |    5 +++++
- ui/gtk.c     |   19 +++++--------------
- 2 files changed, 10 insertions(+), 14 deletions(-)
+ ui/input.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/trace-events b/trace-events
-index d196234..bc6788f 100644
---- a/trace-events
-+++ b/trace-events
-@@ -1022,6 +1022,11 @@ displaychangelistener_register(void *dcl, const char *name) "%p [ %s ]"
- displaychangelistener_unregister(void *dcl, const char *name) "%p [ %s ]"
- ppm_save(const char *filename, void *display_surface) "%s surface=%p"
- 
-+# ui/gtk.c
-+gd_switch(int width, int height) "width=%d, height=%d"
-+gd_update(int x, int y, int w, int h) "x=%d, y=%d, w=%d, h=%d"
-+gd_key_event(int gdk_keycode, int qemu_keycode, const char *action) "translated GDK keycode %d to QEMU keycode %d (%s)"
-+
- # hw/display/vmware_vga.c
- vmware_value_read(uint32_t index, uint32_t value) "index %d, value 0x%x"
- vmware_value_write(uint32_t index, uint32_t value) "index %d, value 0x%x"
-diff --git a/ui/gtk.c b/ui/gtk.c
-index b5f4f0b..6316f5b 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -53,6 +53,7 @@
- #include <vte/vte.h>
- #include <math.h>
- 
-+#include "trace.h"
- #include "ui/console.h"
- #include "sysemu/sysemu.h"
- #include "qmp-commands.h"
-@@ -60,14 +61,6 @@
- #include "keymaps.h"
- #include "sysemu/char.h"
- 
--//#define DEBUG_GTK
--
--#ifdef DEBUG_GTK
--#define DPRINTF(fmt, ...) printf(fmt, ## __VA_ARGS__)
--#else
--#define DPRINTF(fmt, ...) do { } while (0)
--#endif
--
- #define MAX_VCS 10
- 
- 
-@@ -302,7 +295,7 @@ static void gd_update(DisplayChangeListener *dcl,
-     int fbw, fbh;
-     int ww, wh;
- 
--    DPRINTF("update(x=%d, y=%d, w=%d, h=%d)\n", x, y, w, h);
-+    trace_gd_update(x, y, w, h);
- 
-     if (s->convert) {
-         pixman_image_composite(PIXMAN_OP_SRC, s->ds->image, NULL, s->convert,
-@@ -396,8 +389,7 @@ static void gd_switch(DisplayChangeListener *dcl,
-     GtkDisplayState *s = container_of(dcl, GtkDisplayState, dcl);
-     bool resized = true;
- 
--    DPRINTF("resize(width=%d, height=%d)\n",
--            surface_width(surface), surface_height(surface));
-+    trace_gd_switch(surface_width(surface), surface_height(surface));
- 
-     if (s->surface) {
-         cairo_surface_destroy(s->surface);
-@@ -732,9 +724,8 @@ static gboolean gd_key_event(GtkWidget *widget, GdkEventKey *key, void *opaque)
-         qemu_keycode = 0;
+diff --git a/ui/input.c b/ui/input.c
+index 10d8c05..1c70f60 100644
+--- a/ui/input.c
++++ b/ui/input.c
+@@ -414,7 +414,7 @@ void kbd_put_keycode(int keycode)
+     if (!runstate_is_running() && !runstate_check(RUN_STATE_SUSPENDED)) {
+         return;
      }
- 
--    DPRINTF("translated GDK keycode %d to QEMU keycode %d (%s)\n",
--            gdk_keycode, qemu_keycode,
--            (key->type == GDK_KEY_PRESS) ? "down" : "up");
-+    trace_gd_key_event(gdk_keycode, qemu_keycode,
-+                       (key->type == GDK_KEY_PRESS) ? "down" : "up");
- 
-     for (i = 0; i < ARRAY_SIZE(modifier_keycode); i++) {
-         if (qemu_keycode == modifier_keycode[i]) {
+-    if (entry) {
++    if (entry && entry->put_kbd) {
+         entry->put_kbd(entry->opaque, keycode);
+     }
+ }
 -- 
 1.7.10.4
 
