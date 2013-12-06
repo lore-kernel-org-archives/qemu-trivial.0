@@ -1,41 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vp19E-0003Xu-4d
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 14:33:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53494)
+	id 1Vp2GA-0004GF-M0
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 15:44:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37431)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp196-0002sa-5D
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:33:08 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1Vp2G3-00047A-Ri
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 15:44:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vp191-0002tH-NX
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 14:33:04 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:33925)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1Vp2Fx-0006pM-S5
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 15:44:19 -0500
+Received: from mail-ea0-x230.google.com ([2a00:1450:4013:c01::230]:52708)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Vp18q-0002qU-EV; Fri, 06 Dec 2013 14:32:48 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 42E2B40DD2;
-	Fri,  6 Dec 2013 23:32:47 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 4F016603;
-	Fri,  6 Dec 2013 23:15:45 +0400 (MSK)
-Received: (nullmailer pid 19220 invoked by uid 1000);
-	Fri, 06 Dec 2013 19:15:43 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: aliguori@amazon.com
-Date: Fri,  6 Dec 2013 23:15:33 +0400
-Message-Id: <1386357341-19147-7-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1386357341-19147-1-git-send-email-mjt@msgid.tls.msk.ru>
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1Vp2Fx-0006pG-Ky; Fri, 06 Dec 2013 15:44:13 -0500
+Received: by mail-ea0-f176.google.com with SMTP id h14so511024eaj.21
+	for <multiple recipients>; Fri, 06 Dec 2013 12:44:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=XDLCg5EhCfCk58IgNUkAH3OnhQ1zmt20bdvH42QvB+k=;
+	b=kksWzy46wiinwQnZ5/xUpMHJvWwND6MXQPzQcEn6hy0C/Fdfw+ppJ8NmvsOwOTarZ5
+	kUp3S5hXoJZHrM7TfQQb6zXDMmkqbZUJ/3mNy6Bn0wMVUREIVOeDWrtBPa46bBTElNmt
+	vxp869JExYFCJMsZSNZ4UtU4IhkWpa/AjjNWpfrXL2f/iRMrqRPNEeruPA5GlZKVnIlo
+	tVHVgUK65YQ8F+ccFYS8VSrK9TXnZciMJ6NtIhTgZW4Y+ZjY4Lh8i+/bEDnWGXJkbPs7
+	uFD8slhau3FKesvT+lg413w6ugOun+f7l6/MiS49j4OhMi41dhwRHfhpTfdRFrA0Oq6x
+	zCjg==
+X-Received: by 10.14.3.130 with SMTP id 2mr3982189eeh.36.1386362652088;
+	Fri, 06 Dec 2013 12:44:12 -0800 (PST)
+Received: from yakj.usersys.redhat.com (net-2-35-202-54.cust.dsl.vodafone.it.
+	[2.35.202.54]) by mx.google.com with ESMTPSA id
+	n1sm121503364eep.20.2013.12.06.12.44.09 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Fri, 06 Dec 2013 12:44:10 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <52A23715.7000701@redhat.com>
+Date: Fri, 06 Dec 2013 21:44:05 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130923 Thunderbird/17.0.9
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 06/14] acpi-build: Fix compiler warning
-	(missing gnu_printf format attribute)
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1386342485-8656-1-git-send-email-pbonzini@redhat.com>
+	<52A21FD5.6080101@msgid.tls.msk.ru>
+In-Reply-To: <52A21FD5.6080101@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c01::230
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] help: add id suboption to -iscsi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,64 +61,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Dec 2013 19:33:09 -0000
+X-List-Received-Date: Fri, 06 Dec 2013 20:44:26 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+Il 06/12/2013 20:04, Michael Tokarev ha scritto:
+> 06.12.2013 19:08, Paolo Bonzini wrote:
+>> --- a/qemu-options.hx
+>> +++ b/qemu-options.hx
+>> @@ -2089,7 +2089,7 @@ ETEXI
+>>  DEF("iscsi", HAS_ARG, QEMU_OPTION_iscsi,
+>>      "-iscsi [user=user][,password=password]\n"
+>>      "       [,header-digest=CRC32C|CR32C-NONE|NONE-CRC32C|NONE\n"
+>> -    "       [,initiator-name=iqn]\n"
+>> +    "       [,initiator-name=initiator-iqn][,id=target-iqn]\n"
+>>      "                iSCSI session parameters\n", QEMU_ARCH_ALL)
+>>  STEXI
+> 
+> I'm not sure this is clearer, to me it looks more confusing
+> than before.
+> 
+> The thing is that "id" suboption is automatic and is handled
+> in the option parsing code explicitly.
 
-gcc 4.8.2 reports this warning when extra warnings are enabled (-Wextra):
+But it has a particular meaning in the case of -iscsi.  Usually it is
+referred to in other options, or by monitor commands.  For -iscsi, it is
+the target IQN.
 
-  CC    m68k-softmmu/hw/m68k/mcf5206.o
-hw/i386/acpi-build.c: In function =E2=80=98build_append_nameseg=E2=80=99:
-hw/i386/acpi-build.c:294:5: error:
- function might be possible candidate for =E2=80=98gnu_printf=E2=80=99 fo=
-rmat attribute [-Werror=3Dsuggest-attribute=3Dformat]
-     g_string_vprintf(s, format, args);
-     ^
+Also, it is documented in qemu-doc.texi (albeit in -readconfig format):
 
-When this warning is fixed, there is a new compiler warning:
+Setting the target name allows different options for different targets
+@example
+[iscsi "iqn.target.name"]
+  user = "CHAP username"
+  password = "CHAP password"
+  initiator-name = "iqn.qemu.test:my-initiator"
+  # header digest is one of CRC32C|CRC32C-NONE|NONE-CRC32C|NONE
+  header-digest = "CRC32C"
+@end example
 
-  CC    i386-softmmu/hw/i386/acpi-build.o
-hw/i386/acpi-build.c: In function =E2=80=98build_append_notify=E2=80=99:
-hw/i386/acpi-build.c:632:5: error:
- format not a string literal and no format arguments [-Werror=3Dformat-se=
-curity]
-     build_append_nameseg(method, name);
-     ^
 
-This is fixed here, too.
+> As far as I can see, "id" suboption is actually never used by
+> iscsi code, only initiator-name is.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/i386/acpi-build.c |    5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+It's used:
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 1f22fb6..befc39f 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -285,7 +285,8 @@ static inline void build_append_array(GArray *array, =
-GArray *val)
-     g_array_append_vals(array, val->data, val->len);
- }
-=20
--static void build_append_nameseg(GArray *array, const char *format, ...)
-+static void GCC_FMT_ATTR(2, 3)
-+build_append_nameseg(GArray *array, const char *format, ...)
- {
-     /* It would be nicer to use g_string_vprintf but it's only there in =
-2.22 */
-     char s[] =3D "XXXX";
-@@ -630,7 +631,7 @@ build_append_notify(GArray *device, const char *name,
-     GArray *method =3D build_alloc_array();
-     uint8_t op =3D 0x14; /* MethodOp */
-=20
--    build_append_nameseg(method, name);
-+    build_append_nameseg(method, "%s", name);
-     build_append_byte(method, 0x02); /* MethodFlags: ArgCount */
-     for (i =3D skip; i < count; i++) {
-         GArray *target =3D build_alloc_array();
---=20
-1.7.10.4
+    list = qemu_find_opts("iscsi");
+    if (list) {
+        opts = qemu_opts_find(list, target);
+        if (!opts) {
+            opts = QTAILQ_FIRST(&list->head);
+        }
+        if (opts) {
+            name = qemu_opt_get(opts, "initiator-name");
+            if (name) {
+                return g_strdup(name);
+            }
+        }
+    }
 
+qemu_opts_find(list, target) returns the option set whose id is equal to
+target.
+
+> What this change is for?
+
+Better documentation. :)
+
+Paolo
 
