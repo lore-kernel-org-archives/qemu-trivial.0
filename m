@@ -1,34 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VpIFk-0000fr-3D
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Dec 2013 08:49:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32958)
+	id 1VpIZM-000126-NY
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Dec 2013 09:09:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36027)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VpIFe-0000MX-0u
-	for qemu-trivial@nongnu.org; Sat, 07 Dec 2013 08:49:02 -0500
+	id 1VpIZK-00010Z-Vc
+	for qemu-trivial@nongnu.org; Sat, 07 Dec 2013 09:09:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VpIFZ-0001UF-SE
-	for qemu-trivial@nongnu.org; Sat, 07 Dec 2013 08:48:57 -0500
-Received: from qemu.weilnetz.de ([37.221.198.45]:59176
+	id 1VpIZK-00071j-4w
+	for qemu-trivial@nongnu.org; Sat, 07 Dec 2013 09:09:18 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:53255
 	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VpIFR-0001SM-3M; Sat, 07 Dec 2013 08:48:45 -0500
+	id 1VpIZI-00071H-9r; Sat, 07 Dec 2013 09:09:16 -0500
 Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id BE939180287; Sat,  7 Dec 2013 14:48:42 +0100 (CET)
+	id 02B7917F6F8; Sat,  7 Dec 2013 15:09:12 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel <qemu-devel@nongnu.org>
-Date: Sat,  7 Dec 2013 14:48:07 +0100
-Message-Id: <1386424088-23196-5-git-send-email-sw@weilnetz.de>
+Date: Sat,  7 Dec 2013 15:09:12 +0100
+Message-Id: <1386425352-23728-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1386424088-23196-1-git-send-email-sw@weilnetz.de>
-References: <1386424088-23196-1-git-send-email-sw@weilnetz.de>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.198.45
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH v2 4/5] target-mips: Use macro ARRAY_SIZE
-	where possible
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [Qemu-trivial] [PATCH] qxl: Add missing trace.h (fix broken build)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,114 +39,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Dec 2013 13:49:02 -0000
+X-List-Received-Date: Sat, 07 Dec 2013 14:09:19 -0000
 
-This improves readability and simplifies the code.
+Commit ac86048bcd41129b18702ba63395f222871804de removed trace.h from
+console.h and ignored the fact that qxl-render.c needs this file
+(it includes qxl.h which includes console.h which included trace.h).
 
-Cc: Aurelien Jarno <aurelien@aurel32.net>
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- target-mips/dsp_helper.c |   30 ++++++++++++------------------
- 1 file changed, 12 insertions(+), 18 deletions(-)
 
-diff --git a/target-mips/dsp_helper.c b/target-mips/dsp_helper.c
-index b088a25..a2f46d9 100644
---- a/target-mips/dsp_helper.c
-+++ b/target-mips/dsp_helper.c
-@@ -1088,12 +1088,11 @@ static inline int32_t mipsdsp_cmpu_lt(uint32_t a, uint32_t b)
- target_ulong helper_##name(target_ulong rt, CPUMIPSState *env)             \
- {                                                                          \
-     DSP32Value dt;                                                         \
--    unsigned int i, n;                                                     \
-+    unsigned int i;                                                     \
-                                                                            \
--    n = sizeof(DSP32Value) / sizeof(dt.element[0]);                        \
-     dt.sw[0] = rt;                                                         \
-                                                                            \
--    for (i = 0; i < n; i++) {                                              \
-+    for (i = 0; i < ARRAY_SIZE(dt.element); i++) {                         \
-         dt.element[i] = mipsdsp_##func(dt.element[i], env);                \
-     }                                                                      \
-                                                                            \
-@@ -1109,12 +1108,11 @@ MIPSDSP32_UNOP_ENV(absq_s_w, sat_abs32, sw)
- target_ulong helper_##name(target_ulong rt, CPUMIPSState *env)             \
- {                                                                          \
-     DSP64Value dt;                                                         \
--    unsigned int i, n;                                                     \
-+    unsigned int i;                                                        \
-                                                                            \
--    n = sizeof(DSP64Value) / sizeof(dt.element[0]);                        \
-     dt.sl[0] = rt;                                                         \
-                                                                            \
--    for (i = 0; i < n; i++) {                                              \
-+    for (i = 0; i < ARRAY_SIZE(dt.element); i++) {                         \
-         dt.element[i] = mipsdsp_##func(dt.element[i], env);                \
-     }                                                                      \
-                                                                            \
-@@ -1130,13 +1128,12 @@ MIPSDSP64_UNOP_ENV(absq_s_pw, sat_abs32, sw)
- target_ulong helper_##name(target_ulong rs, target_ulong rt)               \
- {                                                                          \
-     DSP32Value ds, dt;                                                     \
--    unsigned int i, n;                                                     \
-+    unsigned int i;                                                        \
-                                                                            \
--    n = sizeof(DSP32Value) / sizeof(ds.element[0]);                        \
-     ds.sw[0] = rs;                                                         \
-     dt.sw[0] = rt;                                                         \
-                                                                            \
--    for (i = 0; i < n; i++) {                                              \
-+    for (i = 0; i < ARRAY_SIZE(ds.element); i++) {                         \
-         ds.element[i] = mipsdsp_##func(ds.element[i], dt.element[i]);      \
-     }                                                                      \
-                                                                            \
-@@ -1159,13 +1156,12 @@ target_ulong helper_##name(target_ulong rs, target_ulong rt,               \
-                            CPUMIPSState *env)                              \
- {                                                                          \
-     DSP32Value ds, dt;                                                     \
--    unsigned int i, n;                                                     \
-+    unsigned int i;                                                        \
-                                                                            \
--    n = sizeof(DSP32Value) / sizeof(ds.element[0]);                        \
-     ds.sw[0] = rs;                                                         \
-     dt.sw[0] = rt;                                                         \
-                                                                            \
--    for (i = 0 ; i < n ; i++) {                                            \
-+    for (i = 0 ; i < ARRAY_SIZE(ds.element); i++) {                        \
-         ds.element[i] = mipsdsp_##func(ds.element[i], dt.element[i], env); \
-     }                                                                      \
-                                                                            \
-@@ -1192,13 +1188,12 @@ MIPSDSP32_BINOP_ENV(subu_s_qb, satu8_sub, ub);
- target_ulong helper_##name(target_ulong rs, target_ulong rt)               \
- {                                                                          \
-     DSP64Value ds, dt;                                                     \
--    unsigned int i, n;                                                     \
-+    unsigned int i;                                                        \
-                                                                            \
--    n = sizeof(DSP64Value) / sizeof(ds.element[0]);                        \
-     ds.sl[0] = rs;                                                         \
-     dt.sl[0] = rt;                                                         \
-                                                                            \
--    for (i = 0 ; i < n ; i++) {                                            \
-+    for (i = 0 ; i < ARRAY_SIZE(ds.element); i++) {                        \
-         ds.element[i] = mipsdsp_##func(ds.element[i], dt.element[i]);      \
-     }                                                                      \
-                                                                            \
-@@ -1215,13 +1210,12 @@ target_ulong helper_##name(target_ulong rs, target_ulong rt,               \
-                            CPUMIPSState *env)                              \
- {                                                                          \
-     DSP64Value ds, dt;                                                     \
--    unsigned int i, n;                                                     \
-+    unsigned int i;                                                        \
-                                                                            \
--    n = sizeof(DSP64Value) / sizeof(ds.element[0]);                        \
-     ds.sl[0] = rs;                                                         \
-     dt.sl[0] = rt;                                                         \
-                                                                            \
--    for (i = 0 ; i < n ; i++) {                                            \
-+    for (i = 0 ; i < ARRAY_SIZE(ds.element); i++) {                        \
-         ds.element[i] = mipsdsp_##func(ds.element[i], dt.element[i], env); \
-     }                                                                      \
-                                                                            \
+Sorry for this regression. Obviously most builds don't set CONFIG_QXL.
+
+Regards,
+Stefan
+
+ hw/display/qxl-render.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/display/qxl-render.c b/hw/display/qxl-render.c
+index d34b0c4..84f1367 100644
+--- a/hw/display/qxl-render.c
++++ b/hw/display/qxl-render.c
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include "qxl.h"
++#include "trace.h"
+ 
+ static void qxl_blit(PCIQXLDevice *qxl, QXLRect *rect)
+ {
 -- 
 1.7.10.4
 
