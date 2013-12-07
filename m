@@ -1,35 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VpMfa-00088O-AL
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Dec 2013 13:32:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43943)
+	id 1VpMhx-0001mo-8K
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Dec 2013 13:34:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44405)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VpMfT-0007w2-Pp
-	for qemu-trivial@nongnu.org; Sat, 07 Dec 2013 13:32:00 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1VpMhq-0001dV-70
+	for qemu-trivial@nongnu.org; Sat, 07 Dec 2013 13:34:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1VpMfO-0004tB-V3
-	for qemu-trivial@nongnu.org; Sat, 07 Dec 2013 13:31:55 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:53492)
+	(envelope-from <mjt@tls.msk.ru>) id 1VpMhj-0005kH-Uj
+	for qemu-trivial@nongnu.org; Sat, 07 Dec 2013 13:34:22 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:54294)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VpMfB-0004oa-EW; Sat, 07 Dec 2013 13:31:37 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 385C140CDB;
-	Sat,  7 Dec 2013 22:31:36 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 2006052D;
-	Sat,  7 Dec 2013 22:31:36 +0400 (MSK)
-Received: (nullmailer pid 10009 invoked by uid 1000);
-	Sat, 07 Dec 2013 18:31:36 -0000
+	id 1VpMhX-0005jY-M7; Sat, 07 Dec 2013 13:34:03 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id EFEB540CDB;
+	Sat,  7 Dec 2013 22:34:02 +0400 (MSK)
+Message-ID: <52A36A1A.8050208@msgid.tls.msk.ru>
+Date: Sat, 07 Dec 2013 22:34:02 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: aliguori@amazon.com
-Date: Sat,  7 Dec 2013 22:31:33 +0400
-Message-Id: <1386441094-9971-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>
+References: <1386404688-17375-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1386404688-17375-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL urgent] Trivial patches for 2013-12-07
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
+	Jia Liu <proljc@gmail.com>
+Subject: Re: [Qemu-trivial] [PATCH] openrisc: Fix spelling in comment
+ (transaltion -> translation)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,36 +46,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Dec 2013 18:32:01 -0000
+X-List-Received-Date: Sat, 07 Dec 2013 18:34:28 -0000
 
-We have a regression introduced by one of previous trivial patches,
-here's a (one-line) fix for it.  Please consider applying/pulling
-at earliest opportunity, since it fixes a build problem when
-CONFIG_QXL is enabled.
+07.12.2013 12:24, Stefan Weil wrote:
+> I also removed two hyphens in the same comment.
 
-Thanks,
+Thanks, applied.
 
 /mjt
-
-The following changes since commit d2aa90cda81ae3f860dd047ce5e37e0473452d54:
-
-  Merge remote-tracking branch 'awilliam/tags/vfio-pci-for-qemu-20131206.0' into staging (2013-12-07 07:47:24 -0800)
-
-are available in the git repository at:
-
-
-  git://git.corpit.ru/qemu.git trivial-patches
-
-for you to fetch changes up to b1829cdebe2c5cc0b445f2959dbdb63a48118b12:
-
-  qxl: Add missing trace.h (fix broken build) (2013-12-07 22:26:07 +0400)
-
-----------------------------------------------------------------
-Stefan Weil (1):
-      qxl: Add missing trace.h (fix broken build)
-
- hw/display/qxl-render.c |    1 +
- 1 file changed, 1 insertion(+)
-
-
 
