@@ -1,55 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vp2GA-0004GF-M0
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 15:44:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37431)
+	id 1Vp6MN-0005yB-2g
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2013 20:07:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57963)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Vp2G3-00047A-Ri
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 15:44:25 -0500
+	(envelope-from <antonynpavlov@gmail.com>) id 1Vp6MG-0005oC-Uu
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 20:07:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Vp2Fx-0006pM-S5
-	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 15:44:19 -0500
-Received: from mail-ea0-x230.google.com ([2a00:1450:4013:c01::230]:52708)
+	(envelope-from <antonynpavlov@gmail.com>) id 1Vp6MC-0004V9-L8
+	for qemu-trivial@nongnu.org; Fri, 06 Dec 2013 20:07:00 -0500
+Received: from mail-la0-x22f.google.com ([2a00:1450:4010:c03::22f]:36512)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1Vp2Fx-0006pG-Ky; Fri, 06 Dec 2013 15:44:13 -0500
-Received: by mail-ea0-f176.google.com with SMTP id h14so511024eaj.21
-	for <multiple recipients>; Fri, 06 Dec 2013 12:44:12 -0800 (PST)
+	(envelope-from <antonynpavlov@gmail.com>)
+	id 1Vp6M2-0004KW-LP; Fri, 06 Dec 2013 20:06:46 -0500
+Received: by mail-la0-f47.google.com with SMTP id ep20so561533lab.34
+	for <multiple recipients>; Fri, 06 Dec 2013 17:06:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=XDLCg5EhCfCk58IgNUkAH3OnhQ1zmt20bdvH42QvB+k=;
-	b=kksWzy46wiinwQnZ5/xUpMHJvWwND6MXQPzQcEn6hy0C/Fdfw+ppJ8NmvsOwOTarZ5
-	kUp3S5hXoJZHrM7TfQQb6zXDMmkqbZUJ/3mNy6Bn0wMVUREIVOeDWrtBPa46bBTElNmt
-	vxp869JExYFCJMsZSNZ4UtU4IhkWpa/AjjNWpfrXL2f/iRMrqRPNEeruPA5GlZKVnIlo
-	tVHVgUK65YQ8F+ccFYS8VSrK9TXnZciMJ6NtIhTgZW4Y+ZjY4Lh8i+/bEDnWGXJkbPs7
-	uFD8slhau3FKesvT+lg413w6ugOun+f7l6/MiS49j4OhMi41dhwRHfhpTfdRFrA0Oq6x
-	zCjg==
-X-Received: by 10.14.3.130 with SMTP id 2mr3982189eeh.36.1386362652088;
-	Fri, 06 Dec 2013 12:44:12 -0800 (PST)
-Received: from yakj.usersys.redhat.com (net-2-35-202-54.cust.dsl.vodafone.it.
-	[2.35.202.54]) by mx.google.com with ESMTPSA id
-	n1sm121503364eep.20.2013.12.06.12.44.09 for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Fri, 06 Dec 2013 12:44:10 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <52A23715.7000701@redhat.com>
-Date: Fri, 06 Dec 2013 21:44:05 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130923 Thunderbird/17.0.9
-MIME-Version: 1.0
+	h=date:from:to:cc:subject:message-id:in-reply-to:references
+	:mime-version:content-type:content-transfer-encoding;
+	bh=lbUg7NITsd7qgej+Et5r4tj7CpdPUmVSlo7zkmIZMlI=;
+	b=sMjjbMt3/hbiZY4OjnHFxiVQ/Bf8q+CXEtlHPes5i5pbO8OKWvL2TIyqJJIIFui+A+
+	3PI3uJxY9BDZVxwVis+2UJUnvCl43GG45DUAfO08B2gkBU0BV4toff5s61JQYbgRfBVV
+	UAVK5KBdXcQN23ACZezDHoeMYFn3Exoxv8jEMTcuqIDx8T7RFz1DOajoJ3WkJpI2hr5k
+	+cJ5Buynoi9k+8vll/ifnSlg9NPtH9yR8qYXtBiwkiyhvSUhp8eQMfBPCux7YJGCUS3V
+	5IQgFz9KL1FkRBJaPwRemuXbdj3rIVoi07zOqLjAV9FPhvNFyVcGsK0kHvmi4Y21nGuy
+	T2Kg==
+X-Received: by 10.152.116.65 with SMTP id ju1mr94946lab.60.1386378405477;
+	Fri, 06 Dec 2013 17:06:45 -0800 (PST)
+Received: from flare (ppp37-190-57-6.pppoe.spdop.ru. [37.190.57.6])
+	by mx.google.com with ESMTPSA id iy7sm289420lbc.4.2013.12.06.17.06.43
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 06 Dec 2013 17:06:44 -0800 (PST)
+Date: Sat, 7 Dec 2013 05:14:09 +0400
+From: Antony Pavlov <antonynpavlov@gmail.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1386342485-8656-1-git-send-email-pbonzini@redhat.com>
-	<52A21FD5.6080101@msgid.tls.msk.ru>
-In-Reply-To: <52A21FD5.6080101@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.6
+Message-Id: <20131207051409.778325ede8e97cf719214ac2@gmail.com>
+In-Reply-To: <52A21E91.7070404@msgid.tls.msk.ru>
+References: <1386138449-1235-1-git-send-email-antonynpavlov@gmail.com>
+	<52A21E91.7070404@msgid.tls.msk.ru>
+X-Mailer: Sylpheed 3.4.0beta6 (GTK+ 2.24.22; i486-pc-linux-gnu)
+Mime-Version: 1.0
 Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4013:c01::230
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] help: add id suboption to -iscsi
+X-Received-From: 2a00:1450:4010:c03::22f
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org, Dmitry Smagin <dmitry.s.smagin@gmail.com>
+Subject: Re: [Qemu-trivial] [PATCH] eeprom93xx: fix coding style
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,69 +59,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Dec 2013 20:44:26 -0000
+X-List-Received-Date: Sat, 07 Dec 2013 01:07:05 -0000
 
-Il 06/12/2013 20:04, Michael Tokarev ha scritto:
-> 06.12.2013 19:08, Paolo Bonzini wrote:
->> --- a/qemu-options.hx
->> +++ b/qemu-options.hx
->> @@ -2089,7 +2089,7 @@ ETEXI
->>  DEF("iscsi", HAS_ARG, QEMU_OPTION_iscsi,
->>      "-iscsi [user=user][,password=password]\n"
->>      "       [,header-digest=CRC32C|CR32C-NONE|NONE-CRC32C|NONE\n"
->> -    "       [,initiator-name=iqn]\n"
->> +    "       [,initiator-name=initiator-iqn][,id=target-iqn]\n"
->>      "                iSCSI session parameters\n", QEMU_ARCH_ALL)
->>  STEXI
-> 
-> I'm not sure this is clearer, to me it looks more confusing
-> than before.
-> 
-> The thing is that "id" suboption is automatic and is handled
-> in the option parsing code explicitly.
+On Fri, 06 Dec 2013 22:59:29 +0400
+Michael Tokarev <mjt@tls.msk.ru> wrote:
 
-But it has a particular meaning in the case of -iscsi.  Usually it is
-referred to in other options, or by monitor commands.  For -iscsi, it is
-the target IQN.
+> 04.12.2013 10:27, Antony Pavlov wrote:
+> > scripts/checkpatch.pl reports about some style problems,
+> > this commit fixes some of them:
+>=20
+> Thanks, applied to trivial-patches queue.
+>=20
+> I'm a bit afraid of this sort of patches - there are LOTS of
+> coding style issues in current qemu code base, and applying
+> a patch like this may open a really large can of worms...
+>=20
+> Generally it has been agreed to fix coding style only when
+> doing some other code changes nearby, as far as I remember.
 
-Also, it is documented in qemu-doc.texi (albeit in -readconfig format):
+Some times ago there was a patch on adding DEC Tulip NIC support
+(see http://lists.gnu.org/archive/html/qemu-devel/2013-11/msg02878.html).
 
-Setting the target name allows different options for different targets
-@example
-[iscsi "iqn.target.name"]
-  user = "CHAP username"
-  password = "CHAP password"
-  initiator-name = "iqn.qemu.test:my-initiator"
-  # header digest is one of CRC32C|CRC32C-NONE|NONE-CRC32C|NONE
-  header-digest = "CRC32C"
-@end example
+In this patch the 93LC46B Serial EEPROM emulation was added.
+But it's like reinventing the wheel because Stefan Weil already
+have done this work in 2006! So I used eeprom93xx for the next
+tulip patch version and occasionally I fixed some coding style issues.
 
-
-> As far as I can see, "id" suboption is actually never used by
-> iscsi code, only initiator-name is.
-
-It's used:
-
-    list = qemu_find_opts("iscsi");
-    if (list) {
-        opts = qemu_opts_find(list, target);
-        if (!opts) {
-            opts = QTAILQ_FIRST(&list->head);
-        }
-        if (opts) {
-            name = qemu_opt_get(opts, "initiator-name");
-            if (name) {
-                return g_strdup(name);
-            }
-        }
-    }
-
-qemu_opts_find(list, target) returns the option set whose id is equal to
-target.
-
-> What this change is for?
-
-Better documentation. :)
-
-Paolo
+--=A0
+Best regards,
+=A0 Antony Pavlov
 
