@@ -1,60 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VsHL3-0005BX-7w
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Dec 2013 14:26:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50404)
+	id 1VsLj8-0000dV-Te
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Dec 2013 19:08:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60950)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <green@moxielogic.com>) id 1VsHKw-0005BD-Oa
-	for qemu-trivial@nongnu.org; Sun, 15 Dec 2013 14:26:51 -0500
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1VsLj2-0000Vp-Vw
+	for qemu-trivial@nongnu.org; Sun, 15 Dec 2013 19:08:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <green@moxielogic.com>) id 1VsHKp-0006vM-2b
-	for qemu-trivial@nongnu.org; Sun, 15 Dec 2013 14:26:46 -0500
-Received: from mail-qc0-f181.google.com ([209.85.216.181]:36235)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1VsLiq-0003jh-GX
+	for qemu-trivial@nongnu.org; Sun, 15 Dec 2013 19:07:56 -0500
+Received: from mail-wg0-f49.google.com ([74.125.82.49]:39419)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <green@moxielogic.com>) id 1VsHKo-0006v5-Ul
-	for qemu-trivial@nongnu.org; Sun, 15 Dec 2013 14:26:39 -0500
-Received: by mail-qc0-f181.google.com with SMTP id e9so3027480qcy.26
-	for <qemu-trivial@nongnu.org>; Sun, 15 Dec 2013 11:26:38 -0800 (PST)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1VsLiq-0003g9-9R
+	for qemu-trivial@nongnu.org; Sun, 15 Dec 2013 19:07:44 -0500
+Received: by mail-wg0-f49.google.com with SMTP id x12so4012526wgg.16
+	for <qemu-trivial@nongnu.org>; Sun, 15 Dec 2013 16:07:43 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:organization:references:date
-	:in-reply-to:message-id:user-agent:mime-version:content-type
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type
 	:content-transfer-encoding;
-	bh=N2h66zm/CAcBU9PBG1suEdx53l/079TN+WJkDFe89i0=;
-	b=LFTuHPZa6AjJQQGMFnGa4wpBUmtQEBVF0fJ+IC8o5ewC0pWkXk3/ZmfQeoxHqZ7Vgl
-	dVc/x7oWcBNi/sep24Gky6O5K8R+Y2//CCIy23GDjICzayurBITie1Q8sABIxu67Tcco
-	c0LCz2tlu8sa49EFaH97oEn9ZLdHYQ9y+7JsIxXDbuMhn30u8aMSh+Tqut9UerYRW6mT
-	2VPgm3Usbed2gallHI+amRi0NNUgy9CNK4d0IEHBjONtBvfe0FJDY/GG9jnZ7S3HZ6U5
-	9USJd1abTdH4/KPl4+Kp29tylNYERDzGIlf7A3y3DEGbtmuH7UQjd6ZtkJwM0bYPook/
-	vPtQ==
-X-Gm-Message-State: ALoCoQnKU7ox3BjO4egGZTVFdfx1DSPzujEhvIyBaM/QhyoU6oSmUYkEaptk9vLrRpkwfZwaUnxN
-X-Received: by 10.224.43.72 with SMTP id v8mr26660077qae.52.1387135598544;
-	Sun, 15 Dec 2013 11:26:38 -0800 (PST)
-Received: from localhost (dsl-173-206-82-201.tor.primus.ca. [173.206.82.201])
-	by mx.google.com with ESMTPSA id
-	g10sm35204759qaf.9.2013.12.15.11.26.36 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Dec 2013 11:26:37 -0800 (PST)
-From: Anthony Green <green@moxielogic.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Organization: Moxie Logic
+	bh=AeoXKwGhJ5HYspg1FlDCt6XuCwymmN/l/zODhEAIXbs=;
+	b=R6ZERVpTmG3YaWNYt86jfdNWt27DFiNaDz8B1p5TqzgkrfubH4eT8ClpGsrmi5oa9U
+	xs/14w2ikDXFUTrZhaNdqvvfp3PoE6MfDToAuih+3EqC9sFBW/8Yea4+lBURoVl2n2L6
+	HxWqgtwYKKLnv9eOwz3Nwi7TlV03xZQNwiKrVzE1wqa4eUipdfFX6Nzsp3RVh9sX8a4s
+	e8YjTYrYB3nAYxa1KoQQUJTQSGhrJq355XYSqWneIA5DInB1Km82C5lD09WAQnhVXSTK
+	No9Jyj72Vqzwuov1t6YbKirr926Rmgol0OFxVZgiBxqizDNb2BD2v88YZUknOYQbXUX5
+	SqYA==
+X-Gm-Message-State: ALoCoQnXl14gdz+yX01Ih1ltreqEtsYUkntKNEJ0fBmJSHkjunK5bRRplHec1wKT83TY7bYRTmBU
+MIME-Version: 1.0
+X-Received: by 10.180.189.49 with SMTP id gf17mr11303416wic.23.1387152462716; 
+	Sun, 15 Dec 2013 16:07:42 -0800 (PST)
+Sender: peter.crosthwaite@petalogix.com
+Received: by 10.227.13.9 with HTTP; Sun, 15 Dec 2013 16:07:42 -0800 (PST)
+In-Reply-To: <871u1dlxuc.fsf@moxielogic.com>
 References: <1368475464-3116-1-git-send-email-green@moxielogic.com>
 	<8761qqn496.fsf@moxielogic.com> <52ADFA17.2000109@suse.de>
 	<CAFEAcA91BoCgAR5ahoFWWWEOzWjwzW0vmv2Ei9NprUwR6T4VKg@mail.gmail.com>
-Date: Sun, 15 Dec 2013 14:26:35 -0500
-In-Reply-To: <CAFEAcA91BoCgAR5ahoFWWWEOzWjwzW0vmv2Ei9NprUwR6T4VKg@mail.gmail.com>
-	(Peter Maydell's message of "Sun, 15 Dec 2013 19:03:01 +0000")
-Message-ID: <871u1dlxuc.fsf@moxielogic.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+	<871u1dlxuc.fsf@moxielogic.com>
+Date: Mon, 16 Dec 2013 10:07:42 +1000
+X-Google-Sender-Auth: FSaWgvUKTdQO5BjWDK7J2qHutYI
+Message-ID: <CAEgOgz5pZxkX4WUn24OVHvpMdtD0_xUgv7Nd2N_c3R_yPfp9Ug@mail.gmail.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: Anthony Green <green@moxielogic.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.216.181
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+X-Received-From: 74.125.82.49
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
 	Anthony Liguori <aliguori@amazon.com>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>,
 	Richard Henderson <rth@twiddle.net>
 Subject: Re: [Qemu-trivial] [Qemu-devel] ping.. Re: [PATCH moxie] Fix bug in
 	tlb_fill.
@@ -69,25 +67,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Dec 2013 19:26:51 -0000
+X-List-Received-Date: Mon, 16 Dec 2013 00:08:01 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> On 15 December 2013 18:51, Andreas F=C3=A4rber <afaerber@suse.de> wrote:
->> And since this is purely in target-moxie I would suggest to simply send
->> a pull as target maintainer once you have someone trustworthy's
->> Reviewed-by and it doesn't break `make check`, similar to how it's done
->> for OpenRISC.
+On Mon, Dec 16, 2013 at 5:26 AM, Anthony Green <green@moxielogic.com> wrote=
+:
+> Peter Maydell <peter.maydell@linaro.org> writes:
 >
-> Yes, this makes sense to me, especially since Anthony has a number
-> of other moxie patches on list at this point.
+>> On 15 December 2013 18:51, Andreas F=E4rber <afaerber@suse.de> wrote:
+>>> And since this is purely in target-moxie I would suggest to simply send
+>>> a pull as target maintainer once you have someone trustworthy's
+>>> Reviewed-by and it doesn't break `make check`, similar to how it's done
+>>> for OpenRISC.
+>>
+>> Yes, this makes sense to me, especially since Anthony has a number
+>> of other moxie patches on list at this point.
+>
+> According to this page...
+>
+> http://wiki.qemu.org/Contribute/SubmitAPullRequest
+>
+> ...I need to get a key signed by a member of the QEMU community in
+> person.  Are there any QEMU hackers in the Toronto area?
+>
 
-According to this page...
+While this question has air, anyone in and around Brisbane Australia who
+can sign me? (although that's probably a long shot).
 
-http://wiki.qemu.org/Contribute/SubmitAPullRequest
+I can get a key signed by Edgar if that is enough.
 
-...I need to get a key signed by a member of the QEMU community in
-person.  Are there any QEMU hackers in the Toronto area?
+Regards,
+Peter
 
-AG
+> AG
+>
 
