@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vu4oa-0004Ac-Tn
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Dec 2013 13:28:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36351)
+	id 1Vu73M-0005mk-Qy
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Dec 2013 15:52:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47692)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel.a@redhat.com>) id 1Vu4oR-0003ub-I8
-	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 13:28:45 -0500
+	(envelope-from <inguin@gmx.de>) id 1Vu0Oj-0008ND-GC
+	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 08:45:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcel.a@redhat.com>) id 1Vu4oL-0001UK-7w
-	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 13:28:39 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:27605)
+	(envelope-from <inguin@gmx.de>) id 1Vu0Od-0004CW-MI
+	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 08:45:49 -0500
+Received: from mout.gmx.net ([212.227.15.15]:58064)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel.a@redhat.com>)
-	id 1Vu4o7-0001Mz-S3; Fri, 20 Dec 2013 13:28:20 -0500
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rBKISHdi023637
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 20 Dec 2013 13:28:18 -0500
-Received: from [10.35.200.138] (vpn-200-138.tlv.redhat.com [10.35.200.138])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id rBKISEPa029106; Fri, 20 Dec 2013 13:28:15 -0500
-Message-ID: <1387564050.28388.9.camel@localhost.localdomain>
-From: Marcel Apfelbaum <marcel.a@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <52B401A0.2010403@msgid.tls.msk.ru>
-References: <1387523131-15647-1-git-send-email-famz@redhat.com>
-	<52B401A0.2010403@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Date: Fri, 20 Dec 2013 20:27:30 +0200
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] acpi unit-test: Create temporary disk
-	file under /tmp
+	(envelope-from <inguin@gmx.de>) id 1Vu0Od-0004CL-9d
+	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 08:45:43 -0500
+Received: from zaphod.peppercon.de ([212.80.250.50]) by mail.gmx.com
+	(mrgmx102) with ESMTPSA (Nemesis) id 0MRSeC-1W4xiP0OfQ-00ShyQ for
+	<qemu-trivial@nongnu.org>; Fri, 20 Dec 2013 14:45:41 +0100
+From: Ingo van Lil <inguin@gmx.de>
+To: qemu-devel@nongnu.org
+Date: Fri, 20 Dec 2013 14:44:53 +0100
+Message-Id: <1387547093-14591-1-git-send-email-inguin@gmx.de>
+X-Mailer: git-send-email 1.8.3.1
+X-Provags-ID: V03:K0:PFiSwgiiHZ8B52KCSPRnZgpY31yJ66NAHCVfWpuJPGhru19/mYM
+	UV5/R9P6qL2zl1DEF71DQ1Rb+WpATWCRNhYdzAuy1bgLUJoGmQfQYh3aYurUMT60B5Xjy7h
+	fIKI57+ZfdSpGuJeAEJJSgX+VWzD+OU1R/pvRrwWKgfuZGbmX23kmoXzxS9KI45jn44asnE
+	y6sKPfZQu6c4ZuSWllywQ==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 212.227.15.15
+X-Mailman-Approved-At: Fri, 20 Dec 2013 15:52:12 -0500
+Cc: qemu-trivial@nongnu.org, Ingo van Lil <inguin@gmx.de>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Anthony Liguori <anthony@codemonkey.ws>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [Qemu-trivial] [PATCH] doc: Mention chardev:id in available devices
+	for -serial
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,66 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Dec 2013 18:28:46 -0000
+X-List-Received-Date: Fri, 20 Dec 2013 13:45:55 -0000
 
-On Fri, 2013-12-20 at 12:36 +0400, Michael Tokarev wrote:
-> 20.12.2013 11:05, Fam Zheng wrote:
-> > As other tests, the image file is created in /tmp other than current
-> > dir. Thus there will not be an unignored file under tests for intree
-> > build.
-> > 
-> > Signed-off-by: Fam Zheng <famz@redhat.com>
-> > ---
-> >  tests/acpi-test.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/tests/acpi-test.c b/tests/acpi-test.c
-> > index ca83b1d6..e4f31b7 100644
-> > --- a/tests/acpi-test.c
-> > +++ b/tests/acpi-test.c
-> > @@ -116,7 +116,7 @@ static uint8_t boot_sector[0x200] = {
-> >      [0x1FF] = 0xAA,
-> >  };
-> >  
-> > -static const char *disk = "tests/acpi-test-disk.raw";
-> > +static const char *disk = "/tmp/qtest-acpi-test-disk.raw";
-> 
-> Please, PLEASE do NOT do this.
-> 
-> If you want a temp dir, create one in qemu source directory
-> (there's no urge to be able to specify one at build/run time,
-> a symlink created by user will do), -- so that all this junk
-> will be in a single dir easy to remove.
-> 
-> But never, ever, use /tmp like this, not here not elsewhere
-> else.  When you use /tmp, first, there's $TEMPDIR, and second,
-> much more important, there are apis like mkstemp(3) or
-> tmpfile(3), or tempnam(3), -- THIS is the only proper way to
-> use common temporary directories.
-> 
-> Never, ever, create fixed (or even predictable, with getpid()
-> for example) files in public temporary dirs.  Never.
-> 
-> For this issue, I think a better solution is to actually remove
-> this file on make clean.  Now you're just moving an unignored
-> file elsewhere, which isn't good by its own.
+It is possible to pre-define a character device with the -chardev option
+and reference its id as serial device. The man page does not mention this
+feature.
 
-I would use (and let glib do the work): 
-    fd = g_file_open_tmp("prefix-XXXXXX", file_name, &error);
-    g_assert_no_error(error);
-    ...
-and of course in the end:
-    unlink(file_name);
+Use case: Use stdio as serial, but do not terminate VM on Ctrl-C
+          -chardev stdio,id=mystdio,signal=off -serial chardev:mystdio
 
-I hope I helped,
-Marcel
+Signed-off-by: Ingo van Lil <inguin@gmx.de>
+---
+ qemu-options.hx | 2 ++
+ 1 file changed, 2 insertions(+)
 
-
-> 
-> Thanks,
-> 
-> /mjt
-
-
+diff --git a/qemu-options.hx b/qemu-options.hx
+index bcfe9ea..56e5fdf 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -2419,6 +2419,8 @@ vc:80Cx24C
+ No device is allocated.
+ @item null
+ void device
++@item chardev:@var{id}
++Use a named character device defined with the @code{-chardev} option.
+ @item /dev/XXX
+ [Linux only] Use host tty, e.g. @file{/dev/ttyS0}. The host serial port
+ parameters are set according to the emulated ones.
+-- 
+1.8.3.1
 
 
