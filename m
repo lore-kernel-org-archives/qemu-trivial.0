@@ -1,32 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VtOhh-00021r-OH
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2013 16:30:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34859)
+	id 1VtuA5-0000VB-EV
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Dec 2013 02:06:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54745)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VtOhb-0001sS-C5
-	for qemu-trivial@nongnu.org; Wed, 18 Dec 2013 16:30:52 -0500
+	(envelope-from <famz@redhat.com>) id 1Vtu9y-0000Mq-Cy
+	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 02:06:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VtOhW-0008Lz-DK
-	for qemu-trivial@nongnu.org; Wed, 18 Dec 2013 16:30:47 -0500
-Received: from qemu.weilnetz.de ([37.221.198.45]:48242
-	helo=v2201305906712890.yourvserver.net)
+	(envelope-from <famz@redhat.com>) id 1Vtu9s-0006Bc-Er
+	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 02:06:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:21168)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1VtOhK-0008Kt-0F; Wed, 18 Dec 2013 16:30:30 -0500
-Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id DC38117F6D6; Wed, 18 Dec 2013 22:30:26 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel <qemu-devel@nongnu.org>
-Date: Wed, 18 Dec 2013 22:30:26 +0100
-Message-Id: <1387402226-20892-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <famz@redhat.com>)
+	id 1Vtu9g-0006BB-7C; Fri, 20 Dec 2013 02:05:52 -0500
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rBK75j5N010896
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 20 Dec 2013 02:05:45 -0500
+Received: from ad.nay.redhat.com ([10.66.6.190])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id rBK75ewI006982; Fri, 20 Dec 2013 02:05:41 -0500
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 20 Dec 2013 15:05:31 +0800
+Message-Id: <1387523131-15647-1-git-send-email-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.198.45
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] configure: Python tests must be done before
-	help message
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Marcel Apfelbaum <marcel.a@redhat.com>
+Subject: [Qemu-trivial] [PATCH] acpi unit-test: Create temporary disk file
+	under /tmp
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,83 +42,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2013 21:30:52 -0000
+X-List-Received-Date: Fri, 20 Dec 2013 07:06:16 -0000
 
-The help message uses $python and displays its value, so that macro
-should be tested and set early.
+As other tests, the image file is created in /tmp other than current
+dir. Thus there will not be an unignored file under tests for intree
+build.
 
-With this modification, configure --help displays the correct value
-(usually python -B) and no longer creates several *.pyc files.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Fam Zheng <famz@redhat.com>
 ---
+ tests/acpi-test.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-There still remains a problem with configure --help: it creates new files
-config.log, config.status.
-
-Regards,
-Stefan Weil
-
- configure |   38 +++++++++++++++++++-------------------
- 1 file changed, 19 insertions(+), 19 deletions(-)
-
-diff --git a/configure b/configure
-index f81a629..d899da6 100755
---- a/configure
-+++ b/configure
-@@ -1004,6 +1004,25 @@ for opt do
-   esac
- done
+diff --git a/tests/acpi-test.c b/tests/acpi-test.c
+index ca83b1d6..e4f31b7 100644
+--- a/tests/acpi-test.c
++++ b/tests/acpi-test.c
+@@ -116,7 +116,7 @@ static uint8_t boot_sector[0x200] = {
+     [0x1FF] = 0xAA,
+ };
  
-+if ! has $python; then
-+  error_exit "Python not found. Use --python=/path/to/python"
-+fi
-+
-+# Note that if the Python conditional here evaluates True we will exit
-+# with status 1 which is a shell 'false' value.
-+if ! $python -c 'import sys; sys.exit(sys.version_info < (2,4) or sys.version_info >= (3,))'; then
-+  error_exit "Cannot use '$python', Python 2.4 or later is required." \
-+      "Note that Python 3 or later is not yet supported." \
-+      "Use --python=/path/to/python to specify a supported Python."
-+fi
-+
-+# The -B switch was added in Python 2.6.
-+# If it is supplied, compiled files are not written.
-+# Use it for Python versions which support it.
-+if $python -B -c 'import sys; sys.exit(0)' 2>/dev/null; then
-+  python="$python -B"
-+fi
-+
- case "$cpu" in
-     ppc)
-            CPU_CFLAGS="-m32"
-@@ -1419,25 +1438,6 @@ if test "$solaris" = "yes" ; then
-   fi
- fi
+-static const char *disk = "tests/acpi-test-disk.raw";
++static const char *disk = "/tmp/qtest-acpi-test-disk.raw";
  
--if ! has $python; then
--  error_exit "Python not found. Use --python=/path/to/python"
--fi
--
--# Note that if the Python conditional here evaluates True we will exit
--# with status 1 which is a shell 'false' value.
--if ! $python -c 'import sys; sys.exit(sys.version_info < (2,4) or sys.version_info >= (3,))'; then
--  error_exit "Cannot use '$python', Python 2.4 or later is required." \
--      "Note that Python 3 or later is not yet supported." \
--      "Use --python=/path/to/python to specify a supported Python."
--fi
--
--# The -B switch was added in Python 2.6.
--# If it is supplied, compiled files are not written.
--# Use it for Python versions which support it.
--if $python -B -c 'import sys; sys.exit(0)' 2>/dev/null; then
--  python="$python -B"
--fi
--
- if test -z "${target_list+xxx}" ; then
-     target_list="$default_target_list"
- else
+ static void free_test_data(test_data *data)
+ {
 -- 
-1.7.10.4
+1.8.5.1
 
 
