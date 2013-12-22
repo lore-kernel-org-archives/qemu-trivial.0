@@ -1,49 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vup4S-0002Uy-F5
-	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2013 14:52:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45984)
+	id 1VuzyZ-0004Kd-Ch
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Dec 2013 02:30:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47485)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Vup4M-0002Ui-Ig
-	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 14:52:14 -0500
+	(envelope-from <nerv@dawncrow.de>) id 1VusYx-00035L-7V
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 18:36:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Vup4I-0003Rm-9B
-	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 14:52:10 -0500
-Received: from mail-pb0-f54.google.com ([209.85.160.54]:53034)
+	(envelope-from <nerv@dawncrow.de>) id 1VusYs-0002H7-Ca
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 18:35:59 -0500
+Received: from moutng.kundenserver.de ([212.227.17.9]:53742)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Vup4I-0003Rg-2h
-	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 14:52:06 -0500
-Received: by mail-pb0-f54.google.com with SMTP id un15so4535079pbc.41
-	for <qemu-trivial@nongnu.org>; Sun, 22 Dec 2013 11:52:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=M+3Ua00nl3qTeMoBEvVG8E1g3lTtUqasmSI29c3TNxo=;
-	b=mLJwCtfmJZtdjSZbJgUQOpCr/d9j6o63Yzlwwv7eYZMzwPf4I2+CW8fvkRKMO68DZN
-	xzjC1Ixn8jc3qpFjMQV7ZjOPY6JbYvlu5vL5HfUei5RbUcT/9bOK1KmGPRTN2y/ssn71
-	ekLQJzHlXIbQuVyGBtVuFVER3rSzLFh6+iTtRpGC9IEHHHejhvQnNRaEgMsQYIBlzmKv
-	HIUShfklr4CyuapAd/0wxzY6ZdKA9LToQdfXz1jrjdpEJV5ECGKW3yM8oHhgC7HXEVBr
-	SvaPMJuo1g0gXfX3RbCAR4eDdptbsf+1oy2cFcOGLH11OiIGccILQdsR/8gXiKCKJWtT
-	qzlA==
-X-Gm-Message-State: ALoCoQkJA6K65Qboh7GL6izTuF6WFNM1oez0pSgpgbHBgys8J38yWzfr0A7CpSlpTNzZU28AnHiW
-X-Received: by 10.68.143.231 with SMTP id sh7mr22055255pbb.7.1387741925253;
-	Sun, 22 Dec 2013 11:52:05 -0800 (PST)
+	(envelope-from <nerv@dawncrow.de>) id 1VusYs-0002GY-3D
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 18:35:54 -0500
+Received: from [192.168.178.50] (pD95322EE.dip0.t-ipconnect.de [217.83.34.238])
+	by mrelayeu.kundenserver.de (node=mreu2) with ESMTP (Nemesis)
+	id 0LqpCY-1VGqmO1eWw-00e9ZC; Mon, 23 Dec 2013 00:35:39 +0100
+Message-ID: <52B77748.2090705@dawncrow.de>
+Date: Mon, 23 Dec 2013 00:35:36 +0100
+From: =?UTF-8?B?QW5kcsOpIEhlbnRzY2hlbA==?= <nerv@dawncrow.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
 MIME-Version: 1.0
-Received: by 10.70.82.227 with HTTP; Sun, 22 Dec 2013 11:51:45 -0800 (PST)
-In-Reply-To: <1387741325-14588-1-git-send-email-sw@weilnetz.de>
-References: <1387741325-14588-1-git-send-email-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 22 Dec 2013 19:51:45 +0000
-Message-ID: <CAFEAcA_VhncPTXGVXVdXP94kE-sPz+j3Vpc_8koFcxbX4do1xw@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.54
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH v3] mainstone: Fix duplicate array values
-	for key 'space'
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V02:K0:ELNiDHxHcf2+f5uHcFVZfWJQGwPMh0Ql0J+C2h4gREA
+	NJ9BOZ+o1NUuYbsHpIWHioyL16jHOiUQa8Kx5D5HhiFECkrAXJ
+	ZT8b5yFjhn2xZCH3ESiMObFH2KVWr/sD1flbMMqrcSuDgI5Ca0
+	MFCqBRBh5ahK8hpykOlNSRI6PduXwSa0ohaVq/5OfVXVGxLF3+
+	1QWjn8BWKTbS9fvCSEnkaNOhXX3OOGw6nYszxW3OaBTdAtZvKu
+	edv6MbKotsPcoKqFwGC+OFLcXlFOAv8Zy8imGFNQy0bNB8p8P1
+	hsS0h33UPHgW97113jHV1Ib+jJQdb2m3Bx3UwCqzGQr1tqTJfD
+	4nuKJvla+IZLEDmyFvWo=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 212.227.17.9
+X-Mailman-Approved-At: Mon, 23 Dec 2013 02:30:53 -0500
+Cc: Riku Voipio <riku.voipio@iki.fi>, Alexander Graf <agraf@suse.de>
+Subject: [Qemu-trivial] accept4
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,23 +48,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 Dec 2013 19:52:15 -0000
+X-List-Received-Date: Sun, 22 Dec 2013 23:36:04 -0000
 
-On 22 December 2013 19:42, Stefan Weil <sw@weilnetz.de> wrote:
-> cgcc reported a duplicate initialisation. Mainstone includes a matrix
-> keyboard where two different positions map to 'space'.
->
-> QEMU uses the reversed mapping and does not map 'space' to two different
-> matrix positions.
->
-> Some other keys are either missing or might be mapped wrongly (cf. Linux
-> kernel code). Don't fix these until someone can test them with real
-> hardware, but add TODO comments.
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+From: André Hentschel <nerv@dawncrow.de>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+See https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/net.h for the values.
+Not entirely sure how to implement recvmmsg and sendmmsg...
 
-thanks
--- PMM
+Cc: Riku Voipio <riku.voipio@iki.fi>
+Cc: Alexander Graf <agraf@suse.de>
+Signed-off-by: André Hentschel <nerv@dawncrow.de>
+---
+ linux-user/syscall.c      | 15 +++++++++++++++
+ linux-user/syscall_defs.h |  3 +++
+ 2 files changed, 18 insertions(+)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index efd1453..475fb8c 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -2245,6 +2245,21 @@ static abi_long do_socketcall(int num, abi_ulong vptr)
+             ret = do_accept4(sockfd, target_addr, target_addrlen, 0);
+         }
+         break;
++    case SOCKOP_accept4:
++        {
++            abi_ulong sockfd;
++            abi_ulong target_addr, target_addrlen;
++            abi_ulong flags;
++
++            if (get_user_ual(sockfd, vptr)
++                || get_user_ual(target_addr, vptr + n)
++                || get_user_ual(target_addrlen, vptr + 2 * n)
++                || get_user_ual(flags, vptr + 3 * n))
++                return -TARGET_EFAULT;
++
++            ret = do_accept4(sockfd, target_addr, target_addrlen, flags);
++        }
++        break;
+     case SOCKOP_getsockname:
+         {
+             abi_ulong sockfd;
+diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+index cf08db5..b36f99c 100644
+--- a/linux-user/syscall_defs.h
++++ b/linux-user/syscall_defs.h
+@@ -27,6 +27,9 @@
+ #define SOCKOP_getsockopt       15
+ #define SOCKOP_sendmsg          16
+ #define SOCKOP_recvmsg          17
++#define SOCKOP_accept4          18
++#define SOCKOP_recvmmsg         19
++#define SOCKOP_sendmmsg         20
+ 
+ #define IPCOP_semop		1
+ #define IPCOP_semget		2
+-- 
+1.8.1.2
+
 
