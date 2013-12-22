@@ -1,38 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vu73M-0005mk-Qy
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Dec 2013 15:52:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47692)
+	id 1Vujvu-0007s4-Iy
+	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2013 09:23:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56947)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <inguin@gmx.de>) id 1Vu0Oj-0008ND-GC
-	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 08:45:55 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vujvs-0007oX-5r
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 09:23:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <inguin@gmx.de>) id 1Vu0Od-0004CW-MI
-	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 08:45:49 -0500
-Received: from mout.gmx.net ([212.227.15.15]:58064)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vujvr-0002Z3-EI
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 09:23:04 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:46800
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <inguin@gmx.de>) id 1Vu0Od-0004CL-9d
-	for qemu-trivial@nongnu.org; Fri, 20 Dec 2013 08:45:43 -0500
-Received: from zaphod.peppercon.de ([212.80.250.50]) by mail.gmx.com
-	(mrgmx102) with ESMTPSA (Nemesis) id 0MRSeC-1W4xiP0OfQ-00ShyQ for
-	<qemu-trivial@nongnu.org>; Fri, 20 Dec 2013 14:45:41 +0100
-From: Ingo van Lil <inguin@gmx.de>
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1Vujvp-0002Yl-7I; Sun, 22 Dec 2013 09:23:01 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id E78C017FC14; Sun, 22 Dec 2013 15:22:57 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org
-Date: Fri, 20 Dec 2013 14:44:53 +0100
-Message-Id: <1387547093-14591-1-git-send-email-inguin@gmx.de>
-X-Mailer: git-send-email 1.8.3.1
-X-Provags-ID: V03:K0:PFiSwgiiHZ8B52KCSPRnZgpY31yJ66NAHCVfWpuJPGhru19/mYM
-	UV5/R9P6qL2zl1DEF71DQ1Rb+WpATWCRNhYdzAuy1bgLUJoGmQfQYh3aYurUMT60B5Xjy7h
-	fIKI57+ZfdSpGuJeAEJJSgX+VWzD+OU1R/pvRrwWKgfuZGbmX23kmoXzxS9KI45jn44asnE
-	y6sKPfZQu6c4ZuSWllywQ==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 212.227.15.15
-X-Mailman-Approved-At: Fri, 20 Dec 2013 15:52:12 -0500
-Cc: qemu-trivial@nongnu.org, Ingo van Lil <inguin@gmx.de>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Anthony Liguori <anthony@codemonkey.ws>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PATCH] doc: Mention chardev:id in available devices
-	for -serial
+Date: Sun, 22 Dec 2013 15:22:57 +0100
+Message-Id: <1387722177-28824-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] pxa27x: Add 'const' attribute to keyboard
+	maps
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,34 +40,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Dec 2013 13:45:55 -0000
+X-List-Received-Date: Sun, 22 Dec 2013 14:23:05 -0000
 
-It is possible to pre-define a character device with the -chardev option
-and reference its id as serial device. The man page does not mention this
-feature.
+The mapping is a hardware feature, so it is relatively constant.
 
-Use case: Use stdio as serial, but do not terminate VM on Ctrl-C
-          -chardev stdio,id=mystdio,signal=off -serial chardev:mystdio
-
-Signed-off-by: Ingo van Lil <inguin@gmx.de>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- qemu-options.hx | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/arm/mainstone.c       |    2 +-
+ hw/arm/z2.c              |    2 +-
+ hw/input/pxa2xx_keypad.c |    6 +++---
+ include/hw/arm/pxa.h     |    4 ++--
+ 4 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index bcfe9ea..56e5fdf 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -2419,6 +2419,8 @@ vc:80Cx24C
- No device is allocated.
- @item null
- void device
-+@item chardev:@var{id}
-+Use a named character device defined with the @code{-chardev} option.
- @item /dev/XXX
- [Linux only] Use host tty, e.g. @file{/dev/ttyS0}. The host serial port
- parameters are set according to the emulated ones.
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index 223a4b1..082627e 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -45,7 +45,7 @@
+ #define S1_STSCHG_IRQ 14
+ #define S1_IRQ        15
+ 
+-static struct keymap map[0xE0] = {
++static const struct keymap map[0xE0] = {
+     [0 ... 0xDF] = { -1, -1 },
+     [0x1e] = {0,0}, /* a */
+     [0x30] = {0,1}, /* b */
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index d52c501..97367b1 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -33,7 +33,7 @@
+ #define DPRINTF(fmt, ...)
+ #endif
+ 
+-static struct keymap map[0x100] = {
++static const struct keymap map[0x100] = {
+     [0 ... 0xff] = { -1, -1 },
+     [0x3b] = {0, 0}, /* Option = F1 */
+     [0xc8] = {0, 1}, /* Up */
+diff --git a/hw/input/pxa2xx_keypad.c b/hw/input/pxa2xx_keypad.c
+index 846d137..b90b0ba 100644
+--- a/hw/input/pxa2xx_keypad.c
++++ b/hw/input/pxa2xx_keypad.c
+@@ -85,7 +85,7 @@
+ struct PXA2xxKeyPadState {
+     MemoryRegion iomem;
+     qemu_irq    irq;
+-    struct  keymap *map;
++    const struct  keymap *map;
+     int         pressed_cnt;
+     int         alt_code;
+ 
+@@ -322,8 +322,8 @@ PXA2xxKeyPadState *pxa27x_keypad_init(MemoryRegion *sysmem,
+     return s;
+ }
+ 
+-void pxa27x_register_keypad(PXA2xxKeyPadState *kp, struct keymap *map,
+-        int size)
++void pxa27x_register_keypad(PXA2xxKeyPadState *kp,
++                            const struct keymap *map, int size)
+ {
+     if(!map || size < 0x80) {
+         fprintf(stderr, "%s - No PXA keypad map defined\n", __FUNCTION__);
+diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
+index a4e1a66..d146c58 100644
+--- a/include/hw/arm/pxa.h
++++ b/include/hw/arm/pxa.h
+@@ -109,8 +109,8 @@ typedef struct PXA2xxKeyPadState PXA2xxKeyPadState;
+ PXA2xxKeyPadState *pxa27x_keypad_init(MemoryRegion *sysmem,
+                                       hwaddr base,
+                                       qemu_irq irq);
+-void pxa27x_register_keypad(PXA2xxKeyPadState *kp, struct keymap *map,
+-                int size);
++void pxa27x_register_keypad(PXA2xxKeyPadState *kp,
++                            const struct keymap *map, int size);
+ 
+ /* pxa2xx.c */
+ typedef struct PXA2xxI2CState PXA2xxI2CState;
 -- 
-1.8.3.1
+1.7.10.4
 
 
