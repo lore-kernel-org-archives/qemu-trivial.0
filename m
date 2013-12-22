@@ -1,22 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VuzyZ-0004Kd-Ch
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Dec 2013 02:30:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47485)
+	id 1Vuzya-0004NK-Ku
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Dec 2013 02:30:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49077)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <nerv@dawncrow.de>) id 1VusYx-00035L-7V
-	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 18:36:04 -0500
+	(envelope-from <nerv@dawncrow.de>) id 1Vusjq-0005D2-DS
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 18:47:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <nerv@dawncrow.de>) id 1VusYs-0002H7-Ca
-	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 18:35:59 -0500
-Received: from moutng.kundenserver.de ([212.227.17.9]:53742)
+	(envelope-from <nerv@dawncrow.de>) id 1Vusjl-00055W-IO
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 18:47:14 -0500
+Received: from moutng.kundenserver.de ([212.227.126.171]:53167)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <nerv@dawncrow.de>) id 1VusYs-0002GY-3D
-	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 18:35:54 -0500
+	(envelope-from <nerv@dawncrow.de>) id 1Vusjl-00055S-7r
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 18:47:09 -0500
 Received: from [192.168.178.50] (pD95322EE.dip0.t-ipconnect.de [217.83.34.238])
-	by mrelayeu.kundenserver.de (node=mreu2) with ESMTP (Nemesis)
-	id 0LqpCY-1VGqmO1eWw-00e9ZC; Mon, 23 Dec 2013 00:35:39 +0100
-Message-ID: <52B77748.2090705@dawncrow.de>
-Date: Mon, 23 Dec 2013 00:35:36 +0100
+	by mrelayeu.kundenserver.de (node=mreu4) with ESMTP (Nemesis)
+	id 0La6Uk-1VDXEA2xv4-00m2r0; Mon, 23 Dec 2013 00:47:01 +0100
+Message-ID: <52B779F1.5080901@dawncrow.de>
+Date: Mon, 23 Dec 2013 00:46:57 +0100
 From: =?UTF-8?B?QW5kcsOpIEhlbnRzY2hlbA==?= <nerv@dawncrow.de>
 User-Agent: Mozilla/5.0 (X11; Linux i686;
 	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
@@ -24,19 +24,19 @@ MIME-Version: 1.0
 To: qemu-trivial@nongnu.org
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V02:K0:ELNiDHxHcf2+f5uHcFVZfWJQGwPMh0Ql0J+C2h4gREA
-	NJ9BOZ+o1NUuYbsHpIWHioyL16jHOiUQa8Kx5D5HhiFECkrAXJ
-	ZT8b5yFjhn2xZCH3ESiMObFH2KVWr/sD1flbMMqrcSuDgI5Ca0
-	MFCqBRBh5ahK8hpykOlNSRI6PduXwSa0ohaVq/5OfVXVGxLF3+
-	1QWjn8BWKTbS9fvCSEnkaNOhXX3OOGw6nYszxW3OaBTdAtZvKu
-	edv6MbKotsPcoKqFwGC+OFLcXlFOAv8Zy8imGFNQy0bNB8p8P1
-	hsS0h33UPHgW97113jHV1Ib+jJQdb2m3Bx3UwCqzGQr1tqTJfD
-	4nuKJvla+IZLEDmyFvWo=
+X-Provags-ID: V02:K0:Ce73e23gqtYKbvPhtiPJhTC+CUDsEpmDiYVxZWaH4GI
+	C1p6rYqTaM+UEubZSnYJx8rVgaCNBFGEBqj3yNwLal7ZUIiAyD
+	W7k44zPiIjMSSpYgdGpm0gm1qK1Vui93wCIpNIdBe1+aZz7b9z
+	sBwDOVrIJIPkcu+eHXHYvLc62yENYTg0RqGcv0YymmqOgPdko6
+	/MZGDHBfrj7b8BgChySvwZ/Q7+8Ar/aD0z6nBbr5MTBj02Lzwq
+	PaJP2ycFOYtZZVreJ6hjxgQXqnHmu8zO9b557J8fHI9raE+l4M
+	h6L5oqRl2fd0C+LASdzQcZXoFwKwQPJcj87PtBhVaiBT/w6qy3
+	5EDDWlVAKdp2ptV72RRQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 212.227.17.9
-X-Mailman-Approved-At: Mon, 23 Dec 2013 02:30:53 -0500
+X-Received-From: 212.227.126.171
+X-Mailman-Approved-At: Mon, 23 Dec 2013 02:30:54 -0500
 Cc: Riku Voipio <riku.voipio@iki.fi>, Alexander Graf <agraf@suse.de>
-Subject: [Qemu-trivial] accept4
+Subject: [Qemu-trivial] [PATCH] linux-user: Support the accept4 socketcall
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,17 +48,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 Dec 2013 23:36:04 -0000
+X-List-Received-Date: Sun, 22 Dec 2013 23:47:19 -0000
 
 From: André Hentschel <nerv@dawncrow.de>
-
-See https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/net.h for the values.
-Not entirely sure how to implement recvmmsg and sendmmsg...
-
 Cc: Riku Voipio <riku.voipio@iki.fi>
 Cc: Alexander Graf <agraf@suse.de>
 Signed-off-by: André Hentschel <nerv@dawncrow.de>
 ---
+See https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/net.h for the values.
+Not entirely sure how to implement recvmmsg and sendmmsg...
+PS: I hit send to early on the last attempt, sry.
+
  linux-user/syscall.c      | 15 +++++++++++++++
  linux-user/syscall_defs.h |  3 +++
  2 files changed, 18 insertions(+)
