@@ -1,49 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VukmM-0000ua-AK
-	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2013 10:17:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34261)
+	id 1VuoI1-00053S-Mi
+	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2013 14:02:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39995)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VukmG-0000uO-L7
-	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 10:17:17 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VuoHy-000503-Vh
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 14:02:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VukmC-0006xF-6N
-	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 10:17:12 -0500
-Received: from mail-pa0-f49.google.com ([209.85.220.49]:54074)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VuoHx-0008An-KS
+	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 14:02:10 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:47042
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VukmC-0006xA-0T
-	for qemu-trivial@nongnu.org; Sun, 22 Dec 2013 10:17:08 -0500
-Received: by mail-pa0-f49.google.com with SMTP id kx10so4422943pab.8
-	for <qemu-trivial@nongnu.org>; Sun, 22 Dec 2013 07:17:07 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=n/bMWNzBqX7mHPbMxhbQMn2LvIAijfLCvmgRzksGaUI=;
-	b=eWKBs1LmtQEbu4EKC7YqSwzuty4MW7ZgKy/frwjoGFGq8EUTmbIgN/dOpo5HIaBbFj
-	lpwdAX5LjTZC11kq1XEvyMXOsVxATEBt7qxGqq2xJAyuVnk3vlaKHXUdvCRPJEGyO5KB
-	rh4MOELecndSXdz9RaYBB82aUAFLr1PEqNH5PTePVGDRUYWd4qWpDc/t2t2idefvoC4B
-	YE5qzkSM4kN6za1L9QbwvrumJSSY7pLx4ix81Tj6QJiF186qgir+HuLCwNtyW3L7SMSe
-	1/pYDvP1oWNktqyzfyFsKzCWYo6MKamX/Z/7KDixViIpSdmxtlsvatAqqUZaVrh8BLLx
-	NRgQ==
-X-Gm-Message-State: ALoCoQkMCOJrFesmjCOBxUBOviWN1nE7W1FFL4IRt5ZIFZvMcu3vNvlK5XPS26Dg6SK0cD9FF61R
-X-Received: by 10.66.145.199 with SMTP id sw7mr3353288pab.143.1387725427349;
-	Sun, 22 Dec 2013 07:17:07 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.70.82.227 with HTTP; Sun, 22 Dec 2013 07:16:39 -0800 (PST)
-In-Reply-To: <1387722177-28824-1-git-send-email-sw@weilnetz.de>
-References: <1387722177-28824-1-git-send-email-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 22 Dec 2013 15:16:39 +0000
-Message-ID: <CAFEAcA9TDOohjP6Po2=uV3BNuwKma+yNjM1g1vpY3RHnC+hvkQ@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.220.49
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] pxa27x: Add 'const' attribute to
-	keyboard maps
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1VuoHu-00089O-T2; Sun, 22 Dec 2013 14:02:07 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id 875EC17FC14; Sun, 22 Dec 2013 20:02:03 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Sun, 22 Dec 2013 20:01:58 +0100
+Message-Id: <1387738918-10035-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH v2] mainstone: Fix duplicate array values for
+	key 'space'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,17 +40,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 Dec 2013 15:17:17 -0000
+X-List-Received-Date: Sun, 22 Dec 2013 19:02:12 -0000
 
-On 22 December 2013 14:22, Stefan Weil <sw@weilnetz.de> wrote:
-> The mapping is a hardware feature, so it is relatively constant.
+cgcc reported a duplicate initialisation. Mainstone includes a matrix
+keyboard where two different positions map to 'space'.
 
-This is true but not particularly relevant to whether we should be
-marking the structs and parameters as 'const' or not. Still,
-the change is good, so
+QEMU uses the reversed mapping and does not map 'space' to two different
+matrix positions.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Some other keys are either missing or might be mapped wrongly (cf. Linux
+kernel code). Don't fix these until someone can test them with real
+hardware, but add TODO comments.
 
-thanks
--- PMM
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+
+v2: Address Peter Maydell's suggestions:
+    * Use first alternative, so there is no change of behaviour
+    * Don't use #if 0 ... #endif
+
+As there won't be a follow up patch to fix the keyboard matrix,
+this patch is no longer needed for qemu-stable.
+
+Please note that checkpatch.pl reports a missing blank after
+a comma. This was required to match the existing code.
+
+Regards,
+Stefan W.
+
+ hw/arm/mainstone.c |   13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index 9402c84..bfb2b78 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -76,8 +76,17 @@ static struct keymap map[0xE0] = {
+     [0xc7] = {5,0}, /* Home */
+     [0x2a] = {5,1}, /* shift */
+     [0x39] = {5,2}, /* space */
+-    [0x39] = {5,3}, /* space */
+-    [0x1c] = {5,5}, /*  enter */
++    /*
++     * There are two matrix positions which map to space,
++     * but QEMU can only use one of them for the reverse
++     * mapping, so simply use the first one.
++     */
++    /* [0x39] = {5,3}, space */
++    /*
++     * Matrix position {5,4} and other keys are missing here.
++     * TODO: Compare with Linux code and test real hardware.
++     */
++    [0x1c] = {5,5}, /* enter (TODO: might be wrong) */
+     [0xc8] = {6,0}, /* up */
+     [0xd0] = {6,1}, /* down */
+     [0xcb] = {6,2}, /* left */
+-- 
+1.7.10.4
+
 
