@@ -1,51 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vvkqe-0005Ua-LX
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Dec 2013 04:33:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49447)
+	id 1VvqAs-00082O-AQ
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Dec 2013 10:15:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57400)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VvkqZ-0005TR-AP
-	for qemu-trivial@nongnu.org; Wed, 25 Dec 2013 04:33:52 -0500
+	(envelope-from <mst@redhat.com>) id 1VvqAm-0007pr-2A
+	for qemu-trivial@nongnu.org; Wed, 25 Dec 2013 10:15:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VvkqS-0000T8-Q5
-	for qemu-trivial@nongnu.org; Wed, 25 Dec 2013 04:33:47 -0500
-Received: from mail-pd0-f174.google.com ([209.85.192.174]:53506)
+	(envelope-from <mst@redhat.com>) id 1VvqAg-0001S5-VR
+	for qemu-trivial@nongnu.org; Wed, 25 Dec 2013 10:14:59 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:3578)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1VvkqS-0000St-KB
-	for qemu-trivial@nongnu.org; Wed, 25 Dec 2013 04:33:40 -0500
-Received: by mail-pd0-f174.google.com with SMTP id x10so7020691pdj.19
-	for <qemu-trivial@nongnu.org>; Wed, 25 Dec 2013 01:33:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=sIdjcKm/e9xSsXNK4QZsonRzBhhdvHjuk/f3v6ZIACc=;
-	b=eGHpGBkk1xJ1AriPY8HMzNMySJXp+6OR42dD282qytfSRvOBR+OFPvATIbgrJIL5sp
-	4DOUw/glbjjH27P1M89NptSySnVk3OI0dBaOw711t9PX/hcksdLbYfc00f4OOcY8NjAL
-	MHI52oQ0BBD6Yl7kAJH5N3ImeyDH52wz/nHK61yJh67ooMZ5jQ57KZus533Qjmp8DxyI
-	CwM4U8yn5Dys1Y7mF+QCQ8MHaRbcNwx8CHrr2WdvHNAUla900UmLFk2l8e+YbqAzpXAT
-	fSFSfXfPfFM6n1+WSOdNtsnkU9XLNvgKGpNr5zn6+ExL2XvY2ahpAIGiT1xuYdiVa3wJ
-	pYLg==
-X-Gm-Message-State: ALoCoQlQYDrfgx8KKxsBq4fk7YGJt3zQbdZRnUH9e8KO1y09Rz/FLUQDQAW1EeLk60JdZS6FoI2c
-X-Received: by 10.68.179.35 with SMTP id dd3mr37869795pbc.138.1387964019912;
-	Wed, 25 Dec 2013 01:33:39 -0800 (PST)
+	(envelope-from <mst@redhat.com>)
+	id 1VvqAW-0001RE-UN; Wed, 25 Dec 2013 10:14:45 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id rBPFEhEo011440
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 25 Dec 2013 10:14:43 -0500
+Received: from redhat.com (vpn1-7-131.ams2.redhat.com [10.36.7.131])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id rBPFEeSn026063; Wed, 25 Dec 2013 10:14:41 -0500
+Date: Wed, 25 Dec 2013 17:18:34 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20131225151834.GA20075@redhat.com>
+References: <1387723882-30633-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Received: by 10.70.82.227 with HTTP; Wed, 25 Dec 2013 01:33:19 -0800 (PST)
-In-Reply-To: <1387956078-10651-1-git-send-email-lig.fnst@cn.fujitsu.com>
-References: <1387956078-10651-1-git-send-email-lig.fnst@cn.fujitsu.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 25 Dec 2013 09:33:19 +0000
-Message-ID: <CAFEAcA-a_0w=NNF+cD53Cf5DOQ0KeeE5GD+ug3qKMH=M99mBfg@mail.gmail.com>
-To: liguang <lig.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.192.174
-Cc: Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] hw/sd: move sdhci.h to include/hw
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1387723882-30633-1-git-send-email-sw@weilnetz.de>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] virtio: Fix return value for dummy
+ function vhost_net_virtqueue_pending
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,17 +46,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Dec 2013 09:33:52 -0000
+X-List-Received-Date: Wed, 25 Dec 2013 15:15:05 -0000
 
-On 25 December 2013 07:21, liguang <lig.fnst@cn.fujitsu.com> wrote:
+On Sun, Dec 22, 2013 at 03:51:22PM +0100, Stefan Weil wrote:
+> cgcc complains that -ENOSYS is not a good value for 'bool'.
+> 
+> A dummy virtio will never have pending queue entries, so let us return
+> false.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-This is where your patch should have had an explanation
-for why you're making this change. What is the user outside
-of hw/sd/ that needs this header that means we should
-move it into include/ ?
+Applied, thanks.
 
-> Signed-off-by: liguang <lig.fnst@cn.fujitsu.com>
+> ---
+> 
+> Could we also use g_assert_not_reached or hw_error in those dummy functions?
+> 
+> Regards
+> Stefan
 
-thanks
--- PMM
+I'd go for g_assert_not_reached normally - it's an internal
+bug if this is called since init stub fails.
+Or leave it as is - it's an unusual configuration.
+
+>  hw/net/vhost_net.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/net/vhost_net.c b/hw/net/vhost_net.c
+> index 006576d..854997d 100644
+> --- a/hw/net/vhost_net.c
+> +++ b/hw/net/vhost_net.c
+> @@ -321,7 +321,7 @@ void vhost_net_ack_features(struct vhost_net *net, unsigned features)
+>  
+>  bool vhost_net_virtqueue_pending(VHostNetState *net, int idx)
+>  {
+> -    return -ENOSYS;
+> +    return false;
+>  }
+>  
+>  void vhost_net_virtqueue_mask(VHostNetState *net, VirtIODevice *dev,
+> -- 
+> 1.7.10.4
 
