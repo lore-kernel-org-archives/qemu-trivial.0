@@ -1,38 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vwfqt-0000J5-3h
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Dec 2013 17:25:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35411)
+	id 1Vwfqv-0000OU-D4
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Dec 2013 17:25:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35417)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vwfqm-0008VB-I3
-	for qemu-trivial@nongnu.org; Fri, 27 Dec 2013 17:25:53 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Vwfqo-000075-0w
+	for qemu-trivial@nongnu.org; Fri, 27 Dec 2013 17:25:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Vwfqh-0000NX-Ip
-	for qemu-trivial@nongnu.org; Fri, 27 Dec 2013 17:25:48 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:45942)
+	(envelope-from <mjt@tls.msk.ru>) id 1Vwfqj-0000Nq-TN
+	for qemu-trivial@nongnu.org; Fri, 27 Dec 2013 17:25:49 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:43943)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1VwfqW-0000LH-Kv; Fri, 27 Dec 2013 17:25:32 -0500
+	id 1VwfqW-0000LI-Kp; Fri, 27 Dec 2013 17:25:32 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8D531438A8;
+	by isrv.corpit.ru (Postfix) with ESMTP id 7C63A438A7;
 	Sat, 28 Dec 2013 02:25:32 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 66D21610;
-	Sat, 28 Dec 2013 02:07:36 +0400 (MSK)
-Received: (nullmailer pid 10364 invoked by uid 1000);
-	Fri, 27 Dec 2013 22:07:35 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 682285E0;
+	Sat, 28 Dec 2013 02:07:35 +0400 (MSK)
+Received: (nullmailer pid 10333 invoked by uid 1000);
+	Fri, 27 Dec 2013 22:07:34 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@amazon.com
-Date: Sat, 28 Dec 2013 02:07:30 +0400
-Message-Id: <1388182050-10270-18-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Sat, 28 Dec 2013 02:07:17 +0400
+Message-Id: <1388182050-10270-5-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1388182050-10270-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1388182050-10270-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 17/17] acpi unit-test: Remove temporary disk
-	after test
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <andreas.faerber@web.de>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PULL 04/17] ui/cocoa: Use macro ARRAY_SIZE where
+	possible
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,38 +48,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Dec 2013 22:25:53 -0000
+X-List-Received-Date: Fri, 27 Dec 2013 22:25:54 -0000
 
-From: Fam Zheng <famz@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Signed-off-by: Fam Zheng <famz@redhat.com>
+This improves readability and simplifies the code.
+
+Cc: Andreas F=C3=A4rber <andreas.faerber@web.de>
+Cc: Anthony Liguori <aliguori@amazon.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- tests/acpi-test.c |    5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ ui/cocoa.m |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/tests/acpi-test.c b/tests/acpi-test.c
-index ca83b1d..df1af83 100644
---- a/tests/acpi-test.c
-+++ b/tests/acpi-test.c
-@@ -382,6 +382,7 @@ int main(int argc, char *argv[])
+diff --git a/ui/cocoa.m b/ui/cocoa.m
+index be49179..2524f18 100644
+--- a/ui/cocoa.m
++++ b/ui/cocoa.m
+@@ -240,9 +240,8 @@ int keymap[] =3D
+=20
+ static int cocoa_keycode_to_qemu(int keycode)
  {
-     const char *arch = qtest_get_arch();
-     FILE *f = fopen(disk, "w");
-+    int ret;
-     fwrite(boot_sector, 1, sizeof boot_sector, f);
-     fclose(f);
- 
-@@ -390,5 +391,7 @@ int main(int argc, char *argv[])
-     if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-         qtest_add_func("acpi/tcg", test_acpi_tcg);
+-    if((sizeof(keymap)/sizeof(int)) <=3D keycode)
+-    {
+-        printf("(cocoa) warning unknow keycode 0x%x\n", keycode);
++    if (ARRAY_SIZE(keymap) <=3D keycode) {
++        printf("(cocoa) warning unknown keycode 0x%x\n", keycode);
+         return 0;
      }
--    return g_test_run();
-+    ret = g_test_run();
-+    unlink(disk);
-+    return ret;
- }
--- 
+     return keymap[keycode];
+--=20
 1.7.10.4
 
 
