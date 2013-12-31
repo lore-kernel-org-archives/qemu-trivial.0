@@ -1,39 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Vxn3Y-0007c0-48
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Dec 2013 19:19:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59179)
+	id 1VxrAh-0007Ox-Qo
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Dec 2013 23:43:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37710)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Vxn3P-0007Ri-DS
-	for qemu-trivial@nongnu.org; Mon, 30 Dec 2013 19:19:33 -0500
+	(envelope-from <keweihk@gmail.com>) id 1VxrAW-00078X-Rs
+	for qemu-trivial@nongnu.org; Mon, 30 Dec 2013 23:43:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Vxn3J-0002mS-BX
-	for qemu-trivial@nongnu.org; Mon, 30 Dec 2013 19:19:27 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:57496 helo=mx2.suse.de)
+	(envelope-from <keweihk@gmail.com>) id 1VxrAO-0002WE-Do
+	for qemu-trivial@nongnu.org; Mon, 30 Dec 2013 23:43:04 -0500
+Received: from mail-pb0-x22e.google.com ([2607:f8b0:400e:c01::22e]:33645)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1Vxn36-0002j6-Uf; Mon, 30 Dec 2013 19:19:09 -0500
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id AFE0EABC7;
-	Tue, 31 Dec 2013 00:19:06 +0000 (UTC)
-Message-ID: <52C20D76.7060301@suse.de>
-Date: Tue, 31 Dec 2013 01:19:02 +0100
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
-MIME-Version: 1.0
-To: Kewei Yu <keweihk@gmail.com>, qemu-devel@nongnu.org
-References: <1388393215-27511-1-git-send-email-keweihk@gmail.com>
-In-Reply-To: <1388393215-27511-1-git-send-email-keweihk@gmail.com>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
-	mst@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] qtest:Fix the bug about
- disabling vnc causes "make check" hang
+	(envelope-from <keweihk@gmail.com>)
+	id 1VxrA7-0002Q4-5O; Mon, 30 Dec 2013 23:42:39 -0500
+Received: by mail-pb0-f46.google.com with SMTP id md12so12324608pbc.33
+	for <multiple recipients>; Mon, 30 Dec 2013 20:42:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=RGp8O9l/PSFL6BS1STp/udjnkhZeIKWiRwjPAaQakEs=;
+	b=gtiwotwQc66xShzVo+B5k4oxU0NctkDTwWEY7WUdVGRO0lXRKP6Eh18kFL3PClhlDj
+	23OPOEnjPDA5S/0vRgpMJjQCPPEklvNu6HEZc3uqt/pZhtVa2fJSNEpHhrbIlcZVCAqt
+	CfnEkV+TscFV2Kc7XkqI0+YQsNn+R7yQPBedCQasrk0lMP4uGbNn2iJcDKcaF2had4Y4
+	/ebARmm4D29c0CnMLhlUVE7wg3UNYFNdXRzmqmhrmNMKzh0yRkhEAiPIXSLmXre8kLJz
+	aKWWR/kEadMSnwFaCLzIsxr9fE8mmYWmIJQby1GzbZs7SmmfutOdtIzi3Q7c50t0jAb7
+	Deug==
+X-Received: by 10.66.136.101 with SMTP id pz5mr73545841pab.118.1388464957947; 
+	Mon, 30 Dec 2013 20:42:37 -0800 (PST)
+Received: from localhost.localdomain ([221.122.32.18])
+	by mx.google.com with ESMTPSA id ki1sm85209601pbd.1.2013.12.30.20.42.32
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 30 Dec 2013 20:42:34 -0800 (PST)
+From: Kewei Yu <keweihk@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 31 Dec 2013 12:42:24 +0800
+Message-Id: <1388464944-26911-1-git-send-email-keweihk@gmail.com>
+X-Mailer: git-send-email 1.7.1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c01::22e
+Cc: qemu-trivial@nongnu.org, stefanha@redhat.com
+Subject: [Qemu-trivial] [PATCH v2 1/1] qtest: Fix the bug about disabling
+	vnc causes "make check" hang
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,90 +52,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Dec 2013 00:19:33 -0000
+X-List-Received-Date: Tue, 31 Dec 2013 04:43:14 -0000
 
-Hi,
+When we disabling vnc from "./configure", the qemu can't use the vnc option.
+So qtest can't use the "vnc -none ", otherwise "make check" will hang.
 
-Am 30.12.2013 09:46, schrieb Kewei Yu:
-> When we disabling vnc from "./configure", the qemu can't use the vnc op=
-tion.
-> So qtest can't use the "vnc -none ", otherwise "make check" will hang.
->=20
-> Signed-off-by: Kewei Yu <keweihk@gmail.com>
-> ---
->  tests/fdc-test.c |    4 ++++
->  tests/ide-test.c |   11 ++++++++---
->  2 files changed, 12 insertions(+), 3 deletions(-)
->=20
-> diff --git a/tests/fdc-test.c b/tests/fdc-test.c
-> index 38b5b17..80dbdfb 100644
-> --- a/tests/fdc-test.c
-> +++ b/tests/fdc-test.c
-> @@ -538,7 +538,11 @@ int main(int argc, char **argv)
->      /* Run the tests */
->      g_test_init(&argc, &argv, NULL);
-> =20
-> +#ifdef CONFIG_VNC
->      cmdline =3D g_strdup_printf("-vnc none ");
-> +#else
-> +    cmdline =3D NULL;
-> +#endif
-> =20
->      qtest_start(cmdline);
->      qtest_irq_intercept_in(global_qtest, "ioapic");
+Signed-off-by: Kewei Yu <keweihk@gmail.com>
+---
+ v2: Consolidate VNC macro's #ifdef'ery to one central point (tests/libqtest.c).
 
-I have already made -display none a default used by all qtests.
-http://git.qemu.org/?p=3Dqemu.git;a=3Dcommit;h=3D2ad645d2854746b55ddfd1d8=
-e951f689cca5d78f
+ tests/fdc-test.c |    5 +----
+ tests/ide-test.c |    3 ---
+ tests/libqtest.c |    8 ++++++++
+ 3 files changed, 9 insertions(+), 7 deletions(-)
 
-Is there a reason not to do the same for -vnc none?
-That would consolidate the #ifdef'ery to one central point.
+diff --git a/tests/fdc-test.c b/tests/fdc-test.c
+index 38b5b17..37096dc 100644
+--- a/tests/fdc-test.c
++++ b/tests/fdc-test.c
+@@ -518,7 +518,6 @@ static void fuzz_registers(void)
+ int main(int argc, char **argv)
+ {
+     const char *arch = qtest_get_arch();
+-    char *cmdline;
+     int fd;
+     int ret;
+ 
+@@ -538,9 +537,7 @@ int main(int argc, char **argv)
+     /* Run the tests */
+     g_test_init(&argc, &argv, NULL);
+ 
+-    cmdline = g_strdup_printf("-vnc none ");
+-
+-    qtest_start(cmdline);
++    qtest_start(NULL);
+     qtest_irq_intercept_in(global_qtest, "ioapic");
+     qtest_add_func("/fdc/cmos", test_cmos);
+     qtest_add_func("/fdc/no_media_on_start", test_no_media_on_start);
+diff --git a/tests/ide-test.c b/tests/ide-test.c
+index d5cec5a..4a0d97f 100644
+--- a/tests/ide-test.c
++++ b/tests/ide-test.c
+@@ -380,7 +380,6 @@ static void test_bmdma_no_busmaster(void)
+ static void test_bmdma_setup(void)
+ {
+     ide_test_start(
+-        "-vnc none "
+         "-drive file=%s,if=ide,serial=%s,cache=writeback "
+         "-global ide-hd.ver=%s",
+         tmp_path, "testdisk", "version");
+@@ -410,7 +409,6 @@ static void test_identify(void)
+     int ret;
+ 
+     ide_test_start(
+-        "-vnc none "
+         "-drive file=%s,if=ide,serial=%s,cache=writeback "
+         "-global ide-hd.ver=%s",
+         tmp_path, "testdisk", "version");
+@@ -455,7 +453,6 @@ static void test_flush(void)
+     uint8_t data;
+ 
+     ide_test_start(
+-        "-vnc none "
+         "-drive file=blkdebug::%s,if=ide,cache=writeback",
+         tmp_path);
+ 
+diff --git a/tests/libqtest.c b/tests/libqtest.c
+index 359d571..921391c 100644
+--- a/tests/libqtest.c
++++ b/tests/libqtest.c
+@@ -35,6 +35,12 @@
+ 
+ #define MAX_IRQ 256
+ 
++#ifdef CONFIG_VNC
++static const char *qtest_vnc_param = "-vnc none ";
++#else
++static const char *qtest_vnc_param = NULL;
++#endif
++
+ QTestState *global_qtest;
+ 
+ struct QTestState
+@@ -136,8 +142,10 @@ QTestState *qtest_init(const char *extra_args)
+                                   "-pidfile %s "
+                                   "-machine accel=qtest "
+                                   "-display none "
++                                  "%s"
+                                   "%s", qemu_binary, s->socket_path,
+                                   s->qmp_socket_path, pid_file,
++                                  qtest_vnc_param ?: "",
+                                   extra_args ?: "");
+         execlp("/bin/sh", "sh", "-c", command, NULL);
+         exit(1);
+-- 
+1.7.1
 
-Regards,
-Andreas
-
-> diff --git a/tests/ide-test.c b/tests/ide-test.c
-> index d5cec5a..da9e8dd 100644
-> --- a/tests/ide-test.c
-> +++ b/tests/ide-test.c
-> @@ -377,10 +377,15 @@ static void test_bmdma_no_busmaster(void)
->      assert_bit_clear(inb(IDE_BASE + reg_status), DF | ERR);
->  }
-> =20
-> +#ifdef CONFIG_VNC
-> +#define QTEST_VNC_PARAM    "-vnc none ";
-> +#else
-> +#define QTEST_VNC_PARAM
-> +#endif
->  static void test_bmdma_setup(void)
->  {
->      ide_test_start(
-> -        "-vnc none "
-> +        QTEST_VNC_PARAM
->          "-drive file=3D%s,if=3Dide,serial=3D%s,cache=3Dwriteback "
->          "-global ide-hd.ver=3D%s",
->          tmp_path, "testdisk", "version");
-> @@ -410,7 +415,7 @@ static void test_identify(void)
->      int ret;
-> =20
->      ide_test_start(
-> -        "-vnc none "
-> +        QTEST_VNC_PARAM
->          "-drive file=3D%s,if=3Dide,serial=3D%s,cache=3Dwriteback "
->          "-global ide-hd.ver=3D%s",
->          tmp_path, "testdisk", "version");
-> @@ -455,7 +460,7 @@ static void test_flush(void)
->      uint8_t data;
-> =20
->      ide_test_start(
-> -        "-vnc none "
-> +        QTEST_VNC_PARAM
->          "-drive file=3Dblkdebug::%s,if=3Dide,cache=3Dwriteback",
->          tmp_path);
-> =20
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
 
