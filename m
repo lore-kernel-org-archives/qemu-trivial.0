@@ -1,44 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VyMIU-00066U-Nv
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Jan 2014 08:57:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38837)
+	id 1VyMRE-0000Zo-Pd
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Jan 2014 09:06:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40005)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VyMIN-0005vM-UG
-	for qemu-trivial@nongnu.org; Wed, 01 Jan 2014 08:57:21 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1VyMR7-0000PK-GQ
+	for qemu-trivial@nongnu.org; Wed, 01 Jan 2014 09:06:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1VyMII-00077D-Is
-	for qemu-trivial@nongnu.org; Wed, 01 Jan 2014 08:57:15 -0500
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:40185)
+	(envelope-from <mjt@tls.msk.ru>) id 1VyMR1-00022i-FL
+	for qemu-trivial@nongnu.org; Wed, 01 Jan 2014 09:06:17 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:54298)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1VyMI7-000753-Al; Wed, 01 Jan 2014 08:56:59 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	F14BC7280694; Wed,  1 Jan 2014 14:56:56 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id oeTsDUEU6ISy; Wed,  1 Jan 2014 14:56:45 +0100 (CET)
-Received: from [192.168.178.35] (p54AD9219.dip0.t-ipconnect.de [84.173.146.25])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	221C3728008C; Wed,  1 Jan 2014 14:56:44 +0100 (CET)
-Message-ID: <52C41E9B.40704@weilnetz.de>
-Date: Wed, 01 Jan 2014 14:56:43 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1VyMQp-0001sV-AM; Wed, 01 Jan 2014 09:05:59 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id CDB9F40010;
+	Wed,  1 Jan 2014 18:05:50 +0400 (MSK)
+Message-ID: <52C420BE.9040206@msgid.tls.msk.ru>
+Date: Wed, 01 Jan 2014 18:05:50 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, aliguori@amazon.com
+To: Stefan Weil <sw@weilnetz.de>
 References: <1388182050-10270-1-git-send-email-mjt@msgid.tls.msk.ru>
 	<1388182050-10270-11-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1388182050-10270-11-git-send-email-mjt@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.5.2
+	<52C41E9B.40704@weilnetz.de>
+In-Reply-To: <52C41E9B.40704@weilnetz.de>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, aliguori@amazon.com
 Subject: Re: [Qemu-trivial] [PULL 10/17] target-m68k: Replace qemu_assert by
 	hw_error
 X-BeenThere: qemu-trivial@nongnu.org
@@ -52,38 +47,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Jan 2014 13:57:21 -0000
+X-List-Received-Date: Wed, 01 Jan 2014 14:06:23 -0000
 
-Am 27.12.2013 23:07, schrieb Michael Tokarev:
-> From: Stefan Weil <sw@weilnetz.de>
->
-> hw_error is already used for target-arm and target-s390x.
-> Using it for target-m68k fixes this compiler warning with Darwin because
-> hw_error is declared with QEMU_NORETURN:
->
-> target-m68k/translate.c:671:13: warning:
->  variable 'offset' is used uninitialized whenever switch default is taken
->  [-Wsometimes-uninitialized]
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->  target-m68k/translate.c |   28 +++++++++-------------------
->  1 file changed, 9 insertions(+), 19 deletions(-)
->
+01.01.2014 17:56, Stefan Weil wrote:
+> I'm sorry that I have to revoke this patch.
 
-Hi,
+Ow.  Removed from the trivial-patches git tree.
 
-I'm sorry that I have to revoke this patch.
-
-hw_error is not available for user mode, so this patch fixes Darwin
-(which only provides system emulation), but it breaks linking of
-m68k-linux-user on Linux hosts.
-
-target-arm and target-s390x use hw_error in conditional code which is
-not compiled for user emulation, so they don't have this problem.
-
-Regards
-Stefan
-
+/mjt
 
