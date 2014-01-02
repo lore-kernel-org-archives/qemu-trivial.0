@@ -1,44 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1VyZb4-0006DT-8I
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Jan 2014 23:09:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36434)
+	id 1VydSn-0005GN-Bs
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jan 2014 03:17:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34149)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1VyZax-0005u6-Rr
-	for qemu-trivial@nongnu.org; Wed, 01 Jan 2014 23:09:24 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1VydSd-000547-S3
+	for qemu-trivial@nongnu.org; Thu, 02 Jan 2014 03:17:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1VyZat-00025c-1q
-	for qemu-trivial@nongnu.org; Wed, 01 Jan 2014 23:09:19 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:10362)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1VydSW-0000pI-Ib
+	for qemu-trivial@nongnu.org; Thu, 02 Jan 2014 03:16:59 -0500
+Received: from mail-ee0-f54.google.com ([74.125.83.54]:50213)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>)
-	id 1VyZaj-00024w-7c; Wed, 01 Jan 2014 23:09:05 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s02492lb009854
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 1 Jan 2014 23:09:02 -0500
-Received: from localhost (ovpn-112-17.ams2.redhat.com [10.36.112.17])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s0248whs018584; Wed, 1 Jan 2014 23:09:00 -0500
-Date: Thu, 2 Jan 2014 12:08:56 +0800
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
-Message-ID: <20140102040856.GB17904@stefanha-thinkpad.redhat.com>
-References: <1388393215-27511-1-git-send-email-keweihk@gmail.com>
-	<52C20D76.7060301@suse.de>
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1VydSH-0000ZP-OJ; Thu, 02 Jan 2014 03:16:37 -0500
+Received: by mail-ee0-f54.google.com with SMTP id e51so5217200eek.41
+	for <multiple recipients>; Thu, 02 Jan 2014 00:16:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=4A6jZCejNv8S9aMFH34f/HknZum0MY7F/WuEafRzihc=;
+	b=gh1kKaNlkFX+1MJ4DXx/15SGNxd3x9aLbb8ruVQGU+yoyZ7cBmLrFIQEFbyot7au/W
+	u5vUB8tiUpCMdrY1EAAvq0RKhVXow9sALOlKlT52sUbBPCpf7hF6sWgYBGr74aeQpuq4
+	/HlrHcseWvA1sVBZpdzHyE6O9k9FVCIrIwRDLgWwF9NleXA5AAmH22WL1nNuk+P6PRuw
+	U2ELIqFH3nqgr05z8fbcFz8LJrZT4/DIehl2ZE2sfhMv7nHmdOsAQH6AGnu4fZWb4Uax
+	IpseOoENI1TrWOa8BTEqfoltP77XE6KH8zSTlqMwRxeq1ML7tL3D0NM8kU0YgGygWw3X
+	ztYA==
+X-Received: by 10.14.208.199 with SMTP id q47mr14301909eeo.77.1388650561473;
+	Thu, 02 Jan 2014 00:16:01 -0800 (PST)
+Received: from yakj.usersys.redhat.com
+	(net-37-117-131-111.cust.dsl.vodafone.it. [37.117.131.111])
+	by mx.google.com with ESMTPSA id
+	p45sm133838739eeg.1.2014.01.02.00.15.58 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Thu, 02 Jan 2014 00:15:59 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <52C5203F.1030408@redhat.com>
+Date: Thu, 02 Jan 2014 09:15:59 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130923 Thunderbird/17.0.9
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <52C20D76.7060301@suse.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	s02492lb009854
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] qtest:Fix the bug about
+To: Kewei Yu <keweihk@gmail.com>
+References: <1388464944-26911-1-git-send-email-keweihk@gmail.com>
+In-Reply-To: <1388464944-26911-1-git-send-email-keweihk@gmail.com>
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.83.54
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, stefanha@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v2 1/1] qtest: Fix the bug about
  disabling vnc causes "make check" hang
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -51,49 +62,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jan 2014 04:09:24 -0000
+X-List-Received-Date: Thu, 02 Jan 2014 08:17:07 -0000
 
-On Tue, Dec 31, 2013 at 01:19:02AM +0100, Andreas F=E4rber wrote:
-> Am 30.12.2013 09:46, schrieb Kewei Yu:
-> > When we disabling vnc from "./configure", the qemu can't use the vnc =
-option.
-> > So qtest can't use the "vnc -none ", otherwise "make check" will hang.
-> >=20
-> > Signed-off-by: Kewei Yu <keweihk@gmail.com>
-> > ---
-> >  tests/fdc-test.c |    4 ++++
-> >  tests/ide-test.c |   11 ++++++++---
-> >  2 files changed, 12 insertions(+), 3 deletions(-)
-> >=20
-> > diff --git a/tests/fdc-test.c b/tests/fdc-test.c
-> > index 38b5b17..80dbdfb 100644
-> > --- a/tests/fdc-test.c
-> > +++ b/tests/fdc-test.c
-> > @@ -538,7 +538,11 @@ int main(int argc, char **argv)
-> >      /* Run the tests */
-> >      g_test_init(&argc, &argv, NULL);
-> > =20
-> > +#ifdef CONFIG_VNC
-> >      cmdline =3D g_strdup_printf("-vnc none ");
-> > +#else
-> > +    cmdline =3D NULL;
-> > +#endif
-> > =20
-> >      qtest_start(cmdline);
-> >      qtest_irq_intercept_in(global_qtest, "ioapic");
->=20
-> I have already made -display none a default used by all qtests.
-> http://git.qemu.org/?p=3Dqemu.git;a=3Dcommit;h=3D2ad645d2854746b55ddfd1=
-d8e951f689cca5d78f
->=20
-> Is there a reason not to do the same for -vnc none?
-> That would consolidate the #ifdef'ery to one central point.
+Il 31/12/2013 05:42, Kewei Yu ha scritto:
+> When we disabling vnc from "./configure", the qemu can't use the vnc option.
+> So qtest can't use the "vnc -none ", otherwise "make check" will hang.
+> 
+> Signed-off-by: Kewei Yu <keweihk@gmail.com>
+> ---
+>  v2: Consolidate VNC macro's #ifdef'ery to one central point (tests/libqtest.c).
 
-Agreed, let's set -vnc none by default in one place (if enabled by
-./configure).
+What happens if qtest instead uses "-display none"?
 
-I wonder if we should use -nodefaults too?  That may require adding some
-new options to explicitly set up devices used by existing tests.
-
-Stefan
+Paolo
 
