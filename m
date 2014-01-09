@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W1Fk3-00028S-2e
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Jan 2014 08:33:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59403)
+	id 1W1Hjr-0004II-LH
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Jan 2014 10:41:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37118)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1W1Fjw-0001z3-TB
-	for qemu-trivial@nongnu.org; Thu, 09 Jan 2014 08:33:45 -0500
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1W1Hjk-0004HP-CV
+	for qemu-trivial@nongnu.org; Thu, 09 Jan 2014 10:41:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1W1Fjs-0006ha-EB
-	for qemu-trivial@nongnu.org; Thu, 09 Jan 2014 08:33:40 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:19512)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1W1Hjf-0005Q5-CP
+	for qemu-trivial@nongnu.org; Thu, 09 Jan 2014 10:41:36 -0500
+Received: from mail-wi0-f182.google.com ([209.85.212.182]:47986)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1W1Fjh-0006g9-Ch; Thu, 09 Jan 2014 08:33:25 -0500
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s09DXMYA017429
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 9 Jan 2014 08:33:22 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-40.ams2.redhat.com
-	[10.36.116.40])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s09DXKHY016487
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 9 Jan 2014 08:33:21 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 683DC200CD; Thu,  9 Jan 2014 14:33:19 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>
-References: <1388393215-27511-1-git-send-email-keweihk@gmail.com>
-	<52C20D76.7060301@suse.de>
-	<20140102040856.GB17904@stefanha-thinkpad.redhat.com>
-	<8761pw2i6o.fsf@blackfin.pond.sub.org> <52CBE6AB.1060400@suse.de>
-Date: Thu, 09 Jan 2014 14:33:19 +0100
-In-Reply-To: <52CBE6AB.1060400@suse.de> ("Andreas =?utf-8?Q?F=C3=A4rber=22?=
-	=?utf-8?Q?'s?= message of "Tue, 07 Jan 2014 12:36:11 +0100")
-Message-ID: <87ha9de0v4.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1W1Hjf-0005NT-7S
+	for qemu-trivial@nongnu.org; Thu, 09 Jan 2014 10:41:31 -0500
+Received: by mail-wi0-f182.google.com with SMTP id en1so3630341wid.15
+	for <qemu-trivial@nongnu.org>; Thu, 09 Jan 2014 07:41:29 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=FojM2nRfgfgt4K8EHQgENze8uU7v/Wn/clB4+S3iTbo=;
+	b=F86ss062DySYoyKqENiEtJABzsru7hvzK1HaBwkD2bIAnoATsbti8VCW2jAGBIOQgS
+	foiH//ZEWwy69Bveo+WBtGituxt5Zu7BfzGYcBxZSMRokKp9YdK12JeunuL/RtrjyMfe
+	yFlZT2RcSzsj5GmA4YG66j1De/r7QAdpnahRKaiEpvBGRiTCZ2dX5BeOYLMD4sZtLFKa
+	g+tUadtASCE28GGN0jAJ2Xe/PVE14k4szyMNb7Mf15g8yepusClP7bujL6ej4ZZC77ld
+	og3SIgAnOBzE7hSUQVYbfAzJRB3XE7lvUPBkJHCQmHYdnE1BVbFYRTlFpx75FokvVJwt
+	QAbQ==
+X-Gm-Message-State: ALoCoQlAQ2kIX+SmYqj6Od+7l6Ky4p0dfvDVQ3v5/FRcLOZv/BY3nCCbT/h7VGBPdl1jyK9VMCbU
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>, mst@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] qtest:Fix the bug about
-	disabling vnc causes "make check" hang
+X-Received: by 10.180.76.103 with SMTP id j7mr3852682wiw.58.1389282089667;
+	Thu, 09 Jan 2014 07:41:29 -0800 (PST)
+Sender: peter.crosthwaite@petalogix.com
+Received: by 10.227.13.9 with HTTP; Thu, 9 Jan 2014 07:41:29 -0800 (PST)
+In-Reply-To: <20140109095816.409cd2a9@redhat.com>
+References: <20140109095816.409cd2a9@redhat.com>
+Date: Fri, 10 Jan 2014 01:41:29 +1000
+X-Google-Sender-Auth: kLp8jD_XhXDXoWr9ZYg3tOX7qeM
+Message-ID: <CAEgOgz7rTzxU9MSbRiWzU2CgZiHfH3drSe5tOuY7v-u=84v7Yw@mail.gmail.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: Luiz Capitulino <lcapitulino@redhat.com>,
+	qemu-trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.212.182
+Cc: qemu-devel <qemu-devel@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtio-balloon: don't
+	hardcode config size value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,59 +57,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Jan 2014 13:33:45 -0000
+X-List-Received-Date: Thu, 09 Jan 2014 15:41:41 -0000
 
-Andreas F=C3=A4rber <afaerber@suse.de> writes:
+On Fri, Jan 10, 2014 at 12:58 AM, Luiz Capitulino
+<lcapitulino@redhat.com> wrote:
+> Use sizeof(strucy virtio_balloon_config) instead.
+>
 
-> Am 07.01.2014 11:35, schrieb Markus Armbruster:
->> Stefan Hajnoczi <stefanha@redhat.com> writes:
->>> On Tue, Dec 31, 2013 at 01:19:02AM +0100, Andreas F=C3=A4rber wrote:
->>>> Am 30.12.2013 09:46, schrieb Kewei Yu:
->>>>> diff --git a/tests/fdc-test.c b/tests/fdc-test.c
->>>>> index 38b5b17..80dbdfb 100644
->>>>> --- a/tests/fdc-test.c
->>>>> +++ b/tests/fdc-test.c
->>>>> @@ -538,7 +538,11 @@ int main(int argc, char **argv)
->>>>>      /* Run the tests */
->>>>>      g_test_init(&argc, &argv, NULL);
->>>>>=20=20
->>>>> +#ifdef CONFIG_VNC
->>>>>      cmdline =3D g_strdup_printf("-vnc none ");
->>>>> +#else
->>>>> +    cmdline =3D NULL;
->>>>> +#endif
->>>>>=20=20
->>>>>      qtest_start(cmdline);
->>>>>      qtest_irq_intercept_in(global_qtest, "ioapic");
->>>>
->>>> I have already made -display none a default used by all qtests.
->>>> http://git.qemu.org/?p=3Dqemu.git;a=3Dcommit;h=3D2ad645d2854746b55ddfd=
-1d8e951f689cca5d78f
->>>>
->>>> Is there a reason not to do the same for -vnc none?
->>>> That would consolidate the #ifdef'ery to one central point.
->>>
->>> Agreed, let's set -vnc none by default in one place (if enabled by
->>> ./configure).
->>>
->>> I wonder if we should use -nodefaults too?  That may require adding some
->>> new options to explicitly set up devices used by existing tests.
->>=20
->> Try and see what explodes?
->
-> I fear that will render my qom-test useless, which is supposed to test
-> our defaults. If -nodefaults drops serial ports, floppy drives, etc.
-> that will reduce its usefulness. Unless of course we find a way to
-> override -nodefaults with some generic -defaults options. :)
-> I haven't noticed anyone actually adding qtests along with new machines,
-> adding them to qom-test already required some poking of mine.
->
-> End of last year I was preparing some qtests for optional PCI devices,
-> but even such stubs are hard to share across multiple shoulders due to
-> resulting Makefile conflicts...
->
-> Andreas
+"struct".
 
-(Loosely) related: should we set QEMU_AUDIO_DRV=3Dnone to stop the "audio:
-Could not init `oss' audio driver" complaints?
+> Signed-off-by: Luiz capitulino <lcapitulino@redhat.com>
+
+Otherwise:
+
+Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+
+> ---
+>
+> I have no idea which queue this should go through...
+>
+
+Trivial?
+
+Regards,
+Peter
+
+>  hw/virtio/virtio-balloon.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/virtio/virtio-balloon.c b/hw/virtio/virtio-balloon.c
+> index d9754db..a470a0b 100644
+> --- a/hw/virtio/virtio-balloon.c
+> +++ b/hw/virtio/virtio-balloon.c
+> @@ -263,7 +263,7 @@ static void virtio_balloon_get_config(VirtIODevice *vdev, uint8_t *config_data)
+>      config.num_pages = cpu_to_le32(dev->num_pages);
+>      config.actual = cpu_to_le32(dev->actual);
+>
+> -    memcpy(config_data, &config, 8);
+> +    memcpy(config_data, &config, sizeof(struct virtio_balloon_config));
+>  }
+>
+>  static void virtio_balloon_set_config(VirtIODevice *vdev,
+> @@ -272,7 +272,7 @@ static void virtio_balloon_set_config(VirtIODevice *vdev,
+>      VirtIOBalloon *dev = VIRTIO_BALLOON(vdev);
+>      struct virtio_balloon_config config;
+>      uint32_t oldactual = dev->actual;
+> -    memcpy(&config, config_data, 8);
+> +    memcpy(&config, config_data, sizeof(struct virtio_balloon_config));
+>      dev->actual = le32_to_cpu(config.actual);
+>      if (dev->actual != oldactual) {
+>          qemu_balloon_changed(ram_size -
+> @@ -343,7 +343,8 @@ static void virtio_balloon_device_realize(DeviceState *dev, Error **errp)
+>      VirtIOBalloon *s = VIRTIO_BALLOON(dev);
+>      int ret;
+>
+> -    virtio_init(vdev, "virtio-balloon", VIRTIO_ID_BALLOON, 8);
+> +    virtio_init(vdev, "virtio-balloon", VIRTIO_ID_BALLOON,
+> +                sizeof(struct virtio_balloon_config));
+>
+>      ret = qemu_add_balloon_handler(virtio_balloon_to_target,
+>                                     virtio_balloon_stat, s);
+> --
+> 1.8.1.4
+>
+>
 
