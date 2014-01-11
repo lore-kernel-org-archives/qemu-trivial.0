@@ -1,51 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W1sva-0001Dq-Su
-	for mharc-qemu-trivial@gnu.org; Sat, 11 Jan 2014 02:24:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53718)
+	id 1W22YK-0002o9-Nl
+	for mharc-qemu-trivial@gnu.org; Sat, 11 Jan 2014 12:40:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56711)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gsomlo@gmail.com>) id 1W1k05-0001L7-PE
-	for qemu-trivial@nongnu.org; Fri, 10 Jan 2014 16:52:27 -0500
+	(envelope-from <pavel.zbitskiy@gmail.com>) id 1W1uyU-0002Th-UI
+	for qemu-trivial@nongnu.org; Sat, 11 Jan 2014 04:35:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gsomlo@gmail.com>) id 1W1k00-0002S8-7g
-	for qemu-trivial@nongnu.org; Fri, 10 Jan 2014 16:52:21 -0500
-Received: from mail-qa0-x236.google.com ([2607:f8b0:400d:c00::236]:54864)
+	(envelope-from <pavel.zbitskiy@gmail.com>) id 1W1uyM-0004Kr-G5
+	for qemu-trivial@nongnu.org; Sat, 11 Jan 2014 04:35:26 -0500
+Received: from mail-la0-x22f.google.com ([2a00:1450:4010:c03::22f]:56959)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gsomlo@gmail.com>)
-	id 1W1jzm-0002O2-SW; Fri, 10 Jan 2014 16:52:02 -0500
-Received: by mail-qa0-f54.google.com with SMTP id j7so4681108qaq.27
-	for <multiple recipients>; Fri, 10 Jan 2014 13:52:02 -0800 (PST)
+	(envelope-from <pavel.zbitskiy@gmail.com>)
+	id 1W1uy5-000479-GA; Sat, 11 Jan 2014 04:35:01 -0500
+Received: by mail-la0-f47.google.com with SMTP id eh20so1697822lab.20
+	for <multiple recipients>; Sat, 11 Jan 2014 01:34:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:mime-version:content-type
-	:content-disposition:user-agent;
-	bh=8QTj3w8NOfWnXUsK1+hM0mdnMzmz0FfOtuphPUC23FM=;
-	b=vF66o0h0USlqc43CsxYPvQRzUbhLpA/4fZbzy3f+Zafrs9IEl4j4U0QqVatsd0kuXj
-	eOP/c/HO6U0MIK4VquOn9sBJWSZYHH7t4dtIloyG7BA/J9UXTwxnvZvd6Q1KXM+2tz7N
-	pmFLRgFUT8lsfMFaq4YYc8seYeCZLgUYJeaoYkkXA1HACQONdz3Gt11HJ31fH6okERmg
-	Xmr/F8tJCaKP9m8K2fQyBe4l1cwzTNaoJIGkq2ET1DVbruU5uMzJwR0OCKKG28/nUthh
-	j99tIbHtS5rReLHwTUlwHOMm2owzPFrQ79Nr69GLY2PZlJiChfQq3DIUd4WGd1Z8/3e5
-	mRcw==
-X-Received: by 10.224.172.9 with SMTP id j9mr4983078qaz.96.1389390721951;
-	Fri, 10 Jan 2014 13:52:01 -0800 (PST)
-Received: from ERROL.INI.CMU.EDU (ERROL.INI.CMU.EDU. [128.2.16.43])
-	by mx.google.com with ESMTPSA id o5sm15041020qeg.2.2014.01.10.13.52.01
+	h=from:to:cc:subject:date:message-id;
+	bh=aqnFBVeopVY0zhZHNciJmIBl0RS3GPShIhL6AYXnkyM=;
+	b=I7KN0XD2uqV2IiMs51SGe7v2bd3g1Qm6U8KEjuZpWZ0VFsdHLK0ttRyB/Zv67wUx3m
+	sKaOBLlipBW5sF1+W2/qoSR+Q2vll/z4d7sTvJYFnJ/CbhVOZBUgWlUsG/Ns7nmbFA4I
+	Au6+OPwns2qLvCAl8+7NXD0+ttNI5OMweiYQ+d5mL7OwCWBL9nKaxPhGz3gyCnLEzEKv
+	Z1WIwtT2DRZoNfvabfEG+rUJaTAhnZJ002mZkKaP7c4gRfQC/hk2iJlQlc7vBXY4a1bA
+	oNYUm7ywCd2xpwbwvqLJZQB0PWNJ/RgUai4Z7kQ7j9QPFf7wInwOzZgN6cAxZ28lj/iX
+	c+QQ==
+X-Received: by 10.152.4.230 with SMTP id n6mr5568406lan.1.1389432899873;
+	Sat, 11 Jan 2014 01:34:59 -0800 (PST)
+Received: from localhost.localdomain ([188.244.44.2])
+	by mx.google.com with ESMTPSA id qx1sm5082926lbb.15.2014.01.11.01.34.59
 	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Fri, 10 Jan 2014 13:52:01 -0800 (PST)
-Date: Fri, 10 Jan 2014 16:51:49 -0500
-From: "Gabriel L. Somlo" <gsomlo@gmail.com>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Sat, 11 Jan 2014 01:34:59 -0800 (PST)
+From: pavel.zbitskiy@gmail.com
 To: qemu-devel@nongnu.org
-Message-ID: <20140110215148.GE1276@ERROL.INI.CMU.EDU>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Date: Sat, 11 Jan 2014 13:34:08 +0400
+Message-Id: <1389432851-11420-1-git-send-email-pavel.zbitskiy@gmail.com>
+X-Mailer: git-send-email 1.8.1.2
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c00::236
-X-Mailman-Approved-At: Sat, 11 Jan 2014 02:24:18 -0500
+X-Received-From: 2a00:1450:4010:c03::22f
+X-Mailman-Approved-At: Sat, 11 Jan 2014 12:40:55 -0500
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Include bios-256k.bin blob during "make
-	install"
+Subject: [Qemu-trivial] [PATCH 0/3] Fix networking for s390x-user
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,27 +52,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jan 2014 21:52:27 -0000
+X-List-Received-Date: Sat, 11 Jan 2014 09:35:35 -0000
 
-Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
----
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Pavel Zbitskiy (3):
+  linux-user: fixed s390x clone() argument order
+  linux-user: fixed getsockopt() optlen
+  linux-user: fixed recvfrom() addrlen
 
-diff --git a/Makefile b/Makefile
-index bdff4e4..807054b 100644
---- a/Makefile
-+++ b/Makefile
-@@ -290,7 +290,7 @@ common  de-ch  es     fo  fr-ca  hu     ja  mk  nl-be      pt  sl     tr \
- bepo    cz
- 
- ifdef INSTALL_BLOBS
--BLOBS=bios.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
-+BLOBS=bios.bin bios-256k.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
- vgabios-stdvga.bin vgabios-vmware.bin vgabios-qxl.bin \
- acpi-dsdt.aml q35-acpi-dsdt.aml \
- ppc_rom.bin openbios-sparc32 openbios-sparc64 openbios-ppc QEMU,tcx.bin \
--- 
-1.8.1.4
+ linux-user/s390x/syscall.h | 2 +-
+ linux-user/syscall.c       | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
 
 
