@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W1N9Q-00067n-DC
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Jan 2014 16:28:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38053)
+	id 1W1m7C-0002jW-5n
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2014 19:07:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48954)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <0intro@gmail.com>) id 1W1N9O-00067g-9D
-	for qemu-trivial@nongnu.org; Thu, 09 Jan 2014 16:28:27 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1W1m76-0002cc-3l
+	for qemu-trivial@nongnu.org; Fri, 10 Jan 2014 19:07:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <0intro@gmail.com>) id 1W1N9N-0004Uw-GH
-	for qemu-trivial@nongnu.org; Thu, 09 Jan 2014 16:28:26 -0500
-Received: from mail-wi0-x235.google.com ([2a00:1450:400c:c05::235]:54388)
+	(envelope-from <peter.maydell@linaro.org>) id 1W1m71-0004RJ-OO
+	for qemu-trivial@nongnu.org; Fri, 10 Jan 2014 19:07:44 -0500
+Received: from mail-lb0-f176.google.com ([209.85.217.176]:54625)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <0intro@gmail.com>) id 1W1N9N-0004Uq-91
-	for qemu-trivial@nongnu.org; Thu, 09 Jan 2014 16:28:25 -0500
-Received: by mail-wi0-f181.google.com with SMTP id hq4so4064570wib.2
-	for <qemu-trivial@nongnu.org>; Thu, 09 Jan 2014 13:28:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:subject:message-id:in-reply-to:references:mime-version
-	:content-type:content-transfer-encoding;
-	bh=u4X50cNoszVPc/Pnoyv97u7AMKPfMUpakU2O6uY93es=;
-	b=UzRSplR/olvQM1w+qQH8C8MbxOB1b6svJB4JgHfuDQZUEcthUbrabdvqKJ6YFvGIhZ
-	B6k+TzmZN3EuCPfzNeVMBMWVOwgAIhXVbHbuGWhq+6+3LCbIvXCZSNfShz26W/6qG6sC
-	/baBCw/Mf1Ll3mRhjkXp5hY+lonoFy+OchHSet770BJe92MXK81zFvvx27i9C5NYmd8Q
-	8wnaiBMvTmcKDK0Si3zEI1l2DDh9c0ejc4JcTbdC2oot8uE/LtDDAaoSB8cPzP+IMhhC
-	V2SuQ9EeH8ZzGW+falkffPQRx279n7s8lhq66W5BG3rlssU1b1ZLodFifQmP2UeHv/Ok
-	o4RQ==
-X-Received: by 10.180.12.115 with SMTP id x19mr28406714wib.49.1389302903642;
-	Thu, 09 Jan 2014 13:28:23 -0800 (PST)
-Received: from zinc.9fans.fr ([2001:470:cce3:200:a288:b4ff:fe18:d06c])
-	by mx.google.com with ESMTPSA id z2sm9558957wiy.11.2014.01.09.13.28.22
-	for <qemu-trivial@nongnu.org>
-	(version=SSLv3 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Thu, 09 Jan 2014 13:28:23 -0800 (PST)
-Date: Thu, 9 Jan 2014 22:28:19 +0100
-From: David du Colombier <0intro@gmail.com>
-To: qemu-trivial@nongnu.org
-Message-ID: <20140109222819.7bcf055a@zinc.9fans.fr>
-In-Reply-To: <1387981063-14880-1-git-send-email-0intro@gmail.com>
-References: <1387981063-14880-1-git-send-email-0intro@gmail.com>
-X-Mailer: Claws Mail 3.9.2 (GTK+ 2.24.22; x86_64-redhat-linux-gnu)
-Mime-Version: 1.0
+	(envelope-from <peter.maydell@linaro.org>) id 1W1m71-0004RA-HL
+	for qemu-trivial@nongnu.org; Fri, 10 Jan 2014 19:07:39 -0500
+Received: by mail-lb0-f176.google.com with SMTP id l4so3885844lbv.35
+	for <qemu-trivial@nongnu.org>; Fri, 10 Jan 2014 16:07:38 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=5vJU/BCjjDD+rJ5xoXvxH0enoDmBH8isf5AyQajRKRI=;
+	b=XCGSu2fJXVUzAe797USnlVysYF1zCL9T6LSEff6uYSkMuC9BCghv5gsy829gpFSQWd
+	n86Vbh+ErFtENxNbQrPE7lV20lJPnelkH70/j/qal8ppT7O5d3jn19te2lV396tNA6kF
+	F6vY2Hr6E6BwnAH+XjY9hpAlDnLTg5XivzSwPvSVWGttDXpf+geRYn2ls0i1BRUgTkw3
+	4SmwfKfN3gyXbwKwng8L4wiJtKCOwTw9yiAPl42/4iMupASgnkRl6s2e6rgHu5SmP9vC
+	NTCTTlLXFlrmMHLQ+vyhaducpJ8WSKNF+e45Y/YArPEMQKGw8JoqlNsLTOPkb2yIC6R2
+	wPfg==
+X-Gm-Message-State: ALoCoQkYdsJx4IDZbrRyoMAK7Qm2v2KzJGwWdZm+xCDiPwzmFLRwlRuDs3Eb91erFOMEK5TDBdjB
+X-Received: by 10.112.53.201 with SMTP id d9mr4792329lbp.26.1389398858589;
+	Fri, 10 Jan 2014 16:07:38 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.112.125.3 with HTTP; Fri, 10 Jan 2014 16:07:18 -0800 (PST)
+In-Reply-To: <20140110215148.GE1276@ERROL.INI.CMU.EDU>
+References: <20140110215148.GE1276@ERROL.INI.CMU.EDU>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 11 Jan 2014 00:07:18 +0000
+Message-ID: <CAFEAcA9FOA7OsODB08Jot==mHRzFAadx4zQehnKkkAGwaH4d2Q@mail.gmail.com>
+To: "Gabriel L. Somlo" <gsomlo@gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::235
-Subject: Re: [Qemu-trivial] [PATCH] ide: cmd_exec_dev_diagnostic() always
- set error register to 0x01
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.176
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Anthony Liguori <anthony@codemonkey.ws>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Include bios-256k.bin blob
+	during "make install"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,36 +56,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Jan 2014 21:28:27 -0000
+X-List-Received-Date: Sat, 11 Jan 2014 00:07:48 -0000
 
-> This notably fix IDE CD probing on the Plan 9 operating system,
-> which rely on the error register set by the Execute Device
-> Diagnostic command to detect drive configurations.
->=20
-> Thanks to R=C3=A9mi Pommarel for reporting this issue.
->=20
-> Signed-off-by: David du Colombier <0intro@gmail.com>
+On 10 January 2014 21:51, Gabriel L. Somlo <gsomlo@gmail.com> wrote:
+> Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
 > ---
->  hw/ide/core.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/hw/ide/core.c b/hw/ide/core.c
-> index e1f4c33..7783d58 100644
-> --- a/hw/ide/core.c
-> +++ b/hw/ide/core.c
-> @@ -1321,6 +1321,7 @@ static bool cmd_exec_dev_diagnostic(IDEState
-> *s, uint8_t cmd) s->status =3D 0; /* ATAPI spec (v6) section 9.10
-> defines packet
->                          * devices to return a clear status register
->                          * with READY_STAT *not* set. */
-> +        s->error =3D 0x01;
->      } else {
->          s->status =3D READY_STAT | SEEK_STAT;
->          /* The bits of the error register are not as usual for this
-> command!
+>  Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/Makefile b/Makefile
+> index bdff4e4..807054b 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -290,7 +290,7 @@ common  de-ch  es     fo  fr-ca  hu     ja  mk  nl-be      pt  sl     tr \
+>  bepo    cz
+>
+>  ifdef INSTALL_BLOBS
+> -BLOBS=bios.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
+> +BLOBS=bios.bin bios-256k.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
 
-Ping.
+We've now seen this patch four times from four different people.
+Previously:
+http://lists.gnu.org/archive/html/qemu-devel/2013-12/msg01612.html
+https://lists.gnu.org/archive/html/qemu-devel/2014-01/msg00401.html
+https://lists.gnu.org/archive/html/qemu-devel/2014-01/msg01036.html
 
---=20
-David du Colombier
+Could somebody apply Eduardo's patch from December before
+we get a fifth version? :-)
+
+thanks
+-- PMM
 
