@@ -1,50 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W2QNw-0005re-Tj
-	for mharc-qemu-trivial@gnu.org; Sun, 12 Jan 2014 14:07:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39460)
+	id 1W2ZzD-0000qk-C5
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2014 00:22:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60732)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1W2QNq-0005hw-7E
-	for qemu-trivial@nongnu.org; Sun, 12 Jan 2014 14:07:48 -0500
+	(envelope-from <stefanha@gmail.com>) id 1W2Zz6-0000iY-Eq
+	for qemu-trivial@nongnu.org; Mon, 13 Jan 2014 00:22:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1W2QNk-0006oX-94
-	for qemu-trivial@nongnu.org; Sun, 12 Jan 2014 14:07:42 -0500
-Received: from mail-la0-f41.google.com ([209.85.215.41]:42713)
+	(envelope-from <stefanha@gmail.com>) id 1W2Zz1-0000lD-4h
+	for qemu-trivial@nongnu.org; Mon, 13 Jan 2014 00:22:48 -0500
+Received: from mail-ee0-x22e.google.com ([2a00:1450:4013:c00::22e]:49007)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1W2QNk-0006oO-28
-	for qemu-trivial@nongnu.org; Sun, 12 Jan 2014 14:07:36 -0500
-Received: by mail-la0-f41.google.com with SMTP id mc6so793537lab.28
-	for <qemu-trivial@nongnu.org>; Sun, 12 Jan 2014 11:07:35 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=7P2dFKKKS1l5teukF1Hm2iQRursfKd3iDcr/WEGW0vQ=;
-	b=SXGQZhDfoe5L2yG673FbV/qYk7d4O2KL8qz/0d2Mc7IC5T9Es6lH0gA6ZQ1s/wmFVY
-	YSkEiiJL9VpxXqdJXS3FlrosuI0pviFZgyqesxRcP2WpvNE24DThjNkI5tgtl6CXWNcq
-	UMvPeQ3QFRzDcoQL4C/vFBfgMMlfsModC6xHSVEXhX+RfASzHCzZ8crI7OYWvjs3DJwq
-	ecfcP3vGs6cXiSzes5uihycza+vWzh+XCKC7+3jU2cL7o3dpX01jGrrljUwz7x6nUAq7
-	jyQAD667Xmb2UJ/E5nGbiYiVG+XTJhCOs75ib7We+H2/fQNLomhBMrdgFAoCyrQhbBIT
-	ckiQ==
-X-Gm-Message-State: ALoCoQmhSnsLj0WFYRcjVqCAV/LbeTtxqJ+0DZrJAKlPQWMul3l6nSA/16QXjkzAbNcOdeMuvRp7
-X-Received: by 10.112.135.67 with SMTP id pq3mr2135600lbb.65.1389553655083;
-	Sun, 12 Jan 2014 11:07:35 -0800 (PST)
+	(envelope-from <stefanha@gmail.com>)
+	id 1W2Zyp-0000h1-Vg; Mon, 13 Jan 2014 00:22:32 -0500
+Received: by mail-ee0-f46.google.com with SMTP id d49so2911018eek.33
+	for <multiple recipients>; Sun, 12 Jan 2014 21:22:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=C2n5jOKOQWq28Fd/80GqtZa4QFo/i0xcHVDzfxKvDLs=;
+	b=kb9+guOsDcw8M6DjceCu3dIrfHtfN6gvUIHwT1oQjEnlErwYwUC9h5lgS58oHCpqVF
+	bmqEnVlR77Jr7+bovOcuKfBVltzsRYDaSr2SyDZ2dxgKu/WU7TcKMSGV04ND3fisDj9I
+	B60Un+xtBQsqr+0Q5vJj0u5Ay/SEbgTfN/Dd0elIOnzVDs1jByBapr9muLtWI9sgQtxF
+	Z5De4R2VIEd31iuUNDJcL8EGY0IqlTOi9lwTwtJqSUSn9JOHgA13G/qXnU4QKg1UfwIq
+	BhmxZ+Jck75GIvvh3meIvf1p7vMLe5+8HXTiuvHwvI3+qyR0Mb0jR+PH6E6VQgmFcJd+
+	nySw==
+X-Received: by 10.14.198.195 with SMTP id v43mr9501435een.62.1389590551102;
+	Sun, 12 Jan 2014 21:22:31 -0800 (PST)
+Received: from localhost (42-98-41-126.static.netvigator.com. [42.98.41.126])
+	by mx.google.com with ESMTPSA id
+	7sm36387425eee.12.2014.01.12.21.22.27 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 12 Jan 2014 21:22:30 -0800 (PST)
+Date: Mon, 13 Jan 2014 13:22:23 +0800
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Hani Benhabiles <kroosec@gmail.com>
+Message-ID: <20140113052223.GB14770@stefanha-thinkpad.redhat.com>
+References: <1389292467-5570-1-git-send-email-kroosec@gmail.com>
 MIME-Version: 1.0
-Received: by 10.112.125.3 with HTTP; Sun, 12 Jan 2014 11:07:15 -0800 (PST)
-In-Reply-To: <1389432851-11420-3-git-send-email-pavel.zbitskiy@gmail.com>
-References: <1389432851-11420-1-git-send-email-pavel.zbitskiy@gmail.com>
-	<1389432851-11420-3-git-send-email-pavel.zbitskiy@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 12 Jan 2014 19:07:15 +0000
-Message-ID: <CAFEAcA9p1W5=-=e0VqJnKGJrakALT-_BCY-4GevYkd6s8JL29w@mail.gmail.com>
-To: pavel.zbitskiy@gmail.com
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.41
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] linux-user: fixed
-	getsockopt() optlen
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1389292467-5570-1-git-send-email-kroosec@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c00::22e
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, stefanha@redhat.com,
+	aliguori@amazon.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: Use g_strdup_printf
+ instead of snprintf.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,26 +59,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 12 Jan 2014 19:07:48 -0000
+X-List-Received-Date: Mon, 13 Jan 2014 05:22:53 -0000
 
-On 11 January 2014 09:34,  <pavel.zbitskiy@gmail.com> wrote:
-> From: Pavel Zbitskiy <pavel.zbitskiy@gmail.com>
->
-> optlen parameter of getsockopt() of type socklen_t* was read into
-> variable of type socklen_t, that caused zeroing out of upper 4 bytes
-> when running s390x on top of x86_64. This patch changes optlen type
-> to abi_ulong.
+On Thu, Jan 09, 2014 at 07:34:27PM +0100, Hani Benhabiles wrote:
+> assign_name() in net/net.c is using snprintf + g_strdup to get the same
+> result as g_strdup_printf.
+> 
+> Signed-off-by: Hani Benhabiles <kroosec@gmail.com>
+> ---
+>  net/net.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 
-This patch and patch 3 are correct fixes, but shouldn't we be
-more generally using abi_ulong for every argument we read from
-the guest in do_socketcall() ?
+Thanks, applied to my net tree:
+https://github.com/stefanha/qemu/commits/net
 
-It might be nicer to fix this by having a lookup table of SOCKOP_*
-to number-of-arguments, and then hoist the get_user_ual() calls
-outside the switch() statement to fill in an 'abi_ulong args[]' array.
-Then the individual calls in the switch would just look like
-    do_socket(args[0], args[1], args[2]);
-
-thanks
--- PMM
+Stefan
 
