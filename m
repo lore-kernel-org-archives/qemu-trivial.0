@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W39BY-0004t5-IJ
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2014 13:58:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47336)
+	id 1W3AFT-00011X-27
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2014 15:06:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34885)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1W39BR-0004l0-RJ
-	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 13:57:58 -0500
+	(envelope-from <mst@redhat.com>) id 1W3AFL-0000jn-17
+	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 15:06:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1W39BM-0002qD-VY
-	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 13:57:53 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:13565)
+	(envelope-from <mst@redhat.com>) id 1W3AFE-0007OY-Ro
+	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 15:05:58 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:31153)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1W39BC-0002mU-Ok; Tue, 14 Jan 2014 13:57:39 -0500
+	(envelope-from <mst@redhat.com>)
+	id 1W3AF1-0007MW-Qc; Tue, 14 Jan 2014 15:05:40 -0500
 Received: from int-mx12.intmail.prod.int.phx2.redhat.com
 	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s0EITwZW020733
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s0EK5cEk005018
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 14 Jan 2014 13:29:59 -0500
-Received: from localhost (ovpn-113-136.phx2.redhat.com [10.3.113.136])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s0EITv0p025030; Tue, 14 Jan 2014 13:29:57 -0500
-Date: Tue, 14 Jan 2014 13:29:56 -0500
-From: Luiz Capitulino <lcapitulino@redhat.com>
+	Tue, 14 Jan 2014 15:05:38 -0500
+Received: from redhat.com (vpn1-4-212.ams2.redhat.com [10.36.4.212])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id s0EK5ZYj014101; Tue, 14 Jan 2014 15:05:36 -0500
+Date: Tue, 14 Jan 2014 22:05:35 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20140114132956.1c21c68c@redhat.com>
-In-Reply-To: <52D56E5B.9000001@msgid.tls.msk.ru>
+Message-ID: <20140114200535.GA31642@redhat.com>
 References: <20140109095816.409cd2a9@redhat.com>
 	<52D56E5B.9000001@msgid.tls.msk.ru>
-Organization: Red Hat
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <52D56E5B.9000001@msgid.tls.msk.ru>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial <qemu-trivial@nongnu.org>,
 	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	qemu-devel <qemu-devel@nongnu.org>, mst@redhat.com
+	qemu-devel <qemu-devel@nongnu.org>,
+	Luiz Capitulino <lcapitulino@redhat.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtio-balloon: don't
  hardcode config size value
 X-BeenThere: qemu-trivial@nongnu.org
@@ -50,11 +50,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jan 2014 18:57:58 -0000
+X-List-Received-Date: Tue, 14 Jan 2014 20:06:05 -0000
 
-On Tue, 14 Jan 2014 21:05:31 +0400
-Michael Tokarev <mjt@tls.msk.ru> wrote:
-
+On Tue, Jan 14, 2014 at 09:05:31PM +0400, Michael Tokarev wrote:
 > 09.01.2014 18:58, Luiz Capitulino wrote:
 > > Use sizeof(strucy virtio_balloon_config) instead.
 > > 
@@ -68,23 +66,22 @@ Michael Tokarev <mjt@tls.msk.ru> wrote:
 > > +    memcpy(config_data, &config, sizeof(struct virtio_balloon_config));
 > 
 > I'm not sure any of those is better than another.
-
-No duplication, no risk of changing virtio_balloon_config and
-forgetting about changing all the memcpys out there (which is
-exactly what happened to me). This is also what the other
-devices do.
-
+> 
 > This is a published guest <=> host interface, the config _must_ be 8 bytes
 > long and must contain 2 4-byte words in it.
 
-That's not changed by this patch.
+no, config can be extended in the future.
+and hard coded constants are evil.
 
+> 
 > We may use assert(sizeof(struct virtio_balloon_config) == 8) somewhere,
 > but to my taste it is a bit overkill.  No?
-> 
+
+I agree assert like this would be overkill.
+
 > Thanks,
 > 
 > /mjt
-> 
-
+-- 
+MST
 
