@@ -1,44 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W352R-0004ub-Md
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2014 09:32:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44017)
+	id 1W352S-0004vQ-2J
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2014 09:32:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55501)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sebastian.huber@embedded-brains.de>)
-	id 1W2yf7-0005U7-Uc
-	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 02:43:54 -0500
+	(envelope-from <wdauchy@gmail.com>) id 1W34JO-0006oV-CB
+	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 08:45:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sebastian.huber@embedded-brains.de>)
-	id 1W2yf1-0002Oa-Du
-	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 02:43:49 -0500
-Received: from host-82-135-62-35.customer.m-online.net ([82.135.62.35]:57915
-	helo=mail.embedded-brains.de) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sebastian.huber@embedded-brains.de>)
-	id 1W2yf1-0002OS-5b
-	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 02:43:43 -0500
-Received: by mail.embedded-brains.de (Postfix, from userid 65534)
-	id 390BF652CFD; Tue, 14 Jan 2014 08:04:42 +0100 (CET)
-Received: from [192.168.100.11] (unknown [192.168.100.11])
-	by mail.embedded-brains.de (Postfix) with ESMTP id 55F8C652CFB;
-	Tue, 14 Jan 2014 08:04:40 +0100 (CET)
-Message-ID: <52D4E188.6080704@embedded-brains.de>
-Date: Tue, 14 Jan 2014 08:04:40 +0100
-From: Sebastian Huber <sebastian.huber@embedded-brains.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
+	(envelope-from <wdauchy@gmail.com>) id 1W34JL-0005uf-HK
+	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 08:45:46 -0500
+Received: from mail-qa0-x236.google.com ([2607:f8b0:400d:c00::236]:53838)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <wdauchy@gmail.com>)
+	id 1W34JH-0005tL-KE; Tue, 14 Jan 2014 08:45:39 -0500
+Received: by mail-qa0-f54.google.com with SMTP id i13so2734353qae.41
+	for <multiple recipients>; Tue, 14 Jan 2014 05:45:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=w5fOnyj23vclBT71rkMOICAvcUkfiNsaO61xrVrBoVY=;
+	b=xQx6O/9kAZ/YcIdXEMPFjYBbQIc+pvZr3IkVHCCkcBQPxF03DuUR10yrgxZ+UQWi3s
+	vqVI02trRTWGSiVrads0IKDpTm+D/sTVKBsVIUl36K8liUgUVnbqlUzzMvCM2WP8u7yk
+	dEHG04lVwdR2+yb0w0kZVKQYuokpHc2DYqwT6AAj4cusMnGFaDnenTtJCb3XB/RSrlEW
+	KfuJsguRGmvfCw9r9/tCyndWeeltgDIDbUlFvgOUBQh3k0YCRJKdi3PSzDWHXiCSsK0L
+	rEXYGD6cOrUkR9oWUzjIGKiqy76sXfa9UF+/0q8Izfpd9uDS2Sy74T/EtL4A0l4vxpXk
+	DJvw==
+X-Received: by 10.224.20.9 with SMTP id d9mr2924330qab.100.1389707138957; Tue,
+	14 Jan 2014 05:45:38 -0800 (PST)
 MIME-Version: 1.0
-To: qemu-devel@nongnu.org
-References: <CAFEAcA8DyS8ftustsMmQWGxmhMUNujVN25m+5d6XCPxQVj3d0A@mail.gmail.com>	<1385538611-8149-1-git-send-email-sebastian.huber@embedded-brains.de>
-	<52A20DF6.9070801@twiddle.net>
-	<52CC4250.2060107@embedded-brains.de>
-In-Reply-To: <52CC4250.2060107@embedded-brains.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 82.135.62.35
+Received: by 10.96.236.16 with HTTP; Tue, 14 Jan 2014 05:45:18 -0800 (PST)
+In-Reply-To: <CAFEAcA_W7MXEPT7p8M0oqPkHsBe4ZZKcmS5B-r6L1Z-NABUHAw@mail.gmail.com>
+References: <1386322527-23148-1-git-send-email-kraxel@redhat.com>
+	<1386322527-23148-9-git-send-email-kraxel@redhat.com>
+	<20131209233334.GC27737@otherpad.lan.raisama.net>
+	<CAFEAcA_W7MXEPT7p8M0oqPkHsBe4ZZKcmS5B-r6L1Z-NABUHAw@mail.gmail.com>
+From: William Dauchy <wdauchy@gmail.com>
+Date: Tue, 14 Jan 2014 14:45:18 +0100
+Message-ID: <CAJ75kXYr4Vbq1C0tA+xOvm=815iYjCm-2eNdx=XaD8=tDbc8sw@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=ISO-8859-1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c00::236
 X-Mailman-Approved-At: Tue, 14 Jan 2014 09:32:18 -0500
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] SPARC: Fix LEON3 power
-	down instruction
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Anthony Liguori <aliguori@amazon.com>, Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add bios-256k.bin to BLOBS
+	on Makefile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,62 +59,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jan 2014 07:43:54 -0000
+X-List-Received-Date: Tue, 14 Jan 2014 13:45:47 -0000
 
-Hello,
+On Mon, Jan 6, 2014 at 2:13 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Ping -- who's going to take this patch? Maybe it should
+> go via -trivial?
 
-maybe this patch can be qualified as trivial?
++1 still waiting for this merge
 
-http://lists.nongnu.org/archive/html/qemu-devel/2013-11/msg03488.html
-
-On 2014-01-07 19:07, Sebastian Huber wrote:
-> Hello,
->
-> would somebody mind committing this.
->
-> On 12/06/2013 06:48 PM, Richard Henderson wrote:
->> On 11/27/2013 08:50 PM, Sebastian Huber wrote:
->>> Synchronize the program counter before the power down helper call
->>> otherwise interrupts will return to the wrong context.
->>>
->>> Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
->>> ---
->>>   target-sparc/translate.c |    1 +
->>>   1 files changed, 1 insertions(+), 0 deletions(-)
->>>
->>> diff --git a/target-sparc/translate.c b/target-sparc/translate.c
->>> index 05639ef..7481c85 100644
->>> --- a/target-sparc/translate.c
->>> +++ b/target-sparc/translate.c
->>> @@ -3630,6 +3630,7 @@ static void disas_sparc_insn(DisasContext * dc,
->>> unsigned int insn)
->>>                                   if ((rd =3D=3D 0x13) && (dc->def->f=
-eatures &
->>>
->>> CPU_FEATURE_POWERDOWN)) {
->>>                                       /* LEON3 power-down */
->>> +                                    save_state(dc);
->>>                                       gen_helper_power_down(cpu_env);
->>>                                   }
->>>                                   break;
->>>
->> Reviewed-by: Richard Henderson <rth@twiddle.net>
->>
->>
->> r~
->>
->
->
-
-
---=20
-Sebastian Huber, embedded brains GmbH
-
-Address : Dornierstr. 4, D-82178 Puchheim, Germany
-Phone   : +49 89 189 47 41-16
-Fax     : +49 89 189 47 41-09
-E-Mail  : sebastian.huber@embedded-brains.de
-PGP     : Public key available on request.
-
-Diese Nachricht ist keine gesch=E4ftliche Mitteilung im Sinne des EHUG.
+-- 
+William
 
