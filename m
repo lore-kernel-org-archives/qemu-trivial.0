@@ -1,32 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W2x3H-0001i9-St
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2014 01:00:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55732)
+	id 1W34az-00044l-Rl
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2014 09:03:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59211)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1W2x3F-0001fw-5K
-	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 01:00:37 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1W34at-0003v6-S9
+	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 09:03:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1W2x3E-0000UI-56
-	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 01:00:36 -0500
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:46064
-	helo=v2201305906712890.yourvserver.net)
+	(envelope-from <mjt@tls.msk.ru>) id 1W34ap-0002ms-3b
+	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 09:03:51 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:43624)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1W2x3C-0000Tq-3b; Tue, 14 Jan 2014 01:00:34 -0500
-Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id F2FC217FB92; Tue, 14 Jan 2014 07:00:28 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Tue, 14 Jan 2014 07:00:28 +0100
-Message-Id: <1389679228-15870-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] exec: Exclude non portable function for MinGW
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1W34af-0002jH-BX; Tue, 14 Jan 2014 09:03:37 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id BAC26411AD;
+	Tue, 14 Jan 2014 18:03:26 +0400 (MSK)
+Received: from wh.tls.msk.ru (wh.tls.msk.ru [192.168.177.7])
+	by tsrv.corpit.ru (Postfix) with ESMTP id 6674C608;
+	Tue, 14 Jan 2014 18:03:26 +0400 (MSK)
+Message-ID: <52D543AE.5010603@msgid.tls.msk.ru>
+Date: Tue, 14 Jan 2014 18:03:26 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
+MIME-Version: 1.0
+To: William Dauchy <wdauchy@gmail.com>
+References: <1386322527-23148-1-git-send-email-kraxel@redhat.com>
+	<1386322527-23148-9-git-send-email-kraxel@redhat.com>
+	<20131209233334.GC27737@otherpad.lan.raisama.net>
+	<CAFEAcA_W7MXEPT7p8M0oqPkHsBe4ZZKcmS5B-r6L1Z-NABUHAw@mail.gmail.com>
+	<CAJ75kXYr4Vbq1C0tA+xOvm=815iYjCm-2eNdx=XaD8=tDbc8sw@mail.gmail.com>
+In-Reply-To: <CAJ75kXYr4Vbq1C0tA+xOvm=815iYjCm-2eNdx=XaD8=tDbc8sw@mail.gmail.com>
+X-Enigmail-Version: 1.5.1
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+	Anthony Liguori <aliguori@amazon.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add bios-256k.bin to BLOBS
+	on Makefile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,38 +54,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jan 2014 06:00:38 -0000
+X-List-Received-Date: Tue, 14 Jan 2014 14:03:56 -0000
 
-cpu_physical_memory_set_dirty_lebitmap calls getpageaddr and ffsl which are
-unavailable for MinGW. As the function is unused for MinGW, it can simply
-be excluded from compilation.
+14.01.2014 17:45, William Dauchy wrote:
+> On Mon, Jan 6, 2014 at 2:13 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> Ping -- who's going to take this patch? Maybe it should
+>> go via -trivial?
+> 
+> +1 still waiting for this merge
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- include/exec/ram_addr.h |    2 ++
- 1 file changed, 2 insertions(+)
+Sorry guys, I was on a (relatively small) trip and weren't handling -trivial.
+I'll pick it up for this week (there aren't many other changes in there).
 
-diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
-index 33c8acc..481a447 100644
---- a/include/exec/ram_addr.h
-+++ b/include/exec/ram_addr.h
-@@ -79,6 +79,7 @@ static inline void cpu_physical_memory_set_dirty_range(ram_addr_t start,
-     xen_modified_memory(start, length);
- }
- 
-+#if !defined(_WIN32)
- static inline void cpu_physical_memory_set_dirty_lebitmap(unsigned long *bitmap,
-                                                           ram_addr_t start,
-                                                           ram_addr_t pages)
-@@ -127,6 +128,7 @@ static inline void cpu_physical_memory_set_dirty_lebitmap(unsigned long *bitmap,
-         }
-     }
- }
-+#endif /* not _WIN32 */
- 
- static inline void cpu_physical_memory_clear_dirty_range(ram_addr_t start,
-                                                          ram_addr_t length,
--- 
-1.7.10.4
+Thanks,
+
+/mjt
 
 
