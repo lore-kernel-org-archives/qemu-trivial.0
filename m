@@ -1,53 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W2ZzD-0000qk-C5
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2014 00:22:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60732)
+	id 1W2x3H-0001i9-St
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2014 01:00:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55732)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1W2Zz6-0000iY-Eq
-	for qemu-trivial@nongnu.org; Mon, 13 Jan 2014 00:22:53 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1W2x3F-0001fw-5K
+	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 01:00:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1W2Zz1-0000lD-4h
-	for qemu-trivial@nongnu.org; Mon, 13 Jan 2014 00:22:48 -0500
-Received: from mail-ee0-x22e.google.com ([2a00:1450:4013:c00::22e]:49007)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1W2x3E-0000UI-56
+	for qemu-trivial@nongnu.org; Tue, 14 Jan 2014 01:00:36 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:46064
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1W2Zyp-0000h1-Vg; Mon, 13 Jan 2014 00:22:32 -0500
-Received: by mail-ee0-f46.google.com with SMTP id d49so2911018eek.33
-	for <multiple recipients>; Sun, 12 Jan 2014 21:22:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=C2n5jOKOQWq28Fd/80GqtZa4QFo/i0xcHVDzfxKvDLs=;
-	b=kb9+guOsDcw8M6DjceCu3dIrfHtfN6gvUIHwT1oQjEnlErwYwUC9h5lgS58oHCpqVF
-	bmqEnVlR77Jr7+bovOcuKfBVltzsRYDaSr2SyDZ2dxgKu/WU7TcKMSGV04ND3fisDj9I
-	B60Un+xtBQsqr+0Q5vJj0u5Ay/SEbgTfN/Dd0elIOnzVDs1jByBapr9muLtWI9sgQtxF
-	Z5De4R2VIEd31iuUNDJcL8EGY0IqlTOi9lwTwtJqSUSn9JOHgA13G/qXnU4QKg1UfwIq
-	BhmxZ+Jck75GIvvh3meIvf1p7vMLe5+8HXTiuvHwvI3+qyR0Mb0jR+PH6E6VQgmFcJd+
-	nySw==
-X-Received: by 10.14.198.195 with SMTP id v43mr9501435een.62.1389590551102;
-	Sun, 12 Jan 2014 21:22:31 -0800 (PST)
-Received: from localhost (42-98-41-126.static.netvigator.com. [42.98.41.126])
-	by mx.google.com with ESMTPSA id
-	7sm36387425eee.12.2014.01.12.21.22.27 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 12 Jan 2014 21:22:30 -0800 (PST)
-Date: Mon, 13 Jan 2014 13:22:23 +0800
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Hani Benhabiles <kroosec@gmail.com>
-Message-ID: <20140113052223.GB14770@stefanha-thinkpad.redhat.com>
-References: <1389292467-5570-1-git-send-email-kroosec@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1389292467-5570-1-git-send-email-kroosec@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1W2x3C-0000Tq-3b; Tue, 14 Jan 2014 01:00:34 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id F2FC217FB92; Tue, 14 Jan 2014 07:00:28 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Tue, 14 Jan 2014 07:00:28 +0100
+Message-Id: <1389679228-15870-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4013:c00::22e
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, stefanha@redhat.com,
-	aliguori@amazon.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: Use g_strdup_printf
- instead of snprintf.
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] exec: Exclude non portable function for MinGW
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,19 +38,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Jan 2014 05:22:53 -0000
+X-List-Received-Date: Tue, 14 Jan 2014 06:00:38 -0000
 
-On Thu, Jan 09, 2014 at 07:34:27PM +0100, Hani Benhabiles wrote:
-> assign_name() in net/net.c is using snprintf + g_strdup to get the same
-> result as g_strdup_printf.
-> 
-> Signed-off-by: Hani Benhabiles <kroosec@gmail.com>
-> ---
->  net/net.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+cpu_physical_memory_set_dirty_lebitmap calls getpageaddr and ffsl which are
+unavailable for MinGW. As the function is unused for MinGW, it can simply
+be excluded from compilation.
 
-Thanks, applied to my net tree:
-https://github.com/stefanha/qemu/commits/net
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ include/exec/ram_addr.h |    2 ++
+ 1 file changed, 2 insertions(+)
 
-Stefan
+diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+index 33c8acc..481a447 100644
+--- a/include/exec/ram_addr.h
++++ b/include/exec/ram_addr.h
+@@ -79,6 +79,7 @@ static inline void cpu_physical_memory_set_dirty_range(ram_addr_t start,
+     xen_modified_memory(start, length);
+ }
+ 
++#if !defined(_WIN32)
+ static inline void cpu_physical_memory_set_dirty_lebitmap(unsigned long *bitmap,
+                                                           ram_addr_t start,
+                                                           ram_addr_t pages)
+@@ -127,6 +128,7 @@ static inline void cpu_physical_memory_set_dirty_lebitmap(unsigned long *bitmap,
+         }
+     }
+ }
++#endif /* not _WIN32 */
+ 
+ static inline void cpu_physical_memory_clear_dirty_range(ram_addr_t start,
+                                                          ram_addr_t length,
+-- 
+1.7.10.4
+
 
