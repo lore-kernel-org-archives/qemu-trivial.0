@@ -1,39 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W3T7w-0001TH-31
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Jan 2014 11:15:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42694)
+	id 1W3WHs-0004ul-0n
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Jan 2014 14:38:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40298)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W3T7p-0001Ol-3N
-	for qemu-trivial@nongnu.org; Wed, 15 Jan 2014 11:15:35 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1W3WHj-0004m9-MG
+	for qemu-trivial@nongnu.org; Wed, 15 Jan 2014 14:38:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W3T7i-0006Do-W9
-	for qemu-trivial@nongnu.org; Wed, 15 Jan 2014 11:15:29 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:58766)
+	(envelope-from <mjt@tls.msk.ru>) id 1W3WHd-0005mj-OA
+	for qemu-trivial@nongnu.org; Wed, 15 Jan 2014 14:37:55 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:54508)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1W3T7W-0006At-PG; Wed, 15 Jan 2014 11:15:10 -0500
+	id 1W3WHQ-0005kx-FD; Wed, 15 Jan 2014 14:37:36 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2E060413BC;
-	Wed, 15 Jan 2014 20:15:10 +0400 (MSK)
-Message-ID: <52D6B40D.8080009@msgid.tls.msk.ru>
-Date: Wed, 15 Jan 2014 20:15:09 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 59BF5413E7;
+	Wed, 15 Jan 2014 23:37:35 +0400 (MSK)
+Message-ID: <52D6E37F.9050404@msgid.tls.msk.ru>
+Date: Wed, 15 Jan 2014 23:37:35 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:17.0) Gecko/20131103 Icedove/17.0.10
 MIME-Version: 1.0
-To: David du Colombier <0intro@gmail.com>
-References: <1387981063-14880-1-git-send-email-0intro@gmail.com>
-In-Reply-To: <1387981063-14880-1-git-send-email-0intro@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1389432851-11420-1-git-send-email-pavel.zbitskiy@gmail.com>
+	<1389432851-11420-3-git-send-email-pavel.zbitskiy@gmail.com>
+	<CAFEAcA9p1W5=-=e0VqJnKGJrakALT-_BCY-4GevYkd6s8JL29w@mail.gmail.com>
+In-Reply-To: <CAFEAcA9p1W5=-=e0VqJnKGJrakALT-_BCY-4GevYkd6s8JL29w@mail.gmail.com>
 X-Enigmail-Version: 1.5.1
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] ide: cmd_exec_dev_diagnostic() always
- set error register to 0x01
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, pavel.zbitskiy@gmail.com,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] linux-user: fixed
+ getsockopt() optlen
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,51 +48,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Jan 2014 16:15:35 -0000
+X-List-Received-Date: Wed, 15 Jan 2014 19:38:02 -0000
 
-25.12.2013 18:17, David du Colombier wrote:
-> This notably fix IDE CD probing on the Plan 9 operating system,
-> which rely on the error register set by the Execute Device
-> Diagnostic command to detect drive configurations.
+12.01.2014 23:07, Peter Maydell wrote:
+> On 11 January 2014 09:34,  <pavel.zbitskiy@gmail.com> wrote:
+>> From: Pavel Zbitskiy <pavel.zbitskiy@gmail.com>
+>>
+>> optlen parameter of getsockopt() of type socklen_t* was read into
+>> variable of type socklen_t, that caused zeroing out of upper 4 bytes
+>> when running s390x on top of x86_64. This patch changes optlen type
+>> to abi_ulong.
+> 
+> This patch and patch 3 are correct fixes, but shouldn't we be
+> more generally using abi_ulong for every argument we read from
+> the guest in do_socketcall() ?
 
-While this is a one-liner, I'm not sure it is "trivial enough", just beca=
-use
-it is not at all obvious we shuold clear error here and not somewhere els=
-e.
-I mean, shouldn't s->error be cleared somewhere when next request is queu=
-ed,
-or something like that?
-
-That's basically why I haven't applied this initially.
-
-CC'ing qemu-devel.
+I think the current fix is worth to apply anyway, regareless of
+further possible rework.
 
 Thanks,
 
 /mjt
-
-> Thanks to R=C3=A9mi Pommarel for reporting this issue.
->=20
-> Signed-off-by: David du Colombier <0intro@gmail.com>
-> ---
->  hw/ide/core.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/hw/ide/core.c b/hw/ide/core.c
-> index e1f4c33..7783d58 100644
-> --- a/hw/ide/core.c
-> +++ b/hw/ide/core.c
-> @@ -1321,6 +1321,7 @@ static bool cmd_exec_dev_diagnostic(IDEState *s, =
-uint8_t cmd)
->          s->status =3D 0; /* ATAPI spec (v6) section 9.10 defines packe=
-t
->                          * devices to return a clear status register
->                          * with READY_STAT *not* set. */
-> +        s->error =3D 0x01;
->      } else {
->          s->status =3D READY_STAT | SEEK_STAT;
->          /* The bits of the error register are not as usual for this co=
-mmand!
->=20
-
 
