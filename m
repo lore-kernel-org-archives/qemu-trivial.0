@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W3rId-0001XR-BA
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Jan 2014 13:04:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60257)
+	id 1W3rIj-0001cr-Gj
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Jan 2014 13:04:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60250)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W3r09-0004Q1-07
-	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 12:45:13 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1W3r08-0004OP-DG
+	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 12:45:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W3r03-0001vf-Ur
+	(envelope-from <mjt@tls.msk.ru>) id 1W3r03-0001vX-U8
 	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 12:45:08 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:52392)
+Received: from isrv.corpit.ru ([86.62.121.231]:33812)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1W3qzt-0001iI-LP; Thu, 16 Jan 2014 12:44:53 -0500
+	id 1W3qzt-0001iK-LR; Thu, 16 Jan 2014 12:44:53 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 14F87415C2;
+	by isrv.corpit.ru (Postfix) with ESMTP id 96DE3415C6;
 	Thu, 16 Jan 2014 21:35:24 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id ED3665FC;
-	Thu, 16 Jan 2014 21:35:23 +0400 (MSK)
-Received: (nullmailer pid 16384 invoked by uid 1000);
-	Thu, 16 Jan 2014 17:35:23 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 78AD7635;
+	Thu, 16 Jan 2014 21:35:24 +0400 (MSK)
+Received: (nullmailer pid 16396 invoked by uid 1000);
+	Thu, 16 Jan 2014 17:35:24 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: aliguori@amazon.com
-Date: Thu, 16 Jan 2014 21:35:08 +0400
-Message-Id: <1389893719-16336-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Thu, 16 Jan 2014 21:35:13 +0400
+Message-Id: <1389893719-16336-6-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1389893719-16336-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1389893719-16336-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 00/11] Trivial patches for 2014-01-16
+	qemu-devel@nongnu.org, Luiz Capitulino <lcapitulino@redhat.com>
+Subject: [Qemu-trivial] [PULL 05/11] virtio-balloon: don't hardcode config
+	size value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,79 +44,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Jan 2014 18:04:13 -0000
+X-List-Received-Date: Thu, 16 Jan 2014 18:04:19 -0000
 
-There's nothing exciting in there, but we have some small bugfixes here a=
-nd
-there, and a few cosmetic changes too.
+From: Luiz Capitulino <lcapitulino@redhat.com>
 
-This is my first signed pull request too, based on my regular GnuPG key w=
-hich
-I use to sign Debian packages.
+Use sizeof(struct virtio_balloon_config) instead.
 
-Please pull.
-
-Thanks,
-
-/mjt
-
-The following changes since commit 1cf892ca2689c84960b4ce4d2723b6bee45371=
-1c:
-
-  SPARC: Fix LEON3 power down instruction (2014-01-15 15:37:33 +1000)
-
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/trivial-patches-2014-01-16
-
-for you to fetch changes up to 2c02d1ad48ad44cf00522df7d8de9138689fac85:
-
-  vl: Add a blank space between the variable and '=3D' (2014-01-16 15:23:=
-41 +0400)
-
-----------------------------------------------------------------
-trivial-patches for 2014-01-16
-
-----------------------------------------------------------------
-David du Colombier (1):
-      ide: cmd_exec_dev_diagnostic() always set error register to 0x01
-
-Eduardo Habkost (1):
-      Add bios-256k.bin to BLOBS on Makefile
-
-Kewei Yu (1):
-      vl: Add a blank space between the variable and '=3D'
-
-Luiz Capitulino (1):
-      virtio-balloon: don't hardcode config size value
-
-Namhyung Kim (2):
-      docs: Fix typo in QMP WAKEUP example
-      Fix typo of tiemr in timer.h
-
-Pavel Zbitskiy (3):
-      linux-user: fixed s390x clone() argument order
-      linux-user: fixed getsockopt() optlen
-      linux-user: fixed recvfrom() addrlen
-
-Stefan Weil (2):
-      exec: Exclude non portable function for MinGW
-      pc-bios: Remove execute flag from BIOS files
-
- Makefile                   |    2 +-
- docs/qmp/qmp-events.txt    |    2 +-
- hw/ide/core.c              |    1 +
+Signed-off-by: Luiz capitulino <lcapitulino@redhat.com>
+Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
  hw/virtio/virtio-balloon.c |    7 ++++---
- include/exec/ram_addr.h    |    2 ++
- include/qemu/timer.h       |    6 +++---
- linux-user/s390x/syscall.h |    2 +-
- linux-user/syscall.c       |    4 ++--
- pc-bios/kvmvapic.bin       |  Bin 9216 -> 9216 bytes
- pc-bios/multiboot.bin      |  Bin 1024 -> 1024 bytes
- pc-bios/sgabios.bin        |  Bin 4096 -> 4096 bytes
- vl.c                       |    2 +-
- 12 files changed, 16 insertions(+), 12 deletions(-)
- mode change 100755 =3D> 100644 pc-bios/kvmvapic.bin
- mode change 100755 =3D> 100644 pc-bios/multiboot.bin
- mode change 100755 =3D> 100644 pc-bios/sgabios.bin
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/hw/virtio/virtio-balloon.c b/hw/virtio/virtio-balloon.c
+index d9754db..a470a0b 100644
+--- a/hw/virtio/virtio-balloon.c
++++ b/hw/virtio/virtio-balloon.c
+@@ -263,7 +263,7 @@ static void virtio_balloon_get_config(VirtIODevice *vdev, uint8_t *config_data)
+     config.num_pages = cpu_to_le32(dev->num_pages);
+     config.actual = cpu_to_le32(dev->actual);
+ 
+-    memcpy(config_data, &config, 8);
++    memcpy(config_data, &config, sizeof(struct virtio_balloon_config));
+ }
+ 
+ static void virtio_balloon_set_config(VirtIODevice *vdev,
+@@ -272,7 +272,7 @@ static void virtio_balloon_set_config(VirtIODevice *vdev,
+     VirtIOBalloon *dev = VIRTIO_BALLOON(vdev);
+     struct virtio_balloon_config config;
+     uint32_t oldactual = dev->actual;
+-    memcpy(&config, config_data, 8);
++    memcpy(&config, config_data, sizeof(struct virtio_balloon_config));
+     dev->actual = le32_to_cpu(config.actual);
+     if (dev->actual != oldactual) {
+         qemu_balloon_changed(ram_size -
+@@ -343,7 +343,8 @@ static void virtio_balloon_device_realize(DeviceState *dev, Error **errp)
+     VirtIOBalloon *s = VIRTIO_BALLOON(dev);
+     int ret;
+ 
+-    virtio_init(vdev, "virtio-balloon", VIRTIO_ID_BALLOON, 8);
++    virtio_init(vdev, "virtio-balloon", VIRTIO_ID_BALLOON,
++                sizeof(struct virtio_balloon_config));
+ 
+     ret = qemu_add_balloon_handler(virtio_balloon_to_target,
+                                    virtio_balloon_stat, s);
+-- 
+1.7.10.4
+
 
