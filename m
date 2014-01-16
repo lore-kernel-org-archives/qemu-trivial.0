@@ -1,39 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W3kXx-0002kv-3S
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Jan 2014 05:51:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35951)
+	id 1W3kmo-0001GS-Nr
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Jan 2014 06:06:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39554)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W3kXp-0002cH-7F
-	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 05:51:35 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1W3kmh-000148-E1
+	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 06:06:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W3kXj-0007uC-2I
-	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 05:51:29 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:43696)
+	(envelope-from <peter.maydell@linaro.org>) id 1W3kma-0004C1-9X
+	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 06:06:51 -0500
+Received: from mail-la0-f45.google.com ([209.85.215.45]:50369)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1W3kXW-0007nl-PF; Thu, 16 Jan 2014 05:51:10 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0E9A24154B;
-	Thu, 16 Jan 2014 14:51:10 +0400 (MSK)
-Message-ID: <52D7B99E.5020102@msgid.tls.msk.ru>
-Date: Thu, 16 Jan 2014 14:51:10 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131103 Icedove/17.0.10
+	(envelope-from <peter.maydell@linaro.org>) id 1W3kma-0004Bk-1X
+	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 06:06:44 -0500
+Received: by mail-la0-f45.google.com with SMTP id b8so2387700lan.18
+	for <qemu-trivial@nongnu.org>; Thu, 16 Jan 2014 03:06:43 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=/zMn0o9qGWkpq0sfFT0DM+UhXvB/cLADUMZa6LmrRrw=;
+	b=ArspYTkUFiYfzcNHOhDDbp4uFo3PfAxoASWyoRneVC4jbYxi3B8dg39qZIcAhU/MqB
+	voeVPHqK+oHsaCrES9jWlfJC7WgAD+4Z7jUk2bFWyWjh+TD7uj6EjZdyagK8IRJMsZOM
+	FyjDDNcXPsBEaHpCfXHy7u0ovtVdMLcEYMynoh9sPxYcKHvFm8d7lrH/m/rZwfFWEg5c
+	eP+4tTfOcvkEqFgeeSFR8e6JTSNkseDtHiewDDYpQ1UExejJYLztVuSVyqyxUcnyzd1M
+	siPsj+ooJhLR+anczyzfDxJrHaw86yGuw2Se+x0TTJqy9zhweF55KZX1zaQlQ0Lg22pf
+	ko5g==
+X-Gm-Message-State: ALoCoQllZiu+PCiWd20GUb5Ey/pglpGNwBawUo1qpsvwxyaZpsnql/ydaRn5RFRrIUmXxn5F3wgW
+X-Received: by 10.152.87.5 with SMTP id t5mr110744laz.43.1389870403050; Thu,
+	16 Jan 2014 03:06:43 -0800 (PST)
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1388215871-4977-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1388215871-4977-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] pc-bios: Remove execute flag from BIOS
- files
+Received: by 10.112.125.3 with HTTP; Thu, 16 Jan 2014 03:06:22 -0800 (PST)
+In-Reply-To: <52D7B975.9050507@msgid.tls.msk.ru>
+References: <1388486168-2532-1-git-send-email-keweihk@gmail.com>
+	<52D7B975.9050507@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Jan 2014 11:06:22 +0000
+Message-ID: <CAFEAcA9UNDB3zPk46uTECePb3eqqe2utk-9G5_mJc0Hq2XgwZw@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.45
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] Add a blank space
+ between the variable and '='
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,13 +56,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Jan 2014 10:51:35 -0000
+X-List-Received-Date: Thu, 16 Jan 2014 11:06:56 -0000
 
-28.12.2013 11:31, Stefan Weil wrote:
-> BIOS files are not directly executable, so they don't need this flag.
-> All other BIOS files don't use the execute flag.
+On 16 January 2014 10:50, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Thanks, applied.
 
-Thanks, applied.
+Can you fix the subject line in your tree to have a
+prefix indicating which area of the codebase it affects,
+please?
 
-/mjt
+thanks
+-- PMM
 
