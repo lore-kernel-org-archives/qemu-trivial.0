@@ -1,37 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W3r0D-0004Yb-IJ
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Jan 2014 12:45:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60236)
+	id 1W3uuy-0003qM-TF
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Jan 2014 16:56:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53612)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W3r07-0004MR-Hm
-	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 12:45:11 -0500
+	(envelope-from <luca.castelli.eu@gmail.com>) id 1W3qkh-0003P0-Lq
+	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 12:29:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W3r03-0001tY-2o
-	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 12:45:07 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:57659)
+	(envelope-from <luca.castelli.eu@gmail.com>) id 1W3qkg-00041q-JW
+	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 12:29:11 -0500
+Received: from mail-la0-x22f.google.com ([2a00:1450:4010:c03::22f]:40791)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1W3qzt-0001iG-Kk; Thu, 16 Jan 2014 12:44:53 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 392E7415C3;
-	Thu, 16 Jan 2014 21:35:24 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1804A633;
-	Thu, 16 Jan 2014 21:35:24 +0400 (MSK)
-Received: (nullmailer pid 16387 invoked by uid 1000);
-	Thu, 16 Jan 2014 17:35:23 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: aliguori@amazon.com
-Date: Thu, 16 Jan 2014 21:35:09 +0400
-Message-Id: <1389893719-16336-2-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1389893719-16336-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1389893719-16336-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Namhyung Kim <namhyung@gmail.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PULL 01/11] docs: Fix typo in QMP WAKEUP example
+	(envelope-from <luca.castelli.eu@gmail.com>) id 1W3qkg-00041e-BB
+	for qemu-trivial@nongnu.org; Thu, 16 Jan 2014 12:29:10 -0500
+Received: by mail-la0-f47.google.com with SMTP id el20so253181lab.34
+	for <qemu-trivial@nongnu.org>; Thu, 16 Jan 2014 09:29:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:date:message-id:subject:from:to:content-type;
+	bh=rwiiV3VUUf4kJHJKn6DNoaawdsw/6B1pMX6WiOg3H9M=;
+	b=wc+i4rY/pKohn21VADgy1Vdb4LqWtC8ReJLO4rKopGd18dhZbLW9Rx+JCRjtuLIJh1
+	+NScWwYMlX+IjjOVCQWtybkFkq9cyd0UJFj+/TqSIYeTbJ/Am+uETDPUSbkkXhJ7J03f
+	4DYGmhRaZMRK4tJM5UPIrBsBH0L9JNb/8ySpd++rzaEVR5iMDLh1fgqGr9UDMF9isKQl
+	0XPrYduaDczE6VNlOAK1AxpVrDcy72ztclcwUPMy0Edo6I6nbyN96qLLBA2Xp5ksVAlz
+	5w8AiMr3w4r7jZml8zDh73Y1v4QRXWpby22ml7rpnL8i6e4ZEIlBqmgEWQRDn6X/F0qT
+	46Zg==
+MIME-Version: 1.0
+X-Received: by 10.152.20.6 with SMTP id j6mr5680301lae.8.1389893348345; Thu,
+	16 Jan 2014 09:29:08 -0800 (PST)
+Received: by 10.112.124.238 with HTTP; Thu, 16 Jan 2014 09:29:08 -0800 (PST)
+Date: Thu, 16 Jan 2014 18:29:08 +0100
+Message-ID: <CAMqpCi-q4vmZrZFfRBjWh+RMpx5tfPU+pkAPMaF-a2BN=K5qBQ@mail.gmail.com>
+From: Luca Castelli <luca.castelli.eu@gmail.com>
+To: qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary=089e013d20344dcc3f04f019c341
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c03::22f
+X-Mailman-Approved-At: Thu, 16 Jan 2014 16:56:03 -0500
+Subject: [Qemu-trivial] qemu blocking with system c signal
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,32 +48,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Jan 2014 17:45:12 -0000
+X-List-Received-Date: Thu, 16 Jan 2014 17:29:12 -0000
 
-From: Namhyung Kim <namhyung@gmail.com>
+--089e013d20344dcc3f04f019c341
+Content-Type: text/plain; charset=ISO-8859-1
 
-Cc: qemu-trivial@nongnu.org
-Signed-off-by: Namhyung Kim <namhyung@gmail.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- docs/qmp/qmp-events.txt |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi, I have to carry out a stop and start when running in qemu cpu-exec
+function, by using System c.
+My idea is to use a signal that communicates between the two programs, can
+you tell me how I can set a signal that communicates with the outside world
+that can realize this communication?
+Thanks
 
-diff --git a/docs/qmp/qmp-events.txt b/docs/qmp/qmp-events.txt
-index 6b87e97..a378c87 100644
---- a/docs/qmp/qmp-events.txt
-+++ b/docs/qmp/qmp-events.txt
-@@ -479,7 +479,7 @@ Data: None.
- 
- Example:
- 
--{ "event": "WATCHDOG",
-+{ "event": "WAKEUP",
-      "timestamp": { "seconds": 1344522075, "microseconds": 745528 } }
- 
- WATCHDOG
--- 
-1.7.10.4
+--089e013d20344dcc3f04f019c341
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr">Hi, I have to carry out a stop and start when running in q=
+emu cpu-exec function, by using System c.=A0<div>My idea is to use a signal=
+ that communicates between the two programs, can you tell me how I can set =
+a signal that communicates with the outside world that can realize this com=
+munication?</div>
+<div>Thanks</div>
+</div>
+
+--089e013d20344dcc3f04f019c341--
 
