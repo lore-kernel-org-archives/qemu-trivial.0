@@ -1,34 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W6Qt8-000137-JX
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2014 15:28:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57472)
+	id 1W6RgS-0005VH-C1
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2014 16:19:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39429)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1W6Qt0-0000tE-TS
-	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 15:28:32 -0500
+	(envelope-from <benoit.canet@irqsave.net>) id 1W6RgL-0005F4-C4
+	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 16:19:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1W6Qsu-0003Uo-LW
-	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 15:28:26 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33420)
+	(envelope-from <benoit.canet@irqsave.net>) id 1W6RgG-0001Yh-9c
+	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 16:19:25 -0500
+Received: from paradis.irqsave.net ([62.212.105.220]:48190)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>)
-	id 1W6Qsi-0003RR-7m; Thu, 23 Jan 2014 15:28:08 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s0NKS41Y019073
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 23 Jan 2014 15:28:06 -0500
-Received: from localhost (ovpn-112-51.ams2.redhat.com [10.36.112.51])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s0NKS05v032727; Thu, 23 Jan 2014 15:28:02 -0500
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 23 Jan 2014 14:27:59 -0600
-Message-Id: <1390508879-13729-1-git-send-email-stefanha@redhat.com>
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PATCH] osdep: drop unused #include "trace.h"
+	(envelope-from <benoit.canet@irqsave.net>)
+	id 1W6Rg5-0001Xy-W8; Thu, 23 Jan 2014 16:19:10 -0500
+Received: from irqsave.net (laure.irqsave.net [192.168.77.2])
+	by paradis.irqsave.net (Postfix) with ESMTP id 1F7AB5B5B7;
+	Thu, 23 Jan 2014 22:47:26 +0100 (CET)
+Date: Thu, 23 Jan 2014 22:19:08 +0100
+From: =?iso-8859-1?Q?Beno=EEt?= Canet <benoit.canet@irqsave.net>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Message-ID: <20140123211908.GB22578@irqsave.net>
+References: <1390508879-13729-1-git-send-email-stefanha@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <1390508879-13729-1-git-send-email-stefanha@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 62.212.105.220
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] osdep: drop unused #include
+	"trace.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,28 +43,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jan 2014 20:28:33 -0000
+X-List-Received-Date: Thu, 23 Jan 2014 21:19:30 -0000
 
-osdep.c does not use trace_*() so we can just drop the include.
-
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
----
- util/osdep.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/util/osdep.c b/util/osdep.c
-index 62072b4..bd4f530 100644
---- a/util/osdep.c
-+++ b/util/osdep.c
-@@ -46,7 +46,6 @@ extern int madvise(caddr_t, size_t, int);
- #endif
- 
- #include "qemu-common.h"
--#include "trace.h"
- #include "qemu/sockets.h"
- #include "monitor/monitor.h"
- 
--- 
-1.8.4.2
-
+Le Thursday 23 Jan 2014 =E0 14:27:59 (-0600), Stefan Hajnoczi a =E9crit :
+> osdep.c does not use trace_*() so we can just drop the include.
+>=20
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+>  util/osdep.c | 1 -
+>  1 file changed, 1 deletion(-)
+>=20
+> diff --git a/util/osdep.c b/util/osdep.c
+> index 62072b4..bd4f530 100644
+> --- a/util/osdep.c
+> +++ b/util/osdep.c
+> @@ -46,7 +46,6 @@ extern int madvise(caddr_t, size_t, int);
+>  #endif
+> =20
+>  #include "qemu-common.h"
+> -#include "trace.h"
+>  #include "qemu/sockets.h"
+>  #include "monitor/monitor.h"
+> =20
+> --=20
+> 1.8.4.2
+>=20
+>=20
+Reviewed-by: Benoit Canet <benoit@irqsave.net>
 
