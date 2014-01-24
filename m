@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W6VkO-000050-Qi
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2014 20:39:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33522)
+	id 1W6VkU-0000Er-8L
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2014 20:39:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33557)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stewart@river.localdomain>) id 1W6VkE-0008Rh-ER
-	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:51 -0500
+	(envelope-from <stewart@river.localdomain>) id 1W6VkI-0008Sj-6P
+	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stewart@river.localdomain>) id 1W6Vk5-0000Qg-BG
-	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:42 -0500
-Received: from e28smtp01.in.ibm.com ([122.248.162.1]:41139)
+	(envelope-from <stewart@river.localdomain>) id 1W6Vk7-0000RL-DQ
+	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:46 -0500
+Received: from e28smtp03.in.ibm.com ([122.248.162.3]:60083)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stewart@river.localdomain>) id 1W6Vk4-0000QL-La
-	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:33 -0500
+	(envelope-from <stewart@river.localdomain>) id 1W6Vk6-0000QZ-H0
+	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:35 -0500
 Received: from /spool/local
-	by e28smtp01.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e28smtp03.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <stewart@river.localdomain>;
-	Fri, 24 Jan 2014 07:09:30 +0530
-Received: from d28dlp03.in.ibm.com (9.184.220.128)
-	by e28smtp01.in.ibm.com (192.168.1.131) with IBM ESMTP SMTP Gateway:
+	Fri, 24 Jan 2014 07:09:32 +0530
+Received: from d28dlp01.in.ibm.com (9.184.220.126)
+	by e28smtp03.in.ibm.com (192.168.1.133) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
 	Fri, 24 Jan 2014 07:09:29 +0530
-Received: from d28relay04.in.ibm.com (d28relay04.in.ibm.com [9.184.220.61])
-	by d28dlp03.in.ibm.com (Postfix) with ESMTP id A1A651258051;
-	Fri, 24 Jan 2014 07:11:09 +0530 (IST)
-Received: from d28av04.in.ibm.com (d28av04.in.ibm.com [9.184.220.66])
-	by d28relay04.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	s0O1dSZm53870694; Fri, 24 Jan 2014 07:09:28 +0530
-Received: from d28av04.in.ibm.com (localhost [127.0.0.1])
-	by d28av04.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	s0O1dSnV003008; Fri, 24 Jan 2014 07:09:28 +0530
+Received: from d28relay05.in.ibm.com (d28relay05.in.ibm.com [9.184.220.62])
+	by d28dlp01.in.ibm.com (Postfix) with ESMTP id 238EDE004A;
+	Fri, 24 Jan 2014 07:12:30 +0530 (IST)
+Received: from d28av05.in.ibm.com (d28av05.in.ibm.com [9.184.220.67])
+	by d28relay05.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	s0O1dTtg66977996; Fri, 24 Jan 2014 07:09:29 +0530
+Received: from d28av05.in.ibm.com (localhost [127.0.0.1])
+	by d28av05.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	s0O1dSX6029498; Fri, 24 Jan 2014 07:09:28 +0530
 Received: from river.localdomain (river.au.ibm.com [9.185.121.78])
-	by d28av04.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	s0O1dR6i002992; Fri, 24 Jan 2014 07:09:28 +0530
+	by d28av05.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	s0O1dRcm029489; Fri, 24 Jan 2014 07:09:28 +0530
 Received: by river.localdomain (Postfix, from userid 1000)
-	id 5D1C52391FB7; Fri, 24 Jan 2014 12:39:27 +1100 (EST)
+	id 6BC7A2391FB8; Fri, 24 Jan 2014 12:39:27 +1100 (EST)
 From: Stewart Smith <stewart@linux.vnet.ibm.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 24 Jan 2014 12:39:07 +1100
-Message-Id: <1390527551-22069-3-git-send-email-stewart@linux.vnet.ibm.com>
+Date: Fri, 24 Jan 2014 12:39:08 +1100
+Message-Id: <1390527551-22069-4-git-send-email-stewart@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.8.5.3
 In-Reply-To: <1390527551-22069-1-git-send-email-stewart@linux.vnet.ibm.com>
 References: <1390452896-20146-1-git-send-email-stewart@linux.vnet.ibm.com>
 	<1390527551-22069-1-git-send-email-stewart@linux.vnet.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 14012401-4790-0000-0000-00000C610C17
+x-cbid: 14012401-3864-0000-0000-00000C18A66A
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 122.248.162.1
+X-Received-From: 122.248.162.3
 Cc: qemu-trivial@nongnu.org, Stewart Smith <stewart@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH v2 2/6] configure: sort output of configure
-	results alphabetically
+Subject: [Qemu-trivial] [PATCH v2 3/6] configure: alphabetize output of
+	--help and separate into groups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,181 +62,241 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jan 2014 01:39:51 -0000
+X-List-Received-Date: Fri, 24 Jan 2014 01:39:55 -0000
 
-Keep the paths and compiler/target details at the top, but sort
-all the yes/no features alphabetically, making it much easier to
-both browse through and to check if a feature you want has been
-enabled or not. Eyes can be faster than grep.
+This should make it (slightly) easier to discover configure options.
+I've tried to separate out build options (e.g. gcov) from feature
+options (such as gtk).
 
 Signed-off-by: Stewart Smith <stewart@linux.vnet.ibm.com>
 ---
- configure | 118 +++++++++++++++++++++++++++++++-------------------------------
- 1 file changed, 59 insertions(+), 59 deletions(-)
+ configure | 174 ++++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 89 insertions(+), 85 deletions(-)
 
 diff --git a/configure b/configure
-index 8b6e64a..e61708a 100755
+index e61708a..c225291 100755
 --- a/configure
 +++ b/configure
-@@ -3722,6 +3722,7 @@ QEMU_CFLAGS="$QEMU_CFLAGS $pixman_cflags $fdt_cflags"
- libs_softmmu="$libs_softmmu $pixman_libs"
+@@ -1102,7 +1102,7 @@ Standard options:
+ $(echo Available targets: $default_target_list | \
+   fold -s -w 53 | sed -e 's/^/                           /')
  
- echo "Install prefix    $prefix"
-+echo "Install blobs     $blobs"
- echo "BIOS directory    `eval echo $qemu_datadir`"
- echo "binary directory  `eval echo $bindir`"
- echo "library directory `eval echo $libdir`"
-@@ -3753,92 +3754,91 @@ if test "$slirp" = "yes" ; then
- fi
- echo "host CPU          $cpu"
- echo "host big endian   $bigendian"
-+[ ! -z "$uname_release" ] && \
-+echo "uname -r          $uname_release"
- echo "target list       $target_list"
-+if test -n "$sparc_cpu"; then
-+    echo "Target Sparc Arch $sparc_cpu"
-+fi
- echo "tcg debug enabled $debug_tcg"
- echo "gprof enabled     $gprof"
- echo "sparse enabled    $sparse"
- echo "strip binaries    $strip_opt"
- echo "profiler          $profiler"
- echo "static build      $static"
-+echo "PIE               $pie"
- echo "-Werror enabled   $werror"
-+echo "ATTR/XATTR support $attr"
-+echo "Audio drivers     $audio_drv_list"
-+echo "Block whitelist (rw) $block_drv_rw_whitelist"
-+echo "Block whitelist (ro) $block_drv_ro_whitelist"
-+echo "bluez  support    $bluez"
-+echo "brlapi support    $brlapi"
-+echo "build guest agent $guest_agent"
- if test "$darwin" = "yes" ; then
-     echo "Cocoa support     $cocoa"
- fi
--echo "pixman            $pixman"
--echo "SDL support       $sdl"
--echo "GTK support       $gtk"
-+echo "coroutine backend $coroutine"
-+echo "coroutine pool    $coroutine_pool"
- echo "curses support    $curses"
- echo "curl support      $curl"
--echo "mingw32 support   $mingw32"
--echo "Audio drivers     $audio_drv_list"
--echo "Block whitelist (rw) $block_drv_rw_whitelist"
--echo "Block whitelist (ro) $block_drv_ro_whitelist"
--echo "VirtFS support    $virtfs"
--echo "VNC support       $vnc"
--if test "$vnc" = "yes" ; then
--    echo "VNC TLS support   $vnc_tls"
--    echo "VNC SASL support  $vnc_sasl"
--    echo "VNC JPEG support  $vnc_jpeg"
--    echo "VNC PNG support   $vnc_png"
--    echo "VNC WS support    $vnc_ws"
--fi
--if test -n "$sparc_cpu"; then
--    echo "Target Sparc Arch $sparc_cpu"
--fi
--echo "xen support       $xen"
--echo "brlapi support    $brlapi"
--echo "bluez  support    $bluez"
- echo "Documentation     $docs"
--[ ! -z "$uname_release" ] && \
--echo "uname -r          $uname_release"
-+echo "fdatasync         $fdatasync"
-+echo "fdt support       $fdt"
-+echo "gcov              $gcov_tool"
-+echo "gcov enabled      $gcov"
-+echo "GTK support       $gtk"
-+echo "GlusterFS support $glusterfs"
-+echo "GLX support       $glx"
- echo "GUEST_BASE        $guest_base"
--echo "PIE               $pie"
--echo "vde support       $vde"
--echo "netmap support    $netmap"
--echo "Linux AIO support $linux_aio"
--echo "ATTR/XATTR support $attr"
--echo "Install blobs     $blobs"
- echo "KVM support       $kvm"
--echo "RDMA support      $rdma"
--echo "TCG interpreter   $tcg_interpreter"
--echo "fdt support       $fdt"
--echo "preadv support    $preadv"
--echo "fdatasync         $fdatasync"
--echo "madvise           $madvise"
--echo "posix_madvise     $posix_madvise"
--echo "sigev_thread_id   $sigev_thread_id"
--echo "uuid support      $uuid"
- echo "libcap-ng support $cap_ng"
--echo "vhost-net support $vhost_net"
--echo "vhost-scsi support $vhost_scsi"
--echo "Trace backend     $trace_backend"
--echo "Trace output file $trace_file-<pid>"
--echo "spice support     $spice ($spice_protocol_version/$spice_server_version)"
--echo "rbd support       $rbd"
--echo "xfsctl support    $xfs"
--echo "nss used          $smartcard_nss"
--echo "libusb            $libusb"
--echo "usb net redir     $usb_redir"
--echo "GLX support       $glx"
- if test "$libiscsi_version" = "1.4.0"; then
- echo "libiscsi support  $libiscsi (1.4.0)"
- else
- echo "libiscsi support  $libiscsi"
- fi
--echo "build guest agent $guest_agent"
-+echo "libssh2 support   $libssh2"
-+echo "libusb            $libusb"
-+echo "Linux AIO support $linux_aio"
-+echo "madvise           $madvise"
-+echo "mingw32 support   $mingw32"
-+echo "netmap support    $netmap"
-+echo "nss used          $smartcard_nss"
-+echo "pixman            $pixman"
-+echo "preadv support    $preadv"
-+echo "posix_madvise     $posix_madvise"
- echo "QGA VSS support   $guest_agent_with_vss"
-+echo "QOM debugging     $qom_cast_debug"
-+echo "rbd support       $rbd"
-+echo "RDMA support      $rdma"
-+echo "SDL support       $sdl"
- echo "seccomp support   $seccomp"
--echo "coroutine backend $coroutine"
--echo "coroutine pool    $coroutine_pool"
--echo "GlusterFS support $glusterfs"
--echo "virtio-blk-data-plane $virtio_blk_data_plane"
--echo "gcov              $gcov_tool"
--echo "gcov enabled      $gcov"
-+echo "sigev_thread_id   $sigev_thread_id"
-+echo "spice support     $spice ($spice_protocol_version/$spice_server_version)"
-+echo "TCG interpreter   $tcg_interpreter"
- echo "TPM support       $tpm"
--echo "libssh2 support   $libssh2"
- echo "TPM passthrough   $tpm_passthrough"
--echo "QOM debugging     $qom_cast_debug"
-+echo "Trace backend     $trace_backend"
-+echo "Trace output file $trace_file-<pid>"
-+echo "usb net redir     $usb_redir"
-+echo "uuid support      $uuid"
-+echo "vde support       $vde"
- echo "vhdx              $vhdx"
-+echo "vhost-net support $vhost_net"
-+echo "vhost-scsi support $vhost_scsi"
-+echo "VirtFS support    $virtfs"
-+echo "VNC support       $vnc"
-+if test "$vnc" = "yes" ; then
-+    echo "VNC TLS support   $vnc_tls"
-+    echo "VNC SASL support  $vnc_sasl"
-+    echo "VNC JPEG support  $vnc_jpeg"
-+    echo "VNC PNG support   $vnc_png"
-+    echo "VNC WS support    $vnc_ws"
-+fi
-+echo "virtio-blk-data-plane $virtio_blk_data_plane"
-+echo "xen support       $xen"
-+echo "xfsctl support    $xfs"
+-Advanced options (experts only):
++Advanced options, build (experts only):
+   --source-path=PATH       path of source code [$source_path]
+   --cross-prefix=PREFIX    use PREFIX for compile tools [$cross_prefix]
+   --cc=CC                  use C compiler CC [$cc]
+@@ -1135,16 +1135,18 @@ Advanced options (experts only):
+   --disable-sparse         disable sparse checker (default)
+   --disable-strip          disable stripping binaries
+   --disable-werror         disable compilation abort on warning
+-  --disable-sdl            disable SDL
+-  --enable-sdl             enable SDL
+-  --disable-gtk            disable gtk UI
+-  --enable-gtk             enable gtk UI
+-  --disable-virtfs         disable VirtFS
+-  --enable-virtfs          enable VirtFS
+-  --disable-vnc            disable VNC
+-  --enable-vnc             enable VNC
+-  --disable-cocoa          disable Cocoa (Mac OS X only)
+-  --enable-cocoa           enable Cocoa (default on Mac OS X)
++  --disable-attr           disables attr and xattr support
++  --enable-attr            enable attr and xattr support
++  --enable-pie             build Position Independent Executables
++  --disable-pie            do not build Position Independent Executables
++  --cpu=CPU                Build for host CPU [$cpu]
++  --disable-blobs          disable installing provided firmware blobs
++  --enable-gcov            enable test coverage analysis with gcov
++  --gcov=GCOV              use specified gcov [$gcov_tool]
++  --enable-docs            enable documentation build
++  --disable-docs           disable documentation build
++
++Advanced options, features (experts only):
+   --audio-drv-list=LIST    set audio drivers list:
+                            Available drivers: $audio_possible_drivers
+   --block-drv-whitelist=L  Same as --block-drv-rw-whitelist=L
+@@ -1154,105 +1156,107 @@ Advanced options (experts only):
+   --block-drv-ro-whitelist=L
+                            set block driver read-only whitelist
+                            (affects only QEMU, not qemu-img)
+-  --disable-xen            disable xen backend driver support
+-  --enable-xen             enable xen backend driver support
+-  --disable-xen-pci-passthrough
+-  --enable-xen-pci-passthrough
+   --disable-brlapi         disable BrlAPI
+   --enable-brlapi          enable BrlAPI
+-  --disable-vnc-tls        disable TLS encryption for VNC server
+-  --enable-vnc-tls         enable TLS encryption for VNC server
+-  --disable-vnc-sasl       disable SASL encryption for VNC server
+-  --enable-vnc-sasl        enable SASL encryption for VNC server
+-  --disable-vnc-jpeg       disable JPEG lossy compression for VNC server
+-  --enable-vnc-jpeg        enable JPEG lossy compression for VNC server
+-  --disable-vnc-png        disable PNG compression for VNC server (default)
+-  --enable-vnc-png         enable PNG compression for VNC server
+-  --disable-vnc-ws         disable Websockets support for VNC server
+-  --enable-vnc-ws          enable Websockets support for VNC server
+-  --disable-curses         disable curses output
+-  --enable-curses          enable curses output
++  --disable-bluez          disable bluez stack connectivity
++  --enable-bluez           enable bluez stack connectivity
++  --disable-cap-ng         disable libcap-ng support
++  --enable-cap-ng          enable libcap-ng support
++  --disable-cocoa          disable Cocoa (Mac OS X only)
++  --enable-cocoa           enable Cocoa (default on Mac OS X)
++  --with-coroutine=BACKEND coroutine backend. Supported options:
++                           gthread, ucontext, sigaltstack, windows
++  --disable-coroutine-pool disable coroutine freelist (worse performance)
++  --enable-coroutine-pool  enable coroutine freelist (better performance)
+   --disable-curl           disable curl connectivity
+   --enable-curl            enable curl connectivity
++  --disable-curses         disable curses output
++  --enable-curses          enable curses output
+   --disable-fdt            disable fdt device tree
+   --enable-fdt             enable fdt device tree
+-  --disable-bluez          disable bluez stack connectivity
+-  --enable-bluez           enable bluez stack connectivity
+-  --disable-slirp          disable SLIRP userspace network connectivity
+-  --disable-kvm            disable KVM acceleration support
+-  --enable-kvm             enable KVM acceleration support
++  --fmod-lib               path to FMOD library
++  --fmod-inc               path to FMOD includes
++  --enable-glusterfs       enable GlusterFS backend
++  --disable-glusterfs      disable GlusterFS backend
++  --disable-gtk            disable gtk UI
++  --enable-gtk             enable gtk UI
++  --enable-guest-base      enable GUEST_BASE support for usermode
++                           emulation targets
++  --disable-guest-base     disable GUEST_BASE support
+   --disable-rdma           disable RDMA-based migration support
+   --enable-rdma            enable RDMA-based migration support
+-  --enable-tcg-interpreter enable TCG with bytecode interpreter (TCI)
++  --disable-kvm            disable KVM acceleration support
++  --enable-kvm             enable KVM acceleration support
++  --disable-libiscsi       disable iscsi support
++  --enable-libiscsi        enable iscsi support
++  --disable-libssh2        disable ssh block device support
++  --enable-libssh2         enable ssh block device support
++  --disable-libusb         disable libusb (for usb passthrough)
++  --enable-libusb          enable libusb (for usb passthrough)
++  --disable-linux-aio      disable Linux AIO support
++  --enable-linux-aio       enable Linux AIO support
++  --disable-netmap         disable support for netmap network
++  --enable-netmap          enable support for netmap network
++  --enable-rbd             enable building the rados block device (rbd)
++  --disable-sdl            disable SDL
++  --enable-sdl             enable SDL
++  --disable-seccomp        disable seccomp support
++  --enable-seccomp         enables seccomp support
++  --disable-slirp          disable SLIRP userspace network connectivity
++  --disable-smartcard-nss  disable smartcard nss support
++  --enable-smartcard-nss   enable smartcard nss support
++  --disable-spice          disable spice
++  --enable-spice           enable spice
+   --enable-system          enable all system emulation targets
+   --disable-system         disable all system emulation targets
++  --enable-tcg-interpreter enable TCG with bytecode interpreter (TCI)
++  --enable-tpm             enable TPM support
++  --enable-trace-backend=B Set trace backend
++                           Available backends: $($python $source_path/scripts/tracetool.py --list-backends)
++  --with-trace-file=NAME   Full PATH,NAME of file to store traces
++                           Default:trace-<pid>
+   --enable-user            enable supported user emulation targets
+   --disable-user           disable all user emulation targets
+-  --enable-linux-user      enable all linux usermode emulation targets
+-  --disable-linux-user     disable all linux usermode emulation targets
+   --enable-bsd-user        enable all BSD usermode emulation targets
+   --disable-bsd-user       disable all BSD usermode emulation targets
+-  --enable-guest-base      enable GUEST_BASE support for usermode
+-                           emulation targets
+-  --disable-guest-base     disable GUEST_BASE support
+-  --enable-pie             build Position Independent Executables
+-  --disable-pie            do not build Position Independent Executables
+-  --fmod-lib               path to FMOD library
+-  --fmod-inc               path to FMOD includes
++  --enable-linux-user      enable all linux usermode emulation targets
++  --disable-linux-user     disable all linux usermode emulation targets
+   --oss-lib                path to OSS library
+   --enable-uname-release=R Return R for uname -r in usermode emulation
+-  --cpu=CPU                Build for host CPU [$cpu]
++  --disable-usb-redir      disable usb network redirection support
++  --enable-usb-redir       enable usb network redirection support
+   --disable-uuid           disable uuid support
+   --enable-uuid            enable uuid support
+   --disable-vde            disable support for vde network
+   --enable-vde             enable support for vde network
+-  --disable-netmap         disable support for netmap network
+-  --enable-netmap          enable support for netmap network
+-  --disable-linux-aio      disable Linux AIO support
+-  --enable-linux-aio       enable Linux AIO support
+-  --disable-cap-ng         disable libcap-ng support
+-  --enable-cap-ng          enable libcap-ng support
+-  --disable-attr           disables attr and xattr support
+-  --enable-attr            enable attr and xattr support
+-  --disable-blobs          disable installing provided firmware blobs
+-  --enable-docs            enable documentation build
+-  --disable-docs           disable documentation build
++  --disable-vhdx           disables support for the Microsoft VHDX image format
++  --enable-vhdx            enable support for the Microsoft VHDX image format
+   --disable-vhost-net      disable vhost-net acceleration support
+   --enable-vhost-net       enable vhost-net acceleration support
+-  --enable-trace-backend=B Set trace backend
+-                           Available backends: $($python $source_path/scripts/tracetool.py --list-backends)
+-  --with-trace-file=NAME   Full PATH,NAME of file to store traces
+-                           Default:trace-<pid>
+-  --disable-spice          disable spice
+-  --enable-spice           enable spice
+-  --enable-rbd             enable building the rados block device (rbd)
+-  --disable-libiscsi       disable iscsi support
+-  --enable-libiscsi        enable iscsi support
+-  --disable-smartcard-nss  disable smartcard nss support
+-  --enable-smartcard-nss   enable smartcard nss support
+-  --disable-libusb         disable libusb (for usb passthrough)
+-  --enable-libusb          enable libusb (for usb passthrough)
+-  --disable-usb-redir      disable usb network redirection support
+-  --enable-usb-redir       enable usb network redirection support
++  --disable-virtfs         disable VirtFS
++  --enable-virtfs          enable VirtFS
++  --disable-vnc            disable VNC
++  --enable-vnc             enable VNC
++  --disable-vnc-jpeg       disable JPEG lossy compression for VNC server
++  --enable-vnc-jpeg        enable JPEG lossy compression for VNC server
++  --disable-vnc-png        disable PNG compression for VNC server (default)
++  --enable-vnc-png         enable PNG compression for VNC server
++  --disable-vnc-sasl       disable SASL encryption for VNC server
++  --enable-vnc-sasl        enable SASL encryption for VNC server
++  --disable-vnc-tls        disable TLS encryption for VNC server
++  --enable-vnc-tls         enable TLS encryption for VNC server
++  --disable-vnc-ws         disable Websockets support for VNC server
++  --enable-vnc-ws          enable Websockets support for VNC server
++  --with-win-sdk=SDK-path  path to Windows Platform SDK (to build VSS .tlb)
++  --disable-xen            disable xen backend driver support
++  --enable-xen             enable xen backend driver support
++  --disable-xen-pci-passthrough
++  --enable-xen-pci-passthrough
++
++Advanced options, Guest Agent (experts only):
+   --disable-guest-agent    disable building of the QEMU Guest Agent
+   --enable-guest-agent     enable building of the QEMU Guest Agent
+   --with-vss-sdk=SDK-path  enable Windows VSS support in QEMU Guest Agent
+-  --with-win-sdk=SDK-path  path to Windows Platform SDK (to build VSS .tlb)
+-  --disable-seccomp        disable seccomp support
+-  --enable-seccomp         enables seccomp support
+-  --with-coroutine=BACKEND coroutine backend. Supported options:
+-                           gthread, ucontext, sigaltstack, windows
+-  --disable-coroutine-pool disable coroutine freelist (worse performance)
+-  --enable-coroutine-pool  enable coroutine freelist (better performance)
+-  --enable-glusterfs       enable GlusterFS backend
+-  --disable-glusterfs      disable GlusterFS backend
+-  --enable-gcov            enable test coverage analysis with gcov
+-  --gcov=GCOV              use specified gcov [$gcov_tool]
+-  --enable-tpm             enable TPM support
+-  --disable-libssh2        disable ssh block device support
+-  --enable-libssh2         enable ssh block device support
+-  --disable-vhdx           disables support for the Microsoft VHDX image format
+-  --enable-vhdx            enable support for the Microsoft VHDX image format
  
- if test "$sdl_too_old" = "yes"; then
- echo "-> Your SDL version is too old - please upgrade to have SDL support"
+ NOTE: The object files are built at the place where configure is launched
+ EOF
 -- 
 1.8.4.2
 
