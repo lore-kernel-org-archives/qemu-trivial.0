@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W6VkU-0000Er-8L
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2014 20:39:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33557)
+	id 1W6VkX-0000L1-1X
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2014 20:40:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33568)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stewart@river.localdomain>) id 1W6VkI-0008Sj-6P
-	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:55 -0500
+	(envelope-from <stewart@river.localdomain>) id 1W6VkJ-0008Sl-5a
+	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stewart@river.localdomain>) id 1W6Vk7-0000RL-DQ
-	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:46 -0500
-Received: from e28smtp03.in.ibm.com ([122.248.162.3]:60083)
+	(envelope-from <stewart@river.localdomain>) id 1W6VkA-0000S7-5H
+	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:47 -0500
+Received: from e23smtp01.au.ibm.com ([202.81.31.143]:47067)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stewart@river.localdomain>) id 1W6Vk6-0000QZ-H0
-	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:35 -0500
+	(envelope-from <stewart@river.localdomain>) id 1W6Vk9-0000RR-4R
+	for qemu-trivial@nongnu.org; Thu, 23 Jan 2014 20:39:38 -0500
 Received: from /spool/local
-	by e28smtp03.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e23smtp01.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <stewart@river.localdomain>;
-	Fri, 24 Jan 2014 07:09:32 +0530
-Received: from d28dlp01.in.ibm.com (9.184.220.126)
-	by e28smtp03.in.ibm.com (192.168.1.133) with IBM ESMTP SMTP Gateway:
+	Fri, 24 Jan 2014 11:39:32 +1000
+Received: from d23dlp03.au.ibm.com (202.81.31.214)
+	by e23smtp01.au.ibm.com (202.81.31.207) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 24 Jan 2014 07:09:29 +0530
-Received: from d28relay05.in.ibm.com (d28relay05.in.ibm.com [9.184.220.62])
-	by d28dlp01.in.ibm.com (Postfix) with ESMTP id 238EDE004A;
-	Fri, 24 Jan 2014 07:12:30 +0530 (IST)
-Received: from d28av05.in.ibm.com (d28av05.in.ibm.com [9.184.220.67])
-	by d28relay05.in.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
-	s0O1dTtg66977996; Fri, 24 Jan 2014 07:09:29 +0530
-Received: from d28av05.in.ibm.com (localhost [127.0.0.1])
-	by d28av05.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	s0O1dSX6029498; Fri, 24 Jan 2014 07:09:28 +0530
+	Fri, 24 Jan 2014 11:39:30 +1000
+Received: from d23relay05.au.ibm.com (d23relay05.au.ibm.com [9.190.235.152])
+	by d23dlp03.au.ibm.com (Postfix) with ESMTP id C2F333578052;
+	Fri, 24 Jan 2014 12:39:29 +1100 (EST)
+Received: from d23av02.au.ibm.com (d23av02.au.ibm.com [9.190.235.138])
+	by d23relay05.au.ibm.com (8.13.8/8.13.8/NCO v10.0) with ESMTP id
+	s0O1KElU44630180; Fri, 24 Jan 2014 12:20:15 +1100
+Received: from d23av02.au.ibm.com (localhost [127.0.0.1])
+	by d23av02.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	s0O1dRgI029143; Fri, 24 Jan 2014 12:39:27 +1100
 Received: from river.localdomain (river.au.ibm.com [9.185.121.78])
-	by d28av05.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	s0O1dRcm029489; Fri, 24 Jan 2014 07:09:28 +0530
+	by d23av02.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	s0O1dRC3029140; Fri, 24 Jan 2014 12:39:27 +1100
 Received: by river.localdomain (Postfix, from userid 1000)
-	id 6BC7A2391FB8; Fri, 24 Jan 2014 12:39:27 +1100 (EST)
+	id 83D632391FBA; Fri, 24 Jan 2014 12:39:27 +1100 (EST)
 From: Stewart Smith <stewart@linux.vnet.ibm.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 24 Jan 2014 12:39:08 +1100
-Message-Id: <1390527551-22069-4-git-send-email-stewart@linux.vnet.ibm.com>
+Date: Fri, 24 Jan 2014 12:39:10 +1100
+Message-Id: <1390527551-22069-6-git-send-email-stewart@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.8.5.3
 In-Reply-To: <1390527551-22069-1-git-send-email-stewart@linux.vnet.ibm.com>
 References: <1390452896-20146-1-git-send-email-stewart@linux.vnet.ibm.com>
 	<1390527551-22069-1-git-send-email-stewart@linux.vnet.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 14012401-3864-0000-0000-00000C18A66A
+x-cbid: 14012401-1618-0000-0000-0000054F9A2C
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 122.248.162.3
+X-Received-From: 202.81.31.143
 Cc: qemu-trivial@nongnu.org, Stewart Smith <stewart@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH v2 3/6] configure: alphabetize output of
-	--help and separate into groups
+Subject: [Qemu-trivial] [PATCH v2 5/6] configure: add hints to a remedy for
+	feature_not_found errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,241 +62,320 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jan 2014 01:39:55 -0000
+X-List-Received-Date: Fri, 24 Jan 2014 01:39:56 -0000
 
-This should make it (slightly) easier to discover configure options.
-I've tried to separate out build options (e.g. gcov) from feature
-options (such as gtk).
+Modify feature_not_found to accept an optional second parameter to be
+printed after the generic feature not found error.
+
+Modify most calls to feature_not_found to provide hints as to the
+packages that may be missing. The few calls remaining without a remedy
+are ones I couldn't work out how to remedy myself.
 
 Signed-off-by: Stewart Smith <stewart@linux.vnet.ibm.com>
 ---
- configure | 174 ++++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 89 insertions(+), 85 deletions(-)
+ configure | 68 ++++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 35 insertions(+), 33 deletions(-)
 
 diff --git a/configure b/configure
-index e61708a..c225291 100755
+index e607ebf..4ad2de5 100755
 --- a/configure
 +++ b/configure
-@@ -1102,7 +1102,7 @@ Standard options:
- $(echo Available targets: $default_target_list | \
-   fold -s -w 53 | sed -e 's/^/                           /')
+@@ -1472,9 +1472,11 @@ esac
  
--Advanced options (experts only):
-+Advanced options, build (experts only):
-   --source-path=PATH       path of source code [$source_path]
-   --cross-prefix=PREFIX    use PREFIX for compile tools [$cross_prefix]
-   --cc=CC                  use C compiler CC [$cc]
-@@ -1135,16 +1135,18 @@ Advanced options (experts only):
-   --disable-sparse         disable sparse checker (default)
-   --disable-strip          disable stripping binaries
-   --disable-werror         disable compilation abort on warning
--  --disable-sdl            disable SDL
--  --enable-sdl             enable SDL
--  --disable-gtk            disable gtk UI
--  --enable-gtk             enable gtk UI
--  --disable-virtfs         disable VirtFS
--  --enable-virtfs          enable VirtFS
--  --disable-vnc            disable VNC
--  --enable-vnc             enable VNC
--  --disable-cocoa          disable Cocoa (Mac OS X only)
--  --enable-cocoa           enable Cocoa (default on Mac OS X)
-+  --disable-attr           disables attr and xattr support
-+  --enable-attr            enable attr and xattr support
-+  --enable-pie             build Position Independent Executables
-+  --disable-pie            do not build Position Independent Executables
-+  --cpu=CPU                Build for host CPU [$cpu]
-+  --disable-blobs          disable installing provided firmware blobs
-+  --enable-gcov            enable test coverage analysis with gcov
-+  --gcov=GCOV              use specified gcov [$gcov_tool]
-+  --enable-docs            enable documentation build
-+  --disable-docs           disable documentation build
-+
-+Advanced options, features (experts only):
-   --audio-drv-list=LIST    set audio drivers list:
-                            Available drivers: $audio_possible_drivers
-   --block-drv-whitelist=L  Same as --block-drv-rw-whitelist=L
-@@ -1154,105 +1156,107 @@ Advanced options (experts only):
-   --block-drv-ro-whitelist=L
-                            set block driver read-only whitelist
-                            (affects only QEMU, not qemu-img)
--  --disable-xen            disable xen backend driver support
--  --enable-xen             enable xen backend driver support
--  --disable-xen-pci-passthrough
--  --enable-xen-pci-passthrough
-   --disable-brlapi         disable BrlAPI
-   --enable-brlapi          enable BrlAPI
--  --disable-vnc-tls        disable TLS encryption for VNC server
--  --enable-vnc-tls         enable TLS encryption for VNC server
--  --disable-vnc-sasl       disable SASL encryption for VNC server
--  --enable-vnc-sasl        enable SASL encryption for VNC server
--  --disable-vnc-jpeg       disable JPEG lossy compression for VNC server
--  --enable-vnc-jpeg        enable JPEG lossy compression for VNC server
--  --disable-vnc-png        disable PNG compression for VNC server (default)
--  --enable-vnc-png         enable PNG compression for VNC server
--  --disable-vnc-ws         disable Websockets support for VNC server
--  --enable-vnc-ws          enable Websockets support for VNC server
--  --disable-curses         disable curses output
--  --enable-curses          enable curses output
-+  --disable-bluez          disable bluez stack connectivity
-+  --enable-bluez           enable bluez stack connectivity
-+  --disable-cap-ng         disable libcap-ng support
-+  --enable-cap-ng          enable libcap-ng support
-+  --disable-cocoa          disable Cocoa (Mac OS X only)
-+  --enable-cocoa           enable Cocoa (default on Mac OS X)
-+  --with-coroutine=BACKEND coroutine backend. Supported options:
-+                           gthread, ucontext, sigaltstack, windows
-+  --disable-coroutine-pool disable coroutine freelist (worse performance)
-+  --enable-coroutine-pool  enable coroutine freelist (better performance)
-   --disable-curl           disable curl connectivity
-   --enable-curl            enable curl connectivity
-+  --disable-curses         disable curses output
-+  --enable-curses          enable curses output
-   --disable-fdt            disable fdt device tree
-   --enable-fdt             enable fdt device tree
--  --disable-bluez          disable bluez stack connectivity
--  --enable-bluez           enable bluez stack connectivity
--  --disable-slirp          disable SLIRP userspace network connectivity
--  --disable-kvm            disable KVM acceleration support
--  --enable-kvm             enable KVM acceleration support
-+  --fmod-lib               path to FMOD library
-+  --fmod-inc               path to FMOD includes
-+  --enable-glusterfs       enable GlusterFS backend
-+  --disable-glusterfs      disable GlusterFS backend
-+  --disable-gtk            disable gtk UI
-+  --enable-gtk             enable gtk UI
-+  --enable-guest-base      enable GUEST_BASE support for usermode
-+                           emulation targets
-+  --disable-guest-base     disable GUEST_BASE support
-   --disable-rdma           disable RDMA-based migration support
-   --enable-rdma            enable RDMA-based migration support
--  --enable-tcg-interpreter enable TCG with bytecode interpreter (TCI)
-+  --disable-kvm            disable KVM acceleration support
-+  --enable-kvm             enable KVM acceleration support
-+  --disable-libiscsi       disable iscsi support
-+  --enable-libiscsi        enable iscsi support
-+  --disable-libssh2        disable ssh block device support
-+  --enable-libssh2         enable ssh block device support
-+  --disable-libusb         disable libusb (for usb passthrough)
-+  --enable-libusb          enable libusb (for usb passthrough)
-+  --disable-linux-aio      disable Linux AIO support
-+  --enable-linux-aio       enable Linux AIO support
-+  --disable-netmap         disable support for netmap network
-+  --enable-netmap          enable support for netmap network
-+  --enable-rbd             enable building the rados block device (rbd)
-+  --disable-sdl            disable SDL
-+  --enable-sdl             enable SDL
-+  --disable-seccomp        disable seccomp support
-+  --enable-seccomp         enables seccomp support
-+  --disable-slirp          disable SLIRP userspace network connectivity
-+  --disable-smartcard-nss  disable smartcard nss support
-+  --enable-smartcard-nss   enable smartcard nss support
-+  --disable-spice          disable spice
-+  --enable-spice           enable spice
-   --enable-system          enable all system emulation targets
-   --disable-system         disable all system emulation targets
-+  --enable-tcg-interpreter enable TCG with bytecode interpreter (TCI)
-+  --enable-tpm             enable TPM support
-+  --enable-trace-backend=B Set trace backend
-+                           Available backends: $($python $source_path/scripts/tracetool.py --list-backends)
-+  --with-trace-file=NAME   Full PATH,NAME of file to store traces
-+                           Default:trace-<pid>
-   --enable-user            enable supported user emulation targets
-   --disable-user           disable all user emulation targets
--  --enable-linux-user      enable all linux usermode emulation targets
--  --disable-linux-user     disable all linux usermode emulation targets
-   --enable-bsd-user        enable all BSD usermode emulation targets
-   --disable-bsd-user       disable all BSD usermode emulation targets
--  --enable-guest-base      enable GUEST_BASE support for usermode
--                           emulation targets
--  --disable-guest-base     disable GUEST_BASE support
--  --enable-pie             build Position Independent Executables
--  --disable-pie            do not build Position Independent Executables
--  --fmod-lib               path to FMOD library
--  --fmod-inc               path to FMOD includes
-+  --enable-linux-user      enable all linux usermode emulation targets
-+  --disable-linux-user     disable all linux usermode emulation targets
-   --oss-lib                path to OSS library
-   --enable-uname-release=R Return R for uname -r in usermode emulation
--  --cpu=CPU                Build for host CPU [$cpu]
-+  --disable-usb-redir      disable usb network redirection support
-+  --enable-usb-redir       enable usb network redirection support
-   --disable-uuid           disable uuid support
-   --enable-uuid            enable uuid support
-   --disable-vde            disable support for vde network
-   --enable-vde             enable support for vde network
--  --disable-netmap         disable support for netmap network
--  --enable-netmap          enable support for netmap network
--  --disable-linux-aio      disable Linux AIO support
--  --enable-linux-aio       enable Linux AIO support
--  --disable-cap-ng         disable libcap-ng support
--  --enable-cap-ng          enable libcap-ng support
--  --disable-attr           disables attr and xattr support
--  --enable-attr            enable attr and xattr support
--  --disable-blobs          disable installing provided firmware blobs
--  --enable-docs            enable documentation build
--  --disable-docs           disable documentation build
-+  --disable-vhdx           disables support for the Microsoft VHDX image format
-+  --enable-vhdx            enable support for the Microsoft VHDX image format
-   --disable-vhost-net      disable vhost-net acceleration support
-   --enable-vhost-net       enable vhost-net acceleration support
--  --enable-trace-backend=B Set trace backend
--                           Available backends: $($python $source_path/scripts/tracetool.py --list-backends)
--  --with-trace-file=NAME   Full PATH,NAME of file to store traces
--                           Default:trace-<pid>
--  --disable-spice          disable spice
--  --enable-spice           enable spice
--  --enable-rbd             enable building the rados block device (rbd)
--  --disable-libiscsi       disable iscsi support
--  --enable-libiscsi        enable iscsi support
--  --disable-smartcard-nss  disable smartcard nss support
--  --enable-smartcard-nss   enable smartcard nss support
--  --disable-libusb         disable libusb (for usb passthrough)
--  --enable-libusb          enable libusb (for usb passthrough)
--  --disable-usb-redir      disable usb network redirection support
--  --enable-usb-redir       enable usb network redirection support
-+  --disable-virtfs         disable VirtFS
-+  --enable-virtfs          enable VirtFS
-+  --disable-vnc            disable VNC
-+  --enable-vnc             enable VNC
-+  --disable-vnc-jpeg       disable JPEG lossy compression for VNC server
-+  --enable-vnc-jpeg        enable JPEG lossy compression for VNC server
-+  --disable-vnc-png        disable PNG compression for VNC server (default)
-+  --enable-vnc-png         enable PNG compression for VNC server
-+  --disable-vnc-sasl       disable SASL encryption for VNC server
-+  --enable-vnc-sasl        enable SASL encryption for VNC server
-+  --disable-vnc-tls        disable TLS encryption for VNC server
-+  --enable-vnc-tls         enable TLS encryption for VNC server
-+  --disable-vnc-ws         disable Websockets support for VNC server
-+  --enable-vnc-ws          enable Websockets support for VNC server
-+  --with-win-sdk=SDK-path  path to Windows Platform SDK (to build VSS .tlb)
-+  --disable-xen            disable xen backend driver support
-+  --enable-xen             enable xen backend driver support
-+  --disable-xen-pci-passthrough
-+  --enable-xen-pci-passthrough
-+
-+Advanced options, Guest Agent (experts only):
-   --disable-guest-agent    disable building of the QEMU Guest Agent
-   --enable-guest-agent     enable building of the QEMU Guest Agent
-   --with-vss-sdk=SDK-path  enable Windows VSS support in QEMU Guest Agent
--  --with-win-sdk=SDK-path  path to Windows Platform SDK (to build VSS .tlb)
--  --disable-seccomp        disable seccomp support
--  --enable-seccomp         enables seccomp support
--  --with-coroutine=BACKEND coroutine backend. Supported options:
--                           gthread, ucontext, sigaltstack, windows
--  --disable-coroutine-pool disable coroutine freelist (worse performance)
--  --enable-coroutine-pool  enable coroutine freelist (better performance)
--  --enable-glusterfs       enable GlusterFS backend
--  --disable-glusterfs      disable GlusterFS backend
--  --enable-gcov            enable test coverage analysis with gcov
--  --gcov=GCOV              use specified gcov [$gcov_tool]
--  --enable-tpm             enable TPM support
--  --disable-libssh2        disable ssh block device support
--  --enable-libssh2         enable ssh block device support
--  --disable-vhdx           disables support for the Microsoft VHDX image format
--  --enable-vhdx            enable support for the Microsoft VHDX image format
+ feature_not_found() {
+   feature=$1
++  remedy=$2
  
- NOTE: The object files are built at the place where configure is launched
+   error_exit "User requested feature $feature" \
+-      "configure was not able to find it"
++      "configure was not able to find it." \
++      "$remedy"
+ }
+ 
+ # ---
+@@ -1522,7 +1524,7 @@ int main(void) {
+ }
  EOF
+   if ! compile_object ; then
+-    feature_not_found "nptl"
++    feature_not_found "nptl" "Install glibc and linux kernel headers."
+   fi
+ fi
+ 
+@@ -1553,7 +1555,7 @@ if test "$seccomp" != "no" ; then
+ 	seccomp="yes"
+     else
+ 	if test "$seccomp" = "yes"; then
+-            feature_not_found "libseccomp"
++            feature_not_found "libseccomp" "Install libseccomp devel >= 2.1.0"
+ 	fi
+ 	seccomp="no"
+     fi
+@@ -1578,7 +1580,7 @@ EOF
+   if ! compile_prog "" "$xen_libs" ; then
+     # Xen not found
+     if test "$xen" = "yes" ; then
+-      feature_not_found "xen"
++      feature_not_found "xen" "Install xen devel"
+     fi
+     xen=no
+ 
+@@ -1701,7 +1703,7 @@ EOF
+   # Xen version unsupported
+   else
+     if test "$xen" = "yes" ; then
+-      feature_not_found "xen (unsupported version)"
++      feature_not_found "xen (unsupported version)" "Install supported xen (e.g. 4.0, 3.4, 3.3)"
+     fi
+     xen=no
+   fi
+@@ -1750,7 +1752,7 @@ if test "$sparse" != "no" ; then
+     sparse=yes
+   else
+     if test "$sparse" = "yes" ; then
+-      feature_not_found "sparse"
++      feature_not_found "sparse" "Install sparse binary"
+     fi
+     sparse=no
+   fi
+@@ -1772,7 +1774,7 @@ if test "$gtk" != "no"; then
+     fi
+     if ! $pkg_config --exists "$gtkpackage >= $gtkversion"; then
+         if test "$gtk" = "yes" ; then
+-            feature_not_found "gtk"
++            feature_not_found "gtk" "Install gtk2 or gtk3 (requires --with-gtkabi=3.0 option to configure) devel"
+         fi
+         gtk="no"
+     elif ! $pkg_config --exists "$vtepackage >= $vteversion"; then
+@@ -1807,7 +1809,7 @@ elif has ${sdl_config}; then
+   _sdlversion=`$sdlconfig --version | sed 's/[^0-9]//g'`
+ else
+   if test "$sdl" = "yes" ; then
+-    feature_not_found "sdl"
++    feature_not_found "sdl" "Install SDL devel"
+   fi
+   sdl=no
+ fi
+@@ -1851,7 +1853,7 @@ EOF
+     fi # static link
+   else # sdl not found
+     if test "$sdl" = "yes" ; then
+-      feature_not_found "sdl"
++      feature_not_found "sdl" "Install SDL devel"
+     fi
+     sdl=no
+   fi # sdl compile test
+@@ -1917,10 +1919,10 @@ EOF
+     QEMU_CFLAGS="$QEMU_CFLAGS $vnc_tls_cflags"
+   else
+     if test "$vnc_tls" = "yes" ; then
+-      feature_not_found "vnc-tls"
++      feature_not_found "vnc-tls" "Install gnutls devel"
+     fi
+     if test "$vnc_ws" = "yes" ; then
+-      feature_not_found "vnc-ws"
++      feature_not_found "vnc-ws" "Install gnutls devel"
+     fi
+     vnc_tls=no
+     vnc_ws=no
+@@ -1944,7 +1946,7 @@ EOF
+     QEMU_CFLAGS="$QEMU_CFLAGS $vnc_sasl_cflags"
+   else
+     if test "$vnc_sasl" = "yes" ; then
+-      feature_not_found "vnc-sasl"
++      feature_not_found "vnc-sasl" "Install Cyrus SASL devel"
+     fi
+     vnc_sasl=no
+   fi
+@@ -1966,7 +1968,7 @@ EOF
+     QEMU_CFLAGS="$QEMU_CFLAGS $vnc_jpeg_cflags"
+   else
+     if test "$vnc_jpeg" = "yes" ; then
+-      feature_not_found "vnc-jpeg"
++      feature_not_found "vnc-jpeg" "Install libjpeg-turbo devel"
+     fi
+     vnc_jpeg=no
+   fi
+@@ -1998,7 +2000,7 @@ EOF
+     QEMU_CFLAGS="$QEMU_CFLAGS $vnc_png_cflags"
+   else
+     if test "$vnc_png" = "yes" ; then
+-      feature_not_found "vnc-png"
++      feature_not_found "vnc-png" "Install libpng devel"
+     fi
+     vnc_png=no
+   fi
+@@ -2042,7 +2044,7 @@ EOF
+     libs_tools="$uuid_libs $libs_tools"
+   else
+     if test "$uuid" = "yes" ; then
+-      feature_not_found "uuid"
++      feature_not_found "uuid" "Install libuuid devel"
+     fi
+     uuid=no
+   fi
+@@ -2076,7 +2078,7 @@ EOF
+     xfs="yes"
+   else
+     if test "$xfs" = "yes" ; then
+-      feature_not_found "xfs"
++      feature_not_found "xfs" "Instal xfsprogs/xfslibs devel"
+     fi
+     xfs=no
+   fi
+@@ -2102,7 +2104,7 @@ EOF
+     libs_tools="$vde_libs $libs_tools"
+   else
+     if test "$vde" = "yes" ; then
+-      feature_not_found "vde"
++      feature_not_found "vde" "Install vde (Virtual Distributed Ethernet) devel"
+     fi
+     vde=no
+   fi
+@@ -2145,7 +2147,7 @@ EOF
+     libs_tools="$cap_libs $libs_tools"
+   else
+     if test "$cap_ng" = "yes" ; then
+-      feature_not_found "cap_ng"
++      feature_not_found "cap_ng" "Install libcap-ng devel"
+     fi
+     cap_ng=no
+   fi
+@@ -2250,7 +2252,7 @@ EOF
+     libs_softmmu="$brlapi_libs $libs_softmmu"
+   else
+     if test "$brlapi" = "yes" ; then
+-      feature_not_found "brlapi"
++      feature_not_found "brlapi" "Install brlapi devel"
+     fi
+     brlapi=no
+   fi
+@@ -2287,7 +2289,7 @@ EOF
+     curses=yes
+   else
+     if test "$curses" = "yes" ; then
+-      feature_not_found "curses"
++      feature_not_found "curses" "Install ncurses devel"
+     fi
+     curses=no
+   fi
+@@ -2313,7 +2315,7 @@ EOF
+     libs_softmmu="$curl_libs $libs_softmmu"
+   else
+     if test "$curl" = "yes" ; then
+-      feature_not_found "curl"
++      feature_not_found "curl" "Install libcurl devel"
+     fi
+     curl=no
+   fi
+@@ -2333,7 +2335,7 @@ EOF
+     libs_softmmu="$bluez_libs $libs_softmmu"
+   else
+     if test "$bluez" = "yes" ; then
+-      feature_not_found "bluez"
++      feature_not_found "bluez" "Install bluez-libs/libbluetooth devel"
+     fi
+     bluez="no"
+   fi
+@@ -2469,7 +2471,7 @@ EOF
+     libs_softmmu="$rbd_libs $libs_softmmu"
+   else
+     if test "$rbd" = "yes" ; then
+-      feature_not_found "rados block device"
++      feature_not_found "rados block device" "Install librbd/ceph devel"
+     fi
+     rbd=no
+   fi
+@@ -2535,7 +2537,7 @@ EOF
+     libs_tools="$libs_tools -laio"
+   else
+     if test "$linux_aio" = "yes" ; then
+-      feature_not_found "linux AIO"
++      feature_not_found "linux AIO" "Install libaio devel"
+     fi
+     linux_aio=no
+   fi
+@@ -2583,7 +2585,7 @@ EOF
+     libattr=yes
+   else
+     if test "$attr" = "yes" ; then
+-      feature_not_found "ATTR"
++      feature_not_found "ATTR" "Install libc6 or libattr devel"
+     fi
+     attr=no
+   fi
+@@ -2687,7 +2689,7 @@ EOF
+     glx=yes
+   else
+     if test "$glx" = "yes" ; then
+-      feature_not_found "glx"
++      feature_not_found "glx" "Install GL devel (e.g. MESA)"
+     fi
+     glx_libs=
+     glx=no
+@@ -2709,7 +2711,7 @@ if test "$glusterfs" != "no" ; then
+     fi
+   else
+     if test "$glusterfs" = "yes" ; then
+-      feature_not_found "GlusterFS backend support"
++      feature_not_found "GlusterFS backend support" "Install glusterfs-api devel"
+     fi
+     glusterfs="no"
+   fi
+@@ -3029,7 +3031,7 @@ if test "$docs" != "no" ; then
+     docs=yes
+   else
+     if test "$docs" = "yes" ; then
+-      feature_not_found "docs"
++      feature_not_found "docs" "Install texinfo and Perl/perl-podlators"
+     fi
+     docs=no
+   fi
+@@ -3078,7 +3080,7 @@ EOF
+     LIBS="$LIBS -liscsi"
+   else
+     if test "$libiscsi" = "yes" ; then
+-      feature_not_found "libiscsi"
++      feature_not_found "libiscsi" "Install libiscsi devel"
+     fi
+     libiscsi="no"
+   fi
+@@ -3162,7 +3164,7 @@ EOF
+     spice_server_version=$($pkg_config --modversion spice-server)
+   else
+     if test "$spice" = "yes" ; then
+-      feature_not_found "spice"
++      feature_not_found "spice" "Install spice-server and spice-protocol devel"
+     fi
+     spice="no"
+   fi
+@@ -3212,7 +3214,7 @@ if test "$libusb" != "no" ; then
+         libs_softmmu="$libs_softmmu $libusb_libs"
+     else
+         if test "$libusb" = "yes"; then
+-            feature_not_found "libusb"
++            feature_not_found "libusb" "Install libusb devel"
+         fi
+         libusb="no"
+     fi
+@@ -3228,7 +3230,7 @@ if test "$usb_redir" != "no" ; then
+         libs_softmmu="$libs_softmmu $usb_redir_libs"
+     else
+         if test "$usb_redir" = "yes"; then
+-            feature_not_found "usb-redir"
++            feature_not_found "usb-redir" "Install usbredir devel"
+         fi
+         usb_redir="no"
+     fi
+@@ -4292,7 +4294,7 @@ if test "$trace_backend" = "ftrace"; then
+     echo "CONFIG_TRACE_FTRACE=y" >> $config_host_mak
+     trace_default=no
+   else
+-    feature_not_found "ftrace(trace backend)"
++    feature_not_found "ftrace(trace backend)" "ftrace requires Linux"
+   fi
+ fi
+ echo "CONFIG_TRACE_FILE=$trace_file" >> $config_host_mak
 -- 
 1.8.4.2
 
