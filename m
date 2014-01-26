@@ -1,33 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W76sS-00007o-RR
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Jan 2014 12:18:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52038)
+	id 1W7QIs-0005Iu-KP
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Jan 2014 09:03:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55669)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1W76sQ-0008UX-7x
-	for qemu-trivial@nongnu.org; Sat, 25 Jan 2014 12:18:39 -0500
+	id 1W7QIm-0005B0-IE
+	for qemu-trivial@nongnu.org; Sun, 26 Jan 2014 09:03:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1W76sP-00049L-Au
-	for qemu-trivial@nongnu.org; Sat, 25 Jan 2014 12:18:38 -0500
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:33634
+	id 1W7QIh-0002Z0-NH
+	for qemu-trivial@nongnu.org; Sun, 26 Jan 2014 09:03:08 -0500
+Received: from qemu.weilnetz.de ([37.221.198.45]:40523
 	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1W76sH-00046y-AO; Sat, 25 Jan 2014 12:18:29 -0500
+	id 1W7QIL-0002Xk-Fz; Sun, 26 Jan 2014 09:02:41 -0500
 Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id CD8D017F661; Sat, 25 Jan 2014 18:18:24 +0100 (CET)
+	id EB79017F6D7; Sun, 26 Jan 2014 15:02:37 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-trivial@nongnu.org
-Date: Sat, 25 Jan 2014 18:18:23 +0100
-Message-Id: <1390670304-381-1-git-send-email-sw@weilnetz.de>
+Date: Sun, 26 Jan 2014 15:02:29 +0100
+Message-Id: <1390744949-28850-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: [Qemu-trivial] [PATCH] readline: Add missing GCC_FMT_ATTR
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.198.45
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
+	Alexander Graf <agraf@suse.de>
+Subject: [Qemu-trivial] [PATCH] hw/ppc: Remove unused defines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,60 +38,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 Jan 2014 17:18:39 -0000
-
-This fixes a compiler warning with -Werror=missing-format-attribute
-and allows improved compiler checks for variable argument lists.
+X-List-Received-Date: Sun, 26 Jan 2014 14:03:13 -0000
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- include/qemu/readline.h |    3 ++-
- monitor.c               |    3 ++-
- qemu-io.c               |    3 ++-
- 3 files changed, 6 insertions(+), 3 deletions(-)
+ hw/ppc/ppc4xx_devs.c |    2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/include/qemu/readline.h b/include/qemu/readline.h
-index a89fe4a..49efe4e 100644
---- a/include/qemu/readline.h
-+++ b/include/qemu/readline.h
-@@ -5,7 +5,8 @@
- #define READLINE_MAX_CMDS 64
- #define READLINE_MAX_COMPLETIONS 256
+diff --git a/hw/ppc/ppc4xx_devs.c b/hw/ppc/ppc4xx_devs.c
+index 239aada..9160ee7 100644
+--- a/hw/ppc/ppc4xx_devs.c
++++ b/hw/ppc/ppc4xx_devs.c
+@@ -27,8 +27,6 @@
+ #include "qemu/log.h"
+ #include "exec/address-spaces.h"
  
--typedef void ReadLinePrintfFunc(void *opaque, const char *fmt, ...);
-+typedef void GCC_FMT_ATTR(2, 3) ReadLinePrintfFunc(void *opaque,
-+                                                   const char *fmt, ...);
- typedef void ReadLineFlushFunc(void *opaque);
- typedef void ReadLineFunc(void *opaque, const char *str,
-                           void *readline_opaque);
-diff --git a/monitor.c b/monitor.c
-index 80456fb..5ba541d 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -4888,7 +4888,8 @@ static void sortcmdlist(void)
- /* These functions just adapt the readline interface in a typesafe way.  We
-  * could cast function pointers but that discards compiler checks.
-  */
--static void monitor_readline_printf(void *opaque, const char *fmt, ...)
-+static void GCC_FMT_ATTR(2, 3) monitor_readline_printf(void *opaque,
-+                                                       const char *fmt, ...)
- {
-     va_list ap;
-     va_start(ap, fmt);
-diff --git a/qemu-io.c b/qemu-io.c
-index d669028..7f459d8 100644
---- a/qemu-io.c
-+++ b/qemu-io.c
-@@ -219,7 +219,8 @@ static char *get_prompt(void)
-     return prompt;
- }
+-//#define DEBUG_MMIO
+-//#define DEBUG_UNASSIGNED
+ #define DEBUG_UIC
  
--static void readline_printf_func(void *opaque, const char *fmt, ...)
-+static void GCC_FMT_ATTR(2, 3) readline_printf_func(void *opaque,
-+                                                    const char *fmt, ...)
- {
-     va_list ap;
-     va_start(ap, fmt);
+ 
 -- 
 1.7.10.4
 
