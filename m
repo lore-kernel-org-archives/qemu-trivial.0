@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W7kEv-0000Ot-AD
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Jan 2014 06:20:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56460)
+	id 1W7mpm-0004Yx-32
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Jan 2014 09:06:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33197)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1W7kEn-0000Og-Uk
-	for qemu-trivial@nongnu.org; Mon, 27 Jan 2014 06:20:27 -0500
+	(envelope-from <stefanha@redhat.com>) id 1W7mpf-0004Qe-Au
+	for qemu-trivial@nongnu.org; Mon, 27 Jan 2014 09:06:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1W7kEh-0003y9-V1
-	for qemu-trivial@nongnu.org; Mon, 27 Jan 2014 06:20:21 -0500
-Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:45212 helo=socrates.bennee.com)
+	(envelope-from <stefanha@redhat.com>) id 1W7mpZ-0001gV-Fa
+	for qemu-trivial@nongnu.org; Mon, 27 Jan 2014 09:06:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:47146)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1W7kEh-0003y5-Ol; Mon, 27 Jan 2014 06:20:15 -0500
-Received: from localhost ([127.0.0.1])
-	by socrates.bennee.com with esmtp (Exim 4.80)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1W7kHe-00051z-Nx; Mon, 27 Jan 2014 12:23:18 +0100
-References: <1390811181-21772-1-git-send-email-famz@redhat.com>
-User-agent: mu4e 0.9.9.6pre2; emacs 24.3.50.5
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Fam Zheng <famz@redhat.com>
-Message-ID: <87wqhl8yep.fsf@linaro.org>
-In-reply-to: <1390811181-21772-1-git-send-email-famz@redhat.com>
-Date: Mon, 27 Jan 2014 11:20:11 +0000
+	(envelope-from <stefanha@redhat.com>)
+	id 1W7mpZ-0001fv-7u; Mon, 27 Jan 2014 09:06:29 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s0RE6JYu027062
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 27 Jan 2014 09:06:19 -0500
+Received: from localhost (ovpn-112-61.ams2.redhat.com [10.36.112.61])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s0RE6Gxh011792; Mon, 27 Jan 2014 09:06:17 -0500
+Date: Mon, 27 Jan 2014 13:20:36 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20140127122036.GD11887@stefanha-thinkpad.redhat.com>
+References: <1390670304-381-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 127.0.0.1
-X-SA-Exim-Mail-From: alex.bennee@linaro.org
-X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1390670304-381-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 88.198.71.155
-Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/.gitignore:
-	Ignoretests/check-qom-interfacee
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] readline: Add missing GCC_FMT_ATTR
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,40 +46,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Jan 2014 11:20:28 -0000
+X-List-Received-Date: Mon, 27 Jan 2014 14:06:40 -0000
 
-
-famz@redhat.com writes:
-
-> Signed-off-by: Fam Zheng <famz@redhat.com>
+On Sat, Jan 25, 2014 at 06:18:23PM +0100, Stefan Weil wrote:
+> This fixes a compiler warning with -Werror=missing-format-attribute
+> and allows improved compiler checks for variable argument lists.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  tests/.gitignore | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/tests/.gitignore b/tests/.gitignore
-> index 1aed224..9ba9d96 100644
-> --- a/tests/.gitignore
-> +++ b/tests/.gitignore
-> @@ -4,6 +4,7 @@ check-qint
->  check-qjson
->  check-qlist
->  check-qstring
-> +check-qom-interface
->  test-aio
->  test-bitops
->  test-throttle
+>  include/qemu/readline.h |    3 ++-
+>  monitor.c               |    3 ++-
+>  qemu-io.c               |    3 ++-
+>  3 files changed, 6 insertions(+), 3 deletions(-)
 
-Are these generated test files? I've been looking at the tcg-tests and
-while architecture ones won't clash there are a bunch of generic linux
-tests that should probably be built one per target architecture. Should
-we just be building all test files in the per-target build directories
-like we do with qemu itself?
-
-
-Cheers,
-
---
-Alex Bennée
-QEMU/KVM Hacker for Linaro
-
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
