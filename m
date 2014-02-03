@@ -1,39 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1W9zzk-00041B-Ij
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Feb 2014 11:34:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41927)
+	id 1WAFfp-00035i-NV
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Feb 2014 04:18:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34672)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W9zyp-000378-T4
-	for qemu-trivial@nongnu.org; Sun, 02 Feb 2014 11:34:07 -0500
+	(envelope-from <sebastian.huber@embedded-brains.de>)
+	id 1WAFfi-0002vv-MJ
+	for qemu-trivial@nongnu.org; Mon, 03 Feb 2014 04:18:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1W9zxN-0002kS-Gm
-	for qemu-trivial@nongnu.org; Sun, 02 Feb 2014 11:33:11 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:42265)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1W9zlU-00083U-9j; Sun, 02 Feb 2014 11:19:24 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id F34D940228;
-	Sun,  2 Feb 2014 20:12:45 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id D63DA615;
-	Sun,  2 Feb 2014 20:12:45 +0400 (MSK)
-Received: (nullmailer pid 1644 invoked by uid 1000);
-	Sun, 02 Feb 2014 16:12:45 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: aliguori@amazon.com
-Date: Sun,  2 Feb 2014 20:12:39 +0400
-Message-Id: <1391357563-1592-4-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1391357563-1592-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1391357563-1592-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	qemu-stable@nongnu.org
-Subject: [Qemu-trivial] [PULL 3/7] i386: Add missing include file for
-	QEMU_PACKED
+	(envelope-from <sebastian.huber@embedded-brains.de>)
+	id 1WAFfd-0007Jg-I8
+	for qemu-trivial@nongnu.org; Mon, 03 Feb 2014 04:18:30 -0500
+Received: from host-82-135-62-35.customer.m-online.net ([82.135.62.35]:44312
+	helo=mail.embedded-brains.de) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sebastian.huber@embedded-brains.de>)
+	id 1WAFfT-0007GM-EC; Mon, 03 Feb 2014 04:18:15 -0500
+Received: by mail.embedded-brains.de (Postfix, from userid 65534)
+	id 0AD7F652CFD; Mon,  3 Feb 2014 10:18:13 +0100 (CET)
+Received: from linux-7i4a.eb.z (unknown [192.168.100.11])
+	by mail.embedded-brains.de (Postfix) with ESMTP id 686D4652CF6;
+	Mon,  3 Feb 2014 10:18:13 +0100 (CET)
+From: Sebastian Huber <sebastian.huber@embedded-brains.de>
+To: qemu-devel@nongnu.org
+Date: Mon,  3 Feb 2014 10:18:11 +0100
+Message-Id: <1391419091-3020-1-git-send-email-sebastian.huber@embedded-brains.de>
+X-Mailer: git-send-email 1.7.7
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 82.135.62.35
+Cc: qemu-trivial@nongnu.org,
+	Sebastian Huber <sebastian.huber@embedded-brains.de>
+Subject: [Qemu-trivial] [PATCH] sparc/leon3: Initialize stack pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,41 +40,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Feb 2014 16:34:07 -0000
+X-List-Received-Date: Mon, 03 Feb 2014 09:18:35 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+A lot of real world LEON3 systems are shipped with the GRMON boot
+loader.  This boot loader initializes the stack pointer with the end of
+RAM address.  The application can use this to detect the RAM size of a
+particular board variant.
 
-Instead of packing BiosLinkerLoaderEntry, an unused global variable called
-QEMU_PACKED was created (detected by smatch static code analysis).
-
-Including qemu-common.h gets the right definition and also includes some
-standard include files which now can be removed here.
-
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
 ---
- hw/i386/bios-linker-loader.c |    3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ hw/sparc/leon3.c |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
 
-diff --git a/hw/i386/bios-linker-loader.c b/hw/i386/bios-linker-loader.c
-index fd23611..aa56184 100644
---- a/hw/i386/bios-linker-loader.c
-+++ b/hw/i386/bios-linker-loader.c
-@@ -18,11 +18,10 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
+diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+index c583c3d..c16e9e4 100644
+--- a/hw/sparc/leon3.c
++++ b/hw/sparc/leon3.c
+@@ -45,6 +45,7 @@
+ typedef struct ResetData {
+     SPARCCPU *cpu;
+     uint32_t  entry;            /* save kernel entry in case of reset */
++    target_ulong sp;            /* initial stack pointer */
+ } ResetData;
  
-+#include "qemu-common.h"
- #include "bios-linker-loader.h"
- #include "hw/nvram/fw_cfg.h"
+ static void main_cpu_reset(void *opaque)
+@@ -58,6 +59,7 @@ static void main_cpu_reset(void *opaque)
+     cpu->halted = 0;
+     env->pc     = s->entry;
+     env->npc    = s->entry + 4;
++    env->regbase[6] = s->sp;
+ }
  
--#include <string.h>
--#include <assert.h>
- #include "qemu/bswap.h"
+ void leon3_irq_ack(void *irq_manager, int intno)
+@@ -133,6 +135,7 @@ static void leon3_generic_hw_init(QEMUMachineInitArgs *args)
+     /* Reset data */
+     reset_info        = g_malloc0(sizeof(ResetData));
+     reset_info->cpu   = cpu;
++    reset_info->sp    = 0x40000000 + ram_size;
+     qemu_register_reset(main_cpu_reset, reset_info);
  
- #define BIOS_LINKER_LOADER_FILESZ FW_CFG_MAX_FILE_PATH
+     /* Allocate IRQ manager */
 -- 
-1.7.10.4
+1.7.7
 
 
