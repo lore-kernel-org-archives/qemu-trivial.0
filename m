@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WAdZk-0000vx-9M
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Feb 2014 05:49:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44797)
+	id 1WAhAj-0004N2-G8
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Feb 2014 09:40:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58641)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1WAdZd-0000ug-9U
-	for qemu-trivial@nongnu.org; Tue, 04 Feb 2014 05:49:54 -0500
+	(envelope-from <afaerber@suse.de>) id 1WAhAb-0004Di-UW
+	for qemu-trivial@nongnu.org; Tue, 04 Feb 2014 09:40:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1WAdZY-0005ng-4a
-	for qemu-trivial@nongnu.org; Tue, 04 Feb 2014 05:49:49 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:9476)
+	(envelope-from <afaerber@suse.de>) id 1WAhAW-0004vs-Cy
+	for qemu-trivial@nongnu.org; Tue, 04 Feb 2014 09:40:13 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:39507 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1WAdZX-0005nV-Sk; Tue, 04 Feb 2014 05:49:44 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s14AngFK007346
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 4 Feb 2014 05:49:42 -0500
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-85.ams2.redhat.com
-	[10.36.116.85])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s14AnehZ022154; Tue, 4 Feb 2014 05:49:41 -0500
-Message-ID: <52F0C5C4.80102@redhat.com>
-Date: Tue, 04 Feb 2014 11:49:40 +0100
-From: Laszlo Ersek <lersek@redhat.com>
+	(envelope-from <afaerber@suse.de>)
+	id 1WAhAL-0004aX-9x; Tue, 04 Feb 2014 09:39:57 -0500
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 0893DAC56;
+	Tue,  4 Feb 2014 14:39:56 +0000 (UTC)
+Message-ID: <52F0FBBA.7010900@suse.de>
+Date: Tue, 04 Feb 2014 15:39:54 +0100
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131118 Thunderbird/17.0.11
+	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
+To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org, 
+	Anthony Liguori <aliguori@amazon.com>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <1391492590-8844-1-git-send-email-sw@weilnetz.de>
 In-Reply-To: <1391492590-8844-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] misc: Fix case Qemu -> QEMU
+X-Received-From: 195.135.220.15
+Cc: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] misc: Fix case Qemu -> QEMU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,44 +45,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Feb 2014 10:49:54 -0000
+X-List-Received-Date: Tue, 04 Feb 2014 14:40:19 -0000
 
-On 02/04/14 06:43, Stefan Weil wrote:
+Am 04.02.2014 06:43, schrieb Stefan Weil:
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
 >  scripts/switch-timer-api |    2 +-
 >  tests/i440fx-test.c      |    2 +-
 >  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/scripts/switch-timer-api b/scripts/switch-timer-api
-> index a369a08..b0e230b 100755
-> --- a/scripts/switch-timer-api
-> +++ b/scripts/switch-timer-api
-> @@ -20,7 +20,7 @@ sub Syntax
->      print STDERR <<STOP;
->  Usage: $FindBin::Script [options] FILE ...
->  
-> -Translate each FILE to the new Qemu timer API. If no files
-> +Translate each FILE to the new QEMU timer API. If no files
->  are passed, a reasonable guess is taken.
->  
->  Options:
-> diff --git a/tests/i440fx-test.c b/tests/i440fx-test.c
-> index fa3e3d6..bcd2181 100644
-> --- a/tests/i440fx-test.c
-> +++ b/tests/i440fx-test.c
-> @@ -350,7 +350,7 @@ static void test_i440fx_firmware(FirmwareTestFixture *fixture,
->      qtest_start(cmdline);
->      g_free(cmdline);
->  
-> -    /* Qemu has loaded the firmware (because qtest_start() only returns after
-> +    /* QEMU has loaded the firmware (because qtest_start() only returns after
->       * the QMP handshake completes). We must unlink the firmware blob right
->       * here, because any assertion firing below would leak it in the
->       * filesystem. This is also the reason why we recreate the blob every time
-> 
 
-(I'm fine both ways.)
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+but that is the same spelling found in every single mailing list message
+- any chance we can fix that too? (be it to all-lowercase or all-uppercas=
+e)
+
+Regards,
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
