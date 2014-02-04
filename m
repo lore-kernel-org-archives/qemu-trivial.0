@@ -1,46 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WAOBD-0005Vd-81
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Feb 2014 13:23:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39942)
+	id 1WAYn5-0003Kv-3i
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Feb 2014 00:43:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54867)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WAOB6-0005NU-BG
-	for qemu-trivial@nongnu.org; Mon, 03 Feb 2014 13:23:33 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WAYn2-0003HU-6w
+	for qemu-trivial@nongnu.org; Tue, 04 Feb 2014 00:43:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WAOB1-0004ld-Nk
-	for qemu-trivial@nongnu.org; Mon, 03 Feb 2014 13:23:28 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:58353)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WAYn0-0003bo-To
+	for qemu-trivial@nongnu.org; Tue, 04 Feb 2014 00:43:20 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:44661
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1WAOAr-0004jL-MU; Mon, 03 Feb 2014 13:23:13 -0500
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s13INAjP027412
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 3 Feb 2014 13:23:11 -0500
-Received: from [10.3.113.63] (ovpn-113-63.phx2.redhat.com [10.3.113.63])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s13IN9wl000669; Mon, 3 Feb 2014 13:23:10 -0500
-Message-ID: <52EFDE8D.4030701@redhat.com>
-Date: Mon, 03 Feb 2014 11:23:09 -0700
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, Amos Kong <akong@redhat.com>
-References: <1390467277-16499-1-git-send-email-akong@redhat.com>
-	<52ECC317.5060004@msgid.tls.msk.ru>
-In-Reply-To: <52ECC317.5060004@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.6
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="IPDEG66fIGRShhmqQvv8lBXUpr0J9vndc"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] qapi: cleanup redundant variable
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WAYmy-0003ak-7c; Tue, 04 Feb 2014 00:43:16 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id ACF4C17F6F8; Tue,  4 Feb 2014 06:43:10 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Tue,  4 Feb 2014 06:43:09 +0100
+Message-Id: <1391492590-8844-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: Stefan Weil <sw@weilnetz.de>, Laszlo Ersek <lersek@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] misc: Fix case Qemu -> QEMU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,63 +39,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Feb 2014 18:23:33 -0000
+X-List-Received-Date: Tue, 04 Feb 2014 05:43:21 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---IPDEG66fIGRShhmqQvv8lBXUpr0J9vndc
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ scripts/switch-timer-api |    2 +-
+ tests/i440fx-test.c      |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-On 02/01/2014 02:49 AM, Michael Tokarev wrote:
-> 23.01.2014 12:54, Amos Kong wrote:
->> No need to re-append an expr list, it's ok to return schema.exprs
->>
->> Signed-off-by: Amos Kong <akong@redhat.com>
->> ---
->>  scripts/qapi.py | 5 +----
->>  1 file changed, 1 insertion(+), 4 deletions(-)
+diff --git a/scripts/switch-timer-api b/scripts/switch-timer-api
+index a369a08..b0e230b 100755
+--- a/scripts/switch-timer-api
++++ b/scripts/switch-timer-api
+@@ -20,7 +20,7 @@ sub Syntax
+     print STDERR <<STOP;
+ Usage: $FindBin::Script [options] FILE ...
+ 
+-Translate each FILE to the new Qemu timer API. If no files
++Translate each FILE to the new QEMU timer API. If no files
+ are passed, a reasonable guess is taken.
+ 
+ Options:
+diff --git a/tests/i440fx-test.c b/tests/i440fx-test.c
+index fa3e3d6..bcd2181 100644
+--- a/tests/i440fx-test.c
++++ b/tests/i440fx-test.c
+@@ -350,7 +350,7 @@ static void test_i440fx_firmware(FirmwareTestFixture *fixture,
+     qtest_start(cmdline);
+     g_free(cmdline);
+ 
+-    /* Qemu has loaded the firmware (because qtest_start() only returns after
++    /* QEMU has loaded the firmware (because qtest_start() only returns after
+      * the QMP handshake completes). We must unlink the firmware blob right
+      * here, because any assertion firing below would leak it in the
+      * filesystem. This is also the reason why we recreate the blob every time
+-- 
+1.7.10.4
 
->> @@ -185,9 +183,8 @@ def parse_schema(fp):
->>              add_enum('%sKind' % expr['union'])
->>          elif expr.has_key('type'):
->>              add_struct(expr)
->> -        exprs.append(expr)
->> =20
->> -    return exprs
->> +    return schema.exprs
->=20
-> I don't really know python.  Does it mean that previously,
-> this function returned a copy of schema.exprs, but now it
-> returns schema.exprs itself, so a caller can modify it?
-
-My python is also weak (hence my lack of R-b), but yes, I believe you
-are correct.  On the other hand, parse_schema is only called up front,
-so I don't think callers are modifying the return value anyways, so does
-it matter?
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---IPDEG66fIGRShhmqQvv8lBXUpr0J9vndc
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJS796NAAoJEKeha0olJ0NqSqAIAI4rzTDrIKWnAPrTJKKKZOt4
-RzYQl0sYjYN/d09JCus9EDCi8x7dq505noedH55lqrBCGQRcMjTU8U+p5e7TiEES
-N10riUHykXc6X70gf8weGST5ov18f4DMNdf1QUipdyND38KSSRrVcMm5TuqnFLyM
-5I9ZC2iTtLnsHwijeP+6YagZbkcqYwCWzrmpSgS1Wp7DUgMSx/eOSuN7aB6G19WB
-gL6AWAWoS5sCO9HbHAK4f7G2PvcN+NFMGbgc0TyeJ9PeAi8kHr5zbRCRHPrjJD39
-Wm5w47zxx9pBqyM6dZQfncjCmcoudrHF/OfWcctlUrnx0CGmIxL36LIZYdcdHnU=
-=H/ud
------END PGP SIGNATURE-----
-
---IPDEG66fIGRShhmqQvv8lBXUpr0J9vndc--
 
