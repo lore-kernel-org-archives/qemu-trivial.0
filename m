@@ -1,48 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WAykl-0006eH-PW
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Feb 2014 04:26:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49511)
+	id 1WB5iN-0006KV-7Y
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Feb 2014 11:52:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55692)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WAyke-0006V9-Hw
-	for qemu-trivial@nongnu.org; Wed, 05 Feb 2014 04:26:41 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1WB5iH-0006CD-05
+	for qemu-trivial@nongnu.org; Wed, 05 Feb 2014 11:52:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WAykZ-0002vZ-IY
-	for qemu-trivial@nongnu.org; Wed, 05 Feb 2014 04:26:36 -0500
-Received: from mel.v6.act-europe.fr ([2a02:2ab8:224:1::a0a:d2]:47826
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1WAykP-0002ss-Jc; Wed, 05 Feb 2014 04:26:21 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 094D026E067C;
-	Wed,  5 Feb 2014 10:26:21 +0100 (CET)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N0XhrNBAMRIc; Wed,  5 Feb 2014 10:26:20 +0100 (CET)
-Received: from [192.168.0.17] (mon75-15-88-166-12-160.fbx.proxad.net
-	[88.166.12.160])
-	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id C663D26E065C;
-	Wed,  5 Feb 2014 10:26:20 +0100 (CET)
-Message-ID: <52F203BC.5070701@adacore.com>
-Date: Wed, 05 Feb 2014 10:26:20 +0100
-From: Fabien Chouteau <chouteau@adacore.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
+	(envelope-from <peter.maydell@linaro.org>) id 1WB5iC-0000v6-4h
+	for qemu-trivial@nongnu.org; Wed, 05 Feb 2014 11:52:36 -0500
+Received: from mail-lb0-f176.google.com ([209.85.217.176]:61444)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1WB5iB-0000v1-SB
+	for qemu-trivial@nongnu.org; Wed, 05 Feb 2014 11:52:32 -0500
+Received: by mail-lb0-f176.google.com with SMTP id w7so518973lbi.21
+	for <qemu-trivial@nongnu.org>; Wed, 05 Feb 2014 08:52:30 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=jiIaVL2X7FPBYioOFoJm6+ufRvcO7TtZ5sOn/rvp4+Y=;
+	b=P0tpQPvTwxvN6j6MZha+a/uFVwGstYfcyCdeF/3i3Ohk0F21DnMkLKIBEol/F0ApOq
+	V1sGlqCu07beQA4rgkqs+xSy//PUEnlFwVhakYWCZIrY2Kk617uB2jiVXLg6C3zBv5zI
+	0yjaN7Z+JyvFiGDgIrFD0XobA3BVVfrVtOQsmQeI0Grhl/gsq7n3j+0F984Ljh5JHK2z
+	CmAH1GFPgoT5jrjij5og7owWm8M8ss4NsTAEiz/rApTtBiXlwizjafX6zG7/VOWp30y6
+	SbQb+4XTqccWWduXCbcNeNUsMipoXanHxS0Uq3+oioJEGfZy4Er0jFX+QD5HcYTy6oMx
+	0g0A==
+X-Gm-Message-State: ALoCoQlGdFr/yexADpf+9zLtwsa9pRmbeoSqUT1Sw1hAH7MN2g/o847+4s+fd6XcKLQvjTVVFBlE
+X-Received: by 10.152.4.68 with SMTP id i4mr1794496lai.8.1391619150706; Wed,
+	05 Feb 2014 08:52:30 -0800 (PST)
 MIME-Version: 1.0
-To: Sebastian Huber <sebastian.huber@embedded-brains.de>, 
-	qemu-devel@nongnu.org, Blue Swirl <blauwirbel@gmail.com>
-References: <1391419091-3020-1-git-send-email-sebastian.huber@embedded-brains.de>
-	<52F1FE42.3000000@adacore.com>
-In-Reply-To: <52F1FE42.3000000@adacore.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a02:2ab8:224:1::a0a:d2
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc/leon3: Initialize
- stack pointer
+Received: by 10.112.199.162 with HTTP; Wed, 5 Feb 2014 08:52:10 -0800 (PST)
+In-Reply-To: <1391357563-1592-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1391357563-1592-1-git-send-email-mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 5 Feb 2014 16:52:10 +0000
+Message-ID: <CAFEAcA96-j315Up4vE-AmnKySaWLQGR9zKJ=rsmJdEQdCk9gEQ@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.176
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Anthony Liguori <aliguori@amazon.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 0/7] Trivial patches for
+	2014-02-02
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,23 +56,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Feb 2014 09:26:42 -0000
+X-List-Received-Date: Wed, 05 Feb 2014 16:52:41 -0000
 
-On 02/05/2014 10:02 AM, Fabien Chouteau wrote:
-> On 02/03/2014 10:18 AM, Sebastian Huber wrote:
->> A lot of real world LEON3 systems are shipped with the GRMON boot
->> loader.  This boot loader initializes the stack pointer with the end of
->> RAM address.  The application can use this to detect the RAM size of a
->> particular board variant.
->>
-> 
-> Looks good, thank you Sebastian.
-> 
-> Reviewed-by: Fabien Chouteau <chouteau@adacore.com>
-> 
+On 2 February 2014 16:12, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> There's nothing exciting in there, some really small things here and there.
+>
+> Please pull.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 89e4a51ca9546a7bbe1998c4e3d4a3ac3a0c19be:
+>
+>   Merge remote-tracking branch 'stefanha/tags/tracing-pull-request' into staging (2014-01-31 11:13:08 +0000)
+>
+> are available in the git repository at:
+>
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-02-02
+>
+> for you to fetch changes up to b76afd1072e02fe77e09790fbe1e831700976c5f:
+>
+>   tests/.gitignore: Ignore tests/check-qom-interface (2014-02-01 13:56:31 +0400)
 
-Sorry Blue you should be in copy. Can you apply this patch please?
+Applied, thanks.
 
-Thanks,
-
+-- PMM
 
