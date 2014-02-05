@@ -1,42 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WAqol-0001KR-7w
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Feb 2014 19:58:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60220)
+	id 1WAyOO-0000KY-CY
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Feb 2014 04:03:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44864)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <martsan31@gmail.com>) id 1WANbp-0008R1-0H
-	for qemu-trivial@nongnu.org; Mon, 03 Feb 2014 12:47:01 -0500
+	(envelope-from <chouteau@adacore.com>) id 1WAyOH-0000Bp-Ea
+	for qemu-trivial@nongnu.org; Wed, 05 Feb 2014 04:03:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <martsan31@gmail.com>) id 1WANbo-0001md-AU
-	for qemu-trivial@nongnu.org; Mon, 03 Feb 2014 12:47:00 -0500
-Received: from mail-qc0-x243.google.com ([2607:f8b0:400d:c01::243]:40972)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <martsan31@gmail.com>) id 1WANbo-0001mW-5o
-	for qemu-trivial@nongnu.org; Mon, 03 Feb 2014 12:47:00 -0500
-Received: by mail-qc0-f195.google.com with SMTP id x13so4297033qcv.10
-	for <qemu-trivial@nongnu.org>; Mon, 03 Feb 2014 09:46:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:date:message-id:subject:from:to:content-type;
-	bh=FrLhxt3ezC32kBGm5m7u3PksDGfvDeZZH3l+j9icbBM=;
-	b=NQc2DJYaiKbXDKKmzY1SJ9V8Pi9Szn5ScpBLYlyRo6cpbZPBosJ1EE/NVyjbusnjs8
-	BI/tOIJCLsRmkQj7XzmCB19BE2V02jCWg9muRw4g8z/3uE6b1/GEbD0SwxuZafTr8Qwl
-	/LT0sDtlSW6M5c4BRkjKylUQPjE9M11nxs5irzA8aZMBfxe0qrlp1z+lkEyyHPdaPXl9
-	5aOg0xjjyPbcSZIp5a2TK+uazUC69ieoannKAcaTxs25TEbOTMEK/r1nfHLkX8JDRzBo
-	H25dRy0zgsPuDcvXAZqvX5/VTkltSmsf/HMK8zuXuWB26Zz5TzFzP6jiE6wfDHyE1c8a
-	25qw==
+	(envelope-from <chouteau@adacore.com>) id 1WAyOC-0003sX-Cd
+	for qemu-trivial@nongnu.org; Wed, 05 Feb 2014 04:03:29 -0500
+Received: from mel.act-europe.fr ([194.98.77.210]:55085
+	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chouteau@adacore.com>)
+	id 1WAyO1-0003mu-PB; Wed, 05 Feb 2014 04:03:13 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 7A89526E0681;
+	Wed,  5 Feb 2014 10:03:11 +0100 (CET)
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 67OKJOjOoBWN; Wed,  5 Feb 2014 10:03:11 +0100 (CET)
+Received: from [192.168.0.17] (mon75-15-88-166-12-160.fbx.proxad.net
+	[88.166.12.160])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 32D3D26E067F;
+	Wed,  5 Feb 2014 10:03:11 +0100 (CET)
+Message-ID: <52F1FE42.3000000@adacore.com>
+Date: Wed, 05 Feb 2014 10:02:58 +0100
+From: Fabien Chouteau <chouteau@adacore.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
 MIME-Version: 1.0
-X-Received: by 10.140.21.179 with SMTP id 48mr54611354qgl.78.1391449619498;
-	Mon, 03 Feb 2014 09:46:59 -0800 (PST)
-Received: by 10.229.190.134 with HTTP; Mon, 3 Feb 2014 09:46:59 -0800 (PST)
-Date: Mon, 3 Feb 2014 19:46:59 +0200
-Message-ID: <CAB6BXk+bLmZ6iOP1E=Yukx8MCjQN5VouFESP+pzn1CU-8pwr9A@mail.gmail.com>
-From: Marinos Tsantekidis <martsan31@gmail.com>
-To: qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary=001a11c11fee4b0c1404f1841c4b
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c01::243
-X-Mailman-Approved-At: Tue, 04 Feb 2014 19:58:17 -0500
-Subject: [Qemu-trivial] QEMU based Android Emulator
+To: Sebastian Huber <sebastian.huber@embedded-brains.de>, 
+	qemu-devel@nongnu.org
+References: <1391419091-3020-1-git-send-email-sebastian.huber@embedded-brains.de>
+In-Reply-To: <1391419091-3020-1-git-send-email-sebastian.huber@embedded-brains.de>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 194.98.77.210
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc/leon3: Initialize
+	stack pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,23 +52,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Feb 2014 17:47:01 -0000
+X-List-Received-Date: Wed, 05 Feb 2014 09:03:34 -0000
 
---001a11c11fee4b0c1404f1841c4b
-Content-Type: text/plain; charset=ISO-8859-1
+On 02/03/2014 10:18 AM, Sebastian Huber wrote:
+> A lot of real world LEON3 systems are shipped with the GRMON boot
+> loader.  This boot loader initializes the stack pointer with the end of
+> RAM address.  The application can use this to detect the RAM size of a
+> particular board variant.
+>
 
-Hi to all! I'm looking to extract some info from QEMU used by Android
-Emulator. I want to add some printf s to the source code. How do I do that?
-How do I recompile the source in order for the changes to take effect?
-Please help!!
+Looks good, thank you Sebastian.
 
---001a11c11fee4b0c1404f1841c4b
-Content-Type: text/html; charset=ISO-8859-1
+Reviewed-by: Fabien Chouteau <chouteau@adacore.com>
 
-<div dir="ltr"><div dir="ltr">Hi to all! I&#39;m looking to extract some info from QEMU used by Android 
-Emulator. I want to add some printf s to the source code. How do I do 
-that? How do I recompile the source in order for the changes to take 
-effect? Please help!!</div></div>
+ 
+> Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+> ---
+>  hw/sparc/leon3.c |    3 +++
+>  1 files changed, 3 insertions(+), 0 deletions(-)
+> 
+> diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+> index c583c3d..c16e9e4 100644
+> --- a/hw/sparc/leon3.c
+> +++ b/hw/sparc/leon3.c
+> @@ -45,6 +45,7 @@
+>  typedef struct ResetData {
+>      SPARCCPU *cpu;
+>      uint32_t  entry;            /* save kernel entry in case of reset */
+> +    target_ulong sp;            /* initial stack pointer */
+>  } ResetData;
+>  
+>  static void main_cpu_reset(void *opaque)
+> @@ -58,6 +59,7 @@ static void main_cpu_reset(void *opaque)
+>      cpu->halted = 0;
+>      env->pc     = s->entry;
+>      env->npc    = s->entry + 4;
+> +    env->regbase[6] = s->sp;
+>  }
+>  
+>  void leon3_irq_ack(void *irq_manager, int intno)
+> @@ -133,6 +135,7 @@ static void leon3_generic_hw_init(QEMUMachineInitArgs *args)
+>      /* Reset data */
+>      reset_info        = g_malloc0(sizeof(ResetData));
+>      reset_info->cpu   = cpu;
+> +    reset_info->sp    = 0x40000000 + ram_size;
+>      qemu_register_reset(main_cpu_reset, reset_info);
+>  
+>      /* Allocate IRQ manager */
+> 
 
---001a11c11fee4b0c1404f1841c4b--
 
