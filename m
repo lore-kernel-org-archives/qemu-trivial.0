@@ -1,45 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WCnz6-0001Cl-3M
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Feb 2014 05:21:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47895)
+	id 1WDAbG-0000zG-8i
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Feb 2014 05:29:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34336)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1WCnyz-00014N-Vt
-	for qemu-trivial@nongnu.org; Mon, 10 Feb 2014 05:21:02 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1WDAb9-0000qx-U3
+	for qemu-trivial@nongnu.org; Tue, 11 Feb 2014 05:29:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1WCnyv-0008Qy-47
-	for qemu-trivial@nongnu.org; Mon, 10 Feb 2014 05:20:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:25285)
+	(envelope-from <mjt@tls.msk.ru>) id 1WDAb4-0000BD-WA
+	for qemu-trivial@nongnu.org; Tue, 11 Feb 2014 05:29:51 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:59547)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>)
-	id 1WCnyk-0008PJ-Jq; Mon, 10 Feb 2014 05:20:42 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s1AAKcEE018324
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 10 Feb 2014 05:20:38 -0500
-Received: from localhost ([10.34.251.12])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s1AAKZpu007176; Mon, 10 Feb 2014 05:20:37 -0500
-Date: Mon, 10 Feb 2014 11:20:34 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20140210102034.GA15227@stefanha-thinkpad.brq.redhat.com>
-References: <1391700611-32893-1-git-send-email-agraf@suse.de>
-	<52F485C5.1020107@msgid.tls.msk.ru>
-	<0C8B4C82-8DB7-4B5E-81F0-0C321856BB70@suse.de>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WDAau-00005W-Uy; Tue, 11 Feb 2014 05:29:37 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 6320840C5C;
+	Tue, 11 Feb 2014 14:29:28 +0400 (MSK)
+Message-ID: <52F9FB88.1050509@msgid.tls.msk.ru>
+Date: Tue, 11 Feb 2014 14:29:28 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <0C8B4C82-8DB7-4B5E-81F0-0C321856BB70@suse.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+References: <153a8e98437c7d4b7fc3df2bf375fbc9e0bdb8ef.1392101145.git.peter.crosthwaite@xilinx.com>
+In-Reply-To: <153a8e98437c7d4b7fc3df2bf375fbc9e0bdb8ef.1392101145.git.peter.crosthwaite@xilinx.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Dmitry Fleytman <dmitry@daynix.com>, qemu-trivial <qemu-trivial@nongnu.org>,
-	Alexander Graf <agraf@suse.de>, Anthony Liguori <aliguori@amazon.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: Include iov.h in
-	checksum.h
+X-Received-From: 86.62.121.231
+Cc: peter.maydell@linaro.org, qemu-trivial <qemu-trivial@nongnu.org>,
+	qemu-devel@nongnu.org, dgilbert@redhat.com, edgari@xilinx.com,
+	mkletzan@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH bugfix v1 1/1] char/serial: Fix emptyness
+	check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,27 +47,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Feb 2014 10:21:02 -0000
+X-List-Received-Date: Tue, 11 Feb 2014 10:29:56 -0000
 
-On Fri, Feb 07, 2014 at 08:54:00AM +0100, Alexander Graf wrote:
-> 
-> 
-> > Am 07.02.2014 um 08:05 schrieb Michael Tokarev <mjt@tls.msk.ru>:
-> > 
-> > 06.02.2014 19:30, Alexander Graf wrote:
-> >> The checksum calculation header exports a function that refers to struct
-> >> iov which is defined in iov.h. Include the header so that the compiler
-> >> knows what this struct is about.
-> > 
-> > Alternatively (and I sometimes prefer it this way), one can just
-> > declare `struct iovec;' instead of including whole header, because
-> > we don't actually use any definitions from there, and users of
-> > checksum.h wont be including extra dependencies which they don't
-> > use...  Like this:
-> 
-> Either way works for me :)
+11.02.2014 10:49, Peter Crosthwaite wrote:
+> This was guarding against a full fifo rather than an empty fifo when
+> popping. Fix.
 
-Yes, please take one of them via -trivial.
+I've applied this to qemu-trivial for now, if no one will pick it up
+before the next -trivial pull, -- because the original change were
+merged using -trivial too.
 
-Stefan
+I also compared this with the previous code in this area, and it looks
+like this is the right fix.  So you can add my
+
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+
+too.
+
+Thank you!
+
+/mjt
 
