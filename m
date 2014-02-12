@@ -1,34 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WDcgY-0006iF-Kk
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2014 11:29:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59690)
+	id 1WDcrg-0002bI-Ue
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2014 11:40:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33917)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WDcgS-0006by-VN
-	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 11:29:17 -0500
+	(envelope-from <afaerber@suse.de>) id 1WDcrZ-0002Y3-3M
+	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 11:40:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WDcgO-0002jP-Fw
-	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 11:29:12 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:51626)
+	(envelope-from <afaerber@suse.de>) id 1WDcrS-0006ow-MK
+	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 11:40:40 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:37442 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WDcgF-0002iR-2o; Wed, 12 Feb 2014 11:28:59 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 5AC6E41784;
-	Wed, 12 Feb 2014 20:28:58 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 4609D204;
-	Wed, 12 Feb 2014 20:28:58 +0400 (MSK)
-Received: (nullmailer pid 4720 invoked by uid 1000);
-	Wed, 12 Feb 2014 16:28:58 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Wed, 12 Feb 2014 20:28:57 +0400
-Message-Id: <1392222537-4685-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <afaerber@suse.de>)
+	id 1WDcrF-0006lF-Fe; Wed, 12 Feb 2014 11:40:21 -0500
+Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 2A930ABA6;
+	Wed, 12 Feb 2014 16:40:20 +0000 (UTC)
+Message-ID: <52FBA3F1.8080503@suse.de>
+Date: Wed, 12 Feb 2014 17:40:17 +0100
+From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+MIME-Version: 1.0
+To: Sebastian Huber <sebastian.huber@embedded-brains.de>
+References: <1391419091-3020-1-git-send-email-sebastian.huber@embedded-brains.de>	<52F34A67.7060902@msgid.tls.msk.ru>	<CAFEAcA_AJA3T=651ex7tFD3xfT4S_iRt44CJj1Pd6Sgz9NF21g@mail.gmail.com>
+	<52FB7D13.8050801@embedded-brains.de>
+In-Reply-To: <52FB7D13.8050801@embedded-brains.de>
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PATCH] gitignore: anchor all ignored names
+X-Received-From: 195.135.220.15
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	QEMU Developers <qemu-devel@nongnu.org>, Blue Swirl <blauwirbel@gmail.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc/leon3: Initialize
+ stack pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,208 +48,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Feb 2014 16:29:17 -0000
+X-List-Received-Date: Wed, 12 Feb 2014 16:40:47 -0000
 
-by default, patterns/names in .gitignore are applied
-recursively to all subdirectories.  So any name mentioned
-in .gitignore is ignored in all subdirectores.  This is good
-for, say. object files (*.o), but not good for particular
-names which should be ignored only in one directory.  For
-example, qemu-img.1 file is generated in the top directory,
-and it should be ignored only there, not in some subdir.
+Am 12.02.2014 14:54, schrieb Sebastian Huber:
+> On 2014-02-06 09:57, Peter Maydell wrote:
+>> On 6 February 2014 08:40, Michael Tokarev<mjt@tls.msk.ru>  wrote:
+>>> >03.02.2014 13:18, Sebastian Huber wrote:
+>>>> >>A lot of real world LEON3 systems are shipped with the GRMON boot
+>>>> >>loader.  This boot loader initializes the stack pointer with the
+>>>> end of
+>>>> >>RAM address.  The application can use this to detect the RAM size
+>>>> of a
+>>>> >>particular board variant.
+>>> >
+>>> >I don't really know much about sparc or leon3 stuff.  But having a
+>>> >reviewed-by from Fabien I can apply it to trivial-patches.  I'm not
+>>> >really sure why it can't go to sparc tree instead.
+>> As far as I'm aware there is currently no sparc tree; Blue is the
+>> listed maintainer and typically just applied patches directly.
+>> In the absence of Blue, if somebody else who cares about sparc
+>> wishes to collect up reviewed sparc patches and submit them as
+>> a pull request so they don't just get ignored, I'm willing to apply
+>> that pull.
+>=20
+> Ok, how do we want proceed here?  I have an additional patch in the
+> queue that adds AMBA plug and play support to the LEON3 support of QEMU
+> so that you can run unmodified binaries for RTEMS, eCos and Linux.
 
-At first, this might not matter much, but we have lots of
-examples already where it actually does not help at all.
-For example, top-level .gitignore ignores a file/dir named
-"patches" (which is very questionable by itself), but it
-is applied recursively, so git also ignores, for example,
-debian/patches/ which should not be ignored.
+Whether or not someone submits a pull for the reviewed patches, you'll
+need to post your second patch for review. You can add either a tag in
+[PATCH ...] or indicate textually after --- that it depends on this
+patch, you don't need to wait for it to get applied first.
 
-So anchor all the names where appropriate.  .gitignore
-should be cleaned up further, which will be addressed in
-a subsequent patch.
+Regards,
+Andreas
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- .gitignore |  150 ++++++++++++++++++++++++++++++------------------------------
- 1 file changed, 75 insertions(+), 75 deletions(-)
-
-diff --git a/.gitignore b/.gitignore
-index 1c9d63d..6e48b5e 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -1,64 +1,64 @@
--config-devices.*
--config-all-devices.*
--config-all-disas.*
--config-host.*
--config-target.*
--config.status
--trace/generated-tracers.h
--trace/generated-tracers.c
--trace/generated-tracers-dtrace.h
--trace/generated-tracers.dtrace
--trace/generated-events.h
--trace/generated-events.c
--libcacard/trace/generated-tracers.c
-+/config-devices.*
-+/config-all-devices.*
-+/config-all-disas.*
-+/config-host.*
-+/config-target.*
-+/config.status
-+/trace/generated-tracers.h
-+/trace/generated-tracers.c
-+/trace/generated-tracers-dtrace.h
-+/trace/generated-tracers.dtrace
-+/trace/generated-events.h
-+/trace/generated-events.c
-+/libcacard/trace/generated-tracers.c
- *-timestamp
--*-softmmu
--*-darwin-user
--*-linux-user
--*-bsd-user
-+/*-softmmu
-+/*-darwin-user
-+/*-linux-user
-+/*-bsd-user
- libdis*
- libuser
--linux-headers/asm
--qapi-generated
--qapi-types.[ch]
--qapi-visit.[ch]
--qmp-commands.h
--qmp-marshal.c
--qemu-doc.html
--qemu-tech.html
--qemu-doc.info
--qemu-tech.info
--qemu.1
--qemu.pod
--qemu-img.1
--qemu-img.pod
--qemu-img
--qemu-nbd
--qemu-nbd.8
--qemu-nbd.pod
--qemu-options.def
--qemu-options.texi
--qemu-img-cmds.texi
--qemu-img-cmds.h
--qemu-io
--qemu-ga
--qemu-bridge-helper
--qemu-monitor.texi
--vscclient
--qmp-commands.txt
--test-bitops
--test-coroutine
--test-int128
--test-opts-visitor
--test-qmp-input-visitor
--test-qmp-output-visitor
--test-string-input-visitor
--test-string-output-visitor
--test-visitor-serialization
--fsdev/virtfs-proxy-helper
--fsdev/virtfs-proxy-helper.1
--fsdev/virtfs-proxy-helper.pod
--.gdbinit
-+/linux-headers/asm
-+/qapi-generated
-+/qapi-types.[ch]
-+/qapi-visit.[ch]
-+/qmp-commands.h
-+/qmp-marshal.c
-+/qemu-doc.html
-+/qemu-tech.html
-+/qemu-doc.info
-+/qemu-tech.info
-+/qemu.1
-+/qemu.pod
-+/qemu-img.1
-+/qemu-img.pod
-+/qemu-img
-+/qemu-nbd
-+/qemu-nbd.8
-+/qemu-nbd.pod
-+/qemu-options.def
-+/qemu-options.texi
-+/qemu-img-cmds.texi
-+/qemu-img-cmds.h
-+/qemu-io
-+/qemu-ga
-+/qemu-bridge-helper
-+/qemu-monitor.texi
-+/qmp-commands.txt
-+/vscclient
-+/test-bitops
-+/test-coroutine
-+/test-int128
-+/test-opts-visitor
-+/test-qmp-input-visitor
-+/test-qmp-output-visitor
-+/test-string-input-visitor
-+/test-string-output-visitor
-+/test-visitor-serialization
-+/fsdev/virtfs-proxy-helper
-+/fsdev/virtfs-proxy-helper.1
-+/fsdev/virtfs-proxy-helper.pod
-+/.gdbinit
- *.a
- *.aux
- *.cp
-@@ -77,7 +77,7 @@ fsdev/virtfs-proxy-helper.pod
- *.tp
- *.vr
- *.d
--!scripts/qemu-guest-agent/fsfreeze-hook.d
-+!/scripts/qemu-guest-agent/fsfreeze-hook.d
- *.o
- *.lo
- *.la
-@@ -90,22 +90,22 @@ fsdev/virtfs-proxy-helper.pod
- *.gcda
- *.gcno
- patches
--pc-bios/bios-pq/status
--pc-bios/vgabios-pq/status
--pc-bios/optionrom/linuxboot.asm
--pc-bios/optionrom/linuxboot.bin
--pc-bios/optionrom/linuxboot.raw
--pc-bios/optionrom/linuxboot.img
--pc-bios/optionrom/multiboot.asm
--pc-bios/optionrom/multiboot.bin
--pc-bios/optionrom/multiboot.raw
--pc-bios/optionrom/multiboot.img
--pc-bios/optionrom/kvmvapic.asm
--pc-bios/optionrom/kvmvapic.bin
--pc-bios/optionrom/kvmvapic.raw
--pc-bios/optionrom/kvmvapic.img
--pc-bios/s390-ccw/s390-ccw.elf
--pc-bios/s390-ccw/s390-ccw.img
-+/pc-bios/bios-pq/status
-+/pc-bios/vgabios-pq/status
-+/pc-bios/optionrom/linuxboot.asm
-+/pc-bios/optionrom/linuxboot.bin
-+/pc-bios/optionrom/linuxboot.raw
-+/pc-bios/optionrom/linuxboot.img
-+/pc-bios/optionrom/multiboot.asm
-+/pc-bios/optionrom/multiboot.bin
-+/pc-bios/optionrom/multiboot.raw
-+/pc-bios/optionrom/multiboot.img
-+/pc-bios/optionrom/kvmvapic.asm
-+/pc-bios/optionrom/kvmvapic.bin
-+/pc-bios/optionrom/kvmvapic.raw
-+/pc-bios/optionrom/kvmvapic.img
-+/pc-bios/s390-ccw/s390-ccw.elf
-+/pc-bios/s390-ccw/s390-ccw.img
- .stgit-*
- cscope.*
- tags
--- 
-1.7.10.4
-
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
+rnberg
 
