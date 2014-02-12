@@ -1,42 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WDcrg-0002bI-Ue
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2014 11:40:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33917)
+	id 1WDfgO-0008T7-7m
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2014 14:41:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43022)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WDcrZ-0002Y3-3M
-	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 11:40:47 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1WDfgH-0008Rj-O9
+	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 14:41:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WDcrS-0006ow-MK
-	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 11:40:40 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:37442 helo=mx2.suse.de)
+	(envelope-from <peter.maydell@linaro.org>) id 1WDfgB-00045u-It
+	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 14:41:13 -0500
+Received: from mail-la0-f43.google.com ([209.85.215.43]:65102)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1WDcrF-0006lF-Fe; Wed, 12 Feb 2014 11:40:21 -0500
-Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 2A930ABA6;
-	Wed, 12 Feb 2014 16:40:20 +0000 (UTC)
-Message-ID: <52FBA3F1.8080503@suse.de>
-Date: Wed, 12 Feb 2014 17:40:17 +0100
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+	(envelope-from <peter.maydell@linaro.org>) id 1WDfgB-00045f-BM
+	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 14:41:07 -0500
+Received: by mail-la0-f43.google.com with SMTP id pv20so7603173lab.30
+	for <qemu-trivial@nongnu.org>; Wed, 12 Feb 2014 11:41:06 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=fI/luT+J1Dhi/spuBB7NVcN7ojppB02SNxWjucxEsIo=;
+	b=fs6AWdGureu3UPMnf6iOf3itpcm9MMeRrIkKsco9MUGadZJtOZkhMLtrUOZ9wnS1pI
+	73g+rRTz72L4HigS8QBbwadwqyhE0NPpH/NnEEHfxvfjPjk+jTe47VpiNktzBmW3ckWa
+	2TMM8zOY7iH8N3o5LnIwC8hDn75DtuNEFMaTz6sShzLX2p1OHuKpWmDFS8/N2fUaaoQF
+	erKWh7RnPC2fg0ugsgnIToriEkhKarA7P6kIOsN79ZTd3ho9v9spnWACsAOJP7Il6rg1
+	OyHX4bSTodcNsn+O4p50P/IE27Qhjbt8yrRSTwA/rb7OQlui5tNwSOGxpBkOXHnvdn/y
+	y/xg==
+X-Gm-Message-State: ALoCoQmvnsqlvoQw77h7jdhU8nXD6avzS4u5mMcNGSzL0lYrKe3mbivd2j3jCcJhkq4BNGkbEHQL
+X-Received: by 10.112.132.102 with SMTP id ot6mr30845759lbb.27.1392234066275; 
+	Wed, 12 Feb 2014 11:41:06 -0800 (PST)
 MIME-Version: 1.0
-To: Sebastian Huber <sebastian.huber@embedded-brains.de>
-References: <1391419091-3020-1-git-send-email-sebastian.huber@embedded-brains.de>	<52F34A67.7060902@msgid.tls.msk.ru>	<CAFEAcA_AJA3T=651ex7tFD3xfT4S_iRt44CJj1Pd6Sgz9NF21g@mail.gmail.com>
-	<52FB7D13.8050801@embedded-brains.de>
-In-Reply-To: <52FB7D13.8050801@embedded-brains.de>
-X-Enigmail-Version: 1.6
+Received: by 10.112.118.34 with HTTP; Wed, 12 Feb 2014 11:40:46 -0800 (PST)
+In-Reply-To: <1391669798-23577-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1391669798-23577-1-git-send-email-mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 12 Feb 2014 19:40:46 +0000
+Message-ID: <CAFEAcA-Fc1YvgnGWA9Zkc6FXSnk4Cpwe+0MuQOspDvJ6C4ACSw@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.135.220.15
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	QEMU Developers <qemu-devel@nongnu.org>, Blue Swirl <blauwirbel@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc/leon3: Initialize
- stack pointer
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.43
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] linux-user: simplify/refactor socketcall
+	implementation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,43 +55,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Feb 2014 16:40:47 -0000
+X-List-Received-Date: Wed, 12 Feb 2014 19:41:18 -0000
 
-Am 12.02.2014 14:54, schrieb Sebastian Huber:
-> On 2014-02-06 09:57, Peter Maydell wrote:
->> On 6 February 2014 08:40, Michael Tokarev<mjt@tls.msk.ru>  wrote:
->>> >03.02.2014 13:18, Sebastian Huber wrote:
->>>> >>A lot of real world LEON3 systems are shipped with the GRMON boot
->>>> >>loader.  This boot loader initializes the stack pointer with the
->>>> end of
->>>> >>RAM address.  The application can use this to detect the RAM size
->>>> of a
->>>> >>particular board variant.
->>> >
->>> >I don't really know much about sparc or leon3 stuff.  But having a
->>> >reviewed-by from Fabien I can apply it to trivial-patches.  I'm not
->>> >really sure why it can't go to sparc tree instead.
->> As far as I'm aware there is currently no sparc tree; Blue is the
->> listed maintainer and typically just applied patches directly.
->> In the absence of Blue, if somebody else who cares about sparc
->> wishes to collect up reviewed sparc patches and submit them as
->> a pull request so they don't just get ignored, I'm willing to apply
->> that pull.
->=20
-> Ok, how do we want proceed here?  I have an additional patch in the
-> queue that adds AMBA plug and play support to the LEON3 support of QEMU
-> so that you can run unmodified binaries for RTEMS, eCos and Linux.
+On 6 February 2014 06:56, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> socketcall is just a dispatcher, it accepts an array of ulongs and should
+> call the right socket function.  We tried to handle arguments for every
+> function case, and did that differently, which in the past caused errors
+> due to wrong types or sizes used.  So instead of extracting args in every
+> case, do it once (based on a small mapping of function num. to argument count)
+> and once this is done, just call the right function passing it the extracted
+> args in a ready to use form.  This also simplifies the function alot.
+> +    /* first extract args from vptr according to ac[num] if num is correct */
+> +    if (num >= 0 && num < ARRAY_SIZE(ac)) {
+> +        unsigned i;
 
-Whether or not someone submits a pull for the reviewed patches, you'll
-need to post your second patch for review. You can add either a tag in
-[PATCH ...] or indicate textually after --- that it depends on this
-patch, you don't need to wait for it to get applied first.
+I think it would be nice to have here:
+    assert(ac[num] <= ARRAY_SIZE(a));
 
-Regards,
-Andreas
+just as a reminder to bump the ac[] array size if anybody adds a 7-argument
+function in future.
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+Incidentally this is how the kernel itself handles socketcall, so
+putting everything into abi_ulongs is semantically correct. (The
+kernel's mechanism for looking up the number of arguments for
+each call type is IMHO uglier and less maintainable though :-))
+
+thanks
+-- PMM
 
