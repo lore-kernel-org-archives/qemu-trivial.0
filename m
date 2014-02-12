@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WDAbl-0001lm-3E
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Feb 2014 05:30:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34458)
+	id 1WDaH4-0000qe-SL
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2014 08:54:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47874)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WDAbe-0001Zz-0F
-	for qemu-trivial@nongnu.org; Tue, 11 Feb 2014 05:30:27 -0500
+	(envelope-from <sebastian.huber@embedded-brains.de>)
+	id 1WDaGy-0000jX-G7
+	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 08:54:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WDAbZ-0000mf-5p
-	for qemu-trivial@nongnu.org; Tue, 11 Feb 2014 05:30:21 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:35439)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WDAbP-0000gB-40; Tue, 11 Feb 2014 05:30:07 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4E6924147E;
-	Tue, 11 Feb 2014 14:30:06 +0400 (MSK)
-Message-ID: <52F9FBAE.50503@msgid.tls.msk.ru>
-Date: Tue, 11 Feb 2014 14:30:06 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
+	(envelope-from <sebastian.huber@embedded-brains.de>)
+	id 1WDaGu-000828-04
+	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 08:54:44 -0500
+Received: from host-82-135-62-35.customer.m-online.net ([82.135.62.35]:44605
+	helo=mail.embedded-brains.de) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sebastian.huber@embedded-brains.de>)
+	id 1WDaGk-0007yd-Qb; Wed, 12 Feb 2014 08:54:30 -0500
+Received: by mail.embedded-brains.de (Postfix, from userid 65534)
+	id 49512652CFB; Wed, 12 Feb 2014 14:54:28 +0100 (CET)
+Received: from [192.168.100.11] (unknown [192.168.100.11])
+	by mail.embedded-brains.de (Postfix) with ESMTP id 78A29652BD5;
+	Wed, 12 Feb 2014 14:54:27 +0100 (CET)
+Message-ID: <52FB7D13.8050801@embedded-brains.de>
+Date: Wed, 12 Feb 2014 14:54:27 +0100
+From: Sebastian Huber <sebastian.huber@embedded-brains.de>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131103 Icedove/17.0.10
+	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
 MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@redhat.com>
-References: <1391700611-32893-1-git-send-email-agraf@suse.de>
-	<52F485C5.1020107@msgid.tls.msk.ru>
-	<0C8B4C82-8DB7-4B5E-81F0-0C321856BB70@suse.de>
-	<20140210102034.GA15227@stefanha-thinkpad.brq.redhat.com>
-In-Reply-To: <20140210102034.GA15227@stefanha-thinkpad.brq.redhat.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1391419091-3020-1-git-send-email-sebastian.huber@embedded-brains.de>
+	<52F34A67.7060902@msgid.tls.msk.ru>
+	<CAFEAcA_AJA3T=651ex7tFD3xfT4S_iRt44CJj1Pd6Sgz9NF21g@mail.gmail.com>
+In-Reply-To: <CAFEAcA_AJA3T=651ex7tFD3xfT4S_iRt44CJj1Pd6Sgz9NF21g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: Dmitry Fleytman <dmitry@daynix.com>, qemu-trivial <qemu-trivial@nongnu.org>,
-	Alexander Graf <agraf@suse.de>, Anthony Liguori <aliguori@amazon.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: Include iov.h in
-	checksum.h
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 82.135.62.35
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	QEMU Developers <qemu-devel@nongnu.org>, Blue Swirl <blauwirbel@gmail.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc/leon3: Initialize
+ stack pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,34 +50,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Feb 2014 10:30:27 -0000
+X-List-Received-Date: Wed, 12 Feb 2014 13:54:49 -0000
 
-10.02.2014 14:20, Stefan Hajnoczi =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
-> On Fri, Feb 07, 2014 at 08:54:00AM +0100, Alexander Graf wrote:
->>
->>
->>> Am 07.02.2014 um 08:05 schrieb Michael Tokarev <mjt@tls.msk.ru>:
->>>
->>> 06.02.2014 19:30, Alexander Graf wrote:
->>>> The checksum calculation header exports a function that refers to st=
-ruct
->>>> iov which is defined in iov.h. Include the header so that the compil=
-er
->>>> knows what this struct is about.
->>>
->>> Alternatively (and I sometimes prefer it this way), one can just
->>> declare `struct iovec;' instead of including whole header, because
->>> we don't actually use any definitions from there, and users of
->>> checksum.h wont be including extra dependencies which they don't
->>> use...  Like this:
->>
->> Either way works for me :)
->=20
-> Yes, please take one of them via -trivial.
+On 2014-02-06 09:57, Peter Maydell wrote:
+> On 6 February 2014 08:40, Michael Tokarev<mjt@tls.msk.ru>  wrote:
+>> >03.02.2014 13:18, Sebastian Huber wrote:
+>>> >>A lot of real world LEON3 systems are shipped with the GRMON boot
+>>> >>loader.  This boot loader initializes the stack pointer with the en=
+d of
+>>> >>RAM address.  The application can use this to detect the RAM size o=
+f a
+>>> >>particular board variant.
+>> >
+>> >I don't really know much about sparc or leon3 stuff.  But having a
+>> >reviewed-by from Fabien I can apply it to trivial-patches.  I'm not
+>> >really sure why it can't go to sparc tree instead.
+> As far as I'm aware there is currently no sparc tree; Blue is the
+> listed maintainer and typically just applied patches directly.
+> In the absence of Blue, if somebody else who cares about sparc
+> wishes to collect up reviewed sparc patches and submit them as
+> a pull request so they don't just get ignored, I'm willing to apply
+> that pull.
 
-I've applied my version to -trivial.
+Ok, how do we want proceed here?  I have an additional patch in the queue=
+ that=20
+adds AMBA plug and play support to the LEON3 support of QEMU so that you =
+can=20
+run unmodified binaries for RTEMS, eCos and Linux.
 
-Thanks,
+--=20
+Sebastian Huber, embedded brains GmbH
 
-/mjt
+Address : Dornierstr. 4, D-82178 Puchheim, Germany
+Phone   : +49 89 189 47 41-16
+Fax     : +49 89 189 47 41-09
+E-Mail  : sebastian.huber@embedded-brains.de
+PGP     : Public key available on request.
+
+Diese Nachricht ist keine gesch=C3=A4ftliche Mitteilung im Sinne des EHUG=
+.
 
