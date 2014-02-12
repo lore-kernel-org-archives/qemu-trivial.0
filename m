@@ -1,53 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WDaN8-0002jA-QX
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2014 09:01:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49040)
+	id 1WDcfC-0005P4-RF
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2014 11:27:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59342)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WDaN2-0002hX-G6
-	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 09:01:04 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1WDcf4-0005GV-MQ
+	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 11:27:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WDaMx-00028r-Rh
-	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 09:01:00 -0500
-Received: from mail-la0-f41.google.com ([209.85.215.41]:64401)
+	(envelope-from <mjt@tls.msk.ru>) id 1WDcey-0002Tq-Na
+	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 11:27:46 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:37498)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WDaMx-00028c-LX
-	for qemu-trivial@nongnu.org; Wed, 12 Feb 2014 09:00:55 -0500
-Received: by mail-la0-f41.google.com with SMTP id mc6so7230315lab.0
-	for <qemu-trivial@nongnu.org>; Wed, 12 Feb 2014 06:00:54 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=X+kj4D3+mjNqtUcifQMi9+mHufxJVI3qA8mIxwDHaxE=;
-	b=cgq9+ADEiyyXAUaldzV9lpfiwxv6g90OW+H0LDg4QXBWIav90IuCZ/LUJqIPBfa/so
-	UMFIjyFEvTumDGuhlSutJK17WklUbx/aCtXkHvbjCySMXasdde2ibTARE0FcZCs2Rsif
-	1kbSxNm+TE/4oqcAwkNN0GV5HNaqvQW4lYDmmEtitFPbv+0Xb81GLjGE1T/h/YZaiRyt
-	i85Rkl1BB1j1NKvH5KU8VNRKwuYykeUydtxOyD2WegW5JYj8vtswAE54NHxNwjtbZyui
-	zwY5cxbtDfvaK0R2S4woDy4GoS5CzVCJclWThHKjDe6gB38PTIeLZmTslLFQquV49cq/
-	VcFw==
-X-Gm-Message-State: ALoCoQksKNFYHWOOlOj+l7EzUoYLYWPp8/z8mR+4cZVpBj4WmFuzWyDWm95xnr1llMfhrBQfmZAR
-X-Received: by 10.152.19.166 with SMTP id g6mr31622188lae.21.1392213654142;
-	Wed, 12 Feb 2014 06:00:54 -0800 (PST)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WDcem-0002Ml-Ef; Wed, 12 Feb 2014 11:27:28 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id A6F3641784;
+	Wed, 12 Feb 2014 20:27:17 +0400 (MSK)
+Message-ID: <52FBA0E5.9080207@msgid.tls.msk.ru>
+Date: Wed, 12 Feb 2014 20:27:17 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
 MIME-Version: 1.0
-Received: by 10.112.118.34 with HTTP; Wed, 12 Feb 2014 06:00:34 -0800 (PST)
-In-Reply-To: <52FB7D13.8050801@embedded-brains.de>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1391419091-3020-1-git-send-email-sebastian.huber@embedded-brains.de>
 	<52F34A67.7060902@msgid.tls.msk.ru>
 	<CAFEAcA_AJA3T=651ex7tFD3xfT4S_iRt44CJj1Pd6Sgz9NF21g@mail.gmail.com>
 	<52FB7D13.8050801@embedded-brains.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 12 Feb 2014 14:00:34 +0000
-Message-ID: <CAFEAcA9bmL3gfjxUnp=uU24JQvsDV+hX2tRmg9ew6avZ-6AMtg@mail.gmail.com>
-To: Sebastian Huber <sebastian.huber@embedded-brains.de>
+	<CAFEAcA9bmL3gfjxUnp=uU24JQvsDV+hX2tRmg9ew6avZ-6AMtg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9bmL3gfjxUnp=uU24JQvsDV+hX2tRmg9ew6avZ-6AMtg@mail.gmail.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.41
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Sebastian Huber <sebastian.huber@embedded-brains.de>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	QEMU Developers <qemu-devel@nongnu.org>, Blue Swirl <blauwirbel@gmail.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sparc/leon3: Initialize
-	stack pointer
+ stack pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,31 +52,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Feb 2014 14:01:05 -0000
+X-List-Received-Date: Wed, 12 Feb 2014 16:27:52 -0000
 
-On 12 February 2014 13:54, Sebastian Huber
-<sebastian.huber@embedded-brains.de> wrote:
-> On 2014-02-06 09:57, Peter Maydell wrote:
->> On 6 February 2014 08:40, Michael Tokarev<mjt@tls.msk.ru>  wrote:
->>> >I don't really know much about sparc or leon3 stuff.  But having a
->>> >reviewed-by from Fabien I can apply it to trivial-patches.  I'm not
->>> >really sure why it can't go to sparc tree instead.
->>
->> As far as I'm aware there is currently no sparc tree; Blue is the
->> listed maintainer and typically just applied patches directly.
->> In the absence of Blue, if somebody else who cares about sparc
->> wishes to collect up reviewed sparc patches and submit them as
->> a pull request so they don't just get ignored, I'm willing to apply
->> that pull.
+12.02.2014 18:00, Peter Maydell wrote:
+[]
+> It's sparc-specific, it's pretty small, it's been reviewed.
+> MJT: I suggest we take the pragmatic approach and apply it
+> via -trivial.
 
-> Ok, how do we want proceed here?  I have an additional patch in the queue
-> that adds AMBA plug and play support to the LEON3 support of QEMU so that
-> you can run unmodified binaries for RTEMS, eCos and Linux.
+I actually applied it back at Feb-06.  Should be in the next pull request
+at Friday.
 
-It's sparc-specific, it's pretty small, it's been reviewed.
-MJT: I suggest we take the pragmatic approach and apply it
-via -trivial.
+Thanks,
 
-thanks
--- PMM
+/mjt
 
