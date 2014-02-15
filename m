@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WEeWa-0000JA-8K
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Feb 2014 07:39:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50499)
+	id 1WEiSn-0000vE-AW
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Feb 2014 11:51:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60457)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WEeWT-0000GC-TS
-	for qemu-trivial@nongnu.org; Sat, 15 Feb 2014 07:39:14 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1WEiSh-0000re-3A
+	for qemu-trivial@nongnu.org; Sat, 15 Feb 2014 11:51:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WEeWL-000471-Ex
-	for qemu-trivial@nongnu.org; Sat, 15 Feb 2014 07:39:09 -0500
-Received: from mail-la0-f41.google.com ([209.85.215.41]:36131)
+	(envelope-from <peter.maydell@linaro.org>) id 1WEiSa-0008Or-BI
+	for qemu-trivial@nongnu.org; Sat, 15 Feb 2014 11:51:31 -0500
+Received: from mail-lb0-f170.google.com ([209.85.217.170]:61112)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WEeWL-00046b-81
-	for qemu-trivial@nongnu.org; Sat, 15 Feb 2014 07:39:01 -0500
-Received: by mail-la0-f41.google.com with SMTP id mc6so10059311lab.14
-	for <qemu-trivial@nongnu.org>; Sat, 15 Feb 2014 04:39:00 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1WEiSa-0008OZ-3n
+	for qemu-trivial@nongnu.org; Sat, 15 Feb 2014 11:51:24 -0500
+Received: by mail-lb0-f170.google.com with SMTP id u14so10176574lbd.15
+	for <qemu-trivial@nongnu.org>; Sat, 15 Feb 2014 08:51:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=dyjqlEu7yiKIUrCYw/aKpO8tzvJx3ybpasksBRVLH+M=;
-	b=lPn58IPEGfwrqKZ51GY0VfNZNNgK9Tm/brENGyAVEQp5p1hLZoRG4jN7/1j7yt4hk2
-	iUIZJerqsUoSs2px+VmUNNJE/cGPaug2tgCwfCb+0eDAoVfnT1X3vkAbZlN+Qr4TnArj
-	z0vWDjKFkEH2o+SPAHA/oE8KBy8ay5QerwAz6h6kClhTcY5cvQOf7ws8GVz2o1ujgVDI
-	vwYH/3r39pBDznj5F5jXmYVSp7ZhvwjbP+aXXHCRu7j81/8GDGcR5bS8Fv7x+Xjda9B5
-	qxa74qzK+6eFZe32HtHTmo9KuI+ca9x+Mtl94OmQvBewc9Za4VSfqNgdYX8qU+D6jb+u
-	NWcg==
-X-Gm-Message-State: ALoCoQlTwoF4aHcTneJPsYIyXk3cbytzRbCAexU9XbPSVOyLC3GpGVVoWY+VadsjwQtzvDlkg7Jg
-X-Received: by 10.152.121.105 with SMTP id lj9mr1502548lab.37.1392467939907;
-	Sat, 15 Feb 2014 04:38:59 -0800 (PST)
+	bh=XeyWxVJVTB0+eHIyav02T4obxQEsL/lxVJKzVINXFq0=;
+	b=iqoaW/kp9PFV1d7/YFtQkI3UOQI6tp9D33kfRHngIUVxVigLzIFW4ofE6fI05ROOLN
+	teMUaV9GgTptUCA6Ekg6AgjhFe6br1vHjdnUQZ86S7TYRK1CPZ1zY9oj5m29aG41QKQM
+	oQiitI/URjAGC4ucgp/y6FS550DxXgpn0xOjH3Sv13cOzSGBOCr5O3XOHLGM5nru8byW
+	Hd3jXVxOc2nOusPvq8cydP649hX6+KlnQZtKhTUBa6bqwUV95iSmay9lhw2IjHPIL1rn
+	iQfgcmYe/9urpjFLDg5QnYgtt05KfwbC9BfWzX0dnTQBjV+8fAhAvba+pV+dRfvkptnw
+	Ouig==
+X-Gm-Message-State: ALoCoQmo8ve/NrkQG1gaf+Qo6VSx7cQptLOQ/Y7pZw6Lj/JzkbT43E2QgCSOTNfGQ4ANngWRM9MB
+X-Received: by 10.152.180.4 with SMTP id dk4mr2107732lac.49.1392483082857;
+	Sat, 15 Feb 2014 08:51:22 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.112.118.34 with HTTP; Sat, 15 Feb 2014 04:38:39 -0800 (PST)
-In-Reply-To: <1392282978-19368-1-git-send-email-sebastian.huber@embedded-brains.de>
-References: <1392282978-19368-1-git-send-email-sebastian.huber@embedded-brains.de>
+Received: by 10.112.118.34 with HTTP; Sat, 15 Feb 2014 08:51:02 -0800 (PST)
+In-Reply-To: <1392466700-21770-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1392466700-21770-1-git-send-email-mjt@msgid.tls.msk.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 15 Feb 2014 12:38:39 +0000
-Message-ID: <CAFEAcA8Fw02CadHJ0TvBxoJgeXA5XtobSSKUf1-JaR7c22UcFg@mail.gmail.com>
-To: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Date: Sat, 15 Feb 2014 16:51:02 +0000
+Message-ID: <CAFEAcA-s=NiWRZTva+C+jh4pARTpeg46bgzj3uX_hQJx=nKyQg@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.215.41
+X-Received-From: 209.85.217.170
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/timer/grlib_gptimer:
-	Avoid integer overflow
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/10] Trivial patches for
+	2014-02-15
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,35 +55,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Feb 2014 12:39:14 -0000
+X-List-Received-Date: Sat, 15 Feb 2014 16:51:36 -0000
 
-On 13 February 2014 09:16, Sebastian Huber
-<sebastian.huber@embedded-brains.de> wrote:
-> The GPTIMER uses 32-bit registers.  Use a 64-bit operation to get the
-> ptimer count, otherwise we end up with a count of 0 for GPTIMER counter
-> values of 0xffffffff.
-> ---
->  hw/timer/grlib_gptimer.c |    4 ++--
->  1 files changed, 2 insertions(+), 2 deletions(-)
+On 15 February 2014 12:18, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> This is a trivial-patches pull request for 2014-02-15.
+> Amount of patches this time is small, but some of them deserves some
+> explanation.
 >
-> diff --git a/hw/timer/grlib_gptimer.c b/hw/timer/grlib_gptimer.c
-> index d5687f6..343563c 100644
-> --- a/hw/timer/grlib_gptimer.c
-> +++ b/hw/timer/grlib_gptimer.c
-> @@ -106,9 +106,9 @@ static void grlib_gptimer_enable(GPTimer *timer)
->      /* ptimer is triggered when the counter reach 0 but GPTimer is triggered at
->         underflow. Set count + 1 to simulate the GPTimer behavior. */
+>  vl: trim includes  -- this one removes many #include statements from vl.c.
+>   I actually verified that qemu builds fine on linux and several variants
+>   of *BSD with this patch applied, so those includes really aren't needed.
+>   There _might_ be an issue on windows, but the chances are rather small.
 >
-> -    trace_grlib_gptimer_enable(timer->id, timer->counter + 1);
-> +    trace_grlib_gptimer_enable(timer->id, timer->counter);
+>  gitignore: anchor all ignored names  -- I haven't got any comments about
+>   this one, probably no one cares one or another way.  But I think it is
+>   better to include exact names and miss some (to be added later) than to
+>   include wildcarded names and ignore too much, like what happens with,
+>   for example, debian/patches directory because "patches" is listed in
+>   .gitignore.  I plan to reduce this file a bit further too.
+>
+> Please consider applying/pulling.
 
-This change isn't mentioned in the commit message...
-
-> -    ptimer_set_count(timer->ptimer, timer->counter + 1);
-> +    ptimer_set_count(timer->ptimer, (uint64_t)timer->counter + 1);
->      ptimer_run(timer->ptimer, 1);
->  }
-
-thanks
+Applied, thanks.
 -- PMM
 
