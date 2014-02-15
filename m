@@ -1,40 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WEeIT-0007AC-KA
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Feb 2014 07:24:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48995)
+	id 1WEeIU-0007BR-4L
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Feb 2014 07:24:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48997)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WEeIN-0006xk-A8
+	(envelope-from <mjt@tls.msk.ru>) id 1WEeIN-0006xv-Dd
 	for qemu-trivial@nongnu.org; Sat, 15 Feb 2014 07:24:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WEeII-0000Cd-Rx
+	(envelope-from <mjt@tls.msk.ru>) id 1WEeII-0000Ci-Vx
 	for qemu-trivial@nongnu.org; Sat, 15 Feb 2014 07:24:35 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:34473)
+Received: from isrv.corpit.ru ([86.62.121.231]:39454)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WEeI4-0000A1-Q6; Sat, 15 Feb 2014 07:24:16 -0500
+	id 1WEeI4-0000A2-Q9; Sat, 15 Feb 2014 07:24:17 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 369B241C2B;
+	by isrv.corpit.ru (Postfix) with ESMTP id 2A29D41C2A;
 	Sat, 15 Feb 2014 16:24:16 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id B844B21D;
-	Sat, 15 Feb 2014 16:18:22 +0400 (MSK)
-Received: (nullmailer pid 21832 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 5F29C643;
+	Sat, 15 Feb 2014 16:18:23 +0400 (MSK)
+Received: (nullmailer pid 21839 invoked by uid 1000);
 	Sat, 15 Feb 2014 12:18:22 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Sat, 15 Feb 2014 16:18:16 +0400
-Message-Id: <1392466700-21770-7-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Sat, 15 Feb 2014 16:18:19 +0400
+Message-Id: <1392466700-21770-10-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1392466700-21770-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1392466700-21770-1-git-send-email-mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 06/10] net: declare struct iovec in checksum.h
-	to fix compiler warning
+Subject: [Qemu-trivial] [PULL 09/10] gitignore: anchor all ignored names
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,39 +42,208 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Feb 2014 12:24:39 -0000
+X-List-Received-Date: Sat, 15 Feb 2014 12:24:40 -0000
 
-The checksum calculation header exports a function that refers to
-struct iov defined in iov.h.  Without including the former, build
-fails like this:
+by default, patterns/names in .gitignore are applied
+recursively to all subdirectories.  So any name mentioned
+in .gitignore is ignored in all subdirectores.  This is good
+for, say. object files (*.o), but not good for particular
+names which should be ignored only in one directory.  For
+example, qemu-img.1 file is generated in the top directory,
+and it should be ignored only there, not in some subdir.
 
-  In file included from hw/net/fsl_etsec/rings.c:24:0:
-  include/net/checksum.h:51:31: error: =E2=80=98struct iovec=E2=80=99 dec=
-lared inside parameter list [-Werror]
-  include/net/checksum.h:51:31: error: its scope is only this definition =
-or declaration, which is probably not what you want [-Werror]
+At first, this might not matter much, but we have lots of
+examples already where it actually does not help at all.
+For example, top-level .gitignore ignores a file/dir named
+"patches" (which is very questionable by itself), but it
+is applied recursively, so git also ignores, for example,
+debian/patches/ which should not be ignored.
 
-Mention struct iovec there.
+So anchor all the names where appropriate.  .gitignore
+should be cleaned up further, which will be addressed in
+a subsequent patch.
 
-Reported-by: Alexander Graf <agraf@suse.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/net/checksum.h |    1 +
- 1 file changed, 1 insertion(+)
+ .gitignore |  150 ++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 75 insertions(+), 75 deletions(-)
 
-diff --git a/include/net/checksum.h b/include/net/checksum.h
-index 80203fb..2d7a363 100644
---- a/include/net/checksum.h
-+++ b/include/net/checksum.h
-@@ -19,6 +19,7 @@
- #define QEMU_NET_CHECKSUM_H
-=20
- #include <stdint.h>
-+struct iovec;
-=20
- uint32_t net_checksum_add_cont(int len, uint8_t *buf, int seq);
- uint16_t net_checksum_finish(uint32_t sum);
---=20
+diff --git a/.gitignore b/.gitignore
+index 1c9d63d..6e48b5e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,64 +1,64 @@
+-config-devices.*
+-config-all-devices.*
+-config-all-disas.*
+-config-host.*
+-config-target.*
+-config.status
+-trace/generated-tracers.h
+-trace/generated-tracers.c
+-trace/generated-tracers-dtrace.h
+-trace/generated-tracers.dtrace
+-trace/generated-events.h
+-trace/generated-events.c
+-libcacard/trace/generated-tracers.c
++/config-devices.*
++/config-all-devices.*
++/config-all-disas.*
++/config-host.*
++/config-target.*
++/config.status
++/trace/generated-tracers.h
++/trace/generated-tracers.c
++/trace/generated-tracers-dtrace.h
++/trace/generated-tracers.dtrace
++/trace/generated-events.h
++/trace/generated-events.c
++/libcacard/trace/generated-tracers.c
+ *-timestamp
+-*-softmmu
+-*-darwin-user
+-*-linux-user
+-*-bsd-user
++/*-softmmu
++/*-darwin-user
++/*-linux-user
++/*-bsd-user
+ libdis*
+ libuser
+-linux-headers/asm
+-qapi-generated
+-qapi-types.[ch]
+-qapi-visit.[ch]
+-qmp-commands.h
+-qmp-marshal.c
+-qemu-doc.html
+-qemu-tech.html
+-qemu-doc.info
+-qemu-tech.info
+-qemu.1
+-qemu.pod
+-qemu-img.1
+-qemu-img.pod
+-qemu-img
+-qemu-nbd
+-qemu-nbd.8
+-qemu-nbd.pod
+-qemu-options.def
+-qemu-options.texi
+-qemu-img-cmds.texi
+-qemu-img-cmds.h
+-qemu-io
+-qemu-ga
+-qemu-bridge-helper
+-qemu-monitor.texi
+-vscclient
+-qmp-commands.txt
+-test-bitops
+-test-coroutine
+-test-int128
+-test-opts-visitor
+-test-qmp-input-visitor
+-test-qmp-output-visitor
+-test-string-input-visitor
+-test-string-output-visitor
+-test-visitor-serialization
+-fsdev/virtfs-proxy-helper
+-fsdev/virtfs-proxy-helper.1
+-fsdev/virtfs-proxy-helper.pod
+-.gdbinit
++/linux-headers/asm
++/qapi-generated
++/qapi-types.[ch]
++/qapi-visit.[ch]
++/qmp-commands.h
++/qmp-marshal.c
++/qemu-doc.html
++/qemu-tech.html
++/qemu-doc.info
++/qemu-tech.info
++/qemu.1
++/qemu.pod
++/qemu-img.1
++/qemu-img.pod
++/qemu-img
++/qemu-nbd
++/qemu-nbd.8
++/qemu-nbd.pod
++/qemu-options.def
++/qemu-options.texi
++/qemu-img-cmds.texi
++/qemu-img-cmds.h
++/qemu-io
++/qemu-ga
++/qemu-bridge-helper
++/qemu-monitor.texi
++/qmp-commands.txt
++/vscclient
++/test-bitops
++/test-coroutine
++/test-int128
++/test-opts-visitor
++/test-qmp-input-visitor
++/test-qmp-output-visitor
++/test-string-input-visitor
++/test-string-output-visitor
++/test-visitor-serialization
++/fsdev/virtfs-proxy-helper
++/fsdev/virtfs-proxy-helper.1
++/fsdev/virtfs-proxy-helper.pod
++/.gdbinit
+ *.a
+ *.aux
+ *.cp
+@@ -77,7 +77,7 @@ fsdev/virtfs-proxy-helper.pod
+ *.tp
+ *.vr
+ *.d
+-!scripts/qemu-guest-agent/fsfreeze-hook.d
++!/scripts/qemu-guest-agent/fsfreeze-hook.d
+ *.o
+ *.lo
+ *.la
+@@ -90,22 +90,22 @@ fsdev/virtfs-proxy-helper.pod
+ *.gcda
+ *.gcno
+ patches
+-pc-bios/bios-pq/status
+-pc-bios/vgabios-pq/status
+-pc-bios/optionrom/linuxboot.asm
+-pc-bios/optionrom/linuxboot.bin
+-pc-bios/optionrom/linuxboot.raw
+-pc-bios/optionrom/linuxboot.img
+-pc-bios/optionrom/multiboot.asm
+-pc-bios/optionrom/multiboot.bin
+-pc-bios/optionrom/multiboot.raw
+-pc-bios/optionrom/multiboot.img
+-pc-bios/optionrom/kvmvapic.asm
+-pc-bios/optionrom/kvmvapic.bin
+-pc-bios/optionrom/kvmvapic.raw
+-pc-bios/optionrom/kvmvapic.img
+-pc-bios/s390-ccw/s390-ccw.elf
+-pc-bios/s390-ccw/s390-ccw.img
++/pc-bios/bios-pq/status
++/pc-bios/vgabios-pq/status
++/pc-bios/optionrom/linuxboot.asm
++/pc-bios/optionrom/linuxboot.bin
++/pc-bios/optionrom/linuxboot.raw
++/pc-bios/optionrom/linuxboot.img
++/pc-bios/optionrom/multiboot.asm
++/pc-bios/optionrom/multiboot.bin
++/pc-bios/optionrom/multiboot.raw
++/pc-bios/optionrom/multiboot.img
++/pc-bios/optionrom/kvmvapic.asm
++/pc-bios/optionrom/kvmvapic.bin
++/pc-bios/optionrom/kvmvapic.raw
++/pc-bios/optionrom/kvmvapic.img
++/pc-bios/s390-ccw/s390-ccw.elf
++/pc-bios/s390-ccw/s390-ccw.img
+ .stgit-*
+ cscope.*
+ tags
+-- 
 1.7.10.4
 
 
