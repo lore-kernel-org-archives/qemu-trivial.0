@@ -1,43 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WG4DH-0000mh-Ug
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2014 05:17:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42307)
+	id 1WGYzE-0005QC-2C
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Feb 2014 14:08:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60215)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1WG4DA-0000lw-P8
-	for qemu-trivial@nongnu.org; Wed, 19 Feb 2014 05:17:10 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WGYzB-0005Nv-9l
+	for qemu-trivial@nongnu.org; Thu, 20 Feb 2014 14:08:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1WG4D4-0008Hs-NE
-	for qemu-trivial@nongnu.org; Wed, 19 Feb 2014 05:17:04 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34803)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WGYzA-0001KQ-HH
+	for qemu-trivial@nongnu.org; Thu, 20 Feb 2014 14:08:41 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:39163
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1WG4D4-0008Ha-F6; Wed, 19 Feb 2014 05:16:58 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s1JAGvkT030629
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 19 Feb 2014 05:16:57 -0500
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-75.ams2.redhat.com
-	[10.36.116.75])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s1JAGtsD024838; Wed, 19 Feb 2014 05:16:55 -0500
-Message-ID: <53048497.1060701@redhat.com>
-Date: Wed, 19 Feb 2014 11:16:55 +0100
-From: Laszlo Ersek <lersek@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131118 Thunderbird/17.0.11
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1392786705-9730-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1392786705-9730-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 0/2] bswap: Clean prototypes of st*
-	functions
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WGYz7-0001JQ-KZ; Thu, 20 Feb 2014 14:08:37 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id D4B8517FD63; Thu, 20 Feb 2014 20:08:32 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Thu, 20 Feb 2014 20:08:31 +0100
+Message-Id: <1392923311-14194-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] stubs: Optimize dependencies for gdbstub.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,19 +38,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2014 10:17:10 -0000
+X-List-Received-Date: Thu, 20 Feb 2014 19:08:42 -0000
 
-On 02/19/14 06:11, Stefan Weil wrote:
-> These modifications avoid type conversions for non optimized code.
-> 
-> ld* function prototypes will follow later.
-> 
-> [PATCH 1/2] bswap: Modify prototype of stb_p (avoid type
-> [PATCH 2/2] bswap: Modify prototypes of st[wl]_{le,be}_p (avoid type
-> 
+It does not need qemu-common.h. Including exec/gdbstub.h fixes a warning
+from static code analyzers and avoids mismatching declarations for
+xml_builtin.
 
-It probably wouldn't hurt to audit all call sites, but it does look
-reasonable.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ stubs/gdbstub.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+diff --git a/stubs/gdbstub.c b/stubs/gdbstub.c
+index c1dbfe7..f6a4553 100644
+--- a/stubs/gdbstub.c
++++ b/stubs/gdbstub.c
+@@ -1,4 +1,6 @@
+-#include "qemu-common.h"
++#include "stdbool.h"            /* bool (in exec/gdbstub.h) */
++#include "stddef.h"             /* NULL */
++#include "exec/gdbstub.h"       /* xml_builtin */
+ 
+ const char *const xml_builtin[][2] = {
+   { NULL, NULL }
+-- 
+1.7.10.4
+
 
