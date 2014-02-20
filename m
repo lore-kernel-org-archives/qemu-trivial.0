@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WGYzE-0005QC-2C
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Feb 2014 14:08:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60215)
+	id 1WGZ2G-0000gh-FC
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Feb 2014 14:11:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32899)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1WGYzB-0005Nv-9l
-	for qemu-trivial@nongnu.org; Thu, 20 Feb 2014 14:08:42 -0500
+	id 1WGZ29-0000Y1-PX
+	for qemu-trivial@nongnu.org; Thu, 20 Feb 2014 14:11:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1WGYzA-0001KQ-HH
-	for qemu-trivial@nongnu.org; Thu, 20 Feb 2014 14:08:41 -0500
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:39163
+	id 1WGZ24-0002WI-Fr
+	for qemu-trivial@nongnu.org; Thu, 20 Feb 2014 14:11:45 -0500
+Received: from qemu.weilnetz.de ([37.221.198.45]:45139
 	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1WGYz7-0001JQ-KZ; Thu, 20 Feb 2014 14:08:37 -0500
+	id 1WGZ1u-0002U9-H6; Thu, 20 Feb 2014 14:11:30 -0500
 Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id D4B8517FD63; Thu, 20 Feb 2014 20:08:32 +0100 (CET)
+	id DD52E17FD63; Thu, 20 Feb 2014 20:11:27 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-trivial@nongnu.org
-Date: Thu, 20 Feb 2014 20:08:31 +0100
-Message-Id: <1392923311-14194-1-git-send-email-sw@weilnetz.de>
+Date: Thu, 20 Feb 2014 20:11:27 +0100
+Message-Id: <1392923487-16993-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.198.45
 Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] stubs: Optimize dependencies for gdbstub.c
+Subject: [Qemu-trivial] [PATCH] tcg: Fix typo in comment (dependancies ->
+	dependencies)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,29 +38,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Feb 2014 19:08:42 -0000
-
-It does not need qemu-common.h. Including exec/gdbstub.h fixes a warning
-from static code analyzers and avoids mismatching declarations for
-xml_builtin.
+X-List-Received-Date: Thu, 20 Feb 2014 19:11:50 -0000
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- stubs/gdbstub.c |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ tcg/tcg.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/stubs/gdbstub.c b/stubs/gdbstub.c
-index c1dbfe7..f6a4553 100644
---- a/stubs/gdbstub.c
-+++ b/stubs/gdbstub.c
-@@ -1,4 +1,6 @@
--#include "qemu-common.h"
-+#include "stdbool.h"            /* bool (in exec/gdbstub.h) */
-+#include "stddef.h"             /* NULL */
-+#include "exec/gdbstub.h"       /* xml_builtin */
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 7ff1a8f..44ec42e 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -41,7 +41,7 @@
+ #include "qemu/host-utils.h"
+ #include "qemu/timer.h"
  
- const char *const xml_builtin[][2] = {
-   { NULL, NULL }
+-/* Note: the long term plan is to reduce the dependancies on the QEMU
++/* Note: the long term plan is to reduce the dependencies on the QEMU
+    CPU definitions. Currently they are used for qemu_ld/st
+    instructions */
+ #define NO_CPU_IO_DEFS
 -- 
 1.7.10.4
 
