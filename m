@@ -1,46 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WGqP0-0000Qg-1z
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2014 08:44:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54878)
+	id 1WGtkb-0001PQ-Dj
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2014 12:19:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47556)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WGqOt-0000HV-3Z
-	for qemu-trivial@nongnu.org; Fri, 21 Feb 2014 08:44:27 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WGtkU-0001H3-Sg
+	for qemu-trivial@nongnu.org; Fri, 21 Feb 2014 12:18:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WGqOn-0002pe-HP
-	for qemu-trivial@nongnu.org; Fri, 21 Feb 2014 08:44:23 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:22803)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WGtkP-0007V0-TQ
+	for qemu-trivial@nongnu.org; Fri, 21 Feb 2014 12:18:54 -0500
+Received: from qemu.weilnetz.de ([37.221.198.45]:48989
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1WGqOd-0002mg-Ed; Fri, 21 Feb 2014 08:44:07 -0500
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s1LDi3kN031284
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 21 Feb 2014 08:44:04 -0500
-Received: from [10.3.113.40] (ovpn-113-40.phx2.redhat.com [10.3.113.40])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s1LDi28K023023; Fri, 21 Feb 2014 08:44:02 -0500
-Message-ID: <53075822.40808@redhat.com>
-Date: Fri, 21 Feb 2014 06:44:02 -0700
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
-MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-References: <1392986209-32162-1-git-send-email-armbru@redhat.com>
-In-Reply-To: <1392986209-32162-1-git-send-email-armbru@redhat.com>
-X-Enigmail-Version: 1.6
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="XfOe8rJ7kgt4RA8mHMeNF8RVUEoPm6T2d"
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WGtkF-0007TE-Aq; Fri, 21 Feb 2014 12:18:39 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id E4F7D17F70D; Fri, 21 Feb 2014 18:18:35 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Fri, 21 Feb 2014 18:18:34 +0100
+Message-Id: <1393003115-9801-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qga: Fix memory allocation
-	pasto
+X-Received-From: 37.221.198.45
+Cc: Andrzej Zaborowski <balrogg@gmail.com>, Stefan Weil <sw@weilnetz.de>,
+	Claudio Fontana <claudio.fontana@huawei.com>,
+	qemu-devel@nongnu.org, Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-trivial] [PATCH] tcg: Fix warning (1 bit signed bitfield
+	entry) and replace int by bool
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,65 +40,162 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Feb 2014 13:44:28 -0000
+X-List-Received-Date: Fri, 21 Feb 2014 17:19:00 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---XfOe8rJ7kgt4RA8mHMeNF8RVUEoPm6T2d
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Static code analyzers complain about signed bitfields with only a single
+bit. is_ld is used as a boolean value, so make it bool.
 
-On 02/21/2014 05:36 AM, Markus Armbruster wrote:
-> qmp_guest_file_seek() allocates memory for a GuestFileRead object
-> instead of the GuestFileSeek object it actually uses.  Harmless,
-> because the GuestFileRead is slightly larger.
->=20
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  qga/commands-posix.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+ppc64 already used bool for the 2nd argument is_ld of the local function
+add_qemu_ldst_label. Modify all other TCG targets to do follow this
+example.
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ tcg/aarch64/tcg-target.c |    6 +++---
+ tcg/arm/tcg-target.c     |    6 +++---
+ tcg/i386/tcg-target.c    |    6 +++---
+ tcg/ppc/tcg-target.c     |    6 +++---
+ tcg/tcg-be-ldst.h        |    2 +-
+ 5 files changed, 13 insertions(+), 13 deletions(-)
 
->=20
-> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-> index cae4171..2c496b6 100644
-> --- a/qga/commands-posix.c
-> +++ b/qga/commands-posix.c
-> @@ -525,7 +525,7 @@ struct GuestFileSeek *qmp_guest_file_seek(int64_t h=
-andle, int64_t offset,
->      if (ret =3D=3D -1) {
->          error_setg_errno(err, errno, "failed to seek file");
->      } else {
-> -        seek_data =3D g_malloc0(sizeof(GuestFileRead));
-> +        seek_data =3D g_new0(GuestFileSeek, 1);
->          seek_data->position =3D ftell(fh);
->          seek_data->eof =3D feof(fh);
->      }
->=20
+diff --git a/tcg/aarch64/tcg-target.c b/tcg/aarch64/tcg-target.c
+index 04d7ae3..2050c90 100644
+--- a/tcg/aarch64/tcg-target.c
++++ b/tcg/aarch64/tcg-target.c
+@@ -835,7 +835,7 @@ static void tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
+     tcg_out_goto(s, (tcg_target_long)lb->raddr);
+ }
+ 
+-static void add_qemu_ldst_label(TCGContext *s, int is_ld, int opc,
++static void add_qemu_ldst_label(TCGContext *s, bool is_ld, int opc,
+                                 TCGReg data_reg, TCGReg addr_reg,
+                                 int mem_index,
+                                 uint8_t *raddr, uint8_t *label_ptr)
+@@ -1003,7 +1003,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGArg *args, int opc)
+     s_bits = opc & 3;
+     tcg_out_tlb_read(s, addr_reg, s_bits, &label_ptr, mem_index, 1);
+     tcg_out_qemu_ld_direct(s, opc, data_reg, addr_reg, TCG_REG_X1);
+-    add_qemu_ldst_label(s, 1, opc, data_reg, addr_reg,
++    add_qemu_ldst_label(s, true, opc, data_reg, addr_reg,
+                         mem_index, s->code_ptr, label_ptr);
+ #else /* !CONFIG_SOFTMMU */
+     tcg_out_qemu_ld_direct(s, opc, data_reg, addr_reg,
+@@ -1027,7 +1027,7 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, int opc)
+ 
+     tcg_out_tlb_read(s, addr_reg, s_bits, &label_ptr, mem_index, 0);
+     tcg_out_qemu_st_direct(s, opc, data_reg, addr_reg, TCG_REG_X1);
+-    add_qemu_ldst_label(s, 0, opc, data_reg, addr_reg,
++    add_qemu_ldst_label(s, false, opc, data_reg, addr_reg,
+                         mem_index, s->code_ptr, label_ptr);
+ #else /* !CONFIG_SOFTMMU */
+     tcg_out_qemu_st_direct(s, opc, data_reg, addr_reg,
+diff --git a/tcg/arm/tcg-target.c b/tcg/arm/tcg-target.c
+index c8884b3..e2291bf 100644
+--- a/tcg/arm/tcg-target.c
++++ b/tcg/arm/tcg-target.c
+@@ -1246,7 +1246,7 @@ static TCGReg tcg_out_tlb_read(TCGContext *s, TCGReg addrlo, TCGReg addrhi,
+ /* Record the context of a call to the out of line helper code for the slow
+    path for a load or store, so that we can later generate the correct
+    helper code.  */
+-static void add_qemu_ldst_label(TCGContext *s, int is_ld, TCGMemOp opc,
++static void add_qemu_ldst_label(TCGContext *s, bool is_ld, TCGMemOp opc,
+                                 TCGReg datalo, TCGReg datahi, TCGReg addrlo,
+                                 TCGReg addrhi, int mem_index,
+                                 uint8_t *raddr, uint8_t *label_ptr)
+@@ -1508,7 +1508,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGArg *args, bool is64)
+ 
+     tcg_out_qemu_ld_index(s, opc, datalo, datahi, addrlo, addend);
+ 
+-    add_qemu_ldst_label(s, 1, opc, datalo, datahi, addrlo, addrhi,
++    add_qemu_ldst_label(s, true, opc, datalo, datahi, addrlo, addrhi,
+                         mem_index, s->code_ptr, label_ptr);
+ #else /* !CONFIG_SOFTMMU */
+     if (GUEST_BASE) {
+@@ -1634,7 +1634,7 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, bool is64)
+     label_ptr = s->code_ptr;
+     tcg_out_bl_noaddr(s, COND_NE);
+ 
+-    add_qemu_ldst_label(s, 0, opc, datalo, datahi, addrlo, addrhi,
++    add_qemu_ldst_label(s, false, opc, datalo, datahi, addrlo, addrhi,
+                         mem_index, s->code_ptr, label_ptr);
+ #else /* !CONFIG_SOFTMMU */
+     if (GUEST_BASE) {
+diff --git a/tcg/i386/tcg-target.c b/tcg/i386/tcg-target.c
+index f832282..0c2347c 100644
+--- a/tcg/i386/tcg-target.c
++++ b/tcg/i386/tcg-target.c
+@@ -1244,7 +1244,7 @@ static inline void tcg_out_tlb_load(TCGContext *s, TCGReg addrlo, TCGReg addrhi,
+  * Record the context of a call to the out of line helper code for the slow path
+  * for a load or store, so that we can later generate the correct helper code
+  */
+-static void add_qemu_ldst_label(TCGContext *s, int is_ld, TCGMemOp opc,
++static void add_qemu_ldst_label(TCGContext *s, bool is_ld, TCGMemOp opc,
+                                 TCGReg datalo, TCGReg datahi,
+                                 TCGReg addrlo, TCGReg addrhi,
+                                 int mem_index, uint8_t *raddr,
+@@ -1554,7 +1554,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGArg *args, bool is64)
+     tcg_out_qemu_ld_direct(s, datalo, datahi, TCG_REG_L1, 0, 0, opc);
+ 
+     /* Record the current context of a load into ldst label */
+-    add_qemu_ldst_label(s, 1, opc, datalo, datahi, addrlo, addrhi,
++    add_qemu_ldst_label(s, true, opc, datalo, datahi, addrlo, addrhi,
+                         mem_index, s->code_ptr, label_ptr);
+ #else
+     {
+@@ -1685,7 +1685,7 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, bool is64)
+     tcg_out_qemu_st_direct(s, datalo, datahi, TCG_REG_L1, 0, 0, opc);
+ 
+     /* Record the current context of a store into ldst label */
+-    add_qemu_ldst_label(s, 0, opc, datalo, datahi, addrlo, addrhi,
++    add_qemu_ldst_label(s, false, opc, datalo, datahi, addrlo, addrhi,
+                         mem_index, s->code_ptr, label_ptr);
+ #else
+     {
+diff --git a/tcg/ppc/tcg-target.c b/tcg/ppc/tcg-target.c
+index dc2c2df..06bedd9 100644
+--- a/tcg/ppc/tcg-target.c
++++ b/tcg/ppc/tcg-target.c
+@@ -524,7 +524,7 @@ static void tcg_out_call (TCGContext *s, tcg_target_long arg, int const_arg,
+ #if defined(CONFIG_SOFTMMU)
+ 
+ static void add_qemu_ldst_label (TCGContext *s,
+-                                 int is_ld,
++                                 bool is_ld,
+                                  TCGMemOp opc,
+                                  int data_reg,
+                                  int data_reg2,
+@@ -720,7 +720,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGArg *args, bool is64)
+         break;
+     }
+ #ifdef CONFIG_SOFTMMU
+-    add_qemu_ldst_label(s, 1, opc, datalo, datahi, addrlo,
++    add_qemu_ldst_label(s, true, opc, datalo, datahi, addrlo,
+                         addrhi, mem_index, s->code_ptr, label_ptr);
+ #endif
+ }
+@@ -779,7 +779,7 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, bool is64)
+     }
+ 
+ #ifdef CONFIG_SOFTMMU
+-    add_qemu_ldst_label(s, 0, opc, datalo, datahi, addrlo, addrhi,
++    add_qemu_ldst_label(s, false, opc, datalo, datahi, addrlo, addrhi,
+                         mem_index, s->code_ptr, label_ptr);
+ #endif
+ }
+diff --git a/tcg/tcg-be-ldst.h b/tcg/tcg-be-ldst.h
+index 284db0c..ad94c0c 100644
+--- a/tcg/tcg-be-ldst.h
++++ b/tcg/tcg-be-ldst.h
+@@ -24,7 +24,7 @@
+ #define TCG_MAX_QEMU_LDST       640
+ 
+ typedef struct TCGLabelQemuLdst {
+-    int is_ld:1;            /* qemu_ld: 1, qemu_st: 0 */
++    bool is_ld:1;           /* qemu_ld: true, qemu_st: false */
+     TCGMemOp opc:4;
+     TCGReg addrlo_reg;      /* reg index for low word of guest virtual addr */
+     TCGReg addrhi_reg;      /* reg index for high word of guest virtual addr */
+-- 
+1.7.10.4
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---XfOe8rJ7kgt4RA8mHMeNF8RVUEoPm6T2d
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJTB1giAAoJEKeha0olJ0NqfQsH/1dNQdVa8xkZpGjDmxhb300y
-2YlS+cyFrmg41WTz8l0QGOfU0FLJShyFhiHMGroT4VsDv9FStf44yM/GoTPp5jDj
-28rc+ZIFxvp1vZSsDPrSnCjQelU/I3cAJ98AqS36P8v7lYGdN0Hpt4XOf1r/dhUf
-sT+vI6KjKucWq14stPZDE93jqr4J9oPIHA+Y27mSO1/DHDYhiGr9P/Cj4L9FXUtQ
-vESS/m1K6v8i1sDpvB0ClQdItxdLht9rxvRi1mUus8hIAhNx+2rwmlxb+b/f9C/l
-VW7iWy5BwrUuFu4KcN5f83bVGRfDOCcE+C6ZJh5uvCfrQEAPLXF04DGAOGKd+gE=
-=oTcH
------END PGP SIGNATURE-----
-
---XfOe8rJ7kgt4RA8mHMeNF8RVUEoPm6T2d--
 
