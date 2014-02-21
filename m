@@ -1,32 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WGZ2G-0000gh-FC
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Feb 2014 14:11:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32899)
+	id 1WGpM0-0000oM-9F
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2014 07:37:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39674)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1WGZ29-0000Y1-PX
-	for qemu-trivial@nongnu.org; Thu, 20 Feb 2014 14:11:50 -0500
+	(envelope-from <armbru@redhat.com>) id 1WGpLs-0000dq-NA
+	for qemu-trivial@nongnu.org; Fri, 21 Feb 2014 07:37:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1WGZ24-0002WI-Fr
-	for qemu-trivial@nongnu.org; Thu, 20 Feb 2014 14:11:45 -0500
-Received: from qemu.weilnetz.de ([37.221.198.45]:45139
-	helo=v2201305906712890.yourvserver.net)
+	(envelope-from <armbru@redhat.com>) id 1WGpLm-0005mf-Mq
+	for qemu-trivial@nongnu.org; Fri, 21 Feb 2014 07:37:12 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:64254)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1WGZ1u-0002U9-H6; Thu, 20 Feb 2014 14:11:30 -0500
-Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id DD52E17FD63; Thu, 20 Feb 2014 20:11:27 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Thu, 20 Feb 2014 20:11:27 +0100
-Message-Id: <1392923487-16993-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <armbru@redhat.com>)
+	id 1WGpLa-0005ke-Ad; Fri, 21 Feb 2014 07:36:54 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s1LCapDI006723
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 21 Feb 2014 07:36:52 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-49.ams2.redhat.com
+	[10.36.116.49])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s1LCao7w011395
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Fri, 21 Feb 2014 07:36:51 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 6A1EE200CF; Fri, 21 Feb 2014 13:36:49 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 21 Feb 2014 13:36:49 +0100
+Message-Id: <1392986209-32162-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.198.45
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] tcg: Fix typo in comment (dependancies ->
-	dependencies)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] qga: Fix memory allocation pasto
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,27 +45,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Feb 2014 19:11:50 -0000
+X-List-Received-Date: Fri, 21 Feb 2014 12:37:18 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+qmp_guest_file_seek() allocates memory for a GuestFileRead object
+instead of the GuestFileSeek object it actually uses.  Harmless,
+because the GuestFileRead is slightly larger.
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- tcg/tcg.c |    2 +-
+ qga/commands-posix.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 7ff1a8f..44ec42e 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -41,7 +41,7 @@
- #include "qemu/host-utils.h"
- #include "qemu/timer.h"
- 
--/* Note: the long term plan is to reduce the dependancies on the QEMU
-+/* Note: the long term plan is to reduce the dependencies on the QEMU
-    CPU definitions. Currently they are used for qemu_ld/st
-    instructions */
- #define NO_CPU_IO_DEFS
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index cae4171..2c496b6 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -525,7 +525,7 @@ struct GuestFileSeek *qmp_guest_file_seek(int64_t handle, int64_t offset,
+     if (ret == -1) {
+         error_setg_errno(err, errno, "failed to seek file");
+     } else {
+-        seek_data = g_malloc0(sizeof(GuestFileRead));
++        seek_data = g_new0(GuestFileSeek, 1);
+         seek_data->position = ftell(fh);
+         seek_data->eof = feof(fh);
+     }
 -- 
-1.7.10.4
+1.8.1.4
 
 
