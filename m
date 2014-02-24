@@ -1,53 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WHjve-0004iE-Gl
-	for mharc-qemu-trivial@gnu.org; Sun, 23 Feb 2014 20:01:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33464)
+	id 1WHrSn-0002V6-0N
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2014 04:04:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46241)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <flukshun@gmail.com>) id 1WHjvX-0004Vl-Uz
-	for qemu-trivial@nongnu.org; Sun, 23 Feb 2014 20:01:53 -0500
+	(envelope-from <armbru@redhat.com>) id 1WHrSg-0002ME-Dq
+	for qemu-trivial@nongnu.org; Mon, 24 Feb 2014 04:04:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <flukshun@gmail.com>) id 1WHjvS-0007X1-Cp
-	for qemu-trivial@nongnu.org; Sun, 23 Feb 2014 20:01:47 -0500
-Received: from mail-oa0-x22b.google.com ([2607:f8b0:4003:c02::22b]:53953)
+	(envelope-from <armbru@redhat.com>) id 1WHrSb-000830-6h
+	for qemu-trivial@nongnu.org; Mon, 24 Feb 2014 04:04:30 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:13245)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <flukshun@gmail.com>)
-	id 1WHjvH-0007Ue-FQ; Sun, 23 Feb 2014 20:01:31 -0500
-Received: by mail-oa0-f43.google.com with SMTP id i7so3328682oag.30
-	for <multiple recipients>; Sun, 23 Feb 2014 17:01:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:content-type:mime-version:content-transfer-encoding:to:from
-	:in-reply-to:cc:references:message-id:user-agent:subject:date;
-	bh=zx3FOL9MExmghiv0iMN66FEnD6MYhooQpQzTQfZ5Iaw=;
-	b=sIX7wOw2VcjDErgkN0tH97ux6PpZOrP5GLP0zugQTwt43/fYtYp17Zr+x2MY86NfDg
-	kGpNBSfw1Y0B4TLTZjv7OhSWDBaQ2+MuCjbeqR0VzQbu9+NqvW1ymE1dA4LpsriKbbbt
-	h9per+25NPdLFdKLfmr4NU82G7+6FLdx1trwlizI0HVKW/dU+m+rK2iODP0FGsNn4J6Y
-	cXVOW61SokoKNAH9Z+kwziZTzyht5m8Re/nCsZbXxds2ap0INo+tcXgjlPuSYLJSLJ63
-	drvaqliNj38wvgC2FH7Ruys9K6VWLW8ZdBOwkdnWamsxNEBrOa77hvFokGbTEsb7Cgjr
-	HDyQ==
-X-Received: by 10.182.142.229 with SMTP id rz5mr15245569obb.12.1393203690830; 
-	Sun, 23 Feb 2014 17:01:30 -0800 (PST)
-Received: from localhost ([70.114.130.150])
-	by mx.google.com with ESMTPSA id cg5sm30281176obc.9.2014.02.23.17.01.30
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Sun, 23 Feb 2014 17:01:30 -0800 (PST)
-Sender: fluxion <flukshun@gmail.com>
-Content-Type: text/plain; charset="utf-8"
+	(envelope-from <armbru@redhat.com>)
+	id 1WHrSQ-0007u7-TG; Mon, 24 Feb 2014 04:04:15 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s1O94ADp025226
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 24 Feb 2014 04:04:11 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-42.ams2.redhat.com
+	[10.36.116.42])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s1O946EB000469
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Mon, 24 Feb 2014 04:04:07 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id E0289200CF; Mon, 24 Feb 2014 10:04:05 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Hani Benhabiles <kroosec@gmail.com>
+References: <1393164341-7196-1-git-send-email-kroosec@gmail.com>
+Date: Mon, 24 Feb 2014 10:04:05 +0100
+In-Reply-To: <1393164341-7196-1-git-send-email-kroosec@gmail.com> (Hani
+	Benhabiles's message of "Sun, 23 Feb 2014 15:05:41 +0100")
+Message-ID: <8738j86fwa.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-To: Markus Armbruster <armbru@redhat.com>,  qemu-devel@nongnu.org
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-In-Reply-To: <1392986209-32162-1-git-send-email-armbru@redhat.com>
-References: <1392986209-32162-1-git-send-email-armbru@redhat.com>
-Message-ID: <20140224010127.3593.72999@loki>
-User-Agent: alot/0.3.4
-Date: Sun, 23 Feb 2014 19:01:27 -0600
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c02::22b
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qga: Fix memory allocation
-	pasto
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] balloon: Fix device name in
+	error message.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,42 +53,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Feb 2014 01:01:53 -0000
+X-List-Received-Date: Mon, 24 Feb 2014 09:04:35 -0000
 
-Quoting Markus Armbruster (2014-02-21 06:36:49)
-> qmp_guest_file_seek() allocates memory for a GuestFileRead object
-> instead of the GuestFileSeek object it actually uses.  Harmless,
-> because the GuestFileRead is slightly larger.
-> =
+Hani Benhabiles <kroosec@gmail.com> writes:
 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-
-Thanks, applied to qga tree:                                               =
-                                  =
-
-
-  https://github.com/mdroth/qemu/commits/qga
-
+> Also fix trailing whitespace.
+>
+> Signed-off-by: Hani Benhabiles <hani@linux.com>
 > ---
->  qga/commands-posix.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> =
-
-> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-> index cae4171..2c496b6 100644
-> --- a/qga/commands-posix.c
-> +++ b/qga/commands-posix.c
-> @@ -525,7 +525,7 @@ struct GuestFileSeek *qmp_guest_file_seek(int64_t han=
-dle, int64_t offset,
->      if (ret =3D=3D -1) {
->          error_setg_errno(err, errno, "failed to seek file");
->      } else {
-> -        seek_data =3D g_malloc0(sizeof(GuestFileRead));
-> +        seek_data =3D g_new0(GuestFileSeek, 1);
->          seek_data->position =3D ftell(fh);
->          seek_data->eof =3D feof(fh);
+>  balloon.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/balloon.c b/balloon.c
+> index e321f2c..b66710a 100644
+> --- a/balloon.c
+> +++ b/balloon.c
+> @@ -125,8 +125,8 @@ void qmp_balloon(int64_t value, Error **errp)
+>          error_set(errp, QERR_INVALID_PARAMETER_VALUE, "target", "a size");
+>          return;
 >      }
-> -- =
+> -    
+> +
+>      if (qemu_balloon(value) == 0) {
+> -        error_set(errp, QERR_DEVICE_NOT_ACTIVE, "balloon");
+> +        error_set(errp, QERR_DEVICE_NOT_ACTIVE, "virtio-balloon-pci");
+>      }
+>  }
 
-> 1.8.1.4
+I agree the error message is bad, but I'm afraid your patch makes it
+worse :)
+
+qemu_balloon() returns zero when balloon_event_fn has not been set with
+qemu_add_balloon_handler().
+
+Right now, the only device that calls qemu_add_balloon_handler() is
+virtio-balloon-device.  In theory, there could be others in the future.
+
+virtio-balloon-device is a virtio-bus device.  The bus can be provided
+by virtio-balloon-pci or virtio-balloon-ccw.
+
+Your error message is misleading when it's provided by the latter.
+
+Moreover, you missed qmp_query_balloon().
+
+QERR_DEVICE_NOT_ACTIVE is also used with argument "spice", and the
+resulting error message is similarly bad.  Perhaps something like this
+would do:
+
+#define QERR_DEVICE_NOT_ACTIVE \
+    ERROR_CLASS_DEVICE_NOT_ACTIVE, "No %s device has been activated"
 
