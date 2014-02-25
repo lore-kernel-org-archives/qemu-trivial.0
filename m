@@ -1,47 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WICAG-0000u1-5k
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2014 02:10:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41902)
+	id 1WIDGk-0005h7-7b
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2014 03:21:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56197)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1WICA8-0000jg-Gk
-	for qemu-trivial@nongnu.org; Tue, 25 Feb 2014 02:10:50 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1WIDGa-0005VY-3o
+	for qemu-trivial@nongnu.org; Tue, 25 Feb 2014 03:21:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1WICA2-0004aD-MI
-	for qemu-trivial@nongnu.org; Tue, 25 Feb 2014 02:10:44 -0500
-Received: from mail-ee0-x231.google.com ([2a00:1450:4013:c00::231]:40685)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1WIDGR-0002Qs-Lz
+	for qemu-trivial@nongnu.org; Tue, 25 Feb 2014 03:21:28 -0500
+Received: from mail-qa0-x234.google.com ([2607:f8b0:400d:c00::234]:57177)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>)
-	id 1WIC9q-0004Vs-Ai; Tue, 25 Feb 2014 02:10:26 -0500
-Received: by mail-ee0-f49.google.com with SMTP id b57so528769eek.36
-	for <multiple recipients>; Mon, 24 Feb 2014 23:10:25 -0800 (PST)
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1WIDG8-0002JM-HS; Tue, 25 Feb 2014 03:21:00 -0500
+Received: by mail-qa0-f52.google.com with SMTP id j15so51696qaq.11
+	for <multiple recipients>; Tue, 25 Feb 2014 00:21:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=zRSynEy2wGAZWC0OIoi9BUyrEAjOY64obUhrLxuyFcQ=;
-	b=pvHnCXN3rmz4RBFlzq9d4HOKxHMsM3SRAnW5XYNX7PzXqBDVxJTp0M5OD5cW4t5NAW
-	BlCaH/uhFwzaREaVEAMBzag6RZ5JB8gUM4z5K+3GAhMhZGBnnVax3kZjV+1KUUSYvt24
-	KrtT1o+M44Fbqz4kEaRUCKbPjaBani3fWTcL0z0vaTM/9lWuVlikwXditTrZWXrZz1Pj
-	VlIeSKOKEAa53CJK72BfhHi9QCIqCfAsEgrU+z5b4KofPx1ai9pmdS3kheqxc0uT2NKJ
-	Vz99pIHFaa1MbvLffFeSq5qYubuvYUX9WX4K92YJoVXJvZ9L8QzTyFpEI7PYVCA8Eu4u
-	xaNg==
-X-Received: by 10.15.75.66 with SMTP id k42mr29613045eey.2.1393312225329;
-	Mon, 24 Feb 2014 23:10:25 -0800 (PST)
-Received: from localhost.localdomain ([41.103.124.71])
-	by mx.google.com with ESMTPSA id a2sm57995708eem.18.2014.02.24.23.10.23
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=aH+vve0ehNaKljYvHi5GaB7S5D2xBG47hZYnGH5bBA8=;
+	b=sMXQtv+2DxNw9DJRgLHAxfoDRKUeF3ZqVA8ylXdFiUHQys5BxTDsXV7+BE4mjxhUPh
+	Tof//yYzwC11rGG3yNywdXWABGj7FBYmFmOcvJK4t0LpObTVfl68GlyJVbWL+rNlS0uv
+	aPh/8aN+kPkflafXo/8yrjRaD3pEDr8W7PozEIlPwya6wcW4uQ8XZKIjz/EgEUOedFRR
+	FOChk3/u68QCIMyAayi36aukmhchK1cDYMqYxWT3rZSvqX+1PJjRx+vel6a/QNoIgq4z
+	hUKVWBVMwAWiY3UUjXQiw32UzY+4EE2juLoeml1eu6HEYLUc1VlYTncpW0nVHM8Brykv
+	J43Q==
+X-Received: by 10.140.27.179 with SMTP id 48mr33870612qgx.18.1393316459583;
+	Tue, 25 Feb 2014 00:20:59 -0800 (PST)
+Received: from yakj.usersys.redhat.com
+	(net-37-117-154-249.cust.vodafonedsl.it. [37.117.154.249])
+	by mx.google.com with ESMTPSA id r13sm57337573qan.7.2014.02.25.00.20.57
 	for <multiple recipients>
-	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Mon, 24 Feb 2014 23:10:24 -0800 (PST)
-From: Hani Benhabiles <kroosec@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 25 Feb 2014 08:10:05 +0100
-Message-Id: <1393312205-7858-1-git-send-email-kroosec@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 25 Feb 2014 00:20:58 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <530C5265.4040900@redhat.com>
+Date: Tue, 25 Feb 2014 09:20:53 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+References: <1393174935-11750-1-git-send-email-sw@weilnetz.de>
+	<530C2AE2.1010003@weilnetz.de>
+In-Reply-To: <530C2AE2.1010003@weilnetz.de>
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4013:c00::231
-Cc: qemu-trivial@nongnu.org, kwolf@redhat.com, peter.crosthwaite@xilinx.com,
-	armbru@redhat.com, lcapitulino@redhat.com
-Subject: [Qemu-trivial] [PATCH] qerror: Improve QERR_DEVICE_NOT_ACTIVE
-	message
+X-Received-From: 2607:f8b0:400d:c00::234
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH 0/9] w32: Reduce dependency on Windows API
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,60 +63,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2014 07:10:50 -0000
+X-List-Received-Date: Tue, 25 Feb 2014 08:21:36 -0000
 
-The error message as currently used is confusing as there are no "balloon" or
-"spice" devices.
+Il 25/02/2014 06:32, Stefan Weil ha scritto:
+> Am 23.02.2014 18:02, schrieb Stefan Weil:
+>> Today, most .o files depend on windows.h when QEMU is built with MinGW or
+>> MinGW-w64 (32 and 64 bit builds). These patches reduce the number of such
+>> files from more than 1800 to less than 180. They also allow removing some
+>> hacks which were needed because of conflicts with windows.h. A nasty
+>> compiler warning is fixed, too.
+>>
+>> The modifications were tested with MinGW (32 bit native) and MinGW-w64
+>> (32 and 64 bit cross).
+>>
+>> Regards
+>> Stefan W.
+>>
+>> [PATCH 1/9] util/iov: Use qemu/sockets.h instead of conditional code
+>> [PATCH 2/9] exec: Remove unneeded include files
+>> [PATCH 3/9] qemu-img: Remove unneeded include files
+>> [PATCH 4/9] qga: Remove unneeded include file
+>> [PATCH 5/9] vl: Remove unneeded include file
+>> [PATCH 6/9] w32: Add and use intermediate include file for windows.h
+>> [PATCH 7/9] w32: Move inline function from header file to C source
+>> [PATCH 8/9] w32: Reduce dependencies in sysemu/os-win32.h
+>> [PATCH 9/9] w32: Replace Windows specific data types in common
+>>
+>
+> This patch series needs at least one more iteration with a v2.
+>
+> Patches 1-5 can be applied independently of the rest and are trivial, so
+> maybe they can be applied by qemu-trivial, or I can send a pull request
+> for only those patches as soon as they were reviewed. That would reduce
+> the size of my v2 patch set.
 
-(qemu) balloon 1024
-balloon: Device 'balloon' has not been activated
+Patches 1-5 are
 
-With this patch:
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-(qemu) balloon 1024
-balloon: No balloon device has been activated
+Thanks for all the effort you put in janitorial work, it's as thankless 
+as it's useful!
 
-Signed-off-by: Hani Benhabiles <hani@linux.com>
-Suggested-by: Markus Armbruster <armbru@redhat.com>
----
- include/qapi/qmp/qerror.h | 2 +-
- qmp.c                     | 2 --
- 2 files changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-index 73c67b7..25193c9 100644
---- a/include/qapi/qmp/qerror.h
-+++ b/include/qapi/qmp/qerror.h
-@@ -105,7 +105,7 @@ void qerror_report_err(Error *err);
-     ERROR_CLASS_GENERIC_ERROR, "Device '%s' does not support hotplugging"
- 
- #define QERR_DEVICE_NOT_ACTIVE \
--    ERROR_CLASS_DEVICE_NOT_ACTIVE, "Device '%s' has not been activated"
-+    ERROR_CLASS_DEVICE_NOT_ACTIVE, "No %s device has been activated"
- 
- #define QERR_DEVICE_NOT_ENCRYPTED \
-     ERROR_CLASS_GENERIC_ERROR, "Device '%s' is not encrypted"
-diff --git a/qmp.c b/qmp.c
-index d0d98e7..ffddd26 100644
---- a/qmp.c
-+++ b/qmp.c
-@@ -289,7 +289,6 @@ void qmp_set_password(const char *protocol, const char *password,
- 
-     if (strcmp(protocol, "spice") == 0) {
-         if (!using_spice) {
--            /* correct one? spice isn't a device ,,, */
-             error_set(errp, QERR_DEVICE_NOT_ACTIVE, "spice");
-             return;
-         }
-@@ -337,7 +336,6 @@ void qmp_expire_password(const char *protocol, const char *whenstr,
- 
-     if (strcmp(protocol, "spice") == 0) {
-         if (!using_spice) {
--            /* correct one? spice isn't a device ,,, */
-             error_set(errp, QERR_DEVICE_NOT_ACTIVE, "spice");
-             return;
-         }
--- 
-1.8.3.2
+Paolo
 
 
