@@ -1,33 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WIo4y-0001Eb-2w
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2014 18:39:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51703)
+	id 1WIoGY-0006X2-QM
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2014 18:51:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53886)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WIo4v-00017X-Ht
-	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 18:39:54 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1WIoGV-0006Ss-LO
+	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 18:51:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WIo4u-0002YK-Lr
-	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 18:39:53 -0500
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:46288)
+	(envelope-from <pm215@archaic.org.uk>) id 1WIoGU-0006Ce-MY
+	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 18:51:51 -0500
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:46291)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WIo4s-0002Xd-1t; Wed, 26 Feb 2014 18:39:50 -0500
+	id 1WIoGS-0006CO-LC; Wed, 26 Feb 2014 18:51:48 -0500
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WIo4p-0006SK-0x; Wed, 26 Feb 2014 23:39:47 +0000
+	id 1WIoGQ-0006To-QV; Wed, 26 Feb 2014 23:51:46 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed, 26 Feb 2014 23:39:46 +0000
-Message-Id: <1393457987-24791-1-git-send-email-peter.maydell@linaro.org>
+Date: Wed, 26 Feb 2014 23:51:46 +0000
+Message-Id: <1393458706-24883-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org,
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Andreas=20F=C3=A4rber?= <andreas.faerber@web.de>,
-	Richard Henderson <rth@twiddle.net>, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] tests/test-int128: Don't use __noclone__
-	attribute on clang
+	patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] qjson.h: Remove spurious GCC_FMT_ATTR markup
+	from qobject_from_json() declaration
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,59 +39,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2014 23:39:54 -0000
+X-List-Received-Date: Wed, 26 Feb 2014 23:51:52 -0000
 
-clang doesn't support the __noclone__ attribute and emits a warning about
-it. Fortunately clang also implements a mechanism for asking if a particular
-attribute is implemented; use it. We assume that if the compiler doesn't
-support __has_attribute() then it must be GCC and must support __noclone__.
+The function qobject_from_json() doesn't actually allow its
+argument to be a format string -- it passes a NULL va_list*
+to qobject_from_jsonv(), and the parser code will then never
+actually intepret %-escape sequences (it tests whether the
+va_list pointer is NULL and will stop with a parse error).
+
+The spurious attribute markup causes clang warnings in some
+of the test cases where we programmatically construct JSON
+to feed to qobject_from_json():
+
+ tests/test-qmp-input-visitor.c:76:35: warning: format string is not a
+ string literal (potentially insecure) [-Wformat-security]
+    data->obj = qobject_from_json(json_string);
+                                  ^~~~~~~~~~~
+
+Remove the incorrect attribute.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
-__has_attribute and friends are a clang feature it would be nice if
-the GCC devs stole :-)  If they'd had it from the start it would have
-obviated all the horrible specific-version-of-gcc checks that compiler.h
-has to do...
+ include/qapi/qmp/qjson.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This is the only file in the tree using __noclone__ so it seems simplest
-to fix this here rather than putting it in compiler.h.
-
- tests/test-int128.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/tests/test-int128.c b/tests/test-int128.c
-index 5aca032..0772ef7 100644
---- a/tests/test-int128.c
-+++ b/tests/test-int128.c
-@@ -11,6 +11,19 @@
- #include "qemu/int128.h"
- #include "qemu/osdep.h"
+diff --git a/include/qapi/qmp/qjson.h b/include/qapi/qmp/qjson.h
+index 73351ed..ee4d31a 100644
+--- a/include/qapi/qmp/qjson.h
++++ b/include/qapi/qmp/qjson.h
+@@ -19,7 +19,7 @@
+ #include "qapi/qmp/qobject.h"
+ #include "qapi/qmp/qstring.h"
  
-+/* clang doesn't support __noclone__ but it does have a mechanism for
-+ * telling us this. We assume that if we don't have __has_attribute()
-+ * then this is GCC and that GCC always supports __noclone__.
-+ */
-+#if defined(__has_attribute)
-+#if !__has_attribute(__noclone__)
-+#define ATTRIBUTE_NOCLONE
-+#endif
-+#endif
-+#ifndef ATTRIBUTE_NOCLONE
-+#define ATTRIBUTE_NOCLONE __attribute__((__noclone__))
-+#endif
-+
- static uint32_t tests[8] = {
-     0x00000000, 0x00000001, 0x7FFFFFFE, 0x7FFFFFFF,
-     0x80000000, 0x80000001, 0xFFFFFFFE, 0xFFFFFFFF,
-@@ -164,7 +177,7 @@ static void test_gt(void)
+-QObject *qobject_from_json(const char *string) GCC_FMT_ATTR(1, 0);
++QObject *qobject_from_json(const char *string);
+ QObject *qobject_from_jsonf(const char *string, ...) GCC_FMT_ATTR(1, 2);
+ QObject *qobject_from_jsonv(const char *string, va_list *ap) GCC_FMT_ATTR(1, 0);
  
- /* Make sure to test undefined behavior at runtime! */
- 
--static void __attribute__((__noinline__, __noclone__))
-+static void __attribute__((__noinline__)) ATTRIBUTE_NOCLONE
- test_rshift_one(uint32_t x, int n, uint64_t h, uint64_t l)
- {
-     Int128 a = expand(x);
 -- 
 1.8.5.4
 
