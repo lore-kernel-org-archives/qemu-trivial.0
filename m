@@ -1,46 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WImgP-00030q-BC
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2014 17:10:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36472)
+	id 1WInGe-0000rE-Pe
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2014 17:47:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43171)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1WImgH-0002ql-3M
-	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 17:10:26 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1WInGX-0000hF-Km
+	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 17:47:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1WImgB-0000LS-7k
-	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 17:10:20 -0500
-Received: from mail-pd0-x235.google.com ([2607:f8b0:400e:c02::235]:43367)
+	(envelope-from <pm215@archaic.org.uk>) id 1WInGS-0003hB-SW
+	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 17:47:49 -0500
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:39328)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>)
-	id 1WImfz-00009i-6I; Wed, 26 Feb 2014 17:10:03 -0500
-Received: by mail-pd0-f181.google.com with SMTP id p10so1517323pdj.40
-	for <multiple recipients>; Wed, 26 Feb 2014 14:10:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=kGgGEaqxB6kgfG2EAr09sqYqVu2Yu62Fgm5pWfkg784=;
-	b=IwcXSs5v90Xr69XO1rV0zCaMpRhoCHeVtIZYmSNTRuX4VGbE96CATqvgQE9fXQ4xa9
-	/NRpmgegVv/GBLEQXLr58uCQ2pE4ErtWfcs+OUH4KTyUHgwlPu7QCa2wf4W7MlM2LCY1
-	oeoR3JZ39wNgLB3D9m9qv3pUKDjYb5iWO5Hxpuj8Ofm6YxciHpPUINmOfRonvVEnTKJ2
-	Jy5ccK/d5kj117YNgtfCAfsi5uK5ru+U0Mo9N1MZTseHJHvQSJPOX43LJOjdtfQKHeNC
-	HXE01Dv2DeeAxSwI/2ZnRjNByB8Fpl5yqnVzYhGSvQCSbecegg0+I+aRfePcuRmyhkpL
-	mdEw==
-X-Received: by 10.69.0.10 with SMTP id au10mr9726696pbd.48.1393452601804;
-	Wed, 26 Feb 2014 14:10:01 -0800 (PST)
-Received: from localhost.localdomain ([41.109.200.255])
-	by mx.google.com with ESMTPSA id ou9sm6712059pbc.30.2014.02.26.14.09.59
-	for <multiple recipients>
-	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Wed, 26 Feb 2014 14:10:01 -0800 (PST)
-From: Hani Benhabiles <kroosec@gmail.com>
+	(envelope-from <pm215@archaic.org.uk>) id 1WInGS-0003fg-Lj
+	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 17:47:44 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1WInGP-0006Qw-Vi; Wed, 26 Feb 2014 22:47:41 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed, 26 Feb 2014 23:09:52 +0100
-Message-Id: <1393452592-13934-1-git-send-email-kroosec@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::235
-Cc: qemu-trivial@nongnu.org, lcapitulino@redhat.com
-Subject: [Qemu-trivial] [PATCH] monitor: Remove left-over code in
-	do_info_profile.
+Date: Wed, 26 Feb 2014 22:47:41 +0000
+Message-Id: <1393454861-24705-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <andreas.faerber@web.de>,
+	patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] tests/Makefile: Suppress format-security
+	warnings on JSON tests
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,31 +38,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2014 22:10:27 -0000
+X-List-Received-Date: Wed, 26 Feb 2014 22:47:54 -0000
 
-This is a left-over from 4a1418e.
+Some of our test binaries programmatically generate JSON format
+strings to feed to qobject_from_json(). Since that function is
+marked with GCC_FMT_ATTR(), clang complains about this:
+ tests/test-qmp-input-visitor.c:76:35: warning: format string is not a
+ string literal (potentially insecure) [-Wformat-security]
+    data->obj = qobject_from_json(json_string);
+                                  ^~~~~~~~~~~
 
-Signed-off-by: Hani Benhabiles <hani@linux.com>
+Since these are only test cases and not potential attack vectors,
+the simplest approach is simply to suppress this particular
+compiler warning when compiling the relevant test cases.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- monitor.c | 4 ----
- 1 file changed, 4 deletions(-)
+I couldn't think of a better way to do this...
 
-diff --git a/monitor.c b/monitor.c
-index aebcbd8..3863d83 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -2021,10 +2021,6 @@ int64_t dev_time;
+ tests/Makefile | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/tests/Makefile b/tests/Makefile
+index b17d41e..496c02f 100644
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -146,6 +146,17 @@ check-qapi-schema-y := $(addprefix tests/qapi-schema/, \
  
- static void do_info_profile(Monitor *mon, const QDict *qdict)
- {
--    int64_t total;
--    total = qemu_time;
--    if (total == 0)
--        total = 1;
-     monitor_printf(mon, "async time  %" PRId64 " (%0.3f)\n",
-                    dev_time, dev_time / (double)get_ticks_per_sec());
-     monitor_printf(mon, "qemu time   %" PRId64 " (%0.3f)\n",
+ GENERATED_HEADERS += tests/test-qapi-types.h tests/test-qapi-visit.h tests/test-qmp-commands.h
+ 
++# These tests use the qobject_from_json() function with programmatically
++# generated format strings; since this would otherwise trip clang's
++# format-security warnings and these are only test binaries, disable
++# the warnings when building them.
++JSON_USERS=check-qjson \
++           check-input-visitor \
++           test-qmp-input-visitor \
++           test-visitor-serialization
++
++$(JSON_USERS:%=tests/%.o): CFLAGS += -Wno-format-security
++
+ test-obj-y = tests/check-qint.o tests/check-qstring.o tests/check-qdict.o \
+ 	tests/check-qlist.o tests/check-qfloat.o tests/check-qjson.o \
+ 	tests/test-coroutine.o tests/test-string-output-visitor.o \
 -- 
-1.8.3.2
+1.8.5.4
 
 
