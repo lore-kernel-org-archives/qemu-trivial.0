@@ -1,48 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WIoL9-0000AS-QC
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2014 18:56:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54891)
+	id 1WJSTD-0005Kl-KN
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2014 13:47:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53848)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WIoL2-0008U0-RW
-	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 18:56:37 -0500
+	(envelope-from <lcapitulino@redhat.com>) id 1WJST6-0005BI-OL
+	for qemu-trivial@nongnu.org; Fri, 28 Feb 2014 13:47:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WIoKy-0007oB-9s
-	for qemu-trivial@nongnu.org; Wed, 26 Feb 2014 18:56:32 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54076)
+	(envelope-from <lcapitulino@redhat.com>) id 1WJST1-0001GK-OP
+	for qemu-trivial@nongnu.org; Fri, 28 Feb 2014 13:47:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39579)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1WIoKp-0007mY-5d; Wed, 26 Feb 2014 18:56:19 -0500
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1WJSSp-0001Ef-FU; Fri, 28 Feb 2014 13:47:15 -0500
 Received: from int-mx01.intmail.prod.int.phx2.redhat.com
 	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s1QNuG9b002307
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s1SIlDG3001317
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 26 Feb 2014 18:56:16 -0500
-Received: from [10.3.113.107] (ovpn-113-107.phx2.redhat.com [10.3.113.107])
+	Fri, 28 Feb 2014 13:47:13 -0500
+Received: from localhost (ovpn-113-119.phx2.redhat.com [10.3.113.119])
 	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s1QNuG2e025794; Wed, 26 Feb 2014 18:56:16 -0500
-Message-ID: <530E7F1F.2040802@redhat.com>
-Date: Wed, 26 Feb 2014 16:56:15 -0700
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1393458706-24883-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1393458706-24883-1-git-send-email-peter.maydell@linaro.org>
-X-Enigmail-Version: 1.6
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="wVqIev1CjgjorMjFWjHSb8J6Gx7KI8637"
+	id s1SIlB7n002631; Fri, 28 Feb 2014 13:47:12 -0500
+Date: Fri, 28 Feb 2014 13:40:15 -0500
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Hani Benhabiles <kroosec@gmail.com>
+Message-ID: <20140228134015.048e6d48@redhat.com>
+In-Reply-To: <20140225084243.GA3806@Inspiron-3521>
+References: <1393312205-7858-1-git-send-email-kroosec@gmail.com>
+	<87txbnshy9.fsf@blackfin.pond.sub.org>
+	<20140225084243.GA3806@Inspiron-3521>
+Organization: Red Hat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <andreas.faerber@web.de>,
-	patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qjson.h: Remove spurious
- GCC_FMT_ATTR markup from qobject_from_json() declaration
+Cc: qemu-trivial@nongnu.org, kwolf@redhat.com, peter.crosthwaite@xilinx.com,
+	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qerror: Improve
+ QERR_DEVICE_NOT_ACTIVE message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,62 +50,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2014 23:56:37 -0000
+X-List-Received-Date: Fri, 28 Feb 2014 18:47:37 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---wVqIev1CjgjorMjFWjHSb8J6Gx7KI8637
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On Tue, 25 Feb 2014 09:42:43 +0100
+Hani Benhabiles <kroosec@gmail.com> wrote:
 
-On 02/26/2014 04:51 PM, Peter Maydell wrote:
-> The function qobject_from_json() doesn't actually allow its
-> argument to be a format string -- it passes a NULL va_list*
-> to qobject_from_jsonv(), and the parser code will then never
-> actually intepret %-escape sequences (it tests whether the
-> va_list pointer is NULL and will stop with a parse error).
->=20
-> The spurious attribute markup causes clang warnings in some
-> of the test cases where we programmatically construct JSON
-> to feed to qobject_from_json():
->=20
->  tests/test-qmp-input-visitor.c:76:35: warning: format string is not a
->  string literal (potentially insecure) [-Wformat-security]
->     data->obj =3D qobject_from_json(json_string);
->                                   ^~~~~~~~~~~
->=20
-> Remove the incorrect attribute.
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  include/qapi/qmp/qjson.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> On Tue, Feb 25, 2014 at 09:41:02AM +0100, Markus Armbruster wrote:
+> > Hani Benhabiles <kroosec@gmail.com> writes:
+> > 
+> > > The error message as currently used is confusing as there are no "balloon" or
+> > > "spice" devices.
+> > >
+> > > (qemu) balloon 1024
+> > > balloon: Device 'balloon' has not been activated
+> > >
+> > > With this patch:
+> > >
+> > > (qemu) balloon 1024
+> > > balloon: No balloon device has been activated
+> > >
+> > > Signed-off-by: Hani Benhabiles <hani@linux.com>
+> > > Suggested-by: Markus Armbruster <armbru@redhat.com>
+> > > ---
+> > >  include/qapi/qmp/qerror.h | 2 +-
+> > >  qmp.c                     | 2 --
+> > >  2 files changed, 1 insertion(+), 3 deletions(-)
+> > >
+> > > diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+> > > index 73c67b7..25193c9 100644
+> > > --- a/include/qapi/qmp/qerror.h
+> > > +++ b/include/qapi/qmp/qerror.h
+> > > @@ -105,7 +105,7 @@ void qerror_report_err(Error *err);
+> > >      ERROR_CLASS_GENERIC_ERROR, "Device '%s' does not support hotplugging"
+> > >  
+> > >  #define QERR_DEVICE_NOT_ACTIVE \
+> > > -    ERROR_CLASS_DEVICE_NOT_ACTIVE, "Device '%s' has not been activated"
+> > > +    ERROR_CLASS_DEVICE_NOT_ACTIVE, "No %s device has been activated"
+> > >  
+> > >  #define QERR_DEVICE_NOT_ENCRYPTED \
+> > >      ERROR_CLASS_GENERIC_ERROR, "Device '%s' is not encrypted"
+> > > diff --git a/qmp.c b/qmp.c
+> > > index d0d98e7..ffddd26 100644
+> > > --- a/qmp.c
+> > > +++ b/qmp.c
+> > > @@ -289,7 +289,6 @@ void qmp_set_password(const char *protocol, const char *password,
+> > >  
+> > >      if (strcmp(protocol, "spice") == 0) {
+> > >          if (!using_spice) {
+> > > -            /* correct one? spice isn't a device ,,, */
+> > >              error_set(errp, QERR_DEVICE_NOT_ACTIVE, "spice");
+> > >              return;
+> > >          }
+> > > @@ -337,7 +336,6 @@ void qmp_expire_password(const char *protocol, const char *whenstr,
+> > >  
+> > >      if (strcmp(protocol, "spice") == 0) {
+> > >          if (!using_spice) {
+> > > -            /* correct one? spice isn't a device ,,, */
+> > >              error_set(errp, QERR_DEVICE_NOT_ACTIVE, "spice");
+> > >              return;
+> > >          }
+> > 
+> > The wording of the error message is still suboptimal for the
+> > !using_spice case, but it's an improvement.  I'd leave the two comments
+> > alone, though.  Hani, if you agree, then Luiz could perhaps merge your
+> > patch with these two hunks dropped.
+> > 
+> > Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> 
+> Sure, no problem with dropping them. Thanks for the review, Markus!
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---wVqIev1CjgjorMjFWjHSb8J6Gx7KI8637
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJTDn8fAAoJEKeha0olJ0Nqht4H/0LUHxl7jH0JaYrVrQ5KtVM/
-jvqLnExido6cquYvxDA2HWU1jzvdcyzvAV7pzXA/UfDmt1vGuIe7cFd2Jazz+cLs
-nZhYKMiJTLZQC8ppEbGiwxSqvSy8ZvWJDoHE7Y5mwxDh4++YVyxYqhbQQGA0fW7/
-ugrIL+URytBilh5iIjuCc10pq2HDDxG+CmPLgzQpy4qLiCznHadBjm329K29lPv/
-W7jVlXYbisGpT+z7srpRSgDw+hRZ6KiIscOL6XL3MnvFgUMcqUv4lb41IspCoXHP
-m3f96llCiuB7tFsTLRaoncjdL8Pk0tvQTdJsTKHSma2fmAgcy1M7B5k72+JOX1E=
-=VIuv
------END PGP SIGNATURE-----
-
---wVqIev1CjgjorMjFWjHSb8J6Gx7KI8637--
+Done.
 
