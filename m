@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WKiwR-0004jW-6Y
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Mar 2014 01:35:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35171)
+	id 1WKjPG-0007F4-Bb
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Mar 2014 02:04:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59856)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKiwF-0004Np-GB
-	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:34:56 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1WKijL-0000d6-RF
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:21:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKiwB-0007kQ-3z
-	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:34:51 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:50465)
+	(envelope-from <mjt@tls.msk.ru>) id 1WKijH-0003NW-LZ
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:21:31 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:46788)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WKivv-0007dR-RD; Tue, 04 Mar 2014 01:34:32 -0500
+	id 1WKij9-0003Ld-0D; Tue, 04 Mar 2014 01:21:19 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A7E794084F;
-	Tue,  4 Mar 2014 10:34:30 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id E6D314084F;
+	Tue,  4 Mar 2014 10:16:03 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 2BD0E64F;
-	Tue,  4 Mar 2014 10:16:04 +0400 (MSK)
-Received: (nullmailer pid 16577 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id C126C651;
+	Tue,  4 Mar 2014 10:16:03 +0400 (MSK)
+Received: (nullmailer pid 16571 invoked by uid 1000);
 	Tue, 04 Mar 2014 06:16:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue,  4 Mar 2014 10:15:52 +0400
-Message-Id: <1393913761-16516-5-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Tue,  4 Mar 2014 10:15:50 +0400
+Message-Id: <1393913761-16516-3-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 04/13] bswap: Modify prototypes of st[wl]_{le,
-	be}_p (avoid type conversions)
+Cc: qemu-trivial@nongnu.org, Hani Benhabiles <hani@linux.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Hani Benhabiles <kroosec@gmail.com>
+Subject: [Qemu-trivial] [PULL 02/13] object: Report type in error when not
+	user creatable.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,57 +44,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Mar 2014 06:34:57 -0000
+X-List-Received-Date: Tue, 04 Mar 2014 07:04:47 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Hani Benhabiles <kroosec@gmail.com>
 
-The functions use uint16_t or uint32_t values, so show this in the function
-prototypes. Non-optimizing compilers will avoid unnecessary type
-conversions when generating calls of these inline functions.
-
-stq_le_p, stq_be_p already use similar prototypes.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Hani Benhabiles <hani@linux.com>
+Reviewed-by: Hu Tao <hutao@cn.fujitsu.com>
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/qemu/bswap.h |    8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ qmp.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
-index 0cc11a5..0cb7c05 100644
---- a/include/qemu/bswap.h
-+++ b/include/qemu/bswap.h
-@@ -300,12 +300,12 @@ static inline uint64_t ldq_le_p(const void *ptr)
-     return le_bswap(ldq_p(ptr), 64);
- }
+diff --git a/qmp.c b/qmp.c
+index d0d98e7..f556a04 100644
+--- a/qmp.c
++++ b/qmp.c
+@@ -556,8 +556,8 @@ void object_add(const char *type, const char *id, const QDict *qdict,
+     }
  
--static inline void stw_le_p(void *ptr, int v)
-+static inline void stw_le_p(void *ptr, uint16_t v)
- {
-     stw_p(ptr, le_bswap(v, 16));
- }
+     if (!object_dynamic_cast(obj, TYPE_USER_CREATABLE)) {
+-        error_setg(&local_err, "object '%s' isn't supported by object-add",
+-                   id);
++        error_setg(&local_err, "object type '%s' isn't supported by object-add",
++                   type);
+         goto out;
+     }
  
--static inline void stl_le_p(void *ptr, int v)
-+static inline void stl_le_p(void *ptr, uint32_t v)
- {
-     stl_p(ptr, le_bswap(v, 32));
- }
-@@ -365,12 +365,12 @@ static inline uint64_t ldq_be_p(const void *ptr)
-     return be_bswap(ldq_p(ptr), 64);
- }
- 
--static inline void stw_be_p(void *ptr, int v)
-+static inline void stw_be_p(void *ptr, uint16_t v)
- {
-     stw_p(ptr, be_bswap(v, 16));
- }
- 
--static inline void stl_be_p(void *ptr, int v)
-+static inline void stl_be_p(void *ptr, uint32_t v)
- {
-     stl_p(ptr, be_bswap(v, 32));
- }
 -- 
 1.7.10.4
 
