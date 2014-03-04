@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WKiei-0007qQ-Pv
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Mar 2014 01:16:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58001)
+	id 1WKimb-0001T3-QF
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Mar 2014 01:24:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60518)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKiec-0007jK-PU
-	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:16:43 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1WKimS-0001FH-Py
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:24:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKieX-0001B9-TM
-	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:16:38 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:52140)
+	(envelope-from <mjt@tls.msk.ru>) id 1WKimO-0004C1-CV
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:24:44 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:44977)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WKieD-00015m-KD; Tue, 04 Mar 2014 01:16:13 -0500
+	id 1WKimE-00048v-S7; Tue, 04 Mar 2014 01:24:31 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id BEB4F4084E;
-	Tue,  4 Mar 2014 10:16:03 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 41CCD40851;
+	Tue,  4 Mar 2014 10:24:30 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id A89CE650;
-	Tue,  4 Mar 2014 10:16:03 +0400 (MSK)
-Received: (nullmailer pid 16568 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 0D3D6650;
+	Tue,  4 Mar 2014 10:16:04 +0400 (MSK)
+Received: (nullmailer pid 16574 invoked by uid 1000);
 	Tue, 04 Mar 2014 06:16:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue,  4 Mar 2014 10:15:49 +0400
-Message-Id: <1393913761-16516-2-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Tue,  4 Mar 2014 10:15:51 +0400
+Message-Id: <1393913761-16516-4-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Subject: [Qemu-trivial] [PULL 01/13] include/qemu/host-utils.h: Trivial
-	typo: ctz->cto
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 03/13] bswap: Modify prototype of stb_p (avoid
+	type conversions)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,29 +44,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Mar 2014 06:16:43 -0000
+X-List-Received-Date: Tue, 04 Mar 2014 06:24:50 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+The function uses an uint8_t value, so show this in the function
+prototype. Non-optimizing compilers will avoid unnecessary type
+conversions from (u)int8_t to int and back to uint8_t when generating
+calls of this inline function.
+
+stw_p, stl_p and stq_p already use similar prototypes.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/qemu/host-utils.h |    2 +-
+ include/qemu/bswap.h |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/qemu/host-utils.h b/include/qemu/host-utils.h
-index de85d28..285c5fb 100644
---- a/include/qemu/host-utils.h
-+++ b/include/qemu/host-utils.h
-@@ -217,7 +217,7 @@ static inline int ctz64(uint64_t val)
+diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+index 437b8e0..0cc11a5 100644
+--- a/include/qemu/bswap.h
++++ b/include/qemu/bswap.h
+@@ -228,7 +228,7 @@ static inline int ldsb_p(const void *ptr)
+     return *(int8_t *)ptr;
  }
  
- /**
-- * ctz64 - count trailing ones in a 64-bit value.
-+ * cto64 - count trailing ones in a 64-bit value.
-  * @val: The value to search
-  *
-  * Returns 64 if the value is -1.
+-static inline void stb_p(void *ptr, int v)
++static inline void stb_p(void *ptr, uint8_t v)
+ {
+     *(uint8_t *)ptr = v;
+ }
 -- 
 1.7.10.4
 
