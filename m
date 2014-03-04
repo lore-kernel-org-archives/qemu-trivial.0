@@ -1,37 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WKijY-0000eK-Tu
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Mar 2014 01:21:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59884)
+	id 1WKvcu-0007YZ-5h
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Mar 2014 15:07:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKijP-0000dR-5u
-	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:21:40 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1WKvco-0007TC-5V
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 15:07:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKijK-0003Nr-9z
-	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:21:35 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:48816)
+	(envelope-from <peter.maydell@linaro.org>) id 1WKvcg-0000gj-UC
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 15:07:38 -0500
+Received: from mail-la0-f42.google.com ([209.85.215.42]:50462)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WKij9-0003Le-0L; Tue, 04 Mar 2014 01:21:19 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9EC8B4084D;
-	Tue,  4 Mar 2014 10:16:03 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 89B3564F;
-	Tue,  4 Mar 2014 10:16:03 +0400 (MSK)
-Received: (nullmailer pid 16566 invoked by uid 1000);
-	Tue, 04 Mar 2014 06:16:03 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Tue,  4 Mar 2014 10:15:48 +0400
-Message-Id: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <peter.maydell@linaro.org>) id 1WKvcg-0000gQ-NL
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 15:07:30 -0500
+Received: by mail-la0-f42.google.com with SMTP id ec20so21396lab.1
+	for <qemu-trivial@nongnu.org>; Tue, 04 Mar 2014 12:07:29 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=R73LOcbiHr05hdHToOP8nAa4xkW7Yag4MVlR26D0v2I=;
+	b=geFs3iJL9RIE4OMA0ZJ5nboYGq+1sPiKYSz5f18qtI7hbNa5DVjDD6vNnpzYnzrAw5
+	EuvR6OXIyqmpP9ZlO7GwuJbcgjnFcf8PDNZJX/axjAxJXpzPi1IkjddaFOYRqedu/wLD
+	DAkI+aKkVR73MYC0jdSMuQodyn49Cp+X2jVZizLfM61FktX1mtAKotWXkBQhsvP4i3X4
+	AcId4Th+CWOcskxv9wAZgMiaYlsZym34UVqX30IlZfLSxYCDr8vnQRKrEuFsNsBmqeuB
+	mROGUcWNhOez6imRh1/3gh9SKjW2yLiUYTRORuVHE4bE95gBox39Wpf97u3uQpOyy32O
+	S2Aw==
+X-Gm-Message-State: ALoCoQkcUi2b0w2zTzMYBvuwhjoYaAPv8Fh6j5dkYyiF2gWLGdylWNQTEyEcld8a0d32RbDlqLUg
+X-Received: by 10.112.169.10 with SMTP id aa10mr54089lbc.72.1393963649599;
+	Tue, 04 Mar 2014 12:07:29 -0800 (PST)
 MIME-Version: 1.0
+Received: by 10.112.118.34 with HTTP; Tue, 4 Mar 2014 12:07:09 -0800 (PST)
+In-Reply-To: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Mar 2014 20:07:09 +0000
+Message-ID: <CAFEAcA9i8duXoh1C7C5-osxpEjyXs+sraVTcy6+Jampt787FiQ@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 00/13] Trivial patches for 2014-03-04
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.42
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/13] Trivial patches for
+	2014-03-04
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,67 +55,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Mar 2014 06:21:41 -0000
+X-List-Received-Date: Tue, 04 Mar 2014 20:07:42 -0000
 
-Here's another pull request for trivial-patches tree.
-There's nothing exciting in there, small things here and there.
-Please consider pulling/applying.
+On 4 March 2014 06:15, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here's another pull request for trivial-patches tree.
+> There's nothing exciting in there, small things here and there.
+> Please consider pulling/applying.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit d844a7b6569fb2b5252773444b18841426e5b906:
+>
+>   modules: Fix building with --enable-modules (2014-02-28 12:30:13 +0000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-03-04
+>
+> for you to fetch changes up to 25254a7191cdaa6cc10edb7bdbbfd0a6d02b9905:
+>
+>   vl: Remove unneeded include file (2014-03-03 09:46:27 +0400)
 
-Thanks,
+Applied, thanks.
 
-/mjt
-
-The following changes since commit d844a7b6569fb2b5252773444b18841426e5b9=
-06:
-
-  modules: Fix building with --enable-modules (2014-02-28 12:30:13 +0000)
-
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/trivial-patches-2014-03-04
-
-for you to fetch changes up to 25254a7191cdaa6cc10edb7bdbbfd0a6d02b9905:
-
-  vl: Remove unneeded include file (2014-03-03 09:46:27 +0400)
-
-----------------------------------------------------------------
-trivial patches for 2014-03-04
-
-----------------------------------------------------------------
-Dr. David Alan Gilbert (1):
-      include/qemu/host-utils.h: Trivial typo: ctz->cto
-
-Hani Benhabiles (1):
-      object: Report type in error when not user creatable.
-
-Peter Maydell (2):
-      tests/test-int128: Don't use __noclone__ attribute on clang
-      qjson.h: Remove spurious GCC_FMT_ATTR markup from qobject_from_json=
-() declaration
-
-Stefan Weil (9):
-      bswap: Modify prototype of stb_p (avoid type conversions)
-      bswap: Modify prototypes of st[wl]_{le, be}_p (avoid type conversio=
-ns)
-      tcg: Fix typo in comment (dependancies -> dependencies)
-      stubs: Optimize dependencies for gdbstub.c
-      util/iov: Use qemu/sockets.h instead of conditional code
-      exec: Remove unneeded include files
-      qemu-img: Remove unneeded include files
-      qga: Remove unneeded include file
-      vl: Remove unneeded include file
-
- exec.c                    |    4 +---
- include/qapi/qmp/qjson.h  |    2 +-
- include/qemu/bswap.h      |   10 +++++-----
- include/qemu/host-utils.h |    2 +-
- qemu-img.c                |    6 ------
- qga/main.c                |    1 -
- qmp.c                     |    4 ++--
- stubs/gdbstub.c           |    4 +++-
- tcg/tcg.c                 |    2 +-
- tests/test-int128.c       |   15 ++++++++++++++-
- util/iov.c                |    9 +--------
- vl.c                      |    4 ----
- 12 files changed, 29 insertions(+), 34 deletions(-)
+-- PMM
 
