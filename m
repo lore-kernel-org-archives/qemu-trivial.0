@@ -1,40 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WKiwM-0004cd-Uz
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Mar 2014 01:34:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35164)
+	id 1WKiwR-0004jW-6Y
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Mar 2014 01:35:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35171)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKiwE-0004Li-JY
-	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:34:54 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1WKiwF-0004Np-GB
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:34:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKiwA-0007k2-Ls
-	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:34:50 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:44309)
+	(envelope-from <mjt@tls.msk.ru>) id 1WKiwB-0007kQ-3z
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:34:51 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:50465)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WKivv-0007dS-R9; Tue, 04 Mar 2014 01:34:31 -0500
+	id 1WKivv-0007dR-RD; Tue, 04 Mar 2014 01:34:32 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id B90DF40851;
+	by isrv.corpit.ru (Postfix) with ESMTP id A7E794084F;
 	Tue,  4 Mar 2014 10:34:30 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 2CB0166C;
-	Tue,  4 Mar 2014 10:16:05 +0400 (MSK)
-Received: (nullmailer pid 16591 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 2BD0E64F;
+	Tue,  4 Mar 2014 10:16:04 +0400 (MSK)
+Received: (nullmailer pid 16577 invoked by uid 1000);
 	Tue, 04 Mar 2014 06:16:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue,  4 Mar 2014 10:15:58 +0400
-Message-Id: <1393913761-16516-11-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Tue,  4 Mar 2014 10:15:52 +0400
+Message-Id: <1393913761-16516-5-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 10/13] exec: Remove unneeded include files
+Subject: [Qemu-trivial] [PULL 04/13] bswap: Modify prototypes of st[wl]_{le,
+	be}_p (avoid type conversions)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,37 +44,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Mar 2014 06:34:56 -0000
+X-List-Received-Date: Tue, 04 Mar 2014 06:34:57 -0000
 
 From: Stefan Weil <sw@weilnetz.de>
 
-This file does not depend on windows.h.
+The functions use uint16_t or uint32_t values, so show this in the function
+prototypes. Non-optimizing compilers will avoid unnecessary type
+conversions when generating calls of these inline functions.
+
+stq_le_p, stq_be_p already use similar prototypes.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- exec.c |    4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ include/qemu/bswap.h |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/exec.c b/exec.c
-index b69fd29..680268a 100644
---- a/exec.c
-+++ b/exec.c
-@@ -17,9 +17,7 @@
-  * License along with this library; if not, see <http://www.gnu.org/lice=
-nses/>.
-  */
- #include "config.h"
--#ifdef _WIN32
--#include <windows.h>
--#else
-+#ifndef _WIN32
- #include <sys/types.h>
- #include <sys/mman.h>
- #endif
---=20
+diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+index 0cc11a5..0cb7c05 100644
+--- a/include/qemu/bswap.h
++++ b/include/qemu/bswap.h
+@@ -300,12 +300,12 @@ static inline uint64_t ldq_le_p(const void *ptr)
+     return le_bswap(ldq_p(ptr), 64);
+ }
+ 
+-static inline void stw_le_p(void *ptr, int v)
++static inline void stw_le_p(void *ptr, uint16_t v)
+ {
+     stw_p(ptr, le_bswap(v, 16));
+ }
+ 
+-static inline void stl_le_p(void *ptr, int v)
++static inline void stl_le_p(void *ptr, uint32_t v)
+ {
+     stl_p(ptr, le_bswap(v, 32));
+ }
+@@ -365,12 +365,12 @@ static inline uint64_t ldq_be_p(const void *ptr)
+     return be_bswap(ldq_p(ptr), 64);
+ }
+ 
+-static inline void stw_be_p(void *ptr, int v)
++static inline void stw_be_p(void *ptr, uint16_t v)
+ {
+     stw_p(ptr, be_bswap(v, 16));
+ }
+ 
+-static inline void stl_be_p(void *ptr, int v)
++static inline void stl_be_p(void *ptr, uint32_t v)
+ {
+     stl_p(ptr, be_bswap(v, 32));
+ }
+-- 
 1.7.10.4
 
 
