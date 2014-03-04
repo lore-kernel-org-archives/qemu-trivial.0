@@ -1,38 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WKimd-0001Vn-Pk
+	id 1WKimc-0001US-Vr
 	for mharc-qemu-trivial@gnu.org; Tue, 04 Mar 2014 01:24:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60496)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60501)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKimS-0001Dw-4i
-	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:24:49 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1WKimS-0001EK-9a
+	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:24:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WKimN-0004Be-PU
+	(envelope-from <mjt@tls.msk.ru>) id 1WKimO-0004Bu-2k
 	for qemu-trivial@nongnu.org; Tue, 04 Mar 2014 01:24:44 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:36273)
+Received: from isrv.corpit.ru ([86.62.121.231]:45827)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WKimE-00048p-PF; Tue, 04 Mar 2014 01:24:30 -0500
+	id 1WKimF-00049Y-G9; Tue, 04 Mar 2014 01:24:31 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 328724084D;
+	by isrv.corpit.ru (Postfix) with ESMTP id 5385440856;
 	Tue,  4 Mar 2014 10:24:30 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 536D765F;
+	by tsrv.corpit.ru (Postfix) with SMTP id 91085662;
 	Tue,  4 Mar 2014 10:16:04 +0400 (MSK)
-Received: (nullmailer pid 16581 invoked by uid 1000);
+Received: (nullmailer pid 16589 invoked by uid 1000);
 	Tue, 04 Mar 2014 06:16:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue,  4 Mar 2014 10:15:54 +0400
-Message-Id: <1393913761-16516-7-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Tue,  4 Mar 2014 10:15:57 +0400
+Message-Id: <1393913761-16516-10-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1393913761-16516-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 06/13] stubs: Optimize dependencies for
-	gdbstub.c
+Subject: [Qemu-trivial] [PULL 09/13] util/iov: Use qemu/sockets.h instead of
+	conditional code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,29 +51,35 @@ X-List-Received-Date: Tue, 04 Mar 2014 06:24:50 -0000
 
 From: Stefan Weil <sw@weilnetz.de>
 
-It does not need qemu-common.h. Including exec/gdbstub.h fixes a warning
-from static code analyzers and avoids mismatching declarations for
-xml_builtin.
-
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- stubs/gdbstub.c |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ util/iov.c |    9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
 
-diff --git a/stubs/gdbstub.c b/stubs/gdbstub.c
-index c1dbfe7..f6a4553 100644
---- a/stubs/gdbstub.c
-+++ b/stubs/gdbstub.c
-@@ -1,4 +1,6 @@
--#include "qemu-common.h"
-+#include "stdbool.h"            /* bool (in exec/gdbstub.h) */
-+#include "stddef.h"             /* NULL */
-+#include "exec/gdbstub.h"       /* xml_builtin */
- 
- const char *const xml_builtin[][2] = {
-   { NULL, NULL }
--- 
+diff --git a/util/iov.c b/util/iov.c
+index 03934da..6569b5a 100644
+--- a/util/iov.c
++++ b/util/iov.c
+@@ -17,14 +17,7 @@
+  */
+=20
+ #include "qemu/iov.h"
+-
+-#ifdef _WIN32
+-# include <windows.h>
+-# include <winsock2.h>
+-#else
+-# include <sys/types.h>
+-# include <sys/socket.h>
+-#endif
++#include "qemu/sockets.h"
+=20
+ size_t iov_from_buf(const struct iovec *iov, unsigned int iov_cnt,
+                     size_t offset, const void *buf, size_t bytes)
+--=20
 1.7.10.4
 
 
