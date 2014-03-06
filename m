@@ -1,52 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WLVsB-0005CW-DH
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Mar 2014 05:49:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45900)
+	id 1WLbrc-0001hM-VB
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Mar 2014 12:13:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50906)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1WLVs3-000581-Hi
-	for qemu-trivial@nongnu.org; Thu, 06 Mar 2014 05:49:53 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WLbra-0001dQ-7h
+	for qemu-trivial@nongnu.org; Thu, 06 Mar 2014 12:13:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1WLVrx-0000WX-U6
-	for qemu-trivial@nongnu.org; Thu, 06 Mar 2014 05:49:47 -0500
-Received: from mail-ea0-x22c.google.com ([2a00:1450:4013:c01::22c]:60814)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WLbrZ-0002JI-G8
+	for qemu-trivial@nongnu.org; Thu, 06 Mar 2014 12:13:42 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:38539
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1WLVrx-0000WR-HR; Thu, 06 Mar 2014 05:49:41 -0500
-Received: by mail-ea0-f172.google.com with SMTP id l9so1602070eaj.31
-	for <multiple recipients>; Thu, 06 Mar 2014 02:49:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=wEBTtxpvZ/vOFSmNy/IgUAdiNV/lc0OAr52gZXMSsuw=;
-	b=GnMI3QP7QWC9s231xJEF/VwaR8yEAipgXSNGLX101F1TQy88wrIbJpbFHvWh30cwRL
-	UsJ3N8NQG+7SuNZfDcsryIaVlVqemMWJhpYBREApBZeP0NiwKHDAncCuCehIilWXapI/
-	6+0XheLcNit/r2H11E55EijqyY1DLvpRwvO47P7lVhKhkldjaV9q5j8ZLW7+Qxbkk4U/
-	9pnTDgj0KqFwFglpqQhrnVaFsV8/uH2B4dABeAU3ZpliUrWRNx4RAr1ZDo+HLN7ZhicZ
-	P9P1KV7HfoDEeeQ6MIELpAr1jbIh8PF15t/PKPLxPubVcX1dgEjlIR4g80PUj7AepKuU
-	ifLQ==
-X-Received: by 10.14.127.4 with SMTP id c4mr3171610eei.86.1394102980374;
-	Thu, 06 Mar 2014 02:49:40 -0800 (PST)
-Received: from localhost (95-91-232-57-dynip.superkabel.de. [95.91.232.57])
-	by mx.google.com with ESMTPSA id m8sm20474854eef.14.2014.03.06.02.49.38
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 06 Mar 2014 02:49:39 -0800 (PST)
-Date: Thu, 6 Mar 2014 11:49:37 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20140306104937.GI23172@stefanha-thinkpad.redhat.com>
-References: <1394054580-29120-1-git-send-email-sw@weilnetz.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1394054580-29120-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WLbrV-000299-92; Thu, 06 Mar 2014 12:13:37 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id D1F0417F6D7; Thu,  6 Mar 2014 18:13:33 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Thu,  6 Mar 2014 18:13:33 +0100
+Message-Id: <1394126013-26297-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4013:c01::22c
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-io: Fix warnings from
- static code analysis
+X-Received-From: 2a03:4000:2:362::1
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [Qemu-trivial] [PATCH] configure: Prettify message for hosts
+	without spice support
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,21 +40,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Mar 2014 10:49:53 -0000
+X-List-Received-Date: Thu, 06 Mar 2014 17:13:43 -0000
 
-On Wed, Mar 05, 2014 at 10:23:00PM +0100, Stefan Weil wrote:
-> Smatch complains about several global symbols which should be local.
-> 
-> Add the missing 'static' attributes and move the 'extern' declaration
-> of variable qemuio_misalign to qemu-io.h. This variable also changes
-> the type from 'int' to 'bool' which better fits documents its use.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  include/qemu-io.h |    2 ++
->  qemu-io-cmds.c    |    2 +-
->  qemu-io.c         |    7 +++----
->  3 files changed, 6 insertions(+), 5 deletions(-)
+Instead of
 
-Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+    spice support     no (/)
+
+configure now prints
+
+    spice support     no
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ configure |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/configure b/configure
+index 6ccadc3..212dcd7 100755
+--- a/configure
++++ b/configure
+@@ -4061,7 +4061,11 @@ echo "vhost-net support $vhost_net"
+ echo "vhost-scsi support $vhost_scsi"
+ echo "Trace backend     $trace_backend"
+ echo "Trace output file $trace_file-<pid>"
++if test "$spice" = "yes"; then
+ echo "spice support     $spice ($spice_protocol_version/$spice_server_version)"
++else
++echo "spice support     $spice"
++fi
+ echo "rbd support       $rbd"
+ echo "xfsctl support    $xfs"
+ echo "nss used          $smartcard_nss"
+-- 
+1.7.10.4
+
 
