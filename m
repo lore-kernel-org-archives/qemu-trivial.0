@@ -1,57 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WLxmE-0004FL-Hh
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Mar 2014 11:37:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36768)
+	id 1WLzpp-0008Oi-L0
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Mar 2014 13:49:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37800)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WLxm8-0004DG-BK
-	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 11:37:37 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WLzpi-0008E3-Pq
+	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 13:49:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WLxm1-0007UJ-E6
-	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 11:37:32 -0500
-Received: from mail-la0-f48.google.com ([209.85.215.48]:51783)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WLzpd-0005KD-Q3
+	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 13:49:22 -0500
+Received: from qemu.weilnetz.de ([37.221.198.45]:46006
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WLxm1-0007Tu-6e
-	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 11:37:25 -0500
-Received: by mail-la0-f48.google.com with SMTP id gf5so2917985lab.7
-	for <qemu-trivial@nongnu.org>; Fri, 07 Mar 2014 08:37:24 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=9iZxgQh0DCGpWEdmBcHy626iKWFi6VzllRdVMLGyUJQ=;
-	b=KRq8sfIZr5q2QthIfxhcIMOWlu6Gc9MlPYSFGfAN5wFTdxGlPYzoyHwbPb9vOWJCPC
-	Tx4d+jm/o9IFfYlIwXveLsODvAEc2gsa2ewUD3ZLXSref/Jlu2J3bNu9q6HO5sAl+S+F
-	jHoAOLig1NH2cS2vihuzJTfZ7jcqbTOhn1cjY+OVuakv0DuPgk02xddK7LGh5W2K+lNl
-	fjx38501rUABLTJGKpHwaZtWBWat3SPvDbGc8OID1g8lsN3YgTV11bEt0RejKvINkL56
-	JJPuzEsm21hWDAEaWnJ3DBudV3V+HzaafuXaOMCD7A/AxOIfbYiC/WSx5BpocqVizqhp
-	soDQ==
-X-Gm-Message-State: ALoCoQnjMn6JIMS0wntl90tlHCbNVy/hLmwMu7l2GT74rZbNJpKkDT8kNl4f/TipzUCc+I0FXF2B
-X-Received: by 10.112.171.136 with SMTP id au8mr11821266lbc.0.1394210244138;
-	Fri, 07 Mar 2014 08:37:24 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.112.118.34 with HTTP; Fri, 7 Mar 2014 08:37:04 -0800 (PST)
-In-Reply-To: <87y50maspa.fsf@linaro.org>
-References: <1394187082-31986-1-git-send-email-sw@weilnetz.de>
-	<871tyecixy.fsf@linaro.org> <5319BE2C.7040801@weilnetz.de>
-	<5319C21A.6010705@suse.de> <5319C768.2000903@weilnetz.de>
-	<CAFEAcA8nbPodctcDPXUjxZz4+0WeeUP=24DxuLeyU9OsBT=Vew@mail.gmail.com>
-	<87y50maspa.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 7 Mar 2014 16:37:04 +0000
-Message-ID: <CAFEAcA-rvE5QSoZPPmcjOO8r4Gfn_KDLSsCs4r+QvExsR50f4Q@mail.gmail.com>
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.48
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	qemu-stable <qemu-stable@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests: Fix 'make test' for
-	i686 hosts (buildregression))
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WLzpT-0005JK-SC; Fri, 07 Mar 2014 13:49:07 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id 804AB17FC70; Fri,  7 Mar 2014 19:49:04 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Fri,  7 Mar 2014 19:48:59 +0100
+Message-Id: <1394218139-24915-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.198.45
+Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>
+Subject: [Qemu-trivial] [PATCH] misc: Fix typos in comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,30 +38,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Mar 2014 16:37:37 -0000
+X-List-Received-Date: Fri, 07 Mar 2014 18:49:28 -0000
 
-On 7 March 2014 16:17, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
->> I think TCG x86 FPU emulation has been a bit dodgy since
->> forever; it's a fair amount of work to go through and
->> fix everything up to be bitwise exact results versus
->> hardware and I think that nobody's cared enough about x86
->> emulation to do that...
->
-> IIRC the behaviour is different depending on how much x87 vs SIMD FP you
-> go through. FWIW the Transitive translator was able to do most FP ops
-> with generated code (certainly on SPARC->x86_64) and only go to softfloat
-> for some things. But you did need to disable the x87 to do it.
->
-> But I get the impression that FP performance is currently "good enough"
-> for what QEMU gets used for.
+Codespell found and fixed these new typos:
 
-This is true but not particularly relevant to whether our
-current implementation is actually buggy in the sense
-of producing wrong results. We ripped out the code that
-tried to implement FP natively a long time back, so
-pure emulation is all we do now.
+* doesnt -> doesn't
+* funtion -> function
+* perfomance -> performance
+* remaing -> remaining
 
-thanks
--- PMM
+A code style issue (line too long) was fixed manually.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/intc/arm_gic_kvm.c    |    2 +-
+ hw/net/fsl_etsec/rings.c |    4 ++--
+ target-arm/helper.c      |    2 +-
+ target-ppc/int_helper.c  |    2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
+index 100b6bf..719d227 100644
+--- a/hw/intc/arm_gic_kvm.c
++++ b/hw/intc/arm_gic_kvm.c
+@@ -148,7 +148,7 @@ typedef void (*vgic_translate_fn)(GICState *s, int irq, int cpu,
+                                   uint32_t *field, bool to_kernel);
+ 
+ /* synthetic translate function used for clear/set registers to completely
+- * clear a setting using a clear-register before setting the remaing bits
++ * clear a setting using a clear-register before setting the remaining bits
+  * using a set-register */
+ static void translate_clear(GICState *s, int irq, int cpu,
+                             uint32_t *field, bool to_kernel)
+diff --git a/hw/net/fsl_etsec/rings.c b/hw/net/fsl_etsec/rings.c
+index 7760272..d7c38fa 100644
+--- a/hw/net/fsl_etsec/rings.c
++++ b/hw/net/fsl_etsec/rings.c
+@@ -195,8 +195,8 @@ static void process_tx_fcb(eTSEC *etsec)
+ 
+     /* if packet is IP4 and IP checksum is requested */
+     if (flags & FCB_TX_IP && flags & FCB_TX_CIP) {
+-        /* do IP4 checksum (TODO This funtion does TCP/UDP checksum but not sure
+-         * if it also does IP4 checksum. */
++        /* do IP4 checksum (TODO This function does TCP/UDP checksum
++         * but not sure if it also does IP4 checksum. */
+         net_checksum_calculate(etsec->tx_buffer + 8,
+                 etsec->tx_buffer_len - 8);
+     }
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index 90f85f1..3495220 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -469,7 +469,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+ 
+ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+-    /* Perfomance monitor registers user accessibility is controlled
++    /* Performance monitor registers user accessibility is controlled
+      * by PMUSERENR.
+      */
+     if (arm_current_pl(env) == 0 && !env->cp15.c9_pmuserenr) {
+diff --git a/target-ppc/int_helper.c b/target-ppc/int_helper.c
+index 63dde94..e14e304 100644
+--- a/target-ppc/int_helper.c
++++ b/target-ppc/int_helper.c
+@@ -2216,7 +2216,7 @@ static int bcd_cmp_mag(ppc_avr_t *a, ppc_avr_t *b)
+         uint8_t dig_a = bcd_get_digit(a, i, &invalid);
+         uint8_t dig_b = bcd_get_digit(b, i, &invalid);
+         if (unlikely(invalid)) {
+-            return 0; /* doesnt matter */
++            return 0; /* doesn't matter */
+         } else if (dig_a > dig_b) {
+             return 1;
+         } else if (dig_a < dig_b) {
+-- 
+1.7.10.4
+
 
