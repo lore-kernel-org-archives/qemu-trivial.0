@@ -1,47 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WLuhL-0001cI-0h
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Mar 2014 08:20:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48746)
+	id 1WLuwE-0007vU-9R
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Mar 2014 08:35:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WLuhC-0001Fh-2l
-	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 08:20:20 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1WLuw6-0007ln-RV
+	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 08:35:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WLuh6-0005rR-3f
-	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 08:20:14 -0500
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:57489)
+	(envelope-from <peter.maydell@linaro.org>) id 1WLuw1-00036I-RK
+	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 08:35:38 -0500
+Received: from mail-la0-f51.google.com ([209.85.215.51]:43167)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1WLugf-0005HJ-Ct; Fri, 07 Mar 2014 08:19:41 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	2C63E72800C8; Fri,  7 Mar 2014 14:19:40 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id LmP23RCViR7E; Fri,  7 Mar 2014 14:19:38 +0100 (CET)
-Received: from [192.168.178.35] (p54AD87DD.dip0.t-ipconnect.de
-	[84.173.135.221])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	7E33872800C7; Fri,  7 Mar 2014 14:19:37 +0100 (CET)
-Message-ID: <5319C768.2000903@weilnetz.de>
-Date: Fri, 07 Mar 2014 14:19:36 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+	(envelope-from <peter.maydell@linaro.org>) id 1WLuw1-000368-KD
+	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 08:35:33 -0500
+Received: by mail-la0-f51.google.com with SMTP id pv20so2832929lab.10
+	for <qemu-trivial@nongnu.org>; Fri, 07 Mar 2014 05:35:32 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=RQ1TRg6NLBlGnM5A/vm0AdmWbSulzGnokRM7Ux7+c6I=;
+	b=H0Pav1yhQqY9Ho44V7+nFDpkNvgWS+q1FXksl1U1uU/qXPAsCA8bMR3DyFBpvef3FI
+	aQMYppt0xIqA+Lfb7joESs8Tf1Yr00z8aNUwQbBhuFluBy3OcJFzb+G4IckHdpgnx6y4
+	ZJEX30Nl/SaZnXub6XD5FaJq6HTtpxs6lBLfBCfqzrZitHQwrZglRo2MK/wbMH1ho0sm
+	pimMbKQa9Pw9bj+NnwroRUMDR0qU7c/8qvB1xLCgdRS1GRfgmJcnWR8+9+FEWIPjWGey
+	VbPFN9vDVnLECX1Zlsj35mCLTHER403LjT8irrTZycJAatgowraCjpAaMFjoUxsc7CUo
+	674A==
+X-Gm-Message-State: ALoCoQk3audZPez405R4t0QNg9Z0JmRmxl49gsyHUP8Q3LMP4fNM3aRT+6+/L7e40UnZD/qpP9W8
+X-Received: by 10.152.23.9 with SMTP id i9mr1335321laf.56.1394199332609; Fri,
+	07 Mar 2014 05:35:32 -0800 (PST)
 MIME-Version: 1.0
-To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-References: <1394187082-31986-1-git-send-email-sw@weilnetz.de>	<871tyecixy.fsf@linaro.org>	<5319BE2C.7040801@weilnetz.de>
-	<5319C21A.6010705@suse.de>
-In-Reply-To: <5319C21A.6010705@suse.de>
-X-Enigmail-Version: 1.5.2
+Received: by 10.112.118.34 with HTTP; Fri, 7 Mar 2014 05:35:12 -0800 (PST)
+In-Reply-To: <5319C768.2000903@weilnetz.de>
+References: <1394187082-31986-1-git-send-email-sw@weilnetz.de>
+	<871tyecixy.fsf@linaro.org> <5319BE2C.7040801@weilnetz.de>
+	<5319C21A.6010705@suse.de> <5319C768.2000903@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 7 Mar 2014 13:35:12 +0000
+Message-ID: <CAFEAcA8nbPodctcDPXUjxZz4+0WeeUP=24DxuLeyU9OsBT=Vew@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, qemu-stable@nongnu.org,
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.51
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	qemu-stable <qemu-stable@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
 	Richard Henderson <rth@twiddle.net>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests: Fix 'make test' for
 	i686 hosts (buildregression))
@@ -56,46 +61,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Mar 2014 13:20:20 -0000
+X-List-Received-Date: Fri, 07 Mar 2014 13:35:44 -0000
 
-Am 07.03.2014 13:56, schrieb Andreas F=C3=A4rber:
-> Am 07.03.2014 13:40, schrieb Stefan Weil:
->> Am 07.03.2014 13:06, schrieb Alex Benn=C3=A9e:
->>>
->>> Stefan Weil <sw@weilnetz.de> writes:
->>>
->>>> 'make test' is broken at least since commit
->>>> baacf04799ace72a9c735dd9306a1ceaf305e7cf. Several source files were =
-moved
->>>> to util/, and some of them there split, so add the missing prefix an=
-d new
->>>> files to fix the compiler and linker errors.
-> [...]
->> In the meantime I tried older versions. Even version 1.1 already shows
->> unwanted differences between native and QEMU emulated FPU operations.
->>
->> The test binary is now available from this URL:
->> http://qemu.weilnetz.de/test/user/i386/test-i386
->>
->> Run it native and with qemu-i386 and compare the output of both runs
->> to see the problems.
->=20
-> So... is QEMU or the test mistaken? :)
->=20
-> Regards,
-> Andreas
+On 7 March 2014 13:19, Stefan Weil <sw@weilnetz.de> wrote:
+> test-i386 does some calculations and prints the results (see source code
+> tests/tcg/test-i386.c). If the user mode emulation of QEMU works, it
+> should not matter whether that executable runs native or emulated and
+> both outputs be identical. They aren't - that's why I think we have a
+> TCG problem to solve.
 
+I think TCG x86 FPU emulation has been a bit dodgy since
+forever; it's a fair amount of work to go through and
+fix everything up to be bitwise exact results versus
+hardware and I think that nobody's cared enough about x86
+emulation to do that...
 
-Hi Andreas,
-
-test-i386 does some calculations and prints the results (see source code
-tests/tcg/test-i386.c). If the user mode emulation of QEMU works, it
-should not matter whether that executable runs native or emulated and
-both outputs be identical. They aren't - that's why I think we have a
-TCG problem to solve.
-
-Regards
-Stefan
-
-
+thanks
+-- PMM
 
