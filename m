@@ -1,52 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WLuwE-0007vU-9R
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Mar 2014 08:35:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53369)
+	id 1WLxTC-0004X3-J6
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Mar 2014 11:17:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59744)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WLuw6-0007ln-RV
-	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 08:35:43 -0500
+	(envelope-from <alex.bennee@linaro.org>) id 1WLxT6-0004ON-Jc
+	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 11:17:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WLuw1-00036I-RK
-	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 08:35:38 -0500
-Received: from mail-la0-f51.google.com ([209.85.215.51]:43167)
+	(envelope-from <alex.bennee@linaro.org>) id 1WLxT2-0000Pz-2f
+	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 11:17:52 -0500
+Received: from static.88-198-71-155.clients.your-server.de
+	([88.198.71.155]:57839 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WLuw1-000368-KD
-	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 08:35:33 -0500
-Received: by mail-la0-f51.google.com with SMTP id pv20so2832929lab.10
-	for <qemu-trivial@nongnu.org>; Fri, 07 Mar 2014 05:35:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=RQ1TRg6NLBlGnM5A/vm0AdmWbSulzGnokRM7Ux7+c6I=;
-	b=H0Pav1yhQqY9Ho44V7+nFDpkNvgWS+q1FXksl1U1uU/qXPAsCA8bMR3DyFBpvef3FI
-	aQMYppt0xIqA+Lfb7joESs8Tf1Yr00z8aNUwQbBhuFluBy3OcJFzb+G4IckHdpgnx6y4
-	ZJEX30Nl/SaZnXub6XD5FaJq6HTtpxs6lBLfBCfqzrZitHQwrZglRo2MK/wbMH1ho0sm
-	pimMbKQa9Pw9bj+NnwroRUMDR0qU7c/8qvB1xLCgdRS1GRfgmJcnWR8+9+FEWIPjWGey
-	VbPFN9vDVnLECX1Zlsj35mCLTHER403LjT8irrTZycJAatgowraCjpAaMFjoUxsc7CUo
-	674A==
-X-Gm-Message-State: ALoCoQk3audZPez405R4t0QNg9Z0JmRmxl49gsyHUP8Q3LMP4fNM3aRT+6+/L7e40UnZD/qpP9W8
-X-Received: by 10.152.23.9 with SMTP id i9mr1335321laf.56.1394199332609; Fri,
-	07 Mar 2014 05:35:32 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.112.118.34 with HTTP; Fri, 7 Mar 2014 05:35:12 -0800 (PST)
-In-Reply-To: <5319C768.2000903@weilnetz.de>
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1WLxSk-0000MZ-I0; Fri, 07 Mar 2014 11:17:30 -0500
+Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
+	by socrates.bennee.com with esmtp (Exim 4.80)
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1WLxSt-0008WG-Hh; Fri, 07 Mar 2014 17:17:39 +0100
 References: <1394187082-31986-1-git-send-email-sw@weilnetz.de>
 	<871tyecixy.fsf@linaro.org> <5319BE2C.7040801@weilnetz.de>
 	<5319C21A.6010705@suse.de> <5319C768.2000903@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 7 Mar 2014 13:35:12 +0000
-Message-ID: <CAFEAcA8nbPodctcDPXUjxZz4+0WeeUP=24DxuLeyU9OsBT=Vew@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.51
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	<CAFEAcA8nbPodctcDPXUjxZz4+0WeeUP=24DxuLeyU9OsBT=Vew@mail.gmail.com>
+User-agent: mu4e 0.9.9.6pre2; emacs 24.3.50.11
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+In-reply-to: <CAFEAcA8nbPodctcDPXUjxZz4+0WeeUP=24DxuLeyU9OsBT=Vew@mail.gmail.com>
+Date: Fri, 07 Mar 2014 16:17:53 +0000
+Message-ID: <87y50maspa.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 127.0.0.1
+X-SA-Exim-Mail-From: alex.bennee@linaro.org
+X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 88.198.71.155
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
 	qemu-stable <qemu-stable@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
 	Richard Henderson <rth@twiddle.net>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests: Fix 'make test' for
 	i686 hosts (buildregression))
@@ -61,21 +53,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Mar 2014 13:35:44 -0000
+X-List-Received-Date: Fri, 07 Mar 2014 16:17:57 -0000
 
-On 7 March 2014 13:19, Stefan Weil <sw@weilnetz.de> wrote:
-> test-i386 does some calculations and prints the results (see source code
-> tests/tcg/test-i386.c). If the user mode emulation of QEMU works, it
-> should not matter whether that executable runs native or emulated and
-> both outputs be identical. They aren't - that's why I think we have a
-> TCG problem to solve.
 
-I think TCG x86 FPU emulation has been a bit dodgy since
-forever; it's a fair amount of work to go through and
-fix everything up to be bitwise exact results versus
-hardware and I think that nobody's cared enough about x86
-emulation to do that...
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-thanks
--- PMM
+> On 7 March 2014 13:19, Stefan Weil <sw@weilnetz.de> wrote:
+>> test-i386 does some calculations and prints the results (see source code
+>> tests/tcg/test-i386.c). If the user mode emulation of QEMU works, it
+>> should not matter whether that executable runs native or emulated and
+>> both outputs be identical. They aren't - that's why I think we have a
+>> TCG problem to solve.
+>
+> I think TCG x86 FPU emulation has been a bit dodgy since
+> forever; it's a fair amount of work to go through and
+> fix everything up to be bitwise exact results versus
+> hardware and I think that nobody's cared enough about x86
+> emulation to do that...
+
+IIRC the behaviour is different depending on how much x87 vs SIMD FP you
+go through. FWIW the Transitive translator was able to do most FP ops
+with generated code (certainly on SPARC->x86_64) and only go to softfloat
+for some things. But you did need to disable the x87 to do it.
+
+But I get the impression that FP performance is currently "good enough"
+for what QEMU gets used for.
+
+-- 
+Alex Bennée
+
 
