@@ -1,42 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WLe2g-0005F3-4L
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Mar 2014 14:33:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60560)
+	id 1WLrJn-00071G-T1
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Mar 2014 04:43:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60420)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WLe2R-0004t3-Bu
-	for qemu-trivial@nongnu.org; Thu, 06 Mar 2014 14:33:15 -0500
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WLrJl-0006x1-Jr
+	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 04:43:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WLe2K-0003GV-2a
-	for qemu-trivial@nongnu.org; Thu, 06 Mar 2014 14:33:03 -0500
-Received: from cantor2.suse.de ([195.135.220.15]:52527 helo=mx2.suse.de)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WLrJk-0001wB-Lc
+	for qemu-trivial@nongnu.org; Fri, 07 Mar 2014 04:43:49 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:39439
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1WLe25-0003Ff-8A; Thu, 06 Mar 2014 14:32:41 -0500
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id A7515ACB0;
-	Thu,  6 Mar 2014 19:32:40 +0000 (UTC)
-Message-ID: <5318CD57.6010107@suse.de>
-Date: Thu, 06 Mar 2014 20:32:39 +0100
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1394098765-12727-1-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1394098765-12727-1-git-send-email-imammedo@redhat.com>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.135.220.15
-Cc: kwolf@redhat.com, aliguori@amazon.com, qemu-trivial@nongnu.org,
-	coreyb@linux.vnet.ibm.com, qemu-devel@nongnu.org,
-	mreitz@redhat.com, stefanha@redhat.com, pbonzini@redhat.com,
-	Igor Mammedov <imammedo@redhat.com>, lcapitulino@redhat.com,
-	lersek@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 0/2] convert -m to
-	QemuOpts
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WLrJg-0001pD-6r; Fri, 07 Mar 2014 04:43:44 -0500
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id 999E717FC70; Fri,  7 Mar 2014 10:43:39 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Fri,  7 Mar 2014 10:43:38 +0100
+Message-Id: <1394185418-30197-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
+	qemu-stable@nongnu.org, qemu-devel@nongnu.org,
+	Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-trivial] [PATCH] configure: Don't use __int128_t for clang
+	versions before 3.2
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,32 +41,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Mar 2014 19:33:16 -0000
+X-List-Received-Date: Fri, 07 Mar 2014 09:43:51 -0000
 
-mjt,
+Those versions don't fully support __int128_t.
 
-Am 06.03.2014 10:39, schrieb Igor Mammedov:
-> Igor Mammedov (1):
->   vl: convert -m to QemuOpts
->=20
-> Paolo Bonzini (1):
->   qemu-option: introduce qemu_find_opts_singleton
->=20
->  include/qemu/config-file.h |    2 +
->  qemu-options.hx            |    9 +++--
->  util/qemu-config.c         |   14 +++++++
->  vl.c                       |   82 +++++++++++++++++++++++++++++++-----=
---------
->  4 files changed, 80 insertions(+), 27 deletions(-)
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
-Since I believe you have a track record of reviewing and queuing such
-QemuOpts conversions, can you review and take this for 2.0 please?
+See http://stackoverflow.com/questions/16447808/bug-with-int128-t-in-clang
+for more details. Debian wheezy uses clang 3.0 and shows this bug.
 
-Regards,
-Andreas
+I did not test whether the QEMU code will work nevertheless, but I think
+it's better to be on the safe side and disable __int128_t for old clang
+versions.
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
+Regards
+Stefan
+
+ configure |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/configure b/configure
+index 1212d2d..761a1a4 100755
+--- a/configure
++++ b/configure
+@@ -3820,6 +3820,11 @@ fi
+ 
+ int128=no
+ cat > $TMPC << EOF
++#if defined(__clang_major__) && defined(__clang_minor__)
++# if ((__clang_major__ < 3) || (__clang_major__ == 3) && (__clang_minor__ < 2))
++#  error __int128_t does not work in CLANG before 3.2
++# endif
++#endif
+ __int128_t a;
+ __uint128_t b;
+ int main (void) {
+-- 
+1.7.10.4
+
 
