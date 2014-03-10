@@ -1,49 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WN6QX-0003N3-Oc
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 16:03:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41954)
+	id 1WN6kG-0007p5-Qr
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 16:24:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50856)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WN6QN-00039a-Co
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 16:03:55 -0400
+	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WN56E-0007VL-4E
+	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 14:38:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WN6QH-0004Rd-8Q
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 16:03:47 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:51127)
+	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WN569-00025J-MT
+	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 14:38:54 -0400
+Received: from jedlik.phy.bme.hu ([152.66.102.83]:58353)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1WN6Pq-00044e-R6; Mon, 10 Mar 2014 16:03:14 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	8883472800CA; Mon, 10 Mar 2014 21:03:13 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id Q7SaDME2pWJy; Mon, 10 Mar 2014 21:03:11 +0100 (CET)
-Received: from [192.168.178.35] (p54ADBA8B.dip0.t-ipconnect.de
-	[84.173.186.139])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	930EC72800C7; Mon, 10 Mar 2014 21:03:10 +0100 (CET)
-Message-ID: <531E1A7C.3010706@weilnetz.de>
-Date: Mon, 10 Mar 2014 21:03:08 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+	(envelope-from <balaton@jedlik.phy.bme.hu>)
+	id 1WN55x-0001vD-Vn; Mon, 10 Mar 2014 14:38:38 -0400
+Received: by jedlik.phy.bme.hu (Postfix, from userid 501)
+	id 2DE6A60092; Mon, 10 Mar 2014 19:38:29 +0100 (CET)
+Date: Mon, 10 Mar 2014 19:38:29 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+X-X-Sender: balaton@jedlik.phy.bme.hu
+To: qemu-devel@nongnu.org
+In-Reply-To: <20140228104440.17ABD2F358@mono.eik.bme.hu>
+Message-ID: <alpine.LMD.2.02.1403101936430.485@jedlik.phy.bme.hu>
+References: <20140228104440.17ABD2F358@mono.eik.bme.hu>
+User-Agent: Alpine 2.02 (LMD 1266 2009-07-14)
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, 
-	"Michael S. Tsirkin" <mst@redhat.com>
-References: <1394478649-9453-1-git-send-email-peter.maydell@linaro.org>
-	<1394478649-9453-4-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1394478649-9453-4-git-send-email-peter.maydell@linaro.org>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
-	patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 03/12] hw/pci/pci_host.c:
- Avoid shifting left into sign bit
+X-Received-From: 152.66.102.83
+X-Mailman-Approved-At: Mon, 10 Mar 2014 16:24:18 -0400
+Cc: qemu-trivial@nongnu.org, Anthony Liguori <aliguori@amazon.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] q35: Correct typo BRDIGE
+	-> BRIDGE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,43 +42,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Mar 2014 20:03:56 -0000
+X-List-Received-Date: Mon, 10 Mar 2014 18:38:58 -0000
 
-Am 10.03.2014 20:10, schrieb Peter Maydell:
-> Add U suffix to avoid undefined behaviour.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Ping!
+Also here: http://patchwork.ozlabs.org/patch/325129/
+
+On Fri, 28 Feb 2014, BALATON Zoltan wrote:
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 > ---
->  hw/pci/pci_host.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/pci/pci_host.c b/hw/pci/pci_host.c
-> index 77c7d1f..2c17916 100644
-> --- a/hw/pci/pci_host.c
-> +++ b/hw/pci/pci_host.c
-> @@ -142,8 +142,9 @@ static uint64_t pci_host_data_read(void *opaque,
->  {
->      PCIHostState *s = opaque;
->      uint32_t val;
-> -    if (!(s->config_reg & (1 << 31)))
-> +    if (!(s->config_reg & (1u << 31))) {
->          return 0xffffffff;
-
-I suggest fixing that 0xffffffff, too. Do we expect here a 32 bit value
-(-1) which is expanded to a 64 bit value? Then 0xffffffffffffffffULL
-would be correct. Otherwise 0xffffffffU is clearer.
-
-Michael, are 8 byte reads possible here? If yes, the current code is wrong.
-
-> +    }
->      val = pci_data_read(s->bus, s->config_reg | (addr & 3), len);
->      PCI_DPRINTF("read addr " TARGET_FMT_plx " len %d val %x\n",
->                  addr, len, val);
-> 
-
-What about using the BIT macro from qemu/bitops.h? I think that BIT(31)
-looks better than (1u << 31).
-
-Stefan
-
+>
+> v2: Sorry, I was too fast to send it. Found two more places to change.
+>
+> hw/pci-host/q35.c         | 10 +++++-----
+> include/hw/i386/ich9.h    |  2 +-
+> include/hw/pci-host/q35.h | 24 ++++++++++++------------
+> 3 files changed, 18 insertions(+), 18 deletions(-)
+>
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index 4bc2e01..8b8cc4e 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -272,7 +272,7 @@ static void mch_update_smram(MCHPCIState *mch)
+>     PCIDevice *pd = PCI_DEVICE(mch);
+>
+>     memory_region_transaction_begin();
+> -    smram_update(&mch->smram_region, pd->config[MCH_HOST_BRDIGE_SMRAM],
+> +    smram_update(&mch->smram_region, pd->config[MCH_HOST_BRIDGE_SMRAM],
+>                     mch->smm_enabled);
+>     memory_region_transaction_commit();
+> }
+> @@ -283,7 +283,7 @@ static void mch_set_smm(int smm, void *arg)
+>     PCIDevice *pd = PCI_DEVICE(mch);
+>
+>     memory_region_transaction_begin();
+> -    smram_set_smm(&mch->smm_enabled, smm, pd->config[MCH_HOST_BRDIGE_SMRAM],
+> +    smram_set_smm(&mch->smm_enabled, smm, pd->config[MCH_HOST_BRIDGE_SMRAM],
+>                     &mch->smram_region);
+>     memory_region_transaction_commit();
+> }
+> @@ -306,8 +306,8 @@ static void mch_write_config(PCIDevice *d,
+>         mch_update_pciexbar(mch);
+>     }
+>
+> -    if (ranges_overlap(address, len, MCH_HOST_BRDIGE_SMRAM,
+> -                       MCH_HOST_BRDIGE_SMRAM_SIZE)) {
+> +    if (ranges_overlap(address, len, MCH_HOST_BRIDGE_SMRAM,
+> +                       MCH_HOST_BRIDGE_SMRAM_SIZE)) {
+>         mch_update_smram(mch);
+>     }
+> }
+> @@ -347,7 +347,7 @@ static void mch_reset(DeviceState *qdev)
+>     pci_set_quad(d->config + MCH_HOST_BRIDGE_PCIEXBAR,
+>                  MCH_HOST_BRIDGE_PCIEXBAR_DEFAULT);
+>
+> -    d->config[MCH_HOST_BRDIGE_SMRAM] = MCH_HOST_BRIDGE_SMRAM_DEFAULT;
+> +    d->config[MCH_HOST_BRIDGE_SMRAM] = MCH_HOST_BRIDGE_SMRAM_DEFAULT;
+>
+>     mch_update(mch);
+> }
+> diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
+> index 9e4a0e4..e191435 100644
+> --- a/include/hw/i386/ich9.h
+> +++ b/include/hw/i386/ich9.h
+> @@ -102,7 +102,7 @@ Object *ich9_lpc_find(void);
+> #define ICH9_USB_UHCI1_DEV                      29
+> #define ICH9_USB_UHCI1_FUNC                     0
+>
+> -/* D30:F0 DMI-to-PCI brdige */
+> +/* D30:F0 DMI-to-PCI bridge */
+> #define ICH9_D2P_BRIDGE                         "ICH9 D2P BRIDGE"
+> #define ICH9_D2P_BRIDGE_SAVEVM_VERSION          0
+>
+> diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
+> index d0355b7..d9ee978 100644
+> --- a/include/hw/pci-host/q35.h
+> +++ b/include/hw/pci-host/q35.h
+> @@ -125,8 +125,8 @@ typedef struct Q35PCIHost {
+> #define MCH_HOST_BRIDGE_PAM_RE                 ((uint8_t)0x1)
+> #define MCH_HOST_BRIDGE_PAM_MASK               ((uint8_t)0x3)
+>
+> -#define MCH_HOST_BRDIGE_SMRAM                  0x9d
+> -#define MCH_HOST_BRDIGE_SMRAM_SIZE             1
+> +#define MCH_HOST_BRIDGE_SMRAM                  0x9d
+> +#define MCH_HOST_BRIDGE_SMRAM_SIZE             1
+> #define MCH_HOST_BRIDGE_SMRAM_DEFAULT          ((uint8_t)0x2)
+> #define MCH_HOST_BRIDGE_SMRAM_D_OPEN           ((uint8_t)(1 << 6))
+> #define MCH_HOST_BRIDGE_SMRAM_D_CLS            ((uint8_t)(1 << 5))
+> @@ -140,16 +140,16 @@ typedef struct Q35PCIHost {
+> #define MCH_HOST_BRIDGE_UPPER_SYSTEM_BIOS_END  0x100000
+>
+> #define MCH_HOST_BRIDGE_ESMRAMC                0x9e
+> -#define MCH_HOST_BRDIGE_ESMRAMC_H_SMRAME       ((uint8_t)(1 << 6))
+> -#define MCH_HOST_BRDIGE_ESMRAMC_E_SMERR        ((uint8_t)(1 << 5))
+> -#define MCH_HOST_BRDIGE_ESMRAMC_SM_CACHE       ((uint8_t)(1 << 4))
+> -#define MCH_HOST_BRDIGE_ESMRAMC_SM_L1          ((uint8_t)(1 << 3))
+> -#define MCH_HOST_BRDIGE_ESMRAMC_SM_L2          ((uint8_t)(1 << 2))
+> -#define MCH_HOST_BRDIGE_ESMRAMC_TSEG_SZ_MASK   ((uint8_t)(0x3 << 1))
+> -#define MCH_HOST_BRDIGE_ESMRAMC_TSEG_SZ_1MB    ((uint8_t)(0x0 << 1))
+> -#define MCH_HOST_BRDIGE_ESMRAMC_TSEG_SZ_2MB    ((uint8_t)(0x1 << 1))
+> -#define MCH_HOST_BRDIGE_ESMRAMC_TSEG_SZ_8MB    ((uint8_t)(0x2 << 1))
+> -#define MCH_HOST_BRDIGE_ESMRAMC_T_EN           ((uint8_t)1)
+> +#define MCH_HOST_BRIDGE_ESMRAMC_H_SMRAME       ((uint8_t)(1 << 6))
+> +#define MCH_HOST_BRIDGE_ESMRAMC_E_SMERR        ((uint8_t)(1 << 5))
+> +#define MCH_HOST_BRIDGE_ESMRAMC_SM_CACHE       ((uint8_t)(1 << 4))
+> +#define MCH_HOST_BRIDGE_ESMRAMC_SM_L1          ((uint8_t)(1 << 3))
+> +#define MCH_HOST_BRIDGE_ESMRAMC_SM_L2          ((uint8_t)(1 << 2))
+> +#define MCH_HOST_BRIDGE_ESMRAMC_TSEG_SZ_MASK   ((uint8_t)(0x3 << 1))
+> +#define MCH_HOST_BRIDGE_ESMRAMC_TSEG_SZ_1MB    ((uint8_t)(0x0 << 1))
+> +#define MCH_HOST_BRIDGE_ESMRAMC_TSEG_SZ_2MB    ((uint8_t)(0x1 << 1))
+> +#define MCH_HOST_BRIDGE_ESMRAMC_TSEG_SZ_8MB    ((uint8_t)(0x2 << 1))
+> +#define MCH_HOST_BRIDGE_ESMRAMC_T_EN           ((uint8_t)1)
+>
+> /* D1:F0 PCIE* port*/
+> #define MCH_PCIE_DEV                           1
+> -- 
+> 1.8.1.5
+>
+>
+>
 
