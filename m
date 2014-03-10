@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WN5bb-0005PO-LX
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 15:11:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57295)
+	id 1WN5bc-0005R6-Lh
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 15:11:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57312)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WN5bR-00054m-4u
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 15:11:13 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WN5bR-00055Z-Q9
+	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 15:11:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WN5bM-0003Oh-9G
+	(envelope-from <pm215@archaic.org.uk>) id 1WN5bM-0003Om-9b
 	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 15:11:09 -0400
 Received: from mnementh.archaic.org.uk ([81.2.115.146]:39685)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WN5bB-0003JX-Q9; Mon, 10 Mar 2014 15:10:53 -0400
+	id 1WN5bB-0003JX-8r; Mon, 10 Mar 2014 15:10:53 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WN5b7-0002TN-A8; Mon, 10 Mar 2014 19:10:49 +0000
+	id 1WN5b7-0002TV-D2; Mon, 10 Mar 2014 19:10:49 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 10 Mar 2014 19:10:43 +0000
-Message-Id: <1394478649-9453-8-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 10 Mar 2014 19:10:45 +0000
+Message-Id: <1394478649-9453-10-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1394478649-9453-1-git-send-email-peter.maydell@linaro.org>
 References: <1394478649-9453-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 81.2.115.146
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH 07/12] hw/intc/openpic: Avoid shifting left
-	into sign bit
+Subject: [Qemu-trivial] [PATCH 09/12] tests/libqos/pci-pc: Avoid shifting
+	left into sign bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,35 +40,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 10 Mar 2014 19:11:14 -0000
 
-Add U suffix to avoid undefined behaviour.
+Add U suffix when doing "1 << 31" to avoid undefined behaviour.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/openpic.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/libqos/pci-pc.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
-index 7df72f4..cfd7f06 100644
---- a/hw/intc/openpic.c
-+++ b/hw/intc/openpic.c
-@@ -123,7 +123,7 @@ static FslMpicInfo fsl_mpic_42 = {
- #define TCCR_TOG          0x80000000 /* toggles when decrement to zero */
+diff --git a/tests/libqos/pci-pc.c b/tests/libqos/pci-pc.c
+index 3bde8ab..bf741a4 100644
+--- a/tests/libqos/pci-pc.c
++++ b/tests/libqos/pci-pc.c
+@@ -110,37 +110,37 @@ static void qpci_pc_io_writel(QPCIBus *bus, void *addr, uint32_t value)
  
- #define IDR_EP_SHIFT      31
--#define IDR_EP_MASK       (1 << IDR_EP_SHIFT)
-+#define IDR_EP_MASK       (1U << IDR_EP_SHIFT)
- #define IDR_CI0_SHIFT     30
- #define IDR_CI1_SHIFT     29
- #define IDR_P1_SHIFT      1
-@@ -220,7 +220,7 @@ typedef struct IRQSource {
- } IRQSource;
+ static uint8_t qpci_pc_config_readb(QPCIBus *bus, int devfn, uint8_t offset)
+ {
+-    outl(0xcf8, (1 << 31) | (devfn << 8) | offset);
++    outl(0xcf8, (1U << 31) | (devfn << 8) | offset);
+     return inb(0xcfc);
+ }
  
- #define IVPR_MASK_SHIFT       31
--#define IVPR_MASK_MASK        (1 << IVPR_MASK_SHIFT)
-+#define IVPR_MASK_MASK        (1U << IVPR_MASK_SHIFT)
- #define IVPR_ACTIVITY_SHIFT   30
- #define IVPR_ACTIVITY_MASK    (1 << IVPR_ACTIVITY_SHIFT)
- #define IVPR_MODE_SHIFT       29
+ static uint16_t qpci_pc_config_readw(QPCIBus *bus, int devfn, uint8_t offset)
+ {
+-    outl(0xcf8, (1 << 31) | (devfn << 8) | offset);
++    outl(0xcf8, (1U << 31) | (devfn << 8) | offset);
+     return inw(0xcfc);
+ }
+ 
+ static uint32_t qpci_pc_config_readl(QPCIBus *bus, int devfn, uint8_t offset)
+ {
+-    outl(0xcf8, (1 << 31) | (devfn << 8) | offset);
++    outl(0xcf8, (1U << 31) | (devfn << 8) | offset);
+     return inl(0xcfc);
+ }
+ 
+ static void qpci_pc_config_writeb(QPCIBus *bus, int devfn, uint8_t offset, uint8_t value)
+ {
+-    outl(0xcf8, (1 << 31) | (devfn << 8) | offset);
++    outl(0xcf8, (1U << 31) | (devfn << 8) | offset);
+     outb(0xcfc, value);
+ }
+ 
+ static void qpci_pc_config_writew(QPCIBus *bus, int devfn, uint8_t offset, uint16_t value)
+ {
+-    outl(0xcf8, (1 << 31) | (devfn << 8) | offset);
++    outl(0xcf8, (1U << 31) | (devfn << 8) | offset);
+     outw(0xcfc, value);
+ }
+ 
+ static void qpci_pc_config_writel(QPCIBus *bus, int devfn, uint8_t offset, uint32_t value)
+ {
+-    outl(0xcf8, (1 << 31) | (devfn << 8) | offset);
++    outl(0xcf8, (1U << 31) | (devfn << 8) | offset);
+     outl(0xcfc, value);
+ }
+ 
 -- 
 1.9.0
 
