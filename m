@@ -1,52 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WN154-0004Bz-4b
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 10:21:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38745)
+	id 1WN3qS-0003Rf-TK
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 13:18:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57256)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WN14y-0004Al-Tb
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 10:21:24 -0400
+	(envelope-from <gsomlo@gmail.com>) id 1WN3qL-0003Fx-5Q
+	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 13:18:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WN14u-0004t4-P9
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 10:21:20 -0400
-Received: from mail-lb0-f178.google.com ([209.85.217.178]:57542)
+	(envelope-from <gsomlo@gmail.com>) id 1WN3qF-00089q-Kq
+	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 13:18:25 -0400
+Received: from mail-qc0-x22a.google.com ([2607:f8b0:400d:c01::22a]:37332)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WN14u-0004sq-Hz
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 10:21:16 -0400
-Received: by mail-lb0-f178.google.com with SMTP id s7so4575412lbd.23
-	for <qemu-trivial@nongnu.org>; Mon, 10 Mar 2014 07:21:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=0XHhFvPRQtiZB5wc6+fnkR/AytAJAKIt99zQh+P48fo=;
-	b=JIM1I8DtEwwedAE6txDx9LOKeMDdrZCuCTPPED+hOjgRYBzhb6B6UYcNfx9C3gsdoF
-	uSGhz6YoBAhDPdcQQbhxDHXOo8Js/2X4Khf4bIBG5vpAAlD9ZBc4eR/E/kgQFQTxGCn8
-	/h3kkiYrRrSpsxBIu+UEaYCcLH11yvX94+nAGqYUsg+ppthOXdgX16SWltULITqL7qJ5
-	oc6TVe6mvpocMf8LGxoTV8ZJoT9VFLkAGGR1Z9b+NPmkk285o30djKwdp2j1vv06JEna
-	owWnd3UpCEY61clBP3I/e+VoQJgL/44HfjI+RXqteBgspvsF8sZRRLX8lVUVa6fCeLdE
-	Djgw==
-X-Gm-Message-State: ALoCoQm9QLcHvKEPAyAuHO+WdesjGDN8GamWLYuoJdSNHF18ZEyH7dj8+/aCF+4Fj5HgJC345pS5
-X-Received: by 10.112.137.5 with SMTP id qe5mr22382835lbb.16.1394461275303;
-	Mon, 10 Mar 2014 07:21:15 -0700 (PDT)
+	(envelope-from <gsomlo@gmail.com>)
+	id 1WN3q1-000864-9L; Mon, 10 Mar 2014 13:18:05 -0400
+Received: by mail-qc0-f170.google.com with SMTP id e9so8211938qcy.29
+	for <multiple recipients>; Mon, 10 Mar 2014 10:18:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:subject:message-id:mime-version:content-type
+	:content-disposition:user-agent;
+	bh=vanW1ER77vNaflHGMV+7o0l4K0J5djxP2U7QJH8qJl0=;
+	b=YFiv1BOvav3boEuepcSnqGm/yT/LR7uwFa8KCw+Z4YGqUtDZQ5UjdrhNEqJHy/I3S1
+	hU/bK9zOxB8Pb7P/y4gLBDr6VJfWvdYnZHv6Mc3oFFyWtSbrRkLgCANoGuURO0WScloM
+	MtUznd3HJlyoYHtj4uGw0OFf7Z9/zZ+2vAZ6/+36K2Aztu3/9F4c2FifgDSvmEubfnVn
+	l04vSe91D7Jefcxa4ITPHu3cbjFaFDfCk80XQuzUnAp8vEK4Bm9Cpb1WbmRVtWGV4NbN
+	+oL2T3cuOnlTBTmuHiwy+9eQKWpRaAmt0eOFlOBnru9qkl5oj2hnBEHgSJBfaRs7K6zw
+	Tupg==
+X-Received: by 10.224.60.71 with SMTP id o7mr42029243qah.38.1394471884799;
+	Mon, 10 Mar 2014 10:18:04 -0700 (PDT)
+Received: from ERROL.INI.CMU.EDU (ERROL.INI.CMU.EDU. [128.2.16.43])
+	by mx.google.com with ESMTPSA id
+	r110sm26720150qgd.1.2014.03.10.10.18.04 for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Mon, 10 Mar 2014 10:18:04 -0700 (PDT)
+Date: Mon, 10 Mar 2014 13:14:57 -0400
+From: "Gabriel L. Somlo" <gsomlo@gmail.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20140310171456.GS17184@ERROL.INI.CMU.EDU>
 MIME-Version: 1.0
-Received: by 10.112.118.34 with HTTP; Mon, 10 Mar 2014 07:20:55 -0700 (PDT)
-In-Reply-To: <531A41A7.80302@suse.de>
-References: <1394219753-26106-1-git-send-email-sw@weilnetz.de>
-	<531A211D.8030209@suse.de> <531A2587.8030104@weilnetz.de>
-	<531A41A7.80302@suse.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 10 Mar 2014 14:20:55 +0000
-Message-ID: <CAFEAcA-eh197bmJz8fT6LScfdi2UE_3kZGOv9p6XKQ+iAmzqJg@mail.gmail.com>
-To: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.178
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libvixl: Fix format strings
- for several int64_t values
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c01::22a
+Subject: [Qemu-trivial] [PATCH] Add qga/qapi-generated to .gitignore
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,51 +54,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Mar 2014 14:21:25 -0000
+X-List-Received-Date: Mon, 10 Mar 2014 17:18:31 -0000
 
-On 7 March 2014 22:01, Andreas F=C3=A4rber <afaerber@suse.de> wrote:
-> Am 07.03.2014 21:01, schrieb Stefan Weil:
->> Am 07.03.2014 20:42, schrieb Andreas F=C3=A4rber:
->>> Am 07.03.2014 20:15, schrieb Stefan Weil:
->>>> "%d" or "%x" won't work on hosts where int values are smaller than 64 =
-bit.
->>>>
->>>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->>>> ---
->>>>  disas/libvixl/a64/disasm-a64.cc |   20 ++++++++++----------
->>>>  1 file changed, 10 insertions(+), 10 deletions(-)
->>>
->>> Patch looks correct, but I see no indication that this is a backport
->>> from upstream libvixl. Have you submitted it there too?
->>
->> If I knew how to submit it to libvixl, I'd have done that already. I did
->> not find any hint (e-mail address, keyword contrib) in the sources from
->> github. Can you help me?
->
-> Google led me to the following:
-> https://github.com/armvixl/vixl
->
-> vixl@arm.com
+The folder "qga/qapi-generated" shows up after building QEMU, and
+gets in the way during e.g. "git add ."; Add it to .gitignore to
+keep it from accidentally ending up in the wrong place.
 
-This is the right email address and git repo, yes.
-(our disas/libvixl/README gives the github URL, at least.)
+Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
+---
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
 
-I would encourage you to email them patches, it will
-act as a prod for them to get themselves set up to
-handle incoming contributions properly :-)
+diff --git a/.gitignore b/.gitignore
+index ef7019f..a0895c9 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -21,6 +21,7 @@
+ libdis*
+ libuser
+ /linux-headers/asm
++qga/qapi-generated
+ /qapi-generated
+ /qapi-types.[ch]
+ /qapi-visit.[ch]
+-- 
+1.8.1.4
 
->> It would also be fine if someone just takes my
->> patch and applies it there.
->
-> Hopefully Peter can help; I just remembered someone asking not to apply
-> spelling fixes to not complicate functional backports.
-
-I will apply this patch to target-arm.next. I'm happy
-that we carry genuine bugfixes to libvixl (hopefully
-in anticipation of them going away on a future update),
-it's only non-functional changes I'd rather we don't
-carry in our tree.
-
-thanks
--- PMM
 
