@@ -1,46 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WN4SK-0004JF-No
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 13:57:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41014)
+	id 1WN4gj-00064H-B4
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 14:12:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44190)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WN4SE-0004CI-Kl
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 13:57:38 -0400
+	(envelope-from <gsomlo@gmail.com>) id 1WN4gc-0005vV-0e
+	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 14:12:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WN4SA-0005Ff-8E
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 13:57:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:5516)
+	(envelope-from <gsomlo@gmail.com>) id 1WN4gW-0001b0-E5
+	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 14:12:25 -0400
+Received: from mail-qa0-x22f.google.com ([2607:f8b0:400d:c00::22f]:41185)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1WN4S1-0005EB-5j; Mon, 10 Mar 2014 13:57:21 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2AHvJjP031943
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 10 Mar 2014 13:57:19 -0400
-Received: from [10.3.113.154] (ovpn-113-154.phx2.redhat.com [10.3.113.154])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s2AHvIph017116; Mon, 10 Mar 2014 13:57:19 -0400
-Message-ID: <531DFCFE.2000006@redhat.com>
-Date: Mon, 10 Mar 2014 11:57:18 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
-MIME-Version: 1.0
-To: "Gabriel L. Somlo" <gsomlo@gmail.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
+	(envelope-from <gsomlo@gmail.com>)
+	id 1WN4gJ-0001Ze-Px; Mon, 10 Mar 2014 14:12:07 -0400
+Received: by mail-qa0-f47.google.com with SMTP id w5so7349676qac.34
+	for <multiple recipients>; Mon, 10 Mar 2014 11:12:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=e/b6fysj5uMUolBovSXjaZxUT74NJ1zTjUM3srsruzU=;
+	b=HQYU4j1zqlpGPRPZH99pvRBgbnhwVGVQliB4kUEianCMENZrPw8HppjA3+5k5lZW5+
+	hXK/NLmrYcXLjGgkoiJaHu7+clKs7I223Gdv48uToyysWvt1UJOT9L3MR47bCz016KM8
+	WPHrHEPATa/ydtrGPksxOk+UgKwuIIQKll3cQUWKXL7ObPISAa06Rrw4osAh23vcgGla
+	frk/yW4EEmXLsTPp3Y+Qit7Uoi0h0Y3/QIzhc4pnj++S5jijp+l5z2VNS96ZFKi8Xypf
+	xRIVIdtYhSvcQosN9C5klBzuCXlRJkjX9woH4C34rC8ucKc4wGvdZ185lpffLqxNofzi
+	VW6Q==
+X-Received: by 10.224.60.134 with SMTP id p6mr3905153qah.98.1394475127303;
+	Mon, 10 Mar 2014 11:12:07 -0700 (PDT)
+Received: from ERROL.INI.CMU.EDU (ERROL.INI.CMU.EDU. [128.2.16.43])
+	by mx.google.com with ESMTPSA id
+	b14sm27539819qga.16.2014.03.10.11.12.06 for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Mon, 10 Mar 2014 11:12:07 -0700 (PDT)
+Date: Mon, 10 Mar 2014 14:08:59 -0400
+From: "Gabriel L. Somlo" <gsomlo@gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20140310180859.GT17184@ERROL.INI.CMU.EDU>
 References: <20140310171456.GS17184@ERROL.INI.CMU.EDU>
-In-Reply-To: <20140310171456.GS17184@ERROL.INI.CMU.EDU>
-X-Enigmail-Version: 1.6
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="WX5ikvDwcqEoSusRqniUtfO7IRfx7BAFF"
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add qga/qapi-generated to
-	.gitignore
+	<531DFCFE.2000006@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <531DFCFE.2000006@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c00::22f
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH v2] Add qga/qapi-generated to .gitignore
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,60 +58,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Mar 2014 17:57:39 -0000
+X-List-Received-Date: Mon, 10 Mar 2014 18:12:31 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---WX5ikvDwcqEoSusRqniUtfO7IRfx7BAFF
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+The folder "qga/qapi-generated" shows up after building QEMU, and
+gets in the way during e.g. "git add ."; Add it to .gitignore to
+keep it from accidentally ending up in the wrong place.
 
-On 03/10/2014 11:14 AM, Gabriel L. Somlo wrote:
-> The folder "qga/qapi-generated" shows up after building QEMU, and
-> gets in the way during e.g. "git add ."; Add it to .gitignore to
-> keep it from accidentally ending up in the wrong place.
->=20
-> Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
-> ---
->  .gitignore | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/.gitignore b/.gitignore
-> index ef7019f..a0895c9 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -21,6 +21,7 @@
->  libdis*
->  libuser
->  /linux-headers/asm
-> +qga/qapi-generated
+Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
+---
 
-Why didn't you anchor it?
+On Mon, Mar 10, 2014 at 11:57:18AM -0600, Eric Blake wrote:
+> Why didn't you anchor it?
+> /qga/qapi-generated
 
-/qga/qapi-generated
+Because I'm a n00b to the "process" :)
+Thanks for the clue,
+  Gabriel
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/.gitignore b/.gitignore
+index ef7019f..a0895c9 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -21,6 +21,7 @@
+ libdis*
+ libuser
+ /linux-headers/asm
++/qga/qapi-generated
+ /qapi-generated
+ /qapi-types.[ch]
+ /qapi-visit.[ch]
+-- 
+1.8.1.4
 
---WX5ikvDwcqEoSusRqniUtfO7IRfx7BAFF
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJTHfz+AAoJEKeha0olJ0Nq7QMIAKBU/pLlJaHDyjfHsEsPSdLP
-MG1wL9E2Jfw1/dBGvT9wwIHPm95T7AUUcyLL4Z4Ky815cdX4kvRZGBFcRxpdeOd8
-KS0Zc7ZefaEGTiA470y92DZ4vjDWW4EEPbzsDS5N463zMrGrlGEC3+uNQW4g25z5
-lvpG9Ivg3XFt28TC2YOOhPBC9xuw8AiATjfQkR2RecrppGgPYxQGeUrf8vFbBy7/
-AsxtDhxlJURRhRK973uXXl3E9VFY7soZmSLcqE5Ere+l8FYez1TkVl/kERdubG+V
-gLwIEG68GTwsuX6XMUcwTSEaWMHhWayDWGnRyxErEQ06gykbIujnHLDvqv+1O4I=
-=F2Gu
------END PGP SIGNATURE-----
-
---WX5ikvDwcqEoSusRqniUtfO7IRfx7BAFF--
 
