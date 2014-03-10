@@ -1,32 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WN5bb-0005Pc-WF
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 15:11:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57304)
+	id 1WN63X-0006Ji-SH
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2014 15:40:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36422)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WN5bR-00055E-Jf
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 15:11:14 -0400
+	(envelope-from <sw@weilnetz.de>) id 1WN63S-00069n-1W
+	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 15:40:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WN5bM-0003Op-9S
-	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 15:11:09 -0400
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:39685)
+	(envelope-from <sw@weilnetz.de>) id 1WN63N-0004Qp-9x
+	for qemu-trivial@nongnu.org; Mon, 10 Mar 2014 15:40:05 -0400
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=44889
+	helo=v220110690675601.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1WN5bA-0003JX-FF; Mon, 10 Mar 2014 15:10:52 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1WN5b7-0002Sz-2L; Mon, 10 Mar 2014 19:10:49 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Mon, 10 Mar 2014 19:10:37 +0000
-Message-Id: <1394478649-9453-2-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1394478649-9453-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <sw@weilnetz.de>)
+	id 1WN63B-0004Lq-4A; Mon, 10 Mar 2014 15:39:49 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	14BE172800CA; Mon, 10 Mar 2014 20:39:48 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id Yb8KJdttE6Al; Mon, 10 Mar 2014 20:39:46 +0100 (CET)
+Received: from [192.168.178.35] (p54ADBA8B.dip0.t-ipconnect.de
+	[84.173.186.139])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	03F1172800C7; Mon, 10 Mar 2014 20:39:45 +0100 (CET)
+Message-ID: <531E1501.5070608@weilnetz.de>
+Date: Mon, 10 Mar 2014 20:39:45 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <1394478649-9453-1-git-send-email-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 81.2.115.146
+	<1394478649-9453-3-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1394478649-9453-3-git-send-email-peter.maydell@linaro.org>
+X-Enigmail-Version: 1.5.2
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH 01/12] target-i386: Avoid shifting left into
-	sign bit
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 02/12] hw/intc/apic.c: Use
+ uint32_t for mask word in foreach_apic
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,57 +55,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Mar 2014 19:11:14 -0000
+X-List-Received-Date: Mon, 10 Mar 2014 19:40:10 -0000
 
-Add 'U' suffixes where necessary to avoid (1 << 31) which
-shifts left into the sign bit, which is undefined behaviour.
+Am 10.03.2014 20:10, schrieb Peter Maydell:
+> Use unsigned arithmetic for operations on the mask word
+> in the foreach_apic() macro, to avoid relying on undefined
+> behaviour when shifting into the sign bit.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/intc/apic.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/intc/apic.c b/hw/intc/apic.c
+> index 361ae90..e137882 100644
+> --- a/hw/intc/apic.c
+> +++ b/hw/intc/apic.c
+> @@ -201,12 +201,13 @@ static void apic_external_nmi(APICCommonState *s)
+>  
+>  #define foreach_apic(apic, deliver_bitmask, code) \
+>  {\
+> -    int __i, __j, __mask;\
+> +    int __i, __j;\
+> +    uint32_t __mask;\
+>      for(__i = 0; __i < MAX_APIC_WORDS; __i++) {\
+>          __mask = deliver_bitmask[__i];\
+>          if (__mask) {\
+>              for(__j = 0; __j < 32; __j++) {\
+> -                if (__mask & (1 << __j)) {\
+> +                if (__mask & (1U << __j)) {\
+>                      apic = local_apics[__i * 32 + __j];\
+>                      if (apic) {\
+>                          code;\
+> 
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target-i386/cpu.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/target-i386/cpu.h b/target-i386/cpu.h
-index 0014acc..064f987 100644
---- a/target-i386/cpu.h
-+++ b/target-i386/cpu.h
-@@ -202,7 +202,7 @@
- #define CR0_NE_MASK  (1 << 5)
- #define CR0_WP_MASK  (1 << 16)
- #define CR0_AM_MASK  (1 << 18)
--#define CR0_PG_MASK  (1 << 31)
-+#define CR0_PG_MASK  (1U << 31)
- 
- #define CR4_VME_MASK  (1 << 0)
- #define CR4_PVI_MASK  (1 << 1)
-@@ -436,7 +436,7 @@ typedef uint32_t FeatureWordArray[FEATURE_WORDS];
- #define CPUID_HT (1 << 28)
- #define CPUID_TM (1 << 29)
- #define CPUID_IA64 (1 << 30)
--#define CPUID_PBE (1 << 31)
-+#define CPUID_PBE (1U << 31)
- 
- #define CPUID_EXT_SSE3     (1 << 0)
- #define CPUID_EXT_PCLMULQDQ (1 << 1)
-@@ -467,7 +467,7 @@ typedef uint32_t FeatureWordArray[FEATURE_WORDS];
- #define CPUID_EXT_AVX      (1 << 28)
- #define CPUID_EXT_F16C     (1 << 29)
- #define CPUID_EXT_RDRAND   (1 << 30)
--#define CPUID_EXT_HYPERVISOR  (1 << 31)
-+#define CPUID_EXT_HYPERVISOR  (1U << 31)
- 
- #define CPUID_EXT2_FPU     (1 << 0)
- #define CPUID_EXT2_VME     (1 << 1)
-@@ -496,7 +496,7 @@ typedef uint32_t FeatureWordArray[FEATURE_WORDS];
- #define CPUID_EXT2_RDTSCP  (1 << 27)
- #define CPUID_EXT2_LM      (1 << 29)
- #define CPUID_EXT2_3DNOWEXT (1 << 30)
--#define CPUID_EXT2_3DNOW   (1 << 31)
-+#define CPUID_EXT2_3DNOW   (1U << 31)
- 
- /* CPUID[8000_0001].EDX bits that are aliase of CPUID[1].EDX bits on AMD CPUs */
- #define CPUID_EXT2_AMD_ALIASES (CPUID_EXT2_FPU | CPUID_EXT2_VME | \
--- 
-1.9.0
+The declaration of __mask could be moved inside the for block and be
+combined with the assignment, but that's not strictly necessary.
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
 
