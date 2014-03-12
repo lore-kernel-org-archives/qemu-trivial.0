@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WNjvF-0001Nt-0C
+	id 1WNjvF-0001PG-Hf
 	for mharc-qemu-trivial@gnu.org; Wed, 12 Mar 2014 10:14:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42182)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42168)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1WNjv8-0001A0-1H
-	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 10:14:14 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1WNjv7-000196-JB
+	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 10:14:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1WNjv3-00050D-8X
+	(envelope-from <alex.bennee@linaro.org>) id 1WNjv2-0004zy-NX
 	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 10:14:09 -0400
 Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:33639 helo=socrates.bennee.com)
+	([88.198.71.155]:33647 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1WNjur-0004wD-E2; Wed, 12 Mar 2014 10:13:53 -0400
+	id 1WNjus-0004x2-GF; Wed, 12 Mar 2014 10:13:54 -0400
 Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
 	by socrates.bennee.com with esmtp (Exim 4.80)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1WNjv5-0003Ek-38; Wed, 12 Mar 2014 15:14:07 +0100
+	id 1WNjv6-0003Ek-Fm; Wed, 12 Mar 2014 15:14:08 +0100
 From: alex.bennee@linaro.org
 To: qemu-devel@nongnu.org
-Date: Wed, 12 Mar 2014 14:13:50 +0000
-Message-Id: <1394633633-18211-2-git-send-email-alex.bennee@linaro.org>
+Date: Wed, 12 Mar 2014 14:13:53 +0000
+Message-Id: <1394633633-18211-5-git-send-email-alex.bennee@linaro.org>
 X-Mailer: git-send-email 1.9.0
 In-Reply-To: <1394633633-18211-1-git-send-email-alex.bennee@linaro.org>
 References: <1394633633-18211-1-git-send-email-alex.bennee@linaro.org>
@@ -36,8 +36,8 @@ Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: [Qemu-trivial] [PULL 1/4] .travis.yml: add a new build target with
-	non-core devlibs
+Subject: [Qemu-trivial] [PULL 4/4] .travis.yml: add IRC notifications for
+	build failures
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,34 +49,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Mar 2014 14:14:15 -0000
+X-List-Received-Date: Wed, 12 Mar 2014 14:14:16 -0000
 
 From: Alex Bennée <alex.bennee@linaro.org>
 
-The current builds don't include all the features which are
-auto-detected and then disabled when the appropriate test packages don't
-exist. I've added another target that enables all known additional
-packages for increased coverage. I didn't add it to the core package
-list to reduce build time.
+I'm trying to avoid spamming the IRC channel (not overly likely as
+builds take a while). So failure will always be reported but if the
+build continues to work then the IRC notifications will be quiet.
+
+Note any GitHub based repository with Travis enabled will use this
+notification. If it proves to be too spammy we may want to ask users not
+to use Travis themselves although this seems sub-optimal.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
 diff --git a/.travis.yml b/.travis.yml
-index c7ff4da..286cf62 100644
+index 0dbf2da..04da973 100644
 --- a/.travis.yml
 +++ b/.travis.yml
-@@ -46,6 +46,10 @@ matrix:
-     - env: TARGETS=i386-softmmu,x86_64-softmmu
-            EXTRA_CONFIG="--enable-debug --enable-tcg-interpreter"
-       compiler: gcc
-+    # All the extra -dev packages
-+    - env: TARGETS=i386-softmmu,x86_64-softmmu
-+           EXTRA_PKGS="libaio-dev libcap-ng-dev libattr1-dev libbrlapi-dev uuid-dev libusb-1.0.0-dev"
-+      compiler: gcc
-     # Currently configure doesn't force --disable-pie
-     - env: TARGETS=i386-softmmu,x86_64-softmmu
-            EXTRA_CONFIG="--enable-gprof --enable-gcov --disable-pie"
+@@ -4,6 +4,12 @@ python:
+ compiler:
+   - gcc
+   - clang
++notifications:
++  irc:
++    channels:
++      - "irc.oftc.net#qemu"
++    on_success: change
++    on_failure: always
+ env:
+   global:
+     - TEST_CMD="make check"
 -- 
 1.9.0
 
