@@ -1,43 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WNfmI-00065K-In
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Mar 2014 05:48:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60100)
+	id 1WNj9Z-0000Xx-9m
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Mar 2014 09:25:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57415)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sebastian.huber@embedded-brains.de>)
-	id 1WNfmC-0005yk-SC
-	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 05:48:45 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WNj9W-0000O1-0E
+	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 09:24:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sebastian.huber@embedded-brains.de>)
-	id 1WNfm8-00068F-JG
-	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 05:48:40 -0400
-Received: from host-82-135-62-35.customer.m-online.net ([82.135.62.35]:55502
-	helo=mail.embedded-brains.de) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sebastian.huber@embedded-brains.de>)
-	id 1WNflz-0005rL-O4; Wed, 12 Mar 2014 05:48:27 -0400
-Received: by mail.embedded-brains.de (Postfix, from userid 65534)
-	id A00CA652CFB; Wed, 12 Mar 2014 10:48:23 +0100 (CET)
-Received: from [192.168.100.11] (unknown [192.168.100.11])
-	by mail.embedded-brains.de (Postfix) with ESMTP id C9F15652CFB;
-	Wed, 12 Mar 2014 10:48:21 +0100 (CET)
-Message-ID: <53202D65.2090805@embedded-brains.de>
-Date: Wed, 12 Mar 2014 10:48:21 +0100
-From: Sebastian Huber <sebastian.huber@embedded-brains.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130329 Thunderbird/17.0.5
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1392549158-6009-1-git-send-email-sebastian.huber@embedded-brains.de>
-	<530D9D92.5030800@embedded-brains.de>
-	<53132F68.9070001@msgid.tls.msk.ru>
-	<531354A9.9020705@embedded-brains.de>
-In-Reply-To: <531354A9.9020705@embedded-brains.de>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 82.135.62.35
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] hw/timer/grlib_gptimer:
- Avoid integer overflows
+	(envelope-from <pm215@archaic.org.uk>) id 1WNj9S-0004SX-1g
+	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 09:24:57 -0400
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:46677)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1WNj9P-0004Rj-Cq; Wed, 12 Mar 2014 09:24:51 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1WNj9N-00036c-E8; Wed, 12 Mar 2014 13:24:49 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Wed, 12 Mar 2014 13:24:49 +0000
+Message-Id: <1394630689-11913-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] target-m68k: Remove custom qemu_assert()
+	function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,40 +37,130 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Mar 2014 09:48:45 -0000
+X-List-Received-Date: Wed, 12 Mar 2014 13:24:59 -0000
 
-Hello,
+Remove the custom qemu_assert() function defined by target-m68k/translate.c
+in favour of either using glib g_assert_not_reached() (for the genuinely
+can't-happen cases) or cpu_abort() (for the "this isn't implemented",
+in line with other unimplemented cases in the target).
 
-On 2014-03-02 16:56, Sebastian Huber wrote:
-> On 03/02/2014 02:17 PM, Michael Tokarev wrote:
->> 26.02.2014 11:53, Sebastian Huber wrote:
->>> Ping.
->> There was another comment on this, about the first hunk,
->> see https://lists.gnu.org/archive/html/qemu-trivial/2014-02/msg00067.h=
-tml
->>
->> Note that the comment below this line mentions the +1 which is
->> being removed.
->
-> I think I addressed this issue with the following sentence in the commi=
-t
-> message of v2:
->
-> "Use the GPTIMER counter value for tracing to avoid an overflow of the =
-32-bit
-> value passed to trace_grlib_gptimer_enable()."
->
+This has the benefit of silencing some clang warnings about
+variables used while uninitialized (which are emitted because
+clang can't figure out that qemu_assert(0, something) never
+returns.
 
-should I better split the patch into two parts?
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Since target-m68k is orphan it seems reasonable to just do the
+minimal amount to at least get it to compile without warnings
+(even if the warnings are spurious), rather than for instance
+trying to convert all the unimplemented-behaviour aborts into
+LOG_UNIMP-and-continue-somehow.
 
---=20
-Sebastian Huber, embedded brains GmbH
+ target-m68k/translate.c | 28 +++++++++-------------------
+ 1 file changed, 9 insertions(+), 19 deletions(-)
 
-Address : Dornierstr. 4, D-82178 Puchheim, Germany
-Phone   : +49 89 189 47 41-16
-Fax     : +49 89 189 47 41-09
-E-Mail  : sebastian.huber@embedded-brains.de
-PGP     : Public key available on request.
+diff --git a/target-m68k/translate.c b/target-m68k/translate.c
+index f54b94a..f747c13 100644
+--- a/target-m68k/translate.c
++++ b/target-m68k/translate.c
+@@ -110,14 +110,6 @@ void m68k_tcg_init(void)
+     store_dummy = tcg_global_mem_new(TCG_AREG0, -8, "NULL");
+ }
+ 
+-static inline void qemu_assert(int cond, const char *msg)
+-{
+-    if (!cond) {
+-        fprintf (stderr, "badness: %s\n", msg);
+-        abort();
+-    }
+-}
+-
+ /* internal defines */
+ typedef struct DisasContext {
+     CPUM68KState *env;
+@@ -199,7 +191,7 @@ static inline TCGv gen_load(DisasContext * s, int opsize, TCGv addr, int sign)
+         tcg_gen_qemu_ld32u(tmp, addr, index);
+         break;
+     default:
+-        qemu_assert(0, "bad load size");
++        g_assert_not_reached();
+     }
+     gen_throws_exception = gen_last_qop;
+     return tmp;
+@@ -233,7 +225,7 @@ static inline void gen_store(DisasContext *s, int opsize, TCGv addr, TCGv val)
+         tcg_gen_qemu_st32(val, addr, index);
+         break;
+     default:
+-        qemu_assert(0, "bad store size");
++        g_assert_not_reached();
+     }
+     gen_throws_exception = gen_last_qop;
+ }
+@@ -437,8 +429,7 @@ static inline int opsize_bytes(int opsize)
+     case OS_SINGLE: return 4;
+     case OS_DOUBLE: return 8;
+     default:
+-        qemu_assert(0, "bad operand size");
+-        return 0;
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -465,8 +456,7 @@ static void gen_partset_reg(int opsize, TCGv reg, TCGv val)
+         tcg_gen_mov_i32(reg, val);
+         break;
+     default:
+-        qemu_assert(0, "Bad operand size");
+-        break;
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -495,7 +485,7 @@ static inline TCGv gen_extend(TCGv val, int opsize, int sign)
+         tmp = val;
+         break;
+     default:
+-        qemu_assert(0, "Bad operand size");
++        g_assert_not_reached();
+     }
+     return tmp;
+ }
+@@ -669,7 +659,7 @@ static TCGv gen_ea(CPUM68KState *env, DisasContext *s, uint16_t insn,
+                 offset = read_im32(env, s);
+                 break;
+             default:
+-                qemu_assert(0, "Bad immediate operand");
++                g_assert_not_reached();
+             }
+             return tcg_const_i32(offset);
+         default:
+@@ -2092,7 +2082,7 @@ DISAS_INSN(wdebug)
+         return;
+     }
+     /* TODO: Implement wdebug.  */
+-    qemu_assert(0, "WDEBUG not implemented");
++    cpu_abort(env, "WDEBUG not implemented");
+ }
+ 
+ DISAS_INSN(trap)
+@@ -2467,13 +2457,13 @@ DISAS_INSN(fbcc)
+ DISAS_INSN(frestore)
+ {
+     /* TODO: Implement frestore.  */
+-    qemu_assert(0, "FRESTORE not implemented");
++    cpu_abort(env, "FRESTORE not implemented");
+ }
+ 
+ DISAS_INSN(fsave)
+ {
+     /* TODO: Implement fsave.  */
+-    qemu_assert(0, "FSAVE not implemented");
++    cpu_abort(env, "FSAVE not implemented");
+ }
+ 
+ static inline TCGv gen_mac_extract_word(DisasContext *s, TCGv val, int upper)
+-- 
+1.9.0
 
-Diese Nachricht ist keine gesch=E4ftliche Mitteilung im Sinne des EHUG.
 
