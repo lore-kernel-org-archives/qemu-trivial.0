@@ -1,29 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WNjiZ-0007Lh-QW
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Mar 2014 10:01:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38228)
+	id 1WNjvD-0001KA-8o
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Mar 2014 10:14:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42160)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1WNjiT-00079f-DI
-	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 10:01:10 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1WNjv6-00017g-Q9
+	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 10:14:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1WNjiN-0008VC-PQ
-	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 10:01:05 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1WNjv1-0004zf-Qx
+	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 10:14:08 -0400
 Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:33552 helo=socrates.bennee.com)
+	([88.198.71.155]:33637 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1WNjiD-0008Sd-QF; Wed, 12 Mar 2014 10:00:49 -0400
+	id 1WNjuq-0004vt-In; Wed, 12 Mar 2014 10:13:52 -0400
 Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
 	by socrates.bennee.com with esmtp (Exim 4.80)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1WNjiR-00038b-MU; Wed, 12 Mar 2014 15:01:03 +0100
+	id 1WNjv4-0003Ek-Kl; Wed, 12 Mar 2014 15:14:06 +0100
 From: alex.bennee@linaro.org
 To: qemu-devel@nongnu.org
-Date: Wed, 12 Mar 2014 14:00:50 +0000
-Message-Id: <1394632851-17070-4-git-send-email-alex.bennee@linaro.org>
+Date: Wed, 12 Mar 2014 14:13:49 +0000
+Message-Id: <1394633633-18211-1-git-send-email-alex.bennee@linaro.org>
 X-Mailer: git-send-email 1.9.0
-In-Reply-To: <1394632851-17070-1-git-send-email-alex.bennee@linaro.org>
-References: <1394632851-17070-1-git-send-email-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -32,8 +30,9 @@ X-SA-Exim-Mail-From: alex.bennee@linaro.org
 X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 88.198.71.155
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PULL 3/4] .travis.yml: trivial whitespace fixup
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [Qemu-trivial] [PULL 0/4] Travis Updates
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,61 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Mar 2014 14:01:10 -0000
+X-List-Received-Date: Wed, 12 Mar 2014 14:14:13 -0000
 
 From: Alex Bennée <alex.bennee@linaro.org>
 
-Purely cosmetic but satisfies my OCD.
+No changes from the original version posted except to add Stefan's
+reviewed-by tags. I thought it was worth submitting this before we
+froze for 2.0!
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+The following changes since commit be813ef02d18ba58e1ff32f1706bcacb88f1f764:
 
-diff --git a/.travis.yml b/.travis.yml
-index 1d78421..0dbf2da 100644
---- a/.travis.yml
-+++ b/.travis.yml
-@@ -14,23 +14,23 @@ env:
-     - GUI_PKGS="libgtk-3-dev libvte-2.90-dev libsdl1.2-dev libpng12-dev libpixman-1-dev"
-     - EXTRA_PKGS=""
-   matrix:
--  - TARGETS=alpha-softmmu,alpha-linux-user
--  - TARGETS=arm-softmmu,arm-linux-user
--  - TARGETS=aarch64-softmmu,aarch64-linux-user
--  - TARGETS=cris-softmmu
--  - TARGETS=i386-softmmu,x86_64-softmmu
--  - TARGETS=lm32-softmmu
--  - TARGETS=m68k-softmmu
--  - TARGETS=microblaze-softmmu,microblazeel-softmmu
--  - TARGETS=mips-softmmu,mips64-softmmu,mips64el-softmmu,mipsel-softmmu
--  - TARGETS=moxie-softmmu
--  - TARGETS=or32-softmmu,
--  - TARGETS=ppc-softmmu,ppc64-softmmu,ppcemb-softmmu
--  - TARGETS=s390x-softmmu
--  - TARGETS=sh4-softmmu,sh4eb-softmmu
--  - TARGETS=sparc-softmmu,sparc64-softmmu
--  - TARGETS=unicore32-softmmu
--  - TARGETS=xtensa-softmmu,xtensaeb-softmmu
-+    - TARGETS=alpha-softmmu,alpha-linux-user
-+    - TARGETS=arm-softmmu,arm-linux-user
-+    - TARGETS=aarch64-softmmu,aarch64-linux-user
-+    - TARGETS=cris-softmmu
-+    - TARGETS=i386-softmmu,x86_64-softmmu
-+    - TARGETS=lm32-softmmu
-+    - TARGETS=m68k-softmmu
-+    - TARGETS=microblaze-softmmu,microblazeel-softmmu
-+    - TARGETS=mips-softmmu,mips64-softmmu,mips64el-softmmu,mipsel-softmmu
-+    - TARGETS=moxie-softmmu
-+    - TARGETS=or32-softmmu,
-+    - TARGETS=ppc-softmmu,ppc64-softmmu,ppcemb-softmmu
-+    - TARGETS=s390x-softmmu
-+    - TARGETS=sh4-softmmu,sh4eb-softmmu
-+    - TARGETS=sparc-softmmu,sparc64-softmmu
-+    - TARGETS=unicore32-softmmu
-+    - TARGETS=xtensa-softmmu,xtensaeb-softmmu
- before_install:
-   - git submodule update --init --recursive
-   - sudo apt-get update -qq
--- 
-1.9.0
+  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2014-03-11 19:52:32 +0000)
 
+are available in the git repository at:
+
+
+  git@github.com:stsquad/qemu.git travis-updates
+
+for you to fetch changes up to 3e6fa9a5bb773d0d7d22d9aea0495d91404dfd3d:
+
+  .travis.yml: add IRC notifications for build failures (2014-03-12 13:52:27 +0000)
+
+----------------------------------------------------------------
+Alex Bennée (4):
+      .travis.yml: add a new build target with non-core devlibs
+      .travis.yml: re-enable lttng user space trace test
+      .travis.yml: trivial whitespace fixup
+      .travis.yml: add IRC notifications for build failures
+
+ .travis.yml | 53 +++++++++++++++++++++++++++++++----------------------
+ 1 file changed, 31 insertions(+), 22 deletions(-)
 
