@@ -1,38 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WOVL4-0002Vs-1j
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Mar 2014 12:52:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51441)
+	id 1WOVym-0001EF-CW
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Mar 2014 13:33:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33527)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WOVKv-0002MV-R3
-	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 12:52:02 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WOVyf-00011S-Ci
+	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 13:33:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WOVKr-00045u-Bg
-	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 12:51:57 -0400
-Received: from mel.act-europe.fr ([194.98.77.210]:46379
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1WOVKi-00043I-6M; Fri, 14 Mar 2014 12:51:44 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 3CFE027031B1;
-	Fri, 14 Mar 2014 17:51:43 +0100 (CET)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T3mvfXfxL3nR; Fri, 14 Mar 2014 17:51:43 +0100 (CET)
-Received: from lanoue.act-europe.fr (lanoue.act-europe.fr [10.10.1.115])
-	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 2051F27030A3;
-	Fri, 14 Mar 2014 17:51:43 +0100 (CET)
-From: Fabien Chouteau <chouteau@adacore.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Date: Fri, 14 Mar 2014 17:51:41 +0100
-Message-Id: <1394815901-7153-1-git-send-email-chouteau@adacore.com>
-X-Mailer: git-send-email 1.7.9.5
+	(envelope-from <mjt@tls.msk.ru>) id 1WOVyZ-0002yB-9K
+	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 13:33:01 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:46375)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WOVyN-0002vj-1o; Fri, 14 Mar 2014 13:32:43 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id EC38341C8B;
+	Fri, 14 Mar 2014 21:32:41 +0400 (MSK)
+Message-ID: <53233D39.8050602@msgid.tls.msk.ru>
+Date: Fri, 14 Mar 2014 21:32:41 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
+MIME-Version: 1.0
+To: Cole Robinson <crobinso@redhat.com>
+References: <1493d560c83eef5eefe313cb6b4a1d17985a2471.1394815720.git.crobinso@redhat.com>
+In-Reply-To: <1493d560c83eef5eefe313cb6b4a1d17985a2471.1394815720.git.crobinso@redhat.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 194.98.77.210
-Cc: peter.maydell@linaro.org, agraf@suse.de, pbonzini@redhat.com
-Subject: [Qemu-trivial] [PATCH] FSL eTSEC: Fix typo in rx ring
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Anthony Liguori <aliguori@amazon.com>
+Subject: Re: [Qemu-trivial] [PATCH v2 for-2.0] scripts/make-release: Don't
+ distribute .git directories
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,37 +47,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Mar 2014 16:52:02 -0000
+X-List-Received-Date: Fri, 14 Mar 2014 17:33:07 -0000
 
+14.03.2014 20:49, Cole Robinson wrote:
+> [crobinso@localhost qemu-2.0.0-rc0]$ find . -name .git
+> ./dtc/.git
+> ./pixman/.git
+> 
+> This is already done for the rom submodules.
 
-Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
----
- hw/net/fsl_etsec/rings.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Thanks, applied to -trivial.
 
-diff --git a/hw/net/fsl_etsec/rings.c b/hw/net/fsl_etsec/rings.c
-index 7760272..31e6f58 100644
---- a/hw/net/fsl_etsec/rings.c
-+++ b/hw/net/fsl_etsec/rings.c
-@@ -592,7 +592,7 @@ void etsec_walk_rx_ring(eTSEC *etsec, int ring_nbr)
- 
-                 /* TODO: Broadcast and Multicast */
- 
--                if (bd.flags | BD_INTERRUPT) {
-+                if (bd.flags & BD_INTERRUPT) {
-                     /* Set RXFx */
-                     etsec->regs[RSTAT].value |= 1 << (7 - ring_nbr);
- 
-@@ -601,7 +601,7 @@ void etsec_walk_rx_ring(eTSEC *etsec, int ring_nbr)
-                 }
- 
-             } else {
--                if (bd.flags | BD_INTERRUPT) {
-+                if (bd.flags & BD_INTERRUPT) {
-                     /* Set IEVENT */
-                     ievent_set(etsec, IEVENT_RXB);
-                 }
--- 
-1.7.9.5
-
+/mjt
 
