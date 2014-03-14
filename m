@@ -1,41 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WNjzw-0000VL-3I
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Mar 2014 10:19:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43510)
+	id 1WOTHB-0003v5-MM
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Mar 2014 10:39:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49414)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WNjzp-0000L1-H2
-	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 10:19:06 -0400
+	(envelope-from <lersek@redhat.com>) id 1WOTH4-0003gt-Fk
+	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 10:39:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WNjzk-0006e8-Q2
-	for qemu-trivial@nongnu.org; Wed, 12 Mar 2014 10:19:01 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:37965 helo=mx2.suse.de)
+	(envelope-from <lersek@redhat.com>) id 1WOTGy-0007K8-IS
+	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 10:39:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:25861)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1WNjza-0006b9-P4; Wed, 12 Mar 2014 10:18:46 -0400
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id EA14C75018;
-	Wed, 12 Mar 2014 14:18:45 +0000 (UTC)
-Message-ID: <53206CC5.6040902@suse.de>
-Date: Wed, 12 Mar 2014 15:18:45 +0100
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-References: <1394630689-11913-1-git-send-email-peter.maydell@linaro.org>
-	<CAFEAcA9Le87gpzh-5cBtZVzYS05VfvKSnXZDuVRDC3XYUKiD=w@mail.gmail.com>
-In-Reply-To: <CAFEAcA9Le87gpzh-5cBtZVzYS05VfvKSnXZDuVRDC3XYUKiD=w@mail.gmail.com>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <lersek@redhat.com>)
+	id 1WOTGy-0007Jr-AW; Fri, 14 Mar 2014 10:39:44 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2EEdfJH002804
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 14 Mar 2014 10:39:42 -0400
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-32.ams2.redhat.com
+	[10.36.116.32])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s2EEdcFY018741; Fri, 14 Mar 2014 10:39:40 -0400
+From: Laszlo Ersek <lersek@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, Cole Robinson <crobinso@redhat.com>,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Date: Fri, 14 Mar 2014 15:39:35 +0100
+Message-Id: <1394807976-9469-1-git-send-email-lersek@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.135.220.15
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-m68k: Remove custom
- qemu_assert() function
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [trivial PATCH 2.0 0/1] silence invalid cyrus-sasl
+	warning on startup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,39 +42,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Mar 2014 14:19:06 -0000
+X-List-Received-Date: Fri, 14 Mar 2014 14:39:56 -0000
 
-Am 12.03.2014 15:15, schrieb Peter Maydell:
-> On 12 March 2014 13:24, Peter Maydell <peter.maydell@linaro.org> wrote:
->> Remove the custom qemu_assert() function defined by target-m68k/transl=
-ate.c
->> in favour of either using glib g_assert_not_reached() (for the genuine=
-ly
->> can't-happen cases) or cpu_abort() (for the "this isn't implemented",
->> in line with other unimplemented cases in the target).
->>
->> This has the benefit of silencing some clang warnings about
->> variables used while uninitialized (which are emitted because
->> clang can't figure out that qemu_assert(0, something) never
->> returns.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->=20
-> Andreas pointed out that we've had one attempt to fix this
-> late last year:
-> http://lists.gnu.org/archive/html/qemu-devel/2013-12/msg02177.html
-> which didn't work because hw_assert() is not present in user-mode
-> compiles. This version of the patch doesn't suffer from that issue.
+Here's a patch that suits my mental capabilities on this
+Friday afternoon.
 
-Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+Laszlo Ersek (1):
+  sasl: Avoid 'Could not find keytab file' in syslog
 
-Looks fine then, except that cpu_abort() will conflict with my series.
+ qemu.sasl | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Regards,
-Andreas
+-- 
+1.8.3.1
 
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
 
