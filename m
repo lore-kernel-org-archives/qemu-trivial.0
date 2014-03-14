@@ -1,41 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WOV6b-0007dL-52
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Mar 2014 12:37:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48030)
+	id 1WOVF7-0002Ao-Tz
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Mar 2014 12:45:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49784)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WOV6S-0007JE-M9
-	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 12:37:06 -0400
+	(envelope-from <crobinso@redhat.com>) id 1WOVF1-0001j7-I9
+	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 12:45:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WOV6M-0007Gf-QZ
-	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 12:37:00 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:40206)
+	(envelope-from <crobinso@redhat.com>) id 1WOVEw-0001zK-Lw
+	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 12:45:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37365)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WOV62-00078m-Rz; Fri, 14 Mar 2014 12:36:35 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0F63541CAF;
-	Fri, 14 Mar 2014 20:36:34 +0400 (MSK)
-Message-ID: <53233011.4010909@msgid.tls.msk.ru>
-Date: Fri, 14 Mar 2014 20:36:33 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131103 Icedove/17.0.10
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1394185418-30197-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1394185418-30197-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+	(envelope-from <crobinso@redhat.com>)
+	id 1WOVEk-0001v5-IO; Fri, 14 Mar 2014 12:45:34 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2EGjVgJ011954
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 14 Mar 2014 12:45:31 -0400
+Received: from colepc.home.com (ovpn-113-49.phx2.redhat.com [10.3.113.49])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s2EGjSem019281; Fri, 14 Mar 2014 12:45:30 -0400
+From: Cole Robinson <crobinso@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 14 Mar 2014 12:45:21 -0400
+Message-Id: <7bd1da678bd39335a69894433070611baf7c2968.1394815484.git.crobinso@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <rth@twiddle.net>, qemu-stable@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] configure: Don't use __int128_t for
- clang versions before 3.2
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Liguori <aliguori@amazon.com>, Cole Robinson <crobinso@redhat.com>
+Subject: [Qemu-trivial] [PATCH for-2.0] scripts/make-release: Don't
+	distribute .git directories
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,23 +43,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Mar 2014 16:37:07 -0000
+X-List-Received-Date: Fri, 14 Mar 2014 16:45:56 -0000
 
-07.03.2014 13:43, Stefan Weil wrote:
-> Those versions don't fully support __int128_t.
-> 
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
-> 
-> See http://stackoverflow.com/questions/16447808/bug-with-int128-t-in-clang
-> for more details. Debian wheezy uses clang 3.0 and shows this bug.
-> 
-> I did not test whether the QEMU code will work nevertheless, but I think
-> it's better to be on the safe side and disable __int128_t for old clang
-> versions.
+[crobinso@localhost qemu-2.0.0-rc0]$ find . -name .git
+./dtc/.git
+./pixman/.git
 
-Thanks, applied to -trivial.
+This is already done for the rom submodules.
 
-/mjt
+https://bugs.launchpad.net/qemu/+bug/1224414
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+---
+ scripts/make-release | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/make-release b/scripts/make-release
+index 196c755..cb7c2da 100755
+--- a/scripts/make-release
++++ b/scripts/make-release
+@@ -18,7 +18,7 @@ git clone "${src}" ${destination}
+ pushd ${destination}
+ git checkout "v${version}"
+ git submodule update --init
+-rm -rf .git roms/*/.git
++rm -rf .git roms/*/.git dtc/.git pixman/*.git
+ popd
+ tar cfj ${destination}.tar.bz2 ${destination}
+ rm -rf ${destination}
+-- 
+1.8.5.3
+
 
