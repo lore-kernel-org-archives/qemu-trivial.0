@@ -1,38 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WOWMU-0004Pg-7z
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Mar 2014 13:57:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38771)
+	id 1WOWtc-0001Fg-Or
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Mar 2014 14:31:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46914)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WOWMO-0004GM-Ds
-	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 13:57:36 -0400
+	(envelope-from <lersek@redhat.com>) id 1WOWtW-0000up-8B
+	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 14:31:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WOWMJ-00037W-0X
-	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 13:57:32 -0400
-Received: from jedlik.phy.bme.hu ([152.66.102.83]:59161)
+	(envelope-from <lersek@redhat.com>) id 1WOWtR-0008Tu-Cw
+	for qemu-trivial@nongnu.org; Fri, 14 Mar 2014 14:31:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58511)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@jedlik.phy.bme.hu>)
-	id 1WOWM7-00031g-Us; Fri, 14 Mar 2014 13:57:16 -0400
-Received: by jedlik.phy.bme.hu (Postfix, from userid 501)
-	id 5202760092; Fri, 14 Mar 2014 18:57:14 +0100 (CET)
-Date: Fri, 14 Mar 2014 18:57:14 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-X-X-Sender: balaton@jedlik.phy.bme.hu
-To: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <alpine.LMD.2.02.1403141834500.15847@jedlik.phy.bme.hu>
-Message-ID: <alpine.LMD.2.02.1403141856050.15847@jedlik.phy.bme.hu>
-References: <20140227011300.8CD451983B@mono.eik.bme.hu>
-	<alpine.LMD.2.02.1403101939400.485@jedlik.phy.bme.hu>
-	<53232C8C.3070403@msgid.tls.msk.ru>
-	<alpine.LMD.2.02.1403141834500.15847@jedlik.phy.bme.hu>
-User-Agent: Alpine 2.02 (LMD 1266 2009-07-14)
+	(envelope-from <lersek@redhat.com>)
+	id 1WOWtH-0008Q1-BU; Fri, 14 Mar 2014 14:31:31 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2EIUPDY022235
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 14 Mar 2014 14:30:26 -0400
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-32.ams2.redhat.com
+	[10.36.116.32])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id s2EIUHbO013216; Fri, 14 Mar 2014 14:30:20 -0400
+Message-ID: <53234AB9.8050008@redhat.com>
+Date: Fri, 14 Mar 2014 19:30:17 +0100
+From: Laszlo Ersek <lersek@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+To: Cole Robinson <crobinso@redhat.com>, qemu-devel@nongnu.org
+References: <7bd1da678bd39335a69894433070611baf7c2968.1394815484.git.crobinso@redhat.com>
+In-Reply-To: <7bd1da678bd39335a69894433070611baf7c2968.1394815484.git.crobinso@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 152.66.102.83
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] serial-pci: Set prog
- interface field of pci config to 16550 compatible
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Liguori <aliguori@amazon.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.0]
+ scripts/make-release: Don't distribute .git directories
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,60 +51,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Mar 2014 17:57:36 -0000
+X-List-Received-Date: Fri, 14 Mar 2014 18:31:51 -0000
 
-On Fri, 14 Mar 2014, BALATON Zoltan wrote:
-> On Fri, 14 Mar 2014, Michael Tokarev wrote:
->> 10.03.2014 22:40, BALATON Zoltan wrote:
->>> Ping!
->>> http://patchwork.ozlabs.org/patch/324674/
->>> 
->>> On Thu, 27 Feb 2014, BALATON Zoltan wrote:
->>>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
->>>> ---
->>>> hw/char/serial-pci.c | 1 +
->>>> 1 file changed, 1 insertion(+)
->>>> 
->>>> diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
->>>> index 991c99f..e662b77 100644
->>>> --- a/hw/char/serial-pci.c
->>>> +++ b/hw/char/serial-pci.c
->>>> @@ -60,6 +60,7 @@ static int serial_pci_init(PCIDevice *dev)
->>>>         return -1;
->>>>     }
->>>> 
->>>> +    pci->dev.config[PCI_CLASS_PROG] = 0x02; /* 16550 compatible */
->>>>     pci->dev.config[PCI_INTERRUPT_PIN] = 0x01;
->>>>     s->irq = pci_allocate_irq(&pci->dev);
->> 
->> Hm. While this is an one-liner indeed, I'm not sure it's the right
->> value.  From my pci.ids:
->> 
->> C 07  Communication controller
->>        00  Serial controller
->>                00  8250
->>                01  16450
->>                02  16550
->>                03  16650
->>                04  16750
->>                05  16850
->>                06  16950
->> 
->> so it seems correct thing to do.
->> 
->> What about multi_serial_pci_init() -- should it too set prog-if
->> like this?
->
-> I'm not completely sure what the correct value should be for 
-> multi_serial_pci_init so I've left that alone. There's also 07 02 00 that 
-> means multiport serial controller that might apply for that case. For the 
-> simple case I've sent the patch for I had a client expecting this value so I 
-> think it is correct for that at least but I don't know about the multiport 
-> case.
+On 03/14/14 17:45, Cole Robinson wrote:
+> [crobinso@localhost qemu-2.0.0-rc0]$ find . -name .git
+> ./dtc/.git
+> ./pixman/.git
+> 
+> This is already done for the rom submodules.
+> 
+> https://bugs.launchpad.net/qemu/+bug/1224414
+> Signed-off-by: Cole Robinson <crobinso@redhat.com>
+> ---
+>  scripts/make-release | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/scripts/make-release b/scripts/make-release
+> index 196c755..cb7c2da 100755
+> --- a/scripts/make-release
+> +++ b/scripts/make-release
+> @@ -18,7 +18,7 @@ git clone "${src}" ${destination}
+>  pushd ${destination}
+>  git checkout "v${version}"
+>  git submodule update --init
+> -rm -rf .git roms/*/.git
+> +rm -rf .git roms/*/.git dtc/.git pixman/*.git
+>  popd
+>  tar cfj ${destination}.tar.bz2 ${destination}
+>  rm -rf ${destination}
+> 
 
-Also Gerd Hoffmann said he has picked this patch up so I'm adding him to 
-cc too.
+This seems to be complete:
 
-> Regards,
-> BALATON Zoltan
+.gitmodules:[submodule "roms/vgabios"]
+.gitmodules:[submodule "roms/seabios"]
+.gitmodules:[submodule "roms/SLOF"]
+.gitmodules:[submodule "roms/ipxe"]
+.gitmodules:[submodule "roms/openbios"]
+.gitmodules:[submodule "roms/openhackware"]
+.gitmodules:[submodule "roms/qemu-palcode"]
+.gitmodules:[submodule "roms/sgabios"]
+.gitmodules:[submodule "pixman"]
+.gitmodules:[submodule "dtc"]
+
+but did you in fact mean
+
+  pixman/*.git
+
+rather tan
+
+  pixman/.git
+
+?
+
+Thanks
+Laszlo
 
