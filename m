@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WOlbt-0008A0-IV
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Mar 2014 06:14:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55342)
+	id 1WOlc8-00008q-5p
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Mar 2014 06:14:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55368)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WOlbn-0007xe-BR
-	for qemu-trivial@nongnu.org; Sat, 15 Mar 2014 06:14:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WOlc0-0008Ly-4t
+	for qemu-trivial@nongnu.org; Sat, 15 Mar 2014 06:14:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WOlbi-0001zV-RN
-	for qemu-trivial@nongnu.org; Sat, 15 Mar 2014 06:14:27 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36744)
+	(envelope-from <mjt@tls.msk.ru>) id 1WOlbv-00021f-Ug
+	for qemu-trivial@nongnu.org; Sat, 15 Mar 2014 06:14:40 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:45940)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WOlbZ-0001yY-JV; Sat, 15 Mar 2014 06:14:13 -0400
+	id 1WOlbZ-0001yX-Jh; Sat, 15 Mar 2014 06:14:13 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 56DB641D99;
+	by isrv.corpit.ru (Postfix) with ESMTP id 54C2E41D73;
 	Sat, 15 Mar 2014 14:14:12 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 191A266B;
-	Sat, 15 Mar 2014 13:57:05 +0400 (MSK)
-Received: (nullmailer pid 20031 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id E5A6E66A;
+	Sat, 15 Mar 2014 13:57:04 +0400 (MSK)
+Received: (nullmailer pid 20024 invoked by uid 1000);
 	Sat, 15 Mar 2014 09:57:04 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Sat, 15 Mar 2014 13:56:58 +0400
-Message-Id: <1394877419-19949-13-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Sat, 15 Mar 2014 13:56:55 +0400
+Message-Id: <1394877419-19949-10-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1394877419-19949-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1394877419-19949-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Cole Robinson <crobinso@redhat.com>
-Subject: [Qemu-trivial] [PULL 12/13] scripts/make-release: Don't distribute
-	.git directories
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-stable@nongnu.org
+Subject: [Qemu-trivial] [PULL 09/13] tests: Fix 'make test' for i686 hosts
+	(build regression)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,36 +44,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Mar 2014 10:14:32 -0000
+X-List-Received-Date: Sat, 15 Mar 2014 10:14:46 -0000
 
-From: Cole Robinson <crobinso@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-[crobinso@localhost qemu-2.0.0-rc0]$ find . -name .git
-./dtc/.git
-./pixman/.git
+'make test' is broken at least since commit
+baacf04799ace72a9c735dd9306a1ceaf305e7cf. Several source files were moved
+to util/, and some of them there split, so add the missing prefix and new
+files to fix the compiler and linker errors.
 
-This is already done for the rom submodules.
+There remain more issues, but these changes allow running the test on a
+Linux i686 host.
 
-https://bugs.launchpad.net/qemu/+bug/1224414
-Signed-off-by: Cole Robinson <crobinso@redhat.com>
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- scripts/make-release |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/test_path.c |   13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-diff --git a/scripts/make-release b/scripts/make-release
-index 196c755..186358d 100755
---- a/scripts/make-release
-+++ b/scripts/make-release
-@@ -18,7 +18,7 @@ git clone "${src}" ${destination}
- pushd ${destination}
- git checkout "v${version}"
- git submodule update --init
--rm -rf .git roms/*/.git
-+rm -rf .git roms/*/.git dtc/.git pixman/.git
- popd
- tar cfj ${destination}.tar.bz2 ${destination}
- rm -rf ${destination}
+diff --git a/tests/tcg/test_path.c b/tests/tcg/test_path.c
+index a064eea..f8dd36a 100644
+--- a/tests/tcg/test_path.c
++++ b/tests/tcg/test_path.c
+@@ -1,12 +1,15 @@
+ /* Test path override code */
+ #define _GNU_SOURCE
+ #include "config-host.h"
+-#include "iov.c"
+-#include "cutils.c"
+-#include "path.c"
+-#include "trace.c"
++#include "util/cutils.c"
++#include "util/hexdump.c"
++#include "util/iov.c"
++#include "util/path.c"
++#include "util/qemu-timer-common.c"
++#include "trace/control.c"
++#include "../trace/generated-events.c"
+ #ifdef CONFIG_TRACE_SIMPLE
+-#include "../trace/simple.c"
++#include "trace/simple.c"
+ #endif
+ 
+ #include <stdarg.h>
 -- 
 1.7.10.4
 
