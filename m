@@ -1,35 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPBfl-00006B-Bz
-	for mharc-qemu-trivial@gnu.org; Sun, 16 Mar 2014 10:04:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34095)
+	id 1WPDB2-0001vP-5G
+	for mharc-qemu-trivial@gnu.org; Sun, 16 Mar 2014 11:40:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45047)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1WPBfe-0008OH-Ee
-	for qemu-trivial@nongnu.org; Sun, 16 Mar 2014 10:04:15 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1WPDAw-0001tw-CD
+	for qemu-trivial@nongnu.org; Sun, 16 Mar 2014 11:40:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1WPBfZ-00026L-Bz
-	for qemu-trivial@nongnu.org; Sun, 16 Mar 2014 10:04:10 -0400
-Received: from qemu.weilnetz.de ([37.221.198.45]:57697
-	helo=v2201305906712890.yourvserver.net)
+	(envelope-from <peter.maydell@linaro.org>) id 1WPDAp-0003w7-Ca
+	for qemu-trivial@nongnu.org; Sun, 16 Mar 2014 11:40:34 -0400
+Received: from mail-la0-f46.google.com ([209.85.215.46]:61441)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
-	id 1WPBfF-000231-Cq; Sun, 16 Mar 2014 10:03:45 -0400
-Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
-	id 436B51800C1; Sun, 16 Mar 2014 15:03:42 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Sun, 16 Mar 2014 15:03:41 +0100
-Message-Id: <1394978621-19738-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.198.45
-Cc: kvm@vger.kernel.org, Stefan Weil <sw@weilnetz.de>,
-	Marcelo Tosatti <mtosatti@redhat.com>, qemu-devel@nongnu.org,
-	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [Qemu-trivial] [PATCH] target-i386: Add missing 'static' and
-	'const' attributes
+	(envelope-from <peter.maydell@linaro.org>) id 1WPDAo-0003uv-VZ
+	for qemu-trivial@nongnu.org; Sun, 16 Mar 2014 11:40:27 -0400
+Received: by mail-la0-f46.google.com with SMTP id hr17so3015788lab.33
+	for <qemu-trivial@nongnu.org>; Sun, 16 Mar 2014 08:40:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=Z6VT7isXlxTuBGzyl2SycNlVfA4uhWwfShiRNRpsFec=;
+	b=EKHqfYAjLsQMdsWd2K4HXtEH5nXpiMWYtiywbJemTrkhQLVdKg73O/NPYGfXsWAC4u
+	3HS2mlWBdq2+KYAqja4yaBxDndlF3UQF59zlCGRJkypEEnbQQoZlhDYb2mA2Hf46p6uP
+	UuZ+Hz3zIpSy9mein+KO5Gb/9KFFTnUyl0pcVtiyblI1UCnukUjlmAg4k7i/xVyHtRrv
+	c+K/WGQlUQfzU5EdfBT6ddCLdlcSDwRB+6Jo3/sdGIj8WH82yHGEIuESi3bP+fibg/ol
+	6S85j5fL6FRFoJBD0OqUpW4/ZI6KlAtP3qI+fsaOIqghjOrTw2bA+VUbJT7CSAT6qI4Y
+	hXDg==
+X-Gm-Message-State: ALoCoQmTSakVSyrCbuOPAnigMw18b7XHix6upw7X/sIouQLYeakIOOxiGwUqrZDDCY5O2XhlI7BG
+X-Received: by 10.112.73.100 with SMTP id k4mr12784321lbv.25.1394984425651;
+	Sun, 16 Mar 2014 08:40:25 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.180.233 with HTTP; Sun, 16 Mar 2014 08:40:04 -0700 (PDT)
+In-Reply-To: <1394877419-19949-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1394877419-19949-1-git-send-email-mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 16 Mar 2014 15:40:04 +0000
+Message-ID: <CAFEAcA8RSujZvy+J9ZafgZKeDnHCBaVckyqwaj3At8B-NWSjVg@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.46
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/13] Trivial patches for
+	2014-03-15
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,50 +55,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 16 Mar 2014 14:04:15 -0000
+X-List-Received-Date: Sun, 16 Mar 2014 15:40:39 -0000
 
-This fixes warnings from the static code analysis (smatch).
+On 15 March 2014 09:56, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here's another pull request for the trivial-patches queue.
+> This time it does not include Peter's shifts-to-sign-bit
+> patchset, but I'd hope to get it included in the next
+> few days.
+>
+> All the changes appears to be fine for 2.0 (including the
+> shifts-to-sign-bit series actually).
+>
+> Please consider applying for 2.0.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 03d51428e2da0188a0adea00cbd713cc1e967e7a:
+>
+>   Merge remote-tracking branch 'remotes/bonzini/scsi-next' into staging (2014-03-14 18:17:25 +0000)
+>
+> are available in the git repository at:
+>
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-03-15
+>
+> for you to fetch changes up to 9c749e4dbe65e61e159ad822a4110167c2c108fe:
+>
+>   FSL eTSEC: Fix typo in rx ring (2014-03-15 13:54:18 +0400)
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
+Applied, thanks.
 
-Why is array para_features in kvm.c terminated by a dummy entry?
-It is only used in a for loop with upper limit ARRAY_SIZE(para_features) - 1.
-
-Regards
-Stefan
-
- target-i386/cpu.c |    2 +-
- target-i386/kvm.c |    2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-index e7e62c5..8fd1497 100644
---- a/target-i386/cpu.c
-+++ b/target-i386/cpu.c
-@@ -316,7 +316,7 @@ typedef struct X86RegisterInfo32 {
- 
- #define REGISTER(reg) \
-     [R_##reg] = { .name = #reg, .qapi_enum = X86_CPU_REGISTER32_##reg }
--X86RegisterInfo32 x86_reg_info_32[CPU_NB_REGS32] = {
-+static const X86RegisterInfo32 x86_reg_info_32[CPU_NB_REGS32] = {
-     REGISTER(EAX),
-     REGISTER(ECX),
-     REGISTER(EDX),
-diff --git a/target-i386/kvm.c b/target-i386/kvm.c
-index 7a295f6..4389959 100644
---- a/target-i386/kvm.c
-+++ b/target-i386/kvm.c
-@@ -122,7 +122,7 @@ static struct kvm_cpuid2 *get_supported_cpuid(KVMState *s)
-     return cpuid;
- }
- 
--struct kvm_para_features {
-+static const struct kvm_para_features {
-     int cap;
-     int feature;
- } para_features[] = {
--- 
-1.7.10.4
-
+-- PMM
 
