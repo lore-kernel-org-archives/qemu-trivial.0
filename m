@@ -1,33 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPZyO-00062W-F9
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:01:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56129)
+	id 1WPZyV-0006I1-Q8
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:01:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56253)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WPZy9-0005Ur-US
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:54 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WPZyC-0005bB-Ic
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WPZy8-0007n6-Mj
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:53 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WPZy7-0007mQ-Sm
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:56 -0400
 Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:46882)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WPZy2-0007gB-Go; Mon, 17 Mar 2014 12:00:46 -0400
+	id 1WPZy4-0007gB-EM; Mon, 17 Mar 2014 12:00:48 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WPZxx-0004vv-C0; Mon, 17 Mar 2014 16:00:41 +0000
+	id 1WPZxx-0004vU-2t; Mon, 17 Mar 2014 16:00:41 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 17 Mar 2014 16:00:36 +0000
-Message-Id: <1395072041-18911-8-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 17 Mar 2014 16:00:29 +0000
+Message-Id: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
-References: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2001:8b0:1d0::1
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH v2 07/12] hw/intc/openpic: Avoid shifting
-	left into sign bit
+Subject: [Qemu-trivial] [PATCH v2 00/12] Avoid shifting left into sign bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,54 +36,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 16:00:55 -0000
+X-List-Received-Date: Mon, 17 Mar 2014 16:00:57 -0000
 
-Add U suffix to avoid undefined behaviour. This is only strictly
-necessary for the 1 << 31 cases; for consistency we extend it
-to other constants in the same group.
+This is a set of patches which silence clang -fsanitize=undefined
+warnings about shifting left into the sign bit of a signed value.
+Typically this is the result of "1 << 31" and similar constructs;
+the fix is to add a "U" suffix to the 1 so that we do unsigned
+arithmetic rather than signed arithmetic.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/openpic.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+Since these patches are very minor changes to a fairly
+wide ranging set of files, it seems easiest to send these
+through the -trivial queue. Happy to split the series up
+if people disagree.
 
-diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
-index 7df72f4..be76fbd 100644
---- a/hw/intc/openpic.c
-+++ b/hw/intc/openpic.c
-@@ -123,7 +123,7 @@ static FslMpicInfo fsl_mpic_42 = {
- #define TCCR_TOG          0x80000000 /* toggles when decrement to zero */
- 
- #define IDR_EP_SHIFT      31
--#define IDR_EP_MASK       (1 << IDR_EP_SHIFT)
-+#define IDR_EP_MASK       (1U << IDR_EP_SHIFT)
- #define IDR_CI0_SHIFT     30
- #define IDR_CI1_SHIFT     29
- #define IDR_P1_SHIFT      1
-@@ -220,17 +220,17 @@ typedef struct IRQSource {
- } IRQSource;
- 
- #define IVPR_MASK_SHIFT       31
--#define IVPR_MASK_MASK        (1 << IVPR_MASK_SHIFT)
-+#define IVPR_MASK_MASK        (1U << IVPR_MASK_SHIFT)
- #define IVPR_ACTIVITY_SHIFT   30
--#define IVPR_ACTIVITY_MASK    (1 << IVPR_ACTIVITY_SHIFT)
-+#define IVPR_ACTIVITY_MASK    (1U << IVPR_ACTIVITY_SHIFT)
- #define IVPR_MODE_SHIFT       29
--#define IVPR_MODE_MASK        (1 << IVPR_MODE_SHIFT)
-+#define IVPR_MODE_MASK        (1U << IVPR_MODE_SHIFT)
- #define IVPR_POLARITY_SHIFT   23
--#define IVPR_POLARITY_MASK    (1 << IVPR_POLARITY_SHIFT)
-+#define IVPR_POLARITY_MASK    (1U << IVPR_POLARITY_SHIFT)
- #define IVPR_SENSE_SHIFT      22
--#define IVPR_SENSE_MASK       (1 << IVPR_SENSE_SHIFT)
-+#define IVPR_SENSE_MASK       (1U << IVPR_SENSE_SHIFT)
- 
--#define IVPR_PRIORITY_MASK     (0xF << 16)
-+#define IVPR_PRIORITY_MASK     (0xFU << 16)
- #define IVPR_PRIORITY(_ivprr_) ((int)(((_ivprr_) & IVPR_PRIORITY_MASK) >> 16))
- #define IVPR_VECTOR(opp, _ivprr_) ((_ivprr_) & (opp)->vector_mask)
- 
+Mostly I think these warnings are not particularly exciting
+(even the adversarial optimizations preferred by modern
+compilers will probably not break "1 << 31") but there are
+a lot of them, the fix is pretty trivial, and getting rid of
+them allows us to see the interesting sanitizer warnings more
+clearly.
+
+My method here has been just to look at the warnings produced
+during a 'make check' run; no doubt actually running a guest
+for various platforms would identify more of these.
+
+Changes v1->v2:
+ * minor tweak to foreach_apic to merge declaration
+   and initialization of 'mask'
+ * add U suffix to other constants in the same group
+   for consistency, as suggested by mst
+
+thanks
+-- PMM
+
+
+Peter Maydell (12):
+  target-i386: Avoid shifting left into sign bit
+  hw/intc/apic.c: Use uint32_t for mask word in foreach_apic
+  hw/pci/pci_host.c: Avoid shifting left into sign bit
+  hw/i386/acpi_build.c: Avoid shifting left into sign bit
+  target-mips: Avoid shifting left into sign bit
+  hw/usb/hcd-ohci.c: Avoid shifting left into sign bit
+  hw/intc/openpic: Avoid shifting left into sign bit
+  hw/ppc: Avoid shifting left into sign bit
+  tests/libqos/pci-pc: Avoid shifting left into sign bit
+  hw/intc/slavio_intctl: Avoid shifting left into sign bit
+  hw/intc/xilinx_intc: Avoid shifting left into sign bit
+  hw/pci-host/apb.c: Avoid shifting left into sign bit
+
+ hw/i386/acpi-build.c         |   2 +-
+ hw/intc/apic.c               |   6 +-
+ hw/intc/openpic.c            |  14 +-
+ hw/intc/slavio_intctl.c      |   2 +-
+ hw/intc/xilinx_intc.c        |   3 +-
+ hw/pci-host/apb.c            |  10 +-
+ hw/pci/pci_host.c            |   3 +-
+ hw/ppc/ppc.c                 |   2 +-
+ hw/ppc/ppc440_bamboo.c       |   4 +-
+ hw/ppc/ppc4xx_devs.c         |   2 +-
+ hw/ppc/ppc_booke.c           |  24 ++--
+ hw/ppc/virtex_ml507.c        |   4 +-
+ hw/usb/hcd-ohci.c            |  32 ++---
+ target-i386/cpu.h            | 334 +++++++++++++++++++++----------------------
+ target-mips/cpu.h            |   2 +-
+ target-mips/helper.c         |   8 +-
+ target-mips/op_helper.c      |   2 +-
+ target-mips/translate_init.c |  22 +--
+ tests/libqos/pci-pc.c        |  12 +-
+ 19 files changed, 245 insertions(+), 243 deletions(-)
+
 -- 
 1.9.0
 
