@@ -1,56 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPajc-0001Vz-3z
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:49:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42295)
+	id 1WPb21-0005yT-6c
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 13:08:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47705)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1WPajS-0001TS-3A
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:49:54 -0400
+	(envelope-from <chouteau@adacore.com>) id 1WPb1y-0005th-OO
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 13:08:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1WPajJ-0008Cd-Fh
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:49:46 -0400
-Received: from mail-pd0-x22f.google.com ([2607:f8b0:400e:c02::22f]:56989)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1WPajJ-0008BN-95; Mon, 17 Mar 2014 12:49:37 -0400
-Received: by mail-pd0-f175.google.com with SMTP id x10so5762457pdj.6
-	for <multiple recipients>; Mon, 17 Mar 2014 09:49:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=aze7VvBSgp1ivlx+Qht2Vvj/WxIf+Azba4tgBaFqD70=;
-	b=XRXCZjkcj6QYi/Rph9Jy2Wq09Wu06ovKcszw2+G07duuhIRDkW9HkL1mnYCUqSmFjM
-	tGhafi+T3FjsAJfAa1OMuqG33SdtMBRV+pZQUBQIBGwDTe0BvOxxNWCFvqhIxT6YW+P1
-	gcdgxKh1/PxBY4+irUu/5gK/hLLPhsD/X7xIcoQzhzlHk4BpzCkKEK9mzyVmsDx26ovO
-	7c9WK2RVeDQxC7i5Xxw9X1ov8bc+kgM1rASaY8gq4s+jdO8cPbBRI2PMzCusRD9fLzg+
-	GuZDhRue95gFQfReDmu34y33+BKBeaBeBZqGdR2ahqrYjacD2NvbLPKLqHTRnVtCQ6dx
-	fK1w==
-X-Received: by 10.66.252.135 with SMTP id zs7mr27539566pac.13.1395074975600;
-	Mon, 17 Mar 2014 09:49:35 -0700 (PDT)
-Received: from pike.twiddle.home
-	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
-	by mx.google.com with ESMTPSA id
-	el14sm74257548pac.31.2014.03.17.09.49.33 for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Mon, 17 Mar 2014 09:49:34 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Message-ID: <5327279C.9030908@twiddle.net>
-Date: Mon, 17 Mar 2014 09:49:32 -0700
-From: Richard Henderson <rth@twiddle.net>
+	(envelope-from <chouteau@adacore.com>) id 1WPb1x-0006fz-Vf
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 13:08:54 -0400
+Received: from mel.v6.act-europe.fr ([2a02:2ab8:224:1::a0a:d2]:47237
+	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chouteau@adacore.com>)
+	id 1WPb1v-0006ez-LG; Mon, 17 Mar 2014 13:08:51 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 7B6F327016D6;
+	Mon, 17 Mar 2014 18:08:50 +0100 (CET)
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id O1QVYLooowch; Mon, 17 Mar 2014 18:08:50 +0100 (CET)
+Received: from [10.10.1.115] (lanoue.act-europe.fr [10.10.1.115])
+	(using TLSv1 with cipher ECDHE-RSA-AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 3C3F9270545C;
+	Mon, 17 Mar 2014 18:08:50 +0100 (CET)
+Message-ID: <53272C1B.2020402@adacore.com>
+Date: Mon, 17 Mar 2014 18:08:43 +0100
+From: Fabien Chouteau <chouteau@adacore.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
-References: <1394992972-23004-1-git-send-email-sw@weilnetz.de>	<5325E841.3080508@twiddle.net>
-	<5325F07C.80004@weilnetz.de>
-In-Reply-To: <5325F07C.80004@weilnetz.de>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1394815901-7153-1-git-send-email-chouteau@adacore.com>
+	<53233DCF.3010706@msgid.tls.msk.ru>
+In-Reply-To: <53233DCF.3010706@msgid.tls.msk.ru>
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::22f
-Cc: qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] util: Add 'static'
- attribute to function implementation
+X-Received-From: 2a02:2ab8:224:1::a0a:d2
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
+	qemu-devel@nongnu.org, agraf@suse.de
+Subject: Re: [Qemu-trivial] [PATCH] FSL eTSEC: Fix typo in rx ring
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,29 +52,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 16:49:54 -0000
+X-List-Received-Date: Mon, 17 Mar 2014 17:08:55 -0000
 
-On 03/16/2014 11:42 AM, Stefan Weil wrote:
-> We have a similar situation with other attributes, too. Smatch also
-> complains about missing QEMU_NORETURN in our implementation code (we add
-> it only in header files for global functions). Do you think it would be
-> good to make header and implementation match there, too?
+On 03/14/2014 06:35 PM, Michael Tokarev wrote:
+> 14.03.2014 20:51, Fabien Chouteau wrote:
+> 
+>>  hw/net/fsl_etsec/rings.c |    4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/net/fsl_etsec/rings.c b/hw/net/fsl_etsec/rings.c
+>> index 7760272..31e6f58 100644
+>> --- a/hw/net/fsl_etsec/rings.c
+>> +++ b/hw/net/fsl_etsec/rings.c
+>> @@ -592,7 +592,7 @@ void etsec_walk_rx_ring(eTSEC *etsec, int ring_nbr)
+>>  
+>>                  /* TODO: Broadcast and Multicast */
+>>  
+>> -                if (bd.flags | BD_INTERRUPT) {
+>> +                if (bd.flags & BD_INTERRUPT) {
+>>                      /* Set RXFx */
+> [..etc..]
+> 
+> Hm.  Has this code _ever_ worked?? :(
+> 
 
-Not without changing our CODING_STYLE.
-
-I'm not really fond of
-
-void attributes some_function(arg, arg, arg)
-
-since its quite easy to wind up with too long lines.  It's one of the things I
-really like about the gnu style
-
-void attributes
-some_function(arg, arg, arg)
-
-layout.  (In addition to being an old codger who really liked to be able to do
-"grep ^some_function *.c" to find the implementation.)
-
-
-r~
+Yes because the kernel I'm using always set the BD_INTERRUPT flag.
 
