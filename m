@@ -1,46 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPb21-0005yT-6c
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 13:08:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47705)
+	id 1WPcFu-0000BF-N4
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 14:27:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36917)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WPb1y-0005th-OO
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 13:08:55 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1WPcFo-0008QZ-JR
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 14:27:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WPb1x-0006fz-Vf
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 13:08:54 -0400
-Received: from mel.v6.act-europe.fr ([2a02:2ab8:224:1::a0a:d2]:47237
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1WPb1v-0006ez-LG; Mon, 17 Mar 2014 13:08:51 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 7B6F327016D6;
-	Mon, 17 Mar 2014 18:08:50 +0100 (CET)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O1QVYLooowch; Mon, 17 Mar 2014 18:08:50 +0100 (CET)
-Received: from [10.10.1.115] (lanoue.act-europe.fr [10.10.1.115])
-	(using TLSv1 with cipher ECDHE-RSA-AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 3C3F9270545C;
-	Mon, 17 Mar 2014 18:08:50 +0100 (CET)
-Message-ID: <53272C1B.2020402@adacore.com>
-Date: Mon, 17 Mar 2014 18:08:43 +0100
-From: Fabien Chouteau <chouteau@adacore.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1394815901-7153-1-git-send-email-chouteau@adacore.com>
-	<53233DCF.3010706@msgid.tls.msk.ru>
-In-Reply-To: <53233DCF.3010706@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a02:2ab8:224:1::a0a:d2
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
-	qemu-devel@nongnu.org, agraf@suse.de
-Subject: Re: [Qemu-trivial] [PATCH] FSL eTSEC: Fix typo in rx ring
+	(envelope-from <ehabkost@redhat.com>) id 1WPcFj-0006FR-MJ
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 14:27:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:27768)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>)
+	id 1WPcFZ-0006DX-Jd; Mon, 17 Mar 2014 14:27:01 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2HIQvUS005485
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 17 Mar 2014 14:26:58 -0400
+Received: from localhost ([10.3.113.8])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s2HIQurH001963; Mon, 17 Mar 2014 14:26:57 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Mon, 17 Mar 2014 15:26:31 -0300
+Message-Id: <1395080791-18640-1-git-send-email-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH v3] CODING_STYLE: Section about mixed
+	declarations
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,29 +44,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 17:08:55 -0000
+X-List-Received-Date: Mon, 17 Mar 2014 18:27:21 -0000
 
-On 03/14/2014 06:35 PM, Michael Tokarev wrote:
-> 14.03.2014 20:51, Fabien Chouteau wrote:
-> 
->>  hw/net/fsl_etsec/rings.c |    4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/net/fsl_etsec/rings.c b/hw/net/fsl_etsec/rings.c
->> index 7760272..31e6f58 100644
->> --- a/hw/net/fsl_etsec/rings.c
->> +++ b/hw/net/fsl_etsec/rings.c
->> @@ -592,7 +592,7 @@ void etsec_walk_rx_ring(eTSEC *etsec, int ring_nbr)
->>  
->>                  /* TODO: Broadcast and Multicast */
->>  
->> -                if (bd.flags | BD_INTERRUPT) {
->> +                if (bd.flags & BD_INTERRUPT) {
->>                      /* Set RXFx */
-> [..etc..]
-> 
-> Hm.  Has this code _ever_ worked?? :(
-> 
+We had an unwritten rule about declarations having to be at beginning of
+blocks. Make it a written rule.
 
-Yes because the kernel I'm using always set the BD_INTERRUPT flag.
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+---
+Changes v3:
+ * Wrap long lines
+
+Changes v2:
+ * s/be at beginning/be at the beginning/
+---
+ CODING_STYLE | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/CODING_STYLE b/CODING_STYLE
+index dcbce28..4280945 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -84,3 +84,10 @@ and clarity it comes on a line by itself:
+ Rationale: a consistent (except for functions...) bracing style reduces
+ ambiguity and avoids needless churn when lines are added or removed.
+ Furthermore, it is the QEMU coding style.
++
++5. Declarations
++
++Mixed declarations (interleaving statements and declarations within blocks)
++are not allowed; declarations should be at the beginning of blocks.  In other
++words, the code should not generate warnings if using GCC's
++-Wdeclaration-after-statement option.
+-- 
+1.8.5.3
+
 
