@@ -1,30 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPZyV-0006I1-Q8
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:01:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56253)
+	id 1WPZyQ-00065s-IQ
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:01:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56156)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WPZyC-0005bB-Ic
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:57 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WPZyA-0005WB-J6
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WPZy7-0007mQ-Sm
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:56 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WPZy9-0007nU-3l
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:54 -0400
 Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:46882)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WPZy4-0007gB-EM; Mon, 17 Mar 2014 12:00:48 -0400
+	id 1WPZxy-0007gB-QD; Mon, 17 Mar 2014 12:00:43 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WPZxx-0004vU-2t; Mon, 17 Mar 2014 16:00:41 +0000
+	id 1WPZxx-0004vr-Ak; Mon, 17 Mar 2014 16:00:41 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 17 Mar 2014 16:00:29 +0000
-Message-Id: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 17 Mar 2014 16:00:35 +0000
+Message-Id: <1395072041-18911-7-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
+References: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2001:8b0:1d0::1
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH v2 00/12] Avoid shifting left into sign bit
+Subject: [Qemu-trivial] [PATCH v2 06/12] hw/usb/hcd-ohci.c: Avoid shifting
+	left into sign bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,75 +39,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 16:00:57 -0000
+X-List-Received-Date: Mon, 17 Mar 2014 16:00:55 -0000
 
-This is a set of patches which silence clang -fsanitize=undefined
-warnings about shifting left into the sign bit of a signed value.
-Typically this is the result of "1 << 31" and similar constructs;
-the fix is to add a "U" suffix to the 1 so that we do unsigned
-arithmetic rather than signed arithmetic.
+Add U suffix to avoid undefined behaviour. This is only
+strictly necessary for the 1<<31 cases, but we add it for the
+other constants in these groups for consistency.
 
-Since these patches are very minor changes to a fairly
-wide ranging set of files, it seems easiest to send these
-through the -trivial queue. Happy to split the series up
-if people disagree.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/usb/hcd-ohci.c | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
 
-Mostly I think these warnings are not particularly exciting
-(even the adversarial optimizations preferred by modern
-compilers will probably not break "1 << 31") but there are
-a lot of them, the fix is pretty trivial, and getting rid of
-them allows us to see the interesting sanitizer warnings more
-clearly.
-
-My method here has been just to look at the warnings produced
-during a 'make check' run; no doubt actually running a guest
-for various platforms would identify more of these.
-
-Changes v1->v2:
- * minor tweak to foreach_apic to merge declaration
-   and initialization of 'mask'
- * add U suffix to other constants in the same group
-   for consistency, as suggested by mst
-
-thanks
--- PMM
-
-
-Peter Maydell (12):
-  target-i386: Avoid shifting left into sign bit
-  hw/intc/apic.c: Use uint32_t for mask word in foreach_apic
-  hw/pci/pci_host.c: Avoid shifting left into sign bit
-  hw/i386/acpi_build.c: Avoid shifting left into sign bit
-  target-mips: Avoid shifting left into sign bit
-  hw/usb/hcd-ohci.c: Avoid shifting left into sign bit
-  hw/intc/openpic: Avoid shifting left into sign bit
-  hw/ppc: Avoid shifting left into sign bit
-  tests/libqos/pci-pc: Avoid shifting left into sign bit
-  hw/intc/slavio_intctl: Avoid shifting left into sign bit
-  hw/intc/xilinx_intc: Avoid shifting left into sign bit
-  hw/pci-host/apb.c: Avoid shifting left into sign bit
-
- hw/i386/acpi-build.c         |   2 +-
- hw/intc/apic.c               |   6 +-
- hw/intc/openpic.c            |  14 +-
- hw/intc/slavio_intctl.c      |   2 +-
- hw/intc/xilinx_intc.c        |   3 +-
- hw/pci-host/apb.c            |  10 +-
- hw/pci/pci_host.c            |   3 +-
- hw/ppc/ppc.c                 |   2 +-
- hw/ppc/ppc440_bamboo.c       |   4 +-
- hw/ppc/ppc4xx_devs.c         |   2 +-
- hw/ppc/ppc_booke.c           |  24 ++--
- hw/ppc/virtex_ml507.c        |   4 +-
- hw/usb/hcd-ohci.c            |  32 ++---
- target-i386/cpu.h            | 334 +++++++++++++++++++++----------------------
- target-mips/cpu.h            |   2 +-
- target-mips/helper.c         |   8 +-
- target-mips/op_helper.c      |   2 +-
- target-mips/translate_init.c |  22 +--
- tests/libqos/pci-pc.c        |  12 +-
- 19 files changed, 245 insertions(+), 243 deletions(-)
-
+diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+index 3d35058b..93f186f 100644
+--- a/hw/usb/hcd-ohci.c
++++ b/hw/usb/hcd-ohci.c
+@@ -234,15 +234,15 @@ struct ohci_iso_td {
+ #define OHCI_STATUS_OCR       (1<<3)
+ #define OHCI_STATUS_SOC       ((1<<6)|(1<<7))
+ 
+-#define OHCI_INTR_SO          (1<<0) /* Scheduling overrun */
+-#define OHCI_INTR_WD          (1<<1) /* HcDoneHead writeback */
+-#define OHCI_INTR_SF          (1<<2) /* Start of frame */
+-#define OHCI_INTR_RD          (1<<3) /* Resume detect */
+-#define OHCI_INTR_UE          (1<<4) /* Unrecoverable error */
+-#define OHCI_INTR_FNO         (1<<5) /* Frame number overflow */
+-#define OHCI_INTR_RHSC        (1<<6) /* Root hub status change */
+-#define OHCI_INTR_OC          (1<<30) /* Ownership change */
+-#define OHCI_INTR_MIE         (1<<31) /* Master Interrupt Enable */
++#define OHCI_INTR_SO          (1U<<0) /* Scheduling overrun */
++#define OHCI_INTR_WD          (1U<<1) /* HcDoneHead writeback */
++#define OHCI_INTR_SF          (1U<<2) /* Start of frame */
++#define OHCI_INTR_RD          (1U<<3) /* Resume detect */
++#define OHCI_INTR_UE          (1U<<4) /* Unrecoverable error */
++#define OHCI_INTR_FNO         (1U<<5) /* Frame number overflow */
++#define OHCI_INTR_RHSC        (1U<<6) /* Root hub status change */
++#define OHCI_INTR_OC          (1U<<30) /* Ownership change */
++#define OHCI_INTR_MIE         (1U<<31) /* Master Interrupt Enable */
+ 
+ #define OHCI_HCCA_SIZE        0x100
+ #define OHCI_HCCA_MASK        0xffffff00
+@@ -253,7 +253,7 @@ struct ohci_iso_td {
+ #define OHCI_FMI_FSMPS        0xffff0000
+ #define OHCI_FMI_FIT          0x80000000
+ 
+-#define OHCI_FR_RT            (1<<31)
++#define OHCI_FR_RT            (1U<<31)
+ 
+ #define OHCI_LS_THRESH        0x628
+ 
+@@ -265,12 +265,12 @@ struct ohci_iso_td {
+ #define OHCI_RHA_NOCP         (1<<12)
+ #define OHCI_RHA_POTPGT_MASK  0xff000000
+ 
+-#define OHCI_RHS_LPS          (1<<0)
+-#define OHCI_RHS_OCI          (1<<1)
+-#define OHCI_RHS_DRWE         (1<<15)
+-#define OHCI_RHS_LPSC         (1<<16)
+-#define OHCI_RHS_OCIC         (1<<17)
+-#define OHCI_RHS_CRWE         (1<<31)
++#define OHCI_RHS_LPS          (1U<<0)
++#define OHCI_RHS_OCI          (1U<<1)
++#define OHCI_RHS_DRWE         (1U<<15)
++#define OHCI_RHS_LPSC         (1U<<16)
++#define OHCI_RHS_OCIC         (1U<<17)
++#define OHCI_RHS_CRWE         (1U<<31)
+ 
+ #define OHCI_PORT_CCS         (1<<0)
+ #define OHCI_PORT_PES         (1<<1)
 -- 
 1.9.0
 
