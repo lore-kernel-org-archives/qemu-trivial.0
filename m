@@ -1,39 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPYob-0006xB-Ao
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 10:46:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33345)
+	id 1WPZyI-0005oJ-R3
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:01:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56001)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WPYoU-0006nE-4P
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 10:46:56 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WPZy6-0005M9-Is
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WPYoN-0005OF-Rw
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 10:46:50 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:54071)
+	(envelope-from <pm215@archaic.org.uk>) id 1WPZy4-0007kS-RF
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:50 -0400
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:46882)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WPYoB-0005JN-Or; Mon, 17 Mar 2014 10:46:31 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id B106E42766;
-	Mon, 17 Mar 2014 18:46:30 +0400 (MSK)
-Message-ID: <53270AC6.4030808@msgid.tls.msk.ru>
-Date: Mon, 17 Mar 2014 18:46:30 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131103 Icedove/17.0.10
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1394992972-23004-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1394992972-23004-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] util: Add 'static' attribute to function
- implementation
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1WPZy0-0007gB-VT; Mon, 17 Mar 2014 12:00:45 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1WPZxx-0004wP-JM; Mon, 17 Mar 2014 16:00:41 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Mon, 17 Mar 2014 16:00:39 +0000
+Message-Id: <1395072041-18911-11-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
+References: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH v2 10/12] hw/intc/slavio_intctl: Avoid
+	shifting left into sign bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,13 +39,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 14:46:56 -0000
+X-List-Received-Date: Mon, 17 Mar 2014 16:00:52 -0000
 
-16.03.2014 22:02, Stefan Weil wrote:
-> The static code analyzer smatch complains because of a missing 'static'
-> attribute:
+Add 'U' suffix to avoid undefined behaviour.
 
-Thanks, applied to -trivial.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/slavio_intctl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-/mjt
+diff --git a/hw/intc/slavio_intctl.c b/hw/intc/slavio_intctl.c
+index 41a1672..b10fb66 100644
+--- a/hw/intc/slavio_intctl.c
++++ b/hw/intc/slavio_intctl.c
+@@ -272,7 +272,7 @@ static void slavio_check_interrupts(SLAVIO_INTCTLState *s, int set_irqs)
+             CPU_IRQ_TIMER_IN;
+         if (i == s->target_cpu) {
+             for (j = 0; j < 32; j++) {
+-                if ((s->intregm_pending & (1 << j)) && intbit_to_level[j]) {
++                if ((s->intregm_pending & (1U << j)) && intbit_to_level[j]) {
+                     s->slaves[i].intreg_pending |= 1 << intbit_to_level[j];
+                 }
+             }
+-- 
+1.9.0
+
 
