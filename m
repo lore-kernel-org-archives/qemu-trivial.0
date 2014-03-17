@@ -1,24 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPZyM-0005vj-6i
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:01:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56067)
+	id 1WPZyN-00060Q-PI
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:01:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56092)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WPZy8-0005RU-Mi
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:53 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WPZy9-0005Ta-Bc
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WPZy7-0007m8-9H
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:52 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WPZy4-0007kN-PL
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:53 -0400
 Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:46882)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WPZxz-0007gB-Et; Mon, 17 Mar 2014 12:00:43 -0400
+	id 1WPZy0-0007gB-42; Mon, 17 Mar 2014 12:00:44 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WPZxx-0004wb-Mo; Mon, 17 Mar 2014 16:00:41 +0000
+	id 1WPZxx-0004wW-LU; Mon, 17 Mar 2014 16:00:41 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 17 Mar 2014 16:00:41 +0000
-Message-Id: <1395072041-18911-13-git-send-email-peter.maydell@linaro.org>
+Date: Mon, 17 Mar 2014 16:00:40 +0000
+Message-Id: <1395072041-18911-12-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
 References: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
@@ -26,7 +26,7 @@ X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2001:8b0:1d0::1
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH v2 12/12] hw/pci-host/apb.c: Avoid shifting
+Subject: [Qemu-trivial] [PATCH v2 11/12] hw/intc/xilinx_intc: Avoid shifting
 	left into sign bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -39,36 +39,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 16:00:54 -0000
+X-List-Received-Date: Mon, 17 Mar 2014 16:00:55 -0000
 
-Add U suffix to avoid undefined behaviour.
+Avoid undefined behaviour shifting left into the sign bit.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/pci-host/apb.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ hw/intc/xilinx_intc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/pci-host/apb.c b/hw/pci-host/apb.c
-index 1b399dd..252caef 100644
---- a/hw/pci-host/apb.c
-+++ b/hw/pci-host/apb.c
-@@ -58,11 +58,11 @@ do { printf("APB: " fmt , ## __VA_ARGS__); } while (0)
- #define PBM_PCI_IMR_MASK    0x7fffffff
- #define PBM_PCI_IMR_ENABLED 0x80000000
+diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
+index 4a10398..1b228ff 100644
+--- a/hw/intc/xilinx_intc.c
++++ b/hw/intc/xilinx_intc.c
+@@ -71,8 +71,9 @@ static void update_irq(struct xlx_pic *p)
  
--#define POR          (1 << 31)
--#define SOFT_POR     (1 << 30)
--#define SOFT_XIR     (1 << 29)
--#define BTN_POR      (1 << 28)
--#define BTN_XIR      (1 << 27)
-+#define POR          (1U << 31)
-+#define SOFT_POR     (1U << 30)
-+#define SOFT_XIR     (1U << 29)
-+#define BTN_POR      (1U << 28)
-+#define BTN_XIR      (1U << 27)
- #define RESET_MASK   0xf8000000
- #define RESET_WCMASK 0x98000000
- #define RESET_WMASK  0x60000000
+     /* Update the vector register.  */
+     for (i = 0; i < 32; i++) {
+-        if (p->regs[R_IPR] & (1 << i))
++        if (p->regs[R_IPR] & (1U << i)) {
+             break;
++        }
+     }
+     if (i == 32)
+         i = ~0;
 -- 
 1.9.0
 
