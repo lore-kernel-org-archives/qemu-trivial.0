@@ -1,37 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPcFu-0000BF-N4
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 14:27:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36917)
+	id 1WPcHF-0002V4-L3
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 14:28:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37378)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1WPcFo-0008QZ-JR
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 14:27:21 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1WPcHA-0002NE-6y
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 14:28:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1WPcFj-0006FR-MJ
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 14:27:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:27768)
+	(envelope-from <peter.maydell@linaro.org>) id 1WPcH5-0006ud-S2
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 14:28:40 -0400
+Received: from mail-la0-f51.google.com ([209.85.215.51]:41724)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1WPcFZ-0006DX-Jd; Mon, 17 Mar 2014 14:27:01 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2HIQvUS005485
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 17 Mar 2014 14:26:58 -0400
-Received: from localhost ([10.3.113.8])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s2HIQurH001963; Mon, 17 Mar 2014 14:26:57 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Mon, 17 Mar 2014 15:26:31 -0300
-Message-Id: <1395080791-18640-1-git-send-email-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	(envelope-from <peter.maydell@linaro.org>) id 1WPcH5-0006tc-KY
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 14:28:35 -0400
+Received: by mail-la0-f51.google.com with SMTP id c6so3590668lan.24
+	for <qemu-trivial@nongnu.org>; Mon, 17 Mar 2014 11:28:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=NjRExmMi1tXHZ6CGp/6c0besk8rTRNmSJd5BrKG6wQQ=;
+	b=aWFG4KJsXNwffw4ixZ+Bb4RZUb71Z7g/B5CDg+g4xJQqFxxtsUdwc9p2rvmGJmQ1Ky
+	l3Z5ZtcGuxXXgDj2HTdHPGndTO3hk987Ta1p1f+2NIDwkmpl51z5ZI2+AifnqbeK0g5+
+	MHadp+EThrrvMIoNL+rJmbTiwGgRISsp6OWhlWIJJjipAg2wbvv3K02p8vaROgbdLr0o
+	aquYSXte7KSdujN6CqzRvOmL+e5rmyLkvBSBXdUcU+FOHb1y7BglwGnzsLG5QJ5Pf1kv
+	E3bKq+g+xOfVoUT3S2qc4KYczdzkN+bi4P4tXkjZ+a5mNU+wLg/MXZfE1lYsGuGujfZN
+	VoTQ==
+X-Gm-Message-State: ALoCoQlQYWlWEYRK0ANAcAnGuUjgnxLMBqI/nIu4V6ZBeVgLcZ61N34KYD3SOkQlKFPzZMoFD2X/
+X-Received: by 10.152.3.72 with SMTP id a8mr2498094laa.33.1395080914463; Mon,
+	17 Mar 2014 11:28:34 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.180.233 with HTTP; Mon, 17 Mar 2014 11:28:14 -0700 (PDT)
+In-Reply-To: <1395080791-18640-1-git-send-email-ehabkost@redhat.com>
+References: <1395080791-18640-1-git-send-email-ehabkost@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 17 Mar 2014 18:28:14 +0000
+Message-ID: <CAFEAcA_m0B1Q-+jPKPtPg9DM9WT4sK2w02PA5f2+2aGkkkj9cA@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.51
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
 	Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH v3] CODING_STYLE: Section about mixed
+Subject: Re: [Qemu-trivial] [PATCH v3] CODING_STYLE: Section about mixed
 	declarations
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -44,40 +57,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 18:27:21 -0000
+X-List-Received-Date: Mon, 17 Mar 2014 18:28:44 -0000
 
-We had an unwritten rule about declarations having to be at beginning of
-blocks. Make it a written rule.
+On 17 March 2014 18:26, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> We had an unwritten rule about declarations having to be at beginning of
+> blocks. Make it a written rule.
+>
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
----
-Changes v3:
- * Wrap long lines
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Changes v2:
- * s/be at beginning/be at the beginning/
----
- CODING_STYLE | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/CODING_STYLE b/CODING_STYLE
-index dcbce28..4280945 100644
---- a/CODING_STYLE
-+++ b/CODING_STYLE
-@@ -84,3 +84,10 @@ and clarity it comes on a line by itself:
- Rationale: a consistent (except for functions...) bracing style reduces
- ambiguity and avoids needless churn when lines are added or removed.
- Furthermore, it is the QEMU coding style.
-+
-+5. Declarations
-+
-+Mixed declarations (interleaving statements and declarations within blocks)
-+are not allowed; declarations should be at the beginning of blocks.  In other
-+words, the code should not generate warnings if using GCC's
-+-Wdeclaration-after-statement option.
--- 
-1.8.5.3
-
+-- PMM
 
