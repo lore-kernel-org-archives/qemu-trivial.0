@@ -1,46 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPUHY-0003JU-3o
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 05:56:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45681)
+	id 1WPWia-0006IN-AN
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 08:32:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50154)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1WPUHR-0003Hr-69
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 05:56:30 -0400
+	(envelope-from <kraxel@redhat.com>) id 1WPWiT-0006HX-14
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 08:32:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1WPUHM-0004jL-AJ
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 05:56:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58934)
+	(envelope-from <kraxel@redhat.com>) id 1WPWiM-0006O8-Tb
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 08:32:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:65104)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1WPUHM-0004jH-2m; Mon, 17 Mar 2014 05:56:20 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2H9uG3H010518
+	(envelope-from <kraxel@redhat.com>)
+	id 1WPWiM-0006Nz-Lx; Mon, 17 Mar 2014 08:32:22 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2HCWCPv027360
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 17 Mar 2014 05:56:17 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-56.ams2.redhat.com
-	[10.36.112.56])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s2H9uBZQ011843; Mon, 17 Mar 2014 05:56:12 -0400
-Message-ID: <5326C6BB.40105@redhat.com>
-Date: Mon, 17 Mar 2014 10:56:11 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
-References: <1394978621-19738-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1394978621-19738-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+	Mon, 17 Mar 2014 08:32:12 -0400
+Received: from [10.36.7.222] (vpn1-7-222.ams2.redhat.com [10.36.7.222])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s2HCW5Oq028210; Mon, 17 Mar 2014 08:32:07 -0400
+Message-ID: <1395059524.5663.5.camel@nilsson.home.kraxel.org>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Date: Mon, 17 Mar 2014 13:32:04 +0100
+In-Reply-To: <alpine.LMD.2.02.1403141856050.15847@jedlik.phy.bme.hu>
+References: <20140227011300.8CD451983B@mono.eik.bme.hu>
+	<alpine.LMD.2.02.1403101939400.485@jedlik.phy.bme.hu>
+	<53232C8C.3070403@msgid.tls.msk.ru>
+	<alpine.LMD.2.02.1403141834500.15847@jedlik.phy.bme.hu>
+	<alpine.LMD.2.02.1403141856050.15847@jedlik.phy.bme.hu>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: Marcelo Tosatti <mtosatti@redhat.com>, qemu-ppc@nongnu.org,
-	qemu-devel@nongnu.org, kvm@vger.kernel.org,
-	=?ISO-8859-15?Q?Andreas_?= =?ISO-8859-15?Q?F=E4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH] target-i386: Add missing 'static' and
-	'const' attributes
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] serial-pci: Set prog
+ interface field of pci config to 16550 compatible
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,18 +51,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 09:56:30 -0000
+X-List-Received-Date: Mon, 17 Mar 2014 12:32:35 -0000
 
-Il 16/03/2014 15:03, Stefan Weil ha scritto:
-> This fixes warnings from the static code analysis (smatch).
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->
-> Why is array para_features in kvm.c terminated by a dummy entry?
-> It is only used in a for loop with upper limit ARRAY_SIZE(para_features) - 1.
 
-No particular reason.
 
-Paolo
+> >> C 07  Communication controller
+> >>        00  Serial controller
+> >>                00  8250
+> >>                01  16450
+> >>                02  16550
+
+> >> What about multi_serial_pci_init() -- should it too set prog-if
+> >> like this?
+> >
+> > I'm not completely sure what the correct value should be for 
+> > multi_serial_pci_init so I've left that alone. There's also 07 02 00 that 
+> > means multiport serial controller that might apply for that case. For the 
+> > simple case I've sent the patch for I had a client expecting this value so I 
+> > think it is correct for that at least but I don't know about the multiport 
+> > case.
+> 
+> Also Gerd Hoffmann said he has picked this patch up so I'm adding him to 
+> cc too.
+
+The multiport variants are simply multiple 16550 chips mapped one after
+the other.  So "02" is better than "00".
+
+I don't know what exactly the multiport serial controller is supposed to
+be.
+
+cheers,
+  Gerd
+
+
 
