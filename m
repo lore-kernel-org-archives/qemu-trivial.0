@@ -1,33 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPZyX-0006NR-JQ
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:01:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56280)
+	id 1WPajc-0001Vz-3z
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Mar 2014 12:49:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42295)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WPZyD-0005e5-Lk
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:58 -0400
+	(envelope-from <rth7680@gmail.com>) id 1WPajS-0001TS-3A
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:49:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WPZy5-0007lT-VJ
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:00:57 -0400
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:46882)
+	(envelope-from <rth7680@gmail.com>) id 1WPajJ-0008Cd-Fh
+	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 12:49:46 -0400
+Received: from mail-pd0-x22f.google.com ([2607:f8b0:400e:c02::22f]:56989)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1WPZy2-0007gB-4Q; Mon, 17 Mar 2014 12:00:46 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1WPZxx-0004vz-DS; Mon, 17 Mar 2014 16:00:41 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Mon, 17 Mar 2014 16:00:37 +0000
-Message-Id: <1395072041-18911-9-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
-References: <1395072041-18911-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <rth7680@gmail.com>)
+	id 1WPajJ-0008BN-95; Mon, 17 Mar 2014 12:49:37 -0400
+Received: by mail-pd0-f175.google.com with SMTP id x10so5762457pdj.6
+	for <multiple recipients>; Mon, 17 Mar 2014 09:49:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=aze7VvBSgp1ivlx+Qht2Vvj/WxIf+Azba4tgBaFqD70=;
+	b=XRXCZjkcj6QYi/Rph9Jy2Wq09Wu06ovKcszw2+G07duuhIRDkW9HkL1mnYCUqSmFjM
+	tGhafi+T3FjsAJfAa1OMuqG33SdtMBRV+pZQUBQIBGwDTe0BvOxxNWCFvqhIxT6YW+P1
+	gcdgxKh1/PxBY4+irUu/5gK/hLLPhsD/X7xIcoQzhzlHk4BpzCkKEK9mzyVmsDx26ovO
+	7c9WK2RVeDQxC7i5Xxw9X1ov8bc+kgM1rASaY8gq4s+jdO8cPbBRI2PMzCusRD9fLzg+
+	GuZDhRue95gFQfReDmu34y33+BKBeaBeBZqGdR2ahqrYjacD2NvbLPKLqHTRnVtCQ6dx
+	fK1w==
+X-Received: by 10.66.252.135 with SMTP id zs7mr27539566pac.13.1395074975600;
+	Mon, 17 Mar 2014 09:49:35 -0700 (PDT)
+Received: from pike.twiddle.home
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by mx.google.com with ESMTPSA id
+	el14sm74257548pac.31.2014.03.17.09.49.33 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Mon, 17 Mar 2014 09:49:34 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Message-ID: <5327279C.9030908@twiddle.net>
+Date: Mon, 17 Mar 2014 09:49:32 -0700
+From: Richard Henderson <rth@twiddle.net>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
+References: <1394992972-23004-1-git-send-email-sw@weilnetz.de>	<5325E841.3080508@twiddle.net>
+	<5325F07C.80004@weilnetz.de>
+In-Reply-To: <5325F07C.80004@weilnetz.de>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH v2 08/12] hw/ppc: Avoid shifting left into
-	sign bit
+X-Received-From: 2607:f8b0:400e:c02::22f
+Cc: qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] util: Add 'static'
+ attribute to function implementation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,137 +62,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 16:00:59 -0000
+X-List-Received-Date: Mon, 17 Mar 2014 16:49:54 -0000
 
-Add U suffix to various places where we were doing "1 << 31",
-which is undefined behaviour, and also to other constant
-definitions in the same groups, for consistency.
+On 03/16/2014 11:42 AM, Stefan Weil wrote:
+> We have a similar situation with other attributes, too. Smatch also
+> complains about missing QEMU_NORETURN in our implementation code (we add
+> it only in header files for global functions). Do you think it would be
+> good to make header and implementation match there, too?
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/ppc/ppc.c           |  2 +-
- hw/ppc/ppc440_bamboo.c |  4 ++--
- hw/ppc/ppc4xx_devs.c   |  2 +-
- hw/ppc/ppc_booke.c     | 24 ++++++++++++------------
- hw/ppc/virtex_ml507.c  |  4 ++--
- 5 files changed, 18 insertions(+), 18 deletions(-)
+Not without changing our CODING_STYLE.
 
-diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
-index 0e82719..9c2a132 100644
---- a/hw/ppc/ppc.c
-+++ b/hw/ppc/ppc.c
-@@ -1002,7 +1002,7 @@ static void cpu_4xx_wdt_cb (void *opaque)
-     case 0x1:
-         timer_mod(ppc40x_timer->wdt_timer, next);
-         ppc40x_timer->wdt_next = next;
--        env->spr[SPR_40x_TSR] |= 1 << 31;
-+        env->spr[SPR_40x_TSR] |= 1U << 31;
-         break;
-     case 0x2:
-         timer_mod(ppc40x_timer->wdt_timer, next);
-diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
-index ec15bab..2ddc2ed 100644
---- a/hw/ppc/ppc440_bamboo.c
-+++ b/hw/ppc/ppc440_bamboo.c
-@@ -128,7 +128,7 @@ static void mmubooke_create_initial_mapping(CPUPPCState *env,
- 
-     tlb->attr = 0;
-     tlb->prot = PAGE_VALID | ((PAGE_READ | PAGE_WRITE | PAGE_EXEC) << 4);
--    tlb->size = 1 << 31; /* up to 0x80000000  */
-+    tlb->size = 1U << 31; /* up to 0x80000000  */
-     tlb->EPN = va & TARGET_PAGE_MASK;
-     tlb->RPN = pa & TARGET_PAGE_MASK;
-     tlb->PID = 0;
-@@ -136,7 +136,7 @@ static void mmubooke_create_initial_mapping(CPUPPCState *env,
-     tlb = &env->tlb.tlbe[1];
-     tlb->attr = 0;
-     tlb->prot = PAGE_VALID | ((PAGE_READ | PAGE_WRITE | PAGE_EXEC) << 4);
--    tlb->size = 1 << 31; /* up to 0xffffffff  */
-+    tlb->size = 1U << 31; /* up to 0xffffffff  */
-     tlb->EPN = 0x80000000 & TARGET_PAGE_MASK;
-     tlb->RPN = 0x80000000 & TARGET_PAGE_MASK;
-     tlb->PID = 0;
-diff --git a/hw/ppc/ppc4xx_devs.c b/hw/ppc/ppc4xx_devs.c
-index 9160ee7..8a43111 100644
---- a/hw/ppc/ppc4xx_devs.c
-+++ b/hw/ppc/ppc4xx_devs.c
-@@ -161,7 +161,7 @@ static void ppcuic_set_irq (void *opaque, int irq_num, int level)
-     uint32_t mask, sr;
- 
-     uic = opaque;
--    mask = 1 << (31-irq_num);
-+    mask = 1U << (31-irq_num);
-     LOG_UIC("%s: irq %d level %d uicsr %08" PRIx32
-                 " mask %08" PRIx32 " => %08" PRIx32 " %08" PRIx32 "\n",
-                 __func__, irq_num, level,
-diff --git a/hw/ppc/ppc_booke.c b/hw/ppc/ppc_booke.c
-index d839960..8b94da6 100644
---- a/hw/ppc/ppc_booke.c
-+++ b/hw/ppc/ppc_booke.c
-@@ -34,15 +34,15 @@
- /* Timer Control Register */
- 
- #define TCR_WP_SHIFT  30        /* Watchdog Timer Period */
--#define TCR_WP_MASK   (0x3 << TCR_WP_SHIFT)
-+#define TCR_WP_MASK   (0x3U << TCR_WP_SHIFT)
- #define TCR_WRC_SHIFT 28        /* Watchdog Timer Reset Control */
--#define TCR_WRC_MASK  (0x3 << TCR_WRC_SHIFT)
--#define TCR_WIE       (1 << 27) /* Watchdog Timer Interrupt Enable */
--#define TCR_DIE       (1 << 26) /* Decrementer Interrupt Enable */
-+#define TCR_WRC_MASK  (0x3U << TCR_WRC_SHIFT)
-+#define TCR_WIE       (1U << 27) /* Watchdog Timer Interrupt Enable */
-+#define TCR_DIE       (1U << 26) /* Decrementer Interrupt Enable */
- #define TCR_FP_SHIFT  24        /* Fixed-Interval Timer Period */
--#define TCR_FP_MASK   (0x3 << TCR_FP_SHIFT)
--#define TCR_FIE       (1 << 23) /* Fixed-Interval Timer Interrupt Enable */
--#define TCR_ARE       (1 << 22) /* Auto-Reload Enable */
-+#define TCR_FP_MASK   (0x3U << TCR_FP_SHIFT)
-+#define TCR_FIE       (1U << 23) /* Fixed-Interval Timer Interrupt Enable */
-+#define TCR_ARE       (1U << 22) /* Auto-Reload Enable */
- 
- /* Timer Control Register (e500 specific fields) */
- 
-@@ -53,12 +53,12 @@
- 
- /* Timer Status Register  */
- 
--#define TSR_FIS       (1 << 26) /* Fixed-Interval Timer Interrupt Status */
--#define TSR_DIS       (1 << 27) /* Decrementer Interrupt Status */
-+#define TSR_FIS       (1U << 26) /* Fixed-Interval Timer Interrupt Status */
-+#define TSR_DIS       (1U << 27) /* Decrementer Interrupt Status */
- #define TSR_WRS_SHIFT 28        /* Watchdog Timer Reset Status */
--#define TSR_WRS_MASK  (0x3 << TSR_WRS_SHIFT)
--#define TSR_WIS       (1 << 30) /* Watchdog Timer Interrupt Status */
--#define TSR_ENW       (1 << 31) /* Enable Next Watchdog Timer */
-+#define TSR_WRS_MASK  (0x3U << TSR_WRS_SHIFT)
-+#define TSR_WIS       (1U << 30) /* Watchdog Timer Interrupt Status */
-+#define TSR_ENW       (1U << 31) /* Enable Next Watchdog Timer */
- 
- typedef struct booke_timer_t booke_timer_t;
- struct booke_timer_t {
-diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-index ce8ea91..3e3569d 100644
---- a/hw/ppc/virtex_ml507.c
-+++ b/hw/ppc/virtex_ml507.c
-@@ -71,7 +71,7 @@ static void mmubooke_create_initial_mapping(CPUPPCState *env,
- 
-     tlb->attr = 0;
-     tlb->prot = PAGE_VALID | ((PAGE_READ | PAGE_WRITE | PAGE_EXEC) << 4);
--    tlb->size = 1 << 31; /* up to 0x80000000  */
-+    tlb->size = 1U << 31; /* up to 0x80000000  */
-     tlb->EPN = va & TARGET_PAGE_MASK;
-     tlb->RPN = pa & TARGET_PAGE_MASK;
-     tlb->PID = 0;
-@@ -79,7 +79,7 @@ static void mmubooke_create_initial_mapping(CPUPPCState *env,
-     tlb = &env->tlb.tlbe[1];
-     tlb->attr = 0;
-     tlb->prot = PAGE_VALID | ((PAGE_READ | PAGE_WRITE | PAGE_EXEC) << 4);
--    tlb->size = 1 << 31; /* up to 0xffffffff  */
-+    tlb->size = 1U << 31; /* up to 0xffffffff  */
-     tlb->EPN = 0x80000000 & TARGET_PAGE_MASK;
-     tlb->RPN = 0x80000000 & TARGET_PAGE_MASK;
-     tlb->PID = 0;
--- 
-1.9.0
+I'm not really fond of
 
+void attributes some_function(arg, arg, arg)
+
+since its quite easy to wind up with too long lines.  It's one of the things I
+really like about the gnu style
+
+void attributes
+some_function(arg, arg, arg)
+
+layout.  (In addition to being an old codger who really liked to be able to do
+"grep ^some_function *.c" to find the implementation.)
+
+
+r~
 
