@@ -1,37 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WPm5x-0003yP-VM
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Mar 2014 00:57:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46568)
+	id 1WPqAZ-0003Pp-62
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Mar 2014 05:18:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33982)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1WPfPZ-0007ju-RU
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 17:49:41 -0400
+	(envelope-from <kwolf@redhat.com>) id 1WPqAQ-0003Eb-OG
+	for qemu-trivial@nongnu.org; Tue, 18 Mar 2014 05:18:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1WPfPS-0000ca-Iu
-	for qemu-trivial@nongnu.org; Mon, 17 Mar 2014 17:49:33 -0400
-Received: from s16892447.onlinehome-server.info ([82.165.15.123]:53804)
+	(envelope-from <kwolf@redhat.com>) id 1WPqAK-00012G-PX
+	for qemu-trivial@nongnu.org; Tue, 18 Mar 2014 05:18:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40538)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1WPfPC-0000Yl-Vp; Mon, 17 Mar 2014 17:49:11 -0400
-Received: from [149.241.50.80] (helo=kentang.lan)
-	by s16892447.onlinehome-server.info with esmtpsa
-	(TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32) (Exim 4.76)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1WPfOu-0000rn-55; Mon, 17 Mar 2014 21:48:52 +0000
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Date: Mon, 17 Mar 2014 21:46:24 +0000
-Message-Id: <1395092786-12641-1-git-send-email-mark.cave-ayland@ilande.co.uk>
-X-Mailer: git-send-email 1.7.10.4
-X-SA-Exim-Connect-IP: 149.241.50.80
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
-X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
+	(envelope-from <kwolf@redhat.com>)
+	id 1WPqA8-0000yb-Hy; Tue, 18 Mar 2014 05:18:20 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2I9IHw9025893
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 18 Mar 2014 05:18:18 -0400
+Received: from noname.str.redhat.com (dhcp-192-197.str.redhat.com
+	[10.33.192.197])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id s2I9IFqS000583; Tue, 18 Mar 2014 05:18:16 -0400
+Date: Tue, 18 Mar 2014 10:18:15 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Maria Kustova <maxa@catit.be>
+Message-ID: <20140318091815.GC4607@noname.str.redhat.com>
+References: <1395122359-28890-1-git-send-email-maria.k@catit.be>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1395122359-28890-1-git-send-email-maria.k@catit.be>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 82.165.15.123
-X-Mailman-Approved-At: Tue, 18 Mar 2014 00:57:45 -0400
-Subject: [Qemu-trivial] [PATCH 0/2] Trivial documentation updates for
-	sun4m/PowerPC
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, stefanha@redhat.com,
+	Maria Kustova <maria.k@catit.be>
+Subject: Re: [Qemu-trivial] [PATCH v2 0/3] Trivial patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,31 +48,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Mar 2014 21:49:41 -0000
+X-List-Received-Date: Tue, 18 Mar 2014 09:18:45 -0000
 
-Hi all,
+Am 18.03.2014 um 06:59 hat Maria Kustova geschrieben:
+> These patches are the part of OPW application.
+> Two of them update help messages of qemu-io utility.
+> And last one replaces fprintf() with error_setg() in curl.c
+> 
+> Changes v1 -> v2:
+>  * Removed trailing "\n" from the error string in error_setg() call
+> 
+> Maria Kustova (3):
+>   qemu-io-cmds: Fixed typo in example for writev.
+>   block: Replaced old error handling with error reporting API.
+>   qemu-io: Extended "--cmd" description in usage text
 
-Here are a couple of minor documentation updates - the first is for sun4m and 
-is primarily concerned with documenting the new CG3 framebuffer whilst touching
-up a couple of minor errors. The second updates the documentation with respect
-to the default PowerPC framebuffer settings which was changed in QEMU 1.7 to
-800x600x32.
+Thanks, applied patches 1 and 3 to the block branch for 2.0, and patch 2
+to block-next for 2.1.
 
-
-ATB,
-
-Mark.
-
-
-Mark Cave-Ayland (2):
-  doc: update sun4m documentation
-  doc: update default PowerPC framebuffer settings
-
- qemu-doc.texi   |   11 ++++++-----
- qemu-options.hx |   10 +++++++++-
- 2 files changed, 15 insertions(+), 6 deletions(-)
-
--- 
-1.7.10.4
-
+Kevin
 
