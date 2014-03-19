@@ -1,42 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WQCvj-00067Q-KV
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Mar 2014 05:36:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45322)
+	id 1WQFt6-0004dN-EX
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Mar 2014 08:46:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32831)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1WQCvb-0005rf-Ej
-	for qemu-trivial@nongnu.org; Wed, 19 Mar 2014 05:36:57 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1WQFsw-0004UA-5c
+	for qemu-trivial@nongnu.org; Wed, 19 Mar 2014 08:46:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1WQCvV-0007wX-MX
-	for qemu-trivial@nongnu.org; Wed, 19 Mar 2014 05:36:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:11280)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1WQFsn-00036l-O5
+	for qemu-trivial@nongnu.org; Wed, 19 Mar 2014 08:46:18 -0400
+Received: from mail-ee0-x235.google.com ([2a00:1450:4013:c00::235]:64886)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1WQCvF-0007rT-NQ; Wed, 19 Mar 2014 05:36:29 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2J9aSAC025038
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 19 Mar 2014 05:36:28 -0400
-Received: from noname.str.redhat.com (dhcp-192-197.str.redhat.com
-	[10.33.192.197])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with SMTP
-	id s2J9aQoR003463; Wed, 19 Mar 2014 05:36:27 -0400
-Date: Wed, 19 Mar 2014 10:36:26 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20140319093626.GC3263@noname.str.redhat.com>
-References: <1395162223-28733-1-git-send-email-pbonzini@redhat.com>
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1WQFsn-00036c-Gg; Wed, 19 Mar 2014 08:46:09 -0400
+Received: by mail-ee0-f53.google.com with SMTP id b57so5857107eek.26
+	for <multiple recipients>; Wed, 19 Mar 2014 05:46:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=B88GHOrOD0b6bg9NtLWjju+/r7AN8iPQTvNsFp6D2mM=;
+	b=ABs9VPnYdY0dIBzJcpUomxpboZSl9HtgQi3w8vPP2gYpZKlA+rcPzDLymuyairfxX2
+	SF7ksjlPA70aJdnV5bmrDq68Ke+XjwGh5wYp8lgNeP5P2t0qtF/m26kGk08wam4mEOHH
+	az7e7n+4fYUSIC/XI+OfH+yqdPW6TeDnSUdtKgwpHu6EMcu3OkeQ1xQPzOn0gWYRXo3Q
+	m89Qo7f/ma2pQTRgI1Vm8+ccCEgYbLWbkRYUYUbtJ6mHgiStoQZpZjD3n+lrYCW2zR0W
+	8Pv7IoNB2K0mquxP8yj/0t6bFSJKIZPvvPack+pi+yaqBTLXctTZV2VL7t4OCbJswWph
+	JNfw==
+X-Received: by 10.15.43.77 with SMTP id w53mr35723591eev.10.1395233168338;
+	Wed, 19 Mar 2014 05:46:08 -0700 (PDT)
+Received: from yakj.usersys.redhat.com
+	(net-37-117-154-249.cust.vodafonedsl.it. [37.117.154.249])
+	by mx.google.com with ESMTPSA id
+	q49sm42198023eem.34.2014.03.19.05.46.05 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Wed, 19 Mar 2014 05:46:06 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <5329918C.8090403@redhat.com>
+Date: Wed, 19 Mar 2014 13:46:04 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1395162223-28733-1-git-send-email-pbonzini@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, armbru@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] scripts: add sample model
- file for Coverity Scan
+To: Markus Armbruster <armbru@redhat.com>
+References: <1395162223-28733-1-git-send-email-pbonzini@redhat.com>	<874n2vcpu9.fsf@blackfin.pond.sub.org>
+	<53294155.8040403@redhat.com>
+	<87d2hi4ktz.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87d2hi4ktz.fsf@blackfin.pond.sub.org>
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4013:c00::235
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] scripts: add sample model file for
+	Coverity Scan
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,52 +64,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Mar 2014 09:36:57 -0000
+X-List-Received-Date: Wed, 19 Mar 2014 12:46:26 -0000
 
-Am 18.03.2014 um 18:03 hat Paolo Bonzini geschrieben:
-> This is the model file that is being used for the QEMU project's scans
-> on scan.coverity.com.  It fixed about 30 false positives (10% of the
-> total) and exposed about 60 new memory leaks.
-> 
-> The file is not automatically used; changes to it must be propagated
-> to the website manually by an admin (right now Markus, Peter and me
-> are admins).
-> 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  scripts/coverity-model.c | 170 +++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 170 insertions(+)
->  create mode 100644 scripts/coverity-model.c
-> 
-> diff --git a/scripts/coverity-model.c b/scripts/coverity-model.c
-> new file mode 100644
-> index 0000000..1cc0c1b
-> --- /dev/null
-> +++ b/scripts/coverity-model.c
-> @@ -0,0 +1,170 @@
-> +/* Coverity Scan model
-> + *
-> + * Copyright (C) 2014 Red Hat, Inc.
-> + *
-> + * Authors:
-> + *  Markus Armbruster <armbru@redhat.com>
-> + *  Paolo Bonzini <pbonzini@redhat.com>
-> + *
-> + * This is a modeling file for Coverity Scan. Modeling helps to avoid false
-> + * positives.
-> + *
-> + * - A model file can't import any header files.  Some built-in primitives are
-> + *   available but not wchar_t, NULL etc.
-> + * - Modeling doesn't need full structs and typedefs. Rudimentary structs
-> + *   and similar types are sufficient.
-> + * - An uninitialized local variable signifies that the variable could be
-> + *   any value.
-> + *
-> + * The model file must be uploaded by an admin in the analysis settings of
-> + * http://scan.coverity.com/projects/378
-> + */
+Il 19/03/2014 10:08, Markus Armbruster ha scritto:
+>> It probably would make static analysis a bit less powerful or will
+>> return more false positives.  The NULL return for realloc (in the
+>> "free" case) already causes some.  So I'm undecided between a more
+>> correct model and a more selective one (with a fat comment).
+>
+> I can't see how lying to the analyzer could make it more powerful :)
+> It can, however, suppress false positives.  Scan and find out how many?
 
-Only copyright notice, but no license?
+Full model (g_malloc returns NULL for 0 argument) => 750 defects
 
-Kevin
+Posted model (g_malloc never returns NULL)        => 702 defects
+		-59 NULL_RETURNS defects
+		 -1 REVERSE_INULL defects
+		+12 TAINTED_SCALAR defects
+
+Reduced model (g_realloc never frees)             => 690 defects
+		-12 NULL_RETURNS defects
+
+Of course, silly me, I threw away the results of the analysis for the 
+full model.  I'll now rerun it and look for false negatives caused by 
+the reduced model.
+
+Paolo
 
