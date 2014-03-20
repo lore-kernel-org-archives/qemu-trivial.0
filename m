@@ -1,39 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WQRYz-0002HU-De
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Mar 2014 21:14:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55365)
+	id 1WQZl0-0002ji-82
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Mar 2014 05:59:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44034)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WQRYs-0002AF-PL
-	for qemu-trivial@nongnu.org; Wed, 19 Mar 2014 21:14:27 -0400
+	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WQZkr-0002Zc-T9
+	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 05:59:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WQRYn-0001mc-Hz
-	for qemu-trivial@nongnu.org; Wed, 19 Mar 2014 21:14:22 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:60533 helo=mx2.suse.de)
+	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WQZkl-0000Me-SW
+	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 05:59:17 -0400
+Received: from jedlik.phy.bme.hu ([152.66.102.83]:48074)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1WQRYS-0001fl-Fc; Wed, 19 Mar 2014 21:13:56 -0400
-Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id EBDEB75013;
-	Thu, 20 Mar 2014 01:13:55 +0000 (UTC)
-Message-ID: <532A40D2.8000404@suse.de>
-Date: Thu, 20 Mar 2014 02:13:54 +0100
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+	(envelope-from <balaton@jedlik.phy.bme.hu>)
+	id 1WQZkZ-0000Hj-My; Thu, 20 Mar 2014 05:58:59 -0400
+Received: by jedlik.phy.bme.hu (Postfix, from userid 501)
+	id 6626F60092; Thu, 20 Mar 2014 10:58:57 +0100 (CET)
+Date: Thu, 20 Mar 2014 10:58:57 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+X-X-Sender: balaton@jedlik.phy.bme.hu
+To: Gerd Hoffmann <kraxel@redhat.com>
+In-Reply-To: <1395059524.5663.5.camel@nilsson.home.kraxel.org>
+Message-ID: <alpine.LMD.2.02.1403201057120.1165@jedlik.phy.bme.hu>
+References: <20140227011300.8CD451983B@mono.eik.bme.hu>
+	<alpine.LMD.2.02.1403101939400.485@jedlik.phy.bme.hu>
+	<53232C8C.3070403@msgid.tls.msk.ru>
+	<alpine.LMD.2.02.1403141834500.15847@jedlik.phy.bme.hu>
+	<alpine.LMD.2.02.1403141856050.15847@jedlik.phy.bme.hu>
+	<1395059524.5663.5.camel@nilsson.home.kraxel.org>
+User-Agent: Alpine 2.02 (LMD 1266 2009-07-14)
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1394977794-18939-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1394977794-18939-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-ppc: Add missing
- 'static' and 'const' attributes
+X-Received-From: 152.66.102.83
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] serial-pci: Set prog
+ interface field of pci config to 16550 compatible
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,25 +46,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Mar 2014 01:14:28 -0000
+X-List-Received-Date: Thu, 20 Mar 2014 09:59:24 -0000
 
-Am 16.03.2014 14:49, schrieb Stefan Weil:
-> This fixes warnings from the static code analysis (smatch).
->=20
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  target-ppc/arch_dump.c  |    6 +++---
->  target-ppc/int_helper.c |    2 +-
->  target-ppc/machine.c    |    4 ++--
->  3 files changed, 6 insertions(+), 6 deletions(-)
+On Mon, 17 Mar 2014, Gerd Hoffmann wrote:
+>>>> C 07  Communication controller
+>>>>        00  Serial controller
+>>>>                00  8250
+>>>>                01  16450
+>>>>                02  16550
+>
+>>>> What about multi_serial_pci_init() -- should it too set prog-if
+>>>> like this?
+>>>
+>>> I'm not completely sure what the correct value should be for
+>>> multi_serial_pci_init so I've left that alone. There's also 07 02 00 that
+>>> means multiport serial controller that might apply for that case. For the
+>>> simple case I've sent the patch for I had a client expecting this value so I
+>>> think it is correct for that at least but I don't know about the multiport
+>>> case.
+>>
+>> Also Gerd Hoffmann said he has picked this patch up so I'm adding him to
+>> cc too.
+>
+> The multiport variants are simply multiple 16550 chips mapped one after
+> the other.  So "02" is better than "00".
+>
+> I don't know what exactly the multiport serial controller is supposed to
+> be.
 
-Thanks, applied to my ppc-next:
-https://github.com/afaerber/qemu-cpu/commits/ppc-next
+So what should we do then? Should I send an updated patch which sets 
+070002 in the multiport case too?
 
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+Regards,
+BALATON Zoltan
 
