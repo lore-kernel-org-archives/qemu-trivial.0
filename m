@@ -1,50 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WQgt7-0006O7-2S
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Mar 2014 13:36:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36732)
+	id 1WQkY1-00050a-Qd
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Mar 2014 17:30:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35154)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1WQgt0-0006DH-8L
-	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 13:36:16 -0400
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WQkXz-0004za-3o
+	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 17:30:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1WQgst-0000Ua-E0
-	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 13:36:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35809)
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WQkXx-0005iH-Mw
+	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 17:30:42 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:59302
+	helo=v2201305906712890.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1WQgst-0000UT-60; Thu, 20 Mar 2014 13:36:03 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2KHZwAN021432
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 20 Mar 2014 13:35:59 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-49.ams2.redhat.com
-	[10.36.112.49])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s2KHZtbh013646; Thu, 20 Mar 2014 13:35:56 -0400
-Message-ID: <532B26FA.80900@redhat.com>
-Date: Thu, 20 Mar 2014 18:35:54 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
-MIME-Version: 1.0
-To: BALATON Zoltan <balaton@eik.bme.hu>
-References: <20140227011300.8CD451983B@mono.eik.bme.hu>
-	<alpine.LMD.2.02.1403101939400.485@jedlik.phy.bme.hu>
-	<532B0C5D.5060905@msgid.tls.msk.ru> <532B0E71.1000009@redhat.com>
-	<alpine.LMD.2.02.1403201659440.1844@jedlik.phy.bme.hu>
-	<532B180F.5080301@redhat.com>
-	<alpine.LMD.2.02.1403201755320.2043@jedlik.phy.bme.hu>
-In-Reply-To: <alpine.LMD.2.02.1403201755320.2043@jedlik.phy.bme.hu>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] serial-pci: Set prog interface field of
- pci config to 16550 compatible
+	(envelope-from <stefan@v2201305906712890.yourvserver.net>)
+	id 1WQkXv-0005hx-2E; Thu, 20 Mar 2014 17:30:39 -0400
+Received: by v2201305906712890.yourvserver.net (Postfix, from userid 1000)
+	id 2C4F817F59C; Thu, 20 Mar 2014 22:30:35 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org
+Date: Thu, 20 Mar 2014 22:30:32 +0100
+Message-Id: <1395351032-11920-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+	qemu-devel@nongnu.org, kvm@vger.kernel.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] target-i386: Remove unused data from local
+	array
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,19 +40,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Mar 2014 17:36:16 -0000
+X-List-Received-Date: Thu, 20 Mar 2014 21:30:44 -0000
 
-Il 20/03/2014 17:58, BALATON Zoltan ha scritto:
->>
->> Classes (or anything guest-visible in fact) must never ever be changed
->> for the same machine type.  It's a rule.
->
-> The class did not change only the prog interface field after it (which
-> is guest visible but I think most guests just ignore it). So then what's
-> the correct way to do it? Do I need to change the patch or can it be
-> merged as it is the next time a new machine type is added?
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
-You can wait for the 2.1 machine type to be added.
+This patch is based on a previous patch for the same file,
+see http://patchwork.ozlabs.org/patch/330708/.
 
-Paolo
+Regards
+Stefan W.
+
+ target-i386/kvm.c |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/target-i386/kvm.c b/target-i386/kvm.c
+index 4389959..d17eea3 100644
+--- a/target-i386/kvm.c
++++ b/target-i386/kvm.c
+@@ -130,14 +130,13 @@ static const struct kvm_para_features {
+     { KVM_CAP_NOP_IO_DELAY, KVM_FEATURE_NOP_IO_DELAY },
+     { KVM_CAP_PV_MMU, KVM_FEATURE_MMU_OP },
+     { KVM_CAP_ASYNC_PF, KVM_FEATURE_ASYNC_PF },
+-    { -1, -1 }
+ };
+ 
+ static int get_para_features(KVMState *s)
+ {
+     int i, features = 0;
+ 
+-    for (i = 0; i < ARRAY_SIZE(para_features) - 1; i++) {
++    for (i = 0; i < ARRAY_SIZE(para_features); i++) {
+         if (kvm_check_extension(s, para_features[i].cap)) {
+             features |= (1 << para_features[i].feature);
+         }
+-- 
+1.7.10.4
+
 
