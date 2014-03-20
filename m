@@ -1,57 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WQfG2-0002aW-JL
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Mar 2014 11:51:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33770)
+	id 1WQfMG-00085T-A0
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Mar 2014 11:58:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35158)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1WQfFv-0002Jq-5L
-	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 11:51:49 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WQfM8-0007sY-TX
+	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 11:58:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1WQfFk-0002IH-Eg
-	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 11:51:42 -0400
-Received: from mail-qc0-x230.google.com ([2607:f8b0:400d:c01::230]:41891)
+	(envelope-from <mjt@tls.msk.ru>) id 1WQfM2-0004O7-Uj
+	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 11:58:08 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48734)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1WQfFk-0002IC-Ao; Thu, 20 Mar 2014 11:51:32 -0400
-Received: by mail-qc0-f176.google.com with SMTP id m20so1204261qcx.7
-	for <multiple recipients>; Thu, 20 Mar 2014 08:51:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=O8n3MjnFO+IPgr84lwTXEvR76JRCyRkghQox8b//SFY=;
-	b=sYS9dXHM9piU3vAaD8IVzUyhWYq4Ulod87NwMMXRMEEOjZShjsgU3eT1su3Cu7Iaa+
-	QC3bnBiZHwqJP03sgyu0WkseuwQ2SmXmCuE7/KhccSkUUZmG6HYq9Fxo4z2BqitD2oUq
-	fOHAJmYmcXzR7iOshyQEPB2zZzRunNA9aQy7Zh2SU7GJ/3DMpd5cS9viILINYlbhfoFG
-	bsmRXtBoclUF5RvAtGcfh92/9Ytnm82/v7QjEPpJmAYrC1fZjbnCxU6sURyNjS3RHTT3
-	WO+lFOKE9vCZxe/l+CLDRdHif+5IYTAvThKyx/3CBVPEGw0DXOvhC5uelOVsKL/jrAXo
-	ntdg==
-X-Received: by 10.140.91.228 with SMTP id z91mr48614325qgd.32.1395330691846;
-	Thu, 20 Mar 2014 08:51:31 -0700 (PDT)
-Received: from yakj.usersys.redhat.com
-	(net-37-117-154-249.cust.vodafonedsl.it. [37.117.154.249])
-	by mx.google.com with ESMTPSA id j91sm3306466qgj.19.2014.03.20.08.51.25
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Thu, 20 Mar 2014 08:51:30 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <532B0E71.1000009@redhat.com>
-Date: Thu, 20 Mar 2014 16:51:13 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WQfLq-00049K-K3; Thu, 20 Mar 2014 11:57:50 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 828B542D09;
+	Thu, 20 Mar 2014 19:57:49 +0400 (MSK)
+Message-ID: <532B0FFD.6020401@msgid.tls.msk.ru>
+Date: Thu, 20 Mar 2014 19:57:49 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, BALATON Zoltan <balaton@eik.bme.hu>
-References: <20140227011300.8CD451983B@mono.eik.bme.hu>	<alpine.LMD.2.02.1403101939400.485@jedlik.phy.bme.hu>
-	<532B0C5D.5060905@msgid.tls.msk.ru>
-In-Reply-To: <532B0C5D.5060905@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <1395092786-12641-1-git-send-email-mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <1395092786-12641-1-git-send-email-mark.cave-ayland@ilande.co.uk>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c01::230
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] serial-pci: Set prog interface field of
- pci config to 16550 compatible
+Subject: Re: [Qemu-trivial] [PATCH 0/2] Trivial documentation updates for
+ sun4m/PowerPC
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,17 +45,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Mar 2014 15:51:49 -0000
+X-List-Received-Date: Thu, 20 Mar 2014 15:58:15 -0000
 
-Il 20/03/2014 16:42, Michael Tokarev ha scritto:
-> 10.03.2014 22:40, BALATON Zoltan wrote:
->> Ping!
->> http://patchwork.ozlabs.org/patch/324674/
->
-> Thanks, applied to -trivial.
+18.03.2014 01:46, Mark Cave-Ayland wrote:
+> Hi all,
+> 
+> Here are a couple of minor documentation updates - the first is for sun4m and 
+> is primarily concerned with documenting the new CG3 framebuffer whilst touching
+> up a couple of minor errors. The second updates the documentation with respect
+> to the default PowerPC framebuffer settings which was changed in QEMU 1.7 to
+> 800x600x32.
 
-No, please don't; this needs to be done for new machine types only.
+Thanks, applied both to -trivial.
 
-Paolo
-
+/mjt
 
