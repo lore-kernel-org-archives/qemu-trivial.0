@@ -1,42 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WQfNR-0002DG-Rs
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Mar 2014 11:59:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35397)
+	id 1WQfPs-0007Gg-PP
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Mar 2014 12:02:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36104)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WQfNK-00025G-7e
-	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 11:59:28 -0400
+	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WQfPm-00074h-Sc
+	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 12:01:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WQfNE-0004l7-7T
-	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 11:59:22 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:33476)
+	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WQfPi-0005jz-13
+	for qemu-trivial@nongnu.org; Thu, 20 Mar 2014 12:01:54 -0400
+Received: from jedlik.phy.bme.hu ([152.66.102.83]:48109)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WQfN1-0004hg-Qf; Thu, 20 Mar 2014 11:59:03 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 18AEC42A21;
-	Thu, 20 Mar 2014 19:59:03 +0400 (MSK)
-Message-ID: <532B1047.3010506@msgid.tls.msk.ru>
-Date: Thu, 20 Mar 2014 19:59:03 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131103 Icedove/17.0.10
+	(envelope-from <balaton@jedlik.phy.bme.hu>)
+	id 1WQfPX-0005iZ-JK; Thu, 20 Mar 2014 12:01:39 -0400
+Received: by jedlik.phy.bme.hu (Postfix, from userid 501)
+	id F1CD560092; Thu, 20 Mar 2014 17:01:36 +0100 (CET)
+Date: Thu, 20 Mar 2014 17:01:36 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+X-X-Sender: balaton@jedlik.phy.bme.hu
+To: Paolo Bonzini <pbonzini@redhat.com>
+In-Reply-To: <532B0E71.1000009@redhat.com>
+Message-ID: <alpine.LMD.2.02.1403201659440.1844@jedlik.phy.bme.hu>
+References: <20140227011300.8CD451983B@mono.eik.bme.hu>
+	<alpine.LMD.2.02.1403101939400.485@jedlik.phy.bme.hu>
+	<532B0C5D.5060905@msgid.tls.msk.ru> <532B0E71.1000009@redhat.com>
+User-Agent: Alpine 2.02 (LMD 1266 2009-07-14)
 MIME-Version: 1.0
-To: Eduardo Habkost <ehabkost@redhat.com>
-References: <1395080791-18640-1-git-send-email-ehabkost@redhat.com>
-In-Reply-To: <1395080791-18640-1-git-send-email-ehabkost@redhat.com>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH v3] CODING_STYLE: Section about mixed
-	declarations
+X-Received-From: 152.66.102.83
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] serial-pci: Set prog interface field of
+ pci config to 16550 compatible
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,13 +43,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Mar 2014 15:59:28 -0000
+X-List-Received-Date: Thu, 20 Mar 2014 16:02:00 -0000
 
-17.03.2014 22:26, Eduardo Habkost wrote:
-> We had an unwritten rule about declarations having to be at beginning of
-> blocks. Make it a written rule.
+On Thu, 20 Mar 2014, Paolo Bonzini wrote:
+> Il 20/03/2014 16:42, Michael Tokarev ha scritto:
+>> 10.03.2014 22:40, BALATON Zoltan wrote:
+>>> Ping!
+>>> http://patchwork.ozlabs.org/patch/324674/
+>> 
+>> Thanks, applied to -trivial.
+>
+> No, please don't; this needs to be done for new machine types only.
 
-Thanks, applied to -trivial.
+Why? I tried running a Windows XP image that was set up before this patch 
+and it did not complain about changed hardware. Or is there another reason 
+I'm missing?
 
-/mjt
+Regards,
+BALATON Zoltan
 
