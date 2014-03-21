@@ -1,48 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WR3nm-0005By-IS
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Mar 2014 14:04:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44511)
+	id 1WR40m-00019Z-Re
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Mar 2014 14:17:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46911)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WR3nj-00057U-Gc
-	for qemu-trivial@nongnu.org; Fri, 21 Mar 2014 14:04:16 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1WR40c-0000nb-Hd
+	for qemu-trivial@nongnu.org; Fri, 21 Mar 2014 14:17:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WR3ni-00082G-Pn
-	for qemu-trivial@nongnu.org; Fri, 21 Mar 2014 14:04:15 -0400
-Received: from mel.v6.act-europe.fr ([2a02:2ab8:224:1::a0a:d2]:40164
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1WR3ne-00081l-Tl; Fri, 21 Mar 2014 14:04:11 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id B520A27088F9;
-	Fri, 21 Mar 2014 19:04:09 +0100 (CET)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vcHtX8VyhJQL; Fri, 21 Mar 2014 19:04:09 +0100 (CET)
-Received: from [10.10.1.115] (lanoue.act-europe.fr [10.10.1.115])
-	(using TLSv1 with cipher ECDHE-RSA-AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id E8D3C27087C9;
-	Fri, 21 Mar 2014 19:04:08 +0100 (CET)
-Message-ID: <532C7F18.1010507@adacore.com>
-Date: Fri, 21 Mar 2014 19:04:08 +0100
-From: Fabien Chouteau <chouteau@adacore.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
-MIME-Version: 1.0
-To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org, 
-	qemu-trivial@nongnu.org
+	(envelope-from <ehabkost@redhat.com>) id 1WR40X-0003Ne-Ly
+	for qemu-trivial@nongnu.org; Fri, 21 Mar 2014 14:17:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59746)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>)
+	id 1WR40N-0003M4-KL; Fri, 21 Mar 2014 14:17:19 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2LIHF91007713
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 21 Mar 2014 14:17:15 -0400
+Received: from localhost ([10.3.113.8])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s2LIHEIR014966; Fri, 21 Mar 2014 14:17:15 -0400
+Date: Fri, 21 Mar 2014 15:17:13 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Fabien Chouteau <chouteau@adacore.com>
+Message-ID: <20140321181713.GE2057@otherpad.lan.raisama.net>
 References: <1395080791-18640-1-git-send-email-ehabkost@redhat.com>
-In-Reply-To: <1395080791-18640-1-git-send-email-ehabkost@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a02:2ab8:224:1::a0a:d2
-Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
-	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>,
-	Paolo Bonzini <pbonzini@redhat.com>
+	<532C7F18.1010507@adacore.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <532C7F18.1010507@adacore.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] CODING_STYLE: Section
-	about mixed declarations
+ about mixed declarations
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,16 +52,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Mar 2014 18:04:16 -0000
+X-List-Received-Date: Fri, 21 Mar 2014 18:17:39 -0000
 
-On 03/17/2014 07:26 PM, Eduardo Habkost wrote:
-> We had an unwritten rule about declarations having to be at beginning of
-> blocks. Make it a written rule.
+On Fri, Mar 21, 2014 at 07:04:08PM +0100, Fabien Chouteau wrote:
+> On 03/17/2014 07:26 PM, Eduardo Habkost wrote:
+> > We had an unwritten rule about declarations having to be at beginning of
+> > blocks. Make it a written rule.
+> > 
 > 
+> Hello Eduardo,
+> 
+> Is it possible to check this rule in script/checkpatch.pl? (or is it already?)
 
-Hello Eduardo,
+checkpatch.pl doesn't check it, currently. It is possible to check it,
+if somebody writes the code to do that.
 
-Is it possible to check this rule in script/checkpatch.pl? (or is it already?)
-
-Regards,
+-- 
+Eduardo
 
