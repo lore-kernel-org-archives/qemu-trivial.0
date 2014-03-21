@@ -1,42 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WQvTj-0005ul-3l
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Mar 2014 05:11:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41644)
+	id 1WQx89-0006bb-GP
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Mar 2014 06:56:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35139)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WQvTa-0005jm-VL
-	for qemu-trivial@nongnu.org; Fri, 21 Mar 2014 05:11:00 -0400
+	(envelope-from <imammedo@redhat.com>) id 1WQx83-0006ZT-S2
+	for qemu-trivial@nongnu.org; Fri, 21 Mar 2014 06:56:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@jedlik.phy.bme.hu>) id 1WQvTU-00041S-MM
-	for qemu-trivial@nongnu.org; Fri, 21 Mar 2014 05:10:54 -0400
-Received: from jedlik.phy.bme.hu ([152.66.102.83]:48231)
+	(envelope-from <imammedo@redhat.com>) id 1WQx7z-0005d3-Om
+	for qemu-trivial@nongnu.org; Fri, 21 Mar 2014 06:56:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:25504)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@jedlik.phy.bme.hu>)
-	id 1WQvTG-0003z9-DS; Fri, 21 Mar 2014 05:10:34 -0400
-Received: by jedlik.phy.bme.hu (Postfix, from userid 501)
-	id 6A8A560092; Fri, 21 Mar 2014 10:10:32 +0100 (CET)
-Date: Fri, 21 Mar 2014 10:10:32 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-X-X-Sender: balaton@jedlik.phy.bme.hu
-To: Gerd Hoffmann <kraxel@redhat.com>
-In-Reply-To: <1395391388.20837.1.camel@nilsson.home.kraxel.org>
-Message-ID: <alpine.LMD.2.02.1403211006430.4992@jedlik.phy.bme.hu>
-References: <20140227011300.8CD451983B@mono.eik.bme.hu>
-	<alpine.LMD.2.02.1403101939400.485@jedlik.phy.bme.hu>
-	<53232C8C.3070403@msgid.tls.msk.ru>
-	<alpine.LMD.2.02.1403141834500.15847@jedlik.phy.bme.hu>
-	<alpine.LMD.2.02.1403141856050.15847@jedlik.phy.bme.hu>
-	<1395059524.5663.5.camel@nilsson.home.kraxel.org>
-	<alpine.LMD.2.02.1403201057120.1165@jedlik.phy.bme.hu>
-	<1395391388.20837.1.camel@nilsson.home.kraxel.org>
-User-Agent: Alpine 2.02 (LMD 1266 2009-07-14)
+	(envelope-from <imammedo@redhat.com>)
+	id 1WQx7z-0005bx-GF; Fri, 21 Mar 2014 06:56:43 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2LAud5f017468
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 21 Mar 2014 06:56:39 -0400
+Received: from nial.usersys.redhat.com (dhcp-1-126.brq.redhat.com
+	[10.34.1.126])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s2LAuafr009841; Fri, 21 Mar 2014 06:56:36 -0400
+Date: Fri, 21 Mar 2014 11:56:34 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20140321115634.2a909acd@nial.usersys.redhat.com>
+In-Reply-To: <532B157A.7000601@msgid.tls.msk.ru>
+References: <1394098765-12727-1-git-send-email-imammedo@redhat.com>
+	<532B157A.7000601@msgid.tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 152.66.102.83
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] serial-pci: Set prog
- interface field of pci config to 16550 compatible
+X-Received-From: 209.132.183.28
+Cc: kwolf@redhat.com, stefanha@redhat.com, qemu-trivial@nongnu.org,
+	coreyb@linux.vnet.ibm.com, qemu-devel@nongnu.org,
+	mreitz@redhat.com, aliguori@amazon.com, pbonzini@redhat.com,
+	lcapitulino@redhat.com, lersek@redhat.com, afaerber@suse.de
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 0/2] convert -m to
+ QemuOpts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,17 +51,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Mar 2014 09:11:01 -0000
+X-List-Received-Date: Fri, 21 Mar 2014 10:56:52 -0000
 
-On Fri, 21 Mar 2014, Gerd Hoffmann wrote:
-> On Do, 2014-03-20 at 10:58 +0100, BALATON Zoltan wrote:
->> So what should we do then? Should I send an updated patch which sets
->> 070002 in the multiport case too?
->
-> Yes, that would be great.
+On Thu, 20 Mar 2014 20:21:14 +0400
+Michael Tokarev <mjt@tls.msk.ru> wrote:
 
-OK, I'll resubmit it after pc-2.1 is added also with the multiport case.
+> 06.03.2014 13:39, Igor Mammedov wrote:
+> > Igor Mammedov (1):
+> >   vl: convert -m to QemuOpts
+> 
+> This patch (2/2) was mime-damaged, I had to edit it manually
+> in order for it to apply.  Please take a look at
+> http://git.corpit.ru/?p=qemu.git;a=shortlog;h=refs/heads/trivial-patches-next
+> to verify it's okay.
+I'm sorry for not providing link to git repo to pull from.
+I can't check because it looks like site is unreachable from my place.
 
-Thank you,
-BALATON Zoltan
+here is git tree with patch rebased on top of today's tree to compare with/pull from:
+https://github.com/imammedo/qemu/commits/qoptify-m.v4
+
+https://github.com/imammedo/qemu/commit/548b68295bf4967b1dd950f6d84a88b782f17f41
+
+Thanks,
+ Igor
+
+> 
+> Applied to -trivial.
+> 
+> Thanks,
+> 
+> /mjt
+> 
+
 
