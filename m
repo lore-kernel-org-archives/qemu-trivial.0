@@ -1,45 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WRiHo-0004WO-Gq
-	for mharc-qemu-trivial@gnu.org; Sun, 23 Mar 2014 09:18:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33234)
+	id 1WRiHp-0004Yq-S4
+	for mharc-qemu-trivial@gnu.org; Sun, 23 Mar 2014 09:18:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33268)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReio-0002KB-7x
-	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:46 -0400
+	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReit-0002Ur-Fh
+	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReif-0003rs-S1
-	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:38 -0400
-Received: from mail-pd0-x233.google.com ([2607:f8b0:400e:c02::233]:40380)
+	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReil-0003u2-30
+	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:43 -0400
+Received: from mail-pd0-x229.google.com ([2607:f8b0:400e:c02::229]:60101)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <prasadjoshi.linux@gmail.com>)
-	id 1WReiJ-0003lJ-MJ; Sun, 23 Mar 2014 05:29:07 -0400
-Received: by mail-pd0-f179.google.com with SMTP id w10so4073293pde.24
-	for <multiple recipients>; Sun, 23 Mar 2014 02:29:06 -0700 (PDT)
+	id 1WReiQ-0003nG-HW; Sun, 23 Mar 2014 05:29:14 -0400
+Received: by mail-pd0-f169.google.com with SMTP id fp1so4133109pdb.28
+	for <multiple recipients>; Sun, 23 Mar 2014 02:29:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=jjp8RxIJeltX8ED0A4n6Ekm3V+M1Vw4CJ+MjOQ3gKXs=;
-	b=K+QNjUqZ4l+pDMgS3UXEug1kwhgjnYsKdhVa1hLo1a62skmUCvxHddBacrYo2HWV2K
-	sAr4ebJ/xIgErKAo4oPBsF7lKZhKTTUv2CGMjjYHRhW50attcHbenQlOOZlecxB+Or6Y
-	QYWKh3UF9q644rU33RcRO5K2j9Lp/DbwPW/HN0G+/sKK01YBF/Hl0wgxa1TgWIARWSKP
-	AH9199R2M4u0+kB/Y736tIoozRZtK0DnhhjqJ4TPf99PD1QG57RryQY+vwLIjMtxPPsL
-	qW4yKPb0jq6ADjVPtFPG78+t8ysMps4arcom0YkbBFgjqx5TZfcdnXAqttbDoz7IBJSV
-	ROog==
-X-Received: by 10.68.239.70 with SMTP id vq6mr614144pbc.152.1395566946683;
-	Sun, 23 Mar 2014 02:29:06 -0700 (PDT)
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=YcKXtF0wqdudBBUyLSYC8RqGc1vhLbEVIoNwDXL8gbM=;
+	b=h7OnCiK2J/zFyA7ymfug+czfy9x1pUBZGfbeSPN5NrcThTWZbMgimJWvU+ddDa9bKX
+	9dIsqpMr0Xv5TWPzDwtbqKdqN6BLy6g2hRG25a1DxKg+MB+9O1ljVgoFIjG32sdFoBD8
+	fbN9o4T543QslHK3bFQcpGlq75OIIf5qQRpS0f4Y/3oEpzSs0hbfh3duz4+3c0zxqPCw
+	Q0pF4Ygm4RZeGV8s/SbhhzqIAg8hdGB9DJwOG8kPKLdsWwL7dl11Mh0qkV6F3aFCoGgI
+	c9z6GEkVEFE9725fPXAmHPSYi+KHWFyadheHch+EjW61MO7C3GtYgOHQTYgAooA+3mNj
+	GviA==
+X-Received: by 10.66.119.172 with SMTP id kv12mr64622761pab.34.1395566953671; 
+	Sun, 23 Mar 2014 02:29:13 -0700 (PDT)
 Received: from prasad-desktop ([117.195.29.155])
-	by mx.google.com with ESMTPSA id
-	dn1sm21085081pbb.54.2014.03.23.02.28.59 for <multiple recipients>
+	by mx.google.com with ESMTPSA id h6sm21075681pbl.75.2014.03.23.02.29.06
+	for <multiple recipients>
 	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 23 Mar 2014 02:29:05 -0700 (PDT)
+	Sun, 23 Mar 2014 02:29:12 -0700 (PDT)
 Received: by prasad-desktop (Postfix, from userid 1000)
-	id 5C8CFA005D0; Sun, 23 Mar 2014 14:58:50 +0530 (IST)
+	id 0177EA00633; Sun, 23 Mar 2014 14:58:50 +0530 (IST)
 From: Prasad Joshi <prasadjoshi.linux@gmail.com>
 To: prasadjoshi.linux@gmail.com
-Date: Sun, 23 Mar 2014 14:58:38 +0530
-Message-Id: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
+Date: Sun, 23 Mar 2014 14:58:43 +0530
+Message-Id: <1395566923-5074-6-git-send-email-prasadjoshi.linux@gmail.com>
 X-Mailer: git-send-email 1.8.1.2
+In-Reply-To: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
+References: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::233
+X-Received-From: 2607:f8b0:400e:c02::229
 X-Mailman-Approved-At: Sun, 23 Mar 2014 09:17:59 -0400
 Cc: peter.maydell@linaro.org, stefanha@redhat.com, v.maffione@gmail.com,
 	aik@ozlabs.ru, jan.kiszka@siemens.com, riku.voipio@iki.fi,
@@ -47,7 +49,8 @@ Cc: peter.maydell@linaro.org, stefanha@redhat.com, v.maffione@gmail.com,
 	av1474@comtv.ru, kraxel@redhat.com, aliguori@amazon.com,
 	pbonzini@redhat.com, g.lettieri@iet.unipi.it, alex@alex.org.uk,
 	rizzo@iet.unipi.it, afaerber@suse.de
-Subject: [Qemu-trivial] [PATCH 1/6] audio: set top level latch for each slot
+Subject: [Qemu-trivial] [PATCH 6/6] net: netmap_poll must update both
+	read/write poll state
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,30 +62,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 23 Mar 2014 09:29:46 -0000
-
-CSMKeyControll function is supposed to set the top level latch for each
-slot. However, at the moment, it incorrectly updates only the first
-slot. Patch fixes the problem.
+X-List-Received-Date: Sun, 23 Mar 2014 09:29:52 -0000
 
 Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
 ---
- hw/audio/fmopl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ net/netmap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
-index 290a224..eb60c12 100644
---- a/hw/audio/fmopl.c
-+++ b/hw/audio/fmopl.c
-@@ -725,7 +725,7 @@ INLINE void CSMKeyControll(OPL_CH *CH)
- 	OPL_KEYOFF(slot2);
- 	/* total level latch */
- 	slot1->TLL = slot1->TL + (CH->ksl_base>>slot1->ksl);
--	slot1->TLL = slot1->TL + (CH->ksl_base>>slot1->ksl);
-+	slot2->TLL = slot2->TL + (CH->ksl_base>>slot2->ksl);
- 	/* key on */
- 	CH->op1_out[0] = CH->op1_out[1] = 0;
- 	OPL_KEYON(slot1);
+diff --git a/net/netmap.c b/net/netmap.c
+index 8213304..0c1772b 100644
+--- a/net/netmap.c
++++ b/net/netmap.c
+@@ -177,8 +177,8 @@ static void netmap_poll(NetClientState *nc, bool enable)
+     NetmapState *s = DO_UPCAST(NetmapState, nc, nc);
+ 
+     if (s->read_poll != enable || s->write_poll != enable) {
+-        s->read_poll = enable;
+-        s->read_poll = enable;
++        s->write_poll = enable;
++        s->read_poll  = enable;
+         netmap_update_fd_handler(s);
+     }
+ }
 -- 
 1.8.1.2
 
