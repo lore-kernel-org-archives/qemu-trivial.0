@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WRiHo-0004Vq-AO
+	id 1WRiHo-0004XG-RF
 	for mharc-qemu-trivial@gnu.org; Sun, 23 Mar 2014 09:18:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33212)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33240)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReik-0002D9-LX
-	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:43 -0400
+	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReio-0002Kq-Nv
+	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReic-0003rT-8Q
-	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:34 -0400
-Received: from mail-pd0-x236.google.com ([2607:f8b0:400e:c02::236]:40378)
+	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReig-0003s1-AY
+	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:38 -0400
+Received: from mail-pb0-x231.google.com ([2607:f8b0:400e:c01::231]:63169)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <prasadjoshi.linux@gmail.com>)
-	id 1WReiG-0003kr-C5; Sun, 23 Mar 2014 05:29:04 -0400
-Received: by mail-pd0-f182.google.com with SMTP id y10so4080793pdj.41
-	for <multiple recipients>; Sun, 23 Mar 2014 02:29:02 -0700 (PDT)
+	id 1WReiL-0003ld-25; Sun, 23 Mar 2014 05:29:09 -0400
+Received: by mail-pb0-f49.google.com with SMTP id jt11so4189294pbb.36
+	for <multiple recipients>; Sun, 23 Mar 2014 02:29:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=Bbx2Y49lkRJ+RP7Vne3mdMi0VXh8WaYHikApcbnFYnc=;
-	b=LrRrxzKIusMJikVeFYLOIPj2not5mK2NRFIjsJ6HSVG/pR1Xb8q8pbd6N56XxTpLO/
-	jgwlPakRxRaTaDsbw9IZb3JhI2mjIXVMHonRg9l6kdZRAlJs4XzJH6a8wKaVfUQmqb82
-	mbeCAVx6Kodz2ZzyJOYvlEUELdG8o+3RDn+Pbe+xKjRlDOB+Dk3s1DUpToKE6xybQcFl
-	ygNAWn90UaD4p32B2Y0tM0E3hW+ql44bV8W0DM3KNsbEW+Mk4XhDuzjZiKkwBGR/1XAq
-	cNphfwnSShgujmmXspI6snezktjm7HvrzuzhIbNds81ogbkXVnNwoW/Uu0X1NNHI7ale
-	qEgw==
-X-Received: by 10.68.244.229 with SMTP id xj5mr66132939pbc.108.1395566942374; 
-	Sun, 23 Mar 2014 02:29:02 -0700 (PDT)
+	bh=IMp8Lw0zsNPInrs+TBmzgboqWZjnz7cUo8wicNpB6Oo=;
+	b=XuNaw+UP8TlFK+h895QDmQ5rVKtbL05sRsNzMJY3mCd/IX9TORcsC3KzqXXHX2yPtm
+	6vCwgpzFP0qpAK0Rq9j25bZ0tT6n10z21JWCOiRaJM2wUwfGms+T3w6iTvKV5WxQ1zDt
+	6JwBKal0gEO+5kziMSt9k0LXvRoAEk3R4MMHZMsGGF90XiaWVfQ//dN25wHschhXZsH4
+	vR+8MpzeR2aL9DzCltZdLN+XQ076zm5saOsQf9fHFK6K4gx/yms8g8c2sMhQtEqxC5bP
+	pnf8ikcF/0dTAFSPGweGb32RlIL802nXP/409UZmvhBLJvoonqcH8BmLen/7ZlkyXtFt
+	rviA==
+X-Received: by 10.68.185.1 with SMTP id ey1mr65147223pbc.33.1395566948112;
+	Sun, 23 Mar 2014 02:29:08 -0700 (PDT)
 Received: from prasad-desktop ([117.195.29.155])
 	by mx.google.com with ESMTPSA id
-	wp3sm21077965pbc.67.2014.03.23.02.28.55 for <multiple recipients>
+	kc9sm21097668pbc.25.2014.03.23.02.28.59 for <multiple recipients>
 	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 23 Mar 2014 02:29:01 -0700 (PDT)
+	Sun, 23 Mar 2014 02:29:05 -0700 (PDT)
 Received: by prasad-desktop (Postfix, from userid 1000)
-	id D71D9A0064B; Sun, 23 Mar 2014 14:58:50 +0530 (IST)
+	id 6871FA0054E; Sun, 23 Mar 2014 14:58:50 +0530 (IST)
 From: Prasad Joshi <prasadjoshi.linux@gmail.com>
 To: prasadjoshi.linux@gmail.com
-Date: Sun, 23 Mar 2014 14:58:42 +0530
-Message-Id: <1395566923-5074-5-git-send-email-prasadjoshi.linux@gmail.com>
+Date: Sun, 23 Mar 2014 14:58:39 +0530
+Message-Id: <1395566923-5074-2-git-send-email-prasadjoshi.linux@gmail.com>
 X-Mailer: git-send-email 1.8.1.2
 In-Reply-To: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
 References: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::236
+X-Received-From: 2607:f8b0:400e:c01::231
 X-Mailman-Approved-At: Sun, 23 Mar 2014 09:17:59 -0400
 Cc: peter.maydell@linaro.org, stefanha@redhat.com, v.maffione@gmail.com,
 	aik@ozlabs.ru, jan.kiszka@siemens.com, riku.voipio@iki.fi,
@@ -49,7 +49,8 @@ Cc: peter.maydell@linaro.org, stefanha@redhat.com, v.maffione@gmail.com,
 	av1474@comtv.ru, kraxel@redhat.com, aliguori@amazon.com,
 	pbonzini@redhat.com, g.lettieri@iet.unipi.it, alex@alex.org.uk,
 	rizzo@iet.unipi.it, afaerber@suse.de
-Subject: [Qemu-trivial] [PATCH 5/6] linux-user: remove duplicate statement
+Subject: [Qemu-trivial] [PATCH 2/6] intc/openpic_kvm: fix MemListener delete
+	regiion callback function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,26 +62,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 23 Mar 2014 09:29:43 -0000
+X-List-Received-Date: Sun, 23 Mar 2014 09:29:47 -0000
 
 Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
 ---
- linux-user/signal.c | 2 --
- 1 file changed, 2 deletions(-)
+ hw/intc/openpic_kvm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index e5fb933..7d6246f 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -4043,8 +4043,6 @@ static void setup_rt_frame(int sig, struct target_sigaction *ka,
-     struct target_rt_sigframe *frame;
-     abi_ulong info_addr, uc_addr;
+diff --git a/hw/intc/openpic_kvm.c b/hw/intc/openpic_kvm.c
+index 87fdb12..afa604d 100644
+--- a/hw/intc/openpic_kvm.c
++++ b/hw/intc/openpic_kvm.c
+@@ -200,7 +200,7 @@ static void kvm_openpic_realize(DeviceState *dev, Error **errp)
+     qdev_init_gpio_in(dev, kvm_openpic_set_irq, OPENPIC_MAX_IRQ);
  
--    frame_addr = get_sigframe(ka, env, sizeof *frame);
--
-     frame_addr = get_sigframe(ka, env, sizeof(*frame));
-     if (!lock_user_struct(VERIFY_WRITE, frame, frame_addr, 0)) {
-         goto give_sigsegv;
+     opp->mem_listener.region_add = kvm_openpic_region_add;
+-    opp->mem_listener.region_add = kvm_openpic_region_del;
++    opp->mem_listener.region_del = kvm_openpic_region_del;
+     memory_listener_register(&opp->mem_listener, &address_space_memory);
+ 
+     /* indicate pic capabilities */
 -- 
 1.8.1.2
 
