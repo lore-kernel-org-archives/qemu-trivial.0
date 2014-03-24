@@ -1,56 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WRiHp-0004Yq-S4
-	for mharc-qemu-trivial@gnu.org; Sun, 23 Mar 2014 09:18:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33268)
+	id 1WRy2M-0004D9-4O
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Mar 2014 02:07:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52529)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReit-0002Ur-Fh
-	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:51 -0400
+	(envelope-from <deepak.mk17@gmail.com>) id 1WRy2B-0003yz-M1
+	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 02:07:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WReil-0003u2-30
-	for qemu-trivial@nongnu.org; Sun, 23 Mar 2014 05:29:43 -0400
-Received: from mail-pd0-x229.google.com ([2607:f8b0:400e:c02::229]:60101)
+	(envelope-from <deepak.mk17@gmail.com>) id 1WRy23-0007hL-87
+	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 02:06:55 -0400
+Received: from mail-pb0-x236.google.com ([2607:f8b0:400e:c01::236]:65250)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>)
-	id 1WReiQ-0003nG-HW; Sun, 23 Mar 2014 05:29:14 -0400
-Received: by mail-pd0-f169.google.com with SMTP id fp1so4133109pdb.28
-	for <multiple recipients>; Sun, 23 Mar 2014 02:29:13 -0700 (PDT)
+	(envelope-from <deepak.mk17@gmail.com>)
+	id 1WRy1l-0007co-3p; Mon, 24 Mar 2014 02:06:29 -0400
+Received: by mail-pb0-f54.google.com with SMTP id ma3so5031654pbc.27
+	for <multiple recipients>; Sun, 23 Mar 2014 23:06:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=YcKXtF0wqdudBBUyLSYC8RqGc1vhLbEVIoNwDXL8gbM=;
-	b=h7OnCiK2J/zFyA7ymfug+czfy9x1pUBZGfbeSPN5NrcThTWZbMgimJWvU+ddDa9bKX
-	9dIsqpMr0Xv5TWPzDwtbqKdqN6BLy6g2hRG25a1DxKg+MB+9O1ljVgoFIjG32sdFoBD8
-	fbN9o4T543QslHK3bFQcpGlq75OIIf5qQRpS0f4Y/3oEpzSs0hbfh3duz4+3c0zxqPCw
-	Q0pF4Ygm4RZeGV8s/SbhhzqIAg8hdGB9DJwOG8kPKLdsWwL7dl11Mh0qkV6F3aFCoGgI
-	c9z6GEkVEFE9725fPXAmHPSYi+KHWFyadheHch+EjW61MO7C3GtYgOHQTYgAooA+3mNj
-	GviA==
-X-Received: by 10.66.119.172 with SMTP id kv12mr64622761pab.34.1395566953671; 
-	Sun, 23 Mar 2014 02:29:13 -0700 (PDT)
-Received: from prasad-desktop ([117.195.29.155])
-	by mx.google.com with ESMTPSA id h6sm21075681pbl.75.2014.03.23.02.29.06
-	for <multiple recipients>
+	h=from:to:cc:subject:date:message-id;
+	bh=bKD67XKLR6NnqS7Qx1xfQEwl6mHa+KJGy7qaYnLc+0I=;
+	b=af09l5Uvg8EDjqJK/Fdg5K+A7UVr09B37JQNr/csdS+4wmg3kFqHuowdcbJR9lm4c9
+	Nubt6R4Nn/irqvCoMGSRpTzB4fH7r6webXy+UbT3x/uG5N4w05unxLuBdCdQH1W2Vc3O
+	JF28Dicu/qNx+FZxGjwbn9VnZNMMG01D3VRfXz8N0BP3bIft2n66DiLKnHYPnY//i3cy
+	0iDdvvIfLEtGbaRj0UTnjl0SivNQOvIvnLOd1Y34gjBgvxhilGG0wH4UnHxkE7XPozGc
+	nb5K6QHaNuC2b5K+w+Hhpig2yEPQrViBphkvBQyGV05FEphXhs6kiQ5HoQAFnTUH+DbG
+	/Qow==
+X-Received: by 10.67.4.169 with SMTP id cf9mr69629312pad.45.1395641187173;
+	Sun, 23 Mar 2014 23:06:27 -0700 (PDT)
+Received: from monroe.comp.nus.edu.sg (nusnet-208-140.dynip.nus.edu.sg.
+	[137.132.208.140]) by mx.google.com with ESMTPSA id
+	yo9sm54283876pab.16.2014.03.23.23.06.24 for <multiple recipients>
 	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 23 Mar 2014 02:29:12 -0700 (PDT)
-Received: by prasad-desktop (Postfix, from userid 1000)
-	id 0177EA00633; Sun, 23 Mar 2014 14:58:50 +0530 (IST)
-From: Prasad Joshi <prasadjoshi.linux@gmail.com>
-To: prasadjoshi.linux@gmail.com
-Date: Sun, 23 Mar 2014 14:58:43 +0530
-Message-Id: <1395566923-5074-6-git-send-email-prasadjoshi.linux@gmail.com>
-X-Mailer: git-send-email 1.8.1.2
-In-Reply-To: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
-References: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
+	Sun, 23 Mar 2014 23:06:25 -0700 (PDT)
+From: Deepak Kathayat <deepak.mk17@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 24 Mar 2014 14:06:15 +0800
+Message-Id: <1395641175-30878-1-git-send-email-deepak.mk17@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::229
-X-Mailman-Approved-At: Sun, 23 Mar 2014 09:17:59 -0400
-Cc: peter.maydell@linaro.org, stefanha@redhat.com, v.maffione@gmail.com,
-	aik@ozlabs.ru, jan.kiszka@siemens.com, riku.voipio@iki.fi,
-	agraf@suse.de, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	av1474@comtv.ru, kraxel@redhat.com, aliguori@amazon.com,
-	pbonzini@redhat.com, g.lettieri@iet.unipi.it, alex@alex.org.uk,
-	rizzo@iet.unipi.it, afaerber@suse.de
-Subject: [Qemu-trivial] [PATCH 6/6] net: netmap_poll must update both
-	read/write poll state
+X-Received-From: 2607:f8b0:400e:c01::236
+Cc: qemu-trivial@nongnu.org, Deepak Kathayat <deepak.mk17@gmail.com>,
+	stefanha@redhat.com
+Subject: [Qemu-trivial] [PATCH] qcow2: Remove FIXME comment, already fixed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,29 +52,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 23 Mar 2014 09:29:52 -0000
+X-List-Received-Date: Mon, 24 Mar 2014 06:07:04 -0000
 
-Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
+
+Signed-off-by: Deepak Kathayat <deepak.mk17@gmail.com>
 ---
- net/netmap.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ block/qcow2.h |    1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/net/netmap.c b/net/netmap.c
-index 8213304..0c1772b 100644
---- a/net/netmap.c
-+++ b/net/netmap.c
-@@ -177,8 +177,8 @@ static void netmap_poll(NetClientState *nc, bool enable)
-     NetmapState *s = DO_UPCAST(NetmapState, nc, nc);
- 
-     if (s->read_poll != enable || s->write_poll != enable) {
--        s->read_poll = enable;
--        s->read_poll = enable;
-+        s->write_poll = enable;
-+        s->read_poll  = enable;
-         netmap_update_fd_handler(s);
-     }
+diff --git a/block/qcow2.h b/block/qcow2.h
+index 0b0eac8..25663d4 100644
+--- a/block/qcow2.h
++++ b/block/qcow2.h
+@@ -413,7 +413,6 @@ static inline uint64_t l2meta_cow_end(QCowL2Meta *m)
+         + (m->cow_end.nb_sectors << BDRV_SECTOR_BITS);
  }
+ 
+-// FIXME Need qcow2_ prefix to global functions
+ 
+ /* qcow2.c functions */
+ int qcow2_backing_read1(BlockDriverState *bs, QEMUIOVector *qiov,
 -- 
-1.8.1.2
+1.7.9.5
 
 
