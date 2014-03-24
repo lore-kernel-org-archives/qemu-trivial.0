@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WS15v-00031a-Kv
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Mar 2014 05:22:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40469)
+	id 1WS1PT-0000Ur-Ep
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Mar 2014 05:43:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36658)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WS15o-0002sH-4A
-	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 05:22:58 -0400
+	(envelope-from <nchip@afflict.kos.to>) id 1WS0sM-0001X7-Eo
+	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 05:09:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WS15i-0002T7-2U
-	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 05:22:52 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:45733 helo=mx2.suse.de)
+	(envelope-from <nchip@afflict.kos.to>) id 1WS0sH-0005sc-Lf
+	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 05:08:58 -0400
+Received: from afflict.kos.to ([92.243.29.197]:56270)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1WS15T-0002Mq-Al; Mon, 24 Mar 2014 05:22:31 -0400
-Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 91599ACD5;
-	Mon, 24 Mar 2014 09:22:28 +0000 (UTC)
-Message-ID: <532FF953.3010702@suse.de>
-Date: Mon, 24 Mar 2014 10:22:27 +0100
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+	(envelope-from <nchip@afflict.kos.to>)
+	id 1WS0gy-0001XD-BY; Mon, 24 Mar 2014 04:57:12 -0400
+Received: by afflict.kos.to (Postfix, from userid 1000)
+	id A8B2A26567; Mon, 24 Mar 2014 09:57:09 +0100 (CET)
+Date: Mon, 24 Mar 2014 10:57:09 +0200
+From: Riku Voipio <riku.voipio@iki.fi>
+To: Prasad Joshi <prasadjoshi.linux@gmail.com>
+Message-ID: <20140324085709.GA31666@afflict.kos.to>
+References: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
+	<1395566923-5074-5-git-send-email-prasadjoshi.linux@gmail.com>
 MIME-Version: 1.0
-To: Deepak Kathayat <deepak.mk17@gmail.com>, qemu-devel@nongnu.org
-References: <1395649817-20742-1-git-send-email-deepak.mk17@gmail.com>
-In-Reply-To: <1395649817-20742-1-git-send-email-deepak.mk17@gmail.com>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1395566923-5074-5-git-send-email-prasadjoshi.linux@gmail.com>
+X-message-flag: Warning: message not sent with a DRM-Certified client
+User-Agent: Mutt/1.5.20 (2009-06-14)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fixed various typos
+X-Received-From: 92.243.29.197
+X-Mailman-Approved-At: Mon, 24 Mar 2014 05:43:10 -0400
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, Jia Liu <proljc@gmail.com>
+Subject: Re: [Qemu-trivial] [PATCH 5/6] linux-user: remove duplicate
+	statement
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,31 +43,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Mar 2014 09:22:58 -0000
+X-List-Received-Date: Mon, 24 Mar 2014 09:09:03 -0000
 
-Hi,
+On Sun, Mar 23, 2014 at 02:58:42PM +0530, Prasad Joshi wrote:
+> Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>a
 
-Am 24.03.2014 09:30, schrieb Deepak Kathayat:
-> Signed-off-by: Deepak Kathayat <deepak.mk17@gmail.com>
+Acked-by: Riku Voipio <riku.voipio@linaro.org>
+
 > ---
->  block/gluster.c  |    2 +-
->  block/qcow.c     |    2 +-
->  block/sheepdog.c |    8 ++++----
->  block/vdi.c      |    2 +-
->  block/vhdx-log.c |    2 +-
->  slirp/tftp.c     |    2 +-
->  6 files changed, 9 insertions(+), 9 deletions(-)
-
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
-
-Note that in general the present tense is preferred, i.e. what is the
-patch doing rather than what did you do to create the patch.
-
-Cheers,
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
-rg
+>  linux-user/signal.c | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/linux-user/signal.c b/linux-user/signal.c
+> index e5fb933..7d6246f 100644
+> --- a/linux-user/signal.c
+> +++ b/linux-user/signal.c
+> @@ -4043,8 +4043,6 @@ static void setup_rt_frame(int sig, struct target_sigaction *ka,
+>      struct target_rt_sigframe *frame;
+>      abi_ulong info_addr, uc_addr;
+>  
+> -    frame_addr = get_sigframe(ka, env, sizeof *frame);
+> -
+>      frame_addr = get_sigframe(ka, env, sizeof(*frame));
+>      if (!lock_user_struct(VERIFY_WRITE, frame, frame_addr, 0)) {
+>          goto give_sigsegv;
+> -- 
+> 1.8.1.2
 
