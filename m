@@ -1,48 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WS74T-0007nn-Ca
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Mar 2014 11:45:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60886)
+	id 1WS74r-0008NO-Om
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Mar 2014 11:46:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32814)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WS74I-0007Yb-QJ
-	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 11:45:51 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1WS74k-0008DS-Ja
+	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 11:46:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WS74A-0005FV-2t
-	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 11:45:42 -0400
-Received: from mail-pb0-x236.google.com ([2607:f8b0:400e:c01::236]:61341)
+	(envelope-from <pbonzini@redhat.com>) id 1WS74e-0005NS-KB
+	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 11:46:10 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54115)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prasadjoshi.linux@gmail.com>)
-	id 1WS73b-0004q1-Sw; Mon, 24 Mar 2014 11:45:00 -0400
-Received: by mail-pb0-f54.google.com with SMTP id ma3so5604560pbc.41
-	for <multiple recipients>; Mon, 24 Mar 2014 08:44:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=zIchtVDvLBqL+PS3pGOTXjDpDBK6oP5SFK3dvOnsd64=;
-	b=K0wfHoZiSUKDWzitxBZUaZdSBtRLFs61V1YJlvCVNmSARMEq7+mf2+KStSRftFMWXp
-	Wjuk0LqPUKViT7o/Hk4rr0It7qaJO43suM+zHDvzd484bBaeUtaZVH+tp1n4GITGMqqd
-	irxeOCaKy1mZhCjwPPEM9BIm/2Q+gCQsZ7H0xWSPkrC56dW2D42JGNVq8LYiu6uZBbvl
-	hHgBIh9rCUhLCx1A8yLl+smpRNcEb24sWogM1MO3zmd5/tN/WsAYysd06bYNcHayeiGB
-	peHxkWfP3Js8dekIUHuiSD4a6J9A0HXTQamTOEut/XA4grO34tjZ5ZWtNLhqYzuplp7u
-	ob2w==
-X-Received: by 10.66.217.133 with SMTP id oy5mr73596314pac.46.1395675897884;
-	Mon, 24 Mar 2014 08:44:57 -0700 (PDT)
-Received: from prasad-desktop ([117.195.10.12])
-	by mx.google.com with ESMTPSA id
-	ps1sm61480770pac.26.2014.03.24.08.44.53 for <multiple recipients>
-	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Mon, 24 Mar 2014 08:44:56 -0700 (PDT)
-Received: by prasad-desktop (Postfix, from userid 1000)
-	id 47065A0042F; Mon, 24 Mar 2014 21:14:48 +0530 (IST)
-From: Prasad Joshi <prasadjoshi.linux@gmail.com>
-To: prasadjoshi.linux@gmail.com
-Date: Mon, 24 Mar 2014 21:14:46 +0530
-Message-Id: <1395675886-3357-1-git-send-email-prasadjoshi.linux@gmail.com>
-X-Mailer: git-send-email 1.8.1.2
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c01::236
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, agraf@suse.de,
-	qemu-ppc@nongnu.org, stefanha@redhat.com, pbonzini@redhat.com
-Subject: [Qemu-trivial] [PATCH] spapr_vscsi: remove duplicate condition check
+	(envelope-from <pbonzini@redhat.com>)
+	id 1WS74S-0005K6-8A; Mon, 24 Mar 2014 11:45:52 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2OFjnFi020720
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 24 Mar 2014 11:45:49 -0400
+Received: from yakj.usersys.redhat.com (ovpn-112-69.ams2.redhat.com
+	[10.36.112.69])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s2OFji8q006623; Mon, 24 Mar 2014 11:45:45 -0400
+Message-ID: <53305328.6070307@redhat.com>
+Date: Mon, 24 Mar 2014 16:45:44 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+MIME-Version: 1.0
+To: Prasad Joshi <prasadjoshi.linux@gmail.com>
+References: <1395675886-3357-1-git-send-email-prasadjoshi.linux@gmail.com>
+In-Reply-To: <1395675886-3357-1-git-send-email-prasadjoshi.linux@gmail.com>
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
+	stefanha@redhat.com, agraf@suse.de
+Subject: Re: [Qemu-trivial] [PATCH] spapr_vscsi: remove duplicate condition
+	check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,27 +51,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Mar 2014 15:45:51 -0000
+X-List-Received-Date: Mon, 24 Mar 2014 15:46:16 -0000
 
-Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
----
- hw/scsi/spapr_vscsi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Il 24/03/2014 16:44, Prasad Joshi ha scritto:
+> Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
+> ---
+>  hw/scsi/spapr_vscsi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
+> index 34478f0..d4ada4f 100644
+> --- a/hw/scsi/spapr_vscsi.c
+> +++ b/hw/scsi/spapr_vscsi.c
+> @@ -690,7 +690,7 @@ static void vscsi_inquiry_no_target(VSCSIState *s, vscsi_req *req)
+>      int rc, len, alen;
+>
+>      /* We dont do EVPD. Also check that page_code is 0 */
+> -    if ((cdb[1] & 0x01) || (cdb[1] & 0x01) || cdb[2] != 0) {
+> +    if ((cdb[1] & 0x01) || cdb[2] != 0) {
+>          /* Send INVALID FIELD IN CDB */
+>          vscsi_makeup_sense(s, req, ILLEGAL_REQUEST, 0x24, 0);
+>          vscsi_send_rsp(s, req, CHECK_CONDITION, 0, 0);
+>
 
-diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
-index 34478f0..d4ada4f 100644
---- a/hw/scsi/spapr_vscsi.c
-+++ b/hw/scsi/spapr_vscsi.c
-@@ -690,7 +690,7 @@ static void vscsi_inquiry_no_target(VSCSIState *s, vscsi_req *req)
-     int rc, len, alen;
- 
-     /* We dont do EVPD. Also check that page_code is 0 */
--    if ((cdb[1] & 0x01) || (cdb[1] & 0x01) || cdb[2] != 0) {
-+    if ((cdb[1] & 0x01) || cdb[2] != 0) {
-         /* Send INVALID FIELD IN CDB */
-         vscsi_makeup_sense(s, req, ILLEGAL_REQUEST, 0x24, 0);
-         vscsi_send_rsp(s, req, CHECK_CONDITION, 0, 0);
--- 
-1.8.1.2
+Not trivial---I have no idea if something else was meant to be checked.
 
+Paolo
 
