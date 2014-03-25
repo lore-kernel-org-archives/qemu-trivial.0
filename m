@@ -1,51 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WSNFO-0007cC-7I
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Mar 2014 05:02:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53684)
+	id 1WSPDb-0000D2-3X
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Mar 2014 07:08:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53400)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1WSNFG-0007DG-Rh
-	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 05:02:12 -0400
+	(envelope-from <kwolf@redhat.com>) id 1WSPDT-0008TU-Cn
+	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 07:08:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1WSNFA-0002K5-Tx
-	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 05:02:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37569)
+	(envelope-from <kwolf@redhat.com>) id 1WSPDN-0001Ja-6W
+	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 07:08:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:1594)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>)
-	id 1WSNEy-0002HV-GN; Tue, 25 Mar 2014 05:01:48 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2P90jMs016950
+	(envelope-from <kwolf@redhat.com>)
+	id 1WSPDA-0001GP-Oj; Tue, 25 Mar 2014 07:08:04 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2PB7uS7025397
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 25 Mar 2014 05:00:48 -0400
-Received: from localhost (ovpn-112-45.ams2.redhat.com [10.36.112.45])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s2P90cr2008397; Tue, 25 Mar 2014 05:00:39 -0400
-Date: Tue, 25 Mar 2014 10:00:38 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20140325090038.GB17172@stefanha-thinkpad.redhat.com>
-References: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
-	<20140324131959.GF4384@stefanha-thinkpad.redhat.com>
-	<CAFEAcA-D+6uHgaChtvmmZ6gXoPsAxY=0L9ho6a2xoryYHC6xsA@mail.gmail.com>
+	Tue, 25 Mar 2014 07:07:56 -0400
+Received: from noname.str.redhat.com (dhcp-192-197.str.redhat.com
+	[10.33.192.197])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id s2PB7q4W005182; Tue, 25 Mar 2014 07:07:53 -0400
+Date: Tue, 25 Mar 2014 12:07:51 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Prasad Joshi <prasadjoshi.linux@gmail.com>
+Message-ID: <20140325110751.GD3795@noname.str.redhat.com>
+References: <1395686334-9498-1-git-send-email-prasadjoshi.linux@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA-D+6uHgaChtvmmZ6gXoPsAxY=0L9ho6a2xoryYHC6xsA@mail.gmail.com>
+In-Reply-To: <1395686334-9498-1-git-send-email-prasadjoshi.linux@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: Alex Bligh <alex@alex.org.uk>, v.maffione@gmail.com,
-	Alexey Kardashevskiy <aik@ozlabs.ru>, "J. Kiszka" <jan.kiszka@siemens.com>,
-	Prasad Joshi <prasadjoshi.linux@gmail.com>,
-	Riku Voipio <riku.voipio@iki.fi>, Alexander Graf <agraf@suse.de>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Vassili Karpov <av1474@comtv.ru>,
-	Gerd Hoffmann <kraxel@redhat.com>, Anthony Liguori <aliguori@amazon.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, g.lettieri@iet.unipi.it,
-	rizzo@iet.unipi.it, Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH 1/6] audio: set top level latch for each
-	slot
+Cc: qemu-trivial@nongnu.org, pl@kamp.de, qemu-devel@nongnu.org,
+	stefanha@redhat.com, pbonzini@redhat.com, eblake@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH for-2.0] qemu-img: mandate argument to
+ 'qemu-img check --repair'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,28 +49,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Mar 2014 09:02:12 -0000
+X-List-Received-Date: Tue, 25 Mar 2014 11:08:29 -0000
 
-On Mon, Mar 24, 2014 at 01:22:56PM +0000, Peter Maydell wrote:
-> On 24 March 2014 13:19, Stefan Hajnoczi <stefanha@redhat.com> wrote:
-> > On Sun, Mar 23, 2014 at 02:58:38PM +0530, Prasad Joshi wrote:
-> >> CSMKeyControll function is supposed to set the top level latch for each
-> >> slot. However, at the moment, it incorrectly updates only the first
-> >> slot. Patch fixes the problem.
-> >>
-> >> Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
-> >> ---
-> >>  hw/audio/fmopl.c | 2 +-
-> >>  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > Peter: This series has some fixes for QEMU 2.0 since they are bug fixes.
+Am 24.03.2014 um 19:38 hat Prasad Joshi geschrieben:
+> qemu-img check --repair option accepts an argument. The argument to
+> --repair switch can either be 'all' or 'leak'. Fix the long option to
+> mandate argument with --repair switch.
 > 
-> I'm currently assuming that bugfixes for 2.0 will appear in
-> the form of pullrequests marked 'for-2.0' from the appropriate
-> submaintainers...
+> The patch fixes following segmentation fault
+> 
+> Core was generated by `qemu-img check -f qcow2 --repair all t.qcow2'.
+> Program terminated with signal 11, Segmentation fault.
+> 0  in img_check (argc=6, argv=0x7fffab9b8a10) at qemu-img.c:588
+> 588	            if (!strcmp(optarg, "leaks")) {
+> (gdb) bt
+>   0  img_check (argc=6, argv=0x7fffab9b8a10) at qemu-img.c:588
+>   1  __libc_start_main () from /lib/x86_64-linux-gnu/libc.so.6
+>   2  _start ()
+> (gdb)
+> 
+> Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
 
-Okay, I'll take the relevant ones for the net subsystem and send a pull
-request.
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
 
-Stefan
+Stefan, this should still go into 2.0.
+
+Kevin
 
