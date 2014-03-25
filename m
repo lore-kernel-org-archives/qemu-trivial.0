@@ -1,35 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WSRay-0007kq-MT
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Mar 2014 09:40:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49548)
+	id 1WSXvl-0002PB-1G
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Mar 2014 16:26:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48117)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhen-hual@hp.com>) id 1WSMxD-0004AX-8z
-	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 04:43:35 -0400
+	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WSXva-0002AU-GV
+	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 16:26:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhen-hual@hp.com>) id 1WSMx4-0004kp-2N
-	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 04:43:27 -0400
-Received: from g2t2354.austin.hp.com ([15.217.128.53]:59331)
+	(envelope-from <prasadjoshi.linux@gmail.com>) id 1WSXvR-0002SA-Sg
+	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 16:26:30 -0400
+Received: from mail-pb0-x236.google.com ([2607:f8b0:400e:c01::236]:65522)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhen-hual@hp.com>)
-	id 1WSMwn-0004bp-IC; Tue, 25 Mar 2014 04:43:01 -0400
-Received: from g2t2360.austin.hp.com (g2t2360.austin.hp.com [16.197.8.247])
-	by g2t2354.austin.hp.com (Postfix) with ESMTP id DAF62131;
-	Tue, 25 Mar 2014 08:42:54 +0000 (UTC)
-Received: from piepie.asiapacific.hpqcorp.net (unknown [16.187.245.69])
-	by g2t2360.austin.hp.com (Postfix) with ESMTP id F07D446;
-	Tue, 25 Mar 2014 08:42:52 +0000 (UTC)
-From: "Li, Zhen-Hua" <zhen-hual@hp.com>
-To: <qemu-trivial@nongnu.org>,
-	<qemu-stable@nongnu.org>
-Date: Tue, 25 Mar 2014 16:42:18 +0800
-Message-Id: <1395736938-13402-1-git-send-email-zhen-hual@hp.com>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 15.217.128.53
-X-Mailman-Approved-At: Tue, 25 Mar 2014 09:40:47 -0400
-Cc: "Li, ZhenHua" <zhen-hual@hp.com>
-Subject: [Qemu-trivial] [PATCH 1/1] virtio-blk: Use a req pool instead of
-	malloc/free
+	(envelope-from <prasadjoshi.linux@gmail.com>)
+	id 1WSXvA-0002N1-IO; Tue, 25 Mar 2014 16:26:04 -0400
+Received: by mail-pb0-f54.google.com with SMTP id ma3so954917pbc.13
+	for <multiple recipients>; Tue, 25 Mar 2014 13:26:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=QeO5D1GvxVbxuYJWW8GC30gaNnWmvnh5pa/Z/BFQB80=;
+	b=bFr0YTEdvetL6lCSaRmvWD6Uw2DJRKw4ThPoFPc2vB77f2h98x1YoI0AX2FmX/NWct
+	tOAh1X62doU2duKX3o5SBeIp8aPVW/MUW6pMc2kLXgN3BUqzY0JhZ8c8XdgCByDJs/2F
+	fugSK+B49CeNr7Bi2BdFrjL1d4+oKu+HLZ/im1IVW1zLW055IdVT0oF34DpHqcS+/uzg
+	UsyiU6OSFOY8ydiFsHymqX8v7RKZUsy+8F4VV5kWWDEMV8sGygrADiFzr2L37I5iw3Vr
+	n050WBNUsBGx5/qHr/BmaeSIHLw/N4sWIVfi2gp7L6NdRBG0GfDJYbPGNhQ5Met7gb8F
+	j4uw==
+X-Received: by 10.69.17.230 with SMTP id gh6mr40328484pbd.0.1395779162951;
+	Tue, 25 Mar 2014 13:26:02 -0700 (PDT)
+Received: from prasad-desktop ([117.195.17.216])
+	by mx.google.com with ESMTPSA id
+	ha11sm48587447pbd.17.2014.03.25.13.25.58 for <multiple recipients>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 25 Mar 2014 13:26:01 -0700 (PDT)
+Received: by prasad-desktop (Postfix, from userid 1000)
+	id 90768A008F3; Wed, 26 Mar 2014 01:55:54 +0530 (IST)
+From: Prasad Joshi <prasadjoshi.linux@gmail.com>
+To: prasadjoshi.linux@gmail.com
+Date: Wed, 26 Mar 2014 01:55:53 +0530
+Message-Id: <1395779153-4536-1-git-send-email-prasadjoshi.linux@gmail.com>
+X-Mailer: git-send-email 1.8.1.2
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c01::236
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, pl@kamp.de,
+	qemu-devel@nongnu.org, stefanha@redhat.com, pbonzini@redhat.com,
+	eblake@redhat.com
+Subject: [Qemu-trivial] [PATCH] qemu-img: Release refernece to
+	BlockDriverState
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,190 +56,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Mar 2014 08:43:35 -0000
+X-List-Received-Date: Tue, 25 Mar 2014 20:26:39 -0000
 
-From: "Li, ZhenHua" <zhen-hual@hp.com>
-
-In virtio-blk module, when there is new request, new req structure
-will be created by malloc.  Use a req pool instead of this, will increase
-performance;
-
-Increacement: about 5% to 10%.
-
-Signed-off-by: Li, ZhenHua <zhen-hual@hp.com>
+Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
 ---
- hw/block/virtio-blk.c |   87 ++++++++++++++++++++++++++++++++++++++++++-------
- 1 file changed, 75 insertions(+), 12 deletions(-)
+ qemu-img.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index 8a568e5..da5b570 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -39,6 +39,70 @@ typedef struct VirtIOBlockReq
-     BlockAcctCookie acct;
- } VirtIOBlockReq;
- 
-+#define POOL_PAGE 512
-+static VirtIOBlockReq * * req_pool;
-+static char * req_pool_used;
-+static unsigned long req_pool_size = 0;
-+
-+static void remalloc_reqs(void){
-+    unsigned long old_size = req_pool_size;
-+    unsigned long int i;
-+    char * old_used = req_pool_used;
-+    VirtIOBlockReq * * old_pool = req_pool;
-+
-+    req_pool_size += POOL_PAGE;
-+    req_pool_used = (char * )malloc(req_pool_size * sizeof(char));
-+    req_pool =  (VirtIOBlockReq * * )malloc(req_pool_size * sizeof(VirtIOBlockReq *));
-+
-+    if(old_size != 0){
-+        memcpy(req_pool_used, old_used, old_size*(sizeof(char)));
-+        memcpy(req_pool, old_pool, old_size*(sizeof(VirtIOBlockReq *)));
-+    }
-+    for(i=old_size; i<req_pool_size; i++){
-+    	req_pool[i] = (VirtIOBlockReq *)malloc(sizeof(VirtIOBlockReq));
-+    	req_pool_used[i] = 0;
-+    }
-+
-+    if(old_size != 0){
-+    	free(old_used);
-+    	free(old_pool);
-+    }
-+}
-+static VirtIOBlockReq * req_pool_get_new(void){
-+    unsigned long int i;
-+    char * used;
-+    VirtIOBlockReq * * req;
-+
-+    if(req_pool_size == 0){
-+        remalloc_reqs();
-+    }
-+    for(i=0, used=req_pool_used, req=req_pool; 
-+            i<req_pool_size; i++, used ++, req++){
-+    	if(*used == 0){
-+            *used = 1;
-+            return *req;
-+        }
-+    }
-+    remalloc_reqs();
-+    req_pool_used[req_pool_size-POOL_PAGE] = 1;
-+    *req = req_pool[req_pool_size-POOL_PAGE];
-+    return *req;
-+}
-+
-+static void virtio_blk_free_request(VirtIOBlockReq *req0){
-+    unsigned long int i;
-+    char * used;
-+    VirtIOBlockReq * * req;
-+
-+    for(i=0, used=req_pool_used, req=req_pool; 
-+            i<req_pool_size; i++, used ++, req++){
-+    	if(*req == req0){
-+            *used = 0;
-+        }
-+    }
-+}
-+
-+
- static void virtio_blk_req_complete(VirtIOBlockReq *req, int status)
- {
-     VirtIOBlock *s = req->dev;
-@@ -63,7 +127,7 @@ static int virtio_blk_handle_rw_error(VirtIOBlockReq *req, int error,
-     } else if (action == BDRV_ACTION_REPORT) {
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_IOERR);
-         bdrv_acct_done(s->bs, &req->acct);
--        g_free(req);
-+        virtio_blk_free_request(req);
-     }
- 
-     bdrv_error_action(s->bs, action, is_read, error);
-@@ -84,7 +148,7 @@ static void virtio_blk_rw_complete(void *opaque, int ret)
- 
-     virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-     bdrv_acct_done(req->dev->bs, &req->acct);
--    g_free(req);
-+    virtio_blk_free_request(req);
- }
- 
- static void virtio_blk_flush_complete(void *opaque, int ret)
-@@ -99,25 +163,24 @@ static void virtio_blk_flush_complete(void *opaque, int ret)
- 
-     virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-     bdrv_acct_done(req->dev->bs, &req->acct);
--    g_free(req);
-+    virtio_blk_free_request(req);
- }
--
- static VirtIOBlockReq *virtio_blk_alloc_request(VirtIOBlock *s)
- {
--    VirtIOBlockReq *req = g_malloc(sizeof(*req));
-+    VirtIOBlockReq *req ;
-+    req = req_pool_get_new();
-     req->dev = s;
-     req->qiov.size = 0;
-     req->next = NULL;
-     return req;
- }
--
- static VirtIOBlockReq *virtio_blk_get_request(VirtIOBlock *s)
- {
-     VirtIOBlockReq *req = virtio_blk_alloc_request(s);
- 
-     if (req != NULL) {
-         if (!virtqueue_pop(s->vq, &req->elem)) {
--            g_free(req);
-+            virtio_blk_free_request(req);
-             return NULL;
+diff --git a/qemu-img.c b/qemu-img.c
+index 2e40cc1..3d110d9 100644
+--- a/qemu-img.c
++++ b/qemu-img.c
+@@ -1809,6 +1809,7 @@ static ImageInfoList *collect_image_info_list(const char *filename,
+         if (err) {
+             error_report("%s", error_get_pretty(err));
+             error_free(err);
++            bdrv_unref(bs);
+             goto err;
          }
-     }
-@@ -142,7 +205,7 @@ static void virtio_blk_handle_scsi(VirtIOBlockReq *req)
-      */
-     if (req->elem.out_num < 2 || req->elem.in_num < 3) {
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_IOERR);
--        g_free(req);
-+        virtio_blk_free_request(req);
-         return;
-     }
- 
-@@ -232,7 +295,7 @@ static void virtio_blk_handle_scsi(VirtIOBlockReq *req)
-     stl_p(&req->scsi->data_len, hdr.dxfer_len);
- 
-     virtio_blk_req_complete(req, status);
--    g_free(req);
-+    virtio_blk_free_request(req);
-     return;
- #else
-     abort();
-@@ -242,7 +305,7 @@ fail:
-     /* Just put anything nonzero so that the ioctl fails in the guest.  */
-     stl_p(&req->scsi->errors, 255);
-     virtio_blk_req_complete(req, status);
--    g_free(req);
-+    virtio_blk_free_request(req);
- }
- 
- typedef struct MultiReqBuffer {
-@@ -375,7 +438,7 @@ static void virtio_blk_handle_request(VirtIOBlockReq *req,
-                 s->blk.serial ? s->blk.serial : "",
-                 MIN(req->elem.in_sg[0].iov_len, VIRTIO_BLK_ID_BYTES));
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
--        g_free(req);
-+        virtio_blk_free_request(req);
-     } else if (type & VIRTIO_BLK_T_OUT) {
-         qemu_iovec_init_external(&req->qiov, &req->elem.out_sg[1],
-                                  req->elem.out_num - 1);
-@@ -387,7 +450,7 @@ static void virtio_blk_handle_request(VirtIOBlockReq *req,
-         virtio_blk_handle_read(req);
-     } else {
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
--        g_free(req);
-+        virtio_blk_free_request(req);
-     }
- }
  
 -- 
-1.7.10.4
+1.8.1.2
 
 
