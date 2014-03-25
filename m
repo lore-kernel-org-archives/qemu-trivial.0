@@ -1,57 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WSEwt-0006IV-38
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Mar 2014 20:10:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48670)
+	id 1WSNFO-0007cC-7I
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Mar 2014 05:02:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53684)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <l@dorileo.org>) id 1WSA5C-0001Ng-OP
-	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 14:58:55 -0400
+	(envelope-from <stefanha@redhat.com>) id 1WSNFG-0007DG-Rh
+	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 05:02:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <l@dorileo.org>) id 1WSA50-00041f-Cx
-	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 14:58:50 -0400
-Received: from mail-oa0-f44.google.com ([209.85.219.44]:65509)
+	(envelope-from <stefanha@redhat.com>) id 1WSNFA-0002K5-Tx
+	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 05:02:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37569)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <l@dorileo.org>) id 1WSA50-00041G-7n
-	for qemu-trivial@nongnu.org; Mon, 24 Mar 2014 14:58:38 -0400
-Received: by mail-oa0-f44.google.com with SMTP id n16so6356146oag.17
-	for <qemu-trivial@nongnu.org>; Mon, 24 Mar 2014 11:58:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent;
-	bh=xyHzywKWrosAtnTooAO0/pmUGo/C5L95uijtDqFtO7Q=;
-	b=Y/Niu1n1hoQ1pf1howr4nTFkUPY0ddWQAAdRt/p7yoUNyGhmNdj2K82Rgd1ssaaV58
-	wZhWFcad5itY3Ca5znkbUVN5tCdxTfI8nCn0mxo0VSy4uPoaZwjbxur3SYqD3PL/1jBB
-	8EFq1aTXyf+yzOLEhzIlABk/zDg88DKFP6EvyApjigK1G9btBwPE2UChbsagig3D3DkY
-	v0nhJTbUrLzpB7K7Tnc8KO50PqQbtYK6YCQLZPTGSXY4lM6mC7pgR7whZFt7UtsLXsDE
-	lfhqLKgGRrTEhfvI7xAQI+jDFVqkgDsUigt20pP12LH3XN76B3nzCqDpwYdeRa4T6YBn
-	1wIw==
-X-Gm-Message-State: ALoCoQmg3I7SLaGtIrJzT6iVPMRa24Tnby6FaIEahjVMYIB8l5OzZv6obkRK0ilImTrjKLrThhJz
-X-Received: by 10.182.126.167 with SMTP id mz7mr2586260obb.69.1395687517371;
-	Mon, 24 Mar 2014 11:58:37 -0700 (PDT)
-Received: from dorilex ([2001:4800:7815:102:1861:4901:ff05:6940])
-	by mx.google.com with ESMTPSA id
-	wy2sm19620057obc.21.2014.03.24.11.58.36 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 24 Mar 2014 11:58:36 -0700 (PDT)
-Date: Mon, 24 Mar 2014 18:57:11 +0000
-From: Leandro Dorileo <l@dorileo.org>
-To: Prasad Joshi <prasadjoshi.linux@gmail.com>
-Message-ID: <20140324185711.GA1563@dorilex>
-References: <1395686334-9498-1-git-send-email-prasadjoshi.linux@gmail.com>
+	(envelope-from <stefanha@redhat.com>)
+	id 1WSNEy-0002HV-GN; Tue, 25 Mar 2014 05:01:48 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2P90jMs016950
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 25 Mar 2014 05:00:48 -0400
+Received: from localhost (ovpn-112-45.ams2.redhat.com [10.36.112.45])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s2P90cr2008397; Tue, 25 Mar 2014 05:00:39 -0400
+Date: Tue, 25 Mar 2014 10:00:38 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20140325090038.GB17172@stefanha-thinkpad.redhat.com>
+References: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
+	<20140324131959.GF4384@stefanha-thinkpad.redhat.com>
+	<CAFEAcA-D+6uHgaChtvmmZ6gXoPsAxY=0L9ho6a2xoryYHC6xsA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1395686334-9498-1-git-send-email-prasadjoshi.linux@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.219.44
-X-Mailman-Approved-At: Mon, 24 Mar 2014 20:10:33 -0400
-Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, pl@kamp.de,
-	qemu-devel@nongnu.org, stefanha@redhat.com, pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-img: mandate argument
- to 'qemu-img check --repair'
+In-Reply-To: <CAFEAcA-D+6uHgaChtvmmZ6gXoPsAxY=0L9ho6a2xoryYHC6xsA@mail.gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Alex Bligh <alex@alex.org.uk>, v.maffione@gmail.com,
+	Alexey Kardashevskiy <aik@ozlabs.ru>, "J. Kiszka" <jan.kiszka@siemens.com>,
+	Prasad Joshi <prasadjoshi.linux@gmail.com>,
+	Riku Voipio <riku.voipio@iki.fi>, Alexander Graf <agraf@suse.de>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Vassili Karpov <av1474@comtv.ru>,
+	Gerd Hoffmann <kraxel@redhat.com>, Anthony Liguori <aliguori@amazon.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, g.lettieri@iet.unipi.it,
+	rizzo@iet.unipi.it, Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [PATCH 1/6] audio: set top level latch for each
+	slot
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,55 +57,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Mar 2014 18:58:56 -0000
+X-List-Received-Date: Tue, 25 Mar 2014 09:02:12 -0000
 
-On Tue, Mar 25, 2014 at 12:08:54AM +0530, Prasad Joshi wrote:
-> qemu-img check --repair option accepts an argument. The argument to
-> --repair switch can either be 'all' or 'leak'. Fix the long option to
-> mandate argument with --repair switch.
+On Mon, Mar 24, 2014 at 01:22:56PM +0000, Peter Maydell wrote:
+> On 24 March 2014 13:19, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+> > On Sun, Mar 23, 2014 at 02:58:38PM +0530, Prasad Joshi wrote:
+> >> CSMKeyControll function is supposed to set the top level latch for each
+> >> slot. However, at the moment, it incorrectly updates only the first
+> >> slot. Patch fixes the problem.
+> >>
+> >> Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
+> >> ---
+> >>  hw/audio/fmopl.c | 2 +-
+> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > Peter: This series has some fixes for QEMU 2.0 since they are bug fixes.
 > 
-> The patch fixes following segmentation fault
-> 
-> Core was generated by `qemu-img check -f qcow2 --repair all t.qcow2'.
-> Program terminated with signal 11, Segmentation fault.
-> 0  in img_check (argc=6, argv=0x7fffab9b8a10) at qemu-img.c:588
-> 588	            if (!strcmp(optarg, "leaks")) {
-> (gdb) bt
->   0  img_check (argc=6, argv=0x7fffab9b8a10) at qemu-img.c:588
->   1  __libc_start_main () from /lib/x86_64-linux-gnu/libc.so.6
->   2  _start ()
-> (gdb)
-> 
-> Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
+> I'm currently assuming that bugfixes for 2.0 will appear in
+> the form of pullrequests marked 'for-2.0' from the appropriate
+> submaintainers...
 
+Okay, I'll take the relevant ones for the net subsystem and send a pull
+request.
 
-Patch looks good to me.
-
-Reviewed-by: Leandro Dorileo <l@dorileo.org>
-
-
-> ---
->  qemu-img.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/qemu-img.c b/qemu-img.c
-> index 2e40cc1..77d946b 100644
-> --- a/qemu-img.c
-> +++ b/qemu-img.c
-> @@ -565,7 +565,7 @@ static int img_check(int argc, char **argv)
->          static const struct option long_options[] = {
->              {"help", no_argument, 0, 'h'},
->              {"format", required_argument, 0, 'f'},
-> -            {"repair", no_argument, 0, 'r'},
-> +            {"repair", required_argument, 0, 'r'},
->              {"output", required_argument, 0, OPTION_OUTPUT},
->              {0, 0, 0, 0}
->          };
-> -- 
-> 1.8.1.2
-> 
-> 
-
--- 
-Leandro Dorileo
+Stefan
 
