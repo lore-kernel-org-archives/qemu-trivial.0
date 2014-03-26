@@ -1,41 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WSl9z-000064-4q
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Mar 2014 06:34:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53856)
+	id 1WSmJG-0001eA-3j
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Mar 2014 07:47:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45629)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhen-hual@hp.com>) id 1WSdGc-0003xO-Uj
-	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 22:08:43 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1WSmJ8-0001T3-P5
+	for qemu-trivial@nongnu.org; Wed, 26 Mar 2014 07:47:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhen-hual@hp.com>) id 1WSdGU-0000yV-ND
-	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 22:08:34 -0400
-Received: from g6t1524.atlanta.hp.com ([15.193.200.67]:18255)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1WSmJ3-0005rH-0F
+	for qemu-trivial@nongnu.org; Wed, 26 Mar 2014 07:47:46 -0400
+Received: from mail-qc0-x22d.google.com ([2607:f8b0:400d:c01::22d]:56960)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhen-hual@hp.com>)
-	id 1WSdFx-0000rB-O9; Tue, 25 Mar 2014 22:07:53 -0400
-Received: from g5t1633.atlanta.hp.com (g5t1633.atlanta.hp.com [16.201.144.132])
-	by g6t1524.atlanta.hp.com (Postfix) with ESMTP id 1E56972;
-	Wed, 26 Mar 2014 02:07:52 +0000 (UTC)
-Received: from [16.187.245.69] (unknown [16.187.245.69])
-	by g5t1633.atlanta.hp.com (Postfix) with ESMTP id 83B1863;
-	Wed, 26 Mar 2014 02:07:50 +0000 (UTC)
-Message-ID: <53323655.7070102@hp.com>
-Date: Wed, 26 Mar 2014 10:07:17 +0800
-From: "Li, ZhenHua" <zhen-hual@hp.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/17.0 Thunderbird/17.0
-MIME-Version: 1.0
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- qemu-stable@nongnu.org
-References: <1395799358-16499-1-git-send-email-zhen-hual@hp.com>
-In-Reply-To: <1395799358-16499-1-git-send-email-zhen-hual@hp.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 15.193.200.67
-X-Mailman-Approved-At: Wed, 26 Mar 2014 06:34:14 -0400
-Cc: "Li, Zhen-Hua" <zhen-hual@hp.com>
-Subject: Re: [Qemu-trivial] [PATCH 1/1] virtio-blk: Use a req pool instead
-	of malloc/free
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1WSmIr-0005fu-H2; Wed, 26 Mar 2014 07:47:29 -0400
+Received: by mail-qc0-f173.google.com with SMTP id r5so2369548qcx.32
+	for <multiple recipients>; Wed, 26 Mar 2014 04:47:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id;
+	bh=j5Jg708fSSXa62FmOJPlvGM8xP/jmfuxr3cFY2e87Rc=;
+	b=Gj6XbOutFS/MeLLyLOdo42U9RkbLD573upmkRK80Q6oozU7TjyWSOe4u08LeXHZNlr
+	2T/22ftjNnBmtPx3Nae0MMALOTyWJwy0El1WXVg9mzp0VQPDvXIxRjXxfm1+heUzmMS0
+	Gd4hWvYI9lrYhk//1UlpL8sVvVF+nhC+eW+GCQv7kgy9tLqfQIEGOtz3rzf80aM3gS+t
+	MfsSJ22Xhkcs6rZYyaf4mGtz6H/6d5N2Aac/xDPuhROVDJHrOBeErYBZHpLSSLr1fvFG
+	I23hYxz0/qxM8yZRbG1kzcIzsotscJlgWBATsb9FqC3PymSAME9YKuNLRE8ZMR17W6wF
+	ljSA==
+X-Received: by 10.224.75.5 with SMTP id w5mr28826765qaj.52.1395834449068;
+	Wed, 26 Mar 2014 04:47:29 -0700 (PDT)
+Received: from yakj.usersys.redhat.com
+	(net-37-117-156-129.cust.vodafonedsl.it. [37.117.156.129])
+	by mx.google.com with ESMTPSA id x5sm38167783qaj.9.2014.03.26.04.47.03
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 26 Mar 2014 04:47:27 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 26 Mar 2014 12:45:49 +0100
+Message-Id: <1395834349-19001-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.8.5.3
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c01::22d
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com, armbru@redhat.com
+Subject: [Qemu-trivial] [PATCH v4] scripts: add sample model file for
+	Coverity Scan
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,193 +54,212 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Mar 2014 02:08:43 -0000
+X-List-Received-Date: Wed, 26 Mar 2014 11:47:52 -0000
 
-I am sorry that seems it was not sent out before I subscribed to the 
-list. So I send this patch again.
+This is the model file that is being used for the QEMU project's scans
+on scan.coverity.com.  It fixed about 30 false positives (10% of the
+total) and exposed about 60 new memory leaks.
 
-On 03/26/2014 10:02 AM, Li, Zhen-Hua wrote:
-> From: "Li, ZhenHua" <zhen-hual@hp.com>
->
-> In virtio-blk module, when there is new request, new req structure
-> will be created by malloc.  Use a req pool instead of this, will increase
-> performance;
->
-> Increacement: about 5% to 10%.
->
-> Signed-off-by: Li, ZhenHua <zhen-hual@hp.com>
-> ---
->   hw/block/virtio-blk.c |   87 ++++++++++++++++++++++++++++++++++++++++++-------
->   1 file changed, 75 insertions(+), 12 deletions(-)
->
-> diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-> index 8a568e5..da5b570 100644
-> --- a/hw/block/virtio-blk.c
-> +++ b/hw/block/virtio-blk.c
-> @@ -39,6 +39,70 @@ typedef struct VirtIOBlockReq
->       BlockAcctCookie acct;
->   } VirtIOBlockReq;
->
-> +#define POOL_PAGE 512
-> +static VirtIOBlockReq * * req_pool;
-> +static char * req_pool_used;
-> +static unsigned long req_pool_size = 0;
-> +
-> +static void remalloc_reqs(void){
-> +    unsigned long old_size = req_pool_size;
-> +    unsigned long int i;
-> +    char * old_used = req_pool_used;
-> +    VirtIOBlockReq * * old_pool = req_pool;
-> +
-> +    req_pool_size += POOL_PAGE;
-> +    req_pool_used = (char * )malloc(req_pool_size * sizeof(char));
-> +    req_pool =  (VirtIOBlockReq * * )malloc(req_pool_size * sizeof(VirtIOBlockReq *));
-> +
-> +    if(old_size != 0){
-> +        memcpy(req_pool_used, old_used, old_size*(sizeof(char)));
-> +        memcpy(req_pool, old_pool, old_size*(sizeof(VirtIOBlockReq *)));
-> +    }
-> +    for(i=old_size; i<req_pool_size; i++){
-> +    	req_pool[i] = (VirtIOBlockReq *)malloc(sizeof(VirtIOBlockReq));
-> +    	req_pool_used[i] = 0;
-> +    }
-> +
-> +    if(old_size != 0){
-> +    	free(old_used);
-> +    	free(old_pool);
-> +    }
-> +}
-> +static VirtIOBlockReq * req_pool_get_new(void){
-> +    unsigned long int i;
-> +    char * used;
-> +    VirtIOBlockReq * * req;
-> +
-> +    if(req_pool_size == 0){
-> +        remalloc_reqs();
-> +    }
-> +    for(i=0, used=req_pool_used, req=req_pool;
-> +            i<req_pool_size; i++, used ++, req++){
-> +    	if(*used == 0){
-> +            *used = 1;
-> +            return *req;
-> +        }
-> +    }
-> +    remalloc_reqs();
-> +    req_pool_used[req_pool_size-POOL_PAGE] = 1;
-> +    *req = req_pool[req_pool_size-POOL_PAGE];
-> +    return *req;
-> +}
-> +
-> +static void virtio_blk_free_request(VirtIOBlockReq *req0){
-> +    unsigned long int i;
-> +    char * used;
-> +    VirtIOBlockReq * * req;
-> +
-> +    for(i=0, used=req_pool_used, req=req_pool;
-> +            i<req_pool_size; i++, used ++, req++){
-> +    	if(*req == req0){
-> +            *used = 0;
-> +        }
-> +    }
-> +}
-> +
-> +
->   static void virtio_blk_req_complete(VirtIOBlockReq *req, int status)
->   {
->       VirtIOBlock *s = req->dev;
-> @@ -63,7 +127,7 @@ static int virtio_blk_handle_rw_error(VirtIOBlockReq *req, int error,
->       } else if (action == BDRV_ACTION_REPORT) {
->           virtio_blk_req_complete(req, VIRTIO_BLK_S_IOERR);
->           bdrv_acct_done(s->bs, &req->acct);
-> -        g_free(req);
-> +        virtio_blk_free_request(req);
->       }
->
->       bdrv_error_action(s->bs, action, is_read, error);
-> @@ -84,7 +148,7 @@ static void virtio_blk_rw_complete(void *opaque, int ret)
->
->       virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
->       bdrv_acct_done(req->dev->bs, &req->acct);
-> -    g_free(req);
-> +    virtio_blk_free_request(req);
->   }
->
->   static void virtio_blk_flush_complete(void *opaque, int ret)
-> @@ -99,25 +163,24 @@ static void virtio_blk_flush_complete(void *opaque, int ret)
->
->       virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
->       bdrv_acct_done(req->dev->bs, &req->acct);
-> -    g_free(req);
-> +    virtio_blk_free_request(req);
->   }
-> -
->   static VirtIOBlockReq *virtio_blk_alloc_request(VirtIOBlock *s)
->   {
-> -    VirtIOBlockReq *req = g_malloc(sizeof(*req));
-> +    VirtIOBlockReq *req ;
-> +    req = req_pool_get_new();
->       req->dev = s;
->       req->qiov.size = 0;
->       req->next = NULL;
->       return req;
->   }
-> -
->   static VirtIOBlockReq *virtio_blk_get_request(VirtIOBlock *s)
->   {
->       VirtIOBlockReq *req = virtio_blk_alloc_request(s);
->
->       if (req != NULL) {
->           if (!virtqueue_pop(s->vq, &req->elem)) {
-> -            g_free(req);
-> +            virtio_blk_free_request(req);
->               return NULL;
->           }
->       }
-> @@ -142,7 +205,7 @@ static void virtio_blk_handle_scsi(VirtIOBlockReq *req)
->        */
->       if (req->elem.out_num < 2 || req->elem.in_num < 3) {
->           virtio_blk_req_complete(req, VIRTIO_BLK_S_IOERR);
-> -        g_free(req);
-> +        virtio_blk_free_request(req);
->           return;
->       }
->
-> @@ -232,7 +295,7 @@ static void virtio_blk_handle_scsi(VirtIOBlockReq *req)
->       stl_p(&req->scsi->data_len, hdr.dxfer_len);
->
->       virtio_blk_req_complete(req, status);
-> -    g_free(req);
-> +    virtio_blk_free_request(req);
->       return;
->   #else
->       abort();
-> @@ -242,7 +305,7 @@ fail:
->       /* Just put anything nonzero so that the ioctl fails in the guest.  */
->       stl_p(&req->scsi->errors, 255);
->       virtio_blk_req_complete(req, status);
-> -    g_free(req);
-> +    virtio_blk_free_request(req);
->   }
->
->   typedef struct MultiReqBuffer {
-> @@ -375,7 +438,7 @@ static void virtio_blk_handle_request(VirtIOBlockReq *req,
->                   s->blk.serial ? s->blk.serial : "",
->                   MIN(req->elem.in_sg[0].iov_len, VIRTIO_BLK_ID_BYTES));
->           virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-> -        g_free(req);
-> +        virtio_blk_free_request(req);
->       } else if (type & VIRTIO_BLK_T_OUT) {
->           qemu_iovec_init_external(&req->qiov, &req->elem.out_sg[1],
->                                    req->elem.out_num - 1);
-> @@ -387,7 +450,7 @@ static void virtio_blk_handle_request(VirtIOBlockReq *req,
->           virtio_blk_handle_read(req);
->       } else {
->           virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
-> -        g_free(req);
-> +        virtio_blk_free_request(req);
->       }
->   }
->
->
+The file is not automatically used; changes to it must be propagated
+to the website manually by an admin (right now Markus, Peter and me
+are admins).
+
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ scripts/coverity-model.c | 183 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 183 insertions(+)
+ create mode 100644 scripts/coverity-model.c
+
+diff --git a/scripts/coverity-model.c b/scripts/coverity-model.c
+new file mode 100644
+index 0000000..4c99a85
+--- /dev/null
++++ b/scripts/coverity-model.c
+@@ -0,0 +1,183 @@
++/* Coverity Scan model
++ *
++ * Copyright (C) 2014 Red Hat, Inc.
++ *
++ * Authors:
++ *  Markus Armbruster <armbru@redhat.com>
++ *  Paolo Bonzini <pbonzini@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or, at your
++ * option, any later version.  See the COPYING file in the top-level directory.
++ */
++
++
++/*
++ * This is the source code for our Coverity user model file.  The
++ * purpose of user models is to increase scanning accuracy by explaining
++ * code Coverity can't see (out of tree libraries) or doesn't
++ * sufficiently understand.  Better accuracy means both fewer false
++ * positives and more true defects.  Memory leaks in particular.
++ *
++ * - A model file can't import any header files.  Some built-in primitives are
++ *   available but not wchar_t, NULL etc.
++ * - Modeling doesn't need full structs and typedefs. Rudimentary structs
++ *   and similar types are sufficient.
++ * - An uninitialized local variable signifies that the variable could be
++ *   any value.
++ *
++ * The model file must be uploaded by an admin in the analysis settings of
++ * http://scan.coverity.com/projects/378
++ */
++
++#define NULL ((void *)0)
++
++typedef unsigned char uint8_t;
++typedef char int8_t;
++typedef unsigned int uint32_t;
++typedef int int32_t;
++typedef long ssize_t;
++typedef unsigned long long uint64_t;
++typedef long long int64_t;
++typedef _Bool bool;
++
++/* exec.c */
++
++typedef struct AddressSpace AddressSpace;
++typedef uint64_t hwaddr;
++
++static void __write(uint8_t *buf, ssize_t len)
++{
++    int first, last;
++    __coverity_negative_sink__(len);
++    if (len == 0) return;
++    buf[0] = first;
++    buf[len-1] = last;
++    __coverity_writeall__(buf);
++}
++
++static void __read(uint8_t *buf, ssize_t len)
++{
++    __coverity_negative_sink__(len);
++    if (len == 0) return;
++    int first = buf[0];
++    int last = buf[len-1];
++}
++
++bool address_space_rw(AddressSpace *as, hwaddr addr, uint8_t *buf,
++                      int len, bool is_write)
++{
++    bool result;
++
++    // TODO: investigate impact of treating reads as producing
++    // tainted data, with __coverity_tainted_data_argument__(buf).
++    if (is_write) __write(buf, len); else __read(buf, len);
++
++    return result;
++}
++
++/* Tainting */
++
++typedef struct {} name2keysym_t;
++static int get_keysym(const name2keysym_t *table,
++                      const char *name)
++{
++    int result;
++    if (result > 0) {
++        __coverity_tainted_string_sanitize_content__(name);
++        return result;
++    } else {
++        return 0;
++    }
++}
++
++/* glib memory allocation functions.
++ *
++ * Note that we ignore the fact that g_malloc of 0 bytes returns NULL,
++ * and g_realloc of 0 bytes frees the pointer.
++ *
++ * Modeling this would result in Coverity flagging a lot of memory
++ * allocations as potentially returning NULL, and asking us to check
++ * whether the result of the allocation is NULL or not.  However, the
++ * resulting pointer should never be dereferenced anyway, and in fact
++ * it is not in the vast majority of cases.
++ *
++ * If a dereference did happen, this would suppress a defect report
++ * for an actual null pointer dereference.  But it's too unlikely to
++ * be worth wading through the false positives, and with some luck
++ * we'll get a buffer overflow reported anyway.
++ */
++
++void *malloc(size_t);
++void *calloc(size_t, size_t);
++void *realloc(void *, size_t);
++void free(void *);
++
++void *
++g_malloc(size_t n_bytes)
++{
++    void *mem;
++    __coverity_negative_sink__(n_bytes);
++    mem = malloc(n_bytes == 0 ? 1 : n_bytes);
++    if (!mem) __coverity_panic__();
++    return mem;
++}
++
++void *
++g_malloc0(size_t n_bytes)
++{
++    void *mem;
++    __coverity_negative_sink__(n_bytes);
++    mem = calloc(1, n_bytes == 0 ? 1 : n_bytes);
++    if (!mem) __coverity_panic__();
++    return mem;
++}
++
++void g_free(void *mem)
++{
++    free(mem);
++}
++
++void *g_realloc(void * mem, size_t n_bytes)
++{
++    __coverity_negative_sink__(n_bytes);
++    mem = realloc(mem, n_bytes == 0 ? 1 : n_bytes);
++    if (!mem) __coverity_panic__();
++    return mem;
++}
++
++void *g_try_malloc(size_t n_bytes)
++{
++    __coverity_negative_sink__(n_bytes);
++    return malloc(n_bytes == 0 ? 1 : n_bytes);
++}
++
++void *g_try_malloc0(size_t n_bytes)
++{
++    __coverity_negative_sink__(n_bytes);
++    return calloc(1, n_bytes == 0 ? 1 : n_bytes);
++}
++
++void *g_try_realloc(void *mem, size_t n_bytes)
++{
++    __coverity_negative_sink__(n_bytes);
++    return realloc(mem, n_bytes == 0 ? 1 : n_bytes);
++}
++
++/* Other glib functions */
++
++typedef struct _GIOChannel GIOChannel;
++GIOChannel *g_io_channel_unix_new(int fd)
++{
++    GIOChannel *c = g_malloc0(sizeof(GIOChannel));
++    __coverity_escape__(fd);
++    return c;
++}
++
++void g_assertion_message_expr(const char     *domain,
++                              const char     *file,
++                              int             line,
++                              const char     *func,
++                              const char     *expr)
++{
++    __coverity_panic__();
++}
+-- 
+1.8.5.3
 
 
