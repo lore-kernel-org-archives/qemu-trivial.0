@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WSmJG-0001eA-3j
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Mar 2014 07:47:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45629)
+	id 1WSptx-0004Iy-Jl
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Mar 2014 11:38:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44410)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1WSmJ8-0001T3-P5
-	for qemu-trivial@nongnu.org; Wed, 26 Mar 2014 07:47:52 -0400
+	(envelope-from <armbru@redhat.com>) id 1WSptp-00046A-LW
+	for qemu-trivial@nongnu.org; Wed, 26 Mar 2014 11:37:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1WSmJ3-0005rH-0F
-	for qemu-trivial@nongnu.org; Wed, 26 Mar 2014 07:47:46 -0400
-Received: from mail-qc0-x22d.google.com ([2607:f8b0:400d:c01::22d]:56960)
+	(envelope-from <armbru@redhat.com>) id 1WSptj-0008J6-I7
+	for qemu-trivial@nongnu.org; Wed, 26 Mar 2014 11:37:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:24783)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1WSmIr-0005fu-H2; Wed, 26 Mar 2014 07:47:29 -0400
-Received: by mail-qc0-f173.google.com with SMTP id r5so2369548qcx.32
-	for <multiple recipients>; Wed, 26 Mar 2014 04:47:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=j5Jg708fSSXa62FmOJPlvGM8xP/jmfuxr3cFY2e87Rc=;
-	b=Gj6XbOutFS/MeLLyLOdo42U9RkbLD573upmkRK80Q6oozU7TjyWSOe4u08LeXHZNlr
-	2T/22ftjNnBmtPx3Nae0MMALOTyWJwy0El1WXVg9mzp0VQPDvXIxRjXxfm1+heUzmMS0
-	Gd4hWvYI9lrYhk//1UlpL8sVvVF+nhC+eW+GCQv7kgy9tLqfQIEGOtz3rzf80aM3gS+t
-	MfsSJ22Xhkcs6rZYyaf4mGtz6H/6d5N2Aac/xDPuhROVDJHrOBeErYBZHpLSSLr1fvFG
-	I23hYxz0/qxM8yZRbG1kzcIzsotscJlgWBATsb9FqC3PymSAME9YKuNLRE8ZMR17W6wF
-	ljSA==
-X-Received: by 10.224.75.5 with SMTP id w5mr28826765qaj.52.1395834449068;
-	Wed, 26 Mar 2014 04:47:29 -0700 (PDT)
-Received: from yakj.usersys.redhat.com
-	(net-37-117-156-129.cust.vodafonedsl.it. [37.117.156.129])
-	by mx.google.com with ESMTPSA id x5sm38167783qaj.9.2014.03.26.04.47.03
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 26 Mar 2014 04:47:27 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 26 Mar 2014 12:45:49 +0100
-Message-Id: <1395834349-19001-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.8.5.3
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c01::22d
-Cc: qemu-trivial@nongnu.org, eblake@redhat.com, armbru@redhat.com
-Subject: [Qemu-trivial] [PATCH v4] scripts: add sample model file for
-	Coverity Scan
+	(envelope-from <armbru@redhat.com>)
+	id 1WSptV-0007ve-FY; Wed, 26 Mar 2014 11:37:33 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2QFbWYH029218
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 26 Mar 2014 11:37:32 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-44.ams2.redhat.com
+	[10.36.116.44])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s2QFbULY025180
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 26 Mar 2014 11:37:31 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 9F4E1200D1; Wed, 26 Mar 2014 16:37:29 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <1395247965-13889-1-git-send-email-pbonzini@redhat.com>
+	<5329D4B7.4090602@redhat.com> <5329F406.7040606@redhat.com>
+	<874n2tgw9h.fsf@blackfin.pond.sub.org> <532AE69E.4070502@redhat.com>
+Date: Wed, 26 Mar 2014 16:37:29 +0100
+In-Reply-To: <532AE69E.4070502@redhat.com> (Paolo Bonzini's message of "Thu,
+	20 Mar 2014 14:01:18 +0100")
+Message-ID: <87a9cd3r9i.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] scripts: add sample
+	model file for Coverity Scan
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,212 +54,131 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Mar 2014 11:47:52 -0000
+X-List-Received-Date: Wed, 26 Mar 2014 15:37:59 -0000
 
-This is the model file that is being used for the QEMU project's scans
-on scan.coverity.com.  It fixed about 30 false positives (10% of the
-total) and exposed about 60 new memory leaks.
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-The file is not automatically used; changes to it must be propagated
-to the website manually by an admin (right now Markus, Peter and me
-are admins).
+> Il 20/03/2014 08:32, Markus Armbruster ha scritto:
+>>>>> +static void __write(uint8_t *buf, int len)
+>>>>
+>>>> Will the fact that you used 'int len' instead of 'size_t' bite us on 32-
+>>>> vs. 64-bit?  Same for __read.
+>>>
+>>> Yeah, I copied this from address_space_rw.  I'll change to ssize_t to
+>>> catch negative values.
+>>
+>> Change the real address_space_rw(), or the model's __write()?
+>
+> __read and __write for now (hard freeze etc. etc.).
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- scripts/coverity-model.c | 183 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 183 insertions(+)
- create mode 100644 scripts/coverity-model.c
+Okay.  But let's use size_t instead of ssize_t.  You can catch negative
+values with __coverity_negative_sink__() all the same.
 
-diff --git a/scripts/coverity-model.c b/scripts/coverity-model.c
-new file mode 100644
-index 0000000..4c99a85
---- /dev/null
-+++ b/scripts/coverity-model.c
-@@ -0,0 +1,183 @@
-+/* Coverity Scan model
-+ *
-+ * Copyright (C) 2014 Red Hat, Inc.
-+ *
-+ * Authors:
-+ *  Markus Armbruster <armbru@redhat.com>
-+ *  Paolo Bonzini <pbonzini@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or, at your
-+ * option, any later version.  See the COPYING file in the top-level directory.
-+ */
-+
-+
-+/*
-+ * This is the source code for our Coverity user model file.  The
-+ * purpose of user models is to increase scanning accuracy by explaining
-+ * code Coverity can't see (out of tree libraries) or doesn't
-+ * sufficiently understand.  Better accuracy means both fewer false
-+ * positives and more true defects.  Memory leaks in particular.
-+ *
-+ * - A model file can't import any header files.  Some built-in primitives are
-+ *   available but not wchar_t, NULL etc.
-+ * - Modeling doesn't need full structs and typedefs. Rudimentary structs
-+ *   and similar types are sufficient.
-+ * - An uninitialized local variable signifies that the variable could be
-+ *   any value.
-+ *
-+ * The model file must be uploaded by an admin in the analysis settings of
-+ * http://scan.coverity.com/projects/378
-+ */
-+
-+#define NULL ((void *)0)
-+
-+typedef unsigned char uint8_t;
-+typedef char int8_t;
-+typedef unsigned int uint32_t;
-+typedef int int32_t;
-+typedef long ssize_t;
-+typedef unsigned long long uint64_t;
-+typedef long long int64_t;
-+typedef _Bool bool;
-+
-+/* exec.c */
-+
-+typedef struct AddressSpace AddressSpace;
-+typedef uint64_t hwaddr;
-+
-+static void __write(uint8_t *buf, ssize_t len)
-+{
-+    int first, last;
-+    __coverity_negative_sink__(len);
-+    if (len == 0) return;
-+    buf[0] = first;
-+    buf[len-1] = last;
-+    __coverity_writeall__(buf);
-+}
-+
-+static void __read(uint8_t *buf, ssize_t len)
-+{
-+    __coverity_negative_sink__(len);
-+    if (len == 0) return;
-+    int first = buf[0];
-+    int last = buf[len-1];
-+}
-+
-+bool address_space_rw(AddressSpace *as, hwaddr addr, uint8_t *buf,
-+                      int len, bool is_write)
-+{
-+    bool result;
-+
-+    // TODO: investigate impact of treating reads as producing
-+    // tainted data, with __coverity_tainted_data_argument__(buf).
-+    if (is_write) __write(buf, len); else __read(buf, len);
-+
-+    return result;
-+}
-+
-+/* Tainting */
-+
-+typedef struct {} name2keysym_t;
-+static int get_keysym(const name2keysym_t *table,
-+                      const char *name)
-+{
-+    int result;
-+    if (result > 0) {
-+        __coverity_tainted_string_sanitize_content__(name);
-+        return result;
-+    } else {
-+        return 0;
-+    }
-+}
-+
-+/* glib memory allocation functions.
-+ *
-+ * Note that we ignore the fact that g_malloc of 0 bytes returns NULL,
-+ * and g_realloc of 0 bytes frees the pointer.
-+ *
-+ * Modeling this would result in Coverity flagging a lot of memory
-+ * allocations as potentially returning NULL, and asking us to check
-+ * whether the result of the allocation is NULL or not.  However, the
-+ * resulting pointer should never be dereferenced anyway, and in fact
-+ * it is not in the vast majority of cases.
-+ *
-+ * If a dereference did happen, this would suppress a defect report
-+ * for an actual null pointer dereference.  But it's too unlikely to
-+ * be worth wading through the false positives, and with some luck
-+ * we'll get a buffer overflow reported anyway.
-+ */
-+
-+void *malloc(size_t);
-+void *calloc(size_t, size_t);
-+void *realloc(void *, size_t);
-+void free(void *);
-+
-+void *
-+g_malloc(size_t n_bytes)
-+{
-+    void *mem;
-+    __coverity_negative_sink__(n_bytes);
-+    mem = malloc(n_bytes == 0 ? 1 : n_bytes);
-+    if (!mem) __coverity_panic__();
-+    return mem;
-+}
-+
-+void *
-+g_malloc0(size_t n_bytes)
-+{
-+    void *mem;
-+    __coverity_negative_sink__(n_bytes);
-+    mem = calloc(1, n_bytes == 0 ? 1 : n_bytes);
-+    if (!mem) __coverity_panic__();
-+    return mem;
-+}
-+
-+void g_free(void *mem)
-+{
-+    free(mem);
-+}
-+
-+void *g_realloc(void * mem, size_t n_bytes)
-+{
-+    __coverity_negative_sink__(n_bytes);
-+    mem = realloc(mem, n_bytes == 0 ? 1 : n_bytes);
-+    if (!mem) __coverity_panic__();
-+    return mem;
-+}
-+
-+void *g_try_malloc(size_t n_bytes)
-+{
-+    __coverity_negative_sink__(n_bytes);
-+    return malloc(n_bytes == 0 ? 1 : n_bytes);
-+}
-+
-+void *g_try_malloc0(size_t n_bytes)
-+{
-+    __coverity_negative_sink__(n_bytes);
-+    return calloc(1, n_bytes == 0 ? 1 : n_bytes);
-+}
-+
-+void *g_try_realloc(void *mem, size_t n_bytes)
-+{
-+    __coverity_negative_sink__(n_bytes);
-+    return realloc(mem, n_bytes == 0 ? 1 : n_bytes);
-+}
-+
-+/* Other glib functions */
-+
-+typedef struct _GIOChannel GIOChannel;
-+GIOChannel *g_io_channel_unix_new(int fd)
-+{
-+    GIOChannel *c = g_malloc0(sizeof(GIOChannel));
-+    __coverity_escape__(fd);
-+    return c;
-+}
-+
-+void g_assertion_message_expr(const char     *domain,
-+                              const char     *file,
-+                              int             line,
-+                              const char     *func,
-+                              const char     *expr)
-+{
-+    __coverity_panic__();
-+}
--- 
-1.8.5.3
+>>> +    if (is_write) __write(buf, len); else __read(buf, len);
+>>> +
+>>> +    return result;
+>>> +}
+>>
+>> I'm curious: could you give me a rough idea on how modelling
+>> address_space_rw() affects results?
+>
+> Sure!  The problematic code is this one:
+>
+>             if (!memory_access_is_direct(mr, is_write)) {
+>                 l = memory_access_size(mr, l, addr1);
+>                 /* XXX: could force current_cpu to NULL to avoid
+>                    potential bugs */
+>                 switch (l) {
+>                 case 8:
+>                     /* 64 bit write access */
+>                     val = ldq_p(buf);
+>                     error |= io_mem_write(mr, addr1, val, 8);
+>                     break;
+>
+> Coverity doesn't understand that memory_access_size return a value
+> that is less than l, and thus thinks that address_space_rw can do an
+> 8-byte access.  So it flags cases where we use it to read into an int
+> or a similarly small char[].
+>
+> It's actually fairly common, it occurs ~20 times.
 
+I see.  Addressing the false positives' root cause with a model feels
+worthwhile, in particular since more such uses of address_space_rw() can
+pop up any time.
+
+>>> +static int get_keysym(const name2keysym_t *table,
+>>> +                      const char *name)
+>>
+>> Curious again: is this just insurance, or did you observe scanning
+>> improvements?
+>
+> It fixes exactly one error.  All of the "tainted value" can be
+> considered false positives, but I wanted to have an example on how to
+> shut them up.
+
+After a bit of digging, I think I now understand what your model
+asserts: get_keysym() returns either zero or a positive value, and the
+positive value is "safe" in a sense that isn't specified further.  This
+shuts up the TAINTED_SCALAR defects when the value is used as subscript
+in add_keysym().  Correct?
+
+>> This claims g_malloc(0) returns a non-null pointer to a block of size 1.
+>> Could we say it returns a non-null pointer to a block of size 0?
+>
+> Not sure of the semantics of __coverity_alloc__(0).  Leave it to
+> further future improvements?
+
+Yes, but with a comment explaining the model's inaccuracy.  Perhaps
+something like this:
+
+void *
+g_malloc (size_t n_bytes)
+{
+    void *mem;
+    __coverity_negative_sink__((ssize_t) n_bytes);
+    /*
+     * Mapping size 0 to 1 to ensure result isn't null.  This is a
+     * bald-faced lie.  In reality, size 0 returns null, but modelling
+     * that correctly produces too many annoying false positives.
+     * Would be nice to improve the lie from "size 0 returns a pointer
+     * to a block of size 1" to "... of size 0".
+     */
+    mem = malloc(n_bytes == 0 ? 1 : n_bytes);
+    if (!mem) __coverity_panic__ ();
+    return mem;
+}
+
+Hmm, I wonder whether this less elaborate lie would do, too:
+
+void *
+g_malloc (size_t n_bytes)
+{
+    void *mem;
+    __coverity_negative_sink__((ssize_t) n_bytes);
+    mem = malloc(n_bytes);
+    if (!mem) {
+        /*
+         * This is a bald-faced lie.  In reality, size 0 returns null,
+         * but modelling that correctly produces too many annoying false
+         * positives.
+         */
+        __coverity_panic__ ();
+    }
+    return mem;
+}
+
+>>     if (success) {
+>>         void* tmp = __coverity_alloc__(size);
+>>         if (tmp) __coverity_mark_as_uninitialized_buffer__(tmp);
+>>         __coverity_mark_as_afm_allocated__(tmp, AFM_free);
+>>         return tmp;
+>>     } else {
+>>         __coverity_panic__ ();
+>>     }
+>
+> Is the "if" needed at all?  The "else" path is killed altogether by
+> __coverity_panic__().
+
+It tells Coverity that g_malloc() can terminate the process.  Whether
+that's useful information I can't say.
 
