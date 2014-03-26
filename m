@@ -1,46 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WSYnX-0005dg-8j
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Mar 2014 17:22:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57504)
+	id 1WSjee-000563-10
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Mar 2014 04:57:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33888)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WSYnP-0005Oj-Qa
-	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 17:22:14 -0400
+	(envelope-from <stefanha@redhat.com>) id 1WSjeX-0004xW-Ud
+	for qemu-trivial@nongnu.org; Wed, 26 Mar 2014 04:57:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WSYl4-00013W-UI
-	for qemu-trivial@nongnu.org; Tue, 25 Mar 2014 17:19:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:13174)
+	(envelope-from <stefanha@redhat.com>) id 1WSjeS-0001V4-Vc
+	for qemu-trivial@nongnu.org; Wed, 26 Mar 2014 04:57:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:7502)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1WSYkz-00012a-LB; Tue, 25 Mar 2014 17:19:37 -0400
+	(envelope-from <stefanha@redhat.com>)
+	id 1WSjeH-0001Sm-Rk; Wed, 26 Mar 2014 04:57:26 -0400
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2PLJTe6005037
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2Q8vHVq009806
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 25 Mar 2014 17:19:30 -0400
-Received: from [10.3.113.70] (ovpn-113-70.phx2.redhat.com [10.3.113.70])
+	Wed, 26 Mar 2014 04:57:18 -0400
+Received: from localhost (dhcp-64-106.muc.redhat.com [10.32.64.106])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s2PLJRlh001005; Tue, 25 Mar 2014 17:19:27 -0400
-Message-ID: <5331F2DF.8040404@redhat.com>
-Date: Tue, 25 Mar 2014 15:19:27 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
-MIME-Version: 1.0
+	id s2Q8vGi9021160; Wed, 26 Mar 2014 04:57:16 -0400
+Date: Wed, 26 Mar 2014 09:57:15 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
 To: Prasad Joshi <prasadjoshi.linux@gmail.com>
+Message-ID: <20140326085715.GA27500@stefanha-thinkpad.muc.redhat.com>
 References: <1395779153-4536-1-git-send-email-prasadjoshi.linux@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <1395779153-4536-1-git-send-email-prasadjoshi.linux@gmail.com>
-X-Enigmail-Version: 1.6
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="wq4aPJRTxbWhv4QGsi4u9nEAS1UB6LwhO"
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, pl@kamp.de,
-	qemu-devel@nongnu.org, stefanha@redhat.com, pbonzini@redhat.com
-Subject: [Qemu-trivial] for 2.0: Re: [PATCH] qemu-img: Release refernece to
+	qemu-devel@nongnu.org, pbonzini@redhat.com, eblake@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] qemu-img: Release refernece to
 	BlockDriverState
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -53,52 +48,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Mar 2014 21:22:14 -0000
+X-List-Received-Date: Wed, 26 Mar 2014 08:57:46 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---wq4aPJRTxbWhv4QGsi4u9nEAS1UB6LwhO
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-On 03/25/2014 02:25 PM, Prasad Joshi wrote:
-
-s/refernece/reference/ in the subject
-
-This is worth including in 2.0
-
+On Wed, Mar 26, 2014 at 01:55:53AM +0530, Prasad Joshi wrote:
 > Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
 > ---
 >  qemu-img.c | 1 +
 >  1 file changed, 1 insertion(+)
 
-With subject line fixed:
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Thanks, applied to my block tree:
+https://github.com/stefanha/qemu/commits/block
 
-Appears to have been introduced in commit 43526ec
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---wq4aPJRTxbWhv4QGsi4u9nEAS1UB6LwhO
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJTMfLfAAoJEKeha0olJ0Nqry0H/jCpo34oSIORPg7Am0XowlaA
-c17YdOkJkVj3nGKNVqawfvuO/97q+R+1NhYUU76h94VZeAdHhSQIvf1GIziuceiH
-8+6IzjPx2X58zjJSck+skL7J1BHy83cv/Epqp3ob9uouQwbDx12lptoof1U4JJjP
-CtfTsGYv1STap1ieB9EWzOBXyeiNEcDurIXF2d+fVBW/97igG4bctvpamWSxtu/z
-3WnxZ+FcS/a5TKReZjkjsIwfpTcyZHti1LCpCM/niqVvVvFt8LCzRrIiFWsJuVxD
-K1+btwudEiPd2NRWGuYaRDSLIlLzdahhjnt/Eey+mqqtRRf8dPbak1OO5jtP/nk=
-=cAts
------END PGP SIGNATURE-----
-
---wq4aPJRTxbWhv4QGsi4u9nEAS1UB6LwhO--
+Stefan
 
