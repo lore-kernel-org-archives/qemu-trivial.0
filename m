@@ -1,46 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WT9zG-0005ZN-7z
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Mar 2014 09:04:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55530)
+	id 1WTCEe-0001QY-Kk
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Mar 2014 11:28:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35810)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WT9z9-0005SH-4x
-	for qemu-trivial@nongnu.org; Thu, 27 Mar 2014 09:04:48 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WTCEY-0001ED-5Y
+	for qemu-trivial@nongnu.org; Thu, 27 Mar 2014 11:28:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WT9z1-0000O8-2A
-	for qemu-trivial@nongnu.org; Thu, 27 Mar 2014 09:04:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:65385)
+	(envelope-from <mjt@tls.msk.ru>) id 1WTCET-0002eI-Np
+	for qemu-trivial@nongnu.org; Thu, 27 Mar 2014 11:28:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:53447)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1WT9z0-0000O3-RA; Thu, 27 Mar 2014 09:04:35 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s2RD4W9L015500
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 27 Mar 2014 09:04:32 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-41.ams2.redhat.com
-	[10.36.116.41])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s2RCUZRj032400
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 27 Mar 2014 08:30:37 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 2E4E9200D1; Thu, 27 Mar 2014 13:30:34 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Kiyokazu SUTO <suto@ks-and-ks.ne.jp>
-References: <20140106-195827-666c9.suto@ks-and-ks.ne.jp>
-Date: Thu, 27 Mar 2014 13:30:34 +0100
-In-Reply-To: <20140106-195827-666c9.suto@ks-and-ks.ne.jp> (Kiyokazu SUTO's
-	message of "06 Jan 2014 19:58:27 +0900")
-Message-ID: <8761mzq0wl.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WTCEJ-0002bQ-TQ; Thu, 27 Mar 2014 11:28:32 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 48C8543720;
+	Thu, 27 Mar 2014 19:28:30 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 1A76F671;
+	Thu, 27 Mar 2014 19:28:30 +0400 (MSK)
+Received: (nullmailer pid 1779 invoked by uid 1000);
+	Thu, 27 Mar 2014 15:28:29 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Thu, 27 Mar 2014 19:28:12 +0400
+Message-Id: <1395934108-1694-8-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1395934108-1694-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1395934108-1694-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] Virtual VFAT with floppy option
-	doesn't work
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [Qemu-trivial] [PULL 07/23] doc: update sun4m documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,22 +43,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Mar 2014 13:04:48 -0000
+X-List-Received-Date: Thu, 27 Mar 2014 15:28:50 -0000
 
-Kiyokazu SUTO <suto@ks-and-ks.ne.jp> writes:
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-> Hi,
->
-> Virtual VFAT mechanism in recent releases does not work with the
-> floppy option, because, in `vvfat_open()' function, the member
-> `first_sectors_number' is overwritten with the value for HDD even when
-> the floppy option presents.  I attach the diff output just to clarify
-> the problem.
->
-> Sorry if this has been already fixed in the git repository.
+A few minor tidy-ups, plus add reference to the new -vga tcx and cg3 options.
 
-Your fix is correct, but the patch doesn't pass checkpatch, it doesn't
-have a proper commit message, and it lacks your S-o-B.  Since the fix is
-trivial, and we're very close to the release, I'm going to redo it.
-Hope you don't mind.
+Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qemu-doc.texi   |    9 +++++----
+ qemu-options.hx |   10 +++++++++-
+ 2 files changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index ad31f2d..6d684e2 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -1996,7 +1996,7 @@ QEMU emulates the following sun4m peripherals:
+ @item
+ IOMMU
+ @item
+-TCX Frame buffer
++TCX or cgthree Frame buffer
+ @item
+ Lance (Am7990) Ethernet
+ @item
+@@ -2023,7 +2023,7 @@ firmware implementation. The goal is to implement a 100% IEEE
+ 
+ A sample Linux 2.6 series kernel and ram disk image are available on
+ the QEMU web site. There are still issues with NetBSD and OpenBSD, but
+-some kernel versions work. Please note that currently Solaris kernels
++some kernel versions work. Please note that currently older Solaris kernels
+ don't work probably due to interface issues between OpenBIOS and
+ Solaris.
+ 
+@@ -2035,8 +2035,9 @@ The following options are specific to the Sparc32 emulation:
+ 
+ @item -g @var{W}x@var{H}x[x@var{DEPTH}]
+ 
+-Set the initial TCX graphic mode. The default is 1024x768x8, currently
+-the only other possible mode is 1024x768x24.
++Set the initial graphics mode. For TCX, the default is 1024x768x8 with the
++option of 1024x768x24. For cgthree, the default is 1024x768x8 with the option
++of 1152x900x8 for people who wish to use OBP.
+ 
+ @item -prom-env @var{string}
+ 
+diff --git a/qemu-options.hx b/qemu-options.hx
+index ee5437b..2d33815 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1043,7 +1043,7 @@ Rotate graphical output some deg left (only PXA LCD).
+ ETEXI
+ 
+ DEF("vga", HAS_ARG, QEMU_OPTION_vga,
+-    "-vga [std|cirrus|vmware|qxl|xenfb|none]\n"
++    "-vga [std|cirrus|vmware|qxl|xenfb|tcx|cg3|none]\n"
+     "                select video card type\n", QEMU_ARCH_ALL)
+ STEXI
+ @item -vga @var{type}
+@@ -1068,6 +1068,14 @@ card.
+ QXL paravirtual graphic card.  It is VGA compatible (including VESA
+ 2.0 VBE support).  Works best with qxl guest drivers installed though.
+ Recommended choice when using the spice protocol.
++@item tcx
++(sun4m only) Sun TCX framebuffer. This is the default framebuffer for
++sun4m machines and offers both 8-bit and 24-bit colour depths at a
++fixed resolution of 1024x768.
++@item cg3
++(sun4m only) Sun cgthree framebuffer. This is a simple 8-bit framebuffer
++for sun4m machines available in both 1024x768 (OpenBIOS) and 1152x900 (OBP)
++resolutions aimed at people wishing to run older Solaris versions.
+ @item none
+ Disable VGA card.
+ @end table
+-- 
+1.7.10.4
+
 
