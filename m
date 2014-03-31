@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WUkOi-00061g-Lv
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Mar 2014 18:09:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36128)
+	id 1WUlH9-0003VQ-5T
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Mar 2014 19:05:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44661)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1WUkOb-0005pl-6h
-	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 18:09:39 -0400
+	(envelope-from <kroosec@gmail.com>) id 1WUlH1-0002vx-MR
+	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 19:05:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1WUkOV-0007Xx-4g
-	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 18:09:33 -0400
-Received: from mail-we0-x22e.google.com ([2a00:1450:400c:c03::22e]:34181)
+	(envelope-from <kroosec@gmail.com>) id 1WUlGv-0007Wu-7S
+	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 19:05:47 -0400
+Received: from mail-we0-x230.google.com ([2a00:1450:400c:c03::230]:49367)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <kroosec@gmail.com>)
-	id 1WUkOI-0007Wh-Nk; Mon, 31 Mar 2014 18:09:14 -0400
-Received: by mail-we0-f174.google.com with SMTP id t60so5330986wes.5
-	for <multiple recipients>; Mon, 31 Mar 2014 15:09:13 -0700 (PDT)
+	id 1WUlGi-0007UP-JN; Mon, 31 Mar 2014 19:05:28 -0400
+Received: by mail-we0-f176.google.com with SMTP id x48so5320121wes.7
+	for <multiple recipients>; Mon, 31 Mar 2014 16:05:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id;
-	bh=BB7R2lXTm3BSqpyiuVxMmbZpkuO3qwPk1tqN3T8k1h0=;
-	b=KJ/QRaZDRzvwW0KsyfN4ufBmIMReVNSMWkvnem5bjt2ENW4mhVzJ8VhGJK0CM2LJXi
-	2Bt48WV8650IlQ0VU4oYOwuRxrqXzuCCPIwd/VPN6BH8jamC5YyGRBHBcPuGHHYEgjhe
-	2GRS1K9VoMCr9WbItTwe73RWbuayrbR1fT3CyII3G7Ph6C+6m8VZtXWRORBWOnsJ8ZeH
-	JzWyM62no7cySkqzBbedQpwYPzUkRNi2iyoZkJwFOXURorc/JKfvehPdH2tbtsx7lNUc
-	ZMPdcNqc9yRDD9I6kNL9gJrq6koWrQUCqwUkuyi11yigQTJytYJaMxtSVJurhYyDTcxd
-	ZaFQ==
-X-Received: by 10.194.201.73 with SMTP id jy9mr8977990wjc.51.1396303753870;
-	Mon, 31 Mar 2014 15:09:13 -0700 (PDT)
+	bh=k7jcUF3svOEtNhwjkrsTyWJvekI69SgmRLBebfL9RvM=;
+	b=PLhqsGsvblz3w4OWrJOo8J0jYtuSXBHy6nA3f+dBaO7Xdku95T3qp3OYaNRTi46ptF
+	OtDrNUiJrdUkGpxAXYNdR1Ue7T8522YHP1IrbVOXFQunpYf4iMTdgRWWUswuJJ8ZtDHH
+	INXtA+SIdxAPlZp2B9EvKLYEy+BdKoPCmmsRWgpoR1qoCJ9Jv1TE/Sm5RxHl6YCfS4yA
+	WAZ9Qzpi72YARWlax+ET9Eg+Jt++2Cw7b3kPT2bVweAYynqG35dPbQj3dnCBQKaem62a
+	r60RlM68fYC8e8X5yOJ6M+/KgfkxwzpjtHA+uuuzuNVlDGHThsASHZKHSHWX0aY45dv+
+	D9lw==
+X-Received: by 10.194.236.9 with SMTP id uq9mr17796202wjc.31.1396307127614;
+	Mon, 31 Mar 2014 16:05:27 -0700 (PDT)
 Received: from localhost.localdomain ([41.103.75.35])
-	by mx.google.com with ESMTPSA id q41sm36001745eez.7.2014.03.31.15.09.12
+	by mx.google.com with ESMTPSA id x3sm36246699eep.17.2014.03.31.16.05.26
 	for <multiple recipients>
 	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Mon, 31 Mar 2014 15:09:13 -0700 (PDT)
+	Mon, 31 Mar 2014 16:05:26 -0700 (PDT)
 From: Hani Benhabiles <kroosec@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 31 Mar 2014 23:09:06 +0100
-Message-Id: <1396303746-1858-1-git-send-email-kroosec@gmail.com>
+Date: Tue,  1 Apr 2014 00:05:14 +0100
+Message-Id: <1396307114-4123-1-git-send-email-kroosec@gmail.com>
 X-Mailer: git-send-email 1.8.3.2
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::22e
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com, aliguori@amazon.com,
-	armbru@redhat.com
-Subject: [Qemu-trivial] [PATCH v2] input: mouse_set should check input
-	device type.
+X-Received-From: 2a00:1450:400c:c03::230
+Cc: qemu-trivial@nongnu.org, stefanha@redhat.com, aliguori@amazon.com
+Subject: [Qemu-trivial] [PATCH] net: Report error when device / hub combo is
+	not found.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,58 +52,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Mar 2014 22:09:39 -0000
+X-List-Received-Date: Mon, 31 Mar 2014 23:05:53 -0000
 
-Otherwise, the index of an input device like a usb-kbd is silently accepted.
-
-(qemu) info mice
-  Mouse #2: QEMU PS/2 Mouse
-* Mouse #3: QEMU HID Mouse
-(qemu) mouse_set 1
-(qemu) info mice
-  Mouse #2: QEMU PS/2 Mouse
-* Mouse #3: QEMU HID Mouse
-
-Also replace monitor_printf() call in do_mouse_set() with error_report() and
-adjust error message.
+Also convert nearby monitor_printf() call to error_report().
 
 Signed-off-by: Hani Benhabiles <hani@linux.com>
 ---
+ net/net.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
- ui/input.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
-
-diff --git a/ui/input.c b/ui/input.c
-index 2761911..6e6a924 100644
---- a/ui/input.c
-+++ b/ui/input.c
-@@ -342,15 +342,21 @@ void do_mouse_set(Monitor *mon, const QDict *qdict)
-     int found = 0;
+diff --git a/net/net.c b/net/net.c
+index e3ef1e4..d319f49 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -952,10 +952,12 @@ void net_host_device_remove(Monitor *mon, const QDict *qdict)
  
-     QTAILQ_FOREACH(s, &handlers, node) {
--        if (s->id == index) {
--            found = 1;
--            qemu_input_handler_activate(s);
--            break;
-+        if (s->id != index) {
-+            continue;
-         }
-+        if (!(s->handler->mask & (INPUT_EVENT_MASK_REL |
-+                                  INPUT_EVENT_MASK_ABS))) {
-+            error_report("Input device '%s' is not a mouse", s->handler->name);
-+            return;
-+        }
-+        found = 1;
-+        qemu_input_handler_activate(s);
-+        break;
+     nc = net_hub_find_client_by_name(vlan_id, device);
+     if (!nc) {
++        error_report("Host network device '%s' on hub '%d' not found",
++                     device, vlan_id);
+         return;
      }
- 
-     if (!found) {
--        monitor_printf(mon, "Mouse at given index not found\n");
-+        error_report("Mouse at index '%d' not found", index);
+     if (!net_host_check_device(nc->model)) {
+-        monitor_printf(mon, "invalid host network device %s\n", device);
++        error_report("invalid host network device '%s'", device);
+         return;
      }
- 
-     qemu_input_check_mode_change();
+     qemu_del_net_client(nc);
 -- 
 1.8.3.2
 
