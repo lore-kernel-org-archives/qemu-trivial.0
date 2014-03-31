@@ -1,49 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WUc5K-00072A-FQ
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Mar 2014 09:17:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57727)
+	id 1WUcLe-0000fM-J0
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Mar 2014 09:33:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33171)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WUc5D-0006zV-Ez
-	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 09:17:04 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1WUcLX-0000d3-8Q
+	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 09:33:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WUc57-0006Te-3C
-	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 09:16:59 -0400
-Received: from mail-lb0-f173.google.com ([209.85.217.173]:53525)
+	(envelope-from <peter.maydell@linaro.org>) id 1WUcLQ-0003bA-Gn
+	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 09:33:51 -0400
+Received: from mail-la0-f47.google.com ([209.85.215.47]:38448)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WUc56-0006TE-SB
-	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 09:16:53 -0400
-Received: by mail-lb0-f173.google.com with SMTP id p9so5752837lbv.18
-	for <qemu-trivial@nongnu.org>; Mon, 31 Mar 2014 06:16:51 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1WUcLQ-0003ay-AA
+	for qemu-trivial@nongnu.org; Mon, 31 Mar 2014 09:33:44 -0400
+Received: by mail-la0-f47.google.com with SMTP id pn19so1532310lab.34
+	for <qemu-trivial@nongnu.org>; Mon, 31 Mar 2014 06:33:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=gDKv56yzKojUzD4JLhNA6RNjcugmGMlm2yxC6fxUS9A=;
-	b=ZniQztczfpPiT7Zxi67X9cmSV7BtDRstUSS+ZFXWDZXVjFijF8povknpFMIOgZaH+e
-	cHuRDSoV0u7PLB+LNTugVe2jdjjZRPUCo2/J2qHeVDI2/VlvTXRa+RTmG0Iv54gXB4BS
-	O7q/fnDfXyIXSOjw16IXn5FKh8wU+LekHiTpmmQViBmQSuO5zOYxoLyKYpJVtllPcA2q
-	DH3ztTNwDiPM9If8eTuuBl+7c9dR8t7YcgOE4IXrfH6Wi03kqcBLWIkjpYOZXuBtFLUa
-	nFua8lLu8a1S3l/2gpkkoIfaDwFMBC+avM3yM6KHuQZFqJUTyPpUxFTPaOUUGBaqNTwx
-	yZxg==
-X-Gm-Message-State: ALoCoQn7RZuEA7UPifvPThYWWB2ocp/pmj+x+FJ9CpuKUmir0No4J/BSQaJhUgkxCKE/shx3SN+R
-X-Received: by 10.112.142.68 with SMTP id ru4mr1044828lbb.49.1396271811530;
-	Mon, 31 Mar 2014 06:16:51 -0700 (PDT)
+	bh=k9GhdwsExc3Xla2nTZrwS5TLsNkrEiUyydeVAa8wh20=;
+	b=MJi2ZJ71kUQk87XAvjLNzKHdVF6c99NlHvVi11gYu6iQx+lXZegO+Z2ellpoI0hel4
+	0zqMfzZE6M2Hpw/jPg9BklVMbtihsSJDWM7JGxaGUR+6EB9qnuRACr72fT9852VAjRRj
+	bq0qCF6vpX6KfTySiZm60r5qK3kR1YnqWeLwesZ7jmLzDxaB6DL3a2mI91fIo9yP7yRr
+	BFYhTmi/iwoBQqKc5/G2LXpJH+nCz8nlie1GuXuomF6eznk0pXZppo/FLww8dz1ga3js
+	DFBQ+G8PHiCfo8wMrGahd+vQeNOFHX1LNVvf060mTdxj/msnDtKmwCqybOH2nEvrijGM
+	pt1A==
+X-Gm-Message-State: ALoCoQmLxUxEg+bcJ9pm5LqQUAGcgb2o4/FXN5dMgOtr0lcxAqWKXg0IHo7M5/K4kVlnvMntrTYu
+X-Received: by 10.112.163.69 with SMTP id yg5mr17789984lbb.14.1396272823076;
+	Mon, 31 Mar 2014 06:33:43 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.112.180.233 with HTTP; Mon, 31 Mar 2014 06:16:30 -0700 (PDT)
-In-Reply-To: <533969AB.4010505@gmail.com>
+Received: by 10.112.180.233 with HTTP; Mon, 31 Mar 2014 06:33:18 -0700 (PDT)
+In-Reply-To: <53396CE9.9090405@gmail.com>
 References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
 	<5333F6E2.9080202@gmail.com> <53382DDD.8050001@gmail.com>
 	<87fvlylf02.fsf@blackfin.pond.sub.org> <53396545.805@gmail.com>
 	<CAFEAcA-GL7bnZ-Pkga9PzDq7DpwPf8Gx0Wezzkm_CCbSUB1W8A@mail.gmail.com>
 	<533969AB.4010505@gmail.com>
+	<CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>
+	<53396CE9.9090405@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 31 Mar 2014 14:16:30 +0100
-Message-ID: <CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>
+Date: Mon, 31 Mar 2014 14:33:18 +0100
+Message-ID: <CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
 To: Chen Gang <gang.chen.5i5j@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.217.173
+X-Received-From: 209.85.215.47
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	Markus Armbruster <armbru@redhat.com>,
 	Anthony Liguori <aliguori@amazon.com>,
@@ -61,15 +63,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Mar 2014 13:17:04 -0000
+X-List-Received-Date: Mon, 31 Mar 2014 13:33:57 -0000
 
-On 31 March 2014 14:12, Chen Gang <gang.chen.5i5j@gmail.com> wrote:
-> Next, when I send trivial patches, I will/should cc to qemu-trivial. I
-> guess, most of my future patches will be trivial patches (and for me,
-> trivial != minor).
+On 31 March 2014 14:26, Chen Gang <gang.chen.5i5j@gmail.com> wrote:
+> Next, when I send trivial patches, I will only send to qemu-trivial (not
+> send/cc to qemu-devel again), that will be more efficient.  :-)
 
-We describe on the wiki what we mean by 'trivial':
-http://wiki.qemu.org/Contribute/TrivialPatches
+No, please always send to qemu-devel; just also cc qemu-trivial
+(or the relevant subsystem maintainers as listed in MAINTAINERS)
+if appropriate. Not everybody subscribes to qemu-trivial.
 
 thanks
 -- PMM
