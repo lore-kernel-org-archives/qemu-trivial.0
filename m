@@ -1,45 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WVLgY-0005Oa-1g
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Apr 2014 09:58:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42114)
+	id 1WVMUD-0006BE-K7
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Apr 2014 10:49:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37064)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <agraf@suse.com>) id 1WVGwT-0006BS-FK
-	for qemu-trivial@nongnu.org; Wed, 02 Apr 2014 04:54:47 -0400
+	(envelope-from <chouteau@adacore.com>) id 1WVMU8-00063k-7z
+	for qemu-trivial@nongnu.org; Wed, 02 Apr 2014 10:49:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <agraf@suse.com>) id 1WVGwN-0001mk-JE
-	for qemu-trivial@nongnu.org; Wed, 02 Apr 2014 04:54:41 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:50072 helo=mx2.suse.de)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <agraf@suse.com>)
-	id 1WVGwA-0001kG-Px; Wed, 02 Apr 2014 04:54:22 -0400
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 8BCEBABA3;
-	Wed,  2 Apr 2014 08:54:20 +0000 (UTC)
-Message-ID: <533BD03A.7070405@suse.com>
-Date: Wed, 02 Apr 2014 10:54:18 +0200
-From: Alexander Graf <agraf@suse.com>
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
-MIME-Version: 1.0
-To: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>, 
-	Prasad Joshi <prasadjoshi.linux@gmail.com>
-References: <1395566923-5074-1-git-send-email-prasadjoshi.linux@gmail.com>
-	<1395566923-5074-2-git-send-email-prasadjoshi.linux@gmail.com>
-	<5330405F.7040306@suse.de>
-In-Reply-To: <5330405F.7040306@suse.de>
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <chouteau@adacore.com>) id 1WVMU3-00068s-Hf
+	for qemu-trivial@nongnu.org; Wed, 02 Apr 2014 10:49:48 -0400
+Received: from mel.act-europe.fr ([194.98.77.210]:36778
+	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chouteau@adacore.com>)
+	id 1WVMTt-000667-DA; Wed, 02 Apr 2014 10:49:33 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 8C937272002C;
+	Wed,  2 Apr 2014 16:49:31 +0200 (CEST)
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7XWhD5GCY8R7; Wed,  2 Apr 2014 16:49:31 +0200 (CEST)
+Received: from lanoue.act-europe.fr (lanoue.act-europe.fr [10.10.1.115])
+	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 515462720016;
+	Wed,  2 Apr 2014 16:49:31 +0200 (CEST)
+From: Fabien Chouteau <chouteau@adacore.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Wed,  2 Apr 2014 16:49:32 +0200
+Message-Id: <1396450172-31322-1-git-send-email-chouteau@adacore.com>
+X-Mailer: git-send-email 1.7.9.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.135.220.15
-X-Mailman-Approved-At: Wed, 02 Apr 2014 09:58:32 -0400
-Cc: peter.maydell@linaro.org, aliguori@amazon.com, aik@ozlabs.ru,
-	jan.kiszka@siemens.com, riku.voipio@iki.fi, agraf@suse.de,
-	v.maffione@gmail.com, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, av1474@comtv.ru, stefanha@redhat.com,
-	pbonzini@redhat.com, g.lettieri@iet.unipi.it, alex@alex.org.uk,
-	rizzo@iet.unipi.it, kraxel@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/6] intc/openpic_kvm: fix
- MemListener delete regiion callback function
+X-Received-From: 194.98.77.210
+Cc: peter.maydell@linaro.org, agraf@suse.de, pbonzini@redhat.com
+Subject: [Qemu-trivial] [PATCH] Fix typo in eTSEC Ethernet controller
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,21 +44,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Apr 2014 08:54:47 -0000
+X-List-Received-Date: Wed, 02 Apr 2014 14:49:52 -0000
 
+IRQ are lowered when ievent bit is cleared, so irq_pulse makes no sense
+here...
 
-On 24.03.14 15:25, Andreas F=E4rber wrote:
-> Am 23.03.2014 10:28, schrieb Prasad Joshi:
->> Signed-off-by: Prasad Joshi <prasadjoshi.linux@gmail.com>
->> ---
->>   hw/intc/openpic_kvm.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
-> Thanks for spotting this, applied to ppc-next (w/ typo fix in subject):
-> https://github.com/afaerber/qemu-cpu/commits/ppc-next
+Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
+---
+ hw/net/fsl_etsec/rings.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This patch breaks the e500 platform target.
-
-
-Alex
+diff --git a/hw/net/fsl_etsec/rings.c b/hw/net/fsl_etsec/rings.c
+index e36cfbe..d4a494f 100644
+--- a/hw/net/fsl_etsec/rings.c
++++ b/hw/net/fsl_etsec/rings.c
+@@ -159,7 +159,7 @@ static void ievent_set(eTSEC    *etsec,
+ 
+     if ((flags & IEVENT_RXB && etsec->regs[IMASK].value & IMASK_RXBEN)
+         || (flags & IEVENT_RXF && etsec->regs[IMASK].value & IMASK_RXFEN)) {
+-        qemu_irq_pulse(etsec->rx_irq);
++        qemu_irq_raise(etsec->rx_irq);
+         RING_DEBUG("%s Raise Rx IRQ\n", __func__);
+     }
+ }
+-- 
+1.7.9.5
 
 
