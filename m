@@ -1,57 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WW1pl-0004Nl-KN
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Apr 2014 06:58:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35710)
+	id 1WW5ci-0005uR-3M
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Apr 2014 11:01:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44053)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WW1pd-0004DN-6C
-	for qemu-trivial@nongnu.org; Fri, 04 Apr 2014 06:58:51 -0400
+	(envelope-from <eblake@redhat.com>) id 1WW5cb-0005ll-U5
+	for qemu-trivial@nongnu.org; Fri, 04 Apr 2014 11:01:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WW1pX-0005q1-1p
-	for qemu-trivial@nongnu.org; Fri, 04 Apr 2014 06:58:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47626)
+	(envelope-from <eblake@redhat.com>) id 1WW5cX-0002CZ-0H
+	for qemu-trivial@nongnu.org; Fri, 04 Apr 2014 11:01:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:19265)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1WW1pK-0005n2-BW; Fri, 04 Apr 2014 06:58:26 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s34AvMI6000579
+	(envelope-from <eblake@redhat.com>)
+	id 1WW5cW-0002CT-OP; Fri, 04 Apr 2014 11:01:28 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s34F1S1s009079
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 4 Apr 2014 06:57:22 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-22.ams2.redhat.com
-	[10.36.116.22])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s34AvKj4002608
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 4 Apr 2014 06:57:21 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id B2AC2200D1; Fri,  4 Apr 2014 12:57:19 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Chen Gang <gang.chen.5i5j@gmail.com>
-References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
-	<5333F6E2.9080202@gmail.com> <53382DDD.8050001@gmail.com>
-	<87fvlylf02.fsf@blackfin.pond.sub.org> <53396545.805@gmail.com>
-	<CAFEAcA-GL7bnZ-Pkga9PzDq7DpwPf8Gx0Wezzkm_CCbSUB1W8A@mail.gmail.com>
-	<533969AB.4010505@gmail.com>
-	<CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>
-	<53396CE9.9090405@gmail.com>
-	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
-	<533E7DD5.3090203@gmail.com>
-Date: Fri, 04 Apr 2014 12:57:19 +0200
-In-Reply-To: <533E7DD5.3090203@gmail.com> (Chen Gang's message of "Fri, 04 Apr
-	2014 17:39:33 +0800")
-Message-ID: <87r45dweeo.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
+	Fri, 4 Apr 2014 11:01:28 -0400
+Received: from [10.3.113.163] (ovpn-113-163.phx2.redhat.com [10.3.113.163])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id s34F1R30002019; Fri, 4 Apr 2014 11:01:27 -0400
+Message-ID: <533EC947.3030706@redhat.com>
+Date: Fri, 04 Apr 2014 09:01:27 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+To: Amos Kong <akong@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1396572808-21535-1-git-send-email-akong@redhat.com>
+In-Reply-To: <1396572808-21535-1-git-send-email-akong@redhat.com>
+X-Enigmail-Version: 1.6
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="kehmfGtqtJa5vaM6wpxOliiIDdckLose7"
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH-trivial v2] vl: Report
-	accelerator not supported for target more nicely
+Cc: mprivozn@redhat.com, mjt@tls.msk.ru, lersek@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qga: trivial fix for
+ unclear document of guest-set-time
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,22 +53,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Apr 2014 10:58:51 -0000
+X-List-Received-Date: Fri, 04 Apr 2014 15:01:38 -0000
 
-Chen Gang <gang.chen.5i5j@gmail.com> writes:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--kehmfGtqtJa5vaM6wpxOliiIDdckLose7
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-> When you ask for an accelerator not supported for your target, you get
-> a bogus "accelerator does not exist" message:
->
->   $ qemu-system-arm -machine none,accel=kvm
->   KVM not supported for this target
->   "kvm" accelerator does not exist.
->   No accelerator found!
->
-> Suppress it.
->
->
-> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+On 04/03/2014 06:53 PM, Amos Kong wrote:
+> We mixedly used "guest time", "system time", "hardware time", "RTC"
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+s/mixedly used/mixed the use of/
+
+> in document, it's unclear.
+
+s/document/documentation/
+
+>=20
+> This patch just added two remarks of RTC and replace two "guest time"
+> by "guest's system time".
+>=20
+> Signed-off-by: Amos Kong <akong@redhat.com>
+> ---
+>  qga/commands-posix.c |  2 +-
+>  qga/qapi-schema.json | 14 +++++++-------
+>  2 files changed, 8 insertions(+), 8 deletions(-)
+>=20
+> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+> index 6b5f11f..25e4302 100644
+> --- a/qga/commands-posix.c
+> +++ b/qga/commands-posix.c
+> @@ -171,7 +171,7 @@ void qmp_guest_set_time(bool has_time, int64_t time=
+_ns, Error **errp)
+>      /* Now, if user has passed a time to set and the system time is se=
+t, we
+>       * just need to synchronize the hardware clock. However, if no tim=
+e was
+>       * passed, user is requesting the opposite: set the system time fr=
+om the
+> -     * hardware clock. */
+> +     * hardware clock(RTC). */
+
+s/clock(/clock (/
+
+> -# This command tries to set guest time to the given value,
+> -# then sets the Hardware Clock to the current System Time.
+> -# This will make it easier for a guest to resynchronize
+> -# without waiting for NTP. If no @time is specified, then
+> -# the time to set is read from RTC.
+> +# This command tries to set guest's System Time to the
+> +# given value, then sets the Hardware Clock(RTC) to the
+
+and again
+
+With those changes,
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--kehmfGtqtJa5vaM6wpxOliiIDdckLose7
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJTPslHAAoJEKeha0olJ0NqZhQH/2rsEknMoR2RAfxtoK7hS6+b
+enNjWje3hg6Eh2OrpcIan2uABSVFgNvL/bDeyPy3MO247TS1klihqnfwdlaCCbGA
+eruQJp1kAdvifWHG6WDj3SNnEccJkwnMvNABFVLPwsuE6Wwf4jsvd2rw5A/PYJNK
+5UQ9hhb7kJOFWg5ZJHhek8j4EUY4IK+yCUxoHjgeUEmvzddaKsWVP4CWj6TtUUZW
+i62rMF9urV5WLH7ISAd9V706z7ECFwnz16/SOrwuGcg20JUOMjnf3zjvhgcL4lCe
+BwJbct7nbuHkyoboJkVq5Ilx6VBsMC+k/56KEx/WGzKZ9GtyOyQYxQpqTKThB/I=
+=86JY
+-----END PGP SIGNATURE-----
+
+--kehmfGtqtJa5vaM6wpxOliiIDdckLose7--
 
