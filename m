@@ -1,34 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WVsOG-0002ny-M0
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Apr 2014 20:53:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45991)
+	id 1WVxyZ-0002G5-5K
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Apr 2014 02:51:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38748)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1WVsO9-0002nl-6y
-	for qemu-trivial@nongnu.org; Thu, 03 Apr 2014 20:53:51 -0400
+	(envelope-from <mprivozn@redhat.com>) id 1WVxyR-00025x-4b
+	for qemu-trivial@nongnu.org; Fri, 04 Apr 2014 02:51:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1WVsO3-0006fi-1s
-	for qemu-trivial@nongnu.org; Thu, 03 Apr 2014 20:53:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:12924)
+	(envelope-from <mprivozn@redhat.com>) id 1WVxyJ-00067U-35
+	for qemu-trivial@nongnu.org; Fri, 04 Apr 2014 02:51:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:23154)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>)
-	id 1WVsO2-0006fe-M4; Thu, 03 Apr 2014 20:53:38 -0400
+	(envelope-from <mprivozn@redhat.com>)
+	id 1WVxyI-000678-SJ; Fri, 04 Apr 2014 02:51:27 -0400
 Received: from int-mx01.intmail.prod.int.phx2.redhat.com
 	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s340rb52023471
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s346pPfW020924
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Thu, 3 Apr 2014 20:53:37 -0400
-Received: from amosk.info.com (vpn1-113-82.nay.redhat.com [10.66.113.82])
+	Fri, 4 Apr 2014 02:51:25 -0400
+Received: from [10.34.26.104] (dhcp-26-104.brq.redhat.com [10.34.26.104])
 	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s340rV52006525; Thu, 3 Apr 2014 20:53:32 -0400
-From: Amos Kong <akong@redhat.com>
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Date: Fri,  4 Apr 2014 08:53:28 +0800
-Message-Id: <1396572808-21535-1-git-send-email-akong@redhat.com>
+	id s346pMYB009722; Fri, 4 Apr 2014 02:51:23 -0400
+Message-ID: <533E5669.4090709@redhat.com>
+Date: Fri, 04 Apr 2014 08:51:21 +0200
+From: Michal Privoznik <mprivozn@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+MIME-Version: 1.0
+To: Amos Kong <akong@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1396572808-21535-1-git-send-email-akong@redhat.com>
+In-Reply-To: <1396572808-21535-1-git-send-email-akong@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: mprivozn@redhat.com, mjt@tls.msk.ru, lersek@redhat.com
-Subject: [Qemu-trivial] [PATCH] qga: trivial fix for unclear document of
+Cc: mjt@tls.msk.ru, lersek@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] qga: trivial fix for unclear document of
 	guest-set-time
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -41,66 +49,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Apr 2014 00:53:51 -0000
+X-List-Received-Date: Fri, 04 Apr 2014 06:51:41 -0000
 
-We mixedly used "guest time", "system time", "hardware time", "RTC"
-in document, it's unclear.
+On 04.04.2014 02:53, Amos Kong wrote:
+> We mixedly used "guest time", "system time", "hardware time", "RTC"
+> in document, it's unclear.
+>
+> This patch just added two remarks of RTC and replace two "guest time"
+> by "guest's system time".
+>
+> Signed-off-by: Amos Kong <akong@redhat.com>
 
-This patch just added two remarks of RTC and replace two "guest time"
-by "guest's system time".
+Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
 
-Signed-off-by: Amos Kong <akong@redhat.com>
----
- qga/commands-posix.c |  2 +-
- qga/qapi-schema.json | 14 +++++++-------
- 2 files changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index 6b5f11f..25e4302 100644
---- a/qga/commands-posix.c
-+++ b/qga/commands-posix.c
-@@ -171,7 +171,7 @@ void qmp_guest_set_time(bool has_time, int64_t time_ns, Error **errp)
-     /* Now, if user has passed a time to set and the system time is set, we
-      * just need to synchronize the hardware clock. However, if no time was
-      * passed, user is requesting the opposite: set the system time from the
--     * hardware clock. */
-+     * hardware clock(RTC). */
-     pid = fork();
-     if (pid == 0) {
-         setsid();
-diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
-index 80edca1..de75005 100644
---- a/qga/qapi-schema.json
-+++ b/qga/qapi-schema.json
-@@ -96,8 +96,8 @@
- ##
- # @guest-get-time:
- #
--# Get the information about guest time relative to the Epoch
--# of 1970-01-01 in UTC.
-+# Get the information about guest's System Time relative to
-+# the Epoch of 1970-01-01 in UTC.
- #
- # Returns: Time in nanoseconds.
- #
-@@ -117,11 +117,11 @@
- # gap was, NTP might not be able to resynchronize the
- # guest.
- #
--# This command tries to set guest time to the given value,
--# then sets the Hardware Clock to the current System Time.
--# This will make it easier for a guest to resynchronize
--# without waiting for NTP. If no @time is specified, then
--# the time to set is read from RTC.
-+# This command tries to set guest's System Time to the
-+# given value, then sets the Hardware Clock(RTC) to the
-+# current System Time. This will make it easier for a guest
-+# to resynchronize without waiting for NTP. If no @time is
-+# specified, then the time to set is read from RTC.
- #
- # @time: #optional time of nanoseconds, relative to the Epoch
- #        of 1970-01-01 in UTC.
--- 
-1.8.5.3
-
+Michal
 
