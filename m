@@ -1,45 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WVMbA-00030q-5l
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Apr 2014 10:57:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39143)
+	id 1WVsOG-0002ny-M0
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Apr 2014 20:53:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45991)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WVMb4-0002v7-Pn
-	for qemu-trivial@nongnu.org; Wed, 02 Apr 2014 10:57:03 -0400
+	(envelope-from <akong@redhat.com>) id 1WVsO9-0002nl-6y
+	for qemu-trivial@nongnu.org; Thu, 03 Apr 2014 20:53:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1WVMb0-0000Tp-8M
-	for qemu-trivial@nongnu.org; Wed, 02 Apr 2014 10:56:58 -0400
-Received: from mel.act-europe.fr ([194.98.77.210]:37750
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1WVMaq-0000RX-VS; Wed, 02 Apr 2014 10:56:45 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 0601F272007C;
-	Wed,  2 Apr 2014 16:56:44 +0200 (CEST)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id emiAogHcCoaJ; Wed,  2 Apr 2014 16:56:43 +0200 (CEST)
-Received: from [10.10.1.115] (lanoue.act-europe.fr [10.10.1.115])
-	(using TLSv1 with cipher ECDHE-RSA-AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id DC2C42720016;
-	Wed,  2 Apr 2014 16:56:43 +0200 (CEST)
-Message-ID: <533C252F.6040601@adacore.com>
-Date: Wed, 02 Apr 2014 16:56:47 +0200
-From: Fabien Chouteau <chouteau@adacore.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
-MIME-Version: 1.0
-To: Alexander Graf <agraf@suse.de>
-References: <1396450172-31322-1-git-send-email-chouteau@adacore.com>
-	<2B9CCD53-1C5A-48B7-90A0-C8C5D347E563@suse.de>
-In-Reply-To: <2B9CCD53-1C5A-48B7-90A0-C8C5D347E563@suse.de>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+	(envelope-from <akong@redhat.com>) id 1WVsO3-0006fi-1s
+	for qemu-trivial@nongnu.org; Thu, 03 Apr 2014 20:53:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:12924)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <akong@redhat.com>)
+	id 1WVsO2-0006fe-M4; Thu, 03 Apr 2014 20:53:38 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s340rb52023471
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Thu, 3 Apr 2014 20:53:37 -0400
+Received: from amosk.info.com (vpn1-113-82.nay.redhat.com [10.66.113.82])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id s340rV52006525; Thu, 3 Apr 2014 20:53:32 -0400
+From: Amos Kong <akong@redhat.com>
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Date: Fri,  4 Apr 2014 08:53:28 +0800
+Message-Id: <1396572808-21535-1-git-send-email-akong@redhat.com>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 194.98.77.210
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] Fix typo in eTSEC Ethernet controller
+X-Received-From: 209.132.183.28
+Cc: mprivozn@redhat.com, mjt@tls.msk.ru, lersek@redhat.com
+Subject: [Qemu-trivial] [PATCH] qga: trivial fix for unclear document of
+	guest-set-time
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,26 +41,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Apr 2014 14:57:03 -0000
+X-List-Received-Date: Fri, 04 Apr 2014 00:53:51 -0000
 
-On 04/02/2014 04:52 PM, Alexander Graf wrote:
-> 
-> On 02.04.2014, at 16:49, Fabien Chouteau <chouteau@adacore.com> wrote:
-> 
->> IRQ are lowered when ievent bit is cleared, so irq_pulse makes no sense
->> here...
->>
->> Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
-> 
-> Thanks, applied to ppc-next.
+We mixedly used "guest time", "system time", "hardware time", "RTC"
+in document, it's unclear.
 
-Thanks Alex,
+This patch just added two remarks of RTC and replace two "guest time"
+by "guest's system time".
 
-> Given that the wiring with boards is still missing I don't think this is a critical 2.0 fix.
-> 
+Signed-off-by: Amos Kong <akong@redhat.com>
+---
+ qga/commands-posix.c |  2 +-
+ qga/qapi-schema.json | 14 +++++++-------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-That's right.
-
-Regards,
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index 6b5f11f..25e4302 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -171,7 +171,7 @@ void qmp_guest_set_time(bool has_time, int64_t time_ns, Error **errp)
+     /* Now, if user has passed a time to set and the system time is set, we
+      * just need to synchronize the hardware clock. However, if no time was
+      * passed, user is requesting the opposite: set the system time from the
+-     * hardware clock. */
++     * hardware clock(RTC). */
+     pid = fork();
+     if (pid == 0) {
+         setsid();
+diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+index 80edca1..de75005 100644
+--- a/qga/qapi-schema.json
++++ b/qga/qapi-schema.json
+@@ -96,8 +96,8 @@
+ ##
+ # @guest-get-time:
+ #
+-# Get the information about guest time relative to the Epoch
+-# of 1970-01-01 in UTC.
++# Get the information about guest's System Time relative to
++# the Epoch of 1970-01-01 in UTC.
+ #
+ # Returns: Time in nanoseconds.
+ #
+@@ -117,11 +117,11 @@
+ # gap was, NTP might not be able to resynchronize the
+ # guest.
+ #
+-# This command tries to set guest time to the given value,
+-# then sets the Hardware Clock to the current System Time.
+-# This will make it easier for a guest to resynchronize
+-# without waiting for NTP. If no @time is specified, then
+-# the time to set is read from RTC.
++# This command tries to set guest's System Time to the
++# given value, then sets the Hardware Clock(RTC) to the
++# current System Time. This will make it easier for a guest
++# to resynchronize without waiting for NTP. If no @time is
++# specified, then the time to set is read from RTC.
+ #
+ # @time: #optional time of nanoseconds, relative to the Epoch
+ #        of 1970-01-01 in UTC.
+-- 
+1.8.5.3
 
 
