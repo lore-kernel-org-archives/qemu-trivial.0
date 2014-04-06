@@ -1,65 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WWmFU-00077Z-14
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Apr 2014 08:32:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50767)
+	id 1WWnpZ-0005SX-2Z
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Apr 2014 10:13:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38525)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WWmFJ-00074E-CG
-	for qemu-trivial@nongnu.org; Sun, 06 Apr 2014 08:32:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WWnpR-0005Lb-Lk
+	for qemu-trivial@nongnu.org; Sun, 06 Apr 2014 10:13:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WWmFA-0005N1-C4
-	for qemu-trivial@nongnu.org; Sun, 06 Apr 2014 08:32:21 -0400
-Received: from mail-pa0-x22d.google.com ([2607:f8b0:400e:c03::22d]:49412)
+	(envelope-from <mjt@tls.msk.ru>) id 1WWnpM-00041l-OR
+	for qemu-trivial@nongnu.org; Sun, 06 Apr 2014 10:13:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:59390)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1WWmFA-0005LU-6K; Sun, 06 Apr 2014 08:32:12 -0400
-Received: by mail-pa0-f45.google.com with SMTP id kl14so5510621pab.18
-	for <multiple recipients>; Sun, 06 Apr 2014 05:32:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=8JIrYf5FQXBdFv33KCfj4rL2Nih2k7NCoCym4UIO9ag=;
-	b=wfuKAtYhke0VivNyw9FFxk7F06jxnUjMpOmKMB2pqO4Jh1/PnQpwLOZHfBYsihNJMB
-	8XHxmlDI1/Dnj735TeZHtmGN8xwDu0RKx/4/ZtX0SVaJS3pBOvMPZRJf5VxrGdfcNwfy
-	5260JQ/stwY0WlW+yYkU82JuWYlwD+SgDi94pVtaaU0QAXrxWAIIKQj78t6PhmaTeqbW
-	WzLnmclw/1MgG9Ao57SODgG2wS4nGQtM0T8NlUNnuy/apZASMg6oByTfqUGY9Tif2/2a
-	dulM8/NtpgaFQdTm4rmqibXaZzwriOkE2g/WnYnpQ5VgSLMxEV9Jh0LEzz5Brw4AFWy3
-	K/Mg==
-X-Received: by 10.68.203.135 with SMTP id kq7mr9130151pbc.85.1396787531225;
-	Sun, 06 Apr 2014 05:32:11 -0700 (PDT)
-Received: from [192.168.1.104] ([219.143.87.241])
-	by mx.google.com with ESMTPSA id
-	pl10sm30012908pbb.56.2014.04.06.05.32.05 for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 06 Apr 2014 05:32:10 -0700 (PDT)
-Message-ID: <53414941.5040908@gmail.com>
-Date: Sun, 06 Apr 2014 20:32:01 +0800
-From: Chen Gang <gang.chen.5i5j@gmail.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WWnpC-0003yN-6P; Sun, 06 Apr 2014 10:13:30 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 8C8DC40B67;
+	Sun,  6 Apr 2014 18:13:27 +0400 (MSK)
+Message-ID: <53416107.1080709@msgid.tls.msk.ru>
+Date: Sun, 06 Apr 2014 18:13:27 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
-	<5333F6E2.9080202@gmail.com> <53382DDD.8050001@gmail.com>
-	<87fvlylf02.fsf@blackfin.pond.sub.org> <53396545.805@gmail.com>
-	<CAFEAcA-GL7bnZ-Pkga9PzDq7DpwPf8Gx0Wezzkm_CCbSUB1W8A@mail.gmail.com>
-	<533969AB.4010505@gmail.com>
-	<CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>
-	<53396CE9.9090405@gmail.com>
-	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
-	<533E7DD5.3090203@gmail.com> <5340F4FD.7040305@msgid.tls.msk.ru>
-In-Reply-To: <5340F4FD.7040305@msgid.tls.msk.ru>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1396019577-2013-1-git-send-email-peter.maydell@linaro.org>
+	<1396019577-2013-3-git-send-email-peter.maydell@linaro.org>
+	<5340FDA3.1080902@msgid.tls.msk.ru>
+	<CAFEAcA_uN=+R6UZ6FiRshH2XvSCYBKwcHZu5ugd_02rKeM=yDQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_uN=+R6UZ6FiRshH2XvSCYBKwcHZu5ugd_02rKeM=yDQ@mail.gmail.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c03::22d
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Anthony Liguori <aliguori@amazon.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH-trivial v2] vl: Report accelerator not
- supported for target more nicely
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Patch Tracking <patches@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH 2/3] int128.h: Avoid undefined behaviours
+ involving signed arithmetic
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,30 +50,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Apr 2014 12:32:30 -0000
+X-List-Received-Date: Sun, 06 Apr 2014 14:13:50 -0000
 
-
-On 04/06/2014 02:32 PM, Michael Tokarev wrote:
-> 04.04.2014 13:39, Chen Gang wrote:
->> When you ask for an accelerator not supported for your target, you get
->> a bogus "accelerator does not exist" message:
+06.04.2014 14:18, Peter Maydell wrote:
+> On 6 April 2014 08:09, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>> 28.03.2014 19:12, Peter Maydell wrote:
+>>> Add casts when we're performing arithmetic on the .hi parts of an
+>>> Int128, to avoid undefined behaviour.
+>> []
+>>>  static inline Int128 int128_sub(Int128 a, Int128 b)
+>>>  {
+>>> -    return (Int128){ a.lo - b.lo, a.hi - b.hi - (a.lo < b.lo) };
+>>> +    return (Int128){ a.lo - b.lo, (uint64_t)a.hi - b.hi - (a.lo < b.lo) };
 >>
->>   $ qemu-system-arm -machine none,accel=kvm
->>   KVM not supported for this target
->>   "kvm" accelerator does not exist.
->>   No accelerator found!
->>
->> Suppress it.
+>> What was wrong with this one?  I don't think casting to unsigned here is
+>> a good idea.
 > 
-> Applied to -trivial, thanks!
+> This patch is fixing these three clang sanitizer warnings:
+> /home/petmay01/linaro/qemu-from-laptop/qemu/include/qemu/int128.h:81:40:
+> runtime error: signed integer overflow: 0 - -9223372036854775808
+> cannot be represented in type 'long'
+
+Int128 is defined as { uint64_t lo, int64_t hi }, so the second half is
+signed (because Int128 should be able to represent negative numbers too).
+
+-9223372036854775808 is 0x8000000000000000 -- which is only sign bit = 1.
+
+uint64_t - int64_t is already somewhat undefined - should the second
+int be treated as unsigned too? (I'm sorry I don't really remember the
+C specs in there).
+
+But more to the point - the new behavour, while "defined", is just as
+arbitrary as the old "undefined" behavour.  On overflow we can get either
+truncated or negative result, neither of which is right.
+
+> /home/petmay01/linaro/qemu-from-laptop/qemu/include/qemu/int128.h:81:47:
+> runtime error: signed integer overflow: -9223372036854775808 - 1
+> cannot be represented in type 'long'
+> /home/petmay01/linaro/qemu-from-laptop/qemu/include/qemu/int128.h:56:47:
+> runtime error: left shift of negative value -9223372036854775807
 > 
-> /mjt
+> of which the first two are in this function.
 > 
+> Note that int128_add() already has a cast.
+> 
+> The alternative would be to say that Int128 should have
+> undefined behaviour on underflow/overflow and the test
+> code is wrong, but that doesn't seem very useful to me.
 
-Thanks !
+It is still arbitrary.
 
--- 
-Chen Gang
+But whole thing looks more like an attempt to shut up a bogus compiler warning
+really.  It is not correct either way because there's just no correct way,
+because the end behavour is undefined in hardware, and we _are_ emulating
+hardware here.
 
-Open, share, and attitude like air, water, and life which God blessed
+Yes, int128_add() has a cast already, and it is just as arbitrary as this one.
+
+So.. maybe for consistency with _add(), maybe to shut up useless warning, maybe
+to have something to base units-tests on (arbitrary but defined), this can be
+applied... I think :)
+
+So, applied to -trivial ;)
+
+Thanks,
+
+/mjt
 
