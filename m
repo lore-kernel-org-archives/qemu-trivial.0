@@ -1,40 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WWgdz-0005Q6-TI
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Apr 2014 02:33:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37259)
+	id 1WWgeg-0006Cy-OW
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Apr 2014 02:34:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37362)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WWgdr-0005Fd-NI
-	for qemu-trivial@nongnu.org; Sun, 06 Apr 2014 02:33:25 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WWgeZ-00065b-KO
+	for qemu-trivial@nongnu.org; Sun, 06 Apr 2014 02:34:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WWgdl-0000TB-J3
-	for qemu-trivial@nongnu.org; Sun, 06 Apr 2014 02:33:19 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52976)
+	(envelope-from <mjt@tls.msk.ru>) id 1WWgeT-0000aE-Ez
+	for qemu-trivial@nongnu.org; Sun, 06 Apr 2014 02:34:03 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40010)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WWgdY-0000R8-Oo; Sun, 06 Apr 2014 02:33:00 -0400
+	id 1WWgeG-0000Yf-T2; Sun, 06 Apr 2014 02:33:45 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2465740AFB;
-	Sun,  6 Apr 2014 10:33:00 +0400 (MSK)
-Message-ID: <5340F51B.6000906@msgid.tls.msk.ru>
-Date: Sun, 06 Apr 2014 10:32:59 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 33E7A4073F;
+	Sun,  6 Apr 2014 10:33:44 +0400 (MSK)
+Message-ID: <5340F547.6030304@msgid.tls.msk.ru>
+Date: Sun, 06 Apr 2014 10:33:43 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:17.0) Gecko/20131103 Icedove/17.0.10
 MIME-Version: 1.0
-To: Amos Kong <akong@redhat.com>
-References: <1396625102-29034-1-git-send-email-akong@redhat.com>
-In-Reply-To: <1396625102-29034-1-git-send-email-akong@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1396291915-7269-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1396291915-7269-1-git-send-email-peter.maydell@linaro.org>
 X-Enigmail-Version: 1.5.1
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, mprivozn@redhat.com, lersek@redhat.com,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] qga: trivial fix for unclear
- documentation of guest-set-time
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] configure: Fix indentation of help for
+ --enable/disable-debug-info
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,16 +45,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Apr 2014 06:33:26 -0000
+X-List-Received-Date: Sun, 06 Apr 2014 06:34:09 -0000
 
-04.04.2014 19:25, Amos Kong =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
-> We mixed the use of "guest time", "system time", "hardware time",
-> "RTC" in documentation, it's unclear.
->=20
-> This patch just added two remarks of RTC and replace two "guest time"
-> by "guest's system time".
+31.03.2014 22:51, Peter Maydell wrote:
+> The help text for the --enable-debug-info and --disable-debug-info
+> command line options was misindented: delete the stray extra space
+> and bring it in to line with everything else.
 
-Applied to -trivial, thank you!
+Applied to -trivial, thanks!
 
 /mjt
 
