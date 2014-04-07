@@ -1,48 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WX6KO-0000Kt-2P
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 05:58:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33825)
+	id 1WX6Ls-0002sQ-8J
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 06:00:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34412)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WX6KI-0000EL-En
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 05:58:54 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WX6Ll-0002aU-Oj
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 06:00:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WX6KD-0000tX-Ur
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 05:58:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34241)
+	(envelope-from <mjt@tls.msk.ru>) id 1WX6Lg-0001eX-Qu
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 06:00:21 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44678)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1WX6K4-0000qw-K7; Mon, 07 Apr 2014 05:58:36 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s379wYTA014616
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 7 Apr 2014 05:58:35 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-40.ams2.redhat.com
-	[10.36.116.40])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s379wWGo023256
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 7 Apr 2014 05:58:33 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 84D04200D1; Mon,  7 Apr 2014 11:58:31 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1395834349-19001-1-git-send-email-pbonzini@redhat.com>
-	<53426D1C.4030709@msgid.tls.msk.ru>
-Date: Mon, 07 Apr 2014 11:58:31 +0200
-In-Reply-To: <53426D1C.4030709@msgid.tls.msk.ru> (Michael Tokarev's message of
-	"Mon, 07 Apr 2014 13:17:16 +0400")
-Message-ID: <87fvlpihq0.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WX6LW-0001VO-JG; Mon, 07 Apr 2014 06:00:06 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 6157C40C36;
+	Mon,  7 Apr 2014 14:00:05 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 3C8116AD;
+	Mon,  7 Apr 2014 14:00:05 +0400 (MSK)
+Received: (nullmailer pid 3787 invoked by uid 1000);
+	Mon, 07 Apr 2014 10:00:05 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Mon,  7 Apr 2014 14:00:05 +0400
+Message-Id: <1396864805-3738-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] scripts: add sample
-	model file for Coverity Scan
+X-Received-From: 86.62.121.231
+Cc: Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PATCH trivial v2] doc: grammify "allows to"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,28 +40,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Apr 2014 09:58:55 -0000
+X-List-Received-Date: Mon, 07 Apr 2014 10:00:26 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+English language grammar does not allow usage
+of the word "allows" directly followed by an
+infinitive, declaring constructs like "something
+allows to do somestuff" un-grammatical.  Often
+it is possible to just insert "one" between "allows"
+and "to" to make the construct grammatical, but
+usually it is better to re-phrase the statement.
 
-> 26.03.2014 15:45, Paolo Bonzini wrote:
->> This is the model file that is being used for the QEMU project's scans
->> on scan.coverity.com.  It fixed about 30 false positives (10% of the
->> total) and exposed about 60 new memory leaks.
->> 
->> The file is not automatically used; changes to it must be propagated
->> to the website manually by an admin (right now Markus, Peter and me
->> are admins).
->
-> Applied to -trivial, thank you!
->
-> Note: I haven't actually checked this file for correctness myself ;)
+This patch tries to fix 3 examples of "allows to"
+usage in qemu doc, but does not address comments
+in the code with similar constructs.  It also adds
+missing "the" in the same line.
 
-I checked v2.  I suggested a few minor improvements, and some of them
-made it into this version.
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+v2: catch one more occurence of the same construct
+in qemu-options.hx, in vnc encodings section.  This
+statement may need rewriting which I don't provide
+in this patch, which just fixes the grammar.
 
-Since Paolo's initial version comes in part from me, I guess it would be
-proper to add
+ qemu-doc.texi   |    2 +-
+ qemu-options.hx |    5 +++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index e6e20eb..88ec9bb 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -823,7 +823,7 @@ In this case, the block device must be exported using qemu-nbd:
+ qemu-nbd --socket=/tmp/my_socket my_disk.qcow2
+ @end example
+ 
+-The use of qemu-nbd allows to share a disk between several guests:
++The use of qemu-nbd allows sharing of a disk between several guests:
+ @example
+ qemu-nbd --socket=/tmp/my_socket --share=2 my_disk.qcow2
+ @end example
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 2d33815..3a7cc8f 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -444,7 +444,8 @@ This option defines the type of the media: disk or cdrom.
+ @item cyls=@var{c},heads=@var{h},secs=@var{s}[,trans=@var{t}]
+ These options have the same definition as they have in @option{-hdachs}.
+ @item snapshot=@var{snapshot}
+-@var{snapshot} is "on" or "off" and allows to enable snapshot for given drive (see @option{-snapshot}).
++@var{snapshot} is "on" or "off" and controls snapshot mode for the given drive
++(see @option{-snapshot}).
+ @item cache=@var{cache}
+ @var{cache} is "none", "writeback", "unsafe", "directsync" or "writethrough" and controls how the host cache is used to access block data.
+ @item aio=@var{aio}
+@@ -1242,7 +1243,7 @@ Disable adaptive encodings. Adaptive encodings are enabled by default.
+ An adaptive encoding will try to detect frequently updated screen regions,
+ and send updates in these regions using a lossy encoding (like JPEG).
+ This can be really helpful to save bandwidth when playing videos. Disabling
+-adaptive encodings allows to restore the original static behavior of encodings
++adaptive encodings restores the original static behavior of encodings
+ like Tight.
+ 
+ @item share=[allow-exclusive|force-shared|ignore]
+-- 
+1.7.10.4
+
 
