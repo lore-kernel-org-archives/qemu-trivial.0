@@ -1,45 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WX4e0-0003GX-Gv
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 04:11:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40515)
+	id 1WX5gU-0008NJ-JD
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 05:17:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52528)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1WX4ds-0002wy-1L
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 04:11:00 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WX5gN-0008DL-8d
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 05:17:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1WX4dk-0006z9-RM
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 04:10:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:64370)
+	(envelope-from <mjt@tls.msk.ru>) id 1WX5gI-0003S4-0T
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 05:17:34 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44954)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>)
-	id 1WX4dk-0006yX-Iz; Mon, 07 Apr 2014 04:10:48 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s378AhdL012228
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 7 Apr 2014 04:10:44 -0400
-Received: from work-vm (vpn1-6-73.ams2.redhat.com [10.36.6.73])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s378ADwR005812
-	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NO);
-	Mon, 7 Apr 2014 04:10:16 -0400
-Date: Mon, 7 Apr 2014 09:10:13 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20140407081012.GA2400@work-vm>
-References: <1395834349-19001-1-git-send-email-pbonzini@redhat.com>
-	<5340F620.2000607@msgid.tls.msk.ru>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WX5g7-0003Qk-Kr; Mon, 07 Apr 2014 05:17:19 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id C0C7C40C36;
+	Mon,  7 Apr 2014 13:17:16 +0400 (MSK)
+Message-ID: <53426D1C.4030709@msgid.tls.msk.ru>
+Date: Mon, 07 Apr 2014 13:17:16 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <5340F620.2000607@msgid.tls.msk.ru>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <1395834349-19001-1-git-send-email-pbonzini@redhat.com>
+In-Reply-To: <1395834349-19001-1-git-send-email-pbonzini@redhat.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, armbru@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] scripts: add sample
- model file for Coverity Scan
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com, qemu-devel@nongnu.org,
+	armbru@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v4] scripts: add sample model file for
+ Coverity Scan
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,29 +46,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Apr 2014 08:11:02 -0000
+X-List-Received-Date: Mon, 07 Apr 2014 09:17:40 -0000
 
-* Michael Tokarev (mjt@tls.msk.ru) wrote:
-> 26.03.2014 15:45, Paolo Bonzini wrote:
-> > This is the model file that is being used for the QEMU project's scans
-> > on scan.coverity.com.  It fixed about 30 false positives (10% of the
-> > total) and exposed about 60 new memory leaks.
-> > 
-> > The file is not automatically used; changes to it must be propagated
-> > to the website manually by an admin (right now Markus, Peter and me
-> > are admins).
+26.03.2014 15:45, Paolo Bonzini wrote:
+> This is the model file that is being used for the QEMU project's scans
+> on scan.coverity.com.  It fixed about 30 false positives (10% of the
+> total) and exposed about 60 new memory leaks.
 > 
-> While we don't have issues with the model itself, but really wonder if we
-> should keep this file inside qemu sources.  It isn't used in there, as
-> explicitly stated above, and maybe it is easier to maintain it "closer"
-> to the website?
+> The file is not automatically used; changes to it must be propagated
+> to the website manually by an admin (right now Markus, Peter and me
+> are admins).
 
-Given that the model file describes semantics of functions in the codebase
-it needs to be kept consistent with the version of the code.
-Hence it needs to be version controlled with the code, hence the best place
-is inside the qemu sources.
+Applied to -trivial, thank you!
 
-Dave
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+Note: I haven't actually checked this file for correctness myself ;)
+
+/mjt
 
