@@ -1,54 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXBIu-0002t8-1L
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 11:17:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51005)
+	id 1WXBoI-0003e1-91
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 11:50:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58804)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WXBIn-0002jI-1E
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 11:17:41 -0400
+	(envelope-from <armbru@redhat.com>) id 1WXBoC-0003Tp-Ka
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 11:50:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WXBIi-0005lK-15
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 11:17:36 -0400
-Received: from mail-lb0-f174.google.com ([209.85.217.174]:45739)
+	(envelope-from <armbru@redhat.com>) id 1WXBo8-0008Ty-7m
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 11:50:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63840)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WXBIh-0005l4-Qj
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 11:17:31 -0400
-Received: by mail-lb0-f174.google.com with SMTP id u14so4850090lbd.5
-	for <qemu-trivial@nongnu.org>; Mon, 07 Apr 2014 08:17:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=cGbj41y7Yv74J+Y8yafe8Y3BOO7xR96INkcQoASUgEM=;
-	b=JS7v3kcZC7GuWfvxCSHdGsrdTbHCkMUouP/JZHkoNguKj6Ehy7fLqd8RVstRlj8C/1
-	jpiVup2z2V23d+3NzzC/uaxx9xF7NJTvQ2D8D42wdSciP2eg0muyxQmpkr5TNlqjeO4s
-	SEz80GQfH5dqK+QK4krtIM/QuO8LcfaRKyhug5o1S/ckDYr7vU9jXxZ0MvmVX0qoqrZd
-	afCbPwlW7WUjggG6bMvHhbTmuIRo37M2fMm0kSDfBRPn/sgMmdnUqWV2v0ADC4pncrpa
-	+aZDQZaIc9IjgKEvRfJU1b7mJDpNLC3++fZ49ty8kH2HF3x75qpXoDW/HWwIBnkaRK2x
-	8GfA==
-X-Gm-Message-State: ALoCoQnbmhanyKxNtGC3f+YcwDa8EMbNI3QZgyi0/SU3WDpuKC3Usu83jGhjbqh9xJ+SVKnIJzZw
-X-Received: by 10.112.89.10 with SMTP id bk10mr428174lbb.64.1396883850652;
-	Mon, 07 Apr 2014 08:17:30 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.180.233 with HTTP; Mon, 7 Apr 2014 08:17:10 -0700 (PDT)
-In-Reply-To: <5342BC96.6010204@cloudius-systems.com>
+	(envelope-from <armbru@redhat.com>)
+	id 1WXBnz-0008Sj-Do; Mon, 07 Apr 2014 11:49:51 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s37Fnmxf025116
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Mon, 7 Apr 2014 11:49:49 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-40.ams2.redhat.com
+	[10.36.116.40])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s37Fnkte030398
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 7 Apr 2014 11:49:48 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 4743B200D1; Mon,  7 Apr 2014 17:49:46 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1396019577-2013-1-git-send-email-peter.maydell@linaro.org>
 	<1396019577-2013-3-git-send-email-peter.maydell@linaro.org>
 	<5340FDA3.1080902@msgid.tls.msk.ru>
 	<CAFEAcA_uN=+R6UZ6FiRshH2XvSCYBKwcHZu5ugd_02rKeM=yDQ@mail.gmail.com>
-	<5342BC96.6010204@cloudius-systems.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 7 Apr 2014 16:17:10 +0100
-Message-ID: <CAFEAcA-dCJ+i+g7F+hxgPr3AZjwOgrWj4X+9dXLvpj56JYQ07A@mail.gmail.com>
-To: Avi Kivity <avi@cloudius-systems.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.174
+	<53416107.1080709@msgid.tls.msk.ru>
+	<CAFEAcA8sr69XWzFjvBg8VN_ih2O=S78jWrXLrshmQAoWXhTQWw@mail.gmail.com>
+	<5342B540.4050005@twiddle.net>
+	<CAFEAcA_fp604HJ22hX6MWfjCHEjDCdqBh5-wNb3JX_923iuLew@mail.gmail.com>
+Date: Mon, 07 Apr 2014 17:49:46 +0200
+In-Reply-To: <CAFEAcA_fp604HJ22hX6MWfjCHEjDCdqBh5-wNb3JX_923iuLew@mail.gmail.com>
+	(Peter Maydell's message of "Mon, 7 Apr 2014 15:47:49 +0100")
+Message-ID: <87mwfx87hh.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Patch Tracking <patches@linaro.org>,
 	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
 	Richard Henderson <rth@twiddle.net>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] int128.h: Avoid
- undefined behaviours involving signed arithmetic
+	undefined behaviours involving signed arithmetic
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,22 +61,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Apr 2014 15:17:41 -0000
+X-List-Received-Date: Mon, 07 Apr 2014 15:50:09 -0000
 
-On 7 April 2014 15:56, Avi Kivity <avi@cloudius-systems.com> wrote:
-> On 04/06/2014 01:18 PM, Peter Maydell wrote:
->> The alternative would be to say that Int128 should have
->> undefined behaviour on underflow/overflow and the test
->> code is wrong, but that doesn't seem very useful to me.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-> Isn't the test broken here?  It is trying to add (or shift) -2^127 and
-> something else, and the result truly overflows.
+> On 7 April 2014 15:25, Richard Henderson <rth@twiddle.net> wrote:
+>> On 04/06/2014 08:27 AM, Peter Maydell wrote:
+>>> (if C compilers had a "behave
+>>> like a sane 2s complement system for signed arithmetic"
+>>> option I'd be advocating for us using it...)
+>>
+>> -fwrapv.
+>
+> Well, we should use that then :-)
 
-Well, the test code is assuming "semantics as per 2s
-complement arithmetic" and checking various corner cases.
-As I say, we could define that this is invalid and
-rewrite the test cases.
+I share your distaste for compilers being perfectly capable to recognize
+undefined behavior so they can "optimize" working programs into slightly
+faster broken programs, yet unable to warn me about the very same
+undefined behavior they so eagerly exploit.
 
-thanks
--- PMM
+-fwrapv is known to be buggy in gcc 4.1.  Do we care?
+
+It bit the kernel a couple of years ago, and they replaced -fwrapv by
+-fno-strict-overflow.
+
+Commit introducing -fwrapv:
+https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=68df3755e383e6fecf2354a67b08f92f18536594
+
+Commit moving to -fno-strict-overflow:
+https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=a137802ee839ace40079bebde24cfb416f73208a
+
+Blog post comparing the two options:
+http://www.airs.com/blog/archives/120
 
