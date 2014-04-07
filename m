@@ -1,55 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXBoI-0003e1-91
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 11:50:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58804)
+	id 1WXDZz-000746-9d
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 13:43:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55815)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WXBoC-0003Tp-Ka
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 11:50:08 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1WXDZt-0006qN-4O
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 13:43:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WXBo8-0008Ty-7m
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 11:50:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:63840)
+	(envelope-from <stefan@weilnetz.de>) id 1WXDZo-0004xc-3k
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 13:43:25 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:55128)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1WXBnz-0008Sj-Do; Mon, 07 Apr 2014 11:49:51 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s37Fnmxf025116
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Mon, 7 Apr 2014 11:49:49 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-40.ams2.redhat.com
-	[10.36.116.40])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s37Fnkte030398
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 7 Apr 2014 11:49:48 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 4743B200D1; Mon,  7 Apr 2014 17:49:46 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1396019577-2013-1-git-send-email-peter.maydell@linaro.org>
-	<1396019577-2013-3-git-send-email-peter.maydell@linaro.org>
-	<5340FDA3.1080902@msgid.tls.msk.ru>
-	<CAFEAcA_uN=+R6UZ6FiRshH2XvSCYBKwcHZu5ugd_02rKeM=yDQ@mail.gmail.com>
-	<53416107.1080709@msgid.tls.msk.ru>
-	<CAFEAcA8sr69XWzFjvBg8VN_ih2O=S78jWrXLrshmQAoWXhTQWw@mail.gmail.com>
-	<5342B540.4050005@twiddle.net>
-	<CAFEAcA_fp604HJ22hX6MWfjCHEjDCdqBh5-wNb3JX_923iuLew@mail.gmail.com>
-Date: Mon, 07 Apr 2014 17:49:46 +0200
-In-Reply-To: <CAFEAcA_fp604HJ22hX6MWfjCHEjDCdqBh5-wNb3JX_923iuLew@mail.gmail.com>
-	(Peter Maydell's message of "Mon, 7 Apr 2014 15:47:49 +0100")
-Message-ID: <87mwfx87hh.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Patch Tracking <patches@linaro.org>,
-	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] int128.h: Avoid
-	undefined behaviours involving signed arithmetic
+	(envelope-from <stefan@weilnetz.de>)
+	id 1WXDZd-0004vX-Q8; Mon, 07 Apr 2014 13:43:09 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	318FC1182EB3; Mon,  7 Apr 2014 19:43:07 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id VOVKSIl1_NA9; Mon,  7 Apr 2014 19:43:02 +0200 (CEST)
+Received: by v220110690675601.yourvserver.net (Postfix, from userid 1000)
+	id 3F6A81182EB4; Mon,  7 Apr 2014 19:43:02 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Mon,  7 Apr 2014 19:42:59 +0200
+Message-Id: <1396892580-3216-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 37.221.199.173
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] Fix grammar in comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,36 +42,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Apr 2014 15:50:09 -0000
+X-List-Received-Date: Mon, 07 Apr 2014 17:43:30 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/i2c/smbus_eeprom.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> On 7 April 2014 15:25, Richard Henderson <rth@twiddle.net> wrote:
->> On 04/06/2014 08:27 AM, Peter Maydell wrote:
->>> (if C compilers had a "behave
->>> like a sane 2s complement system for signed arithmetic"
->>> option I'd be advocating for us using it...)
->>
->> -fwrapv.
->
-> Well, we should use that then :-)
+diff --git a/hw/i2c/smbus_eeprom.c b/hw/i2c/smbus_eeprom.c
+index 86f35c1..72c09cb 100644
+--- a/hw/i2c/smbus_eeprom.c
++++ b/hw/i2c/smbus_eeprom.c
+@@ -71,7 +71,7 @@ static void eeprom_write_data(SMBusDevice *dev, uint8_t cmd, uint8_t *buf, int l
+     printf("eeprom_write_byte: addr=0x%02x cmd=0x%02x val=0x%02x\n",
+            dev->i2c.address, cmd, buf[0]);
+ #endif
+-    /* An page write operation is not a valid SMBus command.
++    /* A page write operation is not a valid SMBus command.
+        It is a block write without a length byte.  Fortunately we
+        get the full block anyway.  */
+     /* TODO: Should this set the current location?  */
+-- 
+1.7.10.4
 
-I share your distaste for compilers being perfectly capable to recognize
-undefined behavior so they can "optimize" working programs into slightly
-faster broken programs, yet unable to warn me about the very same
-undefined behavior they so eagerly exploit.
-
--fwrapv is known to be buggy in gcc 4.1.  Do we care?
-
-It bit the kernel a couple of years ago, and they replaced -fwrapv by
--fno-strict-overflow.
-
-Commit introducing -fwrapv:
-https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=68df3755e383e6fecf2354a67b08f92f18536594
-
-Commit moving to -fno-strict-overflow:
-https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=a137802ee839ace40079bebde24cfb416f73208a
-
-Blog post comparing the two options:
-http://www.airs.com/blog/archives/120
 
