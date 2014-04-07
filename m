@@ -1,31 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXEHq-000810-0F
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 14:28:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37595)
+	id 1WXGef-0004bQ-Qd
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Apr 2014 17:00:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45321)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1WXEHj-0007rC-58
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 14:28:48 -0400
+	(envelope-from <avi@cloudius-systems.com>) id 1WXAyQ-0005RN-MA
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 10:56:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1WXEHe-0002pA-6M
-	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 14:28:43 -0400
-Received: from qemu.weilnetz.de ([37.221.198.45]:33446)
+	(envelope-from <avi@cloudius-systems.com>) id 1WXAyI-00061k-W1
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 10:56:34 -0400
+Received: from mail-ee0-f54.google.com ([74.125.83.54]:40073)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1WXEHT-0002nQ-Vg; Mon, 07 Apr 2014 14:28:28 -0400
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 0302017F614; Mon,  7 Apr 2014 20:28:24 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org
-Date: Mon,  7 Apr 2014 20:28:23 +0200
-Message-Id: <1396895303-5356-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.198.45
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
-	Anthony Liguori <aliguori@amazon.com>, Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-trivial] [PATCH] misc: Use cpu_physical_memory_read and
-	cpu_physical_memory_write
+	(envelope-from <avi@cloudius-systems.com>) id 1WXAyI-00061P-QS
+	for qemu-trivial@nongnu.org; Mon, 07 Apr 2014 10:56:26 -0400
+Received: by mail-ee0-f54.google.com with SMTP id d49so735220eek.13
+	for <qemu-trivial@nongnu.org>; Mon, 07 Apr 2014 07:56:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:message-id:date:from:user-agent:mime-version:to
+	:cc:subject:references:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=ssIAr0oCvGqjvKqk4J/1hnoYqqi9gcg3yp78eSjIfFw=;
+	b=jptyzpXaKKdo/udaGf4NF5fiZ8Owvg0uRZmb9f5EjDqPMG1V/04jotG6UR6r6xCiER
+	1n++8hHknyXwHr33VIWYzj9Jijnq2qRdJz7dS3XypPQ5Lq4vv84+qQygbUNNqRzL2Jrq
+	r3lE/K1mxUeKlxzvRnUJ1v692sX63pyGJJHo6YsMZ3ERYSPO21dJOs9rgLrMkLDs3OlW
+	jeQbCRd62LS1BQXCew21FgRp+IOFen0UenuV3pDWeBNFKqIQ3H788KmcL88eZqsigHhc
+	CEqI91d1fsCtt/k59jx3okTGBMBJdBiITdJ0kwdw9jnn9UfTIsuCYbLcI8juWP4puCW5
+	SX/w==
+X-Gm-Message-State: ALoCoQm0N8vSfJh0PyHreIg+8IGbRksZ0clByd+8gFcgkIn/6AzDc9/E+XUqOMobRzAfR1ktzCFl
+X-Received: by 10.14.9.195 with SMTP id 43mr380755eet.89.1396882585695;
+	Mon, 07 Apr 2014 07:56:25 -0700 (PDT)
+Received: from augustus.local (84.94.198.183.cable.012.net.il. [84.94.198.183])
+	by mx.google.com with ESMTPSA id p8sm42239066eef.26.2014.04.07.07.56.23
+	for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Mon, 07 Apr 2014 07:56:25 -0700 (PDT)
+Message-ID: <5342BC96.6010204@cloudius-systems.com>
+Date: Mon, 07 Apr 2014 17:56:22 +0300
+From: Avi Kivity <avi@cloudius-systems.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
+References: <1396019577-2013-1-git-send-email-peter.maydell@linaro.org>	<1396019577-2013-3-git-send-email-peter.maydell@linaro.org>	<5340FDA3.1080902@msgid.tls.msk.ru>
+	<CAFEAcA_uN=+R6UZ6FiRshH2XvSCYBKwcHZu5ugd_02rKeM=yDQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_uN=+R6UZ6FiRshH2XvSCYBKwcHZu5ugd_02rKeM=yDQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.83.54
+X-Mailman-Approved-At: Mon, 07 Apr 2014 17:00:31 -0400
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Patch Tracking <patches@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] int128.h: Avoid
+ undefined behaviours involving signed arithmetic
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,191 +66,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Apr 2014 18:28:48 -0000
+X-List-Received-Date: Mon, 07 Apr 2014 14:56:40 -0000
 
-These functions don't need type casts (as does cpu_physical_memory_rw)
-and also make the code better readable.
+On 04/06/2014 01:18 PM, Peter Maydell wrote:
+> On 6 April 2014 08:09, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>> 28.03.2014 19:12, Peter Maydell wrote:
+>>> Add casts when we're performing arithmetic on the .hi parts of an
+>>> Int128, to avoid undefined behaviour.
+>> []
+>>>   static inline Int128 int128_sub(Int128 a, Int128 b)
+>>>   {
+>>> -    return (Int128){ a.lo - b.lo, a.hi - b.hi - (a.lo < b.lo) };
+>>> +    return (Int128){ a.lo - b.lo, (uint64_t)a.hi - b.hi - (a.lo < b.lo) };
+>> What was wrong with this one?  I don't think casting to unsigned here is
+>> a good idea.
+> This patch is fixing these three clang sanitizer warnings:
+> /home/petmay01/linaro/qemu-from-laptop/qemu/include/qemu/int128.h:81:40:
+> runtime error: signed integer overflow: 0 - -9223372036854775808
+> cannot be represented in type 'long'
+> /home/petmay01/linaro/qemu-from-laptop/qemu/include/qemu/int128.h:81:47:
+> runtime error: signed integer overflow: -9223372036854775808 - 1
+> cannot be represented in type 'long'
+> /home/petmay01/linaro/qemu-from-laptop/qemu/include/qemu/int128.h:56:47:
+> runtime error: left shift of negative value -9223372036854775807
+>
+> of which the first two are in this function.
+>
+> Note that int128_add() already has a cast.
+>
+> The alternative would be to say that Int128 should have
+> undefined behaviour on underflow/overflow and the test
+> code is wrong, but that doesn't seem very useful to me.
+>
+>
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- cpus.c                     |    2 +-
- hw/i386/kvmvapic.c         |   31 ++++++++++++++-----------------
- hw/intc/apic.c             |    4 ++--
- target-s390x/misc_helper.c |   12 ++++++------
- 4 files changed, 23 insertions(+), 26 deletions(-)
+Isn't the test broken here?  It is trying to add (or shift) -2^127 and 
+something else, and the result truly overflows.
 
-diff --git a/cpus.c b/cpus.c
-index 1104d61..7bbe153 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -1454,7 +1454,7 @@ void qmp_pmemsave(int64_t addr, int64_t size, const char *filename,
-         l = sizeof(buf);
-         if (l > size)
-             l = size;
--        cpu_physical_memory_rw(addr, buf, l, 0);
-+        cpu_physical_memory_read(addr, buf, l);
-         if (fwrite(buf, 1, l, f) != l) {
-             error_set(errp, QERR_IO_ERROR);
-             goto exit;
-diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
-index a1c3d1c..a967b48 100644
---- a/hw/i386/kvmvapic.c
-+++ b/hw/i386/kvmvapic.c
-@@ -124,14 +124,14 @@ static const TPRInstruction tpr_instr[] = {
- 
- static void read_guest_rom_state(VAPICROMState *s)
- {
--    cpu_physical_memory_rw(s->rom_state_paddr, (void *)&s->rom_state,
--                           sizeof(GuestROMState), 0);
-+    cpu_physical_memory_read(s->rom_state_paddr, &s->rom_state,
-+                             sizeof(GuestROMState));
- }
- 
- static void write_guest_rom_state(VAPICROMState *s)
- {
--    cpu_physical_memory_rw(s->rom_state_paddr, (void *)&s->rom_state,
--                           sizeof(GuestROMState), 1);
-+    cpu_physical_memory_write(s->rom_state_paddr, &s->rom_state,
-+                              sizeof(GuestROMState));
- }
- 
- static void update_guest_rom_state(VAPICROMState *s)
-@@ -311,16 +311,14 @@ static int update_rom_mapping(VAPICROMState *s, CPUX86State *env, target_ulong i
-     for (pos = le32_to_cpu(s->rom_state.fixup_start);
-          pos < le32_to_cpu(s->rom_state.fixup_end);
-          pos += 4) {
--        cpu_physical_memory_rw(paddr + pos - s->rom_state.vaddr,
--                               (void *)&offset, sizeof(offset), 0);
-+        cpu_physical_memory_read(paddr + pos - s->rom_state.vaddr,
-+                                 &offset, sizeof(offset));
-         offset = le32_to_cpu(offset);
--        cpu_physical_memory_rw(paddr + offset, (void *)&patch,
--                               sizeof(patch), 0);
-+        cpu_physical_memory_read(paddr + offset, &patch, sizeof(patch));
-         patch = le32_to_cpu(patch);
-         patch += rom_state_vaddr - le32_to_cpu(s->rom_state.vaddr);
-         patch = cpu_to_le32(patch);
--        cpu_physical_memory_rw(paddr + offset, (void *)&patch,
--                               sizeof(patch), 1);
-+        cpu_physical_memory_write(paddr + offset, &patch, sizeof(patch));
-     }
-     read_guest_rom_state(s);
-     s->vapic_paddr = paddr + le32_to_cpu(s->rom_state.vapic_vaddr) -
-@@ -364,8 +362,8 @@ static int vapic_enable(VAPICROMState *s, X86CPU *cpu)
-     }
-     vapic_paddr = s->vapic_paddr +
-         (((hwaddr)cpu_number) << VAPIC_CPU_SHIFT);
--    cpu_physical_memory_rw(vapic_paddr + offsetof(VAPICState, enabled),
--                           (void *)&enabled, sizeof(enabled), 1);
-+    cpu_physical_memory_write(vapic_paddr + offsetof(VAPICState, enabled),
-+                              &enabled, sizeof(enabled));
-     apic_enable_vapic(cpu->apic_state, vapic_paddr);
- 
-     s->state = VAPIC_ACTIVE;
-@@ -535,7 +533,7 @@ static int patch_hypercalls(VAPICROMState *s)
-     uint8_t *rom;
- 
-     rom = g_malloc(s->rom_size);
--    cpu_physical_memory_rw(rom_paddr, rom, s->rom_size, 0);
-+    cpu_physical_memory_read(rom_paddr, rom, s->rom_size);
- 
-     for (pos = 0; pos < s->rom_size - sizeof(vmcall_pattern); pos++) {
-         if (kvm_irqchip_in_kernel()) {
-@@ -551,8 +549,7 @@ static int patch_hypercalls(VAPICROMState *s)
-         }
-         if (memcmp(rom + pos, pattern, 7) == 0 &&
-             (rom[pos + 7] == alternates[0] || rom[pos + 7] == alternates[1])) {
--            cpu_physical_memory_rw(rom_paddr + pos + 5, (uint8_t *)patch,
--                                   3, 1);
-+            cpu_physical_memory_write(rom_paddr + pos + 5, patch, 3);
-             /*
-              * Don't flush the tb here. Under ordinary conditions, the patched
-              * calls are miles away from the current IP. Under malicious
-@@ -760,8 +757,8 @@ static int vapic_post_load(void *opaque, int version_id)
-             run_on_cpu(first_cpu, do_vapic_enable, s);
-         } else {
-             zero = g_malloc0(s->rom_state.vapic_size);
--            cpu_physical_memory_rw(s->vapic_paddr, zero,
--                                   s->rom_state.vapic_size, 1);
-+            cpu_physical_memory_write(s->vapic_paddr, zero,
-+                                      s->rom_state.vapic_size);
-             g_free(zero);
-         }
-     }
-diff --git a/hw/intc/apic.c b/hw/intc/apic.c
-index b8c061b..2f40cba 100644
---- a/hw/intc/apic.c
-+++ b/hw/intc/apic.c
-@@ -98,8 +98,8 @@ static void apic_sync_vapic(APICCommonState *s, int sync_type)
-         return;
-     }
-     if (sync_type & SYNC_FROM_VAPIC) {
--        cpu_physical_memory_rw(s->vapic_paddr, (void *)&vapic_state,
--                               sizeof(vapic_state), 0);
-+        cpu_physical_memory_read(s->vapic_paddr, &vapic_state,
-+                                 sizeof(vapic_state));
-         s->tpr = vapic_state.tpr;
-     }
-     if (sync_type & (SYNC_TO_VAPIC | SYNC_ISR_IRR_TO_VAPIC)) {
-diff --git a/target-s390x/misc_helper.c b/target-s390x/misc_helper.c
-index 294b3ed..cdbbb79 100644
---- a/target-s390x/misc_helper.c
-+++ b/target-s390x/misc_helper.c
-@@ -336,7 +336,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-             ebcdic_put(sysib.model, "QEMU            ", 16);
-             ebcdic_put(sysib.sequence, "QEMU            ", 16);
-             ebcdic_put(sysib.plant, "QEMU", 4);
--            cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+            cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-         } else if ((sel1 == 2) && (sel2 == 1)) {
-             /* Basic Machine CPU */
-             struct sysib_121 sysib;
-@@ -346,7 +346,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-             ebcdic_put(sysib.sequence, "QEMUQEMUQEMUQEMU", 16);
-             ebcdic_put(sysib.plant, "QEMU", 4);
-             stw_p(&sysib.cpu_addr, env->cpu_num);
--            cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+            cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-         } else if ((sel1 == 2) && (sel2 == 2)) {
-             /* Basic Machine CPUs */
-             struct sysib_122 sysib;
-@@ -358,7 +358,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-             stw_p(&sysib.active_cpus, 1);
-             stw_p(&sysib.standby_cpus, 0);
-             stw_p(&sysib.reserved_cpus, 0);
--            cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+            cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-         } else {
-             cc = 3;
-         }
-@@ -375,7 +375,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-                 ebcdic_put(sysib.plant, "QEMU", 4);
-                 stw_p(&sysib.cpu_addr, env->cpu_num);
-                 stw_p(&sysib.cpu_id, 0);
--                cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+                cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-             } else if ((sel1 == 2) && (sel2 == 2)) {
-                 /* LPAR CPUs */
-                 struct sysib_222 sysib;
-@@ -392,7 +392,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-                 stl_p(&sysib.caf, 1000);
-                 stw_p(&sysib.dedicated_cpus, 0);
-                 stw_p(&sysib.shared_cpus, 0);
--                cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+                cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-             } else {
-                 cc = 3;
-             }
-@@ -414,7 +414,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-                 ebcdic_put(sysib.vm[0].name, "KVMguest", 8);
-                 stl_p(&sysib.vm[0].caf, 1000);
-                 ebcdic_put(sysib.vm[0].cpi, "KVM/Linux       ", 16);
--                cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+                cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-             } else {
-                 cc = 3;
-             }
--- 
-1.7.10.4
+A better behaviour would be to abort when this happens.  Int128 was 
+designed to avoid silent overflows, not to silently cause breakage.
 
+Not that I think it is necessary, there is no way for the guest to 
+trigger an overflow.
 
