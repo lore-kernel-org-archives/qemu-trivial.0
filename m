@@ -1,38 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXQ6B-0008R2-19
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 03:05:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47461)
+	id 1WXR7d-0000q4-HK
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 04:11:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60206)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WXQ5n-0007mC-22
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 03:05:15 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1WXR7W-0000jD-F9
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 04:11:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WXQ5i-0001ii-41
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 03:05:10 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51083)
+	(envelope-from <peter.maydell@linaro.org>) id 1WXR7Q-0000UK-N7
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 04:11:02 -0400
+Received: from mail-lb0-f171.google.com ([209.85.217.171]:47713)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WXQ5N-0001M2-50; Tue, 08 Apr 2014 03:04:45 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id DC2AE40E33;
-	Tue,  8 Apr 2014 11:04:43 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id E602A674;
-	Tue,  8 Apr 2014 11:04:12 +0400 (MSK)
-Received: (nullmailer pid 10564 invoked by uid 1000);
-	Tue, 08 Apr 2014 07:04:12 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Tue,  8 Apr 2014 11:04:01 +0400
-Message-Id: <1396940651-10513-2-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <peter.maydell@linaro.org>) id 1WXR7Q-0000Tv-Fc
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 04:10:56 -0400
+Received: by mail-lb0-f171.google.com with SMTP id w7so533000lbi.30
+	for <qemu-trivial@nongnu.org>; Tue, 08 Apr 2014 01:10:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=ss+3aZB7Nm6+6Aa/Bbrko8ANTVizg0gknjVy1gtU9UQ=;
+	b=TQH/7pHbyp6J1pNHa80+JK57EpgTe7gSu2nA9fPjNCHE2UoDMFfLjLmIFE6lCT1Rwb
+	oSqUAZV2OB6uZKtqeLiu0UYTqSNUxHkWERb3YKdZDtkcBckVnnAuB9Che3VSApGFx1jZ
+	4gXxvvYl2Pw/csgSj97nnF/E2g2t0mSxz0ufGVC+sNTdCfxMt2a2HDOhFGWDk0/lNb8r
+	ZGiZebvxVfapgSRrLg05CIPSShubGd69ZeWVpBC1xm/D6lTeGUO/MigCRWvwXs10IXFq
+	qaBwR3nCXR9OK1Dx9TSzTLMI3C5Uc5W0DSQ3o/Zo54OvKSeIyudd4bQrg/qNUO3pwQuv
+	ys1Q==
+X-Gm-Message-State: ALoCoQmKOBvUzf6XA0U+cFXcrFefTMhBE+pi6I1TLEsMekBFMcCAvDlBkOsIGMXiVeXiMveNhZ6G
+X-Received: by 10.112.142.68 with SMTP id ru4mr585090lbb.49.1396944654989;
+	Tue, 08 Apr 2014 01:10:54 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.180.233 with HTTP; Tue, 8 Apr 2014 01:10:34 -0700 (PDT)
 In-Reply-To: <1396940651-10513-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1396940651-10513-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Chen Gang <gang.chen.5i5j@gmail.com>
-Subject: [Qemu-trivial] [PULL 01/11] vl: Report accelerator not supported
-	for target more nicely
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 8 Apr 2014 09:10:34 +0100
+Message-ID: <CAFEAcA941ST_y3k3b5UjTZeKP220WnZE0Bp2Lok4czw58T74_A@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.171
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL for-2.0 00/11] Trivial
+	patches for 2014-04-08
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,41 +55,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Apr 2014 07:05:30 -0000
+X-List-Received-Date: Tue, 08 Apr 2014 08:11:07 -0000
 
-From: Chen Gang <gang.chen.5i5j@gmail.com>
+On 8 April 2014 08:04, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> And there's a series of 3 patches by Peter Maydell which adds casts
+> to uint* in a few places.  Those are also quite simple and safe, even
+> with quite some disagreement about whenever this is necessary to
+> start with -- I mean the int128 change, the other changes are good.
+> At least this way we make it consistent with other parts of the code.
 
-When you ask for an accelerator not supported for your target, you get
-a bogus "accelerator does not exist" message:
+I was not expecting those to go in for 2.0...
 
-  $ qemu-system-arm -machine none,accel=kvm
-  KVM not supported for this target
-  "kvm" accelerator does not exist.
-  No accelerator found!
-
-Suppress it.
-
-Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- vl.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/vl.c b/vl.c
-index 9975e5a..db9ea90 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2740,7 +2740,7 @@ static int configure_accelerator(QEMUMachine *machine)
-                 if (!accel_list[i].available()) {
-                     printf("%s not supported for this target\n",
-                            accel_list[i].name);
--                    continue;
-+                    break;
-                 }
-                 *(accel_list[i].allowed) = true;
-                 ret = accel_list[i].init(machine);
--- 
-1.7.10.4
-
+thanks
+-- PMM
 
