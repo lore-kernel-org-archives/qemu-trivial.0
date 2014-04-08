@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXPzB-0002eY-OC
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 02:58:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45202)
+	id 1WXQEq-00022G-Os
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 03:14:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48636)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WXPz4-0002K2-N5
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 02:58:20 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WXQEk-0001qO-A1
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 03:14:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WXPyy-0007TN-J4
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 02:58:14 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:35590)
+	(envelope-from <mjt@tls.msk.ru>) id 1WXQEf-0004Pf-Ql
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 03:14:26 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:43995)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WXPym-0007RO-0O; Tue, 08 Apr 2014 02:57:56 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 12F6A40CC9;
-	Tue,  8 Apr 2014 10:57:55 +0400 (MSK)
-Message-ID: <53439DF3.9060608@msgid.tls.msk.ru>
-Date: Tue, 08 Apr 2014 10:57:55 +0400
+	id 1WXQEW-0004Me-OH; Tue, 08 Apr 2014 03:14:12 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id E539440E32;
+	Tue,  8 Apr 2014 11:14:11 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id A5C966B0;
+	Tue,  8 Apr 2014 11:04:13 +0400 (MSK)
+Received: (nullmailer pid 10579 invoked by uid 1000);
+	Tue, 08 Apr 2014 07:04:12 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131103 Icedove/17.0.10
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>
-References: <1396895303-5356-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1396895303-5356-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.5.1
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+To: qemu-devel@nongnu.org
+Date: Tue,  8 Apr 2014 11:04:07 +0400
+Message-Id: <1396940651-10513-8-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1396940651-10513-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1396940651-10513-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
-	Anthony Liguori <aliguori@amazon.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] misc: Use cpu_physical_memory_read and
- cpu_physical_memory_write
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 07/11] xbzrle.c: Avoid undefined behaviour
+	with signed arithmetic
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,16 +44,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Apr 2014 06:58:21 -0000
+X-List-Received-Date: Tue, 08 Apr 2014 07:14:31 -0000
 
-07.04.2014 22:28, Stefan Weil =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
-> These functions don't need type casts (as does cpu_physical_memory_rw)
-> and also make the code better readable.
+From: Peter Maydell <peter.maydell@linaro.org>
 
-This will wait 2.0.  While technically it is quite simple, but we're
-too close to release now.
+Use unsigned types for doing bitwise arithmetic in the xzbrle
+calculations, to avoid undefined behaviour:
 
-Thanks,
+ xbzrle.c:99:49: runtime error: left shift of 72340172838076673
+ by 7 places cannot be represented in type 'long'
 
-/mjt
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ xbzrle.c |    8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/xbzrle.c b/xbzrle.c
+index fbcb35d..8e220bf 100644
+--- a/xbzrle.c
++++ b/xbzrle.c
+@@ -28,7 +28,7 @@ int xbzrle_encode_buffer(uint8_t *old_buf, uint8_t *new_buf, int slen,
+ {
+     uint32_t zrun_len = 0, nzrun_len = 0;
+     int d = 0, i = 0;
+-    long res, xor;
++    long res;
+     uint8_t *nzrun_start = NULL;
+ 
+     g_assert(!(((uintptr_t)old_buf | (uintptr_t)new_buf | slen) %
+@@ -93,9 +93,11 @@ int xbzrle_encode_buffer(uint8_t *old_buf, uint8_t *new_buf, int slen,
+         /* word at a time for speed, use of 32-bit long okay */
+         if (!res) {
+             /* truncation to 32-bit long okay */
+-            long mask = (long)0x0101010101010101ULL;
++            unsigned long mask = (unsigned long)0x0101010101010101ULL;
+             while (i < slen) {
+-                xor = *(long *)(old_buf + i) ^ *(long *)(new_buf + i);
++                unsigned long xor;
++                xor = *(unsigned long *)(old_buf + i)
++                    ^ *(unsigned long *)(new_buf + i);
+                 if ((xor - mask) & ~xor & (mask << 7)) {
+                     /* found the end of an nzrun within the current long */
+                     while (old_buf[i] != new_buf[i]) {
+-- 
+1.7.10.4
+
 
