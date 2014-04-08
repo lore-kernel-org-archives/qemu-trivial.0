@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXUix-0005y5-Vj
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 08:01:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53175)
+	id 1WXUkQ-0006yf-JC
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 08:03:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53769)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUin-0005mh-Cu
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:01:54 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUkF-0006wQ-FT
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:03:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUie-00032x-7z
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:01:45 -0400
-Received: from mail-pd0-x234.google.com ([2607:f8b0:400e:c02::234]:48103)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUk6-0003sF-EE
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:03:15 -0400
+Received: from mail-pa0-x229.google.com ([2607:f8b0:400e:c03::229]:53190)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1WXUie-00032j-1y; Tue, 08 Apr 2014 08:01:36 -0400
-Received: by mail-pd0-f180.google.com with SMTP id v10so903033pde.25
-	for <multiple recipients>; Tue, 08 Apr 2014 05:01:34 -0700 (PDT)
+	id 1WXUk6-0003rR-7o; Tue, 08 Apr 2014 08:03:06 -0400
+Received: by mail-pa0-f41.google.com with SMTP id fa1so942172pad.28
+	for <multiple recipients>; Tue, 08 Apr 2014 05:03:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=message-id:date:from:user-agent:mime-version:to:cc:subject
 	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=kCmJcnDnlUL8Wm+jUfwb7zK3JJIxTmHDGaZdU2i4Vmo=;
-	b=lGLQJpNrwZOrMkF191zKsWZAVp2nSAB5zsjNkA2wx77+1p6kMWOlgvjItWPmtq2nFN
-	NLWrGlN6KxLUzxL+41g7y9d6oyNPGwa9gG5gcHkoEpWV8vrpF3X/ceFXmiGoHJGLa3eu
-	L6qT308erTvMUXpbx3YgNZo9AIeClvIUcfUtSvRcpdHxjehFNOiDnI4UPPL4uzGtxQvg
-	AzPJZ1r61IB0RTtqEubNqb8gPmG4wIRGbWyXbPDttW1T8ezRm7u3amhpIHHkemknrDjc
-	E9DYNI7zeG23jGZ7ojZlco+YGo3Khs4JlK+7gH/EcpmccjFZXWuQQL0IqVlYx6zAWYeX
-	GbmA==
-X-Received: by 10.66.136.131 with SMTP id qa3mr3996832pab.77.1396958494789;
-	Tue, 08 Apr 2014 05:01:34 -0700 (PDT)
+	bh=ltDn5OB3QN2KEnyvLZZQGkQwQ7Ni0Hr9abpeQD9ui0I=;
+	b=beRS/M5uTEZwn72D6GV/S8u9ZTyZ7jWJkUbW6Q5OEQMi1xyrODdeZ9kgFXnUZeIIaw
+	kac+Xy3gtGGqgHqodnLwFsIYugGfMyHX3iZXBU29pkRMCBzzqxuRiz8MVBjWeTwL1lvt
+	RLbCPrMMa/ltwqchnbu2Tv/CeRob8KCYAsXUqratHn0o7Agx6gOTaBWKENTfanEOX8Af
+	jeSBgvw41jf7DOSEk/OtVC3L3LkblHQijzb7hoKl26hpiwxlOQZbJEn946L+kC2egcTs
+	2Y2iyR0mkHC33TzHnOBPDVY/DkZF5Op1/nRDVWPEGNPF8y+LKA+GwssbPbGcXMQaArCF
+	zyEQ==
+X-Received: by 10.68.191.138 with SMTP id gy10mr1262682pbc.169.1396958585291; 
+	Tue, 08 Apr 2014 05:03:05 -0700 (PDT)
 Received: from [192.168.1.104] ([124.126.227.121])
-	by mx.google.com with ESMTPSA id wp3sm4188756pbc.67.2014.04.08.05.01.29
+	by mx.google.com with ESMTPSA id yo9sm9463059pab.16.2014.04.08.05.03.00
 	for <multiple recipients>
 	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Tue, 08 Apr 2014 05:01:34 -0700 (PDT)
-Message-ID: <5343E516.3020103@gmail.com>
-Date: Tue, 08 Apr 2014 20:01:26 +0800
+	Tue, 08 Apr 2014 05:03:04 -0700 (PDT)
+Message-ID: <5343E571.60407@gmail.com>
+Date: Tue, 08 Apr 2014 20:02:57 +0800
 From: Chen Gang <gang.chen.5i5j@gmail.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
@@ -48,18 +48,20 @@ References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
 	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
 	<533E7DD5.3090203@gmail.com> <5340F4FD.7040305@msgid.tls.msk.ru>
 	<53414941.5040908@gmail.com> <5343E4D4.6070305@gmail.com>
-In-Reply-To: <5343E4D4.6070305@gmail.com>
+	<5343E516.3020103@gmail.com>
+In-Reply-To: <5343E516.3020103@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::234
+X-Received-From: 2607:f8b0:400e:c03::229
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Markus Armbruster <armbru@redhat.com>,
 	Anthony Liguori <aliguori@amazon.com>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH trivial 1/3] vl: remove useless 'continue'
+Subject: [Qemu-trivial] [PATCH trivial 2/3] vl: remove redundant local
+	variable 'res'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,28 +73,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Apr 2014 12:01:54 -0000
+X-List-Received-Date: Tue, 08 Apr 2014 12:03:24 -0000
 
-Normal "if (...) {...} else {...}" is enough in "while(...) {...}", not
-need additional useless 'continue'.
+In function, if no additional resources to free before quit, commonly,
+need not use additional local variable 'res' to notice about it. So
+remove it to simplify code.
 
 Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
 ---
- vl.c |    1 -
- 1 file changed, 1 deletion(-)
+ vl.c |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/vl.c b/vl.c
-index 9975e5a..7505002 100644
+index 7505002..377f962 100644
 --- a/vl.c
 +++ b/vl.c
-@@ -3034,7 +3034,6 @@ int main(int argc, char **argv, char **envp)
-         if (argv[optind][0] != '-') {
-             /* disk image */
-             optind++;
--            continue;
-         } else {
-             const QEMUOption *popt;
+@@ -1188,18 +1188,16 @@ DeviceState *get_boot_device(uint32_t position)
+ {
+     uint32_t counter = 0;
+     FWBootEntry *i = NULL;
+-    DeviceState *res = NULL;
  
+     if (!QTAILQ_EMPTY(&fw_boot_order)) {
+         QTAILQ_FOREACH(i, &fw_boot_order, link) {
+             if (counter == position) {
+-                res = i->dev;
+-                break;
++                return i->dev;
+             }
+             counter++;
+         }
+     }
+-    return res;
++    return NULL;
+ }
+ 
+ /*
 -- 
 1.7.9.5
 
