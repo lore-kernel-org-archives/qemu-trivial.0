@@ -1,46 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXUg1-0002AU-4y
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 07:58:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51801)
+	id 1WXUht-0004RS-Fm
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 08:00:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52721)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WXUfv-00023U-Jp
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 07:58:51 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUhj-0004C1-D7
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:00:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WXUfr-0001Pu-13
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 07:58:47 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:43300)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUha-0002TG-2e
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:00:39 -0400
+Received: from mail-pa0-x229.google.com ([2607:f8b0:400e:c03::229]:59918)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WXUfi-0001Mu-2V; Tue, 08 Apr 2014 07:58:34 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 942BB40F0C;
-	Tue,  8 Apr 2014 15:58:31 +0400 (MSK)
-Received: from wh.tls.msk.ru (wh.tls.msk.ru [192.168.177.7])
-	by tsrv.corpit.ru (Postfix) with ESMTP id 61B616AB;
-	Tue,  8 Apr 2014 15:58:31 +0400 (MSK)
-Message-ID: <5343E467.2060008@msgid.tls.msk.ru>
-Date: Tue, 08 Apr 2014 15:58:31 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1WXUhZ-0002Sl-P2; Tue, 08 Apr 2014 08:00:29 -0400
+Received: by mail-pa0-f41.google.com with SMTP id fa1so942992pad.0
+	for <multiple recipients>; Tue, 08 Apr 2014 05:00:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=XNmJsYdC500YBKb3t4Nurfv0SK4X13u09fIfvZo2jRI=;
+	b=jIegTwbVeomMxTITbF6jKUTcPRZ5zBYENQVKKaMocPs24YLbuf5gABCgHIy5wWf+4E
+	xNJT8FAYkeOEy2uNFmTqYKHfocNOSgX8VpHo3KoCkMtON5RjGV1zYPw0os9HC2+W2CwA
+	mMpzHidA7rGEcObn4kOKxnkqwcTl45xfdz/QMakZmfR2DLvliJIbjyhtiVh7dTgUFYaO
+	HqgzQRWJt3rExfTh8Vsc7fW6hHfQoo414MNOQ7nFLKZTjbPJmNFeoSRxxcFj/xOT9PWI
+	r6UVzdai3Ak/mPIRVwNhfQxIp20E+FsvuYBj1PGVFGgiZHPAta52CkKk/GEf1M4/QiFg
+	Aqyw==
+X-Received: by 10.66.144.102 with SMTP id sl6mr4033794pab.96.1396958428626;
+	Tue, 08 Apr 2014 05:00:28 -0700 (PDT)
+Received: from [192.168.1.104] ([124.126.227.121])
+	by mx.google.com with ESMTPSA id
+	id10sm4199641pbc.35.2014.04.08.05.00.24 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 08 Apr 2014 05:00:27 -0700 (PDT)
+Message-ID: <5343E4D4.6070305@gmail.com>
+Date: Tue, 08 Apr 2014 20:00:20 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20131103 Icedove/17.0.10
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1396940651-10513-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<CAFEAcA941ST_y3k3b5UjTZeKP220WnZE0Bp2Lok4czw58T74_A@mail.gmail.com>
-	<5343B8CB.9050700@msgid.tls.msk.ru>
-	<CAFEAcA9xr+fyjACcvn7N=dMdMmsm6j++Vosqz1XZmzr125WqoQ@mail.gmail.com>
-	<87fvlot7fx.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87fvlot7fx.fsf@blackfin.pond.sub.org>
-X-Enigmail-Version: 1.5.1
-Content-Type: text/plain; charset=KOI8-R
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
+	<5333F6E2.9080202@gmail.com> <53382DDD.8050001@gmail.com>
+	<87fvlylf02.fsf@blackfin.pond.sub.org> <53396545.805@gmail.com>
+	<CAFEAcA-GL7bnZ-Pkga9PzDq7DpwPf8Gx0Wezzkm_CCbSUB1W8A@mail.gmail.com>
+	<533969AB.4010505@gmail.com>
+	<CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>
+	<53396CE9.9090405@gmail.com>
+	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
+	<533E7DD5.3090203@gmail.com> <5340F4FD.7040305@msgid.tls.msk.ru>
+	<53414941.5040908@gmail.com>
+In-Reply-To: <53414941.5040908@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::229
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Anthony Liguori <aliguori@amazon.com>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL for-2.0 00/11] Trivial
-	patches for 2014-04-08
+Subject: [Qemu-trivial] [PATCH trivial 0/3] vl: simplify code for main() and
+	get_boot_device()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,34 +72,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Apr 2014 11:58:52 -0000
+X-List-Received-Date: Tue, 08 Apr 2014 12:00:48 -0000
 
-08.04.2014 14:57, Markus Armbruster wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> 
->> On 8 April 2014 09:52, Michael Tokarev <mjt@tls.msk.ru> wrote:
->>> Well.  At least one of them is entirely safe (hw/ide/ahci.c).
->>> Another - xbzrle.c - looks okay, and even maybe fixing a bug.
->>> And this int128 thing is okay too, except that the whole thing
->>> is questionable as has been mentioned in that thread.
->>>
->>> I can prepare another pull request without xbzrle and int128 changes,
->>> or even without ahci change too, but I'm not sure it is worth the
->>> effort - I think everything is okay to go.  I'll take your word for this.
->>
->> Well, anything that goes in today is going to get at best two
->> days of being tested before the release. To me that argues
->> fairly strongly for not putting anything in unless it is
->> fixing a genuine bug.
-> 
-> Seconded.
+In "vl.c", at least, we can simplify the code below, so can let readers
+read professional C code (especially for new readers, which often start
+reading code at main function).
 
--trivial does not fix bugs.  Only documentation bugs, which does
-not met the above definition.
+ - remove useless 'continue' in main().
 
-So no -trivial patches for 2.0 anymore.
+ - remove redundant local variable 'res' in get_boot_device().
 
-Thanks,
+ - remove local variable 'args' in the middle of code block in main().
 
-/mjt
+The following 3 patches are for the 3 'remove' above.
+
+And "vl.c" has a very long function main() which is about 17K lines.
+Next, it can be split into sub-functions (so can bypass another code
+style issue: multiple "{...}" styles within "swith(...)").
+
+
+Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+---
+ vl.c |   23 ++++++++++-------------
+ 1 file changed, 10 insertions(+), 13 deletions(-)
 
