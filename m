@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXUkQ-0006yf-JC
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 08:03:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53769)
+	id 1WXUmT-0000MV-2l
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 08:05:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54329)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUkF-0006wQ-FT
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:03:24 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUmG-0008Sv-UN
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:05:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUk6-0003sF-EE
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:03:15 -0400
-Received: from mail-pa0-x229.google.com ([2607:f8b0:400e:c03::229]:53190)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUm7-0004sr-Tr
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:05:20 -0400
+Received: from mail-pb0-x230.google.com ([2607:f8b0:400e:c01::230]:50394)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1WXUk6-0003rR-7o; Tue, 08 Apr 2014 08:03:06 -0400
-Received: by mail-pa0-f41.google.com with SMTP id fa1so942172pad.28
-	for <multiple recipients>; Tue, 08 Apr 2014 05:03:05 -0700 (PDT)
+	id 1WXUm7-0004sT-NU; Tue, 08 Apr 2014 08:05:11 -0400
+Received: by mail-pb0-f48.google.com with SMTP id md12so937753pbc.35
+	for <multiple recipients>; Tue, 08 Apr 2014 05:05:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=message-id:date:from:user-agent:mime-version:to:cc:subject
 	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=ltDn5OB3QN2KEnyvLZZQGkQwQ7Ni0Hr9abpeQD9ui0I=;
-	b=beRS/M5uTEZwn72D6GV/S8u9ZTyZ7jWJkUbW6Q5OEQMi1xyrODdeZ9kgFXnUZeIIaw
-	kac+Xy3gtGGqgHqodnLwFsIYugGfMyHX3iZXBU29pkRMCBzzqxuRiz8MVBjWeTwL1lvt
-	RLbCPrMMa/ltwqchnbu2Tv/CeRob8KCYAsXUqratHn0o7Agx6gOTaBWKENTfanEOX8Af
-	jeSBgvw41jf7DOSEk/OtVC3L3LkblHQijzb7hoKl26hpiwxlOQZbJEn946L+kC2egcTs
-	2Y2iyR0mkHC33TzHnOBPDVY/DkZF5Op1/nRDVWPEGNPF8y+LKA+GwssbPbGcXMQaArCF
-	zyEQ==
-X-Received: by 10.68.191.138 with SMTP id gy10mr1262682pbc.169.1396958585291; 
-	Tue, 08 Apr 2014 05:03:05 -0700 (PDT)
+	bh=HuYuKbNwwzHBg70l/241FyA6+0zN1qaTKzTqBWRBASc=;
+	b=EypmrFN5T7GI+lRtpAVTKtICxQXjzWMzWg+N5vM/jZBmIujfokEK/QC6xQDks3XwR2
+	56DsN0xVYDBgvYkUkel5K7nP6owL4aBsBnjWPJug+J+r8lyzgok6sg+YzsQ0xayIf2wT
+	Rkh1rJIQQ7OEO/4Fi75QxNOn7PSFKq4IwmqxtV9c2RjjihIzFx1Ec6p/tCjLrxPDsQ90
+	eQ2YaYP2qt+YBz9flfzEFHgSDXypIXWJVHbgEPw/DFzEdLE/iSDlcDcq8PZJBQOTYB7i
+	RyZWD+Oke0pmgBwArJzeWM3tz2ADe9GEYniVJIwtLDw+q+KqNlN7IlPiPPk2bf0czYKn
+	annQ==
+X-Received: by 10.68.100.1 with SMTP id eu1mr4218583pbb.36.1396958710861;
+	Tue, 08 Apr 2014 05:05:10 -0700 (PDT)
 Received: from [192.168.1.104] ([124.126.227.121])
-	by mx.google.com with ESMTPSA id yo9sm9463059pab.16.2014.04.08.05.03.00
+	by mx.google.com with ESMTPSA id i10sm9413459pat.36.2014.04.08.05.05.05
 	for <multiple recipients>
 	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Tue, 08 Apr 2014 05:03:04 -0700 (PDT)
-Message-ID: <5343E571.60407@gmail.com>
-Date: Tue, 08 Apr 2014 20:02:57 +0800
+	Tue, 08 Apr 2014 05:05:09 -0700 (PDT)
+Message-ID: <5343E5ED.2040906@gmail.com>
+Date: Tue, 08 Apr 2014 20:05:01 +0800
 From: Chen Gang <gang.chen.5i5j@gmail.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
@@ -48,20 +48,20 @@ References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
 	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
 	<533E7DD5.3090203@gmail.com> <5340F4FD.7040305@msgid.tls.msk.ru>
 	<53414941.5040908@gmail.com> <5343E4D4.6070305@gmail.com>
-	<5343E516.3020103@gmail.com>
-In-Reply-To: <5343E516.3020103@gmail.com>
+	<5343E516.3020103@gmail.com> <5343E571.60407@gmail.com>
+In-Reply-To: <5343E571.60407@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c03::229
+X-Received-From: 2607:f8b0:400e:c01::230
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Markus Armbruster <armbru@redhat.com>,
 	Anthony Liguori <aliguori@amazon.com>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH trivial 2/3] vl: remove redundant local
-	variable 'res'
+Subject: [Qemu-trivial] [PATCH trivial 3/3] vl: remove local variable 'args'
+ in the middle of code block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -73,42 +73,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Apr 2014 12:03:24 -0000
+X-List-Received-Date: Tue, 08 Apr 2014 12:05:31 -0000
 
-In function, if no additional resources to free before quit, commonly,
-need not use additional local variable 'res' to notice about it. So
-remove it to simplify code.
+For C code, it does not recommend to define a local variable in the
+middle of code block without "{...}". The original author may want to
+zero members not mentioned in structure assignment.
+
+So recommend to use structure initializing block "{...}" for structure
+assignment in the middle of code block.
+
+And at present, we can assume that all related gcc versions will be
+latest enough to notice about this grammar.
+
 
 Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
 ---
- vl.c |    6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ vl.c |   18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/vl.c b/vl.c
-index 7505002..377f962 100644
+index 377f962..d381443 100644
 --- a/vl.c
 +++ b/vl.c
-@@ -1188,18 +1188,16 @@ DeviceState *get_boot_device(uint32_t position)
- {
-     uint32_t counter = 0;
-     FWBootEntry *i = NULL;
--    DeviceState *res = NULL;
+@@ -4368,15 +4368,15 @@ int main(int argc, char **argv, char **envp)
  
-     if (!QTAILQ_EMPTY(&fw_boot_order)) {
-         QTAILQ_FOREACH(i, &fw_boot_order, link) {
-             if (counter == position) {
--                res = i->dev;
--                break;
-+                return i->dev;
-             }
-             counter++;
-         }
-     }
--    return res;
-+    return NULL;
- }
+     qdev_machine_init();
  
- /*
+-    QEMUMachineInitArgs args = { .machine = machine,
+-                                 .ram_size = ram_size,
+-                                 .boot_order = boot_order,
+-                                 .kernel_filename = kernel_filename,
+-                                 .kernel_cmdline = kernel_cmdline,
+-                                 .initrd_filename = initrd_filename,
+-                                 .cpu_model = cpu_model };
+-
+-    current_machine->init_args = args;
++    current_machine->init_args = (QEMUMachineInitArgs) {
++        .machine = machine,
++        .ram_size = ram_size,
++        .boot_order = boot_order,
++        .kernel_filename = kernel_filename,
++        .kernel_cmdline = kernel_cmdline,
++        .initrd_filename = initrd_filename,
++        .cpu_model = cpu_model };
++
+     machine->init(&current_machine->init_args);
+ 
+     audio_init();
 -- 
 1.7.9.5
 
