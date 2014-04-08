@@ -1,67 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXUmT-0000MV-2l
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 08:05:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54329)
+	id 1WXbvS-0000ai-M4
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2014 15:43:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59644)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUmG-0008Sv-UN
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:05:29 -0400
+	(envelope-from <eblake@redhat.com>) id 1WXbvM-0000Nr-4r
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 15:43:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WXUm7-0004sr-Tr
-	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 08:05:20 -0400
-Received: from mail-pb0-x230.google.com ([2607:f8b0:400e:c01::230]:50394)
+	(envelope-from <eblake@redhat.com>) id 1WXbvH-0003Gm-7K
+	for qemu-trivial@nongnu.org; Tue, 08 Apr 2014 15:43:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:26478)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1WXUm7-0004sT-NU; Tue, 08 Apr 2014 08:05:11 -0400
-Received: by mail-pb0-f48.google.com with SMTP id md12so937753pbc.35
-	for <multiple recipients>; Tue, 08 Apr 2014 05:05:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=HuYuKbNwwzHBg70l/241FyA6+0zN1qaTKzTqBWRBASc=;
-	b=EypmrFN5T7GI+lRtpAVTKtICxQXjzWMzWg+N5vM/jZBmIujfokEK/QC6xQDks3XwR2
-	56DsN0xVYDBgvYkUkel5K7nP6owL4aBsBnjWPJug+J+r8lyzgok6sg+YzsQ0xayIf2wT
-	Rkh1rJIQQ7OEO/4Fi75QxNOn7PSFKq4IwmqxtV9c2RjjihIzFx1Ec6p/tCjLrxPDsQ90
-	eQ2YaYP2qt+YBz9flfzEFHgSDXypIXWJVHbgEPw/DFzEdLE/iSDlcDcq8PZJBQOTYB7i
-	RyZWD+Oke0pmgBwArJzeWM3tz2ADe9GEYniVJIwtLDw+q+KqNlN7IlPiPPk2bf0czYKn
-	annQ==
-X-Received: by 10.68.100.1 with SMTP id eu1mr4218583pbb.36.1396958710861;
-	Tue, 08 Apr 2014 05:05:10 -0700 (PDT)
-Received: from [192.168.1.104] ([124.126.227.121])
-	by mx.google.com with ESMTPSA id i10sm9413459pat.36.2014.04.08.05.05.05
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Tue, 08 Apr 2014 05:05:09 -0700 (PDT)
-Message-ID: <5343E5ED.2040906@gmail.com>
-Date: Tue, 08 Apr 2014 20:05:01 +0800
-From: Chen Gang <gang.chen.5i5j@gmail.com>
+	(envelope-from <eblake@redhat.com>)
+	id 1WXbv7-0003Eh-03; Tue, 08 Apr 2014 15:42:57 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s38JgsPn025795
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 8 Apr 2014 15:42:55 -0400
+Received: from [10.3.113.97] (ovpn-113-97.phx2.redhat.com [10.3.113.97])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s38JgskK004250; Tue, 8 Apr 2014 15:42:54 -0400
+Message-ID: <5344513D.7050806@redhat.com>
+Date: Tue, 08 Apr 2014 13:42:53 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
-	<5333F6E2.9080202@gmail.com> <53382DDD.8050001@gmail.com>
-	<87fvlylf02.fsf@blackfin.pond.sub.org> <53396545.805@gmail.com>
-	<CAFEAcA-GL7bnZ-Pkga9PzDq7DpwPf8Gx0Wezzkm_CCbSUB1W8A@mail.gmail.com>
-	<533969AB.4010505@gmail.com>
-	<CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>
-	<53396CE9.9090405@gmail.com>
-	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
-	<533E7DD5.3090203@gmail.com> <5340F4FD.7040305@msgid.tls.msk.ru>
-	<53414941.5040908@gmail.com> <5343E4D4.6070305@gmail.com>
-	<5343E516.3020103@gmail.com> <5343E571.60407@gmail.com>
-In-Reply-To: <5343E571.60407@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c01::230
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Anthony Liguori <aliguori@amazon.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH trivial 3/3] vl: remove local variable 'args'
- in the middle of code block
+To: Baojun Wang <wangbj@gmail.com>, qemu-devel@nongnu.org
+References: <1396985438-19741-1-git-send-email-wangbj@gmail.com>
+In-Reply-To: <1396985438-19741-1-git-send-email-wangbj@gmail.com>
+X-Enigmail-Version: 1.6
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="U5JKCGgTv3fJg8Tfutv1JhNJvkoWNq7fq"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH V3 1/1] Add pmemsave command for both
+ monitor and qmp,
+ which could be useful to have qemu-softmmu as a cross debugger to load guest
+ physical memory.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -73,53 +54,137 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Apr 2014 12:05:31 -0000
+X-List-Received-Date: Tue, 08 Apr 2014 19:43:17 -0000
 
-For C code, it does not recommend to define a local variable in the
-middle of code block without "{...}". The original author may want to
-zero members not mentioned in structure assignment.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--U5JKCGgTv3fJg8Tfutv1JhNJvkoWNq7fq
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-So recommend to use structure initializing block "{...}" for structure
-assignment in the middle of code block.
+On 04/08/2014 01:30 PM, Baojun Wang wrote:
 
-And at present, we can assume that all related gcc versions will be
-latest enough to notice about this grammar.
+Your subject line is extremely long.  In general, we strive for
+something less than 60 characters, so that 'git shortlog -30' can
+display the entire line in an 80-column terminal.  Also, the subject
+mentions pmemsave, but your commit mentions pmemload - it's very
+misleading to provide a patch where the commit message doesn't even
+mention the name of the command the patch is adding.  I would suggest a
+subject line of:
+
+qmp: add pmemload command
+
+> I found this could be useful to have qemu-softmmu as a cross debugger (=
+launch
+> with -s -S command line option), then if we can have a command to load =
+guest
+> physical memory, we can use cross gdb to do some target debug which gdb=
+ cannot
+> do directly.
+>=20
+
+Your patch is lacking a Signed-off-by designation, therefore we cannot
+accept it yet.
+
+> Many thanks to Eric Blake for review the patch.
+
+This comment may be useful to reviewers, but is not part of the commit
+itself, so it belongs better...
+
+>=20
+> ---
+
+=2E..here, after the --- separator.
 
 
-Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
----
- vl.c |   18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+> =20
+> +void qmp_pmemload(int64_t addr, int64_t size, const char *filename,
+> +                  Error **errp)
+> +{
+> +    FILE *f;
+> +    uint32_t l;
+> +    uint8_t buf[1024];
+> +
+> +    f =3D fopen(filename, "rb");
 
-diff --git a/vl.c b/vl.c
-index 377f962..d381443 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4368,15 +4368,15 @@ int main(int argc, char **argv, char **envp)
- 
-     qdev_machine_init();
- 
--    QEMUMachineInitArgs args = { .machine = machine,
--                                 .ram_size = ram_size,
--                                 .boot_order = boot_order,
--                                 .kernel_filename = kernel_filename,
--                                 .kernel_cmdline = kernel_cmdline,
--                                 .initrd_filename = initrd_filename,
--                                 .cpu_model = cpu_model };
--
--    current_machine->init_args = args;
-+    current_machine->init_args = (QEMUMachineInitArgs) {
-+        .machine = machine,
-+        .ram_size = ram_size,
-+        .boot_order = boot_order,
-+        .kernel_filename = kernel_filename,
-+        .kernel_cmdline = kernel_cmdline,
-+        .initrd_filename = initrd_filename,
-+        .cpu_model = cpu_model };
-+
-     machine->init(&current_machine->init_args);
- 
-     audio_init();
--- 
-1.7.9.5
+Rather than using fopen() and FILE* operations, I'd prefer you use
+qemu_open() and lower-level read() operations.  In particular, this will
+automatically make it possible for management applications to pass in
+'/dev/fdset/1' to reuse a file descriptor that they passed in to qemu,
+rather than forcing qemu to directly open the file.
+
+> +    if (!f) {
+> +        error_setg_file_open(errp, errno, filename);
+> +        return;
+> +    }
+> +
+> +    while (size !=3D 0) {
+> +        l =3D fread(buf, 1, sizeof(buf), f);
+> +        if (l > size)
+> +            l =3D size;
+
+This is lousy at error detection.  Again, you should be using read(),
+not fread(), and properly erroring out on read failures rather than
+silently ignoring them.
+
+
+> +        .name       =3D "pmemload",
+> +        .args_type  =3D "val:l,size:i,filename:s",
+
+Would it make sense to put filename as the FIRST argument, with val and
+size as optional arguments (defaulting to reading in at address 0 and
+for the size determined by the length of the input file), rather than
+forcing the user to pass in a size up front?
+
+> +++ b/qapi-schema.json
+> @@ -1708,6 +1708,26 @@
+>    'data': {'val': 'int', 'size': 'int', 'filename': 'str'} }
+> =20
+>  ##
+> +# @pmemload:
+> +#
+> +# Load a portion of guest physical memory from a file.
+> +#
+> +# @val: the physical address of the guest to start from
+> +#
+> +# @size: the size of memory region to load
+> +#
+> +# @filename: the file to load the memory from as binary data
+> +#
+> +# Returns: Nothing on success
+> +#
+> +# Since: 2.1
+> +#
+> +# Notes: Errors were not reliably returned until 2.1
+
+Delete this line.  I guess I didn't make it clear in my first review
+that this line is bogus copy and paste.  You don't need it.  pmemsave
+needed it, because pmemsave went through some iterations where earlier
+versions were buggy.  But your pmemload command is brand new, and should
+not have bugs worth worrying about.
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--U5JKCGgTv3fJg8Tfutv1JhNJvkoWNq7fq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJTRFE9AAoJEKeha0olJ0NqI88H/3L5pe04o1OmGESiIE1I4XmO
+s4gvgJyzUIi/OC2ZcfHPwQGzs2Wdw16+PWf5m/IL1EYiN4AHEDdL12a+ZBwW5slv
+9u+emGCGE1Ek1gnHLL0XYpbA19lz9Bnxduphc23k8zr3JDv1Ck1OzNgigmcFOGJQ
+2rp43lpqGs7nC7boEpv5DgDtogdndMRDzZSJAyQ71VcgAxgYzNmvvVnrRQK8X8ia
+VsbGGHw/sdGe8dSPfMlaFhtD4ucl0VGKcpg8CdGxrowqyyLxWbP3Rm2gXPojFkf3
+pD40mZwWldi82zlIo54un4uB+/ZklMMjPxY6I+OyGS1y8GIExnvBIRdCDxR9SSs=
+=4rAB
+-----END PGP SIGNATURE-----
+
+--U5JKCGgTv3fJg8Tfutv1JhNJvkoWNq7fq--
 
