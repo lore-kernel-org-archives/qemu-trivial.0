@@ -1,46 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WXvtb-0003Mg-Ug
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Apr 2014 13:02:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37989)
+	id 1WXwhb-0001gl-Ad
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Apr 2014 13:54:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49953)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WXvtV-0003BB-IF
-	for qemu-trivial@nongnu.org; Wed, 09 Apr 2014 13:02:42 -0400
+	(envelope-from <wangbj@gmail.com>) id 1WXwhR-0001St-Hr
+	for qemu-trivial@nongnu.org; Wed, 09 Apr 2014 13:54:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WXvtQ-0005GH-KF
-	for qemu-trivial@nongnu.org; Wed, 09 Apr 2014 13:02:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53850)
+	(envelope-from <wangbj@gmail.com>) id 1WXwhI-0006zK-G4
+	for qemu-trivial@nongnu.org; Wed, 09 Apr 2014 13:54:13 -0400
+Received: from mail-pd0-x22e.google.com ([2607:f8b0:400e:c02::22e]:55062)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1WXvtG-0005Ek-G1; Wed, 09 Apr 2014 13:02:22 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s39H2JN9007655
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Wed, 9 Apr 2014 13:02:20 -0400
-Received: from [10.3.113.140] (ovpn-113-140.phx2.redhat.com [10.3.113.140])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s39H2ITq026199; Wed, 9 Apr 2014 13:02:18 -0400
-Message-ID: <53457D1A.7000602@redhat.com>
-Date: Wed, 09 Apr 2014 11:02:18 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
-MIME-Version: 1.0
-To: Baojun Wang <wangbj@gmail.com>, qemu-devel@nongnu.org
-References: <CAC+a-TYVLK8covhRMwoeAqTJt=Gby2Kf4Jz8z5w=ZLDhNaCdZw@mail.gmail.com>
-	<1397062459-4141-1-git-send-email-wangbj@gmail.com>
-In-Reply-To: <1397062459-4141-1-git-send-email-wangbj@gmail.com>
-X-Enigmail-Version: 1.6
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="3KiPGrUIQtRhSaM8Ih56Ns5kkMAJHK6jk"
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH V4 1/1] qmp: add pmemload command
+	(envelope-from <wangbj@gmail.com>)
+	id 1WXwgz-0006p7-NJ; Wed, 09 Apr 2014 13:53:45 -0400
+Received: by mail-pd0-f174.google.com with SMTP id y13so2735905pdi.19
+	for <multiple recipients>; Wed, 09 Apr 2014 10:53:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:in-reply-to:references;
+	bh=76ez8eXthpg3IF8QzvTgxJQ2rJxCjPcOROPMu4h2hz8=;
+	b=bqxtW95uouFpRyr15cTrDCAm67VHGWYlV/zbGiBm23YJUGksG2xnkJhW3CalsZqr7l
+	ukBwdktXTo0C8+9K2BpVqeG0kgPJa73XvpQCnc+8TG9+Rn0De5PVfiHqLneyaVcB1ncP
+	7VQ0+r+QRHCwqvGPVQtmqn0F9wH4kNQIwuGdn/vYZP6ppqUKgBRlKVvp1lfhMGsQ2rP8
+	YO7Dp/3kykIkQn+H5kUbI5qnXYJrBMrj9+rJgykM3DSaCqfdEovxja5dTOJ+5eCsT2+4
+	n6tkNLJR32F2lNDJg6+WgVkyMApmAbfGJKtmL1g1hT3K+SnicrkoHSI3pPigzZetqd1o
+	R/YQ==
+X-Received: by 10.66.254.234 with SMTP id al10mr13770158pad.137.1397066024363; 
+	Wed, 09 Apr 2014 10:53:44 -0700 (PDT)
+Received: from localhost.qualcomm.com (i-global254.qualcomm.com.
+	[199.106.103.254])
+	by mx.google.com with ESMTPSA id vb7sm3925165pbc.13.2014.04.09.10.53.42
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Wed, 09 Apr 2014 10:53:43 -0700 (PDT)
+From: Baojun Wang <wangbj@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Wed,  9 Apr 2014 10:49:04 -0700
+Message-Id: <1397065744-9561-1-git-send-email-wangbj@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <53457D1A.7000602@redhat.com>
+References: <53457D1A.7000602@redhat.com>
+In-Reply-To: <53457D1A.7000602@redhat.com>
+References: <53457D1A.7000602@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c02::22e
+Cc: qemu-trivial@nongnu.org, Baojun Wang <wangbj@gmail.com>, eblake@redhat.com
+Subject: [Qemu-trivial] [PATCH V5 1/1] qmp: add pmemload command
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,85 +57,191 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Apr 2014 17:02:42 -0000
+X-List-Received-Date: Wed, 09 Apr 2014 17:54:22 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---3KiPGrUIQtRhSaM8Ih56Ns5kkMAJHK6jk
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-On 04/09/2014 10:54 AM, Baojun Wang wrote:
-> Signed-off-by: Baojun Wang <wangbj@gmail.com>
-
-You lost this part of your commit message, which gives more details
-about the 'why' (the subject line covers the 'what', but it is often the
-'why' that is most needed when reviewing a commit later).  Your earlier
-mail had:
-
-I found this could be useful to have qemu-softmmu as a cross debugger
-(launch
-with -s -S command line option), then if we can have a command to load gu=
-est
-physical memory, we can use cross gdb to do some target debug which gdb
-cannot
+I found this could be useful to have qemu-softmmu as a cross debugger (launch
+with -s -S command line option), then if we can have a command to load guest
+physical memory, we can use cross gdb to do some target debug which gdb cannot
 do directly.
 
+Many thanks to Eric Blake for review the patch and suggestions.
 
-> =20
-> +void qmp_pmemload(int64_t addr, int64_t size, const char *filename,
-> +                  Error **errp)
-> +{
-> +    FILE *f;
-> +    uint32_t l;
-> +    uint8_t buf[1024];
-> +
-> +    f =3D fopen(filename, "rb");
+Signed-off-by: Baojun Wang <wangbj@gmail.com>
+---
+ cpus.c           | 29 +++++++++++++++++++++++++++++
+ hmp-commands.hx  | 13 +++++++++++++
+ hmp.c            | 11 +++++++++++
+ hmp.h            |  1 +
+ qapi-schema.json | 18 ++++++++++++++++++
+ qmp-commands.hx  | 27 +++++++++++++++++++++++++++
+ 6 files changed, 99 insertions(+)
 
-I still think that fopen()/fread() is wrong, and that you should be
-using qemu_open()/read() - that way, libvirt could pass in a file
-descriptor and use qemu's already-existing /dev/fdset/nnn support rather
-than forcing qemu to open something from the filesystem.
+diff --git a/cpus.c b/cpus.c
+index 1104d61..230664f 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -1467,6 +1467,35 @@ exit:
+     fclose(f);
+ }
+ 
++void qmp_pmemload(const char* filename, int64_t addr, int64_t size,
++                  Error **errp)
++{
++    int fd;
++    ssize_t l;
++    uint8_t buf[4096];
++
++    fd = qemu_open(filename, O_RDONLY | O_BINARY);
++    if (fd < 0) {
++        error_setg_file_open(errp, errno, filename);
++        return;
++    }
++
++    while (size != 0) {
++        l = read(fd, buf, sizeof(buf));
++        if (l != sizeof(buf)) {
++            error_set(errp, QERR_IO_ERROR);
++            goto exit;
++        }
++        if (l > size)
++            l = size;
++        cpu_physical_memory_rw(addr, buf, l, 1);
++        addr += l;
++        size -= l;
++    }
++
++exit:
++    qemu_close(fd);
++}
+ void qmp_inject_nmi(Error **errp)
+ {
+ #if defined(TARGET_I386)
+diff --git a/hmp-commands.hx b/hmp-commands.hx
+index f3fc514..1eae6e3 100644
+--- a/hmp-commands.hx
++++ b/hmp-commands.hx
+@@ -809,6 +809,19 @@ save to disk physical memory dump starting at @var{addr} of size @var{size}.
+ ETEXI
+ 
+     {
++        .name       = "pmemload",
++        .args_type  = "filename:s,val:l,size:i",
++        .params     = "file addr size",
++        .help       = "load from disk physical memory dump starting at 'addr' of size 'size'",
++        .mhandler.cmd = hmp_pmemload,
++    },
++
++STEXI
++@item pmemload @var{file} @var{addr} @var{size}
++@findex pmemload
++load from disk physical memory dump starting at @var{addr} of size @var{size}.
++ETEXI
++    {
+         .name       = "boot_set",
+         .args_type  = "bootdevice:s",
+         .params     = "bootdevice",
+diff --git a/hmp.c b/hmp.c
+index 2f279c4..745c087 100644
+--- a/hmp.c
++++ b/hmp.c
+@@ -767,6 +767,17 @@ void hmp_pmemsave(Monitor *mon, const QDict *qdict)
+     hmp_handle_error(mon, &errp);
+ }
+ 
++void hmp_pmemload(Monitor *mon, const QDict *qdict)
++{
++    uint32_t size = qdict_get_int(qdict, "size");
++    const char *filename = qdict_get_str(qdict, "filename");
++    uint64_t addr = qdict_get_int(qdict, "val");
++    Error *errp = NULL;
++
++    qmp_pmemload(filename, addr, size, &errp);
++    hmp_handle_error(mon, &errp);
++}
++
+ void hmp_ringbuf_write(Monitor *mon, const QDict *qdict)
+ {
+     const char *chardev = qdict_get_str(qdict, "device");
+diff --git a/hmp.h b/hmp.h
+index ed58f0e..f5f2a16 100644
+--- a/hmp.h
++++ b/hmp.h
+@@ -44,6 +44,7 @@ void hmp_system_powerdown(Monitor *mon, const QDict *qdict);
+ void hmp_cpu(Monitor *mon, const QDict *qdict);
+ void hmp_memsave(Monitor *mon, const QDict *qdict);
+ void hmp_pmemsave(Monitor *mon, const QDict *qdict);
++void hmp_pmemload(Monitor *mon, const QDict *qdict);
+ void hmp_ringbuf_write(Monitor *mon, const QDict *qdict);
+ void hmp_ringbuf_read(Monitor *mon, const QDict *qdict);
+ void hmp_cont(Monitor *mon, const QDict *qdict);
+diff --git a/qapi-schema.json b/qapi-schema.json
+index 391356f..7198242 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -1708,6 +1708,24 @@
+   'data': {'val': 'int', 'size': 'int', 'filename': 'str'} }
+ 
+ ##
++# @pmemload:
++#
++# Load a portion of guest physical memory from a file.
++#
++# @filename: the file to load the memory from as binary data
++#
++# @val: the physical address of the guest to start from
++#
++# @size: the size of memory region to load
++#
++# Returns: Nothing on success
++#
++# Since: 2.1
++##
++{ 'command': 'pmemload',
++  'data': {'filename': 'str', 'val': 'int', 'size': 'int'} }
++
++##
+ # @cont:
+ #
+ # Resume guest VCPU execution.
+diff --git a/qmp-commands.hx b/qmp-commands.hx
+index ed3ab92..2831038 100644
+--- a/qmp-commands.hx
++++ b/qmp-commands.hx
+@@ -468,6 +468,33 @@ Example:
+ EQMP
+ 
+     {
++        .name       = "pmemload",
++        .args_type  = "filename:s,val:l,size:i",
++        .mhandler.cmd_new = qmp_marshal_input_pmemload,
++    },
++
++SQMP
++pmemload
++--------
++
++load from disk physical memory dump starting at 'val' of size 'size'.
++
++Arguments:
++
++- "filename": file path (json-string)
++- "val": the starting address (json-int)
++- "size": the memory size, in bytes (json-int)
++
++Example:
++
++-> { "execute": "pmemload",
++             "arguments": { "filename": "/tmp/physical-mem-dump",
++                            "val": 10,
++                            "size": 100 } }
++<- { "return": {} }
++
++EQMP
++    {
+         .name       = "inject-nmi",
+         .args_type  = "",
+         .mhandler.cmd_new = qmp_marshal_input_inject_nmi,
+-- 
+1.9.1
 
-
-> +++ b/hmp-commands.hx
-> @@ -809,6 +809,19 @@ save to disk physical memory dump starting at @var=
-{addr} of size @var{size}.
->  ETEXI
-> =20
->      {
-> +        .name       =3D "pmemload",
-> +        .args_type  =3D "val:l,size:i,filename:s",
-> +        .params     =3D "addr size file",
-> +        .help       =3D "load from disk physical memory dump starting =
-at 'addr' of size 'size'",
-> +        .mhandler.cmd =3D hmp_pmemload,
-
-And I still think that you should list filename first, with val and size
-optional at the end.
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---3KiPGrUIQtRhSaM8Ih56Ns5kkMAJHK6jk
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJTRX0aAAoJEKeha0olJ0Nq3FQH/jja/VQ9JKszXZsVzNxyTeKW
-TaJQcQRPjfCF7HdCguXNg7g0gRNpY7JrQTyF8xT8xvXMpBXIHa9H99W0yYRZlqnM
-ICM0PBw8KbnkT7nBy7v/xSQ5pnfnwE5r6Xp9jK1uj5Gwaof/8PwXUCoOn8kiAyox
-M2v7uUnecWJQ1SUNsaWiWgya0dHA9ykh7aDd+1hDHTAMfZJkQIHf/4UJdvn6zlCa
-EJhMrMxnBHt0f0MGDbJU/Z1KRGh9VBzV9jI6YVQy6M00Hekb+4wL1JCsSuFDc2aP
-YpkskKZ7kRa9tc3CAvYBqEFkMsmxiR9CiVhoZOSnyXzZ0BwgqkwjMTArjS9SbSg=
-=IEUP
------END PGP SIGNATURE-----
-
---3KiPGrUIQtRhSaM8Ih56Ns5kkMAJHK6jk--
 
