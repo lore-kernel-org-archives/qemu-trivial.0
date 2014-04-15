@@ -1,46 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WZzcg-0001ZK-66
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2014 05:25:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43860)
+	id 1Wa19i-0003RR-It
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2014 07:03:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37776)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1WZzcT-0001Nr-Ob
-	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 05:25:44 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Wa19a-0003PT-6N
+	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 07:03:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1WZzcN-00005T-Cu
-	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 05:25:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53729)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Wa19T-0004Uf-My
+	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 07:03:49 -0400
+Received: from mail-pa0-x22d.google.com ([2607:f8b0:400e:c03::22d]:36643)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1WZzcA-0008RV-1N; Tue, 15 Apr 2014 05:25:14 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3F90ifT031671
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Tue, 15 Apr 2014 05:00:46 -0400
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-86.ams2.redhat.com
-	[10.36.116.86])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s3F90e0G028223; Tue, 15 Apr 2014 05:00:41 -0400
-Message-ID: <534CF538.9000100@redhat.com>
-Date: Tue, 15 Apr 2014 11:00:40 +0200
-From: Laszlo Ersek <lersek@redhat.com>
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1Wa19T-0004UU-Fs; Tue, 15 Apr 2014 07:03:43 -0400
+Received: by mail-pa0-f45.google.com with SMTP id kl14so9486123pab.18
+	for <multiple recipients>; Tue, 15 Apr 2014 04:03:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=kLaQoQ2+y34d9Hk3m+L2PUTDhppC18F8L5/xMX221v8=;
+	b=NJ8JsaN/JbXz/47JBbx/e/6B/hXkh/LhRJzWyPkBb/2bUzRkovd1vL2qDCpuNP1fHN
+	+/K3gbvTVgnAxOGOSYPAPEvslRa3L2/w7tPxedh/aF2hPjZ9/EEp1Ts6vZXSBjfhSSfQ
+	ykspFflG2Lg8XE0aI2RxGUSZSRkxiaEv0nHYSZ4nCBARwStbv6kuKvbuT42HlW4CsZiZ
+	WGvH8MKpcsdPFAwCo3EmvQ0/LOA3oVlrUjsoTqUT5NSvFX+AT9JrY35LdH61u8BWZ9bG
+	yiiw1uBPyfc5y8wAjAeuV8hjcEATbd5XbiYhXivNkstohIr9SoFWtsY8aARYjXolcg34
+	o1ZA==
+X-Received: by 10.68.240.34 with SMTP id vx2mr1157994pbc.1.1397559822470;
+	Tue, 15 Apr 2014 04:03:42 -0700 (PDT)
+Received: from [192.168.1.104] ([219.143.91.142])
+	by mx.google.com with ESMTPSA id
+	su8sm19987307pbc.72.2014.04.15.04.03.37 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 15 Apr 2014 04:03:41 -0700 (PDT)
+Message-ID: <534D1206.1050805@gmail.com>
+Date: Tue, 15 Apr 2014 19:03:34 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-To: "Michael R. Hines" <mrhines@linux.vnet.ibm.com>,
-	Amos Kong <akong@redhat.com>, qemu-trivial@nongnu.org
-References: <1397442420-25626-1-git-send-email-akong@redhat.com>
-	<534BA81C.9060807@redhat.com> <534C7584.2090301@linux.vnet.ibm.com>
-In-Reply-To: <534C7584.2090301@linux.vnet.ibm.com>
+To: Markus Armbruster <armbru@redhat.com>, 
+	Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+References: <53337BEB.90305@gmail.com>
+	<87wqfgrp83.fsf@blackfin.pond.sub.org>	<5333F6E2.9080202@gmail.com>
+	<53382DDD.8050001@gmail.com>	<87fvlylf02.fsf@blackfin.pond.sub.org>
+	<53396545.805@gmail.com>	<CAFEAcA-GL7bnZ-Pkga9PzDq7DpwPf8Gx0Wezzkm_CCbSUB1W8A@mail.gmail.com>	<533969AB.4010505@gmail.com>	<CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>	<53396CE9.9090405@gmail.com>	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>	<533E7DD5.3090203@gmail.com>
+	<5340F4FD.7040305@msgid.tls.msk.ru>	<53414941.5040908@gmail.com>
+	<5343E4D4.6070305@gmail.com>	<5343E516.3020103@gmail.com>
+	<5343E571.60407@gmail.com>	<CAEgOgz7gEi7s2paSDo+AnO67LT+T+K0_SZ_MnBEZCdpHZgaJrA@mail.gmail.com>
+	<87tx9vgez0.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87tx9vgez0.fsf@blackfin.pond.sub.org>
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: yamahata@private.email.ne.jp, Paolo Bonzini <pbonzini@redhat.com>,
-	mjt@tls.msk.ru, qemu-devel@nongnu.org,
-	"Michael R. Hines" <mrhines@us.ibm.com>
-Subject: Re: [Qemu-trivial] [PATCH] arch_init.c: remove duplicate function
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::22d
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Anthony Liguori <aliguori@amazon.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial 2/3] vl: remove
+ redundant local variable 'res'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,106 +70,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Apr 2014 09:25:44 -0000
+X-List-Received-Date: Tue, 15 Apr 2014 11:03:56 -0000
 
-On 04/15/14 01:55, Michael R. Hines wrote:
-> On 04/14/2014 05:19 PM, Laszlo Ersek wrote:
->> On 04/14/14 04:27, Amos Kong wrote:
->>> We already have a function buffer_is_zero() in util/cutils.c
->>>
->>> Signed-off-by: Amos Kong <akong@redhat.com>
->>> ---
->>>   arch_init.c | 9 ++-------
->>>   1 file changed, 2 insertions(+), 7 deletions(-)
->>>
->>> diff --git a/arch_init.c b/arch_init.c
->>> index 60c975d..342e5dc 100644
->>> --- a/arch_init.c
->>> +++ b/arch_init.c
->>> @@ -152,11 +152,6 @@ int qemu_read_default_config_files(bool userconfig)
->>>       return 0;
->>>   }
->>>   -static inline bool is_zero_range(uint8_t *p, uint64_t size)
->>> -{
->>> -    return buffer_find_nonzero_offset(p, size) == size;
->>> -}
->>> -
->>>   /* struct contains XBZRLE cache and a static page
->>>      used by the compression */
->>>   static struct {
->>> @@ -587,7 +582,7 @@ static int ram_save_block(QEMUFile *f, bool
->>> last_stage)
->>>                           acct_info.dup_pages++;
->>>                       }
->>>                   }
->>> -            } else if (is_zero_range(p, TARGET_PAGE_SIZE)) {
->>> +            } else if (buffer_is_zero(p, TARGET_PAGE_SIZE)) {
->>>                   acct_info.dup_pages++;
->>>                   bytes_sent = save_block_hdr(f, block, offset, cont,
->>>                                               RAM_SAVE_FLAG_COMPRESS);
->>> @@ -983,7 +978,7 @@ static inline void
->>> *host_from_stream_offset(QEMUFile *f,
->>>    */
->>>   void ram_handle_compressed(void *host, uint8_t ch, uint64_t size)
->>>   {
->>> -    if (ch != 0 || !is_zero_range(host, size)) {
->>> +    if (ch != 0 || !buffer_is_zero(host, size)) {
->>>           memset(host, ch, size);
->>>       }
->>>   }
->>>
->> This seems to be correct, functionally -- apparently buffer_is_zero()
->> has laxer size requirements than buffer_find_nonzero_offset(). However,
->> I think the latter might be faster.
->>
->> For ram_save_block() I guess the difference is negligible. But
->> ram_handle_compressed() is also called from "migration-rdma.c", where I
->> can't even guess if a little bit of slowdown would count.
->>
->> I'm OK with the patch if Michael (CC'd) is.
->>
->> Thanks
->> Laszlo
->>
+On 04/15/2014 04:43 PM, Markus Armbruster wrote:
+> Peter Crosthwaite <peter.crosthwaite@xilinx.com> writes:
 > 
-> Thanks for the CC.
+>> On Tue, Apr 8, 2014 at 10:02 PM, Chen Gang <gang.chen.5i5j@gmail.com> wrote:
+>>> In function, if no additional resources to free before quit, commonly,
+>>> need not use additional local variable 'res' to notice about it. So
+>>> remove it to simplify code.
+>>>
+>>
+>> Styling wise, there is a school of thought that functions should only
+>> have one return statement which is probably the original authors
+>> intention.
 > 
-> Actually, it looks like buffer_is_zero() is calling
-> buffer_find_nonzero_offset()
-> as a "first try" anyway
-
-I have no idea how I managed to miss that.
-
-> - which is the same thing RDMA is doing. So, all
-> calls to ram_handle_compressed() should hit the branch target there in
-> buffer_is_zero() for can_use_buffer_find_nonzero_offset() and automatically
-> drop into the vectorized-optimization to search for zeros, so there
-> shouldn't
-> be any change in performance. The same should apply for TCP migration
-> as well - it's working on page-granularity, which is always aligned to
-> 32 or 64 bits.
+> Plausible.  But what matters here is whether we think the patch is
+> worthwhile or not.
 > 
-> Paolo? I see that some of the block-migration code and the qemu-img code
-> is also
-> calling buffer_is_zero() - are you guys depending on the performance of any
-> buffer_is_zero() calls to use the vector-optimized version like
-> migration does?
+> I find Chen's version a bit clearer, but I'm not sure it's worth the
+> churn.
+> 
 
-The patch doesn't change buffer_is_zero() internally, so callers of
-buffer_is_zero() are unaffected. The patch turns two indirect callers of
-buffer_find_nonzero_offset() into two "differently indirect" callers of
-the same (which I now see thanks to your explanation). Hence,
+Hmm... after think of, for me, it will be fine to still remain the
+original state, it is not quit worth to churn.
 
-Before:
-ram_save_block        -> is_zero_range -> buffer_find_nonzero_offset
-ram_handle_compressed -> is_zero_range -> buffer_find_nonzero_offset
 
-After:
-ram_save_block        -> buffer_is_zero -> buffer_find_nonzero_offset
-ram_handle_compressed -> buffer_is_zero -> buffer_find_nonzero_offset
+Thanks.
+-- 
+Chen Gang
 
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-
-Thanks!
-Laszlo
+Open, share, and attitude like air, water, and life which God blessed
 
