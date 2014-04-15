@@ -1,61 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WZqjb-0005fQ-49
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Apr 2014 19:56:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34930)
+	id 1WZrOG-0005cf-Qq
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Apr 2014 20:38:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40076)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mrhines@linux.vnet.ibm.com>) id 1WZqjQ-0005Yy-IM
-	for qemu-trivial@nongnu.org; Mon, 14 Apr 2014 19:56:17 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WZrO6-0005br-Ca
+	for qemu-trivial@nongnu.org; Mon, 14 Apr 2014 20:38:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mrhines@linux.vnet.ibm.com>) id 1WZqjH-00074n-H4
-	for qemu-trivial@nongnu.org; Mon, 14 Apr 2014 19:56:08 -0400
-Received: from e36.co.us.ibm.com ([32.97.110.154]:48854)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WZrNv-0003HO-2q
+	for qemu-trivial@nongnu.org; Mon, 14 Apr 2014 20:38:10 -0400
+Received: from mail-pd0-x235.google.com ([2607:f8b0:400e:c02::235]:59786)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mrhines@linux.vnet.ibm.com>) id 1WZqjH-00074c-Ao
-	for qemu-trivial@nongnu.org; Mon, 14 Apr 2014 19:55:59 -0400
-Received: from /spool/local
-	by e36.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mrhines@linux.vnet.ibm.com>;
-	Mon, 14 Apr 2014 17:55:57 -0600
-Received: from d03dlp03.boulder.ibm.com (9.17.202.179)
-	by e36.co.us.ibm.com (192.168.1.136) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 14 Apr 2014 17:55:54 -0600
-Received: from b03cxnp08025.gho.boulder.ibm.com
-	(b03cxnp08025.gho.boulder.ibm.com [9.17.130.17])
-	by d03dlp03.boulder.ibm.com (Postfix) with ESMTP id 1588319D8040;
-	Mon, 14 Apr 2014 17:55:49 -0600 (MDT)
-Received: from d03av04.boulder.ibm.com (d03av04.boulder.ibm.com [9.17.195.170])
-	by b03cxnp08025.gho.boulder.ibm.com (8.13.8/8.13.8/NCO v10.0) with
-	ESMTP id s3ENtrUN11010318; Tue, 15 Apr 2014 01:55:53 +0200
-Received: from d03av04.boulder.ibm.com (loopback [127.0.0.1])
-	by d03av04.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP
-	id s3ENtr66032212; Mon, 14 Apr 2014 17:55:53 -0600
-Received: from [192.168.122.3] ([9.186.105.50])
-	by d03av04.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	s3ENtoxu032077; Mon, 14 Apr 2014 17:55:51 -0600
-Message-ID: <534C7584.2090301@linux.vnet.ibm.com>
-Date: Tue, 15 Apr 2014 07:55:48 +0800
-From: "Michael R. Hines" <mrhines@linux.vnet.ibm.com>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1WZrNu-0003H8-RX; Mon, 14 Apr 2014 20:37:59 -0400
+Received: by mail-pd0-f181.google.com with SMTP id p10so8686509pdj.40
+	for <multiple recipients>; Mon, 14 Apr 2014 17:37:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=OsehsEbOdbgFRqc2M1TnLyjsBXMD0f2cKRC70a965H8=;
+	b=eFEpUFXz/EfPPknq+yvWiYBEpqmURAvPPPohZJuwstbX5VAOjiOewfD2Xxbug7+Xk0
+	1js3zKKX7KGc/PSHkczzOebEl93+EVuOvCUyGZ593DXgkoczZxZfakG/tqzzuiw0M3RX
+	IfjvPKs4CxUZ6nlEGujiRSvu6b3Tr9PmRgL5HZFsc7dSMKPqkF2zXhA/9v3TlmlVA9O5
+	VizrKyGmzH5YHioegA/xsrWWskClNV+3y/K3QzqZ70mSEFRoGvMKjAQ/Dl+ZJwhe0f77
+	i8oPcpPDCo69E081lghKTyFYhBcKn9ElaCTqv3DpT+sh3cKes5BcAyT4NNpQJk/ct5gc
+	V5lQ==
+X-Received: by 10.68.171.229 with SMTP id ax5mr6832162pbc.125.1397522276691;
+	Mon, 14 Apr 2014 17:37:56 -0700 (PDT)
+Received: from [192.168.1.104] ([124.126.234.202])
+	by mx.google.com with ESMTPSA id
+	db3sm36440099pbb.10.2014.04.14.17.37.51 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Mon, 14 Apr 2014 17:37:55 -0700 (PDT)
+Message-ID: <534C7F5C.7010805@gmail.com>
+Date: Tue, 15 Apr 2014 08:37:48 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-To: Laszlo Ersek <lersek@redhat.com>, Amos Kong <akong@redhat.com>,
-	qemu-trivial@nongnu.org
-References: <1397442420-25626-1-git-send-email-akong@redhat.com>
-	<534BA81C.9060807@redhat.com>
-In-Reply-To: <534BA81C.9060807@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
+	<5333F6E2.9080202@gmail.com> <53382DDD.8050001@gmail.com>
+	<87fvlylf02.fsf@blackfin.pond.sub.org> <53396545.805@gmail.com>
+	<CAFEAcA-GL7bnZ-Pkga9PzDq7DpwPf8Gx0Wezzkm_CCbSUB1W8A@mail.gmail.com>
+	<533969AB.4010505@gmail.com>
+	<CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>
+	<53396CE9.9090405@gmail.com>
+	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
+	<533E7DD5.3090203@gmail.com> <5340F4FD.7040305@msgid.tls.msk.ru>
+	<53414941.5040908@gmail.com> <5343E4D4.6070305@gmail.com>
+In-Reply-To: <5343E4D4.6070305@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 14041423-3532-0000-0000-0000010F3E97
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 32.97.110.154
-Cc: yamahata@private.email.ne.jp, Paolo Bonzini <pbonzini@redhat.com>,
-	mjt@tls.msk.ru, qemu-devel@nongnu.org,
-	"Michael R. Hines" <mrhines@us.ibm.com>
-Subject: Re: [Qemu-trivial] [PATCH] arch_init.c: remove duplicate function
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c02::235
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Anthony Liguori <aliguori@amazon.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH trivial 0/3] vl: simplify code for main()
+	and get_boot_device()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,87 +72,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Apr 2014 23:56:17 -0000
+X-List-Received-Date: Tue, 15 Apr 2014 00:38:19 -0000
 
-On 04/14/2014 05:19 PM, Laszlo Ersek wrote:
-> On 04/14/14 04:27, Amos Kong wrote:
->> We already have a function buffer_is_zero() in util/cutils.c
->>
->> Signed-off-by: Amos Kong <akong@redhat.com>
->> ---
->>   arch_init.c | 9 ++-------
->>   1 file changed, 2 insertions(+), 7 deletions(-)
->>
->> diff --git a/arch_init.c b/arch_init.c
->> index 60c975d..342e5dc 100644
->> --- a/arch_init.c
->> +++ b/arch_init.c
->> @@ -152,11 +152,6 @@ int qemu_read_default_config_files(bool userconfig)
->>       return 0;
->>   }
->>   
->> -static inline bool is_zero_range(uint8_t *p, uint64_t size)
->> -{
->> -    return buffer_find_nonzero_offset(p, size) == size;
->> -}
->> -
->>   /* struct contains XBZRLE cache and a static page
->>      used by the compression */
->>   static struct {
->> @@ -587,7 +582,7 @@ static int ram_save_block(QEMUFile *f, bool last_stage)
->>                           acct_info.dup_pages++;
->>                       }
->>                   }
->> -            } else if (is_zero_range(p, TARGET_PAGE_SIZE)) {
->> +            } else if (buffer_is_zero(p, TARGET_PAGE_SIZE)) {
->>                   acct_info.dup_pages++;
->>                   bytes_sent = save_block_hdr(f, block, offset, cont,
->>                                               RAM_SAVE_FLAG_COMPRESS);
->> @@ -983,7 +978,7 @@ static inline void *host_from_stream_offset(QEMUFile *f,
->>    */
->>   void ram_handle_compressed(void *host, uint8_t ch, uint64_t size)
->>   {
->> -    if (ch != 0 || !is_zero_range(host, size)) {
->> +    if (ch != 0 || !buffer_is_zero(host, size)) {
->>           memset(host, ch, size);
->>       }
->>   }
->>
-> This seems to be correct, functionally -- apparently buffer_is_zero()
-> has laxer size requirements than buffer_find_nonzero_offset(). However,
-> I think the latter might be faster.
->
-> For ram_save_block() I guess the difference is negligible. But
-> ram_handle_compressed() is also called from "migration-rdma.c", where I
-> can't even guess if a little bit of slowdown would count.
->
-> I'm OK with the patch if Michael (CC'd) is.
->
-> Thanks
-> Laszlo
->
 
-Thanks for the CC.
+May any member help to check them?
 
-Actually, it looks like buffer_is_zero() is calling 
-buffer_find_nonzero_offset()
-as a "first try" anyway - which is the same thing RDMA is doing. So, all
-calls to ram_handle_compressed() should hit the branch target there in
-buffer_is_zero() for can_use_buffer_find_nonzero_offset() and automatically
-drop into the vectorized-optimization to search for zeros, so there 
-shouldn't
-be any change in performance. The same should apply for TCP migration
-as well - it's working on page-granularity, which is always aligned to 
-32 or 64 bits.
+And next, I shall try to find bug issues (not code style or document
+issues), and fix them. Hope I can succeed.
 
-Paolo? I see that some of the block-migration code and the qemu-img code 
-is also
-calling buffer_is_zero() - are you guys depending on the performance of any
-buffer_is_zero() calls to use the vector-optimized version like 
-migration does?
+Thanks.
 
-Just for RDMA: Reviewed-by: Michael R. Hines <mrhines@us.ibm.com>
+On 04/08/2014 08:00 PM, Chen Gang wrote:
+> In "vl.c", at least, we can simplify the code below, so can let readers
+> read professional C code (especially for new readers, which often start
+> reading code at main function).
+> 
+>  - remove useless 'continue' in main().
+> 
+>  - remove redundant local variable 'res' in get_boot_device().
+> 
+>  - remove local variable 'args' in the middle of code block in main().
+> 
+> The following 3 patches are for the 3 'remove' above.
+> 
+> And "vl.c" has a very long function main() which is about 17K lines.
+> Next, it can be split into sub-functions (so can bypass another code
+> style issue: multiple "{...}" styles within "swith(...)").
+> 
+> 
+> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+> ---
+>  vl.c |   23 ++++++++++-------------
+>  1 file changed, 10 insertions(+), 13 deletions(-)
+> 
 
-- Michael
+-- 
+Chen Gang
 
+Open, share, and attitude like air, water, and life which God blessed
 
