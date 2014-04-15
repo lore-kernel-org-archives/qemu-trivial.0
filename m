@@ -1,64 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WZssm-0007vw-Bt
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Apr 2014 22:13:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53959)
+	id 1WZvC2-0005sH-Ry
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2014 00:41:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47687)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1WZsse-0007rk-49
-	for qemu-trivial@nongnu.org; Mon, 14 Apr 2014 22:13:54 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WZvBv-0005s1-MO
+	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 00:41:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1WZssV-00009K-V2
-	for qemu-trivial@nongnu.org; Mon, 14 Apr 2014 22:13:48 -0400
-Received: from mail-wi0-f170.google.com ([209.85.212.170]:52015)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WZvBp-0006vw-OW
+	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 00:41:51 -0400
+Received: from mail-pd0-x22a.google.com ([2607:f8b0:400e:c02::22a]:57343)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1WZssV-000092-OJ
-	for qemu-trivial@nongnu.org; Mon, 14 Apr 2014 22:13:39 -0400
-Received: by mail-wi0-f170.google.com with SMTP id bs8so6194013wib.1
-	for <qemu-trivial@nongnu.org>; Mon, 14 Apr 2014 19:13:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=SIntJuv2Ih/eTd3KyOPrrxwGo8ZHTgHcrRfO3MdUbgA=;
-	b=eoV1og7Gvy/pqds350ZkWxqfSDHyPVKbry/QU2jebVgcuAZlS+NeCGzSOGKXArucR1
-	oBrCOQpUwuyFlPAc4cwCWOSKvTY+HMQGdfYTeWaumGSfNZsxO0tCbWtS33Y/dkQPkVz3
-	ezj9fXh6vBnMyMYrxYJpqcJd0J5UHu9LCRIHLFOkVjLT8MUzgQFRMYFb0+cmU6EPoask
-	+IHWbw92FQ/nhQIizgZgq5fbzPnDAd37QtR0WbwM4m7/MX3IYGC05UDXzr8PdEIW5DJ5
-	VqsuESV6Vf/QMn2sadTqu3pRAyxfq6334oYPyB/TLilFZze/6dFEI0GUNMmmQWYh1L4M
-	nuOQ==
-X-Gm-Message-State: ALoCoQm8oA4YtGF1WUcHrMo9XL+ESiygbT/GkOt3RE1oUhg+Bi9EiQcxaYWaF0DQMKplD6ugzlyn
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1WZvBp-0006ts-G0; Tue, 15 Apr 2014 00:41:45 -0400
+Received: by mail-pd0-f170.google.com with SMTP id v10so9017027pde.1
+	for <multiple recipients>; Mon, 14 Apr 2014 21:41:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=9Th8IVQKLdJ/EsUaV9/yWzqp89oYY7Kb91lPiDO18II=;
+	b=aeFkGakm8/AgvWuYv22/FP8jY57SY75PoKyEGbb6mweeZn4FhYisAiqENJwVBDx+3A
+	3VD8E8h3yrIDtF56iMZYIvpKTEK1wxGWX5FkKiG41HcJy+qfB+NQr27CbuBn365ljO60
+	Vp6S4BNo79Az9zXpQAbM6Fa31plM1sLTo7xeDL0rawf5V6IkHZ9u/zW1XXrz/HVBzQ6K
+	wXVMdSKqkxvZPdyUl9hLPMZFpt8bfnXPE6ulGsLNqYK1bzU2teJb9OndGb8NEOnMEItd
+	tFmy9dG9T2hNWQmkTLrdeeDG85GnGdrKJf1IuoV6TP/jSVRdEPr2mNjsFp9DvAkgEknl
+	UdQw==
+X-Received: by 10.66.163.164 with SMTP id yj4mr48762175pab.91.1397536904330;
+	Mon, 14 Apr 2014 21:41:44 -0700 (PDT)
+Received: from [192.168.1.104] ([124.126.234.202])
+	by mx.google.com with ESMTPSA id
+	xg4sm37324181pbb.47.2014.04.14.21.41.12 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Mon, 14 Apr 2014 21:41:43 -0700 (PDT)
+Message-ID: <534CB860.7040408@gmail.com>
+Date: Tue, 15 Apr 2014 12:41:04 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-X-Received: by 10.180.89.211 with SMTP id bq19mr11895178wib.58.1397528019015; 
-	Mon, 14 Apr 2014 19:13:39 -0700 (PDT)
-Sender: peter.crosthwaite@petalogix.com
-Received: by 10.227.128.131 with HTTP; Mon, 14 Apr 2014 19:13:38 -0700 (PDT)
-In-Reply-To: <5343E571.60407@gmail.com>
-References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
-	<5333F6E2.9080202@gmail.com> <53382DDD.8050001@gmail.com>
-	<87fvlylf02.fsf@blackfin.pond.sub.org> <53396545.805@gmail.com>
-	<CAFEAcA-GL7bnZ-Pkga9PzDq7DpwPf8Gx0Wezzkm_CCbSUB1W8A@mail.gmail.com>
-	<533969AB.4010505@gmail.com>
-	<CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>
-	<53396CE9.9090405@gmail.com>
-	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
-	<533E7DD5.3090203@gmail.com> <5340F4FD.7040305@msgid.tls.msk.ru>
-	<53414941.5040908@gmail.com> <5343E4D4.6070305@gmail.com>
-	<5343E516.3020103@gmail.com> <5343E571.60407@gmail.com>
-Date: Tue, 15 Apr 2014 12:13:38 +1000
-X-Google-Sender-Auth: 73N-MpLARSNdPxTaWxc3K7EvQlY
-Message-ID: <CAEgOgz7gEi7s2paSDo+AnO67LT+T+K0_SZ_MnBEZCdpHZgaJrA@mail.gmail.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: Chen Gang <gang.chen.5i5j@gmail.com>
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+References: <53337BEB.90305@gmail.com>	<87wqfgrp83.fsf@blackfin.pond.sub.org>	<5333F6E2.9080202@gmail.com>	<53382DDD.8050001@gmail.com>	<87fvlylf02.fsf@blackfin.pond.sub.org>	<53396545.805@gmail.com>	<CAFEAcA-GL7bnZ-Pkga9PzDq7DpwPf8Gx0Wezzkm_CCbSUB1W8A@mail.gmail.com>	<533969AB.4010505@gmail.com>	<CAFEAcA_w=35e9dVL_Zo84MoxZqCUH9qJ76v=Pn=XQ0FZq8g_-g@mail.gmail.com>	<53396CE9.9090405@gmail.com>	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>	<533E7DD5.3090203@gmail.com>	<5340F4FD.7040305@msgid.tls.msk.ru>	<53414941.5040908@gmail.com>	<5343E4D4.6070305@gmail.com>	<5343E516.3020103@gmail.com>
+	<CAEgOgz7ey1BCwEoewVGhUtcx34=P8POmKOkNJY=VdfJZHFiJmQ@mail.gmail.com>
+In-Reply-To: <CAEgOgz7ey1BCwEoewVGhUtcx34=P8POmKOkNJY=VdfJZHFiJmQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.212.170
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c02::22a
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
 	Markus Armbruster <armbru@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial 2/3] vl: remove
- redundant local variable 'res'
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial 1/3] vl: remove
+	useless 'continue'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -70,52 +64,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Apr 2014 02:13:54 -0000
+X-List-Received-Date: Tue, 15 Apr 2014 04:41:57 -0000
 
-On Tue, Apr 8, 2014 at 10:02 PM, Chen Gang <gang.chen.5i5j@gmail.com> wrote:
-> In function, if no additional resources to free before quit, commonly,
-> need not use additional local variable 'res' to notice about it. So
-> remove it to simplify code.
->
+On 04/15/2014 10:11 AM, Peter Crosthwaite wrote:
+> On Tue, Apr 8, 2014 at 10:01 PM, Chen Gang <gang.chen.5i5j@gmail.com> wrote:
+>> > Normal "if (...) {...} else {...}" is enough in "while(...) {...}", not
+>> > need additional useless 'continue'.
+>> >
+> Only in the case where the if-else is not followed by any code. Which
+> is the case here. I found this sentance slightly confusing and TBH id
+> just drop it or say something less codey like:
+> 
+> "This if else has no code between it and the end of the enclosing
+> while loop. This makes this continue redundant."
+> 
+>> > Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+> But patch is good:
+> 
+> Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+> 
 
-Styling wise, there is a school of thought that functions should only
-have one return statement which is probably the original authors
-intention.
+OK, thanks.
 
-Regards,
-Peter
+Thanks.
+-- 
+Chen Gang
 
-> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-> ---
->  vl.c |    6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->
-> diff --git a/vl.c b/vl.c
-> index 7505002..377f962 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -1188,18 +1188,16 @@ DeviceState *get_boot_device(uint32_t position)
->  {
->      uint32_t counter = 0;
->      FWBootEntry *i = NULL;
-> -    DeviceState *res = NULL;
->
->      if (!QTAILQ_EMPTY(&fw_boot_order)) {
->          QTAILQ_FOREACH(i, &fw_boot_order, link) {
->              if (counter == position) {
-> -                res = i->dev;
-> -                break;
-> +                return i->dev;
->              }
->              counter++;
->          }
->      }
-> -    return res;
-> +    return NULL;
->  }
->
->  /*
-> --
-> 1.7.9.5
->
+Open, share, and attitude like air, water, and life which God blessed
 
