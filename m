@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WZz3l-0002w5-M9
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2014 04:49:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32886)
+	id 1WZz5J-0004WG-9a
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2014 04:51:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33198)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WZz3e-0002n3-Bi
-	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 04:49:40 -0400
+	(envelope-from <armbru@redhat.com>) id 1WZz5C-0004GN-Nh
+	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 04:51:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WZz3Y-0002Z8-6J
-	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 04:49:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:23530)
+	(envelope-from <armbru@redhat.com>) id 1WZz56-00030o-Iz
+	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 04:51:10 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44189)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@redhat.com>)
-	id 1WZz3I-0002VT-Fo; Tue, 15 Apr 2014 04:49:12 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3F8n8w8004382
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Tue, 15 Apr 2014 04:49:08 -0400
+	id 1WZz4t-0002yI-Ta; Tue, 15 Apr 2014 04:50:52 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3F8olKp003385
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 15 Apr 2014 04:50:47 -0400
 Received: from blackfin.pond.sub.org (ovpn-116-48.ams2.redhat.com
 	[10.36.116.48])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s3F8n60w024189
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 15 Apr 2014 04:49:08 -0400
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id s3F8ojj8016528
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 15 Apr 2014 04:50:46 -0400
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 5C970200D1; Tue, 15 Apr 2014 10:49:06 +0200 (CEST)
+	id E55BA200D1; Tue, 15 Apr 2014 10:50:44 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: Chen Gang <gang.chen.5i5j@gmail.com>
 References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
@@ -37,22 +37,23 @@ References: <53337BEB.90305@gmail.com> <87wqfgrp83.fsf@blackfin.pond.sub.org>
 	<CAFEAcA9dk3991gc+FK0qp9QwhWkjxO0vK=X1TxS37Y1sXD5RNw@mail.gmail.com>
 	<533E7DD5.3090203@gmail.com> <5340F4FD.7040305@msgid.tls.msk.ru>
 	<53414941.5040908@gmail.com> <5343E4D4.6070305@gmail.com>
-Date: Tue, 15 Apr 2014 10:49:06 +0200
-In-Reply-To: <5343E4D4.6070305@gmail.com> (Chen Gang's message of "Tue, 08 Apr
-	2014 20:00:20 +0800")
-Message-ID: <87ppkjgepp.fsf@blackfin.pond.sub.org>
+	<5343E516.3020103@gmail.com>
+Date: Tue, 15 Apr 2014 10:50:44 +0200
+In-Reply-To: <5343E516.3020103@gmail.com> (Chen Gang's message of "Tue, 08 Apr
+	2014 20:01:26 +0800")
+Message-ID: <87lhv7gemz.fsf@blackfin.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial 0/3] vl: simplify
-	code for main() and get_boot_device()
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial 1/3] vl: remove
+	useless 'continue'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,33 +65,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Apr 2014 08:49:40 -0000
+X-List-Received-Date: Tue, 15 Apr 2014 08:51:17 -0000
 
 Chen Gang <gang.chen.5i5j@gmail.com> writes:
 
-> In "vl.c", at least, we can simplify the code below, so can let readers
-> read professional C code (especially for new readers, which often start
-> reading code at main function).
->
->  - remove useless 'continue' in main().
->
->  - remove redundant local variable 'res' in get_boot_device().
->
->  - remove local variable 'args' in the middle of code block in main().
->
-> The following 3 patches are for the 3 'remove' above.
->
-> And "vl.c" has a very long function main() which is about 17K lines.
-> Next, it can be split into sub-functions (so can bypass another code
-> style issue: multiple "{...}" styles within "swith(...)").
->
+> Normal "if (...) {...} else {...}" is enough in "while(...) {...}", not
+> need additional useless 'continue'.
 >
 > Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
 > ---
->  vl.c |   23 ++++++++++-------------
->  1 file changed, 10 insertions(+), 13 deletions(-)
+>  vl.c |    1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/vl.c b/vl.c
+> index 9975e5a..7505002 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -3034,7 +3034,6 @@ int main(int argc, char **argv, char **envp)
+>          if (argv[optind][0] != '-') {
+>              /* disk image */
+>              optind++;
+> -            continue;
+>          } else {
+>              const QEMUOption *popt;
 
-In future submissions, please send the patches in-reply-to the cover
-letter, not chained together in-reply-to the previous part.  Check out
-git-send-email --no-chain-reply-to.
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
