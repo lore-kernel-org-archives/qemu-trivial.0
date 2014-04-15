@@ -1,56 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WaDFD-0005Nh-5F
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2014 19:58:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45643)
+	id 1WaDOP-0002iJ-AU
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2014 20:07:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34857)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WaDF2-0005Ak-Q0
-	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 19:58:25 -0400
+	(envelope-from <chenliang0016@icloud.com>) id 1Wa5qH-00065S-Uk
+	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 12:04:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WaDEt-0006cv-L9
-	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 19:58:16 -0400
-Received: from mail-pd0-x231.google.com ([2607:f8b0:400e:c02::231]:33628)
+	(envelope-from <chenliang0016@icloud.com>) id 1Wa5qA-0005dz-E9
+	for qemu-trivial@nongnu.org; Tue, 15 Apr 2014 12:04:13 -0400
+Received: from st14p23im-asmtp001.me.com ([17.164.101.12]:49904)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1WaDEb-0006Za-CW; Tue, 15 Apr 2014 19:57:49 -0400
-Received: by mail-pd0-f177.google.com with SMTP id y10so9905642pdj.8
-	for <multiple recipients>; Tue, 15 Apr 2014 16:57:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=aIxD6mj3wbf4Pui+gxN/RXKa0fj0BTZ6IMCwydA2Rp4=;
-	b=OryDR1exT5bx8CXtKiiMMG0sUj6Mmi+p9youcyQONn3+x69eLkcDDC5F5Q6Gcmamf4
-	d7orfKJ9nDOz0bxwa+5wAPrdoe1INkNDYFQUmQgIYdD5N0vNpM12OBf/vdUXxuK6YtJI
-	4djXyWnO/ptrgFe3Ne4+Ae4zg5zz8vdm9l9qZU7dn9hGwwJBdcdl+9NjKKTPChSx+ctX
-	F8zEKvmRgA3gkq0+9A+iUghkCY1YRJEg82RS6m+fwPZLVew1ngFr8rdu6fk+cOOlooYF
-	QH18xSH0f+Rk9WvyNOgpauuHJ9i6mf9q8p8xYX2oxAb7F2qY6/5EkcN2F5M4fiJdNYj+
-	c78g==
-X-Received: by 10.68.136.226 with SMTP id qd2mr5123060pbb.72.1397606268209;
-	Tue, 15 Apr 2014 16:57:48 -0700 (PDT)
-Received: from [192.168.1.104] ([124.126.238.172])
-	by mx.google.com with ESMTPSA id gj9sm42903454pbc.7.2014.04.15.16.57.43
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Tue, 15 Apr 2014 16:57:47 -0700 (PDT)
-Message-ID: <534DC775.9000006@gmail.com>
-Date: Wed, 16 Apr 2014 07:57:41 +0800
-From: Chen Gang <gang.chen.5i5j@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
-MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>, 
-	Peter Maydell <peter.maydell@linaro.org>,
-	Michael Tokarev <mjt@tls.msk.ru>, Anthony Liguori <aliguori@amazon.com>
-References: <534DC6EA.6050203@gmail.com>
-In-Reply-To: <534DC6EA.6050203@gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::231
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH trivial v2 2/2] vl: Eliminate a superfluous
-	local variable
+	(envelope-from <chenliang0016@icloud.com>)
+	id 1Wa5pv-0005ZV-AJ; Tue, 15 Apr 2014 12:03:51 -0400
+MIME-version: 1.0
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; CHARSET=US-ASCII
+Received: from [192.168.1.104] ([124.90.48.69]) by st14p23im-asmtp001.me.com
+	(Oracle Communications Messaging Server 7u4-27.01(7.0.4.27.0) 64bit
+	(built Aug
+	30 2012)) with ESMTPSA id <0N42007FCXY08810@st14p23im-asmtp001.me.com>;
+	Tue, 15 Apr 2014 16:03:49 +0000 (GMT)
+From: =?GB2312?B?s8LBug==?= <chenliang0016@icloud.com>
+In-reply-to: <534CF538.9000100@redhat.com>
+Date: Wed, 16 Apr 2014 00:03:35 +0800
+Message-id: <9CA658EF-6537-43BB-BE52-7DA1C405282D@icloud.com>
+References: <1397442420-25626-1-git-send-email-akong@redhat.com>
+	<534BA81C.9060807@redhat.com> <534C7584.2090301@linux.vnet.ibm.com>
+	<534CF538.9000100@redhat.com>
+To: Laszlo Ersek <lersek@redhat.com>
+X-Mailer: Apple Mail (2.1874)
+X-MANTSH: 1TEIXWV4bG1oaGkdHB0lGUkdDRl5PWBoaGxEKTEMXGx0EGx0YBBIZBBscEBseGh8
+	aEQpYTRdLEQptfhcaEQpMWRcbGhsbEQpZSRcRClleF2hjeREKQ04XSxsbGmJCH2lpGUEeGXhzB
+	xlsGxwaGUdnEQpYXBcZBBoEHQdNSx0SSEkcTAUbHQQbHRgEEhkEGxwQGx4aHxsRCl5ZF2FNXFA
+	FEQpMRhdia2sRCkNaFxsYHgQTGgQeEgQcExEKRFgXGxoRCkRJFxMRCkJGF2thXx5mbUxffUZNE
+	QpCRRdmZH5NGUwBXwFFQhEKQk4Xa0UaUlAeQ1xZXGgRCkJMF2xdRVJGH2FLWWZbEQpCbBd6aGF
+	/c19jBVNERhEKQkAXa3kaYllafxwSWnMRCnBoF24FUxscb2BCQ2ZaEQpwaBdlaEtZRUZmfQVsG
+	REKcGgXZEkee39/H0dpXRkRCnBoF2x9bnJrG3gZWWsFEQpwaBdpS25CSUFEbm9MYxEKcGwXb05
+	nbXIdaE1pHHMRCnBMF3pNGgVFGnJeG0RFEQ==
+X-CLX-Spam: false
+X-CLX-Score: 1011
+X-Proofpoint-Virus-Version: vendor=fsecure
+	engine=2.50.10432:5.11.96,1.0.14,0.0.0000
+	definitions=2014-04-15_02:2014-04-15, 2014-04-15,
+	1970-01-01 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+	suspectscore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0
+	reason=mlx scancount=1 engine=7.0.1-1402240000
+	definitions=main-1404150262
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 17.164.101.12
+X-Mailman-Approved-At: Tue, 15 Apr 2014 20:07:54 -0400
+Cc: yamahata@private.email.ne.jp, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
+	qemu-devel@nongnu.org, "Michael R. Hines" <mrhines@linux.vnet.ibm.com>,
+	=?GB2312?B?s8LBug==?= <chenliang0016@icloud.com>,
+	"Michael R. Hines" <mrhines@us.ibm.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] arch_init.c:
+ remove	duplicate function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,45 +70,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Apr 2014 23:58:25 -0000
+X-List-Received-Date: Tue, 15 Apr 2014 16:04:21 -0000
 
-CODING_STYLE frowns upon mixing declarations and statements.  main()
-has such a declaration.  Clean up by eliminating the variable.
 
-Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
----
- vl.c |   18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+> On 04/15/14 01:55, Michael R. Hines wrote:
+>> On 04/14/2014 05:19 PM, Laszlo Ersek wrote:
+>>> On 04/14/14 04:27, Amos Kong wrote:
+>>>> We already have a function buffer_is_zero() in util/cutils.c
+>>>> 
+>>>> Signed-off-by: Amos Kong <akong@redhat.com>
+>>>> ---
+>>>>  arch_init.c | 9 ++-------
+>>>>  1 file changed, 2 insertions(+), 7 deletions(-)
+>>>> 
+>>>> diff --git a/arch_init.c b/arch_init.c
+>>>> index 60c975d..342e5dc 100644
+>>>> --- a/arch_init.c
+>>>> +++ b/arch_init.c
+>>>> @@ -152,11 +152,6 @@ int qemu_read_default_config_files(bool userconfig)
+>>>>      return 0;
+>>>>  }
+>>>>  -static inline bool is_zero_range(uint8_t *p, uint64_t size)
+>>>> -{
+>>>> -    return buffer_find_nonzero_offset(p, size) == size;
+>>>> -}
+>>>> -
+>>>>  /* struct contains XBZRLE cache and a static page
+>>>>     used by the compression */
+>>>>  static struct {
+>>>> @@ -587,7 +582,7 @@ static int ram_save_block(QEMUFile *f, bool
+>>>> last_stage)
+>>>>                          acct_info.dup_pages++;
+>>>>                      }
+>>>>                  }
+>>>> -            } else if (is_zero_range(p, TARGET_PAGE_SIZE)) {
+>>>> +            } else if (buffer_is_zero(p, TARGET_PAGE_SIZE)) {
+>>>>                  acct_info.dup_pages++;
+>>>>                  bytes_sent = save_block_hdr(f, block, offset, cont,
+>>>>                                              RAM_SAVE_FLAG_COMPRESS);
+>>>> @@ -983,7 +978,7 @@ static inline void
+>>>> *host_from_stream_offset(QEMUFile *f,
+>>>>   */
+>>>>  void ram_handle_compressed(void *host, uint8_t ch, uint64_t size)
+>>>>  {
+>>>> -    if (ch != 0 || !is_zero_range(host, size)) {
+>>>> +    if (ch != 0 || !buffer_is_zero(host, size)) {
+>>>>          memset(host, ch, size);
+>>>>      }
+>>>>  }
+>>>> 
+>>> This seems to be correct, functionally -- apparently buffer_is_zero()
+>>> has laxer size requirements than buffer_find_nonzero_offset(). However,
+>>> I think the latter might be faster.
+>>> 
+>>> For ram_save_block() I guess the difference is negligible. But
+>>> ram_handle_compressed() is also called from "migration-rdma.c", where I
+>>> can't even guess if a little bit of slowdown would count.
+>>> 
+>>> I'm OK with the patch if Michael (CC'd) is.
+>>> 
+>>> Thanks
+>>> Laszlo
+>>> 
+>> 
+>> Thanks for the CC.
+>> 
+>> Actually, it looks like buffer_is_zero() is calling
+>> buffer_find_nonzero_offset()
+>> as a "first try" anyway
+> 
+> I have no idea how I managed to miss that.
+> 
+>> - which is the same thing RDMA is doing. So, all
+>> calls to ram_handle_compressed() should hit the branch target there in
+>> buffer_is_zero() for can_use_buffer_find_nonzero_offset() and automatically
+>> drop into the vectorized-optimization to search for zeros, so there
+>> shouldn't
+>> be any change in performance. The same should apply for TCP migration
+>> as well - it's working on page-granularity, which is always aligned to
+>> 32 or 64 bits.
+>> 
+>> Paolo? I see that some of the block-migration code and the qemu-img code
+>> is also
+>> calling buffer_is_zero() - are you guys depending on the performance of any
+>> buffer_is_zero() calls to use the vector-optimized version like
+>> migration does?
+> 
+> The patch doesn't change buffer_is_zero() internally, so callers of
+> buffer_is_zero() are unaffected. The patch turns two indirect callers of
+> buffer_find_nonzero_offset() into two "differently indirect" callers of
+> the same (which I now see thanks to your explanation). Hence,
+> 
+> Before:
+> ram_save_block        -> is_zero_range -> buffer_find_nonzero_offset
+> ram_handle_compressed -> is_zero_range -> buffer_find_nonzero_offset
+Because of *static inline *is_zero_range, it may be like that:
+    ram_save_block    -> buffer_find_nonzero_offset
+    ram_handle_compressed   -> buffer_find_nonzero_offset
+But this affects little in my testing.
 
-diff --git a/vl.c b/vl.c
-index 377f962..d381443 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4368,15 +4368,15 @@ int main(int argc, char **argv, char **envp)
- 
-     qdev_machine_init();
- 
--    QEMUMachineInitArgs args = { .machine = machine,
--                                 .ram_size = ram_size,
--                                 .boot_order = boot_order,
--                                 .kernel_filename = kernel_filename,
--                                 .kernel_cmdline = kernel_cmdline,
--                                 .initrd_filename = initrd_filename,
--                                 .cpu_model = cpu_model };
--
--    current_machine->init_args = args;
-+    current_machine->init_args = (QEMUMachineInitArgs) {
-+        .machine = machine,
-+        .ram_size = ram_size,
-+        .boot_order = boot_order,
-+        .kernel_filename = kernel_filename,
-+        .kernel_cmdline = kernel_cmdline,
-+        .initrd_filename = initrd_filename,
-+        .cpu_model = cpu_model };
-+
-     machine->init(&current_machine->init_args);
- 
-     audio_init();
--- 
-1.7.9.5
+Best regards
+ChenLiang
+
+> After:
+> ram_save_block        -> buffer_is_zero -> buffer_find_nonzero_offset
+> ram_handle_compressed -> buffer_is_zero -> buffer_find_nonzero_offset
+> 
+> Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+> 
+> Thanks!
+> Laszlo
+
 
