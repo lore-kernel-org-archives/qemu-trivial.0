@@ -1,49 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WaU6a-0006ks-33
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Apr 2014 13:58:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39316)
+	id 1Walsb-0000Ex-1V
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Apr 2014 08:57:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51878)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WaU6T-0006ja-Lx
-	for qemu-trivial@nongnu.org; Wed, 16 Apr 2014 13:58:37 -0400
+	(envelope-from <iryzhov@arccn.ru>) id 1WaXFW-0002ca-A3
+	for qemu-trivial@nongnu.org; Wed, 16 Apr 2014 17:20:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WaU6P-0008DJ-DG
-	for qemu-trivial@nongnu.org; Wed, 16 Apr 2014 13:58:33 -0400
-Received: from mail-la0-f52.google.com ([209.85.215.52]:47181)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WaU6P-0008D4-64
-	for qemu-trivial@nongnu.org; Wed, 16 Apr 2014 13:58:29 -0400
-Received: by mail-la0-f52.google.com with SMTP id ec20so8201230lab.25
-	for <qemu-trivial@nongnu.org>; Wed, 16 Apr 2014 10:58:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=sa0BBju9pnwJt3EY9ThiKGDiQjLvIY99a/9LO8vW79I=;
-	b=PkrXUpy6x3m6reRURgCTIPJxutZVP3XE2gFYXAzeV5LvMzYUkV4Lg5/ywFcFxc/wPT
-	qiGfZdwqAfC1UTJ+ro1SY2UnpjN+xuo1V31ER8+oq5TX8VF8MEQrYkcqnNDVFUwM5Tg8
-	GZCNKWeuxRe4bXHckyLdlEGfcEeleq59FbjJWjpknnTkT5PvlQRuqvBmeovMgPDwMF4P
-	GVxAbuIoNRbk2ntShw/grjrTjXatmqtIAHMbyTPwQMX3USI9PHoKkntNmOG3AWutOCA0
-	s5gffN4vCRzNVJzh+vZw4VIC77yQxI6HrjErRcT983X0UY0mx82HalFupQsH101v/Jht
-	1Qpw==
-X-Gm-Message-State: ALoCoQl9p90DQUztThSkg/NpQnLjEXkxHz80MuURm40gqE3VdYsozT5caL/gkaaWoLqN85h8KyDM
-X-Received: by 10.152.18.170 with SMTP id x10mr2108530lad.55.1397671107904;
-	Wed, 16 Apr 2014 10:58:27 -0700 (PDT)
+	(envelope-from <iryzhov@arccn.ru>) id 1WaXFO-0007a6-4l
+	for qemu-trivial@nongnu.org; Wed, 16 Apr 2014 17:20:06 -0400
+Received: from vpn.arccn.ru ([95.182.74.2]:41564 helo=mail.arccn.ru)
+	by eggs.gnu.org with smtp (Exim 4.71)
+	(envelope-from <iryzhov@arccn.ru>) id 1WaXFN-0007ZM-UU
+	for qemu-trivial@nongnu.org; Wed, 16 Apr 2014 17:19:58 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by mail.arccn.ru (Postfix) with ESMTP id 893FBA0094
+	for <qemu-trivial@nongnu.org>; Thu, 17 Apr 2014 01:19:56 +0400 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=arccn.ru; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:references:subject:subject:to:mime-version:user-agent:from:from
+	:date:date:message-id; s=dkim; t=1397683196; x=1398547196; bh=nj
+	fZB7lor0vS+1JTSqfPhK5XCQ644cZEiZ+B9KAtnKg=; b=fCKUbaMF0d5B9Q7yfr
+	5ME6NNbj/T6z5MrYA+AjxtqwLBsbKzXP0Qk6pALzLiQee+T/kXimYz2wdxaLLZZ9
+	+XfoITUIi58ueMIMRBi8ZKFQHQNmmgb1jQ+ye8ohHBMqhymzJfmBqxcnRGGtpsYS
+	G+03+0RbCz7c3qU1KhEYSUs58=
+X-Virus-Scanned: Debian amavisd-new at mail.arccn.ru
+Received: from mail.arccn.ru ([127.0.0.1])
+	by localhost (mail.arccn.ru [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ePWO-b5jztuq for <qemu-trivial@nongnu.org>;
+	Thu, 17 Apr 2014 01:19:56 +0400 (MSK)
+Received: from [192.168.1.124] (ppp91-79-241-175.pppoe.mtu-net.ru
+	[91.79.241.175])
+	by mail.arccn.ru (Postfix) with ESMTPSA id 4BA82A0091;
+	Thu, 17 Apr 2014 01:19:52 +0400 (MSK)
+Message-ID: <534EF3F4.7080803@arccn.ru>
+Date: Thu, 17 Apr 2014 01:19:48 +0400
+From: Igor Ryzhov <iryzhov@arccn.ru>
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Received: by 10.112.180.233 with HTTP; Wed, 16 Apr 2014 10:58:07 -0700 (PDT)
-In-Reply-To: <534EBEC1.9070801@weilnetz.de>
+To: Peter Maydell <peter.maydell@linaro.org>, 
+ Stefan Weil <sw@weilnetz.de>
 References: <1397655787-27780-1-git-send-email-iryzhov@arccn.ru>
 	<534EBEC1.9070801@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 16 Apr 2014 18:58:07 +0100
-Message-ID: <CAFEAcA8xSPkrAhG8c_FjoXh2qcYL0C32pPH9dHTjg-wAcprgfw@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.52
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Igor Ryzhov <iryzhov@arccn.ru>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+	<CAFEAcA8xSPkrAhG8c_FjoXh2qcYL0C32pPH9dHTjg-wAcprgfw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8xSPkrAhG8c_FjoXh2qcYL0C32pPH9dHTjg-wAcprgfw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 95.182.74.2
+X-Mailman-Approved-At: Thu, 17 Apr 2014 08:57:23 -0400
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Unnecessary comma.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -56,40 +64,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Apr 2014 17:58:38 -0000
+X-List-Received-Date: Wed, 16 Apr 2014 21:20:11 -0000
 
-On 16 April 2014 18:32, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 16.04.2014 15:43, schrieb Igor Ryzhov:
->> Signed-off-by: Igor Ryzhov <iryzhov@arccn.ru>
->> ---
->>  net/net.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/net/net.c b/net/net.c
->> index e3ef1e4..60a07f1 100644
->> --- a/net/net.c
->> +++ b/net/net.c
->> @@ -473,7 +473,7 @@ ssize_t qemu_deliver_packet(NetClientState *sender,
->>
->>      if (ret == 0) {
->>          nc->receive_disabled = 1;
->> -    };
->> +    }
->>
->>      return ret;
->>  }
->>
->
-> Reviewed-by: Stefan Weil <sw@weilnetz.de>
->
-> CC'ing qemu-trivial
->
-> PS. The "." at the end of your subject line is unnecessary, too. :-)
+Oh, my mistake.
+It's really semicolon, not comma :)
 
-"net/net.c: Remove unnecessary semicolon" would probably
-be better (since it lets people know which area the patch is affecting
-and also gets the name of the punctuation mark right ;-)).
+Should I resend the patch with correct name?
 
-thanks
--- PMM
+16.04.2014 21:58, Peter Maydell =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
+> On 16 April 2014 18:32, Stefan Weil <sw@weilnetz.de> wrote:
+>> Am 16.04.2014 15:43, schrieb Igor Ryzhov:
+>>> Signed-off-by: Igor Ryzhov <iryzhov@arccn.ru>
+>>> ---
+>>>   net/net.c | 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/net/net.c b/net/net.c
+>>> index e3ef1e4..60a07f1 100644
+>>> --- a/net/net.c
+>>> +++ b/net/net.c
+>>> @@ -473,7 +473,7 @@ ssize_t qemu_deliver_packet(NetClientState *sende=
+r,
+>>>
+>>>       if (ret =3D=3D 0) {
+>>>           nc->receive_disabled =3D 1;
+>>> -    };
+>>> +    }
+>>>
+>>>       return ret;
+>>>   }
+>>>
+>> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+>>
+>> CC'ing qemu-trivial
+>>
+>> PS. The "." at the end of your subject line is unnecessary, too. :-)
+> "net/net.c: Remove unnecessary semicolon" would probably
+> be better (since it lets people know which area the patch is affecting
+> and also gets the name of the punctuation mark right ;-)).
+>
+> thanks
+> -- PMM
+
 
