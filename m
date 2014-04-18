@@ -1,34 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wb2VN-0001Gk-8e
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Apr 2014 02:42:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38650)
+	id 1Wb2VO-0001JE-Gg
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Apr 2014 02:42:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38657)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wb2VG-00015O-QQ
-	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:42:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wb2VI-00018K-HR
+	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:42:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wb2VB-0000eX-SV
-	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:42:26 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59028)
+	(envelope-from <mjt@tls.msk.ru>) id 1Wb2VD-0000f3-J0
+	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:42:28 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48773)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Wb2V1-0000cd-5C; Fri, 18 Apr 2014 02:42:11 -0400
+	id 1Wb2V1-0000cc-53; Fri, 18 Apr 2014 02:42:11 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2414341CE8;
+	by isrv.corpit.ru (Postfix) with ESMTP id 5644541D19;
 	Fri, 18 Apr 2014 10:42:10 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 094EA204;
+	by tsrv.corpit.ru (Postfix) with SMTP id 451E6651;
 	Fri, 18 Apr 2014 10:42:10 +0400 (MSK)
-Received: (nullmailer pid 241867 invoked by uid 1000);
-	Fri, 18 Apr 2014 06:42:09 -0000
+Received: (nullmailer pid 241870 invoked by uid 1000);
+	Fri, 18 Apr 2014 06:42:10 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 18 Apr 2014 10:42:08 +0400
-Message-Id: <1397803329-241829-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 18 Apr 2014 10:42:09 +0400
+Message-Id: <1397803329-241829-2-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1397803329-241829-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1397803329-241829-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL] Trivial patches for 2014-04-18
+Subject: [Qemu-trivial] [PATCH v3] doc: grammify "allows to"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,71 +42,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Apr 2014 06:42:31 -0000
+X-List-Received-Date: Fri, 18 Apr 2014 06:42:33 -0000
 
-This is the same pull request as has been sent initially for 2.0
-and which we didn't apply.  Except that this time, I fixed one more
-"allows to" case which I overlooked in qemu-options.hx.
+English language grammar does not allow usage
+of the word "allows" directly followed by an
+infinitive, declaring constructs like "something
+allows to do somestuff" un-grammatical.  Often
+it is possible to just insert "one" between "allows"
+and "to" to make the construct grammatical, but
+usually it is better to re-phrase the statement.
 
-I'm not re-sending whole series again, as at has been sent previously,
-will only re-send the changed patch as a reply to this message.
+This patch tries to fix 4 examples of "allows to"
+usage in qemu doc, but does not address comments
+in the code with similar constructs.  It also adds
+missing "the" in the same line.
 
-Please consider pulling.
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qemu-doc.texi   |    2 +-
+ qemu-options.hx |    7 ++++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
 
-The following changes since commit 2d03b49c3f225994c4b0b46146437d8c887d6774:
+v2: catch one more occurence of the same construct
+in qemu-options.hx, in vnc encodings section.  This
+statement may need rewriting which I don't provide
+in this patch, which just fixes the grammar.
 
-  Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20140417-1' into staging (2014-04-17 21:37:26 +0100)
+v3: one more case in qemu-options.hx
 
-are available in the git repository at:
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index e6e20eb..88ec9bb 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -823,7 +823,7 @@ In this case, the block device must be exported using qemu-nbd:
+ qemu-nbd --socket=/tmp/my_socket my_disk.qcow2
+ @end example
+ 
+-The use of qemu-nbd allows to share a disk between several guests:
++The use of qemu-nbd allows sharing of a disk between several guests:
+ @example
+ qemu-nbd --socket=/tmp/my_socket --share=2 my_disk.qcow2
+ @end example
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 2d33815..6457034 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -444,7 +444,8 @@ This option defines the type of the media: disk or cdrom.
+ @item cyls=@var{c},heads=@var{h},secs=@var{s}[,trans=@var{t}]
+ These options have the same definition as they have in @option{-hdachs}.
+ @item snapshot=@var{snapshot}
+-@var{snapshot} is "on" or "off" and allows to enable snapshot for given drive (see @option{-snapshot}).
++@var{snapshot} is "on" or "off" and controls snapshot mode for the given drive
++(see @option{-snapshot}).
+ @item cache=@var{cache}
+ @var{cache} is "none", "writeback", "unsafe", "directsync" or "writethrough" and controls how the host cache is used to access block data.
+ @item aio=@var{aio}
+@@ -1242,7 +1243,7 @@ Disable adaptive encodings. Adaptive encodings are enabled by default.
+ An adaptive encoding will try to detect frequently updated screen regions,
+ and send updates in these regions using a lossy encoding (like JPEG).
+ This can be really helpful to save bandwidth when playing videos. Disabling
+-adaptive encodings allows to restore the original static behavior of encodings
++adaptive encodings restores the original static behavior of encodings
+ like Tight.
+ 
+ @item share=[allow-exclusive|force-shared|ignore]
+@@ -2805,7 +2806,7 @@ UTC or local time, respectively. @code{localtime} is required for correct date i
+ MS-DOS or Windows. To start at a specific point in time, provide @var{date} in the
+ format @code{2006-06-17T16:01:21} or @code{2006-06-17}. The default base is UTC.
+ 
+-By default the RTC is driven by the host system time. This allows to use the
++By default the RTC is driven by the host system time. This allows using of the
+ RTC as accurate reference clock inside the guest, specifically if the host
+ time is smoothly following an accurate external reference clock, e.g. via NTP.
+ If you want to isolate the guest time from the host, you can set @option{clock}
+-- 
+1.7.10.4
 
-
-  git://git.corpit.ru/qemu.git tags/trivial-patches-2014-04-18
-
-for you to fetch changes up to b36dc67b95dedcece8757ec23bf42625a7ccda34:
-
-  Fix grammar in comment (2014-04-18 10:33:36 +0400)
-
-----------------------------------------------------------------
-trivial patches for 2014-04-18
-
-----------------------------------------------------------------
-Amos Kong (1):
-      qga: trivial fix for unclear documentation of guest-set-time
-
-Chen Gang (1):
-      vl: Report accelerator not supported for target more nicely
-
-Hani Benhabiles (1):
-      net: Report error when device / hub combo is not found.
-
-Michael Tokarev (1):
-      doc: grammify "allows to"
-
-Paolo Bonzini (1):
-      scripts: add sample model file for Coverity Scan
-
-Peter Maydell (4):
-      configure: Fix indentation of help for --enable/disable-debug-info
-      hw/ide/ahci.c: Avoid shift left into sign bit
-      int128.h: Avoid undefined behaviours involving signed arithmetic
-      xbzrle.c: Avoid undefined behaviour with signed arithmetic
-
-Stefan Weil (2):
-      configure: Remove redundant message for -Werror
-      Fix grammar in comment
-
- configure                |    5 +-
- hw/i2c/smbus_eeprom.c    |    2 +-
- hw/ide/ahci.c            |    4 +-
- include/qemu/int128.h    |    4 +-
- net/net.c                |    4 +-
- qemu-doc.texi            |    2 +-
- qemu-options.hx          |    7 +-
- qga/commands-posix.c     |    2 +-
- qga/qapi-schema.json     |   14 ++--
- scripts/coverity-model.c |  183 ++++++++++++++++++++++++++++++++++++++++++++++
- vl.c                     |    2 +-
- xbzrle.c                 |    8 +-
- 12 files changed, 212 insertions(+), 25 deletions(-)
- create mode 100644 scripts/coverity-model.c
 
