@@ -1,34 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wb2Fb-0008R5-7D
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Apr 2014 02:26:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35945)
+	id 1Wb2MY-0002tY-Rg
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Apr 2014 02:33:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36901)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1Wb2FU-0007yh-3d
-	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:26:14 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wb2MQ-0002jL-LT
+	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:33:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1Wb2FN-0004A1-VI
-	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:26:08 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38333)
+	(envelope-from <mjt@tls.msk.ru>) id 1Wb2MK-0006KJ-B0
+	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:33:18 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:37353)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1Wb2FB-00049R-82; Fri, 18 Apr 2014 02:25:49 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3I6Plwu009311
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 18 Apr 2014 02:25:48 -0400
-Received: from T430.nay.redhat.com (dhcp-14-247.nay.redhat.com [10.66.14.247])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with
-	ESMTP id s3I6Pjic028533; Fri, 18 Apr 2014 02:25:45 -0400
-From: Fam Zheng <famz@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 18 Apr 2014 14:25:52 +0800
-Message-Id: <1397802352-27814-1-git-send-email-famz@redhat.com>
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Wb2M7-0006Iv-Qc; Fri, 18 Apr 2014 02:32:59 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 921A441D08;
+	Fri, 18 Apr 2014 10:32:50 +0400 (MSK)
+Message-ID: <5350C712.90201@msgid.tls.msk.ru>
+Date: Fri, 18 Apr 2014 10:32:50 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20131103 Icedove/17.0.10
+MIME-Version: 1.0
+To: Fam Zheng <famz@redhat.com>
+References: <1397802352-27814-1-git-send-email-famz@redhat.com>
+In-Reply-To: <1397802352-27814-1-git-send-email-famz@redhat.com>
+X-Enigmail-Version: 1.5.1
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru
-Subject: [Qemu-trivial] [PATCH] configure: Exit with code 0 with --help
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] configure: Exit with code 0 with --help
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,44 +44,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Apr 2014 06:26:14 -0000
+X-List-Received-Date: Fri, 18 Apr 2014 06:33:24 -0000
 
-There are two paths to show help and exit, one is with "-h" or "--help",
-one is with invalid options.
+18.04.2014 10:25, Fam Zheng wrote:
+> There are two paths to show help and exit, one is with "-h" or "--help",
+> one is with invalid options.
+> 
+> Only "exit 1" with the latter case.
 
-Only "exit 1" with the latter case.
+I'd rather put `exit 1' right in invalid option case, instead of jumping
+to help.  Because help output is huge, and it is often difficult to see
+the error message.   At max, at the error case, the script can output
+something like, `for a list of valid options, run $0 --help'.
 
-Signed-off-by: Fam Zheng <famz@redhat.com>
----
- configure | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Here and for qemu-img case.
 
-diff --git a/configure b/configure
-index 69b9f56..b195efe 100755
---- a/configure
-+++ b/configure
-@@ -1087,7 +1087,10 @@ for opt do
-   ;;
-   --enable-quorum) quorum="yes"
-   ;;
--  *) echo "ERROR: unknown option $opt"; show_help="yes"
-+  *)
-+      echo "ERROR: unknown option $opt"
-+      show_help="yes"
-+      exit_code=1
-   ;;
-   esac
- done
-@@ -1353,7 +1356,7 @@ Advanced options (experts only):
- 
- NOTE: The object files are built at the place where configure is launched
- EOF
--exit 1
-+exit $exit_code
- fi
- 
- # Now we have handled --enable-tcg-interpreter and know we're not just
--- 
-1.9.2
+Do you not agree?
 
+Thanks,
+
+/mjt
 
