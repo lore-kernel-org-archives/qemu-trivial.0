@@ -1,36 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wb2VO-0001JE-Gg
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Apr 2014 02:42:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38657)
+	id 1Wb2iQ-0008TN-KN
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Apr 2014 02:56:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40762)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wb2VI-00018K-HR
-	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:42:33 -0400
+	(envelope-from <famz@redhat.com>) id 1Wb2iI-0008Fo-EX
+	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:56:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wb2VD-0000f3-J0
-	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:42:28 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:48773)
+	(envelope-from <famz@redhat.com>) id 1Wb2iC-0004SO-AI
+	for qemu-trivial@nongnu.org; Fri, 18 Apr 2014 02:55:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53856)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Wb2V1-0000cc-53; Fri, 18 Apr 2014 02:42:11 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 5644541D19;
-	Fri, 18 Apr 2014 10:42:10 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 451E6651;
-	Fri, 18 Apr 2014 10:42:10 +0400 (MSK)
-Received: (nullmailer pid 241870 invoked by uid 1000);
-	Fri, 18 Apr 2014 06:42:10 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
+	(envelope-from <famz@redhat.com>)
+	id 1Wb2hz-0004OK-EW; Fri, 18 Apr 2014 02:55:35 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3I6tXfK022827
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Fri, 18 Apr 2014 02:55:33 -0400
+Received: from T430.nay.redhat.com (dhcp-14-247.nay.redhat.com [10.66.14.247])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id s3I6tTUC011180; Fri, 18 Apr 2014 02:55:31 -0400
+From: Fam Zheng <famz@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 18 Apr 2014 10:42:09 +0400
-Message-Id: <1397803329-241829-2-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1397803329-241829-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1397803329-241829-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 18 Apr 2014 14:55:36 +0800
+Message-Id: <1397804136-12919-1-git-send-email-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PATCH v3] doc: grammify "allows to"
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru
+Subject: [Qemu-trivial] [PATCH v2] configure: Improve help behavior
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,80 +40,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Apr 2014 06:42:33 -0000
+X-List-Received-Date: Fri, 18 Apr 2014 06:56:00 -0000
 
-English language grammar does not allow usage
-of the word "allows" directly followed by an
-infinitive, declaring constructs like "something
-allows to do somestuff" un-grammatical.  Often
-it is possible to just insert "one" between "allows"
-and "to" to make the construct grammatical, but
-usually it is better to re-phrase the statement.
+Old:
+There are two paths to show help and exit 1, one is with "-h" or
+"--help", one is with invalid options.
 
-This patch tries to fix 4 examples of "allows to"
-usage in qemu doc, but does not address comments
-in the code with similar constructs.  It also adds
-missing "the" in the same line.
+New:
+Show help and exit 0 for --help.
+On invalid option, don't show the long help and bury the early "ERROR:"
+line, just give a message pointing to --help.
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Fam Zheng <famz@redhat.com>
 ---
- qemu-doc.texi   |    2 +-
- qemu-options.hx |    7 ++++---
- 2 files changed, 5 insertions(+), 4 deletions(-)
+ configure | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-v2: catch one more occurence of the same construct
-in qemu-options.hx, in vnc encodings section.  This
-statement may need rewriting which I don't provide
-in this patch, which just fixes the grammar.
-
-v3: one more case in qemu-options.hx
-
-diff --git a/qemu-doc.texi b/qemu-doc.texi
-index e6e20eb..88ec9bb 100644
---- a/qemu-doc.texi
-+++ b/qemu-doc.texi
-@@ -823,7 +823,7 @@ In this case, the block device must be exported using qemu-nbd:
- qemu-nbd --socket=/tmp/my_socket my_disk.qcow2
- @end example
+diff --git a/configure b/configure
+index 69b9f56..b1401c6 100755
+--- a/configure
++++ b/configure
+@@ -1087,7 +1087,10 @@ for opt do
+   ;;
+   --enable-quorum) quorum="yes"
+   ;;
+-  *) echo "ERROR: unknown option $opt"; show_help="yes"
++  *)
++      echo "ERROR: unknown option $opt"
++      echo "Try '$0 --help' for more information"
++      exit 1
+   ;;
+   esac
+ done
+@@ -1353,7 +1356,7 @@ Advanced options (experts only):
  
--The use of qemu-nbd allows to share a disk between several guests:
-+The use of qemu-nbd allows sharing of a disk between several guests:
- @example
- qemu-nbd --socket=/tmp/my_socket --share=2 my_disk.qcow2
- @end example
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 2d33815..6457034 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -444,7 +444,8 @@ This option defines the type of the media: disk or cdrom.
- @item cyls=@var{c},heads=@var{h},secs=@var{s}[,trans=@var{t}]
- These options have the same definition as they have in @option{-hdachs}.
- @item snapshot=@var{snapshot}
--@var{snapshot} is "on" or "off" and allows to enable snapshot for given drive (see @option{-snapshot}).
-+@var{snapshot} is "on" or "off" and controls snapshot mode for the given drive
-+(see @option{-snapshot}).
- @item cache=@var{cache}
- @var{cache} is "none", "writeback", "unsafe", "directsync" or "writethrough" and controls how the host cache is used to access block data.
- @item aio=@var{aio}
-@@ -1242,7 +1243,7 @@ Disable adaptive encodings. Adaptive encodings are enabled by default.
- An adaptive encoding will try to detect frequently updated screen regions,
- and send updates in these regions using a lossy encoding (like JPEG).
- This can be really helpful to save bandwidth when playing videos. Disabling
--adaptive encodings allows to restore the original static behavior of encodings
-+adaptive encodings restores the original static behavior of encodings
- like Tight.
+ NOTE: The object files are built at the place where configure is launched
+ EOF
+-exit 1
++exit 0
+ fi
  
- @item share=[allow-exclusive|force-shared|ignore]
-@@ -2805,7 +2806,7 @@ UTC or local time, respectively. @code{localtime} is required for correct date i
- MS-DOS or Windows. To start at a specific point in time, provide @var{date} in the
- format @code{2006-06-17T16:01:21} or @code{2006-06-17}. The default base is UTC.
- 
--By default the RTC is driven by the host system time. This allows to use the
-+By default the RTC is driven by the host system time. This allows using of the
- RTC as accurate reference clock inside the guest, specifically if the host
- time is smoothly following an accurate external reference clock, e.g. via NTP.
- If you want to isolate the guest time from the host, you can set @option{clock}
+ # Now we have handled --enable-tcg-interpreter and know we're not just
 -- 
-1.7.10.4
+1.9.2
 
 
