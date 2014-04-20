@@ -1,55 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WbcNy-0001fc-JW
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Apr 2014 17:01:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47171)
+	id 1WbqVP-0005Cb-Dx
+	for mharc-qemu-trivial@gnu.org; Sun, 20 Apr 2014 08:05:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39715)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1WbcNo-0001Kx-0x
-	for qemu-trivial@nongnu.org; Sat, 19 Apr 2014 17:01:17 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WbqVE-0004fA-FF
+	for qemu-trivial@nongnu.org; Sun, 20 Apr 2014 08:05:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1WbcNe-0003jD-UR
-	for qemu-trivial@nongnu.org; Sat, 19 Apr 2014 17:01:07 -0400
-Received: from mail-qg0-x230.google.com ([2607:f8b0:400d:c04::230]:53333)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WbqV5-0004mq-Dg
+	for qemu-trivial@nongnu.org; Sun, 20 Apr 2014 08:05:44 -0400
+Received: from mail-pd0-x22e.google.com ([2607:f8b0:400e:c02::22e]:42805)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1WbcNM-0003hO-Pe; Sat, 19 Apr 2014 17:00:40 -0400
-Received: by mail-qg0-f48.google.com with SMTP id i50so2794570qgf.35
-	for <multiple recipients>; Sat, 19 Apr 2014 14:00:40 -0700 (PDT)
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1WbqUj-0004k4-2x; Sun, 20 Apr 2014 08:05:13 -0400
+Received: by mail-pd0-f174.google.com with SMTP id y13so2802778pdi.19
+	for <multiple recipients>; Sun, 20 Apr 2014 05:05:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=BqMlgb/51W62hEJNqwteRB3J99rfWaNsbt9WThzj7RA=;
-	b=UwqWClX2ung7v74Z/ews0NaqL11zPFYjHfV6J5uJwoQs6a986whLbp/9EBAHa2gE1v
-	m9qrZitjJ/Xz5wLeIdc8kspJ7rdQtCZqfN2H0DRcEbDIU8WMyE4KGk8Rkspv6vzyeTZd
-	g0aqHOjzYrbFAxd0zhYiRBh+cwvMyEFAGhzywELNyZ5YIWvnTkDrKEd52ThVmNmyg+2f
-	8ETGiqxJfyCWEBFCzrDiFviM6qISXCqJ4SH9PZsb/gGiEkmqMgaoJdDDj/BNWVJ/anxC
-	UfzuMc7MjfFQXEshU59djQ1weVmn9G+2ynS13Zoa8GfKXabzlcCc5sxKs0JmH7T/45o2
-	+SkA==
-X-Received: by 10.140.41.80 with SMTP id y74mr4431668qgy.104.1397941240258;
-	Sat, 19 Apr 2014 14:00:40 -0700 (PDT)
-Received: from yakj.usersys.redhat.com ([216.127.123.146])
-	by mx.google.com with ESMTPSA id a9sm5298167qgf.19.2014.04.19.14.00.38
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:content-type:content-transfer-encoding;
+	bh=m//Tzdk28H67C1aOoe27vmmOA29aNi1ugT6sV34ahBM=;
+	b=0yrBxwf1si0qWqLI1qgYhbZRVkmc94x4OXWoXZ36gwmkKN/JnAtkFZM/+bx0c3fV2N
+	WftL7FoFz2aFk8zPpxHNGT+zdAAy89VUphanmwAjQcoKJB+63/Gm1XDoraWkq+A3Pgp4
+	/r7ZTU0xFq2CFjzHGJOYA4y2cBfQyCdxiAC8DiNBetBVPKP04WY4ifkxm7uN5rbqDXXA
+	div854P1R1p6X5ESrcOi5PFzTw2zfSs5zMe2Kk5akVZ/BwMM5ps7MbvJB4zXEAAkmk+z
+	Vjdwwa1RGnnrIW7eKwcpnVfNebDKeR9GZHZRNC1odNy39lpag0xAfA42C4IO20TuDSdE
+	6fYg==
+X-Received: by 10.68.201.165 with SMTP id kb5mr32165493pbc.80.1397995511108;
+	Sun, 20 Apr 2014 05:05:11 -0700 (PDT)
+Received: from [192.168.1.101] ([223.72.65.54])
+	by mx.google.com with ESMTPSA id bc4sm71496318pbb.2.2014.04.20.05.05.08
 	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sat, 19 Apr 2014 14:00:39 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <5352E3F2.4000209@redhat.com>
-Date: Sat, 19 Apr 2014 17:00:34 -0400
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Sun, 20 Apr 2014 05:05:10 -0700 (PDT)
+Message-ID: <5353B7F9.4060803@gmail.com>
+Date: Sun, 20 Apr 2014 20:05:13 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	rv:17.0) Gecko/20130625 Thunderbird/17.0.7
 MIME-Version: 1.0
-To: Mike Frysinger <vapier@gentoo.org>, qemu-devel@nongnu.org
-References: <1397929197-21234-1-git-send-email-vapier@gentoo.org>
-In-Reply-To: <1397929197-21234-1-git-send-email-vapier@gentoo.org>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+To: Markus Armbruster <armbru@redhat.com>, 
+	Peter Maydell <peter.maydell@linaro.org>,
+	mjt@tls.msk.ru, aliguori@amazon.com
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c04::230
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, aneesh.kumar@linux.vnet.ibm.com,
-	Tim Comer <comer0@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH] virtfs-proxy-helper: fix call to accept
+X-Received-From: 2607:f8b0:400e:c02::22e
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH trivial] vl: Avoid to close stdout after
+ finish 'writeconfig' option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,34 +59,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Apr 2014 21:01:17 -0000
+X-List-Received-Date: Sun, 20 Apr 2014 12:05:53 -0000
 
-Il 19/04/2014 13:39, Mike Frysinger ha scritto:
-> From: Tim Comer <comer0@gmail.com>
->
-> The current code calls accept() without initializing the size parameter
-> which means the accept call might write too much to the stack.
->
-> URL: https://bugs.gentoo.org/486714
-> Signed-off-by: Tim Comer <comer0@gmail.com>
-> Signed-off-by: Mike Frysinger <vapier@gentoo.org>
-> ---
->  fsdev/virtfs-proxy-helper.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-> index bfecb87..cd291d3 100644
-> --- a/fsdev/virtfs-proxy-helper.c
-> +++ b/fsdev/virtfs-proxy-helper.c
-> @@ -760,6 +760,7 @@ static int proxy_socket(const char *path, uid_t uid, gid_t gid)
->          return -1;
->      }
->
-> +    size = sizeof(qemu);
->      client = accept(sock, (struct sockaddr *)&qemu, &size);
->      if (client < 0) {
->          do_perror("accept");
->
+After finish 'writeconfig' to stdout (with '-'), we want to copy/past
+the related information mannually, not for redirection ('readconfig'
+does not support '-').
 
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+So we can not close the stdout, or next options which may use stdout
+will not be displayed.
+
+
+Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+---
+ vl.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/vl.c b/vl.c
+index 9975e5a..215467f 100644
+--- a/vl.c
++++ b/vl.c
+@@ -3855,7 +3855,9 @@ int main(int argc, char **argv, char **envp)
+                         }
+                     }
+                     qemu_config_write(fp);
+-                    fclose(fp);
++                    if (fp != stdout) {
++                        fclose(fp);
++                    }
+                     break;
+                 }
+             case QEMU_OPTION_qtest:
+-- 
+1.7.11.7
 
