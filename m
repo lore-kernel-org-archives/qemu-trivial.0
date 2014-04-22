@@ -1,48 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wcdbu-0006wk-6e
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Apr 2014 12:31:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46478)
+	id 1WcgDk-00068V-Ow
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Apr 2014 15:19:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54261)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1Wcdbo-0006jg-M6
-	for qemu-trivial@nongnu.org; Tue, 22 Apr 2014 12:31:52 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1WcgDf-00066e-10
+	for qemu-trivial@nongnu.org; Tue, 22 Apr 2014 15:19:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1Wcdbk-0007KB-Iw
-	for qemu-trivial@nongnu.org; Tue, 22 Apr 2014 12:31:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37601)
+	(envelope-from <peter.maydell@linaro.org>) id 1WcgDY-0002Cs-FJ
+	for qemu-trivial@nongnu.org; Tue, 22 Apr 2014 15:19:02 -0400
+Received: from mail-la0-f43.google.com ([209.85.215.43]:55973)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1Wcdbk-0007K5-BH; Tue, 22 Apr 2014 12:31:44 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3MGVd9J022595
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 22 Apr 2014 12:31:39 -0400
-Received: from [10.3.113.141] (ovpn-113-141.phx2.redhat.com [10.3.113.141])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s3MGVcjm026849; Tue, 22 Apr 2014 12:31:38 -0400
-Message-ID: <5356996A.5090502@redhat.com>
-Date: Tue, 22 Apr 2014 10:31:38 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1WcgDY-0002CY-7n
+	for qemu-trivial@nongnu.org; Tue, 22 Apr 2014 15:18:56 -0400
+Received: by mail-la0-f43.google.com with SMTP id c6so53040lan.2
+	for <qemu-trivial@nongnu.org>; Tue, 22 Apr 2014 12:18:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=1lohBEqqy4HU9g8BcrcWGGY5HnggkhvkJKUn4CgtX4A=;
+	b=LePmw3cm/KHXjqwpmhE9v6RDofTozhnnX2echYF8XwJIHXw0nviQveMqlN3UheXmn4
+	8BBoPPh8hGwO/PXPAV2QI07I95hjlQqolxn2liO2Ixu/wfDwSIVzg9ykpbChBxtU3pKE
+	iMJEHne2DesD7ZaJXPnVXDZ/+m730mE2Mc/tanYQsm+DQKTEyPLWVQZl0CN/elfuIXwF
+	kCvGMIXycUWHzu1D+gojQ575ZiVQktomWN8X+a8RVfFfKXZIwR+oXp0QVLi0PffecLuo
+	+TBjs3OKWWLMI3gtvus4I4m4PNMmJ85xIBHTf19mzFSzyhzbw1JA2y0p076RwMeKDovA
+	suYg==
+X-Gm-Message-State: ALoCoQlncyYMs9um6ydEuFJdfPNEWTkHOnHBbN7Oi3WKRtEMRJ2XTsbcGckmNeEVVnSkgtXGUrDY
+X-Received: by 10.112.137.193 with SMTP id qk1mr2678372lbb.53.1398194334507;
+	Tue, 22 Apr 2014 12:18:54 -0700 (PDT)
 MIME-Version: 1.0
-To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Received: by 10.112.180.233 with HTTP; Tue, 22 Apr 2014 12:18:34 -0700 (PDT)
+In-Reply-To: <5356996A.5090502@redhat.com>
 References: <5353B7F9.4060803@gmail.com> <5355349E.6060601@redhat.com>
-	<53569371.6010404@suse.de>
-In-Reply-To: <53569371.6010404@suse.de>
-X-Enigmail-Version: 1.6
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="gwndXE23v1N1EPhALog5kjbdiahge1XOr"
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Chen Gang <gang.chen.5i5j@gmail.com>, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, Markus Armbruster <armbru@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, aliguori@amazon.com
+	<53569371.6010404@suse.de> <5356996A.5090502@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 22 Apr 2014 20:18:34 +0100
+Message-ID: <CAFEAcA9E6E7qt9X1QfQm3Gaa4PGt21MNdSB6ok94ht3zQK459A@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.43
+Cc: Chen Gang <gang.chen.5i5j@gmail.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	Markus Armbruster <armbru@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Anthony Liguori <aliguori@amazon.com>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] vl: Avoid to close
  stdout after finish 'writeconfig' option
 X-BeenThere: qemu-trivial@nongnu.org
@@ -56,85 +60,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Apr 2014 16:31:52 -0000
+X-List-Received-Date: Tue, 22 Apr 2014 19:19:08 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---gwndXE23v1N1EPhALog5kjbdiahge1XOr
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On 22 April 2014 17:31, Eric Blake <eblake@redhat.com> wrote:
+> Hmm, maybe we should update the qemu wiki?
+> http://wiki.qemu.org/Contribute/SubmitAPatch doesn't mention the qemu
+> preferred style (you pointed to the GNOME style, but at least GNU
+> coreutils explicitly prefers lowercase).
+>
+> At any rate, I'm not going to reject a patch based on capitalization,
 
-On 04/22/2014 10:06 AM, Andreas F=C3=A4rber wrote:
+Yeah, it doesn't really seem worth trying to enforce niceties
+of style here -- the effort required doesn't seem to really match
+the benefit, and we already have a lot of hoops we make new
+submitters jump through. "[file or area being patched]: [reasonably
+descriptive short summary]" is about the limit I personally feel
+comfortable insisting on.
 
->> Grammar, and awkward to read.  May I suggest:
->=20
->> vl: avoid closing stdout with 'writeconfig'
->=20
-
-> Eric, did you intentionally request to change "Avoid" to lowercase?
-
-Yes, out of habit, and in comparison to many recent commits.  In fact,
-looking at the current qemu.git head 'git shortlog -100 2d03b49c' shows:
-
-3 commits matching '\.$', 97 without
-75 commits matching ': [A-Z]', 24 matching ': [a-z]' (some overlap here,
-and merge commits don't match either)
-
-extending further to 1000 commits:
-
-21 commits with trailing dot, 979 without
-644 matching ': [A-Z]', 260 matching ': [a-z]'
-
-at 10000, things are a bit more even:
-5187 matching ': [A-Z]', 3904 matching ': [a-z]'
-
-but still a distinct leaning towards capital at the start of the message
-
-> I was once pointed to https://wiki.gnome.org/Git/CommitMessages as a
-> template, and starting an English-language heading with an uppercase
-> letter seems natural, with anything else being too lazy to press Shift.=
-
-
-Hmm, maybe we should update the qemu wiki?
-http://wiki.qemu.org/Contribute/SubmitAPatch doesn't mention the qemu
-preferred style (you pointed to the GNOME style, but at least GNU
-coreutils explicitly prefers lowercase).
-
-At any rate, I'm not going to reject a patch based on capitalization,
-and can retrain my fingers to use a capital if that is the documented
-preference.
-
-> Personally I find -writeconfig the most straightforward way to
-> indicate it's an option, just like () makes clear something is a
-> function. The original subject had an explicit "option", that got lost
-> for v2.
-
-Good call, so maybe:
-
- vl: Avoid closing stdout with '-writeconfig'
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---gwndXE23v1N1EPhALog5kjbdiahge1XOr
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJTVplqAAoJEKeha0olJ0NqgbAH/1p/yfFT6EAfww+2RKbZK1Bp
-ZpYfpxsmSnFIcqxOfkfmMlLLmqclDMikRQ0pdKWMZccM7z0wuLmPOnQi010/dnXV
-fnPXd+Ods7bxXbXsAGWUbroFPFWybrsC2UNwcxpGKfI+hMUYMfSNRWw5NJJLK4gi
-QreTKv4pigyZe4Vqkf3dvxoQQWwSfUIT2LB5pOENJUNfDtgl80ggLJ51HK+uaQ+b
-XeMNeTDsif+LYK3MRJgt9DVQi06dtwrV/FC4ASACRHcq/ohUzmtKzQpNa34dcUk2
-nx1JP3r1kbCRP9O8YjgcfSDT3TYBRH1V28ikx84j0qySLBymz4QfGox09uLbYw0=
-=G9wA
------END PGP SIGNATURE-----
-
---gwndXE23v1N1EPhALog5kjbdiahge1XOr--
+thanks
+-- PMM
 
