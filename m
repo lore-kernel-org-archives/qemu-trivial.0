@@ -1,49 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WdXnZ-0005o5-TC
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Apr 2014 00:31:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47497)
+	id 1WdiFJ-0001Zl-SH
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Apr 2014 11:41:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47248)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WdUoT-00029r-Md
-	for qemu-trivial@nongnu.org; Thu, 24 Apr 2014 21:22:00 -0400
+	(envelope-from <lcapitulino@redhat.com>) id 1WdiFD-0001LP-2k
+	for qemu-trivial@nongnu.org; Fri, 25 Apr 2014 11:41:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WdJWx-0001LN-3w
-	for qemu-trivial@nongnu.org; Thu, 24 Apr 2014 09:17:46 -0400
-Received: from mail-lb0-f182.google.com ([209.85.217.182]:33282)
+	(envelope-from <lcapitulino@redhat.com>) id 1WdiF7-0001UP-Q6
+	for qemu-trivial@nongnu.org; Fri, 25 Apr 2014 11:40:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41384)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WdJWw-0001JX-ST
-	for qemu-trivial@nongnu.org; Thu, 24 Apr 2014 09:17:35 -0400
-Received: by mail-lb0-f182.google.com with SMTP id l4so2025832lbv.27
-	for <qemu-trivial@nongnu.org>; Thu, 24 Apr 2014 06:17:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=ISz1WILKBL6TiqWn/CpddNe66Cr8LMq88Yd4WC1idP8=;
-	b=ZVIhwXViGHtr20KYvuq5vS6J0dFxpLtAZ2Yp8oJkdhYzUpQ6SV027LxCyoT0aJuFx+
-	Q+Utc9PzqIceijjk14zxsY4UifxoJsmM57LQ1Jc+U6RD4Kt3VLydyCDqcEFL6kZfQwQr
-	Ay0YjpfD0zZXkAoYOJgCNurd8X//sLao/bkLrh9f4Y8LQOLQq0/w5mMZD0Wlh3IjGxoq
-	zuRAZYUynN108nwLg3/BRgQ8gFbivQBlwZed3IXz5oDa7b97FKqYvi5sOmjxJz7i6HWE
-	nqqyQ5IweMmGsVnPLWycQsKuPlEfVyEsseaVtRbej/hIfdygwaUIY44xy10+YmoDsVn7
-	D+IQ==
-X-Gm-Message-State: ALoCoQkH1VI9oE2bnYkgnBhmmelbpw++mq8VamyBrq8kp+gQfjAb1PKN5j0yjLGI+Q2aX3sqwJI4
-X-Received: by 10.112.64.8 with SMTP id k8mr36462lbs.72.1398345452802; Thu, 24
-	Apr 2014 06:17:32 -0700 (PDT)
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1WdiEx-0001T6-5f; Fri, 25 Apr 2014 11:40:39 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3PFeZK0032620
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Fri, 25 Apr 2014 11:40:36 -0400
+Received: from localhost (ovpn-113-123.phx2.redhat.com [10.3.113.123])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id s3PFeYxk019791; Fri, 25 Apr 2014 11:40:34 -0400
+Date: Fri, 25 Apr 2014 11:40:33 -0400
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Hani Benhabiles <kroosec@gmail.com>
+Message-ID: <20140425114033.50333f11@redhat.com>
+In-Reply-To: <1398203043-20559-1-git-send-email-kroosec@gmail.com>
+References: <1398203043-20559-1-git-send-email-kroosec@gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Received: by 10.112.180.233 with HTTP; Thu, 24 Apr 2014 06:17:12 -0700 (PDT)
-In-Reply-To: <1397803329-241829-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1397803329-241829-1-git-send-email-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 24 Apr 2014 14:17:12 +0100
-Message-ID: <CAFEAcA-fMBeCnQRd4R0hhWE+1_0Lkw==va9aUTCRKrq6RAUTqg@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.182
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL] Trivial patches for
-	2014-04-18
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org, afaerber@suse.de, imammedo@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] qmp: Remove unused variable.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,28 +47,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Apr 2014 04:31:40 -0000
+X-List-Received-Date: Fri, 25 Apr 2014 15:41:00 -0000
 
-On 18 April 2014 07:42, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> This is the same pull request as has been sent initially for 2.0
-> and which we didn't apply.  Except that this time, I fixed one more
-> "allows to" case which I overlooked in qemu-options.hx.
->
-> I'm not re-sending whole series again, as at has been sent previously,
-> will only re-send the changed patch as a reply to this message.
->
-> Please consider pulling.
->
-> The following changes since commit 2d03b49c3f225994c4b0b46146437d8c887d6774:
->
->   Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20140417-1' into staging (2014-04-17 21:37:26 +0100)
->
-> are available in the git repository at:
->
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-04-18
+On Tue, 22 Apr 2014 22:44:03 +0100
+Hani Benhabiles <kroosec@gmail.com> wrote:
 
-Applied, thanks.
+> Signed-off-by: Hani Benhabiles <hani@linux.com>
+> ---
+>  qmp.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/qmp.c b/qmp.c
+> index 87a28f7..44a6e17 100644
+> --- a/qmp.c
+> +++ b/qmp.c
+> @@ -194,11 +194,10 @@ void qmp_system_wakeup(Error **errp)
+>  ObjectPropertyInfoList *qmp_qom_list(const char *path, Error **errp)
+>  {
+>      Object *obj;
+> -    bool ambiguous = false;
+>      ObjectPropertyInfoList *props = NULL;
+>      ObjectProperty *prop;
+>  
+> -    obj = object_resolve_path(path, &ambiguous);
+> +    obj = object_resolve_path(path, NULL);
+>      if (obj == NULL) {
+>          error_set(errp, QERR_DEVICE_NOT_FOUND, path);
+>          return NULL;
 
--- PMM
+I'm under the impression that this check in object_resolve_partial_path():
+
+        if (ambiguous && *ambiguous) {
+            return NULL;
+        }
+
+Uses 'ambiguous' internally. In that case, this change could have a side effect.
+
+But I'm not sure, I think it would be good to get a reviewed-by from
+a QOM expert.
 
