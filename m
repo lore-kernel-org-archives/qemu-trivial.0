@@ -1,40 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WdiFJ-0001Zl-SH
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Apr 2014 11:41:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47248)
+	id 1WdiPz-00038S-2o
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Apr 2014 11:52:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49496)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1WdiFD-0001LP-2k
-	for qemu-trivial@nongnu.org; Fri, 25 Apr 2014 11:41:00 -0400
+	(envelope-from <afaerber@suse.de>) id 1WdiPr-0002wb-Ig
+	for qemu-trivial@nongnu.org; Fri, 25 Apr 2014 11:52:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1WdiF7-0001UP-Q6
-	for qemu-trivial@nongnu.org; Fri, 25 Apr 2014 11:40:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41384)
+	(envelope-from <afaerber@suse.de>) id 1WdiPl-0005LU-0r
+	for qemu-trivial@nongnu.org; Fri, 25 Apr 2014 11:51:55 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:42748 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1WdiEx-0001T6-5f; Fri, 25 Apr 2014 11:40:39 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3PFeZK0032620
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Fri, 25 Apr 2014 11:40:36 -0400
-Received: from localhost (ovpn-113-123.phx2.redhat.com [10.3.113.123])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s3PFeYxk019791; Fri, 25 Apr 2014 11:40:34 -0400
-Date: Fri, 25 Apr 2014 11:40:33 -0400
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Hani Benhabiles <kroosec@gmail.com>
-Message-ID: <20140425114033.50333f11@redhat.com>
-In-Reply-To: <1398203043-20559-1-git-send-email-kroosec@gmail.com>
-References: <1398203043-20559-1-git-send-email-kroosec@gmail.com>
-Organization: Red Hat
+	(envelope-from <afaerber@suse.de>)
+	id 1WdiPY-0005FT-08; Fri, 25 Apr 2014 11:51:36 -0400
+Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 0B3FDAB12;
+	Fri, 25 Apr 2014 15:51:34 +0000 (UTC)
+Message-ID: <535A8485.7020809@suse.de>
+Date: Fri, 25 Apr 2014 17:51:33 +0200
+From: =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE LINUX Products GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+To: Luiz Capitulino <lcapitulino@redhat.com>, 
+	Hani Benhabiles <kroosec@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <1398203043-20559-1-git-send-email-kroosec@gmail.com>
+	<20140425114033.50333f11@redhat.com>
+In-Reply-To: <20140425114033.50333f11@redhat.com>
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, afaerber@suse.de, imammedo@redhat.com
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, imammedo@redhat.com, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH] qmp: Remove unused variable.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -47,42 +45,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Apr 2014 15:41:00 -0000
+X-List-Received-Date: Fri, 25 Apr 2014 15:52:01 -0000
 
-On Tue, 22 Apr 2014 22:44:03 +0100
-Hani Benhabiles <kroosec@gmail.com> wrote:
+Am 25.04.2014 17:40, schrieb Luiz Capitulino:
+> On Tue, 22 Apr 2014 22:44:03 +0100
+> Hani Benhabiles <kroosec@gmail.com> wrote:
+>=20
+>> Signed-off-by: Hani Benhabiles <hani@linux.com>
+>> ---
+>>  qmp.c | 3 +--
+>>  1 file changed, 1 insertion(+), 2 deletions(-)
+>>
+>> diff --git a/qmp.c b/qmp.c
+>> index 87a28f7..44a6e17 100644
+>> --- a/qmp.c
+>> +++ b/qmp.c
+>> @@ -194,11 +194,10 @@ void qmp_system_wakeup(Error **errp)
+>>  ObjectPropertyInfoList *qmp_qom_list(const char *path, Error **errp)
+>>  {
+>>      Object *obj;
+>> -    bool ambiguous =3D false;
+>>      ObjectPropertyInfoList *props =3D NULL;
+>>      ObjectProperty *prop;
+>> =20
+>> -    obj =3D object_resolve_path(path, &ambiguous);
+>> +    obj =3D object_resolve_path(path, NULL);
+>>      if (obj =3D=3D NULL) {
+>>          error_set(errp, QERR_DEVICE_NOT_FOUND, path);
+>>          return NULL;
+>=20
+> I'm under the impression that this check in object_resolve_partial_path=
+():
+>=20
+>         if (ambiguous && *ambiguous) {
+>             return NULL;
+>         }
+>=20
+> Uses 'ambiguous' internally. In that case, this change could have a sid=
+e effect.
+>=20
+> But I'm not sure, I think it would be good to get a reviewed-by from
+> a QOM expert.
 
-> Signed-off-by: Hani Benhabiles <hani@linux.com>
-> ---
->  qmp.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/qmp.c b/qmp.c
-> index 87a28f7..44a6e17 100644
-> --- a/qmp.c
-> +++ b/qmp.c
-> @@ -194,11 +194,10 @@ void qmp_system_wakeup(Error **errp)
->  ObjectPropertyInfoList *qmp_qom_list(const char *path, Error **errp)
->  {
->      Object *obj;
-> -    bool ambiguous = false;
->      ObjectPropertyInfoList *props = NULL;
->      ObjectProperty *prop;
->  
-> -    obj = object_resolve_path(path, &ambiguous);
-> +    obj = object_resolve_path(path, NULL);
->      if (obj == NULL) {
->          error_set(errp, QERR_DEVICE_NOT_FOUND, path);
->          return NULL;
+Your understanding matches mine. I would propose to instead use the
+variable in error reporting:
 
-I'm under the impression that this check in object_resolve_partial_path():
+if (ambiguous) {
+    error_setg(errp, "Path '%s' is ambiguous.", path);
+} else {
+    error_set(errp, QERR_DEVICE_NOT_FOUND, path);
+}
 
-        if (ambiguous && *ambiguous) {
-            return NULL;
-        }
+My reasoning is that an ambiguous path might deliver unpredictable
+results (whichever it encounters first), across QEMU versions at least.
 
-Uses 'ambiguous' internally. In that case, this change could have a side effect.
+But I'd like to hear Paolo's opinion, too, since he was involved in
+loosening requirements on paths.
 
-But I'm not sure, I think it would be good to get a reviewed-by from
-a QOM expert.
+Regards,
+Andreas
+
+--=20
+SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Jeff Hawn, Jennifer Guild, Felix Imend=F6rffer; HRB 16746 AG N=FCrnbe=
+rg
 
