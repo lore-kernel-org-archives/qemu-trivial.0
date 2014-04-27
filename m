@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WeL7h-0006BB-Tp
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 05:11:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54639)
+	id 1WeLAt-0000Zy-3O
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 05:15:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55088)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeL7a-000608-Nj
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:11:44 -0400
+	(envelope-from <benoit.canet@irqsave.net>) id 1WeLAn-0000S6-Dm
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:15:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeL7U-0003re-Iq
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:11:38 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58957)
+	(envelope-from <benoit.canet@irqsave.net>) id 1WeLAj-0004I2-5F
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:14:57 -0400
+Received: from lputeaux-656-01-25-125.w80-12.abo.wanadoo.fr
+	([80.12.84.125]:48509 helo=paradis.irqsave.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WeL7H-0003fe-Lc; Sun, 27 Apr 2014 05:11:19 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1897D42F06;
-	Sun, 27 Apr 2014 13:11:19 +0400 (MSK)
-Message-ID: <535CC9B6.1080000@msgid.tls.msk.ru>
-Date: Sun, 27 Apr 2014 13:11:18 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.4.0
+	(envelope-from <benoit.canet@irqsave.net>)
+	id 1WeLAa-0004Gu-CJ; Sun, 27 Apr 2014 05:14:44 -0400
+Received: from irqsave.net (laure.irqsave.net [192.168.77.2])
+	by paradis.irqsave.net (Postfix) with ESMTP id 444548F0CB;
+	Sun, 27 Apr 2014 12:43:53 +0200 (CEST)
+Date: Sun, 27 Apr 2014 11:15:10 +0200
+From: =?iso-8859-1?Q?Beno=EEt?= Canet <benoit.canet@irqsave.net>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20140427091510.GE6122@irqsave.net>
+References: <1397766673-20990-1-git-send-email-sw@weilnetz.de>
+	<535CC8A6.5090409@msgid.tls.msk.ru>
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>, Mike Frysinger <vapier@gentoo.org>,
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <535CC8A6.5090409@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 80.12.84.125
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
 	qemu-devel@nongnu.org
-References: <1397929197-21234-1-git-send-email-vapier@gentoo.org>
-	<5352E3F2.4000209@redhat.com>
-In-Reply-To: <5352E3F2.4000209@redhat.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, aneesh.kumar@linux.vnet.ibm.com,
-	Tim Comer <comer0@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH] virtfs-proxy-helper: fix call to accept
+Subject: Re: [Qemu-trivial] [PATCH v2] Add QEMU logo (SVG file)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,16 +44,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Apr 2014 09:11:45 -0000
+X-List-Received-Date: Sun, 27 Apr 2014 09:15:01 -0000
 
-20.04.2014 01:00, Paolo Bonzini wrote:
-> Il 19/04/2014 13:39, Mike Frysinger ha scritto:
->> From: Tim Comer <comer0@gmail.com>
->>
->> The current code calls accept() without initializing the size parameter
->> which means the accept call might write too much to the stack.
+The Sunday 27 Apr 2014 =E0 13:06:46 (+0400), Michael Tokarev wrote :
+> 18.04.2014 00:31, Stefan Weil wrote:
+> > The "Q" of the logo is already included in pc-bios/qemu_logo_no_text.=
+svg.
+> >=20
+> > This file now adds the complete logo as it was designed by Beno=EEt C=
+anet.
+> > Beno=EEt licensed it under CC-BY 3.0, see
+> > http://lists.gnu.org/archive/html/qemu-devel/2012-02/msg02865.html.
+> >=20
+> > Unneeded borders from Beno=EEt's original logo were removed,
+> > and metadata (license, author, date) was added in this version.
+> >=20
+> > Cc: Beno=EEt Canet <benoit@irqsave.net>
+> > Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>=20
+> Thanks, applied to -trivial.
+>=20
+> However, I'm not sure I've seen any reply from Beno=EEt Canet about thi=
+s?
+> Beno=EEt, are you okay with this?
 
-Applied to -trivial, thanks!
+Yes
 
-/mjt
+Best regards
+
+Beno=EEt
+
+>=20
+> Thanks,
+>=20
+> /mjt
 
