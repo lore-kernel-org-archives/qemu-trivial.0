@@ -1,39 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WeMf9-0004OG-20
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 06:50:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36309)
+	id 1WeMt8-0001y5-OB
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 07:04:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37676)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeMf3-0004DB-10
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 06:50:21 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WeMt2-0001cQ-4k
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 07:04:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeMey-0006Yr-Io
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 06:50:16 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57471)
+	(envelope-from <mjt@tls.msk.ru>) id 1WeMsw-0001ii-NS
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 07:04:44 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:51569)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WeMep-0006MJ-Cn; Sun, 27 Apr 2014 06:50:03 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id B539442F06;
-	Sun, 27 Apr 2014 14:50:00 +0400 (MSK)
-Message-ID: <535CE0D8.5090409@msgid.tls.msk.ru>
-Date: Sun, 27 Apr 2014 14:50:00 +0400
+	id 1WeMsm-0001hg-EY; Sun, 27 Apr 2014 07:04:28 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 49BAC42F06;
+	Sun, 27 Apr 2014 15:04:25 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 32F5F64C;
+	Sun, 27 Apr 2014 15:04:25 +0400 (MSK)
+Received: (nullmailer pid 2238 invoked by uid 1000);
+	Sun, 27 Apr 2014 11:04:25 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.4.0
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
-References: <1397823342-25013-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1397823342-25013-1-git-send-email-sw@weilnetz.de>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+To: qemu-devel@nongnu.org
+Date: Sun, 27 Apr 2014 15:04:24 +0400
+Message-Id: <1398596664-2203-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH] po: Update all *.po files
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PATCH] gitignore: cleanups #2
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,97 +40,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Apr 2014 10:50:21 -0000
+X-List-Received-Date: Sun, 27 Apr 2014 11:04:49 -0000
 
-18.04.2014 16:15, Stefan Weil wrote:
-> Most changes were caused by line changes in ui/gtk.c and updated
-> automatically by running "make -C po update".
->=20
-> In addition, the header entry "Language" was fixed, see this reference:
-> http://www.gnu.org/software/gettext/manual/html_node/Header-Entry.html.
->=20
-> "Project-Id-Version" now shows the current QEMU version.
->=20
-> Some unused translations for "_FILE" were removed, too.
-[]
+A few more cleanups for .gitignore file.
+The final goal is to have only files in there which
+are generated during build.  Things like .orig or
+.gdbinit are definitely not generated during build.
+Also, anchor a few more build-time directories.
 
-> diff --git a/po/de_DE.po b/po/de_DE.po
-> index 8636f3b..379757c 100644
-> --- a/po/de_DE.po
-> +++ b/po/de_DE.po
-> @@ -4,61 +4,58 @@
->  #
->  msgid ""
->  msgstr ""
-> -"Project-Id-Version: QEMU 1.4.50\n"
-> +"Project-Id-Version: QEMU 2.0.50\n"
->  "Report-Msgid-Bugs-To: qemu-devel@nongnu.org\n"
-> -"POT-Creation-Date: 2013-11-16 15:25+0100\n"
-> +"POT-Creation-Date: 2014-04-18 13:53+0200\n"
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ .gitignore |    9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-It looks like you used some local tree for this.
-In upstream qemu git tree, those files are dated
-2013-07-05 22:36+0200, not 2013-11.  From a patch
-of yours, e9a72359a54978f, dated 5 Aug 2013.
-
-Note also that in upstream git, no translations of
-_FILE exists, as far as I can see.
-
-I updated the Language: tags, here's how it looks like:
-
----- cut ----
-diff --git a/po/de_DE.po b/po/de_DE.po
-index fcbde95..dec68c9 100644
---- a/po/de_DE.po
-+++ b/po/de_DE.po
-@@ -12,3 +12,3 @@ msgstr ""
- "Language-Team: Deutsch <de@li.org>\n"
--"Language: \n"
-+"Language: de\n"
- "MIME-Version: 1.0\n"
-diff --git a/po/fr_FR.po b/po/fr_FR.po
-index 45b2c01..ec54eb9 100644
---- a/po/fr_FR.po
-+++ b/po/fr_FR.po
-@@ -12,3 +12,3 @@ msgstr ""
- "Language-Team: French <FR@li.org>\n"
--"Language: \n"
-+"Language: fr\n"
- "MIME-Version: 1.0\n"
-diff --git a/po/hu.po b/po/hu.po
-index 0a44c66..401ed21 100644
---- a/po/hu.po
-+++ b/po/hu.po
-@@ -12,3 +12,3 @@ msgstr ""
- "Language-Team: Hungarian <hu@li.org>\n"
--"Language: \n"
-+"Language: hu\n"
- "MIME-Version: 1.0\n"
-diff --git a/po/it.po b/po/it.po
-index 592d3d8..a62665c 100644
---- a/po/it.po
-+++ b/po/it.po
-@@ -12,3 +12,3 @@ msgstr ""
- "Language-Team: Italian <it@li.org>\n"
--"Language: \n"
-+"Language: it\n"
- "MIME-Version: 1.0\n"
-diff --git a/po/tr.po b/po/tr.po
-index d57995a..d712ced 100644
---- a/po/tr.po
-+++ b/po/tr.po
-@@ -12,3 +12,3 @@ msgstr ""
- "Language-Team: T=C3=BCrk=C3=A7e <>\n"
--"Language: \n"
-+"Language: tr\n"
- "MIME-Version: 1.0\n"
----- cut ----
-
-I think this update alone deserves a separate commit.
-I can re-run `make -C po update' and commit the result.
-
-Thanks,
-
-/mjt
+diff --git a/.gitignore b/.gitignore
+index 2748526..8a52709 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -18,8 +18,8 @@
+ /*-darwin-user
+ /*-linux-user
+ /*-bsd-user
+-libdis*
+-libuser
++/libdis*
++/libuser
+ /linux-headers/asm
+ /qga/qapi-generated
+ /qapi-generated
+@@ -52,7 +52,6 @@ libuser
+ /fsdev/virtfs-proxy-helper
+ /fsdev/virtfs-proxy-helper.1
+ /fsdev/virtfs-proxy-helper.pod
+-/.gdbinit
+ *.a
+ *.aux
+ *.cp
+@@ -81,12 +80,8 @@ libuser
+ *.pc
+ .libs
+ .sdk
+-*.swp
+-*.orig
+-.pc
+ *.gcda
+ *.gcno
+-patches
+ /pc-bios/bios-pq/status
+ /pc-bios/vgabios-pq/status
+ /pc-bios/optionrom/linuxboot.asm
+-- 
+1.7.10.4
 
 
