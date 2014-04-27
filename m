@@ -1,39 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WeL3C-00016y-UI
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 05:07:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53605)
+	id 1WeL6X-0004dI-Ov
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 05:10:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54359)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeL37-0000xl-1X
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:07:05 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WeL6P-0004Uu-4F
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:10:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeL32-0002Ap-Te
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:07:00 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52874)
+	(envelope-from <mjt@tls.msk.ru>) id 1WeL6I-0003AI-US
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:10:25 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:35586)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WeL2t-00027u-Jc; Sun, 27 Apr 2014 05:06:47 -0400
+	id 1WeL66-00035q-G2; Sun, 27 Apr 2014 05:10:06 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4300042F06;
-	Sun, 27 Apr 2014 13:06:46 +0400 (MSK)
-Message-ID: <535CC8A6.5090409@msgid.tls.msk.ru>
-Date: Sun, 27 Apr 2014 13:06:46 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id D279242F06;
+	Sun, 27 Apr 2014 13:10:05 +0400 (MSK)
+Message-ID: <535CC96D.2080308@msgid.tls.msk.ru>
+Date: Sun, 27 Apr 2014 13:10:05 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.4.0
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
-References: <1397766673-20990-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1397766673-20990-1-git-send-email-sw@weilnetz.de>
+To: Stefan Weil <sw@weilnetz.de>, Igor Ryzhov <iryzhov@arccn.ru>, 
+	qemu-devel@nongnu.org
+References: <1397655787-27780-1-git-send-email-iryzhov@arccn.ru>
+	<534EBEC1.9070801@weilnetz.de>
+In-Reply-To: <534EBEC1.9070801@weilnetz.de>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?B?QmVub8OudCBDYW5ldA==?= <benoit@irqsave.net>
-Subject: Re: [Qemu-trivial] [PATCH v2] Add QEMU logo (SVG file)
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, stefanha@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] Unnecessary comma.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,30 +46,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Apr 2014 09:07:05 -0000
+X-List-Received-Date: Sun, 27 Apr 2014 09:10:31 -0000
 
-18.04.2014 00:31, Stefan Weil wrote:
-> The "Q" of the logo is already included in pc-bios/qemu_logo_no_text.sv=
-g.
->=20
-> This file now adds the complete logo as it was designed by Beno=C3=AEt =
-Canet.
-> Beno=C3=AEt licensed it under CC-BY 3.0, see
-> http://lists.gnu.org/archive/html/qemu-devel/2012-02/msg02865.html.
->=20
-> Unneeded borders from Beno=C3=AEt's original logo were removed,
-> and metadata (license, author, date) was added in this version.
->=20
-> Cc: Beno=C3=AEt Canet <benoit@irqsave.net>
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-
-Thanks, applied to -trivial.
-
-However, I'm not sure I've seen any reply from Beno=C3=AEt Canet about th=
-is?
-Beno=C3=AEt, are you okay with this?
-
-Thanks,
-
-/mjt
+Thanks, applied to the trivial queue, with subject tweak.
 
