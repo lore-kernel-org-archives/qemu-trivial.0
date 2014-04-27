@@ -1,46 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WeKlE-00087A-BJ
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 04:48:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51106)
+	id 1WeL3C-00016y-UI
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 05:07:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53605)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1WeKl6-00086x-VK
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 04:48:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WeL37-0000xl-1X
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:07:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1WeKl0-0005Mo-RN
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 04:48:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36039)
+	(envelope-from <mjt@tls.msk.ru>) id 1WeL32-0002Ap-Te
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:07:00 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:52874)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1WeKl0-0005Mk-Jt; Sun, 27 Apr 2014 04:48:18 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3R8mFGY016830
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Sun, 27 Apr 2014 04:48:15 -0400
-Received: from yakj.usersys.redhat.com ([10.10.112.19])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s3R8m9RK022205; Sun, 27 Apr 2014 04:48:11 -0400
-Message-ID: <535CC449.5030507@redhat.com>
-Date: Sun, 27 Apr 2014 10:48:09 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WeL2t-00027u-Jc; Sun, 27 Apr 2014 05:06:47 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 4300042F06;
+	Sun, 27 Apr 2014 13:06:46 +0400 (MSK)
+Message-ID: <535CC8A6.5090409@msgid.tls.msk.ru>
+Date: Sun, 27 Apr 2014 13:06:46 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	rv:24.0) Gecko/20100101 Icedove/24.4.0
 MIME-Version: 1.0
-To: "Michael R. Hines" <mrhines@linux.vnet.ibm.com>,
-	Laszlo Ersek <lersek@redhat.com>, Amos Kong <akong@redhat.com>,
-	qemu-trivial@nongnu.org
-References: <1397442420-25626-1-git-send-email-akong@redhat.com>
-	<534BA81C.9060807@redhat.com> <534C7584.2090301@linux.vnet.ibm.com>
-In-Reply-To: <534C7584.2090301@linux.vnet.ibm.com>
+To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
+References: <1397766673-20990-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1397766673-20990-1-git-send-email-sw@weilnetz.de>
 X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: yamahata@private.email.ne.jp, mjt@tls.msk.ru, qemu-devel@nongnu.org,
-	"Michael R. Hines" <mrhines@us.ibm.com>
-Subject: Re: [Qemu-trivial] [PATCH] arch_init.c: remove duplicate function
+X-Received-From: 86.62.121.231
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?B?QmVub8OudCBDYW5ldA==?= <benoit@irqsave.net>
+Subject: Re: [Qemu-trivial] [PATCH v2] Add QEMU logo (SVG file)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,18 +45,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Apr 2014 08:48:31 -0000
+X-List-Received-Date: Sun, 27 Apr 2014 09:07:05 -0000
 
-Il 15/04/2014 01:55, Michael R. Hines ha scritto:
-> Paolo? I see that some of the block-migration code and the qemu-img code
-> is also
-> calling buffer_is_zero() - are you guys depending on the performance of any
-> buffer_is_zero() calls to use the vector-optimized version like
-> migration does?
+18.04.2014 00:31, Stefan Weil wrote:
+> The "Q" of the logo is already included in pc-bios/qemu_logo_no_text.sv=
+g.
+>=20
+> This file now adds the complete logo as it was designed by Beno=C3=AEt =
+Canet.
+> Beno=C3=AEt licensed it under CC-BY 3.0, see
+> http://lists.gnu.org/archive/html/qemu-devel/2012-02/msg02865.html.
+>=20
+> Unneeded borders from Beno=C3=AEt's original logo were removed,
+> and metadata (license, author, date) was added in this version.
+>=20
+> Cc: Beno=C3=AEt Canet <benoit@irqsave.net>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Yes, definitely.  Not to the point that we care about which functions 
-are inlined, but the constant-factor improvement that comes for 
-vectorization can have a noticeable impact.
+Thanks, applied to -trivial.
 
-Paolo
+However, I'm not sure I've seen any reply from Beno=C3=AEt Canet about th=
+is?
+Beno=C3=AEt, are you okay with this?
+
+Thanks,
+
+/mjt
 
