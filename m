@@ -1,46 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WeMHu-0001Ae-1i
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 06:26:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33434)
+	id 1WeMf9-0004OG-20
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 06:50:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36309)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WeMHn-00012A-Ah
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 06:26:20 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WeMf3-0004DB-10
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 06:50:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WeMHi-0008Hf-BU
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 06:26:15 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:47285)
+	(envelope-from <mjt@tls.msk.ru>) id 1WeMey-0006Yr-Io
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 06:50:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57471)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1WeMHO-00082T-4K; Sun, 27 Apr 2014 06:25:50 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	0C81511822B5; Sun, 27 Apr 2014 12:25:48 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id LtJ9bmkn38br; Sun, 27 Apr 2014 12:25:46 +0200 (CEST)
-Received: from [192.168.178.35] (p54ADB721.dip0.t-ipconnect.de [84.173.183.33])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	AD8BE11822B4; Sun, 27 Apr 2014 12:25:45 +0200 (CEST)
-Message-ID: <535CDB28.5090607@weilnetz.de>
-Date: Sun, 27 Apr 2014 12:25:44 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WeMep-0006MJ-Cn; Sun, 27 Apr 2014 06:50:03 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id B539442F06;
+	Sun, 27 Apr 2014 14:50:00 +0400 (MSK)
+Message-ID: <535CE0D8.5090409@msgid.tls.msk.ru>
+Date: Sun, 27 Apr 2014 14:50:00 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.4.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-References: <1397822131-24372-1-git-send-email-sw@weilnetz.de>
-	<535CCFC7.1040605@msgid.tls.msk.ru>
-In-Reply-To: <535CCFC7.1040605@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 37.221.199.173
-Cc: qemu-devel@nongnu.org, qemu-stable@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] po/Makefile: Fix source path for in-tree
- builds
+To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
+References: <1397823342-25013-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1397823342-25013-1-git-send-email-sw@weilnetz.de>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH] po: Update all *.po files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,67 +45,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Apr 2014 10:26:20 -0000
+X-List-Received-Date: Sun, 27 Apr 2014 10:50:21 -0000
 
-Am 27.04.2014 11:37, schrieb Michael Tokarev:
-> 
-> How about moving it below inclusion of config-host.mak and using something like
-> 
->  SRC_PATH ?= $(realpath ..)
-> 
-> ?  I dunno how gnu'ish this construct is... :)
-> 
-> 
-> However, I think I've a better fix for this:
-> 
-> Author: Michael Tokarev <mjt@tls.msk.ru>
-> Date:   Sun Apr 27 13:32:07 2014 +0400
-> 
->     po/Makefile: fix $SRC_PATH reference
-> 
->     The rule for messages.po appears to be slightly wrong.
->     Move the `cd' command within parens.
-> 
->     Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->     Cc: Stefan Weil <sw@weilnetz.de>
->     Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> 
-> diff --git a/po/Makefile b/po/Makefile
-> index 705166e..669f865 100644
-> --- a/po/Makefile
-> +++ b/po/Makefile
-> @@ -37,8 +37,8 @@ install: $(OBJS)
->         $(call quiet-command, msgfmt -o $@ $<, "  GEN   $@")
-> 
->  $(PO_PATH)/messages.po: $(SRC_PATH)/ui/gtk.c
-> -       $(call quiet-command, cd $(SRC_PATH) && \
-> -        (xgettext -o - --from-code=UTF-8 --foreign-user \
-> +       $(call quiet-command, ( cd $(SRC_PATH) && \
-> +          xgettext -o - --from-code=UTF-8 --foreign-user \
->             --package-name=QEMU --package-version=$(VERSION) \
->             --msgid-bugs-address=qemu-devel@nongnu.org -k_ -C ui/gtk.c | \
->           sed -e s/CHARSET/UTF-8/) >$@, "  GEN   $@")
-> 
-> 
-> Note the already existing parens () -- it looks like this is in order to
-> run commands within a subshell (with its own current directory) but still
-> have correct output redirection.
-> 
-> If you don't have objections, I'll apply my version (it also fixes the issue).
-> 
-> Thanks,
-> 
-> /mjt
-> 
-> Thanks,
-> 
-> /mjt
-> 
+18.04.2014 16:15, Stefan Weil wrote:
+> Most changes were caused by line changes in ui/gtk.c and updated
+> automatically by running "make -C po update".
+>=20
+> In addition, the header entry "Language" was fixed, see this reference:
+> http://www.gnu.org/software/gettext/manual/html_node/Header-Entry.html.
+>=20
+> "Project-Id-Version" now shows the current QEMU version.
+>=20
+> Some unused translations for "_FILE" were removed, too.
+[]
 
+> diff --git a/po/de_DE.po b/po/de_DE.po
+> index 8636f3b..379757c 100644
+> --- a/po/de_DE.po
+> +++ b/po/de_DE.po
+> @@ -4,61 +4,58 @@
+>  #
+>  msgid ""
+>  msgstr ""
+> -"Project-Id-Version: QEMU 1.4.50\n"
+> +"Project-Id-Version: QEMU 2.0.50\n"
+>  "Report-Msgid-Bugs-To: qemu-devel@nongnu.org\n"
+> -"POT-Creation-Date: 2013-11-16 15:25+0100\n"
+> +"POT-Creation-Date: 2014-04-18 13:53+0200\n"
 
-Tested-by: Stefan Weil <sw@weilnetz.de>
+It looks like you used some local tree for this.
+In upstream qemu git tree, those files are dated
+2013-07-05 22:36+0200, not 2013-11.  From a patch
+of yours, e9a72359a54978f, dated 5 Aug 2013.
 
-Cheers,
-Stefan
+Note also that in upstream git, no translations of
+_FILE exists, as far as I can see.
+
+I updated the Language: tags, here's how it looks like:
+
+---- cut ----
+diff --git a/po/de_DE.po b/po/de_DE.po
+index fcbde95..dec68c9 100644
+--- a/po/de_DE.po
++++ b/po/de_DE.po
+@@ -12,3 +12,3 @@ msgstr ""
+ "Language-Team: Deutsch <de@li.org>\n"
+-"Language: \n"
++"Language: de\n"
+ "MIME-Version: 1.0\n"
+diff --git a/po/fr_FR.po b/po/fr_FR.po
+index 45b2c01..ec54eb9 100644
+--- a/po/fr_FR.po
++++ b/po/fr_FR.po
+@@ -12,3 +12,3 @@ msgstr ""
+ "Language-Team: French <FR@li.org>\n"
+-"Language: \n"
++"Language: fr\n"
+ "MIME-Version: 1.0\n"
+diff --git a/po/hu.po b/po/hu.po
+index 0a44c66..401ed21 100644
+--- a/po/hu.po
++++ b/po/hu.po
+@@ -12,3 +12,3 @@ msgstr ""
+ "Language-Team: Hungarian <hu@li.org>\n"
+-"Language: \n"
++"Language: hu\n"
+ "MIME-Version: 1.0\n"
+diff --git a/po/it.po b/po/it.po
+index 592d3d8..a62665c 100644
+--- a/po/it.po
++++ b/po/it.po
+@@ -12,3 +12,3 @@ msgstr ""
+ "Language-Team: Italian <it@li.org>\n"
+-"Language: \n"
++"Language: it\n"
+ "MIME-Version: 1.0\n"
+diff --git a/po/tr.po b/po/tr.po
+index d57995a..d712ced 100644
+--- a/po/tr.po
++++ b/po/tr.po
+@@ -12,3 +12,3 @@ msgstr ""
+ "Language-Team: T=C3=BCrk=C3=A7e <>\n"
+-"Language: \n"
++"Language: tr\n"
+ "MIME-Version: 1.0\n"
+---- cut ----
+
+I think this update alone deserves a separate commit.
+I can re-run `make -C po update' and commit the result.
+
+Thanks,
+
+/mjt
 
 
