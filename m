@@ -1,40 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WeL6X-0004dI-Ov
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 05:10:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54359)
+	id 1WeL7h-0006BB-Tp
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Apr 2014 05:11:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54639)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeL6P-0004Uu-4F
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:10:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WeL7a-000608-Nj
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:11:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeL6I-0003AI-US
-	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:10:25 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:35586)
+	(envelope-from <mjt@tls.msk.ru>) id 1WeL7U-0003re-Iq
+	for qemu-trivial@nongnu.org; Sun, 27 Apr 2014 05:11:38 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:58957)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WeL66-00035q-G2; Sun, 27 Apr 2014 05:10:06 -0400
+	id 1WeL7H-0003fe-Lc; Sun, 27 Apr 2014 05:11:19 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id D279242F06;
-	Sun, 27 Apr 2014 13:10:05 +0400 (MSK)
-Message-ID: <535CC96D.2080308@msgid.tls.msk.ru>
-Date: Sun, 27 Apr 2014 13:10:05 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 1897D42F06;
+	Sun, 27 Apr 2014 13:11:19 +0400 (MSK)
+Message-ID: <535CC9B6.1080000@msgid.tls.msk.ru>
+Date: Sun, 27 Apr 2014 13:11:18 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.4.0
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, Igor Ryzhov <iryzhov@arccn.ru>, 
+To: Paolo Bonzini <pbonzini@redhat.com>, Mike Frysinger <vapier@gentoo.org>,
 	qemu-devel@nongnu.org
-References: <1397655787-27780-1-git-send-email-iryzhov@arccn.ru>
-	<534EBEC1.9070801@weilnetz.de>
-In-Reply-To: <534EBEC1.9070801@weilnetz.de>
+References: <1397929197-21234-1-git-send-email-vapier@gentoo.org>
+	<5352E3F2.4000209@redhat.com>
+In-Reply-To: <5352E3F2.4000209@redhat.com>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-15
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] Unnecessary comma.
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, aneesh.kumar@linux.vnet.ibm.com,
+	Tim Comer <comer0@gmail.com>
+Subject: Re: [Qemu-trivial] [PATCH] virtfs-proxy-helper: fix call to accept
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,7 +47,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Apr 2014 09:10:31 -0000
+X-List-Received-Date: Sun, 27 Apr 2014 09:11:45 -0000
 
-Thanks, applied to the trivial queue, with subject tweak.
+20.04.2014 01:00, Paolo Bonzini wrote:
+> Il 19/04/2014 13:39, Mike Frysinger ha scritto:
+>> From: Tim Comer <comer0@gmail.com>
+>>
+>> The current code calls accept() without initializing the size parameter
+>> which means the accept call might write too much to the stack.
+
+Applied to -trivial, thanks!
+
+/mjt
 
