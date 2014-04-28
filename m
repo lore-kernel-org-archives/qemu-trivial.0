@@ -1,38 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wedo6-0000Aj-Ks
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2014 01:08:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47989)
+	id 1Wedo7-0000DL-QF
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2014 01:08:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wedo0-0008QC-Ic
-	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:08:44 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wedo1-0008Sg-IE
+	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:08:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wednv-0000oC-Ng
-	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:08:40 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:49067)
+	(envelope-from <mjt@tls.msk.ru>) id 1Wednw-0000oU-PH
+	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:08:41 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:41248)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Wednm-0000lz-6Y; Mon, 28 Apr 2014 01:08:26 -0400
+	id 1Wednm-0000m5-Cu; Mon, 28 Apr 2014 01:08:26 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8F5AC43035;
+	by isrv.corpit.ru (Postfix) with ESMTP id DA85743037;
 	Mon, 28 Apr 2014 09:08:25 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 7D2AC2B4;
+	by tsrv.corpit.ru (Postfix) with SMTP id BCCB52B6;
 	Mon, 28 Apr 2014 09:08:25 +0400 (MSK)
-Received: (nullmailer pid 19127 invoked by uid 1000);
+Received: (nullmailer pid 19130 invoked by uid 1000);
 	Mon, 28 Apr 2014 05:08:25 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 28 Apr 2014 09:07:47 +0400
-Message-Id: <1398661684-19059-2-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Mon, 28 Apr 2014 09:07:48 +0400
+Message-Id: <1398661684-19059-3-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1398661684-19059-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1398661684-19059-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 01/18] misc: Use cpu_physical_memory_read and
-	cpu_physical_memory_write
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Igor Mammedov <imammedo@redhat.com>
+Subject: [Qemu-trivial] [PULL 02/18] qemu-option: introduce
+	qemu_find_opts_singleton
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,194 +47,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Apr 2014 05:08:45 -0000
+X-List-Received-Date: Mon, 28 Apr 2014 05:08:46 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-These functions don't need type casts (as does cpu_physical_memory_rw)
-and also make the code better readable.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- cpus.c                     |    2 +-
- hw/i386/kvmvapic.c         |   31 ++++++++++++++-----------------
- hw/intc/apic.c             |    4 ++--
- target-s390x/misc_helper.c |   12 ++++++------
- 4 files changed, 23 insertions(+), 26 deletions(-)
+ include/qemu/config-file.h |    2 ++
+ util/qemu-config.c         |   14 ++++++++++++++
+ vl.c                       |   11 +----------
+ 3 files changed, 17 insertions(+), 10 deletions(-)
 
-diff --git a/cpus.c b/cpus.c
-index 1104d61..7bbe153 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -1454,7 +1454,7 @@ void qmp_pmemsave(int64_t addr, int64_t size, const char *filename,
-         l = sizeof(buf);
-         if (l > size)
-             l = size;
--        cpu_physical_memory_rw(addr, buf, l, 0);
-+        cpu_physical_memory_read(addr, buf, l);
-         if (fwrite(buf, 1, l, f) != l) {
-             error_set(errp, QERR_IO_ERROR);
-             goto exit;
-diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
-index a1c3d1c..a967b48 100644
---- a/hw/i386/kvmvapic.c
-+++ b/hw/i386/kvmvapic.c
-@@ -124,14 +124,14 @@ static const TPRInstruction tpr_instr[] = {
- 
- static void read_guest_rom_state(VAPICROMState *s)
- {
--    cpu_physical_memory_rw(s->rom_state_paddr, (void *)&s->rom_state,
--                           sizeof(GuestROMState), 0);
-+    cpu_physical_memory_read(s->rom_state_paddr, &s->rom_state,
-+                             sizeof(GuestROMState));
+diff --git a/include/qemu/config-file.h b/include/qemu/config-file.h
+index dbd97c4..d4ba20e 100644
+--- a/include/qemu/config-file.h
++++ b/include/qemu/config-file.h
+@@ -8,6 +8,8 @@
+=20
+ QemuOptsList *qemu_find_opts(const char *group);
+ QemuOptsList *qemu_find_opts_err(const char *group, Error **errp);
++QemuOpts *qemu_find_opts_singleton(const char *group);
++
+ void qemu_add_opts(QemuOptsList *list);
+ void qemu_add_drive_opts(QemuOptsList *list);
+ int qemu_set_option(const char *str);
+diff --git a/util/qemu-config.c b/util/qemu-config.c
+index f610101..60051df 100644
+--- a/util/qemu-config.c
++++ b/util/qemu-config.c
+@@ -39,6 +39,20 @@ QemuOptsList *qemu_find_opts(const char *group)
+     return ret;
  }
- 
- static void write_guest_rom_state(VAPICROMState *s)
+=20
++QemuOpts *qemu_find_opts_singleton(const char *group)
++{
++    QemuOptsList *list;
++    QemuOpts *opts;
++
++    list =3D qemu_find_opts(group);
++    assert(list);
++    opts =3D qemu_opts_find(list, NULL);
++    if (!opts) {
++        opts =3D qemu_opts_create(list, NULL, 0, &error_abort);
++    }
++    return opts;
++}
++
+ static CommandLineParameterInfoList *query_option_descs(const QemuOptDes=
+c *desc)
  {
--    cpu_physical_memory_rw(s->rom_state_paddr, (void *)&s->rom_state,
--                           sizeof(GuestROMState), 1);
-+    cpu_physical_memory_write(s->rom_state_paddr, &s->rom_state,
-+                              sizeof(GuestROMState));
+     CommandLineParameterInfoList *param_list =3D NULL, *entry;
+diff --git a/vl.c b/vl.c
+index db9ea90..5aad3bc 100644
+--- a/vl.c
++++ b/vl.c
+@@ -517,16 +517,7 @@ static QemuOptsList qemu_name_opts =3D {
+  */
+ QemuOpts *qemu_get_machine_opts(void)
+ {
+-    QemuOptsList *list;
+-    QemuOpts *opts;
+-
+-    list =3D qemu_find_opts("machine");
+-    assert(list);
+-    opts =3D qemu_opts_find(list, NULL);
+-    if (!opts) {
+-        opts =3D qemu_opts_create(list, NULL, 0, &error_abort);
+-    }
+-    return opts;
++    return qemu_find_opts_singleton("machine");
  }
- 
- static void update_guest_rom_state(VAPICROMState *s)
-@@ -311,16 +311,14 @@ static int update_rom_mapping(VAPICROMState *s, CPUX86State *env, target_ulong i
-     for (pos = le32_to_cpu(s->rom_state.fixup_start);
-          pos < le32_to_cpu(s->rom_state.fixup_end);
-          pos += 4) {
--        cpu_physical_memory_rw(paddr + pos - s->rom_state.vaddr,
--                               (void *)&offset, sizeof(offset), 0);
-+        cpu_physical_memory_read(paddr + pos - s->rom_state.vaddr,
-+                                 &offset, sizeof(offset));
-         offset = le32_to_cpu(offset);
--        cpu_physical_memory_rw(paddr + offset, (void *)&patch,
--                               sizeof(patch), 0);
-+        cpu_physical_memory_read(paddr + offset, &patch, sizeof(patch));
-         patch = le32_to_cpu(patch);
-         patch += rom_state_vaddr - le32_to_cpu(s->rom_state.vaddr);
-         patch = cpu_to_le32(patch);
--        cpu_physical_memory_rw(paddr + offset, (void *)&patch,
--                               sizeof(patch), 1);
-+        cpu_physical_memory_write(paddr + offset, &patch, sizeof(patch));
-     }
-     read_guest_rom_state(s);
-     s->vapic_paddr = paddr + le32_to_cpu(s->rom_state.vapic_vaddr) -
-@@ -364,8 +362,8 @@ static int vapic_enable(VAPICROMState *s, X86CPU *cpu)
-     }
-     vapic_paddr = s->vapic_paddr +
-         (((hwaddr)cpu_number) << VAPIC_CPU_SHIFT);
--    cpu_physical_memory_rw(vapic_paddr + offsetof(VAPICState, enabled),
--                           (void *)&enabled, sizeof(enabled), 1);
-+    cpu_physical_memory_write(vapic_paddr + offsetof(VAPICState, enabled),
-+                              &enabled, sizeof(enabled));
-     apic_enable_vapic(cpu->apic_state, vapic_paddr);
- 
-     s->state = VAPIC_ACTIVE;
-@@ -535,7 +533,7 @@ static int patch_hypercalls(VAPICROMState *s)
-     uint8_t *rom;
- 
-     rom = g_malloc(s->rom_size);
--    cpu_physical_memory_rw(rom_paddr, rom, s->rom_size, 0);
-+    cpu_physical_memory_read(rom_paddr, rom, s->rom_size);
- 
-     for (pos = 0; pos < s->rom_size - sizeof(vmcall_pattern); pos++) {
-         if (kvm_irqchip_in_kernel()) {
-@@ -551,8 +549,7 @@ static int patch_hypercalls(VAPICROMState *s)
-         }
-         if (memcmp(rom + pos, pattern, 7) == 0 &&
-             (rom[pos + 7] == alternates[0] || rom[pos + 7] == alternates[1])) {
--            cpu_physical_memory_rw(rom_paddr + pos + 5, (uint8_t *)patch,
--                                   3, 1);
-+            cpu_physical_memory_write(rom_paddr + pos + 5, patch, 3);
-             /*
-              * Don't flush the tb here. Under ordinary conditions, the patched
-              * calls are miles away from the current IP. Under malicious
-@@ -760,8 +757,8 @@ static int vapic_post_load(void *opaque, int version_id)
-             run_on_cpu(first_cpu, do_vapic_enable, s);
-         } else {
-             zero = g_malloc0(s->rom_state.vapic_size);
--            cpu_physical_memory_rw(s->vapic_paddr, zero,
--                                   s->rom_state.vapic_size, 1);
-+            cpu_physical_memory_write(s->vapic_paddr, zero,
-+                                      s->rom_state.vapic_size);
-             g_free(zero);
-         }
-     }
-diff --git a/hw/intc/apic.c b/hw/intc/apic.c
-index b8c061b..2f40cba 100644
---- a/hw/intc/apic.c
-+++ b/hw/intc/apic.c
-@@ -98,8 +98,8 @@ static void apic_sync_vapic(APICCommonState *s, int sync_type)
-         return;
-     }
-     if (sync_type & SYNC_FROM_VAPIC) {
--        cpu_physical_memory_rw(s->vapic_paddr, (void *)&vapic_state,
--                               sizeof(vapic_state), 0);
-+        cpu_physical_memory_read(s->vapic_paddr, &vapic_state,
-+                                 sizeof(vapic_state));
-         s->tpr = vapic_state.tpr;
-     }
-     if (sync_type & (SYNC_TO_VAPIC | SYNC_ISR_IRR_TO_VAPIC)) {
-diff --git a/target-s390x/misc_helper.c b/target-s390x/misc_helper.c
-index 294b3ed..cdbbb79 100644
---- a/target-s390x/misc_helper.c
-+++ b/target-s390x/misc_helper.c
-@@ -336,7 +336,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-             ebcdic_put(sysib.model, "QEMU            ", 16);
-             ebcdic_put(sysib.sequence, "QEMU            ", 16);
-             ebcdic_put(sysib.plant, "QEMU", 4);
--            cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+            cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-         } else if ((sel1 == 2) && (sel2 == 1)) {
-             /* Basic Machine CPU */
-             struct sysib_121 sysib;
-@@ -346,7 +346,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-             ebcdic_put(sysib.sequence, "QEMUQEMUQEMUQEMU", 16);
-             ebcdic_put(sysib.plant, "QEMU", 4);
-             stw_p(&sysib.cpu_addr, env->cpu_num);
--            cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+            cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-         } else if ((sel1 == 2) && (sel2 == 2)) {
-             /* Basic Machine CPUs */
-             struct sysib_122 sysib;
-@@ -358,7 +358,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-             stw_p(&sysib.active_cpus, 1);
-             stw_p(&sysib.standby_cpus, 0);
-             stw_p(&sysib.reserved_cpus, 0);
--            cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+            cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-         } else {
-             cc = 3;
-         }
-@@ -375,7 +375,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-                 ebcdic_put(sysib.plant, "QEMU", 4);
-                 stw_p(&sysib.cpu_addr, env->cpu_num);
-                 stw_p(&sysib.cpu_id, 0);
--                cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+                cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-             } else if ((sel1 == 2) && (sel2 == 2)) {
-                 /* LPAR CPUs */
-                 struct sysib_222 sysib;
-@@ -392,7 +392,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-                 stl_p(&sysib.caf, 1000);
-                 stw_p(&sysib.dedicated_cpus, 0);
-                 stw_p(&sysib.shared_cpus, 0);
--                cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+                cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-             } else {
-                 cc = 3;
-             }
-@@ -414,7 +414,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
-                 ebcdic_put(sysib.vm[0].name, "KVMguest", 8);
-                 stl_p(&sysib.vm[0].caf, 1000);
-                 ebcdic_put(sysib.vm[0].cpi, "KVM/Linux       ", 16);
--                cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
-+                cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
-             } else {
-                 cc = 3;
-             }
--- 
+=20
+ const char *qemu_get_vm_name(void)
+--=20
 1.7.10.4
 
 
