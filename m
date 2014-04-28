@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wedo1-0008Sw-M4
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2014 01:08:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47911)
+	id 1Wedo6-0000Aj-Ks
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2014 01:08:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47989)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wedns-0008Fo-Uj
-	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:08:37 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wedo0-0008QC-Ic
+	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:08:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wednn-0000mt-OS
-	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:08:32 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52212)
+	(envelope-from <mjt@tls.msk.ru>) id 1Wednv-0000oC-Ng
+	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:08:40 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:49067)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Wednd-0000ky-7a; Mon, 28 Apr 2014 01:08:17 -0400
+	id 1Wednm-0000lz-6Y; Mon, 28 Apr 2014 01:08:26 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1F44A43035;
-	Mon, 28 Apr 2014 09:08:16 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 8F5AC43035;
+	Mon, 28 Apr 2014 09:08:25 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id F0A0F2B4;
-	Mon, 28 Apr 2014 09:08:15 +0400 (MSK)
-Received: (nullmailer pid 19122 invoked by uid 1000);
-	Mon, 28 Apr 2014 05:08:15 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 7D2AC2B4;
+	Mon, 28 Apr 2014 09:08:25 +0400 (MSK)
+Received: (nullmailer pid 19127 invoked by uid 1000);
+	Mon, 28 Apr 2014 05:08:25 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 28 Apr 2014 09:07:46 +0400
-Message-Id: <1398661684-19059-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Mon, 28 Apr 2014 09:07:47 +0400
+Message-Id: <1398661684-19059-2-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1398661684-19059-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1398661684-19059-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 00/18] Trivial patches for 2014-04-28
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 01/18] misc: Use cpu_physical_memory_read and
+	cpu_physical_memory_write
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,116 +44,194 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Apr 2014 05:08:38 -0000
+X-List-Received-Date: Mon, 28 Apr 2014 05:08:45 -0000
 
-Here's another trivial-patches pull request.  I removed all
-questionable or still-being-discussed patchses from there
-which accumulated recently.
+From: Stefan Weil <sw@weilnetz.de>
 
-What's left are either code cleanups and rearrangements,
-spelling fixes or --help output improvements, adding Qemu
-logo file, one feature patch which's been waiting for too
-long (conversion of -m to QemuOpts), and several small
-bugfixes.
+These functions don't need type casts (as does cpu_physical_memory_rw)
+and also make the code better readable.
 
-One change I want to mention especially, it is this one:
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ cpus.c                     |    2 +-
+ hw/i386/kvmvapic.c         |   31 ++++++++++++++-----------------
+ hw/intc/apic.c             |    4 ++--
+ target-s390x/misc_helper.c |   12 ++++++------
+ 4 files changed, 23 insertions(+), 26 deletions(-)
 
- slirp/smb: Move ncalrpc directory to tmp
+diff --git a/cpus.c b/cpus.c
+index 1104d61..7bbe153 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -1454,7 +1454,7 @@ void qmp_pmemsave(int64_t addr, int64_t size, const char *filename,
+         l = sizeof(buf);
+         if (l > size)
+             l = size;
+-        cpu_physical_memory_rw(addr, buf, l, 0);
++        cpu_physical_memory_read(addr, buf, l);
+         if (fwrite(buf, 1, l, f) != l) {
+             error_set(errp, QERR_IO_ERROR);
+             goto exit;
+diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
+index a1c3d1c..a967b48 100644
+--- a/hw/i386/kvmvapic.c
++++ b/hw/i386/kvmvapic.c
+@@ -124,14 +124,14 @@ static const TPRInstruction tpr_instr[] = {
+ 
+ static void read_guest_rom_state(VAPICROMState *s)
+ {
+-    cpu_physical_memory_rw(s->rom_state_paddr, (void *)&s->rom_state,
+-                           sizeof(GuestROMState), 0);
++    cpu_physical_memory_read(s->rom_state_paddr, &s->rom_state,
++                             sizeof(GuestROMState));
+ }
+ 
+ static void write_guest_rom_state(VAPICROMState *s)
+ {
+-    cpu_physical_memory_rw(s->rom_state_paddr, (void *)&s->rom_state,
+-                           sizeof(GuestROMState), 1);
++    cpu_physical_memory_write(s->rom_state_paddr, &s->rom_state,
++                              sizeof(GuestROMState));
+ }
+ 
+ static void update_guest_rom_state(VAPICROMState *s)
+@@ -311,16 +311,14 @@ static int update_rom_mapping(VAPICROMState *s, CPUX86State *env, target_ulong i
+     for (pos = le32_to_cpu(s->rom_state.fixup_start);
+          pos < le32_to_cpu(s->rom_state.fixup_end);
+          pos += 4) {
+-        cpu_physical_memory_rw(paddr + pos - s->rom_state.vaddr,
+-                               (void *)&offset, sizeof(offset), 0);
++        cpu_physical_memory_read(paddr + pos - s->rom_state.vaddr,
++                                 &offset, sizeof(offset));
+         offset = le32_to_cpu(offset);
+-        cpu_physical_memory_rw(paddr + offset, (void *)&patch,
+-                               sizeof(patch), 0);
++        cpu_physical_memory_read(paddr + offset, &patch, sizeof(patch));
+         patch = le32_to_cpu(patch);
+         patch += rom_state_vaddr - le32_to_cpu(s->rom_state.vaddr);
+         patch = cpu_to_le32(patch);
+-        cpu_physical_memory_rw(paddr + offset, (void *)&patch,
+-                               sizeof(patch), 1);
++        cpu_physical_memory_write(paddr + offset, &patch, sizeof(patch));
+     }
+     read_guest_rom_state(s);
+     s->vapic_paddr = paddr + le32_to_cpu(s->rom_state.vapic_vaddr) -
+@@ -364,8 +362,8 @@ static int vapic_enable(VAPICROMState *s, X86CPU *cpu)
+     }
+     vapic_paddr = s->vapic_paddr +
+         (((hwaddr)cpu_number) << VAPIC_CPU_SHIFT);
+-    cpu_physical_memory_rw(vapic_paddr + offsetof(VAPICState, enabled),
+-                           (void *)&enabled, sizeof(enabled), 1);
++    cpu_physical_memory_write(vapic_paddr + offsetof(VAPICState, enabled),
++                              &enabled, sizeof(enabled));
+     apic_enable_vapic(cpu->apic_state, vapic_paddr);
+ 
+     s->state = VAPIC_ACTIVE;
+@@ -535,7 +533,7 @@ static int patch_hypercalls(VAPICROMState *s)
+     uint8_t *rom;
+ 
+     rom = g_malloc(s->rom_size);
+-    cpu_physical_memory_rw(rom_paddr, rom, s->rom_size, 0);
++    cpu_physical_memory_read(rom_paddr, rom, s->rom_size);
+ 
+     for (pos = 0; pos < s->rom_size - sizeof(vmcall_pattern); pos++) {
+         if (kvm_irqchip_in_kernel()) {
+@@ -551,8 +549,7 @@ static int patch_hypercalls(VAPICROMState *s)
+         }
+         if (memcmp(rom + pos, pattern, 7) == 0 &&
+             (rom[pos + 7] == alternates[0] || rom[pos + 7] == alternates[1])) {
+-            cpu_physical_memory_rw(rom_paddr + pos + 5, (uint8_t *)patch,
+-                                   3, 1);
++            cpu_physical_memory_write(rom_paddr + pos + 5, patch, 3);
+             /*
+              * Don't flush the tb here. Under ordinary conditions, the patched
+              * calls are miles away from the current IP. Under malicious
+@@ -760,8 +757,8 @@ static int vapic_post_load(void *opaque, int version_id)
+             run_on_cpu(first_cpu, do_vapic_enable, s);
+         } else {
+             zero = g_malloc0(s->rom_state.vapic_size);
+-            cpu_physical_memory_rw(s->vapic_paddr, zero,
+-                                   s->rom_state.vapic_size, 1);
++            cpu_physical_memory_write(s->vapic_paddr, zero,
++                                      s->rom_state.vapic_size);
+             g_free(zero);
+         }
+     }
+diff --git a/hw/intc/apic.c b/hw/intc/apic.c
+index b8c061b..2f40cba 100644
+--- a/hw/intc/apic.c
++++ b/hw/intc/apic.c
+@@ -98,8 +98,8 @@ static void apic_sync_vapic(APICCommonState *s, int sync_type)
+         return;
+     }
+     if (sync_type & SYNC_FROM_VAPIC) {
+-        cpu_physical_memory_rw(s->vapic_paddr, (void *)&vapic_state,
+-                               sizeof(vapic_state), 0);
++        cpu_physical_memory_read(s->vapic_paddr, &vapic_state,
++                                 sizeof(vapic_state));
+         s->tpr = vapic_state.tpr;
+     }
+     if (sync_type & (SYNC_TO_VAPIC | SYNC_ISR_IRR_TO_VAPIC)) {
+diff --git a/target-s390x/misc_helper.c b/target-s390x/misc_helper.c
+index 294b3ed..cdbbb79 100644
+--- a/target-s390x/misc_helper.c
++++ b/target-s390x/misc_helper.c
+@@ -336,7 +336,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
+             ebcdic_put(sysib.model, "QEMU            ", 16);
+             ebcdic_put(sysib.sequence, "QEMU            ", 16);
+             ebcdic_put(sysib.plant, "QEMU", 4);
+-            cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
++            cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
+         } else if ((sel1 == 2) && (sel2 == 1)) {
+             /* Basic Machine CPU */
+             struct sysib_121 sysib;
+@@ -346,7 +346,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
+             ebcdic_put(sysib.sequence, "QEMUQEMUQEMUQEMU", 16);
+             ebcdic_put(sysib.plant, "QEMU", 4);
+             stw_p(&sysib.cpu_addr, env->cpu_num);
+-            cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
++            cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
+         } else if ((sel1 == 2) && (sel2 == 2)) {
+             /* Basic Machine CPUs */
+             struct sysib_122 sysib;
+@@ -358,7 +358,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
+             stw_p(&sysib.active_cpus, 1);
+             stw_p(&sysib.standby_cpus, 0);
+             stw_p(&sysib.reserved_cpus, 0);
+-            cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
++            cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
+         } else {
+             cc = 3;
+         }
+@@ -375,7 +375,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
+                 ebcdic_put(sysib.plant, "QEMU", 4);
+                 stw_p(&sysib.cpu_addr, env->cpu_num);
+                 stw_p(&sysib.cpu_id, 0);
+-                cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
++                cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
+             } else if ((sel1 == 2) && (sel2 == 2)) {
+                 /* LPAR CPUs */
+                 struct sysib_222 sysib;
+@@ -392,7 +392,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
+                 stl_p(&sysib.caf, 1000);
+                 stw_p(&sysib.dedicated_cpus, 0);
+                 stw_p(&sysib.shared_cpus, 0);
+-                cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
++                cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
+             } else {
+                 cc = 3;
+             }
+@@ -414,7 +414,7 @@ uint32_t HELPER(stsi)(CPUS390XState *env, uint64_t a0,
+                 ebcdic_put(sysib.vm[0].name, "KVMguest", 8);
+                 stl_p(&sysib.vm[0].caf, 1000);
+                 ebcdic_put(sysib.vm[0].cpi, "KVM/Linux       ", 16);
+-                cpu_physical_memory_rw(a0, (uint8_t *)&sysib, sizeof(sysib), 1);
++                cpu_physical_memory_write(a0, &sysib, sizeof(sysib));
+             } else {
+                 cc = 3;
+             }
+-- 
+1.7.10.4
 
-While slirp code has a maintainer, Jan Kiszka, he never commented
-on this change since initial patch submission back at Nov-2013,
-despite several subsequent pings.  The change _is_ trivial and
-fixes -smb with modern versions of samba.  We've been waiting
-for this (trivial) fix for too long.
-
-Thanks,
-
-/mjt
-
-The following changes since commit 411f491e0af173cf8f39347574941bd26fbae3=
-81:
-
-  Merge remote-tracking branch 'remotes/rth/tags/tgt-axp-pull-20140424' i=
-nto staging (2014-04-25 13:25:22 +0100)
-
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/trivial-patches-2014-04-28
-
-for you to fetch changes up to b87b8a8b32518df9e5285f9b3d4f9d9a0c426a06:
-
-  slirp/smb: Move ncalrpc directory to tmp (2014-04-28 08:55:32 +0400)
-
-----------------------------------------------------------------
-trivial patches for 2014-04-28
-
-----------------------------------------------------------------
-Chen Gang (3):
-      vl: Remove useless 'continue'
-      vl: Eliminate a superfluous local variable
-      vl: avoid closing stdout with 'writeconfig'
-
-Cole Robinson (1):
-      tests/.gitignore: Ignore test-rfifolock
-
-Fam Zheng (1):
-      configure: Improve help behavior
-
-Igor Mammedov (1):
-      vl: convert -m to QemuOpts
-
-Igor Ryzhov (1):
-      net/net.c: remove unnecessary semicolon
-
-Kirill Batuzov (1):
-      init_paths: fix minor memory leak
-
-Laszlo Ersek (1):
-      move test-* from .gitignore to tests/.gitignore
-
-Michael Buesch (1):
-      slirp/smb: Move ncalrpc directory to tmp
-
-Michael Tokarev (3):
-      gitignore: cleanups #2
-      po/Makefile: fix $SRC_PATH reference
-      po: add proper Language: tags to .po files
-
-Paolo Bonzini (1):
-      qemu-option: introduce qemu_find_opts_singleton
-
-Stefan Weil (3):
-      misc: Use cpu_physical_memory_read and cpu_physical_memory_write
-      xilinx: Fix typo in comment (Marvel -> Marvell)
-      Add QEMU logo (SVG file)
-
-Tim Comer (1):
-      virtfs-proxy-helper: fix call to accept
-
- .gitignore                  |   18 +-
- configure                   |    7 +-
- cpus.c                      |    2 +-
- fsdev/virtfs-proxy-helper.c |    1 +
- hw/i386/kvmvapic.c          |   31 +-
- hw/intc/apic.c              |    4 +-
- hw/net/xilinx_axienet.c     |    2 +-
- include/qemu/config-file.h  |    2 +
- net/net.c                   |    2 +-
- net/slirp.c                 |    2 +
- pc-bios/qemu_logo.svg       | 1010 +++++++++++++++++++++++++++++++++++++=
-++++++
- po/Makefile                 |    4 +-
- po/de_DE.po                 |    2 +-
- po/fr_FR.po                 |    2 +-
- po/hu.po                    |    2 +-
- po/it.po                    |    2 +-
- po/tr.po                    |    2 +-
- qemu-options.hx             |    9 +-
- target-s390x/misc_helper.c  |   12 +-
- tests/.gitignore            |   12 +-
- util/path.c                 |    4 +-
- util/qemu-config.c          |   14 +
- vl.c                        |  103 +++--
- 23 files changed, 1156 insertions(+), 93 deletions(-)
- create mode 100644 pc-bios/qemu_logo.svg
 
