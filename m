@@ -1,37 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WeeNM-0005mC-NK
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2014 01:45:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52950)
+	id 1Wef69-000364-5m
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2014 02:31:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60460)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeeNG-0005W3-1m
-	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:45:10 -0400
+	(envelope-from <armbru@redhat.com>) id 1Wef63-0002yV-BH
+	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 02:31:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WeeNB-0002UI-2F
-	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 01:45:05 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:41200)
+	(envelope-from <armbru@redhat.com>) id 1Wef5x-00081z-Rf
+	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 02:31:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48540)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WeeMt-0002Qn-RV; Mon, 28 Apr 2014 01:44:49 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id C6EAB4303B;
-	Mon, 28 Apr 2014 09:44:40 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 2E7AA674;
-	Mon, 28 Apr 2014 09:08:28 +0400 (MSK)
-Received: (nullmailer pid 19159 invoked by uid 1000);
-	Mon, 28 Apr 2014 05:08:26 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Mon, 28 Apr 2014 09:08:00 +0400
-Message-Id: <1398661684-19059-15-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1398661684-19059-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1398661684-19059-1-git-send-email-mjt@msgid.tls.msk.ru>
+	(envelope-from <armbru@redhat.com>)
+	id 1Wef5j-0007c4-3t; Mon, 28 Apr 2014 02:31:03 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3S6Ux27015354
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Mon, 28 Apr 2014 02:31:00 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-45.ams2.redhat.com
+	[10.36.116.45])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s3S6UvSs011152
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 28 Apr 2014 02:30:58 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id C5D7A200D2; Mon, 28 Apr 2014 08:30:56 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <53457D1A.7000602@redhat.com>
+	<1397065744-9561-1-git-send-email-wangbj@gmail.com>
+	<535CCB59.8020606@msgid.tls.msk.ru>
+Date: Mon, 28 Apr 2014 08:30:56 +0200
+In-Reply-To: <535CCB59.8020606@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Sun, 27 Apr 2014 13:18:17 +0400")
+Message-ID: <87lhuqklsv.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Mike Frysinger <vapier@gentoo.org>, Tim Comer <comer0@gmail.com>
-Subject: [Qemu-trivial] [PULL 14/18] virtfs-proxy-helper: fix call to accept
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Baojun Wang <wangbj@gmail.com>,
+	qemu-devel@nongnu.org, Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V5 1/1] qmp: add pmemload
+	command
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,35 +55,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Apr 2014 05:45:11 -0000
+X-List-Received-Date: Mon, 28 Apr 2014 06:31:28 -0000
 
-From: Tim Comer <comer0@gmail.com>
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-The current code calls accept() without initializing the size parameter
-which means the accept call might write too much to the stack.
+> 09.04.2014 21:49, Baojun Wang wrote:
+>> I found this could be useful to have qemu-softmmu as a cross debugger (launch
+>> with -s -S command line option), then if we can have a command to load guest
+>> physical memory, we can use cross gdb to do some target debug which gdb cannot
+>> do directly.
+>> 
+>> Many thanks to Eric Blake for review the patch and suggestions.
+>
+> Okay, that looks sane, but can you explain please, why did you address
+> qemu-trivial@?  The change definitely is not "trivial", as it introduces
+> a new qmp command which becomes a part of public interface.  Even if
+> the implementation may look trivial, the interface change should not be
+> done using -trivial tree.
 
-URL: https://bugs.gentoo.org/486714
-Signed-off-by: Tim Comer <comer0@gmail.com>
-Signed-off-by: Mike Frysinger <vapier@gentoo.org>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- fsdev/virtfs-proxy-helper.c |    1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-index bfecb87..cd291d3 100644
---- a/fsdev/virtfs-proxy-helper.c
-+++ b/fsdev/virtfs-proxy-helper.c
-@@ -760,6 +760,7 @@ static int proxy_socket(const char *path, uid_t uid, gid_t gid)
-         return -1;
-     }
- 
-+    size = sizeof(qemu);
-     client = accept(sock, (struct sockaddr *)&qemu, &size);
-     if (client < 0) {
-         do_perror("accept");
--- 
-1.7.10.4
-
+Yes.  Copying Luiz.
 
