@@ -1,47 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Weh5X-0000LY-86
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2014 04:38:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60251)
+	id 1WehuW-0004xR-3O
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2014 05:31:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41145)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Weh5P-000087-B1
-	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 04:38:57 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WehuO-0004pK-Km
+	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 05:31:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Weh5J-0000nz-74
-	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 04:38:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57647)
+	(envelope-from <mjt@tls.msk.ru>) id 1WehuI-0001dT-FR
+	for qemu-trivial@nongnu.org; Mon, 28 Apr 2014 05:31:32 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48390)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1Weh56-0000lW-H0; Mon, 28 Apr 2014 04:38:32 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s3S8cVRp025294
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 28 Apr 2014 04:38:31 -0400
-Received: from yakj.usersys.redhat.com (ovpn-112-50.ams2.redhat.com
-	[10.36.112.50])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s3S8cRR4013008; Mon, 28 Apr 2014 04:38:28 -0400
-Message-ID: <535E1383.1090700@redhat.com>
-Date: Mon, 28 Apr 2014 10:38:27 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Wehu5-0001Vu-T4; Mon, 28 Apr 2014 05:31:14 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id C4DC24307E;
+	Mon, 28 Apr 2014 13:31:10 +0400 (MSK)
+Message-ID: <535E1FDE.50209@msgid.tls.msk.ru>
+Date: Mon, 28 Apr 2014 13:31:10 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	rv:24.0) Gecko/20100101 Icedove/24.4.0
 MIME-Version: 1.0
-To: Hani Benhabiles <kroosec@gmail.com>, =?ISO-8859-1?Q?Andreas_F=E4rbe?=
-	=?ISO-8859-1?Q?r?= <afaerber@suse.de>
-References: <1398203043-20559-1-git-send-email-kroosec@gmail.com>
-	<20140425114033.50333f11@redhat.com> <535A8485.7020809@suse.de>
-	<20140426004616.GA3514@Inspiron-3521>
-In-Reply-To: <20140426004616.GA3514@Inspiron-3521>
+To: Deepak Kathayat <deepak.mk17@gmail.com>, qemu-devel@nongnu.org
+References: <1395217173-20902-1-git-send-email-deepak.mk17@gmail.com>
+In-Reply-To: <1395217173-20902-1-git-send-email-deepak.mk17@gmail.com>
 X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, imammedo@redhat.com, qemu-devel@nongnu.org,
-	Luiz Capitulino <lcapitulino@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] qmp: Remove unused variable.
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, stefanha@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] qcow2.c: Check if backing file name
+ length is valid
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,27 +45,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Apr 2014 08:38:57 -0000
+X-List-Received-Date: Mon, 28 Apr 2014 09:31:38 -0000
 
-Il 26/04/2014 02:46, Hani Benhabiles ha scritto:
->> if (ambiguous) {
->> >     error_setg(errp, "Path '%s' is ambiguous.", path);
->> > } else {
->> >     error_set(errp, QERR_DEVICE_NOT_FOUND, path);
->> > }
->> >
-> Probably, you meant something like this:
->
-> if (ambiguous) {
->     error_set(errp, QERR_AMBIGUOUS_PATH, path);
-> } else if (!obj) {
->     error_set(errp, QERR_DEVICE_NOT_FOUND, path);
-> }
->
->
+19.03.2014 12:19, Deepak Kathayat wrote:
+> Signed-off-by: Deepak Kathayat <deepak.mk17@gmail.com>
+> ---
+> The len variable is a signed integer whereas the backing file name
+>  length in the image header is unsigned. Therefore, it may
+>  overflow. Furthermore, backing file name length cannot be
+>  zero. These two cases must be handled explicitly.
+>  block/qcow2.c |    5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/block/qcow2.c b/block/qcow2.c
+> index 945c9d6..7b6f65c 100644
+> --- a/block/qcow2.c
+> +++ b/block/qcow2.c
+> @@ -625,6 +625,11 @@ static int qcow2_open(BlockDriverState *bs, QDict *options, int flags,
+>      /* read the backing file name */
+>      if (header.backing_file_offset != 0) {
+>          len = header.backing_file_size;
+> +        if (len <= 0) {
+> +            error_setg(errp, "Invalid backing file name length: %d", len);
+> +            ret = -EINVAL;
+> +            goto fail;
+> +        }
+>          if (len > 1023) {
+>              len = 1023;
+>          }
 
-No, error_set is being phased out.  New errors typically use error_setg 
-instead.
+A better fix has been implemented meanwhile, as a part of input format validation
+series:
 
-Paolo
+commit 6d33e8e7dc9d40ea105feed4b39caa3e641569e8
+Author: Kevin Wolf <kwolf@redhat.com>
+Date:   Wed Mar 26 13:05:47 2014 +0100
+
+    qcow2: Fix backing file name length check
+
+    len could become negative and would pass the check then. Nothing bad
+    happened because bdrv_pread() happens to return an error for negative
+    length values, but make variables for sizes unsigned anyway.
+
+    This patch also changes the behaviour to error out on invalid lengths
+    instead of silently truncating it to 1023.
+
+
+Thanks,
+
+/mjt
 
