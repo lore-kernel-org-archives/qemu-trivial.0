@@ -1,53 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wfr2j-0000Gm-Pe
-	for mharc-qemu-trivial@gnu.org; Thu, 01 May 2014 09:28:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54665)
+	id 1WfrxH-0007tU-12
+	for mharc-qemu-trivial@gnu.org; Thu, 01 May 2014 10:27:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53461)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Wfr2Y-0008RT-KV
-	for qemu-trivial@nongnu.org; Thu, 01 May 2014 09:28:51 -0400
+	(envelope-from <kroosec@gmail.com>) id 1Wfrx9-0007hz-93
+	for qemu-trivial@nongnu.org; Thu, 01 May 2014 10:27:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Wfr2P-0007I6-Af
-	for qemu-trivial@nongnu.org; Thu, 01 May 2014 09:28:42 -0400
-Received: from mail-pa0-x231.google.com ([2607:f8b0:400e:c03::231]:65466)
+	(envelope-from <kroosec@gmail.com>) id 1Wfrx2-0001Q2-Vo
+	for qemu-trivial@nongnu.org; Thu, 01 May 2014 10:27:11 -0400
+Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:34662)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1Wfr26-0007EI-Sd; Thu, 01 May 2014 09:28:15 -0400
-Received: by mail-pa0-f49.google.com with SMTP id kq14so3623842pab.22
-	for <multiple recipients>; Thu, 01 May 2014 06:28:13 -0700 (PDT)
+	(envelope-from <kroosec@gmail.com>)
+	id 1Wfrwq-0001NC-EE; Thu, 01 May 2014 10:26:52 -0400
+Received: by mail-wi0-f172.google.com with SMTP id hi2so805863wib.11
+	for <multiple recipients>; Thu, 01 May 2014 07:26:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:content-type:content-transfer-encoding;
-	bh=hNHPc88XTb2WevBS6L7qR/pey5zGoKx8hiaKKpWK4zc=;
-	b=ren6Wv0E0e/f6j1963GRfF8/1brMs6/X0oWwFrXUC7XacqwyRY1493gjGktg7+cORB
-	PAj8Nrwc4WusiRgM46aWj8DZeufn4lupsewcAg7cWfhePgRXOldKFLBp8YimNJbPCle8
-	rBPHGtcdkD+aQF35LbNBU9oYZv+U6jFWZc/La3oC19KfEgmfhF8ZlCe7meduhyNwx7T9
-	MN7Pll4pVP2LoCu5qoin9XugAJWxEsfDRi5r0zWMBe1DFBXl3WjnXej6X3gVnzkpj8SF
-	FXcyXozDACSYCFoqMJJPXC9+6enHd1p4QqMPEz8ssuzoTgfcoRPuFX49fFHaiWtclvJ4
-	kbzQ==
-X-Received: by 10.66.251.233 with SMTP id zn9mr21330196pac.67.1398950893200;
-	Thu, 01 May 2014 06:28:13 -0700 (PDT)
-Received: from [192.168.1.101] ([223.72.65.27])
+	h=from:to:cc:subject:date:message-id;
+	bh=FeVwH+SAYrdi/2TTd7MCXIVuLUo0h1stZoqhJ7bwpP0=;
+	b=qeTiqXeOGecNuV/B4ca9hIAhLvMMKUk1pmMC8mQ1T7QtcYHUJXqyZjfcy3L9sC7sZx
+	GWj4sja1IQwMkGxQ9/FYcohi6Z6sOvO4m8BeormpXhifpjDlvlYAU1oymddppB6Vw/aR
+	Miww2hH2Kf7tTAjRhQ7Di636uMK6DjAlJhor1bmw1fmx1E3eqcIHvmdX3FIsEPo66PMn
+	QtOM52+ODqZGjM9uj/hI8SwDCoUOndroN7Z2NqSGqdoNZ+Bt948sPiTESLyDYbK6RXy7
+	IV9xy6u9RtIGMaRsjdg1cRJCwHxv6SiecPA6v9ElauC9QJ3FmuWs75nPWuAtQ3MBmjTl
+	/xqw==
+X-Received: by 10.194.109.227 with SMTP id hv3mr9469809wjb.10.1398954411214;
+	Thu, 01 May 2014 07:26:51 -0700 (PDT)
+Received: from localhost.localdomain ([41.103.29.26])
 	by mx.google.com with ESMTPSA id
-	nw13sm134626977pab.37.2014.05.01.06.28.09 for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Thu, 01 May 2014 06:28:12 -0700 (PDT)
-Message-ID: <53624BEB.7030605@gmail.com>
-Date: Thu, 01 May 2014 21:28:11 +0800
-From: Chen Gang <gang.chen.5i5j@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130625 Thunderbird/17.0.7
-MIME-Version: 1.0
-To: quintela@redhat.com, owasserm@redhat.com, pbonzini@redhat.com, 
-	mst@redhat.com, Eric Blake <eblake@redhat.com>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+	vp5sm41417501wjc.31.2014.05.01.07.26.48 for <multiple recipients>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Thu, 01 May 2014 07:26:50 -0700 (PDT)
+From: Hani Benhabiles <kroosec@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Thu,  1 May 2014 15:26:42 +0100
+Message-Id: <1398954402-17826-1-git-send-email-kroosec@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c03::231
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] arch_init: Be sure of only one exit entry
- with DPRINTF() for ram_load()
+X-Received-From: 2a00:1450:400c:c05::22c
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, lcapitulino@redhat.com,
+	stefanha@redhat.com, eblake@redhat.com, xiawenc@linux.vnet.ibm.com
+Subject: [Qemu-trivial] [PATCH] readline: Sort completions before printing
+	them.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,60 +53,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 May 2014 13:28:51 -0000
+X-List-Received-Date: Thu, 01 May 2014 14:27:17 -0000
 
-When DPRINTF() has effect, the original author wants to print all
-ram_load() calling results. So need use 'goto' instead of 'return'
-within ram_load(), just like other areas have done.
-
-Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+Signed-off-by: Hani Benhabiles <hani@linux.com>
 ---
- arch_init.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ util/readline.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/arch_init.c b/arch_init.c
-index 60c975d..333f698 100644
---- a/arch_init.c
-+++ b/arch_init.c
-@@ -998,7 +998,8 @@ static int ram_load(QEMUFile *f, void *opaque, int version_id)
-     seq_iter++;
+diff --git a/util/readline.c b/util/readline.c
+index 8441be4..8d2a0d3 100644
+--- a/util/readline.c
++++ b/util/readline.c
+@@ -272,6 +272,11 @@ void readline_set_completion_index(ReadLineState *rs, int index)
+     rs->completion_index = index;
+ }
  
-     if (version_id < 4 || version_id > 4) {
--        return -EINVAL;
-+        ret = -EINVAL;
-+        goto done;
-     }
- 
-     do {
-@@ -1055,7 +1056,8 @@ static int ram_load(QEMUFile *f, void *opaque, int version_id)
- 
-             host = host_from_stream_offset(f, addr, flags);
-             if (!host) {
--                return -EINVAL;
-+                ret = -EINVAL;
-+                goto done;
-             }
- 
-             ch = qemu_get_byte(f);
-@@ -1065,14 +1067,16 @@ static int ram_load(QEMUFile *f, void *opaque, int version_id)
- 
-             host = host_from_stream_offset(f, addr, flags);
-             if (!host) {
--                return -EINVAL;
-+                ret = -EINVAL;
-+                goto done;
-             }
- 
-             qemu_get_buffer(f, host, TARGET_PAGE_SIZE);
-         } else if (flags & RAM_SAVE_FLAG_XBZRLE) {
-             void *host = host_from_stream_offset(f, addr, flags);
-             if (!host) {
--                return -EINVAL;
-+                ret = -EINVAL;
-+                goto done;
-             }
- 
-             if (load_xbzrle(f, addr, host) < 0) {
++static int completion_comp(const void *a, const void *b)
++{
++    return strcmp(*(const char **) a, *(const char **) b);
++}
++
+ static void readline_completion(ReadLineState *rs)
+ {
+     int len, i, j, max_width, nb_cols, max_prefix;
+@@ -297,6 +302,8 @@ static void readline_completion(ReadLineState *rs)
+         if (len > 0 && rs->completions[0][len - 1] != '/')
+             readline_insert_char(rs, ' ');
+     } else {
++        qsort(rs->completions, rs->nb_completions, sizeof(char *),
++              completion_comp);
+         rs->printf_func(rs->opaque, "\n");
+         max_width = 0;
+         max_prefix = 0;	
 -- 
-1.7.11.7
+1.8.3.2
+
 
