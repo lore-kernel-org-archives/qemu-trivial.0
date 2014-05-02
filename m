@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WgKEx-0005jo-OH
-	for mharc-qemu-trivial@gnu.org; Fri, 02 May 2014 16:39:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46647)
+	id 1WgKJh-00079j-IQ
+	for mharc-qemu-trivial@gnu.org; Fri, 02 May 2014 16:44:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47890)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1WgKEr-0005Yu-EA
-	for qemu-trivial@nongnu.org; Fri, 02 May 2014 16:39:26 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1WgKJb-00071E-HR
+	for qemu-trivial@nongnu.org; Fri, 02 May 2014 16:44:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1WgKEm-0003kE-7x
-	for qemu-trivial@nongnu.org; Fri, 02 May 2014 16:39:21 -0400
-Received: from qemu.weilnetz.de ([37.221.198.45]:47124)
+	(envelope-from <stefan@weilnetz.de>) id 1WgKJW-0005mn-DD
+	for qemu-trivial@nongnu.org; Fri, 02 May 2014 16:44:15 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:47133)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1WgKEm-0003k6-22
-	for qemu-trivial@nongnu.org; Fri, 02 May 2014 16:39:16 -0400
+	(envelope-from <stefan@weilnetz.de>)
+	id 1WgKJM-0005ku-61; Fri, 02 May 2014 16:44:00 -0400
 Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 092421800ED; Fri,  2 May 2014 22:39:13 +0200 (CEST)
+	id D94E5180133; Fri,  2 May 2014 22:43:57 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-trivial@nongnu.org
-Date: Fri,  2 May 2014 22:39:12 +0200
-Message-Id: <1399063152-3359-1-git-send-email-sw@weilnetz.de>
+Date: Fri,  2 May 2014 22:43:57 +0200
+Message-Id: <1399063437-3620-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 37.221.198.45
-Cc: Alexander Graf <agraf@suse.de>, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org, Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-trivial] [PATCH] hw/s390x: Add missing 'static' attribute
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: [Qemu-trivial] [PATCH] monitor: Add missing 'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -35,26 +35,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 May 2014 20:39:26 -0000
+X-List-Received-Date: Fri, 02 May 2014 20:44:20 -0000
+
+This fixes a warning from the static code analysis (smatch).
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/s390x/event-facility.c |    2 +-
+ monitor.c |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/s390x/event-facility.c b/hw/s390x/event-facility.c
-index 0777a93..2e9e62f 100644
---- a/hw/s390x/event-facility.c
-+++ b/hw/s390x/event-facility.c
-@@ -32,7 +32,7 @@ struct SCLPEventFacility {
-     unsigned int receive_mask;
+diff --git a/monitor.c b/monitor.c
+index 1266ba0..2d3fb3f 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -488,7 +488,7 @@ static const char *monitor_event_names[] = {
  };
+ QEMU_BUILD_BUG_ON(ARRAY_SIZE(monitor_event_names) != QEVENT_MAX)
  
--SCLPEvent cpu_hotplug;
-+static SCLPEvent cpu_hotplug;
+-MonitorEventState monitor_event_state[QEVENT_MAX];
++static MonitorEventState monitor_event_state[QEVENT_MAX];
  
- /* return true if any child has event pending set */
- static bool event_pending(SCLPEventFacility *ef)
+ /*
+  * Emits the event to every monitor instance
 -- 
 1.7.10.4
 
