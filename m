@@ -1,35 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WgBqO-0005nx-CO
-	for mharc-qemu-trivial@gnu.org; Fri, 02 May 2014 07:41:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52728)
+	id 1WgEiJ-0008TV-9E
+	for mharc-qemu-trivial@gnu.org; Fri, 02 May 2014 10:45:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35941)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WgBqI-0005eT-Fu
-	for qemu-trivial@nongnu.org; Fri, 02 May 2014 07:41:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WgEiC-0008LJ-LU
+	for qemu-trivial@nongnu.org; Fri, 02 May 2014 10:45:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WgBqD-0003l4-Hz
-	for qemu-trivial@nongnu.org; Fri, 02 May 2014 07:41:26 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:33909)
+	(envelope-from <mjt@tls.msk.ru>) id 1WgEi8-00032o-5p
+	for qemu-trivial@nongnu.org; Fri, 02 May 2014 10:45:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56576)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WgBq3-0003ic-Dl; Fri, 02 May 2014 07:41:11 -0400
+	id 1WgEhy-0002sH-Pn; Fri, 02 May 2014 10:45:02 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id B1AF6401A2;
-	Fri,  2 May 2014 15:41:10 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 29976401F9;
+	Fri,  2 May 2014 18:45:01 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 9D7C95FE;
-	Fri,  2 May 2014 15:41:10 +0400 (MSK)
-Received: (nullmailer pid 23434 invoked by uid 1000);
-	Fri, 02 May 2014 11:41:10 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 55374651;
+	Fri,  2 May 2014 18:36:03 +0400 (MSK)
+Received: (nullmailer pid 30562 invoked by uid 1000);
+	Fri, 02 May 2014 14:36:02 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri,  2 May 2014 15:41:09 +0400
-Message-Id: <1399030869-23399-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri,  2 May 2014 18:35:59 +0400
+Message-Id: <1399041361-30496-6-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1399041361-30496-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1399041361-30496-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Fam Zheng <famz@redhat.com>
-Subject: [Qemu-trivial] [PATCH] configure: remove bashism
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PATCH v2 5/7] libcacard: replace pstrcpy() with
+	memcpy()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,32 +43,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 May 2014 11:41:31 -0000
+X-List-Received-Date: Fri, 02 May 2014 14:45:21 -0000
 
-Commit e26110cfc67d48 added a check for shacmd to create a hash
-for modules.  This check in configure is using bash construct &>
-to redirect both stdout and stderr, whcih does fun things on some
-shells.  Get rid of it, use standard redirection instead.
+Commit 2e679780ae86c6ca8 replaced strncpy() with pstrcpy()
+in one place in libcacard.  This is a qemu-specific function,
+while libcacard is a stand-alone library (or tries to be).
+But since we know the exact length of the string to copy,
+and know that it definitely will fit in the destination
+buffer, use memcpy() instead, and null-terminate the string
+after that.
 
-Cc: Fam Zheng <famz@redhat.com>
+An alternative is to use g_strlcpy() or strncpy(), but memcpy()
+is more than adequate in this place.
+
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org
 ---
- configure |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ libcacard/vcard_emul_nss.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/configure b/configure
-index 2fbec59..7442790 100755
---- a/configure
-+++ b/configure
-@@ -2627,7 +2627,7 @@ done
- if test "$modules" = yes; then
-     shacmd_probe="sha1sum sha1 shasum"
-     for c in $shacmd_probe; do
--        if which $c &>/dev/null; then
-+        if which $c >/dev/null 2>&1; then
-             shacmd="$c"
-             break
-         fi
+diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
+index ee2dfae..e2b196d 100644
+--- a/libcacard/vcard_emul_nss.c
++++ b/libcacard/vcard_emul_nss.c
+@@ -1162,7 +1162,8 @@ vcard_emul_options(const char *args)
+             NEXT_TOKEN(vname)
+             NEXT_TOKEN(type_params)
+             type_params_length = MIN(type_params_length, sizeof(type_str)-1);
+-            pstrcpy(type_str, type_params_length, type_params);
++            memcpy(type_str, type_params, type_params_length);
++            type_str[type_params_length] = '\0';
+             type = vcard_emul_type_from_string(type_str);
+ 
+             NEXT_TOKEN(type_params)
 -- 
 1.7.10.4
 
