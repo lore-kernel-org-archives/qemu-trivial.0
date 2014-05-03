@@ -1,42 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WgVW8-0004xo-Qi
-	for mharc-qemu-trivial@gnu.org; Sat, 03 May 2014 04:41:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37048)
+	id 1WgVem-0007BS-Sg
+	for mharc-qemu-trivial@gnu.org; Sat, 03 May 2014 04:50:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38030)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WgVW1-0004pL-GA
-	for qemu-trivial@nongnu.org; Sat, 03 May 2014 04:41:55 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WgVef-00073L-Qq
+	for qemu-trivial@nongnu.org; Sat, 03 May 2014 04:50:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WgVVv-0005c6-BL
-	for qemu-trivial@nongnu.org; Sat, 03 May 2014 04:41:49 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:48420)
+	(envelope-from <mjt@tls.msk.ru>) id 1WgVeZ-00081p-O5
+	for qemu-trivial@nongnu.org; Sat, 03 May 2014 04:50:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42746)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WgVVi-0005Ta-Pl; Sat, 03 May 2014 04:41:30 -0400
+	id 1WgVeM-0007zQ-Pl; Sat, 03 May 2014 04:50:27 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1A2314027E;
-	Sat,  3 May 2014 12:41:30 +0400 (MSK)
-Message-ID: <5364ABBA.10703@msgid.tls.msk.ru>
-Date: Sat, 03 May 2014 12:41:30 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 083F34027E;
+	Sat,  3 May 2014 12:50:25 +0400 (MSK)
+Message-ID: <5364ADD0.6010708@msgid.tls.msk.ru>
+Date: Sat, 03 May 2014 12:50:24 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.4.0
 MIME-Version: 1.0
-To: Chen Gang <gang.chen.5i5j@gmail.com>, quintela@redhat.com, 
-	owasserm@redhat.com, pbonzini@redhat.com, mst@redhat.com, 
-	Eric Blake <eblake@redhat.com>
-References: <53624BEB.7030605@gmail.com>
-In-Reply-To: <53624BEB.7030605@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
+References: <1399097081-24523-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1399097081-24523-1-git-send-email-sw@weilnetz.de>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] arch_init: Be sure of only one exit
- entry with DPRINTF() for ram_load()
+Cc: Jim Meyering <meyering@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] xen: remove unused global, xen_xcg
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,14 +44,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 03 May 2014 08:41:55 -0000
-
-01.05.2014 17:28, Chen Gang wrote:
-> When DPRINTF() has effect, the original author wants to print all
-> ram_load() calling results. So need use 'goto' instead of 'return'
-> within ram_load(), just like other areas have done.
+X-List-Received-Date: Sat, 03 May 2014 08:50:52 -0000
 
 Applied to -trivial, thank you!
 
-/mjjt
+/mjt
 
