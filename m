@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WgVvF-0005Ib-UU
-	for mharc-qemu-trivial@gnu.org; Sat, 03 May 2014 05:07:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40097)
+	id 1WgVvV-0005lB-M2
+	for mharc-qemu-trivial@gnu.org; Sat, 03 May 2014 05:08:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40165)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WgVv8-00057D-Ik
-	for qemu-trivial@nongnu.org; Sat, 03 May 2014 05:07:52 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WgVvO-0005Xv-DH
+	for qemu-trivial@nongnu.org; Sat, 03 May 2014 05:08:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WgVv2-0004gG-AY
-	for qemu-trivial@nongnu.org; Sat, 03 May 2014 05:07:46 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:33496)
+	(envelope-from <mjt@tls.msk.ru>) id 1WgVvH-0004jU-Op
+	for qemu-trivial@nongnu.org; Sat, 03 May 2014 05:08:01 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56962)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WgVum-0004ZW-9A; Sat, 03 May 2014 05:07:24 -0400
+	id 1WgVv4-0004go-Fe; Sat, 03 May 2014 05:07:42 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7C9DD4027E;
-	Sat,  3 May 2014 13:07:23 +0400 (MSK)
-Message-ID: <5364B1CB.4030300@msgid.tls.msk.ru>
-Date: Sat, 03 May 2014 13:07:23 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id CCB154027E;
+	Sat,  3 May 2014 13:07:41 +0400 (MSK)
+Message-ID: <5364B1DD.2080108@msgid.tls.msk.ru>
+Date: Sat, 03 May 2014 13:07:41 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.4.0
 MIME-Version: 1.0
 To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
-References: <1399063710-3920-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1399063710-3920-1-git-send-email-sw@weilnetz.de>
+References: <1399097535-24897-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1399097535-24897-1-git-send-email-sw@weilnetz.de>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-devel@nongnu.org, Anthony Liguori <aliguori@amazon.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] ui: Add missing 'static' attribute
+Cc: qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] qemu-timer: Add missing 'static'
+	attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,7 +45,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 03 May 2014 09:07:52 -0000
+X-List-Received-Date: Sat, 03 May 2014 09:08:08 -0000
 
 Applied to -trivial, thanks!
 
