@@ -1,40 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WhGkG-0008VD-QF
-	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 07:07:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48950)
+	id 1WhHVl-0002rE-Eg
+	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 07:56:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32814)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WhGk9-0008Mt-13
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 07:07:39 -0400
+	(envelope-from <famz@redhat.com>) id 1WhHVf-0002qM-51
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 07:56:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WhGk2-0003Kc-St
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 07:07:32 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:41283)
+	(envelope-from <famz@redhat.com>) id 1WhHVZ-0003Y6-5q
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 07:56:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39730)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WhGjq-0003FJ-62; Mon, 05 May 2014 07:07:14 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9516D406D6;
-	Mon,  5 May 2014 15:07:13 +0400 (MSK)
-Message-ID: <536770E1.9020002@msgid.tls.msk.ru>
-Date: Mon, 05 May 2014 15:07:13 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.4.0
-MIME-Version: 1.0
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
+	(envelope-from <famz@redhat.com>)
+	id 1WhHVY-0003Xj-V2; Mon, 05 May 2014 07:56:33 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s45BuURu024511
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Mon, 5 May 2014 07:56:31 -0400
+Received: from localhost (dhcp-14-247.nay.redhat.com [10.66.14.247])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s45BUXR1003909; Mon, 5 May 2014 07:30:34 -0400
+Date: Mon, 5 May 2014 19:30:45 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20140505113045.GC4370@T430.nay.redhat.com>
 References: <1399287591-6525-1-git-send-email-famz@redhat.com>
-	<20140505110545.GB4370@T430.nay.redhat.com>
-In-Reply-To: <20140505110545.GB4370@T430.nay.redhat.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	<1399287591-6525-2-git-send-email-famz@redhat.com>
+	<5367708D.80803@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5367708D.80803@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/2] docs/memory.txt:
- Fixes on whitespace and MMIO operations
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 1/2] docs/memory.txt: Put
+ one whitespace between sentences
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,27 +50,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 May 2014 11:07:39 -0000
+X-List-Received-Date: Mon, 05 May 2014 11:56:44 -0000
 
-05.05.2014 15:05, Fam Zheng =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
-> On Mon, 05/05 18:59, Fam Zheng wrote:
->>
->>
->> Fam Zheng (2):
->>   docs/memory.txt: Put one whitespace between sentences
->>   docs/memory.txt: Fix document on MMIO operations
->=20
-> Michael, this is based on Peter's
->=20
-> [PATCH] docs/memory.txt: old_portio has gone, so don't mention it
->=20
-> So you could apply on top.
+On Mon, 05/05 15:05, Michael Tokarev wrote:
+> 05.05.2014 14:59, Fam Zheng wrote:
+> > In other words, whitespace changes only.
+> 
+> >  The memory API models the memory and I/O buses and controllers of a QEMU
+> > -machine.  It attempts to allow modelling of:
+> > +machine. It attempts to allow modelling of:
+> 
+> What's the point?  In text form, it is quite often and, to my taste, quite
+> normal to use 2 spaces after the full-dot (at the end of the sentence), just
+> like an extra line between paragraphs.  This way, it is easier to separate
+> sentences between each other.
+> 
+> In real typography, 1.5-sized space is usually used in such places.  But since
+> plaintext format has no 1.5-sized space, 2 spaces is used.
+> 
+> I'd send an opposite patch, which adds additional space where it is missing.. :)
+> 
 
-I'd rather drop the Peter's patch and apply your first version, so
-we don't have 2 halves but one whole :)   I can pick it from your
-initial submission ;)
+Well, out of my first reaction on the inconsistency. I just get a feeling on
+this controversy by looking at the length of this Wikipedia page's reference
+section:
+
+http://en.wikipedia.org/wiki/Sentence_spacing#References
+
+Does NOT matter for me, anyway :)
 
 Thanks,
+Fam
 
-/mjt
 
