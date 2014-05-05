@@ -1,36 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WhNDm-0004Bi-P8
-	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 14:02:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47183)
+	id 1WhNDs-0004Kt-4I
+	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 14:02:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47207)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WhNDf-0003xg-EP
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:02:32 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WhNDl-00049v-Pj
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:02:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WhNDa-000197-Gh
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:02:27 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:47823)
+	(envelope-from <mjt@tls.msk.ru>) id 1WhNDg-0001A4-SM
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:02:33 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38725)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WhNDM-00015j-F5; Mon, 05 May 2014 14:02:08 -0400
+	id 1WhNDM-00015h-Eu; Mon, 05 May 2014 14:02:08 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4917740750;
+	by isrv.corpit.ru (Postfix) with ESMTP id 0EFB44074E;
 	Mon,  5 May 2014 22:02:06 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 308E4661;
-	Mon,  5 May 2014 22:02:06 +0400 (MSK)
-Received: (nullmailer pid 24212 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id F16B566D;
+	Mon,  5 May 2014 22:02:05 +0400 (MSK)
+Received: (nullmailer pid 24220 invoked by uid 1000);
 	Mon, 05 May 2014 18:02:05 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon,  5 May 2014 22:01:43 +0400
-Message-Id: <1399312923-24129-3-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Mon,  5 May 2014 22:01:46 +0400
+Message-Id: <1399312923-24129-6-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1399312923-24129-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1399312923-24129-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 02/22] configure: remove bashism
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Chen Gang <gang.chen.5i5j@gmail.com>
+Subject: [Qemu-trivial] [PULL 05/22] arch_init: Be sure of only one exit
+	entry with DPRINTF() for ram_load()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,32 +44,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 May 2014 18:02:33 -0000
+X-List-Received-Date: Mon, 05 May 2014 18:02:39 -0000
 
-Commit e26110cfc67d48 added a check for shacmd to create a hash
-for modules.  This check in configure is using bash construct &>
-to redirect both stdout and stderr, which does fun things on some
-shells.  Get rid of it, use standard redirection instead.
+From: Chen Gang <gang.chen.5i5j@gmail.com>
 
+When DPRINTF() has effect, the original author wants to print all
+ram_load() calling results. So need use 'goto' instead of 'return'
+within ram_load(), just like other areas have done.
+
+Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Fam Zheng <famz@redhat.com>
 ---
- configure |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch_init.c |   12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/configure b/configure
-index 870c939..6484808 100755
---- a/configure
-+++ b/configure
-@@ -2628,7 +2628,7 @@ done
- if test "$modules" = yes; then
-     shacmd_probe="sha1sum sha1 shasum"
-     for c in $shacmd_probe; do
--        if which $c &>/dev/null; then
-+        if which $c >/dev/null 2>&1; then
-             shacmd="$c"
-             break
-         fi
+diff --git a/arch_init.c b/arch_init.c
+index 60c975d..333f698 100644
+--- a/arch_init.c
++++ b/arch_init.c
+@@ -998,7 +998,8 @@ static int ram_load(QEMUFile *f, void *opaque, int version_id)
+     seq_iter++;
+ 
+     if (version_id < 4 || version_id > 4) {
+-        return -EINVAL;
++        ret = -EINVAL;
++        goto done;
+     }
+ 
+     do {
+@@ -1055,7 +1056,8 @@ static int ram_load(QEMUFile *f, void *opaque, int version_id)
+ 
+             host = host_from_stream_offset(f, addr, flags);
+             if (!host) {
+-                return -EINVAL;
++                ret = -EINVAL;
++                goto done;
+             }
+ 
+             ch = qemu_get_byte(f);
+@@ -1065,14 +1067,16 @@ static int ram_load(QEMUFile *f, void *opaque, int version_id)
+ 
+             host = host_from_stream_offset(f, addr, flags);
+             if (!host) {
+-                return -EINVAL;
++                ret = -EINVAL;
++                goto done;
+             }
+ 
+             qemu_get_buffer(f, host, TARGET_PAGE_SIZE);
+         } else if (flags & RAM_SAVE_FLAG_XBZRLE) {
+             void *host = host_from_stream_offset(f, addr, flags);
+             if (!host) {
+-                return -EINVAL;
++                ret = -EINVAL;
++                goto done;
+             }
+ 
+             if (load_xbzrle(f, addr, host) < 0) {
 -- 
 1.7.10.4
 
