@@ -1,41 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WhFAf-0004rQ-OH
-	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 05:26:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52797)
+	id 1WhFCG-0006Sy-DS
+	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 05:28:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53261)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WhFAX-0004iQ-Cb
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 05:26:48 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WhFC8-0006EI-W8
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 05:28:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1WhFAP-0000Uo-P8
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 05:26:41 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:33623 helo=mx2.suse.de)
+	(envelope-from <mjt@tls.msk.ru>) id 1WhFC2-0000wA-NM
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 05:28:20 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60049)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1WhFA7-0000GL-Df; Mon, 05 May 2014 05:26:15 -0400
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id B1CDDAC4F;
-	Mon,  5 May 2014 09:26:14 +0000 (UTC)
-Message-ID: <53675935.7010105@suse.de>
-Date: Mon, 05 May 2014 11:26:13 +0200
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE LINUX Products GmbH
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WhFBm-0000sZ-OE; Mon, 05 May 2014 05:27:58 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 2633A4068E;
+	Mon,  5 May 2014 13:27:58 +0400 (MSK)
+Message-ID: <5367599D.9000001@msgid.tls.msk.ru>
+Date: Mon, 05 May 2014 13:27:57 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.3.0
+	rv:24.0) Gecko/20100101 Icedove/24.4.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, Hani Benhabiles <kroosec@gmail.com>, 
-	qemu-devel@nongnu.org
-References: <1398725186-8202-1-git-send-email-kroosec@gmail.com>
-	<5364AAEE.7000500@msgid.tls.msk.ru>
-	<5367560A.8010000@msgid.tls.msk.ru>
-In-Reply-To: <5367560A.8010000@msgid.tls.msk.ru>
+To: Hani Benhabiles <kroosec@gmail.com>, qemu-devel@nongnu.org
+References: <1398954402-17826-1-git-send-email-kroosec@gmail.com>
+In-Reply-To: <1398954402-17826-1-git-send-email-kroosec@gmail.com>
 X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, lcapitulino@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] qmp: Report path ambiguity error.
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, lcapitulino@redhat.com,
+	stefanha@redhat.com, eblake@redhat.com, xiawenc@linux.vnet.ibm.com
+Subject: Re: [Qemu-trivial] [PATCH] readline: Sort completions before
+ printing them.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,38 +46,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 May 2014 09:26:49 -0000
+X-List-Received-Date: Mon, 05 May 2014 09:28:27 -0000
 
-Am 05.05.2014 11:12, schrieb Michael Tokarev:
-> 03.05.2014 12:38, Michael Tokarev wrote:
-> []
->> --- a/qmp.c
->> +++ b/qmp.c
->> @@ -200,7 +200,9 @@ ObjectPropertyInfoList *qmp_qom_list(const char *p=
-ath, Error **errp)
->>
->>      obj =3D object_resolve_path(path, &ambiguous);
->>      if (obj =3D=3D NULL) {
->> -        error_set(errp, QERR_DEVICE_NOT_FOUND, path);
->> +        error_set(errp,
->> +                  ambiguous ? "Path '%s' is ambiguous" : QERR_DEVICE_=
-NOT_FOUND,
->> +                  path);
->>          return NULL;
->>      }
->=20
-> I've applied this version.
+Applied to -trivial, thank you!
 
-Please undo. error_set() unlike error_setg() expects an ErrorClass
-argument before the string. QERR_* macro contains *two* comma-separated
-values, so it is on top filling in the device-not-found message as path
-in the ambiguous case.
-
-Regards,
-Andreas
-
---=20
-SUSE LINUX Products GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Jeff Hawn, Jennifer Guild, Felix Imend=C3=B6rffer; HRB 16746 AG N=C3=BC=
-rnberg
+/mjt
 
