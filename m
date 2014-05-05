@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WhNVK-0003a3-MZ
-	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 14:20:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51889)
+	id 1WhNVL-0003bz-UE
+	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 14:20:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51897)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WhNVE-0003Tz-Dx
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:20:40 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WhNVF-0003Ud-9T
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:20:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WhNV9-0006qc-Vk
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:20:36 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:60471)
+	(envelope-from <mjt@tls.msk.ru>) id 1WhNVA-0006ql-N9
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:20:37 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57680)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WhNUz-0006oN-Ti; Mon, 05 May 2014 14:20:22 -0400
+	id 1WhNUz-0006oO-Tu; Mon, 05 May 2014 14:20:22 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9A27D40754;
+	by isrv.corpit.ru (Postfix) with ESMTP id 8815640708;
 	Mon,  5 May 2014 22:20:20 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 6D45B6AD;
-	Mon,  5 May 2014 22:02:07 +0400 (MSK)
-Received: (nullmailer pid 24244 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 9FC5166D;
+	Mon,  5 May 2014 22:02:06 +0400 (MSK)
+Received: (nullmailer pid 24249 invoked by uid 1000);
 	Mon, 05 May 2014 18:02:06 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon,  5 May 2014 22:01:55 +0400
-Message-Id: <1399312923-24129-15-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Mon,  5 May 2014 22:01:57 +0400
+Message-Id: <1399312923-24129-17-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1399312923-24129-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1399312923-24129-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 14/22] hw/9pfs: Add include file for exported
-	symbol
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [Qemu-trivial] [PULL 16/22] glib: move g_poll() replacement into
+	glib-compat.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,28 +44,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 May 2014 18:20:41 -0000
+X-List-Received-Date: Mon, 05 May 2014 18:20:42 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Stefan Hajnoczi <stefanha@redhat.com>
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+We have a dedicated header file for wrappers to smooth over glib version
+differences.  Move the g_poll() definition into glib-compat.h for
+consistency.
+
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org
 ---
- hw/9pfs/virtio-9p-local.c |    1 +
- 1 file changed, 1 insertion(+)
+ include/glib-compat.h |   12 ++++++++++++
+ include/qemu-common.h |   12 ------------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/hw/9pfs/virtio-9p-local.c b/hw/9pfs/virtio-9p-local.c
-index 56b302c..3b0b6a9 100644
---- a/hw/9pfs/virtio-9p-local.c
-+++ b/hw/9pfs/virtio-9p-local.c
-@@ -14,6 +14,7 @@
- #include "hw/virtio/virtio.h"
- #include "virtio-9p.h"
- #include "virtio-9p-xattr.h"
-+#include "fsdev/qemu-fsdev.h"   /* local_ops */
- #include <arpa/inet.h>
- #include <pwd.h>
- #include <grp.h>
+diff --git a/include/glib-compat.h b/include/glib-compat.h
+index 8aa77af..8d25900 100644
+--- a/include/glib-compat.h
++++ b/include/glib-compat.h
+@@ -24,4 +24,16 @@ static inline guint g_timeout_add_seconds(guint interval, GSourceFunc function,
+ }
+ #endif
+ 
++#if !GLIB_CHECK_VERSION(2, 20, 0)
++/*
++ * Glib before 2.20.0 doesn't implement g_poll, so wrap it to compile properly
++ * on older systems.
++ */
++static inline gint g_poll(GPollFD *fds, guint nfds, gint timeout)
++{
++    GMainContext *ctx = g_main_context_default();
++    return g_main_context_get_poll_func(ctx)(fds, nfds, timeout);
++}
++#endif
++
+ #endif
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index a998e8d..3f3fd60 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -124,18 +124,6 @@ int qemu_main(int argc, char **argv, char **envp);
+ void qemu_get_timedate(struct tm *tm, int offset);
+ int qemu_timedate_diff(struct tm *tm);
+ 
+-#if !GLIB_CHECK_VERSION(2, 20, 0)
+-/*
+- * Glib before 2.20.0 doesn't implement g_poll, so wrap it to compile properly
+- * on older systems.
+- */
+-static inline gint g_poll(GPollFD *fds, guint nfds, gint timeout)
+-{
+-    GMainContext *ctx = g_main_context_default();
+-    return g_main_context_get_poll_func(ctx)(fds, nfds, timeout);
+-}
+-#endif
+-
+ /**
+  * is_help_option:
+  * @s: string to test
 -- 
 1.7.10.4
 
