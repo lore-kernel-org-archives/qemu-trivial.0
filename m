@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WhNoo-00036b-Qz
-	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 14:40:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57290)
+	id 1WhUln-0005Qm-Hg
+	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 22:06:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32811)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WhNog-00031S-MU
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:40:48 -0400
+	(envelope-from <famz@redhat.com>) id 1WhUlg-0005Ha-1E
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 22:06:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WhNob-0005TT-Pk
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 14:40:42 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51604)
+	(envelope-from <famz@redhat.com>) id 1WhUlZ-0003wU-Sg
+	for qemu-trivial@nongnu.org; Mon, 05 May 2014 22:06:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:11901)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WhNoN-0005QS-4m; Mon, 05 May 2014 14:40:23 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id E6E3540708;
-	Mon,  5 May 2014 22:40:20 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 8249C6AE;
-	Mon,  5 May 2014 22:02:07 +0400 (MSK)
-Received: (nullmailer pid 24246 invoked by uid 1000);
-	Mon, 05 May 2014 18:02:06 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
+	(envelope-from <famz@redhat.com>)
+	id 1WhUlN-0003l1-2t; Mon, 05 May 2014 22:05:45 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4625hQG025677
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Mon, 5 May 2014 22:05:43 -0400
+Received: from T430.nay.redhat.com (dhcp-14-247.nay.redhat.com [10.66.14.247])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id s4625eo8030943; Mon, 5 May 2014 22:05:41 -0400
+From: Fam Zheng <famz@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Mon,  5 May 2014 22:01:56 +0400
-Message-Id: <1399312923-24129-16-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1399312923-24129-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1399312923-24129-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Tue,  6 May 2014 10:05:53 +0800
+Message-Id: <1399341953-14387-1-git-send-email-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 15/22] do not call g_thread_init() for glib >=
-	2.31
+X-Received-From: 209.132.183.28
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
+	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: [Qemu-trivial] [PATCH v2] qapi: Document optional arguments'
+	backwards compatibility
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,81 +43,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 May 2014 18:40:48 -0000
+X-List-Received-Date: Tue, 06 May 2014 02:06:10 -0000
 
-glib >= 2.31 always enables thread support and g_thread_supported()
-is #defined to 1, there's no need to call g_thread_init() anymore,
-and it definitely does not need to report error which never happens.
-Keep code for old < 2.31 glibc anyway for now, just #ifdef it
-differently.
+Signed-off-by: Fam Zheng <famz@redhat.com>
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: qemu-trivial@nongnu.org
 ---
- coroutine-gthread.c |    7 ++-----
- util/osdep.c        |   21 +++++++++------------
- 2 files changed, 11 insertions(+), 17 deletions(-)
+v2: Employ the text suggested by Eric. (Thanks!)
 
-diff --git a/coroutine-gthread.c b/coroutine-gthread.c
-index d3e5b99..a61efe0 100644
---- a/coroutine-gthread.c
-+++ b/coroutine-gthread.c
-@@ -115,14 +115,11 @@ static inline GThread *create_thread(GThreadFunc func, gpointer data)
+Signed-off-by: Fam Zheng <famz@redhat.com>
+---
+ docs/qapi-code-gen.txt | 26 ++++++++++++++++++++++----
+ 1 file changed, 22 insertions(+), 4 deletions(-)
+
+diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
+index d78921f..3e5cfd5 100644
+--- a/docs/qapi-code-gen.txt
++++ b/docs/qapi-code-gen.txt
+@@ -49,10 +49,28 @@ example of a complex type is:
+  { 'type': 'MyType',
+    'data': { 'member1': 'str', 'member2': 'int', '*member3': 'str' } }
  
- static void __attribute__((constructor)) coroutine_init(void)
- {
--    if (!g_thread_supported()) {
- #if !GLIB_CHECK_VERSION(2, 31, 0)
-+    if (!g_thread_supported()) {
-         g_thread_init(NULL);
--#else
--        fprintf(stderr, "glib threading failed to initialize.\n");
--        exit(1);
--#endif
-     }
-+#endif
+-The use of '*' as a prefix to the name means the member is optional.  Optional
+-members should always be added to the end of the dictionary to preserve
+-backwards compatibility.
+-
++The use of '*' as a prefix to the name means the member is optional.
++
++The default initialization value of an optional argument should not be changed
++between versions of QEMU unless the new default maintains backward
++compatibility to the user-visible behavior of the old default.
++
++On input structures (only mentioned in the 'data' side of a command), changing
++from mandatory to optional is safe (older clients will supply the option, and
++newer clients can benefit from the default); changing from optional to
++mandatory is backwards incompatible (older clients may be omitting the option,
++and must continue to work).
++
++On output structures (only mentioned in the 'returns' side of a command),
++changing from mandatory to optional is in general unsafe (older clients may be
++expecting the field, and could crash if it is missing), although it can be done
++if the only way that the optional argument will be omitted is when it is
++triggered by the presence of a new input flag to the command that older clients
++don't know to send.  Changing from optional to mandatory is safe.
++
++A structure that is used in both input and output of various commands
++must consider the backwards compatibility constraints of both directions
++of use.
  
-     init_coroutine_cond();
- }
-diff --git a/util/osdep.c b/util/osdep.c
-index a9029f8..b2bd154 100644
---- a/util/osdep.c
-+++ b/util/osdep.c
-@@ -436,23 +436,20 @@ int socket_init(void)
-     return 0;
- }
- 
--/* Ensure that glib is running in multi-threaded mode */
-+#if !GLIB_CHECK_VERSION(2, 31, 0)
-+/* Ensure that glib is running in multi-threaded mode
-+ * Old versions of glib require explicit initialization.  Failure to do
-+ * this results in the single-threaded code paths being taken inside
-+ * glib.  For example, the g_slice allocator will not be thread-safe
-+ * and cause crashes.
-+ */
- static void __attribute__((constructor)) thread_init(void)
- {
-     if (!g_thread_supported()) {
--#if !GLIB_CHECK_VERSION(2, 31, 0)
--        /* Old versions of glib require explicit initialization.  Failure to do
--         * this results in the single-threaded code paths being taken inside
--         * glib.  For example, the g_slice allocator will not be thread-safe
--         * and cause crashes.
--         */
--        g_thread_init(NULL);
--#else
--        fprintf(stderr, "glib threading failed to initialize.\n");
--        exit(1);
--#endif
-+       g_thread_init(NULL);
-     }
- }
-+#endif
- 
- #ifndef CONFIG_IOVEC
- /* helper function for iov_send_recv() */
+ A complex type definition can specify another complex type as its base.
+ In this case, the fields of the base type are included as top-level fields
 -- 
-1.7.10.4
+1.9.2
 
 
