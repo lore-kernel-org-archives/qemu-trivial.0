@@ -1,32 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WhfFb-00082M-6R
-	for mharc-qemu-trivial@gnu.org; Tue, 06 May 2014 09:17:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43937)
+	id 1Whg8N-0005l3-DU
+	for mharc-qemu-trivial@gnu.org; Tue, 06 May 2014 10:14:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57058)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WhfFZ-0007yz-8E
-	for qemu-trivial@nongnu.org; Tue, 06 May 2014 09:17:38 -0400
+	(envelope-from <wdauchy@gmail.com>) id 1Whg8L-0005j1-AF
+	for qemu-trivial@nongnu.org; Tue, 06 May 2014 10:14:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WhfFY-0002b3-6H
-	for qemu-trivial@nongnu.org; Tue, 06 May 2014 09:17:37 -0400
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48025)
+	(envelope-from <wdauchy@gmail.com>) id 1Whg8H-0005vo-Aj
+	for qemu-trivial@nongnu.org; Tue, 06 May 2014 10:14:13 -0400
+Received: from mail-vc0-x231.google.com ([2607:f8b0:400c:c03::231]:54445)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1WhfFV-0002Dv-RC; Tue, 06 May 2014 09:17:33 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1WhfEy-0003sN-80; Tue, 06 May 2014 14:17:00 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Tue,  6 May 2014 14:17:00 +0100
-Message-Id: <1399382220-14874-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <wdauchy@gmail.com>)
+	id 1Whg8F-0005vI-4y; Tue, 06 May 2014 10:14:07 -0400
+Received: by mail-vc0-f177.google.com with SMTP id if11so995220vcb.36
+	for <multiple recipients>; Tue, 06 May 2014 07:14:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=in7ovN1iED93qb48rIXbMpnVDjGpwH8xaMcIUegi9t4=;
+	b=yz46bZKrZ7zAQaw2qvapOL3i0P4Io1c1fuIcODBKPI70eC3Pdv9W7AuRFB+vmINa8z
+	GdQYxLdzN5KA9t/lF0ikLRw0bRap80/pX5XkHIKnQ96ZkciftDnSYXa9yvT7pBJ+ofmd
+	05x3pR99xHo8UrQjLoKFiy+xqA995qWqcV9OCUQ1euEDhL0LFbdIss15NVgbflfga0CC
+	EYB+V5y23h9q0QjXqMTVMR/x/hLudKuc3DICSy8OVstfZD7mM38pyJEnWeukBk5TmCPT
+	GaogLJi288Sn6WUsbPMCXHDB0JDc1wud0/e1HzdnyhFTSFvgVU7owhFbdRxPerPM7aOx
+	3USQ==
+X-Received: by 10.58.201.5 with SMTP id jw5mr32433200vec.6.1399385646472; Tue,
+	06 May 2014 07:14:06 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.52.122.80 with HTTP; Tue, 6 May 2014 07:13:46 -0700 (PDT)
+In-Reply-To: <1399374955-29082-1-git-send-email-dgilbert@redhat.com>
+References: <1399374955-29082-1-git-send-email-dgilbert@redhat.com>
+From: William Dauchy <wdauchy@gmail.com>
+Date: Tue, 6 May 2014 16:13:46 +0200
+Message-ID: <CAJ75kXaCCf+achqzNoDuPefwnE5DRH0=uidapJEv9Wffjap_vw@mail.gmail.com>
+To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Don Slutz <dslutz@verizon.com>, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] configure: Put tempfiles in subdir so we can
-	clean up libtool files
+X-Received-From: 2607:f8b0:400c:c03::231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] Fix 'name' option to work with
+	-readconfig
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,71 +53,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 May 2014 13:17:38 -0000
+X-List-Received-Date: Tue, 06 May 2014 14:14:14 -0000
 
-When libtool support was added to configure, the new temporary files
-were left out of the list of files cleaned up on exit; this results
-in a lot of stale .lo files being left around in /tmp. Worse, libtool
-creates a /tmp/.libs directory which we can't easily clean up.
+On Tue, May 6, 2014 at 1:15 PM, Dr. David Alan Gilbert (git)
+<dgilbert@redhat.com> wrote:
+> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+>
+> The 'name' option silently failed when used in config files
+> ( http://lists.gnu.org/archive/html/qemu-devel/2014-04/msg00378.html )
+>
+> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> Reported-by: William Dauchy <wdauchy@gmail.com>
 
-Put all our temporary files in a single temporary directory created
-via mktemp -d, so we can easily clean it up. This has the bonus
-result that we no longer use $RANDOM (which silently expands to the
-empty string if your shell is not bash, and so is pretty useless).
+Please use:
 
-Note that because we now use mktemp's tempdir-finding logic rather
-than handrolling it, we no longer honour TEMPDIR (only TMPDIR).
+Reported-by: William Dauchy <william@gandi.net>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I don't know why we were looking at TEMPDIR; that code was
-in there from the initial commit by Fabrice back in 2003...
+I have also successfully tested the patch
+Tested-by: William Dauchy <william@gandi.net>
 
- configure | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
-
-diff --git a/configure b/configure
-index 870c939..84c600f 100755
---- a/configure
-+++ b/configure
-@@ -2,26 +2,25 @@
- #
- # qemu configure script (c) 2003 Fabrice Bellard
- #
--# set temporary file name
--if test ! -z "$TMPDIR" ; then
--    TMPDIR1="${TMPDIR}"
--elif test ! -z "$TEMPDIR" ; then
--    TMPDIR1="${TEMPDIR}"
--else
--    TMPDIR1="/tmp"
-+
-+TMPDIR1=$(mktemp -t -d)
-+if [ $? -ne 0 ]; then
-+    echo "ERROR: failed to create temporary directory"
-+    exit 1
- fi
- 
--TMPC="${TMPDIR1}/qemu-conf-${RANDOM}-$$-${RANDOM}.c"
--TMPB="qemu-conf-${RANDOM}-$$-${RANDOM}"
-+TMPB="qemu-conf"
-+TMPC="${TMPDIR1}/${TMPB}.c"
- TMPO="${TMPDIR1}/${TMPB}.o"
- TMPCXX="${TMPDIR1}/${TMPB}.cxx"
- TMPL="${TMPDIR1}/${TMPB}.lo"
- TMPA="${TMPDIR1}/lib${TMPB}.la"
--TMPE="${TMPDIR1}/qemu-conf-${RANDOM}-$$-${RANDOM}.exe"
-+TMPE="${TMPDIR1}/${TMPB}.exe"
- 
- # NB: do not call "exit" in the trap handler; this is buggy with some shells;
- # see <1285349658-3122-1-git-send-email-loic.minier@linaro.org>
--trap "rm -f $TMPC $TMPO $TMPCXX $TMPE" EXIT INT QUIT TERM
-+trap "rm -rf ${TMPDIR1}" EXIT INT QUIT TERM
-+
- rm -f config.log
- 
- # Print a helpful header at the top of config.log
+Thanks,
 -- 
-1.9.2
-
+William
 
