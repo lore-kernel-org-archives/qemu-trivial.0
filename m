@@ -1,37 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WhUln-0005Qm-Hg
-	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2014 22:06:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32811)
+	id 1WhdMD-0001F5-5g
+	for mharc-qemu-trivial@gnu.org; Tue, 06 May 2014 07:16:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39589)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1WhUlg-0005Ha-1E
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 22:06:10 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1WhdM6-0000zR-I3
+	for qemu-trivial@nongnu.org; Tue, 06 May 2014 07:16:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1WhUlZ-0003wU-Sg
-	for qemu-trivial@nongnu.org; Mon, 05 May 2014 22:06:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:11901)
+	(envelope-from <dgilbert@redhat.com>) id 1WhdM1-0001Sh-HN
+	for qemu-trivial@nongnu.org; Tue, 06 May 2014 07:16:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45524)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1WhUlN-0003l1-2t; Mon, 05 May 2014 22:05:45 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4625hQG025677
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 5 May 2014 22:05:43 -0400
-Received: from T430.nay.redhat.com (dhcp-14-247.nay.redhat.com [10.66.14.247])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id s4625eo8030943; Mon, 5 May 2014 22:05:41 -0400
-From: Fam Zheng <famz@redhat.com>
+	(envelope-from <dgilbert@redhat.com>)
+	id 1WhdLr-0001Qo-GK; Tue, 06 May 2014 07:15:59 -0400
+Received: from int-mx02.intmail.prod.int.phx2.redhat.com
+	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s46BFvcE022431
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 6 May 2014 07:15:57 -0400
+Received: from dgilbert-t530.home.treblig.org (vpn1-5-31.ams2.redhat.com
+	[10.36.5.31])
+	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id s46BFtX8027754; Tue, 6 May 2014 07:15:56 -0400
+From: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue,  6 May 2014 10:05:53 +0800
-Message-Id: <1399341953-14387-1-git-send-email-famz@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+Date: Tue,  6 May 2014 12:15:55 +0100
+Message-Id: <1399374955-29082-1-git-send-email-dgilbert@redhat.com>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
-	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Luiz Capitulino <lcapitulino@redhat.com>
-Subject: [Qemu-trivial] [PATCH v2] qapi: Document optional arguments'
-	backwards compatibility
+Cc: qemu-trivial@nongnu.org, wdauchy@gmail.com
+Subject: [Qemu-trivial] [PATCH] Fix 'name' option to work with -readconfig
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,56 +41,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 May 2014 02:06:10 -0000
+X-List-Received-Date: Tue, 06 May 2014 11:16:19 -0000
 
-Signed-off-by: Fam Zheng <famz@redhat.com>
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
+The 'name' option silently failed when used in config files
+( http://lists.gnu.org/archive/html/qemu-devel/2014-04/msg00378.html )
+
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reported-by: William Dauchy <wdauchy@gmail.com>
 ---
-v2: Employ the text suggested by Eric. (Thanks!)
+ vl.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-Signed-off-by: Fam Zheng <famz@redhat.com>
----
- docs/qapi-code-gen.txt | 26 ++++++++++++++++++++++----
- 1 file changed, 22 insertions(+), 4 deletions(-)
-
-diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
-index d78921f..3e5cfd5 100644
---- a/docs/qapi-code-gen.txt
-+++ b/docs/qapi-code-gen.txt
-@@ -49,10 +49,28 @@ example of a complex type is:
-  { 'type': 'MyType',
-    'data': { 'member1': 'str', 'member2': 'int', '*member3': 'str' } }
+diff --git a/vl.c b/vl.c
+index 8411a4a..47c199a 100644
+--- a/vl.c
++++ b/vl.c
+@@ -965,7 +965,7 @@ static int parse_sandbox(QemuOpts *opts, void *opaque)
+     return 0;
+ }
  
--The use of '*' as a prefix to the name means the member is optional.  Optional
--members should always be added to the end of the dictionary to preserve
--backwards compatibility.
--
-+The use of '*' as a prefix to the name means the member is optional.
-+
-+The default initialization value of an optional argument should not be changed
-+between versions of QEMU unless the new default maintains backward
-+compatibility to the user-visible behavior of the old default.
-+
-+On input structures (only mentioned in the 'data' side of a command), changing
-+from mandatory to optional is safe (older clients will supply the option, and
-+newer clients can benefit from the default); changing from optional to
-+mandatory is backwards incompatible (older clients may be omitting the option,
-+and must continue to work).
-+
-+On output structures (only mentioned in the 'returns' side of a command),
-+changing from mandatory to optional is in general unsafe (older clients may be
-+expecting the field, and could crash if it is missing), although it can be done
-+if the only way that the optional argument will be omitted is when it is
-+triggered by the presence of a new input flag to the command that older clients
-+don't know to send.  Changing from optional to mandatory is safe.
-+
-+A structure that is used in both input and output of various commands
-+must consider the backwards compatibility constraints of both directions
-+of use.
+-static void parse_name(QemuOpts *opts)
++static int parse_name(QemuOpts *opts, void *opaque)
+ {
+     const char *proc_name;
  
- A complex type definition can specify another complex type as its base.
- In this case, the fields of the base type are included as top-level fields
+@@ -978,6 +978,8 @@ static void parse_name(QemuOpts *opts)
+     if (proc_name) {
+         os_set_proc_name(proc_name);
+     }
++
++    return 0;
+ }
+ 
+ bool usb_enabled(bool default_usb)
+@@ -3780,7 +3782,6 @@ int main(int argc, char **argv, char **envp)
+                 if (!opts) {
+                     exit(1);
+                 }
+-                parse_name(opts);
+                 break;
+             case QEMU_OPTION_prom_env:
+                 if (nb_prom_envs >= MAX_PROM_ENVS) {
+@@ -3955,6 +3956,10 @@ int main(int argc, char **argv, char **envp)
+         exit(1);
+     }
+ 
++    if (qemu_opts_foreach(qemu_find_opts("name"), parse_name, NULL, 1)) {
++        exit(1);
++    }
++
+ #ifndef _WIN32
+     if (qemu_opts_foreach(qemu_find_opts("add-fd"), parse_add_fd, NULL, 1)) {
+         exit(1);
 -- 
-1.9.2
+1.9.0
 
 
