@@ -1,44 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Whr7W-0001sN-Qn
-	for mharc-qemu-trivial@gnu.org; Tue, 06 May 2014 21:58:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60317)
+	id 1WhymN-0007i5-Sf
+	for mharc-qemu-trivial@gnu.org; Wed, 07 May 2014 06:08:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43923)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1Whr7Q-0001jt-Ag
-	for qemu-trivial@nongnu.org; Tue, 06 May 2014 21:58:05 -0400
+	(envelope-from <balaton@eik.bme.hu>) id 1WhymG-0007aN-9o
+	for qemu-trivial@nongnu.org; Wed, 07 May 2014 06:08:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1Whr7L-00026b-3y
-	for qemu-trivial@nongnu.org; Tue, 06 May 2014 21:58:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47939)
+	(envelope-from <balaton@eik.bme.hu>) id 1WhymA-0007GU-8t
+	for qemu-trivial@nongnu.org; Wed, 07 May 2014 06:08:40 -0400
+Received: from mono.eik.bme.hu ([152.66.115.2]:35525)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1Whr77-00023X-Uh; Tue, 06 May 2014 21:57:42 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s471veGX003672
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Tue, 6 May 2014 21:57:41 -0400
-Received: from localhost (dhcp-14-247.nay.redhat.com [10.66.14.247])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s471vdZ4032734; Tue, 6 May 2014 21:57:40 -0400
-Date: Wed, 7 May 2014 09:57:52 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <20140507015752.GH1574@T430.nay.redhat.com>
-References: <1399341953-14387-1-git-send-email-famz@redhat.com>
-	<53698CBA.7040901@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <53698CBA.7040901@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
-	Luiz Capitulino <lcapitulino@redhat.com>, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] qapi: Document optional
- arguments' backwards compatibility
+	(envelope-from <balaton@eik.bme.hu>) id 1WhymA-0007Eg-1Q
+	for qemu-trivial@nongnu.org; Wed, 07 May 2014 06:08:34 -0400
+Received: from mono.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id EBC4C4E7C;
+	Wed,  7 May 2014 12:08:18 +0200 (CEST)
+Received: by mono.eik.bme.hu (Postfix, from userid 432)
+	id C714A196A9; Wed,  7 May 2014 12:08:18 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: qemu-devel@nongnu.org
+Message-Id: <20140507100818.C714A196A9@mono.eik.bme.hu>
+X-detected-operating-system: by eggs.gnu.org: Solaris 10
+X-Received-From: 152.66.115.2
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Gerd Hoffmann <kraxel@redhat.com>
+Subject: [Qemu-trivial] [PATCH v2] serial-pci: Set prog interface field of
+ pci config to 16550 compatible
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,73 +37,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 May 2014 01:58:05 -0000
+Date: Wed, 07 May 2014 10:08:46 -0000
+X-Original-Date: Thu, 27 Feb 2014 02:05:05 +0100
+X-List-Received-Date: Wed, 07 May 2014 10:08:46 -0000
 
-On Tue, 05/06 19:30, Eric Blake wrote:
-> On 05/05/2014 08:05 PM, Fam Zheng wrote:
-> > Signed-off-by: Fam Zheng <famz@redhat.com>
-> > 
-> > ---
-> > v2: Employ the text suggested by Eric. (Thanks!)
-> 
-> Since much of it is my wording, it's probably better to credit me as an
-> author, by adding:
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
 
-Gladly!
+ v2: resubmission after pc-2.1 is added with the multiport case
 
-> 
-> > 
-> > Signed-off-by: Fam Zheng <famz@redhat.com>
-> > ---
-> >  docs/qapi-code-gen.txt | 26 ++++++++++++++++++++++----
-> >  1 file changed, 22 insertions(+), 4 deletions(-)
-> > 
-> > +The use of '*' as a prefix to the name means the member is optional.
-> > +
-> > +The default initialization value of an optional argument should not be changed
-> > +between versions of QEMU unless the new default maintains backward
-> > +compatibility to the user-visible behavior of the old default.
-> 
-> Maybe worth adding:
-> 
-> With proper documentation, this policy still allows some flexibility;
-> for example, documenting that a default of 0 picks an optimal buffer
-> size allows one release to declare the optimal size at 512 while another
-> release declares the optimal size at 4096 - the user-visible behavior is
-> not the bytes used by the buffer, but the fact that the buffer was
-> optimal size.
+ hw/char/serial-pci.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-OK, will add this and your s-o-b in V3.
-
-Thanks,
-Fam
-
-> 
-> > +
-> > +On input structures (only mentioned in the 'data' side of a command), changing
-> > +from mandatory to optional is safe (older clients will supply the option, and
-> > +newer clients can benefit from the default); changing from optional to
-> > +mandatory is backwards incompatible (older clients may be omitting the option,
-> > +and must continue to work).
-> > +
-> > +On output structures (only mentioned in the 'returns' side of a command),
-> > +changing from mandatory to optional is in general unsafe (older clients may be
-> > +expecting the field, and could crash if it is missing), although it can be done
-> > +if the only way that the optional argument will be omitted is when it is
-> > +triggered by the presence of a new input flag to the command that older clients
-> > +don't know to send.  Changing from optional to mandatory is safe.
-> > +
-> > +A structure that is used in both input and output of various commands
-> > +must consider the backwards compatibility constraints of both directions
-> > +of use.
-> 
-> 
-> -- 
-> Eric Blake   eblake redhat com    +1-919-301-3266
-> Libvirt virtualization library http://libvirt.org
-> 
-
+diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
+index 991c99f..f3f5e07 100644
+--- a/hw/char/serial-pci.c
++++ b/hw/char/serial-pci.c
+@@ -60,6 +60,7 @@ static int serial_pci_init(PCIDevice *dev)
+         return -1;
+     }
+ 
++    pci->dev.config[PCI_CLASS_PROG] = 0x02; /* 16550 compatible */
+     pci->dev.config[PCI_INTERRUPT_PIN] = 0x01;
+     s->irq = pci_allocate_irq(&pci->dev);
+ 
+@@ -101,6 +102,7 @@ static int multi_serial_pci_init(PCIDevice *dev)
+     assert(pci->ports > 0);
+     assert(pci->ports <= PCI_SERIAL_MAX_PORTS);
+ 
++    pci->dev.config[PCI_CLASS_PROG] = 0x02; /* 16550 compatible */
+     pci->dev.config[PCI_INTERRUPT_PIN] = 0x01;
+     memory_region_init(&pci->iobar, OBJECT(pci), "multiserial", 8 * pci->ports);
+     pci_register_bar(&pci->dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &pci->iobar);
+-- 
+1.8.1.5
 
 
