@@ -1,50 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WhhXZ-00011j-S0
-	for mharc-qemu-trivial@gnu.org; Tue, 06 May 2014 11:44:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51003)
+	id 1WhqhT-0005xE-KB
+	for mharc-qemu-trivial@gnu.org; Tue, 06 May 2014 21:31:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51869)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WhhXU-0000uw-4H
-	for qemu-trivial@nongnu.org; Tue, 06 May 2014 11:44:21 -0400
+	(envelope-from <eblake@redhat.com>) id 1WhqhN-0005qC-Jb
+	for qemu-trivial@nongnu.org; Tue, 06 May 2014 21:31:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1WhhXO-00057S-Ug
-	for qemu-trivial@nongnu.org; Tue, 06 May 2014 11:44:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41149)
+	(envelope-from <eblake@redhat.com>) id 1WhqhI-0000MZ-MG
+	for qemu-trivial@nongnu.org; Tue, 06 May 2014 21:31:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:19339)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eblake@redhat.com>)
-	id 1WhhXE-00055g-J3; Tue, 06 May 2014 11:44:00 -0400
-Received: from int-mx02.intmail.prod.int.phx2.redhat.com
-	(int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s46FhwwZ029845
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 6 May 2014 11:43:58 -0400
-Received: from [10.3.113.141] (ovpn-113-141.phx2.redhat.com [10.3.113.141])
-	by int-mx02.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s46Fhv0w026166; Tue, 6 May 2014 11:43:57 -0400
-Message-ID: <5369033D.5060505@redhat.com>
-Date: Tue, 06 May 2014 09:43:57 -0600
+	id 1Whqh6-0008UL-Ft; Tue, 06 May 2014 21:30:48 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s471UZO1001137
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Tue, 6 May 2014 21:30:40 -0400
+Received: from [10.3.113.86] (ovpn-113-86.phx2.redhat.com [10.3.113.86])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s471UYUk013815; Tue, 6 May 2014 21:30:34 -0400
+Message-ID: <53698CBA.7040901@redhat.com>
+Date: Tue, 06 May 2014 19:30:34 -0600
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1399382220-14874-1-git-send-email-peter.maydell@linaro.org>
-	<5368F36B.3040804@redhat.com>
-	<CAFEAcA_muHezDUmdcvkEqp0pFmCBJ55kUXrSZkuUv05vxpJybw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_muHezDUmdcvkEqp0pFmCBJ55kUXrSZkuUv05vxpJybw@mail.gmail.com>
+To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
+References: <1399341953-14387-1-git-send-email-famz@redhat.com>
+In-Reply-To: <1399341953-14387-1-git-send-email-famz@redhat.com>
 X-Enigmail-Version: 1.6
 OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="20KhJ8sUQuhFnobkNOGw1tFwvEd3HBAsS"
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.12
+	boundary="e6K8aNGc0EInhOHVe9AptbpWb4URWQDO5"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, Don Slutz <dslutz@verizon.com>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Put tempfiles in
- subdir so we can clean up libtool files
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH v2] qapi: Document optional arguments'
+	backwards compatibility
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,69 +54,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 May 2014 15:44:21 -0000
+X-List-Received-Date: Wed, 07 May 2014 01:31:10 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---20KhJ8sUQuhFnobkNOGw1tFwvEd3HBAsS
+--e6K8aNGc0EInhOHVe9AptbpWb4URWQDO5
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-On 05/06/2014 08:53 AM, Peter Maydell wrote:
+On 05/05/2014 08:05 PM, Fam Zheng wrote:
+> Signed-off-by: Fam Zheng <famz@redhat.com>
+>=20
+> ---
+> v2: Employ the text suggested by Eric. (Thanks!)
 
->> # Create a (secure) tmp directory for tmp files.
->>
->> {
->>   tmp=3D`(umask 077 && mktemp -d "./confXXXXXX") 2>/dev/null` &&
->>   test -d "$tmp"
->> }  ||
->> {
->>   tmp=3D./conf$$-$RANDOM
->>   (umask 077 && mkdir "$tmp")
->> } || as_fn_error $? "cannot create a temporary directory in ." "$LINEN=
-O" 5
->> ac_tmp=3D$tmp
->=20
-> Yuck.
->=20
->> The use of $$ and $RANDOM is safe (even on shells that lack $RANDOM)
->> because of the fact that mkdir is atomic and the umask is correctly se=
-t
->> prior to the mkdir.
->=20
-> I dislike the use of $RANDOM, because it means we behave
-> inconsistently. If it's OK for $RANDOM to expand to "" then we
-> should just not use it at all, because that's OK and the same
-> everywhere.
+Since much of it is my wording, it's probably better to credit me as an
+author, by adding:
 
-It's okay for $RANDOM to expand to "" in the fallback code, for the
-platforms that lack mktemp(1); most developers are on a platform that
-have mktemp.  The use of $RANDOM makes it harder for an attacker to
-pre-create a competing file by the same name, but does not add any
-security; so omitting $RANDOM for the fallback path doesn't hurt if you
-are that bothered by seeing it present in a dash script.
+Signed-off-by: Eric Blake <eblake@redhat.com>
 
 >=20
-> Similarly, if it's OK not to use mktemp on some systems,
-> we should use the same non-mktemp code everywhere.
-
-The fallback is not ideal, but tolerable.  It's still better to try and
-use mktemp where it exists.
-
+> Signed-off-by: Fam Zheng <famz@redhat.com>
+> ---
+>  docs/qapi-code-gen.txt | 26 ++++++++++++++++++++++----
+>  1 file changed, 22 insertions(+), 4 deletions(-)
 >=20
-> We could sidestep this rubbish by not trying to put our temp
-> files in /tmp/, and instead just put them in the build directory
-> (ie ./conf-temps/ or something similar, which we blow away
-> and recreate every time).
+> +The use of '*' as a prefix to the name means the member is optional.
+> +
+> +The default initialization value of an optional argument should not be=
+ changed
+> +between versions of QEMU unless the new default maintains backward
+> +compatibility to the user-visible behavior of the old default.
 
-Yes, using a different location for temporary files and avoiding /tmp
-might also work.
+Maybe worth adding:
+
+With proper documentation, this policy still allows some flexibility;
+for example, documenting that a default of 0 picks an optimal buffer
+size allows one release to declare the optimal size at 512 while another
+release declares the optimal size at 4096 - the user-visible behavior is
+not the bytes used by the buffer, but the fact that the buffer was
+optimal size.
+
+> +
+> +On input structures (only mentioned in the 'data' side of a command), =
+changing
+> +from mandatory to optional is safe (older clients will supply the opti=
+on, and
+> +newer clients can benefit from the default); changing from optional to=
+
+> +mandatory is backwards incompatible (older clients may be omitting the=
+ option,
+> +and must continue to work).
+> +
+> +On output structures (only mentioned in the 'returns' side of a comman=
+d),
+> +changing from mandatory to optional is in general unsafe (older client=
+s may be
+> +expecting the field, and could crash if it is missing), although it ca=
+n be done
+> +if the only way that the optional argument will be omitted is when it =
+is
+> +triggered by the presence of a new input flag to the command that olde=
+r clients
+> +don't know to send.  Changing from optional to mandatory is safe.
+> +
+> +A structure that is used in both input and output of various commands
+> +must consider the backwards compatibility constraints of both directio=
+ns
+> +of use.
+
 
 --=20
 Eric Blake   eblake redhat com    +1-919-301-3266
 Libvirt virtualization library http://libvirt.org
 
 
---20KhJ8sUQuhFnobkNOGw1tFwvEd3HBAsS
+--e6K8aNGc0EInhOHVe9AptbpWb4URWQDO5
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
@@ -128,14 +138,14 @@ Version: GnuPG v1
 Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
 Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEcBAEBCAAGBQJTaQM9AAoJEKeha0olJ0NqBu0IAIyJD/O0iBcdHa/jtYO6r0b1
-VPD/x73CjBPXjOywzYhfvwrZadVBS6hC4fTieurKUOJH2SHKjl54p74WuqR7DIxJ
-QsuuPbLniMExTJKv9SzXD5w1eU4gWfSfUWbbcrJFvs2HjqwOR9biw+PRwutxnuTS
-InV3E4N0Syqh8i1MdZkcBUJUyYLkcYo/Fxs1To9XwGyY9NZq8MgQzAEirluaDLNq
-EyWEYfdNEfTJWBr9u7LgRbzShh6+3U414VxmPyqG15whYqWssLv1Pwy4XHvfLCRs
-/itL8Nz72xyZBYS9XiTNZ7oX6CeMVehPUGbUVvlnAzjGtNbTMeQe3HH5fuihWFA=
-=YBtU
+iQEcBAEBCAAGBQJTaYy6AAoJEKeha0olJ0NqtEAH/1Ypq0t+3JMIpO/Ubvh4TnYX
+fmm/SEZPOhuUrOAivXSY88pQgFpq8mOvKWndZmAXMPkhlPZLGFlffB6WAP7gGoXj
+xAxJO1WtinMbWAq49kx8scHEidg/lTSa1i4j5ArNHJY3QRB+2wxFsXmSpWrvJ9h1
+qrFXTS7nHzmc1WgapzSOmiwx2SOw2Zy87Ju3ojIpE7jMf/zquBMg4NFWoxuwVoM9
+LGdeYK8sMx1CH/kPHK75nwpDHYfz3Xjle/6Pq3WYXuUswzM79DbO57yeGe82Fea7
+ISPlcC59a6G3BfY0mCZfTcKSem7GZWk5WXW5DXXmuz6iJ3SW8Vd4lZg506scXFM=
+=oAFg
 -----END PGP SIGNATURE-----
 
---20KhJ8sUQuhFnobkNOGw1tFwvEd3HBAsS--
+--e6K8aNGc0EInhOHVe9AptbpWb4URWQDO5--
 
