@@ -1,43 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wi3iG-0006Zb-T3
-	for mharc-qemu-trivial@gnu.org; Wed, 07 May 2014 11:24:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37144)
+	id 1Wi5Fy-0000RR-Ij
+	for mharc-qemu-trivial@gnu.org; Wed, 07 May 2014 13:03:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39379)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1Wi3i9-0006ST-Ry
-	for qemu-trivial@nongnu.org; Wed, 07 May 2014 11:24:51 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wi5Fr-0000II-Ct
+	for qemu-trivial@nongnu.org; Wed, 07 May 2014 13:03:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1Wi3i3-00067m-NY
-	for qemu-trivial@nongnu.org; Wed, 07 May 2014 11:24:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:24719)
+	(envelope-from <mjt@tls.msk.ru>) id 1Wi5Fm-0001RR-F1
+	for qemu-trivial@nongnu.org; Wed, 07 May 2014 13:03:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44699)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1Wi3hr-00065t-59; Wed, 07 May 2014 11:24:27 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s47FOPes022198
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Wed, 7 May 2014 11:24:26 -0400
-Received: from localhost (ovpn-113-48.phx2.redhat.com [10.3.113.48])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s47FOO76012838; Wed, 7 May 2014 11:24:24 -0400
-Date: Wed, 7 May 2014 11:24:24 -0400
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Fam Zheng <famz@redhat.com>
-Message-ID: <20140507112424.4727b05d@redhat.com>
-In-Reply-To: <1399427861-26440-1-git-send-email-famz@redhat.com>
-References: <1399427861-26440-1-git-send-email-famz@redhat.com>
-Organization: Red Hat
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Wi5Fc-0001Pn-2Y; Wed, 07 May 2014 13:03:24 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id A00F940AB0;
+	Wed,  7 May 2014 21:03:22 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 89B59674;
+	Wed,  7 May 2014 21:03:22 +0400 (MSK)
+Received: (nullmailer pid 22589 invoked by uid 1000);
+	Wed, 07 May 2014 17:03:22 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Wed,  7 May 2014 21:03:22 +0400
+Message-Id: <1399482202-22544-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
-	Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH v3] qapi: Document optional arguments'
- backwards compatibility
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 00/21] Trivial patches for 2014-05-07
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,69 +43,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 May 2014 15:24:52 -0000
+X-List-Received-Date: Wed, 07 May 2014 17:03:44 -0000
 
-On Wed,  7 May 2014 09:57:41 +0800
-Fam Zheng <famz@redhat.com> wrote:
+Another pull request for trivial patches.  It is the same as previous
+(2014-05-05) but without the problematic Makefile patch.
 
-> From: Eric Blake <eblake@redhat.com>
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> Signed-off-by: Fam Zheng <famz@redhat.com>
+So I'm not resending all the individual patches, as they're the same.
 
-Applied to the qmp branch, thanks.
+Thanks,
 
-> 
-> ---
-> v3: More text from Eric.
-> 
-> Signed-off-by: Fam Zheng <famz@redhat.com>
-> ---
->  docs/qapi-code-gen.txt | 32 ++++++++++++++++++++++++++++----
->  1 file changed, 28 insertions(+), 4 deletions(-)
-> 
-> diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
-> index d78921f..a6cba0a 100644
-> --- a/docs/qapi-code-gen.txt
-> +++ b/docs/qapi-code-gen.txt
-> @@ -49,10 +49,34 @@ example of a complex type is:
->   { 'type': 'MyType',
->     'data': { 'member1': 'str', 'member2': 'int', '*member3': 'str' } }
->  
-> -The use of '*' as a prefix to the name means the member is optional.  Optional
-> -members should always be added to the end of the dictionary to preserve
-> -backwards compatibility.
-> -
-> +The use of '*' as a prefix to the name means the member is optional.
-> +
-> +The default initialization value of an optional argument should not be changed
-> +between versions of QEMU unless the new default maintains backward
-> +compatibility to the user-visible behavior of the old default.
-> +
-> +With proper documentation, this policy still allows some flexibility; for
-> +example, documenting that a default of 0 picks an optimal buffer size allows
-> +one release to declare the optimal size at 512 while another release declares
-> +the optimal size at 4096 - the user-visible behavior is not the bytes used by
-> +the buffer, but the fact that the buffer was optimal size.
-> +
-> +On input structures (only mentioned in the 'data' side of a command), changing
-> +from mandatory to optional is safe (older clients will supply the option, and
-> +newer clients can benefit from the default); changing from optional to
-> +mandatory is backwards incompatible (older clients may be omitting the option,
-> +and must continue to work).
-> +
-> +On output structures (only mentioned in the 'returns' side of a command),
-> +changing from mandatory to optional is in general unsafe (older clients may be
-> +expecting the field, and could crash if it is missing), although it can be done
-> +if the only way that the optional argument will be omitted is when it is
-> +triggered by the presence of a new input flag to the command that older clients
-> +don't know to send.  Changing from optional to mandatory is safe.
-> +
-> +A structure that is used in both input and output of various commands
-> +must consider the backwards compatibility constraints of both directions
-> +of use.
->  
->  A complex type definition can specify another complex type as its base.
->  In this case, the fields of the base type are included as top-level fields
+/mjt
 
+The following changes since commit 8d1dc5d188b84a2b2aeb9bd39fddb3d2c67be6=
+0c:
+
+  Merge remote-tracking branch 'remotes/cohuck/tags/s390x-20140507' into =
+staging (2014-05-07 16:06:38 +0100)
+
+are available in the git repository at:
+
+
+  git://git.corpit.ru/qemu.git tags/trivial-patches-2014-05-07
+
+for you to fetch changes up to 8e25c274ae5830cf879fa5d2d7f98f4d6f5aecfa:
+
+  libcacard: remove unnecessary EOL from debug prints (2014-05-07 21:00:4=
+4 +0400)
+
+----------------------------------------------------------------
+trivial patches for 2014-05-07
+
+----------------------------------------------------------------
+Alon Levy (1):
+      libcacard: remove unnecessary EOL from debug prints
+
+Chen Gang (1):
+      arch_init: Be sure of only one exit entry with DPRINTF() for ram_lo=
+ad()
+
+Fam Zheng (1):
+      docs/memory.txt: Fix document on MMIO operations
+
+Hani Benhabiles (1):
+      readline: Sort completions before printing them.
+
+Jim Meyering (1):
+      xen: remove unused global, xen_xcg
+
+Michael Tokarev (5):
+      configure: remove bashism
+      do not call g_thread_init() for glib >=3D 2.31
+      libcacard: replace pstrcpy() with memcpy()
+      qmp: report path ambiguity error
+      readline: use g_strndup instead of open-coding it
+
+Peter Maydell (1):
+      tests/tcg: Fix compilation of test_path
+
+Stefan Hajnoczi (1):
+      glib: move g_poll() replacement into glib-compat.h
+
+Stefan Weil (9):
+      qga: Fix typo (plural) in comment
+      hw/9pfs: Add missing 'static' attributes
+      hw/mips: Add missing 'static' and 'const' attributes
+      hw/s390x: Add missing 'static' attribute
+      monitor: Add missing 'static' attribute
+      ui: Add missing 'static' attribute
+      qemu-timer: Add missing 'static' attribute
+      hw: Add missing 'static' attributes
+      hw/9pfs: Add include file for exported symbol
+
+ arch_init.c                |   12 ++++++++----
+ configure                  |    2 +-
+ coroutine-gthread.c        |    7 ++-----
+ docs/memory.txt            |   10 +++++-----
+ hw/9pfs/virtio-9p-local.c  |    1 +
+ hw/9pfs/virtio-9p-synth.c  |    2 +-
+ hw/core/qdev.c             |    4 ++--
+ hw/mips/mips_fulong2e.c    |    2 +-
+ hw/net/cadence_gem.c       |    2 +-
+ hw/net/vmxnet3.c           |    6 +++---
+ hw/net/xgmac.c             |    2 +-
+ hw/ppc/spapr_iommu.c       |    2 +-
+ hw/ppc/spapr_rtas.c        |    2 +-
+ hw/s390x/event-facility.c  |    2 +-
+ hw/scsi/scsi-bus.c         |    2 +-
+ hw/xen/xen_backend.c       |    1 -
+ include/exec/memory.h      |    2 +-
+ include/glib-compat.h      |   12 ++++++++++++
+ include/qemu-common.h      |   12 ------------
+ libcacard/vcard_emul_nss.c |    3 ++-
+ libcacard/vreader.c        |    4 ++--
+ monitor.c                  |    2 +-
+ qemu-timer.c               |    2 +-
+ qga/main.c                 |    2 +-
+ qmp.c                      |    6 +++++-
+ tests/tcg/Makefile         |    2 --
+ tests/tcg/test_path.c      |    7 -------
+ ui/console.c               |    2 +-
+ util/osdep.c               |   21 +++++++++------------
+ util/readline.c            |   11 ++++++++---
+ 30 files changed, 73 insertions(+), 74 deletions(-)
 
