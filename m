@@ -1,37 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wi5Fy-0000RR-Ij
-	for mharc-qemu-trivial@gnu.org; Wed, 07 May 2014 13:03:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39379)
+	id 1Wi5Hg-0001j5-38
+	for mharc-qemu-trivial@gnu.org; Wed, 07 May 2014 13:05:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39808)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wi5Fr-0000II-Ct
-	for qemu-trivial@nongnu.org; Wed, 07 May 2014 13:03:44 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wi5HZ-0001g4-Er
+	for qemu-trivial@nongnu.org; Wed, 07 May 2014 13:05:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wi5Fm-0001RR-F1
-	for qemu-trivial@nongnu.org; Wed, 07 May 2014 13:03:39 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:44699)
+	(envelope-from <mjt@tls.msk.ru>) id 1Wi5HU-0002D6-12
+	for qemu-trivial@nongnu.org; Wed, 07 May 2014 13:05:25 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40895)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Wi5Fc-0001Pn-2Y; Wed, 07 May 2014 13:03:24 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A00F940AB0;
-	Wed,  7 May 2014 21:03:22 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 89B59674;
-	Wed,  7 May 2014 21:03:22 +0400 (MSK)
-Received: (nullmailer pid 22589 invoked by uid 1000);
-	Wed, 07 May 2014 17:03:22 -0000
+	id 1Wi5HI-00028O-Nu; Wed, 07 May 2014 13:05:08 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id D94CF40AB0;
+	Wed,  7 May 2014 21:05:07 +0400 (MSK)
+Message-ID: <536A67C3.1010700@msgid.tls.msk.ru>
+Date: Wed, 07 May 2014 21:05:07 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Wed,  7 May 2014 21:03:22 +0400
-Message-Id: <1399482202-22544-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1399312923-24129-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<CAFEAcA-5JGOZDYR5ApPs-tROSh+_CnPB1Zxw3H8CaMgJseMtvQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-5JGOZDYR5ApPs-tROSh+_CnPB1Zxw3H8CaMgJseMtvQ@mail.gmail.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 00/21] Trivial patches for 2014-05-07
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/22] Trivial patches for
+	2014-05-05
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,106 +47,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 May 2014 17:03:44 -0000
+X-List-Received-Date: Wed, 07 May 2014 17:05:31 -0000
 
-Another pull request for trivial patches.  It is the same as previous
-(2014-05-05) but without the problematic Makefile patch.
+07.05.2014 16:50, Peter Maydell wrote:
 
-So I'm not resending all the individual patches, as they're the same.
+> Hi; I'm afraid this pull breaks the build of the A64 disassembler:
+> 
+> c++ -I/home/petmay01/linaro/qemu-for-merges/tcg
+> -I/home/petmay01/linaro/qemu-for-merges/tcg/i386
+> -I/home/petmay01/linaro/qemu-for-merges/linux-headers
+> -I/home/petmay01/linaro/qemu-for-merges/build/alldbg/linux-headers -I.
+> -I/home/petmay01/linaro/qemu-for-merges
+> -I/home/petmay01/linaro/qemu-for-merges/include
+> -I/home/petmay01/linaro/qemu-for-merges/libcacard
+> -I/home/petmay01/linaro/qemu-for-merges/disas -Idisas
+> -D__STDC_LIMIT_MACROS -Werror -fPIE -DPIE -m64 -D_GNU_SOURCE
+> -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wall -Wundef
+> -Wwrite-strings -fno-strict-aliasing -fno-common -Wendif-labels
+> -Wmissing-include-dirs -Wempty-body -Wformat-security -Wformat-y2k
+> -Winit-self -Wignored-qualifiers -Wtype-limits -fstack-protector-all
+> -I/usr/include/p11-kit-1 -I/usr/include/libpng12 -I/usr/include/nss
+> -I/usr/include/nspr -pthread -I/usr/include/glib-2.0
+> -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/pixman-1
+> -I/home/petmay01/linaro/qemu-for-merges/tests -MMD -MP -MT
+> disas/arm-a64.o -MF disas/arm-a64.d -pthread -I/usr/include/glib-2.0
+> -I/usr/lib/x86_64-linux-gnu/glib-2.0/include   -g  -c -o
+> disas/arm-a64.o /home/petmay01/linaro/qemu-for-merges/disas/arm-a64.cc
+> /home/petmay01/linaro/qemu-for-merges/disas/arm-a64.cc:20:28: fatal
+> error: a64/disasm-a64.h: No such file or directory
+> compilation terminated.
+> make: *** [disas/arm-a64.o] Error 1
+> 
+>>       Makefiles: convert some obj-specific CFLAGS to use new foo.o-cflags syntax
+> 
+> git bisect says it's this makefile change.
+> 
+> I think the problem here is that the rune for applying obj-specific
+> CFLAGS is only in the Rules.make line for %.o: %.c, and not in
+> the lines for building a .o file from a .cc, .cpp or .m file. That
+> should probably be fixed.
 
-Thanks,
+Interesting.  It looks like I should add C++ compiler to my test environment,
+because I really verified the change and it builds here just fine, but it does
+not detect C++ so does not try to build C++ files.
+
+Lovely.
+
+I'm resending the patchset without this patch, will work on it more.
+
+Thank you, and sorry for the noize.
 
 /mjt
-
-The following changes since commit 8d1dc5d188b84a2b2aeb9bd39fddb3d2c67be6=
-0c:
-
-  Merge remote-tracking branch 'remotes/cohuck/tags/s390x-20140507' into =
-staging (2014-05-07 16:06:38 +0100)
-
-are available in the git repository at:
-
-
-  git://git.corpit.ru/qemu.git tags/trivial-patches-2014-05-07
-
-for you to fetch changes up to 8e25c274ae5830cf879fa5d2d7f98f4d6f5aecfa:
-
-  libcacard: remove unnecessary EOL from debug prints (2014-05-07 21:00:4=
-4 +0400)
-
-----------------------------------------------------------------
-trivial patches for 2014-05-07
-
-----------------------------------------------------------------
-Alon Levy (1):
-      libcacard: remove unnecessary EOL from debug prints
-
-Chen Gang (1):
-      arch_init: Be sure of only one exit entry with DPRINTF() for ram_lo=
-ad()
-
-Fam Zheng (1):
-      docs/memory.txt: Fix document on MMIO operations
-
-Hani Benhabiles (1):
-      readline: Sort completions before printing them.
-
-Jim Meyering (1):
-      xen: remove unused global, xen_xcg
-
-Michael Tokarev (5):
-      configure: remove bashism
-      do not call g_thread_init() for glib >=3D 2.31
-      libcacard: replace pstrcpy() with memcpy()
-      qmp: report path ambiguity error
-      readline: use g_strndup instead of open-coding it
-
-Peter Maydell (1):
-      tests/tcg: Fix compilation of test_path
-
-Stefan Hajnoczi (1):
-      glib: move g_poll() replacement into glib-compat.h
-
-Stefan Weil (9):
-      qga: Fix typo (plural) in comment
-      hw/9pfs: Add missing 'static' attributes
-      hw/mips: Add missing 'static' and 'const' attributes
-      hw/s390x: Add missing 'static' attribute
-      monitor: Add missing 'static' attribute
-      ui: Add missing 'static' attribute
-      qemu-timer: Add missing 'static' attribute
-      hw: Add missing 'static' attributes
-      hw/9pfs: Add include file for exported symbol
-
- arch_init.c                |   12 ++++++++----
- configure                  |    2 +-
- coroutine-gthread.c        |    7 ++-----
- docs/memory.txt            |   10 +++++-----
- hw/9pfs/virtio-9p-local.c  |    1 +
- hw/9pfs/virtio-9p-synth.c  |    2 +-
- hw/core/qdev.c             |    4 ++--
- hw/mips/mips_fulong2e.c    |    2 +-
- hw/net/cadence_gem.c       |    2 +-
- hw/net/vmxnet3.c           |    6 +++---
- hw/net/xgmac.c             |    2 +-
- hw/ppc/spapr_iommu.c       |    2 +-
- hw/ppc/spapr_rtas.c        |    2 +-
- hw/s390x/event-facility.c  |    2 +-
- hw/scsi/scsi-bus.c         |    2 +-
- hw/xen/xen_backend.c       |    1 -
- include/exec/memory.h      |    2 +-
- include/glib-compat.h      |   12 ++++++++++++
- include/qemu-common.h      |   12 ------------
- libcacard/vcard_emul_nss.c |    3 ++-
- libcacard/vreader.c        |    4 ++--
- monitor.c                  |    2 +-
- qemu-timer.c               |    2 +-
- qga/main.c                 |    2 +-
- qmp.c                      |    6 +++++-
- tests/tcg/Makefile         |    2 --
- tests/tcg/test_path.c      |    7 -------
- ui/console.c               |    2 +-
- util/osdep.c               |   21 +++++++++------------
- util/readline.c            |   11 ++++++++---
- 30 files changed, 73 insertions(+), 74 deletions(-)
 
