@@ -1,38 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WiM6G-0001lH-1G
-	for mharc-qemu-trivial@gnu.org; Thu, 08 May 2014 07:02:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49329)
+	id 1WiNdV-0006at-UO
+	for mharc-qemu-trivial@gnu.org; Thu, 08 May 2014 08:41:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42043)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WiM69-0001dD-Cr
-	for qemu-trivial@nongnu.org; Thu, 08 May 2014 07:02:50 -0400
+	(envelope-from <famz@redhat.com>) id 1WiNdQ-0006RM-0L
+	for qemu-trivial@nongnu.org; Thu, 08 May 2014 08:41:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WiM64-0002qd-Pk
-	for qemu-trivial@nongnu.org; Thu, 08 May 2014 07:02:45 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57713)
+	(envelope-from <famz@redhat.com>) id 1WiNdL-0002qJ-7A
+	for qemu-trivial@nongnu.org; Thu, 08 May 2014 08:41:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34097)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WiM5v-0002nz-7L; Thu, 08 May 2014 07:02:31 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9E1F540BB3;
-	Thu,  8 May 2014 15:02:29 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 86814672;
-	Thu,  8 May 2014 15:02:29 +0400 (MSK)
-Received: (nullmailer pid 16236 invoked by uid 1000);
-	Thu, 08 May 2014 11:02:29 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Thu,  8 May 2014 15:02:29 +0400
-Message-Id: <1399546949-16197-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <famz@redhat.com>)
+	id 1WiNdB-0002pB-H1; Thu, 08 May 2014 08:40:57 -0400
+Received: from int-mx12.intmail.prod.int.phx2.redhat.com
+	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s48Ceunp004217
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Thu, 8 May 2014 08:40:56 -0400
+Received: from localhost (dhcp-14-247.nay.redhat.com [10.66.14.247])
+	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s48CetNt023176; Thu, 8 May 2014 08:40:55 -0400
+Date: Thu, 8 May 2014 20:41:08 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20140508124108.GB23579@T430.nay.redhat.com>
+References: <1399546949-16197-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1399546949-16197-1-git-send-email-mjt@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: Fam Zheng <famz@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, Alon Levy <alevy@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Alon Levy <alevy@redhat.com>, qemu-devel@nongnu.org,
 	Hollis Blanchard <hollis@penguinppc.org>
-Subject: [Qemu-trivial] [PATCH] Makefile.target: use $(INSTALL_PROG) for
-	installing, not $(INSTALL)
+Subject: Re: [Qemu-trivial] [PATCH] Makefile.target: use $(INSTALL_PROG) for
+ installing, not $(INSTALL)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,39 +49,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 May 2014 11:02:50 -0000
+X-List-Received-Date: Thu, 08 May 2014 12:41:16 -0000
 
-$(INSTALL_PROG) is evaluated to libtool if using libtool, while
-$(INSTALL) is not.  Use $(INSTALL_PROG) so that libtool is used
-with target too when necessary.  This allows, for example, to
-link qemu with shared libcacard.
+On Thu, 05/08 15:02, Michael Tokarev wrote:
+> $(INSTALL_PROG) is evaluated to libtool if using libtool, while
+> $(INSTALL) is not.  Use $(INSTALL_PROG) so that libtool is used
+> with target too when necessary.  This allows, for example, to
+> link qemu with shared libcacard.
+> 
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> Cc: Fam Zheng <famz@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Alon Levy <alevy@redhat.com>
+> Cc: qemu-trivial@nongnu.org
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Fam Zheng <famz@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Alon Levy <alevy@redhat.com>
-Cc: qemu-trivial@nongnu.org
---
-This is done on top of previous patch (using $(STRIP)), but it can
-be used by its own.
----
- Makefile.target |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Fam Zheng <famz@redhat.com>
 
-diff --git a/Makefile.target b/Makefile.target
-index 8de8b12..3b75ade 100644
---- a/Makefile.target
-+++ b/Makefile.target
-@@ -194,7 +194,7 @@ endif
- 
- install: all
- ifneq ($(PROGS),)
--	$(INSTALL) -m 755 $(PROGS) "$(DESTDIR)$(bindir)"
-+	$(INSTALL_PROG) $(PROGS) "$(DESTDIR)$(bindir)"
- ifneq ($(STRIP),)
- 	$(STRIP) $(PROGS:%="$(DESTDIR)$(bindir)/%")
- endif
--- 
-1.7.10.4
-
+> --
+> This is done on top of previous patch (using $(STRIP)), but it can
+> be used by its own.
+> ---
+>  Makefile.target |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Makefile.target b/Makefile.target
+> index 8de8b12..3b75ade 100644
+> --- a/Makefile.target
+> +++ b/Makefile.target
+> @@ -194,7 +194,7 @@ endif
+>  
+>  install: all
+>  ifneq ($(PROGS),)
+> -	$(INSTALL) -m 755 $(PROGS) "$(DESTDIR)$(bindir)"
+> +	$(INSTALL_PROG) $(PROGS) "$(DESTDIR)$(bindir)"
+>  ifneq ($(STRIP),)
+>  	$(STRIP) $(PROGS:%="$(DESTDIR)$(bindir)/%")
+>  endif
+> -- 
+> 1.7.10.4
+> 
 
