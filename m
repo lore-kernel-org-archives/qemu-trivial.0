@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wiry1-0006tT-IT
-	for mharc-qemu-trivial@gnu.org; Fri, 09 May 2014 17:04:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34842)
+	id 1WizjK-0002ng-54
+	for mharc-qemu-trivial@gnu.org; Sat, 10 May 2014 01:21:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37523)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Wirxp-0006Y4-Ca
-	for qemu-trivial@nongnu.org; Fri, 09 May 2014 17:04:22 -0400
+	(envelope-from <tamlokveer@gmail.com>) id 1WiuZn-0002N9-Ft
+	for qemu-trivial@nongnu.org; Fri, 09 May 2014 19:51:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Wirxj-0005fS-Mo
-	for qemu-trivial@nongnu.org; Fri, 09 May 2014 17:04:17 -0400
-Received: from mail-ee0-x232.google.com ([2a00:1450:4013:c00::232]:38662)
+	(envelope-from <tamlokveer@gmail.com>) id 1WiuZe-0001DL-Eo
+	for qemu-trivial@nongnu.org; Fri, 09 May 2014 19:51:39 -0400
+Received: from mail-pa0-x22f.google.com ([2607:f8b0:400e:c03::22f]:43513)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1WirxZ-0005c7-Dc; Fri, 09 May 2014 17:04:01 -0400
-Received: by mail-ee0-f50.google.com with SMTP id e51so2983472eek.23
-	for <multiple recipients>; Fri, 09 May 2014 14:04:00 -0700 (PDT)
+	(envelope-from <tamlokveer@gmail.com>)
+	id 1WiuZL-0001Av-Vq; Fri, 09 May 2014 19:51:12 -0400
+Received: by mail-pa0-f47.google.com with SMTP id lf10so2480042pab.6
+	for <multiple recipients>; Fri, 09 May 2014 16:51:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=ClTjfM2cmRF1bqDG4zJarK3SZWNP6y/jsNZxptwC0SE=;
-	b=J4HHOSTrbg7cGU9KEIi3Pm6qY/ajuQIDVmg3m5NR+Q+/RwY/zxiC7kw1m2FUyEtoZN
-	aNHNIDLx0tQa5sSPxYI9Div4EgLi1lZZooKdn+sXBkZNVwiRqoaSmFqZxnMQT/VArzQ8
-	mkgFei4nIbZqcLRjpsrEindeoaoIHzvo1fbv6JbJT2+24JJr+m54Djcf62vtIdIph0Tk
-	zyNpVegtxlVZOTiEmyhFwNRItB6ACm1GIuw3RNbiBEP0tsFCPXUZD5EWt8i1FsZvCUWL
-	2fKnfBIObwnLdey26wMfX4UaP7J+3qusA/r1lz8dp/VolDkyzZvbg+WdbOiZqe87H7oi
-	/8ag==
-X-Received: by 10.14.4.70 with SMTP id 46mr7091263eei.116.1399669440529;
-	Fri, 09 May 2014 14:04:00 -0700 (PDT)
-Received: from playground.lan (net-37-117-141-58.cust.vodafonedsl.it.
-	[37.117.141.58])
-	by mx.google.com with ESMTPSA id u46sm13823876eel.1.2014.05.09.14.03.58
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=u75sZzqorKReC39KBufMW9y1FCX2Ny38fOoSM4etyjU=;
+	b=pm7UBqGps6JqcVWOBoSDtmOr9jp2vxh5TeBfyyRSd+greEay7XiKyp9g7rLMhEKs3h
+	BGoC9pFppzybqlgEZNOhUZmn0c9RRPR89RFvNeIoFh2Cgx2c2dc+mI9Cs1j5CNq6KKQS
+	mttlfKIqZC9tdW6nC5vTzuVgrs6frr1UwcJ6FXLwT8L2mYHAHTyDYJHS1xrujXwVBADx
+	kqJ4EcDrV+V1NaKOmYoYxvoxXXlizv5L+dr+BueTiXdkXDZqVPsC5fzhL1PqDuyCVR7Q
+	XhYnRTzFGP6tUnfhCTnkbJ9qH1AIjZpqPbY+euZ5nGw2rQ75liD0IYNWWL4XC+gKRcyq
+	Ur0w==
+X-Received: by 10.66.180.168 with SMTP id dp8mr26172462pac.100.1399679470391; 
+	Fri, 09 May 2014 16:51:10 -0700 (PDT)
+Received: from localhost.localdomain ([162.105.146.101])
+	by mx.google.com with ESMTPSA id op3sm9623456pbc.40.2014.05.09.16.51.08
 	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 09 May 2014 14:03:59 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Fri, 09 May 2014 16:51:09 -0700 (PDT)
+From: Le Tan <tamlokveer@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Fri,  9 May 2014 23:03:39 +0200
-Message-Id: <1399669424-29676-6-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <1399669424-29676-1-git-send-email-pbonzini@redhat.com>
-References: <1399669424-29676-1-git-send-email-pbonzini@redhat.com>
+Date: Sat, 10 May 2014 07:55:18 +0800
+Message-Id: <cover.1399641611.git.tamlokveer@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <y>
+References: <y>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4013:c00::232
-Cc: qemu-trivial@nongnu.org, Fam Zheng <famz@redhat.com>, mjt@tls.msk.ru,
-	Alon Levy <alevy@redhat.com>
-Subject: [Qemu-trivial] [PULL 05/10] Makefile.target: use $(INSTALL_PROG)
-	for installing, not $(INSTALL)
+X-Received-From: 2607:f8b0:400e:c03::22f
+X-Mailman-Approved-At: Sat, 10 May 2014 01:21:49 -0400
+Cc: qemu-trivial@nongnu.org, jan.kiszka@web.de, afaerber@suse.de,
+	Le Tan <tamlokveer@gmail.com>
+Subject: [Qemu-trivial] [PATCH 0/4] replace some fprintf(stderr,
+	...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,43 +56,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 May 2014 21:04:22 -0000
+X-List-Received-Date: Fri, 09 May 2014 23:51:48 -0000
 
-From: Michael Tokarev <mjt@tls.msk.ru>
+This series of patches replaces some more occurrences of fprintf(stderr, ...)
+with error_report() and removes the trailing "\n". Some of them are not changed
+because I am not sure if they should be changed. There are some inconsistency
+while dealing with macros that involves fprintf(stderr,...), that is, some of
+them remain the same while some are changed to error_report().
+I have 43 more patches (most of them touch files in hw/) and would send them
+out once the first 4 patches are fine.
 
-$(INSTALL_PROG) is evaluated to libtool if using libtool, while
-$(INSTALL) is not.  Use $(INSTALL_PROG) so that libtool is used
-with target too when necessary.  This allows, for example, to
-link qemu with shared libcacard.
+Le Tan (4):
+  arch_init: replace fprintf(stderr,...) with error_report() in
+    arch_init.c
+  audio: replace fprintf(stderr,...) with error_report() in audio
+  block: replace fprintf(stderr,...) with error_report() in block/
+  bsd-user: replace fprintf(stderr,...) with error_report()
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Fam Zheng <famz@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Alon Levy <alevy@redhat.com>
-Cc: qemu-trivial@nongnu.org
---
-This is done on top of previous patch (using $(STRIP)), but it can
-be used by its own.
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- Makefile.target | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch_init.c            |   36 ++++++++-------
+ audio/spiceaudio.c     |    2 +-
+ audio/wavcapture.c     |    4 +-
+ block-migration.c      |    4 +-
+ block.c                |    4 +-
+ block/linux-aio.c      |    4 +-
+ block/nbd-client.h     |    2 +-
+ block/qcow2-cluster.c  |    4 +-
+ block/qcow2-refcount.c |  114 ++++++++++++++++++++++++------------------------
+ block/qcow2.c          |   16 +++----
+ block/quorum.c         |    4 +-
+ block/raw-posix.c      |    8 ++--
+ block/raw-win32.c      |    6 +--
+ block/ssh.c            |    4 +-
+ block/vdi.c            |   14 +++---
+ block/vmdk.c           |   21 ++++-----
+ block/vpc.c            |    4 +-
+ block/vvfat.c          |  108 ++++++++++++++++++++++-----------------------
+ blockdev.c             |    6 +--
+ bsd-user/bsdload.c     |    2 +-
+ bsd-user/elfload.c     |    2 +-
+ bsd-user/main.c        |   14 +++---
+ 22 files changed, 189 insertions(+), 194 deletions(-)
 
-diff --git a/Makefile.target b/Makefile.target
-index 8fc606f..9986047 100644
---- a/Makefile.target
-+++ b/Makefile.target
-@@ -183,7 +183,7 @@ endif
- 
- install: all
- ifneq ($(PROGS),)
--	$(INSTALL) -m 755 $(PROGS) "$(DESTDIR)$(bindir)"
-+	$(INSTALL_PROG) $(PROGS) "$(DESTDIR)$(bindir)"
- ifneq ($(STRIP),)
- 	$(STRIP) $(PROGS:%="$(DESTDIR)$(bindir)/%")
- endif
 -- 
-1.8.3.1
-
+1.7.9.5
 
 
