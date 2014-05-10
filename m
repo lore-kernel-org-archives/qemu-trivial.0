@@ -1,54 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wizjd-0003Kg-Mn
-	for mharc-qemu-trivial@gnu.org; Sat, 10 May 2014 01:22:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37722)
+	id 1Wj6kw-0003Ip-OO
+	for mharc-qemu-trivial@gnu.org; Sat, 10 May 2014 08:51:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43452)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tamlokveer@gmail.com>) id 1WiuaY-0003PX-2f
-	for qemu-trivial@nongnu.org; Fri, 09 May 2014 19:52:35 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Wj6km-00032i-BF
+	for qemu-trivial@nongnu.org; Sat, 10 May 2014 08:51:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <tamlokveer@gmail.com>) id 1WiuaP-0001O7-1H
-	for qemu-trivial@nongnu.org; Fri, 09 May 2014 19:52:26 -0400
-Received: from mail-pd0-x236.google.com ([2607:f8b0:400e:c02::236]:34429)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Wj6kd-00076V-9a
+	for qemu-trivial@nongnu.org; Sat, 10 May 2014 08:51:48 -0400
+Received: from mail-pd0-x233.google.com ([2607:f8b0:400e:c02::233]:34303)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tamlokveer@gmail.com>)
-	id 1Wiua6-0001H1-8S; Fri, 09 May 2014 19:51:58 -0400
-Received: by mail-pd0-f182.google.com with SMTP id v10so4305332pde.27
-	for <multiple recipients>; Fri, 09 May 2014 16:51:57 -0700 (PDT)
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1Wj6kK-00074d-Ul; Sat, 10 May 2014 08:51:21 -0400
+Received: by mail-pd0-f179.google.com with SMTP id g10so4755901pdj.38
+	for <multiple recipients>; Sat, 10 May 2014 05:51:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:in-reply-to:references;
-	bh=diOKjzDlSPiV7YboocUPCjtzAf9bdAHovRZop+MEdrU=;
-	b=wRyLEqqLlCHfeLqgLkUs2f+weFvx21Wzh3ZKDlmayf3dsD60WyrmXxOkoENVYA2xC+
-	QKldPJWEzvzCg9FwYDftnCGke+KLeLJJUrPrvOgG3nd2zawGlb6a7SUkFuwMQoqiYkCQ
-	UlsDW91zZ0oWQbh2ZOOw/43zYVqv03BGEKNfNSTuv83eYx4sQI1tvZMBThK1b87ldtCQ
-	svECuiX/VucNsqMjgLpYABu7KkCANdb9jzNDerxitamoWjqFIpeX8Ck7gmFD12BnQZ+b
-	T3DkFajtUT5AgTLKDtEsYWOwopNNRgnCO6wPY5xS+AdoniGNFAhmzqzDVSpemdl5nQay
-	W/6Q==
-X-Received: by 10.66.141.144 with SMTP id ro16mr25524371pab.131.1399679517039; 
-	Fri, 09 May 2014 16:51:57 -0700 (PDT)
-Received: from localhost.localdomain ([162.105.146.101])
-	by mx.google.com with ESMTPSA id op3sm9623456pbc.40.2014.05.09.16.51.54
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:content-type:content-transfer-encoding;
+	bh=29q/6NlGsdKI5owdseP95Ir0PY4zpfa9I3Y2OHt7dD4=;
+	b=l67j4WgX+G3HK1UVJkpYaof5x5VZXp4BuvWKz1oobwGQYWptWkHVgzskam/0tLsK22
+	YoMDPaSfTuKtitWB42DZFCf4sVtBKK58XePLBKomiZeKOqYIlmP7aTHnDI07by3PVoqf
+	bN9YKpMfjMBKJo9leWeLKDcHm7XepcXr6i/MO6rncttACU9jGX1/AwMvbqMUAr4eLVVC
+	wkT145IACkiB0mpP5IXhSZb8dRe94XIcNnzNgYzIMlbr6T+v/d3cGWWLtYEIOQ/HJ2Dw
+	mRr6tZzZKgjP+Xg1yAbX6/6fCc/i0IirXbloUp04qBEho2fsGxFOe/ShfD7Py4/ms3GZ
+	3TXA==
+X-Received: by 10.66.148.230 with SMTP id tv6mr20894529pab.155.1399726279413; 
+	Sat, 10 May 2014 05:51:19 -0700 (PDT)
+Received: from [192.168.1.102] ([223.72.65.126])
+	by mx.google.com with ESMTPSA id gj9sm12795663pbc.7.2014.05.10.05.51.16
 	for <multiple recipients>
-	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Fri, 09 May 2014 16:51:56 -0700 (PDT)
-From: Le Tan <tamlokveer@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Sat, 10 May 2014 07:55:22 +0800
-Message-Id: <1d899df865235022831f0733c874dae9f0ba21ed.1399641611.git.tamlokveer@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <cover.1399641611.git.tamlokveer@gmail.com>
-References: <y>
- <cover.1399641611.git.tamlokveer@gmail.com>
-In-Reply-To: <cover.1399641611.git.tamlokveer@gmail.com>
-References: <cover.1399641611.git.tamlokveer@gmail.com>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Sat, 10 May 2014 05:51:18 -0700 (PDT)
+Message-ID: <536E20CC.4030401@gmail.com>
+Date: Sat, 10 May 2014 20:51:24 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130625 Thunderbird/17.0.7
+MIME-Version: 1.0
+To: mjt@tls.msk.ru, quintela@redhat.com, owasserm@redhat.com, 
+	pbonzini@redhat.com, mst@redhat.com, Eric Blake <eblake@redhat.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::236
-X-Mailman-Approved-At: Sat, 10 May 2014 01:22:08 -0400
-Cc: qemu-trivial@nongnu.org, jan.kiszka@web.de, afaerber@suse.de,
-	Le Tan <tamlokveer@gmail.com>
-Subject: [Qemu-trivial] [PATCH 4/4] bsd-user: replace fprintf(stderr,
-	...) with error_report()
+X-Received-From: 2607:f8b0:400e:c02::233
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] arch_init: Simplify code for load_xbzrle()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,106 +58,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 May 2014 23:52:35 -0000
+X-List-Received-Date: Sat, 10 May 2014 12:51:57 -0000
 
-Replace fprintf(stderr,...) with error_report() in files bsd-user/*.
-The trailing "\n"s of the @fmt argument have been removed
-because @fmt of error_report() should not contain newline.
+For xbzrle_decode_buffer(), when decoding contents will exceed writing
+buffer, it will return -1, so need not check the return value whether
+large than writing buffer.
 
-Signed-off-by: Le Tan <tamlokveer@gmail.com>
+And when failure occurs within load_xbzrle(), it always return -1
+without any resources which need release.
+
+So can remove the related checking statements, and also can remove 'rc'
+and 'ret' local variables,
+
+
+Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
 ---
- bsd-user/bsdload.c |    2 +-
- bsd-user/elfload.c |    2 +-
- bsd-user/main.c    |   14 +++++++-------
- 3 files changed, 9 insertions(+), 9 deletions(-)
+ arch_init.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
 
-diff --git a/bsd-user/bsdload.c b/bsd-user/bsdload.c
-index 2abc713..6b52e08 100644
---- a/bsd-user/bsdload.c
-+++ b/bsd-user/bsdload.c
-@@ -183,7 +183,7 @@ int loader_exec(const char * filename, char ** argv, char ** envp,
-                 && bprm.buf[3] == 'F') {
-             retval = load_elf_binary(&bprm,regs,infop);
-         } else {
--            fprintf(stderr, "Unknown binary format\n");
-+            error_report("Unknown binary format");
-             return -1;
-         }
-     }
-diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
-index 93fd9e4..95652b1 100644
---- a/bsd-user/elfload.c
-+++ b/bsd-user/elfload.c
-@@ -628,7 +628,7 @@ static abi_ulong copy_elf_strings(int argc,char ** argv, void **page,
-     while (argc-- > 0) {
-         tmp = argv[argc];
-         if (!tmp) {
--            fprintf(stderr, "VFS: argc is wrong");
-+            error_report("VFS: argc is wrong");
-             exit(-1);
-         }
-         tmp1 = tmp;
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index f81ba55..3825e76 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -378,8 +378,8 @@ void cpu_loop(CPUX86State *env)
- #endif
-         default:
-             pc = env->segs[R_CS].base + env->eip;
--            fprintf(stderr, "qemu: 0x%08lx: unhandled CPU exception 0x%x - aborting\n",
--                    (long)pc, trapnr);
-+            error_report("qemu: 0x%08lx: unhandled CPU exception 0x%x - aborting",
-+                         (long)pc, trapnr);
-             abort();
-         }
-         process_pending_signals(env);
-@@ -752,7 +752,7 @@ int main(int argc, char **argv)
-     module_call_init(MODULE_INIT_QOM);
+diff --git a/arch_init.c b/arch_init.c
+index 60c975d..98ee5b6 100644
+--- a/arch_init.c
++++ b/arch_init.c
+@@ -908,7 +908,6 @@ static uint64_t ram_save_pending(QEMUFile *f, void *opaque, uint64_t max_size)
  
-     if ((envlist = envlist_create()) == NULL) {
--        (void) fprintf(stderr, "Unable to allocate envlist\n");
-+        (void) error_report("Unable to allocate envlist");
-         exit(1);
+ static int load_xbzrle(QEMUFile *f, ram_addr_t addr, void *host)
+ {
+-    int ret, rc = 0;
+     unsigned int xh_len;
+     int xh_flags;
+ 
+@@ -933,18 +932,13 @@ static int load_xbzrle(QEMUFile *f, ram_addr_t addr, void *host)
+     qemu_get_buffer(f, xbzrle_decoded_buf, xh_len);
+ 
+     /* decode RLE */
+-    ret = xbzrle_decode_buffer(xbzrle_decoded_buf, xh_len, host,
+-                               TARGET_PAGE_SIZE);
+-    if (ret == -1) {
++    if (xbzrle_decode_buffer(xbzrle_decoded_buf, xh_len, host,
++                             TARGET_PAGE_SIZE) == -1) {
+         fprintf(stderr, "Failed to load XBZRLE page - decode error!\n");
+-        rc = -1;
+-    } else  if (ret > TARGET_PAGE_SIZE) {
+-        fprintf(stderr, "Failed to load XBZRLE page - size %d exceeds %d!\n",
+-                ret, TARGET_PAGE_SIZE);
+-        abort();
++        return -1;
      }
  
-@@ -794,7 +794,7 @@ int main(int argc, char **argv)
-         } else if (!strcmp(r, "ignore-environment")) {
-             envlist_free(envlist);
-             if ((envlist = envlist_create()) == NULL) {
--                (void) fprintf(stderr, "Unable to allocate envlist\n");
-+                (void) error_report("Unable to allocate envlist");
-                 exit(1);
-             }
-         } else if (!strcmp(r, "U")) {
-@@ -816,7 +816,7 @@ int main(int argc, char **argv)
-             qemu_host_page_size = atoi(argv[optind++]);
-             if (qemu_host_page_size == 0 ||
-                 (qemu_host_page_size & (qemu_host_page_size - 1)) != 0) {
--                fprintf(stderr, "page size must be a power of two\n");
-+                error_report("page size must be a power of two");
-                 exit(1);
-             }
-         } else if (!strcmp(r, "g")) {
-@@ -910,7 +910,7 @@ int main(int argc, char **argv)
-        qemu_host_page_size */
-     env = cpu_init(cpu_model);
-     if (!env) {
--        fprintf(stderr, "Unable to find CPU definition\n");
-+        error_report("Unable to find CPU definition");
-         exit(1);
-     }
-     cpu = ENV_GET_CPU(env);
-@@ -1014,7 +1014,7 @@ int main(int argc, char **argv)
- #ifndef TARGET_ABI32
-     /* enable 64 bit mode if possible */
-     if (!(env->features[FEAT_8000_0001_EDX] & CPUID_EXT2_LM)) {
--        fprintf(stderr, "The selected x86 CPU does not support 64 bit mode\n");
-+        error_report("The selected x86 CPU does not support 64 bit mode");
-         exit(1);
-     }
-     env->cr[4] |= CR4_PAE_MASK;
+-    return rc;
++    return 0;
+ }
+ 
+ static inline void *host_from_stream_offset(QEMUFile *f,
 -- 
-1.7.9.5
-
+1.7.11.7
 
