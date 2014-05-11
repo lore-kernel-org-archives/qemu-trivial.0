@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WjXvY-0005SX-Oa
-	for mharc-qemu-trivial@gnu.org; Sun, 11 May 2014 13:52:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55287)
+	id 1WjXva-0005Uo-SU
+	for mharc-qemu-trivial@gnu.org; Sun, 11 May 2014 13:52:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1WjOfS-0008Sr-Gc
-	for qemu-trivial@nongnu.org; Sun, 11 May 2014 03:59:35 -0400
+	(envelope-from <alevy@redhat.com>) id 1WjP4K-0006G6-VM
+	for qemu-trivial@nongnu.org; Sun, 11 May 2014 04:25:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alevy@redhat.com>) id 1WjOfN-0007Gj-Bw
-	for qemu-trivial@nongnu.org; Sun, 11 May 2014 03:59:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:29548)
+	(envelope-from <alevy@redhat.com>) id 1WjP4F-0006KN-NF
+	for qemu-trivial@nongnu.org; Sun, 11 May 2014 04:25:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:20440)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alevy@redhat.com>)
-	id 1WjOf9-0007Be-UK; Sun, 11 May 2014 03:59:12 -0400
-Received: from int-mx01.intmail.prod.int.phx2.redhat.com
-	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4B7x6Vr018299
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Sun, 11 May 2014 03:59:07 -0400
+	id 1WjP44-00067Z-Tb; Sun, 11 May 2014 04:24:57 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4B84GIU004703
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Sun, 11 May 2014 04:04:16 -0400
 Received: from blues.lan (vpn1-5-218.ams2.redhat.com [10.36.5.218])
-	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
-	id s4B7wv9r022998
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s4B83ilO003753
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Sun, 11 May 2014 03:59:05 -0400
-Message-ID: <536F2DC0.9080809@redhat.com>
-Date: Sun, 11 May 2014 10:58:56 +0300
+	Sun, 11 May 2014 04:04:14 -0400
+Message-ID: <536F2EE0.10305@redhat.com>
+Date: Sun, 11 May 2014 11:03:44 +0300
 From: Alon Levy <alevy@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
 To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-References: <1399569594-31678-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1399569594-31678-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1399564447-19473-1-git-send-email-mjt@msgid.tls.msk.ru>
+In-Reply-To: <1399564447-19473-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-Enigmail-Version: 1.6
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Sun, 11 May 2014 13:52:43 -0400
+X-Mailman-Approved-At: Sun, 11 May 2014 13:52:45 -0400
 Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] libcacard: remove useless initializers
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libcacard: g_malloc cleanups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,198 +51,246 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 May 2014 07:59:35 -0000
+X-List-Received-Date: Sun, 11 May 2014 08:25:18 -0000
 
-On 05/08/2014 08:19 PM, Michael Tokarev wrote:
-> libcacard has many functions which initializes local variables
-> at declaration time, which are always assigned some values later
-> (often right after declaration).  Clean up these initializers.
+On 05/08/2014 06:54 PM, Michael Tokarev wrote:
+> This patch replaces g_malloc() in libcacard into g_new()
+> or g_new0() where appropriate (removing some init-to-zero
+> surrounding code), g_malloc+memcpy into g_memdup() and the
+> like.
 
-How is this an improvement? Doesn't the compiler ignore this anyhow?
+Reviewed-by: Alon Levy <alevy@redhat.com>
+
+just one comment below.
 
 > 
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->  libcacard/cac.c            |   14 +++++++-------
->  libcacard/card_7816.c      |    5 ++---
->  libcacard/vcard.c          |    4 ++--
->  libcacard/vcard_emul_nss.c |    6 +++---
->  libcacard/vreader.c        |   10 +++++-----
->  libcacard/vscclient.c      |    4 ++--
->  6 files changed, 21 insertions(+), 22 deletions(-)
+>  libcacard/cac.c            |   11 +++--------
+>  libcacard/card_7816.c      |   11 +++++------
+>  libcacard/event.c          |    2 +-
+>  libcacard/vcard.c          |   22 +++++-----------------
+>  libcacard/vcard_emul_nss.c |   12 ++++++------
+>  libcacard/vreader.c        |   11 +++--------
+>  6 files changed, 23 insertions(+), 46 deletions(-)
 > 
 > diff --git a/libcacard/cac.c b/libcacard/cac.c
-> index 122129e..d1d9ee2 100644
+> index 74ef3e3..122129e 100644
 > --- a/libcacard/cac.c
 > +++ b/libcacard/cac.c
-> @@ -93,8 +93,8 @@ cac_common_process_apdu(VCard *card, VCardAPDU *apdu, VCardResponse **response)
->  static VCardStatus
->  cac_applet_pki_reset(VCard *card, int channel)
->  {
-> -    VCardAppletPrivate *applet_private = NULL;
-> -    CACPKIAppletData *pki_applet = NULL;
-> +    VCardAppletPrivate *applet_private;
-> +    CACPKIAppletData *pki_applet;
->      applet_private = vcard_get_current_applet_private(card, channel);
->      assert(applet_private);
->      pki_applet = &(applet_private->u.pki_data);
-> @@ -113,8 +113,8 @@ static VCardStatus
->  cac_applet_pki_process_apdu(VCard *card, VCardAPDU *apdu,
->                              VCardResponse **response)
->  {
-> -    CACPKIAppletData *pki_applet = NULL;
-> -    VCardAppletPrivate *applet_private = NULL;
-> +    CACPKIAppletData *pki_applet;
-> +    VCardAppletPrivate *applet_private;
->      int size, next;
->      unsigned char *sign_buffer;
->      vcard_7816_status_t status;
-> @@ -288,7 +288,7 @@ cac_applet_container_process_apdu(VCard *card, VCardAPDU *apdu,
->  static void
->  cac_delete_pki_applet_private(VCardAppletPrivate *applet_private)
+> @@ -310,16 +310,11 @@ static VCardAppletPrivate *
+>  cac_new_pki_applet_private(const unsigned char *cert,
+>                             int cert_len, VCardKey *key)
 >  {
 > -    CACPKIAppletData *pki_applet_data = NULL;
-> +    CACPKIAppletData *pki_applet_data;
->  
->      if (applet_private == NULL) {
->          return;
-> @@ -336,8 +336,8 @@ static VCardApplet *
->  cac_new_pki_applet(int i, const unsigned char *cert,
->                     int cert_len, VCardKey *key)
->  {
 > -    VCardAppletPrivate *applet_private = NULL;
-> -    VCardApplet *applet = NULL;
+
+These two lines above (and the corresponding ones beloow) seem unrelated
+to this patch.
+
+> -    applet_private = (VCardAppletPrivate *)g_malloc(sizeof(VCardAppletPrivate));
+> +    CACPKIAppletData *pki_applet_data;
 > +    VCardAppletPrivate *applet_private;
-> +    VCardApplet *applet;
->      unsigned char pki_aid[] = { 0xa0, 0x00, 0x00, 0x00, 0x79, 0x01, 0x00 };
->      int pki_aid_len = sizeof(pki_aid);
 >  
+> +    applet_private = g_new0(VCardAppletPrivate, 1);
+>      pki_applet_data = &(applet_private->u.pki_data);
+> -    pki_applet_data->cert_buffer = NULL;
+> -    pki_applet_data->cert_buffer_len = 0;
+> -    pki_applet_data->sign_buffer = NULL;
+> -    pki_applet_data->sign_buffer_len = 0;
+> -    pki_applet_data->key = NULL;
+>      pki_applet_data->cert = (unsigned char *)g_malloc(cert_len+1);
+>      /*
+>       * if we want to support compression, then we simply change the 0 to a 1
 > diff --git a/libcacard/card_7816.c b/libcacard/card_7816.c
-> index bca8c4a..a54f880 100644
+> index c28bb60..bca8c4a 100644
 > --- a/libcacard/card_7816.c
 > +++ b/libcacard/card_7816.c
-> @@ -416,7 +416,7 @@ VCARD_RESPONSE_NEW_STATIC_STATUS(VCARD7816_STATUS_ERROR_GENERAL)
->  VCardResponse *
->  vcard_make_response(vcard_7816_status_t status)
+> @@ -51,7 +51,7 @@ vcard_response_new_data(unsigned char *buf, int len)
 >  {
-> -    VCardResponse *response = NULL;
-> +    VCardResponse *response;
+>      VCardResponse *new_response;
 >  
->      switch (status) {
->      /* known 7816 response codes */
-> @@ -543,9 +543,8 @@ vcard_make_response(vcard_7816_status_t status)
->              return VCARD_RESPONSE_GET_STATIC(
->                          VCARD7816_STATUS_EXC_ERROR_MEMORY_FAILURE);
->          }
-> +        return response;
+> -    new_response = (VCardResponse *)g_malloc(sizeof(VCardResponse));
+> +    new_response = g_new(VCardResponse, 1);
+>      new_response->b_data = g_malloc(len + 2);
+>      memcpy(new_response->b_data, buf, len);
+>      new_response->b_total_len = len+2;
+> @@ -132,7 +132,7 @@ vcard_response_new_status(vcard_7816_status_t status)
+>  {
+>      VCardResponse *new_response;
+>  
+> -    new_response = (VCardResponse *)g_malloc(sizeof(VCardResponse));
+> +    new_response = g_new(VCardResponse, 1);
+>      new_response->b_data = &new_response->b_sw1;
+>      new_response->b_len = 0;
+>      new_response->b_total_len = 2;
+> @@ -149,7 +149,7 @@ vcard_response_new_status_bytes(unsigned char sw1, unsigned char sw2)
+>  {
+>      VCardResponse *new_response;
+>  
+> -    new_response = (VCardResponse *)g_malloc(sizeof(VCardResponse));
+> +    new_response = g_new(VCardResponse, 1);
+>      new_response->b_data = &new_response->b_sw1;
+>      new_response->b_len = 0;
+>      new_response->b_total_len = 2;
+> @@ -336,9 +336,8 @@ vcard_apdu_new(unsigned char *raw_apdu, int len, vcard_7816_status_t *status)
+>          return NULL;
 >      }
-> -    assert(response);
-> -    return response;
+>  
+> -    new_apdu = (VCardAPDU *)g_malloc(sizeof(VCardAPDU));
+> -    new_apdu->a_data = g_malloc(len);
+> -    memcpy(new_apdu->a_data, raw_apdu, len);
+> +    new_apdu = g_new(VCardAPDU, 1);
+> +    new_apdu->a_data = g_memdup(raw_apdu, len);
+>      new_apdu->a_len = len;
+>      *status = vcard_apdu_set_class(new_apdu);
+>      if (*status != VCARD7816_STATUS_SUCCESS) {
+> diff --git a/libcacard/event.c b/libcacard/event.c
+> index 2d7500f..a2e6c7d 100644
+> --- a/libcacard/event.c
+> +++ b/libcacard/event.c
+> @@ -17,7 +17,7 @@ vevent_new(VEventType type, VReader *reader, VCard *card)
+>  {
+>      VEvent *new_vevent;
+>  
+> -    new_vevent = (VEvent *)g_malloc(sizeof(VEvent));
+> +    new_vevent = g_new(VEvent, 1);
+>      new_vevent->next = NULL;
+>      new_vevent->type = type;
+>      new_vevent->reader = vreader_reference(reader);
+> diff --git a/libcacard/vcard.c b/libcacard/vcard.c
+> index 539177b..227e477 100644
+> --- a/libcacard/vcard.c
+> +++ b/libcacard/vcard.c
+> @@ -37,9 +37,8 @@ vcard_buffer_response_new(unsigned char *buffer, int size)
+>  {
+>      VCardBufferResponse *new_buffer;
+>  
+> -    new_buffer = (VCardBufferResponse *)g_malloc(sizeof(VCardBufferResponse));
+> -    new_buffer->buffer = (unsigned char *)g_malloc(size);
+> -    memcpy(new_buffer->buffer, buffer, size);
+> +    new_buffer = g_new(VCardBufferResponse, 1);
+> +    new_buffer->buffer = (unsigned char *)g_memdup(buffer, size);
+>      new_buffer->buffer_len = size;
+>      new_buffer->current = new_buffer->buffer;
+>      new_buffer->len = size;
+> @@ -102,15 +101,11 @@ vcard_new_applet(VCardProcessAPDU applet_process_function,
+>  {
+>      VCardApplet *applet;
+>  
+> -    applet = (VCardApplet *)g_malloc(sizeof(VCardApplet));
+> -    applet->next = NULL;
+> -    applet->applet_private = NULL;
+> -    applet->applet_private_free = NULL;
+> +    applet = g_new0(VCardApplet, 1);
+>      applet->process_apdu = applet_process_function;
+>      applet->reset_applet = applet_reset_function;
+>  
+> -    applet->aid = g_malloc(aid_len);
+> -    memcpy(applet->aid, aid, aid_len);
+> +    applet->aid = g_memdup(aid, aid_len);
+>      applet->aid_len = aid_len;
+>      return applet;
+>  }
+> @@ -149,18 +144,11 @@ VCard *
+>  vcard_new(VCardEmul *private, VCardEmulFree private_free)
+>  {
+>      VCard *new_card;
+> -    int i;
+>  
+> -    new_card = (VCard *)g_malloc(sizeof(VCard));
+> -    new_card->applet_list = NULL;
+> -    for (i = 0; i < MAX_CHANNEL; i++) {
+> -        new_card->current_applet[i] = NULL;
+> -    }
+> -    new_card->vcard_buffer_response = NULL;
+> +    new_card = g_new0(VCard, 1);
+>      new_card->type = VCARD_VM;
+>      new_card->vcard_private = private;
+>      new_card->vcard_private_free = private_free;
+> -    new_card->vcard_get_atr = NULL;
+>      new_card->reference_count = 1;
+>      return new_card;
+>  }
+> diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
+> index e2b196d..75b9d79 100644
+> --- a/libcacard/vcard_emul_nss.c
+> +++ b/libcacard/vcard_emul_nss.c
+> @@ -94,9 +94,9 @@ static void
+>  vcard_emul_alloc_arrays(unsigned char ***certsp, int **cert_lenp,
+>                          VCardKey ***keysp, int cert_count)
+>  {
+> -    *certsp = (unsigned char **)g_malloc(sizeof(unsigned char *)*cert_count);
+> -    *cert_lenp = (int *)g_malloc(sizeof(int)*cert_count);
+> -    *keysp = (VCardKey **)g_malloc(sizeof(VCardKey *)*cert_count);
+> +    *certsp = g_new(unsigned char *, cert_count);
+> +    *cert_lenp = g_new(int, cert_count);
+> +    *keysp = g_new(VCardKey *, cert_count);
 >  }
 >  
 >  /*
-> diff --git a/libcacard/vcard.c b/libcacard/vcard.c
-> index 227e477..6aaf085 100644
-> --- a/libcacard/vcard.c
-> +++ b/libcacard/vcard.c
-> @@ -166,8 +166,8 @@ vcard_reference(VCard *vcard)
->  void
->  vcard_free(VCard *vcard)
+> @@ -139,7 +139,7 @@ vcard_emul_make_key(PK11SlotInfo *slot, CERTCertificate *cert)
 >  {
-> -    VCardApplet *current_applet = NULL;
-> -    VCardApplet *next_applet = NULL;
-> +    VCardApplet *current_applet;
-> +    VCardApplet *next_applet;
+>      VCardKey *key;
 >  
->      if (vcard == NULL) {
->          return;
-> diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
-> index 75b9d79..3f38a4c 100644
-> --- a/libcacard/vcard_emul_nss.c
-> +++ b/libcacard/vcard_emul_nss.c
-> @@ -367,7 +367,7 @@ vcard_7816_status_t
->  vcard_emul_login(VCard *card, unsigned char *pin, int pin_len)
+> -    key = (VCardKey *)g_malloc(sizeof(VCardKey));
+> +    key = g_new(VCardKey, 1);
+>      key->slot = PK11_ReferenceSlot(slot);
+>      key->cert = CERT_DupCertificate(cert);
+>      /* NOTE: if we aren't logged into the token, this could return NULL */
+> @@ -449,7 +449,7 @@ vreader_emul_new(PK11SlotInfo *slot, VCardEmulType type, const char *params)
 >  {
->      PK11SlotInfo *slot;
-> -    unsigned char *pin_string = NULL;
-> +    unsigned char *pin_string;
->      int i;
->      SECStatus rv;
+>      VReaderEmul *new_reader_emul;
 >  
-> @@ -423,7 +423,7 @@ static VReader *
->  vcard_emul_find_vreader_from_slot(PK11SlotInfo *slot)
->  {
->      VReaderList *reader_list = vreader_get_reader_list();
-> -    VReaderListEntry *current_entry = NULL;
-> +    VReaderListEntry *current_entry;
+> -    new_reader_emul = (VReaderEmul *)g_malloc(sizeof(VReaderEmul));
+> +    new_reader_emul = g_new(VReaderEmul, 1);
 >  
->      if (reader_list == NULL) {
->          return NULL;
-> @@ -1050,7 +1050,7 @@ void
->  vcard_emul_replay_insertion_events(void)
->  {
->      VReaderListEntry *current_entry;
-> -    VReaderListEntry *next_entry = NULL;
-> +    VReaderListEntry *next_entry;
->      VReaderList *list = vreader_get_reader_list();
->  
->      for (current_entry = vreader_list_get_first(list); current_entry;
+>      new_reader_emul->slot = PK11_ReferenceSlot(slot);
+>      new_reader_emul->default_type = type;
+> @@ -1189,7 +1189,7 @@ vcard_emul_options(const char *args)
+>                  g_strndup(type_params, type_params_length);
+>              count = count_tokens(args, ',', ')') + 1;
+>              vreaderOpt->cert_count = count;
+> -            vreaderOpt->cert_name = (char **)g_malloc(count*sizeof(char *));
+> +            vreaderOpt->cert_name = g_new(char *, count);
+>              for (i = 0; i < count; i++) {
+>                  const char *cert = args;
+>                  args = strpbrk(args, ",)");
 > diff --git a/libcacard/vreader.c b/libcacard/vreader.c
-> index 9304a28..22dfe43 100644
+> index 7720295..9304a28 100644
 > --- a/libcacard/vreader.c
 > +++ b/libcacard/vreader.c
-> @@ -341,7 +341,7 @@ void
->  vreader_list_delete(VReaderList *list)
+> @@ -115,7 +115,7 @@ vreader_new(const char *name, VReaderEmul *private,
 >  {
->      VReaderListEntry *current_entry;
-> -    VReaderListEntry *next_entry = NULL;
-> +    VReaderListEntry *next_entry;
->      for (current_entry = vreader_list_get_first(list); current_entry;
->           current_entry = next_entry) {
->          next_entry = vreader_list_get_next(current_entry);
-> @@ -432,8 +432,8 @@ vreader_list_unlock(void)
->  static VReaderList *
->  vreader_copy_list(VReaderList *list)
->  {
-> -    VReaderList *new_list = NULL;
-> -    VReaderListEntry *current_entry = NULL;
-> +    VReaderList *new_list;
-> +    VReaderListEntry *current_entry;
+>      VReader *reader;
 >  
->      new_list = vreader_list_new();
->      if (new_list == NULL) {
-> @@ -465,7 +465,7 @@ VReader *
->  vreader_get_reader_by_id(vreader_id_t id)
+> -    reader = (VReader *)g_malloc(sizeof(VReader));
+> +    reader = g_new(VReader, 1);
+>      qemu_mutex_init(&reader->lock);
+>      reader->reference_count = 1;
+>      reader->name = g_strdup(name);
+> @@ -312,10 +312,7 @@ vreader_list_entry_new(VReader *reader)
 >  {
->      VReader *reader = NULL;
-> -    VReaderListEntry *current_entry = NULL;
-> +    VReaderListEntry *current_entry;
+>      VReaderListEntry *new_reader_list_entry;
 >  
->      if (id == (vreader_id_t) -1) {
->          return NULL;
-> @@ -489,7 +489,7 @@ VReader *
->  vreader_get_reader_by_name(const char *name)
+> -    new_reader_list_entry = (VReaderListEntry *)
+> -                               g_malloc(sizeof(VReaderListEntry));
+> -    new_reader_list_entry->next = NULL;
+> -    new_reader_list_entry->prev = NULL;
+> +    new_reader_list_entry = g_new0(VReaderListEntry, 1);
+>      new_reader_list_entry->reader = vreader_reference(reader);
+>      return new_reader_list_entry;
+>  }
+> @@ -336,9 +333,7 @@ vreader_list_new(void)
 >  {
->      VReader *reader = NULL;
-> -    VReaderListEntry *current_entry = NULL;
-> +    VReaderListEntry *current_entry;
+>      VReaderList *new_reader_list;
 >  
->      vreader_list_lock();
->      for (current_entry = vreader_list_get_first(vreader_list); current_entry;
-> diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
-> index 3477ab3..17ff075 100644
-> --- a/libcacard/vscclient.c
-> +++ b/libcacard/vscclient.c
-> @@ -131,8 +131,8 @@ static void *
->  event_thread(void *arg)
->  {
->      unsigned char atr[MAX_ATR_LEN];
-> -    int atr_len = MAX_ATR_LEN;
-> -    VEvent *event = NULL;
-> +    int atr_len;
-> +    VEvent *event;
->      unsigned int reader_id;
->  
+> -    new_reader_list = (VReaderList *)g_malloc(sizeof(VReaderList));
+> -    new_reader_list->head = NULL;
+> -    new_reader_list->tail = NULL;
+> +    new_reader_list = g_new0(VReaderList, 1);
+>      return new_reader_list;
+>  }
 >  
 > 
 
