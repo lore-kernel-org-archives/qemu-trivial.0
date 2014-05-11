@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WjS73-0000MV-UD
-	for mharc-qemu-trivial@gnu.org; Sun, 11 May 2014 07:40:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55147)
+	id 1WjS9a-0001SO-01
+	for mharc-qemu-trivial@gnu.org; Sun, 11 May 2014 07:42:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55579)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WjS6w-00009U-Er
-	for qemu-trivial@nongnu.org; Sun, 11 May 2014 07:40:12 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WjS9S-0001JC-Kk
+	for qemu-trivial@nongnu.org; Sun, 11 May 2014 07:42:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WjS6q-0002wW-BA
-	for qemu-trivial@nongnu.org; Sun, 11 May 2014 07:40:06 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:50817)
+	(envelope-from <mjt@tls.msk.ru>) id 1WjS9M-0004kK-Fy
+	for qemu-trivial@nongnu.org; Sun, 11 May 2014 07:42:42 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38902)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WjS6c-0002sn-SL; Sun, 11 May 2014 07:39:47 -0400
+	id 1WjS99-0004iY-RV; Sun, 11 May 2014 07:42:23 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 48B8240DC0;
-	Sun, 11 May 2014 15:39:44 +0400 (MSK)
-Message-ID: <536F6180.1010905@msgid.tls.msk.ru>
-Date: Sun, 11 May 2014 15:39:44 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 220B540DC0;
+	Sun, 11 May 2014 15:42:23 +0400 (MSK)
+Message-ID: <536F621F.1010008@msgid.tls.msk.ru>
+Date: Sun, 11 May 2014 15:42:23 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
 To: Alon Levy <alevy@redhat.com>, qemu-devel@nongnu.org
-References: <1399569594-31678-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<536F2DC0.9080809@redhat.com>
-In-Reply-To: <536F2DC0.9080809@redhat.com>
+References: <1399564447-19473-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<536F2EE0.10305@redhat.com>
+In-Reply-To: <536F2EE0.10305@redhat.com>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=UTF-8
@@ -33,8 +33,7 @@ Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libcacard: remove useless
-	initializers
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libcacard: g_malloc cleanups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,42 +45,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 May 2014 11:40:12 -0000
+X-List-Received-Date: Sun, 11 May 2014 11:42:48 -0000
 
-11.05.2014 11:58, Alon Levy wrote:
-> On 05/08/2014 08:19 PM, Michael Tokarev wrote:
->> libcacard has many functions which initializes local variables
->> at declaration time, which are always assigned some values later
->> (often right after declaration).  Clean up these initializers.
+11.05.2014 12:03, Alon Levy wrote:
+[]
+>> diff --git a/libcacard/cac.c b/libcacard/cac.c
+>> index 74ef3e3..122129e 100644
+>> --- a/libcacard/cac.c
+>> +++ b/libcacard/cac.c
+>> @@ -310,16 +310,11 @@ static VCardAppletPrivate *
+>>  cac_new_pki_applet_private(const unsigned char *cert,
+>>                             int cert_len, VCardKey *key)
+>>  {
+>> -    CACPKIAppletData *pki_applet_data = NULL;
+>> -    VCardAppletPrivate *applet_private = NULL;
 > 
-> How is this an improvement? Doesn't the compiler ignore this anyhow?
+> These two lines above (and the corresponding ones beloow) seem unrelated
+> to this patch.
+> 
+>> -    applet_private = (VCardAppletPrivate *)g_malloc(sizeof(VCardAppletPrivate));
+>> +    CACPKIAppletData *pki_applet_data;
+>> +    VCardAppletPrivate *applet_private;
+>>  
+>> +    applet_private = g_new0(VCardAppletPrivate, 1);
 
-Just less code.
-
-To me, when I see something like
-
-  Type *var = NULL;
-
-in a function, it somehow "translates" to a construct like
-
-  Type *found = NULL;
-
-That is -- so this variable will be used either as an accumulator
-or a search result, so that initial value is really important.
-
-So when I see the same variable receives its initial value in
-the next line, I start wondering what's missed in the code which
-should be there.  Or why I don't read the code correctly.  Or
-something like this.
-
-So, basically, this is a cleanup patch just to avoid confusion,
-it most likely not needed for current compiler who can figure
-it out by its own.  And for consistency - why not initialize
-other variables too?
-
-Maybe that's just my old-scool mind works this way.
-
-At any rate you can just ignore this patch.
+Yes, that's removal of initial value setting of variables which
+will be initialized on the next line.  It is like cleaning up
+coding style (spacing around {} etc) in a nearby lines.  I can
+mention this in the commit message, but I don't really think it
+is really important.
 
 Thanks,
 
