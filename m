@@ -1,47 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WjnTk-0005h8-La
-	for mharc-qemu-trivial@gnu.org; Mon, 12 May 2014 06:29:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47170)
+	id 1Wk098-0005AH-91
+	for mharc-qemu-trivial@gnu.org; Mon, 12 May 2014 20:00:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60289)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1WjnTd-0005SM-3u
-	for qemu-trivial@nongnu.org; Mon, 12 May 2014 06:29:03 -0400
+	(envelope-from <kroosec@gmail.com>) id 1Wjzl5-0000Hd-TA
+	for qemu-trivial@nongnu.org; Mon, 12 May 2014 19:35:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1WjnTJ-0003LT-ST
-	for qemu-trivial@nongnu.org; Mon, 12 May 2014 06:28:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55675)
+	(envelope-from <kroosec@gmail.com>) id 1Wjzkz-0007Dn-RA
+	for qemu-trivial@nongnu.org; Mon, 12 May 2014 19:35:47 -0400
+Received: from mail-wg0-x229.google.com ([2a00:1450:400c:c00::229]:39249)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>)
-	id 1WjnSR-00033E-SL; Mon, 12 May 2014 06:27:44 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4CARfxv029602
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 12 May 2014 06:27:41 -0400
-Received: from localhost (ovpn-116-35.ams2.redhat.com [10.36.116.35])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s4CAReCF016943; Mon, 12 May 2014 06:27:40 -0400
-From: Juan Quintela <quintela@redhat.com>
-To: Chen Gang <gang.chen.5i5j@gmail.com>
-In-Reply-To: <536E20CC.4030401@gmail.com> (Chen Gang's message of "Sat, 10 May
-	2014 20:51:24 +0800")
-References: <536E20CC.4030401@gmail.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
-Date: Mon, 12 May 2014 12:27:38 +0200
-Message-ID: <87ha4v8f6t.fsf@elfo.mitica>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: mst@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>, mjt@tls.msk.ru,
-	QEMU Developers <qemu-devel@nongnu.org>, owasserm@redhat.com,
-	pbonzini@redhat.com, Eric Blake <eblake@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] arch_init: Simplify code for
-	load_xbzrle()
+	(envelope-from <kroosec@gmail.com>)
+	id 1Wjzkl-00077W-BG; Mon, 12 May 2014 19:35:27 -0400
+Received: by mail-wg0-f41.google.com with SMTP id z12so7722205wgg.24
+	for <multiple recipients>; Mon, 12 May 2014 16:35:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=Hs9UeCcl9cFKGvBXpywxynEylMtLNCGrC8m5YZ99fqI=;
+	b=WvdiQimrxuXQh5OX6lF4o273T9Y35lDDdmne6biyoSqond7wII6ms8+KFgXzsJ4a1P
+	jnH/d42dYBLk6Qg2x8XXjBAGOeGLyAfjdEcDw+q6sMn5SoH7j1kZE4fEortQPm6WXxrY
+	fSh/ooZbx3btqXgupenEFcLlB2qfY6EsiSvKnqr7Go0MW5bEiN8MzJt2Leagom5b2DBY
+	4+K/VwkM9Upfm+gqoG7595v8B7e/DkVcWO1gQJgxnd60EVb5uNzUE5Sn/ROnm9sFPZzu
+	2fdRCfKRfiLamQJx8grY94FxyUG+Bztt9cf6iWDC7hpJz6lKzqjFSAri/TcWNKM1I/vX
+	pE1A==
+X-Received: by 10.181.13.137 with SMTP id ey9mr17760492wid.54.1399937726314;
+	Mon, 12 May 2014 16:35:26 -0700 (PDT)
+Received: from localhost.localdomain ([41.103.114.211])
+	by mx.google.com with ESMTPSA id
+	pj5sm18659355wic.20.2014.05.12.16.35.24 for <multiple recipients>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Mon, 12 May 2014 16:35:25 -0700 (PDT)
+From: Hani Benhabiles <kroosec@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 13 May 2014 00:35:16 +0100
+Message-Id: <1399937716-6086-2-git-send-email-kroosec@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
+In-Reply-To: <1399937716-6086-1-git-send-email-kroosec@gmail.com>
+References: <1399937716-6086-1-git-send-email-kroosec@gmail.com>
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c00::229
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, kwolf@redhat.com,
+	stefanha@redhat.com
+Subject: [Qemu-trivial] [PATCH 2/2] nbd: Miscellaneous typo fixes.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-Reply-To: quintela@redhat.com
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -50,21 +54,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 May 2014 10:29:03 -0000
+X-List-Received-Date: Tue, 13 May 2014 00:00:35 -0000
 
-Chen Gang <gang.chen.5i5j@gmail.com> wrote:
-> For xbzrle_decode_buffer(), when decoding contents will exceed writing
-> buffer, it will return -1, so need not check the return value whether
-> large than writing buffer.
->
-> And when failure occurs within load_xbzrle(), it always return -1
-> without any resources which need release.
->
-> So can remove the related checking statements, and also can remove 'rc'
-> and 'ret' local variables,
->
->
-> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+Signed-off-by: Hani Benhabiles <hani@linux.com>
+---
+ nbd.c         | 2 +-
+ qemu-nbd.c    | 2 +-
+ qemu-nbd.texi | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+diff --git a/nbd.c b/nbd.c
+index e5084b6..e0d032c 100644
+--- a/nbd.c
++++ b/nbd.c
+@@ -306,7 +306,7 @@ static int nbd_send_negotiate(NBDClient *client)
+         [ 8 ..  15]   magic        (NBD_CLIENT_MAGIC)
+         [16 ..  23]   size
+         [24 ..  25]   server flags (0)
+-        [24 ..  27]   export flags
++        [26 ..  27]   export flags
+         [28 .. 151]   reserved     (0)
+ 
+        Negotiation header with options, part 1:
+diff --git a/qemu-nbd.c b/qemu-nbd.c
+index f70e4b0..cd6bd50 100644
+--- a/qemu-nbd.c
++++ b/qemu-nbd.c
+@@ -294,7 +294,7 @@ static void *nbd_client_thread(void *arg)
+     fd = open(device, O_RDWR);
+     if (fd < 0) {
+         /* Linux-only, we can use %m in printf.  */
+-        fprintf(stderr, "Failed to open %s: %m", device);
++        fprintf(stderr, "Failed to open %s: %m\n", device);
+         goto out_socket;
+     }
+ 
+diff --git a/qemu-nbd.texi b/qemu-nbd.texi
+index 0a7e013..46fd483 100644
+--- a/qemu-nbd.texi
++++ b/qemu-nbd.texi
+@@ -15,7 +15,7 @@ Export QEMU disk image using NBD protocol.
+ @item @var{filename}
+  is a disk image filename
+ @item -p, --port=@var{port}
+-  port to listen on (default @samp{1024})
++  port to listen on (default @samp{10809})
+ @item -o, --offset=@var{offset}
+   offset into the image
+ @item -b, --bind=@var{iface}
+-- 
+1.8.3.2
+
 
