@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WkVMx-00068E-V0
-	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2014 05:20:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56013)
+	id 1WkVak-0000d8-5M
+	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2014 05:35:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59131)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WkVMr-0005zQ-6o
-	for qemu-trivial@nongnu.org; Wed, 14 May 2014 05:20:57 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1WkVad-0000TB-Qd
+	for qemu-trivial@nongnu.org; Wed, 14 May 2014 05:35:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1WkVMm-0006mO-7p
-	for qemu-trivial@nongnu.org; Wed, 14 May 2014 05:20:53 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39808)
+	(envelope-from <dgilbert@redhat.com>) id 1WkVaU-0002QQ-AC
+	for qemu-trivial@nongnu.org; Wed, 14 May 2014 05:35:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56528)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1WkVMb-0006lg-S0; Wed, 14 May 2014 05:20:38 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4E9KVkS012157
+	(envelope-from <dgilbert@redhat.com>)
+	id 1WkVaU-0002Q4-3I; Wed, 14 May 2014 05:34:58 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4E9Yt37019600
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Wed, 14 May 2014 05:20:36 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-30.ams2.redhat.com
-	[10.36.116.30])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s4E9KEPP030453
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 14 May 2014 05:20:15 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 95321200D2; Wed, 14 May 2014 11:20:13 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: "Dr. David Alan Gilbert \(git\)" <dgilbert@redhat.com>
+	verify=OK); Wed, 14 May 2014 05:34:55 -0400
+Received: from work-vm (vpn1-6-225.ams2.redhat.com [10.36.6.225])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s4E9YnCG020784
+	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
+	Wed, 14 May 2014 05:34:53 -0400
+Date: Wed, 14 May 2014 10:34:49 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20140514093448.GM2381@work-vm>
 References: <1399374955-29082-1-git-send-email-dgilbert@redhat.com>
-Date: Wed, 14 May 2014 11:20:13 +0200
-In-Reply-To: <1399374955-29082-1-git-send-email-dgilbert@redhat.com> (David
-	Alan Gilbert's message of "Tue, 6 May 2014 12:15:55 +0100")
-Message-ID: <87lhu4hg36.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.2 (gnu/linux)
+	<87lhu4hg36.fsf@blackfin.pond.sub.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87lhu4hg36.fsf@blackfin.pond.sub.org>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, wdauchy@gmail.com
@@ -52,76 +50,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 May 2014 09:20:58 -0000
+X-List-Received-Date: Wed, 14 May 2014 09:35:13 -0000
 
-"Dr. David Alan Gilbert (git)" <dgilbert@redhat.com> writes:
+* Markus Armbruster (armbru@redhat.com) wrote:
+> "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com> writes:
+> 
+> > From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> >
+> > The 'name' option silently failed when used in config files
+> > ( http://lists.gnu.org/archive/html/qemu-devel/2014-04/msg00378.html )
+> >
+> > Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> > Reported-by: William Dauchy <wdauchy@gmail.com>
+> > ---
+> >  vl.c | 9 +++++++--
+> >  1 file changed, 7 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/vl.c b/vl.c
+> > index 8411a4a..47c199a 100644
+> > --- a/vl.c
+> > +++ b/vl.c
+> > @@ -965,7 +965,7 @@ static int parse_sandbox(QemuOpts *opts, void *opaque)
+> >      return 0;
+> >  }
+> >  
+> > -static void parse_name(QemuOpts *opts)
+> > +static int parse_name(QemuOpts *opts, void *opaque)
+> >  {
+> >      const char *proc_name;
+> >  
+> > @@ -978,6 +978,8 @@ static void parse_name(QemuOpts *opts)
+> >      if (proc_name) {
+> >          os_set_proc_name(proc_name);
+> >      }
+> > +
+> > +    return 0;
+> >  }
+> >  
+> >  bool usb_enabled(bool default_usb)
+> > @@ -3780,7 +3782,6 @@ int main(int argc, char **argv, char **envp)
+> >                  if (!opts) {
+> >                      exit(1);
+> >                  }
+> > -                parse_name(opts);
+> >                  break;
+> >              case QEMU_OPTION_prom_env:
+> >                  if (nb_prom_envs >= MAX_PROM_ENVS) {
+> > @@ -3955,6 +3956,10 @@ int main(int argc, char **argv, char **envp)
+> >          exit(1);
+> >      }
+> >  
+> > +    if (qemu_opts_foreach(qemu_find_opts("name"), parse_name, NULL, 1)) {
+> > +        exit(1);
+> > +    }
+> > +
+> 
+> This will never exit, but that's okay.
 
-> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
->
-> The 'name' option silently failed when used in config files
-> ( http://lists.gnu.org/archive/html/qemu-devel/2014-04/msg00378.html )
->
-> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> Reported-by: William Dauchy <wdauchy@gmail.com>
-> ---
->  vl.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
->
-> diff --git a/vl.c b/vl.c
-> index 8411a4a..47c199a 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -965,7 +965,7 @@ static int parse_sandbox(QemuOpts *opts, void *opaque)
->      return 0;
->  }
->  
-> -static void parse_name(QemuOpts *opts)
-> +static int parse_name(QemuOpts *opts, void *opaque)
->  {
->      const char *proc_name;
->  
-> @@ -978,6 +978,8 @@ static void parse_name(QemuOpts *opts)
->      if (proc_name) {
->          os_set_proc_name(proc_name);
->      }
-> +
-> +    return 0;
->  }
->  
->  bool usb_enabled(bool default_usb)
-> @@ -3780,7 +3782,6 @@ int main(int argc, char **argv, char **envp)
->                  if (!opts) {
->                      exit(1);
->                  }
-> -                parse_name(opts);
->                  break;
->              case QEMU_OPTION_prom_env:
->                  if (nb_prom_envs >= MAX_PROM_ENVS) {
-> @@ -3955,6 +3956,10 @@ int main(int argc, char **argv, char **envp)
->          exit(1);
->      }
->  
-> +    if (qemu_opts_foreach(qemu_find_opts("name"), parse_name, NULL, 1)) {
-> +        exit(1);
-> +    }
-> +
+Ah, because my parse_name currently never fails?
 
-This will never exit, but that's okay.
+> >  #ifndef _WIN32
+> >      if (qemu_opts_foreach(qemu_find_opts("add-fd"), parse_add_fd, NULL, 1)) {
+> >          exit(1);
+> 
+> -readconfig stores the configuration read in QemuOpts.  Command line
+> option parsing should do the same, and no more.  In particular it should
+> not act upon the option.  That needs to be done separately, where both
+> command line and -readconfig settings are visible in QemuOpts.
+> 
+> Your patch does exactly that.  I think amending the commit message with
+> the previous paragraph would improve it.
+> 
+> Have you checked command line option parsing (the big switch) for
+> similar problems?
 
->  #ifndef _WIN32
->      if (qemu_opts_foreach(qemu_find_opts("add-fd"), parse_add_fd, NULL, 1)) {
->          exit(1);
+I hadn't, other than fixing up -name; tbh It's taken me a while to understand
+how QemuOpts is supposed to work (and hence why I didn't get this in the 1st
+patch); I'd seen the qemu_opts_foreach uses at the bottom of the switch, but
+since they looked like a loop, I'd assumed they were only for options with
+multiple sets of values and not looked any further.
 
--readconfig stores the configuration read in QemuOpts.  Command line
-option parsing should do the same, and no more.  In particular it should
-not act upon the option.  That needs to be done separately, where both
-command line and -readconfig settings are visible in QemuOpts.
+The big switch seems to be a mix of a lot of different ways of doing things;
+A quick scan shows rtc, option_rom, usb_device, and others all use qemu_opts_parse
+in the big switch but also taking an action in the switch.
 
-Your patch does exactly that.  I think amending the commit message with
-the previous paragraph would improve it.
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
-Have you checked command line option parsing (the big switch) for
-similar problems?
+Thanks.
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Dave
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
