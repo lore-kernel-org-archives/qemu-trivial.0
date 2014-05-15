@@ -1,42 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WkuWT-0000vj-05
-	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2014 08:12:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42881)
+	id 1WkuuH-0002fx-Hf
+	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2014 08:37:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50305)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1WkuWL-0000lP-A9
-	for qemu-trivial@nongnu.org; Thu, 15 May 2014 08:12:26 -0400
+	(envelope-from <jcmvbkbc@gmail.com>) id 1WkuuF-0002bt-LP
+	for qemu-trivial@nongnu.org; Thu, 15 May 2014 08:37:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1WkuWG-0005ht-C9
-	for qemu-trivial@nongnu.org; Thu, 15 May 2014 08:12:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:25635)
+	(envelope-from <jcmvbkbc@gmail.com>) id 1WkuuE-0006eL-Pl
+	for qemu-trivial@nongnu.org; Thu, 15 May 2014 08:37:03 -0400
+Received: from mail-ob0-x231.google.com ([2607:f8b0:4003:c01::231]:64163)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1WkuW1-0005gQ-RG; Thu, 15 May 2014 08:12:02 -0400
-Received: from int-mx12.intmail.prod.int.phx2.redhat.com
-	(int-mx12.intmail.prod.int.phx2.redhat.com [10.5.11.25])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4FCBwmu008482
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Thu, 15 May 2014 08:11:58 -0400
-Received: from redhat.com (ovpn-116-58.ams2.redhat.com [10.36.116.58])
-	by int-mx12.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id s4FCBtex003165; Thu, 15 May 2014 08:11:56 -0400
-Date: Thu, 15 May 2014 15:10:50 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Message-ID: <20140515121050.GB22874@redhat.com>
-References: <20140515114943.B2D392F44B@mono.eik.bme.hu>
+	(envelope-from <jcmvbkbc@gmail.com>)
+	id 1WkuuB-0006dF-9w; Thu, 15 May 2014 08:36:59 -0400
+Received: by mail-ob0-f177.google.com with SMTP id wp4so1097878obc.22
+	for <multiple recipients>; Thu, 15 May 2014 05:36:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=h8bzsYaW/ZwUHGVgNmQJ4MvCwNVfsTcIm/ata3gmkBo=;
+	b=SSq6aHj/2nDtv/ZPGtVY3+wPXJz3xSLm9gyvuiOY/8aV23xk9RAdXBIDkZbAI/bNzD
+	wmbtAeYRdplme1/fm1teIaJy04wvmrLKFEtR6Xe1zjk38DoebuErIEJ7GG6rn5UBcVw6
+	FQnpZuLcp11mbSrqwnI3jJgOu4D6MSGHvJHTW2Ogs3G/IeNDO2S42FrZHdDVscUOb92a
+	XHHbNkmB9yC29CGOjhKdi7s7Zs3+JqqmNQafVDAE80k76Oxyn2ytARmQP6l3fDhRDkP5
+	UTlgZ3bW2dipGp1V7t4S1VuusyX4sHS7ZcQ4ENPQhuRHQQYz7FaWYKLoB26tiDPGXLrt
+	SgCg==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20140515114943.B2D392F44B@mono.eik.bme.hu>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH v4] serial-pci: Set prog interface field
- of pci config to 16550 compatible
+X-Received: by 10.182.236.229 with SMTP id ux5mr9905578obc.12.1400157418369;
+	Thu, 15 May 2014 05:36:58 -0700 (PDT)
+Received: by 10.76.166.164 with HTTP; Thu, 15 May 2014 05:36:58 -0700 (PDT)
+In-Reply-To: <537469DD.7010503@hp.com>
+References: <1399964954-10842-1-git-send-email-zhen-hual@hp.com>
+	<1399964954-10842-5-git-send-email-zhen-hual@hp.com>
+	<CAMo8Bf+nF1CXjs2VVomD0u2eNs_P6hRgUxbESHDiDb8ANriyCg@mail.gmail.com>
+	<537469DD.7010503@hp.com>
+Date: Thu, 15 May 2014 16:36:58 +0400
+Message-ID: <CAMo8BfLfvYUq6BFr6_3tcdNK=hU4qm1bd3gz8BrwWTvO_c0J2g@mail.gmail.com>
+From: Max Filippov <jcmvbkbc@gmail.com>
+To: "Li, ZhenHua" <zhen-hual@hp.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c01::231
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
+	qemu-stable <qemu-stable@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/4] Support more than 255
+	cpus: runtime check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,108 +56,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 May 2014 12:12:27 -0000
+X-List-Received-Date: Thu, 15 May 2014 12:37:04 -0000
 
-On Thu, Feb 27, 2014 at 02:05:05AM +0100, BALATON Zoltan wrote:
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+On Thu, May 15, 2014 at 11:16 AM, Li, ZhenHua <zhen-hual@hp.com> wrote:
+> Maybe it should be 4 bytes for 4096 (0x1000).
 
-Applied, thanks for your persistence!
+I'd say that 2 bytes should be enough, but actually I don't see
+why anybody would care in that function how many bytes it is.
 
-> ---
-> 
->  v2: resubmission after pc-2.1 is added with the multiport case
->  v3: added compatibility check to avoid changing earlier than pc-2.1
->  v4: renamed compat property to prog_if
-> 
->  hw/char/serial-pci.c |  7 +++++++
->  include/hw/i386/pc.h | 15 +++++++++++++++
->  2 files changed, 22 insertions(+)
-> 
-> diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
-> index 991c99f..acccc9c 100644
-> --- a/hw/char/serial-pci.c
-> +++ b/hw/char/serial-pci.c
-> @@ -34,6 +34,7 @@
->  typedef struct PCISerialState {
->      PCIDevice dev;
->      SerialState state;
-> +    uint8_t prog_if;
->  } PCISerialState;
->  
->  typedef struct PCIMultiSerialState {
-> @@ -44,6 +45,7 @@ typedef struct PCIMultiSerialState {
->      SerialState  state[PCI_SERIAL_MAX_PORTS];
->      uint32_t     level[PCI_SERIAL_MAX_PORTS];
->      qemu_irq     *irqs;
-> +    uint8_t      prog_if;
->  } PCIMultiSerialState;
->  
->  static int serial_pci_init(PCIDevice *dev)
-> @@ -60,6 +62,7 @@ static int serial_pci_init(PCIDevice *dev)
->          return -1;
->      }
->  
-> +    pci->dev.config[PCI_CLASS_PROG] = pci->prog_if;
->      pci->dev.config[PCI_INTERRUPT_PIN] = 0x01;
->      s->irq = pci_allocate_irq(&pci->dev);
->  
-> @@ -101,6 +104,7 @@ static int multi_serial_pci_init(PCIDevice *dev)
->      assert(pci->ports > 0);
->      assert(pci->ports <= PCI_SERIAL_MAX_PORTS);
->  
-> +    pci->dev.config[PCI_CLASS_PROG] = pci->prog_if;
->      pci->dev.config[PCI_INTERRUPT_PIN] = 0x01;
->      memory_region_init(&pci->iobar, OBJECT(pci), "multiserial", 8 * pci->ports);
->      pci_register_bar(&pci->dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &pci->iobar);
-> @@ -177,12 +181,14 @@ static const VMStateDescription vmstate_pci_multi_serial = {
->  
->  static Property serial_pci_properties[] = {
->      DEFINE_PROP_CHR("chardev",  PCISerialState, state.chr),
-> +    DEFINE_PROP_UINT8("prog_if",  PCISerialState, prog_if, 0x02),
->      DEFINE_PROP_END_OF_LIST(),
->  };
->  
->  static Property multi_2x_serial_pci_properties[] = {
->      DEFINE_PROP_CHR("chardev1",  PCIMultiSerialState, state[0].chr),
->      DEFINE_PROP_CHR("chardev2",  PCIMultiSerialState, state[1].chr),
-> +    DEFINE_PROP_UINT8("prog_if",  PCIMultiSerialState, prog_if, 0x02),
->      DEFINE_PROP_END_OF_LIST(),
->  };
->  
-> @@ -191,6 +197,7 @@ static Property multi_4x_serial_pci_properties[] = {
->      DEFINE_PROP_CHR("chardev2",  PCIMultiSerialState, state[1].chr),
->      DEFINE_PROP_CHR("chardev3",  PCIMultiSerialState, state[2].chr),
->      DEFINE_PROP_CHR("chardev4",  PCIMultiSerialState, state[3].chr),
-> +    DEFINE_PROP_UINT8("prog_if",  PCIMultiSerialState, prog_if, 0x02),
->      DEFINE_PROP_END_OF_LIST(),
->  };
->  
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 32a7687..552fbd8 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -271,6 +271,21 @@ bool e820_get_entry(int, uint32_t, uint64_t *, uint64_t *);
->              .driver   = "apic",\
->              .property = "version",\
->              .value    = stringify(0x11),\
-> +        },\
-> +        {\
-> +            .driver   = "pci-serial",\
-> +            .property = "prog_if",\
-> +            .value    = stringify(0),\
-> +        },\
-> +        {\
-> +            .driver   = "pci-serial-2x",\
-> +            .property = "prof_if",\
-> +            .value    = stringify(0),\
-> +        },\
-> +        {\
-> +            .driver   = "pci-serial-4x",\
-> +            .property = "prog_if",\
-> +            .value    = stringify(0),\
->          }
->  
->  #define PC_COMPAT_1_7 \
-> -- 
-> 1.8.1.5
+> On 05/13/2014 04:19 PM, Max Filippov wrote:
+>>
+>> On Tue, May 13, 2014 at 11:09 AM, Li, Zhen-Hua <zhen-hual@hp.com> wrote:
+>>>
+>>> From: "Li, ZhenHua" <zhen-hual@hp.com>
+>>>
+>>> There is some runtime check for max cpu count. Make them support 4096
+>>> cpus.
+>>>
+>>> Signed-off-by: Li, ZhenHua <zhen-hual@hp.com>
+>>> ---
+>>>   hw/i386/acpi-build.c | 8 ++++----
+>>>   1 file changed, 4 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+>>> index c98df88..5c3bf10 100644
+>>> --- a/hw/i386/acpi-build.c
+>>> +++ b/hw/i386/acpi-build.c
+>>
+>> [...]
+>>
+>>> @@ -680,7 +680,7 @@ build_append_notify_method(GArray *device, const char
+>>> *name,
+>>>       for (i = 0; i < count; i++) {
+>>>           GArray *target = build_alloc_array();
+>>>           build_append_nameseg(target, format, i);
+
+BTW, build_append_nameseg also expects format string that makes a string of
+4 characters, otherwise it asserts.
+
+>>> -        assert(i < 256); /* Fits in 1 byte */
+>>> +        assert(i < 4096); /* Fits in 1 byte */
+>>
+>> The comment is no longer true.
+>> Also the function build_append_notify_method is called with format
+>> argument
+>> set to "CP%0.02X", looks like this should be changed to "CP%0.03X".
+
+-- 
+Thanks.
+-- Max
 
