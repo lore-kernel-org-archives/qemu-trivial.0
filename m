@@ -1,50 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WkuuH-0002fx-Hf
-	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2014 08:37:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50305)
+	id 1Wl0IZ-0008Gu-Ed
+	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2014 14:22:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35964)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1WkuuF-0002bt-LP
-	for qemu-trivial@nongnu.org; Thu, 15 May 2014 08:37:04 -0400
+	(envelope-from <rth7680@gmail.com>) id 1Wl0IS-00083t-Sl
+	for qemu-trivial@nongnu.org; Thu, 15 May 2014 14:22:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1WkuuE-0006eL-Pl
-	for qemu-trivial@nongnu.org; Thu, 15 May 2014 08:37:03 -0400
-Received: from mail-ob0-x231.google.com ([2607:f8b0:4003:c01::231]:64163)
+	(envelope-from <rth7680@gmail.com>) id 1Wl0IO-0006X2-3Z
+	for qemu-trivial@nongnu.org; Thu, 15 May 2014 14:22:24 -0400
+Received: from mail-qg0-x22d.google.com ([2607:f8b0:400d:c04::22d]:63213)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>)
-	id 1WkuuB-0006dF-9w; Thu, 15 May 2014 08:36:59 -0400
-Received: by mail-ob0-f177.google.com with SMTP id wp4so1097878obc.22
-	for <multiple recipients>; Thu, 15 May 2014 05:36:58 -0700 (PDT)
+	(envelope-from <rth7680@gmail.com>)
+	id 1Wl0IE-0006VI-B2; Thu, 15 May 2014 14:22:10 -0400
+Received: by mail-qg0-f45.google.com with SMTP id z60so2362514qgd.4
+	for <multiple recipients>; Thu, 15 May 2014 11:22:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=h8bzsYaW/ZwUHGVgNmQJ4MvCwNVfsTcIm/ata3gmkBo=;
-	b=SSq6aHj/2nDtv/ZPGtVY3+wPXJz3xSLm9gyvuiOY/8aV23xk9RAdXBIDkZbAI/bNzD
-	wmbtAeYRdplme1/fm1teIaJy04wvmrLKFEtR6Xe1zjk38DoebuErIEJ7GG6rn5UBcVw6
-	FQnpZuLcp11mbSrqwnI3jJgOu4D6MSGHvJHTW2Ogs3G/IeNDO2S42FrZHdDVscUOb92a
-	XHHbNkmB9yC29CGOjhKdi7s7Zs3+JqqmNQafVDAE80k76Oxyn2ytARmQP6l3fDhRDkP5
-	UTlgZ3bW2dipGp1V7t4S1VuusyX4sHS7ZcQ4ENPQhuRHQQYz7FaWYKLoB26tiDPGXLrt
-	SgCg==
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=cd61w/51YmXtn4zc8SGnRDL/ZCMVStQKiAeTvq3MKYo=;
+	b=ZpRkZ5BuEebsqzISX7+MYu7AGwrOgmUm0HgI/JhXJ9IcTHrvLcbRaW86XoA3lbksW2
+	DBbToKKcg0YFoX8nOqDJgk8CsjV/k2ObVWRAXG+HSxawA490Nmr8UbQvk5U4zi+CrYvF
+	74esRaYHdY8evVp6/aDounTP2BgiVGFyOMlpVDkZCgqQsbv7hi551iXBo6FtAFfs486K
+	b8jVsBYVMKX5x+uzWtBaBytoChs7XFLxmDcWs2X5pXg0Zx+qdnOAJ93Ah0oIkY3fbMcZ
+	HgVsvKrk/VAuo0+5hROFXsIQyaTwGSmi2bbqMyXr05dlHoIaxupGzdroafAIVwaHjAny
+	jG0g==
+X-Received: by 10.224.69.130 with SMTP id z2mr2289403qai.87.1400178129242;
+	Thu, 15 May 2014 11:22:09 -0700 (PDT)
+Received: from anchor.twiddle.net
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by mx.google.com with ESMTPSA id f3sm9034793qag.7.2014.05.15.11.22.06
+	for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Thu, 15 May 2014 11:22:07 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Message-ID: <537505CD.1020105@twiddle.net>
+Date: Thu, 15 May 2014 11:22:05 -0700
+From: Richard Henderson <rth@twiddle.net>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
 MIME-Version: 1.0
-X-Received: by 10.182.236.229 with SMTP id ux5mr9905578obc.12.1400157418369;
-	Thu, 15 May 2014 05:36:58 -0700 (PDT)
-Received: by 10.76.166.164 with HTTP; Thu, 15 May 2014 05:36:58 -0700 (PDT)
-In-Reply-To: <537469DD.7010503@hp.com>
-References: <1399964954-10842-1-git-send-email-zhen-hual@hp.com>
-	<1399964954-10842-5-git-send-email-zhen-hual@hp.com>
-	<CAMo8Bf+nF1CXjs2VVomD0u2eNs_P6hRgUxbESHDiDb8ANriyCg@mail.gmail.com>
-	<537469DD.7010503@hp.com>
-Date: Thu, 15 May 2014 16:36:58 +0400
-Message-ID: <CAMo8BfLfvYUq6BFr6_3tcdNK=hU4qm1bd3gz8BrwWTvO_c0J2g@mail.gmail.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-To: "Li, ZhenHua" <zhen-hual@hp.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1399051958-9459-1-git-send-email-peter.maydell@linaro.org>
+	<5363E860.6060307@twiddle.net>
+	<CAFEAcA8UPr1Y8W067Hn7aJB0E1qoWKV3-xDF=DHFVKH+8BHMbw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8UPr1Y8W067Hn7aJB0E1qoWKV3-xDF=DHFVKH+8BHMbw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c01::231
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>,
-	qemu-stable <qemu-stable@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/4] Support more than 255
-	cpus: runtime check
+X-Received-From: 2607:f8b0:400d:c04::22d
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH] bswap.h: Rename ldl_p, stl_p,
+ etc to ldl_he_p, stl_he_p, etc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,53 +65,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 May 2014 12:37:04 -0000
+X-List-Received-Date: Thu, 15 May 2014 18:22:30 -0000
 
-On Thu, May 15, 2014 at 11:16 AM, Li, ZhenHua <zhen-hual@hp.com> wrote:
-> Maybe it should be 4 bytes for 4096 (0x1000).
-
-I'd say that 2 bytes should be enough, but actually I don't see
-why anybody would care in that function how many bytes it is.
-
-> On 05/13/2014 04:19 PM, Max Filippov wrote:
->>
->> On Tue, May 13, 2014 at 11:09 AM, Li, Zhen-Hua <zhen-hual@hp.com> wrote:
+On 05/15/2014 11:13 AM, Peter Maydell wrote:
+> On 2 May 2014 19:48, Richard Henderson <rth@twiddle.net> wrote:
+>> On 05/02/2014 10:32 AM, Peter Maydell wrote:
+>>> We have an unfortunate naming clash between the functions
+>>> ldl_p, stl_p, etc defined in bswap.h (which have semantics
+>>> "load/store in host endianness") and the #defines of the same
+>>> name in cpu-all.h (which have the semantics "load/store in
+>>> target endianness").
 >>>
->>> From: "Li, ZhenHua" <zhen-hual@hp.com>
+>>> Fortunately it turns out that the only users of the bswap.h
+>>> functions are all within bswap.h itself, so we can simply
+>>> rename them to include a _he_ infix for "host endianness".
 >>>
->>> There is some runtime check for max cpu count. Make them support 4096
->>> cpus.
->>>
->>> Signed-off-by: Li, ZhenHua <zhen-hual@hp.com>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >>> ---
->>>   hw/i386/acpi-build.c | 8 ++++----
->>>   1 file changed, 4 insertions(+), 4 deletions(-)
+>>> Frankly I'm surprised that the only users of these functions
+>>> are the ones within bswap.h itself, but it's a lucky escape
+>>> from having to audit an enormous pile of code...
 >>>
->>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->>> index c98df88..5c3bf10 100644
->>> --- a/hw/i386/acpi-build.c
->>> +++ b/hw/i386/acpi-build.c
+>>> We had talked about changing the "target-endian" accessors
+>>> to be ldl_te_p &c, but given the uses aren't tangled together
+>>> as I feared they would be, I'm not sure we can justify the
+>>> global function rename.
 >>
->> [...]
+>> I'm surprised too, but... good news, I guess.
 >>
->>> @@ -680,7 +680,7 @@ build_append_notify_method(GArray *device, const char
->>> *name,
->>>       for (i = 0; i < count; i++) {
->>>           GArray *target = build_alloc_array();
->>>           build_append_nameseg(target, format, i);
+>> Reviewed-by: Richard Henderson <rth@twiddle.net>
+> 
+> Anybody care to suggest a submaintainer tree this should
+> go in via?
 
-BTW, build_append_nameseg also expects format string that makes a string of
-4 characters, otherwise it asserts.
+Trivial?  Ha, ha, only serious.
 
->>> -        assert(i < 256); /* Fits in 1 byte */
->>> +        assert(i < 4096); /* Fits in 1 byte */
->>
->> The comment is no longer true.
->> Also the function build_append_notify_method is called with format
->> argument
->> set to "CP%0.02X", looks like this should be changed to "CP%0.03X".
 
--- 
-Thanks.
--- Max
+r~
+
 
