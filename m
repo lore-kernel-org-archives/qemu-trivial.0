@@ -1,36 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WkpP3-0004Pg-Ux
-	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2014 02:44:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38448)
+	id 1WkpYI-0002ka-70
+	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2014 02:54:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40942)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1WkpOw-0004GL-KA
-	for qemu-trivial@nongnu.org; Thu, 15 May 2014 02:44:28 -0400
+	(envelope-from <kraxel@redhat.com>) id 1WkpYA-0002bD-OH
+	for qemu-trivial@nongnu.org; Thu, 15 May 2014 02:54:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1WkpOq-0006Yr-GX
-	for qemu-trivial@nongnu.org; Thu, 15 May 2014 02:44:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35216)
+	(envelope-from <kraxel@redhat.com>) id 1WkpY4-0001nB-Dm
+	for qemu-trivial@nongnu.org; Thu, 15 May 2014 02:53:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63735)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1WkpOd-0006WT-Un; Thu, 15 May 2014 02:44:04 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4F6i1kE030019
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Thu, 15 May 2014 02:44:01 -0400
-Received: from redhat.com (ovpn-116-58.ams2.redhat.com [10.36.116.58])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id s4F6hwOJ006607; Thu, 15 May 2014 02:43:59 -0400
-Date: Thu, 15 May 2014 09:42:54 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20140515064254.GE14456@redhat.com>
+	(envelope-from <kraxel@redhat.com>)
+	id 1WkpXr-0001jN-J1; Thu, 15 May 2014 02:53:35 -0400
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com
+	(int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4F6rXx9016554
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Thu, 15 May 2014 02:53:33 -0400
+Received: from [10.36.116.41] (ovpn-116-41.ams2.redhat.com [10.36.116.41])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP
+	id s4F6rUnR014641; Thu, 15 May 2014 02:53:31 -0400
+Message-ID: <1400136809.2922.23.camel@nilsson.home.kraxel.org>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Date: Thu, 15 May 2014 08:53:29 +0200
+In-Reply-To: <20140515064254.GE14456@redhat.com>
 References: <20140514200030.E7E842F456@mono.eik.bme.hu>
 	<1400136137.2922.16.camel@nilsson.home.kraxel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1400136137.2922.16.camel@nilsson.home.kraxel.org>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	<20140515064254.GE14456@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
@@ -49,37 +50,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 May 2014 06:44:28 -0000
+X-List-Received-Date: Thu, 15 May 2014 06:54:01 -0000
 
-On Thu, May 15, 2014 at 08:42:17AM +0200, Gerd Hoffmann wrote:
-> On Do, 2014-02-27 at 02:05 +0100, BALATON Zoltan wrote:
->        ^^^^^^^^^^
-> Looks like your clock is _way_ off.
+> > >  static Property serial_pci_properties[] = {
+> > >      DEFINE_PROP_CHR("chardev",  PCISerialState, state.chr),
+> > > +    DEFINE_PROP_UINT8("compat",  PCISerialState, compat, 0),
+> > >      DEFINE_PROP_END_OF_LIST(),
+> > >  };
+> > 
+> > mst, do you take that through the pci tree?
+> > 
+> > cheers,
+> >   Gerd
+> > 
 > 
-> > +    if (!pci->compat) {
-> > +        pci->dev.config[PCI_CLASS_PROG] = 0x02; /* 16550 compatible */
-> > +    }
-> 
-> >  static Property serial_pci_properties[] = {
-> >      DEFINE_PROP_CHR("chardev",  PCISerialState, state.chr),
-> > +    DEFINE_PROP_UINT8("compat",  PCISerialState, compat, 0),
-> >      DEFINE_PROP_END_OF_LIST(),
-> >  };
-> 
-> > +        {\
-> > +            .driver   = "pci-serial",\
-> > +            .property = "compat",\
-> > +            .value    = stringify(1),\
-> > +        },\
-> 
-> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-> 
-> mst, do you take that through the pci tree?
-> 
-> cheers,
->   Gerd
-> 
+> Yes but I'd like the property renamed. Agree?
 
-Yes but I'd like the property renamed. Agree?
+Yes, something more descriptive is reasonable.
+
+cheers,
+  Gerd
+
 
 
