@@ -1,31 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WlHkL-0007GP-Up
-	for mharc-qemu-trivial@gnu.org; Fri, 16 May 2014 09:00:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44214)
+	id 1WlZO1-0004Nn-4o
+	for mharc-qemu-trivial@gnu.org; Sat, 17 May 2014 03:50:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48021)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WlHkJ-0007E1-AZ
-	for qemu-trivial@nongnu.org; Fri, 16 May 2014 09:00:20 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WlZNt-0004FM-6H
+	for qemu-trivial@nongnu.org; Sat, 17 May 2014 03:50:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WlHkF-0001dI-9s
-	for qemu-trivial@nongnu.org; Fri, 16 May 2014 09:00:19 -0400
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48163)
+	(envelope-from <mjt@tls.msk.ru>) id 1WlZNn-0004CI-1u
+	for qemu-trivial@nongnu.org; Sat, 17 May 2014 03:50:21 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:43144)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1WlHkC-0001Dm-T9; Fri, 16 May 2014 09:00:13 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1WlHk3-0008Kg-Uf; Fri, 16 May 2014 14:00:03 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WlZNa-0003fV-Gk; Sat, 17 May 2014 03:50:02 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 59AA24171A;
+	Sat, 17 May 2014 11:49:52 +0400 (MSK)
+Message-ID: <5377149F.8040702@msgid.tls.msk.ru>
+Date: Sat, 17 May 2014 11:49:51 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.5.0
+MIME-Version: 1.0
 To: qemu-devel@nongnu.org
-Date: Fri, 16 May 2014 14:00:03 +0100
-Message-Id: <1400245203-32005-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] iohandler.c: Properly initialize sigaction
-	struct
+References: <1399564447-19473-1-git-send-email-mjt@msgid.tls.msk.ru>
+In-Reply-To: <1399564447-19473-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Alon Levy <alevy@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] libcacard: g_malloc cleanups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,34 +44,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 May 2014 13:00:20 -0000
+X-List-Received-Date: Sat, 17 May 2014 07:50:27 -0000
 
-The code in qemu_init_child_watch() wasn't clearing the 'struct
-sigaction' before passing it to sigaction(); this meant that we
-would block a random set of signals while executing the SIGCHLD
-handler. Initialize properly by using memset() on the struct,
-as we do in similar cases elsewhere.
+08.05.2014 19:54, Michael Tokarev wrote:
+> This patch replaces g_malloc() in libcacard into g_new()
+> or g_new0() where appropriate (removing some init-to-zero
+> surrounding code), g_malloc+memcpy into g_memdup() and the
+> like.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Pretty harmless, but spotted by coverity.
+Applied to trivial-patches qeue, thanks!
 
- iohandler.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/iohandler.c b/iohandler.c
-index ae2ef8f..cca614f 100644
---- a/iohandler.c
-+++ b/iohandler.c
-@@ -191,6 +191,7 @@ static void qemu_init_child_watch(void)
-     struct sigaction act;
-     sigchld_bh = qemu_bh_new(sigchld_bh_handler, NULL);
- 
-+    memset(&act, 0, sizeof(act));
-     act.sa_handler = sigchld_handler;
-     act.sa_flags = SA_NOCLDSTOP;
-     sigaction(SIGCHLD, &act, NULL);
--- 
-1.9.2
-
+/mjt
 
