@@ -1,49 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wlyfy-0003r4-I1
-	for mharc-qemu-trivial@gnu.org; Sun, 18 May 2014 06:50:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41970)
+	id 1Wlyik-0005XP-Sa
+	for mharc-qemu-trivial@gnu.org; Sun, 18 May 2014 06:53:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42179)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1Wlyfr-0003jZ-JK
-	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:50:41 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Wlyia-0005Wf-Dc
+	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:53:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1Wlyfl-0007MH-Ka
-	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:50:35 -0400
-Received: from mail-wi0-x230.google.com ([2a00:1450:400c:c05::230]:33977)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WlyiR-0007x6-Cx
+	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:53:24 -0400
+Received: from mail-pa0-x236.google.com ([2607:f8b0:400e:c03::236]:50892)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>)
-	id 1WlyfY-0007KF-Vs; Sun, 18 May 2014 06:50:17 -0400
-Received: by mail-wi0-f176.google.com with SMTP id n15so2826126wiw.9
-	for <multiple recipients>; Sun, 18 May 2014 03:50:16 -0700 (PDT)
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1WlyiR-0007wt-5q; Sun, 18 May 2014 06:53:15 -0400
+Received: by mail-pa0-f54.google.com with SMTP id bj1so4502463pad.13
+	for <multiple recipients>; Sun, 18 May 2014 03:53:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=t+FhLz3Ri42rj+Rg/8/y1qnHjgmBbiLfFVVmcSjk2NY=;
-	b=VAJJe8r7XZcnbVRUWJVopwUlmlgmb5fQ8s7PZBl6wPSCQY8SJqPhHjFLdEtAxxchIC
-	zbsJ01sy6aLMLcJ47wnRI03sH0iIVyDSFOryoniG9lZsoGK1651Oc2FAN8QNaL2S359K
-	e0iHmmSMZSTiylUZfOuhfMp3xvkxIYMSo3+4HW4hEPoAU1KQy5x623kNcWtg2MGAkOY5
-	SLVeBszNyZT0qmYhbQyF1H7WBySFCTwtm/wbZMqiNNHnqHulW3TQ/d/9Pb/NblW2XsJs
-	De2nMcGo4ZRlQG67aKzo1rgmW8LAF7DA0s6LrNbYj7m5dTUHLQV0hOjAPa77QxSXcPxW
-	zEPQ==
-X-Received: by 10.180.94.226 with SMTP id df2mr7185235wib.1.1400410216023;
-	Sun, 18 May 2014 03:50:16 -0700 (PDT)
-Received: from localhost.localdomain ([41.104.79.242])
-	by mx.google.com with ESMTPSA id pm6sm2228191wjc.25.2014.05.18.03.50.14
-	for <multiple recipients>
-	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 18 May 2014 03:50:15 -0700 (PDT)
-From: Hani Benhabiles <kroosec@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Sun, 18 May 2014 11:50:05 +0100
-Message-Id: <1400410205-26152-2-git-send-email-kroosec@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
-In-Reply-To: <1400410205-26152-1-git-send-email-kroosec@gmail.com>
-References: <1400410205-26152-1-git-send-email-kroosec@gmail.com>
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=QQeBQDaHcf8BpRKWHiRFf3uyCwffLHAMkBN60U9pSCY=;
+	b=sGQRikRTIrhQNMaM5xydzgfzAjvXxsCX/NahXsg1t1kKK8BwZXhv/UAapbaWgEbSUS
+	seodUTu66BY/CWjQ0KEW2xJZmuz2LJ7pgSv6Xlc/Xi2AawTUDs2A/ovRbegThTpBDjb6
+	36SLbZAV/grS5oetFT7j91aOvfUeqIumoXWCaNfBex8RIpPAZ58z9Sfg4Hu8jsfwtK2o
+	yfA6RDXI2zb2DxbfjZZLf9MyRBDLoKyanoErLbe5wor8PAkc6fBXUmVYK9J/KPxlIhP1
+	3bhAUvMxQ6SFqMG+kpKFyRx45FJ1M8tBk06Y84tSWvOjUvpuv85HLhkJR3qRXuqj4p2H
+	03EQ==
+X-Received: by 10.69.26.70 with SMTP id iw6mr34656187pbd.98.1400410393288;
+	Sun, 18 May 2014 03:53:13 -0700 (PDT)
+Received: from [192.168.1.102] ([223.72.65.45])
+	by mx.google.com with ESMTPSA id
+	iv2sm24212297pbc.19.2014.05.18.03.53.10 for <multiple recipients>
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Sun, 18 May 2014 03:53:12 -0700 (PDT)
+Message-ID: <53789122.7080904@gmail.com>
+Date: Sun, 18 May 2014 18:53:22 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:17.0) Gecko/20130625 Thunderbird/17.0.7
+MIME-Version: 1.0
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <536E20CC.4030401@gmail.com> <537715BF.90005@msgid.tls.msk.ru>
+In-Reply-To: <537715BF.90005@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::230
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, kwolf@redhat.com,
-	stefanha@redhat.com
-Subject: [Qemu-trivial] [PATCH 2/2] nbd: Don't validate from and len in
-	NBD_CMD_DISC.
+X-Received-From: 2607:f8b0:400e:c03::236
+Cc: mst@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>, quintela@redhat.com,
+	QEMU Developers <qemu-devel@nongnu.org>, owasserm@redhat.com,
+	pbonzini@redhat.com, Eric Blake <eblake@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] arch_init: Simplify code for
+	load_xbzrle()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,58 +61,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 18 May 2014 10:50:41 -0000
+X-List-Received-Date: Sun, 18 May 2014 10:53:33 -0000
 
-These values aren't used in this case.
+On 05/17/2014 03:54 PM, Michael Tokarev wrote:
+> 10.05.2014 16:51, Chen Gang wrote:
+>> For xbzrle_decode_buffer(), when decoding contents will exceed writing
+>> buffer, it will return -1, so need not check the return value whether
+>> large than writing buffer.
+>>
+>> And when failure occurs within load_xbzrle(), it always return -1
+>> without any resources which need release.
+>>
+>> So can remove the related checking statements, and also can remove 'rc'
+>> and 'ret' local variables,
+> 
+> Just one comment below.
+> 
+>> @@ -933,18 +932,13 @@ static int load_xbzrle(QEMUFile *f, ram_addr_t addr, void *host)
+>>      qemu_get_buffer(f, xbzrle_decoded_buf, xh_len);
+>>  
+>>      /* decode RLE */
+>> -    ret = xbzrle_decode_buffer(xbzrle_decoded_buf, xh_len, host,
+>> -                               TARGET_PAGE_SIZE);
+>> -    if (ret == -1) {
+>> +    if (xbzrle_decode_buffer(xbzrle_decoded_buf, xh_len, host,
+>> +                             TARGET_PAGE_SIZE) == -1) {
+> 
+> Can we compare like '< 0' here, not like '== -1' ?
 
-Currently, the from field in the request sent by the nbd kernel module leading
-to a false error message when ending the connection with the client.
+That's fine to me.
 
-$ qemu-nbd some.img -v
-// After nbd-client -d /dev/nbd0
-nbd.c:nbd_trip():L1031: From: 18446744073709551104, Len: 0, Size: 20971520,
-Offset: 0
-nbd.c:nbd_trip():L1032: requested operation past EOF--bad client?
-nbd.c:nbd_receive_request():L638: read failed
+> Are there any other possible return values from xbzrle_decode_buffer()
+> which are less than zero but non-error?
+> 
 
-Signed-off-by: Hani Benhabiles <hani@linux.com>
----
- nbd.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+Although, at present, when it fails, it will only return -1.
 
-diff --git a/nbd.c b/nbd.c
-index e5084b6..dc076d7 100644
---- a/nbd.c
-+++ b/nbd.c
-@@ -1001,6 +1001,7 @@ static void nbd_trip(void *opaque)
-     struct nbd_request request;
-     struct nbd_reply reply;
-     ssize_t ret;
-+    uint32_t type;
+
+> To me, anything less than zero is always error (unless it is one of the
+> possible non-error values, like offset for example which can be negative).
+> 
+
+That sounds reasonable to me, too.
+
+> Especially having in mind that in the future, some function may extend
+> its error return to include the actual error code (like -errno), in which
+> case code which compares with -1 will not work anymore.
+> 
+
+Yeah, in the future, it may do.
+
+> Is it okay to me to apply this with s/== -1/< 0/ ?
+> 
+
+At least, it is OK to me.
+
+
+BTW: the related test code for xbzrle_decode_buffer() may also need
+improved (although, after read through, I still don't known what it
+really want to do).
+
+diff --git a/tests/test-xbzrle.c b/tests/test-xbzrle.c
+index db93b0a..c8b4e58 100644
+--- a/tests/test-xbzrle.c
++++ b/tests/test-xbzrle.c
+@@ -162,7 +162,7 @@ static void encode_decode_range(void)
+                                 PAGE_SIZE);
  
-     TRACE("Reading request.");
-     if (client->closing) {
-@@ -1023,8 +1024,8 @@ static void nbd_trip(void *opaque)
-         reply.error = -ret;
-         goto error_reply;
-     }
--
--    if ((request.from + request.len) > exp->size) {
-+    type = request.type & NBD_CMD_MASK_COMMAND;
-+    if (type != NBD_CMD_DISC && (request.from + request.len) > exp->size) {
-             LOG("From: %" PRIu64 ", Len: %u, Size: %" PRIu64
-             ", Offset: %" PRIu64 "\n",
-                     request.from, request.len,
-@@ -1033,7 +1034,7 @@ static void nbd_trip(void *opaque)
-         goto invalid_request;
-     }
+     rc = xbzrle_decode_buffer(compressed, dlen, test, PAGE_SIZE);
+-    g_assert(rc < PAGE_SIZE);
++    g_assert(rc < PAGE_SIZE && rc >= 0);
+     g_assert(memcmp(test, buffer, PAGE_SIZE) == 0);
  
--    switch (request.type & NBD_CMD_MASK_COMMAND) {
-+    switch (type) {
-     case NBD_CMD_READ:
-         TRACE("Request type is READ");
- 
+     g_free(buffer);
+
+Please help check when you have time. If necessary, I shall send related
+patch for it. (this fix may be still incorrect, if so, please help send
+related patch for it, and welcome to mark me as Reported-by for it).
+
+
+Thanks.
 -- 
-1.8.3.2
+Chen Gang
 
+Open, share and attitude like air, water and life which God blessed
 
