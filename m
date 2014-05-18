@@ -1,30 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WlfcQ-0000Ob-0G
-	for mharc-qemu-trivial@gnu.org; Sat, 17 May 2014 10:29:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49793)
+	id 1Wlyfx-0003oL-Ei
+	for mharc-qemu-trivial@gnu.org; Sun, 18 May 2014 06:50:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41964)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1WlfcJ-0000FZ-GJ
-	for qemu-trivial@nongnu.org; Sat, 17 May 2014 10:29:44 -0400
+	(envelope-from <kroosec@gmail.com>) id 1Wlyfq-0003iw-Gq
+	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:50:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1WlfcE-00085I-HA
-	for qemu-trivial@nongnu.org; Sat, 17 May 2014 10:29:39 -0400
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:57910)
+	(envelope-from <kroosec@gmail.com>) id 1Wlyfk-0007M4-Hh
+	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:50:34 -0400
+Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:53975)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1Wlfc2-00083O-Vz; Sat, 17 May 2014 10:29:23 -0400
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 8184017FB55; Sat, 17 May 2014 16:29:19 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
+	(envelope-from <kroosec@gmail.com>)
+	id 1WlyfY-0007K4-0x; Sun, 18 May 2014 06:50:16 -0400
+Received: by mail-wi0-f172.google.com with SMTP id hi2so2831183wib.5
+	for <multiple recipients>; Sun, 18 May 2014 03:50:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=HqLkg/5qqkMW6R4GPdMZup2+Snb041HawB6qm/9yavE=;
+	b=Vm5/5ln1ZfOSgOEl1BKyUsvcQ94nSIfPaEL9dgmnxn5R/cqvxn9sH4V1LSLcEJ/j04
+	07xQWlbRUGIpH7FmzGZ64rFpL9aVj4glLLdTdiwqdUkt17r8PsCkJnt6AwFeO5m3nQSD
+	bRkuTN5x4/p0L7dOXU1VYzUH+kYjiNnbYW6OHtVUsFalau6vJ2DEFq+4yGj0wSriAMXg
+	t+JbEBCMcAVMkysGiOlyUku+j+L+Yxt9fg0RfXZTEcNU7DYdct1tX/7NnIy4NrEaKsZP
+	vt9KItGGGj7eg0ZFRTzmauB7bNlMTTqoBFDqR1C4HaXlEhYETawoFM6QaHdxFBeV9pFq
+	GMzA==
+X-Received: by 10.180.96.225 with SMTP id dv1mr7166307wib.37.1400410214545;
+	Sun, 18 May 2014 03:50:14 -0700 (PDT)
+Received: from localhost.localdomain ([41.104.79.242])
+	by mx.google.com with ESMTPSA id pm6sm2228191wjc.25.2014.05.18.03.50.13
+	for <multiple recipients>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Sun, 18 May 2014 03:50:13 -0700 (PDT)
+From: Hani Benhabiles <kroosec@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sat, 17 May 2014 16:29:18 +0200
-Message-Id: <1400336958-32463-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
+Date: Sun, 18 May 2014 11:50:04 +0100
+Message-Id: <1400410205-26152-1-git-send-email-kroosec@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] configure: Automatically select GTK+ 3.0 if
-	GTK+ 2.0 is unavailable
+X-Received-From: 2a00:1450:400c:c05::22c
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, kwolf@redhat.com,
+	stefanha@redhat.com
+Subject: [Qemu-trivial] [PATCH 1/2] nbd: Don't export a block device with no
+	medium.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,76 +53,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 May 2014 14:29:44 -0000
+X-List-Received-Date: Sun, 18 May 2014 10:50:40 -0000
 
-The configure option --with-gtkabi=3.0 is still supported, but no longer
-needed when GTK+-2.0 is missing. When no GTK+ ABI is selected by the
-user, configure first tries 2.0, then 3.0.
+The device is exported with erroneous values and can't be read.
 
-For some platforms (e.g. Windows) newer binaries of GTK+ are only
-available for GTK+ 3.0. Now building on these platforms is a little bit
-easier.
+Before the patch:
+$ sudo nbd-client localhost -p 10809 /dev/nbd0 -name floppy0
+Negotiation: ..size = 17592186044415MB
+bs=1024, sz=18446744073709547520 bytes
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+$ sudo mount /dev/nbd0 /mnt/tmp/
+mount: block device /dev/nbd0 is write-protected, mounting read-only
+mount: /dev/nbd0: can't read superblock
+
+After the patch:
+(qemu) nbd_server_add ide0-hd0
+(qemu) nbd_server_add floppy0
+Device 'floppy0' has no medium
+
+Signed-off-by: Hani Benhabiles <hani@linux.com>
 ---
- configure |   22 +++++++++++++++++++---
- 1 file changed, 19 insertions(+), 3 deletions(-)
+ blockdev-nbd.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/configure b/configure
-index 605a0ec..678a106 100755
---- a/configure
-+++ b/configure
-@@ -317,7 +317,7 @@ glusterfs_discard="no"
- glusterfs_zerofill="no"
- virtio_blk_data_plane=""
- gtk=""
--gtkabi="2.0"
-+gtkabi=""
- vte=""
- tpm="no"
- libssh2=""
-@@ -1970,6 +1970,18 @@ fi
- ##########################################
- # GTK probe
+diff --git a/blockdev-nbd.c b/blockdev-nbd.c
+index 922cf56..a700d52 100644
+--- a/blockdev-nbd.c
++++ b/blockdev-nbd.c
+@@ -91,6 +91,10 @@ void qmp_nbd_server_add(const char *device, bool has_writable, bool writable,
+         error_set(errp, QERR_DEVICE_NOT_FOUND, device);
+         return;
+     }
++    if (!bdrv_is_inserted(bs)) {
++        error_set(errp, QERR_DEVICE_HAS_NO_MEDIUM, device);
++        return;
++    }
  
-+if test "$gtkabi" = ""; then
-+    # The GTK ABI was not specified explicitly, so try whether 2.0 is available.
-+    # Use 3.0 as a fallback if that is available.
-+    if $pkg_config --exists "gtk+-2.0 >= 2.18.0"; then
-+        gtkabi=2.0
-+    elif $pkg_config --exists "gtk+-3.0 >= 3.0.0"; then
-+        gtkabi=3.0
-+    else
-+        gtkabi=2.0
-+    fi
-+fi
-+
- if test "$gtk" != "no"; then
-     gtkpackage="gtk+-$gtkabi"
-     if test "$gtkabi" = "3.0" ; then
-@@ -1983,7 +1995,7 @@ if test "$gtk" != "no"; then
-         libs_softmmu="$gtk_libs $libs_softmmu"
-         gtk="yes"
-     elif test "$gtk" = "yes"; then
--        feature_not_found "gtk" "Install gtk2 or gtk3 (requires --with-gtkabi=3.0 option to configure) devel"
-+        feature_not_found "gtk" "Install gtk2 or gtk3 devel"
-     else
-         gtk="no"
-     fi
-@@ -2006,7 +2018,11 @@ if test "$vte" != "no"; then
-         libs_softmmu="$vte_libs $libs_softmmu"
-         vte="yes"
-     elif test "$vte" = "yes"; then
--        feature_not_found "vte" "Install libvte or libvte-2.90 (requires --with-gtkabi=3.0 option to configure) devel"
-+        if test "$gtkabi" = "3.0"; then
-+            feature_not_found "vte" "Install libvte-2.90 devel"
-+        else
-+            feature_not_found "vte" "Install libvte devel"
-+        fi
-     else
-         vte="no"
-     fi
+     if (!has_writable) {
+         writable = false;
 -- 
-1.7.10.4
+1.8.3.2
 
 
