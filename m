@@ -1,47 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wlyfx-0003oL-Ei
-	for mharc-qemu-trivial@gnu.org; Sun, 18 May 2014 06:50:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41964)
+	id 1Wlyfy-0003r4-I1
+	for mharc-qemu-trivial@gnu.org; Sun, 18 May 2014 06:50:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41970)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1Wlyfq-0003iw-Gq
-	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:50:40 -0400
+	(envelope-from <kroosec@gmail.com>) id 1Wlyfr-0003jZ-JK
+	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:50:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kroosec@gmail.com>) id 1Wlyfk-0007M4-Hh
-	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:50:34 -0400
-Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:53975)
+	(envelope-from <kroosec@gmail.com>) id 1Wlyfl-0007MH-Ka
+	for qemu-trivial@nongnu.org; Sun, 18 May 2014 06:50:35 -0400
+Received: from mail-wi0-x230.google.com ([2a00:1450:400c:c05::230]:33977)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <kroosec@gmail.com>)
-	id 1WlyfY-0007K4-0x; Sun, 18 May 2014 06:50:16 -0400
-Received: by mail-wi0-f172.google.com with SMTP id hi2so2831183wib.5
-	for <multiple recipients>; Sun, 18 May 2014 03:50:14 -0700 (PDT)
+	id 1WlyfY-0007KF-Vs; Sun, 18 May 2014 06:50:17 -0400
+Received: by mail-wi0-f176.google.com with SMTP id n15so2826126wiw.9
+	for <multiple recipients>; Sun, 18 May 2014 03:50:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=HqLkg/5qqkMW6R4GPdMZup2+Snb041HawB6qm/9yavE=;
-	b=Vm5/5ln1ZfOSgOEl1BKyUsvcQ94nSIfPaEL9dgmnxn5R/cqvxn9sH4V1LSLcEJ/j04
-	07xQWlbRUGIpH7FmzGZ64rFpL9aVj4glLLdTdiwqdUkt17r8PsCkJnt6AwFeO5m3nQSD
-	bRkuTN5x4/p0L7dOXU1VYzUH+kYjiNnbYW6OHtVUsFalau6vJ2DEFq+4yGj0wSriAMXg
-	t+JbEBCMcAVMkysGiOlyUku+j+L+Yxt9fg0RfXZTEcNU7DYdct1tX/7NnIy4NrEaKsZP
-	vt9KItGGGj7eg0ZFRTzmauB7bNlMTTqoBFDqR1C4HaXlEhYETawoFM6QaHdxFBeV9pFq
-	GMzA==
-X-Received: by 10.180.96.225 with SMTP id dv1mr7166307wib.37.1400410214545;
-	Sun, 18 May 2014 03:50:14 -0700 (PDT)
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=t+FhLz3Ri42rj+Rg/8/y1qnHjgmBbiLfFVVmcSjk2NY=;
+	b=VAJJe8r7XZcnbVRUWJVopwUlmlgmb5fQ8s7PZBl6wPSCQY8SJqPhHjFLdEtAxxchIC
+	zbsJ01sy6aLMLcJ47wnRI03sH0iIVyDSFOryoniG9lZsoGK1651Oc2FAN8QNaL2S359K
+	e0iHmmSMZSTiylUZfOuhfMp3xvkxIYMSo3+4HW4hEPoAU1KQy5x623kNcWtg2MGAkOY5
+	SLVeBszNyZT0qmYhbQyF1H7WBySFCTwtm/wbZMqiNNHnqHulW3TQ/d/9Pb/NblW2XsJs
+	De2nMcGo4ZRlQG67aKzo1rgmW8LAF7DA0s6LrNbYj7m5dTUHLQV0hOjAPa77QxSXcPxW
+	zEPQ==
+X-Received: by 10.180.94.226 with SMTP id df2mr7185235wib.1.1400410216023;
+	Sun, 18 May 2014 03:50:16 -0700 (PDT)
 Received: from localhost.localdomain ([41.104.79.242])
-	by mx.google.com with ESMTPSA id pm6sm2228191wjc.25.2014.05.18.03.50.13
+	by mx.google.com with ESMTPSA id pm6sm2228191wjc.25.2014.05.18.03.50.14
 	for <multiple recipients>
 	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 18 May 2014 03:50:13 -0700 (PDT)
+	Sun, 18 May 2014 03:50:15 -0700 (PDT)
 From: Hani Benhabiles <kroosec@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sun, 18 May 2014 11:50:04 +0100
-Message-Id: <1400410205-26152-1-git-send-email-kroosec@gmail.com>
+Date: Sun, 18 May 2014 11:50:05 +0100
+Message-Id: <1400410205-26152-2-git-send-email-kroosec@gmail.com>
 X-Mailer: git-send-email 1.8.3.2
+In-Reply-To: <1400410205-26152-1-git-send-email-kroosec@gmail.com>
+References: <1400410205-26152-1-git-send-email-kroosec@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22c
+X-Received-From: 2a00:1450:400c:c05::230
 Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, kwolf@redhat.com,
 	stefanha@redhat.com
-Subject: [Qemu-trivial] [PATCH 1/2] nbd: Don't export a block device with no
-	medium.
+Subject: [Qemu-trivial] [PATCH 2/2] nbd: Don't validate from and len in
+	NBD_CMD_DISC.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,44 +55,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 18 May 2014 10:50:40 -0000
+X-List-Received-Date: Sun, 18 May 2014 10:50:41 -0000
 
-The device is exported with erroneous values and can't be read.
+These values aren't used in this case.
 
-Before the patch:
-$ sudo nbd-client localhost -p 10809 /dev/nbd0 -name floppy0
-Negotiation: ..size = 17592186044415MB
-bs=1024, sz=18446744073709547520 bytes
+Currently, the from field in the request sent by the nbd kernel module leading
+to a false error message when ending the connection with the client.
 
-$ sudo mount /dev/nbd0 /mnt/tmp/
-mount: block device /dev/nbd0 is write-protected, mounting read-only
-mount: /dev/nbd0: can't read superblock
-
-After the patch:
-(qemu) nbd_server_add ide0-hd0
-(qemu) nbd_server_add floppy0
-Device 'floppy0' has no medium
+$ qemu-nbd some.img -v
+// After nbd-client -d /dev/nbd0
+nbd.c:nbd_trip():L1031: From: 18446744073709551104, Len: 0, Size: 20971520,
+Offset: 0
+nbd.c:nbd_trip():L1032: requested operation past EOF--bad client?
+nbd.c:nbd_receive_request():L638: read failed
 
 Signed-off-by: Hani Benhabiles <hani@linux.com>
 ---
- blockdev-nbd.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ nbd.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/blockdev-nbd.c b/blockdev-nbd.c
-index 922cf56..a700d52 100644
---- a/blockdev-nbd.c
-+++ b/blockdev-nbd.c
-@@ -91,6 +91,10 @@ void qmp_nbd_server_add(const char *device, bool has_writable, bool writable,
-         error_set(errp, QERR_DEVICE_NOT_FOUND, device);
-         return;
-     }
-+    if (!bdrv_is_inserted(bs)) {
-+        error_set(errp, QERR_DEVICE_HAS_NO_MEDIUM, device);
-+        return;
-+    }
+diff --git a/nbd.c b/nbd.c
+index e5084b6..dc076d7 100644
+--- a/nbd.c
++++ b/nbd.c
+@@ -1001,6 +1001,7 @@ static void nbd_trip(void *opaque)
+     struct nbd_request request;
+     struct nbd_reply reply;
+     ssize_t ret;
++    uint32_t type;
  
-     if (!has_writable) {
-         writable = false;
+     TRACE("Reading request.");
+     if (client->closing) {
+@@ -1023,8 +1024,8 @@ static void nbd_trip(void *opaque)
+         reply.error = -ret;
+         goto error_reply;
+     }
+-
+-    if ((request.from + request.len) > exp->size) {
++    type = request.type & NBD_CMD_MASK_COMMAND;
++    if (type != NBD_CMD_DISC && (request.from + request.len) > exp->size) {
+             LOG("From: %" PRIu64 ", Len: %u, Size: %" PRIu64
+             ", Offset: %" PRIu64 "\n",
+                     request.from, request.len,
+@@ -1033,7 +1034,7 @@ static void nbd_trip(void *opaque)
+         goto invalid_request;
+     }
+ 
+-    switch (request.type & NBD_CMD_MASK_COMMAND) {
++    switch (type) {
+     case NBD_CMD_READ:
+         TRACE("Request type is READ");
+ 
 -- 
 1.8.3.2
 
