@@ -1,42 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WmISI-0004kK-6o
-	for mharc-qemu-trivial@gnu.org; Mon, 19 May 2014 03:57:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53571)
+	id 1WmIUx-0005rS-OH
+	for mharc-qemu-trivial@gnu.org; Mon, 19 May 2014 04:00:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53940)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1WmISB-0004b0-FW
-	for qemu-trivial@nongnu.org; Mon, 19 May 2014 03:57:53 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WmIUp-0005m2-Mt
+	for qemu-trivial@nongnu.org; Mon, 19 May 2014 04:00:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1WmIS5-0001ud-5B
-	for qemu-trivial@nongnu.org; Mon, 19 May 2014 03:57:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:29789)
+	(envelope-from <mjt@tls.msk.ru>) id 1WmIUj-0002nJ-Im
+	for qemu-trivial@nongnu.org; Mon, 19 May 2014 04:00:31 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:54256)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1WmIRr-0001ko-4r; Mon, 19 May 2014 03:57:27 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4J7vOXM010464
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 19 May 2014 03:57:25 -0400
-Received: from [10.36.116.36] (ovpn-116-36.ams2.redhat.com [10.36.116.36])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s4J7vNo1012629; Mon, 19 May 2014 03:57:23 -0400
-Message-ID: <1400486241.32155.40.camel@nilsson.home.kraxel.org>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Date: Mon, 19 May 2014 09:57:21 +0200
-In-Reply-To: <5379B510.6000907@weilnetz.de>
-References: <1400336958-32463-1-git-send-email-sw@weilnetz.de>
-	<1400480365.32155.21.camel@nilsson.home.kraxel.org>
-	<5379B510.6000907@weilnetz.de>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WmIUV-0002kV-PA; Mon, 19 May 2014 04:00:11 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 225E941BE6;
+	Mon, 19 May 2014 12:00:10 +0400 (MSK)
+Message-ID: <5379BA0A.7080200@msgid.tls.msk.ru>
+Date: Mon, 19 May 2014 12:00:10 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.5.0
+MIME-Version: 1.0
+To: Hani Benhabiles <kroosec@gmail.com>, qemu-devel@nongnu.org
+References: <1400410205-26152-1-git-send-email-kroosec@gmail.com>
+In-Reply-To: <1400410205-26152-1-git-send-email-kroosec@gmail.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Automatically
- select GTK+ 3.0 if GTK+ 2.0 is unavailable
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, stefanha@redhat.com,
+	kwolf@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH 1/2] nbd: Don't export a block device
+ with no medium.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,24 +46,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 May 2014 07:57:53 -0000
+X-List-Received-Date: Mon, 19 May 2014 08:00:38 -0000
 
-  Hi,
+18.05.2014 14:50, Hani Benhabiles wrote:
+> The device is exported with erroneous values and can't be read.
+> 
+> Before the patch:
+> $ sudo nbd-client localhost -p 10809 /dev/nbd0 -name floppy0
+> Negotiation: ..size = 17592186044415MB
+> bs=1024, sz=18446744073709547520 bytes
+> 
+> $ sudo mount /dev/nbd0 /mnt/tmp/
+> mount: block device /dev/nbd0 is write-protected, mounting read-only
+> mount: /dev/nbd0: can't read superblock
+> 
+> After the patch:
+> (qemu) nbd_server_add ide0-hd0
+> (qemu) nbd_server_add floppy0
+> Device 'floppy0' has no medium
 
-> > Shouldn't we probe for gtk3 first?
+I'm not sure this is the right direction.  Maybe we should actually
+allow exporting devices with no medium to be able to insert medium
+later without re-starting the server?  Especially with -t (persistent).
+I dunno.  At least this is the decision which should not be left to
+a -trivial tree.
 
-> That sounds reasonable, but would result in a non trivial change for all
-> developers who build on a system with both GTK versions. I tried to
-> preserve the current default (2.0) as far as possible.
+Thank you!
 
-The differences between gtk2 + gtk3 are not that big, I don't expect
-much trouble from it.  Not sure why we have gtk2 as default, I guess
-it's because gtk3 wasn't widely used yet when gtk3 support was initially
-added.  That has changed meanwhile, and with auto-fallback-to-2.0 it's a
-moot point anyway.
-
-cheers,
-  Gerd
-
-
+/mjt
 
