@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WmfjD-00049L-Pr
-	for mharc-qemu-trivial@gnu.org; Tue, 20 May 2014 04:48:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39426)
+	id 1Wmu2k-0007Gi-H8
+	for mharc-qemu-trivial@gnu.org; Tue, 20 May 2014 20:06:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60692)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1Wmfj7-00041i-FI
-	for qemu-trivial@nongnu.org; Tue, 20 May 2014 04:48:54 -0400
+	(envelope-from <tamlokveer@gmail.com>) id 1Wmu2Z-00070E-8t
+	for qemu-trivial@nongnu.org; Tue, 20 May 2014 20:06:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1Wmfj2-0001ln-HQ
-	for qemu-trivial@nongnu.org; Tue, 20 May 2014 04:48:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56253)
+	(envelope-from <tamlokveer@gmail.com>) id 1Wmu2Q-0004by-8y
+	for qemu-trivial@nongnu.org; Tue, 20 May 2014 20:05:51 -0400
+Received: from mail-pa0-x234.google.com ([2607:f8b0:400e:c03::234]:54606)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1Wmfis-0001jy-8U; Tue, 20 May 2014 04:48:34 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4K8mRIO027504
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Tue, 20 May 2014 04:48:27 -0400
-Received: from noname.redhat.com (ovpn-116-74.ams2.redhat.com [10.36.116.74])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id s4K8mO7D024747; Tue, 20 May 2014 04:48:25 -0400
-Date: Tue, 20 May 2014 10:48:24 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20140520084824.GA4440@noname.redhat.com>
-References: <1400562514-22903-1-git-send-email-sw@weilnetz.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1400562514-22903-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	s4K8mRIO027504
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, qemu-trivial@nongnu.org,
-	Peter Lieven <pl@kamp.de>, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] block: Fix compiler warning (unused
-	local function)
+	(envelope-from <tamlokveer@gmail.com>)
+	id 1Wmu27-0004au-P4; Tue, 20 May 2014 20:05:23 -0400
+Received: by mail-pa0-f52.google.com with SMTP id fa1so802216pad.39
+	for <multiple recipients>; Tue, 20 May 2014 17:05:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=rWGmABgjTrOcSVXN82onigW/xguX+np0LKE0GCD4Ep8=;
+	b=fUnN2bBi5Csjp2ii5nif3qkW8uwJOTXZADX2BsxPgFFqy+uth8uTccwc7oG6XfUdlP
+	KTiVz9RWHyMU857XUN/b/INwQ3HiE/TeSkAQ9ddMtBnwomnNbAuxZJ5qfMcRFEXrPNPo
+	Kw0hDQaY4zBfiamDZUw9bFV8bMv0UYbhWa3gZNcUwXATNPB54p8bU8wcf4soah/gtzBD
+	fUpJP1efWQqVF1yVqzrIcVUSGud3MpRFg+Jgy7/KNjHk180T53YG5jC5QpRkVJ8Sp3gz
+	1bNjMzouBIJNYMylki253bdgVUA9DJSF+/2UCjCM+0asv/ZrdIotC+H59jvTx+n27ep5
+	R+4g==
+X-Received: by 10.66.180.200 with SMTP id dq8mr54976047pac.104.1400630722194; 
+	Tue, 20 May 2014 17:05:22 -0700 (PDT)
+Received: from localhost.localdomain ([162.105.146.101])
+	by mx.google.com with ESMTPSA id bz4sm5042881pbb.12.2014.05.20.17.05.19
+	for <multiple recipients>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 20 May 2014 17:05:21 -0700 (PDT)
+From: Le Tan <tamlokveer@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 21 May 2014 08:10:37 +0800
+Message-Id: <1400631039-7208-1-git-send-email-tamlokveer@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::234
+Cc: qemu-trivial@nongnu.org, peter.crosthwaite@xilinx.com, jan.kiszka@web.de,
+	afaerber@suse.de, Le Tan <tamlokveer@gmail.com>
+Subject: [Qemu-trivial] [PATCH 0/2] replace some fprintf(stderr,
+	...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,22 +53,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 May 2014 08:48:54 -0000
+X-List-Received-Date: Wed, 21 May 2014 00:06:00 -0000
 
-Am 20.05.2014 um 07:08 hat Stefan Weil geschrieben:
-> Warning from gcc:
->=20
-> block/iscsi.c:384:13: error:
->  =E2=80=98iscsi_allocationmap_is_allocated=E2=80=99 defined but not use=
-d [-Werror=3Dunused-function]
->=20
-> The function is only used if LIBISCSI_FEATURE_IOVECTOR is defined.
->=20
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+This series of patches replaces some more occurrences of fprintf(stderr, ...)
+with error_report() and removes the trailing "\n". Those for debugging are not
+changed.
 
-Looks like a duplicate of Jeff's "block: iscsi build fix if
-LIBISCSI_FEATURE_IOVECTOR is not defined", which Paolo already applied
-to his queue.
+Le Tan (2):
+  arch_init: replace fprintf(stderr,...) with error_report()
+  block: replace fprintf(stderr,...) with error_report()
 
-Kevin
+ arch_init.c            |   32 +++++++-------
+ block-migration.c      |    5 +--
+ block.c                |    4 +-
+ block/qcow2-refcount.c |  114 ++++++++++++++++++++++++------------------------
+ block/qcow2.c          |   18 ++++----
+ block/raw-posix.c      |   10 ++---
+ block/raw-win32.c      |    6 +--
+ block/ssh.c            |    2 +-
+ block/vdi.c            |   15 ++++---
+ block/vmdk.c           |   15 +++----
+ block/vpc.c            |    4 +-
+ block/vvfat.c          |   69 +++++++++++++++--------------
+ blockdev.c             |    6 +--
+ 13 files changed, 147 insertions(+), 153 deletions(-)
+
+-- 
+1.7.9.5
+
 
