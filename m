@@ -1,35 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WnwXK-0006D9-Iz
-	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 16:57:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48537)
+	id 1WnwZa-0007QX-AT
+	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 17:00:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49351)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WnwXD-000644-UU
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:57:52 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WnwZU-0007Fo-Pg
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 17:00:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WnwX8-0006rB-Tx
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:57:47 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:50619)
+	(envelope-from <mjt@tls.msk.ru>) id 1WnwZP-0007qu-Sc
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 17:00:08 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60101)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WnwWw-0006op-FG; Fri, 23 May 2014 16:57:30 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 5F8A242B94;
-	Sat, 24 May 2014 00:57:28 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 451D7644;
-	Sat, 24 May 2014 00:57:28 +0400 (MSK)
-Received: (nullmailer pid 22211 invoked by uid 1000);
-	Fri, 23 May 2014 20:57:28 -0000
+	id 1WnwZE-0007ai-8U; Fri, 23 May 2014 16:59:52 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3072042B94;
+	Sat, 24 May 2014 00:59:51 +0400 (MSK)
+Message-ID: <537FB6C7.5000900@msgid.tls.msk.ru>
+Date: Sat, 24 May 2014 00:59:51 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Sat, 24 May 2014 00:57:27 +0400
-Message-Id: <1400878647-22176-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.5.0
+MIME-Version: 1.0
+To: Markus Armbruster <armbru@redhat.com>
+References: <1399569594-31678-1-git-send-email-mjt@msgid.tls.msk.ru>	<536F2DC0.9080809@redhat.com>
+	<536F6180.1010905@msgid.tls.msk.ru>
+	<87mwenz734.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87mwenz734.fsf@blackfin.pond.sub.org>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>, alevy@redhat.com,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PATCH] libcacard: fix wrong array expansion logic
+Cc: qemu-trivial@nongnu.org, Alon Levy <alevy@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libcacard: remove useless
+ initializers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,62 +48,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 May 2014 20:57:53 -0000
+X-List-Received-Date: Fri, 23 May 2014 21:00:13 -0000
 
-The currrent code in libcacard/vcard_emul_nss.c:vcard_emul_options()
-has a weird bug in variable usage around expanding opts->vreader
-array.
+So, should we apply this or not?  It's been waiting for quite some time,
+and during this time we've found a very good example of why it should
+be applied (I think anyway).
 
-There's a helper variable, vreaderOpt, which is first needlessly
-initialized to NULL, next, conditionally, only we have to expand
-opts->vreader, receives array expansion from g_renew() (initially
-realloc), and next, even if we don't actually perform expansion,
-the value of this variable is assigned to the actual array,
-opts->vreader, which was supposed to be expanded.
+Thanks,
 
-So, since we expand the array by READER_STEP increments, only
-once in READER_STEP (=4) the code will work, in other 3/4 times
-it will fail badly.
+/mjt
 
-Fix this by not using this temp variable when expanding the
-array, and by dropping the useless =NULL initializer too -
-if it wasn't in place initially, compiler warned us about
-this problem at the beginning.
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- libcacard/vcard_emul_nss.c |    9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
-
-diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
-index b7db51d..8462aef 100644
---- a/libcacard/vcard_emul_nss.c
-+++ b/libcacard/vcard_emul_nss.c
-@@ -1149,7 +1149,7 @@ vcard_emul_options(const char *args)
-             char type_str[100];
-             VCardEmulType type;
-             int count, i;
--            VirtualReaderOptions *vreaderOpt = NULL;
-+            VirtualReaderOptions *vreaderOpt;
- 
-             args = strip(args + 5);
-             if (*args != '(') {
-@@ -1173,11 +1173,10 @@ vcard_emul_options(const char *args)
- 
-             if (opts->vreader_count >= reader_count) {
-                 reader_count += READER_STEP;
--                vreaderOpt = g_renew(VirtualReaderOptions, opts->vreader,
--                                     reader_count);
-+                opts->vreader = g_renew(VirtualReaderOptions, opts->vreader,
-+                                        reader_count);
-             }
--            opts->vreader = vreaderOpt;
--            vreaderOpt = &vreaderOpt[opts->vreader_count];
-+            vreaderOpt = &opts->vreader[opts->vreader_count];
-             vreaderOpt->name = g_strndup(name, name_length);
-             vreaderOpt->vname = g_strndup(vname, vname_length);
-             vreaderOpt->card_type = type;
--- 
-1.7.10.4
+12.05.2014 13:20, Markus Armbruster wrote:
+> Michael Tokarev <mjt@tls.msk.ru> writes:
+> 
+>> 11.05.2014 11:58, Alon Levy wrote:
+>>> On 05/08/2014 08:19 PM, Michael Tokarev wrote:
+>>>> libcacard has many functions which initializes local variables
+>>>> at declaration time, which are always assigned some values later
+>>>> (often right after declaration).  Clean up these initializers.
+>>>
+>>> How is this an improvement? Doesn't the compiler ignore this anyhow?
+>>
+>> Just less code.
+>>
+>> To me, when I see something like
+>>
+>>   Type *var = NULL;
+>>
+>> in a function, it somehow "translates" to a construct like
+>>
+>>   Type *found = NULL;
+>>
+>> That is -- so this variable will be used either as an accumulator
+>> or a search result, so that initial value is really important.
+>>
+>> So when I see the same variable receives its initial value in
+>> the next line, I start wondering what's missed in the code which
+>> should be there.  Or why I don't read the code correctly.  Or
+>> something like this.
+>>
+>> So, basically, this is a cleanup patch just to avoid confusion,
+>> it most likely not needed for current compiler who can figure
+>> it out by its own.  And for consistency - why not initialize
+>> other variables too?
+> 
+> I hate redundant initializers for yet another reason: when I change the
+> code, and accidentally add a path bypassing the *real* initialization, I
+> don't get a "may be used uninitialized" warning, I get the stupid
+> redundant initialization and quite possibly a crash to debug some time
+> later.
+> 
+>> Maybe that's just my old-scool mind works this way.
+>>
+>> At any rate you can just ignore this patch.
+> 
+> Please consider it.
+> 
 
 
