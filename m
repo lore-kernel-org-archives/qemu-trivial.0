@@ -1,40 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WnvnM-0005ab-JG
-	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 16:10:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38502)
+	id 1Wnvon-0006jz-G3
+	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 16:11:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38824)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WnvnF-0005Nq-Lw
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:10:23 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wnvof-0006bt-Ng
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:11:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wnvn9-00084H-Ir
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:10:17 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46588)
+	(envelope-from <mjt@tls.msk.ru>) id 1WnvoZ-0008SH-Jl
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:11:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:59935)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Wnvmw-0007lM-PZ; Fri, 23 May 2014 16:09:58 -0400
+	id 1WnvoM-0008Ic-IZ; Fri, 23 May 2014 16:11:26 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 39BCD42B94;
-	Sat, 24 May 2014 00:09:58 +0400 (MSK)
-Message-ID: <537FAB16.70101@msgid.tls.msk.ru>
-Date: Sat, 24 May 2014 00:09:58 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 0C3E042B94;
+	Sat, 24 May 2014 00:11:26 +0400 (MSK)
+Message-ID: <537FAB6D.7010701@msgid.tls.msk.ru>
+Date: Sat, 24 May 2014 00:11:25 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
-To: Saravanakumar <saravanakumar.punith@gmail.com>, 
- qemu-devel@nongnu.org
-References: <1400758430-32697-1-git-send-email-saravanakumar.punith@gmail.com>
-In-Reply-To: <1400758430-32697-1-git-send-email-saravanakumar.punith@gmail.com>
+To: Le Tan <tamlokveer@gmail.com>, qemu-devel@nongnu.org
+References: <1400631039-7208-1-git-send-email-tamlokveer@gmail.com>
+	<1400631039-7208-2-git-send-email-tamlokveer@gmail.com>
+In-Reply-To: <1400631039-7208-2-git-send-email-tamlokveer@gmail.com>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, mst@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] pci: move dereferencing of root only
- after verifying valid root pointer.
+Cc: qemu-trivial@nongnu.org, peter.crosthwaite@xilinx.com, jan.kiszka@web.de,
+	afaerber@suse.de
+Subject: Re: [Qemu-trivial] [PATCH 1/2] arch_init: replace fprintf(stderr,
+ ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,14 +47,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 May 2014 20:10:24 -0000
+X-List-Received-Date: Fri, 23 May 2014 20:11:51 -0000
 
-22.05.2014 15:33, Saravanakumar wrote:
-> Move dereferencing of root only after verifying valid root pointer.
+21.05.2014 04:10, Le Tan wrote:
+> Replace fprintf(stderr,...) with error_report() in the file
+> arch_init.c. The trailing "\n"s of the @fmt argument have been removed
+> because @fmt of error_report() should not contain newline.
 
-Applied to -trivial, after removing duplicate commit comment.
-Thank you!
+Applied to -trivial queue.  Thank you for the work!
 
 /mjt
-
 
