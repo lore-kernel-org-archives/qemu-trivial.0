@@ -1,37 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WnnGQ-0001ki-78
-	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 07:03:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51574)
+	id 1Wns0L-0005vo-Ba
+	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 12:07:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39850)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <junqing.wang@cs2c.com.cn>) id 1Wnh52-00075i-Fk
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 00:27:41 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1Wns0H-0005pP-RC
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 12:07:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <junqing.wang@cs2c.com.cn>) id 1Wnh51-0004nn-Qt
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 00:27:40 -0400
-Received: from [2001:250:208:1181:6e92:bfff:fe00:bcdb] (port=55340
-	helo=mail.cs2c.com.cn) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <junqing.wang@cs2c.com.cn>)
-	id 1Wnh4z-0004n9-0l; Fri, 23 May 2014 00:27:37 -0400
-X-ns-mid: postfix-537EC5BF-50674820615
-Received: from localhost.localdomain (cs2c.com.cn [127.0.0.1])
-	by mail.cs2c.com.cn (NSMail) with ESMTPA id 76C7EB81028;
-	Fri, 23 May 2014 11:51:27 +0800 (CST)
-BANMAU_FRONT_USER_AUTHED: 1
-BANMAU_FRONT_RESULT: 01
-BANMAU_FRONT_SUSPICION_REASON: 0
-X-Forward-For: 124.205.131.210
-From: Jules Wang <junqing.wang@cs2c.com.cn>
+	(envelope-from <pm215@archaic.org.uk>) id 1Wns0G-000767-Kf
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 12:07:29 -0400
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48227)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Wns0E-00075E-Ei; Fri, 23 May 2014 12:07:26 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Wns0C-0004A5-2w; Fri, 23 May 2014 17:07:24 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Fri, 23 May 2014 11:44:05 +0800
-Message-Id: <1400816645-16005-1-git-send-email-junqing.wang@cs2c.com.cn>
-X-Mailer: git-send-email 1.7.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 2001:250:208:1181:6e92:bfff:fe00:bcdb
-X-Mailman-Approved-At: Fri, 23 May 2014 07:03:48 -0400
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
-	Jules Wang <junqing.wang@cs2c.com.cn>
-Subject: [Qemu-trivial] [PATCH] dma-helpers: avoid calling dma_bdrv_unmap()
-	twice
+Date: Fri, 23 May 2014 17:07:24 +0100
+Message-Id: <1400861244-15972-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Eric Blake <eblake@redhat.com>, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH v2] configure: Put tempfiles in a subdir of
+	the build directory
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,36 +38,104 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 May 2014 04:27:41 -0000
+X-List-Received-Date: Fri, 23 May 2014 16:07:31 -0000
 
-Calling dma_bdrv_unmap() twice is not necessary and may cause
-potential problems if some code changes.
+When libtool support was added to configure, the new temporary files
+were left out of the list of files cleaned up on exit; this results
+in a lot of stale .lo files being left around in /tmp. Worse, libtool
+creates a /tmp/.libs directory which we can't easily clean up.
 
-Signed-off-by: Jules Wang <junqing.wang@cs2c.com.cn>
+Put all our temporary files in a single temporary directory created
+as a subdirectory of the build directory, so we can easily clean it up,
+and don't need fragile or complicated code for creation to avoid it
+clashing with temporary directories from other instances of QEMU
+configure or being subject to attack from adversaries who can write
+to /tmp.
+
+Since the temporaries now live in the build tree, we have no
+need to jump through hoops with a trap handler to try to remove
+them when configure exits; this fixes some weird bugs where hitting
+^C during a configure run wouldn't actually make it stop, because
+we would run the trap handler but then not stop. (It is possible
+to get the trap handler semantics right but it is convoluted largely
+because of bugs in dash, so it is simpler to just avoid it.)
+
+Note that "temporary files go in the build directory, not /tmp" is
+the way autoconf behaves.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 ---
- dma-helpers.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+v1->v2: added rm -r "$TMPDIR1" on successful exit.
 
-diff --git a/dma-helpers.c b/dma-helpers.c
-index 5f421e9..53cbe92 100644
---- a/dma-helpers.c
-+++ b/dma-helpers.c
-@@ -143,12 +143,12 @@ static void dma_bdrv_cb(void *opaque, int ret)
+ .gitignore |  1 +
+ configure  | 29 ++++++++++++++++-------------
+ 2 files changed, 17 insertions(+), 13 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index 8a52709..c658613 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -4,6 +4,7 @@
+ /config-host.*
+ /config-target.*
+ /config.status
++/config-temp
+ /trace/generated-tracers.h
+ /trace/generated-tracers.c
+ /trace/generated-tracers-dtrace.h
+diff --git a/configure b/configure
+index 605a0ec..e6f0d29 100755
+--- a/configure
++++ b/configure
+@@ -2,26 +2,28 @@
+ #
+ # qemu configure script (c) 2003 Fabrice Bellard
+ #
+-# set temporary file name
+-if test ! -z "$TMPDIR" ; then
+-    TMPDIR1="${TMPDIR}"
+-elif test ! -z "$TEMPDIR" ; then
+-    TMPDIR1="${TEMPDIR}"
+-else
+-    TMPDIR1="/tmp"
++
++# Temporary directory used for files created while
++# configure runs. Since it is in the build directory
++# we can safely blow away any previous version of it
++# (and we need not jump through hoops to try to delete
++# it when configure exits.)
++TMPDIR1="config-temp"
++rm -rf "${TMPDIR1}"
++mkdir -p "${TMPDIR1}"
++if [ $? -ne 0 ]; then
++    echo "ERROR: failed to create temporary directory"
++    exit 1
+ fi
  
-     dbs->acb = NULL;
-     dbs->sector_num += dbs->iov.size / 512;
--    dma_bdrv_unmap(dbs);
+-TMPC="${TMPDIR1}/qemu-conf-${RANDOM}-$$-${RANDOM}.c"
+-TMPB="qemu-conf-${RANDOM}-$$-${RANDOM}"
++TMPB="qemu-conf"
++TMPC="${TMPDIR1}/${TMPB}.c"
+ TMPO="${TMPDIR1}/${TMPB}.o"
+ TMPCXX="${TMPDIR1}/${TMPB}.cxx"
+ TMPL="${TMPDIR1}/${TMPB}.lo"
+ TMPA="${TMPDIR1}/lib${TMPB}.la"
+-TMPE="${TMPDIR1}/qemu-conf-${RANDOM}-$$-${RANDOM}.exe"
++TMPE="${TMPDIR1}/${TMPB}.exe"
  
-     if (dbs->sg_cur_index == dbs->sg->nsg || ret < 0) {
-         dma_complete(dbs, ret);
-         return;
-     }
-+    dma_bdrv_unmap(dbs);
+-# NB: do not call "exit" in the trap handler; this is buggy with some shells;
+-# see <1285349658-3122-1-git-send-email-loic.minier@linaro.org>
+-trap "rm -f $TMPC $TMPO $TMPCXX $TMPE" EXIT INT QUIT TERM
+ rm -f config.log
  
-     while (dbs->sg_cur_index < dbs->sg->nsg) {
-         cur_addr = dbs->sg->sg[dbs->sg_cur_index].base + dbs->sg_cur_byte;
+ # Print a helpful header at the top of config.log
+@@ -5219,3 +5221,4 @@ printf " '%s'" "$0" "$@" >>config.status
+ echo >>config.status
+ chmod +x config.status
+ 
++rm -r "$TMPDIR1"
 -- 
-1.7.1
-
+1.9.2
 
 
