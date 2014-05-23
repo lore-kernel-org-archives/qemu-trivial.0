@@ -1,22 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wnvon-0006jz-G3
-	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 16:11:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38824)
+	id 1Wnw4B-0002C3-MU
+	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 16:27:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wnvof-0006bt-Ng
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:11:51 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wnw44-000240-Ot
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:27:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WnvoZ-0008SH-Jl
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:11:45 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59935)
+	(envelope-from <mjt@tls.msk.ru>) id 1Wnw3z-0005Jz-9m
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:27:40 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:34463)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WnvoM-0008Ic-IZ; Fri, 23 May 2014 16:11:26 -0400
+	id 1Wnw3o-0005Ic-3m; Fri, 23 May 2014 16:27:24 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0C3E042B94;
-	Sat, 24 May 2014 00:11:26 +0400 (MSK)
-Message-ID: <537FAB6D.7010701@msgid.tls.msk.ru>
-Date: Sat, 24 May 2014 00:11:25 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 938A642B94;
+	Sat, 24 May 2014 00:27:21 +0400 (MSK)
+Message-ID: <537FAF29.3080600@msgid.tls.msk.ru>
+Date: Sat, 24 May 2014 00:27:21 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
@@ -24,17 +24,18 @@ User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 MIME-Version: 1.0
 To: Le Tan <tamlokveer@gmail.com>, qemu-devel@nongnu.org
 References: <1400631039-7208-1-git-send-email-tamlokveer@gmail.com>
-	<1400631039-7208-2-git-send-email-tamlokveer@gmail.com>
-In-Reply-To: <1400631039-7208-2-git-send-email-tamlokveer@gmail.com>
+	<1400631039-7208-3-git-send-email-tamlokveer@gmail.com>
+In-Reply-To: <1400631039-7208-3-git-send-email-tamlokveer@gmail.com>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, peter.crosthwaite@xilinx.com, jan.kiszka@web.de,
-	afaerber@suse.de
-Subject: Re: [Qemu-trivial] [PATCH 1/2] arch_init: replace fprintf(stderr,
+Cc: Kevin Wolf <kwolf@redhat.com>, peter.crosthwaite@xilinx.com,
+	qemu-trivial@nongnu.org, jan.kiszka@web.de,
+	Stefan Hajnoczi <stefanha@redhat.com>, afaerber@suse.de
+Subject: Re: [Qemu-trivial] [PATCH 2/2] block: replace fprintf(stderr,
  ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -47,14 +48,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 May 2014 20:11:51 -0000
+X-List-Received-Date: Fri, 23 May 2014 20:27:46 -0000
 
 21.05.2014 04:10, Le Tan wrote:
-> Replace fprintf(stderr,...) with error_report() in the file
-> arch_init.c. The trailing "\n"s of the @fmt argument have been removed
-> because @fmt of error_report() should not contain newline.
+> Replace fprintf(stderr,...) with error_report() in files block/*, block.c,
+> block-migration.c and blockdev.c. The trailing "\n"s of the @fmt argument
+> have been removed because @fmt of error_report() should not contain newline.
+> 
+> Signed-off-by: Le Tan <tamlokveer@gmail.com>
+> ---
+>  block-migration.c      |    5 +--
+>  block.c                |    4 +-
+>  block/qcow2-refcount.c |  114 ++++++++++++++++++++++++------------------------
+>  block/qcow2.c          |   18 ++++----
+>  block/raw-posix.c      |   10 ++---
+>  block/raw-win32.c      |    6 +--
+>  block/ssh.c            |    2 +-
+>  block/vdi.c            |   15 ++++---
+>  block/vmdk.c           |   15 +++----
+>  block/vpc.c            |    4 +-
+>  block/vvfat.c          |   69 +++++++++++++++--------------
+>  blockdev.c             |    6 +--
+>  12 files changed, 132 insertions(+), 136 deletions(-)
 
-Applied to -trivial queue.  Thank you for the work!
+That's a rather large -trivial patch... ;)
+
+Please check this patch using ./tools/checkpatch.pl - it will show
+many whitespace issues.
+
+I'd apply it to -trivial (after fixing the whitespace issues), all
+the actual changes look sane.  But Cc'ing kwolf and stefanha too
+(who are the block subsystem maintainers), because the patch touches
+too many of block code.
+
+Thanks,
 
 /mjt
+
 
