@@ -1,32 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wns0L-0005vo-Ba
-	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 12:07:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39850)
+	id 1Wnvlk-0004Lp-R3
+	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2014 16:08:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38167)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Wns0H-0005pP-RC
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 12:07:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wnvld-0004D1-2u
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:08:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Wns0G-000767-Kf
-	for qemu-trivial@nongnu.org; Fri, 23 May 2014 12:07:29 -0400
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48227)
+	(envelope-from <mjt@tls.msk.ru>) id 1WnvlS-0007Dg-Qr
+	for qemu-trivial@nongnu.org; Fri, 23 May 2014 16:08:36 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:39373)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1Wns0E-00075E-Ei; Fri, 23 May 2014 12:07:26 -0400
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1Wns0C-0004A5-2w; Fri, 23 May 2014 17:07:24 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 23 May 2014 17:07:24 +0100
-Message-Id: <1400861244-15972-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Eric Blake <eblake@redhat.com>, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH v2] configure: Put tempfiles in a subdir of
-	the build directory
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WnvlE-0007As-0o; Fri, 23 May 2014 16:08:12 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id B985142B94;
+	Sat, 24 May 2014 00:08:09 +0400 (MSK)
+Message-ID: <537FAAA9.50306@msgid.tls.msk.ru>
+Date: Sat, 24 May 2014 00:08:09 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.5.0
+MIME-Version: 1.0
+To: Saravanakumar <saravanakumar.punith@gmail.com>, 
+ qemu-devel@nongnu.org
+References: <1400668900-22972-1-git-send-email-saravanakumar.punith@gmail.com>
+In-Reply-To: <1400668900-22972-1-git-send-email-saravanakumar.punith@gmail.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] jazz_led: Add missing break in switch
+ case
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,104 +46,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 May 2014 16:07:31 -0000
+X-List-Received-Date: Fri, 23 May 2014 20:08:43 -0000
 
-When libtool support was added to configure, the new temporary files
-were left out of the list of files cleaned up on exit; this results
-in a lot of stale .lo files being left around in /tmp. Worse, libtool
-creates a /tmp/.libs directory which we can't easily clean up.
+Applied to -trivial queue, thank you!
 
-Put all our temporary files in a single temporary directory created
-as a subdirectory of the build directory, so we can easily clean it up,
-and don't need fragile or complicated code for creation to avoid it
-clashing with temporary directories from other instances of QEMU
-configure or being subject to attack from adversaries who can write
-to /tmp.
-
-Since the temporaries now live in the build tree, we have no
-need to jump through hoops with a trap handler to try to remove
-them when configure exits; this fixes some weird bugs where hitting
-^C during a configure run wouldn't actually make it stop, because
-we would run the trap handler but then not stop. (It is possible
-to get the trap handler semantics right but it is convoluted largely
-because of bugs in dash, so it is simpler to just avoid it.)
-
-Note that "temporary files go in the build directory, not /tmp" is
-the way autoconf behaves.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Eric Blake <eblake@redhat.com>
----
-v1->v2: added rm -r "$TMPDIR1" on successful exit.
-
- .gitignore |  1 +
- configure  | 29 ++++++++++++++++-------------
- 2 files changed, 17 insertions(+), 13 deletions(-)
-
-diff --git a/.gitignore b/.gitignore
-index 8a52709..c658613 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -4,6 +4,7 @@
- /config-host.*
- /config-target.*
- /config.status
-+/config-temp
- /trace/generated-tracers.h
- /trace/generated-tracers.c
- /trace/generated-tracers-dtrace.h
-diff --git a/configure b/configure
-index 605a0ec..e6f0d29 100755
---- a/configure
-+++ b/configure
-@@ -2,26 +2,28 @@
- #
- # qemu configure script (c) 2003 Fabrice Bellard
- #
--# set temporary file name
--if test ! -z "$TMPDIR" ; then
--    TMPDIR1="${TMPDIR}"
--elif test ! -z "$TEMPDIR" ; then
--    TMPDIR1="${TEMPDIR}"
--else
--    TMPDIR1="/tmp"
-+
-+# Temporary directory used for files created while
-+# configure runs. Since it is in the build directory
-+# we can safely blow away any previous version of it
-+# (and we need not jump through hoops to try to delete
-+# it when configure exits.)
-+TMPDIR1="config-temp"
-+rm -rf "${TMPDIR1}"
-+mkdir -p "${TMPDIR1}"
-+if [ $? -ne 0 ]; then
-+    echo "ERROR: failed to create temporary directory"
-+    exit 1
- fi
- 
--TMPC="${TMPDIR1}/qemu-conf-${RANDOM}-$$-${RANDOM}.c"
--TMPB="qemu-conf-${RANDOM}-$$-${RANDOM}"
-+TMPB="qemu-conf"
-+TMPC="${TMPDIR1}/${TMPB}.c"
- TMPO="${TMPDIR1}/${TMPB}.o"
- TMPCXX="${TMPDIR1}/${TMPB}.cxx"
- TMPL="${TMPDIR1}/${TMPB}.lo"
- TMPA="${TMPDIR1}/lib${TMPB}.la"
--TMPE="${TMPDIR1}/qemu-conf-${RANDOM}-$$-${RANDOM}.exe"
-+TMPE="${TMPDIR1}/${TMPB}.exe"
- 
--# NB: do not call "exit" in the trap handler; this is buggy with some shells;
--# see <1285349658-3122-1-git-send-email-loic.minier@linaro.org>
--trap "rm -f $TMPC $TMPO $TMPCXX $TMPE" EXIT INT QUIT TERM
- rm -f config.log
- 
- # Print a helpful header at the top of config.log
-@@ -5219,3 +5221,4 @@ printf " '%s'" "$0" "$@" >>config.status
- echo >>config.status
- chmod +x config.status
- 
-+rm -r "$TMPDIR1"
--- 
-1.9.2
-
+/mjt
 
