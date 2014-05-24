@@ -1,44 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wo58A-0004xt-Pe
-	for mharc-qemu-trivial@gnu.org; Sat, 24 May 2014 02:08:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48951)
+	id 1Wo5yR-000897-Lw
+	for mharc-qemu-trivial@gnu.org; Sat, 24 May 2014 03:02:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54398)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wo583-0004op-F1
-	for qemu-trivial@nongnu.org; Sat, 24 May 2014 02:08:29 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wo5yK-0007zH-Dq
+	for qemu-trivial@nongnu.org; Sat, 24 May 2014 03:02:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wo57x-0001WF-A0
-	for qemu-trivial@nongnu.org; Sat, 24 May 2014 02:08:23 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:45073)
+	(envelope-from <mjt@tls.msk.ru>) id 1Wo5yF-00085b-7u
+	for qemu-trivial@nongnu.org; Sat, 24 May 2014 03:02:24 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:49142)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Wo57k-0001VJ-OS; Sat, 24 May 2014 02:08:04 -0400
+	id 1Wo5y4-00081t-Mx; Sat, 24 May 2014 03:02:08 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4618342B94;
-	Sat, 24 May 2014 10:08:03 +0400 (MSK)
-Message-ID: <53803741.8050801@msgid.tls.msk.ru>
-Date: Sat, 24 May 2014 10:08:01 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 8E75D42B94;
+	Sat, 24 May 2014 11:02:05 +0400 (MSK)
+Message-ID: <538043ED.20200@msgid.tls.msk.ru>
+Date: Sat, 24 May 2014 11:02:05 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
-To: Le Tan <tamlokveer@gmail.com>
-References: <1400631039-7208-1-git-send-email-tamlokveer@gmail.com>	<1400631039-7208-3-git-send-email-tamlokveer@gmail.com>	<537FAF29.3080600@msgid.tls.msk.ru>
-	<CACrq+iK9+ARbYgkXeAFfdeLMmjb+EE04skdVk-POTyUSgY+xmw@mail.gmail.com>
-In-Reply-To: <CACrq+iK9+ARbYgkXeAFfdeLMmjb+EE04skdVk-POTyUSgY+xmw@mail.gmail.com>
+To: Andrew Oates <andrew@aoates.org>, qemu-devel@nongnu.org
+References: <1400890569-30822-1-git-send-email-andrew@aoates.org>
+In-Reply-To: <1400890569-30822-1-git-send-email-andrew@aoates.org>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: Kevin Wolf <kwolf@redhat.com>,
-	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Jan Kiszka <jan.kiszka@web.de>, Stefan Hajnoczi <stefanha@redhat.com>,
-	=?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH 2/2] block: replace fprintf(stderr,
- ...) with error_report()
+Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] input (curses): mask
+ keycodes to remove modifier bits
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,19 +45,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 24 May 2014 06:08:29 -0000
+X-List-Received-Date: Sat, 24 May 2014 07:02:29 -0000
 
-24.05.2014 10:01, Le Tan =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
-> I will fix the whitespace issues and resend this series with a new
-> version later.
+24.05.2014 04:16, Andrew Oates wrote:
+> Without the mask, control bits are passed on in the keycode, generating
+> incorrect PS/2 sequences when SHIFT, ALT, etc are held down.
 
-Please note, once again: I applied (with fixups) other 3 your patches,
-so there's no need to resend those 3.
+While the patch itself appears to be trivial, it may have
+non-trivial effect.  Cc'ing Gerd for comments.
 
-This one, besides a whitespace problem, needs an ACK from block subsystem
-maintainers, because it touches too much code there.
-
-Thanks,
+Thank you!
 
 /mjt
+
+> Signed-off-by: Andrew Oates <andrew@aoates.org>
+> ---
+>  ui/curses.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/ui/curses.c b/ui/curses.c
+> index b044790..de85f76 100644
+> --- a/ui/curses.c
+> +++ b/ui/curses.c
+> @@ -288,8 +288,8 @@ static void curses_refresh(DisplayChangeListener *dcl)
+>                  qemu_input_event_send_key_number(NULL, GREY | ALT_CODE, true);
+>              }
+>  
+> -            qemu_input_event_send_key_number(NULL, keycode, true);
+> -            qemu_input_event_send_key_number(NULL, keycode, false);
+> +            qemu_input_event_send_key_number(NULL, keycode & KEY_MASK, true);
+> +            qemu_input_event_send_key_number(NULL, keycode & KEY_MASK, false);
+>  
+>              if (keycode & ALTGR) {
+>                  qemu_input_event_send_key_number(NULL, GREY | ALT_CODE, false);
+> 
+
 
