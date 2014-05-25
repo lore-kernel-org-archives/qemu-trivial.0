@@ -1,51 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WoUTV-0002Hr-K3
-	for mharc-qemu-trivial@gnu.org; Sun, 25 May 2014 05:12:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44061)
+	id 1WoVSV-0003GV-KF
+	for mharc-qemu-trivial@gnu.org; Sun, 25 May 2014 06:15:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49731)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WoUTP-0002EM-Et
-	for qemu-trivial@nongnu.org; Sun, 25 May 2014 05:12:12 -0400
+	(envelope-from <alevy@redhat.com>) id 1WoVSO-0003F4-ID
+	for qemu-trivial@nongnu.org; Sun, 25 May 2014 06:15:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WoUTJ-0003by-TM
-	for qemu-trivial@nongnu.org; Sun, 25 May 2014 05:12:07 -0400
-Received: from mail-la0-f49.google.com ([209.85.215.49]:54119)
+	(envelope-from <alevy@redhat.com>) id 1WoVSJ-0003QZ-KU
+	for qemu-trivial@nongnu.org; Sun, 25 May 2014 06:15:08 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33610)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WoUTJ-0003bn-NI
-	for qemu-trivial@nongnu.org; Sun, 25 May 2014 05:12:01 -0400
-Received: by mail-la0-f49.google.com with SMTP id pv20so5045828lab.22
-	for <qemu-trivial@nongnu.org>; Sun, 25 May 2014 02:12:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=Jwz29hRmgKA79X4sdx9tU4TS/kZ6uiXq4FWxzNjH8PM=;
-	b=Zmftg5ad1TuuMiFHJLHUcaGafrvlQm/fmk6fq8K4L87RGundSYQkL9sMTib3g3fTWr
-	Z2OUXRfox6dYUgLGdXrHdFWGyHPgh9+BeavK/UbfsFzChjUQ5x+wGIUNFsMWqYhKhnwo
-	LquwVCdNT8E14ryMgV0n64MNoKtkruk9kmdgwdP3E6/D1CEL8mJsGA849syKoTi0L0Ro
-	7+b5I5Ox+TxwSgdtejk9ZOofcPwqPdzMXwIXYMrQwQgTqyYT8Q7S6rnQEO6SnZys1Ojd
-	sb2tk7Ir24YbZnXdR+ooqLcOme/znQxn59M9oNjch27oQ0Vn0QVoYb+4Hgjj5pSWLLoa
-	0hmg==
-X-Gm-Message-State: ALoCoQngrBTaDBVWlKrV/gFuMKllLbm15GvEDoWEwBfrXqOFrLYzOChbG1Sfb1g/K6hjTPG1Fnf8
-X-Received: by 10.152.20.168 with SMTP id o8mr24546lae.78.1401009120853; Sun,
-	25 May 2014 02:12:00 -0700 (PDT)
+	(envelope-from <alevy@redhat.com>)
+	id 1WoVSJ-0003Ot-Bm; Sun, 25 May 2014 06:15:03 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4PAF1bA020303
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Sun, 25 May 2014 06:15:01 -0400
+Received: from blues.lan (vpn1-7-198.ams2.redhat.com [10.36.7.198])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s4PAEouO008115
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Sun, 25 May 2014 06:14:59 -0400
+Message-ID: <5381C299.7080709@redhat.com>
+Date: Sun, 25 May 2014 13:14:49 +0300
+From: Alon Levy <alevy@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
 MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Sun, 25 May 2014 02:11:40 -0700 (PDT)
-In-Reply-To: <20140525012151.GI1904@beta.private.mielke.cc>
-References: <20140524232950.GH1904@beta.private.mielke.cc>
-	<CAFEAcA9HtdLbXXF9RSXw_K8P-PNZ8ZOrFE9zJ6J2mGjVM=EFKg@mail.gmail.com>
-	<20140525012151.GI1904@beta.private.mielke.cc>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 25 May 2014 10:11:40 +0100
-Message-ID: <CAFEAcA95424yXi1yobV5R3jt5t-69H36XRv8kDAyK7Dvx0bJ2w@mail.gmail.com>
-To: Dave Mielke <dave@mielke.cc>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.49
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] patch: add delay=<msecs> suboption
-	to -display curses
+To: Michael Tokarev <mjt@tls.msk.ru>, Markus Armbruster <armbru@redhat.com>
+References: <1399569594-31678-1-git-send-email-mjt@msgid.tls.msk.ru>	<536F2DC0.9080809@redhat.com>	<536F6180.1010905@msgid.tls.msk.ru>	<87mwenz734.fsf@blackfin.pond.sub.org>
+	<537FB6C7.5000900@msgid.tls.msk.ru>
+In-Reply-To: <537FB6C7.5000900@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libcacard: remove useless
+ initializers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,24 +52,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 25 May 2014 09:12:12 -0000
+X-List-Received-Date: Sun, 25 May 2014 10:15:13 -0000
 
-On 25 May 2014 02:21, Dave Mielke <dave@mielke.cc> wrote:
-> [quoted lines by Peter Maydell on 2014/05/25 at 01:04 +0100]
->>Why is this a problem only for the curses UI frontend, and not for
->>any of the other UIs which might send key events?
->
-> One reason is that most UIs send key events as they receive them from the
-> keyboard, one at a time, whereas the curses UI gets a single key event from
-> curses and then sends all of the scancodes which it takes to represent that
-> key. In other words, a single key event from curses could result in as many as
-> 10 actual key events needing to be passed along - both the press and release
-> for the actual key plus up to four modifiers (shift, control, alt, altgr).
+On 05/23/2014 11:59 PM, Michael Tokarev wrote:
+> So, should we apply this or not?  It's been waiting for quite some time,
+> and during this time we've found a very good example of why it should
+> be applied (I think anyway).
 
-Ah, I see. Still, I think it makes more sense for the queue and delay
-to be in the common key handling code, not in the curses frontend
-specifically.
+I'm fine with applying it, I changed my mind.
 
-thanks
--- PMM
+> 
+> Thanks,
+> 
+> /mjt
+> 
+> 
+> 12.05.2014 13:20, Markus Armbruster wrote:
+>> Michael Tokarev <mjt@tls.msk.ru> writes:
+>>
+>>> 11.05.2014 11:58, Alon Levy wrote:
+>>>> On 05/08/2014 08:19 PM, Michael Tokarev wrote:
+>>>>> libcacard has many functions which initializes local variables
+>>>>> at declaration time, which are always assigned some values later
+>>>>> (often right after declaration).  Clean up these initializers.
+>>>>
+>>>> How is this an improvement? Doesn't the compiler ignore this anyhow?
+>>>
+>>> Just less code.
+>>>
+>>> To me, when I see something like
+>>>
+>>>   Type *var = NULL;
+>>>
+>>> in a function, it somehow "translates" to a construct like
+>>>
+>>>   Type *found = NULL;
+>>>
+>>> That is -- so this variable will be used either as an accumulator
+>>> or a search result, so that initial value is really important.
+>>>
+>>> So when I see the same variable receives its initial value in
+>>> the next line, I start wondering what's missed in the code which
+>>> should be there.  Or why I don't read the code correctly.  Or
+>>> something like this.
+>>>
+>>> So, basically, this is a cleanup patch just to avoid confusion,
+>>> it most likely not needed for current compiler who can figure
+>>> it out by its own.  And for consistency - why not initialize
+>>> other variables too?
+>>
+>> I hate redundant initializers for yet another reason: when I change the
+>> code, and accidentally add a path bypassing the *real* initialization, I
+>> don't get a "may be used uninitialized" warning, I get the stupid
+>> redundant initialization and quite possibly a crash to debug some time
+>> later.
+>>
+>>> Maybe that's just my old-scool mind works this way.
+>>>
+>>> At any rate you can just ignore this patch.
+>>
+>> Please consider it.
+>>
+> 
+> 
+
 
