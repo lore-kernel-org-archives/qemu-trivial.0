@@ -1,54 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WoXeU-0001by-OU
-	for mharc-qemu-trivial@gnu.org; Sun, 25 May 2014 08:35:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36197)
+	id 1WoXkF-0002qX-QU
+	for mharc-qemu-trivial@gnu.org; Sun, 25 May 2014 08:41:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36673)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dave@mielke.cc>) id 1WoXeO-0001U7-Op
-	for qemu-trivial@nongnu.org; Sun, 25 May 2014 08:35:45 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WoXk8-0002hb-2h
+	for qemu-trivial@nongnu.org; Sun, 25 May 2014 08:41:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dave@mielke.cc>) id 1WoXeJ-0001pW-4Z
-	for qemu-trivial@nongnu.org; Sun, 25 May 2014 08:35:40 -0400
-Received: from nimbus1.mmprivatehosting.com ([54.208.90.49]:57292)
+	(envelope-from <mjt@tls.msk.ru>) id 1WoXk1-0003I1-UZ
+	for qemu-trivial@nongnu.org; Sun, 25 May 2014 08:41:36 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56236)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dave@mielke.cc>)
-	id 1WoXe8-0001nt-18; Sun, 25 May 2014 08:35:24 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by nimbus1.mmprivatehosting.com (Postfix) with ESMTP id A98FB21DCF;
-	Sun, 25 May 2014 12:35:21 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at mmprivatehosting.com
-Received: from dave.mielke.cc
-	(CPE788df74e3df1-CM788df74e3df0.cpe.net.cable.rogers.com
-	[99.245.250.163]) (Authenticated sender: relay@dave.mielke.cc)
-	by nimbus1.mmprivatehosting.com (Postfix) with ESMTPA;
-	Sun, 25 May 2014 12:35:20 +0000 (UTC)
-Received: from beta.private.mielke.cc (beta.private.mielke.cc [192.168.0.2])
-	by dave.mielke.cc (Postfix) with ESMTPS id BF121204F1;
-	Sun, 25 May 2014 08:35:19 -0400 (EDT)
-Received: from beta.private.mielke.cc (localhost.localdomain [127.0.0.1])
-	by beta.private.mielke.cc (8.14.7/8.14.6) with ESMTP id s4PCZJVX024564; 
-	Sun, 25 May 2014 08:35:19 -0400
-Received: (from dave@localhost)
-	by beta.private.mielke.cc (8.14.7/8.14.7/Submit) id s4PCZIH6024563;
-	Sun, 25 May 2014 08:35:18 -0400
-Date: Sun, 25 May 2014 08:35:18 -0400
-From: Dave Mielke <dave@mielke.cc>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20140525123518.GK1904@beta.private.mielke.cc>
-References: <20140524232950.GH1904@beta.private.mielke.cc>
-	<CAFEAcA9HtdLbXXF9RSXw_K8P-PNZ8ZOrFE9zJ6J2mGjVM=EFKg@mail.gmail.com>
-	<20140525012151.GI1904@beta.private.mielke.cc>
-	<CAFEAcA95424yXi1yobV5R3jt5t-69H36XRv8kDAyK7Dvx0bJ2w@mail.gmail.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WoXjp-0003Fa-E6; Sun, 25 May 2014 08:41:17 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 8E47C42E07;
+	Sun, 25 May 2014 16:41:08 +0400 (MSK)
+Message-ID: <5381E4E4.9040406@msgid.tls.msk.ru>
+Date: Sun, 25 May 2014 16:41:08 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA95424yXi1yobV5R3jt5t-69H36XRv8kDAyK7Dvx0bJ2w@mail.gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 54.208.90.49
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] patch: add delay=<msecs> suboption
- to -display curses
+To: Dave Mielke <dave@mielke.cc>, qemu-devel@nongnu.org
+References: <20140524232950.GH1904@beta.private.mielke.cc>
+In-Reply-To: <20140524232950.GH1904@beta.private.mielke.cc>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] patch: add delay=<msecs> suboption to -display
+ curses
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,25 +45,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 25 May 2014 12:35:46 -0000
+X-List-Received-Date: Sun, 25 May 2014 12:41:42 -0000
 
-[quoted lines by Peter Maydell on 2014/05/25 at 10:11 +0100]
+25.05.2014 03:29, Dave Mielke wrote:
 
->Ah, I see. Still, I think it makes more sense for the queue and delay
->to be in the common key handling code, not in the curses frontend
->specifically.
+> Add support for the "-display curses" option to accept suboptions (-display 
+> curses[,option...), and add the "delay=<msecs>" suboption. This suboption 
+> causes a millisecond-based delay to be inserted in between key events so that 
 
-The code has been moved. I can see a couple of possibilities insofar as an 
-option for it is concerned. One is to extend the existing -k option to accept 
-language= as an optional prefix for its currnet operand, and to add delay=. The 
-other is to add a brand new -keydelay option. Which would be the better 
-approach?
+In addition to what Peter said, I think this suboption is named poorly.
+Maybe it can be named, say, kbddelay, or keydelay, or something like that.
+Just "delay" may be interpreted as _video_ delay, ie, delay updating picture
+for so many millisecs.  After all, this is -display, which is about video,
+and keyboard is a secondary function...
 
-I'm assuming that qemu-options.hx is the only file that needs to be updated 
-insofar as documentation is concerned. Is that correct?
+Also, you still haven't told us what application is having problem with it,
+it is some mystery "some app".  And provided this hasn't been a problem for
+so many years, maybe we shouldn't add it in the first place?
 
--- 
-Dave Mielke           | 2213 Fox Crescent | The Bible is the very Word of God.
-Phone: 1-613-726-0014 | Ottawa, Ontario   | http://Mielke.cc/bible/
-EMail: dave@mielke.cc | Canada  K2A 1H7   | http://FamilyRadio.com/
+Thanks,
+
+/mjt
 
