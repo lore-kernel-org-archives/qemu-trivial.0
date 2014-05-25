@@ -1,44 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WoZRB-0003xD-O1
-	for mharc-qemu-trivial@gnu.org; Sun, 25 May 2014 10:30:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48928)
+	id 1WoZXN-0006Lo-1m
+	for mharc-qemu-trivial@gnu.org; Sun, 25 May 2014 10:36:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49748)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1WoZR2-0003nG-GR
-	for qemu-trivial@nongnu.org; Sun, 25 May 2014 10:30:08 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WoZXE-0006Bu-TZ
+	for qemu-trivial@nongnu.org; Sun, 25 May 2014 10:36:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1WoZQt-0003kZ-OH
-	for qemu-trivial@nongnu.org; Sun, 25 May 2014 10:30:00 -0400
-Received: from mout.web.de ([212.227.17.11]:56778)
+	(envelope-from <mjt@tls.msk.ru>) id 1WoZX8-0005oK-MW
+	for qemu-trivial@nongnu.org; Sun, 25 May 2014 10:36:24 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44119)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1WoZQt-0003kR-F6; Sun, 25 May 2014 10:29:51 -0400
-Received: from netbook.home ([95.157.58.223]) by smtp.web.de (mrweb003) with
-	ESMTPSA (Nemesis) id 0LcPRO-1WPe193Cy6-00josi; Sun, 25 May 2014 16:29:47
-	+0200
-Message-ID: <5381FE37.80904@web.de>
-Date: Sun, 25 May 2014 22:29:11 +0800
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WoZWw-0005mh-3D; Sun, 25 May 2014 10:36:06 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 5A9EA42E07;
+	Sun, 25 May 2014 18:36:04 +0400 (MSK)
+Message-ID: <5381FFD4.8080107@msgid.tls.msk.ru>
+Date: Sun, 25 May 2014 18:36:04 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
-To: Le Tan <tamlokveer@gmail.com>, qemu-devel@nongnu.org
+To: Jan Kiszka <jan.kiszka@web.de>, Le Tan <tamlokveer@gmail.com>, 
+	qemu-devel@nongnu.org
 References: <1400985853-25594-1-git-send-email-tamlokveer@gmail.com>
-In-Reply-To: <1400985853-25594-1-git-send-email-tamlokveer@gmail.com>
+	<5381FE37.80904@web.de>
+In-Reply-To: <5381FE37.80904@web.de>
 X-Enigmail-Version: 1.6
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="g4wjInUliIcrDKjEWdmQmM6qC0XfsP0OO"
-X-Provags-ID: V03:K0:XfAym15nPKcMZ2L8vm9vNMo86RyY2zhiMCabUOl8e/tlgBFH1zZ
-	yKz6LdF1E+SpIGNkkVdlInWwo6nVARuYCnPGAcum01i+FlE69gGNC20VTesagx/XmFGLgtG
-	nhSOeF//u+spNemoRDlJZ0PLBzq+WfIfvUWHgcOruvWVrV73hFtXLPXd1id07011Cq2hB5L
-	PVdM7G+Phmlnlsne2o4mg==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 212.227.17.11
-Cc: kwolf@redhat.com, peter.crosthwaite@xilinx.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, stefanha@redhat.com, afaerber@suse.de
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, peter.crosthwaite@xilinx.com,
+	afaerber@suse.de, stefanha@redhat.com
 Subject: Re: [Qemu-trivial] [PATCH v3] block: replace fprintf(stderr,
-	...) with error_report()
+ ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,43 +48,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 25 May 2014 14:30:08 -0000
+X-List-Received-Date: Sun, 25 May 2014 14:36:31 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---g4wjInUliIcrDKjEWdmQmM6qC0XfsP0OO
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: quoted-printable
+25.05.2014 18:29, Jan Kiszka wrote:
+> On 2014-05-25 10:44, Le Tan wrote:
+>> Replace fprintf(stderr,...) with error_report() in files block/*, block.c,
+>> block-migration.c and blockdev.c. The trailing "\n"s of the @fmt argument
+>> have been removed because @fmt of error_report() should not contain newline.
+>> Also fix some coding style issues.
+> 
+> Let's do the "also" part in a separate patch. It's more than one or two
+> trivial pass-by style fixes, and some people may like the fprintf
+> conversion while having different views on the other changes.
 
-On 2014-05-25 10:44, Le Tan wrote:
-> Replace fprintf(stderr,...) with error_report() in files block/*, block=
-=2Ec,
-> block-migration.c and blockdev.c. The trailing "\n"s of the @fmt argume=
-nt
-> have been removed because @fmt of error_report() should not contain new=
-line.
-> Also fix some coding style issues.
+I think he misunderstood.
 
-Let's do the "also" part in a separate patch. It's more than one or two
-trivial pass-by style fixes, and some people may like the fprintf
-conversion while having different views on the other changes.
+I told him that his previous patch had its own whitespace issues,
+ie, it _adds_ whitespace errors.
 
-Jan
+In another reply I told him it is usually a good idea to fix style
+issues in the code the patch touches -- this means, close to, if a
+line being changed for something else has an unrelated style issue,
+it should be fixed too.  (An example was space between function name
+and its arguments in fprintf argument list, while converting that
+fprintf to error_report).
 
+But it looks like he took this advise in much more broad way and
+fixed _all_ whitespace/style issues in the files he touches.  Oh
+well.. :)
 
+And yes, definitely, please don't mix it like this.  Usually, these
+code style issues should not be touched by its own, only if you
+change nearby code.
 
---g4wjInUliIcrDKjEWdmQmM6qC0XfsP0OO
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+Thanks,
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.22 (GNU/Linux)
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iEYEARECAAYFAlOB/jcACgkQitSsb3rl5xRxfACdEHWhWpHaNfMnsSfOCfUlpkGF
-r/UAoLwWkTUAsCtwonBxtF83RO69TN8j
-=bMSn
------END PGP SIGNATURE-----
-
---g4wjInUliIcrDKjEWdmQmM6qC0XfsP0OO--
+/mjt
 
