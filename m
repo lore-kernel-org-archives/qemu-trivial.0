@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WoWDX-0005pq-KQ
-	for mharc-qemu-trivial@gnu.org; Sun, 25 May 2014 07:03:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54712)
+	id 1WoXeU-0001by-OU
+	for mharc-qemu-trivial@gnu.org; Sun, 25 May 2014 08:35:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36197)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dave@mielke.cc>) id 1WoWDR-0005gQ-8v
-	for qemu-trivial@nongnu.org; Sun, 25 May 2014 07:03:50 -0400
+	(envelope-from <dave@mielke.cc>) id 1WoXeO-0001U7-Op
+	for qemu-trivial@nongnu.org; Sun, 25 May 2014 08:35:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dave@mielke.cc>) id 1WoWDM-0001No-0b
-	for qemu-trivial@nongnu.org; Sun, 25 May 2014 07:03:45 -0400
-Received: from nimbus1.mmprivatehosting.com ([54.208.90.49]:57236)
+	(envelope-from <dave@mielke.cc>) id 1WoXeJ-0001pW-4Z
+	for qemu-trivial@nongnu.org; Sun, 25 May 2014 08:35:40 -0400
+Received: from nimbus1.mmprivatehosting.com ([54.208.90.49]:57292)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <dave@mielke.cc>)
-	id 1WoWDB-0001Mq-AC; Sun, 25 May 2014 07:03:29 -0400
+	id 1WoXe8-0001nt-18; Sun, 25 May 2014 08:35:24 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by nimbus1.mmprivatehosting.com (Postfix) with ESMTP id 7A60521DCF;
-	Sun, 25 May 2014 11:03:28 +0000 (UTC)
+	by nimbus1.mmprivatehosting.com (Postfix) with ESMTP id A98FB21DCF;
+	Sun, 25 May 2014 12:35:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at mmprivatehosting.com
 Received: from dave.mielke.cc
 	(CPE788df74e3df1-CM788df74e3df0.cpe.net.cable.rogers.com
 	[99.245.250.163]) (Authenticated sender: relay@dave.mielke.cc)
 	by nimbus1.mmprivatehosting.com (Postfix) with ESMTPA;
-	Sun, 25 May 2014 11:03:27 +0000 (UTC)
+	Sun, 25 May 2014 12:35:20 +0000 (UTC)
 Received: from beta.private.mielke.cc (beta.private.mielke.cc [192.168.0.2])
-	by dave.mielke.cc (Postfix) with ESMTPS id 0BDAE204F1;
-	Sun, 25 May 2014 07:03:27 -0400 (EDT)
+	by dave.mielke.cc (Postfix) with ESMTPS id BF121204F1;
+	Sun, 25 May 2014 08:35:19 -0400 (EDT)
 Received: from beta.private.mielke.cc (localhost.localdomain [127.0.0.1])
-	by beta.private.mielke.cc (8.14.7/8.14.6) with ESMTP id s4PB3Q3E026209; 
-	Sun, 25 May 2014 07:03:26 -0400
+	by beta.private.mielke.cc (8.14.7/8.14.6) with ESMTP id s4PCZJVX024564; 
+	Sun, 25 May 2014 08:35:19 -0400
 Received: (from dave@localhost)
-	by beta.private.mielke.cc (8.14.7/8.14.7/Submit) id s4PB3Ouc026208;
-	Sun, 25 May 2014 07:03:24 -0400
-Date: Sun, 25 May 2014 07:03:24 -0400
+	by beta.private.mielke.cc (8.14.7/8.14.7/Submit) id s4PCZIH6024563;
+	Sun, 25 May 2014 08:35:18 -0400
+Date: Sun, 25 May 2014 08:35:18 -0400
 From: Dave Mielke <dave@mielke.cc>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20140525110324.GJ1904@beta.private.mielke.cc>
+Message-ID: <20140525123518.GK1904@beta.private.mielke.cc>
 References: <20140524232950.GH1904@beta.private.mielke.cc>
 	<CAFEAcA9HtdLbXXF9RSXw_K8P-PNZ8ZOrFE9zJ6J2mGjVM=EFKg@mail.gmail.com>
 	<20140525012151.GI1904@beta.private.mielke.cc>
@@ -60,7 +60,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 25 May 2014 11:03:50 -0000
+X-List-Received-Date: Sun, 25 May 2014 12:35:46 -0000
 
 [quoted lines by Peter Maydell on 2014/05/25 at 10:11 +0100]
 
@@ -68,14 +68,14 @@ X-List-Received-Date: Sun, 25 May 2014 11:03:50 -0000
 >to be in the common key handling code, not in the curses frontend
 >specifically.
 
-Yes, you're right. While the curses UI is especially vulnerable to the problem, 
-others could be as well, especially if they're driven by a software "user" 
-rather than by a human being. Also, who's to say that there won't be a new UI 
-in the future which won't run into the same problem. I'll move the code and 
-submit a new patch.
+The code has been moved. I can see a couple of possibilities insofar as an 
+option for it is concerned. One is to extend the existing -k option to accept 
+language= as an optional prefix for its currnet operand, and to add delay=. The 
+other is to add a brand new -keydelay option. Which would be the better 
+approach?
 
-Given that this'll require a brand new option, could you please let me know all 
-the places that'll need updating insofar as documentation is concerned?
+I'm assuming that qemu-options.hx is the only file that needs to be updated 
+insofar as documentation is concerned. Is that correct?
 
 -- 
 Dave Mielke           | 2213 Fox Crescent | The Bible is the very Word of God.
