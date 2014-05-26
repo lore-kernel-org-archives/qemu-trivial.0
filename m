@@ -1,55 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WowhH-0007uV-7K
-	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 11:20:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55464)
+	id 1WoxJV-0002bO-Uj
+	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 11:59:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35849)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dave@mielke.cc>) id 1Wowh8-0007ga-7J
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:20:17 -0400
+	(envelope-from <armbru@pond.sub.org>) id 1WoxJK-0002Jj-RA
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:59:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dave@mielke.cc>) id 1Wowh2-00072E-Q8
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:20:10 -0400
-Received: from nimbus1.mmprivatehosting.com ([54.208.90.49]:32943)
+	(envelope-from <armbru@pond.sub.org>) id 1WoxJB-0003ce-K6
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:59:38 -0400
+Received: from oxygen.pond.sub.org ([2a01:4f8:201:233:1::3]:47278)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dave@mielke.cc>)
-	id 1Wowgs-0006qQ-6a; Mon, 26 May 2014 11:19:54 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by nimbus1.mmprivatehosting.com (Postfix) with ESMTP id C35CA1F7E7;
-	Mon, 26 May 2014 15:19:53 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at mmprivatehosting.com
-Received: from dave.mielke.cc
-	(CPE788df74e3df1-CM788df74e3df0.cpe.net.cable.rogers.com
-	[99.245.250.163]) (Authenticated sender: relay@dave.mielke.cc)
-	by nimbus1.mmprivatehosting.com (Postfix) with ESMTPA;
-	Mon, 26 May 2014 15:19:52 +0000 (UTC)
-Received: from beta.private.mielke.cc (beta.private.mielke.cc [192.168.0.2])
-	by dave.mielke.cc (Postfix) with ESMTPS id 2F3F2205A9;
-	Mon, 26 May 2014 11:19:51 -0400 (EDT)
-Received: from beta.private.mielke.cc (localhost.localdomain [127.0.0.1])
-	by beta.private.mielke.cc (8.14.7/8.14.6) with ESMTP id s4QFJoqZ030270; 
-	Mon, 26 May 2014 11:19:50 -0400
-Received: (from dave@localhost)
-	by beta.private.mielke.cc (8.14.7/8.14.7/Submit) id s4QFJnPW030269;
-	Mon, 26 May 2014 11:19:49 -0400
-Date: Mon, 26 May 2014 11:19:48 -0400
-From: Dave Mielke <dave@mielke.cc>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20140526151948.GA29934@beta.private.mielke.cc>
-References: <20140524232950.GH1904@beta.private.mielke.cc>
-	<CAFEAcA9HtdLbXXF9RSXw_K8P-PNZ8ZOrFE9zJ6J2mGjVM=EFKg@mail.gmail.com>
-	<20140525012151.GI1904@beta.private.mielke.cc>
-	<1401111520.13567.8.camel@nilsson.home.kraxel.org>
+	(envelope-from <armbru@pond.sub.org>)
+	id 1WoxIq-0003W3-DE; Mon, 26 May 2014 11:59:08 -0400
+Received: from blackfin.pond.sub.org (p5B328AAB.dip0.t-ipconnect.de
+	[91.50.138.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 8429A24897;
+	Mon, 26 May 2014 17:59:04 +0200 (CEST)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id CC0ED30403AF; Mon, 26 May 2014 17:59:03 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Kevin Wolf <kwolf@redhat.com>
+References: <1401068643-28655-1-git-send-email-tamlokveer@gmail.com>
+	<20140526123922.GF10187@stefanha-thinkpad.redhat.com>
+	<87k398twfd.fsf@blackfin.pond.sub.org>
+	<20140526151624.GB3813@noname.str.redhat.com>
+Date: Mon, 26 May 2014 17:59:03 +0200
+In-Reply-To: <20140526151624.GB3813@noname.str.redhat.com> (Kevin Wolf's
+	message of "Mon, 26 May 2014 17:16:24 +0200")
+Message-ID: <87vbssr0oo.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1401111520.13567.8.camel@nilsson.home.kraxel.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 54.208.90.49
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] patch: add delay=<msecs> suboption
- to -display curses
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:4f8:201:233:1::3
+Cc: peter.crosthwaite@xilinx.com, qemu-trivial@nongnu.org,
+	Stefan Hajnoczi <stefanha@gmail.com>, mjt@tls.msk.ru,
+	Le Tan <tamlokveer@gmail.com>, qemu-devel@nongnu.org,
+	jan.kiszka@web.de, stefanha@redhat.com, afaerber@suse.de
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] block: replace
+	fprintf(stderr, ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,29 +53,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 May 2014 15:20:18 -0000
+X-List-Received-Date: Mon, 26 May 2014 15:59:48 -0000
 
-[quoted lines by Gerd Hoffmann on 2014/05/26 at 15:38 +0200]
+Kevin Wolf <kwolf@redhat.com> writes:
 
->Tried to make the curses ui a bit more clever?  You could try caching
->the modifier state, then send only the changes.  That gets the number of
->events down to 6 max (4 to update modifier state, 2 for the actual key).
+> Am 26.05.2014 um 17:02 hat Markus Armbruster geschrieben:
+>> Stefan Hajnoczi <stefanha@gmail.com> writes:
+>> 
+>> > On Mon, May 26, 2014 at 09:44:03AM +0800, Le Tan wrote:
+>> >> Replace fprintf(stderr,...) with error_report() in files block/*, block.c,
+>> >> block-migration.c and blockdev.c. The trailing "\n"s of the @fmt argument
+>> >> have been removed because @fmt of error_report() should not
+>> >> contain newline.
+>> >> 
+>> >> Signed-off-by: Le Tan <tamlokveer@gmail.com>
+>> >> ---
+>> >>  block-migration.c      |    6 +--
+>> >>  block.c                |    4 +-
+>> >>  block/qcow2-refcount.c |  115 +++++++++++++++++++++---------------------
+>> >>  block/qcow2.c          |   16 +++---
+>> >>  block/raw-posix.c      |    8 ++-
+>> >>  block/raw-win32.c      |    6 +--
+>> >>  block/ssh.c            |    2 +-
+>> >>  block/vdi.c            |   14 +++---
+>> >>  block/vmdk.c           |   15 +++---
+>> >>  block/vpc.c            |    4 +-
+>> >>  block/vvfat.c | 129
+>> >> ++++++++++++++++++++++++------------------------
+>> >>  blockdev.c             |    6 +--
+>> >>  12 files changed, 159 insertions(+), 166 deletions(-)
+>> >
+>> > There is one thing that worries me about this:
+>> >
+>> > error_report() assumes that the QEMU global mutex is held in order to
+>> > access the "current monitor".
+>> 
+>> Global variable cur_mon, non-null while we're executing a monitor
+>> command.
+>
+> The important part here is that it's indeed global and not thread-local.
+>
+>> > This is problematic for code in the read/write/flush path (like qcow2
+>> > refcount allocation) since it can be invoked from a virtio-blk
+>> > data-plane thread (where the QEMU global mutex is not held).
+>> 
+>> error_report() reports to the current monitor when "in monitor context",
+>> i.e. while executing a monitor command, i.e. while cur_mon isn't null.
+>> 
+>> Can we ever be in monitor context (cur_mon not null) without holding the
+>> global mutex?
+>
+> The right question is: Can a thread (= the main loop thread) ever be in
+> monitor context while another thread (= dataplane thread) is executing
+> block driver code and doesn't hold the global mutex?
+>
+> If I understand dataplane correctly, the whole point of it is that the
+> answer to this is yes.
 
-Yes, except that, in my case, the problem already occurs on simple typing of 
-lowercase letters, i.e. just two events.
+Well, the answer used to be "no".  Once upon a time because there was
+just a single thread, later on because only one thread ever executed
+"interesting" code.
 
-Also, that approach could introduce new problems due to modifeir keys appearing 
-to be stuck.
+I'm *not* saying this should remain the case.  I'm trying to find out
+what needs to be done around cur_mon when we break the assumption behind
+it.
 
->Other question: has "git revert
->2858ab09e6f708e381fc1a1cc87e747a690c4884" any effect?
-
-That gives me:
-
-   could not revert 2858ab0... ps2: set ps/2 output buffer size as the same as kernel
-
--- 
-Dave Mielke           | 2213 Fox Crescent | The Bible is the very Word of God.
-Phone: 1-613-726-0014 | Ottawa, Ontario   | http://Mielke.cc/bible/
-EMail: dave@mielke.cc | Canada  K2A 1H7   | http://FamilyRadio.com/
+Would making cur_mon thread-local suffice?
 
