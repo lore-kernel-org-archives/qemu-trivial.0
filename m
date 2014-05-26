@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WopJs-0004Aa-7Q
-	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 03:27:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45524)
+	id 1WopJm-0003zN-QA
+	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 03:27:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45488)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WopJl-0003w3-DI
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:27:38 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WopJg-0000rw-9F
+	(envelope-from <mjt@tls.msk.ru>) id 1WopJg-0003lg-3M
 	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:27:33 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:37067)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1WopJb-0000qi-4v
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:27:28 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48637)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WopJO-0000nL-LS; Mon, 26 May 2014 03:27:10 -0400
+	id 1WopJO-0000nO-MJ; Mon, 26 May 2014 03:27:11 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A1CA242FA8;
+	by isrv.corpit.ru (Postfix) with ESMTP id 9832942FA6;
 	Mon, 26 May 2014 11:27:09 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 5D2EA6B4;
+	by tsrv.corpit.ru (Postfix) with SMTP id D99366B9;
 	Mon, 26 May 2014 11:20:15 +0400 (MSK)
-Received: (nullmailer pid 23030 invoked by uid 1000);
+Received: (nullmailer pid 23035 invoked by uid 1000);
 	Mon, 26 May 2014 07:20:14 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 26 May 2014 11:20:07 +0400
-Message-Id: <1401088811-22923-20-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Mon, 26 May 2014 11:20:09 +0400
+Message-Id: <1401088811-22923-22-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 19/23] libcacard: fix wrong array expansion
-	logic
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Le Tan <tamlokveer@gmail.com>
+Subject: [Qemu-trivial] [PULL 21/23] bsd-user: replace fprintf(stderr,
+	...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,62 +44,108 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 May 2014 07:27:38 -0000
+X-List-Received-Date: Mon, 26 May 2014 07:27:33 -0000
 
-The currrent code in libcacard/vcard_emul_nss.c:vcard_emul_options()
-has a weird bug in variable usage around expanding opts->vreader
-array.
+From: Le Tan <tamlokveer@gmail.com>
 
-There's a helper variable, vreaderOpt, which is first needlessly
-initialized to NULL, next, conditionally, only we have to expand
-opts->vreader, receives array expansion from g_renew(), and next,
-even if we don't actually perform expansion, the value of this
-variable is assigned to the actual array, opts->vreader, which
-was supposed to be expanded.
+Replace fprintf(stderr,...) with error_report() in files bsd-user/*.
+The trailing "\n"s of the @fmt argument have been removed
+because @fmt of error_report() should not contain newline.
 
-So, since we expand the array by READER_STEP increments, only
-once in READER_STEP (=4) the code will work, in other 3/4 times
-it will fail badly.
-
-Fix this by not using this temp variable when expanding the
-array, and by dropping the useless =NULL initializer too -
-if it wasn't in place initially, compiler would have warned
-us about this problem at the beginning.
-
+Signed-off-by: Le Tan <tamlokveer@gmail.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
 ---
- libcacard/vcard_emul_nss.c |    9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ bsd-user/bsdload.c |    2 +-
+ bsd-user/elfload.c |    2 +-
+ bsd-user/main.c    |   14 +++++++-------
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
-index b7db51d..8462aef 100644
---- a/libcacard/vcard_emul_nss.c
-+++ b/libcacard/vcard_emul_nss.c
-@@ -1149,7 +1149,7 @@ vcard_emul_options(const char *args)
-             char type_str[100];
-             VCardEmulType type;
-             int count, i;
--            VirtualReaderOptions *vreaderOpt = NULL;
-+            VirtualReaderOptions *vreaderOpt;
+diff --git a/bsd-user/bsdload.c b/bsd-user/bsdload.c
+index 2abc713..6b52e08 100644
+--- a/bsd-user/bsdload.c
++++ b/bsd-user/bsdload.c
+@@ -183,7 +183,7 @@ int loader_exec(const char * filename, char ** argv, char ** envp,
+                 && bprm.buf[3] == 'F') {
+             retval = load_elf_binary(&bprm,regs,infop);
+         } else {
+-            fprintf(stderr, "Unknown binary format\n");
++            error_report("Unknown binary format");
+             return -1;
+         }
+     }
+diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
+index 93fd9e4..95652b1 100644
+--- a/bsd-user/elfload.c
++++ b/bsd-user/elfload.c
+@@ -628,7 +628,7 @@ static abi_ulong copy_elf_strings(int argc,char ** argv, void **page,
+     while (argc-- > 0) {
+         tmp = argv[argc];
+         if (!tmp) {
+-            fprintf(stderr, "VFS: argc is wrong");
++            error_report("VFS: argc is wrong");
+             exit(-1);
+         }
+         tmp1 = tmp;
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 4ba61da..de74d17 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -378,8 +378,8 @@ void cpu_loop(CPUX86State *env)
+ #endif
+         default:
+             pc = env->segs[R_CS].base + env->eip;
+-            fprintf(stderr, "qemu: 0x%08lx: unhandled CPU exception 0x%x - aborting\n",
+-                    (long)pc, trapnr);
++            error_report("qemu: 0x%08lx: unhandled CPU exception 0x%x"
++                         " - aborting", (long)pc, trapnr);
+             abort();
+         }
+         process_pending_signals(env);
+@@ -752,7 +752,7 @@ int main(int argc, char **argv)
+     module_call_init(MODULE_INIT_QOM);
  
-             args = strip(args + 5);
-             if (*args != '(') {
-@@ -1173,11 +1173,10 @@ vcard_emul_options(const char *args)
+     if ((envlist = envlist_create()) == NULL) {
+-        (void) fprintf(stderr, "Unable to allocate envlist\n");
++        error_report("Unable to allocate envlist");
+         exit(1);
+     }
  
-             if (opts->vreader_count >= reader_count) {
-                 reader_count += READER_STEP;
--                vreaderOpt = g_renew(VirtualReaderOptions, opts->vreader,
--                                     reader_count);
-+                opts->vreader = g_renew(VirtualReaderOptions, opts->vreader,
-+                                        reader_count);
+@@ -794,7 +794,7 @@ int main(int argc, char **argv)
+         } else if (!strcmp(r, "ignore-environment")) {
+             envlist_free(envlist);
+             if ((envlist = envlist_create()) == NULL) {
+-                (void) fprintf(stderr, "Unable to allocate envlist\n");
++                error_report("Unable to allocate envlist");
+                 exit(1);
              }
--            opts->vreader = vreaderOpt;
--            vreaderOpt = &vreaderOpt[opts->vreader_count];
-+            vreaderOpt = &opts->vreader[opts->vreader_count];
-             vreaderOpt->name = g_strndup(name, name_length);
-             vreaderOpt->vname = g_strndup(vname, vname_length);
-             vreaderOpt->card_type = type;
+         } else if (!strcmp(r, "U")) {
+@@ -816,7 +816,7 @@ int main(int argc, char **argv)
+             qemu_host_page_size = atoi(argv[optind++]);
+             if (qemu_host_page_size == 0 ||
+                 (qemu_host_page_size & (qemu_host_page_size - 1)) != 0) {
+-                fprintf(stderr, "page size must be a power of two\n");
++                error_report("page size must be a power of two");
+                 exit(1);
+             }
+         } else if (!strcmp(r, "g")) {
+@@ -910,7 +910,7 @@ int main(int argc, char **argv)
+        qemu_host_page_size */
+     env = cpu_init(cpu_model);
+     if (!env) {
+-        fprintf(stderr, "Unable to find CPU definition\n");
++        error_report("Unable to find CPU definition");
+         exit(1);
+     }
+     cpu = ENV_GET_CPU(env);
+@@ -1012,7 +1012,7 @@ int main(int argc, char **argv)
+ #ifndef TARGET_ABI32
+     /* enable 64 bit mode if possible */
+     if (!(env->features[FEAT_8000_0001_EDX] & CPUID_EXT2_LM)) {
+-        fprintf(stderr, "The selected x86 CPU does not support 64 bit mode\n");
++        error_report("The selected x86 CPU does not support 64 bit mode");
+         exit(1);
+     }
+     env->cr[4] |= CR4_PAE_MASK;
 -- 
 1.7.10.4
 
