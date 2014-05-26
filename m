@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wopmk-000515-LR
-	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 03:57:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51609)
+	id 1Wopml-00053l-R2
+	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 03:57:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51619)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wopme-0004qC-CQ
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:57:28 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Wopmf-0004rZ-D3
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:57:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Wopma-0001aV-AE
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:57:24 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53910)
+	(envelope-from <mjt@tls.msk.ru>) id 1Wopma-0001aQ-9R
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:57:25 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40927)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WopmR-0001X6-S2; Mon, 26 May 2014 03:57:12 -0400
+	id 1WopmQ-0001WB-Pc; Mon, 26 May 2014 03:57:11 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id D2AEB42FB3;
+	by isrv.corpit.ru (Postfix) with ESMTP id A1BD242FAF;
 	Mon, 26 May 2014 11:57:09 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id EAABC6B0;
+	by tsrv.corpit.ru (Postfix) with SMTP id 49A96666;
 	Mon, 26 May 2014 11:20:14 +0400 (MSK)
-Received: (nullmailer pid 23012 invoked by uid 1000);
+Received: (nullmailer pid 22999 invoked by uid 1000);
 	Mon, 26 May 2014 07:20:13 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 26 May 2014 11:20:00 +0400
-Message-Id: <1401088811-22923-13-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Mon, 26 May 2014 11:19:54 +0400
+Message-Id: <1401088811-22923-7-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Subject: [Qemu-trivial] [PULL 12/23] vl: fix 'name' option to work with
-	-readconfig
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 06/23] bswap.h: Rename ldl_p, stl_p,
+	etc to ldl_he_p, stl_he_p, etc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,69 +44,185 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 May 2014 07:57:28 -0000
+X-List-Received-Date: Mon, 26 May 2014 07:57:29 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-The 'name' option silently failed when used in config files
-( http://lists.gnu.org/archive/html/qemu-devel/2014-04/msg00378.html )
+We have an unfortunate naming clash between the functions
+ldl_p, stl_p, etc defined in bswap.h (which have semantics
+"load/store in host endianness") and the #defines of the same
+name in cpu-all.h (which have the semantics "load/store in
+target endianness").
 
--readconfig stores the configuration read in QemuOpts.  Command line
-option parsing should do the same, and no more.  In particular it should
-not act upon the option.  That needs to be done separately, where both
-command line and -readconfig settings are visible in QemuOpts.
+Fortunately it turns out that the only users of the bswap.h
+functions are all within bswap.h itself, so we can simply
+rename them to include a _he_ infix for "host endianness".
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reported-by: William Dauchy <william@gandi.net>
-Tested-by: William Dauchy <william@gandi.net>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-(mjt: added commit message by ambru@ and subject prefix)
 ---
- vl.c |    9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ include/qemu/bswap.h |   45 +++++++++++++++++++++++----------------------
+ 1 file changed, 23 insertions(+), 22 deletions(-)
 
-diff --git a/vl.c b/vl.c
-index 709d8cd..99b6fc0 100644
---- a/vl.c
-+++ b/vl.c
-@@ -965,7 +965,7 @@ static int parse_sandbox(QemuOpts *opts, void *opaque)
-     return 0;
- }
+diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+index 0f9c6cf..78c1ced 100644
+--- a/include/qemu/bswap.h
++++ b/include/qemu/bswap.h
+@@ -215,9 +215,10 @@ typedef union {
+  *   q: 64 bits
+  *
+  * endian is:
+- * (empty): host endian
++ *   he   : host endian
+  *   be   : big endian
+  *   le   : little endian
++ * (except for byte accesses, which have no endian infix).
+  */
  
--static void parse_name(QemuOpts *opts)
-+static int parse_name(QemuOpts *opts, void *opaque)
+ static inline int ldub_p(const void *ptr)
+@@ -239,82 +240,82 @@ static inline void stb_p(void *ptr, uint8_t v)
+    operations.  Thus we don't need to play games with packed attributes, or
+    inline byte-by-byte stores.  */
+ 
+-static inline int lduw_p(const void *ptr)
++static inline int lduw_he_p(const void *ptr)
  {
-     const char *proc_name;
- 
-@@ -978,6 +978,8 @@ static void parse_name(QemuOpts *opts)
-     if (proc_name) {
-         os_set_proc_name(proc_name);
-     }
-+
-+    return 0;
+     uint16_t r;
+     memcpy(&r, ptr, sizeof(r));
+     return r;
  }
  
- bool usb_enabled(bool default_usb)
-@@ -3796,7 +3798,6 @@ int main(int argc, char **argv, char **envp)
-                 if (!opts) {
-                     exit(1);
-                 }
--                parse_name(opts);
-                 break;
-             case QEMU_OPTION_prom_env:
-                 if (nb_prom_envs >= MAX_PROM_ENVS) {
-@@ -3971,6 +3972,10 @@ int main(int argc, char **argv, char **envp)
-         exit(1);
-     }
+-static inline int ldsw_p(const void *ptr)
++static inline int ldsw_he_p(const void *ptr)
+ {
+     int16_t r;
+     memcpy(&r, ptr, sizeof(r));
+     return r;
+ }
  
-+    if (qemu_opts_foreach(qemu_find_opts("name"), parse_name, NULL, 1)) {
-+        exit(1);
-+    }
-+
- #ifndef _WIN32
-     if (qemu_opts_foreach(qemu_find_opts("add-fd"), parse_add_fd, NULL, 1)) {
-         exit(1);
+-static inline void stw_p(void *ptr, uint16_t v)
++static inline void stw_he_p(void *ptr, uint16_t v)
+ {
+     memcpy(ptr, &v, sizeof(v));
+ }
+ 
+-static inline int ldl_p(const void *ptr)
++static inline int ldl_he_p(const void *ptr)
+ {
+     int32_t r;
+     memcpy(&r, ptr, sizeof(r));
+     return r;
+ }
+ 
+-static inline void stl_p(void *ptr, uint32_t v)
++static inline void stl_he_p(void *ptr, uint32_t v)
+ {
+     memcpy(ptr, &v, sizeof(v));
+ }
+ 
+-static inline uint64_t ldq_p(const void *ptr)
++static inline uint64_t ldq_he_p(const void *ptr)
+ {
+     uint64_t r;
+     memcpy(&r, ptr, sizeof(r));
+     return r;
+ }
+ 
+-static inline void stq_p(void *ptr, uint64_t v)
++static inline void stq_he_p(void *ptr, uint64_t v)
+ {
+     memcpy(ptr, &v, sizeof(v));
+ }
+ 
+ static inline int lduw_le_p(const void *ptr)
+ {
+-    return (uint16_t)le_bswap(lduw_p(ptr), 16);
++    return (uint16_t)le_bswap(lduw_he_p(ptr), 16);
+ }
+ 
+ static inline int ldsw_le_p(const void *ptr)
+ {
+-    return (int16_t)le_bswap(lduw_p(ptr), 16);
++    return (int16_t)le_bswap(lduw_he_p(ptr), 16);
+ }
+ 
+ static inline int ldl_le_p(const void *ptr)
+ {
+-    return le_bswap(ldl_p(ptr), 32);
++    return le_bswap(ldl_he_p(ptr), 32);
+ }
+ 
+ static inline uint64_t ldq_le_p(const void *ptr)
+ {
+-    return le_bswap(ldq_p(ptr), 64);
++    return le_bswap(ldq_he_p(ptr), 64);
+ }
+ 
+ static inline void stw_le_p(void *ptr, uint16_t v)
+ {
+-    stw_p(ptr, le_bswap(v, 16));
++    stw_he_p(ptr, le_bswap(v, 16));
+ }
+ 
+ static inline void stl_le_p(void *ptr, uint32_t v)
+ {
+-    stl_p(ptr, le_bswap(v, 32));
++    stl_he_p(ptr, le_bswap(v, 32));
+ }
+ 
+ static inline void stq_le_p(void *ptr, uint64_t v)
+ {
+-    stq_p(ptr, le_bswap(v, 64));
++    stq_he_p(ptr, le_bswap(v, 64));
+ }
+ 
+ /* float access */
+@@ -349,37 +350,37 @@ static inline void stfq_le_p(void *ptr, float64 v)
+ 
+ static inline int lduw_be_p(const void *ptr)
+ {
+-    return (uint16_t)be_bswap(lduw_p(ptr), 16);
++    return (uint16_t)be_bswap(lduw_he_p(ptr), 16);
+ }
+ 
+ static inline int ldsw_be_p(const void *ptr)
+ {
+-    return (int16_t)be_bswap(lduw_p(ptr), 16);
++    return (int16_t)be_bswap(lduw_he_p(ptr), 16);
+ }
+ 
+ static inline int ldl_be_p(const void *ptr)
+ {
+-    return be_bswap(ldl_p(ptr), 32);
++    return be_bswap(ldl_he_p(ptr), 32);
+ }
+ 
+ static inline uint64_t ldq_be_p(const void *ptr)
+ {
+-    return be_bswap(ldq_p(ptr), 64);
++    return be_bswap(ldq_he_p(ptr), 64);
+ }
+ 
+ static inline void stw_be_p(void *ptr, uint16_t v)
+ {
+-    stw_p(ptr, be_bswap(v, 16));
++    stw_he_p(ptr, be_bswap(v, 16));
+ }
+ 
+ static inline void stl_be_p(void *ptr, uint32_t v)
+ {
+-    stl_p(ptr, be_bswap(v, 32));
++    stl_he_p(ptr, be_bswap(v, 32));
+ }
+ 
+ static inline void stq_be_p(void *ptr, uint64_t v)
+ {
+-    stq_p(ptr, be_bswap(v, 64));
++    stq_he_p(ptr, be_bswap(v, 64));
+ }
+ 
+ /* float access */
 -- 
 1.7.10.4
 
