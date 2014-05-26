@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WouCG-0007Kg-VO
-	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 08:40:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56240)
+	id 1WouVU-0003CN-TQ
+	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 09:00:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59145)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1WouC6-00070c-7I
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 08:40:07 -0400
+	(envelope-from <dave@mielke.cc>) id 1WouVN-0002ys-Nx
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 08:59:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1WouBx-0002zM-77
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 08:39:58 -0400
-Received: from mail-we0-x230.google.com ([2a00:1450:400c:c03::230]:65386)
+	(envelope-from <dave@mielke.cc>) id 1WouVH-0000ug-Uw
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 08:59:53 -0400
+Received: from nimbus1.mmprivatehosting.com ([54.208.90.49]:60975)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1WouBc-0002ah-1X; Mon, 26 May 2014 08:39:28 -0400
-Received: by mail-we0-f176.google.com with SMTP id q59so7802862wes.7
-	for <multiple recipients>; Mon, 26 May 2014 05:39:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=mVl2iRm1eUTCdHrsC+kqdYcDxo/ADLudvQ4eA37X2/c=;
-	b=gLqeQmzMasffJVWrazKAIBslpE1y8D4Ja7EbVwttXbXZIcuDn5VbGoITVtBy+6Xi0s
-	8UCLeU929E36FF4u/KGSXn/s6a60YowdCqODfHazU4ZnOOBB8pvxptMgktHGKZyaboOi
-	DFAhRfuFV+1wuLsdGuBGPa2L+3kM8TywwTD6D/LJJ1TljO6y/U08msv9Xmfi7fgrfUs6
-	SmHRuhXIven7heEYJ81eBi10fFxjksajt1d8wRkR4UnChp2BO3DCdp2FT2e3n8CNUOBB
-	iPLw81mpxpUT1hvNTAClHeNGPGbHRgNWqWFDcmagtDa9DKv9EFE/ko0E6hAFzz7hHKMH
-	JAmA==
-X-Received: by 10.195.13.76 with SMTP id ew12mr27417587wjd.80.1401107966254;
-	Mon, 26 May 2014 05:39:26 -0700 (PDT)
-Received: from localhost (95-90-192-172-dynip.superkabel.de. [95.90.192.172])
-	by mx.google.com with ESMTPSA id
-	wl6sm26624135wjc.6.2014.05.26.05.39.24 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 26 May 2014 05:39:25 -0700 (PDT)
-Date: Mon, 26 May 2014 14:39:22 +0200
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Le Tan <tamlokveer@gmail.com>
-Message-ID: <20140526123922.GF10187@stefanha-thinkpad.redhat.com>
-References: <1401068643-28655-1-git-send-email-tamlokveer@gmail.com>
+	(envelope-from <dave@mielke.cc>)
+	id 1WouV6-0000ZY-QL; Mon, 26 May 2014 08:59:36 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by nimbus1.mmprivatehosting.com (Postfix) with ESMTP id A1E1920588;
+	Mon, 26 May 2014 12:59:35 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at mmprivatehosting.com
+Received: from dave.mielke.cc
+	(CPE788df74e3df1-CM788df74e3df0.cpe.net.cable.rogers.com
+	[99.245.250.163]) (Authenticated sender: relay@dave.mielke.cc)
+	by nimbus1.mmprivatehosting.com (Postfix) with ESMTPA;
+	Mon, 26 May 2014 12:59:34 +0000 (UTC)
+Received: from beta.private.mielke.cc (beta.private.mielke.cc [192.168.0.2])
+	by dave.mielke.cc (Postfix) with ESMTPS id 883ED20545;
+	Mon, 26 May 2014 08:59:33 -0400 (EDT)
+Received: from beta.private.mielke.cc (localhost.localdomain [127.0.0.1])
+	by beta.private.mielke.cc (8.14.7/8.14.6) with ESMTP id s4QCxXXM027017; 
+	Mon, 26 May 2014 08:59:33 -0400
+Received: (from dave@localhost)
+	by beta.private.mielke.cc (8.14.7/8.14.7/Submit) id s4QCxWe6027016;
+	Mon, 26 May 2014 08:59:32 -0400
+Date: Mon, 26 May 2014 08:59:32 -0400
+From: Dave Mielke <dave@mielke.cc>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20140526125932.GD1207@beta.private.mielke.cc>
+References: <20140524232950.GH1904@beta.private.mielke.cc>
+	<CAFEAcA9HtdLbXXF9RSXw_K8P-PNZ8ZOrFE9zJ6J2mGjVM=EFKg@mail.gmail.com>
+	<20140525012151.GI1904@beta.private.mielke.cc>
+	<CAFEAcA95424yXi1yobV5R3jt5t-69H36XRv8kDAyK7Dvx0bJ2w@mail.gmail.com>
+	<20140525110324.GJ1904@beta.private.mielke.cc>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/mixed; boundary="k+w/mQv8wyuph6w0"
 Content-Disposition: inline
-In-Reply-To: <1401068643-28655-1-git-send-email-tamlokveer@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::230
-Cc: kwolf@redhat.com, peter.crosthwaite@xilinx.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, qemu-devel@nongnu.org, jan.kiszka@web.de,
-	stefanha@redhat.com, afaerber@suse.de
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] block: replace
- fprintf(stderr, ...) with error_report()
+In-Reply-To: <20140525110324.GJ1904@beta.private.mielke.cc>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 54.208.90.49
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] patch: add -kbddelay option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,44 +60,245 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 May 2014 12:40:07 -0000
+X-List-Received-Date: Mon, 26 May 2014 12:59:59 -0000
 
-On Mon, May 26, 2014 at 09:44:03AM +0800, Le Tan wrote:
-> Replace fprintf(stderr,...) with error_report() in files block/*, block.c,
-> block-migration.c and blockdev.c. The trailing "\n"s of the @fmt argument
-> have been removed because @fmt of error_report() should not contain newline.
-> 
-> Signed-off-by: Le Tan <tamlokveer@gmail.com>
-> ---
->  block-migration.c      |    6 +--
->  block.c                |    4 +-
->  block/qcow2-refcount.c |  115 +++++++++++++++++++++---------------------
->  block/qcow2.c          |   16 +++---
->  block/raw-posix.c      |    8 ++-
->  block/raw-win32.c      |    6 +--
->  block/ssh.c            |    2 +-
->  block/vdi.c            |   14 +++---
->  block/vmdk.c           |   15 +++---
->  block/vpc.c            |    4 +-
->  block/vvfat.c          |  129 ++++++++++++++++++++++++------------------------
->  blockdev.c             |    6 +--
->  12 files changed, 159 insertions(+), 166 deletions(-)
 
-There is one thing that worries me about this:
+--k+w/mQv8wyuph6w0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-error_report() assumes that the QEMU global mutex is held in order to
-access the "current monitor".
+>[quoted lines by Peter Maydell on 2014/05/25 at 10:11 +0100]
 
-This is problematic for code in the read/write/flush path (like qcow2
-refcount allocation) since it can be invoked from a virtio-blk
-data-plane thread (where the QEMU global mutex is not held).
+>Ah, I see. Still, I think it makes more sense for the queue and delay
+>to be in the common key handling code, not in the curses frontend
+>specifically.
 
-For the time being, I prefer keeping the fprintf().  In the long term we
-need to decide:
-1. Some functions should use Error * to report errors.
-2. Some functions really produce their own output but it probably
-shouldn't go to the monitor.
-3. The remaining functions may really be error_report() candidates.
+This patch, attached as qemu-kbddelay-1.patch, is a rework of the former curses 
+UI patch so that the delay applies to key events in general. A new option, 
+-kbddelay [duration=]msecs, controls it. As before, the default is 0, meaning 
+no delay, in which case the timer and queue aren't used thus retaining the 
+original behaviour.
 
-Stefan
+-- 
+Dave Mielke           | 2213 Fox Crescent | The Bible is the very Word of God.
+Phone: 1-613-726-0014 | Ottawa, Ontario   | http://Mielke.cc/bible/
+EMail: dave@mielke.cc | Canada  K2A 1H7   | http://FamilyRadio.com/
+
+--k+w/mQv8wyuph6w0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment; filename="qemu-kbddelay-1.patch"
+
+diff --git a/include/ui/input.h b/include/ui/input.h
+index 3d3d487..17c77c8 100644
+--- a/include/ui/input.h
++++ b/include/ui/input.h
+@@ -35,6 +35,7 @@ void qemu_input_event_sync(void);
+ InputEvent *qemu_input_event_new_key(KeyValue *key, bool down);
+ void qemu_input_event_send_key(QemuConsole *src, KeyValue *key, bool down);
+ void qemu_input_event_send_key_number(QemuConsole *src, int num, bool down);
++void qemu_input_event_set_keyboard_delay(uint64_t duration);
+ void qemu_input_event_send_key_qcode(QemuConsole *src, QKeyCode q, bool down);
+ int qemu_input_key_value_to_number(const KeyValue *value);
+ int qemu_input_key_value_to_qcode(const KeyValue *value);
+diff --git a/qemu-options.hx b/qemu-options.hx
+index c2c0823..5d0a8b1 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -262,6 +262,24 @@ de  en-us  fi  fr-be  hr     it  lv  nl-be  pt  sl     tr
+ The default is @code{en-us}.
+ ETEXI
+ 
++DEF("kbddelay", HAS_ARG, QEMU_OPTION_kbddelay,
++    "-kbddelay [duration=]msecs\n"
++    "                ensure a minimum delay between keyboard events\n"
++    "                duration: the minimum delay between keyboard events (default: 0)\n",
++    QEMU_ARCH_ALL)
++STEXI
++@item -kbddelay [duration=]@var{msecs}
++@findex -kbddelay
++Set the minimum delay between keyboard events to @var{msecs} milliseconds.
++The default is 0 (no minimum delay).
++This option exists in order to deal with problematic applications which run 
++into trouble when keys are typed too quickly. Certain UIs, like curses, 
++aggravate the problem because they must turn a single user keyboard action into 
++several keyboard events being delivered to the virtual machine. Only try this 
++option if you encounter an unexpected keyboard input issue, for example the 
++input not being recognized at all. A duration of 20 seems to be reasonable.
++ETEXI
++
+ 
+ DEF("audio-help", 0, QEMU_OPTION_audio_help,
+     "-audio-help     print list of audio drivers and their options\n",
+diff --git a/ui/input.c b/ui/input.c
+index fc91fba..eb6c1dd 100644
+--- a/ui/input.c
++++ b/ui/input.c
+@@ -188,7 +188,9 @@ InputEvent *qemu_input_event_new_key(KeyValue *key, bool down)
+     return evt;
+ }
+ 
+-void qemu_input_event_send_key(QemuConsole *src, KeyValue *key, bool down)
++static void qemu_input_event_send_key_immediate(QemuConsole *src,
++                                                KeyValue *key,
++                                                bool down)
+ {
+     InputEvent *evt;
+     evt = qemu_input_event_new_key(key, down);
+@@ -197,6 +199,82 @@ void qemu_input_event_send_key(QemuConsole *src, KeyValue *key, bool down)
+     qapi_free_InputEvent(evt);
+ }
+ 
++struct PendingKeyEvent {
++    struct PendingKeyEvent *next;
++    QemuConsole *src;
++    KeyValue *key;
++    bool down;
++};
++
++static struct PendingKeyEvent *firstPendingKeyEvent = NULL;
++static struct PendingKeyEvent *lastPendingKeyEvent = NULL;
++
++static unsigned long long pendingKeyEventDelay = 0;
++static QEMUTimer *pendingKeyEventTimer = NULL;
++
++static void qemu_input_begin_pending_key_event(void)
++{
++    struct PendingKeyEvent *event = firstPendingKeyEvent;
++
++    qemu_input_event_send_key_immediate(event->src, event->key, event->down);
++    timer_mod(pendingKeyEventTimer, qemu_clock_get_ms(QEMU_CLOCK_VIRTUAL) + pendingKeyEventDelay);
++}
++
++static void qemu_input_end_pending_key_event(void *opaque)
++{
++    struct PendingKeyEvent *event = firstPendingKeyEvent;
++
++    if ((firstPendingKeyEvent = event->next))
++    {
++        qemu_input_begin_pending_key_event();
++    }
++    else
++    {
++        lastPendingKeyEvent = NULL;
++    }
++
++    g_free(event);
++}
++
++void qemu_input_event_send_key(QemuConsole *src, KeyValue *key, bool down)
++{
++    if (pendingKeyEventDelay)
++    {
++        struct PendingKeyEvent *event;
++
++        event = g_malloc(sizeof(*event));
++        event->next = NULL;
++        event->src = src;
++        event->key = key;
++        event->down = down;
++
++        if (lastPendingKeyEvent)
++        {
++            lastPendingKeyEvent->next = event;
++            lastPendingKeyEvent = event;
++        }
++        else
++        {
++            if (!pendingKeyEventTimer)
++            {
++                pendingKeyEventTimer = timer_new_ms(QEMU_CLOCK_VIRTUAL, qemu_input_end_pending_key_event, NULL);
++            }
++
++            firstPendingKeyEvent = lastPendingKeyEvent = event;
++            qemu_input_begin_pending_key_event();
++        }
++    }
++    else
++    {
++        qemu_input_event_send_key_immediate(src, key, down);
++    }
++}
++
++void qemu_input_event_set_keyboard_delay(uint64_t duration)
++{
++    pendingKeyEventDelay = duration;
++}
++
+ void qemu_input_event_send_key_number(QemuConsole *src, int num, bool down)
+ {
+     KeyValue *key = g_new0(KeyValue, 1);
+diff --git a/vl.c b/vl.c
+index 709d8cd..490621b 100644
+--- a/vl.c
++++ b/vl.c
+@@ -77,6 +77,7 @@ int main(int argc, char **argv)
+ #include "net/slirp.h"
+ #include "monitor/monitor.h"
+ #include "ui/console.h"
++#include "ui/input.h"
+ #include "sysemu/sysemu.h"
+ #include "exec/gdbstub.h"
+ #include "qemu/timer.h"
+@@ -1387,6 +1388,20 @@ static QemuOptsList qemu_smp_opts = {
+     },
+ };
+ 
++static QemuOptsList qemu_kbddelay_opts = {
++    .name = "kbddelay",
++    .implied_opt_name = "duration",
++    .head = QTAILQ_HEAD_INITIALIZER(qemu_kbddelay_opts.head),
++    .merge_lists = true,
++    .desc = {
++        {
++            .name = "duration",
++            .type = QEMU_OPT_NUMBER,
++        },
++        { /* end of list */ }
++    },
++};
++
+ static void smp_parse(QemuOpts *opts)
+ {
+     if (opts) {
+@@ -3021,6 +3036,7 @@ int main(int argc, char **argv, char **envp)
+     qemu_add_opts(&qemu_realtime_opts);
+     qemu_add_opts(&qemu_msg_opts);
+     qemu_add_opts(&qemu_name_opts);
++    qemu_add_opts(&qemu_kbddelay_opts);
+ 
+     runstate_init();
+ 
+@@ -3408,6 +3424,30 @@ int main(int argc, char **argv, char **envp)
+ 	    case QEMU_OPTION_k:
+ 		keyboard_layout = optarg;
+ 		break;
++            case QEMU_OPTION_kbddelay: {
++                uint64_t duration_value;
++                const char *duration_string;
++
++                opts = qemu_opts_parse(qemu_find_opts("kbddelay"), optarg, 1);
++                if (!opts) {
++                    exit(EXIT_FAILURE);
++                }
++
++                duration_string = qemu_opt_get(opts, "duration");
++                if (!duration_string) {
++                    error_report("invalid -kbddelay option, missing 'duration' option");
++                    exit(EXIT_FAILURE);
++                }
++
++                if (*duration_string) {
++                    duration_value = qemu_opt_get_number(opts, "duration", 20);
++                } else {
++                    duration_value = 20;
++                }
++
++                qemu_input_event_set_keyboard_delay(duration_value);
++                break;
++            }
+             case QEMU_OPTION_localtime:
+                 rtc_utc = 0;
+                 break;
+
+--k+w/mQv8wyuph6w0--
 
