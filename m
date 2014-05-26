@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wov7H-0004sx-MZ
-	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 09:39:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36295)
+	id 1WowR0-0000Ay-LF
+	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 11:03:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52192)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Wov79-0004sk-Ki
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 09:39:03 -0400
+	(envelope-from <armbru@pond.sub.org>) id 1WowQq-0008Pj-2n
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:03:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Wov72-0003n8-3n
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 09:38:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:13008)
+	(envelope-from <armbru@pond.sub.org>) id 1WowQh-0001DT-HN
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:03:20 -0400
+Received: from oxygen.pond.sub.org ([144.76.244.19]:46999)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1Wov71-0003mx-Qu; Mon, 26 May 2014 09:38:48 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4QDchr1006317
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 26 May 2014 09:38:44 -0400
-Received: from [10.36.116.16] (ovpn-116-16.ams2.redhat.com [10.36.116.16])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s4QDcfjb010077; Mon, 26 May 2014 09:38:42 -0400
-Message-ID: <1401111520.13567.8.camel@nilsson.home.kraxel.org>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Dave Mielke <dave@mielke.cc>
-Date: Mon, 26 May 2014 15:38:40 +0200
-In-Reply-To: <20140525012151.GI1904@beta.private.mielke.cc>
-References: <20140524232950.GH1904@beta.private.mielke.cc>
-	<CAFEAcA9HtdLbXXF9RSXw_K8P-PNZ8ZOrFE9zJ6J2mGjVM=EFKg@mail.gmail.com>
-	<20140525012151.GI1904@beta.private.mielke.cc>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] patch: add delay=<msecs> suboption
- to -display curses
+	(envelope-from <armbru@pond.sub.org>)
+	id 1WowQO-00016q-ED; Mon, 26 May 2014 11:02:52 -0400
+Received: from blackfin.pond.sub.org (p5B328AAB.dip0.t-ipconnect.de
+	[91.50.138.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 97DCD244BA;
+	Mon, 26 May 2014 17:02:47 +0200 (CEST)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id D560430403AF; Mon, 26 May 2014 17:02:46 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+References: <1401068643-28655-1-git-send-email-tamlokveer@gmail.com>
+	<20140526123922.GF10187@stefanha-thinkpad.redhat.com>
+Date: Mon, 26 May 2014 17:02:46 +0200
+In-Reply-To: <20140526123922.GF10187@stefanha-thinkpad.redhat.com> (Stefan
+	Hajnoczi's message of "Mon, 26 May 2014 14:39:22 +0200")
+Message-ID: <87k398twfd.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 144.76.244.19
+Cc: kwolf@redhat.com, peter.crosthwaite@xilinx.com, qemu-trivial@nongnu.org,
+	mjt@tls.msk.ru, Le Tan <tamlokveer@gmail.com>,
+	qemu-devel@nongnu.org, jan.kiszka@web.de, stefanha@redhat.com,
+	afaerber@suse.de
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] block: replace
+	fprintf(stderr, ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,30 +50,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 May 2014 13:39:03 -0000
+X-List-Received-Date: Mon, 26 May 2014 15:03:28 -0000
 
-On Sa, 2014-05-24 at 21:21 -0400, Dave Mielke wrote:
-> [quoted lines by Peter Maydell on 2014/05/25 at 01:04 +0100]
-> 
-> >Why is this a problem only for the curses UI frontend, and not for
-> >any of the other UIs which might send key events?
-> 
-> One reason is that most UIs send key events as they receive them from the 
-> keyboard, one at a time, whereas the curses UI gets a single key event from 
-> curses and then sends all of the scancodes which it takes to represent that 
-> key. In other words, a single key event from curses could result in as many as 
-> 10 actual key events needing to be passed along - both the press and release 
-> for the actual key plus up to four modifiers (shift, control, alt, altgr).
+Stefan Hajnoczi <stefanha@gmail.com> writes:
 
-Tried to make the curses ui a bit more clever?  You could try caching
-the modifier state, then send only the changes.  That gets the number of
-events down to 6 max (4 to update modifier state, 2 for the actual key).
+> On Mon, May 26, 2014 at 09:44:03AM +0800, Le Tan wrote:
+>> Replace fprintf(stderr,...) with error_report() in files block/*, block.c,
+>> block-migration.c and blockdev.c. The trailing "\n"s of the @fmt argument
+>> have been removed because @fmt of error_report() should not contain newline.
+>> 
+>> Signed-off-by: Le Tan <tamlokveer@gmail.com>
+>> ---
+>>  block-migration.c      |    6 +--
+>>  block.c                |    4 +-
+>>  block/qcow2-refcount.c |  115 +++++++++++++++++++++---------------------
+>>  block/qcow2.c          |   16 +++---
+>>  block/raw-posix.c      |    8 ++-
+>>  block/raw-win32.c      |    6 +--
+>>  block/ssh.c            |    2 +-
+>>  block/vdi.c            |   14 +++---
+>>  block/vmdk.c           |   15 +++---
+>>  block/vpc.c            |    4 +-
+>>  block/vvfat.c | 129
+>> ++++++++++++++++++++++++------------------------
+>>  blockdev.c             |    6 +--
+>>  12 files changed, 159 insertions(+), 166 deletions(-)
+>
+> There is one thing that worries me about this:
+>
+> error_report() assumes that the QEMU global mutex is held in order to
+> access the "current monitor".
 
-Other question: has "git revert
-2858ab09e6f708e381fc1a1cc87e747a690c4884" any effect?
+Global variable cur_mon, non-null while we're executing a monitor
+command.
 
-cheers,
-  Gerd
+> This is problematic for code in the read/write/flush path (like qcow2
+> refcount allocation) since it can be invoked from a virtio-blk
+> data-plane thread (where the QEMU global mutex is not held).
 
+error_report() reports to the current monitor when "in monitor context",
+i.e. while executing a monitor command, i.e. while cur_mon isn't null.
 
+Can we ever be in monitor context (cur_mon not null) without holding the
+global mutex?
+
+> For the time being, I prefer keeping the fprintf().  In the long term we
+> need to decide:
+> 1. Some functions should use Error * to report errors.
+> 2. Some functions really produce their own output but it probably
+> shouldn't go to the monitor.
+> 3. The remaining functions may really be error_report() candidates.
+
+0. Figure out what rules apply to cur_mon with respect to the global
+mutex.
 
