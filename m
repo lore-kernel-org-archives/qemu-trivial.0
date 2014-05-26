@@ -1,44 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WowR0-0000Ay-LF
-	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 11:03:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52192)
+	id 1Wowdp-0005bi-4E
+	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 11:16:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54831)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WowQq-0008Pj-2n
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:03:28 -0400
+	(envelope-from <kwolf@redhat.com>) id 1Wowdh-0005bJ-Nt
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:16:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WowQh-0001DT-HN
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:03:20 -0400
-Received: from oxygen.pond.sub.org ([144.76.244.19]:46999)
+	(envelope-from <kwolf@redhat.com>) id 1Wowdb-0005qy-Ju
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 11:16:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45754)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1WowQO-00016q-ED; Mon, 26 May 2014 11:02:52 -0400
-Received: from blackfin.pond.sub.org (p5B328AAB.dip0.t-ipconnect.de
-	[91.50.138.171])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(Client did not present a certificate)
-	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 97DCD244BA;
-	Mon, 26 May 2014 17:02:47 +0200 (CEST)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id D560430403AF; Mon, 26 May 2014 17:02:46 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
+	(envelope-from <kwolf@redhat.com>)
+	id 1Wowdb-0005qu-Bs; Mon, 26 May 2014 11:16:31 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4QFGSxW029349
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Mon, 26 May 2014 11:16:28 -0400
+Received: from noname.str.redhat.com (dhcp-192-197.str.redhat.com
+	[10.33.192.197])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id s4QFGPQT016085; Mon, 26 May 2014 11:16:25 -0400
+Date: Mon, 26 May 2014 17:16:24 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20140526151624.GB3813@noname.str.redhat.com>
 References: <1401068643-28655-1-git-send-email-tamlokveer@gmail.com>
 	<20140526123922.GF10187@stefanha-thinkpad.redhat.com>
-Date: Mon, 26 May 2014 17:02:46 +0200
-In-Reply-To: <20140526123922.GF10187@stefanha-thinkpad.redhat.com> (Stefan
-	Hajnoczi's message of "Mon, 26 May 2014 14:39:22 +0200")
-Message-ID: <87k398twfd.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	<87k398twfd.fsf@blackfin.pond.sub.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 144.76.244.19
-Cc: kwolf@redhat.com, peter.crosthwaite@xilinx.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, Le Tan <tamlokveer@gmail.com>,
-	qemu-devel@nongnu.org, jan.kiszka@web.de, stefanha@redhat.com,
-	afaerber@suse.de
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87k398twfd.fsf@blackfin.pond.sub.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: peter.crosthwaite@xilinx.com, qemu-trivial@nongnu.org,
+	Stefan Hajnoczi <stefanha@gmail.com>, mjt@tls.msk.ru,
+	Le Tan <tamlokveer@gmail.com>, qemu-devel@nongnu.org,
+	jan.kiszka@web.de, stefanha@redhat.com, afaerber@suse.de
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] block: replace
-	fprintf(stderr, ...) with error_report()
+ fprintf(stderr, ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,57 +53,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 May 2014 15:03:28 -0000
+X-List-Received-Date: Mon, 26 May 2014 15:16:44 -0000
 
-Stefan Hajnoczi <stefanha@gmail.com> writes:
+Am 26.05.2014 um 17:02 hat Markus Armbruster geschrieben:
+> Stefan Hajnoczi <stefanha@gmail.com> writes:
+> 
+> > On Mon, May 26, 2014 at 09:44:03AM +0800, Le Tan wrote:
+> >> Replace fprintf(stderr,...) with error_report() in files block/*, block.c,
+> >> block-migration.c and blockdev.c. The trailing "\n"s of the @fmt argument
+> >> have been removed because @fmt of error_report() should not contain newline.
+> >> 
+> >> Signed-off-by: Le Tan <tamlokveer@gmail.com>
+> >> ---
+> >>  block-migration.c      |    6 +--
+> >>  block.c                |    4 +-
+> >>  block/qcow2-refcount.c |  115 +++++++++++++++++++++---------------------
+> >>  block/qcow2.c          |   16 +++---
+> >>  block/raw-posix.c      |    8 ++-
+> >>  block/raw-win32.c      |    6 +--
+> >>  block/ssh.c            |    2 +-
+> >>  block/vdi.c            |   14 +++---
+> >>  block/vmdk.c           |   15 +++---
+> >>  block/vpc.c            |    4 +-
+> >>  block/vvfat.c | 129
+> >> ++++++++++++++++++++++++------------------------
+> >>  blockdev.c             |    6 +--
+> >>  12 files changed, 159 insertions(+), 166 deletions(-)
+> >
+> > There is one thing that worries me about this:
+> >
+> > error_report() assumes that the QEMU global mutex is held in order to
+> > access the "current monitor".
+> 
+> Global variable cur_mon, non-null while we're executing a monitor
+> command.
 
-> On Mon, May 26, 2014 at 09:44:03AM +0800, Le Tan wrote:
->> Replace fprintf(stderr,...) with error_report() in files block/*, block.c,
->> block-migration.c and blockdev.c. The trailing "\n"s of the @fmt argument
->> have been removed because @fmt of error_report() should not contain newline.
->> 
->> Signed-off-by: Le Tan <tamlokveer@gmail.com>
->> ---
->>  block-migration.c      |    6 +--
->>  block.c                |    4 +-
->>  block/qcow2-refcount.c |  115 +++++++++++++++++++++---------------------
->>  block/qcow2.c          |   16 +++---
->>  block/raw-posix.c      |    8 ++-
->>  block/raw-win32.c      |    6 +--
->>  block/ssh.c            |    2 +-
->>  block/vdi.c            |   14 +++---
->>  block/vmdk.c           |   15 +++---
->>  block/vpc.c            |    4 +-
->>  block/vvfat.c | 129
->> ++++++++++++++++++++++++------------------------
->>  blockdev.c             |    6 +--
->>  12 files changed, 159 insertions(+), 166 deletions(-)
->
-> There is one thing that worries me about this:
->
-> error_report() assumes that the QEMU global mutex is held in order to
-> access the "current monitor".
+The important part here is that it's indeed global and not thread-local.
 
-Global variable cur_mon, non-null while we're executing a monitor
-command.
+> > This is problematic for code in the read/write/flush path (like qcow2
+> > refcount allocation) since it can be invoked from a virtio-blk
+> > data-plane thread (where the QEMU global mutex is not held).
+> 
+> error_report() reports to the current monitor when "in monitor context",
+> i.e. while executing a monitor command, i.e. while cur_mon isn't null.
+> 
+> Can we ever be in monitor context (cur_mon not null) without holding the
+> global mutex?
 
-> This is problematic for code in the read/write/flush path (like qcow2
-> refcount allocation) since it can be invoked from a virtio-blk
-> data-plane thread (where the QEMU global mutex is not held).
+The right question is: Can a thread (= the main loop thread) ever be in
+monitor context while another thread (= dataplane thread) is executing
+block driver code and doesn't hold the global mutex?
 
-error_report() reports to the current monitor when "in monitor context",
-i.e. while executing a monitor command, i.e. while cur_mon isn't null.
+If I understand dataplane correctly, the whole point of it is that the
+answer to this is yes.
 
-Can we ever be in monitor context (cur_mon not null) without holding the
-global mutex?
+Kevin
 
-> For the time being, I prefer keeping the fprintf().  In the long term we
-> need to decide:
-> 1. Some functions should use Error * to report errors.
-> 2. Some functions really produce their own output but it probably
-> shouldn't go to the monitor.
-> 3. The remaining functions may really be error_report() candidates.
-
-0. Figure out what rules apply to cur_mon with respect to the global
-mutex.
+> > For the time being, I prefer keeping the fprintf().  In the long term we
+> > need to decide:
+> > 1. Some functions should use Error * to report errors.
+> > 2. Some functions really produce their own output but it probably
+> > shouldn't go to the monitor.
+> > 3. The remaining functions may really be error_report() candidates.
+> 
+> 0. Figure out what rules apply to cur_mon with respect to the global
+> mutex.
 
