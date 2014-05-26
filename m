@@ -1,52 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WoqUR-0006rx-Dv
-	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 04:42:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34781)
+	id 1WouCG-0007Kg-VO
+	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 08:40:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56240)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1WoqUJ-0006e1-V9
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 04:42:38 -0400
+	(envelope-from <stefanha@gmail.com>) id 1WouC6-00070c-7I
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 08:40:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1WoqUD-0000oh-O9
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 04:42:31 -0400
-Received: from mail-qg0-f44.google.com ([209.85.192.44]:44172)
+	(envelope-from <stefanha@gmail.com>) id 1WouBx-0002zM-77
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 08:39:58 -0400
+Received: from mail-we0-x230.google.com ([2a00:1450:400c:c03::230]:65386)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1WoqUD-0000oR-E1
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 04:42:25 -0400
-Received: by mail-qg0-f44.google.com with SMTP id i50so11837610qgf.31
-	for <qemu-trivial@nongnu.org>; Mon, 26 May 2014 01:42:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references;
-	bh=gFFymBhUDMoOM90WypH5ese1Ojnl2cVdX0/S3iszwso=;
-	b=S4mEO3318EebHIR26T8IF0e31jLR7TPepcbeFHqhyMKc0kmStoAnxhz3RO2VbYcq+v
-	Bn9o/1LJnbCNVEkY2qExdtHIgpq8vR/rTmdeI+SNWBK/l6DZ2jTMV7cejCrn08OU/clt
-	k0SN7wF8QDSoWCrPoj+mx0akJX3db35iO6OVNkl1B83Tbk44b2CMusgEP895XF8HOTXH
-	Mf0Pje++tqUX3CHAthbMyZXDGOHptv7axCcKwtmy9Dh51YlAeyylHpQZeoPhUcfx6NOm
-	mr/+yW8i1fg9aZCFG5OxkuSY7g0SwwTOIqtTO0m5nPNwXZPbRDo5d2wK8cyhr7UvnwpG
-	Hung==
-X-Gm-Message-State: ALoCoQntzT9oUY/ntJfaCsBEYBcM87akysXWeyKil+ijAl8s6kTxyhyFFIBo138X9HPjkMz9jPUg
-X-Received: by 10.229.89.65 with SMTP id d1mr30224529qcm.14.1401093745076;
-	Mon, 26 May 2014 01:42:25 -0700 (PDT)
-Received: from localhost ([149.199.62.254])
-	by mx.google.com with ESMTPSA id j3sm19100441qaf.6.2014.05.26.01.42.24
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Mon, 26 May 2014 01:42:24 -0700 (PDT)
-Sender: Peter Crosthwaite <peter.crosthwaite@petalogix.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 26 May 2014 01:39:29 -0700
-Message-Id: <a522692571b31f0e467d5a3c23fdbab9fa7878b1.1401092237.git.peter.crosthwaite@xilinx.com>
-X-Mailer: git-send-email 1.9.3.1.ga73a6ad
-In-Reply-To: <cover.1401092237.git.peter.crosthwaite@xilinx.com>
-References: <cover.1401092237.git.peter.crosthwaite@xilinx.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.192.44
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH trivial v2 4/4] net: cadence_gem: Remove
-	&desc[0] usages
+	(envelope-from <stefanha@gmail.com>)
+	id 1WouBc-0002ah-1X; Mon, 26 May 2014 08:39:28 -0400
+Received: by mail-we0-f176.google.com with SMTP id q59so7802862wes.7
+	for <multiple recipients>; Mon, 26 May 2014 05:39:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=mVl2iRm1eUTCdHrsC+kqdYcDxo/ADLudvQ4eA37X2/c=;
+	b=gLqeQmzMasffJVWrazKAIBslpE1y8D4Ja7EbVwttXbXZIcuDn5VbGoITVtBy+6Xi0s
+	8UCLeU929E36FF4u/KGSXn/s6a60YowdCqODfHazU4ZnOOBB8pvxptMgktHGKZyaboOi
+	DFAhRfuFV+1wuLsdGuBGPa2L+3kM8TywwTD6D/LJJ1TljO6y/U08msv9Xmfi7fgrfUs6
+	SmHRuhXIven7heEYJ81eBi10fFxjksajt1d8wRkR4UnChp2BO3DCdp2FT2e3n8CNUOBB
+	iPLw81mpxpUT1hvNTAClHeNGPGbHRgNWqWFDcmagtDa9DKv9EFE/ko0E6hAFzz7hHKMH
+	JAmA==
+X-Received: by 10.195.13.76 with SMTP id ew12mr27417587wjd.80.1401107966254;
+	Mon, 26 May 2014 05:39:26 -0700 (PDT)
+Received: from localhost (95-90-192-172-dynip.superkabel.de. [95.90.192.172])
+	by mx.google.com with ESMTPSA id
+	wl6sm26624135wjc.6.2014.05.26.05.39.24 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 26 May 2014 05:39:25 -0700 (PDT)
+Date: Mon, 26 May 2014 14:39:22 +0200
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Le Tan <tamlokveer@gmail.com>
+Message-ID: <20140526123922.GF10187@stefanha-thinkpad.redhat.com>
+References: <1401068643-28655-1-git-send-email-tamlokveer@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1401068643-28655-1-git-send-email-tamlokveer@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c03::230
+Cc: kwolf@redhat.com, peter.crosthwaite@xilinx.com, qemu-trivial@nongnu.org,
+	mjt@tls.msk.ru, qemu-devel@nongnu.org, jan.kiszka@web.de,
+	stefanha@redhat.com, afaerber@suse.de
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] block: replace
+ fprintf(stderr, ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,39 +60,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 May 2014 08:42:38 -0000
+X-List-Received-Date: Mon, 26 May 2014 12:40:07 -0000
 
-Just use desc instead.
+On Mon, May 26, 2014 at 09:44:03AM +0800, Le Tan wrote:
+> Replace fprintf(stderr,...) with error_report() in files block/*, block.c,
+> block-migration.c and blockdev.c. The trailing "\n"s of the @fmt argument
+> have been removed because @fmt of error_report() should not contain newline.
+> 
+> Signed-off-by: Le Tan <tamlokveer@gmail.com>
+> ---
+>  block-migration.c      |    6 +--
+>  block.c                |    4 +-
+>  block/qcow2-refcount.c |  115 +++++++++++++++++++++---------------------
+>  block/qcow2.c          |   16 +++---
+>  block/raw-posix.c      |    8 ++-
+>  block/raw-win32.c      |    6 +--
+>  block/ssh.c            |    2 +-
+>  block/vdi.c            |   14 +++---
+>  block/vmdk.c           |   15 +++---
+>  block/vpc.c            |    4 +-
+>  block/vvfat.c          |  129 ++++++++++++++++++++++++------------------------
+>  blockdev.c             |    6 +--
+>  12 files changed, 159 insertions(+), 166 deletions(-)
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
----
+There is one thing that worries me about this:
 
- hw/net/cadence_gem.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+error_report() assumes that the QEMU global mutex is held in order to
+access the "current monitor".
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 7cd4b54..7d3355e 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -883,7 +883,7 @@ static void gem_transmit(GemState *s)
- 
-     DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
-     cpu_physical_memory_read(packet_desc_addr,
--                             (uint8_t *)&desc[0], sizeof(desc));
-+                             (uint8_t *)desc, sizeof(desc));
-     /* Handle all descriptors owned by hardware */
-     while (tx_desc_get_used(desc) == 0) {
- 
-@@ -966,7 +966,7 @@ static void gem_transmit(GemState *s)
-         }
-         DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
-         cpu_physical_memory_read(packet_desc_addr,
--                                 (uint8_t *)&desc[0], sizeof(desc));
-+                                 (uint8_t *)desc, sizeof(desc));
-     }
- 
-     if (tx_desc_get_used(desc)) {
--- 
-1.9.3.1.ga73a6ad
+This is problematic for code in the read/write/flush path (like qcow2
+refcount allocation) since it can be invoked from a virtio-blk
+data-plane thread (where the QEMU global mutex is not held).
 
+For the time being, I prefer keeping the fprintf().  In the long term we
+need to decide:
+1. Some functions should use Error * to report errors.
+2. Some functions really produce their own output but it probably
+shouldn't go to the monitor.
+3. The remaining functions may really be error_report() candidates.
+
+Stefan
 
