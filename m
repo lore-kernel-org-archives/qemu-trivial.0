@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WopJj-0003rg-6r
-	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 03:27:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45463)
+	id 1WopJk-0003uG-Cm
+	for mharc-qemu-trivial@gnu.org; Mon, 26 May 2014 03:27:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45475)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WopJd-0003fg-El
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:27:29 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WopJe-0003i2-GZ
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:27:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WopJZ-0000qF-0M
-	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:27:25 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:35161)
+	(envelope-from <mjt@tls.msk.ru>) id 1WopJZ-0000qY-WA
+	for qemu-trivial@nongnu.org; Mon, 26 May 2014 03:27:26 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:51333)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WopJO-0000nQ-MR; Mon, 26 May 2014 03:27:10 -0400
+	id 1WopJP-0000o1-Ce; Mon, 26 May 2014 03:27:11 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A460642FA9;
+	by isrv.corpit.ru (Postfix) with ESMTP id B6C6542FAB;
 	Mon, 26 May 2014 11:27:09 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id A28F46AD;
+	by tsrv.corpit.ru (Postfix) with SMTP id BEBC76AE;
 	Mon, 26 May 2014 11:20:14 +0400 (MSK)
-Received: (nullmailer pid 23003 invoked by uid 1000);
+Received: (nullmailer pid 23008 invoked by uid 1000);
 	Mon, 26 May 2014 07:20:13 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 26 May 2014 11:19:56 +0400
-Message-Id: <1401088811-22923-9-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Mon, 26 May 2014 11:19:58 +0400
+Message-Id: <1401088811-22923-11-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Saravanakumar <saravanakumar.punith@gmail.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 08/23] pci: move dereferencing of root only
-	after verifying valid root pointer
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Jules Wang <junqing.wang@cs2c.com.cn>
+Subject: [Qemu-trivial] [PULL 10/23] dma-helpers: avoid calling
+	dma_bdrv_unmap() twice
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,40 +44,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 May 2014 07:27:30 -0000
+X-List-Received-Date: Mon, 26 May 2014 07:27:31 -0000
 
-From: Saravanakumar <saravanakumar.punith@gmail.com>
+From: Jules Wang <junqing.wang@cs2c.com.cn>
 
-Signed-off-by: Saravanakumar <saravanakumar.punith@gmail.com>
-Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+Calling dma_bdrv_unmap() twice is not necessary and may cause
+potential problems if some code changes.
+
+Signed-off-by: Jules Wang <junqing.wang@cs2c.com.cn>
 Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/pci/pci.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ dma-helpers.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 22fe5ee..8d6a8d4 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -605,13 +605,13 @@ PCIBus *pci_get_bus_devfn(int *devfnp, PCIBus *root=
-, const char *devaddr)
-     int dom, bus;
-     unsigned slot;
-=20
--    assert(!root->parent_dev);
--
-     if (!root) {
-         fprintf(stderr, "No primary PCI bus\n");
-         return NULL;
+diff --git a/dma-helpers.c b/dma-helpers.c
+index 5f421e9..53cbe92 100644
+--- a/dma-helpers.c
++++ b/dma-helpers.c
+@@ -143,12 +143,12 @@ static void dma_bdrv_cb(void *opaque, int ret)
+ 
+     dbs->acb = NULL;
+     dbs->sector_num += dbs->iov.size / 512;
+-    dma_bdrv_unmap(dbs);
+ 
+     if (dbs->sg_cur_index == dbs->sg->nsg || ret < 0) {
+         dma_complete(dbs, ret);
+         return;
      }
-=20
-+    assert(!root->parent_dev);
-+
-     if (!devaddr) {
-         *devfnp =3D -1;
-         return pci_find_bus_nr(root, 0);
---=20
++    dma_bdrv_unmap(dbs);
+ 
+     while (dbs->sg_cur_index < dbs->sg->nsg) {
+         cur_addr = dbs->sg->sg[dbs->sg_cur_index].base + dbs->sg_cur_byte;
+-- 
 1.7.10.4
 
 
