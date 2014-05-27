@@ -1,59 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WpJEi-0001Ch-S5
-	for mharc-qemu-trivial@gnu.org; Tue, 27 May 2014 11:24:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45485)
+	id 1WpJn2-0000Cx-6S
+	for mharc-qemu-trivial@gnu.org; Tue, 27 May 2014 11:59:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60986)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dave@mielke.cc>) id 1WpJEb-0000yO-Nu
-	for qemu-trivial@nongnu.org; Tue, 27 May 2014 11:24:19 -0400
+	(envelope-from <armbru@pond.sub.org>) id 1WpJms-0008MX-6t
+	for qemu-trivial@nongnu.org; Tue, 27 May 2014 11:59:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dave@mielke.cc>) id 1WpJEV-0001Vw-QW
-	for qemu-trivial@nongnu.org; Tue, 27 May 2014 11:24:13 -0400
-Received: from nimbus1.mmprivatehosting.com ([54.208.90.49]:35578)
+	(envelope-from <armbru@pond.sub.org>) id 1WpJmj-00088n-5k
+	for qemu-trivial@nongnu.org; Tue, 27 May 2014 11:59:38 -0400
+Received: from oxygen.pond.sub.org ([2a01:4f8:201:233:1::3]:49123)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dave@mielke.cc>)
-	id 1WpJEK-0001Rd-7P; Tue, 27 May 2014 11:23:56 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by nimbus1.mmprivatehosting.com (Postfix) with ESMTP id 7223B205AC;
-	Tue, 27 May 2014 15:23:55 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at mmprivatehosting.com
-Received: from dave.mielke.cc
-	(CPE788df74e3df1-CM788df74e3df0.cpe.net.cable.rogers.com
-	[99.245.250.163]) (Authenticated sender: relay@dave.mielke.cc)
-	by nimbus1.mmprivatehosting.com (Postfix) with ESMTPA;
-	Tue, 27 May 2014 15:23:53 +0000 (UTC)
-Received: from beta.private.mielke.cc (beta.private.mielke.cc [192.168.0.2])
-	by dave.mielke.cc (Postfix) with ESMTPS id 38287205B2;
-	Tue, 27 May 2014 11:23:53 -0400 (EDT)
-Received: from beta.private.mielke.cc (localhost.localdomain [127.0.0.1])
-	by beta.private.mielke.cc (8.14.7/8.14.6) with ESMTP id s4RFNqia025592; 
-	Tue, 27 May 2014 11:23:52 -0400
-Received: (from dave@localhost)
-	by beta.private.mielke.cc (8.14.7/8.14.7/Submit) id s4RFNmI9025591;
-	Tue, 27 May 2014 11:23:48 -0400
-Date: Tue, 27 May 2014 11:23:48 -0400
-From: Dave Mielke <dave@mielke.cc>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20140527152348.GH29934@beta.private.mielke.cc>
-References: <20140524232950.GH1904@beta.private.mielke.cc>
-	<CAFEAcA9HtdLbXXF9RSXw_K8P-PNZ8ZOrFE9zJ6J2mGjVM=EFKg@mail.gmail.com>
-	<20140525012151.GI1904@beta.private.mielke.cc>
-	<1401111520.13567.8.camel@nilsson.home.kraxel.org>
-	<20140526151948.GA29934@beta.private.mielke.cc>
-	<1401169474.25475.3.camel@nilsson.home.kraxel.org>
-	<20140527081509.GG29934@beta.private.mielke.cc>
-	<1401181786.25475.38.camel@nilsson.home.kraxel.org>
+	(envelope-from <armbru@pond.sub.org>)
+	id 1WpJmQ-00084n-6Y; Tue, 27 May 2014 11:59:10 -0400
+Received: from blackfin.pond.sub.org (p5B32A348.dip0.t-ipconnect.de
+	[91.50.163.72])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 3E1202454E;
+	Tue, 27 May 2014 17:59:08 +0200 (CEST)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 86FD030403AF; Tue, 27 May 2014 17:59:07 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+References: <1401068643-28655-1-git-send-email-tamlokveer@gmail.com>
+	<20140526123922.GF10187@stefanha-thinkpad.redhat.com>
+	<87k398twfd.fsf@blackfin.pond.sub.org>
+	<20140526151624.GB3813@noname.str.redhat.com>
+	<87vbssr0oo.fsf@blackfin.pond.sub.org>
+	<20140527135830.GH31463@stefanha-thinkpad.redhat.com>
+Date: Tue, 27 May 2014 17:59:07 +0200
+In-Reply-To: <20140527135830.GH31463@stefanha-thinkpad.redhat.com> (Stefan
+	Hajnoczi's message of "Tue, 27 May 2014 15:58:30 +0200")
+Message-ID: <87ppiz8b78.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1401181786.25475.38.camel@nilsson.home.kraxel.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 54.208.90.49
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] patch: add delay=<msecs> suboption
- to -display curses
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a01:4f8:201:233:1::3
+Cc: Kevin Wolf <kwolf@redhat.com>, peter.crosthwaite@xilinx.com,
+	qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@gmail.com>,
+	mjt@tls.msk.ru, Le Tan <tamlokveer@gmail.com>,
+	qemu-devel@nongnu.org, jan.kiszka@web.de, afaerber@suse.de
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] block: replace
+	fprintf(stderr, ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,35 +55,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 May 2014 15:24:19 -0000
+X-List-Received-Date: Tue, 27 May 2014 15:59:47 -0000
 
-[quoted lines by Gerd Hoffmann on 2014/05/27 at 11:09 +0200]
+Stefan Hajnoczi <stefanha@redhat.com> writes:
 
->Which means exactly?  They are not prepared to find data for more than
->one key event in the buffer?
+> On Mon, May 26, 2014 at 05:59:03PM +0200, Markus Armbruster wrote:
+>> Kevin Wolf <kwolf@redhat.com> writes:
+>> 
+>> > Am 26.05.2014 um 17:02 hat Markus Armbruster geschrieben:
+>> >> Stefan Hajnoczi <stefanha@gmail.com> writes:
+>> >> 
+>> >> > On Mon, May 26, 2014 at 09:44:03AM +0800, Le Tan wrote:
+>> >> >> Replace fprintf(stderr,...) with error_report() in files
+>> >> >> block/*, block.c,
+>> >> >> block-migration.c and blockdev.c. The trailing "\n"s of the
+>> >> >> @fmt argument
+>> >> >> have been removed because @fmt of error_report() should not
+>> >> >> contain newline.
+>> >> >> 
+>> >> >> Signed-off-by: Le Tan <tamlokveer@gmail.com>
+>> >> >> ---
+>> >> >>  block-migration.c      |    6 +--
+>> >> >>  block.c                |    4 +-
+>> >> >>  block/qcow2-refcount.c | 115
+>> >> >> +++++++++++++++++++++---------------------
+>> >> >>  block/qcow2.c          |   16 +++---
+>> >> >>  block/raw-posix.c      |    8 ++-
+>> >> >>  block/raw-win32.c      |    6 +--
+>> >> >>  block/ssh.c            |    2 +-
+>> >> >>  block/vdi.c            |   14 +++---
+>> >> >>  block/vmdk.c           |   15 +++---
+>> >> >>  block/vpc.c            |    4 +-
+>> >> >>  block/vvfat.c | 129
+>> >> >> ++++++++++++++++++++++++------------------------
+>> >> >>  blockdev.c             |    6 +--
+>> >> >>  12 files changed, 159 insertions(+), 166 deletions(-)
+>> >> >
+>> >> > There is one thing that worries me about this:
+>> >> >
+>> >> > error_report() assumes that the QEMU global mutex is held in order to
+>> >> > access the "current monitor".
+>> >> 
+>> >> Global variable cur_mon, non-null while we're executing a monitor
+>> >> command.
+>> >
+>> > The important part here is that it's indeed global and not thread-local.
+>> >
+>> >> > This is problematic for code in the read/write/flush path (like qcow2
+>> >> > refcount allocation) since it can be invoked from a virtio-blk
+>> >> > data-plane thread (where the QEMU global mutex is not held).
+>> >> 
+>> >> error_report() reports to the current monitor when "in monitor context",
+>> >> i.e. while executing a monitor command, i.e. while cur_mon isn't null.
+>> >> 
+>> >> Can we ever be in monitor context (cur_mon not null) without holding the
+>> >> global mutex?
+>> >
+>> > The right question is: Can a thread (= the main loop thread) ever be in
+>> > monitor context while another thread (= dataplane thread) is executing
+>> > block driver code and doesn't hold the global mutex?
+>> >
+>> > If I understand dataplane correctly, the whole point of it is that the
+>> > answer to this is yes.
+>> 
+>> Well, the answer used to be "no".  Once upon a time because there was
+>> just a single thread, later on because only one thread ever executed
+>> "interesting" code.
+>> 
+>> I'm *not* saying this should remain the case.  I'm trying to find out
+>> what needs to be done around cur_mon when we break the assumption behind
+>> it.
+>> 
+>> Would making cur_mon thread-local suffice?
+>
+> It would suffice.
+>
+> I think there is no code that invokes error_report() from another thread
+> on purpose (i.e. it knows the main thread is waiting), so making it
+> thread-local should not introduce a regression.
 
-Not exactly. The bad code is an attempt to do a nonblocking keyboard read in 
-MS-DOS. It goes like this:
-
-1) Peek the DOS keyboard buffer start and end pointers. If the buffer is empty 
-   then return "no input".
-
-2) If no key is pressed then return "no input".
-
-3) Use the blocking MS-DOS interface to wait for the next key and return it.
-
-So, as you can see, there's a serious problem. Let's say that a key press and 
-release go in together. That give us the following situation:
-
-1) Peek the DOS input buffer. It isn't empty so proceed to the next step.
-
-2) No key is pressed so return "no input".
-
-I really do think, therefore, that the only way to deal with this is to slow 
-down the input to typing speed.
-
--- 
-Dave Mielke           | 2213 Fox Crescent | The Bible is the very Word of God.
-Phone: 1-613-726-0014 | Ottawa, Ontario   | http://Mielke.cc/bible/
-EMail: dave@mielke.cc | Canada  K2A 1H7   | http://FamilyRadio.com/
+So, who's going to cook up the patch to make it thread-local?
 
