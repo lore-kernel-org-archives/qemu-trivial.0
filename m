@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WpJn2-0000Cx-6S
-	for mharc-qemu-trivial@gnu.org; Tue, 27 May 2014 11:59:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60986)
+	id 1WpPtz-000894-4P
+	for mharc-qemu-trivial@gnu.org; Tue, 27 May 2014 18:31:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45388)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WpJms-0008MX-6t
-	for qemu-trivial@nongnu.org; Tue, 27 May 2014 11:59:47 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1WpPts-000852-RC
+	for qemu-trivial@nongnu.org; Tue, 27 May 2014 18:31:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WpJmj-00088n-5k
-	for qemu-trivial@nongnu.org; Tue, 27 May 2014 11:59:38 -0400
-Received: from oxygen.pond.sub.org ([2a01:4f8:201:233:1::3]:49123)
+	(envelope-from <peter.maydell@linaro.org>) id 1WpPto-0007SP-5w
+	for qemu-trivial@nongnu.org; Tue, 27 May 2014 18:31:16 -0400
+Received: from mail-la0-f51.google.com ([209.85.215.51]:55144)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1WpJmQ-00084n-6Y; Tue, 27 May 2014 11:59:10 -0400
-Received: from blackfin.pond.sub.org (p5B32A348.dip0.t-ipconnect.de
-	[91.50.163.72])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(Client did not present a certificate)
-	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 3E1202454E;
-	Tue, 27 May 2014 17:59:08 +0200 (CEST)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 86FD030403AF; Tue, 27 May 2014 17:59:07 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-References: <1401068643-28655-1-git-send-email-tamlokveer@gmail.com>
-	<20140526123922.GF10187@stefanha-thinkpad.redhat.com>
-	<87k398twfd.fsf@blackfin.pond.sub.org>
-	<20140526151624.GB3813@noname.str.redhat.com>
-	<87vbssr0oo.fsf@blackfin.pond.sub.org>
-	<20140527135830.GH31463@stefanha-thinkpad.redhat.com>
-Date: Tue, 27 May 2014 17:59:07 +0200
-In-Reply-To: <20140527135830.GH31463@stefanha-thinkpad.redhat.com> (Stefan
-	Hajnoczi's message of "Tue, 27 May 2014 15:58:30 +0200")
-Message-ID: <87ppiz8b78.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <peter.maydell@linaro.org>) id 1WpPtn-0007SA-WE
+	for qemu-trivial@nongnu.org; Tue, 27 May 2014 18:31:12 -0400
+Received: by mail-la0-f51.google.com with SMTP id gf5so6857491lab.38
+	for <qemu-trivial@nongnu.org>; Tue, 27 May 2014 15:31:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=3yjUdel72CLFD38I2fHSjWG7cj7ROjgxDo55O9PXIuE=;
+	b=LIE0Ct1ymeotRKVykhkugbROogtyAe/P52HfX+yrR52vf/q+hwlHr2XO2/2m2EalAx
+	eYjZ8bE7BK3LLAT7/NFLLtZwjJSBFiQxG9nQCySV2xxbmoHhuP2u1f2UfGuxRGh7t8jm
+	ezkqtTGCm7RfhqpDDX3aSMRLO5hD16T97/WULeEAPEh6LasgYtF/ZxjPkN0hw9H0Wf2W
+	H+qwTp03N2fY3fjQWjKtTnwxTTdf3j0YQceeMvOiAiL/VcM3IpzlmebH0gXWHZp0t+Ka
+	PWpyfD7KejS/5zqk0r8nFD8pj/4KMNm5n+ceN1yPHb5VLHdzOgtSG5FXMCMhdyQw7iU7
+	TSpQ==
+X-Gm-Message-State: ALoCoQlHZ40JZguB/tmiVEg+DTlFi1OB2URyR6slOPxhgOUKSHWMg0TUY0cnsok8nxXe1Ik3B0yX
+X-Received: by 10.112.35.136 with SMTP id h8mr7922718lbj.8.1401229870956; Tue,
+	27 May 2014 15:31:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a01:4f8:201:233:1::3
-Cc: Kevin Wolf <kwolf@redhat.com>, peter.crosthwaite@xilinx.com,
-	qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@gmail.com>,
-	mjt@tls.msk.ru, Le Tan <tamlokveer@gmail.com>,
-	qemu-devel@nongnu.org, jan.kiszka@web.de, afaerber@suse.de
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] block: replace
-	fprintf(stderr, ...) with error_report()
+Received: by 10.112.158.228 with HTTP; Tue, 27 May 2014 15:30:50 -0700 (PDT)
+In-Reply-To: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 27 May 2014 23:30:50 +0100
+Message-ID: <CAFEAcA9vJGGtjJcXwG6YGRx+HttKQQHwubg_ONKczdF9-9G6tA@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.51
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/23] Trivial patches for
+	2014-05-26
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,84 +55,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 May 2014 15:59:47 -0000
+X-List-Received-Date: Tue, 27 May 2014 22:31:21 -0000
 
-Stefan Hajnoczi <stefanha@redhat.com> writes:
-
-> On Mon, May 26, 2014 at 05:59:03PM +0200, Markus Armbruster wrote:
->> Kevin Wolf <kwolf@redhat.com> writes:
->> 
->> > Am 26.05.2014 um 17:02 hat Markus Armbruster geschrieben:
->> >> Stefan Hajnoczi <stefanha@gmail.com> writes:
->> >> 
->> >> > On Mon, May 26, 2014 at 09:44:03AM +0800, Le Tan wrote:
->> >> >> Replace fprintf(stderr,...) with error_report() in files
->> >> >> block/*, block.c,
->> >> >> block-migration.c and blockdev.c. The trailing "\n"s of the
->> >> >> @fmt argument
->> >> >> have been removed because @fmt of error_report() should not
->> >> >> contain newline.
->> >> >> 
->> >> >> Signed-off-by: Le Tan <tamlokveer@gmail.com>
->> >> >> ---
->> >> >>  block-migration.c      |    6 +--
->> >> >>  block.c                |    4 +-
->> >> >>  block/qcow2-refcount.c | 115
->> >> >> +++++++++++++++++++++---------------------
->> >> >>  block/qcow2.c          |   16 +++---
->> >> >>  block/raw-posix.c      |    8 ++-
->> >> >>  block/raw-win32.c      |    6 +--
->> >> >>  block/ssh.c            |    2 +-
->> >> >>  block/vdi.c            |   14 +++---
->> >> >>  block/vmdk.c           |   15 +++---
->> >> >>  block/vpc.c            |    4 +-
->> >> >>  block/vvfat.c | 129
->> >> >> ++++++++++++++++++++++++------------------------
->> >> >>  blockdev.c             |    6 +--
->> >> >>  12 files changed, 159 insertions(+), 166 deletions(-)
->> >> >
->> >> > There is one thing that worries me about this:
->> >> >
->> >> > error_report() assumes that the QEMU global mutex is held in order to
->> >> > access the "current monitor".
->> >> 
->> >> Global variable cur_mon, non-null while we're executing a monitor
->> >> command.
->> >
->> > The important part here is that it's indeed global and not thread-local.
->> >
->> >> > This is problematic for code in the read/write/flush path (like qcow2
->> >> > refcount allocation) since it can be invoked from a virtio-blk
->> >> > data-plane thread (where the QEMU global mutex is not held).
->> >> 
->> >> error_report() reports to the current monitor when "in monitor context",
->> >> i.e. while executing a monitor command, i.e. while cur_mon isn't null.
->> >> 
->> >> Can we ever be in monitor context (cur_mon not null) without holding the
->> >> global mutex?
->> >
->> > The right question is: Can a thread (= the main loop thread) ever be in
->> > monitor context while another thread (= dataplane thread) is executing
->> > block driver code and doesn't hold the global mutex?
->> >
->> > If I understand dataplane correctly, the whole point of it is that the
->> > answer to this is yes.
->> 
->> Well, the answer used to be "no".  Once upon a time because there was
->> just a single thread, later on because only one thread ever executed
->> "interesting" code.
->> 
->> I'm *not* saying this should remain the case.  I'm trying to find out
->> what needs to be done around cur_mon when we break the assumption behind
->> it.
->> 
->> Would making cur_mon thread-local suffice?
+On 26 May 2014 08:19, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here's another trivial patches pull request.
 >
-> It would suffice.
+> This time it accumulated 23 patches, in many areas, with a focus,
+> for some reason, on libcacard, which received quite some cleanups
+> and a fix for a fun bug.
 >
-> I think there is no code that invokes error_report() from another thread
-> on purpose (i.e. it knows the main thread is waiting), so making it
-> thread-local should not introduce a regression.
+> More interesting changes this time are by Peter Maydell, -- these
+> are the bswap.h macros renaming and using a subdir in curdir for
+> temporaries.
+>
+> Please consider applying.
+>
+> /mjt
+>
+> The following changes since commit 6054d883d6138bfc92c73a7c090c824b64086fd2:
+>
+>   Merge remote-tracking branch 'remotes/kraxel/tags/pull-chardev-2' into staging (2014-05-22 18:14:01 +0100)
+>
+> are available in the git repository at:
+>
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-05-26
+>
+> for you to fetch changes up to 1687a089f103f9b7a1b4a1555068054cb46ee9e9:
+>
+>   libcacard: remove useless initializers (2014-05-26 10:41:22 +0400)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2014-05-26
+>
 
-So, who's going to cook up the patch to make it thread-local?
+Applied, thanks.
+
+-- PMM
 
