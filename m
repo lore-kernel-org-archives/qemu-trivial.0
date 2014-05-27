@@ -1,48 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WpAXA-0006GC-HY
-	for mharc-qemu-trivial@gnu.org; Tue, 27 May 2014 02:06:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43735)
+	id 1WpCBF-0007oh-V9
+	for mharc-qemu-trivial@gnu.org; Tue, 27 May 2014 03:52:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35942)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WpAX3-00067T-JF
-	for qemu-trivial@nongnu.org; Tue, 27 May 2014 02:06:46 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1WpCBA-0007i3-Ib
+	for qemu-trivial@nongnu.org; Tue, 27 May 2014 03:52:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WpAWy-0001xY-Bn
-	for qemu-trivial@nongnu.org; Tue, 27 May 2014 02:06:41 -0400
-Received: from oxygen.pond.sub.org ([2a01:4f8:201:233:1::3]:48109)
+	(envelope-from <dgilbert@redhat.com>) id 1WpCB6-0001Pi-7D
+	for qemu-trivial@nongnu.org; Tue, 27 May 2014 03:52:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:2910)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1WpAWn-0001vm-AP; Tue, 27 May 2014 02:06:25 -0400
-Received: from blackfin.pond.sub.org (p5B32A348.dip0.t-ipconnect.de
-	[91.50.163.72])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(Client did not present a certificate)
-	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 6D6CC24DB5;
-	Tue, 27 May 2014 08:06:22 +0200 (CEST)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 71C3A30403AF; Tue, 27 May 2014 08:06:21 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Dave Mielke <dave@mielke.cc>
-References: <20140524232950.GH1904@beta.private.mielke.cc>
-	<CAFEAcA9HtdLbXXF9RSXw_K8P-PNZ8ZOrFE9zJ6J2mGjVM=EFKg@mail.gmail.com>
-	<20140525012151.GI1904@beta.private.mielke.cc>
-	<CAFEAcA95424yXi1yobV5R3jt5t-69H36XRv8kDAyK7Dvx0bJ2w@mail.gmail.com>
-	<20140525110324.GJ1904@beta.private.mielke.cc>
-	<20140526125932.GD1207@beta.private.mielke.cc>
-	<20140527014514.GD29934@beta.private.mielke.cc>
-Date: Tue, 27 May 2014 08:06:21 +0200
-In-Reply-To: <20140527014514.GD29934@beta.private.mielke.cc> (Dave Mielke's
-	message of "Mon, 26 May 2014 21:45:15 -0400")
-Message-ID: <87sinviwma.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <dgilbert@redhat.com>)
+	id 1WpCAx-0001KL-6U; Tue, 27 May 2014 03:51:59 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s4R7puRv021690
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Tue, 27 May 2014 03:51:56 -0400
+Received: from work-vm (vpn1-5-235.ams2.redhat.com [10.36.5.235])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s4R7pqcJ027282
+	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
+	Tue, 27 May 2014 03:51:54 -0400
+Date: Tue, 27 May 2014 08:51:51 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20140527075151.GB2427@work-vm>
+References: <1399374955-29082-1-git-send-email-dgilbert@redhat.com>
+	<537FB30A.9000303@msgid.tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a01:4f8:201:233:1::3
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] patch: add -kbddelay option
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <537FB30A.9000303@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, wdauchy@gmail.com
+Subject: Re: [Qemu-trivial] [PATCH] Fix 'name' option to work with
+	-readconfig
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,35 +50,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 May 2014 06:06:46 -0000
+X-List-Received-Date: Tue, 27 May 2014 07:52:17 -0000
 
-Dave Mielke <dave@mielke.cc> writes:
+* Michael Tokarev (mjt@tls.msk.ru) wrote:
+> 06.05.2014 15:15, Dr. David Alan Gilbert (git) wrote:
+> > From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> > 
+> > The 'name' option silently failed when used in config files
+> > ( http://lists.gnu.org/archive/html/qemu-devel/2014-04/msg00378.html )
+> > 
+> > Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> > Reported-by: William Dauchy <wdauchy@gmail.com>
+> 
+> Applied to -trivial, after:
+> 
+>  1. Changing Reported/Tested-by as asked by William Dauchy
+>  2. Adding a subject prefix (vl)
+>  3. Adding commit message as suggested by Marcus
+>  4. Adding Marcus's Reviewed-by.
+> 
+> Oh ma... ;)
+> 
+> Thank you!  And please excuse me for it took so long.  It'd be
+> faster if I hadn't do all th e above ;)
 
-> [quoted lines by Dave Mielke on 2014/05/26 at 08:59 -0400]
->
-> I'm sorry for quoting myself, but I'm doing it for context since I have a
-> question:
->
->>This patch, attached as qemu-kbddelay-1.patch, is a rework of the former curses
->>UI patch so that the delay applies to key events in general. A new option,
->>-kbddelay [duration=]msecs, controls it. As before, the default is 0, meaning
->>no delay, in which case the timer and queue aren't used thus retaining the
->>original behaviour.
->
-> I've currently coded it so that there's a new option - -kbddelay. So, we have
-> the following two options:
->
->   (old) -k <language>
->   (new) -kbddelay [duration=]<msecs>
->
-> My question is if this is the best way to do it, or if the two options should
-> be merged. For example:
->
->    -k [language=]<language>,delay=<msecs>
->
-> What do you think?
+Thanks, and apologies for not fixing those up.
 
-*If* the feature is deemed useful: better extend -k.  We generally
-prefer extensible options based on QemuOpts to proliferating ad hoc
-single-purpose options.
+Dave
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
