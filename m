@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WpHLH-0005w2-H1
+	id 1WpHLH-0005wS-Lc
 	for mharc-qemu-trivial@gnu.org; Tue, 27 May 2014 09:22:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40103)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46943)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1WpCYn-0002hk-OX
-	for qemu-trivial@nongnu.org; Tue, 27 May 2014 04:16:46 -0400
+	(envelope-from <serge.fdrv@gmail.com>) id 1WpGIu-0003Ts-S1
+	for qemu-trivial@nongnu.org; Tue, 27 May 2014 08:16:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1WpCYe-0000oc-Or
-	for qemu-trivial@nongnu.org; Tue, 27 May 2014 04:16:37 -0400
-Received: from mail-lb0-x22b.google.com ([2a00:1450:4010:c04::22b]:46824)
+	(envelope-from <serge.fdrv@gmail.com>) id 1WpGIl-0003K3-Sl
+	for qemu-trivial@nongnu.org; Tue, 27 May 2014 08:16:28 -0400
+Received: from mail-lb0-x230.google.com ([2a00:1450:4010:c04::230]:36403)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <serge.fdrv@gmail.com>)
-	id 1WpCYM-0000jd-D6; Tue, 27 May 2014 04:16:10 -0400
-Received: by mail-lb0-f171.google.com with SMTP id 10so4808116lbg.30
-	for <multiple recipients>; Tue, 27 May 2014 01:16:08 -0700 (PDT)
+	id 1WpGIO-0003FM-4U; Tue, 27 May 2014 08:15:56 -0400
+Received: by mail-lb0-f176.google.com with SMTP id p9so4823153lbv.21
+	for <multiple recipients>; Tue, 27 May 2014 05:15:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id;
-	bh=l4BgvB5Xa7x3Wpt8Wx7yY3GKj3rNsARdEEyJKaHJmE0=;
-	b=miSKKKnTm5R6gka2bFwgG3b5+gq3i5Z980QAmvbHGmWXKkabzBpcx03bNFhZiBhLgy
-	a5RQ3PyA1IrOcDB3PKAOBFkBOgZtAa+6tCH6ML4YoX/8yug6xc1PwndXm0hrqpFTe8sK
-	JIKODdOAOCyu+sEWZo5A86vQ1PGhx89PuRuw6vZMRe+YlX9+Li245eUvye13iSwjcRGQ
-	rqgoFUtX15CyUDMkWkDSP2Zm1vSUczpQw9g1BgGyKTFJIKaue+2cACGmkW0Zk29YMMty
-	Nk5aLJalELLUpsHlK0XeyfmHFLSRGvgF772G6KR6L13ZJ6rJxBNZFzc9y9vstxND0vq/
-	GdPg==
-X-Received: by 10.112.171.101 with SMTP id at5mr501928lbc.83.1401178568691;
-	Tue, 27 May 2014 01:16:08 -0700 (PDT)
+	bh=8cJTzw8eCAZEev+Lk2b4ZRYTwulGW4K1HiGHXJFeFy8=;
+	b=qcyud3YaoZqd4a1W7DNHzNCrokOJIWEpE8lC1MLHM6OThOARMx8MJNCNYCtJzSphN6
+	cYo1QvQ8TR4c/zCyd9LV6R9SLgxYsfGuAhWI/N/U5s7MIQBtRxtGm0xN5U207D3s1TvD
+	EnA7QN2sIpccDzU8UiGgehvptNWBZjd1s1Hf1ivYEZAnWSb2x/eOeu9yJEb+1O29hggg
+	6Tt3OTGID+CTTu99IwosIAjP/kNgI8nYEOOLyxbOvqmC0KcfHt4fgyTapQUyCp9PFUT+
+	w6gxkK1KADzIfQG7GMQMwuKqgZBdkoBld+ema0QiuUxl2AvPWxTBBKl5FUR3hZlQbeob
+	4p7Q==
+X-Received: by 10.112.132.233 with SMTP id ox9mr15551348lbb.35.1401192954853; 
+	Tue, 27 May 2014 05:15:54 -0700 (PDT)
 Received: from sfedorov-laptop.smware.local ([213.243.91.10])
 	by mx.google.com with ESMTPSA id
-	k16sm14446219lbo.37.2014.05.27.01.16.07 for <multiple recipients>
+	ob4sm14996034lbc.30.2014.05.27.05.15.54 for <multiple recipients>
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 27 May 2014 01:16:08 -0700 (PDT)
-From: serge.fdrv@gmail.com
+	Tue, 27 May 2014 05:15:54 -0700 (PDT)
+From: Sergey Fedorov <serge.fdrv@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 27 May 2014 12:16:00 +0400
-Message-Id: <1401178560-3852-1-git-send-email-serge.fdrv@gmail.com>
+Date: Tue, 27 May 2014 16:15:20 +0400
+Message-Id: <1401192920-4604-1-git-send-email-serge.fdrv@gmail.com>
 X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4010:c04::22b
+X-Received-From: 2a00:1450:4010:c04::230
 X-Mailman-Approved-At: Tue, 27 May 2014 09:22:57 -0400
 Cc: Stefan Hajnoczi <stefanha@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
@@ -55,9 +55,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 May 2014 08:16:47 -0000
-
-From: Sergey Fedorov <serge.fdrv@gmail.com>
+X-List-Received-Date: Tue, 27 May 2014 12:16:38 -0000
 
 Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
 
