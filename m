@@ -1,52 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wpq9X-00035u-GN
-	for mharc-qemu-trivial@gnu.org; Wed, 28 May 2014 22:33:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46992)
+	id 1Wpy3g-00057V-4P
+	for mharc-qemu-trivial@gnu.org; Thu, 29 May 2014 06:59:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42907)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1Wpq9U-0002zU-Fd
-	for qemu-trivial@nongnu.org; Wed, 28 May 2014 22:33:09 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1Wpy3c-00051u-9E
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 06:59:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1Wpq9T-0000qu-Mr
-	for qemu-trivial@nongnu.org; Wed, 28 May 2014 22:33:08 -0400
-Received: from mail-qg0-x22d.google.com ([2607:f8b0:400d:c04::22d]:42880)
+	(envelope-from <pm215@archaic.org.uk>) id 1Wpy3b-00081n-Bv
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 06:59:36 -0400
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48287)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>)
-	id 1Wpq9N-0000q8-JN; Wed, 28 May 2014 22:33:01 -0400
-Received: by mail-qg0-f45.google.com with SMTP id z60so20594239qgd.32
-	for <multiple recipients>; Wed, 28 May 2014 19:33:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:date:message-id:subject
-	:from:to:cc:content-type;
-	bh=EZioCv6ZSHn3XMLXut8GKzGbaRGfclDWWMdrTBuYx6U=;
-	b=RUHgUs+Wo8D5pUzusxwOQwBzLLtsLEOuqdv0uH1xsTFRwcvlng/5Dbg/yZowxUb+h7
-	9Pb0zsCZL+fdE3b/egtxvpGjwdaQyxFUEKMjHO6icmCCKLG/7qLP8+XKeAOe+JTLnsI1
-	IsRvGuSbooQ7stk34G4oDctop+6TS8JTOn+stgooaT6mJ5yrLprf2/LOIprLJBanCtiB
-	1FBkdhwXfc0/Pm4nkiv6SpwCHZ3bSRAOrwZ3C7JF+Z2RX3IvDvEOKXXTWXfoN6PmV9bd
-	qzvpeBN3iibLxu7Ios6KQhYXi0Lnt61/mrMnhXzz7mYfOwwxmEH9gg4YEkm5YWeHc8+/
-	ZoFw==
-MIME-Version: 1.0
-X-Received: by 10.140.104.44 with SMTP id z41mr5298244qge.76.1401330780806;
-	Wed, 28 May 2014 19:33:00 -0700 (PDT)
-Sender: carpeddiem@gmail.com
-Received: by 10.140.49.239 with HTTP; Wed, 28 May 2014 19:33:00 -0700 (PDT)
-In-Reply-To: <5368F36B.3040804@redhat.com>
-References: <1399382220-14874-1-git-send-email-peter.maydell@linaro.org>
-	<5368F36B.3040804@redhat.com>
-Date: Wed, 28 May 2014 22:33:00 -0400
-X-Google-Sender-Auth: 9FdiGzcHWltxE96HnkRwt84eSYA
-Message-ID: <CAPyFy2BxjzzkKAZ3=YfF=nfHE2ftJH8uX5QXwV_HwM0qZqyUSg@mail.gmail.com>
-From: Ed Maste <emaste@freebsd.org>
-To: Eric Blake <eblake@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <pm215@archaic.org.uk>) id 1Wpy3b-0007p3-6B
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 06:59:35 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Wpy3S-0006gX-DR; Thu, 29 May 2014 11:59:26 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qefmu-devel@nongnu.org
+Date: Thu, 29 May 2014 11:59:26 +0100
+Message-Id: <1401361166-25672-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c04::22d
-Cc: Peter Maydell <peter.maydell@linaro.org>, patches@linaro.org,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	qemu-devel <qemu-devel@nongnu.org>, Don Slutz <dslutz@verizon.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Put tempfiles in
- subdir so we can clean up libtool files
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] slirp: Remove unused zero_ethaddr[] variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,19 +37,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 May 2014 02:33:09 -0000
+X-List-Received-Date: Thu, 29 May 2014 10:59:37 -0000
 
-On 6 May 2014 10:36, Eric Blake <eblake@redhat.com> wrote:
->
-> mktemp is not POSIX.  BSD mktemp lacks -t:
->
-> http://www.freebsd.org/cgi/man.cgi?query=mktemp&apropos=0&sektion=1&manpath=Red+Hat+Linux%2Fi386+9&format=html
+The zero_ethaddr[] array is never used; delete it.
 
-You managed to link to a mktemp man page for some old Red Hat version
-there (note the URL); FreeBSD's mktemp man page (for the 9.2 release)
-is here:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+clang 3.4 warns about unused const variables like this and
+also about unused functions; we have over 400 such warnings
+currently, of which some are simple "forgot to clean up
+redundant code" like this one, some are deliberate in some
+sense (usually the function/var is used in one config but not
+another), and some are outright bugs. Anybody feel like wading
+through them? :-)
 
-http://www.freebsd.org/cgi/man.cgi?query=mktemp&apropos=0&sektion=1&manpath=FreeBSD+9.2-RELEASE&arch=default&format=html
+ slirp/slirp.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-which supports -t, but with a different meaning compared to contemporary Linux.
+diff --git a/slirp/slirp.c b/slirp/slirp.c
+index 3fb48a4..b7f3726 100644
+--- a/slirp/slirp.c
++++ b/slirp/slirp.c
+@@ -37,8 +37,6 @@ static const uint8_t special_ethaddr[ETH_ALEN] = {
+     0x52, 0x55, 0x00, 0x00, 0x00, 0x00
+ };
+ 
+-static const uint8_t zero_ethaddr[ETH_ALEN] = { 0, 0, 0, 0, 0, 0 };
+-
+ u_int curtime;
+ 
+ static QTAILQ_HEAD(slirp_instances, Slirp) slirp_instances =
+-- 
+1.9.2
+
 
