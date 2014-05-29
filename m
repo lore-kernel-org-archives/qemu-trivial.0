@@ -1,24 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wpy3g-00057V-4P
-	for mharc-qemu-trivial@gnu.org; Thu, 29 May 2014 06:59:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42907)
+	id 1Wpy4O-0005xg-5R
+	for mharc-qemu-trivial@gnu.org; Thu, 29 May 2014 07:00:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Wpy3c-00051u-9E
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 06:59:37 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1Wpy4J-0005nR-3j
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 07:00:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Wpy3b-00081n-Bv
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 06:59:36 -0400
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48287)
+	(envelope-from <pm215@archaic.org.uk>) id 1Wpy4I-0008Sl-Au
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 07:00:19 -0400
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48291)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Wpy3b-0007p3-6B
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 06:59:35 -0400
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Wpy4F-0008Ri-RG; Thu, 29 May 2014 07:00:15 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1Wpy3S-0006gX-DR; Thu, 29 May 2014 11:59:26 +0100
+	id 1Wpy4F-0006hp-44; Thu, 29 May 2014 12:00:15 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qefmu-devel@nongnu.org
-Date: Thu, 29 May 2014 11:59:26 +0100
-Message-Id: <1401361166-25672-1-git-send-email-peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 29 May 2014 12:00:15 +0100
+Message-Id: <1401361215-25752-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
@@ -37,7 +37,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 May 2014 10:59:37 -0000
+X-List-Received-Date: Thu, 29 May 2014 11:00:23 -0000
 
 The zero_ethaddr[] array is never used; delete it.
 
