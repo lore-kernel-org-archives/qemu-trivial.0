@@ -1,51 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wpzyx-00044z-OQ
-	for mharc-qemu-trivial@gnu.org; Thu, 29 May 2014 09:02:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46116)
+	id 1Wq7bc-0007Kt-C0
+	for mharc-qemu-trivial@gnu.org; Thu, 29 May 2014 17:11:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49203)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Wpzyq-0003ew-CN
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 09:02:55 -0400
+	(envelope-from <ARistovski@qnx.com>) id 1Wq4CF-0001M2-Ry
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 13:33:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WpzyN-0003xH-Oa
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 09:02:48 -0400
-Received: from mail-la0-f43.google.com ([209.85.215.43]:64929)
+	(envelope-from <ARistovski@qnx.com>) id 1Wq4CA-0004f0-Oz
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 13:32:55 -0400
+Received: from mxa.qnx.com ([72.1.200.108]:47276)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WpzyN-0003t7-I6
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 09:02:19 -0400
-Received: by mail-la0-f43.google.com with SMTP id mc6so167462lab.16
-	for <qemu-trivial@nongnu.org>; Thu, 29 May 2014 06:02:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=NUoUsfy24UI5eDOJRgLxJsIg/TTXELNaNkJYQPJteug=;
-	b=cUwb6ftgskPQq24mqANi04bjFnw3SoWGNGLIbuUDaTwSwMjsMygjJHhzMqk2beHbqY
-	MsJcaF1UaAN0tL57v/t5//nP/9QznyzMdX7lv30lCv1SECPEFlbRp2ZH0mxSiSfqTlBt
-	GfZIeZh2GOgXkJdD0yMyvLW6tiJBDYfpmCG8O5DOLXhs8wg+nxW23b8zP/ktCSOhOrxx
-	UkMRQ7aCQXMrsUfCAkYVB5c/KaTIN0r4S/u5cNhZDTYRy8JoEyWpSXxwyUT8Ur+G0Xua
-	byeZEq+JcVdvkhEYGHoUDoZBlsu8m2xG30JibntF3eYMtx4F7W8JxtA4rQWKPTQ9wf4R
-	+IuA==
-X-Gm-Message-State: ALoCoQlNjJVISBVl847Mbkj+aYb1msif1w75KODhe9AJQcaqQAPrYj6cMP3WYm1V0Js6/VGQSRTE
-X-Received: by 10.112.55.5 with SMTP id n5mr2526393lbp.71.1401368537517; Thu,
-	29 May 2014 06:02:17 -0700 (PDT)
+	(envelope-from <ARistovski@qnx.com>) id 1Wq4CA-0004eK-GY
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 13:32:50 -0400
+X-ASG-Debug-ID: 1401385814-0721885f5c16470001-p2Yte8
+Received: from exhts.ott.qnx.com (exch1.ott.qnx.com [10.222.2.137]) by
+	MXA.qnx.com with ESMTP id xbVaON2ZFWbjlGU5 (version=TLSv1
+	cipher=AES128-SHA bits=128 verify=NO) for
+	<qemu-trivial@nongnu.org>; Thu, 29 May 2014 13:50:14 -0400 (EDT)
+X-Barracuda-Envelope-From: ARistovski@qnx.com
+Received: from [10.222.97.169] (10.222.2.5) by EXCH1.ott.qnx.com
+	(10.222.2.137) with Microsoft SMTP Server (TLS) id 14.3.174.1;
+	Thu, 29 May 2014 13:32:47 -0400
+Message-ID: <53876F3F.1060704@qnx.com>
+Date: Thu, 29 May 2014 13:32:47 -0400
+From: Aleksandar Ristovski <aristovski@qnx.com>
+Organization: QNX Software Systems
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
 MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Thu, 29 May 2014 06:01:57 -0700 (PDT)
-In-Reply-To: <53872D8F.2060308@weilnetz.de>
-References: <1401361215-25752-1-git-send-email-peter.maydell@linaro.org>
-	<53872D8F.2060308@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 May 2014 14:01:57 +0100
-Message-ID: <CAFEAcA8V7Bs5RCN=C4rEFyrZuRBRrYoMe66pZjCgk9aAmuuTBw@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.43
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Remove unused
-	zero_ethaddr[] variable
+To: <qemu-trivial@nongnu.org>
+Content-Type: multipart/mixed; boundary="------------090603080908020706030300"
+X-ASG-Orig-Subj: DBGAUTHSTATUS register
+X-Originating-IP: [10.222.2.5]
+X-Barracuda-Connect: exch1.ott.qnx.com[10.222.2.137]
+X-Barracuda-Start-Time: 1401385814
+X-Barracuda-Encrypted: AES128-SHA
+X-Barracuda-URL: http://qnx-spam.ott.qnx.com:80/cgi-mod/mark.cgi
+X-Virus-Scanned: by bsmtpd at qnx.com
+X-Barracuda-BRTS-Status: 1
+X-Barracuda-Spam-Score: 0.00
+X-Barracuda-Spam-Status: No, SCORE=0.00 using global scores of TAG_LEVEL=1000.0
+	QUARANTINE_LEVEL=1000.0 KILL_LEVEL=1000.0 tests=
+X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.6216
+	Rule breakdown below
+	pts rule name              description
+	---- ----------------------
+	--------------------------------------------------
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 72.1.200.108
+X-Mailman-Approved-At: Thu, 29 May 2014 17:11:18 -0400
+Subject: [Qemu-trivial] DBGAUTHSTATUS register
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,21 +61,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 May 2014 13:02:55 -0000
+X-List-Received-Date: Thu, 29 May 2014 17:33:01 -0000
 
-On 29 May 2014 13:52, Stefan Weil <sw@weilnetz.de> wrote:
-> I can add some more:
->
-> * Missing 'static' attributes for local variables and functions
+--------------090603080908020706030300
+Content-Type: text/plain; charset="ISO-8859-1"; format=flowed
+Content-Transfer-Encoding: 7bit
 
-Those seem worth fixing.
+Hello,
 
-> * Use of 0 instead of NULL for pointers (do we want to fix those?)
 
-I wouldn't bother personally.
+This is not a big issue: DBGAUTHSTATUS, according to the docs, should 
+exist. According to "ARM Architecture Reference Manual, ARMv7-A and 
+ARMv7-R edition" (DDI0406C_b_arm_architecture_reference_manual.pdf), 
+DBGAUTHSTATUS is required in all implementations. Reading it should be 
+permitted, even if as RAZ only (implying no features are 
+implemented/enabled).
 
-There's also still a tail of coverity issues.
+This trivial patch defines cp14 register DBGAUTHSTATUS.
 
-thanks
--- PMM
+
+Thank you,
+
+---
+Aleksandar Ristovski
+QNX Software Systems
+
+
+
+--------------090603080908020706030300
+Content-Type: text/x-patch;
+	name="0001-Author-Aleksandar-Ristovski-ARistovski-qnx.com.patch"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="0001-Author-Aleksandar-Ristovski-ARistovski-qnx.com.patch"
+
+From 88e2c564e8a17c0494024d773db4b6c4a0646342 Mon Sep 17 00:00:00 2001
+From: Aleksandar Ristovski <ARistovski@qnx.com>
+Date: Thu, 29 May 2014 13:20:45 -0400
+Subject: [PATCH] Author: Aleksandar Ristovski <ARistovski@qnx.com> Date:   Thu
+ May 29 13:03:28 2014 -0400
+
+    * target-arm/helper.c: Define DBGAUTHSTATUS register as RAZ.
+---
+ target-arm/helper.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index ec031f5..ce1f0aa 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -395,6 +395,8 @@ static const ARMCPRegInfo cp_reginfo[] = {
+      */
+     { .name = "DBGDIDR", .cp = 14, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 0,
+       .access = PL0_R, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "DBGAUTHSTATUS", .cp = 14, .crn = 7, .crm = 14, .opc1 = 0,
++      .opc2 = 6, .access = PL0_R, .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "FCSEIDR", .cp = 15, .crn = 13, .crm = 0, .opc1 = 0, .opc2 = 0,
+       .access = PL1_RW, .fieldoffset = offsetof(CPUARMState, cp15.c13_fcse),
+       .resetvalue = 0, .writefn = fcse_write, .raw_writefn = raw_write, },
+-- 
+1.9.1
+
+
+--------------090603080908020706030300--
 
