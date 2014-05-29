@@ -1,45 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WpzpY-0003L0-BO
-	for mharc-qemu-trivial@gnu.org; Thu, 29 May 2014 08:53:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43395)
+	id 1Wpzyx-00044z-OQ
+	for mharc-qemu-trivial@gnu.org; Thu, 29 May 2014 09:02:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46116)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WpzpR-0003CN-3Z
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 08:53:10 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Wpzyq-0003ew-CN
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 09:02:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WpzpL-0000PD-C6
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 08:53:05 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:39048)
+	(envelope-from <peter.maydell@linaro.org>) id 1WpzyN-0003xH-Oa
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 09:02:48 -0400
+Received: from mail-la0-f43.google.com ([209.85.215.43]:64929)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1Wpzp9-0000NG-IH; Thu, 29 May 2014 08:52:47 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	E311611822B5; Thu, 29 May 2014 14:52:45 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id agbLhyewvXbZ; Thu, 29 May 2014 14:52:35 +0200 (CEST)
-Received: from [192.168.178.35] (p54AC99A6.dip0.t-ipconnect.de
-	[84.172.153.166])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	75D5411822B4; Thu, 29 May 2014 14:52:33 +0200 (CEST)
-Message-ID: <53872D8F.2060308@weilnetz.de>
-Date: Thu, 29 May 2014 14:52:31 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
+	(envelope-from <peter.maydell@linaro.org>) id 1WpzyN-0003t7-I6
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 09:02:19 -0400
+Received: by mail-la0-f43.google.com with SMTP id mc6so167462lab.16
+	for <qemu-trivial@nongnu.org>; Thu, 29 May 2014 06:02:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=NUoUsfy24UI5eDOJRgLxJsIg/TTXELNaNkJYQPJteug=;
+	b=cUwb6ftgskPQq24mqANi04bjFnw3SoWGNGLIbuUDaTwSwMjsMygjJHhzMqk2beHbqY
+	MsJcaF1UaAN0tL57v/t5//nP/9QznyzMdX7lv30lCv1SECPEFlbRp2ZH0mxSiSfqTlBt
+	GfZIeZh2GOgXkJdD0yMyvLW6tiJBDYfpmCG8O5DOLXhs8wg+nxW23b8zP/ktCSOhOrxx
+	UkMRQ7aCQXMrsUfCAkYVB5c/KaTIN0r4S/u5cNhZDTYRy8JoEyWpSXxwyUT8Ur+G0Xua
+	byeZEq+JcVdvkhEYGHoUDoZBlsu8m2xG30JibntF3eYMtx4F7W8JxtA4rQWKPTQ9wf4R
+	+IuA==
+X-Gm-Message-State: ALoCoQlNjJVISBVl847Mbkj+aYb1msif1w75KODhe9AJQcaqQAPrYj6cMP3WYm1V0Js6/VGQSRTE
+X-Received: by 10.112.55.5 with SMTP id n5mr2526393lbp.71.1401368537517; Thu,
+	29 May 2014 06:02:17 -0700 (PDT)
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Received: by 10.112.158.228 with HTTP; Thu, 29 May 2014 06:01:57 -0700 (PDT)
+In-Reply-To: <53872D8F.2060308@weilnetz.de>
 References: <1401361215-25752-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1401361215-25752-1-git-send-email-peter.maydell@linaro.org>
-X-Enigmail-Version: 1.5.2
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	patches@linaro.org
+	<53872D8F.2060308@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 29 May 2014 14:01:57 +0100
+Message-ID: <CAFEAcA8V7Bs5RCN=C4rEFyrZuRBRrYoMe66pZjCgk9aAmuuTBw@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.43
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Remove unused
 	zero_ethaddr[] variable
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,46 +57,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 May 2014 12:53:11 -0000
+X-List-Received-Date: Thu, 29 May 2014 13:02:55 -0000
 
-Am 29.05.2014 13:00, schrieb Peter Maydell:
-> The zero_ethaddr[] array is never used; delete it.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> clang 3.4 warns about unused const variables like this and
-> also about unused functions; we have over 400 such warnings
-> currently, of which some are simple "forgot to clean up
-> redundant code" like this one, some are deliberate in some
-> sense (usually the function/var is used in one config but not
-> another), and some are outright bugs. Anybody feel like wading
-> through them? :-)
+On 29 May 2014 13:52, Stefan Weil <sw@weilnetz.de> wrote:
+> I can add some more:
+>
+> * Missing 'static' attributes for local variables and functions
 
-I can add some more:
+Those seem worth fixing.
 
-* Missing 'static' attributes for local variables and functions
+> * Use of 0 instead of NULL for pointers (do we want to fix those?)
 
-* Use of 0 instead of NULL for pointers (do we want to fix those?)
+I wouldn't bother personally.
 
-> 
->  slirp/slirp.c | 2 --
->  1 file changed, 2 deletions(-)
-> 
-> diff --git a/slirp/slirp.c b/slirp/slirp.c
-> index 3fb48a4..b7f3726 100644
-> --- a/slirp/slirp.c
-> +++ b/slirp/slirp.c
-> @@ -37,8 +37,6 @@ static const uint8_t special_ethaddr[ETH_ALEN] = {
->      0x52, 0x55, 0x00, 0x00, 0x00, 0x00
->  };
->  
-> -static const uint8_t zero_ethaddr[ETH_ALEN] = { 0, 0, 0, 0, 0, 0 };
-> -
->  u_int curtime;
->  
->  static QTAILQ_HEAD(slirp_instances, Slirp) slirp_instances =
-> 
+There's also still a tail of coverity issues.
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
+thanks
+-- PMM
 
