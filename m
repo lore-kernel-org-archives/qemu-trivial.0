@@ -1,31 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wpy4O-0005xg-5R
-	for mharc-qemu-trivial@gnu.org; Thu, 29 May 2014 07:00:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43033)
+	id 1Wpy5r-0007z5-UL
+	for mharc-qemu-trivial@gnu.org; Thu, 29 May 2014 07:01:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43342)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Wpy4J-0005nR-3j
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 07:00:22 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1Wpy5q-0007wA-74
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 07:01:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1Wpy4I-0008Sl-Au
-	for qemu-trivial@nongnu.org; Thu, 29 May 2014 07:00:19 -0400
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48291)
+	(envelope-from <pm215@archaic.org.uk>) id 1Wpy5p-0000Q1-1f
+	for qemu-trivial@nongnu.org; Thu, 29 May 2014 07:01:54 -0400
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48296)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1Wpy4F-0008Ri-RG; Thu, 29 May 2014 07:00:15 -0400
+	id 1Wpy5n-0000PW-Cp; Thu, 29 May 2014 07:01:51 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1Wpy4F-0006hp-44; Thu, 29 May 2014 12:00:15 +0100
+	id 1Wpy5l-0006kY-Ms; Thu, 29 May 2014 12:01:49 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Thu, 29 May 2014 12:00:15 +0100
-Message-Id: <1401361215-25752-1-git-send-email-peter.maydell@linaro.org>
+Date: Thu, 29 May 2014 12:01:49 +0100
+Message-Id: <1401361309-25921-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] slirp: Remove unused zero_ethaddr[] variable
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Anthony Liguori <aliguori@amazon.com>, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] hw/i386/pc.c: Remove unused parallel_io and
+	parallel_irq variables
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,36 +38,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 May 2014 11:00:23 -0000
+X-List-Received-Date: Thu, 29 May 2014 11:01:55 -0000
 
-The zero_ethaddr[] array is never used; delete it.
+The variables parallel_io and parallel_irq are unused; delete them.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-clang 3.4 warns about unused const variables like this and
-also about unused functions; we have over 400 such warnings
-currently, of which some are simple "forgot to clean up
-redundant code" like this one, some are deliberate in some
-sense (usually the function/var is used in one config but not
-another), and some are outright bugs. Anybody feel like wading
-through them? :-)
+ hw/i386/pc.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
- slirp/slirp.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/slirp/slirp.c b/slirp/slirp.c
-index 3fb48a4..b7f3726 100644
---- a/slirp/slirp.c
-+++ b/slirp/slirp.c
-@@ -37,8 +37,6 @@ static const uint8_t special_ethaddr[ETH_ALEN] = {
-     0x52, 0x55, 0x00, 0x00, 0x00, 0x00
- };
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index e6369d5..32d1632 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -922,9 +922,6 @@ static const int ne2000_io[NE2000_NB_MAX] = { 0x300, 0x320, 0x340, 0x360,
+                                               0x280, 0x380 };
+ static const int ne2000_irq[NE2000_NB_MAX] = { 9, 10, 11, 3, 4, 5 };
  
--static const uint8_t zero_ethaddr[ETH_ALEN] = { 0, 0, 0, 0, 0, 0 };
+-static const int parallel_io[MAX_PARALLEL_PORTS] = { 0x378, 0x278, 0x3bc };
+-static const int parallel_irq[MAX_PARALLEL_PORTS] = { 7, 7, 7 };
 -
- u_int curtime;
- 
- static QTAILQ_HEAD(slirp_instances, Slirp) slirp_instances =
+ void pc_init_ne2k_isa(ISABus *bus, NICInfo *nd)
+ {
+     static int nb_ne2k = 0;
 -- 
 1.9.2
 
