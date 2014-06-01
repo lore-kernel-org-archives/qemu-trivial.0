@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wqrw7-0002dy-Vr
-	for mharc-qemu-trivial@gnu.org; Sat, 31 May 2014 18:39:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47001)
+	id 1Wr4LL-0001TU-9A
+	for mharc-qemu-trivial@gnu.org; Sun, 01 Jun 2014 07:54:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48689)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Wqrw1-0002cS-6u
-	for qemu-trivial@nongnu.org; Sat, 31 May 2014 18:39:34 -0400
+	(envelope-from <kroosec@gmail.com>) id 1Wr4LE-0001LQ-5z
+	for qemu-trivial@nongnu.org; Sun, 01 Jun 2014 07:54:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Wqrvv-00053r-Fb
-	for qemu-trivial@nongnu.org; Sat, 31 May 2014 18:39:29 -0400
-Received: from mail-lb0-f175.google.com ([209.85.217.175]:37522)
+	(envelope-from <kroosec@gmail.com>) id 1Wr4L8-0003Ke-6C
+	for qemu-trivial@nongnu.org; Sun, 01 Jun 2014 07:54:20 -0400
+Received: from mail-we0-x234.google.com ([2a00:1450:400c:c03::234]:41301)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Wqrvv-00050n-8e
-	for qemu-trivial@nongnu.org; Sat, 31 May 2014 18:39:23 -0400
-Received: by mail-lb0-f175.google.com with SMTP id l4so1762939lbv.34
-	for <qemu-trivial@nongnu.org>; Sat, 31 May 2014 15:39:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=EVHNWavIORe1VR98xo0XtD7B6yUVYpfNgx10AV1tEaQ=;
-	b=c4Ej61c96WRcRI/JqN6MJ9uWUIC0VLeqlaY/W7BXRCEmn9TSE/CvdmYJLB3j3+Hwk4
-	4llGHh+kvb138urv7eLXahnfdENHTW2T/dsV3ZbRy79d0KNmnL5zyumxFM/01nTVpROL
-	DSFsYDtoAYtrPeb170KtmwAijkdiB4zxDTKmGYdrPNRojeYBDzNsxP/+iJkL1L40SMgf
-	ijm2Pk4awOIX4Q9k97emER5X77qlpHBcN56ZS0VDHJJXewuJcHeNo2dATrdF8Is2SIlC
-	Vu3U1nP16HUokJMvkBJ2rKrWeiFqqsSoCrUa48NBliMXlai/ahWzt80fVs1db0bNGDMf
-	6Adg==
-X-Gm-Message-State: ALoCoQlSHXG4WhpGHQKwR93jPqhoZoJRlUfZt99VkGNo0lQ8PvaWLGTg2EMDHv2GydnKUbFS7IYe
-X-Received: by 10.152.203.236 with SMTP id kt12mr19961752lac.8.1401575960665; 
-	Sat, 31 May 2014 15:39:20 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Sat, 31 May 2014 15:39:00 -0700 (PDT)
-In-Reply-To: <1401088811-22923-22-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<1401088811-22923-22-git-send-email-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 31 May 2014 23:39:00 +0100
-Message-ID: <CAFEAcA9wDmQmed6YNrFy5jyRTN2mCD3JOnk=f-eiqxGx5iycXA@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.175
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, Le Tan <tamlokveer@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 21/23] bsd-user: replace
- fprintf(stderr, ...) with error_report()
+	(envelope-from <kroosec@gmail.com>)
+	id 1Wr4Kv-0003JE-VN; Sun, 01 Jun 2014 07:54:02 -0400
+Received: by mail-we0-f180.google.com with SMTP id q58so3968808wes.11
+	for <multiple recipients>; Sun, 01 Jun 2014 04:54:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=MxTrgyLrIeJm5RPfD8hi/TXi2l+GPuK/ayK/LAvTxfg=;
+	b=dEmjWsr83sY4BC2aeh60Js3iceskjuDeM9U20oDRewWFKo0k92SuitFaS/2vD51qQ/
+	LKNQYVo6dmAEmuEjGJ5Dh8rj6iHgjQQyu9CVr/BiflFF4TnsUVJP7szfwtUqGjwuLnvP
+	C4fMgcDTQUKKycgP8Fc+VGwnhc6CxGsayYuylIvP8+R8KLTiLXBlGqekf7hzmG+9c3Fi
+	EHWY9c1O3wI3vrGiXhCQg4euuoib5xB5OzjldeSa3hxDE5Ekzen2WKpbqy8sQkJuIa2H
+	bhCmjy82E+1RdAealbtH3ByeJa3hRj6XjUZzFp+50qiyardJpLGdFHqkjz1xo9tbPxtG
+	suYQ==
+X-Received: by 10.180.14.72 with SMTP id n8mr13610993wic.53.1401623640884;
+	Sun, 01 Jun 2014 04:54:00 -0700 (PDT)
+Received: from localhost.localdomain ([41.103.115.112])
+	by mx.google.com with ESMTPSA id b19sm22995930wic.5.2014.06.01.04.53.59
+	for <multiple recipients>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Sun, 01 Jun 2014 04:54:00 -0700 (PDT)
+From: Hani Benhabiles <kroosec@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Sun,  1 Jun 2014 12:53:35 +0100
+Message-Id: <1401623615-7548-1-git-send-email-kroosec@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c03::234
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, lcapitulino@redhat.com,
+	stefanha@redhat.com, eblake@redhat.com, xiawenc@linux.vnet.ibm.com
+Subject: [Qemu-trivial] [PATCH] readline: Clear screen on form feed.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,35 +52,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 31 May 2014 22:39:34 -0000
+X-List-Received-Date: Sun, 01 Jun 2014 11:54:26 -0000
 
-On 26 May 2014 08:20, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> From: Le Tan <tamlokveer@gmail.com>
->
-> Replace fprintf(stderr,...) with error_report() in files bsd-user/*.
-> The trailing "\n"s of the @fmt argument have been removed
-> because @fmt of error_report() should not contain newline.
->
-> Signed-off-by: Le Tan <tamlokveer@gmail.com>
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Hani Benhabiles <hani@linux.com>
+---
+ util/readline.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-Was this patch tested? Building on FreeBSD the compiler
-complains:
-"warning: implicit declaration of function 'error_report' is invalid in C99"
+diff --git a/util/readline.c b/util/readline.c
+index 8baec55..08d07e3 100644
+--- a/util/readline.c
++++ b/util/readline.c
+@@ -345,6 +345,12 @@ static void readline_completion(ReadLineState *rs)
+     }
+ }
+ 
++static void readline_clear_screen(ReadLineState *rs)
++{
++    rs->printf_func(rs->opaque, "\033[2J\033[1;1H");
++    readline_show_prompt(rs);
++}
++
+ /* return true if command handled */
+ void readline_handle_byte(ReadLineState *rs, int ch)
+ {
+@@ -363,6 +369,9 @@ void readline_handle_byte(ReadLineState *rs, int ch)
+         case 9:
+             readline_completion(rs);
+             break;
++        case 12:
++            readline_clear_screen(rs);
++            break;
+         case 10:
+         case 13:
+             rs->cmd_buf[rs->cmd_buf_size] = '\0';
+-- 
+1.8.3.2
 
-because none of these bsd-user files include a header which
-gives a prototype for error_report. Also, these are just
-straightforward reporting of command line errors, and I
-think that, like the linux-user code, we should handle
-these in the obvious way by printing to stderr. There's no
-need to drag in the error-handling framework for this,
-especially since user-mode doesn't have the "maybe we
-need to send this to the monitor" issues system emulation
-does.
-
-In short, I think we need to revert this commit
-(1fba509527beb).
-
-thanks
--- PMM
 
