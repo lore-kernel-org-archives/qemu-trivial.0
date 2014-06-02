@@ -1,44 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WrRzw-0000kz-SQ
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 09:09:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56860)
+	id 1WrS6O-0008S0-Fi
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 09:16:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58257)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WrRzq-0000VS-MD
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 09:09:55 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WrS6H-0008Jw-Mk
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 09:16:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WrRzm-0001IE-1e
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 09:09:50 -0400
-Received: from oxygen.pond.sub.org ([2a01:4f8:201:233:1::3]:46743)
+	(envelope-from <mjt@tls.msk.ru>) id 1WrS6C-0003X8-4w
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 09:16:29 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:47611)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1WrRzc-0001GS-7v; Mon, 02 Jun 2014 09:09:36 -0400
-Received: from blackfin.pond.sub.org (p5B329868.dip0.t-ipconnect.de
-	[91.50.152.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(Client did not present a certificate)
-	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 242DE2015B;
-	Mon,  2 Jun 2014 15:09:34 +0200 (CEST)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 73B0230403AF; Mon,  2 Jun 2014 15:09:33 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<1401088811-22923-22-git-send-email-mjt@msgid.tls.msk.ru>
-	<CAFEAcA9wDmQmed6YNrFy5jyRTN2mCD3JOnk=f-eiqxGx5iycXA@mail.gmail.com>
-Date: Mon, 02 Jun 2014 15:09:33 +0200
-In-Reply-To: <CAFEAcA9wDmQmed6YNrFy5jyRTN2mCD3JOnk=f-eiqxGx5iycXA@mail.gmail.com>
-	(Peter Maydell's message of "Sat, 31 May 2014 23:39:00 +0100")
-Message-ID: <87mwdv8nle.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WrS5w-0003RY-PV; Mon, 02 Jun 2014 09:16:08 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 74A7F40457;
+	Mon,  2 Jun 2014 17:16:07 +0400 (MSK)
+Message-ID: <538C7917.5010703@msgid.tls.msk.ru>
+Date: Mon, 02 Jun 2014 17:16:07 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a01:4f8:201:233:1::3
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+To: Markus Armbruster <armbru@redhat.com>, 
+	Peter Maydell <peter.maydell@linaro.org>
+References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>	<1401088811-22923-22-git-send-email-mjt@msgid.tls.msk.ru>	<CAFEAcA9wDmQmed6YNrFy5jyRTN2mCD3JOnk=f-eiqxGx5iycXA@mail.gmail.com>
+	<87mwdv8nle.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87mwdv8nle.fsf@blackfin.pond.sub.org>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>, Le Tan <tamlokveer@gmail.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 21/23] bsd-user: replace
-	fprintf(stderr, ...) with error_report()
+ fprintf(stderr, ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,48 +48,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jun 2014 13:09:55 -0000
+X-List-Received-Date: Mon, 02 Jun 2014 13:16:35 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+02.06.2014 17:09, Markus Armbruster wrote:
+> Peter Maydell <peter.maydell@linaro.org> writes:
+[]
+>> because none of these bsd-user files include a header which
+>> gives a prototype for error_report. Also, these are just
+>> straightforward reporting of command line errors, and I
+>> think that, like the linux-user code, we should handle
+>> these in the obvious way by printing to stderr. There's no
+>> need to drag in the error-handling framework for this,
+>> especially since user-mode doesn't have the "maybe we
+>> need to send this to the monitor" issues system emulation
+>> does.
+> 
+> Not much of a "framework", really.
+> 
+> Even in straightforward command line cases, error_report() adds value,
+> namely a uniform error message format that includes the program name.
 
-> On 26 May 2014 08:20, Michael Tokarev <mjt@tls.msk.ru> wrote:
->> From: Le Tan <tamlokveer@gmail.com>
->>
->> Replace fprintf(stderr,...) with error_report() in files bsd-user/*.
->> The trailing "\n"s of the @fmt argument have been removed
->> because @fmt of error_report() should not contain newline.
->>
->> Signed-off-by: Le Tan <tamlokveer@gmail.com>
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->
-> Was this patch tested? Building on FreeBSD the compiler
-> complains:
-> "warning: implicit declaration of function 'error_report' is invalid in C99"
->
-> because none of these bsd-user files include a header which
-> gives a prototype for error_report. Also, these are just
-> straightforward reporting of command line errors, and I
-> think that, like the linux-user code, we should handle
-> these in the obvious way by printing to stderr. There's no
-> need to drag in the error-handling framework for this,
-> especially since user-mode doesn't have the "maybe we
-> need to send this to the monitor" issues system emulation
-> does.
+> Its ability to point to the offending option is useful when the command
+> line gets long (and ours are prone to get really, really long).
 
-Not much of a "framework", really.
+Please note the talk is about bsd-USER, not a SYSTEM emulation.
 
-Even in straightforward command line cases, error_report() adds value,
-namely a uniform error message format that includes the program name.
+And for -user. the command line is usually just the opposite - very
+short, consisting of the original command line with qemu-foo prepended.
 
-Its ability to point to the offending option is useful when the command
-line gets long (and ours are prone to get really, really long).
-Especially useful when -readconfig comes into play (config file
-bisection is no fun).  Unfortunately, the location information can get
-lost on its way from option parsing to option use, but that's just
-carelessness on our part.
+When I encountered this phenomenon (lack of any #includes declaring
+error_report()) I thought that maybe an alternative channel for error
+reporting might be useful there, like QEMU_LOG=$TMPDIR/foo qemu-foo ...,
+so that the output produced by qemu can be separated from the output
+produced by the program it runs, but just as Peter pointed out, we're
+far from there yet, and indeed, we should start elsewhere.
 
-> In short, I think we need to revert this commit
-> (1fba509527beb).
 
-Not my bikeshed to paint; do what you think is best.
+Thanks,
+
+/mjt
 
