@@ -1,42 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WrS6O-0008S0-Fi
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 09:16:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58257)
+	id 1Wra7a-0004O0-8z
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 17:50:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49392)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WrS6H-0008Jw-Mk
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 09:16:35 -0400
+	(envelope-from <kroosec@gmail.com>) id 1Wra7T-0004G2-KI
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 17:50:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WrS6C-0003X8-4w
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 09:16:29 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:47611)
+	(envelope-from <kroosec@gmail.com>) id 1Wra7O-0005TP-6S
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 17:50:15 -0400
+Received: from mail-wg0-x22b.google.com ([2a00:1450:400c:c00::22b]:35356)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WrS5w-0003RY-PV; Mon, 02 Jun 2014 09:16:08 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 74A7F40457;
-	Mon,  2 Jun 2014 17:16:07 +0400 (MSK)
-Message-ID: <538C7917.5010703@msgid.tls.msk.ru>
-Date: Mon, 02 Jun 2014 17:16:07 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.5.0
+	(envelope-from <kroosec@gmail.com>)
+	id 1Wra7D-0005BZ-4r; Mon, 02 Jun 2014 17:49:59 -0400
+Received: by mail-wg0-f43.google.com with SMTP id l18so5693670wgh.26
+	for <multiple recipients>; Mon, 02 Jun 2014 14:49:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=xsd2M1v16KjU4yp1+mI0BpZHZPeZJbNQYNRP0+VkhpE=;
+	b=tTEWo5DHodUapB9sj3Ju7/HGvHcm2EscfIkQFpLqspNVvkyh7JhGcTpc+cGEoNCecN
+	O9iXARIA84UyJ8T33GZ8qEYt7nV+1oujTCxk1WYjRHIUah1piGjdPmtz97PSS1LyLPRL
+	i4cUzD0GsR0Js5I7q17xlVnayK26qZgUrgWJuAp12oN9k4obShQo/pD6zkjsNxCxo+ki
+	FpeUd136uqpDUGK6JFCb7ZPSgbQY+PZ8vTlnLCzmhKzHaTHU8pQ7YbKWMqPs9mArIgoG
+	8xOY2rTbOoCxdF/qS4MQwTFUcF46hWb6ho2swMISWKSrfQuZBoCI7UknvNUShinJv4DA
+	QeIQ==
+X-Received: by 10.194.236.169 with SMTP id uv9mr52153547wjc.46.1401745797778; 
+	Mon, 02 Jun 2014 14:49:57 -0700 (PDT)
+Received: from Inspiron-3521 ([41.109.203.193])
+	by mx.google.com with ESMTPSA id l5sm35866267wif.22.2014.06.02.14.49.55
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Mon, 02 Jun 2014 14:49:56 -0700 (PDT)
+Date: Mon, 2 Jun 2014 22:49:50 +0100
+From: Hani Benhabiles <kroosec@gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Message-ID: <20140602214950.GA5283@Inspiron-3521>
+References: <1401623615-7548-1-git-send-email-kroosec@gmail.com>
+	<20140602122036.GA3049@stefanha-thinkpad.redhat.com>
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>, 
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>	<1401088811-22923-22-git-send-email-mjt@msgid.tls.msk.ru>	<CAFEAcA9wDmQmed6YNrFy5jyRTN2mCD3JOnk=f-eiqxGx5iycXA@mail.gmail.com>
-	<87mwdv8nle.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87mwdv8nle.fsf@blackfin.pond.sub.org>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, Le Tan <tamlokveer@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 21/23] bsd-user: replace
- fprintf(stderr, ...) with error_report()
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20140602122036.GA3049@stefanha-thinkpad.redhat.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c00::22b
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	lcapitulino@redhat.com, stefanha@redhat.com, xiawenc@linux.vnet.ibm.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] readline: Clear screen on
+	form feed.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,43 +60,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jun 2014 13:16:35 -0000
+X-List-Received-Date: Mon, 02 Jun 2014 21:50:21 -0000
 
-02.06.2014 17:09, Markus Armbruster wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
-[]
->> because none of these bsd-user files include a header which
->> gives a prototype for error_report. Also, these are just
->> straightforward reporting of command line errors, and I
->> think that, like the linux-user code, we should handle
->> these in the obvious way by printing to stderr. There's no
->> need to drag in the error-handling framework for this,
->> especially since user-mode doesn't have the "maybe we
->> need to send this to the monitor" issues system emulation
->> does.
+On Mon, Jun 02, 2014 at 02:20:36PM +0200, Stefan Hajnoczi wrote:
+> On Sun, Jun 01, 2014 at 12:53:35PM +0100, Hani Benhabiles wrote:
+> > Signed-off-by: Hani Benhabiles <hani@linux.com>
+> > ---
+> >  util/readline.c | 9 +++++++++
+> >  1 file changed, 9 insertions(+)
 > 
-> Not much of a "framework", really.
-> 
-> Even in straightforward command line cases, error_report() adds value,
-> namely a uniform error message format that includes the program name.
+> Please only CC me on patches for areas of the code that I maintain or
+> you feel I am an expert in.  That includes block, net, and tracing.
+> Monitor and terminal escape sequences isn't my forte :-).
 
-> Its ability to point to the offending option is useful when the command
-> line gets long (and ours are prone to get really, really long).
-
-Please note the talk is about bsd-USER, not a SYSTEM emulation.
-
-And for -user. the command line is usually just the opposite - very
-short, consisting of the original command line with qemu-foo prepended.
-
-When I encountered this phenomenon (lack of any #includes declaring
-error_report()) I thought that maybe an alternative channel for error
-reporting might be useful there, like QEMU_LOG=$TMPDIR/foo qemu-foo ...,
-so that the output produced by qemu can be separated from the output
-produced by the program it runs, but just as Peter pointed out, we're
-far from there yet, and indeed, we should start elsewhere.
-
-
-Thanks,
-
-/mjt
+Sure, np. Just used get_maintainer.pl output.
 
