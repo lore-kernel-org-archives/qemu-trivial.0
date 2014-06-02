@@ -1,54 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WrRT6-0007P3-4M
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 08:36:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47701)
+	id 1WrRzw-0000kz-SQ
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 09:09:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56860)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WrRSu-00078E-MP
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:35:57 -0400
+	(envelope-from <armbru@pond.sub.org>) id 1WrRzq-0000VS-MD
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 09:09:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WrRSl-0004d3-Kr
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:35:48 -0400
-Received: from mail-pa0-x234.google.com ([2607:f8b0:400e:c03::234]:48467)
+	(envelope-from <armbru@pond.sub.org>) id 1WrRzm-0001IE-1e
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 09:09:50 -0400
+Received: from oxygen.pond.sub.org ([2a01:4f8:201:233:1::3]:46743)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1WrRSS-0004Xj-Ab; Mon, 02 Jun 2014 08:35:20 -0400
-Received: by mail-pa0-f52.google.com with SMTP id bj1so3815096pad.25
-	for <multiple recipients>; Mon, 02 Jun 2014 05:35:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:content-type:content-transfer-encoding;
-	bh=4TZ2hvpddV1OLthjzbZgdJ1NZzw+sNxTMpyOsqfrjnw=;
-	b=ShW2LeLSlEIZLGuuHx320CZdla7Vz6HuLjZuXTeZdcHskPz8bSwhk2lJgoxT6V3a5s
-	ogdlUC7i+r+610MlNir1PXrDPfmE2MCSVQUmwtJRCdsWgy1wiVQpxwn8SDj0Wy6nHtqE
-	Uq2wk8zM3SzFMjJ6TfrNWFcg/a1Q7IVluLUU4mi/DvJUtqiXn62zbDSEPpySyhvNcNtk
-	Vl9HWAFeurVEKwloNay8O4ISDy8Y+0/dNsWr3xPSXYKhkW6vwrdUJYDBZxa2yrk2WWY9
-	O9xerUPEEJ387CDGCDqzGA3MubWNx4DdlH4YtAdWU3fRsNMDOw0Wg0TBCn4Pa/4ZueKn
-	Jjcg==
-X-Received: by 10.66.218.36 with SMTP id pd4mr39909795pac.141.1401712519206;
-	Mon, 02 Jun 2014 05:35:19 -0700 (PDT)
-Received: from [192.168.1.104] ([223.72.65.106])
-	by mx.google.com with ESMTPSA id
-	sv10sm20337909pbc.74.2014.06.02.05.35.16 for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Mon, 02 Jun 2014 05:35:18 -0700 (PDT)
-Message-ID: <538C6F98.5070005@gmail.com>
-Date: Mon, 02 Jun 2014 20:35:36 +0800
-From: Chen Gang <gang.chen.5i5j@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130625 Thunderbird/17.0.7
+	(envelope-from <armbru@pond.sub.org>)
+	id 1WrRzc-0001GS-7v; Mon, 02 Jun 2014 09:09:36 -0400
+Received: from blackfin.pond.sub.org (p5B329868.dip0.t-ipconnect.de
+	[91.50.152.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 242DE2015B;
+	Mon,  2 Jun 2014 15:09:34 +0200 (CEST)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 73B0230403AF; Mon,  2 Jun 2014 15:09:33 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<1401088811-22923-22-git-send-email-mjt@msgid.tls.msk.ru>
+	<CAFEAcA9wDmQmed6YNrFy5jyRTN2mCD3JOnk=f-eiqxGx5iycXA@mail.gmail.com>
+Date: Mon, 02 Jun 2014 15:09:33 +0200
+In-Reply-To: <CAFEAcA9wDmQmed6YNrFy5jyRTN2mCD3JOnk=f-eiqxGx5iycXA@mail.gmail.com>
+	(Peter Maydell's message of "Sat, 31 May 2014 23:39:00 +0100")
+Message-ID: <87mwdv8nle.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, quintela@redhat.com, 
-	arei.gonglei@huawei.com, Eric Blake <eblake@redhat.com>, 
-	dgilbert@redhat.com, owasserm@redhat.com
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c03::234
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH-trivial] arch_init.c: Always be sure that
- 'encoded_buf' and 'current_buf' are lock protected
+X-Received-From: 2a01:4f8:201:233:1::3
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	QEMU Developers <qemu-devel@nongnu.org>, Le Tan <tamlokveer@gmail.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 21/23] bsd-user: replace
+	fprintf(stderr, ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,50 +50,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jun 2014 12:35:58 -0000
+X-List-Received-Date: Mon, 02 Jun 2014 13:09:55 -0000
 
-'encoded_buf' and 'current_buf' are lock protected during using in
-save_xbzrle_page() in ram_save_page(), and during freeing in
-migration_end().
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-So recommend to let them lock protected during starting, just like we
-have done to 'cache'.
+> On 26 May 2014 08:20, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>> From: Le Tan <tamlokveer@gmail.com>
+>>
+>> Replace fprintf(stderr,...) with error_report() in files bsd-user/*.
+>> The trailing "\n"s of the @fmt argument have been removed
+>> because @fmt of error_report() should not contain newline.
+>>
+>> Signed-off-by: Le Tan <tamlokveer@gmail.com>
+>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+>
+> Was this patch tested? Building on FreeBSD the compiler
+> complains:
+> "warning: implicit declaration of function 'error_report' is invalid in C99"
+>
+> because none of these bsd-user files include a header which
+> gives a prototype for error_report. Also, these are just
+> straightforward reporting of command line errors, and I
+> think that, like the linux-user code, we should handle
+> these in the obvious way by printing to stderr. There's no
+> need to drag in the error-handling framework for this,
+> especially since user-mode doesn't have the "maybe we
+> need to send this to the monitor" issues system emulation
+> does.
 
+Not much of a "framework", really.
 
-Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
----
- arch_init.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Even in straightforward command line cases, error_report() adds value,
+namely a uniform error message format that includes the program name.
 
-diff --git a/arch_init.c b/arch_init.c
-index 23044c1..784922c 100644
---- a/arch_init.c
-+++ b/arch_init.c
-@@ -783,12 +783,12 @@ static int ram_save_setup(QEMUFile *f, void *opaque)
-             error_report("Error creating cache");
-             return -1;
-         }
--        XBZRLE_cache_unlock();
+Its ability to point to the offending option is useful when the command
+line gets long (and ours are prone to get really, really long).
+Especially useful when -readconfig comes into play (config file
+bisection is no fun).  Unfortunately, the location information can get
+lost on its way from option parsing to option use, but that's just
+carelessness on our part.
 
-         /* We prefer not to abort if there is no memory */
-         XBZRLE.encoded_buf = g_try_malloc0(TARGET_PAGE_SIZE);
-         if (!XBZRLE.encoded_buf) {
-             error_report("Error allocating encoded_buf");
-+            XBZRLE_cache_unlock();
-             return -1;
-         }
+> In short, I think we need to revert this commit
+> (1fba509527beb).
 
-@@ -797,8 +797,10 @@ static int ram_save_setup(QEMUFile *f, void *opaque)
-             error_report("Error allocating current_buf");
-             g_free(XBZRLE.encoded_buf);
-             XBZRLE.encoded_buf = NULL;
-+            XBZRLE_cache_unlock();
-             return -1;
-         }
-+        XBZRLE_cache_unlock();
-
-         acct_clear();
-     }
--- 
-1.7.11.7
+Not my bikeshed to paint; do what you think is best.
 
