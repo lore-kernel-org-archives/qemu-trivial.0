@@ -1,54 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WrRAz-0002VG-Ur
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 08:17:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44417)
+	id 1WrREo-0005YR-1d
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 08:21:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45131)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WrRAo-0002Hq-Sc
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:17:15 -0400
+	(envelope-from <stefanha@gmail.com>) id 1WrREg-0005Oz-K3
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:21:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1WrRAf-00061V-RK
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:17:06 -0400
-Received: from mail-pd0-x22e.google.com ([2607:f8b0:400e:c02::22e]:50272)
+	(envelope-from <stefanha@gmail.com>) id 1WrREa-0007VI-LO
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:21:06 -0400
+Received: from mail-wi0-x234.google.com ([2a00:1450:400c:c05::234]:64758)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1WrRAN-0005p3-7e; Mon, 02 Jun 2014 08:16:39 -0400
-Received: by mail-pd0-f174.google.com with SMTP id r10so3361322pdi.33
-	for <multiple recipients>; Mon, 02 Jun 2014 05:16:37 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1WrREL-0007SA-2K; Mon, 02 Jun 2014 08:20:45 -0400
+Received: by mail-wi0-f180.google.com with SMTP id hi2so4466162wib.13
+	for <multiple recipients>; Mon, 02 Jun 2014 05:20:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:content-type:content-transfer-encoding;
-	bh=F4cDXuKRydItrVDc0C4C2aHy3PwjTyyCxufksH48qq4=;
-	b=L0NqJrrSNuIXauAdEAlM/732NFzihePOpk7NuOM4f8/8sLLioC9xhRG3SAHWm3uK9X
-	MvXoEaCQAJzFM9PDXoVK3grEr63bnBhbqoABygeLhkOVP0tZlKTulHydwtcPEl+6MzK6
-	DGM0yjBQGYIa59M7kY8ehzA92HWYzF3HyYpGnksjGwyg2qAOySvg06xcyguevLxFz0/g
-	HVeDHO2lsZ2gDfXMUbxinrPzt5qfzcbGgYOPWqy0hL2UPxiz4s7MMS+omjD9ML/k8ZKR
-	6Klg4UcX78v0g6d+nAG8ylx96M+8721C0Cen6G1cGowrzX+REqkPwANc10qldgHnB1Vn
-	uI4w==
-X-Received: by 10.66.254.198 with SMTP id ak6mr4087336pad.156.1401711397473;
-	Mon, 02 Jun 2014 05:16:37 -0700 (PDT)
-Received: from [192.168.1.104] ([223.72.65.106])
-	by mx.google.com with ESMTPSA id br1sm5351919pbc.6.2014.06.02.05.16.34
-	for <multiple recipients>
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Mon, 02 Jun 2014 05:16:36 -0700 (PDT)
-Message-ID: <538C6B37.2030400@gmail.com>
-Date: Mon, 02 Jun 2014 20:16:55 +0800
-From: Chen Gang <gang.chen.5i5j@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:17.0) Gecko/20130625 Thunderbird/17.0.7
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=Rd56TCwZ0Y2ewDkDQYF8OAY8cZ6I6rnZP5sGsPzPJNE=;
+	b=l+KU63ggefqG9Xfe8u3XOMKLAGv9YMNsa6cy1jWDI+7DPhG/7YNGsEQbqO5GpUdogL
+	V/UnChv9Z/UbeMvP55FUnqfR0olUvitGFPPGT5ENMk3JeAFeobMIZhfbjHxN4ILCBDSa
+	HdVLHOE3ayFhUq7gttExsPGmy4lSaBBnZS+VwfoskM2aqdU6bGP24gxSTrvILSwL0v+g
+	qA/YqEBniD9xumeohmy2owBL5bXnyVxiEDXF9FKC2LMhP0eN8lMugopOu7GOFMIknD4M
+	1vaGDl/6aT+gg1Rev5WSJjlKlbQF2oFP33123g+mu7DqSe7Ry2Cixq1P4SbHqZ6mLeVV
+	F48A==
+X-Received: by 10.180.19.233 with SMTP id i9mr22036518wie.38.1401711639523;
+	Mon, 02 Jun 2014 05:20:39 -0700 (PDT)
+Received: from localhost (95-90-192-172-dynip.superkabel.de. [95.90.192.172])
+	by mx.google.com with ESMTPSA id
+	m1sm32137939wib.20.2014.06.02.05.20.37 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 02 Jun 2014 05:20:38 -0700 (PDT)
+Date: Mon, 2 Jun 2014 14:20:36 +0200
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Hani Benhabiles <kroosec@gmail.com>
+Message-ID: <20140602122036.GA3049@stefanha-thinkpad.redhat.com>
+References: <1401623615-7548-1-git-send-email-kroosec@gmail.com>
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, quintela@redhat.com, 
-	arei.gonglei@huawei.com, Eric Blake <eblake@redhat.com>, 
-	dgilbert@redhat.com, owasserm@redhat.com
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1401623615-7548-1-git-send-email-kroosec@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::22e
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH-trivial] arch_init.c: Free 'cache' in
- cache_fini() to avoid memory leak
+X-Received-From: 2a00:1450:400c:c05::234
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	lcapitulino@redhat.com, stefanha@redhat.com, xiawenc@linux.vnet.ibm.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] readline: Clear screen on
+	form feed.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,46 +59,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jun 2014 12:17:16 -0000
+X-List-Received-Date: Mon, 02 Jun 2014 12:21:12 -0000
 
-Call g_free() after cache_fini() in migration_end(), but do not call
-g_free() after call cache_fini() in xbzrle_cache_resize() which will
-cause memory leak.
+On Sun, Jun 01, 2014 at 12:53:35PM +0100, Hani Benhabiles wrote:
+> Signed-off-by: Hani Benhabiles <hani@linux.com>
+> ---
+>  util/readline.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 
-cache_init() and cache_fini() are pair, so need let cache_fini() call
-g_free(cache) to match cache_init(), then fix current issue too.
+Please only CC me on patches for areas of the code that I maintain or
+you feel I am an expert in.  That includes block, net, and tracing.
+Monitor and terminal escape sequences isn't my forte :-).
 
-
-Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
----
- arch_init.c  | 1 -
- page_cache.c | 1 +
- 2 files changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch_init.c b/arch_init.c
-index 9f1a174..23044c1 100644
---- a/arch_init.c
-+++ b/arch_init.c
-@@ -739,7 +739,6 @@ static void migration_end(void)
-     XBZRLE_cache_lock();
-     if (XBZRLE.cache) {
-         cache_fini(XBZRLE.cache);
--        g_free(XBZRLE.cache);
-         g_free(XBZRLE.encoded_buf);
-         g_free(XBZRLE.current_buf);
-         XBZRLE.cache = NULL;
-diff --git a/page_cache.c b/page_cache.c
-index b033681..89bb1ec 100644
---- a/page_cache.c
-+++ b/page_cache.c
-@@ -109,6 +109,7 @@ void cache_fini(PageCache *cache)
- 
-     g_free(cache->page_cache);
-     cache->page_cache = NULL;
-+    g_free(cache);
- }
- 
- static size_t cache_get_cache_pos(const PageCache *cache,
--- 
-1.7.11.7
+Stefan
 
