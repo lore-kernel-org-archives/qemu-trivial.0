@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WrREo-0005YR-1d
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 08:21:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45131)
+	id 1WrRSa-0006tO-VP
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Jun 2014 08:35:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47582)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1WrREg-0005Oz-K3
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:21:12 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1WrRSU-0006tC-BJ
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:35:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1WrREa-0007VI-LO
-	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:21:06 -0400
-Received: from mail-wi0-x234.google.com ([2a00:1450:400c:c05::234]:64758)
+	(envelope-from <peter.maydell@linaro.org>) id 1WrRSN-0004Wu-GC
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:35:22 -0400
+Received: from mail-lb0-f174.google.com ([209.85.217.174]:56992)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1WrREL-0007SA-2K; Mon, 02 Jun 2014 08:20:45 -0400
-Received: by mail-wi0-f180.google.com with SMTP id hi2so4466162wib.13
-	for <multiple recipients>; Mon, 02 Jun 2014 05:20:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=Rd56TCwZ0Y2ewDkDQYF8OAY8cZ6I6rnZP5sGsPzPJNE=;
-	b=l+KU63ggefqG9Xfe8u3XOMKLAGv9YMNsa6cy1jWDI+7DPhG/7YNGsEQbqO5GpUdogL
-	V/UnChv9Z/UbeMvP55FUnqfR0olUvitGFPPGT5ENMk3JeAFeobMIZhfbjHxN4ILCBDSa
-	HdVLHOE3ayFhUq7gttExsPGmy4lSaBBnZS+VwfoskM2aqdU6bGP24gxSTrvILSwL0v+g
-	qA/YqEBniD9xumeohmy2owBL5bXnyVxiEDXF9FKC2LMhP0eN8lMugopOu7GOFMIknD4M
-	1vaGDl/6aT+gg1Rev5WSJjlKlbQF2oFP33123g+mu7DqSe7Ry2Cixq1P4SbHqZ6mLeVV
-	F48A==
-X-Received: by 10.180.19.233 with SMTP id i9mr22036518wie.38.1401711639523;
-	Mon, 02 Jun 2014 05:20:39 -0700 (PDT)
-Received: from localhost (95-90-192-172-dynip.superkabel.de. [95.90.192.172])
-	by mx.google.com with ESMTPSA id
-	m1sm32137939wib.20.2014.06.02.05.20.37 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 02 Jun 2014 05:20:38 -0700 (PDT)
-Date: Mon, 2 Jun 2014 14:20:36 +0200
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Hani Benhabiles <kroosec@gmail.com>
-Message-ID: <20140602122036.GA3049@stefanha-thinkpad.redhat.com>
-References: <1401623615-7548-1-git-send-email-kroosec@gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1WrRSN-0004Wd-8z
+	for qemu-trivial@nongnu.org; Mon, 02 Jun 2014 08:35:15 -0400
+Received: by mail-lb0-f174.google.com with SMTP id n15so2510393lbi.33
+	for <qemu-trivial@nongnu.org>; Mon, 02 Jun 2014 05:35:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=Oor3xVWBopJpHRfjwaqD/Wu5+KaWwF4TXdPNX5DPmDk=;
+	b=IRlrWjIvE1a351h2hm4bg+jBrlvL41PKPUEjy6rmHU4uEs08P0lzyS09IDBxfs9C7C
+	zO82QYlsy/EqnlTx6yNVF1rx02tGD0Ty/jmFKb6oi4NIozz1/2xYXbDaRspB3ZQHGACh
+	4tywZPnI/IB/kPsqY2yJZGRgsa4JlTn5IjkVqgwdhCyZob1VuuV3MNDb35A53UZZukk1
+	jPfG0h3h2tJNtYLqxwtMJtPKpES5YOkd1fakYblwP1ki7azdYvCwXzCHHfxJq19wlkSk
+	oXK+TmovdmcL/Y1ydBX7onWkyQVOUWQd49fs0DA3dRqpADPJBrNH+PR43SYitZQUwhnY
+	Z48w==
+X-Gm-Message-State: ALoCoQnSII+XHQUlbLRxbn+BqGbpT9E2cgY6+aClmwUi/qaVq1pBiz3NyQjU52OfDqR0qvOonwV5
+X-Received: by 10.152.203.236 with SMTP id kt12mr27381372lac.8.1401712514163; 
+	Mon, 02 Jun 2014 05:35:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1401623615-7548-1-git-send-email-kroosec@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::234
-Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	lcapitulino@redhat.com, stefanha@redhat.com, xiawenc@linux.vnet.ibm.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] readline: Clear screen on
-	form feed.
+Received: by 10.112.158.228 with HTTP; Mon, 2 Jun 2014 05:34:54 -0700 (PDT)
+In-Reply-To: <538C692E.9090000@msgid.tls.msk.ru>
+References: <1401088811-22923-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<1401088811-22923-22-git-send-email-mjt@msgid.tls.msk.ru>
+	<CAFEAcA9wDmQmed6YNrFy5jyRTN2mCD3JOnk=f-eiqxGx5iycXA@mail.gmail.com>
+	<538C692E.9090000@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 2 Jun 2014 13:34:54 +0100
+Message-ID: <CAFEAcA9s-YtGD=4rWLLFVpW8_Mebr-g0eZR9vRsybLfY0=DZOg@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.174
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, Le Tan <tamlokveer@gmail.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 21/23] bsd-user: replace
+ fprintf(stderr, ...) with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,17 +58,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jun 2014 12:21:12 -0000
+X-List-Received-Date: Mon, 02 Jun 2014 12:35:28 -0000
 
-On Sun, Jun 01, 2014 at 12:53:35PM +0100, Hani Benhabiles wrote:
-> Signed-off-by: Hani Benhabiles <hani@linux.com>
-> ---
->  util/readline.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
+On 2 June 2014 13:08, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> I applied it and actually tried to compile-check it, on kFreeBSD.
+> Compile went successfully, and I was satisfied, until I figured
+> that my kFreeBSD test script only builds qemu-system.  So I went
+> back and enabled this, and actually found the issue and even
+> fixed it locally, by adding the #includes.  While doing this, I
+> wondered, why such a basic/common subsystem is not included in
+> there to start with, and so isn't used?  Maybe this is something
+> which shouldn't be done?
 
-Please only CC me on patches for areas of the code that I maintain or
-you feel I am an expert in.  That includes block, net, and tracing.
-Monitor and terminal escape sequences isn't my forte :-).
+I think it's not inherently wrong to use the error-reporting
+infrastructure -- the *-user targets historically were very
+much "only use the CPU emulation stuff", but they've gradually
+accumulated more use of generic QEMU utility routines, especially
+with the advent of QOM. But if we want to do that then we should
+probably start with the linux-user code, which gets much more
+testing, and only convert bsd-user when we're happy that it
+doesn't have any unexpected issues. (Especially since bsd-user
+as it stands is badly broken; I'd like to encourage the BSD folks
+who are currently working on landing fixes and improvements to
+it, so I'd prefer not to give them unnecessary extra rebasing
+and merge-conflict resolution work by churning the current
+mainline code too much.)
 
-Stefan
+>> In short, I think we need to revert this commit
+>> (1fba509527beb).
+>
+> Yes, that's what I think too.  Should I send a formal patch
+> submission, or is `git revert' easy enough?  Even with my
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> if needed?
+
+I'll just do a git-revert, with your acked-by, and push it
+to master.
+
+thanks
+-- PMM
 
