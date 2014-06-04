@@ -1,52 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WsAua-0003D8-8R
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Jun 2014 09:07:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34263)
+	id 1WsDcy-0006fd-Pc
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Jun 2014 12:01:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35844)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1WsAuT-00030T-Gp
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 09:07:22 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1WsDcm-0006P0-0p
+	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 12:01:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1WsAuO-00021i-W5
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 09:07:17 -0400
-Received: from mail-vc0-f177.google.com ([209.85.220.177]:36325)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1WsDcd-0000XV-0K
+	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 12:01:11 -0400
+Received: from mail-wi0-x22a.google.com ([2a00:1450:400c:c05::22a]:47374)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1WsAuO-000212-SR
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 09:07:12 -0400
-Received: by mail-vc0-f177.google.com with SMTP id hy4so5515026vcb.8
-	for <qemu-trivial@nongnu.org>; Wed, 04 Jun 2014 06:07:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=nEbQhRPY3DPZ2OKKA1nd53f+wx0A2AdfYLRUrJQ3SKQ=;
-	b=BoXqsLKBbbv/U7Ouq7MpcBB2wVl4m/VNGHfPqdyV5TxlpoVTXt9Y3obJZumpGbzsJU
-	dtPGVXLXx6wtxZzHN23T4T0Bf4J2AnjxV0zlkXl8r6MDhH0vtfm+TVJeqjVF/jwFdKUX
-	BldCZVVHlouAoX3+BqrIboGbpqSWjEi7Vqj5P8roRxbydupxvYhCWyDrdTc1wUt+331D
-	QyLV/QX/l+R83ZDT7vDI6GP8Vh5OjW5bDvmOBt+bJSRsR7htAErS8whFYpE2CjupiTXT
-	k9R/Fl7C0xdvyMrFEDZDXt+bXGV2l3pWbxCEIgCdwDuQYzYkSXyLozsfH5HSxZ5YKaE3
-	CfQA==
-X-Gm-Message-State: ALoCoQmEy0kUZM3y/Ok0bY0wMxJzko20zABhWaM5u7ushuCHQ+uJKOTD5Aw1IQJOlqXfWWeSSIto
-MIME-Version: 1.0
-X-Received: by 10.52.139.101 with SMTP id qx5mr36429256vdb.17.1401887232396;
-	Wed, 04 Jun 2014 06:07:12 -0700 (PDT)
-Sender: peter.crosthwaite@petalogix.com
-Received: by 10.220.176.137 with HTTP; Wed, 4 Jun 2014 06:07:12 -0700 (PDT)
-In-Reply-To: <1401816541-1522-1-git-send-email-peter.maydell@linaro.org>
-References: <1401816541-1522-1-git-send-email-peter.maydell@linaro.org>
-Date: Wed, 4 Jun 2014 23:07:12 +1000
-X-Google-Sender-Auth: PvsSFFhiR2QjmuXBbT3JpZjdYHA
-Message-ID: <CAEgOgz79hkmzx==Rtre2BQ1VqWRisZrURfcsbFiOx0ruupj2Lg@mail.gmail.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.220.177
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/sd/sd.c: Drop unused
-	sd_acmd_type[] array
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1WsDcC-0000Gd-Mo; Wed, 04 Jun 2014 12:00:37 -0400
+Received: by mail-wi0-f170.google.com with SMTP id bs8so8110977wib.3
+	for <multiple recipients>; Wed, 04 Jun 2014 09:00:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id;
+	bh=YuL7A/odk11IHu7utakd0iDK4DMnXFNXy6IluKDLIKs=;
+	b=eDoAiR9a3KDKmvg/PpYAB0NqXRvXl/wP0Ay5R3n3TbIe2QAoMGQBCkTnSh84K4woqc
+	7URmpG92f9GoVtu+Ae+TwEAO4R/oDBmmu2ug/kLqui1jGme8vEkbmpvmMxCnT5iA5p0K
+	07fZiEYyq8+BvgcwO+R2Tb7fcAHcE0mScvw6DMvBXvVuZ1LkOb6nHqkQXStR3bo6h5gD
+	2oWlkZQCWkkof8SPtGPawMU62EMUZZ23vFZCA/TMGhaxZmUL245+tQem+Vp54d7OXB60
+	y9tUlC1zOYTzwkysCzAyBQ+pdZhY300oFdE2+5O9jP+SE6OM0emuJDVByWn1uiTLZ4uw
+	t8Fg==
+X-Received: by 10.14.198.6 with SMTP id u6mr2561504een.60.1401897634564;
+	Wed, 04 Jun 2014 09:00:34 -0700 (PDT)
+Received: from playground.station (net-37-117-132-7.cust.vodafonedsl.it.
+	[37.117.132.7])
+	by mx.google.com with ESMTPSA id m44sm6738108eeh.14.2014.06.04.09.00.33
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 04 Jun 2014 09:00:33 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed,  4 Jun 2014 18:00:28 +0200
+Message-Id: <1401897628-13422-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.8.3.1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::22a
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] smbios: use g_free directly on NULL pointers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,51 +53,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Jun 2014 13:07:22 -0000
+X-List-Received-Date: Wed, 04 Jun 2014 16:01:21 -0000
 
-On Wed, Jun 4, 2014 at 3:29 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Drop the sd_acmd_type[] array: it is never used. (The equivalent
-> sd_cmd_type[] array for normal commands is used to identify
-> those commands whose argument includes the card address in the
-> top 16 bits; but for app commands the card address is passed
-> with the APP_CMD prefix, not with the argument to the app command
-> itself.)
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+No need to wrap it with an if.
 
-Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ hw/i386/smbios.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-> ---
-> clang 3.4 warns about this unused variable. If we ever turn out to
-> need the information it's all in the sd card spec anyway.
->
->  hw/sd/sd.c | 11 -----------
->  1 file changed, 11 deletions(-)
->
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index 4502ad1..5efe8c1 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -151,17 +151,6 @@ static const sd_cmd_type_t sd_cmd_type[64] = {
->      sd_adtc, sd_none, sd_none, sd_none, sd_none, sd_none, sd_none, sd_none,
->  };
->
-> -static const sd_cmd_type_t sd_acmd_type[64] = {
-> -    sd_none, sd_none, sd_none, sd_none, sd_none, sd_none, sd_ac,   sd_none,
-> -    sd_none, sd_none, sd_none, sd_none, sd_none, sd_adtc, sd_none, sd_none,
-> -    sd_none, sd_none, sd_none, sd_none, sd_none, sd_none, sd_adtc, sd_ac,
-> -    sd_none, sd_none, sd_none, sd_none, sd_none, sd_none, sd_none, sd_none,
-> -    sd_none, sd_none, sd_none, sd_none, sd_none, sd_none, sd_none, sd_none,
-> -    sd_none, sd_bcr,  sd_ac,   sd_none, sd_none, sd_none, sd_none, sd_none,
-> -    sd_none, sd_none, sd_none, sd_adtc, sd_none, sd_none, sd_none, sd_none,
-> -    sd_none, sd_none, sd_none, sd_none, sd_none, sd_none, sd_none, sd_none,
-> -};
-> -
->  static const int sd_cmd_class[64] = {
->      0,  0,  0,  0,  0,  9, 10,  0,  0,  0,  0,  1,  0,  0,  0,  0,
->      2,  2,  2,  2,  3,  3,  3,  3,  4,  4,  4,  4,  6,  6,  6,  6,
-> --
-> 1.9.2
->
->
+diff --git a/hw/i386/smbios.c b/hw/i386/smbios.c
+index 7660718..ab89420 100644
+--- a/hw/i386/smbios.c
++++ b/hw/i386/smbios.c
+@@ -740,11 +740,6 @@ void smbios_set_cpuid(uint32_t version, uint32_t features)
+         field = value;                                                    \
+     }
+ 
+-#define G_FREE_UNLESS_NULL(ptr)                                           \
+-    if (ptr != NULL) {                                                    \
+-        g_free(ptr);                                                      \
+-    }
+-
+ void smbios_set_defaults(const char *manufacturer, const char *product,
+                          const char *version, bool legacy_mode)
+ {
+@@ -753,7 +748,7 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
+ 
+     /* drop unwanted version of command-line file blob(s) */
+     if (smbios_legacy) {
+-        G_FREE_UNLESS_NULL(smbios_tables);
++        g_free(smbios_tables);
+         /* in legacy mode, also complain if fields were given for types > 1 */
+         if (find_next_bit(have_fields_bitmap,
+                           SMBIOS_MAX_TYPE+1, 2) < SMBIOS_MAX_TYPE+1) {
+@@ -762,7 +757,7 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
+             exit(1);
+         }
+     } else {
+-        G_FREE_UNLESS_NULL(smbios_entries);
++        g_free(smbios_entries);
+     }
+ 
+     SMBIOS_SET_DEFAULT(type1.manufacturer, manufacturer);
+-- 
+1.8.3.1
+
 
