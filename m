@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ws8RE-0001wj-QA
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Jun 2014 06:28:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44843)
+	id 1Ws8Uj-0004zF-5c
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Jun 2014 06:32:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45812)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Ws8R4-0001uT-HN
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 06:28:55 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Ws8UY-0004fz-9n
+	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 06:32:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Ws8Qv-0001s7-7j
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 06:28:46 -0400
-Received: from mail-pd0-x236.google.com ([2607:f8b0:400e:c02::236]:62921)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Ws8UP-0003Wy-97
+	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 06:32:22 -0400
+Received: from mail-pb0-x230.google.com ([2607:f8b0:400e:c01::230]:47441)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1Ws8Qv-0001rz-0h; Wed, 04 Jun 2014 06:28:37 -0400
-Received: by mail-pd0-f182.google.com with SMTP id r10so5897083pdi.41
-	for <multiple recipients>; Wed, 04 Jun 2014 03:28:35 -0700 (PDT)
+	id 1Ws8UP-0003Wh-2K; Wed, 04 Jun 2014 06:32:13 -0400
+Received: by mail-pb0-f48.google.com with SMTP id rr13so6803241pbb.35
+	for <multiple recipients>; Wed, 04 Jun 2014 03:32:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=message-id:date:from:user-agent:mime-version:to:cc:subject
 	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=YSDbSlLnQQxDbw9Jd5eWgUZsVaq+Ohsvf4WX41Cmue4=;
-	b=UZhYxhbHBCFXNwyTk9p5DUCmKnSqjnTkmMFnXrLPuOqXPsvurZQXrSqJ4iod2QwsB2
-	mCFna3k9xGPvNGacu0yvcwODFBJsi1eVzFyvaeib9jxLdmTJjhlLpSry06FfPjXds1PV
-	gBEgaV0xZ4NXnFL1SQqpNGTNl2dEfEN6G2+F0n3ucyeD9Ze2lJkwg240gxTiREcM4Cl6
-	H/kLXcXeJlOSLiLXBSIK0RS9+AEgTMBxnmndl2rkGbHGCx0HyT+fS+BOJNhSC8/zZiQH
-	4LzdN/LxPk0aIkcsGM9D7QHzF0d+JWRVqyy6DiXzwi2nMilPgkfL0aVWwdGb6PswaxcV
-	QDHg==
-X-Received: by 10.68.170.131 with SMTP id am3mr62313249pbc.97.1401877715672;
-	Wed, 04 Jun 2014 03:28:35 -0700 (PDT)
+	bh=MaHSrr2i/dfz9BvynMBR9hlKKVnhc0/XTsDZzH8lrrY=;
+	b=iSzYARm2nArs/WikHR0k2TcgGUz2+fO5e0zZgMaKFTFlPBLey4jC1SgMiYIJr25L1Z
+	68gHrCDAJdoBGdLEaEnP55F2B6EgzCbuRkzJ5uqMjYY/D/MaROCOqUndXS/EKEhJYN2l
+	i5R/kZlpbv+ETsM/CMq2QjR6bnjRnn7yWjUWbZLDhfly4MEgMU4Ero3doU1CwA1uH8az
+	uxGam9jcZLAHezI3mk7d3W217ftfmjh1PIwhGXPoyVNMaim/doH/9llUm1WGGxTRdIQZ
+	1RzRVXyc2jbub87SYQ47ChbqpvCh//NTWS7KjCzmsiD3EMEwWDM41vid83qvE+tFwbJa
+	Xxqg==
+X-Received: by 10.68.114.195 with SMTP id ji3mr32419211pbb.46.1401877931902;
+	Wed, 04 Jun 2014 03:32:11 -0700 (PDT)
 Received: from [192.168.1.119] ([124.127.118.42])
-	by mx.google.com with ESMTPSA id no9sm8237788pbc.83.2014.06.04.03.28.31
+	by mx.google.com with ESMTPSA id pu5sm8389149pbb.4.2014.06.04.03.32.07
 	for <multiple recipients>
 	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Wed, 04 Jun 2014 03:28:35 -0700 (PDT)
-Message-ID: <538EF4CC.8010703@gmail.com>
-Date: Wed, 04 Jun 2014 18:28:28 +0800
+	Wed, 04 Jun 2014 03:32:11 -0700 (PDT)
+Message-ID: <538EF5A4.1030500@gmail.com>
+Date: Wed, 04 Jun 2014 18:32:04 +0800
 From: Chen Gang <gang.chen.5i5j@gmail.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
 MIME-Version: 1.0
 To: Markus Armbruster <armbru@redhat.com>
-References: <538C6B37.2030400@gmail.com> <8761kh2iok.fsf@blackfin.pond.sub.org>
-In-Reply-To: <8761kh2iok.fsf@blackfin.pond.sub.org>
+References: <538C6F98.5070005@gmail.com> <871tv52ihw.fsf@blackfin.pond.sub.org>
+In-Reply-To: <871tv52ihw.fsf@blackfin.pond.sub.org>
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::236
+X-Received-From: 2607:f8b0:400e:c01::230
 Cc: quintela@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>,
 	Michael Tokarev <mjt@tls.msk.ru>, dgilbert@redhat.com,
 	QEMU Developers <qemu-devel@nongnu.org>, owasserm@redhat.com,
 	arei.gonglei@huawei.com, Eric Blake <eblake@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH-trivial] arch_init.c: Free
- 'cache' in cache_fini() to avoid memory leak
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH-trivial] arch_init.c: Always
+ be sure that 'encoded_buf' and 'current_buf' are lock protected
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,34 +62,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Jun 2014 10:28:56 -0000
+X-List-Received-Date: Wed, 04 Jun 2014 10:32:31 -0000
 
 
 
-On 06/04/2014 04:16 PM, Markus Armbruster wrote:
+On 06/04/2014 04:20 PM, Markus Armbruster wrote:
 > Chen Gang <gang.chen.5i5j@gmail.com> writes:
 > 
->> Call g_free() after cache_fini() in migration_end(), but do not call
->> g_free() after call cache_fini() in xbzrle_cache_resize() which will
->> cause memory leak.
+>> 'encoded_buf' and 'current_buf' are lock protected during using in
+>> save_xbzrle_page() in ram_save_page(), and during freeing in
+>> migration_end().
 >>
->> cache_init() and cache_fini() are pair, so need let cache_fini() call
->> g_free(cache) to match cache_init(), then fix current issue too.
+>> So recommend to let them lock protected during starting, just like we
+>> have done to 'cache'.
 > 
-> I'm not sure I get you.  Is the following accurate?
-> 
->     migration: Plug memory leak in migrate-set-cache-size command
-> 
->     We call g_free() after cache_fini() in migration_end(), but we don't
->     call it after cache_fini() in xbzrle_cache_resize(), leaking the
->     memory.
-> 
->     cache_init() and cache_fini() are a pair.  Since cache_init()
->     allocates the cache, let cache_fini() free it.  This plugs the leak.
+> I'd recommend against routing locking patches through -trivial.  The
+> code has maintainers, and you cc'ed them.
 > 
 
-Yeah, and excuse me for my poor English.
-
+OK, I shall remove -trivial for locking patches, next time.
 
 Thanks.
 -- 
