@@ -1,56 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ws8lL-0005R0-Cl
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Jun 2014 06:49:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48859)
+	id 1Ws8qm-00014g-NO
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Jun 2014 06:55:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50327)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Ws8lA-0005Or-UN
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 06:49:41 -0400
+	(envelope-from <armbru@pond.sub.org>) id 1Ws8qc-0000rw-Kf
+	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 06:55:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Ws8l1-0001wH-So
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 06:49:32 -0400
-Received: from mail-pb0-x229.google.com ([2607:f8b0:400e:c01::229]:35300)
+	(envelope-from <armbru@pond.sub.org>) id 1Ws8qT-00042N-Kw
+	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 06:55:10 -0400
+Received: from oxygen.pond.sub.org ([2a01:4f8:201:233:1::3]:51222)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1Ws8l1-0001w7-H4; Wed, 04 Jun 2014 06:49:23 -0400
-Received: by mail-pb0-f41.google.com with SMTP id uo5so6869518pbc.28
-	for <multiple recipients>; Wed, 04 Jun 2014 03:49:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=5n2HdNMnP8AhpFtrLp/dqBpD0JJy1UAOiXpu4jhEc+Q=;
-	b=xKhHHuSj7OyDxRwHlPSsxkL4Fx2JCaYJ1/j/KZ1RRm2EnbyPPmMVVtx/9UhQHN+Bwq
-	9gT0xClrBp21AS65UFcRtf2eCGEjJAOT6LfV+dM7HQxHr4nNMv7mUlv+9DDIvSRzxNSZ
-	ZGJABnYFyhH30Z3eYjWR1AvvvN4Ydlb4334xonz8WjIKOXPNGZygWS9TMIzo4CiaP3TZ
-	xr4USdXt0UX+MBiprqUtiSdIMArZQ4ImzL8Zss2+F7jVHGgpk2G1YqlJIOukZOIarJAA
-	TabJgmD9p26gPxQCdvu48g0peWC3q9Y07qYaGL9FcmKulYNnJ7SAbm3ltJaWrNoaFcLd
-	zjYA==
-X-Received: by 10.68.196.168 with SMTP id in8mr62698854pbc.132.1401878961622; 
-	Wed, 04 Jun 2014 03:49:21 -0700 (PDT)
-Received: from [192.168.1.119] ([124.127.118.42])
-	by mx.google.com with ESMTPSA id ci4sm8507719pbb.50.2014.06.04.03.49.18
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Wed, 04 Jun 2014 03:49:21 -0700 (PDT)
-Message-ID: <538EF9AC.8030802@gmail.com>
-Date: Wed, 04 Jun 2014 18:49:16 +0800
-From: Chen Gang <gang.chen.5i5j@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
+	(envelope-from <armbru@pond.sub.org>)
+	id 1Ws8qB-0003zC-BK; Wed, 04 Jun 2014 06:54:43 -0400
+Received: from blackfin.pond.sub.org (p5B32B63A.dip0.t-ipconnect.de
+	[91.50.182.58])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 5F7DB245C5;
+	Wed,  4 Jun 2014 12:54:41 +0200 (CEST)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 82FE030403AF; Wed,  4 Jun 2014 12:54:40 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Chen Gang <gang.chen.5i5j@gmail.com>
+References: <538C6B37.2030400@gmail.com>
+	<8761kh2iok.fsf@blackfin.pond.sub.org> <538EF4CC.8010703@gmail.com>
+Date: Wed, 04 Jun 2014 12:54:40 +0200
+In-Reply-To: <538EF4CC.8010703@gmail.com> (Chen Gang's message of "Wed, 04 Jun
+	2014 18:28:28 +0800")
+Message-ID: <874n01vtan.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <538C6F98.5070005@gmail.com> <538D79D4.5000900@huawei.com>
-	<538DD187.5050400@gmail.com> <20140604100148.GC2618@work-vm>
-In-Reply-To: <20140604100148.GC2618@work-vm>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c01::229
-Cc: ChenLiang <chenliang88@huawei.com>, quintela@redhat.com,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	QEMU Developers <qemu-devel@nongnu.org>, arei.gonglei@huawei.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH-trivial] arch_init.c: Always
- be sure that 'encoded_buf' and 'current_buf' are lock protected
+X-Received-From: 2a01:4f8:201:233:1::3
+Cc: quintela@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	QEMU Developers <qemu-devel@nongnu.org>, dgilbert@redhat.com,
+	owasserm@redhat.com, arei.gonglei@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH-trivial] arch_init.c: Free
+	'cache' in cache_fini() to avoid memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,116 +51,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Jun 2014 10:49:42 -0000
+X-List-Received-Date: Wed, 04 Jun 2014 10:55:20 -0000
 
+Chen Gang <gang.chen.5i5j@gmail.com> writes:
 
-Firstly, thank you very much for reviewing the related 2 patches.
-
-
-On 06/04/2014 06:01 PM, Dr. David Alan Gilbert wrote:
-> * Chen Gang (gang.chen.5i5j@gmail.com) wrote:
->>
->> Firstly, thank you very much for reviewing the related 2 patches.
->>
->> On 06/03/2014 03:31 PM, ChenLiang wrote:
->>> On 2014/6/2 20:35, Chen Gang wrote:
+> On 06/04/2014 04:16 PM, Markus Armbruster wrote:
+>> Chen Gang <gang.chen.5i5j@gmail.com> writes:
+>> 
+>>> Call g_free() after cache_fini() in migration_end(), but do not call
+>>> g_free() after call cache_fini() in xbzrle_cache_resize() which will
+>>> cause memory leak.
 >>>
->>>> 'encoded_buf' and 'current_buf' are lock protected during using in
->>>> save_xbzrle_page() in ram_save_page(), and during freeing in
->>>> migration_end().
->>>>
->>>> So recommend to let them lock protected during starting, just like we
->>>> have done to 'cache'.
-> 
-> This isn't one for Trivial - it needs some thought.  Locks always need thought.
-> 
+>>> cache_init() and cache_fini() are pair, so need let cache_fini() call
+>>> g_free(cache) to match cache_init(), then fix current issue too.
+>> 
+>> I'm not sure I get you.  Is the following accurate?
+>> 
+>>     migration: Plug memory leak in migrate-set-cache-size command
+>> 
+>>     We call g_free() after cache_fini() in migration_end(), but we don't
+>>     call it after cache_fini() in xbzrle_cache_resize(), leaking the
+>>     memory.
+>> 
+>>     cache_init() and cache_fini() are a pair.  Since cache_init()
+>>     allocates the cache, let cache_fini() free it.  This plugs the leak.
+>> 
+>
+> Yeah, and excuse me for my poor English.
 
-OK, I shall notice about it next time.
+No problem, we figured it out together :)
 
-"Locks always need thought", so prefer some 'templates' to simplify
-thinking, especially for some simple locks (not nested, either not
-performance sensitive).
-
-
->>>> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
->>>> ---
->>>>  arch_init.c | 4 +++-
->>>>  1 file changed, 3 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/arch_init.c b/arch_init.c
->>>> index 23044c1..784922c 100644
->>>> --- a/arch_init.c
->>>> +++ b/arch_init.c
->>>> @@ -783,12 +783,12 @@ static int ram_save_setup(QEMUFile *f, void *opaque)
->>>>              error_report("Error creating cache");
->>>>              return -1;
->>>>          }
->>>> -        XBZRLE_cache_unlock();
->>>>
->>>>          /* We prefer not to abort if there is no memory */
->>>>          XBZRLE.encoded_buf = g_try_malloc0(TARGET_PAGE_SIZE);
->>>>          if (!XBZRLE.encoded_buf) {
->>>>              error_report("Error allocating encoded_buf");
->>>> +            XBZRLE_cache_unlock();
->>>>              return -1;
->>>>          }
->>>>
->>>> @@ -797,8 +797,10 @@ static int ram_save_setup(QEMUFile *f, void *opaque)
->>>>              error_report("Error allocating current_buf");
->>>>              g_free(XBZRLE.encoded_buf);
->>>>              XBZRLE.encoded_buf = NULL;
->>>> +            XBZRLE_cache_unlock();
->>>>              return -1;
->>>>          }
->>>> +        XBZRLE_cache_unlock();
->>>>
->>>>          acct_clear();
->>>>      }
->>>
->>>
->>> It isn't necessary.
->>>
->>
->> For me, it is still necessary to be improved.
->>
->>  - If this code is not performance sensitive:
->>
->>    "always lock protected" will let source code easy understanding for
->>    readers, and easy sustainable for maintainers.
->>
->>  - Else (performance sensitive):
->>
->>    Need give related comments to it (e.g. for performance reason, let it
->>    out of lock protected). So readers easily understand, and the related
->>    maintainers may notice about it at any time.
->>
->>      It is not good to give comments in a function, except the code is
->>      not used in normal way.
-> 
-> I think the locks for the cache were originally there to handle the race
-> between a resize (on the main thread) against the use (in the migration thread).
-> That doesn't happen for the encoded_buf so I don't think we have that problem.
-> 
-> Is there any other case that it could race?
-> I can't see one - I think all of the other start/end is done within the migration
-> thread.
-> 
-
-What you thought and what Chen Liang though are fine to me. But I guess
-it is a simple lock, if we let them always lock protected, we need not
-think them more.
-
-One simple lock 'template' can be: "always let it lock protected during
-its whole life", that will let all related readers and maintainers easy
-understanding and avoid to think of more.
-
-Our lock is not nested, although I am not quit sure whether it is
-performance sensitive (I guess not).
-
-
-Thanks.
--- 
-Chen Gang
-
-Open, share, and attitude like air, water, and life which God blessed
+Would be nice to use the above text as commit message.  Perhaps it can
+be done on commit.
 
