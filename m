@@ -1,49 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ws6VL-000519-Rb
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Jun 2014 04:25:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33224)
+	id 1Ws7cV-00075C-Py
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Jun 2014 05:36:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35320)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Ws6VE-0004xa-Ji
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 04:25:02 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1Ws7cN-00073u-Ox
+	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 05:36:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Ws6V8-00023A-F8
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 04:24:56 -0400
-Received: from mail-lb0-f171.google.com ([209.85.217.171]:41364)
+	(envelope-from <dgilbert@redhat.com>) id 1Ws7cH-0007r7-KD
+	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 05:36:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:31416)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Ws6V8-00022K-86
-	for qemu-trivial@nongnu.org; Wed, 04 Jun 2014 04:24:50 -0400
-Received: by mail-lb0-f171.google.com with SMTP id 10so4097883lbg.16
-	for <qemu-trivial@nongnu.org>; Wed, 04 Jun 2014 01:24:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=uFiOlZFtrulv1goc2vdpkMZA2yWj2zZzpTrVHLovs7A=;
-	b=VsK+nA6/2oQov3XPHyLQ2WIt3sXohQqkQrBoJKpGLSbCGZ0IJ+swMLl/if3YHEYtSg
-	AirkUxeVec8Fq6Xq1UOlE7Sq8Eeuj80/CAW/ffnr3NQ6LILL9TkRCHA6RdUTp9f/pWEP
-	kaVcqvZp85SCfyIMZD20dt6ZV4gVFsVvP6l1mLjlvnkkQgaOdS1qT24fahxsWLFUZ3GG
-	ni+aB2ynnmK0li0/Vo0y/s93VFdZ3LrowMl3eX6Li5s4pjFv4TsQhohMBztKzvkGmkhG
-	SZJwNvr/Ec9qAxweoJFeKSTUIq61XdDOAmkHkHE6KuKL+Y/xY25p54/NzOtt0KXnVgf9
-	P7qQ==
-X-Gm-Message-State: ALoCoQlJTQUZG7JVMuUI1yTiI/kP3Yxt/0+Olmhu7ElEE81+W38YPOfhXRlbbfbFvDt+5+0TN2hS
-X-Received: by 10.112.72.41 with SMTP id a9mr925223lbv.71.1401870289052; Wed,
-	04 Jun 2014 01:24:49 -0700 (PDT)
+	(envelope-from <dgilbert@redhat.com>)
+	id 1Ws7cH-0007q7-AN; Wed, 04 Jun 2014 05:36:17 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s549ZfYx015621
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Wed, 4 Jun 2014 05:35:41 -0400
+Received: from work-vm (vpn1-7-57.ams2.redhat.com [10.36.7.57])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s549ZaOK015683
+	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
+	Wed, 4 Jun 2014 05:35:39 -0400
+Date: Wed, 4 Jun 2014 10:35:36 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Chen Gang <gang.chen.5i5j@gmail.com>
+Message-ID: <20140604093535.GB2618@work-vm>
+References: <538C6B37.2030400@gmail.com>
 MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Wed, 4 Jun 2014 01:24:28 -0700 (PDT)
-In-Reply-To: <1513018f45cbc2dfff157d5df1dc86246cf08843.1401845262.git.sam.bobroff@au1.ibm.com>
-References: <1513018f45cbc2dfff157d5df1dc86246cf08843.1401845262.git.sam.bobroff@au1.ibm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 4 Jun 2014 09:24:28 +0100
-Message-ID: <CAFEAcA_YRCkMRVCU6kCh5aMAU5GE83Cf2bAgYtC4VS0eZWw6WA@mail.gmail.com>
-To: Sam Bobroff <sam.bobroff@au1.ibm.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.171
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] Makefile: Correct path
-	in stripping tool binaries
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <538C6B37.2030400@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: quintela@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	QEMU Developers <qemu-devel@nongnu.org>, arei.gonglei@huawei.com,
+	Eric Blake <eblake@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH-trivial] arch_init.c: Free
+ 'cache' in cache_fini() to avoid memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,40 +52,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Jun 2014 08:25:02 -0000
+X-List-Received-Date: Wed, 04 Jun 2014 09:36:30 -0000
 
-On 4 June 2014 02:37, Sam Bobroff <sam.bobroff@au1.ibm.com> wrote:
-> Allow "make install" to handle tool binaries that reside in
-> sub-directories.
->
-> Without this patch "make install" will fail if it needs to strip
-> a tool binary (e.g. debugging is not enabled) that is installed
-> from a subdirectory. An example is fsdev/virtfs-proxy-helper.
->
-> Signed-off-by: Sam Bobroff <sam.bobroff@au1.ibm.com>
+* Chen Gang (gang.chen.5i5j@gmail.com) wrote:
+> Call g_free() after cache_fini() in migration_end(), but do not call
+> g_free() after call cache_fini() in xbzrle_cache_resize() which will
+> cause memory leak.
+> 
+> cache_init() and cache_fini() are pair, so need let cache_fini() call
+> g_free(cache) to match cache_init(), then fix current issue too.
+> 
+> 
+> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+
+Yes, good catch.
+
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+
 > ---
->  Makefile |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/Makefile b/Makefile
-> index d830483..9c23265 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -380,7 +380,7 @@ install-datadir install-localstatedir
->  ifneq ($(TOOLS),)
->         $(INSTALL_PROG) $(TOOLS) "$(DESTDIR)$(bindir)"
->  ifneq ($(STRIP),)
-> -       $(STRIP) $(TOOLS:%="$(DESTDIR)$(bindir)/%")
-> +       $(STRIP) $(foreach T,$(TOOLS),"$(DESTDIR)$(bindir)/$(notdir $T)")
->  endif
->  endif
->  ifneq ($(CONFIG_MODULES),)
-> --
-> 1.7.10.4
-
-We should probably also do this on the other invocation of $(STRIP}
-for installs into libexecdir.
-
-thanks
--- PMM
+>  arch_init.c  | 1 -
+>  page_cache.c | 1 +
+>  2 files changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch_init.c b/arch_init.c
+> index 9f1a174..23044c1 100644
+> --- a/arch_init.c
+> +++ b/arch_init.c
+> @@ -739,7 +739,6 @@ static void migration_end(void)
+>      XBZRLE_cache_lock();
+>      if (XBZRLE.cache) {
+>          cache_fini(XBZRLE.cache);
+> -        g_free(XBZRLE.cache);
+>          g_free(XBZRLE.encoded_buf);
+>          g_free(XBZRLE.current_buf);
+>          XBZRLE.cache = NULL;
+> diff --git a/page_cache.c b/page_cache.c
+> index b033681..89bb1ec 100644
+> --- a/page_cache.c
+> +++ b/page_cache.c
+> @@ -109,6 +109,7 @@ void cache_fini(PageCache *cache)
+>  
+>      g_free(cache->page_cache);
+>      cache->page_cache = NULL;
+> +    g_free(cache);
+>  }
+>  
+>  static size_t cache_get_cache_pos(const PageCache *cache,
+> -- 
+> 1.7.11.7
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
