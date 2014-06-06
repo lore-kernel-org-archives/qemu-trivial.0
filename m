@@ -1,56 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WsxoW-0005xp-9q
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Jun 2014 13:20:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40129)
+	id 1Wszqx-0000PN-3y
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Jun 2014 15:31:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49241)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1WsxoM-0005lQ-8Y
-	for qemu-trivial@nongnu.org; Fri, 06 Jun 2014 13:20:23 -0400
+	(envelope-from <armbru@redhat.com>) id 1Wszqp-0000De-8N
+	for qemu-trivial@nongnu.org; Fri, 06 Jun 2014 15:31:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1WsxoD-0004Yd-7U
-	for qemu-trivial@nongnu.org; Fri, 06 Jun 2014 13:20:14 -0400
-Received: from mail-wi0-x236.google.com ([2a00:1450:400c:c05::236]:55607)
+	(envelope-from <armbru@redhat.com>) id 1Wszqj-0005jg-4m
+	for qemu-trivial@nongnu.org; Fri, 06 Jun 2014 15:30:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:1777)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1WsxoC-0004Vl-UQ; Fri, 06 Jun 2014 13:20:05 -0400
-Received: by mail-wi0-f182.google.com with SMTP id r20so1389364wiv.15
-	for <multiple recipients>; Fri, 06 Jun 2014 10:20:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=6QYk98ytY4TTaB4RYT74X1n+rylgcFuOgl2BIU+y+Aw=;
-	b=WLrLFaaU/jo/yBwka9mVx872T9i3oRZDKlakYPHJAKmvuImHGSaZyoCTRRQStDjnlo
-	JdjJpE+i+hegZYbJL6VdjGaYuKi2DRKhmHeDtiKv5mmAHszR/LVt0y5Y98AAnz4/OIq2
-	IisAh3a5uydNodyWcPZBWiH2zs9pR4TGYJVvXCDqNAHe+XsRZkxyWOXwjUDmFl/qRtKt
-	RFC3z4roAoWwFgTcdQa7XLSdzDTxpiUC8Nn/9Pm6Xi8DyQ1jsE1KUPQA+UwLDOaUtSbV
-	Ki4+MTp2Q9D2fJCdx+BFmctz3hslgQJr+YbTBX3M8chv7E2hhXyHOr28w+xZAivsuXtv
-	jF4Q==
-X-Received: by 10.14.246.68 with SMTP id p44mr1691079eer.8.1402075204017;
-	Fri, 06 Jun 2014 10:20:04 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (net-37-117-132-7.cust.vodafonedsl.it.
-	[37.117.132.7]) by mx.google.com with ESMTPSA id
-	q49sm24109517eeo.23.2014.06.06.10.20.02 for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Fri, 06 Jun 2014 10:20:03 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <5391F841.40804@redhat.com>
-Date: Fri, 06 Jun 2014 19:20:01 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
-MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1402072328-6871-1-git-send-email-armbru@redhat.com>	<5391EEDA.7030207@redhat.com>
-	<87fvjidlex.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87fvjidlex.fsf@blackfin.pond.sub.org>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::236
-Cc: qemu-trivial@nongnu.org, alevy@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] libcacard: Drop superfluous conditionals
-	around g_free()
+	(envelope-from <armbru@redhat.com>)
+	id 1WszqW-0005fM-4k; Fri, 06 Jun 2014 15:30:36 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s56JUZIX030765
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Fri, 6 Jun 2014 15:30:35 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
+	[10.36.116.28])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s56JUXPm014829
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 6 Jun 2014 15:30:35 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id B5A2330403AF; Fri,  6 Jun 2014 21:30:32 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri,  6 Jun 2014 21:30:32 +0200
+Message-Id: <1402083032-13852-1-git-send-email-armbru@redhat.com>
+In-Reply-To: <1402072328-6871-1-git-send-email-armbru@redhat.com>
+References: <1402072328-6871-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, alevy@redhat.com
+Subject: [Qemu-trivial] [PATCH 2/1] libcacard: Clean up dead stores before
+	g_free()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,124 +48,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Jun 2014 17:20:23 -0000
+X-List-Received-Date: Fri, 06 Jun 2014 19:31:01 -0000
 
-Il 06/06/2014 18:59, Markus Armbruster ha scritto:
-> Paolo Bonzini <pbonzini@redhat.com> writes:
->
->> Il 06/06/2014 18:32, Markus Armbruster ha scritto:
->>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->>> ---
->>>  libcacard/cac.c            | 14 ++++----------
->>>  libcacard/card_7816.c      | 12 +++---------
->>>  libcacard/vcard.c          | 10 +++-------
->>>  libcacard/vcard_emul_nss.c |  4 +---
->>>  libcacard/vreader.c        |  4 +---
->>>  5 files changed, 12 insertions(+), 32 deletions(-)
->>>
->>> diff --git a/libcacard/cac.c b/libcacard/cac.c
->>> index 0a0163d..ae8c378 100644
->>> --- a/libcacard/cac.c
->>> +++ b/libcacard/cac.c
->>> @@ -100,10 +100,8 @@ cac_applet_pki_reset(VCard *card, int channel)
->>>      pki_applet = &(applet_private->u.pki_data);
->>>
->>>      pki_applet->cert_buffer = NULL;
->>> -    if (pki_applet->sign_buffer) {
->>> -        g_free(pki_applet->sign_buffer);
->>> -        pki_applet->sign_buffer = NULL;
->>> -    }
->>> +    g_free(pki_applet->sign_buffer);
->>> +    pki_applet->sign_buffer = NULL;
->>>      pki_applet->cert_buffer_len = 0;
->>>      pki_applet->sign_buffer_len = 0;
->>>      return VCARD_DONE;
->>> @@ -285,12 +283,8 @@ cac_delete_pki_applet_private(VCardAppletPrivate *applet_private)
->>>          return;
->>>      }
->>>      pki_applet_data = &(applet_private->u.pki_data);
->>> -    if (pki_applet_data->cert != NULL) {
->>> -        g_free(pki_applet_data->cert);
->>> -    }
->>> -    if (pki_applet_data->sign_buffer != NULL) {
->>> -        g_free(pki_applet_data->sign_buffer);
->>> -    }
->>> +    g_free(pki_applet_data->cert);
->>> +    g_free(pki_applet_data->sign_buffer);
->>>      if (pki_applet_data->key != NULL) {
->>>          vcard_emul_delete_key(pki_applet_data->key);
->>>      }
->>> diff --git a/libcacard/card_7816.c b/libcacard/card_7816.c
->>> index a54f880..814fa16 100644
->>> --- a/libcacard/card_7816.c
->>> +++ b/libcacard/card_7816.c
->>> @@ -172,16 +172,12 @@ vcard_response_delete(VCardResponse *response)
->>>      switch (response->b_type) {
->>>      case VCARD_MALLOC:
->>>          /* everything was malloc'ed */
->>> -        if (response->b_data) {
->>> -            g_free(response->b_data);
->>> -        }
->>> +        g_free(response->b_data);
->>>          g_free(response);
->>>          break;
->>>      case VCARD_MALLOC_DATA:
->>>          /* only the data buffer was malloc'ed */
->>> -        if (response->b_data) {
->>> -            g_free(response->b_data);
->>> -        }
->>> +        g_free(response->b_data);
->>>          break;
->>>      case VCARD_MALLOC_STRUCT:
->>>          /* only the structure was malloc'ed */
->>> @@ -358,9 +354,7 @@ vcard_apdu_delete(VCardAPDU *apdu)
->>>      if (apdu == NULL) {
->>>          return;
->>>      }
->>> -    if (apdu->a_data) {
->>> -        g_free(apdu->a_data);
->>> -    }
->>> +    g_free(apdu->a_data);
->>>      g_free(apdu);
->>>  }
->>>
->>> diff --git a/libcacard/vcard.c b/libcacard/vcard.c
->>> index 6aaf085..bf342aa 100644
->>> --- a/libcacard/vcard.c
->>> +++ b/libcacard/vcard.c
->>> @@ -51,9 +51,7 @@ vcard_buffer_response_delete(VCardBufferResponse *buffer_response)
->>>      if (buffer_response == NULL) {
->>>          return;
->>>      }
->>> -    if (buffer_response->buffer) {
->>> -        g_free(buffer_response->buffer);
->>> -    }
->>> +    g_free(buffer_response->buffer);
->>>      g_free(buffer_response);
->>>  }
->>>
->>> @@ -121,10 +119,8 @@ vcard_delete_applet(VCardApplet *applet)
->>>          applet->applet_private_free(applet->applet_private);
->>>          applet->applet_private = NULL;
->>
->> Dead store here...
->>
->>>      }
->>> -    if (applet->aid) {
->>> -        g_free(applet->aid);
->>> -        applet->aid = NULL;
->>> -    }
->>> +    g_free(applet->aid);
->>> +    applet->aid = NULL;
->>
->> ... and here (didn't check if there are more out of context).
->>
->> As usual, no good deed goes unpunished!
->
-> Preexisting.  I can try to clean them up in a follow-up patch.  Okay?
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ libcacard/vcard.c   | 4 ----
+ libcacard/vreader.c | 2 --
+ 2 files changed, 6 deletions(-)
 
-Sure.
-
-Paolo
+diff --git a/libcacard/vcard.c b/libcacard/vcard.c
+index bf342aa..87ad516 100644
+--- a/libcacard/vcard.c
++++ b/libcacard/vcard.c
+@@ -117,10 +117,8 @@ vcard_delete_applet(VCardApplet *applet)
+     }
+     if (applet->applet_private_free) {
+         applet->applet_private_free(applet->applet_private);
+-        applet->applet_private = NULL;
+     }
+     g_free(applet->aid);
+-    applet->aid = NULL;
+     g_free(applet);
+ }
+ 
+@@ -174,8 +172,6 @@ vcard_free(VCard *vcard)
+     }
+     if (vcard->vcard_private_free) {
+         (*vcard->vcard_private_free)(vcard->vcard_private);
+-        vcard->vcard_private_free = 0;
+-        vcard->vcard_private = 0;
+     }
+     for (current_applet = vcard->applet_list; current_applet;
+                                         current_applet = next_applet) {
+diff --git a/libcacard/vreader.c b/libcacard/vreader.c
+index ffa05b6..9f42f0f 100644
+--- a/libcacard/vreader.c
++++ b/libcacard/vreader.c
+@@ -343,8 +343,6 @@ vreader_list_delete(VReaderList *list)
+         next_entry = vreader_list_get_next(current_entry);
+         vreader_list_entry_delete(current_entry);
+     }
+-    list->head = NULL;
+-    list->tail = NULL;
+     g_free(list);
+ }
+ 
+-- 
+1.9.3
 
 
