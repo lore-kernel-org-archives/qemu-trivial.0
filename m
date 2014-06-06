@@ -1,42 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wszqx-0000PN-3y
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Jun 2014 15:31:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49241)
+	id 1Wt1lZ-00021A-0N
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Jun 2014 17:33:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55159)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Wszqp-0000De-8N
-	for qemu-trivial@nongnu.org; Fri, 06 Jun 2014 15:31:01 -0400
+	(envelope-from <eblake@redhat.com>) id 1Wt1lS-0001tk-G1
+	for qemu-trivial@nongnu.org; Fri, 06 Jun 2014 17:33:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Wszqj-0005jg-4m
-	for qemu-trivial@nongnu.org; Fri, 06 Jun 2014 15:30:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:1777)
+	(envelope-from <eblake@redhat.com>) id 1Wt1lN-0000uH-Am
+	for qemu-trivial@nongnu.org; Fri, 06 Jun 2014 17:33:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60709)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1WszqW-0005fM-4k; Fri, 06 Jun 2014 15:30:36 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s56JUZIX030765
+	(envelope-from <eblake@redhat.com>)
+	id 1Wt1lD-0000qP-83; Fri, 06 Jun 2014 17:33:15 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s56LXC1V012028
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Fri, 6 Jun 2014 15:30:35 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
-	[10.36.116.28])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s56JUXPm014829
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 6 Jun 2014 15:30:35 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id B5A2330403AF; Fri,  6 Jun 2014 21:30:32 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri,  6 Jun 2014 21:30:32 +0200
-Message-Id: <1402083032-13852-1-git-send-email-armbru@redhat.com>
-In-Reply-To: <1402072328-6871-1-git-send-email-armbru@redhat.com>
+	verify=OK); Fri, 6 Jun 2014 17:33:13 -0400
+Received: from [10.3.113.102] (ovpn-113-102.phx2.redhat.com [10.3.113.102])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s56LXCvj006968; Fri, 6 Jun 2014 17:33:12 -0400
+Message-ID: <53923397.8030505@redhat.com>
+Date: Fri, 06 Jun 2014 15:33:11 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
+MIME-Version: 1.0
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 References: <1402072328-6871-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	<1402083032-13852-1-git-send-email-armbru@redhat.com>
+In-Reply-To: <1402083032-13852-1-git-send-email-armbru@redhat.com>
+X-Enigmail-Version: 1.6
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="FHFwafb7QQ15Li88wNKUUGwFoWX51Dsp5"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, alevy@redhat.com
-Subject: [Qemu-trivial] [PATCH 2/1] libcacard: Clean up dead stores before
-	g_free()
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/1] libcacard: Clean up
+ dead stores before g_free()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,52 +53,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Jun 2014 19:31:01 -0000
+X-List-Received-Date: Fri, 06 Jun 2014 21:33:35 -0000
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- libcacard/vcard.c   | 4 ----
- libcacard/vreader.c | 2 --
- 2 files changed, 6 deletions(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--FHFwafb7QQ15Li88wNKUUGwFoWX51Dsp5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/libcacard/vcard.c b/libcacard/vcard.c
-index bf342aa..87ad516 100644
---- a/libcacard/vcard.c
-+++ b/libcacard/vcard.c
-@@ -117,10 +117,8 @@ vcard_delete_applet(VCardApplet *applet)
-     }
-     if (applet->applet_private_free) {
-         applet->applet_private_free(applet->applet_private);
--        applet->applet_private = NULL;
-     }
-     g_free(applet->aid);
--    applet->aid = NULL;
-     g_free(applet);
- }
- 
-@@ -174,8 +172,6 @@ vcard_free(VCard *vcard)
-     }
-     if (vcard->vcard_private_free) {
-         (*vcard->vcard_private_free)(vcard->vcard_private);
--        vcard->vcard_private_free = 0;
--        vcard->vcard_private = 0;
-     }
-     for (current_applet = vcard->applet_list; current_applet;
-                                         current_applet = next_applet) {
-diff --git a/libcacard/vreader.c b/libcacard/vreader.c
-index ffa05b6..9f42f0f 100644
---- a/libcacard/vreader.c
-+++ b/libcacard/vreader.c
-@@ -343,8 +343,6 @@ vreader_list_delete(VReaderList *list)
-         next_entry = vreader_list_get_next(current_entry);
-         vreader_list_entry_delete(current_entry);
-     }
--    list->head = NULL;
--    list->tail = NULL;
-     g_free(list);
- }
- 
--- 
-1.9.3
+On 06/06/2014 01:30 PM, Markus Armbruster wrote:
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  libcacard/vcard.c   | 4 ----
+>  libcacard/vreader.c | 2 --
+>  2 files changed, 6 deletions(-)
 
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--FHFwafb7QQ15Li88wNKUUGwFoWX51Dsp5
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJTkjOXAAoJEKeha0olJ0NqGR4H/25MhsQMhd/UsrCiRZ42y4cl
+EivLgYbw6amkQYrX7hV8miBRCA02o5fXG55N6BE69sc5F+3BMZG3WHYoB5WfFjkt
+7QH/eaAFzn+zjL+mn8mXtYl6aDxbZ3iIF93ROWrW+sCLPe2GBuj7UkiOeR3SilIQ
+h0SIFCp/MXeBvpGglCJnWCLsJ8ltD1n1vOKpMJt+mmSA4Qaumr8FEyVnJWO4UvA1
+lfha0qUUCfWm1Itpj2aLM/0OMBUJp+tXnqKsE5D7vaIErgfdFyrOIw6ZwSQAphsQ
+mpJFVNpDXYZLkcyNuPA60nQqbo6VKd27qEkDxMcauZUpG60xTqNI92X4Z9CNLDo=
+=Z3/s
+-----END PGP SIGNATURE-----
+
+--FHFwafb7QQ15Li88wNKUUGwFoWX51Dsp5--
 
