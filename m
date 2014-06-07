@@ -1,30 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WtJro-0004JG-SZ
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Jun 2014 12:53:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58936)
+	id 1WtK3A-0007pQ-HH
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Jun 2014 13:05:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60560)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WtJrm-0004Fa-PT
-	for qemu-trivial@nongnu.org; Sat, 07 Jun 2014 12:53:15 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WtK38-0007mR-LW
+	for qemu-trivial@nongnu.org; Sat, 07 Jun 2014 13:04:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WtJrm-000271-0F
-	for qemu-trivial@nongnu.org; Sat, 07 Jun 2014 12:53:14 -0400
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48535)
+	(envelope-from <pm215@archaic.org.uk>) id 1WtK37-0005mK-Rh
+	for qemu-trivial@nongnu.org; Sat, 07 Jun 2014 13:04:58 -0400
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48544)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WtJrk-00026i-8U; Sat, 07 Jun 2014 12:53:12 -0400
+	id 1WtK35-0005lq-SH; Sat, 07 Jun 2014 13:04:56 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WtJrj-0003cy-6o; Sat, 07 Jun 2014 17:53:11 +0100
+	id 1WtK35-0003fF-DS; Sat, 07 Jun 2014 18:04:55 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sat,  7 Jun 2014 17:53:11 +0100
-Message-Id: <1402159991-13919-1-git-send-email-peter.maydell@linaro.org>
+Date: Sat,  7 Jun 2014 18:04:55 +0100
+Message-Id: <1402160695-14060-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2001:8b0:1d0::1
 Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] hw/net/ne2000-isa: Register vmstate struct
+Subject: [Qemu-trivial] [PATCH] target-i386/translate.c: Remove unused
+	tcg_gen_lshift()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,32 +37,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Jun 2014 16:53:15 -0000
+X-List-Received-Date: Sat, 07 Jun 2014 17:04:59 -0000
 
-The ne2000-isa device defines a VMState struct for migration, but
-we forgot to actually register it. Correct this deficiency by
-setting dc->vmsd.
+The function tcg_gen_lshift() is unused; remove it.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-I think this is the last of the "oops, we didn't actually register
-the vmstate" bugs that clang 3.4 warns about.
+ target-i386/translate.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
- hw/net/ne2000-isa.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/hw/net/ne2000-isa.c b/hw/net/ne2000-isa.c
-index c660e58..0a14f6d 100644
---- a/hw/net/ne2000-isa.c
-+++ b/hw/net/ne2000-isa.c
-@@ -98,6 +98,7 @@ static void isa_ne2000_class_initfn(ObjectClass *klass, void *data)
- 
-     dc->realize = isa_ne2000_realizefn;
-     dc->props = ne2000_isa_properties;
-+    dc->vmsd = &vmstate_isa_ne2000;
-     set_bit(DEVICE_CATEGORY_NETWORK, dc->categories);
+diff --git a/target-i386/translate.c b/target-i386/translate.c
+index 3aa52eb..c02f7fd 100644
+--- a/target-i386/translate.c
++++ b/target-i386/translate.c
+@@ -1505,14 +1505,6 @@ static void gen_shift_rm_im(DisasContext *s, TCGMemOp ot, int op1, int op2,
+     }
  }
  
+-static inline void tcg_gen_lshift(TCGv ret, TCGv arg1, target_long arg2)
+-{
+-    if (arg2 >= 0)
+-        tcg_gen_shli_tl(ret, arg1, arg2);
+-    else
+-        tcg_gen_shri_tl(ret, arg1, -arg2);
+-}
+-
+ static void gen_rot_rm_T1(DisasContext *s, TCGMemOp ot, int op1, int is_right)
+ {
+     target_ulong mask = (ot == MO_64 ? 0x3f : 0x1f);
 -- 
 1.8.5.4
 
