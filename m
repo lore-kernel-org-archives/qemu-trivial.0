@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WtJpt-0002MP-Lt
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Jun 2014 12:51:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58283)
+	id 1WtJqj-0003K5-Cu
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Jun 2014 12:52:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58618)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WtJpr-0002Jb-Sm
-	for qemu-trivial@nongnu.org; Sat, 07 Jun 2014 12:51:16 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WtJqi-0003JW-0z
+	for qemu-trivial@nongnu.org; Sat, 07 Jun 2014 12:52:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WtJpr-0001Om-4o
-	for qemu-trivial@nongnu.org; Sat, 07 Jun 2014 12:51:15 -0400
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48531)
+	(envelope-from <pm215@archaic.org.uk>) id 1WtJqh-0001uf-4P
+	for qemu-trivial@nongnu.org; Sat, 07 Jun 2014 12:52:07 -0400
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48533)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WtJpo-0001O4-Gx; Sat, 07 Jun 2014 12:51:12 -0400
+	id 1WtJqe-0001ty-OX; Sat, 07 Jun 2014 12:52:04 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WtJpn-0003bC-Uz; Sat, 07 Jun 2014 17:51:11 +0100
+	id 1WtJqe-0003bu-5g; Sat, 07 Jun 2014 17:52:04 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sat,  7 Jun 2014 17:51:11 +0100
-Message-Id: <1402159871-13809-1-git-send-email-peter.maydell@linaro.org>
+Date: Sat,  7 Jun 2014 17:52:04 +0100
+Message-Id: <1402159924-13853-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2001:8b0:1d0::1
 Cc: qemu-trivial@nongnu.org, patches@linaro.org
-Subject: [Qemu-trivial] [PATCH] hw/isa/pc87312: Remove unused function
-	is_parallel_epp()
+Subject: [Qemu-trivial] [PATCH] hw/net/eepro100: Implement read-only bits in
+	MDI registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,31 +37,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Jun 2014 16:51:16 -0000
+X-List-Received-Date: Sat, 07 Jun 2014 16:52:09 -0000
 
-The function is_parallel_epp() is unused; remove it.
+Although we defined an eepro100_mdi_mask[] array indicating which bits
+in the registers are read-only, we weren't actually doing anything with
+it. Make the MDI register-read code use it rather than manually making
+registers 2 and 3 totally read-only and the rest totally read-write.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/isa/pc87312.c | 5 -----
- 1 file changed, 5 deletions(-)
+This seemed a better fix for the unused variable than just deleting it...
 
-diff --git a/hw/isa/pc87312.c b/hw/isa/pc87312.c
-index b352b49..9327c53 100644
---- a/hw/isa/pc87312.c
-+++ b/hw/isa/pc87312.c
-@@ -86,11 +86,6 @@ static inline uint32_t get_parallel_irq(PC87312State *s)
-     }
- }
- 
--static inline bool is_parallel_epp(PC87312State *s)
--{
--    return s->regs[REG_PTR] & PTR_EPP_MODE;
--}
--
- 
- /* UARTs */
- 
+ hw/net/eepro100.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index 3b891ca..9c70cce 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -1217,7 +1217,6 @@ static void eepro100_write_mdi(EEPRO100State *s)
+                 break;
+             case 1:            /* Status Register */
+                 missing("not writable");
+-                data = s->mdimem[reg];
+                 break;
+             case 2:            /* PHY Identification Register (Word 1) */
+             case 3:            /* PHY Identification Register (Word 2) */
+@@ -1230,7 +1229,8 @@ static void eepro100_write_mdi(EEPRO100State *s)
+             default:
+                 missing("not implemented");
+             }
+-            s->mdimem[reg] = data;
++            s->mdimem[reg] &= eepro100_mdi_mask[reg];
++            s->mdimem[reg] |= data & ~eepro100_mdi_mask[reg];
+         } else if (opcode == 2) {
+             /* MDI read */
+             switch (reg) {
 -- 
 1.8.5.4
 
