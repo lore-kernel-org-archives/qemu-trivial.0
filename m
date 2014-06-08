@@ -1,41 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WteYS-0005p6-1y
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Jun 2014 10:58:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54235)
+	id 1WthHt-0000lj-LJ
+	for mharc-qemu-trivial@gnu.org; Sun, 08 Jun 2014 13:53:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56129)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1WteYL-0005hW-5m
-	for qemu-trivial@nongnu.org; Sun, 08 Jun 2014 10:58:39 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WthHl-0000b6-2J
+	for qemu-trivial@nongnu.org; Sun, 08 Jun 2014 13:53:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1WteYF-0002w0-1g
-	for qemu-trivial@nongnu.org; Sun, 08 Jun 2014 10:58:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:23479)
+	(envelope-from <mjt@tls.msk.ru>) id 1WthHe-0005Ws-Ja
+	for qemu-trivial@nongnu.org; Sun, 08 Jun 2014 13:53:37 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42884)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1WteY2-0002tq-6n; Sun, 08 Jun 2014 10:58:14 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s58Ew0c6025594
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Sun, 8 Jun 2014 10:58:00 -0400
-Received: from redhat.com (ovpn-116-38.ams2.redhat.com [10.36.116.38])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id s58Evul9002632; Sun, 8 Jun 2014 10:57:57 -0400
-Date: Sun, 8 Jun 2014 17:58:26 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: serge.fdrv@gmail.com
-Message-ID: <20140608145826.GB5704@redhat.com>
-References: <1401178560-3852-1-git-send-email-serge.fdrv@gmail.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WthHS-0005Qi-2j; Sun, 08 Jun 2014 13:53:18 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id D110640E06;
+	Sun,  8 Jun 2014 21:53:13 +0400 (MSK)
+Message-ID: <5394A309.2010808@msgid.tls.msk.ru>
+Date: Sun, 08 Jun 2014 21:53:13 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1401178560-3852-1-git-send-email-serge.fdrv@gmail.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+To: Chen Gang <gang.chen.5i5j@gmail.com>, quintela@redhat.com, 
+	arei.gonglei@huawei.com, Eric Blake <eblake@redhat.com>, 
+	dgilbert@redhat.com, owasserm@redhat.com
+References: <538C6B37.2030400@gmail.com>
+In-Reply-To: <538C6B37.2030400@gmail.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Alex Bligh <alex@alex.org.uk>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH] qtest: fix hex2nib for capital characters
+X-Received-From: 86.62.121.231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH-trivial] arch_init.c: Free 'cache' in
+ cache_fini() to avoid memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,33 +48,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 Jun 2014 14:58:39 -0000
+X-List-Received-Date: Sun, 08 Jun 2014 17:53:43 -0000
 
-On Tue, May 27, 2014 at 12:16:00PM +0400, serge.fdrv@gmail.com wrote:
-> From: Sergey Fedorov <serge.fdrv@gmail.com>
+02.06.2014 16:16, Chen Gang wrote:
+> Call g_free() after cache_fini() in migration_end(), but do not call
+> g_free() after call cache_fini() in xbzrle_cache_resize() which will
+> cause memory leak.
 > 
-> Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
+> cache_init() and cache_fini() are pair, so need let cache_fini() call
+> g_free(cache) to match cache_init(), then fix current issue too.
 
+Applied to -trivial, with the following commit message:
 
-Applied, thanks!
+migration: Plug memory leak in migrate-set-cache-size command
 
-> ---
->  qtest.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/qtest.c b/qtest.c
-> index 2aba20d..87ccd62 100644
-> --- a/qtest.c
-> +++ b/qtest.c
-> @@ -148,7 +148,7 @@ static int hex2nib(char ch)
->      } else if (ch >= 'a' && ch <= 'f') {
->          return 10 + (ch - 'a');
->      } else if (ch >= 'A' && ch <= 'F') {
-> -        return 10 + (ch - 'a');
-> +        return 10 + (ch - 'A');
->      } else {
->          return -1;
->      }
-> -- 
-> 1.9.1
+We call g_free() after cache_fini() in migration_end(), but we don't
+call it after cache_fini() in xbzrle_cache_resize(), leaking the
+memory.
+
+cache_init() and cache_fini() are a pair.  Since cache_init()
+allocates the cache, let cache_fini() free it.  This plugs the leak.
+
+Thanks,
+
+/mjt
 
