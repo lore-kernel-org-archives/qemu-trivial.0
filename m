@@ -1,59 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wtirf-0005Cx-Mn
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Jun 2014 15:34:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53438)
+	id 1Wu0qo-0001rB-DM
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Jun 2014 10:47:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52325)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1WtirT-0004v5-G3
-	for qemu-trivial@nongnu.org; Sun, 08 Jun 2014 15:34:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Wu0qi-0001mQ-As
+	for qemu-trivial@nongnu.org; Mon, 09 Jun 2014 10:47:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1WtirK-0005jT-6m
-	for qemu-trivial@nongnu.org; Sun, 08 Jun 2014 15:34:35 -0400
-Received: from mail-qg0-x231.google.com ([2607:f8b0:400d:c04::231]:40143)
+	(envelope-from <peter.maydell@linaro.org>) id 1Wu0qa-0001lw-Fk
+	for qemu-trivial@nongnu.org; Mon, 09 Jun 2014 10:47:00 -0400
+Received: from mail-lb0-f180.google.com ([209.85.217.180]:64466)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1Wtir1-0005cU-Qe; Sun, 08 Jun 2014 15:34:07 -0400
-Received: by mail-qg0-f49.google.com with SMTP id a108so7841530qge.22
-	for <multiple recipients>; Sun, 08 Jun 2014 12:34:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=kiTAqcPhdvhO3nyn6gAs+JIaTgCTboB5hEaeisAuQzE=;
-	b=vT0ghlk3d1FnnT9flM9JtmoYwfcOupsD+qkTP6nmA6pu2ewkcd4wQMWFWGEg11MRev
-	s4ItYc89Ixj5r0H8ctJ3sE5r6+l4lcbrgKIzGOeLiFOTDE20vaD0V4DJImrgyF+h4jj2
-	9LulzTXJ3Ykcq+nNOvZqy2grypkFm6smtWPaxPtzPCoQxwgsEYorrROkp/0s5VVaj2/2
-	HmPWoCDO/6n+MzCmWyF0tTj38VGxR7VwsX6fiZoWq2rhsxeL1D4cQmC0cu9cRV0152K7
-	wE/N5bKUNDh2ZSEusuTHbNbrM6RU3pwhlcTqDwqJUhOflRO0rqsS2+a7tA6zW9QLJmN1
-	aH/A==
-X-Received: by 10.229.27.198 with SMTP id j6mr27263379qcc.12.1402256046346;
-	Sun, 08 Jun 2014 12:34:06 -0700 (PDT)
-Received: from pike.twiddle.home
-	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
-	by mx.google.com with ESMTPSA id b7sm26660758qae.32.2014.06.08.12.34.03
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 08 Jun 2014 12:34:04 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Message-ID: <5394BAA9.30609@twiddle.net>
-Date: Sun, 08 Jun 2014 12:34:01 -0700
-From: Richard Henderson <rth@twiddle.net>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.5.0
+	(envelope-from <peter.maydell@linaro.org>) id 1Wu0qa-0001ld-82
+	for qemu-trivial@nongnu.org; Mon, 09 Jun 2014 10:46:52 -0400
+Received: by mail-lb0-f180.google.com with SMTP id p9so3136434lbv.11
+	for <qemu-trivial@nongnu.org>; Mon, 09 Jun 2014 07:46:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=BngKVABuBFRyuOBnu5Vu9/L2h1bx7AnxS1QEfxU4Dqk=;
+	b=EinWJrYI53Z+rtnkGMOVwF7nq6XeR5gTmEnXsuqbEM93zOt87LvVkPCgwz3HzHhN0r
+	iLWU8MUqWXejcyEuj3RUxi15llsGSJAB3OAem9KYVnoGp7YVDxOlqkkFINm97YNY8+UI
+	FtJ0EAm7VTZr3AzJ6njYmRAcFwpK3ZU8xVoUym+TEpicKBMx/dgbNSDKtKYW05DyIwl8
+	WuBAr12aCmGttXNwBQULX98fIUbmz22kuSKcidsPwLiPiU5oXIODMV/wo5EZd6vSZwFT
+	qd1Z4szSrMUdooy9ZMHIYymlCmL+8VTjVH/Qf9OtG3MidKnGby8YHBYZljPjoZn1/5Pc
+	EQ1w==
+X-Gm-Message-State: ALoCoQnrmWmU6n89I9nbrCgKSRd8s1l1wgHQKHG1o4UBJM5kp49Q415ZaUlwKV7X6UxaiE2tthaN
+X-Received: by 10.112.160.105 with SMTP id xj9mr17083966lbb.2.1402325211154;
+	Mon, 09 Jun 2014 07:46:51 -0700 (PDT)
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
-References: <1402160924-14152-1-git-send-email-peter.maydell@linaro.org>
-	<539452F2.8070509@msgid.tls.msk.ru>
-	<CAFEAcA-ngVhdG5EemWziTcUbgKtwb+yDsFMTCKK0nk=wfKU_2w@mail.gmail.com>
-In-Reply-To: <CAFEAcA-ngVhdG5EemWziTcUbgKtwb+yDsFMTCKK0nk=wfKU_2w@mail.gmail.com>
+Received: by 10.112.158.228 with HTTP; Mon, 9 Jun 2014 07:46:31 -0700 (PDT)
+In-Reply-To: <CAFEAcA8o-1gY5xnJdCEhhfkxfYEv7AkHEXs05746EMj0zna+ow@mail.gmail.com>
+References: <1402159924-13853-1-git-send-email-peter.maydell@linaro.org>
+	<539449AE.4090909@msgid.tls.msk.ru>
+	<CAFEAcA8o-1gY5xnJdCEhhfkxfYEv7AkHEXs05746EMj0zna+ow@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Jun 2014 15:46:31 +0100
+Message-ID: <CAFEAcA9O_DTieAc8jOUYANZDXyf-hUjOcVwCfTMrUkF1DA5aoQ@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c04::231
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.180
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH] tcg: mark tcg_out* and tcg_patch* with
- attribute 'unused'
+	Stefan Hajnoczi <stefanha@redhat.com>, Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH] hw/net/eepro100: Implement read-only
+ bits in MDI registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,19 +58,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 Jun 2014 19:34:44 -0000
+X-List-Received-Date: Mon, 09 Jun 2014 14:47:04 -0000
 
-On 06/08/2014 12:04 PM, Peter Maydell wrote:
-> The other approach we could take would be to move these
-> definitions from this .c file into a .h file (tcg-backend-helpers.h ?).
-> Then clang won't complain (it seems to only warn about unused
-> static-inline-functions in .c files, not in .h files).
-> 
-> Richard: do you have a preference?
+On 8 June 2014 13:27, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 8 June 2014 12:31, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>> 07.06.2014 20:52, Peter Maydell wrote:
+>>> Although we defined an eepro100_mdi_mask[] array indicating which bits
+>>> in the registers are read-only, we weren't actually doing anything with
+>>> it. Make the MDI register-read code use it rather than manually making
+>>> registers 2 and 3 totally read-only and the rest totally read-write.
+>>
+>> s/register-read/register-write/ -- can be fixed when applying.
+>>
+>> I'm not sure this is "trivial enough", because the side effect is
+>> not obvious, at least not to someone not familiar with eepro100
+>> registers and their usage.
+>
+> Mmm, but do you want to suggest a better queue? I did check
+> that Linux could still boot and talk to the network via an eepro100.
 
-I don't like the idea of moving these to a public header, and I don't think
-it's worthwhile creating a new private header.  I'm ok with the unused attribute.
+Stefan has agreed to take this through the net queue;
+I'll resend with the commit message errors you noted fixed.
 
-
-r~
+thanks
+-- PMM
 
