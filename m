@@ -1,54 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wu1if-0002y6-FV
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Jun 2014 11:42:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54480)
+	id 1Wu5p7-0000UR-Mt
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Jun 2014 16:05:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54582)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mischief@offblast.org>) id 1Wtrzb-00073u-Fg
-	for qemu-trivial@nongnu.org; Mon, 09 Jun 2014 01:19:40 -0400
+	(envelope-from <lcapitulino@redhat.com>) id 1Wu5p0-0000Pv-0U
+	for qemu-trivial@nongnu.org; Mon, 09 Jun 2014 16:05:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mischief@offblast.org>) id 1WtrzR-0006jQ-Le
-	for qemu-trivial@nongnu.org; Mon, 09 Jun 2014 01:19:35 -0400
-Received: from mail-pa0-f54.google.com ([209.85.220.54]:53432)
+	(envelope-from <lcapitulino@redhat.com>) id 1Wu5ot-0007Gb-Kr
+	for qemu-trivial@nongnu.org; Mon, 09 Jun 2014 16:05:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:10364)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mischief@offblast.org>) id 1WtrzR-0006j4-Gf
-	for qemu-trivial@nongnu.org; Mon, 09 Jun 2014 01:19:25 -0400
-Received: by mail-pa0-f54.google.com with SMTP id rd3so320948pab.13
-	for <qemu-trivial@nongnu.org>; Sun, 08 Jun 2014 22:19:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-	:content-type:content-disposition:user-agent;
-	bh=2/gpYlJ7peoWsnJg0bddMgSvSBADKrQD2pdqXH64KVw=;
-	b=GLK+vrm27Qy91bYRljCtmnZZnkSP5pgBeKFIpESu1QO4ahMvj3eVkknCZQUFPY3b8U
-	G6zBkYNOhsbqBkjEDa1W+0QOyHnjqoe4f/QNmUGkHlvS4RTYQOeWPpS5gQGGoqvDhCSn
-	5EY4oxf6XgnUpKwTBXft0CBkl98MRSFv6k0FK2udpI+j2sRdc13bCNLrXUp12KGkRDj7
-	qOQZpSsLHcgcxnoTaW2SQYXd0PDSXZDGMFKDvbfboPXUtGaUlKLkn5lNIszhRCGw6v17
-	Uyg1PJ2jDa6ZDD9PHi8CPu9id4K/BCRZtOe+LFF69xW8FcxrWxP64uNd35ISAIRyonJ0
-	gOng==
-X-Gm-Message-State: ALoCoQmVmVofSneK0BM3vzWDIGrBYnd1MIHdr9UiR9AcE9ezoogzb3LNYz3rY9kF0jG0werggcxk
-X-Received: by 10.68.253.73 with SMTP id zy9mr2154397pbc.114.1402291163926;
-	Sun, 08 Jun 2014 22:19:23 -0700 (PDT)
-Received: from iota.offblast.org (iota.offblast.org. [192.235.78.211])
-	by mx.google.com with ESMTPSA id
-	ib5sm61653223pbb.55.2014.06.08.22.19.22 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 08 Jun 2014 22:19:23 -0700 (PDT)
-Date: Sun, 8 Jun 2014 22:19:17 -0700
-From: mischief <mischief@offblast.org>
-To: qemu-devel@nongnu.org
-Message-ID: <20140609051917.GA17110@iota.offblast.org>
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1Wu5og-0006xP-Uk; Mon, 09 Jun 2014 16:05:15 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s59K5D0x006877
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Mon, 9 Jun 2014 16:05:13 -0400
+Received: from localhost (ovpn-113-65.phx2.redhat.com [10.3.113.65])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s59K5Bvl031174; Mon, 9 Jun 2014 16:05:12 -0400
+Date: Mon, 9 Jun 2014 16:04:26 -0400
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20140609160426.63250974@redhat.com>
+In-Reply-To: <1401480140-18653-2-git-send-email-ehabkost@redhat.com>
+References: <1401480140-18653-1-git-send-email-ehabkost@redhat.com>
+	<1401480140-18653-2-git-send-email-ehabkost@redhat.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="dDRMvlgZJXvWKvBx"
-Content-Disposition: inline
-User-Agent: Mutt/1.5.22 (2013-10-16)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.220.54
-X-Mailman-Approved-At: Mon, 09 Jun 2014 11:42:43 -0400
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] hw: vmware_vga: don't return cursorx when
- the driver asks for cursory register
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Marcel Apfelbaum <marcel.a@redhat.com>,
+	qemu-devel@nongnu.org, Anthony Liguori <aliguori@amazon.com>,
+	Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [PATCH 1/3] rng-random: NULL check not needed
+	before g_free()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,63 +50,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Jun 2014 05:19:40 -0000
+X-List-Received-Date: Mon, 09 Jun 2014 20:05:40 -0000
 
+On Fri, 30 May 2014 17:02:18 -0300
+Eduardo Habkost <ehabkost@redhat.com> wrote:
 
---dDRMvlgZJXvWKvBx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> g_free() is NULL-safe.
+> 
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
-hello qemu-*@nongnu.org, this is my first contribution. apologies if
-something is incorrect.
+This one should to go through qemu-trivial (CCed).
 
-this patch fixes vmware_vga.c so that it actually returns the cursory
-register when asked for, instead of cursorx.
+> ---
+> Cc: Anthony Liguori <aliguori@amazon.com>
+> Cc: Luiz Capitulino <lcapitulino@redhat.com>
+> ---
+>  backends/rng-random.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+> 
+> diff --git a/backends/rng-random.c b/backends/rng-random.c
+> index 136499d..601d9dc 100644
+> --- a/backends/rng-random.c
+> +++ b/backends/rng-random.c
+> @@ -106,10 +106,7 @@ static void rng_random_set_filename(Object *obj, const char *filename,
+>          return;
+>      }
+>  
+> -    if (s->filename) {
+> -        g_free(s->filename);
+> -    }
+> -
+> +    g_free(s->filename);
+>      s->filename = g_strdup(filename);
+>  }
+>  
 
-Signed-off-by: Nicolas Owens <mischief@offblast.org>
----
- hw/display/vmware_vga.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index 9ba47e6..ab54b6f 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -863,7 +863,7 @@ static uint32_t vmsvga_value_read(void *opaque, uint32_=
-t address)
-         break;
-=20
-     case SVGA_REG_CURSOR_Y:
--        ret =3D s->cursor.x;
-+        ret =3D s->cursor.y;
-         break;
-=20
-     case SVGA_REG_CURSOR_ON:
---=20
-2.0.0
-
-
---dDRMvlgZJXvWKvBx
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJTlUPUAAoJEAlFY6k1Rs31GQ8P/2mJd09THiDLFLMQKbGRpLxJ
-BHRxkBF2fhJEWy4zcddeN/bOmyLji8WhFqYbEmcHHTYgiJHxUxMd99kbvAMOKFao
-mDBKPnD9tu6Ojs7aJDodb99yaO/UcvM9eWVxU/zwHv/29/ogEzQby6bl5HpY9rnL
-tY9tXcjS84y+Om/IYpujAAzJB+XE7yAJbDv0nGJ5aMMSKbyuH/T+qBpABfftY5GJ
-12cXwV/OZSYBAk4n7Tn/A4eKfrz2a5Ao6A1bU1SZUJP4WZj7vdZq63ra6Jww/X1O
-xAAJAlOj7Td92B4RiTXNRrLtoiTakoRuA4KC2IXipS8qr+inqFJ1NW3eJsu2rRN7
-S0x9MRx1jzyIjF+FKE0vZHtWNVi2wY7vOGI/eFOaimxOid+5ZTCNC5JdJ3IuS8Oi
-01kfJjTyG9oWouegIWcCRYbfmNuPQp0CS/hDpR2qMywGbD0z5QCSN8LQKh15u3HJ
-g1o9a3um/40rOLtPJknuTw9nqlO5dTirvI/pefDQmbifzdxngkukxzOo24K3K0sO
-SoMzUyERwtSW1/NLUC3P9q7DMI5Rp0Y2rJscxguhbmRKyw0itIxswr28DHMHCl/a
-P2e0fagK/dHTccxCId3m6uB3+LkCV7gDuagosYd4qQSoIsFaMooNTu+wunVSoZCf
-PVF54Si7jOpFBPr+ECs3
-=eMAL
------END PGP SIGNATURE-----
-
---dDRMvlgZJXvWKvBx--
 
