@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WuOuH-0007Uv-HK
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Jun 2014 12:28:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36507)
+	id 1WuOuI-0007VE-0R
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Jun 2014 12:28:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36504)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WuOuA-0007HV-C6
+	(envelope-from <mjt@tls.msk.ru>) id 1WuOuA-0007HC-7e
 	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 12:28:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WuOu6-0007bN-1X
+	(envelope-from <mjt@tls.msk.ru>) id 1WuOu5-0007bD-OM
 	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 12:28:10 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:49143)
+Received: from isrv.corpit.ru ([86.62.121.231]:51845)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WuOtt-0007XN-O5; Tue, 10 Jun 2014 12:27:53 -0400
+	id 1WuOtt-0007XR-Nz; Tue, 10 Jun 2014 12:27:53 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2942D412C7;
+	by isrv.corpit.ru (Postfix) with ESMTP id 32985412C8;
 	Tue, 10 Jun 2014 20:27:53 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 0FFEF6D7;
-	Tue, 10 Jun 2014 20:08:51 +0400 (MSK)
-Received: (nullmailer pid 13315 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 02A06674;
+	Tue, 10 Jun 2014 20:08:48 +0400 (MSK)
+Received: (nullmailer pid 13292 invoked by uid 1000);
 	Tue, 10 Jun 2014 16:08:47 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 10 Jun 2014 20:08:30 +0400
-Message-Id: <1402416523-13212-13-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Tue, 10 Jun 2014 20:08:19 +0400
+Message-Id: <1402416523-13212-2-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1402416523-13212-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1402416523-13212-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 12/25] hw/isa/pc87312: Remove unused function
-	is_parallel_epp()
+Subject: [Qemu-trivial] [PULL 01/25] net: cadence_gem: Fix Tx descriptor
+	update
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,32 +46,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 10 Jun 2014 16:28:14 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 
-The function is_parallel_epp() is unused; remove it.
+The local variable "desc" was being used to read-modify-write the
+first descriptor (of a multi-desc packet) upon packet completion.
+desc however continues to be used by the code as the current
+descriptor. Give this first desc RMW it's own local variable to
+avoid trampling.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/isa/pc87312.c |    5 -----
- 1 file changed, 5 deletions(-)
+ hw/net/cadence_gem.c |   12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/hw/isa/pc87312.c b/hw/isa/pc87312.c
-index b352b49..9327c53 100644
---- a/hw/isa/pc87312.c
-+++ b/hw/isa/pc87312.c
-@@ -86,11 +86,6 @@ static inline uint32_t get_parallel_irq(PC87312State *s)
-     }
- }
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index a26861e..5335db8 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -911,14 +911,16 @@ static void gem_transmit(GemState *s)
  
--static inline bool is_parallel_epp(PC87312State *s)
--{
--    return s->regs[REG_PTR] & PTR_EPP_MODE;
--}
--
- 
- /* UARTs */
- 
+         /* Last descriptor for this packet; hand the whole thing off */
+         if (tx_desc_get_last(desc)) {
++            unsigned    desc_first[2];
++
+             /* Modify the 1st descriptor of this packet to be owned by
+              * the processor.
+              */
+-            cpu_physical_memory_read(s->tx_desc_addr,
+-                                     (uint8_t *)&desc[0], sizeof(desc));
+-            tx_desc_set_used(desc);
+-            cpu_physical_memory_write(s->tx_desc_addr,
+-                                      (uint8_t *)&desc[0], sizeof(desc));
++            cpu_physical_memory_read(s->tx_desc_addr, (uint8_t *)desc_first,
++                                     sizeof(desc_first));
++            tx_desc_set_used(desc_first);
++            cpu_physical_memory_write(s->tx_desc_addr, (uint8_t *)desc_first,
++                                      sizeof(desc_first));
+             /* Advance the hardare current descriptor past this packet */
+             if (tx_desc_get_wrap(desc)) {
+                 s->tx_desc_addr = s->regs[GEM_TXQBASE];
 -- 
 1.7.10.4
 
