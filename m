@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WuOAy-0006Sp-Q9
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Jun 2014 11:41:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47287)
+	id 1WuOJs-0000xT-76
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Jun 2014 11:50:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50442)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WuOAr-0006Hz-4I
-	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 11:41:27 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WuOJj-0000un-3c
+	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 11:50:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WuOAl-0003yo-6r
-	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 11:41:21 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:47704)
+	(envelope-from <mjt@tls.msk.ru>) id 1WuOJb-0007rs-ED
+	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 11:50:30 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:59332)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WuOAX-0003q2-DP; Tue, 10 Jun 2014 11:41:01 -0400
+	id 1WuOJJ-0007ad-Hc; Tue, 10 Jun 2014 11:50:05 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 047F6412A5;
-	Tue, 10 Jun 2014 19:40:55 +0400 (MSK)
-Message-ID: <53972707.1020909@msgid.tls.msk.ru>
-Date: Tue, 10 Jun 2014 19:40:55 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 28A3E412A5;
+	Tue, 10 Jun 2014 19:50:03 +0400 (MSK)
+Message-ID: <5397292A.1090508@msgid.tls.msk.ru>
+Date: Tue, 10 Jun 2014 19:50:02 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
-To: mischief <mischief@offblast.org>, qemu-devel@nongnu.org
-References: <20140609051917.GA17110@iota.offblast.org>
-In-Reply-To: <20140609051917.GA17110@iota.offblast.org>
+To: Aleksandar Ristovski <aristovski@qnx.com>, qemu-trivial@nongnu.org
+References: <53876F3F.1060704@qnx.com>
+In-Reply-To: <53876F3F.1060704@qnx.com>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] hw: vmware_vga: don't return cursorx
- when the driver asks for cursory register
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] DBGAUTHSTATUS register
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,16 +45,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Jun 2014 15:41:27 -0000
+X-List-Received-Date: Tue, 10 Jun 2014 15:50:38 -0000
 
-09.06.2014 09:19, mischief wrote:
-> hello qemu-*@nongnu.org, this is my first contribution. apologies if
-> something is incorrect.
+29.05.2014 21:32, Aleksandar Ristovski wrote:
+> Hello,
 > 
-> this patch fixes vmware_vga.c so that it actually returns the cursory
-> register when asked for, instead of cursorx.
+> 
+> This is not a big issue: DBGAUTHSTATUS, according to the docs, should exist. According to "ARM Architecture Reference Manual, ARMv7-A and ARMv7-R edition" (DDI0406C_b_arm_architecture_reference_manual.pdf), DBGAUTHSTATUS is required in all implementations. Reading it should be permitted, even if as RAZ only (implying no features are implemented/enabled).
+> 
+> This trivial patch defines cp14 register DBGAUTHSTATUS.
 
-That's a good one.  Thank you, applied to -trivial.
+While the patch appears to be trivial, I had to grab the above mentioned ARM manual
+and read a bit from there.  Unfortunately, since I don't have any prior knowlege
+about this stuff, at all, I still have to accept for granted that it is the right
+thing to do.  Maybe it is better to route this to the ARM maintainer instead
+(Cc'ed) ?
+
+Thanks,
 
 /mjt
 
