@@ -1,39 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WuONs-0002P7-DP
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Jun 2014 11:54:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51297)
+	id 1WuOS5-0004gr-KZ
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Jun 2014 11:59:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52488)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WuONj-0002Dj-Gu
-	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 11:54:46 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WuORz-0004aF-Q6
+	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 11:59:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WuONc-0000ks-0G
-	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 11:54:39 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:34379)
+	(envelope-from <mjt@tls.msk.ru>) id 1WuORv-0002z7-G6
+	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 11:59:03 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48925)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WuONM-0000eP-F1; Tue, 10 Jun 2014 11:54:16 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id BA27741207;
-	Tue, 10 Jun 2014 19:54:15 +0400 (MSK)
-Message-ID: <53972A27.3010708@msgid.tls.msk.ru>
-Date: Tue, 10 Jun 2014 19:54:15 +0400
+	id 1WuORm-0002fv-9V; Tue, 10 Jun 2014 11:58:50 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id BFB6E412A5;
+	Tue, 10 Jun 2014 19:58:47 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id A29D1661;
+	Tue, 10 Jun 2014 19:58:47 +0400 (MSK)
+Received: (nullmailer pid 2020 invoked by uid 1000);
+	Tue, 10 Jun 2014 15:58:47 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.5.0
-MIME-Version: 1.0
-To: Aleksandar Ristovski <aristovski@qnx.com>, qemu-trivial@nongnu.org
-References: <53876F3F.1060704@qnx.com> <5397292A.1090508@msgid.tls.msk.ru>
-In-Reply-To: <5397292A.1090508@msgid.tls.msk.ru>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+To: qemu-trivial@nongnu.org
+Date: Tue, 10 Jun 2014 19:58:44 +0400
+Message-Id: <1402415924-1964-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] DBGAUTHSTATUS register
+Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] virtio.c: fix error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,27 +41,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Jun 2014 15:54:47 -0000
+X-List-Received-Date: Tue, 10 Jun 2014 15:59:08 -0000
 
-10.06.2014 19:50, Michael Tokarev wrote:
-> 29.05.2014 21:32, Aleksandar Ristovski wrote:
->> Hello,
->>
->> This is not a big issue: DBGAUTHSTATUS, according to the docs, should exist. According to "ARM Architecture Reference Manual, ARMv7-A and ARMv7-R edition" (DDI0406C_b_arm_architecture_reference_manual.pdf), DBGAUTHSTATUS is required in all implementations. Reading it should be permitted, even if as RAZ only (implying no features are implemented/enabled).
->>
->> This trivial patch defines cp14 register DBGAUTHSTATUS.
-> 
-> While the patch appears to be trivial, I had to grab the above mentioned ARM manual
-> and read a bit from there.  Unfortunately, since I don't have any prior knowlege
-> about this stuff, at all, I still have to accept for granted that it is the right
-> thing to do.  Maybe it is better to route this to the ARM maintainer instead
-> (Cc'ed) ?
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/virtio/virtio.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Also, this patch does not have the Signed-off-by line.
-
-Thanks,
-
-/mjt
-
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index 3557c17..a07ae8a 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -440,7 +440,7 @@ void virtqueue_map_sg(struct iovec *sg, hwaddr *addr,
+         len = sg[i].iov_len;
+         sg[i].iov_base = cpu_physical_memory_map(addr[i], &len, is_write);
+         if (sg[i].iov_base == NULL || len != sg[i].iov_len) {
+-            error_report("virtio: trying to map MMIO memory");
++            error_report("virtio: error trying to map MMIO memory");
+             exit(1);
+         }
+     }
+-- 
+1.7.10.4
 
 
