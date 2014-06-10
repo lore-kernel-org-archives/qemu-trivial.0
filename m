@@ -1,49 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WuPH4-0007pA-UB
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Jun 2014 12:51:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43986)
+	id 1WuPqM-0000UX-9Z
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Jun 2014 13:28:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54808)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WuPGy-0007e8-B2
-	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 12:51:48 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WuPqF-0000Gd-5d
+	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 13:28:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WuPGs-00016P-1C
-	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 12:51:44 -0400
-Received: from mail-lb0-f181.google.com ([209.85.217.181]:54020)
+	(envelope-from <mjt@tls.msk.ru>) id 1WuPq9-0000UU-U1
+	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 13:28:11 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44493)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WuPGr-00015J-RE
-	for qemu-trivial@nongnu.org; Tue, 10 Jun 2014 12:51:37 -0400
-Received: by mail-lb0-f181.google.com with SMTP id q8so4138818lbi.12
-	for <qemu-trivial@nongnu.org>; Tue, 10 Jun 2014 09:51:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=DOP0GAEcyXqf5zg272XAUjU2kECL8FX7kjwcuJhBQss=;
-	b=L1sBDH+EFpf7BrWemlD+URIrHBJd3geTswjAAZ8GV4IJgVU7LCpMGF85/mwIXCzoad
-	69tW0amxz32xURH3laNCTnikNsxvIujh36Kg460v2pfWqnzn58ILYN5fpq59ZoUVRkfq
-	Qo/Yhw6UvkESIXR7g6Ng/EaCfPCRweUKNxE607EyJWRPZEZSRCBDeDi7dTxnClgsOLdN
-	oDGaKhFnCcn0fsy9w2uQFIOI+hwgDRpSVR1GJv9QllWl/wtmBeX7CbZGxsmtg8OQaNlA
-	ey/9ExXAZ4SXSoyFmVTCp6kiq1xH5zxH7AxCFFrDLo7b7z91QVuVa/ssNPcu0o/gsFPK
-	tNDw==
-X-Gm-Message-State: ALoCoQlmNmZacTnbkinzFnH4f+0bLCkNqh8VaOG1X9koKTcZr/41MrccDHtknQj/hKcHMF8mQzPv
-X-Received: by 10.152.18.133 with SMTP id w5mr2447284lad.60.1402419096713;
-	Tue, 10 Jun 2014 09:51:36 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Tue, 10 Jun 2014 09:51:16 -0700 (PDT)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WuPpy-0000Rf-Pi; Tue, 10 Jun 2014 13:27:54 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 870C6412A5;
+	Tue, 10 Jun 2014 21:27:53 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 85C316D3;
+	Tue, 10 Jun 2014 20:08:49 +0400 (MSK)
+Received: (nullmailer pid 13309 invoked by uid 1000);
+	Tue, 10 Jun 2014 16:08:47 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Tue, 10 Jun 2014 20:08:27 +0400
+Message-Id: <1402416523-13212-10-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1402416523-13212-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1402416523-13212-1-git-send-email-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Jun 2014 17:51:16 +0100
-Message-ID: <CAFEAcA8xiqVe3TTua7U_KD_EnMi25hfTuprHPEOQfDQ__QDr5g@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.181
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/25] Trivial patches for
-	2014-06-10
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 09/25] util/qemu-sockets.c: Avoid unused
+	variable warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,41 +44,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Jun 2014 16:51:49 -0000
+X-List-Received-Date: Tue, 10 Jun 2014 17:28:16 -0000
 
-On 10 June 2014 17:08, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Another trivial-patches pull request.
->
-> Lots of small things all over this time.  Mostly by Peter Maydell ;)
->
-> There's one sort-of questionable patch by myself - fixing error message
-> in virtio.c, which is "shiny new", but I think such a really trivial
-> thing is fine ;)
->
-> Please consider pulling.
->
-> Thanks,
->
-> /mjt
->
-> The following changes since commit 3334e929ae2d01e47c3e64757ee7fcf975cede94:
->
->   Merge remote-tracking branch 'remotes/kraxel/tags/pull-console-20140610-1' into staging (2014-06-10 12:06:17 +0100)
->
-> are available in the git repository at:
->
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-06-10
->
-> for you to fetch changes up to 1a2858995d283ddad4a745460d1cc770a9b93fc1:
->
->   virtio.c: fix error message (2014-06-10 20:07:01 +0400)
->
-> ----------------------------------------------------------------
-> trivial patches for 2014-06-10
->
+From: Peter Maydell <peter.maydell@linaro.org>
 
-Applied, thanks.
+The 'on' variable is never used, and 'off' is only used
+if IPV6_V6ONLY is defined; delete 'on' and move 'off' to
+the point where it is used. This avoids warnings from
+clang 3.4.
 
--- PMM
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ util/qemu-sockets.c |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index 627e609..e3d29ee 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -30,8 +30,6 @@
+ # define AI_ADDRCONFIG 0
+ #endif
+ 
+-static const int on=1, off=0;
+-
+ /* used temporarily until all users are converted to QemuOpts */
+ QemuOptsList socket_optslist = {
+     .name = "socket",
+@@ -159,6 +157,7 @@ int inet_listen_opts(QemuOpts *opts, int port_offset, Error **errp)
+ #ifdef IPV6_V6ONLY
+         if (e->ai_family == PF_INET6) {
+             /* listen on both ipv4 and ipv6 */
++            const int off = 0;
+             qemu_setsockopt(slisten, IPPROTO_IPV6, IPV6_V6ONLY, &off,
+                             sizeof(off));
+         }
+-- 
+1.7.10.4
+
 
