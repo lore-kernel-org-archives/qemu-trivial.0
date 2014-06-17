@@ -1,36 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wx2S3-0004zK-Vd
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jun 2014 19:06:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43101)
+	id 1Wx2ja-00026W-4q
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jun 2014 19:24:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48075)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1Wx2Rw-0004mP-2b
-	for qemu-trivial@nongnu.org; Tue, 17 Jun 2014 19:06:02 -0400
+	(envelope-from <kroosec@gmail.com>) id 1Wx2jS-0001vw-2E
+	for qemu-trivial@nongnu.org; Tue, 17 Jun 2014 19:24:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1Wx2Rp-0008Fp-Rs
-	for qemu-trivial@nongnu.org; Tue, 17 Jun 2014 19:05:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:9737)
+	(envelope-from <kroosec@gmail.com>) id 1Wx2jM-0006C6-0a
+	for qemu-trivial@nongnu.org; Tue, 17 Jun 2014 19:24:02 -0400
+Received: from mail-we0-x22c.google.com ([2a00:1450:400c:c03::22c]:42023)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1Wx2Rc-0008ES-Nh; Tue, 17 Jun 2014 19:05:37 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5HN5ZYx018465
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Tue, 17 Jun 2014 19:05:36 -0400
-Received: from localhost (ovpn-113-136.phx2.redhat.com [10.3.113.136])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s5HN5YUM002122; Tue, 17 Jun 2014 19:05:35 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 17 Jun 2014 20:05:29 -0300
-Message-Id: <1403046329-12784-1-git-send-email-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [Qemu-trivial] [PATCH] target-i386: Fix indentation of CPU model
-	definitions
+	(envelope-from <kroosec@gmail.com>)
+	id 1Wx2j9-00068b-Oc; Tue, 17 Jun 2014 19:23:43 -0400
+Received: by mail-we0-f172.google.com with SMTP id u57so47462wes.17
+	for <multiple recipients>; Tue, 17 Jun 2014 16:23:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=heclesOxSnfXlculim6je1nW9HBekG9FbJEJxM3tONA=;
+	b=DwZ/FcxFUCVzKsfagMN59Nn8MD/6Dx+zwnJnjoBRRKe2YvxXdnfFp81F2JInJzVdgK
+	PCT43MCQfSEWk2oX7ai5lWKKzNvnX39l4w64twZFHY63HFCfr3J977GCTqKwn0Kh2v6M
+	QklFhl49HG4uYfV6mg+oxh3NAlmri+e8i9/iGgaT6q7+VZY1I2v3H4767TZ0AlelASjY
+	YMNQ1vUVD4g8wR+5ZLoYSMURuiuUlv0joJQ9VB9z5j61+EppddR5eEwnVApYSm/uZaBg
+	yxkCF1TU6whszABS5f9HUJ6KX9lHvRidaPeY5HxAvczbLiZr+ONf/Ps8colzWRHDaNx2
+	Nvfg==
+X-Received: by 10.180.211.106 with SMTP id nb10mr98818wic.9.1403047422549;
+	Tue, 17 Jun 2014 16:23:42 -0700 (PDT)
+Received: from localhost.localdomain ([41.109.190.215])
+	by mx.google.com with ESMTPSA id y8sm1128813eef.5.2014.06.17.16.23.40
+	for <multiple recipients>
+	(version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 17 Jun 2014 16:23:41 -0700 (PDT)
+From: Hani Benhabiles <kroosec@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Wed, 18 Jun 2014 00:23:34 +0100
+Message-Id: <1403047414-27505-1-git-send-email-kroosec@gmail.com>
+X-Mailer: git-send-email 1.8.3.2
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c03::22c
+Cc: pbonzini@redhat.com, kraxel@redhat.com, qemu-stable@nongnu.org
+Subject: [Qemu-trivial] [PATCHv2] usb: Fix usb-bt-dongle initialization.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,339 +52,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Jun 2014 23:06:02 -0000
+X-List-Received-Date: Tue, 17 Jun 2014 23:24:08 -0000
 
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Due to an incomplete initialization, adding a usb-bt-dongle device through HMP
+or QMP will cause a segmentation fault.
+
+Signed-off-by: Hani Benhabiles <hani@linux.com>
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- target-i386/cpu.c | 204 +++++++++++++++++++++++++++---------------------------
- 1 file changed, 102 insertions(+), 102 deletions(-)
 
-diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-index 8983457..830c3c6 100644
---- a/target-i386/cpu.c
-+++ b/target-i386/cpu.c
-@@ -827,10 +827,10 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 3,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_SSSE3 | CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-@@ -849,13 +849,13 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 3,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_SSE41 | CPUID_EXT_CX16 | CPUID_EXT_SSSE3 |
--             CPUID_EXT_SSE3,
-+            CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_NX | CPUID_EXT2_SYSCALL,
-         .features[FEAT_8000_0001_ECX] =
-@@ -872,13 +872,13 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 3,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_POPCNT | CPUID_EXT_SSE42 | CPUID_EXT_SSE41 |
--             CPUID_EXT_CX16 | CPUID_EXT_SSSE3 | CPUID_EXT_SSE3,
-+            CPUID_EXT_CX16 | CPUID_EXT_SSSE3 | CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_SYSCALL | CPUID_EXT2_NX,
-         .features[FEAT_8000_0001_ECX] =
-@@ -895,14 +895,14 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 1,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_AES | CPUID_EXT_POPCNT | CPUID_EXT_SSE42 |
--             CPUID_EXT_SSE41 | CPUID_EXT_CX16 | CPUID_EXT_SSSE3 |
--             CPUID_EXT_PCLMULQDQ | CPUID_EXT_SSE3,
-+            CPUID_EXT_SSE41 | CPUID_EXT_CX16 | CPUID_EXT_SSSE3 |
-+            CPUID_EXT_PCLMULQDQ | CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_SYSCALL | CPUID_EXT2_NX,
-         .features[FEAT_8000_0001_ECX] =
-@@ -919,19 +919,19 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 1,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_AVX | CPUID_EXT_XSAVE | CPUID_EXT_AES |
--             CPUID_EXT_TSC_DEADLINE_TIMER | CPUID_EXT_POPCNT |
--             CPUID_EXT_X2APIC | CPUID_EXT_SSE42 | CPUID_EXT_SSE41 |
--             CPUID_EXT_CX16 | CPUID_EXT_SSSE3 | CPUID_EXT_PCLMULQDQ |
--             CPUID_EXT_SSE3,
-+            CPUID_EXT_TSC_DEADLINE_TIMER | CPUID_EXT_POPCNT |
-+            CPUID_EXT_X2APIC | CPUID_EXT_SSE42 | CPUID_EXT_SSE41 |
-+            CPUID_EXT_CX16 | CPUID_EXT_SSSE3 | CPUID_EXT_PCLMULQDQ |
-+            CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_RDTSCP | CPUID_EXT2_NX |
--             CPUID_EXT2_SYSCALL,
-+            CPUID_EXT2_SYSCALL,
-         .features[FEAT_8000_0001_ECX] =
-             CPUID_EXT3_LAHF_LM,
-         .xlevel = 0x8000000A,
-@@ -946,20 +946,20 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 1,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_AVX | CPUID_EXT_XSAVE | CPUID_EXT_AES |
--             CPUID_EXT_POPCNT | CPUID_EXT_X2APIC | CPUID_EXT_SSE42 |
--             CPUID_EXT_SSE41 | CPUID_EXT_CX16 | CPUID_EXT_SSSE3 |
--             CPUID_EXT_PCLMULQDQ | CPUID_EXT_SSE3 |
--             CPUID_EXT_TSC_DEADLINE_TIMER | CPUID_EXT_FMA | CPUID_EXT_MOVBE |
--             CPUID_EXT_PCID,
-+            CPUID_EXT_POPCNT | CPUID_EXT_X2APIC | CPUID_EXT_SSE42 |
-+            CPUID_EXT_SSE41 | CPUID_EXT_CX16 | CPUID_EXT_SSSE3 |
-+            CPUID_EXT_PCLMULQDQ | CPUID_EXT_SSE3 |
-+            CPUID_EXT_TSC_DEADLINE_TIMER | CPUID_EXT_FMA | CPUID_EXT_MOVBE |
-+            CPUID_EXT_PCID,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_RDTSCP | CPUID_EXT2_NX |
--             CPUID_EXT2_SYSCALL,
-+            CPUID_EXT2_SYSCALL,
-         .features[FEAT_8000_0001_ECX] =
-             CPUID_EXT3_LAHF_LM,
-         .features[FEAT_7_0_EBX] =
-@@ -979,19 +979,19 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 1,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_FXSR | CPUID_EXT2_MMX |
--             CPUID_EXT2_NX | CPUID_EXT2_PSE36 | CPUID_EXT2_PAT |
--             CPUID_EXT2_CMOV | CPUID_EXT2_MCA | CPUID_EXT2_PGE |
--             CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL | CPUID_EXT2_APIC |
--             CPUID_EXT2_CX8 | CPUID_EXT2_MCE | CPUID_EXT2_PAE | CPUID_EXT2_MSR |
--             CPUID_EXT2_TSC | CPUID_EXT2_PSE | CPUID_EXT2_DE | CPUID_EXT2_FPU,
-+            CPUID_EXT2_NX | CPUID_EXT2_PSE36 | CPUID_EXT2_PAT |
-+            CPUID_EXT2_CMOV | CPUID_EXT2_MCA | CPUID_EXT2_PGE |
-+            CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL | CPUID_EXT2_APIC |
-+            CPUID_EXT2_CX8 | CPUID_EXT2_MCE | CPUID_EXT2_PAE | CPUID_EXT2_MSR |
-+            CPUID_EXT2_TSC | CPUID_EXT2_PSE | CPUID_EXT2_DE | CPUID_EXT2_FPU,
-         .xlevel = 0x80000008,
-         .model_id = "AMD Opteron 240 (Gen 1 Class Opteron)",
-     },
-@@ -1004,20 +1004,20 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 1,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_CX16 | CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_RDTSCP | CPUID_EXT2_FXSR |
--             CPUID_EXT2_MMX | CPUID_EXT2_NX | CPUID_EXT2_PSE36 |
--             CPUID_EXT2_PAT | CPUID_EXT2_CMOV | CPUID_EXT2_MCA |
--             CPUID_EXT2_PGE | CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL |
--             CPUID_EXT2_APIC | CPUID_EXT2_CX8 | CPUID_EXT2_MCE |
--             CPUID_EXT2_PAE | CPUID_EXT2_MSR | CPUID_EXT2_TSC | CPUID_EXT2_PSE |
--             CPUID_EXT2_DE | CPUID_EXT2_FPU,
-+            CPUID_EXT2_MMX | CPUID_EXT2_NX | CPUID_EXT2_PSE36 |
-+            CPUID_EXT2_PAT | CPUID_EXT2_CMOV | CPUID_EXT2_MCA |
-+            CPUID_EXT2_PGE | CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL |
-+            CPUID_EXT2_APIC | CPUID_EXT2_CX8 | CPUID_EXT2_MCE |
-+            CPUID_EXT2_PAE | CPUID_EXT2_MSR | CPUID_EXT2_TSC | CPUID_EXT2_PSE |
-+            CPUID_EXT2_DE | CPUID_EXT2_FPU,
-         .features[FEAT_8000_0001_ECX] =
-             CPUID_EXT3_SVM | CPUID_EXT3_LAHF_LM,
-         .xlevel = 0x80000008,
-@@ -1032,24 +1032,24 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 1,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_POPCNT | CPUID_EXT_CX16 | CPUID_EXT_MONITOR |
--             CPUID_EXT_SSE3,
-+            CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_RDTSCP | CPUID_EXT2_FXSR |
--             CPUID_EXT2_MMX | CPUID_EXT2_NX | CPUID_EXT2_PSE36 |
--             CPUID_EXT2_PAT | CPUID_EXT2_CMOV | CPUID_EXT2_MCA |
--             CPUID_EXT2_PGE | CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL |
--             CPUID_EXT2_APIC | CPUID_EXT2_CX8 | CPUID_EXT2_MCE |
--             CPUID_EXT2_PAE | CPUID_EXT2_MSR | CPUID_EXT2_TSC | CPUID_EXT2_PSE |
--             CPUID_EXT2_DE | CPUID_EXT2_FPU,
-+            CPUID_EXT2_MMX | CPUID_EXT2_NX | CPUID_EXT2_PSE36 |
-+            CPUID_EXT2_PAT | CPUID_EXT2_CMOV | CPUID_EXT2_MCA |
-+            CPUID_EXT2_PGE | CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL |
-+            CPUID_EXT2_APIC | CPUID_EXT2_CX8 | CPUID_EXT2_MCE |
-+            CPUID_EXT2_PAE | CPUID_EXT2_MSR | CPUID_EXT2_TSC | CPUID_EXT2_PSE |
-+            CPUID_EXT2_DE | CPUID_EXT2_FPU,
-         .features[FEAT_8000_0001_ECX] =
-             CPUID_EXT3_MISALIGNSSE | CPUID_EXT3_SSE4A |
--             CPUID_EXT3_ABM | CPUID_EXT3_SVM | CPUID_EXT3_LAHF_LM,
-+            CPUID_EXT3_ABM | CPUID_EXT3_SVM | CPUID_EXT3_LAHF_LM,
-         .xlevel = 0x80000008,
-         .model_id = "AMD Opteron 23xx (Gen 3 Class Opteron)",
-     },
-@@ -1062,28 +1062,28 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 2,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_AVX | CPUID_EXT_XSAVE | CPUID_EXT_AES |
--             CPUID_EXT_POPCNT | CPUID_EXT_SSE42 | CPUID_EXT_SSE41 |
--             CPUID_EXT_CX16 | CPUID_EXT_SSSE3 | CPUID_EXT_PCLMULQDQ |
--             CPUID_EXT_SSE3,
-+            CPUID_EXT_POPCNT | CPUID_EXT_SSE42 | CPUID_EXT_SSE41 |
-+            CPUID_EXT_CX16 | CPUID_EXT_SSSE3 | CPUID_EXT_PCLMULQDQ |
-+            CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_RDTSCP |
--             CPUID_EXT2_PDPE1GB | CPUID_EXT2_FXSR | CPUID_EXT2_MMX |
--             CPUID_EXT2_NX | CPUID_EXT2_PSE36 | CPUID_EXT2_PAT |
--             CPUID_EXT2_CMOV | CPUID_EXT2_MCA | CPUID_EXT2_PGE |
--             CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL | CPUID_EXT2_APIC |
--             CPUID_EXT2_CX8 | CPUID_EXT2_MCE | CPUID_EXT2_PAE | CPUID_EXT2_MSR |
--             CPUID_EXT2_TSC | CPUID_EXT2_PSE | CPUID_EXT2_DE | CPUID_EXT2_FPU,
-+            CPUID_EXT2_PDPE1GB | CPUID_EXT2_FXSR | CPUID_EXT2_MMX |
-+            CPUID_EXT2_NX | CPUID_EXT2_PSE36 | CPUID_EXT2_PAT |
-+            CPUID_EXT2_CMOV | CPUID_EXT2_MCA | CPUID_EXT2_PGE |
-+            CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL | CPUID_EXT2_APIC |
-+            CPUID_EXT2_CX8 | CPUID_EXT2_MCE | CPUID_EXT2_PAE | CPUID_EXT2_MSR |
-+            CPUID_EXT2_TSC | CPUID_EXT2_PSE | CPUID_EXT2_DE | CPUID_EXT2_FPU,
-         .features[FEAT_8000_0001_ECX] =
-             CPUID_EXT3_FMA4 | CPUID_EXT3_XOP |
--             CPUID_EXT3_3DNOWPREFETCH | CPUID_EXT3_MISALIGNSSE |
--             CPUID_EXT3_SSE4A | CPUID_EXT3_ABM | CPUID_EXT3_SVM |
--             CPUID_EXT3_LAHF_LM,
-+            CPUID_EXT3_3DNOWPREFETCH | CPUID_EXT3_MISALIGNSSE |
-+            CPUID_EXT3_SSE4A | CPUID_EXT3_ABM | CPUID_EXT3_SVM |
-+            CPUID_EXT3_LAHF_LM,
-         .xlevel = 0x8000001A,
-         .model_id = "AMD Opteron 62xx class CPU",
-     },
-@@ -1096,28 +1096,28 @@ static X86CPUDefinition builtin_x86_defs[] = {
-         .stepping = 0,
-         .features[FEAT_1_EDX] =
-             CPUID_SSE2 | CPUID_SSE | CPUID_FXSR | CPUID_MMX |
--             CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
--             CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
--             CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
--             CPUID_DE | CPUID_FP87,
-+            CPUID_CLFLUSH | CPUID_PSE36 | CPUID_PAT | CPUID_CMOV | CPUID_MCA |
-+            CPUID_PGE | CPUID_MTRR | CPUID_SEP | CPUID_APIC | CPUID_CX8 |
-+            CPUID_MCE | CPUID_PAE | CPUID_MSR | CPUID_TSC | CPUID_PSE |
-+            CPUID_DE | CPUID_FP87,
-         .features[FEAT_1_ECX] =
-             CPUID_EXT_F16C | CPUID_EXT_AVX | CPUID_EXT_XSAVE |
--             CPUID_EXT_AES | CPUID_EXT_POPCNT | CPUID_EXT_SSE42 |
--             CPUID_EXT_SSE41 | CPUID_EXT_CX16 | CPUID_EXT_FMA |
--             CPUID_EXT_SSSE3 | CPUID_EXT_PCLMULQDQ | CPUID_EXT_SSE3,
-+            CPUID_EXT_AES | CPUID_EXT_POPCNT | CPUID_EXT_SSE42 |
-+            CPUID_EXT_SSE41 | CPUID_EXT_CX16 | CPUID_EXT_FMA |
-+            CPUID_EXT_SSSE3 | CPUID_EXT_PCLMULQDQ | CPUID_EXT_SSE3,
-         .features[FEAT_8000_0001_EDX] =
-             CPUID_EXT2_LM | CPUID_EXT2_RDTSCP |
--             CPUID_EXT2_PDPE1GB | CPUID_EXT2_FXSR | CPUID_EXT2_MMX |
--             CPUID_EXT2_NX | CPUID_EXT2_PSE36 | CPUID_EXT2_PAT |
--             CPUID_EXT2_CMOV | CPUID_EXT2_MCA | CPUID_EXT2_PGE |
--             CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL | CPUID_EXT2_APIC |
--             CPUID_EXT2_CX8 | CPUID_EXT2_MCE | CPUID_EXT2_PAE | CPUID_EXT2_MSR |
--             CPUID_EXT2_TSC | CPUID_EXT2_PSE | CPUID_EXT2_DE | CPUID_EXT2_FPU,
-+            CPUID_EXT2_PDPE1GB | CPUID_EXT2_FXSR | CPUID_EXT2_MMX |
-+            CPUID_EXT2_NX | CPUID_EXT2_PSE36 | CPUID_EXT2_PAT |
-+            CPUID_EXT2_CMOV | CPUID_EXT2_MCA | CPUID_EXT2_PGE |
-+            CPUID_EXT2_MTRR | CPUID_EXT2_SYSCALL | CPUID_EXT2_APIC |
-+            CPUID_EXT2_CX8 | CPUID_EXT2_MCE | CPUID_EXT2_PAE | CPUID_EXT2_MSR |
-+            CPUID_EXT2_TSC | CPUID_EXT2_PSE | CPUID_EXT2_DE | CPUID_EXT2_FPU,
-         .features[FEAT_8000_0001_ECX] =
-             CPUID_EXT3_TBM | CPUID_EXT3_FMA4 | CPUID_EXT3_XOP |
--             CPUID_EXT3_3DNOWPREFETCH | CPUID_EXT3_MISALIGNSSE |
--             CPUID_EXT3_SSE4A | CPUID_EXT3_ABM | CPUID_EXT3_SVM |
--             CPUID_EXT3_LAHF_LM,
-+            CPUID_EXT3_3DNOWPREFETCH | CPUID_EXT3_MISALIGNSSE |
-+            CPUID_EXT3_SSE4A | CPUID_EXT3_ABM | CPUID_EXT3_SVM |
-+            CPUID_EXT3_LAHF_LM,
-         .xlevel = 0x8000001A,
-         .model_id = "AMD Opteron 63xx class CPU",
-     },
+Compared to v1:
+* Remove duplicate code from usb_bt_init() and inline usb_create_simple() call.
+* usb_bt_initfn() check for s->hci.
+
+ hw/usb/dev-bluetooth.c | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/hw/usb/dev-bluetooth.c b/hw/usb/dev-bluetooth.c
+index a9661d2..a76e581 100644
+--- a/hw/usb/dev-bluetooth.c
++++ b/hw/usb/dev-bluetooth.c
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include "qemu-common.h"
++#include "qemu/error-report.h"
+ #include "hw/usb.h"
+ #include "hw/usb/desc.h"
+ #include "sysemu/bt.h"
+@@ -506,6 +507,14 @@ static int usb_bt_initfn(USBDevice *dev)
+ 
+     usb_desc_create_serial(dev);
+     usb_desc_init(dev);
++    s->dev.opaque = s;
++    if (!s->hci) {
++        s->hci = bt_new_hci(qemu_find_bt_vlan(0));
++    }
++    s->hci->opaque = s;
++    s->hci->evt_recv = usb_bt_out_hci_packet_event;
++    s->hci->acl_recv = usb_bt_out_hci_packet_acl;
++    usb_bt_handle_reset(&s->dev);
+     s->intr = usb_ep_get(dev, USB_TOKEN_IN, USB_EVT_EP);
+ 
+     return 0;
+@@ -516,6 +525,7 @@ static USBDevice *usb_bt_init(USBBus *bus, const char *cmdline)
+     USBDevice *dev;
+     struct USBBtState *s;
+     HCIInfo *hci;
++    const char *name = "usb-bt-dongle";
+ 
+     if (*cmdline) {
+         hci = hci_init(cmdline);
+@@ -525,19 +535,17 @@ static USBDevice *usb_bt_init(USBBus *bus, const char *cmdline)
+ 
+     if (!hci)
+         return NULL;
+-    dev = usb_create_simple(bus, "usb-bt-dongle");
++    dev = usb_create(bus, name);
+     if (!dev) {
++        error_report("Failed to create USB device '%s'", name);
+         return NULL;
+     }
+     s = DO_UPCAST(struct USBBtState, dev, dev);
+-    s->dev.opaque = s;
+-
+     s->hci = hci;
+-    s->hci->opaque = s;
+-    s->hci->evt_recv = usb_bt_out_hci_packet_event;
+-    s->hci->acl_recv = usb_bt_out_hci_packet_acl;
+-
+-    usb_bt_handle_reset(&s->dev);
++    if (qdev_init(&dev->qdev) < 0) {
++        error_report("Failed to initialize USB device '%s'", name);
++        return NULL;
++    }
+ 
+     return dev;
+ }
 -- 
-1.9.3
+1.8.3.2
 
 
