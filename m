@@ -1,35 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wwceu-0004jI-FD
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jun 2014 15:33:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59633)
+	id 1Wwx1s-0006eF-AY
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jun 2014 13:18:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51909)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>) id 1Wwcel-0004Y9-VE
-	for qemu-trivial@nongnu.org; Mon, 16 Jun 2014 15:33:34 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1Wwx1q-0006bz-9M
+	for qemu-trivial@nongnu.org; Tue, 17 Jun 2014 13:18:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>) id 1Wwcef-0001re-Gf
-	for qemu-trivial@nongnu.org; Mon, 16 Jun 2014 15:33:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49741)
+	(envelope-from <stefan@weilnetz.de>) id 1Wwx1p-0004ZZ-D1
+	for qemu-trivial@nongnu.org; Tue, 17 Jun 2014 13:18:38 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:43887)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crobinso@redhat.com>)
-	id 1WwceS-0001oz-PG; Mon, 16 Jun 2014 15:33:08 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5GJX7lE018600
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 16 Jun 2014 15:33:07 -0400
-Received: from colepc.home.com (ovpn-113-186.phx2.redhat.com [10.3.113.186])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s5GJX5bY014567; Mon, 16 Jun 2014 15:33:06 -0400
-From: Cole Robinson <crobinso@redhat.com>
+	(envelope-from <stefan@weilnetz.de>)
+	id 1Wwx1k-0004Ma-T1; Tue, 17 Jun 2014 13:18:33 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 8C62217F88A; Tue, 17 Jun 2014 19:18:29 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org
-Date: Mon, 16 Jun 2014 15:32:47 -0400
-Message-Id: <92778d44f2f6c055c6caec15c83edc1c3723c272.1402946999.git.crobinso@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Cole Robinson <crobinso@redhat.com>
-Subject: [Qemu-trivial] [PATCH v4] configure: Enable TPM by default,
-	add --disable-tpm
+Date: Tue, 17 Jun 2014 19:18:28 +0200
+Message-Id: <1403025508-19171-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>, qemu-ppc@nongnu.org,
+	Alexander Graf <agraf@suse.de>
+Subject: [Qemu-trivial] [PATCH] target-ppc: Fix compiler warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,56 +39,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jun 2014 19:33:34 -0000
+X-List-Received-Date: Tue, 17 Jun 2014 17:18:39 -0000
 
-I don't see why tpm is disabled by default: it doesn't have any
-external dependencies, or change default behavior. Leaving it disabled
-is just going to cause it to bit rot.
+gcc reports a warning which is usually wrong:
 
-Enable it by default, and add a --disable-tpm option.
+target-ppc/dfp_helper.c: In function =E2=80=98dfp_get_digit=E2=80=99:
+target-ppc/dfp_helper.c:417:1: warning:
+ control reaches end of non-void function [-Wreturn-type]
 
-Signed-off-by: Cole Robinson <crobinso@redhat.com>
+The compiler shows the warning if assert is not marked with the noreturn
+attribute or if the code is compiled with -DNDEBUG.
+
+Using g_assert_not_reached better documents the intention and does not
+have these problems.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
-v4:
-    Rebase to master
+ target-ppc/dfp_helper.c |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Previous posting in April didn't generate any complains, so seeing if
-qemu-trivial can pick it up.
-
- configure | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/configure b/configure
-index 27d84d9..fd4d1e9 100755
---- a/configure
-+++ b/configure
-@@ -330,7 +330,7 @@ virtio_blk_data_plane=""
- gtk=""
- gtkabi=""
- vte=""
--tpm="no"
-+tpm="yes"
- libssh2=""
- vhdx=""
- quorum=""
-@@ -1104,6 +1104,8 @@ for opt do
-   ;;
-   --enable-vte) vte="yes"
-   ;;
-+  --disable-tpm) tpm="no"
-+  ;;
-   --enable-tpm) tpm="yes"
-   ;;
-   --disable-libssh2) libssh2="no"
-@@ -1377,6 +1379,7 @@ Advanced options (experts only):
-   --disable-glusterfs      disable GlusterFS backend
-   --enable-gcov            enable test coverage analysis with gcov
-   --gcov=GCOV              use specified gcov [$gcov_tool]
-+  --disable-tpm            disable TPM support
-   --enable-tpm             enable TPM support
-   --disable-libssh2        disable ssh block device support
-   --enable-libssh2         enable ssh block device support
--- 
-1.9.3
+diff --git a/target-ppc/dfp_helper.c b/target-ppc/dfp_helper.c
+index 773803a..49820bf 100644
+--- a/target-ppc/dfp_helper.c
++++ b/target-ppc/dfp_helper.c
+@@ -411,9 +411,8 @@ static inline int dfp_get_digit(decNumber *dn, int n)
+         return (dn->lsu[unit] / 10) % 10;
+     case 2:
+         return dn->lsu[unit] / 100;
+-    default:
+-        assert(0);
+     }
++    g_assert_not_reached();
+ }
+=20
+ #define DFP_HELPER_TAB(op, dnop, postprocs, size)                       =
+       \
+--=20
+1.7.10.4
 
 
