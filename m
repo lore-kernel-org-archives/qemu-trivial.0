@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Wxz3w-0003eI-CO
+	id 1Wxz3w-0003da-0g
 	for mharc-qemu-trivial@gnu.org; Fri, 20 Jun 2014 09:41:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57802)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39944)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hunterlaux@gmail.com>) id 1WxwmG-0004B3-6O
-	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 07:14:45 -0400
+	(envelope-from <hunterlaux@gmail.com>) id 1WxvIC-0003wm-Ga
+	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 05:39:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hunterlaux@gmail.com>) id 1WxwmA-0000jt-I4
-	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 07:14:40 -0400
-Received: from mail-pa0-x233.google.com ([2607:f8b0:400e:c03::233]:58838)
+	(envelope-from <hunterlaux@gmail.com>) id 1WxvI3-0007Cp-FF
+	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 05:39:32 -0400
+Received: from mail-pb0-x234.google.com ([2607:f8b0:400e:c01::234]:47578)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <hunterlaux@gmail.com>)
-	id 1Wxwly-0000iT-Us; Fri, 20 Jun 2014 07:14:23 -0400
-Received: by mail-pa0-f51.google.com with SMTP id hz1so3007509pad.38
-	for <multiple recipients>; Fri, 20 Jun 2014 04:14:22 -0700 (PDT)
+	id 1WxvHk-00078P-W8; Fri, 20 Jun 2014 05:39:05 -0400
+Received: by mail-pb0-f52.google.com with SMTP id rq2so2945516pbb.11
+	for <multiple recipients>; Fri, 20 Jun 2014 02:39:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id;
-	bh=9eyKvLzN6DsbL3shRXQ2eJfjP5CcB8Sc3XU1dZLXTeo=;
-	b=yZshTVoyaUye9DO8HkGA3OamYGrr3/+vvzcd3kK9Qhw5ypp+q+Hx5nO4jrv2c5e/EK
-	mGV0s5/DzE0GQVcNPJ8Xo3fB5YiU3zmA0JdZwWx6laTj1iGrDTNXIERSjHeoEVK+RbXX
-	VfHf6ofzKNf6Tx1iwPp+RiqqEcgh3OlPUmUD0XfYAp8tS9XPUuHtayGzasIDIoW26SYw
-	/XU61/Stz4plKbsSgnxSTXw7guhysQ0bHkczqADqznygMvKEs7lar14kG8JHcork4A25
-	HIKAa1Yg7FxSu0ys5fBYKveBG7T5wCDXcL9EyHOBykpSnyy5LMZXgEx191y5tmcrX1xM
-	8tcA==
-X-Received: by 10.68.215.3 with SMTP id oe3mr3666503pbc.109.1403262861894;
-	Fri, 20 Jun 2014 04:14:21 -0700 (PDT)
+	bh=lCdVoO8nzjxPDkJXmaq1qHiRSMQWvSfaxqVpASP6GIw=;
+	b=senNTBedou3lozYRJlnA28xu+0MrPQF6sDeFerT6HM58fqtc2pqIE4SR4kPctfPe3k
+	UCYB+5JqdKSBXcmNa4XsEmfM5jgS5HkmfYk9El9zy5ivY8MrrRXUGnIKJCa1GfIN9bHZ
+	p1/JT4nTEtJPhI5iZmpGp164UKL/MaOuJvo7ez6BEyIlIqEBsc0rdTWLoZdGRRNTX2N6
+	1EgVF0mgP6nFO9ZrdgqM3QNHJKXZ5WaJhhQxQKd0xlMmM8XMHeHH1I7IarVBAejz9ZOR
+	wQ88cxTAyX8tyvm/HQSUxs2tn5a5n5nRRvMSuQudsCboCawYwu34cAC0MTQaXlGDrSk+
+	oxKg==
+X-Received: by 10.68.189.68 with SMTP id gg4mr3059790pbc.42.1403257143936;
+	Fri, 20 Jun 2014 02:39:03 -0700 (PDT)
 Received: from HunterLaux-Aspire-V3-771 (ip98-171-191-77.sb.sd.cox.net.
 	[98.171.191.77]) by mx.google.com with ESMTPSA id
-	oz7sm13035107pbc.41.2014.06.20.04.14.20 for <multiple recipients>
+	sv10sm40691484pab.32.2014.06.20.02.39.02 for <multiple recipients>
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 20 Jun 2014 04:14:21 -0700 (PDT)
+	Fri, 20 Jun 2014 02:39:03 -0700 (PDT)
 Received: from HunterLaux-Aspire-V3-771 (localhost [127.0.0.1])
 	by HunterLaux-Aspire-V3-771 (8.14.4/8.14.4/Debian-4.1ubuntu1) with
-	ESMTP id s5KBEGaF020037; Fri, 20 Jun 2014 04:14:16 -0700
+	ESMTP id s5K9d0nS017412; Fri, 20 Jun 2014 02:39:00 -0700
 Received: (from hlaux@localhost)
-	by HunterLaux-Aspire-V3-771 (8.14.4/8.14.4/Submit) id s5KBEF3r020007;
-	Fri, 20 Jun 2014 04:14:15 -0700
+	by HunterLaux-Aspire-V3-771 (8.14.4/8.14.4/Submit) id s5K9cxwh017405;
+	Fri, 20 Jun 2014 02:38:59 -0700
 From: Hunter Laux <hunterlaux@gmail.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, riku.voipio@iki.fi,
-	peter.maydell@linaro.org
-Date: Fri, 20 Jun 2014 04:13:14 -0700
-Message-Id: <1403262794-19963-1-git-send-email-hunterlaux@gmail.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, peter.maydell@linaro.org, 
+	riku.voipio@iki.fi
+Date: Fri, 20 Jun 2014 02:37:58 -0700
+Message-Id: <1403257078-17220-1-git-send-email-hunterlaux@gmail.com>
 X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c03::233
+X-Received-From: 2607:f8b0:400e:c01::234
 X-Mailman-Approved-At: Fri, 20 Jun 2014 09:41:01 -0400
 Cc: Hunter Laux <hunterlaux@gmail.com>
-Subject: [Qemu-trivial] [PATCH v2] Add support for the arm breakpoint syscall
+Subject: [Qemu-trivial] [PATCH] Add support for the arm breakpoint syscall
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,14 +59,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Jun 2014 11:14:46 -0000
-
-OABI arm used a software interrupt(0xef9f0001) for breakpoints.
-Since 2005 gdb has used the break instruction(0xe7f001f0) for EABI.
-Apparently Steel Bank Common Lisp still uses the swi instruction.
-
-This is the kernel implementation:
-http://lxr.free-electrons.com/source/arch/arm/kernel/traps.c#L598
+X-List-Received-Date: Fri, 20 Jun 2014 09:39:41 -0000
 
 Signed-off-by: Hunter Laux <hunterlaux@gmail.com>
 ---
@@ -87,7 +80,7 @@ index ce2c2a8..e0d2cc3 100644
  #define ARM_NR_set_tls	  (ARM_NR_BASE + 5)
  
 diff --git a/linux-user/main.c b/linux-user/main.c
-index a87c6f7..9c3eddc 100644
+index a87c6f7..831b363 100644
 --- a/linux-user/main.c
 +++ b/linux-user/main.c
 @@ -807,6 +807,9 @@ void cpu_loop(CPUARMState *env)
@@ -104,7 +97,7 @@ index a87c6f7..9c3eddc 100644
              }
              break;
          case EXCP_DEBUG:
-+        excp_debug:
++            excp_debug:
              {
                  int sig;
  
