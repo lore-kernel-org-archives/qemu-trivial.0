@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WxvUi-0003cR-Rx
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Jun 2014 05:52:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42641)
+	id 1WxwoB-0006Mj-VU
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Jun 2014 07:16:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58237)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WxvUd-0003bl-30
-	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 05:52:27 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Wxwo6-0006Hi-3D
+	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 07:16:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WxvUY-0003Hx-5V
-	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 05:52:23 -0400
-Received: from mail-la0-f43.google.com ([209.85.215.43]:52663)
+	(envelope-from <peter.maydell@linaro.org>) id 1Wxwnx-0001IT-JF
+	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 07:16:34 -0400
+Received: from mail-la0-f41.google.com ([209.85.215.41]:47139)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1WxvUX-0003Hd-Uq
-	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 05:52:18 -0400
-Received: by mail-la0-f43.google.com with SMTP id e16so2226426lan.16
-	for <qemu-trivial@nongnu.org>; Fri, 20 Jun 2014 02:52:16 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1Wxwnx-0001IA-Co
+	for qemu-trivial@nongnu.org; Fri, 20 Jun 2014 07:16:25 -0400
+Received: by mail-la0-f41.google.com with SMTP id hz20so2282418lab.14
+	for <qemu-trivial@nongnu.org>; Fri, 20 Jun 2014 04:16:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=VGALDm4VEJyiNQA2gqfOda9sHe6o4hBfP6YBHDBz0pI=;
-	b=gROGjilbdVJNWosKKPvZazJtJGkpdZ3zbA90glLZP+SN0EEIrIFLgE6uu28h31uy3a
-	4l1HzYRoe1yvqtDMZMNbRSpM1d6ThS4TPwK+SbLGgNfNtZ5UsujIzC61ZelAKlLVApcQ
-	eGGKX+VmIs7xlstFyyt0mI2XTHUdt3lHZ/zTEo+nKt8o3pEkPOuWo8SyN0wQvd8jtagr
-	g8DfbyOwXyfKPVtmgzJuXCFMblgidgmtSEe23Mbl0RT4YH968mXZ5mnec0KcGj/bvlCd
-	xXatqd/QBQAKalzSnfaFcvD3mU/wCcNFfynB4tLfDUh8DpN4LNGAX0ibVW1v5AbvZbX8
-	NQ7w==
-X-Gm-Message-State: ALoCoQkngpBkSCNkNjgfQxC5pcyh3UTzXSlmHS9GdUSQIYtHWz84lxv/NxC0T8NiUHRWwU88kymC
-X-Received: by 10.152.6.131 with SMTP id b3mr1819798laa.9.1403257936585; Fri,
-	20 Jun 2014 02:52:16 -0700 (PDT)
+	bh=KkqQP6JXy1UKYji3lJQ3m/ZYXgle0XbisIWBDG/+PZE=;
+	b=lKhWs+6hNMCrouPfvRqxv7Aa6OMaXNfDb7NKWv53htMI4TpubToG7Q+SHFMd3zJsbA
+	ERfnJCnIDcncf5aRIosivgKNxHan8vokQCo/GB14YHyvHVTARo0Ez7dzU3L2P2vbqiBB
+	FBJkKso1HF6l3FpQxkq+ykC4WIUzYEcjRkPkWlXfyYA10inJ0mOpskK0SFEzUaq374II
+	1mg16mGhm6FVAETNXKjI5d4nlMH3JL1N30ECbz9EotPOFWj3ZygR4GVqJn1XnyIVa2xK
+	b7d3pOdMVnizIxrXs9dEHm9IU0u2jO+yMalJzcM1wPFI8lxMTHL9X7eo3dfNWf6UHbNt
+	yZHA==
+X-Gm-Message-State: ALoCoQlI9kUSDLPy2FZdIMh0Cx1X2AV2bYSfzU5Ju2yB7YVadUwGDPd4k4CjQeXZP4IoouMhv6Oe
+X-Received: by 10.152.10.168 with SMTP id j8mr2062807lab.37.1403262984204;
+	Fri, 20 Jun 2014 04:16:24 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Fri, 20 Jun 2014 02:51:56 -0700 (PDT)
-In-Reply-To: <1403255644-16868-1-git-send-email-hunterlaux@gmail.com>
-References: <1403255644-16868-1-git-send-email-hunterlaux@gmail.com>
+Received: by 10.112.158.228 with HTTP; Fri, 20 Jun 2014 04:16:04 -0700 (PDT)
+In-Reply-To: <1403262794-19963-1-git-send-email-hunterlaux@gmail.com>
+References: <1403262794-19963-1-git-send-email-hunterlaux@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 20 Jun 2014 10:51:56 +0100
-Message-ID: <CAFEAcA_vy==mgFDUo6AMpUc_PZoZ8G=r8=ZLe1f0sGWCDhM_5Q@mail.gmail.com>
+Date: Fri, 20 Jun 2014 12:16:04 +0100
+Message-ID: <CAFEAcA_Z-tgCNGaxEoyOq9jn4DDGH3_icGB-fPAbt4-8z=0+vw@mail.gmail.com>
 To: Hunter Laux <hunterlaux@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.215.43
+X-Received-From: 209.85.215.41
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add support for the arm
-	breakpoint syscall.
+Subject: Re: [Qemu-trivial] [PATCH v2] Add support for the arm breakpoint
+	syscall
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,76 +55,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Jun 2014 09:52:28 -0000
+X-List-Received-Date: Fri, 20 Jun 2014 11:16:38 -0000
 
-[cc'ing Riku as the linux-user maintainer.]
-
-On 20 June 2014 10:14, Hunter Laux <hunterlaux@gmail.com> wrote:
-
-Thanks for writing this patch. It mostly looks good
-but there are some minor admin/format tweaks we need.
-
-You need to provide a Signed-off-by: line here, or
-we can't take this patch, I'm afraid. (We work the same
-way as the Linux kernel for this; see
-http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/SubmittingPatches?id=f6f94e2ab1b33f0082ac22d71f66385a60d8157f#n297
-for more details, but basically it says you wrote the code
-and are willing to contribute it under our licensing terms.)
-
-It could also use a little more explanation in the commit
-message.
-
-FWIW, this is an obscure syscall that dates back to before
-the architecture provided an official breakpoint instruction;
-apparently it's still used by Steel Bank Common Lisp.
-
-This is the kernel implementation:
-http://lxr.free-electrons.com/source/arch/arm/kernel/traps.c#L598
-
-> ---
->  linux-user/arm/syscall.h | 1 +
->  linux-user/main.c        | 4 ++++
->  2 files changed, 5 insertions(+)
+On 20 June 2014 12:13, Hunter Laux <hunterlaux@gmail.com> wrote:
+> OABI arm used a software interrupt(0xef9f0001) for breakpoints.
+> Since 2005 gdb has used the break instruction(0xe7f001f0) for EABI.
+> Apparently Steel Bank Common Lisp still uses the swi instruction.
 >
-> diff --git a/linux-user/arm/syscall.h b/linux-user/arm/syscall.h
-> index ce2c2a8..e0d2cc3 100644
-> --- a/linux-user/arm/syscall.h
-> +++ b/linux-user/arm/syscall.h
-> @@ -29,6 +29,7 @@ struct target_pt_regs {
->  #define ARM_THUMB_SYSCALL      0
+> This is the kernel implementation:
+> http://lxr.free-electrons.com/source/arch/arm/kernel/traps.c#L598
 >
->  #define ARM_NR_BASE      0xf0000
-> +#define ARM_NR_breakpoint (ARM_NR_BASE + 1)
->  #define ARM_NR_cacheflush (ARM_NR_BASE + 2)
->  #define ARM_NR_set_tls   (ARM_NR_BASE + 5)
->
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index a87c6f7..831b363 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -807,6 +807,9 @@ void cpu_loop(CPUARMState *env)
->                              cpu_set_tls(env, env->regs[0]);
->                              env->regs[0] = 0;
->                              break;
-> +                        case ARM_NR_breakpoint:
-> +                            env->regs[15] -= env->thumb ? 2 : 4;
-> +                            goto excp_debug;
->                          default:
->                              gemu_log("qemu: Unsupported ARM syscall: 0x%x\n",
->                                       n);
-> @@ -850,6 +853,7 @@ void cpu_loop(CPUARMState *env)
->              }
->              break;
->          case EXCP_DEBUG:
-> +            excp_debug:
+> Signed-off-by: Hunter Laux <hunterlaux@gmail.com>
 
-The indent on this label isn't quite right; it should
-be 4 columns to the left.
-
->              {
->                  int sig;
-
-Those minor issues aside, the code looks right to me.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM
