@@ -1,44 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WyMs8-0008Ta-P2
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Jun 2014 11:06:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48005)
+	id 1WyMxB-0001L4-3W
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Jun 2014 11:11:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48811)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WyMs0-0008Jq-O6
-	for qemu-trivial@nongnu.org; Sat, 21 Jun 2014 11:06:26 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WyMx2-0001AI-Of
+	for qemu-trivial@nongnu.org; Sat, 21 Jun 2014 11:11:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WyMru-0006vd-GR
-	for qemu-trivial@nongnu.org; Sat, 21 Jun 2014 11:06:20 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:49379)
+	(envelope-from <mjt@tls.msk.ru>) id 1WyMww-0000Ki-KA
+	for qemu-trivial@nongnu.org; Sat, 21 Jun 2014 11:11:32 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:36376)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WyMrh-0006u1-V0; Sat, 21 Jun 2014 11:06:02 -0400
+	id 1WyMwi-0000GV-Cn; Sat, 21 Jun 2014 11:11:12 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id EF60141E41;
-	Sat, 21 Jun 2014 19:06:00 +0400 (MSK)
-Message-ID: <53A59F58.70104@msgid.tls.msk.ru>
-Date: Sat, 21 Jun 2014 19:06:00 +0400
+	by isrv.corpit.ru (Postfix) with ESMTP id 79A9741E41;
+	Sat, 21 Jun 2014 19:11:11 +0400 (MSK)
+Message-ID: <53A5A08F.5050600@msgid.tls.msk.ru>
+Date: Sat, 21 Jun 2014 19:11:11 +0400
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.5.0
 MIME-Version: 1.0
-To: Luiz Capitulino <lcapitulino@redhat.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>
-References: <1401480140-18653-1-git-send-email-ehabkost@redhat.com>	<1401480140-18653-2-git-send-email-ehabkost@redhat.com>
-	<20140609160426.63250974@redhat.com>
-In-Reply-To: <20140609160426.63250974@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <1402160924-14152-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1402160924-14152-1-git-send-email-peter.maydell@linaro.org>
 X-Enigmail-Version: 1.6
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org,
-	=?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber@suse.de>,
-	qemu-devel@nongnu.org, Anthony Liguori <aliguori@amazon.com>,
-	Marcel Apfelbaum <marcel.a@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH 1/3] rng-random: NULL check not needed
- before g_free()
+Cc: qemu-trivial@nongnu.org, patches@linaro.org,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH] tcg: mark tcg_out* and tcg_patch* with
+ attribute 'unused'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,13 +46,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Jun 2014 15:06:27 -0000
+X-List-Received-Date: Sat, 21 Jun 2014 15:11:39 -0000
 
-10.06.2014 00:04, Luiz Capitulino wrote:
-> On Fri, 30 May 2014 17:02:18 -0300
-> Eduardo Habkost <ehabkost@redhat.com> wrote:
-> 
->> g_free() is NULL-safe.
+07.06.2014 21:08, Peter Maydell wrote:
+> The tcg_out* and tcg_patch* functions are utility routines that may or
+> may not be used by a particular backend; mark them with the 'unused'
+> attribute to suppress spurious warnings if they aren't used.
 
 Applied to -trivial, thank you!
 
