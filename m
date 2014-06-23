@@ -1,30 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WzDLM-0001Sz-Ea
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Jun 2014 19:08:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50870)
+	id 1WzDNP-0004wK-VP
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Jun 2014 19:10:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51693)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WzDLJ-0001Mt-L0
-	for qemu-trivial@nongnu.org; Mon, 23 Jun 2014 19:08:06 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1WzDNN-0004qG-0Q
+	for qemu-trivial@nongnu.org; Mon, 23 Jun 2014 19:10:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1WzDLI-0001w6-Sj
-	for qemu-trivial@nongnu.org; Mon, 23 Jun 2014 19:08:05 -0400
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48702)
+	(envelope-from <pm215@archaic.org.uk>) id 1WzDNM-0002xW-7p
+	for qemu-trivial@nongnu.org; Mon, 23 Jun 2014 19:10:12 -0400
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:48707)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WzDLF-0001v8-AK; Mon, 23 Jun 2014 19:08:01 -0400
+	id 1WzDNK-0002wO-DV; Mon, 23 Jun 2014 19:10:10 -0400
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1WzDLD-0004AW-Ie; Tue, 24 Jun 2014 00:07:59 +0100
+	id 1WzDNJ-0004Bw-Kg; Tue, 24 Jun 2014 00:10:09 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Tue, 24 Jun 2014 00:07:59 +0100
-Message-Id: <1403564879-15999-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 24 Jun 2014 00:10:09 +0100
+Message-Id: <1403565009-16087-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-trivial@nongnu.org, Guan Xuetao <gxt@mprc.pku.edu.cn>
-Subject: [Qemu-trivial] [PATCH] target-unicore: Remove unused functions
+Cc: qemu-trivial@nongnu.org, Anthony Green <green@moxielogic.com>
+Subject: [Qemu-trivial] [PATCH] hw/moxie/moxiesim.c: Remove unused
+	moxie_intc_create()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,103 +37,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Jun 2014 23:08:06 -0000
+X-List-Received-Date: Mon, 23 Jun 2014 23:10:14 -0000
 
-The functions gen_st64, gen_ld64, gen_mulxy, ucf64_itod and
-ucf64_dtoi are all unused; remove them.
+The function moxie_intc_create() is unused; remove it.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target-unicore32/translate.c    | 28 ----------------------------
- target-unicore32/ucf64_helper.c | 22 ----------------------
- 2 files changed, 50 deletions(-)
+In any case the recommendation these days would be to do this
+kind of simple create-configure-init-wire-up inline in the
+machine model code...
 
-diff --git a/target-unicore32/translate.c b/target-unicore32/translate.c
-index 5a8c7c8..e3643c2 100644
---- a/target-unicore32/translate.c
-+++ b/target-unicore32/translate.c
-@@ -576,13 +576,6 @@ static inline TCGv gen_ld32(TCGv addr, int index)
-     return tmp;
+ hw/moxie/moxiesim.c | 13 -------------
+ 1 file changed, 13 deletions(-)
+
+diff --git a/hw/moxie/moxiesim.c b/hw/moxie/moxiesim.c
+index f4357cf..430f841 100644
+--- a/hw/moxie/moxiesim.c
++++ b/hw/moxie/moxiesim.c
+@@ -94,19 +94,6 @@ static void main_cpu_reset(void *opaque)
+     cpu_reset(CPU(cpu));
  }
  
--static inline TCGv_i64 gen_ld64(TCGv addr, int index)
+-static inline DeviceState *
+-moxie_intc_create(hwaddr base, qemu_irq irq, int kind_of_intr)
 -{
--    TCGv_i64 tmp = tcg_temp_new_i64();
--    tcg_gen_qemu_ld64(tmp, addr, index);
--    return tmp;
+-    DeviceState *dev;
+-
+-    dev = qdev_create(NULL, "moxie,intc");
+-    qdev_prop_set_uint32(dev, "kind-of-intr", kind_of_intr);
+-    qdev_init_nofail(dev);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+-    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq);
+-    return dev;
 -}
 -
- static inline void gen_st8(TCGv val, TCGv addr, int index)
+ static void moxiesim_init(MachineState *machine)
  {
-     tcg_gen_qemu_st8(val, addr, index);
-@@ -601,12 +594,6 @@ static inline void gen_st32(TCGv val, TCGv addr, int index)
-     dead_tmp(val);
- }
- 
--static inline void gen_st64(TCGv_i64 val, TCGv addr, int index)
--{
--    tcg_gen_qemu_st64(val, addr, index);
--    tcg_temp_free_i64(val);
--}
--
- static inline void gen_set_pc_im(uint32_t val)
- {
-     tcg_gen_movi_i32(cpu_R[31], val);
-@@ -1128,21 +1115,6 @@ static inline void gen_jmp(DisasContext *s, uint32_t dest)
-     }
- }
- 
--static inline void gen_mulxy(TCGv t0, TCGv t1, int x, int y)
--{
--    if (x) {
--        tcg_gen_sari_i32(t0, t0, 16);
--    } else {
--        gen_sxth(t0);
--    }
--    if (y) {
--        tcg_gen_sari_i32(t1, t1, 16);
--    } else {
--        gen_sxth(t1);
--    }
--    tcg_gen_mul_i32(t0, t0, t1);
--}
--
- /* Returns nonzero if access to the PSR is not permitted. Marks t0 as dead. */
- static int gen_set_psr(DisasContext *s, uint32_t mask, int bsr, TCGv t0)
- {
-diff --git a/target-unicore32/ucf64_helper.c b/target-unicore32/ucf64_helper.c
-index 0c7ea26..5af008f 100644
---- a/target-unicore32/ucf64_helper.c
-+++ b/target-unicore32/ucf64_helper.c
-@@ -290,28 +290,6 @@ static inline uint32_t ucf64_stoi(float32 s)
-     return v.i;
- }
- 
--static inline float64 ucf64_itod(uint64_t i)
--{
--    union {
--        uint64_t i;
--        float64 d;
--    } v;
--
--    v.i = i;
--    return v.d;
--}
--
--static inline uint64_t ucf64_dtoi(float64 d)
--{
--    union {
--        uint64_t i;
--        float64 d;
--    } v;
--
--    v.d = d;
--    return v.i;
--}
--
- /* Integer to float conversion.  */
- float32 HELPER(ucf64_si2sf)(float32 x, CPUUniCore32State *env)
- {
+     MoxieCPU *cpu = NULL;
 -- 
 2.0.0
 
