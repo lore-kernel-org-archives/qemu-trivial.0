@@ -1,43 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WzT9h-0005Wm-1A
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jun 2014 12:01:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49112)
+	id 1WzTI3-0005O1-UJ
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jun 2014 12:09:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52304)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WzT9X-0005Kd-Ug
-	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 12:01:07 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WzTHw-00059a-IG
+	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 12:09:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WzT9Q-0001OG-G0
-	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 12:00:59 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:47169)
+	(envelope-from <mjt@tls.msk.ru>) id 1WzTHq-0004zx-PZ
+	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 12:09:40 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60075)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1WzT99-0001En-9t; Tue, 24 Jun 2014 12:00:35 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 884A04405B;
-	Tue, 24 Jun 2014 20:00:34 +0400 (MSK)
-Message-ID: <53A9A0A2.9010904@msgid.tls.msk.ru>
-Date: Tue, 24 Jun 2014 20:00:34 +0400
+	id 1WzTHe-0004vs-Ud; Tue, 24 Jun 2014 12:09:23 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 5414344082;
+	Tue, 24 Jun 2014 20:09:22 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 3A838674;
+	Tue, 24 Jun 2014 20:09:22 +0400 (MSK)
+Received: (nullmailer pid 15621 invoked by uid 1000);
+	Tue, 24 Jun 2014 16:09:21 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.6.0
-MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>
-References: <53A84797.9040304@gmail.com>	<20140624104614.GD3458@noname.redhat.com>
-	<87d2dywoyn.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87d2dywoyn.fsf@blackfin.pond.sub.org>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Tue, 24 Jun 2014 20:09:12 +0400
+Message-Id: <1403626160-15546-7-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1403626160-15546-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1403626160-15546-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: famz@redhat.com, Chen Gang <gang.chen.5i5j@gmail.com>,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	mreitz@redhat.com, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial v2] block.c: Add
- return value for bdrv_append_temp_snapshot() to avoid incorrect failure
- processing issue
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Chen Gang <gang.chen.5i5j@gmail.com>
+Subject: [Qemu-trivial] [PULL 06/14] block.c: Remove useless 'buf' variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,59 +43,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jun 2014 16:01:07 -0000
+X-List-Received-Date: Tue, 24 Jun 2014 16:09:46 -0000
 
-24.06.2014 15:01, Markus Armbruster wrote:
-> Kevin Wolf <kwolf@redhat.com> writes:
-> 
->> Am 23.06.2014 um 17:28 hat Chen Gang geschrieben:
->>> When failure occurs, 'ret' need be set, or may return 0 to indicate success.
->>> And error_propagate() also need be called only one time within a function.
->>>
->>> It is abnormal to prevent bdrv_append_temp_snapshot() return value but still
->>> set errp when error occurs -- although it contents return value internally.
->>>
->>> So let bdrv_append_temp_snapshot() internal return value outside, and let
->>> all things normal, then fix the issue too.
->>>
->>> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
->>
->> What does this fix?
-> 
-> It fixes the return value of bdrv_open() when
-> bdrv_append_temp_snapshot() fails.  Before this patch, it returns a
-> positive value, which is wrong.  After the patch, it returns the
-> negative error code bdrv_append_temp_snapshot() now returns.
+From: Chen Gang <gang.chen.5i5j@gmail.com>
 
-So, what should be done there?   Kevin, maybe you should pick this up
-instead of going -trivial route?
+'buf' is not used actually, so remove it and related snprintf() statement.
 
->> Having both a return value and an Error* object is duplication and
->> only a sign that a function hasn't been fully converted to the Error
->> framework yet. We shouldn't introduce new instances of this without a
->> very good reason.
-> 
-> Maybe.  But I very much prefer
-> 
->         ret = foo(arg, errp);
->         if (ret < 0) {
->             return ret;
->         }
-> 
-> over
-> 
->         Error *local_err = NULL;
-> 
->         foo(arg, &local_err);
->         if (local_err) {
->             error_propagate(errp, local_err);
->             return;
->         }
+Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ block.c |    2 --
+ 1 file changed, 2 deletions(-)
 
-Yes, this new error propagation is a bit ugly, I dislike it too.
-
-Thanks,
-
-/mjt
+diff --git a/block.c b/block.c
+index e6f9b71..217f523 100644
+--- a/block.c
++++ b/block.c
+@@ -5581,7 +5581,6 @@ void bdrv_img_create(const char *filename, const char *fmt,
+         if (backing_file) {
+             BlockDriverState *bs;
+             uint64_t size;
+-            char buf[32];
+             int back_flags;
+ 
+             /* backing files always opened read-only */
+@@ -5602,7 +5601,6 @@ void bdrv_img_create(const char *filename, const char *fmt,
+             bdrv_get_geometry(bs, &size);
+             size *= 512;
+ 
+-            snprintf(buf, sizeof(buf), "%" PRId64, size);
+             qemu_opt_set_number(opts, BLOCK_OPT_SIZE, size);
+ 
+             bdrv_unref(bs);
+-- 
+1.7.10.4
 
 
