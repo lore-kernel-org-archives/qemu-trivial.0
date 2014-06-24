@@ -1,38 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WzTg5-0003He-SV
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jun 2014 12:34:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60026)
+	id 1WzU2H-00086T-FB
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jun 2014 12:57:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37708)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WzTfz-0003A8-Rd
-	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 12:34:36 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1WzU2B-0007t2-Bi
+	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 12:57:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WzTfu-0000SL-OP
-	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 12:34:31 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51290)
+	(envelope-from <peter.maydell@linaro.org>) id 1WzU1z-0000is-2B
+	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 12:57:25 -0400
+Received: from mail-lb0-f174.google.com ([209.85.217.174]:52226)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WzTfk-0000Ot-LA; Tue, 24 Jun 2014 12:34:16 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0B9F74407E;
-	Tue, 24 Jun 2014 20:34:16 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1A6896B5;
-	Tue, 24 Jun 2014 20:09:23 +0400 (MSK)
-Received: (nullmailer pid 15632 invoked by uid 1000);
-	Tue, 24 Jun 2014 16:09:21 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Tue, 24 Jun 2014 20:09:17 +0400
-Message-Id: <1403626160-15546-12-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <peter.maydell@linaro.org>) id 1WzU1y-0000iV-S0
+	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 12:57:15 -0400
+Received: by mail-lb0-f174.google.com with SMTP id u10so852279lbd.5
+	for <qemu-trivial@nongnu.org>; Tue, 24 Jun 2014 09:57:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=H14Qm6ALM8kpGDcbzjQqYS8j7FoHCNom+nH+qtLW18Y=;
+	b=Zdh/JketAQKusDweGpit1OusUIZi+McRHF839A8Bl4O8hNQe2C3AuSWc6tQ7x61twK
+	ZayLsbIEGiL9xRWUfV6sEnCunuh+O6qE5i0k0CII5sTYF7ZIWVAGi8176aY5n/xmajz6
+	owH5JGChNduDbh/5nxo7HkRj8QsfBehApweWiKGAOyR/hVrruU/eJyQi54xB2Fj4Oz/d
+	bCuvvfMxmJ6Ben8bR9lzdm/gQFydezvDFI7U5i8/m8npgfTQZ+l53603aKJKIdx8Zdhc
+	df9/QRJ4W4g63PtzFrXeDDxEXH4Ub1mh2I3VRIkaON61cgNkFzsNZU9n6iJxQbSpa+65
+	/EIg==
+X-Gm-Message-State: ALoCoQl9LgGepZAugXb9oj8R8OM8cUXb09+Ra2TDhnCV10oKEmThD1xBwmibKOLhenvrYUuKKIl9
+X-Received: by 10.112.129.202 with SMTP id ny10mr1534488lbb.14.1403629033498; 
+	Tue, 24 Jun 2014 09:57:13 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.158.228 with HTTP; Tue, 24 Jun 2014 09:56:52 -0700 (PDT)
 In-Reply-To: <1403626160-15546-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1403626160-15546-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 11/14] hw/moxie/moxiesim.c: Remove unused
-	moxie_intc_create()
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 24 Jun 2014 17:56:52 +0100
+Message-ID: <CAFEAcA-tvshqbBE6jAYM_h9J5nvbNN7g=4807t=Y7eo5BU9Mzg@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.174
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/14] Trivial patches for
+	2014-06-24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,43 +55,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jun 2014 16:34:36 -0000
+X-List-Received-Date: Tue, 24 Jun 2014 16:57:33 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+On 24 June 2014 17:09, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here's another pull request for the trivial patches queue.
+>
+> Nothing exciting, but it contains some bugfixes.  For example,
+> a build fix for FreeBSD by Ed Maste.
+>
+> Please consider pulling/applying.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 513d80edc15d77b6d85df7dfad750ce95d091b78:
+>
+>   Merge remote-tracking branch 'remotes/juanquintela/tags/migration/20140623' into staging (2014-06-24 15:33:42 +0100)
+>
+> are available in the git repository at:
+>
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-06-24
+>
+> for you to fetch changes up to d535508793a8e9389379543ef8d506e50c10cf67:
+>
+>   Add support for the arm breakpoint syscall (2014-06-24 20:01:24 +0400)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2014-06-24
+>
 
-The function moxie_intc_create() is unused; remove it.
+Applied, thanks.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/moxie/moxiesim.c |   13 -------------
- 1 file changed, 13 deletions(-)
-
-diff --git a/hw/moxie/moxiesim.c b/hw/moxie/moxiesim.c
-index f4357cf..430f841 100644
---- a/hw/moxie/moxiesim.c
-+++ b/hw/moxie/moxiesim.c
-@@ -94,19 +94,6 @@ static void main_cpu_reset(void *opaque)
-     cpu_reset(CPU(cpu));
- }
- 
--static inline DeviceState *
--moxie_intc_create(hwaddr base, qemu_irq irq, int kind_of_intr)
--{
--    DeviceState *dev;
--
--    dev = qdev_create(NULL, "moxie,intc");
--    qdev_prop_set_uint32(dev, "kind-of-intr", kind_of_intr);
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
--    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq);
--    return dev;
--}
--
- static void moxiesim_init(MachineState *machine)
- {
-     MoxieCPU *cpu = NULL;
--- 
-1.7.10.4
-
+-- PMM
 
