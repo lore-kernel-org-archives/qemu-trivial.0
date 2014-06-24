@@ -1,44 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WzOUk-0001fn-MF
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jun 2014 07:02:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53291)
+	id 1WzT60-00026n-Im
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jun 2014 11:57:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47478)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WzOUa-0001PW-Pw
-	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 07:02:33 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1WzT5s-0001tI-IV
+	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 11:57:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>) id 1WzOUS-0003jR-DO
-	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 07:02:24 -0400
-Received: from oxygen.pond.sub.org ([144.76.244.19]:38753)
+	(envelope-from <mjt@tls.msk.ru>) id 1WzT5m-00081A-RV
+	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 11:57:12 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:39257)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@pond.sub.org>)
-	id 1WzOUA-0003c6-GF; Tue, 24 Jun 2014 07:01:58 -0400
-Received: from blackfin.pond.sub.org (p5B3293E2.dip0.t-ipconnect.de
-	[91.50.147.226])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(Client did not present a certificate)
-	by oxygen.pond.sub.org (Postfix) with ESMTPSA id 7C37820EAC;
-	Tue, 24 Jun 2014 13:01:53 +0200 (CEST)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id CECCE30403AF; Tue, 24 Jun 2014 13:01:52 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-References: <53A84797.9040304@gmail.com>
-	<20140624104614.GD3458@noname.redhat.com>
-Date: Tue, 24 Jun 2014 13:01:52 +0200
-In-Reply-To: <20140624104614.GD3458@noname.redhat.com> (Kevin Wolf's message
-	of "Tue, 24 Jun 2014 12:46:14 +0200")
-Message-ID: <87d2dywoyn.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1WzT5a-0007x6-Tc; Tue, 24 Jun 2014 11:56:55 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id ADD454405B;
+	Tue, 24 Jun 2014 19:56:46 +0400 (MSK)
+Message-ID: <53A99FBE.9090607@msgid.tls.msk.ru>
+Date: Tue, 24 Jun 2014 19:56:46 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.6.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 144.76.244.19
-Cc: famz@redhat.com, Chen Gang <gang.chen.5i5j@gmail.com>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org, mreitz@redhat.com, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial v2] block.c: Add
-	return value for bdrv_append_temp_snapshot() to avoid
-	incorrect failure processing issue
+To: =?ISO-8859-1?Q?Bernhard_=DCbelacker?= <bernhardu@vr-web.de>, 
+	qemu-devel@nongnu.org
+References: <53A58863.7040004@vr-web.de>
+In-Reply-To: <53A58863.7040004@vr-web.de>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>
+Subject: Re: [Qemu-trivial] [PATCH-trivial] Grub fails to boot from internal
+ TFTP server when loading more than 3 initrd files.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,48 +46,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jun 2014 11:02:33 -0000
+X-List-Received-Date: Tue, 24 Jun 2014 15:57:18 -0000
 
-Kevin Wolf <kwolf@redhat.com> writes:
+21.06.2014 17:28, Bernhard =DCbelacker wrote:
+> - From a5c3977f133faa8d7e403005325014f114234307 Mon Sep 17 00:00:00 200=
+1
+> From: =3D?UTF-8?q?Bernhard=3D20=3DC3=3D9Cbelacker?=3D <bernhardu@vr-web=
+.de>
+> Date: Sat, 21 Jun 2014 15:26:05 +0200
+> Subject: Increase maximum number of session of the internal TFTP server=
+.
+> MIME-Version: 1.0
+> Content-Type: text/plain; charset=3DUTF-8
+> Content-Transfer-Encoding: 8bit
+>=20
+> Grub fails to boot from internal TFTP server when loading more than 3 i=
+nitrd files.
+>=20
+> Grub first opens a session to the TFTP server for every initrd file and
+> retrieves only the file size for all.
+> Then it wants to download the content using the old sessions which are
+> already expired.
+>=20
+> Increasing the maximum number of session of the internal TFTP
+> server avoids this issue.
 
-> Am 23.06.2014 um 17:28 hat Chen Gang geschrieben:
->> When failure occurs, 'ret' need be set, or may return 0 to indicate success.
->> And error_propagate() also need be called only one time within a function.
->> 
->> It is abnormal to prevent bdrv_append_temp_snapshot() return value but still
->> set errp when error occurs -- although it contents return value internally.
->> 
->> So let bdrv_append_temp_snapshot() internal return value outside, and let
->> all things normal, then fix the issue too.
->> 
->> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
->
-> What does this fix?
+This looks sane.  And while slirp has the maintainer, he appears to be
+inactive, so applying it to -trivial.  Thank you!
 
-It fixes the return value of bdrv_open() when
-bdrv_append_temp_snapshot() fails.  Before this patch, it returns a
-positive value, which is wrong.  After the patch, it returns the
-negative error code bdrv_append_temp_snapshot() now returns.
-
-> Having both a return value and an Error* object is duplication and
-> only a sign that a function hasn't been fully converted to the Error
-> framework yet. We shouldn't introduce new instances of this without a
-> very good reason.
-
-Maybe.  But I very much prefer
-
-        ret = foo(arg, errp);
-        if (ret < 0) {
-            return ret;
-        }
-
-over
-
-        Error *local_err = NULL;
-
-        foo(arg, &local_err);
-        if (local_err) {
-            error_propagate(errp, local_err);
-            return;
-        }
+/mjt
 
