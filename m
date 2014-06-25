@@ -1,35 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WzgEH-00019A-AR
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jun 2014 01:58:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44617)
+	id 1WzgGS-0002l8-9g
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jun 2014 02:01:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45019)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1WzgE9-0000u0-KC
-	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 01:58:42 -0400
+	(envelope-from <mst@redhat.com>) id 1WzgGL-0002bh-Kp
+	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 02:00:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1WzgE4-0004Lr-N8
-	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 01:58:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38390)
+	(envelope-from <mst@redhat.com>) id 1WzgGG-0004z9-Nm
+	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 02:00:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63617)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mst@redhat.com>)
-	id 1WzgDu-0004JB-5z; Wed, 25 Jun 2014 01:58:22 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5P5wICL020111
+	id 1WzgG6-0004xa-CO; Wed, 25 Jun 2014 02:00:38 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5P60YK9020496
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Wed, 25 Jun 2014 01:58:18 -0400
+	verify=OK); Wed, 25 Jun 2014 02:00:35 -0400
 Received: from redhat.com (ovpn-116-41.ams2.redhat.com [10.36.116.41])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id s5P5wFgo001452; Wed, 25 Jun 2014 01:58:15 -0400
-Date: Wed, 25 Jun 2014 08:58:43 +0300
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id s5P60VlI032651; Wed, 25 Jun 2014 02:00:32 -0400
+Date: Wed, 25 Jun 2014 09:00:59 +0300
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20140625055843.GB21553@redhat.com>
+Message-ID: <20140625060059.GC21553@redhat.com>
 References: <1403650675-3368-1-git-send-email-ehabkost@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <1403650675-3368-1-git-send-email-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
@@ -46,7 +46,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Jun 2014 05:58:42 -0000
+X-List-Received-Date: Wed, 25 Jun 2014 06:00:58 -0000
 
 On Tue, Jun 24, 2014 at 07:57:55PM -0300, Eduardo Habkost wrote:
 > The property name is "prog_if", not "prof_if".
@@ -54,7 +54,8 @@ On Tue, Jun 24, 2014 at 07:57:55PM -0300, Eduardo Habkost wrote:
 > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 > Cc: BALATON Zoltan <balaton@eik.bme.hu>
 
-Applied, thanks!
+Should be reported-by, by the way.
+Cc: means "I have notified this person just in case".
 
 > ---
 >  include/hw/i386/pc.h | 2 +-
