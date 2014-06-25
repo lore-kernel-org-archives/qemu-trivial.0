@@ -1,44 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WzkPP-0002Fl-QE
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jun 2014 06:26:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48912)
+	id 1Wzlju-0006Pi-CS
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jun 2014 07:51:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40681)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WzkPH-00022s-G7
-	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 06:26:30 -0400
+	(envelope-from <imammedo@redhat.com>) id 1Wzljm-0006Cg-Gt
+	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 07:51:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1WzkPA-0008Hi-Ks
-	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 06:26:23 -0400
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:47710)
+	(envelope-from <imammedo@redhat.com>) id 1Wzljg-0005TI-3r
+	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 07:51:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47592)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1WzkOw-0008FO-Sx; Wed, 25 Jun 2014 06:26:03 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 06B06113B36;
-	Wed, 25 Jun 2014 12:26:02 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at uni-mannheim.de
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
-	by localhost (smtp.mail.uni-mannheim.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id 16oZGR_pgXo8; Wed, 25 Jun 2014 12:26:01 +0200 (CEST)
-Received: from [134.155.36.73] (edv13.bib.uni-mannheim.de [134.155.36.73])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPSA id DA04F109624;
-	Wed, 25 Jun 2014 12:26:01 +0200 (CEST)
-Message-ID: <53AAA3BC.4010500@weilnetz.de>
-Date: Wed, 25 Jun 2014 12:26:04 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.6.0
+	(envelope-from <imammedo@redhat.com>)
+	id 1Wzljf-0005TD-SR; Wed, 25 Jun 2014 07:51:32 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5PBpTow003418
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Wed, 25 Jun 2014 07:51:29 -0400
+Received: from nial.usersys.redhat.com (dhcp-1-126.brq.redhat.com
+	[10.34.1.126])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s5PBpRFu014011; Wed, 25 Jun 2014 07:51:28 -0400
+Date: Wed, 25 Jun 2014 13:51:26 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20140625135126.64cc15d8@nial.usersys.redhat.com>
+In-Reply-To: <87vbrpe4qa.fsf@blackfin.pond.sub.org>
+References: <1403683241-20678-1-git-send-email-imammedo@redhat.com>
+	<87vbrpe4qa.fsf@blackfin.pond.sub.org>
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <1403679897-11480-1-git-send-email-pbonzini@redhat.com>
-In-Reply-To: <1403679897-11480-1-git-send-email-pbonzini@redhat.com>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-15
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 134.155.96.80
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH for 2.1] qemu-char: initialize out_lock
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-char: fix warning
+ 'res' may be used uninitialized
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,33 +49,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Jun 2014 10:26:30 -0000
+X-List-Received-Date: Wed, 25 Jun 2014 11:51:44 -0000
 
-Am 25.06.2014 09:04, schrieb Paolo Bonzini:
-> Otherwise, Windows fails with a deadlock.
->
-> Reported-by: Stefan Weil <sw@weilnetz.de>
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  qemu-char.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/qemu-char.c b/qemu-char.c
-> index 2e50a10..17bd360 100644
-> --- a/qemu-char.c
-> +++ b/qemu-char.c
-> @@ -94,6 +94,7 @@ static QTAILQ_HEAD(CharDriverStateHead, CharDriverState) chardevs =
->  CharDriverState *qemu_chr_alloc(void)
->  {
->      CharDriverState *chr = g_malloc0(sizeof(CharDriverState));
-> +    qemu_mutex_init(&chr->chr_write_lock);
->      return chr;
->  }
->  
+On Wed, 25 Jun 2014 11:08:29 +0200
+Markus Armbruster <armbru@redhat.com> wrote:
 
+> Igor Mammedov <imammedo@redhat.com> writes:
+> 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> 
+> Broken in commit 9005b2a (author cc'ed).  Bites only when passed zero
+> len, which seems unlikely.
+> 
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> 
 
-Thanks, this fixes the problem with QEMU for Windows.
-
-Tested-by: Stefan Weil <sw@weilnetz.de>
-
+main motivation for the patch was to allow -Werror=all build pass.
 
