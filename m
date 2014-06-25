@@ -1,42 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WziRo-0007nS-9V
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jun 2014 04:20:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46456)
+	id 1WzjCV-0005so-3c
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jun 2014 05:09:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58267)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WziRf-0007gB-1l
-	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 04:20:50 -0400
+	(envelope-from <armbru@pond.sub.org>) id 1WzjCL-0005gN-1y
+	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 05:09:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1WziRX-0006QW-Im
-	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 04:20:42 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:33098)
+	(envelope-from <armbru@pond.sub.org>) id 1WzjCC-0006U0-Jn
+	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 05:08:56 -0400
+Received: from oxygen.pond.sub.org ([144.76.244.19]:40510)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1WziRF-0006LV-4w; Wed, 25 Jun 2014 04:20:17 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0F61D441B8;
-	Wed, 25 Jun 2014 12:20:16 +0400 (MSK)
-Received: from wh.tls.msk.ru (wh.tls.msk.ru [192.168.177.7])
-	by tsrv.corpit.ru (Postfix) with ESMTP id DF20D674;
-	Wed, 25 Jun 2014 12:20:15 +0400 (MSK)
-Message-ID: <53AA863F.9000306@msgid.tls.msk.ru>
-Date: Wed, 25 Jun 2014 12:20:15 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.6.0
+	(envelope-from <armbru@pond.sub.org>)
+	id 1WzjBw-0006St-IW; Wed, 25 Jun 2014 05:08:32 -0400
+Received: from blackfin.pond.sub.org (p5B329579.dip0.t-ipconnect.de
+	[91.50.149.121])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by oxygen.pond.sub.org (Postfix) with ESMTPSA id BF38024DC3;
+	Wed, 25 Jun 2014 11:08:30 +0200 (CEST)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 556D330403AF; Wed, 25 Jun 2014 11:08:29 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+References: <1403683241-20678-1-git-send-email-imammedo@redhat.com>
+Date: Wed, 25 Jun 2014 11:08:29 +0200
+In-Reply-To: <1403683241-20678-1-git-send-email-imammedo@redhat.com> (Igor
+	Mammedov's message of "Wed, 25 Jun 2014 10:00:41 +0200")
+Message-ID: <87vbrpe4qa.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-To: Riku Voipio <riku.voipio@iki.fi>
-References: <1403262794-19963-1-git-send-email-hunterlaux@gmail.com>	<53A9A02C.7030601@msgid.tls.msk.ru>
-	<20140624185420.GA23788@afflict.kos.to>
-In-Reply-To: <20140624185420.GA23788@afflict.kos.to>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
-	Hunter Laux <hunterlaux@gmail.com>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] Add support for the arm breakpoint
- syscall
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 144.76.244.19
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-char: fix warning
+	'res' may be used uninitialized
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,28 +47,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Jun 2014 08:20:50 -0000
+X-List-Received-Date: Wed, 25 Jun 2014 09:09:05 -0000
 
-24.06.2014 22:54, Riku Voipio wrote:
-> On Tue, Jun 24, 2014 at 07:58:36PM +0400, Michael Tokarev wrote:
->> 20.06.2014 15:13, Hunter Laux wrote:
->>> OABI arm used a software interrupt(0xef9f0001) for breakpoints.
->>> Since 2005 gdb has used the break instruction(0xe7f001f0) for EABI.
->>> Apparently Steel Bank Common Lisp still uses the swi instruction.
->  
->> Applied to -trivial, despite the ugliness with the goto.  Oh well.
-> 
-> It was already in my yesterdays linux-user pull req ( which I need
-> to resend with the name_to_handle_at/open_by_handle_at syscalls fixed ).
+Igor Mammedov <imammedo@redhat.com> writes:
 
-If it is the same patch, git should do the Right Thing when
-pulling your branch, without causing conflicts.
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 
-You could notify me about you applying this patch to -linux-user
-branch.  I haven't noticed this patch in your pull req, -- I don't
-always watch all pull requests.
+Broken in commit 9005b2a (author cc'ed).  Bites only when passed zero
+len, which seems unlikely.
 
-Thanks,
-
-/mjt
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
