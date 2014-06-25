@@ -1,35 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1WzZfl-00073K-Jy
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jun 2014 18:58:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38281)
+	id 1WzgEH-00019A-AR
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jun 2014 01:58:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44617)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1WzZfd-0006pY-Ln
-	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 18:58:39 -0400
+	(envelope-from <mst@redhat.com>) id 1WzgE9-0000u0-KC
+	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 01:58:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1WzZfX-0000LT-UI
-	for qemu-trivial@nongnu.org; Tue, 24 Jun 2014 18:58:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:25481)
+	(envelope-from <mst@redhat.com>) id 1WzgE4-0004Lr-N8
+	for qemu-trivial@nongnu.org; Wed, 25 Jun 2014 01:58:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38390)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1WzZfM-00008h-5q; Tue, 24 Jun 2014 18:58:16 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5OMwBCS012423
+	(envelope-from <mst@redhat.com>)
+	id 1WzgDu-0004JB-5z; Wed, 25 Jun 2014 01:58:22 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5P5wICL020111
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Tue, 24 Jun 2014 18:58:11 -0400
-Received: from localhost (ovpn-113-127.phx2.redhat.com [10.3.113.127])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s5OMwAEZ004010; Tue, 24 Jun 2014 18:58:11 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 24 Jun 2014 19:57:55 -0300
-Message-Id: <1403650675-3368-1-git-send-email-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+	verify=OK); Wed, 25 Jun 2014 01:58:18 -0400
+Received: from redhat.com (ovpn-116-41.ams2.redhat.com [10.36.116.41])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id s5P5wFgo001452; Wed, 25 Jun 2014 01:58:15 -0400
+Date: Wed, 25 Jun 2014 08:58:43 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20140625055843.GB21553@redhat.com>
+References: <1403650675-3368-1-git-send-email-ehabkost@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1403650675-3368-1-git-send-email-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, Gerd Hoffmann <kraxel@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [Qemu-trivial] [PATCH] pc: Fix "prog_if" typo on PC_COMPAT_2_0
+Cc: qemu-trivial@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
+	qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] pc: Fix "prog_if" typo on PC_COMPAT_2_0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,30 +46,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jun 2014 22:58:40 -0000
+X-List-Received-Date: Wed, 25 Jun 2014 05:58:42 -0000
 
-The property name is "prog_if", not "prof_if".
+On Tue, Jun 24, 2014 at 07:57:55PM -0300, Eduardo Habkost wrote:
+> The property name is "prog_if", not "prof_if".
+> 
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> Cc: BALATON Zoltan <balaton@eik.bme.hu>
 
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>
----
- include/hw/i386/pc.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Applied, thanks!
 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 486e98f..1331d5a 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -358,7 +358,7 @@ bool e820_get_entry(int, uint32_t, uint64_t *, uint64_t *);
-         },\
-         {\
-             .driver   = "pci-serial-2x",\
--            .property = "prof_if",\
-+            .property = "prog_if",\
-             .value    = stringify(0),\
-         },\
-         {\
--- 
-1.9.3
-
+> ---
+>  include/hw/i386/pc.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 486e98f..1331d5a 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -358,7 +358,7 @@ bool e820_get_entry(int, uint32_t, uint64_t *, uint64_t *);
+>          },\
+>          {\
+>              .driver   = "pci-serial-2x",\
+> -            .property = "prof_if",\
+> +            .property = "prog_if",\
+>              .value    = stringify(0),\
+>          },\
+>          {\
+> -- 
+> 1.9.3
 
