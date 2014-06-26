@@ -1,40 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X06Tt-0001aJ-GV
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Jun 2014 06:00:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40579)
+	id 1X06c3-0005v2-AQ
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Jun 2014 06:09:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41661)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1X06Tl-0001Wl-Te
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 06:00:35 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1X06bw-0005ow-KF
+	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 06:09:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>) id 1X06Tg-0004pe-CC
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 06:00:29 -0400
-Received: from [59.151.112.132] (port=24626 helo=heian.cn.fujitsu.com)
+	(envelope-from <pbonzini@redhat.com>) id 1X06bo-0007jy-Ou
+	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 06:08:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33486)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hutao@cn.fujitsu.com>)
-	id 1X06TU-0004hY-Nm; Thu, 26 Jun 2014 06:00:13 -0400
-X-IronPort-AV: E=Sophos;i="5.00,783,1396972800"; d="scan'208";a="32468876"
-Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 26 Jun 2014 17:57:21 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id s5Q9akNW018307;
-	Thu, 26 Jun 2014 17:37:06 +0800
-Received: from G08FNSTD100614.fnst.cn.fujitsu.com (10.167.226.102) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Thu, 26 Jun 2014 17:36:52 +0800
-From: Hu Tao <hutao@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-Date: Thu, 26 Jun 2014 17:34:50 +0800
-Message-ID: <1403775290-22307-1-git-send-email-hutao@cn.fujitsu.com>
-X-Mailer: git-send-email 1.9.3
+	(envelope-from <pbonzini@redhat.com>)
+	id 1X06bZ-0007i1-50; Thu, 26 Jun 2014 06:08:33 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5QA8W1k031431
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Thu, 26 Jun 2014 06:08:32 -0400
+Received: from yakj.usersys.redhat.com (dhcp-176-198.mxp.redhat.com
+	[10.32.176.198])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s5QA8U1U001862; Thu, 26 Jun 2014 06:08:31 -0400
+Message-ID: <53ABF11E.4030508@redhat.com>
+Date: Thu, 26 Jun 2014 12:08:30 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.6.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.102]
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH] configure: explicitly state version
-	requirements to devel packages
+To: Markus Armbruster <armbru@redhat.com>
+References: <1403720497-5318-1-git-send-email-pbonzini@redhat.com>
+	<877g442kie.fsf@blackfin.pond.sub.org>
+In-Reply-To: <877g442kie.fsf@blackfin.pond.sub.org>
+X-Enigmail-Version: 1.6
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, kraxel@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] serial-pci: remove memory
+ regions from BAR before destroying them
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,65 +51,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Jun 2014 10:00:35 -0000
+X-List-Received-Date: Thu, 26 Jun 2014 10:09:01 -0000
 
-Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
----
- configure | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+Il 26/06/2014 09:32, Markus Armbruster ha scritto:
+>> > Reported-by: Markus Armbruster <armbru@redhat.com>
+>> > Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>
+> Would it make sense to add a "must not contain subregions" to
+> memory_region_destroy()'s function comment?
 
-diff --git a/configure b/configure
-index 7102964..adff12e 100755
---- a/configure
-+++ b/configure
-@@ -3066,7 +3066,8 @@ if test "$glusterfs" != "no" ; then
-     fi
-   else
-     if test "$glusterfs" = "yes" ; then
--      feature_not_found "GlusterFS backend support" "Install glusterfs-api devel"
-+      feature_not_found "GlusterFS backend support" \
-+          "Install glusterfs-api devel >= 3"
-     fi
-     glusterfs="no"
-   fi
-@@ -3511,7 +3512,8 @@ EOF
-     spice_server_version=$($pkg_config --modversion spice-server)
-   else
-     if test "$spice" = "yes" ; then
--      feature_not_found "spice" "Install spice-server and spice-protocol devel"
-+      feature_not_found "spice" \
-+          "Install spice-server(>=0.12.0) and spice-protocol(>=0.12.3) devel"
-     fi
-     spice="no"
-   fi
-@@ -3542,7 +3544,7 @@ EOF
-         smartcard_nss="yes"
-     else
-         if test "$smartcard_nss" = "yes"; then
--            feature_not_found "nss"
-+            feature_not_found "nss" "Install nss devel >= 3.12.8"
-         fi
-         smartcard_nss="no"
-     fi
-@@ -3558,7 +3560,7 @@ if test "$libusb" != "no" ; then
-         libs_softmmu="$libs_softmmu $libusb_libs"
-     else
-         if test "$libusb" = "yes"; then
--            feature_not_found "libusb" "Install libusb devel"
-+            feature_not_found "libusb" "Install libusb devel >= 1.0.13"
-         fi
-         libusb="no"
-     fi
-@@ -3983,7 +3985,7 @@ if test "$libnfs" != "no" ; then
-     LIBS="$LIBS $libnfs_libs"
-   else
-     if test "$libnfs" = "yes" ; then
--      feature_not_found "libnfs"
-+      feature_not_found "libnfs" "Install libnfs devel >= 1.9.3"
-     fi
-     libnfs="no"
-   fi
--- 
-1.9.3
+I don't know, in the end the assertion is pretty self-explanatory.  If 
+we add hotplug support to libqos, we can test it.
 
+Paolo
 
