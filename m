@@ -1,45 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X06c3-0005v2-AQ
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Jun 2014 06:09:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41661)
+	id 1X08PM-0003uY-MP
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Jun 2014 08:04:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42680)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1X06bw-0005ow-KF
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 06:09:01 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1X08PE-0003qR-TK
+	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:04:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1X06bo-0007jy-Ou
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 06:08:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33486)
+	(envelope-from <peter.maydell@linaro.org>) id 1X08P4-0008Me-Gv
+	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:03:56 -0400
+Received: from mail-la0-f54.google.com ([209.85.215.54]:62135)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1X06bZ-0007i1-50; Thu, 26 Jun 2014 06:08:33 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5QA8W1k031431
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Thu, 26 Jun 2014 06:08:32 -0400
-Received: from yakj.usersys.redhat.com (dhcp-176-198.mxp.redhat.com
-	[10.32.176.198])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s5QA8U1U001862; Thu, 26 Jun 2014 06:08:31 -0400
-Message-ID: <53ABF11E.4030508@redhat.com>
-Date: Thu, 26 Jun 2014 12:08:30 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.6.0
+	(envelope-from <peter.maydell@linaro.org>) id 1X08P4-0008MO-AZ
+	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:03:46 -0400
+Received: by mail-la0-f54.google.com with SMTP id mc6so1753931lab.41
+	for <qemu-trivial@nongnu.org>; Thu, 26 Jun 2014 05:03:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=j2wj8JbqALmoVtr8TCCobQc14J9VxSRDHzbSDbkFlpU=;
+	b=B8pCnbvNAPNcNnhGrCOJ28/rp9L2ooWxRFOzYkK3zWRvLJ4aJ91ckXXbP/WAktTlH1
+	XN0UKt86YCgs5Ja5bU6AROqJXNfYr3Wm2fShcgbP1Z0dPTMsGtcqk1s2OKxN0kZJdxwH
+	e4mkl0yOZr8mb+AlFRsjC7qeJjMY+lCdfSWo8eCpOBBm4QSTC7NVFpud5oUFAZa9DI9m
+	7ZgC64ySFN1SrLfJFX8ZitdlvkhVkuCbLdjs4V3WUhawgoFjSlY72NxSDHPMCauR1EBW
+	vPM6KDlcMlbqno3Fl/Kd/4YZX3XmB8m8oQM8L7ZMtMvs8VFLfCav4RfaSylpiJ7ERLCz
+	Jmkw==
+X-Gm-Message-State: ALoCoQnsEk2mjxQw90Wtlzdu7fsKbSqXMTq2wci41zab8ashguyIfAxZsh8kIso5OVxYj5eVgf73
+X-Received: by 10.112.129.202 with SMTP id ny10mr10557306lbb.14.1403784225247; 
+	Thu, 26 Jun 2014 05:03:45 -0700 (PDT)
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1403720497-5318-1-git-send-email-pbonzini@redhat.com>
-	<877g442kie.fsf@blackfin.pond.sub.org>
-In-Reply-To: <877g442kie.fsf@blackfin.pond.sub.org>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=ISO-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, kraxel@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] serial-pci: remove memory
- regions from BAR before destroying them
+Received: by 10.112.158.228 with HTTP; Thu, 26 Jun 2014 05:03:25 -0700 (PDT)
+In-Reply-To: <53AB1E8E.2030404@weilnetz.de>
+References: <1403683241-20678-1-git-send-email-imammedo@redhat.com>
+	<87vbrpe4qa.fsf@blackfin.pond.sub.org>
+	<20140625135126.64cc15d8@nial.usersys.redhat.com>
+	<53AB1E8E.2030404@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 26 Jun 2014 13:03:25 +0100
+Message-ID: <CAFEAcA_sJ8+Dztsovec=f3womgyTuGqwXz+pZ1jym89EU5R6vw@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.54
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-char: fix warning
+	'res' may be used uninitialized
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,18 +59,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Jun 2014 10:09:01 -0000
+X-List-Received-Date: Thu, 26 Jun 2014 12:04:03 -0000
 
-Il 26/06/2014 09:32, Markus Armbruster ha scritto:
->> > Reported-by: Markus Armbruster <armbru@redhat.com>
->> > Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+On 25 June 2014 20:10, Stefan Weil <sw@weilnetz.de> wrote:
+> Am 25.06.2014 13:51, schrieb Igor Mammedov:
+>> On Wed, 25 Jun 2014 11:08:29 +0200
+>> Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>>> Igor Mammedov <imammedo@redhat.com> writes:
+>>>
+>>>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+>>>
+>>> Broken in commit 9005b2a (author cc'ed).  Bites only when passed zero
+>>> len, which seems unlikely.
+>>>
+>>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>>>
+>>
+>> main motivation for the patch was to allow -Werror=all build pass.
+>>
 >
-> Would it make sense to add a "must not contain subregions" to
-> memory_region_destroy()'s function comment?
+> As I sent an identical patch some minutes ago, I can add
+>
+> Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
-I don't know, in the end the assertion is pretty self-explanatory.  If 
-we add hotplug support to libqos, we can test it.
+Applied to master as a buildfix; thanks.
 
-Paolo
+-- PMM
 
