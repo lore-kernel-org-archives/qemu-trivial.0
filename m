@@ -1,53 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X08PM-0003uY-MP
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Jun 2014 08:04:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42680)
+	id 1X08u5-0008Nj-B8
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Jun 2014 08:35:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49510)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X08PE-0003qR-TK
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:04:02 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1X08tx-0008GB-9S
+	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:35:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X08P4-0008Me-Gv
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:03:56 -0400
-Received: from mail-la0-f54.google.com ([209.85.215.54]:62135)
+	(envelope-from <peter.maydell@linaro.org>) id 1X08tp-0002aA-1n
+	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:35:40 -0400
+Received: from mail-lb0-f174.google.com ([209.85.217.174]:44621)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X08P4-0008MO-AZ
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:03:46 -0400
-Received: by mail-la0-f54.google.com with SMTP id mc6so1753931lab.41
-	for <qemu-trivial@nongnu.org>; Thu, 26 Jun 2014 05:03:45 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1X08to-0002Zw-Kt
+	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:35:32 -0400
+Received: by mail-lb0-f174.google.com with SMTP id u10so2842998lbd.5
+	for <qemu-trivial@nongnu.org>; Thu, 26 Jun 2014 05:35:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=j2wj8JbqALmoVtr8TCCobQc14J9VxSRDHzbSDbkFlpU=;
-	b=B8pCnbvNAPNcNnhGrCOJ28/rp9L2ooWxRFOzYkK3zWRvLJ4aJ91ckXXbP/WAktTlH1
-	XN0UKt86YCgs5Ja5bU6AROqJXNfYr3Wm2fShcgbP1Z0dPTMsGtcqk1s2OKxN0kZJdxwH
-	e4mkl0yOZr8mb+AlFRsjC7qeJjMY+lCdfSWo8eCpOBBm4QSTC7NVFpud5oUFAZa9DI9m
-	7ZgC64ySFN1SrLfJFX8ZitdlvkhVkuCbLdjs4V3WUhawgoFjSlY72NxSDHPMCauR1EBW
-	vPM6KDlcMlbqno3Fl/Kd/4YZX3XmB8m8oQM8L7ZMtMvs8VFLfCav4RfaSylpiJ7ERLCz
-	Jmkw==
-X-Gm-Message-State: ALoCoQnsEk2mjxQw90Wtlzdu7fsKbSqXMTq2wci41zab8ashguyIfAxZsh8kIso5OVxYj5eVgf73
-X-Received: by 10.112.129.202 with SMTP id ny10mr10557306lbb.14.1403784225247; 
-	Thu, 26 Jun 2014 05:03:45 -0700 (PDT)
+	bh=LBB4jqU5Yxh4QetIUVasB8Wl6m/lMtjzKgN74ZgVJOQ=;
+	b=ZFCO4OPFw5mBynyMFcOqUOLrfdME3F7K8BtaDl+5OgVecRWEFsd4MAxSZRNlMrh47i
+	96w73t9Ij9/PK55P86LrhMe8+Pweh7u0CXX/ikXmd2dcDDuvA9yW+opB7WVE6jWWC9Ca
+	DZKkJTAtAfg+3KNZkyq54kAZTzPQaOYBtHBvMCWDIeNj62uiN5aMxN1LTd4OJxDL+0FL
+	8QrVM2U0vp2u63ojk+sLr0VqaQOsboZYErE3RvWL0rZvOk5EDi7lmYToLP0Az/KKubc+
+	dH6J4S3sYDsrdakaZPrnIUk5duHw97qGCqE7XyN2ef4lutcWIDKecrvrhm+Z1hF2/HQU
+	m9LQ==
+X-Gm-Message-State: ALoCoQkFRBKGxVaxlI+27pnEXhkXtiwWxB45HjOxBkWoyEfdi2w8zmS+dUnOSrAyUZdOmhqRbKID
+X-Received: by 10.112.85.202 with SMTP id j10mr1199959lbz.95.1403786131655;
+	Thu, 26 Jun 2014 05:35:31 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Thu, 26 Jun 2014 05:03:25 -0700 (PDT)
-In-Reply-To: <53AB1E8E.2030404@weilnetz.de>
-References: <1403683241-20678-1-git-send-email-imammedo@redhat.com>
-	<87vbrpe4qa.fsf@blackfin.pond.sub.org>
-	<20140625135126.64cc15d8@nial.usersys.redhat.com>
-	<53AB1E8E.2030404@weilnetz.de>
+Received: by 10.112.158.228 with HTTP; Thu, 26 Jun 2014 05:35:11 -0700 (PDT)
+In-Reply-To: <1402933631-3276-1-git-send-email-peter.maydell@linaro.org>
+References: <1402933631-3276-1-git-send-email-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Jun 2014 13:03:25 +0100
-Message-ID: <CAFEAcA_sJ8+Dztsovec=f3womgyTuGqwXz+pZ1jym89EU5R6vw@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
+Date: Thu, 26 Jun 2014 13:35:11 +0100
+Message-ID: <CAFEAcA9SAZF7kg9wJz9iQKPyML_7hA0kCm5ghjr5O+373srnzA@mail.gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.215.54
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-char: fix warning
-	'res' may be used uninitialized
+X-Received-From: 209.85.217.174
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
+	Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Give error message
+ if hostfwd_add/remove for unrecognized vlan/stack
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,31 +55,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Jun 2014 12:04:03 -0000
+X-List-Received-Date: Thu, 26 Jun 2014 12:35:48 -0000
 
-On 25 June 2014 20:10, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 25.06.2014 13:51, schrieb Igor Mammedov:
->> On Wed, 25 Jun 2014 11:08:29 +0200
->> Markus Armbruster <armbru@redhat.com> wrote:
->>
->>> Igor Mammedov <imammedo@redhat.com> writes:
->>>
->>>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
->>>
->>> Broken in commit 9005b2a (author cc'ed).  Bites only when passed zero
->>> len, which seems unlikely.
->>>
->>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->>>
->>
->> main motivation for the patch was to allow -Werror=all build pass.
->>
+On 16 June 2014 16:47, Peter Maydell <peter.maydell@linaro.org> wrote:
+> If the user specified a (vlan ID, slirp stack name) tuple in a monitor
+> hostfwd_add/remove command and we can't find it, give the user an
+> error message rather than silently doing nothing.
 >
-> As I sent an identical patch some minutes ago, I can add
+> This brings this error case in slirp_lookup() into line with the
+> other two.
 >
-> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  net/slirp.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/net/slirp.c b/net/slirp.c
+> index 8fddc03..647039e 100644
+> --- a/net/slirp.c
+> +++ b/net/slirp.c
+> @@ -282,6 +282,7 @@ static SlirpState *slirp_lookup(Monitor *mon, const char *vlan,
+>          NetClientState *nc;
+>          nc = net_hub_find_client_by_name(strtol(vlan, NULL, 0), stack);
+>          if (!nc) {
+> +            monitor_printf(mon, "unrecognized (vlan-id, stackname) pair\n");
+>              return NULL;
+>          }
+>          if (strcmp(nc->model, "user")) {
+> --
+> 1.9.2
 
-Applied to master as a buildfix; thanks.
+Ping! (and cc trivial).
 
+thanks
 -- PMM
 
