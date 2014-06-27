@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X0Z7Z-0004ra-Rs
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jun 2014 12:35:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33308)
+	id 1X0aJa-00025H-1i
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jun 2014 13:51:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47362)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1X0Z7R-0004dO-1Q
-	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 12:35:27 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1X0aJS-000258-KX
+	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 13:51:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1X0Z7K-00081E-Tr
-	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 12:35:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:9751)
+	(envelope-from <pbonzini@redhat.com>) id 1X0aJN-0006SP-AF
+	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 13:51:50 -0400
+Received: from mx4-phx2.redhat.com ([209.132.183.25]:50057)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>)
-	id 1X0Z78-0007cf-C6; Fri, 27 Jun 2014 12:35:02 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5RGZ0be007201
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Fri, 27 Jun 2014 12:35:00 -0400
-Received: from [10.3.113.59] (ovpn-113-59.phx2.redhat.com [10.3.113.59])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s5RGYxTK016591; Fri, 27 Jun 2014 12:35:00 -0400
-Message-ID: <1403886899.31091.187.camel@ul30vt.home>
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Date: Fri, 27 Jun 2014 10:34:59 -0600
-In-Reply-To: <1403879569-24256-1-git-send-email-pbonzini@redhat.com>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1X0aJN-0006SI-22; Fri, 27 Jun 2014 13:51:45 -0400
+Received: from zmail13.collab.prod.int.phx2.redhat.com
+	(zmail13.collab.prod.int.phx2.redhat.com [10.5.83.15])
+	by mx4-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id s5RHphJI019954;
+	Fri, 27 Jun 2014 13:51:43 -0400
+Date: Fri, 27 Jun 2014 13:51:42 -0400 (EDT)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Message-ID: <1081899261.33608246.1403891502613.JavaMail.zimbra@redhat.com>
+In-Reply-To: <1403886899.31091.187.camel@ul30vt.home>
 References: <1403879569-24256-1-git-send-email-pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+	<1403886899.31091.187.camel@ul30vt.home>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.5.82.11]
+X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF30 (Linux)/8.0.6_GA_5922)
+Thread-Topic: vfio: use correct runstate
+Thread-Index: mKnkTM8K13/u5RJQmAu1w2OIhAu78g==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 209.132.183.25
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH for 2.1] vfio: use correct runstate
 X-BeenThere: qemu-trivial@nongnu.org
@@ -45,45 +45,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jun 2014 16:35:27 -0000
+X-List-Received-Date: Fri, 27 Jun 2014 17:51:56 -0000
 
-On Fri, 2014-06-27 at 16:32 +0200, Paolo Bonzini wrote:
-> io-error is for block device errors; it should always be preceded
-> by a BLOCK_IO_ERROR event.
+----- Messaggio originale -----
+> Da: "Alex Williamson" <alex.williamson@redhat.com>
+> A: "Paolo Bonzini" <pbonzini@redhat.com>
+> Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+> Inviato: Venerd=C3=AC, 27 giugno 2014 18:34:59
+> Oggetto: Re: [PATCH for 2.1] vfio: use correct runstate
+>=20
+> On Fri, 2014-06-27 at 16:32 +0200, Paolo Bonzini wrote:
+> > io-error is for block device errors; it should always be preceded
+> > by a BLOCK_IO_ERROR event.
+>=20
+> Where does this requirement come from?  I only see a loose association
+> of IO_ERROR to disk in libvirt and none in QEMU.
 
-Where does this requirement come from?  I only see a loose association
-of IO_ERROR to disk in libvirt and none in QEMU.
+See the RunState enum in qapi-schema.json:
 
->   I think vfio wants to use
-> RUN_STATE_INTERNAL_ERROR instead.
+##
+# @RunState
+#
+# An enumeration of VM run states.
+#
+# ...
+#
+# @internal-error: An internal error that prevents further guest execution
+# has occurred
+#
+# @io-error: the last IOP has failed and the device is configured to pause
+# on I/O errors
+#
+# @paused: guest has been paused via the 'stop' command
 
-But that seems to put us into an "unknown" paused state in libvirt.  An
-I/O error still seems like a more appropriate state.  I'm not sure this
-qualifies as a trivial patch, it is small, but subtle.  Thanks,
+The point of io-error is that management can look at block devices, see if
+any have an error reported, and then resume execution (see documentation of
+rerror=3Dstop and werror=3Dstop/enospc).  This is counter to the intentions=
+ you
+have in vfio.
 
-Alex
+> > I think vfio wants to use
+> > RUN_STATE_INTERNAL_ERROR instead.
+>=20
+> But that seems to put us into an "unknown" paused state in libvirt.
 
-> 
-> Cc: Alex Williamson <alex.williamson@redhat.com>
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  hw/misc/vfio.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/misc/vfio.c b/hw/misc/vfio.c
-> index 7437c2e..9d71d97 100644
-> --- a/hw/misc/vfio.c
-> +++ b/hw/misc/vfio.c
-> @@ -3978,7 +3978,7 @@ static void vfio_err_notifier_handler(void *opaque)
->                   __func__, vdev->host.domain, vdev->host.bus,
->                   vdev->host.slot, vdev->host.function);
->  
-> -    vm_stop(RUN_STATE_IO_ERROR);
-> +    vm_stop(RUN_STATE_INTERNAL_ERROR);
->  }
->  
->  /*
+I think paused is incorrect, because (unlike RUN_STATE_IO_ERROR), you canno=
+t
+resume from RUN_STATE_INTERNAL_ERROR except with a reset.  QEMU enforces th=
+at,
+and this matches the error you are reporting:
 
+    error_report("%s(%04x:%02x:%02x.%x) Unrecoverable error detected.  "
+                 "Please collect any data possible and then kill the guest"=
+,
+                 __func__, vdev->host.domain, vdev->host.bus,
+                 vdev->host.slot, vdev->host.function);
 
+libvirt has a crashed state, I think that's what libvirt should call the
+internal-error runstate.  IIRC on Xen you get to crashed when the processor
+raises an error on vmentry, for example.
 
+Libvirt only knows about crashed/unknown, but one could add crashed/interna=
+l-error
+too.
+
+Paolo
 
