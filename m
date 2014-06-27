@@ -1,49 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X08uU-0000bO-HJ
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Jun 2014 08:36:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49678)
+	id 1X0Ug7-0001B6-85
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jun 2014 07:50:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47017)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X08uM-0000PH-QZ
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:36:12 -0400
+	(envelope-from <stefanha@redhat.com>) id 1X0Ug0-0001Am-4s
+	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 07:50:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X08uG-0002iy-HW
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:36:06 -0400
-Received: from mail-la0-f52.google.com ([209.85.215.52]:36165)
+	(envelope-from <stefanha@redhat.com>) id 1X0Uft-0007W2-Tr
+	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 07:50:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:28851)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X08uG-0002id-Bi
-	for qemu-trivial@nongnu.org; Thu, 26 Jun 2014 08:36:00 -0400
-Received: by mail-la0-f52.google.com with SMTP id ty20so1794279lab.39
-	for <qemu-trivial@nongnu.org>; Thu, 26 Jun 2014 05:35:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=voSxRyOqGLoclTqP9XrDRzShHz16BA3tIkllzmpsYGk=;
-	b=cQ2AU2JNz8rpac6Cu5A3ensOd2WmkW7KCOeTaA9eDnei4jJiGA7S2MGlKgLUNOcZHb
-	rtZ4xtVMxxmQLyAyJoF5SeAsJVarz1xo37CfnDm6kLCN7rXtPCms8di7B2zvzCc3UOms
-	Pj45yCVB6ktXTU32pvGbvi47HKRTjBxUFp2Buow2IorlhfR8ZSX4C0XyVEpB7K958/mg
-	AlwVRzBaNtztqhsrO/5KljdfeU+VmE3Q+yakjy8KoQDu4f3FxQSzzoVa3FzlmbaSAlB8
-	X0v2qLtqL8vbpjzboeuwfDv8jvCtKHvzlmsiofJLz7lQqR9bbED2ekT//WrHE9qkfix8
-	xrqQ==
-X-Gm-Message-State: ALoCoQl90F3zh5AqQel/5Hrzh/SnBKMnqv1jl/Xn+5SQm+9vcQiYSyEde6kOuORodx7H0b8LBuiR
-X-Received: by 10.152.29.168 with SMTP id l8mr10864575lah.35.1403786159366;
-	Thu, 26 Jun 2014 05:35:59 -0700 (PDT)
+	(envelope-from <stefanha@redhat.com>)
+	id 1X0Uft-0007Vw-FR; Fri, 27 Jun 2014 07:50:37 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5RBoYDJ012230
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Fri, 27 Jun 2014 07:50:34 -0400
+Received: from localhost (dhcp-64-106.muc.redhat.com [10.32.64.106])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s5RBoX5N007367; Fri, 27 Jun 2014 07:50:33 -0400
+Date: Fri, 27 Jun 2014 13:50:32 +0200
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20140627115032.GN12061@stefanha-thinkpad.muc.redhat.com>
+References: <53A84797.9040304@gmail.com>
+	<20140624104614.GD3458@noname.redhat.com>
+	<87d2dywoyn.fsf@blackfin.pond.sub.org>
 MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Thu, 26 Jun 2014 05:35:39 -0700 (PDT)
-In-Reply-To: <1402933670-3324-1-git-send-email-peter.maydell@linaro.org>
-References: <1402933670-3324-1-git-send-email-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Jun 2014 13:35:39 +0100
-Message-ID: <CAFEAcA8q9MAGxD+RE_fC0z4s5Cy6n43ZHmP6Jmq3_Zih-nUecg@mail.gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.52
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Honour vlan/stack in
-	hostfwd_remove commands
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="b/Q3JWIUAuLE0ZFy"
+Content-Disposition: inline
+In-Reply-To: <87d2dywoyn.fsf@blackfin.pond.sub.org>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Kevin Wolf <kwolf@redhat.com>, famz@redhat.com,
+	Chen Gang <gang.chen.5i5j@gmail.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org, mreitz@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial v2] block.c: Add
+ return value for bdrv_append_temp_snapshot() to avoid incorrect failure
+ processing issue
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,39 +53,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Jun 2014 12:36:12 -0000
+X-List-Received-Date: Fri, 27 Jun 2014 11:50:50 -0000
 
-On 16 June 2014 16:47, Peter Maydell <peter.maydell@linaro.org> wrote:
-> The hostfwd_add and hostfwd_remove monitor commands allow the user
-> to optionally specify a vlan/stack tuple. hostfwd_add honours this,
-> but hostfwd_remove does not (it looks up the tuple but then ignores
-> the SlirpState it has looked up and always uses the first stack
-> in the list anyway). Correct this to honour what the user requested.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  net/slirp.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/net/slirp.c b/net/slirp.c
-> index 647039e..c171119 100644
-> --- a/net/slirp.c
-> +++ b/net/slirp.c
-> @@ -345,8 +345,7 @@ void net_slirp_hostfwd_remove(Monitor *mon, const QDict *qdict)
->
->      host_port = atoi(p);
->
-> -    err = slirp_remove_hostfwd(QTAILQ_FIRST(&slirp_stacks)->slirp, is_udp,
-> -                               host_addr, host_port);
-> +    err = slirp_remove_hostfwd(s->slirp, is_udp, host_addr, host_port);
->
->      monitor_printf(mon, "host forwarding rule for %s %s\n", src_str,
->                     err ? "not found" : "removed");
-> --
-> 1.9.2
 
-Ping! (and cc trivial).
+--b/Q3JWIUAuLE0ZFy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-thanks
--- PMM
+On Tue, Jun 24, 2014 at 01:01:52PM +0200, Markus Armbruster wrote:
+> Kevin Wolf <kwolf@redhat.com> writes:
+>=20
+> > Am 23.06.2014 um 17:28 hat Chen Gang geschrieben:
+> >> When failure occurs, 'ret' need be set, or may return 0 to indicate su=
+ccess.
+> >> And error_propagate() also need be called only one time within a funct=
+ion.
+> >>=20
+> >> It is abnormal to prevent bdrv_append_temp_snapshot() return value but=
+ still
+> >> set errp when error occurs -- although it contents return value intern=
+ally.
+> >>=20
+> >> So let bdrv_append_temp_snapshot() internal return value outside, and =
+let
+> >> all things normal, then fix the issue too.
+> >>=20
+> >> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+> >
+> > What does this fix?
+>=20
+> It fixes the return value of bdrv_open() when
+> bdrv_append_temp_snapshot() fails.  Before this patch, it returns a
+> positive value, which is wrong.  After the patch, it returns the
+> negative error code bdrv_append_temp_snapshot() now returns.
+
+Exactly.  I asked for the -errno return because otherwise bdrv_open()
+would have no accurate errno.
+
+Stefan
+
+--b/Q3JWIUAuLE0ZFy
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJTrVqIAAoJEJykq7OBq3PIXmEIAMIdxsEpHEj3m/HicDIbxqlr
+mdnEk95JKi5N4EFFfrhbbifRr/JHR/Fs2dIoxoZbvWAzu83ZqhbGTe7c4EZx/BDc
+TpAEXHjIYpD1fN2yaptoBGqeHQxzX2qxQQskzy9IiLWavuFiv97nLK6X8nMalHJ+
+dc48gbYhjCYZxrjuGkVobL0Du6SpXMneTgsMbP3rlO87rfiED/gubxu5bXWlhEjH
+5sjoLUx6bauQ94Q4NyrxN9o+8x30qjBH3NslZT3FIu1p4IkGpLG5T25fCBKQi3zL
+4WhZUr3NZED9MwvGhuOWzOo7zLehJ0MQswI+v1VLz845WlTl1bIMvju0ZxfoHIg=
+=qFJz
+-----END PGP SIGNATURE-----
+
+--b/Q3JWIUAuLE0ZFy--
 
