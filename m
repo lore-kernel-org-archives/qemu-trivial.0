@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X0Ug7-0001B6-85
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jun 2014 07:50:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47017)
+	id 1X0XDa-0002vk-S7
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jun 2014 10:33:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34309)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1X0Ug0-0001Am-4s
-	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 07:50:50 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1X0XDP-0002gU-Cl
+	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 10:33:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1X0Uft-0007W2-Tr
-	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 07:50:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:28851)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1X0XDG-0006AA-DC
+	for qemu-trivial@nongnu.org; Fri, 27 Jun 2014 10:33:23 -0400
+Received: from mail-wg0-x22c.google.com ([2a00:1450:400c:c00::22c]:61446)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>)
-	id 1X0Uft-0007Vw-FR; Fri, 27 Jun 2014 07:50:37 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s5RBoYDJ012230
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Fri, 27 Jun 2014 07:50:34 -0400
-Received: from localhost (dhcp-64-106.muc.redhat.com [10.32.64.106])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s5RBoX5N007367; Fri, 27 Jun 2014 07:50:33 -0400
-Date: Fri, 27 Jun 2014 13:50:32 +0200
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20140627115032.GN12061@stefanha-thinkpad.muc.redhat.com>
-References: <53A84797.9040304@gmail.com>
-	<20140624104614.GD3458@noname.redhat.com>
-	<87d2dywoyn.fsf@blackfin.pond.sub.org>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="b/Q3JWIUAuLE0ZFy"
-Content-Disposition: inline
-In-Reply-To: <87d2dywoyn.fsf@blackfin.pond.sub.org>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Kevin Wolf <kwolf@redhat.com>, famz@redhat.com,
-	Chen Gang <gang.chen.5i5j@gmail.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org, mreitz@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial v2] block.c: Add
- return value for bdrv_append_temp_snapshot() to avoid incorrect failure
- processing issue
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1X0XCx-0005k9-MH; Fri, 27 Jun 2014 10:32:55 -0400
+Received: by mail-wg0-f44.google.com with SMTP id x13so5028255wgg.3
+	for <multiple recipients>; Fri, 27 Jun 2014 07:32:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id;
+	bh=3QgGiSRUCqZix2snPHuxR6pGkpEWOdclXGbVmw13oOU=;
+	b=Y/bVH0gd6pvhnGT7d061ZgwicdXVBngqQGxXenaW3XWMk8KUKj1aC9gUIBV4fmFAQD
+	Q0fxz+kxYrfuWk76jIhq9cuVueBWApZ4nwzcxJWxVathqi7s+ucbZiinsqiqK/CsZJqc
+	smDXihJoa8lX5V74Jg+uiRP1T7PK0eBEMdnjfSR2TLeIfRxJhaqXxn4Evp1gLHbvJ1QS
+	gLm6TFf5FQFhMz777IwSNPIzszyjXg3pZYJMvAeXSyMXh8lH1dIeO7bM5rebg+JVCE1J
+	AgMAbQbg/yWhBe4ZKe+ouJp/MbkYGnb8pkYNUkOxXrH7oJj8RkzX4wmMriHTwKjVDho8
+	u4AA==
+X-Received: by 10.194.86.225 with SMTP id s1mr26158379wjz.21.1403879574318;
+	Fri, 27 Jun 2014 07:32:54 -0700 (PDT)
+Received: from playground.station (net-37-117-147-170.cust.vodafonedsl.it.
+	[37.117.147.170]) by mx.google.com with ESMTPSA id
+	fn1sm37121730wib.18.2014.06.27.07.32.52 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 27 Jun 2014 07:32:53 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 27 Jun 2014 16:32:49 +0200
+Message-Id: <1403879569-24256-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.8.3.1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c00::22c
+Cc: qemu-trivial@nongnu.org, Alex Williamson <alex.williamson@redhat.com>
+Subject: [Qemu-trivial] [PATCH for 2.1] vfio: use correct runstate
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,60 +52,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jun 2014 11:50:50 -0000
+X-List-Received-Date: Fri, 27 Jun 2014 14:33:32 -0000
 
+io-error is for block device errors; it should always be preceded
+by a BLOCK_IO_ERROR event.  I think vfio wants to use
+RUN_STATE_INTERNAL_ERROR instead.
 
---b/Q3JWIUAuLE0ZFy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ hw/misc/vfio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Tue, Jun 24, 2014 at 01:01:52PM +0200, Markus Armbruster wrote:
-> Kevin Wolf <kwolf@redhat.com> writes:
->=20
-> > Am 23.06.2014 um 17:28 hat Chen Gang geschrieben:
-> >> When failure occurs, 'ret' need be set, or may return 0 to indicate su=
-ccess.
-> >> And error_propagate() also need be called only one time within a funct=
-ion.
-> >>=20
-> >> It is abnormal to prevent bdrv_append_temp_snapshot() return value but=
- still
-> >> set errp when error occurs -- although it contents return value intern=
-ally.
-> >>=20
-> >> So let bdrv_append_temp_snapshot() internal return value outside, and =
-let
-> >> all things normal, then fix the issue too.
-> >>=20
-> >> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-> >
-> > What does this fix?
->=20
-> It fixes the return value of bdrv_open() when
-> bdrv_append_temp_snapshot() fails.  Before this patch, it returns a
-> positive value, which is wrong.  After the patch, it returns the
-> negative error code bdrv_append_temp_snapshot() now returns.
+diff --git a/hw/misc/vfio.c b/hw/misc/vfio.c
+index 7437c2e..9d71d97 100644
+--- a/hw/misc/vfio.c
++++ b/hw/misc/vfio.c
+@@ -3978,7 +3978,7 @@ static void vfio_err_notifier_handler(void *opaque)
+                  __func__, vdev->host.domain, vdev->host.bus,
+                  vdev->host.slot, vdev->host.function);
+ 
+-    vm_stop(RUN_STATE_IO_ERROR);
++    vm_stop(RUN_STATE_INTERNAL_ERROR);
+ }
+ 
+ /*
+-- 
+1.8.3.1
 
-Exactly.  I asked for the -errno return because otherwise bdrv_open()
-would have no accurate errno.
-
-Stefan
-
---b/Q3JWIUAuLE0ZFy
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJTrVqIAAoJEJykq7OBq3PIXmEIAMIdxsEpHEj3m/HicDIbxqlr
-mdnEk95JKi5N4EFFfrhbbifRr/JHR/Fs2dIoxoZbvWAzu83ZqhbGTe7c4EZx/BDc
-TpAEXHjIYpD1fN2yaptoBGqeHQxzX2qxQQskzy9IiLWavuFiv97nLK6X8nMalHJ+
-dc48gbYhjCYZxrjuGkVobL0Du6SpXMneTgsMbP3rlO87rfiED/gubxu5bXWlhEjH
-5sjoLUx6bauQ94Q4NyrxN9o+8x30qjBH3NslZT3FIu1p4IkGpLG5T25fCBKQi3zL
-4WhZUr3NZED9MwvGhuOWzOo7zLehJ0MQswI+v1VLz845WlTl1bIMvju0ZxfoHIg=
-=qFJz
------END PGP SIGNATURE-----
-
---b/Q3JWIUAuLE0ZFy--
 
