@@ -1,58 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X4O7V-0000uI-Qk
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Jul 2014 01:39:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36524)
+	id 1X4XpW-00047R-E4
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Jul 2014 12:01:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44363)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1X4O7N-0000rz-8v
-	for qemu-trivial@nongnu.org; Tue, 08 Jul 2014 01:39:11 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1X4Tks-000601-B2
+	for qemu-trivial@nongnu.org; Tue, 08 Jul 2014 07:40:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1X4O7H-0003yp-Iy
-	for qemu-trivial@nongnu.org; Tue, 08 Jul 2014 01:39:05 -0400
-Received: from mail-qg0-x231.google.com ([2607:f8b0:400d:c04::231]:37380)
+	(envelope-from <peter.maydell@linaro.org>) id 1X4Tkn-0003ES-J2
+	for qemu-trivial@nongnu.org; Tue, 08 Jul 2014 07:40:14 -0400
+Received: from mail-la0-f49.google.com ([209.85.215.49]:36857)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1X4O7H-0003yl-4F; Tue, 08 Jul 2014 01:38:59 -0400
-Received: by mail-qg0-f49.google.com with SMTP id f51so4599688qge.36
-	for <multiple recipients>; Mon, 07 Jul 2014 22:38:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=EOuFGx86Veb0QHoWaHcesdBGwuNEgeAHZly3LxcEy50=;
-	b=EAOM9pO+AQ31pJlYumqQxL3evYe4wtquIXu84W+bxWoFnO9/P2hO3jsVX3ImRqkBtb
-	Za5PVqXXiV0/azS6xYeu1+WA+hHSf0vfRqtOQC15py2TAC79VqUuBdWgnFd4slg0rJjA
-	ngIObSbwYwGxMw6eHdZ0Ti04hD5DhvvBkI9x1DVPw6NdwHoPz8torkezv7uwv/mxzbZ+
-	u4BZnrirMQhxO6e/gOiHxxREvnaR8QP6L7oHFXone34ydhLb/WxdTweocIBbvXaZ8/18
-	hfgIy6G2NsI9dY3qRiX4lxHeA2NOtAFOW2nm00bq26T1+GzGVU7TBj0c8capEJklMY2a
-	rsIw==
-X-Received: by 10.140.19.109 with SMTP id 100mr53597818qgg.80.1404797938680;
-	Mon, 07 Jul 2014 22:38:58 -0700 (PDT)
-Received: from yakj.usersys.redhat.com (net-2-35-201-190.cust.vodafonedsl.it.
-	[2.35.201.190])
-	by mx.google.com with ESMTPSA id y4sm78799242qad.14.2014.07.07.22.38.56
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Mon, 07 Jul 2014 22:38:57 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <53BB83EE.3020307@redhat.com>
-Date: Tue, 08 Jul 2014 07:38:54 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.6.0
+	(envelope-from <peter.maydell@linaro.org>) id 1X4Tkn-0003EH-Cf
+	for qemu-trivial@nongnu.org; Tue, 08 Jul 2014 07:40:09 -0400
+Received: by mail-la0-f49.google.com with SMTP id gf5so3798692lab.22
+	for <qemu-trivial@nongnu.org>; Tue, 08 Jul 2014 04:40:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=l5vM6w6VbK9NL7XXyghsEMokCx0bxyniFs2J8Nk/luE=;
+	b=Blo6kCyZQ+deDZu9sX4Rb5SD5yfsa0Efznj7uh24nt7C3T27LDb/Ifhyxyo6tnxW4p
+	iCMtDA8+1uV8o+JqiafgByzQpb1fJ0evCM2aoZHrr8NH6Ykp0LNCo4FoG1NhCqKcZz8m
+	c6OYpnyk20TT3tSZnLn7kgLaY5rs1agBU+l1PoElJ5Ers3OTBnSgZKOVnFcky9vy3yOY
+	bZJ8oyppfEJqTf3qFmcpHDiKCXivR1iC4R/EAFsZudMXnWqE9Am0gDXkQELWfWBT+QUU
+	njZ47S+asyT/9dYi+gSuq6wx3xNpE6B/EoI0Sv3KGnrnrGEk3bCG+KRIfjAZ9dcXAiEP
+	bzRQ==
+X-Gm-Message-State: ALoCoQnTMNOriy9vVmJcMMIj3AYOGnXVPR+7xLKSnQde81vcsSPoxZQhnaK7ySwJmIA0t8JUR28N
+X-Received: by 10.112.202.39 with SMTP id kf7mr26284666lbc.37.1404819608407;
+	Tue, 08 Jul 2014 04:40:08 -0700 (PDT)
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, 
- Peter Maydell <peter.maydell@linaro.org>
-References: <1403643149-30440-1-git-send-email-sw@weilnetz.de>	<53A9E789.8040809@redhat.com>
-	<53BAF51D.1040803@weilnetz.de>
-In-Reply-To: <53BAF51D.1040803@weilnetz.de>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c04::231
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] oslib-posix: Fix new compiler error with
-	-Wclobbered
+Received: by 10.112.158.228 with HTTP; Tue, 8 Jul 2014 04:39:48 -0700 (PDT)
+In-Reply-To: <CAFEAcA9SAZF7kg9wJz9iQKPyML_7hA0kCm5ghjr5O+373srnzA@mail.gmail.com>
+References: <1402933631-3276-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA9SAZF7kg9wJz9iQKPyML_7hA0kCm5ghjr5O+373srnzA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 8 Jul 2014 12:39:48 +0100
+Message-ID: <CAFEAcA-1r0DkyT8+VuSSTRrkKX5GGQb32VzZ42KqS_-TW+0GYw@mail.gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.49
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
+	Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Give error message
+ if hostfwd_add/remove for unrecognized vlan/stack
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,32 +56,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Jul 2014 05:39:11 -0000
+X-List-Received-Date: Tue, 08 Jul 2014 16:01:17 -0000
 
-Il 07/07/2014 21:29, Stefan Weil ha scritto:
-> Am 24.06.2014 23:03, schrieb Paolo Bonzini:
->> Il 24/06/2014 22:52, Stefan Weil ha scritto:
->>> Newer versions of gcc report a warning (or an error with -Werror) when
->>> compiler option -Wclobbered (or -Wextra) is active:
->>>
->>> util/oslib-posix.c:372:12: error:
->>>  variable ‘hpagesize’ might be clobbered by ‘longjmp’ or ‘vfork’
->>> [-Werror=clobbered]
->>>
->>> The rewritten code fixes this warning: variable 'hpagesize' is now set
->>> and
->>> used in a block without any call of sigsetjmp or similar functions.
->>>
->>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On 26 June 2014 13:35, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 16 June 2014 16:47, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> If the user specified a (vlan ID, slirp stack name) tuple in a monitor
+>> hostfwd_add/remove command and we can't find it, give the user an
+>> error message rather than silently doing nothing.
 >>
->> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+>> This brings this error case in slirp_lookup() into line with the
+>> other two.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  net/slirp.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/net/slirp.c b/net/slirp.c
+>> index 8fddc03..647039e 100644
+>> --- a/net/slirp.c
+>> +++ b/net/slirp.c
+>> @@ -282,6 +282,7 @@ static SlirpState *slirp_lookup(Monitor *mon, const char *vlan,
+>>          NetClientState *nc;
+>>          nc = net_hub_find_client_by_name(strtol(vlan, NULL, 0), stack);
+>>          if (!nc) {
+>> +            monitor_printf(mon, "unrecognized (vlan-id, stackname) pair\n");
+>>              return NULL;
+>>          }
+>>          if (strcmp(nc->model, "user")) {
+>> --
+>> 1.9.2
 >
->
-> Ping? Maybe this patch can be committed directly as a build fix for
-> people like me who use compiler flag -Wextra.
+> Ping! (and cc trivial).
 
-Ok, I'll pick it up.
+Ping again...
 
-Paolo
-
+thanks
+-- PMM
 
