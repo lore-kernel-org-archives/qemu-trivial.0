@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X4sP7-0003ED-AJ
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Jul 2014 09:59:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36651)
+	id 1X51Ho-0002ik-90
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Jul 2014 19:28:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37417)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1X4sOy-00030w-6Z
-	for qemu-trivial@nongnu.org; Wed, 09 Jul 2014 09:59:22 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1X4sSx-0004OH-GL
+	for qemu-trivial@nongnu.org; Wed, 09 Jul 2014 10:03:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1X4sOr-0005AJ-VZ
-	for qemu-trivial@nongnu.org; Wed, 09 Jul 2014 09:59:16 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59179)
+	(envelope-from <mjt@tls.msk.ru>) id 1X4sSq-0006UU-1X
+	for qemu-trivial@nongnu.org; Wed, 09 Jul 2014 10:03:23 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40680)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1X4sOf-00055L-DT; Wed, 09 Jul 2014 09:58:57 -0400
+	id 1X4sSd-0006Qj-IB; Wed, 09 Jul 2014 10:03:03 -0400
 Received: from [192.168.177.103] (aa9300.vpn.tls.msk.ru [192.168.177.103])
-	by isrv.corpit.ru (Postfix) with ESMTP id 6DE74418E9;
-	Wed,  9 Jul 2014 17:58:46 +0400 (MSK)
-Message-ID: <53BD4A94.2000300@msgid.tls.msk.ru>
-Date: Wed, 09 Jul 2014 15:58:44 +0200
+	by isrv.corpit.ru (Postfix) with ESMTP id BD597418E9;
+	Wed,  9 Jul 2014 18:03:01 +0400 (MSK)
+Message-ID: <53BD4B94.8040808@msgid.tls.msk.ru>
+Date: Wed, 09 Jul 2014 16:03:00 +0200
 From: Michael Tokarev <mjt@tls.msk.ru>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:24.0) Gecko/20100101 Icedove/24.6.0
 MIME-Version: 1.0
-To: Chen Gang <gang.chen.5i5j@gmail.com>
-References: <53B57D5B.2070204@gmail.com>
-In-Reply-To: <53B57D5B.2070204@gmail.com>
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
+To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+References: <1404759642-29232-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1404759642-29232-1-git-send-email-sw@weilnetz.de>
+Content-Type: text/plain; charset=windows-1251; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH trivial] qemu-img: Remove redundancy "ret
- = -1"
+Cc: qemu-trivial@nongnu.org, Tom Musta <tommusta@gmail.com>, mjt@tls.msk.ru,
+	Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+Subject: Re: [Qemu-trivial] [PATCH] Fix new typos in comments (found by
+	codespell)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,16 +43,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Jul 2014 13:59:22 -0000
+X-List-Received-Date: Wed, 09 Jul 2014 23:28:26 -0000
 
-03.07.2014 17:57, Chen Gang wrote:
-> In this case, 'ret' is already '-1', so need not do it again.
+07.07.2014 21:00, Stefan Weil =EF=E8=F8=E5=F2:
+> arbitary -> arbitrary
+> basicly -> basically
 
-It's a very minor thing in an error path, maybe compiler even
-eliminates this statement entirely by its own already.
-
-Not sure it is worth the effort but applied to the -trivial tree
-anyway, thanks!
+Thanks, applied to the -trivial branch.
 
 /mjt
 
