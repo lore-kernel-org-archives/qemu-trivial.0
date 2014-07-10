@@ -1,54 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X54BU-0006GC-0a
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Jul 2014 22:34:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39419)
+	id 1X5ItN-0003wM-N3
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Jul 2014 14:16:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33767)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1X54BH-00068a-KP
-	for qemu-trivial@nongnu.org; Wed, 09 Jul 2014 22:34:04 -0400
+	(envelope-from <kwolf@redhat.com>) id 1X59Hs-0005on-Ti
+	for qemu-trivial@nongnu.org; Thu, 10 Jul 2014 04:01:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1X54B8-0007BW-Jd
-	for qemu-trivial@nongnu.org; Wed, 09 Jul 2014 22:33:55 -0400
-Received: from mail-pd0-x22b.google.com ([2607:f8b0:400e:c02::22b]:44015)
+	(envelope-from <kwolf@redhat.com>) id 1X59Hn-0000xp-A8
+	for qemu-trivial@nongnu.org; Thu, 10 Jul 2014 04:01:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:6465)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1X54B8-0007BK-DE; Wed, 09 Jul 2014 22:33:46 -0400
-Received: by mail-pd0-f171.google.com with SMTP id fp1so9998552pdb.16
-	for <multiple recipients>; Wed, 09 Jul 2014 19:33:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=6f4S33JJQJb8dEhqp2r140Ju0dPufposmPPTxDGr4LM=;
-	b=YNtL5ImaRj7dH3sXIyIuGtuWpTmRu1hxvcqNB3YXAfzuJhnGGP14oJHc8DM+YBleu1
-	W5a8eeIUtU7sZeuD6AQ4UVcdUKrH+5RWUn2A8l7INWvZ/i9DmbFcXLvYZCHiI1WmeR8I
-	rC+jM95lauAgXu9LuUtHr4erzTs+Mhp9AERWoYSoMXGFH5wI/xENv+oL5BKw4aAzPt/y
-	nUuwI/gMiwPEJ1UAVNSgWbbKX9VwFq9e4eL8fW/Z8CuN/pmEoXTVTfcrOOPcwqzfA8pm
-	e+TB/klfgmnqYtwIXtOpM+Bk+3GXN7a9GoL8bfPsqOCxrX7raV1tNc7/VKfUkCqde4+A
-	b+Fw==
-X-Received: by 10.68.125.164 with SMTP id mr4mr44479857pbb.27.1404959624833;
-	Wed, 09 Jul 2014 19:33:44 -0700 (PDT)
-Received: from [192.168.1.23] ([124.127.118.42])
-	by mx.google.com with ESMTPSA id
-	ue3sm60236307pbc.49.2014.07.09.19.33.27 for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Wed, 09 Jul 2014 19:33:43 -0700 (PDT)
-Message-ID: <53BDFB6C.8010409@gmail.com>
-Date: Thu, 10 Jul 2014 10:33:16 +0800
-From: Chen Gang <gang.chen.5i5j@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.6.0
+	(envelope-from <kwolf@redhat.com>)
+	id 1X59Hb-0000x2-JY; Thu, 10 Jul 2014 04:00:47 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s6A80hDM009919
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Thu, 10 Jul 2014 04:00:43 -0400
+Received: from noname.redhat.com (ovpn-116-64.ams2.redhat.com [10.36.116.64])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	SMTP id s6A80eB6013039; Thu, 10 Jul 2014 04:00:41 -0400
+Date: Thu, 10 Jul 2014 10:00:39 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20140710080039.GA3919@noname.redhat.com>
+References: <1404915288-604-1-git-send-email-kwolf@redhat.com>
+	<53BDEF3D.1000309@redhat.com>
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <53B57D5B.2070204@gmail.com> <53BD4A94.2000300@msgid.tls.msk.ru>
-In-Reply-To: <53BD4A94.2000300@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::22b
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH trivial] qemu-img: Remove redundancy "ret
- = -1"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="UlVJffcvxoiEqYs2"
+Content-Disposition: inline
+In-Reply-To: <53BDEF3D.1000309@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, hutao@cn.fujitsu.com, qemu-devel@nongnu.org,
+	mst@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.1]
+ test-string-output-visitor: Fix unterminated string
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,58 +50,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Jul 2014 02:34:04 -0000
+X-List-Received-Date: Thu, 10 Jul 2014 18:16:23 -0000
 
 
-On 07/09/2014 09:58 PM, Michael Tokarev wrote:
-> 03.07.2014 17:57, Chen Gang wrote:
->> In this case, 'ret' is already '-1', so need not do it again.
-> 
-> It's a very minor thing in an error path, maybe compiler even
-> eliminates this statement entirely by its own already.
-> 
+--UlVJffcvxoiEqYs2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Yeah, normal compiler with -O2, should eliminate it (maybe -O1 also OK).
+Am 10.07.2014 um 03:41 hat Eric Blake geschrieben:
+> On 07/09/2014 08:14 AM, Kevin Wolf wrote:
+> > Don't forget to add a terminating '\0' or the test case will be randomly
+> > failing. The broken code was added in commit b4900c0e.
+>=20
+> Sorry, but I prefer this solution better:
+> https://lists.gnu.org/archive/html/qemu-devel/2014-07/msg01595.html
 
+Fine with me, as long as my 'make check' gets fixed. :-)
 
-> Not sure it is worth the effort but applied to the -trivial tree
-> anyway, thanks!
+Kevin
 
-For me, '-trivial' means none-urgent, but not mean minor (in fact some
-of urgent things are minor), Coding-styles and trying to keep source
-code simple are none-urgent, but not minor.
+--UlVJffcvxoiEqYs2
+Content-Type: application/pgp-signature
 
-Normal things:
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
 
- - None-urgent and none-important things, we need not do -- it is just
-   wasting members' time resources.
+iQIcBAEBAgAGBQJTvkgnAAoJEH8JsnLIjy/WdPgP/3iWU/iXPYt1Hcf3t/chCvvV
+YL1o7fhVnaju4yfM7/sshIqZjLGQdSW7XcUgcQnGPsr5ufFGnsJei5oTgSYOh8fG
+aRXv0Ebxjo40ZGoKCYX7phy/YBbpBHJflNKaNIFdyh0y1ScP77Dza0pLRbOgFArC
+8lDQ9rkfr/j4W3Z/u3hhIph94Wdsh+/hEQltf40gJHe56zuLahIMoN9hekbS7b7J
+hiV+AQPtLbfN5+rjs8RloVRjmNqnPf3PjYZDi2Hyzwq/O91TT5jsBAySR8Rt2vD3
+TyAi7j6drQ3watRroqIlw/x5CFbI4up5NhtI8dYCN7IeFXGxXvA8Ev0RPSLF+jcX
+4HnFWAg7BzEohKbfED4KS2GabZLOgJDPFOh8Xa/FgMqvOykdEz4Jg54Nxo12jTa1
+PZd9/yP53uMet5sMcQ+98KfXVlLgqla7yZP+tmUUZ7PyjUe/8bGaDH6hKZ3eClJJ
+p2Hxm/iR+VhsuEUN1nWN0GX9Fpjuh4pYcHZ5iPX8JIU6oVO5q3xf9oSgnEQ98rCq
+dtv3jigES3aGDGuHgpYgobb1uNebiZMf0YG7gvYadF7Iz3vkpJAlyM7c2yGyCfhk
+lAzifTWgzWjd/PcDPFkQyLccaGN8aiJTROoSgUYm8bp4e6FFF9AtF9oi9kGlPkzJ
+kjv8sWsvz8kZuR5shmt0
+=cf+a
+-----END PGP SIGNATURE-----
 
- - Urgent and none-important things, need process it in time.
-
- - None-urgent and important things, need process it when have time.
-
-Special things:
-
- - For urgent and important things which can be separated:
-
-   - need process for its' urgent part in time.
-
-   - and then process for its important part when have time.
-
- - For urgent and important things which can not be separated:
-
-   - air, water and life are in this case.
-
-   - open, share, and attitude like air, water, and life.
-
-   - God have already blessed, but we need let them better and better.
-
-
-Welcome any suggestions, discussions and completions.
-
-Thanks.
--- 
-Chen Gang
-
-Open, share, and attitude like air, water, and life which God blessed
+--UlVJffcvxoiEqYs2--
 
