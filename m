@@ -1,44 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X5ItN-0003wM-N3
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Jul 2014 14:16:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33767)
+	id 1X5GTO-0000C2-Jf
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Jul 2014 11:41:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54793)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1X59Hs-0005on-Ti
-	for qemu-trivial@nongnu.org; Thu, 10 Jul 2014 04:01:10 -0400
+	(envelope-from <gernot.hillier@siemens.com>) id 1X5Euz-0005V7-Ad
+	for qemu-trivial@nongnu.org; Thu, 10 Jul 2014 10:01:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1X59Hn-0000xp-A8
-	for qemu-trivial@nongnu.org; Thu, 10 Jul 2014 04:01:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:6465)
+	(envelope-from <gernot.hillier@siemens.com>) id 1X5Eus-0000nH-MW
+	for qemu-trivial@nongnu.org; Thu, 10 Jul 2014 10:01:49 -0400
+Received: from thoth.sbs.de ([192.35.17.2]:51541)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1X59Hb-0000x2-JY; Thu, 10 Jul 2014 04:00:47 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s6A80hDM009919
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Thu, 10 Jul 2014 04:00:43 -0400
-Received: from noname.redhat.com (ovpn-116-64.ams2.redhat.com [10.36.116.64])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	SMTP id s6A80eB6013039; Thu, 10 Jul 2014 04:00:41 -0400
-Date: Thu, 10 Jul 2014 10:00:39 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <20140710080039.GA3919@noname.redhat.com>
-References: <1404915288-604-1-git-send-email-kwolf@redhat.com>
-	<53BDEF3D.1000309@redhat.com>
+	(envelope-from <gernot.hillier@siemens.com>)
+	id 1X5Eue-0000iw-Tp; Thu, 10 Jul 2014 10:01:29 -0400
+Received: from mail1.siemens.de (localhost [127.0.0.1])
+	by thoth.sbs.de (8.14.3/8.14.3) with ESMTP id s6AE1Pr0001590;
+	Thu, 10 Jul 2014 16:01:25 +0200
+Received: from [139.25.40.180] (kepler2.mch.sbs.de [139.25.40.180] (may be
+	forged))
+	by mail1.siemens.de (8.14.3/8.14.3) with ESMTP id s6AE1PlR017192;
+	Thu, 10 Jul 2014 16:01:25 +0200
+Message-ID: <53BE9CB5.4060503@siemens.com>
+Date: Thu, 10 Jul 2014 16:01:25 +0200
+From: Gernot Hillier <gernot.hillier@siemens.com>
+Organization: Siemens AG, GTF SA&P
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.2.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="UlVJffcvxoiEqYs2"
-Content-Disposition: inline
-In-Reply-To: <53BDEF3D.1000309@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+To: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, hutao@cn.fujitsu.com, qemu-devel@nongnu.org,
-	mst@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.1]
- test-string-output-visitor: Fix unterminated string
+X-Received-From: 192.35.17.2
+X-Mailman-Approved-At: Thu, 10 Jul 2014 11:41:24 -0400
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] doc: slirp supports ICMP echo if enabled in
+	Linux
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,46 +46,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Jul 2014 18:16:23 -0000
+X-List-Received-Date: Thu, 10 Jul 2014 14:01:56 -0000
 
 
---UlVJffcvxoiEqYs2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Since QEMU 0.15, slirp (user mode networking) supports ping to the
+Internet, see e6d43cfb1f9
 
-Am 10.07.2014 um 03:41 hat Eric Blake geschrieben:
-> On 07/09/2014 08:14 AM, Kevin Wolf wrote:
-> > Don't forget to add a terminating '\0' or the test case will be randomly
-> > failing. The broken code was added in commit b4900c0e.
->=20
-> Sorry, but I prefer this solution better:
-> https://lists.gnu.org/archive/html/qemu-devel/2014-07/msg01595.html
+Signed-off-by: Gernot Hillier <gernot.hillier@siemens.com>
+---
+  qemu-doc.texi | 14 +++++++++++---
+  1 file changed, 11 insertions(+), 3 deletions(-)
 
-Fine with me, as long as my 'make check' gets fixed. :-)
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index 551619a..fc6e57d 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -1205,9 +1205,17 @@ In order to check that the user mode network is 
+working, you can ping
+  the address 10.0.2.2 and verify that you got an address in the range
+  10.0.2.x from the QEMU virtual DHCP server.
 
-Kevin
+-Note that @code{ping} is not supported reliably to the internet as it
+-would require root privileges. It means you can only ping the local
+-router (10.0.2.2).
++Note that ICMP traffic in general does not work with user mode networking.
++@code{ping}, aka. ICMP echo, to the local router (10.0.2.2) shall work,
++however. If you're using QEMU on Linux >= 3.0, it can use unprivileged ICMP
++ping sockets to allow @code{ping} to the Internet. The host admin has 
+to set
++the ping_group_range in order to grant access to those sockets. To 
+allow ping
++for the users group (GID 100):
++
++@example
++
++echo 100 100 > /proc/sys/net/ipv4/ping_group_range
++@end example
 
---UlVJffcvxoiEqYs2
-Content-Type: application/pgp-signature
+  When using the built-in TFTP server, the router is also the TFTP
+  server.
+-- 
+1.8.4
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.22 (GNU/Linux)
-
-iQIcBAEBAgAGBQJTvkgnAAoJEH8JsnLIjy/WdPgP/3iWU/iXPYt1Hcf3t/chCvvV
-YL1o7fhVnaju4yfM7/sshIqZjLGQdSW7XcUgcQnGPsr5ufFGnsJei5oTgSYOh8fG
-aRXv0Ebxjo40ZGoKCYX7phy/YBbpBHJflNKaNIFdyh0y1ScP77Dza0pLRbOgFArC
-8lDQ9rkfr/j4W3Z/u3hhIph94Wdsh+/hEQltf40gJHe56zuLahIMoN9hekbS7b7J
-hiV+AQPtLbfN5+rjs8RloVRjmNqnPf3PjYZDi2Hyzwq/O91TT5jsBAySR8Rt2vD3
-TyAi7j6drQ3watRroqIlw/x5CFbI4up5NhtI8dYCN7IeFXGxXvA8Ev0RPSLF+jcX
-4HnFWAg7BzEohKbfED4KS2GabZLOgJDPFOh8Xa/FgMqvOykdEz4Jg54Nxo12jTa1
-PZd9/yP53uMet5sMcQ+98KfXVlLgqla7yZP+tmUUZ7PyjUe/8bGaDH6hKZ3eClJJ
-p2Hxm/iR+VhsuEUN1nWN0GX9Fpjuh4pYcHZ5iPX8JIU6oVO5q3xf9oSgnEQ98rCq
-dtv3jigES3aGDGuHgpYgobb1uNebiZMf0YG7gvYadF7Iz3vkpJAlyM7c2yGyCfhk
-lAzifTWgzWjd/PcDPFkQyLccaGN8aiJTROoSgUYm8bp4e6FFF9AtF9oi9kGlPkzJ
-kjv8sWsvz8kZuR5shmt0
-=cf+a
------END PGP SIGNATURE-----
-
---UlVJffcvxoiEqYs2--
 
