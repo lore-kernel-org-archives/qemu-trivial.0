@@ -1,59 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X6yHY-0006FD-DJ
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Jul 2014 04:40:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55967)
+	id 1X73Xn-0005o2-KC
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Jul 2014 10:17:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56006)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1X6yHQ-0006CW-Ov
-	for qemu-trivial@nongnu.org; Tue, 15 Jul 2014 04:40:14 -0400
+	(envelope-from <stefanha@gmail.com>) id 1X73Xg-0005ap-M5
+	for qemu-trivial@nongnu.org; Tue, 15 Jul 2014 10:17:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1X6yHK-0005XO-Ly
-	for qemu-trivial@nongnu.org; Tue, 15 Jul 2014 04:40:08 -0400
-Received: from mail-qg0-x229.google.com ([2607:f8b0:400d:c04::229]:61795)
+	(envelope-from <stefanha@gmail.com>) id 1X73Xc-000357-8y
+	for qemu-trivial@nongnu.org; Tue, 15 Jul 2014 10:17:16 -0400
+Received: from mail-wg0-x234.google.com ([2a00:1450:400c:c00::234]:65177)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1X6yHK-0005WX-EH; Tue, 15 Jul 2014 04:40:02 -0400
-Received: by mail-qg0-f41.google.com with SMTP id q107so2351549qgd.28
-	for <multiple recipients>; Tue, 15 Jul 2014 01:40:01 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1X73XT-0002op-48; Tue, 15 Jul 2014 10:17:03 -0400
+Received: by mail-wg0-f52.google.com with SMTP id a1so4866513wgh.11
+	for <multiple recipients>; Tue, 15 Jul 2014 07:17:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=thAXlejMjuzq1xkPC/DVqOofymYYLpVvOG27ijtl3IQ=;
-	b=OOTVibmy7+Dk11ykk+QrNy3b068jcuncZiMtKUyuIiK/VBTsTZFjISd8QONDIRJ1T+
-	ozlMQh3D7a49xlm7+gA8CtNj08pi4JU7F/pkJFfTbyEcHOaJ1qmLYtyhMIb95oyPl7pN
-	RPTYhd0FEqyd/91aDmOTfviMw2M/urUBgUJ2kafmKAjeA8JdYLRkWxYVwoljhg/H4uob
-	nC19nNStmHOMWO1TMCiH3bmxIFc9k0rfZ6ArQThmuigbdHeYGErPsPE9oe63vSjy8V1D
-	rJnIMV8xccaS58QYAjQp+3W2F7hLnqC2YcvhXDbiSg9hHQAuyR8ru3ECz+mRAU1RbpuT
-	ddmg==
-X-Received: by 10.224.57.148 with SMTP id c20mr30505145qah.31.1405413601902;
-	Tue, 15 Jul 2014 01:40:01 -0700 (PDT)
-Received: from yakj.usersys.redhat.com
-	(net-37-116-204-163.cust.vodafonedsl.it. [37.116.204.163])
-	by mx.google.com with ESMTPSA id l76sm11509893qga.8.2014.07.15.01.39.58
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=Mke71dx2loCJF90kNHq312XsPZm1wjpHXHW2o6zsuZ8=;
+	b=Nd9l3igD9Wry8WxhEA2wqXvjZBGPkC/liOpZ0QevfX56gjFxh8lTlnJjIIDSKIACbb
+	gH0nt1dbnQ0FqkfiWeBSNXapbvb78XRPknYfLaQ+btU3oFSGxzrhsldtZR0LDS7TX3GJ
+	E5/9UWWMFGlaQgef4hRa3ga874YPCmXQzSObtMM1ttBAgG8aY/fwgo3HBpE/sJyFTAht
+	hQk4meKLU2tl3jJT7JVx+8uqH4UbcQndrEbodbV95KPsksoDyoQ+vJr+SP5EhyH/rxXH
+	ijxZGvXVLz2xdls6kgLwMx7p+d4zYBlx+7EruXv7cBM2EpbxCr3x1v3Md1hOwB0nYDQ+
+	6lSQ==
+X-Received: by 10.180.94.104 with SMTP id db8mr5802967wib.23.1405433822124;
+	Tue, 15 Jul 2014 07:17:02 -0700 (PDT)
+Received: from localhost ([89.15.239.185])
+	by mx.google.com with ESMTPSA id h3sm26110964wjn.10.2014.07.15.07.17.00
 	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Tue, 15 Jul 2014 01:40:00 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <53C4E8DB.1040502@redhat.com>
-Date: Tue, 15 Jul 2014 10:39:55 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.6.0
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 15 Jul 2014 07:17:00 -0700 (PDT)
+Date: Tue, 15 Jul 2014 16:16:58 +0200
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Hu Tao <hutao@cn.fujitsu.com>
+Message-ID: <20140715141658.GB9837@stefanha-thinkpad.redhat.com>
+References: <1403775290-22307-1-git-send-email-hutao@cn.fujitsu.com>
 MIME-Version: 1.0
-To: Gerd Hoffmann <kraxel@redhat.com>, Markus Armbruster <armbru@redhat.com>
-References: <1403720497-5318-1-git-send-email-pbonzini@redhat.com>	<877g442kie.fsf@blackfin.pond.sub.org>	<CAEgOgz77aLSt_vww3LwhT5-kUaJhDnmgdDVVdBfQXQvm-DzSUg@mail.gmail.com>	<87fvi46jyc.fsf@blackfin.pond.sub.org>
-	<1405413340.23139.7.camel@nilsson.home.kraxel.org>
-In-Reply-To: <1405413340.23139.7.camel@nilsson.home.kraxel.org>
-X-Enigmail-Version: 1.6
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="7ZAtKRhVyVSsbBD2"
+Content-Disposition: inline
+In-Reply-To: <1403775290-22307-1-git-send-email-hutao@cn.fujitsu.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c04::229
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] serial-pci: remove memory regions from
- BAR before destroying them
+X-Received-From: 2a00:1450:400c:c00::234
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: explicitly state
+ version requirements to devel packages
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,42 +59,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Jul 2014 08:40:14 -0000
+X-List-Received-Date: Tue, 15 Jul 2014 14:17:21 -0000
 
-Il 15/07/2014 10:35, Gerd Hoffmann ha scritto:
-> On Mo, 2014-07-14 at 17:25 +0200, Markus Armbruster wrote:
->> Peter Crosthwaite <peter.crosthwaite@xilinx.com> writes:
->>
->>> On Thu, Jun 26, 2014 at 5:32 PM, Markus Armbruster <armbru@redhat.com> wrote:
->>>> Paolo Bonzini <pbonzini@redhat.com> writes:
->>>>
->>>>> Otherwise, hot-unplug of pci-serial-2x trips the assertion
->>>>> in memory_region_destroy:
->>>>>
->>>>>     (qemu) device_del gg
->>>>>     (qemu) qemu-system-x86_64: /work/armbru/tmp/qemu/memory.c:1021:
->>>>> memory_region_destroy: Assertion `((&mr->subregions)->tqh_first ==
->>>>> ((void *)0))' failed.
->>>>>     Aborted (core dumped)
->>>>>
->>>>> Reported-by: Markus Armbruster <armbru@redhat.com>
->>>>> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
->>>>
->>>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->>>>
->>>
->>> Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
->>
->> Nominating for 2.1, just to be explicit.
->>
->> [...]
->
-> Hmm, is trivial out of service?  I remember thinking "Ok, trivial patch,
-> qemu-trivial is cc'ed, that'll pick it up, nothing to do for me."
 
-I think it's more likely that Michael went on vacation, from a quick 
-look at his posting history.
+--7ZAtKRhVyVSsbBD2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Paolo
+On Thu, Jun 26, 2014 at 05:34:50PM +0800, Hu Tao wrote:
+> Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
+> ---
+>  configure | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
 
+Thanks, applied to my block-next tree:
+https://github.com/stefanha/qemu/commits/block-next
+
+Stefan
+
+--7ZAtKRhVyVSsbBD2
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJTxTfaAAoJEJykq7OBq3PIcCkH+gPedyp4HdiKljAO3WmPCojz
+DygFPlFzCwJiLwUkdClvvuOOPHWx0B9oVLSW1Qr+0ieKtWQmJZBWtaBpDbAM3yXw
+ag+A9F0pu+F/4uFVZ0Qe8nWj9VVZ0Dm7EJ3tUxLu6dI4Kg7fhxH54sfMDg3vkljO
+stltFzgN0zxoBLrLfe/pxNfbtM3rRpuHSkh3lSB7r4Gc4Oofkq4QrDTxZ2ReBHMe
+m7oXoHeSfmE60564wTIPYHgnutlo81UfnZ25PedY+PLq67QgAUYSj927tHMWWxAU
+dOnGwWxnzioDxtQo0OR4lbPIcfQ1FIB1HIMNnHXruEndfDL+B+IIeTZb+/M+Hkk=
+=rut9
+-----END PGP SIGNATURE-----
+
+--7ZAtKRhVyVSsbBD2--
 
