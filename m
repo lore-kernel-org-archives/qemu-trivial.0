@@ -1,53 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X82Mb-0007hf-IB
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Jul 2014 03:13:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35753)
+	id 1X88qx-0007jM-UP
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Jul 2014 10:09:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36941)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X82MV-0007f0-La
-	for qemu-trivial@nongnu.org; Fri, 18 Jul 2014 03:13:52 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1X88qr-0007WF-2X
+	for qemu-trivial@nongnu.org; Fri, 18 Jul 2014 10:09:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X82MQ-0003aO-Sp
-	for qemu-trivial@nongnu.org; Fri, 18 Jul 2014 03:13:47 -0400
-Received: from mail-lb0-f170.google.com ([209.85.217.170]:59033)
+	(envelope-from <mjt@tls.msk.ru>) id 1X88qm-0001jl-0t
+	for qemu-trivial@nongnu.org; Fri, 18 Jul 2014 10:09:33 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:55784)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X82MQ-0003aG-Le
-	for qemu-trivial@nongnu.org; Fri, 18 Jul 2014 03:13:42 -0400
-Received: by mail-lb0-f170.google.com with SMTP id w7so1683956lbi.15
-	for <qemu-trivial@nongnu.org>; Fri, 18 Jul 2014 00:13:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=zm89ghPiPYvRYzfPada0fPlPD3hCo0ENldqBvWQJ6kE=;
-	b=FPzN0934kSd0pzcvT9KrWCkvxQhMLj++ql+OeZl0LTBfPfLgvBncPVTJhNHRfFM7rb
-	2MVcaIaVWmig36D6s0gVTCnbJpRNHInUh9tw59h80GiMKbKYtAhG+fCSeWoUh4O8Pzxb
-	YsNjG0vdu9yhbiTi/YD1rm2FXsba+Tgl+LYd9s8P7nVS4dBwPMbiuAerWBTQrlUaeYv5
-	BBYIF4yPzLVDDSDloYohshFRdYes2iv1NWIKe1QHjmD8obimKbAjbj4Jlmbcsj9GbNzf
-	5BM8E2gfxyRlhaWe7OWiac7f5I846ekr7DXA9OkP4cntEnEoqLgy7qhzV6HQvoczIgcp
-	6+pw==
-X-Gm-Message-State: ALoCoQmloWXxjzTGXnjh/gw1xnEECWMMeNMLvDdC64hYXUZ7Yoh5ezs67aLKGawa77xvDEZgrNXZ
-X-Received: by 10.152.19.169 with SMTP id g9mr2381314lae.47.1405667621441;
-	Fri, 18 Jul 2014 00:13:41 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Fri, 18 Jul 2014 00:13:21 -0700 (PDT)
-In-Reply-To: <53C8AF0D.2060508@msgid.tls.msk.ru>
-References: <1402933631-3276-1-git-send-email-peter.maydell@linaro.org>
-	<CAFEAcA9SAZF7kg9wJz9iQKPyML_7hA0kCm5ghjr5O+373srnzA@mail.gmail.com>
-	<CAFEAcA-1r0DkyT8+VuSSTRrkKX5GGQb32VzZ42KqS_-TW+0GYw@mail.gmail.com>
-	<53C8AF0D.2060508@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 18 Jul 2014 08:13:21 +0100
-Message-ID: <CAFEAcA8hjO5gdcjCzP_bAmczXG2X79Ko4hDFWb6k-SHCxKr6hA@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.170
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Give error message
- if hostfwd_add/remove for unrecognized vlan/stack
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1X88qb-0001d3-21; Fri, 18 Jul 2014 10:09:17 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id DD60F4386C;
+	Fri, 18 Jul 2014 18:09:14 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id C463B6BB;
+	Fri, 18 Jul 2014 18:09:14 +0400 (MSK)
+Received: (nullmailer pid 633 invoked by uid 1000);
+	Fri, 18 Jul 2014 14:09:14 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Fri, 18 Jul 2014 18:09:12 +0400
+Message-Id: <1405692553-564-8-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1405692553-564-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1405692553-564-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 7/8] migration: Add missing 'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,27 +43,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Jul 2014 07:13:52 -0000
+X-List-Received-Date: Fri, 18 Jul 2014 14:09:38 -0000
 
-On 18 July 2014 06:22, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 08.07.2014 15:39, Peter Maydell wrote:
->> On 26 June 2014 13:35, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> On 16 June 2014 16:47, Peter Maydell <peter.maydell@linaro.org> wrote:
->>>> If the user specified a (vlan ID, slirp stack name) tuple in a monitor
->>>> hostfwd_add/remove command and we can't find it, give the user an
->>>> error message rather than silently doing nothing.
->>>>
->>>> This brings this error case in slirp_lookup() into line with the
->>>> other two.
+From: Stefan Weil <sw@weilnetz.de>
 
-> Peter, I returned from vacation yesterday, so I weren't able to process -trivial
-> queue before, and due to the time constraints we have before 2.1, I'm not sure
-> it is a good idea to make a pull request for the -trivial tree.  I'll pick this
-> one up but it might be better to apply this directly.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ block-migration.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-At this point and given the slirp code has been like this for a long
-time, I think it's probably best to let it go til 2.2.
+diff --git a/block-migration.c b/block-migration.c
+index 25a0388..73cdd07 100644
+--- a/block-migration.c
++++ b/block-migration.c
+@@ -861,7 +861,7 @@ static bool block_is_active(void *opaque)
+     return block_mig_state.blk_enable == 1;
+ }
+ 
+-SaveVMHandlers savevm_block_handlers = {
++static SaveVMHandlers savevm_block_handlers = {
+     .set_params = block_set_params,
+     .save_live_setup = block_save_setup,
+     .save_live_iterate = block_save_iterate,
+-- 
+1.7.10.4
 
-thanks
--- PMM
 
