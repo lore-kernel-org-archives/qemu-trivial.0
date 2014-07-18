@@ -1,53 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X73Xn-0005o2-KC
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Jul 2014 10:17:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56006)
+	id 1X80dC-0004kX-5d
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Jul 2014 01:22:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47099)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1X73Xg-0005ap-M5
-	for qemu-trivial@nongnu.org; Tue, 15 Jul 2014 10:17:21 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1X80d6-0004cx-7y
+	for qemu-trivial@nongnu.org; Fri, 18 Jul 2014 01:22:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1X73Xc-000357-8y
-	for qemu-trivial@nongnu.org; Tue, 15 Jul 2014 10:17:16 -0400
-Received: from mail-wg0-x234.google.com ([2a00:1450:400c:c00::234]:65177)
+	(envelope-from <mjt@tls.msk.ru>) id 1X80d1-0006VZ-NQ
+	for qemu-trivial@nongnu.org; Fri, 18 Jul 2014 01:22:48 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38520)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1X73XT-0002op-48; Tue, 15 Jul 2014 10:17:03 -0400
-Received: by mail-wg0-f52.google.com with SMTP id a1so4866513wgh.11
-	for <multiple recipients>; Tue, 15 Jul 2014 07:17:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=Mke71dx2loCJF90kNHq312XsPZm1wjpHXHW2o6zsuZ8=;
-	b=Nd9l3igD9Wry8WxhEA2wqXvjZBGPkC/liOpZ0QevfX56gjFxh8lTlnJjIIDSKIACbb
-	gH0nt1dbnQ0FqkfiWeBSNXapbvb78XRPknYfLaQ+btU3oFSGxzrhsldtZR0LDS7TX3GJ
-	E5/9UWWMFGlaQgef4hRa3ga874YPCmXQzSObtMM1ttBAgG8aY/fwgo3HBpE/sJyFTAht
-	hQk4meKLU2tl3jJT7JVx+8uqH4UbcQndrEbodbV95KPsksoDyoQ+vJr+SP5EhyH/rxXH
-	ijxZGvXVLz2xdls6kgLwMx7p+d4zYBlx+7EruXv7cBM2EpbxCr3x1v3Md1hOwB0nYDQ+
-	6lSQ==
-X-Received: by 10.180.94.104 with SMTP id db8mr5802967wib.23.1405433822124;
-	Tue, 15 Jul 2014 07:17:02 -0700 (PDT)
-Received: from localhost ([89.15.239.185])
-	by mx.google.com with ESMTPSA id h3sm26110964wjn.10.2014.07.15.07.17.00
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 15 Jul 2014 07:17:00 -0700 (PDT)
-Date: Tue, 15 Jul 2014 16:16:58 +0200
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Hu Tao <hutao@cn.fujitsu.com>
-Message-ID: <20140715141658.GB9837@stefanha-thinkpad.redhat.com>
-References: <1403775290-22307-1-git-send-email-hutao@cn.fujitsu.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1X80cs-0006Sa-HP; Fri, 18 Jul 2014 01:22:34 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 6AAED437AD;
+	Fri, 18 Jul 2014 09:22:24 +0400 (MSK)
+Message-ID: <53C8AF0D.2060508@msgid.tls.msk.ru>
+Date: Fri, 18 Jul 2014 09:22:21 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.6.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="7ZAtKRhVyVSsbBD2"
-Content-Disposition: inline
-In-Reply-To: <1403775290-22307-1-git-send-email-hutao@cn.fujitsu.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c00::234
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: explicitly state
- version requirements to devel packages
+To: Peter Maydell <peter.maydell@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>
+References: <1402933631-3276-1-git-send-email-peter.maydell@linaro.org>	<CAFEAcA9SAZF7kg9wJz9iQKPyML_7hA0kCm5ghjr5O+373srnzA@mail.gmail.com>
+	<CAFEAcA-1r0DkyT8+VuSSTRrkKX5GGQb32VzZ42KqS_-TW+0GYw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-1r0DkyT8+VuSSTRrkKX5GGQb32VzZ42KqS_-TW+0GYw@mail.gmail.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Jan Kiszka <jan.kiszka@siemens.com>,
+	Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: Give error message
+ if hostfwd_add/remove for unrecognized vlan/stack
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,38 +48,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Jul 2014 14:17:21 -0000
+X-List-Received-Date: Fri, 18 Jul 2014 05:22:52 -0000
 
+08.07.2014 15:39, Peter Maydell wrote:
+> On 26 June 2014 13:35, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> On 16 June 2014 16:47, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> If the user specified a (vlan ID, slirp stack name) tuple in a monitor
+>>> hostfwd_add/remove command and we can't find it, give the user an
+>>> error message rather than silently doing nothing.
+>>>
+>>> This brings this error case in slirp_lookup() into line with the
+>>> other two.
+>>>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+>>>  net/slirp.c | 1 +
+>>>  1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/net/slirp.c b/net/slirp.c
+>>> index 8fddc03..647039e 100644
+>>> --- a/net/slirp.c
+>>> +++ b/net/slirp.c
+>>> @@ -282,6 +282,7 @@ static SlirpState *slirp_lookup(Monitor *mon, const char *vlan,
+>>>          NetClientState *nc;
+>>>          nc = net_hub_find_client_by_name(strtol(vlan, NULL, 0), stack);
+>>>          if (!nc) {
+>>> +            monitor_printf(mon, "unrecognized (vlan-id, stackname) pair\n");
+>>>              return NULL;
+>>>          }
+>>>          if (strcmp(nc->model, "user")) {
 
---7ZAtKRhVyVSsbBD2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 
-On Thu, Jun 26, 2014 at 05:34:50PM +0800, Hu Tao wrote:
-> Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
-> ---
->  configure | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
+Peter, I returned from vacation yesterday, so I weren't able to process -trivial
+queue before, and due to the time constraints we have before 2.1, I'm not sure
+it is a good idea to make a pull request for the -trivial tree.  I'll pick this
+one up but it might be better to apply this directly.
 
-Thanks, applied to my block-next tree:
-https://github.com/stefanha/qemu/commits/block-next
+Thanks,
 
-Stefan
-
---7ZAtKRhVyVSsbBD2
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJTxTfaAAoJEJykq7OBq3PIcCkH+gPedyp4HdiKljAO3WmPCojz
-DygFPlFzCwJiLwUkdClvvuOOPHWx0B9oVLSW1Qr+0ieKtWQmJZBWtaBpDbAM3yXw
-ag+A9F0pu+F/4uFVZ0Qe8nWj9VVZ0Dm7EJ3tUxLu6dI4Kg7fhxH54sfMDg3vkljO
-stltFzgN0zxoBLrLfe/pxNfbtM3rRpuHSkh3lSB7r4Gc4Oofkq4QrDTxZ2ReBHMe
-m7oXoHeSfmE60564wTIPYHgnutlo81UfnZ25PedY+PLq67QgAUYSj927tHMWWxAU
-dOnGwWxnzioDxtQo0OR4lbPIcfQ1FIB1HIMNnHXruEndfDL+B+IIeTZb+/M+Hkk=
-=rut9
------END PGP SIGNATURE-----
-
---7ZAtKRhVyVSsbBD2--
+/mjt
 
