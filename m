@@ -1,49 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1X9Ae3-0000W4-6A
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Jul 2014 06:16:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55791)
+	id 1XALcX-0004A5-BH
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Jul 2014 12:11:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45231)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X9Adx-0000TK-0i
-	for qemu-trivial@nongnu.org; Mon, 21 Jul 2014 06:16:33 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XALcQ-00041f-If
+	for qemu-trivial@nongnu.org; Thu, 24 Jul 2014 12:11:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X9Adr-0002LE-Br
-	for qemu-trivial@nongnu.org; Mon, 21 Jul 2014 06:16:28 -0400
-Received: from mail-la0-f42.google.com ([209.85.215.42]:61974)
+	(envelope-from <mjt@tls.msk.ru>) id 1XALcK-0000g2-Gq
+	for qemu-trivial@nongnu.org; Thu, 24 Jul 2014 12:11:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:54135)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1X9Adr-0002Kc-5K
-	for qemu-trivial@nongnu.org; Mon, 21 Jul 2014 06:16:23 -0400
-Received: by mail-la0-f42.google.com with SMTP id pv20so4131746lab.15
-	for <qemu-trivial@nongnu.org>; Mon, 21 Jul 2014 03:16:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=zI7dzk3HfDUSJsLyw5SubiLJfA3R6/RXaOZ2aXoVMNI=;
-	b=G3vhZMzzddtKrAJpY3v8/ZX2v2YBLonGeQ0kVj73fu0SdgKbciWkbOC3c+YgK9FuPd
-	RKpAOt9k77NpXX3gUzUIqBZJc/DCQNl2OUoVGWcpNjpMufpjfaadSQiG1yPfjMZteEWg
-	0kCTbVU2xLULwdq4mP3WHqhgO4mYRoWUv9fqbw23oebnZsA4Z0AP0MsfVBYEVYE0z8Hz
-	j6SsnB2NFqXTmP8J0wThUAMx75dFujn20oUJNkBWOZyVZ78m61Zh21p8D7nmfgi6qyce
-	qPmPyr0FoL6QZ4EgKgsrnwNNoP6dMYSq+QkEows1fiDBMfAxCJwF/BiOLSShqDJmipbv
-	uK1g==
-X-Gm-Message-State: ALoCoQlA1RR6RDGuq8yRjAQG3myZcFHo8ponNr3aICPO6+JG50KWs2MqEH5D6+Boyk5RvqkXY6Io
-X-Received: by 10.112.154.134 with SMTP id vo6mr2577138lbb.92.1405937780966;
-	Mon, 21 Jul 2014 03:16:20 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Mon, 21 Jul 2014 03:16:00 -0700 (PDT)
-In-Reply-To: <1405692553-564-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1405692553-564-1-git-send-email-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 21 Jul 2014 11:16:00 +0100
-Message-ID: <CAFEAcA8-HsAhDTVtQ6Ra3KK5D-G_5LSkm=GveqxGWgj-howz2w@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.42
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL for-2.1 0/8] Trivial patches
-	for 2014-07-18
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XALc8-0000dE-1m; Thu, 24 Jul 2014 12:11:28 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id F357544EE9;
+	Thu, 24 Jul 2014 20:11:26 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id DDCA06CE;
+	Thu, 24 Jul 2014 20:11:26 +0400 (MSK)
+Received: (nullmailer pid 19726 invoked by uid 1000);
+	Thu, 24 Jul 2014 16:11:26 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Thu, 24 Jul 2014 20:11:26 +0400
+Message-Id: <1406218286-19685-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PATCH for-2.1] qemu-options: fix another allows-to
+	for -net l2tpv3
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,43 +41,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Jul 2014 10:16:33 -0000
+X-List-Received-Date: Thu, 24 Jul 2014 16:11:52 -0000
 
-On 18 July 2014 15:09, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Since we're close to release, I included only really-really-trivial
-> and safe changes in this pull request, -- only those which wont
-> break anything.  One good patch is a documentation change mentioning
-> icmp sockets, plus a series from Stefan Weil which adds some missing
-> `static' attributes here and there and fixes some typos in comments.
-> Plus a single patch from Chen Gang which was in the queue for quite
-> some time, also really trivial.  And an addition of error message
-> for slirp code which was pinged several times already.
->
-> I haven't considered other "a bit less" than trivial patches for 2.1.
->
-> Please consider either pulling whole series or at least applying the
-> icmp doc change.
->
-> Thanks,
->
-> /mjt
->
-> The following changes since commit 4d121a549869b93475ccf8b9a0d3e693011d1abb:
->
->   Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2014-07-18 09:35:51 +0100)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-07-18
->
-> for you to fetch changes up to 748bfb4eee8e699f3d2dd6a95820d1a9e57e4aa6:
->
->   tests: Add missing 'static' attributes (fix warnings from smatch) (2014-07-18 17:45:37 +0400)
->
-> ----------------------------------------------------------------
-> trivial patches for 2014-07-18
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qemu-options.hx |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Applied, thanks.
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 9e54686..1549625 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1437,7 +1437,7 @@ DEF("net", HAS_ARG, QEMU_OPTION_net,
+     "-net l2tpv3[,vlan=n][,name=str],src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on/off][,udp=on/off][,cookie64=on/off][,counter][,pincounter][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]\n"
+     "                connect the VLAN to an Ethernet over L2TPv3 pseudowire\n"
+     "                Linux kernel 3.3+ as well as most routers can talk\n"
+-    "                L2TPv3. This transport allows to connect a VM to a VM,\n"
++    "                L2TPv3. This transport allows connecting a VM to a VM,\n"
+     "                VM to a router and even VM to Host. It is a nearly-universal\n"
+     "                standard (RFC3391). Note - this implementation uses static\n"
+     "                pre-configured tunnels (same as the Linux kernel).\n"
+-- 
+1.7.10.4
 
--- PMM
 
