@@ -1,49 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XBiMt-0004ZA-Qb
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jul 2014 06:41:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56697)
+	id 1XBnXw-0003Xk-B2
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jul 2014 12:13:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44629)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XBiMn-0004Yu-0w
-	for qemu-trivial@nongnu.org; Mon, 28 Jul 2014 06:41:22 -0400
+	(envelope-from <stefanha@gmail.com>) id 1XBnXp-0003Q9-5a
+	for qemu-trivial@nongnu.org; Mon, 28 Jul 2014 12:13:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XBiMh-0000Qd-L2
-	for qemu-trivial@nongnu.org; Mon, 28 Jul 2014 06:41:16 -0400
-Received: from mail-lb0-f177.google.com ([209.85.217.177]:58487)
+	(envelope-from <stefanha@gmail.com>) id 1XBnXj-0005TN-Fg
+	for qemu-trivial@nongnu.org; Mon, 28 Jul 2014 12:13:01 -0400
+Received: from mail-we0-x22e.google.com ([2a00:1450:400c:c03::22e]:47422)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XBiMh-0000QO-Et
-	for qemu-trivial@nongnu.org; Mon, 28 Jul 2014 06:41:11 -0400
-Received: by mail-lb0-f177.google.com with SMTP id s7so5645481lbd.36
-	for <qemu-trivial@nongnu.org>; Mon, 28 Jul 2014 03:41:10 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=VzjlvNUjMvdVNtSCTD5BxkjBs84DcnCTBjEnDdCnCF0=;
-	b=dwHltimoXrqQVCW3ar3AIizZ//BICLIsyg8b7rdC9oLIPiFct8DO1edEvf5fkpXXBu
-	BomOrnoPs891GjxZYJGilrQuYboJFMpC7qtuiIIY7weC7LzKj2G2nRNLqlYz3B9PYJvm
-	uc5UtGgs6x3Iqb2hD4XurDJ+SE8MXWmAk14g3Iu+5WEkowY5yNBHsBHU7I2HmaVWzqy3
-	BorMlvpTMAiOqiWN6pqU8yN8dK178C1e3rxZfx09IgujecD0yXMUdtNHmJ+qvb3kfUm+
-	GMHwjS1bteUxXkozRsnEyNCQVOBHWI3GueH86p4HcoQlSYYi89qNbm4pVuORGZeHl2ul
-	fdjA==
-X-Gm-Message-State: ALoCoQn0AagVXfhC0zRtcxH1pFlyzmVSmkRr+ZO+Sj6FoLq5EMVW/LAkFKylci0rLw24W81uKSv1
-X-Received: by 10.152.6.170 with SMTP id c10mr34068077laa.9.1406544069998;
-	Mon, 28 Jul 2014 03:41:09 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.158.228 with HTTP; Mon, 28 Jul 2014 03:40:49 -0700 (PDT)
-In-Reply-To: <1406359101-17791-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1406359101-17791-1-git-send-email-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Jul 2014 11:40:49 +0100
-Message-ID: <CAFEAcA8+7rb6M3p0g1OyN9uOXvm79jkqtPxa48jF+Znmg9tmYg@mail.gmail.com>
+	(envelope-from <stefanha@gmail.com>)
+	id 1XBnXX-0005RX-Lc; Mon, 28 Jul 2014 12:12:43 -0400
+Received: by mail-we0-f174.google.com with SMTP id x48so7571591wes.19
+	for <multiple recipients>; Mon, 28 Jul 2014 09:12:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=xgXoNMQ3T2bdQTVRe4aRHOF1pFzieAda5Bll872dwfA=;
+	b=CyfCU+QaNaL0X78AI+ERhDOPi7JXvylDUvouQXNR8BU54qeVxQm0iBm7yags2wQLZm
+	M46J5vVFMoFpZtj7TXU6uWZlXpquzguch+YsyfJcAMBtOO/9PcvnywLdPFXGCaV568k8
+	ZXkFT/dWaM9Z1FTVN5IvJ0LjQ8yuS0HfKaZ6mD0XIHMHbt5oFp761B5y4kjoYobWXNEw
+	nhmdkoM6yULUMXzVCCDsYWKyPHwvVoMwNdH3Bi4tQwHKB8ea6Fjenjes9xGi8HZECb6m
+	r6A7WW4mVSRNVG99Amqfw7QclbMPoy1rjxDMJVvgy2YJohyZ/WTjr6HWwbOu22zirHuu
+	sx5g==
+X-Received: by 10.180.211.101 with SMTP id nb5mr32986432wic.53.1406563959064; 
+	Mon, 28 Jul 2014 09:12:39 -0700 (PDT)
+Received: from localhost ([87.114.35.83]) by mx.google.com with ESMTPSA id
+	ey16sm32840965wid.14.2014.07.28.09.12.37 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 28 Jul 2014 09:12:37 -0700 (PDT)
+Date: Mon, 28 Jul 2014 17:12:35 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.177
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL for-2.1] Trivial patch for
-	2014-07-26
+Message-ID: <20140728161235.GM13872@stefanha-thinkpad.redhat.com>
+References: <1406218286-19685-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="HVCoas+krw6dou6l"
+Content-Disposition: inline
+In-Reply-To: <1406218286-19685-1-git-send-email-mjt@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c03::22e
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.1] qemu-options: fix
+ another allows-to for -net l2tpv3
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,40 +58,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jul 2014 10:41:22 -0000
+X-List-Received-Date: Mon, 28 Jul 2014 16:13:06 -0000
 
-On 26 July 2014 08:18, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> There's just one trivial patch this time, fixing another
-> occurence of "allows to" in help text.  Please consider
-> applying for 2.1.
->
-> Thanks,
->
-> /mjt
->
-> The following changes since commit c60a57ff497667780132a3fcdc1500c83af5d5c0:
->
->   Merge remote-tracking branch 'remotes/bonzini/tags/for-upstream' into staging (2014-07-25 16:58:41 +0100)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-07-26
->
-> for you to fetch changes up to 2f47b403bd494b6717ef14c0d278d4b2d364b382:
->
->   qemu-options: fix another allows-to for -net l2tpv3 (2014-07-26 11:16:44 +0400)
->
-> ----------------------------------------------------------------
-> trivial patches for 2014-07-26
->
-> ----------------------------------------------------------------
-> Michael Tokarev (1):
->       qemu-options: fix another allows-to for -net l2tpv3
->
+
+--HVCoas+krw6dou6l
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jul 24, 2014 at 08:11:26PM +0400, Michael Tokarev wrote:
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
 >  qemu-options.hx |    2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 9e54686..1549625 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1437,7 +1437,7 @@ DEF("net", HAS_ARG, QEMU_OPTION_net,
+>      "-net l2tpv3[,vlan=3Dn][,name=3Dstr],src=3Dsrcaddr,dst=3Ddstaddr[,sr=
+cport=3Dsrcport][,dstport=3Ddstport],txsession=3Dtxsession[,rxsession=3Drxs=
+ession][,ipv6=3Don/off][,udp=3Don/off][,cookie64=3Don/off][,counter][,pinco=
+unter][,txcookie=3Dtxcookie][,rxcookie=3Drxcookie][,offset=3Doffset]\n"
+>      "                connect the VLAN to an Ethernet over L2TPv3 pseudow=
+ire\n"
+>      "                Linux kernel 3.3+ as well as most routers can talk\=
+n"
+> -    "                L2TPv3. This transport allows to connect a VM to a =
+VM,\n"
+> +    "                L2TPv3. This transport allows connecting a VM to a =
+VM,\n"
 
-Applied, thanks.
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
--- PMM
+--HVCoas+krw6dou6l
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJT1nZzAAoJEJykq7OBq3PIC4AIALr+X+2haA5rFv6qKWm3J93v
+eQzkRVpiL5zw1ny7aktYyr2M2YkuVV4iQIDnvFjekSDqfpiR5l+LSevoMyvVKtor
+YtP5J0YLy4hv6GAQ57fR9lZosiIOaXa5eLzYn7xt++G1GVyMlCvAxMWK0dPu8qSS
+wf1GP4V6AJgyzuRHGpZ6CJx233VsfW7mLk3SqfZ39e6ln9Fg+Is94asIfUyEkouL
+EKcSryclUCasfm7CX6/zyroNYVXxTRbIfX/bavzW8N/lYXOXig0JzYkU0goI41bD
+ak1RT09hKQj+MFssSJKeXCbA6pOgaAguOPgRm8MgWb5qaeYQGh0LTxdpAAAU6V8=
+=PclP
+-----END PGP SIGNATURE-----
+
+--HVCoas+krw6dou6l--
 
