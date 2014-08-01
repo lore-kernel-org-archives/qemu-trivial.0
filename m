@@ -1,41 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XDDMC-0001wF-P6
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Aug 2014 09:58:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37504)
+	id 1XDIO1-0006qv-EC
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Aug 2014 15:21:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44637)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1XDDM6-0001lb-1c
-	for qemu-trivial@nongnu.org; Fri, 01 Aug 2014 09:58:51 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XDINv-0006jg-1M
+	for qemu-trivial@nongnu.org; Fri, 01 Aug 2014 15:21:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1XDDM0-0007aP-U6
-	for qemu-trivial@nongnu.org; Fri, 01 Aug 2014 09:58:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51632)
+	(envelope-from <mjt@tls.msk.ru>) id 1XDINq-0007fX-38
+	for qemu-trivial@nongnu.org; Fri, 01 Aug 2014 15:20:58 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48632)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1XDDLq-0007ND-Gc; Fri, 01 Aug 2014 09:58:30 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s71DwSq8011791
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Fri, 1 Aug 2014 09:58:28 -0400
-Received: from localhost (ovpn-116-26.ams2.redhat.com [10.36.116.26])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s71DwP3B006479; Fri, 1 Aug 2014 09:58:26 -0400
-Date: Fri, 1 Aug 2014 09:58:24 -0400
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Hani Benhabiles <kroosec@gmail.com>
-Message-ID: <20140801095824.1c0e79d6@redhat.com>
-In-Reply-To: <1406672560-21029-1-git-send-email-kroosec@gmail.com>
-References: <1406672560-21029-1-git-send-email-kroosec@gmail.com>
-Organization: Red Hat
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XDINV-0007aQ-Jb; Fri, 01 Aug 2014 15:20:33 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 05D4C4027C;
+	Fri,  1 Aug 2014 23:20:32 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id DB8D6666;
+	Fri,  1 Aug 2014 23:20:31 +0400 (MSK)
+Received: (nullmailer pid 12314 invoked by uid 1000);
+	Fri, 01 Aug 2014 19:20:31 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Fri,  1 Aug 2014 23:20:24 +0400
+Message-Id: <1406920824-12257-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] monitor: Remove hardcoded watchdog event
-	names
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Anton Ivanov <antivano@cisco.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-stable@nongnu.org
+Subject: [Qemu-trivial] [PATCH] l2tpv3 (configure): it is linux-specific
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,44 +41,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Aug 2014 13:58:51 -0000
+X-List-Received-Date: Fri, 01 Aug 2014 19:21:04 -0000
 
-On Tue, 29 Jul 2014 23:22:40 +0100
-Hani Benhabiles <kroosec@gmail.com> wrote:
+Some non-linux systems, for example a system with
+FreeBSD kernel and glibc, may declare struct mmsghdr
+(in glibc) but may not have linux-specific header
+file linux/ip.h.  The actual implementation in qemu
+includes this linux-specific header file unconditionally,
+so compilation fails if it is not present.  Include
+this header in the configure test too.
 
-> Signed-off-by: Hani Benhabiles <hani@linux.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 
-Applied to the qmp-next branch, thanks.
-
-> ---
->  monitor.c | 11 +++++------
->  1 file changed, 5 insertions(+), 6 deletions(-)
-> 
-> diff --git a/monitor.c b/monitor.c
-> index 5bc70a6..7465775 100644
-> --- a/monitor.c
-> +++ b/monitor.c
-> @@ -4520,16 +4520,15 @@ void netdev_del_completion(ReadLineState *rs, int nb_args, const char *str)
->  
->  void watchdog_action_completion(ReadLineState *rs, int nb_args, const char *str)
->  {
-> +    int i;
-> +
->      if (nb_args != 2) {
->          return;
->      }
->      readline_set_completion_index(rs, strlen(str));
-> -    add_completion_option(rs, str, "reset");
-> -    add_completion_option(rs, str, "shutdown");
-> -    add_completion_option(rs, str, "poweroff");
-> -    add_completion_option(rs, str, "pause");
-> -    add_completion_option(rs, str, "debug");
-> -    add_completion_option(rs, str, "none");
-> +    for (i = 0; WatchdogExpirationAction_lookup[i]; i++) {
-> +        add_completion_option(rs, str, WatchdogExpirationAction_lookup[i]);
-> +    }
->  }
->  
->  void migrate_set_capability_completion(ReadLineState *rs, int nb_args,
-
+--- a/configure
++++ b/configure
+@@ -1723,6 +1723,7 @@ fi
+ 
+ cat > $TMPC <<EOF
+ #include <sys/socket.h>
++#include <linux/ip.h>
+ int main(void) { return sizeof(struct mmsghdr); }
+ EOF
+ if compile_prog "" "" ; then
 
