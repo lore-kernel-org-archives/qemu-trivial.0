@@ -1,45 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XDy9s-0007Y3-H0
-	for mharc-qemu-trivial@gnu.org; Sun, 03 Aug 2014 11:57:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58382)
+	id 1XEDBu-0001rq-5I
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Aug 2014 04:00:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35505)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1XDy9k-0007NN-Jl
-	for qemu-trivial@nongnu.org; Sun, 03 Aug 2014 11:57:14 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XEDBl-0001el-QH
+	for qemu-trivial@nongnu.org; Mon, 04 Aug 2014 04:00:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1XDy9e-0002BV-Dr
-	for qemu-trivial@nongnu.org; Sun, 03 Aug 2014 11:57:08 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59740)
+	(envelope-from <mjt@tls.msk.ru>) id 1XEDBg-0007fu-5q
+	for qemu-trivial@nongnu.org; Mon, 04 Aug 2014 04:00:13 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:47468)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1XDy9R-0002Ay-M0; Sun, 03 Aug 2014 11:56:49 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s73FugjV018141
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Sun, 3 Aug 2014 11:56:42 -0400
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-30.ams2.redhat.com
-	[10.36.116.30])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s73FudPE007342; Sun, 3 Aug 2014 11:56:40 -0400
-Message-ID: <53DE5BB7.10709@redhat.com>
-Date: Sun, 03 Aug 2014 17:56:39 +0200
-From: Laszlo Ersek <lersek@redhat.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XEDBU-0007Q5-Pm; Mon, 04 Aug 2014 03:59:56 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 48809408C0;
+	Mon,  4 Aug 2014 11:59:48 +0400 (MSK)
+Message-ID: <53DF3D74.9070503@msgid.tls.msk.ru>
+Date: Mon, 04 Aug 2014 11:59:48 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.6.0
+	rv:24.0) Gecko/20100101 Icedove/24.6.0
 MIME-Version: 1.0
-To: Chen Gang <gang.chen.5i5j@gmail.com>, lcapitulino@redhat.com,
-	qiaonuohan@cn.fujitsu.com, pbonzini@redhat.com, agraf@suse.de,
-	Michael Tokarev <mjt@tls.msk.ru>
+To: Chen Gang <gang.chen.5i5j@gmail.com>
 References: <53DE5538.1020701@gmail.com>
 In-Reply-To: <53DE5538.1020701@gmail.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] dump.c: Fix memory leak issue in cleanup
- processing for dump_init()
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] Cc'ing emails [was: [PATCH] dump.c: Fix memory leak
+ issue in cleanup processing for dump_init()]
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,116 +45,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 03 Aug 2014 15:57:14 -0000
+X-List-Received-Date: Mon, 04 Aug 2014 08:00:19 -0000
 
-comments below
+Please stop Cc'ing me emails sent to, at least, qemu-trivial@.
 
-On 08/03/14 17:28, Chen Gang wrote:
-> In dump_init(), when failure occurs, need notice about 'fd' and memory
-> mapping. So call dump_cleanup() for it (need let all initializations at
-> front).
-> 
-> Also simplify dump_cleanup(): remove redundant 'ret' and redundant 'fd'
-> checking.
-> 
-> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-> ---
->  dump.c | 18 +++++-------------
->  1 file changed, 5 insertions(+), 13 deletions(-)
+I'm about to filter personal emails which are also sent to
+some mailinglists I receive.  I'd not do that, because this is
+a good practice to Cc someone like that for various really
+important or urgent emails, and if I to apply such a filter,
+these urgent emails will be filtered too, obviously.
 
-Please explain what is leaked and how.
+I'm not sure how people treat these cases or deal with them.
+We are subscribed to, in particular, qemu-devel@, and active
+maintainers look there too, so receive more than one copy of
+many emails.
 
-The only possibility I can see (without digging very hard) is that
-qemu_get_guest_memory_mapping() succeeds and lzo_init() fails (which
-should never happen in practice).
+It is becoming worse.  With get_maintainer.pl pulling addresses
+of people who made changes or commits to files by default,
+contributing to the project becomes a bit dangerous.  Because
+as a result, once you fix something, you're essentially being
+subscribed to a spam list, because other contributors start
+Ccing you for the patches with which you have absolutely nothing
+to do, and if a discussion emerges, you can't opt out of it
+anymore (especially for patches which raise hot discussions).
+So I'd rather think twice before contributing anything...
 
-Regarding s->fd itself, I'm beyond trying to understand its lifecycle.
-Qemu uses a bad ownership model wherein functions, in case of an
-internal error, release resources they got from their callers. I'm
-unable to reason in such a model. The only function to close fd *ever*
-should be qmp_dump_guest_memory() (and that one should close fd with a
-direct close() call). Currently fd is basically a global variable,
-because the entire dump function tree has access to it (and closes it if
-there's an error).
+Thanks,
 
-Anyway I guess it's OK to call dump_cleanup() to close s->fd just in case.
-
-If you have a Coverity report, please share it.
-
-Then,
-
-> diff --git a/dump.c b/dump.c
-> index ce646bc..71d3e94 100644
-> --- a/dump.c
-> +++ b/dump.c
-> @@ -71,18 +71,14 @@ uint64_t cpu_to_dump64(DumpState *s, uint64_t val)
->  
->  static int dump_cleanup(DumpState *s)
->  {
-> -    int ret = 0;
-> -
-
-I agree with this change.
-
->      guest_phys_blocks_free(&s->guest_phys_blocks);
->      memory_mapping_list_free(&s->list);
-> -    if (s->fd != -1) {
-> -        close(s->fd);
-> -    }
-> +    close(s->fd);
-
-I disagree. It clobbers errno if s->fd is -1. Even though we don't
-particularly care about errno, it sort of disturbs be. Or can you prove
-s->fd is never -1 here?
-
->      if (s->resume) {
->          vm_start();
->      }
->  
-> -    return ret;
-> +    return 0;
->  }
->  
->  static void dump_error(DumpState *s, const char *reason)
-> @@ -1499,6 +1495,8 @@ static int dump_init(DumpState *s, int fd, bool has_format,
->      s->begin = begin;
->      s->length = length;
->  
-> +    memory_mapping_list_init(&s->list);
-> +
->      guest_phys_blocks_init(&s->guest_phys_blocks);
->      guest_phys_blocks_append(&s->guest_phys_blocks);
->  
-> @@ -1526,7 +1524,6 @@ static int dump_init(DumpState *s, int fd, bool has_format,
->      }
->  
->      /* get memory mapping */
-> -    memory_mapping_list_init(&s->list);
->      if (paging) {
->          qemu_get_guest_memory_mapping(&s->list, &s->guest_phys_blocks, &err);
->          if (err != NULL) {
-> @@ -1622,12 +1619,7 @@ static int dump_init(DumpState *s, int fd, bool has_format,
->      return 0;
->  
->  cleanup:
-> -    guest_phys_blocks_free(&s->guest_phys_blocks);
-> -
-> -    if (s->resume) {
-> -        vm_start();
-> -    }
-> -
-> +    dump_cleanup(s);
->      return -1;
->  }
->  
-> 
-
-This code is ripe for a generic lifecycle tracking overhaul, but since
-my view of ownership tracking is marginal in the qemu developer
-community, I'm not motivated.
-
-NB: I'm not nacking your patch, just please explain it better.
-
-Thanks
-Laszlo
+/mjt
 
