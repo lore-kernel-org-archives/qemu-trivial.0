@@ -1,47 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XEbFw-0004GN-LM
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Aug 2014 05:42:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45156)
+	id 1XEdjg-0000Iv-0F
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Aug 2014 08:21:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45817)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1XEbFo-00045g-2A
-	for qemu-trivial@nongnu.org; Tue, 05 Aug 2014 05:42:04 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1XEdjZ-0000H1-1c
+	for qemu-trivial@nongnu.org; Tue, 05 Aug 2014 08:20:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1XEbFj-00042X-IJ
-	for qemu-trivial@nongnu.org; Tue, 05 Aug 2014 05:41:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:63007)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1XEdjT-0002pb-SV
+	for qemu-trivial@nongnu.org; Tue, 05 Aug 2014 08:20:52 -0400
+Received: from mail-pa0-x22a.google.com ([2607:f8b0:400e:c03::22a]:42251)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1XEbFY-000414-Se; Tue, 05 Aug 2014 05:41:45 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s759feJw000810
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Tue, 5 Aug 2014 05:41:41 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-42.ams2.redhat.com
-	[10.36.116.42])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s759fcFm015659
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 5 Aug 2014 05:41:40 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id EF82B3009E37; Tue,  5 Aug 2014 11:41:37 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1XEdjT-0002pP-Ju; Tue, 05 Aug 2014 08:20:47 -0400
+Received: by mail-pa0-f42.google.com with SMTP id lf10so1340221pab.1
+	for <multiple recipients>; Tue, 05 Aug 2014 05:20:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=HSWlhfeuhBfY0OaMWK4mMObh/TewZg8slWlvjy1JTzo=;
+	b=rYhGJd//WglbQxY7ByW3jV4kcbl3G5LOE0fg6RYfKSY/wkxR/XW6kdjyIefj/2xLrD
+	/04VF+QrS15ptNeESk0PGzVDUFAPTDD43/UZPXATbUCDWD+vTh+DkHCcOL5/oRB0nzzJ
+	Wp0efv4kVUwwD2ZDuiysi+gQ3HPDH/fA6LB50tY4pRBDCe/cB36T45INEDN6X2L4A+0t
+	vDDXaLMvylUysWPGh5uRLhMRDIGtZVnlmYx0K7IyfBdT21TcLgMfXJ5PONEbds1zfCSG
+	0EycNwAzDvgaesTFJQzx72KuKXcwioQpI9YXZvwKypZbXLLeu+HuA4o3DM4/82urp2U+
+	/Fzw==
+X-Received: by 10.66.246.229 with SMTP id xz5mr3708053pac.119.1407241245943;
+	Tue, 05 Aug 2014 05:20:45 -0700 (PDT)
+Received: from [192.168.1.23] ([124.127.118.42])
+	by mx.google.com with ESMTPSA id h10sm5922421pat.11.2014.08.05.05.20.43
+	for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 05 Aug 2014 05:20:45 -0700 (PDT)
+Message-ID: <53E0CC18.7070403@gmail.com>
+Date: Tue, 05 Aug 2014 20:20:40 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.6.0
+MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
 References: <53DE5538.1020701@gmail.com> <53DF3D74.9070503@msgid.tls.msk.ru>
 	<87d2cguupa.fsf@blackfin.pond.sub.org> <53E06083.7080909@gmail.com>
 	<53E082EF.9090007@msgid.tls.msk.ru>
-Date: Tue, 05 Aug 2014 11:41:37 +0200
-In-Reply-To: <53E082EF.9090007@msgid.tls.msk.ru> (Michael Tokarev's message of
-	"Tue, 05 Aug 2014 11:08:31 +0400")
-Message-ID: <87y4v3mfxq.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Chen Gang <gang.chen.5i5j@gmail.com>,
-	qemu-devel <qemu-devel@nongnu.org>
+	<CAFEAcA_9+5VEzf4dpyrs9tR-jici+ea6rr6qh6F+nX296PH8hQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_9+5VEzf4dpyrs9tR-jici+ea6rr6qh6F+nX296PH8hQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::22a
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] Cc'ing emails [
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -54,92 +62,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Aug 2014 09:42:04 -0000
+X-List-Received-Date: Tue, 05 Aug 2014 12:20:58 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
 
-> 05.08.2014 08:41, Chen Gang wrote:
->> 
->> Every members have their own tastes, and one working flow may be not
->> suitable for all members. I can understand, and hope other members
->> understand too.
->> 
->> At least for me, next, I shall send patch to the members which I can get
->> from 'get_maintainers.pl' and only Cc to qemu-devel. And shall skip
->> qemu-trivial and Michael Tokarev.
->
-> Why skip both?  It's your call, but I'm curious.
->
-> What I _think_ wrong is that get_maintainers.pl lists many random
-> "patchers" for a given file by default.
->
-> Besides, we should probably review role of Anthony Ligory, because
-> he is returned as a sole contact for manu files, but apparently he
-> does not reply to emails anymore.
->
-> []
->>>> I'm not sure how people treat these cases or deal with them.
->>>> We are subscribed to, in particular, qemu-devel@, and active
->>>> maintainers look there too, so receive more than one copy of
->>>> many emails.
+
+On 08/05/2014 04:07 PM, Peter Maydell wrote:
+> n 5 August 2014 08:08, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>> 05.08.2014 08:41, Chen Gang wrote:
 >>>
->>> I believe fighting the established convention to copy is futile.  I
->>> embrace it instead, and make it help me prioritize my reading.  Copy me,
->>> and I'll at least skim cover letters and other thread-starters to
->>> determine whether I need to follow this thread.  Don't copy me, and I'll
->>> at best glance at the subject in passing.
->
-> We created some separate mailinglists - for example -trivial@ - especially
-> to get such attention.  This is what I'm talking about, in most part,
-> because main qemu mailinglist traffic become quite a bit high to follow
-> it closely, and it is a good idea indeed to Cc someone when sending mail
-> to qemu-devel@.  But even there, Cc'ing random "patchers" as get_maintainer.pl
-> often suggests is _not_ a good idea.  I think.
-
-I don't disagree with you there.  I take get_maintainer.pl as advice,
-not gospel.
-
-Note that because --git is *off* by default, you get "random patchers"
-only when MAINTAINERS comes up empty.  Which it does far too often,
-because its coverage is lousy: some 1300 out of >3600 files.
-
-We could default --git-fallback to off to suppress "random patchers"
-unless you ask for them.
-
->>> Automatic filing into folders and marking copies so I don't have to mark
->>> them read twice helps.
+>>> Every members have their own tastes, and one working flow may be not
+>>> suitable for all members. I can understand, and hope other members
+>>> understand too.
 >>>
->>> The additional traffic is a drop in a bucket.
+>>> At least for me, next, I shall send patch to the members which I can get
+>>> from 'get_maintainers.pl' and only Cc to qemu-devel. And shall skip
+>>> qemu-trivial and Michael Tokarev.
+>>
+>> Why skip both?  It's your call, but I'm curious.
+> 
+> I think that is a misunderstanding. You asked not to get mails
+> cc'd to both you personally and qemu-trivial at the same time,
+> and Chen misread this to mean not to cc either address.
+> 
+> Trivial patches should still be sent "To: qemu-devel + Cc: qemu-trivial".
 >
-> Which traffic you refer to as "additional"?  The personal emails?
 
-The personal copies compared to the full list traffic.
+OK, thank you for your explanation. Excuse me, my English is not quite
+well, originally, I really misunderstood what Michael Tokarev said.
 
-I count some 1200 messages to qemu-devel for the past week.  32 contain
-the string "mjt@tls", which I take as a crude upper bound for you
-getting a copy.  I don't mean to say that's not annoying or a drain on
-your time (who am I to judge?), just that the additional network traffic
-over full qemu-devel delivery is negligible.
+>> What I _think_ wrong is that get_maintainers.pl lists many random
+>> "patchers" for a given file by default.
+> 
+> Yes, I think it's probably reasonable to change it to make it not
+> default to "--git-fallback". Do you want to submit a patch?
+> 
+> (Perhaps we could make it cc qemu-orphan@ if we wanted to
+> flag up holes in our MAINTAINERS coverage and patches liable
+> to get lost, but that probably only makes sense if we have people
+> who would care enough to do that monitoring work.)
+> 
 
-> At least in my case it is quite significant because of qemu, and qemu
-> is _far_ from a single project where I actively contributed.  For example,
-> I contributed many things to postfix, but I don't have to worry about
-> it in any way, and I don't receive random personal emails - if something
-> is being Cc'ed to me it really is something important.  Ditto for linux
-> kernel and other areas.
+Originally, I assumed Michael Tokarev is that role (be the people who
+would care enough to do that monitoring work), but sorry, at present,
+I know, I misunderstand him (he is not this role).
 
-I recommend to set up filters to file away list traffic and copies of
-list traffic separately from your private e-mail.
+It is really hard to find a member to act as this role (I guess, for act
+as this role, he/she will be a real global maintainer of qemu).
 
-> In case of qemu, see -- for example, Anthony, who apparently stepped
-> out from qemu.  Almost every email on qemu-devel@ is being Cc'ed to
-> him nowadays, so he receives _whole_ qemu-devel@ in his personal
-> mailbox.
 
-I'd be surprised if he received copies in his personal inbox.  I expect
-him to file them smartly.
+Thanks.
+-- 
+Chen Gang
 
->           Is it also a drop in (his) bucket?
-
-I guess it is: 125 of last week's messages contain "aliguori@".
+Open, share, and attitude like air, water, and life which God blessed
 
