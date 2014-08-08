@@ -1,38 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XFqwn-0005CV-Jj
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Aug 2014 16:39:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39352)
+	id 1XFqwp-0005GR-Gy
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Aug 2014 16:39:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39460)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XFqwg-0004zh-Q5
-	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:39:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XFqwj-00054B-6O
+	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:39:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XFqwc-0000xp-Bi
-	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:39:26 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57088)
+	(envelope-from <mjt@tls.msk.ru>) id 1XFqwf-0000za-0j
+	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:39:29 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38060)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XFqwO-0000ot-K6; Fri, 08 Aug 2014 16:39:08 -0400
+	id 1XFqwO-0000ow-KA; Fri, 08 Aug 2014 16:39:08 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1FEBE41A18;
+	by isrv.corpit.ru (Postfix) with ESMTP id 8110141A1A;
 	Sat,  9 Aug 2014 00:39:06 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 0ACAF6F3;
+	by tsrv.corpit.ru (Postfix) with SMTP id 67F736EE;
 	Sat,  9 Aug 2014 00:39:06 +0400 (MSK)
-Received: (nullmailer pid 10320 invoked by uid 1000);
+Received: (nullmailer pid 10324 invoked by uid 1000);
 	Fri, 08 Aug 2014 20:39:05 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Sat,  9 Aug 2014 00:38:59 +0400
-Message-Id: <1407530342-10259-7-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Sat,  9 Aug 2014 00:39:01 +0400
+Message-Id: <1407530342-10259-9-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1407530342-10259-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1407530342-10259-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 6/9] hw/timer: Move extern declaration from .c
-	to .h file
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Fam Zheng <famz@redhat.com>
+Subject: [Qemu-trivial] =?utf-8?q?=5BPULL_8/9=5D_po=3A_Add_Chinese_transla?=
+	=?utf-8?q?tion?=
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,65 +47,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Aug 2014 20:39:31 -0000
+X-List-Received-Date: Fri, 08 Aug 2014 20:39:34 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Fam Zheng <famz@redhat.com>
 
-This fixes a warning from smatch (static code analyser).
-
-Fix also the comment with the renamed source file name.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-
- hw/timer/tusb6010.c |    3 ---
- include/hw/usb.h    |    7 ++++++-
- 2 files changed, 6 insertions(+), 4 deletions(-)
+Signed-off-by: Fam Zheng <famz@redhat.com>
+Reviewed-by: Amos Kong <akong@redhat.com>
+Reviewed-by: Dongsheng Song <songdongsheng@live.cn>
+Reviewed-by: Wei Huang <wehuang@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/timer/tusb6010.c |    3 ---
- include/hw/usb.h    |    7 ++++++-
- 2 files changed, 6 insertions(+), 4 deletions(-)
+ po/zh_CN.po |   86 +++++++++++++++++++++++++++++++++++++++++++++++++++++=
+++++++
+ 1 file changed, 86 insertions(+)
+ create mode 100644 po/zh_CN.po
 
-diff --git a/hw/timer/tusb6010.c b/hw/timer/tusb6010.c
-index bd2a89e..459c748 100644
---- a/hw/timer/tusb6010.c
-+++ b/hw/timer/tusb6010.c
-@@ -282,9 +282,6 @@ static void tusb_gpio_intr_update(TUSBState *s)
-     /* TODO: How is this signalled?  */
- }
- 
--extern CPUReadMemoryFunc * const musb_read[];
--extern CPUWriteMemoryFunc * const musb_write[];
--
- static uint32_t tusb_async_readb(void *opaque, hwaddr addr)
- {
-     TUSBState *s = (TUSBState *) opaque;
-diff --git a/include/hw/usb.h b/include/hw/usb.h
-index 8bcab48..223a5ae 100644
---- a/include/hw/usb.h
-+++ b/include/hw/usb.h
-@@ -475,7 +475,8 @@ void usb_host_info(Monitor *mon, const QDict *qdict);
- 
- #define VM_USB_HUB_SIZE 8
- 
--/* usb-musb.c */
-+/* hw/usb/hdc-musb.c */
+diff --git a/po/zh_CN.po b/po/zh_CN.po
+new file mode 100644
+index 0000000..2b1d42e
+--- /dev/null
++++ b/po/zh_CN.po
+@@ -0,0 +1,86 @@
++# Chinese translation for QEMU.
++# This file is put in the public domain.
++#
++# Fam Zheng <famz@redhat.com>, 2014
++msgid ""
++msgstr ""
++"Project-Id-Version: QEMU 2.2\n"
++"Report-Msgid-Bugs-To: qemu-devel@nongnu.org\n"
++"POT-Creation-Date: 2014-07-31 10:03+0800\n"
++"PO-Revision-Date: 2014-07-31 10:00+0800\n"
++"Last-Translator: Fam Zheng <famz@redhat.com>\n"
++"Language-Team: Chinese <zh@li.org>\n"
++"Language: zh\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=3DUTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=3D2; plural=3Dn !=3D 1;\n"
++"X-Generator: Lokalize 1.4\n"
 +
- enum musb_irq_source_e {
-     musb_irq_suspend = 0,
-     musb_irq_resume,
-@@ -494,6 +495,10 @@ enum musb_irq_source_e {
- };
- 
- typedef struct MUSBState MUSBState;
++#: ui/gtk.c:321
++msgid " - Press Ctrl+Alt+G to release grab"
++msgstr " - =E6=8C=89=E4=B8=8B Ctrl+Alt+G =E5=8F=96=E6=B6=88=E6=8D=95=E8=8E=
+=B7"
 +
-+extern CPUReadMemoryFunc * const musb_read[];
-+extern CPUWriteMemoryFunc * const musb_write[];
++#: ui/gtk.c:325
++msgid " [Paused]"
++msgstr "=C2=A0[=E5=B7=B2=E6=9A=82=E5=81=9C]"
 +
- MUSBState *musb_init(DeviceState *parent_device, int gpio_base);
- void musb_reset(MUSBState *s);
- uint32_t musb_core_intr_get(MUSBState *s);
--- 
++#: ui/gtk.c:1601
++msgid "_Pause"
++msgstr "=E6=9A=82=E5=81=9C(_P)"
++
++#: ui/gtk.c:1607
++msgid "_Reset"
++msgstr "=E9=87=8D=E7=BD=AE(_R)"
++
++#: ui/gtk.c:1610
++msgid "Power _Down"
++msgstr "=E5=85=B3=E9=97=AD=E7=94=B5=E6=BA=90(_D)"
++
++#: ui/gtk.c:1616
++msgid "_Quit"
++msgstr "=E9=80=80=E5=87=BA(_Q)"
++
++#: ui/gtk.c:1692
++msgid "_Fullscreen"
++msgstr "=E5=85=A8=E5=B1=8F(_F)"
++
++#: ui/gtk.c:1702
++msgid "Zoom _In"
++msgstr "=E6=94=BE=E5=A4=A7(_I)"
++
++#: ui/gtk.c:1709
++msgid "Zoom _Out"
++msgstr "=E7=BC=A9=E5=B0=8F(_O)"
++
++#: ui/gtk.c:1716
++msgid "Best _Fit"
++msgstr "=E6=9C=80=E5=90=88=E9=80=82=E5=A4=A7=E5=B0=8F(_F)"
++
++#: ui/gtk.c:1723
++msgid "Zoom To _Fit"
++msgstr "=E7=BC=A9=E6=94=BE=E4=BB=A5=E9=80=82=E5=BA=94=E5=A4=A7=E5=B0=8F(=
+_F)"
++
++#: ui/gtk.c:1729
++msgid "Grab On _Hover"
++msgstr "=E9=BC=A0=E6=A0=87=E7=BB=8F=E8=BF=87=E6=97=B6=E6=8D=95=E8=8E=B7(=
+_H)"
++
++#: ui/gtk.c:1732
++msgid "_Grab Input"
++msgstr "=E6=8D=95=E8=8E=B7=E8=BE=93=E5=85=A5(_G)"
++
++#: ui/gtk.c:1761
++msgid "Show _Tabs"
++msgstr "=E6=98=BE=E7=A4=BA=E6=A0=87=E7=AD=BE=E9=A1=B5(_T)"
++
++#: ui/gtk.c:1764
++msgid "Detach Tab"
++msgstr "=E5=88=86=E7=A6=BB=E6=A0=87=E7=AD=BE=E9=A1=B5"
++
++#: ui/gtk.c:1778
++msgid "_Machine"
++msgstr "=E8=99=9A=E6=8B=9F=E6=9C=BA(_M)"
++
++#: ui/gtk.c:1783
++msgid "_View"
++msgstr "=E8=A7=86=E5=9B=BE(_V)"
+--=20
 1.7.10.4
 
 
