@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XFqWe-0004E1-8T
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Aug 2014 16:12:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34877)
+	id 1XFqwn-0005CV-Jj
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Aug 2014 16:39:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39352)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XFqWV-00041D-On
-	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:12:29 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XFqwg-0004zh-Q5
+	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:39:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XFqWP-0008Fb-Me
-	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:12:23 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51832)
+	(envelope-from <mjt@tls.msk.ru>) id 1XFqwc-0000xp-Bi
+	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:39:26 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57088)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XFqWC-00088c-OW; Fri, 08 Aug 2014 16:12:04 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 283DE419FE;
-	Sat,  9 Aug 2014 00:12:04 +0400 (MSK)
-Message-ID: <53E52F14.3030806@msgid.tls.msk.ru>
-Date: Sat, 09 Aug 2014 00:12:04 +0400
+	id 1XFqwO-0000ot-K6; Fri, 08 Aug 2014 16:39:08 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 1FEBE41A18;
+	Sat,  9 Aug 2014 00:39:06 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 0ACAF6F3;
+	Sat,  9 Aug 2014 00:39:06 +0400 (MSK)
+Received: (nullmailer pid 10320 invoked by uid 1000);
+	Fri, 08 Aug 2014 20:39:05 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.7.0
-MIME-Version: 1.0
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-References: <1407378881-22590-1-git-send-email-famz@redhat.com>
-In-Reply-To: <1407378881-22590-1-git-send-email-famz@redhat.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Sat,  9 Aug 2014 00:38:59 +0400
+Message-Id: <1407530342-10259-7-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1407530342-10259-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1407530342-10259-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] build-sys: Move qapi-{types, visit,
- event}.o into util-obj-y
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 6/9] hw/timer: Move extern declaration from .c
+	to .h file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,17 +44,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Aug 2014 20:12:30 -0000
+X-List-Received-Date: Fri, 08 Aug 2014 20:39:31 -0000
 
-07.08.2014 06:34, Fam Zheng wrote:
-> These three objects are repeated in multiple times in Makefiles. Let's
-> just add them to libqemuutil.a, and don't list explicitly elsewhere.
+From: Stefan Weil <sw@weilnetz.de>
 
-I think it is a good idea.  I wondered about these too when come across
-them in makefiles several times.  I'm applying this to -trivial, will
-verify how it works ;)
+This fixes a warning from smatch (static code analyser).
 
-Thanks,
+Fix also the comment with the renamed source file name.
 
-/mjt
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+
+ hw/timer/tusb6010.c |    3 ---
+ include/hw/usb.h    |    7 ++++++-
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/timer/tusb6010.c |    3 ---
+ include/hw/usb.h    |    7 ++++++-
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/hw/timer/tusb6010.c b/hw/timer/tusb6010.c
+index bd2a89e..459c748 100644
+--- a/hw/timer/tusb6010.c
++++ b/hw/timer/tusb6010.c
+@@ -282,9 +282,6 @@ static void tusb_gpio_intr_update(TUSBState *s)
+     /* TODO: How is this signalled?  */
+ }
+ 
+-extern CPUReadMemoryFunc * const musb_read[];
+-extern CPUWriteMemoryFunc * const musb_write[];
+-
+ static uint32_t tusb_async_readb(void *opaque, hwaddr addr)
+ {
+     TUSBState *s = (TUSBState *) opaque;
+diff --git a/include/hw/usb.h b/include/hw/usb.h
+index 8bcab48..223a5ae 100644
+--- a/include/hw/usb.h
++++ b/include/hw/usb.h
+@@ -475,7 +475,8 @@ void usb_host_info(Monitor *mon, const QDict *qdict);
+ 
+ #define VM_USB_HUB_SIZE 8
+ 
+-/* usb-musb.c */
++/* hw/usb/hdc-musb.c */
++
+ enum musb_irq_source_e {
+     musb_irq_suspend = 0,
+     musb_irq_resume,
+@@ -494,6 +495,10 @@ enum musb_irq_source_e {
+ };
+ 
+ typedef struct MUSBState MUSBState;
++
++extern CPUReadMemoryFunc * const musb_read[];
++extern CPUWriteMemoryFunc * const musb_write[];
++
+ MUSBState *musb_init(DeviceState *parent_device, int gpio_base);
+ void musb_reset(MUSBState *s);
+ uint32_t musb_core_intr_get(MUSBState *s);
+-- 
+1.7.10.4
+
 
