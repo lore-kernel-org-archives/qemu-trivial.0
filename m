@@ -1,38 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XFr2C-0003Lp-Rp
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Aug 2014 16:45:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56232)
+	id 1XG7Hk-0002q9-NC
+	for mharc-qemu-trivial@gnu.org; Sat, 09 Aug 2014 10:06:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53356)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XFr27-0003Ao-1R
-	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:45:07 -0400
+	(envelope-from <jan.kiszka@web.de>) id 1XG7Hd-0002oM-I7
+	for qemu-trivial@nongnu.org; Sat, 09 Aug 2014 10:06:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XFr22-0005tH-P4
-	for qemu-trivial@nongnu.org; Fri, 08 Aug 2014 16:45:02 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57385)
+	(envelope-from <jan.kiszka@web.de>) id 1XG7HX-0005nK-Ke
+	for qemu-trivial@nongnu.org; Sat, 09 Aug 2014 10:06:09 -0400
+Received: from mout.web.de ([212.227.15.14]:58369)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XFr1s-0005m2-Rf; Fri, 08 Aug 2014 16:44:49 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 667FA41A1A;
-	Sat,  9 Aug 2014 00:44:47 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 9894A6F3;
-	Sat,  9 Aug 2014 00:39:06 +0400 (MSK)
-Received: (nullmailer pid 10314 invoked by uid 1000);
-	Fri, 08 Aug 2014 20:39:05 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Sat,  9 Aug 2014 00:38:56 +0400
-Message-Id: <1407530342-10259-4-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1407530342-10259-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1407530342-10259-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: chenfan <chen.fan.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 3/9] target-i386/cpu.c: Fix two error output
-	indentation
+	(envelope-from <jan.kiszka@web.de>)
+	id 1XG7HX-0005kD-B9; Sat, 09 Aug 2014 10:06:03 -0400
+Received: from mchn199C.mchp.siemens.de ([95.157.58.223]) by smtp.web.de
+	(mrweb003) with ESMTPSA (Nemesis) id 0LkPmd-1WiyFs2izb-00cNa6;
+	Sat, 09 Aug 2014 16:05:55 +0200
+Message-ID: <53E62ABF.2000104@web.de>
+Date: Sat, 09 Aug 2014 16:05:51 +0200
+From: Jan Kiszka <jan.kiszka@web.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
+MIME-Version: 1.0
+To: qemu-trivial <qemu-trivial@nongnu.org>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature";
+	boundary="WeraHd6ANJIduMc7W9VG8rK288X96xxp4"
+X-Provags-ID: V03:K0:91uXJRxLtm6VtejdZQy804vXzvyraTjSzj9+rI7pCQv2UftnVY2
+	mnqK+YNQ5VKd50K2jCL6Htaq2Ty2stxgBncZv6O6hQAOscJPSaAL8HEPOwSZZRrqeOpdgW8
+	ub9ye0luCPbfT2xXzVAwqgLxm10Ij706+++N3TmLmoLwnjWA71vYMNbFfgsQ/ZhP1Iipf0J
+	yW5u1UN0Z8UVfs2e95Etw==
+X-UI-Out-Filterresults: notjunk:1;
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 212.227.15.14
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] apic: Fix reported DFR content
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,46 +46,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Aug 2014 20:45:07 -0000
+X-List-Received-Date: Sat, 09 Aug 2014 14:06:15 -0000
 
-From: chenfan <chen.fan.fnst@cn.fujitsu.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--WeraHd6ANJIduMc7W9VG8rK288X96xxp4
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Chen Fan <chen.fan.fnst@cn.fujitsu.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+From: Jan Kiszka <jan.kiszka@siemens.com>
+
+IA-32 SDM, Figure 10-14: Bits 27:0 are reserved as 1.
+
+Fixes Jailhouse hypervisor start with in-kernel irqchips off.
+
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
 ---
- target-i386/cpu.c |   10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ hw/intc/apic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-index 6d008ab..217500c 100644
---- a/target-i386/cpu.c
-+++ b/target-i386/cpu.c
-@@ -1716,9 +1716,9 @@ static void x86_set_hv_spinlocks(Object *obj, Visitor *v, void *opaque,
- 
-     if (value < min || value > max) {
-         error_setg(errp, "Property %s.%s doesn't take value %" PRId64
--                  " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
--                  object_get_typename(obj), name ? name : "null",
--                  value, min, max);
-+                   " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
-+                   object_get_typename(obj), name ? name : "null",
-+                   value, min, max);
-         return;
-     }
-     cpu->hyperv_spinlock_attempts = value;
-@@ -1808,8 +1808,8 @@ static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
-                 }
-                 if (numvalue < min) {
-                     error_report("hv-spinlocks value shall always be >= 0x%x"
--                            ", fixup will be removed in future versions",
--                            min);
-+                                 ", fixup will be removed in future versions",
-+                                 min);
-                     numvalue = min;
-                 }
-                 snprintf(num, sizeof(num), "%" PRId32, numvalue);
--- 
-1.7.10.4
+diff --git a/hw/intc/apic.c b/hw/intc/apic.c
+index ef19e55..03ff9e9 100644
+--- a/hw/intc/apic.c
++++ b/hw/intc/apic.c
+@@ -698,7 +698,7 @@ static uint32_t apic_mem_readl(void *opaque, hwaddr a=
+ddr)
+         val =3D s->log_dest << 24;
+         break;
+     case 0x0e:
+-        val =3D s->dest_mode << 28;
++        val =3D (s->dest_mode << 28) | 0xfffffff;
+         break;
+     case 0x0f:
+         val =3D s->spurious_vec;
+--=20
+1.8.1.1.298.ge7eed54
 
+
+--WeraHd6ANJIduMc7W9VG8rK288X96xxp4
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.19 (GNU/Linux)
+
+iEYEARECAAYFAlPmKsIACgkQitSsb3rl5xTNIACeJyC6t41bcG1ubnS04XhaR4Hx
+wUQAoNBi2nuKkHCvgsatlXnIPMBlOZfP
+=SRgw
+-----END PGP SIGNATURE-----
+
+--WeraHd6ANJIduMc7W9VG8rK288X96xxp4--
 
