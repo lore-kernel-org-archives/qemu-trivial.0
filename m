@@ -1,31 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XGpF8-0003mk-U6
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Aug 2014 09:02:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43868)
+	id 1XGpFE-0003yC-S8
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Aug 2014 09:02:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43948)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XGpF2-0003bU-Cx
-	for qemu-trivial@nongnu.org; Mon, 11 Aug 2014 09:02:29 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XGpF8-0003mc-Qc
+	for qemu-trivial@nongnu.org; Mon, 11 Aug 2014 09:02:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XGpEx-0003mS-J3
-	for qemu-trivial@nongnu.org; Mon, 11 Aug 2014 09:02:24 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:65035)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XGpF2-0003qi-FL
+	for qemu-trivial@nongnu.org; Mon, 11 Aug 2014 09:02:30 -0400
+Received: from szxga01-in.huawei.com ([119.145.14.64]:65131)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XGpEl-0003hD-F6; Mon, 11 Aug 2014 09:02:08 -0400
-Received: from 172.24.2.119 (EHLO szxeml406-hub.china.huawei.com)
+	id 1XGpEp-0003il-Ku; Mon, 11 Aug 2014 09:02:12 -0400
+Received: from 172.24.2.119 (EHLO szxeml459-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CAC71206; Mon, 11 Aug 2014 21:01:17 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml406-hub.china.huawei.com
-	(10.82.67.93) with Microsoft SMTP Server id 14.3.158.1; Mon, 11 Aug 2014
-	21:01:06 +0800
+	with ESMTP id CAC71171; Mon, 11 Aug 2014 21:01:11 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml459-hub.china.huawei.com
+	(10.82.67.202) with Microsoft SMTP Server id 14.3.158.1;
+	Mon, 11 Aug 2014 21:01:03 +0800
 From: <arei.gonglei@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Mon, 11 Aug 2014 21:00:53 +0800
-Message-ID: <1407762058-11512-4-git-send-email-arei.gonglei@huawei.com>
+Date: Mon, 11 Aug 2014 21:00:50 +0800
+Message-ID: <1407762058-11512-1-git-send-email-arei.gonglei@huawei.com>
 X-Mailer: git-send-email 1.7.3.1.msysgit.0
-In-Reply-To: <1407762058-11512-1-git-send-email-arei.gonglei@huawei.com>
-References: <1407762058-11512-1-git-send-email-arei.gonglei@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.177.19.102]
@@ -41,7 +39,7 @@ Cc: peter.maydell@linaro.org, peter.crosthwaite@xilinx.com,
 	dmitry@daynix.com, pbonzini@redhat.com,
 	peter.huangpeng@huawei.com, eblake@redhat.com, afaerber@suse.de,
 	dgilbert@redhat.com
-Subject: [Qemu-trivial] [PATCH v5 3/8] audio: don't use 'Yoda conditions'
+Subject: [Qemu-trivial] [PATCH v5 0/8] don't use Yoda conditions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,79 +51,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Aug 2014 13:02:29 -0000
+X-List-Received-Date: Mon, 11 Aug 2014 13:02:35 -0000
 
 From: Gonglei <arei.gonglei@huawei.com>
 
-imitate nearby code about using '!value' or 'value == NULL'
+$WHATEVER: don't use 'Yoda conditions'
 
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
----
- hw/audio/gus.c       | 2 +-
- hw/audio/hda-codec.c | 3 ++-
- hw/audio/sb16.c      | 6 +++---
- 3 files changed, 6 insertions(+), 5 deletions(-)
+'Yoda conditions' are not part of idiomatic QEMU coding
+style, so rewrite them in the more usual order.
 
-diff --git a/hw/audio/gus.c b/hw/audio/gus.c
-index bba6840..4a43ce7 100644
---- a/hw/audio/gus.c
-+++ b/hw/audio/gus.c
-@@ -212,7 +212,7 @@ static int GUS_read_DMA (void *opaque, int nchan, int dma_pos, int dma_len)
-         pos += copied;
-     }
- 
--    if (0 == ((mode >> 4) & 1)) {
-+    if (((mode >> 4) & 1) == 0) {
-         DMA_release_DREQ (s->emu.gusdma);
-     }
-     return dma_len;
-diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
-index cbcf521..3c03ff5 100644
---- a/hw/audio/hda-codec.c
-+++ b/hw/audio/hda-codec.c
-@@ -489,8 +489,9 @@ static int hda_audio_init(HDACodecDevice *hda, const struct desc_codec *desc)
-     for (i = 0; i < a->desc->nnodes; i++) {
-         node = a->desc->nodes + i;
-         param = hda_codec_find_param(node, AC_PAR_AUDIO_WIDGET_CAP);
--        if (NULL == param)
-+        if (param == NULL) {
-             continue;
-+        }
-         type = (param->val & AC_WCAP_TYPE) >> AC_WCAP_TYPE_SHIFT;
-         switch (type) {
-         case AC_WID_AUD_OUT:
-diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
-index 60c4b3b..bda26d0 100644
---- a/hw/audio/sb16.c
-+++ b/hw/audio/sb16.c
-@@ -928,7 +928,7 @@ static IO_WRITE_PROTO (dsp_write)
- /*         if (s->highspeed) */
- /*             break; */
- 
--        if (0 == s->needed_bytes) {
-+        if (s->needed_bytes == 0) {
-             command (s, val);
- #if 0
-             if (0 == s->needed_bytes) {
-@@ -1212,7 +1212,7 @@ static int SB_read_DMA (void *opaque, int nchan, int dma_pos, int dma_len)
- #endif
- 
-     if (till <= copy) {
--        if (0 == s->dma_auto) {
-+        if (s->dma_auto == 0) {
-             copy = till;
-         }
-     }
-@@ -1224,7 +1224,7 @@ static int SB_read_DMA (void *opaque, int nchan, int dma_pos, int dma_len)
-     if (s->left_till_irq <= 0) {
-         s->mixer_regs[0x82] |= (nchan & 4) ? 2 : 1;
-         qemu_irq_raise (s->pic);
--        if (0 == s->dma_auto) {
-+        if (s->dma_auto == 0) {
-             control (s, 0);
-             speaker (s, 0);
-         }
+v5:
+ - rebase on latest qemu master and adding 'reviewed-by'.
+ - Cc'ing qemu-trivial@.
+
+v4:
+ - trivial typo for patch 1/8 suggested by Eric, thanks.
+
+v3:
+ - rewrite CODINT_STYLE file suggested by Eric, thanks.
+ - rename the patch serials.
+ - imitate nearby code about using '!value' or 'value == NULL' at
+   every patch suggested by Markus.
+
+v2:
+ - add more specific commit messages suggested by PMM, thanks.
+ - introduce section of conditional statement to CODING_STYLE.
+
+Gonglei (8):
+  CODING_STYLE: Section about conditional statement
+  usb: don't use 'Yoda conditions'
+  audio: don't use 'Yoda conditions'
+  isa-bus: don't use 'Yoda conditions'
+  don't use 'Yoda conditions'
+  spice: don't use 'Yoda conditions'
+  vl: don't use 'Yoda conditions'
+  vmxnet3: don't use 'Yoda conditions'
+
+ CODING_STYLE         | 14 ++++++++++++++
+ hw/audio/gus.c       |  2 +-
+ hw/audio/hda-codec.c |  3 ++-
+ hw/audio/sb16.c      |  6 +++---
+ hw/isa/isa-bus.c     |  2 +-
+ hw/net/vmxnet3.c     | 16 ++++++++--------
+ hw/usb/dev-audio.c   |  2 +-
+ hw/usb/dev-mtp.c     |  4 ++--
+ hw/usb/hcd-ehci.c    |  2 +-
+ qdev-monitor.c       |  2 +-
+ qemu-char.c          |  2 +-
+ ui/spice-core.c      |  4 ++--
+ util/qemu-sockets.c  |  2 +-
+ vl.c                 |  5 +++--
+ 14 files changed, 41 insertions(+), 25 deletions(-)
+
 -- 
 1.7.12.4
 
