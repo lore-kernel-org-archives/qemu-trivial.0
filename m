@@ -1,29 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XGpFE-0003yC-S8
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Aug 2014 09:02:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43948)
+	id 1XGpFH-000426-63
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Aug 2014 09:02:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43897)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XGpF8-0003mc-Qc
-	for qemu-trivial@nongnu.org; Mon, 11 Aug 2014 09:02:35 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XGpF4-0003ff-Ij
+	for qemu-trivial@nongnu.org; Mon, 11 Aug 2014 09:02:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XGpF2-0003qi-FL
-	for qemu-trivial@nongnu.org; Mon, 11 Aug 2014 09:02:30 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:65131)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XGpEz-0003oT-PM
+	for qemu-trivial@nongnu.org; Mon, 11 Aug 2014 09:02:26 -0400
+Received: from szxga01-in.huawei.com ([119.145.14.64]:65064)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XGpEp-0003il-Ku; Mon, 11 Aug 2014 09:02:12 -0400
-Received: from 172.24.2.119 (EHLO szxeml459-hub.china.huawei.com)
+	id 1XGpEm-0003hJ-Jb; Mon, 11 Aug 2014 09:02:09 -0400
+Received: from 172.24.2.119 (EHLO szxeml410-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CAC71171; Mon, 11 Aug 2014 21:01:11 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml459-hub.china.huawei.com
-	(10.82.67.202) with Microsoft SMTP Server id 14.3.158.1;
-	Mon, 11 Aug 2014 21:01:03 +0800
+	with ESMTP id CAC71219; Mon, 11 Aug 2014 21:01:19 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml410-hub.china.huawei.com
+	(10.82.67.137) with Microsoft SMTP Server id 14.3.158.1;
+	Mon, 11 Aug 2014 21:01:09 +0800
 From: <arei.gonglei@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Mon, 11 Aug 2014 21:00:50 +0800
-Message-ID: <1407762058-11512-1-git-send-email-arei.gonglei@huawei.com>
+Date: Mon, 11 Aug 2014 21:00:55 +0800
+Message-ID: <1407762058-11512-6-git-send-email-arei.gonglei@huawei.com>
 X-Mailer: git-send-email 1.7.3.1.msysgit.0
+In-Reply-To: <1407762058-11512-1-git-send-email-arei.gonglei@huawei.com>
+References: <1407762058-11512-1-git-send-email-arei.gonglei@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.177.19.102]
@@ -39,7 +41,7 @@ Cc: peter.maydell@linaro.org, peter.crosthwaite@xilinx.com,
 	dmitry@daynix.com, pbonzini@redhat.com,
 	peter.huangpeng@huawei.com, eblake@redhat.com, afaerber@suse.de,
 	dgilbert@redhat.com
-Subject: [Qemu-trivial] [PATCH v5 0/8] don't use Yoda conditions
+Subject: [Qemu-trivial] [PATCH v5 5/8] don't use 'Yoda conditions'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,58 +53,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Aug 2014 13:02:35 -0000
+X-List-Received-Date: Mon, 11 Aug 2014 13:02:37 -0000
 
 From: Gonglei <arei.gonglei@huawei.com>
 
-$WHATEVER: don't use 'Yoda conditions'
+imitate nearby code about using '!value' or 'value == NULL'
 
-'Yoda conditions' are not part of idiomatic QEMU coding
-style, so rewrite them in the more usual order.
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+---
+ qdev-monitor.c      | 2 +-
+ qemu-char.c         | 2 +-
+ util/qemu-sockets.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-v5:
- - rebase on latest qemu master and adding 'reviewed-by'.
- - Cc'ing qemu-trivial@.
-
-v4:
- - trivial typo for patch 1/8 suggested by Eric, thanks.
-
-v3:
- - rewrite CODINT_STYLE file suggested by Eric, thanks.
- - rename the patch serials.
- - imitate nearby code about using '!value' or 'value == NULL' at
-   every patch suggested by Markus.
-
-v2:
- - add more specific commit messages suggested by PMM, thanks.
- - introduce section of conditional statement to CODING_STYLE.
-
-Gonglei (8):
-  CODING_STYLE: Section about conditional statement
-  usb: don't use 'Yoda conditions'
-  audio: don't use 'Yoda conditions'
-  isa-bus: don't use 'Yoda conditions'
-  don't use 'Yoda conditions'
-  spice: don't use 'Yoda conditions'
-  vl: don't use 'Yoda conditions'
-  vmxnet3: don't use 'Yoda conditions'
-
- CODING_STYLE         | 14 ++++++++++++++
- hw/audio/gus.c       |  2 +-
- hw/audio/hda-codec.c |  3 ++-
- hw/audio/sb16.c      |  6 +++---
- hw/isa/isa-bus.c     |  2 +-
- hw/net/vmxnet3.c     | 16 ++++++++--------
- hw/usb/dev-audio.c   |  2 +-
- hw/usb/dev-mtp.c     |  4 ++--
- hw/usb/hcd-ehci.c    |  2 +-
- qdev-monitor.c       |  2 +-
- qemu-char.c          |  2 +-
- ui/spice-core.c      |  4 ++--
- util/qemu-sockets.c  |  2 +-
- vl.c                 |  5 +++--
- 14 files changed, 41 insertions(+), 25 deletions(-)
-
+diff --git a/qdev-monitor.c b/qdev-monitor.c
+index f87f3d8..81a4e9b 100644
+--- a/qdev-monitor.c
++++ b/qdev-monitor.c
+@@ -694,7 +694,7 @@ void qmp_device_del(const char *id, Error **errp)
+     DeviceState *dev;
+ 
+     dev = qdev_find_recursive(sysbus_get_default(), id);
+-    if (NULL == dev) {
++    if (!dev) {
+         error_set(errp, QERR_DEVICE_NOT_FOUND, id);
+         return;
+     }
+diff --git a/qemu-char.c b/qemu-char.c
+index 6964a2d..3dcc39a 100644
+--- a/qemu-char.c
++++ b/qemu-char.c
+@@ -4121,7 +4121,7 @@ void qmp_chardev_remove(const char *id, Error **errp)
+     CharDriverState *chr;
+ 
+     chr = qemu_chr_find(id);
+-    if (NULL == chr) {
++    if (chr == NULL) {
+         error_setg(errp, "Chardev '%s' not found", id);
+         return;
+     }
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index 74cf078..5d38395 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -732,7 +732,7 @@ int unix_connect_opts(QemuOpts *opts, Error **errp,
+     ConnectState *connect_state = NULL;
+     int sock, rc;
+ 
+-    if (NULL == path) {
++    if (path == NULL) {
+         error_setg(errp, "unix connect: no path specified");
+         return -1;
+     }
 -- 
 1.7.12.4
 
