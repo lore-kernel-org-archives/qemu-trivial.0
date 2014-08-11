@@ -1,40 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XG7Hk-0002q9-NC
-	for mharc-qemu-trivial@gnu.org; Sat, 09 Aug 2014 10:06:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53356)
+	id 1XGfC9-0003MK-Iu
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Aug 2014 22:18:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44054)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1XG7Hd-0002oM-I7
-	for qemu-trivial@nongnu.org; Sat, 09 Aug 2014 10:06:15 -0400
+	(envelope-from <famz@redhat.com>) id 1XGfC1-000384-CB
+	for qemu-trivial@nongnu.org; Sun, 10 Aug 2014 22:18:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1XG7HX-0005nK-Ke
-	for qemu-trivial@nongnu.org; Sat, 09 Aug 2014 10:06:09 -0400
-Received: from mout.web.de ([212.227.15.14]:58369)
+	(envelope-from <famz@redhat.com>) id 1XGfBv-0006vA-0R
+	for qemu-trivial@nongnu.org; Sun, 10 Aug 2014 22:18:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:65086)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1XG7HX-0005kD-B9; Sat, 09 Aug 2014 10:06:03 -0400
-Received: from mchn199C.mchp.siemens.de ([95.157.58.223]) by smtp.web.de
-	(mrweb003) with ESMTPSA (Nemesis) id 0LkPmd-1WiyFs2izb-00cNa6;
-	Sat, 09 Aug 2014 16:05:55 +0200
-Message-ID: <53E62ABF.2000104@web.de>
-Date: Sat, 09 Aug 2014 16:05:51 +0200
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
-MIME-Version: 1.0
-To: qemu-trivial <qemu-trivial@nongnu.org>
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="WeraHd6ANJIduMc7W9VG8rK288X96xxp4"
-X-Provags-ID: V03:K0:91uXJRxLtm6VtejdZQy804vXzvyraTjSzj9+rI7pCQv2UftnVY2
-	mnqK+YNQ5VKd50K2jCL6Htaq2Ty2stxgBncZv6O6hQAOscJPSaAL8HEPOwSZZRrqeOpdgW8
-	ub9ye0luCPbfT2xXzVAwqgLxm10Ij706+++N3TmLmoLwnjWA71vYMNbFfgsQ/ZhP1Iipf0J
-	yW5u1UN0Z8UVfs2e95Etw==
-X-UI-Out-Filterresults: notjunk:1;
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 212.227.15.14
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] apic: Fix reported DFR content
+	(envelope-from <famz@redhat.com>)
+	id 1XGfBi-0006mj-80; Sun, 10 Aug 2014 22:18:18 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7B2IFpx010900
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Sun, 10 Aug 2014 22:18:16 -0400
+Received: from T430.nay.redhat.com (dhcp-14-155.nay.redhat.com [10.66.14.155])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id s7B2ICvY028008; Sun, 10 Aug 2014 22:18:13 -0400
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 11 Aug 2014 10:18:31 +0800
+Message-Id: <1407723511-13265-1-git-send-email-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+Subject: [Qemu-trivial] [PATCH] memory: Update obsolete comment about
+	AddrRange field type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,54 +41,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 09 Aug 2014 14:06:15 -0000
+X-List-Received-Date: Mon, 11 Aug 2014 02:18:43 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---WeraHd6ANJIduMc7W9VG8rK288X96xxp4
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+We are not 64 bit any more since
 
-From: Jan Kiszka <jan.kiszka@siemens.com>
+08dafab4 memory: use 128-bit integers for sizes and intermediates
 
-IA-32 SDM, Figure 10-14: Bits 27:0 are reserved as 1.
+but the comment is forgotten to be updated.
 
-Fixes Jailhouse hypervisor start with in-kernel irqchips off.
-
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+Signed-off-by: Fam Zheng <famz@redhat.com>
 ---
- hw/intc/apic.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ memory.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/intc/apic.c b/hw/intc/apic.c
-index ef19e55..03ff9e9 100644
---- a/hw/intc/apic.c
-+++ b/hw/intc/apic.c
-@@ -698,7 +698,7 @@ static uint32_t apic_mem_readl(void *opaque, hwaddr a=
-ddr)
-         val =3D s->log_dest << 24;
-         break;
-     case 0x0e:
--        val =3D s->dest_mode << 28;
-+        val =3D (s->dest_mode << 28) | 0xfffffff;
-         break;
-     case 0x0f:
-         val =3D s->spurious_vec;
---=20
-1.8.1.1.298.ge7eed54
+diff --git a/memory.c b/memory.c
+index 64d7176..dbe6675 100644
+--- a/memory.c
++++ b/memory.c
+@@ -56,8 +56,7 @@ static void memory_init(void)
+ typedef struct AddrRange AddrRange;
+ 
+ /*
+- * Note using signed integers limits us to physical addresses at most
+- * 63 bits wide.  They are needed for negative offsetting in aliases
++ * Note that signed integers are needed for negative offsetting in aliases
+  * (large MemoryRegion::alias_offset).
+  */
+ struct AddrRange {
+-- 
+2.0.3
 
-
---WeraHd6ANJIduMc7W9VG8rK288X96xxp4
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.19 (GNU/Linux)
-
-iEYEARECAAYFAlPmKsIACgkQitSsb3rl5xTNIACeJyC6t41bcG1ubnS04XhaR4Hx
-wUQAoNBi2nuKkHCvgsatlXnIPMBlOZfP
-=SRgw
------END PGP SIGNATURE-----
-
---WeraHd6ANJIduMc7W9VG8rK288X96xxp4--
 
