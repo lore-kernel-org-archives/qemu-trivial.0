@@ -1,45 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XHSJ2-0004Bs-Nq
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Aug 2014 02:45:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37298)
+	id 1XHSgf-00071E-Kx
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Aug 2014 03:09:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40011)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XHSIv-0003wt-Ha
-	for qemu-trivial@nongnu.org; Wed, 13 Aug 2014 02:45:07 -0400
+	(envelope-from <jan.kiszka@web.de>) id 1XHSgY-0006zI-Nj
+	for qemu-trivial@nongnu.org; Wed, 13 Aug 2014 03:09:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XHSIp-0007Yk-6J
-	for qemu-trivial@nongnu.org; Wed, 13 Aug 2014 02:45:01 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46363)
+	(envelope-from <jan.kiszka@web.de>) id 1XHSgS-0000Nm-Ha
+	for qemu-trivial@nongnu.org; Wed, 13 Aug 2014 03:09:26 -0400
+Received: from mout.web.de ([212.227.15.3]:60841)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XHSIc-0007Wh-N5; Wed, 13 Aug 2014 02:44:42 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id DC40642A90;
-	Wed, 13 Aug 2014 10:44:41 +0400 (MSK)
-Message-ID: <53EB0959.9060807@msgid.tls.msk.ru>
-Date: Wed, 13 Aug 2014 10:44:41 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.7.0
+	(envelope-from <jan.kiszka@web.de>)
+	id 1XHSgS-0000Nd-7l; Wed, 13 Aug 2014 03:09:20 -0400
+Received: from mchn199C.mchp.siemens.de ([95.157.58.223]) by smtp.web.de
+	(mrweb003) with ESMTPSA (Nemesis) id 0MDg8k-1XBRsB2fRW-00H5Qp;
+	Wed, 13 Aug 2014 09:09:17 +0200
+Message-ID: <53EB0F18.6060907@web.de>
+Date: Wed, 13 Aug 2014 09:09:12 +0200
+From: Jan Kiszka <jan.kiszka@web.de>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
+	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
+	Mnenhy/0.7.5.666
 MIME-Version: 1.0
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
-References: <1407762058-11512-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1407762058-11512-1-git-send-email-arei.gonglei@huawei.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: peter.maydell@linaro.org, peter.crosthwaite@xilinx.com,
-	weidong.huang@huawei.com, marcel.a@redhat.com,
-	qemu-trivial@nongnu.org, mst@redhat.com, luonengjun@huawei.com,
-	armbru@redhat.com, lcapitulino@redhat.com, av1474@comtv.ru,
-	kraxel@redhat.com, stefanha@redhat.com, pbonzini@redhat.com,
-	dmitry@daynix.com, imammedo@redhat.com,
-	peter.huangpeng@huawei.com, eblake@redhat.com, afaerber@suse.de,
-	dgilbert@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH v5 0/8] don't use Yoda conditions
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial <qemu-trivial@nongnu.org>
+References: <53E62ABF.2000104@web.de> <53EB0250.4080007@msgid.tls.msk.ru>
+In-Reply-To: <53EB0250.4080007@msgid.tls.msk.ru>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature";
+	boundary="F63W9N4E9Q7jl6Mx2KJAbTLotDILXMfNE"
+X-Provags-ID: V03:K0:pWknfzdtHDCHeRKxtXEdrUNS+joxv6tAnKXDqyhRorpHtNg+bxw
+	jNBLUCM8ZePlrXsG1oFsHvASOC19g3cJyY3r4iEkgLRhhcc3S32KfwUe6aTLQyV5jt65UEk
+	cNMU4m1pdT7qTZdwRs2wXUWnugCLOCTYSGOdAs23J5ZsCGUJEogjrpgcEN8Jcuwi6jHskWU
+	NJCBp/HmUsFTjctmAPFfw==
+X-UI-Out-Filterresults: notjunk:1;
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 212.227.15.3
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] apic: Fix reported DFR content
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,9 +48,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Aug 2014 06:45:07 -0000
+X-List-Received-Date: Wed, 13 Aug 2014 07:09:32 -0000
 
-Applied all to -trivial.  Thank you!
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--F63W9N4E9Q7jl6Mx2KJAbTLotDILXMfNE
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 
-/mjt
+On 2014-08-13 08:14, Michael Tokarev wrote:
+> 09.08.2014 18:05, Jan Kiszka wrote:
+>> From: Jan Kiszka <jan.kiszka@siemens.com>
+>>
+>> IA-32 SDM, Figure 10-14: Bits 27:0 are reserved as 1.
+>>
+>> Fixes Jailhouse hypervisor start with in-kernel irqchips off.
+>=20
+> Applied to -trivial, thank you!
+>=20
+> Are the other similar cases in there okay?
+> Say, 0x0d or 0x02 which also uses shifts like this one?
+
+Nope, didn't find any.
+
+Jan
+
+
+
+--F63W9N4E9Q7jl6Mx2KJAbTLotDILXMfNE
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.19 (GNU/Linux)
+
+iEYEARECAAYFAlPrDxsACgkQitSsb3rl5xRxvQCfTIO9B1oOwi0Up0D4K7c5avEF
+juwAn2Df/TDvXi0IRbPNJ02941qZ2hRN
+=sKhF
+-----END PGP SIGNATURE-----
+
+--F63W9N4E9Q7jl6Mx2KJAbTLotDILXMfNE--
 
