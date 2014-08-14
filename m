@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XHv31-00023g-Ai
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:26:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43320)
+	id 1XHv32-00026v-WA
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:26:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43428)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWK-0005KQ-8A
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:28 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWl-00063d-GY
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWF-0006Oi-VE
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:24 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:4989)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWg-0006Te-M0
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:51 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:5532)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XHpW1-0006Ij-Tz; Thu, 14 Aug 2014 03:32:06 -0400
+	id 1XHpWV-0006RU-Gb; Thu, 14 Aug 2014 03:32:36 -0400
 Received: from 172.24.2.119 (EHLO szxeml419-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id BYE11836; Thu, 14 Aug 2014 15:30:59 +0800 (CST)
+	with ESMTP id BYE11818; Thu, 14 Aug 2014 15:30:56 +0800 (CST)
 Received: from localhost (10.177.22.69) by szxeml419-hub.china.huawei.com
 	(10.82.67.158) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 14 Aug 2014 15:29:58 +0800
+	Thu, 14 Aug 2014 15:29:52 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Thu, 14 Aug 2014 15:29:18 +0800
-Message-ID: <1408001361-13580-8-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Thu, 14 Aug 2014 15:29:13 +0800
+Message-ID: <1408001361-13580-3-git-send-email-zhang.zhanghailiang@huawei.com>
 X-Mailer: git-send-email 1.9.2.msysgit.0
 In-Reply-To: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
 References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
@@ -40,8 +40,7 @@ Cc: kwolf@redhat.com, lkurusa@redhat.com,
 	lcapitulino@redhat.com, stefanha@redhat.com,
 	luonengjun@huawei.com, pbonzini@redhat.com,
 	alex.bennee@linaro.org, rth@twiddle.net
-Subject: [Qemu-trivial] [PATCH v6 07/10] linux-user: check return value of
-	malloc()
+Subject: [Qemu-trivial] [PATCH v6 02/10] monitor: fix access freed memory
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,29 +52,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Aug 2014 07:32:28 -0000
+X-List-Received-Date: Thu, 14 Aug 2014 07:32:59 -0000
 
+The function monitor_fdset_dup_fd_find_remove() references member of 'mon_fdset'
+which may be freed in function monitor_fdset_cleanup()
+
+Reviewed-by: Gonglei <arei.gonglei@huawei.com>
 Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-Acked-by: Riku Voipio <riku.voipio@linaro.org>
 ---
- linux-user/syscall.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ monitor.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index a50229d..8e5ccf1 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -2870,6 +2870,10 @@ static inline abi_long do_msgsnd(int msqid, abi_long msgp,
-     if (!lock_user_struct(VERIFY_READ, target_mb, msgp, 0))
-         return -TARGET_EFAULT;
-     host_mb = malloc(msgsz+sizeof(long));
-+    if (!host_mb) {
-+        unlock_user_struct(target_mb, msgp, 0);
-+        return -TARGET_ENOMEM;
-+    }
-     host_mb->mtype = (abi_long) tswapal(target_mb->mtype);
-     memcpy(host_mb->mtext, target_mb->mtext, msgsz);
-     ret = get_errno(msgsnd(msqid, host_mb, msgsz, msgflg));
+diff --git a/monitor.c b/monitor.c
+index cdbaa60..42ba1b6 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -2533,8 +2533,10 @@ static int monitor_fdset_dup_fd_find_remove(int dup_fd, bool remove)
+ {
+     MonFdset *mon_fdset;
+     MonFdsetFd *mon_fdset_fd_dup;
++    int64_t id = -1;
+ 
+     QLIST_FOREACH(mon_fdset, &mon_fdsets, next) {
++        id = mon_fdset->id;
+         QLIST_FOREACH(mon_fdset_fd_dup, &mon_fdset->dup_fds, next) {
+             if (mon_fdset_fd_dup->fd == dup_fd) {
+                 if (remove) {
+@@ -2543,7 +2545,7 @@ static int monitor_fdset_dup_fd_find_remove(int dup_fd, bool remove)
+                         monitor_fdset_cleanup(mon_fdset);
+                     }
+                 }
+-                return mon_fdset->id;
++                return id;
+             }
+         }
+     }
 -- 
 1.7.12.4
 
