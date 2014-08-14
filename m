@@ -1,43 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XHoeW-0003MN-Uc
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 02:36:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59255)
+	id 1XHokP-00059m-Uz
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 02:42:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60230)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XHoeQ-0003Ek-DG
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 02:36:47 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XHokI-000512-5f
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 02:42:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XHoeL-0005CH-Jg
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 02:36:42 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:6827)
+	(envelope-from <mjt@tls.msk.ru>) id 1XHokC-0006iL-10
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 02:42:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48325)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XHoe9-0004xY-By; Thu, 14 Aug 2014 02:36:26 -0400
-Received: from 172.24.2.119 (EHLO SZXEML414-HUB.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id ATB36181; Thu, 14 Aug 2014 14:36:11 +0800 (CST)
-Received: from localhost (10.177.19.102) by SZXEML414-HUB.china.huawei.com
-	(10.82.67.153) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 14 Aug 2014 14:36:01 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 14 Aug 2014 14:35:48 +0800
-Message-ID: <1407998148-3880-1-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XHojz-0006g3-Ft; Thu, 14 Aug 2014 02:42:27 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 039F742B6F;
+	Thu, 14 Aug 2014 10:42:19 +0400 (MSK)
+Message-ID: <53EC5A4A.6050102@msgid.tls.msk.ru>
+Date: Thu, 14 Aug 2014 10:42:18 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.7.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020209.53EC58DD.0088,ss=1,re=0.000,fgs=0,
-	ip=0.0.0.0, so=2013-05-26 15:14:31,
-	dmn=2011-05-27 18:58:46
-X-Mirapoint-Loop-Id: 843b0360d04c50e2ff7eb72e0e95d51e
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, weidong.huang@huawei.com,
-	Gonglei <arei.gonglei@huawei.com>, mjt@tls.msk.ru, stefanha@redhat.com
-Subject: [Qemu-trivial] [PATCH] qemu-options.hx: fix typo about l2tpv3
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1407998148-3880-1-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1407998148-3880-1-git-send-email-arei.gonglei@huawei.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, weidong.huang@huawei.com, stefanha@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] qemu-options.hx: fix typo about l2tpv3
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,34 +44,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Aug 2014 06:36:47 -0000
+X-List-Received-Date: Thu, 14 Aug 2014 06:42:52 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+Applied to -trivial, thank you!
 
-two duplicate destport description.
-
-s/destport/srcport/, s/destination/source/
-
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
----
- qemu-options.hx | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 96516c1..ebdffeb 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1444,7 +1444,7 @@ DEF("net", HAS_ARG, QEMU_OPTION_net,
-     "                use 'src=' to specify source address\n"
-     "                use 'dst=' to specify destination address\n"
-     "                use 'udp=on' to specify udp encapsulation\n"
--    "                use 'dstport=' to specify destination udp port\n"
-+    "                use 'srcport=' to specify source udp port\n"
-     "                use 'dstport=' to specify destination udp port\n"
-     "                use 'ipv6=on' to force v6\n"
-     "                L2TPv3 uses cookies to prevent misconfiguration as\n"
--- 
-1.7.12.4
-
-
+/mjt
 
