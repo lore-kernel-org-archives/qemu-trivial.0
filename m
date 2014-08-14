@@ -1,34 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XHv30-000226-NE
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:26:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43302)
+	id 1XHv32-00025d-4l
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:26:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43348)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWI-0005Gt-IE
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:26 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWO-0005SN-8L
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWE-0006NW-98
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:22 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:5057)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWJ-0006Q9-Ez
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:28 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:5084)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XHpW2-0006JI-K2; Thu, 14 Aug 2014 03:32:08 -0400
+	id 1XHpW6-0006Kb-AW; Thu, 14 Aug 2014 03:32:11 -0400
 Received: from 172.24.2.119 (EHLO szxeml419-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id BYE11821; Thu, 14 Aug 2014 15:30:56 +0800 (CST)
+	with ESMTP id BYE11831; Thu, 14 Aug 2014 15:30:57 +0800 (CST)
 Received: from localhost (10.177.22.69) by szxeml419-hub.china.huawei.com
 	(10.82.67.158) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 14 Aug 2014 15:29:56 +0800
+	Thu, 14 Aug 2014 15:29:52 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Thu, 14 Aug 2014 15:29:16 +0800
-Message-ID: <1408001361-13580-6-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Thu, 14 Aug 2014 15:29:14 +0800
+Message-ID: <1408001361-13580-4-git-send-email-zhang.zhanghailiang@huawei.com>
 X-Mailer: git-send-email 1.9.2.msysgit.0
 In-Reply-To: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
 References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.177.22.69]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
@@ -41,8 +40,8 @@ Cc: kwolf@redhat.com, lkurusa@redhat.com,
 	lcapitulino@redhat.com, stefanha@redhat.com,
 	luonengjun@huawei.com, pbonzini@redhat.com,
 	alex.bennee@linaro.org, rth@twiddle.net
-Subject: [Qemu-trivial] [PATCH v6 05/10] util/path: Use the GLib memory
-	allocation routines
+Subject: [Qemu-trivial] [PATCH v6 03/10] virtio-blk: fix reference a pointer
+	which might be freed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,43 +53,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Aug 2014 07:32:27 -0000
+X-List-Received-Date: Thu, 14 Aug 2014 07:32:33 -0000
 
-In this file, we don't check the return value of malloc/strdup/realloc which may fail.
-Instead of using these routines, we use the GLib memory APIs g_malloc/g_strdup/g_realloc.
-They will exit on allocation failure, so there is no need to test for failure,
-which would be fine for setup.
+In function virtio_blk_handle_request, it may freed memory pointed by req,
+So do not access member of req after calling this function.
 
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- util/path.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/block/virtio-blk.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/util/path.c b/util/path.c
-index 5c59d9f..e152f2a 100644
---- a/util/path.c
-+++ b/util/path.c
-@@ -45,8 +45,8 @@ static struct pathelem *new_entry(const char *root,
-                                   struct pathelem *parent,
-                                   const char *name)
+diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
+index c241c50..54a853a 100644
+--- a/hw/block/virtio-blk.c
++++ b/hw/block/virtio-blk.c
+@@ -458,7 +458,7 @@ static void virtio_blk_handle_output(VirtIODevice *vdev, VirtQueue *vq)
+ static void virtio_blk_dma_restart_bh(void *opaque)
  {
--    struct pathelem *new = malloc(sizeof(*new));
--    new->name = strdup(name);
-+    struct pathelem *new = g_malloc(sizeof(*new));
-+    new->name = g_strdup(name);
-     new->pathname = g_strdup_printf("%s/%s", root, name);
-     new->num_entries = 0;
-     return new;
-@@ -88,7 +88,7 @@ static struct pathelem *add_entry(struct pathelem *root, const char *name,
+     VirtIOBlock *s = opaque;
+-    VirtIOBlockReq *req = s->rq;
++    VirtIOBlockReq *req = s->rq, *next = NULL;
+     MultiReqBuffer mrb = {
+         .num_writes = 0,
+     };
+@@ -469,8 +469,9 @@ static void virtio_blk_dma_restart_bh(void *opaque)
+     s->rq = NULL;
  
-     root->num_entries++;
+     while (req) {
++        next = req->next;
+         virtio_blk_handle_request(req, &mrb);
+-        req = req->next;
++        req = next;
+     }
  
--    root = realloc(root, sizeof(*root)
-+    root = g_realloc(root, sizeof(*root)
-                    + sizeof(root->entries[0])*root->num_entries);
-     e = &root->entries[root->num_entries-1];
- 
+     virtio_submit_multiwrite(s->bs, &mrb);
 -- 
 1.7.12.4
 
