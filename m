@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XHv32-00026H-Cg
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:26:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43354)
+	id 1XHv33-00027d-8t
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:26:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43471)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWP-0005TC-6U
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:33 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWq-0006BV-02
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:33:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWK-0006QR-IT
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:29 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:5409)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWl-0006UJ-3v
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:55 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:5680)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XHpWJ-0006Op-NR; Thu, 14 Aug 2014 03:32:24 -0400
+	id 1XHpWg-0006TV-Vo; Thu, 14 Aug 2014 03:32:50 -0400
 Received: from 172.24.2.119 (EHLO szxeml419-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id BYE11833; Thu, 14 Aug 2014 15:30:57 +0800 (CST)
+	with ESMTP id BYE11826; Thu, 14 Aug 2014 15:30:57 +0800 (CST)
 Received: from localhost (10.177.22.69) by szxeml419-hub.china.huawei.com
 	(10.82.67.158) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 14 Aug 2014 15:30:02 +0800
+	Thu, 14 Aug 2014 15:30:00 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Thu, 14 Aug 2014 15:29:20 +0800
-Message-ID: <1408001361-13580-10-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Thu, 14 Aug 2014 15:29:19 +0800
+Message-ID: <1408001361-13580-9-git-send-email-zhang.zhanghailiang@huawei.com>
 X-Mailer: git-send-email 1.9.2.msysgit.0
 In-Reply-To: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
 References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
@@ -41,7 +41,8 @@ Cc: kwolf@redhat.com, lkurusa@redhat.com,
 	lcapitulino@redhat.com, stefanha@redhat.com,
 	Li Liu <john.liuli@huawei.com>, luonengjun@huawei.com,
 	pbonzini@redhat.com, alex.bennee@linaro.org, rth@twiddle.net
-Subject: [Qemu-trivial] [PATCH v6 09/10] tcg: check return value of fopen()
+Subject: [Qemu-trivial] [PATCH v6 08/10] tests/bios-tables-test: check the
+	value returned by fopen()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,34 +54,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Aug 2014 07:32:33 -0000
+X-List-Received-Date: Thu, 14 Aug 2014 07:33:01 -0000
 
-From: Li Liu <john.liuli@huawei.com>
+The function fopen() may fail, so check its return value.
 
-Give a warning message if fopen() failed to open the log file.
-
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 Signed-off-by: Li Liu <john.liuli@huawei.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tcg/tcg.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ tests/bios-tables-test.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index c068990..8f50d2a 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -2406,6 +2406,10 @@ static void dump_op_count(void)
-     int i;
-     FILE *f;
-     f = fopen("/tmp/op.log", "w");
+diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+index 045eb27..28ec28d 100644
+--- a/tests/bios-tables-test.c
++++ b/tests/bios-tables-test.c
+@@ -790,6 +790,11 @@ int main(int argc, char *argv[])
+     const char *arch = qtest_get_arch();
+     FILE *f = fopen(disk, "w");
+     int ret;
++
 +    if (f == NULL) {
-+        fprintf(stderr, "Failed to open /tmp/op.log\n");
-+        return;
++        fprintf(stderr, "Couldn't open \"%s\": %s", disk, strerror(errno));
++        return -1;
 +    }
-     for(i = INDEX_op_end; i < NB_OPS; i++) {
-         fprintf(f, "%s %" PRId64 "\n", tcg_op_defs[i].name, tcg_table_op_count[i]);
-     }
+     fwrite(boot_sector, 1, sizeof boot_sector, f);
+     fclose(f);
+ 
 -- 
 1.7.12.4
 
