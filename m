@@ -1,47 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XHv34-000296-8t
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:26:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45145)
+	id 1XHv8L-0005lZ-6m
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:32:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54536)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpdl-0006kM-Ds
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:40:09 -0400
+	(envelope-from <nchip@afflict.kos.to>) id 1XHv8C-0005Y7-IO
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 09:31:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpdh-0002dJ-4t
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:40:05 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:10967)
+	(envelope-from <nchip@afflict.kos.to>) id 1XHv87-0001j8-Nt
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 09:31:52 -0400
+Received: from afflict.kos.to ([92.243.29.197]:56942)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XHpdX-0002bX-LK; Thu, 14 Aug 2014 03:39:52 -0400
-Received: from 172.24.2.119 (EHLO szxeml410-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CAH33647; Thu, 14 Aug 2014 15:30:19 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml410-hub.china.huawei.com
-	(10.82.67.137) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 14 Aug 2014 15:29:50 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 14 Aug 2014 15:29:12 +0800
-Message-ID: <1408001361-13580-2-git-send-email-zhang.zhanghailiang@huawei.com>
-X-Mailer: git-send-email 1.9.2.msysgit.0
-In-Reply-To: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	(envelope-from <nchip@afflict.kos.to>)
+	id 1XHv7w-0001h4-9n; Thu, 14 Aug 2014 09:31:36 -0400
+Received: by afflict.kos.to (Postfix, from userid 1000)
+	id D31332651C; Thu, 14 Aug 2014 15:31:35 +0200 (CEST)
+Date: Thu, 14 Aug 2014 16:31:35 +0300
+From: Riku Voipio <riku.voipio@iki.fi>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Message-ID: <20140814133135.GB30317@afflict.kos.to>
 References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<1408001361-13580-8-git-send-email-zhang.zhanghailiang@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-X-Mailman-Approved-At: Thu, 14 Aug 2014 09:26:29 -0400
-Cc: kwolf@redhat.com, lkurusa@redhat.com,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>, mst@redhat.com,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1408001361-13580-8-git-send-email-zhang.zhanghailiang@huawei.com>
+X-message-flag: Warning: message not sent with a DRM-Certified client
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 92.243.29.197
+Cc: kwolf@redhat.com, lkurusa@redhat.com, mst@redhat.com,
 	qemu-trivial@nongnu.org, jan.kiszka@siemens.com,
-	riku.voipio@iki.fi, mjt@tls.msk.ru, peter.huangpeng@huawei.com,
-	lcapitulino@redhat.com, stefanha@redhat.com,
+	riku.voipio@iki.fi, mjt@tls.msk.ru, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com, stefanha@redhat.com,
 	luonengjun@huawei.com, pbonzini@redhat.com,
-	alex.bennee@linaro.org, rth@twiddle.net
-Subject: [Qemu-trivial] [PATCH v6 01/10] l2cap: fix access freed memory
+	lcapitulino@redhat.com, alex.bennee@linaro.org, rth@twiddle.net
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6 07/10] linux-user: check
+ return value of malloc()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,33 +47,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Aug 2014 07:40:10 -0000
+X-List-Received-Date: Thu, 14 Aug 2014 13:31:59 -0000
 
-Pointer 'ch' will be used in function 'l2cap_channel_open_req_msg' after
-it was previously freed in 'l2cap_channel_open'.
-Assigned it to NULL after it is freed.
+On Thu, Aug 14, 2014 at 03:29:18PM +0800, zhanghailiang wrote:
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+> Acked-by: Riku Voipio <riku.voipio@linaro.org>
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
----
- hw/bt/l2cap.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Applied to linux-user as Michael seemed wary of passing these via
+trivial.
 
-diff --git a/hw/bt/l2cap.c b/hw/bt/l2cap.c
-index 2301d6f..591e047 100644
---- a/hw/bt/l2cap.c
-+++ b/hw/bt/l2cap.c
-@@ -429,7 +429,7 @@ static struct l2cap_chan_s *l2cap_channel_open(struct l2cap_instance_s *l2cap,
-                 status = L2CAP_CS_NO_INFO;
-             } else {
-                 g_free(ch);
--
-+                ch = NULL;
-                 result = L2CAP_CR_NO_MEM;
-                 status = L2CAP_CS_NO_INFO;
-             }
--- 
-1.7.12.4
+Riku
 
-
+>---
+>  linux-user/syscall.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index a50229d..8e5ccf1 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -2870,6 +2870,10 @@ static inline abi_long do_msgsnd(int msqid, abi_long msgp,
+>      if (!lock_user_struct(VERIFY_READ, target_mb, msgp, 0))
+>          return -TARGET_EFAULT;
+>      host_mb = malloc(msgsz+sizeof(long));
+> +    if (!host_mb) {
+> +        unlock_user_struct(target_mb, msgp, 0);
+> +        return -TARGET_ENOMEM;
+> +    }
+>      host_mb->mtype = (abi_long) tswapal(target_mb->mtype);
+>      memcpy(host_mb->mtext, target_mb->mtext, msgsz);
+>      ret = get_errno(msgsnd(msqid, host_mb, msgsz, msgflg));
+> -- 
+> 1.7.12.4
+> 
+> 
 
