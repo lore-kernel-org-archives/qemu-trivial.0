@@ -1,34 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XHv30-00022j-UA
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:26:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43316)
+	id 1XHv31-00024q-NS
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Aug 2014 09:26:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43340)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWJ-0005JZ-UJ
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:28 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWN-0005Q0-7t
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWF-0006Nn-L3
-	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:23 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:5025)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XHpWI-0006Py-Dk
+	for qemu-trivial@nongnu.org; Thu, 14 Aug 2014 03:32:27 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:4975)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XHpW0-0006IZ-6h; Thu, 14 Aug 2014 03:32:05 -0400
+	id 1XHpVz-0006IA-4D; Thu, 14 Aug 2014 03:32:03 -0400
 Received: from 172.24.2.119 (EHLO szxeml419-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id BYE11812; Thu, 14 Aug 2014 15:30:55 +0800 (CST)
+	with ESMTP id BYE11824; Thu, 14 Aug 2014 15:30:56 +0800 (CST)
 Received: from localhost (10.177.22.69) by szxeml419-hub.china.huawei.com
 	(10.82.67.158) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 14 Aug 2014 15:29:57 +0800
+	Thu, 14 Aug 2014 15:29:54 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Thu, 14 Aug 2014 15:29:17 +0800
-Message-ID: <1408001361-13580-7-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Thu, 14 Aug 2014 15:29:15 +0800
+Message-ID: <1408001361-13580-5-git-send-email-zhang.zhanghailiang@huawei.com>
 X-Mailer: git-send-email 1.9.2.msysgit.0
 In-Reply-To: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
 References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.177.22.69]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
@@ -41,8 +40,8 @@ Cc: kwolf@redhat.com, lkurusa@redhat.com,
 	lcapitulino@redhat.com, stefanha@redhat.com,
 	luonengjun@huawei.com, pbonzini@redhat.com,
 	alex.bennee@linaro.org, rth@twiddle.net
-Subject: [Qemu-trivial] [PATCH v6 06/10] slirp/misc: Use g_malloc() instead
-	of malloc()
+Subject: [Qemu-trivial] [PATCH v6 04/10] ivshmem: check the value returned
+	by fstat()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,40 +53,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Aug 2014 07:32:28 -0000
+X-List-Received-Date: Thu, 14 Aug 2014 07:32:32 -0000
 
-Here we don't check the return value of malloc() which may fail.
-Use the g_malloc() instead, which will abort the program when
-there is not enough memory.
+The function fstat() may fail, so check its return value.
 
+Acked-by: Levente Kurusa <lkurusa@redhat.com>
 Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- slirp/misc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/misc/ivshmem.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/slirp/misc.c b/slirp/misc.c
-index b8eb74c..f7fe497 100644
---- a/slirp/misc.c
-+++ b/slirp/misc.c
-@@ -54,7 +54,7 @@ int add_exec(struct ex_list **ex_ptr, int do_pty, char *exec,
- 	}
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index 768e528..2be4b86 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -324,7 +324,11 @@ static int check_shm_size(IVShmemState *s, int fd) {
  
- 	tmp_ptr = *ex_ptr;
--	*ex_ptr = (struct ex_list *)malloc(sizeof(struct ex_list));
-+	*ex_ptr = (struct ex_list *)g_malloc(sizeof(struct ex_list));
- 	(*ex_ptr)->ex_fport = port;
- 	(*ex_ptr)->ex_addr = addr;
- 	(*ex_ptr)->ex_pty = do_pty;
-@@ -235,7 +235,7 @@ strdup(str)
- {
- 	char *bptr;
+     struct stat buf;
  
--	bptr = (char *)malloc(strlen(str)+1);
-+	bptr = (char *)g_malloc(strlen(str)+1);
- 	strcpy(bptr, str);
+-    fstat(fd, &buf);
++    if (fstat(fd, &buf) < 0) {
++        fprintf(stderr, "ivshmem: exiting: fstat on fd %d failed: %s\n",
++                fd, strerror(errno));
++        return -1;
++    }
  
- 	return bptr;
+     if (s->ivshmem_size > buf.st_size) {
+         fprintf(stderr,
 -- 
 1.7.12.4
 
