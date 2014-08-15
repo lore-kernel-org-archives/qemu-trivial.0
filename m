@@ -1,38 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XIJmG-0000hv-Q8
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Aug 2014 11:50:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37242)
+	id 1XIKlD-0006xu-Gx
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Aug 2014 12:53:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47676)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJm9-0000cx-Ky
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:50:50 -0400
+	(envelope-from <rth7680@gmail.com>) id 1XIKl3-0006lr-F3
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 12:53:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJm4-0000fQ-JJ
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:50:45 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:34796)
+	(envelope-from <rth7680@gmail.com>) id 1XIKku-0003rV-DQ
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 12:53:41 -0400
+Received: from mail-qg0-x235.google.com ([2607:f8b0:400d:c04::235]:51507)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XIJlu-0000Zk-2T; Fri, 15 Aug 2014 11:50:30 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id CE0E043080;
-	Fri, 15 Aug 2014 19:50:28 +0400 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 880E36E1;
-	Fri, 15 Aug 2014 19:15:15 +0400 (MSK)
-Received: (nullmailer pid 17937 invoked by uid 1000);
-	Fri, 15 Aug 2014 15:15:13 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Fri, 15 Aug 2014 19:15:08 +0400
-Message-Id: <1408115711-17836-18-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 17/20] ppc: convert g_new(qemu_irq usages to
-	g_new0
+	(envelope-from <rth7680@gmail.com>)
+	id 1XIKku-0003rB-8r; Fri, 15 Aug 2014 12:53:32 -0400
+Received: by mail-qg0-f53.google.com with SMTP id q107so2330870qgd.26
+	for <multiple recipients>; Fri, 15 Aug 2014 09:53:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=axgyx7v/9lL9zIOjGNbasin0Ekm/x4jHgB2PR5k3RXw=;
+	b=fis42KnRmzOMw3sevuT/WMDYZ9OmnTYuJp4LmNQJEC8hKDviL8TQXvJt4a53Qt9wab
+	9KHBHOgaCECi5fPnoqmcwtsiaEFhUGrLiJ0+3UhNZapKQmpf6mPkm5YIsDLC9yk5MfY5
+	+iBYGzXR7JhX3DfdYAu0dW2PrPmTCyL9VKR6N9beFQTWoxFPkOAlrxD/Kwz5D211aAD7
+	w79c1y+i7JZW+gSQDmBIL/5uZmHuDP0GzqJ03uokKQNdzxNiiAX/J63e0oVMhRAmDMLm
+	a+yHkcjo+u8hgLKCWpUyxCLp8JxVDsFKbaydx1acIm8b4/XfTWh870X7bkCT8J6HLyev
+	C86g==
+X-Received: by 10.224.127.133 with SMTP id g5mr24302005qas.67.1408121609517;
+	Fri, 15 Aug 2014 09:53:29 -0700 (PDT)
+Received: from pike.twiddle.home (166.103.50.123.dsl.dyn.mana.pf.
+	[123.50.103.166]) by mx.google.com with ESMTPSA id
+	w15sm14815892qay.34.2014.08.15.09.53.23 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Fri, 15 Aug 2014 09:53:28 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Message-ID: <53EE3AFF.8020005@twiddle.net>
+Date: Fri, 15 Aug 2014 06:53:19 -1000
+From: Richard Henderson <rth@twiddle.net>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Thunderbird/24.7.0
+MIME-Version: 1.0
+To: Michael Tokarev <mjt@tls.msk.ru>, "Michael S. Tsirkin" <mst@redhat.com>,
+	zhanghailiang <zhang.zhanghailiang@huawei.com>
+References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>	<1408001361-13580-10-git-send-email-zhang.zhanghailiang@huawei.com>
+	<20140814103350.GH31346@redhat.com>
+	<53EE212A.60405@msgid.tls.msk.ru>
+In-Reply-To: <53EE212A.60405@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c04::235
+Cc: kwolf@redhat.com, lkurusa@redhat.com, qemu-trivial@nongnu.org,
+	jan.kiszka@siemens.com, riku.voipio@iki.fi,
+	luonengjun@huawei.com, qemu-devel@nongnu.org,
+	lcapitulino@redhat.com, stefanha@redhat.com,
+	Li Liu <john.liuli@huawei.com>, pbonzini@redhat.com,
+	peter.huangpeng@huawei.com, alex.bennee@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH v6 09/10] tcg: check return value of
+	fopen()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,60 +68,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Aug 2014 15:50:50 -0000
+X-List-Received-Date: Fri, 15 Aug 2014 16:53:50 -0000
 
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+On 08/15/2014 05:03 AM, Michael Tokarev wrote:
+>>>      f = fopen("/tmp/op.log", "w");
+> 
+> Gosh.  So why are we still use fixed filenames in /tmp?????
+> Every such use is a potential security holw... :(  Ughm.
+> 
+> Can't we get rid of this somehow, by requiring a filename
+> parameter for example?
 
-To indicate the IRQs are initially disconnected.
+It's in code that isn't compiled in by default.
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/intc/openpic.c     |    2 +-
- hw/ppc/e500.c         |    2 +-
- hw/ppc/mac_newworld.c |    2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+Better than taking a parameter, or doing something else one-off, I think it'd
+be best to dump this to the normal log file.  I.e. use qemu_log instead of fprintf.
 
-diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
-index 028529e..7d1f3b9 100644
---- a/hw/intc/openpic.c
-+++ b/hw/intc/openpic.c
-@@ -1627,7 +1627,7 @@ static void openpic_realize(DeviceState *dev, Error **errp)
-     }
- 
-     for (i = 0; i < opp->nb_cpus; i++) {
--        opp->dst[i].irqs = g_new(qemu_irq, OPENPIC_OUTPUT_NB);
-+        opp->dst[i].irqs = g_new0(qemu_irq, OPENPIC_OUTPUT_NB);
-         for (j = 0; j < OPENPIC_OUTPUT_NB; j++) {
-             sysbus_init_irq(d, &opp->dst[i].irqs[j]);
-         }
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 1a5b30d..16c85ef 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -583,7 +583,7 @@ static qemu_irq *ppce500_init_mpic(PPCE500Params *params, MemoryRegion *ccsr,
-     SysBusDevice *s;
-     int i;
- 
--    mpic = g_new(qemu_irq, 256);
-+    mpic = g_new0(qemu_irq, 256);
- 
-     if (kvm_enabled()) {
-         QemuOpts *machine_opts = qemu_get_machine_opts();
-diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-index f5bccd2..1ec4bb4 100644
---- a/hw/ppc/mac_newworld.c
-+++ b/hw/ppc/mac_newworld.c
-@@ -346,7 +346,7 @@ static void ppc_core99_init(MachineState *machine)
-         }
-     }
- 
--    pic = g_new(qemu_irq, 64);
-+    pic = g_new0(qemu_irq, 64);
- 
-     dev = qdev_create(NULL, TYPE_OPENPIC);
-     qdev_prop_set_uint32(dev, "model", OPENPIC_MODEL_RAVEN);
--- 
-1.7.10.4
 
+r~
 
