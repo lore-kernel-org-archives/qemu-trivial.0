@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XIJJE-0001hu-O2
+	id 1XIJJF-0001iI-JW
 	for mharc-qemu-trivial@gnu.org; Fri, 15 Aug 2014 11:20:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59308)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59320)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJJ6-0001aj-Kw
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:20:49 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XIJJ8-0001cm-03
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:20:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJJ1-0007OE-Mm
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:20:44 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46416)
+	(envelope-from <mjt@tls.msk.ru>) id 1XIJJ3-0007RH-87
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:20:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57677)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XIJIr-0007Ic-Ix; Fri, 15 Aug 2014 11:20:29 -0400
+	id 1XIJIr-0007Ia-Ib; Fri, 15 Aug 2014 11:20:29 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 03EEC4307B;
-	Fri, 15 Aug 2014 19:20:29 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id ED4FE43079;
+	Fri, 15 Aug 2014 19:20:28 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id B8B396E7;
-	Fri, 15 Aug 2014 19:15:14 +0400 (MSK)
-Received: (nullmailer pid 17931 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id F257B6F3;
+	Fri, 15 Aug 2014 19:15:15 +0400 (MSK)
+Received: (nullmailer pid 17943 invoked by uid 1000);
 	Fri, 15 Aug 2014 15:15:13 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 15 Aug 2014 19:15:05 +0400
-Message-Id: <1408115711-17836-15-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 15 Aug 2014 19:15:11 +0400
+Message-Id: <1408115711-17836-21-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 14/20] qemu-options.hx: fix typo about l2tpv3
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	zhanghailiang <zhang.zhanghailiang@huawei.com>
+Subject: [Qemu-trivial] [PULL 20/20] ivshmem: check the value returned by
+	fstat()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,33 +44,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Aug 2014 15:20:49 -0000
+X-List-Received-Date: Fri, 15 Aug 2014 15:20:50 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
 
-two duplicate destport description.
+The function fstat() may fail, so check its return value.
 
-s/destport/srcport/, s/destination/source/
-
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Acked-by: Levente Kurusa <lkurusa@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qemu-options.hx |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/misc/ivshmem.c |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 000cccd..9d743e5 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1444,7 +1444,7 @@ DEF("net", HAS_ARG, QEMU_OPTION_net,
-     "                use 'src=' to specify source address\n"
-     "                use 'dst=' to specify destination address\n"
-     "                use 'udp=on' to specify udp encapsulation\n"
--    "                use 'dstport=' to specify destination udp port\n"
-+    "                use 'srcport=' to specify source udp port\n"
-     "                use 'dstport=' to specify destination udp port\n"
-     "                use 'ipv6=on' to force v6\n"
-     "                L2TPv3 uses cookies to prevent misconfiguration as\n"
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index 768e528..2be4b86 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -324,7 +324,11 @@ static int check_shm_size(IVShmemState *s, int fd) {
+ 
+     struct stat buf;
+ 
+-    fstat(fd, &buf);
++    if (fstat(fd, &buf) < 0) {
++        fprintf(stderr, "ivshmem: exiting: fstat on fd %d failed: %s\n",
++                fd, strerror(errno));
++        return -1;
++    }
+ 
+     if (s->ivshmem_size > buf.st_size) {
+         fprintf(stderr,
 -- 
 1.7.10.4
 
