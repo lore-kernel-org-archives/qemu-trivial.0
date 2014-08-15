@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XIJEG-0001Bw-N6
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Aug 2014 11:15:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57840)
+	id 1XIJEG-0001CD-Vz
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Aug 2014 11:15:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57846)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJE8-00011e-L1
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:15:41 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XIJE9-00012e-KX
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:15:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJE3-0005cp-Ux
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:15:36 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51275)
+	(envelope-from <mjt@tls.msk.ru>) id 1XIJE4-0005cv-OE
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:15:37 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48494)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XIJDn-0005aN-GP; Fri, 15 Aug 2014 11:15:15 -0400
+	id 1XIJDn-0005aW-J5; Fri, 15 Aug 2014 11:15:15 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id ADF644307A;
-	Fri, 15 Aug 2014 19:15:13 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 0033E42F58;
+	Fri, 15 Aug 2014 19:15:14 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 879046E1;
+	by tsrv.corpit.ru (Postfix) with SMTP id E112C6E0;
 	Fri, 15 Aug 2014 19:15:13 +0400 (MSK)
-Received: (nullmailer pid 17916 invoked by uid 1000);
+Received: (nullmailer pid 17914 invoked by uid 1000);
 	Fri, 15 Aug 2014 15:15:13 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 15 Aug 2014 19:14:58 +0400
-Message-Id: <1408115711-17836-8-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 15 Aug 2014 19:14:57 +0400
+Message-Id: <1408115711-17836-7-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
@@ -31,7 +31,8 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 07/20] usb: don't use 'Yoda conditions'
+Subject: [Qemu-trivial] [PULL 06/20] CODING_STYLE: Section about conditional
+	statement
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,69 +44,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Aug 2014 15:15:41 -0000
+X-List-Received-Date: Fri, 15 Aug 2014 15:15:42 -0000
 
 From: Gonglei <arei.gonglei@huawei.com>
 
-imitate nearby code about using '!value' or 'value == NULL'
+Yoda conditions lack readability, and QEMU has a
+strict compiler configuration for checking a common
+mistake like "if (dev = NULL)". Make it a written rule.
 
 Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 Reviewed-by: Eric Blake <eblake@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/usb/dev-audio.c |    2 +-
- hw/usb/dev-mtp.c   |    4 ++--
- hw/usb/hcd-ehci.c  |    2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ CODING_STYLE |   14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
-index bfebfe9..7b9957b 100644
---- a/hw/usb/dev-audio.c
-+++ b/hw/usb/dev-audio.c
-@@ -371,7 +371,7 @@ static void output_callback(void *opaque, int avail)
-             return;
-         }
-         data = streambuf_get(&s->out.buf);
--        if (NULL == data) {
-+        if (!data) {
-             return;
-         }
-         AUD_write(s->out.voice, data, USBAUDIO_PACKET_SIZE);
-diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
-index 384d4a5..0820046 100644
---- a/hw/usb/dev-mtp.c
-+++ b/hw/usb/dev-mtp.c
-@@ -832,7 +832,7 @@ static void usb_mtp_command(MTPState *s, MTPControl *c)
-             return;
-         }
-         data_in = usb_mtp_get_object(s, c, o);
--        if (NULL == data_in) {
-+        if (data_in == NULL) {
-             usb_mtp_queue_result(s, RES_GENERAL_ERROR,
-                                  c->trans, 0, 0, 0);
-             return;
-@@ -851,7 +851,7 @@ static void usb_mtp_command(MTPState *s, MTPControl *c)
-             return;
-         }
-         data_in = usb_mtp_get_partial_object(s, c, o);
--        if (NULL == data_in) {
-+        if (data_in == NULL) {
-             usb_mtp_queue_result(s, RES_GENERAL_ERROR,
-                                  c->trans, 0, 0, 0);
-             return;
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index a00a93c..448e007 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1596,7 +1596,7 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehci, int async)
- 
-     entry = ehci_get_fetch_addr(ehci, async);
-     q = ehci_find_queue_by_qh(ehci, entry, async);
--    if (NULL == q) {
-+    if (q == NULL) {
-         q = ehci_alloc_queue(ehci, entry, async);
-     }
- 
+diff --git a/CODING_STYLE b/CODING_STYLE
+index 4280945..d46cfa5 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -91,3 +91,17 @@ Mixed declarations (interleaving statements and declarations within blocks)
+ are not allowed; declarations should be at the beginning of blocks.  In other
+ words, the code should not generate warnings if using GCC's
+ -Wdeclaration-after-statement option.
++
++6. Conditional statements
++
++When comparing a variable for (in)equality with a constant, list the
++constant on the right, as in:
++
++if (a == 1) {
++    /* Reads like: "If a equals 1" */
++    do_something();
++}
++
++Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
++Besides, good compilers already warn users when '==' is mis-typed as '=',
++even when the constant is on the right.
 -- 
 1.7.10.4
 
