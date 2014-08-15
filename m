@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XIJmD-0000fr-OD
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Aug 2014 11:50:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37219)
+	id 1XIJmG-0000hQ-CD
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Aug 2014 11:50:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37235)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJm7-0000bH-Mm
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:50:47 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XIJm8-0000ci-V4
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:50:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJm3-0000dF-FX
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:50:43 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:38912)
+	(envelope-from <mjt@tls.msk.ru>) id 1XIJm3-0000cJ-85
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:50:44 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:43446)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XIJlu-0000Zm-2L; Fri, 15 Aug 2014 11:50:30 -0400
+	id 1XIJlu-0000Zj-2b; Fri, 15 Aug 2014 11:50:30 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 14F3043081;
+	by isrv.corpit.ru (Postfix) with ESMTP id 9983443050;
 	Fri, 15 Aug 2014 19:50:28 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id E08256F1;
+	by tsrv.corpit.ru (Postfix) with SMTP id CE1E86F0;
 	Fri, 15 Aug 2014 19:15:15 +0400 (MSK)
-Received: (nullmailer pid 17933 invoked by uid 1000);
+Received: (nullmailer pid 17939 invoked by uid 1000);
 	Fri, 15 Aug 2014 15:15:13 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 15 Aug 2014 19:15:06 +0400
-Message-Id: <1408115711-17836-16-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 15 Aug 2014 19:15:09 +0400
+Message-Id: <1408115711-17836-19-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Hu Tao <hutao@cn.fujitsu.com>,
+Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 15/20] vl: free err
+Subject: [Qemu-trivial] [PULL 18/20] intc: i8259: Convert Array allocation
+	to g_new0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,32 +44,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Aug 2014 15:50:48 -0000
+X-List-Received-Date: Fri, 15 Aug 2014 15:50:50 -0000
 
-From: Hu Tao <hutao@cn.fujitsu.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 
-err is not freed after use, thus causing memory leak. This patch fixes
-it.
+To be more array friendly and to indicate the IRQs are initially
+disconnected.
 
-Signed-off-by: Hu Tao <hutao@cn.fujitsu.com>
-Cc: qemu-trivial@nongnu.org
+Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- vl.c |    1 +
- 1 file changed, 1 insertion(+)
+ hw/intc/i8259.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/vl.c b/vl.c
-index 9783133..b796c67 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2918,6 +2918,7 @@ out:
-     g_free(dummy);
-     if (err) {
-         qerror_report_err(err);
-+        error_free(err);
-         return -1;
-     }
-     return 0;
+diff --git a/hw/intc/i8259.c b/hw/intc/i8259.c
+index d0b0c52..a563b82 100644
+--- a/hw/intc/i8259.c
++++ b/hw/intc/i8259.c
+@@ -472,7 +472,7 @@ qemu_irq *i8259_init(ISABus *bus, qemu_irq parent_irq)
+     ISADevice *isadev;
+     int i;
+ 
+-    irq_set = g_malloc(ISA_NUM_IRQS * sizeof(qemu_irq));
++    irq_set = g_new0(qemu_irq, ISA_NUM_IRQS);
+ 
+     isadev = i8259_init_chip(TYPE_I8259, bus, true);
+     dev = DEVICE(isadev);
 -- 
 1.7.10.4
 
