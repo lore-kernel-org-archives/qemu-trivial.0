@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XIJEB-00013l-84
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Aug 2014 11:15:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57820)
+	id 1XIJEC-00014Y-Ey
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Aug 2014 11:15:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57828)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJE5-0000zA-HR
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:15:38 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XIJE6-0000zv-5p
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:15:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XIJE1-0005cU-6L
-	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:15:33 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36555)
+	(envelope-from <mjt@tls.msk.ru>) id 1XIJE0-0005cP-VS
+	for qemu-trivial@nongnu.org; Fri, 15 Aug 2014 11:15:34 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:43668)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XIJDn-0005ae-NA; Fri, 15 Aug 2014 11:15:15 -0400
+	id 1XIJDm-0005Z8-KH; Fri, 15 Aug 2014 11:15:14 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 18ED04307C;
-	Fri, 15 Aug 2014 19:15:15 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 8771143079;
+	Fri, 15 Aug 2014 19:15:13 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 0BCCD6E1;
-	Fri, 15 Aug 2014 19:15:14 +0400 (MSK)
-Received: (nullmailer pid 17918 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 612226E0;
+	Fri, 15 Aug 2014 19:15:13 +0400 (MSK)
+Received: (nullmailer pid 17906 invoked by uid 1000);
 	Fri, 15 Aug 2014 15:15:13 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 15 Aug 2014 19:14:59 +0400
-Message-Id: <1408115711-17836-9-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 15 Aug 2014 19:14:53 +0400
+Message-Id: <1408115711-17836-3-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 08/20] audio: don't use 'Yoda conditions'
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Fam Zheng <famz@redhat.com>
+Subject: [Qemu-trivial] [PULL 02/20] memory: Update obsolete comment about
+	AddrRange field type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,80 +44,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Aug 2014 15:15:38 -0000
+X-List-Received-Date: Fri, 15 Aug 2014 15:15:39 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+From: Fam Zheng <famz@redhat.com>
 
-imitate nearby code about using '!value' or 'value == NULL'
+We are not 64 bit any more since
 
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
+08dafab4 memory: use 128-bit integers for sizes and intermediates
+
+but the comment is forgotten to be updated.
+
+Signed-off-by: Fam Zheng <famz@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/audio/gus.c       |    2 +-
- hw/audio/hda-codec.c |    3 ++-
- hw/audio/sb16.c      |    6 +++---
- 3 files changed, 6 insertions(+), 5 deletions(-)
+ memory.c |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/audio/gus.c b/hw/audio/gus.c
-index bba6840..4a43ce7 100644
---- a/hw/audio/gus.c
-+++ b/hw/audio/gus.c
-@@ -212,7 +212,7 @@ static int GUS_read_DMA (void *opaque, int nchan, int dma_pos, int dma_len)
-         pos += copied;
-     }
+diff --git a/memory.c b/memory.c
+index 64d7176..dbe6675 100644
+--- a/memory.c
++++ b/memory.c
+@@ -56,8 +56,7 @@ static void memory_init(void)
+ typedef struct AddrRange AddrRange;
  
--    if (0 == ((mode >> 4) & 1)) {
-+    if (((mode >> 4) & 1) == 0) {
-         DMA_release_DREQ (s->emu.gusdma);
-     }
-     return dma_len;
-diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
-index cbcf521..3c03ff5 100644
---- a/hw/audio/hda-codec.c
-+++ b/hw/audio/hda-codec.c
-@@ -489,8 +489,9 @@ static int hda_audio_init(HDACodecDevice *hda, const struct desc_codec *desc)
-     for (i = 0; i < a->desc->nnodes; i++) {
-         node = a->desc->nodes + i;
-         param = hda_codec_find_param(node, AC_PAR_AUDIO_WIDGET_CAP);
--        if (NULL == param)
-+        if (param == NULL) {
-             continue;
-+        }
-         type = (param->val & AC_WCAP_TYPE) >> AC_WCAP_TYPE_SHIFT;
-         switch (type) {
-         case AC_WID_AUD_OUT:
-diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
-index 60c4b3b..bda26d0 100644
---- a/hw/audio/sb16.c
-+++ b/hw/audio/sb16.c
-@@ -928,7 +928,7 @@ static IO_WRITE_PROTO (dsp_write)
- /*         if (s->highspeed) */
- /*             break; */
- 
--        if (0 == s->needed_bytes) {
-+        if (s->needed_bytes == 0) {
-             command (s, val);
- #if 0
-             if (0 == s->needed_bytes) {
-@@ -1212,7 +1212,7 @@ static int SB_read_DMA (void *opaque, int nchan, int dma_pos, int dma_len)
- #endif
- 
-     if (till <= copy) {
--        if (0 == s->dma_auto) {
-+        if (s->dma_auto == 0) {
-             copy = till;
-         }
-     }
-@@ -1224,7 +1224,7 @@ static int SB_read_DMA (void *opaque, int nchan, int dma_pos, int dma_len)
-     if (s->left_till_irq <= 0) {
-         s->mixer_regs[0x82] |= (nchan & 4) ? 2 : 1;
-         qemu_irq_raise (s->pic);
--        if (0 == s->dma_auto) {
-+        if (s->dma_auto == 0) {
-             control (s, 0);
-             speaker (s, 0);
-         }
+ /*
+- * Note using signed integers limits us to physical addresses at most
+- * 63 bits wide.  They are needed for negative offsetting in aliases
++ * Note that signed integers are needed for negative offsetting in aliases
+  * (large MemoryRegion::alias_offset).
+  */
+ struct AddrRange {
 -- 
 1.7.10.4
 
