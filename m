@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XIx21-00029H-By
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Aug 2014 05:45:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56185)
+	id 1XIy7p-0004Vv-GX
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Aug 2014 06:55:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38322)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1XIx1t-00022d-MT
-	for qemu-trivial@nongnu.org; Sun, 17 Aug 2014 05:45:42 -0400
+	(envelope-from <mst@redhat.com>) id 1XIy7j-0004NO-7e
+	for qemu-trivial@nongnu.org; Sun, 17 Aug 2014 06:55:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1XIx1o-0004Qx-PP
-	for qemu-trivial@nongnu.org; Sun, 17 Aug 2014 05:45:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:20805)
+	(envelope-from <mst@redhat.com>) id 1XIy7e-0005Ia-89
+	for qemu-trivial@nongnu.org; Sun, 17 Aug 2014 06:55:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:29413)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mst@redhat.com>)
-	id 1XIx1e-0004Lu-JU; Sun, 17 Aug 2014 05:45:22 -0400
+	id 1XIy7U-00055p-3B; Sun, 17 Aug 2014 06:55:28 -0400
 Received: from int-mx10.intmail.prod.int.phx2.redhat.com
 	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7H9j1WT007224
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7HAsprr032270
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Sun, 17 Aug 2014 05:45:01 -0400
+	verify=OK); Sun, 17 Aug 2014 06:54:51 -0400
 Received: from redhat.com (ovpn-116-117.ams2.redhat.com [10.36.116.117])
 	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id s7H9isqX002061; Sun, 17 Aug 2014 05:44:55 -0400
-Date: Sun, 17 Aug 2014 11:45:30 +0200
+	id s7HAskpn019796; Sun, 17 Aug 2014 06:54:47 -0400
+Date: Sun, 17 Aug 2014 12:55:22 +0200
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Luiz Capitulino <lcapitulino@redhat.com>
-Message-ID: <20140817094530.GE21143@redhat.com>
+Message-ID: <20140817105522.GF21622@redhat.com>
 References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
 	<1408001361-13580-3-git-send-email-zhang.zhanghailiang@huawei.com>
 	<20140814103010.GE31346@redhat.com>
@@ -54,7 +54,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Aug 2014 09:45:43 -0000
+X-List-Received-Date: Sun, 17 Aug 2014 10:55:48 -0000
 
 On Fri, Aug 15, 2014 at 02:25:51PM -0400, Luiz Capitulino wrote:
 > On Thu, 14 Aug 2014 12:30:10 +0200
