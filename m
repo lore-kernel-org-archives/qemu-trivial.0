@@ -1,47 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJTNJ-0006VR-6W
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 16:17:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46971)
+	id 1XJU3y-0003As-IT
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 17:01:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55510)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1XJTNC-0006Lk-Ve
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 16:17:51 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1XJU3q-00039r-29
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 17:01:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1XJTN8-000084-LY
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 16:17:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43168)
+	(envelope-from <peter.maydell@linaro.org>) id 1XJU3j-0004l0-Jk
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 17:01:50 -0400
+Received: from mail-la0-f49.google.com ([209.85.215.49]:60195)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1XJTMz-00005j-KE; Mon, 18 Aug 2014 16:17:33 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7IKHKOZ020988
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 18 Aug 2014 16:17:20 -0400
-Received: from redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id s7IKHFCt018621; Mon, 18 Aug 2014 16:17:16 -0400
-Date: Mon, 18 Aug 2014 22:17:52 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Riku Voipio <riku.voipio@iki.fi>
-Message-ID: <20140818201752.GC1121@redhat.com>
-References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1408001361-13580-8-git-send-email-zhang.zhanghailiang@huawei.com>
-	<20140814133135.GB30317@afflict.kos.to>
+	(envelope-from <peter.maydell@linaro.org>) id 1XJU3j-0004kq-Cn
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 17:01:43 -0400
+Received: by mail-la0-f49.google.com with SMTP id hz20so5168775lab.36
+	for <qemu-trivial@nongnu.org>; Mon, 18 Aug 2014 14:01:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=EsK2u3DKLrLkNVoFNHr1BOGkbJo8vCn1pPFV0aluxjI=;
+	b=Tm2IEu9SB5CAcTztb6NP2Lx0gWz+A9jwScC3mbOVVmjkb9DlSDkHQEvyZtxHsgYa0Q
+	nB4OeoZR5fCoO3fJX3TuuqeBJ0vLeMcVlkXnwZ3NOrM59Kvh+XUMsOS9XgyGeGtfZw+J
+	AqsXRyCYvtn/Wo34gUZAJLvxtOTTjzj3L8SC0sn/qjo7jDs5Ebk+pVLPZG9MBc31y5+Z
+	hFC9RegJqzrXjOE3JbIbfeOIAVI7i1vQUlPQTEBM5MVy0gYSbqgB0JktlnX/6TqrgccB
+	h903WZAWv3oJHKN/Qd3hfiuT+uHS5TVMJ0IGYjy+TS9nPIm4J7ieL2lnu5nAgf9DLX1i
+	ESUA==
+X-Gm-Message-State: ALoCoQlCDL7sY1fT6DYnxsohr9BGio3ULegwPz3IAzdR32+fGo/sdJ1iA52/wewGBMZxr3jZ+wql
+X-Received: by 10.112.43.8 with SMTP id s8mr27347lbl.47.1408395702079; Mon, 18
+	Aug 2014 14:01:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20140814133135.GB30317@afflict.kos.to>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: kwolf@redhat.com, lkurusa@redhat.com,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	qemu-trivial@nongnu.org, jan.kiszka@siemens.com, mjt@tls.msk.ru,
-	qemu-devel@nongnu.org, peter.huangpeng@huawei.com,
-	stefanha@redhat.com, luonengjun@huawei.com, pbonzini@redhat.com,
-	lcapitulino@redhat.com, alex.bennee@linaro.org, rth@twiddle.net
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6 07/10] linux-user: check
- return value of malloc()
+Received: by 10.112.130.161 with HTTP; Mon, 18 Aug 2014 14:01:22 -0700 (PDT)
+In-Reply-To: <20140818193641.GB29446@redhat.com>
+References: <1408348473-10104-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<53F1E5A4.9060000@msgid.tls.msk.ru> <20140818134421.GA28795@redhat.com>
+	<53F20C82.7050506@msgid.tls.msk.ru> <20140818193641.GB29446@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 18 Aug 2014 22:01:22 +0100
+Message-ID: <CAFEAcA_BFhsEp3STyD7HM06WuzLKxLWXj2mtmL-9iGjWZ6HLpg@mail.gmail.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.49
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
+	Marcel Apfelbaum <marcel.a@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Li Liu <john.liuli@huawei.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	peter.huangpeng@huawei.com, Luonengjun <luonengjun@huawei.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v7] tests/bios-tables-test:
+ check the value returned by fopen()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,42 +61,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Aug 2014 20:17:51 -0000
+X-List-Received-Date: Mon, 18 Aug 2014 21:01:56 -0000
 
-On Thu, Aug 14, 2014 at 04:31:35PM +0300, Riku Voipio wrote:
-> On Thu, Aug 14, 2014 at 03:29:18PM +0800, zhanghailiang wrote:
-> > Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> > Acked-by: Riku Voipio <riku.voipio@linaro.org>
-> 
-> Applied to linux-user as Michael seemed wary of passing these via
-> trivial.
-> 
-> Riku
+On 18 August 2014 20:36, Michael S. Tsirkin <mst@redhat.com> wrote:
+> Does test fail if this path is triggered?
 
-Pls remember to add Cc qemu-trivial on bugfixes in your tree.
+If our test harness doesn't report failure when a test
+binary returns with a non-zero exit code then the
+harness is broken, because there are other test
+binaries that rely on that.
 
-
-> >---
-> >  linux-user/syscall.c | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> > 
-> > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> > index a50229d..8e5ccf1 100644
-> > --- a/linux-user/syscall.c
-> > +++ b/linux-user/syscall.c
-> > @@ -2870,6 +2870,10 @@ static inline abi_long do_msgsnd(int msqid, abi_long msgp,
-> >      if (!lock_user_struct(VERIFY_READ, target_mb, msgp, 0))
-> >          return -TARGET_EFAULT;
-> >      host_mb = malloc(msgsz+sizeof(long));
-> > +    if (!host_mb) {
-> > +        unlock_user_struct(target_mb, msgp, 0);
-> > +        return -TARGET_ENOMEM;
-> > +    }
-> >      host_mb->mtype = (abi_long) tswapal(target_mb->mtype);
-> >      memcpy(host_mb->mtext, target_mb->mtext, msgsz);
-> >      ret = get_errno(msgsnd(msqid, host_mb, msgsz, msgflg));
-> > -- 
-> > 1.7.12.4
-> > 
-> > 
+thanks
+-- PMM
 
