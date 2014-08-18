@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJNMT-0007F1-Tl
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 09:52:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57576)
+	id 1XJNrE-0003rU-DA
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 10:24:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35728)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1XJNMJ-0007BF-Nr
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 09:52:36 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XJNr8-0003jd-8w
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 10:24:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1XJNM9-00022f-Gy
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 09:52:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:20897)
+	(envelope-from <mjt@tls.msk.ru>) id 1XJNr3-0004Qa-Vh
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 10:24:18 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:34088)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1XJNM9-00021f-AB; Mon, 18 Aug 2014 09:52:17 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7IDpMJv030902
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 18 Aug 2014 09:51:22 -0400
-Received: from redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s7IDpIgP012902; Mon, 18 Aug 2014 09:51:20 -0400
-Date: Mon, 18 Aug 2014 15:51:55 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20140818135155.GB28795@redhat.com>
-References: <1408348473-10104-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1408353202.4964.2.camel@localhost.localdomain>
-	<53F1E56C.9000709@msgid.tls.msk.ru>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XJNqu-0004O3-1l; Mon, 18 Aug 2014 10:24:04 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id B1B6D43884;
+	Mon, 18 Aug 2014 18:24:02 +0400 (MSK)
+Message-ID: <53F20C82.7050506@msgid.tls.msk.ru>
+Date: Mon, 18 Aug 2014 18:24:02 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <53F1E56C.9000709@msgid.tls.msk.ru>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+To: "Michael S. Tsirkin" <mst@redhat.com>
+References: <1408348473-10104-1-git-send-email-zhang.zhanghailiang@huawei.com>	<53F1E5A4.9060000@msgid.tls.msk.ru>
+	<20140818134421.GA28795@redhat.com>
+In-Reply-To: <20140818134421.GA28795@redhat.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	s7IDpMJv030902
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	Marcel Apfelbaum <marcel.a@redhat.com>, qemu-trivial@nongnu.org,
-	Li Liu <john.liuli@huawei.com>, luonengjun@huawei.com,
-	peter.huangpeng@huawei.com, qemu-devel@nongnu.org
+X-Received-From: 86.62.121.231
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, marcel.a@redhat.com,
+	qemu-trivial@nongnu.org, Li Liu <john.liuli@huawei.com>,
+	luonengjun@huawei.com, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
 Subject: Re: [Qemu-trivial] [PATCH v7] tests/bios-tables-test: check the
  value returned by fopen()
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,80 +48,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Aug 2014 13:52:36 -0000
+X-List-Received-Date: Mon, 18 Aug 2014 14:24:23 -0000
 
-On Mon, Aug 18, 2014 at 03:37:16PM +0400, Michael Tokarev wrote:
-> 18.08.2014 13:13, Marcel Apfelbaum wrote:
-> > On Mon, 2014-08-18 at 15:54 +0800, zhanghailiang wrote:
-> >> The function fopen() may fail, so check its return value.
-> >>
-> >> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> >> Signed-off-by: Li Liu <john.liuli@huawei.com>
-> >> Reviewed-by: Alex Benn=E9e <alex.bennee@linaro.org>
-> >> ---
-> >>  tests/bios-tables-test.c | 5 +++++
-> >>  1 file changed, 5 insertions(+)
-> >>
-> >> diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
-> >> index 045eb27..feb3b58 100644
-> >> --- a/tests/bios-tables-test.c
-> >> +++ b/tests/bios-tables-test.c
-> >> @@ -790,6 +790,11 @@ int main(int argc, char *argv[])
-> >>      const char *arch =3D qtest_get_arch();
-> >>      FILE *f =3D fopen(disk, "w");
-> >>      int ret;
-> >> +
-> >> +    if (!f) {
-> >> +        fprintf(stderr, "Couldn't open \"%s\": %s", disk, strerror(=
-errno));
-> >> +        return -1;
-> >> +    }
-> > Hi,
-> > I think we should use an assert here, we need an indication
-> > that the test failed and a print to stderr is not enough.
+18.08.2014 17:44, Michael S. Tsirkin wrote:
+> On Mon, Aug 18, 2014 at 03:38:12PM +0400, Michael Tokarev wrote:
+>> 18.08.2014 11:54, zhanghailiang wrote:
+>>> The function fopen() may fail, so check its return value.
+>>>
+>>> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+>>> Signed-off-by: Li Liu <john.liuli@huawei.com>
+>>> Reviewed-by: Alex Benn=E9e <alex.bennee@linaro.org>
+>>> ---
+>>>  tests/bios-tables-test.c | 5 +++++
+>>>  1 file changed, 5 insertions(+)
+>>>
+>>> diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+>>> index 045eb27..feb3b58 100644
+>>> --- a/tests/bios-tables-test.c
+>>> +++ b/tests/bios-tables-test.c
+>>> @@ -790,6 +790,11 @@ int main(int argc, char *argv[])
+>>>      const char *arch =3D qtest_get_arch();
+>>>      FILE *f =3D fopen(disk, "w");
+>>>      int ret;
+>>> +
+>>> +    if (!f) {
+>>> +        fprintf(stderr, "Couldn't open \"%s\": %s", disk, strerror(e=
+rrno));
+>>> +        return -1;
+>>> +    }
+>>
+>> Applied to -trivial, with s/-1/1/.  No need to resend it again.
+>>
+>> Thanks,
+>>
+>> /mjt
+>>
+>>>      fwrite(boot_sector, 1, sizeof boot_sector, f);
+>>>      fclose(f);
 >=20
-> Guys, please stop misusing (or trying to misuse) assert().  assert() is=
- for
-> code path which are impossible by program logic.  Here, it is a error c=
-heck,
-> not a code logic check -- the fopen() _may_ fail, and this is not somet=
-hing
-> the code around makes impossible.  So in cases like this (and in other =
-similar
-> case like vvfat.log open check), we should either print to stderr and e=
-xit,
-> or print elsewhere, but we should NOT use assert().  Think what will be=
- if
-> the program will be compiled with -D_NDEBUG and all assert()s are turne=
-d into
-> a no-op.
+> This doesn't seem appropriate to trivial tree:
+> there were some objections from Marcel, I'd like to
+> see them addressed.
 
-We don't support that configuration, a bunch of stuff will be
-broken if you try.
+I see the objections as addressed, don't you?
 
-
-> So, no assert() in cases like this here and elsewhere (not only in qemu=
-). It
-> is not what assert() is provided for.
->=20
-> Thanks,
->=20
-> /mjt
-
-I partially agree in that asserts produce errors which aren't
-easy for users to understand, and gives a coredump which
-takes up disk space. So if we expect some error to trigger,
-we should print a proper error, and avoid producing a coredump.
-
-On the other hand, there are situations where we
-take a shortcut and decide that error is highly unlikely
-(even if not 100% impossible), so not worth handling.
-In these cases assert will make debugging easier
-in case it does trigger after all.
-
-This case here is about a test, so it's used
-by developers, not users. Thus assert might be appropriate.
-
---=20
-MST
+/mjt
 
