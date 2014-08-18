@@ -1,48 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJTMm-0005q4-Ax
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 16:17:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46849)
+	id 1XJTNJ-0006VR-6W
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 16:17:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46971)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1XJTMf-0005gI-4R
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 16:17:17 -0400
+	(envelope-from <mst@redhat.com>) id 1XJTNC-0006Lk-Ve
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 16:17:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1XJTMa-0008MO-3Z
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 16:17:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59146)
+	(envelope-from <mst@redhat.com>) id 1XJTN8-000084-LY
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 16:17:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43168)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mst@redhat.com>)
-	id 1XJTMP-0008LY-Pp; Mon, 18 Aug 2014 16:16:58 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7IKGcMM020813
+	id 1XJTMz-00005j-KE; Mon, 18 Aug 2014 16:17:33 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7IKHKOZ020988
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 18 Aug 2014 16:16:38 -0400
+	verify=OK); Mon, 18 Aug 2014 16:17:20 -0400
 Received: from redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id s7IKGXLr015287; Mon, 18 Aug 2014 16:16:34 -0400
-Date: Mon, 18 Aug 2014 22:17:10 +0200
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id s7IKHFCt018621; Mon, 18 Aug 2014 16:17:16 -0400
+Date: Mon, 18 Aug 2014 22:17:52 +0200
 From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20140818201710.GB1121@redhat.com>
+To: Riku Voipio <riku.voipio@iki.fi>
+Message-ID: <20140818201752.GC1121@redhat.com>
 References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1408001361-13580-4-git-send-email-zhang.zhanghailiang@huawei.com>
-	<53F1E842.60009@msgid.tls.msk.ru>
+	<1408001361-13580-8-git-send-email-zhang.zhanghailiang@huawei.com>
+	<20140814133135.GB30317@afflict.kos.to>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <53F1E842.60009@msgid.tls.msk.ru>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+In-Reply-To: <20140814133135.GB30317@afflict.kos.to>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: kwolf@redhat.com, lkurusa@redhat.com,
 	zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	qemu-trivial@nongnu.org, jan.kiszka@siemens.com,
-	riku.voipio@iki.fi, luonengjun@huawei.com, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com, stefanha@redhat.com,
-	pbonzini@redhat.com, lcapitulino@redhat.com,
-	alex.bennee@linaro.org, rth@twiddle.net
-Subject: Re: [Qemu-trivial] [PATCH v6 03/10] virtio-blk: fix reference a
- pointer which might be freed
+	qemu-trivial@nongnu.org, jan.kiszka@siemens.com, mjt@tls.msk.ru,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com,
+	stefanha@redhat.com, luonengjun@huawei.com, pbonzini@redhat.com,
+	lcapitulino@redhat.com, alex.bennee@linaro.org, rth@twiddle.net
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6 07/10] linux-user: check
+ return value of malloc()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,74 +53,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Aug 2014 20:17:18 -0000
+X-List-Received-Date: Mon, 18 Aug 2014 20:17:51 -0000
 
-On Mon, Aug 18, 2014 at 03:49:22PM +0400, Michael Tokarev wrote:
-> 14.08.2014 11:29, zhanghailiang wrote:
-> > In function virtio_blk_handle_request, it may freed memory pointed by req,
-> > So do not access member of req after calling this function.
-> > 
-> > Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+On Thu, Aug 14, 2014 at 04:31:35PM +0300, Riku Voipio wrote:
+> On Thu, Aug 14, 2014 at 03:29:18PM +0800, zhanghailiang wrote:
 > > Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> > ---
-> >  hw/block/virtio-blk.c | 5 +++--
-> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > Acked-by: Riku Voipio <riku.voipio@linaro.org>
+> 
+> Applied to linux-user as Michael seemed wary of passing these via
+> trivial.
+> 
+> Riku
+
+Pls remember to add Cc qemu-trivial on bugfixes in your tree.
+
+
+> >---
+> >  linux-user/syscall.c | 4 ++++
+> >  1 file changed, 4 insertions(+)
 > > 
-> > diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-> > index c241c50..54a853a 100644
-> > --- a/hw/block/virtio-blk.c
-> > +++ b/hw/block/virtio-blk.c
-> > @@ -458,7 +458,7 @@ static void virtio_blk_handle_output(VirtIODevice *vdev, VirtQueue *vq)
-> >  static void virtio_blk_dma_restart_bh(void *opaque)
-> >  {
-> >      VirtIOBlock *s = opaque;
-> > -    VirtIOBlockReq *req = s->rq;
-> > +    VirtIOBlockReq *req = s->rq, *next = NULL;
-> >      MultiReqBuffer mrb = {
-> >          .num_writes = 0,
-> >      };
-> > @@ -469,8 +469,9 @@ static void virtio_blk_dma_restart_bh(void *opaque)
-> >      s->rq = NULL;
-> >  
-> >      while (req) {
-> > +        next = req->next;
-> >          virtio_blk_handle_request(req, &mrb);
-> > -        req = req->next;
-> > +        req = next;
-> >      }
-> >  
-> >      virtio_submit_multiwrite(s->bs, &mrb);
-> 
-> So, finally, I've applied this patch:
-> 
-> --- a/hw/block/virtio-blk.c
-> +++ b/hw/block/virtio-blk.c
-> @@ -469,8 +469,9 @@ static void virtio_blk_dma_restart_bh(void *opaque)
->      s->rq = NULL;
-> 
->      while (req) {
-> +        VirtIOBlockReq *next = req->next;
->          virtio_blk_handle_request(req, &mrb);
-> -        req = req->next;
-> +        req = next;
->      }
-> 
->      virtio_submit_multiwrite(s->bs, &mrb);
-> 
-> and dropped Stefan's Reviewed-by on the way ;)
-> 
-> This is a bugfix after all ;)
-> 
-> Thanks,
-> 
-> /mjt
-
-
-By the way, could you please add Cc qemu-stable on bugfixes
-you have queued?
-These are likely appopriate for 2.1.1.
-
--- 
-MST
-
+> > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> > index a50229d..8e5ccf1 100644
+> > --- a/linux-user/syscall.c
+> > +++ b/linux-user/syscall.c
+> > @@ -2870,6 +2870,10 @@ static inline abi_long do_msgsnd(int msqid, abi_long msgp,
+> >      if (!lock_user_struct(VERIFY_READ, target_mb, msgp, 0))
+> >          return -TARGET_EFAULT;
+> >      host_mb = malloc(msgsz+sizeof(long));
+> > +    if (!host_mb) {
+> > +        unlock_user_struct(target_mb, msgp, 0);
+> > +        return -TARGET_ENOMEM;
+> > +    }
+> >      host_mb->mtype = (abi_long) tswapal(target_mb->mtype);
+> >      memcpy(host_mb->mtext, target_mb->mtext, msgsz);
+> >      ret = get_errno(msgsnd(msqid, host_mb, msgsz, msgflg));
+> > -- 
+> > 1.7.12.4
+> > 
+> > 
 
