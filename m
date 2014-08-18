@@ -1,42 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJN9I-0007TT-9j
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 09:39:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39737)
+	id 1XJNEY-00040s-6a
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 09:44:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55670)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1XJGmj-0002X3-FW
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 02:51:22 -0400
+	(envelope-from <mst@redhat.com>) id 1XJNES-0003tu-9j
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 09:44:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1XJGmf-0001ZU-0c
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 02:51:17 -0400
-Received: from [59.151.112.132] (port=9104 helo=heian.cn.fujitsu.com)
+	(envelope-from <mst@redhat.com>) id 1XJNEO-0004oN-0H
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 09:44:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:28341)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>)
-	id 1XJGmV-0001SV-KL; Mon, 18 Aug 2014 02:51:03 -0400
-X-IronPort-AV: E=Sophos;i="5.04,348,1406563200"; d="scan'208";a="34726263"
-Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 18 Aug 2014 14:48:06 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id s7I6ou8N031649;
-	Mon, 18 Aug 2014 14:50:56 +0800
-Received: from G08FNSTD131468.fnst.cn.fujitsu.com (10.167.226.78) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Mon, 18 Aug 2014 14:51:00 +0800
-From: Chen Fan <chen.fan.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-Date: Mon, 18 Aug 2014 14:46:35 +0800
-Message-ID: <8e7cdfc57dade4af0c82e5dbb98b7202ad51db13.1408344055.git.chen.fan.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.9.3
-In-Reply-To: <cover.1408344055.git.chen.fan.fnst@cn.fujitsu.com>
-References: <cover.1408344055.git.chen.fan.fnst@cn.fujitsu.com>
+	(envelope-from <mst@redhat.com>)
+	id 1XJNEF-0004mE-1Z; Mon, 18 Aug 2014 09:44:07 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7IDhokC002791
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Mon, 18 Aug 2014 09:43:51 -0400
+Received: from redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s7IDhiWI007814; Mon, 18 Aug 2014 09:43:47 -0400
+Date: Mon, 18 Aug 2014 15:44:21 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20140818134421.GA28795@redhat.com>
+References: <1408348473-10104-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<53F1E5A4.9060000@msgid.tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.78]
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-X-Mailman-Approved-At: Mon, 18 Aug 2014 09:38:58 -0400
-Subject: [Qemu-trivial] [RESEND v2 3/3] hmp: fix MemdevList memory leak
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <53F1E5A4.9060000@msgid.tls.msk.ru>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	s7IDhokC002791
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, marcel.a@redhat.com,
+	qemu-trivial@nongnu.org, Li Liu <john.liuli@huawei.com>,
+	luonengjun@huawei.com, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH v7] tests/bios-tables-test: check the
+ value returned by fopen()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,60 +52,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Aug 2014 06:51:22 -0000
+X-List-Received-Date: Mon, 18 Aug 2014 13:44:24 -0000
 
-the memdev_list in hmp_info_memdev() is never freed.
-so we use existent method qapi_free_MemdevList() to free it.
-and also we can use qapi_free_MemdevList() to replace list loops
-to clean up the memdev list in error path.
+On Mon, Aug 18, 2014 at 03:38:12PM +0400, Michael Tokarev wrote:
+> 18.08.2014 11:54, zhanghailiang wrote:
+> > The function fopen() may fail, so check its return value.
+> >=20
+> > Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+> > Signed-off-by: Li Liu <john.liuli@huawei.com>
+> > Reviewed-by: Alex Benn=E9e <alex.bennee@linaro.org>
+> > ---
+> >  tests/bios-tables-test.c | 5 +++++
+> >  1 file changed, 5 insertions(+)
+> >=20
+> > diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+> > index 045eb27..feb3b58 100644
+> > --- a/tests/bios-tables-test.c
+> > +++ b/tests/bios-tables-test.c
+> > @@ -790,6 +790,11 @@ int main(int argc, char *argv[])
+> >      const char *arch =3D qtest_get_arch();
+> >      FILE *f =3D fopen(disk, "w");
+> >      int ret;
+> > +
+> > +    if (!f) {
+> > +        fprintf(stderr, "Couldn't open \"%s\": %s", disk, strerror(e=
+rrno));
+> > +        return -1;
+> > +    }
+>=20
+> Applied to -trivial, with s/-1/1/.  No need to resend it again.
+>=20
+> Thanks,
+>=20
+> /mjt
+>=20
+> >      fwrite(boot_sector, 1, sizeof boot_sector, f);
+> >      fclose(f);
+> > =20
+> >=20
 
-Signed-off-by: Chen Fan <chen.fan.fnst@cn.fujitsu.com>
-Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Reviewed-by: Hu Tao <hutao@cn.fujitsu.com>
+This doesn't seem appropriate to trivial tree:
+there were some objections from Marcel, I'd like to
+see them addressed.
 
----
- hmp.c  | 2 ++
- numa.c | 9 ++-------
- 2 files changed, 4 insertions(+), 7 deletions(-)
-
-diff --git a/hmp.c b/hmp.c
-index ba40c75..40a90da 100644
---- a/hmp.c
-+++ b/hmp.c
-@@ -1715,4 +1715,6 @@ void hmp_info_memdev(Monitor *mon, const QDict *qdict)
-     }
- 
-     monitor_printf(mon, "\n");
-+
-+    qapi_free_MemdevList(memdev_list);
- }
-diff --git a/numa.c b/numa.c
-index aa772aa..f07149b 100644
---- a/numa.c
-+++ b/numa.c
-@@ -379,7 +379,7 @@ error:
- MemdevList *qmp_query_memdev(Error **errp)
- {
-     Object *obj;
--    MemdevList *list = NULL, *m;
-+    MemdevList *list = NULL;
- 
-     obj = object_resolve_path("/objects", NULL);
-     if (obj == NULL) {
-@@ -393,11 +393,6 @@ MemdevList *qmp_query_memdev(Error **errp)
-     return list;
- 
- error:
--    while (list) {
--        m = list;
--        list = list->next;
--        g_free(m->value);
--        g_free(m);
--    }
-+    qapi_free_MemdevList(list);
-     return NULL;
- }
--- 
-1.9.3
 
 
