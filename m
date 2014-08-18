@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJLOS-0001nf-Ud
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 07:46:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59719)
+	id 1XJLRZ-0003aO-1f
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 07:49:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60360)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XJLON-0001jE-Ch
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 07:46:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XJLRT-0003TJ-0j
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 07:49:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XJLOE-0000jd-Jf
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 07:46:27 -0400
-Received: from mail-la0-f49.google.com ([209.85.215.49]:45550)
+	(envelope-from <mjt@tls.msk.ru>) id 1XJLRO-0001Jg-2m
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 07:49:38 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:47384)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XJLOE-0000j5-DN
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 07:46:18 -0400
-Received: by mail-la0-f49.google.com with SMTP id hz20so4392254lab.22
-	for <qemu-trivial@nongnu.org>; Mon, 18 Aug 2014 04:46:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=rGGiGq9EIdKUa/1oMIgtqQShuH1oqusWfngI/N3ZNMI=;
-	b=QW/It6IeybZAxYhehuFDauIT+1SfhuyUdUV6JipV2FKUUE7RwjUVPMisPmDGBOClG3
-	VMqfMkF2OrZ9EIUNRLlwUTnLCWJHMFFxm0DE95h5b9sNEmmeNEhOnoe+r84xPVewCK0v
-	/T+gsA6m6PV8Z6HeQrYUgOG4+vocKSPcZV+afcZxFKDtCSkEf+H+DZqrj6hFzz8eRDa8
-	snD4fxRS/HMc+5VQMeNKyrLjb8bGU2fHmo3HM6QY14RFeYS++4Rk+4/zAaJtYWElYftj
-	h6kF9kGOjAmftDSShbNln7kfEC0U1L64dZ164dyqHZKGmKT9yN69effJLodPl6PVpvTt
-	mT/g==
-X-Gm-Message-State: ALoCoQmnREopT9jZP+MGGSltNhWdo418m7RSaGewtmYFdfQdfGvd46YzexN5nbvevcZxHj8uyc4M
-X-Received: by 10.152.161.225 with SMTP id xv1mr29174668lab.71.1408362377226; 
-	Mon, 18 Aug 2014 04:46:17 -0700 (PDT)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XJLRE-0001If-6b; Mon, 18 Aug 2014 07:49:24 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 306F643816;
+	Mon, 18 Aug 2014 15:49:23 +0400 (MSK)
+Message-ID: <53F1E842.60009@msgid.tls.msk.ru>
+Date: Mon, 18 Aug 2014 15:49:22 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.7.0
 MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Mon, 18 Aug 2014 04:45:57 -0700 (PDT)
-In-Reply-To: <1408362096-10482-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1408362096-10482-1-git-send-email-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Aug 2014 12:45:57 +0100
-Message-ID: <CAFEAcA9MPis=UV-mUBaAd17=jxDm6va8Md+kXy=GhQAFMuAQnw@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.49
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Li Liu <john.liuli@huawei.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block/vvfat.c: remove
- debugging code to reinit stderr if NULL
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ qemu-devel@nongnu.org
+References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<1408001361-13580-4-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1408001361-13580-4-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: kwolf@redhat.com, lkurusa@redhat.com, mst@redhat.com,
+	qemu-trivial@nongnu.org, jan.kiszka@siemens.com,
+	riku.voipio@iki.fi, luonengjun@huawei.com,
+	peter.huangpeng@huawei.com, lcapitulino@redhat.com,
+	stefanha@redhat.com, pbonzini@redhat.com, alex.bennee@linaro.org,
+	rth@twiddle.net
+Subject: Re: [Qemu-trivial] [PATCH v6 03/10] virtio-blk: fix reference a
+ pointer which might be freed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,37 +52,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Aug 2014 11:46:31 -0000
+X-List-Received-Date: Mon, 18 Aug 2014 11:49:43 -0000
 
-On 18 August 2014 12:41, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Just log to stderr unconditionally, like other similar code does.
->
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+14.08.2014 11:29, zhanghailiang wrote:
+> In function virtio_blk_handle_request, it may freed memory pointed by req,
+> So do not access member of req after calling this function.
+> 
+> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 > ---
->  block/vvfat.c |    5 -----
->  1 file changed, 5 deletions(-)
->
-> diff --git a/block/vvfat.c b/block/vvfat.c
-> index 70176b1..ea37023 100644
-> --- a/block/vvfat.c
-> +++ b/block/vvfat.c
-> @@ -1082,11 +1082,6 @@ static int vvfat_open(BlockDriverState *bs, QDict *options, int flags,
->      vvv = s;
->  #endif
->
-> -DLOG(if (stderr == NULL) {
-> -    stderr = fopen("vvfat.log", "a");
-> -    setbuf(stderr, NULL);
-> -})
-> -
->      opts = qemu_opts_create(&runtime_opts, NULL, 0, &error_abort);
->      qemu_opts_absorb_qdict(opts, options, &local_err);
->      if (local_err) {
-> --
-> 1.7.10.4
+>  hw/block/virtio-blk.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
+> index c241c50..54a853a 100644
+> --- a/hw/block/virtio-blk.c
+> +++ b/hw/block/virtio-blk.c
+> @@ -458,7 +458,7 @@ static void virtio_blk_handle_output(VirtIODevice *vdev, VirtQueue *vq)
+>  static void virtio_blk_dma_restart_bh(void *opaque)
+>  {
+>      VirtIOBlock *s = opaque;
+> -    VirtIOBlockReq *req = s->rq;
+> +    VirtIOBlockReq *req = s->rq, *next = NULL;
+>      MultiReqBuffer mrb = {
+>          .num_writes = 0,
+>      };
+> @@ -469,8 +469,9 @@ static void virtio_blk_dma_restart_bh(void *opaque)
+>      s->rq = NULL;
+>  
+>      while (req) {
+> +        next = req->next;
+>          virtio_blk_handle_request(req, &mrb);
+> -        req = req->next;
+> +        req = next;
+>      }
+>  
+>      virtio_submit_multiwrite(s->bs, &mrb);
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+So, finally, I've applied this patch:
 
-thanks
--- PMM
+--- a/hw/block/virtio-blk.c
++++ b/hw/block/virtio-blk.c
+@@ -469,8 +469,9 @@ static void virtio_blk_dma_restart_bh(void *opaque)
+     s->rq = NULL;
+
+     while (req) {
++        VirtIOBlockReq *next = req->next;
+         virtio_blk_handle_request(req, &mrb);
+-        req = req->next;
++        req = next;
+     }
+
+     virtio_submit_multiwrite(s->bs, &mrb);
+
+and dropped Stefan's Reviewed-by on the way ;)
+
+This is a bugfix after all ;)
+
+Thanks,
+
+/mjt
 
