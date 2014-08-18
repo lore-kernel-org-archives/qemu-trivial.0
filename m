@@ -1,55 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJGKU-0004u8-Uw
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 02:22:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35849)
+	id 1XJHhb-0003iM-1q
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 03:50:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47307)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XJGKN-0004th-Eg
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 02:22:05 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XJHhV-0003cB-Od
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 03:50:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XJGKH-00010d-6R
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 02:21:59 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:28327)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XJHhR-0007UD-Di
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 03:49:57 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:34154)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XJGKG-0000wW-FE; Mon, 18 Aug 2014 02:21:53 -0400
-Received: from 172.24.2.119 (EHLO szxeml423-hub.china.huawei.com)
+	id 1XJHhH-0007SV-TJ; Mon, 18 Aug 2014 03:49:44 -0400
+Received: from 172.24.2.119 (EHLO szxeml422-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id ATF10700; Mon, 18 Aug 2014 14:21:34 +0800 (CST)
-Received: from [127.0.0.1] (10.177.22.69) by szxeml423-hub.china.huawei.com
-	(10.82.67.162) with Microsoft SMTP Server id 14.3.158.1;
-	Mon, 18 Aug 2014 14:21:28 +0800
-Message-ID: <53F19B6C.7070907@huawei.com>
-Date: Mon, 18 Aug 2014 14:21:32 +0800
+	with ESMTP id ATF23592; Mon, 18 Aug 2014 15:49:36 +0800 (CST)
+Received: from localhost (10.177.22.69) by szxeml422-hub.china.huawei.com
+	(10.82.67.161) with Microsoft SMTP Server id 14.3.158.1;
+	Mon, 18 Aug 2014 15:49:28 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+To: <qemu-devel@nongnu.org>
+Date: Mon, 18 Aug 2014 15:49:22 +0800
+Message-ID: <1408348162-10020-1-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Mailer: git-send-email 1.9.2.msysgit.0
 MIME-Version: 1.0
-To: Richard Henderson <rth@twiddle.net>
-References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>	<1408001361-13580-10-git-send-email-zhang.zhanghailiang@huawei.com>
-	<20140814103350.GH31346@redhat.com>
-	<53EE212A.60405@msgid.tls.msk.ru> <53EE3AFF.8020005@twiddle.net>
-In-Reply-To: <53EE3AFF.8020005@twiddle.net>
-Content-Type: text/plain; charset="ISO-8859-1"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.177.22.69]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020204.53F19B70.00B6,ss=1,re=0.000,fgs=0,
+	refid=str=0001.0A020209.53F1B012.0074,ss=1,re=0.000,fgs=0,
 	ip=0.0.0.0, so=2013-05-26 15:14:31,
 	dmn=2011-05-27 18:58:46
-X-Mirapoint-Loop-Id: b952db56483fe307420938678cade0f2
+X-Mirapoint-Loop-Id: c8d4e025f7f60934c5b2d27ace01bc46
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.66
-Cc: kwolf@redhat.com, lkurusa@redhat.com, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-trivial@nongnu.org, jan.kiszka@siemens.com,
-	riku.voipio@iki.fi, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org, lcapitulino@redhat.com,
-	stefanha@redhat.com, Li Liu <john.liuli@huawei.com>,
-	luonengjun@huawei.com, pbonzini@redhat.com,
-	peter.huangpeng@huawei.com, alex.bennee@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH v6 09/10] tcg: check return value of
-	fopen()
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, mst@redhat.com,
+	qemu-trivial@nongnu.org, mjt@tls.msk.ru, luonengjun@huawei.com,
+	peter.huangpeng@huawei.com
+Subject: [Qemu-trivial] [PATCH v7] util/path: Use the GLib memory allocation
+	routines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,26 +52,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Aug 2014 06:22:05 -0000
+X-List-Received-Date: Mon, 18 Aug 2014 07:50:02 -0000
 
-On 2014/8/16 0:53, Richard Henderson wrote:
-> On 08/15/2014 05:03 AM, Michael Tokarev wrote:
->>>>       f = fopen("/tmp/op.log", "w");
->>
->> Gosh.  So why are we still use fixed filenames in /tmp?????
->> Every such use is a potential security holw... :(  Ughm.
->>
->> Can't we get rid of this somehow, by requiring a filename
->> parameter for example?
->
-> It's in code that isn't compiled in by default.
->
-> Better than taking a parameter, or doing something else one-off, I think it'd
-> be best to dump this to the normal log file.  I.e. use qemu_log instead of fprintf.
->
+In this file, we don't check the return value of malloc/strdup/realloc which may fail.
+Instead of using these routines, we use the GLib memory APIs g_malloc/g_strdup/g_realloc.
+They will exit on allocation failure, so there is no need to test for failure,
+which would be fine for setup.
 
-Hmm, i agreed. I will get rid of this, and use qemu_log instead.
-Thanks.:)
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ util/path.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/util/path.c b/util/path.c
+index 5c59d9f..4e4877e 100644
+--- a/util/path.c
++++ b/util/path.c
+@@ -45,8 +45,8 @@ static struct pathelem *new_entry(const char *root,
+                                   struct pathelem *parent,
+                                   const char *name)
+ {
+-    struct pathelem *new = malloc(sizeof(*new));
+-    new->name = strdup(name);
++    struct pathelem *new = g_malloc(sizeof(*new));
++    new->name = g_strdup(name);
+     new->pathname = g_strdup_printf("%s/%s", root, name);
+     new->num_entries = 0;
+     return new;
+@@ -88,7 +88,7 @@ static struct pathelem *add_entry(struct pathelem *root, const char *name,
+ 
+     root->num_entries++;
+ 
+-    root = realloc(root, sizeof(*root)
++    root = g_realloc(root, sizeof(*root)
+                    + sizeof(root->entries[0])*root->num_entries);
+     e = &root->entries[root->num_entries-1];
+ 
+@@ -161,8 +161,8 @@ void init_paths(const char *prefix)
+     base = add_dir_maybe(base);
+     if (base->num_entries == 0) {
+         g_free(base->pathname);
+-        free(base->name);
+-        free(base);
++        g_free(base->name);
++        g_free(base);
+         base = NULL;
+     } else {
+         set_parents(base, base);
+-- 
+1.7.12.4
 
 
 
