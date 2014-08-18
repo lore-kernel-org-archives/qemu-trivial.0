@@ -1,49 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJKdT-0001YH-I0
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 06:57:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49149)
+	id 1XJL4k-0003il-1y
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 07:26:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XJKdN-0001Y3-Im
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 06:57:58 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XJL4b-0003TW-Nz
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 07:26:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XJKdI-0002Sm-T5
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 06:57:53 -0400
-Received: from mail-la0-f50.google.com ([209.85.215.50]:61220)
+	(envelope-from <mjt@tls.msk.ru>) id 1XJL4V-00037F-KP
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 07:26:01 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:55211)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XJKdI-0002Sc-Ld
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 06:57:48 -0400
-Received: by mail-la0-f50.google.com with SMTP id pi18so4352474lab.23
-	for <qemu-trivial@nongnu.org>; Mon, 18 Aug 2014 03:57:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=QYCexntfklu+VhJePgddC5nsVFRxlHhGGGL7pDexTgQ=;
-	b=ekvJWxMAAWA8ycYAOE7b+Zf2UABFm+8Zqud6OKOfQIraFLMEbd6f6bggd0HKaSfLVG
-	pfsZL0TTLU/0gui+d/A6VAQnPvjUKcMZYxJwTzm8/0kRSTRFnk3hkC/J3kIRTDb17iVA
-	o7i7pyONzxMR0NBxbJEyI3HzhJg/QdStXNytQuI52LTYe/icL9DY9ZxFeYxc5ctPDzkV
-	webv8lZLTXajW0kYrQmomWI66sMBrwcu4YR5UKyhiOwpZ80pBxqCYesXxzyK0WUi14Ki
-	cBYGVGnOZY8FqiRUFuV01MHRUDeC7nuBXHfzHt6kNNrDjxDtqYWCdA3B/uHPJvVx+abS
-	iOnA==
-X-Gm-Message-State: ALoCoQloqq8njWByDaM/FjC0/scF3rexD+HObFZlYgXHZ9CUpP3a0IkXK8KUiHLoYFz/ftNXHSfz
-X-Received: by 10.112.5.170 with SMTP id t10mr17254670lbt.64.1408359467499;
-	Mon, 18 Aug 2014 03:57:47 -0700 (PDT)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XJL4G-0002mx-Ob; Mon, 18 Aug 2014 07:25:40 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3E43A437EC;
+	Mon, 18 Aug 2014 15:25:32 +0400 (MSK)
+Message-ID: <53F1E2AC.7000303@msgid.tls.msk.ru>
+Date: Mon, 18 Aug 2014 15:25:32 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.7.0
 MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Mon, 18 Aug 2014 03:57:27 -0700 (PDT)
-In-Reply-To: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1408115711-17836-1-git-send-email-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Aug 2014 11:57:27 +0100
-Message-ID: <CAFEAcA_eywOhVTtpeyBhhbm9d27+8dtyMgvv+gianTrf2aRXWA@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ qemu-devel@nongnu.org
+References: <1408348162-10020-1-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1408348162-10020-1-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.50
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/20] Trivial patches for
-	2014-08-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, luonengjun@huawei.com, peter.huangpeng@huawei.com,
+	mst@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v7] util/path: Use the GLib memory
+ allocation routines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,40 +47,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Aug 2014 10:57:58 -0000
+X-List-Received-Date: Mon, 18 Aug 2014 11:26:08 -0000
 
-On 15 August 2014 16:14, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Here's another trivial-patches pull request, with patches accumulated
-> since the previous one which has been processed today.
->
-> This time, there's a bunch of changes by Gonglei removing "Yoda
-> conditions" and updating docs/comments, irq zero initing patches
-> by Peter Crosthwaite, and some other small fixes.
->
-> Please consider pulling/applying.
->
-> Thanks,
->
-> /mjt
->
-> The following changes since commit f083201667fddd51055c2ac67f67221e82298a35:
->
->   Merge remote-tracking branch 'remotes/mjt/tags/trivial-patches-2014-08-09' into staging (2014-08-15 13:41:55 +0100)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-08-15
->
-> for you to fetch changes up to 5edbdbcdf882e4220adc7dbf433351077cd1fbbc:
->
->   ivshmem: check the value returned by fstat() (2014-08-15 19:12:58 +0400)
->
-> ----------------------------------------------------------------
-> trivial patches for 2014-08-15
->
-> ----------------------------------------------------------------
+18.08.2014 11:49, zhanghailiang wrote:
+> In this file, we don't check the return value of malloc/strdup/realloc which may fail.
+> Instead of using these routines, we use the GLib memory APIs g_malloc/g_strdup/g_realloc.
+> They will exit on allocation failure, so there is no need to test for failure,
+> which would be fine for setup.
 
-Applied, thanks.
+Applied to -trivial, thank you!
 
--- PMM
+/mjt
 
