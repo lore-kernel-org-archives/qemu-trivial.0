@@ -1,55 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJU3y-0003As-IT
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 17:01:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55510)
+	id 1XJU54-0004dM-Oy
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Aug 2014 17:03:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47864)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XJU3q-00039r-29
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 17:01:56 -0400
+	(envelope-from <jcody@redhat.com>) id 1XJTSx-0001hR-N2
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 16:23:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XJU3j-0004l0-Jk
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 17:01:50 -0400
-Received: from mail-la0-f49.google.com ([209.85.215.49]:60195)
+	(envelope-from <jcody@redhat.com>) id 1XJTSt-0001ly-D8
+	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 16:23:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42250)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XJU3j-0004kq-Cn
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 17:01:43 -0400
-Received: by mail-la0-f49.google.com with SMTP id hz20so5168775lab.36
-	for <qemu-trivial@nongnu.org>; Mon, 18 Aug 2014 14:01:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=EsK2u3DKLrLkNVoFNHr1BOGkbJo8vCn1pPFV0aluxjI=;
-	b=Tm2IEu9SB5CAcTztb6NP2Lx0gWz+A9jwScC3mbOVVmjkb9DlSDkHQEvyZtxHsgYa0Q
-	nB4OeoZR5fCoO3fJX3TuuqeBJ0vLeMcVlkXnwZ3NOrM59Kvh+XUMsOS9XgyGeGtfZw+J
-	AqsXRyCYvtn/Wo34gUZAJLvxtOTTjzj3L8SC0sn/qjo7jDs5Ebk+pVLPZG9MBc31y5+Z
-	hFC9RegJqzrXjOE3JbIbfeOIAVI7i1vQUlPQTEBM5MVy0gYSbqgB0JktlnX/6TqrgccB
-	h903WZAWv3oJHKN/Qd3hfiuT+uHS5TVMJ0IGYjy+TS9nPIm4J7ieL2lnu5nAgf9DLX1i
-	ESUA==
-X-Gm-Message-State: ALoCoQlCDL7sY1fT6DYnxsohr9BGio3ULegwPz3IAzdR32+fGo/sdJ1iA52/wewGBMZxr3jZ+wql
-X-Received: by 10.112.43.8 with SMTP id s8mr27347lbl.47.1408395702079; Mon, 18
-	Aug 2014 14:01:42 -0700 (PDT)
+	(envelope-from <jcody@redhat.com>)
+	id 1XJTSk-0001kZ-9G; Mon, 18 Aug 2014 16:23:30 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7IKNPfc014826
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Mon, 18 Aug 2014 16:23:25 -0400
+Received: from localhost ([10.3.112.14])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s7IKNNLN021623
+	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
+	Mon, 18 Aug 2014 16:23:24 -0400
+Date: Mon, 18 Aug 2014 16:23:23 -0400
+From: Jeff Cody <jcody@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20140818202323.GF2627@localhost.localdomain>
+References: <1408348310-6628-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<53F1E445.1060301@msgid.tls.msk.ru>
 MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Mon, 18 Aug 2014 14:01:22 -0700 (PDT)
-In-Reply-To: <20140818193641.GB29446@redhat.com>
-References: <1408348473-10104-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<53F1E5A4.9060000@msgid.tls.msk.ru> <20140818134421.GA28795@redhat.com>
-	<53F20C82.7050506@msgid.tls.msk.ru> <20140818193641.GB29446@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Aug 2014 22:01:22 +0100
-Message-ID: <CAFEAcA_BFhsEp3STyD7HM06WuzLKxLWXj2mtmL-9iGjWZ6HLpg@mail.gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.49
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	Marcel Apfelbaum <marcel.a@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Li Liu <john.liuli@huawei.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	peter.huangpeng@huawei.com, Luonengjun <luonengjun@huawei.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v7] tests/bios-tables-test:
- check the value returned by fopen()
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <53F1E445.1060301@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	s7IKNPfc014826
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Mon, 18 Aug 2014 17:03:05 -0400
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, qemu-trivial@nongnu.org,
+	jan.kiszka@siemens.com, luonengjun@huawei.com,
+	peter.huangpeng@huawei.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v7] slirp/misc: Use
+ g_malloc() instead of malloc()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,16 +56,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Aug 2014 21:01:56 -0000
+X-List-Received-Date: Mon, 18 Aug 2014 20:23:48 -0000
 
-On 18 August 2014 20:36, Michael S. Tsirkin <mst@redhat.com> wrote:
-> Does test fail if this path is triggered?
+On Mon, Aug 18, 2014 at 03:32:21PM +0400, Michael Tokarev wrote:
+> 18.08.2014 11:51, zhanghailiang =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
+> > Here we don't check the return value of malloc() which may fail.
+> > Use the g_malloc() instead, which will abort the program when
+> > there is not enough memory.
+> >=20
+> > Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+> > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> > ---
+> >  slirp/misc.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >=20
+> > diff --git a/slirp/misc.c b/slirp/misc.c
+> > index b8eb74c..f7fe497 100644
+> > --- a/slirp/misc.c
+> > +++ b/slirp/misc.c
+> > @@ -54,7 +54,7 @@ int add_exec(struct ex_list **ex_ptr, int do_pty, c=
+har *exec,
+> >  	}
+> > =20
+> >  	tmp_ptr =3D *ex_ptr;
+> > -	*ex_ptr =3D (struct ex_list *)malloc(sizeof(struct ex_list));
+> > +	*ex_ptr =3D (struct ex_list *)g_malloc(sizeof(struct ex_list));
+>=20
+> There's a convinient macro in glib, g_new(typename, numelts).  Also
+> there's a less commonly used g_renew() which is like realloc, but it
+> is not applicable here.
+>=20
 
-If our test harness doesn't report failure when a test
-binary returns with a non-zero exit code then the
-harness is broken, because there are other test
-binaries that rely on that.
+If you are going to respin anyway, I recommend dropping the
+superfluous (struct ex_list *) cast here as well.
 
-thanks
--- PMM
+> >  	(*ex_ptr)->ex_fport =3D port;
+> >  	(*ex_ptr)->ex_addr =3D addr;
+> >  	(*ex_ptr)->ex_pty =3D do_pty;
+> > @@ -235,7 +235,7 @@ strdup(str)
+> >  {
+> >  	char *bptr;
+> > =20
+> > -	bptr =3D (char *)malloc(strlen(str)+1);
+> > +	bptr =3D (char *)g_malloc(strlen(str)+1);
+> >  	strcpy(bptr, str);
+> > =20
+> >  	return bptr;
+>=20
+> Oh.  And this one should be removed completely.  It is a reimplementati=
+on
+> of strdup() for system which lacks it.  This code should go, we don't b=
+uild
+> on such a system anyway and we always have g_strdup().  There's one mor=
+e
+> usage of strdup() in this file, btw.
+>=20
+> I'm sorry for being so picky, and you're already at v7, but heck.. We s=
+hould
+> be more active at reviewing patches :)
+>=20
+> Thanks,
+>=20
+> /mjt
+>=20
 
