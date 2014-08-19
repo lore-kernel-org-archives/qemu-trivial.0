@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJcux-00021V-RD
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Aug 2014 02:29:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59712)
+	id 1XJdhx-0006QB-3k
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Aug 2014 03:19:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39955)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XJcur-0001tb-A0
-	for qemu-trivial@nongnu.org; Tue, 19 Aug 2014 02:29:14 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XJdhp-0006A2-4e
+	for qemu-trivial@nongnu.org; Tue, 19 Aug 2014 03:19:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XJcum-0007tc-9E
-	for qemu-trivial@nongnu.org; Tue, 19 Aug 2014 02:29:09 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:1297)
+	(envelope-from <mjt@tls.msk.ru>) id 1XJdhi-0004o1-Se
+	for qemu-trivial@nongnu.org; Tue, 19 Aug 2014 03:19:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44967)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XJcuk-0007r2-BL; Tue, 19 Aug 2014 02:29:04 -0400
-Received: from 172.24.2.119 (EHLO szxeml403-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id BYJ00144; Tue, 19 Aug 2014 14:28:40 +0800 (CST)
-Received: from [127.0.0.1] (10.177.22.69) by szxeml403-hub.china.huawei.com
-	(10.82.67.35) with Microsoft SMTP Server id 14.3.158.1; Tue, 19 Aug 2014
-	14:28:34 +0800
-Message-ID: <53F2EE8E.9080600@huawei.com>
-Date: Tue, 19 Aug 2014 14:28:30 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XJdhW-0004mV-Ar; Tue, 19 Aug 2014 03:19:26 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 72C6B43B10;
+	Tue, 19 Aug 2014 11:19:24 +0400 (MSK)
+Message-ID: <53F2FA7C.4040401@msgid.tls.msk.ru>
+Date: Tue, 19 Aug 2014 11:19:24 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.7.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1408348831-10788-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<CAFEAcA8r51UaT4bety0h3tTjMmyvb2UwZj6scuTLZUBBYJkxVw@mail.gmail.com>
-	<53F1E69E.6030103@msgid.tls.msk.ru>
-In-Reply-To: <53F1E69E.6030103@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To: "Michael S. Tsirkin" <mst@redhat.com>
+References: <1408001361-13580-1-git-send-email-zhang.zhanghailiang@huawei.com>	<1408001361-13580-4-git-send-email-zhang.zhanghailiang@huawei.com>	<53F1E842.60009@msgid.tls.msk.ru>
+	<20140818201710.GB1121@redhat.com>
+In-Reply-To: <20140818201710.GB1121@redhat.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Li Liu <john.liuli@huawei.com>,
-	Luonengjun <luonengjun@huawei.com>, peter.huangpeng@huawei.com, QEMU
-	Developers <qemu-devel@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v7] block/vvfat: assert
- return value of fopen which may fail
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: kwolf@redhat.com, lkurusa@redhat.com,
+	zhanghailiang <zhang.zhanghailiang@huawei.com>,
+	qemu-trivial@nongnu.org, jan.kiszka@siemens.com,
+	riku.voipio@iki.fi, luonengjun@huawei.com, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com, stefanha@redhat.com,
+	pbonzini@redhat.com, lcapitulino@redhat.com,
+	alex.bennee@linaro.org, rth@twiddle.net
+Subject: Re: [Qemu-trivial] [PATCH v6 03/10] virtio-blk: fix reference a
+ pointer which might be freed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,49 +52,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Aug 2014 06:29:14 -0000
+X-List-Received-Date: Tue, 19 Aug 2014 07:19:51 -0000
 
-On 2014/8/18 19:42, Michael Tokarev wrote:
-> 18.08.2014 12:06, Peter Maydell wrote:
->> On 18 August 2014 09:00, zhanghailiang<zhang.zhanghailiang@huawei.com>  wrote:
->>> From: Li Liu<john.liuli@huawei.com>
->>>
->>> fopen() may return NULL which will cause setbuf() segmentfault
->>>
->>> Signed-off-by: zhanghailiang<zhang.zhanghailiang@huawei.com>
->>> Signed-off-by: Li Liu<john.liuli@huawei.com>
->>> ---
->>>   block/vvfat.c | 1 +
->>>   1 file changed, 1 insertion(+)
->>>
->>> diff --git a/block/vvfat.c b/block/vvfat.c
->>> index 70176b1..62023e1 100644
->>> --- a/block/vvfat.c
->>> +++ b/block/vvfat.c
->>> @@ -1084,6 +1084,7 @@ static int vvfat_open(BlockDriverState *bs, QDict *options, int flags,
->>>
->>>   DLOG(if (stderr == NULL) {
->>>       stderr = fopen("vvfat.log", "a");
->>> +    assert(stderr);
->>>       setbuf(stderr, NULL);
->>>   })
->>
->> An assertion is no better than a segfault.
->>
->> Better I think would be to just remove this whole lump of code
->> entirely. Lots of other files do debug printing to stderr without
->> attempting to open a file if stderr happens to be NULL, why
->> should vvfat.c be special?
->
-> Indeed.  I've applied a patch which just removes these 6 lines of code
-> (and sent it to the list too, for review).
->
-> Thanks,
->
-> /mjt
->
-> .
->
-OK, thanks.:)
+19.08.2014 00:17, Michael S. Tsirkin wrote:
+[]
+> By the way, could you please add Cc qemu-stable on bugfixes
+> you have queued?
+> These are likely appopriate for 2.1.1.
 
+Actually I've added Cc: qemu-stable@ in the commit message.
+So it will go to stable (or should) once I'll send a pull
+request.
+
+Thanks,
+
+/mjt
 
