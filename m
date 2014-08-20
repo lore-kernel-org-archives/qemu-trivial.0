@@ -1,48 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XJjlR-00085e-EM
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Aug 2014 09:47:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55058)
+	id 1XK1mn-0005o5-Gq
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Aug 2014 05:02:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32835)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liming.wang@canonical.com>) id 1XJZ60-0008Ve-DW
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 22:24:31 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1XK1ml-0005kx-4T
+	for qemu-trivial@nongnu.org; Wed, 20 Aug 2014 05:02:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <liming.wang@canonical.com>) id 1XJZ5p-0004gS-G8
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 22:24:24 -0400
-Received: from mail-pd0-f172.google.com ([209.85.192.172]:45539)
+	(envelope-from <stefan@weilnetz.de>) id 1XK1mj-00008U-MI
+	for qemu-trivial@nongnu.org; Wed, 20 Aug 2014 05:02:27 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:48133)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liming.wang@canonical.com>) id 1XJZ5p-0004gB-AP
-	for qemu-trivial@nongnu.org; Mon, 18 Aug 2014 22:24:13 -0400
-Received: by mail-pd0-f172.google.com with SMTP id y13so8769186pdi.3
-	for <qemu-trivial@nongnu.org>; Mon, 18 Aug 2014 19:24:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=ABIiL/0EnufwSjUVmJhzzYd6bYkE6cRYw32vIg47cDg=;
-	b=dzTi/4OMRU8GBJIzWusxQIbozpNJ3cpX/I+ZGee6C77jMn0TKCIEPEc8X/iTuUPyMh
-	V0gfjvMq1mGSYNqLIH9sJF/RJd5JXR4Rm/BuCrRy8V0rFm8zeo9xo9JW2AqpOf3bhKD7
-	yqmZ1SmNyKttgUEOKmMgAOKthtlztDE1lw7czzIVOP+hhlE4j9Rfc+DpA7x8alEpQJct
-	D+BZi+DlZtlzyKulTOVMTRrkjC0ffNM5ewTHkM6XJtPsHoT/c5+JVPz05TQKpZnr9U80
-	v1sawBfO31WUVfVgRbwNlQMNrVPBJpyXdAjWmeen7RDbUGBZVFpeZv4aj1u7cTMWUJlE
-	OvQA==
-X-Gm-Message-State: ALoCoQlHHM0HZm6kAC8RDprNDsYZx2J1GmYtvHNDwh1VnOb1kVHy1eFiOugssLlopxX3q6HICzFc
-X-Received: by 10.68.102.34 with SMTP id fl2mr39373064pbb.2.1408415051513;
-	Mon, 18 Aug 2014 19:24:11 -0700 (PDT)
-Received: from localhost ([116.213.191.74]) by mx.google.com with ESMTPSA id
-	pl10sm17513332pbb.56.2014.08.18.19.24.08 for <multiple recipients>
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Mon, 18 Aug 2014 19:24:10 -0700 (PDT)
-From: Liming Wang <liming.wang@canonical.com>
+	(envelope-from <stefan@weilnetz.de>)
+	id 1XK1mY-0008T2-Jb; Wed, 20 Aug 2014 05:02:14 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id F1D3417F6E5; Wed, 20 Aug 2014 11:02:10 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org
-Date: Tue, 19 Aug 2014 10:24:05 +0800
-Message-Id: <1408415045-24291-1-git-send-email-liming.wang@canonical.com>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.192.172
-X-Mailman-Approved-At: Tue, 19 Aug 2014 09:47:51 -0400
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Luiz Capitulino <lcapitulino@redhat.com>
-Subject: [Qemu-trivial] [PATCH] configure: no need to mkdir QMP
+Date: Wed, 20 Aug 2014 11:02:10 +0200
+Message-Id: <1408525330-25414-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] libdecnumber: Fix warnings from smatch
+	(missing static, boolean operations)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,34 +36,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Aug 2014 02:24:31 -0000
+X-List-Received-Date: Wed, 20 Aug 2014 09:02:28 -0000
 
-commit 7537fe04 QMP: QMP/ -> docs/qmp/
-
-Above commit has moved last QMP files to docs/qmp and it's not necessary
-to create QMP directory. So remove it from configure.
-
-Signed-off-by: Liming Wang <liming.wang@canonical.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- configure | 4 ----
- 1 file changed, 4 deletions(-)
+ libdecnumber/decNumber.c |   21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
 
-diff --git a/configure b/configure
-index 283c71c..b3000fd 100755
---- a/configure
-+++ b/configure
-@@ -5335,10 +5335,6 @@ for rom in seabios vgabios ; do
-     echo "LD=$ld" >> $config_mak
- done
+diff --git a/libdecnumber/decNumber.c b/libdecnumber/decNumber.c
+index a30632f..58211e7 100644
+--- a/libdecnumber/decNumber.c
++++ b/libdecnumber/decNumber.c
+@@ -5275,8 +5275,8 @@ static decNumber * decMultiplyOp(decNumber *res, const decNumber *lhs,
+ /* 4. The working precisions for the static buffers are twice the     */
+ /*    obvious size to allow for calls from decNumberPower.	      */
+ /* ------------------------------------------------------------------ */
+-decNumber * decExpOp(decNumber *res, const decNumber *rhs,
+-			 decContext *set, uInt *status) {
++static decNumber *decExpOp(decNumber *res, const decNumber *rhs,
++                           decContext *set, uInt *status) {
+   uInt ignore=0;		   /* working status */
+   Int h;			   /* adjusted exponent for 0.xxxx */
+   Int p;			   /* working precision */
+@@ -5563,7 +5563,8 @@ decNumber * decExpOp(decNumber *res, const decNumber *rhs,
+ /*	     where x is truncated (NB) into the range 10 through 99,  */
+ /*	     and then c = k>>2 and e = k&3.			      */
+ /* ------------------------------------------------------------------ */
+-const uShort LNnn[90]={9016,  8652,  8316,  8008,  7724,  7456,	 7208,
++static const uShort LNnn[90] = {
++  9016,  8652,  8316,  8008,  7724,  7456,  7208,
+   6972,	 6748,	6540,  6340,  6148,  5968,  5792,  5628,  5464,	 5312,
+   5164,	 5020,	4884,  4748,  4620,  4496,  4376,  4256,  4144,	 4032,
+  39233, 38181, 37157, 36157, 35181, 34229, 33297, 32389, 31501, 30629,
+@@ -5635,8 +5636,8 @@ const uShort LNnn[90]={9016,  8652,  8316,  8008,  7724,  7456,	 7208,
+ /* 5. The static buffers are larger than might be expected to allow   */
+ /*    for calls from decNumberPower.				      */
+ /* ------------------------------------------------------------------ */
+-decNumber * decLnOp(decNumber *res, const decNumber *rhs,
+-		    decContext *set, uInt *status) {
++static decNumber *decLnOp(decNumber *res, const decNumber *rhs,
++                          decContext *set, uInt *status) {
+   uInt ignore=0;		   /* working status accumulator */
+   uInt needbytes;		   /* for space calculations */
+   Int residue;			   /* rounding residue */
+@@ -6052,9 +6053,9 @@ static decNumber * decQuantizeOp(decNumber *res, const decNumber *lhs,
+ /* The emphasis here is on speed for common cases, and avoiding	      */
+ /* coefficient comparison if possible.				      */
+ /* ------------------------------------------------------------------ */
+-decNumber * decCompareOp(decNumber *res, const decNumber *lhs,
+-			 const decNumber *rhs, decContext *set,
+-			 Flag op, uInt *status) {
++static decNumber *decCompareOp(decNumber *res, const decNumber *lhs,
++                               const decNumber *rhs, decContext *set,
++                               Flag op, uInt *status) {
+   #if DECSUBSET
+   decNumber *alloclhs=NULL;	   /* non-NULL if rounded lhs allocated */
+   decNumber *allocrhs=NULL;	   /* .., rhs */
+@@ -6086,11 +6087,11 @@ decNumber * decCompareOp(decNumber *res, const decNumber *lhs,
  
--if test "$docs" = "yes" ; then
--  mkdir -p QMP
--fi
--
- # set up qemu-iotests in this build directory
- iotests_common_env="tests/qemu-iotests/common.env"
- iotests_check="tests/qemu-iotests/check"
+     /* If total ordering then handle differing signs 'up front' */
+     if (op==COMPTOTAL) {		/* total ordering */
+-      if (decNumberIsNegative(lhs) & !decNumberIsNegative(rhs)) {
++      if (decNumberIsNegative(lhs) && !decNumberIsNegative(rhs)) {
+ 	result=-1;
+ 	break;
+ 	}
+-      if (!decNumberIsNegative(lhs) & decNumberIsNegative(rhs)) {
++      if (!decNumberIsNegative(lhs) && decNumberIsNegative(rhs)) {
+ 	result=+1;
+ 	break;
+ 	}
 -- 
-1.9.1
+1.7.10.4
 
 
