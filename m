@@ -1,30 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XK1mn-0005o5-Gq
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Aug 2014 05:02:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32835)
+	id 1XK5sB-0002Y5-2z
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Aug 2014 09:24:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58916)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1XK1ml-0005kx-4T
-	for qemu-trivial@nongnu.org; Wed, 20 Aug 2014 05:02:28 -0400
+	(envelope-from <benoit.canet@irqsave.net>) id 1XK5s4-0002Px-Ai
+	for qemu-trivial@nongnu.org; Wed, 20 Aug 2014 09:24:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1XK1mj-00008U-MI
-	for qemu-trivial@nongnu.org; Wed, 20 Aug 2014 05:02:27 -0400
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:48133)
+	(envelope-from <benoit.canet@irqsave.net>) id 1XK5rz-00007O-W9
+	for qemu-trivial@nongnu.org; Wed, 20 Aug 2014 09:24:12 -0400
+Received: from lputeaux-656-01-25-125.w80-12.abo.wanadoo.fr
+	([80.12.84.125]:39578 helo=paradis.irqsave.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1XK1mY-0008T2-Jb; Wed, 20 Aug 2014 05:02:14 -0400
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id F1D3417F6E5; Wed, 20 Aug 2014 11:02:10 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Wed, 20 Aug 2014 11:02:10 +0200
-Message-Id: <1408525330-25414-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:2:362::1
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] libdecnumber: Fix warnings from smatch
-	(missing static, boolean operations)
+	(envelope-from <benoit.canet@irqsave.net>)
+	id 1XK5rr-00006n-Hn; Wed, 20 Aug 2014 09:23:59 -0400
+Received: from irqsave.net (laure.irqsave.net [192.168.77.2])
+	by paradis.irqsave.net (Postfix) with ESMTP id A8EE5CE520;
+	Wed, 20 Aug 2014 15:23:57 +0200 (CEST)
+Date: Wed, 20 Aug 2014 15:23:10 +0200
+From: =?iso-8859-1?Q?Beno=EEt?= Canet <benoit.canet@irqsave.net>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Message-ID: <20140820132308.GA30515@irqsave.net>
+References: <1408437017-15648-1-git-send-email-zhang.zhanghailiang@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <1408437017-15648-1-git-send-email-zhang.zhanghailiang@huawei.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 80.12.84.125
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, luonengjun@huawei.com,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v8] slirp/misc: Use the GLib
+ memory allocation APIs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,77 +44,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Aug 2014 09:02:28 -0000
+X-List-Received-Date: Wed, 20 Aug 2014 13:24:16 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- libdecnumber/decNumber.c |   21 +++++++++++----------
- 1 file changed, 11 insertions(+), 10 deletions(-)
-
-diff --git a/libdecnumber/decNumber.c b/libdecnumber/decNumber.c
-index a30632f..58211e7 100644
---- a/libdecnumber/decNumber.c
-+++ b/libdecnumber/decNumber.c
-@@ -5275,8 +5275,8 @@ static decNumber * decMultiplyOp(decNumber *res, const decNumber *lhs,
- /* 4. The working precisions for the static buffers are twice the     */
- /*    obvious size to allow for calls from decNumberPower.	      */
- /* ------------------------------------------------------------------ */
--decNumber * decExpOp(decNumber *res, const decNumber *rhs,
--			 decContext *set, uInt *status) {
-+static decNumber *decExpOp(decNumber *res, const decNumber *rhs,
-+                           decContext *set, uInt *status) {
-   uInt ignore=0;		   /* working status */
-   Int h;			   /* adjusted exponent for 0.xxxx */
-   Int p;			   /* working precision */
-@@ -5563,7 +5563,8 @@ decNumber * decExpOp(decNumber *res, const decNumber *rhs,
- /*	     where x is truncated (NB) into the range 10 through 99,  */
- /*	     and then c = k>>2 and e = k&3.			      */
- /* ------------------------------------------------------------------ */
--const uShort LNnn[90]={9016,  8652,  8316,  8008,  7724,  7456,	 7208,
-+static const uShort LNnn[90] = {
-+  9016,  8652,  8316,  8008,  7724,  7456,  7208,
-   6972,	 6748,	6540,  6340,  6148,  5968,  5792,  5628,  5464,	 5312,
-   5164,	 5020,	4884,  4748,  4620,  4496,  4376,  4256,  4144,	 4032,
-  39233, 38181, 37157, 36157, 35181, 34229, 33297, 32389, 31501, 30629,
-@@ -5635,8 +5636,8 @@ const uShort LNnn[90]={9016,  8652,  8316,  8008,  7724,  7456,	 7208,
- /* 5. The static buffers are larger than might be expected to allow   */
- /*    for calls from decNumberPower.				      */
- /* ------------------------------------------------------------------ */
--decNumber * decLnOp(decNumber *res, const decNumber *rhs,
--		    decContext *set, uInt *status) {
-+static decNumber *decLnOp(decNumber *res, const decNumber *rhs,
-+                          decContext *set, uInt *status) {
-   uInt ignore=0;		   /* working status accumulator */
-   uInt needbytes;		   /* for space calculations */
-   Int residue;			   /* rounding residue */
-@@ -6052,9 +6053,9 @@ static decNumber * decQuantizeOp(decNumber *res, const decNumber *lhs,
- /* The emphasis here is on speed for common cases, and avoiding	      */
- /* coefficient comparison if possible.				      */
- /* ------------------------------------------------------------------ */
--decNumber * decCompareOp(decNumber *res, const decNumber *lhs,
--			 const decNumber *rhs, decContext *set,
--			 Flag op, uInt *status) {
-+static decNumber *decCompareOp(decNumber *res, const decNumber *lhs,
-+                               const decNumber *rhs, decContext *set,
-+                               Flag op, uInt *status) {
-   #if DECSUBSET
-   decNumber *alloclhs=NULL;	   /* non-NULL if rounded lhs allocated */
-   decNumber *allocrhs=NULL;	   /* .., rhs */
-@@ -6086,11 +6087,11 @@ decNumber * decCompareOp(decNumber *res, const decNumber *lhs,
- 
-     /* If total ordering then handle differing signs 'up front' */
-     if (op==COMPTOTAL) {		/* total ordering */
--      if (decNumberIsNegative(lhs) & !decNumberIsNegative(rhs)) {
-+      if (decNumberIsNegative(lhs) && !decNumberIsNegative(rhs)) {
- 	result=-1;
- 	break;
- 	}
--      if (!decNumberIsNegative(lhs) & decNumberIsNegative(rhs)) {
-+      if (!decNumberIsNegative(lhs) && decNumberIsNegative(rhs)) {
- 	result=+1;
- 	break;
- 	}
--- 
-1.7.10.4
-
+The Tuesday 19 Aug 2014 =E0 16:30:17 (+0800), zhanghailiang wrote :
+> Here we don't check the return value of malloc() which may fail.
+> Use the g_new() instead, which will abort the program when
+> there is not enough memory.
+>=20
+> Also, use g_strdup instead of strdup and remove the unnecessary
+> strdup function.
+>=20
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+> Reviewed-by: Alex Benn=E9e <alex.bennee@linaro.org>
+> ---
+>  slirp/misc.c | 20 +++-----------------
+>  1 file changed, 3 insertions(+), 17 deletions(-)
+>=20
+> diff --git a/slirp/misc.c b/slirp/misc.c
+> index b8eb74c..6543dc7 100644
+> --- a/slirp/misc.c
+> +++ b/slirp/misc.c
+> @@ -54,11 +54,11 @@ int add_exec(struct ex_list **ex_ptr, int do_pty, c=
+har *exec,
+>  	}
+> =20
+>  	tmp_ptr =3D *ex_ptr;
+> -	*ex_ptr =3D (struct ex_list *)malloc(sizeof(struct ex_list));
+> +	*ex_ptr =3D g_new(struct ex_list, 1);
+>  	(*ex_ptr)->ex_fport =3D port;
+>  	(*ex_ptr)->ex_addr =3D addr;
+>  	(*ex_ptr)->ex_pty =3D do_pty;
+> -	(*ex_ptr)->ex_exec =3D (do_pty =3D=3D 3) ? exec : strdup(exec);
+> +	(*ex_ptr)->ex_exec =3D (do_pty =3D=3D 3) ? exec : g_strdup(exec);
+>  	(*ex_ptr)->ex_next =3D tmp_ptr;
+>  	return 0;
+>  }
+> @@ -187,7 +187,7 @@ fork_exec(struct socket *so, const char *ex, int do=
+_pty)
+>  			   bptr++;
+>  			c =3D *bptr;
+>  			*bptr++ =3D (char)0;
+> -			argv[i++] =3D strdup(curarg);
+> +			argv[i++] =3D g_strdup(curarg);
+>  		   } while (c);
+> =20
+>                  argv[i] =3D NULL;
+> @@ -228,20 +228,6 @@ fork_exec(struct socket *so, const char *ex, int d=
+o_pty)
+>  }
+>  #endif
+> =20
+> -#ifndef HAVE_STRDUP
+> -char *
+> -strdup(str)
+> -	const char *str;
+> -{
+> -	char *bptr;
+> -
+> -	bptr =3D (char *)malloc(strlen(str)+1);
+> -	strcpy(bptr, str);
+> -
+> -	return bptr;
+> -}
+> -#endif
+> -
+>  void slirp_connection_info(Slirp *slirp, Monitor *mon)
+>  {
+>      const char * const tcpstates[] =3D {
+> --=20
+> 1.7.12.4
+>=20
+>=20
+>=20
+Reviewed-by: Beno=EEt Canet <benoit.canet@nodalink.com>
 
