@@ -1,45 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XKGTa-0002yf-6y
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Aug 2014 20:43:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42818)
+	id 1XKNsV-0005S3-B1
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Aug 2014 04:37:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XKGTR-0002pH-Iw
-	for qemu-trivial@nongnu.org; Wed, 20 Aug 2014 20:43:35 -0400
+	(envelope-from <kwolf@redhat.com>) id 1XKNsO-0005K6-UV
+	for qemu-trivial@nongnu.org; Thu, 21 Aug 2014 04:37:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XKGTL-00019J-9c
-	for qemu-trivial@nongnu.org; Wed, 20 Aug 2014 20:43:29 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:52907)
+	(envelope-from <kwolf@redhat.com>) id 1XKNsK-000211-EF
+	for qemu-trivial@nongnu.org; Thu, 21 Aug 2014 04:37:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:19400)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XKGT6-0000xa-AW; Wed, 20 Aug 2014 20:43:09 -0400
-Received: from 172.24.2.119 (EHLO szxeml423-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CAP16478; Thu, 21 Aug 2014 08:43:02 +0800 (CST)
-Received: from [127.0.0.1] (10.177.22.69) by szxeml423-hub.china.huawei.com
-	(10.82.67.162) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 21 Aug 2014 08:42:55 +0800
-Message-ID: <53F5408B.3080908@huawei.com>
-Date: Thu, 21 Aug 2014 08:42:51 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
-MIME-Version: 1.0
+	(envelope-from <kwolf@redhat.com>)
+	id 1XKNsA-0001vN-Q2; Thu, 21 Aug 2014 04:37:30 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7L8bRf6002150
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Thu, 21 Aug 2014 04:37:28 -0400
+Received: from noname.redhat.com (ovpn-116-74.ams2.redhat.com [10.36.116.74])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	SMTP id s7L8bOBC003023; Thu, 21 Aug 2014 04:37:26 -0400
+Date: Thu, 21 Aug 2014 10:37:24 +0200
+From: Kevin Wolf <kwolf@redhat.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1408437017-15648-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<53F4B776.9040508@msgid.tls.msk.ru>
-	<53F4B8DE.4050508@msgid.tls.msk.ru>
-In-Reply-To: <53F4B8DE.4050508@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: qemu-trivial@nongnu.org, luonengjun@huawei.com, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH v8] slirp/misc: Use the GLib memory
-	allocation APIs
+Message-ID: <20140821083724.GF4452@noname.redhat.com>
+References: <1408546958-10074-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1408546958-10074-1-git-send-email-mjt@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	stefanha@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v2] block/vvfat.c: remove debugging code
+ to reinit stderr if NULL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,32 +48,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Aug 2014 00:43:36 -0000
+X-List-Received-Date: Thu, 21 Aug 2014 08:37:49 -0000
 
-On 2014/8/20 23:03, Michael Tokarev wrote:
-> 20.08.2014 18:57, Michael Tokarev пишет:
->> 19.08.2014 12:30, zhanghailiang wrote:
->>> Here we don't check the return value of malloc() which may fail.
->>> Use the g_new() instead, which will abort the program when
->>> there is not enough memory.
->>>
->>> Also, use g_strdup instead of strdup and remove the unnecessary
->>> strdup function.
->>
->> I also will remove the HAVE_STRDUP define from slirp_config.h --
->> it is no longer needed there.
->>
->> Applied to -trivial (with the above addition), thank you!
->
-> ..And with removal of the corresponding #ifdef HAVE_STRDUP from slirp/misc.h.
->
-> /mjt
->
->
-OK! Thanks.
+Am 20.08.2014 um 17:02 hat Michael Tokarev geschrieben:
+> Just log to stderr unconditionally, like other similar code does.
+> 
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  block/vvfat.c |    9 ---------
+>  1 file changed, 9 deletions(-)
+> 
+> v2: also remove stderr redefinition
 
-zhanghailiang
+Thanks, applied to the block branch.
 
-
-
+Kevin
 
