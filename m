@@ -1,59 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XKP96-0002gE-PA
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Aug 2014 05:59:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42329)
+	id 1XKfij-00033F-1p
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Aug 2014 23:40:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56981)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1XKP90-0002WI-Dl
-	for qemu-trivial@nongnu.org; Thu, 21 Aug 2014 05:59:03 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XKfic-00031z-Ig
+	for qemu-trivial@nongnu.org; Thu, 21 Aug 2014 23:40:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1XKP8v-0004QC-08
-	for qemu-trivial@nongnu.org; Thu, 21 Aug 2014 05:58:58 -0400
-Received: from mail-wg0-x232.google.com ([2a00:1450:400c:c00::232]:41415)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XKfiX-0004IE-VT
+	for qemu-trivial@nongnu.org; Thu, 21 Aug 2014 23:40:50 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:7360)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1XKP8u-0004Q8-PW; Thu, 21 Aug 2014 05:58:52 -0400
-Received: by mail-wg0-f50.google.com with SMTP id n12so9072979wgh.9
-	for <multiple recipients>; Thu, 21 Aug 2014 02:58:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=k2JF6lymA/Fsj40gt1iPsfXYhO4Dc3patsQ5y+JT9NU=;
-	b=Q6VqMrTqUd7nWiAdhY+86KSWkdeM4L7JWnC1i3WxmKYfx0VOCo59nrJ9RmzKuvFky8
-	eN/Q6jp2yDzPXZchwo5Ni1JJKsxnf6P2ZN6L9EaMccVTqFR7Rv8dYTL1nX1/Lhh7sPIT
-	iEA7B+Z8iLdN464L+yMq3QHtdAB42Lu6aziif9DSW3RaHKIegpoHSnvFivnwqlw+XYjM
-	ysVhjtZT2VvGbIPQF6TJNXb0zs3tLdk5Ii/XXgRSdt9ynnJSuKuwV0qvoFfsiRAdenZh
-	MnXoW3w55VGO2PLbqmhdtDiyXSb3+/Y5YHSAblxKQfpU+F1M7M5CKBwcvqiM5atYBs87
-	4qRQ==
-X-Received: by 10.194.184.101 with SMTP id et5mr22477762wjc.14.1408615131831; 
-	Thu, 21 Aug 2014 02:58:51 -0700 (PDT)
-Received: from yakj.usersys.redhat.com
-	(net-37-117-135-145.cust.vodafonedsl.it. [37.117.135.145])
-	by mx.google.com with ESMTPSA id
-	ez1sm18386577wib.15.2014.08.21.02.58.49 for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Thu, 21 Aug 2014 02:58:50 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <53F5C2D8.8050106@redhat.com>
-Date: Thu, 21 Aug 2014 11:58:48 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.7.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XKfiW-0004HA-RE; Thu, 21 Aug 2014 23:40:45 -0400
+Received: from 172.24.2.119 (EHLO szxeml413-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id BYM33006; Fri, 22 Aug 2014 11:40:38 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml413-hub.china.huawei.com
+	(10.82.67.152) with Microsoft SMTP Server id 14.3.158.1;
+	Fri, 22 Aug 2014 11:38:24 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Fri, 22 Aug 2014 11:38:20 +0800
+Message-ID: <1408678700-8284-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, 
-	Johny Mattsson <jmattsson@dius.com.au>
-References: <CACTyEaOFhLnoA5TDHGkDpxpP+TxVKyuTT9AL+q8Y1kaa+wxE5A@mail.gmail.com>
-	<CAFEAcA_bCOTLT1jvvJp+Wtaah43qb-UQgzxRuZc3WcyzNPrjSw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_bCOTLT1jvvJp+Wtaah43qb-UQgzxRuZc3WcyzNPrjSw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c00::232
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] Fix pflash_cfi01 to restore flash
- command/array state after migration
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	weidong.huang@huawei.com
+Subject: [Qemu-trivial] [PATCH trivial] Fix debug print warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,25 +44,168 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Aug 2014 09:59:04 -0000
+X-List-Received-Date: Fri, 22 Aug 2014 03:40:55 -0000
 
-Il 21/08/2014 11:22, Peter Maydell ha scritto:
-> On 21 August 2014 08:35, Johny Mattsson <jmattsson@dius.com.au> wrote:
->> > When using snapshots on e.g. the VersatilePB board, the pflash driver
->> > would report an error and get reset at times after resuming the snapshot.
->> > This was traced down to the 'romd' flag in the pflash emulation which was
->> > not being persisted in the snapshot.
->> >
->> > Author: Bernd Meyer <bmeyer@dius.com.au>
->> > Signed-off-by: Johny Mattsson <jmattsson@dius.com.au>
-> Paolo -- remind me, is it the device model's job to keep track of
-> what its memory regions are doing, rather than the memory region's
-> job to make sure it's migrated? I definitely remember having this
-> argument with Avi before but I can't remember the outcome...
-> 
+From: Gonglei <arei.gonglei@huawei.com>
 
-It's the device model's job.  I agree with your review, and I think
-romd=1 is the right default value if the subsection is not present.
+Steps:
 
-Paolo
+1.enable qemu debug print, using simply scprit as below:
+ grep "//#define DEBUG" * -rl | xargs sed -i "s/\/\/#define DEBUG/#define DEBUG/g"
+2. make -j
+3. get some warning:
+hw/i2c/pm_smbus.c: In function 'smb_ioport_writeb':
+hw/i2c/pm_smbus.c:142: warning: format '%04x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/i2c/pm_smbus.c:142: warning: format '%02x' expects type 'unsigned int', but argument 3 has type 'uint64_t'
+hw/i2c/pm_smbus.c: In function 'smb_ioport_readb':
+hw/i2c/pm_smbus.c:209: warning: format '%04x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/intc/i8259.c: In function 'pic_ioport_read':
+hw/intc/i8259.c:373: warning: format '%02x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/input/pckbd.c: In function 'kbd_write_command':
+hw/input/pckbd.c:232: warning: format '%02x' expects type 'unsigned int', but argument 2 has type 'uint64_t'
+hw/input/pckbd.c: In function 'kbd_write_data':
+hw/input/pckbd.c:333: warning: format '%02x' expects type 'unsigned int', but argument 2 has type 'uint64_t'
+hw/isa/apm.c: In function 'apm_ioport_writeb':
+hw/isa/apm.c:44: warning: format '%x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/isa/apm.c:44: warning: format '%02x' expects type 'unsigned int', but argument 3 has type 'uint64_t'
+hw/isa/apm.c: In function 'apm_ioport_readb':
+hw/isa/apm.c:67: warning: format '%x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/timer/mc146818rtc.c: In function 'cmos_ioport_write':
+hw/timer/mc146818rtc.c:394: warning: format '%02x' expects type 'unsigned int', but argument 3 has type 'uint64_t'
+hw/i386/pc.c: In function 'port92_write':
+hw/i386/pc.c:479: warning: format '%02x' expects type 'unsigned int', but argument 2 has type 'uint64_t'
+
+Fix them.
+
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ BTW,
+ I have posted three patches for some module which broke QEMU compling in the same way.
+ [PATCH v2] scsi-generic: remove superfluous DPRINTF avoid to break compiling
+ [PATCH v2] monitor: fix debug print compiling error
+ [PATCH] xhci: fix debug print compiling error
+
+And I think this one and above "monitor.." can be included in trivial branch.
+Thanks.
+---
+ hw/i2c/pm_smbus.c      | 5 +++--
+ hw/i386/pc.c           | 2 +-
+ hw/input/pckbd.c       | 4 ++--
+ hw/intc/i8259.c        | 2 +-
+ hw/isa/apm.c           | 5 +++--
+ hw/timer/mc146818rtc.c | 2 +-
+ 6 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+index fedb5fb..98eb71f 100644
+--- a/hw/i2c/pm_smbus.c
++++ b/hw/i2c/pm_smbus.c
+@@ -139,7 +139,8 @@ static void smb_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
+ {
+     PMSMBus *s = opaque;
+ 
+-    SMBUS_DPRINTF("SMB writeb port=0x%04x val=0x%02x\n", addr, val);
++    SMBUS_DPRINTF("SMB writeb port=0x%04" PRIx64
++                  " val=0x%02" PRIx64 "\n", addr, val);
+     switch(addr) {
+     case SMBHSTSTS:
+         s->smb_stat = (~(val & 0xff)) & s->smb_stat;
+@@ -206,7 +207,7 @@ static uint64_t smb_ioport_readb(void *opaque, hwaddr addr, unsigned width)
+         val = 0;
+         break;
+     }
+-    SMBUS_DPRINTF("SMB readb port=0x%04x val=0x%02x\n", addr, val);
++    SMBUS_DPRINTF("SMB readb port=0x%04" PRIx64 " val=0x%02x\n", addr, val);
+     return val;
+ }
+ 
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 8fa8d2f..0b1ab1f 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -476,7 +476,7 @@ static void port92_write(void *opaque, hwaddr addr, uint64_t val,
+     Port92State *s = opaque;
+     int oldval = s->outport;
+ 
+-    DPRINTF("port92: write 0x%02x\n", val);
++    DPRINTF("port92: write 0x%02" PRIx64 "\n", val);
+     s->outport = val;
+     qemu_set_irq(*s->a20_out, (val >> 1) & 1);
+     if ((val & 1) && !(oldval & 1)) {
+diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+index ca1cffc..2ab8c87 100644
+--- a/hw/input/pckbd.c
++++ b/hw/input/pckbd.c
+@@ -229,7 +229,7 @@ static void kbd_write_command(void *opaque, hwaddr addr,
+ {
+     KBDState *s = opaque;
+ 
+-    DPRINTF("kbd: write cmd=0x%02x\n", val);
++    DPRINTF("kbd: write cmd=0x%02" PRIx64 "\n", val);
+ 
+     /* Bits 3-0 of the output port P2 of the keyboard controller may be pulsed
+      * low for approximately 6 micro seconds. Bits 3-0 of the KBD_CCMD_PULSE
+@@ -330,7 +330,7 @@ static void kbd_write_data(void *opaque, hwaddr addr,
+ {
+     KBDState *s = opaque;
+ 
+-    DPRINTF("kbd: write data=0x%02x\n", val);
++    DPRINTF("kbd: write data=0x%02" PRIx64 "\n", val);
+ 
+     switch(s->write_cmd) {
+     case 0:
+diff --git a/hw/intc/i8259.c b/hw/intc/i8259.c
+index a563b82..3a62e33 100644
+--- a/hw/intc/i8259.c
++++ b/hw/intc/i8259.c
+@@ -370,7 +370,7 @@ static uint64_t pic_ioport_read(void *opaque, hwaddr addr,
+             ret = s->imr;
+         }
+     }
+-    DPRINTF("read: addr=0x%02x val=0x%02x\n", addr, ret);
++    DPRINTF("read: addr=0x%02" PRIx64 " val=0x%02x\n", addr, ret);
+     return ret;
+ }
+ 
+diff --git a/hw/isa/apm.c b/hw/isa/apm.c
+index 054d529..8f60cb0 100644
+--- a/hw/isa/apm.c
++++ b/hw/isa/apm.c
+@@ -41,7 +41,8 @@ static void apm_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
+ {
+     APMState *apm = opaque;
+     addr &= 1;
+-    APM_DPRINTF("apm_ioport_writeb addr=0x%x val=0x%02x\n", addr, val);
++    APM_DPRINTF("apm_ioport_writeb addr=0x%" PRIx64
++                " val=0x%02" PRIx64 "\n", addr, val);
+     if (addr == 0) {
+         apm->apmc = val;
+ 
+@@ -64,7 +65,7 @@ static uint64_t apm_ioport_readb(void *opaque, hwaddr addr, unsigned size)
+     } else {
+         val = apm->apms;
+     }
+-    APM_DPRINTF("apm_ioport_readb addr=0x%x val=0x%02x\n", addr, val);
++    APM_DPRINTF("apm_ioport_readb addr=0x%" PRIx64 " val=0x%02x\n", addr, val);
+     return val;
+ }
+ 
+diff --git a/hw/timer/mc146818rtc.c b/hw/timer/mc146818rtc.c
+index 233fc70..340dd92 100644
+--- a/hw/timer/mc146818rtc.c
++++ b/hw/timer/mc146818rtc.c
+@@ -391,7 +391,7 @@ static void cmos_ioport_write(void *opaque, hwaddr addr,
+     if ((addr & 1) == 0) {
+         s->cmos_index = data & 0x7f;
+     } else {
+-        CMOS_DPRINTF("cmos: write index=0x%02x val=0x%02x\n",
++        CMOS_DPRINTF("cmos: write index=0x%02x val=0x%02" PRIx64 "\n",
+                      s->cmos_index, data);
+         switch(s->cmos_index) {
+         case RTC_SECONDS_ALARM:
+-- 
+1.7.12.4
+
+
 
