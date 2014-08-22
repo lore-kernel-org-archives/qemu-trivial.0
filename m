@@ -1,51 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XKkRq-00087Y-K4
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Aug 2014 04:43:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34167)
+	id 1XKkuV-0006wM-2T
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Aug 2014 05:13:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38790)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XKkRl-000821-BD
-	for qemu-trivial@nongnu.org; Fri, 22 Aug 2014 04:43:49 -0400
+	(envelope-from <armbru@redhat.com>) id 1XKkuO-0006mU-OL
+	for qemu-trivial@nongnu.org; Fri, 22 Aug 2014 05:13:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XKkRh-0007NG-8a
-	for qemu-trivial@nongnu.org; Fri, 22 Aug 2014 04:43:45 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:25687)
+	(envelope-from <armbru@redhat.com>) id 1XKkuJ-0007vC-MP
+	for qemu-trivial@nongnu.org; Fri, 22 Aug 2014 05:13:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54319)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XKkRf-0007Es-Jy; Fri, 22 Aug 2014 04:43:41 -0400
-Received: from 172.24.2.119 (EHLO SZXEMA402-HUB.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CAQ81103; Fri, 22 Aug 2014 16:43:26 +0800 (CST)
-Received: from SZXEMA503-MBS.china.huawei.com ([169.254.6.21]) by
-	SZXEMA402-HUB.china.huawei.com ([10.82.72.34]) with mapi id
-	14.03.0158.001; Fri, 22 Aug 2014 16:43:18 +0800
-From: "Gonglei (Arei)" <arei.gonglei@huawei.com>
-To: Zhanghailiang <zhang.zhanghailiang@huawei.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH] linux-user: fix file descriptor leaks
-Thread-Index: AQHPveNLAe3g46vquUmhKPp1jVvQbZvcThxg
-Date: Fri, 22 Aug 2014 08:43:18 +0000
-Message-ID: <33183CC9F5247A488A2544077AF1902086D6B54C@SZXEMA503-MBS.china.huawei.com>
-References: <1408695831-11844-1-git-send-email-zhang.zhanghailiang@huawei.com>
-In-Reply-To: <1408695831-11844-1-git-send-email-zhang.zhanghailiang@huawei.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.177.19.102]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <armbru@redhat.com>)
+	id 1XKku9-0007tk-Jp; Fri, 22 Aug 2014 05:13:05 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7M9D1Vq026750
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Fri, 22 Aug 2014 05:13:02 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-64.ams2.redhat.com
+	[10.36.116.64])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s7M9Cxs6018641
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 22 Aug 2014 05:13:00 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 7A9D5303FEC9; Fri, 22 Aug 2014 11:12:58 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Johny Mattsson <jmattsson@dius.com.au>
+References: <CACTyEaOFhLnoA5TDHGkDpxpP+TxVKyuTT9AL+q8Y1kaa+wxE5A@mail.gmail.com>
+	<87egwab2cn.fsf@blackfin.pond.sub.org>
+	<CACTyEaMmNrNvOC7zs_=piuea6jWBLzvVVwADRHJpx2x-a7y1Eg@mail.gmail.com>
+Date: Fri, 22 Aug 2014 11:12:58 +0200
+In-Reply-To: <CACTyEaMmNrNvOC7zs_=piuea6jWBLzvVVwADRHJpx2x-a7y1Eg@mail.gmail.com>
+	(Johny Mattsson's message of "Fri, 22 Aug 2014 17:53:31 +1000")
+Message-ID: <87egw8hopx.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
-	Luonengjun <luonengjun@huawei.com>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
-	Zhanghailiang <zhang.zhanghailiang@huawei.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: fix file
-	descriptor leaks
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix pflash_cfi01 to restore
+	flash command/array state after migration
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,44 +55,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Aug 2014 08:43:49 -0000
+X-List-Received-Date: Fri, 22 Aug 2014 09:13:25 -0000
 
-> -----Original Message-----
-> From: qemu-devel-bounces+arei.gonglei=3Dhuawei.com@nongnu.org
-> [mailto:qemu-devel-bounces+arei.gonglei=3Dhuawei.com@nongnu.org] On
-> Behalf Of zhanghailiang
-> Sent: Friday, August 22, 2014 4:24 PM
-> To: qemu-devel@nongnu.org
-> Cc: qemu-trivial@nongnu.org; riku.voipio@iki.fi; Luonengjun; Huangpeng
-> (Peter); Zhanghailiang
-> Subject: [Qemu-devel] [PATCH] linux-user: fix file descriptor leaks
->=20
-> Handle variable "fd_orig" going out of scope leaks the handle.
->=20
-> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> ---
->  linux-user/syscall.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index a50229d..11a48c2 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -5082,6 +5082,7 @@ static int open_self_cmdline(void *cpu_env, int fd)
->=20
->          if (word_skipped) {
->              if (write(fd, cp_buf, nb_read) !=3D nb_read) {
-> +                close(fd_orig);
->                  return -1;
->              }
->          }
-> --
-> 1.7.12.4
->=20
->=20
+Johny Mattsson <jmattsson@dius.com.au> writes:
 
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+> On 21 August 2014 19:48, Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>> Doesn't this break migration to/from unfixed versions?
+>>
+>
+> It might. It is not something we've tried here, and I'm certainly not
+> familiar enough with QEMU internals myself to say one way or another. We
+> encountered this issue in what I can best describe as a short-and-furious
+> proof-of-concept project, and as part of the wrapping up of this I'm going
+> over our change logs to see if anything can be contributed back upstream.
+> It seemed like a trivial fix in the tree, but I acknowledge it may have
+> ramifications we didn't consider.
+>
+>
+>> I suspect you need a subsection.  Initialize ->romd = 1, then let the
+>> subsection override it.
+>>
+>
+> And here I'm well and truly out of my depth! If someone who actually knows
+> what they're doing would like to run with this, please do.
+>
+> Sorry to effectively do a dump-and-run here - I hope its a net positive at
+> least.
 
-Best regards,
--Gonglei
+Sure it is!  Imperfect patches can be a rather nice kind of bug report.
 
