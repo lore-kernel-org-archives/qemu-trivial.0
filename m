@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XKkuV-0006wM-2T
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Aug 2014 05:13:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38790)
+	id 1XKl3O-0001vP-5c
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Aug 2014 05:22:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39774)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1XKkuO-0006mU-OL
-	for qemu-trivial@nongnu.org; Fri, 22 Aug 2014 05:13:25 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1XKl3H-0001nD-8i
+	for qemu-trivial@nongnu.org; Fri, 22 Aug 2014 05:22:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1XKkuJ-0007vC-MP
-	for qemu-trivial@nongnu.org; Fri, 22 Aug 2014 05:13:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54319)
+	(envelope-from <peter.maydell@linaro.org>) id 1XKl3A-0001uv-So
+	for qemu-trivial@nongnu.org; Fri, 22 Aug 2014 05:22:31 -0400
+Received: from mail-la0-f42.google.com ([209.85.215.42]:41808)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1XKku9-0007tk-Jp; Fri, 22 Aug 2014 05:13:05 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s7M9D1Vq026750
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Fri, 22 Aug 2014 05:13:02 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-64.ams2.redhat.com
-	[10.36.116.64])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s7M9Cxs6018641
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 22 Aug 2014 05:13:00 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 7A9D5303FEC9; Fri, 22 Aug 2014 11:12:58 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Johny Mattsson <jmattsson@dius.com.au>
-References: <CACTyEaOFhLnoA5TDHGkDpxpP+TxVKyuTT9AL+q8Y1kaa+wxE5A@mail.gmail.com>
-	<87egwab2cn.fsf@blackfin.pond.sub.org>
-	<CACTyEaMmNrNvOC7zs_=piuea6jWBLzvVVwADRHJpx2x-a7y1Eg@mail.gmail.com>
-Date: Fri, 22 Aug 2014 11:12:58 +0200
-In-Reply-To: <CACTyEaMmNrNvOC7zs_=piuea6jWBLzvVVwADRHJpx2x-a7y1Eg@mail.gmail.com>
-	(Johny Mattsson's message of "Fri, 22 Aug 2014 17:53:31 +1000")
-Message-ID: <87egw8hopx.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <peter.maydell@linaro.org>) id 1XKl3A-0001uH-E4
+	for qemu-trivial@nongnu.org; Fri, 22 Aug 2014 05:22:24 -0400
+Received: by mail-la0-f42.google.com with SMTP id pv20so9819862lab.29
+	for <qemu-trivial@nongnu.org>; Fri, 22 Aug 2014 02:22:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=i/U/KjHZ5hI6/08dY1h/EULEaodqaQC5FxxbBbJecZA=;
+	b=OmS2BbZgRbWdjlCJWc4M9i0zIurinVK8Al9zRpctEOeFKzfeeMjRlheap5Km17CWZL
+	aW8sh6EqVPfcS+DKOC7liB9VlRdDegTqdgq89Ov9N6oACpKUHXyQsy8s3howtarQ0mou
+	jtfwh4wsCJxE4BBc6mnD+fSVgDDWhQpxVa9fRdPx7CKEMApz8OrrfqFwQiz8Bc+FF06l
+	sl3kXv64/ibzHNyFlelm02N8aKvXwmylov5DrGXOD65ExgZbioL560Wi1EaUNjX0+yHn
+	Y+AXKhgfBLq1UMwWQCq221sKjr4BsAZDDfGxOiD022uVkrwyOxWx2SQnHSW4mbGQv1Ek
+	8Wpw==
+X-Gm-Message-State: ALoCoQkEwEtFvBTEOgIl+Q+VlCb74+OHkkAFCqSVqHaKATnb7dfkbErhJQ+cNSarB+Zm6Dpa7qyq
+X-Received: by 10.152.9.100 with SMTP id y4mr3729812laa.26.1408699341893; Fri,
+	22 Aug 2014 02:22:21 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix pflash_cfi01 to restore
-	flash command/array state after migration
+Received: by 10.112.130.161 with HTTP; Fri, 22 Aug 2014 02:22:01 -0700 (PDT)
+In-Reply-To: <53F704BE.6000407@mrs.ro>
+References: <53F704BE.6000407@mrs.ro>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 22 Aug 2014 10:22:01 +0100
+Message-ID: <CAFEAcA87YqhdciCxnGkvFcv57tQ-dy35SxxQQGqCxiEzsSNfMg@mail.gmail.com>
+To: Valentin Manea <qemu@mrs.ro>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.42
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Wenchao Xia <xiawenc@linux.vnet.ibm.com>,
+	Juan Quintela <quintela@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] IDE: MMIO IDE device control should be
+	little endian
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,33 +56,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Aug 2014 09:13:25 -0000
+X-List-Received-Date: Fri, 22 Aug 2014 09:22:36 -0000
 
-Johny Mattsson <jmattsson@dius.com.au> writes:
+You forgot to cc qemu-devel...
 
-> On 21 August 2014 19:48, Markus Armbruster <armbru@redhat.com> wrote:
->>
->> Doesn't this break migration to/from unfixed versions?
->>
+On 22 August 2014 09:52, Valentin Manea <qemu@mrs.ro> wrote:
+> Set the IDE MMIO memory type to little endian. The ATA specs identify
+> words part of the control commands encoded as little endian.
+> While this has no impact on little endian systems, it's required for big
+> endian systems(eg OpenRisc).
 >
-> It might. It is not something we've tried here, and I'm certainly not
-> familiar enough with QEMU internals myself to say one way or another. We
-> encountered this issue in what I can best describe as a short-and-furious
-> proof-of-concept project, and as part of the wrapping up of this I'm going
-> over our change logs to see if anything can be contributed back upstream.
-> It seemed like a trivial fix in the tree, but I acknowledge it may have
-> ramifications we didn't consider.
+> Signed-off-by: Valentin Manea <valentin.manea@gmail.com>
+> ---
+>  hw/ide/mmio.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
+> diff --git a/hw/ide/mmio.c b/hw/ide/mmio.c
+> index 01c1d0e..334c8cc 100644
+> --- a/hw/ide/mmio.c
+> +++ b/hw/ide/mmio.c
+> @@ -82,7 +82,7 @@ static void mmio_ide_write(void *opaque, hwaddr addr,
+>  static const MemoryRegionOps mmio_ide_ops = {
+>      .read = mmio_ide_read,
+>      .write = mmio_ide_write,
+> -    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+>  };
 >
->> I suspect you need a subsection.  Initialize ->romd = 1, then let the
->> subsection override it.
->>
+>  static uint64_t mmio_ide_status_read(void *opaque, hwaddr addr,
+> @@ -102,7 +102,7 @@ static void mmio_ide_cmd_write(void *opaque, hwaddr
+> addr,
+>  static const MemoryRegionOps mmio_ide_cs_ops = {
+>      .read = mmio_ide_status_read,
+>      .write = mmio_ide_cmd_write,
+> -    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+>  };
 >
-> And here I'm well and truly out of my depth! If someone who actually knows
-> what they're doing would like to run with this, please do.
->
-> Sorry to effectively do a dump-and-run here - I hope its a net positive at
-> least.
+>  static const VMStateDescription vmstate_ide_mmio = {
+> --
+> 1.9.1
 
-Sure it is!  Imperfect patches can be a rather nice kind of bug report.
+thanks
+-- PMM
 
