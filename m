@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XLXyK-00048R-HR
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Aug 2014 09:36:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48951)
+	id 1XLXyK-00049A-Rg
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Aug 2014 09:36:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48963)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XLXyD-0003uE-3X
-	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:36:37 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XLXyE-0003vJ-4u
+	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:36:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XLXy8-0006ot-Ln
+	(envelope-from <mjt@tls.msk.ru>) id 1XLXy9-0006p9-J5
 	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:36:33 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:32988)
+Received: from isrv.corpit.ru ([86.62.121.231]:39281)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XLXxy-0006ka-PF; Sun, 24 Aug 2014 09:36:18 -0400
+	id 1XLXxy-0006kb-PL; Sun, 24 Aug 2014 09:36:18 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id E7F2F44A04;
+	by isrv.corpit.ru (Postfix) with ESMTP id E7EC044A03;
 	Sun, 24 Aug 2014 17:36:17 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 6F5256B3;
+	by tsrv.corpit.ru (Postfix) with SMTP id CEB0B6E7;
 	Sun, 24 Aug 2014 17:31:04 +0400 (MSK)
-Received: (nullmailer pid 30087 invoked by uid 1000);
+Received: (nullmailer pid 30081 invoked by uid 1000);
 	Sun, 24 Aug 2014 13:31:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Sun, 24 Aug 2014 17:30:59 +0400
-Message-Id: <1408887062-30022-9-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Sun, 24 Aug 2014 17:30:56 +0400
+Message-Id: <1408887062-30022-6-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1408887062-30022-1-git-send-email-mjt@msgid.tls.msk.ru>
 References: <1408887062-30022-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 08/11] po: Fix Makefile rules for in-tree
-	builds without configuration
+Subject: [Qemu-trivial] [PULL 05/11] dma: axidma: Variablise repeated
+	s->streams[i] sub-expr
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,56 +44,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Aug 2014 13:36:37 -0000
+X-List-Received-Date: Sun, 24 Aug 2014 13:36:38 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 
-Adding 'update' to the phony targets fixes this error:
+This have 6 inline usages. Make it a bit more readable by using a local
+variable.
 
-$ LANG=C make -C po update
-make: Entering directory `/qemu/po'
-  LINK  update
-/qemu/po/de_DE.po: file not recognized: File format not recognized
-collect2: error: ld returned 1 exit status
-make: *** [update] Error 1
-make: Leaving directory `/qemu/po'
-
-Some other phony targets (build, install) were also added, and the
-existing .PHONY statement was moved to a more prominent position at
-the beginning of the Makefile.
-
-The patch also fixes a 2nd bug. The default target should be 'all',
-but instead 'modules' (from rules.mak) was the default. Fix this by
-adding 'all' as a target before any include statement.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- po/Makefile |    7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ hw/dma/xilinx_axidma.c |   10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/po/Makefile b/po/Makefile
-index 669f865..1ab241a 100644
---- a/po/Makefile
-+++ b/po/Makefile
-@@ -4,6 +4,11 @@
- # Set SRC_PATH for in-tree builds without configuration.
- SRC_PATH=..
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+index ee60d3f..d06002d 100644
+--- a/hw/dma/xilinx_axidma.c
++++ b/hw/dma/xilinx_axidma.c
+@@ -553,10 +553,12 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+     int i;
  
-+# The default target must come before any include statements.
-+all:
+     for (i = 0; i < 2; i++) {
+-        s->streams[i].nr = i;
+-        s->streams[i].bh = qemu_bh_new(timer_hit, &s->streams[i]);
+-        s->streams[i].ptimer = ptimer_init(s->streams[i].bh);
+-        ptimer_set_freq(s->streams[i].ptimer, s->freqhz);
++        struct Stream *st = &s->streams[i];
 +
-+.PHONY:	all build clean install update
-+
- -include ../config-host.mak
- include $(SRC_PATH)/rules.mak
++        st->nr = i;
++        st->bh = qemu_bh_new(timer_hit, st);
++        st->ptimer = ptimer_init(st->bh);
++        ptimer_set_freq(st->ptimer, s->freqhz);
+     }
+     return;
  
-@@ -45,5 +50,3 @@ $(PO_PATH)/messages.po: $(SRC_PATH)/ui/gtk.c
- 
- $(PO_PATH)/%.po: $(PO_PATH)/messages.po
- 	$(call quiet-command, msgmerge -q $@ $< > $@.bak && mv $@.bak $@, "  GEN   $@")
--
--.PHONY: clean all
 -- 
 1.7.10.4
 
