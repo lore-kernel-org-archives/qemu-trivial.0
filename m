@@ -1,43 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XLXZI-0006LP-5p
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Aug 2014 09:10:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40196)
+	id 1XLXtF-000482-Ks
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Aug 2014 09:31:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45164)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XLXZA-0006Bc-N2
-	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:10:45 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XLXt9-0003w2-HB
+	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:31:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XLXZ5-0006jX-KP
-	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:10:40 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53193)
+	(envelope-from <mjt@tls.msk.ru>) id 1XLXt5-0004Gd-5o
+	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:31:19 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:41258)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XLXYu-0006iQ-Qv; Sun, 24 Aug 2014 09:10:24 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 15E77449BA;
-	Sun, 24 Aug 2014 17:10:22 +0400 (MSK)
-Message-ID: <53F9E43D.2020103@msgid.tls.msk.ru>
-Date: Sun, 24 Aug 2014 17:10:21 +0400
+	id 1XLXsw-0004FF-4j; Sun, 24 Aug 2014 09:31:06 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 151A044A01;
+	Sun, 24 Aug 2014 17:31:04 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id CB3606D3;
+	Sun, 24 Aug 2014 17:31:03 +0400 (MSK)
+Received: (nullmailer pid 30089 invoked by uid 1000);
+	Sun, 24 Aug 2014 13:31:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.7.0
-MIME-Version: 1.0
-To: Dmitry Fleytman <dmitry@daynix.com>
-References: <1408537634-3812-1-git-send-email-ben@xrsa.net>
-	<53F9D55D.6060804@msgid.tls.msk.ru>
-	<A9C9B9DB-AEEE-4D79-A968-E0F34671C865@daynix.com>
-In-Reply-To: <A9C9B9DB-AEEE-4D79-A968-E0F34671C865@daynix.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: quoted-printable
+To: qemu-devel@nongnu.org
+Date: Sun, 24 Aug 2014 17:31:00 +0400
+Message-Id: <1408887062-30022-10-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1408887062-30022-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1408887062-30022-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Tamir Shomer <tamirs@daynix.com>,
-	qemu-devel@nongnu.org, Ben Draper <ben@xrsa.net>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Yan Vugenfirer <yan@daynix.com>
-Subject: Re: [Qemu-trivial] [PATCH] vmxnet3: Pad short frames to minimum
-	size (60 bytes)
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	zhanghailiang <zhang.zhanghailiang@huawei.com>
+Subject: [Qemu-trivial] [PULL 09/11] linux-user: fix file descriptor leaks
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,35 +43,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Aug 2014 13:10:45 -0000
+X-List-Received-Date: Sun, 24 Aug 2014 13:31:24 -0000
 
-24.08.2014 16:28, Dmitry Fleytman wrote:
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
 
-> Hi Michael,
->=20
-> I=92m the maintainer of vmxnet3/pvscsi devices in QEMU. Thanks for CC=92=
-ing me.
+Handle variable "fd_orig" going out of scope leaks the handle.
 
-Maybe you can add yourself to MAINTAINERS file as well? :)
-I dunno if that's actually needed, but at least this should
-stop "strain" patches like this to be sent to -trivial alone... ;)
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ linux-user/syscall.c |    1 +
+ 1 file changed, 1 insertion(+)
 
-> I think this patch is correct and needed.
->=20
-> As we saw a few times already on different operating systems,
-> vmware drivers expect short packets to be padded as required
-> by corresponding RFC. Therefore this patch fixes a real bug.
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 7ff7c21..8fe9df7 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -5167,6 +5167,7 @@ static int open_self_cmdline(void *cpu_env, int fd)
+ 
+         if (word_skipped) {
+             if (write(fd, cp_buf, nb_read) != nb_read) {
++                close(fd_orig);
+                 return -1;
+             }
+         }
+-- 
+1.7.10.4
 
-Okay, since there's no entry for vmxnet in MAINTAINERS, and with
-your blessing, and since this is a rather specific device which
-is not in common use, I'll apply it to -trivial, for now, unless
-you want to pick it up and send a pull request for it.
-
-Given your description, I think it should be Cc: qemu-stable@.
-
-> Reviewed-by: Dmitry Fleytman <dmitry@daynix.com>
-
-Thanks,
-
-/mjt
 
