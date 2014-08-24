@@ -1,51 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XLYAR-0000ti-Kn
+	id 1XLYAR-0000uG-RO
 	for mharc-qemu-trivial@gnu.org; Sun, 24 Aug 2014 09:49:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59413)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43684)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XLWue-0001AL-8h
-	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 08:28:53 -0400
+	(envelope-from <dmitry@daynix.com>) id 1XLXq7-0002XK-Jm
+	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:28:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XLWuS-0001t1-7N
-	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 08:28:48 -0400
-Received: from mail-we0-f175.google.com ([74.125.82.175]:48721)
+	(envelope-from <dmitry@daynix.com>) id 1XLXph-0002kB-7G
+	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:28:11 -0400
+Received: from mail-wi0-f178.google.com ([209.85.212.178]:49300)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XLWuS-0001st-1U
-	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 08:28:36 -0400
-Received: by mail-we0-f175.google.com with SMTP id t60so12057219wes.6
-	for <qemu-trivial@nongnu.org>; Sun, 24 Aug 2014 05:28:35 -0700 (PDT)
+	(envelope-from <dmitry@daynix.com>) id 1XLXpg-0002jF-WC
+	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:27:45 -0400
+Received: by mail-wi0-f178.google.com with SMTP id hi2so1433207wib.17
+	for <qemu-trivial@nongnu.org>; Sun, 24 Aug 2014 06:27:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:content-type:mime-version:subject:from
 	:in-reply-to:date:cc:content-transfer-encoding:message-id:references
-	:to; bh=kJfR19rNnSEAtNQWNzfUGrs27WOY/PG0XQ7uVDMEst0=;
-	b=BtAHDHZG4u3JdSeQgHnddJSNQYuVSVhmNd6u7EJOvnA1BY4cvr2iySgpeKgAkmWmd1
-	xwcoNSZ2Psu9zBaalr9Dr9+DVQ0KULANPV/UhJts/DcaLjbeYntZx/a/TnTa1qC22F3W
-	6y1fKi07hw2sAWHE06/xeLoFa0tK5dvr67L3T/qvgiJ/y4RwxYrZikXpusGERj7vLIpa
-	8ODsItiLd63+QlwmNHmKth/cYGP/NHEkmnD/wn/eYoyB/7L5lM+dYazcuyZ0IVmw/yZu
-	WXAOLWnKWt13LSQuXzgwCLryenziA3yx4FYqGRbL3Ciytki9REgeBcnNztX6Rt/YJV7B
-	QAHg==
-X-Gm-Message-State: ALoCoQn8Vh6WMaCREJq7vzEvUEsHORwhILfq/zg/969RhtlDXXMqgK96lU1VnSG3wA3kP17yPvby
-X-Received: by 10.180.188.205 with SMTP id gc13mr9019551wic.66.1408883314978; 
-	Sun, 24 Aug 2014 05:28:34 -0700 (PDT)
-Received: from [10.0.1.86] ([91.205.155.63]) by mx.google.com with ESMTPSA id
-	ph10sm91304764wjb.25.2014.08.24.05.28.33 for <multiple recipients>
+	:to; bh=+qAx/EhvkA8dpg6k09UvMmZi1Ymmtu8gWpMywrFOPqk=;
+	b=Rk9+UpW6L2fuZ8bGYenrUFj7bq1juiFtVZRKobDrrOF3toxsXnLcAK0jSdNK979Tjb
+	T+uIzC/WqJSrP7fJUEozdSp42QaiNWLAxoU1QrSVyhoO+WWpAy8pgcYPeowAWbk2Mahb
+	yvUwBeSbILcp/l3VKiX9Qc7MiWRAde1hbiqKZMEMGtEi4rafWWbldTndh3oP2kZL8ED+
+	XbmSYyIrctpITQIPQwavcjZASUALWLLii2WWjTrWbOgZ+GzA6VCepEGm4XfyYVNGr1ls
+	IBBenAljnLF6xJKmlX1j6+vwBJcLkUNtTjD6xb+Y8z29Du4BgxD8iAGeeeDqjnKP4vEB
+	/SHw==
+X-Gm-Message-State: ALoCoQlKAU4IBvEoZaDfEC3sawrXGVwDPMtIjUMbfMqnX7WsHa8Ed6/x3qunzev83umT/+FishqL
+X-Received: by 10.180.102.105 with SMTP id fn9mr8986441wib.27.1408886864196;
+	Sun, 24 Aug 2014 06:27:44 -0700 (PDT)
+Received: from [10.0.1.86] ([91.205.155.63])
+	by mx.google.com with ESMTPSA id bk9sm20516977wib.7.2014.08.24.06.27.42
+	for <multiple recipients>
 	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 24 Aug 2014 05:28:34 -0700 (PDT)
+	Sun, 24 Aug 2014 06:27:43 -0700 (PDT)
 Content-Type: text/plain; charset=windows-1252
 Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
 From: Dmitry Fleytman <dmitry@daynix.com>
-In-Reply-To: <53F9D55D.6060804@msgid.tls.msk.ru>
-Date: Sun, 24 Aug 2014 15:28:31 +0300
+In-Reply-To: <53F9E43D.2020103@msgid.tls.msk.ru>
+Date: Sun, 24 Aug 2014 16:27:40 +0300
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <A9C9B9DB-AEEE-4D79-A968-E0F34671C865@daynix.com>
+Message-Id: <2C43C4CF-F85B-4A13-81BC-B848F6663EA8@daynix.com>
 References: <1408537634-3812-1-git-send-email-ben@xrsa.net>
 	<53F9D55D.6060804@msgid.tls.msk.ru>
+	<A9C9B9DB-AEEE-4D79-A968-E0F34671C865@daynix.com>
+	<53F9E43D.2020103@msgid.tls.msk.ru>
 To: Michael Tokarev <mjt@tls.msk.ru>
 X-Mailer: Apple Mail (2.1878.6)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 74.125.82.175
+X-Received-From: 209.85.212.178
 X-Mailman-Approved-At: Sun, 24 Aug 2014 09:49:08 -0400
 Cc: qemu-trivial@nongnu.org, Tamir Shomer <tamirs@daynix.com>,
 	qemu-devel@nongnu.org, Ben Draper <ben@xrsa.net>,
@@ -63,92 +66,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Aug 2014 12:28:53 -0000
+X-List-Received-Date: Sun, 24 Aug 2014 13:28:30 -0000
 
 
-On Aug 24, 2014, at 15:06 PM, Michael Tokarev <mjt@tls.msk.ru> wrote:
+On Aug 24, 2014, at 16:10 PM, Michael Tokarev <mjt@tls.msk.ru> wrote:
 
-> 20.08.2014 16:27, Ben Draper wrote:
->> When running VMware ESXi under qemu-kvm the guest discards frames
->> that are too short. Short ARP Requests will be dropped, this prevents
->> guests on the same bridge as VMware ESXi from communicating. This =
-patch
->> simply adds the padding on the network device itself.
+> 24.08.2014 16:28, Dmitry Fleytman wrote:
 >=20
-> I'm not sure it is "trivial enough", so to say.  Do we have a =
-maintainer
-> for vmxnet?  It's been written and updated several times by vmware =
-(Daynix)
-> people, maybe they can comment on this somehow?  I mean, if we don't =
-have
-> a maintainer for this device, it is okay to go to -trivial, but maybe =
-it's
-> a good idea to try to reach the author(s) first?  (Adding Cc).
->=20
-> Especially since this change is only required in certain cases, not
-> generally.
-
-
-Hi Michael,
-
-I=92m the maintainer of vmxnet3/pvscsi devices in QEMU. Thanks for =
+>> Hi Michael,
+>>=20
+>> I=92m the maintainer of vmxnet3/pvscsi devices in QEMU. Thanks for =
 CC=92ing me.
+>=20
+> Maybe you can add yourself to MAINTAINERS file as well? :)
 
-I think this patch is correct and needed.
+Yes, this should be done.
+How we do this? Should I send a patch for MAINTAINETRS?
 
-As we saw a few times already on different operating systems,
-vmware drivers expect short packets to be padded as required
-by corresponding RFC. Therefore this patch fixes a real bug.
 
-Reviewed-by: Dmitry Fleytman <dmitry@daynix.com>
+> I dunno if that's actually needed, but at least this should
+> stop "strain" patches like this to be sent to -trivial alone... ;)
+>=20
+>> I think this patch is correct and needed.
+>>=20
+>> As we saw a few times already on different operating systems,
+>> vmware drivers expect short packets to be padded as required
+>> by corresponding RFC. Therefore this patch fixes a real bug.
+>=20
+> Okay, since there's no entry for vmxnet in MAINTAINERS, and with
+> your blessing, and since this is a rather specific device which
+> is not in common use, I'll apply it to -trivial, for now, unless
+> you want to pick it up and send a pull request for it.
 
+
+-trivial is good enough for this patch.
+
+>=20
+> Given your description, I think it should be Cc: qemu-stable@.
+>=20
+>> Reviewed-by: Dmitry Fleytman <dmitry@daynix.com>
 >=20
 > Thanks,
 >=20
 > /mjt
->=20
->> Signed-off-by: Ben Draper <ben@xrsa.net>
->> ---
->> hw/net/vmxnet3.c |   10 ++++++++++
->> 1 file changed, 10 insertions(+)
->>=20
->> diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
->> index 791321f..f246fa1 100644
->> --- a/hw/net/vmxnet3.c
->> +++ b/hw/net/vmxnet3.c
->> @@ -34,6 +34,7 @@
->>=20
->> #define PCI_DEVICE_ID_VMWARE_VMXNET3_REVISION 0x1
->> #define VMXNET3_MSIX_BAR_SIZE 0x2000
->> +#define MIN_BUF_SIZE 60
->>=20
->> #define VMXNET3_BAR0_IDX      (0)
->> #define VMXNET3_BAR1_IDX      (1)
->> @@ -1871,12 +1872,21 @@ vmxnet3_receive(NetClientState *nc, const =
-uint8_t *buf, size_t size)
->> {
->>     VMXNET3State *s =3D qemu_get_nic_opaque(nc);
->>     size_t bytes_indicated;
->> +    uint8_t min_buf[MIN_BUF_SIZE];
->>=20
->>     if (!vmxnet3_can_receive(nc)) {
->>         VMW_PKPRN("Cannot receive now");
->>         return -1;
->>     }
->>=20
->> +    /* Pad to minimum Ethernet frame length */
->> +    if (size < sizeof(min_buf)) {
->> +        memcpy(min_buf, buf, size);
->> +        memset(&min_buf[size], 0, sizeof(min_buf) - size);
->> +        buf =3D min_buf;
->> +        size =3D sizeof(min_buf);
->> +    }
->> +
->>     if (s->peer_has_vhdr) {
->>         vmxnet_rx_pkt_set_vhdr(s->rx_pkt, (struct virtio_net_hdr =
-*)buf);
->>         buf +=3D sizeof(struct virtio_net_hdr);
->>=20
->=20
 
 
