@@ -1,55 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XLueT-0004d6-Fr
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Aug 2014 09:49:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60567)
+	id 1XLyOg-0005ax-OR
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Aug 2014 13:49:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53909)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tommusta@gmail.com>) id 1XLueL-0004PO-EV
-	for qemu-trivial@nongnu.org; Mon, 25 Aug 2014 09:49:39 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1XLyOb-0005Wy-09
+	for qemu-trivial@nongnu.org; Mon, 25 Aug 2014 13:49:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <tommusta@gmail.com>) id 1XLueF-000215-Gt
-	for qemu-trivial@nongnu.org; Mon, 25 Aug 2014 09:49:33 -0400
-Received: from mail-qc0-x232.google.com ([2607:f8b0:400d:c01::232]:36896)
+	(envelope-from <peter.maydell@linaro.org>) id 1XLyOU-0007D2-5K
+	for qemu-trivial@nongnu.org; Mon, 25 Aug 2014 13:49:32 -0400
+Received: from mail-lb0-f172.google.com ([209.85.217.172]:62527)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tommusta@gmail.com>)
-	id 1XLue3-0001yx-Bl; Mon, 25 Aug 2014 09:49:15 -0400
-Received: by mail-qc0-f178.google.com with SMTP id x3so13997283qcv.9
-	for <multiple recipients>; Mon, 25 Aug 2014 06:49:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=tWYEaPlTMHtVdQE2Tpi0MMyfq3xwYMdzUmiVg6B3UkE=;
-	b=gJ6mt4mb/hmd+SabFsk99x1Tv+O9DXdIm10T2L8ZsKPb8YkCXhyX1V85KwP8/nUfUV
-	UCGz8slE74/nkzPY3UA6pGWZjsJqxbxx17UOsxQRppG0XYBAAjfmgsRFbDqkKLh3rZ05
-	tkWcX4CaCpIjJOxZ18dtTa5AiZ47cJWiEa6Bo8/NOUefNLO+nrEvKMOeMC/9npsA78yB
-	++bwR/4ghJ64zGE2XNLmmaMBmeNHJu8+aiLfFGTaMPIZvF17OmnEQdCA7ik3ij0bk42u
-	kPHOl5DP8oDv6isfSQzcb5OsErRjG7IhplVwPAvuIic/XY8EVu1nSPvy8XSUFelFi0R+
-	Onew==
-X-Received: by 10.140.104.213 with SMTP id a79mr33397427qgf.46.1408974554191; 
-	Mon, 25 Aug 2014 06:49:14 -0700 (PDT)
-Received: from [9.10.87.78] (rchp4.rochester.ibm.com. [129.42.161.36])
-	by mx.google.com with ESMTPSA id l3sm4869112qay.0.2014.08.25.06.49.12
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Mon, 25 Aug 2014 06:49:13 -0700 (PDT)
-Message-ID: <53FB3ED4.2000902@gmail.com>
-Date: Mon, 25 Aug 2014 08:49:08 -0500
-From: Tom Musta <tommusta@gmail.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64;
-	rv:24.0) Gecko/20100101 Thunderbird/24.6.0
+	(envelope-from <peter.maydell@linaro.org>) id 1XLyOT-0007Cg-UJ
+	for qemu-trivial@nongnu.org; Mon, 25 Aug 2014 13:49:26 -0400
+Received: by mail-lb0-f172.google.com with SMTP id w7so41024lbi.17
+	for <qemu-trivial@nongnu.org>; Mon, 25 Aug 2014 10:49:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=gdk4CycKGklfoH5p2nrC7mhccJN5dYdGIHO52CwH+dc=;
+	b=AlBf2pcxwnqtlwbUoaBbpIGZfGiedAdLaDSJXOxGgEs/byngm05VJEFOFHK5C0KCVa
+	AZWBxo0mx4sMIsmNaHhFuI+izTNVKkpcXahrQb+kWogMdqoTnQ95OLBeFkI1hX8k2hgG
+	q0GO9x6t+3Ww7KuVEylmtv/hKwyGSDvBTsK1I4PMJi7av/GuxkFM49d+02MeDde+zQyJ
+	hYh06YybJqosxKDi6NPxJGmCzaj9q7N/VBNU8uldiIB97DX/m78FJ+m40O9as9Sn3P9o
+	WAsjiOqSv2mDTmu0BA03C2MMFQSi2TzgaZD/pdK6CoLrFB7x99r2efSWYGo4r4wEij7L
+	EKWQ==
+X-Gm-Message-State: ALoCoQnriZmTyAi5vfVM5h/0M0AxyU4GIZqTbBqnuEgHzZxYrKe6S3ZLNJlcScuJjWFrn4k5MaQs
+X-Received: by 10.152.9.170 with SMTP id a10mr9501423lab.79.1408988964732;
+	Mon, 25 Aug 2014 10:49:24 -0700 (PDT)
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, Michael Tokarev <mjt@tls.msk.ru>, 
-	qemu-devel@nongnu.org
-References: <1408525330-25414-1-git-send-email-sw@weilnetz.de>	<53F9AE86.7040700@msgid.tls.msk.ru>
-	<53F9B372.10602@weilnetz.de>
-In-Reply-To: <53F9B372.10602@weilnetz.de>
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c01::232
-Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] libdecnumber: Fix warnings
- from smatch (missing static, boolean operations)
+Received: by 10.112.130.161 with HTTP; Mon, 25 Aug 2014 10:49:04 -0700 (PDT)
+In-Reply-To: <1408887062-30022-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1408887062-30022-1-git-send-email-mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 25 Aug 2014 18:49:04 +0100
+Message-ID: <CAFEAcA8OKLd9PAV3ibUmC3e2_Wj7HbG+KpBOLj3T97mdoEmymw@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.172
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/11] Trivial patches for
+	2014-08-24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,29 +55,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Aug 2014 13:49:39 -0000
+X-List-Received-Date: Mon, 25 Aug 2014 17:49:37 -0000
 
-On 8/24/2014 4:42 AM, Stefan Weil wrote:
-> Am 24.08.2014 11:21, schrieb Michael Tokarev:
->> Applied to -trivial, thank you!
->>
->> But I've a small concern - should we really do this on "external" sources,
->> and divirge from upstream needlessly?
->>
->> Thanks,
->>
->> /mjt
-> 
-> In general, I agree. In this case, the code was part of gcc, and newer versions of gcc use GPL 3 which is incompatible with QEMU, so I assume that the code in QEMU is no longer available from a maintained upstream.
-> 
-> Stefan
-> 
-> 
-> 
+On 24 August 2014 14:30, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> This time, we've a bunch of trivial stuff all over, including a series from
+> zhanghailiang, some minor fixes from Stefan Weil and Peter Crosthwaite,
+> and also a bugfix for a rare device - vmxnet3 - reviewed by the author.
+>
+> Please consider pulling/applying.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 33886ebeec0c0ff6253a49253fae0db44c9ed0f3:
+>
+>   Merge remote-tracking branch 'remotes/kevin/tags/for-upstream' into staging (2014-08-22 16:12:51 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-08-24
+>
+> for you to fetch changes up to 40a87c6c9b11ef9c14e0301f76abf0eb2582f08e:
+>
+>   vmxnet3: Pad short frames to minimum size (60 bytes) (2014-08-24 17:11:08 +0400)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2014-08-24
+>
 
-Yes.  We had to effectively fork a copy the code to deal with the license issues.
+Applied, thanks.
 
-FWIW ... Alex has suggested a reformat of the libdecnumber code to make it compatible with QEMU formatting (http://lists.nongnu.org/archive/html/qemu-ppc/2014-05/msg00085.html).  This is on my todo list.  Obviously, such a reformat would make it even
-harder to synchronize with upstream gcc.
-
+-- PMM
 
