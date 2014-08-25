@@ -1,60 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XLYAR-0000uG-RO
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Aug 2014 09:49:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43684)
+	id 1XLjbx-0002zX-MW
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Aug 2014 22:02:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46402)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XLXq7-0002XK-Jm
-	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:28:30 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XLjbr-0002qK-0G
+	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 22:02:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XLXph-0002kB-7G
-	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:28:11 -0400
-Received: from mail-wi0-f178.google.com ([209.85.212.178]:49300)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XLjbm-0003ll-Ds
+	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 22:02:14 -0400
+Received: from szxga01-in.huawei.com ([119.145.14.64]:23042)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XLXpg-0002jF-WC
-	for qemu-trivial@nongnu.org; Sun, 24 Aug 2014 09:27:45 -0400
-Received: by mail-wi0-f178.google.com with SMTP id hi2so1433207wib.17
-	for <qemu-trivial@nongnu.org>; Sun, 24 Aug 2014 06:27:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:content-type:mime-version:subject:from
-	:in-reply-to:date:cc:content-transfer-encoding:message-id:references
-	:to; bh=+qAx/EhvkA8dpg6k09UvMmZi1Ymmtu8gWpMywrFOPqk=;
-	b=Rk9+UpW6L2fuZ8bGYenrUFj7bq1juiFtVZRKobDrrOF3toxsXnLcAK0jSdNK979Tjb
-	T+uIzC/WqJSrP7fJUEozdSp42QaiNWLAxoU1QrSVyhoO+WWpAy8pgcYPeowAWbk2Mahb
-	yvUwBeSbILcp/l3VKiX9Qc7MiWRAde1hbiqKZMEMGtEi4rafWWbldTndh3oP2kZL8ED+
-	XbmSYyIrctpITQIPQwavcjZASUALWLLii2WWjTrWbOgZ+GzA6VCepEGm4XfyYVNGr1ls
-	IBBenAljnLF6xJKmlX1j6+vwBJcLkUNtTjD6xb+Y8z29Du4BgxD8iAGeeeDqjnKP4vEB
-	/SHw==
-X-Gm-Message-State: ALoCoQlKAU4IBvEoZaDfEC3sawrXGVwDPMtIjUMbfMqnX7WsHa8Ed6/x3qunzev83umT/+FishqL
-X-Received: by 10.180.102.105 with SMTP id fn9mr8986441wib.27.1408886864196;
-	Sun, 24 Aug 2014 06:27:44 -0700 (PDT)
-Received: from [10.0.1.86] ([91.205.155.63])
-	by mx.google.com with ESMTPSA id bk9sm20516977wib.7.2014.08.24.06.27.42
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sun, 24 Aug 2014 06:27:43 -0700 (PDT)
-Content-Type: text/plain; charset=windows-1252
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-From: Dmitry Fleytman <dmitry@daynix.com>
-In-Reply-To: <53F9E43D.2020103@msgid.tls.msk.ru>
-Date: Sun, 24 Aug 2014 16:27:40 +0300
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <2C43C4CF-F85B-4A13-81BC-B848F6663EA8@daynix.com>
-References: <1408537634-3812-1-git-send-email-ben@xrsa.net>
-	<53F9D55D.6060804@msgid.tls.msk.ru>
-	<A9C9B9DB-AEEE-4D79-A968-E0F34671C865@daynix.com>
-	<53F9E43D.2020103@msgid.tls.msk.ru>
-To: Michael Tokarev <mjt@tls.msk.ru>
-X-Mailer: Apple Mail (2.1878.6)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.212.178
-X-Mailman-Approved-At: Sun, 24 Aug 2014 09:49:08 -0400
-Cc: qemu-trivial@nongnu.org, Tamir Shomer <tamirs@daynix.com>,
-	qemu-devel@nongnu.org, Ben Draper <ben@xrsa.net>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Yan Vugenfirer <yan@daynix.com>
-Subject: Re: [Qemu-trivial] [PATCH] vmxnet3: Pad short frames to minimum
-	size (60 bytes)
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XLjbc-0003ku-Dh; Sun, 24 Aug 2014 22:02:01 -0400
+Received: from 172.24.2.119 (EHLO szxeml450-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CAS83448; Mon, 25 Aug 2014 10:01:46 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml450-hub.china.huawei.com
+	(10.82.67.193) with Microsoft SMTP Server id 14.3.158.1;
+	Mon, 25 Aug 2014 10:01:35 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Mon, 25 Aug 2014 10:01:27 +0800
+Message-ID: <1408932087-11036-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.64
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, peter.crosthwaite@xilinx.com,
+	Gonglei <arei.gonglei@huawei.com>, weidong.huang@huawei.com
+Subject: [Qemu-trivial] [PATCH trivial v2] Fix debug print warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,48 +44,161 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Aug 2014 13:28:30 -0000
+X-List-Received-Date: Mon, 25 Aug 2014 02:02:19 -0000
 
+From: Gonglei <arei.gonglei@huawei.com>
 
-On Aug 24, 2014, at 16:10 PM, Michael Tokarev <mjt@tls.msk.ru> wrote:
+Steps:
 
-> 24.08.2014 16:28, Dmitry Fleytman wrote:
->=20
->> Hi Michael,
->>=20
->> I=92m the maintainer of vmxnet3/pvscsi devices in QEMU. Thanks for =
-CC=92ing me.
->=20
-> Maybe you can add yourself to MAINTAINERS file as well? :)
+1.enable qemu debug print, using simply scprit as below:
+ grep "//#define DEBUG" * -rl | xargs sed -i "s/\/\/#define DEBUG/#define DEBUG/g"
+2. make -j
+3. get some warning:
+hw/i2c/pm_smbus.c: In function 'smb_ioport_writeb':
+hw/i2c/pm_smbus.c:142: warning: format '%04x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/i2c/pm_smbus.c:142: warning: format '%02x' expects type 'unsigned int', but argument 3 has type 'uint64_t'
+hw/i2c/pm_smbus.c: In function 'smb_ioport_readb':
+hw/i2c/pm_smbus.c:209: warning: format '%04x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/intc/i8259.c: In function 'pic_ioport_read':
+hw/intc/i8259.c:373: warning: format '%02x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/input/pckbd.c: In function 'kbd_write_command':
+hw/input/pckbd.c:232: warning: format '%02x' expects type 'unsigned int', but argument 2 has type 'uint64_t'
+hw/input/pckbd.c: In function 'kbd_write_data':
+hw/input/pckbd.c:333: warning: format '%02x' expects type 'unsigned int', but argument 2 has type 'uint64_t'
+hw/isa/apm.c: In function 'apm_ioport_writeb':
+hw/isa/apm.c:44: warning: format '%x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/isa/apm.c:44: warning: format '%02x' expects type 'unsigned int', but argument 3 has type 'uint64_t'
+hw/isa/apm.c: In function 'apm_ioport_readb':
+hw/isa/apm.c:67: warning: format '%x' expects type 'unsigned int', but argument 2 has type 'hwaddr'
+hw/timer/mc146818rtc.c: In function 'cmos_ioport_write':
+hw/timer/mc146818rtc.c:394: warning: format '%02x' expects type 'unsigned int', but argument 3 has type 'uint64_t'
+hw/i386/pc.c: In function 'port92_write':
+hw/i386/pc.c:479: warning: format '%02x' expects type 'unsigned int', but argument 2 has type 'uint64_t'
 
-Yes, this should be done.
-How we do this? Should I send a patch for MAINTAINETRS?
+Fix them.
 
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+v2: using HWADDR_PRIx instead of PRIx64 for hwaddr variable suggested by Peter.
+---
+ hw/i2c/pm_smbus.c      | 5 +++--
+ hw/i386/pc.c           | 2 +-
+ hw/input/pckbd.c       | 4 ++--
+ hw/intc/i8259.c        | 2 +-
+ hw/isa/apm.c           | 5 +++--
+ hw/timer/mc146818rtc.c | 2 +-
+ 6 files changed, 11 insertions(+), 9 deletions(-)
 
-> I dunno if that's actually needed, but at least this should
-> stop "strain" patches like this to be sent to -trivial alone... ;)
->=20
->> I think this patch is correct and needed.
->>=20
->> As we saw a few times already on different operating systems,
->> vmware drivers expect short packets to be padded as required
->> by corresponding RFC. Therefore this patch fixes a real bug.
->=20
-> Okay, since there's no entry for vmxnet in MAINTAINERS, and with
-> your blessing, and since this is a rather specific device which
-> is not in common use, I'll apply it to -trivial, for now, unless
-> you want to pick it up and send a pull request for it.
+diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+index fedb5fb..ce1713d 100644
+--- a/hw/i2c/pm_smbus.c
++++ b/hw/i2c/pm_smbus.c
+@@ -139,7 +139,8 @@ static void smb_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
+ {
+     PMSMBus *s = opaque;
+ 
+-    SMBUS_DPRINTF("SMB writeb port=0x%04x val=0x%02x\n", addr, val);
++    SMBUS_DPRINTF("SMB writeb port=0x%04" HWADDR_PRIx
++                  " val=0x%02" PRIx64 "\n", addr, val);
+     switch(addr) {
+     case SMBHSTSTS:
+         s->smb_stat = (~(val & 0xff)) & s->smb_stat;
+@@ -206,7 +207,7 @@ static uint64_t smb_ioport_readb(void *opaque, hwaddr addr, unsigned width)
+         val = 0;
+         break;
+     }
+-    SMBUS_DPRINTF("SMB readb port=0x%04x val=0x%02x\n", addr, val);
++    SMBUS_DPRINTF("SMB readb port=0x%04" HWADDR_PRIx " val=0x%02x\n", addr, val);
+     return val;
+ }
+ 
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 8fa8d2f..0b1ab1f 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -476,7 +476,7 @@ static void port92_write(void *opaque, hwaddr addr, uint64_t val,
+     Port92State *s = opaque;
+     int oldval = s->outport;
+ 
+-    DPRINTF("port92: write 0x%02x\n", val);
++    DPRINTF("port92: write 0x%02" PRIx64 "\n", val);
+     s->outport = val;
+     qemu_set_irq(*s->a20_out, (val >> 1) & 1);
+     if ((val & 1) && !(oldval & 1)) {
+diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+index ca1cffc..2ab8c87 100644
+--- a/hw/input/pckbd.c
++++ b/hw/input/pckbd.c
+@@ -229,7 +229,7 @@ static void kbd_write_command(void *opaque, hwaddr addr,
+ {
+     KBDState *s = opaque;
+ 
+-    DPRINTF("kbd: write cmd=0x%02x\n", val);
++    DPRINTF("kbd: write cmd=0x%02" PRIx64 "\n", val);
+ 
+     /* Bits 3-0 of the output port P2 of the keyboard controller may be pulsed
+      * low for approximately 6 micro seconds. Bits 3-0 of the KBD_CCMD_PULSE
+@@ -330,7 +330,7 @@ static void kbd_write_data(void *opaque, hwaddr addr,
+ {
+     KBDState *s = opaque;
+ 
+-    DPRINTF("kbd: write data=0x%02x\n", val);
++    DPRINTF("kbd: write data=0x%02" PRIx64 "\n", val);
+ 
+     switch(s->write_cmd) {
+     case 0:
+diff --git a/hw/intc/i8259.c b/hw/intc/i8259.c
+index a563b82..c51901b 100644
+--- a/hw/intc/i8259.c
++++ b/hw/intc/i8259.c
+@@ -370,7 +370,7 @@ static uint64_t pic_ioport_read(void *opaque, hwaddr addr,
+             ret = s->imr;
+         }
+     }
+-    DPRINTF("read: addr=0x%02x val=0x%02x\n", addr, ret);
++    DPRINTF("read: addr=0x%02" HWADDR_PRIx " val=0x%02x\n", addr, ret);
+     return ret;
+ }
+ 
+diff --git a/hw/isa/apm.c b/hw/isa/apm.c
+index 054d529..26ab170 100644
+--- a/hw/isa/apm.c
++++ b/hw/isa/apm.c
+@@ -41,7 +41,8 @@ static void apm_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
+ {
+     APMState *apm = opaque;
+     addr &= 1;
+-    APM_DPRINTF("apm_ioport_writeb addr=0x%x val=0x%02x\n", addr, val);
++    APM_DPRINTF("apm_ioport_writeb addr=0x%" HWADDR_PRIx
++                " val=0x%02" PRIx64 "\n", addr, val);
+     if (addr == 0) {
+         apm->apmc = val;
+ 
+@@ -64,7 +65,7 @@ static uint64_t apm_ioport_readb(void *opaque, hwaddr addr, unsigned size)
+     } else {
+         val = apm->apms;
+     }
+-    APM_DPRINTF("apm_ioport_readb addr=0x%x val=0x%02x\n", addr, val);
++    APM_DPRINTF("apm_ioport_readb addr=0x%" HWADDR_PRIx " val=0x%02x\n", addr, val);
+     return val;
+ }
+ 
+diff --git a/hw/timer/mc146818rtc.c b/hw/timer/mc146818rtc.c
+index 233fc70..340dd92 100644
+--- a/hw/timer/mc146818rtc.c
++++ b/hw/timer/mc146818rtc.c
+@@ -391,7 +391,7 @@ static void cmos_ioport_write(void *opaque, hwaddr addr,
+     if ((addr & 1) == 0) {
+         s->cmos_index = data & 0x7f;
+     } else {
+-        CMOS_DPRINTF("cmos: write index=0x%02x val=0x%02x\n",
++        CMOS_DPRINTF("cmos: write index=0x%02x val=0x%02" PRIx64 "\n",
+                      s->cmos_index, data);
+         switch(s->cmos_index) {
+         case RTC_SECONDS_ALARM:
+-- 
+1.7.12.4
 
-
--trivial is good enough for this patch.
-
->=20
-> Given your description, I think it should be Cc: qemu-stable@.
->=20
->> Reviewed-by: Dmitry Fleytman <dmitry@daynix.com>
->=20
-> Thanks,
->=20
-> /mjt
 
 
