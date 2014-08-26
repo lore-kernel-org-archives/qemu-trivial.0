@@ -1,45 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XMEjA-0007Ar-IY
+	id 1XMEjA-0007BU-Qi
 	for mharc-qemu-trivial@gnu.org; Tue, 26 Aug 2014 07:15:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53568)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53571)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <john.liuli@huawei.com>) id 1XMAPP-0001wJ-CD
-	for qemu-trivial@nongnu.org; Tue, 26 Aug 2014 02:39:15 -0400
+	(envelope-from <john.liuli@huawei.com>) id 1XMAPP-0001wK-FW
+	for qemu-trivial@nongnu.org; Tue, 26 Aug 2014 02:39:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <john.liuli@huawei.com>) id 1XMAPK-00035h-TO
+	(envelope-from <john.liuli@huawei.com>) id 1XMAPK-00035X-M0
 	for qemu-trivial@nongnu.org; Tue, 26 Aug 2014 02:39:11 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:35050)
+Received: from szxga02-in.huawei.com ([119.145.14.65]:26747)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <john.liuli@huawei.com>)
-	id 1XMAPK-00031x-5V; Tue, 26 Aug 2014 02:39:06 -0400
-Received: from 172.24.2.119 (EHLO SZXEML454-HUB.china.huawei.com)
+	id 1XMAPJ-000328-Ts; Tue, 26 Aug 2014 02:39:06 -0400
+Received: from 172.24.2.119 (EHLO szxeml463-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id ATN52957; Tue, 26 Aug 2014 14:38:56 +0800 (CST)
-Received: from localhost (10.142.143.9) by SZXEML454-HUB.china.huawei.com
-	(10.82.67.197) with Microsoft SMTP Server id 14.3.158.1;
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id BYQ15660; Tue, 26 Aug 2014 14:38:55 +0800 (CST)
+Received: from localhost (10.142.143.9) by szxeml463-hub.china.huawei.com
+	(10.82.67.206) with Microsoft SMTP Server id 14.3.158.1;
 	Tue, 26 Aug 2014 14:38:47 +0800
 From: "john.liuli" <john.liuli@huawei.com>
 To: <peter.crosthwaite@xilinx.com>
-Date: Tue, 26 Aug 2014 14:38:02 +0800
-Message-ID: <1409035084-6740-1-git-send-email-john.liuli@huawei.com>
+Date: Tue, 26 Aug 2014 14:38:03 +0800
+Message-ID: <1409035084-6740-2-git-send-email-john.liuli@huawei.com>
 X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1409035084-6740-1-git-send-email-john.liuli@huawei.com>
+References: <1409035084-6740-1-git-send-email-john.liuli@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.142.143.9]
 X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020202.53FC2B80.0092,ss=1,re=0.000,fgs=0,
-	ip=0.0.0.0, so=2013-05-26 15:14:31,
-	dmn=2011-05-27 18:58:46
-X-Mirapoint-Loop-Id: f3c8d1688e9f8bcf1fb0357e676b5efe
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
+X-Received-From: 119.145.14.65
 X-Mailman-Approved-At: Tue, 26 Aug 2014 07:15:51 -0400
 Cc: qemu-trivial@nongnu.org, Li Liu <john.liuli@huawei.com>,
 	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH v2 1/2] device_tree.c: redirect
-	load_device_tree err message to stderr
+Subject: [Qemu-trivial] [PATCH v2 2/2] device_tree.c: dump all err mesages
+	with error_report
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,71 +48,134 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Aug 2014 06:39:15 -0000
+X-List-Received-Date: Tue, 26 Aug 2014 06:39:16 -0000
 
 From: Li Liu <john.liuli@huawei.com>
 
-Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 Signed-off-by: Li Liu <john.liuli@huawei.com>
 ---
-changes v1 -> v2:
-1) fix indent issue as peter suggested.
-2) dump all err mesages with error_report. 
-
----
- device_tree.c |   15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+ device_tree.c |   40 ++++++++++++++++++++--------------------
+ 1 file changed, 20 insertions(+), 20 deletions(-)
 
 diff --git a/device_tree.c b/device_tree.c
-index ca83504..9d47195 100644
+index 9d47195..df9eed9 100644
 --- a/device_tree.c
 +++ b/device_tree.c
-@@ -20,6 +20,7 @@
- 
- #include "config.h"
- #include "qemu-common.h"
-+#include "qemu/error-report.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/sysemu.h"
- #include "hw/loader.h"
-@@ -79,8 +80,8 @@ void *load_device_tree(const char *filename_path, int *sizep)
-     *sizep = 0;
-     dt_size = get_image_size(filename_path);
-     if (dt_size < 0) {
--        printf("Unable to get size of device tree file '%s'\n",
--            filename_path);
-+        error_report("Unable to get size of device tree file '%s'",
-+                     filename_path);
-         goto fail;
+@@ -60,13 +60,13 @@ void *create_device_tree(int *sizep)
      }
- 
-@@ -92,21 +93,21 @@ void *load_device_tree(const char *filename_path, int *sizep)
- 
-     dt_file_load_size = load_image(filename_path, fdt);
-     if (dt_file_load_size < 0) {
--        printf("Unable to open device tree file '%s'\n",
--               filename_path);
-+        error_report("Unable to open device tree file '%s'",
-+                     filename_path);
-         goto fail;
-     }
- 
-     ret = fdt_open_into(fdt, fdt, dt_size);
+     ret = fdt_open_into(fdt, fdt, *sizep);
      if (ret) {
--        printf("Unable to copy device tree in memory\n");
+-        fprintf(stderr, "Unable to copy device tree in memory\n");
 +        error_report("Unable to copy device tree in memory");
-         goto fail;
+         exit(1);
      }
  
-     /* Check sanity of device tree */
-     if (fdt_check_header(fdt)) {
--        printf ("Device tree file loaded into memory is invalid: %s\n",
--            filename_path);
-+        error_report("Device tree file loaded into memory is invalid: %s",
-+                     filename_path);
-         goto fail;
+     return fdt;
+ fail:
+-    fprintf(stderr, "%s Couldn't create dt: %s\n", __func__, fdt_strerror(ret));
++    error_report("%s Couldn't create dt: %s", __func__, fdt_strerror(ret));
+     exit(1);
+ }
+ 
+@@ -124,8 +124,8 @@ static int findnode_nofail(void *fdt, const char *node_path)
+ 
+     offset = fdt_path_offset(fdt, node_path);
+     if (offset < 0) {
+-        fprintf(stderr, "%s Couldn't find node %s: %s\n", __func__, node_path,
+-                fdt_strerror(offset));
++        error_report("%s Couldn't find node %s: %s", __func__, node_path,
++                     fdt_strerror(offset));
+         exit(1);
      }
-     *sizep = dt_size;
+ 
+@@ -139,8 +139,8 @@ int qemu_fdt_setprop(void *fdt, const char *node_path,
+ 
+     r = fdt_setprop(fdt, findnode_nofail(fdt, node_path), property, val, size);
+     if (r < 0) {
+-        fprintf(stderr, "%s: Couldn't set %s/%s: %s\n", __func__, node_path,
+-                property, fdt_strerror(r));
++        error_report("%s: Couldn't set %s/%s: %s", __func__, node_path,
++                     property, fdt_strerror(r));
+         exit(1);
+     }
+ 
+@@ -154,8 +154,8 @@ int qemu_fdt_setprop_cell(void *fdt, const char *node_path,
+ 
+     r = fdt_setprop_cell(fdt, findnode_nofail(fdt, node_path), property, val);
+     if (r < 0) {
+-        fprintf(stderr, "%s: Couldn't set %s/%s = %#08x: %s\n", __func__,
+-                node_path, property, val, fdt_strerror(r));
++        error_report("%s: Couldn't set %s/%s = %#08x: %s", __func__,
++                     node_path, property, val, fdt_strerror(r));
+         exit(1);
+     }
+ 
+@@ -176,8 +176,8 @@ int qemu_fdt_setprop_string(void *fdt, const char *node_path,
+ 
+     r = fdt_setprop_string(fdt, findnode_nofail(fdt, node_path), property, string);
+     if (r < 0) {
+-        fprintf(stderr, "%s: Couldn't set %s/%s = %s: %s\n", __func__,
+-                node_path, property, string, fdt_strerror(r));
++        error_report("%s: Couldn't set %s/%s = %s: %s", __func__,
++                     node_path, property, string, fdt_strerror(r));
+         exit(1);
+     }
+ 
+@@ -194,8 +194,8 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
+     }
+     r = fdt_getprop(fdt, findnode_nofail(fdt, node_path), property, lenp);
+     if (!r) {
+-        fprintf(stderr, "%s: Couldn't get %s/%s: %s\n", __func__,
+-                node_path, property, fdt_strerror(*lenp));
++        error_report("%s: Couldn't get %s/%s: %s", __func__,
++                     node_path, property, fdt_strerror(*lenp));
+         exit(1);
+     }
+     return r;
+@@ -207,8 +207,8 @@ uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
+     int len;
+     const uint32_t *p = qemu_fdt_getprop(fdt, node_path, property, &len);
+     if (len != 4) {
+-        fprintf(stderr, "%s: %s/%s not 4 bytes long (not a cell?)\n",
+-                __func__, node_path, property);
++        error_report("%s: %s/%s not 4 bytes long (not a cell?)",
++                     __func__, node_path, property);
+         exit(1);
+     }
+     return be32_to_cpu(*p);
+@@ -220,8 +220,8 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path)
+ 
+     r = fdt_get_phandle(fdt, findnode_nofail(fdt, path));
+     if (r == 0) {
+-        fprintf(stderr, "%s: Couldn't get phandle for %s: %s\n", __func__,
+-                path, fdt_strerror(r));
++        error_report("%s: Couldn't get phandle for %s: %s", __func__,
++                     path, fdt_strerror(r));
+         exit(1);
+     }
+ 
+@@ -266,8 +266,8 @@ int qemu_fdt_nop_node(void *fdt, const char *node_path)
+ 
+     r = fdt_nop_node(fdt, findnode_nofail(fdt, node_path));
+     if (r < 0) {
+-        fprintf(stderr, "%s: Couldn't nop node %s: %s\n", __func__, node_path,
+-                fdt_strerror(r));
++        error_report("%s: Couldn't nop node %s: %s", __func__, node_path,
++                     fdt_strerror(r));
+         exit(1);
+     }
+ 
+@@ -295,8 +295,8 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+ 
+     retval = fdt_add_subnode(fdt, parent, basename);
+     if (retval < 0) {
+-        fprintf(stderr, "FDT: Failed to create subnode %s: %s\n", name,
+-                fdt_strerror(retval));
++        error_report("FDT: Failed to create subnode %s: %s", name,
++                     fdt_strerror(retval));
+         exit(1);
+     }
+ 
 -- 
 1.7.9.5
 
