@@ -1,49 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XMWGI-0001ry-6t
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Aug 2014 01:59:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41736)
+	id 1XMbGm-00034s-Qk
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Aug 2014 07:20:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37007)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XMWGA-0001qT-8b
-	for qemu-trivial@nongnu.org; Wed, 27 Aug 2014 01:59:12 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XMbGe-0002uG-Oq
+	for qemu-trivial@nongnu.org; Wed, 27 Aug 2014 07:20:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XMWG4-0007cI-0k
-	for qemu-trivial@nongnu.org; Wed, 27 Aug 2014 01:59:06 -0400
-Received: from mail-we0-f169.google.com ([74.125.82.169]:48254)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XMbGZ-0000d1-QR
+	for qemu-trivial@nongnu.org; Wed, 27 Aug 2014 07:19:56 -0400
+Received: from szxga01-in.huawei.com ([119.145.14.64]:10393)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XMWG3-0007c6-RM
-	for qemu-trivial@nongnu.org; Wed, 27 Aug 2014 01:58:59 -0400
-Received: by mail-we0-f169.google.com with SMTP id u56so15596896wes.28
-	for <qemu-trivial@nongnu.org>; Tue, 26 Aug 2014 22:58:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=iFUrJ1NiJ9qL3APOO48Ofw750KTPdcHTSxBOCh+7yoE=;
-	b=ivPbZrNQEr8caTp/m9fU122DgjbCmwnuEany1vuQo0tqeErLDTl8FNQFAPtaJnNQ12
-	aHq2Dsq/MkbT1og8R+ZYcQ1eNCZHjbR5flRkyJBtgOKhHFqzeHzWYswCYEUCcKXs+mPk
-	RcdTOaRKLH0T4pDZBsU6s4pOBvXX+KBcTSWD/QitLxTJvDKyvVaIys8F+78hyeIgHXes
-	UFRri87mS+Fczt1iu5LZvjjzsnymzAJqW5GvcYs/maz5BFf2PYGjI/8cgzo3aGFAPyHa
-	zNLdqRTH6TT/MsHEs6BCCYDSQGtJddPEUBdgIZoxpJOrDX24Ym/A5x4toczihFDexfpW
-	g1PQ==
-X-Gm-Message-State: ALoCoQnDaAvFiyEd34zBwUwJZD3Gb4VDUEm6GZlnXTG3x2SbLN86oZArrO9vo5OeGoygdCQmo8cz
-X-Received: by 10.180.73.6 with SMTP id h6mr25698242wiv.65.1409119138768;
-	Tue, 26 Aug 2014 22:58:58 -0700 (PDT)
-Received: from Snarl.daynix ([91.205.155.63])
-	by mx.google.com with ESMTPSA id y5sm14117735wje.32.2014.08.26.22.58.56
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 26 Aug 2014 22:58:57 -0700 (PDT)
-From: Dmitry Fleytman <dmitry@daynix.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 27 Aug 2014 08:58:43 +0300
-Message-Id: <1409119123-15445-1-git-send-email-dmitry@daynix.com>
-X-Mailer: git-send-email 1.9.3
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.169
-Cc: qemu-trivial@nongnu.org, Dmitry Fleytman <dmitry@daynix.com>,
-	Anthony Liguori <anthony@codemonkey.ws>, Yan Vugenfirer <yan@daynix.com>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Add VMWare devices maintainer
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1XMbGP-0000be-2i; Wed, 27 Aug 2014 07:19:41 -0400
+Received: from 172.24.2.119 (EHLO szxeml421-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CAW50457; Wed, 27 Aug 2014 19:19:33 +0800 (CST)
+Received: from localhost (10.177.22.69) by szxeml421-hub.china.huawei.com
+	(10.82.67.160) with Microsoft SMTP Server id 14.3.158.1;
+	Wed, 27 Aug 2014 19:19:24 +0800
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Wed, 27 Aug 2014 19:18:53 +0800
+Message-ID: <1409138333-12644-1-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Mailer: git-send-email 1.9.2.msysgit.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.22.69]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.64
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, qemu-trivial@nongnu.org,
+	luonengjun@huawei.com, peter.huangpeng@huawei.com,
+	lcapitulino@redhat.com, lersek@redhat.com
+Subject: [Qemu-trivial] [PATCH] dump: let dump_error printf the error reason
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,31 +45,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Aug 2014 05:59:12 -0000
+X-List-Received-Date: Wed, 27 Aug 2014 11:20:01 -0000
 
-Signed-off-by: Dmitry Fleytman <dmitry@daynix.com>
+The second parameter of dump_error is unused, but one purpose of
+using this function is to report the error info.
+
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 ---
- MAINTAINERS | 6 ++++++
- 1 file changed, 6 insertions(+)
+ dump.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 59940f9..1b3e2be 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -678,6 +678,12 @@ S: Maintained
- F: hw/*/xilinx_*
- F: include/hw/xilinx.h
+diff --git a/dump.c b/dump.c
+index 71d3e94..0f44e9d 100644
+--- a/dump.c
++++ b/dump.c
+@@ -83,6 +83,9 @@ static int dump_cleanup(DumpState *s)
  
-+Vmware
-+M: Dmitry Fleytman <dmitry@daynix.com>
-+S: Maintained
-+F: hw/net/vmxnet*
-+F: hw/scsi/vmw_pvscsi*
-+
- Subsystems
- ----------
- Audio
+ static void dump_error(DumpState *s, const char *reason)
+ {
++    if (reason) {
++        error_report("%s", reason);
++    }
+     dump_cleanup(s);
+ }
+ 
 -- 
-1.9.3
+1.7.12.4
+
 
 
