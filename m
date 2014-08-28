@@ -1,51 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XMoLM-00055i-Ay
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Aug 2014 21:17:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55640)
+	id 1XMxe9-0004b3-Gs
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Aug 2014 07:13:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55052)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1XMoLE-00051E-Bv
-	for qemu-trivial@nongnu.org; Wed, 27 Aug 2014 21:17:38 -0400
+	(envelope-from <stefanha@gmail.com>) id 1XMxe1-0004Zt-CO
+	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 07:13:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1XMoL8-0006kD-6g
-	for qemu-trivial@nongnu.org; Wed, 27 Aug 2014 21:17:32 -0400
-Received: from [59.151.112.132] (port=47725 helo=heian.cn.fujitsu.com)
+	(envelope-from <stefanha@gmail.com>) id 1XMxdv-0005ug-A5
+	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 07:13:33 -0400
+Received: from mail-wi0-x233.google.com ([2a00:1450:400c:c05::233]:58525)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>)
-	id 1XMoKv-0006hq-9V; Wed, 27 Aug 2014 21:17:13 -0400
-X-IronPort-AV: E=Sophos;i="5.04,414,1406563200"; d="scan'208";a="35171125"
-Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 28 Aug 2014 09:14:11 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id s7S1H2Oq007033;
-	Thu, 28 Aug 2014 09:17:03 +0800
-Received: from G08CNEXMBPEKD03.g08.fujitsu.local ([10.167.33.86]) by
-	G08CNEXCHPEKD03.g08.fujitsu.local ([10.167.33.85]) with mapi id
-	14.03.0181.006; Thu, 28 Aug 2014 09:17:09 +0800
-From: "chen.fan.fnst@cn.fujitsu.com" <chen.fan.fnst@cn.fujitsu.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [RESEND v2 0/3] Fix some memory leaks about query
-	memdev
-Thread-Index: AQHPwl3L+cGfdaeV80uyI4QOtX9lqA==
-Date: Thu, 28 Aug 2014 01:17:09 +0000
-Message-ID: <05953EE18EEC9148BE892F38DF8F8E8E625B9B@G08CNEXMBPEKD03.g08.fujitsu.local>
-References: <cover.1408344055.git.chen.fan.fnst@cn.fujitsu.com>
-In-Reply-To: <cover.1408344055.git.chen.fan.fnst@cn.fujitsu.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.167.226.78]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <stefanha@gmail.com>)
+	id 1XMxdv-0005uW-2l; Thu, 28 Aug 2014 07:13:27 -0400
+Received: by mail-wi0-f179.google.com with SMTP id q5so669660wiv.12
+	for <multiple recipients>; Thu, 28 Aug 2014 04:13:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=HqG8hrSRVjxp0Ln/jg6QznRjkGpLeNw4QBAti1siM7c=;
+	b=ADZlondDETIgCjoT4vcacHuBdmJJWvl3s8UdHAEYYPCZONny0IJAQUH2Ion5z95WAS
+	k2ghO0ZBPoKl7I7V9nJLZWqzgbnenj+TTuWtzzoJVLxFOUAInYGw+lirD6FezzcW2/V2
+	fin/Iml5uD6WCOKdT38NDaIk7uBMZV8k6JvDrOqL8IOxl57hpaqki94LbsCNRNx+zTE2
+	wb+AsUn1IqrRcwMs8kz/XQsyKpf0t2Yp+mJl5QvpZRtqUtkuSsbcvZEzUVUq0g3a4yVG
+	BVVcXg9L/mrOEotcGt8SXWyherJKXXCGSMz3c3kaUw6l6KzfrCxqMnDatwQS23yh1HYf
+	0T8g==
+X-Received: by 10.180.109.169 with SMTP id ht9mr997760wib.1.1409224406182;
+	Thu, 28 Aug 2014 04:13:26 -0700 (PDT)
+Received: from localhost (44.175.90.146.dyn.plus.net. [146.90.175.44])
+	by mx.google.com with ESMTPSA id
+	fo19sm13734654wic.1.2014.08.28.04.13.24 for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 28 Aug 2014 04:13:25 -0700 (PDT)
+Date: Thu, 28 Aug 2014 12:13:23 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20140828111323.GI26741@stefanha-thinkpad.redhat.com>
+References: <53F704BE.6000407@mrs.ro>
+ <53F9AF4D.10300@msgid.tls.msk.ru>
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RESEND v2 0/3] Fix some memory
- leaks about query memdev
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="Li7ckgedzMh1NgdW"
+Content-Disposition: inline
+In-Reply-To: <53F9AF4D.10300@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::233
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Juan Quintela <quintela@redhat.com>,
+	Valentin Manea <qemu@mrs.ro>, qemu-devel <qemu-devel@nongnu.org>,
+	qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	Wenchao Xia <xiawenc@linux.vnet.ibm.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] IDE: MMIO IDE device
+ control should be little endian
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,47 +64,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Aug 2014 01:17:38 -0000
+X-List-Received-Date: Thu, 28 Aug 2014 11:13:39 -0000
 
-cGluZyA/CgpPbiBNb24sIDIwMTQtMDgtMTggYXQgMTQ6NDYgKzA4MDAsIENoZW4gRmFuIHdyb3Rl
-OiAKPiB3aGVuIHVzaW5nIHZhbGdyaW5kIHRvIHRlc3QgdGhlIGNvbW1hbmQgInF1ZXJ5IG1lbWRl
-diIsIEkgaGFkCj4gZm91bmQgc29tZSBtZW1vcnkgbGVha3MuIHRoZSB0ZXN0IHJlc3VsdDoKPiAK
-PiA9PTEzODAyPT0gNCBieXRlcyBpbiAxIGJsb2NrcyBhcmUgZGVmaW5pdGVseSBsb3N0IGluIGxv
-c3MgcmVjb3JkIDEyNSBvZiA4LDUwOAo+ID09MTM4MDI9PSAgICBhdCAweDRBMDg5MzQ6IG1hbGxv
-YyAodmdfcmVwbGFjZV9tYWxsb2MuYzoyOTEpCj4gPT0xMzgwMj09ICAgIGJ5IDB4NEEwOEFBODog
-cmVhbGxvYyAodmdfcmVwbGFjZV9tYWxsb2MuYzo2ODcpCj4gPT0xMzgwMj09ICAgIGJ5IDB4NjRD
-NTczNjogZ19yZWFsbG9jIChpbiAvdXNyL2xpYjY0L2xpYmdsaWItMi4wLnNvLjAuMzQwMC4yKQo+
-ID09MTM4MDI9PSAgICBieSAweDY0REUyMjY6ID8/PyAoaW4gL3Vzci9saWI2NC9saWJnbGliLTIu
-MC5zby4wLjM0MDAuMikKPiA9PTEzODAyPT0gICAgYnkgMHg2NERFMjc5OiBnX3N0cmluZ19zaXpl
-ZF9uZXcgKGluIC91c3IvbGliNjQvbGliZ2xpYi0yLjAuc28uMC4zNDAwLjIpCj4gPT0xMzgwMj09
-ICAgIGJ5IDB4NDdDRkJCOiBzdHJpbmdfb3V0cHV0X3Zpc2l0b3JfbmV3IChzdHJpbmctb3V0cHV0
-LXZpc2l0b3IuYzozNDEpCj4gPT0xMzgwMj09ICAgIGJ5IDB4M0Y0NTZGOiBvYmplY3RfcHJvcGVy
-dHlfZ2V0X3VpbnQxNkxpc3QgKG9iamVjdC5jOjk3MCkKPiA9PTEzODAyPT0gICAgYnkgMHgxRTg3
-NjQ6IHF1ZXJ5X21lbWRldiAobnVtYS5jOjM2MSkKPiA9PTEzODAyPT0gICAgYnkgMHgzRjMyNDg6
-IG9iamVjdF9jaGlsZF9mb3JlYWNoIChvYmplY3QuYzo2ODYpCj4gPT0xMzgwMj09ICAgIGJ5IDB4
-MUU5MTQxOiBxbXBfcXVlcnlfbWVtZGV2IChudW1hLmM6Mzg5KQo+ID09MTM4MDI9PSAgICBieSAw
-eDJENzlBMDogcW1wX21hcnNoYWxfaW5wdXRfcXVlcnlfbWVtZGV2IChxbXAtbWFyc2hhbC5jOjUw
-NTcpCj4gPT0xMzgwMj09ICAgIGJ5IDB4MUREN0Q3OiBoYW5kbGVfcW1wX2NvbW1hbmQgKG1vbml0
-b3IuYzo1MDM4KQo+IAo+ID09MTUwNDY9PSA0OCAoMTYgZGlyZWN0LCAzMiBpbmRpcmVjdCkgYnl0
-ZXMgaW4gMSBibG9ja3MgYXJlIGRlZmluaXRlbHkgbG9zdCBpbiBsb3NzIHJlY29yZCA0LDcyMiBv
-ZiA4LDU0OQo+ID09MTUwNDY9PSAgICBhdCAweDRBMDg5MzQ6IG1hbGxvYyAodmdfcmVwbGFjZV9t
-YWxsb2MuYzoyOTEpCj4gPT0xNTA0Nj09ICAgIGJ5IDB4NjRDNTQxRDogPz8/IChpbiAvdXNyL2xp
-YjY0L2xpYmdsaWItMi4wLnNvLjAuMzQwMC4yKQo+ID09MTUwNDY9PSAgICBieSAweDY0QzU2RTY6
-IGdfbWFsbG9jMCAoaW4gL3Vzci9saWI2NC9saWJnbGliLTIuMC5zby4wLjM0MDAuMikKPiA9PTE1
-MDQ2PT0gICAgYnkgMHgxRTg2OEM6IHF1ZXJ5X21lbWRldiAobnVtYS5jOjMyNSkKPiA9PTE1MDQ2
-PT0gICAgYnkgMHgzRjMyNTg6IG9iamVjdF9jaGlsZF9mb3JlYWNoIChvYmplY3QuYzo2ODYpCj4g
-PT0xNTA0Nj09ICAgIGJ5IDB4MUU5MTQxOiBxbXBfcXVlcnlfbWVtZGV2IChudW1hLmM6Mzg5KQo+
-ID09MTUwNDY9PSAgICBieSAweDJEREZGMzogaG1wX2luZm9fbWVtZGV2IChobXAuYzoxNjg3KQo+
-ID09MTUwNDY9PSAgICBieSAweDFFNEIwODogaGFuZGxlX3VzZXJfY29tbWFuZCAobW9uaXRvci5j
-OjQxMTkpCj4gPT0xNTA0Nj09ICAgIGJ5IDB4MUU0RTdBOiBtb25pdG9yX2NvbW1hbmRfY2IgKG1v
-bml0b3IuYzo1MTU2KQo+ID09MTUwNDY9PSAgICBieSAweDQ5NjA1NjogcmVhZGxpbmVfaGFuZGxl
-X2J5dGUgKHJlYWRsaW5lLmM6MzkxKQo+ID09MTUwNDY9PSAgICBieSAweDFFNEJDRTogbW9uaXRv
-cl9yZWFkIChtb25pdG9yLmM6NTEzOSkKPiA9PTE1MDQ2PT0gICAgYnkgMHgyQkNERUY6IGZkX2No
-cl9yZWFkIChxZW11LWNoYXIuYzoyMTMpCj4gCj4gCj4gQ2hlbiBGYW4gKDMpOgo+ICAgcXVlcnkt
-bWVtZGV2OiBmaXggcG90ZW50aWFsIG1lbW9yeSBsZWFrcwo+ICAgcW9tL29iamVjdC5jOiBmaXgg
-c3RyaW5nX291dHB1dF9nZXRfc3RyaW5nKCkgbWVtb3J5IGxlYWsKPiAgIGhtcDogZml4IE1lbWRl
-dkxpc3QgbWVtb3J5IGxlYWsKPiAKPiAgaG1wLmMgICAgICAgIHwgIDggKysrKysrLS0KPiAgbnVt
-YS5jICAgICAgIHwgMTUgKysrKysrKy0tLS0tLS0tCj4gIHFvbS9vYmplY3QuYyB8IDEyICsrKysr
-KysrKystLQo+ICAzIGZpbGVzIGNoYW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDEyIGRlbGV0aW9u
-cygtKQo+IAoK
+
+--Li7ckgedzMh1NgdW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Aug 24, 2014 at 01:24:29PM +0400, Michael Tokarev wrote:
+> 22.08.2014 12:52, Valentin Manea wrote:
+> > Set the IDE MMIO memory type to little endian. The ATA specs identify
+> > words part of the control commands encoded as little endian.
+> > While this has no impact on little endian systems, it's required for big
+> > endian systems(eg OpenRisc).
+>=20
+> While the patch itself is simple, I'm not sure it is "trivial enough".
+> And you didn't Cc neither qemu-devel@ nor the IDE subsystem "odd fixer"
+> maintainers (kwolf@ and stefanha@).  I'm not applying this for now to
+> trivial tree.
+
+Hi Valentin,
+Please resend the patch to qemu-devel@nongnu.org and CC Kevin Wolf
+<kwolf@redhat.com> and Stefan Hajnoczi <stefanha@redhat.com>.
+
+All patches must go through the mailing list so the community has a
+chance to review and comment before a committer applies them.
+
+Thanks,
+Stefan
+
+--Li7ckgedzMh1NgdW
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJT/w7TAAoJEJykq7OBq3PI7e8H/3xDbXqPgfLSqdIjwY62JZON
+qphiLpnlNoxRky5+CgqdQSBq8YrgDWVzm2dhDPIOFazx/Gp5kF4IzPb/hASKemWD
+t90dKl8dCpoRa/bQTGYv6bTJp7v9UDjC+iI4ggaWmAnoQp9FcwUlVXLMXseJu6mY
+/iXphItLAdeb3LUKauLxbsr+nhfN/bmB5oo82lZ2h3foIYPSu+ek5IZS7/LKRx0c
+PUpYoTh/b563zoM/MsJizG2rTQ9OaP2/Qo1gO0lUyUqajuaoCiZlBVNIvzjZxuwB
+P3ZMdGvpLdcy6FVNCNhBPVMdeC3JFu0y2kv/9Gyk+hIRdapQijyWpgp/gUVOGDs=
+=yE+2
+-----END PGP SIGNATURE-----
+
+--Li7ckgedzMh1NgdW--
 
