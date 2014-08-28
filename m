@@ -1,55 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XMyg1-0001nK-ON
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Aug 2014 08:19:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38182)
+	id 1XMzYG-00021w-HG
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Aug 2014 09:15:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49066)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1XMyft-0001eJ-Ue
-	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 08:19:39 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1XMzY9-000206-4Y
+	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 09:15:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1XMyfn-0000W6-VE
-	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 08:19:33 -0400
-Received: from mail-wg0-x22c.google.com ([2a00:1450:400c:c00::22c]:63503)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1XMzY3-0001iM-Iv
+	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 09:15:37 -0400
+Received: from mail-la0-f54.google.com ([209.85.215.54]:59206)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1XMyfb-0000T5-2l; Thu, 28 Aug 2014 08:19:15 -0400
-Received: by mail-wg0-f44.google.com with SMTP id m15so660148wgh.15
-	for <multiple recipients>; Thu, 28 Aug 2014 05:19:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=hGd8o6ySUf4jXxgZL28+niRvnzppGqrDMir05ERSXSE=;
-	b=c/Q/6UOfEt6t2XqWRnrhoSXDT+dCQ3DsesM95ErwlaER3R9MLbH9qpW2xUUBSdSMtX
-	q40pxKdGOEcRudLO3YgSykB6Fi+FS+JseLgS+Zs5Rjvgcj9ug+n6gjTiOi46YDE6nrcI
-	jcnyKGw+vS0QTQnMPc7/ZlmihRIzaV2HvdHsCANXIUPxb8GnLSf4I4TCxjaXNdBaHPEB
-	NigrorUH1VqLKiy/OpLvq6PJrjFaRtw/Dj8BcI1P4Cyefa8hHAtRu744AfDCjVoEPWWk
-	PR9JenMvFOY+sKtdkNKy5nTrat6ebveTEi/I1UoH7q/er8FTciI5sdOgKhyv6IUNc4nW
-	GdOA==
-X-Received: by 10.180.86.1 with SMTP id l1mr5590485wiz.62.1409228354220;
-	Thu, 28 Aug 2014 05:19:14 -0700 (PDT)
-Received: from localhost (44.175.90.146.dyn.plus.net. [146.90.175.44])
-	by mx.google.com with ESMTPSA id ew1sm9507464wjb.31.2014.08.28.05.19.12
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 28 Aug 2014 05:19:13 -0700 (PDT)
-Date: Thu, 28 Aug 2014 13:19:11 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Dmitry Fleytman <dmitry@daynix.com>
-Message-ID: <20140828121911.GM26741@stefanha-thinkpad.redhat.com>
-References: <1409119123-15445-1-git-send-email-dmitry@daynix.com>
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1XMzY3-0001iB-Cr
+	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 09:15:31 -0400
+Received: by mail-la0-f54.google.com with SMTP id b17so899918lan.13
+	for <qemu-trivial@nongnu.org>; Thu, 28 Aug 2014 06:15:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=zwOpBCx8Q9LpFLbdi1T68Pmbd7WKfMC+SPzn5XLdBxY=;
+	b=jZUzWJNN6J07Q2ZAJPpl4E4l/J6WrMc25+3o0zT9kzwl9zlYXupfcB+RBfFG/AejY2
+	lYEe0GdLwHYL4VH52F4PIxia99wPynMOsNOWgIbW7W4NSr1AN9S/KBPrjh0HmuO0SjWl
+	+Um4FUG7RIu4B8PwzPLYDUDkaFIc8MXvvmY1U2QMf27A7lAR5H7c3ZmFmQHTC3ROlI6l
+	JcWEXHUnLmuK8KGdz21UsT7L2A5zJvJVFMDtZLPU8SQRdaZxVBOOiX4FEjlgz4FmJPk8
+	dtgU6cUkDr6yIn/FmDXKOqEGhKq4kw8b1mYBcvKUCqNvTfr9TGpA7bhqEd6MzZCQ95oY
+	T50w==
+X-Gm-Message-State: ALoCoQn8EgXWvfNK9of8b7JbjKecOV7mNTsi/dTPMMWc+HV/O/3MTCO4e7ggc1fcSpLMdNVgPqqc
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="wAI/bQb0EMvlZCHl"
-Content-Disposition: inline
-In-Reply-To: <1409119123-15445-1-git-send-email-dmitry@daynix.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c00::22c
-Cc: qemu-trivial@nongnu.org, Yan Vugenfirer <yan@daynix.com>,
-	qemu-devel@nongnu.org, Anthony Liguori <anthony@codemonkey.ws>,
+X-Received: by 10.152.45.42 with SMTP id j10mr4248265lam.13.1409231725982;
+	Thu, 28 Aug 2014 06:15:25 -0700 (PDT)
+Sender: peter.crosthwaite@petalogix.com
+Received: by 10.25.148.143 with HTTP; Thu, 28 Aug 2014 06:15:25 -0700 (PDT)
+In-Reply-To: <53FF145E.4040004@huawei.com>
+References: <1409035084-6740-1-git-send-email-john.liuli@huawei.com>
+	<53FF145E.4040004@huawei.com>
+Date: Thu, 28 Aug 2014 23:15:25 +1000
+X-Google-Sender-Auth: bpJ35afHK5eBWdqzK_wxfdFIHf4
+Message-ID: <CAEgOgz5CihZHeVPdGZEfz4bTaB7Eyhs2wnoKdUFO11bvxGTjKg@mail.gmail.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: Li Liu <john.liuli@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.54
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: Add VMWare
-	devices maintainer
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 1/2] device_tree.c:
+ redirect load_device_tree err message to stderr
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,35 +59,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Aug 2014 12:19:40 -0000
+X-List-Received-Date: Thu, 28 Aug 2014 13:15:41 -0000
 
+Hi Li,
 
---wAI/bQb0EMvlZCHl
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Thu, Aug 28, 2014 at 9:37 PM, Li Liu <john.liuli@huawei.com> wrote:
+> Could this patchset apply to -trivial, thank you!
+>
 
-On Wed, Aug 27, 2014 at 08:58:43AM +0300, Dmitry Fleytman wrote:
-> Signed-off-by: Dmitry Fleytman <dmitry@daynix.com>
-> ---
->  MAINTAINERS | 6 ++++++
->  1 file changed, 6 insertions(+)
+Pings should generally only be sent after a week or so. My personal
+rule is 7 calendar days from the original send before pinging.
+Maintainers will often silently take short periods of time off-list
+either for work or vacation.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Regards,
+Peter
 
---wAI/bQb0EMvlZCHl
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJT/x4/AAoJEJykq7OBq3PIQ+MIAK/f4nWdSt3PF/eAALBKxo9P
-nW8oxvX/uBGmnLHZ/LiBwQuaJRh9YLYAnkE1CdEZPtFbwGnm+ySANe/omQAfJ+Fy
-tg618BO4q+SRqeiJDgxUUiW9H6gYy6zWNNapZlp/P1oPkrttf9KmcfMuHnis+7O5
-KDTF1/mZY/3FeCxpF0ob6bX/xazq32oKtF7L0M5fyCgoIK4sBqaH/vBJXibtYfp5
-ABMVWVnvlJ5OrBnQVxPykmebRHQ2Q/eyuOmmjKn4QoZEQIbWnr2EcsoPqI7WunW+
-VGI9SMc48c4PQNBuUvpxRKNXhe8Se1om9R0MMEwDcX9Fk/Ki/UbxY1gxX5MBrVk=
-=QbX/
------END PGP SIGNATURE-----
-
---wAI/bQb0EMvlZCHl--
+> Best regards,
+> Li.
+>
+> On 2014/8/26 14:38, john.liuli wrote:
+>> From: Li Liu <john.liuli@huawei.com>
+>>
+>> Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+>> Signed-off-by: Li Liu <john.liuli@huawei.com>
+>> ---
+>> changes v1 -> v2:
+>> 1) fix indent issue as peter suggested.
+>> 2) dump all err mesages with error_report.
+>>
+>> ---
+>>  device_tree.c |   15 ++++++++-------
+>>  1 file changed, 8 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/device_tree.c b/device_tree.c
+>> index ca83504..9d47195 100644
+>> --- a/device_tree.c
+>> +++ b/device_tree.c
+>> @@ -20,6 +20,7 @@
+>>
+>>  #include "config.h"
+>>  #include "qemu-common.h"
+>> +#include "qemu/error-report.h"
+>>  #include "sysemu/device_tree.h"
+>>  #include "sysemu/sysemu.h"
+>>  #include "hw/loader.h"
+>> @@ -79,8 +80,8 @@ void *load_device_tree(const char *filename_path, int *sizep)
+>>      *sizep = 0;
+>>      dt_size = get_image_size(filename_path);
+>>      if (dt_size < 0) {
+>> -        printf("Unable to get size of device tree file '%s'\n",
+>> -            filename_path);
+>> +        error_report("Unable to get size of device tree file '%s'",
+>> +                     filename_path);
+>>          goto fail;
+>>      }
+>>
+>> @@ -92,21 +93,21 @@ void *load_device_tree(const char *filename_path, int *sizep)
+>>
+>>      dt_file_load_size = load_image(filename_path, fdt);
+>>      if (dt_file_load_size < 0) {
+>> -        printf("Unable to open device tree file '%s'\n",
+>> -               filename_path);
+>> +        error_report("Unable to open device tree file '%s'",
+>> +                     filename_path);
+>>          goto fail;
+>>      }
+>>
+>>      ret = fdt_open_into(fdt, fdt, dt_size);
+>>      if (ret) {
+>> -        printf("Unable to copy device tree in memory\n");
+>> +        error_report("Unable to copy device tree in memory");
+>>          goto fail;
+>>      }
+>>
+>>      /* Check sanity of device tree */
+>>      if (fdt_check_header(fdt)) {
+>> -        printf ("Device tree file loaded into memory is invalid: %s\n",
+>> -            filename_path);
+>> +        error_report("Device tree file loaded into memory is invalid: %s",
+>> +                     filename_path);
+>>          goto fail;
+>>      }
+>>      *sizep = dt_size;
+>>
+>
+>
 
