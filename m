@@ -1,58 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XMxe9-0004b3-Gs
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Aug 2014 07:13:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55052)
+	id 1XMy1a-0000DC-Go
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Aug 2014 07:37:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59081)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1XMxe1-0004Zt-CO
-	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 07:13:39 -0400
+	(envelope-from <john.liuli@huawei.com>) id 1XMy1U-00005k-QZ
+	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 07:37:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1XMxdv-0005ug-A5
-	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 07:13:33 -0400
-Received: from mail-wi0-x233.google.com ([2a00:1450:400c:c05::233]:58525)
+	(envelope-from <john.liuli@huawei.com>) id 1XMy1Q-00052K-As
+	for qemu-trivial@nongnu.org; Thu, 28 Aug 2014 07:37:48 -0400
+Received: from szxga01-in.huawei.com ([119.145.14.64]:12476)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1XMxdv-0005uW-2l; Thu, 28 Aug 2014 07:13:27 -0400
-Received: by mail-wi0-f179.google.com with SMTP id q5so669660wiv.12
-	for <multiple recipients>; Thu, 28 Aug 2014 04:13:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=HqG8hrSRVjxp0Ln/jg6QznRjkGpLeNw4QBAti1siM7c=;
-	b=ADZlondDETIgCjoT4vcacHuBdmJJWvl3s8UdHAEYYPCZONny0IJAQUH2Ion5z95WAS
-	k2ghO0ZBPoKl7I7V9nJLZWqzgbnenj+TTuWtzzoJVLxFOUAInYGw+lirD6FezzcW2/V2
-	fin/Iml5uD6WCOKdT38NDaIk7uBMZV8k6JvDrOqL8IOxl57hpaqki94LbsCNRNx+zTE2
-	wb+AsUn1IqrRcwMs8kz/XQsyKpf0t2Yp+mJl5QvpZRtqUtkuSsbcvZEzUVUq0g3a4yVG
-	BVVcXg9L/mrOEotcGt8SXWyherJKXXCGSMz3c3kaUw6l6KzfrCxqMnDatwQS23yh1HYf
-	0T8g==
-X-Received: by 10.180.109.169 with SMTP id ht9mr997760wib.1.1409224406182;
-	Thu, 28 Aug 2014 04:13:26 -0700 (PDT)
-Received: from localhost (44.175.90.146.dyn.plus.net. [146.90.175.44])
-	by mx.google.com with ESMTPSA id
-	fo19sm13734654wic.1.2014.08.28.04.13.24 for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 28 Aug 2014 04:13:25 -0700 (PDT)
-Date: Thu, 28 Aug 2014 12:13:23 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20140828111323.GI26741@stefanha-thinkpad.redhat.com>
-References: <53F704BE.6000407@mrs.ro>
- <53F9AF4D.10300@msgid.tls.msk.ru>
+	(envelope-from <john.liuli@huawei.com>)
+	id 1XMy1G-0004yg-Gi; Thu, 28 Aug 2014 07:37:35 -0400
+Received: from 172.24.2.119 (EHLO szxeml418-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CAX70359; Thu, 28 Aug 2014 19:37:08 +0800 (CST)
+Received: from [127.0.0.1] (10.142.143.9) by szxeml418-hub.china.huawei.com
+	(10.82.67.157) with Microsoft SMTP Server id 14.3.158.1;
+	Thu, 28 Aug 2014 19:37:05 +0800
+Message-ID: <53FF145E.4040004@huawei.com>
+Date: Thu, 28 Aug 2014 19:37:02 +0800
+From: Li Liu <john.liuli@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="Li7ckgedzMh1NgdW"
-Content-Disposition: inline
-In-Reply-To: <53F9AF4D.10300@msgid.tls.msk.ru>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::233
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Juan Quintela <quintela@redhat.com>,
-	Valentin Manea <qemu@mrs.ro>, qemu-devel <qemu-devel@nongnu.org>,
-	qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
-	Wenchao Xia <xiawenc@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] IDE: MMIO IDE device
- control should be little endian
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1409035084-6740-1-git-send-email-john.liuli@huawei.com>
+In-Reply-To: <1409035084-6740-1-git-send-email-john.liuli@huawei.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.143.9]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.64
+Cc: qemu-trivial@nongnu.org, peter.crosthwaite@xilinx.com,
+	qemu-devel@nongnu.org, armbru@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v2 1/2] device_tree.c: redirect
+ load_device_tree err message to stderr
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,50 +49,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Aug 2014 11:13:39 -0000
+X-List-Received-Date: Thu, 28 Aug 2014 11:37:53 -0000
 
+Could this patchset apply to -trivial, thank you!
 
---Li7ckgedzMh1NgdW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Best regards,
+Li.
 
-On Sun, Aug 24, 2014 at 01:24:29PM +0400, Michael Tokarev wrote:
-> 22.08.2014 12:52, Valentin Manea wrote:
-> > Set the IDE MMIO memory type to little endian. The ATA specs identify
-> > words part of the control commands encoded as little endian.
-> > While this has no impact on little endian systems, it's required for big
-> > endian systems(eg OpenRisc).
->=20
-> While the patch itself is simple, I'm not sure it is "trivial enough".
-> And you didn't Cc neither qemu-devel@ nor the IDE subsystem "odd fixer"
-> maintainers (kwolf@ and stefanha@).  I'm not applying this for now to
-> trivial tree.
+On 2014/8/26 14:38, john.liuli wrote:
+> From: Li Liu <john.liuli@huawei.com>
+> 
+> Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+> Signed-off-by: Li Liu <john.liuli@huawei.com>
+> ---
+> changes v1 -> v2:
+> 1) fix indent issue as peter suggested.
+> 2) dump all err mesages with error_report. 
+> 
+> ---
+>  device_tree.c |   15 ++++++++-------
+>  1 file changed, 8 insertions(+), 7 deletions(-)
+> 
+> diff --git a/device_tree.c b/device_tree.c
+> index ca83504..9d47195 100644
+> --- a/device_tree.c
+> +++ b/device_tree.c
+> @@ -20,6 +20,7 @@
+>  
+>  #include "config.h"
+>  #include "qemu-common.h"
+> +#include "qemu/error-report.h"
+>  #include "sysemu/device_tree.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/loader.h"
+> @@ -79,8 +80,8 @@ void *load_device_tree(const char *filename_path, int *sizep)
+>      *sizep = 0;
+>      dt_size = get_image_size(filename_path);
+>      if (dt_size < 0) {
+> -        printf("Unable to get size of device tree file '%s'\n",
+> -            filename_path);
+> +        error_report("Unable to get size of device tree file '%s'",
+> +                     filename_path);
+>          goto fail;
+>      }
+>  
+> @@ -92,21 +93,21 @@ void *load_device_tree(const char *filename_path, int *sizep)
+>  
+>      dt_file_load_size = load_image(filename_path, fdt);
+>      if (dt_file_load_size < 0) {
+> -        printf("Unable to open device tree file '%s'\n",
+> -               filename_path);
+> +        error_report("Unable to open device tree file '%s'",
+> +                     filename_path);
+>          goto fail;
+>      }
+>  
+>      ret = fdt_open_into(fdt, fdt, dt_size);
+>      if (ret) {
+> -        printf("Unable to copy device tree in memory\n");
+> +        error_report("Unable to copy device tree in memory");
+>          goto fail;
+>      }
+>  
+>      /* Check sanity of device tree */
+>      if (fdt_check_header(fdt)) {
+> -        printf ("Device tree file loaded into memory is invalid: %s\n",
+> -            filename_path);
+> +        error_report("Device tree file loaded into memory is invalid: %s",
+> +                     filename_path);
+>          goto fail;
+>      }
+>      *sizep = dt_size;
+> 
 
-Hi Valentin,
-Please resend the patch to qemu-devel@nongnu.org and CC Kevin Wolf
-<kwolf@redhat.com> and Stefan Hajnoczi <stefanha@redhat.com>.
-
-All patches must go through the mailing list so the community has a
-chance to review and comment before a committer applies them.
-
-Thanks,
-Stefan
-
---Li7ckgedzMh1NgdW
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJT/w7TAAoJEJykq7OBq3PI7e8H/3xDbXqPgfLSqdIjwY62JZON
-qphiLpnlNoxRky5+CgqdQSBq8YrgDWVzm2dhDPIOFazx/Gp5kF4IzPb/hASKemWD
-t90dKl8dCpoRa/bQTGYv6bTJp7v9UDjC+iI4ggaWmAnoQp9FcwUlVXLMXseJu6mY
-/iXphItLAdeb3LUKauLxbsr+nhfN/bmB5oo82lZ2h3foIYPSu+ek5IZS7/LKRx0c
-PUpYoTh/b563zoM/MsJizG2rTQ9OaP2/Qo1gO0lUyUqajuaoCiZlBVNIvzjZxuwB
-P3ZMdGvpLdcy6FVNCNhBPVMdeC3JFu0y2kv/9Gyk+hIRdapQijyWpgp/gUVOGDs=
-=yE+2
------END PGP SIGNATURE-----
-
---Li7ckgedzMh1NgdW--
 
