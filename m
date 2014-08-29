@@ -1,39 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XNP4D-0007If-Pj
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Aug 2014 12:30:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46613)
+	id 1XNPoI-0003W4-SY
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Aug 2014 13:18:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60842)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XNP46-00078y-Qe
-	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 12:30:24 -0400
+	(envelope-from <dmitry@daynix.com>) id 1XNPoB-0003IN-EK
+	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 13:18:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XNP40-0002f9-Is
-	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 12:30:18 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:43845)
+	(envelope-from <dmitry@daynix.com>) id 1XNPo0-0001mJ-25
+	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 13:17:55 -0400
+Received: from mail-we0-f177.google.com ([74.125.82.177]:63822)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XNP3o-0002CC-2j; Fri, 29 Aug 2014 12:30:00 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 628F24583B;
-	Fri, 29 Aug 2014 20:29:59 +0400 (MSK)
-Message-ID: <5400AA87.5000904@msgid.tls.msk.ru>
-Date: Fri, 29 Aug 2014 20:29:59 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.7.0
-MIME-Version: 1.0
-To: Chen Fan <chen.fan.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org, 
-	qemu-trivial@nongnu.org
-References: <cover.1408344055.git.chen.fan.fnst@cn.fujitsu.com>
-In-Reply-To: <cover.1408344055.git.chen.fan.fnst@cn.fujitsu.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [RESEND v2 0/3] Fix some memory leaks about
- query memdev
+	(envelope-from <dmitry@daynix.com>) id 1XNPnz-0001lx-Q7
+	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 13:17:43 -0400
+Received: by mail-we0-f177.google.com with SMTP id u56so2470298wes.8
+	for <qemu-trivial@nongnu.org>; Fri, 29 Aug 2014 10:17:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:content-type:mime-version:subject:from
+	:in-reply-to:date:cc:content-transfer-encoding:message-id:references
+	:to; bh=tS3m++AhD6OZSNkVXmnUPERDRbvbkwszQnRhyD06wGQ=;
+	b=mBiSA+e3xk5fImIn0BW91WsiQZ2VUPpE59xWCT/mPuF1Vl4YhvjZXbITNJ5yFXTUHc
+	RVVeMTITfQD1pLqLg1EvzMQDXDWdmiY1Uv35CbjXqzNNj2mjsua602neZ253KyvsARb4
+	UMLU0fuARWpexNe+5jJiDu+QoQ2g5rGolFABnxabzsRYt8pxlDrDCDjJOo5qepqTOUyQ
+	u8p1qgnccgslCnqnSYLPgkUWILPxQlfg49gyaav65Colc8FQjarMkICE0gVC6YUXZXCA
+	CPToS3UE5tNMHmHI2LsdPLtyT6iQY3Kp1ClJPD4tRdf47FRhYpkAAolgBIJqT5lG1tiT
+	dbUQ==
+X-Gm-Message-State: ALoCoQnQCbKxGwW/zNfEw5+ulZO/lOG3gp6FyefJ/8g5CkcTWpxbyJotvmAyiE/zRQ6MAmsROvay
+X-Received: by 10.180.75.17 with SMTP id y17mr5188031wiv.3.1409332662711;
+	Fri, 29 Aug 2014 10:17:42 -0700 (PDT)
+Received: from [10.142.13.247] ([37.26.147.247])
+	by mx.google.com with ESMTPSA id h3sm1337793wjz.24.2014.08.29.10.17.41
+	for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Fri, 29 Aug 2014 10:17:41 -0700 (PDT)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (1.0)
+From: Dmitry Fleytman <dmitry@daynix.com>
+X-Mailer: iPhone Mail (11D257)
+In-Reply-To: <5400A944.4050603@msgid.tls.msk.ru>
+Date: Fri, 29 Aug 2014 20:17:39 +0300
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <2D2DF368-5E51-48A4-BD00-30AF2DC4929C@daynix.com>
+References: <1409119123-15445-1-git-send-email-dmitry@daynix.com>
+	<5400A944.4050603@msgid.tls.msk.ru>
+To: Michael Tokarev <mjt@tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.82.177
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Yan Vugenfirer <yan@daynix.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Anthony Liguori <anthony@codemonkey.ws>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add VMWare devices
+	maintainer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,19 +66,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Aug 2014 16:30:25 -0000
+X-List-Received-Date: Fri, 29 Aug 2014 17:18:01 -0000
 
-18.08.2014 10:46, Chen Fan wrote:
-> when using valgrind to test the command "query memdev", I had
-> found some memory leaks. the test result:
-...
 
-Applied all 3 to -trivial.  Usually these are not really trivial.
-Please note that your 2nd patch - "qom/object.c: fix string_output_get_string()
-memory leak" - also touches hmp.c (which has a maintainer), but you
-didn't mention this in patch description.  I've added it.
 
-Thanks,
+> On 29 =D7=91=D7=90=D7=95=D7=92 2014, at 19:24, Michael Tokarev <mjt@tls.ms=
+k.ru> wrote:
+>=20
+> Applied to -trivial, dunno if it'll be picked up by anyone else ;)
 
-/mjt
+This patch is pretty trivial indeed ;)
+
+>=20
+> Thank you!
+>=20
+> /mjt
 
