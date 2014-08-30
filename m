@@ -1,60 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XNPoI-0003W4-SY
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Aug 2014 13:18:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60842)
+	id 1XNZTy-0000g1-0s
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Aug 2014 23:37:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58260)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XNPoB-0003IN-EK
-	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 13:18:01 -0400
+	(envelope-from <john.liuli@huawei.com>) id 1XNZTr-0000eu-Bt
+	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 23:37:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XNPo0-0001mJ-25
-	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 13:17:55 -0400
-Received: from mail-we0-f177.google.com ([74.125.82.177]:63822)
+	(envelope-from <john.liuli@huawei.com>) id 1XNZTm-0002h7-GY
+	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 23:37:35 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:32520)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1XNPnz-0001lx-Q7
-	for qemu-trivial@nongnu.org; Fri, 29 Aug 2014 13:17:43 -0400
-Received: by mail-we0-f177.google.com with SMTP id u56so2470298wes.8
-	for <qemu-trivial@nongnu.org>; Fri, 29 Aug 2014 10:17:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:content-type:mime-version:subject:from
-	:in-reply-to:date:cc:content-transfer-encoding:message-id:references
-	:to; bh=tS3m++AhD6OZSNkVXmnUPERDRbvbkwszQnRhyD06wGQ=;
-	b=mBiSA+e3xk5fImIn0BW91WsiQZ2VUPpE59xWCT/mPuF1Vl4YhvjZXbITNJ5yFXTUHc
-	RVVeMTITfQD1pLqLg1EvzMQDXDWdmiY1Uv35CbjXqzNNj2mjsua602neZ253KyvsARb4
-	UMLU0fuARWpexNe+5jJiDu+QoQ2g5rGolFABnxabzsRYt8pxlDrDCDjJOo5qepqTOUyQ
-	u8p1qgnccgslCnqnSYLPgkUWILPxQlfg49gyaav65Colc8FQjarMkICE0gVC6YUXZXCA
-	CPToS3UE5tNMHmHI2LsdPLtyT6iQY3Kp1ClJPD4tRdf47FRhYpkAAolgBIJqT5lG1tiT
-	dbUQ==
-X-Gm-Message-State: ALoCoQnQCbKxGwW/zNfEw5+ulZO/lOG3gp6FyefJ/8g5CkcTWpxbyJotvmAyiE/zRQ6MAmsROvay
-X-Received: by 10.180.75.17 with SMTP id y17mr5188031wiv.3.1409332662711;
-	Fri, 29 Aug 2014 10:17:42 -0700 (PDT)
-Received: from [10.142.13.247] ([37.26.147.247])
-	by mx.google.com with ESMTPSA id h3sm1337793wjz.24.2014.08.29.10.17.41
-	for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Fri, 29 Aug 2014 10:17:41 -0700 (PDT)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (1.0)
-From: Dmitry Fleytman <dmitry@daynix.com>
-X-Mailer: iPhone Mail (11D257)
-In-Reply-To: <5400A944.4050603@msgid.tls.msk.ru>
-Date: Fri, 29 Aug 2014 20:17:39 +0300
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <2D2DF368-5E51-48A4-BD00-30AF2DC4929C@daynix.com>
-References: <1409119123-15445-1-git-send-email-dmitry@daynix.com>
-	<5400A944.4050603@msgid.tls.msk.ru>
-To: Michael Tokarev <mjt@tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.177
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Yan Vugenfirer <yan@daynix.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Anthony Liguori <anthony@codemonkey.ws>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add VMWare devices
-	maintainer
+	(envelope-from <john.liuli@huawei.com>)
+	id 1XNZTk-0002ep-V1; Fri, 29 Aug 2014 23:37:30 -0400
+Received: from 172.24.2.119 (EHLO szxeml459-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id ATR98995; Sat, 30 Aug 2014 11:37:16 +0800 (CST)
+Received: from localhost (10.142.143.9) by szxeml459-hub.china.huawei.com
+	(10.82.67.202) with Microsoft SMTP Server id 14.3.158.1;
+	Sat, 30 Aug 2014 11:37:09 +0800
+From: "john.liuli" <john.liuli@huawei.com>
+To: <mjt@tls.msk.ru>
+Date: Sat, 30 Aug 2014 11:36:39 +0800
+Message-ID: <1409369799-9028-1-git-send-email-john.liuli@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.142.143.9]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020208.540146ED.0064,ss=1,re=0.000,fgs=0,
+	ip=0.0.0.0, so=2013-05-26 15:14:31,
+	dmn=2011-05-27 18:58:46
+X-Mirapoint-Loop-Id: e2657cc763c7714a72e96d23bfc50acc
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, Li Liu <john.liuli@huawei.com>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] numa: fix qerror_report_err not free issue
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,19 +49,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Aug 2014 17:18:01 -0000
+X-List-Received-Date: Sat, 30 Aug 2014 03:37:40 -0000
+
+From: Li Liu <john.liuli@huawei.com>
+
+All qerror_report_err returned none NULL pointers need to
+be freed, otherwise will cause memory leaking.
+
+Although this place did not cause real memory leaking by exit,
+obviously it's not correct to use qerror_report_err
+without error_free it.
+
+Signed-off-by: Li Liu <john.liuli@huawei.com>
+---
+ numa.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/numa.c b/numa.c
+index c78cec9..0b4ac9b 100644
+--- a/numa.c
++++ b/numa.c
+@@ -298,6 +298,7 @@ void memory_region_allocate_system_memory(MemoryRegion *mr, Object *owner,
+         MemoryRegion *seg = host_memory_backend_get_memory(backend, &local_err);
+         if (local_err) {
+             qerror_report_err(local_err);
++            error_free(local_err);
+             exit(1);
+         }
+ 
+-- 
+1.7.9.5
 
 
-
-> On 29 =D7=91=D7=90=D7=95=D7=92 2014, at 19:24, Michael Tokarev <mjt@tls.ms=
-k.ru> wrote:
->=20
-> Applied to -trivial, dunno if it'll be picked up by anyone else ;)
-
-This patch is pretty trivial indeed ;)
-
->=20
-> Thank you!
->=20
-> /mjt
 
