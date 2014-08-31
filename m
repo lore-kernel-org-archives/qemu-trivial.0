@@ -1,48 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XNc5r-0007hM-Kf
-	for mharc-qemu-trivial@gnu.org; Sat, 30 Aug 2014 02:24:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49989)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <john.liuli@huawei.com>) id 1XNc5l-0007fh-8M
-	for qemu-trivial@nongnu.org; Sat, 30 Aug 2014 02:24:58 -0400
+	id 1XO0Zj-0004Yc-25
+	for mharc-qemu-trivial@gnu.org; Sun, 31 Aug 2014 04:33:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33508)
+	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <qemu@mrs.ro>)
+	id 1XO0Za-0004Nr-J6
+	for qemu-trivial@nongnu.org; Sun, 31 Aug 2014 04:33:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <john.liuli@huawei.com>) id 1XNc5e-0001ft-Se
-	for qemu-trivial@nongnu.org; Sat, 30 Aug 2014 02:24:53 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:61948)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <john.liuli@huawei.com>)
-	id 1XNc5d-0001er-Qt; Sat, 30 Aug 2014 02:24:46 -0400
-Received: from 172.24.2.119 (EHLO szxeml417-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id ATS08744; Sat, 30 Aug 2014 14:24:35 +0800 (CST)
-Received: from [127.0.0.1] (10.142.143.9) by szxeml417-hub.china.huawei.com
-	(10.82.67.156) with Microsoft SMTP Server id 14.3.158.1;
-	Sat, 30 Aug 2014 14:24:32 +0800
-Message-ID: <54016E1C.1090207@huawei.com>
-Date: Sat, 30 Aug 2014 14:24:28 +0800
-From: Li Liu <john.liuli@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <qemu@mrs.ro>) id 1XO0ZU-0007by-C5
+	for qemu-trivial@nongnu.org; Sun, 31 Aug 2014 04:33:18 -0400
+Received: from mrs.ro ([109.74.194.28]:48340)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <qemu@mrs.ro>)
+	id 1XO0ZH-0007ZY-Oy; Sun, 31 Aug 2014 04:32:59 -0400
+Received: from [192.168.1.4] (cs181218058.pp.htv.fi [82.181.218.58])
+	by mrs.ro (Postfix) with ESMTPSA id D80DF6135;
+	Sun, 31 Aug 2014 11:36:10 +0300 (EEST)
+Message-ID: <5402DDB5.40400@mrs.ro>
+Date: Sun, 31 Aug 2014 11:32:53 +0300
+From: Valentin Manea <qemu@mrs.ro>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1409369799-9028-1-git-send-email-john.liuli@huawei.com>
-	<54016069.4070209@msgid.tls.msk.ru>
-In-Reply-To: <54016069.4070209@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="ISO-8859-1"
+To: Stefan Hajnoczi <stefanha@gmail.com>, 
+ Michael Tokarev <mjt@tls.msk.ru>
+References: <53F704BE.6000407@mrs.ro> <53F9AF4D.10300@msgid.tls.msk.ru>
+	<20140828111323.GI26741@stefanha-thinkpad.redhat.com>
+In-Reply-To: <20140828111323.GI26741@stefanha-thinkpad.redhat.com>
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.143.9]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020201.54016E24.007F,ss=1,re=0.000,fgs=0,
-	ip=0.0.0.0, so=2013-05-26 15:14:31,
-	dmn=2011-05-27 18:58:46
-X-Mirapoint-Loop-Id: c25d0e64b44c633de058e6e9da38593b
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] numa: fix qerror_report_err not free
-	issue
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 109.74.194.28
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel <qemu-devel@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>,
+	Wenchao Xia <xiawenc@linux.vnet.ibm.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] IDE: MMIO IDE device
+ control should be little endian
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,36 +46,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 30 Aug 2014 06:24:58 -0000
+X-List-Received-Date: Sun, 31 Aug 2014 08:33:25 -0000
 
-
-
-On 2014/8/30 13:26, Michael Tokarev wrote:
-> 30.08.2014 07:36, john.liuli wrote:
->> From: Li Liu <john.liuli@huawei.com>
->>
->> All qerror_report_err returned none NULL pointers need to
->> be freed, otherwise will cause memory leaking.
->>
->> Although this place did not cause real memory leaking by exit,
->> obviously it's not correct to use qerror_report_err
->> without error_free it.
+On 2014-08-28 14:13, Stefan Hajnoczi wrote:
+> Hi Valentin,
+> Please resend the patch to qemu-devel@nongnu.org and CC Kevin Wolf
+> <kwolf@redhat.com> and Stefan Hajnoczi <stefanha@redhat.com>.
 > 
-> I don't thing there's any good reason to free resources like
-> this (freeing memory, closing files, etc) right before exit()
-> (esp. in error path).  The OS will do that for us in one go
-> much faster.
-> 
+> All patches must go through the mailing list so the community has a
+> chance to review and comment before a committer applies them.
 
-Yes, the OS will do that for us. But if someone refer to this code
-to use qerror_report_err, it will give a bad hint. Of cause this
-patch is just a suggestion.
+Hi Stefan,
 
-Best regards
-Li.
+  Thanks for the tips, I have resent the patch.
 
-> /mjt
-> 
-> 
+Thanks,
+Valentin
 
 
