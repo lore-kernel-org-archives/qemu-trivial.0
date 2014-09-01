@@ -1,52 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XOGdN-0000Nj-Oi
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Aug 2014 21:42:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60694)
+	id 1XOMEo-0006OD-MS
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Sep 2014 03:41:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49362)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1XOGdF-0000M0-Nn
-	for qemu-trivial@nongnu.org; Sun, 31 Aug 2014 21:42:16 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XOMEi-0006GB-7I
+	for qemu-trivial@nongnu.org; Mon, 01 Sep 2014 03:41:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1XOGd9-0004Tp-Il
-	for qemu-trivial@nongnu.org; Sun, 31 Aug 2014 21:42:09 -0400
-Received: from [59.151.112.132] (port=10586 helo=heian.cn.fujitsu.com)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XOMEd-0002yH-Dj
+	for qemu-trivial@nongnu.org; Mon, 01 Sep 2014 03:41:12 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:17722)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>)
-	id 1XOGd9-0004Tg-8N; Sun, 31 Aug 2014 21:42:03 -0400
-X-IronPort-AV: E=Sophos;i="5.04,439,1406563200"; d="scan'208";a="35316683"
-Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 01 Sep 2014 09:38:58 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id s811fpwj026952;
-	Mon, 1 Sep 2014 09:41:51 +0800
-Received: from G08CNEXMBPEKD03.g08.fujitsu.local ([10.167.33.86]) by
-	G08CNEXCHPEKD03.g08.fujitsu.local ([10.167.33.85]) with mapi id
-	14.03.0181.006; Mon, 1 Sep 2014 09:41:54 +0800
-From: "chen.fan.fnst@cn.fujitsu.com" <chen.fan.fnst@cn.fujitsu.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Thread-Topic: [Qemu-trivial] [RESEND v2 0/3] Fix some memory leaks about
-	query memdev
-Thread-Index: AQHPxYXqox2XXLgpW0i1bcipJpKQqw==
-Date: Mon, 1 Sep 2014 01:41:54 +0000
-Message-ID: <05953EE18EEC9148BE892F38DF8F8E8E627320@G08CNEXMBPEKD03.g08.fujitsu.local>
-References: <cover.1408344055.git.chen.fan.fnst@cn.fujitsu.com>
-	<5400AA87.5000904@msgid.tls.msk.ru>
-In-Reply-To: <5400AA87.5000904@msgid.tls.msk.ru>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.167.226.78]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1XOMEO-0002nT-5O; Mon, 01 Sep 2014 03:40:52 -0400
+Received: from 172.24.2.119 (EHLO szxeml463-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id BYW41864; Mon, 01 Sep 2014 15:40:40 +0800 (CST)
+Received: from [127.0.0.1] (10.177.22.69) by szxeml463-hub.china.huawei.com
+	(10.82.67.206) with Microsoft SMTP Server id 14.3.158.1; Mon, 1 Sep 2014
+	15:40:28 +0800
+Message-ID: <540422E9.9060001@huawei.com>
+Date: Mon, 1 Sep 2014 15:40:25 +0800
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [RESEND v2 0/3] Fix some memory leaks about
- query memdev
+To: Luiz Capitulino <lcapitulino@redhat.com>
+References: <1409138333-12644-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<20140827091827.4de1dc59@redhat.com> <5400347A.9040105@huawei.com>
+	<20140829085521.788ce268@redhat.com>
+In-Reply-To: <20140829085521.788ce268@redhat.com>
+Content-Type: text/plain; charset="ISO-8859-1"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.22.69]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, luonengjun@huawei.com, lersek@redhat.com,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH] dump: let dump_error printf the error
+	reason
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,16 +51,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Sep 2014 01:42:16 -0000
+X-List-Received-Date: Mon, 01 Sep 2014 07:41:17 -0000
 
-T24gRnJpLCAyMDE0LTA4LTI5IGF0IDIwOjI5ICswNDAwLCBNaWNoYWVsIFRva2FyZXYgd3JvdGU6
-IAo+IDE4LjA4LjIwMTQgMTA6NDYsIENoZW4gRmFuIHdyb3RlOgo+ID4gd2hlbiB1c2luZyB2YWxn
-cmluZCB0byB0ZXN0IHRoZSBjb21tYW5kICJxdWVyeSBtZW1kZXYiLCBJIGhhZAo+ID4gZm91bmQg
-c29tZSBtZW1vcnkgbGVha3MuIHRoZSB0ZXN0IHJlc3VsdDoKPiAuLi4KPiAKPiBBcHBsaWVkIGFs
-bCAzIHRvIC10cml2aWFsLiAgVXN1YWxseSB0aGVzZSBhcmUgbm90IHJlYWxseSB0cml2aWFsLgo+
-IFBsZWFzZSBub3RlIHRoYXQgeW91ciAybmQgcGF0Y2ggLSAicW9tL29iamVjdC5jOiBmaXggc3Ry
-aW5nX291dHB1dF9nZXRfc3RyaW5nKCkKPiBtZW1vcnkgbGVhayIgLSBhbHNvIHRvdWNoZXMgaG1w
-LmMgKHdoaWNoIGhhcyBhIG1haW50YWluZXIpLCBidXQgeW91Cj4gZGlkbid0IG1lbnRpb24gdGhp
-cyBpbiBwYXRjaCBkZXNjcmlwdGlvbi4gIEkndmUgYWRkZWQgaXQuClRoYW5rcywKCkNoZW4KCgo+
-IAo+IFRoYW5rcywKPiAKPiAvbWp0Cgo=
+On 2014/8/29 20:55, Luiz Capitulino wrote:
+> On Fri, 29 Aug 2014 16:06:18 +0800
+> zhanghailiang<zhang.zhanghailiang@huawei.com>  wrote:
+>
+>> On 2014/8/27 21:18, Luiz Capitulino wrote:
+>>> On Wed, 27 Aug 2014 19:18:53 +0800
+>>> zhanghailiang<zhang.zhanghailiang@huawei.com>   wrote:
+>>>
+>>>> The second parameter of dump_error is unused, but one purpose of
+>>>> using this function is to report the error info.
+>>>>
+>>>> Signed-off-by: zhanghailiang<zhang.zhanghailiang@huawei.com>
+>>>> ---
+>>>>    dump.c | 3 +++
+>>>>    1 file changed, 3 insertions(+)
+>>>>
+>>>> diff --git a/dump.c b/dump.c
+>>>> index 71d3e94..0f44e9d 100644
+>>>> --- a/dump.c
+>>>> +++ b/dump.c
+>>>> @@ -83,6 +83,9 @@ static int dump_cleanup(DumpState *s)
+>>>>
+>>>>    static void dump_error(DumpState *s, const char *reason)
+>>>>    {
+>>>> +    if (reason) {
+>>>> +        error_report("%s", reason);
+>>>> +    }
+>>>>        dump_cleanup(s);
+>>>>    }
+>>>>
+>>>
+>>> Good catch, but error_report() will report the error only to the user. This
+>>> is QMP code, so we have to use the Error API.
+>>>
+>>> I think that the best way to solve this is to make dump_error() fill an
+>>> Error object (eg. by calling error_setg()) and then returning it after
+>>> the call to dump_cleanup(). Of course that you will have to change _all_
+>>> code paths calling dump_error() to propagate the error up.
+>>>
+>>> For more information on this, please read docs/writing-qmp-commands.txt.
+>>> You can also take a look at simple commands doing error propagation, like
+>>> qmp_cont() or qmp_block_passwd().
+>>>
+>>> .
+>>>
+>> Hi,
+>>
+>> Thanks for your review.
+>>
+>> Actually, for all paths that call dump_error, at last they will come into a
+>> common path which will call error_setg().
+>>
+>> The call process as below:
+>> qmp_dump_guest_memory
+>> (1)	-->create_kdump_vmcore
+>> 		-->write_start_flat_header
+>> 			-->dump_error
+>> 		-->write_end_flat_header
+>> 			-->dump_error
+>> 		...
+>>           -->error_set(errp, QERR_IO_ERROR)(if create_kdump_vmcore failed)
+>> (2)	-->create_vmcore
+>> 		-->dump_begin
+>> 			-->write_elf64_header
+>> 				-->dump_error
+>> 			-->write_elf64_note
+>> 				-->dump_error
+>> 			...
+>> 		-->dump_iterate
+>> 			-->write_data
+>> 				-->dump_error
+>> 			...
+>> 	-->error_set(errp, QERR_IO_ERROR)(if create_kdump_vmcore failed)
+>>
+>> And a short *IO ERROR* info will be returned to the caller of qmp_dump_guest_memory.
+>>
+>> So, is it OK in dump_error just report the detailed error info to users
+>> (actually, it will be stored in qemu log)? Or should these error info
+>> also returned to the caller?
+>
+> The errors should be propagated up to the caller. This way they can be
+> consumed by QMP and HMP.
+>
+
+OK, I will fix this and submit the second version. Thanks:)
+
+>>
+>> What's your suggestion? Thanks.:)
+>>
+>> Best Regards,
+>> zhanghailiang
+>>
+>>
+>>
+>>
+>
+>
+> .
+>
+
+
 
