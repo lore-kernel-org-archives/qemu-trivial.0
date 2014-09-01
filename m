@@ -1,40 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XO0Zj-0004Yc-25
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Aug 2014 04:33:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33508)
-	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <qemu@mrs.ro>)
-	id 1XO0Za-0004Nr-J6
-	for qemu-trivial@nongnu.org; Sun, 31 Aug 2014 04:33:24 -0400
+	id 1XOGdN-0000Nj-Oi
+	for mharc-qemu-trivial@gnu.org; Sun, 31 Aug 2014 21:42:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60694)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1XOGdF-0000M0-Nn
+	for qemu-trivial@nongnu.org; Sun, 31 Aug 2014 21:42:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <qemu@mrs.ro>) id 1XO0ZU-0007by-C5
-	for qemu-trivial@nongnu.org; Sun, 31 Aug 2014 04:33:18 -0400
-Received: from mrs.ro ([109.74.194.28]:48340)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <qemu@mrs.ro>)
-	id 1XO0ZH-0007ZY-Oy; Sun, 31 Aug 2014 04:32:59 -0400
-Received: from [192.168.1.4] (cs181218058.pp.htv.fi [82.181.218.58])
-	by mrs.ro (Postfix) with ESMTPSA id D80DF6135;
-	Sun, 31 Aug 2014 11:36:10 +0300 (EEST)
-Message-ID: <5402DDB5.40400@mrs.ro>
-Date: Sun, 31 Aug 2014 11:32:53 +0300
-From: Valentin Manea <qemu@mrs.ro>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.0
+	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1XOGd9-0004Tp-Il
+	for qemu-trivial@nongnu.org; Sun, 31 Aug 2014 21:42:09 -0400
+Received: from [59.151.112.132] (port=10586 helo=heian.cn.fujitsu.com)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <chen.fan.fnst@cn.fujitsu.com>)
+	id 1XOGd9-0004Tg-8N; Sun, 31 Aug 2014 21:42:03 -0400
+X-IronPort-AV: E=Sophos;i="5.04,439,1406563200"; d="scan'208";a="35316683"
+Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 01 Sep 2014 09:38:58 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
+	[127.0.0.1])
+	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id s811fpwj026952;
+	Mon, 1 Sep 2014 09:41:51 +0800
+Received: from G08CNEXMBPEKD03.g08.fujitsu.local ([10.167.33.86]) by
+	G08CNEXCHPEKD03.g08.fujitsu.local ([10.167.33.85]) with mapi id
+	14.03.0181.006; Mon, 1 Sep 2014 09:41:54 +0800
+From: "chen.fan.fnst@cn.fujitsu.com" <chen.fan.fnst@cn.fujitsu.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Thread-Topic: [Qemu-trivial] [RESEND v2 0/3] Fix some memory leaks about
+	query memdev
+Thread-Index: AQHPxYXqox2XXLgpW0i1bcipJpKQqw==
+Date: Mon, 1 Sep 2014 01:41:54 +0000
+Message-ID: <05953EE18EEC9148BE892F38DF8F8E8E627320@G08CNEXMBPEKD03.g08.fujitsu.local>
+References: <cover.1408344055.git.chen.fan.fnst@cn.fujitsu.com>
+	<5400AA87.5000904@msgid.tls.msk.ru>
+In-Reply-To: <5400AA87.5000904@msgid.tls.msk.ru>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.167.226.78]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-To: Stefan Hajnoczi <stefanha@gmail.com>, 
- Michael Tokarev <mjt@tls.msk.ru>
-References: <53F704BE.6000407@mrs.ro> <53F9AF4D.10300@msgid.tls.msk.ru>
-	<20140828111323.GI26741@stefanha-thinkpad.redhat.com>
-In-Reply-To: <20140828111323.GI26741@stefanha-thinkpad.redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 109.74.194.28
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel <qemu-devel@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>,
-	Wenchao Xia <xiawenc@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] IDE: MMIO IDE device
- control should be little endian
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [RESEND v2 0/3] Fix some memory leaks about
+ query memdev
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,21 +58,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 31 Aug 2014 08:33:25 -0000
+X-List-Received-Date: Mon, 01 Sep 2014 01:42:16 -0000
 
-On 2014-08-28 14:13, Stefan Hajnoczi wrote:
-> Hi Valentin,
-> Please resend the patch to qemu-devel@nongnu.org and CC Kevin Wolf
-> <kwolf@redhat.com> and Stefan Hajnoczi <stefanha@redhat.com>.
-> 
-> All patches must go through the mailing list so the community has a
-> chance to review and comment before a committer applies them.
-
-Hi Stefan,
-
-  Thanks for the tips, I have resent the patch.
-
-Thanks,
-Valentin
-
+T24gRnJpLCAyMDE0LTA4LTI5IGF0IDIwOjI5ICswNDAwLCBNaWNoYWVsIFRva2FyZXYgd3JvdGU6
+IAo+IDE4LjA4LjIwMTQgMTA6NDYsIENoZW4gRmFuIHdyb3RlOgo+ID4gd2hlbiB1c2luZyB2YWxn
+cmluZCB0byB0ZXN0IHRoZSBjb21tYW5kICJxdWVyeSBtZW1kZXYiLCBJIGhhZAo+ID4gZm91bmQg
+c29tZSBtZW1vcnkgbGVha3MuIHRoZSB0ZXN0IHJlc3VsdDoKPiAuLi4KPiAKPiBBcHBsaWVkIGFs
+bCAzIHRvIC10cml2aWFsLiAgVXN1YWxseSB0aGVzZSBhcmUgbm90IHJlYWxseSB0cml2aWFsLgo+
+IFBsZWFzZSBub3RlIHRoYXQgeW91ciAybmQgcGF0Y2ggLSAicW9tL29iamVjdC5jOiBmaXggc3Ry
+aW5nX291dHB1dF9nZXRfc3RyaW5nKCkKPiBtZW1vcnkgbGVhayIgLSBhbHNvIHRvdWNoZXMgaG1w
+LmMgKHdoaWNoIGhhcyBhIG1haW50YWluZXIpLCBidXQgeW91Cj4gZGlkbid0IG1lbnRpb24gdGhp
+cyBpbiBwYXRjaCBkZXNjcmlwdGlvbi4gIEkndmUgYWRkZWQgaXQuClRoYW5rcywKCkNoZW4KCgo+
+IAo+IFRoYW5rcywKPiAKPiAvbWp0Cgo=
 
