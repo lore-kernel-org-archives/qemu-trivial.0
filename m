@@ -1,43 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XPK49-0007mf-OX
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Sep 2014 19:34:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44431)
+	id 1XPLpA-0007WX-TB
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Sep 2014 21:26:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59950)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@citrix.com>) id 1XPK41-0007b8-JM
-	for qemu-trivial@nongnu.org; Wed, 03 Sep 2014 19:34:15 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1XPLoz-0007WI-NM
+	for qemu-trivial@nongnu.org; Wed, 03 Sep 2014 21:26:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@citrix.com>) id 1XPK3v-0003zi-Dm
-	for qemu-trivial@nongnu.org; Wed, 03 Sep 2014 19:34:09 -0400
-Received: from smtp02.citrix.com ([66.165.176.63]:37163)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1XPLop-00047N-DF
+	for qemu-trivial@nongnu.org; Wed, 03 Sep 2014 21:26:45 -0400
+Received: from mail-pa0-x233.google.com ([2607:f8b0:400e:c03::233]:58671)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@citrix.com>)
-	id 1XPK3i-0003yp-Sj; Wed, 03 Sep 2014 19:33:50 -0400
-X-IronPort-AV: E=Sophos;i="5.04,461,1406592000"; d="scan'208";a="168906130"
-Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
-	(10.13.107.79) with Microsoft SMTP Server id 14.3.181.6;
-	Wed, 3 Sep 2014 19:33:48 -0400
-Received: from kaball.uk.xensource.com ([10.80.2.59])	by
-	ukmail1.uk.xensource.com with esmtp (Exim 4.69)	(envelope-from
-	<stefano.stabellini@eu.citrix.com>)	id 1XPK3g-0005j0-OX;
-	Thu, 04 Sep 2014 00:33:48 +0100
-Date: Thu, 4 Sep 2014 00:32:09 +0100
-From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-X-X-Sender: sstabellini@kaball.uk.xensource.com
-To: Chen Gang <gang.chen.5i5j@gmail.com>
-In-Reply-To: <54066F78.7040101@gmail.com>
-Message-ID: <alpine.DEB.2.02.1409040024100.18866@kaball.uk.xensource.com>
-References: <5405EED9.2090701@gmail.com> <54066F78.7040101@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1XPLop-00047J-4o; Wed, 03 Sep 2014 21:26:35 -0400
+Received: by mail-pa0-f51.google.com with SMTP id rd3so18641198pab.24
+	for <multiple recipients>; Wed, 03 Sep 2014 18:26:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=Ig0/D4LUD5+e5k0EeVFkBBJxpma9ITF71c2NGUvrr0M=;
+	b=hRDF0bf+Ryh8pmLhz1fpP9r7KfvwTBm8eLNHOppTRi+qvUT83wTMz3cATbXOZLdKOP
+	UCdB2c+B9o9Eor2+WCOLr0MPxYKm3RZZcSJo8Sm60W4GfpcqHjADWs4g0rxXaG9EFMkk
+	nLMlUUrOzc5BwG4pvxOdcv8p50lxsaavSKDW+Fo0WGzosK9JCOapcr7wuLGxeI+moM5d
+	67PPP0MQ3yKkhFO0znriKuRF5O9FvgrBZdM5dXyI8cFfyYBjHxwZp7yGEtazgAW0nIsf
+	QhQ2Lr5KfOZEpM9ko752SQiXquzQlizaJEU0cc3k0vT3VFgF7KeauC/8QCHA/w5CtdZY
+	K/tA==
+X-Received: by 10.70.103.204 with SMTP id fy12mr2272531pdb.144.1409793993158; 
+	Wed, 03 Sep 2014 18:26:33 -0700 (PDT)
+Received: from ShengShiZhuChengdeMacBook-Pro.local ([124.126.237.240])
+	by mx.google.com with ESMTPSA id c6sm129068pbu.59.2014.09.03.18.26.29
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 03 Sep 2014 18:26:32 -0700 (PDT)
+Message-ID: <5407C0FD.6060406@gmail.com>
+Date: Thu, 04 Sep 2014 09:31:41 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9;
+	rv:31.0) Gecko/20100101 Thunderbird/31.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-X-DLP: MIA2
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.165.176.63
+To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+References: <5405EED9.2090701@gmail.com> <54066F78.7040101@gmail.com>
+	<alpine.DEB.2.02.1409040024100.18866@kaball.uk.xensource.com>
+In-Reply-To: <alpine.DEB.2.02.1409040024100.18866@kaball.uk.xensource.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::233
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, xen-devel@lists.xensource.com,
-	qemu-devel <qemu-devel@nongnu.org>, stefano.stabellini@eu.citrix.com
+	qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [PATCH] xen-hvm.c: Improve the return method for
- xen_hvm_init()
+	xen_hvm_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,79 +61,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Sep 2014 23:34:16 -0000
+X-List-Received-Date: Thu, 04 Sep 2014 01:26:55 -0000
 
-On Wed, 3 Sep 2014, Chen Gang wrote:
-> Oh, sorry, forgot Cc to qemu trivial.
+On 9/4/14 7:32, Stefano Stabellini wrote:
+> On Wed, 3 Sep 2014, Chen Gang wrote:
+>> On 9/3/14 0:22, Chen Gang wrote:
+[...]
+>>> xen_hvm_init() may also return -errno, which may let upper caller think
+>>> more (e.g. free some other related resources and try again), although at
+>>> present, all related upper callers still exit(1).
 > 
-> Thanks.
-> On 9/3/14 0:22, Chen Gang wrote:
-> > When failure occurs, it need use "return -1" instead of exit(1), so can
-> > let upper caller has chance to print failure information, too, then user
-> > can know the failure result more clearly.
-
-good point
-
-
-> > xen_hvm_init() may also return -errno, which may let upper caller think
-> > more (e.g. free some other related resources and try again), although at
-> > present, all related upper callers still exit(1).
-
-I think we should return -1 in the other cases too
-
-
-> > It is not a normal function which does not release related resources, if
-> > return -1. So need give the related comments for it.
-> > 
-> > It passes common test under fedora 20 x86_64:
-> > 
-> >   "./configure --enable-xen && make -j4 && make check"
-> >   execute result: "echo $? == 0".
-> > 
-> > Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-> > ---
-> >  xen-hvm.c | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/xen-hvm.c b/xen-hvm.c
-> > index 0d09940..35efec0 100644
-> > --- a/xen-hvm.c
-> > +++ b/xen-hvm.c
-> > @@ -978,6 +978,7 @@ static void xen_wakeup_notifier(Notifier *notifier, void *data)
-> >      xc_set_hvm_param(xen_xc, xen_domid, HVM_PARAM_ACPI_S_STATE, 0);
-> >  }
-> >  
-> > +/* return value:  0 is OK, -errno is failure, -1 is critical issue -- exit(1) */
-> >  int xen_hvm_init(ram_addr_t *below_4g_mem_size, ram_addr_t *above_4g_mem_size,
-> >                   MemoryRegion **ram_memory)
-> >  {
-> > @@ -998,6 +999,7 @@ int xen_hvm_init(ram_addr_t *below_4g_mem_size, ram_addr_t *above_4g_mem_size,
-> >      state->xenstore = xs_daemon_open();
-> >      if (state->xenstore == NULL) {
-> >          perror("xen: xenstore open");
-> > +        xc_evtchn_close(state->xce_handle);
-> >          g_free(state);
-> >          return -errno;
-> >      }
-
-just return -1 and do the same in the above check (xce_handle ==
-XC_HANDLER_INITIAL_VALUE)
-
-
-> > @@ -1069,7 +1071,7 @@ int xen_hvm_init(ram_addr_t *below_4g_mem_size, ram_addr_t *above_4g_mem_size,
-> >      /* Initialize backend core & drivers */
-> >      if (xen_be_init() != 0) {
-> >          fprintf(stderr, "%s: xen backend core setup failed\n", __FUNCTION__);
-> > -        exit(1);
-> > +        return -1;
-> >      }
-> >      xen_be_register("console", &xen_console_ops);
-> >      xen_be_register("vkbd", &xen_kbdmouse_ops);
-> > 
+> I think we should return -1 in the other cases too
 > 
-> -- 
-> Chen Gang
+
+[...]
+>>> @@ -998,6 +999,7 @@ int xen_hvm_init(ram_addr_t *below_4g_mem_size, ram_addr_t *above_4g_mem_size,
+>>>      state->xenstore = xs_daemon_open();
+>>>      if (state->xenstore == NULL) {
+>>>          perror("xen: xenstore open");
+>>> +        xc_evtchn_close(state->xce_handle);
+>>>          g_free(state);
+>>>          return -errno;
+>>>      }
 > 
-> Open, share, and attitude like air, water, and life which God blessed
+> just return -1 and do the same in the above check (xce_handle ==
+> XC_HANDLER_INITIAL_VALUE)
 > 
+> 
+
+OK thanks, what you said sounds OK to me. I shall send patch v2 for it
+within the 2 days (within 2014-09-05).
+
+Thanks.
+-- 
+Chen Gang
+
+Open, share, and attitude like air, water, and life which God blessed
 
