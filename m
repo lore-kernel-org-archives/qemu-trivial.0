@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XPaL4-0007f5-GG
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Sep 2014 12:56:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35059)
+	id 1XPiV0-0003R7-Ni
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Sep 2014 21:39:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48076)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@citrix.com>) id 1XPaKx-0007Va-N8
-	for qemu-trivial@nongnu.org; Thu, 04 Sep 2014 12:56:48 -0400
+	(envelope-from <john.liuli@huawei.com>) id 1XPiUu-0003JB-0w
+	for qemu-trivial@nongnu.org; Thu, 04 Sep 2014 21:39:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@citrix.com>) id 1XPaKs-0005Js-Rr
-	for qemu-trivial@nongnu.org; Thu, 04 Sep 2014 12:56:43 -0400
-Received: from smtp.citrix.com ([66.165.176.89]:55988)
+	(envelope-from <john.liuli@huawei.com>) id 1XPiUo-0000pJ-UT
+	for qemu-trivial@nongnu.org; Thu, 04 Sep 2014 21:39:31 -0400
+Received: from szxga01-in.huawei.com ([119.145.14.64]:48921)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@citrix.com>)
-	id 1XPaKi-0005Ge-V9; Thu, 04 Sep 2014 12:56:29 -0400
-X-IronPort-AV: E=Sophos;i="5.04,467,1406592000"; d="scan'208";a="168426418"
-Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
-	(10.13.107.79) with Microsoft SMTP Server id 14.3.181.6;
-	Thu, 4 Sep 2014 12:56:24 -0400
-Received: from kaball.uk.xensource.com ([10.80.2.59])	by
-	ukmail1.uk.xensource.com with esmtp (Exim 4.69)	(envelope-from
-	<stefano.stabellini@eu.citrix.com>)	id 1XPaKe-0005Uo-7I;
-	Thu, 04 Sep 2014 17:56:24 +0100
-Date: Thu, 4 Sep 2014 17:54:44 +0100
-From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-X-X-Sender: sstabellini@kaball.uk.xensource.com
-To: Chen Gang <gang.chen.5i5j@gmail.com>
-In-Reply-To: <5408780E.70607@gmail.com>
-Message-ID: <alpine.DEB.2.02.1409041754210.18866@kaball.uk.xensource.com>
-References: <5408780E.70607@gmail.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+	(envelope-from <john.liuli@huawei.com>)
+	id 1XPiUe-0000gY-MB; Thu, 04 Sep 2014 21:39:17 -0400
+Received: from 172.24.2.119 (EHLO SZXEML414-HUB.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CBG33942; Fri, 05 Sep 2014 09:39:08 +0800 (CST)
+Received: from [127.0.0.1] (10.142.143.9) by SZXEML414-HUB.china.huawei.com
+	(10.82.67.153) with Microsoft SMTP Server id 14.3.158.1; Fri, 5 Sep 2014
+	09:39:05 +0800
+Message-ID: <54091432.4050904@huawei.com>
+Date: Fri, 5 Sep 2014 09:38:58 +0800
+From: Li Liu <john.liuli@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-X-DLP: MIA2
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.165.176.89
-Cc: qemu-trivial@nongnu.org, xen-devel@lists.xenproject.org,
-	qemu-devel <qemu-devel@nongnu.org>, stefano.stabellini@eu.citrix.com
-Subject: Re: [Qemu-trivial] [PATCH v2] xen-hvm.c: Always return -1 when
- failure occurs in xen_hvm_init()
+To: Markus Armbruster <armbru@redhat.com>
+References: <1409115651-3612-1-git-send-email-john.liuli@huawei.com>	<87iolefn36.fsf@blackfin.pond.sub.org>
+	<53FD8B7D.7030301@huawei.com>
+In-Reply-To: <53FD8B7D.7030301@huawei.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.143.9]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.64
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-char: fix terminal
+ crash when using "-monitor stdio -nographic"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,73 +49,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Sep 2014 16:56:48 -0000
+X-List-Received-Date: Fri, 05 Sep 2014 01:39:36 -0000
 
-On Thu, 4 Sep 2014, Chen Gang wrote:
-> When failure occurs, it need use "return -1" instead of exit(1), so can
-> let upper caller has chance to print failure information, too.
-> 
-> For simplify thinking, in xen_hvm_init(), also use '-1' instead of all
-> '-errno', since all related upper callers always exit(1) for failure.
-> 
-> It is not a normal function, it does not release related resources when
-> return -1, so need give related comments for it.
-> 
-> 
-> It passes common check:
-> 
->   "./configure --enable-xen && make && make check"
->   "echo $? == 0"
-> 
-> 
-> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+Ping, any more comments? Thanks.
 
-Acked-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-
-
->  xen-hvm.c | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
+On 2014/8/27 15:40, Li Liu wrote:
 > 
-> diff --git a/xen-hvm.c b/xen-hvm.c
-> index 0d09940..2c6285d 100644
-> --- a/xen-hvm.c
-> +++ b/xen-hvm.c
-> @@ -978,6 +978,7 @@ static void xen_wakeup_notifier(Notifier *notifier, void *data)
->      xc_set_hvm_param(xen_xc, xen_domid, HVM_PARAM_ACPI_S_STATE, 0);
->  }
->  
-> +/* return 0 means OK, or -1 means critical issue -- will exit(1) */
->  int xen_hvm_init(ram_addr_t *below_4g_mem_size, ram_addr_t *above_4g_mem_size,
->                   MemoryRegion **ram_memory)
->  {
-> @@ -991,15 +992,13 @@ int xen_hvm_init(ram_addr_t *below_4g_mem_size, ram_addr_t *above_4g_mem_size,
->      state->xce_handle = xen_xc_evtchn_open(NULL, 0);
->      if (state->xce_handle == XC_HANDLER_INITIAL_VALUE) {
->          perror("xen: event channel open");
-> -        g_free(state);
-> -        return -errno;
-> +        return -1;
->      }
->  
->      state->xenstore = xs_daemon_open();
->      if (state->xenstore == NULL) {
->          perror("xen: xenstore open");
-> -        g_free(state);
-> -        return -errno;
-> +        return -1;
->      }
->  
->      state->exit.notify = xen_exit_notifier;
-> @@ -1069,7 +1068,7 @@ int xen_hvm_init(ram_addr_t *below_4g_mem_size, ram_addr_t *above_4g_mem_size,
->      /* Initialize backend core & drivers */
->      if (xen_be_init() != 0) {
->          fprintf(stderr, "%s: xen backend core setup failed\n", __FUNCTION__);
-> -        exit(1);
-> +        return -1;
->      }
->      xen_be_register("console", &xen_console_ops);
->      xen_be_register("vkbd", &xen_kbdmouse_ops);
-> -- 
-> 1.9.3
 > 
+> On 2014/8/27 14:44, Markus Armbruster wrote:
+>> "john.liuli" <john.liuli@huawei.com> writes:
+>>
+>>> From: Li Liu <john.liuli@huawei.com>
+>>>
+>>> Eeay to reproduce, just try "qemu -monitor stdio -nographic"
+>>> and type "quit", then the terminal will be crashed.
+>>>
+>>> There are two pathes try to call tcgetattr of stdio in vl.c:
+>>>
+>>> 1) Monitor_parse(optarg, "readline");
+>>>    .....
+>>>    qemu_opts_foreach(qemu_find_opts("chardev"),
+>>>                      chardev_init_func, NULL, 1) != 0)
+>>>
+>>> 2) if (default_serial)
+>>>    add_device_config(DEV_SERIAL, "stdio");
+>>>    ....
+>>>    if (foreach_device_config(DEV_SERIAL, serial_parse) < 0)
+>>>
+>>> Both of them will trigger qemu_chr_open_stdio which will disable
+>>> ECHO attributes. First one has updated the attributes of stdio
+>>> by calling qemu_chr_fe_set_echo(chr, false). And the tty
+>>> attributes has been saved in oldtty. Then the second path will
+>>> redo such actions, and the oldtty is overlapped. So till "quit",
+>>> term_exit can't recove the correct attributes.
+>>>
+>>> Signed-off-by: Li Liu <john.liuli@huawei.com>
+>>
+>> Yes, failure to restore tty settings is a bug.
+>>
+>> But is having multiple character devices use the same terminal valid?
+> 
+> I'm not sure. But I have found such comments in vl.c
+> "According to documentation and historically, -nographic redirects
+> serial port, parallel port and monitor to stdio"
+> 
+> Best regards
+> Li.
+> 
+>> If no, can we catch and reject the attempt?
+>>
+>> [...]
+>>
+>>
+> 
+> 
+> 
+> 
+
 
