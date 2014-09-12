@@ -1,40 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XSJxg-00018L-HS
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Sep 2014 02:04:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56249)
+	id 1XSMDW-0002Mn-Si
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Sep 2014 04:28:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53933)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XSJxa-000109-Cl
-	for qemu-trivial@nongnu.org; Fri, 12 Sep 2014 02:03:59 -0400
+	(envelope-from <stefanha@redhat.com>) id 1XSMDP-0002Da-CE
+	for qemu-trivial@nongnu.org; Fri, 12 Sep 2014 04:28:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XSJxV-0004ma-J8
-	for qemu-trivial@nongnu.org; Fri, 12 Sep 2014 02:03:54 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:6842)
+	(envelope-from <stefanha@redhat.com>) id 1XSMDJ-000799-0Y
+	for qemu-trivial@nongnu.org; Fri, 12 Sep 2014 04:28:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39233)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XSJxL-0004jd-7c; Fri, 12 Sep 2014 02:03:39 -0400
-Received: from 172.24.2.119 (EHLO szxeml461-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CBO64427; Fri, 12 Sep 2014 14:03:29 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml461-hub.china.huawei.com
-	(10.82.67.204) with Microsoft SMTP Server id 14.3.158.1;
-	Fri, 12 Sep 2014 14:03:19 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-To: <qemu-trivial@nongnu.org>
-Date: Fri, 12 Sep 2014 14:03:14 +0800
-Message-ID: <1410501794-13624-1-git-send-email-zhang.zhanghailiang@huawei.com>
-X-Mailer: git-send-email 1.9.2.msysgit.0
+	(envelope-from <stefanha@redhat.com>)
+	id 1XSMD3-000767-Ho; Fri, 12 Sep 2014 04:28:01 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s8C8Rw4n030706
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Fri, 12 Sep 2014 04:27:58 -0400
+Received: from localhost (ovpn-112-30.ams2.redhat.com [10.36.112.30])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s8C8Ruj8019047; Fri, 12 Sep 2014 04:27:57 -0400
+Date: Fri, 12 Sep 2014 09:27:56 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Marc =?iso-8859-1?Q?Mar=ED?= <marc.mari.barcelo@gmail.com>
+Message-ID: <20140912082756.GB1614@stefanha-thinkpad.redhat.com>
+References: <1410428416-5046-1-git-send-email-marc.mari.barcelo@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, luonengjun@huawei.com,
-	qemu-devel@nongnu.org, mrhines@linux.vnet.ibm.com,
-	peter.huangpeng@huawei.com
-Subject: [Qemu-trivial] [PATCH 2/2] rdma: Fix incorrect description in
-	comments
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="uZ3hkaAS1mZxFaxD"
+Content-Disposition: inline
+In-Reply-To: <1410428416-5046-1-git-send-email-marc.mari.barcelo@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [TRIVIAL][PATCH v2] libqos virtio: Increase ISR
+	timeout
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,74 +49,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Sep 2014 06:03:59 -0000
-
-Since we have supported memory hotplug, VM's ram include pc.ram
-and hotplug-memory.
-
-Fix the confused description for rdma migration: pc.ram -> VM's ram
-
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
----
- docs/rdma.txt    | 6 +++---
- migration-rdma.c | 4 ++--
- 2 files changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/docs/rdma.txt b/docs/rdma.txt
-index 1f5d9e9..2bdd0a5 100644
---- a/docs/rdma.txt
-+++ b/docs/rdma.txt
-@@ -18,7 +18,7 @@ Contents:
- * RDMA Migration Protocol Description
- * Versioning and Capabilities
- * QEMUFileRDMA Interface
--* Migration of pc.ram
-+* Migration of VM's ram
- * Error handling
- * TODO
- 
-@@ -149,7 +149,7 @@ The only difference between a SEND message and an RDMA
- message is that SEND messages cause notifications
- to be posted to the completion queue (CQ) on the
- infiniband receiver side, whereas RDMA messages (used
--for pc.ram) do not (to behave like an actual DMA).
-+for VM's ram) do not (to behave like an actual DMA).
- 
- Messages in infiniband require two things:
- 
-@@ -355,7 +355,7 @@ If the buffer is empty, then we follow the same steps
- listed above and issue another "QEMU File" protocol command,
- asking for a new SEND message to re-fill the buffer.
- 
--Migration of pc.ram:
-+Migration of VM's ram:
- ====================
- 
- At the beginning of the migration, (migration-rdma.c),
-diff --git a/migration-rdma.c b/migration-rdma.c
-index d99812c..b32dbdf 100644
---- a/migration-rdma.c
-+++ b/migration-rdma.c
-@@ -2523,7 +2523,7 @@ static void *qemu_rdma_data_init(const char *host_port, Error **errp)
- /*
-  * QEMUFile interface to the control channel.
-  * SEND messages for control only.
-- * pc.ram is handled with regular RDMA messages.
-+ * VM's ram is handled with regular RDMA messages.
-  */
- static int qemu_rdma_put_buffer(void *opaque, const uint8_t *buf,
-                                 int64_t pos, int size)
-@@ -2539,7 +2539,7 @@ static int qemu_rdma_put_buffer(void *opaque, const uint8_t *buf,
- 
-     /*
-      * Push out any writes that
--     * we're queued up for pc.ram.
-+     * we're queued up for VM's ram.
-      */
-     ret = qemu_rdma_write_flush(f, rdma);
-     if (ret < 0) {
--- 
-1.7.12.4
+X-List-Received-Date: Fri, 12 Sep 2014 08:28:29 -0000
 
 
+--uZ3hkaAS1mZxFaxD
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Sep 11, 2014 at 11:40:16AM +0200, Marc Mar=ED wrote:
+> Increase the clock step to avoid Travis failure in some builds due to
+> overagressive timeout.
+>=20
+> Signed-off-by: Marc Mar=ED <marc.mari.barcelo@gmail.com>
+> ---
+>  tests/libqos/virtio.c |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--uZ3hkaAS1mZxFaxD
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJUEq6MAAoJEJykq7OBq3PIOYwH/jXEDLr0of0CMS7nY+Mpg9MU
+5sr19h8+gqlTiXHNZCTcVAxBK8+qKWPpcg9o7XAfaijfbaWwWnF6XjTxz/LhseFr
+f+V4n63+9sUWh6P6ke7nzbldZHVhCbFRhEyvNDN8o5MiLkhFtPyU35M88E0fuVhX
+xGV3ov0FW4zfLUEoaj2yd39jzLZFULheAeaP7n7tWs8CH04icIb8DcEBywrv6pZ+
+2gMtgYfDGUx3SqJFiXQkoEXXH5N+q7ItG8isOrUnEwtrYEoYv5a3583kmrxPxyqY
+3UeF7Mg2sYicH6Qr9qcVZkrDq2XQEk5/04Q3t1dNZUwlU7BG8+phVzOka40hBag=
+=3Mce
+-----END PGP SIGNATURE-----
+
+--uZ3hkaAS1mZxFaxD--
 
