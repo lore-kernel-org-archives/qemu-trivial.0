@@ -1,39 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XTqGv-00023h-ST
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Sep 2014 06:46:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53819)
+	id 1XTt8l-0007lO-Lv
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Sep 2014 09:49:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50769)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XTqGm-000229-S1
-	for qemu-trivial@nongnu.org; Tue, 16 Sep 2014 06:46:05 -0400
+	(envelope-from <soariez@gmail.com>) id 1XTlMo-00021Y-AK
+	for qemu-trivial@nongnu.org; Tue, 16 Sep 2014 01:31:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XTqGh-0007qw-R7
-	for qemu-trivial@nongnu.org; Tue, 16 Sep 2014 06:46:00 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:15537)
+	(envelope-from <soariez@gmail.com>) id 1XTlMn-00017L-D6
+	for qemu-trivial@nongnu.org; Tue, 16 Sep 2014 01:31:54 -0400
+Received: from mail-vc0-x236.google.com ([2607:f8b0:400c:c03::236]:38888)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XTqGg-0007od-Uc; Tue, 16 Sep 2014 06:45:55 -0400
-Received: from 172.24.2.119 (EHLO szxeml422-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id BZN18742; Tue, 16 Sep 2014 18:45:45 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml422-hub.china.huawei.com
-	(10.82.67.161) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 16 Sep 2014 18:45:38 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-To: <qemu-trivial@nongnu.org>
-Date: Tue, 16 Sep 2014 18:45:36 +0800
-Message-ID: <1410864336-14284-1-git-send-email-zhang.zhanghailiang@huawei.com>
-X-Mailer: git-send-email 1.9.2.msysgit.0
+	(envelope-from <soariez@gmail.com>)
+	id 1XTlMk-00016h-UJ; Tue, 16 Sep 2014 01:31:51 -0400
+Received: by mail-vc0-f182.google.com with SMTP id le20so4401483vcb.41
+	for <multiple recipients>; Mon, 15 Sep 2014 22:31:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-type;
+	bh=xOgzEkJSYwX3eTFojhPESiGf3Gm016Ad5rrtG3rP3Q0=;
+	b=o8U3htFvy4iS5Xtu7jFr6yET1KdC04tjGwFlHmKa3IWiundwN6Q26QakoxarT6xmRG
+	h3wZagWz4t97CkA+adeA89q0AjTZNBj44XOjgxcTSe11A35EW38OhCbicR23xbAPJlS6
+	uvNMLBnQ06CLu1bbAS6YQ4gnyjfq5/1js4vd3Ks6K4iOeH04lch8Jdjo2/UXNBX57vT6
+	ylt1C41ky5L9yX3veDoFemAbHgR8KQMsl1GlTXL9SfYR/EqXg29wHaamaBOG9EMCB80T
+	/tJ1oTb35ZrJrAbchSiEo1O2PL1wy60qxPLWwXkRXN6l4dv5IfYtcoHEprUA8uYZZZuX
+	m2+g==
+X-Received: by 10.52.61.99 with SMTP id o3mr23218635vdr.46.1410845506905; Mon,
+	15 Sep 2014 22:31:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: imammedo@redhat.com, zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	luonengjun@huawei.com, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
-Subject: [Qemu-trivial] [PATCH v3] vl: Print maxmem in hex format for error
-	message
+Sender: soariez@gmail.com
+Received: by 10.220.114.68 with HTTP; Mon, 15 Sep 2014 22:31:06 -0700 (PDT)
+In-Reply-To: <1410092666-17405-1-git-send-email-zifeitong@gmail.com>
+References: <1410092666-17405-1-git-send-email-zifeitong@gmail.com>
+From: Zifei Tong <zifeitong@gmail.com>
+Date: Tue, 16 Sep 2014 13:31:06 +0800
+X-Google-Sender-Auth: E8UmVtlaokpoWcCb4Z80s1EUZwA
+Message-ID: <CAJ7wx-FqAPy85ROq3cprYmA39X--z83jBaLhhpwocXRHHnqc8w@mail.gmail.com>
+To: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400c:c03::236
+X-Mailman-Approved-At: Tue, 16 Sep 2014 09:49:54 -0400
+Cc: qemu-trivial@nongnu.org, Kirill Batuzov <batuzovk@ispras.ru>,
+	Anthony Liguori <aliguori@amazon.com>,
+	Nikolay Nikolaev <n.nikolaev@virtualopensystems.com>,
+	Zifei Tong <zifeitong@gmail.com>
+Subject: Re: [Qemu-trivial] [PATCH] qemu-char: Do not disconnect when
+	there's data for reading
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,77 +58,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Sep 2014 10:46:08 -0000
+X-List-Received-Date: Tue, 16 Sep 2014 05:31:55 -0000
 
-In error message, maxmem is printed in Dec but ram_size in Hex.
-It is better to print them in same format.
-Also use error_report instead of fprintf.
+Friendly ping.
 
-Reviewed-By: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
----
- v3:
-- fix an indent error
-- add Reviewed-By
- v2:
-- Remove redundant "qemu:" in error message, for error_report already prepend
-  a variation of "qemu" (comment of Eric Blake)
----
- vl.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+Also CC to qemu-trivial.
 
-diff --git a/vl.c b/vl.c
-index 5db0d08..c64d923 100644
---- a/vl.c
-+++ b/vl.c
-@@ -3358,34 +3358,34 @@ int main(int argc, char **argv, char **envp)
- 
-                     sz = qemu_opt_get_size(opts, "maxmem", 0);
-                     if (sz < ram_size) {
--                        fprintf(stderr, "qemu: invalid -m option value: maxmem "
--                                "(%" PRIu64 ") <= initial memory ("
--                                RAM_ADDR_FMT ")\n", sz, ram_size);
-+                        error_report("invalid -m option value: maxmem "
-+                                "(0x%" PRIx64 ") <= initial memory (0x"
-+                                RAM_ADDR_FMT ")", sz, ram_size);
-                         exit(EXIT_FAILURE);
-                     }
- 
-                     slots = qemu_opt_get_number(opts, "slots", 0);
-                     if ((sz > ram_size) && !slots) {
--                        fprintf(stderr, "qemu: invalid -m option value: maxmem "
--                                "(%" PRIu64 ") more than initial memory ("
-+                        error_report("invalid -m option value: maxmem "
-+                                "(0x%" PRIx64 ") more than initial memory (0x"
-                                 RAM_ADDR_FMT ") but no hotplug slots where "
--                                "specified\n", sz, ram_size);
-+                                "specified", sz, ram_size);
-                         exit(EXIT_FAILURE);
-                     }
- 
-                     if ((sz <= ram_size) && slots) {
--                        fprintf(stderr, "qemu: invalid -m option value:  %"
-+                        error_report("invalid -m option value:  %"
-                                 PRIu64 " hotplug slots where specified but "
--                                "maxmem (%" PRIu64 ") <= initial memory ("
--                                RAM_ADDR_FMT ")\n", slots, sz, ram_size);
-+                                "maxmem (0x%" PRIx64 ") <= initial memory (0x"
-+                                RAM_ADDR_FMT ")", slots, sz, ram_size);
-                         exit(EXIT_FAILURE);
-                     }
-                     maxram_size = sz;
-                     ram_slots = slots;
-                 } else if ((!maxmem_str && slots_str) ||
-                            (maxmem_str && !slots_str)) {
--                    fprintf(stderr, "qemu: invalid -m option value: missing "
--                            "'%s' option\n", slots_str ? "maxmem" : "slots");
-+                    error_report("invalid -m option value: missing "
-+                            "'%s' option", slots_str ? "maxmem" : "slots");
-                     exit(EXIT_FAILURE);
-                 }
-                 break;
--- 
-1.7.12.4
-
-
+On Sun, Sep 7, 2014 at 8:24 PM, Zifei Tong <zifeitong@gmail.com> wrote:
+> After commit 812c1057f6175ac9a9829fa2920a2b5783814193 (Handle G_IO_HUP
+> in tcp_chr_read for tcp chardev), the connection is disconnected when in
+> G_IO_HUP condition.
+>
+> However, it's possible that the channel is in G_IO_IN condition at the
+> same time, meaning there is data for reading. In that case, the
+> remaining data is not handled.
+>
+> I saw a related bug when running socat in write-only mode, with
+>
+>   $ echo "quit" | socat -u - UNIX-CONNECT:qemu-monitor
+>
+> the monitor won't not run the 'quit' command.
+>
+> CC: Kirill Batuzov <batuzovk@ispras.ru>
+> CC: Nikolay Nikolaev <n.nikolaev@virtualopensystems.com>
+> CC: Anthony Liguori <aliguori@amazon.com>
+> Signed-off-by: Zifei Tong <zifeitong@gmail.com>
+> ---
+>  qemu-char.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/qemu-char.c b/qemu-char.c
+> index 1a8d9aa..5018c3a 100644
+> --- a/qemu-char.c
+> +++ b/qemu-char.c
+> @@ -2706,7 +2706,7 @@ static gboolean tcp_chr_read(GIOChannel *chan, GIOCondition cond, void *opaque)
+>      uint8_t buf[READ_BUF_LEN];
+>      int len, size;
+>
+> -    if (cond & G_IO_HUP) {
+> +    if (!(cond & G_IO_IN) && (cond & G_IO_HUP)) {
+>          /* connection closed */
+>          tcp_chr_disconnect(chr);
+>          return TRUE;
+> --
+> 2.1.0
+>
 
