@@ -1,42 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XTkGR-0001I3-DJ
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Sep 2014 00:21:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42507)
+	id 1XTnSz-0002GR-6I
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Sep 2014 03:46:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44276)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XTkGL-0001AB-4z
-	for qemu-trivial@nongnu.org; Tue, 16 Sep 2014 00:21:14 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XTnSn-00022w-Kd
+	for qemu-trivial@nongnu.org; Tue, 16 Sep 2014 03:46:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XTkGG-0002E7-12
-	for qemu-trivial@nongnu.org; Tue, 16 Sep 2014 00:21:09 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:55408)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XTnSi-0000hZ-KE
+	for qemu-trivial@nongnu.org; Tue, 16 Sep 2014 03:46:13 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:39954)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XTkG5-0002D9-T5; Tue, 16 Sep 2014 00:20:54 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 456F44463C;
-	Tue, 16 Sep 2014 08:20:49 +0400 (MSK)
-Message-ID: <5417BAA0.6070607@msgid.tls.msk.ru>
-Date: Tue, 16 Sep 2014 08:20:48 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.7.0
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1XTnSW-0000gK-0E; Tue, 16 Sep 2014 03:45:56 -0400
+Received: from 172.24.2.119 (EHLO szxeml404-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AUK85678; Tue, 16 Sep 2014 15:45:47 +0800 (CST)
+Received: from localhost (10.177.22.69) by szxeml404-hub.china.huawei.com
+	(10.82.67.59) with Microsoft SMTP Server id 14.3.158.1; Tue, 16 Sep 2014
+	15:45:36 +0800
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+To: <qemu-trivial@nongnu.org>
+Date: Tue, 16 Sep 2014 15:45:32 +0800
+Message-ID: <1410853532-9956-1-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Mailer: git-send-email 1.9.2.msysgit.0
 MIME-Version: 1.0
-To: Li Liu <john.liuli@huawei.com>, armbru@redhat.com
-References: <1410261588-8360-1-git-send-email-john.liuli@huawei.com>
-	<5416E094.9070500@msgid.tls.msk.ru>
-	<5416E22B.9060002@msgid.tls.msk.ru> <5417950C.1040004@huawei.com>
-In-Reply-To: <5417950C.1040004@huawei.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH v2] qemu-char: fix terminal crash when
- using "-monitor stdio -nographic"
+Content-Type: text/plain
+X-Originating-IP: [10.177.22.69]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020205.5417EAAC.0023, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 64768ceea44a35ecdb7be1c780dee2fb
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, luonengjun@huawei.com,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: [Qemu-trivial] [PATCH v2] vl: Print maxmem in hex format for error
+	message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,16 +50,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Sep 2014 04:21:14 -0000
+X-List-Received-Date: Tue, 16 Sep 2014 07:46:23 -0000
 
-16.09.2014 05:40, Li Liu wrote:
-> Thanks four your comments! Can you help do this when applying
-> incidentally? Or I will resend it again?
+In error message, maxmem is printed in Dec but ram_size in Hex.
+It is better to print them in same format.
+Also use error_report instead of fprintf.
 
-http://git.corpit.ru/?p=qemu.git;a=commit;h=6dbc7173f25747b2ed9f3f322ac9697feffe4bf7 --
-applied yesteday :)
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+---
+ v2:
+- Remove redundant "qemu:" in error message, for error_report already prepend
+  a variation of "qemu" (comment of Eric Blake)
+---
+ vl.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-Thanks,
+diff --git a/vl.c b/vl.c
+index 5db0d08..71a831b 100644
+--- a/vl.c
++++ b/vl.c
+@@ -3358,34 +3358,34 @@ int main(int argc, char **argv, char **envp)
+ 
+                     sz = qemu_opt_get_size(opts, "maxmem", 0);
+                     if (sz < ram_size) {
+-                        fprintf(stderr, "qemu: invalid -m option value: maxmem "
+-                                "(%" PRIu64 ") <= initial memory ("
+-                                RAM_ADDR_FMT ")\n", sz, ram_size);
++                        error_report("invalid -m option value: maxmem "
++                                "(0x%" PRIx64 ") <= initial memory (0x"
++                                RAM_ADDR_FMT ")", sz, ram_size);
+                         exit(EXIT_FAILURE);
+                     }
+ 
+                     slots = qemu_opt_get_number(opts, "slots", 0);
+                     if ((sz > ram_size) && !slots) {
+-                        fprintf(stderr, "qemu: invalid -m option value: maxmem "
+-                                "(%" PRIu64 ") more than initial memory ("
++                        error_report("invalid -m option value: maxmem "
++                                "(0x%" PRIx64 ") more than initial memory (0x"
+                                 RAM_ADDR_FMT ") but no hotplug slots where "
+-                                "specified\n", sz, ram_size);
++                                "specified", sz, ram_size);
+                         exit(EXIT_FAILURE);
+                     }
+ 
+                     if ((sz <= ram_size) && slots) {
+-                        fprintf(stderr, "qemu: invalid -m option value:  %"
++                        error_report("invalid -m option value:  %"
+                                 PRIu64 " hotplug slots where specified but "
+-                                "maxmem (%" PRIu64 ") <= initial memory ("
+-                                RAM_ADDR_FMT ")\n", slots, sz, ram_size);
++                                "maxmem (0x%" PRIx64 ") <= initial memory (0x"
++                                RAM_ADDR_FMT ")", slots, sz, ram_size);
+                         exit(EXIT_FAILURE);
+                     }
+                     maxram_size = sz;
+                     ram_slots = slots;
+                 } else if ((!maxmem_str && slots_str) ||
+                            (maxmem_str && !slots_str)) {
+-                    fprintf(stderr, "qemu: invalid -m option value: missing "
+-                            "'%s' option\n", slots_str ? "maxmem" : "slots");
++                     error_report("invalid -m option value: missing "
++                            "'%s' option", slots_str ? "maxmem" : "slots");
+                     exit(EXIT_FAILURE);
+                 }
+                 break;
+-- 
+1.7.12.4
 
-/mjt
+
 
