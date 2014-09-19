@@ -1,52 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XUyxZ-0007GE-GW
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Sep 2014 10:14:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38138)
+	id 1XV57W-0006Ry-CO
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Sep 2014 16:49:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51248)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XUyxS-0007Ek-1H
-	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 10:14:52 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1XV57P-0006IQ-SZ
+	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 16:49:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XUyxL-00080j-PH
-	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 10:14:45 -0400
-Received: from mail-la0-f51.google.com ([209.85.215.51]:62921)
+	(envelope-from <stefan@weilnetz.de>) id 1XV57K-0007Bk-Vv
+	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 16:49:27 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:38837)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XUyxL-0007zo-Hs
-	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 10:14:39 -0400
-Received: by mail-la0-f51.google.com with SMTP id gi9so3182878lab.38
-	for <qemu-trivial@nongnu.org>; Fri, 19 Sep 2014 07:14:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=YHpD7yFRr8WcMi1Kw1nHwQ2T5IJSWK87zC3Xg5k1OpU=;
-	b=Qk3BvvRM97fURmHUOnhYC61Kfdt9Jsx1Q9MCLADHnDyYPayxbj7Jo35HwdF4/hacv4
-	mM7Jyu/lpRwKwdxNHBCeIYpIFyF6up5LI/C5uXUrJcihiooxtu2u7JGSPd7elVLgdj18
-	JLDJKog2P6+CyV/Ex02H5M2jiwOSDXz99fB6kd2Mpjc3+6xN7/+8Gy7Px0mc8OHRSrVb
-	JtGwO9edlEX0ZiYIRN+Kes6Xk451UhVzoqRGOsz6mVUBFHitf6kh1wCkUUOlh45FTOgL
-	gZWNQVmWFLaYJ3n7pdWjOBstcDnItCzUR0vna+cspE2sSdolXx9P5oIS2nUKd7KXpAFX
-	QqEg==
-X-Gm-Message-State: ALoCoQmdsfhLxWio0Iv3ry6BsOEGfMLLZMxGkZpsiohjUdkkGYeQi0jw+sST9Evyfoa+QTmnPXJZ
-X-Received: by 10.152.2.41 with SMTP id 9mr6955790lar.79.1411136073420; Fri,
-	19 Sep 2014 07:14:33 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Fri, 19 Sep 2014 07:14:13 -0700 (PDT)
-In-Reply-To: <87wq90drr6.fsf@blackfin.pond.sub.org>
-References: <1411097848-3900-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<87wq90drr6.fsf@blackfin.pond.sub.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 19 Sep 2014 07:14:13 -0700
-Message-ID: <CAFEAcA-ehcEL0kp2RJ1dthRzy5aDi7Y-4S8QmcEo-965cGfVAg@mail.gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.51
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, peter.huangpeng@huawei.com,
-	Luonengjun <luonengjun@huawei.com>,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] vl: Fix possible freed
-	memory accessing
+	(envelope-from <stefan@weilnetz.de>)
+	id 1XV57A-00078F-Nb; Fri, 19 Sep 2014 16:49:12 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 60E1C17F8AE; Fri, 19 Sep 2014 22:49:04 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Date: Fri, 19 Sep 2014 22:49:03 +0200
+Message-Id: <1411159743-28175-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.198.45
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] pc: Add missing 'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,36 +34,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Sep 2014 14:14:52 -0000
+X-List-Received-Date: Fri, 19 Sep 2014 20:49:32 -0000
 
-On 18 September 2014 23:54, Markus Armbruster <armbru@redhat.com> wrote:
-> I think we should remove the whole thing: pcmcia_sockets,
-> pcmcia_socket_register(), pcmcia_socket_unregister, pcmcia_info().
-> Here's why.
->
-> It serves just one purpose: "info pcmcia".  HMP-only, therefore not a
-> stable interface.  But is it a useful one?
->
-> The only caller of pcmcia_socket_register() is pxa2xx_pcmcia_realize(),
-> of device model "pxa2xx-pcmcia".  As far as I can tell, used only by a
-> couple of ARM boards: "verdex", "mainstone", "akita", "spitz", "borzoi",
-> "terrier", "z2", "connex", "tosa".
->
-> Of these, only "akita", "spitz", "borzoi", "terrier" and "tosa" insert a
-> card into the slot, and they do so right on board initialization.
-> Nothing ever ejects a card from a slot.  Therefore, "info pcmcia"
-> effectively prints a fixed, machine-specific string so far.  Doesn't
-> sound useful to me.
->
-> If we acquire PCMCIA devices where querying status is interesting, we'll
-> want a QMP command, so this code will be pretty much useless.
+This fixes a warning from smatch (static code analysis).
 
-I wouldn't particularly object to the info code disappearing. pxa2xx
-is pretty old and crufty code at this point and I don't suppose
-the pcmcia code has been modernised very much.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/i386/pc.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-(Couldn't you implement a hypothetical pcmcia HMP/QMP command by
-scanning the QOM tree for pcmcia device objects now anyway?)
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 2c2e9dc..82a7daa 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -75,7 +75,7 @@
+ /* Leave a chunk of memory at the top of RAM for the BIOS ACPI tables
+  * (128K) and other BIOS datastructures (less than 4K reported to be used at
+  * the moment, 32K should be enough for a while).  */
+-unsigned acpi_data_size = 0x20000 + 0x8000;
++static unsigned acpi_data_size = 0x20000 + 0x8000;
+ void pc_set_legacy_acpi_data_size(void)
+ {
+     acpi_data_size = 0x10000;
+-- 
+1.7.10.4
 
--- PMM
 
