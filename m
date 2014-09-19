@@ -1,38 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XUp2z-0005Ot-01
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Sep 2014 23:39:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47298)
+	id 1XUslE-0000rX-0H
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Sep 2014 03:37:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XUp2s-0005OQ-F6
-	for qemu-trivial@nongnu.org; Thu, 18 Sep 2014 23:39:47 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XUsl6-0000g2-KA
+	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 03:37:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XUp2n-00075M-KV
-	for qemu-trivial@nongnu.org; Thu, 18 Sep 2014 23:39:42 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:27115)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XUsl1-0001v9-HP
+	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 03:37:36 -0400
+Received: from szxga01-in.huawei.com ([119.145.14.64]:16572)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XUp2m-00074S-TD; Thu, 18 Sep 2014 23:39:37 -0400
-Received: from 172.24.2.119 (EHLO szxeml403-hub.china.huawei.com)
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XUsl0-0001uS-N8; Fri, 19 Sep 2014 03:37:31 -0400
+Received: from 172.24.2.119 (EHLO SZXEMA406-HUB.china.huawei.com)
 	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id BZQ95494; Fri, 19 Sep 2014 11:39:24 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml403-hub.china.huawei.com
-	(10.82.67.35) with Microsoft SMTP Server id 14.3.158.1; Fri, 19 Sep 2014
-	11:38:46 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Fri, 19 Sep 2014 11:37:28 +0800
-Message-ID: <1411097848-3900-1-git-send-email-zhang.zhanghailiang@huawei.com>
-X-Mailer: git-send-email 1.9.2.msysgit.0
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CBW60232; Fri, 19 Sep 2014 15:37:15 +0800 (CST)
+Received: from SZXEMA503-MBS.china.huawei.com ([169.254.6.188]) by
+	SZXEMA406-HUB.china.huawei.com ([10.82.72.38]) with mapi id
+	14.03.0158.001; Fri, 19 Sep 2014 15:37:12 +0800
+From: "Gonglei (Arei)" <arei.gonglei@huawei.com>
+To: Markus Armbruster <armbru@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [PATCH] qemu-socket: Polish errors for connect()
+	and	listen() failure
+Thread-Index: AQHP09tsndk+dvLVpUW7bJv2VaR+9ZwIECOQ
+Date: Fri, 19 Sep 2014 07:37:11 +0000
+Message-ID: <33183CC9F5247A488A2544077AF1902086DD8292@SZXEMA503-MBS.china.huawei.com>
+References: <1411111624-3064-1-git-send-email-armbru@redhat.com>
+In-Reply-To: <1411111624-3064-1-git-send-email-armbru@redhat.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.177.19.102]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.22.69]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org, luonengjun@huawei.com, peter.huangpeng@huawei.com,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>
-Subject: [Qemu-trivial] [PATCH v1] vl: Fix possible freed memory accessing
+X-Received-From: 119.145.14.64
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"lcapitulino@redhat.com" <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-socket: Polish errors
+ for connect() and	listen() failure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,42 +55,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Sep 2014 03:39:47 -0000
+X-List-Received-Date: Fri, 19 Sep 2014 07:37:41 -0000
 
-The logic of pcmcia_socket_unregister is wrong,
-which will cause a freed memory accessing
+> Subject: [Qemu-devel] [PATCH] qemu-socket: Polish errors for connect() an=
+d
+> listen() failure
+>=20
+> connect() doesn't "connect to socket", it connects a socket to an
+> address and, if it's of type SOCK_STREAM, initiates a connection.
+> Scratch "to".
+>=20
+> listen() does "set socket to listening mode", but it sounds awkward.
+> Change to "listen on socket".
+>=20
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  include/qapi/qmp/qerror.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
 
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
----
-Hi,
+Reviewed-by: Gonglei <arei.gonglei@huawei.com>
 
-The function pcmcia_socket_unregister seemes to be unused,
-Should it be removed? Thanks.
----
- vl.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+And Cc'ing qemu-trivial@
 
-diff --git a/vl.c b/vl.c
-index dc792fe..bf659b7 100644
---- a/vl.c
-+++ b/vl.c
-@@ -1545,11 +1545,13 @@ void pcmcia_socket_unregister(PCMCIASocket *socket)
-     struct pcmcia_socket_entry_s *entry, **ptr;
- 
-     ptr = &pcmcia_sockets;
--    for (entry = *ptr; entry; ptr = &entry->next, entry = *ptr)
-+    for (entry = *ptr; entry; ptr = &entry->next, entry = *ptr) {
-         if (entry->socket == socket) {
-             *ptr = entry->next;
-             g_free(entry);
-+            break;
-         }
-+    }
- }
- 
- void pcmcia_info(Monitor *mon, const QDict *qdict)
--- 
-1.7.12.4
+Best regards,
+-Gonglei
 
+> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+> index 902d1a7..774e75d 100644
+> --- a/include/qapi/qmp/qerror.h
+> +++ b/include/qapi/qmp/qerror.h
+> @@ -155,10 +155,10 @@ void qerror_report_err(Error *err);
+>      ERROR_CLASS_GENERIC_ERROR, "this feature or command is not
+> currently supported"
+>=20
+>  #define QERR_SOCKET_CONNECT_FAILED \
+> -    ERROR_CLASS_GENERIC_ERROR, "Failed to connect to socket"
+> +    ERROR_CLASS_GENERIC_ERROR, "Failed to connect socket"
+>=20
+>  #define QERR_SOCKET_LISTEN_FAILED \
+> -    ERROR_CLASS_GENERIC_ERROR, "Failed to set socket to listening mode"
+> +    ERROR_CLASS_GENERIC_ERROR, "Failed to listen on socket"
+>=20
+>  #define QERR_SOCKET_BIND_FAILED \
+>      ERROR_CLASS_GENERIC_ERROR, "Failed to bind socket"
+> --
+> 1.9.3
+>=20
 
 
