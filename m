@@ -1,49 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XUslE-0000rX-0H
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Sep 2014 03:37:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47898)
+	id 1XUt1I-0003W4-Ni
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Sep 2014 03:54:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50081)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XUsl6-0000g2-KA
-	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 03:37:41 -0400
+	(envelope-from <armbru@redhat.com>) id 1XUt1D-0003Ox-4w
+	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 03:54:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XUsl1-0001v9-HP
-	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 03:37:36 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:16572)
+	(envelope-from <armbru@redhat.com>) id 1XUt18-0005bs-9l
+	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 03:54:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37082)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XUsl0-0001uS-N8; Fri, 19 Sep 2014 03:37:31 -0400
-Received: from 172.24.2.119 (EHLO SZXEMA406-HUB.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CBW60232; Fri, 19 Sep 2014 15:37:15 +0800 (CST)
-Received: from SZXEMA503-MBS.china.huawei.com ([169.254.6.188]) by
-	SZXEMA406-HUB.china.huawei.com ([10.82.72.38]) with mapi id
-	14.03.0158.001; Fri, 19 Sep 2014 15:37:12 +0800
-From: "Gonglei (Arei)" <arei.gonglei@huawei.com>
-To: Markus Armbruster <armbru@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH] qemu-socket: Polish errors for connect()
-	and	listen() failure
-Thread-Index: AQHP09tsndk+dvLVpUW7bJv2VaR+9ZwIECOQ
-Date: Fri, 19 Sep 2014 07:37:11 +0000
-Message-ID: <33183CC9F5247A488A2544077AF1902086DD8292@SZXEMA503-MBS.china.huawei.com>
-References: <1411111624-3064-1-git-send-email-armbru@redhat.com>
-In-Reply-To: <1411111624-3064-1-git-send-email-armbru@redhat.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.177.19.102]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <armbru@redhat.com>)
+	id 1XUt0y-0005Ql-4U; Fri, 19 Sep 2014 03:54:00 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s8J6suo0013772
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Fri, 19 Sep 2014 02:54:56 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-39.ams2.redhat.com
+	[10.36.116.39])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s8J6ss9p011496
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 19 Sep 2014 02:54:55 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id DE0D0303E568; Fri, 19 Sep 2014 08:54:53 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>
+References: <1411097848-3900-1-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Fri, 19 Sep 2014 08:54:53 +0200
+In-Reply-To: <1411097848-3900-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	(zhanghailiang's message of "Fri, 19 Sep 2014 11:37:28 +0800")
+Message-ID: <87wq90drr6.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"lcapitulino@redhat.com" <lcapitulino@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-socket: Polish errors
- for connect() and	listen() failure
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, luonengjun@huawei.com,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] vl: Fix possible freed
+	memory accessing
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,52 +53,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Sep 2014 07:37:41 -0000
+X-List-Received-Date: Fri, 19 Sep 2014 07:54:20 -0000
 
-> Subject: [Qemu-devel] [PATCH] qemu-socket: Polish errors for connect() an=
-d
-> listen() failure
->=20
-> connect() doesn't "connect to socket", it connects a socket to an
-> address and, if it's of type SOCK_STREAM, initiates a connection.
-> Scratch "to".
->=20
-> listen() does "set socket to listening mode", but it sounds awkward.
-> Change to "listen on socket".
->=20
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
+
+> The logic of pcmcia_socket_unregister is wrong,
+> which will cause a freed memory accessing
+>
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 > ---
->  include/qapi/qmp/qerror.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
+> Hi,
+>
+> The function pcmcia_socket_unregister seemes to be unused,
+> Should it be removed? Thanks.
 
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+I think we should remove the whole thing: pcmcia_sockets,
+pcmcia_socket_register(), pcmcia_socket_unregister, pcmcia_info().
+Here's why.
 
-And Cc'ing qemu-trivial@
+It serves just one purpose: "info pcmcia".  HMP-only, therefore not a
+stable interface.  But is it a useful one?
 
-Best regards,
--Gonglei
+The only caller of pcmcia_socket_register() is pxa2xx_pcmcia_realize(),
+of device model "pxa2xx-pcmcia".  As far as I can tell, used only by a
+couple of ARM boards: "verdex", "mainstone", "akita", "spitz", "borzoi",
+"terrier", "z2", "connex", "tosa".
 
-> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-> index 902d1a7..774e75d 100644
-> --- a/include/qapi/qmp/qerror.h
-> +++ b/include/qapi/qmp/qerror.h
-> @@ -155,10 +155,10 @@ void qerror_report_err(Error *err);
->      ERROR_CLASS_GENERIC_ERROR, "this feature or command is not
-> currently supported"
->=20
->  #define QERR_SOCKET_CONNECT_FAILED \
-> -    ERROR_CLASS_GENERIC_ERROR, "Failed to connect to socket"
-> +    ERROR_CLASS_GENERIC_ERROR, "Failed to connect socket"
->=20
->  #define QERR_SOCKET_LISTEN_FAILED \
-> -    ERROR_CLASS_GENERIC_ERROR, "Failed to set socket to listening mode"
-> +    ERROR_CLASS_GENERIC_ERROR, "Failed to listen on socket"
->=20
->  #define QERR_SOCKET_BIND_FAILED \
->      ERROR_CLASS_GENERIC_ERROR, "Failed to bind socket"
-> --
-> 1.9.3
->=20
+Of these, only "akita", "spitz", "borzoi", "terrier" and "tosa" insert a
+card into the slot, and they do so right on board initialization.
+Nothing ever ejects a card from a slot.  Therefore, "info pcmcia"
+effectively prints a fixed, machine-specific string so far.  Doesn't
+sound useful to me.
 
+If we acquire PCMCIA devices where querying status is interesting, we'll
+want a QMP command, so this code will be pretty much useless.
+
+Peter M., what do you think?
 
