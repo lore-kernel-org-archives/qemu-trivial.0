@@ -1,38 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XVFBU-0006jk-O1
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Sep 2014 03:34:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36823)
+	id 1XVL1F-0001uV-Cr
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Sep 2014 09:48:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47092)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XVFBP-0006dX-EP
-	for qemu-trivial@nongnu.org; Sat, 20 Sep 2014 03:34:19 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XVL18-0001iy-Gq
+	for qemu-trivial@nongnu.org; Sat, 20 Sep 2014 09:48:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XVFBL-0001fI-0T
-	for qemu-trivial@nongnu.org; Sat, 20 Sep 2014 03:34:15 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:23802)
+	(envelope-from <mjt@tls.msk.ru>) id 1XVL12-0001KT-8T
+	for qemu-trivial@nongnu.org; Sat, 20 Sep 2014 09:48:02 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40955)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XVFBA-0001Qz-Bx; Sat, 20 Sep 2014 03:34:02 -0400
-Received: from 172.24.2.119 (EHLO szxeml449-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CBX58759; Sat, 20 Sep 2014 15:33:40 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml449-hub.china.huawei.com
-	(10.82.67.192) with Microsoft SMTP Server id 14.3.158.1;
-	Sat, 20 Sep 2014 15:33:29 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Sat, 20 Sep 2014 15:33:18 +0800
-Message-ID: <1411198398-2140-1-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XVL0p-0001HY-P7; Sat, 20 Sep 2014 09:47:43 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 4990F45930;
+	Sat, 20 Sep 2014 17:47:29 +0400 (MSK)
+Message-ID: <541D8571.8070005@msgid.tls.msk.ru>
+Date: Sat, 20 Sep 2014 17:47:29 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.7.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: peter.maydell@linaro.org, weidong.huang@huawei.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, Gonglei <arei.gonglei@huawei.com>, pbonzini@redhat.com
-Subject: [Qemu-trivial] [PATCH] configure: trivial fixes
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1411198398-2140-1-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1411198398-2140-1-git-send-email-arei.gonglei@huawei.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, weidong.huang@huawei.com,
+	pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] configure: trivial fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,51 +45,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Sep 2014 07:34:20 -0000
+X-List-Received-Date: Sat, 20 Sep 2014 13:48:08 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+Applied to -trivial, thank you!
 
-Make them consistent with the others.
-
-Cc: qemu-trivial@nongnu.org
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
----
- configure | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/configure b/configure
-index fb194fd..8ea93fc 100755
---- a/configure
-+++ b/configure
-@@ -1349,7 +1349,7 @@ Advanced options (experts only):
-   --enable-linux-aio       enable Linux AIO support
-   --disable-cap-ng         disable libcap-ng support
-   --enable-cap-ng          enable libcap-ng support
--  --disable-attr           disables attr and xattr support
-+  --disable-attr           disable attr and xattr support
-   --enable-attr            enable attr and xattr support
-   --disable-blobs          disable installing provided firmware blobs
-   --enable-docs            enable documentation build
-@@ -1380,7 +1380,7 @@ Advanced options (experts only):
-   --with-vss-sdk=SDK-path  enable Windows VSS support in QEMU Guest Agent
-   --with-win-sdk=SDK-path  path to Windows Platform SDK (to build VSS .tlb)
-   --disable-seccomp        disable seccomp support
--  --enable-seccomp         enables seccomp support
-+  --enable-seccomp         enable seccomp support
-   --with-coroutine=BACKEND coroutine backend. Supported options:
-                            gthread, ucontext, sigaltstack, windows
-   --disable-coroutine-pool disable coroutine freelist (worse performance)
-@@ -1395,7 +1395,7 @@ Advanced options (experts only):
-   --enable-tpm             enable TPM support
-   --disable-libssh2        disable ssh block device support
-   --enable-libssh2         enable ssh block device support
--  --disable-vhdx           disables support for the Microsoft VHDX image format
-+  --disable-vhdx           disable support for the Microsoft VHDX image format
-   --enable-vhdx            enable support for the Microsoft VHDX image format
-   --disable-quorum         disable quorum block filter support
-   --enable-quorum          enable quorum block filter support
--- 
-1.7.12.4
-
-
+/mjt
 
