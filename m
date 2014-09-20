@@ -1,28 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XV57W-0006Ry-CO
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Sep 2014 16:49:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51248)
+	id 1XV8HY-0005K0-8m
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Sep 2014 20:12:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46139)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1XV57P-0006IQ-SZ
-	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 16:49:32 -0400
+	(envelope-from <akong@redhat.com>) id 1XV8HQ-0005Jq-N3
+	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 20:12:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1XV57K-0007Bk-Vv
-	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 16:49:27 -0400
-Received: from qemu.weilnetz.de ([37.221.198.45]:38837)
+	(envelope-from <akong@redhat.com>) id 1XV8HK-0003ob-H3
+	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 20:12:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54668)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1XV57A-00078F-Nb; Fri, 19 Sep 2014 16:49:12 -0400
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 60E1C17F8AE; Fri, 19 Sep 2014 22:49:04 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Date: Fri, 19 Sep 2014 22:49:03 +0200
-Message-Id: <1411159743-28175-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <akong@redhat.com>)
+	id 1XV8HK-0003ke-9T; Fri, 19 Sep 2014 20:11:54 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s8K0Bj6H022839
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Fri, 19 Sep 2014 20:11:45 -0400
+Received: from air.redhat.com (vpn1-112-152.nay.redhat.com [10.66.112.152])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s8K0Bf2Z024290; Fri, 19 Sep 2014 20:11:43 -0400
+From: Amos Kong <akong@redhat.com>
+To: qemu-trivial@nongnu.org
+Date: Sat, 20 Sep 2014 08:11:41 +0800
+Message-Id: <1411171901-13792-1-git-send-email-akong@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.198.45
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH] pc: Add missing 'static' attribute
+X-Received-From: 209.132.183.28
+Cc: jen@redhat.com, afaerber@suse.de, aliguori@amazon.com,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] qom: suppress conscan warning of returning
+	null point
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -34,29 +42,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Sep 2014 20:49:32 -0000
+X-List-Received-Date: Sat, 20 Sep 2014 00:12:07 -0000
 
-This fixes a warning from smatch (static code analysis).
+Conscan complains about g_malloc0() and malloc() return null.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+  Error: NULL_RETURNS (CWE-476):
+  qemu-kvm/qom/object.c:239: returned_null: Function "g_malloc0(gsize)" returns null.
+  qemu-kvm/qom/object.c:239: var_assigned: Assigning: "ti->class" = null return value from "g_malloc0(gsize)".
+  qemu-kvm/qom/object.c:249: dereference: Dereferencing a null pointer "ti->class".
+
+But if the passed size parameter is >= 1, then we can always get an
+effective pointer, the warning disappears.
+
+Signed-off-by: Amos Kong <akong@redhat.com>
 ---
- hw/i386/pc.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ qom/object.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 2c2e9dc..82a7daa 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -75,7 +75,7 @@
- /* Leave a chunk of memory at the top of RAM for the BIOS ACPI tables
-  * (128K) and other BIOS datastructures (less than 4K reported to be used at
-  * the moment, 32K should be enough for a while).  */
--unsigned acpi_data_size = 0x20000 + 0x8000;
-+static unsigned acpi_data_size = 0x20000 + 0x8000;
- void pc_set_legacy_acpi_data_size(void)
- {
-     acpi_data_size = 0x10000;
+diff --git a/qom/object.c b/qom/object.c
+index da0919a..0fbf2df 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -252,6 +252,7 @@ static void type_initialize(TypeImpl *ti)
+     ti->class_size = type_class_get_size(ti);
+     ti->instance_size = type_object_get_size(ti);
+ 
++    g_assert(ti->class_size != 0);
+     ti->class = g_malloc0(ti->class_size);
+ 
+     parent = type_get_parent(ti);
+@@ -424,6 +425,7 @@ Object *object_new_with_type(Type type)
+     g_assert(type != NULL);
+     type_initialize(type);
+ 
++    g_assert(type->instance_size != 0);
+     obj = g_malloc(type->instance_size);
+     object_initialize_with_type(obj, type->instance_size, type);
+     obj->free = g_free;
 -- 
-1.7.10.4
+1.9.3
 
 
