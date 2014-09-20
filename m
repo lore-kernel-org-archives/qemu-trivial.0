@@ -1,50 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XVAcp-00033b-UN
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Sep 2014 22:42:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32768)
+	id 1XVE6c-0006UX-5E
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Sep 2014 02:25:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57354)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XVAcj-0002tJ-2q
-	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 22:42:13 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1XVE6Q-00069Q-NI
+	for qemu-trivial@nongnu.org; Sat, 20 Sep 2014 02:25:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XVAce-0004RQ-9N
-	for qemu-trivial@nongnu.org; Fri, 19 Sep 2014 22:42:09 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:9550)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1XVE6H-0002vh-Ns
+	for qemu-trivial@nongnu.org; Sat, 20 Sep 2014 02:25:02 -0400
+Received: from mail-we0-x235.google.com ([2a00:1450:400c:c03::235]:49273)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XVAcP-00048e-14; Fri, 19 Sep 2014 22:41:50 -0400
-Received: from 172.24.2.119 (EHLO SZXEMA403-HUB.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id BZR97915; Sat, 20 Sep 2014 10:41:25 +0800 (CST)
-Received: from SZXEMA503-MBS.china.huawei.com ([169.254.6.188]) by
-	SZXEMA403-HUB.china.huawei.com ([10.82.72.35]) with mapi id
-	14.03.0158.001; Sat, 20 Sep 2014 10:41:19 +0800
-From: "Gonglei (Arei)" <arei.gonglei@huawei.com>
-To: Amos Kong <akong@redhat.com>, "qemu-trivial@nongnu.org"
-	<qemu-trivial@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH] qom: suppress conscan warning of
-	returning	null point
-Thread-Index: AQHP1GeqqJaGuaVYzUWpZCM+k83nWpwJTgJA
-Date: Sat, 20 Sep 2014 02:41:18 +0000
-Message-ID: <33183CC9F5247A488A2544077AF1902086DD89A4@SZXEMA503-MBS.china.huawei.com>
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1XVE5z-0002tb-EY; Sat, 20 Sep 2014 02:24:35 -0400
+Received: by mail-we0-f181.google.com with SMTP id q59so659287wes.40
+	for <multiple recipients>; Fri, 19 Sep 2014 23:24:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=Ex5NDa/hEhs+Ynr/hX2oiYvpoANRuYv7f2Bo2YojP7I=;
+	b=iiCgxEhDM+kVdv9dJMVMxHWjshnfszl/JvXWQQSjsdEhtHKvPTBk0F4AVZQxmQC2u8
+	KdAf84prVvzb4KjvpNThptWXqrtXkhbim7NF8VdKNaTBE40xZZWOwbUyDQ5CKsxSrsdx
+	Pi8FqmmBFyZm4BWkzJTzsSf5ySe9ph+b0nm0tY9B46k4WnSPLpq60kIWt7BOuMmuln6f
+	K7hhpN3f0q6gCOur6C/gCD0D8jLJCxEnN9nvYDgHnYuJ941pTT6T+net4oIJloAE0GG7
+	qGbo00JLyggrQWmdGe1wfnr+7H4FDO40x0DVbPc5jvhPM8R+Y0Q32vlQOuSk8l49Hrjw
+	ahOg==
+X-Received: by 10.194.58.108 with SMTP id p12mr5911331wjq.71.1411194269547;
+	Fri, 19 Sep 2014 23:24:29 -0700 (PDT)
+Received: from yakj.usersys.redhat.com
+	(net-37-116-212-135.cust.vodafonedsl.it. [37.116.212.135])
+	by mx.google.com with ESMTPSA id mx19sm4326104wic.3.2014.09.19.23.24.26
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 19 Sep 2014 23:24:28 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <541D1D9A.6020100@redhat.com>
+Date: Sat, 20 Sep 2014 08:24:26 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.0
+MIME-Version: 1.0
+To: Amos Kong <akong@redhat.com>, qemu-trivial@nongnu.org
 References: <1411171901-13792-1-git-send-email-akong@redhat.com>
 In-Reply-To: <1411171901-13792-1-git-send-email-akong@redhat.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.177.19.102]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"afaerber@suse.de" <afaerber@suse.de>, "jen@redhat.com" <jen@redhat.com>,
-	"aliguori@amazon.com" <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qom: suppress conscan
-	warning of returning	null point
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c03::235
+Cc: qemu-devel@nongnu.org, afaerber@suse.de, jen@redhat.com,
+	aliguori@amazon.com
+Subject: Re: [Qemu-trivial] [PATCH] qom: suppress conscan warning of
+	returning null point
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,37 +62,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Sep 2014 02:42:14 -0000
+X-List-Received-Date: Sat, 20 Sep 2014 06:25:12 -0000
 
-> Subject: [Qemu-devel] [PATCH] qom: suppress conscan warning of returning =
-null
-> point
->=20
+Il 20/09/2014 02:11, Amos Kong ha scritto:
 > Conscan complains about g_malloc0() and malloc() return null.
->=20
+> 
 >   Error: NULL_RETURNS (CWE-476):
->   qemu-kvm/qom/object.c:239: returned_null: Function "g_malloc0(gsize)"
-> returns null.
->   qemu-kvm/qom/object.c:239: var_assigned: Assigning: "ti->class" =3D nul=
-l
-> return value from "g_malloc0(gsize)".
->   qemu-kvm/qom/object.c:249: dereference: Dereferencing a null pointer
-> "ti->class".
->=20
-> But if the passed size parameter is >=3D 1, then we can always get an
+>   qemu-kvm/qom/object.c:239: returned_null: Function "g_malloc0(gsize)" returns null.
+>   qemu-kvm/qom/object.c:239: var_assigned: Assigning: "ti->class" = null return value from "g_malloc0(gsize)".
+>   qemu-kvm/qom/object.c:249: dereference: Dereferencing a null pointer "ti->class".
+> 
+> But if the passed size parameter is >= 1, then we can always get an
 > effective pointer, the warning disappears.
->=20
-> Signed-off-by: Amos Kong <akong@redhat.com>
-> ---
->  qom/object.c | 2 ++
->  1 file changed, 2 insertions(+)
->=20
 
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+The model should handle it:
 
-Best regards,
--Gonglei
+void *
+g_malloc0(size_t n_bytes)
+{
+    void *mem;
+    __coverity_negative_sink__(n_bytes);
+    mem = calloc(1, n_bytes == 0 ? 1 : n_bytes);
+    if (!mem) __coverity_panic__();
+    return mem;
+}
 
+So this patch means your coverity runs are misconfigured.
 
-
+Paolo
 
