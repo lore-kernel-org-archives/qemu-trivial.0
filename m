@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XVyqR-0003YM-NE
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Sep 2014 04:19:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45681)
+	id 1XVyqT-0003aD-CN
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Sep 2014 04:19:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45656)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XVyqK-0003JV-7V
+	(envelope-from <mjt@tls.msk.ru>) id 1XVyqJ-0003HN-9d
 	for qemu-trivial@nongnu.org; Mon, 22 Sep 2014 04:19:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XVyqF-0000d9-O7
-	for qemu-trivial@nongnu.org; Mon, 22 Sep 2014 04:19:32 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:42929)
+	(envelope-from <mjt@tls.msk.ru>) id 1XVyqA-0000aS-8e
+	for qemu-trivial@nongnu.org; Mon, 22 Sep 2014 04:19:31 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:59884)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XVyq4-0000VU-B5; Mon, 22 Sep 2014 04:19:16 -0400
+	id 1XVypy-0000U7-KR; Mon, 22 Sep 2014 04:19:10 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8843445D11;
+	by isrv.corpit.ru (Postfix) with ESMTP id 5C69945D0D;
 	Mon, 22 Sep 2014 12:19:04 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 217F26D9;
+	by tsrv.corpit.ru (Postfix) with SMTP id 5A439704;
 	Mon, 22 Sep 2014 12:11:19 +0400 (MSK)
-Received: (nullmailer pid 16992 invoked by uid 1000);
+Received: (nullmailer pid 17002 invoked by uid 1000);
 	Mon, 22 Sep 2014 08:11:18 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 22 Sep 2014 12:11:11 +0400
-Message-Id: <1411373477-16938-4-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Mon, 22 Sep 2014 12:11:16 +0400
+Message-Id: <1411373477-16938-9-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1411373477-16938-1-git-send-email-mjt@tls.msk.ru>
 References: <1411373477-16938-1-git-send-email-mjt@tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>
-Subject: [Qemu-trivial] [PULL 3/9] rdma: Fix incorrect description in
-	comments
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 8/9] pc: Add missing 'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,75 +43,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Sep 2014 08:19:36 -0000
+X-List-Received-Date: Mon, 22 Sep 2014 08:19:37 -0000
 
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Since we have supported memory hotplug, VM's ram include pc.ram
-and hotplug-memory.
+This fixes a warning from smatch (static code analysis).
 
-Fix the confused description for rdma migration: pc.ram -> VM's ram
-
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/rdma.txt    |    6 +++---
- migration-rdma.c |    4 ++--
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ hw/i386/pc.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/rdma.txt b/docs/rdma.txt
-index 1f5d9e9..2bdd0a5 100644
---- a/docs/rdma.txt
-+++ b/docs/rdma.txt
-@@ -18,7 +18,7 @@ Contents:
- * RDMA Migration Protocol Description
- * Versioning and Capabilities
- * QEMUFileRDMA Interface
--* Migration of pc.ram
-+* Migration of VM's ram
- * Error handling
- * TODO
- 
-@@ -149,7 +149,7 @@ The only difference between a SEND message and an RDMA
- message is that SEND messages cause notifications
- to be posted to the completion queue (CQ) on the
- infiniband receiver side, whereas RDMA messages (used
--for pc.ram) do not (to behave like an actual DMA).
-+for VM's ram) do not (to behave like an actual DMA).
- 
- Messages in infiniband require two things:
- 
-@@ -355,7 +355,7 @@ If the buffer is empty, then we follow the same steps
- listed above and issue another "QEMU File" protocol command,
- asking for a new SEND message to re-fill the buffer.
- 
--Migration of pc.ram:
-+Migration of VM's ram:
- ====================
- 
- At the beginning of the migration, (migration-rdma.c),
-diff --git a/migration-rdma.c b/migration-rdma.c
-index d99812c..b32dbdf 100644
---- a/migration-rdma.c
-+++ b/migration-rdma.c
-@@ -2523,7 +2523,7 @@ static void *qemu_rdma_data_init(const char *host_port, Error **errp)
- /*
-  * QEMUFile interface to the control channel.
-  * SEND messages for control only.
-- * pc.ram is handled with regular RDMA messages.
-+ * VM's ram is handled with regular RDMA messages.
-  */
- static int qemu_rdma_put_buffer(void *opaque, const uint8_t *buf,
-                                 int64_t pos, int size)
-@@ -2539,7 +2539,7 @@ static int qemu_rdma_put_buffer(void *opaque, const uint8_t *buf,
- 
-     /*
-      * Push out any writes that
--     * we're queued up for pc.ram.
-+     * we're queued up for VM's ram.
-      */
-     ret = qemu_rdma_write_flush(f, rdma);
-     if (ret < 0) {
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 2c2e9dc..82a7daa 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -75,7 +75,7 @@
+ /* Leave a chunk of memory at the top of RAM for the BIOS ACPI tables
+  * (128K) and other BIOS datastructures (less than 4K reported to be used at
+  * the moment, 32K should be enough for a while).  */
+-unsigned acpi_data_size = 0x20000 + 0x8000;
++static unsigned acpi_data_size = 0x20000 + 0x8000;
+ void pc_set_legacy_acpi_data_size(void)
+ {
+     acpi_data_size = 0x10000;
 -- 
 1.7.10.4
 
