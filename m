@@ -1,49 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XWNwx-0007di-NC
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Sep 2014 07:08:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53337)
+	id 1XWhNn-0003xD-0D
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Sep 2014 03:53:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56891)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XWNwr-0007UU-DQ
-	for qemu-trivial@nongnu.org; Tue, 23 Sep 2014 07:08:02 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XWhNh-0003oR-JU
+	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 03:53:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XWNwj-00021M-Qi
-	for qemu-trivial@nongnu.org; Tue, 23 Sep 2014 07:07:57 -0400
-Received: from mail-lb0-f175.google.com ([209.85.217.175]:49406)
+	(envelope-from <mjt@tls.msk.ru>) id 1XWhNd-0004O7-51
+	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 03:52:57 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:36944)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XWNwj-00020M-KV
-	for qemu-trivial@nongnu.org; Tue, 23 Sep 2014 07:07:49 -0400
-Received: by mail-lb0-f175.google.com with SMTP id w7so2794589lbi.20
-	for <qemu-trivial@nongnu.org>; Tue, 23 Sep 2014 04:07:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=75S63wCy55y89qd+f0U11kRgzofJeYZyp4mDGZ9ZStY=;
-	b=NQ6EMCu68g7oUeL7D0pYReioaXFt9bG7tqe3hlLI8e3O/JOaC/51aoa2OMAsX6dnmQ
-	bnOCou522UuHHvV17Re8CtydZ8iwXYZT3G+U8tShtenZiuTAYRVBO2689qhsjIS6OaRX
-	WNQVGqt40GXgtlgi5z1m5fj7HiqbGHszQ9QsdJTlfI0Y5VMDOzWSx4H6W2KGB6uhkH7C
-	P1Lcppwi3N2pUXQebjusVHENKcOUSItjp4+4yfPdYgg6U8QznSygbJS2ZzHvEhFDjVvx
-	xWjtsbOF6WQi+oov4FiP9SfC3vI7ieWZwzBPyQzAVfsysytk30A/W134SrSjvoHuB5h3
-	IAoQ==
-X-Gm-Message-State: ALoCoQla6gEo5grUpwrKTTYHFIjsc5Vo9elL0UllWUqkOeuDENxmBdIpXj1Mc3BvIoeczIaM5+Qz
-X-Received: by 10.112.130.101 with SMTP id od5mr8876895lbb.76.1411470463121;
-	Tue, 23 Sep 2014 04:07:43 -0700 (PDT)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XWhNT-0004M7-Sp; Wed, 24 Sep 2014 03:52:44 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 38DED46497;
+	Wed, 24 Sep 2014 11:52:37 +0400 (MSK)
+Message-ID: <54227845.6090508@msgid.tls.msk.ru>
+Date: Wed, 24 Sep 2014 11:52:37 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.7.0
 MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Tue, 23 Sep 2014 04:07:23 -0700 (PDT)
-In-Reply-To: <1411373477-16938-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1411373477-16938-1-git-send-email-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 23 Sep 2014 12:07:23 +0100
-Message-ID: <CAFEAcA9YQF-S25cWXKP7Xv5vbrkhnbooeVa3=DE-AAJw0W_1tA@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
+To: Zifei Tong <zifeitong@gmail.com>, qemu-devel@nongnu.org
+References: <1410092666-17405-1-git-send-email-zifeitong@gmail.com>
+	<CAJ7wx-FqAPy85ROq3cprYmA39X--z83jBaLhhpwocXRHHnqc8w@mail.gmail.com>
+In-Reply-To: <CAJ7wx-FqAPy85ROq3cprYmA39X--z83jBaLhhpwocXRHHnqc8w@mail.gmail.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.175
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 0/9] Trivial patches for
-	2014-09-22
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org,
+	Nikolay Nikolaev <n.nikolaev@virtualopensystems.com>,
+	Anthony Liguori <aliguori@amazon.com>, Kirill Batuzov <batuzovk@ispras.ru>
+Subject: Re: [Qemu-trivial] [PATCH] qemu-char: Do not disconnect when
+ there's data for reading
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,35 +48,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Sep 2014 11:08:02 -0000
+X-List-Received-Date: Wed, 24 Sep 2014 07:53:02 -0000
 
-On 22 September 2014 09:11, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Here's a next (small) batch of trivial stuff.  Accumulated for over
-> 2 weeks, but still quite small.  Random tiny things here and there.
-> Please consider pulling/applying.
->
-> Thanks,
->
-> /mjt
->
-> The following changes since commit 07e2863d0271ac6c05206d8ce9e4f4c39b25d3ea:
->
->   exec.c: fix setting 1-byte-long watchpoints (2014-09-19 17:42:16 +0100)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-09-22
->
-> for you to fetch changes up to 7e3d523883202396ae7ff8bafcc796c86e026adc:
->
->   arch_init: Setting QEMU_ARCH enum straight (2014-09-22 12:09:43 +0400)
->
-> ----------------------------------------------------------------
-> trivial patches for 2014-09-22
->
-> ----------------------------------------------------------------
+16.09.2014 09:31, Zifei Tong wrote:
+> Friendly ping.
+> 
+> Also CC to qemu-trivial.
 
-Applied, thanks.
+There was at least 2 subsequent versions of this down the line,
+a v2 and a v3.  (Just to show why I haven't applied it to -trivial).
 
--- PMM
+Thanks,
+
+/mjt
+
+> On Sun, Sep 7, 2014 at 8:24 PM, Zifei Tong <zifeitong@gmail.com> wrote:
+>> After commit 812c1057f6175ac9a9829fa2920a2b5783814193 (Handle G_IO_HUP
+>> in tcp_chr_read for tcp chardev), the connection is disconnected when in
+>> G_IO_HUP condition.
+>>
+>> However, it's possible that the channel is in G_IO_IN condition at the
+>> same time, meaning there is data for reading. In that case, the
+>> remaining data is not handled.
+>>
+>> I saw a related bug when running socat in write-only mode, with
+>>
+>>   $ echo "quit" | socat -u - UNIX-CONNECT:qemu-monitor
+>>
+>> the monitor won't not run the 'quit' command.
+>>
+>> CC: Kirill Batuzov <batuzovk@ispras.ru>
+>> CC: Nikolay Nikolaev <n.nikolaev@virtualopensystems.com>
+>> CC: Anthony Liguori <aliguori@amazon.com>
+>> Signed-off-by: Zifei Tong <zifeitong@gmail.com>
+>> ---
+>>  qemu-char.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/qemu-char.c b/qemu-char.c
+>> index 1a8d9aa..5018c3a 100644
+>> --- a/qemu-char.c
+>> +++ b/qemu-char.c
+>> @@ -2706,7 +2706,7 @@ static gboolean tcp_chr_read(GIOChannel *chan, GIOCondition cond, void *opaque)
+>>      uint8_t buf[READ_BUF_LEN];
+>>      int len, size;
+>>
+>> -    if (cond & G_IO_HUP) {
+>> +    if (!(cond & G_IO_IN) && (cond & G_IO_HUP)) {
+>>          /* connection closed */
+>>          tcp_chr_disconnect(chr);
+>>          return TRUE;
+>> --
+>> 2.1.0
+>>
+> 
+
 
