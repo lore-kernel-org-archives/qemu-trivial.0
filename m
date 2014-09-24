@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XWjaS-0005rZ-SF
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Sep 2014 06:14:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55553)
+	id 1XWjaV-0005wC-6H
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Sep 2014 06:14:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1XWjaL-0005mT-EQ
-	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 06:14:14 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1XWjaN-0005mX-Nt
+	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 06:14:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1XWjaG-0006Bo-TG
-	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 06:14:09 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1XWjaG-0006Bh-FA
+	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 06:14:11 -0400
 Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:48780 helo=socrates.bennee.com)
+	([88.198.71.155]:48777 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1XWjaG-0006AL-Mk; Wed, 24 Sep 2014 06:14:04 -0400
+	id 1XWjaG-0006AG-9j; Wed, 24 Sep 2014 06:14:04 -0400
 Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
 	by socrates.bennee.com with esmtp (Exim 4.80)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1XWjxC-0005zG-Fu; Wed, 24 Sep 2014 12:37:46 +0200
+	id 1XWjxB-0005zG-Vw; Wed, 24 Sep 2014 12:37:46 +0200
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-trivial@nongnu.org
-Date: Wed, 24 Sep 2014 11:13:56 +0100
-Message-Id: <1411553636-24717-5-git-send-email-alex.bennee@linaro.org>
+Date: Wed, 24 Sep 2014 11:13:55 +0100
+Message-Id: <1411553636-24717-4-git-send-email-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.1.0
 In-Reply-To: <1411553636-24717-1-git-send-email-alex.bennee@linaro.org>
 References: <1411553636-24717-1-git-send-email-alex.bennee@linaro.org>
@@ -34,8 +34,8 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 88.198.71.155
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-devel@nongnu.org, agraf@suse.de
-Subject: [Qemu-trivial] [PATCH v2 4/4] .travis.yml: remove "make check" from
-	main matrix
+Subject: [Qemu-trivial] [PATCH v2 3/4] .travis.yml: pre-seed sub-modules for
+	speed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,62 +47,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Sep 2014 10:14:14 -0000
+X-List-Received-Date: Wed, 24 Sep 2014 10:14:16 -0000
 
-There are problems with unreliability in "make check" which still need
-to be tracked down. As the tests are broadly the same for all targets if
-added one explicit target to the matrix to run it. However this does
-build all softmmu targets to ensure they at least "run"
+A significant portion of the build time is spent initialising all the
+sub-modules we use in the source tree. Often this is almost as long as
+the build itself. By pre-seeding the .git/modules tree this will
+hopefully improve things.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Alexander Graf <agraf@suse.de>
 
+---
+v2
+  - use wget -O - | tar as suggested by agraf
+
 diff --git a/.travis.yml b/.travis.yml
-index b9025be..ad66e5b 100644
+index f113339..b9025be 100644
 --- a/.travis.yml
 +++ b/.travis.yml
-@@ -12,7 +12,7 @@ notifications:
-     on_failure: always
- env:
-   global:
--    - TEST_CMD="make check"
-+    - TEST_CMD=""
-     - EXTRA_CONFIG=""
-     # Development packages, EXTRA_PKGS saved for additional builds
-     - CORE_PKGS="libusb-1.0-0-dev libiscsi-dev librados-dev libncurses5-dev"
-@@ -48,10 +48,23 @@ before_install:
- before_script:
-   - ./configure --target-list=${TARGETS} --enable-debug-tcg ${EXTRA_CONFIG}
- script:
--  - make -j2 && {TEST_CMD}
-+  - make -j2 && ${TEST_CMD}
- matrix:
-   # We manually include a number of additional build for non-standard bits
-   include:
-+    # Make check target (we only do this once)
-+    - env:
-+        - TARGETS=alpha-softmmu,arm-softmmu,aarch64-softmmu,cris-softmmu,
-+                  i386-softmmu,x86_64-softmmu,m68k-softmmu,microblaze-softmmu,
-+                  microblazeel-softmmu,mips-softmmu,mips64-softmmu,
-+                  mips64el-softmmu,mipsel-softmmu,or32-softmmu,ppc-softmmu,
-+                  ppc64-softmmu,ppcemb-softmmu,s390x-softmmu,sh4-softmmu,
-+                  sh4eb-softmmu,sparc-softmmu,sparc64-softmmu,
-+                  unicore32-softmmu,unicore32-linux-user,
-+                  lm32-softmmu,moxie-softmmu,tricore-softmmu,xtensa-softmmu,
-+                  xtensaeb-softmmu
-+          TEST_CMD="make check"
-+      compiler: gcc
-     # Debug related options
-     - env: TARGETS=i386-softmmu,x86_64-softmmu
-            EXTRA_CONFIG="--enable-debug"
-@@ -80,7 +93,6 @@ matrix:
-       compiler: gcc
-     - env: TARGETS=i386-softmmu,x86_64-softmmu
-            EXTRA_CONFIG="--enable-trace-backends=ftrace"
--           TEST_CMD=""
-       compiler: gcc
-     - env: TARGETS=i386-softmmu,x86_64-softmmu
-           EXTRA_PKGS="liblttng-ust-dev liburcu-dev"
+@@ -37,7 +37,11 @@ env:
+     - TARGETS=unicore32-softmmu,unicore32-linux-user
+     # Group remaining softmmu only targets into one build
+     - TARGETS=lm32-softmmu,moxie-softmmu,tricore-softmmu,xtensa-softmmu,xtensaeb-softmmu
++git:
++  # we want to do this ourselves
++  submodules: false
+ before_install:
++  - wget -O - http://people.linaro.org/~alex.bennee/qemu-submodule-git-seed.tar.xz | tar -xvJ
+   - git submodule update --init --recursive
+   - sudo apt-get update -qq
+   - sudo apt-get install -qq ${CORE_PKGS} ${NET_PKGS} ${GUI_PKGS} ${EXTRA_PKGS}
 -- 
 2.1.0
 
