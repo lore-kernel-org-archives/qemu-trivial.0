@@ -1,51 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XWiiV-0005hT-PI
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Sep 2014 05:18:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45365)
+	id 1XWjaR-0005nw-8I
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Sep 2014 06:14:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55539)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XWiiP-0005hC-Sb
-	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 05:18:30 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1XWjaK-0005lt-Mz
+	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 06:14:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XWiiK-00012C-Tl
-	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 05:18:25 -0400
-Received: from mail-lb0-f179.google.com ([209.85.217.179]:56690)
+	(envelope-from <alex.bennee@linaro.org>) id 1XWjaF-0006B9-U0
+	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 06:14:08 -0400
+Received: from static.88-198-71-155.clients.your-server.de
+	([88.198.71.155]:48772 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XWiiK-00011e-Mg
-	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 05:18:20 -0400
-Received: by mail-lb0-f179.google.com with SMTP id 10so9616256lbg.38
-	for <qemu-trivial@nongnu.org>; Wed, 24 Sep 2014 02:18:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=f/xHBrW19cIOvFozEUIVBTiwi9olZeR6zvXNxyqNg58=;
-	b=TfatBTRKREt2oEm8eSBgd95Fcu/lfZzUVu9qtQSP3BfQCtgnkqM3aPCY01oFnl8T91
-	9f4o+/XOx0Bah8OMgHZ5ps9FEJ81XV3AOqCCLBaenE8Fw0bxNzjs2MFrP6z0jI3LPa/+
-	v0lKO1L0rBtRiZ68QWicaLftGb0OkuYgXqxdEacbMALEi4u1nzFfAaS+mAMN1gTsm5zV
-	oc22ni94cp3H39OLVVcAhXgHhcldk0vfb2SJ8yV/PP++e9PAFgLerDoHl5F2YZUGT059
-	cvzBqVhipt8SuVs8eroKbYurUN6282erp9VJbUckpYjuK4IU0OtaJEpNsn8IA+8O9PDS
-	TS0Q==
-X-Gm-Message-State: ALoCoQkAyu2uag8HfQV7z4/Fm7eu8EsBkV5ZcV0rifoCeIpUSOFO8UQocDWSPObfEG8RAVVqWypX
-X-Received: by 10.152.2.41 with SMTP id 9mr4943615lar.79.1411549802704; Wed,
-	24 Sep 2014 02:10:02 -0700 (PDT)
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1XWjaF-0006A7-NY; Wed, 24 Sep 2014 06:14:03 -0400
+Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
+	by socrates.bennee.com with esmtp (Exim 4.80)
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1XWjxB-0005zG-4W; Wed, 24 Sep 2014 12:37:45 +0200
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-trivial@nongnu.org
+Date: Wed, 24 Sep 2014 11:13:53 +0100
+Message-Id: <1411553636-24717-2-git-send-email-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.1.0
+In-Reply-To: <1411553636-24717-1-git-send-email-alex.bennee@linaro.org>
+References: <1411553636-24717-1-git-send-email-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Wed, 24 Sep 2014 02:09:42 -0700 (PDT)
-In-Reply-To: <542279B5.7070502@msgid.tls.msk.ru>
-References: <1411061124-21108-1-git-send-email-tklauser@distanz.ch>
-	<542279B5.7070502@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 24 Sep 2014 02:09:42 -0700
-Message-ID: <CAFEAcA_q=L6vk0Snn3a2wz+VzvXXCGm6D+ZakD=HCDw1F7rP1w@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.179
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Tobias Klauser <tklauser@distanz.ch>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] disas/arm: Remove
- redefinition of ATTRIBUTE_UNUSED
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 127.0.0.1
+X-SA-Exim-Mail-From: alex.bennee@linaro.org
+X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 88.198.71.155
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org, agraf@suse.de
+Subject: [Qemu-trivial] [PATCH v2 1/4] .travis.yml: add more linux-user to
+	the build matrix
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,37 +47,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Sep 2014 09:18:30 -0000
+X-List-Received-Date: Wed, 24 Sep 2014 10:14:13 -0000
 
-On 24 September 2014 00:58, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 18.09.2014 21:25, Tobias Klauser wrote:
->> ATTRIBUTE_UNUSED is already defined in disas/bfd.h, which is included.
->> Thus, there is no need to redefine it.
->
-> Is there any harm in keeping it here?
->
-> While it really is a redifinition, I'm not sure what's the right thing
-> here.  This whole code is not from qemu, it is an external source imported,
-> and that source is being maintained (but under different license as has
-> already been discussed, so keeping changes at minimum might not be that
-> good idea anymore).  On the other hand this symbol is so common it should
-> be defined in a common header.  Yet on another hand, for these external
-> sources wich has public API, it might not be a good idea to define it in
-> a header to start with, because it might clash with project-local define,
-> so it might be better to define it in either private header or in individual
-> source.
+At the same time I've grouped the $ARCH-linux-user and $ARCH-softmmu
+builds together (hoping FS cache helps) and grouped all $ARCH-softmmu
+only builds into one target. This reduces the build matrix slightly
+which will hopefully help with build times.
 
-So my take on the disas/ sources is:
- * yes, they're from an external source
- * but as you say, we're never going to take another drop from that
-   external source so we should feel free to make local bugfixes
-   and changes as we need to
- * on the other hand, there's no point in making gratuitous changes
-   to them (they're never going to match the QEMU coding style,
-   for instance)
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Alexander Graf <agraf@suse.de>
 
-So what's the rationale for this particular change? The duplication
-is harmless, so why worry about it...
+diff --git a/.travis.yml b/.travis.yml
+index 89c30ae..72cfc9f 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -20,23 +20,23 @@ env:
+     - GUI_PKGS="libgtk-3-dev libvte-2.90-dev libsdl1.2-dev libpng12-dev libpixman-1-dev"
+     - EXTRA_PKGS=""
+   matrix:
++    # Group major targets together with their linux-user counterparts
+     - TARGETS=alpha-softmmu,alpha-linux-user
+-    - TARGETS=arm-softmmu,arm-linux-user
+-    - TARGETS=aarch64-softmmu,aarch64-linux-user
+-    - TARGETS=cris-softmmu
+-    - TARGETS=i386-softmmu,x86_64-softmmu
+-    - TARGETS=lm32-softmmu
+-    - TARGETS=m68k-softmmu
+-    - TARGETS=microblaze-softmmu,microblazeel-softmmu
++    - TARGETS=arm-softmmu,arm-linux-user,armeb-linux-user,aarch64-softmmu,aarch64-linux-user
++    - TARGETS=cris-softmmu,cris-linux-user
++    - TARGETS=i386-softmmu,i386-linux-user,x86_64-softmmu,x86_64-linux-user
++    - TARGETS=m68k-softmmu,m68k-linux-user
++    - TARGETS=microblaze-softmmu,microblazeel-softmmu,microblaze-linux-user,microblazeel-linux-user
+     - TARGETS=mips-softmmu,mips64-softmmu,mips64el-softmmu,mipsel-softmmu
+-    - TARGETS=moxie-softmmu
+-    - TARGETS=or32-softmmu,
+-    - TARGETS=ppc-softmmu,ppc64-softmmu,ppcemb-softmmu
+-    - TARGETS=s390x-softmmu
+-    - TARGETS=sh4-softmmu,sh4eb-softmmu
+-    - TARGETS=sparc-softmmu,sparc64-softmmu
+-    - TARGETS=unicore32-softmmu
+-    - TARGETS=xtensa-softmmu,xtensaeb-softmmu
++    - TARGETS=mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,mipsn32-linux-user,mipsn32el-linux-user
++    - TARGETS=or32-softmmu,or32-linux-user
++    - TARGETS=ppc-softmmu,ppc64-softmmu,ppcemb-softmmu,ppc-linux-user,ppc64-linux-user,ppc64abi32-linux-user,ppc64le-linux-user
++    - TARGETS=s390x-softmmu,s390x-linux-user
++    - TARGETS=sh4-softmmu,sh4eb-softmmu,sh4-linux-user sh4eb-linux-user
++    - TARGETS=sparc-softmmu,sparc64-softmmu,sparc-linux-user,sparc32plus-linux-user,sparc64-linux-user
++    - TARGETS=unicore32-softmmu,unicore32-linux-user
++    # Group remaining softmmu only targets into one build
++    - TARGETS=lm32-softmmu,moxie-softmmu,tricore-softmmu,xtensa-softmmu,xtensaeb-softmmu
+ before_install:
+   - git submodule update --init --recursive
+   - sudo apt-get update -qq
+-- 
+2.1.0
 
--- PMM
 
