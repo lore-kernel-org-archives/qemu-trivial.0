@@ -1,41 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XWjaR-0005oV-Kn
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Sep 2014 06:14:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55558)
+	id 1XWktq-0000O7-5Y
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Sep 2014 07:38:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42616)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1XWjaL-0005mV-Ib
-	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 06:14:13 -0400
+	(envelope-from <tklauser@sym2.noone.org>) id 1XWktj-0000G8-CL
+	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 07:38:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1XWjaF-0006BJ-Uz
-	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 06:14:09 -0400
-Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:48774 helo=socrates.bennee.com)
+	(envelope-from <tklauser@sym2.noone.org>) id 1XWkte-00032P-B7
+	for qemu-trivial@nongnu.org; Wed, 24 Sep 2014 07:38:15 -0400
+Received: from sym2.noone.org ([178.63.92.236]:36139)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1XWjaF-0006AC-Oo; Wed, 24 Sep 2014 06:14:03 -0400
-Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
-	by socrates.bennee.com with esmtp (Exim 4.80)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1XWjxB-0005zG-IL; Wed, 24 Sep 2014 12:37:45 +0200
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-trivial@nongnu.org
-Date: Wed, 24 Sep 2014 11:13:54 +0100
-Message-Id: <1411553636-24717-3-git-send-email-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.1.0
-In-Reply-To: <1411553636-24717-1-git-send-email-alex.bennee@linaro.org>
-References: <1411553636-24717-1-git-send-email-alex.bennee@linaro.org>
+	(envelope-from <tklauser@sym2.noone.org>)
+	id 1XWktU-0002uz-8d; Wed, 24 Sep 2014 07:38:00 -0400
+Received: by sym2.noone.org (Postfix, from userid 1002)
+	id 4B9EB135A006; Wed, 24 Sep 2014 13:37:52 +0200 (CEST)
+Date: Wed, 24 Sep 2014 13:37:51 +0200
+From: Tobias Klauser <tklauser@distanz.ch>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20140924113751.GA3408@distanz.ch>
+References: <1411061124-21108-1-git-send-email-tklauser@distanz.ch>
+	<542279B5.7070502@msgid.tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 127.0.0.1
-X-SA-Exim-Mail-From: alex.bennee@linaro.org
-X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <542279B5.7070502@msgid.tls.msk.ru>
+X-Editor: Vi IMproved 7.3
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 88.198.71.155
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, agraf@suse.de
-Subject: [Qemu-trivial] [PATCH v2 2/4] .travis.yml: make the make slightly
-	more parallel
+X-Received-From: 178.63.92.236
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] disas/arm: Remove redefinition of
+ ATTRIBUTE_UNUSED
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,31 +42,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Sep 2014 10:14:14 -0000
+X-List-Received-Date: Wed, 24 Sep 2014 11:38:20 -0000
 
-The Travis VMs have 1.5 cores so we might as well make some use of the
-paralellism.
+On 2014-09-24 at 09:58:45 +0200, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> 18.09.2014 21:25, Tobias Klauser wrote:
+> > ATTRIBUTE_UNUSED is already defined in disas/bfd.h, which is included.
+> > Thus, there is no need to redefine it.
+> 
+> Is there any harm in keeping it here?
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Alexander Graf <agraf@suse.de>
+No.
 
-diff --git a/.travis.yml b/.travis.yml
-index 72cfc9f..f113339 100644
---- a/.travis.yml
-+++ b/.travis.yml
-@@ -41,7 +41,10 @@ before_install:
-   - git submodule update --init --recursive
-   - sudo apt-get update -qq
-   - sudo apt-get install -qq ${CORE_PKGS} ${NET_PKGS} ${GUI_PKGS} ${EXTRA_PKGS}
--script: "./configure --target-list=${TARGETS} ${EXTRA_CONFIG} && make && ${TEST_CMD}"
-+before_script:
-+  - ./configure --target-list=${TARGETS} --enable-debug-tcg ${EXTRA_CONFIG}
-+script:
-+  - make -j2 && {TEST_CMD}
- matrix:
-   # We manually include a number of additional build for non-standard bits
-   include:
--- 
-2.1.0
+> While it really is a redifinition, I'm not sure what's the right thing
+> here.  This whole code is not from qemu, it is an external source imported,
+> and that source is being maintained (but under different license as has
+> already been discussed, so keeping changes at minimum might not be that
+> good idea anymore).  On the other hand this symbol is so common it should
+> be defined in a common header.  Yet on another hand, for these external
+> sources wich has public API, it might not be a good idea to define it in
+> a header to start with, because it might clash with project-local define,
+> so it might be better to define it in either private header or in individual
+> source.
 
+Ah, I didn't know it was non-qemu code (but now that I look at it again,
+I probably should have realized that sooner ;). Thanks for the
+explanation.
+
+> Oh well, so much for so trivial thing... ;)
+
+:) Sorry, it wasn't my intention to cause much discussion, trouble or
+work for maintainers with that patch. I don't feel strongly about, I
+just stumbled across it when browsing the source and found it odd to see
+a macro defined just below the #include of a header which defines the
+same macro.
+
+Please just ignore the patch then :)
+
+Thanks
+Tobias
 
