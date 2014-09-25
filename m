@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XX8H7-0002cO-Ja
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Sep 2014 08:35:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59846)
+	id 1XX8IT-0003fw-Oz
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Sep 2014 08:37:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60157)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XX8H1-0002b1-JA
-	for qemu-trivial@nongnu.org; Thu, 25 Sep 2014 08:35:56 -0400
+	(envelope-from <eblake@redhat.com>) id 1XX8IO-0003fl-Kv
+	for qemu-trivial@nongnu.org; Thu, 25 Sep 2014 08:37:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XX8Gx-0007Vc-7X
-	for qemu-trivial@nongnu.org; Thu, 25 Sep 2014 08:35:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48837)
+	(envelope-from <eblake@redhat.com>) id 1XX8IJ-0007pV-4r
+	for qemu-trivial@nongnu.org; Thu, 25 Sep 2014 08:37:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:61399)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eblake@redhat.com>)
-	id 1XX8Gw-0007Uv-VK; Thu, 25 Sep 2014 08:35:47 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s8PCZYkO021883
+	id 1XX8II-0007ot-Su; Thu, 25 Sep 2014 08:37:11 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s8PCaZ6L021591
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 25 Sep 2014 08:35:34 -0400
+	verify=FAIL); Thu, 25 Sep 2014 08:36:36 -0400
 Received: from [10.3.113.28] (ovpn-113-28.phx2.redhat.com [10.3.113.28])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s8PCZX39029072; Thu, 25 Sep 2014 08:35:33 -0400
-Message-ID: <54240C15.1010408@redhat.com>
-Date: Thu, 25 Sep 2014 06:35:33 -0600
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s8PCaZuN025350; Thu, 25 Sep 2014 08:36:35 -0400
+Message-ID: <54240C52.3030709@redhat.com>
+Date: Thu, 25 Sep 2014 06:36:34 -0600
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
@@ -29,20 +29,20 @@ User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 MIME-Version: 1.0
 To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
 References: <1411638384-5844-1-git-send-email-arei.gonglei@huawei.com>
-	<1411638384-5844-4-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1411638384-5844-4-git-send-email-arei.gonglei@huawei.com>
+	<1411638384-5844-5-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1411638384-5844-5-git-send-email-arei.gonglei@huawei.com>
 OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="t8MtUC2gep9eH82giKX9bRNoWU7MBxXHv"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+	boundary="PuhULWlj4HeS6g7cVF0TJck8PamIJ5x7P"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: peter.maydell@linaro.org, weidong.huang@huawei.com, qemu-trivial@nongnu.org,
 	luonengjun@huawei.com, mjt@tls.msk.ru, armbru@redhat.com,
 	peter.huangpeng@huawei.com, pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/4] osdep: convert fprintf
-	to error_report
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/4] oslib-posix/win32:
+ convert fprintf/perror to error_report
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,10 +54,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Sep 2014 12:35:56 -0000
+X-List-Received-Date: Thu, 25 Sep 2014 12:37:21 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---t8MtUC2gep9eH82giKX9bRNoWU7MBxXHv
+--PuhULWlj4HeS6g7cVF0TJck8PamIJ5x7P
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -66,33 +66,41 @@ On 09/25/2014 03:46 AM, arei.gonglei@huawei.com wrote:
 >=20
 > Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 > ---
->  util/osdep.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  util/oslib-posix.c | 8 ++++----
+>  util/oslib-win32.c | 2 +-
+>  2 files changed, 5 insertions(+), 5 deletions(-)
 >=20
-> diff --git a/util/osdep.c b/util/osdep.c
-> index b2bd154..7f6e483 100644
-> --- a/util/osdep.c
-> +++ b/util/osdep.c
-> @@ -401,9 +401,9 @@ void fips_set_state(bool requested)
->  #endif /* __linux__ */
-> =20
->  #ifdef _FIPS_DEBUG
-> -    fprintf(stderr, "FIPS mode %s (requested %s)\n",
-> -	    (fips_enabled ? "enabled" : "disabled"),
-> -	    (requested ? "enabled" : "disabled"));
-> +    error_report("FIPS mode %s (requested %s)",
-> +                 (fips_enabled ? "enabled" : "disabled"),
-> +                 (requested ? "enabled" : "disabled"));
 
-Do we really want debugging messages going through error_report()?  This
-may be one hunk we don't want.
+> @@ -380,7 +380,7 @@ void os_mem_prealloc(int fd, char *area, size_t mem=
+ory)
+> =20
+>      ret =3D sigaction(SIGBUS, &act, &oldact);
+>      if (ret) {
+> -        perror("os_mem_prealloc: failed to install signal handler");
+> +        error_report("os_mem_prealloc: failed to install signal handle=
+r");
+>          exit(1);
+>      }
+> =20
+> @@ -390,7 +390,7 @@ void os_mem_prealloc(int fd, char *area, size_t mem=
+ory)
+>      pthread_sigmask(SIG_UNBLOCK, &set, &oldset);
+> =20
+>      if (sigsetjmp(sigjump, 1)) {
+> -        fprintf(stderr, "os_mem_prealloc: failed to preallocate pages\=
+n");
+> +        error_report("os_mem_prealloc: failed to preallocate pages");
+
+Another reduction in error message quality.  You'll definitely need to
+respin this series, and at this point, I don't know if you can call it
+trivial.
 
 --=20
 Eric Blake   eblake redhat com    +1-919-301-3266
 Libvirt virtualization library http://libvirt.org
 
 
---t8MtUC2gep9eH82giKX9bRNoWU7MBxXHv
+--PuhULWlj4HeS6g7cVF0TJck8PamIJ5x7P
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
@@ -101,14 +109,14 @@ Content-Disposition: attachment; filename="signature.asc"
 Version: GnuPG v1
 Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
 
-iQEcBAEBCAAGBQJUJAwVAAoJEKeha0olJ0NqASQH/ip0Sxxnkc5tUXULs3Tl/Lli
-5OzC9Q6FhIGEwmgEdi9EzXCR91bJ0DXO7w74TxolOyfNeJRz674gtDuVMgAdU6Mb
-XUizzQlTugd/DF0kVlxpPEMrciIlSdH+V11F4UcuT+cvdpLhQbJGHt07WbHlVXrd
-Jr+5Hfe2nspUKm32LFbB6nl90KfKqtkJ7VZ45O3SRxeqSbbIxczqXyR0aXzsQ5GU
-QC3hzY2MtnCacVY6bFNhNmrv2/KX0m6UqqjjNCmAEOdohIQhd6QZGRUaE3GvPW5J
-1XlZTlv0QD/PLxrQeJkUyvEwaxfN+jmF4smjW84/EnYktj3u2kzcF0MdaXLmzmA=
-=AyG+
+iQEcBAEBCAAGBQJUJAxTAAoJEKeha0olJ0NqBnkH/12QEy1C+FOWE0bqcZNpIT5y
+p06isWQHvHgO2G7g+LFSAYrFmdnK0LFxz/LOlpLrYRmvZ6GcFh9oHMYTACLCmsrq
+XlwSNArNM2lCJXDB7ciy44zbhs/TqCqNtiT9vrAkHNeusA9qLH2cyGMvnTnpGmLT
+BOZN96z6egZkA2qtOaektypE/xlZfVNYUsSXtU24rp02H/TKzINtM65z4UbCGptw
+BN8RNESWAt+2X++dJYMHcJLOk6qLSjGPtX2x4wXqdgKo7DEfcCyZu6fqeFbWQF+0
+geJigzjqMLDzO/XDF/msPn8WyJNttAA89CKMdSaW89pNsqTexLMWiE+L9vr2rOA=
+=m3ET
 -----END PGP SIGNATURE-----
 
---t8MtUC2gep9eH82giKX9bRNoWU7MBxXHv--
+--PuhULWlj4HeS6g7cVF0TJck8PamIJ5x7P--
 
