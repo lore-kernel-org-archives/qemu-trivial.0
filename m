@@ -1,35 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XX8ZP-0004aR-Sx
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Sep 2014 08:54:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35424)
+	id 1XX8ai-0006LC-N2
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Sep 2014 08:56:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35736)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XX8ZJ-0004Re-S3
-	for qemu-trivial@nongnu.org; Thu, 25 Sep 2014 08:54:50 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XX8ac-0006E0-8z
+	for qemu-trivial@nongnu.org; Thu, 25 Sep 2014 08:56:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XX8ZF-0003yD-4L
-	for qemu-trivial@nongnu.org; Thu, 25 Sep 2014 08:54:45 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:26136)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XX8aX-0004Kp-R2
+	for qemu-trivial@nongnu.org; Thu, 25 Sep 2014 08:56:06 -0400
+Received: from szxga01-in.huawei.com ([119.145.14.64]:26650)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XX8ZE-0003xW-I9; Thu, 25 Sep 2014 08:54:41 -0400
-Received: from 172.24.2.119 (EHLO SZXEMA405-HUB.china.huawei.com)
+	id 1XX8aX-0004Iu-5j; Thu, 25 Sep 2014 08:56:01 -0400
+Received: from 172.24.2.119 (EHLO SZXEMA407-HUB.china.huawei.com)
 	([172.24.2.119])
 	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CCD60090; Thu, 25 Sep 2014 20:54:18 +0800 (CST)
+	with ESMTP id CCD60266; Thu, 25 Sep 2014 20:55:48 +0800 (CST)
 Received: from SZXEMA503-MBS.china.huawei.com ([169.254.6.188]) by
-	SZXEMA405-HUB.china.huawei.com ([10.82.72.37]) with mapi id
-	14.03.0158.001; Thu, 25 Sep 2014 20:54:11 +0800
+	SZXEMA407-HUB.china.huawei.com ([10.82.72.39]) with mapi id
+	14.03.0158.001; Thu, 25 Sep 2014 20:55:39 +0800
 From: "Gonglei (Arei)" <arei.gonglei@huawei.com>
 To: Eric Blake <eblake@redhat.com>, "qemu-devel@nongnu.org"
 	<qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH 3/4] osdep: convert fprintf to error_report
-Thread-Index: AQHP2KWdkNxYaBghF0WKARlfQ54LoJwRQv6AgACLDbA=
-Date: Thu, 25 Sep 2014 12:54:10 +0000
-Message-ID: <33183CC9F5247A488A2544077AF1902086DDB33B@SZXEMA503-MBS.china.huawei.com>
+Thread-Topic: [Qemu-devel] [PATCH 4/4] oslib-posix/win32: convert
+	fprintf/perror to error_report
+Thread-Index: AQHP2KWc2VLzmYR+gkGP+r9z4JsnG5wRQ0YAgACLLaA=
+Date: Thu, 25 Sep 2014 12:55:38 +0000
+Message-ID: <33183CC9F5247A488A2544077AF1902086DDB34C@SZXEMA503-MBS.china.huawei.com>
 References: <1411638384-5844-1-git-send-email-arei.gonglei@huawei.com>
-	<1411638384-5844-4-git-send-email-arei.gonglei@huawei.com>
-	<54240C15.1010408@redhat.com>
-In-Reply-To: <54240C15.1010408@redhat.com>
+	<1411638384-5844-5-git-send-email-arei.gonglei@huawei.com>
+	<54240C52.3030709@redhat.com>
+In-Reply-To: <54240C52.3030709@redhat.com>
 Accept-Language: zh-CN, en-US
 Content-Language: zh-CN
 X-MS-Has-Attach: 
@@ -48,8 +49,8 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"armbru@redhat.com" <armbru@redhat.com>,
 	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
 	"pbonzini@redhat.com" <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/4] osdep: convert fprintf
-	to error_report
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/4] oslib-posix/win32:
+ convert fprintf/perror to error_report
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,28 +62,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Sep 2014 12:54:50 -0000
+X-List-Received-Date: Thu, 25 Sep 2014 12:56:11 -0000
 
-PiBTdWJqZWN0OiBSZTogW1FlbXUtZGV2ZWxdIFtQQVRDSCAzLzRdIG9zZGVwOiBjb252ZXJ0IGZw
-cmludGYgdG8gZXJyb3JfcmVwb3J0DQo+IA0KPiBPbiAwOS8yNS8yMDE0IDAzOjQ2IEFNLCBhcmVp
-LmdvbmdsZWlAaHVhd2VpLmNvbSB3cm90ZToNCj4gPiBGcm9tOiBHb25nbGVpIDxhcmVpLmdvbmds
-ZWlAaHVhd2VpLmNvbT4NCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IEdvbmdsZWkgPGFyZWkuZ29u
-Z2xlaUBodWF3ZWkuY29tPg0KPiA+IC0tLQ0KPiA+ICB1dGlsL29zZGVwLmMgfCA4ICsrKystLS0t
-DQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pDQo+
-ID4NCj4gPiBkaWZmIC0tZ2l0IGEvdXRpbC9vc2RlcC5jIGIvdXRpbC9vc2RlcC5jDQo+ID4gaW5k
-ZXggYjJiZDE1NC4uN2Y2ZTQ4MyAxMDA2NDQNCj4gPiAtLS0gYS91dGlsL29zZGVwLmMNCj4gPiAr
-KysgYi91dGlsL29zZGVwLmMNCj4gPiBAQCAtNDAxLDkgKzQwMSw5IEBAIHZvaWQgZmlwc19zZXRf
-c3RhdGUoYm9vbCByZXF1ZXN0ZWQpDQo+ID4gICNlbmRpZiAvKiBfX2xpbnV4X18gKi8NCj4gPg0K
-PiA+ICAjaWZkZWYgX0ZJUFNfREVCVUcNCj4gPiAtICAgIGZwcmludGYoc3RkZXJyLCAiRklQUyBt
-b2RlICVzIChyZXF1ZXN0ZWQgJXMpXG4iLA0KPiA+IC0JICAgIChmaXBzX2VuYWJsZWQgPyAiZW5h
-YmxlZCIgOiAiZGlzYWJsZWQiKSwNCj4gPiAtCSAgICAocmVxdWVzdGVkID8gImVuYWJsZWQiIDog
-ImRpc2FibGVkIikpOw0KPiA+ICsgICAgZXJyb3JfcmVwb3J0KCJGSVBTIG1vZGUgJXMgKHJlcXVl
-c3RlZCAlcykiLA0KPiA+ICsgICAgICAgICAgICAgICAgIChmaXBzX2VuYWJsZWQgPyAiZW5hYmxl
-ZCIgOiAiZGlzYWJsZWQiKSwNCj4gPiArICAgICAgICAgICAgICAgICAocmVxdWVzdGVkID8gImVu
-YWJsZWQiIDogImRpc2FibGVkIikpOw0KPiANCj4gRG8gd2UgcmVhbGx5IHdhbnQgZGVidWdnaW5n
-IG1lc3NhZ2VzIGdvaW5nIHRocm91Z2ggZXJyb3JfcmVwb3J0KCk/ICBUaGlzDQo+IG1heSBiZSBv
-bmUgaHVuayB3ZSBkb24ndCB3YW50Lg0KPiANClllcCwgYWdyZWUuDQoNCkJlc3QgcmVnYXJkcywN
-Ci1Hb25nbGVpDQoNCj4gLS0NCj4gRXJpYyBCbGFrZSAgIGVibGFrZSByZWRoYXQgY29tICAgICsx
-LTkxOS0zMDEtMzI2Ng0KPiBMaWJ2aXJ0IHZpcnR1YWxpemF0aW9uIGxpYnJhcnkgaHR0cDovL2xp
-YnZpcnQub3JnDQoNCg==
+PiBTdWJqZWN0OiBSZTogW1FlbXUtZGV2ZWxdIFtQQVRDSCA0LzRdIG9zbGliLXBvc2l4L3dpbjMy
+OiBjb252ZXJ0IGZwcmludGYvcGVycm9yDQo+IHRvIGVycm9yX3JlcG9ydA0KPiANCj4gT24gMDkv
+MjUvMjAxNCAwMzo0NiBBTSwgYXJlaS5nb25nbGVpQGh1YXdlaS5jb20gd3JvdGU6DQo+ID4gRnJv
+bTogR29uZ2xlaSA8YXJlaS5nb25nbGVpQGh1YXdlaS5jb20+DQo+ID4NCj4gPiBTaWduZWQtb2Zm
+LWJ5OiBHb25nbGVpIDxhcmVpLmdvbmdsZWlAaHVhd2VpLmNvbT4NCj4gPiAtLS0NCj4gPiAgdXRp
+bC9vc2xpYi1wb3NpeC5jIHwgOCArKysrLS0tLQ0KPiA+ICB1dGlsL29zbGliLXdpbjMyLmMgfCAy
+ICstDQo+ID4gIDIgZmlsZXMgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygt
+KQ0KPiA+DQo+IA0KPiA+IEBAIC0zODAsNyArMzgwLDcgQEAgdm9pZCBvc19tZW1fcHJlYWxsb2Mo
+aW50IGZkLCBjaGFyICphcmVhLCBzaXplX3QNCj4gbWVtb3J5KQ0KPiA+DQo+ID4gICAgICByZXQg
+PSBzaWdhY3Rpb24oU0lHQlVTLCAmYWN0LCAmb2xkYWN0KTsNCj4gPiAgICAgIGlmIChyZXQpIHsN
+Cj4gPiAtICAgICAgICBwZXJyb3IoIm9zX21lbV9wcmVhbGxvYzogZmFpbGVkIHRvIGluc3RhbGwg
+c2lnbmFsIGhhbmRsZXIiKTsNCj4gPiArICAgICAgICBlcnJvcl9yZXBvcnQoIm9zX21lbV9wcmVh
+bGxvYzogZmFpbGVkIHRvIGluc3RhbGwgc2lnbmFsIGhhbmRsZXIiKTsNCj4gPiAgICAgICAgICBl
+eGl0KDEpOw0KPiA+ICAgICAgfQ0KPiA+DQo+ID4gQEAgLTM5MCw3ICszOTAsNyBAQCB2b2lkIG9z
+X21lbV9wcmVhbGxvYyhpbnQgZmQsIGNoYXIgKmFyZWEsIHNpemVfdA0KPiBtZW1vcnkpDQo+ID4g
+ICAgICBwdGhyZWFkX3NpZ21hc2soU0lHX1VOQkxPQ0ssICZzZXQsICZvbGRzZXQpOw0KPiA+DQo+
+ID4gICAgICBpZiAoc2lnc2V0am1wKHNpZ2p1bXAsIDEpKSB7DQo+ID4gLSAgICAgICAgZnByaW50
+ZihzdGRlcnIsICJvc19tZW1fcHJlYWxsb2M6IGZhaWxlZCB0byBwcmVhbGxvY2F0ZSBwYWdlc1xu
+Iik7DQo+ID4gKyAgICAgICAgZXJyb3JfcmVwb3J0KCJvc19tZW1fcHJlYWxsb2M6IGZhaWxlZCB0
+byBwcmVhbGxvY2F0ZSBwYWdlcyIpOw0KPiANCj4gQW5vdGhlciByZWR1Y3Rpb24gaW4gZXJyb3Ig
+bWVzc2FnZSBxdWFsaXR5LiAgWW91J2xsIGRlZmluaXRlbHkgbmVlZCB0bw0KPiByZXNwaW4gdGhp
+cyBzZXJpZXMsIGFuZCBhdCB0aGlzIHBvaW50LCBJIGRvbid0IGtub3cgaWYgeW91IGNhbiBjYWxs
+IGl0DQo+IHRyaXZpYWwuDQo+IA0KT0suIA0KDQpCZXN0IHJlZ2FyZHMsDQotR29uZ2xlaQ0KDQo+
+IC0tDQo+IEVyaWMgQmxha2UgICBlYmxha2UgcmVkaGF0IGNvbSAgICArMS05MTktMzAxLTMyNjYN
+Cj4gTGlidmlydCB2aXJ0dWFsaXphdGlvbiBsaWJyYXJ5IGh0dHA6Ly9saWJ2aXJ0Lm9yZw0KDQo=
 
