@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XXZZb-0004ha-Ho
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:44:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36806)
+	id 1XXZZd-0004l8-PI
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:44:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36824)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZZU-0004U8-Kj
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:49 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZZX-0004Yj-2T
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZZQ-000610-5J
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:44 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:42138)
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZZS-00061t-MW
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42604)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XXZZC-0005vf-5L; Fri, 26 Sep 2014 13:44:26 -0400
+	id 1XXZZH-0005xu-TL; Fri, 26 Sep 2014 13:44:32 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id F044446F67;
-	Fri, 26 Sep 2014 21:44:19 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 22BEB46F6E;
+	Fri, 26 Sep 2014 21:44:20 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 3824E6C6;
+	by tsrv.corpit.ru (Postfix) with SMTP id 4E16570F;
 	Fri, 26 Sep 2014 21:36:19 +0400 (MSK)
-Received: (nullmailer pid 29116 invoked by uid 1000);
+Received: (nullmailer pid 29125 invoked by uid 1000);
 	Fri, 26 Sep 2014 17:36:18 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 26 Sep 2014 21:36:10 +0400
-Message-Id: <1411752976-29051-7-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 26 Sep 2014 21:36:14 +0400
+Message-Id: <1411752976-29051-11-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1411752976-29051-1-git-send-email-mjt@tls.msk.ru>
 References: <1411752976-29051-1-git-send-email-mjt@tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Adrian-Ken Rueegsegger <ken@codelabs.ch>
-Subject: [Qemu-trivial] [PULL 06/12] vmxcap: Update according to SDM of
-	September 2014
+	Gonglei <arei.gonglei@huawei.com>, Eric Blake <eblake@redhat.com>
+Subject: [Qemu-trivial] [PULL 10/12] os-posix: change tab to space avoid
+	violating coding style
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,61 +44,135 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Sep 2014 17:44:49 -0000
+X-List-Received-Date: Fri, 26 Sep 2014 17:44:51 -0000
 
-From: Adrian-Ken Rueegsegger <ken@codelabs.ch>
+From: Gonglei <arei.gonglei@huawei.com>
 
-This adds reporting of RDSEED exiting and XSAVES/XRSTORS #UD and fixes
-the range of VMCS revision as well as some typos.
-
-Signed-off-by: Adrian-Ken Rueegsegger <ken@codelabs.ch>
+Cc: Eric Blake <eblake@redhat.com>
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- scripts/kvm/vmxcap |   10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ os-posix.c |   79 ++++++++++++++++++++++++++++++++----------------------------
+ 1 file changed, 42 insertions(+), 37 deletions(-)
 
-diff --git a/scripts/kvm/vmxcap b/scripts/kvm/vmxcap
-index c90eda4..8f0371f 100755
---- a/scripts/kvm/vmxcap
-+++ b/scripts/kvm/vmxcap
-@@ -99,7 +99,7 @@ controls = [
-     Misc(
-         name = 'Basic VMX Information',
-         bits = {
--            (0, 31): 'Revision',
-+            (0, 30): 'Revision',
-             (32,44): 'VMCS size',
-             48: 'VMCS restricted to 32 bit addresses',
-             49: 'Dual-monitor support',
-@@ -169,7 +169,9 @@ controls = [
-             12: 'Enable INVPCID',
-             13: 'Enable VM functions',
-             14: 'VMCS shadowing',
--            18: 'EPT-violation #VE'
-+            16: 'RDSEED exiting',
-+            18: 'EPT-violation #VE',
-+            20: 'Enable XSAVES/XRSTORS',
-             },
-         cap_msr = MSR_IA32_VMX_PROCBASED_CTLS2,
-         ),
-@@ -195,7 +197,7 @@ controls = [
-         name = 'VM-Entry controls',
-         bits = {
-             2: 'Load debug controls',
--            9: 'IA-64 mode guest',
-+            9: 'IA-32e mode guest',
-             10: 'Entry to SMM',
-             11: 'Deactivate dual-monitor treatment',
-             13: 'Load IA32_PERF_GLOBAL_CTRL',
-@@ -216,7 +218,7 @@ controls = [
-             8: 'Wait-for-SIPI activity state',
-             15: 'IA32_SMBASE support',
-             (16,24): 'Number of CR3-target values',
--            (25,27): 'MSR-load/store count recommenation',
-+            (25,27): 'MSR-load/store count recommendation',
-             28: 'IA32_SMM_MONITOR_CTL[2] can be set to 1',
-             29: 'VMWRITE to VM-exit information fields',
-             (32,63): 'MSEG revision identifier',
+diff --git a/os-posix.c b/os-posix.c
+index cb2a7f7..f0564ef 100644
+--- a/os-posix.c
++++ b/os-posix.c
+@@ -204,45 +204,49 @@ static void change_root(void)
+ void os_daemonize(void)
+ {
+     if (daemonize) {
+-	pid_t pid;
++        pid_t pid;
+ 
+-	if (pipe(fds) == -1)
+-	    exit(1);
++        if (pipe(fds) == -1) {
++            exit(1);
++        }
+ 
+-	pid = fork();
+-	if (pid > 0) {
+-	    uint8_t status;
+-	    ssize_t len;
++        pid = fork();
++        if (pid > 0) {
++            uint8_t status;
++            ssize_t len;
+ 
+-	    close(fds[1]);
++            close(fds[1]);
+ 
+-	again:
++        again:
+             len = read(fds[0], &status, 1);
+-            if (len == -1 && (errno == EINTR))
++            if (len == -1 && (errno == EINTR)) {
+                 goto again;
+-
+-            if (len != 1)
++            }
++            if (len != 1) {
+                 exit(1);
++            }
+             else if (status == 1) {
+                 fprintf(stderr, "Could not acquire pidfile: %s\n", strerror(errno));
+                 exit(1);
+-            } else
++            } else {
+                 exit(0);
+-	} else if (pid < 0)
+-            exit(1);
+-
+-	close(fds[0]);
+-	qemu_set_cloexec(fds[1]);
++            }
++            } else if (pid < 0) {
++                exit(1);
++            }
+ 
+-	setsid();
++        close(fds[0]);
++        qemu_set_cloexec(fds[1]);
+ 
+-	pid = fork();
+-	if (pid > 0)
+-	    exit(0);
+-	else if (pid < 0)
+-	    exit(1);
++        setsid();
+ 
+-	umask(027);
++        pid = fork();
++        if (pid > 0) {
++            exit(0);
++        } else if (pid < 0) {
++            exit(1);
++        }
++        umask(027);
+ 
+         signal(SIGTSTP, SIG_IGN);
+         signal(SIGTTOU, SIG_IGN);
+@@ -255,24 +259,25 @@ void os_setup_post(void)
+     int fd = 0;
+ 
+     if (daemonize) {
+-	uint8_t status = 0;
+-	ssize_t len;
++        uint8_t status = 0;
++        ssize_t len;
+ 
+     again1:
+-	len = write(fds[1], &status, 1);
+-	if (len == -1 && (errno == EINTR))
+-	    goto again1;
+-
+-	if (len != 1)
+-	    exit(1);
+-
++        len = write(fds[1], &status, 1);
++        if (len == -1 && (errno == EINTR)) {
++            goto again1;
++        }
++        if (len != 1) {
++            exit(1);
++        }
+         if (chdir("/")) {
+             perror("not able to chdir to /");
+             exit(1);
+         }
+-	TFR(fd = qemu_open("/dev/null", O_RDWR));
+-	if (fd == -1)
+-	    exit(1);
++        TFR(fd = qemu_open("/dev/null", O_RDWR));
++        if (fd == -1) {
++            exit(1);
++        }
+     }
+ 
+     change_root();
 -- 
 1.7.10.4
 
