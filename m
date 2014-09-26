@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XXZZd-0004l8-PI
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:44:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36824)
+	id 1XXZZX-0004Zd-Ec
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:44:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36748)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZZX-0004Yj-2T
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:51 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZZQ-0004OE-Uy
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZZS-00061t-MW
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:46 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:42604)
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZZM-00060D-KX
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:40 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:37945)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XXZZH-0005xu-TL; Fri, 26 Sep 2014 13:44:32 -0400
+	id 1XXZZC-0005vg-5V; Fri, 26 Sep 2014 13:44:26 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 22BEB46F6E;
+	by isrv.corpit.ru (Postfix) with ESMTP id 0BEA646F6B;
 	Fri, 26 Sep 2014 21:44:20 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 4E16570F;
+	by tsrv.corpit.ru (Postfix) with SMTP id 7B15F711;
 	Fri, 26 Sep 2014 21:36:19 +0400 (MSK)
-Received: (nullmailer pid 29125 invoked by uid 1000);
+Received: (nullmailer pid 29129 invoked by uid 1000);
 	Fri, 26 Sep 2014 17:36:18 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 26 Sep 2014 21:36:14 +0400
-Message-Id: <1411752976-29051-11-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 26 Sep 2014 21:36:16 +0400
+Message-Id: <1411752976-29051-13-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1411752976-29051-1-git-send-email-mjt@tls.msk.ru>
 References: <1411752976-29051-1-git-send-email-mjt@tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Gonglei <arei.gonglei@huawei.com>, Eric Blake <eblake@redhat.com>
-Subject: [Qemu-trivial] [PULL 10/12] os-posix: change tab to space avoid
-	violating coding style
+	Gonglei <arei.gonglei@huawei.com>, Huangweidong <weidong.huang@huawei.com>
+Subject: [Qemu-trivial] [PULL 12/12] os-posix: report error message when
+	lock file failed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,135 +44,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Sep 2014 17:44:51 -0000
+X-List-Received-Date: Fri, 26 Sep 2014 17:44:45 -0000
 
 From: Gonglei <arei.gonglei@huawei.com>
 
-Cc: Eric Blake <eblake@redhat.com>
+It will cause that create vm failed When manager
+tool is killed forcibly (kill -9 libvirtd_pid),
+the file not was unlink, and unlock. It's better
+that report the error message for users.
+
+Signed-off-by: Huangweidong <weidong.huang@huawei.com>
 Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- os-posix.c |   79 ++++++++++++++++++++++++++++++++----------------------------
- 1 file changed, 42 insertions(+), 37 deletions(-)
+ os-posix.c |    2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/os-posix.c b/os-posix.c
-index cb2a7f7..f0564ef 100644
+index e31a099..4898ebf 100644
 --- a/os-posix.c
 +++ b/os-posix.c
-@@ -204,45 +204,49 @@ static void change_root(void)
- void os_daemonize(void)
- {
-     if (daemonize) {
--	pid_t pid;
-+        pid_t pid;
- 
--	if (pipe(fds) == -1)
--	    exit(1);
-+        if (pipe(fds) == -1) {
-+            exit(1);
-+        }
- 
--	pid = fork();
--	if (pid > 0) {
--	    uint8_t status;
--	    ssize_t len;
-+        pid = fork();
-+        if (pid > 0) {
-+            uint8_t status;
-+            ssize_t len;
- 
--	    close(fds[1]);
-+            close(fds[1]);
- 
--	again:
-+        again:
-             len = read(fds[0], &status, 1);
--            if (len == -1 && (errno == EINTR))
-+            if (len == -1 && (errno == EINTR)) {
-                 goto again;
--
--            if (len != 1)
-+            }
-+            if (len != 1) {
-                 exit(1);
-+            }
-             else if (status == 1) {
-                 fprintf(stderr, "Could not acquire pidfile: %s\n", strerror(errno));
-                 exit(1);
--            } else
-+            } else {
-                 exit(0);
--	} else if (pid < 0)
--            exit(1);
--
--	close(fds[0]);
--	qemu_set_cloexec(fds[1]);
-+            }
-+            } else if (pid < 0) {
-+                exit(1);
-+            }
- 
--	setsid();
-+        close(fds[0]);
-+        qemu_set_cloexec(fds[1]);
- 
--	pid = fork();
--	if (pid > 0)
--	    exit(0);
--	else if (pid < 0)
--	    exit(1);
-+        setsid();
- 
--	umask(027);
-+        pid = fork();
-+        if (pid > 0) {
-+            exit(0);
-+        } else if (pid < 0) {
-+            exit(1);
-+        }
-+        umask(027);
- 
-         signal(SIGTSTP, SIG_IGN);
-         signal(SIGTTOU, SIG_IGN);
-@@ -255,24 +259,25 @@ void os_setup_post(void)
-     int fd = 0;
- 
-     if (daemonize) {
--	uint8_t status = 0;
--	ssize_t len;
-+        uint8_t status = 0;
-+        ssize_t len;
- 
-     again1:
--	len = write(fds[1], &status, 1);
--	if (len == -1 && (errno == EINTR))
--	    goto again1;
--
--	if (len != 1)
--	    exit(1);
--
-+        len = write(fds[1], &status, 1);
-+        if (len == -1 && (errno == EINTR)) {
-+            goto again1;
-+        }
-+        if (len != 1) {
-+            exit(1);
-+        }
-         if (chdir("/")) {
-             perror("not able to chdir to /");
-             exit(1);
-         }
--	TFR(fd = qemu_open("/dev/null", O_RDWR));
--	if (fd == -1)
--	    exit(1);
-+        TFR(fd = qemu_open("/dev/null", O_RDWR));
-+        if (fd == -1) {
-+            exit(1);
-+        }
+@@ -319,6 +319,8 @@ int qemu_create_pidfile(const char *filename)
+         return -1;
      }
- 
-     change_root();
+     if (lockf(fd, F_TLOCK, 0) == -1) {
++        fprintf(stderr, "lock file '%s' failed: %s\n",
++                filename, strerror(errno));
+         close(fd);
+         return -1;
+     }
 -- 
 1.7.10.4
 
