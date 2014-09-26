@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XXZRt-0005v0-DN
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:36:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35230)
+	id 1XXZRm-0005id-Ia
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:36:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35153)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZRn-0005ja-NX
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:36:51 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZRg-0005Xq-K4
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:36:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZRj-0003p4-MP
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:36:47 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:41653)
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZRc-0003mJ-CH
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:36:40 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56537)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XXZRQ-0003hC-4E; Fri, 26 Sep 2014 13:36:24 -0400
+	id 1XXZRQ-0003hJ-GY; Fri, 26 Sep 2014 13:36:24 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7DF1946F62;
+	by isrv.corpit.ru (Postfix) with ESMTP id CAF5746F65;
 	Fri, 26 Sep 2014 21:36:18 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 6FCF76C6;
+	by tsrv.corpit.ru (Postfix) with SMTP id B402770F;
 	Fri, 26 Sep 2014 21:36:18 +0400 (MSK)
-Received: (nullmailer pid 29105 invoked by uid 1000);
+Received: (nullmailer pid 29110 invoked by uid 1000);
 	Fri, 26 Sep 2014 17:36:18 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 26 Sep 2014 21:36:05 +0400
-Message-Id: <1411752976-29051-2-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 26 Sep 2014 21:36:07 +0400
+Message-Id: <1411752976-29051-4-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1411752976-29051-1-git-send-email-mjt@tls.msk.ru>
 References: <1411752976-29051-1-git-send-email-mjt@tls.msk.ru>
@@ -33,8 +33,9 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-stable@nongnu.org
-Subject: [Qemu-trivial] [PULL 01/12] tests: avoid running duplicate qom-tests
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [Qemu-trivial] [PULL 03/12] .travis.yml: make the make slightly
+	more parallel
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,49 +47,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Sep 2014 17:36:52 -0000
+X-List-Received-Date: Fri, 26 Sep 2014 17:36:44 -0000
 
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
+From: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Since 3687d532 we've been unconditionally adding qom-test to our qtests
-for every arch. However, some archs inherit their tests from Makefile
-variables for other archs, such as i386/x86_64,
-microblaze/microblazeel, and xtensa/xtensaeb. Since these are evaluated
-in a lazy manner, we ultimately end up adding qom-test twice.
+The Travis VMs have 1.5 cores so we might as well make some use of the
+paralellism.
 
-In the case x86_64, where we have a large number of machine types that
-we rerun qom-test for, this has lead to a fairly noticeable increase
-in the overall run-time of `make check` (78s vs. 42s on my machine).
-Similar speed-ups are visible for other such archs, but not nearly as
-significant.
-
-Fix this by only adding qom-test to an arch's test list if it's not
-already present.
-
-Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
-Cc: qemu-stable@nongnu.org
+Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Reviewed-by: Alexander Graf <agraf@suse.de>
+Reviewed-by: Brian Jackson <iggy@theiggy.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- tests/Makefile |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .travis.yml |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/tests/Makefile b/tests/Makefile
-index f5de29c..e8bdd1a 100644
---- a/tests/Makefile
-+++ b/tests/Makefile
-@@ -193,7 +193,8 @@ check-qtest-xtensaeb-y =3D $(check-qtest-xtensa-y)
-=20
- # qom-test works for all sysemu architectures:
- $(foreach target,$(SYSEMU_TARGET_LIST), \
--    $(eval check-qtest-$(target)-y +=3D tests/qom-test$(EXESUF)))
-+	$(if $(findstring tests/qom-test$(EXESUF), $(check-qtest-$(target)-y)),=
-, \
-+		$(eval check-qtest-$(target)-y +=3D tests/qom-test$(EXESUF))))
-=20
- check-qapi-schema-y :=3D $(addprefix tests/qapi-schema/, \
-         comments.json empty.json funny-char.json indented-expr.json \
+diff --git a/.travis.yml b/.travis.yml
+index 72cfc9f..f113339 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -41,7 +41,10 @@ before_install:
+   - git submodule update --init --recursive
+   - sudo apt-get update -qq
+   - sudo apt-get install -qq ${CORE_PKGS} ${NET_PKGS} ${GUI_PKGS} ${EXTR=
+A_PKGS}
+-script: "./configure --target-list=3D${TARGETS} ${EXTRA_CONFIG} && make =
+&& ${TEST_CMD}"
++before_script:
++  - ./configure --target-list=3D${TARGETS} --enable-debug-tcg ${EXTRA_CO=
+NFIG}
++script:
++  - make -j2 && {TEST_CMD}
+ matrix:
+   # We manually include a number of additional build for non-standard bi=
+ts
+   include:
 --=20
 1.7.10.4
 
