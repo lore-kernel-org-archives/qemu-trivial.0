@@ -1,40 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XXZE7-0007ii-Cn
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:22:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60946)
+	id 1XXZRm-0005i3-BF
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:36:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35134)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZE0-0007Zj-Qm
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:22:37 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZRf-0005Vl-Dr
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:36:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZDv-0008MT-Bx
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:22:32 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46068)
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZRa-0003lH-Gz
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:36:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:58669)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XXZDk-0008DN-PO; Fri, 26 Sep 2014 13:22:16 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2AA6146F3D;
-	Fri, 26 Sep 2014 21:22:11 +0400 (MSK)
-Message-ID: <5425A0C3.40409@msgid.tls.msk.ru>
-Date: Fri, 26 Sep 2014 21:22:11 +0400
+	id 1XXZRQ-0003h4-1J; Fri, 26 Sep 2014 13:36:24 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 9B03F46F3D;
+	Fri, 26 Sep 2014 21:36:17 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 519086C6;
+	Fri, 26 Sep 2014 21:36:17 +0400 (MSK)
+Received: (nullmailer pid 29102 invoked by uid 1000);
+	Fri, 26 Sep 2014 17:36:17 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.7.0
+To: qemu-devel@nongnu.org
+Date: Fri, 26 Sep 2014 21:36:04 +0400
+Message-Id: <1411752976-29051-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
-References: <1411719272-9788-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1411719272-9788-1-git-send-email-arei.gonglei@huawei.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: peter.maydell@linaro.org, weidong.huang@huawei.com, qemu-trivial@nongnu.org,
-	armbru@redhat.com, pbonzini@redhat.com, eblake@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH 0/3] os-posix: improve the error message
- printing
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 00/12] Trivial patches for 2014-09-26
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,27 +43,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Sep 2014 17:22:37 -0000
+X-List-Received-Date: Fri, 26 Sep 2014 17:36:44 -0000
 
-26.09.2014 12:14, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
-> 
-> The patches mainly improve the error message printing.
-> And adjust coding style of os-posix.c.
-> 
-> Daemonize the QEMU process after initialization, QEMU will not detach from
-> standard IO until it is ready to receive connections on any of its devices.
-> So, using fprintf print error.
-> 
-> Cc: Eric Blake <eblake@redhat.com>
-> 
-> Gonglei (3):
->   os-posix: change tab to space avoid violating coding style
->   os-posix: remove confused errno
->   os-posix: report error message when lock file failed
+Here goes another trivial-patches pull request.  Cleanups,
+travis.yml changes, coding style changes and a little
+bugfix for stable (avoiding running qom test twice).
 
-Applied all 3 to -trivial, thank you!
+Please consider applying/pulling.
+
+Thanks,
 
 /mjt
 
+The following changes since commit da1c4ec88ad50c2b73d5fe960c373693f7337c=
+c9:
+
+  Merge remote-tracking branch 'remotes/stefanha/tags/tracing-pull-reques=
+t' into staging (2014-09-26 12:26:07 +0100)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/trivial-patches-2014-09-26
+
+for you to fetch changes up to e5048d15ce6addae869f23514b2a1f0d4466418a:
+
+  os-posix: report error message when lock file failed (2014-09-26 21:21:=
+09 +0400)
+
+----------------------------------------------------------------
+trivial patches for 2014-09-26
+
+----------------------------------------------------------------
+Adrian-Ken Rueegsegger (1):
+      vmxcap: Update according to SDM of September 2014
+
+Alex Benn=C3=A9e (4):
+      .travis.yml: add more linux-user to the build matrix
+      .travis.yml: make the make slightly more parallel
+      .travis.yml: pre-seed sub-modules for speed
+      .travis.yml: remove "make check" from main matrix
+
+Eric Blake (3):
+      qapi: Consistent whitespace in tests/Makefile
+      qapi: Ignore files created during make check
+      qapi: Update docs given recent event, spacing fixes
+
+Gonglei (3):
+      os-posix: change tab to space avoid violating coding style
+      os-posix: remove confused errno
+      os-posix: report error message when lock file failed
+
+Michael Roth (1):
+      tests: avoid running duplicate qom-tests
+
+ .travis.yml            |   55 +++++++++++++++++---------
+ docs/qapi-code-gen.txt |  100 ++++++++++++++++++++++++++++++++++++++----=
+------
+ os-posix.c             |   83 ++++++++++++++++++++++------------------
+ scripts/kvm/vmxcap     |   10 +++--
+ tests/.gitignore       |    3 ++
+ tests/Makefile         |   35 +++++++++--------
+ 6 files changed, 189 insertions(+), 97 deletions(-)
 
