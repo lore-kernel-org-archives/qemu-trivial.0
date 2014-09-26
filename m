@@ -1,41 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XXZRo-0005lH-H7
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:36:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35178)
+	id 1XXZZX-0004aU-OO
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 13:44:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36760)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZRi-0005bK-GN
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:36:46 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZZR-0004PY-Kg
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XXZRe-0003n5-HA
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:36:42 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57926)
+	(envelope-from <mjt@tls.msk.ru>) id 1XXZZM-00060K-NS
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 13:44:41 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:54528)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XXZRW-0003jF-0Q; Fri, 26 Sep 2014 13:36:30 -0400
+	id 1XXZZC-0005vh-5R; Fri, 26 Sep 2014 13:44:26 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id F1D0246F66;
-	Fri, 26 Sep 2014 21:36:18 +0400 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 1431846F6C;
+	Fri, 26 Sep 2014 21:44:20 +0400 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id CE2E66C6;
-	Fri, 26 Sep 2014 21:36:18 +0400 (MSK)
-Received: (nullmailer pid 29112 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 97048712;
+	Fri, 26 Sep 2014 21:36:19 +0400 (MSK)
+Received: (nullmailer pid 29127 invoked by uid 1000);
 	Fri, 26 Sep 2014 17:36:18 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 26 Sep 2014 21:36:08 +0400
-Message-Id: <1411752976-29051-5-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Fri, 26 Sep 2014 21:36:15 +0400
+Message-Id: <1411752976-29051-12-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1411752976-29051-1-git-send-email-mjt@tls.msk.ru>
 References: <1411752976-29051-1-git-send-email-mjt@tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [Qemu-trivial] [PULL 04/12] .travis.yml: pre-seed sub-modules for
-	speed
+	Gonglei <arei.gonglei@huawei.com>, Eric Blake <eblake@redhat.com>
+Subject: [Qemu-trivial] [PULL 11/12] os-posix: remove confused errno
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,43 +43,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Sep 2014 17:36:46 -0000
+X-List-Received-Date: Fri, 26 Sep 2014 17:44:46 -0000
 
-From: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+From: Gonglei <arei.gonglei@huawei.com>
 
-A significant portion of the build time is spent initialising all the
-sub-modules we use in the source tree. Often this is almost as long as
-the build itself. By pre-seeding the .git/modules tree this will
-hopefully improve things.
+If we get inside the 'else if (status == 1)' conditional,
+then we know that read() succeeded, and therefore errno is
+unspecified. Printing strerror(errno) on a random value
+is not helpful.
 
-Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-Reviewed-by: Alexander Graf <agraf@suse.de>
-Reviewed-by: Brian Jackson <iggy@theiggy.com>
+Cc: Eric Blake <eblake@redhat.com>
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- .travis.yml |    4 ++++
- 1 file changed, 4 insertions(+)
+ os-posix.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.travis.yml b/.travis.yml
-index f113339..b9025be 100644
---- a/.travis.yml
-+++ b/.travis.yml
-@@ -37,7 +37,11 @@ env:
-     - TARGETS=3Dunicore32-softmmu,unicore32-linux-user
-     # Group remaining softmmu only targets into one build
-     - TARGETS=3Dlm32-softmmu,moxie-softmmu,tricore-softmmu,xtensa-softmm=
-u,xtensaeb-softmmu
-+git:
-+  # we want to do this ourselves
-+  submodules: false
- before_install:
-+  - wget -O - http://people.linaro.org/~alex.bennee/qemu-submodule-git-s=
-eed.tar.xz | tar -xvJ
-   - git submodule update --init --recursive
-   - sudo apt-get update -qq
-   - sudo apt-get install -qq ${CORE_PKGS} ${NET_PKGS} ${GUI_PKGS} ${EXTR=
-A_PKGS}
---=20
+diff --git a/os-posix.c b/os-posix.c
+index f0564ef..e31a099 100644
+--- a/os-posix.c
++++ b/os-posix.c
+@@ -226,7 +226,7 @@ void os_daemonize(void)
+                 exit(1);
+             }
+             else if (status == 1) {
+-                fprintf(stderr, "Could not acquire pidfile: %s\n", strerror(errno));
++                fprintf(stderr, "Could not acquire pidfile\n");
+                 exit(1);
+             } else {
+                 exit(0);
+-- 
 1.7.10.4
 
 
