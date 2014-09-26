@@ -1,36 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XXXKf-0002G9-5G
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 11:21:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33956)
+	id 1XXXKb-00029F-SP
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 11:21:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33934)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XXXKZ-00025Z-GP
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 11:21:16 -0400
+	(envelope-from <eblake@redhat.com>) id 1XXXKT-0001uX-Q4
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 11:21:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XXXKU-0007T1-Na
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 11:21:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:16336)
+	(envelope-from <eblake@redhat.com>) id 1XXXKN-0007S7-F9
+	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 11:21:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52885)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eblake@redhat.com>)
-	id 1XXXKH-0007QA-46; Fri, 26 Sep 2014 11:20:53 -0400
+	id 1XXXKA-0007Nj-3K; Fri, 26 Sep 2014 11:20:46 -0400
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s8QFKbHw002855
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s8QFKcds002856
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
 	verify=FAIL); Fri, 26 Sep 2014 11:20:38 -0400
 Received: from red.redhat.com (ovpn-113-28.phx2.redhat.com [10.3.113.28])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s8QFKbGb028824; Fri, 26 Sep 2014 11:20:37 -0400
+	id s8QFKbGc028824; Fri, 26 Sep 2014 11:20:37 -0400
 From: Eric Blake <eblake@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 26 Sep 2014 09:20:30 -0600
-Message-Id: <1411744833-20699-1-git-send-email-eblake@redhat.com>
+Date: Fri, 26 Sep 2014 09:20:31 -0600
+Message-Id: <1411744833-20699-2-git-send-email-eblake@redhat.com>
+In-Reply-To: <1411744833-20699-1-git-send-email-eblake@redhat.com>
+References: <1411744833-20699-1-git-send-email-eblake@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, Luiz Capitulino <lcapitulino@redhat.com>,
 	Fam Zheng <famz@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>, wenchaoqemu@gmail.com
-Subject: [Qemu-trivial] [PATCH v5a 0/3] trivial qapi cleanups
+Subject: [Qemu-trivial] [PATCH v5 1/3] qapi: Consistent whitespace in
+	tests/Makefile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,43 +45,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Sep 2014 15:21:16 -0000
+X-List-Received-Date: Fri, 26 Sep 2014 15:21:12 -0000
 
-This is split out from [PATCH v4 00/19]: drop qapi nested structs
-in order to get the trivial stuff in now, rather than holding it
-up for what may be another month while I address the larger findings
-against the rest of that series.
+tests/Makefile had a mix of TAB vs. 8-space indentation; given
+that it is a Makefile, TAB is more idiomatic even though in these
+particular cases the choice of whitespace didn't matter.
 
-v4 was here:
-https://lists.gnu.org/archive/html/qemu-devel/2014-09/msg04022.html
+Signed-off-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+---
+ tests/Makefile | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
 
-Changelog:
+diff --git a/tests/Makefile b/tests/Makefile
+index f5de29c..3c5bc0f 100644
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -196,23 +196,23 @@ $(foreach target,$(SYSEMU_TARGET_LIST), \
+     $(eval check-qtest-$(target)-y += tests/qom-test$(EXESUF)))
 
-v5:
-  no change (just splitting the series into two parts)
+ check-qapi-schema-y := $(addprefix tests/qapi-schema/, \
+-        comments.json empty.json funny-char.json indented-expr.json \
+-        missing-colon.json missing-comma-list.json \
+-        missing-comma-object.json non-objects.json \
+-        qapi-schema-test.json quoted-structural-chars.json \
+-        trailing-comma-list.json trailing-comma-object.json \
+-        unclosed-list.json unclosed-object.json unclosed-string.json \
+-        duplicate-key.json union-invalid-base.json flat-union-no-base.json \
+-        flat-union-invalid-discriminator.json \
+-        flat-union-invalid-branch-key.json flat-union-reverse-define.json \
+-        flat-union-string-discriminator.json \
+-        include-simple.json include-relpath.json include-format-err.json \
+-        include-non-file.json include-no-file.json include-before-err.json \
+-        include-nested-err.json include-self-cycle.json include-cycle.json \
+-        include-repetition.json event-nest-struct.json)
++	comments.json empty.json funny-char.json indented-expr.json \
++	missing-colon.json missing-comma-list.json \
++	missing-comma-object.json non-objects.json \
++	qapi-schema-test.json quoted-structural-chars.json \
++	trailing-comma-list.json trailing-comma-object.json \
++	unclosed-list.json unclosed-object.json unclosed-string.json \
++	duplicate-key.json union-invalid-base.json flat-union-no-base.json \
++	flat-union-invalid-discriminator.json \
++	flat-union-invalid-branch-key.json flat-union-reverse-define.json \
++	flat-union-string-discriminator.json \
++	include-simple.json include-relpath.json include-format-err.json \
++	include-non-file.json include-no-file.json include-before-err.json \
++	include-nested-err.json include-self-cycle.json include-cycle.json \
++	include-repetition.json event-nest-struct.json)
 
-v4:
-  add docs (patch 3 is new) [Markus]
+ GENERATED_HEADERS += tests/test-qapi-types.h tests/test-qapi-visit.h \
+-                     tests/test-qmp-commands.h tests/test-qapi-event.h
++		     tests/test-qmp-commands.h tests/test-qapi-event.h
 
-v3:
-  no changes
+ test-obj-y = tests/check-qint.o tests/check-qstring.o tests/check-qdict.o \
+ 	tests/check-qlist.o tests/check-qfloat.o tests/check-qjson.o \
+@@ -224,7 +224,7 @@ test-obj-y = tests/check-qint.o tests/check-qstring.o tests/check-qdict.o \
+ 	tests/test-opts-visitor.o tests/test-qmp-event.o
 
-v2:
-  add makefile cleanups (patch 1-2)
+ test-qapi-obj-y = tests/test-qapi-visit.o tests/test-qapi-types.o \
+-                  tests/test-qapi-event.o
++		  tests/test-qapi-event.o
 
-v1:
-  this portion of the larger series was not present
-
-Eric Blake (3):
-  qapi: Consistent whitespace in tests/Makefile
-  qapi: Ignore files created during make check
-  qapi: Update docs given recent event, spacing fixes
-
- docs/qapi-code-gen.txt | 100 +++++++++++++++++++++++++++++++++++++++----------
- tests/.gitignore       |   3 ++
- tests/Makefile         |  32 ++++++++--------
- 3 files changed, 99 insertions(+), 36 deletions(-)
-
+ $(test-obj-y): QEMU_INCLUDES += -Itests
+ QEMU_CFLAGS += -I$(SRC_PATH)/tests
 -- 
 1.9.3
 
