@@ -1,36 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XXbTg-0005ih-85
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Sep 2014 15:46:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36348)
+	id 1XYYRj-00063S-Mf
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Sep 2014 06:44:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59642)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1XXbTY-0005Uy-L4
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 15:46:50 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1XYYRd-000637-1z
+	for qemu-trivial@nongnu.org; Mon, 29 Sep 2014 06:44:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1XXbTS-0007H9-H6
-	for qemu-trivial@nongnu.org; Fri, 26 Sep 2014 15:46:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:16214)
+	(envelope-from <peter.maydell@linaro.org>) id 1XYYRV-0000mN-04
+	for qemu-trivial@nongnu.org; Mon, 29 Sep 2014 06:44:41 -0400
+Received: from mail-la0-f42.google.com ([209.85.215.42]:49112)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1XXbTF-0007Dc-Mv; Fri, 26 Sep 2014 15:46:25 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s8QJkJ1u008899
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Fri, 26 Sep 2014 15:46:20 -0400
-Received: from localhost (ovpn-113-54.phx2.redhat.com [10.3.113.54])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s8QJkIjr005595; Fri, 26 Sep 2014 15:46:19 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Fri, 26 Sep 2014 16:46:04 -0300
-Message-Id: <1411760764-18292-4-git-send-email-ehabkost@redhat.com>
-In-Reply-To: <1411760764-18292-1-git-send-email-ehabkost@redhat.com>
-References: <1411760764-18292-1-git-send-email-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Subject: [Qemu-trivial] [PATCH 3/3] bitmap.h: Don't include qemu-common.h
+	(envelope-from <peter.maydell@linaro.org>) id 1XYYRU-0000l0-Px
+	for qemu-trivial@nongnu.org; Mon, 29 Sep 2014 06:44:32 -0400
+Received: by mail-la0-f42.google.com with SMTP id mk6so1438646lab.15
+	for <qemu-trivial@nongnu.org>; Mon, 29 Sep 2014 03:44:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=jiRVd6yDdOTPmnvvEdbw6V8Y8DLjrIbPqnUlCX1H8qI=;
+	b=iJgWQfuQce4f4hNEScjrpckTgfi7dstgmSkzOIEEc8ySdHccCKvg8ViPEXh0lJc08l
+	8q3NyuwxYgLcqpsP9HXwyeFB2Qg6lwxtEXnDdriLZaR2v0YVfvoKfgM2wTtRKOY2exNL
+	xjcH+i5If6UpfK2dmz49LmDXxDllPoHsHqzW4jH2Y3QNr8mLoRdPR4HuHxGlIhcg/gKF
+	b7+T81rkNTSsBudBkLthbzLEzuWBwKMT3AzKsIgavIhfcRpArIUcWZUo3Ri7sD4F16E/
+	zcqG8fJURi7eo2FKM4sj7rgQmZeSeADaIamVWRtLO4WkupOAQ1m8Egg0RWObod7lyRKG
+	0FVw==
+X-Gm-Message-State: ALoCoQnitwcChLz5bAVMrNRK5MmevdWOGvHGAVLKlwXKR3tqyvyryuS/lzeyt2EgFYoL3fWB7uQD
+X-Received: by 10.112.72.10 with SMTP id z10mr7905918lbu.87.1411987466758;
+	Mon, 29 Sep 2014 03:44:26 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.130.161 with HTTP; Mon, 29 Sep 2014 03:44:06 -0700 (PDT)
+In-Reply-To: <1411752976-29051-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1411752976-29051-1-git-send-email-mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Sep 2014 11:44:06 +0100
+Message-ID: <CAFEAcA8r7hVBZ1+XDtpjmj+cZigAs8ngLoShpZGWzqi2OJvDmA@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.42
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/12] Trivial patches for
+	2014-09-26
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,32 +55,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Sep 2014 19:46:51 -0000
+X-List-Received-Date: Mon, 29 Sep 2014 10:44:45 -0000
 
-This will avoid unexpected circular header dependencies in the future.
+On 26 September 2014 18:36, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here goes another trivial-patches pull request.  Cleanups,
+> travis.yml changes, coding style changes and a little
+> bugfix for stable (avoiding running qom test twice).
+>
+> Please consider applying/pulling.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit da1c4ec88ad50c2b73d5fe960c373693f7337cc9:
+>
+>   Merge remote-tracking branch 'remotes/stefanha/tags/tracing-pull-request' into staging (2014-09-26 12:26:07 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-2014-09-26
+>
+> for you to fetch changes up to e5048d15ce6addae869f23514b2a1f0d4466418a:
+>
+>   os-posix: report error message when lock file failed (2014-09-26 21:21:09 +0400)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2014-09-26
+>
+> ----------------------------------------------------------------
 
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
- include/qemu/bitmap.h | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Applied, thanks.
 
-diff --git a/include/qemu/bitmap.h b/include/qemu/bitmap.h
-index 1babd5d..8c50d70 100644
---- a/include/qemu/bitmap.h
-+++ b/include/qemu/bitmap.h
-@@ -12,7 +12,10 @@
- #ifndef BITMAP_H
- #define BITMAP_H
- 
--#include "qemu-common.h"
-+#include <glib.h>
-+#include <string.h>
-+
-+#include "qemu/osdep.h"
- #include "qemu/bitops.h"
- 
- /*
--- 
-1.9.3
-
+-- PMM
 
