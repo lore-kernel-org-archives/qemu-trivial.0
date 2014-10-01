@@ -1,43 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XZFyd-00010m-Rh
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Oct 2014 05:13:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45350)
+	id 1XZH67-0008T0-AO
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Oct 2014 06:25:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57047)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@hotmail.com>) id 1XZFyW-0000rs-1l
-	for qemu-trivial@nongnu.org; Wed, 01 Oct 2014 05:13:38 -0400
+	(envelope-from <armbru@redhat.com>) id 1XZH60-0008Ol-8T
+	for qemu-trivial@nongnu.org; Wed, 01 Oct 2014 06:25:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@hotmail.com>) id 1XZFyQ-00055D-44
-	for qemu-trivial@nongnu.org; Wed, 01 Oct 2014 05:13:31 -0400
-Received: from blu004-omc2s35.hotmail.com ([65.55.111.110]:58618)
+	(envelope-from <armbru@redhat.com>) id 1XZH5v-0002Oj-Du
+	for qemu-trivial@nongnu.org; Wed, 01 Oct 2014 06:25:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:11331)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@hotmail.com>)
-	id 1XZFyE-0004ru-5c; Wed, 01 Oct 2014 05:13:14 -0400
-Received: from BLU437-SMTP61 ([65.55.111.72]) by BLU004-OMC2S35.hotmail.com
-	over TLS secured channel with Microsoft SMTPSVC(7.5.7601.22724);
-	Wed, 1 Oct 2014 02:13:13 -0700
-X-TMN: [g8Y4Mvu6Gz4el6lewmlWTXrFmUrcHXJI/jJht3JE7ao=]
-X-Originating-Email: [arei.gonglei@hotmail.com]
-Message-ID: <BLU437-SMTP61BB708870E44DA94B53E69FB80@phx.gbl>
-From: Gonglei <arei.gonglei@hotmail.com>
-To: "'Markus Armbruster'" <armbru@redhat.com>,
-	<arei.gonglei@huawei.com>
-References: <1411638384-5844-1-git-send-email-arei.gonglei@huawei.com>	<1411638384-5844-3-git-send-email-arei.gonglei@huawei.com>
+	(envelope-from <armbru@redhat.com>)
+	id 1XZH5l-0002A2-G1; Wed, 01 Oct 2014 06:25:05 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s91AOwXr023254
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Wed, 1 Oct 2014 06:24:58 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-61.ams2.redhat.com
+	[10.36.116.61])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s91AOuEC030159
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 1 Oct 2014 06:24:57 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 6E11E3042B6D; Wed,  1 Oct 2014 12:24:55 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Gonglei <arei.gonglei@hotmail.com>
+References: <1411638384-5844-1-git-send-email-arei.gonglei@huawei.com>
+	<1411638384-5844-3-git-send-email-arei.gonglei@huawei.com>
 	<87a95gch5b.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87a95gch5b.fsf@blackfin.pond.sub.org>
-Date: Wed, 1 Oct 2014 17:12:20 +0800
+	<BLU437-SMTP61BB708870E44DA94B53E69FB80@phx.gbl>
+Date: Wed, 01 Oct 2014 12:24:55 +0200
+In-Reply-To: <BLU437-SMTP61BB708870E44DA94B53E69FB80@phx.gbl> (Gonglei's
+	message of "Wed, 1 Oct 2014 17:12:20 +0800")
+Message-ID: <87egus9jew.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailer: Microsoft Office Outlook 12.0
-Thread-Index: Ac/dVD0nZtDgYnL3Txq8R1aHZWSjygAARV8w
-Content-Language: zh-cn
-X-OriginalArrivalTime: 01 Oct 2014 09:13:12.0538 (UTC)
-	FILETIME=[ED03DBA0:01CFDD57]
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 65.55.111.110
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: peter.maydell@linaro.org, weidong.huang@huawei.com, qemu-trivial@nongnu.org,
 	luonengjun@huawei.com, mjt@tls.msk.ru, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com, pbonzini@redhat.com
+	peter.huangpeng@huawei.com, arei.gonglei@huawei.com, pbonzini@redhat.com
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/4] os-posix: report error
 	message when	lock file failed
 X-BeenThere: qemu-trivial@nongnu.org
@@ -51,83 +57,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Oct 2014 09:13:38 -0000
+X-List-Received-Date: Wed, 01 Oct 2014 10:25:25 -0000
 
-Hi,
+Gonglei <arei.gonglei@hotmail.com> writes:
 
-> Subject: Re: [Qemu-devel] [PATCH 2/4] os-posix: report error message =
-when
-> lock file failed
->=20
-> <arei.gonglei@huawei.com> writes:
->=20
-> > From: Gonglei <arei.gonglei@huawei.com>
-> >
-> > It will cause that create vm failed When manager
-> > tool is killed forcibly (kill -9 libvirtd_pid),
-> > the file not was unlink, and unlock. It's better
-> > that report the error message for users.
-> >
-> > Signed-off-by: Huangweidong <weidong.huang@huawei.com>
-> > Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-> > ---
-> >  os-posix.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> >
-> > diff --git a/os-posix.c b/os-posix.c
-> > index 9d5ae70..89831dc 100644
-> > --- a/os-posix.c
-> > +++ b/os-posix.c
-> > @@ -316,6 +316,7 @@ int qemu_create_pidfile(const char *filename)
-> >          return -1;
-> >      }
-> >      if (lockf(fd, F_TLOCK, 0) =3D=3D -1) {
-> > +        error_report("lock file '%s' failed: %s", filename, =
-strerror(errno));
-> >          close(fd);
-> >          return -1;
-> >      }
->=20
-> Only called from main():
->=20
-Yes, indeed.=20
+> Hi,
+>
+>> Subject: Re: [Qemu-devel] [PATCH 2/4] os-posix: report error message when
+>> lock file failed
+>> 
+>> <arei.gonglei@huawei.com> writes:
+>> 
+>> > From: Gonglei <arei.gonglei@huawei.com>
+>> >
+>> > It will cause that create vm failed When manager
+>> > tool is killed forcibly (kill -9 libvirtd_pid),
+>> > the file not was unlink, and unlock. It's better
+>> > that report the error message for users.
+>> >
+>> > Signed-off-by: Huangweidong <weidong.huang@huawei.com>
+>> > Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>> > ---
+>> >  os-posix.c | 1 +
+>> >  1 file changed, 1 insertion(+)
+>> >
+>> > diff --git a/os-posix.c b/os-posix.c
+>> > index 9d5ae70..89831dc 100644
+>> > --- a/os-posix.c
+>> > +++ b/os-posix.c
+>> > @@ -316,6 +316,7 @@ int qemu_create_pidfile(const char *filename)
+>> >          return -1;
+>> >      }
+>> >      if (lockf(fd, F_TLOCK, 0) == -1) {
+>> > +        error_report("lock file '%s' failed: %s", filename, strerror(errno));
+>> >          close(fd);
+>> >          return -1;
+>> >      }
+>> 
+>> Only called from main():
+>> 
+> Yes, indeed. 
+>
+>>     if (pid_file && qemu_create_pidfile(pid_file) != 0) {
+>>         os_pidfile_error();
+>>         exit(1);
+>>     }
+>> 
+>> I suspect the error reporting is os_pidfile_error()'s job.  And it
+>> actually does it (POSIX version shown, W32 is simpler):
+>> 
+>> void os_pidfile_error(void)
+>> {
+>>     if (daemonize) {
+>>         uint8_t status = 1;
+>>         if (write(fds[1], &status, 1) != 1) {
+>>             perror("daemonize. Writing to pipe\n");
+>>         }
+>>     } else
+>>         fprintf(stderr, "Could not acquire pid file: %s\n", strerror(errno));
+>> }
+>> 
+>> Are you sure your patch makes sense?
+>
+> Yes, I'm sure it make sense. And I had tested, the result is OK as expected.
+>
+> When daemonize variable is true, the os_pidfile_error() usually don't
+> report an error,
+> because "if (write(fds[1], &status, 1) != 1)" is always false. On the other
+> hand, we should assure that we can get the original error message
+> when lock failed but not other information, such as "Could not acquire
+> pid file...".
 
->     if (pid_file && qemu_create_pidfile(pid_file) !=3D 0) {
->         os_pidfile_error();
->         exit(1);
->     }
->=20
-> I suspect the error reporting is os_pidfile_error()'s job.  And it
-> actually does it (POSIX version shown, W32 is simpler):
->=20
-> void os_pidfile_error(void)
-> {
->     if (daemonize) {
->         uint8_t status =3D 1;
->         if (write(fds[1], &status, 1) !=3D 1) {
->             perror("daemonize. Writing to pipe\n");
->         }
->     } else
->         fprintf(stderr, "Could not acquire pid file: %s\n", =
-strerror(errno));
-> }
->=20
-> Are you sure your patch makes sense?
+Even if the new error message makes sense, reporting errors in two
+places doesn't.
 
-Yes, I'm sure it make sense. And I had tested, the result is OK as =
-expected.
+qemu_create_pidfile() is designed to leave the actual error reporting to
+its caller, which delegates it to os_pidfile_error().
 
-When daemonize variable is true, the os_pidfile_error() usually don't =
-report an error,
-because "if (write(fds[1], &status, 1) !=3D 1)" is always false. On the =
-other
-hand, we should assure that we can get the original error message
-when lock failed but not other information, such as "Could not acquire =
-pid file...".
+If daemonize, os_pidfile_error() signals the failure to the parent
+process instead of reporting to stderr.  The parent does the reporting,
+in os_daemonize().  If this isn't good enough, you're certainly welcome
+to improve it.
 
-Best regards,
--Gonglei
+Just noticed that commit e5048d1 "os-posix: report error message when
+lock file failed" already messed this up: error reporting is spread over
+three places: qemu_create_pidfile(), os_pidfile_error() and
+os_daemonize().
 
-
-
+Please pick one method to report errors: either just in
+qemu_create_pidfile(), or in os_pidfile_error() (normal case) and
+os_daemonize() (if daemonize).  I don't particularly care which one you
+pick, as long as it works with and without -daemonize.
 
