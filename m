@@ -1,49 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XcEo2-0006J3-CS
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Oct 2014 10:35:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57631)
+	id 1XcF7N-0006jL-LX
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Oct 2014 10:55:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33555)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XcEnu-000642-4Q
-	for qemu-trivial@nongnu.org; Thu, 09 Oct 2014 10:35:00 -0400
+	(envelope-from <eblake@redhat.com>) id 1XcF7H-0006cQ-2Y
+	for qemu-trivial@nongnu.org; Thu, 09 Oct 2014 10:54:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XcEnn-0000Ns-2G
-	for qemu-trivial@nongnu.org; Thu, 09 Oct 2014 10:34:53 -0400
-Received: from mail-la0-f47.google.com ([209.85.215.47]:51891)
+	(envelope-from <eblake@redhat.com>) id 1XcF7B-00086d-VF
+	for qemu-trivial@nongnu.org; Thu, 09 Oct 2014 10:54:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49358)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XcEnm-0000NZ-Sa
-	for qemu-trivial@nongnu.org; Thu, 09 Oct 2014 10:34:47 -0400
-Received: by mail-la0-f47.google.com with SMTP id pv20so1306152lab.20
-	for <qemu-trivial@nongnu.org>; Thu, 09 Oct 2014 07:34:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=5raH9ybMGrWvFZLQTMXO9FkaDx0TzmHe05mE/KtmPC4=;
-	b=jV7iK4l80XUetfARSMwCFEl3WDM7fa31scBxQc6fEjMGHEBp2G4//oeG0XEioDX186
-	vLsiQlSJKzxxJL0qvub0dVHJHPYR9HlfIs2PUf6Q/E/NGJF0zWnXdHEedp5yg99M1qdZ
-	f9XRUBuUcRIEYnQdsBl37Yb652yFvxXzapUBSKO5KyBgn8t0m/U/u2oi0KVhWZGvqBMi
-	TUqSjij6qe6CJzBTUvwbEpji9rfMigIl2rUzxcQ1OyWBaj0+5qduShwNlZczy26BYZge
-	Ncyua+DWpFPiXao8lFoPOACoGd4g6GWurTgDhsBmORbaoQr2s5/+1bgDAKfPevJGm6SO
-	1wLQ==
-X-Gm-Message-State: ALoCoQnGyA7k2Y9jCOCSw732mrVEJAOAea0Hmq8ZBs47tnrGdXkPbMN0gjHw7gTQ/gLCpJ71xeLK
-X-Received: by 10.112.169.37 with SMTP id ab5mr18297882lbc.27.1412865283592;
-	Thu, 09 Oct 2014 07:34:43 -0700 (PDT)
+	(envelope-from <eblake@redhat.com>)
+	id 1XcF71-000849-MK; Thu, 09 Oct 2014 10:54:39 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s99EsZ1j018028
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 9 Oct 2014 10:54:35 -0400
+Received: from [10.3.113.90] (ovpn-113-90.phx2.redhat.com [10.3.113.90])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s99EsY6p005934; Thu, 9 Oct 2014 10:54:34 -0400
+Message-ID: <5436A1AA.8020004@redhat.com>
+Date: Thu, 09 Oct 2014 08:54:34 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
 MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Thu, 9 Oct 2014 07:34:23 -0700 (PDT)
-In-Reply-To: <54369514.5000004@gmail.com>
-References: <54369514.5000004@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Oct 2014 15:34:23 +0100
-Message-ID: <CAFEAcA_NOfN=vr98+yqE7B+M88ZDWD_OwxG+noMzGcNjNFwwPw@mail.gmail.com>
-To: Chen Gang <gang.chen.5i5j@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.47
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+To: Chen Gang <gang.chen.5i5j@gmail.com>, peter.maydell@linaro.org,
 	"rth@twiddle.net" <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] disas/libvixl/a64/instructions-a64.h:
- Remove useless varialbe to avoid building break with '-Werror'
+References: <54369514.5000004@gmail.com>
+In-Reply-To: <54369514.5000004@gmail.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="G4RO9AOtARKHodmv7of75nSIDGt3O6sps"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH]
+ disas/libvixl/a64/instructions-a64.h: Remove useless varialbe to avoid
+ building break with '-Werror'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,31 +53,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Oct 2014 14:35:00 -0000
+X-List-Received-Date: Thu, 09 Oct 2014 14:55:00 -0000
 
-On 9 October 2014 15:00, Chen Gang <gang.chen.5i5j@gmail.com> wrote:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--G4RO9AOtARKHodmv7of75nSIDGt3O6sps
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+On 10/09/2014 08:00 AM, Chen Gang wrote:
+
+That's a very long subject line.  Try to keep subjects around 60
+characters or so ('git shortlog -30' can give you an idea of reasonable
+subjects).  Also, s/varialbe/variable/ in the subject.
+
 > The related variables are useless, need be removed, or can not pass
 > microblaze building, after fix it, can build microblaze, successfully.
->
-> The related configuration:
->
->  ./configure --target-list="arm-softmmu,microblazeel-softmmu" --enable-fdt --disable-kvm
->
-> The related compiling error:
+>=20
 
-I build this code with both these targets enabled without any
-problems.
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-There is an odd compiler thing where if you have any *other*
-compilation issues then these warnings will also be emitted,
-but once you've fixed that other compiler error then these
-warnings are no longer produced. Maybe you ran into that?
 
-The reason I'm reluctant to make changes to these files is
-that they're pulled in from a different upstream project
-(libvixl) so we should only fix critical problems in them,
-or it makes new versions harder to update to.
+--G4RO9AOtARKHodmv7of75nSIDGt3O6sps
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-thanks
--- PMM
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+
+iQEcBAEBCAAGBQJUNqGqAAoJEKeha0olJ0NqupEIAIK5TFpjhE6XnjvWlDDNp4A6
+cJnIq8eo6lipTMJIXmgKYby6iJCq2t9pp+8h6Pchy7imWdQi3H4OJ9Cw/7VzAqiF
+vcu7YXKzdYlFaM2p48MuOJUQwt+8pN1FQtAeK7FNNwASGSx1V+FMnSCjHPOgIupq
+pnQ0dPUkLyzJE4oe3DgImrsqk3i73jE+GdWJFfLhC09505AZ6UmCqC9cprL2Dgb7
+GAHlye4Kd0kilz91t+9ouPlyNqbSSEC3bwV4T7v/PIHm4+OchAggLR1mVKbTpMiB
+7DhUo6FUegMkAWVxdHE1hI21K36Du0SoJkhg2JEBZNR4wyD1eWAPd+5kfWrI5Ik=
+=el45
+-----END PGP SIGNATURE-----
+
+--G4RO9AOtARKHodmv7of75nSIDGt3O6sps--
 
