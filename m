@@ -1,43 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XcF7N-0006jL-LX
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Oct 2014 10:55:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33555)
+	id 1XcOvT-0002C9-J9
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Oct 2014 21:23:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46884)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XcF7H-0006cQ-2Y
-	for qemu-trivial@nongnu.org; Thu, 09 Oct 2014 10:54:59 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1XcOvI-00020E-Qy
+	for qemu-trivial@nongnu.org; Thu, 09 Oct 2014 21:23:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XcF7B-00086d-VF
-	for qemu-trivial@nongnu.org; Thu, 09 Oct 2014 10:54:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49358)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1XcOv9-0004wK-Nk
+	for qemu-trivial@nongnu.org; Thu, 09 Oct 2014 21:23:12 -0400
+Received: from mail-pa0-x236.google.com ([2607:f8b0:400e:c03::236]:52115)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1XcF71-000849-MK; Thu, 09 Oct 2014 10:54:39 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s99EsZ1j018028
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 9 Oct 2014 10:54:35 -0400
-Received: from [10.3.113.90] (ovpn-113-90.phx2.redhat.com [10.3.113.90])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s99EsY6p005934; Thu, 9 Oct 2014 10:54:34 -0400
-Message-ID: <5436A1AA.8020004@redhat.com>
-Date: Thu, 09 Oct 2014 08:54:34 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1XcOuq-0004d0-0P; Thu, 09 Oct 2014 21:22:44 -0400
+Received: by mail-pa0-f54.google.com with SMTP id ey11so724200pad.27
+	for <multiple recipients>; Thu, 09 Oct 2014 18:22:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=mle9yYDuK4IZvi4qh+P5nlEJYYzX+pZTeX5aQZMNnJ4=;
+	b=AXby/FT5s05Cx57tyVny1ERNhG1dtkTu7NTil5Webgy6PTxOKcHjctKOTYVp8THu22
+	5F5zctAIeqXfZDvxUPAVmNw9itqLrqyA+aP/+0NpkJgHwbB51IT0JglyZt/D35vNw+dG
+	7kpiE5I+9jFo/n3GAmUcURGtbTrOtJ9f3UPrGrdIzZGxPe1EgyQXIIU2gP9g8yz6wsuM
+	DyXxnBR40XbCNCxVID6cxxJRAmiJQrwYgHOhJ1CopW/errFsS/j+rLk1e8bYrw4Rsszx
+	f1JAYyb1C7zoRLiGwTVS0v7Xfv47e4PT4KffMmO86qgNyCdyGylxCMfiuQMLA/xA6L3y
+	UN5A==
+X-Received: by 10.70.88.197 with SMTP id bi5mr1727376pdb.80.1412904162138;
+	Thu, 09 Oct 2014 18:22:42 -0700 (PDT)
+Received: from ShengShiZhuChengdeMacBook-Pro.local ([1.202.59.152])
+	by mx.google.com with ESMTPSA id qj2sm1662636pbc.78.2014.10.09.18.22.36
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 09 Oct 2014 18:22:41 -0700 (PDT)
+Message-ID: <54373639.4010005@gmail.com>
+Date: Fri, 10 Oct 2014 09:28:25 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9;
+	rv:31.0) Gecko/20100101 Thunderbird/31.1.2
 MIME-Version: 1.0
-To: Chen Gang <gang.chen.5i5j@gmail.com>, peter.maydell@linaro.org,
+To: Eric Blake <eblake@redhat.com>, peter.maydell@linaro.org, 
 	"rth@twiddle.net" <rth@twiddle.net>
-References: <54369514.5000004@gmail.com>
-In-Reply-To: <54369514.5000004@gmail.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="G4RO9AOtARKHodmv7of75nSIDGt3O6sps"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+References: <54369514.5000004@gmail.com> <5436A1AA.8020004@redhat.com>
+In-Reply-To: <5436A1AA.8020004@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::236
 Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH]
  disas/libvixl/a64/instructions-a64.h: Remove useless varialbe to avoid
@@ -53,45 +61,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Oct 2014 14:55:00 -0000
+X-List-Received-Date: Fri, 10 Oct 2014 01:23:22 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---G4RO9AOtARKHodmv7of75nSIDGt3O6sps
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+On 10/9/14 22:54, Eric Blake wrote:
+> On 10/09/2014 08:00 AM, Chen Gang wrote:
+> 
+> That's a very long subject line.  Try to keep subjects around 60
+> characters or so ('git shortlog -30' can give you an idea of reasonable
+> subjects).
 
-On 10/09/2014 08:00 AM, Chen Gang wrote:
+OK, thanks, I shall notice about it next (also let 'git shortlog -30' as
+reference).
 
-That's a very long subject line.  Try to keep subjects around 60
-characters or so ('git shortlog -30' can give you an idea of reasonable
-subjects).  Also, s/varialbe/variable/ in the subject.
+>             Also, s/varialbe/variable/ in the subject.
+> 
+>> The related variables are useless, need be removed, or can not pass
 
-> The related variables are useless, need be removed, or can not pass
-> microblaze building, after fix it, can build microblaze, successfully.
->=20
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+OK, thanks. If this patch can still continue (pass checking), I shall
+send patch v2 for it.
 
 
---G4RO9AOtARKHodmv7of75nSIDGt3O6sps
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+Thanks.
+-- 
+Chen Gang
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-
-iQEcBAEBCAAGBQJUNqGqAAoJEKeha0olJ0NqupEIAIK5TFpjhE6XnjvWlDDNp4A6
-cJnIq8eo6lipTMJIXmgKYby6iJCq2t9pp+8h6Pchy7imWdQi3H4OJ9Cw/7VzAqiF
-vcu7YXKzdYlFaM2p48MuOJUQwt+8pN1FQtAeK7FNNwASGSx1V+FMnSCjHPOgIupq
-pnQ0dPUkLyzJE4oe3DgImrsqk3i73jE+GdWJFfLhC09505AZ6UmCqC9cprL2Dgb7
-GAHlye4Kd0kilz91t+9ouPlyNqbSSEC3bwV4T7v/PIHm4+OchAggLR1mVKbTpMiB
-7DhUo6FUegMkAWVxdHE1hI21K36Du0SoJkhg2JEBZNR4wyD1eWAPd+5kfWrI5Ik=
-=el45
------END PGP SIGNATURE-----
-
---G4RO9AOtARKHodmv7of75nSIDGt3O6sps--
+Open, share, and attitude like air, water, and life which God blessed
 
