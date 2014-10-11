@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XcnFk-0002pO-Uw
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Oct 2014 23:21:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36514)
+	id 1XcnI5-0003du-CK
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Oct 2014 23:24:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36884)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XcnFf-0002hh-3W
-	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 23:21:55 -0400
+	(envelope-from <eblake@redhat.com>) id 1XcnHz-0003d9-G9
+	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 23:24:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XcnFa-0005II-AX
-	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 23:21:51 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:38367)
+	(envelope-from <eblake@redhat.com>) id 1XcnHu-00061h-RI
+	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 23:24:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:2909)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XcnFP-0005GU-Ta; Fri, 10 Oct 2014 23:21:36 -0400
-Received: from 172.24.2.119 (EHLO szxeml448-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CCS32347; Sat, 11 Oct 2014 11:21:25 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml448-hub.china.huawei.com
-	(10.82.67.191) with Microsoft SMTP Server id 14.3.158.1;
-	Sat, 11 Oct 2014 11:21:14 +0800
-Message-ID: <5438A223.2040402@huawei.com>
-Date: Sat, 11 Oct 2014 11:21:07 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <eblake@redhat.com>)
+	id 1XcnHu-00061X-Jh; Fri, 10 Oct 2014 23:24:10 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9B3Nr3u009886
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Fri, 10 Oct 2014 23:23:53 -0400
+Received: from [10.3.113.64] (ovpn-113-64.phx2.redhat.com [10.3.113.64])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9B3Nrn8012693; Fri, 10 Oct 2014 23:23:53 -0400
+Message-ID: <5438A2C8.80508@redhat.com>
+Date: Fri, 10 Oct 2014 21:23:52 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
 MIME-Version: 1.0
-To: Zhanghailiang <zhang.zhanghailiang@huawei.com>
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
 References: <1412996048-6384-1-git-send-email-arei.gonglei@huawei.com>
-	<54389FB1.8040207@huawei.com>
-In-Reply-To: <54389FB1.8040207@huawei.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: "kwolf@redhat.com" <kwolf@redhat.com>,
-	"Huangweidong \(C\)" <weidong.huang@huawei.com>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"stefanha@redhat.com" <stefanha@redhat.com>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>
+In-Reply-To: <1412996048-6384-1-git-send-email-arei.gonglei@huawei.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="smi24EXxmAp9TN8o92384g9kKK8PqvLnc"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, weidong.huang@huawei.com,
+	stefanha@redhat.com, pbonzini@redhat.com
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] oslib-posix: change free to
 	g_free
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,55 +52,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 11 Oct 2014 03:21:56 -0000
+X-List-Received-Date: Sat, 11 Oct 2014 03:24:19 -0000
 
-On 2014/10/11 11:10, Zhanghailiang wrote:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--smi24EXxmAp9TN8o92384g9kKK8PqvLnc
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-> On 2014/10/11 10:54, arei.gonglei@huawei.com wrote:
->> From: Gonglei <arei.gonglei@huawei.com>
->>
->> The caller of qemu_vfree() maybe not check whether parameter
->> ptr pointer is NULL or not, such as vpc_open().
->> Using g_free() is more safe.
->>
-> 
-> It seems that free(NULL) is harmless.
-> 
+On 10/10/2014 08:54 PM, arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+>=20
+> The caller of qemu_vfree() maybe not check whether parameter
+> ptr pointer is NULL or not, such as vpc_open().
+> Using g_free() is more safe.
 
-Actually, I had noted that C standard says it is a no-operation.
-But that doesn't mean that every C-library handles it like that.
-Some people saw crashes for free(NULL), so it's best to avoid
-calling the free in the first place (caller) or using  g_free() in qemu_vfree().
+NACK.  g_free is only safe for pointers allocated by g_malloc.
+qemu_vfree is for use on pointers allocated by qemu_try_memalign and
+friends (matching the name valloc which is an older spelling of
+posix_memalign), which are NOT allocated by g_malloc.  Furthermore,
+free(NULL) is safe.
 
-Best regards,
--Gonglei
-
->  From section 7.20.3.2/2 of the C99 standard:
-> The free function causes the space pointed to by ptr to be deallocated, that is,
-> made available for further allocation. If ptr is a null pointer, no action occurs.
-> 
->> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
->> ---
->>   util/oslib-posix.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
->> index 016a047..ca435d0 100644
->> --- a/util/oslib-posix.c
->> +++ b/util/oslib-posix.c
->> @@ -153,7 +153,7 @@ void *qemu_anon_ram_alloc(size_t size)
->>   void qemu_vfree(void *ptr)
->>   {
->>       trace_qemu_vfree(ptr);
->> -    free(ptr);
->> +    g_free(ptr);
->>   }
->>
->>   void qemu_anon_ram_free(void *ptr, size_t size)
->>
-> 
-> 
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
+--smi24EXxmAp9TN8o92384g9kKK8PqvLnc
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+
+iQEcBAEBCAAGBQJUOKLIAAoJEKeha0olJ0Nq/dwH/2nVWoQQ/4Jq9NlSb1OOio+v
+tS/neUDLrFM8fjGj2t865MCZveVWPTK3/YqCZ0I5KaYQHsXRfFiwzMC01MUiZaKi
+DSE4/ZCwZjxo8HptySmmd4tCB2mX+M4UbudQbMoywzcBM6XoG/3dDniBOZj1rtYl
+o2eOpL0SaeUE/oi4VR3bG8RkM0Tk/5YdL0IZk3UGHYIVBmSET04WbSP7DAxuRb6k
+NSOIQB6NAW6plaEEfegew6e8V5T6EeuehGrH5b5UAu4oeszlzcZcgYd7AfnRoA1O
+hBrXB85tigoNth8Fkv5okUCa2tMxphNFlH4hWy8LSfgs5tbD8zGFTofWyg/t+jU=
+=Iwkp
+-----END PGP SIGNATURE-----
+
+--smi24EXxmAp9TN8o92384g9kKK8PqvLnc--
 
