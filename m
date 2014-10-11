@@ -1,49 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xcdrv-0004Tv-As
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Oct 2014 13:20:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52909)
+	id 1Xcmpu-0006x0-Rn
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Oct 2014 22:55:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33483)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1Xcdrs-0004Sa-Cu
-	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 13:20:41 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1Xcmpo-0006o1-ND
+	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 22:55:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1Xcdrq-0008Tk-QG
-	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 13:20:39 -0400
-Received: from mail-oi0-x232.google.com ([2607:f8b0:4003:c06::232]:51483)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Xcmpj-0005Yl-Tu
+	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 22:55:08 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:52681)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>)
-	id 1Xcdrn-0008Sr-T4; Fri, 10 Oct 2014 13:20:35 -0400
-Received: by mail-oi0-f50.google.com with SMTP id i138so7322746oig.37
-	for <multiple recipients>; Fri, 10 Oct 2014 10:20:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=2f5ejQ47i6gIp03s1axodgLUjRvmoDUL/sCawYds/I8=;
-	b=nprR+YJeFqhmBa/fdGKl9iJOUhGgFeWY8X5GARdquZWhHo+sQT+bHMVJbiNPWB9aMC
-	SaCKAw1BM0fHh42IjWOrnDDjYx7wpCsSpa8wiNrJlGnQ8vH3ttr6w5iu8muKjWF64jsg
-	YhiK5822WeQE2D3m/ac5ofb7bno96C3hezey0EDrwMgwRpxCqQ6WtRYnuivRDhfXW3DU
-	r+Fr7JhzqEda+mSfp0h8RuxIOhEisim/Cg7CDTdQw4eIp7S3jVE8whXWEVihF0xM2I5r
-	lPxQPXZ/6xI+rJFyASZQWR6d+wOh3lJRixFFPsiJK1zYxEXP335CBU9sRa6pJa/H/L4z
-	CWow==
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XcmpY-0005T3-JY; Fri, 10 Oct 2014 22:54:53 -0400
+Received: from 172.24.2.119 (EHLO szxeml409-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AVK52259; Sat, 11 Oct 2014 10:54:40 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml409-hub.china.huawei.com
+	(10.82.67.136) with Microsoft SMTP Server id 14.3.158.1;
+	Sat, 11 Oct 2014 10:54:27 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Sat, 11 Oct 2014 10:54:08 +0800
+Message-ID: <1412996048-6384-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
-X-Received: by 10.182.20.146 with SMTP id n18mr6097755obe.26.1412961634583;
-	Fri, 10 Oct 2014 10:20:34 -0700 (PDT)
-Received: by 10.76.104.231 with HTTP; Fri, 10 Oct 2014 10:20:34 -0700 (PDT)
-In-Reply-To: <CAFEAcA8=Ku5NwK8jqeHpB1ygHEh4JW_RgVpBnLUBSe30KFFRRA@mail.gmail.com>
-References: <1410723393-17812-1-git-send-email-peter.maydell@linaro.org>
-	<CAMo8Bf+80_-=GVZbhy4URKLYThmc+h_ooVbTfvSjTL+dGwDvgg@mail.gmail.com>
-	<CAFEAcA8=Ku5NwK8jqeHpB1ygHEh4JW_RgVpBnLUBSe30KFFRRA@mail.gmail.com>
-Date: Fri, 10 Oct 2014 21:20:34 +0400
-Message-ID: <CAMo8BfK+qk_wXUrGY8jTEm3wfXbbP1=aJaBrZOhysUT-iGSjtQ@mail.gmail.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c06::232
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH] target-xtensa: mark XtensaConfig structs
-	as unused
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020205.54389BF0.00D0, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 7c345069821d2f75e32bc2bf13b7bd18
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: kwolf@redhat.com, weidong.huang@huawei.com, qemu-trivial@nongnu.org,
+	Gonglei <arei.gonglei@huawei.com>, stefanha@redhat.com, pbonzini@redhat.com
+Subject: [Qemu-trivial] [PATCH] oslib-posix: change free to g_free
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,40 +49,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Oct 2014 17:20:41 -0000
+X-List-Received-Date: Sat, 11 Oct 2014 02:55:13 -0000
 
-On Fri, Oct 10, 2014 at 8:24 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 14 September 2014 21:29, Max Filippov <jcmvbkbc@gmail.com> wrote:
->> On Sun, Sep 14, 2014 at 12:36 PM, Peter Maydell
->> <peter.maydell@linaro.org> wrote:
->>> The XtensaConfig structs will be defined but not used if they are
->>> for the opposite endianness from that of the binary being built;
->>> keep the compiler from complaining about this by marking them
->>> with the 'unused' attribute.
->>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>> This works, although it's a tad ugly. If anybody wants to suggest
->>> something better...
->>
->> Fine for me.
->>
->>>  target-xtensa/core-dc232b.c | 2 +-
->>>  target-xtensa/core-dc233c.c | 2 +-
->>>  target-xtensa/core-fsf.c    | 2 +-
->>>  3 files changed, 3 insertions(+), 3 deletions(-)
->>
->> Acked-by: Max Filippov <jcmvbkbc@gmail.com>
->
-> Thanks. I guess we could put this one in through
-> -trivial ?
+From: Gonglei <arei.gonglei@huawei.com>
 
-Yes, please.
+The caller of qemu_vfree() maybe not check whether parameter
+ptr pointer is NULL or not, such as vpc_open().
+Using g_free() is more safe.
 
-> Patchwork url:
-> http://patchwork.ozlabs.org/patch/389115/
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ util/oslib-posix.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 016a047..ca435d0 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -153,7 +153,7 @@ void *qemu_anon_ram_alloc(size_t size)
+ void qemu_vfree(void *ptr)
+ {
+     trace_qemu_vfree(ptr);
+-    free(ptr);
++    g_free(ptr);
+ }
+ 
+ void qemu_anon_ram_free(void *ptr, size_t size)
 -- 
-Thanks.
--- Max
+1.7.12.4
+
+
 
