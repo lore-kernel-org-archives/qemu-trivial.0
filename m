@@ -1,44 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XcnI5-0003du-CK
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Oct 2014 23:24:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36884)
+	id 1XcnKB-0004zG-0K
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Oct 2014 23:26:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37153)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XcnHz-0003d9-G9
-	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 23:24:19 -0400
+	(envelope-from <eblake@redhat.com>) id 1XcnK4-0004ru-FF
+	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 23:26:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XcnHu-00061h-RI
-	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 23:24:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:2909)
+	(envelope-from <eblake@redhat.com>) id 1XcnJz-0006X6-IA
+	for qemu-trivial@nongnu.org; Fri, 10 Oct 2014 23:26:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:17186)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eblake@redhat.com>)
-	id 1XcnHu-00061X-Jh; Fri, 10 Oct 2014 23:24:10 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9B3Nr3u009886
+	id 1XcnJn-0006WH-2J; Fri, 10 Oct 2014 23:26:07 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9B3Q2MG003940
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Fri, 10 Oct 2014 23:23:53 -0400
+	verify=FAIL); Fri, 10 Oct 2014 23:26:02 -0400
 Received: from [10.3.113.64] (ovpn-113-64.phx2.redhat.com [10.3.113.64])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s9B3Nrn8012693; Fri, 10 Oct 2014 23:23:53 -0400
-Message-ID: <5438A2C8.80508@redhat.com>
-Date: Fri, 10 Oct 2014 21:23:52 -0600
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9B3Q24P031822; Fri, 10 Oct 2014 23:26:02 -0400
+Message-ID: <5438A349.9090403@redhat.com>
+Date: Fri, 10 Oct 2014 21:26:01 -0600
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
 MIME-Version: 1.0
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
-References: <1412996048-6384-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1412996048-6384-1-git-send-email-arei.gonglei@huawei.com>
+To: Gonglei <arei.gonglei@huawei.com>,
+	Zhanghailiang <zhang.zhanghailiang@huawei.com>
+References: <1412996048-6384-1-git-send-email-arei.gonglei@huawei.com>	<54389FB1.8040207@huawei.com>
+	<5438A223.2040402@huawei.com>
+In-Reply-To: <5438A223.2040402@huawei.com>
 OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="smi24EXxmAp9TN8o92384g9kKK8PqvLnc"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	boundary="j1j57A6oxkKNOqBq4MSuP6AgjBPfnNjEt"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, weidong.huang@huawei.com,
-	stefanha@redhat.com, pbonzini@redhat.com
+Cc: "kwolf@redhat.com" <kwolf@redhat.com>,
+	"Huangweidong \(C\)" <weidong.huang@huawei.com>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"stefanha@redhat.com" <stefanha@redhat.com>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] oslib-posix: change free to
 	g_free
 X-BeenThere: qemu-trivial@nongnu.org
@@ -52,32 +58,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 11 Oct 2014 03:24:19 -0000
+X-List-Received-Date: Sat, 11 Oct 2014 03:26:29 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---smi24EXxmAp9TN8o92384g9kKK8PqvLnc
+--j1j57A6oxkKNOqBq4MSuP6AgjBPfnNjEt
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-On 10/10/2014 08:54 PM, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
->=20
-> The caller of qemu_vfree() maybe not check whether parameter
-> ptr pointer is NULL or not, such as vpc_open().
-> Using g_free() is more safe.
+On 10/10/2014 09:21 PM, Gonglei wrote:
 
-NACK.  g_free is only safe for pointers allocated by g_malloc.
-qemu_vfree is for use on pointers allocated by qemu_try_memalign and
-friends (matching the name valloc which is an older spelling of
-posix_memalign), which are NOT allocated by g_malloc.  Furthermore,
-free(NULL) is safe.
+>=20
+> Actually, I had noted that C standard says it is a no-operation.
+> But that doesn't mean that every C-library handles it like that.
+
+EVERY libc that is C89 compliant handles it like that.  The last
+platform that failed on free(NULL) was SunOS 4, which is such
+museum-ware it's not funny.  There is no need to cater to platforms from
+25 years ago.
+
+> Some people saw crashes for free(NULL), so it's best to avoid
+> calling the free in the first place (caller) or using  g_free() in qemu=
+_vfree().
+
+Absolutely not.  g_free is unsafe to use except for pointers from
+g_malloc, which is NOT the case that qemu_vfree is used on.
 
 --=20
 Eric Blake   eblake redhat com    +1-919-301-3266
 Libvirt virtualization library http://libvirt.org
 
 
---smi24EXxmAp9TN8o92384g9kKK8PqvLnc
+--j1j57A6oxkKNOqBq4MSuP6AgjBPfnNjEt
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
@@ -86,14 +97,14 @@ Content-Disposition: attachment; filename="signature.asc"
 Version: GnuPG v1
 Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
 
-iQEcBAEBCAAGBQJUOKLIAAoJEKeha0olJ0Nq/dwH/2nVWoQQ/4Jq9NlSb1OOio+v
-tS/neUDLrFM8fjGj2t865MCZveVWPTK3/YqCZ0I5KaYQHsXRfFiwzMC01MUiZaKi
-DSE4/ZCwZjxo8HptySmmd4tCB2mX+M4UbudQbMoywzcBM6XoG/3dDniBOZj1rtYl
-o2eOpL0SaeUE/oi4VR3bG8RkM0Tk/5YdL0IZk3UGHYIVBmSET04WbSP7DAxuRb6k
-NSOIQB6NAW6plaEEfegew6e8V5T6EeuehGrH5b5UAu4oeszlzcZcgYd7AfnRoA1O
-hBrXB85tigoNth8Fkv5okUCa2tMxphNFlH4hWy8LSfgs5tbD8zGFTofWyg/t+jU=
-=Iwkp
+iQEcBAEBCAAGBQJUOKNJAAoJEKeha0olJ0NqxEYH/2o34zhb+9uiAMNzK8GjSsET
+hecaFPBawd0VASl5WRK4KAWPp5I2RnzSUuLnYVBcwx2mlXptUfyvB59StxbvuL9V
+jz2IPQvMlq4ybk7sUSdlvCe2XbHOFuIVnshuCZ+zT+wRBOK+b+jjbulIypLVV7RN
+4zVIRZAzC73vSnIboLNtcSixlxkKTm8nrYQ7/bPVc89jvaJVB1YLX86OJwosWO9w
+17rq6aSOPGRZMUM4PaNLll3QlpuOdxhcfD2Ed9mS1YSQ2KPsV/wFVUrRSBflcynw
+vnGPmDD5AJu75ffA6WxYohIyUCFqOwO4U179kZMb+HzSb2oWvZOK9Ygo3gBZJE8=
+=FCg5
 -----END PGP SIGNATURE-----
 
---smi24EXxmAp9TN8o92384g9kKK8PqvLnc--
+--j1j57A6oxkKNOqBq4MSuP6AgjBPfnNjEt--
 
