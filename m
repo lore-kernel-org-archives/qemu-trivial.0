@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XeLFL-0006rO-RG
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Oct 2014 05:51:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40524)
+	id 1Xekse-00011d-LR
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Oct 2014 09:14:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46715)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1XeLFE-0006eV-1a
-	for qemu-trivial@nongnu.org; Wed, 15 Oct 2014 05:51:54 -0400
+	(envelope-from <mprivozn@redhat.com>) id 1XeksW-0000r6-Fj
+	for qemu-trivial@nongnu.org; Thu, 16 Oct 2014 09:14:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1XeLF7-0007cO-Hk
-	for qemu-trivial@nongnu.org; Wed, 15 Oct 2014 05:51:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46720)
+	(envelope-from <mprivozn@redhat.com>) id 1XeksQ-0006Zu-BA
+	for qemu-trivial@nongnu.org; Thu, 16 Oct 2014 09:14:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51333)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1XeLEu-0007ZA-PO; Wed, 15 Oct 2014 05:51:28 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9F9pS3U009171
+	(envelope-from <mprivozn@redhat.com>)
+	id 1XeksD-0006Yr-Na; Thu, 16 Oct 2014 09:13:45 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9GDDgri000530
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 15 Oct 2014 05:51:28 -0400
-Received: from nilsson.home.kraxel.org (ovpn-116-60.ams2.redhat.com
-	[10.36.116.60])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s9F9pRn2006484; Wed, 15 Oct 2014 05:51:27 -0400
-Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
-	id 6ADF3808F0; Wed, 15 Oct 2014 11:51:26 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
+	verify=FAIL); Thu, 16 Oct 2014 09:13:42 -0400
+Received: from lisa.fdxtended.com (vpn-232-253.phx2.redhat.com [10.3.232.253])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id s9GDDdnu017925; Thu, 16 Oct 2014 09:13:40 -0400
+From: Michal Privoznik <mprivozn@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 15 Oct 2014 11:51:09 +0200
-Message-Id: <1413366669-10192-1-git-send-email-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Date: Thu, 16 Oct 2014 15:13:32 +0200
+Message-Id: <26626bbd0b1652d964c39937c378bb53089260f6.1413465100.git.mprivozn@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [Qemu-trivial] [PATCH] sparse: fix build
+Cc: qemu-trivial@nongnu.org, kwolf@redhat.com
+Subject: [Qemu-trivial] [PATCH] util: Improve os_mem_prealloc error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,30 +43,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Oct 2014 09:51:54 -0000
+X-List-Received-Date: Thu, 16 Oct 2014 13:14:10 -0000
 
-c++ compiler isn't wrapped with cgcc, resulting in gcc complaining about
-the sparse compiler flags which it doesn't know in case qemu is built
-with --enable-sparse.
+Currently, when the preallocating guest memory process fails, an not
+so helpful error message is printed out:
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+    # virsh start migt10
+    error: Failed to start domain migt10
+    error: internal error: process exited while connecting to monitor:
+    os_mem_prealloc: failed to preallocate pages
+
+From the error message it's not clear at the first glance where the
+problem lies. However, changing the error message might give uses a
+clue.
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
 ---
- configure | 1 +
- 1 file changed, 1 insertion(+)
+ util/oslib-posix.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/configure b/configure
-index 9ac2600..90349f3 100755
---- a/configure
-+++ b/configure
-@@ -4908,6 +4908,7 @@ echo "QEMU_CFLAGS=$QEMU_CFLAGS" >> $config_host_mak
- echo "QEMU_INCLUDES=$QEMU_INCLUDES" >> $config_host_mak
- if test "$sparse" = "yes" ; then
-   echo "CC           := REAL_CC=\"\$(CC)\" cgcc"       >> $config_host_mak
-+  echo "CXX          := REAL_CC=\"\$(CXX)\" cgcc"      >> $config_host_mak
-   echo "HOST_CC      := REAL_CC=\"\$(HOST_CC)\" cgcc"  >> $config_host_mak
-   echo "QEMU_CFLAGS  += -Wbitwise -Wno-transparent-union -Wno-old-initializer -Wno-non-pointer-null" >> $config_host_mak
- fi
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 016a047..8c9d80e 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -390,7 +390,8 @@ void os_mem_prealloc(int fd, char *area, size_t memory)
+     pthread_sigmask(SIG_UNBLOCK, &set, &oldset);
+ 
+     if (sigsetjmp(sigjump, 1)) {
+-        fprintf(stderr, "os_mem_prealloc: failed to preallocate pages\n");
++        fprintf(stderr, "os_mem_prealloc: Insufficient free host memory "
++                        "pages available to allocate guest RAM\n");
+         exit(1);
+     } else {
+         int i;
 -- 
-1.8.3.1
+2.0.4
 
 
