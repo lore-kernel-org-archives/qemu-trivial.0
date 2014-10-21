@@ -1,45 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XemQA-0003wM-OQ
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Oct 2014 10:52:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42392)
+	id 1XgVgb-0006ie-GI
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Oct 2014 05:25:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36227)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XemQ4-0003wC-KS
-	for qemu-trivial@nongnu.org; Thu, 16 Oct 2014 10:52:53 -0400
+	(envelope-from <mreitz@redhat.com>) id 1XgVgV-0006fT-Ia
+	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 05:25:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XemPy-0005yR-A9
-	for qemu-trivial@nongnu.org; Thu, 16 Oct 2014 10:52:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58089)
+	(envelope-from <mreitz@redhat.com>) id 1XgVgQ-0001SI-Od
+	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 05:24:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53010)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1XemPy-0005w3-2M; Thu, 16 Oct 2014 10:52:42 -0400
+	(envelope-from <mreitz@redhat.com>)
+	id 1XgVgQ-0001SD-Gv; Tue, 21 Oct 2014 05:24:50 -0400
 Received: from int-mx10.intmail.prod.int.phx2.redhat.com
 	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9GEqdF7024096
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9L9Ommn025696
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 16 Oct 2014 10:52:40 -0400
-Received: from [10.3.113.124] (ovpn-113-124.phx2.redhat.com [10.3.113.124])
+	verify=FAIL); Tue, 21 Oct 2014 05:24:48 -0400
+Received: from dresden.str.redhat.com (dhcp-192-247.str.redhat.com
+	[10.33.192.247])
 	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s9GEqck2019052; Thu, 16 Oct 2014 10:52:39 -0400
-Message-ID: <543FDBB6.1070204@redhat.com>
-Date: Thu, 16 Oct 2014 08:52:38 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
+	id s9L9Okni026179
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Tue, 21 Oct 2014 05:24:47 -0400
+Message-ID: <5446265E.306@redhat.com>
+Date: Tue, 21 Oct 2014 11:24:46 +0200
+From: Max Reitz <mreitz@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
+	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
 MIME-Version: 1.0
-To: Michal Privoznik <mprivozn@redhat.com>, qemu-devel@nongnu.org
-References: <26626bbd0b1652d964c39937c378bb53089260f6.1413465100.git.mprivozn@redhat.com>
-In-Reply-To: <26626bbd0b1652d964c39937c378bb53089260f6.1413465100.git.mprivozn@redhat.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="LbCkLfHUAJoMIQJ7nwURvew0F7qx365aS"
+To: Zhang Haoyu <zhanghy@sangfor.com>, qemu-devel <qemu-devel@nongnu.org>
+References: <201410211604116199416@sangfor.com>
+In-Reply-To: <201410211604116199416@sangfor.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, kwolf@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] util: Improve
-	os_mem_prealloc error message
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] snapshot: use local
+ variable to bdrv_pwrite_sync L1 table
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,81 +52,104 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Oct 2014 14:52:53 -0000
+X-List-Received-Date: Tue, 21 Oct 2014 09:25:00 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---LbCkLfHUAJoMIQJ7nwURvew0F7qx365aS
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 10/16/2014 07:13 AM, Michal Privoznik wrote:
-> Currently, when the preallocating guest memory process fails, an not
-
-s/an/a/
-
-> so helpful error message is printed out:
->=20
->     # virsh start migt10
->     error: Failed to start domain migt10
->     error: internal error: process exited while connecting to monitor:
->     os_mem_prealloc: failed to preallocate pages
->=20
->>From the error message it's not clear at the first glance where the
-> problem lies. However, changing the error message might give uses a
-
-s/uses/users/
-
-> clue.
->=20
-> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+On 2014-10-21 at 10:04, Zhang Haoyu wrote:
+> Use local variable to bdrv_pwrite_sync L1 table,
+> needless to make conversion of cached L1 table between
+> big-endian and host style.
+>
+> Signed-off-by: Zhang Haoyu <zhanghy@sangfor.com>
 > ---
->  util/oslib-posix.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
+>   block/qcow2-refcount.c | 22 +++++++---------------
+>   1 file changed, 7 insertions(+), 15 deletions(-)
+>
+> diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
+> index 2bcaaf9..8b318e8 100644
+> --- a/block/qcow2-refcount.c
+> +++ b/block/qcow2-refcount.c
+> @@ -881,7 +881,6 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+>   {
+>       BDRVQcowState *s = bs->opaque;
+>       uint64_t *l1_table, *l2_table, l2_offset, offset, l1_size2;
+> -    bool l1_allocated = false;
+>       int64_t old_offset, old_l2_offset;
+>       int i, j, l1_modified = 0, nb_csectors, refcount;
+>       int ret;
+> @@ -889,6 +888,11 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+>       l2_table = NULL;
+>       l1_table = NULL;
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Please remove this assignment; thanks to this hunk we don't need it anymore.
 
-> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> index 016a047..8c9d80e 100644
-> --- a/util/oslib-posix.c
-> +++ b/util/oslib-posix.c
-> @@ -390,7 +390,8 @@ void os_mem_prealloc(int fd, char *area, size_t mem=
-ory)
->      pthread_sigmask(SIG_UNBLOCK, &set, &oldset);
-> =20
->      if (sigsetjmp(sigjump, 1)) {
-> -        fprintf(stderr, "os_mem_prealloc: failed to preallocate pages\=
-n");
-> +        fprintf(stderr, "os_mem_prealloc: Insufficient free host memor=
-y "
-> +                        "pages available to allocate guest RAM\n");
->          exit(1);
->      } else {
->          int i;
->=20
+>       l1_size2 = l1_size * sizeof(uint64_t);
+> +    l1_table = g_try_malloc0(align_offset(l1_size2, 512));
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+I wanted to propose using qemu_try_blockalign(), but since it'd require 
+a memset() afterwards, it gets rather ugly.
 
+Could you at least replace 512 by BDRV_SECTOR_SIZE, and maybe even 
+align_offset() by ROUND_UP()? We should probably do the latter in all of 
+the qcow2 code, though, I think it's just there because it has been 
+around since before there was a ROUND_UP()...
 
---LbCkLfHUAJoMIQJ7nwURvew0F7qx365aS
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+> +    if (l1_size2 && l1_table == NULL) {
+> +        ret = -ENOMEM;
+> +        goto fail;
+> +    }
+>   
+>       s->cache_discards = true;
+>   
+> @@ -896,13 +900,6 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+>        * l1_table_offset when it is the current s->l1_table_offset! Be careful
+>        * when changing this! */
+>       if (l1_table_offset != s->l1_table_offset) {
+> -        l1_table = g_try_malloc0(align_offset(l1_size2, 512));
+> -        if (l1_size2 && l1_table == NULL) {
+> -            ret = -ENOMEM;
+> -            goto fail;
+> -        }
+> -        l1_allocated = true;
+> -
+>           ret = bdrv_pread(bs->file, l1_table_offset, l1_table, l1_size2);
+>           if (ret < 0) {
+>               goto fail;
+> @@ -912,8 +909,7 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+>               be64_to_cpus(&l1_table[i]);
+>       } else {
+>           assert(l1_size == s->l1_size);
+> -        l1_table = s->l1_table;
+> -        l1_allocated = false;
+> +        memcpy(l1_table, s->l1_table, l1_size2);
+>       }
+>   
+>       for(i = 0; i < l1_size; i++) {
+> @@ -1055,12 +1051,8 @@ fail:
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+I don't think it will change a lot, but could you wrap the 
+"s->cache_discards = false; qcow2_process_discards(bs, ret);" in an "if 
+(s->cache_discards)"? You have introduced a case where s->cache_discards 
+was still false, so we don't need to call qcow2_process_discards() then 
+(which will hopefully return immediately, but well...).
 
-iQEcBAEBCAAGBQJUP9u2AAoJEKeha0olJ0NqUpQH/A8R2rXPE6tXyRefIpojFzlf
-z9aBSgSQRkaft/z1I4zCD4IG1ITLpO8cvvGJ+udhKJ9yNQPqut+JUI8MRPx60Uu2
-DLLUqKjnVK8CZjdWQBOOaziJdcKuNG+JOrPsdF9kuLhHxqLMloAU6gGOckgdD7Yx
-DacSyMUamBKC8YAUeqZ60aMDUk0cEqDSXLaI8TZMMGHr2RsZWkJG7mb4mI8EM2zq
-YfUyop8leydaiLUyvoP86PTc2Ab4jCi39dGVPsKQ2ZIfczd24HLi/qwMtvEBNYS7
-7nyjs9tyC2LjtY/Ay5pmaLKIolxIFVmM3C+1NKFSaxWyDmkpVSi8YnkBO/emg30=
-=fLWW
------END PGP SIGNATURE-----
+>           }
+>   
+>           ret = bdrv_pwrite_sync(bs->file, l1_table_offset, l1_table, l1_size2);
+> -
+> -        for (i = 0; i < l1_size; i++) {
+> -            be64_to_cpus(&l1_table[i]);
+> -        }
+>       }
+> -    if (l1_allocated)
+> +    if (l1_table)
+>           g_free(l1_table);
 
---LbCkLfHUAJoMIQJ7nwURvew0F7qx365aS--
+Just drop the condition. g_free(l1_table); is enough.
+
+>       return ret;
+>   }
+
+The change itself is good, it just needs some polishing.
+
+Max
 
