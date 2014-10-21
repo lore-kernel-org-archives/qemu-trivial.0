@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XgbiO-0001oJ-0W
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Oct 2014 11:51:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51432)
+	id 1Xgiqp-0003Io-CM
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Oct 2014 19:28:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35886)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XgbiH-0001mx-5r
-	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 11:51:14 -0400
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Xgiqi-0003Az-39
+	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 19:28:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XgbiC-0006Wb-9z
-	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 11:51:09 -0400
-Received: from mail-lb0-f180.google.com ([209.85.217.180]:62214)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Xgiqc-000714-EM
+	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 19:28:20 -0400
+Received: from mail-pd0-x22e.google.com ([2607:f8b0:400e:c02::22e]:47904)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XgbiB-0006WA-VK
-	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 11:51:04 -0400
-Received: by mail-lb0-f180.google.com with SMTP id n15so1243431lbi.25
-	for <qemu-trivial@nongnu.org>; Tue, 21 Oct 2014 08:51:01 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=AlMocECwGzJNHbH0HUjftAzUZ+kdlfT8u29Rk+f3drA=;
-	b=aTqnIL6yHELUS73xt1j6a5iV0czx+EnwG7fEO1FwDyvICHe6yjglcCKXcb91bHb4Ho
-	phmK5WeuepjGYu2VnA6YjplN1hNgn4TN8RMrJTB24+lub6eii9QDT4/vnyoorGWbNH89
-	sT4unz3g+TFB+zw97sSIKALXu5o4tWgWgnPnxrgwAu1MbBgA/fcAyLsIifLP/OM56yjI
-	McQzQbSOJ9zZgZ5r9uu8VfaF2OlExJecmF0kNYGtxTmUGexcUEMJfWiE7LUtpg1zjKc0
-	TBqhVYFDPo/AA1T4jta75XNON76rLm2OPG7sa4zpJHj/sqjfifNye/Jk38hf48BzftIP
-	9ilA==
-X-Gm-Message-State: ALoCoQknDhu1dwOjvchCxOrEJw/gWlQUfyWgGbRajmT/QgvSeo9u/W+XxqNraHbVopY5UTA2IPU9
-X-Received: by 10.112.221.197 with SMTP id qg5mr35388499lbc.32.1413906661074; 
-	Tue, 21 Oct 2014 08:51:01 -0700 (PDT)
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1XgiqR-0006zn-4J; Tue, 21 Oct 2014 19:28:03 -0400
+Received: by mail-pd0-f174.google.com with SMTP id p10so318592pdj.19
+	for <multiple recipients>; Tue, 21 Oct 2014 16:27:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:subject:message-id:from:to:cc:mime-version:content-type
+	:content-transfer-encoding;
+	bh=LJDEHP3eawjZfKnYiiu3JOBmOyNrc5tbFWXToz8nno0=;
+	b=EpgSFCRpJJNgf6MgefHamiegB6guxm1B/mVMESwmzm4eVMBXICoMYLcKgzJg3TEctP
+	WMhhbLSbHPdIXi7kQsmJmqX2AuBXiuTA9du6IPoC3jUrOlfdrhThD16uX33LFp29XEf6
+	S+mjrXVC9Owc7i002bCKSwMxy5zYNGpZA8pHpsjnslX9YQh7onJnXM0cYLNAHG0usFiS
+	lP0dMp8xUNJmiicrccvryhDl+EFgziZngdUQ0sBJPCxaMRAnzRXx3W6LWYIb1JYt61t9
+	AKx17btF7KFZ3m/jQnU1TOsR2yJsyb1t/nRadDiq2IUHtR7TkAQw92IxO27UPvmaNOT1
+	0sJQ==
+X-Received: by 10.70.56.70 with SMTP id y6mr38646381pdp.61.1413934079832;
+	Tue, 21 Oct 2014 16:27:59 -0700 (PDT)
+Received: from [10.144.113.62] ([117.136.0.147])
+	by mx.google.com with ESMTPSA id
+	yk3sm12740990pbb.60.2014.10.21.16.27.55 for <multiple recipients>
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Tue, 21 Oct 2014 16:27:58 -0700 (PDT)
+Date: Wed, 22 Oct 2014 07:27:52 +0800
+Message-ID: <1ufs2m129239coo2q3xypb9j.1413933893473@email.android.com>
+From: Chen Gang <gang.chen.5i5j@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Tue, 21 Oct 2014 08:50:40 -0700 (PDT)
-In-Reply-To: <54369514.5000004@gmail.com>
-References: <54369514.5000004@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Oct 2014 16:50:40 +0100
-Message-ID: <CAFEAcA9KgX1gOtXPqTC2gX1HD69aPF9fbKkk1i5zbN2+tLW_og@mail.gmail.com>
-To: Chen Gang <gang.chen.5i5j@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.180
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c02::22e
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	"rth@twiddle.net" <rth@twiddle.net>
+	rth@twiddle.net
 Subject: Re: [Qemu-trivial] [PATCH] disas/libvixl/a64/instructions-a64.h:
  Remove useless varialbe to avoid building break with '-Werror'
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,100 +56,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Oct 2014 15:51:14 -0000
+X-List-Received-Date: Tue, 21 Oct 2014 23:28:26 -0000
 
-On 9 October 2014 15:00, Chen Gang <gang.chen.5i5j@gmail.com> wrote:
-> The related variables are useless, need be removed, or can not pass
-> microblaze building, after fix it, can build microblaze, successfully.
->
-> The related configuration:
->
->  ./configure --target-list="arm-softmmu,microblazeel-softmmu" --enable-fdt --disable-kvm
->
-> The related compiling error:
->
->     CXX   disas/arm-a64.o
->   In file included from /upstream/qemu/disas/libvixl/a64/disasm-a64.h:32:0,
->                    from disas/arm-a64.cc:20:
->   disas/libvixl/a64/instructions-a64.h:98:13: error: 'vixl::kFP32PositiveInfinity' defined but not used [-Werror=unused-variable]
->    const float kFP32PositiveInfinity = rawbits_to_float(0x7f800000);
->                ^
->   disas/libvixl/a64/instructions-a64.h:99:13: error: 'vixl::kFP32NegativeInfinity' defined but not used [-Werror=unused-variable]
->    const float kFP32NegativeInfinity = rawbits_to_float(0xff800000);
->                ^
->   disas/libvixl/a64/instructions-a64.h:100:14: error: 'vixl::kFP64PositiveInfinity' defined but not used [-Werror=unused-variable]
->    const double kFP64PositiveInfinity =
->                 ^
->   disas/libvixl/a64/instructions-a64.h:102:14: error: 'vixl::kFP64NegativeInfinity' defined but not used [-Werror=unused-variable]
->    const double kFP64NegativeInfinity =
->                 ^
->   disas/libvixl/a64/instructions-a64.h:107:21: error: 'vixl::kFP64SignallingNaN' defined but not used [-Werror=unused-variable]
->    static const double kFP64SignallingNaN =
->                        ^
->   disas/libvixl/a64/instructions-a64.h:109:20: error: 'vixl::kFP32SignallingNaN' defined but not used [-Werror=unused-variable]
->    static const float kFP32SignallingNaN = rawbits_to_float(0x7f800001);
->                       ^
->   disas/libvixl/a64/instructions-a64.h:112:21: error: 'vixl::kFP64QuietNaN' defined but not used [-Werror=unused-variable]
->    static const double kFP64QuietNaN =
->                        ^
->   disas/libvixl/a64/instructions-a64.h:114:20: error: 'vixl::kFP32QuietNaN' defined but not used [-Werror=unused-variable]
->    static const float kFP32QuietNaN = rawbits_to_float(0x7fc00001);
->                       ^
->   disas/libvixl/a64/instructions-a64.h:117:21: error: 'vixl::kFP64DefaultNaN' defined but not used [-Werror=unused-variable]
->    static const double kFP64DefaultNaN =
->                        ^
->   disas/libvixl/a64/instructions-a64.h:119:20: error: 'vixl::kFP32DefaultNaN' defined but not used [-Werror=unused-variable]
->    static const float kFP32DefaultNaN = rawbits_to_float(0x7fc00000);
->                       ^
->   cc1plus: all warnings being treated as errors
->   make: *** [disas/arm-a64.o] Error 1
->
->
-> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-> ---
->  disas/libvixl/a64/instructions-a64.h | 24 ------------------------
->  1 file changed, 24 deletions(-)
->
-> diff --git a/disas/libvixl/a64/instructions-a64.h b/disas/libvixl/a64/instructions-a64.h
-> index d5b90c5..1eea851 100644
-> --- a/disas/libvixl/a64/instructions-a64.h
-> +++ b/disas/libvixl/a64/instructions-a64.h
-> @@ -95,30 +95,6 @@ const unsigned kDoubleExponentBits = 11;
->  const unsigned kFloatMantissaBits = 23;
->  const unsigned kFloatExponentBits = 8;
->
-> -const float kFP32PositiveInfinity = rawbits_to_float(0x7f800000);
-> -const float kFP32NegativeInfinity = rawbits_to_float(0xff800000);
-> -const double kFP64PositiveInfinity =
-> -    rawbits_to_double(UINT64_C(0x7ff0000000000000));
-> -const double kFP64NegativeInfinity =
-> -    rawbits_to_double(UINT64_C(0xfff0000000000000));
-> -
-> -// This value is a signalling NaN as both a double and as a float (taking the
-> -// least-significant word).
-> -static const double kFP64SignallingNaN =
-> -    rawbits_to_double(UINT64_C(0x7ff000007f800001));
-> -static const float kFP32SignallingNaN = rawbits_to_float(0x7f800001);
-> -
-> -// A similar value, but as a quiet NaN.
-> -static const double kFP64QuietNaN =
-> -    rawbits_to_double(UINT64_C(0x7ff800007fc00001));
-> -static const float kFP32QuietNaN = rawbits_to_float(0x7fc00001);
-> -
-> -// The default NaN values (for FPCR.DN=1).
-> -static const double kFP64DefaultNaN =
-> -    rawbits_to_double(UINT64_C(0x7ff8000000000000));
-> -static const float kFP32DefaultNaN = rawbits_to_float(0x7fc00000);
-> -
-> -
+R29vZCBuZXdzIGZvciB1cyEgdGhhbmsgeW91IGZvciB5b3VyIHdvcmsuIDotKQoKVGhhbmtzCgpT
+ZW5kIGZyb20gTGVub3ZvIEE3ODh0LgoKUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5h
+cm8ub3JnPiB3cm90ZToKCj5PbiA5IE9jdG9iZXIgMjAxNCAxNTowMCwgQ2hlbiBHYW5nIDxnYW5n
+LmNoZW4uNWk1akBnbWFpbC5jb20+IHdyb3RlOgo+PiBUaGUgcmVsYXRlZCB2YXJpYWJsZXMgYXJl
+IHVzZWxlc3MsIG5lZWQgYmUgcmVtb3ZlZCwgb3IgY2FuIG5vdCBwYXNzCj4+IG1pY3JvYmxhemUg
+YnVpbGRpbmcsIGFmdGVyIGZpeCBpdCwgY2FuIGJ1aWxkIG1pY3JvYmxhemUsIHN1Y2Nlc3NmdWxs
+eS4KPj4KPj4gVGhlIHJlbGF0ZWQgY29uZmlndXJhdGlvbjoKPj4KPj4gIC4vY29uZmlndXJlIC0t
+dGFyZ2V0LWxpc3Q9ImFybS1zb2Z0bW11LG1pY3JvYmxhemVlbC1zb2Z0bW11IiAtLWVuYWJsZS1m
+ZHQgLS1kaXNhYmxlLWt2bQo+Pgo+PiBUaGUgcmVsYXRlZCBjb21waWxpbmcgZXJyb3I6Cj4+Cj4+
+ICAgICBDWFggICBkaXNhcy9hcm0tYTY0Lm8KPj4gICBJbiBmaWxlIGluY2x1ZGVkIGZyb20gL3Vw
+c3RyZWFtL3FlbXUvZGlzYXMvbGlidml4bC9hNjQvZGlzYXNtLWE2NC5oOjMyOjAsCj4+ICAgICAg
+ICAgICAgICAgICAgICBmcm9tIGRpc2FzL2FybS1hNjQuY2M6MjA6Cj4+ICAgZGlzYXMvbGlidml4
+bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oOjk4OjEzOiBlcnJvcjogJ3ZpeGw6OmtGUDMyUG9zaXRp
+dmVJbmZpbml0eScgZGVmaW5lZCBidXQgbm90IHVzZWQgWy1XZXJyb3I9dW51c2VkLXZhcmlhYmxl
+XQo+PiAgICBjb25zdCBmbG9hdCBrRlAzMlBvc2l0aXZlSW5maW5pdHkgPSByYXdiaXRzX3RvX2Zs
+b2F0KDB4N2Y4MDAwMDApOwo+PiAgICAgICAgICAgICAgICBeCj4+ICAgZGlzYXMvbGlidml4bC9h
+NjQvaW5zdHJ1Y3Rpb25zLWE2NC5oOjk5OjEzOiBlcnJvcjogJ3ZpeGw6OmtGUDMyTmVnYXRpdmVJ
+bmZpbml0eScgZGVmaW5lZCBidXQgbm90IHVzZWQgWy1XZXJyb3I9dW51c2VkLXZhcmlhYmxlXQo+
+PiAgICBjb25zdCBmbG9hdCBrRlAzMk5lZ2F0aXZlSW5maW5pdHkgPSByYXdiaXRzX3RvX2Zsb2F0
+KDB4ZmY4MDAwMDApOwo+PiAgICAgICAgICAgICAgICBeCj4+ICAgZGlzYXMvbGlidml4bC9hNjQv
+aW5zdHJ1Y3Rpb25zLWE2NC5oOjEwMDoxNDogZXJyb3I6ICd2aXhsOjprRlA2NFBvc2l0aXZlSW5m
+aW5pdHknIGRlZmluZWQgYnV0IG5vdCB1c2VkIFstV2Vycm9yPXVudXNlZC12YXJpYWJsZV0KPj4g
+ICAgY29uc3QgZG91YmxlIGtGUDY0UG9zaXRpdmVJbmZpbml0eSA9Cj4+ICAgICAgICAgICAgICAg
+ICBeCj4+ICAgZGlzYXMvbGlidml4bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oOjEwMjoxNDogZXJy
+b3I6ICd2aXhsOjprRlA2NE5lZ2F0aXZlSW5maW5pdHknIGRlZmluZWQgYnV0IG5vdCB1c2VkIFst
+V2Vycm9yPXVudXNlZC12YXJpYWJsZV0KPj4gICAgY29uc3QgZG91YmxlIGtGUDY0TmVnYXRpdmVJ
+bmZpbml0eSA9Cj4+ICAgICAgICAgICAgICAgICBeCj4+ICAgZGlzYXMvbGlidml4bC9hNjQvaW5z
+dHJ1Y3Rpb25zLWE2NC5oOjEwNzoyMTogZXJyb3I6ICd2aXhsOjprRlA2NFNpZ25hbGxpbmdOYU4n
+IGRlZmluZWQgYnV0IG5vdCB1c2VkIFstV2Vycm9yPXVudXNlZC12YXJpYWJsZV0KPj4gICAgc3Rh
+dGljIGNvbnN0IGRvdWJsZSBrRlA2NFNpZ25hbGxpbmdOYU4gPQo+PiAgICAgICAgICAgICAgICAg
+ICAgICAgIF4KPj4gICBkaXNhcy9saWJ2aXhsL2E2NC9pbnN0cnVjdGlvbnMtYTY0Lmg6MTA5OjIw
+OiBlcnJvcjogJ3ZpeGw6OmtGUDMyU2lnbmFsbGluZ05hTicgZGVmaW5lZCBidXQgbm90IHVzZWQg
+Wy1XZXJyb3I9dW51c2VkLXZhcmlhYmxlXQo+PiAgICBzdGF0aWMgY29uc3QgZmxvYXQga0ZQMzJT
+aWduYWxsaW5nTmFOID0gcmF3Yml0c190b19mbG9hdCgweDdmODAwMDAxKTsKPj4gICAgICAgICAg
+ICAgICAgICAgICAgIF4KPj4gICBkaXNhcy9saWJ2aXhsL2E2NC9pbnN0cnVjdGlvbnMtYTY0Lmg6
+MTEyOjIxOiBlcnJvcjogJ3ZpeGw6OmtGUDY0UXVpZXROYU4nIGRlZmluZWQgYnV0IG5vdCB1c2Vk
+IFstV2Vycm9yPXVudXNlZC12YXJpYWJsZV0KPj4gICAgc3RhdGljIGNvbnN0IGRvdWJsZSBrRlA2
+NFF1aWV0TmFOID0KPj4gICAgICAgICAgICAgICAgICAgICAgICBeCj4+ICAgZGlzYXMvbGlidml4
+bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oOjExNDoyMDogZXJyb3I6ICd2aXhsOjprRlAzMlF1aWV0
+TmFOJyBkZWZpbmVkIGJ1dCBub3QgdXNlZCBbLVdlcnJvcj11bnVzZWQtdmFyaWFibGVdCj4+ICAg
+IHN0YXRpYyBjb25zdCBmbG9hdCBrRlAzMlF1aWV0TmFOID0gcmF3Yml0c190b19mbG9hdCgweDdm
+YzAwMDAxKTsKPj4gICAgICAgICAgICAgICAgICAgICAgIF4KPj4gICBkaXNhcy9saWJ2aXhsL2E2
+NC9pbnN0cnVjdGlvbnMtYTY0Lmg6MTE3OjIxOiBlcnJvcjogJ3ZpeGw6OmtGUDY0RGVmYXVsdE5h
+TicgZGVmaW5lZCBidXQgbm90IHVzZWQgWy1XZXJyb3I9dW51c2VkLXZhcmlhYmxlXQo+PiAgICBz
+dGF0aWMgY29uc3QgZG91YmxlIGtGUDY0RGVmYXVsdE5hTiA9Cj4+ICAgICAgICAgICAgICAgICAg
+ICAgICAgXgo+PiAgIGRpc2FzL2xpYnZpeGwvYTY0L2luc3RydWN0aW9ucy1hNjQuaDoxMTk6MjA6
+IGVycm9yOiAndml4bDo6a0ZQMzJEZWZhdWx0TmFOJyBkZWZpbmVkIGJ1dCBub3QgdXNlZCBbLVdl
+cnJvcj11bnVzZWQtdmFyaWFibGVdCj4+ICAgIHN0YXRpYyBjb25zdCBmbG9hdCBrRlAzMkRlZmF1
+bHROYU4gPSByYXdiaXRzX3RvX2Zsb2F0KDB4N2ZjMDAwMDApOwo+PiAgICAgICAgICAgICAgICAg
+ICAgICAgXgo+PiAgIGNjMXBsdXM6IGFsbCB3YXJuaW5ncyBiZWluZyB0cmVhdGVkIGFzIGVycm9y
+cwo+PiAgIG1ha2U6ICoqKiBbZGlzYXMvYXJtLWE2NC5vXSBFcnJvciAxCj4+Cj4+Cj4+IFNpZ25l
+ZC1vZmYtYnk6IENoZW4gR2FuZyA8Z2FuZy5jaGVuLjVpNWpAZ21haWwuY29tPgo+PiAtLS0KPj4g
+IGRpc2FzL2xpYnZpeGwvYTY0L2luc3RydWN0aW9ucy1hNjQuaCB8IDI0IC0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLQo+PiAgMSBmaWxlIGNoYW5nZWQsIDI0IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZm
+IC0tZ2l0IGEvZGlzYXMvbGlidml4bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oIGIvZGlzYXMvbGli
+dml4bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oCj4+IGluZGV4IGQ1YjkwYzUuLjFlZWE4NTEgMTAw
+NjQ0Cj4+IC0tLSBhL2Rpc2FzL2xpYnZpeGwvYTY0L2luc3RydWN0aW9ucy1hNjQuaAo+PiArKysg
+Yi9kaXNhcy9saWJ2aXhsL2E2NC9pbnN0cnVjdGlvbnMtYTY0LmgKPj4gQEAgLTk1LDMwICs5NSw2
+IEBAIGNvbnN0IHVuc2lnbmVkIGtEb3VibGVFeHBvbmVudEJpdHMgPSAxMTsKPj4gIGNvbnN0IHVu
+c2lnbmVkIGtGbG9hdE1hbnRpc3NhQml0cyA9IDIzOwo+PiAgY29uc3QgdW5zaWduZWQga0Zsb2F0
+RXhwb25lbnRCaXRzID0gODsKPj4KPj4gLWNvbnN0IGZsb2F0IGtGUDMyUG9zaXRpdmVJbmZpbml0
+eSA9IHJhd2JpdHNfdG9fZmxvYXQoMHg3ZjgwMDAwMCk7Cj4+IC1jb25zdCBmbG9hdCBrRlAzMk5l
+Z2F0aXZlSW5maW5pdHkgPSByYXdiaXRzX3RvX2Zsb2F0KDB4ZmY4MDAwMDApOwo+PiAtY29uc3Qg
+ZG91YmxlIGtGUDY0UG9zaXRpdmVJbmZpbml0eSA9Cj4+IC0gICAgcmF3Yml0c190b19kb3VibGUo
+VUlOVDY0X0MoMHg3ZmYwMDAwMDAwMDAwMDAwKSk7Cj4+IC1jb25zdCBkb3VibGUga0ZQNjROZWdh
+dGl2ZUluZmluaXR5ID0KPj4gLSAgICByYXdiaXRzX3RvX2RvdWJsZShVSU5UNjRfQygweGZmZjAw
+MDAwMDAwMDAwMDApKTsKPj4gLQo+PiAtLy8gVGhpcyB2YWx1ZSBpcyBhIHNpZ25hbGxpbmcgTmFO
+IGFzIGJvdGggYSBkb3VibGUgYW5kIGFzIGEgZmxvYXQgKHRha2luZyB0aGUKPj4gLS8vIGxlYXN0
+LXNpZ25pZmljYW50IHdvcmQpLgo+PiAtc3RhdGljIGNvbnN0IGRvdWJsZSBrRlA2NFNpZ25hbGxp
+bmdOYU4gPQo+PiAtICAgIHJhd2JpdHNfdG9fZG91YmxlKFVJTlQ2NF9DKDB4N2ZmMDAwMDA3Zjgw
+MDAwMSkpOwo+PiAtc3RhdGljIGNvbnN0IGZsb2F0IGtGUDMyU2lnbmFsbGluZ05hTiA9IHJhd2Jp
+dHNfdG9fZmxvYXQoMHg3ZjgwMDAwMSk7Cj4+IC0KPj4gLS8vIEEgc2ltaWxhciB2YWx1ZSwgYnV0
+IGFzIGEgcXVpZXQgTmFOLgo+PiAtc3RhdGljIGNvbnN0IGRvdWJsZSBrRlA2NFF1aWV0TmFOID0K
+Pj4gLSAgICByYXdiaXRzX3RvX2RvdWJsZShVSU5UNjRfQygweDdmZjgwMDAwN2ZjMDAwMDEpKTsK
+Pj4gLXN0YXRpYyBjb25zdCBmbG9hdCBrRlAzMlF1aWV0TmFOID0gcmF3Yml0c190b19mbG9hdCgw
+eDdmYzAwMDAxKTsKPj4gLQo+PiAtLy8gVGhlIGRlZmF1bHQgTmFOIHZhbHVlcyAoZm9yIEZQQ1Iu
+RE49MSkuCj4+IC1zdGF0aWMgY29uc3QgZG91YmxlIGtGUDY0RGVmYXVsdE5hTiA9Cj4+IC0gICAg
+cmF3Yml0c190b19kb3VibGUoVUlOVDY0X0MoMHg3ZmY4MDAwMDAwMDAwMDAwKSk7Cj4+IC1zdGF0
+aWMgY29uc3QgZmxvYXQga0ZQMzJEZWZhdWx0TmFOID0gcmF3Yml0c190b19mbG9hdCgweDdmYzAw
+MDAwKTsKPj4gLQo+PiAtCj4KPlVwc3RyZWFtJ3MgcGxhbiBmb3IgZml4aW5nIHRoaXMgaXMgdG8g
+dHVybiB0aGVzZSBpbnRvCj4nZXh0ZXJuIGNvbnN0IGRvdWJsZSBmb28nIGluIHRoZSBoZWFkZXIg
+d2l0aCB0aGUgZGVmaW5pdGlvbgo+aW4gYW4gYXBwcm9wcmlhdGUgLmNjIGZpbGUuIEdpdmVuIHRo
+YXQsIEkgdGhpbmsgSSdtIGhhcHB5IGZvcgo+dXMgdG8gdGFrZSB0aGlzIHBhdGNoIGluIFFFTVUg
+Zm9yIHRoZSBtb21lbnQsIHdpdGggdGhlIGV4cGVjdGF0aW9uCj50aGF0IHRoZSBuZXh0IGxpYnZp
+eGwgZHJvcCB3aWxsIGp1c3Qgb2Jzb2xldGUgaXQuCj4KPlJldmlld2VkLWJ5OiBQZXRlciBNYXlk
+ZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+Cj4KPi0tIFBNTQo=
 
-Upstream's plan for fixing this is to turn these into
-'extern const double foo' in the header with the definition
-in an appropriate .cc file. Given that, I think I'm happy for
-us to take this patch in QEMU for the moment, with the expectation
-that the next libvixl drop will just obsolete it.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
--- PMM
 
