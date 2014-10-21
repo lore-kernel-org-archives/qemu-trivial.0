@@ -1,42 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XgZk2-0001Op-07
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Oct 2014 09:44:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37420)
+	id 1XgbiO-0001oJ-0W
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Oct 2014 11:51:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51432)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhanghy@sangfor.com>) id 1XgZjw-0001IG-1x
-	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 09:44:48 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1XgbiH-0001mx-5r
+	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 11:51:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhanghy@sangfor.com>) id 1XgZjr-0000ca-GV
-	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 09:44:43 -0400
-Received: from [58.251.49.30] (port=43176 helo=mail.sangfor.com)
+	(envelope-from <peter.maydell@linaro.org>) id 1XgbiC-0006Wb-9z
+	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 11:51:09 -0400
+Received: from mail-lb0-f180.google.com ([209.85.217.180]:62214)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhanghy@sangfor.com>)
-	id 1XgZjg-0000X6-C4; Tue, 21 Oct 2014 09:44:29 -0400
-Received: from localhost (mail.sangfor.com [127.0.0.1])
-	by mail.sangfor.com (Postfix) with ESMTP id 4E2391F5;
-	Tue, 21 Oct 2014 21:25:16 +0800 (CST)
-Received: from mail.sangfor.com ([127.0.0.1])
-	by localhost (mail.sangfor.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lGO21Y8RuUuk; Tue, 21 Oct 2014 21:25:15 +0800 (CST)
-Received: from vv-PC (unknown [10.10.6.254])
-	by mail.sangfor.com (Postfix) with ESMTPA id 9FE2D1F3;
-	Tue, 21 Oct 2014 21:25:15 +0800 (CST)
-Date: Tue, 21 Oct 2014 21:44:21 +0800
-From: "Zhang Haoyu" <zhanghy@sangfor.com>
-To: "qemu-devel" <qemu-devel@nongnu.org>
-Message-ID: <201410212144191987523@sangfor.com>
-X-mailer: Foxmail 6, 15, 201, 20 [cn]
-Mime-Version: 1.0
-Content-Type: text/plain;
-	charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 58.251.49.30
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Max Reitz <mreitz@redhat.com>
-Subject: [Qemu-trivial] [PATCH v3] snapshot: use local variable to
-	bdrv_pwrite_sync L1 table
+	(envelope-from <peter.maydell@linaro.org>) id 1XgbiB-0006WA-VK
+	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 11:51:04 -0400
+Received: by mail-lb0-f180.google.com with SMTP id n15so1243431lbi.25
+	for <qemu-trivial@nongnu.org>; Tue, 21 Oct 2014 08:51:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=AlMocECwGzJNHbH0HUjftAzUZ+kdlfT8u29Rk+f3drA=;
+	b=aTqnIL6yHELUS73xt1j6a5iV0czx+EnwG7fEO1FwDyvICHe6yjglcCKXcb91bHb4Ho
+	phmK5WeuepjGYu2VnA6YjplN1hNgn4TN8RMrJTB24+lub6eii9QDT4/vnyoorGWbNH89
+	sT4unz3g+TFB+zw97sSIKALXu5o4tWgWgnPnxrgwAu1MbBgA/fcAyLsIifLP/OM56yjI
+	McQzQbSOJ9zZgZ5r9uu8VfaF2OlExJecmF0kNYGtxTmUGexcUEMJfWiE7LUtpg1zjKc0
+	TBqhVYFDPo/AA1T4jta75XNON76rLm2OPG7sa4zpJHj/sqjfifNye/Jk38hf48BzftIP
+	9ilA==
+X-Gm-Message-State: ALoCoQknDhu1dwOjvchCxOrEJw/gWlQUfyWgGbRajmT/QgvSeo9u/W+XxqNraHbVopY5UTA2IPU9
+X-Received: by 10.112.221.197 with SMTP id qg5mr35388499lbc.32.1413906661074; 
+	Tue, 21 Oct 2014 08:51:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.130.161 with HTTP; Tue, 21 Oct 2014 08:50:40 -0700 (PDT)
+In-Reply-To: <54369514.5000004@gmail.com>
+References: <54369514.5000004@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Oct 2014 16:50:40 +0100
+Message-ID: <CAFEAcA9KgX1gOtXPqTC2gX1HD69aPF9fbKkk1i5zbN2+tLW_og@mail.gmail.com>
+To: Chen Gang <gang.chen.5i5j@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.180
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+	"rth@twiddle.net" <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH] disas/libvixl/a64/instructions-a64.h:
+ Remove useless varialbe to avoid building break with '-Werror'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,94 +55,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Oct 2014 13:44:48 -0000
+X-List-Received-Date: Tue, 21 Oct 2014 15:51:14 -0000
 
-Use local variable to bdrv_pwrite_sync L1 table,
-needless to make conversion of cached L1 table between
-big-endian and host style.
+On 9 October 2014 15:00, Chen Gang <gang.chen.5i5j@gmail.com> wrote:
+> The related variables are useless, need be removed, or can not pass
+> microblaze building, after fix it, can build microblaze, successfully.
+>
+> The related configuration:
+>
+>  ./configure --target-list="arm-softmmu,microblazeel-softmmu" --enable-fdt --disable-kvm
+>
+> The related compiling error:
+>
+>     CXX   disas/arm-a64.o
+>   In file included from /upstream/qemu/disas/libvixl/a64/disasm-a64.h:32:0,
+>                    from disas/arm-a64.cc:20:
+>   disas/libvixl/a64/instructions-a64.h:98:13: error: 'vixl::kFP32PositiveInfinity' defined but not used [-Werror=unused-variable]
+>    const float kFP32PositiveInfinity = rawbits_to_float(0x7f800000);
+>                ^
+>   disas/libvixl/a64/instructions-a64.h:99:13: error: 'vixl::kFP32NegativeInfinity' defined but not used [-Werror=unused-variable]
+>    const float kFP32NegativeInfinity = rawbits_to_float(0xff800000);
+>                ^
+>   disas/libvixl/a64/instructions-a64.h:100:14: error: 'vixl::kFP64PositiveInfinity' defined but not used [-Werror=unused-variable]
+>    const double kFP64PositiveInfinity =
+>                 ^
+>   disas/libvixl/a64/instructions-a64.h:102:14: error: 'vixl::kFP64NegativeInfinity' defined but not used [-Werror=unused-variable]
+>    const double kFP64NegativeInfinity =
+>                 ^
+>   disas/libvixl/a64/instructions-a64.h:107:21: error: 'vixl::kFP64SignallingNaN' defined but not used [-Werror=unused-variable]
+>    static const double kFP64SignallingNaN =
+>                        ^
+>   disas/libvixl/a64/instructions-a64.h:109:20: error: 'vixl::kFP32SignallingNaN' defined but not used [-Werror=unused-variable]
+>    static const float kFP32SignallingNaN = rawbits_to_float(0x7f800001);
+>                       ^
+>   disas/libvixl/a64/instructions-a64.h:112:21: error: 'vixl::kFP64QuietNaN' defined but not used [-Werror=unused-variable]
+>    static const double kFP64QuietNaN =
+>                        ^
+>   disas/libvixl/a64/instructions-a64.h:114:20: error: 'vixl::kFP32QuietNaN' defined but not used [-Werror=unused-variable]
+>    static const float kFP32QuietNaN = rawbits_to_float(0x7fc00001);
+>                       ^
+>   disas/libvixl/a64/instructions-a64.h:117:21: error: 'vixl::kFP64DefaultNaN' defined but not used [-Werror=unused-variable]
+>    static const double kFP64DefaultNaN =
+>                        ^
+>   disas/libvixl/a64/instructions-a64.h:119:20: error: 'vixl::kFP32DefaultNaN' defined but not used [-Werror=unused-variable]
+>    static const float kFP32DefaultNaN = rawbits_to_float(0x7fc00000);
+>                       ^
+>   cc1plus: all warnings being treated as errors
+>   make: *** [disas/arm-a64.o] Error 1
+>
+>
+> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+> ---
+>  disas/libvixl/a64/instructions-a64.h | 24 ------------------------
+>  1 file changed, 24 deletions(-)
+>
+> diff --git a/disas/libvixl/a64/instructions-a64.h b/disas/libvixl/a64/instructions-a64.h
+> index d5b90c5..1eea851 100644
+> --- a/disas/libvixl/a64/instructions-a64.h
+> +++ b/disas/libvixl/a64/instructions-a64.h
+> @@ -95,30 +95,6 @@ const unsigned kDoubleExponentBits = 11;
+>  const unsigned kFloatMantissaBits = 23;
+>  const unsigned kFloatExponentBits = 8;
+>
+> -const float kFP32PositiveInfinity = rawbits_to_float(0x7f800000);
+> -const float kFP32NegativeInfinity = rawbits_to_float(0xff800000);
+> -const double kFP64PositiveInfinity =
+> -    rawbits_to_double(UINT64_C(0x7ff0000000000000));
+> -const double kFP64NegativeInfinity =
+> -    rawbits_to_double(UINT64_C(0xfff0000000000000));
+> -
+> -// This value is a signalling NaN as both a double and as a float (taking the
+> -// least-significant word).
+> -static const double kFP64SignallingNaN =
+> -    rawbits_to_double(UINT64_C(0x7ff000007f800001));
+> -static const float kFP32SignallingNaN = rawbits_to_float(0x7f800001);
+> -
+> -// A similar value, but as a quiet NaN.
+> -static const double kFP64QuietNaN =
+> -    rawbits_to_double(UINT64_C(0x7ff800007fc00001));
+> -static const float kFP32QuietNaN = rawbits_to_float(0x7fc00001);
+> -
+> -// The default NaN values (for FPCR.DN=1).
+> -static const double kFP64DefaultNaN =
+> -    rawbits_to_double(UINT64_C(0x7ff8000000000000));
+> -static const float kFP32DefaultNaN = rawbits_to_float(0x7fc00000);
+> -
+> -
 
-Signed-off-by: Zhang Haoyu <zhanghy@sangfor.com>
-Reviewed-by: Max Reitz <mreitz@redhat.com>
----
-v2 -> v3:
- - replace g_try_malloc0 with qemu_try_blockalign
- - copy the latest local L1 table back to s->l1_table
-   after successfully bdrv_pwrite_sync L1 table
+Upstream's plan for fixing this is to turn these into
+'extern const double foo' in the header with the definition
+in an appropriate .cc file. Given that, I think I'm happy for
+us to take this patch in QEMU for the moment, with the expectation
+that the next libvixl drop will just obsolete it.
 
-v1 -> v2:
- - remove the superflous assignment, l1_table = NULL;
- - replace 512 with BDRV_SECTOR_SIZE, and align_offset with ROUND_UP
- - remove needless check of if (l1_table) before g_free(l1_table)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
- block/qcow2-refcount.c | 25 +++++++++----------------
- 1 file changed, 9 insertions(+), 16 deletions(-)
-
-diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
-index 2bcaaf9..bceadce 100644
---- a/block/qcow2-refcount.c
-+++ b/block/qcow2-refcount.c
-@@ -881,14 +881,17 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
- {
-     BDRVQcowState *s = bs->opaque;
-     uint64_t *l1_table, *l2_table, l2_offset, offset, l1_size2;
--    bool l1_allocated = false;
-     int64_t old_offset, old_l2_offset;
-     int i, j, l1_modified = 0, nb_csectors, refcount;
-     int ret;
- 
-     l2_table = NULL;
--    l1_table = NULL;
-     l1_size2 = l1_size * sizeof(uint64_t);
-+    l1_table = qemu_try_blockalign(bs->file, l1_size2);
-+    if (l1_size2 && l1_table == NULL) {
-+        ret = -ENOMEM;
-+        goto fail;
-+    }
- 
-     s->cache_discards = true;
- 
-@@ -896,13 +899,6 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
-      * l1_table_offset when it is the current s->l1_table_offset! Be careful
-      * when changing this! */
-     if (l1_table_offset != s->l1_table_offset) {
--        l1_table = g_try_malloc0(align_offset(l1_size2, 512));
--        if (l1_size2 && l1_table == NULL) {
--            ret = -ENOMEM;
--            goto fail;
--        }
--        l1_allocated = true;
--
-         ret = bdrv_pread(bs->file, l1_table_offset, l1_table, l1_size2);
-         if (ret < 0) {
-             goto fail;
-@@ -912,8 +908,7 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
-             be64_to_cpus(&l1_table[i]);
-     } else {
-         assert(l1_size == s->l1_size);
--        l1_table = s->l1_table;
--        l1_allocated = false;
-+        memcpy(l1_table, s->l1_table, l1_size2);
-     }
- 
-     for(i = 0; i < l1_size; i++) {
-@@ -1055,13 +1050,11 @@ fail:
-         }
- 
-         ret = bdrv_pwrite_sync(bs->file, l1_table_offset, l1_table, l1_size2);
--
--        for (i = 0; i < l1_size; i++) {
--            be64_to_cpus(&l1_table[i]);
-+        if (ret == 0) {
-+            memcpy(s->l1_table, l1_table, l1_size2);
-         }
-     }
--    if (l1_allocated)
--        g_free(l1_table);
-+    g_free(l1_table);
-     return ret;
- }
- 
--- 
-1.7.12.4
-
+-- PMM
 
