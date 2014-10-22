@@ -1,46 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XgwJg-00089A-Vm
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Oct 2014 09:51:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43098)
+	id 1Xh4Ho-0006zd-NW
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Oct 2014 18:21:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38643)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mreitz@redhat.com>) id 1XgwJb-00086h-0M
-	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 09:51:07 -0400
+	(envelope-from <eblake@redhat.com>) id 1Xh4Hg-0006rC-RX
+	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 18:21:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mreitz@redhat.com>) id 1XgwJW-0000Gm-Qu
-	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 09:51:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41767)
+	(envelope-from <eblake@redhat.com>) id 1Xh4HT-0008Tw-W6
+	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 18:21:36 -0400
+Received: from resqmta-ch2-04v.sys.comcast.net ([69.252.207.36]:58494)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mreitz@redhat.com>)
-	id 1XgwJW-0000Gh-K1; Wed, 22 Oct 2014 09:50:58 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9MDouhT004502
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 22 Oct 2014 09:50:56 -0400
-Received: from dresden.str.redhat.com (dhcp-192-247.str.redhat.com
-	[10.33.192.247])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s9MDoqBg032272
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Wed, 22 Oct 2014 09:50:53 -0400
-Message-ID: <5447B63C.70603@redhat.com>
-Date: Wed, 22 Oct 2014 15:50:52 +0200
-From: Max Reitz <mreitz@redhat.com>
+	(envelope-from <eblake@redhat.com>) id 1Xh4HT-0008Tb-Pl
+	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 18:21:23 -0400
+Received: from resomta-ch2-10v.sys.comcast.net ([69.252.207.106])
+	by resqmta-ch2-04v.sys.comcast.net with comcast
+	id 6NMN1p0022JGN3p01NMN4Z; Wed, 22 Oct 2014 22:21:22 +0000
+Received: from [192.168.43.132] ([166.171.121.227])
+	by resomta-ch2-10v.sys.comcast.net with comcast
+	id 6NJb1p00x4uUXdA01NJetJ; Wed, 22 Oct 2014 22:19:10 +0000
+Message-ID: <54482D38.5080904@redhat.com>
+Date: Wed, 22 Oct 2014 16:18:32 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
 MIME-Version: 1.0
-To: Zhang Haoyu <zhanghy@sangfor.com>, qemu-devel <qemu-devel@nongnu.org>
-References: <201410222039495960337@sangfor.com>
-In-Reply-To: <201410222039495960337@sangfor.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
+To: Max Reitz <mreitz@redhat.com>, Zhang Haoyu <zhanghy@sangfor.com>, 
+	qemu-devel <qemu-devel@nongnu.org>
+References: <201410211604116199416@sangfor.com> <5446265E.306@redhat.com>
+In-Reply-To: <5446265E.306@redhat.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="6GhlrpN7TNjquXbIopre8KpGdgLLkoA3t"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
+	s=q20140121; t=1414016482;
+	bh=OMbS2c0uCrQeOae74e98ZX9altiVkploVkvXWqNQYPw=;
+	h=Received:Received:Message-ID:Date:From:MIME-Version:To:Subject:
+	Content-Type;
+	b=bGGHPqboT8rlnTdFwFC8MWPE3ZJxcXY9vEHKVvO9i5Y4WuPx0ijLNn2LLUAe2ZvPk
+	QBbDFBA22c8qbaariEKU2U96PoXurEBxD+sWaYxETd/+6I5PQsqD+/ZMiZlsg0+8DY
+	6exdH8D/vqyAQGRxNFd719j2X5rXiexDVcl5yUwj6mLwguhJnORhxpognHiXyftjcs
+	acx9X6bxH9Dw4uKl2cEwXqJkCLliqywO3tpgetw7axYUvPqEdXwud+1rHdJWZ4bDfH
+	w1Sp33gCSHz6zQmR2d554GDGfMXf24AUO4+XFxDIUkFx25cJA6D6Y9yPPGkkX9d++6
+	VvyE0afKVf7pg==
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 69.252.207.36
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>,
 	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH v5] snapshot: use local variable to
- bdrv_pwrite_sync L1 table
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] snapshot: use local
+ variable to bdrv_pwrite_sync L1 table
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,126 +62,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Oct 2014 13:51:07 -0000
+X-List-Received-Date: Wed, 22 Oct 2014 22:21:42 -0000
 
-On 2014-10-22 at 14:39, Zhang Haoyu wrote:
-> Use local variable to bdrv_pwrite_sync L1 table,
-> needless to make conversion of cached L1 table between
-> big-endian and host style.
->
-> Signed-off-by: Zhang Haoyu <zhanghy@sangfor.com>
-> Reviewed-by: Max Reitz <mreitz@redhat.com>
-> ---
-> v4 -> v5:
-> - delete superfluous check of "l1_size2 != 0"
->    after qemu_try_blockalign(l1_size2)
->
-> v3 -> v4:
->   - convert local L1 table to host-style before copy it
->     back to s->l1_table
->
-> v2 -> v3:
->   - replace g_try_malloc0 with qemu_try_blockalign
->   - copy the latest local L1 table back to s->l1_table
->     after successfully bdrv_pwrite_sync L1 table
->
-> v1 -> v2:
->   - remove the superflous assignment, l1_table = NULL;
->   - replace 512 with BDRV_SECTOR_SIZE, and align_offset with ROUND_UP
->   - remove needless check of if (l1_table) before g_free(l1_table)
->
->   block/qcow2-refcount.c | 28 ++++++++++++----------------
->   1 file changed, 12 insertions(+), 16 deletions(-)
->
-> diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
-> index 2bcaaf9..4cf6639 100644
-> --- a/block/qcow2-refcount.c
-> +++ b/block/qcow2-refcount.c
-> @@ -881,14 +881,17 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
->   {
->       BDRVQcowState *s = bs->opaque;
->       uint64_t *l1_table, *l2_table, l2_offset, offset, l1_size2;
-> -    bool l1_allocated = false;
->       int64_t old_offset, old_l2_offset;
->       int i, j, l1_modified = 0, nb_csectors, refcount;
->       int ret;
->   
->       l2_table = NULL;
-> -    l1_table = NULL;
->       l1_size2 = l1_size * sizeof(uint64_t);
-> +    l1_table = qemu_try_blockalign(bs->file, l1_size2);
-> +    if (l1_table == NULL) {
-> +        ret = -ENOMEM;
-> +        goto fail;
-> +    }
->   
->       s->cache_discards = true;
->   
-> @@ -896,13 +899,6 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
->        * l1_table_offset when it is the current s->l1_table_offset! Be careful
->        * when changing this! */
->       if (l1_table_offset != s->l1_table_offset) {
-> -        l1_table = g_try_malloc0(align_offset(l1_size2, 512));
-> -        if (l1_size2 && l1_table == NULL) {
-> -            ret = -ENOMEM;
-> -            goto fail;
-> -        }
-> -        l1_allocated = true;
-> -
->           ret = bdrv_pread(bs->file, l1_table_offset, l1_table, l1_size2);
->           if (ret < 0) {
->               goto fail;
-> @@ -912,8 +908,7 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
->               be64_to_cpus(&l1_table[i]);
->       } else {
->           assert(l1_size == s->l1_size);
-> -        l1_table = s->l1_table;
-> -        l1_allocated = false;
-> +        memcpy(l1_table, s->l1_table, l1_size2);
->       }
->   
->       for(i = 0; i < l1_size; i++) {
-> @@ -1055,13 +1050,14 @@ fail:
->           }
->   
->           ret = bdrv_pwrite_sync(bs->file, l1_table_offset, l1_table, l1_size2);
-> -
-> -        for (i = 0; i < l1_size; i++) {
-> -            be64_to_cpus(&l1_table[i]);
-> +        if (ret == 0) {
-> +            for (i = 0; i < l1_size; i++) {
-> +                be64_to_cpus(&l1_table[i]);
-> +            }
-> +            memcpy(s->l1_table, l1_table, l1_size2);
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--6GhlrpN7TNjquXbIopre8KpGdgLLkoA3t
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Well, "for (i = 0; i < l1_size; i++) { s->l1_table[i] = 
-be64_to_cpu(l1_table[i]; }" would have saved us this memcpy(). But this 
-function is not critical for performance, so it doesn't really matter 
-(if it was about performance, we could get rid of the first memcpy() as 
-well by the same means).
+On 10/21/2014 03:24 AM, Max Reitz wrote:
+> On 2014-10-21 at 10:04, Zhang Haoyu wrote:
+>> Use local variable to bdrv_pwrite_sync L1 table,
+>> needless to make conversion of cached L1 table between
+>> big-endian and host style.
+>>
+>> Signed-off-by: Zhang Haoyu <zhanghy@sangfor.com>
+>> ---
+>>   block/qcow2-refcount.c | 22 +++++++---------------
+>>   1 file changed, 7 insertions(+), 15 deletions(-)
+>>
 
-Oh, and by the way: For your future patches, if you create a new version 
-which has non-trivial changes (I normally consider only whitespace and 
-comment changes trivial, and not even all of those), please drop the 
-Reviewed-by. There are exceptions to this where a reviewer explicitly 
-states "If you do $foo, then: Reviewed-by: Foo Bar <fbar@example.com>", 
-though. Also, please don't include a Reviewed-by if the reviewer did not 
-explicitly state "Reviewed-by: Foo Bar <fbar@example.com>". As far as I 
-remember, I never explicitly stated "Reviewed-by: Max Reitz 
-<mreitz@redhat.com>" in regards to this series and that was intended.
+I know we're up to v5 and that Max already took it into his branch, but..=
+=2E
 
-Anyway, thanks for your patch, I applied it to my block branch:
-https://github.com/XanClic/qemu/commits/block
 
-Max
+>>       l1_size2 =3D l1_size * sizeof(uint64_t);
+>> +    l1_table =3D g_try_malloc0(align_offset(l1_size2, 512));
+>=20
+> I wanted to propose using qemu_try_blockalign(), but since it'd require=
 
->           }
->       }
-> -    if (l1_allocated)
-> -        g_free(l1_table);
-> +    g_free(l1_table);
->       return ret;
->   }
->   
+> a memset() afterwards, it gets rather ugly.
 
+Not after this recent patch:
+
+https://lists.gnu.org/archive/html/qemu-devel/2014-10/msg02499.html
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--6GhlrpN7TNjquXbIopre8KpGdgLLkoA3t
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+
+iQEcBAEBCAAGBQJUSC04AAoJEKeha0olJ0Nqwn0H/jgoRjBy91tvxYaQotIlrdKg
+pkjSs0ERTtsoKtKn3nCwcXxchBB9bDK8IBBrXcF5RO6sf1WKsQPmuP//WAVUW0jP
+LufnXqvJYyk7aypndVyXz+xAaCZPX0BCiB3iXYQxThsahzWcmnLl6yqlg2ocnhiT
+44AKZOfPnsU74pYMSmNhiSXSAn6JhQgBjj+Rqei2gpxBVEIxwDRo00g1y8A4j3vO
+A6N8gjkcuVd2LlDxyYyhrJ4bys9rJWr0RDH3Cu3A3rXEdqY7gmq6SIBpOY3/XbxU
+C7fV0pf5ZNp9gbCCJxkrmkarNkjdbf8ExCg7UKL2joaGXKbLjCPS0IQpk74cFMo=
+=okS1
+-----END PGP SIGNATURE-----
+
+--6GhlrpN7TNjquXbIopre8KpGdgLLkoA3t--
 
