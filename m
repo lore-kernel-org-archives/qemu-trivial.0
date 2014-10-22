@@ -1,50 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xgiqp-0003Io-CM
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Oct 2014 19:28:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35886)
+	id 1XgkuZ-0002nW-9H
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Oct 2014 21:40:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50158)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Xgiqi-0003Az-39
-	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 19:28:25 -0400
+	(envelope-from <zhanghy@sangfor.com>) id 1XgkuT-0002dQ-6U
+	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 21:40:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Xgiqc-000714-EM
-	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 19:28:20 -0400
-Received: from mail-pd0-x22e.google.com ([2607:f8b0:400e:c02::22e]:47904)
+	(envelope-from <zhanghy@sangfor.com>) id 1XgkuO-0005dx-I1
+	for qemu-trivial@nongnu.org; Tue, 21 Oct 2014 21:40:21 -0400
+Received: from [58.251.49.30] (port=48935 helo=mail.sangfor.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1XgiqR-0006zn-4J; Tue, 21 Oct 2014 19:28:03 -0400
-Received: by mail-pd0-f174.google.com with SMTP id p10so318592pdj.19
-	for <multiple recipients>; Tue, 21 Oct 2014 16:27:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:subject:message-id:from:to:cc:mime-version:content-type
-	:content-transfer-encoding;
-	bh=LJDEHP3eawjZfKnYiiu3JOBmOyNrc5tbFWXToz8nno0=;
-	b=EpgSFCRpJJNgf6MgefHamiegB6guxm1B/mVMESwmzm4eVMBXICoMYLcKgzJg3TEctP
-	WMhhbLSbHPdIXi7kQsmJmqX2AuBXiuTA9du6IPoC3jUrOlfdrhThD16uX33LFp29XEf6
-	S+mjrXVC9Owc7i002bCKSwMxy5zYNGpZA8pHpsjnslX9YQh7onJnXM0cYLNAHG0usFiS
-	lP0dMp8xUNJmiicrccvryhDl+EFgziZngdUQ0sBJPCxaMRAnzRXx3W6LWYIb1JYt61t9
-	AKx17btF7KFZ3m/jQnU1TOsR2yJsyb1t/nRadDiq2IUHtR7TkAQw92IxO27UPvmaNOT1
-	0sJQ==
-X-Received: by 10.70.56.70 with SMTP id y6mr38646381pdp.61.1413934079832;
-	Tue, 21 Oct 2014 16:27:59 -0700 (PDT)
-Received: from [10.144.113.62] ([117.136.0.147])
-	by mx.google.com with ESMTPSA id
-	yk3sm12740990pbb.60.2014.10.21.16.27.55 for <multiple recipients>
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Tue, 21 Oct 2014 16:27:58 -0700 (PDT)
-Date: Wed, 22 Oct 2014 07:27:52 +0800
-Message-ID: <1ufs2m129239coo2q3xypb9j.1413933893473@email.android.com>
-From: Chen Gang <gang.chen.5i5j@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: base64
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::22e
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	rth@twiddle.net
-Subject: Re: [Qemu-trivial] [PATCH] disas/libvixl/a64/instructions-a64.h:
- Remove useless varialbe to avoid building break with '-Werror'
+	(envelope-from <zhanghy@sangfor.com>)
+	id 1XgkuE-0005PC-SX; Tue, 21 Oct 2014 21:40:07 -0400
+Received: from localhost (mail.sangfor.com [127.0.0.1])
+	by mail.sangfor.com (Postfix) with ESMTP id D4CE517C00AD;
+	Wed, 22 Oct 2014 08:51:52 +0800 (CST)
+Received: from mail.sangfor.com ([127.0.0.1])
+	by localhost (mail.sangfor.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Irg5DajWi0XG; Wed, 22 Oct 2014 08:51:52 +0800 (CST)
+Received: from vv-PC (unknown [10.10.6.254])
+	by mail.sangfor.com (Postfix) with ESMTPA id 2426017C009E;
+	Wed, 22 Oct 2014 08:51:52 +0800 (CST)
+Date: Wed, 22 Oct 2014 09:11:00 +0800
+From: "Zhang Haoyu" <zhanghy@sangfor.com>
+To: "qemu-devel" <qemu-devel@nongnu.org>
+References: <201410212144191987523@sangfor.com>
+Message-ID: <201410220910578404999@sangfor.com>
+X-mailer: Foxmail 6, 15, 201, 20 [cn]
+Mime-Version: 1.0
+Content-Type: text/plain;
+	charset="gb2312"
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 58.251.49.30
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Max Reitz <mreitz@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH v3] snapshot: use local variable to
+	bdrv_pwrite_sync L1 table
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,93 +49,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Oct 2014 23:28:26 -0000
+X-List-Received-Date: Wed, 22 Oct 2014 01:40:26 -0000
 
-R29vZCBuZXdzIGZvciB1cyEgdGhhbmsgeW91IGZvciB5b3VyIHdvcmsuIDotKQoKVGhhbmtzCgpT
-ZW5kIGZyb20gTGVub3ZvIEE3ODh0LgoKUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5h
-cm8ub3JnPiB3cm90ZToKCj5PbiA5IE9jdG9iZXIgMjAxNCAxNTowMCwgQ2hlbiBHYW5nIDxnYW5n
-LmNoZW4uNWk1akBnbWFpbC5jb20+IHdyb3RlOgo+PiBUaGUgcmVsYXRlZCB2YXJpYWJsZXMgYXJl
-IHVzZWxlc3MsIG5lZWQgYmUgcmVtb3ZlZCwgb3IgY2FuIG5vdCBwYXNzCj4+IG1pY3JvYmxhemUg
-YnVpbGRpbmcsIGFmdGVyIGZpeCBpdCwgY2FuIGJ1aWxkIG1pY3JvYmxhemUsIHN1Y2Nlc3NmdWxs
-eS4KPj4KPj4gVGhlIHJlbGF0ZWQgY29uZmlndXJhdGlvbjoKPj4KPj4gIC4vY29uZmlndXJlIC0t
-dGFyZ2V0LWxpc3Q9ImFybS1zb2Z0bW11LG1pY3JvYmxhemVlbC1zb2Z0bW11IiAtLWVuYWJsZS1m
-ZHQgLS1kaXNhYmxlLWt2bQo+Pgo+PiBUaGUgcmVsYXRlZCBjb21waWxpbmcgZXJyb3I6Cj4+Cj4+
-ICAgICBDWFggICBkaXNhcy9hcm0tYTY0Lm8KPj4gICBJbiBmaWxlIGluY2x1ZGVkIGZyb20gL3Vw
-c3RyZWFtL3FlbXUvZGlzYXMvbGlidml4bC9hNjQvZGlzYXNtLWE2NC5oOjMyOjAsCj4+ICAgICAg
-ICAgICAgICAgICAgICBmcm9tIGRpc2FzL2FybS1hNjQuY2M6MjA6Cj4+ICAgZGlzYXMvbGlidml4
-bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oOjk4OjEzOiBlcnJvcjogJ3ZpeGw6OmtGUDMyUG9zaXRp
-dmVJbmZpbml0eScgZGVmaW5lZCBidXQgbm90IHVzZWQgWy1XZXJyb3I9dW51c2VkLXZhcmlhYmxl
-XQo+PiAgICBjb25zdCBmbG9hdCBrRlAzMlBvc2l0aXZlSW5maW5pdHkgPSByYXdiaXRzX3RvX2Zs
-b2F0KDB4N2Y4MDAwMDApOwo+PiAgICAgICAgICAgICAgICBeCj4+ICAgZGlzYXMvbGlidml4bC9h
-NjQvaW5zdHJ1Y3Rpb25zLWE2NC5oOjk5OjEzOiBlcnJvcjogJ3ZpeGw6OmtGUDMyTmVnYXRpdmVJ
-bmZpbml0eScgZGVmaW5lZCBidXQgbm90IHVzZWQgWy1XZXJyb3I9dW51c2VkLXZhcmlhYmxlXQo+
-PiAgICBjb25zdCBmbG9hdCBrRlAzMk5lZ2F0aXZlSW5maW5pdHkgPSByYXdiaXRzX3RvX2Zsb2F0
-KDB4ZmY4MDAwMDApOwo+PiAgICAgICAgICAgICAgICBeCj4+ICAgZGlzYXMvbGlidml4bC9hNjQv
-aW5zdHJ1Y3Rpb25zLWE2NC5oOjEwMDoxNDogZXJyb3I6ICd2aXhsOjprRlA2NFBvc2l0aXZlSW5m
-aW5pdHknIGRlZmluZWQgYnV0IG5vdCB1c2VkIFstV2Vycm9yPXVudXNlZC12YXJpYWJsZV0KPj4g
-ICAgY29uc3QgZG91YmxlIGtGUDY0UG9zaXRpdmVJbmZpbml0eSA9Cj4+ICAgICAgICAgICAgICAg
-ICBeCj4+ICAgZGlzYXMvbGlidml4bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oOjEwMjoxNDogZXJy
-b3I6ICd2aXhsOjprRlA2NE5lZ2F0aXZlSW5maW5pdHknIGRlZmluZWQgYnV0IG5vdCB1c2VkIFst
-V2Vycm9yPXVudXNlZC12YXJpYWJsZV0KPj4gICAgY29uc3QgZG91YmxlIGtGUDY0TmVnYXRpdmVJ
-bmZpbml0eSA9Cj4+ICAgICAgICAgICAgICAgICBeCj4+ICAgZGlzYXMvbGlidml4bC9hNjQvaW5z
-dHJ1Y3Rpb25zLWE2NC5oOjEwNzoyMTogZXJyb3I6ICd2aXhsOjprRlA2NFNpZ25hbGxpbmdOYU4n
-IGRlZmluZWQgYnV0IG5vdCB1c2VkIFstV2Vycm9yPXVudXNlZC12YXJpYWJsZV0KPj4gICAgc3Rh
-dGljIGNvbnN0IGRvdWJsZSBrRlA2NFNpZ25hbGxpbmdOYU4gPQo+PiAgICAgICAgICAgICAgICAg
-ICAgICAgIF4KPj4gICBkaXNhcy9saWJ2aXhsL2E2NC9pbnN0cnVjdGlvbnMtYTY0Lmg6MTA5OjIw
-OiBlcnJvcjogJ3ZpeGw6OmtGUDMyU2lnbmFsbGluZ05hTicgZGVmaW5lZCBidXQgbm90IHVzZWQg
-Wy1XZXJyb3I9dW51c2VkLXZhcmlhYmxlXQo+PiAgICBzdGF0aWMgY29uc3QgZmxvYXQga0ZQMzJT
-aWduYWxsaW5nTmFOID0gcmF3Yml0c190b19mbG9hdCgweDdmODAwMDAxKTsKPj4gICAgICAgICAg
-ICAgICAgICAgICAgIF4KPj4gICBkaXNhcy9saWJ2aXhsL2E2NC9pbnN0cnVjdGlvbnMtYTY0Lmg6
-MTEyOjIxOiBlcnJvcjogJ3ZpeGw6OmtGUDY0UXVpZXROYU4nIGRlZmluZWQgYnV0IG5vdCB1c2Vk
-IFstV2Vycm9yPXVudXNlZC12YXJpYWJsZV0KPj4gICAgc3RhdGljIGNvbnN0IGRvdWJsZSBrRlA2
-NFF1aWV0TmFOID0KPj4gICAgICAgICAgICAgICAgICAgICAgICBeCj4+ICAgZGlzYXMvbGlidml4
-bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oOjExNDoyMDogZXJyb3I6ICd2aXhsOjprRlAzMlF1aWV0
-TmFOJyBkZWZpbmVkIGJ1dCBub3QgdXNlZCBbLVdlcnJvcj11bnVzZWQtdmFyaWFibGVdCj4+ICAg
-IHN0YXRpYyBjb25zdCBmbG9hdCBrRlAzMlF1aWV0TmFOID0gcmF3Yml0c190b19mbG9hdCgweDdm
-YzAwMDAxKTsKPj4gICAgICAgICAgICAgICAgICAgICAgIF4KPj4gICBkaXNhcy9saWJ2aXhsL2E2
-NC9pbnN0cnVjdGlvbnMtYTY0Lmg6MTE3OjIxOiBlcnJvcjogJ3ZpeGw6OmtGUDY0RGVmYXVsdE5h
-TicgZGVmaW5lZCBidXQgbm90IHVzZWQgWy1XZXJyb3I9dW51c2VkLXZhcmlhYmxlXQo+PiAgICBz
-dGF0aWMgY29uc3QgZG91YmxlIGtGUDY0RGVmYXVsdE5hTiA9Cj4+ICAgICAgICAgICAgICAgICAg
-ICAgICAgXgo+PiAgIGRpc2FzL2xpYnZpeGwvYTY0L2luc3RydWN0aW9ucy1hNjQuaDoxMTk6MjA6
-IGVycm9yOiAndml4bDo6a0ZQMzJEZWZhdWx0TmFOJyBkZWZpbmVkIGJ1dCBub3QgdXNlZCBbLVdl
-cnJvcj11bnVzZWQtdmFyaWFibGVdCj4+ICAgIHN0YXRpYyBjb25zdCBmbG9hdCBrRlAzMkRlZmF1
-bHROYU4gPSByYXdiaXRzX3RvX2Zsb2F0KDB4N2ZjMDAwMDApOwo+PiAgICAgICAgICAgICAgICAg
-ICAgICAgXgo+PiAgIGNjMXBsdXM6IGFsbCB3YXJuaW5ncyBiZWluZyB0cmVhdGVkIGFzIGVycm9y
-cwo+PiAgIG1ha2U6ICoqKiBbZGlzYXMvYXJtLWE2NC5vXSBFcnJvciAxCj4+Cj4+Cj4+IFNpZ25l
-ZC1vZmYtYnk6IENoZW4gR2FuZyA8Z2FuZy5jaGVuLjVpNWpAZ21haWwuY29tPgo+PiAtLS0KPj4g
-IGRpc2FzL2xpYnZpeGwvYTY0L2luc3RydWN0aW9ucy1hNjQuaCB8IDI0IC0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLQo+PiAgMSBmaWxlIGNoYW5nZWQsIDI0IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZm
-IC0tZ2l0IGEvZGlzYXMvbGlidml4bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oIGIvZGlzYXMvbGli
-dml4bC9hNjQvaW5zdHJ1Y3Rpb25zLWE2NC5oCj4+IGluZGV4IGQ1YjkwYzUuLjFlZWE4NTEgMTAw
-NjQ0Cj4+IC0tLSBhL2Rpc2FzL2xpYnZpeGwvYTY0L2luc3RydWN0aW9ucy1hNjQuaAo+PiArKysg
-Yi9kaXNhcy9saWJ2aXhsL2E2NC9pbnN0cnVjdGlvbnMtYTY0LmgKPj4gQEAgLTk1LDMwICs5NSw2
-IEBAIGNvbnN0IHVuc2lnbmVkIGtEb3VibGVFeHBvbmVudEJpdHMgPSAxMTsKPj4gIGNvbnN0IHVu
-c2lnbmVkIGtGbG9hdE1hbnRpc3NhQml0cyA9IDIzOwo+PiAgY29uc3QgdW5zaWduZWQga0Zsb2F0
-RXhwb25lbnRCaXRzID0gODsKPj4KPj4gLWNvbnN0IGZsb2F0IGtGUDMyUG9zaXRpdmVJbmZpbml0
-eSA9IHJhd2JpdHNfdG9fZmxvYXQoMHg3ZjgwMDAwMCk7Cj4+IC1jb25zdCBmbG9hdCBrRlAzMk5l
-Z2F0aXZlSW5maW5pdHkgPSByYXdiaXRzX3RvX2Zsb2F0KDB4ZmY4MDAwMDApOwo+PiAtY29uc3Qg
-ZG91YmxlIGtGUDY0UG9zaXRpdmVJbmZpbml0eSA9Cj4+IC0gICAgcmF3Yml0c190b19kb3VibGUo
-VUlOVDY0X0MoMHg3ZmYwMDAwMDAwMDAwMDAwKSk7Cj4+IC1jb25zdCBkb3VibGUga0ZQNjROZWdh
-dGl2ZUluZmluaXR5ID0KPj4gLSAgICByYXdiaXRzX3RvX2RvdWJsZShVSU5UNjRfQygweGZmZjAw
-MDAwMDAwMDAwMDApKTsKPj4gLQo+PiAtLy8gVGhpcyB2YWx1ZSBpcyBhIHNpZ25hbGxpbmcgTmFO
-IGFzIGJvdGggYSBkb3VibGUgYW5kIGFzIGEgZmxvYXQgKHRha2luZyB0aGUKPj4gLS8vIGxlYXN0
-LXNpZ25pZmljYW50IHdvcmQpLgo+PiAtc3RhdGljIGNvbnN0IGRvdWJsZSBrRlA2NFNpZ25hbGxp
-bmdOYU4gPQo+PiAtICAgIHJhd2JpdHNfdG9fZG91YmxlKFVJTlQ2NF9DKDB4N2ZmMDAwMDA3Zjgw
-MDAwMSkpOwo+PiAtc3RhdGljIGNvbnN0IGZsb2F0IGtGUDMyU2lnbmFsbGluZ05hTiA9IHJhd2Jp
-dHNfdG9fZmxvYXQoMHg3ZjgwMDAwMSk7Cj4+IC0KPj4gLS8vIEEgc2ltaWxhciB2YWx1ZSwgYnV0
-IGFzIGEgcXVpZXQgTmFOLgo+PiAtc3RhdGljIGNvbnN0IGRvdWJsZSBrRlA2NFF1aWV0TmFOID0K
-Pj4gLSAgICByYXdiaXRzX3RvX2RvdWJsZShVSU5UNjRfQygweDdmZjgwMDAwN2ZjMDAwMDEpKTsK
-Pj4gLXN0YXRpYyBjb25zdCBmbG9hdCBrRlAzMlF1aWV0TmFOID0gcmF3Yml0c190b19mbG9hdCgw
-eDdmYzAwMDAxKTsKPj4gLQo+PiAtLy8gVGhlIGRlZmF1bHQgTmFOIHZhbHVlcyAoZm9yIEZQQ1Iu
-RE49MSkuCj4+IC1zdGF0aWMgY29uc3QgZG91YmxlIGtGUDY0RGVmYXVsdE5hTiA9Cj4+IC0gICAg
-cmF3Yml0c190b19kb3VibGUoVUlOVDY0X0MoMHg3ZmY4MDAwMDAwMDAwMDAwKSk7Cj4+IC1zdGF0
-aWMgY29uc3QgZmxvYXQga0ZQMzJEZWZhdWx0TmFOID0gcmF3Yml0c190b19mbG9hdCgweDdmYzAw
-MDAwKTsKPj4gLQo+PiAtCj4KPlVwc3RyZWFtJ3MgcGxhbiBmb3IgZml4aW5nIHRoaXMgaXMgdG8g
-dHVybiB0aGVzZSBpbnRvCj4nZXh0ZXJuIGNvbnN0IGRvdWJsZSBmb28nIGluIHRoZSBoZWFkZXIg
-d2l0aCB0aGUgZGVmaW5pdGlvbgo+aW4gYW4gYXBwcm9wcmlhdGUgLmNjIGZpbGUuIEdpdmVuIHRo
-YXQsIEkgdGhpbmsgSSdtIGhhcHB5IGZvcgo+dXMgdG8gdGFrZSB0aGlzIHBhdGNoIGluIFFFTVUg
-Zm9yIHRoZSBtb21lbnQsIHdpdGggdGhlIGV4cGVjdGF0aW9uCj50aGF0IHRoZSBuZXh0IGxpYnZp
-eGwgZHJvcCB3aWxsIGp1c3Qgb2Jzb2xldGUgaXQuCj4KPlJldmlld2VkLWJ5OiBQZXRlciBNYXlk
-ZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+Cj4KPi0tIFBNTQo=
+>Use local variable to bdrv_pwrite_sync L1 table,
+>needless to make conversion of cached L1 table between
+>big-endian and host style.
+>
+>Signed-off-by: Zhang Haoyu <zhanghy@sangfor.com>
+>Reviewed-by: Max Reitz <mreitz@redhat.com>
+>---
+>v2 -> v3:
+> - replace g_try_malloc0 with qemu_try_blockalign
+> - copy the latest local L1 table back to s->l1_table
+>   after successfully bdrv_pwrite_sync L1 table
+>
+>v1 -> v2:
+> - remove the superflous assignment, l1_table = NULL;
+> - replace 512 with BDRV_SECTOR_SIZE, and align_offset with ROUND_UP
+> - remove needless check of if (l1_table) before g_free(l1_table)
+>
+> block/qcow2-refcount.c | 25 +++++++++----------------
+> 1 file changed, 9 insertions(+), 16 deletions(-)
+>
+>diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
+>index 2bcaaf9..bceadce 100644
+>--- a/block/qcow2-refcount.c
+>+++ b/block/qcow2-refcount.c
+>@@ -881,14 +881,17 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+> {
+>     BDRVQcowState *s = bs->opaque;
+>     uint64_t *l1_table, *l2_table, l2_offset, offset, l1_size2;
+>-    bool l1_allocated = false;
+>     int64_t old_offset, old_l2_offset;
+>     int i, j, l1_modified = 0, nb_csectors, refcount;
+>     int ret;
+> 
+>     l2_table = NULL;
+>-    l1_table = NULL;
+>     l1_size2 = l1_size * sizeof(uint64_t);
+>+    l1_table = qemu_try_blockalign(bs->file, l1_size2);
+>+    if (l1_size2 && l1_table == NULL) {
+>+        ret = -ENOMEM;
+>+        goto fail;
+>+    }
+> 
+>     s->cache_discards = true;
+> 
+>@@ -896,13 +899,6 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+>      * l1_table_offset when it is the current s->l1_table_offset! Be careful
+>      * when changing this! */
+>     if (l1_table_offset != s->l1_table_offset) {
+>-        l1_table = g_try_malloc0(align_offset(l1_size2, 512));
+>-        if (l1_size2 && l1_table == NULL) {
+>-            ret = -ENOMEM;
+>-            goto fail;
+>-        }
+>-        l1_allocated = true;
+>-
+>         ret = bdrv_pread(bs->file, l1_table_offset, l1_table, l1_size2);
+>         if (ret < 0) {
+>             goto fail;
+>@@ -912,8 +908,7 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+>             be64_to_cpus(&l1_table[i]);
+>     } else {
+>         assert(l1_size == s->l1_size);
+>-        l1_table = s->l1_table;
+>-        l1_allocated = false;
+>+        memcpy(l1_table, s->l1_table, l1_size2);
+>     }
+> 
+>     for(i = 0; i < l1_size; i++) {
+>@@ -1055,13 +1050,11 @@ fail:
+>         }
+> 
+>         ret = bdrv_pwrite_sync(bs->file, l1_table_offset, l1_table, l1_size2);
+>-
+>-        for (i = 0; i < l1_size; i++) {
+>-            be64_to_cpus(&l1_table[i]);
+>+        if (ret == 0) {
+>+            memcpy(s->l1_table, l1_table, l1_size2);
+I made a mistake, big-endian l1 table was copied back to s->l1_table.
+>         }
+>     }
+>-    if (l1_allocated)
+>-        g_free(l1_table);
+>+    g_free(l1_table);
+>     return ret;
+> }
+> 
+>-- 
+>1.7.12.4
 
 
