@@ -1,40 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xgw4Z-0002HF-HW
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Oct 2014 09:35:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35536)
+	id 1XgwJg-00089A-Vm
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Oct 2014 09:51:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43098)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <baloo@gandi.net>) id 1XgvvI-0007f0-D7
-	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 09:26:02 -0400
+	(envelope-from <mreitz@redhat.com>) id 1XgwJb-00086h-0M
+	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 09:51:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <baloo@gandi.net>) id 1XgvvB-000807-Le
-	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 09:25:55 -0400
-Received: from mail4.gandi.net ([217.70.183.210]:37962)
+	(envelope-from <mreitz@redhat.com>) id 1XgwJW-0000Gm-Qu
+	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 09:51:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41767)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <baloo@gandi.net>)
-	id 1Xgvuz-0007yL-HM; Wed, 22 Oct 2014 09:25:37 -0400
-Received: from localhost (mfiltercorp1-d.gandi.net [217.70.183.155])
-	by mail4.gandi.net (Postfix) with ESMTP id 6C776120AAA;
-	Wed, 22 Oct 2014 15:25:36 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at mfiltercorp1-d.gandi.net
-Received: from mail4.gandi.net ([217.70.183.210])
-	by localhost (mfiltercorp1-d.gandi.net [217.70.183.155]) (amavisd-new,
-	port 10024)
-	with ESMTP id SDMIpgfahuNb; Wed, 22 Oct 2014 15:25:35 +0200 (CEST)
-Received: from khany.gandi.net (baloo.gandi.net [217.70.181.57])
-	(using TLSv1 with cipher AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	by mail4.gandi.net (Postfix) with ESMTPSA id 5A35C120A80;
-	Wed, 22 Oct 2014 15:25:35 +0200 (CEST)
-From: Arthur Gautier <baloo@gandi.net>
-To: qemu-devel@nongnu.org
-Date: Wed, 22 Oct 2014 15:25:20 +0200
-Message-Id: <1413984320-28585-1-git-send-email-baloo@gandi.net>
-X-Mailer: git-send-email 2.1.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 217.70.183.210
-X-Mailman-Approved-At: Wed, 22 Oct 2014 09:35:29 -0400
-Cc: qemu-trivial@nongnu.org, Arthur Gautier <baloo@gandi.net>
-Subject: [Qemu-trivial] [PATCH] vmdk: Fix cylinders number during convert
+	(envelope-from <mreitz@redhat.com>)
+	id 1XgwJW-0000Gh-K1; Wed, 22 Oct 2014 09:50:58 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9MDouhT004502
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Wed, 22 Oct 2014 09:50:56 -0400
+Received: from dresden.str.redhat.com (dhcp-192-247.str.redhat.com
+	[10.33.192.247])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9MDoqBg032272
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Wed, 22 Oct 2014 09:50:53 -0400
+Message-ID: <5447B63C.70603@redhat.com>
+Date: Wed, 22 Oct 2014 15:50:52 +0200
+From: Max Reitz <mreitz@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
+MIME-Version: 1.0
+To: Zhang Haoyu <zhanghy@sangfor.com>, qemu-devel <qemu-devel@nongnu.org>
+References: <201410222039495960337@sangfor.com>
+In-Reply-To: <201410222039495960337@sangfor.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH v5] snapshot: use local variable to
+ bdrv_pwrite_sync L1 table
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,133 +52,126 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Oct 2014 13:26:02 -0000
+X-List-Received-Date: Wed, 22 Oct 2014 13:51:07 -0000
 
-We can not rely on int cast to get a correct number of cylinders. The
-cylinders information was wrong in 49.9999% of cases.
+On 2014-10-22 at 14:39, Zhang Haoyu wrote:
+> Use local variable to bdrv_pwrite_sync L1 table,
+> needless to make conversion of cached L1 table between
+> big-endian and host style.
+>
+> Signed-off-by: Zhang Haoyu <zhanghy@sangfor.com>
+> Reviewed-by: Max Reitz <mreitz@redhat.com>
+> ---
+> v4 -> v5:
+> - delete superfluous check of "l1_size2 != 0"
+>    after qemu_try_blockalign(l1_size2)
+>
+> v3 -> v4:
+>   - convert local L1 table to host-style before copy it
+>     back to s->l1_table
+>
+> v2 -> v3:
+>   - replace g_try_malloc0 with qemu_try_blockalign
+>   - copy the latest local L1 table back to s->l1_table
+>     after successfully bdrv_pwrite_sync L1 table
+>
+> v1 -> v2:
+>   - remove the superflous assignment, l1_table = NULL;
+>   - replace 512 with BDRV_SECTOR_SIZE, and align_offset with ROUND_UP
+>   - remove needless check of if (l1_table) before g_free(l1_table)
+>
+>   block/qcow2-refcount.c | 28 ++++++++++++----------------
+>   1 file changed, 12 insertions(+), 16 deletions(-)
+>
+> diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
+> index 2bcaaf9..4cf6639 100644
+> --- a/block/qcow2-refcount.c
+> +++ b/block/qcow2-refcount.c
+> @@ -881,14 +881,17 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+>   {
+>       BDRVQcowState *s = bs->opaque;
+>       uint64_t *l1_table, *l2_table, l2_offset, offset, l1_size2;
+> -    bool l1_allocated = false;
+>       int64_t old_offset, old_l2_offset;
+>       int i, j, l1_modified = 0, nb_csectors, refcount;
+>       int ret;
+>   
+>       l2_table = NULL;
+> -    l1_table = NULL;
+>       l1_size2 = l1_size * sizeof(uint64_t);
+> +    l1_table = qemu_try_blockalign(bs->file, l1_size2);
+> +    if (l1_table == NULL) {
+> +        ret = -ENOMEM;
+> +        goto fail;
+> +    }
+>   
+>       s->cache_discards = true;
+>   
+> @@ -896,13 +899,6 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+>        * l1_table_offset when it is the current s->l1_table_offset! Be careful
+>        * when changing this! */
+>       if (l1_table_offset != s->l1_table_offset) {
+> -        l1_table = g_try_malloc0(align_offset(l1_size2, 512));
+> -        if (l1_size2 && l1_table == NULL) {
+> -            ret = -ENOMEM;
+> -            goto fail;
+> -        }
+> -        l1_allocated = true;
+> -
+>           ret = bdrv_pread(bs->file, l1_table_offset, l1_table, l1_size2);
+>           if (ret < 0) {
+>               goto fail;
+> @@ -912,8 +908,7 @@ int qcow2_update_snapshot_refcount(BlockDriverState *bs,
+>               be64_to_cpus(&l1_table[i]);
+>       } else {
+>           assert(l1_size == s->l1_size);
+> -        l1_table = s->l1_table;
+> -        l1_allocated = false;
+> +        memcpy(l1_table, s->l1_table, l1_size2);
+>       }
+>   
+>       for(i = 0; i < l1_size; i++) {
+> @@ -1055,13 +1050,14 @@ fail:
+>           }
+>   
+>           ret = bdrv_pwrite_sync(bs->file, l1_table_offset, l1_table, l1_size2);
+> -
+> -        for (i = 0; i < l1_size; i++) {
+> -            be64_to_cpus(&l1_table[i]);
+> +        if (ret == 0) {
+> +            for (i = 0; i < l1_size; i++) {
+> +                be64_to_cpus(&l1_table[i]);
+> +            }
+> +            memcpy(s->l1_table, l1_table, l1_size2);
 
-This ensures the cylinders always gets the ceiling value.
+Well, "for (i = 0; i < l1_size; i++) { s->l1_table[i] = 
+be64_to_cpu(l1_table[i]; }" would have saved us this memcpy(). But this 
+function is not critical for performance, so it doesn't really matter 
+(if it was about performance, we could get rid of the first memcpy() as 
+well by the same means).
 
-Reviewed-by: William Dauchy <william@gandi.net>
-Signed-off-by: Arthur Gautier <baloo@gandi.net>
----
- block/vmdk.c               |  4 +--
- tests/qemu-iotests/106     | 67 ++++++++++++++++++++++++++++++++++++++++++++++
- tests/qemu-iotests/106.out |  5 ++++
- tests/qemu-iotests/group   |  1 +
- 4 files changed, 75 insertions(+), 2 deletions(-)
- create mode 100755 tests/qemu-iotests/106
- create mode 100644 tests/qemu-iotests/106.out
+Oh, and by the way: For your future patches, if you create a new version 
+which has non-trivial changes (I normally consider only whitespace and 
+comment changes trivial, and not even all of those), please drop the 
+Reviewed-by. There are exceptions to this where a reviewer explicitly 
+states "If you do $foo, then: Reviewed-by: Foo Bar <fbar@example.com>", 
+though. Also, please don't include a Reviewed-by if the reviewer did not 
+explicitly state "Reviewed-by: Foo Bar <fbar@example.com>". As far as I 
+remember, I never explicitly stated "Reviewed-by: Max Reitz 
+<mreitz@redhat.com>" in regards to this series and that was intended.
 
-diff --git a/block/vmdk.c b/block/vmdk.c
-index 4ae6c75..c22a6c6 100644
---- a/block/vmdk.c
-+++ b/block/vmdk.c
-@@ -1928,8 +1928,8 @@ static int vmdk_create(const char *filename, QemuOpts *opts, Error **errp)
-                            parent_desc_line,
-                            ext_desc_lines->str,
-                            (flags & BLOCK_FLAG_COMPAT6 ? 6 : 4),
--                           total_size /
--                               (int64_t)(63 * number_heads * BDRV_SECTOR_SIZE),
-+                           DIV_ROUND_UP(total_size,
-+                               (int64_t)(63 * number_heads * BDRV_SECTOR_SIZE)),
-                            number_heads,
-                            adapter_type);
-     desc_len = strlen(desc);
-diff --git a/tests/qemu-iotests/106 b/tests/qemu-iotests/106
-new file mode 100755
-index 0000000..d17c588
---- /dev/null
-+++ b/tests/qemu-iotests/106
-@@ -0,0 +1,67 @@
-+#!/bin/bash
-+#
-+# Create then convert raw to vmdk with a little image
-+#
-+# Copyright (C) 2014 Red Hat, Inc.
-+#               2014 Gandi SAS
-+#
-+# This program is free software; you can redistribute it and/or modify
-+# it under the terms of the GNU General Public License as published by
-+# the Free Software Foundation; either version 2 of the License, or
-+# (at your option) any later version.
-+#
-+# This program is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+# GNU General Public License for more details.
-+#
-+# You should have received a copy of the GNU General Public License
-+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+#
-+
-+# creator
-+owner=baloo@gandi.net
-+
-+seq=`basename $0`
-+echo "QA output created by $seq"
-+
-+here=`pwd`
-+tmp=/tmp/$$
-+status=1	# failure is the default!
-+
-+_cleanup()
-+{
-+	_cleanup_test_img
-+}
-+trap "_cleanup; exit \$status" 0 1 2 3 15
-+
-+# get standard environment, filters and checks
-+. ./common.rc
-+. ./common.filter
-+
-+_supported_fmt vmdk
-+_supported_proto generic
-+_supported_os Linux
-+
-+IMG_SIZE=1K
-+
-+TEST_IMG="$TEST_IMG.base" _make_test_img $IMG_SIZE | _filter_img_create
-+
-+#echo "=== Convert image to vmdk ==="
-+#echo
-+$QEMU_IMG convert -f raw -O vmdk "$TEST_IMG.base" "$TEST_IMG"
-+
-+echo "=== Check for correct number of cylinders ==="
-+echo
-+
-+# Cylinders are in the top of the file
-+CYLINDERS=`grep -a 'cylinders' $TEST_IMG | head -1 | sed -r 's/.*"([0-9]+)".*/\1/' | tr -d '\n'`
-+
-+
-+# Check the cylinders number is plausible
-+[ "x$CYLINDERS" = "x0" ] && (echo "Cylinders cannot be zero" >&2 && exit 1)
-+
-+# success, all done
-+echo "*** done"
-+rm -f $seq.full
-+status=0
-diff --git a/tests/qemu-iotests/106.out b/tests/qemu-iotests/106.out
-new file mode 100644
-index 0000000..5d2f0a3
---- /dev/null
-+++ b/tests/qemu-iotests/106.out
-@@ -0,0 +1,5 @@
-+QA output created by 106
-+Formatting 'TEST_DIR/t.IMGFMT.base', fmt=IMGFMT size=1024 
-+=== Check for correct number of cylinders ===
-+
-+*** done
-diff --git a/tests/qemu-iotests/group b/tests/qemu-iotests/group
-index b230996..0c68320 100644
---- a/tests/qemu-iotests/group
-+++ b/tests/qemu-iotests/group
-@@ -106,3 +106,4 @@
- 103 rw auto quick
- 104 rw auto
- 105 rw auto quick
-+106 rw auto quick
--- 
-2.1.1
+Anyway, thanks for your patch, I applied it to my block branch:
+https://github.com/XanClic/qemu/commits/block
+
+Max
+
+>           }
+>       }
+> -    if (l1_allocated)
+> -        g_free(l1_table);
+> +    g_free(l1_table);
+>       return ret;
+>   }
+>   
 
 
