@@ -1,42 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XhCDK-0002D9-94
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Oct 2014 02:49:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34110)
+	id 1XhCGC-0003NK-HH
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Oct 2014 02:52:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34745)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XhCDC-00023M-TO
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 02:49:37 -0400
+	(envelope-from <armbru@redhat.com>) id 1XhCG6-0003FF-FB
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 02:52:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XhCD6-0004ST-Cm
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 02:49:30 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36196)
+	(envelope-from <armbru@redhat.com>) id 1XhCG1-0005kk-Gd
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 02:52:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:14791)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XhCCt-0004RR-Op; Thu, 23 Oct 2014 02:49:11 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id E0E4C455FF;
-	Thu, 23 Oct 2014 10:49:10 +0400 (MSK)
-Message-ID: <5448A4E5.1020605@msgid.tls.msk.ru>
-Date: Thu, 23 Oct 2014 10:49:09 +0400
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.8.1
+	(envelope-from <armbru@redhat.com>)
+	id 1XhCFq-0005Oq-Fk; Thu, 23 Oct 2014 02:52:14 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9N6q9vg008965
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 23 Oct 2014 02:52:09 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-30.ams2.redhat.com
+	[10.36.116.30])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9N6q7OP013512
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 23 Oct 2014 02:52:09 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 3B85F303F175; Thu, 23 Oct 2014 08:52:07 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1411097848-3900-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<541D8812.1040406@msgid.tls.msk.ru>
+	<87ppeow4uk.fsf@blackfin.pond.sub.org>
+	<541FD10D.8000809@msgid.tls.msk.ru>
+	<5448A14D.7070007@msgid.tls.msk.ru>
+Date: Thu, 23 Oct 2014 08:52:07 +0200
+In-Reply-To: <5448A14D.7070007@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Thu, 23 Oct 2014 10:33:49 +0400")
+Message-ID: <8738afxoq0.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, 
-	Chen Gang <gang.chen.5i5j@gmail.com>
-References: <54369514.5000004@gmail.com>
-	<CAFEAcA9KgX1gOtXPqTC2gX1HD69aPF9fbKkk1i5zbN2+tLW_og@mail.gmail.com>
-In-Reply-To: <CAFEAcA9KgX1gOtXPqTC2gX1HD69aPF9fbKkk1i5zbN2+tLW_og@mail.gmail.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	"rth@twiddle.net" <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] disas/libvixl/a64/instructions-a64.h:
- Remove useless varialbe to avoid building break with '-Werror'
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, zhanghailiang <zhang.zhanghailiang@huawei.com>,
+	luonengjun@huawei.com, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] vl: Fix possible freed
+	memory accessing
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,36 +57,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Oct 2014 06:49:37 -0000
+X-List-Received-Date: Thu, 23 Oct 2014 06:52:35 -0000
 
-On 10/21/2014 07:50 PM, Peter Maydell wrote:
-> On 9 October 2014 15:00, Chen Gang <gang.chen.5i5j@gmail.com> wrote:
-[]
->> --- a/disas/libvixl/a64/instructions-a64.h
->> +++ b/disas/libvixl/a64/instructions-a64.h
->> @@ -95,30 +95,6 @@ const unsigned kDoubleExponentBits = 11;
->>  const unsigned kFloatMantissaBits = 23;
->>  const unsigned kFloatExponentBits = 8;
->>
->> -const float kFP32PositiveInfinity = rawbits_to_float(0x7f800000);
->> -const float kFP32NegativeInfinity = rawbits_to_float(0xff800000);
-...
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-> Upstream's plan for fixing this is to turn these into
-> 'extern const double foo' in the header with the definition
-> in an appropriate .cc file. Given that, I think I'm happy for
-> us to take this patch in QEMU for the moment, with the expectation
-> that the next libvixl drop will just obsolete it.
+> On 09/22/2014 11:34 AM, Michael Tokarev wrote:
+>> 22.09.2014 10:23, Markus Armbruster wrote:
+>>> Michael Tokarev <mjt@tls.msk.ru> writes:
+>>>
+>>>> Applied to -trivial, thank you!
+>>>
+>>> Makes my 'hmp: Remove "info pcmcia"' conflict.  Either revert this one
+>>> before applying mine, or resolve the conflict and drop the paragraph
+>>> about the bug from my commit message.
+>> 
+>> Okay, I'll keep an eye on this -- I'm reverting the trivial patch
+>> for now.
+>
+> So it looks like the original patch by zhanghailiang still applies,
+> and your patch, `info pcmcia' removal, hasn't been applied for over
+> a month. Should I apply the bugfix by zhanghailiang finally?
 
-If upstream already have a patch for this, why not take the
-upstream's solution now, so we wont need to revert our solution
-before applying next drop from upstream?
-
-BTW, how the "upstream drop" is done, anyway?  If it is something
-like git merge, we may need to care, but if it is just cp -a upstream/* .
-when there's no reason to... ;)
-
-Thanks,
-
-/mjt
+Please give me a few more days to try getting it committed.
 
