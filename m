@@ -1,52 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XhGDm-0005CB-LU
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Oct 2014 07:06:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43482)
+	id 1XhHZA-0002Aa-NO
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Oct 2014 08:32:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38518)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XhGDe-0005Ag-I1
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 07:06:20 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1XhHZ2-00021B-Ue
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 08:32:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XhGDa-0007Ts-7L
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 07:06:14 -0400
-Received: from mail-la0-f44.google.com ([209.85.215.44]:65468)
+	(envelope-from <ehabkost@redhat.com>) id 1XhHYw-0000eR-P0
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 08:32:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51653)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XhGDa-0007Tj-0z
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 07:06:10 -0400
-Received: by mail-la0-f44.google.com with SMTP id hs14so627408lab.17
-	for <qemu-trivial@nongnu.org>; Thu, 23 Oct 2014 04:06:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=NS+/xLL0QYOSeajCoRDqIiTGHDf5LD6GcrxDRtxeatQ=;
-	b=Y9v53ZkNHohtG9NcgDny2EC9D5zR85PSLZ/Ui5M+jprztUxRVEBw2zJk8FNiHd+dnE
-	HLYNLliKjkFhpWenEwgNodYK6HTs0tBG0S5vw3DHuCQyCBx/LPxM7nQXreIemoK+tdPv
-	jwmtuP70AvSy3kPt7/UgRJXEJeoy2T4zHOAPlBVitEcVtFfHZMho+DRnX0etfBRLMV5V
-	SsaNeR/2aO8lL26KBZMSMdAWFh545GFsWv0EQrN5+sA8PdjP8Jqk7FYaDbkMyakjztc7
-	ecLfEC6KM+WWFIKfFmKW+lGZwc3N8ir5x/vlDhP39Z1LXtbCvG9U+XjcCi+Psi1kb4QH
-	bz3w==
-X-Gm-Message-State: ALoCoQlCyC6jaI1fZJemcox1JezgURUCLw3yvKrSPcEdoHEWTDR+Rdyui/5z7Fij4TPqcBDKyHmU
-X-Received: by 10.112.66.166 with SMTP id g6mr4140143lbt.69.1414062368545;
-	Thu, 23 Oct 2014 04:06:08 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Thu, 23 Oct 2014 04:05:48 -0700 (PDT)
-In-Reply-To: <5448D7FD.60501@msgid.tls.msk.ru>
-References: <54369514.5000004@gmail.com> <5448B7C6.8070604@msgid.tls.msk.ru>
-	<CAFEAcA-Zg-MUFCnJBeuSjbXyc9Y7W4rLQZ0DXXHJ_ZWKLDo8mw@mail.gmail.com>
-	<CAFEAcA_o827huyJeqJty4eBUnXQSRmrP3n967ugr2q7HcJLrhw@mail.gmail.com>
-	<5448D7FD.60501@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 23 Oct 2014 12:05:48 +0100
-Message-ID: <CAFEAcA9ckGufD2kGREp2zKY8ODUYuAZOXvvC+WJxe0BDqgr8-w@mail.gmail.com>
+	(envelope-from <ehabkost@redhat.com>)
+	id 1XhHYk-0000KI-41; Thu, 23 Oct 2014 08:32:06 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9NCW4tS025841
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 23 Oct 2014 08:32:04 -0400
+Received: from localhost (ovpn-113-191.phx2.redhat.com [10.3.113.191])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9NCW3pX013673; Thu, 23 Oct 2014 08:32:03 -0400
+Date: Thu, 23 Oct 2014 10:32:02 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.44
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Chen Gang <gang.chen.5i5j@gmail.com>, "rth@twiddle.net" <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] disas/libvixl/a64/instructions-a64.h:
- Remove useless varialbe to avoid building break with '-Werror'
+Message-ID: <20141023123202.GD19316@thinpad.lan.raisama.net>
+References: <1411760764-18292-1-git-send-email-ehabkost@redhat.com>
+	<5448A1C3.5030703@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5448A1C3.5030703@msgid.tls.msk.ru>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 0/3] bitops: Header dependency fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,28 +49,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Oct 2014 11:06:20 -0000
+X-List-Received-Date: Thu, 23 Oct 2014 12:32:31 -0000
 
-On 23 October 2014 11:27, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> On 10/23/2014 02:09 PM, Peter Maydell wrote:
->> On 23 October 2014 10:02, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> On 23 October 2014 09:09, Michael Tokarev <mjt@tls.msk.ru> wrote:
->>>> Applied to trivial (with subject fixup), thanks!
->>>
->>> Please don't -- as I said, I have a libvixl update in my queue,
->>> and these will conflict. I'll apply an appropriate variation of
->>> this patch to my target-arm tree.
->>
->> ...or maybe I just *thought* I'd said that, since I can't find
->> a mail in this thread where I did; sorry.
->
-> You did, in a "v2" version.  Which I overlooked really, and tried
-> to apply the original v1 (which has you reviewed-by as a temp.
-> workaround).  Oh well.. :)
+On Thu, Oct 23, 2014 at 10:35:47AM +0400, Michael Tokarev wrote:
+> On 09/26/2014 11:46 PM, Eduardo Habkost wrote:
+> > This series adds a missing include, kills a circular header dependency, and
+> > avoid including qemu-common.h from a header to avoid new circular dependencies.
+> > 
+> > Eduardo Habkost (3):
+> >   tests: Add missing include to test-bitops.c
+> >   bitops.h: Don't include qemu-common.h
+> >   bitmap.h: Don't include qemu-common.h
+> 
+> Applied all 3 to -trivial, _finally_ :)
 
-Oh yes. I actually prefer v1, so I've applied it (with a tweaked
-commit message) to target-arm.next. When libvixl 1.7 appears we
-can just drop this change.
+Thanks!
 
--- PMM
+But applying the series after commit be4d57c1ea7f17b9cadb0150b330efd9b6026972
+breaks build, because now bitmap.h needs stdlib.h (for abort()). Can you
+squash the following into patch 3/3?
+
+---
+ include/qemu/bitmap.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/qemu/bitmap.h b/include/qemu/bitmap.h
+index 955627f..f0273c9 100644
+--- a/include/qemu/bitmap.h
++++ b/include/qemu/bitmap.h
+@@ -14,6 +14,7 @@
+ 
+ #include <glib.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/bitops.h"
+-- 
+1.9.3
 
