@@ -1,50 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xh6nz-0002f8-2b
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Oct 2014 21:03:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42572)
+	id 1XhByX-0001Bi-Qq
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Oct 2014 02:34:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59234)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xh6nt-0002YJ-HB
-	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 21:03:05 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XhByR-0000zt-0u
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 02:34:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xh6np-0002iO-9B
-	for qemu-trivial@nongnu.org; Wed, 22 Oct 2014 21:03:01 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:60496)
+	(envelope-from <mjt@tls.msk.ru>) id 1XhByM-00087p-49
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 02:34:14 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38379)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Xh6nc-0002fq-Dp; Wed, 22 Oct 2014 21:02:44 -0400
-Received: from 172.24.2.119 (EHLO szxeml421-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id AVY05785; Thu, 23 Oct 2014 09:02:36 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml421-hub.china.huawei.com
-	(10.82.67.160) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 23 Oct 2014 09:02:31 +0800
-Message-ID: <5448539F.6030300@huawei.com>
-Date: Thu, 23 Oct 2014 09:02:23 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XhByC-00084Z-2q; Thu, 23 Oct 2014 02:34:00 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id D1CB945A8F;
+	Thu, 23 Oct 2014 10:33:50 +0400 (MSK)
+Message-ID: <5448A14D.7070007@msgid.tls.msk.ru>
+Date: Thu, 23 Oct 2014 10:33:49 +0400
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.8.1
 MIME-Version: 1.0
-To: Eric Blake <eblake@redhat.com>
-References: <201410211604116199416@sangfor.com> <5446265E.306@redhat.com>
-	<54482D38.5080904@redhat.com>
-In-Reply-To: <54482D38.5080904@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+To: Markus Armbruster <armbru@redhat.com>
+References: <1411097848-3900-1-git-send-email-zhang.zhanghailiang@huawei.com>	<541D8812.1040406@msgid.tls.msk.ru>	<87ppeow4uk.fsf@blackfin.pond.sub.org>
+	<541FD10D.8000809@msgid.tls.msk.ru>
+In-Reply-To: <541FD10D.8000809@msgid.tls.msk.ru>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020201.544853AC.0221, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: aef1d1223d5fba262bd3e047ffd40bb7
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>,
-	qemu-devel <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Zhang Haoyu <zhanghy@sangfor.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] snapshot: use local
- variable to bdrv_pwrite_sync L1 table
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, luonengjun@huawei.com,
+	peter.huangpeng@huawei.com, zhanghailiang <zhang.zhanghailiang@huawei.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] vl: Fix possible freed
+ memory accessing
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,39 +47,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Oct 2014 01:03:05 -0000
+X-List-Received-Date: Thu, 23 Oct 2014 06:34:20 -0000
 
-On 2014/10/23 6:18, Eric Blake wrote:
-
-> On 10/21/2014 03:24 AM, Max Reitz wrote:
->> On 2014-10-21 at 10:04, Zhang Haoyu wrote:
->>> Use local variable to bdrv_pwrite_sync L1 table,
->>> needless to make conversion of cached L1 table between
->>> big-endian and host style.
->>>
->>> Signed-off-by: Zhang Haoyu <zhanghy@sangfor.com>
->>> ---
->>>   block/qcow2-refcount.c | 22 +++++++---------------
->>>   1 file changed, 7 insertions(+), 15 deletions(-)
->>>
-> 
-> I know we're up to v5 and that Max already took it into his branch, but...
-> 
-> 
->>>       l1_size2 = l1_size * sizeof(uint64_t);
->>> +    l1_table = g_try_malloc0(align_offset(l1_size2, 512));
+On 09/22/2014 11:34 AM, Michael Tokarev wrote:
+> 22.09.2014 10:23, Markus Armbruster wrote:
+>> Michael Tokarev <mjt@tls.msk.ru> writes:
 >>
->> I wanted to propose using qemu_try_blockalign(), but since it'd require
->> a memset() afterwards, it gets rather ugly.
+>>> Applied to -trivial, thank you!
+>>
+>> Makes my 'hmp: Remove "info pcmcia"' conflict.  Either revert this one
+>> before applying mine, or resolve the conflict and drop the paragraph
+>> about the bug from my commit message.
 > 
-> Not after this recent patch:
-> 
-> https://lists.gnu.org/archive/html/qemu-devel/2014-10/msg02499.html
-> 
+> Okay, I'll keep an eye on this -- I'm reverting the trivial patch
+> for now.
 
-Good catch :)
+So it looks like the original patch by zhanghailiang still applies,
+and your patch, `info pcmcia' removal, hasn't been applied for over
+a month. Should I apply the bugfix by zhanghailiang finally?
 
-Best regards,
--Gonglei
+Thanks,
 
+/mjt
 
