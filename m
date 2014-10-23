@@ -1,55 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XhCeB-0007rR-Ia
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Oct 2014 03:17:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39025)
+	id 1XhDNC-0002KO-Ln
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Oct 2014 04:03:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48886)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XhCe6-0007qI-7s
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 03:17:22 -0400
+	(envelope-from <armbru@redhat.com>) id 1XhDN5-0002D4-Rx
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 04:03:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XhCe1-00055P-Pc
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 03:17:18 -0400
-Received: from mail-lb0-f179.google.com ([209.85.217.179]:64492)
+	(envelope-from <armbru@redhat.com>) id 1XhDN0-000450-M0
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 04:03:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:5879)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XhCe1-000559-JJ
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 03:17:13 -0400
-Received: by mail-lb0-f179.google.com with SMTP id l4so335705lbv.24
-	for <qemu-trivial@nongnu.org>; Thu, 23 Oct 2014 00:17:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=MAg7LFAMptDpVAaWSmwSGbp9fiohA2nWlpYpmkHwJDI=;
-	b=PwEWP3AaDdRSRTXYIYQwsyrrffKIagRavJbQX5HXlymFu3i1QgOFNGl7L7nhv/30W9
-	xTMzIeIonnTi8gwihl+FvukJhpvch986JMCZfaEi7zOJDkIadFxh1PMHDO5vWhurgkHg
-	Q5vPFpWfwcDPhqH5DZ2a+5TE3IGg1EP0/lt1V216Cl6P/5fmhSVbCA0/Ml1tzvCE/mZf
-	Ivx5Hi1ix0Md9EP+PTGKRhQuiM9NvrZUgUa6HEya8Lm49GYg3QwPX4bqjarXmjyxjQwR
-	MeyhmtB2JogNOG6vfU/TrjkX4tb6D3aI7Oqz1hkfmMXVyaMjMwwExYsdJeDNKXyn83WO
-	EutQ==
-X-Gm-Message-State: ALoCoQmtcrUClsDjTV0QNjcYhyI8y3NCOqtde2YcGqKkTWLK0TCir/6POU8lAme0mybMhcv+IOL3
-X-Received: by 10.112.130.41 with SMTP id ob9mr2963002lbb.74.1414048632638;
-	Thu, 23 Oct 2014 00:17:12 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.112.130.161 with HTTP; Thu, 23 Oct 2014 00:16:52 -0700 (PDT)
-In-Reply-To: <5448A14D.7070007@msgid.tls.msk.ru>
-References: <1411097848-3900-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<541D8812.1040406@msgid.tls.msk.ru>
-	<87ppeow4uk.fsf@blackfin.pond.sub.org>
-	<541FD10D.8000809@msgid.tls.msk.ru> <5448A14D.7070007@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 23 Oct 2014 08:16:52 +0100
-Message-ID: <CAFEAcA8cWmx5AJruWh0mrpTqNcdnCwTuw31-8Rmn8ELz3oC1+g@mail.gmail.com>
+	(envelope-from <armbru@redhat.com>)
+	id 1XhDMq-00041K-5O; Thu, 23 Oct 2014 04:03:32 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9N83SIq010518
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 23 Oct 2014 04:03:28 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-30.ams2.redhat.com
+	[10.36.116.30])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9N83Q63018059
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 23 Oct 2014 04:03:27 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 659E5303F175; Thu, 23 Oct 2014 10:03:25 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.179
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Luonengjun <luonengjun@huawei.com>, peter.huangpeng@huawei.com,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] vl: Fix possible freed
- memory accessing
+References: <1413984320-28585-1-git-send-email-baloo@gandi.net>
+	<5448A656.6030204@msgid.tls.msk.ru>
+Date: Thu, 23 Oct 2014 10:03:25 +0200
+In-Reply-To: <5448A656.6030204@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Thu, 23 Oct 2014 10:55:18 +0400")
+Message-ID: <87egtzusaa.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Kevin Wolf <kwolf@redhat.com>, Fam Zheng <famz@redhat.com>,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>, Arthur Gautier <baloo@gandi.net>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vmdk: Fix cylinders number
+	during convert
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,34 +55,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Oct 2014 07:17:22 -0000
+X-List-Received-Date: Thu, 23 Oct 2014 08:03:53 -0000
 
-On 23 October 2014 07:33, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> On 09/22/2014 11:34 AM, Michael Tokarev wrote:
->> 22.09.2014 10:23, Markus Armbruster wrote:
->>> Michael Tokarev <mjt@tls.msk.ru> writes:
->>>
->>>> Applied to -trivial, thank you!
->>>
->>> Makes my 'hmp: Remove "info pcmcia"' conflict.  Either revert this one
->>> before applying mine, or resolve the conflict and drop the paragraph
->>> about the bug from my commit message.
->>
->> Okay, I'll keep an eye on this -- I'm reverting the trivial patch
->> for now.
+Michael Tokarev <mjt@tls.msk.ru> writes:
+
+> On 10/22/2014 05:25 PM, Arthur Gautier wrote:
+>> We can not rely on int cast to get a correct number of cylinders. The
+>> cylinders information was wrong in 49.9999% of cases.
+>> 
+>> This ensures the cylinders always gets the ceiling value.
 >
-> So it looks like the original patch by zhanghailiang still applies,
-> and your patch, `info pcmcia' removal, hasn't been applied for over
-> a month. Should I apply the bugfix by zhanghailiang finally?
+> Good thing, especially the good probability :), and also a good patch
+> which comes with a test.
+>
+> But I wonder if anything can break this way?  Migration, windows guest
+> being unable to find its partitions, something else?
+>
+> And more.  What-if our drive size in cylinders will be larger than
+> the size in bytes?  The proposed div_round_up() will increase number
+> of cylinders, so size in CHS will be larger than size in bytes.  Maybe
+> there was a reason why originally the size in cylinders was calculated
+> by truncating extra fractional part?  What-if guest will try to access
+> the very last CHS which is incomplete?
 
-The 'remove info pcmcia' patch is in target-arm.next:
-https://git.linaro.org/people/peter.maydell/qemu-arm.git/shortlog/refs/heads/target-arm.next
-
-it's just that pressure of other stuff plus KVM Forum means
-I haven't yet had a chance to scan for other ARM things to
-pick up and flush the queue yet. I'll try to do that this
-week.
-
-thanks
--- PMM
+Too many questions for -trivial, copying VMDK maintainers.
 
