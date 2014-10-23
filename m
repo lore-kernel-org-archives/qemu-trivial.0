@@ -1,43 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XhCR1-0007QL-RE
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Oct 2014 03:03:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36570)
+	id 1XhCa7-0005XI-5q
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Oct 2014 03:13:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38148)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1XhCQw-0007LC-6P
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 03:03:46 -0400
+	(envelope-from <mreitz@redhat.com>) id 1XhCa0-0005Tm-VH
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 03:13:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1XhCQs-000167-1E
-	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 03:03:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48600)
+	(envelope-from <mreitz@redhat.com>) id 1XhCZw-00049s-4b
+	for qemu-trivial@nongnu.org; Thu, 23 Oct 2014 03:13:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:6685)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1XhCQj-000147-BW; Thu, 23 Oct 2014 03:03:29 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9N73ROJ027091
+	(envelope-from <mreitz@redhat.com>)
+	id 1XhCZv-00049o-Sm; Thu, 23 Oct 2014 03:13:00 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9N7CwKG026638
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 23 Oct 2014 03:03:27 -0400
-Received: from noname.redhat.com (ovpn-116-55.ams2.redhat.com [10.36.116.55])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	SMTP id s9N73PAA009384; Thu, 23 Oct 2014 03:03:25 -0400
-Date: Thu, 23 Oct 2014 09:03:25 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <20141023070325.GA3522@noname.redhat.com>
+	verify=FAIL); Thu, 23 Oct 2014 03:12:59 -0400
+Received: from dresden.str.redhat.com (dhcp-192-247.str.redhat.com
+	[10.33.192.247])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9N7CrVY007830
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Thu, 23 Oct 2014 03:12:54 -0400
+Message-ID: <5448AA75.4000902@redhat.com>
+Date: Thu, 23 Oct 2014 09:12:53 +0200
+From: Max Reitz <mreitz@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
+MIME-Version: 1.0
+To: Kevin Wolf <kwolf@redhat.com>, Eric Blake <eblake@redhat.com>
 References: <201410211604116199416@sangfor.com> <5446265E.306@redhat.com>
 	<54482D38.5080904@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="RnlQjJ0d97Da+TV1"
-Content-Disposition: inline
-In-Reply-To: <54482D38.5080904@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	<20141023070325.GA3522@noname.redhat.com>
+In-Reply-To: <20141023070325.GA3522@noname.redhat.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial <qemu-trivial@nongnu.org>, Zhang Haoyu <zhanghy@sangfor.com>,
-	qemu-devel <qemu-devel@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>,
-	Max Reitz <mreitz@redhat.com>
+	qemu-devel <qemu-devel@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] snapshot: use local
  variable to bdrv_pwrite_sync L1 table
 X-BeenThere: qemu-trivial@nongnu.org
@@ -51,67 +54,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Oct 2014 07:03:46 -0000
+X-List-Received-Date: Thu, 23 Oct 2014 07:13:09 -0000
 
+On 2014-10-23 at 09:03, Kevin Wolf wrote:
+> Am 23.10.2014 um 00:18 hat Eric Blake geschrieben:
+>> On 10/21/2014 03:24 AM, Max Reitz wrote:
+>>> On 2014-10-21 at 10:04, Zhang Haoyu wrote:
+>>>> Use local variable to bdrv_pwrite_sync L1 table,
+>>>> needless to make conversion of cached L1 table between
+>>>> big-endian and host style.
+>>>>
+>>>> Signed-off-by: Zhang Haoyu <zhanghy@sangfor.com>
+>>>> ---
+>>>>    block/qcow2-refcount.c | 22 +++++++---------------
+>>>>    1 file changed, 7 insertions(+), 15 deletions(-)
+>>>>
+>> I know we're up to v5 and that Max already took it into his branch, but...
+>>
+>>
+>>>>        l1_size2 = l1_size * sizeof(uint64_t);
+>>>> +    l1_table = g_try_malloc0(align_offset(l1_size2, 512));
+>>> I wanted to propose using qemu_try_blockalign(), but since it'd require
+>>> a memset() afterwards, it gets rather ugly.
+>> Not after this recent patch:
+>>
+>> https://lists.gnu.org/archive/html/qemu-devel/2014-10/msg02499.html
+> We can switch to qemu_try_blockalign0() in a follow-up patch.
+>
+> But this is far from being a fast path, so there is very little to gain
+> anyway.
 
---RnlQjJ0d97Da+TV1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+We don't need the 0 variant anyway. In v5, the one I applied, it's just 
+qemu_try_blockalign(). The size does not have to be aligned to 
+BDRV_SECTOR_SIZE, since any access index is below l1_size and only 
+bdrv_pread() and bdrv_pwrite() are used, so we can first omit the 
+align_offset(). Second, all the rest (0 .. l1_size - 1) is overwritten 
+either by memcpy() or bdrv_pread(). Therefore, no 0-ing required and 
+qemu_try_blockalign() was fine.
 
-Am 23.10.2014 um 00:18 hat Eric Blake geschrieben:
-> On 10/21/2014 03:24 AM, Max Reitz wrote:
-> > On 2014-10-21 at 10:04, Zhang Haoyu wrote:
-> >> Use local variable to bdrv_pwrite_sync L1 table,
-> >> needless to make conversion of cached L1 table between
-> >> big-endian and host style.
-> >>
-> >> Signed-off-by: Zhang Haoyu <zhanghy@sangfor.com>
-> >> ---
-> >>   block/qcow2-refcount.c | 22 +++++++---------------
-> >>   1 file changed, 7 insertions(+), 15 deletions(-)
-> >>
->=20
-> I know we're up to v5 and that Max already took it into his branch, but...
->=20
->=20
-> >>       l1_size2 =3D l1_size * sizeof(uint64_t);
-> >> +    l1_table =3D g_try_malloc0(align_offset(l1_size2, 512));
-> >=20
-> > I wanted to propose using qemu_try_blockalign(), but since it'd require
-> > a memset() afterwards, it gets rather ugly.
->=20
-> Not after this recent patch:
->=20
-> https://lists.gnu.org/archive/html/qemu-devel/2014-10/msg02499.html
+There are things we can do in follow-up patches to optimize v5 (getting 
+read of the memcpy()s), but as Kevin said (and myself before that in 
+reply to v5), this function is not performance-critical, so there's no 
+real point in doing so (other than "Clearly unoptimized code makes my 
+fingers twitch").
 
-We can switch to qemu_try_blockalign0() in a follow-up patch.
-
-But this is far from being a fast path, so there is very little to gain
-anyway.
-
-Kevin
-
---RnlQjJ0d97Da+TV1
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.22 (GNU/Linux)
-
-iQIcBAEBAgAGBQJUSKg8AAoJEH8JsnLIjy/WPgMP/0/EqgnHTY0zGEg9LmUBwjkj
-0AqxzZQf/KDFY2w9acLntcnYLjf2CI4Hu8WZG0ebBYYo+tYQ6g2P0DeULJTj109k
-ZvFwOoNIlr+tHpL8YQDH7fqleL12P6Hj3lz+3Sc86saSOkJRVjeXdJ+lEIlOPUzi
-aYtd+uGsBWeyTjvWAe8Q6f9DJJaOdxpjJrmyjK0E8Izna7S4TvYN7clRwo5syMYX
-IIbU1akBI4mnQ1dXWTXcDye9y4z5a5GuT+SjIAH5wG2/5560vwDp91lWJxxfNGuH
-a8AXTS3jrhUS1QFcq28kcqvB9ICsTa3kv8TytW6KFJ7ZhG2lhVj1qOwCq78kRqIm
-31zmC+1HBj+3SfvE4r/VOpRrleuFICwgKKx/OsnuSSSeZWEMV76/TQSPyahm2pXQ
-gwhQmKomOHjy12KC+nYMBYRgbiGbAInJKQe2iXUj9CyKxOSJxdHsddHPc5kmMMPO
-frDNRRcxtYjyyRqXHaNzdKf2sTu+EqC+uL/Gi/+TtXFbYPE/AManioQMKrQRyuD4
-RTVKL2c39w/eERXWaT9yIa9e+gKjXDxd6odHk91hKF49YK0t8DXn9f9exSVez3dh
-2JkPF+Fp8/jAg6fmaH5GxXqGeAB+KkMSg6q37OJoyF5XFATnr7XhFGpz2Sc6xvr/
-2ezHGPU+WoG4KeAJXO8D
-=Acxq
------END PGP SIGNATURE-----
-
---RnlQjJ0d97Da+TV1--
+Max
 
