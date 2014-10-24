@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xha1J-0002qE-WA
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Oct 2014 04:14:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39343)
+	id 1XhagM-0008N4-8f
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Oct 2014 04:57:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45998)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Xha18-0002b3-Tv
-	for qemu-trivial@nongnu.org; Fri, 24 Oct 2014 04:14:48 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XhagE-0008E2-S2
+	for qemu-trivial@nongnu.org; Fri, 24 Oct 2014 04:57:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Xha0z-0004vc-Ry
-	for qemu-trivial@nongnu.org; Fri, 24 Oct 2014 04:14:38 -0400
-Received: from mail-pd0-x233.google.com ([2607:f8b0:400e:c02::233]:45105)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Xhag9-0001qq-M2
+	for qemu-trivial@nongnu.org; Fri, 24 Oct 2014 04:57:06 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:31187)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen.5i5j@gmail.com>)
-	id 1Xha0P-0004qr-EA; Fri, 24 Oct 2014 04:13:53 -0400
-Received: by mail-pd0-f179.google.com with SMTP id g10so1037877pdj.24
-	for <multiple recipients>; Fri, 24 Oct 2014 01:13:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=bm9ekcLVJ9/cmbYuVrnkrLJXjLs9Lhi9jbJqYmLh7rY=;
-	b=VII/jR84lqSpgT4xtdDYrasjoqWtoK/t9DzefhTNDp953cHDCOmbYXp5JIiBxP0o7d
-	C9Vehn0cxk9q/xhJEvp7aMgvwsvvFmTfoNRNblHbrB10stYgfurR7c9L8J7nZMu0GBv7
-	JsMIJKkNCICBfM4Svz61/EgPAAWIPxvTARgKuWVc4qaZE1HGN3ohdXLBrvJSWNn1jUYG
-	fghwAf3qR28RQ+dNag6tXB+DRSA1ELEe91LGxffAPoBHqhSG3H0P2TMc5K0/EXqF7ZHj
-	/nvN8ylb+qYbso0u9GCC7HSGm1KAyZm6tLspH4ZGwBjpjjlimCBgq6e6JBim/3sX5qni
-	DWlQ==
-X-Received: by 10.68.69.76 with SMTP id c12mr2905283pbu.59.1414138431298;
-	Fri, 24 Oct 2014 01:13:51 -0700 (PDT)
-Received: from [192.168.2.113] ([124.127.118.42])
-	by mx.google.com with ESMTPSA id h6sm3296251pdk.38.2014.10.24.01.13.45
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 24 Oct 2014 01:13:50 -0700 (PDT)
-Message-ID: <544A0B9F.9040500@gmail.com>
-Date: Fri, 24 Oct 2014 16:19:43 +0800
-From: Chen Gang <gang.chen.5i5j@gmail.com>
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9;
-	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Xhafz-0001kx-BA; Fri, 24 Oct 2014 04:56:51 -0400
+Received: from 172.24.2.119 (EHLO szxeml449-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AVZ99868; Fri, 24 Oct 2014 16:56:37 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml449-hub.china.huawei.com
+	(10.82.67.192) with Microsoft SMTP Server id 14.3.158.1;
+	Fri, 24 Oct 2014 16:56:30 +0800
+Message-ID: <544A1431.9050109@huawei.com>
+Date: Fri, 24 Oct 2014 16:56:17 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, Alexander Graf <agraf@suse.de>, 
-	pbonzini@redhat.com
-References: <543BE352.3080609@gmail.com> <543BE616.1000707@suse.de>
-	<544A046D.4090204@msgid.tls.msk.ru>
-In-Reply-To: <544A046D.4090204@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1411638384-5844-1-git-send-email-arei.gonglei@huawei.com>
+	<1411638384-5844-3-git-send-email-arei.gonglei@huawei.com>
+	<544A007F.2090806@msgid.tls.msk.ru>
+In-Reply-To: <544A007F.2090806@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::233
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
-	qemu-devel <qemu-devel@nongnu.org>, kvm@vger.kernel.org
-Subject: Re: [Qemu-trivial] [PATCH] target-ppc: kvm: Fix memory overflow
- issue about strncat()
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020205.544A1447.00D6, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 5674eb49776f43730c6fbff88ddf2da8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"Huangweidong \(C\)" <weidong.huang@huawei.com>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Luonengjun <luonengjun@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"armbru@redhat.com" <armbru@redhat.com>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>,
+	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
+Subject: Re: [Qemu-trivial] [PATCH 2/4] os-posix: report error message when
+ lock file failed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,57 +62,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Oct 2014 08:14:48 -0000
+X-List-Received-Date: Fri, 24 Oct 2014 08:57:11 -0000
 
+On 2014/10/24 15:32, Michael Tokarev wrote:
 
-On 10/24/14 15:49, Michael Tokarev wrote:
-> On 10/13/2014 06:47 PM, Alexander Graf wrote:
->> On 13.10.14 16:36, Chen Gang wrote:
->>> strncat() will append additional '\0' to destination buffer, so need
->>> additional 1 byte for it, or may cause memory overflow, just like other
->>> area within QEMU have done.
->>>
->>> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+> On 09/25/2014 01:46 PM, arei.gonglei@huawei.com wrote:
+>> From: Gonglei <arei.gonglei@huawei.com>
 >>
->> I agree with this patch. However, the code is pretty ugly - I'm sure it
->> must've been me who wrote it :).
+>> It will cause that create vm failed When manager
+>> tool is killed forcibly (kill -9 libvirtd_pid),
+>> the file not was unlink, and unlock. It's better
+>> that report the error message for users.
 >>
->> Could you please instead rewrite it to use g_strdup_printf() rather than
->> strncat()s? That way we resolve all string pitfalls automatically - and
->> this code is not the fast path, so doing an extra memory allocation is ok.
+>> Signed-off-by: Huangweidong <weidong.huang@huawei.com>
+>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>> ---
+>>  os-posix.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/os-posix.c b/os-posix.c
+>> index 9d5ae70..89831dc 100644
+>> --- a/os-posix.c
+>> +++ b/os-posix.c
+>> @@ -316,6 +316,7 @@ int qemu_create_pidfile(const char *filename)
+>>          return -1;
+>>      }
+>>      if (lockf(fd, F_TLOCK, 0) == -1) {
+>> +        error_report("lock file '%s' failed: %s", filename, strerror(errno));
+>>          close(fd);
+>>          return -1;
+>>      }
 > 
-> I'd just use snprintf() like this:
 > 
-> diff --git a/target-ppc/kvm.c b/target-ppc/kvm.c
-> index 9c23c6b..5eaa36c 100644
-> --- a/target-ppc/kvm.c
-> +++ b/target-ppc/kvm.c
-> @@ -1794,8 +1794,7 @@ static uint64_t kvmppc_read_int_cpu_dt(const char *propname)
->          return -1;
->      }
+> I think I'll just revert this patch, because indeed, it makes
+> no sense to do this like that.
 > 
-> -    strncat(buf, "/", sizeof(buf) - strlen(buf));
-> -    strncat(buf, propname, sizeof(buf) - strlen(buf));
-> +    snprintf(buf + strlen(buf), sizeof(buf) - strlen(buf), "/%s", propname);
+> Context:
 > 
->      f = fopen(buf, "rb");
->      if (!f) {
+>  qemu_create_pidfile() is only created from main(), and there,
+>  if that function returns failure, os_pidfile_error() function
+>  is called, to, guess that, report error (which is done differently
+>  whenever we're daemonizing or not).
 > 
-> the buffer is of size PATH_MAX, and we're looking at /proc filesystem where
-> names should be rather short so we're extremly unlikely to hit this prob in
-> practice, there's no need to dynamically allocate a buffer for this stuff.
-> 
-> (Or alternatively there's asprintf(), but still I think it is overkill).
-> 
-> I can apply the above if everyone agrees.
+>  qemu_create_pidfile() function has several error returns, this
+>  lockf() failure is one of them, there are others (another shown
+>  in the patch context too).
 > 
 
-For me, what you said is reasonable, although I am not sure whether the
-patch v2 for g_strdup_printf() was already applied or not.
+Yes, agree.
 
-Thanks.
--- 
-Chen Gang
+>  So this patch makes whole thing inconsistent at least.
+> 
+>  If we need to show error message when we're daemonizing, it
+>  looks like we should modify os_pidfile_error() routine to always
+>  report error and only after that check for daemon mode.  This way
+>  all errors will be reported the same way.
+> 
 
-Open, share, and attitude like air, water, and life which God blessed
+In os_pidfile_error(), like below...
+if (write(fds[1], &status, 1) != 1) {
+            perror("daemonize. Writing to pipe\n");
+}
+
+will call its child process to report error:
+
+ else if (status == 1) {
+                fprintf(stderr, "Could not acquire pidfile\n");
+                exit(1);
+            }
+I just want to make the error message more clear so that
+people can find the root reasons of errors as soon as possible. :)
+
+> But I really wonder if we actually need os_pidfile_error() in the
+> first place, why this can't be done in qemu_create_pidfile().
+> 
+
+> So, I'm reverting this change now, to be revisited very soon.
+> 
+
+If you think that's better, I'm fine with it.
+
+Best regards,
+-Gonglei
+
+
 
