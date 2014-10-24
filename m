@@ -1,56 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XhagM-0008N4-8f
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Oct 2014 04:57:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45998)
+	id 1XhlcR-0003OL-K4
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Oct 2014 16:37:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60276)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XhagE-0008E2-S2
-	for qemu-trivial@nongnu.org; Fri, 24 Oct 2014 04:57:11 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XhlcK-0003Fi-PE
+	for qemu-trivial@nongnu.org; Fri, 24 Oct 2014 16:37:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xhag9-0001qq-M2
-	for qemu-trivial@nongnu.org; Fri, 24 Oct 2014 04:57:06 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:31187)
+	(envelope-from <mjt@tls.msk.ru>) id 1XhlcF-0004g6-Po
+	for qemu-trivial@nongnu.org; Fri, 24 Oct 2014 16:37:48 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:49576)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Xhafz-0001kx-BA; Fri, 24 Oct 2014 04:56:51 -0400
-Received: from 172.24.2.119 (EHLO szxeml449-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id AVZ99868; Fri, 24 Oct 2014 16:56:37 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml449-hub.china.huawei.com
-	(10.82.67.192) with Microsoft SMTP Server id 14.3.158.1;
-	Fri, 24 Oct 2014 16:56:30 +0800
-Message-ID: <544A1431.9050109@huawei.com>
-Date: Fri, 24 Oct 2014 16:56:17 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1411638384-5844-1-git-send-email-arei.gonglei@huawei.com>
-	<1411638384-5844-3-git-send-email-arei.gonglei@huawei.com>
-	<544A007F.2090806@msgid.tls.msk.ru>
-In-Reply-To: <544A007F.2090806@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.544A1447.00D6, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 5674eb49776f43730c6fbff88ddf2da8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"Huangweidong \(C\)" <weidong.huang@huawei.com>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Luonengjun <luonengjun@huawei.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
-Subject: Re: [Qemu-trivial] [PATCH 2/4] os-posix: report error message when
- lock file failed
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Xhlc5-0004ds-Ek; Fri, 24 Oct 2014 16:37:33 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id CC51F46043;
+	Sat, 25 Oct 2014 00:37:30 +0400 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 67129204;
+	Sat, 25 Oct 2014 00:37:30 +0400 (MSK)
+Received: (nullmailer pid 14777 invoked by uid 1000);
+	Fri, 24 Oct 2014 20:37:30 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: Jan Kiszka <jan.kiszka@siemens.com>
+Date: Sat, 25 Oct 2014 00:37:25 +0400
+Message-Id: <1414183045-14741-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] net/slirp: specify logbase for smbd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,88 +41,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Oct 2014 08:57:11 -0000
+X-List-Received-Date: Fri, 24 Oct 2014 20:37:53 -0000
 
-On 2014/10/24 15:32, Michael Tokarev wrote:
+It looks like smbd always logs to /var/log/samba/log.$progname
+even if config file specifies different logfile -- when it needs
+to log something before completing reading the config file.  But
+if it can't open it for writing, it fails and exits.  Tell smbd
+to use our temp dir as logbase (-l option) to avoid that.
 
-> On 09/25/2014 01:46 PM, arei.gonglei@huawei.com wrote:
->> From: Gonglei <arei.gonglei@huawei.com>
->>
->> It will cause that create vm failed When manager
->> tool is killed forcibly (kill -9 libvirtd_pid),
->> the file not was unlink, and unlock. It's better
->> that report the error message for users.
->>
->> Signed-off-by: Huangweidong <weidong.huang@huawei.com>
->> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
->> ---
->>  os-posix.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/os-posix.c b/os-posix.c
->> index 9d5ae70..89831dc 100644
->> --- a/os-posix.c
->> +++ b/os-posix.c
->> @@ -316,6 +316,7 @@ int qemu_create_pidfile(const char *filename)
->>          return -1;
->>      }
->>      if (lockf(fd, F_TLOCK, 0) == -1) {
->> +        error_report("lock file '%s' failed: %s", filename, strerror(errno));
->>          close(fd);
->>          return -1;
->>      }
-> 
-> 
-> I think I'll just revert this patch, because indeed, it makes
-> no sense to do this like that.
-> 
-> Context:
-> 
->  qemu_create_pidfile() is only created from main(), and there,
->  if that function returns failure, os_pidfile_error() function
->  is called, to, guess that, report error (which is done differently
->  whenever we're daemonizing or not).
-> 
->  qemu_create_pidfile() function has several error returns, this
->  lockf() failure is one of them, there are others (another shown
->  in the patch context too).
-> 
+The same option is used by samba3 and samba4, so there should
+be no incompatible changes.
 
-Yes, agree.
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ net/slirp.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
->  So this patch makes whole thing inconsistent at least.
-> 
->  If we need to show error message when we're daemonizing, it
->  looks like we should modify os_pidfile_error() routine to always
->  report error and only after that check for daemon mode.  This way
->  all errors will be reported the same way.
-> 
-
-In os_pidfile_error(), like below...
-if (write(fds[1], &status, 1) != 1) {
-            perror("daemonize. Writing to pipe\n");
-}
-
-will call its child process to report error:
-
- else if (status == 1) {
-                fprintf(stderr, "Could not acquire pidfile\n");
-                exit(1);
-            }
-I just want to make the error message more clear so that
-people can find the root reasons of errors as soon as possible. :)
-
-> But I really wonder if we actually need os_pidfile_error() in the
-> first place, why this can't be done in qemu_create_pidfile().
-> 
-
-> So, I'm reverting this change now, to be revisited very soon.
-> 
-
-If you think that's better, I'm fine with it.
-
-Best regards,
--Gonglei
-
+diff --git a/net/slirp.c b/net/slirp.c
+index c171119..920af30 100644
+--- a/net/slirp.c
++++ b/net/slirp.c
+@@ -549,8 +549,8 @@ static int slirp_smb(SlirpState* s, const char *exported_dir,
+             );
+     fclose(f);
+ 
+-    snprintf(smb_cmdline, sizeof(smb_cmdline), "%s -s %s",
+-             CONFIG_SMBD_COMMAND, smb_conf);
++    snprintf(smb_cmdline, sizeof(smb_cmdline), "%s -l %s -s %s",
++             CONFIG_SMBD_COMMAND, s->smb_dir, smb_conf);
+ 
+     if (slirp_add_exec(s->slirp, 0, smb_cmdline, &vserver_addr, 139) < 0 ||
+         slirp_add_exec(s->slirp, 0, smb_cmdline, &vserver_addr, 445) < 0) {
+-- 
+1.7.10.4
 
 
