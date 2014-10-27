@@ -1,42 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xhvcm-0005OY-0y
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Oct 2014 03:18:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51815)
+	id 1XihQG-0003xA-PL
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Oct 2014 06:21:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39397)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1Xhvca-0005ET-Je
-	for qemu-trivial@nongnu.org; Sat, 25 Oct 2014 03:18:49 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XihQA-0003pJ-IR
+	for qemu-trivial@nongnu.org; Mon, 27 Oct 2014 06:21:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1XhvcV-0006T5-9O
-	for qemu-trivial@nongnu.org; Sat, 25 Oct 2014 03:18:44 -0400
-Received: from mout.web.de ([212.227.15.4]:60406)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XihQ5-0008LP-OC
+	for qemu-trivial@nongnu.org; Mon, 27 Oct 2014 06:21:06 -0400
+Received: from szxga01-in.huawei.com ([119.145.14.64]:41825)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1XhvcK-0006RJ-F7; Sat, 25 Oct 2014 03:18:28 -0400
-Received: from bender.mchp.siemens.de ([95.157.58.223]) by smtp.web.de
-	(mrweb004) with ESMTPSA (Nemesis) id 0MdpWf-1XTI5P0jm9-00Pcf9;
-	Sat, 25 Oct 2014 09:18:26 +0200
-Message-ID: <544B4EB9.9030600@web.de>
-Date: Sat, 25 Oct 2014 09:18:17 +0200
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XihPv-0008IJ-Dr; Mon, 27 Oct 2014 06:20:51 -0400
+Received: from 172.24.2.119 (EHLO SZXEML414-HUB.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CDM45239; Mon, 27 Oct 2014 18:20:31 +0800 (CST)
+Received: from localhost (10.177.19.102) by SZXEML414-HUB.china.huawei.com
+	(10.82.67.153) with Microsoft SMTP Server id 14.3.158.1;
+	Mon, 27 Oct 2014 18:20:24 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Mon, 27 Oct 2014 18:20:17 +0800
+Message-ID: <1414405218-468-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1414183045-14741-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1414183045-14741-1-git-send-email-mjt@msgid.tls.msk.ru>
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="GV8ueoQvis71bi2iteSPcmX3Khr4JStjO"
-X-Provags-ID: V03:K0:VXSKuMhiaALvSYAfx5nQ0HgaKuY8rzqDADGYeVspmOO1LrWYdf0
-	ljntwu+kmyGlkN4osnMltYrIUJgQJ/4uPBbU6r5fwuy9BB9DbAQ+ouzp0zCSQVnHoRoMHkR
-	OABMIzdIy3ZTn22pNDjUrOl7XIeybPJxfRntb5VTK7wYvEYs/pf73r3LyEzKaIv3VUOpVR9
-	dCDjLAyyvgRriFKcM+3aQ==
-X-UI-Out-Filterresults: notjunk:1;
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 212.227.15.4
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] net/slirp: specify logbase for smbd
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.64
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	weidong.huang@huawei.com, kraxel@redhat.com
+Subject: [Qemu-trivial] [PATCH] uhci: remove useless DEBUG
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,67 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 Oct 2014 07:18:50 -0000
+X-List-Received-Date: Mon, 27 Oct 2014 10:21:11 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---GV8ueoQvis71bi2iteSPcmX3Khr4JStjO
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: quoted-printable
+From: Gonglei <arei.gonglei@huawei.com>
 
-On 2014-10-24 22:37, Michael Tokarev wrote:
-> It looks like smbd always logs to /var/log/samba/log.$progname
-> even if config file specifies different logfile -- when it needs
-> to log something before completing reading the config file.  But
-> if it can't open it for writing, it fails and exits.  Tell smbd
-> to use our temp dir as logbase (-l option) to avoid that.
->=20
-> The same option is used by samba3 and samba4, so there should
-> be no incompatible changes.
->=20
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->  net/slirp.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/net/slirp.c b/net/slirp.c
-> index c171119..920af30 100644
-> --- a/net/slirp.c
-> +++ b/net/slirp.c
-> @@ -549,8 +549,8 @@ static int slirp_smb(SlirpState* s, const char *exp=
-orted_dir,
->              );
->      fclose(f);
-> =20
-> -    snprintf(smb_cmdline, sizeof(smb_cmdline), "%s -s %s",
-> -             CONFIG_SMBD_COMMAND, smb_conf);
-> +    snprintf(smb_cmdline, sizeof(smb_cmdline), "%s -l %s -s %s",
-> +             CONFIG_SMBD_COMMAND, s->smb_dir, smb_conf);
-> =20
->      if (slirp_add_exec(s->slirp, 0, smb_cmdline, &vserver_addr, 139) <=
- 0 ||
->          slirp_add_exec(s->slirp, 0, smb_cmdline, &vserver_addr, 445) <=
- 0) {
->=20
+commit 50dcc0f8 (uhci: tracing support) had removed
+DPRINTF, the DEBUG marco is useless now, remove it.
 
-Cool, works for me as well!
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ hw/usb/hcd-uhci.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-Reviewed-and-tested-by: Jan Kiszka <jan.kiszka@siemens.com>
-
-Jan
+diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+index 5b88f30..4a4215d 100644
+--- a/hw/usb/hcd-uhci.c
++++ b/hw/usb/hcd-uhci.c
+@@ -35,9 +35,6 @@
+ #include "trace.h"
+ #include "qemu/main-loop.h"
+ 
+-//#define DEBUG
+-//#define DEBUG_DUMP_DATA
+-
+ #define FRAME_TIMER_FREQ 1000
+ 
+ #define FRAME_MAX_LOOPS  256
+-- 
+1.7.12.4
 
 
---GV8ueoQvis71bi2iteSPcmX3Khr4JStjO
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.22 (GNU/Linux)
-
-iEYEARECAAYFAlRLTsEACgkQitSsb3rl5xS41gCfe5RgJbgKM69ZWfC0jiGEMFXI
-H0cAoLemB8lQ0b5Ah6mfhO1ybwwndY4n
-=uZB9
------END PGP SIGNATURE-----
-
---GV8ueoQvis71bi2iteSPcmX3Khr4JStjO--
 
