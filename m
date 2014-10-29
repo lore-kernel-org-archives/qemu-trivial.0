@@ -1,42 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XjTh6-0005IE-Q6
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Oct 2014 09:53:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51048)
+	id 1XjUke-0001uJ-F7
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Oct 2014 11:01:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56216)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <amit.shah@redhat.com>) id 1XjSqY-00076l-5J
-	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 08:59:35 -0400
+	(envelope-from <armbru@redhat.com>) id 1XjUkX-0001co-PB
+	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 11:01:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <amit.shah@redhat.com>) id 1XjSqT-0000b0-Cf
-	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 08:59:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59519)
+	(envelope-from <armbru@redhat.com>) id 1XjUkS-0008Ul-UF
+	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 11:01:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50446)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <amit.shah@redhat.com>)
-	id 1XjSqJ-0000ZP-Gn; Wed, 29 Oct 2014 08:59:15 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9TCx9C4024136
+	(envelope-from <armbru@redhat.com>)
+	id 1XjUkJ-0008TD-0C; Wed, 29 Oct 2014 11:01:11 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9TF0ra4010857
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 29 Oct 2014 08:59:09 -0400
-Received: from localhost (ovpn-113-75.phx2.redhat.com [10.3.113.75])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s9TCx7vF025424; Wed, 29 Oct 2014 08:59:08 -0400
-Date: Wed, 29 Oct 2014 18:29:04 +0530
-From: Amit Shah <amit.shah@redhat.com>
-To: arei.gonglei@huawei.com
-Message-ID: <20141029125904.GC19598@grmbl.mre>
-References: <1414586983-10816-1-git-send-email-arei.gonglei@huawei.com>
+	verify=FAIL); Wed, 29 Oct 2014 11:00:54 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-26.ams2.redhat.com
+	[10.36.116.26])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9TF0p9m011770
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 29 Oct 2014 11:00:52 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id BF34D30403B0; Wed, 29 Oct 2014 16:00:50 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: <arei.gonglei@huawei.com>
+References: <1414578500-10048-1-git-send-email-arei.gonglei@huawei.com>
+Date: Wed, 29 Oct 2014 16:00:50 +0100
+In-Reply-To: <1414578500-10048-1-git-send-email-arei.gonglei@huawei.com> (arei
+	gonglei's message of "Wed, 29 Oct 2014 18:28:20 +0800")
+Message-ID: <87vbn2apjx.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1414586983-10816-1-git-send-email-arei.gonglei@huawei.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Wed, 29 Oct 2014 09:53:47 -0400
 Cc: qemu-trivial@nongnu.org, weidong.huang@huawei.com, qemu-devel@nongnu.org,
-	quintela@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] vl.c: Fix Coverity complaining for
-	vmstate_dump_file
+	lcapitulino@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] dump: fix use-after-free
+	for s->fd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,37 +53,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Oct 2014 12:59:35 -0000
+X-List-Received-Date: Wed, 29 Oct 2014 15:01:30 -0000
 
-On (Wed) 29 Oct 2014 [20:49:43], arei.gonglei@huawei.com wrote:
+<arei.gonglei@huawei.com> writes:
+
 > From: Gonglei <arei.gonglei@huawei.com>
-> 
-> commit abfd9ce3(migration: dump vmstate info as a json
-> file for static analysis) introduce a new command,
-> '-dump-vmstate', that takes a filename
-> as an argument.  When executed, QEMU will dump the vmstate information
-> for the machine type it's invoked with to the file, and quit.
-> 
-> Apparently, it supports one '-dump-vmstate' option,
-> otherwise, the vmstate_dump_file will be overwritten.
-
-Suggested re-wording of this para:
-
-However, only one instance of the -dump-vmstate option is supported.
-If more were given, the vmstate_dump_file could be overwritten.
-
-> Of course, the resource will be freed when Qemu quit, but The code logic
-> is not good, it will make Coverity complaining.
-
-Suggested re-wording:
-
-This fix also helps silence a Coverity error.
-
+>
+> After commit 4c7e251a (), when dump memory completed,
+> the s->fd will be closed twice. We should return
+> directly when dump completed.
+>
 > Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  dump.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/dump.c b/dump.c
+> index 06a4915..9d9a409 100644
+> --- a/dump.c
+> +++ b/dump.c
+> @@ -626,6 +626,7 @@ static void dump_iterate(DumpState *s, Error **errp)
+>          ret = get_next_block(s, block);
+>          if (ret == 1) {
+>              dump_completed(s);
+> +            return;
+>          }
+>      }
+>  }
 
-Reviewed-by: Amit Shah <amit.shah@redhat.com>
+What about less tortuous control structure?
 
-Thanks,
+    do {
+        block = s->next_block;
 
-		Amit
+        size = block->target_end - block->target_start;
+        if (s->has_filter) {
+            size -= s->start;
+            if (s->begin + s->length < block->target_end) {
+                size -= block->target_end - (s->begin + s->length);
+            }
+        }
+        write_memory(s, block, s->start, size, &local_err);
+        if (local_err) {
+            error_propagate(errp, local_err);
+            return;
+        }
+
+    } while (!get_next_block(s, block))
+
+    dump_completed();
+
+Makes the badly chosen return values of of get_next_block() more
+visible.  Easy enough to fix if it bothers you.
 
