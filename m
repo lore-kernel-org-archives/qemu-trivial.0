@@ -1,55 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XjSwT-00049l-MF
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Oct 2014 09:05:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52644)
+	id 1XjTh6-0005IE-Q6
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Oct 2014 09:53:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51048)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1XjSwL-0003vo-Ko
-	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 09:05:35 -0400
+	(envelope-from <amit.shah@redhat.com>) id 1XjSqY-00076l-5J
+	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 08:59:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1XjSwG-0002kj-7L
-	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 09:05:29 -0400
-Received: from mail-la0-x22e.google.com ([2a00:1450:4010:c03::22e]:54072)
+	(envelope-from <amit.shah@redhat.com>) id 1XjSqT-0000b0-Cf
+	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 08:59:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59519)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1XjSwF-0002kd-Ve; Wed, 29 Oct 2014 09:05:24 -0400
-Received: by mail-la0-f46.google.com with SMTP id hs14so2474364lab.19
-	for <multiple recipients>; Wed, 29 Oct 2014 06:05:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:newsgroups:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=ORqFoZI2c3X2hQx45WSUNexs7805ITTbgTUZDPTyFwY=;
-	b=qIh6FzkuXDZq46vA3marg6iFVAAPe6J654I+LwqYb8qLpAq8V3lk2rDwKVRZBbhbyq
-	SZtAZR/Bk681KFKURYFiepHq/Qd5oE/tgdOYyQ7QZA5N4yoJdR88K+6XOZpzy2IkRHlp
-	hVotnRAoukbOqHh2hej7Kxlw78syov1aiTJuB87pcnOXu098+9/mXuQCi4c9C2Z/5Fd1
-	Q27YMTKpLj8UDSKpRgWVzyf1ZEXD9cWQKWbWPrwzWHUzJJp0XK6y0iAlAMNmx38kwHrO
-	EhKTrEtEIhALyLgei0oZhIDOjgUPDYq7O7o18jgQAzZYgfJX4FZFh+WLP7z/9eAtD6Dh
-	JAQw==
-X-Received: by 10.112.141.104 with SMTP id rn8mr11254659lbb.87.1414587922705; 
-	Wed, 29 Oct 2014 06:05:22 -0700 (PDT)
-Received: from [192.168.10.150] (net-37-117-142-149.cust.vodafonedsl.it.
-	[37.117.142.149])
-	by mx.google.com with ESMTPSA id le9sm1926765lac.4.2014.10.29.06.05.18
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 29 Oct 2014 06:05:21 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <5450E60C.2020200@redhat.com>
-Date: Wed, 29 Oct 2014 14:05:16 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
-MIME-Version: 1.0
-Newsgroups: gmane.comp.emulators.qemu
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+	(envelope-from <amit.shah@redhat.com>)
+	id 1XjSqJ-0000ZP-Gn; Wed, 29 Oct 2014 08:59:15 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9TCx9C4024136
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Wed, 29 Oct 2014 08:59:09 -0400
+Received: from localhost (ovpn-113-75.phx2.redhat.com [10.3.113.75])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9TCx7vF025424; Wed, 29 Oct 2014 08:59:08 -0400
+Date: Wed, 29 Oct 2014 18:29:04 +0530
+From: Amit Shah <amit.shah@redhat.com>
+To: arei.gonglei@huawei.com
+Message-ID: <20141029125904.GC19598@grmbl.mre>
 References: <1414586983-10816-1-git-send-email-arei.gonglei@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <1414586983-10816-1-git-send-email-arei.gonglei@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c03::22e
-Cc: amit.shah@redhat.com, qemu-trivial@nongnu.org, weidong.huang@huawei.com,
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Wed, 29 Oct 2014 09:53:47 -0400
+Cc: qemu-trivial@nongnu.org, weidong.huang@huawei.com, qemu-devel@nongnu.org,
 	quintela@redhat.com
 Subject: Re: [Qemu-trivial] [PATCH] vl.c: Fix Coverity complaining for
 	vmstate_dump_file
@@ -64,9 +48,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Oct 2014 13:05:35 -0000
+X-List-Received-Date: Wed, 29 Oct 2014 12:59:35 -0000
 
-On 10/29/2014 01:49 PM, arei.gonglei@huawei.com wrote:
+On (Wed) 29 Oct 2014 [20:49:43], arei.gonglei@huawei.com wrote:
 > From: Gonglei <arei.gonglei@huawei.com>
 > 
 > commit abfd9ce3(migration: dump vmstate info as a json
@@ -77,34 +61,24 @@ On 10/29/2014 01:49 PM, arei.gonglei@huawei.com wrote:
 > 
 > Apparently, it supports one '-dump-vmstate' option,
 > otherwise, the vmstate_dump_file will be overwritten.
-> 
+
+Suggested re-wording of this para:
+
+However, only one instance of the -dump-vmstate option is supported.
+If more were given, the vmstate_dump_file could be overwritten.
+
 > Of course, the resource will be freed when Qemu quit, but The code logic
 > is not good, it will make Coverity complaining.
-> 
+
+Suggested re-wording:
+
+This fix also helps silence a Coverity error.
+
 > Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-> ---
->  vl.c | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/vl.c b/vl.c
-> index f6b3546..5ef3af9 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -3746,6 +3746,11 @@ int main(int argc, char **argv, char **envp)
->                  configure_msg(opts);
->                  break;
->              case QEMU_OPTION_dump_vmstate:
-> +                if (vmstate_dump_file) {
-> +                    fprintf(stderr, "qemu: only one '-dump-vmstate' "
-> +                            "option may be given\n");
-> +                    exit(1);
-> +                }
->                  vmstate_dump_file = fopen(optarg, "w");
->                  if (vmstate_dump_file == NULL) {
->                      fprintf(stderr, "open %s: %s\n", optarg, strerror(errno));
-> 
 
-Applied, thanks.
+Reviewed-by: Amit Shah <amit.shah@redhat.com>
 
-Paolo
+Thanks,
+
+		Amit
 
