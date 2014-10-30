@@ -1,50 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xjmwt-0003Sb-9u
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Oct 2014 06:27:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54905)
+	id 1XjnJd-00059b-FM
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Oct 2014 06:50:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35327)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1Xjmwn-0003Rr-3t
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 06:27:22 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XjnJW-00051b-Cp
+	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 06:50:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1Xjmwf-0005L6-7z
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 06:27:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47921)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XjnJR-0003hv-Vs
+	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 06:50:46 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:43318)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1Xjmwf-0005L2-0j; Thu, 30 Oct 2014 06:27:09 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9UAR30W028311
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 30 Oct 2014 06:27:03 -0400
-Received: from localhost (vpn1-114-233.nay.redhat.com [10.66.114.233])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s9UAQxhj017836; Thu, 30 Oct 2014 06:27:01 -0400
-Date: Thu, 30 Oct 2014 18:27:20 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Arthur Gautier <baloo@gandi.net>
-Message-ID: <20141030102720.GA29989@fam-t430.nay.redhat.com>
-References: <1413984320-28585-1-git-send-email-baloo@gandi.net>
-	<5448A656.6030204@msgid.tls.msk.ru>
-	<87egtzusaa.fsf@blackfin.pond.sub.org>
-	<20141028160041.GA3969@stefanha-thinkpad.redhat.com>
-	<20141029012852.GD5490@fam-t430.nay.redhat.com>
-	<20141030090919.GA10217@khany.gandi.net>
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XjnJR-0003KJ-8I; Thu, 30 Oct 2014 06:50:41 -0400
+Received: from 172.24.2.119 (EHLO szxeml421-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CBO86537; Thu, 30 Oct 2014 18:50:31 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml421-hub.china.huawei.com
+	(10.82.67.160) with Microsoft SMTP Server id 14.3.158.1;
+	Thu, 30 Oct 2014 18:50:24 +0800
+Message-ID: <545217EA.3070200@huawei.com>
+Date: Thu, 30 Oct 2014 18:50:18 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20141030090919.GA10217@khany.gandi.net>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
-	Stefan Hajnoczi <stefanha@gmail.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vmdk: Fix cylinders number
- during convert
+To: Markus Armbruster <armbru@redhat.com>
+References: <1414648877-13788-1-git-send-email-arei.gonglei@huawei.com>
+	<87a94e6ni4.fsf@blackfin.pond.sub.org>	<5451EBFB.1090407@msgid.tls.msk.ru>
+	<87wq7h3o7r.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87wq7h3o7r.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset="GB2312"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"lcapitulino@redhat.com" <lcapitulino@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] dump: fix use-after-free
+ for s->fd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,53 +54,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Oct 2014 10:27:22 -0000
+X-List-Received-Date: Thu, 30 Oct 2014 10:50:51 -0000
 
-On Thu, 10/30 10:09, Arthur Gautier wrote:
-> On Wed, Oct 29, 2014 at 09:28:52AM +0800, Fam Zheng wrote:
-> > On Tue, 10/28 16:00, Stefan Hajnoczi wrote:
-> > > On Thu, Oct 23, 2014 at 10:03:25AM +0200, Markus Armbruster wrote:
-> > > > Michael Tokarev <mjt@tls.msk.ru> writes:
-> > > > 
-> > > > > On 10/22/2014 05:25 PM, Arthur Gautier wrote:
-> > > > >> We can not rely on int cast to get a correct number of cylinders. The
-> > > > >> cylinders information was wrong in 49.9999% of cases.
-> > > > >> 
-> > > > >> This ensures the cylinders always gets the ceiling value.
-> > > > >
-> > > > > Good thing, especially the good probability :), and also a good patch
-> > > > > which comes with a test.
-> > > > >
-> > > > > But I wonder if anything can break this way?  Migration, windows guest
-> > > > > being unable to find its partitions, something else?
-> > 
-> > I'd like to hear an answer to this question too, so we know why it's right and
-> > worth to have.
-> > 
-> Sincerely, I didn't tried myself.
+On 2014/10/30 17:23, Markus Armbruster wrote:
+
+> Michael Tokarev <mjt@tls.msk.ru> writes:
 > 
-> > > > >
-> > > > > And more.  What-if our drive size in cylinders will be larger than
-> > > > > the size in bytes?  The proposed div_round_up() will increase number
-> > > > > of cylinders, so size in CHS will be larger than size in bytes.  Maybe
-> > > > > there was a reason why originally the size in cylinders was calculated
-> > > > > by truncating extra fractional part?  What-if guest will try to access
-> > > > > the very last CHS which is incomplete?
-> > 
-> > I don't remember a reason why truncating (I doubt there is any), OTOH I'm not
-> > sure what is the right thing to do if the guest tries to write to the last
-> > incomplete CHS either.
-> > 
-> > Fam
+>> 30.10.2014 10:10, Markus Armbruster wrote:
+>>> <arei.gonglei@huawei.com> writes:
+>>>
+>>>> From: Gonglei <arei.gonglei@huawei.com>
+>>>>
+>>>> After commit 4c7e251a (), when dump memory completed,
+>>>> the s->fd will be closed twice. We should return
+>>>> directly when dump completed.
+>>>>
+>>>> Using do/while block, make the badly chosen return
+>>>> values of get_next_block() more visible and fix
+>>>> this issue.
+>>>>
+>>>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>>>
+>>> I'm afraid the commit message is a bit misleading.  Let's examine what
+>>> exactly happens.
+>>>
+>>> dump_iterate() dumps blocks in a loop.  Eventually, get_next_block()
+>>> returns "no more".  We then call dump_completed().  But we neglect to
+>>> break the loop!  Broken in commit 4c7e251a.
+>>>
+>>> Because of that, we dump the last block again.  This attempts to write
+>>> to s->fd, which fails if we're lucky.  The error makes dump_iterate()
+>>> return unsuccessfully.  It's the only way it can ever return.
+>>>
+>>> Theoretical: if we're not so lucky, something else has opened something
+>>> for writing and got the same fd.  dump_iterate() then keeps looping,
+>>> messing up the something else's output, until a write fails, or the
+>>> process mercifully terminates.
+>>>
+>>> Is this correct?
+>>
+>> Heh.  I was starring at all this last 20 minutes, re-reading the
+>> original v1 patch and your (Marcus) followup suggestion, trying to
+>> match the commit description with the actual happening and with the
+>> "no return" case which was before this patch.  Oh well.
+>>
+>> Yes, this looks correct indeed, we come to the same conclusion.
+>> But at this stage I really wonder if this is a -trivial material.
 > 
-> Maybe we can expand the disk to the size matching cylinders * sectors *
-> sector_size and issue a warning to the user? This way it will always be
-> safe.
+> Distinguished old math professor does a proof on the blackboard.  At
+> some point he faces the audience and says "this is trivial".  Faces
+> blackboard, pauses.  "Is it trivial?"  Pauses again.  Storms out of the
+> classroom.  After ten minutes, he comes back and exclaims "it *is*
+> trivial!"
 > 
 
-Possible, but I don't know if it's worth it. Could you explain what doesn't
-work now, in order to show *why* you need this change?
+:)
 
-Thanks,
-Fam
+>> (I can apply it to -trivial because no maintainer is listed for
+>> this file and because after some digging it becomes obvious).
+> 
+> Appreciated!
+
+Do I need to send v3 for changing commit message, or
+/mjt do it directly? Thanks
+
+Best regards,
+-Gonglei
+
 
