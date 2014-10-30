@@ -1,36 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XkEAp-0001fI-Ga
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:31:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50797)
+	id 1XkEO1-0006yS-QD
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:45:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48605)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1XkE9p-0005k4-Qb
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:31:32 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XkENF-0003SM-5s
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:45:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1Xjv9T-0005tv-2r
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 15:13:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60015)
+	(envelope-from <mjt@tls.msk.ru>) id 1XjrJz-00031d-0S
+	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 11:07:35 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42242)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1Xjv9M-0005lR-Mq; Thu, 30 Oct 2014 15:12:48 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9UJClP0021644
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 30 Oct 2014 15:12:47 -0400
-Received: from localhost (ovpn-113-184.phx2.redhat.com [10.3.113.184])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s9UJCjgb004511; Thu, 30 Oct 2014 15:12:46 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Thu, 30 Oct 2014 17:12:33 -0200
-Message-Id: <1414696353-23605-1-git-send-email-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XjrJp-0002ps-SF; Thu, 30 Oct 2014 11:07:22 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 97F4A46FCC;
+	Thu, 30 Oct 2014 18:07:19 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 7E47B703;
+	Thu, 30 Oct 2014 18:07:19 +0300 (MSK)
+Received: (nullmailer pid 26093 invoked by uid 1000);
+	Thu, 30 Oct 2014 15:07:18 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-trivial@nongnu.org
+Date: Thu, 30 Oct 2014 18:07:16 +0300
+Message-Id: <dc4522b965468522221bd08231b169b1a3e28c69.1414681502.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <cover.1414681502.git.mjt@msgid.tls.msk.ru>
+References: <cover.1414681502.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1414681502.git.mjt@msgid.tls.msk.ru>
+References: <cover.1414681502.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [Qemu-trivial] [PATCH] target-i386: Remove unused model_features_t
-	struct
+X-Received-From: 86.62.121.231
+Cc: Gonglei <arei.gonglei@huawei.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Subject: [Qemu-trivial] [PATCH 3/4] pidfile: stop making pidfile error a
+	special case
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,35 +46,119 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Oct 2014 15:31:33 -0000
+X-List-Received-Date: Fri, 31 Oct 2014 15:45:13 -0000
 
-The struct is not used anymore and can be removed.
+In case of -daemonize, we write non-zero to the daemon
+pipe only if pidfile creation failed, so the parent will
+report error about pidfile problem.  There's no need to
+make special case for this, since all other errors are
+reported by the child just fine.  Let the parent report
+error and simplify logic in os_daemonize().
 
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+This way, we don't need os_pidfile_error() function, since
+it only prints error now, so put the error reporting printf
+into the only place where qemu_create_pidfile() is called,
+in vl.c.
+
+While at it, fix wrong identation in os_daemonize().
+
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- target-i386/cpu.c | 8 --------
- 1 file changed, 8 deletions(-)
+ include/qemu-common.h |    1 -
+ os-posix.c            |   29 ++++++-----------------------
+ os-win32.c            |    5 -----
+ vl.c                  |    2 +-
+ 4 files changed, 7 insertions(+), 30 deletions(-)
 
-diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-index e194601..e4ccee1 100644
---- a/target-i386/cpu.c
-+++ b/target-i386/cpu.c
-@@ -442,14 +442,6 @@ const char *get_register_name_32(unsigned int reg)
-     return x86_reg_info_32[reg].name;
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index b87e9c2..f862214 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -357,7 +357,6 @@ char *qemu_find_file(int type, const char *name);
+ void os_setup_early_signal_handling(void);
+ char *os_find_datadir(void);
+ void os_parse_cmd_args(int index, const char *optarg);
+-void os_pidfile_error(void);
+ 
+ /* Convert a byte between binary and BCD.  */
+ static inline uint8_t to_bcd(uint8_t val)
+diff --git a/os-posix.c b/os-posix.c
+index eada8d4..a3b96d9 100644
+--- a/os-posix.c
++++ b/os-posix.c
+@@ -221,18 +221,12 @@ void os_daemonize(void)
+             do {
+                 len = read(fds[0], &status, 1);
+             } while (len < 0 && errno == EINTR);
+-            if (len != 1) {
+-                exit(1);
+-            }
+-            else if (status == 1) {
+-                fprintf(stderr, "Could not acquire pidfile\n");
+-                exit(1);
+-            } else {
+-                exit(0);
+-            }
+-            } else if (pid < 0) {
+-                exit(1);
+-            }
++
++            exit(len == 1 && status == 0 ? 0 : 1);
++
++        } else if (pid < 0) {
++            exit(1);
++        }
+ 
+         close(fds[0]);
+         daemon_pipe = fds[1];
+@@ -290,17 +284,6 @@ void os_setup_post(void)
+     }
  }
  
--/* collects per-function cpuid data
-- */
--typedef struct model_features_t {
--    uint32_t *guest_feat;
--    uint32_t *host_feat;
--    FeatureWord feat_word;
--} model_features_t;
+-void os_pidfile_error(void)
+-{
+-    if (daemonize) {
+-        uint8_t status = 1;
+-        if (write(daemon_pipe, &status, 1) != 1) {
+-            perror("daemonize. Writing to pipe\n");
+-        }
+-    } else
+-        fprintf(stderr, "Could not acquire pid file: %s\n", strerror(errno));
+-}
 -
- /* KVM-specific features that are automatically added to all CPU models
-  * when KVM is enabled.
-  */
+ void os_set_line_buffering(void)
+ {
+     setvbuf(stdout, NULL, _IOLBF, 0);
+diff --git a/os-win32.c b/os-win32.c
+index 5f95caa..c0daf8e 100644
+--- a/os-win32.c
++++ b/os-win32.c
+@@ -104,11 +104,6 @@ void os_parse_cmd_args(int index, const char *optarg)
+     return;
+ }
+ 
+-void os_pidfile_error(void)
+-{
+-    fprintf(stderr, "Could not acquire pid file: %s\n", strerror(errno));
+-}
+-
+ int qemu_create_pidfile(const char *filename)
+ {
+     char buffer[128];
+diff --git a/vl.c b/vl.c
+index f6b3546..150524c 100644
+--- a/vl.c
++++ b/vl.c
+@@ -3999,7 +3999,7 @@ int main(int argc, char **argv, char **envp)
+ #endif
+ 
+     if (pid_file && qemu_create_pidfile(pid_file) != 0) {
+-        os_pidfile_error();
++        fprintf(stderr, "Could not acquire pid file: %s\n", strerror(errno));
+         exit(1);
+     }
+ 
 -- 
-1.9.3
+1.7.10.4
 
 
