@@ -1,51 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xje1W-0003Vd-ME
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Oct 2014 20:55:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46654)
+	id 1Xjf6P-0004Pl-9J
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Oct 2014 22:04:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58853)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xje1Q-0003UV-Ak
-	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 20:55:33 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xjf6J-0004OR-9u
+	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 22:04:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xje1L-0006Z2-Fv
-	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 20:55:28 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:40838)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xjf6C-0001bZ-4m
+	for qemu-trivial@nongnu.org; Wed, 29 Oct 2014 22:04:35 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:17618)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Xje1K-0006Yd-R4; Wed, 29 Oct 2014 20:55:23 -0400
-Received: from 172.24.2.119 (EHLO SZXEML414-HUB.china.huawei.com)
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1Xjf6B-0001ZT-3B; Wed, 29 Oct 2014 22:04:28 -0400
+Received: from 172.24.2.119 (EHLO szxeml423-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id AWI15660; Thu, 30 Oct 2014 08:55:12 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by SZXEML414-HUB.china.huawei.com
-	(10.82.67.153) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 30 Oct 2014 08:55:05 +0800
-Message-ID: <54518C61.9020405@huawei.com>
-Date: Thu, 30 Oct 2014 08:54:57 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	with ESMTP id AWI23901; Thu, 30 Oct 2014 10:04:21 +0800 (CST)
+Received: from localhost (10.177.22.69) by szxeml423-hub.china.huawei.com
+	(10.82.67.162) with Microsoft SMTP Server id 14.3.158.1;
+	Thu, 30 Oct 2014 10:03:54 +0800
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+To: <qemu-trivial@nongnu.org>
+Date: Thu, 30 Oct 2014 10:03:28 +0800
+Message-ID: <1414634608-31292-1-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Mailer: git-send-email 1.9.2.msysgit.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1414578500-10048-1-git-send-email-arei.gonglei@huawei.com>
-	<87vbn2apjx.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87vbn2apjx.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="GB2312"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
+Content-Type: text/plain
+X-Originating-IP: [10.177.22.69]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020204.54518C71.01C2, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020207.54519CA5.0105, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 9aea5465f63276f3da9db40b1e859d26
+X-Mirapoint-Loop-Id: a37866ab66890c5f2f7d093c92cac790
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.66
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"Huangweidong \(C\)" <weidong.huang@huawei.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"lcapitulino@redhat.com" <lcapitulino@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] dump: fix use-after-free
-	for s->fd
+Cc: kbastian@mail.uni-paderborn.de,
+	zhanghailiang <zhang.zhanghailiang@huawei.com>,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: [Qemu-trivial] [PATCH] target-tricore: check return value before
+	using it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,64 +51,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Oct 2014 00:55:33 -0000
+X-List-Received-Date: Thu, 30 Oct 2014 02:04:40 -0000
 
-On 2014/10/29 23:00, Markus Armbruster wrote:
+We reference the return value of cpu before checking whether it is NULL,
+The checking code is after that which violates code style.
 
-> <arei.gonglei@huawei.com> writes:
-> 
->> From: Gonglei <arei.gonglei@huawei.com>
->>
->> After commit 4c7e251a (), when dump memory completed,
->> the s->fd will be closed twice. We should return
->> directly when dump completed.
->>
->> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
->> ---
->>  dump.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/dump.c b/dump.c
->> index 06a4915..9d9a409 100644
->> --- a/dump.c
->> +++ b/dump.c
->> @@ -626,6 +626,7 @@ static void dump_iterate(DumpState *s, Error **errp)
->>          ret = get_next_block(s, block);
->>          if (ret == 1) {
->>              dump_completed(s);
->> +            return;
->>          }
->>      }
->>  }
-> 
-> What about less tortuous control structure?
-> 
->     do {
->         block = s->next_block;
-> 
->         size = block->target_end - block->target_start;
->         if (s->has_filter) {
->             size -= s->start;
->             if (s->begin + s->length < block->target_end) {
->                 size -= block->target_end - (s->begin + s->length);
->             }
->         }
->         write_memory(s, block, s->start, size, &local_err);
->         if (local_err) {
->             error_propagate(errp, local_err);
->             return;
->         }
-> 
->     } while (!get_next_block(s, block))
-> 
->     dump_completed();
-> 
-> Makes the badly chosen return values of of get_next_block() more
-> visible.  Easy enough to fix if it bothers you.
+It makes no difference if the cpu is NULL, qemu process will terminate.
+But one will be 'Segmentation fault' and the other will report a error
+which is what we want.
 
-Looks better. v2 will be posted, thanks :)
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+---
+ hw/tricore/tricore_testboard.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Best regards,
--Gonglei
+diff --git a/hw/tricore/tricore_testboard.c b/hw/tricore/tricore_testboard.c
+index eeb4922..a059a20 100644
+--- a/hw/tricore/tricore_testboard.c
++++ b/hw/tricore/tricore_testboard.c
+@@ -71,11 +71,11 @@ static void tricore_testboard_init(MachineState *machine, int board_id)
+         machine->cpu_model = "tc1796";
+     }
+     cpu = cpu_tricore_init(machine->cpu_model);
+-    env = &cpu->env;
+     if (!cpu) {
+         error_report("Unable to find CPU definition");
+         exit(1);
+     }
++    env = &cpu->env;
+     memory_region_init_ram(ext_cram, NULL, "powerlink_ext_c.ram", 2*1024*1024, &error_abort);
+     vmstate_register_ram_global(ext_cram);
+     memory_region_init_ram(ext_dram, NULL, "powerlink_ext_d.ram", 4*1024*1024, &error_abort);
+-- 
+1.7.12.4
+
 
 
