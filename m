@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XjioE-0000zr-Tb
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Oct 2014 02:02:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50785)
+	id 1Xjjip-0003Lc-Gb
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Oct 2014 03:00:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59555)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xjio7-0000pQ-Ev
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 02:02:08 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Xjjih-0003D2-V3
+	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 03:00:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xjio2-0001Ue-HN
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 02:02:03 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:20107)
+	(envelope-from <mjt@tls.msk.ru>) id 1XjjiV-0001X4-Fp
+	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 03:00:31 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:52089)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Xjinr-0001PS-6a; Thu, 30 Oct 2014 02:01:48 -0400
-Received: from 172.24.2.119 (EHLO szxeml451-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id AWI50092; Thu, 30 Oct 2014 14:01:37 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml451-hub.china.huawei.com
-	(10.82.67.194) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 30 Oct 2014 14:01:26 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 30 Oct 2014 14:01:17 +0800
-Message-ID: <1414648877-13788-1-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Xjji8-000111-MM; Thu, 30 Oct 2014 02:59:56 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id ABD3646E67;
+	Thu, 30 Oct 2014 09:59:45 +0300 (MSK)
+Message-ID: <5451E1E1.3020306@msgid.tls.msk.ru>
+Date: Thu, 30 Oct 2014 09:59:45 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.8.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A02020A.5451D443.000F, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: b35a3104f56e23e0d4e572b4a2275743
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, armbru@redhat.com,
-	Gonglei <arei.gonglei@huawei.com>, peter.huangpeng@huawei.com,
-	lcapitulino@redhat.com
-Subject: [Qemu-trivial] [PATCH v2] dump: fix use-after-free for s->fd
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ qemu-trivial@nongnu.org
+References: <1414634608-31292-1-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1414634608-31292-1-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: kbastian@mail.uni-paderborn.de, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH] target-tricore: check return value
+ before using it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,61 +47,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Oct 2014 06:02:08 -0000
+X-List-Received-Date: Thu, 30 Oct 2014 07:00:38 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+30.10.2014 05:03, zhanghailiang wrote:
+> We reference the return value of cpu before checking whether it is NULL,
+> The checking code is after that which violates code style.
 
-After commit 4c7e251a (), when dump memory completed,
-the s->fd will be closed twice. We should return
-directly when dump completed.
+Applied, thanks!
 
-Using do/while block, make the badly chosen return
-values of get_next_block() more visible and fix
-this issue.
-
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
----
-v2 -> v1:
-Using do/while block, make the badly chosen return
-values of get_next_block() more visible and fix
-this issue. (Markus)
----
- dump.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
-
-diff --git a/dump.c b/dump.c
-index 06a4915..9c7dad8 100644
---- a/dump.c
-+++ b/dump.c
-@@ -604,10 +604,9 @@ static void dump_iterate(DumpState *s, Error **errp)
- {
-     GuestPhysBlock *block;
-     int64_t size;
--    int ret;
-     Error *local_err = NULL;
- 
--    while (1) {
-+    do {
-         block = s->next_block;
- 
-         size = block->target_end - block->target_start;
-@@ -623,11 +622,9 @@ static void dump_iterate(DumpState *s, Error **errp)
-             return;
-         }
- 
--        ret = get_next_block(s, block);
--        if (ret == 1) {
--            dump_completed(s);
--        }
--    }
-+    } while (!get_next_block(s, block));
-+
-+    dump_completed(s);
- }
- 
- static void create_vmcore(DumpState *s, Error **errp)
--- 
-1.7.12.4
-
-
+/mjt
 
