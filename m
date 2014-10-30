@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XkEO7-00077q-Rv
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:45:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43921)
+	id 1XkEOL-0007U8-V6
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:45:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50444)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XkENF-0005Qi-5R
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:45:17 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XkENE-0005NI-Cq
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:45:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XjrJy-00031W-QJ
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 11:07:35 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52545)
+	(envelope-from <mjt@tls.msk.ru>) id 1XjrK2-00032i-1X
+	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 11:07:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:49303)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XjrJp-0002oN-Sd; Thu, 30 Oct 2014 11:07:22 -0400
+	id 1XjrJp-0002oO-Sg; Thu, 30 Oct 2014 11:07:22 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2785D46FC9;
+	by isrv.corpit.ru (Postfix) with ESMTP id 7ADB946FCB;
 	Thu, 30 Oct 2014 18:07:19 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 08417703;
+	by tsrv.corpit.ru (Postfix) with SMTP id 60CA9702;
 	Thu, 30 Oct 2014 18:07:19 +0300 (MSK)
-Received: (nullmailer pid 26088 invoked by uid 1000);
+Received: (nullmailer pid 26095 invoked by uid 1000);
 	Thu, 30 Oct 2014 15:07:18 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-trivial@nongnu.org
-Date: Thu, 30 Oct 2014 18:07:14 +0300
-Message-Id: <6b6f5fbff3574bffafe4204d2153258fc4440120.1414681502.git.mjt@msgid.tls.msk.ru>
+Date: Thu, 30 Oct 2014 18:07:17 +0300
+Message-Id: <7bdebf1bc921df74cb0edc42d2ea77cda220074c.1414681502.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <cover.1414681502.git.mjt@msgid.tls.msk.ru>
 References: <cover.1414681502.git.mjt@msgid.tls.msk.ru>
@@ -33,8 +33,8 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: Gonglei <arei.gonglei@huawei.com>, Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PATCH 1/4] os-posix: use global daemon_pipe instead
-	of cryptic fds[1]
+Subject: [Qemu-trivial] [PATCH 4/4] os-posix: reorder parent notification
+	for -daemonize
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,69 +46,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Oct 2014 15:45:18 -0000
+X-List-Received-Date: Fri, 31 Oct 2014 15:45:31 -0000
 
-When asked to -daemonize, we fork a child and setup a pipe between
-it and parent to pass exit status.  os-posix.c used global fds[2]
-array for that, but actually only the writing side of the pipe is
-needed to be global, and this name is really too generic.  Use
-just one interger for the writing side of the pipe, and name it
-daemon_pipe to be more understandable than cryptic fds[1].
+Put "success" parent reporting in os_setup_post() to after
+all other initializers which may also fail, to the very end,
+so more possible failure cases are reported properly to the
+calling process.
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- os-posix.c |   10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ os-posix.c |   19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
 
 diff --git a/os-posix.c b/os-posix.c
-index e31a099..d687896 100644
+index a3b96d9..9f4a9b3 100644
 --- a/os-posix.c
 +++ b/os-posix.c
-@@ -47,7 +47,7 @@
- static struct passwd *user_pwd;
- static const char *chroot_dir;
- static int daemonize;
--static int fds[2];
-+static int daemon_pipe;
+@@ -253,15 +253,6 @@ void os_setup_post(void)
+     int fd = 0;
  
- void os_setup_early_signal_handling(void)
- {
-@@ -205,6 +205,7 @@ void os_daemonize(void)
- {
      if (daemonize) {
-         pid_t pid;
-+        int fds[2];
- 
-         if (pipe(fds) == -1) {
+-        uint8_t status = 0;
+-        ssize_t len;
+-
+-        do {        
+-            len = write(daemon_pipe, &status, 1);
+-        } while (len < 0 && errno == EINTR);
+-        if (len != 1) {
+-            exit(1);
+-        }
+         if (chdir("/")) {
+             perror("not able to chdir to /");
              exit(1);
-@@ -236,7 +237,8 @@ void os_daemonize(void)
-             }
+@@ -276,11 +267,21 @@ void os_setup_post(void)
+     change_process_uid();
  
-         close(fds[0]);
--        qemu_set_cloexec(fds[1]);
-+        daemon_pipe = fds[1];
-+        qemu_set_cloexec(daemon_pipe);
- 
-         setsid();
- 
-@@ -263,7 +265,7 @@ void os_setup_post(void)
-         ssize_t len;
- 
-     again1:
--        len = write(fds[1], &status, 1);
-+        len = write(daemon_pipe, &status, 1);
-         if (len == -1 && (errno == EINTR)) {
-             goto again1;
-         }
-@@ -296,7 +298,7 @@ void os_pidfile_error(void)
- {
      if (daemonize) {
-         uint8_t status = 1;
--        if (write(fds[1], &status, 1) != 1) {
-+        if (write(daemon_pipe, &status, 1) != 1) {
-             perror("daemonize. Writing to pipe\n");
-         }
-     } else
++        uint8_t status = 0;
++        ssize_t len;
++
+         dup2(fd, 0);
+         dup2(fd, 1);
+         dup2(fd, 2);
+ 
+         close(fd);
++
++        do {        
++            len = write(daemon_pipe, &status, 1);
++        } while (len < 0 && errno == EINTR);
++        if (len != 1) {
++            exit(1);
++        }
+     }
+ }
+ 
 -- 
 1.7.10.4
 
