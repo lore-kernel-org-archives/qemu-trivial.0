@@ -1,40 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xjkhw-000381-JN
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Oct 2014 04:03:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43732)
+	id 1Xjkkh-0004XU-9e
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Oct 2014 04:06:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44488)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xjkhp-0002vr-Ie
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 04:03:46 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Xjkkb-0004Oi-VE
+	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 04:06:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xjkhk-0003h4-NO
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 04:03:41 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:33788)
+	(envelope-from <mjt@tls.msk.ru>) id 1XjkkX-0004TJ-2t
+	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 04:06:33 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:32831)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xjkha-0003cO-5G; Thu, 30 Oct 2014 04:03:26 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8348946E98;
-	Thu, 30 Oct 2014 11:03:24 +0300 (MSK)
-Message-ID: <5451F0CC.3030100@msgid.tls.msk.ru>
-Date: Thu, 30 Oct 2014 11:03:24 +0300
+	id 1XjkkM-0004SX-VW; Thu, 30 Oct 2014 04:06:19 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 5882546E98;
+	Thu, 30 Oct 2014 11:06:18 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 42777701;
+	Thu, 30 Oct 2014 11:06:18 +0300 (MSK)
+Received: (nullmailer pid 10100 invoked by uid 1000);
+	Thu, 30 Oct 2014 08:06:18 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.8.1
-MIME-Version: 1.0
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
-References: <1414579937-1064-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1414579937-1064-1-git-send-email-arei.gonglei@huawei.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Thu, 30 Oct 2014 11:06:18 +0300
+Message-Id: <1414656378-10064-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, weidong.huang@huawei.com,
-	aneesh.kumar@linux.vnet.ibm.com, mst@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] virtio-9p-proxy: Fix sockfd leak and
- modify the check logic
+Cc: qemu-trivial@nongnu.org, arei.gonglei@huawei.com,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PATCH] virtio-9p-proxy: improve error messages in
+	connect_namedsocket()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,116 +42,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Oct 2014 08:03:47 -0000
-
-29.10.2014 13:52, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
-> 
-> If connect() return false, the sockfd will leak,
-> meanwhile proxy_init() can't check the return value
-> of connect_namedsocket(), maybe cause unpredictable
-> results.
-> 
-> Let's move the sock_id check logic out, which can
-> check both if and else statements.
-> 
-> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-> ---
->  hw/9pfs/virtio-9p-proxy.c | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
-> index b57966d..1c3aa5f 100644
-> --- a/hw/9pfs/virtio-9p-proxy.c
-> +++ b/hw/9pfs/virtio-9p-proxy.c
-> @@ -1112,6 +1112,7 @@ static int connect_namedsocket(const char *path)
->      size = strlen(helper.sun_path) + sizeof(helper.sun_family);
->      if (connect(sockfd, (struct sockaddr *)&helper, size) < 0) {
->          fprintf(stderr, "socket error\n");
-> +        close(sockfd);
->          return -1;
->      }
->  
-> @@ -1152,11 +1153,12 @@ static int proxy_init(FsContext *ctx)
->          sock_id = connect_namedsocket(ctx->fs_root);
->      } else {
->          sock_id = atoi(ctx->fs_root);
-> -        if (sock_id < 0) {
-> -            fprintf(stderr, "socket descriptor not initialized\n");
-> -            g_free(proxy);
-> -            return -1;
-> -        }
-> +    }
-> +
-> +    if (sock_id < 0) {
-> +        fprintf(stderr, "socket descriptor not initialized\n");
-> +        g_free(proxy);
-> +        return -1;
->      }
->      g_free(ctx->fs_root);
->      ctx->fs_root = NULL;
-
-
-Um. I'm applying 2 patches instead of this one.  First:
-
-
-
-virtio-9p-proxy: Fix sockfd leak
-
-If connect() in connect_namedsocket() return false, the sockfd will leak.
-Plug it.
+X-List-Received-Date: Thu, 30 Oct 2014 08:06:38 -0000
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ hw/9pfs/virtio-9p-proxy.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
-index b57966d..e6bbb06 100644
+index 2ec211b..59c7445 100644
 --- a/hw/9pfs/virtio-9p-proxy.c
 +++ b/hw/9pfs/virtio-9p-proxy.c
-@@ -1112,6 +1112,7 @@ static int connect_namedsocket(const char *path)
-     size = strlen(helper.sun_path) + sizeof(helper.sun_family);
-     if (connect(sockfd, (struct sockaddr *)&helper, size) < 0) {
-         fprintf(stderr, "socket error\n");
-+        close(sockfd);
+@@ -1104,14 +1104,14 @@ static int connect_namedsocket(const char *path)
+ 
+     sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+     if (sockfd < 0) {
+-        fprintf(stderr, "socket %s\n", strerror(errno));
++        fprintf(stderr, "failed to create socket: %s\n", strerror(errno));
          return -1;
      }
-
-
-
-And second.  Note the slight change in logic and error messages
-compared with your version - there's no need to print error
-message twice if connect_namedsocket() returned -1 (it already
-printed error message).
-
-virtio-9p-proxy: fix error return in proxy_init()
-
-proxy_init() does not check the return value of connect_namedsocket(),
-fix this by rearranging code a little bit.
-
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-
-diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
-index e6bbb06..2ec211b 100644
---- a/hw/9pfs/virtio-9p-proxy.c
-+++ b/hw/9pfs/virtio-9p-proxy.c
-@@ -1155,10 +1155,12 @@ static int proxy_init(FsContext *ctx)
-         sock_id = atoi(ctx->fs_root);
-         if (sock_id < 0) {
-             fprintf(stderr, "socket descriptor not initialized\n");
--            g_free(proxy);
--            return -1;
-         }
+     strcpy(helper.sun_path, path);
+     helper.sun_family = AF_UNIX;
+     size = strlen(helper.sun_path) + sizeof(helper.sun_family);
+     if (connect(sockfd, (struct sockaddr *)&helper, size) < 0) {
+-        fprintf(stderr, "socket error\n");
++        fprintf(stderr, "failed to connect to %s: %s\n", path, strerror(errno));
+         close(sockfd);
+         return -1;
      }
-+    if (sock_id < 0) {
-+        g_free(proxy);
-+        return -1;
-+    }
-     g_free(ctx->fs_root);
-     ctx->fs_root = NULL;
+-- 
+1.7.10.4
 
-
-And I'll immediately send another followup patch to improve
-error messages in connect_namedsocket(), -- these are awful.
-
-/mjt
 
