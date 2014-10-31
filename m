@@ -1,49 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XkDt5-0005bH-Kk
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:13:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42685)
+	id 1XkDuL-0000nz-F8
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:14:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34537)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XkDs0-0003aK-Ak
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:13:14 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XkDsm-0000qf-PU
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:14:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xk6pT-0006ur-WA
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 03:41:11 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:38545)
+	(envelope-from <mjt@tls.msk.ru>) id 1Xk6Rm-0005Xo-PR
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 03:16:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:45488)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Xk6pT-0006tx-9s; Fri, 31 Oct 2014 03:41:03 -0400
-Received: from 172.24.2.119 (EHLO SZXEML458-HUB.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CBQ19971; Fri, 31 Oct 2014 15:40:58 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by SZXEML458-HUB.china.huawei.com
-	(10.82.67.201) with Microsoft SMTP Server id 14.3.158.1;
-	Fri, 31 Oct 2014 15:40:49 +0800
-Message-ID: <54533CEE.8070408@huawei.com>
-Date: Fri, 31 Oct 2014 15:40:30 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Xk6Rh-0005JJ-GT; Fri, 31 Oct 2014 03:16:29 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 22B87470FA;
+	Fri, 31 Oct 2014 10:16:19 +0300 (MSK)
+Message-ID: <54533742.1000109@msgid.tls.msk.ru>
+Date: Fri, 31 Oct 2014 10:16:18 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:24.0) Gecko/20100101 Icedove/24.8.1
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1414648877-13788-1-git-send-email-arei.gonglei@huawei.com>
-	<87a94e6ni4.fsf@blackfin.pond.sub.org>
-	<54524324.9070202@msgid.tls.msk.ru> <5452E943.1050303@huawei.com>
-	<545337DB.4090505@msgid.tls.msk.ru>
-In-Reply-To: <545337DB.4090505@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="ISO-8859-1"
+To: Gonglei <arei.gonglei@huawei.com>
+References: <cover.1414681502.git.mjt@msgid.tls.msk.ru>
+	<dc4522b965468522221bd08231b169b1a3e28c69.1414681502.git.mjt@msgid.tls.msk.ru>
+	<5453178B.2040504@huawei.com>
+In-Reply-To: <5453178B.2040504@huawei.com>
+X-Enigmail-Version: 1.6
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
 Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
-	"lcapitulino@redhat.com" <lcapitulino@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] dump: fix use-after-free
- for s->fd
+	Markus Armbruster <armbru@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH 3/4] pidfile: stop making pidfile error a
+	special case
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,33 +49,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Oct 2014 15:13:14 -0000
+X-List-Received-Date: Fri, 31 Oct 2014 15:14:31 -0000
 
-On 2014/10/31 15:18, Michael Tokarev wrote:
-
-> 31.10.2014 04:43, Gonglei wrote:
->> On 2014/10/30 21:54, Michael Tokarev wrote:
->>
->>> So I'm applying this -- which is your patch and your commit message, and
->>> I really wonder why this is Reviewed-by and not Signed-off-by, with your
->>> authorship?  It really should be...
->>
->> Yes, maybe it should be. But I have to say something:
->> First, I posted a patch fix the fd leak problem. Markus reviewed it and gave
->> his reviewing comments which I think is better, and then I posted
->> the version 2 with Markus' suggestion. As your meaning, I should add the
->> Signed-off-by tag of Markus? But for me, I don't get Markus' authorization,
->> so I can't do this, and maybe he have other comments for version 2.
+31.10.2014 08:00, Gonglei wrote:
+> On 2014/10/30 23:07, Michael Tokarev wrote:
 > 
-> Um.  I didn't want to offend you in any way.  I was just pointing out that
-> it was actually Marcus who did the rest of the work, besides discovering the
-> original problem.  Again, it is both his change and his commit message...
+>> In case of -daemonize, we write non-zero to the daemon
+>> pipe only if pidfile creation failed, so the parent will
+>> report error about pidfile problem.  There's no need to
+>> make special case for this, since all other errors are
+>> reported by the child just fine.  Let the parent report
+>> error and simplify logic in os_daemonize().
+>>
+>> This way, we don't need os_pidfile_error() function, since
+>> it only prints error now, so put the error reporting printf
+>> into the only place where qemu_create_pidfile() is called,
+>> in vl.c.
+>>
+>> While at it, fix wrong identation in os_daemonize().
 > 
-> Let's agree to have Signed-off-by from both of you ;)
+> s/identation/identification/
 
-Yes, of course.
+No, the original word was the right one.
 
-Best regards,
--Gonglei
+>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+>> ---
+>>  include/qemu-common.h |    1 -
+>>  os-posix.c            |   29 ++++++-----------------------
+>>  os-win32.c            |    5 -----
+>>  vl.c                  |    2 +-
+>>  4 files changed, 7 insertions(+), 30 deletions(-)
+>>
+>> diff --git a/include/qemu-common.h b/include/qemu-common.h
+>> index b87e9c2..f862214 100644
+>> --- a/include/qemu-common.h
+>> +++ b/include/qemu-common.h
+>> @@ -357,7 +357,6 @@ char *qemu_find_file(int type, const char *name);
+>>  void os_setup_early_signal_handling(void);
+>>  char *os_find_datadir(void);
+>>  void os_parse_cmd_args(int index, const char *optarg);
+>> -void os_pidfile_error(void);
+>>  
+>>  /* Convert a byte between binary and BCD.  */
+>>  static inline uint8_t to_bcd(uint8_t val)
+>> diff --git a/os-posix.c b/os-posix.c
+>> index eada8d4..a3b96d9 100644
+>> --- a/os-posix.c
+>> +++ b/os-posix.c
+>> @@ -221,18 +221,12 @@ void os_daemonize(void)
+>>              do {
+>>                  len = read(fds[0], &status, 1);
+>>              } while (len < 0 && errno == EINTR);
+>> -            if (len != 1) {
+>> -                exit(1);
+>> -            }
+> 
+> Does this check need to be removed?
+
+Yes, because...
+> 
+>> -            else if (status == 1) {
+>> -                fprintf(stderr, "Could not acquire pidfile\n");
+>> -                exit(1);
+>> -            } else {
+>> -                exit(0);
+>> -            }
+>> -            } else if (pid < 0) {
+>> -                exit(1);
+>> -            }
+>> +
+>> +            exit(len == 1 && status == 0 ? 0 : 1);
+
+...it is checked here, note the 'len == 1' part of the condition.
+
+And here comes the wrong original identation -- this part of "else"
+was indented once too many:
+
+>> +
+>> +        } else if (pid < 0) {
+>> +            exit(1);
+>> +        }
+>>  
+
+Thanks,
+
+/mjt
 
 
