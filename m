@@ -1,43 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XjnLE-0006uI-TW
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Oct 2014 06:52:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36251)
+	id 1XkDqi-00022y-Pq
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:10:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35218)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XjnL7-0006o5-Ud
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 06:52:30 -0400
+	(envelope-from <imammedo@redhat.com>) id 1XkDq7-0001eT-Sh
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:10:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XjnL3-0007us-E2
-	for qemu-trivial@nongnu.org; Thu, 30 Oct 2014 06:52:25 -0400
-Received: from szxga01-in.huawei.com ([119.145.14.64]:10416)
+	(envelope-from <imammedo@redhat.com>) id 1Xk7zn-0005Yg-5t
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 04:55:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33152)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XjnKt-0007nL-8D; Thu, 30 Oct 2014 06:52:12 -0400
-Received: from 172.24.2.119 (EHLO szxeml417-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CDR03279; Thu, 30 Oct 2014 18:52:06 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml417-hub.china.huawei.com
-	(10.82.67.156) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 30 Oct 2014 18:52:02 +0800
-Message-ID: <54521852.3040209@huawei.com>
-Date: Thu, 30 Oct 2014 18:52:02 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <imammedo@redhat.com>)
+	id 1Xk7zf-0005On-RB; Fri, 31 Oct 2014 04:55:39 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9V8tbtW027222
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Fri, 31 Oct 2014 04:55:37 -0400
+Received: from nial.usersys.redhat.com (dhcp-1-126.brq.redhat.com
+	[10.34.1.126])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9V8tZXI016627; Fri, 31 Oct 2014 04:55:36 -0400
+Date: Fri, 31 Oct 2014 09:55:35 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20141031095535.6df8d574@nial.usersys.redhat.com>
+In-Reply-To: <1414696353-23605-1-git-send-email-ehabkost@redhat.com>
+References: <1414696353-23605-1-git-send-email-ehabkost@redhat.com>
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1414656378-10064-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1414656378-10064-1-git-send-email-mjt@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="GB2312"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] virtio-9p-proxy: improve error messages
-	in connect_namedsocket()
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Andreas =?ISO-8859-1?B?RuRyYmVy?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [PATCH] target-i386: Remove unused
+	model_features_t struct
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,18 +48,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Oct 2014 10:52:31 -0000
+X-List-Received-Date: Fri, 31 Oct 2014 15:10:46 -0000
 
-On 2014/10/30 16:06, Michael Tokarev wrote:
+On Thu, 30 Oct 2014 17:12:33 -0200
+Eduardo Habkost <ehabkost@redhat.com> wrote:
 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> The struct is not used anymore and can be removed.
+> 
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 > ---
->  hw/9pfs/virtio-9p-proxy.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  target-i386/cpu.c | 8 --------
+>  1 file changed, 8 deletions(-)
+> 
+> diff --git a/target-i386/cpu.c b/target-i386/cpu.c
+> index e194601..e4ccee1 100644
+> --- a/target-i386/cpu.c
+> +++ b/target-i386/cpu.c
+> @@ -442,14 +442,6 @@ const char *get_register_name_32(unsigned int reg)
+>      return x86_reg_info_32[reg].name;
+>  }
+>  
+> -/* collects per-function cpuid data
+> - */
+> -typedef struct model_features_t {
+> -    uint32_t *guest_feat;
+> -    uint32_t *host_feat;
+> -    FeatureWord feat_word;
+> -} model_features_t;
+> -
+>  /* KVM-specific features that are automatically added to all CPU models
+>   * when KVM is enabled.
+>   */
 
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
-
-Best regards,
--Gonglei
-
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
