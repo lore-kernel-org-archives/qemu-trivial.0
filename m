@@ -1,43 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XkDuL-0000nz-F8
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:14:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34537)
+	id 1XkDuP-00010G-KK
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:14:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35218)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XkDsm-0000qf-PU
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:14:31 -0400
+	(envelope-from <armbru@redhat.com>) id 1XkDta-0001eT-0Y
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:14:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xk6Rm-0005Xo-PR
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 03:16:39 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:45488)
+	(envelope-from <armbru@redhat.com>) id 1Xk63c-0004h2-GU
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 02:51:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47028)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xk6Rh-0005JJ-GT; Fri, 31 Oct 2014 03:16:29 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 22B87470FA;
-	Fri, 31 Oct 2014 10:16:19 +0300 (MSK)
-Message-ID: <54533742.1000109@msgid.tls.msk.ru>
-Date: Fri, 31 Oct 2014 10:16:18 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:24.0) Gecko/20100101 Icedove/24.8.1
+	(envelope-from <armbru@redhat.com>)
+	id 1Xk63X-0004bD-4h; Fri, 31 Oct 2014 02:51:31 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9V6pK1q025377
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Fri, 31 Oct 2014 02:51:20 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-39.ams2.redhat.com
+	[10.36.116.39])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id s9V6pIBw022778
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 31 Oct 2014 02:51:20 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 4A93230403B2; Fri, 31 Oct 2014 07:51:18 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1414648877-13788-1-git-send-email-arei.gonglei@huawei.com>
+	<87a94e6ni4.fsf@blackfin.pond.sub.org>
+	<54524324.9070202@msgid.tls.msk.ru>
+Date: Fri, 31 Oct 2014 07:51:18 +0100
+In-Reply-To: <54524324.9070202@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Thu, 30 Oct 2014 16:54:44 +0300")
+Message-ID: <87wq7grau1.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-To: Gonglei <arei.gonglei@huawei.com>
-References: <cover.1414681502.git.mjt@msgid.tls.msk.ru>
-	<dc4522b965468522221bd08231b169b1a3e28c69.1414681502.git.mjt@msgid.tls.msk.ru>
-	<5453178B.2040504@huawei.com>
-In-Reply-To: <5453178B.2040504@huawei.com>
-X-Enigmail-Version: 1.6
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH 3/4] pidfile: stop making pidfile error a
-	special case
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, peter.huangpeng@huawei.com,
+	arei.gonglei@huawei.com, qemu-devel@nongnu.org, lcapitulino@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] dump: fix use-after-free
+	for s->fd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,90 +55,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Oct 2014 15:14:31 -0000
+X-List-Received-Date: Fri, 31 Oct 2014 15:14:35 -0000
 
-31.10.2014 08:00, Gonglei wrote:
-> On 2014/10/30 23:07, Michael Tokarev wrote:
-> 
->> In case of -daemonize, we write non-zero to the daemon
->> pipe only if pidfile creation failed, so the parent will
->> report error about pidfile problem.  There's no need to
->> make special case for this, since all other errors are
->> reported by the child just fine.  Let the parent report
->> error and simplify logic in os_daemonize().
->>
->> This way, we don't need os_pidfile_error() function, since
->> it only prints error now, so put the error reporting printf
->> into the only place where qemu_create_pidfile() is called,
->> in vl.c.
->>
->> While at it, fix wrong identation in os_daemonize().
-> 
-> s/identation/identification/
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-No, the original word was the right one.
+> 30.10.2014 10:10, Markus Armbruster wrote:
+> []
+>> I'm afraid the commit message is a bit misleading.  Let's examine what
+>> exactly happens.
+>> 
+>> dump_iterate() dumps blocks in a loop.  Eventually, get_next_block()
+>> returns "no more".  We then call dump_completed().  But we neglect to
+>> break the loop!  Broken in commit 4c7e251a.
+>> 
+>> Because of that, we dump the last block again.  This attempts to write
+>> to s->fd, which fails if we're lucky.  The error makes dump_iterate()
+>> return unsuccessfully.  It's the only way it can ever return.
+>> 
+>> Theoretical: if we're not so lucky, something else has opened something
+>> for writing and got the same fd.  dump_iterate() then keeps looping,
+>> messing up the something else's output, until a write fails, or the
+>> process mercifully terminates.
+>> 
+>> Is this correct?
+>> 
+>> If yes, let's use this commit message:
+>> 
+>>     dump: Fix dump-guest-memory termination and use-after-close
+>> 
+>>     dump_iterate() dumps blocks in a loop.  Eventually, get_next_block()
+>>     returns "no more".  We then call dump_completed().  But we neglect to
+>>     break the loop!  Broken in commit 4c7e251a.
+>> 
+>>     Because of that, we dump the last block again.  This attempts to write
+>>     to s->fd, which fails if we're lucky.  The error makes dump_iterate()
+>>     return failure.  It's the only way it can ever return.
+>> 
+>>     Theoretical: if we're not so lucky, something else has opened something
+>>     for writing and got the same fd.  dump_iterate() then keeps looping,
+>>     messing up the something else's output, until a write fails, or the
+>>     process mercifully terminates.
+>> 
+>>     The obvious fix is to restore the return lost in commit 4c7e251a.  But
+>>     the root cause of the bug is needlessly opaque loop control.  Replace it
+>>     by a clean do ... while loop.
+>> 
+>>     This makes the badly chosen return values of get_next_block() more
+>>     visible.  Cleaning that up is outside the scope of this bug fix.
+>> 
+>> You can then add my R-by.
+>
+> So I'm applying this -- which is your patch and your commit message, and
+> I really wonder why this is Reviewed-by and not Signed-off-by, with your
+> authorship?  It really should be...
 
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->> ---
->>  include/qemu-common.h |    1 -
->>  os-posix.c            |   29 ++++++-----------------------
->>  os-win32.c            |    5 -----
->>  vl.c                  |    2 +-
->>  4 files changed, 7 insertions(+), 30 deletions(-)
->>
->> diff --git a/include/qemu-common.h b/include/qemu-common.h
->> index b87e9c2..f862214 100644
->> --- a/include/qemu-common.h
->> +++ b/include/qemu-common.h
->> @@ -357,7 +357,6 @@ char *qemu_find_file(int type, const char *name);
->>  void os_setup_early_signal_handling(void);
->>  char *os_find_datadir(void);
->>  void os_parse_cmd_args(int index, const char *optarg);
->> -void os_pidfile_error(void);
->>  
->>  /* Convert a byte between binary and BCD.  */
->>  static inline uint8_t to_bcd(uint8_t val)
->> diff --git a/os-posix.c b/os-posix.c
->> index eada8d4..a3b96d9 100644
->> --- a/os-posix.c
->> +++ b/os-posix.c
->> @@ -221,18 +221,12 @@ void os_daemonize(void)
->>              do {
->>                  len = read(fds[0], &status, 1);
->>              } while (len < 0 && errno == EINTR);
->> -            if (len != 1) {
->> -                exit(1);
->> -            }
-> 
-> Does this check need to be removed?
+You can add mine in addition to Gonglei's.
 
-Yes, because...
-> 
->> -            else if (status == 1) {
->> -                fprintf(stderr, "Could not acquire pidfile\n");
->> -                exit(1);
->> -            } else {
->> -                exit(0);
->> -            }
->> -            } else if (pid < 0) {
->> -                exit(1);
->> -            }
->> +
->> +            exit(len == 1 && status == 0 ? 0 : 1);
-
-...it is checked here, note the 'len == 1' part of the condition.
-
-And here comes the wrong original identation -- this part of "else"
-was indented once too many:
-
->> +
->> +        } else if (pid < 0) {
->> +            exit(1);
->> +        }
->>  
-
-Thanks,
-
-/mjt
-
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
