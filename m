@@ -1,49 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XkDuP-00010G-KK
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:14:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35218)
+	id 1XkDvc-0002w4-MK
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 11:15:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44777)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1XkDta-0001eT-0Y
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:14:35 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XkDui-0006TE-Mc
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 11:15:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Xk63c-0004h2-GU
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 02:51:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47028)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Xk5Qs-0005CJ-3q
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 02:11:39 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:17034)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Xk63X-0004bD-4h; Fri, 31 Oct 2014 02:51:31 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id s9V6pK1q025377
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Fri, 31 Oct 2014 02:51:20 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-39.ams2.redhat.com
-	[10.36.116.39])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id s9V6pIBw022778
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 31 Oct 2014 02:51:20 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 4A93230403B2; Fri, 31 Oct 2014 07:51:18 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1414648877-13788-1-git-send-email-arei.gonglei@huawei.com>
-	<87a94e6ni4.fsf@blackfin.pond.sub.org>
-	<54524324.9070202@msgid.tls.msk.ru>
-Date: Fri, 31 Oct 2014 07:51:18 +0100
-In-Reply-To: <54524324.9070202@msgid.tls.msk.ru> (Michael Tokarev's message of
-	"Thu, 30 Oct 2014 16:54:44 +0300")
-Message-ID: <87wq7grau1.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Xk5Qm-0004xc-9m; Fri, 31 Oct 2014 02:11:29 -0400
+Received: from 172.24.2.119 (EHLO szxeml413-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AWK08971; Fri, 31 Oct 2014 14:11:21 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml413-hub.china.huawei.com
+	(10.82.67.152) with Microsoft SMTP Server id 14.3.158.1;
+	Fri, 31 Oct 2014 14:11:13 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Fri, 31 Oct 2014 14:11:00 +0800
+Message-ID: <1414735861-1232-2-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
+In-Reply-To: <1414735861-1232-1-git-send-email-arei.gonglei@huawei.com>
+References: <1414735861-1232-1-git-send-email-arei.gonglei@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, peter.huangpeng@huawei.com,
-	arei.gonglei@huawei.com, qemu-devel@nongnu.org, lcapitulino@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] dump: fix use-after-free
-	for s->fd
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A02020A.5453280A.0056, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 1028752a1fe71aaa6eccdcf12f442cfb
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	peter.huangpeng@huawei.com, stefanha@redhat.com
+Subject: [Qemu-trivial] [PATCH 1/2] tap: remove close(fd)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,61 +51,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Oct 2014 15:14:35 -0000
+X-List-Received-Date: Fri, 31 Oct 2014 15:15:50 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+From: Gonglei <arei.gonglei@huawei.com>
 
-> 30.10.2014 10:10, Markus Armbruster wrote:
-> []
->> I'm afraid the commit message is a bit misleading.  Let's examine what
->> exactly happens.
->> 
->> dump_iterate() dumps blocks in a loop.  Eventually, get_next_block()
->> returns "no more".  We then call dump_completed().  But we neglect to
->> break the loop!  Broken in commit 4c7e251a.
->> 
->> Because of that, we dump the last block again.  This attempts to write
->> to s->fd, which fails if we're lucky.  The error makes dump_iterate()
->> return unsuccessfully.  It's the only way it can ever return.
->> 
->> Theoretical: if we're not so lucky, something else has opened something
->> for writing and got the same fd.  dump_iterate() then keeps looping,
->> messing up the something else's output, until a write fails, or the
->> process mercifully terminates.
->> 
->> Is this correct?
->> 
->> If yes, let's use this commit message:
->> 
->>     dump: Fix dump-guest-memory termination and use-after-close
->> 
->>     dump_iterate() dumps blocks in a loop.  Eventually, get_next_block()
->>     returns "no more".  We then call dump_completed().  But we neglect to
->>     break the loop!  Broken in commit 4c7e251a.
->> 
->>     Because of that, we dump the last block again.  This attempts to write
->>     to s->fd, which fails if we're lucky.  The error makes dump_iterate()
->>     return failure.  It's the only way it can ever return.
->> 
->>     Theoretical: if we're not so lucky, something else has opened something
->>     for writing and got the same fd.  dump_iterate() then keeps looping,
->>     messing up the something else's output, until a write fails, or the
->>     process mercifully terminates.
->> 
->>     The obvious fix is to restore the return lost in commit 4c7e251a.  But
->>     the root cause of the bug is needlessly opaque loop control.  Replace it
->>     by a clean do ... while loop.
->> 
->>     This makes the badly chosen return values of get_next_block() more
->>     visible.  Cleaning that up is outside the scope of this bug fix.
->> 
->> You can then add my R-by.
->
-> So I'm applying this -- which is your patch and your commit message, and
-> I really wonder why this is Reviewed-by and not Signed-off-by, with your
-> authorship?  It really should be...
+commit 5193e5fb (tap: factor out common tap initialization)
+introduce net_init_tap_one(). But it's inapposite that close
+fd in net_init_tap_one(), we should lay it in the caller,
+becuase some caller needn't to close it if we get the fd
+by monitor_handle_fd_param().
 
-You can add mine in addition to Gonglei's.
+On the other hand, in other exceptional branch fd doesn't
+be closed, so that's incomplete.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ net/tap.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/net/tap.c b/net/tap.c
+index a40f7f0..7bcd4c7 100644
+--- a/net/tap.c
++++ b/net/tap.c
+@@ -598,7 +598,6 @@ static int net_init_tap_one(const NetdevTapOptions *tap, NetClientState *peer,
+ 
+     s = net_tap_fd_init(peer, model, name, fd, vnet_hdr);
+     if (!s) {
+-        close(fd);
+         return -1;
+     }
+ 
+-- 
+1.7.12.4
+
+
 
