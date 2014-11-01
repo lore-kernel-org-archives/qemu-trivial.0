@@ -1,44 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XkGjv-0006pM-1Z
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 14:15:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36015)
+	id 1XkNq6-0006w1-0i
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Oct 2014 21:50:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60535)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1XkGjn-0006h7-F1
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 14:15:56 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XkNpz-0006s0-6A
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 21:50:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1XkGji-00011S-6Y
-	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 14:15:51 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:45165)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XkNps-000249-K9
+	for qemu-trivial@nongnu.org; Fri, 31 Oct 2014 21:50:43 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:18665)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1XkGjS-0000u0-QH; Fri, 31 Oct 2014 14:15:30 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	968C6118109D; Fri, 31 Oct 2014 19:15:28 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id CA2UAW2xg7_2; Fri, 31 Oct 2014 19:15:26 +0100 (CET)
-Received: from [192.168.178.24] (p54ACA151.dip0.t-ipconnect.de [84.172.161.81])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	C39641180040; Fri, 31 Oct 2014 19:15:25 +0100 (CET)
-Message-ID: <5453D1BD.10902@weilnetz.de>
-Date: Fri, 31 Oct 2014 19:15:25 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.1.2
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1XkNpr-000202-MF; Fri, 31 Oct 2014 21:50:36 -0400
+Received: from 172.24.2.119 (EHLO szxeml456-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AWL33047; Sat, 01 Nov 2014 09:50:30 +0800 (CST)
+Received: from localhost (10.177.22.69) by szxeml456-hub.china.huawei.com
+	(10.82.67.199) with Microsoft SMTP Server id 14.3.158.1; Sat, 1 Nov 2014
+	09:50:24 +0800
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+To: <qemu-trivial@nongnu.org>
+Date: Sat, 1 Nov 2014 09:50:00 +0800
+Message-ID: <1414806603-22556-2-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Mailer: git-send-email 1.9.2.msysgit.0
+In-Reply-To: <1414806603-22556-1-git-send-email-zhang.zhanghailiang@huawei.com>
+References: <1414806603-22556-1-git-send-email-zhang.zhanghailiang@huawei.com>
 MIME-Version: 1.0
-To: SeokYeon Hwang <syeon.hwang@samsung.com>, qemu-devel@nongnu.org, 
-	qemu-trivial@nongnu.org
-References: <1414742525-18639-1-git-send-email-syeon.hwang@samsung.com>
-In-Reply-To: <1414742525-18639-1-git-send-email-syeon.hwang@samsung.com>
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 37.221.199.173
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vdi: wrapped uuid_unparse()
-	in #ifdef
+Content-Type: text/plain
+X-Originating-IP: [10.177.22.69]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020201.54543C67.00B2, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: fae15f0533c1a452026d8ef5bda035e7
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: pbonzini@redhat.com, zhanghailiang <zhang.zhanghailiang@huawei.com>,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: [Qemu-trivial] [PATCH 1/4] qemu-char: fix parameter check for
+	qemu_chr_open_pipe
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,40 +52,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Oct 2014 18:15:56 -0000
+X-List-Received-Date: Sat, 01 Nov 2014 01:50:48 -0000
 
-Am 31.10.2014 um 09:02 schrieb SeokYeon Hwang:
-> Wrapped uuid_unparse() in #ifdef to avoid "-Wunused-function" on clang 3.4 or later.
->
-> Signed-off-by: SeokYeon Hwang <syeon.hwang@samsung.com>
-> ---
->   block/vdi.c | 2 ++
->   1 file changed, 2 insertions(+)
->
-> diff --git a/block/vdi.c b/block/vdi.c
-> index 19701ee..e1d211c 100644
-> --- a/block/vdi.c
-> +++ b/block/vdi.c
-> @@ -137,12 +137,14 @@ static inline int uuid_is_null(const uuid_t uu)
->       return memcmp(uu, null_uuid, sizeof(uuid_t)) == 0;
->   }
->   
-> +# if defined(CONFIG_VDI_DEBUG)
->   static inline void uuid_unparse(const uuid_t uu, char *out)
->   {
->       snprintf(out, 37, UUID_FMT,
->               uu[0], uu[1], uu[2], uu[3], uu[4], uu[5], uu[6], uu[7],
->               uu[8], uu[9], uu[10], uu[11], uu[12], uu[13], uu[14], uu[15]);
->   }
-> +# endif
->   #endif
->   
->   typedef struct {
+The filename parameter never to be NULL, because in qemu_chr_parse_pipe
+it is return value of g_strdup(device), where device will not be
+NULL.
 
-This code is only used on build hosts without libuuid development header 
-files, so the warning can be avoided by installing that header files. 
-Nevertheless, I think it is fine for qemu-trivial.
+We should check its length.
+After this patch, when run command:
+ qemu-system-x86_64 -chardev pipe,id=pipe1,path=
+It will report error:
+ chardev: pipe: no filename given
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+---
+ qemu-char.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qemu-char.c b/qemu-char.c
+index bd0709b..42b1d8f 100644
+--- a/qemu-char.c
++++ b/qemu-char.c
+@@ -1084,7 +1084,7 @@ static CharDriverState *qemu_chr_open_pipe(ChardevHostdev *opts)
+     char filename_out[CHR_MAX_FILENAME_SIZE];
+     const char *filename = opts->device;
+ 
+-    if (filename == NULL) {
++    if (filename == NULL || strlen(filename) == 0) {
+         fprintf(stderr, "chardev: pipe: no filename given\n");
+         return NULL;
+     }
+-- 
+1.7.12.4
 
 
