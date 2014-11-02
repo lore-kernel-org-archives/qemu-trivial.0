@@ -1,40 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XknEQ-0005nU-7s
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 00:57:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34159)
+	id 1XknIl-0007Io-PJ
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 01:02:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35817)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XknEI-0005ca-Is
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 00:57:36 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XknIf-0007If-Ph
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 01:02:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XknEC-00056i-8r
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 00:57:30 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:55169)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XknIa-0006o3-S5
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 01:02:01 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:34789)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XknDz-00050r-OT; Sun, 02 Nov 2014 00:57:11 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id D788440231;
-	Sun,  2 Nov 2014 07:57:10 +0300 (MSK)
-Message-ID: <5455B9A6.3040009@msgid.tls.msk.ru>
-Date: Sun, 02 Nov 2014 07:57:10 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.2.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XknIa-0006dp-7W; Sun, 02 Nov 2014 01:01:56 -0400
+Received: from 172.24.2.119 (EHLO szxeml409-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CBS73759; Sun, 02 Nov 2014 13:01:44 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml409-hub.china.huawei.com
+	(10.82.67.136) with Microsoft SMTP Server id 14.3.158.1; Sun, 2 Nov 2014
+	13:01:35 +0800
+Message-ID: <5455BA9F.1040807@huawei.com>
+Date: Sun, 2 Nov 2014 13:01:19 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org, 
-	qemu-trivial@nongnu.org
-References: <1414696353-23605-1-git-send-email-ehabkost@redhat.com>
-In-Reply-To: <1414696353-23605-1-git-send-email-ehabkost@redhat.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1414724010-1756-1-git-send-email-arei.gonglei@huawei.com>
+	<5455B961.7080303@msgid.tls.msk.ru>
+In-Reply-To: <5455B961.7080303@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: Igor Mammedov <imammedo@redhat.com>,
-	=?windows-1252?Q?Andreas_F=E4r?= =?windows-1252?Q?ber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH] target-i386: Remove unused
- model_features_t struct
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"stefanha@redhat.com" <stefanha@redhat.com>,
+	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
+Subject: Re: [Qemu-trivial] [PATCH] tap_int.h: remove repeating
+	macroinstruction
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,12 +52,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Nov 2014 04:57:36 -0000
+X-List-Received-Date: Sun, 02 Nov 2014 05:02:06 -0000
 
-30.10.2014 22:12, Eduardo Habkost wrote:
-> The struct is not used anymore and can be removed.
+On 2014/11/2 12:56, Michael Tokarev wrote:
 
-Applied to -trivial, thank you!
+> 31.10.2014 05:53, arei.gonglei@huawei.com wrote:
+>> From: Gonglei <arei.gonglei@huawei.com>
+>>
+>> DEFAULT_NETWORK_SCRIPT and DEFAULT_NETWORK_DOWN_SCRIPT
+>> have been defined in net/net.h included in
+>> tap.c, which is the only C file that using those two macro.
+>> Let's remove the repeating macroinstruction.
+> 
+> Applied (as I noted yesterday), but with slight rename in
+> $subject - the new subject reads:
+> 
+>   tap_int.h: remove repeating NETWORK_SCRIPT defines
+> 
+> Is that okay with you?
+> 
 
-/mjt
+Ack. Thanks.
+
+Best regards,
+-Gonglei
+
 
