@@ -1,40 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XknYm-0005le-Ff
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 01:18:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37326)
+	id 1XkncP-0006j4-Vm
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 01:22:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XknYf-0005dK-Qc
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 01:18:38 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1XkncJ-0006ic-9V
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 01:22:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XknYb-0002Pj-0o
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 01:18:33 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53852)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XkncE-0003b4-D2
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 01:22:19 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:37021)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XknYR-0002PP-2Z; Sun, 02 Nov 2014 01:18:19 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id E13B040231;
-	Sun,  2 Nov 2014 08:18:17 +0300 (MSK)
-Message-ID: <5455BE99.1000400@msgid.tls.msk.ru>
-Date: Sun, 02 Nov 2014 08:18:17 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.2.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XkncD-0003TS-NP; Sun, 02 Nov 2014 01:22:14 -0400
+Received: from 172.24.2.119 (EHLO SZXEML414-HUB.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CBS74769; Sun, 02 Nov 2014 13:22:05 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by SZXEML414-HUB.china.huawei.com
+	(10.82.67.153) with Microsoft SMTP Server id 14.3.158.1; Sun, 2 Nov 2014
+	13:21:55 +0800
+Message-ID: <5455BF5F.3010400@huawei.com>
+Date: Sun, 2 Nov 2014 13:21:35 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>, 
- qemu-trivial@nongnu.org
-References: <1414806603-22556-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1414806603-22556-2-git-send-email-zhang.zhanghailiang@huawei.com>
-In-Reply-To: <1414806603-22556-2-git-send-email-zhang.zhanghailiang@huawei.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1414735861-1232-1-git-send-email-arei.gonglei@huawei.com>
+	<1414735861-1232-3-git-send-email-arei.gonglei@huawei.com>
+	<5455BCE6.5080804@msgid.tls.msk.ru>
+In-Reply-To: <5455BCE6.5080804@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: pbonzini@redhat.com, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH 1/4] qemu-char: fix parameter check for
- qemu_chr_open_pipe
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"stefanha@redhat.com" <stefanha@redhat.com>,
+	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
+Subject: Re: [Qemu-trivial] [PATCH 2/2] tap: fix possible fd leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,55 +52,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Nov 2014 05:18:38 -0000
+X-List-Received-Date: Sun, 02 Nov 2014 05:22:24 -0000
 
-01.11.2014 04:50, zhanghailiang wrote:
-> The filename parameter never to be NULL, because in qemu_chr_parse_pipe
-> it is return value of g_strdup(device), where device will not be
-> NULL.
+On 2014/11/2 13:11, Michael Tokarev wrote:
+
+> 31.10.2014 09:11, arei.gonglei@huawei.com wrote:
+>> From: Gonglei <arei.gonglei@huawei.com>
+>>
+>> In hotplugging scenario, taking those true branch, the file
+>> handler do not be closed. Adding cleanup logic for them.
+>>
+>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>> ---
+>>  net/tap.c | 12 +++++++++---
+>>  1 file changed, 9 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/net/tap.c b/net/tap.c
+>> index 7bcd4c7..3cfbee8 100644
+>> --- a/net/tap.c
+>> +++ b/net/tap.c
+>> @@ -796,7 +796,7 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
+>>          if (net_init_tap_one(tap, peer, "bridge", name, ifname,
+>>                               script, downscript, vhostfdname,
+>>                               vnet_hdr, fd)) {
+>> -            return -1;
+>> +            goto fail;
+>>          }
+>>      } else {
+>>          if (tap->has_vhostfds) {
+>> @@ -823,7 +823,7 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
+>>              if (queues > 1 && i == 0 && !tap->has_ifname) {
+>>                  if (tap_fd_get_ifname(fd, ifname)) {
+>>                      error_report("Fail to get ifname");
+>> -                    return -1;
+>> +                    goto fail;
+>>                  }
+>>              }
+>>  
+>> @@ -831,12 +831,18 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
+>>                                   i >= 1 ? "no" : script,
+>>                                   i >= 1 ? "no" : downscript,
+>>                                   vhostfdname, vnet_hdr, fd)) {
+>> -                return -1;
+>> +                goto fail;
+>>              }
+>>          }
+>>      }
+>>  
+>>      return 0;
+>> +
+>> +fail:
+>> +    if (fd != -1) {
+>> +        close(fd);
+>> +    }
+>> +    return -1;
+>>  }
 > 
-> We should check its length.
-> After this patch, when run command:
->  qemu-system-x86_64 -chardev pipe,id=pipe1,path=
-> It will report error:
->  chardev: pipe: no filename given
+> I think, given the somewhat "hairy" nature of net_init_tap() function, which
+> has many error returns which should not close fd and just 3 which should, it
+> is better to add explicit close(fd) in these 3 places.
 > 
-> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> ---
->  qemu-char.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+
+Agree. v2 will do. Thanks!
+
+> Besides, why do you check for fd != -1 in the fail path?  You added the goto
+> into the 3 places, all of them has fd != -1, and there's no other ways to
+> reach this place.  
+
+Yes.
+
+> Are you not certain that fd will be valid here?  If yes,
+> I think this is yet another argument for adding close()s into the 3 places.
 > 
-> diff --git a/qemu-char.c b/qemu-char.c
-> index bd0709b..42b1d8f 100644
-> --- a/qemu-char.c
-> +++ b/qemu-char.c
-> @@ -1084,7 +1084,7 @@ static CharDriverState *qemu_chr_open_pipe(ChardevHostdev *opts)
->      char filename_out[CHR_MAX_FILENAME_SIZE];
->      const char *filename = opts->device;
->  
-> -    if (filename == NULL) {
-> +    if (filename == NULL || strlen(filename) == 0) {
->          fprintf(stderr, "chardev: pipe: no filename given\n");
->          return NULL;
->      }
-
-and chr_parse_pipe() looks like:
 
 
-static void qemu_chr_parse_pipe(QemuOpts *opts, ChardevBackend *backend,
-                                Error **errp)
-{
-    const char *device = qemu_opt_get(opts, "path");
+Best regards,
+-Gonglei
 
-    if (device == NULL) {
-        error_setg(errp, "chardev: pipe: no device path given");
-        return;
-    }
-
-Maybe we should combine the two checks into one in chr_parse_pipe,
-and remove the check in chr_open_pipe entirely?
-
-Thanks,
-
-/mjt
 
