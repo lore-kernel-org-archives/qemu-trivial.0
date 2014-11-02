@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xku6L-0005Da-A9
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 07:17:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54467)
+	id 1Xku6M-0005Ft-88
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 07:17:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54477)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xku6E-00050C-65
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:42 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Xku6E-00051K-P3
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xku69-0007KV-R8
+	(envelope-from <mjt@tls.msk.ru>) id 1Xku6A-0007L5-6B
 	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:38 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:46346)
+Received: from isrv.corpit.ru ([86.62.121.231]:43873)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xku60-0007E4-JT; Sun, 02 Nov 2014 07:17:24 -0500
+	id 1Xku60-0007E2-JU; Sun, 02 Nov 2014 07:17:24 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 51C28402C3;
+	by isrv.corpit.ru (Postfix) with ESMTP id 5A216402C5;
 	Sun,  2 Nov 2014 15:17:23 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 91224709;
-	Sun,  2 Nov 2014 14:58:48 +0300 (MSK)
-Received: (nullmailer pid 14976 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 47C34714;
+	Sun,  2 Nov 2014 14:58:49 +0300 (MSK)
+Received: (nullmailer pid 14986 invoked by uid 1000);
 	Sun, 02 Nov 2014 11:58:47 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Sun,  2 Nov 2014 14:57:25 +0300
-Message-Id: <7d5a8435baed70f03bbe791aba12f5586ba17d75.1414929285.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  2 Nov 2014 14:57:30 +0300
+Message-Id: <25cec2b896a977565ca04e5c649aab8c6e48bda8.1414929285.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
 References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
@@ -32,8 +32,8 @@ References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 13/23] virtio-9p-proxy: improve error messages
-	in connect_namedsocket()
+Subject: [Qemu-trivial] [PULL 18/23] os-posix: reorder parent notification
+	for -daemonize
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,35 +45,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Nov 2014 12:17:42 -0000
+X-List-Received-Date: Sun, 02 Nov 2014 12:17:43 -0000
+
+Put "success" parent reporting in os_setup_post() to after
+all other initializers which may also fail, to the very end,
+so more possible failure cases are reported properly to the
+calling process.
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 Reviewed-by: Gonglei <arei.gonglei@huawei.com>
 ---
- hw/9pfs/virtio-9p-proxy.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ os-posix.c |   19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
 
-diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
-index 2ec211b..59c7445 100644
---- a/hw/9pfs/virtio-9p-proxy.c
-+++ b/hw/9pfs/virtio-9p-proxy.c
-@@ -1104,14 +1104,14 @@ static int connect_namedsocket(const char *path)
+diff --git a/os-posix.c b/os-posix.c
+index 52e9897..ba091f1 100644
+--- a/os-posix.c
++++ b/os-posix.c
+@@ -255,15 +255,6 @@ void os_setup_post(void)
+     int fd = 0;
  
-     sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
-     if (sockfd < 0) {
--        fprintf(stderr, "socket %s\n", strerror(errno));
-+        fprintf(stderr, "failed to create socket: %s\n", strerror(errno));
-         return -1;
+     if (daemonize) {
+-        uint8_t status = 0;
+-        ssize_t len;
+-
+-        do {        
+-            len = write(daemon_pipe, &status, 1);
+-        } while (len < 0 && errno == EINTR);
+-        if (len != 1) {
+-            exit(1);
+-        }
+         if (chdir("/")) {
+             perror("not able to chdir to /");
+             exit(1);
+@@ -278,11 +269,21 @@ void os_setup_post(void)
+     change_process_uid();
+ 
+     if (daemonize) {
++        uint8_t status = 0;
++        ssize_t len;
++
+         dup2(fd, 0);
+         dup2(fd, 1);
+         dup2(fd, 2);
+ 
+         close(fd);
++
++        do {        
++            len = write(daemon_pipe, &status, 1);
++        } while (len < 0 && errno == EINTR);
++        if (len != 1) {
++            exit(1);
++        }
      }
-     strcpy(helper.sun_path, path);
-     helper.sun_family = AF_UNIX;
-     size = strlen(helper.sun_path) + sizeof(helper.sun_family);
-     if (connect(sockfd, (struct sockaddr *)&helper, size) < 0) {
--        fprintf(stderr, "socket error\n");
-+        fprintf(stderr, "failed to connect to %s: %s\n", path, strerror(errno));
-         close(sockfd);
-         return -1;
-     }
+ }
+ 
 -- 
 1.7.10.4
 
