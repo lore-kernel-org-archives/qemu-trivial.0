@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xku6M-0005Gr-OY
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 07:17:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54490)
+	id 1Xku6N-0005Jj-Tl
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 07:17:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54505)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xku6F-00051y-Bf
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:43 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Xku6G-00053u-G3
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xku6B-0007LI-0P
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:39 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:50929)
+	(envelope-from <mjt@tls.msk.ru>) id 1Xku6B-0007LQ-Hp
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:40 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:40395)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xku60-0007E3-JR; Sun, 02 Nov 2014 07:17:24 -0500
+	id 1Xku61-0007FZ-As; Sun, 02 Nov 2014 07:17:25 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3751B402C2;
+	by isrv.corpit.ru (Postfix) with ESMTP id 5F6E8402C6;
 	Sun,  2 Nov 2014 15:17:23 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 9C62571B;
+	by tsrv.corpit.ru (Postfix) with SMTP id C102F720;
 	Sun,  2 Nov 2014 14:58:49 +0300 (MSK)
-Received: (nullmailer pid 14993 invoked by uid 1000);
+Received: (nullmailer pid 14991 invoked by uid 1000);
 	Sun, 02 Nov 2014 11:58:47 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Sun,  2 Nov 2014 14:57:33 +0300
-Message-Id: <d0caa3eb539de01043354440ce0a10b1f546cf06.1414929285.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  2 Nov 2014 14:57:32 +0300
+Message-Id: <bb019cf911ee4a152e3b31940d702d7b8a8b8114.1414929285.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
 References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
@@ -31,10 +31,10 @@ In-Reply-To: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
 References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 21/23] tap: do not close(fd) in
-	net_init_tap_one
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Subject: [Qemu-trivial] [PULL 20/23] target-i386: Remove unused
+	model_features_t struct
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,37 +46,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Nov 2014 12:17:44 -0000
+X-List-Received-Date: Sun, 02 Nov 2014 12:17:45 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+From: Eduardo Habkost <ehabkost@redhat.com>
 
-commit 5193e5fb (tap: factor out common tap initialization)
-introduce net_init_tap_one(). But it's inappropriate that
-we close fd in net_init_tap_one(), we should lay it in the
-caller, becuase some callers needn't to close it if we get
-the fd by monitor_handle_fd_param().
+The struct is not used anymore and can be removed.
 
-On the other hand, in other exceptional branches fd isn't
-closed, so that's incomplete anyway.
-
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- net/tap.c |    1 -
- 1 file changed, 1 deletion(-)
+ target-i386/cpu.c |    8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/net/tap.c b/net/tap.c
-index a40f7f0..7bcd4c7 100644
---- a/net/tap.c
-+++ b/net/tap.c
-@@ -598,7 +598,6 @@ static int net_init_tap_one(const NetdevTapOptions *tap, NetClientState *peer,
+diff --git a/target-i386/cpu.c b/target-i386/cpu.c
+index e194601..e4ccee1 100644
+--- a/target-i386/cpu.c
++++ b/target-i386/cpu.c
+@@ -442,14 +442,6 @@ const char *get_register_name_32(unsigned int reg)
+     return x86_reg_info_32[reg].name;
+ }
  
-     s = net_tap_fd_init(peer, model, name, fd, vnet_hdr);
-     if (!s) {
--        close(fd);
-         return -1;
-     }
- 
+-/* collects per-function cpuid data
+- */
+-typedef struct model_features_t {
+-    uint32_t *guest_feat;
+-    uint32_t *host_feat;
+-    FeatureWord feat_word;
+-} model_features_t;
+-
+ /* KVM-specific features that are automatically added to all CPU models
+  * when KVM is enabled.
+  */
 -- 
 1.7.10.4
 
