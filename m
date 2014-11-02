@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xku6N-0005Jj-Tl
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 07:17:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54505)
+	id 1Xku6L-0005Da-A9
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 07:17:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54467)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xku6G-00053u-G3
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:45 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Xku6E-00050C-65
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xku6B-0007LQ-Hp
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:40 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:40395)
+	(envelope-from <mjt@tls.msk.ru>) id 1Xku69-0007KV-R8
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:17:38 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:46346)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xku61-0007FZ-As; Sun, 02 Nov 2014 07:17:25 -0500
+	id 1Xku60-0007E4-JT; Sun, 02 Nov 2014 07:17:24 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 5F6E8402C6;
+	by isrv.corpit.ru (Postfix) with ESMTP id 51C28402C3;
 	Sun,  2 Nov 2014 15:17:23 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id C102F720;
-	Sun,  2 Nov 2014 14:58:49 +0300 (MSK)
-Received: (nullmailer pid 14991 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 91224709;
+	Sun,  2 Nov 2014 14:58:48 +0300 (MSK)
+Received: (nullmailer pid 14976 invoked by uid 1000);
 	Sun, 02 Nov 2014 11:58:47 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Sun,  2 Nov 2014 14:57:32 +0300
-Message-Id: <bb019cf911ee4a152e3b31940d702d7b8a8b8114.1414929285.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  2 Nov 2014 14:57:25 +0300
+Message-Id: <7d5a8435baed70f03bbe791aba12f5586ba17d75.1414929285.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
 References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
@@ -31,10 +31,9 @@ In-Reply-To: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
 References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Eduardo Habkost <ehabkost@redhat.com>
-Subject: [Qemu-trivial] [PULL 20/23] target-i386: Remove unused
-	model_features_t struct
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 13/23] virtio-9p-proxy: improve error messages
+	in connect_namedsocket()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,38 +45,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Nov 2014 12:17:45 -0000
+X-List-Received-Date: Sun, 02 Nov 2014 12:17:42 -0000
 
-From: Eduardo Habkost <ehabkost@redhat.com>
-
-The struct is not used anymore and can be removed.
-
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Gonglei <arei.gonglei@huawei.com>
 ---
- target-i386/cpu.c |    8 --------
- 1 file changed, 8 deletions(-)
+ hw/9pfs/virtio-9p-proxy.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-index e194601..e4ccee1 100644
---- a/target-i386/cpu.c
-+++ b/target-i386/cpu.c
-@@ -442,14 +442,6 @@ const char *get_register_name_32(unsigned int reg)
-     return x86_reg_info_32[reg].name;
- }
+diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
+index 2ec211b..59c7445 100644
+--- a/hw/9pfs/virtio-9p-proxy.c
++++ b/hw/9pfs/virtio-9p-proxy.c
+@@ -1104,14 +1104,14 @@ static int connect_namedsocket(const char *path)
  
--/* collects per-function cpuid data
-- */
--typedef struct model_features_t {
--    uint32_t *guest_feat;
--    uint32_t *host_feat;
--    FeatureWord feat_word;
--} model_features_t;
--
- /* KVM-specific features that are automatically added to all CPU models
-  * when KVM is enabled.
-  */
+     sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+     if (sockfd < 0) {
+-        fprintf(stderr, "socket %s\n", strerror(errno));
++        fprintf(stderr, "failed to create socket: %s\n", strerror(errno));
+         return -1;
+     }
+     strcpy(helper.sun_path, path);
+     helper.sun_family = AF_UNIX;
+     size = strlen(helper.sun_path) + sizeof(helper.sun_family);
+     if (connect(sockfd, (struct sockaddr *)&helper, size) < 0) {
+-        fprintf(stderr, "socket error\n");
++        fprintf(stderr, "failed to connect to %s: %s\n", path, strerror(errno));
+         close(sockfd);
+         return -1;
+     }
 -- 
 1.7.10.4
 
