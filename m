@@ -1,22 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xkd8p-0002f6-FP
-	for mharc-qemu-trivial@gnu.org; Sat, 01 Nov 2014 14:11:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49693)
+	id 1XknDG-0004mL-NX
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 00:56:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33925)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xkd8i-0002Uh-U0
-	for qemu-trivial@nongnu.org; Sat, 01 Nov 2014 14:11:09 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1XknDA-0004c7-8R
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 00:56:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xkd8d-0002av-Uj
-	for qemu-trivial@nongnu.org; Sat, 01 Nov 2014 14:11:04 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:35708)
+	(envelope-from <mjt@tls.msk.ru>) id 1XknD5-0004WM-8i
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 00:56:20 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48214)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xkd8U-0002YN-2G; Sat, 01 Nov 2014 14:10:50 -0400
+	id 1XknCv-0004VZ-Bm; Sun, 02 Nov 2014 00:56:05 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 6DF434019B;
-	Sat,  1 Nov 2014 21:10:49 +0300 (MSK)
-Message-ID: <54552229.7000005@msgid.tls.msk.ru>
-Date: Sat, 01 Nov 2014 21:10:49 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id 3BCFC40231;
+	Sun,  2 Nov 2014 07:56:02 +0300 (MSK)
+Message-ID: <5455B961.7080303@msgid.tls.msk.ru>
+Date: Sun, 02 Nov 2014 07:56:01 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
@@ -26,8 +26,8 @@ To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
 References: <1414724010-1756-1-git-send-email-arei.gonglei@huawei.com>
 In-Reply-To: <1414724010-1756-1-git-send-email-arei.gonglei@huawei.com>
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, peter.huangpeng@huawei.com, stefanha@redhat.com
@@ -44,46 +44,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 Nov 2014 18:11:09 -0000
+X-List-Received-Date: Sun, 02 Nov 2014 04:56:25 -0000
 
-31.10.2014 05:53, arei.gonglei@huawei.com =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
+31.10.2014 05:53, arei.gonglei@huawei.com wrote:
 > From: Gonglei <arei.gonglei@huawei.com>
->=20
+> 
 > DEFAULT_NETWORK_SCRIPT and DEFAULT_NETWORK_DOWN_SCRIPT
 > have been defined in net/net.h included in
 > tap.c, which is the only C file that using those two macro.
 > Let's remove the repeating macroinstruction.
->=20
-> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-> ---
->  net/tap_int.h | 3 ---
->  1 file changed, 3 deletions(-)
->=20
-> diff --git a/net/tap_int.h b/net/tap_int.h
-> index 86bb224..79afdf2 100644
-> --- a/net/tap_int.h
-> +++ b/net/tap_int.h
-> @@ -29,9 +29,6 @@
->  #include "qemu-common.h"
->  #include "qapi-types.h"
-> =20
-> -#define DEFAULT_NETWORK_SCRIPT "/etc/qemu-ifup"
-> -#define DEFAULT_NETWORK_DOWN_SCRIPT "/etc/qemu-ifdown"
-> -
->  int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
->               int vnet_hdr_required, int mq_required);
-> =20
 
+Applied (as I noted yesterday), but with slight rename in
+$subject - the new subject reads:
 
-Hmm.  We had this change in debian qemu-kvm for many years
-(at least since 2008), here:
-http://anonscm.debian.org/cgit/collab-maint/qemu-kvm.git/tree/debian/patc=
-hes/04_use_etc_kvm_kvm-ifup.patch
+  tap_int.h: remove repeating NETWORK_SCRIPT defines
 
-I always thought it is some mis-merge of kvm to qemu.
+Is that okay with you?
 
-So, ofcourse, applying to -trivial, thank you for getting
-rid of it finally, because I really forgot about it...
+Thanks,
 
 /mjt
 
