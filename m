@@ -1,37 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XktnF-000430-NG
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 06:58:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51112)
+	id 1Xktna-0004f3-Sh
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 06:58:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51212)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xktn8-0003rd-FZ
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 06:57:59 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1XktnT-0004SK-Rz
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 06:58:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xktn3-0002IX-HX
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 06:57:54 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:38812)
+	(envelope-from <mjt@tls.msk.ru>) id 1XktnO-0002Kt-RH
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 06:58:15 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:60096)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xktmt-0002Gj-78; Sun, 02 Nov 2014 06:57:39 -0500
+	id 1XktnE-0002JH-OG; Sun, 02 Nov 2014 06:58:00 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7FE0B4028A;
-	Sun,  2 Nov 2014 14:57:36 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id E752B4028A;
+	Sun,  2 Nov 2014 14:57:59 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 3437B6FC;
-	Sun,  2 Nov 2014 14:57:36 +0300 (MSK)
-Received: (nullmailer pid 14943 invoked by uid 1000);
-	Sun, 02 Nov 2014 11:57:36 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id D89766FC;
+	Sun,  2 Nov 2014 14:57:59 +0300 (MSK)
+Received: (nullmailer pid 14948 invoked by uid 1000);
+	Sun, 02 Nov 2014 11:57:59 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Sun,  2 Nov 2014 14:57:12 +0300
-Message-Id: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  2 Nov 2014 14:57:13 +0300
+Message-Id: <a5ebc0ebae1d2283cfec4170b1a04317f2faee74.1414929284.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
+References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
+References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 00/23] Trivial patches for 2014-11-02
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Subject: [Qemu-trivial] [PULL 01/23] tests: Add missing include to
+	test-bitops.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,97 +46,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Nov 2014 11:58:00 -0000
+X-List-Received-Date: Sun, 02 Nov 2014 11:58:21 -0000
 
-Here's an almost 3-week trivial patches pull request.
-Lots of small things here and there, many small bugfixes
-too.  This is also a first pull request for which a
-signature should finally be known to others.
+From: Eduardo Habkost <ehabkost@redhat.com>
 
-Please consider applying/pulling.
+The test code needs osdep.h for the ARRAY_SIZE macro.
 
-/mjt
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ tests/test-bitops.c |    1 +
+ 1 file changed, 1 insertion(+)
 
-The following changes since commit ee29498e4f0f3eff90eeeb7f5fa1703abedd2f=
-b6:
+diff --git a/tests/test-bitops.c b/tests/test-bitops.c
+index 8238eb5..47b5d3e 100644
+--- a/tests/test-bitops.c
++++ b/tests/test-bitops.c
+@@ -8,6 +8,7 @@
+ 
+ #include <glib.h>
+ #include <stdint.h>
++#include "qemu/osdep.h"
+ #include "qemu/bitops.h"
+ 
+ typedef struct {
+-- 
+1.7.10.4
 
-  Merge remote-tracking branch 'remotes/sstabellini/xen-2014-10-30' into =
-staging (2014-10-30 20:28:09 +0000)
-
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2014-11-02
-
-for you to fetch changes up to f18a768efb990d9cd02911159de02e8ff5475239:
-
-  vdi: wrapped uuid_unparse() in #ifdef (2014-11-02 10:05:35 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2014-11-02
-
-----------------------------------------------------------------
-Alex Benn=C3=A9e (1):
-      target-arm: A64: remove redundant store
-
-Eduardo Habkost (4):
-      tests: Add missing include to test-bitops.c
-      bitops.h: Don't include qemu-common.h
-      bitmap.h: Don't include qemu-common.h
-      target-i386: Remove unused model_features_t struct
-
-Gerd Hoffmann (1):
-      sparse: fix build
-
-Gonglei (4):
-      dump: Fix dump-guest-memory termination and use-after-close
-      tap_int.h: remove repeating NETWORK_SCRIPT defines
-      tap: do not close(fd) in net_init_tap_one
-      tap: fix possible fd leak in net_init_tap
-
-Michael Tokarev (9):
-      Revert "os-posix: report error message when lock file failed"
-      net/slirp: specify logbase for smbd
-      virtio-9p-proxy: Fix sockfd leak
-      virtio-9p-proxy: fix error return in proxy_init()
-      virtio-9p-proxy: improve error messages in connect_namedsocket()
-      os-posix: use global daemon_pipe instead of cryptic fds[1]
-      os-posix: replace goto again with a proper loop
-      pidfile: stop making pidfile error a special case
-      os-posix: reorder parent notification for -daemonize
-
-Michal Privoznik (1):
-      util: Improve os_mem_prealloc error message
-
-Peter Maydell (1):
-      target-xtensa: mark XtensaConfig structs as unused
-
-SeokYeon Hwang (1):
-      vdi: wrapped uuid_unparse() in #ifdef
-
-zhanghailiang (1):
-      target-tricore: check return value before using it
-
- block/vdi.c                    |    2 ++
- configure                      |    1 +
- dump.c                         |   11 +++----
- hw/9pfs/virtio-9p-proxy.c      |   11 ++++---
- hw/tricore/tricore_testboard.c |    2 +-
- include/qemu-common.h          |    1 -
- include/qemu/bitmap.h          |    6 +++-
- include/qemu/bitops.h          |    4 ++-
- net/slirp.c                    |    4 +--
- net/tap.c                      |    4 ++-
- net/tap_int.h                  |    3 --
- os-posix.c                     |   66 +++++++++++++++-------------------=
-------
- os-win32.c                     |    5 ---
- target-arm/translate-a64.c     |    1 -
- target-i386/cpu.c              |    8 -----
- target-xtensa/core-dc232b.c    |    2 +-
- target-xtensa/core-dc233c.c    |    2 +-
- target-xtensa/core-fsf.c       |    2 +-
- tests/test-bitops.c            |    1 +
- util/oslib-posix.c             |    3 +-
- vl.c                           |    2 +-
- 21 files changed, 59 insertions(+), 82 deletions(-)
 
