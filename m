@@ -1,40 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XkuPo-0006HH-JX
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 07:37:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60845)
+	id 1Xl7fx-0006Vn-Nd
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 21:47:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49258)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XkuPh-00064w-Qq
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:37:50 -0500
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xl7fl-0006HP-55
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 21:47:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XkuPd-0005Om-Fr
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 07:37:45 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:48876)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xl7fa-0006Kc-IK
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 21:47:13 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:40397)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XkuPO-0005Mf-5Q; Sun, 02 Nov 2014 07:37:26 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 73803402CF;
-	Sun,  2 Nov 2014 15:37:23 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 158E1712;
-	Sun,  2 Nov 2014 14:58:49 +0300 (MSK)
-Received: (nullmailer pid 14978 invoked by uid 1000);
-	Sun, 02 Nov 2014 11:58:47 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Sun,  2 Nov 2014 14:57:26 +0300
-Message-Id: <08a655be71d0a130a5d9bf7816d096ec31c4f055.1414929285.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
-References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
-References: <cover.1414929284.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PULL 14/23] dump: Fix dump-guest-memory termination
-	and use-after-close
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1Xl7fQ-0005sq-7B; Sun, 02 Nov 2014 21:46:52 -0500
+Received: from 172.24.2.119 (EHLO szxeml416-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AWN53725; Mon, 03 Nov 2014 10:46:22 +0800 (CST)
+Received: from [10.177.22.69] (10.177.22.69) by szxeml416-hub.china.huawei.com
+	(10.82.67.155) with Microsoft SMTP Server id 14.3.158.1;
+	Mon, 3 Nov 2014 10:46:13 +0800
+Message-ID: <5456EC73.1010402@huawei.com>
+Date: Mon, 3 Nov 2014 10:46:11 +0800
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
+MIME-Version: 1.0
+To: Eric Blake <eblake@redhat.com>, <qemu-trivial@nongnu.org>
+References: <1414806603-22556-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<1414806603-22556-4-git-send-email-zhang.zhanghailiang@huawei.com>
+	<5454F9C7.4020208@redhat.com>
+In-Reply-To: <5454F9C7.4020208@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.22.69]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A02020A.5456EC7F.006E, ss=2, re=0.001, recu=0.000,
+	reip=0.000, cl=2, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 1e26b981883bebcb0567de099bc53d46
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: pbonzini@redhat.com, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/4] qemu-char: convert some
+ open functions to use Error API
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,69 +55,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Nov 2014 12:37:50 -0000
+X-List-Received-Date: Mon, 03 Nov 2014 02:47:23 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+On 2014/11/1 23:18, Eric Blake wrote:
+> On 10/31/2014 07:50 PM, zhanghailiang wrote:
+>> Convert several Character backend open functions to use the Error API.
+>>
+>> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+>> ---
+>>   qemu-char.c | 52 +++++++++++++++++++++++++++-------------------------
+>>   1 file changed, 27 insertions(+), 25 deletions(-)
+>
+>> @@ -2337,12 +2339,12 @@ static CharDriverState *qemu_chr_open_stdio(ChardevStdio *opts)
+>>           if (stdio->hInputThread == INVALID_HANDLE_VALUE
+>>               || stdio->hInputReadyEvent == INVALID_HANDLE_VALUE
+>>               || stdio->hInputDoneEvent == INVALID_HANDLE_VALUE) {
+>> -            fprintf(stderr, "cannot create stdio thread or event\n");
+>> +            error_setg(errp, "cannot create stdio thread or event");
+>>               exit(1);
+>
+> This conversion feels wrong.  error_setg() does not report an error, it
+> just stores the error for a later entity higher in the call stack to
+> report it.  But exit() means there is no execution of the reporting
 
-dump_iterate() dumps blocks in a loop.  Eventually, get_next_block()
-returns "no more".  We then call dump_completed().  But we neglect to
-break the loop!  Broken in commit 4c7e251a.
+OK, I got it, thanks for your explanation;)
 
-Because of that, we dump the last block again.  This attempts to write
-to s->fd, which fails if we're lucky.  The error makes dump_iterate()
-return failure.  It's the only way it can ever return.
+> code.  Either leave this one alone, or get rid of the exit and instead
+> properly propagate error status back to the caller and make sure the
+> caller reports it.
+>
 
-Theoretical: if we're not so lucky, something else has opened something
-for writing and got the same fd.  dump_iterate() then keeps looping,
-messing up the something else's output, until a write fails, or the
-process mercifully terminates.
+I will keep the exit, but use error_report instead, as other places in qemu.,thanks.
 
-The obvious fix is to restore the return lost in commit 4c7e251a.  But
-the root cause of the bug is needlessly opaque loop control.  Replace it
-by a clean do ... while loop.
-
-This makes the badly chosen return values of get_next_block() more
-visible.  Cleaning that up is outside the scope of this bug fix.
-
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- dump.c |   11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
-
-diff --git a/dump.c b/dump.c
-index 06a4915..9c7dad8 100644
---- a/dump.c
-+++ b/dump.c
-@@ -604,10 +604,9 @@ static void dump_iterate(DumpState *s, Error **errp)
- {
-     GuestPhysBlock *block;
-     int64_t size;
--    int ret;
-     Error *local_err = NULL;
- 
--    while (1) {
-+    do {
-         block = s->next_block;
- 
-         size = block->target_end - block->target_start;
-@@ -623,11 +622,9 @@ static void dump_iterate(DumpState *s, Error **errp)
-             return;
-         }
- 
--        ret = get_next_block(s, block);
--        if (ret == 1) {
--            dump_completed(s);
--        }
--    }
-+    } while (!get_next_block(s, block));
-+
-+    dump_completed(s);
- }
- 
- static void create_vmcore(DumpState *s, Error **errp)
--- 
-1.7.10.4
 
 
