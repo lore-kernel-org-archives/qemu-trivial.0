@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xl7fx-0006Vn-Nd
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 21:47:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49258)
+	id 1Xl7sJ-00006D-Nl
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 22:00:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50593)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xl7fl-0006HP-55
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 21:47:22 -0500
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xl7sD-0008Ms-RR
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 22:00:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xl7fa-0006Kc-IK
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 21:47:13 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:40397)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xl7s9-0001RJ-0h
+	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 22:00:05 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:50519)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1Xl7fQ-0005sq-7B; Sun, 02 Nov 2014 21:46:52 -0500
-Received: from 172.24.2.119 (EHLO szxeml416-hub.china.huawei.com)
+	id 1Xl7rv-0001Pc-Lf; Sun, 02 Nov 2014 21:59:51 -0500
+Received: from 172.24.2.119 (EHLO szxeml401-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id AWN53725; Mon, 03 Nov 2014 10:46:22 +0800 (CST)
-Received: from [10.177.22.69] (10.177.22.69) by szxeml416-hub.china.huawei.com
-	(10.82.67.155) with Microsoft SMTP Server id 14.3.158.1;
-	Mon, 3 Nov 2014 10:46:13 +0800
-Message-ID: <5456EC73.1010402@huawei.com>
-Date: Mon, 3 Nov 2014 10:46:11 +0800
+	with ESMTP id AWN55600; Mon, 03 Nov 2014 10:59:42 +0800 (CST)
+Received: from [10.177.22.69] (10.177.22.69) by szxeml401-hub.china.huawei.com
+	(10.82.67.31) with Microsoft SMTP Server id 14.3.158.1;
+	Mon, 3 Nov 2014 10:59:34 +0800
+Message-ID: <5456EF95.5050502@huawei.com>
+Date: Mon, 3 Nov 2014 10:59:33 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.1;
 	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
 MIME-Version: 1.0
-To: Eric Blake <eblake@redhat.com>, <qemu-trivial@nongnu.org>
+To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-trivial@nongnu.org>
 References: <1414806603-22556-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1414806603-22556-4-git-send-email-zhang.zhanghailiang@huawei.com>
-	<5454F9C7.4020208@redhat.com>
-In-Reply-To: <5454F9C7.4020208@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+	<1414806603-22556-2-git-send-email-zhang.zhanghailiang@huawei.com>
+	<5455BE99.1000400@msgid.tls.msk.ru>
+In-Reply-To: <5455BE99.1000400@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.177.22.69]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A02020A.5456EC7F.006E, ss=2, re=0.001, recu=0.000,
-	reip=0.000, cl=2, cld=1, fgs=0, ip=0.0.0.0,
+	refid=str=0001.0A020207.5456EF9F.01AA, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 1e26b981883bebcb0567de099bc53d46
+X-Mirapoint-Loop-Id: ff07307acfda96368830a5ae97942597
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.66
 Cc: pbonzini@redhat.com, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/4] qemu-char: convert some
- open functions to use Error API
+Subject: Re: [Qemu-trivial] [PATCH 1/4] qemu-char: fix parameter check for
+ qemu_chr_open_pipe
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,37 +55,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Nov 2014 02:47:23 -0000
+X-List-Received-Date: Mon, 03 Nov 2014 03:00:10 -0000
 
-On 2014/11/1 23:18, Eric Blake wrote:
-> On 10/31/2014 07:50 PM, zhanghailiang wrote:
->> Convert several Character backend open functions to use the Error API.
+On 2014/11/2 13:18, Michael Tokarev wrote:
+> 01.11.2014 04:50, zhanghailiang wrote:
+>> The filename parameter never to be NULL, because in qemu_chr_parse_pipe
+>> it is return value of g_strdup(device), where device will not be
+>> NULL.
+>>
+>> We should check its length.
+>> After this patch, when run command:
+>>   qemu-system-x86_64 -chardev pipe,id=pipe1,path=
+>> It will report error:
+>>   chardev: pipe: no filename given
 >>
 >> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 >> ---
->>   qemu-char.c | 52 +++++++++++++++++++++++++++-------------------------
->>   1 file changed, 27 insertions(+), 25 deletions(-)
+>>   qemu-char.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/qemu-char.c b/qemu-char.c
+>> index bd0709b..42b1d8f 100644
+>> --- a/qemu-char.c
+>> +++ b/qemu-char.c
+>> @@ -1084,7 +1084,7 @@ static CharDriverState *qemu_chr_open_pipe(ChardevHostdev *opts)
+>>       char filename_out[CHR_MAX_FILENAME_SIZE];
+>>       const char *filename = opts->device;
+>>
+>> -    if (filename == NULL) {
+>> +    if (filename == NULL || strlen(filename) == 0) {
+>>           fprintf(stderr, "chardev: pipe: no filename given\n");
+>>           return NULL;
+>>       }
 >
->> @@ -2337,12 +2339,12 @@ static CharDriverState *qemu_chr_open_stdio(ChardevStdio *opts)
->>           if (stdio->hInputThread == INVALID_HANDLE_VALUE
->>               || stdio->hInputReadyEvent == INVALID_HANDLE_VALUE
->>               || stdio->hInputDoneEvent == INVALID_HANDLE_VALUE) {
->> -            fprintf(stderr, "cannot create stdio thread or event\n");
->> +            error_setg(errp, "cannot create stdio thread or event");
->>               exit(1);
+> and chr_parse_pipe() looks like:
 >
-> This conversion feels wrong.  error_setg() does not report an error, it
-> just stores the error for a later entity higher in the call stack to
-> report it.  But exit() means there is no execution of the reporting
-
-OK, I got it, thanks for your explanation;)
-
-> code.  Either leave this one alone, or get rid of the exit and instead
-> properly propagate error status back to the caller and make sure the
-> caller reports it.
 >
+> static void qemu_chr_parse_pipe(QemuOpts *opts, ChardevBackend *backend,
+>                                  Error **errp)
+> {
+>      const char *device = qemu_opt_get(opts, "path");
+>
+>      if (device == NULL) {
+>          error_setg(errp, "chardev: pipe: no device path given");
+>          return;
+>      }
+>
+> Maybe we should combine the two checks into one in chr_parse_pipe,
+> and remove the check in chr_open_pipe entirely?
 
-I will keep the exit, but use error_report instead, as other places in qemu.,thanks.
+Good idea, This is just like what qemu_chr_parse_udp does ;) Thanks.
 
+> .
+>
 
 
