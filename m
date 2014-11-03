@@ -1,45 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XlGjh-00066Z-1q
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 07:27:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35807)
+	id 1XlH4I-0005eR-ED
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 07:49:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52415)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhugh.fnst@cn.fujitsu.com>) id 1XlG3j-0000TN-1X
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 06:44:37 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1XlH4C-0005Q7-0U
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 07:49:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhugh.fnst@cn.fujitsu.com>) id 1XlG3c-0006RI-Sn
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 06:44:30 -0500
-Received: from [59.151.112.132] (port=62589 helo=heian.cn.fujitsu.com)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XlH47-0001Be-TK
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 07:49:03 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:7511)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhugh.fnst@cn.fujitsu.com>)
-	id 1XlG3P-0006Nl-MP; Mon, 03 Nov 2014 06:44:12 -0500
-X-IronPort-AV: E=Sophos;i="5.04,840,1406563200"; d="scan'208";a="42757733"
-Received: from localhost (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 03 Nov 2014 19:40:55 +0800
-Received: from G08CNEXCHPEKD02.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id sA3BhtvV020287;
-	Mon, 3 Nov 2014 19:43:55 +0800
-Received: from [10.167.226.252] (10.167.226.252) by
-	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Mon, 3 Nov 2014 19:44:07 +0800
-Message-ID: <1415015003.8216.2.camel@G08FNSTD140041>
-From: Zhu Guihua <zhugh.fnst@cn.fujitsu.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 3 Nov 2014 19:43:23 +0800
-In-Reply-To: <54574474.30209@msgid.tls.msk.ru>
-References: <1414993894-17539-1-git-send-email-zhugh.fnst@cn.fujitsu.com>
-	<54574474.30209@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.10.2 (3.10.2-2.fc20) 
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XlH47-0001AP-3R; Mon, 03 Nov 2014 07:48:59 -0500
+Received: from 172.24.2.119 (EHLO szxeml405-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CBU27344; Mon, 03 Nov 2014 20:48:54 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml405-hub.china.huawei.com
+	(10.82.67.60) with Microsoft SMTP Server id 14.3.158.1; Mon, 3 Nov 2014
+	20:48:46 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Mon, 3 Nov 2014 20:48:30 +0800
+Message-ID: <1415018910-11600-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-X-Mailman-Approved-At: Mon, 03 Nov 2014 07:27:50 -0500
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, imammedo@redhat.com,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] icc_bus: rename ICC_BRIGDE to ICC_BRIDGE
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>, mjt@tls.msk.ru,
+	peter.huangpeng@huawei.com
+Subject: [Qemu-trivial] [PATCH] qemu-doc.texi: fix typos for x509 examples
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,22 +44,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Nov 2014 11:44:37 -0000
+X-List-Received-Date: Mon, 03 Nov 2014 12:49:08 -0000
 
-On Mon, 2014-11-03 at 12:01 +0300, Michael Tokarev wrote:
-> 03.11.2014 08:51, Zhu Guihua wrote:
-> > Rename ICC_BRIGDE for better readability.
-> 
-> That's a good one... :)  Applied to -trivial, thank you!
-> 
+From: Gonglei <arei.gonglei@huawei.com>
 
-For Igor's opinion, it is better to change the subject.
-So should I send v2 to fix this?
+Fix typos made people confuesd:
+1)
+$ certtool --generate-certificate \
+           --load-ca-certificate ca-cert.pem \
+           --load-ca-privkey ca-key.pem \
+           --load-privkey server server-key.pem \
+           --template server.info \
+           --outfile server-cert.pem
+Too many arguments
+Try `certtool --help' for more information.
+2)
+$ certtool --generate-certificate \
+           --load-ca-certificate ca-cert.pem \
+           --load-ca-privkey ca-key.pem \
+           --load-privkey client-key.pem \
+           --template client.info \
+           --outfile client-cert.pem
+error parsing command line: client.info: unknown option 'organiazation'
+at position 67 in config file
 
-Regards,
-Zhu
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ qemu-doc.texi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> /mjt
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index 9973090..ad418f8 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -1631,7 +1631,7 @@ EOF
+ # certtool --generate-certificate \
+            --load-ca-certificate ca-cert.pem \
+            --load-ca-privkey ca-key.pem \
+-           --load-privkey server server-key.pem \
++           --load-privkey server-key.pem \
+            --template server.info \
+            --outfile server-cert.pem
+ @end example
+@@ -1654,7 +1654,7 @@ the secure CA private key:
+ country = GB
+ state = London
+ locality = London
+-organiazation = Name of your organization
++organization = Name of your organization
+ cn = client.foo.example.com
+ tls_www_client
+ encryption_key
+-- 
+1.7.12.4
 
 
 
