@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XlECL-0006eA-14
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 04:45:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36396)
+	id 1XlETy-0006PM-7S
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 05:03:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41130)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlECF-0006YA-9w
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 04:45:16 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1XlETq-0006Fg-Da
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 05:03:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlEC9-000050-Ok
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 04:45:11 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:20482)
+	(envelope-from <mjt@tls.msk.ru>) id 1XlETk-0007iR-9k
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 05:03:22 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:48600)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XlEC8-0008Il-GK; Mon, 03 Nov 2014 04:45:05 -0500
-Received: from 172.24.2.119 (EHLO szxeml448-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CDW34018; Mon, 03 Nov 2014 17:44:57 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml448-hub.china.huawei.com
-	(10.82.67.191) with Microsoft SMTP Server id 14.3.158.1; Mon, 3 Nov 2014
-	17:44:50 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-To: <qemu-trivial@nongnu.org>
-Date: Mon, 3 Nov 2014 17:44:32 +0800
-Message-ID: <1415007872-8228-6-git-send-email-zhang.zhanghailiang@huawei.com>
-X-Mailer: git-send-email 1.9.2.msysgit.0
-In-Reply-To: <1415007872-8228-1-git-send-email-zhang.zhanghailiang@huawei.com>
-References: <1415007872-8228-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XlETX-0007eg-Qn; Mon, 03 Nov 2014 05:03:03 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 35051404DE;
+	Mon,  3 Nov 2014 13:03:02 +0300 (MSK)
+Message-ID: <545752D6.5020605@msgid.tls.msk.ru>
+Date: Mon, 03 Nov 2014 13:03:02 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.2.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, mjt@tls.msk.ru,
-	peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
-	pbonzini@redhat.com, eblake@redhat.com
-Subject: [Qemu-trivial] [PATCH v2 5/5] spice-qemu-char: convert
-	qemu_chr_open_spice_vmc to use Error API
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ qemu-trivial@nongnu.org
+References: <1415007872-8228-1-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1415007872-8228-1-git-send-email-zhang.zhanghailiang@huawei.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: pbonzini@redhat.com, eblake@redhat.com, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH v2 0/5] Trivial patch about qemu-char
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,78 +45,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Nov 2014 09:45:16 -0000
+X-List-Received-Date: Mon, 03 Nov 2014 10:03:29 -0000
 
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
----
- include/ui/qemu-spice.h     | 2 +-
- qemu-char.c                 | 2 +-
- spice-qemu-char.c           | 4 ++--
- stubs/qemu-chr-open-spice.c | 2 +-
- 4 files changed, 5 insertions(+), 5 deletions(-)
+03.11.2014 12:44, zhanghailiang wrote:
+> Patch 1~3 fix wrong check about in-parameter.
+> The last two patches convert some open functions to use Error API.
+>=20
+> v2:
+> - don't use error_setg when followed by exit(), it does not report an e=
+rror (Eric Blake)
+> - check the parameter in qemu_chr_parse_* functions and remove the chec=
+k in qemu_chr_open_* functions. (Michael Tokarev)
+>=20
+> Thanks very much for their reviews and suggestions;)
 
-diff --git a/include/ui/qemu-spice.h b/include/ui/qemu-spice.h
-index a93b4b2..33882aa 100644
---- a/include/ui/qemu-spice.h
-+++ b/include/ui/qemu-spice.h
-@@ -48,7 +48,7 @@ int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
- void do_info_spice_print(Monitor *mon, const QObject *data);
- void do_info_spice(Monitor *mon, QObject **ret_data);
- 
--CharDriverState *qemu_chr_open_spice_vmc(const char *type);
-+CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp);
- #if SPICE_SERVER_VERSION >= 0x000c02
- CharDriverState *qemu_chr_open_spice_port(const char *name);
- void qemu_spice_register_ports(void);
-diff --git a/qemu-char.c b/qemu-char.c
-index 3ebdfe7..aa528ae 100644
---- a/qemu-char.c
-+++ b/qemu-char.c
-@@ -4252,7 +4252,7 @@ ChardevReturn *qmp_chardev_add(const char *id, ChardevBackend *backend,
- #endif
- #ifdef CONFIG_SPICE
-     case CHARDEV_BACKEND_KIND_SPICEVMC:
--        chr = qemu_chr_open_spice_vmc(backend->spicevmc->type);
-+        chr = qemu_chr_open_spice_vmc(backend->spicevmc->type, errp);
-         break;
-     case CHARDEV_BACKEND_KIND_SPICEPORT:
-         chr = qemu_chr_open_spice_port(backend->spiceport->fqdn);
-diff --git a/spice-qemu-char.c b/spice-qemu-char.c
-index 48ee37f..5c47287 100644
---- a/spice-qemu-char.c
-+++ b/spice-qemu-char.c
-@@ -286,7 +286,7 @@ static CharDriverState *chr_open(const char *subtype,
-     return chr;
- }
- 
--CharDriverState *qemu_chr_open_spice_vmc(const char *type)
-+CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp)
- {
-     const char **psubtype = spice_server_char_device_recognized_subtypes();
- 
-@@ -296,7 +296,7 @@ CharDriverState *qemu_chr_open_spice_vmc(const char *type)
-         }
-     }
-     if (*psubtype == NULL) {
--        fprintf(stderr, "spice-qemu-char: unsupported type: %s\n", type);
-+        error_setg(errp, "spice-qemu-char: unsupported type: %s", type);
-         print_allowed_subtypes();
-         return NULL;
-     }
-diff --git a/stubs/qemu-chr-open-spice.c b/stubs/qemu-chr-open-spice.c
-index f1c4849..55826ed 100644
---- a/stubs/qemu-chr-open-spice.c
-+++ b/stubs/qemu-chr-open-spice.c
-@@ -1,7 +1,7 @@
- #include "qemu-common.h"
- #include "ui/qemu-spice.h"
- 
--CharDriverState *qemu_chr_open_spice_vmc(const char *type)
-+CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp)
- {
-     return NULL;
- }
--- 
-1.7.12.4
+Thank you for doing all this.  I think I can apply this but with folding
+patches 1 and 2 into one, -- it is better to see them both in the same
+context, just like you did in patch 3.  If that's okay with you, I'll
+just apply it like this.
 
+Speaking of Error API -- what is the general consensus of this?  We have
+TONS of various way to report errors now, and we had several incarnations
+of various error APIs too, are we going to use some common API finally,
+or is the conversion endless, expecting new APIs to arrive?
+
+And one more thing.  Patch 4 does this:
+
+@@ -1388,8 +1388,8 @@ static CharDriverState *qemu_chr_open_pty(const cha=
+r *id,
+     ret->pty =3D g_strdup(pty_name);
+     ret->has_pty =3D true;
+
+-    fprintf(stderr, "char device redirected to %s (label %s)\n",
+-            pty_name, id);
++    error_report("char device redirected to %s (label %s)",
++                 pty_name, id);
+
+     s =3D g_malloc0(sizeof(PtyCharDriver));
+     chr->opaque =3D s;
+
+This is not really correct.  First it is not really an error, it is
+an informational message.  But also, there are many scripts out there
+who expects this very format of this message to find the entry to
+that char device.  Converting this message to error_report() changes
+its format, so scrips will be unable to find the device anymore.
+
+Take a look at history of this place, -- I remember there was a rather
+hot discussion when the last part, "(label %)", has been added (initial
+message was without this label).  Initial suggestion was to change
+wordin to 'char device $LABEL redirected to $DEVICE', but even if it
+is much more readable and correct, we agreed to add that "label" part
+to the end - not that it preserves original message, but at least it
+makes less scripts to fail...
+
+So at least this hunk should not be applied.  I think this place
+deserves a comment.
+
+I'm sorry for being so picky, but I think I give enough reasons
+explaining why, and these reasons are serious enough.
+
+Thanks,
+
+/mjt
 
