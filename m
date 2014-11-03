@@ -1,44 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xl7tK-0001c6-CC
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Nov 2014 22:01:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50899)
+	id 1XlC72-0005GL-Ub
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 02:31:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35016)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xl7tD-0001HY-Jo
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 22:01:12 -0500
+	(envelope-from <armbru@redhat.com>) id 1XlC6x-0005Ap-Kg
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 02:31:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Xl7t8-0001wG-Q0
-	for qemu-trivial@nongnu.org; Sun, 02 Nov 2014 22:01:07 -0500
-Received: from szxga02-in.huawei.com ([119.145.14.65]:13934)
+	(envelope-from <armbru@redhat.com>) id 1XlC6t-0003BI-1c
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 02:31:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39951)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1Xl7sw-0001u2-EF; Sun, 02 Nov 2014 22:00:51 -0500
-Received: from 172.24.2.119 (EHLO SZXEML455-HUB.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CBT53073; Mon, 03 Nov 2014 11:00:42 +0800 (CST)
-Received: from [10.177.22.69] (10.177.22.69) by SZXEML455-HUB.china.huawei.com
-	(10.82.67.198) with Microsoft SMTP Server id 14.3.158.1;
-	Mon, 3 Nov 2014 11:00:34 +0800
-Message-ID: <5456EFD1.3080209@huawei.com>
-Date: Mon, 3 Nov 2014 11:00:33 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
+	(envelope-from <armbru@redhat.com>)
+	id 1XlC6f-00039s-OI; Mon, 03 Nov 2014 02:31:17 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sA37VE29000630
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Mon, 3 Nov 2014 02:31:14 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-51.ams2.redhat.com
+	[10.36.116.51])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sA37VCYO009963
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 3 Nov 2014 02:31:13 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id CBA0230403B1; Mon,  3 Nov 2014 08:31:11 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhu Guihua <zhugh.fnst@cn.fujitsu.com>
+References: <1414993894-17539-1-git-send-email-zhugh.fnst@cn.fujitsu.com>
+Date: Mon, 03 Nov 2014 08:31:11 +0100
+In-Reply-To: <1414993894-17539-1-git-send-email-zhugh.fnst@cn.fujitsu.com>
+	(Zhu Guihua's message of "Mon, 3 Nov 2014 13:51:34 +0800")
+Message-ID: <87k33c3fls.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-trivial@nongnu.org>
-References: <1414806603-22556-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1414806603-22556-3-git-send-email-zhang.zhanghailiang@huawei.com>
-	<5455D423.2000008@msgid.tls.msk.ru>
-In-Reply-To: <5455D423.2000008@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: pbonzini@redhat.com, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH 2/4] spice-qemu-char: fix check for
-	in-parameter
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, imammedo@redhat.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] icc_bus: rename ICC_BRIGDE
+	to ICC_BRIDGE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,60 +52,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Nov 2014 03:01:12 -0000
+X-List-Received-Date: Mon, 03 Nov 2014 07:31:40 -0000
 
-On 2014/11/2 14:50, Michael Tokarev wrote:
-> 01.11.2014 04:50, zhanghailiang wrote:
->> For qemu_chr_open_spice_vmc and qemu_chr_open_spice_port, the in-parameter
->> never to be NULL, because the checks in qemu_chr_parse_spice_vmc
->> and qemu_chr_parse_spice_port have ensured this.
->>
->> So we should check the length of the in-parameter.
->
-> The same applies here as to qemu_chr_open in patch 1/4.
-> But here we've one more thing:
->
->> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
->> ---
->>   spice-qemu-char.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/spice-qemu-char.c b/spice-qemu-char.c
->> index 8106e06..45e7d69 100644
->> --- a/spice-qemu-char.c
->> +++ b/spice-qemu-char.c
->> @@ -290,7 +290,7 @@ CharDriverState *qemu_chr_open_spice_vmc(const char *type)
->>   {
->>       const char **psubtype = spice_server_char_device_recognized_subtypes();
->>
->> -    if (type == NULL) {
->> +    if (type == NULL || strlen(type) == 0) {
->>           fprintf(stderr, "spice-qemu-char: missing name parameter\n");
->
-> This is 'missing TYPE parameter' not name.  If we merge the check with
-> qemu_chr_parse_* it will go away.
->
+Cc: qemu-trivial
 
-OK, will fix them in V2, Thanks:)
+Zhu Guihua <zhugh.fnst@cn.fujitsu.com> writes:
 
-> Thanks,
+> Rename ICC_BRIGDE for better readability.
 >
-> /mjt
->
->>           print_allowed_subtypes();
->>           return NULL;
->> @@ -315,7 +315,7 @@ CharDriverState *qemu_chr_open_spice_port(const char *name)
->>       CharDriverState *chr;
->>       SpiceCharDriver *s;
->>
->> -    if (name == NULL) {
->> +    if (name == NULL || strlen(name) == 0) {
->>           fprintf(stderr, "spice-qemu-char: missing name parameter\n");
->>           return NULL;
->>       }
->>
->
-> .
->
+> Signed-off-by: Zhu Guihua <zhugh.fnst@cn.fujitsu.com>
 
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
