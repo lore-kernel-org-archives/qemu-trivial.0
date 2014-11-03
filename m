@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XlECQ-0006nU-Sv
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 04:45:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36442)
+	id 1XlECL-0006eA-14
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 04:45:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36396)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlECH-0006ar-Ss
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 04:45:18 -0500
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlECF-0006YA-9w
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 04:45:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlECC-000090-13
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 04:45:13 -0500
-Received: from szxga02-in.huawei.com ([119.145.14.65]:42287)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlEC9-000050-Ok
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 04:45:11 -0500
+Received: from szxga01-in.huawei.com ([119.145.14.64]:20482)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XlECB-0008Jf-9Q; Mon, 03 Nov 2014 04:45:07 -0500
-Received: from 172.24.2.119 (EHLO szxeml462-hub.china.huawei.com)
+	id 1XlEC8-0008Il-GK; Mon, 03 Nov 2014 04:45:05 -0500
+Received: from 172.24.2.119 (EHLO szxeml448-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CBU09725; Mon, 03 Nov 2014 17:45:00 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml462-hub.china.huawei.com
-	(10.82.67.205) with Microsoft SMTP Server id 14.3.158.1; Mon, 3 Nov 2014
-	17:44:40 +0800
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CDW34018; Mon, 03 Nov 2014 17:44:57 +0800 (CST)
+Received: from localhost (10.177.22.69) by szxeml448-hub.china.huawei.com
+	(10.82.67.191) with Microsoft SMTP Server id 14.3.158.1; Mon, 3 Nov 2014
+	17:44:50 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
 To: <qemu-trivial@nongnu.org>
-Date: Mon, 3 Nov 2014 17:44:28 +0800
-Message-ID: <1415007872-8228-2-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Mon, 3 Nov 2014 17:44:32 +0800
+Message-ID: <1415007872-8228-6-git-send-email-zhang.zhanghailiang@huawei.com>
 X-Mailer: git-send-email 1.9.2.msysgit.0
 In-Reply-To: <1415007872-8228-1-git-send-email-zhang.zhanghailiang@huawei.com>
 References: <1415007872-8228-1-git-send-email-zhang.zhanghailiang@huawei.com>
@@ -31,12 +31,12 @@ Content-Type: text/plain
 X-Originating-IP: [10.177.22.69]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
+X-Received-From: 119.145.14.64
 Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, mjt@tls.msk.ru,
 	peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
 	pbonzini@redhat.com, eblake@redhat.com
-Subject: [Qemu-trivial] [PATCH v2 1/5] qemu-char: fix parameter check for
-	some qemu_chr_parse_* functions
+Subject: [Qemu-trivial] [PATCH v2 5/5] spice-qemu-char: convert
+	qemu_chr_open_spice_vmc to use Error API
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,69 +48,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Nov 2014 09:45:21 -0000
-
-For some qemu_chr_parse_* functions, we just check whether the parameter
-is NULL or not, not check its length.
-
-For example:
-qemu-system-x86_64 -chardev pipe,id=id,path=
-It will pass the check of NULL, and finds the error until trying
-to open it.
-
-So we should find the error by check its length, just like what
-qemu_chr_parse_udp does, it will help find what exactly is wrong.
+X-List-Received-Date: Mon, 03 Nov 2014 09:45:16 -0000
 
 Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 ---
- qemu-char.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ include/ui/qemu-spice.h     | 2 +-
+ qemu-char.c                 | 2 +-
+ spice-qemu-char.c           | 4 ++--
+ stubs/qemu-chr-open-spice.c | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
+diff --git a/include/ui/qemu-spice.h b/include/ui/qemu-spice.h
+index a93b4b2..33882aa 100644
+--- a/include/ui/qemu-spice.h
++++ b/include/ui/qemu-spice.h
+@@ -48,7 +48,7 @@ int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
+ void do_info_spice_print(Monitor *mon, const QObject *data);
+ void do_info_spice(Monitor *mon, QObject **ret_data);
+ 
+-CharDriverState *qemu_chr_open_spice_vmc(const char *type);
++CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp);
+ #if SPICE_SERVER_VERSION >= 0x000c02
+ CharDriverState *qemu_chr_open_spice_port(const char *name);
+ void qemu_spice_register_ports(void);
 diff --git a/qemu-char.c b/qemu-char.c
-index bd0709b..04d747a 100644
+index 3ebdfe7..aa528ae 100644
 --- a/qemu-char.c
 +++ b/qemu-char.c
-@@ -3419,7 +3419,7 @@ static void qemu_chr_parse_file_out(QemuOpts *opts, ChardevBackend *backend,
+@@ -4252,7 +4252,7 @@ ChardevReturn *qmp_chardev_add(const char *id, ChardevBackend *backend,
+ #endif
+ #ifdef CONFIG_SPICE
+     case CHARDEV_BACKEND_KIND_SPICEVMC:
+-        chr = qemu_chr_open_spice_vmc(backend->spicevmc->type);
++        chr = qemu_chr_open_spice_vmc(backend->spicevmc->type, errp);
+         break;
+     case CHARDEV_BACKEND_KIND_SPICEPORT:
+         chr = qemu_chr_open_spice_port(backend->spiceport->fqdn);
+diff --git a/spice-qemu-char.c b/spice-qemu-char.c
+index 48ee37f..5c47287 100644
+--- a/spice-qemu-char.c
++++ b/spice-qemu-char.c
+@@ -286,7 +286,7 @@ static CharDriverState *chr_open(const char *subtype,
+     return chr;
+ }
+ 
+-CharDriverState *qemu_chr_open_spice_vmc(const char *type)
++CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp)
  {
-     const char *path = qemu_opt_get(opts, "path");
+     const char **psubtype = spice_server_char_device_recognized_subtypes();
  
--    if (path == NULL) {
-+    if (path == NULL || strlen(path) == 0) {
-         error_setg(errp, "chardev: file: no filename given");
-         return;
-     }
-@@ -3453,7 +3453,7 @@ static void qemu_chr_parse_parallel(QemuOpts *opts, ChardevBackend *backend,
- {
-     const char *device = qemu_opt_get(opts, "path");
- 
--    if (device == NULL) {
-+    if (device == NULL || strlen(device) == 0) {
-         error_setg(errp, "chardev: parallel: no device path given");
-         return;
-     }
-@@ -3466,7 +3466,7 @@ static void qemu_chr_parse_pipe(QemuOpts *opts, ChardevBackend *backend,
- {
-     const char *device = qemu_opt_get(opts, "path");
- 
--    if (device == NULL) {
-+    if (device == NULL || strlen(device) == 0) {
-         error_setg(errp, "chardev: pipe: no device path given");
-         return;
-     }
-@@ -3515,11 +3515,11 @@ static void qemu_chr_parse_socket(QemuOpts *opts, ChardevBackend *backend,
-     SocketAddress *addr;
- 
-     if (!path) {
--        if (!host) {
-+        if (!host || strlen(host) == 0) {
-             error_setg(errp, "chardev: socket: no host given");
-             return;
+@@ -296,7 +296,7 @@ CharDriverState *qemu_chr_open_spice_vmc(const char *type)
          }
--        if (!port) {
-+        if (!port || strlen(port) == 0) {
-             error_setg(errp, "chardev: socket: no port given");
-             return;
-         }
+     }
+     if (*psubtype == NULL) {
+-        fprintf(stderr, "spice-qemu-char: unsupported type: %s\n", type);
++        error_setg(errp, "spice-qemu-char: unsupported type: %s", type);
+         print_allowed_subtypes();
+         return NULL;
+     }
+diff --git a/stubs/qemu-chr-open-spice.c b/stubs/qemu-chr-open-spice.c
+index f1c4849..55826ed 100644
+--- a/stubs/qemu-chr-open-spice.c
++++ b/stubs/qemu-chr-open-spice.c
+@@ -1,7 +1,7 @@
+ #include "qemu-common.h"
+ #include "ui/qemu-spice.h"
+ 
+-CharDriverState *qemu_chr_open_spice_vmc(const char *type)
++CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp)
+ {
+     return NULL;
+ }
 -- 
 1.7.12.4
 
