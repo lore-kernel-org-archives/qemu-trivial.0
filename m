@@ -1,35 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XlGjg-00066A-PV
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 07:27:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53201)
+	id 1XlGjh-00066Z-1q
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 07:27:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35807)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter@lekensteyn.nl>) id 1XlFFQ-0007bN-HT
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 05:52:37 -0500
+	(envelope-from <zhugh.fnst@cn.fujitsu.com>) id 1XlG3j-0000TN-1X
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 06:44:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter@lekensteyn.nl>) id 1XlFFL-0007Lv-IA
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 05:52:32 -0500
-Received: from lekensteyn.nl ([178.21.112.251]:58151)
+	(envelope-from <zhugh.fnst@cn.fujitsu.com>) id 1XlG3c-0006RI-Sn
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 06:44:30 -0500
+Received: from [59.151.112.132] (port=62589 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter@lekensteyn.nl>)
-	id 1XlFFB-0007Ew-4e; Mon, 03 Nov 2014 05:52:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lekensteyn.nl; s=s2048-2014-q3; 
-	h=Message-Id:Date:Subject:Cc:To:From;
-	bh=sMMaDU0RbNUR+4uYiVRSZDATLPuZbD0bfy3s22qn80M=; 
-	b=pIivL0WviQPf2itgzL1jC7bh3vBu/mbGHC8g2QKpksQrb3ij0nFLH4wxtuuABUPOBw7I9kaWwwXuOELO+FgCKDTbHfv+L35Ybm/q308xKXUCRkD+KFJj4H1KfF61aKfW1DwvN29cmuRK/VGmezjIHPIqGrJ4meXxEq+CptmDBdgyEWJx2Il/4dplKi05RyhFR9F1UprUdZvKMnVt68P+2FChu4IV1sXmX8vR5wdTZzxyO4NLSdENSqsK0N+zvrO44Tf5tGDr4AZacxKSlNjZCm4K0EdLAojzPXy1z0tsKwJrwWKMTRpLN+eAw3MYQnCjmvrnwHQg8CbI+zl+ZQtaag==;
-Received: by lekensteyn.nl with esmtpsa (TLS1.2:RSA_AES_128_CBC_SHA256:128)
-	(Exim 4.80) (envelope-from <peter@lekensteyn.nl>)
-	id 1XlFF6-00055A-BM; Mon, 03 Nov 2014 11:52:12 +0100
-From: Peter Wu <peter@lekensteyn.nl>
-To: qemu-devel@nongnu.org
-Date: Mon,  3 Nov 2014 11:52:10 +0100
-Message-Id: <1415011930-1964-1-git-send-email-peter@lekensteyn.nl>
-X-Mailer: git-send-email 2.1.2
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 178.21.112.251
+	(envelope-from <zhugh.fnst@cn.fujitsu.com>)
+	id 1XlG3P-0006Nl-MP; Mon, 03 Nov 2014 06:44:12 -0500
+X-IronPort-AV: E=Sophos;i="5.04,840,1406563200"; d="scan'208";a="42757733"
+Received: from localhost (HELO edo.cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 03 Nov 2014 19:40:55 +0800
+Received: from G08CNEXCHPEKD02.g08.fujitsu.local (localhost.localdomain
+	[127.0.0.1])
+	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id sA3BhtvV020287;
+	Mon, 3 Nov 2014 19:43:55 +0800
+Received: from [10.167.226.252] (10.167.226.252) by
+	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Mon, 3 Nov 2014 19:44:07 +0800
+Message-ID: <1415015003.8216.2.camel@G08FNSTD140041>
+From: Zhu Guihua <zhugh.fnst@cn.fujitsu.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Date: Mon, 3 Nov 2014 19:43:23 +0800
+In-Reply-To: <54574474.30209@msgid.tls.msk.ru>
+References: <1414993894-17539-1-git-send-email-zhugh.fnst@cn.fujitsu.com>
+	<54574474.30209@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.10.2 (3.10.2-2.fc20) 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
 X-Mailman-Approved-At: Mon, 03 Nov 2014 07:27:50 -0500
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PATCH] slirp/smbd: disable printer in smb config
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, imammedo@redhat.com,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] icc_bus: rename ICC_BRIGDE to ICC_BRIDGE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,101 +51,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Nov 2014 10:52:37 -0000
+X-List-Received-Date: Mon, 03 Nov 2014 11:44:37 -0000
 
-The file sharing module should not handle printers, so disable it.
-The options 'load printers' and 'printing' have been available since the
-beginning (May 1996, commit 0e8fd3398771da2f016d72830179507f3edda51b).
-Option 'disable spoolss' is available since Samba 2.0.4, commit
-de5f42c9d9172592779fa2504d44544e3b6b1c0d).
+On Mon, 2014-11-03 at 12:01 +0300, Michael Tokarev wrote:
+> 03.11.2014 08:51, Zhu Guihua wrote:
+> > Rename ICC_BRIGDE for better readability.
+> 
+> That's a good one... :)  Applied to -trivial, thank you!
+> 
 
-Next, "socket address" was reported as deprecated, use a combination of
-"interfaces" and "bind interfaces only" instead (available since October
-1997, commit 79f4fb52c1ed56fd843f81b4eb0cdd2991d4d0f4).
+For Igor's opinion, it is better to change the subject.
+So should I send v2 to fix this?
 
-Override cache directory to avoid writing to a global directory. Option
-available since Samba 3.4.0, Jan 2009, commit
-19a05bf2f485023b11b41dfae3f6459847d55ef7.
+Regards,
+Zhu
 
-Set "usershare max shared=0" to prevent a global directory from being
-used. Option available since Samba 3.0.23, February 2006, commit
-5831715049f2d460ce42299963a5defdc160891b.
+> /mjt
 
-The most recently option was introduced with Samba 3.4.0, but previously
-"state directory" was already added which exists in Samba 3.4.0. As
-unknown parameters are ignored (while printing a warning), it should be
-safe to add another option.
-
-Signed-off-by: Peter Wu <peter@lekensteyn.nl>
----
-Hi,
-
-While trying to share a folder with a guest, I noticed that the option -net
-user,smb=... would time out in the guest due to an incompatibility with Samba 4
-(see also mailing list message "slirp-smb broken with Samba 4.1" from Jan Kiska
-and https://bugs.debian.org/747636). FYI, the bug is fixed in newer Samba
-(tested with samba-4.2.0rc1-388-ga3b333a).
-
-While trying to fix that, I found that Samba would try to communicate with CUPS.
-This patch disables that fixes some other paths as well. Looking through the
-smb.conf manual for "{prefix}", it seems that no other directory is forgotten
-now.
-
-As the inetd mode is broken, I work around by starting smbd with the generated
-config:
-
-    smbd -s smb.conf -p 1337
-
-Then I forward the ports to the guest with (newline inserted for readability):
-
-    -user net,
-        guestfwd=tcp:0.0.0.0:139-cmd:'nc 127.0.0.1 1337',
-        guestfwd=tcp:0.0.0.0:445-cmd:'nc 127.0.0.1 1337'
-
-This "works" but is certainly not optimal.
-
-Kind regards,
-Peter
----
- net/slirp.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
-
-diff --git a/net/slirp.c b/net/slirp.c
-index c171119..bad427b 100644
---- a/net/slirp.c
-+++ b/net/slirp.c
-@@ -523,15 +523,21 @@ static int slirp_smb(SlirpState* s, const char *exported_dir,
-     fprintf(f,
-             "[global]\n"
-             "private dir=%s\n"
--            "socket address=127.0.0.1\n"
-+            "interfaces=127.0.0.1\n"
-+            "bind interfaces only=yes\n"
-             "pid directory=%s\n"
-             "lock directory=%s\n"
-             "state directory=%s\n"
-+            "cache directory=%s\n"
-             "ncalrpc dir=%s/ncalrpc\n"
-             "log file=%s/log.smbd\n"
-             "smb passwd file=%s/smbpasswd\n"
-             "security = user\n"
-             "map to guest = Bad User\n"
-+            "load printers = no\n"
-+            "printing = bsd\n"
-+            "disable spoolss = yes\n"
-+            "usershare max shares = 0\n"
-             "[qemu]\n"
-             "path=%s\n"
-             "read only=no\n"
-@@ -544,6 +550,7 @@ static int slirp_smb(SlirpState* s, const char *exported_dir,
-             s->smb_dir,
-             s->smb_dir,
-             s->smb_dir,
-+            s->smb_dir,
-             exported_dir,
-             passwd->pw_name
-             );
--- 
-2.1.2
 
 
