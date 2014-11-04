@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XlLuf-0004er-1R
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 12:59:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46077)
+	id 1XlTjo-0005FJ-2b
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Nov 2014 21:20:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56837)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter@lekensteyn.nl>) id 1XlLuc-0004aT-Hp
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 12:59:31 -0500
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlTjh-00058O-VZ
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 21:20:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter@lekensteyn.nl>) id 1XlLub-0001pj-KF
-	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 12:59:30 -0500
-Received: from mail.lekensteyn.nl ([2a02:2308::360:1:25]:43891)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlTjd-0000PX-Q0
+	for qemu-trivial@nongnu.org; Mon, 03 Nov 2014 21:20:45 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:18342)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter@lekensteyn.nl>)
-	id 1XlLuX-0001nn-JE; Mon, 03 Nov 2014 12:59:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lekensteyn.nl; s=s2048-2014-q3; 
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From;
-	bh=cDEzoW/OjSmAeyqemmBVKMSlRlv0wEArFoOcvvC93KI=; 
-	b=IHT8fwcIf1sC+ELAPf8N3ZgPsZA/reGls0pXLrGse91sDULkpPleJlqgR9x2JuFhSYQlecbMWxW0hdIb3vK6dNzhnXrt3rHWmsZDamxcrFgMsQ7U0GkXlp9LQ4mNzpSCUocEKxP3uXmiTqbv1Y3yvNWLNqrpy5sX9zJTl7AqFDym7ZIBZtWSkv0MKuOLfRrRVh945YU916ZOtNcPGCFoNnlHY/4ifFifIX7oKuXFNz1MxZtaPcUzpN8YnsSyi6vJUfMvW5j8AbpVY0PlrlQ2vhwhQjDO0m+bpUXys6ZWJWXE18w7kg2VFEacJ8etJn5r0rouX4c0wgroSBwCkEttuA==;
-Received: by lekensteyn.nl with esmtpsa (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:256)
-	(Exim 4.80) (envelope-from <peter@lekensteyn.nl>)
-	id 1XlLuU-0006wK-Oo; Mon, 03 Nov 2014 18:59:23 +0100
-From: Peter Wu <peter@lekensteyn.nl>
-To: qemu-devel@nongnu.org
-Date: Mon, 03 Nov 2014 18:59:21 +0100
-Message-ID: <3098080.6ftE1k1ya5@al>
-User-Agent: KMail/4.13.3 (Linux/3.17.0-rc4-custom-00168-g7ec62d4; KDE/4.14.2;
-	x86_64; ; )
-In-Reply-To: <54578DFC.3070807@msgid.tls.msk.ru>
-References: <1415011930-1964-1-git-send-email-peter@lekensteyn.nl>
-	<54578DFC.3070807@msgid.tls.msk.ru>
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1XlTjT-0000O6-O2; Mon, 03 Nov 2014 21:20:33 -0500
+Received: from 172.24.2.119 (EHLO szxeml462-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CBU84458; Tue, 04 Nov 2014 10:20:28 +0800 (CST)
+Received: from [10.177.22.69] (10.177.22.69) by szxeml462-hub.china.huawei.com
+	(10.82.67.205) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 4 Nov 2014 10:20:19 +0800
+Message-ID: <54583723.4010403@huawei.com>
+Date: Tue, 4 Nov 2014 10:17:07 +0800
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a02:2308::360:1:25
-Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp/smbd: disable printer
-	in smb config
+To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-trivial@nongnu.org>
+References: <1415007872-8228-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<545752D6.5020605@msgid.tls.msk.ru> <54576972.2030506@huawei.com>
+	<54578CBB.9040306@msgid.tls.msk.ru>
+In-Reply-To: <54578CBB.9040306@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.22.69]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: pbonzini@redhat.com, Gerd Hoffmann <kraxel@redhat.com>, eblake@redhat.com,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH v2 0/5] Trivial patch about qemu-char
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,29 +50,196 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Nov 2014 17:59:31 -0000
+X-List-Received-Date: Tue, 04 Nov 2014 02:20:50 -0000
 
-On Monday 03 November 2014 17:15:24 Michael Tokarev wrote:
-> BTW, I'm not sure `socket address' paraameter is relevant in this context
-> at all, -- smbd should not use it in inetd mode.  It'd be interesting to
-> know why this option is here to start with, and whenever we really need
-> the new interfaces/bind-interfacs-only replacement.
+On 2014/11/3 22:10, Michael Tokarev wrote:
+> 03.11.2014 14:39, zhanghailiang wrote:
+>> On 2014/11/3 18:03, Michael Tokarev wrote:
+>>> 03.11.2014 12:44, zhanghailiang wrote:
+>>>> Patch 1~3 fix wrong check about in-parameter.
+>>>> The last two patches convert some open functions to use Error API.
+>>>>
+>>>> v2:
+>>>> - don't use error_setg when followed by exit(), it does not report an error (Eric Blake)
+>>>> - check the parameter in qemu_chr_parse_* functions and remove the check in qemu_chr_open_* functions. (Michael Tokarev)
+>>>>
+>>>> Thanks very much for their reviews and suggestions;)
+>>>
+>>> Thank you for doing all this.  I think I can apply this but with folding
+>>> patches 1 and 2 into one, -- it is better to see them both in the same
+>>> context, just like you did in patch 3.  If that's okay with you, I'll
+>>> just apply it like this.
+>>
+>> Sure, I'm Ok with it;)
+>
+> I myself also prefer to use construct like !str[0] in place of strlen(str) != 0,
+> to mean we check for its emptiness, we don't really need its lenght.  But it is
 
-The socket option is unused when QEMU invokes the command directly. The
-only (weak) reason why it is still there is to ease testing, such that
-you can simply use:
+Hmm, Sounds good, will fix like that in V3.
 
-    smbd -s smb.conf -p 1337
+> not a probem at all, just a matter of persona preference.
+>
+> I suggest mergeing the two commits into one, and also fix grammar erros
+> in the commit message, something like this (fell free to use this
+> commit message to the combined commit):
+>
 
-Without the socket option, I am afraid that you will accidentally expose
-the very permissive share to the network.
+OK;)
 
-So either append a comment explaining the above or just remove it. I am
-fine with removing the interfaces option from this patch (or in a future
-patch if you prefer that).
--- 
-Kind regards,
-Peter
-https://lekensteyn.nl
+>      qemu-char: fix parameter check in some qemu_chr_parse_* functions
+>
+>      For some qemu_chr_parse_* functions, we just check whether the parameter
+>      is NULL or not, but do not check if it is empty.
+>
+>      For example:
+>       qemu-system-x86_64 -chardev pipe,id=id,path=
+>      It will pass the check of NULL but will not find the error until
+>      trying to open it, while essentially missing and empty parameter
+>      is the same thing.
+>
+>      So we should find the error by checking parameter length, just like
+>      what qemu_chr_parse_udp does, it will help to find what exactly is
+>      wrong.
+>
+>      So check the parameters for emptiness too, and avoid emptiness
+>      check at open time.
+>
+>      Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+>      Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+>
+>
+> [error API]
+>>
+>> Yes, this confused me, besides, error_setg will add a '\n' in the end, but
+>> for example, print_allowed_subtypes where use fprintf(stderr,..) without '\n' in the middle places,
+>> IMHO, maybe it makes sense to return this to the higher caller.
+>
+> Oh.  I overlooked this one.  Indeed, this should not be done this way,
+> you can't print_allowed_subtypes() in there _before_ reporting actual
+> error, that'd be wrong.  Oh well :)
+>
+> In this context, print_allowed_subtypes() should return a single string
+> with all subtypes in it.  I don't think it is interesting to print this
+> allowed_subtypes list in case no subtype is specified to start with,
+> but for invalid subtype it can be handled by adding the list to the
+> original error message (note we already have the list handy in this
+> function).  Something like this (on top of the original code, untested):
+>
+> diff --git a/spice-qemu-char.c b/spice-qemu-char.c
+> index 8106e06..0acc9e5 100644
+> --- a/spice-qemu-char.c
+> +++ b/spice-qemu-char.c
+> @@ -244,23 +244,6 @@ static void spice_chr_fe_event(struct CharDriverState *chr, int event)
+>   #endif
+>   }
+>
+> -static void print_allowed_subtypes(void)
+> -{
+> -    const char** psubtype;
+> -    int i;
+> -
+> -    fprintf(stderr, "allowed names: ");
+> -    for(i=0, psubtype = spice_server_char_device_recognized_subtypes();
+> -        *psubtype != NULL; ++psubtype, ++i) {
+> -        if (i == 0) {
+> -            fprintf(stderr, "%s", *psubtype);
+> -        } else {
+> -            fprintf(stderr, ", %s", *psubtype);
+> -        }
+> -    }
+> -    fprintf(stderr, "\n");
+> -}
+> -
+>   static CharDriverState *chr_open(const char *subtype,
+>       void (*set_fe_open)(struct CharDriverState *, int))
+>
+> @@ -288,21 +271,31 @@ static CharDriverState *chr_open(const char *subtype,
+>
+>   CharDriverState *qemu_chr_open_spice_vmc(const char *type)
+>   {
+> -    const char **psubtype = spice_server_char_device_recognized_subtypes();
+> +    const char **subtype_list = spice_server_char_device_recognized_subtypes();
+> +    const char **psubtype;
+>
+>       if (type == NULL) {
+>           fprintf(stderr, "spice-qemu-char: missing name parameter\n");
+> -        print_allowed_subtypes();
+>           return NULL;
+>       }
+> -    for (; *psubtype != NULL; ++psubtype) {
+> +    for (psubtype = subtype_list; *psubtype != NULL; ++psubtype) {
+>           if (strcmp(type, *psubtype) == 0) {
+>               break;
+>           }
+>       }
+>       if (*psubtype == NULL) {
+> -        fprintf(stderr, "spice-qemu-char: unsupported type: %s\n", type);
+> -        print_allowed_subtypes();
+> +        char *subtypes;
+> +        int len;
+> +        for(len = 1, psubtype = subtype_list; *psubtype; ++psubtype) {
+> +            len += strlen(*psubtype) + (psubtypes <> psubtype);
+> +        }
+> +        subtypes = g_alloc(len);
+> +        for(len = 0, psubtype = subtype_list; *psubtype; ++psubtype) {
+> +            len += sprintf(subtypes + len, "%s%s",
+> +                           psubtypes <> psubtype ? "," : "", *psubtype);
+> +        }
+> +        fprintf(stderr, "spice-qemu-char: unsupported type: %s, allowed types: %s\n", type, subtypes);
+> +        g_free(subtypes);
+>           return NULL;
+>       }
+> []
+> In another reply, to patch 5:
+>
+>>> Now this is funny.  Why we have two functions nearby using different
+>>> error reporting APIs?  Maybe qemu_chr_open_spice_port() should be
+>>> converted to Error API too, at the same time (maybe in the same
+>>> patch or in a subsequent patch in the same series)?
+>>
+>> Actually, after patch 3, there will be no error case for this function, it can not
+>> fail, so i just leave it. What's your opinion? Thanks.
+>
+> Okay, I haven't realized it.  Yes, that makes sense.
+>
+> []
+>> It's okay, So what's your opinion about this series?
+>> Should i merge patch 1 and 2 into one patch in V3?
+>> Keep the other modifies except the incorrect modify in qemu_chr_open_pty for patch 4?
+>> If yes, i will send V3;)
+>
+> I was ready to merge these but realized I shouldn't because that'll be
+> too much on my part, only adding to your confusion - which part is
+> applied and which is not, etc.
+>
+> So please do a V3, to have common base for all this.
+>
+
+OK;)
+
+> I'm not sure if the print_allowed_subtypes() thing is a good idea actually --
+> it is a bit too large, but without it we can't just convert things as you
+> tried to do, for hopefully obvious reasons.  Maybe asking spice maintainer
+> for the opinion is a good idea? (Cc'ing Gerd).  The context is, for example,
+> here: http://lists.nongnu.org/archive/html/qemu-devel/2014-11/msg00187.html .
+>
+
+print_allowed_subtypes() will be used where there is a check error type given(as you said above),
+I'd better keep it, but use error_printf (suggested by Markus Armbruster in another email:))
+instead of fprintf. I think in this way it is more clean;)
+
+> This patch also has somewhat large list of conversions of other errors in
+> windows part of the code, and these all really look terrible, this is not
+> correct english really, as far as I know -- it is either "Failed _to_ do
+> something", or "something failed", but not "failed something".. ;)  I'm
+
+Yep, needs some little fix for that. Will do in V3.
+
+> not, again, sure that's a good idea to leave it as it is, maybe at least
+> some context in the error message will help... ;)
+>
+
+Thanks,
+zhanghailiang
 
 
