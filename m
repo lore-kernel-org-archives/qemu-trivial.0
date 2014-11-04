@@ -1,45 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XleER-0006iX-08
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Nov 2014 08:33:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34390)
+	id 1XleLA-0002rH-DB
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Nov 2014 08:40:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35596)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XleEL-0006iN-DH
-	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:33:09 -0500
+	(envelope-from <alex.bennee@linaro.org>) id 1XleL0-0002h2-9G
+	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:40:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XleEH-0008Q7-22
-	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:33:05 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57104)
+	(envelope-from <alex.bennee@linaro.org>) id 1XleKv-0001eD-A0
+	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:39:58 -0500
+Received: from static.88-198-71-155.clients.your-server.de
+	([88.198.71.155]:50092 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1XleEG-0008Px-P8; Tue, 04 Nov 2014 08:33:00 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sA4DWkeU003252
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 4 Nov 2014 08:32:46 -0500
-Received: from [10.3.113.108] (ovpn-113-108.phx2.redhat.com [10.3.113.108])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sA4DWjbV000942; Tue, 4 Nov 2014 08:32:45 -0500
-Message-ID: <5458D57C.9030700@redhat.com>
-Date: Tue, 04 Nov 2014 14:32:44 +0100
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1XleKl-0001d6-8U; Tue, 04 Nov 2014 08:39:43 -0500
+Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
+	by socrates.bennee.com with esmtp (Exim 4.80)
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1Xlerd-0006QC-2H; Tue, 04 Nov 2014 15:13:41 +0100
+References: <1415098223-32404-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<1415098223-32404-5-git-send-email-zhang.zhanghailiang@huawei.com>
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>
+In-reply-to: <1415098223-32404-5-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Tue, 04 Nov 2014 13:39:42 +0000
+Message-ID: <87zjc7t78h.fsf@linaro.org>
 MIME-Version: 1.0
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
-References: <1415018910-11600-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1415018910-11600-1-git-send-email-arei.gonglei@huawei.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="dDJVf8Mlem8wqNSeHRsLmVHH9ifEssWGH"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 127.0.0.1
+X-SA-Exim-Mail-From: alex.bennee@linaro.org
+X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-doc.texi: fix typos
-	for x509 examples
+X-Received-From: 88.198.71.155
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
+	peter.huangpeng@huawei.com, armbru@redhat.com, kraxel@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 4/5] qemu-char: convert
+	some open functions to use Error API
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,47 +47,321 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Nov 2014 13:33:09 -0000
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---dDJVf8Mlem8wqNSeHRsLmVHH9ifEssWGH
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 11/03/2014 01:48 PM, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
->=20
-> Fix typos made people confuesd:
-
-Spelling:
-s/confuesd/confused/
-
-Grammar: would read better as:
-
-Fix typos that caused confusion for some people:
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+X-List-Received-Date: Tue, 04 Nov 2014 13:40:03 -0000
 
 
---dDJVf8Mlem8wqNSeHRsLmVHH9ifEssWGH
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+> Convert several Character backend open functions to use the Error API.
+>
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+> ---
+>  qemu-char.c | 76 +++++++++++++++++++++++++++++++++----------------------------
+>  1 file changed, 41 insertions(+), 35 deletions(-)
+>
+> diff --git a/qemu-char.c b/qemu-char.c
+> index 0f38cdd..a1d25c7 100644
+> --- a/qemu-char.c
+> +++ b/qemu-char.c
+> @@ -1077,7 +1077,7 @@ static CharDriverState *qemu_chr_open_fd(int fd_in, int fd_out)
+>      return chr;
+>  }
+>  
+> -static CharDriverState *qemu_chr_open_pipe(ChardevHostdev *opts)
+> +static CharDriverState *qemu_chr_open_pipe(ChardevHostdev *opts, Error **errp)
+>  {
+>      int fd_in, fd_out;
+>      char filename_in[CHR_MAX_FILENAME_SIZE];
+<snip>
+Why convert the call if we are not using the passed parameter?
 
-iQEcBAEBCAAGBQJUWNV8AAoJEKeha0olJ0NqxF4IAISWyCD/1m99up3H9KjQE/dw
-BFw4l+5Wo73kldxYfXl1UDOhBgjbjsRVBfOYEIcBFRknwEmk+v/AZLgjQCevdVZP
-i4ssws757bAQ/GytZN4gG4fg/F5quNMSINKUPKWUrwpxhNom7eTGMqVaQFHVftA0
-G0o60CY9gyguxPYGz5WJFp9j5hdoO5BURXwCISbTdlC7WqG+3h0FAQj4wbs3oHDk
-KVqHX2yiGyYKqAQrxmIOzqgZPlNZL5AFE7SHLGa23ekZEFxK6EuyBVil930TpwVj
-0JhJEmo8oa6RYjEA5hWDqxCQA/UIKppJ+rMpNZ9cWh/om+Ljgefbjml5LLSpd3U=
-=kT01
------END PGP SIGNATURE-----
+>  
+> -static CharDriverState *qemu_chr_open_stdio(ChardevStdio *opts)
+> +static CharDriverState *qemu_chr_open_stdio(ChardevStdio *opts, Error **errp)
+>  {
+>      CharDriverState *chr;
+>  
+>      if (is_daemonized()) {
+> -        error_report("cannot use stdio with -daemonize");
+> +        error_setg(errp, "cannot use stdio with -daemonize");
+>          return NULL;
+>      }
+>  
+> @@ -1861,7 +1861,8 @@ static void win_chr_close(CharDriverState *chr)
+>      qemu_chr_be_event(chr, CHR_EVENT_CLOSED);
+>  }
+>  
+> -static int win_chr_init(CharDriverState *chr, const char *filename)
+> +static void win_chr_init(CharDriverState *chr, const char *filename,
+> +                         Error **errp)
+>  {
+>      WinCharState *s = chr->opaque;
+>      COMMCONFIG comcfg;
+> @@ -1872,25 +1873,25 @@ static int win_chr_init(CharDriverState *chr, const char *filename)
+>  
+>      s->hsend = CreateEvent(NULL, TRUE, FALSE, NULL);
+>      if (!s->hsend) {
+> -        fprintf(stderr, "CreateEvent failed\n");
+> +        error_setg(errp, "CreateEvent failed");
+>          goto fail;
+>      }
+>      s->hrecv = CreateEvent(NULL, TRUE, FALSE, NULL);
+>      if (!s->hrecv) {
+> -        fprintf(stderr, "CreateEvent failed\n");
+> +        error_setg(errp, "CreateEvent failed");
+>          goto fail;
+>      }
+>  
+>      s->hcom = CreateFile(filename, GENERIC_READ|GENERIC_WRITE, 0, NULL,
+>                        OPEN_EXISTING, FILE_FLAG_OVERLAPPED, 0);
+>      if (s->hcom == INVALID_HANDLE_VALUE) {
+> -        fprintf(stderr, "CreateFile (%lu) failed\n", GetLastError());
+> +        error_setg(errp, "CreateFile (%lu) failed", GetLastError());
+>          s->hcom = NULL;
+>          goto fail;
+>      }
+>  
+>      if (!SetupComm(s->hcom, NRECVBUF, NSENDBUF)) {
+> -        fprintf(stderr, "SetupComm failed\n");
+> +        error_setg(errp, "SetupComm failed");
+>          goto fail;
+>      }
+>  
+> @@ -1901,31 +1902,30 @@ static int win_chr_init(CharDriverState *chr, const char *filename)
+>      CommConfigDialog(filename, NULL, &comcfg);
+>  
+>      if (!SetCommState(s->hcom, &comcfg.dcb)) {
+> -        fprintf(stderr, "SetCommState failed\n");
+> +        error_setg(errp, "SetCommState failed");
+>          goto fail;
+>      }
+>  
+>      if (!SetCommMask(s->hcom, EV_ERR)) {
+> -        fprintf(stderr, "SetCommMask failed\n");
+> +        error_setg(errp, "SetCommMask failed");
+>          goto fail;
+>      }
+>  
+>      cto.ReadIntervalTimeout = MAXDWORD;
+>      if (!SetCommTimeouts(s->hcom, &cto)) {
+> -        fprintf(stderr, "SetCommTimeouts failed\n");
+> +        error_setg(errp, "SetCommTimeouts failed");
+>          goto fail;
+>      }
+>  
+>      if (!ClearCommError(s->hcom, &err, &comstat)) {
+> -        fprintf(stderr, "ClearCommError failed\n");
+> +        error_setg(errp, "ClearCommError failed");
+>          goto fail;
+>      }
+>      qemu_add_polling_cb(win_chr_poll, chr);
+> -    return 0;
+> +    return;
+>  
+>   fail:
+>      win_chr_close(chr);
+> -    return -1;
+>  }
+>  
+>  /* Called with chr_write_lock held.  */
+> @@ -2022,10 +2022,12 @@ static int win_chr_poll(void *opaque)
+>      return 0;
+>  }
+>  
+> -static CharDriverState *qemu_chr_open_win_path(const char *filename)
+> +static CharDriverState *qemu_chr_open_win_path(const char *filename,
+> +                                               Error **errp)
+>  {
+>      CharDriverState *chr;
+>      WinCharState *s;
+> +    Error *local_err = NULL;
+>  
+>      chr = qemu_chr_alloc();
+>      s = g_malloc0(sizeof(WinCharState));
+> @@ -2033,9 +2035,11 @@ static CharDriverState *qemu_chr_open_win_path(const char *filename)
+>      chr->chr_write = win_chr_write;
+>      chr->chr_close = win_chr_close;
+>  
+> -    if (win_chr_init(chr, filename) < 0) {
+> +    win_chr_init(chr, filename, &local_err);
+> +    if (local_err) {
+>          g_free(s);
+>          g_free(chr);
+> +        error_propagate(errp, local_err);
+>          return NULL;
 
---dDJVf8Mlem8wqNSeHRsLmVHH9ifEssWGH--
+Hmm I'm not sure I find the change from a return value to
+pass-by-reference return value intuitive. What does this gain us?
+
+Are the messages now being reported actually more suitable for user
+consumption? For example "ClearCommError failed" doesn't actually tell
+the user much apart from something went wrong.
+
+>      }
+>      return chr;
+> @@ -2057,11 +2061,11 @@ static int win_chr_pipe_poll(void *opaque)
+>      return 0;
+>  }
+>  
+> -static int win_chr_pipe_init(CharDriverState *chr, const char *filename)
+> +static void win_chr_pipe_init(CharDriverState *chr, const char *filename,
+> +                              Error **errp)
+>  {
+>      WinCharState *s = chr->opaque;
+>      OVERLAPPED ov;
+> -    int ret;
+>      DWORD size;
+>      char openname[CHR_MAX_FILENAME_SIZE];
+>  
+> @@ -2069,12 +2073,12 @@ static int win_chr_pipe_init(CharDriverState *chr, const char *filename)
+>  
+>      s->hsend = CreateEvent(NULL, TRUE, FALSE, NULL);
+>      if (!s->hsend) {
+> -        fprintf(stderr, "CreateEvent failed\n");
+> +        error_setg(errp, "CreateEvent failed");
+>          goto fail;
+>      }
+>      s->hrecv = CreateEvent(NULL, TRUE, FALSE, NULL);
+>      if (!s->hrecv) {
+> -        fprintf(stderr, "CreateEvent failed\n");
+> +        error_setg(errp, "CreateEvent failed");
+>          goto fail;
+>      }
+>  
+> @@ -2084,7 +2088,7 @@ static int win_chr_pipe_init(CharDriverState *chr, const char *filename)
+>                                PIPE_WAIT,
+>                                MAXCONNECT, NSENDBUF, NRECVBUF, NTIMEOUT, NULL);
+>      if (s->hcom == INVALID_HANDLE_VALUE) {
+> -        fprintf(stderr, "CreateNamedPipe (%lu) failed\n", GetLastError());
+> +        error_setg(errp, "CreateNamedPipe (%lu) failed", GetLastError());
+>          s->hcom = NULL;
+>          goto fail;
+>      }
+> @@ -2093,13 +2097,13 @@ static int win_chr_pipe_init(CharDriverState *chr, const char *filename)
+>      ov.hEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
+>      ret = ConnectNamedPipe(s->hcom, &ov);
+>      if (ret) {
+> -        fprintf(stderr, "ConnectNamedPipe failed\n");
+> +        error_setg(errp, "ConnectNamedPipe failed");
+>          goto fail;
+>      }
+>  
+>      ret = GetOverlappedResult(s->hcom, &ov, &size, TRUE);
+>      if (!ret) {
+> -        fprintf(stderr, "GetOverlappedResult failed\n");
+> +        error_setg(errp, "GetOverlappedResult failed");
+>          if (ov.hEvent) {
+>              CloseHandle(ov.hEvent);
+>              ov.hEvent = NULL;
+> @@ -2112,19 +2116,19 @@ static int win_chr_pipe_init(CharDriverState *chr, const char *filename)
+>          ov.hEvent = NULL;
+>      }
+>      qemu_add_polling_cb(win_chr_pipe_poll, chr);
+> -    return 0;
+> +    return;
+>  
+>   fail:
+>      win_chr_close(chr);
+> -    return -1;
+>  }
+>  
+>  
+> -static CharDriverState *qemu_chr_open_pipe(ChardevHostdev *opts)
+> +static CharDriverState *qemu_chr_open_pipe(ChardevHostdev *opts, Error **errp)
+>  {
+>      const char *filename = opts->device;
+>      CharDriverState *chr;
+>      WinCharState *s;
+> +    Error *local_err = NULL;
+>  
+>      chr = qemu_chr_alloc();
+>      s = g_malloc0(sizeof(WinCharState));
+> @@ -2132,9 +2136,11 @@ static CharDriverState *qemu_chr_open_pipe(ChardevHostdev *opts)
+>      chr->chr_write = win_chr_write;
+>      chr->chr_close = win_chr_close;
+>  
+> -    if (win_chr_pipe_init(chr, filename) < 0) {
+> +    win_chr_pipe_init(chr, filename, &local_err);
+> +    if (local_err) {
+>          g_free(s);
+>          g_free(chr);
+> +        error_propagate(errp, local_err);
+>          return NULL;
+>      }
+>      return chr;
+> @@ -2294,7 +2300,7 @@ static void win_stdio_close(CharDriverState *chr)
+>      g_free(chr);
+>  }
+
+Same comments as above.
+
+>  
+> -static CharDriverState *qemu_chr_open_stdio(ChardevStdio *opts)
+> +static CharDriverState *qemu_chr_open_stdio(ChardevStdio *opts, Error **errp)
+>  {
+>      CharDriverState   *chr;
+>      WinStdioCharState *stdio;
+> @@ -2306,7 +2312,7 @@ static CharDriverState *qemu_chr_open_stdio(ChardevStdio *opts)
+>  
+>      stdio->hStdIn = GetStdHandle(STD_INPUT_HANDLE);
+>      if (stdio->hStdIn == INVALID_HANDLE_VALUE) {
+> -        fprintf(stderr, "cannot open stdio: invalid handle\n");
+> +        error_report(errp, "cannot open stdio: invalid handle");
+>          exit(1);
+>      }
+>  
+> @@ -2319,7 +2325,7 @@ static CharDriverState *qemu_chr_open_stdio(ChardevStdio *opts)
+>      if (is_console) {
+>          if (qemu_add_wait_object(stdio->hStdIn,
+>                                   win_stdio_wait_func, chr)) {
+> -            fprintf(stderr, "qemu_add_wait_object: failed\n");
+> +            error_setg(errp, "qemu_add_wait_object: failed");
+>          }
+>      } else {
+>          DWORD   dwId;
+> @@ -2332,12 +2338,12 @@ static CharDriverState *qemu_chr_open_stdio(ChardevStdio *opts)
+>          if (stdio->hInputThread == INVALID_HANDLE_VALUE
+>              || stdio->hInputReadyEvent == INVALID_HANDLE_VALUE
+>              || stdio->hInputDoneEvent == INVALID_HANDLE_VALUE) {
+> -            fprintf(stderr, "cannot create stdio thread or event\n");
+> +            error_report(errp, "cannot create stdio thread or event");
+>              exit(1);
+>          }
+>          if (qemu_add_wait_object(stdio->hInputReadyEvent,
+>                                   win_stdio_thread_wait_func, chr)) {
+> -            fprintf(stderr, "qemu_add_wait_object: failed\n");
+> +            error_setg(errp, "qemu_add_wait_object: failed");
+>          }
+>      }
+>  
+> @@ -3994,7 +4000,7 @@ static CharDriverState *qmp_chardev_open_file(ChardevFile *file, Error **errp)
+>  static CharDriverState *qmp_chardev_open_serial(ChardevHostdev *serial,
+>                                                  Error **errp)
+>  {
+> -    return qemu_chr_open_win_path(serial->device);
+> +    return qemu_chr_open_win_path(serial->device, errp);
+>  }
+>  
+>  static CharDriverState *qmp_chardev_open_parallel(ChardevHostdev *parallel,
+> @@ -4204,7 +4210,7 @@ ChardevReturn *qmp_chardev_add(const char *id, ChardevBackend *backend,
+>          chr = qmp_chardev_open_parallel(backend->parallel, errp);
+>          break;
+>      case CHARDEV_BACKEND_KIND_PIPE:
+> -        chr = qemu_chr_open_pipe(backend->pipe);
+> +        chr = qemu_chr_open_pipe(backend->pipe, errp);
+>          break;
+>      case CHARDEV_BACKEND_KIND_SOCKET:
+>          chr = qmp_chardev_open_socket(backend->socket, errp);
+> @@ -4241,7 +4247,7 @@ ChardevReturn *qmp_chardev_add(const char *id, ChardevBackend *backend,
+>          chr = chr_testdev_init();
+>          break;
+>      case CHARDEV_BACKEND_KIND_STDIO:
+> -        chr = qemu_chr_open_stdio(backend->stdio);
+> +        chr = qemu_chr_open_stdio(backend->stdio, errp);
+>          break;
+>  #ifdef _WIN32
+>      case CHARDEV_BACKEND_KIND_CONSOLE:
+
+-- 
+Alex Bennée
 
