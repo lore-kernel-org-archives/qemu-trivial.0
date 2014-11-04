@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XlbhW-0004fO-Ru
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Nov 2014 05:51:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56693)
+	id 1XlbhX-0004gz-VO
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Nov 2014 05:51:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56710)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlbhP-0004ed-Aq
-	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 05:51:00 -0500
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlbhR-0004el-8e
+	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 05:51:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlbhK-0005bO-Hz
-	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 05:50:55 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:49430)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1XlbhK-0005bY-J7
+	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 05:50:57 -0500
+Received: from szxga01-in.huawei.com ([119.145.14.64]:49428)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1XlbhH-0005ZD-KE; Tue, 04 Nov 2014 05:50:50 -0500
-Received: from 172.24.2.119 (EHLO szxeml415-hub.china.huawei.com)
+	id 1XlbhJ-0005ZC-UK; Tue, 04 Nov 2014 05:50:50 -0500
+Received: from 172.24.2.119 (EHLO SZXEML453-HUB.china.huawei.com)
 	([172.24.2.119])
 	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CDX70075; Tue, 04 Nov 2014 18:50:42 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml415-hub.china.huawei.com
-	(10.82.67.154) with Microsoft SMTP Server id 14.3.158.1; Tue, 4 Nov 2014
-	18:50:32 +0800
+	with ESMTP id CDX70073; Tue, 04 Nov 2014 18:50:41 +0800 (CST)
+Received: from localhost (10.177.22.69) by SZXEML453-HUB.china.huawei.com
+	(10.82.67.196) with Microsoft SMTP Server id 14.3.158.1; Tue, 4 Nov 2014
+	18:50:34 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
 To: <qemu-trivial@nongnu.org>
-Date: Tue, 4 Nov 2014 18:50:21 +0800
-Message-ID: <1415098223-32404-4-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Tue, 4 Nov 2014 18:50:23 +0800
+Message-ID: <1415098223-32404-6-git-send-email-zhang.zhanghailiang@huawei.com>
 X-Mailer: git-send-email 1.9.2.msysgit.0
 In-Reply-To: <1415098223-32404-1-git-send-email-zhang.zhanghailiang@huawei.com>
 References: <1415098223-32404-1-git-send-email-zhang.zhanghailiang@huawei.com>
@@ -35,8 +35,8 @@ X-Received-From: 119.145.14.64
 Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, armbru@redhat.com,
 	mjt@tls.msk.ru, qemu-devel@nongnu.org,
 	peter.huangpeng@huawei.com, kraxel@redhat.com, eblake@redhat.com
-Subject: [Qemu-trivial] [PATCH v3 3/5] qemu-char: fix incorrect state in
-	error message
+Subject: [Qemu-trivial] [PATCH v3 5/5] spice-qemu-char: convert some
+	functions to use Error API
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,118 +48,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Nov 2014 10:51:01 -0000
-
-It is either "Failed _to_ do something", or "something failed",
-but not "failed something".
+X-List-Received-Date: Tue, 04 Nov 2014 10:51:02 -0000
 
 Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 ---
- qemu-char.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ include/ui/qemu-spice.h     |  2 +-
+ qemu-char.c                 |  2 +-
+ spice-qemu-char.c           | 12 ++++++------
+ stubs/qemu-chr-open-spice.c |  2 +-
+ 4 files changed, 9 insertions(+), 9 deletions(-)
 
+diff --git a/include/ui/qemu-spice.h b/include/ui/qemu-spice.h
+index a93b4b2..33882aa 100644
+--- a/include/ui/qemu-spice.h
++++ b/include/ui/qemu-spice.h
+@@ -48,7 +48,7 @@ int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
+ void do_info_spice_print(Monitor *mon, const QObject *data);
+ void do_info_spice(Monitor *mon, QObject **ret_data);
+ 
+-CharDriverState *qemu_chr_open_spice_vmc(const char *type);
++CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp);
+ #if SPICE_SERVER_VERSION >= 0x000c02
+ CharDriverState *qemu_chr_open_spice_port(const char *name);
+ void qemu_spice_register_ports(void);
 diff --git a/qemu-char.c b/qemu-char.c
-index a09bbf6..0f38cdd 100644
+index a1d25c7..df24c65 100644
 --- a/qemu-char.c
 +++ b/qemu-char.c
-@@ -1872,25 +1872,25 @@ static int win_chr_init(CharDriverState *chr, const char *filename)
+@@ -4256,7 +4256,7 @@ ChardevReturn *qmp_chardev_add(const char *id, ChardevBackend *backend,
+ #endif
+ #ifdef CONFIG_SPICE
+     case CHARDEV_BACKEND_KIND_SPICEVMC:
+-        chr = qemu_chr_open_spice_vmc(backend->spicevmc->type);
++        chr = qemu_chr_open_spice_vmc(backend->spicevmc->type, errp);
+         break;
+     case CHARDEV_BACKEND_KIND_SPICEPORT:
+         chr = qemu_chr_open_spice_port(backend->spiceport->fqdn);
+diff --git a/spice-qemu-char.c b/spice-qemu-char.c
+index d3c1f5c..721c895 100644
+--- a/spice-qemu-char.c
++++ b/spice-qemu-char.c
+@@ -249,16 +249,16 @@ static void print_allowed_subtypes(void)
+     const char** psubtype;
+     int i;
  
-     s->hsend = CreateEvent(NULL, TRUE, FALSE, NULL);
-     if (!s->hsend) {
--        fprintf(stderr, "Failed CreateEvent\n");
-+        fprintf(stderr, "CreateEvent failed\n");
-         goto fail;
+-    fprintf(stderr, "allowed names: ");
++    error_printf("allowed names: ");
+     for(i=0, psubtype = spice_server_char_device_recognized_subtypes();
+         *psubtype != NULL; ++psubtype, ++i) {
+         if (i == 0) {
+-            fprintf(stderr, "%s", *psubtype);
++            error_printf("%s", *psubtype);
+         } else {
+-            fprintf(stderr, ", %s", *psubtype);
++            error_printf(", %s", *psubtype);
+         }
      }
-     s->hrecv = CreateEvent(NULL, TRUE, FALSE, NULL);
-     if (!s->hrecv) {
--        fprintf(stderr, "Failed CreateEvent\n");
-+        fprintf(stderr, "CreateEvent failed\n");
-         goto fail;
-     }
+-    fprintf(stderr, "\n");
++    error_printf("\n");
+ }
  
-     s->hcom = CreateFile(filename, GENERIC_READ|GENERIC_WRITE, 0, NULL,
-                       OPEN_EXISTING, FILE_FLAG_OVERLAPPED, 0);
-     if (s->hcom == INVALID_HANDLE_VALUE) {
--        fprintf(stderr, "Failed CreateFile (%lu)\n", GetLastError());
-+        fprintf(stderr, "CreateFile (%lu) failed\n", GetLastError());
-         s->hcom = NULL;
-         goto fail;
-     }
+ static CharDriverState *chr_open(const char *subtype,
+@@ -286,7 +286,7 @@ static CharDriverState *chr_open(const char *subtype,
+     return chr;
+ }
  
-     if (!SetupComm(s->hcom, NRECVBUF, NSENDBUF)) {
--        fprintf(stderr, "Failed SetupComm\n");
-+        fprintf(stderr, "SetupComm failed\n");
-         goto fail;
-     }
+-CharDriverState *qemu_chr_open_spice_vmc(const char *type)
++CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp)
+ {
+     const char **psubtype = spice_server_char_device_recognized_subtypes();
  
-@@ -1901,23 +1901,23 @@ static int win_chr_init(CharDriverState *chr, const char *filename)
-     CommConfigDialog(filename, NULL, &comcfg);
+@@ -296,7 +296,7 @@ CharDriverState *qemu_chr_open_spice_vmc(const char *type)
+         }
+     }
+     if (*psubtype == NULL) {
+-        fprintf(stderr, "spice-qemu-char: unsupported type: %s\n", type);
++        error_setg(errp, "spice-qemu-char: unsupported type: %s", type);
+         print_allowed_subtypes();
+         return NULL;
+     }
+diff --git a/stubs/qemu-chr-open-spice.c b/stubs/qemu-chr-open-spice.c
+index f1c4849..55826ed 100644
+--- a/stubs/qemu-chr-open-spice.c
++++ b/stubs/qemu-chr-open-spice.c
+@@ -1,7 +1,7 @@
+ #include "qemu-common.h"
+ #include "ui/qemu-spice.h"
  
-     if (!SetCommState(s->hcom, &comcfg.dcb)) {
--        fprintf(stderr, "Failed SetCommState\n");
-+        fprintf(stderr, "SetCommState failed\n");
-         goto fail;
-     }
- 
-     if (!SetCommMask(s->hcom, EV_ERR)) {
--        fprintf(stderr, "Failed SetCommMask\n");
-+        fprintf(stderr, "SetCommMask failed\n");
-         goto fail;
-     }
- 
-     cto.ReadIntervalTimeout = MAXDWORD;
-     if (!SetCommTimeouts(s->hcom, &cto)) {
--        fprintf(stderr, "Failed SetCommTimeouts\n");
-+        fprintf(stderr, "SetCommTimeouts failed\n");
-         goto fail;
-     }
- 
-     if (!ClearCommError(s->hcom, &err, &comstat)) {
--        fprintf(stderr, "Failed ClearCommError\n");
-+        fprintf(stderr, "ClearCommError failed\n");
-         goto fail;
-     }
-     qemu_add_polling_cb(win_chr_poll, chr);
-@@ -2069,12 +2069,12 @@ static int win_chr_pipe_init(CharDriverState *chr, const char *filename)
- 
-     s->hsend = CreateEvent(NULL, TRUE, FALSE, NULL);
-     if (!s->hsend) {
--        fprintf(stderr, "Failed CreateEvent\n");
-+        fprintf(stderr, "CreateEvent failed\n");
-         goto fail;
-     }
-     s->hrecv = CreateEvent(NULL, TRUE, FALSE, NULL);
-     if (!s->hrecv) {
--        fprintf(stderr, "Failed CreateEvent\n");
-+        fprintf(stderr, "CreateEvent failed\n");
-         goto fail;
-     }
- 
-@@ -2084,7 +2084,7 @@ static int win_chr_pipe_init(CharDriverState *chr, const char *filename)
-                               PIPE_WAIT,
-                               MAXCONNECT, NSENDBUF, NRECVBUF, NTIMEOUT, NULL);
-     if (s->hcom == INVALID_HANDLE_VALUE) {
--        fprintf(stderr, "Failed CreateNamedPipe (%lu)\n", GetLastError());
-+        fprintf(stderr, "CreateNamedPipe (%lu) failed\n", GetLastError());
-         s->hcom = NULL;
-         goto fail;
-     }
-@@ -2093,13 +2093,13 @@ static int win_chr_pipe_init(CharDriverState *chr, const char *filename)
-     ov.hEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
-     ret = ConnectNamedPipe(s->hcom, &ov);
-     if (ret) {
--        fprintf(stderr, "Failed ConnectNamedPipe\n");
-+        fprintf(stderr, "ConnectNamedPipe failed\n");
-         goto fail;
-     }
- 
-     ret = GetOverlappedResult(s->hcom, &ov, &size, TRUE);
-     if (!ret) {
--        fprintf(stderr, "Failed GetOverlappedResult\n");
-+        fprintf(stderr, "GetOverlappedResult failed\n");
-         if (ov.hEvent) {
-             CloseHandle(ov.hEvent);
-             ov.hEvent = NULL;
+-CharDriverState *qemu_chr_open_spice_vmc(const char *type)
++CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp)
+ {
+     return NULL;
+ }
 -- 
 1.7.12.4
 
