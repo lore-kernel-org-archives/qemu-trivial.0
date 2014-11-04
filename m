@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xle7P-0002Os-VB
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Nov 2014 08:25:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32864)
+	id 1Xle8u-0003Qj-HJ
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Nov 2014 08:27:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33121)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Xle7J-0002Hv-Sf
-	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:25:54 -0500
+	(envelope-from <alex.bennee@linaro.org>) id 1Xle8o-0003Kh-SM
+	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:27:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Xle7F-00062c-JB
-	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:25:49 -0500
+	(envelope-from <alex.bennee@linaro.org>) id 1Xle8i-0006io-Tb
+	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:27:22 -0500
 Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:50001 helo=socrates.bennee.com)
+	([88.198.71.155]:50009 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1Xle76-00061O-FG; Tue, 04 Nov 2014 08:25:36 -0500
+	id 1Xle8Y-0006ZM-LB; Tue, 04 Nov 2014 08:27:06 -0500
 Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
 	by socrates.bennee.com with esmtp (Exim 4.80)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1Xledu-0006Jc-Fb; Tue, 04 Nov 2014 14:59:30 +0100
+	id 1XlefR-0006KG-Bn; Tue, 04 Nov 2014 15:01:05 +0100
 References: <1415098223-32404-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1415098223-32404-2-git-send-email-zhang.zhanghailiang@huawei.com>
+	<1415098223-32404-3-git-send-email-zhang.zhanghailiang@huawei.com>
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: zhanghailiang <zhang.zhanghailiang@huawei.com>
-In-reply-to: <1415098223-32404-2-git-send-email-zhang.zhanghailiang@huawei.com>
-Date: Tue, 04 Nov 2014 13:25:31 +0000
-Message-ID: <874mufumgk.fsf@linaro.org>
+In-reply-to: <1415098223-32404-3-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Tue, 04 Nov 2014 13:27:06 +0000
+Message-ID: <87389zumdx.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
@@ -34,8 +34,8 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 88.198.71.155
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
 	peter.huangpeng@huawei.com, armbru@redhat.com, kraxel@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 1/5] qemu-char: fix
-	parameter check in some qemu_chr_parse_* functions
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 2/5] spice-qemu-char: fix
+	parameter checks in qemu_chr_parse_* functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,101 +47,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Nov 2014 13:25:54 -0000
+X-List-Received-Date: Tue, 04 Nov 2014 13:27:28 -0000
 
 
 zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
 
-> For some qemu_chr_parse_* functions, we just check whether the parameter
-> is NULL or not, but do not check if it is empty.
+> For functions qemu_chr_parse_spice_vmc and qemu_chr_parse_spice_port,
+> we should also check if parameter name is empty, and it will help finding
+> the wrong configure, such as
+> 'qemu-system-x86_64 -chardev spiceport(or spiceport),id=id,name='
 >
-> For example:
-> qemu-system-x86_64 -chardev pipe,id=id,path=
-> It will pass the check of NULL but will not find the error until
-> trying to open it, while essentially missing and empty parameter
-> is the same thing.
->
-> So check the parameters for emptiness too, and avoid emptiness
-> check at open time.
+> After check the parameter in parse function, we can remove the
+> superfluous parameter checks in qemu_chr_open_spice_*
 >
 > Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->  qemu-char.c | 15 +++++----------
->  1 file changed, 5 insertions(+), 10 deletions(-)
+>  spice-qemu-char.c | 14 ++------------
+>  1 file changed, 2 insertions(+), 12 deletions(-)
 >
-> diff --git a/qemu-char.c b/qemu-char.c
-> index bd0709b..a09bbf6 100644
-> --- a/qemu-char.c
-> +++ b/qemu-char.c
-> @@ -1084,11 +1084,6 @@ static CharDriverState *qemu_chr_open_pipe(ChardevHostdev *opts)
->      char filename_out[CHR_MAX_FILENAME_SIZE];
->      const char *filename = opts->device;
+> diff --git a/spice-qemu-char.c b/spice-qemu-char.c
+> index 8106e06..d3c1f5c 100644
+> --- a/spice-qemu-char.c
+> +++ b/spice-qemu-char.c
+> @@ -290,11 +290,6 @@ CharDriverState *qemu_chr_open_spice_vmc(const char *type)
+>  {
+>      const char **psubtype = spice_server_char_device_recognized_subtypes();
 >  
-> -    if (filename == NULL) {
-> -        fprintf(stderr, "chardev: pipe: no filename given\n");
+> -    if (type == NULL) {
+> -        fprintf(stderr, "spice-qemu-char: missing name parameter\n");
+> -        print_allowed_subtypes();
+> -        return NULL;
+> -    }
+
+As with patch 1 I'd at least assert the contract. But this also drops a
+helpful info dump on a missing parameter.
+
+>      for (; *psubtype != NULL; ++psubtype) {
+>          if (strcmp(type, *psubtype) == 0) {
+>              break;
+> @@ -315,11 +310,6 @@ CharDriverState *qemu_chr_open_spice_port(const char *name)
+>      CharDriverState *chr;
+>      SpiceCharDriver *s;
+>  
+> -    if (name == NULL) {
+> -        fprintf(stderr, "spice-qemu-char: missing name parameter\n");
 > -        return NULL;
 > -    }
 > -
-
-You seem to have dropped a check here, are you sure all avenues into
-this code have validated filename? What if a new function gets added?
-
-At a minimum I'd replace it with a g_assert(filename) to make the
-calling contract clear.
-
->      snprintf(filename_in, CHR_MAX_FILENAME_SIZE, "%s.in", filename);
->      snprintf(filename_out, CHR_MAX_FILENAME_SIZE, "%s.out",
->      filename);
-
-We'll probably end up with "(null).in" as the filename which may be
-exploitation vector.
-
->      TFR(fd_in = qemu_open(filename_in, O_RDWR | O_BINARY));
-> @@ -3419,7 +3414,7 @@ static void qemu_chr_parse_file_out(QemuOpts *opts, ChardevBackend *backend,
+>      chr = chr_open("port", spice_port_set_fe_open);
+>      s = chr->opaque;
+>      s->sin.portname = g_strdup(name);
+> @@ -345,7 +335,7 @@ static void qemu_chr_parse_spice_vmc(QemuOpts *opts, ChardevBackend *backend,
 >  {
->      const char *path = qemu_opt_get(opts, "path");
+>      const char *name = qemu_opt_get(opts, "name");
 >  
-> -    if (path == NULL) {
-> +    if (path == NULL || !path[0]) {
->          error_setg(errp, "chardev: file: no filename given");
+> -    if (name == NULL) {
+> +    if (name == NULL || !name[0]) {
+>          error_setg(errp, "chardev: spice channel: no name given");
 >          return;
 >      }
-> @@ -3453,7 +3448,7 @@ static void qemu_chr_parse_parallel(QemuOpts *opts, ChardevBackend *backend,
+> @@ -358,7 +348,7 @@ static void qemu_chr_parse_spice_port(QemuOpts *opts, ChardevBackend *backend,
 >  {
->      const char *device = qemu_opt_get(opts, "path");
+>      const char *name = qemu_opt_get(opts, "name");
 >  
-> -    if (device == NULL) {
-> +    if (device == NULL || !device[0]) {
->          error_setg(errp, "chardev: parallel: no device path given");
+> -    if (name == NULL) {
+> +    if (name == NULL || !name[0]) {
+>          error_setg(errp, "chardev: spice port: no name given");
 >          return;
 >      }
-> @@ -3466,7 +3461,7 @@ static void qemu_chr_parse_pipe(QemuOpts *opts, ChardevBackend *backend,
->  {
->      const char *device = qemu_opt_get(opts, "path");
->  
-> -    if (device == NULL) {
-> +    if (device == NULL || !device[0]) {
->          error_setg(errp, "chardev: pipe: no device path given");
->          return;
->      }
-> @@ -3515,11 +3510,11 @@ static void qemu_chr_parse_socket(QemuOpts *opts, ChardevBackend *backend,
->      SocketAddress *addr;
->  
->      if (!path) {
-> -        if (!host) {
-> +        if (!host || !host[0]) {
->              error_setg(errp, "chardev: socket: no host given");
->              return;
->          }
-> -        if (!port) {
-> +        if (!port || !port[0]) {
->              error_setg(errp, "chardev: socket: no port given");
->              return;
->          }
 
-All this boilerplate checking makes me think that either the qemu_opt
-machinery should be ensuring we get a valid option string?
+Same comments as for 1/5
 
 -- 
 Alex Bennée
