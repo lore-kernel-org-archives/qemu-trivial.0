@@ -1,41 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xlufa-0000Df-Jq
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Nov 2014 02:06:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52376)
+	id 1XluiS-0003C0-42
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Nov 2014 02:09:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53038)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XlufU-0008Vb-W9
-	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 02:06:17 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1XluiG-0002wf-FL
+	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 02:09:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XlufQ-0006SM-EO
-	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 02:06:12 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:41794)
+	(envelope-from <mjt@tls.msk.ru>) id 1XluiA-000886-63
+	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 02:09:04 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:55846)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XlufH-0006Qh-Gi; Wed, 05 Nov 2014 02:05:59 -0500
+	id 1Xluhx-00086B-Bn; Wed, 05 Nov 2014 02:08:45 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id CF97240A79;
-	Wed,  5 Nov 2014 10:05:58 +0300 (MSK)
-Message-ID: <5459CC56.1030109@msgid.tls.msk.ru>
-Date: Wed, 05 Nov 2014 10:05:58 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id 99FBC40A79;
+	Wed,  5 Nov 2014 10:08:44 +0300 (MSK)
+Message-ID: <5459CCFC.6090702@msgid.tls.msk.ru>
+Date: Wed, 05 Nov 2014 10:08:44 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.2.0
 MIME-Version: 1.0
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	zhanghailiang <zhang.zhanghailiang@huawei.com>
-References: <1415098223-32404-1-git-send-email-zhang.zhanghailiang@huawei.com>	<1415098223-32404-2-git-send-email-zhang.zhanghailiang@huawei.com>
-	<874mufumgk.fsf@linaro.org>
-In-Reply-To: <874mufumgk.fsf@linaro.org>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ qemu-trivial@nongnu.org
+References: <1415098223-32404-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<1415098223-32404-4-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1415098223-32404-4-git-send-email-zhang.zhanghailiang@huawei.com>
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, armbru@redhat.com, kraxel@redhat.com,
-	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 1/5] qemu-char: fix
- parameter check in some qemu_chr_parse_* functions
+Cc: eblake@redhat.com, peter.huangpeng@huawei.com, kraxel@redhat.com,
+	armbru@redhat.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v3 3/5] qemu-char: fix incorrect state in
+ error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,71 +47,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Nov 2014 07:06:17 -0000
+X-List-Received-Date: Wed, 05 Nov 2014 07:09:10 -0000
 
-04.11.2014 16:25, Alex Benn=C3=A9e wrote:
-> zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
->=20
->> For some qemu_chr_parse_* functions, we just check whether the paramet=
-er
->> is NULL or not, but do not check if it is empty.
->>
->> For example:
->> qemu-system-x86_64 -chardev pipe,id=3Did,path=3D
->> It will pass the check of NULL but will not find the error until
->> trying to open it, while essentially missing and empty parameter
->> is the same thing.
->>
->> So check the parameters for emptiness too, and avoid emptiness
->> check at open time.
->>
->> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->> ---
->>  qemu-char.c | 15 +++++----------
->>  1 file changed, 5 insertions(+), 10 deletions(-)
->>
->> diff --git a/qemu-char.c b/qemu-char.c
->> index bd0709b..a09bbf6 100644
->> --- a/qemu-char.c
->> +++ b/qemu-char.c
->> @@ -1084,11 +1084,6 @@ static CharDriverState *qemu_chr_open_pipe(Char=
-devHostdev *opts)
->>      char filename_out[CHR_MAX_FILENAME_SIZE];
->>      const char *filename =3D opts->device;
->> =20
->> -    if (filename =3D=3D NULL) {
->> -        fprintf(stderr, "chardev: pipe: no filename given\n");
->> -        return NULL;
->> -    }
->> -
->=20
-> You seem to have dropped a check here, are you sure all avenues into
-> this code have validated filename? What if a new function gets added?
+04.11.2014 13:50, zhanghailiang wrote
+> It is either "Failed _to_ do something", or "something failed",
+> but not "failed something".
 
-Yes, the code first calls parse_pipe() and only after it is
-successfully completed, it calls open_pipe().  I don't see
-a good reason for having assert here.
+Um.  Heh.  I was afraid of seeing this ;)
 
-> At a minimum I'd replace it with a g_assert(filename) to make the
-> calling contract clear.
+My comment about bad grammar was in context of changing error
+reporting in this area -- so while chaning error API in use,
+it might be a good idea to reword the obviously wrong error
+messages _too_, on the same line..
 
-This is an internal set of APIs for a chr device, each kind is
-having a pair of functions which are called in order (first parse,
-next open), -- _that_ is the contract.
+I'll fold this to the next patch, so not to resend whole thing
+again.  Oh well ;)
 
-[]
-> All this boilerplate checking makes me think that either the qemu_opt
-> machinery should be ensuring we get a valid option string?
-
-Might be a good idea, yes, but that'd be a huge change, since that
-should be done in a lot of places, and in many cases we can't
-express our rules easily (eg, only one of two parameters should
-be present).  I think at this stage adding simple checks to
-_parse functions is the way to go, and it is easy to read too.
+The error messages aren't nice still, but maybe it will be
+more clean and easier to understand from the context provided
+by the error api.
 
 Thanks,
 
 /mjt
+
 
 
