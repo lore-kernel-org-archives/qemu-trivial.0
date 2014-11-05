@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XluXc-0003zu-I9
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Nov 2014 01:58:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51069)
+	id 1XlubE-0005GD-2A
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Nov 2014 02:01:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51481)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XluXV-0003of-Kz
-	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 01:58:02 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Xlub9-0005B2-Cg
+	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 02:01:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XluXQ-0004Q6-QQ
-	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 01:57:57 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:65444)
+	(envelope-from <mjt@tls.msk.ru>) id 1Xlub4-00059E-Vp
+	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 02:01:43 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:33786)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XluXG-0004Nx-M8; Wed, 05 Nov 2014 01:57:43 -0500
-Received: from 172.24.2.119 (EHLO szxeml452-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CDY68149; Wed, 05 Nov 2014 14:57:29 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml452-hub.china.huawei.com
-	(10.82.67.195) with Microsoft SMTP Server id 14.3.158.1; Wed, 5 Nov 2014
-	14:57:22 +0800
-Message-ID: <5459CA4D.8020807@huawei.com>
-Date: Wed, 5 Nov 2014 14:57:17 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Xluaw-00058L-4b; Wed, 05 Nov 2014 02:01:30 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 294AE40A5C;
+	Wed,  5 Nov 2014 10:01:29 +0300 (MSK)
+Message-ID: <5459CB49.1070803@msgid.tls.msk.ru>
+Date: Wed, 05 Nov 2014 10:01:29 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.2.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1415018910-11600-1-git-send-email-arei.gonglei@huawei.com>
-	<5458D57C.9030700@redhat.com> <5459C953.7020802@msgid.tls.msk.ru>
-In-Reply-To: <5459C953.7020802@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ lcapitulino@redhat.com
+References: <1415101770-13568-1-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1415101770-13568-1-git-send-email-zhang.zhanghailiang@huawei.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Eric Blake <eblake@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-doc.texi: fix typos
-	for x509 examples
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, armbru@redhat.com, imammedo@redhat.com,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH v7] numa: make 'info numa' take into
+ account hotplugged memory
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,31 +46,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Nov 2014 06:58:03 -0000
+X-List-Received-Date: Wed, 05 Nov 2014 07:01:47 -0000
 
-On 2014/11/5 14:53, Michael Tokarev wrote:
-
-> 04.11.2014 16:32, Eric Blake wrote:
->> On 11/03/2014 01:48 PM, arei.gonglei@huawei.com wrote:
->>> From: Gonglei <arei.gonglei@huawei.com>
->>>
->>> Fix typos made people confuesd:
->>
->> Spelling:
->> s/confuesd/confused/
->>
->> Grammar: would read better as:
->>
->> Fix typos that caused confusion for some people:
+04.11.2014 14:49, zhanghailiang wrote:
+> When do memory hotplug, if there is numa node, we should add
+> the memory size to the corresponding node memory size.
 > 
-> I just removed whole commit message (besides the subject
-> line), because the patch is self-explanatory anyway.
-> Hopefully it's okay.. ;)
+> It affects the result of hmp command "info numa".
 > 
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+> ---
+> Hi Luiz,
+> 
+> This patch has been long time in the mail list.
+> The change does not affect anything but the 'info numa' command.
+> Actully, i have another patch that fix balloon bug.(https://lists.gnu.org/archive/html/qemu-devel/2014-09/msg01568.html)
+> It is related to memory hotplug too and based on this patch.
+> 
+> Since you don't have bandwidth for another pull request for v2.2.
+> Maybe go -trivial is another choice if you agreed;)
+> 
+> I'm OK if you think it's not appropriate.
 
-OK, thanks.
+I applied this to -trivial.  I don't really understand what
+does "have bandwidth for a pull request" mean, but..
 
-Best regards,
--Gonglei
+Thanks,
 
+/mjt
 
