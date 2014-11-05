@@ -1,38 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XluTM-0001nG-6e
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Nov 2014 01:53:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50519)
+	id 1XluXc-0003zu-I9
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Nov 2014 01:58:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51069)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XluTE-0001eG-EJ
-	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 01:53:37 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1XluXV-0003of-Kz
+	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 01:58:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XluT9-00031m-Ji
-	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 01:53:32 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:50158)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XluXQ-0004Q6-QQ
+	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 01:57:57 -0500
+Received: from szxga01-in.huawei.com ([119.145.14.64]:65444)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1XluSz-0002yD-4q; Wed, 05 Nov 2014 01:53:17 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id E0FD140A6B;
-	Wed,  5 Nov 2014 09:53:07 +0300 (MSK)
-Message-ID: <5459C953.7020802@msgid.tls.msk.ru>
-Date: Wed, 05 Nov 2014 09:53:07 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.2.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XluXG-0004Nx-M8; Wed, 05 Nov 2014 01:57:43 -0500
+Received: from 172.24.2.119 (EHLO szxeml452-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CDY68149; Wed, 05 Nov 2014 14:57:29 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml452-hub.china.huawei.com
+	(10.82.67.195) with Microsoft SMTP Server id 14.3.158.1; Wed, 5 Nov 2014
+	14:57:22 +0800
+Message-ID: <5459CA4D.8020807@huawei.com>
+Date: Wed, 5 Nov 2014 14:57:17 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-To: Eric Blake <eblake@redhat.com>, arei.gonglei@huawei.com, 
-	qemu-devel@nongnu.org
+To: Michael Tokarev <mjt@tls.msk.ru>
 References: <1415018910-11600-1-git-send-email-arei.gonglei@huawei.com>
-	<5458D57C.9030700@redhat.com>
-In-Reply-To: <5458D57C.9030700@redhat.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=utf-8
+	<5458D57C.9030700@redhat.com> <5459C953.7020802@msgid.tls.msk.ru>
+In-Reply-To: <5459C953.7020802@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, peter.huangpeng@huawei.com
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.64
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Eric Blake <eblake@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-doc.texi: fix typos
 	for x509 examples
 X-BeenThere: qemu-trivial@nongnu.org
@@ -46,26 +52,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Nov 2014 06:53:37 -0000
+X-List-Received-Date: Wed, 05 Nov 2014 06:58:03 -0000
 
-04.11.2014 16:32, Eric Blake wrote:
-> On 11/03/2014 01:48 PM, arei.gonglei@huawei.com wrote:
->> From: Gonglei <arei.gonglei@huawei.com>
+On 2014/11/5 14:53, Michael Tokarev wrote:
+
+> 04.11.2014 16:32, Eric Blake wrote:
+>> On 11/03/2014 01:48 PM, arei.gonglei@huawei.com wrote:
+>>> From: Gonglei <arei.gonglei@huawei.com>
+>>>
+>>> Fix typos made people confuesd:
 >>
->> Fix typos made people confuesd:
+>> Spelling:
+>> s/confuesd/confused/
+>>
+>> Grammar: would read better as:
+>>
+>> Fix typos that caused confusion for some people:
 > 
-> Spelling:
-> s/confuesd/confused/
+> I just removed whole commit message (besides the subject
+> line), because the patch is self-explanatory anyway.
+> Hopefully it's okay.. ;)
 > 
-> Grammar: would read better as:
-> 
-> Fix typos that caused confusion for some people:
 
-I just removed whole commit message (besides the subject
-line), because the patch is self-explanatory anyway.
-Hopefully it's okay.. ;)
+OK, thanks.
 
-Thanks,
+Best regards,
+-Gonglei
 
-/mjt
 
