@@ -1,44 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xm0db-0007BC-Da
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Nov 2014 08:28:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51449)
+	id 1Xm2Ap-0004gK-Gk
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Nov 2014 10:07:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43535)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Xm0dV-00074j-FK
-	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 08:28:38 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1Xm2Ag-0004e9-DH
+	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 10:07:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Xm0dQ-0000jg-MG
-	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 08:28:33 -0500
-Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:33891 helo=socrates.bennee.com)
+	(envelope-from <peter.maydell@linaro.org>) id 1Xm2AV-0003Ev-Ik
+	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 10:06:54 -0500
+Received: from mail-la0-f52.google.com ([209.85.215.52]:42128)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1Xm0dQ-0000jK-Fo; Wed, 05 Nov 2014 08:28:28 -0500
-Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
-	by socrates.bennee.com with esmtp (Exim 4.80)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1Xm1AX-0007aq-3w; Wed, 05 Nov 2014 15:02:41 +0100
-References: <1415098223-32404-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1415098223-32404-2-git-send-email-zhang.zhanghailiang@huawei.com>
-	<874mufumgk.fsf@linaro.org> <5459CC56.1030109@msgid.tls.msk.ru>
-	<545A15C8.6090501@huawei.com>
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>
-In-reply-to: <545A15C8.6090501@huawei.com>
-Date: Wed, 05 Nov 2014 13:28:27 +0000
-Message-ID: <87zjc5srno.fsf@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1Xm2AU-0003C6-WE
+	for qemu-trivial@nongnu.org; Wed, 05 Nov 2014 10:06:43 -0500
+Received: by mail-la0-f52.google.com with SMTP id pv20so855105lab.11
+	for <qemu-trivial@nongnu.org>; Wed, 05 Nov 2014 07:06:41 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=cpgGB006FV+PJ8TSz2Xp+6x1gUTex7Jnyl4PXGAgWzw=;
+	b=Ax161rb1/WvK4MBW0A1AHbu0017uhrMYXstkK66VXpiXuxnCiq3AuH21lR6w3sHZHJ
+	NG2MtXL81VYhezPTqfOkGooEc57Pd6LOMeBp7C163j8f8yft+XlZY1wSp+ug5NqFnnuv
+	PFwlfxLm9YN28UAuinsLwgH4QTWPjXFsbMkknLPGBlUxCq4H2d8h8bB5Kr8o6iyfj6qv
+	RMyxQFjmRWIWuYXRfSmdxpia22R7QR17WBn2RCrZm0AmPbVosgG8UzLbLErGtgbnGa3Z
+	q+FcN3fNiBgIwttgB82DsKO3lI3jk+Oavx/T8LCe2PLf+6X6SJKajkpxroMwLEHvjuDx
+	Pa6Q==
+X-Gm-Message-State: ALoCoQkarPuIJEznnOmYk7tJrw+ytdWM7+uDXRtiEFwoZJI8SeBB0phdqGgK/wM2yhd2nP4qGojX
+X-Received: by 10.112.189.10 with SMTP id ge10mr67909048lbc.23.1415200001152; 
+	Wed, 05 Nov 2014 07:06:41 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 127.0.0.1
-X-SA-Exim-Mail-From: alex.bennee@linaro.org
-X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 88.198.71.155
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	armbru@redhat.com, qemu-devel@nongnu.org, kraxel@redhat.com,
-	peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 1/5] qemu-char: fix
-	parameter check in some qemu_chr_parse_* functions
+Received: by 10.112.173.168 with HTTP; Wed, 5 Nov 2014 07:06:20 -0800 (PST)
+In-Reply-To: <201411051447.sA5EldYV022824@higson.cam.lispworks.com>
+References: <201411041751.sA4Hpu4X013678@heapu.cam.lispworks.com>
+	<CAFEAcA9X35ptR64c=rFEN42de1Lrp_+ikuVFcxM2ZENGZY_aag@mail.gmail.com>
+	<201411051350.sA5DowCk030277@higson.cam.lispworks.com>
+	<CAFEAcA8rEYK51OR12uJFC+jrFzTgnpdZ9dg5TXWLi5ooLqiRig@mail.gmail.com>
+	<201411051447.sA5EldYV022824@higson.cam.lispworks.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 5 Nov 2014 15:06:20 +0000
+Message-ID: <CAFEAcA8-TKo7uLR7Z4h7hf+194e9LrQ0B5SHaSE0-54Z7D3aYg@mail.gmail.com>
+To: Martin Simmons <martin@lispworks.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.52
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gdbstub: Add a missing case
+ of signal number translation in gdbstub
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,46 +59,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Nov 2014 13:28:38 -0000
+X-List-Received-Date: Wed, 05 Nov 2014 15:07:01 -0000
 
-
-zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
-
-> On 2014/11/5 15:05, Michael Tokarev wrote:
->> 04.11.2014 16:25, Alex Bennée wrote:
->>> zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
-<snip>
->> a good reason for having assert here.
+On 5 November 2014 14:47, Martin Simmons <martin@lispworks.com> wrote:
+>>>>>> On Wed, 5 Nov 2014 14:17:36 +0000, Peter Maydell said:
 >>
+>> On 5 November 2014 13:50, Martin Simmons <martin@lispworks.com> wrote:
+>> >>>>>> On Tue, 4 Nov 2014 19:09:43 +0000, Peter Maydell said:
+>> >> The if() statement should have braces for our coding style,
+>> >> and no space before the '(' in function calls; otherwise this
+>> >> looks good to me.
+>> >
+>> > Do you want a new patch with it like that?  I was following the style of the
+>> > rest of that file, in particular the other 'C' case :-(
+>>
+>> Yes, if you could respin it that would be nice. Unfortunately there
+>> are still areas of our codebase which don't follow the coding
+>> style; we update bits of code as we change them, so new patches
+>> follow the style guide for the lines they touch. You can use
+>> scripts/checkpatch.pl to check your patch for the most common
+>> issues.
 >
-> Agreed, assert here is still not unnecessary,
-> filename will never to be NULL in these two cases.
+> OK, here it is.
 >
->>> At a minimum I'd replace it with a g_assert(filename) to make the
->>> calling contract clear.
->>
->> This is an internal set of APIs for a chr device, each kind is
->> having a pair of functions which are called in order (first parse,
->> next open), -- _that_ is the contract.
+> Signed-off-by: Martin Simmons <martin@lispworks.com>
+>
+> diff --git a/gdbstub.c b/gdbstub.c
+> index d1b5afd..0faca56 100644
+> --- a/gdbstub.c
+> +++ b/gdbstub.c
+> @@ -823,7 +823,10 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+>                  action = *p++;
+>                  signal = 0;
+>                  if (action == 'C' || action == 'S') {
+> -                    signal = strtoul(p, (char **)&p, 16);
+> +                    signal = gdb_signal_to_target(strtoul(p, (char **)&p, 16));
+> +                    if (signal == -1) {
+> +                        signal = 0;
+> +                    }
+>                  } else if (action != 'c' && action != 's') {
+>                      res = 0;
+>                      break;
+>
+> __Martin
+>
 
-assert isn't really about informing the user, it just makes an explicit
-statement that this API will always have a filled in filename and if it
-ever gets a NULL that's a programming bug in using the API, internal or
-otherwise.
+This version Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+and cc'd trivial. (Somebody's going to have to manually put the
+patch together with the commit message now, though.)
 
->> []
->>> All this boilerplate checking makes me think that either the qemu_opt
->>> machinery should be ensuring we get a valid option string?
->>
->> Might be a good idea, yes, but that'd be a huge change, since that
->> should be done in a lot of places, and in many cases we can't
->> express our rules easily (eg, only one of two parameters should
->> be present).  I think at this stage adding simple checks to
->> _parse functions is the way to go, and it is easy to read too.
-
-Yes, I wasn't intending to suggest expanding this patch set to encompase
-the larger task ;-)
-
--- 
-Alex Bennée
+thanks
+-- PMM
 
