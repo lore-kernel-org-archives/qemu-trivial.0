@@ -1,41 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XleN4-0004Gd-2a
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Nov 2014 08:42:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35882)
+	id 1XloOT-0000KC-EO
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Nov 2014 19:24:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56927)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1XleMy-00047H-Cm
-	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:42:05 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1XloON-0000HR-Bf
+	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 19:24:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1XleMt-0002WH-9x
-	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 08:42:00 -0500
-Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:50113 helo=socrates.bennee.com)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XloOE-0002Ez-4i
+	for qemu-trivial@nongnu.org; Tue, 04 Nov 2014 19:24:07 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:24965)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1XleMj-0002Jo-Ej; Tue, 04 Nov 2014 08:41:45 -0500
-Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
-	by socrates.bennee.com with esmtp (Exim 4.80)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1Xletb-0006RE-SS; Tue, 04 Nov 2014 15:15:44 +0100
-References: <1415098223-32404-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1415098223-32404-6-git-send-email-zhang.zhanghailiang@huawei.com>
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>
-In-reply-to: <1415098223-32404-6-git-send-email-zhang.zhanghailiang@huawei.com>
-Date: Tue, 04 Nov 2014 13:41:45 +0000
-Message-ID: <87y4rrt752.fsf@linaro.org>
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XloOC-0002CI-PU; Tue, 04 Nov 2014 19:23:58 -0500
+Received: from 172.24.2.119 (EHLO szxeml409-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AWQ01250; Wed, 05 Nov 2014 08:23:52 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml409-hub.china.huawei.com
+	(10.82.67.136) with Microsoft SMTP Server id 14.3.158.1; Wed, 5 Nov 2014
+	08:23:41 +0800
+Message-ID: <54596E0D.3040204@huawei.com>
+Date: Wed, 5 Nov 2014 08:23:41 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 127.0.0.1
-X-SA-Exim-Mail-From: alex.bennee@linaro.org
-X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 88.198.71.155
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
-	peter.huangpeng@huawei.com, armbru@redhat.com, kraxel@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 5/5] spice-qemu-char:
-	convert some functions to use Error API
+To: Eric Blake <eblake@redhat.com>
+References: <1415018910-11600-1-git-send-email-arei.gonglei@huawei.com>
+	<5458D57C.9030700@redhat.com>
+In-Reply-To: <5458D57C.9030700@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020208.54596E19.01C3, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 3ebdf851086c4c1b79483c8732c6948a
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"mjt@tls.msk.ru" <mjt@tls.msk.ru>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Huangpeng
+	\(Peter\)" <peter.huangpeng@huawei.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-doc.texi: fix typos
+	for x509 examples
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,35 +57,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Nov 2014 13:42:05 -0000
+X-List-Received-Date: Wed, 05 Nov 2014 00:24:12 -0000
 
+On 2014/11/4 21:32, Eric Blake wrote:
 
-zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
+> On 11/03/2014 01:48 PM, arei.gonglei@huawei.com wrote:
+>> From: Gonglei <arei.gonglei@huawei.com>
+>>
+>> Fix typos made people confuesd:
+> 
+> Spelling:
+> s/confuesd/confused/
+> 
+> Grammar: would read better as:
+> 
+> Fix typos that caused confusion for some people:
+> 
 
-> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-<snip>
->  
-> -CharDriverState *qemu_chr_open_spice_vmc(const char *type)
-> +CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp)
->  {
-<snip>
-> diff --git a/stubs/qemu-chr-open-spice.c b/stubs/qemu-chr-open-spice.c
-> index f1c4849..55826ed 100644
-> --- a/stubs/qemu-chr-open-spice.c
-> +++ b/stubs/qemu-chr-open-spice.c
-> @@ -1,7 +1,7 @@
->  #include "qemu-common.h"
->  #include "ui/qemu-spice.h"
->  
-> -CharDriverState *qemu_chr_open_spice_vmc(const char *type)
-> +CharDriverState *qemu_chr_open_spice_vmc(const char *type, Error **errp)
->  {
->      return NULL;
->  }
+Thanks.
+Mybe /mjt would correct me directly?
 
-Ahh I may have missed it was a stub in the previous patch.
+Best regards,
+-Gonglei
 
-
--- 
-Alex Bennée
 
