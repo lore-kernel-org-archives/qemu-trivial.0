@@ -1,46 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XmQhu-0003my-3F
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Nov 2014 12:18:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37306)
+	id 1Xn6My-0007uX-FT
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Nov 2014 08:48:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36508)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1XmQhs-0003jr-GI
-	for qemu-trivial@nongnu.org; Thu, 06 Nov 2014 12:18:49 -0500
+	(envelope-from <willem_qemu@lekkertech.net>) id 1Xmxyj-00077j-01
+	for qemu-trivial@nongnu.org; Fri, 07 Nov 2014 23:50:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1XmQhr-0003dx-Ll
-	for qemu-trivial@nongnu.org; Thu, 06 Nov 2014 12:18:48 -0500
-Received: from mel.v6.act-europe.fr ([2a02:2ab8:224:1::a0a:d2]:37645
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1XmQhp-0003cd-8S; Thu, 06 Nov 2014 12:18:45 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 6E5232B3F608;
-	Thu,  6 Nov 2014 18:18:44 +0100 (CET)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i2klWxam6M23; Thu,  6 Nov 2014 18:18:44 +0100 (CET)
-Received: from [10.10.1.115] (lanoue.act-europe.fr [10.10.1.115])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 5F30E2B3F5FF;
-	Thu,  6 Nov 2014 18:18:44 +0100 (CET)
-Message-ID: <545BAD74.8020706@adacore.com>
-Date: Thu, 06 Nov 2014 18:18:44 +0100
-From: Fabien Chouteau <chouteau@adacore.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.1.2
+	(envelope-from <willem_qemu@lekkertech.net>) id 1Xmxyd-00042e-QI
+	for qemu-trivial@nongnu.org; Fri, 07 Nov 2014 23:50:24 -0500
+Received: from mail-wg0-f50.google.com ([74.125.82.50]:64930)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <willem_qemu@lekkertech.net>) id 1Xmxyd-00040t-Kx
+	for qemu-trivial@nongnu.org; Fri, 07 Nov 2014 23:50:19 -0500
+Received: by mail-wg0-f50.google.com with SMTP id z12so5046458wgg.9
+	for <qemu-trivial@nongnu.org>; Fri, 07 Nov 2014 20:50:17 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:message-id:date:from:mime-version:to:cc:subject
+	:content-type:content-transfer-encoding;
+	bh=xfo7y+8EeTuguKMMeLUm2Z5a2Siq4/q9vRP9pRibIuw=;
+	b=R7qkmiHyslC8ROFPZRM0l66uSCrE3USkir8RnEoBvtsvuPmHXda7hK38Bv0vxYtiUb
+	T98CupRjpmnH18aiFv9NNTM3xbg/PXxDYEnJnoKEphg6X/Hb3+7eTrV3H5mqUzEt5Fd/
+	XaPzjKDZy1Aqr9fyRhXui9znbQ60HgHZj3DCdH88t1g/7AH/GsJV6gKyaw4ceM+C9P7m
+	Kc9wBoG4+cJoXgTMQTfkbzGm6WuBrTgf1GytEHdOgeuz+8bs5Sxq1zTLtmviVrOFl2qz
+	nyJCXf+KIwKlFIP+BDFBTqT2P+q6Jw62/cThckTtVHenudMzGdzft4ymCcfeUVsIKhAF
+	qXaA==
+X-Gm-Message-State: ALoCoQmG7TWImh9kQzGgoY1EAGeORwWjNmXb91g10cLSWm1SFY03b/5Z4Sh9YPAyxHkLwTbM3K/w
+X-Received: by 10.180.103.226 with SMTP id fz2mr6735366wib.4.1415422216961;
+	Fri, 07 Nov 2014 20:50:16 -0800 (PST)
+Received: from [127.0.0.1] (xs8.xs4all.nl. [2001:888:0:1::888])
+	by mx.google.com with ESMTPSA id s8sm14178360wjx.9.2014.11.07.20.50.14
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 07 Nov 2014 20:50:16 -0800 (PST)
+Message-ID: <545D935F.3070300@lekkertech.net>
+Date: Fri, 07 Nov 2014 19:51:59 -0800
+From: Willem Pinckaers <willem_qemu@lekkertech.net>
 MIME-Version: 1.0
-To: Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org, 
-	qemu-trivial@nongnu.org
-References: <1415291030-15485-1-git-send-email-chouteau@adacore.com>
-	<545BAD4C.6090006@suse.de>
-In-Reply-To: <545BAD4C.6090006@suse.de>
-Content-Type: text/plain; charset=windows-1252
+To: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a02:2ab8:224:1::a0a:d2
-Subject: Re: [Qemu-trivial] [PATCH] target-ppc: Fix breakpoint registers for
-	e300
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.82.50
+X-Mailman-Approved-At: Sat, 08 Nov 2014 08:47:58 -0500
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] coroutine-sigaltstack: Change jmp_buf to
+	sigjmp_buf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,20 +58,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Nov 2014 17:18:49 -0000
+X-List-Received-Date: Sat, 08 Nov 2014 04:50:30 -0000
 
-On 11/06/2014 06:18 PM, Alexander Graf wrote:
-> 
-> 
-> On 06.11.14 17:23, Fabien Chouteau wrote:
->> In the previous patch, the registers were added to init_proc_G2LE
->> instead of init_proc_e300.
->>
->> Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
-> 
-> Thanks, applied to ppc-next (for 2.2).
-> 
 
-Thank you,
+This is a simple patch to change the type of old_env from jmp_buf
+to sigjmp_buf.  old_env is used by sigsetjmp and as such should be
+a sigjmp_buf.
+
+This fixes a stack_chk fail in a OSX 32bit build. Since at least on
+OSX sigjmp_buf is four bytes larger then a jmpbuf, resulting in an
+overflow in sigsetjmp. Due to variable reordering this overwrites
+the stack cookie.
+
+Signed-off-by: Willem Pinckaers <willem_qemu@lekkertech.net>
+---
+ coroutine-sigaltstack.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/coroutine-sigaltstack.c b/coroutine-sigaltstack.c
+index 3de0bb3..63519ff 100644
+--- a/coroutine-sigaltstack.c
++++ b/coroutine-sigaltstack.c
+@@ -155,7 +155,7 @@ Coroutine *qemu_coroutine_new(void)
+     stack_t oss;
+     sigset_t sigs;
+     sigset_t osigs;
+-    jmp_buf old_env;
++    sigjmp_buf old_env;
+
+     /* The way to manipulate stack is with the sigaltstack function. We
+      * prepare a stack, with it delivering a signal to ourselves and then
+-- 
+1.9.3 (Apple Git-50)
 
 
