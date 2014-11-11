@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xo891-0004Pq-5G
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 04:53:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54552)
+	id 1Xo94s-0004iR-Cz
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 05:53:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35149)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Xo88u-0004HD-Mb
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 04:53:49 -0500
+	(envelope-from <Stefano.Stabellini@citrix.com>) id 1Xo94l-0004ar-LM
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 05:53:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Xo88p-0002da-DK
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 04:53:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39745)
+	(envelope-from <Stefano.Stabellini@citrix.com>) id 1Xo94g-0000Cc-Kw
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 05:53:31 -0500
+Received: from smtp02.citrix.com ([66.165.176.63]:28466)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Xo88f-0002cY-Gs; Tue, 11 Nov 2014 04:53:29 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAB9rOPH016733
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 11 Nov 2014 04:53:24 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
-	[10.36.116.50])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sAB9rNAP023339
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 11 Nov 2014 04:53:24 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 6D3F3303FEAF; Tue, 11 Nov 2014 10:53:22 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: <arei.gonglei@huawei.com>
-References: <1415698679-4264-1-git-send-email-arei.gonglei@huawei.com>
-Date: Tue, 11 Nov 2014 10:53:22 +0100
-In-Reply-To: <1415698679-4264-1-git-send-email-arei.gonglei@huawei.com> (arei
-	gonglei's message of "Tue, 11 Nov 2014 17:37:59 +0800")
-Message-ID: <87bnoegj1p.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <Stefano.Stabellini@citrix.com>)
+	id 1Xo94W-0000A4-RQ; Tue, 11 Nov 2014 05:53:16 -0500
+X-IronPort-AV: E=Sophos;i="5.07,360,1413244800"; d="scan'208";a="191510880"
+Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
+	(10.13.107.80) with Microsoft SMTP Server id 14.3.181.6;
+	Tue, 11 Nov 2014 05:53:14 -0500
+Received: from kaball.uk.xensource.com ([10.80.2.59])	by
+	ukmail1.uk.xensource.com with esmtp (Exim 4.69)	(envelope-from
+	<stefano.stabellini@eu.citrix.com>)	id 1Xo94U-0001RY-AS;
+	Tue, 11 Nov 2014 10:53:14 +0000
+Date: Tue, 11 Nov 2014 10:53:01 +0000
+From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+X-X-Sender: sstabellini@kaball.uk.xensource.com
+To: Chen Gang <gang.chen.5i5j@gmail.com>
+In-Reply-To: <5461D59C.5020106@gmail.com>
+Message-ID: <alpine.DEB.2.02.1411111052280.26318@kaball.uk.xensource.com>
+References: <5461D59C.5020106@gmail.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sysbus: Correct
-	SYSTEM_BUS(obj) defines
+Content-Type: text/plain; charset="US-ASCII"
+X-DLP: MIA1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 66.165.176.63
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, xen-devel@lists.xensource.com,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>,
+	Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+Subject: Re: [Qemu-trivial] [PATCH trivial] xen-hvm: Remove redandant
+	varialbe 'xstate'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,32 +50,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Nov 2014 09:53:49 -0000
+X-List-Received-Date: Tue, 11 Nov 2014 10:53:36 -0000
 
-<arei.gonglei@huawei.com> writes:
+On Tue, 11 Nov 2014, Chen Gang wrote:
+> In xen_hvm_change_state_handler(), can pass 'opaque' with type cast to
+> xen_main_loop_prepare() directly, need not use additional variable for
+> it.
+> 
+> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
 
-> From: Gonglei <arei.gonglei@huawei.com>
->
-> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-> ---
->  include/hw/sysbus.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
-> index 6175bf9..d1f3f00 100644
-> --- a/include/hw/sysbus.h
-> +++ b/include/hw/sysbus.h
-> @@ -10,7 +10,7 @@
->  #define QDEV_MAX_PIO 32
+Acked-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+
+
+>  xen-hvm.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/xen-hvm.c b/xen-hvm.c
+> index 21f1cbb..7548794 100644
+> --- a/xen-hvm.c
+> +++ b/xen-hvm.c
+> @@ -993,9 +993,8 @@ static void xen_main_loop_prepare(XenIOState *state)
+>  static void xen_hvm_change_state_handler(void *opaque, int running,
+>                                           RunState rstate)
+>  {
+> -    XenIOState *xstate = opaque;
+>      if (running) {
+> -        xen_main_loop_prepare(xstate);
+> +        xen_main_loop_prepare((XenIOState *)opaque);
+>      }
+>  }
 >  
->  #define TYPE_SYSTEM_BUS "System"
-> -#define SYSTEM_BUS(obj) OBJECT_CHECK(IDEBus, (obj), TYPE_IDE_BUS)
-> +#define SYSTEM_BUS(obj) OBJECT_CHECK(BusState, (obj), TYPE_SYSTEM_BUS)
->  
->  typedef struct SysBusDevice SysBusDevice;
-
-Has never been used, so this is "only" an unexploded landmine.  Hope
-it's the only one of this kind.
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> -- 
+> 1.8.5.2 (Apple Git-48)
+> 
 
