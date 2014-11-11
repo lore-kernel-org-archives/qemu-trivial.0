@@ -1,53 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XoD0j-00064u-UF
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 10:05:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54695)
+	id 1XoDv2-0002Zn-MV
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 11:03:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50609)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <konrad.wilk@oracle.com>) id 1XoCMp-00045E-Ms
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:24:30 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1XoDuv-0002ZO-Eo
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 11:03:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <konrad.wilk@oracle.com>) id 1XoCMi-0007fv-Vb
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:24:23 -0500
-Received: from aserp1040.oracle.com ([141.146.126.69]:28679)
+	(envelope-from <peter.maydell@linaro.org>) id 1XoDuq-0001Pu-PB
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 11:03:41 -0500
+Received: from mail-la0-f42.google.com ([209.85.215.42]:46287)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <konrad.wilk@oracle.com>)
-	id 1XoCMi-0007ff-FS; Tue, 11 Nov 2014 09:24:16 -0500
-Received: from acsinet22.oracle.com (acsinet22.oracle.com [141.146.126.238])
-	by aserp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with
-	ESMTP id sABEO4J4002999
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
-	Tue, 11 Nov 2014 14:24:07 GMT
-Received: from aserz7021.oracle.com (aserz7021.oracle.com [141.146.126.230])
-	by acsinet22.oracle.com (8.14.4+Sun/8.14.4) with ESMTP id
-	sABEO2Ev028136
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=FAIL);
-	Tue, 11 Nov 2014 14:24:03 GMT
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
-	by aserz7021.oracle.com (8.14.4+Sun/8.14.4) with ESMTP id
-	sABEO21F001075; Tue, 11 Nov 2014 14:24:02 GMT
-Received: from konrad-lan.dumpdata.com (/50.195.21.189)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Tue, 11 Nov 2014 06:24:02 -0800
-Date: Tue, 11 Nov 2014 09:24:00 -0500
-From: Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>
-To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-Message-ID: <20141111142359.GB8751@konrad-lan.dumpdata.com>
-References: <5461D59C.5020106@gmail.com>
-	<alpine.DEB.2.02.1411111052280.26318@kaball.uk.xensource.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1XoDuq-0001Pm-IO
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 11:03:36 -0500
+Received: by mail-la0-f42.google.com with SMTP id gq15so9829971lab.15
+	for <qemu-trivial@nongnu.org>; Tue, 11 Nov 2014 08:03:35 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=xSCqhhMdtP6p9CI6Z14jzQkUCVRqjGk6EQYWPDc60jo=;
+	b=FN8aRf8FqPKny0BU0/DKL8YvSsFGp2dnUGI0bGVDNotVpoiedXsEI1R0zPl7QJhJpd
+	arFpHF5DDNlEFxGWjCg4pkcZwNBISJbfSma5baGqMhpsyAl4ZBDD8hEJDeYY4H6cTHKW
+	KqWltmysd0BApZZPZL13CBl/WgezM3E4ZsAIn3nOT4IQ4OX3oSBUAUdo4Ks0vPGckVPZ
+	+Caqty34L9O7lq0PuvZSGfu6dFrhoyw5JpAJLZIPVdhGftHzysy4dh7VXiPPQ9W9+eNu
+	7C+ohfcvpDw1qv0sbPNSoLwiOmL6upmbb3bf8zuBdj3vlxmsIeiusN719QmPR3jfvE8o
+	SCUQ==
+X-Gm-Message-State: ALoCoQmKQGIBNVHttSowmlvpP4jXE3f4Mz1nPoonJseQ47S9LMzpkV9/xGiZzK05N+iLVBI0pgwu
+X-Received: by 10.153.6.9 with SMTP id cq9mr10267602lad.79.1415721815346; Tue,
+	11 Nov 2014 08:03:35 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.02.1411111052280.26318@kaball.uk.xensource.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Source-IP: acsinet22.oracle.com [141.146.126.238]
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 141.146.126.69
-X-Mailman-Approved-At: Tue, 11 Nov 2014 10:05:36 -0500
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, xen-devel@lists.xensource.com,
-	Michael Tokarev <mjt@tls.msk.ru>, Chen Gang <gang.chen.5i5j@gmail.com>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Xen-devel] [PATCH trivial] xen-hvm: Remove
- redandant varialbe 'xstate'
+Received: by 10.112.150.135 with HTTP; Tue, 11 Nov 2014 08:03:14 -0800 (PST)
+In-Reply-To: <cover.1415716845.git.mjt@msgid.tls.msk.ru>
+References: <cover.1415716845.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 11 Nov 2014 16:03:14 +0000
+Message-ID: <CAFEAcA8TUOMx-NmoxGBHQb1Bx=x3ZWB=B4L0yt5rFrvWxG6Oag@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.42
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/11 for-2.2] Trivial
+	patches for 2014-11-11
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,45 +55,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Nov 2014 14:24:30 -0000
+X-List-Received-Date: Tue, 11 Nov 2014 16:03:47 -0000
 
-On Tue, Nov 11, 2014 at 10:53:01AM +0000, Stefano Stabellini wrote:
-> On Tue, 11 Nov 2014, Chen Gang wrote:
-> > In xen_hvm_change_state_handler(), can pass 'opaque' with type cast to
-> > xen_main_loop_prepare() directly, need not use additional variable for
-> > it.
+On 11 November 2014 14:46, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here's another week's trivial patches pull req, for 2.2 release.
+> There's nothing exciting in there, but some patches are worth to
+> mention.
+>
+>   4/11: numa: make 'info numa' take into account hotplugged memory
+>     this one has been pinged several times, and the numa
+>     maintainer agreed to push it using other tree.  It can
+>     be considered a bugfix for `info numa' output (not taking
+>     some memory into account), and while somewhat large for
+>     -trivial, it is actually rather trivial
+>
+>   5/11: gdbstub: Add a missing case of signal number translation in gdbstub
+>     a bugfix to allow gdb debugging
+>
+>   7/11: coroutine-sigaltstack: Change jmp_buf to sigjmp_buf
+>     this one is a bugfix discussed today
+>
+> Please consider applying/pulling.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 7135781f65f1267a72bf554ee2b7bd605f9e59aa:
+>
+>   Merge remote-tracking branch 'remotes/mjt/tags/pull-trivial-patches-2014-11-02' into staging (2014-11-03 14:55:17 +0000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2014-11-11
+>
+> for you to fetch changes up to 705be728c0b5546da10d8ef4239a112d1616bb97:
+>
+>   block: Fix comment for bdrv_co_get_block_status (2014-11-11 17:36:19 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2014-11-11
+>
+> ----------------------------------------------------------------
 
-The title of your patch should say 'variable'.
-> > 
-> > Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-> 
-> Acked-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-> 
-> 
-> >  xen-hvm.c | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> > 
-> > diff --git a/xen-hvm.c b/xen-hvm.c
-> > index 21f1cbb..7548794 100644
-> > --- a/xen-hvm.c
-> > +++ b/xen-hvm.c
-> > @@ -993,9 +993,8 @@ static void xen_main_loop_prepare(XenIOState *state)
-> >  static void xen_hvm_change_state_handler(void *opaque, int running,
-> >                                           RunState rstate)
-> >  {
-> > -    XenIOState *xstate = opaque;
-> >      if (running) {
-> > -        xen_main_loop_prepare(xstate);
-> > +        xen_main_loop_prepare((XenIOState *)opaque);
-> >      }
-> >  }
-> >  
-> > -- 
-> > 1.8.5.2 (Apple Git-48)
-> > 
-> 
-> _______________________________________________
-> Xen-devel mailing list
-> Xen-devel@lists.xen.org
-> http://lists.xen.org/xen-devel
+Applied, thanks.
+
+-- PMM
 
