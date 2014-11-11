@@ -1,48 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xnmoh-0003Ao-2t
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Nov 2014 06:07:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51434)
+	id 1Xo4V2-0001Ln-15
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 01:00:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47070)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Xnmob-00033p-RH
-	for qemu-trivial@nongnu.org; Mon, 10 Nov 2014 06:07:22 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Xo4Uv-0001De-Bn
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 01:00:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Xnmob-0005gy-1O
-	for qemu-trivial@nongnu.org; Mon, 10 Nov 2014 06:07:21 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40033)
+	(envelope-from <mjt@tls.msk.ru>) id 1Xo4Uq-0001e1-IU
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 01:00:13 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:51875)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1XnmoT-0005aU-LQ; Mon, 10 Nov 2014 06:07:13 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAAB7C2J021997
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 10 Nov 2014 06:07:13 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-42.ams2.redhat.com
-	[10.36.116.42])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sAAB7Adk025927
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 10 Nov 2014 06:07:11 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 8094730403AF; Mon, 10 Nov 2014 12:07:09 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Max Reitz <mreitz@redhat.com>
-References: <1415610638-3918-1-git-send-email-famz@redhat.com>
-	<5460924C.7040308@redhat.com>
-Date: Mon, 10 Nov 2014 12:07:09 +0100
-In-Reply-To: <5460924C.7040308@redhat.com> (Max Reitz's message of "Mon, 10
-	Nov 2014 11:24:12 +0100")
-Message-ID: <87wq73s49u.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Xo4Ug-0001Fv-It; Tue, 11 Nov 2014 00:59:58 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3A15B41C62;
+	Tue, 11 Nov 2014 08:59:49 +0300 (MSK)
+Message-ID: <5461A5D4.2010306@msgid.tls.msk.ru>
+Date: Tue, 11 Nov 2014 08:59:48 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.2.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+To: Peter Maydell <peter.maydell@linaro.org>, 
+	Martin Simmons <martin@lispworks.com>
+References: <201411041751.sA4Hpu4X013678@heapu.cam.lispworks.com>	<CAFEAcA9X35ptR64c=rFEN42de1Lrp_+ikuVFcxM2ZENGZY_aag@mail.gmail.com>	<201411051350.sA5DowCk030277@higson.cam.lispworks.com>	<CAFEAcA8rEYK51OR12uJFC+jrFzTgnpdZ9dg5TXWLi5ooLqiRig@mail.gmail.com>	<201411051447.sA5EldYV022824@higson.cam.lispworks.com>
+	<CAFEAcA8-TKo7uLR7Z4h7hf+194e9LrQ0B5SHaSE0-54Z7D3aYg@mail.gmail.com>
+In-Reply-To: <CAFEAcA8-TKo7uLR7Z4h7hf+194e9LrQ0B5SHaSE0-54Z7D3aYg@mail.gmail.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, Fam Zheng <famz@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: Fix comment for
-	bdrv_co_get_block_status
+X-Received-From: 86.62.121.231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] gdbstub: Add a missing case of signal
+ number translation in gdbstub
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,60 +47,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Nov 2014 11:07:22 -0000
+X-List-Received-Date: Tue, 11 Nov 2014 06:00:18 -0000
 
-Max Reitz <mreitz@redhat.com> writes:
+05.11.2014 18:06, Peter Maydell wrote:
+[]
+> This version Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> and cc'd trivial. (Somebody's going to have to manually put the
+> patch together with the commit message now, though.)
 
-> On 2014-11-10 at 10:10, Fam Zheng wrote:
->> It returns more information than binary, fix the comment.
->>
->> Signed-off-by: Fam Zheng <famz@redhat.com>
->> ---
->>   block.c | 6 +++---
->>   1 file changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/block.c b/block.c
->> index dacd881..42c914e 100644
->> --- a/block.c
->> +++ b/block.c
->> @@ -3903,9 +3903,9 @@ typedef struct BdrvCoGetBlockStatusData {
->>   } BdrvCoGetBlockStatusData;
->>     /*
->> - * Returns true iff the specified sector is present in the disk image. Drivers
->> - * not implementing the functionality are assumed to not support backing files,
->> - * hence all their sectors are reported as allocated.
->> + * Returns the status of the specified sectors. Drivers not implementing the
->> + * functionality are assumed to not support backing files, hence all their
->> + * sectors are reported as allocated.
->>    *
->>    * If 'sector_num' is beyond the end of the disk image the return value is 0
->>    * and 'pnum' is set to 0.
->
-> "status" is a bit broad, but pointing to "line 86 in
-> include/block/block.h" for a further explanation will probably not be
-> very stable.
->
-> Reviewed-by: Max Reitz <mreitz@redhat.com>
+Applied to -trivial, putting all parts together.
 
-Could perhaps call it "allocation status", and squash in something like
+Thanks,
 
-diff --git a/include/block/block.h b/include/block/block.h
-index 13e4537..5450610 100644
---- a/include/block/block.h
-+++ b/include/block/block.h
-@@ -83,7 +83,9 @@ typedef enum {
- #define BDRV_SECTOR_SIZE   (1ULL << BDRV_SECTOR_BITS)
- #define BDRV_SECTOR_MASK   ~(BDRV_SECTOR_SIZE - 1)
- 
--/* BDRV_BLOCK_DATA: data is read from bs->file or another file
-+/*
-+ * Allocation status flags
-+ * BDRV_BLOCK_DATA: data is read from bs->file or another file
-  * BDRV_BLOCK_ZERO: sectors read as zero
-  * BDRV_BLOCK_OFFSET_VALID: sector stored in bs->file as raw data
-  * BDRV_BLOCK_ALLOCATED: the content of the block is determined by this
-
-Anyway, it's an improvement already, so
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+/mjt
 
