@@ -1,42 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XoCZW-0007pV-4n
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 09:37:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58344)
+	id 1XoCie-0002bW-2g
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 09:46:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60743)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XoCZN-0007ba-QZ
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:37:28 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1XoCiX-0002Oq-Tx
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:46:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XoCZH-0004mO-Md
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:37:21 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:58702)
+	(envelope-from <mjt@tls.msk.ru>) id 1XoCiT-00081O-Ly
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:46:49 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:54595)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XoCZ5-0004jD-25; Tue, 11 Nov 2014 09:37:03 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0E9CF41DE5;
-	Tue, 11 Nov 2014 17:37:02 +0300 (MSK)
-Message-ID: <54621F0D.8080401@msgid.tls.msk.ru>
-Date: Tue, 11 Nov 2014 17:37:01 +0300
+	id 1XoCiJ-0007yS-TY; Tue, 11 Nov 2014 09:46:36 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id B346641DF2;
+	Tue, 11 Nov 2014 17:46:34 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id A078A6D9;
+	Tue, 11 Nov 2014 17:46:34 +0300 (MSK)
+Received: (nullmailer pid 14558 invoked by uid 1000);
+	Tue, 11 Nov 2014 14:46:34 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.2.0
-MIME-Version: 1.0
-To: Chen Gang <gang.chen.5i5j@gmail.com>, 
-	Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>,
-	Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-References: <5461D59C.5020106@gmail.com>	<alpine.DEB.2.02.1411111052280.26318@kaball.uk.xensource.com>	<20141111142359.GB8751@konrad-lan.dumpdata.com>
-	<54621DE6.60108@gmail.com>
-In-Reply-To: <54621DE6.60108@gmail.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Tue, 11 Nov 2014 17:46:23 +0300
+Message-Id: <3a0614c6c782cb760ec925f1662037c1c6038f0c.1415716845.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <cover.1415716845.git.mjt@msgid.tls.msk.ru>
+References: <cover.1415716845.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, xen-devel@lists.xensource.com,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Xen-devel] [PATCH trivial] xen-hvm: Remove
- redandant varialbe 'xstate'
+Cc: qemu-trivial@nongnu.org, Zhu Guihua <zhugh.fnst@cn.fujitsu.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 01/11] icc_bus: fix typo ICC_BRIGDE ->
+	ICC_BRIDGE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,18 +44,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Nov 2014 14:37:28 -0000
+X-List-Received-Date: Tue, 11 Nov 2014 14:46:54 -0000
 
-11.11.2014 17:32, Chen Gang wrote:
->> The title of your patch should say 'variable'.
-> 
-> Oh, yes, thanks. If necessary to send patch v2 for it, please let me
-> know.
+From: Zhu Guihua <zhugh.fnst@cn.fujitsu.com>
 
-Not only 'varialbe', but also 'redandant'.  I fixed both on commit, plus
-fixed grammar in commit message.
+Rename ICC_BRIGDE for better readability.
 
-Thanks,
+Signed-off-by: Zhu Guihua <zhugh.fnst@cn.fujitsu.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/cpu/icc_bus.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-/mjt
+diff --git a/hw/cpu/icc_bus.c b/hw/cpu/icc_bus.c
+index 9575fd6..6646ea2 100644
+--- a/hw/cpu/icc_bus.c
++++ b/hw/cpu/icc_bus.c
+@@ -73,11 +73,11 @@ typedef struct ICCBridgeState {
+     MemoryRegion apic_container;
+ } ICCBridgeState;
+ 
+-#define ICC_BRIGDE(obj) OBJECT_CHECK(ICCBridgeState, (obj), TYPE_ICC_BRIDGE)
++#define ICC_BRIDGE(obj) OBJECT_CHECK(ICCBridgeState, (obj), TYPE_ICC_BRIDGE)
+ 
+ static void icc_bridge_init(Object *obj)
+ {
+-    ICCBridgeState *s = ICC_BRIGDE(obj);
++    ICCBridgeState *s = ICC_BRIDGE(obj);
+     SysBusDevice *sb = SYS_BUS_DEVICE(obj);
+ 
+     qbus_create_inplace(&s->icc_bus, sizeof(s->icc_bus), TYPE_ICC_BUS,
+-- 
+1.7.10.4
+
 
