@@ -1,38 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XoCVw-0006We-JG
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 09:33:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57429)
+	id 1XoCZW-0007pV-4n
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 09:37:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58344)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XoCVp-0006NK-Hi
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:33:47 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1XoCZN-0007ba-QZ
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:37:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XoCVj-0003d0-7Y
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:33:41 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:35072)
+	(envelope-from <mjt@tls.msk.ru>) id 1XoCZH-0004mO-Md
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:37:21 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:58702)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XoCVW-0003XX-7r; Tue, 11 Nov 2014 09:33:22 -0500
+	id 1XoCZ5-0004jD-25; Tue, 11 Nov 2014 09:37:03 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 823FD41DE5;
-	Tue, 11 Nov 2014 17:33:21 +0300 (MSK)
-Message-ID: <54621E31.8020909@msgid.tls.msk.ru>
-Date: Tue, 11 Nov 2014 17:33:21 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id 0E9CF41DE5;
+	Tue, 11 Nov 2014 17:37:02 +0300 (MSK)
+Message-ID: <54621F0D.8080401@msgid.tls.msk.ru>
+Date: Tue, 11 Nov 2014 17:37:01 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.2.0
 MIME-Version: 1.0
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-References: <1415610638-3918-1-git-send-email-famz@redhat.com>
-In-Reply-To: <1415610638-3918-1-git-send-email-famz@redhat.com>
+To: Chen Gang <gang.chen.5i5j@gmail.com>, 
+	Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>,
+	Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+References: <5461D59C.5020106@gmail.com>	<alpine.DEB.2.02.1411111052280.26318@kaball.uk.xensource.com>	<20141111142359.GB8751@konrad-lan.dumpdata.com>
+	<54621DE6.60108@gmail.com>
+In-Reply-To: <54621DE6.60108@gmail.com>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] block: Fix comment for
-	bdrv_co_get_block_status
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, xen-devel@lists.xensource.com,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Xen-devel] [PATCH trivial] xen-hvm: Remove
+ redandant varialbe 'xstate'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,13 +48,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Nov 2014 14:33:47 -0000
+X-List-Received-Date: Tue, 11 Nov 2014 14:37:28 -0000
 
-10.11.2014 12:10, Fam Zheng wrote:
-> It returns more information than binary, fix the comment.
+11.11.2014 17:32, Chen Gang wrote:
+>> The title of your patch should say 'variable'.
+> 
+> Oh, yes, thanks. If necessary to send patch v2 for it, please let me
+> know.
 
-Applied to -trivial, with the fixup suggested by Markus --
-hope that's okay with you, Fam and Max... ;)
+Not only 'varialbe', but also 'redandant'.  I fixed both on commit, plus
+fixed grammar in commit message.
 
 Thanks,
 
