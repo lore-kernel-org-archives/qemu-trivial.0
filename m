@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XoCie-0002cq-OB
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 09:46:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60751)
+	id 1XoCpL-0000kM-Dt
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 09:53:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34542)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XoCiY-0002Pj-6q
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:46:54 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1XoCpF-0000Yc-2e
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:53:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1XoCiT-00081I-7h
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:46:50 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:52083)
+	(envelope-from <mjt@tls.msk.ru>) id 1XoCpA-000292-Gt
+	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 09:53:44 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:54351)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1XoCiJ-0007yV-TM; Tue, 11 Nov 2014 09:46:36 -0500
+	id 1XoCp0-00026i-EV; Tue, 11 Nov 2014 09:53:30 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id E845E41DF4;
-	Tue, 11 Nov 2014 17:46:34 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 6647C41DFA;
+	Tue, 11 Nov 2014 17:53:29 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id CF9F9706;
-	Tue, 11 Nov 2014 17:46:34 +0300 (MSK)
-Received: (nullmailer pid 14572 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 98A64711;
+	Tue, 11 Nov 2014 17:46:35 +0300 (MSK)
+Received: (nullmailer pid 14579 invoked by uid 1000);
 	Tue, 11 Nov 2014 14:46:34 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 11 Nov 2014 17:46:29 +0300
-Message-Id: <7f151e6f718f2edaf8661c4dedf6fcdb30b10e1b.1415716845.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 11 Nov 2014 17:46:32 +0300
+Message-Id: <00c2275c95edb3c355fce7e1128bdef845b9fe34.1415716845.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <cover.1415716845.git.mjt@msgid.tls.msk.ru>
 References: <cover.1415716845.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: Willem Pinckaers <willem_qemu@lekkertech.net>, qemu-trivial@nongnu.org,
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 07/11] coroutine-sigaltstack: Change jmp_buf
-	to sigjmp_buf
+Subject: [Qemu-trivial] [PULL 10/11] sysbus: Correct SYSTEM_BUS(obj) defines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,41 +43,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Nov 2014 14:46:55 -0000
+X-List-Received-Date: Tue, 11 Nov 2014 14:53:49 -0000
 
-From: Willem Pinckaers <willem_qemu@lekkertech.net>
+From: Gonglei <arei.gonglei@huawei.com>
 
-This is a simple patch to change the type of old_env from jmp_buf
-to sigjmp_buf.  old_env is used by sigsetjmp and as such should be
-a sigjmp_buf.
-
-This fixes a stack_chk fail in a OSX 32bit build. Since at least on
-OSX sigjmp_buf is four bytes larger then a jmpbuf, resulting in an
-overflow in sigsetjmp. Due to variable reordering this overwrites
-the stack cookie.
-
-Signed-off-by: Willem Pinckaers <willem_qemu@lekkertech.net>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Peter: I think I must have missed this one when I converted
-       all the jmp_buf to sigjmp_buf in commit 6ab7e546.
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- coroutine-sigaltstack.c |    2 +-
+ include/hw/sysbus.h |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/coroutine-sigaltstack.c b/coroutine-sigaltstack.c
-index 3de0bb3..63519ff 100644
---- a/coroutine-sigaltstack.c
-+++ b/coroutine-sigaltstack.c
-@@ -155,7 +155,7 @@ Coroutine *qemu_coroutine_new(void)
-     stack_t oss;
-     sigset_t sigs;
-     sigset_t osigs;
--    jmp_buf old_env;
-+    sigjmp_buf old_env;
+diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
+index 9fb1782..9bddfde 100644
+--- a/include/hw/sysbus.h
++++ b/include/hw/sysbus.h
+@@ -10,7 +10,7 @@
+ #define QDEV_MAX_PIO 32
  
-     /* The way to manipulate stack is with the sigaltstack function. We
-      * prepare a stack, with it delivering a signal to ourselves and then
+ #define TYPE_SYSTEM_BUS "System"
+-#define SYSTEM_BUS(obj) OBJECT_CHECK(IDEBus, (obj), TYPE_IDE_BUS)
++#define SYSTEM_BUS(obj) OBJECT_CHECK(BusState, (obj), TYPE_SYSTEM_BUS)
+ 
+ typedef struct SysBusDevice SysBusDevice;
+ 
 -- 
 1.7.10.4
 
