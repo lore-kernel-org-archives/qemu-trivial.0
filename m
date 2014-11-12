@@ -1,49 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XoDv2-0002Zn-MV
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Nov 2014 11:03:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50609)
+	id 1XoSQk-00069F-3U
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Nov 2014 02:33:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39559)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XoDuv-0002ZO-Eo
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 11:03:47 -0500
+	(envelope-from <armbru@redhat.com>) id 1XoSQd-000612-QS
+	for qemu-trivial@nongnu.org; Wed, 12 Nov 2014 02:33:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XoDuq-0001Pu-PB
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 11:03:41 -0500
-Received: from mail-la0-f42.google.com ([209.85.215.42]:46287)
+	(envelope-from <armbru@redhat.com>) id 1XoSQZ-0002uM-4L
+	for qemu-trivial@nongnu.org; Wed, 12 Nov 2014 02:33:23 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49190)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XoDuq-0001Pm-IO
-	for qemu-trivial@nongnu.org; Tue, 11 Nov 2014 11:03:36 -0500
-Received: by mail-la0-f42.google.com with SMTP id gq15so9829971lab.15
-	for <qemu-trivial@nongnu.org>; Tue, 11 Nov 2014 08:03:35 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=xSCqhhMdtP6p9CI6Z14jzQkUCVRqjGk6EQYWPDc60jo=;
-	b=FN8aRf8FqPKny0BU0/DKL8YvSsFGp2dnUGI0bGVDNotVpoiedXsEI1R0zPl7QJhJpd
-	arFpHF5DDNlEFxGWjCg4pkcZwNBISJbfSma5baGqMhpsyAl4ZBDD8hEJDeYY4H6cTHKW
-	KqWltmysd0BApZZPZL13CBl/WgezM3E4ZsAIn3nOT4IQ4OX3oSBUAUdo4Ks0vPGckVPZ
-	+Caqty34L9O7lq0PuvZSGfu6dFrhoyw5JpAJLZIPVdhGftHzysy4dh7VXiPPQ9W9+eNu
-	7C+ohfcvpDw1qv0sbPNSoLwiOmL6upmbb3bf8zuBdj3vlxmsIeiusN719QmPR3jfvE8o
-	SCUQ==
-X-Gm-Message-State: ALoCoQmKQGIBNVHttSowmlvpP4jXE3f4Mz1nPoonJseQ47S9LMzpkV9/xGiZzK05N+iLVBI0pgwu
-X-Received: by 10.153.6.9 with SMTP id cq9mr10267602lad.79.1415721815346; Tue,
-	11 Nov 2014 08:03:35 -0800 (PST)
+	(envelope-from <armbru@redhat.com>)
+	id 1XoSQP-0002qy-Nv; Wed, 12 Nov 2014 02:33:09 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAC7X790013301
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Wed, 12 Nov 2014 02:33:07 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-21.ams2.redhat.com
+	[10.36.116.21])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sAC7X5EE032246
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 12 Nov 2014 02:33:06 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 7A84630403AF; Wed, 12 Nov 2014 08:33:04 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: SeokYeon Hwang <syeon.hwang@samsung.com>
+References: <1415775949-4528-1-git-send-email-syeon.hwang@samsung.com>
+Date: Wed, 12 Nov 2014 08:33:04 +0100
+In-Reply-To: <1415775949-4528-1-git-send-email-syeon.hwang@samsung.com>
+	(SeokYeon Hwang's message of "Wed, 12 Nov 2014 16:05:49 +0900")
+Message-ID: <87egt8c1qn.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.112.150.135 with HTTP; Tue, 11 Nov 2014 08:03:14 -0800 (PST)
-In-Reply-To: <cover.1415716845.git.mjt@msgid.tls.msk.ru>
-References: <cover.1415716845.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Nov 2014 16:03:14 +0000
-Message-ID: <CAFEAcA8TUOMx-NmoxGBHQb1Bx=x3ZWB=B4L0yt5rFrvWxG6Oag@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.42
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/11 for-2.2] Trivial
-	patches for 2014-11-11
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+	kongjianjun@gmail.com, paolo.bonzini@gmail.com,
+	qemu-devel@nongnu.org, mreitz@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.2] pci: Don't pass
+	negative errno to 'error_set_errno()'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,50 +54,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Nov 2014 16:03:47 -0000
+X-List-Received-Date: Wed, 12 Nov 2014 07:33:28 -0000
 
-On 11 November 2014 14:46, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Here's another week's trivial patches pull req, for 2.2 release.
-> There's nothing exciting in there, but some patches are worth to
-> mention.
->
->   4/11: numa: make 'info numa' take into account hotplugged memory
->     this one has been pinged several times, and the numa
->     maintainer agreed to push it using other tree.  It can
->     be considered a bugfix for `info numa' output (not taking
->     some memory into account), and while somewhat large for
->     -trivial, it is actually rather trivial
->
->   5/11: gdbstub: Add a missing case of signal number translation in gdbstub
->     a bugfix to allow gdb debugging
->
->   7/11: coroutine-sigaltstack: Change jmp_buf to sigjmp_buf
->     this one is a bugfix discussed today
->
-> Please consider applying/pulling.
->
-> Thanks,
->
-> /mjt
->
-> The following changes since commit 7135781f65f1267a72bf554ee2b7bd605f9e59aa:
->
->   Merge remote-tracking branch 'remotes/mjt/tags/pull-trivial-patches-2014-11-02' into staging (2014-11-03 14:55:17 +0000)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2014-11-11
->
-> for you to fetch changes up to 705be728c0b5546da10d8ef4239a112d1616bb97:
->
->   block: Fix comment for bdrv_co_get_block_status (2014-11-11 17:36:19 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2014-11-11
->
-> ----------------------------------------------------------------
+Copying maintainer and -trivial.
 
-Applied, thanks.
+In the future, please copy maintainers.  You can use
+"scripts/get_maintainer.pl --no-git-fallback" to find them.
 
--- PMM
+SeokYeon Hwang <syeon.hwang@samsung.com> writes:
+
+> Signed-off-by: SeokYeon Hwang <syeon.hwang@samsung.com>
+> ---
+>  hw/pci/pcie.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
+> index 58455bd..2902f7d 100644
+> --- a/hw/pci/pcie.c
+> +++ b/hw/pci/pcie.c
+> @@ -229,7 +229,7 @@ static void pcie_cap_slot_hotplug_common(PCIDevice *hotplug_dev,
+>          /* the slot is electromechanically locked.
+>           * This error is propagated up to qdev and then to HMP/QMP.
+>           */
+> -        error_setg_errno(errp, -EBUSY, "slot is electromechanically locked");
+> +        error_setg_errno(errp, EBUSY, "slot is electromechanically locked");
+>      }
+>  }
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
