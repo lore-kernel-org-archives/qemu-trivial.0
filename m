@@ -1,65 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XoYMo-00038Y-L3
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Nov 2014 08:53:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40997)
+	id 1XokKk-0005Ce-3Z
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Nov 2014 21:40:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41091)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <syeon.hwang@samsung.com>) id 1XoSaY-0000xw-0O
-	for qemu-trivial@nongnu.org; Wed, 12 Nov 2014 02:43:44 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1XokKe-00058q-8K
+	for qemu-trivial@nongnu.org; Wed, 12 Nov 2014 21:40:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <syeon.hwang@samsung.com>) id 1XoSaR-0005Ts-MC
-	for qemu-trivial@nongnu.org; Wed, 12 Nov 2014 02:43:37 -0500
-Received: from mailout3.samsung.com ([203.254.224.33]:58823)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XokKZ-0005mS-6t
+	for qemu-trivial@nongnu.org; Wed, 12 Nov 2014 21:40:24 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:57977)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <syeon.hwang@samsung.com>)
-	id 1XoSaE-0005SD-Nw; Wed, 12 Nov 2014 02:43:18 -0500
-Received: from epcpsbgm1.samsung.com (epcpsbgm1 [203.254.230.26])
-	by mailout3.samsung.com
-	(Oracle Communications Messaging Server 7u4-24.01(7.0.4.24.0) 64bit
-	(built Nov
-	17 2011)) with ESMTP id <0NEX004981FVNE10@mailout3.samsung.com>; Wed,
-	12 Nov 2014 16:43:07 +0900 (KST)
-X-AuditID: cbfee61a-f79c06d000004e71-ee-54630f8b9afd
-Received: from epmmp1.local.host ( [203.254.227.16])
-	by epcpsbgm1.samsung.com (EPCPMTA) with SMTP id E3.C0.20081.B8F03645;
-	Wed, 12 Nov 2014 16:43:07 +0900 (KST)
-Received: from caramiswin7PC ([182.198.1.3])
-	by mmp1.samsung.com (Oracle Communications Messaging Server 7u4-24.01
-	(7.0.4.24.0) 64bit (built Nov 17 2011))
-	with ESMTPA id <0NEX00HEZ1FUERB0@mmp1.samsung.com>; Wed,
-	12 Nov 2014 16:43:07 +0900 (KST)
-From: SeokYeon Hwang <syeon.hwang@samsung.com>
-To: 'Markus Armbruster' <armbru@redhat.com>
-References: <1415775949-4528-1-git-send-email-syeon.hwang@samsung.com>
-	<87egt8c1qn.fsf@blackfin.pond.sub.org>
-In-reply-to: <87egt8c1qn.fsf@blackfin.pond.sub.org>
-Date: Wed, 12 Nov 2014 16:43:06 +0900
-Message-id: <027b01cffe4c$4c809ae0$e581d0a0$@samsung.com>
-MIME-version: 1.0
-Content-type: text/plain; charset=us-ascii
-Content-transfer-encoding: 7bit
-X-Mailer: Microsoft Outlook 14.0
-Thread-index: AQH7zw5ufzSxyAHnhebIzdp994zZeALwz36km+1z52A=
-Content-language: ko
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrCLMWRmVeSWpSXmKPExsVy+t9jAd1u/uQQg7PXNC3mr73PYjGp8wqb
-	xbxbyhb/f71itZh0bCqbxfHeHSwWa8/MZXVg99g56y67x5Nrm5k83u+7yhbAHMVlk5Kak1mW
-	WqRvl8CVseBHP2PBXO6KJ51rGBsYv3B0MXJwSAiYSHyaIdDFyAlkiklcuLeerYuRi0NIYBGj
-	xPXz11khnD+MEj82PWADqWIT0JPYsOwAI4gtIqAt8fFrA1gRM0jHrY8LmUCmCgnkS0zazA1S
-	wylgLDF51xewXmGBRIlN628zgpSwCKhKXPtmCxLmFbCUOHLwAzuELSjxY/I9FhCbWUBLYv3O
-	40wQtrzE5jVvmSEOVZDYcfY11AlWEp+P3mSHqBGR2PfiHeMERqFZSEbNQjJqFpJRs5C0LGBk
-	WcUomlqQXFCclJ5rqFecmFtcmpeul5yfu4kRHBfPpHYwrmywOMQowMGoxMObuCYpRIg1say4
-	MvcQowQHs5II76evQCHelMTKqtSi/Pii0pzU4kOM0hwsSuK8B1qtA4UE0hNLUrNTUwtSi2Cy
-	TBycUg2MnnXf5iUaLWVuObHj0nKtJ/d3LxL3dUkvyDb66dildiC94dDv87su3xJ7nHO2+tOx
-	N+I2+89q2v4yZXdbu3YB31tf07TU1iMPKu9K/1O5VTr9+t19EQE8V/OmKLSbrGur237tzb3V
-	K48e5o4qTWWf9XHdnOJ3DWEBYWu+fjr7hOlf/4KHUhl9fEosxRmJhlrMRcWJAMa3oiKHAgAA
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 203.254.224.33
-X-Mailman-Approved-At: Wed, 12 Nov 2014 08:53:48 -0500
-Cc: "'Michael S. Tsirkin'" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	kongjianjun@gmail.com, paolo.bonzini@gmail.com,
-	qemu-devel@nongnu.org, mreitz@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.2] pci: Don't pass
- negative errno to 'error_set_errno()'
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XokKI-0005Xv-MT; Wed, 12 Nov 2014 21:40:03 -0500
+Received: from 172.24.2.119 (EHLO szxeml413-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AXA62731; Thu, 13 Nov 2014 10:39:54 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml413-hub.china.huawei.com
+	(10.82.67.152) with Microsoft SMTP Server id 14.3.158.1;
+	Thu, 13 Nov 2014 10:39:44 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 13 Nov 2014 10:39:32 +0800
+Message-ID: <1415846372-12756-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020206.546419FB.0085, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 82cfbecbf16fc289b699e8a1543fed51
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	peter.huangpeng@huawei.com, mst@redhat.com
+Subject: [Qemu-trivial] [PATCH] virtio-bus: avoid breaking build when open
+	DEBUG switch
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,48 +50,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Nov 2014 07:43:44 -0000
+X-List-Received-Date: Thu, 13 Nov 2014 02:40:29 -0000
 
-> -----Original Message-----
-> From: Markus Armbruster [mailto:armbru@redhat.com]
-> Sent: Wednesday, November 12, 2014 4:33 PM
-> To: SeokYeon Hwang
-> Cc: qemu-devel@nongnu.org; kongjianjun@gmail.com; paolo.bonzini@gmail.com;
-> mreitz@redhat.com; qemu-trivial@nongnu.org; Michael S. Tsirkin
-> Subject: Re: [Qemu-devel] [PATCH for-2.2] pci: Don't pass negative errno
-> to 'error_set_errno()'
-> 
-> Copying maintainer and -trivial.
-> 
-> In the future, please copy maintainers.  You can use
-> "scripts/get_maintainer.pl --no-git-fallback" to find them.
+From: Gonglei <arei.gonglei@huawei.com>
 
-Thank you for your help.
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ hw/virtio/virtio-bus.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 
-> SeokYeon Hwang <syeon.hwang@samsung.com> writes:
-> 
-> > Signed-off-by: SeokYeon Hwang <syeon.hwang@samsung.com>
-> > ---
-> >  hw/pci/pcie.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c index 58455bd..2902f7d
-> > 100644
-> > --- a/hw/pci/pcie.c
-> > +++ b/hw/pci/pcie.c
-> > @@ -229,7 +229,7 @@ static void pcie_cap_slot_hotplug_common(PCIDevice
-> *hotplug_dev,
-> >          /* the slot is electromechanically locked.
-> >           * This error is propagated up to qdev and then to HMP/QMP.
-> >           */
-> > -        error_setg_errno(errp, -EBUSY, "slot is electromechanically
-> locked");
-> > +        error_setg_errno(errp, EBUSY, "slot is electromechanically
-> > + locked");
-> >      }
-> >  }
-> 
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
+index eb77019..dfd2d8c 100644
+--- a/hw/virtio/virtio-bus.c
++++ b/hw/virtio/virtio-bus.c
+@@ -58,7 +58,7 @@ void virtio_bus_reset(VirtioBusState *bus)
+ {
+     VirtIODevice *vdev = virtio_bus_get_device(bus);
+ 
+-    DPRINTF("%s: reset device.\n", qbus->name);
++    DPRINTF("%s: reset device.\n", BUS(bus)->name);
+     if (vdev != NULL) {
+         virtio_reset(vdev);
+     }
+-- 
+1.7.12.4
+
 
 
