@@ -1,57 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XpCW5-0000T5-21
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Nov 2014 03:46:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55524)
+	id 1XpDCm-00075a-Vf
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Nov 2014 04:30:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1XpCVx-0000Kc-VQ
-	for qemu-trivial@nongnu.org; Fri, 14 Nov 2014 03:46:03 -0500
+	(envelope-from <armbru@redhat.com>) id 1XpDCf-0006t2-E3
+	for qemu-trivial@nongnu.org; Fri, 14 Nov 2014 04:30:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1XpCVs-0000v6-Fs
-	for qemu-trivial@nongnu.org; Fri, 14 Nov 2014 03:45:57 -0500
-Received: from mail-wi0-x22d.google.com ([2a00:1450:400c:c05::22d]:49618)
+	(envelope-from <armbru@redhat.com>) id 1XpDCa-0004xd-Jq
+	for qemu-trivial@nongnu.org; Fri, 14 Nov 2014 04:30:05 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:36516)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1XpCVh-0000ts-Ba; Fri, 14 Nov 2014 03:45:41 -0500
-Received: by mail-wi0-f173.google.com with SMTP id n3so1974451wiv.0
-	for <multiple recipients>; Fri, 14 Nov 2014 00:45:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:newsgroups:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=jrCHsdwAII4BkX+oQ5aKweDUzBhpcS7ba/X0wzBjw6I=;
-	b=vFxB28xM6VpLUMad+PITqAkB03KBnznWruXcxpbT0nL5valrQX89tg2objC1ZV+zwa
-	519ECP1MaNePcJu7/cLV2iB9xDX880+N8yueQLH807oQxMm2Qs6k2DMXwcgxUAzoedKw
-	futHJoOY7wtuTmC/lmUyiXgTX7w42oliW8B9zmeeMJHFCui8TfEM1KAD9WI3dDakIWG8
-	EEcmkCuWdlPlVU4niqg/9/lM9VHuL64RumLHu8vXkhb7FnOKmnrL8tQDQoO6GuUPseHy
-	P+CvVa32HoXoI78//kweBaG/HtuoC2Dg/HEkbjJ2zcG9AVHZ8d7wY8JpmKeM3WANhCoj
-	Y5kQ==
-X-Received: by 10.180.219.106 with SMTP id pn10mr5544877wic.63.1415954740588; 
-	Fri, 14 Nov 2014 00:45:40 -0800 (PST)
-Received: from [192.168.10.150] (net-37-117-142-149.cust.vodafonedsl.it.
-	[37.117.142.149])
-	by mx.google.com with ESMTPSA id fi9sm2506852wib.6.2014.11.14.00.45.38
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 14 Nov 2014 00:45:39 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <5465C130.1090401@redhat.com>
-Date: Fri, 14 Nov 2014 09:45:36 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
+	(envelope-from <armbru@redhat.com>)
+	id 1XpDCQ-0004kC-Ii; Fri, 14 Nov 2014 04:29:50 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAE9TjfZ022014
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Fri, 14 Nov 2014 04:29:46 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-89.ams2.redhat.com
+	[10.36.116.89])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sAE9Thig002889
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 14 Nov 2014 04:29:44 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 5DA7330403AF; Fri, 14 Nov 2014 10:29:42 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>
+References: <1415931488-2484-1-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Fri, 14 Nov 2014 10:29:42 +0100
+In-Reply-To: <1415931488-2484-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	(zhanghailiang's message of "Fri, 14 Nov 2014 10:18:08 +0800")
+Message-ID: <87oasa2kqh.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-Newsgroups: gmane.comp.emulators.qemu
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>, 
- qemu-trivial@nongnu.org
-References: <1415929163-12184-1-git-send-email-zhang.zhanghailiang@huawei.com>
-In-Reply-To: <1415929163-12184-1-git-send-email-zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22d
-Cc: qemu-devel@nongnu.org, stefanha@redhat.com, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH] l2tpv3: fix possible double free
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] libcacard: fix resource
+	leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,37 +53,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Nov 2014 08:46:03 -0000
+X-List-Received-Date: Fri, 14 Nov 2014 09:30:10 -0000
 
+zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
 
-
-On 14/11/2014 02:39, zhanghailiang wrote:
-> freeaddrinfo(result) does not assign result = NULL, after frees it.
-> There will be a double free when it goes error case.
-> It is reported by covertiy.
-> 
+> In function connect_to_qemu(), getaddrinfo() will allocate memory
+> that is stored into server, it should be freed by using freeaddrinfo()
+> before connect_to_qemu() return.
+>
 > Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 > ---
->  net/l2tpv3.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/net/l2tpv3.c b/net/l2tpv3.c
-> index 528d95b..f9e0c98 100644
-> --- a/net/l2tpv3.c
-> +++ b/net/l2tpv3.c
-> @@ -661,6 +661,7 @@ int net_init_l2tpv3(const NetClientOptions *opts,
->          fd = -errno;
->          error_report("l2tpv3_open : socket creation failed, errno = %d", -fd);
->          freeaddrinfo(result);
-> +        result = NULL;
-
-You can just remove the call to freeaddrinfo().  I made the change and
-applied the patch.
-
-Paolo
-
->          goto outerr;
+> v2:
+> - fix typo in title ;)
+> ---
+>  libcacard/vscclient.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
+> index 80111df..fa6041d 100644
+> --- a/libcacard/vscclient.c
+> +++ b/libcacard/vscclient.c
+> @@ -597,7 +597,7 @@ connect_to_qemu(
+>      const char *port
+>  ) {
+>      struct addrinfo hints;
+> -    struct addrinfo *server;
+> +    struct addrinfo *server = NULL;
+>      int ret, sock;
+>  
+>      sock = socket(AF_INET, SOCK_STREAM, 0);
+> @@ -629,9 +629,14 @@ connect_to_qemu(
+>      if (verbose) {
+>          printf("Connected (sizeof Header=%zd)!\n", sizeof(VSCMsgHeader));
 >      }
->      if (bind(fd, (struct sockaddr *) result->ai_addr, result->ai_addrlen)) {
-> 
+> +
+> +    freeaddrinfo(server);
+>      return sock;
+>  
+>  cleanup_socket:
+> +    if (server) {
+> +        freeaddrinfo(server);
+> +    }
+>      closesocket(sock);
+>      return -1;
+>  }
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+
+Aside: this code uses the first result from getaddrinfo(), and fails if
+it can't connect.  This is a common misuse of getaddrinfo().
+
+Consider a remote host with both an IPv4 and an IPv6 address, but only
+one of them actually connects.  If getaddrinfo() puts the connectable
+one first, we succeed.  Else, we fail.
+
+We should try the addresses in order until connect() succeeds, like
+qemu-sockets.c does.
 
