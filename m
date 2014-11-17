@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XqKbN-00036H-PM
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Nov 2014 06:36:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56617)
+	id 1XqLf7-00041e-L7
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Nov 2014 07:44:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42327)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1XqKbG-0002zs-Qc
-	for qemu-trivial@nongnu.org; Mon, 17 Nov 2014 06:36:11 -0500
+	(envelope-from <agraf@suse.de>) id 1XqLez-0003fk-KU
+	for qemu-trivial@nongnu.org; Mon, 17 Nov 2014 07:44:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1XqKb8-0002H2-NO
-	for qemu-trivial@nongnu.org; Mon, 17 Nov 2014 06:36:06 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60194)
+	(envelope-from <agraf@suse.de>) id 1XqLet-0005I2-DS
+	for qemu-trivial@nongnu.org; Mon, 17 Nov 2014 07:44:01 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:50040 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1XqKb8-0002Ge-Fu; Mon, 17 Nov 2014 06:35:58 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAHBZm2q030970
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 17 Nov 2014 06:35:48 -0500
-Received: from [10.36.112.46] (ovpn-112-46.ams2.redhat.com [10.36.112.46])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sAHB0nvD022973
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Mon, 17 Nov 2014 06:00:51 -0500
-Message-ID: <5469D561.9000902@redhat.com>
-Date: Mon, 17 Nov 2014 12:00:49 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
-MIME-Version: 1.0
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>, qemu-trivial@nongnu.org
-References: <1416203645-2584-1-git-send-email-zhang.zhanghailiang@huawei.com>
-In-Reply-To: <1416203645-2584-1-git-send-email-zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-devel@nongnu.org, stefanha@redhat.com, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH] net: The third parameter of getsockname
-	should be initialized
+	(envelope-from <agraf@suse.de>)
+	id 1XqLeU-0005Ea-9R; Mon, 17 Nov 2014 07:43:30 -0500
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 12D8575018;
+	Mon, 17 Nov 2014 12:43:27 +0000 (UTC)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (1.0)
+From: Alexander Graf <agraf@suse.de>
+X-Mailer: iPhone Mail (12B411)
+In-Reply-To: <1416196496-10637-1-git-send-email-aik@ozlabs.ru>
+Date: Mon, 17 Nov 2014 13:43:24 +0100
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <1C4EF2B8-76EF-4E4B-AFF8-9063DA607A25@suse.de>
+References: <1416196496-10637-1-git-send-email-aik@ozlabs.ru>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 195.135.220.15
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Gavin Shan <gwshan@linux.vnet.ibm.com>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	David Gibson <david@gibson.dropbear.id.au>
+Subject: Re: [Qemu-trivial] [RFC PATCH] spapr-pci: Enable huge BARs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,30 +47,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Nov 2014 11:36:11 -0000
+X-List-Received-Date: Mon, 17 Nov 2014 12:44:08 -0000
 
 
 
-On 17/11/2014 06:54, zhanghailiang wrote:
-> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> ---
->  net/socket.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/net/socket.c b/net/socket.c
-> index fb21e20..ca4b8ba 100644
-> --- a/net/socket.c
-> +++ b/net/socket.c
-> @@ -352,7 +352,7 @@ static NetSocketState *net_socket_fd_init_dgram(NetClientState *peer,
->  {
->      struct sockaddr_in saddr;
->      int newfd;
-> -    socklen_t saddr_len;
-> +    socklen_t saddr_len = sizeof(saddr);
->      NetClientState *nc;
->      NetSocketState *s;
->  
-> 
 
-Applied, thanks.
+> Am 17.11.2014 um 04:54 schrieb Alexey Kardashevskiy <aik@ozlabs.ru>:
+>=20
+> At the moment sPAPR only supports 512MB window for MMIO BARs. However
+> modern devices might want bigger 64bit BARs.
+>=20
+> This adds another 64bit MMIO window per PHB and advertises it via
+> the PHB's "ranges" property in the device tree. The new window is 1TB long=
+
+> and starts from 1TB offset on a PCI address space.
+>=20
+> Older (<3.12) kernels expect BARs to have the same offset on both bus
+> and memory address spaces. Since we are getting now another MMIO region,
+> we either have to add (0xA000.0000 - 0x8000.0000) offset to
+> its bus offset OR simply put MMIO range at the same offset as on the bus.
+> This puts 32bit MMIO space at 0x8000.0000 offset in RAM and IO space
+> at 0xA000.0000 (used to be vice versa).
+>=20
+> While we are here, let's increase PHB address spacing from 64GB to 16TB
+> in order not to touch it again any time soon.
+>=20
+> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+
+I'll have to digthrough the compatibility matrix details myself still, but p=
+lease make sure that you don't change address space layouts for pseries-2.2.=
+
+
+
+Alex
+
 
