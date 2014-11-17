@@ -1,53 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XqMXD-000579-KT
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Nov 2014 08:40:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55500)
+	id 1XqPX0-0007cd-U3
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Nov 2014 11:52:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33064)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1XqMX5-00056m-PM
-	for qemu-trivial@nongnu.org; Mon, 17 Nov 2014 08:40:02 -0500
+	(envelope-from <stefanha@gmail.com>) id 1XqPWu-0007Rd-GG
+	for qemu-trivial@nongnu.org; Mon, 17 Nov 2014 11:52:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1XqMWw-00069H-OF
-	for qemu-trivial@nongnu.org; Mon, 17 Nov 2014 08:39:55 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40586)
+	(envelope-from <stefanha@gmail.com>) id 1XqPWo-00006p-QE
+	for qemu-trivial@nongnu.org; Mon, 17 Nov 2014 11:51:56 -0500
+Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:36788)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1XqMWw-00068v-F1; Mon, 17 Nov 2014 08:39:46 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAHDddvk023775
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 17 Nov 2014 08:39:39 -0500
-Received: from [10.36.112.46] (ovpn-112-46.ams2.redhat.com [10.36.112.46])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sAHDdWNA005505
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Mon, 17 Nov 2014 08:39:36 -0500
-Message-ID: <5469FA93.4020508@redhat.com>
-Date: Mon, 17 Nov 2014 14:39:31 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1XqPWd-00005M-Jm; Mon, 17 Nov 2014 11:51:39 -0500
+Received: by mail-wi0-f172.google.com with SMTP id n3so2291467wiv.11
+	for <multiple recipients>; Mon, 17 Nov 2014 08:51:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=Zy2gJtu/cPY6p5org4yoUWQ6tFO+VJbhEVEcDAMzyzs=;
+	b=TwNn+fjFora316wSMRWv4GxDHLGN14nlKryIL8GxSnhxNSmodjCuxhcoAvvyDDSV9c
+	z45KUex5glm/5s2VeaoaiwfiS3LAURj1phRP8WZgTyPENBaLIFdvuwSPiBC33fXx8ur8
+	15VK+YEdu0g/LCMsnpgCKhqdltD42ghpZYdg737z6cEiKzdp4q4iVg2psBJVVQH7yraE
+	QJsOmqeVRcc+R/cr4btnn12KIkVHQgmOUfmHgjxE1lPm4vCF2sWQ3QsSsBR3e0xIkVow
+	DnKZets23Ey9pVjyROuJqOidtBrgiLMQOKjjAwypj+O0/5ajG1dZ1GL1NG0kYEwYU+Iz
+	gGjg==
+X-Received: by 10.180.11.65 with SMTP id o1mr33217558wib.22.1416243098069;
+	Mon, 17 Nov 2014 08:51:38 -0800 (PST)
+Received: from localhost ([212.159.126.148])
+	by mx.google.com with ESMTPSA id ce1sm52259627wjc.2.2014.11.17.08.51.36
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 17 Nov 2014 08:51:36 -0800 (PST)
+Date: Mon, 17 Nov 2014 16:51:34 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: arei.gonglei@huawei.com
+Message-ID: <20141117165134.GM16192@stefanha-thinkpad.redhat.com>
+References: <1416046008-7880-1-git-send-email-arei.gonglei@huawei.com>
+	<1416046008-7880-2-git-send-email-arei.gonglei@huawei.com>
 MIME-Version: 1.0
-To: Gerd Hoffmann <kraxel@redhat.com>, Gonglei <arei.gonglei@huawei.com>
-References: <1416046008-7880-1-git-send-email-arei.gonglei@huawei.com>	
-	<1416046008-7880-10-git-send-email-arei.gonglei@huawei.com>	
-	<5469D4C4.5090407@redhat.com> <5469D98A.8020408@huawei.com>	
-	<5469F033.5090104@huawei.com>
-	<1416231418.608.15.camel@nilsson.home.kraxel.org>
-In-Reply-To: <1416231418.608.15.camel@nilsson.home.kraxel.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: "Huangweidong \(C\)" <weidong.huang@huawei.com>,
-	Zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"mjt@tls.msk.ru" <mjt@tls.msk.ru>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
-Subject: Re: [Qemu-trivial] [PATCH 9/9] hcd-musb: fix dereference null
-	return value
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="zHDeOHGDnzKksZSU"
+Content-Disposition: inline
+In-Reply-To: <1416046008-7880-2-git-send-email-arei.gonglei@huawei.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::22c
+Cc: weidong.huang@huawei.com, zhang.zhanghailiang@huawei.com,
+	qemu-trivial@nongnu.org, mjt@tls.msk.ru,
+	peter.huangpeng@huawei.com, qemu-devel@nongnu.org, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/9] l2tpv3: fix fd leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,35 +61,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Nov 2014 13:40:02 -0000
+X-List-Received-Date: Mon, 17 Nov 2014 16:52:02 -0000
 
- 17/11/2014 14:36, Gerd Hoffmann wrote:
->>>> @@ -625,8 +626,11 @@ static void musb_packet(MUSBState *s, MUSBEndPoint *ep,
->>>>      /* A wild guess on the FADDR semantics... */
->>>>      dev = usb_find_device(&s->port, ep->faddr[idx]);
->>>>      uep = usb_ep_get(dev, pid, ep->type[idx] & 0xf);
->>>> -    usb_packet_setup(&ep->packey[dir].p, pid, uep, 0,
->>>> -                     (dev->addr << 16) | (uep->nr << 8) | pid, false, true);
->>>> +    id = pid;
->>>> +    if (uep) {
->>>> +        id |= (dev->addr << 16) | (uep->nr << 8);
->>>> +    }
->>>> +    usb_packet_setup(&ep->packey[dir].p, pid, uep, 0, id, false, true);
->>>>      usb_packet_addbuf(&ep->packey[dir].p, ep->buf[idx], len);
->>>>      ep->packey[dir].ep = ep;
->>>>      ep->packey[dir].dir = dir;
->>>
->>> This is a good approach, id is just a identifying. Thanks,
->>>
->>
->> Let me split the patch from this series as a separate patch
->> and add Paolo's signed-off-by.
->>
->> Asking for Gerd's reviewing, Thanks.
-> 
-> Looks good to me.
 
-Thanks, then I'll pick it up.
+--zHDeOHGDnzKksZSU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Paolo
+On Sat, Nov 15, 2014 at 06:06:40PM +0800, arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+>=20
+> In this false branch, fd will leak when it is zero.
+> Change the testing condition.
+>=20
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  net/l2tpv3.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--zHDeOHGDnzKksZSU
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJUaieWAAoJEJykq7OBq3PIMokH/2SGYAarIC6K2gnEXgcXP8Re
+ghSvdPCSAdj80MDhsDv+iUxLeOXptz6Z0HXhmkkeb3BoQEF5+IauyrHSIDM2dCrc
+zsZmfJ48sXi1Z9pIGynqtqjDBeOZ4t2e0SUM+1IMdKLYPqzWnePYXPHtjMCyGXvk
+qj/Xl3F68YtC+haScZ0iij1OStAE/fYI0C2ecfY5jPoDYRlGUViR58HLwWbwE6mM
+fDYPdqIyvGTsfuPnQ4zzXajzSD3jaH/4W72EtUNYIwxcf/99+4aVM+8KkUH743mb
+XPEbE02kLU2CDVabI0mSfQ5TF52G1L30SBv28tDHsuwqyqN4xJXByTLGSrdITJM=
+=LjZY
+-----END PGP SIGNATURE-----
+
+--zHDeOHGDnzKksZSU--
 
