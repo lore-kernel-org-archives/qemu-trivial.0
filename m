@@ -1,37 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XqzMK-0008Cf-BG
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Nov 2014 02:07:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39237)
+	id 1XqzO9-0000rf-Sl
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Nov 2014 02:09:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39624)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1XqzMD-00081z-0R
-	for qemu-trivial@nongnu.org; Wed, 19 Nov 2014 02:07:23 -0500
+	(envelope-from <famz@redhat.com>) id 1XqzO2-0000i8-Vm
+	for qemu-trivial@nongnu.org; Wed, 19 Nov 2014 02:09:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1XqzM6-0000vw-Rq
-	for qemu-trivial@nongnu.org; Wed, 19 Nov 2014 02:07:16 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50215)
+	(envelope-from <famz@redhat.com>) id 1XqzNx-0001Rp-TX
+	for qemu-trivial@nongnu.org; Wed, 19 Nov 2014 02:09:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57910)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <famz@redhat.com>)
-	id 1XqzLu-0000tI-BM; Wed, 19 Nov 2014 02:06:58 -0500
+	id 1XqzNn-0001QM-Ff; Wed, 19 Nov 2014 02:08:55 -0500
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAJ76urC019475
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAJ78rTt024013
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 19 Nov 2014 02:06:57 -0500
-Received: from fam-t430.nay.redhat.com (dhcp-14-161.nay.redhat.com
-	[10.66.14.161])
+	verify=FAIL); Wed, 19 Nov 2014 02:08:53 -0500
+Received: from localhost (dhcp-14-161.nay.redhat.com [10.66.14.161])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sAJ76pAB028912; Wed, 19 Nov 2014 02:06:52 -0500
+	id sAJ78p0N030028; Wed, 19 Nov 2014 02:08:52 -0500
+Date: Wed, 19 Nov 2014 15:09:16 +0800
 From: Fam Zheng <famz@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 19 Nov 2014 15:07:12 +0800
-Message-Id: <1416380832-9697-1-git-send-email-famz@redhat.com>
+To: Jun Li <junmuzi@gmail.com>
+Message-ID: <20141119070916.GA9314@fam-t430.nay.redhat.com>
+References: <1416380263-1274-1-git-send-email-junmuzi@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1416380263-1274-1-git-send-email-junmuzi@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
-	mreitz@redhat.com, stefanha@redhat.com, eblake@redhat.com
-Subject: [Qemu-trivial] [PATCH v2] tests: Use "command -v" instead of
-	which(1) in shell scripts
+Cc: qemu-trivial@nongnu.org, juli@redhat.com, qemu-devel@nongnu.org,
+	kraxel@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] usb: delete redundant
+ brackets in usb_host_handle_control()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,59 +48,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Nov 2014 07:07:23 -0000
+X-List-Received-Date: Wed, 19 Nov 2014 07:09:16 -0000
 
-When which(1) is not installed, we would complain "perl not found"
-because it's the first set_prog_path check. The error message is
-wrong.
+On Wed, 11/19 14:57, Jun Li wrote:
+> When see usb codes, find there are redundant brackets !((udev->port->speedmask
+> & USB_SPEED_MASK_SUPER)) here. So delete it.
+> 
+> Signed-off-by: Jun Li <junmuzi@gmail.com>
+> ---
+>  hw/usb/host-libusb.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
+> index a5f9dab..cff4f7c 100644
+> --- a/hw/usb/host-libusb.c
+> +++ b/hw/usb/host-libusb.c
+> @@ -1237,7 +1237,7 @@ static void usb_host_handle_control(USBDevice *udev, USBPacket *p,
+>      /* Fix up USB-3 ep0 maxpacket size to allow superspeed connected devices
+>       * to work redirected to a not superspeed capable hcd */
+>      if (udev->speed == USB_SPEED_SUPER &&
+> -        !((udev->port->speedmask & USB_SPEED_MASK_SUPER)) &&
+> +        !(udev->port->speedmask & USB_SPEED_MASK_SUPER) &&
+>          request == 0x8006 && value == 0x100 && index == 0) {
+>          r->usb3ep0quirk = true;
+>      }
+> -- 
+> 1.9.3
+> 
+> 
 
-Fix it by using "command -v", a native way to query the existence of a
-command.
+Reviewed-by: Fam Zheng <famz@redhat.com>
 
-Suggested-by: Eric Blake <eblake@redhat.com>
-Signed-off-by: Fam Zheng <famz@redhat.com>
+Cc'ing qemu-trivial@nongnu.org.
 
----
-v2: Use "command -v" as suggested by Eric. Also change a few other
-occasions of which(1) in tests/qemu-iotests/common.
----
- tests/qemu-iotests/common        | 8 ++++----
- tests/qemu-iotests/common.config | 2 +-
- 2 files changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/tests/qemu-iotests/common b/tests/qemu-iotests/common
-index 9e12bec..bc27f6a 100644
---- a/tests/qemu-iotests/common
-+++ b/tests/qemu-iotests/common
-@@ -289,10 +289,10 @@ testlist options
- 
-             if [ ! -z "$DISPLAY" ]
-             then
--                which xdiff >/dev/null 2>&1 && diff=xdiff
--                which gdiff >/dev/null 2>&1 && diff=gdiff
--                which tkdiff >/dev/null 2>&1 && diff=tkdiff
--                which xxdiff >/dev/null 2>&1 && diff=xxdiff
-+                command -v xdiff >/dev/null 2>&1 && diff=xdiff
-+                command -v gdiff >/dev/null 2>&1 && diff=gdiff
-+                command -v tkdiff >/dev/null 2>&1 && diff=tkdiff
-+                command -v xxdiff >/dev/null 2>&1 && diff=xxdiff
-             fi
-             ;;
- 
-diff --git a/tests/qemu-iotests/common.config b/tests/qemu-iotests/common.config
-index bd6790b..91a5ef6 100644
---- a/tests/qemu-iotests/common.config
-+++ b/tests/qemu-iotests/common.config
-@@ -47,7 +47,7 @@ export PWD=`pwd`
- # $1 = prog to look for, $2* = default pathnames if not found in $PATH
- set_prog_path()
- {
--    p=`which $1 2> /dev/null`
-+    p=`command -v $1 2> /dev/null`
-     if [ -n "$p" -a -x "$p" ]; then
-         echo $p
-         return 0
--- 
-1.9.3
-
+Fam
 
