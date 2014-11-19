@@ -1,50 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xqdru-0006rf-Au
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Nov 2014 03:10:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56763)
+	id 1XqzMK-0008Cf-BG
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Nov 2014 02:07:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39237)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xqdro-0006mD-JX
-	for qemu-trivial@nongnu.org; Tue, 18 Nov 2014 03:10:32 -0500
+	(envelope-from <famz@redhat.com>) id 1XqzMD-00081z-0R
+	for qemu-trivial@nongnu.org; Wed, 19 Nov 2014 02:07:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xqdrk-0006x2-7y
-	for qemu-trivial@nongnu.org; Tue, 18 Nov 2014 03:10:28 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:59372)
+	(envelope-from <famz@redhat.com>) id 1XqzM6-0000vw-Rq
+	for qemu-trivial@nongnu.org; Wed, 19 Nov 2014 02:07:16 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50215)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Xqdra-0006l0-CF; Tue, 18 Nov 2014 03:10:14 -0500
-Received: from 172.24.2.119 (EHLO szxeml419-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CEP37463; Tue, 18 Nov 2014 16:09:53 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml419-hub.china.huawei.com
-	(10.82.67.158) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 18 Nov 2014 16:07:57 +0800
-Message-ID: <546AFE59.6040208@huawei.com>
-Date: Tue, 18 Nov 2014 16:07:53 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
-MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1416046008-7880-1-git-send-email-arei.gonglei@huawei.com>
-	<1416046008-7880-2-git-send-email-arei.gonglei@huawei.com>
-	<546A2931.20209@msgid.tls.msk.ru>
-	<87y4r9vtf1.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87y4r9vtf1.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="GB2312"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: "Huangweidong \(C\)" <weidong.huang@huawei.com>,
-	Zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/9] l2tpv3: fix fd leak
+	(envelope-from <famz@redhat.com>)
+	id 1XqzLu-0000tI-BM; Wed, 19 Nov 2014 02:06:58 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAJ76urC019475
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Wed, 19 Nov 2014 02:06:57 -0500
+Received: from fam-t430.nay.redhat.com (dhcp-14-161.nay.redhat.com
+	[10.66.14.161])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sAJ76pAB028912; Wed, 19 Nov 2014 02:06:52 -0500
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 19 Nov 2014 15:07:12 +0800
+Message-Id: <1416380832-9697-1-git-send-email-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
+	mreitz@redhat.com, stefanha@redhat.com, eblake@redhat.com
+Subject: [Qemu-trivial] [PATCH v2] tests: Use "command -v" instead of
+	which(1) in shell scripts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,54 +43,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Nov 2014 08:10:33 -0000
+X-List-Received-Date: Wed, 19 Nov 2014 07:07:23 -0000
 
-On 2014/11/18 15:50, Markus Armbruster wrote:
+When which(1) is not installed, we would complain "perl not found"
+because it's the first set_prog_path check. The error message is
+wrong.
 
-> Michael Tokarev <mjt@tls.msk.ru> writes:
-> 
->> 15.11.2014 13:06, arei.gonglei@huawei.com wrote:
->>> From: Gonglei <arei.gonglei@huawei.com>
->>>
->>> In this false branch, fd will leak when it is zero.
->>> Change the testing condition.
->>
->> Why fd==0 is a concern here?  It is a very unlikely
->> situation that fd0 will be picked - firstly because
->> fd0 is almost always open, and second - even if it
->> isn't open, it will be picked much earlier than this
->> code path, ie, some other file will use fd0 before.
->>
->> But even if the concern is real (after all, better
->> stay correct than spread bad code pattern, even if
->> in reality we don't care as this can't happen), why
->> not add 0 to the equality?
->>
->> Why people especially compare with -1?  Any negative
->> value is illegal here and in lots of other places,
->> and many software packages used to return -errno in
->> error cases, which is definitely != -1.  I'm not
->> saying that comparing with -1 is bad in _this_
->> particular case, but why not do it generally in
->> all cases?
->>
->> More, comparing with 0 is faster and shorter than
->> comparing with -1...
->>
->> So if it were me, I'd change it to >= 0, not to
->> == -1.  Here and in all other millions of places
->> in qemu code where it compares with -1... ;)
-> 
-> Yup.
-> 
-> In the case of close(), I wouldn't even bother to check, except Coverity
-> gets excited when it sees an invalid fd flow into close().  Rightfully
-> so when the invalid fd is non-negative, overeager when it's negative.
+Fix it by using "command -v", a native way to query the existence of a
+command.
 
-Thank you, guys.
-Paolo had fixed it :)
+Suggested-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Fam Zheng <famz@redhat.com>
 
-Best regards,
--Gonglei
+---
+v2: Use "command -v" as suggested by Eric. Also change a few other
+occasions of which(1) in tests/qemu-iotests/common.
+---
+ tests/qemu-iotests/common        | 8 ++++----
+ tests/qemu-iotests/common.config | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/tests/qemu-iotests/common b/tests/qemu-iotests/common
+index 9e12bec..bc27f6a 100644
+--- a/tests/qemu-iotests/common
++++ b/tests/qemu-iotests/common
+@@ -289,10 +289,10 @@ testlist options
+ 
+             if [ ! -z "$DISPLAY" ]
+             then
+-                which xdiff >/dev/null 2>&1 && diff=xdiff
+-                which gdiff >/dev/null 2>&1 && diff=gdiff
+-                which tkdiff >/dev/null 2>&1 && diff=tkdiff
+-                which xxdiff >/dev/null 2>&1 && diff=xxdiff
++                command -v xdiff >/dev/null 2>&1 && diff=xdiff
++                command -v gdiff >/dev/null 2>&1 && diff=gdiff
++                command -v tkdiff >/dev/null 2>&1 && diff=tkdiff
++                command -v xxdiff >/dev/null 2>&1 && diff=xxdiff
+             fi
+             ;;
+ 
+diff --git a/tests/qemu-iotests/common.config b/tests/qemu-iotests/common.config
+index bd6790b..91a5ef6 100644
+--- a/tests/qemu-iotests/common.config
++++ b/tests/qemu-iotests/common.config
+@@ -47,7 +47,7 @@ export PWD=`pwd`
+ # $1 = prog to look for, $2* = default pathnames if not found in $PATH
+ set_prog_path()
+ {
+-    p=`which $1 2> /dev/null`
++    p=`command -v $1 2> /dev/null`
+     if [ -n "$p" -a -x "$p" ]; then
+         echo $p
+         return 0
+-- 
+1.9.3
 
 
