@@ -1,52 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xr5v7-0008Di-HN
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Nov 2014 09:07:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52846)
+	id 1Xrbfd-0006Wy-OF
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Nov 2014 19:01:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35360)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Xr5uz-000893-2z
-	for qemu-trivial@nongnu.org; Wed, 19 Nov 2014 09:07:43 -0500
+	(envelope-from <eblake@redhat.com>) id 1XrbfY-0006Wc-9f
+	for qemu-trivial@nongnu.org; Thu, 20 Nov 2014 19:01:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Xr5us-0007qc-OQ
-	for qemu-trivial@nongnu.org; Wed, 19 Nov 2014 09:07:37 -0500
-Received: from mail-la0-f46.google.com ([209.85.215.46]:46166)
+	(envelope-from <eblake@redhat.com>) id 1XrbfT-0001Va-Vt
+	for qemu-trivial@nongnu.org; Thu, 20 Nov 2014 19:01:48 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43797)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Xr5us-0007qN-HW
-	for qemu-trivial@nongnu.org; Wed, 19 Nov 2014 09:07:30 -0500
-Received: by mail-la0-f46.google.com with SMTP id gd6so558862lab.33
-	for <qemu-trivial@nongnu.org>; Wed, 19 Nov 2014 06:07:29 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=dovn3+VIFRb6mnRhjaHWYOuCCJ3icGGxwyKaVwrF2eA=;
-	b=UCY3XJkNznKrSG1ifyXVFPp5Gf2q7rZCxfFaV2UuYyYY438omlW9V2GQyCKWmLcivi
-	GLuPumFIemx0FJq7wl1GaiZe+J+dl5R0hIqTd25MfuJsiYzjnZMDmC9h97H+QXQwh1PQ
-	uHJtc6Tl6ukjqj69B7cT7R8s3BwGEs5hZ2IR4XO1xhoQKAK6apBKXNOPgS7/EQKBQNLW
-	aokCyrVJkHquwcaXxzsqNjYWOZOQXv/utxz4+tRWJJG+nk8kJcpOWxgDrQOSCCglTQYe
-	Z50u+vEVarBMSmUkU5kkU9X9fF9aX8LMb7ZF+7G4a9jcleFA0Z/6z5XhLcgXow4FNPlR
-	izuw==
-X-Gm-Message-State: ALoCoQltpBCbZzxXGUs7rdqhLj19rKjV4t9mtMLz+43/KxbF3F33ojJ/Mmkchc9S9pyNQ3J4MSHn
-X-Received: by 10.112.138.137 with SMTP id qq9mr2745760lbb.80.1416406049616;
-	Wed, 19 Nov 2014 06:07:29 -0800 (PST)
+	(envelope-from <eblake@redhat.com>)
+	id 1XrbfT-0001VS-Mx; Thu, 20 Nov 2014 19:01:43 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAL01dD9025173
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 20 Nov 2014 19:01:39 -0500
+Received: from [10.3.113.50] (ovpn-113-50.phx2.redhat.com [10.3.113.50])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sAL01cTM009233; Thu, 20 Nov 2014 19:01:39 -0500
+Message-ID: <546E80E2.5040300@redhat.com>
+Date: Thu, 20 Nov 2014 17:01:38 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
 MIME-Version: 1.0
-Received: by 10.112.150.135 with HTTP; Wed, 19 Nov 2014 06:07:09 -0800 (PST)
-In-Reply-To: <546C98E1.3070905@redhat.com>
-References: <1416380832-9697-1-git-send-email-famz@redhat.com>
-	<546C98E1.3070905@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 19 Nov 2014 14:07:09 +0000
-Message-ID: <CAFEAcA8xLZuS9YAVpoxV1jnMZqnoxUZNOC6rQno3XO1N-kc+pA@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.46
-Cc: Kevin Wolf <kwolf@redhat.com>, Fam Zheng <famz@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	QEMU Developers <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] tests: Use "command -v"
- instead of which(1) in shell scripts
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1416473754-8660-1-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1416473754-8660-1-git-send-email-arei.gonglei@huawei.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="W6oSm7kUuTsoI4shu7TmpI2oW1EnjdBpv"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, mst@redhat.com
+Subject: [Qemu-trivial] for 2.2: Re: [Qemu-devel] [PATCH] pcie: fix improper
+ use of negative value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,17 +51,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Nov 2014 14:07:43 -0000
+X-List-Received-Date: Fri, 21 Nov 2014 00:01:52 -0000
 
-On 19 November 2014 13:19, Eric Blake <eblake@redhat.com> wrote:
-> Use of -a and -o in [[]] is a bit better, but I still HIGHLY recommend
-> that constructs like this be rewritten as [ -n "$p" ] && [ -x "$p" ] for
-> avoidance of confusion and prevention of copy-pasting the test to
-> non-bash shells.  But that would be a separate patch.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--W6oSm7kUuTsoI4shu7TmpI2oW1EnjdBpv
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Yeah, this is one of those issues I tend to pick up in
-patches which change our shell scripts, but we still have
-a fair amount of existing code that isn't up to that standard.
+On 11/20/2014 01:55 AM, arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+>=20
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  hw/pci/pcie.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
--- PMM
+adding qemu-trivial in cc.  This is a candidate for 2.2.
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+>=20
+> diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
+> index 58455bd..2902f7d 100644
+> --- a/hw/pci/pcie.c
+> +++ b/hw/pci/pcie.c
+> @@ -229,7 +229,7 @@ static void pcie_cap_slot_hotplug_common(PCIDevice =
+*hotplug_dev,
+>          /* the slot is electromechanically locked.
+>           * This error is propagated up to qdev and then to HMP/QMP.
+>           */
+> -        error_setg_errno(errp, -EBUSY, "slot is electromechanically lo=
+cked");
+> +        error_setg_errno(errp, EBUSY, "slot is electromechanically loc=
+ked");
+>      }
+>  }
+> =20
+>=20
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--W6oSm7kUuTsoI4shu7TmpI2oW1EnjdBpv
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+
+iQEcBAEBCAAGBQJUboDiAAoJEKeha0olJ0NqStcH/0VeufxvmS5k+NDqDncnbz3u
+7F0WMliabx9qG0xZtdfzYm+E/cF0S6W3ooOfTcs1S+wPLBylvqMYDeXLF5xOnG5s
+frUkyqQIdM90Z/eZ0n4a9FvHYJvbzv3Y5v7S0URD+20DGOesCKP6zLwdhNim/JIh
+bXgX+Z9ZRu98hX379oS+Sh28hQYtiN5FXmzqRQ37/8xd76IUcZtgz52Ctdep0jgw
+jHaBHIgsKPXyRXD9t0gGaZYFL5vayNoHJDuZNL7mDHre/kXUoAb8/uOH/CZ8DYK5
+44IsNjFqGEvnJc5mDd2c3ZlMrvag2biHxXpR3PwvVNlrikGIzyCMVQLH3bYvhbE=
+=TNqH
+-----END PGP SIGNATURE-----
+
+--W6oSm7kUuTsoI4shu7TmpI2oW1EnjdBpv--
 
