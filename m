@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xrbfd-0006Wy-OF
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Nov 2014 19:01:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35360)
+	id 1XrcBs-0004m7-0M
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Nov 2014 19:35:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XrbfY-0006Wc-9f
-	for qemu-trivial@nongnu.org; Thu, 20 Nov 2014 19:01:52 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1XrcBl-0004cR-5W
+	for qemu-trivial@nongnu.org; Thu, 20 Nov 2014 19:35:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1XrbfT-0001Va-Vt
-	for qemu-trivial@nongnu.org; Thu, 20 Nov 2014 19:01:48 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43797)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XrcBg-0002pR-Am
+	for qemu-trivial@nongnu.org; Thu, 20 Nov 2014 19:35:05 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:19930)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1XrbfT-0001VS-Mx; Thu, 20 Nov 2014 19:01:43 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sAL01dD9025173
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 20 Nov 2014 19:01:39 -0500
-Received: from [10.3.113.50] (ovpn-113-50.phx2.redhat.com [10.3.113.50])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sAL01cTM009233; Thu, 20 Nov 2014 19:01:39 -0500
-Message-ID: <546E80E2.5040300@redhat.com>
-Date: Thu, 20 Nov 2014 17:01:38 -0700
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XrcBV-0002me-ID; Thu, 20 Nov 2014 19:34:50 -0500
+Received: from 172.24.2.119 (EHLO szxeml420-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CCR34379; Fri, 21 Nov 2014 08:34:45 +0800 (CST)
+Received: from [10.177.19.102] (10.177.19.102) by
+	szxeml420-hub.china.huawei.com (10.82.67.159) with Microsoft SMTP
+	Server id 14.3.158.1; Fri, 21 Nov 2014 08:34:43 +0800
+Message-ID: <546E88A2.1090506@huawei.com>
+Date: Fri, 21 Nov 2014 08:34:42 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+To: Eric Blake <eblake@redhat.com>
 References: <1416473754-8660-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1416473754-8660-1-git-send-email-arei.gonglei@huawei.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="W6oSm7kUuTsoI4shu7TmpI2oW1EnjdBpv"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, mst@redhat.com
-Subject: [Qemu-trivial] for 2.2: Re: [Qemu-devel] [PATCH] pcie: fix improper
- use of negative value
+	<546E80E2.5040300@redhat.com>
+In-Reply-To: <546E80E2.5040300@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"mst@redhat.com" <mst@redhat.com>
+Subject: Re: [Qemu-trivial] for 2.2: Re: [Qemu-devel] [PATCH] pcie: fix
+ improper use of negative value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,66 +51,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Nov 2014 00:01:52 -0000
+X-List-Received-Date: Fri, 21 Nov 2014 00:35:10 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---W6oSm7kUuTsoI4shu7TmpI2oW1EnjdBpv
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+On 2014/11/21 8:01, Eric Blake wrote:
 
-On 11/20/2014 01:55 AM, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
->=20
-> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-> ---
->  hw/pci/pcie.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> On 11/20/2014 01:55 AM, arei.gonglei@huawei.com wrote:
+>> From: Gonglei <arei.gonglei@huawei.com>
+>>
+>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>> ---
+>>  hw/pci/pcie.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> adding qemu-trivial in cc.  This is a candidate for 2.2.
+> 
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+> 
 
-adding qemu-trivial in cc.  This is a candidate for 2.2.
+Thanks. :)
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Best regards,
+-Gonglei
 
->=20
-> diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
-> index 58455bd..2902f7d 100644
-> --- a/hw/pci/pcie.c
-> +++ b/hw/pci/pcie.c
-> @@ -229,7 +229,7 @@ static void pcie_cap_slot_hotplug_common(PCIDevice =
-*hotplug_dev,
->          /* the slot is electromechanically locked.
->           * This error is propagated up to qdev and then to HMP/QMP.
->           */
-> -        error_setg_errno(errp, -EBUSY, "slot is electromechanically lo=
-cked");
-> +        error_setg_errno(errp, EBUSY, "slot is electromechanically loc=
-ked");
->      }
->  }
-> =20
->=20
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+>>
+>> diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
+>> index 58455bd..2902f7d 100644
+>> --- a/hw/pci/pcie.c
+>> +++ b/hw/pci/pcie.c
+>> @@ -229,7 +229,7 @@ static void pcie_cap_slot_hotplug_common(PCIDevice *hotplug_dev,
+>>          /* the slot is electromechanically locked.
+>>           * This error is propagated up to qdev and then to HMP/QMP.
+>>           */
+>> -        error_setg_errno(errp, -EBUSY, "slot is electromechanically locked");
+>> +        error_setg_errno(errp, EBUSY, "slot is electromechanically locked");
+>>      }
+>>  }
+>>  
+>>
+> 
 
 
---W6oSm7kUuTsoI4shu7TmpI2oW1EnjdBpv
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-
-iQEcBAEBCAAGBQJUboDiAAoJEKeha0olJ0NqStcH/0VeufxvmS5k+NDqDncnbz3u
-7F0WMliabx9qG0xZtdfzYm+E/cF0S6W3ooOfTcs1S+wPLBylvqMYDeXLF5xOnG5s
-frUkyqQIdM90Z/eZ0n4a9FvHYJvbzv3Y5v7S0URD+20DGOesCKP6zLwdhNim/JIh
-bXgX+Z9ZRu98hX379oS+Sh28hQYtiN5FXmzqRQ37/8xd76IUcZtgz52Ctdep0jgw
-jHaBHIgsKPXyRXD9t0gGaZYFL5vayNoHJDuZNL7mDHre/kXUoAb8/uOH/CZ8DYK5
-44IsNjFqGEvnJc5mDd2c3ZlMrvag2biHxXpR3PwvVNlrikGIzyCMVQLH3bYvhbE=
-=TNqH
------END PGP SIGNATURE-----
-
---W6oSm7kUuTsoI4shu7TmpI2oW1EnjdBpv--
 
