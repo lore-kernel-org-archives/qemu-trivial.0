@@ -1,50 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XtHQd-0007Jj-S2
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Nov 2014 09:49:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37420)
+	id 1XtHUs-00052X-Rl
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Nov 2014 09:53:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39185)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XtHQX-00077n-9H
-	for qemu-trivial@nongnu.org; Tue, 25 Nov 2014 09:49:18 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1XtHUk-0004tj-V3
+	for qemu-trivial@nongnu.org; Tue, 25 Nov 2014 09:53:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XtHQS-0006i0-4m
-	for qemu-trivial@nongnu.org; Tue, 25 Nov 2014 09:49:13 -0500
-Received: from mail-la0-f46.google.com ([209.85.215.46]:36484)
+	(envelope-from <mjt@tls.msk.ru>) id 1XtHUe-0000CU-Q7
+	for qemu-trivial@nongnu.org; Tue, 25 Nov 2014 09:53:34 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:41720)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1XtHQR-0006hs-TV
-	for qemu-trivial@nongnu.org; Tue, 25 Nov 2014 09:49:08 -0500
-Received: by mail-la0-f46.google.com with SMTP id gd6so675256lab.5
-	for <qemu-trivial@nongnu.org>; Tue, 25 Nov 2014 06:49:07 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=u9k1Lf/ceXaxdEWO9VQIYL5YyKLczr97nCCgjvGexRM=;
-	b=TqVQZgF50h4dGxL/Y5H7RhnKyG3mC0eSHLqn++TZGGGcFRFq0uLF7cF47OLj6YS9H7
-	diG7QNaRYTD63Pr/tiDAFWTi61b6TbzZfgKY27/w6RIkVcdBpm22GtbWd5S3rLigXepH
-	JopRrwpcY1fg9v3VJCPrIdIB/50J08eGiJYi9z+whtlsUi5Yr6TqdONTZSPrgMKgIVzw
-	MSzvUp13/tJVjFNIVcioGxyEQ4Lg9zo6boFz1d0b67c1kFfpLTMCDM8NDpGS9kn/Ztag
-	gLSVqUzf692hDfNM/73ThHvMYlm4eodLMRmR0sMdYFSDX1lOFKfIxuPf6gChBb/n0vmm
-	s92A==
-X-Gm-Message-State: ALoCoQl5n6whVBuTn9m1GlX0bTTC1UNsxhaIF4cnRNMuxia02etCUVf+slJYfTYKrvIc7JhmOBu9
-X-Received: by 10.112.189.10 with SMTP id ge10mr27142863lbc.23.1416926946986; 
-	Tue, 25 Nov 2014 06:49:06 -0800 (PST)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1XtHUS-00007V-9a; Tue, 25 Nov 2014 09:53:16 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id AFF23443B6;
+	Tue, 25 Nov 2014 17:53:06 +0300 (MSK)
+Message-ID: <547497D2.6040000@msgid.tls.msk.ru>
+Date: Tue, 25 Nov 2014 17:53:06 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.2.0
 MIME-Version: 1.0
-Received: by 10.112.150.135 with HTTP; Tue, 25 Nov 2014 06:48:46 -0800 (PST)
-In-Reply-To: <1416826240-12368-1-git-send-email-zhang.zhanghailiang@huawei.com>
-References: <1416826240-12368-1-git-send-email-zhang.zhanghailiang@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Nov 2014 14:48:46 +0000
-Message-ID: <CAFEAcA-dEGxgAzgu7rFfzy+6G8pqxkCij+mN-idhz4293OB=hA@mail.gmail.com>
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.46
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] hw/arm/boot: fix uninitialized scalar
- variable warning reported by coverity
+To: Amos Kong <akong@redhat.com>, qemu-devel@nongnu.org
+References: <1416902756-26593-1-git-send-email-akong@redhat.com>
+In-Reply-To: <1416902756-26593-1-git-send-email-akong@redhat.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] qmp: fix typo in input-send-event
+	examples
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,25 +44,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Nov 2014 14:49:18 -0000
+X-List-Received-Date: Tue, 25 Nov 2014 14:53:41 -0000
 
-On 24 November 2014 at 10:50, zhanghailiang
-<zhang.zhanghailiang@huawei.com> wrote:
-> Coverity reports the 'size' may be used uninitialized, but that can't happen,
-> because the caller has checked "if (binfo->dtb_filename || binfo->get_dtb)"
-> before call 'load_dtb'.
->
-> Here we simply remove the 'if (binfo->get_dtb)' to satisfy coverity.
->
-> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> ---
-> v2:
-> - add a note to the doc comment for load_dtb (Peter Maydell)
->   Thanks for comment.
+25.11.2014 11:05, Amos Kong wrote:
+> Lack of two closed bracket in json commands.
 
+Applied to -trivial, thank you!
 
-
-Applied to target-arm.next, thanks.
-
--- PMM
+/mjt
 
