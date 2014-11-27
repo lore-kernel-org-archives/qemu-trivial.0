@@ -1,54 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XtfLY-0003lP-W7
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Nov 2014 11:21:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48828)
+	id 1XtwLD-0006FG-Ub
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Nov 2014 05:30:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44403)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1XtfLR-0003Yz-9W
-	for qemu-trivial@nongnu.org; Wed, 26 Nov 2014 11:21:38 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1XtwL7-00062I-G4
+	for qemu-trivial@nongnu.org; Thu, 27 Nov 2014 05:30:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1XtfLL-0001Mr-R2
-	for qemu-trivial@nongnu.org; Wed, 26 Nov 2014 11:21:33 -0500
-Received: from mail-wi0-x229.google.com ([2a00:1450:400c:c05::229]:48673)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XtwL2-0006RS-NS
+	for qemu-trivial@nongnu.org; Thu, 27 Nov 2014 05:30:21 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:28034)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1XtfL9-0001GQ-76; Wed, 26 Nov 2014 11:21:15 -0500
-Received: by mail-wi0-f169.google.com with SMTP id r20so15964806wiv.0
-	for <multiple recipients>; Wed, 26 Nov 2014 08:21:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=q+B6lwfu8fLwjkMVjqMKVeKRUMBZqbIrc2TM7RxP6v8=;
-	b=cGZqc3m3l3ZQU9DKl/5dwhx8DA45KbzVMhtb3RbekDJcEEO+nlD3To9hwdKMra+ubv
-	yvN7LK8uMagKxpESAMEbT7xm2N1C2KPZeQJUcV9LeECLc1RfzoKPRzRsGm4Il6ARX3P7
-	13dpvmssCZBDyuQ+wTXoCsvyrYauSE7gQDyMA6Qh8K91jIYDrMoKTc3chXljopV46Mzz
-	G1yE7fiX7E1Ht/Q+Nhf137J4HLS4U1pSL+M8Ic38HxHVjjdlyHMRCJel1ARqVuaaia6D
-	s+8BZS89vwVrBH8TuAR8mnAM4J6NKiXcp190qmRR4XBJCVcnwlvXXO85TtA53LgcYYRZ
-	r+zw==
-X-Received: by 10.180.99.163 with SMTP id er3mr42346285wib.18.1417018874626;
-	Wed, 26 Nov 2014 08:21:14 -0800 (PST)
-Received: from localhost (96.208.115.87.dyn.plus.net. [87.115.208.96])
-	by mx.google.com with ESMTPSA id pf4sm6949596wjb.36.2014.11.26.08.21.13
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 26 Nov 2014 08:21:13 -0800 (PST)
-Date: Wed, 26 Nov 2014 16:21:12 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Fam Zheng <famz@redhat.com>
-Message-ID: <20141126162112.GF14288@stefanha-thinkpad.redhat.com>
-References: <1416380832-9697-1-git-send-email-famz@redhat.com>
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XtwKr-00064l-ST; Thu, 27 Nov 2014 05:30:06 -0500
+Received: from 172.24.2.119 (EHLO szxeml417-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AXU24063; Thu, 27 Nov 2014 18:29:58 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml417-hub.china.huawei.com
+	(10.82.67.156) with Microsoft SMTP Server id 14.3.158.1;
+	Thu, 27 Nov 2014 18:29:47 +0800
+Message-ID: <5476FD18.9000403@huawei.com>
+Date: Thu, 27 Nov 2014 18:29:44 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="GV0iVqYguTV4Q9ER"
-Content-Disposition: inline
-In-Reply-To: <1416380832-9697-1-git-send-email-famz@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::229
-Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
-	qemu-devel@nongnu.org, mreitz@redhat.com, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] tests: Use "command -v"
- instead of which(1) in shell scripts
+To: "Gonglei (Arei)" <arei.gonglei@huawei.com>
+References: <1415881027-8112-1-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1415881027-8112-1-git-send-email-arei.gonglei@huawei.com>
+Content-Type: text/plain; charset="GB2312"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A02020A.5476FD27.013C, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 78f9490fc3cb164ecc78ac214ce98a92
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"aneesh.kumar@linux.vnet.ibm.com" <aneesh.kumar@linux.vnet.ibm.com>
+Subject: Re: [Qemu-trivial] [PATCH 0/2] virtfs-proxy-helper: Fix Coverity
+	warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,52 +56,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Nov 2014 16:21:39 -0000
+X-List-Received-Date: Thu, 27 Nov 2014 10:30:26 -0000
 
+On 2014/11/13 20:17, Gonglei (Arei) wrote:
 
---GV0iVqYguTV4Q9ER
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> From: Gonglei <arei.gonglei@huawei.com>
+> 
+> Gonglei (2):
+>   virtfs-proxy-helper: Fix possible socket leak.
+>   virtfs-proxy-helper: Fix handle leak to make Coverity happy
+> 
+>  fsdev/virtfs-proxy-helper.c | 16 ++++++++++++----
+>  1 file changed, 12 insertions(+), 4 deletions(-)
+> 
 
-On Wed, Nov 19, 2014 at 03:07:12PM +0800, Fam Zheng wrote:
-> When which(1) is not installed, we would complain "perl not found"
-> because it's the first set_prog_path check. The error message is
-> wrong.
->=20
-> Fix it by using "command -v", a native way to query the existence of a
-> command.
->=20
-> Suggested-by: Eric Blake <eblake@redhat.com>
-> Signed-off-by: Fam Zheng <famz@redhat.com>
->=20
-> ---
-> v2: Use "command -v" as suggested by Eric. Also change a few other
-> occasions of which(1) in tests/qemu-iotests/common.
-> ---
->  tests/qemu-iotests/common        | 8 ++++----
->  tests/qemu-iotests/common.config | 2 +-
->  2 files changed, 5 insertions(+), 5 deletions(-)
+Ping...
 
-Thanks, applied to my block-next tree:
-https://github.com/stefanha/qemu/commits/block-next
+Thanks,
+-Gonglei
 
-Stefan
-
---GV0iVqYguTV4Q9ER
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJUdf34AAoJEJykq7OBq3PICZAH/2WGMoGLbvcbWQAx/12PQgVn
-cgzR/+JptGVlISOvyKAdO9jc4qWkPctig6pjWA1ZWUpPjHHfGEGOuyVBpNnwkZef
-FHuZsdXyuQk3oE6FS2JmtotKMIhuGeVV/QcNtdNP2TDNufPBejEMLPH3D/LYdrTN
-slWjx0XIP4qODI/RR2yW5qwlHxd7ct17UGWpQ0+6660ygBSqQ3+KiVF6j/HvssYi
-kFK9kpJUEeBZ1/SYFw0XUezFYKW9FulJroQsMEAKtXigg7Ujq+Ivxwdkm1Nr1iHU
-gOP1QLGKlG9VoL36N33/vR9pB+BonE4RXI11GI4pcqwXeNJBakd1WP3nRI8jOvU=
-=SHKR
------END PGP SIGNATURE-----
-
---GV0iVqYguTV4Q9ER--
 
