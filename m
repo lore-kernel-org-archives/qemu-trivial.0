@@ -1,44 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xw7CS-0006NW-6s
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Dec 2014 05:30:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60602)
+	id 1Xw7Fg-0003cB-UW
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Dec 2014 05:33:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33301)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Xw7CK-00069W-GW
-	for qemu-trivial@nongnu.org; Wed, 03 Dec 2014 05:30:22 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1Xw7Fa-0003Qt-0Q
+	for qemu-trivial@nongnu.org; Wed, 03 Dec 2014 05:33:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Xw7CE-0004aV-D3
-	for qemu-trivial@nongnu.org; Wed, 03 Dec 2014 05:30:16 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55530)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Xw7FV-0005Va-3T
+	for qemu-trivial@nongnu.org; Wed, 03 Dec 2014 05:33:37 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:23649)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1Xw7CE-0004aQ-6V; Wed, 03 Dec 2014 05:30:10 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB3AU8f9030616
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 3 Dec 2014 05:30:09 -0500
-Received: from [10.36.112.40] (ovpn-112-40.ams2.redhat.com [10.36.112.40])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sB3AU4LQ013894
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Wed, 3 Dec 2014 05:30:06 -0500
-Message-ID: <547EE62B.3070004@redhat.com>
-Date: Wed, 03 Dec 2014 11:30:03 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.2.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Xw7FK-0005Rc-7O; Wed, 03 Dec 2014 05:33:22 -0500
+Received: from 172.24.2.119 (EHLO szxeml417-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AYC60536; Wed, 03 Dec 2014 18:33:09 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml417-hub.china.huawei.com
+	(10.82.67.156) with Microsoft SMTP Server id 14.3.158.1; Wed, 3 Dec 2014
+	18:33:04 +0800
+Message-ID: <547EE6DE.2090703@huawei.com>
+Date: Wed, 3 Dec 2014 18:33:02 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+To: Markus Armbruster <armbru@redhat.com>
 References: <1417602482-8832-1-git-send-email-armbru@redhat.com>
 In-Reply-To: <1417602482-8832-1-git-send-email-armbru@redhat.com>
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Drop superfluous conditionals around
-	qemu_opts_del()
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020207.547EE6E5.0160, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 9a1fc1d0779668b9fe9b97a6ff34b423
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Drop superfluous
+	conditionals around qemu_opts_del()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,17 +53,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Dec 2014 10:30:23 -0000
+X-List-Received-Date: Wed, 03 Dec 2014 10:33:43 -0000
 
+On 2014/12/3 18:28, Markus Armbruster wrote:
 
-
-On 03/12/2014 11:28, Markus Armbruster wrote:
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
 >  hw/core/qdev.c | 4 +---
 >  qemu-char.c    | 4 +---
 >  2 files changed, 2 insertions(+), 6 deletions(-)
 > 
+
+Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+
 > diff --git a/hw/core/qdev.c b/hw/core/qdev.c
 > index 35fd00d..901f289 100644
 > --- a/hw/core/qdev.c
@@ -91,7 +96,7 @@ On 03/12/2014 11:28, Markus Armbruster wrote:
 >      g_free(chr);
 >  }
 >  
-> 
 
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+
+
 
