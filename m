@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XuH15-0001fN-Sv
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Nov 2014 03:35:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51652)
+	id 1Xw7Ad-0003Ez-Mu
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Dec 2014 05:28:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60084)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XuH0y-0001eo-TR
-	for qemu-trivial@nongnu.org; Fri, 28 Nov 2014 03:35:01 -0500
+	(envelope-from <armbru@redhat.com>) id 1Xw7AV-00033p-Tz
+	for qemu-trivial@nongnu.org; Wed, 03 Dec 2014 05:28:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XuH0u-0005ID-2y
-	for qemu-trivial@nongnu.org; Fri, 28 Nov 2014 03:34:56 -0500
-Received: from szxga02-in.huawei.com ([119.145.14.65]:62033)
+	(envelope-from <armbru@redhat.com>) id 1Xw7AP-0003zL-QN
+	for qemu-trivial@nongnu.org; Wed, 03 Dec 2014 05:28:23 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45076)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1XuH0t-0005HF-DL; Fri, 28 Nov 2014 03:34:52 -0500
-Received: from 172.24.2.119 (EHLO SZXEML454-HUB.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CDC36342; Fri, 28 Nov 2014 16:34:38 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by SZXEML454-HUB.china.huawei.com
-	(10.82.67.197) with Microsoft SMTP Server id 14.3.158.1;
-	Fri, 28 Nov 2014 16:34:29 +0800
-Message-ID: <54783392.60505@huawei.com>
-Date: Fri, 28 Nov 2014 16:34:26 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
-MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <1415881027-8112-1-git-send-email-arei.gonglei@huawei.com>
-	<5476FD18.9000403@huawei.com> <547832E7.1090508@redhat.com>
-In-Reply-To: <547832E7.1090508@redhat.com>
-Content-Type: text/plain; charset="GB2312"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"aneesh.kumar@linux.vnet.ibm.com" <aneesh.kumar@linux.vnet.ibm.com>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 0/2] virtfs-proxy-helper: Fix Coverity
-	warning
+	(envelope-from <armbru@redhat.com>)
+	id 1Xw7AD-0003yW-7a; Wed, 03 Dec 2014 05:28:05 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB3AS48a003613
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Wed, 3 Dec 2014 05:28:04 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
+	[10.36.116.50])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sB3AS2G1012802
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 3 Dec 2014 05:28:04 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 4E4B730403B2; Wed,  3 Dec 2014 11:28:02 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed,  3 Dec 2014 11:28:02 +0100
+Message-Id: <1417602482-8832-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+Subject: [Qemu-trivial] [PATCH] Drop superfluous conditionals around
+	qemu_opts_del()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,37 +46,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Nov 2014 08:35:02 -0000
+X-List-Received-Date: Wed, 03 Dec 2014 10:28:30 -0000
 
-On 2014/11/28 16:31, Paolo Bonzini wrote:
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ hw/core/qdev.c | 4 +---
+ qemu-char.c    | 4 +---
+ 2 files changed, 2 insertions(+), 6 deletions(-)
 
-> 
-> 
-> On 27/11/2014 11:29, Gonglei wrote:
->> On 2014/11/13 20:17, Gonglei (Arei) wrote:
->>
->>> From: Gonglei <arei.gonglei@huawei.com>
->>>
->>> Gonglei (2):
->>>   virtfs-proxy-helper: Fix possible socket leak.
->>>   virtfs-proxy-helper: Fix handle leak to make Coverity happy
->>>
->>>  fsdev/virtfs-proxy-helper.c | 16 ++++++++++++----
->>>  1 file changed, 12 insertions(+), 4 deletions(-)
->>>
->>
->> Ping...
-> 
-> Hi Gonglei---thanks, I had missed this and Michael is probably not
-> sending qemu-trivial patches because we're so close to the release.
-> I'll pick up patch 1.
-> 
-> Paolo
-
-Thanks.
-As Markus's suggestion, we drop patch 2.  :)
-
-Regards,
--Gonglei
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 35fd00d..901f289 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -1141,9 +1141,7 @@ static void device_finalize(Object *obj)
+     NamedGPIOList *ngl, *next;
+ 
+     DeviceState *dev = DEVICE(obj);
+-    if (dev->opts) {
+-        qemu_opts_del(dev->opts);
+-    }
++    qemu_opts_del(dev->opts);
+ 
+     QLIST_FOREACH_SAFE(ngl, &dev->gpios, node, next) {
+         QLIST_REMOVE(ngl, node);
+diff --git a/qemu-char.c b/qemu-char.c
+index a8b01da..ef84b53 100644
+--- a/qemu-char.c
++++ b/qemu-char.c
+@@ -3825,9 +3825,7 @@ void qemu_chr_delete(CharDriverState *chr)
+     }
+     g_free(chr->filename);
+     g_free(chr->label);
+-    if (chr->opts) {
+-        qemu_opts_del(chr->opts);
+-    }
++    qemu_opts_del(chr->opts);
+     g_free(chr);
+ }
+ 
+-- 
+1.9.3
 
 
