@@ -1,43 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XwQ5s-00078h-1A
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Dec 2014 01:40:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44538)
+	id 1XwSh3-0002Iv-IJ
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Dec 2014 04:27:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44547)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1XwQ5k-00070m-8w
-	for qemu-trivial@nongnu.org; Thu, 04 Dec 2014 01:40:50 -0500
+	(envelope-from <armbru@redhat.com>) id 1XwSgv-00029h-Pv
+	for qemu-trivial@nongnu.org; Thu, 04 Dec 2014 04:27:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <akong@redhat.com>) id 1XwQ5e-0004AD-4l
-	for qemu-trivial@nongnu.org; Thu, 04 Dec 2014 01:40:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49582)
+	(envelope-from <armbru@redhat.com>) id 1XwSgp-0006xy-GI
+	for qemu-trivial@nongnu.org; Thu, 04 Dec 2014 04:27:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42301)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akong@redhat.com>)
-	id 1XwQ5R-00046Z-DJ; Thu, 04 Dec 2014 01:40:25 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB46eMP5027479
+	(envelope-from <armbru@redhat.com>)
+	id 1XwSgc-0006x2-U5; Thu, 04 Dec 2014 04:26:59 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB49Qw0a025068
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 4 Dec 2014 01:40:22 -0500
-Received: from localhost (vpn1-112-165.nay.redhat.com [10.66.112.165])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sB46eKSS002201; Thu, 4 Dec 2014 01:40:21 -0500
-Date: Thu, 4 Dec 2014 14:40:35 +0800
-From: Amos Kong <akong@redhat.com>
-To: Fam Zheng <famz@redhat.com>
-Message-ID: <20141204064035.GB10914@air.redhat.com>
-References: <1417673896-14832-1-git-send-email-famz@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="H1spWtNR+x+ondvy"
-Content-Disposition: inline
-In-Reply-To: <1417673896-14832-1-git-send-email-famz@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+	verify=FAIL); Thu, 4 Dec 2014 04:26:58 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-62.ams2.redhat.com
+	[10.36.116.62])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sB49QuJa005051
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 4 Dec 2014 04:26:57 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 89B32303FEB1; Thu,  4 Dec 2014 10:26:55 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu,  4 Dec 2014 10:26:55 +0100
+Message-Id: <1417685215-5289-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.3] configure: Replace
- which(1) with "has"
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] Drop superfluous conditionals around
+	g_strdup()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,69 +46,129 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Dec 2014 06:40:50 -0000
+X-List-Received-Date: Thu, 04 Dec 2014 09:27:24 -0000
 
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ backends/rng-random.c    |  6 +-----
+ hw/tpm/tpm_passthrough.c |  4 +---
+ util/uri.c               | 43 +++++++++++++++++--------------------------
+ 3 files changed, 19 insertions(+), 34 deletions(-)
 
---H1spWtNR+x+ondvy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/backends/rng-random.c b/backends/rng-random.c
+index 601d9dc..4f85a8e 100644
+--- a/backends/rng-random.c
++++ b/backends/rng-random.c
+@@ -88,11 +88,7 @@ static char *rng_random_get_filename(Object *obj, Error **errp)
+ {
+     RndRandom *s = RNG_RANDOM(obj);
+ 
+-    if (s->filename) {
+-        return g_strdup(s->filename);
+-    }
+-
+-    return NULL;
++    return g_strdup(s->filename);
+ }
+ 
+ static void rng_random_set_filename(Object *obj, const char *filename,
+diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
+index 56e9e0f..2bf3c6f 100644
+--- a/hw/tpm/tpm_passthrough.c
++++ b/hw/tpm/tpm_passthrough.c
+@@ -400,9 +400,7 @@ static int tpm_passthrough_handle_device_opts(QemuOpts *opts, TPMBackend *tb)
+     const char *value;
+ 
+     value = qemu_opt_get(opts, "cancel-path");
+-    if (value) {
+-        tb->cancel_path = g_strdup(value);
+-    }
++    tb->cancel_path = g_strdup(value);
+ 
+     value = qemu_opt_get(opts, "path");
+     if (!value) {
+diff --git a/util/uri.c b/util/uri.c
+index e348c17..bbf2832 100644
+--- a/util/uri.c
++++ b/util/uri.c
+@@ -1736,24 +1736,21 @@ uri_resolve(const char *uri, const char *base) {
+ 	goto done;
+     if ((ref->scheme == NULL) && (ref->path == NULL) &&
+ 	((ref->authority == NULL) && (ref->server == NULL))) {
+-	if (bas->scheme != NULL)
+-	    res->scheme = g_strdup(bas->scheme);
++        res->scheme = g_strdup(bas->scheme);
+ 	if (bas->authority != NULL)
+ 	    res->authority = g_strdup(bas->authority);
+ 	else if (bas->server != NULL) {
+-	    res->server = g_strdup(bas->server);
+-	    if (bas->user != NULL)
+-		res->user = g_strdup(bas->user);
+-	    res->port = bas->port;
++            res->server = g_strdup(bas->server);
++            res->user = g_strdup(bas->user);
++            res->port = bas->port;
+ 	}
+-	if (bas->path != NULL)
+-	    res->path = g_strdup(bas->path);
+-	if (ref->query != NULL)
++        res->path = g_strdup(bas->path);
++        if (ref->query != NULL) {
+ 	    res->query = g_strdup (ref->query);
+-	else if (bas->query != NULL)
+-	    res->query = g_strdup(bas->query);
+-	if (ref->fragment != NULL)
+-	    res->fragment = g_strdup(ref->fragment);
++        } else {
++            res->query = g_strdup(bas->query);
++        }
++        res->fragment = g_strdup(ref->fragment);
+ 	goto step_7;
+     }
+ 
+@@ -1767,13 +1764,10 @@ uri_resolve(const char *uri, const char *base) {
+ 	val = uri_to_string(ref);
+ 	goto done;
+     }
+-    if (bas->scheme != NULL)
+-	res->scheme = g_strdup(bas->scheme);
++    res->scheme = g_strdup(bas->scheme);
+ 
+-    if (ref->query != NULL)
+-	res->query = g_strdup(ref->query);
+-    if (ref->fragment != NULL)
+-	res->fragment = g_strdup(ref->fragment);
++    res->query = g_strdup(ref->query);
++    res->fragment = g_strdup(ref->fragment);
+ 
+     /*
+      * 4) If the authority component is defined, then the reference is a
+@@ -1787,20 +1781,17 @@ uri_resolve(const char *uri, const char *base) {
+ 	    res->authority = g_strdup(ref->authority);
+ 	else {
+ 	    res->server = g_strdup(ref->server);
+-	    if (ref->user != NULL)
+-		res->user = g_strdup(ref->user);
++            res->user = g_strdup(ref->user);
+             res->port = ref->port;
+ 	}
+-	if (ref->path != NULL)
+-	    res->path = g_strdup(ref->path);
++        res->path = g_strdup(ref->path);
+ 	goto step_7;
+     }
+     if (bas->authority != NULL)
+ 	res->authority = g_strdup(bas->authority);
+     else if (bas->server != NULL) {
+-	res->server = g_strdup(bas->server);
+-	if (bas->user != NULL)
+-	    res->user = g_strdup(bas->user);
++        res->server = g_strdup(bas->server);
++        res->user = g_strdup(bas->user);
+ 	res->port = bas->port;
+     }
+ 
+-- 
+1.9.3
 
-On Thu, Dec 04, 2014 at 02:18:16PM +0800, Fam Zheng wrote:
-> Using "has" is more slick because which(1) is not always there.
->=20
-> Signed-off-by: Fam Zheng <famz@redhat.com>
-> ---
->  configure | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/configure b/configure
-> index 47048f0..cae588c 100755
-> --- a/configure
-> +++ b/configure
-> @@ -2727,7 +2727,7 @@ fi
->  if test "$modules" =3D yes; then
->      shacmd_probe=3D"sha1sum sha1 shasum"
->      for c in $shacmd_probe; do
-> -        if which $c >/dev/null 2>&1; then
-> +        if has $c; then
-
-we use self defined has function to check command in all other place
-in configure. LGTM.
-
-Reviewed-by: Amos Kong <akong@redhat.com>
-
->              shacmd=3D"$c"
->              break
->          fi
-> --=20
-> 1.9.3
->=20
-
---=20
-			Amos.
-
---H1spWtNR+x+ondvy
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJUgAHjAAoJELxSv6I5vP9jW9cP/i7w/CJozehTuY8VCtnEA/a3
-Jul1fBHAe9Fio25SXYuFWhiD/KTXurjgrhovgQF9FShGqXifi2opHN++RY09DH3c
-dVGOrqoj9INcfWsfWmWQVfMKQO6nK8FbWxa7q3N0xG01MlAeDwaW5xRzu8K1uCZ7
-jlaOdICNuSnTSsydtw666KgjxOQuVn/+MaxQ7W4aZ+GJQ6daOxCELt0QmzQPC0FO
-wnG2ZUlaW3eYEmFWrfpF4eQSNo5NYaOI+vcMkwSmCiby759pH5nDjU4DE7WtjpCB
-2Si9aAEMjjIW36hr7UiQ8g70YkGT36ABwK/A4wpujQ5sh8ZZc0Z/fWfFF4X6btOL
-3lRKhICcvep9cDJZRlETG+ybTIhOHVpO9ShEOXN38AjWWix5mMg1AJxWCCOsbwkn
-aq3op4n7RSWFkEDqILqikNQVVJuFLMGuOO05CGbmRqZDDQ3qDD7YMcxo3biI8LHZ
-UFDYbtl9LmTdDPuZ8CdUuRvoAietFZwlcpWH1XM8xjr6RVd+8U3W/0rCBvqCfovn
-Q22c4fFEvIBpvTuCu4BaR8kmu/VZgIPQ3cv0Xfn0LNIZeevVe52WwfWlUXtgPwkU
-KtnxUvXnbOGZW7z3+TCjQbvD4Op6RWqnwhzRYqt2+WxHcFM8eRqJxLN/Ggkvcas+
-LTjJdsPMLErnjVWsExt1
-=Xev8
------END PGP SIGNATURE-----
-
---H1spWtNR+x+ondvy--
 
