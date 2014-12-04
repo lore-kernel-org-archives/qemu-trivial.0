@@ -1,47 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xw7Fg-0003cB-UW
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Dec 2014 05:33:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33301)
+	id 1XwPkd-0005VG-Ua
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Dec 2014 01:18:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37504)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xw7Fa-0003Qt-0Q
-	for qemu-trivial@nongnu.org; Wed, 03 Dec 2014 05:33:42 -0500
+	(envelope-from <famz@redhat.com>) id 1XwPkU-0005Dv-83
+	for qemu-trivial@nongnu.org; Thu, 04 Dec 2014 01:18:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Xw7FV-0005Va-3T
-	for qemu-trivial@nongnu.org; Wed, 03 Dec 2014 05:33:37 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:23649)
+	(envelope-from <famz@redhat.com>) id 1XwPkO-000475-1p
+	for qemu-trivial@nongnu.org; Thu, 04 Dec 2014 01:18:46 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45298)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Xw7FK-0005Rc-7O; Wed, 03 Dec 2014 05:33:22 -0500
-Received: from 172.24.2.119 (EHLO szxeml417-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id AYC60536; Wed, 03 Dec 2014 18:33:09 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml417-hub.china.huawei.com
-	(10.82.67.156) with Microsoft SMTP Server id 14.3.158.1; Wed, 3 Dec 2014
-	18:33:04 +0800
-Message-ID: <547EE6DE.2090703@huawei.com>
-Date: Wed, 3 Dec 2014 18:33:02 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
-MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1417602482-8832-1-git-send-email-armbru@redhat.com>
-In-Reply-To: <1417602482-8832-1-git-send-email-armbru@redhat.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020207.547EE6E5.0160, ss=1, re=0.001, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 9a1fc1d0779668b9fe9b97a6ff34b423
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Drop superfluous
-	conditionals around qemu_opts_del()
+	(envelope-from <famz@redhat.com>)
+	id 1XwPkB-00044r-2m; Thu, 04 Dec 2014 01:18:27 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB46INGS021398
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 4 Dec 2014 01:18:23 -0500
+Received: from ad.nay.redhat.com (dhcp-14-137.nay.redhat.com [10.66.14.137])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sB46IKb3018411; Thu, 4 Dec 2014 01:18:21 -0500
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu,  4 Dec 2014 14:18:16 +0800
+Message-Id: <1417673896-14832-1-git-send-email-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: [Qemu-trivial] [PATCH for-2.3] configure: Replace which(1) with
+	"has"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,50 +41,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Dec 2014 10:33:43 -0000
+X-List-Received-Date: Thu, 04 Dec 2014 06:18:53 -0000
 
-On 2014/12/3 18:28, Markus Armbruster wrote:
+Using "has" is more slick because which(1) is not always there.
 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  hw/core/qdev.c | 4 +---
->  qemu-char.c    | 4 +---
->  2 files changed, 2 insertions(+), 6 deletions(-)
-> 
+Signed-off-by: Fam Zheng <famz@redhat.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
-
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index 35fd00d..901f289 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -1141,9 +1141,7 @@ static void device_finalize(Object *obj)
->      NamedGPIOList *ngl, *next;
->  
->      DeviceState *dev = DEVICE(obj);
-> -    if (dev->opts) {
-> -        qemu_opts_del(dev->opts);
-> -    }
-> +    qemu_opts_del(dev->opts);
->  
->      QLIST_FOREACH_SAFE(ngl, &dev->gpios, node, next) {
->          QLIST_REMOVE(ngl, node);
-> diff --git a/qemu-char.c b/qemu-char.c
-> index a8b01da..ef84b53 100644
-> --- a/qemu-char.c
-> +++ b/qemu-char.c
-> @@ -3825,9 +3825,7 @@ void qemu_chr_delete(CharDriverState *chr)
->      }
->      g_free(chr->filename);
->      g_free(chr->label);
-> -    if (chr->opts) {
-> -        qemu_opts_del(chr->opts);
-> -    }
-> +    qemu_opts_del(chr->opts);
->      g_free(chr);
->  }
->  
-
-
+diff --git a/configure b/configure
+index 47048f0..cae588c 100755
+--- a/configure
++++ b/configure
+@@ -2727,7 +2727,7 @@ fi
+ if test "$modules" = yes; then
+     shacmd_probe="sha1sum sha1 shasum"
+     for c in $shacmd_probe; do
+-        if which $c >/dev/null 2>&1; then
++        if has $c; then
+             shacmd="$c"
+             break
+         fi
+-- 
+1.9.3
 
 
