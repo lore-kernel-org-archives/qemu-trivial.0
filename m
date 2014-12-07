@@ -1,41 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XwmnY-000291-FC
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Dec 2014 01:55:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34118)
+	id 1XxgQp-00018e-7l
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Dec 2014 13:19:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37379)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1XwmnQ-0001y8-BR
-	for qemu-trivial@nongnu.org; Fri, 05 Dec 2014 01:55:26 -0500
+	(envelope-from <antonynpavlov@gmail.com>) id 1XxgQe-0000ui-FJ
+	for qemu-trivial@nongnu.org; Sun, 07 Dec 2014 13:19:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1XwmnK-0002x6-7N
-	for qemu-trivial@nongnu.org; Fri, 05 Dec 2014 01:55:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38431)
+	(envelope-from <antonynpavlov@gmail.com>) id 1XxgQV-0005qT-F2
+	for qemu-trivial@nongnu.org; Sun, 07 Dec 2014 13:19:32 -0500
+Received: from mail-lb0-x232.google.com ([2a00:1450:4010:c04::232]:41294)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1Xwmn3-0002ZM-6I; Fri, 05 Dec 2014 01:54:57 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB56suRB010263
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Fri, 5 Dec 2014 01:54:56 -0500
-Received: from localhost (dhcp-14-137.nay.redhat.com [10.66.14.137])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sB56ssJg002453; Fri, 5 Dec 2014 01:54:55 -0500
-Date: Fri, 5 Dec 2014 14:54:53 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20141205065453.GB10827@ad.nay.redhat.com>
-References: <1417701603-26388-1-git-send-email-armbru@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1417701603-26388-1-git-send-email-armbru@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/3] util: Trivial cleanups
-	around g_malloc()
+	(envelope-from <antonynpavlov@gmail.com>)
+	id 1XxgQC-0005lP-Pt; Sun, 07 Dec 2014 13:19:04 -0500
+Received: by mail-lb0-f178.google.com with SMTP id f15so3035973lbj.37
+	for <multiple recipients>; Sun, 07 Dec 2014 10:19:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=tICqcgmtSrPSuZuQCV8tFnc5KgqLAfxBOWkfW6lqVjc=;
+	b=dp42mBk73FXvFVvWOLloND8vbbOTQhDRkoh2e2U/tYhP4PEIFWfkEPy0CX4X6BJBjA
+	m2ArVDqICcho1/XU/MclvgcZUqw1DXHlp2fAZ3oU9SztVQ3ff0NQsyeC6YZ6OIGenlAR
+	bjgTnvmXNJflHNSfu/0CgAJHqVJZvlw6BGRrkh0d53umb6FzoOeMZi/goA3gXXOvuMw/
+	9/bHHgUbKw79OMVafrcikXBfgCasdCtQbX41y0BrO2jUTfZAxTIP4qboMBZe7XNfBzIN
+	h7py8cymxIHN4TQ7O0ZQrcxiLLHZXM3CBm27Wck8ddw3WlxfIC3uzLHyDEMVCro2pCNN
+	0+oQ==
+X-Received: by 10.112.254.162 with SMTP id aj2mr12914206lbd.70.1417976343082; 
+	Sun, 07 Dec 2014 10:19:03 -0800 (PST)
+Received: from localhost.localdomain (ppp91-77-198-139.pppoe.mtu-net.ru.
+	[91.77.198.139])
+	by mx.google.com with ESMTPSA id f7sm10045521lam.26.2014.12.07.10.19.01
+	for <multiple recipients>
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Sun, 07 Dec 2014 10:19:02 -0800 (PST)
+From: Antony Pavlov <antonynpavlov@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Sun,  7 Dec 2014 21:20:45 +0300
+Message-Id: <1417976445-18860-1-git-send-email-antonynpavlov@gmail.com>
+X-Mailer: git-send-email 2.1.3
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c04::232
+Cc: qemu-trivial@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>
+Subject: [Qemu-trivial] [PATCH] pflash_cfi02.c: associate "cfi.pflash02" to
+	"Storage devices" category
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,22 +53,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Dec 2014 06:55:26 -0000
+X-List-Received-Date: Sun, 07 Dec 2014 18:19:41 -0000
 
-On Thu, 12/04 15:00, Markus Armbruster wrote:
-> Markus Armbruster (3):
->   util: Drop superfluous conditionals around g_free()
->   Fuse g_malloc(); memset() into g_new0()
->   util: Use g_new() & friends where that makes obvious sense
-> 
->  util/hbitmap.c |  4 ++--
->  util/iov.c     |  4 ++--
->  util/uri.c     | 51 +++++++++++++++++++++++----------------------------
->  3 files changed, 27 insertions(+), 32 deletions(-)
-> 
-> -- 
-> 1.9.3
-> 
-> 
-Reviewed-by: Fam Zheng <famz@redhat.com>
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ hw/block/pflash_cfi02.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+index 8513a17..389b4aa 100644
+--- a/hw/block/pflash_cfi02.c
++++ b/hw/block/pflash_cfi02.c
+@@ -744,6 +744,7 @@ static void pflash_cfi02_class_init(ObjectClass *klass, void *data)
+ 
+     dc->realize = pflash_cfi02_realize;
+     dc->props = pflash_cfi02_properties;
++    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
+ 
+ static const TypeInfo pflash_cfi02_info = {
+-- 
+2.1.3
+
 
