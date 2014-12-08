@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xy0Kp-0006M1-HR
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Dec 2014 10:34:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59866)
+	id 1Xy0aD-0001I6-58
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Dec 2014 10:50:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35385)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Xy0Ki-0006DW-Dz
-	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 10:34:49 -0500
+	(envelope-from <eblake@redhat.com>) id 1Xy0a2-0001H9-UX
+	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 10:50:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Xy0Kd-000671-8e
-	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 10:34:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37961)
+	(envelope-from <eblake@redhat.com>) id 1Xy0Zv-0003pX-Sn
+	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 10:50:34 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:44781)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Xy0KT-00065U-Bi; Mon, 08 Dec 2014 10:34:29 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB8FYPi6024919
+	(envelope-from <eblake@redhat.com>)
+	id 1Xy0Zv-0003of-KC; Mon, 08 Dec 2014 10:50:27 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB8FoCSp012855
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 8 Dec 2014 10:34:25 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-60.ams2.redhat.com
-	[10.36.116.60])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sB8FYNgL012330
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 8 Dec 2014 10:34:25 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 5FF31305B4FC; Mon,  8 Dec 2014 16:34:23 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: <arei.gonglei@huawei.com>
-References: <1418039322-7892-1-git-send-email-arei.gonglei@huawei.com>
-Date: Mon, 08 Dec 2014 16:34:23 +0100
-In-Reply-To: <1418039322-7892-1-git-send-email-arei.gonglei@huawei.com> (arei
-	gonglei's message of "Mon, 8 Dec 2014 19:48:42 +0800")
-Message-ID: <87wq626tq8.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	verify=FAIL); Mon, 8 Dec 2014 10:50:13 -0500
+Received: from [10.3.113.52] (ovpn-113-52.phx2.redhat.com [10.3.113.52])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sB8FoB3G001994; Mon, 8 Dec 2014 10:50:11 -0500
+Message-ID: <5485C8B3.30608@redhat.com>
+Date: Mon, 08 Dec 2014 08:50:11 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1418038820-9792-1-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1418038820-9792-1-git-send-email-arei.gonglei@huawei.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="bIQLhM7S9QwnnGScbwQjnIeHHTiMEor5q"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtio: remove useless
-	virtio_net_init define
+Cc: qemu-trivial@nongnu.org, zhang.zhanghailiang@huawei.com, armbru@redhat.com,
+	lcapitulino@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] qapi-schema: fix typo about
+	change-vnc-password
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,26 +52,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Dec 2014 15:34:49 -0000
+X-List-Received-Date: Mon, 08 Dec 2014 15:50:39 -0000
 
-<arei.gonglei@huawei.com> writes:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--bIQLhM7S9QwnnGScbwQjnIeHHTiMEor5q
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
+On 12/08/2014 04:40 AM, arei.gonglei@huawei.com wrote:
 > From: Gonglei <arei.gonglei@huawei.com>
->
-> commit 1773d9ee (virtio-net: cleanup: init and exit function)
-> had removed realization of virtio_net_init(), but didn't remove
-> the define of head file. Let's remove it.
->
+>=20
 > Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  qapi-schema.json | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-I get what you mean by "realization", but the technical term is
-definition, and the thing you remove is a declaration.
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Suggest
+>=20
+> diff --git a/qapi-schema.json b/qapi-schema.json
+> index 9ffdcf8..563b4ad 100644
+> --- a/qapi-schema.json
+> +++ b/qapi-schema.json
+> @@ -1533,7 +1533,7 @@
+>  #
+>  # Change the VNC server password.
+>  #
+> -# @target:  the new password to use with VNC authentication
+> +# @password:  the new password to use with VNC authentication
+>  #
+>  # Since: 1.1
+>  #
+>=20
 
-    virtio: remove useless declaration of virtio_net_init()
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-    Commit 1773d9ee (virtio-net: cleanup: init and exit function)
-    removed the definition of virtio_net_init(), but didn't remove its
-    declaration in the header.  Clean that up.
+
+--bIQLhM7S9QwnnGScbwQjnIeHHTiMEor5q
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+
+iQEcBAEBCAAGBQJUhcizAAoJEKeha0olJ0Nq4bkH/Rh848UkQCuTKY3rQMWAXuBb
+ZUFKUnCrJU28F6kHB+/Uj9CTW904RPVrGXfvbE47gkvMg2D7/ywLFDTSIt0RsZrW
+i31hlqP9PiL9EaogxW/Kgtm9R8WqxFZeXRG0a3vjzh2fJjkr1N7xOPWpL4K54Ns3
+nVUsfyMZeLIZc5OoZ8AjYeMOHos5iCIP3R7wbGgC8KdsvzT+sXmC+cmrVVFh72DS
+W6Vv8w1r2FE3AtoUXQ9pNLrOVcWRSKYDinufz/oV8mu0AIWHmD0iXOwQp3QvRWEL
+4Y0FfcxuJwkQEjv7VHWde4ahD8qbWHqX6Ov6jOvH/Nf8VR61qw+1MNWvEhCVDzA=
+=swwP
+-----END PGP SIGNATURE-----
+
+--bIQLhM7S9QwnnGScbwQjnIeHHTiMEor5q--
 
