@@ -1,40 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xxwrd-0005pq-Ll
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Dec 2014 06:52:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39647)
+	id 1XxwsQ-0006qN-BZ
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Dec 2014 06:53:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39865)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1XxwrW-0005hZ-U3
-	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 06:52:27 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1XxwsJ-0006eY-K6
+	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 06:53:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1XxwrS-0005u3-16
-	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 06:52:22 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36233)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XxwsD-000681-My
+	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 06:53:11 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:49298)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1XxwrI-0005rz-3Y; Mon, 08 Dec 2014 06:52:08 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB8Bpsgh004877
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 8 Dec 2014 06:51:55 -0500
-Received: from [10.36.116.58] (ovpn-116-58.ams2.redhat.com [10.36.116.58])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sB8BprPc010075; Mon, 8 Dec 2014 06:51:53 -0500
-Message-ID: <1418039512.27021.57.camel@nilsson.home.kraxel.org>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: arei.gonglei@huawei.com
-Date: Mon, 08 Dec 2014 12:51:52 +0100
-In-Reply-To: <1418038745-6728-1-git-send-email-arei.gonglei@huawei.com>
-References: <1418038745-6728-1-git-send-email-arei.gonglei@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] keymaps: correct keymaps.c following
-	Qemu coding style
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Xxws2-00062M-Nr; Mon, 08 Dec 2014 06:52:55 -0500
+Received: from 172.24.2.119 (EHLO szxeml411-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CDQ97334; Mon, 08 Dec 2014 19:52:51 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml411-hub.china.huawei.com
+	(10.82.67.138) with Microsoft SMTP Server id 14.3.158.1; Mon, 8 Dec 2014
+	19:52:42 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Mon, 8 Dec 2014 19:52:41 +0800
+Message-ID: <1418039561-5672-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	Gonglei <arei.gonglei@huawei.com>
+Subject: [Qemu-trivial] [PATCH] fw_cfg: remove superfluous blank line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,19 +44,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Dec 2014 11:52:27 -0000
+X-List-Received-Date: Mon, 08 Dec 2014 11:53:16 -0000
 
-On Mo, 2014-12-08 at 19:39 +0800, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
-> 
-> It's hard to read because of the confused coding
-> style in this file. Let's correct it following Qemu
-> coding style.
+From: Gonglei <arei.gonglei@huawei.com>
 
-added to vnc patch queue.
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ hw/nvram/fw_cfg.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-thanks,
-  Gerd
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index a7122ee..c4b78ed 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -621,7 +621,6 @@ static void fw_cfg_realize(DeviceState *dev, Error **errp)
+     FWCfgState *s = FW_CFG(dev);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+ 
+-
+     if (s->ctl_iobase + 1 == s->data_iobase) {
+         sysbus_add_io(sbd, s->ctl_iobase, &s->comb_iomem);
+     } else {
+-- 
+1.7.12.4
 
 
 
