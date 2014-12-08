@@ -1,47 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XxgQp-00018e-7l
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Dec 2014 13:19:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37379)
+	id 1Xxwfd-0004WH-67
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Dec 2014 06:40:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36362)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <antonynpavlov@gmail.com>) id 1XxgQe-0000ui-FJ
-	for qemu-trivial@nongnu.org; Sun, 07 Dec 2014 13:19:41 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1XxwfV-0004J1-4U
+	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 06:40:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <antonynpavlov@gmail.com>) id 1XxgQV-0005qT-F2
-	for qemu-trivial@nongnu.org; Sun, 07 Dec 2014 13:19:32 -0500
-Received: from mail-lb0-x232.google.com ([2a00:1450:4010:c04::232]:41294)
+	(envelope-from <arei.gonglei@huawei.com>) id 1XxwfO-0000wa-6p
+	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 06:39:57 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:11651)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <antonynpavlov@gmail.com>)
-	id 1XxgQC-0005lP-Pt; Sun, 07 Dec 2014 13:19:04 -0500
-Received: by mail-lb0-f178.google.com with SMTP id f15so3035973lbj.37
-	for <multiple recipients>; Sun, 07 Dec 2014 10:19:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=tICqcgmtSrPSuZuQCV8tFnc5KgqLAfxBOWkfW6lqVjc=;
-	b=dp42mBk73FXvFVvWOLloND8vbbOTQhDRkoh2e2U/tYhP4PEIFWfkEPy0CX4X6BJBjA
-	m2ArVDqICcho1/XU/MclvgcZUqw1DXHlp2fAZ3oU9SztVQ3ff0NQsyeC6YZ6OIGenlAR
-	bjgTnvmXNJflHNSfu/0CgAJHqVJZvlw6BGRrkh0d53umb6FzoOeMZi/goA3gXXOvuMw/
-	9/bHHgUbKw79OMVafrcikXBfgCasdCtQbX41y0BrO2jUTfZAxTIP4qboMBZe7XNfBzIN
-	h7py8cymxIHN4TQ7O0ZQrcxiLLHZXM3CBm27Wck8ddw3WlxfIC3uzLHyDEMVCro2pCNN
-	0+oQ==
-X-Received: by 10.112.254.162 with SMTP id aj2mr12914206lbd.70.1417976343082; 
-	Sun, 07 Dec 2014 10:19:03 -0800 (PST)
-Received: from localhost.localdomain (ppp91-77-198-139.pppoe.mtu-net.ru.
-	[91.77.198.139])
-	by mx.google.com with ESMTPSA id f7sm10045521lam.26.2014.12.07.10.19.01
-	for <multiple recipients>
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 07 Dec 2014 10:19:02 -0800 (PST)
-From: Antony Pavlov <antonynpavlov@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Sun,  7 Dec 2014 21:20:45 +0300
-Message-Id: <1417976445-18860-1-git-send-email-antonynpavlov@gmail.com>
-X-Mailer: git-send-email 2.1.3
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c04::232
-Cc: qemu-trivial@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>
-Subject: [Qemu-trivial] [PATCH] pflash_cfi02.c: associate "cfi.pflash02" to
-	"Storage devices" category
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1XxwfC-0000rf-HZ; Mon, 08 Dec 2014 06:39:39 -0500
+Received: from 172.24.2.119 (EHLO szxeml422-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id AYI99033; Mon, 08 Dec 2014 19:39:26 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml422-hub.china.huawei.com
+	(10.82.67.161) with Microsoft SMTP Server id 14.3.158.1; Mon, 8 Dec 2014
+	19:39:16 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Mon, 8 Dec 2014 19:39:05 +0800
+Message-ID: <1418038745-6728-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020203.54858DEF.01B5, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: c56c88ea0ce94b94b46fce45dfd1b8c1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	kraxel@redhat.com
+Subject: [Qemu-trivial] [PATCH] keymaps: correct keymaps.c following Qemu
+	coding style
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,26 +50,312 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Dec 2014 18:19:41 -0000
+X-List-Received-Date: Mon, 08 Dec 2014 11:40:03 -0000
 
-Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+From: Gonglei <arei.gonglei@huawei.com>
+
+It's hard to read because of the confused coding
+style in this file. Let's correct it following Qemu
+coding style.
+
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 ---
- hw/block/pflash_cfi02.c | 1 +
- 1 file changed, 1 insertion(+)
+ ui/keymaps.c | 196 ++++++++++++++++++++++++++++++++---------------------------
+ 1 file changed, 108 insertions(+), 88 deletions(-)
 
-diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index 8513a17..389b4aa 100644
---- a/hw/block/pflash_cfi02.c
-+++ b/hw/block/pflash_cfi02.c
-@@ -744,6 +744,7 @@ static void pflash_cfi02_class_init(ObjectClass *klass, void *data)
+diff --git a/ui/keymaps.c b/ui/keymaps.c
+index 80d658d..49410ae 100644
+--- a/ui/keymaps.c
++++ b/ui/keymaps.c
+@@ -26,18 +26,20 @@
+ #include "sysemu/sysemu.h"
  
-     dc->realize = pflash_cfi02_realize;
-     dc->props = pflash_cfi02_properties;
-+    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ static int get_keysym(const name2keysym_t *table,
+-		      const char *name)
++                      const char *name)
+ {
+     const name2keysym_t *p;
+     for(p = table; p->name != NULL; p++) {
+-        if (!strcmp(p->name, name))
++        if (!strcmp(p->name, name)) {
+             return p->keysym;
++        }
+     }
+     if (name[0] == 'U' && strlen(name) == 5) { /* try unicode Uxxxx */
+         char *end;
+         int ret = (int)strtoul(name + 1, &end, 16);
+-        if (*end == '\0' && ret > 0)
+-          return ret;
++        if (*end == '\0' && ret > 0) {
++            return ret;
++        }
+     }
+     return 0;
+ }
+@@ -46,19 +48,20 @@ static int get_keysym(const name2keysym_t *table,
+ static void add_to_key_range(struct key_range **krp, int code) {
+     struct key_range *kr;
+     for (kr = *krp; kr; kr = kr->next) {
+-	if (code >= kr->start && code <= kr->end)
+-	    break;
+-	if (code == kr->start - 1) {
+-	    kr->start--;
+-	    break;
+-	}
+-	if (code == kr->end + 1) {
+-	    kr->end++;
+-	    break;
+-	}
++        if (code >= kr->start && code <= kr->end) {
++            break;
++        }
++        if (code == kr->start - 1) {
++            kr->start--;
++            break;
++        }
++        if (code == kr->end + 1) {
++            kr->end++;
++            break;
++        }
+     }
+     if (kr == NULL) {
+-	kr = g_malloc0(sizeof(*kr));
++        kr = g_malloc0(sizeof(*kr));
+         kr->start = kr->end = code;
+         kr->next = *krp;
+         *krp = kr;
+@@ -67,30 +70,30 @@ static void add_to_key_range(struct key_range **krp, int code) {
+ 
+ static void add_keysym(char *line, int keysym, int keycode, kbd_layout_t *k) {
+     if (keysym < MAX_NORMAL_KEYCODE) {
+-	//fprintf(stderr,"Setting keysym %s (%d) to %d\n",line,keysym,keycode);
+-	k->keysym2keycode[keysym] = keycode;
++        /* fprintf(stderr,"Setting keysym %s (%d) to %d\n",
++                   line, keysym, keycode); */
++        k->keysym2keycode[keysym] = keycode;
+     } else {
+-	if (k->extra_count >= MAX_EXTRA_COUNT) {
+-	    fprintf(stderr,
+-		    "Warning: Could not assign keysym %s (0x%x) because of memory constraints.\n",
+-		    line, keysym);
+-	} else {
++        if (k->extra_count >= MAX_EXTRA_COUNT) {
++            fprintf(stderr, "Warning: Could not assign keysym %s (0x%x)"
++                    " because of memory constraints.\n", line, keysym);
++        } else {
+ #if 0
+-	    fprintf(stderr, "Setting %d: %d,%d\n",
+-		    k->extra_count, keysym, keycode);
++            fprintf(stderr, "Setting %d: %d,%d\n",
++                    k->extra_count, keysym, keycode);
+ #endif
+-	    k->keysym2keycode_extra[k->extra_count].
+-		keysym = keysym;
+-	    k->keysym2keycode_extra[k->extra_count].
+-		keycode = keycode;
+-	    k->extra_count++;
+-	}
++            k->keysym2keycode_extra[k->extra_count].
++            keysym = keysym;
++            k->keysym2keycode_extra[k->extra_count].
++            keycode = keycode;
++            k->extra_count++;
++        }
+     }
  }
  
- static const TypeInfo pflash_cfi02_info = {
+ static kbd_layout_t *parse_keyboard_layout(const name2keysym_t *table,
+-					   const char *language,
+-					   kbd_layout_t * k)
++                                           const char *language,
++                                           kbd_layout_t *k)
+ {
+     FILE *f;
+     char * filename;
+@@ -101,69 +104,78 @@ static kbd_layout_t *parse_keyboard_layout(const name2keysym_t *table,
+     f = filename ? fopen(filename, "r") : NULL;
+     g_free(filename);
+     if (!f) {
+-	fprintf(stderr,
+-		"Could not read keymap file: '%s'\n", language);
+-	return NULL;
++        fprintf(stderr, "Could not read keymap file: '%s'\n", language);
++        return NULL;
+     }
+ 
+-    if (!k)
+-	k = g_malloc0(sizeof(kbd_layout_t));
++    if (!k) {
++        k = g_malloc0(sizeof(kbd_layout_t));
++    }
+ 
+     for(;;) {
+-	if (fgets(line, 1024, f) == NULL)
++        if (fgets(line, 1024, f) == NULL) {
+             break;
++        }
+         len = strlen(line);
+-        if (len > 0 && line[len - 1] == '\n')
++        if (len > 0 && line[len - 1] == '\n') {
+             line[len - 1] = '\0';
+-        if (line[0] == '#')
+-	    continue;
+-	if (!strncmp(line, "map ", 4))
+-	    continue;
+-	if (!strncmp(line, "include ", 8)) {
+-	    parse_keyboard_layout(table, line + 8, k);
++        }
++        if (line[0] == '#') {
++            continue;
++        }
++        if (!strncmp(line, "map ", 4)) {
++            continue;
++        }
++        if (!strncmp(line, "include ", 8)) {
++            parse_keyboard_layout(table, line + 8, k);
+         } else {
+-	    char *end_of_keysym = line;
+-	    while (*end_of_keysym != 0 && *end_of_keysym != ' ')
+-		end_of_keysym++;
+-	    if (*end_of_keysym) {
+-		int keysym;
+-		*end_of_keysym = 0;
+-		keysym = get_keysym(table, line);
+-		if (keysym == 0) {
+-                    //		    fprintf(stderr, "Warning: unknown keysym %s\n", line);
+-		} else {
+-		    const char *rest = end_of_keysym + 1;
++            char *end_of_keysym = line;
++            while (*end_of_keysym != 0 && *end_of_keysym != ' ') {
++                end_of_keysym++;
++            }
++            if (*end_of_keysym) {
++                int keysym;
++                *end_of_keysym = 0;
++                keysym = get_keysym(table, line);
++                if (keysym == 0) {
++                    /* fprintf(stderr, "Warning: unknown keysym %s\n", line);*/
++                } else {
++                    const char *rest = end_of_keysym + 1;
+                     int keycode = strtol(rest, NULL, 0);
+ 
+                     if (strstr(rest, "numlock")) {
+-			add_to_key_range(&k->keypad_range, keycode);
+-			add_to_key_range(&k->numlock_range, keysym);
+-			//fprintf(stderr, "keypad keysym %04x keycode %d\n", keysym, keycode);
+-		    }
++                        add_to_key_range(&k->keypad_range, keycode);
++                        add_to_key_range(&k->numlock_range, keysym);
++                        /* fprintf(stderr, "keypad keysym %04x keycode %d\n",
++                                   keysym, keycode); */
++                    }
+ 
+                     if (strstr(rest, "shift")) {
+-			keycode |= SCANCODE_SHIFT;
++                        keycode |= SCANCODE_SHIFT;
+                     }
+                     if (strstr(rest, "altgr")) {
+-			keycode |= SCANCODE_ALTGR;
++                        keycode |= SCANCODE_ALTGR;
+                     }
+                     if (strstr(rest, "ctrl")) {
+-			keycode |= SCANCODE_CTRL;
++                        keycode |= SCANCODE_CTRL;
+                     }
+ 
+-		    add_keysym(line, keysym, keycode, k);
++                    add_keysym(line, keysym, keycode, k);
+ 
+                     if (strstr(rest, "addupper")) {
+-			char *c;
+-			for (c = line; *c; c++)
+-			    *c = qemu_toupper(*c);
+-			keysym = get_keysym(table, line);
+-			if (keysym)
+-			    add_keysym(line, keysym, keycode | SCANCODE_SHIFT, k);
+-		    }
+-		}
+-	    }
+-	}
++                        char *c;
++                        for (c = line; *c; c++) {
++                            *c = qemu_toupper(*c);
++                        }
++                        keysym = get_keysym(table, line);
++                        if (keysym) {
++                            add_keysym(line, keysym,
++                                       keycode | SCANCODE_SHIFT, k);
++                        }
++                    }
++                }
++            }
++        }
+     }
+     fclose(f);
+     return k;
+@@ -180,19 +192,23 @@ int keysym2scancode(void *kbd_layout, int keysym)
+ {
+     kbd_layout_t *k = kbd_layout;
+     if (keysym < MAX_NORMAL_KEYCODE) {
+-	if (k->keysym2keycode[keysym] == 0)
+-	    fprintf(stderr, "Warning: no scancode found for keysym %d\n",
+-		    keysym);
+-	return k->keysym2keycode[keysym];
++        if (k->keysym2keycode[keysym] == 0) {
++            fprintf(stderr, "Warning: no scancode found for keysym %d\n",
++                    keysym);
++        }
++        return k->keysym2keycode[keysym];
+     } else {
+-	int i;
++        int i;
+ #ifdef XK_ISO_Left_Tab
+-	if (keysym == XK_ISO_Left_Tab)
+-	    keysym = XK_Tab;
++        if (keysym == XK_ISO_Left_Tab) {
++            keysym = XK_Tab;
++        }
+ #endif
+-	for (i = 0; i < k->extra_count; i++)
+-	    if (k->keysym2keycode_extra[i].keysym == keysym)
+-		return k->keysym2keycode_extra[i].keycode;
++        for (i = 0; i < k->extra_count; i++) {
++            if (k->keysym2keycode_extra[i].keysym == keysym) {
++                return k->keysym2keycode_extra[i].keycode;
++            }
++        }
+     }
+     return 0;
+ }
+@@ -202,9 +218,11 @@ int keycode_is_keypad(void *kbd_layout, int keycode)
+     kbd_layout_t *k = kbd_layout;
+     struct key_range *kr;
+ 
+-    for (kr = k->keypad_range; kr; kr = kr->next)
+-        if (keycode >= kr->start && keycode <= kr->end)
++    for (kr = k->keypad_range; kr; kr = kr->next) {
++        if (keycode >= kr->start && keycode <= kr->end) {
+             return 1;
++        }
++    }
+     return 0;
+ }
+ 
+@@ -213,8 +231,10 @@ int keysym_is_numlock(void *kbd_layout, int keysym)
+     kbd_layout_t *k = kbd_layout;
+     struct key_range *kr;
+ 
+-    for (kr = k->numlock_range; kr; kr = kr->next)
+-        if (keysym >= kr->start && keysym <= kr->end)
++    for (kr = k->numlock_range; kr; kr = kr->next) {
++        if (keysym >= kr->start && keysym <= kr->end) {
+             return 1;
++        }
++    }
+     return 0;
+ }
 -- 
-2.1.3
+1.7.12.4
+
 
 
