@@ -1,38 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1XxwsQ-0006qN-BZ
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Dec 2014 06:53:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39865)
+	id 1Xy0Kp-0006M1-HR
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Dec 2014 10:34:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59866)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XxwsJ-0006eY-K6
-	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 06:53:16 -0500
+	(envelope-from <armbru@redhat.com>) id 1Xy0Ki-0006DW-Dz
+	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 10:34:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1XxwsD-000681-My
-	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 06:53:11 -0500
-Received: from szxga02-in.huawei.com ([119.145.14.65]:49298)
+	(envelope-from <armbru@redhat.com>) id 1Xy0Kd-000671-8e
+	for qemu-trivial@nongnu.org; Mon, 08 Dec 2014 10:34:44 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37961)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Xxws2-00062M-Nr; Mon, 08 Dec 2014 06:52:55 -0500
-Received: from 172.24.2.119 (EHLO szxeml411-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CDQ97334; Mon, 08 Dec 2014 19:52:51 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml411-hub.china.huawei.com
-	(10.82.67.138) with Microsoft SMTP Server id 14.3.158.1; Mon, 8 Dec 2014
-	19:52:42 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Mon, 8 Dec 2014 19:52:41 +0800
-Message-ID: <1418039561-5672-1-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
+	(envelope-from <armbru@redhat.com>)
+	id 1Xy0KT-00065U-Bi; Mon, 08 Dec 2014 10:34:29 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sB8FYPi6024919
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Mon, 8 Dec 2014 10:34:25 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-60.ams2.redhat.com
+	[10.36.116.60])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id sB8FYNgL012330
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 8 Dec 2014 10:34:25 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 5FF31305B4FC; Mon,  8 Dec 2014 16:34:23 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: <arei.gonglei@huawei.com>
+References: <1418039322-7892-1-git-send-email-arei.gonglei@huawei.com>
+Date: Mon, 08 Dec 2014 16:34:23 +0100
+In-Reply-To: <1418039322-7892-1-git-send-email-arei.gonglei@huawei.com> (arei
+	gonglei's message of "Mon, 8 Dec 2014 19:48:42 +0800")
+Message-ID: <87wq626tq8.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
-	Gonglei <arei.gonglei@huawei.com>
-Subject: [Qemu-trivial] [PATCH] fw_cfg: remove superfluous blank line
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtio: remove useless
+	virtio_net_init define
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,29 +52,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Dec 2014 11:53:16 -0000
+X-List-Received-Date: Mon, 08 Dec 2014 15:34:49 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+<arei.gonglei@huawei.com> writes:
 
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
----
- hw/nvram/fw_cfg.c | 1 -
- 1 file changed, 1 deletion(-)
+> From: Gonglei <arei.gonglei@huawei.com>
+>
+> commit 1773d9ee (virtio-net: cleanup: init and exit function)
+> had removed realization of virtio_net_init(), but didn't remove
+> the define of head file. Let's remove it.
+>
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 
-diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index a7122ee..c4b78ed 100644
---- a/hw/nvram/fw_cfg.c
-+++ b/hw/nvram/fw_cfg.c
-@@ -621,7 +621,6 @@ static void fw_cfg_realize(DeviceState *dev, Error **errp)
-     FWCfgState *s = FW_CFG(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
- 
--
-     if (s->ctl_iobase + 1 == s->data_iobase) {
-         sysbus_add_io(sbd, s->ctl_iobase, &s->comb_iomem);
-     } else {
--- 
-1.7.12.4
+I get what you mean by "realization", but the technical term is
+definition, and the thing you remove is a declaration.
 
+Suggest
 
+    virtio: remove useless declaration of virtio_net_init()
+
+    Commit 1773d9ee (virtio-net: cleanup: init and exit function)
+    removed the definition of virtio_net_init(), but didn't remove its
+    declaration in the header.  Clean that up.
 
