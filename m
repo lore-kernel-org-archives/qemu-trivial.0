@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xz82S-0000DW-Dn
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Dec 2014 13:00:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45517)
+	id 1Xz8I1-0007dt-Si
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Dec 2014 13:16:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52497)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xz82J-0008UE-Vd
-	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 13:00:30 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Xz8Hv-0007T4-Qn
+	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 13:16:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xz82D-0004JG-Qm
-	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 13:00:23 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:46405)
+	(envelope-from <mjt@tls.msk.ru>) id 1Xz8Hr-0002sF-9N
+	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 13:16:31 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:32994)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xz821-0004B2-Ce; Thu, 11 Dec 2014 13:00:05 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7145941D2C;
-	Thu, 11 Dec 2014 21:00:04 +0300 (MSK)
-Message-ID: <5489DBA3.7000407@msgid.tls.msk.ru>
-Date: Thu, 11 Dec 2014 21:00:03 +0300
+	id 1Xz8Hi-0002jD-8S; Thu, 11 Dec 2014 13:16:18 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 253BB41D41;
+	Thu, 11 Dec 2014 21:16:16 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 0AC408C4;
+	Thu, 11 Dec 2014 21:16:16 +0300 (MSK)
+Received: (nullmailer pid 22964 invoked by uid 1000);
+	Thu, 11 Dec 2014 18:16:15 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.2.0
-MIME-Version: 1.0
-To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>, 
-	qemu-devel@nongnu.org
-References: <1418298396-27089-1-git-send-email-dgilbert@redhat.com>
-In-Reply-To: <1418298396-27089-1-git-send-email-dgilbert@redhat.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Thu, 11 Dec 2014 21:15:53 +0300
+Message-Id: <2c80ab15e218a0438627c2a79d74d5a13b864e15.1418321644.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.3
+In-Reply-To: <cover.1418321644.git.mjt@msgid.tls.msk.ru>
+References: <cover.1418321644.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 1/1] Sort include/qemu/typedefs.h
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 05/20] virtio-bus: avoid breaking build when
+	open DEBUG switch
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,10 +44,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Dec 2014 18:00:30 -0000
+X-List-Received-Date: Thu, 11 Dec 2014 18:16:36 -0000
 
-Applied to -trivial, after verifying the resulting set is the same
-as the original.  A fun change, but it is worth it.  Thanks!
+From: Gonglei <arei.gonglei@huawei.com>
 
-/mjt
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/virtio/virtio-bus.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/virtio/virtio-bus.c b/hw/virtio/virtio-bus.c
+index eb77019..dfd2d8c 100644
+--- a/hw/virtio/virtio-bus.c
++++ b/hw/virtio/virtio-bus.c
+@@ -58,7 +58,7 @@ void virtio_bus_reset(VirtioBusState *bus)
+ {
+     VirtIODevice *vdev = virtio_bus_get_device(bus);
+ 
+-    DPRINTF("%s: reset device.\n", qbus->name);
++    DPRINTF("%s: reset device.\n", BUS(bus)->name);
+     if (vdev != NULL) {
+         virtio_reset(vdev);
+     }
+-- 
+2.1.3
+
 
