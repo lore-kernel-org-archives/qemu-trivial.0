@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xz8Qe-0003J4-Ak
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Dec 2014 13:25:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55708)
+	id 1Xz8Qg-0003Nw-Pu
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Dec 2014 13:25:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55717)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xz8QY-00036l-4T
-	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 13:25:30 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Xz8QZ-00038z-Ba
+	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 13:25:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xz8QT-00068j-Jo
-	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 13:25:26 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:41455)
+	(envelope-from <mjt@tls.msk.ru>) id 1Xz8QU-00069W-Nr
+	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 13:25:27 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:50878)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xz8QJ-00066W-GY; Thu, 11 Dec 2014 13:25:11 -0500
+	id 1Xz8QJ-00066T-GW; Thu, 11 Dec 2014 13:25:11 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 6E2EA41D47;
+	by isrv.corpit.ru (Postfix) with ESMTP id 40A8141D2C;
 	Thu, 11 Dec 2014 21:25:10 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id BA6108C5;
-	Thu, 11 Dec 2014 21:16:16 +0300 (MSK)
-Received: (nullmailer pid 22968 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 52DDA8F2;
+	Thu, 11 Dec 2014 21:16:18 +0300 (MSK)
+Received: (nullmailer pid 22983 invoked by uid 1000);
 	Thu, 11 Dec 2014 18:16:15 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu, 11 Dec 2014 21:15:55 +0300
-Message-Id: <4ad608803c46c0acc09114a2e8352742ffd20b6b.1418321644.git.mjt@msgid.tls.msk.ru>
+Date: Thu, 11 Dec 2014 21:16:02 +0300
+Message-Id: <d504fb4cecdb7c6f3b18c4d83296e84b6e970595.1418321644.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.3
 In-Reply-To: <cover.1418321644.git.mjt@msgid.tls.msk.ru>
 References: <cover.1418321644.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PULL 07/20] Drop superfluous conditionals around
-	qemu_opts_del()
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 14/20] fw_cfg: remove superfluous blank line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,49 +43,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Dec 2014 18:25:30 -0000
+X-List-Received-Date: Thu, 11 Dec 2014 18:25:31 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+From: Gonglei <arei.gonglei@huawei.com>
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/core/qdev.c | 4 +---
- qemu-char.c    | 4 +---
- 2 files changed, 2 insertions(+), 6 deletions(-)
+ hw/nvram/fw_cfg.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 35fd00d..901f289 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -1141,9 +1141,7 @@ static void device_finalize(Object *obj)
-     NamedGPIOList *ngl, *next;
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index a7122ee..c4b78ed 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -621,7 +621,6 @@ static void fw_cfg_realize(DeviceState *dev, Error **errp)
+     FWCfgState *s = FW_CFG(dev);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
  
-     DeviceState *dev = DEVICE(obj);
--    if (dev->opts) {
--        qemu_opts_del(dev->opts);
--    }
-+    qemu_opts_del(dev->opts);
- 
-     QLIST_FOREACH_SAFE(ngl, &dev->gpios, node, next) {
-         QLIST_REMOVE(ngl, node);
-diff --git a/qemu-char.c b/qemu-char.c
-index a8b01da..ef84b53 100644
---- a/qemu-char.c
-+++ b/qemu-char.c
-@@ -3825,9 +3825,7 @@ void qemu_chr_delete(CharDriverState *chr)
-     }
-     g_free(chr->filename);
-     g_free(chr->label);
--    if (chr->opts) {
--        qemu_opts_del(chr->opts);
--    }
-+    qemu_opts_del(chr->opts);
-     g_free(chr);
- }
- 
+-
+     if (s->ctl_iobase + 1 == s->data_iobase) {
+         sysbus_add_io(sbd, s->ctl_iobase, &s->comb_iomem);
+     } else {
 -- 
 2.1.3
 
