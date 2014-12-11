@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Xz7xm-0005Vh-KM
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Dec 2014 12:55:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43098)
+	id 1Xz80a-0006yr-G3
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Dec 2014 12:58:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44378)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xz7xe-0005SQ-ET
-	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 12:55:40 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Xz80T-0006rC-8l
+	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 12:58:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Xz7xX-000243-G0
-	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 12:55:34 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:34256)
+	(envelope-from <mjt@tls.msk.ru>) id 1Xz80N-0003B0-5X
+	for qemu-trivial@nongnu.org; Thu, 11 Dec 2014 12:58:29 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:52370)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Xz7xJ-0001pO-Kj; Thu, 11 Dec 2014 12:55:13 -0500
+	id 1Xz80A-00035w-B6; Thu, 11 Dec 2014 12:58:10 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id C8A5941D2D;
-	Thu, 11 Dec 2014 20:55:04 +0300 (MSK)
-Message-ID: <5489DA78.9030003@msgid.tls.msk.ru>
-Date: Thu, 11 Dec 2014 20:55:04 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id 9AAA341D2C;
+	Thu, 11 Dec 2014 20:58:09 +0300 (MSK)
+Message-ID: <5489DB31.2010601@msgid.tls.msk.ru>
+Date: Thu, 11 Dec 2014 20:58:09 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.2.0
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <1418203056-5365-1-git-send-email-pbonzini@redhat.com>
-In-Reply-To: <1418203056-5365-1-git-send-email-pbonzini@redhat.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+References: <1418289509-25393-1-git-send-email-stefanha@redhat.com>
+In-Reply-To: <1418289509-25393-1-git-send-email-stefanha@redhat.com>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, zhang.zhanghailiang@huawei.com,
-	peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH] vt82c686: avoid out-of-bounds read
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] hpet: increase spelling precision
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,18 +43,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Dec 2014 17:55:40 -0000
+X-List-Received-Date: Thu, 11 Dec 2014 17:58:35 -0000
 
-10.12.2014 12:17, Paolo Bonzini wrote:
-> superio_ioport_readb can read the 256th element of the array.
+Applied to trivial-patches.
 
-Is there a legitimate reason for it to access byte index 256?
-What is the actual size of superio config memory, 256 or 257?
-I don't know, but somehow it looks like it should be 256.
-If that's the case, the fix is wrong and superio_ioport_readb()
-should be fixed instead...
-
-Thanks,
+This patch definitely wins The Best Patch Subject Award,
+at least for this year.  Very nice, thank you!
 
 /mjt
 
