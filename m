@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y0nNX-000710-Ut
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Dec 2014 03:21:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53439)
+	id 1Y0z3v-0005tj-0b
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Dec 2014 15:49:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43264)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1Y0nNR-0006zw-9D
-	for qemu-trivial@nongnu.org; Tue, 16 Dec 2014 03:21:10 -0500
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Y0z3k-0005hF-9h
+	for qemu-trivial@nongnu.org; Tue, 16 Dec 2014 15:49:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1Y0nNM-0000iX-AG
-	for qemu-trivial@nongnu.org; Tue, 16 Dec 2014 03:21:05 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52742)
+	(envelope-from <gang.chen.5i5j@gmail.com>) id 1Y0z3b-0001Ak-6h
+	for qemu-trivial@nongnu.org; Tue, 16 Dec 2014 15:49:32 -0500
+Received: from mail-pa0-x233.google.com ([2607:f8b0:400e:c03::233]:44233)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1Y0nNM-0000i1-1M; Tue, 16 Dec 2014 03:21:00 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sBG8Kx27023895
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 16 Dec 2014 03:20:59 -0500
-Received: from [10.3.113.193] (ovpn-113-193.phx2.redhat.com [10.3.113.193])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sBG8KPIQ006457; Tue, 16 Dec 2014 03:20:36 -0500
-Message-ID: <548FEB22.2050506@redhat.com>
-Date: Tue, 16 Dec 2014 01:19:46 -0700
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
+	(envelope-from <gang.chen.5i5j@gmail.com>)
+	id 1Y0z3I-00016m-Sn; Tue, 16 Dec 2014 15:49:05 -0500
+Received: by mail-pa0-f51.google.com with SMTP id ey11so14880814pad.38
+	for <multiple recipients>; Tue, 16 Dec 2014 12:49:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=message-id:date:from:user-agent:mime-version:to:subject
+	:content-type:content-transfer-encoding;
+	bh=mvDXHF8VC1VKARwe/WBgzp+G8BSs9oJUJyPcEPIyQXE=;
+	b=BitmSLMOAyttveapzdt2zDSaNEWYkgksFUC0DFG+m5FYgiBq77LjIb50YIhclM+Qn6
+	wf9xI0gNvjI3SW0//1wH/sMX0DWcjvI7IRQOLJMaRac+xwyAAZX7i09M5PD3yFfmIBkj
+	X9RSofwDXgoc2g7rvgSTS2hnsqFsiwA9FuqPMb9OjZPj4hGdOT98dgZG8rIglS1xDXcn
+	Sd5xIItW8Nk1CvqBXug2h8rnAZBZbGMWod19ltRkBBGWxNXKLdEC/j7z1fNFNI9pDirU
+	smJQUgG0oGhf9dM1LFqcO8KxedkEMbqIz0sYz3gYgcVWknAvbv2/35G7bjUzPJvLXwxy
+	YPDA==
+X-Received: by 10.66.120.47 with SMTP id kz15mr64308100pab.71.1418762943118;
+	Tue, 16 Dec 2014 12:49:03 -0800 (PST)
+Received: from [192.168.1.103] ([223.72.65.78])
+	by mx.google.com with ESMTPSA id nv7sm1835644pbc.29.2014.12.16.12.49.00
+	(version=TLSv1 cipher=RC4-SHA bits=128/128);
+	Tue, 16 Dec 2014 12:49:01 -0800 (PST)
+Message-ID: <54909AB6.7020705@gmail.com>
+Date: Wed, 17 Dec 2014 04:48:54 +0800
+From: Chen Gang <gang.chen.5i5j@gmail.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
+	rv:17.0) Gecko/20130625 Thunderbird/17.0.7
 MIME-Version: 1.0
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-References: <1418694024-26498-1-git-send-email-famz@redhat.com>
-In-Reply-To: <1418694024-26498-1-git-send-email-famz@redhat.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="lq8QO4lP4dFJco5OTpx5mK9KPkQJbj9pV"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Max Reitz <mreitz@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] qapi: Fix document for
-	BlockStats.node-name
+To: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::233
+Subject: [Qemu-trivial] [PATCH] hw/net/xen_nic.c: Free 'netdev->txs' when
+ map 'netdev->rxs' fails
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,61 +55,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Dec 2014 08:21:10 -0000
+X-List-Received-Date: Tue, 16 Dec 2014 20:49:41 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---lq8QO4lP4dFJco5OTpx5mK9KPkQJbj9pV
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+When map 'netdev->rxs' fails, need free the original resource, or will
+cause resource leak.
 
-[adding qemu-trivial in cc]
+Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+---
+ hw/net/xen_nic.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-On 12/15/2014 06:40 PM, Fam Zheng wrote:
-> Signed-off-by: Fam Zheng <famz@redhat.com>
-> ---
->  qapi/block-core.json | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/qapi/block-core.json b/qapi/block-core.json
-> index 6e8db15..2d8bd25 100644
-> --- a/qapi/block-core.json
-> +++ b/qapi/block-core.json
-> @@ -423,7 +423,7 @@
->  # @device: #optional If the stats are for a virtual block device, the =
-name
->  #          corresponding to the virtual block device.
->  #
-> -# @device: #optional The node name of the device. (Since 2.3)
-> +# @node-name: #optional The node name of the device. (Since 2.3)
->  #
->  # @stats:  A @BlockDeviceStats for the device.
->  #
->=20
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---lq8QO4lP4dFJco5OTpx5mK9KPkQJbj9pV
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-
-iQEcBAEBCAAGBQJUj+syAAoJEKeha0olJ0Nq6rkIAJR90KvotK97H0S3MDrbb++X
-12hxvn0uL5KnHIOD22Tfnr8WG6Ts69e+/cXWcN4d2cxu7bWPvY5Df0uuSkR3Q7Ub
-RtsfeMr6wiDIuNimnkZg4Y4oFUb4DRNGTUfGcEoLyRTX2JJU+CfRajmD9Dyvqq8s
-KWCCBhqcqUhiQT21eGA7R02Iem9FUcOE/69uXZWjsRcMfh+BuESc3qxBmnILzzTS
-4Q0PQvl/SEBxkSpnFA0bIs9zyW4sstHN7jWdE0y5zi2wjgNJUol65fRwnnKD4N0T
-vSWpjdcsXaaPFz4LsAacwx8/eGN15zBU1e7DM9w7MUKR9yeGzr6TfYe4wEot264=
-=/fYO
------END PGP SIGNATURE-----
-
---lq8QO4lP4dFJco5OTpx5mK9KPkQJbj9pV--
+diff --git a/hw/net/xen_nic.c b/hw/net/xen_nic.c
+index 63918ae..7a57feb 100644
+--- a/hw/net/xen_nic.c
++++ b/hw/net/xen_nic.c
+@@ -370,11 +370,16 @@ static int net_connect(struct XenDevice *xendev)
+                                           netdev->xendev.dom,
+                                           netdev->tx_ring_ref,
+                                           PROT_READ | PROT_WRITE);
++    if (!netdev->txs) {
++        return -1;
++    }
+     netdev->rxs = xc_gnttab_map_grant_ref(netdev->xendev.gnttabdev,
+                                           netdev->xendev.dom,
+                                           netdev->rx_ring_ref,
+                                           PROT_READ | PROT_WRITE);
+-    if (!netdev->txs || !netdev->rxs) {
++    if (!netdev->rxs) {
++        xc_gnttab_munmap(netdev->xendev.gnttabdev, netdev->txs, 1);
++        netdev->txs = NULL;
+         return -1;
+     }
+     BACK_RING_INIT(&netdev->tx_ring, netdev->txs, XC_PAGE_SIZE);
+-- 
+1.9.3
 
