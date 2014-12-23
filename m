@@ -1,44 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y3SMw-0003pl-ST
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Dec 2014 11:31:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39628)
+	id 1Y3Xv5-0007oJ-Ij
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Dec 2014 17:27:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55731)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Y3SMr-0003mT-Ah
-	for qemu-trivial@nongnu.org; Tue, 23 Dec 2014 11:31:33 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1Y3Xux-0007Ya-DL
+	for qemu-trivial@nongnu.org; Tue, 23 Dec 2014 17:27:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Y3SMl-000741-MD
-	for qemu-trivial@nongnu.org; Tue, 23 Dec 2014 11:31:29 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56760)
+	(envelope-from <pm215@archaic.org.uk>) id 1Y3Xur-0001zP-A0
+	for qemu-trivial@nongnu.org; Tue, 23 Dec 2014 17:27:03 -0500
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:47682)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1Y3SMl-00073j-Fw; Tue, 23 Dec 2014 11:31:23 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id sBNGVCCY013463
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 23 Dec 2014 11:31:12 -0500
-Received: from [10.36.112.28] (ovpn-112-28.ams2.redhat.com [10.36.112.28])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id sBNGV8as013719
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Tue, 23 Dec 2014 11:31:10 -0500
-Message-ID: <549998CB.4050809@redhat.com>
-Date: Tue, 23 Dec 2014 17:31:07 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
-MIME-Version: 1.0
-To: Peter Wu <peter@lekensteyn.nl>, Peter Lieven <pl@kamp.de>,
-	qemu-devel@nongnu.org
-References: <1419348641-20955-1-git-send-email-peter@lekensteyn.nl>
-In-Reply-To: <1419348641-20955-1-git-send-email-peter@lekensteyn.nl>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	(envelope-from <pm215@archaic.org.uk>) id 1Y3Xur-0001yz-43
+	for qemu-trivial@nongnu.org; Tue, 23 Dec 2014 17:26:57 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1Y3Xup-0004gc-QV; Tue, 23 Dec 2014 22:26:55 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Tue, 23 Dec 2014 22:26:52 +0000
+Message-Id: <1419373615-17989-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] block/iscsi: fix uninitialized variable
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH 0/3] miscellaneous minor clang fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,45 +35,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Dec 2014 16:31:33 -0000
+X-List-Received-Date: Tue, 23 Dec 2014 22:27:09 -0000
 
+This is a collection of three miscellaneous minor fixes for
+clang compile warnings, which I think could reasonably go via
+the -trivial tree. The map_exec patch has been on list and
+reviewed before; the other two are new.
 
+Peter Maydell (2):
+  tests/hd-geo-test.c: Remove unused test_image variable
+  migration/qemu-file.c: Don't shift left into sign bit
 
-On 23/12/2014 16:30, Peter Wu wrote:
-> 'ret' was never initialized in the success path.
-> 
-> Signed-off-by: Peter Wu <peter@lekensteyn.nl>
-> ---
-> Hi,
-> 
-> Found this warning when compiling with --enable-debug. This issue was previously
-> fixed as part of Peter Lieven's patch series[1] but it never seemed to get
-> merged.
-> 
-> Kinds regards,
-> Peter
-> 
->  [1]: https://lists.gnu.org/archive/html/qemu-devel/2014-03/msg04279.html
-> ---
->  block/iscsi.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/block/iscsi.c b/block/iscsi.c
-> index ed375fc..12ddbfb 100644
-> --- a/block/iscsi.c
-> +++ b/block/iscsi.c
-> @@ -1286,7 +1286,7 @@ static int iscsi_open(BlockDriverState *bs, QDict *options, int flags,
->      QemuOpts *opts;
->      Error *local_err = NULL;
->      const char *filename;
-> -    int i, ret;
-> +    int i, ret = 0;
->  
->      if ((BDRV_SECTOR_SIZE % 512) != 0) {
->          error_setg(errp, "iSCSI: Invalid BDRV_SECTOR_SIZE. "
-> 
+SeokYeon Hwang (1):
+  translate-all: Mark map_exec() with the 'unused' attribute
 
-Thanks.
+ migration/qemu-file.c | 2 +-
+ tests/hd-geo-test.c   | 2 --
+ translate-all.c       | 4 ++--
+ 3 files changed, 3 insertions(+), 5 deletions(-)
 
-Paolo
+-- 
+1.9.1
+
 
