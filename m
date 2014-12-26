@@ -1,35 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y4QFd-0002iQ-5h
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Dec 2014 03:28:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44736)
+	id 1Y4Rhe-0003GJ-0B
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Dec 2014 05:01:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56003)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tiejun.chen@intel.com>) id 1Y4Pwd-0005PJ-1L
-	for qemu-trivial@nongnu.org; Fri, 26 Dec 2014 03:08:23 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1Y4Rhb-0003DM-D5
+	for qemu-trivial@nongnu.org; Fri, 26 Dec 2014 05:01:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <tiejun.chen@intel.com>) id 1Y4Pwc-00064V-5v
-	for qemu-trivial@nongnu.org; Fri, 26 Dec 2014 03:08:22 -0500
-Received: from mga11.intel.com ([192.55.52.93]:54510)
+	(envelope-from <peter.maydell@linaro.org>) id 1Y4RhY-0003tM-6d
+	for qemu-trivial@nongnu.org; Fri, 26 Dec 2014 05:00:59 -0500
+Received: from mail-lb0-f177.google.com ([209.85.217.177]:35846)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tiejun.chen@intel.com>)
-	id 1Y4PwX-0005yy-Rl; Fri, 26 Dec 2014 03:08:17 -0500
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-	by fmsmga102.fm.intel.com with ESMTP; 26 Dec 2014 00:08:14 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="4.97,862,1389772800"; d="scan'208";a="433582968"
-Received: from tchen0-linux.bj.intel.com ([10.238.135.72])
-	by FMSMGA003.fm.intel.com with ESMTP; 25 Dec 2014 23:56:32 -0800
-From: Tiejun Chen <tiejun.chen@intel.com>
-To: pbonzini@redhat.com
-Date: Fri, 26 Dec 2014 16:05:26 +0800
-Message-Id: <1419581126-12927-1-git-send-email-tiejun.chen@intel.com>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 192.55.52.93
-X-Mailman-Approved-At: Fri, 26 Dec 2014 03:27:59 -0500
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org
-Subject: [Qemu-trivial] [PATCH] kvm_irqchip_assign_irqfd: just set irqfd in
-	case of kvm_irqfds_enabled()
+	(envelope-from <peter.maydell@linaro.org>) id 1Y4RhY-0003tG-0D
+	for qemu-trivial@nongnu.org; Fri, 26 Dec 2014 05:00:56 -0500
+Received: by mail-lb0-f177.google.com with SMTP id b6so8403230lbj.36
+	for <qemu-trivial@nongnu.org>; Fri, 26 Dec 2014 02:00:55 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=cnxyWxGIU+sN2kR5pO9pkysI881+1ufhaQMSCaj93Dc=;
+	b=IxCUHFGQWs2KNvvEUPOaS6Yuq2L5S8oh/Xf6vONqRBFswp+MTyQbwi5W90+eAko3jN
+	laTrYVM4cPnxZW9ydgoa5zF4d4WJvGb8b01U3iE2BpKvTMTOb1cEoSesuLdYSFnUPcd3
+	AgPxkhYHb67pE4QpG7FYoWmRotQn/W+KM01N3sIqBqFvEAY2cTZhUw1h9dK4ToB2UGRp
+	9RBwi/V3OLBRm7YXkOMqspfGSypEOPprdjbf45m0HzbQiKACWvTe4PHQN/XZAR2CwKdL
+	HBcE4hXOFQsh7v3ueWoJVSz5pNI3I16f87/b14P2fJPmFoCkpUyMUxWy3C+gwtJzM9gT
+	hJxA==
+X-Gm-Message-State: ALoCoQnrXiZqcE+WWr7v90XiTajjWgIILuO01U9H16yfKz/QhMtKXqgbpVSyVovAcUG6FyEoe/t2
+X-Received: by 10.152.43.103 with SMTP id v7mr42958129lal.29.1419588055111;
+	Fri, 26 Dec 2014 02:00:55 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.112.52.38 with HTTP; Fri, 26 Dec 2014 02:00:34 -0800 (PST)
+In-Reply-To: <1419581126-12927-1-git-send-email-tiejun.chen@intel.com>
+References: <1419581126-12927-1-git-send-email-tiejun.chen@intel.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Dec 2014 10:00:34 +0000
+Message-ID: <CAFEAcA9yR2FPUF-T_ehMS4Yd0SL91mVADYwhDAuxCbkhQnNZiA@mail.gmail.com>
+To: Tiejun Chen <tiejun.chen@intel.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.177
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, kvm-devel <kvm@vger.kernel.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] kvm_irqchip_assign_irqfd:
+ just set irqfd in case of kvm_irqfds_enabled()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,51 +55,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Dec 2014 08:08:24 -0000
+X-List-Received-Date: Fri, 26 Dec 2014 10:01:00 -0000
 
-We should avoid to set irqfd{} unconditionally.
+On 26 December 2014 at 08:05, Tiejun Chen <tiejun.chen@intel.com> wrote:
+> We should avoid to set irqfd{} unconditionally.
+>
+> Signed-off-by: Tiejun Chen <tiejun.chen@intel.com>
 
-Signed-off-by: Tiejun Chen <tiejun.chen@intel.com>
----
- kvm-all.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+Is there a hot path that we use this on such that the difference
+in code order matters at all?
 
-diff --git a/kvm-all.c b/kvm-all.c
-index 18cc6b4..5b9786b 100644
---- a/kvm-all.c
-+++ b/kvm-all.c
-@@ -1257,21 +1257,21 @@ int kvm_irqchip_update_msi_route(KVMState *s, int virq, MSIMessage msg)
- static int kvm_irqchip_assign_irqfd(KVMState *s, int fd, int rfd, int virq,
-                                     bool assign)
- {
--    struct kvm_irqfd irqfd = {
--        .fd = fd,
--        .gsi = virq,
--        .flags = assign ? 0 : KVM_IRQFD_FLAG_DEASSIGN,
--    };
-+    struct kvm_irqfd irqfd = {};
-+
-+    if (!kvm_irqfds_enabled()) {
-+        return -ENOSYS;
-+    }
-+
-+    irqfd.fd = fd;
-+    irqfd.gsi = virq;
-+    irqfd.flags = assign ? 0 : KVM_IRQFD_FLAG_DEASSIGN;
- 
-     if (rfd != -1) {
-         irqfd.flags |= KVM_IRQFD_FLAG_RESAMPLE;
-         irqfd.resamplefd = rfd;
-     }
- 
--    if (!kvm_irqfds_enabled()) {
--        return -ENOSYS;
--    }
--
-     return kvm_vm_ioctl(s, KVM_IRQFD, &irqfd);
- }
- 
--- 
-1.9.1
-
+thanks
+-- PMM
 
