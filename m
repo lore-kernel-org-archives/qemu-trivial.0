@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y5gvA-0003Dq-Fh
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Dec 2014 15:28:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41907)
+	id 1Y5jxC-0000SJ-1c
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Dec 2014 18:42:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38547)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dslutz@verizon.com>) id 1Y5gv7-00039a-Bu
-	for qemu-trivial@nongnu.org; Mon, 29 Dec 2014 15:28:06 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1Y5jx9-0000Pn-NY
+	for qemu-trivial@nongnu.org; Mon, 29 Dec 2014 18:42:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dslutz@verizon.com>) id 1Y5gv1-0001QD-3I
-	for qemu-trivial@nongnu.org; Mon, 29 Dec 2014 15:28:05 -0500
-Received: from omzsmtpe04.verizonbusiness.com ([199.249.25.207]:54316)
+	(envelope-from <peter.maydell@linaro.org>) id 1Y5jx6-0006QA-H2
+	for qemu-trivial@nongnu.org; Mon, 29 Dec 2014 18:42:23 -0500
+Received: from mail-la0-f44.google.com ([209.85.215.44]:39925)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dslutz@verizon.com>)
-	id 1Y5gv0-0001P9-Tz; Mon, 29 Dec 2014 15:27:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-	d=verizon.com; i=dslutz@verizon.com; q=dns/txt; s=corp;
-	t=1419884878; x=1451420878;
-	h=from:message-id:date:mime-version:to:cc:subject:
-	references:in-reply-to:content-transfer-encoding;
-	bh=7hwrQGJAC+wtT5LE1PtUg7zuJeOJwHTw7s/q4anET7I=;
-	b=utLI2BHNCleDHESLJPlcmm/GJUQ2yWigbFWTbjSD6DY8dFO9X6nJ8YQh
-	lqlWmPMZDG1AAoXo7IXHKRwwpV1JVNllOpmHouv0EQ4ep/X7l3pfGfFzk
-	VeWxBgEl93JToEhe1P1WvWMYBd3PpnV28JISA/37QOCkmwoRRS+ijxmvk 8=;
-X-IronPort-Anti-Spam-Filtered: false
-Received: from unknown (HELO fldsmtpi01.verizon.com) ([166.68.71.143])
-	by omzsmtpe04.verizonbusiness.com with ESMTP; 29 Dec 2014 20:27:50 +0000
-From: Don Slutz <dslutz@verizon.com>
-X-VzAPP: 1
-X-IronPort-AV: E=Sophos;i="5.07,660,1413244800"; d="scan'208";a="940956465"
-Received: from unknown (HELO don-760.CloudSwitch.com) ([70.105.111.51])
-	by fldsmtpi01.verizon.com with ESMTP; 29 Dec 2014 20:27:49 +0000
-Message-ID: <54A1B945.20509@terremark.com>
-Date: Mon, 29 Dec 2014 15:27:49 -0500
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
+	(envelope-from <peter.maydell@linaro.org>) id 1Y5jx6-0006Q4-9k
+	for qemu-trivial@nongnu.org; Mon, 29 Dec 2014 18:42:20 -0500
+Received: by mail-la0-f44.google.com with SMTP id gd6so12105054lab.17
+	for <qemu-trivial@nongnu.org>; Mon, 29 Dec 2014 15:42:19 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=geVYs0iCHDKXjArb4h1vqxMlAlEC2bLk5YfixVU3AKQ=;
+	b=E2qClJQYuJotUM9+6IhO/4OgNDxyczMMUhVvH+TyNCtA3qANgqnHXRfxk4FzCZCywa
+	RcZMTFyQRYTIYsEp/LqIstQ6ke5IR3mn6FxvKWlfZkgvoRGU/Z/7T4xJhK+Q1XvFcTEQ
+	/fzss1/dwkfwNER5mL3+GM3MDZLYp8171V7PXNaBGoYpVrmwwCXw07YM7QechjEctuP7
+	sv4F0LlMQ1Xotg3cIuCzMz2VS49oxvXaIHCl4JGW0/6Xda/xiDJZG4Mj4+xVh/zjiD/F
+	TBK3pTlmztgCioxMfMCZmCU5LRHMkQAJmSs0fWcgD3EQ6D/wPhN15oUpgMHeOo7yBUAc
+	/m6g==
+X-Gm-Message-State: ALoCoQmms3Bnw30deMYbnDgnLHzH08cZ8PESMgErGFZODXb3q/N1LU3eB+UytuW/3EZiGrWaWag9
+X-Received: by 10.152.120.97 with SMTP id lb1mr50811216lab.76.1419896539447;
+	Mon, 29 Dec 2014 15:42:19 -0800 (PST)
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, Don Slutz <dslutz@verizon.com>, 
-	qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+Received: by 10.112.52.38 with HTTP; Mon, 29 Dec 2014 15:41:59 -0800 (PST)
+In-Reply-To: <54A1B945.20509@terremark.com>
 References: <1419260640-2922-1-git-send-email-dslutz@verizon.com>
-	<54A125E6.4050807@msgid.tls.msk.ru>
-In-Reply-To: <54A125E6.4050807@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 199.249.25.207
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [PATCH 1/1] Do not hang on full PTY
+	<54A125E6.4050807@msgid.tls.msk.ru> <54A1B945.20509@terremark.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Dec 2014 23:41:59 +0000
+Message-ID: <CAFEAcA-GjRku9rRZr04itDx-bB40=DpdLNf9_V8QfHANiit4GA@mail.gmail.com>
+To: Don Slutz <dslutz@verizon.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.215.44
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
+	Anthony Liguori <aliguori@amazon.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] Do not hang on full PTY
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,53 +56,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Dec 2014 20:28:06 -0000
+X-List-Received-Date: Mon, 29 Dec 2014 23:42:24 -0000
 
-On 12/29/14 04:59, Michael Tokarev wrote:
-> 22.12.2014 18:04, Don Slutz wrote:
-> 
->> --- a/qemu-char.c
->> +++ b/qemu-char.c
->> @@ -1387,6 +1387,7 @@ static CharDriverState *qemu_chr_open_pty(const char *id,
->>      }
->>  
->>      close(slave_fd);
->> +    qemu_set_nonblock(master_fd);
->>  
->>      chr = qemu_chr_alloc();
-> 
-> 
-> Hm.  I'm not sure at all this is a trivial change.  While the
-> patch itself is trivial indeed, it changes behavour of the file
-> descriptor significantly.  Are all the places where this fd is
-> subsequently used prepared for it being non-blocking?  Oh well... ;)
+On 29 December 2014 at 20:27, Don Slutz <dslutz@verizon.com> wrote:
+> I was not sure on this being trivial also, but it looked like it could
+> be to me.  The uses of this FD all looked that they handle non-blocking.
 
-I was not sure on this being trivial also, but it looked like it could
-be to me.  The uses of this FD all looked that they handle non-blocking.
+Does g_io_channel_read_chars() definitely return G_IO_STATUS_NORMAL
+(and not, say, G_IO_STATUS_AGAIN) for an attempted read on a non-blocking
+fd with no data? Otherwise pty_chr_read() is going to call
+pty_chr_state(chr, 0) which I think means "the other end has hung up"
+and will take the fd out of the main loop's poll set.
 
-Here are the calls to qemu_set_nonblock in qemu-char.c (including this
-add) :
-
-b qemu-char.c             qemu_chr_open_fd           1070
-qemu_set_nonblock(fd_out);
-c qemu-char.c             qemu_chr_open_stdio        1166
-qemu_set_nonblock(0);
-d qemu-char.c             qemu_chr_open_pty          1390
-qemu_set_nonblock(master_fd);
-e qemu-char.c             tcp_chr_add_client         2952
-qemu_set_nonblock(fd);
-f qemu-char.c             qmp_chardev_open_serial    4060
-qemu_set_nonblock(fd);
-g qemu-char.c             qmp_chardev_open_socket    4172
-qemu_set_nonblock(s->listen_fd);
-
-So there are many cases where the FD is non-blocking already.
-
-Hope this info helps.
-
-> 
-> Thanks,
-> 
-> /mjt
-> 
+thanks
+-- PMM
 
