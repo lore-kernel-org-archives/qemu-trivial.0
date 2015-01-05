@@ -1,46 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y8CTe-0001dS-Rl
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Jan 2015 13:34:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58035)
+	id 1Y8CbM-0005r7-GK
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Jan 2015 13:42:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60050)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Y8CTc-0001dD-LW
-	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 13:34:05 -0500
+	(envelope-from <dmorrison@invlim.com>) id 1Y8CbG-0005n8-SR
+	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 13:42:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Y8CTY-0004LR-Jb
-	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 13:34:04 -0500
-Received: from mail-la0-f52.google.com ([209.85.215.52]:34661)
+	(envelope-from <dmorrison@invlim.com>) id 1Y8CbF-0007Aq-Gz
+	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 13:41:58 -0500
+Received: from fofx.invlim.com ([71.6.153.225]:52145)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Y8CTY-0004LL-Ca
-	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 13:34:00 -0500
-Received: by mail-la0-f52.google.com with SMTP id hs14so18517064lab.39
-	for <qemu-trivial@nongnu.org>; Mon, 05 Jan 2015 10:33:59 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=CJmYvvgLle92QHuhmwITzwfQglwhEWw0Wu569WlHngg=;
-	b=NFohqHtJhQfWQ8CRLgONQt3k+TankVlTmndMqv2+OERyiP7RIBMal7yRqRrf/OcKCx
-	oAnT77GKwMwB4J1jR+8Qe1hhEHx7mxm4SqNfNBMKvBWGKEZhlUpCVBebHDI+OqKBhibr
-	JwJpMteV4vEmCvEvlmTTBRWf39f1TjrL80sk5ZIqcc1EMF+9ig1AvnfKWYQsDHrsPJTb
-	yji6PYLC62FPOGz5b7BK4mgrT4zT3ZjlA2KY/JorRPh+TlBundV9KZzqgg/wW/6N1jRO
-	BpSx2bbPrEmWDOFZs4wcW/VGOSP/8917ZktEkMSFXfZfL5WvKsJORPFPejoXP1UAR7tn
-	/5mw==
-X-Gm-Message-State: ALoCoQmEdPaEcuArbKMah2GyO776SovpZOs0tElBdArtA5u/21iU4PAmjE/RdNmk1CAS9cY9K0wQ
-X-Received: by 10.152.197.5 with SMTP id iq5mr94046749lac.6.1420482839625;
-	Mon, 05 Jan 2015 10:33:59 -0800 (PST)
+	(envelope-from <dmorrison@invlim.com>)
+	id 1Y8Cb8-00078j-S3; Mon, 05 Jan 2015 13:41:51 -0500
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by fofx.invlim.com (Postfix) with ESMTP id 91717248288;
+	Mon,  5 Jan 2015 10:31:44 -0800 (PST)
+X-Virus-Scanned: amavisd-new at example.com
+Received: from fofx.invlim.com ([127.0.0.1])
+	by localhost (fofx.invlim.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id eM91PK0HpKUr; Mon,  5 Jan 2015 10:31:42 -0800 (PST)
+Received: from [10.240.0.46] (unknown [10.240.0.46])
+	by fofx.invlim.com (Postfix) with ESMTP id 5848624827F;
+	Mon,  5 Jan 2015 10:31:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=invlim.com;
+	s=default; t=1420482702;
+	bh=4+lrKPNlQpCKGt3oQ51+ZNltWCikcgF5Jky+lSbZ3tc=;
+	h=Date:From:To:CC:Subject:References:In-Reply-To;
+	b=BCInMdLCZDIY2xozACwyyIFQGVu1vNxy3oHxmO6ITBDLZ0ZPekkiFI8N4D46cKk9K
+	80Q1veaIjw/v/8RmLSi+UB7kb81Awft7o0sv901hzTrQfVLija1uyrYEe+frsdxY69
+	+mEvv2LvoAL6l7id5hmgfvKJbLqKmbO+Svzqx7Fc=
+Message-ID: <54AADADB.6000400@invlim.com>
+Date: Mon, 05 Jan 2015 10:41:31 -0800
+From: David Morrison <dmorrison@invlim.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
 MIME-Version: 1.0
-Received: by 10.112.52.38 with HTTP; Mon, 5 Jan 2015 10:33:39 -0800 (PST)
-In-Reply-To: <CAFEAcA9RHCGaGHk4zZWMa4BAWR0OV5sAxan3AjrR=G-NaiJ58g@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1418862393-10691-1-git-send-email-dmorrison@invlim.com>
 	<CAFEAcA9RHCGaGHk4zZWMa4BAWR0OV5sAxan3AjrR=G-NaiJ58g@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Jan 2015 18:33:39 +0000
-Message-ID: <CAFEAcA_=dRz_M1hzt=NcaXNUnHdri367WituK11pd+cV-7+31g@mail.gmail.com>
-To: David Morrison <dmorrison@invlim.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.52
+In-Reply-To: <CAFEAcA9RHCGaGHk4zZWMa4BAWR0OV5sAxan3AjrR=G-NaiJ58g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 71.6.153.225
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>, Ethan Hunt <proljc@gmail.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-openrisc: bugfixes
@@ -56,27 +58,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Jan 2015 18:34:05 -0000
+X-List-Received-Date: Mon, 05 Jan 2015 18:42:00 -0000
 
-On 5 January 2015 at 18:15, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 18 December 2014 at 00:26, David Morrison <dmorrison@invlim.com> wrote:
->> --- a/target-openrisc/cpu.h
->> +++ b/target-openrisc/cpu.h
->> @@ -20,6 +20,7 @@
->>  #ifndef CPU_OPENRISC_H
->>  #define CPU_OPENRISC_H
->>
->> +#define TARGET_HAS_ICE
->>  #define TARGET_LONG_BITS 32
->>  #define ELF_MACHINE    EM_OPENRISC
+Hi, Peter,
+
+Thanks for the response.  I'll split out the changes into separate 
+commits and resubmit.  I do have one question here:
+
 >
-> This looks like a correct change
+>> diff --git a/target-openrisc/mmu.c b/target-openrisc/mmu.c
+>> index 750a936..bbd05f1 100644
+>> --- a/target-openrisc/mmu.c
+>> +++ b/target-openrisc/mmu.c
+>> @@ -219,7 +219,7 @@ hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+>>       hwaddr phys_addr;
+>>       int prot;
+>>
+>> -    if (cpu_openrisc_get_phys_addr(cpu, &phys_addr, &prot, addr, 0)) {
+>> +    if (cpu_openrisc_get_phys_nommu(cpu, &phys_addr, &prot, addr, 0)) {
+>
+> This looks wrong -- we won't do the virtual-to-physical
+> translation on the addresses provided by the debugger if
+> we use the _nommu() function. You definitely need to be
+> doing a v-to-p translation here somehow.
+>
 
-...actually, on second thought, we should do this the other way
-round and just get rid of TARGET_HAS_ICE altogether. The only
-two targets which don't define it are openrisc and unicore32,
-and both of those actually do have the breakpoint handling code,
-so failing to define it was just a bug. I'll cook up a patch...
+I was similarly puzzled by this.  However, I've been comparing Qemu to 
+or1ksim, which does not appear to do translation for the debugger; see 
+the following code excerpt from the or1ksim source:
 
--- PMM
+https://github.com/openrisc/or1ksim/blob/or1k-master/debug/rsp-server.c#L1546
+
+rsp_read_mem (struct rsp_buf *buf)
+{
+...
+   for (off = 0; off < len; off++)
+     {
+       unsigned char  ch;        /* The byte at the address */
+
+       /* Check memory area is valid */
+       ...
+
+       // Get the memory direct - no translation.
+       ch = eval_direct8 (addr + off, 0, 0);
+
+       buf->data[off * 2]     = hexchars[ch >>   4];
+       buf->data[off * 2 + 1] = hexchars[ch &  0xf];
+     }
+
+   buf->data[off * 2] = 0;           /* End of string */
+   buf->len           = strlen (buf->data);
+   put_packet (buf);
+
+}   /* rsp_read_mem () */
+
+Moreover, in Qemu if you perform the translation and use GDB to debug, 
+it returns bogus values for the memory read, whereas not performing the 
+translation appears to work correctly.  Am I doing something wrong here, 
+or is this possibly a bug in the or1k toolchain instead?
+
+Thanks for your help!
+David
+
+-- 
+David R. Morrison, PhD
+Inverse Limit
+dmorrison@invlim.com
++1-217-417-9445
 
