@@ -1,51 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y8CiS-0008VX-BQ
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Jan 2015 13:49:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33974)
+	id 1Y8Czf-00051S-Vh
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Jan 2015 14:07:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33218)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Y8CiQ-0008TK-9l
-	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 13:49:23 -0500
+	(envelope-from <jsnow@redhat.com>) id 1Y8As7-0006Pr-4B
+	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 11:51:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Y8CiL-0001fs-Uo
-	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 13:49:22 -0500
-Received: from mail-lb0-f169.google.com ([209.85.217.169]:58531)
+	(envelope-from <jsnow@redhat.com>) id 1Y8As6-0002VY-4T
+	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 11:51:15 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39146)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Y8CiL-0001eq-Or
-	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 13:49:17 -0500
-Received: by mail-lb0-f169.google.com with SMTP id p9so18347472lbv.0
-	for <qemu-trivial@nongnu.org>; Mon, 05 Jan 2015 10:49:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=IcP/+7t6z5JKQdyAK8jzvjm6KoN2d9qNlQseqw215Qk=;
-	b=NwUTkWJSIQg/ymOsgYEgifQgIzxMmS4sED1a8zq8L2AyrnoE1lY33EE/8ZgzL2W9Au
-	2m9OEmC4zetoAG98nbzOtR/ww3i07ekxZXJPh0WGcRNC5Ygkol9JjPVXT94la/FwO2tY
-	UxJxJRKg4dsR54ipnN0HoIUnXP7lmJdbJ5P1JZUrAxQ6Z5ffinqM3igHV0apqPgkfVxk
-	HBpCO8/wwDFSR/AnqKXvNFsH4cHEpcRHEsXdy9I+qsheJErlWg0gVCwETAUr2kxwIdSU
-	01LP2J6VveCvwoBCMTjnI+WKCiU9t1LDDh6w6UaFNbSvGlkktW880IMNQZDJATTShY9x
-	3BDA==
-X-Gm-Message-State: ALoCoQm8KZdycGqh79BWsf3K8OEB6YgsXx8P/iQZLJ5kZZ/THztUt4ZDMVlzMtMKr07W8MaeP8W9
-X-Received: by 10.153.11.170 with SMTP id ej10mr94737675lad.24.1420483756941; 
-	Mon, 05 Jan 2015 10:49:16 -0800 (PST)
+	(envelope-from <jsnow@redhat.com>)
+	id 1Y8Ary-0002Su-Mp; Mon, 05 Jan 2015 11:51:06 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t05Gp3HM002888
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Mon, 5 Jan 2015 11:51:04 -0500
+Received: from scv.usersys.redhat.com ([10.18.17.38])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t05Gp2vF002699; Mon, 5 Jan 2015 11:51:02 -0500
+Message-ID: <54AAC0F5.2030807@redhat.com>
+Date: Mon, 05 Jan 2015 11:51:01 -0500
+From: John Snow <jsnow@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
 MIME-Version: 1.0
-Received: by 10.112.52.38 with HTTP; Mon, 5 Jan 2015 10:48:56 -0800 (PST)
-In-Reply-To: <54AADADB.6000400@invlim.com>
-References: <1418862393-10691-1-git-send-email-dmorrison@invlim.com>
-	<CAFEAcA9RHCGaGHk4zZWMa4BAWR0OV5sAxan3AjrR=G-NaiJ58g@mail.gmail.com>
-	<54AADADB.6000400@invlim.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Jan 2015 18:48:56 +0000
-Message-ID: <CAFEAcA88qRievX1Ps4w4kotrRJefnvzXepcYpFnM6iRL-EaRYA@mail.gmail.com>
-To: David Morrison <dmorrison@invlim.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.169
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, Ethan Hunt <proljc@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-openrisc: bugfixes
- for debugging with GDB+Qemu on OpenRISC
+To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1420292499-8596-1-git-send-email-sw@weilnetz.de>
+	<1420292499-8596-4-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1420292499-8596-4-git-send-email-sw@weilnetz.de>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Mon, 05 Jan 2015 14:07:10 -0500
+Cc: Igor Mammedov <imammedo@redhat.com>, QEMU Developer <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/3] misc: Fix new typos in
+	comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,49 +50,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Jan 2015 18:49:23 -0000
+X-List-Received-Date: Mon, 05 Jan 2015 16:51:16 -0000
 
-On 5 January 2015 at 18:41, David Morrison <dmorrison@invlim.com> wrote:
-> Hi, Peter,
+
+
+On 01/03/2015 08:41 AM, Stefan Weil wrote:
+> recieve -> receive
+> suprise -> surprise
 >
-> Thanks for the response.  I'll split out the changes into separate commits
-> and resubmit.  I do have one question here:
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: John Snow <jsnow@redhat.com>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>   include/hw/hotplug.h |    2 +-
+>   tests/ahci-test.c    |    2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
 >
->>
->>> diff --git a/target-openrisc/mmu.c b/target-openrisc/mmu.c
->>> index 750a936..bbd05f1 100644
->>> --- a/target-openrisc/mmu.c
->>> +++ b/target-openrisc/mmu.c
->>> @@ -219,7 +219,7 @@ hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cs,
->>> vaddr addr)
->>>       hwaddr phys_addr;
->>>       int prot;
->>>
->>> -    if (cpu_openrisc_get_phys_addr(cpu, &phys_addr, &prot, addr, 0)) {
->>> +    if (cpu_openrisc_get_phys_nommu(cpu, &phys_addr, &prot, addr, 0)) {
->>
->>
->> This looks wrong -- we won't do the virtual-to-physical
->> translation on the addresses provided by the debugger if
->> we use the _nommu() function. You definitely need to be
->> doing a v-to-p translation here somehow.
->>
+> diff --git a/include/hw/hotplug.h b/include/hw/hotplug.h
+> index 050d2f0..2db025d 100644
+> --- a/include/hw/hotplug.h
+> +++ b/include/hw/hotplug.h
+> @@ -52,7 +52,7 @@ typedef void (*hotplug_fn)(HotplugHandler *plug_handler,
+>    *                  require asynchronous unplug handling.
+>    * @unplug: unplug callback.
+>    *          Used for device removal with devices that implement
+> - *          asynchronous and synchronous (suprise) removal.
+> + *          asynchronous and synchronous (surprise) removal.
+>    */
+>   typedef struct HotplugHandlerClass {
+>       /* <private> */
+> diff --git a/tests/ahci-test.c b/tests/ahci-test.c
+> index e77fa3a..b1a59f2 100644
+> --- a/tests/ahci-test.c
+> +++ b/tests/ahci-test.c
+> @@ -1289,7 +1289,7 @@ static void ahci_test_identify(QPCIDevice *ahci, void *hba_base)
+>       PX_WREG(i, AHCI_PX_IS, reg);
+>       g_assert_cmphex(PX_RREG(i, AHCI_PX_IS), ==, 0);
 >
-> I was similarly puzzled by this.  However, I've been comparing Qemu to
-> or1ksim, which does not appear to do translation for the debugger
+> -    /* Wipe the FIS-Recieve Buffer */
+> +    /* Wipe the FIS-Receive Buffer */
+>       fb = PX_RREG(i, AHCI_PX_FB);
+>       g_assert_cmphex(fb, !=, 0);
+>       qmemset(fb, 0x00, 0x100);
+>
 
-Well, it depends what semantics you want to define for the debug
-stub. "Addresses are always physical addresses" isn't unreasonable
-as a choice, but it's not what QEMU has picked -- we always use
-virtual addresses if the MMU is enabled.
+I seem to have missed a certain elementary school rhyme.
 
-> Moreover, in Qemu if you perform the translation and use GDB to debug, it
-> returns bogus values for the memory read, whereas not performing the
-> translation appears to work correctly.
-
-Are you trying to give gdb physical addresses? That isn't
-the way we define the gdbstub to work: you need to give
-it virtual addresses.
-
--- PMM
+Reviewed-by: John Snow <jsnow@redhat.com>
 
