@@ -1,44 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y8Czf-00051S-Vh
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Jan 2015 14:07:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33218)
+	id 1Y8EU4-0000LW-FK
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Jan 2015 15:42:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57792)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1Y8As7-0006Pr-4B
-	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 11:51:15 -0500
+	(envelope-from <dmorrison@invlim.com>) id 1Y8EU1-0000Fw-Uk
+	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 15:42:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1Y8As6-0002VY-4T
-	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 11:51:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39146)
+	(envelope-from <dmorrison@invlim.com>) id 1Y8EU0-0008JR-HU
+	for qemu-trivial@nongnu.org; Mon, 05 Jan 2015 15:42:37 -0500
+Received: from fofx.invlim.com ([71.6.153.225]:52171)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1Y8Ary-0002Su-Mp; Mon, 05 Jan 2015 11:51:06 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t05Gp3HM002888
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 5 Jan 2015 11:51:04 -0500
-Received: from scv.usersys.redhat.com ([10.18.17.38])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t05Gp2vF002699; Mon, 5 Jan 2015 11:51:02 -0500
-Message-ID: <54AAC0F5.2030807@redhat.com>
-Date: Mon, 05 Jan 2015 11:51:01 -0500
-From: John Snow <jsnow@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1420292499-8596-1-git-send-email-sw@weilnetz.de>
-	<1420292499-8596-4-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1420292499-8596-4-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <dmorrison@invlim.com>)
+	id 1Y8ETw-0008Ie-27; Mon, 05 Jan 2015 15:42:32 -0500
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by fofx.invlim.com (Postfix) with ESMTP id 7DC50248288;
+	Mon,  5 Jan 2015 12:32:25 -0800 (PST)
+X-Virus-Scanned: amavisd-new at example.com
+Received: from fofx.invlim.com ([127.0.0.1])
+	by localhost (fofx.invlim.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id 2vZ09-6YnaSH; Mon,  5 Jan 2015 12:32:24 -0800 (PST)
+Received: from monster337-linux.localdomain (unknown [10.240.0.46])
+	by fofx.invlim.com (Postfix) with ESMTP id BF0B8248286;
+	Mon,  5 Jan 2015 12:32:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=invlim.com;
+	s=default; t=1420489944;
+	bh=siNrA+6aQYO+SPG4CbKF92F3i52hUVdLREGGLQ7rUJA=;
+	h=From:To:Cc:Subject:Date;
+	b=DXD9PAUogMRU1WYyD/DXSl5H7S6qjYC1kIEnwXK/LvBBoIQ2DZkcEuYNWvbzWDJq2
+	cPuZl9s2zAvNYWjx/SyVSaiLKb3aKRfFDlOBP34dGwn8EEZq3sRZE3M+rSBlhjqN//
+	gmPhXdG8lhKQTJjRMezi3j6MzO9bbWJoy8Vz1lGQ=
+From: David Morrison <dmorrison@invlim.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, proljc@gmail.com,
+	peter.maydell@linaro.org
+Date: Mon,  5 Jan 2015 12:42:06 -0800
+Message-Id: <1420490526-6997-1-git-send-email-dmorrison@invlim.com>
+X-Mailer: git-send-email 2.2.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Mon, 05 Jan 2015 14:07:10 -0500
-Cc: Igor Mammedov <imammedo@redhat.com>, QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/3] misc: Fix new typos in
-	comments
+X-Received-From: 71.6.153.225
+Cc: David Morrison <dmorrison@invlim.com>
+Subject: [Qemu-trivial] [PATCH] target-openrisc: bugfix for dec_sys to
+	decode instructions correctly
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,51 +51,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Jan 2015 16:51:16 -0000
+X-List-Received-Date: Mon, 05 Jan 2015 20:42:38 -0000
 
+Fixed the decoding of "system" instructions (starting with 0x2)
+in dec_sys() in translate.c.  In particular, the l.trap instruction
+is now correctly decoded, which enables for singlestepping and
+breakpoints to be set in GDB.
+---
+ target-openrisc/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/target-openrisc/translate.c b/target-openrisc/translate.c
+index 407bd97..d36278f 100644
+--- a/target-openrisc/translate.c
++++ b/target-openrisc/translate.c
+@@ -1320,7 +1320,7 @@ static void dec_sys(DisasContext *dc, uint32_t insn)
+ #ifdef OPENRISC_DISAS
+     uint32_t K16;
+ #endif
+-    op0 = extract32(insn, 16, 8);
++    op0 = extract32(insn, 16, 10);
+ #ifdef OPENRISC_DISAS
+     K16 = extract32(insn, 0, 16);
+ #endif
+-- 
+2.2.1
 
-On 01/03/2015 08:41 AM, Stefan Weil wrote:
-> recieve -> receive
-> suprise -> surprise
->
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: John Snow <jsnow@redhat.com>
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->   include/hw/hotplug.h |    2 +-
->   tests/ahci-test.c    |    2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/include/hw/hotplug.h b/include/hw/hotplug.h
-> index 050d2f0..2db025d 100644
-> --- a/include/hw/hotplug.h
-> +++ b/include/hw/hotplug.h
-> @@ -52,7 +52,7 @@ typedef void (*hotplug_fn)(HotplugHandler *plug_handler,
->    *                  require asynchronous unplug handling.
->    * @unplug: unplug callback.
->    *          Used for device removal with devices that implement
-> - *          asynchronous and synchronous (suprise) removal.
-> + *          asynchronous and synchronous (surprise) removal.
->    */
->   typedef struct HotplugHandlerClass {
->       /* <private> */
-> diff --git a/tests/ahci-test.c b/tests/ahci-test.c
-> index e77fa3a..b1a59f2 100644
-> --- a/tests/ahci-test.c
-> +++ b/tests/ahci-test.c
-> @@ -1289,7 +1289,7 @@ static void ahci_test_identify(QPCIDevice *ahci, void *hba_base)
->       PX_WREG(i, AHCI_PX_IS, reg);
->       g_assert_cmphex(PX_RREG(i, AHCI_PX_IS), ==, 0);
->
-> -    /* Wipe the FIS-Recieve Buffer */
-> +    /* Wipe the FIS-Receive Buffer */
->       fb = PX_RREG(i, AHCI_PX_FB);
->       g_assert_cmphex(fb, !=, 0);
->       qmemset(fb, 0x00, 0x100);
->
-
-I seem to have missed a certain elementary school rhyme.
-
-Reviewed-by: John Snow <jsnow@redhat.com>
 
