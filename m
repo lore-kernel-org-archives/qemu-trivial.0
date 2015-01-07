@@ -1,59 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y8jhb-0006hC-Ut
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Jan 2015 01:02:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60785)
+	id 1Y8t33-0000CW-Np
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Jan 2015 11:01:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56361)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Y8jhZ-0006ep-H8
-	for qemu-trivial@nongnu.org; Wed, 07 Jan 2015 01:02:42 -0500
+	(envelope-from <stefanha@gmail.com>) id 1Y8t30-00007J-Rt
+	for qemu-trivial@nongnu.org; Wed, 07 Jan 2015 11:01:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Y8jhY-0006Rp-JU
-	for qemu-trivial@nongnu.org; Wed, 07 Jan 2015 01:02:41 -0500
-Received: from mail-we0-x232.google.com ([2a00:1450:400c:c03::232]:43141)
+	(envelope-from <stefanha@gmail.com>) id 1Y8t2z-00047g-Ef
+	for qemu-trivial@nongnu.org; Wed, 07 Jan 2015 11:01:26 -0500
+Received: from mail-wi0-x22b.google.com ([2a00:1450:400c:c05::22b]:33733)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1Y8jhT-0006RM-SU; Wed, 07 Jan 2015 01:02:36 -0500
-Received: by mail-we0-f178.google.com with SMTP id p10so542128wes.23;
-	Tue, 06 Jan 2015 22:02:35 -0800 (PST)
+	(envelope-from <stefanha@gmail.com>)
+	id 1Y8t2w-00046s-U0; Wed, 07 Jan 2015 11:01:23 -0500
+Received: by mail-wi0-f171.google.com with SMTP id bs8so7794778wib.4;
+	Wed, 07 Jan 2015 08:01:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:newsgroups:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=IiIlooOPqNaeF3YTRmhtz0OxtJw5E13KVDpJ7tqFres=;
-	b=DDO+e22gA+/488iknMxrrgvVLSvtYsiT3zluXXODy+4CW3E7HWffEQObwzh9069FQP
-	7kgU2pta+sjIzAvXQJr0t4a+onMVCQBv1au/DpwhBF55zdCRfB4GdV53qpqF9jle04ue
-	4ZORKGIcevRkjD0HNYiHnZFkCic2rIwUtlhFf/yCEOSkpkfjkJuN+ESM+q4gdWDPTuXY
-	x4hswAE3NOCy0t/0kN1VEZupX2gvJ6gI/X/1zW4nbNFa5Y57SPs8IBSeYiwiQ4shMmsF
-	e4E3Xh/uKFT9vqCxpyMKNRUHyLd/j4Z/nJwLM4VvEAcCqUz0zJyEPr2zCpGWR3DAYyqg
-	1wug==
-X-Received: by 10.180.73.108 with SMTP id k12mr3834233wiv.24.1420610554568;
-	Tue, 06 Jan 2015 22:02:34 -0800 (PST)
-Received: from [192.168.10.150] (net-37-117-147-67.cust.vodafonedsl.it.
-	[37.117.147.67])
-	by mx.google.com with ESMTPSA id u3sm1195617wiw.24.2015.01.06.22.02.32
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=w7A/O55/KmoBkyEjPN0hAWucVo822XPiljN5fL/Tpk8=;
+	b=1BsCsaKUvFFrs2eSdV/TeBTGbDiYYFdF4JfdHc/jwgh/tcsdQMQh0c1wcashjRX42d
+	2eNhpZn5u5qqZturgcznhDMuZDhHpP5KfwSe+Xw4mUlzLRq339c+ZqVOtN/KFKQYnJsg
+	ZcdqlrjIP4AXK9fUs+K2JQvZIRHw2Qcusi/qpxAE5tmhLgftlIkmO+IbMHZW8RKzWF+E
+	JLd3b9mqx2yW4E9ACsM3lxcoBYxkUqi2Lug/Lw9iecD/Mi1ECFSOR93T48zDUBnH8Grm
+	EJtsEwI4gRqknjWuT2CWHpehbS4brQWQJDjNoVZDOdfpSKnb8BCDtZbTOxBVbXD9eahS
+	BRow==
+X-Received: by 10.194.71.169 with SMTP id w9mr7401112wju.19.1420646482173;
+	Wed, 07 Jan 2015 08:01:22 -0800 (PST)
+Received: from localhost ([31.185.131.133])
+	by mx.google.com with ESMTPSA id x2sm2642949wjx.9.2015.01.07.08.01.20
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 06 Jan 2015 22:02:33 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <54ACCBF6.6060408@redhat.com>
-Date: Wed, 07 Jan 2015 07:02:30 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
+	Wed, 07 Jan 2015 08:01:21 -0800 (PST)
+Date: Wed, 7 Jan 2015 16:01:19 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Chen Gang <gang.chen.5i5j@gmail.com>
+Message-ID: <20150107160119.GN22440@stefanha-thinkpad.redhat.com>
+References: <54909B80.4030602@gmail.com>
 MIME-Version: 1.0
-Newsgroups: gmane.comp.emulators.qemu
-To: Peter Maydell <peter.maydell@linaro.org>, Don Slutz <dslutz@verizon.com>
-References: <1419260640-2922-1-git-send-email-dslutz@verizon.com>	<54A125E6.4050807@msgid.tls.msk.ru>
-	<54A1B945.20509@terremark.com>
-	<CAFEAcA-GjRku9rRZr04itDx-bB40=DpdLNf9_V8QfHANiit4GA@mail.gmail.com>
-In-Reply-To: <CAFEAcA-GjRku9rRZr04itDx-bB40=DpdLNf9_V8QfHANiit4GA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="4Y142/9l9nQlBiaj"
+Content-Disposition: inline
+In-Reply-To: <54909B80.4030602@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::232
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [PATCH 1/1] Do not hang on full PTY
+X-Received-From: 2a00:1450:400c:c05::22b
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/net/xen_nic.c: Need free
+ 'netdev->nic' in net_free() instead of net_disconnect()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,39 +58,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Jan 2015 06:02:42 -0000
+X-List-Received-Date: Wed, 07 Jan 2015 16:01:28 -0000
 
 
+--4Y142/9l9nQlBiaj
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 30/12/2014 00:41, Peter Maydell wrote:
-> On 29 December 2014 at 20:27, Don Slutz <dslutz@verizon.com> wrote:
->> I was not sure on this being trivial also, but it looked like it could
->> be to me.  The uses of this FD all looked that they handle non-blocking.
-> 
-> Does g_io_channel_read_chars() definitely return G_IO_STATUS_NORMAL
-> (and not, say, G_IO_STATUS_AGAIN) for an attempted read on a non-blocking
-> fd with no data?
+On Wed, Dec 17, 2014 at 04:52:16AM +0800, Chen Gang wrote:
+> net_init() and net_free() are pairs, net_connect() and net_disconnect()
+> are pairs. net_init() creates 'netdev->nic', so also need free it in
+> net_free().
+>=20
+> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+> ---
+>  hw/net/xen_nic.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 
-It should return G_IO_STATUS_AGAIN.  However, pty_chr_read() won't be
-called in the first place because the fd won't be readable and thus the
-chr->fd_in_tag GSource won't fire.
+Thanks, applied to my net tree:
+https://github.com/stefanha/qemu/commits/net
 
-I think things more or less work right now just because PTYs are
-buffered in the kernel and there's no network involved, but Don's patch
-is good.
+Stefan
 
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+--4Y142/9l9nQlBiaj
+Content-Type: application/pgp-signature
 
-Michael, let me know if you're applying it yourself.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
 
-Paolo
+iQEcBAEBAgAGBQJUrVhPAAoJEJykq7OBq3PIJu0H+wQ0gxu04l7QCE/+ESxlun/v
+kFNiB+HsQCHKXZO4lm3ju5HYvJRFk4XU7W6/x63/6J3j0jQWbvIh5QXOecOpwHce
+yP5b+Z1Fs7duediGDSL3fy7eJUCJKXEns8XDg2DCOV+B/HBpztypD9E1/+SJEU7W
+baiwt29H9HFjYOn/2mtvAEV45fopE5bhzxJ3KT3wPSZ0yBOC+Gg2b4gwVc1boYT6
+UNRBlmmY6gcopNKfWIcbSF/malu88uxGLI+sDRXD9XA8ZBghYBKm+hiN2IYcOFVE
+amkEaXNzwfg8Sy1w0szzFV00hUWz7Tw/wzw8Y9XiTpsSat/w9Uzi9mPcS3QDywM=
+=WPkD
+-----END PGP SIGNATURE-----
 
-> Otherwise pty_chr_read() is going to call
-> pty_chr_state(chr, 0) which I think means "the other end has hung up"
-> and will take the fd out of the main loop's poll set.
-> 
-> thanks
-> -- PMM
-> 
-> 
+--4Y142/9l9nQlBiaj--
 
