@@ -1,48 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y92JM-0000bm-5P
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Jan 2015 20:54:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36244)
+	id 1Y9C7O-0000uy-Qy
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Jan 2015 07:23:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36122)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <proljc@gmail.com>) id 1Y92JF-0000Rs-LO
-	for qemu-trivial@nongnu.org; Wed, 07 Jan 2015 20:54:55 -0500
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1Y9C7G-0000jB-Pk
+	for qemu-trivial@nongnu.org; Thu, 08 Jan 2015 07:23:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <proljc@gmail.com>) id 1Y92JE-0000f7-Op
-	for qemu-trivial@nongnu.org; Wed, 07 Jan 2015 20:54:49 -0500
-Received: from mail-ig0-x231.google.com ([2607:f8b0:4001:c05::231]:44134)
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1Y9C78-0005Gy-T3
+	for qemu-trivial@nongnu.org; Thu, 08 Jan 2015 07:23:06 -0500
+Received: from e06smtp17.uk.ibm.com ([195.75.94.113]:45476)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <proljc@gmail.com>)
-	id 1Y92JC-0000eo-GV; Wed, 07 Jan 2015 20:54:46 -0500
-Received: by mail-ig0-f177.google.com with SMTP id z20so629473igj.4;
-	Wed, 07 Jan 2015 17:54:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=lnZ2MPGy17uK+AUoAj6sR33oWpdELxOmBn2VP/3J3so=;
-	b=rlyv+m2Lp8iYlP1bCFx+ryeOwWye90eRrJVaErBxMEdsb4vHvO1nMmcRjnSSXp8eo8
-	FMB7qfUsv1oGAkh1lUMynWL/oraO+2E7fqiVn3ANgpH7u1+IicjJBIL0rrm1HpycL2Fe
-	EqatItmxhBisLUc4paqep4lWQCfqrsZy8LsxuAQjMGvkg9SWPPfsrhxYvRkPS6dj70/w
-	ao0qA/S6npF59MV/M2Ze2+sUblV4/LpX1JxLsDbLfOA+rfq4s0+13C+sd1lNneTUV7Vr
-	U518DXMykSiQDIOqSu/vlebDahlnByh4MyDVk2qbmnAE9IRVU87kcbiEiVMMFQONm2uK
-	uM3Q==
-MIME-Version: 1.0
-X-Received: by 10.42.153.132 with SMTP id m4mr6049812icw.49.1420682085372;
-	Wed, 07 Jan 2015 17:54:45 -0800 (PST)
-Received: by 10.107.16.161 with HTTP; Wed, 7 Jan 2015 17:54:45 -0800 (PST)
-In-Reply-To: <1420563978-19101-1-git-send-email-dmorrison@invlim.com>
-References: <1420563978-19101-1-git-send-email-dmorrison@invlim.com>
-Date: Thu, 8 Jan 2015 09:54:45 +0800
-Message-ID: <CAJBMM-s7KXkama0z4Kre3g3Qn5Bd+qCwMz9jDcBD8P3JmyH9og@mail.gmail.com>
-From: Jia Liu <proljc@gmail.com>
-To: David Morrison <dmorrison@invlim.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4001:c05::231
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, famz@redhat.com,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH v2] target-openrisc: bugfix for dec_sys
- to decode instructions correctly
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1Y9C78-0005CX-KO
+	for qemu-trivial@nongnu.org; Thu, 08 Jan 2015 07:22:58 -0500
+Received: from /spool/local
+	by e06smtp17.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
+	Thu, 8 Jan 2015 12:22:52 -0000
+Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
+	by e06smtp17.uk.ibm.com (192.168.101.147) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 8 Jan 2015 12:22:48 -0000
+Received: from b06cxnps4074.portsmouth.uk.ibm.com
+	(d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
+	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 15E761B0805F; 
+	Thu,  8 Jan 2015 12:23:22 +0000 (GMT)
+Received: from d06av05.portsmouth.uk.ibm.com (d06av05.portsmouth.uk.ibm.com
+	[9.149.37.229])
+	by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t08CMmJV56295674; Thu, 8 Jan 2015 12:22:48 GMT
+Received: from d06av05.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av05.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id t08CMm90001931; Thu, 8 Jan 2015 05:22:48 -0700
+Received: from oc7435384737.ibm.com (dyn-9-152-224-42.boeblingen.de.ibm.com
+	[9.152.224.42])
+	by d06av05.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id t08CMlCL001909; Thu, 8 Jan 2015 05:22:47 -0700
+Date: Thu, 8 Jan 2015 13:22:46 +0100
+From: Thomas Huth <thuth@linux.vnet.ibm.com>
+To: Thomas Huth <thuth@linux.vnet.ibm.com>
+Message-ID: <20150108132246.63fed0cb@oc7435384737.ibm.com>
+In-Reply-To: <1418638786-29872-1-git-send-email-thuth@linux.vnet.ibm.com>
+References: <1418638786-29872-1-git-send-email-thuth@linux.vnet.ibm.com>
+Organization: IBM
+X-Mailer: Claws Mail 3.9.0 (GTK+ 2.24.23; x86_64-redhat-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15010812-0029-0000-0000-0000029C52F7
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.75.94.113
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Remove
+ config.status and common.env during 'make distclean'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,46 +66,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Jan 2015 01:54:55 -0000
+X-List-Received-Date: Thu, 08 Jan 2015 12:23:12 -0000
 
-Hi David,
+On Mon, 15 Dec 2014 11:19:46 +0100
+Thomas Huth <thuth@linux.vnet.ibm.com> wrote:
 
-On Wed, Jan 7, 2015 at 1:06 AM, David Morrison <dmorrison@invlim.com> wrote:
-> Fixed the decoding of "system" instructions (starting with 0x2)
-> in dec_sys() in translate.c.  In particular, the l.trap instruction
-> is now correctly decoded, which enables for singlestepping and
-> breakpoints to be set in GDB.
->
-> Signed-off-by: David R. Morrison <dmorrison@invlim.com>
+> config.status and tests/qemu-iotests/common.env are generated files
+> that should be deleted during 'make distclean'.
+> 
+> Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
 > ---
->  target-openrisc/translate.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> Changes since previous version:
->   * Added 'signed-off-by' line; sorry to forget this before!
->
-> diff --git a/target-openrisc/translate.c b/target-openrisc/translate.c
-> index 407bd97..d36278f 100644
-> --- a/target-openrisc/translate.c
-> +++ b/target-openrisc/translate.c
-> @@ -1320,7 +1320,7 @@ static void dec_sys(DisasContext *dc, uint32_t insn)
->  #ifdef OPENRISC_DISAS
->      uint32_t K16;
->  #endif
-> -    op0 = extract32(insn, 16, 8);
-> +    op0 = extract32(insn, 16, 10);
+>  Makefile |    4 ++--
+>  1 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Makefile b/Makefile
+> index f505202..6817c6f 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -313,8 +313,8 @@ qemu-%.tar.bz2:
+> 
+>  distclean: clean
+>  	rm -f config-host.mak config-host.h* config-host.ld $(DOCS) qemu-options.texi qemu-img-cmds.texi qemu-monitor.texi
+> -	rm -f config-all-devices.mak config-all-disas.mak
+> -	rm -f po/*.mo
+> +	rm -f config-all-devices.mak config-all-disas.mak config.status
+> +	rm -f po/*.mo tests/qemu-iotests/common.env
+>  	rm -f roms/seabios/config.mak roms/vgabios/config.mak
+>  	rm -f qemu-doc.info qemu-doc.aux qemu-doc.cp qemu-doc.cps qemu-doc.dvi
+>  	rm -f qemu-doc.fn qemu-doc.fns qemu-doc.info qemu-doc.ky qemu-doc.kys
 
-Thank you for pointing this.
+ping?
 
-Acked-by: Jia Liu <proljc@gmail.com>
-
->  #ifdef OPENRISC_DISAS
->      K16 = extract32(insn, 0, 16);
->  #endif
-> --
-> 2.2.1
->
-
-Regards,
-Jia
 
