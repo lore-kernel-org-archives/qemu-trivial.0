@@ -1,35 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Y9WMP-0005Qk-3f
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jan 2015 05:00:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49985)
+	id 1YAFPZ-0006iE-TJ
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Jan 2015 05:06:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47905)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Y9WMM-0005MA-Lz
-	for qemu-trivial@nongnu.org; Fri, 09 Jan 2015 05:00:03 -0500
+	(envelope-from <sw@weilnetz.de>) id 1YAFPY-0006h4-E3
+	for qemu-trivial@nongnu.org; Sun, 11 Jan 2015 05:06:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Y9WMI-0002gR-Nb
-	for qemu-trivial@nongnu.org; Fri, 09 Jan 2015 05:00:02 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42885)
+	(envelope-from <sw@weilnetz.de>) id 1YAFPX-0002rW-Di
+	for qemu-trivial@nongnu.org; Sun, 11 Jan 2015 05:06:20 -0500
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:56008)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1Y9WMD-0002fl-Du; Fri, 09 Jan 2015 04:59:53 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t099xqrv027068
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Fri, 9 Jan 2015 04:59:52 -0500
-Received: from donizetti.redhat.com (ovpn-112-82.ams2.redhat.com
-	[10.36.112.82])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t099xoum029809; Fri, 9 Jan 2015 04:59:51 -0500
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri,  9 Jan 2015 10:59:49 +0100
-Message-Id: <1420797589-17049-1-git-send-email-pbonzini@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+	(envelope-from <sw@weilnetz.de>)
+	id 1YAFPT-0002qF-7X; Sun, 11 Jan 2015 05:06:15 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	7183311810A8; Sun, 11 Jan 2015 11:06:13 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id TS3ZUXlKMef0; Sun, 11 Jan 2015 11:06:11 +0100 (CET)
+Received: from [192.168.178.24] (p54ACA617.dip0.t-ipconnect.de [84.172.166.23])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	6E8581180040; Sun, 11 Jan 2015 11:06:11 +0100 (CET)
+Message-ID: <54B24B12.6020703@weilnetz.de>
+Date: Sun, 11 Jan 2015 11:06:10 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.3.0
+MIME-Version: 1.0
+To: Marcel Apfelbaum <marcel@redhat.com>, qemu-trivial@nongnu.org
+References: <1420969037-16603-1-git-send-email-marcel@redhat.com>
+In-Reply-To: <1420969037-16603-1-git-send-email-marcel@redhat.com>
+Content-Type: text/plain; charset=iso-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] blizzard: do not depend on VGA internals
+X-Received-From: 37.221.199.173
+Cc: qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl.c: fix some alignment
+	issues
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,28 +50,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jan 2015 10:00:03 -0000
+X-List-Received-Date: Sun, 11 Jan 2015 10:06:21 -0000
 
-There is nothing that is used by this ARM-specific device.
+Am 11.01.2015 um 10:37 schrieb Marcel Apfelbaum:
+> The main's switch had a few cases misaligned.
+>
+> Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
+> ---
+>   vl.c | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
+>
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- hw/display/blizzard.c | 1 -
- 1 file changed, 1 deletion(-)
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
-diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
-index 92b1fac..5019bbb 100644
---- a/hw/display/blizzard.c
-+++ b/hw/display/blizzard.c
-@@ -21,7 +21,6 @@
- #include "qemu-common.h"
- #include "ui/console.h"
- #include "hw/devices.h"
--#include "vga_int.h"
- #include "ui/pixel_ops.h"
- 
- typedef void (*blizzard_fn_t)(uint8_t *, const uint8_t *, unsigned int);
--- 
-2.1.0
+The misalignment was caused by tabs which were used instead of spaces.
+
+A short look on vl.c shows lots of more lines with tabs (also in other 
+switch
+statements), so this patch could be extended to fix more lines.
+
+Stefan
 
 
