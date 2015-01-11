@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YAGOU-0006Od-3F
-	for mharc-qemu-trivial@gnu.org; Sun, 11 Jan 2015 06:09:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55254)
+	id 1YAGhz-0002C5-Fd
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Jan 2015 06:29:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48961)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1YAGOR-0006GG-Ip
-	for qemu-trivial@nongnu.org; Sun, 11 Jan 2015 06:09:16 -0500
+	(envelope-from <marcel@redhat.com>) id 1YAFVg-0000CA-NH
+	for qemu-trivial@nongnu.org; Sun, 11 Jan 2015 05:12:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1YAGOQ-0006QY-Mc
-	for qemu-trivial@nongnu.org; Sun, 11 Jan 2015 06:09:15 -0500
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:56650)
+	(envelope-from <marcel@redhat.com>) id 1YAFVf-0004t3-OX
+	for qemu-trivial@nongnu.org; Sun, 11 Jan 2015 05:12:40 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43050)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1YAGOM-0006P3-Ff; Sun, 11 Jan 2015 06:09:10 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	2B1F311810AB; Sun, 11 Jan 2015 12:09:09 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id kTQ62m1VawZp; Sun, 11 Jan 2015 12:09:07 +0100 (CET)
-Received: from [192.168.178.24] (p54ACA617.dip0.t-ipconnect.de [84.172.166.23])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	36BF611810AA; Sun, 11 Jan 2015 12:09:07 +0100 (CET)
-Message-ID: <54B259D2.5020903@weilnetz.de>
-Date: Sun, 11 Jan 2015 12:09:06 +0100
-From: Stefan Weil <sw@weilnetz.de>
+	(envelope-from <marcel@redhat.com>)
+	id 1YAFVZ-0004qy-B0; Sun, 11 Jan 2015 05:12:33 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0BACV5B003677
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Sun, 11 Jan 2015 05:12:31 -0500
+Received: from [10.36.5.16] (vpn1-5-16.ams2.redhat.com [10.36.5.16])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t0BACTW2004164; Sun, 11 Jan 2015 05:12:30 -0500
+Message-ID: <54B24C8D.1090907@redhat.com>
+Date: Sun, 11 Jan 2015 12:12:29 +0200
+From: Marcel Apfelbaum <marcel@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.3.0
+	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
 MIME-Version: 1.0
-To: Marcel Apfelbaum <marcel@redhat.com>, qemu-trivial@nongnu.org
-References: <1420973811-21710-1-git-send-email-marcel@redhat.com>
-In-Reply-To: <1420973811-21710-1-git-send-email-marcel@redhat.com>
-Content-Type: text/html; charset=iso-8859-15
+To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
+References: <1420969037-16603-1-git-send-email-marcel@redhat.com>
+	<54B24B12.6020703@weilnetz.de>
+In-Reply-To: <54B24B12.6020703@weilnetz.de>
+Content-Type: text/plain; charset=iso-8859-15; format=flowed
 Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Sun, 11 Jan 2015 06:29:26 -0500
 Cc: qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] vl.c: fix some alignment
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl.c: fix some alignment
 	issues
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -50,38 +50,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Jan 2015 11:09:16 -0000
+X-List-Received-Date: Sun, 11 Jan 2015 10:12:41 -0000
 
-<html>
-  <head>
-    <meta content="text/html; charset=iso-8859-15"
-      http-equiv="Content-Type">
-  </head>
-  <body text="#000000" bgcolor="#FFFFFF">
-    <div class="moz-cite-prefix">Am 11.01.2015 um 11:56 schrieb Marcel
-      Apfelbaum:<br>
-    </div>
-    <blockquote
-      cite="mid:1420973811-21710-1-git-send-email-marcel@redhat.com"
-      type="cite">
-      <pre wrap="">The misalignment was caused by tabs which were used instead of spaces.
+On 01/11/2015 12:06 PM, Stefan Weil wrote:
+> Am 11.01.2015 um 10:37 schrieb Marcel Apfelbaum:
+>> The main's switch had a few cases misaligned.
+>>
+>> Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
+>> ---
+>>   vl.c | 12 ++++++------
+>>   1 file changed, 6 insertions(+), 6 deletions(-)
+>>
+>
+> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+>
+> The misalignment was caused by tabs which were used instead of spaces.
+>
+> A short look on vl.c shows lots of more lines with tabs (also in other switch
+> statements), so this patch could be extended to fix more lines.
+This is what I saw while fixing other stuff. :)
+I'll try to hunt others and send another version.
 
-Signed-off-by: Marcel Apfelbaum <a class="moz-txt-link-rfc2396E" href="mailto:marcel@redhat.com">&lt;marcel@redhat.com&gt;</a>
----
-v1 -&gt; v2:
- - Addressed Stefan Weil's comments:
-   - Hunted all the tabs within the switch/main 
+Thanks,
+Marcel
 
- vl.c | 38 +++++++++++++++++++-------------------
- 1 file changed, 19 insertions(+), 19 deletions(-)
+>
+> Stefan
+>
 
-</pre>
-    </blockquote>
-    <br>
-    Thanks.<br>
-    <br>
-    Reviewed-by: Stefan Weil <a class="moz-txt-link-rfc2396E" href="mailto:sw@weilnetz.de">&lt;sw@weilnetz.de&gt;</a><br>
-    <br>
-  </body>
-</html>
 
