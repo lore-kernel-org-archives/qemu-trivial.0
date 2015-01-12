@@ -1,36 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YAGhz-0002CO-Ja
-	for mharc-qemu-trivial@gnu.org; Sun, 11 Jan 2015 06:29:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53117)
+	id 1YAagl-00045k-M1
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Jan 2015 03:49:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38314)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel@redhat.com>) id 1YAGCZ-0002We-LQ
-	for qemu-trivial@nongnu.org; Sun, 11 Jan 2015 05:57:00 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YAagg-0003wr-3z
+	for qemu-trivial@nongnu.org; Mon, 12 Jan 2015 03:49:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcel@redhat.com>) id 1YAGCW-0002Df-C3
-	for qemu-trivial@nongnu.org; Sun, 11 Jan 2015 05:56:59 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43756)
+	(envelope-from <mjt@tls.msk.ru>) id 1YAagf-00066Z-8r
+	for qemu-trivial@nongnu.org; Mon, 12 Jan 2015 03:49:26 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:34673)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel@redhat.com>)
-	id 1YAGCW-0002DR-4O; Sun, 11 Jan 2015 05:56:56 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0BAusOc012262
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Sun, 11 Jan 2015 05:56:54 -0500
-Received: from work.redhat.com (vpn1-5-16.ams2.redhat.com [10.36.5.16])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t0BAuqdP024710; Sun, 11 Jan 2015 05:56:53 -0500
-From: Marcel Apfelbaum <marcel@redhat.com>
-To: qemu-trivial@nongnu.org
-Date: Sun, 11 Jan 2015 12:56:51 +0200
-Message-Id: <1420973811-21710-1-git-send-email-marcel@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YAaga-00061A-Lk; Mon, 12 Jan 2015 03:49:20 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3C21B406C6;
+	Mon, 12 Jan 2015 11:49:10 +0300 (MSK)
+Message-ID: <54B38A86.7030902@msgid.tls.msk.ru>
+Date: Mon, 12 Jan 2015 11:49:10 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.3.0
+MIME-Version: 1.0
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <1418203056-5365-1-git-send-email-pbonzini@redhat.com>
+In-Reply-To: <1418203056-5365-1-git-send-email-pbonzini@redhat.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Sun, 11 Jan 2015 06:29:26 -0500
-Cc: marcel@redhat.com, sw@weilnetz.de, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [Qemu-devel] [PATCH v2] vl.c: fix some alignment
-	issues
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, zhang.zhanghailiang@huawei.com,
+	peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH] vt82c686: avoid out-of-bounds read
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,124 +44,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Jan 2015 10:57:00 -0000
+X-List-Received-Date: Mon, 12 Jan 2015 08:49:30 -0000
 
-The misalignment was caused by tabs which were used instead of spaces.
+10.12.2014 12:17, Paolo Bonzini wrote:
+> superio_ioport_readb can read the 256th element of the array.
+> Coverity reports an out-of-bounds write in superio_ioport_writeb,
+> but it does not show the corresponding out-of-bounds read
+> because it cannot prove that it can happen.  Fix the root
+> cause of the problem (zhanghailang's patch instead fixes
+> the logic in superio_ioport_writeb).
 
-Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
----
-v1 -> v2:
- - Addressed Stefan Weil's comments:
-   - Hunted all the tabs within the switch/main 
+(Finally) applied to -trivial, thanks!
 
- vl.c | 38 +++++++++++++++++++-------------------
- 1 file changed, 19 insertions(+), 19 deletions(-)
-
-diff --git a/vl.c b/vl.c
-index 5448017..388ca2c 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2870,7 +2870,7 @@ int main(int argc, char **argv, char **envp)
-         if (optind >= argc)
-             break;
-         if (argv[optind][0] != '-') {
--	    hda_opts = drive_add(IF_DEFAULT, 0, argv[optind++], HD_OPTS);
-+            hda_opts = drive_add(IF_DEFAULT, 0, argv[optind++], HD_OPTS);
-         } else {
-             const QEMUOption *popt;
- 
-@@ -2918,15 +2918,15 @@ int main(int argc, char **argv, char **envp)
-                 if (drive_def(optarg) == NULL) {
-                     exit(1);
-                 }
--	        break;
-+                break;
-             case QEMU_OPTION_set:
-                 if (qemu_set_option(optarg) != 0)
-                     exit(1);
--	        break;
-+                break;
-             case QEMU_OPTION_global:
-                 if (qemu_global_option(optarg) != 0)
-                     exit(1);
--	        break;
-+                break;
-             case QEMU_OPTION_mtdblock:
-                 drive_add(IF_MTD, -1, optarg, MTD_OPTS);
-                 break;
-@@ -2978,7 +2978,7 @@ int main(int argc, char **argv, char **envp)
-                         fprintf(stderr, "qemu: invalid physical CHS format\n");
-                         exit(1);
-                     }
--		    if (hda_opts != NULL) {
-+                    if (hda_opts != NULL) {
-                         char num[16];
-                         snprintf(num, sizeof(num), "%d", cyls);
-                         qemu_opt_set(hda_opts, "cyls", num);
-@@ -3152,9 +3152,9 @@ int main(int argc, char **argv, char **envp)
-             case QEMU_OPTION_S:
-                 autostart = 0;
-                 break;
--	    case QEMU_OPTION_k:
--		keyboard_layout = optarg;
--		break;
-+            case QEMU_OPTION_k:
-+                keyboard_layout = optarg;
-+                break;
-             case QEMU_OPTION_localtime:
-                 rtc_utc = 0;
-                 break;
-@@ -3362,9 +3362,9 @@ int main(int argc, char **argv, char **envp)
-             case QEMU_OPTION_debugcon:
-                 add_device_config(DEV_DEBUGCON, optarg);
-                 break;
--	    case QEMU_OPTION_loadvm:
--		loadvm = optarg;
--		break;
-+            case QEMU_OPTION_loadvm:
-+                loadvm = optarg;
-+                break;
-             case QEMU_OPTION_full_screen:
-                 full_screen = 1;
-                 break;
-@@ -3479,7 +3479,7 @@ int main(int argc, char **argv, char **envp)
-                     exit(1);
-                 }
-                 break;
--	    case QEMU_OPTION_vnc:
-+            case QEMU_OPTION_vnc:
- #ifdef CONFIG_VNC
-                 display_remote++;
-                 vnc_display = optarg;
-@@ -3517,11 +3517,11 @@ int main(int argc, char **argv, char **envp)
-                 }
-                 qemu_uuid_set = true;
-                 break;
--	    case QEMU_OPTION_option_rom:
--		if (nb_option_roms >= MAX_OPTION_ROMS) {
--		    fprintf(stderr, "Too many option ROMs\n");
--		    exit(1);
--		}
-+            case QEMU_OPTION_option_rom:
-+                if (nb_option_roms >= MAX_OPTION_ROMS) {
-+                    fprintf(stderr, "Too many option ROMs\n");
-+                    exit(1);
-+                }
-                 opts = qemu_opts_parse(qemu_find_opts("option-rom"), optarg, 1);
-                 if (!opts) {
-                     exit(1);
-@@ -3533,8 +3533,8 @@ int main(int argc, char **argv, char **envp)
-                     fprintf(stderr, "Option ROM file is not specified\n");
-                     exit(1);
-                 }
--		nb_option_roms++;
--		break;
-+                nb_option_roms++;
-+                break;
-             case QEMU_OPTION_semihosting:
-                 semihosting_enabled = 1;
-                 semihosting_target = SEMIHOSTING_TARGET_AUTO;
--- 
-2.1.0
-
+/mjt
 
