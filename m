@@ -1,37 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YBg6x-0001KU-LY
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Jan 2015 03:49:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36341)
+	id 1YBj25-0001tz-TA
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Jan 2015 06:56:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55633)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YBg6v-0001Ig-SZ
-	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 03:49:02 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1YBj22-0001pX-Hs
+	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 06:56:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YBg6u-0005p8-NW
-	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 03:49:01 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:57661)
+	(envelope-from <peter.maydell@linaro.org>) id 1YBj1w-0002XZ-TP
+	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 06:56:10 -0500
+Received: from mail-lb0-f182.google.com ([209.85.217.182]:59816)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YBg6o-0005mm-5x; Thu, 15 Jan 2015 03:48:54 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2DAD840DC4;
-	Thu, 15 Jan 2015 11:48:53 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1081B8C8;
-	Thu, 15 Jan 2015 11:30:54 +0300 (MSK)
-Received: (nullmailer pid 31361 invoked by uid 1000);
-	Thu, 15 Jan 2015 08:30:51 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Thu, 15 Jan 2015 11:30:49 +0300
-Message-Id: <31fc97c3145d428751f8bc4d5666a525d5c3dc2f.1421310394.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
+	(envelope-from <peter.maydell@linaro.org>) id 1YBj1w-0002XK-Me
+	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 06:56:04 -0500
+Received: by mail-lb0-f182.google.com with SMTP id u10so12732015lbd.13
+	for <qemu-trivial@nongnu.org>; Thu, 15 Jan 2015 03:56:03 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=j4I7Zq7EOQ6p+XnzULP1rnecDrAHV5ywlOG+R72Gv7I=;
+	b=QWqjhOoietfWEAWKmKmSxN2mibCeZkAkzjBQzjeibEwylQsiwD6MfypN6uU9WmpuS4
+	6Afc+eUouJdepvqy0oJ6WWs12sAhdNILQCuzwh/ePHI9CvtR97v/sbMgHvK35GIr/D96
+	wrrC3GlvGRvaKfgGF6zfjAZLWTbCC69Nsb1LNB7Zo2bPP9xX5M+ex1WKL/Ti36stxhwO
+	yONn3DIsgNkMlgLiocQYL88Vd0Ko0MOhQ5bwSLFuk3FeaZM/128HeiQGP+njxLsDL62L
+	QiEudyFImS/C3cLuEz/Oj/qH4bD+qlWOjDe/O1U4bIn9RlzSM+euJf+rtNSi1Qb1gFOB
+	EY1w==
+X-Gm-Message-State: ALoCoQm+5odJ9wqKrktBYCnFkm1x49pVwFnG2R4BFhfPz6iZ2b76B7GxHw5MmybMz5NfW1b307+a
+X-Received: by 10.153.11.170 with SMTP id ej10mr9383730lad.24.1421322963695;
+	Thu, 15 Jan 2015 03:56:03 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.112.52.38 with HTTP; Thu, 15 Jan 2015 03:55:43 -0800 (PST)
 In-Reply-To: <cover.1421310394.git.mjt@msgid.tls.msk.ru>
 References: <cover.1421310394.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 11/12] blizzard: do not depend on VGA internals
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 15 Jan 2015 11:55:43 +0000
+Message-ID: <CAFEAcA9mrdbduNh909Lc3fj=BtL+3c+rVs1aiiYhxSwg7as-sQ@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.182
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/12] Trivial patches for
+	2015-01-15
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,31 +55,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Jan 2015 08:49:02 -0000
+X-List-Received-Date: Thu, 15 Jan 2015 11:56:11 -0000
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+On 15 January 2015 at 08:30, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> This is a next trivial-patches pull request, since the previous one
+> which was at 2014-12-11 - 4 weeks ago.  Only 12 patches in 4 weeks.
+> There's nothing exciting in there, but there are several (small)
+> bugfixes.
+>
+> Please consider applying/pulling.
 
-There is nothing that is used by this ARM-specific device.
+Applied, thanks.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/display/blizzard.c | 1 -
- 1 file changed, 1 deletion(-)
+> With the introduction of pbonzini's "misc" patches tree I'm not
+> sure current trivial-patches is worth to keep.  Paolo does much
+> better job in this area than me.
 
-diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
-index 92b1fac..5019bbb 100644
---- a/hw/display/blizzard.c
-+++ b/hw/display/blizzard.c
-@@ -21,7 +21,6 @@
- #include "qemu-common.h"
- #include "ui/console.h"
- #include "hw/devices.h"
--#include "vga_int.h"
- #include "ui/pixel_ops.h"
- 
- typedef void (*blizzard_fn_t)(uint8_t *, const uint8_t *, unsigned int);
--- 
-2.1.4
+I'll leave that up to the two of you, but splitting the load
+of review and testing seems to me like it would make sense.
+In any case, thanks to both of you for the efforts you've
+put in to this sort of patch curation -- I think it's really
+important for the project.
 
+thanks
+-- PMM
 
