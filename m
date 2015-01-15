@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YBfpj-0002Kv-LF
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Jan 2015 03:31:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60670)
+	id 1YBfxG-0005li-OT
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Jan 2015 03:39:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33603)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YBfpf-0002Cg-M4
-	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 03:31:14 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YBfxE-0005hz-GS
+	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 03:39:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YBfpe-0008LG-Oz
-	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 03:31:11 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:44246)
+	(envelope-from <mjt@tls.msk.ru>) id 1YBfxD-0002Gg-H5
+	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 03:39:00 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:60930)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YBfpW-0008IF-Eo; Thu, 15 Jan 2015 03:31:02 -0500
+	id 1YBfx8-0002EJ-TL; Thu, 15 Jan 2015 03:38:55 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2D18B40D9D;
-	Thu, 15 Jan 2015 11:30:52 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id D17E640DB2;
+	Thu, 15 Jan 2015 11:38:53 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 01E3E8C8;
-	Thu, 15 Jan 2015 11:30:52 +0300 (MSK)
-Received: (nullmailer pid 31353 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 5A6E88CD;
+	Thu, 15 Jan 2015 11:30:54 +0300 (MSK)
+Received: (nullmailer pid 31359 invoked by uid 1000);
 	Thu, 15 Jan 2015 08:30:51 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu, 15 Jan 2015 11:30:45 +0300
-Message-Id: <b4952c3677170139541bc6bc14e9c2cfdc056181.1421310394.git.mjt@msgid.tls.msk.ru>
+Date: Thu, 15 Jan 2015 11:30:48 +0300
+Message-Id: <ae21935924365efecf5c5ba998cb6cb8c85a499b.1421310394.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1421310394.git.mjt@msgid.tls.msk.ru>
 References: <cover.1421310394.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, John Snow <jsnow@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>
-Subject: [Qemu-trivial] [PULL 07/12] misc: Fix new typos in comments
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Thomas Huth <thuth@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PULL 10/12] Makefile: Remove config.status and
+	common.env during 'make distclean'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,49 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Jan 2015 08:31:15 -0000
+X-List-Received-Date: Thu, 15 Jan 2015 08:39:01 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Thomas Huth <thuth@linux.vnet.ibm.com>
 
-recieve -> receive
-suprise -> surprise
+config.status and tests/qemu-iotests/common.env are generated files
+that should be deleted during 'make distclean'.
 
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: John Snow <jsnow@redhat.com>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/hw/hotplug.h | 2 +-
- tests/ahci-test.c    | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/hotplug.h b/include/hw/hotplug.h
-index 050d2f0..2db025d 100644
---- a/include/hw/hotplug.h
-+++ b/include/hw/hotplug.h
-@@ -52,7 +52,7 @@ typedef void (*hotplug_fn)(HotplugHandler *plug_handler,
-  *                  require asynchronous unplug handling.
-  * @unplug: unplug callback.
-  *          Used for device removal with devices that implement
-- *          asynchronous and synchronous (suprise) removal.
-+ *          asynchronous and synchronous (surprise) removal.
-  */
- typedef struct HotplugHandlerClass {
-     /* <private> */
-diff --git a/tests/ahci-test.c b/tests/ahci-test.c
-index e77fa3a..b1a59f2 100644
---- a/tests/ahci-test.c
-+++ b/tests/ahci-test.c
-@@ -1289,7 +1289,7 @@ static void ahci_test_identify(QPCIDevice *ahci, void *hba_base)
-     PX_WREG(i, AHCI_PX_IS, reg);
-     g_assert_cmphex(PX_RREG(i, AHCI_PX_IS), ==, 0);
+diff --git a/Makefile b/Makefile
+index f505202..6817c6f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -313,8 +313,8 @@ qemu-%.tar.bz2:
  
--    /* Wipe the FIS-Recieve Buffer */
-+    /* Wipe the FIS-Receive Buffer */
-     fb = PX_RREG(i, AHCI_PX_FB);
-     g_assert_cmphex(fb, !=, 0);
-     qmemset(fb, 0x00, 0x100);
+ distclean: clean
+ 	rm -f config-host.mak config-host.h* config-host.ld $(DOCS) qemu-options.texi qemu-img-cmds.texi qemu-monitor.texi
+-	rm -f config-all-devices.mak config-all-disas.mak
+-	rm -f po/*.mo
++	rm -f config-all-devices.mak config-all-disas.mak config.status
++	rm -f po/*.mo tests/qemu-iotests/common.env
+ 	rm -f roms/seabios/config.mak roms/vgabios/config.mak
+ 	rm -f qemu-doc.info qemu-doc.aux qemu-doc.cp qemu-doc.cps qemu-doc.dvi
+ 	rm -f qemu-doc.fn qemu-doc.fns qemu-doc.info qemu-doc.ky qemu-doc.kys
 -- 
 2.1.4
 
