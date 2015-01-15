@@ -1,40 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YB1Na-0005pC-38
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Jan 2015 08:19:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36478)
+	id 1YBfpf-0002BE-0S
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Jan 2015 03:31:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60647)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YB1NT-0005hf-Li
-	for qemu-trivial@nongnu.org; Tue, 13 Jan 2015 08:19:28 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YBfpc-00027K-8p
+	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 03:31:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YB1NS-0002QG-5Z
-	for qemu-trivial@nongnu.org; Tue, 13 Jan 2015 08:19:23 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40485)
+	(envelope-from <mjt@tls.msk.ru>) id 1YBfpb-0008Ko-4G
+	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 03:31:08 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:42913)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YB1NM-0002NH-W2; Tue, 13 Jan 2015 08:19:17 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0DDJG4V022112
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 13 Jan 2015 08:19:16 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-56.ams2.redhat.com
-	[10.36.116.56])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t0DDJEK6003609
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 13 Jan 2015 08:19:15 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 9BA1D3043FC9; Tue, 13 Jan 2015 14:19:13 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YBfpW-0008IG-Ej; Thu, 15 Jan 2015 03:31:02 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 00F4E40D9C;
+	Thu, 15 Jan 2015 11:30:51 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id C9DD48C4;
+	Thu, 15 Jan 2015 11:30:51 +0300 (MSK)
+Received: (nullmailer pid 31338 invoked by uid 1000);
+	Thu, 15 Jan 2015 08:30:51 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 13 Jan 2015 14:19:13 +0100
-Message-Id: <1421155153-14061-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Date: Thu, 15 Jan 2015 11:30:38 +0300
+Message-Id: <cover.1421310394.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] vl: Fix bogus error message for implied mon
-	ID clashing
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 00/12] Trivial patches for 2015-01-15
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,61 +40,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Jan 2015 13:19:28 -0000
+X-List-Received-Date: Thu, 15 Jan 2015 08:31:09 -0000
 
-monitor_parse() desugars --monitor, --qmp and -qmp-pretty to --mon.
-The ID it picks can clash with a user-specified ID.  When it happens,
-the error message is misleading.
+This is a next trivial-patches pull request, since the previous one
+which was at 2014-12-11 - 4 weeks ago.  Only 12 patches in 4 weeks.
+There's nothing exciting in there, but there are several (small)
+bugfixes.
 
-Reproducer:
+Please consider applying/pulling.
 
-    $ qemu --mon id=compat_monitor0 --monitor stdio
+With the introduction of pbonzini's "misc" patches tree I'm not
+sure current trivial-patches is worth to keep.  Paolo does much
+better job in this area than me.
 
-Message before the patch:
+Thanks,
 
-    duplicate chardev: compat_monitor0
+/mjt
 
-There's no "duplicate chardev" here.  The problem is a duplicate
-monitor ID.  Moreover, the message provides no clue which option
-caused the problem.  The patch changes the message to:
+The following changes since commit b629a38a13745d62d44de8ebb00f4e38ec6d8f7e:
 
-    qemu: --monitor stdio: Duplicate ID 'compat_monitor0' for mon
+  Merge remote-tracking branch 'remotes/bonzini/tags/for-upstream' into staging (2015-01-14 18:02:47 +0000)
 
-monitor_parse() is also used for creating a default monitor, but
-that's not done when the user specifies a monitor, so an ID clash is
-impossible then.
+are available in the git repository at:
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- vl.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-01-15
 
-diff --git a/vl.c b/vl.c
-index 7786b2f..1a36b78 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2198,6 +2198,7 @@ static int mon_init_func(QemuOpts *opts, void *opaque)
- static void monitor_parse(const char *optarg, const char *mode, bool pretty)
- {
-     static int monitor_device_index = 0;
-+    Error *local_err = NULL;
-     QemuOpts *opts;
-     const char *p;
-     char label[32];
-@@ -2218,9 +2219,10 @@ static void monitor_parse(const char *optarg, const char *mode, bool pretty)
-         }
-     }
- 
--    opts = qemu_opts_create(qemu_find_opts("mon"), label, 1, NULL);
-+    opts = qemu_opts_create(qemu_find_opts("mon"), label, 1, &local_err);
-     if (!opts) {
--        fprintf(stderr, "duplicate chardev: %s\n", label);
-+        error_report("%s", error_get_pretty(local_err));
-+        error_free(local_err);
-         exit(1);
-     }
-     qemu_opt_set(opts, "mode", mode);
--- 
-1.9.3
+for you to fetch changes up to 99efa84d5c02e33bcca7be83dd7cabc4b0f22f14:
 
+  vl.c: fix some alignment issues (2015-01-15 10:44:13 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2015-01-15
+
+----------------------------------------------------------------
+David Morrison (1):
+      target-openrisc: bugfix for dec_sys to decode instructions correctly
+
+Don Slutz (1):
+      Do not hang on full PTY
+
+Marcel Apfelbaum (1):
+      vl.c: fix some alignment issues
+
+Paolo Bonzini (2):
+      vt82c686: avoid out-of-bounds read
+      blizzard: do not depend on VGA internals
+
+Peter Maydell (2):
+      tests/hd-geo-test.c: Remove unused test_image variable
+      migration/qemu-file.c: Don't shift left into sign bit
+
+SeokYeon Hwang (1):
+      translate-all: Mark map_exec() with the 'unused' attribute
+
+Stefan Weil (3):
+      target-tricore: Fix new typos
+      target-arm: Fix typo in comment (seperately -> separately)
+      misc: Fix new typos in comments
+
+Thomas Huth (1):
+      Makefile: Remove config.status and common.env during 'make distclean'
+
+ Makefile                         |  4 ++--
+ hw/display/blizzard.c            |  1 -
+ hw/isa/vt82c686.c                |  2 +-
+ include/hw/hotplug.h             |  2 +-
+ migration/qemu-file.c            |  2 +-
+ qemu-char.c                      |  1 +
+ target-arm/helper.c              |  2 +-
+ target-openrisc/translate.c      |  2 +-
+ target-tricore/csfr.def          |  2 +-
+ target-tricore/translate.c       |  2 +-
+ target-tricore/tricore-opcodes.h |  4 ++--
+ tests/ahci-test.c                |  2 +-
+ tests/hd-geo-test.c              |  2 --
+ translate-all.c                  |  4 ++--
+ vl.c                             | 38 +++++++++++++++++++-------------------
+ 15 files changed, 34 insertions(+), 36 deletions(-)
 
