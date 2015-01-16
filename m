@@ -1,46 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YBjEZ-0006DS-J2
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Jan 2015 07:09:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58176)
+	id 1YCCSs-0002oj-Ur
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Jan 2015 14:21:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36853)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1YBjEU-0006DH-6M
-	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 07:09:06 -0500
+	(envelope-from <dkoch@verizon.com>) id 1YCCSp-0002if-Au
+	for qemu-trivial@nongnu.org; Fri, 16 Jan 2015 14:21:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1YBjEP-0006aO-69
-	for qemu-trivial@nongnu.org; Thu, 15 Jan 2015 07:09:02 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54453)
+	(envelope-from <dkoch@verizon.com>) id 1YCCSo-0000iU-Em
+	for qemu-trivial@nongnu.org; Fri, 16 Jan 2015 14:21:47 -0500
+Received: from fldsmtpe04.verizon.com ([140.108.26.143]:41285)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1YBjEO-0006aI-Vf; Thu, 15 Jan 2015 07:08:57 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0FC8sLF010964
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 15 Jan 2015 07:08:54 -0500
-Received: from [10.36.112.46] (ovpn-112-46.ams2.redhat.com [10.36.112.46])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t0FC8oWV010140
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Thu, 15 Jan 2015 07:08:53 -0500
-Message-ID: <54B7ADD2.5080302@redhat.com>
-Date: Thu, 15 Jan 2015 13:08:50 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
-References: <cover.1421310394.git.mjt@msgid.tls.msk.ru>
-	<CAFEAcA9mrdbduNh909Lc3fj=BtL+3c+rVs1aiiYhxSwg7as-sQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9mrdbduNh909Lc3fj=BtL+3c+rVs1aiiYhxSwg7as-sQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/12] Trivial patches for
-	2015-01-15
+	(envelope-from <dkoch@verizon.com>)
+	id 1YCCSk-0000gg-95; Fri, 16 Jan 2015 14:21:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+	d=verizon.com; i=dkoch@verizon.com; q=dns/txt; s=corp;
+	t=1421436102; x=1452972102;
+	h=from:to:cc:subject:date:message-id;
+	bh=btO05vMHx72dvvk7hMiSFphbbmht136OoiaIjU2J5Vk=;
+	b=nIMSGh0O1ZYd1OB6pWDzXmNYXMtIcPOkQ/V684zq4ti7zPKFbuPzHdkZ
+	Hrn+64AYS24dqg0TZ/NM8xVRHyhQGK1rGOdwB/XARjkGuucCN/kZxak0R
+	ZsCa0rtca2CaNWghDi4AGVtoqaikhLxaPOc9uvB5mKRw7YbQ1m0lLrVt5 k=;
+X-IronPort-Anti-Spam-Filtered: false
+Received: from unknown (HELO fldsmtpi02.verizon.com) ([166.68.71.144])
+	by fldsmtpe04.verizon.com with ESMTP; 16 Jan 2015 19:21:41 +0000
+X-VzAPP: 1
+X-IronPort-AV: E=Sophos;i="5.09,412,1418083200"; d="scan'208";a="915457482"
+Received: from unknown (HELO yoyo.cloudswitch.com) ([208.52.205.215])
+	by fldsmtpi02.verizon.com with ESMTP; 16 Jan 2015 19:21:41 +0000
+From: Don Koch <dkoch@verizon.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 16 Jan 2015 14:21:35 -0500
+Message-Id: <1421436099-2487-1-git-send-email-dkoch@verizon.com>
+X-Mailer: git-send-email 1.8.3.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 140.108.26.143
+Cc: qemu-trivial@nongnu.org, Don Koch <dkoch@verizon.com>
+Subject: [Qemu-trivial] [PATCH 0/3] Trace calls for xenfb, ps2 and pcnet
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,40 +48,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Jan 2015 12:09:06 -0000
+X-List-Received-Date: Fri, 16 Jan 2015 19:21:48 -0000
 
+Add trace calls for debugging xenfb, ps2 and pcnet.
 
+Don Koch (4):
+  Add tracing to xenfb.
+  Add trace to ps2.c.
+  Add/convert trace calls in pcnet-pci.c.
+  Convert some debugging printfs to trace calls in pcnet.c.
 
-On 15/01/2015 12:55, Peter Maydell wrote:
-> > With the introduction of pbonzini's "misc" patches tree I'm not
-> > sure current trivial-patches is worth to keep.  Paolo does much
-> > better job in this area than me.
->
-> I'll leave that up to the two of you, but splitting the load
-> of review and testing seems to me like it would make sense.
-> In any case, thanks to both of you for the efforts you've
-> put in to this sort of patch curation -- I think it's really
-> important for the project.
+ hw/display/xenfb.c |  5 +++++
+ hw/input/ps2.c     | 16 ++++++++++++++++
+ hw/net/pcnet-pci.c | 49 +++++++++++++++++++------------------------------
+ hw/net/pcnet.c     | 28 ++++++++--------------------
+ trace-events       | 41 +++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 89 insertions(+), 50 deletions(-)
 
-The trivial patches tree is still very useful.
+-- 
+1.8.3.1
 
-The meaning of "misc patches" is almost always "I don't want to send a
-separate pull request because this is touching too many areas"
-(typically three or more among: qemu-char, SCSI, KVM, x86, and stuff
-that I touched and got a Reviewed-by).
-
-5-10% of the "misc patches", instead, correspond to unmaintained
-areas---basically the patches that Anthony used to apply directly---but
-luckily by now there are very few of those.
-
-In any case, most patches in the "misc patches" pull request are not
-trivial.  They could very well break something and if they do I
-sometimes get to fix them... which is why I'm very happy that someone
-else picks up the _really_ trivial patches!
-
-So, the trivial patches tree is still as useful as it has always been,
-and I use it myself relatively often for patches outside the areas I
-maintain.
-
-Paolo
 
