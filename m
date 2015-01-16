@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YCCT1-00033X-3A
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Jan 2015 14:21:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36955)
+	id 1YCCT4-00039q-NU
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Jan 2015 14:22:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36966)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dkoch@verizon.com>) id 1YCCSy-0002zg-Nx
-	for qemu-trivial@nongnu.org; Fri, 16 Jan 2015 14:21:57 -0500
+	(envelope-from <dkoch@verizon.com>) id 1YCCSz-00030S-Q9
+	for qemu-trivial@nongnu.org; Fri, 16 Jan 2015 14:22:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dkoch@verizon.com>) id 1YCCSx-0000lj-QL
-	for qemu-trivial@nongnu.org; Fri, 16 Jan 2015 14:21:56 -0500
-Received: from fldsmtpe04.verizon.com ([140.108.26.143]:41285)
+	(envelope-from <dkoch@verizon.com>) id 1YCCSu-0000ke-AD
+	for qemu-trivial@nongnu.org; Fri, 16 Jan 2015 14:21:57 -0500
+Received: from omzsmtpe04.verizonbusiness.com ([199.249.25.207]:17245)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <dkoch@verizon.com>)
-	id 1YCCSm-0000gg-RH; Fri, 16 Jan 2015 14:21:44 -0500
+	id 1YCCSn-0000hV-6X; Fri, 16 Jan 2015 14:21:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
 	d=verizon.com; i=dkoch@verizon.com; q=dns/txt; s=corp;
-	t=1421436104; x=1452972104;
+	t=1421436105; x=1452972105;
 	h=from:to:cc:subject:date:message-id:in-reply-to: references;
-	bh=A54H2QO8dDLqMjj+8AJOxAGKzIAkTUuZtSlhrCj8QzY=;
-	b=nwJA+8/nj3TM4s/5N9QsJXLAmHVBqzpoyQczL4B66WebXi/m+NA0PIeL
-	bsdtkw/FNIKvqyu7Hzaalk0/BbzKzqAL1BqFqAHntZ2i7vW/Lw5ZsLR13
-	j1NgbvrQnlMnN4CmgN9Z5BxuXqnxENAanPP4gVRBAUJmwOdrUJNwICrvM c=;
+	bh=V+d2c1ZgzFf8X1c/ptUlWA2FFYAXJcRl2KxcMzYWqxY=;
+	b=fbee7pvtJsS18irlAo64Y/Xyevn/g7ziqUl6RMKgd06vPnzDd6fv4i4p
+	1jPvpYjo8tqiFjyuykWJ7OfOGEzDO7MXaqumdMgCbCahgE50MawwLhZHk
+	mD+3o3OAu4lx4CqrfrqUDgv3b16bNIycq8tuWTzbz/hF/wxZaEwwmMqjJ M=;
 X-IronPort-Anti-Spam-Filtered: false
 Received: from unknown (HELO fldsmtpi02.verizon.com) ([166.68.71.144])
-	by fldsmtpe04.verizon.com with ESMTP; 16 Jan 2015 19:21:43 +0000
+	by omzsmtpe04.verizonbusiness.com with ESMTP; 16 Jan 2015 19:21:44 +0000
 X-VzAPP: 1
-X-IronPort-AV: E=Sophos;i="5.09,412,1418083200"; d="scan'208";a="915457492"
+X-IronPort-AV: E=Sophos;i="5.09,412,1418083200"; d="scan'208";a="915457509"
 Received: from unknown (HELO yoyo.cloudswitch.com) ([208.52.205.215])
-	by fldsmtpi02.verizon.com with ESMTP; 16 Jan 2015 19:21:42 +0000
+	by fldsmtpi02.verizon.com with ESMTP; 16 Jan 2015 19:21:43 +0000
 From: Don Koch <dkoch@verizon.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 16 Jan 2015 14:21:36 -0500
-Message-Id: <1421436099-2487-2-git-send-email-dkoch@verizon.com>
+Date: Fri, 16 Jan 2015 14:21:38 -0500
+Message-Id: <1421436099-2487-4-git-send-email-dkoch@verizon.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1421436099-2487-1-git-send-email-dkoch@verizon.com>
 References: <1421436099-2487-1-git-send-email-dkoch@verizon.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 140.108.26.143
+X-Received-From: 199.249.25.207
 Cc: qemu-trivial@nongnu.org, Don Koch <dkoch@verizon.com>
-Subject: [Qemu-trivial] [PATCH 1/4] Add tracing to xenfb.
+Subject: [Qemu-trivial] [PATCH 3/4] Add/convert trace calls in pcnet-pci.c.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,59 +50,183 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Jan 2015 19:21:58 -0000
+X-List-Received-Date: Fri, 16 Jan 2015 19:22:01 -0000
+
+Add trace calls. Convert some #ifdef DEBUG printfs to trace.
 
 Signed-off-by: Don Koch <dkoch@verizon.com>
 ---
- hw/display/xenfb.c | 5 +++++
- trace-events       | 4 ++++
- 2 files changed, 9 insertions(+)
+ hw/net/pcnet-pci.c | 49 +++++++++++++++++++------------------------------
+ trace-events       | 12 ++++++++++++
+ 2 files changed, 31 insertions(+), 30 deletions(-)
 
-diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
-index 8a61e95..5e324ef 100644
---- a/hw/display/xenfb.c
-+++ b/hw/display/xenfb.c
-@@ -45,6 +45,8 @@
- #include <xen/io/kbdif.h>
- #include <xen/io/protocols.h>
- 
+diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
+index fb5f5d6..80cc3b0 100644
+--- a/hw/net/pcnet-pci.c
++++ b/hw/net/pcnet-pci.c
+@@ -33,6 +33,7 @@
+ #include "qemu/timer.h"
+ #include "sysemu/dma.h"
+ #include "sysemu/sysemu.h"
 +#include "trace.h"
-+
- #ifndef BTN_LEFT
- #define BTN_LEFT 0x110 /* from <linux/input.h> */
- #endif
-@@ -324,6 +326,8 @@ static void xenfb_mouse_event(void *opaque,
-     int dh = surface_height(surface);
-     int i;
  
-+    trace_xenfb_mouse_event(opaque, dx, dy, dz, button_state,
-+                            xenfb->abs_pointer_wanted);
-     if (xenfb->abs_pointer_wanted)
- 	xenfb_send_position(xenfb,
- 			    dx * (dw - 1) / 0x7fff,
-@@ -380,6 +384,7 @@ static void input_connected(struct XenDevice *xendev)
-     if (in->qmouse) {
-         qemu_remove_mouse_event_handler(in->qmouse);
+ #include "pcnet.h"
+ 
+@@ -61,9 +62,8 @@ typedef struct {
+ static void pcnet_aprom_writeb(void *opaque, uint32_t addr, uint32_t val)
+ {
+     PCNetState *s = opaque;
+-#ifdef PCNET_DEBUG
+-    printf("pcnet_aprom_writeb addr=0x%08x val=0x%02x\n", addr, val);
+-#endif
++
++    trace_pcnet_aprom_writeb(opaque, addr, val);
+     if (BCR_APROMWE(s)) {
+         s->prom[addr & 15] = val;
      }
-+    trace_xenfb_input_connected(xendev, in->abs_pointer_wanted);
-     in->qmouse = qemu_add_mouse_event_handler(xenfb_mouse_event, in,
- 					      in->abs_pointer_wanted,
- 					      "Xen PVFB Mouse");
+@@ -73,9 +73,8 @@ static uint32_t pcnet_aprom_readb(void *opaque, uint32_t addr)
+ {
+     PCNetState *s = opaque;
+     uint32_t val = s->prom[addr & 15];
+-#ifdef PCNET_DEBUG
+-    printf("pcnet_aprom_readb addr=0x%08x val=0x%02x\n", addr, val);
+-#endif
++
++    trace_pcnet_aprom_readb(opaque, addr, val);
+     return val;
+ }
+ 
+@@ -84,6 +83,7 @@ static uint64_t pcnet_ioport_read(void *opaque, hwaddr addr,
+ {
+     PCNetState *d = opaque;
+ 
++    trace_pcnet_ioport_read(opaque, addr, size);
+     if (addr < 0x10) {
+         if (!BCR_DWIO(d) && size == 1) {
+             return pcnet_aprom_readb(d, addr);
+@@ -111,6 +111,7 @@ static void pcnet_ioport_write(void *opaque, hwaddr addr,
+ {
+     PCNetState *d = opaque;
+ 
++    trace_pcnet_ioport_write(opaque, addr, data, size);
+     if (addr < 0x10) {
+         if (!BCR_DWIO(d) && size == 1) {
+             pcnet_aprom_writeb(d, addr, data);
+@@ -141,10 +142,8 @@ static const MemoryRegionOps pcnet_io_ops = {
+ static void pcnet_mmio_writeb(void *opaque, hwaddr addr, uint32_t val)
+ {
+     PCNetState *d = opaque;
+-#ifdef PCNET_DEBUG_IO
+-    printf("pcnet_mmio_writeb addr=0x" TARGET_FMT_plx" val=0x%02x\n", addr,
+-           val);
+-#endif
++
++    trace_pcnet_mmio_writeb(opaque, addr, val);
+     if (!(addr & 0x10))
+         pcnet_aprom_writeb(d, addr & 0x0f, val);
+ }
+@@ -153,22 +152,18 @@ static uint32_t pcnet_mmio_readb(void *opaque, hwaddr addr)
+ {
+     PCNetState *d = opaque;
+     uint32_t val = -1;
++
+     if (!(addr & 0x10))
+         val = pcnet_aprom_readb(d, addr & 0x0f);
+-#ifdef PCNET_DEBUG_IO
+-    printf("pcnet_mmio_readb addr=0x" TARGET_FMT_plx " val=0x%02x\n", addr,
+-           val & 0xff);
+-#endif
++    trace_pcnet_mmio_readb(opaque, addr, val);
+     return val;
+ }
+ 
+ static void pcnet_mmio_writew(void *opaque, hwaddr addr, uint32_t val)
+ {
+     PCNetState *d = opaque;
+-#ifdef PCNET_DEBUG_IO
+-    printf("pcnet_mmio_writew addr=0x" TARGET_FMT_plx " val=0x%04x\n", addr,
+-           val);
+-#endif
++
++    trace_pcnet_mmio_writew(opaque, addr, val);
+     if (addr & 0x10)
+         pcnet_ioport_writew(d, addr & 0x0f, val);
+     else {
+@@ -182,6 +177,7 @@ static uint32_t pcnet_mmio_readw(void *opaque, hwaddr addr)
+ {
+     PCNetState *d = opaque;
+     uint32_t val = -1;
++
+     if (addr & 0x10)
+         val = pcnet_ioport_readw(d, addr & 0x0f);
+     else {
+@@ -190,20 +186,15 @@ static uint32_t pcnet_mmio_readw(void *opaque, hwaddr addr)
+         val <<= 8;
+         val |= pcnet_aprom_readb(d, addr);
+     }
+-#ifdef PCNET_DEBUG_IO
+-    printf("pcnet_mmio_readw addr=0x" TARGET_FMT_plx" val = 0x%04x\n", addr,
+-           val & 0xffff);
+-#endif
++    trace_pcnet_mmio_readw(opaque, addr, val);
+     return val;
+ }
+ 
+ static void pcnet_mmio_writel(void *opaque, hwaddr addr, uint32_t val)
+ {
+     PCNetState *d = opaque;
+-#ifdef PCNET_DEBUG_IO
+-    printf("pcnet_mmio_writel addr=0x" TARGET_FMT_plx" val=0x%08x\n", addr,
+-           val);
+-#endif
++
++    trace_pcnet_mmio_writel(opaque, addr, val);
+     if (addr & 0x10)
+         pcnet_ioport_writel(d, addr & 0x0f, val);
+     else {
+@@ -219,6 +210,7 @@ static uint32_t pcnet_mmio_readl(void *opaque, hwaddr addr)
+ {
+     PCNetState *d = opaque;
+     uint32_t val;
++
+     if (addr & 0x10)
+         val = pcnet_ioport_readl(d, addr & 0x0f);
+     else {
+@@ -231,10 +223,7 @@ static uint32_t pcnet_mmio_readl(void *opaque, hwaddr addr)
+         val <<= 8;
+         val |= pcnet_aprom_readb(d, addr);
+     }
+-#ifdef PCNET_DEBUG_IO
+-    printf("pcnet_mmio_readl addr=0x" TARGET_FMT_plx " val=0x%08x\n", addr,
+-           val);
+-#endif
++    trace_pcnet_mmio_readl(opaque, addr, val);
+     return val;
+ }
+ 
 diff --git a/trace-events b/trace-events
-index 8acbcce..0f26f06 100644
+index 032bdd5..3a60213 100644
 --- a/trace-events
 +++ b/trace-events
-@@ -202,6 +202,10 @@ hd_geometry_guess(void *blk, uint32_t cyls, uint32_t heads, uint32_t secs, int t
- jazz_led_read(uint64_t addr, uint8_t val) "read addr=0x%"PRIx64": 0x%x"
- jazz_led_write(uint64_t addr, uint8_t new) "write addr=0x%"PRIx64": 0x%x"
+@@ -1259,6 +1259,18 @@ spapr_pci_msi_write(uint64_t addr, uint64_t data, uint32_t dt_irq) "@%"PRIx64"<=
+ spapr_pci_lsi_set(const char *busname, int pin, uint32_t irq) "%s PIN%d IRQ %u"
+ spapr_pci_msi_retry(unsigned config_addr, unsigned req_num, unsigned max_irqs) "Guest device at %x asked %u, have only %u"
  
-+# hw/display/xenfb.c
-+xenfb_mouse_event(void *opaque, int dx, int dy, int dz, int button_state, int abs_pointer_wanted) "%p x %d y %d z %d bs %#x abs %d"
-+xenfb_input_connected(void *xendev, int abs_pointer_wanted) "%p abs %d"
++# hw/net/pcnet-pci.c
++pcnet_aprom_writeb(void *opaque, uint32_t addr, uint32_t val) "opaque=%p addr=0x%08x val=0x%02x"
++pcnet_aprom_readb(void *opaque, uint32_t addr, uint32_t val) "opaque=%p addr=0x%08x val=0x%02x"
++pcnet_ioport_read(void *opaque, uint64_t addr, unsigned size) "opaque=%p addr=%#"PRIx64" size=%d"
++pcnet_ioport_write(void *opaque, uint64_t addr, uint64_t data, unsigned size) "opaque=%p addr=%#"PRIx64" data=%#"PRIx64" size=%d"
++pcnet_mmio_writeb(void *opaque, uint64_t addr, uint32_t val) "opaque=%p addr=%#"PRIx64" val=0x%x"
++pcnet_mmio_writew(void *opaque, uint64_t addr, uint32_t val) "opaque=%p addr=%#"PRIx64" val=0x%x"
++pcnet_mmio_writel(void *opaque, uint64_t addr, uint32_t val) "opaque=%p addr=%#"PRIx64" val=0x%x"
++pcnet_mmio_readb(void *opaque, uint64_t addr, uint32_t val) "opaque=%p addr=%#"PRIx64" val=0x%x"
++pcnet_mmio_readw(void *opaque, uint64_t addr, uint32_t val) "opaque=%p addr=%#"PRIx64" val=0x%x"
++pcnet_mmio_readl(void *opaque, uint64_t addr, uint32_t val) "opaque=%p addr=%#"PRIx64" val=0x%x"
 +
- # hw/net/lance.c
- lance_mem_readw(uint64_t addr, uint32_t ret) "addr=%"PRIx64"val=0x%04x"
- lance_mem_writew(uint64_t addr, uint32_t val) "addr=%"PRIx64"val=0x%04x"
+ # hw/intc/xics.c
+ xics_icp_check_ipi(int server, uint8_t mfrr) "CPU %d can take IPI mfrr=%#x"
+ xics_icp_accept(uint32_t old_xirr, uint32_t new_xirr) "icp_accept: XIRR %#"PRIx32"->%#"PRIx32
 -- 
 1.8.3.1
 
