@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YCxVt-0004kJ-NQ
-	for mharc-qemu-trivial@gnu.org; Sun, 18 Jan 2015 16:36:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37439)
+	id 1YD3FC-0008GD-Ar
+	for mharc-qemu-trivial@gnu.org; Sun, 18 Jan 2015 22:43:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51995)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YCt1Z-0002TR-I4
-	for qemu-trivial@nongnu.org; Sun, 18 Jan 2015 11:48:31 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1YD3F9-0008Bo-JI
+	for qemu-trivial@nongnu.org; Sun, 18 Jan 2015 22:43:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YCt1Y-0003aV-4K
-	for qemu-trivial@nongnu.org; Sun, 18 Jan 2015 11:48:29 -0500
-Received: from out114-136.biz.mail.alibaba.com ([205.204.114.136]:47301
-	helo=out21.biz.mail.alibaba.com)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YD3F8-0008G4-KW
+	for qemu-trivial@nongnu.org; Sun, 18 Jan 2015 22:43:11 -0500
+Received: from szxga01-in.huawei.com ([119.145.14.64]:44114)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>)
-	id 1YCt1S-0003Ur-Dg; Sun, 18 Jan 2015 11:48:22 -0500
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.5397633|-1; FP=0|0|0|0|0|-1|-1|-1;
-	HT=r46d02010; MF=gang.chen@sunrus.com.cn; PH=DS; RN=4; RT=4;
-	SR=0; 
-Received: from
-	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
-	ip:223.72.65.13) by smtp.aliyun-inc.com(10.147.34.65);
-	Mon, 19 Jan 2015 00:17:46 +0800
-Message-ID: <54BBDE71.9020109@sunrus.com.cn>
-Date: Mon, 19 Jan 2015 00:25:21 +0800
-From: Chen Gang S <gang.chen@sunrus.com.cn>
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1YD3F2-0007hi-H9; Sun, 18 Jan 2015 22:43:05 -0500
+Received: from 172.24.2.119 (EHLO szxeml430-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CID26263; Mon, 19 Jan 2015 11:42:55 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml430-hub.china.huawei.com
+	(10.82.67.185) with Microsoft SMTP Server id 14.3.158.1;
+	Mon, 19 Jan 2015 11:42:42 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Mon, 19 Jan 2015 11:42:30 +0800
+Message-ID: <1421638950-12056-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
-To: rth@twiddle.net, agraf@suse.de
-References: <54BBDDDC.9000804@sunrus.com.cn>
-In-Reply-To: <54BBDDDC.9000804@sunrus.com.cn>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 205.204.114.136
-X-Mailman-Approved-At: Sun, 18 Jan 2015 16:36:03 -0500
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] tcg: Use macro instead of hard code
- number 0xffffffff for tcg_target_ulong using
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.64
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	kraxel@redhat.com
+Subject: [Qemu-trivial] [PATCH] usb/desc-msos: using g_free instead of free
+	in usb_desc_msos()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,209 +45,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 18 Jan 2015 16:48:31 -0000
+X-List-Received-Date: Mon, 19 Jan 2015 03:43:12 -0000
 
+From: Gonglei <arei.gonglei@huawei.com>
 
-Excuse me, gmail is broken in China, during these days, I can only login
-in gmail web site via my Mac book Safari (which can not send pure text
-mail), so I have to use my another mail address to send patch.
+It's important to match g_malloc() with g_free(), plain
+malloc() with free(). Otherwise bad things can happen,
+since these allocators may use different memory pools.
 
-Thanks.
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ hw/usb/desc-msos.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 1/19/15 00:22, Chen Gang S wrote:
-> For tcg_target_ulong (include TCGArg), it often uses lower 32-bit mask
-> and higher 32-bit mask, so define the related macro for it, so can let
-> code simpler, and also avoid various coding styles for them.
-> 
->  - For lower, some append 'u', some append 'U', and some no 'u' or 'U'.
-> 
->  - For higher, some append 'ull', some use type cast.
-> 
->  - For lower but may be used higher bits, append 'ull'.
-> 
-> 
-> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-> ---
->  tcg/optimize.c        | 16 ++++++++--------
->  tcg/s390/tcg-target.c | 24 ++++++++++++------------
->  tcg/tcg.h             |  3 +++
->  3 files changed, 23 insertions(+), 20 deletions(-)
-> 
-> diff --git a/tcg/optimize.c b/tcg/optimize.c
-> index 34ae3c2..dc29223 100644
-> --- a/tcg/optimize.c
-> +++ b/tcg/optimize.c
-> @@ -174,7 +174,7 @@ static void tcg_opt_gen_mov(TCGContext *s, int op_index, TCGArg *gen_args,
->      mask = temps[src].mask;
->      if (TCG_TARGET_REG_BITS > 32 && new_op == INDEX_op_mov_i32) {
->          /* High bits of the destination are now garbage.  */
-> -        mask |= ~0xffffffffull;
-> +        mask |= TCG_TARGET_ULONG_M32H;
->      }
->      temps[dst].mask = mask;
->  
-> @@ -211,7 +211,7 @@ static void tcg_opt_gen_movi(TCGContext *s, int op_index, TCGArg *gen_args,
->      mask = val;
->      if (TCG_TARGET_REG_BITS > 32 && new_op == INDEX_op_mov_i32) {
->          /* High bits of the destination are now garbage.  */
-> -        mask |= ~0xffffffffull;
-> +        mask |= TCG_TARGET_ULONG_M32H;
->      }
->      temps[dst].mask = mask;
->  
-> @@ -354,7 +354,7 @@ static TCGArg do_constant_folding(TCGOpcode op, TCGArg x, TCGArg y)
->  {
->      TCGArg res = do_constant_folding_2(op, x, y);
->      if (op_bits(op) == 32) {
-> -        res &= 0xffffffff;
-> +        res &= TCG_TARGET_ULONG_M32L;
->      }
->      return res;
->  }
-> @@ -804,7 +804,7 @@ static TCGArg *tcg_constant_folding(TCGContext *s, uint16_t *tcg_opc_ptr,
->                  break;
->              }
->          case INDEX_op_ext32u_i64:
-> -            mask = 0xffffffffU;
-> +            mask = TCG_TARGET_ULONG_M32L;
->              goto and_const;
->  
->          CASE_OP_32_64(and):
-> @@ -895,7 +895,7 @@ static TCGArg *tcg_constant_folding(TCGContext *s, uint16_t *tcg_opc_ptr,
->              mask = 0xffff;
->              break;
->          case INDEX_op_ld32u_i64:
-> -            mask = 0xffffffffu;
-> +            mask = TCG_TARGET_ULONG_M32L;
->              break;
->  
->          CASE_OP_32_64(qemu_ld):
-> @@ -916,9 +916,9 @@ static TCGArg *tcg_constant_folding(TCGContext *s, uint16_t *tcg_opc_ptr,
->             need to record that the high bits contain garbage.  */
->          partmask = mask;
->          if (!(def->flags & TCG_OPF_64BIT)) {
-> -            mask |= ~(tcg_target_ulong)0xffffffffu;
-> -            partmask &= 0xffffffffu;
-> -            affected &= 0xffffffffu;
-> +            mask |= TCG_TARGET_ULONG_M32H;
-> +            partmask &= TCG_TARGET_ULONG_M32L;
-> +            affected &= TCG_TARGET_ULONG_M32L;
->          }
->  
->          if (partmask == 0) {
-> diff --git a/tcg/s390/tcg-target.c b/tcg/s390/tcg-target.c
-> index 63e9c82..394fefc 100644
-> --- a/tcg/s390/tcg-target.c
-> +++ b/tcg/s390/tcg-target.c
-> @@ -677,11 +677,11 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
->              tcg_out_insn(s, RIL, LGFI, ret, sval);
->              return;
->          }
-> -        if (uval <= 0xffffffff) {
-> +        if (uval <= TCG_TARGET_ULONG_M32L) {
->              tcg_out_insn(s, RIL, LLILF, ret, uval);
->              return;
->          }
-> -        if ((uval & 0xffffffff) == 0) {
-> +        if ((uval & TCG_TARGET_ULONG_M32L) == 0) {
->              tcg_out_insn(s, RIL, LLIHF, ret, uval >> 31 >> 1);
->              return;
->          }
-> @@ -702,7 +702,7 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
->          /* A 32-bit unsigned value can be loaded in 2 insns.  And given
->             that the lli_insns loop above did not succeed, we know that
->             both insns are required.  */
-> -        if (uval <= 0xffffffff) {
-> +        if (uval <= TCG_TARGET_ULONG_M32L) {
->              tcg_out_insn(s, RI, LLILL, ret, uval);
->              tcg_out_insn(s, RI, IILH, ret, uval >> 16);
->              return;
-> @@ -727,7 +727,7 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
->      /* If we get here, both the high and low parts have non-zero bits.  */
->  
->      /* Recurse to load the lower 32-bits.  */
-> -    tcg_out_movi(s, TCG_TYPE_I64, ret, uval & 0xffffffff);
-> +    tcg_out_movi(s, TCG_TYPE_I64, ret, uval & TCG_TARGET_ULONG_M32L);
->  
->      /* Insert data into the high 32-bits.  */
->      uval = uval >> 31 >> 1;
-> @@ -1006,7 +1006,7 @@ static void tgen_andi(TCGContext *s, TCGType type, TCGReg dest, uint64_t val)
->      /* Try all 48-bit insns that can perform it in one go.  */
->      if (facilities & FACILITY_EXT_IMM) {
->          for (i = 0; i < 2; i++) {
-> -            tcg_target_ulong mask = ~(0xffffffffull << i*32);
-> +            tcg_target_ulong mask = ~(TCG_TARGET_ULONG_M32L << i*32);
->              if (((val | ~valid) & mask) == mask) {
->                  tcg_out_insn_RIL(s, nif_insns[i], dest, val >> i*32);
->                  return;
-> @@ -1055,7 +1055,7 @@ static void tgen64_ori(TCGContext *s, TCGReg dest, tcg_target_ulong val)
->  
->          /* Try all 48-bit insns that can perform it in one go.  */
->          for (i = 0; i < 2; i++) {
-> -            tcg_target_ulong mask = (0xffffffffull << i*32);
-> +            tcg_target_ulong mask = (TCG_TARGET_ULONG_M32L << i*32);
->              if ((val & mask) != 0 && (val & ~mask) == 0) {
->                  tcg_out_insn_RIL(s, nif_insns[i], dest, val >> i*32);
->                  return;
-> @@ -1065,8 +1065,8 @@ static void tgen64_ori(TCGContext *s, TCGReg dest, tcg_target_ulong val)
->          /* Perform the OR via sequential modifications to the high and
->             low parts.  Do this via recursion to handle 16-bit vs 32-bit
->             masks in each half.  */
-> -        tgen64_ori(s, dest, val & 0x00000000ffffffffull);
-> -        tgen64_ori(s, dest, val & 0xffffffff00000000ull);
-> +        tgen64_ori(s, dest, val & TCG_TARGET_ULONG_M32L);
-> +        tgen64_ori(s, dest, val & TCG_TARGET_ULONG_M32H);
->      } else {
->          /* With no extended-immediate facility, we don't need to be so
->             clever.  Just iterate over the insns and mask in the constant.  */
-> @@ -1082,10 +1082,10 @@ static void tgen64_ori(TCGContext *s, TCGReg dest, tcg_target_ulong val)
->  static void tgen64_xori(TCGContext *s, TCGReg dest, tcg_target_ulong val)
->  {
->      /* Perform the xor by parts.  */
-> -    if (val & 0xffffffff) {
-> +    if (val & TCG_TARGET_ULONG_M32L) {
->          tcg_out_insn(s, RIL, XILF, dest, val);
->      }
-> -    if (val > 0xffffffff) {
-> +    if (val > TCG_TARGET_ULONG_M32L) {
->          tcg_out_insn(s, RIL, XIHF, dest, val >> 31 >> 1);
->      }
->  }
-> @@ -1793,14 +1793,14 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          break;
->      case INDEX_op_or_i32:
->          if (const_args[2]) {
-> -            tgen64_ori(s, args[0], args[2] & 0xffffffff);
-> +            tgen64_ori(s, args[0], args[2] & TCG_TARGET_ULONG_M32L);
->          } else {
->              tcg_out_insn(s, RR, OR, args[0], args[2]);
->          }
->          break;
->      case INDEX_op_xor_i32:
->          if (const_args[2]) {
-> -            tgen64_xori(s, args[0], args[2] & 0xffffffff);
-> +            tgen64_xori(s, args[0], args[2] & TCG_TARGET_ULONG_M32L);
->          } else {
->              tcg_out_insn(s, RR, XR, args[0], args[2]);
->          }
-> diff --git a/tcg/tcg.h b/tcg/tcg.h
-> index 944b877..4f113ed 100644
-> --- a/tcg/tcg.h
-> +++ b/tcg/tcg.h
-> @@ -54,6 +54,9 @@ typedef uint64_t tcg_target_ulong;
->  #error unsupported
->  #endif
->  
-> +#define TCG_TARGET_ULONG_M32L ((tcg_target_ulong)0xffffffffu)
-> +#define TCG_TARGET_ULONG_M32H (~(tcg_target_ulong)0xffffffffu)
-> +
->  #if TCG_TARGET_NB_REGS <= 32
->  typedef uint32_t TCGRegSet;
->  #elif TCG_TARGET_NB_REGS <= 64
-> 
-
+diff --git a/hw/usb/desc-msos.c b/hw/usb/desc-msos.c
+index 334d1ae..32c3600 100644
+--- a/hw/usb/desc-msos.c
++++ b/hw/usb/desc-msos.c
+@@ -231,7 +231,7 @@ int usb_desc_msos(const USBDesc *desc,  USBPacket *p,
+         length = len;
+     }
+     memcpy(dest, buf, length);
+-    free(buf);
++    g_free(buf);
+ 
+     p->actual_length = length;
+     return 0;
 -- 
-Chen Gang
+1.7.12.4
 
-Open, share, and attitude like air, water, and life which God blessed
+
 
