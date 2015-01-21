@@ -1,48 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YDqER-00006P-A4
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Jan 2015 03:01:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58737)
+	id 1YDqFB-00010K-I9
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Jan 2015 03:02:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58913)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YDqEM-0008WS-7V
-	for qemu-trivial@nongnu.org; Wed, 21 Jan 2015 03:01:42 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YDqF8-0000vd-VQ
+	for qemu-trivial@nongnu.org; Wed, 21 Jan 2015 03:02:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YDqEF-0004R7-NB
-	for qemu-trivial@nongnu.org; Wed, 21 Jan 2015 03:01:38 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:37082)
+	(envelope-from <mjt@tls.msk.ru>) id 1YDqF7-0004Yj-UC
+	for qemu-trivial@nongnu.org; Wed, 21 Jan 2015 03:02:26 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:55812)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YDqEE-0004QS-Mv; Wed, 21 Jan 2015 03:01:31 -0500
-Received: from 172.24.2.119 (EHLO szxeml431-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CIG38951; Wed, 21 Jan 2015 16:01:19 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml431-hub.china.huawei.com
-	(10.82.67.208) with Microsoft SMTP Server id 14.3.158.1;
-	Wed, 21 Jan 2015 16:01:11 +0800
-Message-ID: <54BF5CB9.9070706@huawei.com>
-Date: Wed, 21 Jan 2015 16:00:57 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YDqF1-0004XT-GB; Wed, 21 Jan 2015 03:02:19 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id D262B42199;
+	Wed, 21 Jan 2015 11:02:18 +0300 (MSK)
+Message-ID: <54BF5D0A.3080606@msgid.tls.msk.ru>
+Date: Wed, 21 Jan 2015 11:02:18 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.3.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1415881027-8112-1-git-send-email-arei.gonglei@huawei.com>
-	<1415881027-8112-2-git-send-email-arei.gonglei@huawei.com>
-	<87d288kdup.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87d288kdup.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="GB2312"
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <1421155153-14061-1-git-send-email-armbru@redhat.com>
+In-Reply-To: <1421155153-14061-1-git-send-email-armbru@redhat.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"aneesh.kumar@linux.vnet.ibm.com" <aneesh.kumar@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] virtfs-proxy-helper:
- Fix possible socket leak.
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] vl: Fix bogus error message for implied
+ mon ID clashing
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,24 +44,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Jan 2015 08:01:42 -0000
+X-List-Received-Date: Wed, 21 Jan 2015 08:02:27 -0000
 
-On 2014/11/27 20:49, Markus Armbruster wrote:
+13.01.2015 16:19, Markus Armbruster wrote:
+> monitor_parse() desugars --monitor, --qmp and -qmp-pretty to --mon.
+> The ID it picks can clash with a user-specified ID.  When it happens,
+> the error message is misleading.
 
-> <arei.gonglei@huawei.com> writes:
-> 
->> From: Gonglei <arei.gonglei@huawei.com>
->>
->> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-> 
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Thanks, applied to -trivial.
 
-Hi, Michael
-
-I guess Paolo forgot this patch :(
-Maybe this one can be picked up by qemu-trivial. Thanks.
-
-Regards,
--Gonglei
-
+/mjt
 
