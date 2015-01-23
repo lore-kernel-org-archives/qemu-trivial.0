@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YDqJF-0002nA-FE
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Jan 2015 03:06:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60193)
+	id 1YEZt8-0006F0-3B
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 03:46:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52261)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YDqJB-0002kZ-V5
-	for qemu-trivial@nongnu.org; Wed, 21 Jan 2015 03:06:38 -0500
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEZt5-0006C8-Mw
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 03:46:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YDqJB-00066g-8t
-	for qemu-trivial@nongnu.org; Wed, 21 Jan 2015 03:06:37 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:50899)
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEZt4-0003K6-Ra
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 03:46:43 -0500
+Received: from out114-136.biz.mail.alibaba.com ([205.204.114.136]:47202
+	helo=out21.biz.mail.alibaba.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YDqJ3-000647-9b; Wed, 21 Jan 2015 03:06:29 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7E23442199;
-	Wed, 21 Jan 2015 11:06:28 +0300 (MSK)
-Message-ID: <54BF5E04.6090503@msgid.tls.msk.ru>
-Date: Wed, 21 Jan 2015 11:06:28 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.3.0
+	(envelope-from <gang.chen@sunrus.com.cn>)
+	id 1YEZsu-0003Hy-5T; Fri, 23 Jan 2015 03:46:32 -0500
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.1756751|-1; FP=0|0|0|0|0|-1|-1|-1;
+	HT=r46d02015; MF=gang.chen@sunrus.com.cn; PH=DS; RN=3; RT=3;
+	SR=0; 
+Received: from
+	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
+	ip:124.127.118.42) by smtp.aliyun-inc.com(10.147.11.246);
+	Fri, 23 Jan 2015 16:46:20 +0800
+Message-ID: <54C20C26.6010204@sunrus.com.cn>
+Date: Fri, 23 Jan 2015 16:53:58 +0800
+From: Chen Gang S <gang.chen@sunrus.com.cn>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Gonglei <arei.gonglei@huawei.com>, Markus Armbruster <armbru@redhat.com>
-References: <1415881027-8112-1-git-send-email-arei.gonglei@huawei.com>	<1415881027-8112-2-git-send-email-arei.gonglei@huawei.com>	<87d288kdup.fsf@blackfin.pond.sub.org>
-	<54BF5CB9.9070706@huawei.com>
-In-Reply-To: <54BF5CB9.9070706@huawei.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=UTF-8
+To: riku.voipio@iki.fi
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"aneesh.kumar@linux.vnet.ibm.com" <aneesh.kumar@linux.vnet.ibm.com>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] virtfs-proxy-helper:
- Fix possible socket leak.
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 205.204.114.136
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] linux-user/syscall.c: Need call
+ unlock_user() before go to failure return in default case
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,21 +45,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Jan 2015 08:06:38 -0000
+X-List-Received-Date: Fri, 23 Jan 2015 08:46:44 -0000
 
-21.01.2015 11:00, Gonglei wrote:
-[]
-> Hi, Michael
-> 
-> I guess Paolo forgot this patch :(
-> Maybe this one can be picked up by qemu-trivial. Thanks.
+In abi_long do_ioctl_dm(), after calls lock_user(), it does not call
+unlock_user() before go to failure return in default case.
 
-I picked it up and applied to -trivial.
-It is not a problem if the same patch will be applied to
-several trees at once, so if Paolo will send a pull request
-for it together with me it all will work ok.
+Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+---
+ linux-user/syscall.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Thanks,
-
-/mjt
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index aaac6a2..290fdea 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -3681,6 +3681,7 @@ static abi_long do_ioctl_dm(const IOCTLEntry *ie, uint8_t *buf_temp, int fd,
+         }
+         default:
+             ret = -TARGET_EINVAL;
++            unlock_user(argptr, guest_data, 0);
+             goto out;
+         }
+         unlock_user(argptr, guest_data, guest_data_size);
+-- 
+1.9.3 (Apple Git-50)
 
