@@ -1,43 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YEbEC-0002Jr-9P
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 05:12:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39189)
+	id 1YEbMh-0005Mk-W7
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 05:21:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41015)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEbEA-0002HV-1L
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:12:34 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1YEbMe-0005Ju-Q3
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:21:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEbE9-00058n-8G
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:12:33 -0500
-Received: from out114-135.biz.mail.alibaba.com ([205.204.114.135]:52233
-	helo=out11.biz.mail.alibaba.com)
+	(envelope-from <peter.maydell@linaro.org>) id 1YEbMW-00084U-NW
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:21:20 -0500
+Received: from mail-lb0-f173.google.com ([209.85.217.173]:41428)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>)
-	id 1YEbE3-00057x-Ey; Fri, 23 Jan 2015 05:12:27 -0500
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.08026004|-1; FP=0|0|0|0|0|-1|-1|-1;
-	HT=r41g03016; MF=gang.chen@sunrus.com.cn; PH=DS; RN=4; RT=4;
-	SR=0; 
-Received: from
-	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
-	ip:124.127.118.42) by smtp.aliyun-inc.com(10.194.100.112);
-	Fri, 23 Jan 2015 18:12:15 +0800
-Message-ID: <54C22049.4000403@sunrus.com.cn>
-Date: Fri, 23 Jan 2015 18:19:53 +0800
-From: Chen Gang S <gang.chen@sunrus.com.cn>
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1YEbMW-00084M-G6
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:21:12 -0500
+Received: by mail-lb0-f173.google.com with SMTP id p9so1936976lbv.4
+	for <qemu-trivial@nongnu.org>; Fri, 23 Jan 2015 02:21:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=X01klX2lSVdkG6Z0QO2HedRpDHDdFXqhBVv5aGLgfQ0=;
+	b=ZlF79/RNt7mwHmcCAlbA/YJ3BOqqCVlQfA9Qi7oUxPYciKwWjVbRpqkiS9I959EqVy
+	rHJs41PcHWQGLe40Hegk16dViAMBHTQCuUAxXpoQK/k9/axTT+bwtUghJ2WQ42JYDSBF
+	ikwHneoVPALnHtYdUZG8ztcAKfypsjjMTnW3WFdbnoCU4q3zBxtCznSt+lNshq3bVkas
+	4Fxhvgf57di6WwZxHDxSvHXV1FeujD2kzVgPmFjbSVWWu0U2gl3GmY9yw5q/3bOCM5Sq
+	Cy35gULlvGVrcDmx8ESUljY6lYcYOj/HbZz/LgYv6g0mcry22ZorywaEtWejI/H/pMS6
+	XU7w==
+X-Gm-Message-State: ALoCoQn0xI0s54EKMoGMezwlP4JVrXrJ+bAIm6jgTL7tt9JXsls2NOMa7BXmwYVD49+RadMR/vD8
+X-Received: by 10.152.120.97 with SMTP id lb1mr6451150lab.76.1422008471625;
+	Fri, 23 Jan 2015 02:21:11 -0800 (PST)
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <54C20C26.6010204@sunrus.com.cn>
-	<CAFEAcA8ouuFXLJcTdM5B1hbj5_cZ1TKQgrJtFiCpaUJaYjGEAw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8ouuFXLJcTdM5B1hbj5_cZ1TKQgrJtFiCpaUJaYjGEAw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 205.204.114.135
+Received: by 10.112.21.34 with HTTP; Fri, 23 Jan 2015 02:20:51 -0800 (PST)
+In-Reply-To: <54C21FB2.1050603@sunrus.com.cn>
+References: <54C21FB2.1050603@sunrus.com.cn>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 23 Jan 2015 10:20:51 +0000
+Message-ID: <CAFEAcA-_D_yD2mYE_HC0+Dnz5QnFEo3cHcfkYZTZbKwS4QZNXQ@mail.gmail.com>
+To: Chen Gang S <gang.chen@sunrus.com.cn>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.173
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
 	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user/syscall.c: Need
- call unlock_user() before go to failure return in default case
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user/main.c: Remove
+	redundant end_exclusive()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,44 +55,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Jan 2015 10:12:35 -0000
+X-List-Received-Date: Fri, 23 Jan 2015 10:21:21 -0000
 
-On 1/23/15 18:01, Peter Maydell wrote:
-> On 23 January 2015 at 08:53, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
->> In abi_long do_ioctl_dm(), after calls lock_user(), it does not call
->> unlock_user() before go to failure return in default case.
->>
->> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
->> ---
->>  linux-user/syscall.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
->> index aaac6a2..290fdea 100644
->> --- a/linux-user/syscall.c
->> +++ b/linux-user/syscall.c
->> @@ -3681,6 +3681,7 @@ static abi_long do_ioctl_dm(const IOCTLEntry *ie, uint8_t *buf_temp, int fd,
->>          }
->>          default:
->>              ret = -TARGET_EINVAL;
->> +            unlock_user(argptr, guest_data, 0);
->>              goto out;
->>          }
->>          unlock_user(argptr, guest_data, guest_data_size);
->> --
->> 1.9.3 (Apple Git-50)
-> 
-> Correct as far as it goes, but notice that we have the identical
-> bug in the other switch (ie->host_cmd) as well...
-> 
+On 23 January 2015 at 10:17, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
+> start/end_exclusive() need be pairs, except the start_exclusive() in
+> stop_all_tasks() which is only used by force_sig(), which will be abort.
+> So at present, start_exclusive() in stop_all_task() need not be paired.
+>
+> So need remove end_exclusive() after queue_signal(). If could really
+> return from queue_signal(), which meant stop_all_task() is not called (
+> at least, not called in time), the next end_exclusive() would be issue.
+>
+> Also use TARGET_SIGSEGV instead of SIGSEGV, since queue_signal() is for
+> TARGET_*, at present, queue_signal() is a normal function which may call
+> force_sig(), or return (may kill pid or queue signal, then return).
 
-Oh, really, thanks. I shall send patch v2 for it, if no additional reply
-within 2 days.
+It would be helpful to mention the affected target architecture
+(and/or function name) in the commit message, because main.c covers
+a lot of ground.
 
+> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+> ---
+>  linux-user/main.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/linux-user/main.c b/linux-user/main.c
+> index 8c70be4..a410a17 100644
+> --- a/linux-user/main.c
+> +++ b/linux-user/main.c
+> @@ -517,14 +517,12 @@ segv:
+>      end_exclusive();
+>      /* We get the PC of the entry address - which is as good as anything,
+>         on a real kernel what you get depends on which mode it uses. */
+> -    info.si_signo = SIGSEGV;
+> +    info.si_signo = TARGET_SIGSEGV;
 
-Thanks.
--- 
-Chen Gang
+I think this is a correct bug fix, but it's not really related
+to the main point of the patch (fixing end_exclusive()) and
+there are actually a lot of instances of it in this file and
+possibly others. Could you fix it (and those others) in a separate
+patch, please?
 
-Open, share, and attitude like air, water, and life which God blessed
+>      info.si_errno = 0;
+>      /* XXX: check env->error_code */
+>      info.si_code = TARGET_SEGV_MAPERR;
+>      info._sifields._sigfault._addr = env->exception.vaddress;
+>      queue_signal(env, info.si_signo, &info);
+> -
+> -    end_exclusive();
+>  }
+
+This change is correct.
+
+thanks
+-- PMM
 
