@@ -1,50 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YEbB3-000815-2g
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 05:09:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38520)
+	id 1YEbBt-0000g9-ED
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 05:10:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38746)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YEbB0-0007y7-GB
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:09:19 -0500
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEbBn-0000Vx-Pe
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:10:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YEbAw-00048A-G7
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:09:18 -0500
-Received: from mail-la0-f46.google.com ([209.85.215.46]:56945)
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEbBi-0004Rl-Uh
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:10:07 -0500
+Received: from mail113-248.mail.alibaba.com ([205.204.113.248]:60176
+	helo=us-alimail-mta1.hst.scl.en.alidc.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YEbAw-00047p-AD
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 05:09:14 -0500
-Received: by mail-la0-f46.google.com with SMTP id s18so6437571lam.5
-	for <qemu-trivial@nongnu.org>; Fri, 23 Jan 2015 02:09:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=hFvWwdjJIAvvN0lnhk0f/AJGfrvAY9TTN3DTn7wnZZs=;
-	b=ZkSDgzwvlbBQIiNpXcWDV50AFzhJZkv8PBwWUi4ITBiymKexLwLG5yvnaw2rk82MAJ
-	fL99bJAJOVRw+Zo0q4J4nFI+yduG8hpIfxsZ5HbYxs9G4u5JirjclkwkXfy4G/0uz/hs
-	ahMQgQrWM2HJhDXhH5i5kyG1KfKrqq7q83qtuNiYZjHFqH3gHcPj39PdAY0Kttaf6eGh
-	gAtd1UEnSUIZACRp9QTzs/Q/3Y7rjdqb7CrEeyBHTW/nmEXF1kIaGv2Wp+E7BGJQ52UX
-	+W+nt/kC6LuPNAnkUsPhznfIV0SRcBeLDrQBgQzvj7b50dg7QFcLmSaN+li5cN3rlSq0
-	xdVg==
-X-Gm-Message-State: ALoCoQnZ6HB78ijUxqH0yl4c+jd9VNt2Ps+FBhzwGfCwo3xFqQEoEVGeq8nBrpaE5HB8YgbzwNGx
-X-Received: by 10.112.185.101 with SMTP id fb5mr6462490lbc.12.1422007753704;
-	Fri, 23 Jan 2015 02:09:13 -0800 (PST)
+	(envelope-from <gang.chen@sunrus.com.cn>)
+	id 1YEbBd-0004LF-Hh; Fri, 23 Jan 2015 05:09:57 -0500
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.1176492|-1; FP=0|0|0|0|0|-1|-1|-1;
+	HT=r41g03020; MF=gang.chen@sunrus.com.cn; PH=DS; RN=3; RT=3;
+	SR=0; 
+Received: from
+	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
+	ip:124.127.118.42) by smtp.aliyun-inc.com(10.147.11.248);
+	Fri, 23 Jan 2015 18:09:44 +0800
+Message-ID: <54C21FB2.1050603@sunrus.com.cn>
+Date: Fri, 23 Jan 2015 18:17:22 +0800
+From: Chen Gang S <gang.chen@sunrus.com.cn>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Received: by 10.112.21.34 with HTTP; Fri, 23 Jan 2015 02:08:53 -0800 (PST)
-In-Reply-To: <54C21D76.8050808@sunrus.com.cn>
-References: <54C21D76.8050808@sunrus.com.cn>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Jan 2015 10:08:53 +0000
-Message-ID: <CAFEAcA_NG4E5tc8nQ8EbVDqs=704cnXJZerVAVg-c74VQm5c+Q@mail.gmail.com>
-To: Chen Gang S <gang.chen@sunrus.com.cn>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.46
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user/syscall.c: Fix
- typo issue for using target_vec[i].iov_len instead of
- target_vec[i].iov_base
+To: riku.voipio@iki.fi
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 205.204.113.248
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] linux-user/main.c: Remove redundant
+	end_exclusive()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,36 +45,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Jan 2015 10:09:19 -0000
+X-List-Received-Date: Fri, 23 Jan 2015 10:10:12 -0000
 
-On 23 January 2015 at 10:07, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
-> It is only a typo issue, need use tswapal(target_vec[i].iov_len) for the
-> len.
->
-> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-> ---
->  linux-user/syscall.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index a66c2ae..8260ed7 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -1896,7 +1896,7 @@ static void unlock_iovec(struct iovec *vec, abi_ulong target_addr,
->      if (target_vec) {
->          for (i = 0; i < count; i++) {
->              abi_ulong base = tswapal(target_vec[i].iov_base);
-> -            abi_long len = tswapal(target_vec[i].iov_base);
-> +            abi_long len = tswapal(target_vec[i].iov_len);
->              if (len < 0) {
->                  break;
->              }
-> --
-> 1.9.3 (Apple Git-50)
+start/end_exclusive() need be pairs, except the start_exclusive() in
+stop_all_tasks() which is only used by force_sig(), which will be abort.
+So at present, start_exclusive() in stop_all_task() need not be paired.
 
-Nice catch.
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+So need remove end_exclusive() after queue_signal(). If could really
+return from queue_signal(), which meant stop_all_task() is not called (
+at least, not called in time), the next end_exclusive() would be issue.
 
-thanks
--- PMM
+Also use TARGET_SIGSEGV instead of SIGSEGV, since queue_signal() is for
+TARGET_*, at present, queue_signal() is a normal function which may call
+force_sig(), or return (may kill pid or queue signal, then return).
+
+Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+---
+ linux-user/main.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 8c70be4..a410a17 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -517,14 +517,12 @@ segv:
+     end_exclusive();
+     /* We get the PC of the entry address - which is as good as anything,
+        on a real kernel what you get depends on which mode it uses. */
+-    info.si_signo = SIGSEGV;
++    info.si_signo = TARGET_SIGSEGV;
+     info.si_errno = 0;
+     /* XXX: check env->error_code */
+     info.si_code = TARGET_SEGV_MAPERR;
+     info._sifields._sigfault._addr = env->exception.vaddress;
+     queue_signal(env, info.si_signo, &info);
+-
+-    end_exclusive();
+ }
+ 
+ /* Handle a jump to the kernel code page.  */
+-- 
+1.9.3 (Apple Git-50)
 
