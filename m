@@ -1,45 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YEg3T-0004X4-Bc
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 10:21:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51241)
+	id 1YElNx-0003L8-69
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 16:03:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44537)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mreitz@redhat.com>) id 1YEg3Q-0004Wx-Ra
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 10:21:49 -0500
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YElNu-0003Fp-0I
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 16:03:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mreitz@redhat.com>) id 1YEg3M-0000RM-V8
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 10:21:48 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36606)
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YElNs-0002Ls-MZ
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 16:03:17 -0500
+Received: from mail113-250.mail.alibaba.com ([205.204.113.250]:47675
+	helo=us-alimail-mta1.hst.scl.en.alidc.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mreitz@redhat.com>)
-	id 1YEg3M-0000RD-N1; Fri, 23 Jan 2015 10:21:44 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0NFLfWi027665
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Fri, 23 Jan 2015 10:21:42 -0500
-Received: from dresden.str.redhat.com ([10.18.17.71])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t0NFLejZ024585
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Fri, 23 Jan 2015 10:21:40 -0500
-Message-ID: <54C26703.7020602@redhat.com>
-Date: Fri, 23 Jan 2015 10:21:39 -0500
-From: Max Reitz <mreitz@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	(envelope-from <gang.chen@sunrus.com.cn>)
+	id 1YElNn-0002H7-PJ; Fri, 23 Jan 2015 16:03:12 -0500
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07992458|-1; FP=0|0|0|0|0|-1|-1|-1;
+	HT=r46d02036; MF=gang.chen@sunrus.com.cn; PH=DS; RN=5; RT=5;
+	SR=0; 
+Received: from
+	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
+	ip:223.72.65.28) by smtp.aliyun-inc.com(10.147.38.22);
+	Sat, 24 Jan 2015 05:03:01 +0800
+Message-ID: <54C2B8D2.1030803@sunrus.com.cn>
+Date: Sat, 24 Jan 2015 05:10:42 +0800
+From: Chen Gang S <gang.chen@sunrus.com.cn>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
 	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Julio Faracco <jcfaracco@gmail.com>, qemu-devel@nongnu.org
-References: <1421978021-3609-1-git-send-email-jcfaracco@gmail.com>
-	<1421978021-3609-2-git-send-email-jcfaracco@gmail.com>
-In-Reply-To: <1421978021-3609-2-git-send-email-jcfaracco@gmail.com>
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <54C21D76.8050808@sunrus.com.cn>
+	<CAFEAcA_NG4E5tc8nQ8EbVDqs=704cnXJZerVAVg-c74VQm5c+Q@mail.gmail.com>
+	<54C22918.8040505@sunrus.com.cn>
+	<CAFEAcA9WwAT4ft9Hk0Apoa1MG1PeGOZ660OtK+qvJYeJvVMCGg@mail.gmail.com>
+	<54C25428.7030304@sunrus.com.cn>
+	<CAFEAcA_4GvLC30OAjxqyNjd=x5SUUosd6nqNjYG6gM=-EbSR9w@mail.gmail.com>
+In-Reply-To: <CAFEAcA_4GvLC30OAjxqyNjd=x5SUUosd6nqNjYG6gM=-EbSR9w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, kwolf@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] qcow2-snapshot: Fixing
- bug of creating snapshots with the same name.
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 205.204.113.250
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Chris Metcalf <cmetcalf@ezchip.com>,
+	Riku Voipio <riku.voipio@iki.fi>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user/syscall.c: Fix
+ typo issue for using target_vec[i].iov_len instead of
+ target_vec[i].iov_base
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,64 +54,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Jan 2015 15:21:49 -0000
+X-List-Received-Date: Fri, 23 Jan 2015 21:03:19 -0000
 
-On 2015-01-22 at 20:53, Julio Faracco wrote:
-> This commit fixes the bug #1396497. You can create multiple snapshots with
-> the same name using 'qemu-img'. When you want to delete someone passing the
-> name, it will remove the first occurence of the snapshot with that name.
-> This commit fixes it.
+On 1/23/15 21:55, Peter Maydell wrote:
+> On 23 January 2015 at 14:01, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
+>> What I shall do for tile qemu should obey the related license of qemu
+>> (all the related code should belong to qemu upstream). If necessary to
+>> follow some copyright working flow, please let me know, I shall follow.
+> 
+> We don't have a copyright assignment process. I recommend
+> reading http://wiki.qemu.org/Contribute/SubmitAPatch if you haven't
+> already.
+> 
 
-I'm not so sure about these patches. Because there is an ID, I'd 
-actually expect qemu to be able to create multiple snapshots with the 
-same name (as long as the ID is unique for each snapshot).
+OK, thank. I assume (or declare):
 
-I think the real problem is that find_snapshot_by_id_and_name() should 
-not be successful if there are multiple snapshots which match the given 
-ID/name combination (which should not happen if an ID has been given), 
-which would prevent qcow2_snapshot_delete() from simply deleting the 
-first matching snapshot.
+ - The code what I write for qemu are all provided by myself (personal),
+   not by any companies or any organizations (no one pay for it).
 
-Max
+ - The documents which I have get are all free (e.g. tile architecture
+   related pdf files), I can reference them freely for development.
 
-> Before:
-> $ qemu-img snapshot -c foo debian.qcow2
-> $ qemu-img snapshot -c foo debian.qcow2
-> $ qemu-img snapshot -c foo debian.qcow2
-> $ qemu-img snapshot -l debian.qcow2
-> ID        TAG                 VM SIZE                DATE       VM CLOCK
-> 1         foo                    220M 2015-01-21 16:22:41   00:02:50.862
-> 2         foo                    130M 2015-01-22 11:14:55   00:00:40.132
-> 3         foo                     65M 2015-01-22 11:16:32   00:01:13.414
->
-> Now:
-> $ qemu-img snapshot -c foo debian.qcow2
-> $ qemu-img snapshot -c foo debian.qcow2
-> qemu-img: Could not create snapshot 'foo': -17 (File exists)
-> $ qemu-img snapshot -l debian.qcow2
-> ID        TAG                 VM SIZE                DATE       VM CLOCK
-> 1         foo                    220M 2015-01-21 16:22:41   00:02:50.862
->
-> Signed-off-by: Julio Faracco <jcfaracco@gmail.com>
-> ---
->   block/qcow2-snapshot.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
->
-> diff --git a/block/qcow2-snapshot.c b/block/qcow2-snapshot.c
-> index c7d4cfe..873ac49 100644
-> --- a/block/qcow2-snapshot.c
-> +++ b/block/qcow2-snapshot.c
-> @@ -356,8 +356,9 @@ int qcow2_snapshot_create(BlockDriverState *bs, QEMUSnapshotInfo *sn_info)
->           find_new_snapshot_id(bs, sn_info->id_str, sizeof(sn_info->id_str));
->       }
->   
-> -    /* Check that the ID is unique */
-> -    if (find_snapshot_by_id_or_name(bs, sn_info->id_str) >= 0) {
-> +    /* Check that the ID and Name is unique */
-> +    if (find_snapshot_by_id_or_name(bs, sn_info->id_str) >= 0 ||
-> +        find_snapshot_by_id_or_name(bs, sn_info->name) >= 0 ) {
->           return -EEXIST;
->       }
->   
+ - If the related code what I have provided are integrated into qemu
+   upstream, qemu upstream have the full right for it (follow with qemu
+   upstream own copyright).
 
+I send the mail from my company email address, the reason is gmail is
+broken in China, my gmail can not be used, so I have to use my another
+email address in these days (but my gmail is still for Signed-of-by).
+
+Welcome any suggestions and completions by any members or organizations.
+
+Thanks.
+-- 
+Chen Gang
+
+Open, share, and attitude like air, water, and life which God blessed
 
