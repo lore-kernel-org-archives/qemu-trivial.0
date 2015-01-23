@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YEZt8-0006F0-3B
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 03:46:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52261)
+	id 1YEamz-0001Ex-0k
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 04:44:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33356)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEZt5-0006C8-Mw
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 03:46:44 -0500
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEamw-0001CW-VT
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 04:44:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEZt4-0003K6-Ra
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 03:46:43 -0500
-Received: from out114-136.biz.mail.alibaba.com ([205.204.114.136]:47202
-	helo=out21.biz.mail.alibaba.com)
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEamt-0003wr-1V
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 04:44:26 -0500
+Received: from mail113-248.mail.alibaba.com ([205.204.113.248]:53039
+	helo=us-alimail-mta1.hst.scl.en.alidc.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <gang.chen@sunrus.com.cn>)
-	id 1YEZsu-0003Hy-5T; Fri, 23 Jan 2015 03:46:32 -0500
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.1756751|-1; FP=0|0|0|0|0|-1|-1|-1;
-	HT=r46d02015; MF=gang.chen@sunrus.com.cn; PH=DS; RN=3; RT=3;
+	id 1YEamo-0003pi-Ip; Fri, 23 Jan 2015 04:44:18 -0500
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.3186151|-1; FP=0|0|0|0|0|-1|-1|-1;
+	HT=r41f05022; MF=gang.chen@sunrus.com.cn; PH=DS; RN=3; RT=3;
 	SR=0; 
 Received: from
 	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
-	ip:124.127.118.42) by smtp.aliyun-inc.com(10.147.11.246);
-	Fri, 23 Jan 2015 16:46:20 +0800
-Message-ID: <54C20C26.6010204@sunrus.com.cn>
-Date: Fri, 23 Jan 2015 16:53:58 +0800
+	ip:124.127.118.42) by smtp.aliyun-inc.com(10.147.38.220);
+	Fri, 23 Jan 2015 17:28:37 +0800
+Message-ID: <54C21610.7090808@sunrus.com.cn>
+Date: Fri, 23 Jan 2015 17:36:16 +0800
 From: Chen Gang S <gang.chen@sunrus.com.cn>
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
 	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
@@ -29,11 +29,11 @@ MIME-Version: 1.0
 To: riku.voipio@iki.fi
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 205.204.114.136
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 205.204.113.248
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] linux-user/syscall.c: Need call
- unlock_user() before go to failure return in default case
+Subject: [Qemu-trivial] [PATCH] linux-user/syscall.c: Free the vec[i] in
+ failure processing code block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,28 +45,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Jan 2015 08:46:44 -0000
+X-List-Received-Date: Fri, 23 Jan 2015 09:44:27 -0000
 
-In abi_long do_ioctl_dm(), after calls lock_user(), it does not call
-unlock_user() before go to failure return in default case.
+When failure occurs during allocating vec[i], also need free all
+allocated vec[i] in failure processing code block before return.
+
+If error is EFAULT when "i == 0", vec[i].iov_base is NULL, then can just
+skip it, so can still use "while (--i >= 0)" for the free looping.
 
 Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
 ---
- linux-user/syscall.c | 1 +
- 1 file changed, 1 insertion(+)
+ linux-user/syscall.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index aaac6a2..290fdea 100644
+index 290fdea..e6a8e49 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -3681,6 +3681,7 @@ static abi_long do_ioctl_dm(const IOCTLEntry *ie, uint8_t *buf_temp, int fd,
-         }
-         default:
-             ret = -TARGET_EINVAL;
-+            unlock_user(argptr, guest_data, 0);
-             goto out;
-         }
-         unlock_user(argptr, guest_data, guest_data_size);
+@@ -1873,6 +1873,11 @@ static struct iovec *lock_iovec(int type, abi_ulong target_addr,
+     return vec;
+ 
+  fail:
++    while (--i >= 0) {
++        if (tswapal(vec[i].iov_len) > 0) {
++            unlock_user(vec[i].iov_base, base, 0);
++        }
++    }
+     unlock_user(target_vec, target_addr, 0);
+  fail2:
+     free(vec);
 -- 
 1.9.3 (Apple Git-50)
 
