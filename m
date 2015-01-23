@@ -1,47 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YEcJZ-000154-Fx
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 06:22:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52410)
+	id 1YEegH-0000WU-GA
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 08:53:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56581)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YEcJU-0000zi-No
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 06:22:11 -0500
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEegE-0000Sp-Vq
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 08:53:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YEcJK-0001KT-TI
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 06:22:08 -0500
-Received: from mail-lb0-f177.google.com ([209.85.217.177]:34008)
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YEegD-0002nX-VO
+	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 08:53:46 -0500
+Received: from out1134-250.mail.aliyun.com ([42.120.134.250]:42796)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YEcJK-0001KI-MV
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 06:21:58 -0500
-Received: by mail-lb0-f177.google.com with SMTP id p9so6488133lbv.8
-	for <qemu-trivial@nongnu.org>; Fri, 23 Jan 2015 03:21:58 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=lxYbJbdG20X7rmYZBSk/UJZFffe6MOkZLVhaRcn/cds=;
-	b=kTcca0SySzsEQsCGG4W1qPhLCOKyekdmGJTJEEKbcxN2x00cyU5sRQERW2de9QgdmM
-	/KPtzXNakPnhitfs4/nJpju8Y8cwlNkRReOludQv/bxQVSITAOl8dM83Np5c+k1NaiZ3
-	ODrQOgPqoVs0wasLYQOT7MIK679apGY7027xLdKUoWq0qixXZT0T3ZlYFNSW5lcvtu/B
-	0rJRz1b8HZbnicQIs2BBzX5wpgbXPIB4V2jm6+DJskb6cGmNRMKR4MF/iwNW7Bf6XcMP
-	Dz3+WjVaS4SOTCu7cnQxG1tzF24YJD4XPG3z/5tjVwnpfqipNx99JPtXyp65bilR8Gx3
-	tYnA==
-X-Gm-Message-State: ALoCoQluCXNIpahe+zousdyWjkB15BRTKd0ndOVQx//5k1g6iyW409UZO+Zq/H9VE5B7Bd+jSBDQ
-X-Received: by 10.112.137.196 with SMTP id qk4mr1932939lbb.33.1422012117794;
-	Fri, 23 Jan 2015 03:21:57 -0800 (PST)
+	(envelope-from <gang.chen@sunrus.com.cn>)
+	id 1YEeg8-0002lI-Kc; Fri, 23 Jan 2015 08:53:40 -0500
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07440022|-1; FP=0|0|0|0|0|-1|-1|-1;
+	HT=r46d02008; MF=gang.chen@sunrus.com.cn; PH=DS; RN=5; RT=5;
+	SR=0; 
+Received: from
+	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
+	ip:223.72.65.59) by smtp.aliyun-inc.com(10.194.100.113);
+	Fri, 23 Jan 2015 21:53:31 +0800
+Message-ID: <54C25428.7030304@sunrus.com.cn>
+Date: Fri, 23 Jan 2015 22:01:12 +0800
+From: Chen Gang S <gang.chen@sunrus.com.cn>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Received: by 10.112.21.34 with HTTP; Fri, 23 Jan 2015 03:21:36 -0800 (PST)
-In-Reply-To: <54C22918.8040505@sunrus.com.cn>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <54C21D76.8050808@sunrus.com.cn>
 	<CAFEAcA_NG4E5tc8nQ8EbVDqs=704cnXJZerVAVg-c74VQm5c+Q@mail.gmail.com>
 	<54C22918.8040505@sunrus.com.cn>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Jan 2015 11:21:36 +0000
-Message-ID: <CAFEAcA9WwAT4ft9Hk0Apoa1MG1PeGOZ660OtK+qvJYeJvVMCGg@mail.gmail.com>
-To: Chen Gang S <gang.chen@sunrus.com.cn>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.177
+	<CAFEAcA9WwAT4ft9Hk0Apoa1MG1PeGOZ660OtK+qvJYeJvVMCGg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9WwAT4ft9Hk0Apoa1MG1PeGOZ660OtK+qvJYeJvVMCGg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 42.120.134.250
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Chris Metcalf <cmetcalf@ezchip.com>,
 	Riku Voipio <riku.voipio@iki.fi>, qemu-devel <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user/syscall.c: Fix
@@ -58,37 +51,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Jan 2015 11:22:11 -0000
+X-List-Received-Date: Fri, 23 Jan 2015 13:53:48 -0000
 
-On 23 January 2015 at 10:57, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
->
-> Thank you for all of your work.
->
-> I plan to let qemu support tile architecture: "can let gcc run testsuite
-> with qemu for tile". It is really hard to me, but I should try, it is my
-> duty (I met it, and it's within my boarder, although no one pay for me).
-> :-)
+On 1/23/15 19:21, Peter Maydell wrote:
+> On 23 January 2015 at 10:57, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
+>>
+>> Thank you for all of your work.
+>>
+>> I plan to let qemu support tile architecture: "can let gcc run testsuite
+>> with qemu for tile". It is really hard to me, but I should try, it is my
+>> duty (I met it, and it's within my boarder, although no one pay for me).
+>> :-)
+> 
+>> Welcome any ideas, suggestions and completions by any members
+> 
+> My single biggest suggestion is to make sure you split the work
+> up so that you can post parts of it as you go along. Typically
+> for a target-*/ new port that looks something like
+>  * initial framework, but no instruction decode (so all instructions
+>    just throw an illegal instruction exception)
+>  * support for one or a few simple classes of instruction
+>  * gradually fill in the gaps of missing instructions
+> 
+> This way you get the benefit of code review on your early patches,
+> so you can write the later ones in line with the comments you
+> get on the first patches. We also get to review the code in
+> smaller and more manageable chunks.
+> 
+> I think the last target code to go in was target-tricore; you
+> could look back in the git history and the archives to get an
+> idea of how to structure the patchset and the kinds of review
+> comment that patchseries received.
+> 
 
-> Welcome any ideas, suggestions and completions by any members
+That sounds a good idea to me. In this way, I will bother qemu upstream
+frequently (which also means will get much help from qemu upstream for
+tile, frequently).
 
-My single biggest suggestion is to make sure you split the work
-up so that you can post parts of it as you go along. Typically
-for a target-*/ new port that looks something like
- * initial framework, but no instruction decode (so all instructions
-   just throw an illegal instruction exception)
- * support for one or a few simple classes of instruction
- * gradually fill in the gaps of missing instructions
+If can get much help from qemu upstream frequently (in above way), I
+guess, it is possible to me to finish it: "let gcc run testsuit with
+tile qemu". :-)
 
-This way you get the benefit of code review on your early patches,
-so you can write the later ones in line with the comments you
-get on the first patches. We also get to review the code in
-smaller and more manageable chunks.
+What I shall do for tile qemu should obey the related license of qemu
+(all the related code should belong to qemu upstream). If necessary to
+follow some copyright working flow, please let me know, I shall follow.
 
-I think the last target code to go in was target-tricore; you
-could look back in the git history and the archives to get an
-idea of how to structure the patchset and the kinds of review
-comment that patchseries received.
 
-thanks
--- PMM
+Thanks.
+-- 
+Chen Gang
+
+Open, share, and attitude like air, water, and life which God blessed
 
