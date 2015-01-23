@@ -1,48 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YEfT5-00039a-6y
+	id 1YEfT5-00039z-Bz
 	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 09:44:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50786)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50812)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcfaracco@gmail.com>) id 1YETUV-0003dW-M7
-	for qemu-trivial@nongnu.org; Thu, 22 Jan 2015 20:56:56 -0500
+	(envelope-from <jcfaracco@gmail.com>) id 1YETUY-0003fn-A4
+	for qemu-trivial@nongnu.org; Thu, 22 Jan 2015 20:56:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcfaracco@gmail.com>) id 1YETUU-0003lE-Va
-	for qemu-trivial@nongnu.org; Thu, 22 Jan 2015 20:56:55 -0500
-Received: from mail-qa0-x229.google.com ([2607:f8b0:400d:c00::229]:51405)
+	(envelope-from <jcfaracco@gmail.com>) id 1YETUX-0003mY-4N
+	for qemu-trivial@nongnu.org; Thu, 22 Jan 2015 20:56:58 -0500
+Received: from mail-qc0-x236.google.com ([2607:f8b0:400d:c01::236]:39472)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <jcfaracco@gmail.com>)
-	id 1YETUP-0003kh-U4; Thu, 22 Jan 2015 20:56:49 -0500
-Received: by mail-qa0-f41.google.com with SMTP id bm13so4033816qab.0;
-	Thu, 22 Jan 2015 17:56:49 -0800 (PST)
+	id 1YETUV-0003lI-4m; Thu, 22 Jan 2015 20:56:55 -0500
+Received: by mail-qc0-f182.google.com with SMTP id l6so4397503qcy.13;
+	Thu, 22 Jan 2015 17:56:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=fz/eyWL+vMms/2VcmyKf6L9AHQxZ73NVM59VlUlxi+c=;
-	b=IoMKgsZDsAIBypVY297zK7DCw1TyYUmpqHplFYhttao0Z/61LhKC7EfhX9+d24fZQn
-	T/SsIIA9z4V0shoa91ch8lTpRU1Zxk+QFWPLuyA/a515UBnsXpr77aDbjDSpqqIf+5uY
-	DVHYIy4mIyFi3hL215sgKSDnXMr/ktSoxcAebmE/4KsFILAfbosnNzH3jG+VAd6vu+b5
-	6szb2Ozvwwq/G3L94xpbDd5NS6fPv3ew15ZSWodbLT375KobMqM1kcqGfzqgrj35BTb6
-	+TK5leixFZkqH8d5VVT2ANGCBcTTtUu9YDHpUE1LcQw6B7eCgBYWAUmzRh7g/jVn6yRP
-	XAMA==
-X-Received: by 10.224.43.10 with SMTP id u10mr9291202qae.20.1421978209205;
-	Thu, 22 Jan 2015 17:56:49 -0800 (PST)
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=qSJvZh+u0TKVwF5E+BLLyUCejzCXFu05xMhrukvxZ4s=;
+	b=ET9PyNxI/b1BmUwz1XfEpglvMZGH3amXs9DC9A1KBH0aBY3zeQaoFWBSHSSK0Jao32
+	7SWCpT15zlDDhVHFuSE6CVHCe9ocsBaQ6IZa0UYHP2LEVPljcShIzwdbnW51r0QFGPja
+	AFRQETMJMgU7Lo2xMtO1PJORhDcijMv+BgDKXSX++q8l9/mghIrCYyuwoJ8Z9X0HKNIR
+	vLkRiWOuwHwaEucT9mGZWpKKZZJaXUXlXlolYK/0JW2arSY8DAONRx/QqYtVcx/4s1Ao
+	19Gp/X72ubljZwVLCnALnL/T+AiugkA587xN1dWfqmUT8CeF3IVHUbtWEnqVaEWlo8f5
+	ZeyQ==
+X-Received: by 10.224.69.200 with SMTP id a8mr9267926qaj.40.1421978214689;
+	Thu, 22 Jan 2015 17:56:54 -0800 (PST)
 Received: from localhost.localdomain (200-161-251-224.dsl.telesp.net.br.
 	[200.161.251.224])
-	by mx.google.com with ESMTPSA id t36sm175312qge.35.2015.01.22.17.56.47
+	by mx.google.com with ESMTPSA id t36sm175312qge.35.2015.01.22.17.56.52
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Thu, 22 Jan 2015 17:56:48 -0800 (PST)
+	Thu, 22 Jan 2015 17:56:54 -0800 (PST)
 From: Julio Faracco <jcfaracco@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 22 Jan 2015 23:53:40 -0200
-Message-Id: <1421978021-3609-1-git-send-email-jcfaracco@gmail.com>
+Date: Thu, 22 Jan 2015 23:53:41 -0200
+Message-Id: <1421978021-3609-2-git-send-email-jcfaracco@gmail.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1421978021-3609-1-git-send-email-jcfaracco@gmail.com>
+References: <1421978021-3609-1-git-send-email-jcfaracco@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c00::229
+X-Received-From: 2607:f8b0:400d:c01::236
 X-Mailman-Approved-At: Fri, 23 Jan 2015 09:44:14 -0500
 Cc: qemu-trivial@nongnu.org, kwolf@redhat.com,
 	Julio Faracco <jcfaracco@gmail.com>
-Subject: [Qemu-trivial] [PATCH 1/2] qcow2-snapshot: Change filter function
-	to avoid NULL parameter when a snapshot will be created.
+Subject: [Qemu-trivial] [PATCH 2/2] qcow2-snapshot: Fixing bug of creating
+	snapshots with the same name.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,27 +56,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Jan 2015 01:56:56 -0000
+X-List-Received-Date: Fri, 23 Jan 2015 01:56:59 -0000
 
-This is a trivial patch to change the filter 'find_snapshot_by_id_and_name'
-to 'find_snapshot_by_id_or_name'. The field 'Name' is not required. So this
-change avoid NULL parameters. And use the correct function to filter.
+This commit fixes the bug #1396497. You can create multiple snapshots with
+the same name using 'qemu-img'. When you want to delete someone passing the
+name, it will remove the first occurence of the snapshot with that name.
+This commit fixes it.
+
+Before:
+$ qemu-img snapshot -c foo debian.qcow2
+$ qemu-img snapshot -c foo debian.qcow2
+$ qemu-img snapshot -c foo debian.qcow2
+$ qemu-img snapshot -l debian.qcow2
+ID        TAG                 VM SIZE                DATE       VM CLOCK
+1         foo                    220M 2015-01-21 16:22:41   00:02:50.862
+2         foo                    130M 2015-01-22 11:14:55   00:00:40.132
+3         foo                     65M 2015-01-22 11:16:32   00:01:13.414
+
+Now:
+$ qemu-img snapshot -c foo debian.qcow2
+$ qemu-img snapshot -c foo debian.qcow2
+qemu-img: Could not create snapshot 'foo': -17 (File exists)
+$ qemu-img snapshot -l debian.qcow2
+ID        TAG                 VM SIZE                DATE       VM CLOCK
+1         foo                    220M 2015-01-21 16:22:41   00:02:50.862
 
 Signed-off-by: Julio Faracco <jcfaracco@gmail.com>
 ---
- block/qcow2-snapshot.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ block/qcow2-snapshot.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/block/qcow2-snapshot.c b/block/qcow2-snapshot.c
-index 5b3903c..c7d4cfe 100644
+index c7d4cfe..873ac49 100644
 --- a/block/qcow2-snapshot.c
 +++ b/block/qcow2-snapshot.c
-@@ -357,7 +357,7 @@ int qcow2_snapshot_create(BlockDriverState *bs, QEMUSnapshotInfo *sn_info)
+@@ -356,8 +356,9 @@ int qcow2_snapshot_create(BlockDriverState *bs, QEMUSnapshotInfo *sn_info)
+         find_new_snapshot_id(bs, sn_info->id_str, sizeof(sn_info->id_str));
      }
  
-     /* Check that the ID is unique */
--    if (find_snapshot_by_id_and_name(bs, sn_info->id_str, NULL) >= 0) {
-+    if (find_snapshot_by_id_or_name(bs, sn_info->id_str) >= 0) {
+-    /* Check that the ID is unique */
+-    if (find_snapshot_by_id_or_name(bs, sn_info->id_str) >= 0) {
++    /* Check that the ID and Name is unique */
++    if (find_snapshot_by_id_or_name(bs, sn_info->id_str) >= 0 ||
++        find_snapshot_by_id_or_name(bs, sn_info->name) >= 0 ) {
          return -EEXIST;
      }
  
