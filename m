@@ -1,48 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YElNx-0003L8-69
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Jan 2015 16:03:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44537)
+	id 1YFAVz-0004so-Fe
+	for mharc-qemu-trivial@gnu.org; Sat, 24 Jan 2015 18:53:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49308)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YElNu-0003Fp-0I
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 16:03:19 -0500
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YFAVx-0004rH-T2
+	for qemu-trivial@nongnu.org; Sat, 24 Jan 2015 18:53:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YElNs-0002Ls-MZ
-	for qemu-trivial@nongnu.org; Fri, 23 Jan 2015 16:03:17 -0500
-Received: from mail113-250.mail.alibaba.com ([205.204.113.250]:47675
-	helo=us-alimail-mta1.hst.scl.en.alidc.net)
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YFAVx-0003eT-2U
+	for qemu-trivial@nongnu.org; Sat, 24 Jan 2015 18:53:17 -0500
+Received: from out1134-243.mail.aliyun.com ([42.120.134.243]:45064)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <gang.chen@sunrus.com.cn>)
-	id 1YElNn-0002H7-PJ; Fri, 23 Jan 2015 16:03:12 -0500
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07992458|-1; FP=0|0|0|0|0|-1|-1|-1;
-	HT=r46d02036; MF=gang.chen@sunrus.com.cn; PH=DS; RN=5; RT=5;
+	id 1YFAVq-0003ao-OX; Sat, 24 Jan 2015 18:53:11 -0500
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.1411015|-1; FP=0|0|0|0|0|-1|-1|-1;
+	HT=r41f05015; MF=gang.chen@sunrus.com.cn; PH=DS; RN=4; RT=4;
 	SR=0; 
 Received: from
 	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
-	ip:223.72.65.28) by smtp.aliyun-inc.com(10.147.38.22);
-	Sat, 24 Jan 2015 05:03:01 +0800
-Message-ID: <54C2B8D2.1030803@sunrus.com.cn>
-Date: Sat, 24 Jan 2015 05:10:42 +0800
+	ip:223.72.65.8) by smtp.aliyun-inc.com(10.194.100.108);
+	Sun, 25 Jan 2015 07:53:02 +0800
+Message-ID: <54C4322A.3060704@sunrus.com.cn>
+Date: Sun, 25 Jan 2015 08:00:42 +0800
 From: Chen Gang S <gang.chen@sunrus.com.cn>
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
 	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <54C21D76.8050808@sunrus.com.cn>
-	<CAFEAcA_NG4E5tc8nQ8EbVDqs=704cnXJZerVAVg-c74VQm5c+Q@mail.gmail.com>
-	<54C22918.8040505@sunrus.com.cn>
-	<CAFEAcA9WwAT4ft9Hk0Apoa1MG1PeGOZ660OtK+qvJYeJvVMCGg@mail.gmail.com>
-	<54C25428.7030304@sunrus.com.cn>
-	<CAFEAcA_4GvLC30OAjxqyNjd=x5SUUosd6nqNjYG6gM=-EbSR9w@mail.gmail.com>
-In-Reply-To: <CAFEAcA_4GvLC30OAjxqyNjd=x5SUUosd6nqNjYG6gM=-EbSR9w@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Riku Voipio <riku.voipio@iki.fi>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 205.204.113.250
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Chris Metcalf <cmetcalf@ezchip.com>,
-	Riku Voipio <riku.voipio@iki.fi>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user/syscall.c: Fix
- typo issue for using target_vec[i].iov_len instead of
- target_vec[i].iov_base
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 42.120.134.243
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH v2] linux-user/syscall.c: Need call
+ unlock_user() before go to failure return in default case
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,40 +44,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Jan 2015 21:03:19 -0000
+X-List-Received-Date: Sat, 24 Jan 2015 23:53:18 -0000
 
-On 1/23/15 21:55, Peter Maydell wrote:
-> On 23 January 2015 at 14:01, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
->> What I shall do for tile qemu should obey the related license of qemu
->> (all the related code should belong to qemu upstream). If necessary to
->> follow some copyright working flow, please let me know, I shall follow.
-> 
-> We don't have a copyright assignment process. I recommend
-> reading http://wiki.qemu.org/Contribute/SubmitAPatch if you haven't
-> already.
-> 
+In abi_long do_ioctl_dm(), after calls lock_user(), it does not call
+unlock_user() before go to failure return in default case.
 
-OK, thank. I assume (or declare):
+Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+---
+ linux-user/syscall.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
- - The code what I write for qemu are all provided by myself (personal),
-   not by any companies or any organizations (no one pay for it).
-
- - The documents which I have get are all free (e.g. tile architecture
-   related pdf files), I can reference them freely for development.
-
- - If the related code what I have provided are integrated into qemu
-   upstream, qemu upstream have the full right for it (follow with qemu
-   upstream own copyright).
-
-I send the mail from my company email address, the reason is gmail is
-broken in China, my gmail can not be used, so I have to use my another
-email address in these days (but my gmail is still for Signed-of-by).
-
-Welcome any suggestions and completions by any members or organizations.
-
-Thanks.
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index a427f7a..ec9e4fc 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -3566,6 +3566,7 @@ static abi_long do_ioctl_dm(const IOCTLEntry *ie, uint8_t *buf_temp, int fd,
+     }
+     default:
+         ret = -TARGET_EINVAL;
++        unlock_user(argptr, guest_data, 0);
+         goto out;
+     }
+     unlock_user(argptr, guest_data, 0);
+@@ -3685,6 +3686,7 @@ static abi_long do_ioctl_dm(const IOCTLEntry *ie, uint8_t *buf_temp, int fd,
+             break;
+         }
+         default:
++            unlock_user(argptr, guest_data, 0);
+             ret = -TARGET_EINVAL;
+             goto out;
+         }
 -- 
-Chen Gang
-
-Open, share, and attitude like air, water, and life which God blessed
+1.9.3
 
