@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YFMYq-0004Ns-9n
-	for mharc-qemu-trivial@gnu.org; Sun, 25 Jan 2015 07:45:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60598)
+	id 1YFMdh-0005sf-GI
+	for mharc-qemu-trivial@gnu.org; Sun, 25 Jan 2015 07:50:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32826)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YFMYj-0004C0-JZ
-	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 07:45:02 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1YFMdf-0005qj-Gk
+	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 07:50:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YFMYZ-0005bH-TR
-	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 07:44:57 -0500
-Received: from mail-la0-f46.google.com ([209.85.215.46]:37785)
+	(envelope-from <peter.maydell@linaro.org>) id 1YFMdX-0007ZN-CW
+	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 07:50:03 -0500
+Received: from mail-lb0-f169.google.com ([209.85.217.169]:50352)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YFMYZ-0005bA-Mo
-	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 07:44:47 -0500
-Received: by mail-la0-f46.google.com with SMTP id s18so4007464lam.5
-	for <qemu-trivial@nongnu.org>; Sun, 25 Jan 2015 04:44:46 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1YFMdX-0007Z2-5K
+	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 07:49:55 -0500
+Received: by mail-lb0-f169.google.com with SMTP id f15so4017060lbj.0
+	for <qemu-trivial@nongnu.org>; Sun, 25 Jan 2015 04:49:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=E5i39wvkbMYgmelfFbblSOYkZYsDINXZY8Ic8kGXrzw=;
-	b=PLt3pxI/bQSt3lqUDX588uLv6BNyIf/AQiZ4mM4PfPcUCKI6GW7szp70wKBg+WDEsS
-	ojQrBzpxfdNeSZ9CIXs0NmkupjTYEXEBBPekn22eS1+Y3lKrg/2Dqe+kvk23ubKcgZk4
-	67zZiS/W9RDkDOfnAb74esa3KYV7EaNmOwRfx/zNWBkSbZNeuuX6oj5mO+sqQmLIobgt
-	bhyzgYByrI+ymBiEZTULbKEW5irZbK9hqIQXf8n/aoog2pYWzL5P1smrMNQqnmqW0EGR
-	x8jHPDWp9/OdZ+YWEGngtYwztfi3b5ryQfU6WTmzmKYpEO/80rr2/k5TJbunMTyNLRhG
-	6+kQ==
-X-Gm-Message-State: ALoCoQmEl9rmnyNJctTrAKF82rDq3thYhQwwJTA6gUEIqBziSNOBP5apfTpK+Bu23F2vz/GvWgOM
-X-Received: by 10.152.120.97 with SMTP id lb1mr16456845lab.76.1422189886775;
-	Sun, 25 Jan 2015 04:44:46 -0800 (PST)
+	bh=utG3XNnJtPsNoryphIopA7YxZgWNebxsj/NVusWGHIc=;
+	b=WKfL1UGTd4KEsoJOWlTSyfcORgChOPfJqum+JchlNbf7NYr0GGC7hcrbtDPIknw/mo
+	rZ8oEOfnknWWESq4iX+tAvdqwzKcfNe/NZyA1my3wUU9lfngrrNXQlxLmHQYpOXhdSUo
+	SFg6IhvDf+1xppbZxQyT1vfWdQWbtwXoarODmXZ5LPwByLKFwA019g6eLsI/EMLr3/9P
+	9O29fbXyG25znyZB6ljv89URxgNzNgTc1knVYG5x7mZUX2cpM9z+BaY/Z7bSNHb5SPzT
+	oKhFuUoTm9OZbSS27uipkhdu1pBz3ST5hplW77POUb6wxsJ0DPm8y3Ea+Trven3KKndS
+	F1UQ==
+X-Gm-Message-State: ALoCoQmxFC5ayUFP5B3ykDJRcqOlz1M+UodFqcXFLlEs3ZZx9KgbY5EMfVMiQDG8kmDo9+iWdyC3
+X-Received: by 10.152.21.228 with SMTP id y4mr16645315lae.72.1422190194229;
+	Sun, 25 Jan 2015 04:49:54 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.112.21.34 with HTTP; Sun, 25 Jan 2015 04:44:26 -0800 (PST)
-In-Reply-To: <54C4D51E.4030408@sunrus.com.cn>
-References: <54C4D51E.4030408@sunrus.com.cn>
+Received: by 10.112.21.34 with HTTP; Sun, 25 Jan 2015 04:49:34 -0800 (PST)
+In-Reply-To: <54C4DC4E.3080306@sunrus.com.cn>
+References: <54C4DC4E.3080306@sunrus.com.cn>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 25 Jan 2015 12:44:26 +0000
-Message-ID: <CAFEAcA8Bz_WjQOWPsMUX-bqFR0qmn-ntiNu1j9XBq+vQqPV1TA@mail.gmail.com>
+Date: Sun, 25 Jan 2015 12:49:34 +0000
+Message-ID: <CAFEAcA_hGO-R85yYXDU7eoC7FHF_v96y7Oh54SX9HXBAss6Vpg@mail.gmail.com>
 To: Chen Gang S <gang.chen@sunrus.com.cn>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.215.46
+X-Received-From: 209.85.217.169
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
 	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] linux-user/main.c: Use TARGET_SIG*
-	instead of SIG*
+Subject: Re: [Qemu-trivial] [PATCH] linux-user/syscall.c: Let all
+ lock_user_struct() and unlock_user_struct() paired with each other
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,18 +55,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 25 Jan 2015 12:45:02 -0000
+X-List-Received-Date: Sun, 25 Jan 2015 12:50:04 -0000
 
-On 25 January 2015 at 11:35, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
-> In main.c, all SIG* need be change to TARGET_SIG*, since the related
-> next call are all for TARGET_SIG*: queue_signal() and gdb_handlesig().
+On 25 January 2015 at 12:06, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
+> lock_user_struct() and unlock_user_struct() need always be paired with
+> each other, or will cause resource leak.
 >
-> The related vi operation command is "1,$ s/\<SIG/TARGET_SIG/g".
+> Also remove redundant check for 'target_mb' in abi_long do_msgrcv().
 >
+> Also match the coding styles found by "./scripts/checkpatch.pl".
 >
 > Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+Are you claiming that you've reviewed *all* the code in this
+file for mismatched lock/unlock calls? If so, it would be nice
+to say so explicitly in the commit message. If not, it would be
+nice if the commit message was clearer about what areas of the
+code it applied to. The code changes are correct, though.
 
 thanks
 -- PMM
