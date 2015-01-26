@@ -1,53 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YFlBK-0005O4-FD
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Jan 2015 10:02:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60852)
+	id 1YFo42-0004SW-3o
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Jan 2015 13:07:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59301)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YFlBD-00059o-DW
-	for qemu-trivial@nongnu.org; Mon, 26 Jan 2015 10:02:23 -0500
+	(envelope-from <dgilbert@redhat.com>) id 1YFo3v-0004JB-3D
+	for qemu-trivial@nongnu.org; Mon, 26 Jan 2015 13:07:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YFlB7-0007of-Kz
-	for qemu-trivial@nongnu.org; Mon, 26 Jan 2015 10:02:19 -0500
-Received: from mail-la0-f44.google.com ([209.85.215.44]:57673)
+	(envelope-from <dgilbert@redhat.com>) id 1YFo3u-0002XU-6T
+	for qemu-trivial@nongnu.org; Mon, 26 Jan 2015 13:06:59 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:47180)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YFlB7-0007oS-Eh
-	for qemu-trivial@nongnu.org; Mon, 26 Jan 2015 10:02:13 -0500
-Received: by mail-la0-f44.google.com with SMTP id s18so8123719lam.3
-	for <qemu-trivial@nongnu.org>; Mon, 26 Jan 2015 07:02:12 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=jOSGeR0wo8Jji48SEL03qkasFLGslTAUHOo0PFZyOpY=;
-	b=HlwO9bkvdvUHlbqrZVhduam/TFqhfo/8Zc/fqSNYVZn/fA1MqBjSmX3FclwnXxkS30
-	Si5dZVjhVvtdCUkXDCFAcquOvyhvDUq2TQEsmpCKt/TSMUdtSqHoqusDwH/BDlESJ9FX
-	zuJpywtKzgrHYn52SgZJs3W6gN9aMOK/2w7Kkd/fKJ2+PLermn902fcNctiQlnQvA7Im
-	obQUe03VBFtUj2hN5L/pthNJQb7EblnoQidb4Nd01BuQrwbfpZM3Y6N6GED2m7VIWb9B
-	E6ou/1pF2TUpydvXK5sU/T6qcEEYApkpCTKoOYGB8EeM3C2z92Ub6XM7TYZh78Y1ViZC
-	KwEw==
-X-Gm-Message-State: ALoCoQnS2qgaHV4T68nb2DqpwGchuYMFwWEzj+gn5jORq9UpU5RqBcxMp+8Cs/FDzzR9UPbAvSYo
-X-Received: by 10.152.18.135 with SMTP id w7mr20890683lad.47.1422284532702;
-	Mon, 26 Jan 2015 07:02:12 -0800 (PST)
+	(envelope-from <dgilbert@redhat.com>)
+	id 1YFo3o-0002X1-NP; Mon, 26 Jan 2015 13:06:52 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0QI6pi0026267
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Mon, 26 Jan 2015 13:06:52 -0500
+Received: from work-vm (ovpn-116-95.ams2.redhat.com [10.36.116.95])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t0QI6mi4011577
+	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NO);
+	Mon, 26 Jan 2015 13:06:50 -0500
+Date: Mon, 26 Jan 2015 18:06:47 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20150126180647.GD2291@work-vm>
+References: <1422270747-23994-1-git-send-email-pbonzini@redhat.com>
+	<1422270747-23994-8-git-send-email-pbonzini@redhat.com>
 MIME-Version: 1.0
-Received: by 10.112.21.34 with HTTP; Mon, 26 Jan 2015 07:01:52 -0800 (PST)
-In-Reply-To: <54C6566B.6050205@sunrus.com.cn>
-References: <54C4DC4E.3080306@sunrus.com.cn>
-	<CAFEAcA_hGO-R85yYXDU7eoC7FHF_v96y7Oh54SX9HXBAss6Vpg@mail.gmail.com>
-	<54C5672D.4080800@sunrus.com.cn>
-	<CAFEAcA9mqzpHsWcyDdzBYDWdxsR1AoDy3akgHCaMUbjZ0zh=0Q@mail.gmail.com>
-	<54C6566B.6050205@sunrus.com.cn>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 26 Jan 2015 15:01:52 +0000
-Message-ID: <CAFEAcA8q7jNqL8DFygnHaiiv=2pGKXBQ_Gi1icOn9H=diOXK5Q@mail.gmail.com>
-To: Chen Gang S <gang.chen@sunrus.com.cn>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.44
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] linux-user/syscall.c: Let all
- lock_user_struct() and unlock_user_struct() paired with each other
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1422270747-23994-8-git-send-email-pbonzini@redhat.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, quintela@redhat.com, qemu-devel@nongnu.org,
+	armbru@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 7/7] migration: do
+	floating-point division
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,30 +51,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Jan 2015 15:02:24 -0000
+X-List-Received-Date: Mon, 26 Jan 2015 18:07:03 -0000
 
-On 26 January 2015 at 14:59, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
-> On 1/26/15 06:10, Peter Maydell wrote:
->> I would just like the commit message to be clear about the
->> scope of the work the patch covers. If the patch is just "Fix
->> mismatched lock/unlock calls in IPC struct conversion functions"
->> then that's fine, but the commit message should say that. At the
->> moment the commit message is very vague.
->>
->
-> OK, thanks.
->
-> I am not quite familiar with this file, so I describe the modification
-> by function name, e.g. lock_user_struct() and unlick_user_struct() in
-> the patch subject.
+* Paolo Bonzini (pbonzini@redhat.com) wrote:
+> Dividing integer expressions transferred_bytes and time_spent, and then converting
+> the integer quotient to type double. Any remainder, or fractional part of the
+> quotient, is ignored.  Fix this.
+> 
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  migration/migration.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/migration/migration.c b/migration/migration.c
+> index b3adbc6..6db75b8 100644
+> --- a/migration/migration.c
+> +++ b/migration/migration.c
+> @@ -646,7 +646,7 @@ static void *migration_thread(void *opaque)
+>          if (current_time >= initial_time + BUFFER_DELAY) {
+>              uint64_t transferred_bytes = qemu_ftell(s->file) - initial_bytes;
+>              uint64_t time_spent = current_time - initial_time;
+> -            double bandwidth = transferred_bytes / time_spent;
+> +            double bandwidth = (double)transferred_bytes / time_spent;
+>              max_size = bandwidth * migrate_max_downtime() / 1000000;
+>  
+>              s->mbps = time_spent ? (((double) transferred_bytes * 8.0) /
 
-In a big file I think it's often more useful to describe the
-functions which are being changed. My suggested subject would be:
+This feels like it would be better to fix this by merging it into
+the s->mbps calculation just off the bottom; we currently have:
 
-"Fix mismatched lock/unlock calls in IPC struct conversion functions"
+            uint64_t transferred_bytes = qemu_ftell(s->file) - initial_bytes;
+            uint64_t time_spent = current_time - initial_time;
+            double bandwidth = transferred_bytes / time_spent;
+            max_size = bandwidth * migrate_max_downtime() / 1000000;
 
-Riku can decide if he wants a v2 or will just fix it up as he
-applies it to his linux-user tree.
+            s->mbps = time_spent ? (((double) transferred_bytes * 8.0) /
+                    ((double) time_spent / 1000.0)) / 1000.0 / 1000.0 : -1;
 
--- PMM
+ 
+Note that the mbps has a check for time_spent being 0 - if that can ever happen,
+how come 'bandwidth' has never triggered it?
+ 
+  transferred_bytes    -    bytes
+  time_spent           -    ms
+  bandwidth            -    bytes/ms
+  migrate_max_downtime -    in ns
+  s->mbps              -    mbit/s
+
+giving
+
+  max_size = bytes/ms * time-in-ns  / 1000000
+           = bytes/ms * time-in-ms
+           = bytes
+
+so how about something like:
+            uint64_t transferred_bytes = qemu_ftell(s->file) - initial_bytes;
+            uint64_t time_spent = current_time - initial_time;
+            double   bytes_s    = (double) transferred_bytes / ((double) time_spent / 1000.0));
+            s->mbps = (bytes_s * 8.0) / 1000000.0;
+            max_size = bytes_s * (migrate_max_downtime() / 1000000000.0);
+
+that also needs the trace fixing and the line a few lines below, I *think* we have
+   dirty_bytes_rate is in bytes/second ? (arch_init.c)
+   expected_downtime in ms ?
+                s->expected_downtime = s->dirty_bytes_rate / bandwidth;
+so,  bytes/s / bytes/ms    erm that's supposed to come out as time in ms
+
+                s->expected_downtime = (int64_t)(1000 * (double)s->dirty_bytes_rate / bytes_s);
+
+Yeuch.
+
+Dave
+
+> -- 
+> 1.8.3.1
+> 
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
