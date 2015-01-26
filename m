@@ -1,45 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YFYFN-0002Vi-JY
-	for mharc-qemu-trivial@gnu.org; Sun, 25 Jan 2015 20:13:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53972)
+	id 1YFZ4X-0003dO-M1
+	for mharc-qemu-trivial@gnu.org; Sun, 25 Jan 2015 21:06:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1YFYFI-0002VW-D3
-	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 20:13:41 -0500
+	(envelope-from <alwillia@redhat.com>) id 1YFZ4R-0003co-JP
+	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 21:06:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>) id 1YFYFF-0005Jm-7N
-	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 20:13:40 -0500
-Received: from [59.151.112.132] (port=50509 helo=heian.cn.fujitsu.com)
+	(envelope-from <alwillia@redhat.com>) id 1YFZ4N-0004lr-95
+	for qemu-trivial@nongnu.org; Sun, 25 Jan 2015 21:06:31 -0500
+Received: from mx4-phx2.redhat.com ([209.132.183.25]:42490)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chen.fan.fnst@cn.fujitsu.com>)
-	id 1YFYFE-0005J8-SJ; Sun, 25 Jan 2015 20:13:37 -0500
-X-IronPort-AV: E=Sophos;i="5.04,848,1406563200"; d="scan'208";a="56599363"
-Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 26 Jan 2015 09:10:00 +0800
-Received: from G08CNEXCHPEKD02.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id t0Q1CoPA027203;
-	Mon, 26 Jan 2015 09:12:50 +0800
-Received: from [10.167.226.78] (10.167.226.78) by
-	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server id 14.3.181.6; Mon, 26 Jan 2015 09:13:32 +0800
-Message-ID: <54C59333.8080005@cn.fujitsu.com>
-Date: Mon, 26 Jan 2015 09:06:59 +0800
-From: Chen Fan <chen.fan.fnst@cn.fujitsu.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
-MIME-Version: 1.0
-To: Eric Auger <eric.auger@linaro.org>, <qemu-devel@nongnu.org>,
-	<qemu-trivial@nongnu.org>
+	(envelope-from <alwillia@redhat.com>)
+	id 1YFZ4N-0004lk-17; Sun, 25 Jan 2015 21:06:27 -0500
+Received: from zmail14.collab.prod.int.phx2.redhat.com
+	(zmail14.collab.prod.int.phx2.redhat.com [10.5.83.16])
+	by mx4-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id t0Q26LqJ012593;
+	Sun, 25 Jan 2015 21:06:21 -0500
+Date: Sun, 25 Jan 2015 21:06:20 -0500 (EST)
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Chen Fan <chen.fan.fnst@cn.fujitsu.com>
+Message-ID: <1400861803.231065.1422237980435.JavaMail.zimbra@redhat.com>
+In-Reply-To: <54C59333.8080005@cn.fujitsu.com>
 References: <1421898608-10313-1-git-send-email-chen.fan.fnst@cn.fujitsu.com>
-	<54C0B156.3080608@linaro.org>
-In-Reply-To: <54C0B156.3080608@linaro.org>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
+	<54C0B156.3080608@linaro.org> <54C59333.8080005@cn.fujitsu.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.78]
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: Alex Williamson <alex.williamson@redhat.com>
+X-Originating-IP: [10.5.82.6]
+X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - GC39 (Linux)/8.0.6_GA_5922)
+Thread-Topic: vfio: fix wrong initialize vfio_group_list
+Thread-Index: S2keycWi3FXTFfxznBujk/VgVs9b4Q==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 209.132.183.25
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Eric Auger <eric.auger@linaro.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vfio: fix wrong initialize
 	vfio_group_list
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,46 +47,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Jan 2015 01:13:44 -0000
+X-List-Received-Date: Mon, 26 Jan 2015 02:06:36 -0000
 
-CC: qemu-trivial@nongnu.org
 
-On 01/22/2015 04:14 PM, Eric Auger wrote:
-> Hi Chen,
->
-> thanks for correcting this mistake I introduced when moving code from
-> pci to common.
 
-so, can you check in this patch?
+----- Original Message -----
+> CC: qemu-trivial@nongnu.org
+> 
+> On 01/22/2015 04:14 PM, Eric Auger wrote:
+> > Hi Chen,
+> >
+> > thanks for correcting this mistake I introduced when moving code from
+> > pci to common.
+> 
+> so, can you check in this patch?
 
-Thanks,
-Chen
+I've got it queued up and while it's clearly an error, I don't see that the fix actually changes the resulting code, the parameter is ignored in the macro.  Am I missing something?  If that's the case, I'll include it in my next pull request, but I don't see any pressing reason to rush that request.  Thanks,
 
->
-> Best Regards
->
-> Eric
->
-> On 01/22/2015 04:50 AM, Chen Fan wrote:
->> Signed-off-by: Chen Fan <chen.fan.fnst@cn.fujitsu.com>
->> ---
->>   hw/vfio/common.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->> index cf483ff..e71385e 100644
->> --- a/hw/vfio/common.c
->> +++ b/hw/vfio/common.c
->> @@ -32,7 +32,7 @@
->>   #include "trace.h"
->>   
->>   struct vfio_group_head vfio_group_list =
->> -    QLIST_HEAD_INITIALIZER(vfio_address_spaces);
->> +    QLIST_HEAD_INITIALIZER(vfio_group_list);
->>   struct vfio_as_head vfio_address_spaces =
->>       QLIST_HEAD_INITIALIZER(vfio_address_spaces);
->>   
->>
->
+Alex
 
+> > On 01/22/2015 04:50 AM, Chen Fan wrote:
+> >> Signed-off-by: Chen Fan <chen.fan.fnst@cn.fujitsu.com>
+> >> ---
+> >>   hw/vfio/common.c | 2 +-
+> >>   1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> >> index cf483ff..e71385e 100644
+> >> --- a/hw/vfio/common.c
+> >> +++ b/hw/vfio/common.c
+> >> @@ -32,7 +32,7 @@
+> >>   #include "trace.h"
+> >>   
+> >>   struct vfio_group_head vfio_group_list =
+> >> -    QLIST_HEAD_INITIALIZER(vfio_address_spaces);
+> >> +    QLIST_HEAD_INITIALIZER(vfio_group_list);
+> >>   struct vfio_as_head vfio_address_spaces =
+> >>       QLIST_HEAD_INITIALIZER(vfio_address_spaces);
+> >>   
+> >>
+> >
+> 
+> 
 
