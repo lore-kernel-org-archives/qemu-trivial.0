@@ -1,47 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YFoBz-0002KI-My
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Jan 2015 13:15:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60880)
+	id 1YFsZB-0001VW-24
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Jan 2015 17:55:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33278)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1YFoBx-0002HS-Pe
-	for qemu-trivial@nongnu.org; Mon, 26 Jan 2015 13:15:18 -0500
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YFsZ8-0001SP-27
+	for qemu-trivial@nongnu.org; Mon, 26 Jan 2015 17:55:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1YFoBw-0005Cn-MK
-	for qemu-trivial@nongnu.org; Mon, 26 Jan 2015 13:15:17 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49213)
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YFsZ7-0001dI-7A
+	for qemu-trivial@nongnu.org; Mon, 26 Jan 2015 17:55:29 -0500
+Received: from out11.biz.mail.alibaba.com ([205.204.114.131]:55430)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>)
-	id 1YFoBp-0005BA-FN; Mon, 26 Jan 2015 13:15:09 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0QIF8Mb018891
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 26 Jan 2015 13:15:08 -0500
-Received: from localhost (ovpn-116-18.ams2.redhat.com [10.36.116.18])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t0QIF7BR014657; Mon, 26 Jan 2015 13:15:07 -0500
-From: Juan Quintela <quintela@redhat.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-In-Reply-To: <20150126180647.GD2291@work-vm> (David Alan Gilbert's message of
-	"Mon, 26 Jan 2015 18:06:47 +0000")
-References: <1422270747-23994-1-git-send-email-pbonzini@redhat.com>
-	<1422270747-23994-8-git-send-email-pbonzini@redhat.com>
-	<20150126180647.GD2291@work-vm>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.4 (gnu/linux)
-Date: Mon, 26 Jan 2015 19:15:06 +0100
-Message-ID: <877fw9flxx.fsf@neno.neno>
+	(envelope-from <gang.chen@sunrus.com.cn>)
+	id 1YFsZ2-0001cL-05; Mon, 26 Jan 2015 17:55:24 -0500
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07723664|-1; FP=0|0|0|0|0|-1|-1|-1;
+	HT=r41f05022; MF=gang.chen@sunrus.com.cn; PH=DS; RN=4; RT=4;
+	SR=0; 
+Received: from
+	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
+	ip:223.72.65.66) by smtp.aliyun-inc.com(10.147.38.22);
+	Tue, 27 Jan 2015 06:55:13 +0800
+Message-ID: <54C6C79E.1090303@sunrus.com.cn>
+Date: Tue, 27 Jan 2015 07:02:54 +0800
+From: Chen Gang S <gang.chen@sunrus.com.cn>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, armbru@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH 7/7] migration: do floating-point division
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <54C4DC4E.3080306@sunrus.com.cn>
+	<CAFEAcA_hGO-R85yYXDU7eoC7FHF_v96y7Oh54SX9HXBAss6Vpg@mail.gmail.com>
+	<54C5672D.4080800@sunrus.com.cn>
+	<CAFEAcA9mqzpHsWcyDdzBYDWdxsR1AoDy3akgHCaMUbjZ0zh=0Q@mail.gmail.com>
+	<54C6566B.6050205@sunrus.com.cn>
+	<CAFEAcA8q7jNqL8DFygnHaiiv=2pGKXBQ_Gi1icOn9H=diOXK5Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA8q7jNqL8DFygnHaiiv=2pGKXBQ_Gi1icOn9H=diOXK5Q@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 205.204.114.131
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] linux-user/syscall.c: Let all
+ lock_user_struct() and unlock_user_struct() paired with each other
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-Reply-To: quintela@redhat.com
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -50,93 +52,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Jan 2015 18:15:19 -0000
+X-List-Received-Date: Mon, 26 Jan 2015 22:55:31 -0000
 
-"Dr. David Alan Gilbert" <dgilbert@redhat.com> wrote:
-> * Paolo Bonzini (pbonzini@redhat.com) wrote:
->> Dividing integer expressions transferred_bytes and time_spent, and then converting
->> the integer quotient to type double. Any remainder, or fractional part of the
->> quotient, is ignored.  Fix this.
->> 
->> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
->> ---
->>  migration/migration.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->> 
->> diff --git a/migration/migration.c b/migration/migration.c
->> index b3adbc6..6db75b8 100644
->> --- a/migration/migration.c
->> +++ b/migration/migration.c
->> @@ -646,7 +646,7 @@ static void *migration_thread(void *opaque)
->>          if (current_time >= initial_time + BUFFER_DELAY) {
->>              uint64_t transferred_bytes = qemu_ftell(s->file) - initial_bytes;
->>              uint64_t time_spent = current_time - initial_time;
->> -            double bandwidth = transferred_bytes / time_spent;
->> +            double bandwidth = (double)transferred_bytes / time_spent;
->>              max_size = bandwidth * migrate_max_downtime() / 1000000;
->>  
->>              s->mbps = time_spent ? (((double) transferred_bytes * 8.0) /
+On 1/26/15 23:01, Peter Maydell wrote:
+> On 26 January 2015 at 14:59, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
+>> On 1/26/15 06:10, Peter Maydell wrote:
+>>> I would just like the commit message to be clear about the
+>>> scope of the work the patch covers. If the patch is just "Fix
+>>> mismatched lock/unlock calls in IPC struct conversion functions"
+>>> then that's fine, but the commit message should say that. At the
+>>> moment the commit message is very vague.
+>>>
+>>
+>> OK, thanks.
+>>
+>> I am not quite familiar with this file, so I describe the modification
+>> by function name, e.g. lock_user_struct() and unlick_user_struct() in
+>> the patch subject.
+> 
+> In a big file I think it's often more useful to describe the
+> functions which are being changed. My suggested subject would be:
+> 
+> "Fix mismatched lock/unlock calls in IPC struct conversion functions"
+> 
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+What you said above sounds reasonable to me. 
+ 
+> Riku can decide if he wants a v2 or will just fix it up as he
+> applies it to his linux-user tree.
+> 
 
-we had that fix on RHEL, but I forgot to push it upstream (it was not
-needed as it optimized the calculations at the time).
+OK, thanks.
 
->
-> This feels like it would be better to fix this by merging it into
-> the s->mbps calculation just off the bottom; we currently have:
->
->             uint64_t transferred_bytes = qemu_ftell(s->file) - initial_bytes;
->             uint64_t time_spent = current_time - initial_time;
->             double bandwidth = transferred_bytes / time_spent;
->             max_size = bandwidth * migrate_max_downtime() / 1000000;
->
->             s->mbps = time_spent ? (((double) transferred_bytes * 8.0) /
->                     ((double) time_spent / 1000.0)) / 1000.0 / 1000.0 : -1;
->
->  
-> Note that the mbps has a check for time_spent being 0 - if that can ever happen,
-> how come 'bandwidth' has never triggered it?
->  
->   transferred_bytes    -    bytes
->   time_spent           -    ms
->   bandwidth            -    bytes/ms
->   migrate_max_downtime -    in ns
->   s->mbps              -    mbit/s
->
-> giving
->
->   max_size = bytes/ms * time-in-ns  / 1000000
->            = bytes/ms * time-in-ms
->            = bytes
->
-> so how about something like:
->             uint64_t transferred_bytes = qemu_ftell(s->file) - initial_bytes;
->             uint64_t time_spent = current_time - initial_time;
->             double   bytes_s    = (double) transferred_bytes / ((double) time_spent / 1000.0));
->             s->mbps = (bytes_s * 8.0) / 1000000.0;
->             max_size = bytes_s * (migrate_max_downtime() / 1000000000.0);
+-- 
+Chen Gang
 
-I think we can do something like this on the normal tree, or just go for
-sane units left and right?
-
-
-> that also needs the trace fixing and the line a few lines below, I *think* we have
->    dirty_bytes_rate is in bytes/second ? (arch_init.c)
->    expected_downtime in ms ?
->                 s->expected_downtime = s->dirty_bytes_rate / bandwidth;
-> so,  bytes/s / bytes/ms    erm that's supposed to come out as time in ms
->
->                 s->expected_downtime = (int64_t)(1000 * (double)s->dirty_bytes_rate / bytes_s);
->
-> Yeuch.
->
-> Dave
->
->> -- 
->> 1.8.3.1
->> 
->> 
-> --
-> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+Open, share, and attitude like air, water, and life which God blessed
 
