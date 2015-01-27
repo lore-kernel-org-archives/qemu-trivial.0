@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YG8kf-0005h2-FV
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Jan 2015 11:12:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34503)
+	id 1YG8mI-0007WH-4S
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Jan 2015 11:14:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35247)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YG8kS-0005TF-SU
-	for qemu-trivial@nongnu.org; Tue, 27 Jan 2015 11:12:21 -0500
+	(envelope-from <armbru@redhat.com>) id 1YG8mB-0007LX-GQ
+	for qemu-trivial@nongnu.org; Tue, 27 Jan 2015 11:14:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YG8kJ-0001qP-D1
-	for qemu-trivial@nongnu.org; Tue, 27 Jan 2015 11:12:13 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:39348)
+	(envelope-from <armbru@redhat.com>) id 1YG8mA-0002bq-PW
+	for qemu-trivial@nongnu.org; Tue, 27 Jan 2015 11:14:03 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50098)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YG8kC-0001pq-Os; Tue, 27 Jan 2015 11:12:01 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 6855642F85;
-	Tue, 27 Jan 2015 19:11:58 +0300 (MSK)
-Message-ID: <54C7B8CE.5020708@msgid.tls.msk.ru>
-Date: Tue, 27 Jan 2015 19:11:58 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.3.0
-MIME-Version: 1.0
-To: Chen Gang S <gang.chen@sunrus.com.cn>, riku.voipio@iki.fi, 
-	david.gilbert@linaro.org, Peter Maydell <peter.maydell@linaro.org>
-References: <54C4CD81.10503@sunrus.com.cn>
-In-Reply-To: <54C4CD81.10503@sunrus.com.cn>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <armbru@redhat.com>)
+	id 1YG8m4-0002bD-JU; Tue, 27 Jan 2015 11:13:56 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0RGDsms005108
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Tue, 27 Jan 2015 11:13:55 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-17.ams2.redhat.com
+	[10.36.116.17])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t0RGDrOR000738
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 27 Jan 2015 11:13:54 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 97033303F83B; Tue, 27 Jan 2015 17:13:52 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 27 Jan 2015 17:13:49 +0100
+Message-Id: <1422375232-29283-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH v2] linux-user/main.c: Remove redundant
- end_exclusive() in arm_kernel_cmpxchg64_helper()
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH 0/3] util/uri: Cleanups and a bug fix
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,104 +45,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Jan 2015 16:12:24 -0000
+X-List-Received-Date: Tue, 27 Jan 2015 16:14:09 -0000
 
-25.01.2015 14:03, Chen Gang S wrote:
-> start/end_exclusive() need be pairs, except the start_exclusive() in
+Note: checkpatch is unhappy with the first patch, because I refrained
+from cleaning up the ugly return(NULL).  They're all over the place.
 
- "need TO be pairs", or "should be pairs" or "should be called in pairs".
+Markus Armbruster (3):
+  util/uri: uri_new() can't fail, drop dead error handling
+  util/uri: realloc2n() can't fail, drop dead error handling
+  util/uri: URI member path can be null, compare more carfully
 
-> stop_all_tasks() which is only used by force_sig(), which will be abort=
-.
+ util/uri.c | 61 +++++++++++++------------------------------------------------
+ 1 file changed, 13 insertions(+), 48 deletions(-)
 
- "which will abort" or "which will call abort()" or "which calls abort()"=
-.
-
-> So at present, start_exclusive() in stop_all_task() need not be paired.
->=20
-> queue_signal() may call force_sig(), or return after kill pid (or queue
-> signal).
-
- "or return after killing pid (or queuing signal)".
-
->     If could return from queue_signal(), stop_all_task() would not
-> be called in time,
-
- "if queue_signal() returns
-
->     the next end_exclusive() would be issue.
-
- "would be AN issue".
-
-But actually we're interested to know answer to a slightly different
-question: whenever queue_signal() returns or not (it doesn't return in
-force_sig case).  So whole this part becomes something like:
-
- queue_signal() may either call force_sig() and die, or return.  In
- the latter case, stop_all_task() would not be called in time, so
- next end_exclusive() will be an issue.
-
-And even more, when you look at this function (arm_kernel_cmpxchg64_helpe=
-r),
-you'll notice it has two calls to end_exclusive() in sigsegv case, withou=
-t
-a call to start_exclusive().  _That_ is, I think, the key point here --
-the rest of the information here is not really very relevant, because
-the actual problem is this double call to end_exclusive() which should
-be removed.  It is not really that interesting to know that it's not
-_necessary_ to call end_exclusive() in some cases which leads to abort(),
-because this is not one of them anyway (since queue_signal() might return
-just fine), and because while it is not necessary, it is not an error
-either.  With all this extra info, thie commit message becomes just too
-confusing.
-
-> So in arm_kernel_cmpxchg64_helper() for ARM, need remove end_exclusive(=
-)
-> after queue_signal().
-
-"need TO remove", and again the missing subject.  "We need to remove", or
-"we should remove", or, yet another variant, "extra end_exclusive() call
-should be removed".
-
->   The related commit: "97cc756 linux-user: Implement
-> new ARM 64 bit cmpxchg kernel helper".
-
-
-So, how about this (the subject is fine):
-
- start/end_exclusive() should be paired to each other.  However, in
- arm_kernel_cmpxchg64_helper() function, end_exclusive() is called
- twice in a row.  Remove the second, redundrand, call.
-
- Commit which introduced this problem is"97cc756 linux-user: Implement
- new ARM 64 bit cmpxchg kernel helper".
-
-?
-
-Did I understand the problem correctly?
-
-Thanks,
-
-/mjt
-
-> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-> ---
->  linux-user/main.c | 2 --
->  1 file changed, 2 deletions(-)
->=20
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index 8c70be4..2d52c1f 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -523,8 +523,6 @@ segv:
->      info.si_code =3D TARGET_SEGV_MAPERR;
->      info._sifields._sigfault._addr =3D env->exception.vaddress;
->      queue_signal(env, info.si_signo, &info);
-> -
-> -    end_exclusive();
->  }
-> =20
->  /* Handle a jump to the kernel code page.  */
->=20
+-- 
+1.9.3
 
 
