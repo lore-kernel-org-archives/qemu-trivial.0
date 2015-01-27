@@ -1,50 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YG8Ob-0004Sc-Lz
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Jan 2015 10:49:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57605)
+	id 1YG8kf-0005h2-FV
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Jan 2015 11:12:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34503)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YG8OU-0004ID-2F
-	for qemu-trivial@nongnu.org; Tue, 27 Jan 2015 10:49:39 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YG8kS-0005TF-SU
+	for qemu-trivial@nongnu.org; Tue, 27 Jan 2015 11:12:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YG8OQ-0000uJ-T0
-	for qemu-trivial@nongnu.org; Tue, 27 Jan 2015 10:49:33 -0500
-Received: from mail-la0-f45.google.com ([209.85.215.45]:38225)
+	(envelope-from <mjt@tls.msk.ru>) id 1YG8kJ-0001qP-D1
+	for qemu-trivial@nongnu.org; Tue, 27 Jan 2015 11:12:13 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:39348)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YG8OQ-0000sM-N2
-	for qemu-trivial@nongnu.org; Tue, 27 Jan 2015 10:49:30 -0500
-Received: by mail-la0-f45.google.com with SMTP id gd6so13969435lab.4
-	for <qemu-trivial@nongnu.org>; Tue, 27 Jan 2015 07:49:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=/NRvTyQn5pJjWbRAItJiFBjyfgmFKtX9p6PQRpumTIg=;
-	b=U5v3hM5N0KMl84jJWz8gdUadufKsxiABpx7tx2e0SGP1MaKKlfS6Lk0uPEor3ecvuA
-	kAy7d7q4SRr5dCm2k7K8tQfFDGL9qKj6jq25SFPriz9AsL7T1AjlwAz35Rt3/y0KlZA2
-	DD9Qya9GseWR6ldhoMp8sI3TgWsPfQAkC8VmKqwHBw6RwbxRYWCguCxFdkaY3fPfD4qJ
-	wCnAn6ZxXxunpaqzoZmlrkpjG3I5lyWzKJ3VDRToi7cz2EjcoQ80SdsMSzB/lPdkSF2U
-	VvXG5/A8hkr/5nDl2bCd91xyQcB6F44iW357yeQiNiHtl+kIc6EP4x9RQPc1zEPVDYup
-	RhSQ==
-X-Gm-Message-State: ALoCoQnXwk7xOIYhWUwiXNW444SRkMSbrHLUK00D5rZgTV5b7gfqFBSBJQxD/TnX9HYFM3yyMCpz
-X-Received: by 10.153.5.35 with SMTP id cj3mr2494641lad.49.1422373769726; Tue,
-	27 Jan 2015 07:49:29 -0800 (PST)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YG8kC-0001pq-Os; Tue, 27 Jan 2015 11:12:01 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 6855642F85;
+	Tue, 27 Jan 2015 19:11:58 +0300 (MSK)
+Message-ID: <54C7B8CE.5020708@msgid.tls.msk.ru>
+Date: Tue, 27 Jan 2015 19:11:58 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.3.0
 MIME-Version: 1.0
-Received: by 10.112.21.34 with HTTP; Tue, 27 Jan 2015 07:49:09 -0800 (PST)
-In-Reply-To: <54C7B30D.4060204@msgid.tls.msk.ru>
-References: <54C4D51E.4030408@sunrus.com.cn>
-	<54C7B30D.4060204@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Jan 2015 15:49:09 +0000
-Message-ID: <CAFEAcA_0AJNCkhRwm5B1KroDRaF2ks-n3wf09tQzKTeOqNRHnQ@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.45
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
-	Chen Gang S <gang.chen@sunrus.com.cn>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] linux-user/main.c: Use TARGET_SIG*
-	instead of SIG*
+To: Chen Gang S <gang.chen@sunrus.com.cn>, riku.voipio@iki.fi, 
+	david.gilbert@linaro.org, Peter Maydell <peter.maydell@linaro.org>
+References: <54C4CD81.10503@sunrus.com.cn>
+In-Reply-To: <54C4CD81.10503@sunrus.com.cn>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH v2] linux-user/main.c: Remove redundant
+ end_exclusive() in arm_kernel_cmpxchg64_helper()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,17 +45,104 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Jan 2015 15:49:40 -0000
+X-List-Received-Date: Tue, 27 Jan 2015 16:12:24 -0000
 
-On 27 January 2015 at 15:47, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 25.01.2015 14:35, Chen Gang S wrote:
->> In main.c, all SIG* need be change to TARGET_SIG*, since the related
->> next call are all for TARGET_SIG*: queue_signal() and gdb_handlesig().
->
-> In main.c, all SIG* should be TARGET_SIG*, since the relevant functions
-> (queue_signal() and gdb_handlesig()) expects TARGET_SIG*.
+25.01.2015 14:03, Chen Gang S wrote:
+> start/end_exclusive() need be pairs, except the start_exclusive() in
 
-"expect", if you want to be picky about the grammar...
+ "need TO be pairs", or "should be pairs" or "should be called in pairs".
 
--- PMM
+> stop_all_tasks() which is only used by force_sig(), which will be abort=
+.
+
+ "which will abort" or "which will call abort()" or "which calls abort()"=
+.
+
+> So at present, start_exclusive() in stop_all_task() need not be paired.
+>=20
+> queue_signal() may call force_sig(), or return after kill pid (or queue
+> signal).
+
+ "or return after killing pid (or queuing signal)".
+
+>     If could return from queue_signal(), stop_all_task() would not
+> be called in time,
+
+ "if queue_signal() returns
+
+>     the next end_exclusive() would be issue.
+
+ "would be AN issue".
+
+But actually we're interested to know answer to a slightly different
+question: whenever queue_signal() returns or not (it doesn't return in
+force_sig case).  So whole this part becomes something like:
+
+ queue_signal() may either call force_sig() and die, or return.  In
+ the latter case, stop_all_task() would not be called in time, so
+ next end_exclusive() will be an issue.
+
+And even more, when you look at this function (arm_kernel_cmpxchg64_helpe=
+r),
+you'll notice it has two calls to end_exclusive() in sigsegv case, withou=
+t
+a call to start_exclusive().  _That_ is, I think, the key point here --
+the rest of the information here is not really very relevant, because
+the actual problem is this double call to end_exclusive() which should
+be removed.  It is not really that interesting to know that it's not
+_necessary_ to call end_exclusive() in some cases which leads to abort(),
+because this is not one of them anyway (since queue_signal() might return
+just fine), and because while it is not necessary, it is not an error
+either.  With all this extra info, thie commit message becomes just too
+confusing.
+
+> So in arm_kernel_cmpxchg64_helper() for ARM, need remove end_exclusive(=
+)
+> after queue_signal().
+
+"need TO remove", and again the missing subject.  "We need to remove", or
+"we should remove", or, yet another variant, "extra end_exclusive() call
+should be removed".
+
+>   The related commit: "97cc756 linux-user: Implement
+> new ARM 64 bit cmpxchg kernel helper".
+
+
+So, how about this (the subject is fine):
+
+ start/end_exclusive() should be paired to each other.  However, in
+ arm_kernel_cmpxchg64_helper() function, end_exclusive() is called
+ twice in a row.  Remove the second, redundrand, call.
+
+ Commit which introduced this problem is"97cc756 linux-user: Implement
+ new ARM 64 bit cmpxchg kernel helper".
+
+?
+
+Did I understand the problem correctly?
+
+Thanks,
+
+/mjt
+
+> Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
+> ---
+>  linux-user/main.c | 2 --
+>  1 file changed, 2 deletions(-)
+>=20
+> diff --git a/linux-user/main.c b/linux-user/main.c
+> index 8c70be4..2d52c1f 100644
+> --- a/linux-user/main.c
+> +++ b/linux-user/main.c
+> @@ -523,8 +523,6 @@ segv:
+>      info.si_code =3D TARGET_SEGV_MAPERR;
+>      info._sifields._sigfault._addr =3D env->exception.vaddress;
+>      queue_signal(env, info.si_signo, &info);
+> -
+> -    end_exclusive();
+>  }
+> =20
+>  /* Handle a jump to the kernel code page.  */
+>=20
+
 
