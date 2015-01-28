@@ -1,53 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YGShg-0004vX-1D
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 08:30:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35377)
+	id 1YGTaQ-00009O-CG
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 09:27:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49475)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YGShd-0004tx-FF
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 08:30:42 -0500
+	(envelope-from <nchip@afflict.kos.to>) id 1YGTaO-00006f-Cv
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 09:27:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YGShc-0006cj-BR
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 08:30:41 -0500
-Received: from mail-wg0-x22c.google.com ([2a00:1450:400c:c00::22c]:57474)
+	(envelope-from <nchip@afflict.kos.to>) id 1YGTaK-00039A-JA
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 09:27:16 -0500
+Received: from afflict.kos.to ([92.243.29.197]:35842)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YGShX-0006Yb-Op; Wed, 28 Jan 2015 08:30:36 -0500
-Received: by mail-wg0-f44.google.com with SMTP id z12so20619483wgg.3;
-	Wed, 28 Jan 2015 05:30:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=5FB+jHLOWvjkxitLb0sIJKyug1JKgmOl9aDXGZ/gBlU=;
-	b=e7w7YCRQSPhdIvUA393B0tot9/Ll4NC2qWw0iddsyD5jf6Xc6jv0Pw47PUZ8dhPu5n
-	o8oXKMbpyhH/jETyWP5/qWXBOJ32DNrY+RT4rqPUA1okuOTPlcuZ/XU77M8gREW/22yC
-	ljCXsvxWUk8qQKT9ZbJS6gsG5z9eqzLz3shzjTqipdzmCoSpcRfhJMWUqjl4G1Wqk0fs
-	KdIiyUk5+ML/LibD8DzyWIR/cD/giib5W7TCqQCz7krUjWsFXLl4plDp+Hjn9EfYZKC4
-	pZmiI03V8hlkzZZer8sy2qhezjvJ1e67LkgxmGOpZZioQo3Zd4JkrNQQ2NpzWcSHHRwr
-	zSfg==
-X-Received: by 10.180.21.162 with SMTP id w2mr7090841wie.42.1422451834317;
-	Wed, 28 Jan 2015 05:30:34 -0800 (PST)
-Received: from [10.32.176.134] (nat-pool-mxp-t.redhat.com. [209.132.186.18])
-	by mx.google.com with ESMTPSA id cx3sm2842124wib.10.2015.01.28.05.30.32
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 28 Jan 2015 05:30:33 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <54C8E477.6030304@redhat.com>
-Date: Wed, 28 Jan 2015 14:30:31 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <nchip@afflict.kos.to>)
+	id 1YGTaG-00037j-2I; Wed, 28 Jan 2015 09:27:08 -0500
+Received: by afflict.kos.to (Postfix, from userid 1000)
+	id 6D3FE264DA; Wed, 28 Jan 2015 15:27:05 +0100 (CET)
+Date: Wed, 28 Jan 2015 16:27:05 +0200
+From: Riku Voipio <riku.voipio@iki.fi>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20150128142705.GA22971@afflict.kos.to>
+References: <54C4DC4E.3080306@sunrus.com.cn>
+	<CAFEAcA_hGO-R85yYXDU7eoC7FHF_v96y7Oh54SX9HXBAss6Vpg@mail.gmail.com>
+	<54C5672D.4080800@sunrus.com.cn>
+	<CAFEAcA9mqzpHsWcyDdzBYDWdxsR1AoDy3akgHCaMUbjZ0zh=0Q@mail.gmail.com>
+	<54C6566B.6050205@sunrus.com.cn>
+	<CAFEAcA8q7jNqL8DFygnHaiiv=2pGKXBQ_Gi1icOn9H=diOXK5Q@mail.gmail.com>
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1422375232-29283-1-git-send-email-armbru@redhat.com>	<54C7C02E.40701@redhat.com>
-	<87twzb881q.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87twzb881q.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c00::22c
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 0/3] util/uri: Cleanups and a bug fix
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8q7jNqL8DFygnHaiiv=2pGKXBQ_Gi1icOn9H=diOXK5Q@mail.gmail.com>
+X-message-flag: Warning: message not sent with a DRM-Certified client
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 92.243.29.197
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
+	Chen Gang S <gang.chen@sunrus.com.cn>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] linux-user/syscall.c: Let all
+ lock_user_struct() and unlock_user_struct() paired with each other
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,17 +47,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Jan 2015 13:30:42 -0000
+X-List-Received-Date: Wed, 28 Jan 2015 14:27:17 -0000
 
+Hi,
 
+First of all, thanks Chen for taking time to improve the linux-user
+codebase in qemu!
 
-On 28/01/2015 12:21, Markus Armbruster wrote:
->> > Patches 1-2 okay.  For patch 3 a very similar patch was posted yesterday.
-> Missed it until now.  Yes, it's functionally identical.
-> 
-> Dear -trivial maintainer, pick whichever you like better :)
+On Mon, Jan 26, 2015 at 03:01:52PM +0000, Peter Maydell wrote:
+> On 26 January 2015 at 14:59, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
+> > On 1/26/15 06:10, Peter Maydell wrote:
+> >> I would just like the commit message to be clear about the
+> >> scope of the work the patch covers. If the patch is just "Fix
+> >> mismatched lock/unlock calls in IPC struct conversion functions"
+> >> then that's fine, but the commit message should say that. At the
+> >> moment the commit message is very vague.
+> >>
+> >
+> > OK, thanks.
+> >
+> > I am not quite familiar with this file, so I describe the modification
+> > by function name, e.g. lock_user_struct() and unlick_user_struct() in
+> > the patch subject.
 
-Sure -- Markus's is nicer indeed.
+> In a big file I think it's often more useful to describe the
+> functions which are being changed. My suggested subject would be:
+ 
+> "Fix mismatched lock/unlock calls in IPC struct conversion functions"
+ 
+> Riku can decide if he wants a v2 or will just fix it up as he
+> applies it to his linux-user tree.
 
-Paolo
+No need for v2, I've change the title in my tree.
+
+Riku
+
 
