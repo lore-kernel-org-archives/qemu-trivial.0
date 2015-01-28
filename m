@@ -1,38 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YGR1Q-0006dq-7B
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 06:43:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32892)
+	id 1YGShg-0004vX-1D
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 08:30:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35377)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YGR1N-0006bt-UA
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 06:42:58 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1YGShd-0004tx-FF
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 08:30:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YGR1N-0005hC-66
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 06:42:57 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:56261)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1YGShc-0006cj-BR
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 08:30:41 -0500
+Received: from mail-wg0-x22c.google.com ([2a00:1450:400c:c00::22c]:57474)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YGR1I-0005f0-VA; Wed, 28 Jan 2015 06:42:53 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id C4DC14317C;
-	Wed, 28 Jan 2015 14:42:42 +0300 (MSK)
-Message-ID: <54C8CB32.4070706@msgid.tls.msk.ru>
-Date: Wed, 28 Jan 2015 14:42:42 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1YGShX-0006Yb-Op; Wed, 28 Jan 2015 08:30:36 -0500
+Received: by mail-wg0-f44.google.com with SMTP id z12so20619483wgg.3;
+	Wed, 28 Jan 2015 05:30:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=5FB+jHLOWvjkxitLb0sIJKyug1JKgmOl9aDXGZ/gBlU=;
+	b=e7w7YCRQSPhdIvUA393B0tot9/Ll4NC2qWw0iddsyD5jf6Xc6jv0Pw47PUZ8dhPu5n
+	o8oXKMbpyhH/jETyWP5/qWXBOJ32DNrY+RT4rqPUA1okuOTPlcuZ/XU77M8gREW/22yC
+	ljCXsvxWUk8qQKT9ZbJS6gsG5z9eqzLz3shzjTqipdzmCoSpcRfhJMWUqjl4G1Wqk0fs
+	KdIiyUk5+ML/LibD8DzyWIR/cD/giib5W7TCqQCz7krUjWsFXLl4plDp+Hjn9EfYZKC4
+	pZmiI03V8hlkzZZer8sy2qhezjvJ1e67LkgxmGOpZZioQo3Zd4JkrNQQ2NpzWcSHHRwr
+	zSfg==
+X-Received: by 10.180.21.162 with SMTP id w2mr7090841wie.42.1422451834317;
+	Wed, 28 Jan 2015 05:30:34 -0800 (PST)
+Received: from [10.32.176.134] (nat-pool-mxp-t.redhat.com. [209.132.186.18])
+	by mx.google.com with ESMTPSA id cx3sm2842124wib.10.2015.01.28.05.30.32
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 28 Jan 2015 05:30:33 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <54C8E477.6030304@redhat.com>
+Date: Wed, 28 Jan 2015 14:30:31 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.3.0
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Thomas Huth <thuth@linux.vnet.ibm.com>, qemu-trivial@nongnu.org, 
-	qemu-devel@nongnu.org
-References: <1422360686-5895-1-git-send-email-thuth@linux.vnet.ibm.com>
-In-Reply-To: <1422360686-5895-1-git-send-email-thuth@linux.vnet.ibm.com>
-OpenPGP: id=804465C5
+To: Markus Armbruster <armbru@redhat.com>
+References: <1422375232-29283-1-git-send-email-armbru@redhat.com>	<54C7C02E.40701@redhat.com>
+	<87twzb881q.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87twzb881q.fsf@blackfin.pond.sub.org>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] qemu-log: Correct help text of 'log
-	cpu_reset'
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c00::22c
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 0/3] util/uri: Cleanups and a bug fix
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,9 +59,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Jan 2015 11:42:58 -0000
+X-List-Received-Date: Wed, 28 Jan 2015 13:30:42 -0000
 
-Applied to -trivial, thank you!
 
-/mjt
+
+On 28/01/2015 12:21, Markus Armbruster wrote:
+>> > Patches 1-2 okay.  For patch 3 a very similar patch was posted yesterday.
+> Missed it until now.  Yes, it's functionally identical.
+> 
+> Dear -trivial maintainer, pick whichever you like better :)
+
+Sure -- Markus's is nicer indeed.
+
+Paolo
 
