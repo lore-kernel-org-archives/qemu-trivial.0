@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YGU0Z-0007s2-Td
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 09:54:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55420)
+	id 1YGU0f-000828-5j
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 09:54:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55436)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YGU0X-0007nG-LW
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 09:54:18 -0500
+	(envelope-from <armbru@redhat.com>) id 1YGU0Y-0007oL-58
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 09:54:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YGU0W-0006Ii-Ur
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 09:54:17 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39785)
+	(envelope-from <armbru@redhat.com>) id 1YGU0X-0006Iu-9N
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 09:54:18 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45581)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@redhat.com>)
-	id 1YGU0O-0006GC-3E; Wed, 28 Jan 2015 09:54:08 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0SEs7xD028915
+	id 1YGU0P-0006Gc-4p; Wed, 28 Jan 2015 09:54:09 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0SEs7fu021491
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 28 Jan 2015 09:54:07 -0500
+	verify=FAIL); Wed, 28 Jan 2015 09:54:08 -0500
 Received: from blackfin.pond.sub.org (ovpn-116-51.ams2.redhat.com
 	[10.36.116.51])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t0SEs5Ds019283
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t0SEs557021854
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
 	verify=NO); Wed, 28 Jan 2015 09:54:06 -0500
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 1A93D3008AD5; Wed, 28 Jan 2015 15:54:05 +0100 (CET)
+	id 010CF30000B4; Wed, 28 Jan 2015 15:54:04 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 28 Jan 2015 15:54:03 +0100
-Message-Id: <1422456844-13043-4-git-send-email-armbru@redhat.com>
+Date: Wed, 28 Jan 2015 15:54:01 +0100
+Message-Id: <1422456844-13043-2-git-send-email-armbru@redhat.com>
 In-Reply-To: <1422456844-13043-1-git-send-email-armbru@redhat.com>
 References: <1422456844-13043-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 3/4] spapr_vio: Pair g_malloc() with g_free(),
-	not free()
+Subject: [Qemu-trivial] [PATCH 1/4] qemu-option: Replace pointless use of
+	g_malloc0() by g_malloc()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,30 +48,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Jan 2015 14:54:18 -0000
+X-List-Received-Date: Wed, 28 Jan 2015 14:54:23 -0000
 
-Spotted by Coverity with preview checker ALLOC_FREE_MISMATCH enabled
-and my "coverity: Model g_free() isn't necessarily free()" model patch
-applied.
+get_opt_value() takes a write-only buffer, so zeroing it is pointless.
+We don't do it elsewhere, either.
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- hw/ppc/spapr_vio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ util/qemu-option.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/ppc/spapr_vio.c b/hw/ppc/spapr_vio.c
-index dc9e46a..032ee1a 100644
---- a/hw/ppc/spapr_vio.c
-+++ b/hw/ppc/spapr_vio.c
-@@ -648,7 +648,7 @@ int spapr_populate_vdevice(VIOsPAPRBus *bus, void *fdt)
+diff --git a/util/qemu-option.c b/util/qemu-option.c
+index a708241..c779150 100644
+--- a/util/qemu-option.c
++++ b/util/qemu-option.c
+@@ -213,7 +213,7 @@ void parse_option_size(const char *name, const char *value,
+ bool has_help_option(const char *param)
+ {
+     size_t buflen = strlen(param) + 1;
+-    char *buf = g_malloc0(buflen);
++    char *buf = g_malloc(buflen);
+     const char *p = param;
+     bool result = false;
  
-     ret = 0;
- out:
--    free(qdevs);
-+    g_free(qdevs);
+@@ -237,7 +237,7 @@ out:
+ bool is_valid_option_list(const char *param)
+ {
+     size_t buflen = strlen(param) + 1;
+-    char *buf = g_malloc0(buflen);
++    char *buf = g_malloc(buflen);
+     const char *p = param;
+     bool result = true;
  
-     return ret;
- }
 -- 
 1.9.3
 
