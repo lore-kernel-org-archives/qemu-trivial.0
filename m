@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YGdwH-0000pO-Oo
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 20:30:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36404)
+	id 1YGejr-0004Yr-Ps
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 21:21:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45219)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YGdwE-0000mV-SJ
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 20:30:31 -0500
+	(envelope-from <eblake@redhat.com>) id 1YGejo-0004Uj-3b
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 21:21:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YGdwD-00032o-T0
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 20:30:30 -0500
-Received: from mail113-251.mail.alibaba.com ([205.204.113.251]:37891
-	helo=us-alimail-mta1.hst.scl.en.alidc.net)
+	(envelope-from <eblake@redhat.com>) id 1YGejn-0002g5-3I
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 21:21:44 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59184)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>)
-	id 1YGdw9-00031k-Ip; Wed, 28 Jan 2015 20:30:25 -0500
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.08021643|-1; FP=0|0|0|0|0|-1|-1|-1;
-	HT=r41g03013; MF=gang.chen@sunrus.com.cn; PH=DS; RN=5; RT=5;
-	SR=0; 
-Received: from
-	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
-	ip:124.127.118.42) by smtp.aliyun-inc.com(10.194.100.108);
-	Thu, 29 Jan 2015 09:30:13 +0800
-Message-ID: <54C98EF3.3070405@sunrus.com.cn>
-Date: Thu, 29 Jan 2015 09:37:55 +0800
-From: Chen Gang S <gang.chen@sunrus.com.cn>
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
+	(envelope-from <eblake@redhat.com>)
+	id 1YGeji-0002eX-AN; Wed, 28 Jan 2015 21:21:38 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0T2LXGO012131
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Wed, 28 Jan 2015 21:21:33 -0500
+Received: from [10.3.113.9] ([10.3.113.9])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t0T2LWYq023374; Wed, 28 Jan 2015 21:21:32 -0500
+Message-ID: <54C9992C.6070601@redhat.com>
+Date: Wed, 28 Jan 2015 19:21:32 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <54C4DC4E.3080306@sunrus.com.cn>
-	<CAFEAcA_hGO-R85yYXDU7eoC7FHF_v96y7Oh54SX9HXBAss6Vpg@mail.gmail.com>
-	<54C5672D.4080800@sunrus.com.cn>
-	<CAFEAcA9mqzpHsWcyDdzBYDWdxsR1AoDy3akgHCaMUbjZ0zh=0Q@mail.gmail.com>
-	<54C6566B.6050205@sunrus.com.cn>
-	<CAFEAcA8q7jNqL8DFygnHaiiv=2pGKXBQ_Gi1icOn9H=diOXK5Q@mail.gmail.com>
-	<20150128142705.GA22971@afflict.kos.to>
-	<54C95E09.1030107@sunrus.com.cn>
-	<CAFEAcA-GviCfmB3vZVFRNXK7BDHoKON7ZCE9-=bE0SrYCQj9gg@mail.gmail.com>
-In-Reply-To: <CAFEAcA-GviCfmB3vZVFRNXK7BDHoKON7ZCE9-=bE0SrYCQj9gg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 205.204.113.251
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user/syscall.c: Let
- all lock_user_struct() and unlock_user_struct() paired with each other
+To: Gonglei <arei.gonglei@huawei.com>, Markus Armbruster <armbru@redhat.com>
+References: <1422376711-31648-1-git-send-email-armbru@redhat.com>	<87k307qho2.fsf@blackfin.pond.sub.org>
+	<54C97F4F.1090905@huawei.com>
+In-Reply-To: <54C97F4F.1090905@huawei.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="ILGBl3pfQ9dmmINO526IMmp7WW5RIvgEx"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/6] Trivial cleanups around
+	g_malloc()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,33 +52,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Jan 2015 01:30:31 -0000
+X-List-Received-Date: Thu, 29 Jan 2015 02:21:46 -0000
 
-On 1/29/15 06:36, Peter Maydell wrote:
-> On 28 January 2015 at 22:09, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
->>  - Is what I said above really correct (e.g. is linux-user really mainly
->>    for cpu emulation)?.
-> 
-> Not really. linux-user is mainly for running single Linux binaries.
-> It has a secondary use for running gcc test binaries which think
-> they are "bare metal" but actually use some kind of semihosting API.
-> (You should check whether tile has one of those.)
-> 
-> As well as linux-user mode, QEMU has system emulation mode, where
-> we emulate a complete machine.
-> 
-> Both modes need CPU emulation.
-> 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--ILGBl3pfQ9dmmINO526IMmp7WW5RIvgEx
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-OK, thanks.
+On 01/28/2015 05:31 PM, Gonglei wrote:
+> On 2015/1/28 19:16, Markus Armbruster wrote:
+>=20
+>> I screwed up cc: qemu-trivial, my apologies.
+>>
 
-For coding and test, is linux-user a good starting position for me? (I
-guess it is).
+>>> Markus Armbruster (6):
+>>>   onenand: g_malloc() can't fail, bury dead error handling
+>>>   rtl8139: g_malloc() can't fail, bury dead error handling
+>>>   kvm: g_malloc() can't fail, bury dead error handling
+>>>   rdma: g_malloc0() can't fail, bury dead error handling
+>>>   vnc: g_realloc() can't fail, bury dead error handling
+>>>   translate-all: Use g_try_malloc() for dynamic translator buffer
+>>>
+
+>>
+>=20
+> For serials:
+
+s/serials/series/
+
+> Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+>=20
+> Regards,
+> -Gonglei
+>=20
+>=20
+>=20
+>=20
+>=20
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
-Thanks.
--- 
-Chen Gang
+--ILGBl3pfQ9dmmINO526IMmp7WW5RIvgEx
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-Open, share, and attitude like air, water, and life which God blessed
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJUyZksAAoJEKeha0olJ0NqQQEH/ijBKq6qKVyqZWv58IPcoOTu
+p1ashWCX9OQnBVQC/9b5LT2WummdvH8AGcNQz7FCExyLZn2zhd7WM2WP2o1WGFD7
+VureAv/m5xFItGi/byl8ZpX4Mf80McPQk5kPZPrT4OqwGn6AWK9xe8Ikq+WZRuoc
+VnR5NYswP35Qzti1vuNQzp3H7CcFQ+Jfu0z8mUryn51r8tLKxrJx1KSmqKB+b/Sp
+ZvczPAjTlnH0jDmI1psHbzEUCST1owAzk8ioA1RNmyilxRtoe4aAVSkYC2E+TCFY
+t/kc+ZL6yFNJTTbt6l4WQgyfNkAmq3IFeRgqJ9USIdr7YwpjmkngYX+WrLUqey8=
+=gxP5
+-----END PGP SIGNATURE-----
+
+--ILGBl3pfQ9dmmINO526IMmp7WW5RIvgEx--
 
