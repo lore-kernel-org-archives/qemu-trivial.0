@@ -1,43 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YGd19-0001bF-BY
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 19:31:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54800)
+	id 1YGdwH-0000pO-Oo
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 20:30:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36404)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YGd16-0001We-PJ
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 19:31:29 -0500
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YGdwE-0000mV-SJ
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 20:30:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YGd16-00089m-0t
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 19:31:28 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:50984)
+	(envelope-from <gang.chen@sunrus.com.cn>) id 1YGdwD-00032o-T0
+	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 20:30:30 -0500
+Received: from mail113-251.mail.alibaba.com ([205.204.113.251]:37891
+	helo=us-alimail-mta1.hst.scl.en.alidc.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YGd0z-00085o-2H; Wed, 28 Jan 2015 19:31:21 -0500
-Received: from 172.24.2.119 (EHLO szxeml426-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CIR91084; Thu, 29 Jan 2015 08:31:17 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml426-hub.china.huawei.com
-	(10.82.67.181) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 29 Jan 2015 08:31:15 +0800
-Message-ID: <54C97F4F.1090905@huawei.com>
-Date: Thu, 29 Jan 2015 08:31:11 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <gang.chen@sunrus.com.cn>)
+	id 1YGdw9-00031k-Ip; Wed, 28 Jan 2015 20:30:25 -0500
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.08021643|-1; FP=0|0|0|0|0|-1|-1|-1;
+	HT=r41g03013; MF=gang.chen@sunrus.com.cn; PH=DS; RN=5; RT=5;
+	SR=0; 
+Received: from
+	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
+	ip:124.127.118.42) by smtp.aliyun-inc.com(10.194.100.108);
+	Thu, 29 Jan 2015 09:30:13 +0800
+Message-ID: <54C98EF3.3070405@sunrus.com.cn>
+Date: Thu, 29 Jan 2015 09:37:55 +0800
+From: Chen Gang S <gang.chen@sunrus.com.cn>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1422376711-31648-1-git-send-email-armbru@redhat.com>
-	<87k307qho2.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87k307qho2.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="ISO-8859-1"
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <54C4DC4E.3080306@sunrus.com.cn>
+	<CAFEAcA_hGO-R85yYXDU7eoC7FHF_v96y7Oh54SX9HXBAss6Vpg@mail.gmail.com>
+	<54C5672D.4080800@sunrus.com.cn>
+	<CAFEAcA9mqzpHsWcyDdzBYDWdxsR1AoDy3akgHCaMUbjZ0zh=0Q@mail.gmail.com>
+	<54C6566B.6050205@sunrus.com.cn>
+	<CAFEAcA8q7jNqL8DFygnHaiiv=2pGKXBQ_Gi1icOn9H=diOXK5Q@mail.gmail.com>
+	<20150128142705.GA22971@afflict.kos.to>
+	<54C95E09.1030107@sunrus.com.cn>
+	<CAFEAcA-GviCfmB3vZVFRNXK7BDHoKON7ZCE9-=bE0SrYCQj9gg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-GviCfmB3vZVFRNXK7BDHoKON7ZCE9-=bE0SrYCQj9gg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/6] Trivial cleanups around
-	g_malloc()
+X-Received-From: 205.204.113.251
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user/syscall.c: Let
+ all lock_user_struct() and unlock_user_struct() paired with each other
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,50 +56,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Jan 2015 00:31:29 -0000
+X-List-Received-Date: Thu, 29 Jan 2015 01:30:31 -0000
 
-On 2015/1/28 19:16, Markus Armbruster wrote:
-
-> I screwed up cc: qemu-trivial, my apologies.
+On 1/29/15 06:36, Peter Maydell wrote:
+> On 28 January 2015 at 22:09, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
+>>  - Is what I said above really correct (e.g. is linux-user really mainly
+>>    for cpu emulation)?.
 > 
-> Markus Armbruster <armbru@redhat.com> writes:
+> Not really. linux-user is mainly for running single Linux binaries.
+> It has a secondary use for running gcc test binaries which think
+> they are "bare metal" but actually use some kind of semihosting API.
+> (You should check whether tile has one of those.)
 > 
->> I'm routing these patches through qemu-trivial, even though some of
->> them touch actively maintained code, and could go through the
->> respective tree instead:
->>
->> * PATCH 1 block (Kevin, Stefan)
->>
->> * PATCH 3 KVM (Paolo)
->>
->> * PATCH 4 migration (Juan, Amit)
->>
->> * PATCH 5 VNC (Gerd)
->>
->> If you want me to reroute any of them, let me know.
->>
->> Markus Armbruster (6):
->>   onenand: g_malloc() can't fail, bury dead error handling
->>   rtl8139: g_malloc() can't fail, bury dead error handling
->>   kvm: g_malloc() can't fail, bury dead error handling
->>   rdma: g_malloc0() can't fail, bury dead error handling
->>   vnc: g_realloc() can't fail, bury dead error handling
->>   translate-all: Use g_try_malloc() for dynamic translator buffer
->>
->>  hw/block/onenand.c |  8 +-------
->>  hw/net/rtl8139.c   | 14 --------------
->>  kvm-all.c          |  4 ----
->>  migration/rdma.c   |  3 ---
->>  translate-all.c    |  2 +-
->>  ui/vnc.c           |  4 ----
->>  6 files changed, 2 insertions(+), 33 deletions(-)
+> As well as linux-user mode, QEMU has system emulation mode, where
+> we emulate a complete machine.
+> 
+> Both modes need CPU emulation.
 > 
 
-For serials:
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+OK, thanks.
 
-Regards,
--Gonglei
+For coding and test, is linux-user a good starting position for me? (I
+guess it is).
 
 
+Thanks.
+-- 
+Chen Gang
+
+Open, share, and attitude like air, water, and life which God blessed
 
