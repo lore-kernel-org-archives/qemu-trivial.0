@@ -1,46 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YGfD6-0007Vt-53
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Jan 2015 21:52:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49075)
+	id 1YHA8K-000431-W2
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Jan 2015 06:53:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43259)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YGfD3-0007UA-CW
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 21:51:58 -0500
+	(envelope-from <rjones@redhat.com>) id 1YHA8I-000425-FT
+	for qemu-trivial@nongnu.org; Fri, 30 Jan 2015 06:53:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YGfCz-0004LP-BY
-	for qemu-trivial@nongnu.org; Wed, 28 Jan 2015 21:51:57 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:3351)
+	(envelope-from <rjones@redhat.com>) id 1YHA8E-0004kI-F3
+	for qemu-trivial@nongnu.org; Fri, 30 Jan 2015 06:53:06 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59111)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YGfCy-0004KE-N3; Wed, 28 Jan 2015 21:51:53 -0500
-Received: from 172.24.2.119 (EHLO szxeml425-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CIS09433; Thu, 29 Jan 2015 10:51:42 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml425-hub.china.huawei.com
-	(10.82.67.180) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 29 Jan 2015 10:51:39 +0800
-Message-ID: <54C9A028.3040509@huawei.com>
-Date: Thu, 29 Jan 2015 10:51:20 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <rjones@redhat.com>)
+	id 1YHA8E-0004kC-6w; Fri, 30 Jan 2015 06:53:02 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0UBr1tu007012
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Fri, 30 Jan 2015 06:53:01 -0500
+Received: from mustang.home.annexia.org (vpn1-5-134.ams2.redhat.com
+	[10.36.5.134])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t0UBqxRa009018; Fri, 30 Jan 2015 06:53:00 -0500
+From: "Richard W.M. Jones" <rjones@redhat.com>
+To: qemu-trivial@nongnu.org
+Date: Fri, 30 Jan 2015 11:52:57 +0000
+Message-Id: <1422618777-8832-1-git-send-email-rjones@redhat.com>
 MIME-Version: 1.0
-To: Eric Blake <eblake@redhat.com>
-References: <1422376711-31648-1-git-send-email-armbru@redhat.com>
-	<87k307qho2.fsf@blackfin.pond.sub.org>
-	<54C97F4F.1090905@huawei.com> <54C9992C.6070601@redhat.com>
-In-Reply-To: <54C9992C.6070601@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/6] Trivial cleanups around
-	g_malloc()
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
+	t0UBr1tu007012
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: lersek@redhat.com, qemu-devel@nongnu.org, dgilbert@redhat.com
+Subject: [Qemu-trivial] [PATCH] Fix comparisons between implicit booleans
+	and integers.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,45 +47,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Jan 2015 02:51:58 -0000
+X-List-Received-Date: Fri, 30 Jan 2015 11:53:07 -0000
 
-On 2015/1/29 10:21, Eric Blake wrote:
+In GCC 5 there is a new warning (-Wlogical-not-parentheses) which
+prevents you from writing:
 
-> On 01/28/2015 05:31 PM, Gonglei wrote:
->> On 2015/1/28 19:16, Markus Armbruster wrote:
->>
->>> I screwed up cc: qemu-trivial, my apologies.
->>>
-> 
->>>> Markus Armbruster (6):
->>>>   onenand: g_malloc() can't fail, bury dead error handling
->>>>   rtl8139: g_malloc() can't fail, bury dead error handling
->>>>   kvm: g_malloc() can't fail, bury dead error handling
->>>>   rdma: g_malloc0() can't fail, bury dead error handling
->>>>   vnc: g_realloc() can't fail, bury dead error handling
->>>>   translate-all: Use g_try_malloc() for dynamic translator buffer
->>>>
-> 
->>>
->>
->> For serials:
-> 
-> s/serials/series/
+  if (<some implicitly boolean expression> =3D=3D <an int>) ...
 
-Yes, thanks :)
+A typical error would be:
 
-> 
->> Reviewed-by: Gonglei <arei.gonglei@huawei.com>
->>
->> Regards,
->> -Gonglei
->>
->>
->>
->>
->>
-> 
+kvm-all.c: In function =E2=80=98kvm_set_migration_log=E2=80=99:
+kvm-all.c:383:54: error: logical not is only applied to the left hand sid=
+e of comparison [-Werror=3Dlogical-not-parentheses]
+         if (!!(mem->flags & KVM_MEM_LOG_DIRTY_PAGES) =3D=3D enable) {
 
+Fix a few places where the build is now broken in GCC 5.
 
+The warning isn't even consistent, as with the place in
+hw/net/virtio-net.c where I had to cast an obviously boolean
+expression to bool.
+
+Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
+---
+ hw/net/virtio-net.c | 2 +-
+ kvm-all.c           | 2 +-
+ qemu-img.c          | 3 ++-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index 45da34a..ba6afb8 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -121,7 +121,7 @@ static void virtio_net_vhost_status(VirtIONet *n, uin=
+t8_t status)
+     }
+=20
+     if (!!n->vhost_started =3D=3D
+-        (virtio_net_started(n, status) && !nc->peer->link_down)) {
++        (bool) (virtio_net_started(n, status) && !nc->peer->link_down)) =
+{
+         return;
+     }
+     if (!n->vhost_started) {
+diff --git a/kvm-all.c b/kvm-all.c
+index 2f21a4e..b6d4387 100644
+--- a/kvm-all.c
++++ b/kvm-all.c
+@@ -366,7 +366,7 @@ static void kvm_log_stop(MemoryListener *listener,
+     }
+ }
+=20
+-static int kvm_set_migration_log(int enable)
++static int kvm_set_migration_log(bool enable)
+ {
+     KVMState *s =3D kvm_state;
+     KVMSlot *mem;
+diff --git a/qemu-img.c b/qemu-img.c
+index 4e9a7f5..acf70fa 100644
+--- a/qemu-img.c
++++ b/qemu-img.c
+@@ -977,7 +977,8 @@ static int is_allocated_sectors_min(const uint8_t *bu=
+f, int n, int *pnum,
+ static int compare_sectors(const uint8_t *buf1, const uint8_t *buf2, int=
+ n,
+     int *pnum)
+ {
+-    int res, i;
++    bool res;
++    int i;
+=20
+     if (n <=3D 0) {
+         *pnum =3D 0;
+--=20
+2.2.2
 
 
