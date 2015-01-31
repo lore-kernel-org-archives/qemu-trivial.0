@@ -1,40 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YHUM3-00053v-ER
-	for mharc-qemu-trivial@gnu.org; Sat, 31 Jan 2015 04:28:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56422)
+	id 1YHUMx-0006IY-LJ
+	for mharc-qemu-trivial@gnu.org; Sat, 31 Jan 2015 04:29:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1YHUM1-00052E-SM
-	for qemu-trivial@nongnu.org; Sat, 31 Jan 2015 04:28:38 -0500
+	(envelope-from <jan.kiszka@web.de>) id 1YHUMv-0006IP-Kh
+	for qemu-trivial@nongnu.org; Sat, 31 Jan 2015 04:29:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1YHULx-0005gc-N8
-	for qemu-trivial@nongnu.org; Sat, 31 Jan 2015 04:28:37 -0500
-Received: from mout.web.de ([212.227.15.14]:55945)
+	(envelope-from <jan.kiszka@web.de>) id 1YHUMs-0005pQ-C6
+	for qemu-trivial@nongnu.org; Sat, 31 Jan 2015 04:29:33 -0500
+Received: from mout.web.de ([212.227.15.4]:64441)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <jan.kiszka@web.de>)
-	id 1YHULt-0005gM-9K; Sat, 31 Jan 2015 04:28:29 -0500
+	id 1YHUMs-0005pK-2u; Sat, 31 Jan 2015 04:29:30 -0500
 Received: from md1f2u6c.ww002.siemens.net ([95.157.58.223]) by smtp.web.de
-	(mrweb004) with ESMTPSA (Nemesis) id 0MVGow-1YAPDC3hj4-00YgN2;
-	Sat, 31 Jan 2015 10:28:24 +0100
-Message-ID: <54CCA038.8000704@web.de>
-Date: Sat, 31 Jan 2015 10:28:24 +0100
+	(mrweb002) with ESMTPSA (Nemesis) id 0MTgum-1Y8iuO3DkW-00QQcN;
+	Sat, 31 Jan 2015 10:29:28 +0100
+Message-ID: <54CCA077.7020107@web.de>
+Date: Sat, 31 Jan 2015 10:29:27 +0100
 From: Jan Kiszka <jan.kiszka@web.de>
 User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
 	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
 	Mnenhy/0.7.5.666
 MIME-Version: 1.0
 To: qemu-trivial <qemu-trivial@nongnu.org>
+References: <54CCA038.8000704@web.de>
+In-Reply-To: <54CCA038.8000704@web.de>
 Content-Type: multipart/signed; micalg=pgp-sha1;
 	protocol="application/pgp-signature";
-	boundary="q2KRDC0KxRJ9RQBWvqdGHvuhr8G7CKNs7"
-X-Provags-ID: V03:K0:w9wCmhIxz8TbU8CoCwzPyd2w9QSM51qxgmgO4Ex9EbOQshXpQyg
-	PuWprRLYVaKxOF4RhGgIMQBAKIYPD8idr01E5bu961mhOW/WP1RrSIj6BwleVlKFUH4029A
-	cA4v6Pgm1tdM7PnFBaSEYMeM827hXzy1XiVOVlw1Rk+co3gL2BEh7Ru9cXmXYDxveaRO8JN
-	3BOkDAHksJ8vkj9WOOXIQ==
+	boundary="RW4DrabutaOk8PA689jFp5QxdweG6213t"
+X-Provags-ID: V03:K0:nyegWVobSEnOILDUdAyItblzC844HHz1izSTu8oPz3ifxWbW8rM
+	pdE26Ia2B4NSllvXtutcxlS0gOlxmg7fWHwHbTWz7j6vCua7LQe9nd0IWluu/bImZGMUw5A
+	awJUIiWIwHlJYbqjcum7kHMqDTcHQYFOkeC1d4sg6C15SeSBQvLdAKJaF9RT2rBtRnBgsbP
+	zLEFe4u6jQuGNlrlxxiMA==
 X-UI-Out-Filterresults: notjunk:1;
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 212.227.15.14
+X-Received-From: 212.227.15.4
 Cc: qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH 1/2] Add GDB qAttached support
+Subject: [Qemu-trivial] [PATCH 2/2] Revert "gdbstub: Do not kill target in
+ system emulation mode"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,69 +49,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 31 Jan 2015 09:28:39 -0000
+X-List-Received-Date: Sat, 31 Jan 2015 09:29:34 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---q2KRDC0KxRJ9RQBWvqdGHvuhr8G7CKNs7
+--RW4DrabutaOk8PA689jFp5QxdweG6213t
 Content-Type: text/plain; charset=iso-8859-15
 Content-Transfer-Encoding: quoted-printable
 
-From: Jan Kiszka <jan.kiszka@siemens.com>
+From: Fabien Chouteau <chouteau@adacore.com>
 
-With this patch QEMU handles qAttached request from gdb. When QEMU
-replies 1, GDB sends a "detach" command at the end of a debugging
-session otherwise GDB sends "kill".
+The requirements described in this patch are implemented by "Add GDB
+qAttached support".
 
-The default value for qAttached is 1 on system emulation and 0 on user
-emulation.
+This reverts commit 00e94dbc7fd0110b0555d59592b004333adfb4b8.
 
-Based on original version by Fabien Chouteau.
-
+Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
 Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
 ---
-
-Long pending in my queue. Hope we can finally get these two in via
-trivial (that's what they are).
-
- gdbstub.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ gdbstub.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/gdbstub.c b/gdbstub.c
-index e4a1a79..da3e7cb 100644
+index da3e7cb..14e1f0c 100644
 --- a/gdbstub.c
 +++ b/gdbstub.c
-@@ -41,6 +41,12 @@
- #include "qemu/sockets.h"
- #include "sysemu/kvm.h"
-=20
-+#ifdef CONFIG_USER_ONLY
-+#define GDB_ATTACHED "0"
-+#else
-+#define GDB_ATTACHED "1"
-+#endif
-+
- static inline int target_memory_rw_debug(CPUState *cpu, target_ulong add=
-r,
-                                          uint8_t *buf, int len, bool is_=
-write)
- {
-@@ -1187,6 +1193,10 @@ static int gdb_handle_packet(GDBState *s, const ch=
-ar *line_buf)
-             put_packet_binary(s, buf, len + 1);
-             break;
+@@ -880,11 +880,9 @@ static int gdb_handle_packet(GDBState *s, const char=
+ *line_buf)
+             goto unknown_command;
          }
-+        if (strncmp(p, "Attached", 8) =3D=3D 0) {
-+            put_packet(s, GDB_ATTACHED);
-+            break;
-+        }
-         /* Unrecognised 'q' command.  */
-         goto unknown_command;
-=20
+     case 'k':
+-#ifdef CONFIG_USER_ONLY
+         /* Kill the target */
+         fprintf(stderr, "\nQEMU: Terminated via GDBstub\n");
+         exit(0);
+-#endif
+     case 'D':
+         /* Detach packet */
+         gdb_breakpoint_remove_all();
 --=20
 2.1.4
 
 
---q2KRDC0KxRJ9RQBWvqdGHvuhr8G7CKNs7
+--RW4DrabutaOk8PA689jFp5QxdweG6213t
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
@@ -116,10 +98,10 @@ Content-Disposition: attachment; filename="signature.asc"
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iEYEARECAAYFAlTMoDgACgkQitSsb3rl5xQzNACfd64a0RgWlRFEaD2yuby9U+AP
-VGsAoLlbV136SjkdMUORaizqonNLNQUs
-=m+xU
+iEYEARECAAYFAlTMoHcACgkQitSsb3rl5xT1fwCfXSj1N8PZRVLs1eZ896nvMX2T
+3coAnidsdhYlb+C/WXJ6Jqy5/pBtg5D9
+=9q1w
 -----END PGP SIGNATURE-----
 
---q2KRDC0KxRJ9RQBWvqdGHvuhr8G7CKNs7--
+--RW4DrabutaOk8PA689jFp5QxdweG6213t--
 
