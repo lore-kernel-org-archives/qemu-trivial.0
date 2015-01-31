@@ -1,43 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YHHpe-0000co-Oj
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Jan 2015 15:06:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40841)
+	id 1YHSUG-0003pP-6b
+	for mharc-qemu-trivial@gnu.org; Sat, 31 Jan 2015 02:29:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49577)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1YHHpc-0000Zs-Uv
-	for qemu-trivial@nongnu.org; Fri, 30 Jan 2015 15:06:21 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1YHSUC-0003hM-6C
+	for qemu-trivial@nongnu.org; Sat, 31 Jan 2015 02:28:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1YHHpX-0004TJ-LU
-	for qemu-trivial@nongnu.org; Fri, 30 Jan 2015 15:06:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34003)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YHSUB-0003L2-EO
+	for qemu-trivial@nongnu.org; Sat, 31 Jan 2015 02:28:56 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:31353)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1YHHpX-0004T5-Es; Fri, 30 Jan 2015 15:06:15 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t0UK6EiP009205
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Fri, 30 Jan 2015 15:06:14 -0500
-Received: from scv.usersys.redhat.com (vpn-50-137.rdu2.redhat.com
-	[10.10.50.137])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t0UK6DW3030572; Fri, 30 Jan 2015 15:06:13 -0500
-Message-ID: <54CBE435.9090409@redhat.com>
-Date: Fri, 30 Jan 2015 15:06:13 -0500
-From: John Snow <jsnow@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.3.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1YHSU2-0003GK-JA; Sat, 31 Jan 2015 02:28:47 -0500
+Received: from 172.24.2.119 (EHLO szxeml427-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id BBF07901; Sat, 31 Jan 2015 15:28:30 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml427-hub.china.huawei.com
+	(10.82.67.182) with Microsoft SMTP Server id 14.3.158.1;
+	Sat, 31 Jan 2015 15:28:20 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Sat, 31 Jan 2015 15:27:56 +0800
+Message-ID: <1422689277-16032-2-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
+In-Reply-To: <1422689277-16032-1-git-send-email-arei.gonglei@huawei.com>
+References: <1422689277-16032-1-git-send-email-arei.gonglei@huawei.com>
 MIME-Version: 1.0
-To: Kevin Wolf <kwolf@redhat.com>, qemu-devel@nongnu.org
-References: <1422646675-17657-1-git-send-email-kwolf@redhat.com>
-In-Reply-To: <1422646675-17657-1-git-send-email-kwolf@redhat.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-sockets: Fix buffer
-	overflow in inet_parse()
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020205.54CC841E.00AF, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 277c4ad61726cc49fbfad19ae348c2b0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	peter.huangpeng@huawei.com, stefano.stabellini@eu.citrix.com
+Subject: [Qemu-trivial] [PATCH 1/2] xen-pt: fix Negative array index read
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,36 +51,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Jan 2015 20:06:21 -0000
+X-List-Received-Date: Sat, 31 Jan 2015 07:28:57 -0000
+
+From: Gonglei <arei.gonglei@huawei.com>
+
+Coverity spot:
+Function xen_pt_bar_offset_to_index() may returns a negative
+number (-1) value index, which as an index to array d->io_regions.
+
+Let's directly and simply pass index as an argument to
+xen_pt_bar_reg_parse().
+
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ hw/xen/xen_pt_config_init.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
+index de9a20f..710fe50 100644
+--- a/hw/xen/xen_pt_config_init.c
++++ b/hw/xen/xen_pt_config_init.c
+@@ -360,15 +360,13 @@ static uint64_t xen_pt_get_bar_size(PCIIORegion *r)
+ }
+ 
+ static XenPTBarFlag xen_pt_bar_reg_parse(XenPCIPassthroughState *s,
+-                                         XenPTRegInfo *reg)
++                                         int index)
+ {
+     PCIDevice *d = &s->dev;
+     XenPTRegion *region = NULL;
+     PCIIORegion *r;
+-    int index = 0;
+ 
+     /* check 64bit BAR */
+-    index = xen_pt_bar_offset_to_index(reg->offset);
+     if ((0 < index) && (index < PCI_ROM_SLOT)) {
+         int type = s->real_device.io_regions[index - 1].type;
+ 
+@@ -422,7 +420,7 @@ static int xen_pt_bar_reg_init(XenPCIPassthroughState *s, XenPTRegInfo *reg,
+     }
+ 
+     /* set BAR flag */
+-    s->bases[index].bar_flag = xen_pt_bar_reg_parse(s, reg);
++    s->bases[index].bar_flag = xen_pt_bar_reg_parse(s, index);
+     if (s->bases[index].bar_flag == XEN_PT_BAR_FLAG_UNUSED) {
+         reg_field = XEN_PT_INVALID_REG;
+     }
+-- 
+1.7.12.4
 
 
-
-On 01/30/2015 02:37 PM, Kevin Wolf wrote:
-> The size of the stack allocated host[] array didn't account for the
-> terminating '\0' byte that sscanf() writes. Fix the array size.
->
-> Signed-off-by: Kevin Wolf <kwolf@redhat.com>
-> ---
->   util/qemu-sockets.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-> index a76bb3c..aacf1fc 100644
-> --- a/util/qemu-sockets.c
-> +++ b/util/qemu-sockets.c
-> @@ -512,7 +512,7 @@ InetSocketAddress *inet_parse(const char *str, Error **errp)
->   {
->       InetSocketAddress *addr;
->       const char *optstr, *h;
-> -    char host[64];
-> +    char host[65];
->       char port[33];
->       int to;
->       int pos;
->
-
-You don't really need reviews for trivial, right?
-*shrug*
-
-Reviewed-by: John Snow <jsnow@redhat.com>
 
