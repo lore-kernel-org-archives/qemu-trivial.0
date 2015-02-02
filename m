@@ -1,52 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YIIR1-00034W-8R
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Feb 2015 09:57:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45332)
+	id 1YIImG-0001et-9f
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Feb 2015 10:19:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49100)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YIIQz-00031n-0p
-	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 09:57:05 -0500
+	(envelope-from <m.ostapenko@partner.samsung.com>) id 1YIImB-0001Yt-UN
+	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 10:19:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YIIQv-0001Zq-S1
-	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 09:57:04 -0500
-Received: from mail-la0-f53.google.com ([209.85.215.53]:47412)
+	(envelope-from <m.ostapenko@partner.samsung.com>) id 1YIIm5-0000MH-MK
+	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 10:18:58 -0500
+Received: from mailout3.w1.samsung.com ([210.118.77.13]:61081)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YIIQv-0001ZV-Lu
-	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 09:57:01 -0500
-Received: by mail-la0-f53.google.com with SMTP id gq15so41620507lab.12
-	for <qemu-trivial@nongnu.org>; Mon, 02 Feb 2015 06:57:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=d+OHwKj5xcPjrWpQ5l/pdnqvjhuAmUOVM7r2aQ7Zv/U=;
-	b=RmYioSxsYIjwxiECofqeDMvv+kMExL2QPv7IqcZ1dwrq0QaIU+hnvCZOKTx7g+oTkT
-	Tz7kr+iRUjo9RXBn6OAihe+rcuU1yzJbWkDzojjDhJdbSJgMnvgUr7TgtqfDuliJyAwH
-	Yz5ZRCa4o9C1IeKR90wGLXCJ8Lriw3JU/zCva2dxht3Qn3hOfCWQ5g1GX9QA0Us32Zc7
-	K1xocfbCW/NwjdWUNVBbcTYef4u8Qz7P1Viny47HAE4f4iL5iHIfMdz+SVqY1vkPN5i/
-	I9GKg5NspnVuxeEPcmzCkNSqwSrj4aAsn9pFxOyEDze27vbGSmdJgjhDUbtc/f5lNOgr
-	P7Lg==
-X-Gm-Message-State: ALoCoQlHgEY05yl4rtIMux6fRRdXCYHF7NNXzvizthQ7ZZub6tUGEP7Qt1YiDATYpZI3CJARw00d
-X-Received: by 10.112.85.11 with SMTP id d11mr19912801lbz.100.1422889020603;
-	Mon, 02 Feb 2015 06:57:00 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.112.141.97 with HTTP; Mon, 2 Feb 2015 06:56:40 -0800 (PST)
-In-Reply-To: <54CF811A.1020405@partner.samsung.com>
-References: <54CF336A.7080205@partner.samsung.com>
-	<54CF33FD.5020003@partner.samsung.com>
-	<CAFEAcA8fz+Dy3DGSWX3xne+k=egx=PznB0STrGGtbYGT0D=CPQ@mail.gmail.com>
-	<54CF811A.1020405@partner.samsung.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Feb 2015 14:56:40 +0000
-Message-ID: <CAFEAcA8YkS3=QPQrWeW4w-sZ24ixCaKEFRy23um5tYxABt8YKg@mail.gmail.com>
-To: Maxim Ostapenko <m.ostapenko@partner.samsung.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.53
+	(envelope-from <m.ostapenko@partner.samsung.com>)
+	id 1YIIlt-0000IL-4n; Mon, 02 Feb 2015 10:18:41 -0500
+Received: from eucpsbgm1.samsung.com (unknown [203.254.199.244])
+	by mailout3.w1.samsung.com
+	(Oracle Communications Messaging Server 7u4-24.01(7.0.4.24.0) 64bit
+	(built Nov
+	17 2011)) with ESMTP id <0NJ5007FYHDT6A60@mailout3.w1.samsung.com>; Mon,
+	02 Feb 2015 15:22:41 +0000 (GMT)
+X-AuditID: cbfec7f4-b7f126d000001e9a-dc-54cf94bca958
+Received: from eusync1.samsung.com ( [203.254.199.211])
+	by eucpsbgm1.samsung.com (EUCPMTA) with SMTP id FD.AB.07834.CB49FC45;
+	Mon, 02 Feb 2015 15:16:12 +0000 (GMT)
+Received: from [106.109.130.26] by eusync1.samsung.com
+	(Oracle Communications Messaging Server 7u4-23.01(7.0.4.23.0) 64bit
+	(built Aug
+	10 2011)) with ESMTPA id <0NJ500HZ9H705220@eusync1.samsung.com>; Mon,
+	02 Feb 2015 15:18:37 +0000 (GMT)
+Message-id: <54CF8735.3080806@partner.samsung.com>
+Date: Mon, 02 Feb 2015 18:18:29 +0400
+From: Maxim Ostapenko <m.ostapenko@partner.samsung.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101
+	Thunderbird/24.1.0
+MIME-version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7bit
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprHLMWRmVeSWpSXmKPExsVy+t/xy7p7ppwPMTi1jcNizpkHLBbHe3ew
+	WKw9M5fV4uSGS2wWJ7ftYLU49HkxkwObx+GvC1k87lzbw+bx5NpmJo++LasYA1iiuGxSUnMy
+	y1KL9O0SuDKe3NrFUtDPVXFn+wPWBsaDHF2MnBwSAiYSh0/vY4ewxSQu3FvP1sXIxSEksJRR
+	4tjRVnYI5xOjxNyNhxlBqngFjCS+TT/LDGKzCKhKvPo+hwXEZhMwl5ixehHYJFGBCImjq5+x
+	QtQLSvyYfA+sRkRAR+LK9c1MIEOZBY4xSly+sBhskLBAusTcufvBmpkFrCVWTtrGCGHLS2xe
+	85Z5AiPfLCSzZiEpm4WkbAEj8ypG0dTS5ILipPRcQ73ixNzi0rx0veT83E2MkDD9soNx8TGr
+	Q4wCHIxKPLwPuM+FCLEmlhVX5h5ilOBgVhLh1bA4HyLEm5JYWZValB9fVJqTWnyIkYmDU6qB
+	cZPTyob09gP79j7fX61ibb5qkkLmJ7kb2yccC4z8JRbSJHNX0fqTBUPOWv9HzpySVZ/e320Q
+	/y3UE18yPX9G1ByF8uosi+npnLva+KwS816dU4s9kMFkc/XqfdMHlv+95PTLdXns5zyVPd5e
+	1XcutcevQvnoX27N5fUlNxxMPdku21dMddmsxFKckWioxVxUnAgAqUQvwjECAAA=
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 210.118.77.13
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	Slava Garbuzov <v.garbuzov@samsung.com>, Riku Voipio <riku.voipio@iki.fi>,
-	Yury Gribov <y.gribov@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] Fix ABI incompatibility between
+	QEMU Developers <qemu-devel@nongnu.org>, Yury Gribov <y.gribov@samsung.com>
+Subject: [Qemu-trivial] [PATCH v2] Fix ABI incompatibility between
  Qemu-aarch64 and Linux Kernel in signal handling.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -59,38 +65,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Feb 2015 14:57:06 -0000
+X-List-Received-Date: Mon, 02 Feb 2015 15:19:01 -0000
 
-On 2 February 2015 at 13:52, Maxim Ostapenko
-<m.ostapenko@partner.samsung.com> wrote:
-> Peter,
->
-> thank you for review and sorry for sign. I've updated the patch, is it ok
-> now?
+Thanks again,
 
-The code looks ok, but...
+I've updated the patch. Is this correct now?
 
-> From 5b035df58f9f17e64b35311b6b5f55097c7f8ce1 Mon Sep 17 00:00:00 2001
-> From: Max Ostapenko <m.ostapenko@partner.samsung.com>
-> Date: Mon, 2 Feb 2015 12:03:20 +0400
-> Subject: [PATCH] linux-user: wrong TARGET_SI_PAD_SIZE value for some
-> targets.
->
-> Fix TARGET_SI_PAD_SIZE for S390X, SPARC, ALPHA and AARCH64 according to
-> Linux Kernel 3.19 c59c961ca511dc7ee2f4f7e9c224d16f5c76ca6e revision.
+-Maxim
 
-Your signed-off-by line should go here, in the commit message
-(one blank line, then the signoff; look at other commits in
-git to see how this should look).
+ From 5b035df58f9f17e64b35311b6b5f55097c7f8ce1 Mon Sep 17 00:00:00 2001
+From: Max Ostapenko <m.ostapenko@partner.samsung.com>
+Date: Mon, 2 Feb 2015 12:03:20 +0400
+Subject: [PATCH] linux-user: wrong TARGET_SI_PAD_SIZE value for some 
+targets.
 
-Also that part about s390x/sparc/alpha/aarch64 in the commit
-message isn't accurate now the code has changed.
+Fix TARGET_SI_PAD_SIZE calculation to match the way the kernel does it.
+Use different TARGET_SI_PREAMBLE_SIZE for 32-bit and 64-bit targets.
 
-It's also best to send new versions of a patch as complete
-new emails, not as followups to the previous one. That way
-automated tools for tracking and downloading patches from
-the mailing list will function correctly.
+Signed-off-by: Maxim Ostapenko <m.ostapenko@partner.samsung.com>
+---
+  linux-user/syscall_defs.h | 9 ++++++++-
+  1 file changed, 8 insertions(+), 1 deletion(-)
 
-thanks
--- PMM
+diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+index ebb3be1..9ed6de8 100644
+--- a/linux-user/syscall_defs.h
++++ b/linux-user/syscall_defs.h
+@@ -655,7 +655,14 @@ typedef struct {
+  #endif
+
+  #define TARGET_SI_MAX_SIZE    128
+-#define TARGET_SI_PAD_SIZE    ((TARGET_SI_MAX_SIZE/sizeof(int)) - 3)
++
++#if TARGET_ABI_BITS == 32
++#define TARGET_SI_PREAMBLE_SIZE (3 * sizeof(int))
++#else
++#define TARGET_SI_PREAMBLE_SIZE (4 * sizeof(int))
++#endif
++
++#define TARGET_SI_PAD_SIZE ((TARGET_SI_MAX_SIZE - 
+TARGET_SI_PREAMBLE_SIZE) / sizeof(int))
+
+  typedef struct target_siginfo {
+  #ifdef TARGET_MIPS
+-- 
+1.8.5.2.2930.gf745acb
 
