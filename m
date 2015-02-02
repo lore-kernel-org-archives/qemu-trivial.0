@@ -1,43 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YHUMx-0006IY-LJ
-	for mharc-qemu-trivial@gnu.org; Sat, 31 Jan 2015 04:29:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56597)
+	id 1YIHfq-0004CI-7W
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Feb 2015 09:08:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37563)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1YHUMv-0006IP-Kh
-	for qemu-trivial@nongnu.org; Sat, 31 Jan 2015 04:29:34 -0500
+	(envelope-from <m.ostapenko@partner.samsung.com>) id 1YIDEL-0004gB-TS
+	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 04:23:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1YHUMs-0005pQ-C6
-	for qemu-trivial@nongnu.org; Sat, 31 Jan 2015 04:29:33 -0500
-Received: from mout.web.de ([212.227.15.4]:64441)
+	(envelope-from <m.ostapenko@partner.samsung.com>) id 1YIDEH-0006Br-T4
+	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 04:23:41 -0500
+Received: from mailout4.w1.samsung.com ([210.118.77.14]:32542)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>)
-	id 1YHUMs-0005pK-2u; Sat, 31 Jan 2015 04:29:30 -0500
-Received: from md1f2u6c.ww002.siemens.net ([95.157.58.223]) by smtp.web.de
-	(mrweb002) with ESMTPSA (Nemesis) id 0MTgum-1Y8iuO3DkW-00QQcN;
-	Sat, 31 Jan 2015 10:29:28 +0100
-Message-ID: <54CCA077.7020107@web.de>
-Date: Sat, 31 Jan 2015 10:29:27 +0100
-From: Jan Kiszka <jan.kiszka@web.de>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
-MIME-Version: 1.0
-To: qemu-trivial <qemu-trivial@nongnu.org>
-References: <54CCA038.8000704@web.de>
-In-Reply-To: <54CCA038.8000704@web.de>
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="RW4DrabutaOk8PA689jFp5QxdweG6213t"
-X-Provags-ID: V03:K0:nyegWVobSEnOILDUdAyItblzC844HHz1izSTu8oPz3ifxWbW8rM
-	pdE26Ia2B4NSllvXtutcxlS0gOlxmg7fWHwHbTWz7j6vCua7LQe9nd0IWluu/bImZGMUw5A
-	awJUIiWIwHlJYbqjcum7kHMqDTcHQYFOkeC1d4sg6C15SeSBQvLdAKJaF9RT2rBtRnBgsbP
-	zLEFe4u6jQuGNlrlxxiMA==
-X-UI-Out-Filterresults: notjunk:1;
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 212.227.15.4
-Cc: qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH 2/2] Revert "gdbstub: Do not kill target in
- system emulation mode"
+	(envelope-from <m.ostapenko@partner.samsung.com>) id 1YIDEH-0006AM-Ms
+	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 04:23:37 -0500
+Received: from eucpsbgm2.samsung.com (unknown [203.254.199.245])
+	by mailout4.w1.samsung.com
+	(Oracle Communications Messaging Server 7u4-24.01(7.0.4.24.0) 64bit
+	(built Nov
+	17 2011)) with ESMTP id <0NJ500AUN0XWIP70@mailout4.w1.samsung.com> for
+	qemu-trivial@nongnu.org; Mon, 02 Feb 2015 09:27:33 +0000 (GMT)
+X-AuditID: cbfec7f5-b7fc86d0000066b7-63-54cf41823dce
+Received: from eusync4.samsung.com ( [203.254.199.214])
+	by eucpsbgm2.samsung.com (EUCPMTA) with SMTP id 73.1E.26295.2814FC45;
+	Mon, 02 Feb 2015 09:21:06 +0000 (GMT)
+Received: from [106.109.130.26] by eusync4.samsung.com
+	(Oracle Communications Messaging Server 7u4-24.01(7.0.4.24.0) 64bit
+	(built Nov
+	17 2011)) with ESMTPA id <0NJ500GIV0R7UN60@eusync4.samsung.com>; Mon,
+	02 Feb 2015 09:23:32 +0000 (GMT)
+Message-id: <54CF33FD.5020003@partner.samsung.com>
+Date: Mon, 02 Feb 2015 12:23:25 +0400
+From: Maxim Ostapenko <m.ostapenko@partner.samsung.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101
+	Thunderbird/24.1.0
+MIME-version: 1.0
+To: riku.voipio@iki.fi, peter.maydell@linaro.org, qemu-trivial@nongnu.org
+References: <54CF336A.7080205@partner.samsung.com>
+In-reply-to: <54CF336A.7080205@partner.samsung.com>
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7bit
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrPLMWRmVeSWpSXmKPExsVy+t/xa7pNjudDDA6ckLKYc+YBi8XaM3NZ
+	LU5uuMRmcXLbDlaLQ58XMzmwehz+upDF4861PWweT65tZvLo27KKMYAlissmJTUnsyy1SN8u
+	gSvj1eMJTAUbuSsa901haWDcytnFyMkhIWAicWH9VnYIW0ziwr31bF2MXBxCAksZJfZsuM4C
+	4XxilJjSeYwJpIpXwEhi/ZN7zCA2i4CqRNfkVWwgNpuAucSM1YvAJokKREgcXf2MFaJeUOLH
+	5HssILaIgKfEv0XTweLMAv4Su5Y+B7OFBTIkjtztYgSxhYDmH/y2EGgmBwengLHE2b8eEOXW
+	EisnbWOEsOUlNq95yzyBUWAWkg2zkJTNQlK2gJF5FaNoamlyQXFSeq6RXnFibnFpXrpecn7u
+	JkZIIH/dwbj0mNUhRgEORiUe3gfc50KEWBPLiitzDzFKcDArifBqWJwPEeJNSaysSi3Kjy8q
+	zUktPsTIxMEp1cCoMrM4NUlZ8d/DgL/7zk5Vn/zYeqdfZ99N04BLRwRnsN34pWXPcuyp0fZH
+	k0++XqF8MTXsT15PdNLavXeSl/+e4ZWp4pTRlHPr5wq2xxIl/+fc77VoTIg02n9yxeu+JYc3
+	dq6T2tDzbUUuz65Fm888Ul97RUJ44XyBLnO/031/OxlWPp/9u7OjUImlOCPRUIu5qDgRACW3
+	byBCAgAA
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 210.118.77.14
+X-Mailman-Approved-At: Mon, 02 Feb 2015 09:08:20 -0500
+Cc: Slava Garbuzov <v.garbuzov@samsung.com>, Yury Gribov <y.gribov@samsung.com>
+Subject: Re: [Qemu-trivial] [PATCH] Fix ABI incompatibility between
+ Qemu-aarch64 and Linux Kernel in signal handling.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,59 +67,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 31 Jan 2015 09:29:34 -0000
+X-List-Received-Date: Mon, 02 Feb 2015 09:23:46 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---RW4DrabutaOk8PA689jFp5QxdweG6213t
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: quoted-printable
+Sorry, missed ML.
 
-From: Fabien Chouteau <chouteau@adacore.com>
+-Maxim
+On 02/02/2015 12:20 PM, Maxim Ostapenko wrote:
+> Hi,
+>
+> this patch fixes https://bugs.launchpad.net/qemu/+bug/1416988.
+>
+> There is a small ABI incompatibility between Qemu-aarch64 and Linux 
+> Kernel 3.19 caused by wrong size of struct target_siginfo in Qemu. 
+> This tiny patch fixes the issue.
+>
+> -Maxim
+>
+> From 1d662e325d004bce2d640cfea5b337c92c7feca2 Mon Sep 17 00:00:00 2001
+> From: Max Ostapenko <m.ostapenko@partner.samsung.com>
+> Date: Mon, 2 Feb 2015 12:03:20 +0400
+> Subject: [PATCH] linux-user: wrong TARGET_SI_PAD_SIZE value for some 
+> targets.
+>
+> Fix TARGET_SI_PAD_SIZE for S390X, SPARC, ALPHA and AARCH64 to correspond
+> Linux Kernel 3.19 c59c961ca511dc7ee2f4f7e9c224d16f5c76ca6e revision.
+> ---
+>  linux-user/syscall_defs.h | 5 +++++
+>  1 file changed, 5 insertions(+)
+>
+> diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+> index ebb3be1..b95a0b2 100644
+> --- a/linux-user/syscall_defs.h
+> +++ b/linux-user/syscall_defs.h
+> @@ -655,7 +655,12 @@ typedef struct {
+>  #endif
+>
+>  #define TARGET_SI_MAX_SIZE    128
+> +#if defined(TARGET_S390X) || defined(TARGET_SPARC) \
+> +   || defined(TARGET_ALPHA) || defined(TARGET_AARCH64)
+> +#define TARGET_SI_PAD_SIZE    ((TARGET_SI_MAX_SIZE/sizeof(int)) - 4)
+> +#else
+>  #define TARGET_SI_PAD_SIZE    ((TARGET_SI_MAX_SIZE/sizeof(int)) - 3)
+> +#endif
+>
+>  typedef struct target_siginfo {
+>  #ifdef TARGET_MIPS
 
-The requirements described in this patch are implemented by "Add GDB
-qAttached support".
-
-This reverts commit 00e94dbc7fd0110b0555d59592b004333adfb4b8.
-
-Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
----
- gdbstub.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/gdbstub.c b/gdbstub.c
-index da3e7cb..14e1f0c 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -880,11 +880,9 @@ static int gdb_handle_packet(GDBState *s, const char=
- *line_buf)
-             goto unknown_command;
-         }
-     case 'k':
--#ifdef CONFIG_USER_ONLY
-         /* Kill the target */
-         fprintf(stderr, "\nQEMU: Terminated via GDBstub\n");
-         exit(0);
--#endif
-     case 'D':
-         /* Detach packet */
-         gdb_breakpoint_remove_all();
---=20
-2.1.4
-
-
---RW4DrabutaOk8PA689jFp5QxdweG6213t
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iEYEARECAAYFAlTMoHcACgkQitSsb3rl5xT1fwCfXSj1N8PZRVLs1eZ896nvMX2T
-3coAnidsdhYlb+C/WXJ6Jqy5/pBtg5D9
-=9q1w
------END PGP SIGNATURE-----
-
---RW4DrabutaOk8PA689jFp5QxdweG6213t--
 
