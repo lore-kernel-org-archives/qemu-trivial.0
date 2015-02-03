@@ -1,50 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YIIrU-000363-1N
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Feb 2015 10:24:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49953)
+	id 1YIc6o-0002Qf-6W
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Feb 2015 06:57:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55625)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YIIrM-00034Z-Ip
-	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 10:24:24 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1YIc6l-0002NO-AM
+	for qemu-trivial@nongnu.org; Tue, 03 Feb 2015 06:57:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YIIrI-0001jV-2p
-	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 10:24:20 -0500
-Received: from mail-la0-f52.google.com ([209.85.215.52]:56666)
+	(envelope-from <pbonzini@redhat.com>) id 1YIc6j-0006e1-N9
+	for qemu-trivial@nongnu.org; Tue, 03 Feb 2015 06:57:31 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43186)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YIIrH-0001jP-Qz
-	for qemu-trivial@nongnu.org; Mon, 02 Feb 2015 10:24:15 -0500
-Received: by mail-la0-f52.google.com with SMTP id ge10so41973227lab.11
-	for <qemu-trivial@nongnu.org>; Mon, 02 Feb 2015 07:24:15 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=cuZrTCHdmJhjPv7AvGhiOXsVPnvzr2hWW7JVfEnaUb8=;
-	b=kGpP01ikDuZPUAgRMccl4CmtkQaPpaHR12ALOS29vBZ/ANQB5OFY9ZVRimnmqvoKoR
-	Bii+wPP4VpQPwvkcEvPlxY/qaZoZFIyDTxVgb9FFvZxHY3OwtPI56hrLbgbmexAxLGPi
-	hHXx+84mOhpn2YKh7UtEhGjWFCpZOmk/w+letcZPAETIXuVkvYFN5iAuWUiMzGKoUNKS
-	24BA+pDMcPwWhi8xqoxkX3/KUkrNIjeyvh8pE3eokPUE+3qUefFRfv0drOdfMHu9n2eT
-	HqLG8kW0ja+Ti6Qd4xpW96BW738prIxsNCfo00qqmyZeNvHSVC3xORV+Al1jTQ3tLW+p
-	lbeA==
-X-Gm-Message-State: ALoCoQm0mXduHAUgORMZfsU3neIgadyu7Eh3ofn/rNC6bhxawn50vRhx2WguKijchhf2o//hswyw
-X-Received: by 10.152.2.41 with SMTP id 9mr1208132lar.59.1422890655105; Mon,
-	02 Feb 2015 07:24:15 -0800 (PST)
+	(envelope-from <pbonzini@redhat.com>)
+	id 1YIc6e-0006c7-8A; Tue, 03 Feb 2015 06:57:24 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t13BvMPY016416
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Tue, 3 Feb 2015 06:57:22 -0500
+Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t13BvH9D002621
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Tue, 3 Feb 2015 06:57:19 -0500
+Message-ID: <54D0B79C.9050804@redhat.com>
+Date: Tue, 03 Feb 2015 12:57:16 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Received: by 10.112.141.97 with HTTP; Mon, 2 Feb 2015 07:23:54 -0800 (PST)
-In-Reply-To: <54CF8735.3080806@partner.samsung.com>
-References: <54CF8735.3080806@partner.samsung.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Feb 2015 15:23:54 +0000
-Message-ID: <CAFEAcA9BgWHqpVwLeeqLK8fD6VMWydgLJn597naeptzR9q+Hbg@mail.gmail.com>
-To: Maxim Ostapenko <m.ostapenko@partner.samsung.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.52
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Slava Garbuzov <v.garbuzov@samsung.com>, Riku Voipio <riku.voipio@iki.fi>,
-	QEMU Developers <qemu-devel@nongnu.org>, Yury Gribov <y.gribov@samsung.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] Fix ABI incompatibility between
- Qemu-aarch64 and Linux Kernel in signal handling.
+To: "Daniel P. Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org
+References: <1422963090-27939-1-git-send-email-berrange@redhat.com>
+In-Reply-To: <1422963090-27939-1-git-send-email-berrange@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-stable <qemu-stable@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] libcacard: stop linking against every
+ single 3rd party library
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,21 +51,169 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Feb 2015 15:24:25 -0000
+X-List-Received-Date: Tue, 03 Feb 2015 11:57:32 -0000
 
-On 2 February 2015 at 14:18, Maxim Ostapenko
-<m.ostapenko@partner.samsung.com> wrote:
-> Thanks again,
->
-> I've updated the patch. Is this correct now?
+Cc: qemu-trivial@nongnu.org
+Cc: qemu-stable@nongnu.org
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Yes, and you can have my
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-(though I notice you ignored the bit about sending a separate
-email, not a followup. Still, I expect that Riku or the -trivial
-maintainers can fish it out manually.)
-
-thanks
--- PMM
+On 03/02/2015 12:31, Daniel P. Berrange wrote:
+> Building QEMU results in a libcacard.so that links against
+> practically the entire world
+> 
+> 	linux-vdso.so.1 =>  (0x00007fff71e99000)
+> 	libssl3.so => /usr/lib64/libssl3.so (0x00007f49f94b6000)
+> 	libsmime3.so => /usr/lib64/libsmime3.so (0x00007f49f928e000)
+> 	libnss3.so => /usr/lib64/libnss3.so (0x00007f49f8f67000)
+> 	libnssutil3.so => /usr/lib64/libnssutil3.so (0x00007f49f8d3b000)
+> 	libplds4.so => /usr/lib64/libplds4.so (0x00007f49f8b36000)
+> 	libplc4.so => /usr/lib64/libplc4.so (0x00007f49f8931000)
+> 	libnspr4.so => /usr/lib64/libnspr4.so (0x00007f49f86f2000)
+> 	libdl.so.2 => /usr/lib64/libdl.so.2 (0x00007f49f84ed000)
+> 	libm.so.6 => /usr/lib64/libm.so.6 (0x00007f49f81e5000)
+> 	libgthread-2.0.so.0 => /usr/lib64/libgthread-2.0.so.0 (0x00007f49f7fe3000)
+> 	librt.so.1 => /usr/lib64/librt.so.1 (0x00007f49f7dda000)
+> 	libz.so.1 => /usr/lib64/libz.so.1 (0x00007f49f7bc4000)
+> 	libcap-ng.so.0 => /usr/lib64/libcap-ng.so.0 (0x00007f49f79be000)
+> 	libuuid.so.1 => /usr/lib64/libuuid.so.1 (0x00007f49f77b8000)
+> 	libgnutls.so.28 => /usr/lib64/libgnutls.so.28 (0x00007f49f749a000)
+> 	libSDL-1.2.so.0 => /usr/lib64/libSDL-1.2.so.0 (0x00007f49f71fd000)
+> 	libpthread.so.0 => /usr/lib64/libpthread.so.0 (0x00007f49f6fe0000)
+> 	libvte.so.9 => /usr/lib64/libvte.so.9 (0x00007f49f6d3f000)
+> 	libXext.so.6 => /usr/lib64/libXext.so.6 (0x00007f49f6b2d000)
+> 	libgtk-x11-2.0.so.0 => /usr/lib64/libgtk-x11-2.0.so.0 (0x00007f49f64a0000)
+> 	libgdk-x11-2.0.so.0 => /usr/lib64/libgdk-x11-2.0.so.0 (0x00007f49f61de000)
+> 	libpangocairo-1.0.so.0 => /usr/lib64/libpangocairo-1.0.so.0 (0x00007f49f5fd1000)
+> 	libatk-1.0.so.0 => /usr/lib64/libatk-1.0.so.0 (0x00007f49f5daa000)
+> 	libcairo.so.2 => /usr/lib64/libcairo.so.2 (0x00007f49f5a9d000)
+> 	libgdk_pixbuf-2.0.so.0 => /usr/lib64/libgdk_pixbuf-2.0.so.0 (0x00007f49f5878000)
+> 	libgio-2.0.so.0 => /usr/lib64/libgio-2.0.so.0 (0x00007f49f5500000)
+> 	libpangoft2-1.0.so.0 => /usr/lib64/libpangoft2-1.0.so.0 (0x00007f49f52eb000)
+> 	libpango-1.0.so.0 => /usr/lib64/libpango-1.0.so.0 (0x00007f49f50a0000)
+> 	libgobject-2.0.so.0 => /usr/lib64/libgobject-2.0.so.0 (0x00007f49f4e4e000)
+> 	libglib-2.0.so.0 => /usr/lib64/libglib-2.0.so.0 (0x00007f49f4b15000)
+> 	libfontconfig.so.1 => /usr/lib64/libfontconfig.so.1 (0x00007f49f48d6000)
+> 	libfreetype.so.6 => /usr/lib64/libfreetype.so.6 (0x00007f49f462b000)
+> 	libX11.so.6 => /usr/lib64/libX11.so.6 (0x00007f49f42e8000)
+> 	libxenstore.so.3.0 => /usr/lib64/libxenstore.so.3.0 (0x00007f49f40de000)
+> 	libxenctrl.so.4.4 => /usr/lib64/libxenctrl.so.4.4 (0x00007f49f3eb6000)
+> 	libxenguest.so.4.4 => /usr/lib64/libxenguest.so.4.4 (0x00007f49f3c8b000)
+> 	libseccomp.so.2 => /usr/lib64/libseccomp.so.2 (0x00007f49f3a74000)
+> 	librdmacm.so.1 => /usr/lib64/librdmacm.so.1 (0x00007f49f385d000)
+> 	libibverbs.so.1 => /usr/lib64/libibverbs.so.1 (0x00007f49f364a000)
+> 	libutil.so.1 => /usr/lib64/libutil.so.1 (0x00007f49f3447000)
+> 	libc.so.6 => /usr/lib64/libc.so.6 (0x00007f49f3089000)
+> 	/lib64/ld-linux-x86-64.so.2 (0x00007f49f9902000)
+> 	libp11-kit.so.0 => /usr/lib64/libp11-kit.so.0 (0x00007f49f2e23000)
+> 	libtspi.so.1 => /usr/lib64/libtspi.so.1 (0x00007f49f2bb2000)
+> 	libtasn1.so.6 => /usr/lib64/libtasn1.so.6 (0x00007f49f299f000)
+> 	libnettle.so.4 => /usr/lib64/libnettle.so.4 (0x00007f49f276d000)
+> 	libhogweed.so.2 => /usr/lib64/libhogweed.so.2 (0x00007f49f2545000)
+> 	libgmp.so.10 => /usr/lib64/libgmp.so.10 (0x00007f49f22cd000)
+> 	libncurses.so.5 => /usr/lib64/libncurses.so.5 (0x00007f49f20a5000)
+> 	libtinfo.so.5 => /usr/lib64/libtinfo.so.5 (0x00007f49f1e7a000)
+> 	libgmodule-2.0.so.0 => /usr/lib64/libgmodule-2.0.so.0 (0x00007f49f1c76000)
+> 	libXfixes.so.3 => /usr/lib64/libXfixes.so.3 (0x00007f49f1a6f000)
+> 	libXrender.so.1 => /usr/lib64/libXrender.so.1 (0x00007f49f1865000)
+> 	libXinerama.so.1 => /usr/lib64/libXinerama.so.1 (0x00007f49f1662000)
+> 	libXi.so.6 => /usr/lib64/libXi.so.6 (0x00007f49f1452000)
+> 	libXrandr.so.2 => /usr/lib64/libXrandr.so.2 (0x00007f49f1247000)
+> 	libXcursor.so.1 => /usr/lib64/libXcursor.so.1 (0x00007f49f103c000)
+> 	libXcomposite.so.1 => /usr/lib64/libXcomposite.so.1 (0x00007f49f0e39000)
+> 	libXdamage.so.1 => /usr/lib64/libXdamage.so.1 (0x00007f49f0c35000)
+> 	libharfbuzz.so.0 => /usr/lib64/libharfbuzz.so.0 (0x00007f49f09dd000)
+> 	libpixman-1.so.0 => /usr/lib64/libpixman-1.so.0 (0x00007f49f072f000)
+> 	libEGL.so.1 => /usr/lib64/libEGL.so.1 (0x00007f49f0505000)
+> 	libpng16.so.16 => /usr/lib64/libpng16.so.16 (0x00007f49f02d2000)
+> 	libxcb-shm.so.0 => /usr/lib64/libxcb-shm.so.0 (0x00007f49f00cd000)
+> 	libxcb-render.so.0 => /usr/lib64/libxcb-render.so.0 (0x00007f49efec3000)
+> 	libxcb.so.1 => /usr/lib64/libxcb.so.1 (0x00007f49efca1000)
+> 	libGL.so.1 => /usr/lib64/libGL.so.1 (0x00007f49efa06000)
+> 	libffi.so.6 => /usr/lib64/libffi.so.6 (0x00007f49ef7fe000)
+> 	libselinux.so.1 => /usr/lib64/libselinux.so.1 (0x00007f49ef5d8000)
+> 	libresolv.so.2 => /usr/lib64/libresolv.so.2 (0x00007f49ef3be000)
+> 	libexpat.so.1 => /usr/lib64/libexpat.so.1 (0x00007f49ef193000)
+> 	libbz2.so.1 => /usr/lib64/libbz2.so.1 (0x00007f49eef83000)
+> 	libgcc_s.so.1 => /usr/lib64/libgcc_s.so.1 (0x00007f49eed6c000)
+> 	liblzma.so.5 => /usr/lib64/liblzma.so.5 (0x00007f49eeb46000)
+> 	libnl-route-3.so.200 => /usr/lib64/libnl-route-3.so.200 (0x00007f49ee8e2000)
+> 	libnl-3.so.200 => /usr/lib64/libnl-3.so.200 (0x00007f49ee6c4000)
+> 	libcrypto.so.10 => /usr/lib64/libcrypto.so.10 (0x00007f49ee2d6000)
+> 	libssl.so.10 => /usr/lib64/libssl.so.10 (0x00007f49ee067000)
+> 	libgraphite2.so.3 => /usr/lib64/libgraphite2.so.3 (0x00007f49ede48000)
+> 	libX11-xcb.so.1 => /usr/lib64/libX11-xcb.so.1 (0x00007f49edc46000)
+> 	libxcb-dri2.so.0 => /usr/lib64/libxcb-dri2.so.0 (0x00007f49eda41000)
+> 	libxcb-xfixes.so.0 => /usr/lib64/libxcb-xfixes.so.0 (0x00007f49ed838000)
+> 	libxcb-shape.so.0 => /usr/lib64/libxcb-shape.so.0 (0x00007f49ed634000)
+> 	libgbm.so.1 => /usr/lib64/libgbm.so.1 (0x00007f49ed426000)
+> 	libwayland-client.so.0 => /usr/lib64/libwayland-client.so.0 (0x00007f49ed217000)
+> 	libwayland-server.so.0 => /usr/lib64/libwayland-server.so.0 (0x00007f49ed005000)
+> 	libglapi.so.0 => /usr/lib64/libglapi.so.0 (0x00007f49ecddb000)
+> 	libdrm.so.2 => /usr/lib64/libdrm.so.2 (0x00007f49ecbce000)
+> 	libXau.so.6 => /usr/lib64/libXau.so.6 (0x00007f49ec9ca000)
+> 	libxcb-glx.so.0 => /usr/lib64/libxcb-glx.so.0 (0x00007f49ec7b0000)
+> 	libxcb-dri3.so.0 => /usr/lib64/libxcb-dri3.so.0 (0x00007f49ec5ad000)
+> 	libxcb-present.so.0 => /usr/lib64/libxcb-present.so.0 (0x00007f49ec3aa000)
+> 	libxcb-randr.so.0 => /usr/lib64/libxcb-randr.so.0 (0x00007f49ec19b000)
+> 	libxcb-sync.so.1 => /usr/lib64/libxcb-sync.so.1 (0x00007f49ebf94000)
+> 	libxshmfence.so.1 => /usr/lib64/libxshmfence.so.1 (0x00007f49ebd91000)
+> 	libXxf86vm.so.1 => /usr/lib64/libXxf86vm.so.1 (0x00007f49ebb8a000)
+> 	libpcre.so.1 => /usr/lib64/libpcre.so.1 (0x00007f49eb91d000)
+> 	libgssapi_krb5.so.2 => /usr/lib64/libgssapi_krb5.so.2 (0x00007f49eb6cf000)
+> 	libkrb5.so.3 => /usr/lib64/libkrb5.so.3 (0x00007f49eb3ec000)
+> 	libcom_err.so.2 => /usr/lib64/libcom_err.so.2 (0x00007f49eb1e8000)
+> 	libk5crypto.so.3 => /usr/lib64/libk5crypto.so.3 (0x00007f49eafb4000)
+> 	libkrb5support.so.0 => /usr/lib64/libkrb5support.so.0 (0x00007f49eada5000)
+> 	libkeyutils.so.1 => /usr/lib64/libkeyutils.so.1 (0x00007f49eaba0000)
+> 
+> All libcacard actually needs are the NSS libs. Linking against the entire
+> world is a regression caused by
+> 
+>   commit 9d171bd9375e4d08feff9adda15163e0811f5f42
+>   Author: Michael Tokarev <mjt@tls.msk.ru>
+>   Date:   Thu May 8 16:48:27 2014 +0400
+> 
+>     libcacard: remove libcacard-specific CFLAGS and LIBS from global vars
+> 
+> Which removed the setting of the LIBS variable in libcacard/Makefile.
+> 
+> Adding it back as an empty assignment brings the linked libs back to a more
+> reasonable set
+> 
+> 	linux-vdso.so.1 =>  (0x00007fff575c1000)
+> 	libssl3.so => /usr/lib64/libssl3.so (0x00007f7f753b1000)
+> 	libsmime3.so => /usr/lib64/libsmime3.so (0x00007f7f75189000)
+> 	libnss3.so => /usr/lib64/libnss3.so (0x00007f7f74e62000)
+> 	libnssutil3.so => /usr/lib64/libnssutil3.so (0x00007f7f74c36000)
+> 	libplds4.so => /usr/lib64/libplds4.so (0x00007f7f74a31000)
+> 	libplc4.so => /usr/lib64/libplc4.so (0x00007f7f7482c000)
+> 	libnspr4.so => /usr/lib64/libnspr4.so (0x00007f7f745ed000)
+> 	libpthread.so.0 => /usr/lib64/libpthread.so.0 (0x00007f7f743d0000)
+> 	libdl.so.2 => /usr/lib64/libdl.so.2 (0x00007f7f741cc000)
+> 	libgthread-2.0.so.0 => /usr/lib64/libgthread-2.0.so.0 (0x00007f7f73fca000)
+> 	libglib-2.0.so.0 => /usr/lib64/libglib-2.0.so.0 (0x00007f7f73c90000)
+> 	libc.so.6 => /usr/lib64/libc.so.6 (0x00007f7f738d3000)
+> 	libz.so.1 => /usr/lib64/libz.so.1 (0x00007f7f736bd000)
+> 	librt.so.1 => /usr/lib64/librt.so.1 (0x00007f7f734b4000)
+> 	/lib64/ld-linux-x86-64.so.2 (0x00007f7f757fd000)
+> 
+> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+> ---
+>  libcacard/Makefile | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/libcacard/Makefile b/libcacard/Makefile
+> index 0e7903f..b5eddff 100644
+> --- a/libcacard/Makefile
+> +++ b/libcacard/Makefile
+> @@ -19,6 +19,8 @@ vscclient$(EXESUF): libcacard/vscclient.o libcacard.la
+>  
+>  libcacard.la: LDFLAGS += -rpath $(libdir) -no-undefined \
+>  	-export-symbols $(SRC_PATH)/libcacard/libcacard.syms
+> +# Prevent libcacard.so linking against the entire world of 3rd party libs
+> +libcacard.la: LIBS =
+>  libcacard.la: $(libcacard-lobj-y)
+>  	$(call LINK,$^)
+>  
+> 
 
