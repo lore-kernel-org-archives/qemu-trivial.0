@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YJ8ri-0002sX-64
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Feb 2015 17:56:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44187)
+	id 1YJPYr-0003g7-3O
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Feb 2015 11:45:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37996)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YJ8rf-0002p3-LK
-	for qemu-trivial@nongnu.org; Wed, 04 Feb 2015 17:56:08 -0500
+	(envelope-from <gsomlo@gmail.com>) id 1YJPYl-0003ZS-Kg
+	for qemu-trivial@nongnu.org; Thu, 05 Feb 2015 11:45:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>) id 1YJ8re-0005Di-4w
-	for qemu-trivial@nongnu.org; Wed, 04 Feb 2015 17:56:07 -0500
-Received: from out21.biz.mail.alibaba.com ([205.204.114.132]:53314)
+	(envelope-from <gsomlo@gmail.com>) id 1YJPYk-0001B5-AQ
+	for qemu-trivial@nongnu.org; Thu, 05 Feb 2015 11:45:43 -0500
+Received: from mail-qa0-x229.google.com ([2607:f8b0:400d:c00::229]:63416)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gang.chen@sunrus.com.cn>)
-	id 1YJ8rZ-0005CQ-BA; Wed, 04 Feb 2015 17:56:01 -0500
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07424364|-1; FP=0|0|0|0|0|-1|-1|-1;
-	HT=r41f05022; MF=gang.chen@sunrus.com.cn; PH=DS; RN=5; RT=5;
-	SR=0; 
-Received: from
-	ShengShiZhuChengdeMacBook-Pro.local(mailfrom:gang.chen@sunrus.com.cn
-	ip:223.72.65.53) by smtp.aliyun-inc.com(10.194.100.109);
-	Thu, 05 Feb 2015 06:55:47 +0800
-Message-ID: <54D2A547.8090404@sunrus.com.cn>
-Date: Thu, 05 Feb 2015 07:03:35 +0800
-From: Chen Gang S <gang.chen@sunrus.com.cn>
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <54C4DC4E.3080306@sunrus.com.cn>
-	<CAFEAcA_hGO-R85yYXDU7eoC7FHF_v96y7Oh54SX9HXBAss6Vpg@mail.gmail.com>
-	<54C5672D.4080800@sunrus.com.cn>
-	<CAFEAcA9mqzpHsWcyDdzBYDWdxsR1AoDy3akgHCaMUbjZ0zh=0Q@mail.gmail.com>
-	<54C6566B.6050205@sunrus.com.cn>
-	<CAFEAcA8q7jNqL8DFygnHaiiv=2pGKXBQ_Gi1icOn9H=diOXK5Q@mail.gmail.com>
-	<20150128142705.GA22971@afflict.kos.to>
-	<54C95E09.1030107@sunrus.com.cn>
-	<CAFEAcA-GviCfmB3vZVFRNXK7BDHoKON7ZCE9-=bE0SrYCQj9gg@mail.gmail.com>
-	<54C98EF3.3070405@sunrus.com.cn>
-In-Reply-To: <54C98EF3.3070405@sunrus.com.cn>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 205.204.114.132
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user/syscall.c: Let
- all lock_user_struct() and unlock_user_struct() paired with each other
+	(envelope-from <gsomlo@gmail.com>)
+	id 1YJPYf-00019C-6T; Thu, 05 Feb 2015 11:45:37 -0500
+Received: by mail-qa0-f41.google.com with SMTP id bm13so6658951qab.0;
+	Thu, 05 Feb 2015 08:45:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=QVETSVUO7GglVMLl+5ZSagK7wPz9swWo3I3uFANEB6g=;
+	b=r7Y5TZ5OS9Gayw0Le+VssdHKgKlP8BnL8IeRDGKU6bNlUNfOQmaY1Jrxen6zmAsd+4
+	t2jE8TThRWFRz5EM/GOGmlQaoB2eDNxj5xQXCS0vBmfq12f5ppV2wLgpDIGtx4qwxpF5
+	WvvKCvNVBFlj3enlqmN2qqo+nsGRnJ9Yhj+cOOJgbKvvETADciRWqahjTz9jigvNIgSv
+	AN0Rgbd/3+e6kuLoRMprpYodPRsqN3Uc+T+F9XP6LsxZlD7qFAHJ2Crn47jzobFm4L3B
+	edL568uGLbcve04s6/WakkdRseirVrdC/GrazBWxxreuoblRl0wddrtmMi4AqqSLrGjP
+	Vjbg==
+X-Received: by 10.224.126.201 with SMTP id d9mr10073950qas.49.1423154736343;
+	Thu, 05 Feb 2015 08:45:36 -0800 (PST)
+Received: from HEDWIG.ini.cmu.edu (HEDWIG.INI.CMU.EDU. [128.2.16.51])
+	by mx.google.com with ESMTPSA id n4sm5410713qac.30.2015.02.05.08.45.35
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 05 Feb 2015 08:45:35 -0800 (PST)
+From: "Gabriel L. Somlo" <gsomlo@gmail.com>
+X-Google-Original-From: "Gabriel L. Somlo" <somlo@cmu.edu>
+To: qemu-devel@nongnu.org
+Date: Thu,  5 Feb 2015 11:45:30 -0500
+Message-Id: <1423154730-11998-1-git-send-email-somlo@cmu.edu>
+X-Mailer: git-send-email 2.1.0
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c00::229
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] smbios: document cmdline options for smbios
+	type 2-4, 17 structures
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,76 +52,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Feb 2015 22:56:08 -0000
+X-List-Received-Date: Thu, 05 Feb 2015 16:45:47 -0000
 
-On 1/29/15 09:37, Chen Gang S wrote:
-> On 1/29/15 06:36, Peter Maydell wrote:
->> On 28 January 2015 at 22:09, Chen Gang S <gang.chen@sunrus.com.cn> wrote:
->>>  - Is what I said above really correct (e.g. is linux-user really mainly
->>>    for cpu emulation)?.
->>
->> Not really. linux-user is mainly for running single Linux binaries.
->> It has a secondary use for running gcc test binaries which think
->> they are "bare metal" but actually use some kind of semihosting API.
->> (You should check whether tile has one of those.)
->>
->> As well as linux-user mode, QEMU has system emulation mode, where
->> we emulate a complete machine.
->>
->> Both modes need CPU emulation.
->>
-> 
-> OK, thanks.
-> 
-> For coding and test, is linux-user a good starting position for me? (I
-> guess it is).
-> 
+Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
+---
+ qemu-options.hx | 32 +++++++++++++++++++++++++++++---
+ 1 file changed, 29 insertions(+), 3 deletions(-)
 
-At present, I make a static program which will print "Hello world" for
-microblaze architecture, and can excute successfully.
-
-  [root@localhost qemu]# cat test.c
-  #include <stdio.h>
-  
-  int main()
-  {
-  	printf("Hello world!\n");
-  	return 0;
-  }
-  [root@localhost qemu]# /upstream/release/bin/microblaze-gchen-linux-gcc -Wall -O2 -static -o test.mb test.c
-  [root@localhost qemu]# file ./test.mb
-  ./test.mb: ELF 32-bit MSB executable, Xilinx MicroBlaze 32-bit RISC, version 1 (SYSV), statically linked, for GNU/Linux 2.6.32, not stripped
-  [root@localhost qemu]# ls -l ./test.mb
-  -rwxr-xr-x. 1 root root 3224540 Feb  5 06:39 ./test.mb
-  [root@localhost qemu]# ./microblaze-linux-user/qemu-microblaze ./test.mb
-  Hello world!
-  
-And I also generate tile "Hello world" static program:
-
-  [root@localhost qemu]# /upstream/release-tile/bin/tilegx-gchen-linux-gcc -Wall -O2 -static -o test.tgx test.c
-  [root@localhost qemu]# file ./test.tgx 
-  ./test.tgx: ELF 64-bit LSB executable, Tilera TILE-Gx, version 1 (SYSV), statically linked, for GNU/Linux 2.6.32, not stripped
-  [root@localhost qemu]# ls -l ./test.tgx 
-  -rwxr-xr-x. 1 root root 3611376 Feb  5 06:42 ./test.tgx
-
-I shall try to let tile "Hello world" static program run successfully
-within this month:
-
- - 1st patch: can run an empty elf64 tile executable in linux-user.
-   (try to finish within 2015-02-15).
-
- - 2nd patch: can run "Hello world" elf64 tile program in linux-user.
-   (try to finish within 2015-02-25, it seems hard to finish in time).
-
- - 3rd patch: for completion, or fixing issues, or documentations.
-   (try to finish within 2015-02-28).
-
-
-Welcome any ideas, suggestions, and completions.
-
-Thanks.
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 85ca3ad..ee4b223 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1364,11 +1364,25 @@ ETEXI
+ DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,
+     "-smbios file=binary\n"
+     "                load SMBIOS entry from binary file\n"
+-    "-smbios type=0[,vendor=str][,version=str][,date=str][,release=%d.%d][,uefi=on|off]\n"
++    "-smbios type=0[,vendor=str][,version=str][,date=str][,release=%d.%d]\n"
++    "              [,uefi=on|off]\n"
+     "                specify SMBIOS type 0 fields\n"
+     "-smbios type=1[,manufacturer=str][,product=str][,version=str][,serial=str]\n"
+     "              [,uuid=uuid][,sku=str][,family=str]\n"
+-    "                specify SMBIOS type 1 fields\n", QEMU_ARCH_I386)
++    "                specify SMBIOS type 1 fields\n"
++    "-smbios type=2[,manufacturer=str][,product=str][,version=str][,serial=str]\n"
++    "              [,asset=str][,location=str]\n"
++    "                specify SMBIOS type 2 fields\n"
++    "-smbios type=3[,manufacturer=str][,version=str][,serial=str][,asset=str]\n"
++    "              [,sku=str]\n"
++    "                specify SMBIOS type 3 fields\n"
++    "-smbios type=4[,sock_pfx=str][,manufacturer=str][,version=str][,serial=str]\n"
++    "              [,asset=str][,part=str]\n"
++    "                specify SMBIOS type 4 fields\n"
++    "-smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]\n"
++    "               [,asset=str][,part=str]\n"
++    "                specify SMBIOS type 17 fields\n",
++    QEMU_ARCH_I386)
+ STEXI
+ @item -smbios file=@var{binary}
+ @findex -smbios
+@@ -1377,8 +1391,20 @@ Load SMBIOS entry from binary file.
+ @item -smbios type=0[,vendor=@var{str}][,version=@var{str}][,date=@var{str}][,release=@var{%d.%d}][,uefi=on|off]
+ Specify SMBIOS type 0 fields
+ 
+-@item -smbios type=1[,manufacturer=@var{str}][,product=@var{str}] [,version=@var{str}][,serial=@var{str}][,uuid=@var{uuid}][,sku=@var{str}] [,family=@var{str}]
++@item -smbios type=1[,manufacturer=@var{str}][,product=@var{str}][,version=@var{str}][,serial=@var{str}][,uuid=@var{uuid}][,sku=@var{str}][,family=@var{str}]
+ Specify SMBIOS type 1 fields
++
++@item -smbios type=2[,manufacturer=@var{str}][,product=@var{str}][,version=@var{str}][,serial=@var{str}][,asset=@var{str}][,location=@var{str}][,family=@var{str}]
++Specify SMBIOS type 2 fields
++
++@item -smbios type=3[,manufacturer=@var{str}][,version=@var{str}][,serial=@var{str}][,asset=@var{str}][,sku=@var{str}]
++Specify SMBIOS type 3 fields
++
++@item -smbios type=4[,sock_pfx=@var{str}][,manufacturer=@var{str}][,version=@var{str}][,serial=@var{str}][,asset=@var{str}][,part=@var{str}]
++Specify SMBIOS type 4 fields
++
++@item -smbios type=17[,loc_pfx=@var{str}][,bank=@var{str}][,manufacturer=@var{str}][,serial=@var{str}][,asset=@var{str}][,part=@var{str}]
++Specify SMBIOS type 17 fields
+ ETEXI
+ 
+ STEXI
 -- 
-Chen Gang
+2.1.0
 
-Open, share, and attitude like air, water, and life which God blessed
 
