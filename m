@@ -1,33 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YJqgg-0006TJ-A8
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Feb 2015 16:43:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44393)
+	id 1YJqgx-000707-5l
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Feb 2015 16:43:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44486)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqge-0006P7-A9
-	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:43:40 -0500
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqgr-0006qM-Eg
+	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:43:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqgd-0006xV-FY
-	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:43:40 -0500
-Received: from p54ac902a.dip0.t-ipconnect.de ([84.172.144.42]:46021 helo=edv32)
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqgn-0006zi-6E
+	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:43:53 -0500
+Received: from p54ac902a.dip0.t-ipconnect.de ([84.172.144.42]:46033 helo=edv32)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqgc-0006vt-Lg
-	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:43:39 -0500
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqgl-0006z1-0C
+	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:43:49 -0500
 Received: from stefan by edv32 with local (Exim 4.84)
 	(envelope-from <stefan@bib.uni-mannheim.de>)
-	id 1YJqgY-00084z-VQ; Fri, 06 Feb 2015 22:43:34 +0100
+	id 1YJqgY-00084g-SQ; Fri, 06 Feb 2015 22:43:34 +0100
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-Date: Fri,  6 Feb 2015 22:43:16 +0100
-Message-Id: <1423258997-30957-10-git-send-email-sw@weilnetz.de>
+Date: Fri,  6 Feb 2015 22:43:11 +0100
+Message-Id: <1423258997-30957-5-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1423258997-30957-1-git-send-email-sw@weilnetz.de>
 References: <1423258997-30957-1-git-send-email-sw@weilnetz.de>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 84.172.144.42
-Cc: Stefan Weil <sw@weilnetz.de>
-Subject: [Qemu-trivial] [PATCH 09/10] vga: Fix warning caused by missing
-	'static' attribute
+Cc: Amit Shah <amit.shah@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+	Juan Quintela <quintela@redhat.com>
+Subject: [Qemu-trivial] [PATCH 04/10] migration: Fix warnings caused by
+	missing 'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,31 +40,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Feb 2015 21:43:41 -0000
+X-List-Received-Date: Fri, 06 Feb 2015 21:43:58 -0000
 
-Warning from the Sparse static analysis tool:
+Warnings from the Sparse static analysis tool:
 
-hw/display/vga.c:2012:26: warning:
- symbol 'vmstate_vga_endian' was not declared. Should it be static?
+migration-rdma.c:151:12: warning:
+ symbol 'wrid_desc' was not declared. Should it be static?
+migration-rdma.c:190:12: warning:
+ symbol 'control_desc' was not declared. Should it be static?
+migration-rdma.c:3301:19: warning:
+ symbol 'rdma_read_ops' was not declared. Should it be static?
+migration-rdma.c:3308:19: warning:
+ symbol 'rdma_write_ops' was not declared. Should it be static?
 
+Cc: Juan Quintela <quintela@redhat.com>
+Cc: Amit Shah <amit.shah@redhat.com>
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/display/vga.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ migration/rdma.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/display/vga.c b/hw/display/vga.c
-index ffcfce3..9c62fbf 100644
---- a/hw/display/vga.c
-+++ b/hw/display/vga.c
-@@ -2032,7 +2032,7 @@ static bool vga_endian_state_needed(void *opaque)
-     return s->default_endian_fb != s->big_endian_fb;
+diff --git a/migration/rdma.c b/migration/rdma.c
+index fc351ea..589931a 100644
+--- a/migration/rdma.c
++++ b/migration/rdma.c
+@@ -121,7 +121,7 @@ enum {
+     RDMA_WRID_RECV_CONTROL = 4000,
+ };
+ 
+-const char *wrid_desc[] = {
++static const char *wrid_desc[] = {
+     [RDMA_WRID_NONE] = "NONE",
+     [RDMA_WRID_RDMA_WRITE] = "WRITE RDMA",
+     [RDMA_WRID_SEND_CONTROL] = "CONTROL SEND",
+@@ -160,7 +160,7 @@ enum {
+     RDMA_CONTROL_UNREGISTER_FINISHED, /* unpinning finished */
+ };
+ 
+-const char *control_desc[] = {
++static const char *control_desc[] = {
+     [RDMA_CONTROL_NONE] = "NONE",
+     [RDMA_CONTROL_ERROR] = "ERROR",
+     [RDMA_CONTROL_READY] = "READY",
+@@ -3253,14 +3253,14 @@ static int qemu_rdma_get_fd(void *opaque)
+     return rdma->comp_channel->fd;
  }
  
--const VMStateDescription vmstate_vga_endian = {
-+static const VMStateDescription vmstate_vga_endian = {
-     .name = "vga.endian",
-     .version_id = 1,
-     .minimum_version_id = 1,
+-const QEMUFileOps rdma_read_ops = {
++static const QEMUFileOps rdma_read_ops = {
+     .get_buffer    = qemu_rdma_get_buffer,
+     .get_fd        = qemu_rdma_get_fd,
+     .close         = qemu_rdma_close,
+     .hook_ram_load = qemu_rdma_registration_handle,
+ };
+ 
+-const QEMUFileOps rdma_write_ops = {
++static const QEMUFileOps rdma_write_ops = {
+     .put_buffer         = qemu_rdma_put_buffer,
+     .close              = qemu_rdma_close,
+     .before_ram_iterate = qemu_rdma_registration_start,
 -- 
 2.1.4
 
