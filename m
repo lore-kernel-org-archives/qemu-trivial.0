@@ -1,33 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YJqT9-0008Nt-6m
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Feb 2015 16:29:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41594)
+	id 1YJqTH-00008B-Bv
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Feb 2015 16:29:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41610)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqT7-0008Lt-KD
-	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:29:42 -0500
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqTB-0008RX-Id
+	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:29:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqT4-0002io-Bh
-	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:29:41 -0500
-Received: from p54ac902a.dip0.t-ipconnect.de ([84.172.144.42]:45995 helo=edv32)
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqT6-0002l1-LJ
+	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:29:45 -0500
+Received: from p54ac902a.dip0.t-ipconnect.de ([84.172.144.42]:45997 helo=edv32)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqT4-0002ii-2s
-	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:29:38 -0500
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqT6-0002kH-CU
+	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:29:40 -0500
 Received: from stefan by edv32 with local (Exim 4.84)
 	(envelope-from <stefan@bib.uni-mannheim.de>)
-	id 1YJqBZ-0007hE-Ca; Fri, 06 Feb 2015 22:11:33 +0100
+	id 1YJptd-0002Fl-FL; Fri, 06 Feb 2015 21:53:01 +0100
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnug.org,
 	qemu-trivial@nongnu.org
-Date: Fri,  6 Feb 2015 22:11:13 +0100
-Message-Id: <1423257073-29548-1-git-send-email-sw@weilnetz.de>
+Date: Fri,  6 Feb 2015 21:52:47 +0100
+Message-Id: <1423255968-8624-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 2.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 84.172.144.42
 Cc: Amit Shah <amit.shah@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-	Anthony Liguori <aliguori@amazon.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [Qemu-trivial] [PATCH] virtio: Fix warning caused by missing
-	'static' attribute
+	Juan Quintela <quintela@redhat.com>
+Subject: [Qemu-trivial] [PATCH] migration: Fix warning caused by missing
+	declaration of vmstate_dummy
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,33 +38,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Feb 2015 21:29:42 -0000
+X-List-Received-Date: Fri, 06 Feb 2015 21:29:50 -0000
 
 Warning from the Sparse static analysis tool:
 
-hw/char/virtio-serial-bus.c:31:3:
- warning: symbol 'vserdevices' was not declared. Should it be static?
+stubs/vmstate.c:4:26: warning:
+ symbol 'vmstate_dummy' was not declared. Should it be static?
 
+Cc: Juan Quintela <quintela@redhat.com>
 Cc: Amit Shah <amit.shah@redhat.com>
-Cc: Anthony Liguori <aliguori@amazon.com>
-Cc: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/char/virtio-serial-bus.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/migration/vmstate.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/hw/char/virtio-serial-bus.c b/hw/char/virtio-serial-bus.c
-index 37a6f44..47fbb34 100644
---- a/hw/char/virtio-serial-bus.c
-+++ b/hw/char/virtio-serial-bus.c
-@@ -26,7 +26,7 @@
- #include "hw/virtio/virtio-serial.h"
- #include "hw/virtio/virtio-access.h"
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 0b26bc6..c20f2d1 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -139,9 +139,7 @@ struct VMStateDescription {
+     const VMStateSubsection *subsections;
+ };
  
--struct VirtIOSerialDevices {
-+static struct VirtIOSerialDevices {
-     QLIST_HEAD(, VirtIOSerial) devices;
- } vserdevices;
+-#ifdef CONFIG_USER_ONLY
+ extern const VMStateDescription vmstate_dummy;
+-#endif
+ 
+ extern const VMStateInfo vmstate_info_bool;
  
 -- 
 2.1.4
