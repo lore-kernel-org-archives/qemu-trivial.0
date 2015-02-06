@@ -1,32 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YJqTH-00008B-Bv
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Feb 2015 16:29:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41610)
+	id 1YJqTW-0000Wq-Jv
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Feb 2015 16:30:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41715)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqTB-0008RX-Id
-	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:29:50 -0500
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqTU-0000Sy-Jr
+	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:30:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqT6-0002l1-LJ
-	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:29:45 -0500
-Received: from p54ac902a.dip0.t-ipconnect.de ([84.172.144.42]:45997 helo=edv32)
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqTR-0002o8-5d
+	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:30:04 -0500
+Received: from p54ac902a.dip0.t-ipconnect.de ([84.172.144.42]:45998 helo=edv32)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqT6-0002kH-CU
-	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:29:40 -0500
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YJqTN-0002nG-MO
+	for qemu-trivial@nongnu.org; Fri, 06 Feb 2015 16:30:01 -0500
 Received: from stefan by edv32 with local (Exim 4.84)
 	(envelope-from <stefan@bib.uni-mannheim.de>)
-	id 1YJptd-0002Fl-FL; Fri, 06 Feb 2015 21:53:01 +0100
+	id 1YJpte-0002Fp-6n; Fri, 06 Feb 2015 21:53:02 +0100
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnug.org,
 	qemu-trivial@nongnu.org
-Date: Fri,  6 Feb 2015 21:52:47 +0100
-Message-Id: <1423255968-8624-1-git-send-email-sw@weilnetz.de>
+Date: Fri,  6 Feb 2015 21:52:48 +0100
+Message-Id: <1423255968-8624-2-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1423255968-8624-1-git-send-email-sw@weilnetz.de>
+References: <1423255968-8624-1-git-send-email-sw@weilnetz.de>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 84.172.144.42
 Cc: Amit Shah <amit.shah@redhat.com>, Stefan Weil <sw@weilnetz.de>,
 	Juan Quintela <quintela@redhat.com>
-Subject: [Qemu-trivial] [PATCH] migration: Fix warning caused by missing
-	declaration of vmstate_dummy
+Subject: [Qemu-trivial] [PATCH] migration: Fix warnings caused by missing
+	'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -38,34 +40,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Feb 2015 21:29:50 -0000
+X-List-Received-Date: Fri, 06 Feb 2015 21:30:05 -0000
 
-Warning from the Sparse static analysis tool:
+Warnings from the Sparse static analysis tool:
 
-stubs/vmstate.c:4:26: warning:
- symbol 'vmstate_dummy' was not declared. Should it be static?
+migration-rdma.c:151:12: warning:
+ symbol 'wrid_desc' was not declared. Should it be static?
+migration-rdma.c:190:12: warning:
+ symbol 'control_desc' was not declared. Should it be static?
+migration-rdma.c:3301:19: warning:
+ symbol 'rdma_read_ops' was not declared. Should it be static?
+migration-rdma.c:3308:19: warning:
+ symbol 'rdma_write_ops' was not declared. Should it be static?
 
 Cc: Juan Quintela <quintela@redhat.com>
 Cc: Amit Shah <amit.shah@redhat.com>
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- include/migration/vmstate.h | 2 --
- 1 file changed, 2 deletions(-)
+ migration/rdma.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 0b26bc6..c20f2d1 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -139,9 +139,7 @@ struct VMStateDescription {
-     const VMStateSubsection *subsections;
+diff --git a/migration/rdma.c b/migration/rdma.c
+index fc351ea..589931a 100644
+--- a/migration/rdma.c
++++ b/migration/rdma.c
+@@ -121,7 +121,7 @@ enum {
+     RDMA_WRID_RECV_CONTROL = 4000,
  };
  
--#ifdef CONFIG_USER_ONLY
- extern const VMStateDescription vmstate_dummy;
--#endif
+-const char *wrid_desc[] = {
++static const char *wrid_desc[] = {
+     [RDMA_WRID_NONE] = "NONE",
+     [RDMA_WRID_RDMA_WRITE] = "WRITE RDMA",
+     [RDMA_WRID_SEND_CONTROL] = "CONTROL SEND",
+@@ -160,7 +160,7 @@ enum {
+     RDMA_CONTROL_UNREGISTER_FINISHED, /* unpinning finished */
+ };
  
- extern const VMStateInfo vmstate_info_bool;
+-const char *control_desc[] = {
++static const char *control_desc[] = {
+     [RDMA_CONTROL_NONE] = "NONE",
+     [RDMA_CONTROL_ERROR] = "ERROR",
+     [RDMA_CONTROL_READY] = "READY",
+@@ -3253,14 +3253,14 @@ static int qemu_rdma_get_fd(void *opaque)
+     return rdma->comp_channel->fd;
+ }
  
+-const QEMUFileOps rdma_read_ops = {
++static const QEMUFileOps rdma_read_ops = {
+     .get_buffer    = qemu_rdma_get_buffer,
+     .get_fd        = qemu_rdma_get_fd,
+     .close         = qemu_rdma_close,
+     .hook_ram_load = qemu_rdma_registration_handle,
+ };
+ 
+-const QEMUFileOps rdma_write_ops = {
++static const QEMUFileOps rdma_write_ops = {
+     .put_buffer         = qemu_rdma_put_buffer,
+     .close              = qemu_rdma_close,
+     .before_ram_iterate = qemu_rdma_registration_start,
 -- 
 2.1.4
 
