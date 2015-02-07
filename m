@@ -1,38 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YK5TX-0006oB-5Z
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Feb 2015 08:31:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42015)
+	id 1YK6JK-0001pW-UF
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Feb 2015 09:24:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60253)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YK5TR-0006e1-EQ
-	for qemu-trivial@nongnu.org; Sat, 07 Feb 2015 08:31:05 -0500
+	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1YK2a2-0006uy-Ff
+	for qemu-trivial@nongnu.org; Sat, 07 Feb 2015 05:25:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YK5TM-0000b9-Pg
-	for qemu-trivial@nongnu.org; Sat, 07 Feb 2015 08:31:01 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:40152)
+	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1YK2Zo-0006Lm-VY
+	for qemu-trivial@nongnu.org; Sat, 07 Feb 2015 05:25:38 -0500
+Received: from e06smtp14.uk.ibm.com ([195.75.94.110]:35944)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YK5TG-0000aF-TT; Sat, 07 Feb 2015 08:30:51 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 279754140A;
-	Sat,  7 Feb 2015 16:30:48 +0300 (MSK)
-Message-ID: <54D61388.5000507@msgid.tls.msk.ru>
-Date: Sat, 07 Feb 2015 16:30:48 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.4.0
+	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1YK2Zo-0006Kz-MD
+	for qemu-trivial@nongnu.org; Sat, 07 Feb 2015 05:25:24 -0500
+Received: from /spool/local
+	by e06smtp14.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <gkurz@linux.vnet.ibm.com>;
+	Sat, 7 Feb 2015 10:25:22 -0000
+Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
+	by e06smtp14.uk.ibm.com (192.168.101.144) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Sat, 7 Feb 2015 10:25:20 -0000
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+	(d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id D7F341B0804B; 
+	Sat,  7 Feb 2015 10:25:27 +0000 (GMT)
+Received: from d06av02.portsmouth.uk.ibm.com (d06av02.portsmouth.uk.ibm.com
+	[9.149.37.228])
+	by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t17APJ9S4391262; Sat, 7 Feb 2015 10:25:19 GMT
+Received: from d06av02.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av02.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id t17APIrL004344; Sat, 7 Feb 2015 03:25:18 -0700
+Received: from smtp.lab.toulouse-stg.fr.ibm.com
+	(srv01.lab.toulouse-stg.fr.ibm.com [9.101.4.1])
+	by d06av02.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id t17APGnm004326; Sat, 7 Feb 2015 03:25:16 -0700
+Received: from bahia.local (unknown [9.83.101.84])
+	by smtp.lab.toulouse-stg.fr.ibm.com (Postfix) with ESMTP id 9396022030A;
+	Sat,  7 Feb 2015 11:25:15 +0100 (CET)
+From: Greg Kurz <gkurz@linux.vnet.ibm.com>
+To: Alexander Graf <agraf@suse.de>
+Date: Sat, 07 Feb 2015 11:25:14 +0100
+Message-ID: <20150207102514.3944.93272.stgit@bahia.local>
+User-Agent: StGit/0.17-dirty
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-References: <1422456844-13043-1-git-send-email-armbru@redhat.com>
-In-Reply-To: <1422456844-13043-1-git-send-email-armbru@redhat.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15020710-0017-0000-0000-000002F6802D
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 0/4] Pair g_malloc() with g_free(),
-	not free()
+X-Received-From: 195.75.94.110
+X-Mailman-Approved-At: Sat, 07 Feb 2015 09:24:37 -0500
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Juan Quintela <quintela@redhat.com>
+Subject: [Qemu-trivial] [PATCH] Fix name error in migration stream
+	analyzation script
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,17 +68,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Feb 2015 13:31:05 -0000
+X-List-Received-Date: Sat, 07 Feb 2015 10:25:39 -0000
 
-28.01.2015 17:54, Markus Armbruster wrote:
+It fixes the following error:
 
-> Markus Armbruster (4):
->   qemu-option: Replace pointless use of g_malloc0() by g_malloc()
->   qemu-option: Pair g_malloc() with g_free(), not free()
->   spapr_vio: Pair g_malloc() with g_free(), not free()
->   usb: Pair g_malloc() with g_free(), not free()
+Traceback (most recent call last):
+  File "./scripts/analyze-migration.py", line 584, in <module>
+    dump.read(dump_memory = args.memory)
+  File "./scripts/analyze-migration.py", line 528, in read
+    self.sections[section_id].read()
+  File "./scripts/analyze-migration.py", line 250, in read
+    self.file.readvar(n_valid * HASH_PTE_SIZE_64)
+NameError: global name 'HASH_PTE_SIZE_64' is not defined
 
-Applied to -trivial, thank you!
+Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com>
+---
+ scripts/analyze-migration.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-/mjt
+diff --git a/scripts/analyze-migration.py b/scripts/analyze-migration.py
+index b8b9968..0c8b22f 100755
+--- a/scripts/analyze-migration.py
++++ b/scripts/analyze-migration.py
+@@ -247,7 +247,7 @@ class HTABSection(object):
+             if index == 0 and n_valid == 0 and n_invalid == 0:
+                 break
+ 
+-            self.file.readvar(n_valid * HASH_PTE_SIZE_64)
++            self.file.readvar(n_valid * self.HASH_PTE_SIZE_64)
+ 
+     def getDict(self):
+         return ""
+
 
