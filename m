@@ -1,57 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YKT9Y-0007wa-Ot
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Feb 2015 09:48:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36795)
+	id 1YKZgI-0006fr-9o
+	for mharc-qemu-trivial@gnu.org; Sun, 08 Feb 2015 16:46:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54852)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bp@alien8.de>) id 1YKQlh-0003GW-9L
-	for qemu-trivial@nongnu.org; Sun, 08 Feb 2015 07:15:18 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1YKZgG-0006dW-Lr
+	for qemu-trivial@nongnu.org; Sun, 08 Feb 2015 16:46:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bp@alien8.de>) id 1YKQlc-000611-V8
-	for qemu-trivial@nongnu.org; Sun, 08 Feb 2015 07:15:17 -0500
-Received: from mail.skyhub.de ([78.46.96.112]:50625)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <bp@alien8.de>)
-	id 1YKQlc-00060p-Kh
-	for qemu-trivial@nongnu.org; Sun, 08 Feb 2015 07:15:12 -0500
-X-Virus-Scanned: Nedap ESD1 at mail.skyhub.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=alien8.de; s=alien8;
-	t=1423397709; bh=XAFv/2O/AucB5h8eo3EVMFYna7+Lqrv9rguDEgHyXBY=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	Content-Type:In-Reply-To; b=ZGImA/Tyw4v52Xc2QbM3NDIKXGbNBlb5Zjwble
-	Yod9ndoz4i9vTexGUEAvHMZKxtzGWSM+yfsYTHHCE7AFlay05fzciovpdjBNWBe0MR5
-	W/ruFvBy3UFPy5jS8a/pDPTdSx9m8EcWFr3JfC0zff/azyaXdfiQWxmKeHwCUrsHq4=
-Received: from mail.skyhub.de ([127.0.0.1])
-	by localhost (door.skyhub.de [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id UMPgofUEk5Hb; Sun,  8 Feb 2015 13:15:09 +0100 (CET)
-Received: from pd.tnic (p5DDC71F7.dip0.t-ipconnect.de [93.220.113.247])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id
-	3247E1D96FD; Sun,  8 Feb 2015 13:15:09 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=alien8.de; s=alien8;
-	t=1423397709; bh=XAFv/2O/AucB5h8eo3EVMFYna7+Lqrv9rguDEgHyXBY=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	Content-Type:In-Reply-To; b=ZGImA/Tyw4v52Xc2QbM3NDIKXGbNBlb5Zjwble
-	Yod9ndoz4i9vTexGUEAvHMZKxtzGWSM+yfsYTHHCE7AFlay05fzciovpdjBNWBe0MR5
-	W/ruFvBy3UFPy5jS8a/pDPTdSx9m8EcWFr3JfC0zff/azyaXdfiQWxmKeHwCUrsHq4=
-Received: by pd.tnic (Postfix, from userid 1000)
-	id 46F9B1613BF; Sun,  8 Feb 2015 13:14:38 +0100 (CET)
-Date: Sun, 8 Feb 2015 13:14:38 +0100
-From: Borislav Petkov <bp@alien8.de>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20150208121438.GA6290@pd.tnic>
-References: <1423340992-3156-1-git-send-email-bp@alien8.de>
-	<54D735D4.8000105@redhat.com>
+	(envelope-from <paolo.bonzini@gmail.com>) id 1YKZgF-0005fi-Ld
+	for qemu-trivial@nongnu.org; Sun, 08 Feb 2015 16:46:16 -0500
+Received: from mail-wg0-x235.google.com ([2a00:1450:400c:c00::235]:40200)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1YKZgB-0005ej-9i; Sun, 08 Feb 2015 16:46:11 -0500
+Received: by mail-wg0-f53.google.com with SMTP id x13so3346643wgg.12;
+	Sun, 08 Feb 2015 13:46:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=Bbu5VVmjnYz8ONJMH7M6/t4DfHsUhBzf6k5oeaggYoI=;
+	b=kjsHPEytXb+nj5nRBoXMLmisN0WxLLE7YhTon746GC09VNwWaviJv80F6Ot+Kzfqn0
+	Hy/JVpey9bxGw5MWToNkLvNpRjq3mVRO4O6mTvD5Nwqc/cYSciKMKTR2v3ZQWE4oq2EM
+	BowPnwiBaFqGylsmJKWp34Kvge9e/UxLm+9ivyvKFIY97Qhr0OMj5+Kt8oa5vIhYGHI4
+	aD/GO+wbWTDoPwBPBC4KCjTtlHcatnfugVuhyKbsGpO27fcban2te51tR6edao42QNfL
+	5jF/on2K0ae7G1eAFjUrDx3o3T+nRJWuzklKDkuYJpoocrdHen5Q6GhTpMQNg7g8L9ez
+	GLJA==
+X-Received: by 10.180.189.179 with SMTP id gj19mr290088wic.55.1423431970537;
+	Sun, 08 Feb 2015 13:46:10 -0800 (PST)
+Received: from [192.168.10.150] (net-93-66-105-136.cust.vodafonedsl.it.
+	[93.66.105.136])
+	by mx.google.com with ESMTPSA id l6sm13553030wjx.33.2015.02.08.13.46.07
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 08 Feb 2015 13:46:09 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <54D7D91D.2040505@redhat.com>
+Date: Sun, 08 Feb 2015 22:46:05 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
+To: Borislav Petkov <bp@alien8.de>
+References: <1423340992-3156-1-git-send-email-bp@alien8.de>	<54D735D4.8000105@redhat.com>
+	<20150208121438.GA6290@pd.tnic>
+In-Reply-To: <20150208121438.GA6290@pd.tnic>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <54D735D4.8000105@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 78.46.96.112
-X-Mailman-Approved-At: Sun, 08 Feb 2015 09:48:03 -0500
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c00::235
 Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
 	Anthony Liguori <aliguori@amazon.com>
-Subject: [Qemu-trivial] [PATCH] memsave: Improve and disambiguate error
+Subject: Re: [Qemu-trivial] [PATCH] memsave: Improve and disambiguate error
 	message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -64,76 +62,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 Feb 2015 12:15:18 -0000
+X-List-Received-Date: Sun, 08 Feb 2015 21:46:17 -0000
 
-On Sun, Feb 08, 2015 at 11:09:24AM +0100, Paolo Bonzini wrote:
-> Cc: qemu-trivial@nongnu.org
 
-Thanks.
 
-But, there's more b0rked with this error message so you might wanna take
-the patch below instead.
+On 08/02/2015 13:14, Borislav Petkov wrote:
+> On Sun, Feb 08, 2015 at 11:09:24AM +0100, Paolo Bonzini wrote:
+>> Cc: qemu-trivial@nongnu.org
+> 
+> Thanks.
+> 
+> But, there's more b0rked with this error message so you might wanna take
+> the patch below instead.
+> 
+> Btw, what are the vim settings when doing patches for qemu, this must be
+> documented somewhere as coding style differs significantly from that of
+> the kernel?
 
-Btw, what are the vim settings when doing patches for qemu, this must be
-documented somewhere as coding style differs significantly from that of
-the kernel?
+I use ":set shiftwidth=4 expandtab" and c-indent mode.
 
-:-)
+Quick googling for "vim four spaces" suggests the following alternatives:
 
----
-From: Borislav Petkov <bp@suse.de>
-Subject: [PATCH] memsave: Improve and disambiguate error message
+* ":set tabstop=8 expandtab shiftwidth=4 softtabstop=4"
 
-When requesting a size which cannot be read, the error message shows
-a different address which is misleading to the user and it looks like
-something's wrong with the address parsing. This is because the input
-@addr variable is incremented in the memory dumping loop:
+* "set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab".
 
-(qemu) memsave 0xffffffff8418069c 0xb00000 mem
-Invalid addr 0xffffffff849ffe9c specified
-
-Fix that by saving the original address and size and use them in the
-error message:
-
-(qemu) memsave 0xffffffff8418069c 0xb00000 mem
-Invalid addr 0xffffffff8418069c/size 11534336 specified
-
-Cc: Anthony Liguori <aliguori@amazon.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Borislav Petkov <bp@suse.de>
----
- cpus.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/cpus.c b/cpus.c
-index 0cdd1d71560b..a5c7cad00fc9 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -1466,6 +1466,7 @@ void qmp_memsave(int64_t addr, int64_t size, const char *filename,
-     uint32_t l;
-     CPUState *cpu;
-     uint8_t buf[1024];
-+    int64_t orig_addr = addr, orig_size = size;
- 
-     if (!has_cpu) {
-         cpu_index = 0;
-@@ -1489,7 +1490,8 @@ void qmp_memsave(int64_t addr, int64_t size, const char *filename,
-         if (l > size)
-             l = size;
-         if (cpu_memory_rw_debug(cpu, addr, buf, l, 0) != 0) {
--            error_setg(errp, "Invalid addr 0x%016" PRIx64 "specified", addr);
-+            error_setg(errp, "Invalid addr 0x%016" PRIx64 "/size %" PRId64
-+                             " specified", orig_addr, orig_size);
-             goto exit;
-         }
-         if (fwrite(buf, 1, l, f) != l) {
--- 
-2.2.0.33.gc18b867
-
--- 
-Regards/Gruss,
-    Boris.
-
-ECO tip #101: Trim your mails when you reply.
---
+Paolo
 
