@@ -1,44 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YKeFE-0006yU-Do
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Feb 2015 21:38:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36223)
+	id 1YKkpI-0005eZ-GX
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Feb 2015 04:40:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37765)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YKeFB-0006vC-Uc
-	for qemu-trivial@nongnu.org; Sun, 08 Feb 2015 21:38:38 -0500
+	(envelope-from <armbru@redhat.com>) id 1YKkpF-0005aK-F9
+	for qemu-trivial@nongnu.org; Mon, 09 Feb 2015 04:40:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YKeFB-0000qp-9m
-	for qemu-trivial@nongnu.org; Sun, 08 Feb 2015 21:38:37 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:29830)
+	(envelope-from <armbru@redhat.com>) id 1YKkpE-0001H7-Jd
+	for qemu-trivial@nongnu.org; Mon, 09 Feb 2015 04:40:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:41938)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YKeF6-0000oN-Ar; Sun, 08 Feb 2015 21:38:32 -0500
-Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CJG30719; Mon, 09 Feb 2015 10:37:58 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml428-hub.china.huawei.com
-	(10.82.67.183) with Microsoft SMTP Server id 14.3.158.1; Mon, 9 Feb 2015
-	10:37:49 +0800
-Message-ID: <54D81D70.8060508@huawei.com>
-Date: Mon, 9 Feb 2015 10:37:36 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:11.0) Gecko/20120327 Thunderbird/11.0.1
+	(envelope-from <armbru@redhat.com>)
+	id 1YKkp8-0001FR-5D; Mon, 09 Feb 2015 04:40:10 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t199e9kJ001057
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Mon, 9 Feb 2015 04:40:09 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-55.ams2.redhat.com
+	[10.36.116.55])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t199e7HS003994
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 9 Feb 2015 04:40:09 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 3F950303F16C; Mon,  9 Feb 2015 10:40:07 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+References: <1423406448-31918-1-git-send-email-sw@weilnetz.de>
+Date: Mon, 09 Feb 2015 10:40:07 +0100
+In-Reply-To: <1423406448-31918-1-git-send-email-sw@weilnetz.de> (Stefan Weil's
+	message of "Sun, 8 Feb 2015 15:40:48 +0100")
+Message-ID: <87h9uvpgnc.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-To: "Gonglei (Arei)" <arei.gonglei@huawei.com>
-References: <1422689277-16032-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1422689277-16032-1-git-send-email-arei.gonglei@huawei.com>
-Content-Type: text/plain; charset="GB2312"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"stefano.stabellini@eu.citrix.com" <stefano.stabellini@eu.citrix.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
-Subject: Re: [Qemu-trivial] [PATCH 0/2] xen_pt: fix two Coverity defects
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developer <qemu-devel@nongnu.org>,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hmp: Fix warning from
+	smatch (wrong argument in function call)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,24 +54,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Feb 2015 02:38:38 -0000
+X-List-Received-Date: Mon, 09 Feb 2015 09:40:18 -0000
 
-On 2015/1/31 15:27, Gonglei (Arei) wrote:
+Stefan Weil <sw@weilnetz.de> writes:
 
-> From: Gonglei <arei.gonglei@huawei.com>
-> 
-> 
-> Gonglei (2):
->   xen-pt: fix Negative array index read
->   xen-pt: fix Out-of-bounds read
-> 
->  hw/xen/xen_pt_config_init.c | 11 +++++++----
->  1 file changed, 7 insertions(+), 4 deletions(-)
-> 
+> Fix this warning:
+> hmp.c:414:38: warning: Using plain integer as NULL pointer
+>
+> qmp_query_block expects a pointer argument, so passing false is wrong.
+>
+> Cc: Luiz Capitulino <lcapitulino@redhat.com>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Ping...
-
-Regards,
--Gonglei
-
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
