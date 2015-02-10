@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL4fN-0006J3-60
+	id 1YL4fN-0006Jf-GE
 	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 01:51:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53941)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53887)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4fH-00067q-3r
+	(envelope-from <mjt@tls.msk.ru>) id 1YL4fE-000623-6B
 	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:51:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4fG-0007pG-3W
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:51:19 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:57782)
+	(envelope-from <mjt@tls.msk.ru>) id 1YL4fD-0007oD-60
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:51:16 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:39961)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YL4f2-0007kZ-FS; Tue, 10 Feb 2015 01:51:04 -0500
+	id 1YL4f2-0007ka-Fb; Tue, 10 Feb 2015 01:51:04 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 328C64181F;
+	by isrv.corpit.ru (Postfix) with ESMTP id 59A3A41823;
 	Tue, 10 Feb 2015 09:51:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id BABCB947;
+	by tsrv.corpit.ru (Postfix) with SMTP id 04914938;
 	Tue, 10 Feb 2015 09:34:45 +0300 (MSK)
-Received: (nullmailer pid 9419 invoked by uid 1000);
+Received: (nullmailer pid 9386 invoked by uid 1000);
 	Tue, 10 Feb 2015 06:34:43 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 10 Feb 2015 09:34:31 +0300
-Message-Id: <4eb6cdbb6297f13622bd085a73b20a0b445722eb.1423549659.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 10 Feb 2015 09:34:15 +0300
+Message-Id: <c89c6e80a66aac16d7b14ff21e0aaeb99ebfe165.1423549659.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 42/46] serial: Fix warnings caused by missing
-	'static' attribute
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [Qemu-trivial] [PULL 26/46] util/uri: uri_new() can't fail,
+	drop dead error handling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,98 +46,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 10 Feb 2015 06:51:20 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Markus Armbruster <armbru@redhat.com>
 
-Warnings from the Sparse static analysis tool:
-
-hw/char/serial.c:630:26: warning: symbol
- 'vmstate_serial_thr_ipending' was not declared. Should it be static?
-hw/char/serial.c:646:26: warning: symbol
- 'vmstate_serial_tsr' was not declared. Should it be static?
-hw/char/serial.c:665:26: warning: symbol
- 'vmstate_serial_recv_fifo' was not declared. Should it be static?
-hw/char/serial.c:681:26: warning: symbol
- 'vmstate_serial_xmit_fifo' was not declared. Should it be static?
-hw/char/serial.c:697:26: warning: symbol
- 'vmstate_serial_fifo_timeout_timer' was not declared. Should it be static?
-hw/char/serial.c:713:26: warning: symbol
- 'vmstate_serial_timeout_ipending' was not declared. Should it be static?
-hw/char/serial.c:729:26: warning: symbol
- 'vmstate_serial_poll' was not declared. Should it be static?
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/char/serial.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ util/uri.c | 36 +++++++++++-------------------------
+ 1 file changed, 11 insertions(+), 25 deletions(-)
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index bd25c03..0491897 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -658,7 +658,7 @@ static bool serial_thr_ipending_needed(void *opaque)
+diff --git a/util/uri.c b/util/uri.c
+index 918d235..aa39694 100644
+--- a/util/uri.c
++++ b/util/uri.c
+@@ -928,12 +928,10 @@ uri_parse(const char *str) {
+     if (str == NULL)
+ 	return(NULL);
+     uri = uri_new();
+-    if (uri != NULL) {
+-	ret = rfc3986_parse_uri_reference(uri, str);
+-        if (ret) {
+-	    uri_free(uri);
+-	    return(NULL);
+-	}
++    ret = rfc3986_parse_uri_reference(uri, str);
++    if (ret) {
++        uri_free(uri);
++        return(NULL);
      }
+     return(uri);
  }
- 
--const VMStateDescription vmstate_serial_thr_ipending = {
-+static const VMStateDescription vmstate_serial_thr_ipending = {
-     .name = "serial/thr_ipending",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -674,7 +674,7 @@ static bool serial_tsr_needed(void *opaque)
-     return s->tsr_retry != 0;
+@@ -974,15 +972,13 @@ uri_parse_raw(const char *str, int raw) {
+     if (str == NULL)
+ 	return(NULL);
+     uri = uri_new();
+-    if (uri != NULL) {
+-        if (raw) {
+-	    uri->cleanup |= 2;
+-	}
+-	ret = uri_parse_into(uri, str);
+-        if (ret) {
+-	    uri_free(uri);
+-	    return(NULL);
+-	}
++    if (raw) {
++        uri->cleanup |= 2;
++    }
++    ret = uri_parse_into(uri, str);
++    if (ret) {
++        uri_free(uri);
++        return(NULL);
+     }
+     return(uri);
  }
- 
--const VMStateDescription vmstate_serial_tsr = {
-+static const VMStateDescription vmstate_serial_tsr = {
-     .name = "serial/tsr",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -693,7 +693,7 @@ static bool serial_recv_fifo_needed(void *opaque)
- 
- }
- 
--const VMStateDescription vmstate_serial_recv_fifo = {
-+static const VMStateDescription vmstate_serial_recv_fifo = {
-     .name = "serial/recv_fifo",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -709,7 +709,7 @@ static bool serial_xmit_fifo_needed(void *opaque)
-     return !fifo8_is_empty(&s->xmit_fifo);
- }
- 
--const VMStateDescription vmstate_serial_xmit_fifo = {
-+static const VMStateDescription vmstate_serial_xmit_fifo = {
-     .name = "serial/xmit_fifo",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -725,7 +725,7 @@ static bool serial_fifo_timeout_timer_needed(void *opaque)
-     return timer_pending(s->fifo_timeout_timer);
- }
- 
--const VMStateDescription vmstate_serial_fifo_timeout_timer = {
-+static const VMStateDescription vmstate_serial_fifo_timeout_timer = {
-     .name = "serial/fifo_timeout_timer",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -741,7 +741,7 @@ static bool serial_timeout_ipending_needed(void *opaque)
-     return s->timeout_ipending != 0;
- }
- 
--const VMStateDescription vmstate_serial_timeout_ipending = {
-+static const VMStateDescription vmstate_serial_timeout_ipending = {
-     .name = "serial/timeout_ipending",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -757,7 +757,7 @@ static bool serial_poll_needed(void *opaque)
-     return s->poll_msl >= 0;
- }
- 
--const VMStateDescription vmstate_serial_poll = {
-+static const VMStateDescription vmstate_serial_poll = {
-     .name = "serial/poll",
-     .version_id = 1,
-     .minimum_version_id = 1,
+@@ -1675,8 +1671,6 @@ uri_resolve(const char *uri, const char *base) {
+     else {
+ 	if (*uri) {
+ 	    ref = uri_new();
+-	    if (ref == NULL)
+-		goto done;
+ 	    ret = uri_parse_into(ref, uri);
+ 	}
+ 	else
+@@ -1695,8 +1689,6 @@ uri_resolve(const char *uri, const char *base) {
+ 	ret = -1;
+     else {
+ 	bas = uri_new();
+-	if (bas == NULL)
+-	    goto done;
+ 	ret = uri_parse_into(bas, base);
+     }
+     if (ret != 0) {
+@@ -1727,8 +1719,6 @@ uri_resolve(const char *uri, const char *base) {
+      *    document.
+      */
+     res = uri_new();
+-    if (res == NULL)
+-	goto done;
+     if ((ref->scheme == NULL) && (ref->path == NULL) &&
+ 	((ref->authority == NULL) && (ref->server == NULL))) {
+         res->scheme = g_strdup(bas->scheme);
+@@ -1933,8 +1923,6 @@ uri_resolve_relative (const char *uri, const char * base)
+      * First parse URI into a standard form
+      */
+     ref = uri_new ();
+-    if (ref == NULL)
+-	return NULL;
+     /* If URI not already in "relative" form */
+     if (uri[0] != '.') {
+ 	ret = uri_parse_into (ref, uri);
+@@ -1951,8 +1939,6 @@ uri_resolve_relative (const char *uri, const char * base)
+ 	goto done;
+     }
+     bas = uri_new ();
+-    if (bas == NULL)
+-	goto done;
+     if (base[0] != '.') {
+ 	ret = uri_parse_into (bas, base);
+ 	if (ret != 0)
 -- 
 2.1.4
 
