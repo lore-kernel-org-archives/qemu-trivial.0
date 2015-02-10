@@ -1,50 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL574-0001Uy-8t
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 02:20:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33737)
+	id 1YL5Gh-0007a0-JB
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 02:29:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36242)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YL572-0001Qy-3J
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 02:20:00 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YL5Gf-0007We-03
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 02:29:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YL56y-0002v3-J5
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 02:20:00 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:62362)
+	(envelope-from <mjt@tls.msk.ru>) id 1YL5Gd-0006Rh-NG
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 02:29:56 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:44985)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YL56x-0002rM-Ml; Tue, 10 Feb 2015 02:19:56 -0500
-Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BBR49248; Tue, 10 Feb 2015 15:19:45 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml433-hub.china.huawei.com
-	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 10 Feb 2015 15:19:37 +0800
-Message-ID: <54D9B107.3070002@huawei.com>
-Date: Tue, 10 Feb 2015 15:19:35 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YL5GY-0006QF-Jg; Tue, 10 Feb 2015 02:29:50 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id D5CC141812;
+	Tue, 10 Feb 2015 10:29:48 +0300 (MSK)
+Message-ID: <54D9B36C.1000405@msgid.tls.msk.ru>
+Date: Tue, 10 Feb 2015 10:29:48 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-References: <1422689277-16032-1-git-send-email-arei.gonglei@huawei.com>
-	<1422689277-16032-3-git-send-email-arei.gonglei@huawei.com>
-	<alpine.DEB.2.02.1502100638200.29696@kaball.uk.xensource.com>
-	<54D9A9E6.3040306@huawei.com>
-	<alpine.DEB.2.02.1502100700180.29696@kaball.uk.xensource.com>
-In-Reply-To: <alpine.DEB.2.02.1502100700180.29696@kaball.uk.xensource.com>
-Content-Type: text/plain; charset="windows-1252"
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
+	<CAFEAcA-nR3zspLZ42W7Ey4EV1UM-RgiXkggmgfBWWDwRqYFqHA@mail.gmail.com>
+In-Reply-To: <CAFEAcA-nR3zspLZ42W7Ey4EV1UM-RgiXkggmgfBWWDwRqYFqHA@mail.gmail.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020201.54D9B112.0074, ss=1, re=0.001, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: c0d779ebf9671d152412d181b5c86520
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH 2/2] xen-pt: fix Out-of-bounds read
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/46] Trivial patches for
+	2015-02-10
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,53 +46,159 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 07:20:01 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 07:29:58 -0000
 
-On 2015/2/10 15:00, Stefano Stabellini wrote:
-> On Tue, 10 Feb 2015, Gonglei wrote:
->> On 2015/2/10 14:39, Stefano Stabellini wrote:
->>> On Sat, 31 Jan 2015, arei.gonglei@huawei.com wrote:
->>>> From: Gonglei <arei.gonglei@huawei.com>
->>>>
->>>> The array length of s->real_device.io_regions[] is
->>>> "PCI_NUM_REGIONS - 1". Add a check, just make Coverity happy.
->>>>
->>>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
->>>> ---
->>>>  hw/xen/xen_pt_config_init.c | 5 +++++
->>>>  1 file changed, 5 insertions(+)
->>>>
->>>> diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
->>>> index 710fe50..3c8b0f1 100644
->>>> --- a/hw/xen/xen_pt_config_init.c
->>>> +++ b/hw/xen/xen_pt_config_init.c
->>>> @@ -443,6 +443,11 @@ static int xen_pt_bar_reg_read(XenPCIPassthroughState *s, XenPTReg *cfg_entry,
->>>>          return -1;
->>>>      }
->>>>  
->>>> +    if (index == PCI_ROM_SLOT) {
->>>> +        XEN_PT_ERR(&s->dev, "Internal error: Access violation at ROM BAR.\n");
->>>> +        return -1;
->>>> +    }
->>>
->>> Could you please fix the boundaries of the check just above?
->>> Also please avoid using PCI_ROM_SLOT for the array index check, simply
->>> use PCI_NUM_REGIONS.
->>>
->> You meaning is changing the below check:
+10.02.2015 10:14, Peter Maydell wrote:
+>> The following changes since commit 89db21771782fd6050335e73542064f1187c9ced:
 >>
->> if (index < 0 || index >= PCI_NUM_REGIONS - 1) {
->>         XEN_PT_ERR(&s->dev, "Internal error: Invalid BAR index [%d].\n", index);
->>         return -1;
->>     }
+>>   qmp: unbreak build for non-vnc configuration (2015-02-09 22:36:04 +0000)
 >>
->> Isn't it?
->  
-> that's right
+>> are available in the git repository at:
+>>
+>>   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-02-10
+>>
+>> for you to fetch changes up to 3ff64f1f9391a9b71d4dd58c6c4bbaa1db3dd430:
+>>
+>>   virtio: Fix warning caused by missing 'static' attribute (2015-02-10 09:27:21 +0300)
 > 
-OK, will do, thanks.
+> Hi. I'm afraid this introduces a new compiler warning under clang:
+> 
+> disas/cris.c:1218:33: warning: unused variable 'cris_cond15s'
+> [-Wunused-const-variable]
+> static const struct cris_cond15 cris_cond15s[] =
 
-Regards,
--Gonglei
+Yes.  This variable/array is actually completely unused. I dropped
+the patch in question from my pull request, and re-tagged it.  We'll
+deal with this unused var later.  Here's a new pull request, now
+with only 45 patches.
 
+The following changes since commit 89db21771782fd6050335e73542064f1187c9ced:
+
+  qmp: unbreak build for non-vnc configuration (2015-02-09 22:36:04 +0000)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-02-10
+
+for you to fetch changes up to 43d735547b2a29cafd7d9529ac38734950b235f7:
+
+  virtio: Fix warning caused by missing 'static' attribute (2015-02-10 10:26:05 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2015-02-10
+
+----------------------------------------------------------------
+Chen Gang S (4):
+      linux-user/syscall.c: lock_iovec: unlock vec[i] in failure processing code block
+      linux-user/syscall.c: Fix typo issue for using target_vec[i].iov_len instead of target_vec[i].iov_base
+      linux-user/main.c: Use TARGET_SIG* instead of SIG*
+      linux-user/syscall.c: do_ioctl_dm: Need to call unlock_user() before going to failure return in default case
+
+Christian Borntraeger (1):
+      vl.c: fix memory leak spotted by valgrind
+
+Daniel P. Berrange (1):
+      libcacard: stop linking against every single 3rd party library
+
+Don Koch (4):
+      Add tracing to xenfb.
+      Add trace to ps2.c.
+      Add/convert trace calls in pcnet-pci.c.
+      Convert some debugging printfs to trace calls in pcnet.c.
+
+Gonglei (2):
+      fw_cfg: fix typos in comments: patch -> path
+      virtfs-proxy-helper: Fix possible socket leak.
+
+Greg Kurz (2):
+      QJSON: fix typo in author's email address
+      Fix name error in migration stream analyzation script
+
+Kevin Wolf (1):
+      qemu-sockets: Fix buffer overflow in inet_parse()
+
+Markus Armbruster (15):
+      target-mips: Clean up switch fall through after commit fecd264
+      vl: Fix bogus error message for implied mon ID clashing
+      qemu-option: Replace pointless use of g_malloc0() by g_malloc()
+      qemu-option: Pair g_malloc() with g_free(), not free()
+      spapr_vio: Pair g_malloc() with g_free(), not free()
+      usb: Pair g_malloc() with g_free(), not free()
+      util/uri: uri_new() can't fail, drop dead error handling
+      util/uri: realloc2n() can't fail, drop dead error handling
+      util/uri: URI member path can be null, compare more carfully
+      onenand: g_malloc() can't fail, bury dead error handling
+      rtl8139: g_malloc() can't fail, bury dead error handling
+      kvm: g_malloc() can't fail, bury dead error handling
+      rdma: g_malloc0() can't fail, bury dead error handling
+      vnc: g_realloc() can't fail, bury dead error handling
+      translate-all: Use g_try_malloc() for dynamic translator buffer
+
+Maxim Ostapenko (1):
+      linux-user: wrong TARGET_SI_PAD_SIZE value for some targets.
+
+Paolo Bonzini (4):
+      cpu-exec: drop dead assignment
+      cpu-exec: simplify icount code
+      qemu-sockets: improve error reporting in unix_listen_opts
+      aes: remove a dead return statement
+
+Stefan Weil (9):
+      disas/sh4: Fix warning caused by missing 'static' attribute
+      migration: Fix warning caused by missing declaration of vmstate_dummy
+      migration: Fix warnings caused by missing 'static' attribute
+      moxie: Fix warning caused by missing include statement
+      serial: Fix warnings caused by missing 'static' attribute
+      spice: Add missing 'static' attribute
+      stubs: Fix warning caused by missing include statement
+      vga: Fix warning caused by missing 'static' attribute
+      virtio: Fix warning caused by missing 'static' attribute
+
+Thomas Huth (1):
+      qemu-log: Correct help text of 'log cpu_reset'
+
+ cpu-exec.c                   | 12 +++------
+ disas/sh4.c                  |  2 +-
+ fsdev/virtfs-proxy-helper.c  | 13 ++++++---
+ hw/block/onenand.c           |  8 +-----
+ hw/char/serial.c             | 14 +++++-----
+ hw/char/virtio-serial-bus.c  |  2 +-
+ hw/core/fw-path-provider.c   |  2 +-
+ hw/display/vga.c             |  2 +-
+ hw/display/xenfb.c           |  5 ++++
+ hw/input/ps2.c               | 16 +++++++++++
+ hw/net/pcnet-pci.c           | 49 +++++++++++++--------------------
+ hw/net/pcnet.c               | 28 ++++++-------------
+ hw/net/rtl8139.c             | 14 ----------
+ hw/ppc/spapr.c               |  2 +-
+ hw/ppc/spapr_vio.c           |  2 +-
+ hw/usb/desc-msos.c           |  2 +-
+ include/migration/vmstate.h  |  2 --
+ kvm-all.c                    |  4 ---
+ libcacard/Makefile           |  2 ++
+ linux-user/main.c            | 64 ++++++++++++++++++++++----------------------
+ linux-user/syscall.c         |  9 ++++++-
+ linux-user/syscall_defs.h    |  9 ++++++-
+ migration/rdma.c             | 11 +++-----
+ qemu-log.c                   |  2 +-
+ qjson.c                      |  2 +-
+ scripts/analyze-migration.py |  2 +-
+ spice-qemu-char.c            |  2 +-
+ stubs/qtest.c                |  2 +-
+ target-mips/translate.c      |  4 +++
+ target-moxie/machine.c       |  1 +
+ trace-events                 | 41 ++++++++++++++++++++++++++++
+ translate-all.c              |  2 +-
+ ui/vnc.c                     |  4 ---
+ util/aes.c                   |  2 +-
+ util/qemu-option.c           |  8 +++---
+ util/qemu-sockets.c          | 26 +++++++++++++-----
+ util/uri.c                   | 61 +++++++++--------------------------------
+ vl.c                         |  7 +++--
+ 38 files changed, 223 insertions(+), 217 deletions(-)
+
+
+Thanks,
+
+/mjt
 
