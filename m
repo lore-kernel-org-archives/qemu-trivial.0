@@ -1,37 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL4Pd-0001VR-Q1
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 01:35:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49092)
+	id 1YL4Uf-0005pG-8g
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 01:40:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50213)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4Pa-0001QK-Nk
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:35:07 -0500
+	(envelope-from <Stefano.Stabellini@citrix.com>) id 1YL4Uc-0005lO-QX
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:40:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4PZ-0001Zh-Je
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:35:06 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:55560)
+	(envelope-from <Stefano.Stabellini@citrix.com>) id 1YL4Ub-0003c8-RK
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:40:18 -0500
+Received: from smtp02.citrix.com ([66.165.176.63]:15750)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YL4PR-0001Ic-TI; Tue, 10 Feb 2015 01:34:58 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id EE39E41820;
-	Tue, 10 Feb 2015 09:34:43 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id DA552933;
-	Tue, 10 Feb 2015 09:34:43 +0300 (MSK)
-Received: (nullmailer pid 9340 invoked by uid 1000);
-	Tue, 10 Feb 2015 06:34:43 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Tue, 10 Feb 2015 09:33:53 +0300
-Message-Id: <5edab03d40408564212887f7674591230784a1a8.1423549659.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
-References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Don Koch <dkoch@verizon.com>
-Subject: [Qemu-trivial] [PULL 04/46] Add trace to ps2.c.
+	(envelope-from <Stefano.Stabellini@citrix.com>)
+	id 1YL4UX-0003bJ-Mr; Tue, 10 Feb 2015 01:40:13 -0500
+X-IronPort-AV: E=Sophos;i="5.09,548,1418083200"; d="scan'208";a="225523724"
+Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
+	(10.13.107.78) with Microsoft SMTP Server id 14.3.210.2;
+	Tue, 10 Feb 2015 01:40:11 -0500
+Received: from kaball.uk.xensource.com ([10.80.2.59])	by
+	ukmail1.uk.xensource.com with esmtp (Exim 4.69)	(envelope-from
+	<stefano.stabellini@eu.citrix.com>)	id 1YL4UV-0001Jn-KL;
+	Tue, 10 Feb 2015 06:40:11 +0000
+Date: Tue, 10 Feb 2015 06:39:40 +0000
+From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+X-X-Sender: sstabellini@kaball.uk.xensource.com
+To: Gonglei <arei.gonglei@huawei.com>
+In-Reply-To: <1422689277-16032-3-git-send-email-arei.gonglei@huawei.com>
+Message-ID: <alpine.DEB.2.02.1502100638200.29696@kaball.uk.xensource.com>
+References: <1422689277-16032-1-git-send-email-arei.gonglei@huawei.com>
+	<1422689277-16032-3-git-send-email-arei.gonglei@huawei.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+X-DLP: MIA1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 66.165.176.63
+Cc: qemu-trivial@nongnu.org, stefano.stabellini@eu.citrix.com,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH 2/2] xen-pt: fix Out-of-bounds read
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,163 +49,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 06:35:08 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 06:40:19 -0000
 
-From: Don Koch <dkoch@verizon.com>
+On Sat, 31 Jan 2015, arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+> 
+> The array length of s->real_device.io_regions[] is
+> "PCI_NUM_REGIONS - 1". Add a check, just make Coverity happy.
+> 
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  hw/xen/xen_pt_config_init.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
+> index 710fe50..3c8b0f1 100644
+> --- a/hw/xen/xen_pt_config_init.c
+> +++ b/hw/xen/xen_pt_config_init.c
+> @@ -443,6 +443,11 @@ static int xen_pt_bar_reg_read(XenPCIPassthroughState *s, XenPTReg *cfg_entry,
+>          return -1;
+>      }
+>  
+> +    if (index == PCI_ROM_SLOT) {
+> +        XEN_PT_ERR(&s->dev, "Internal error: Access violation at ROM BAR.\n");
+> +        return -1;
+> +    }
 
-Signed-off-by: Don Koch <dkoch@verizon.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/input/ps2.c | 16 ++++++++++++++++
- trace-events   | 17 +++++++++++++++++
- 2 files changed, 33 insertions(+)
+Could you please fix the boundaries of the check just above?
+Also please avoid using PCI_ROM_SLOT for the array index check, simply
+use PCI_NUM_REGIONS.
 
-diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-index a466e25..4baeea2 100644
---- a/hw/input/ps2.c
-+++ b/hw/input/ps2.c
-@@ -27,6 +27,8 @@
- #include "ui/input.h"
- #include "sysemu/sysemu.h"
- 
-+#include "trace.h"
-+
- /* debug PC keyboard */
- //#define DEBUG_KBD
- 
-@@ -158,6 +160,7 @@ static void ps2_put_keycode(void *opaque, int keycode)
- {
-     PS2KbdState *s = opaque;
- 
-+    trace_ps2_put_keycode(opaque, keycode);
-     qemu_system_wakeup_request(QEMU_WAKEUP_REASON_OTHER);
-     /* XXX: add support for scancode set 1 */
-     if (!s->translate && keycode < 0xe0 && s->scancode_set > 1) {
-@@ -194,6 +197,7 @@ uint32_t ps2_read_data(void *opaque)
-     PS2Queue *q;
-     int val, index;
- 
-+    trace_ps2_read_data(opaque);
-     q = &s->queue;
-     if (q->count == 0) {
-         /* NOTE: if no data left, we return the last keyboard one
-@@ -218,12 +222,14 @@ uint32_t ps2_read_data(void *opaque)
- 
- static void ps2_set_ledstate(PS2KbdState *s, int ledstate)
- {
-+    trace_ps2_set_ledstate(s, ledstate);
-     s->ledstate = ledstate;
-     kbd_put_ledstate(ledstate);
- }
- 
- static void ps2_reset_keyboard(PS2KbdState *s)
- {
-+    trace_ps2_reset_keyboard(s);
-     s->scan_enabled = 1;
-     s->scancode_set = 2;
-     ps2_set_ledstate(s, 0);
-@@ -233,6 +239,7 @@ void ps2_write_keyboard(void *opaque, int val)
- {
-     PS2KbdState *s = (PS2KbdState *)opaque;
- 
-+    trace_ps2_write_keyboard(opaque, val);
-     switch(s->common.write_cmd) {
-     default:
-     case -1:
-@@ -319,6 +326,7 @@ void ps2_write_keyboard(void *opaque, int val)
- void ps2_keyboard_set_translation(void *opaque, int mode)
- {
-     PS2KbdState *s = (PS2KbdState *)opaque;
-+    trace_ps2_keyboard_set_translation(opaque, mode);
-     s->translate = mode;
- }
- 
-@@ -364,6 +372,7 @@ static void ps2_mouse_send_packet(PS2MouseState *s)
-         break;
-     }
- 
-+    trace_ps2_mouse_send_packet(s, dx1, dy1, dz1, b);
-     /* update deltas */
-     s->mouse_dx -= dx1;
-     s->mouse_dy -= dy1;
-@@ -433,6 +442,7 @@ static void ps2_mouse_sync(DeviceState *dev)
- void ps2_mouse_fake_event(void *opaque)
- {
-     PS2MouseState *s = opaque;
-+    trace_ps2_mouse_fake_event(opaque);
-     s->mouse_dx++;
-     ps2_mouse_sync(opaque);
- }
-@@ -440,6 +450,8 @@ void ps2_mouse_fake_event(void *opaque)
- void ps2_write_mouse(void *opaque, int val)
- {
-     PS2MouseState *s = (PS2MouseState *)opaque;
-+
-+    trace_ps2_write_mouse(opaque, val);
- #ifdef DEBUG_MOUSE
-     printf("kbd: write mouse 0x%02x\n", val);
- #endif
-@@ -606,6 +618,7 @@ static void ps2_kbd_reset(void *opaque)
- {
-     PS2KbdState *s = (PS2KbdState *) opaque;
- 
-+    trace_ps2_kbd_reset(opaque);
-     ps2_common_reset(&s->common);
-     s->scan_enabled = 0;
-     s->translate = 0;
-@@ -616,6 +629,7 @@ static void ps2_mouse_reset(void *opaque)
- {
-     PS2MouseState *s = (PS2MouseState *) opaque;
- 
-+    trace_ps2_mouse_reset(opaque);
-     ps2_common_reset(&s->common);
-     s->mouse_status = 0;
-     s->mouse_resolution = 0;
-@@ -763,6 +777,7 @@ void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg)
- {
-     PS2KbdState *s = (PS2KbdState *)g_malloc0(sizeof(PS2KbdState));
- 
-+    trace_ps2_kbd_init(s);
-     s->common.update_irq = update_irq;
-     s->common.update_arg = update_arg;
-     s->scancode_set = 2;
-@@ -784,6 +799,7 @@ void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg)
- {
-     PS2MouseState *s = (PS2MouseState *)g_malloc0(sizeof(PS2MouseState));
- 
-+    trace_ps2_mouse_init(s);
-     s->common.update_irq = update_irq;
-     s->common.update_arg = update_arg;
-     vmstate_register(NULL, 0, &vmstate_ps2_mouse, s);
-diff --git a/trace-events b/trace-events
-index ce1bf60..61c8a9a 100644
---- a/trace-events
-+++ b/trace-events
-@@ -225,6 +225,23 @@ slavio_check_interrupts(uint32_t pending, uint32_t intregm_disabled) "pending %x
- slavio_set_irq(uint32_t target_cpu, int irq, uint32_t pil, int level) "Set cpu %d irq %d -> pil %d level %d"
- slavio_set_timer_irq_cpu(int cpu, int level) "Set cpu %d local timer level %d"
- 
-+# hw/input/ps2.c
-+ps2_put_keycode(void *opaque, int keycode) "%p keycode %d"
-+ps2_read_data(void *opaque) "%p"
-+ps2_set_ledstate(void *s, int ledstate) "%p ledstate %d"
-+ps2_reset_keyboard(void *s) "%p"
-+ps2_write_keyboard(void *opaque, int val) "%p val %d"
-+ps2_keyboard_set_translation(void *opaque, int mode) "%p mode %d"
-+ps2_mouse_send_packet(void *s, int dx1, int dy1, int dz1, int b) "%p x %d y %d z %d bs %#x"
-+ps2_mouse_event_disabled(void *opaque, int dx, int dy, int dz, int buttons_state, int mouse_dx, int mouse_dy, int mouse_dz) "%p x %d y %d z %d bs %#x mx %d my %d mz %d "
-+ps2_mouse_event(void *opaque, int dx, int dy, int dz, int buttons_state, int mouse_dx, int mouse_dy, int mouse_dz) "%p x %d y %d z %d bs %#x mx %d my %d mz %d "
-+ps2_mouse_fake_event(void *opaque) "%p"
-+ps2_write_mouse(void *opaque, int val) "%p val %d"
-+ps2_kbd_reset(void *opaque) "%p"
-+ps2_mouse_reset(void *opaque) "%p"
-+ps2_kbd_init(void *s) "%p"
-+ps2_mouse_init(void *s) "%p"
-+
- # hw/misc/slavio_misc.c
- slavio_misc_update_irq_raise(void) "Raise IRQ"
- slavio_misc_update_irq_lower(void) "Lower IRQ"
--- 
-2.1.4
 
+>      /* use fixed-up value from kernel sysfs */
+>      *value = base_address_with_flags(&s->real_device.io_regions[index]);
+>  
+> -- 
+> 1.7.12.4
+> 
+> 
 
