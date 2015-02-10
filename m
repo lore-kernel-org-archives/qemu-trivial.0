@@ -1,35 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YLGke-0008NQ-Fi
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 14:45:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53098)
+	id 1YLGqQ-00028X-Q6
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 14:51:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YLGkc-0008MV-9T
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 14:45:39 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YLGqO-00026z-Or
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 14:51:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YLGkb-0004ta-DX
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 14:45:38 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:44408)
+	(envelope-from <mjt@tls.msk.ru>) id 1YLGqN-00075S-Py
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 14:51:36 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:48532)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YLGkW-0004t2-Ho; Tue, 10 Feb 2015 14:45:32 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 925B0419B0;
-	Tue, 10 Feb 2015 22:45:29 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 7BE838FF;
-	Tue, 10 Feb 2015 22:45:29 +0300 (MSK)
-Received: (nullmailer pid 18526 invoked by uid 1000);
-	Tue, 10 Feb 2015 19:45:29 -0000
+	id 1YLGqE-00070u-W3; Tue, 10 Feb 2015 14:51:27 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 97F7E419BA;
+	Tue, 10 Feb 2015 22:51:25 +0300 (MSK)
+Message-ID: <54DA613D.3080407@msgid.tls.msk.ru>
+Date: Tue, 10 Feb 2015 22:51:25 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-trivial@nongnu.org
-Date: Tue, 10 Feb 2015 22:45:26 +0300
-Message-Id: <1423597526-18483-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.4.0
+MIME-Version: 1.0
+To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1423406458-31957-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1423406458-31957-1-git-send-email-sw@weilnetz.de>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>
-Subject: [Qemu-trivial] [PATCH] qemu-options: fix/document -incoming options
+Cc: Riku Voipio <riku.voipio@iki.fi>, QEMU Developer <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] linux-user: Remove type casts to union
+	type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,52 +44,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 19:45:39 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 19:51:37 -0000
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- qemu-options.hx | 24 +++++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
+08.02.2015 17:40, Stefan Weil wrote:
+> Casting to a union type is a gcc (and clang) extension. Other compilers
+> might not support it. This is not a problem today, but the type casts
+> can be removed easily. Smatch now no longer complains like before:
+> 
+> linux-user/syscall.c:3190:18: warning: cast to non-scalar
+> linux-user/syscall.c:7348:44: warning: cast to non-scalar
+> 
+> Cc: Riku Voipio <riku.voipio@iki.fi>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  linux-user/syscall.c |   10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 852308e..ec137db 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -2663,8 +2663,9 @@ static inline abi_long host_to_target_semarray(int semid, abi_ulong target_addr,
+>  }
+>  
+>  static inline abi_long do_semctl(int semid, int semnum, int cmd,
+> -                                 union target_semun target_su)
+> +                                 abi_ulong target_arg)
+>  {
+> +    union target_semun target_su;
+>      union semun arg;
+>      struct semid_ds dsarg;
+>      unsigned short *array = NULL;
+> @@ -2673,6 +2674,8 @@ static inline abi_long do_semctl(int semid, int semnum, int cmd,
+>      abi_long err;
+>      cmd &= 0xff;
+>  
+> +    target_su.buf = target_arg;
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index ee4b223..a2c071a 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -3195,12 +3195,30 @@ Set TB size.
- ETEXI
- 
- DEF("incoming", HAS_ARG, QEMU_OPTION_incoming, \
--    "-incoming p     prepare for incoming migration, listen on port p\n",
-+    "-incoming tcp:[host]:port[,to=maxport][,ipv4][,ipv6]\n" \
-+    "-incoming rdma:[host]:port[,to=maxport][,ipv4][,ipv6]\n" \
-+    "-incoming unix:socketpath\n" \
-+    "                prepare for incoming migration, listen on\n" \
-+    "                specified protocol and socket address\n" \
-+    "-incoming fd:fd\n" \
-+    "-incoming exec:cmdline\n" \
-+    "                accept incoming migration on given file descriptor\n" \
-+    "                or from given external command\n",
-     QEMU_ARCH_ALL)
- STEXI
--@item -incoming @var{port}
-+@item -incoming tcp:[@var{host}]:@var{port}[,to=@var{maxport}][,ipv4][,ipv6]
-+@item -incoming rdma:[@var{host}]:@var{port}[,to=@var{maxport}][,ipv4][,ipv6]
- @findex -incoming
--Prepare for incoming migration, listen on @var{port}.
-+Prepare for incoming migration, listen on a given tcp port.
-+
-+@item -incoming unix:@var{socketpath}
-+Prepare for incoming migration, listen on a given unix socket.
-+
-+@item -incoming fd:@var{fd}
-+Accept incoming migration from a given filedescriptor.
-+
-+@item -incoming exec:@var{cmdline}
-+Accept incoming migration as an output from specified external command.
- ETEXI
- 
- DEF("nodefaults", 0, QEMU_OPTION_nodefaults, \
--- 
-2.1.4
 
+Can we use c99 initializers at declaration, something like
+
+   union target_semun target_su = { .buf = target_arg }
+
+?  Or is it also some gcc/clang extension? :)
+
+But I'd like to hear from Riku at least...
+
+Thanks,
+
+/mjt
 
