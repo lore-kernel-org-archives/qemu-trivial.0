@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL4Wk-0000eo-VJ
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 01:42:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51017)
+	id 1YL4Ws-0000sw-5R
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 01:42:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51100)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4Wg-0000W4-Fb
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:42:27 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YL4Wp-0000no-St
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:42:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4Wb-0004TC-Ct
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:42:26 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:44046)
+	(envelope-from <mjt@tls.msk.ru>) id 1YL4Wm-0004Vp-DU
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:42:35 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:41901)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YL4WT-0004Qh-OU; Tue, 10 Feb 2015 01:42:13 -0500
+	id 1YL4WT-0004Qm-Os; Tue, 10 Feb 2015 01:42:13 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1902741821;
-	Tue, 10 Feb 2015 09:34:44 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id F2C128C9;
+	by isrv.corpit.ru (Postfix) with ESMTP id D2D064181F;
 	Tue, 10 Feb 2015 09:34:43 +0300 (MSK)
-Received: (nullmailer pid 9334 invoked by uid 1000);
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id B9B60931;
+	Tue, 10 Feb 2015 09:34:43 +0300 (MSK)
+Received: (nullmailer pid 9346 invoked by uid 1000);
 	Tue, 10 Feb 2015 06:34:43 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 10 Feb 2015 09:33:50 +0300
-Message-Id: <b6f3b233eabb4df5d65ae9fbfb3d3c8befea0de7.1423549659.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 10 Feb 2015 09:33:56 +0300
+Message-Id: <46ede58bb461c1171251988e7fb1db6590350975.1423549659.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
@@ -31,8 +31,8 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PULL 01/46] target-mips: Clean up switch fall
-	through after commit fecd264
+Subject: [Qemu-trivial] [PULL 07/46] vl: Fix bogus error message for implied
+	mon ID clashing
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,58 +44,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 06:42:27 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 06:42:37 -0000
 
 From: Markus Armbruster <armbru@redhat.com>
 
-Commit fecd264 added a number of fall-throughs, but neglected to
-properly document them as intentional.  Commit d922445 cleaned that up
-for many, but not all cases.  Take care of the remaining ones.
+monitor_parse() desugars --monitor, --qmp and -qmp-pretty to --mon.
+The ID it picks can clash with a user-specified ID.  When it happens,
+the error message is misleading.
 
-Spotted by Coverity.
+Reproducer:
+
+    $ qemu --mon id=compat_monitor0 --monitor stdio
+
+Message before the patch:
+
+    duplicate chardev: compat_monitor0
+
+There's no "duplicate chardev" here.  The problem is a duplicate
+monitor ID.  Moreover, the message provides no clue which option
+caused the problem.  The patch changes the message to:
+
+    qemu: --monitor stdio: Duplicate ID 'compat_monitor0' for mon
+
+monitor_parse() is also used for creating a default monitor, but
+that's not done when the user specifies a monitor, so an ID clash is
+impossible then.
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- target-mips/translate.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ vl.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/target-mips/translate.c b/target-mips/translate.c
-index e9d86b2..1faeb5d 100644
---- a/target-mips/translate.c
-+++ b/target-mips/translate.c
-@@ -18729,6 +18729,7 @@ static void decode_opc(CPUMIPSState *env, DisasContext *ctx)
-     case OPC_SWL:
-     case OPC_SWR:
-         check_insn_opc_removed(ctx, ISA_MIPS32R6);
-+        /* fall through */
-     case OPC_SB ... OPC_SH:
-     case OPC_SW:
-          gen_st(ctx, op, rt, rs, imm);
-@@ -18817,6 +18818,7 @@ static void decode_opc(CPUMIPSState *env, DisasContext *ctx)
-         case OPC_PS_FMT:
-             check_cp1_enabled(ctx);
-             check_insn_opc_removed(ctx, ISA_MIPS32R6);
-+            /* fall through */
-         case OPC_S_FMT:
-         case OPC_D_FMT:
-             check_cp1_enabled(ctx);
-@@ -19000,6 +19002,7 @@ static void decode_opc(CPUMIPSState *env, DisasContext *ctx)
-     case OPC_LDL ... OPC_LDR:
-     case OPC_LLD:
-         check_insn_opc_removed(ctx, ISA_MIPS32R6);
-+        /* fall through */
-     case OPC_LWU:
-     case OPC_LD:
-         check_insn(ctx, ISA_MIPS3);
-@@ -19008,6 +19011,7 @@ static void decode_opc(CPUMIPSState *env, DisasContext *ctx)
-         break;
-     case OPC_SDL ... OPC_SDR:
-         check_insn_opc_removed(ctx, ISA_MIPS32R6);
-+        /* fall through */
-     case OPC_SD:
-         check_insn(ctx, ISA_MIPS3);
-         check_mips_64(ctx);
+diff --git a/vl.c b/vl.c
+index 983259b..2573afd 100644
+--- a/vl.c
++++ b/vl.c
+@@ -2195,6 +2195,7 @@ static int mon_init_func(QemuOpts *opts, void *opaque)
+ static void monitor_parse(const char *optarg, const char *mode, bool pretty)
+ {
+     static int monitor_device_index = 0;
++    Error *local_err = NULL;
+     QemuOpts *opts;
+     const char *p;
+     char label[32];
+@@ -2215,9 +2216,10 @@ static void monitor_parse(const char *optarg, const char *mode, bool pretty)
+         }
+     }
+ 
+-    opts = qemu_opts_create(qemu_find_opts("mon"), label, 1, NULL);
++    opts = qemu_opts_create(qemu_find_opts("mon"), label, 1, &local_err);
+     if (!opts) {
+-        fprintf(stderr, "duplicate chardev: %s\n", label);
++        error_report("%s", error_get_pretty(local_err));
++        error_free(local_err);
+         exit(1);
+     }
+     qemu_opt_set(opts, "mode", mode);
 -- 
 2.1.4
 
