@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL4Vc-0006z2-If
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 01:41:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50619)
+	id 1YL4Vd-00070Z-Au
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 01:41:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50650)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4VV-0006mH-Im
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:41:17 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YL4VW-0006o9-Ff
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:41:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4VR-0003pU-OS
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:41:13 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:46909)
+	(envelope-from <mjt@tls.msk.ru>) id 1YL4VS-0003qP-Ng
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:41:14 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:56730)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YL4VL-0003lm-Ry; Tue, 10 Feb 2015 01:41:04 -0500
+	id 1YL4VL-0003lq-S5; Tue, 10 Feb 2015 01:41:04 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1C4ED4181E;
+	by isrv.corpit.ru (Postfix) with ESMTP id 25D1641828;
 	Tue, 10 Feb 2015 09:41:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 5300B94E;
-	Tue, 10 Feb 2015 09:34:46 +0300 (MSK)
-Received: (nullmailer pid 9402 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id F2F9B94A;
+	Tue, 10 Feb 2015 09:34:45 +0300 (MSK)
+Received: (nullmailer pid 9408 invoked by uid 1000);
 	Tue, 10 Feb 2015 06:34:43 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 10 Feb 2015 09:34:23 +0300
-Message-Id: <e75bef035a80a1bd406375f22e32e37010bbdcd7.1423549659.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 10 Feb 2015 09:34:26 +0300
+Message-Id: <d538b947da8f12ddc118714677fa66fd4f1dd136.1423549659.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PULL 34/46] rdma: g_malloc0() can't fail,
-	bury dead error handling
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 37/46] disas/cris: Fix warning caused by
+	missing 'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,32 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 06:41:18 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 06:41:19 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+Warning from the Sparse static analysis tool:
+
+disas/cris.c:1218:26: warning:
+ symbol 'cris_cond15s' was not declared. Should it be static?
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- migration/rdma.c | 3 ---
- 1 file changed, 3 deletions(-)
+ disas/cris.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/migration/rdma.c b/migration/rdma.c
-index fc351ea..29285e6 100644
---- a/migration/rdma.c
-+++ b/migration/rdma.c
-@@ -1121,9 +1121,6 @@ static int qemu_rdma_register_and_get_keys(RDMAContext *rdma,
-     /* allocate memory to store chunk MRs */
-     if (!block->pmr) {
-         block->pmr = g_malloc0(block->nb_chunks * sizeof(struct ibv_mr *));
--        if (!block->pmr) {
--            return -1;
--        }
-     }
+diff --git a/disas/cris.c b/disas/cris.c
+index 9dfb4e3..a034dba 100644
+--- a/disas/cris.c
++++ b/disas/cris.c
+@@ -1215,7 +1215,7 @@ cris_cc_strings[] =
+ };
  
-     /*
+ /* Different names and semantics for condition 1111 (0xf).  */
+-const struct cris_cond15 cris_cond15s[] =
++static const struct cris_cond15 cris_cond15s[] =
+ {
+   /* FIXME: In what version did condition "ext" disappear?  */
+   {"ext", cris_ver_v0_3},
 -- 
 2.1.4
 
