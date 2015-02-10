@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL52e-0001gr-5O
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 02:15:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60789)
+	id 1YL574-0001Uy-8t
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 02:20:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33737)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YL52W-0001TZ-P0
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 02:15:25 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1YL572-0001Qy-3J
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 02:20:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YL52S-00012N-PK
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 02:15:20 -0500
-Received: from mail-lb0-f172.google.com ([209.85.217.172]:47800)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YL56y-0002v3-J5
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 02:20:00 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:62362)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YL52S-000125-J1
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 02:15:16 -0500
-Received: by mail-lb0-f172.google.com with SMTP id l4so34453734lbv.3
-	for <qemu-trivial@nongnu.org>; Mon, 09 Feb 2015 23:15:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=jEvUQgwwyUXy6Fa2BvTjnsLU1jOA65+zvbXm0clAIxU=;
-	b=kaZjr6eaxYac2EW6OCSC2nqW0GHkWqVlBF5NI43+aodjV+H+pYLX2p9vEBnJJJpZPm
-	iigC8xIRzehLy82pMOj4eTLjKpdCq47GaAz2PbUbpW5bijfORpiXCU8frl2D05+2yU4J
-	mGbc+SNwaU4eL/gx7VOKEuoHOCq94XJnnU0gu7ivAhj8L4IJQf8O+F7vp7xw3WQpFwuU
-	zp5mojKDuxC4PnAwZGMvFEqa74OuXDrZTmapndkh9CeDIUSh7KAzUteSg5wr3fd2t6so
-	fsaydeSsWPh4q2qaw/HO8SCxbwv8076DsZ6a1mDMVNqkfViw1Oe6lo0O4JZtumuXZ7dp
-	JH9Q==
-X-Gm-Message-State: ALoCoQktRL2t0Vj9Pp9dMlCEJ4sa/vuQfBbk0DRk4giLjZJKJyjblG4Id/XGctT62a+ONbsfmAPJ
-X-Received: by 10.112.213.38 with SMTP id np6mr21436060lbc.36.1423552515900;
-	Mon, 09 Feb 2015 23:15:15 -0800 (PST)
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1YL56x-0002rM-Ml; Tue, 10 Feb 2015 02:19:56 -0500
+Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id BBR49248; Tue, 10 Feb 2015 15:19:45 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml433-hub.china.huawei.com
+	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 10 Feb 2015 15:19:37 +0800
+Message-ID: <54D9B107.3070002@huawei.com>
+Date: Tue, 10 Feb 2015 15:19:35 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Received: by 10.112.141.97 with HTTP; Mon, 9 Feb 2015 23:14:55 -0800 (PST)
-In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
-References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Feb 2015 07:14:55 +0000
-Message-ID: <CAFEAcA-nR3zspLZ42W7Ey4EV1UM-RgiXkggmgfBWWDwRqYFqHA@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.172
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/46] Trivial patches for
-	2015-02-10
+To: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+References: <1422689277-16032-1-git-send-email-arei.gonglei@huawei.com>
+	<1422689277-16032-3-git-send-email-arei.gonglei@huawei.com>
+	<alpine.DEB.2.02.1502100638200.29696@kaball.uk.xensource.com>
+	<54D9A9E6.3040306@huawei.com>
+	<alpine.DEB.2.02.1502100700180.29696@kaball.uk.xensource.com>
+In-Reply-To: <alpine.DEB.2.02.1502100700180.29696@kaball.uk.xensource.com>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020201.54D9B112.0074, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: c0d779ebf9671d152412d181b5c86520
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH 2/2] xen-pt: fix Out-of-bounds read
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,50 +56,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 07:15:26 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 07:20:01 -0000
 
-On 10 February 2015 at 06:33, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> This is another pull request for trivial-patches tree.
-> This time it is sort of huge, consisting of 46 patches in total.
-> There are several patches and series which aren't applied to
-> -trivial but should -- I decided I'll send a pull request first
-> and apply the leftovers later, because there are important
-> changes in the tree and amount of leftovers is somewhat large.
-> This is a 3-week collection.
->
-> This request consists of a large number of trivial fixes from
-> the usual heros, Marcus and Stefen, who found several new ways
-> to find various small defects in the code.  There are several
-> linux-user fixes from Chen Gang, with some grammar fixes from
-> me -- not all of his changes has been applied so far.  There
-> are several bugfixes, -- eg, the libcacard linking fix, a buffer
-> overflow fix in inet_parse (which does not warrant a CVE# :);
-> and also there are some other stuff from here and there.
->
-> Please consider applying.
->
-> Thanks,
->
-> /mjt
->
-> The following changes since commit 89db21771782fd6050335e73542064f1187c9ced:
->
->   qmp: unbreak build for non-vnc configuration (2015-02-09 22:36:04 +0000)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-02-10
->
-> for you to fetch changes up to 3ff64f1f9391a9b71d4dd58c6c4bbaa1db3dd430:
->
->   virtio: Fix warning caused by missing 'static' attribute (2015-02-10 09:27:21 +0300)
->
+On 2015/2/10 15:00, Stefano Stabellini wrote:
+> On Tue, 10 Feb 2015, Gonglei wrote:
+>> On 2015/2/10 14:39, Stefano Stabellini wrote:
+>>> On Sat, 31 Jan 2015, arei.gonglei@huawei.com wrote:
+>>>> From: Gonglei <arei.gonglei@huawei.com>
+>>>>
+>>>> The array length of s->real_device.io_regions[] is
+>>>> "PCI_NUM_REGIONS - 1". Add a check, just make Coverity happy.
+>>>>
+>>>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>>>> ---
+>>>>  hw/xen/xen_pt_config_init.c | 5 +++++
+>>>>  1 file changed, 5 insertions(+)
+>>>>
+>>>> diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
+>>>> index 710fe50..3c8b0f1 100644
+>>>> --- a/hw/xen/xen_pt_config_init.c
+>>>> +++ b/hw/xen/xen_pt_config_init.c
+>>>> @@ -443,6 +443,11 @@ static int xen_pt_bar_reg_read(XenPCIPassthroughState *s, XenPTReg *cfg_entry,
+>>>>          return -1;
+>>>>      }
+>>>>  
+>>>> +    if (index == PCI_ROM_SLOT) {
+>>>> +        XEN_PT_ERR(&s->dev, "Internal error: Access violation at ROM BAR.\n");
+>>>> +        return -1;
+>>>> +    }
+>>>
+>>> Could you please fix the boundaries of the check just above?
+>>> Also please avoid using PCI_ROM_SLOT for the array index check, simply
+>>> use PCI_NUM_REGIONS.
+>>>
+>> You meaning is changing the below check:
+>>
+>> if (index < 0 || index >= PCI_NUM_REGIONS - 1) {
+>>         XEN_PT_ERR(&s->dev, "Internal error: Invalid BAR index [%d].\n", index);
+>>         return -1;
+>>     }
+>>
+>> Isn't it?
+>  
+> that's right
+> 
+OK, will do, thanks.
 
-Hi. I'm afraid this introduces a new compiler warning under clang:
+Regards,
+-Gonglei
 
-disas/cris.c:1218:33: warning: unused variable 'cris_cond15s'
-[-Wunused-const-variable]
-static const struct cris_cond15 cris_cond15s[] =
-
--- PMM
 
