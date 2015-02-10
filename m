@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL6h8-0002TD-AH
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 04:01:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54583)
+	id 1YL6hI-0002lQ-Dn
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 04:01:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54607)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL6h5-0002Nw-Q7
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 04:01:20 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YL6h8-0002TO-Ca
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 04:01:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL6h1-00027J-DC
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 04:01:19 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:56030)
+	(envelope-from <mjt@tls.msk.ru>) id 1YL6h2-00027t-SW
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 04:01:22 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:39757)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YL6gq-000202-Mh; Tue, 10 Feb 2015 04:01:04 -0500
+	id 1YL6gq-0001zw-Mr; Tue, 10 Feb 2015 04:01:04 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id CF71741894;
+	by isrv.corpit.ru (Postfix) with ESMTP id 865B74188F;
 	Tue, 10 Feb 2015 12:01:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id CE5AB948;
+	by tsrv.corpit.ru (Postfix) with SMTP id 4BEFA93F;
 	Tue, 10 Feb 2015 09:34:45 +0300 (MSK)
-Received: (nullmailer pid 9396 invoked by uid 1000);
+Received: (nullmailer pid 9361 invoked by uid 1000);
 	Tue, 10 Feb 2015 06:34:43 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 10 Feb 2015 09:34:20 +0300
-Message-Id: <6b0126f94099db15fb0110218b17eeccefa077d1.1423549659.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 10 Feb 2015 09:34:03 +0300
+Message-Id: <a7fa2e9783ee957635d23ddab151a8be97df5b2a.1423549659.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PULL 31/46] onenand: g_malloc() can't fail,
-	bury dead error handling
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 14/46] cpu-exec: drop dead assignment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,39 +43,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 09:01:21 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 09:01:28 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+All uses of TB inside cpu_exec are dominated by "tb = tb_find_fast(env)",
+and there are no uses after the switch statement.  So the assignment
+is dead, as reported by Coverity.
+
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/block/onenand.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+ cpu-exec.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/block/onenand.c b/hw/block/onenand.c
-index 348630d..1b2c893 100644
---- a/hw/block/onenand.c
-+++ b/hw/block/onenand.c
-@@ -346,15 +346,9 @@ static inline int onenand_prog_spare(OneNANDState *s, int sec, int secn,
- static inline int onenand_erase(OneNANDState *s, int sec, int num)
- {
-     uint8_t *blankbuf, *tmpbuf;
-+
-     blankbuf = g_malloc(512);
--    if (!blankbuf) {
--        return 1;
--    }
-     tmpbuf = g_malloc(512);
--    if (!tmpbuf) {
--        g_free(blankbuf);
--        return 1;
--    }
-     memset(blankbuf, 0xff, 512);
-     for (; num > 0; num--, sec++) {
-         if (s->blk_cur) {
+diff --git a/cpu-exec.c b/cpu-exec.c
+index fa506e6..4ff1b23 100644
+--- a/cpu-exec.c
++++ b/cpu-exec.c
+@@ -494,7 +494,6 @@ int cpu_exec(CPUArchState *env)
+                          * interrupt_request) which we will handle
+                          * next time around the loop.
+                          */
+-                        tb = (TranslationBlock *)(next_tb & ~TB_EXIT_MASK);
+                         next_tb = 0;
+                         break;
+                     case TB_EXIT_ICOUNT_EXPIRED:
 -- 
 2.1.4
 
