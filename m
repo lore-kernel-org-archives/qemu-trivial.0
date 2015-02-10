@@ -1,51 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL8Hc-0005ya-Tk
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 05:43:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58781)
+	id 1YL8sV-0007es-BN
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 06:21:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38167)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YL8HX-0005o4-Fk
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 05:43:06 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YL8sS-0007Ya-6s
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 06:21:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YL8HM-00023S-Mt
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 05:43:03 -0500
-Received: from mail-lb0-f179.google.com ([209.85.217.179]:55314)
+	(envelope-from <mjt@tls.msk.ru>) id 1YL8sR-0007Oo-A1
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 06:21:12 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:56343)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YL8HM-000235-Fv
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 05:42:52 -0500
-Received: by mail-lb0-f179.google.com with SMTP id w7so11172580lbi.10
-	for <qemu-trivial@nongnu.org>; Tue, 10 Feb 2015 02:42:51 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=nTDZSQEWz/QQe8O5J9VXs+a6xxmFiOqGdOagb6cYm8A=;
-	b=Dc9whSYoAB1tIOZ/ZJit9EdVsMzx/RQuTXtPrDw7Ks0BJciD8LdFK0i+x3wgDbIMUH
-	z4H1DLeO1sQ/YjBbVztVcDubAbO0KkjM/DHWQ61Xdhtc1jtvfsFi5ys8JwL0eGo3KbbN
-	LEptysUu0CSo92zPXLSjD4fmNkOlnXB9Iz/2A+JlUlVhYLJLjNbTqZ0GdZI2nf1i/3dZ
-	4QeZ0I/9eNYqbSElqhEoiqotqxUbiUeC9ZDb1q0UjVhGXGHsXjZdiT/LlStqKaj8D6ey
-	0YiQWLCCf5+MctY69AhK72feNOy5bhwm/123j6jXQrvmdSr69Dfks8N6a90lHgViOwzr
-	eclw==
-X-Gm-Message-State: ALoCoQmU4J0KawmJ8JtsC1n5YWrZIBuZzsjwxaC/+bwIeZDCdM+eEG+pXIO7U4onI9gz2VS+iHaH
-X-Received: by 10.112.41.171 with SMTP id g11mr15655259lbl.107.1423564971633; 
-	Tue, 10 Feb 2015 02:42:51 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.112.141.97 with HTTP; Tue, 10 Feb 2015 02:42:31 -0800 (PST)
-In-Reply-To: <54D9B36C.1000405@msgid.tls.msk.ru>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YL8sK-0007MD-Vu; Tue, 10 Feb 2015 06:21:05 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id AE118418E4;
+	Tue, 10 Feb 2015 14:21:03 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 1193394B;
+	Tue, 10 Feb 2015 09:34:46 +0300 (MSK)
+Received: (nullmailer pid 9363 invoked by uid 1000);
+	Tue, 10 Feb 2015 06:34:43 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Tue, 10 Feb 2015 09:34:04 +0300
+Message-Id: <52851b7e3d816502b8ae4e8353f31fd9ee801509.1423549659.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
-	<CAFEAcA-nR3zspLZ42W7Ey4EV1UM-RgiXkggmgfBWWDwRqYFqHA@mail.gmail.com>
-	<54D9B36C.1000405@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Feb 2015 10:42:31 +0000
-Message-ID: <CAFEAcA_ZrzhBa842+EaqaM90DA5VuTPMOU4sPE1VTsW7-7X_0w@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.179
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/46] Trivial patches for
-	2015-02-10
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 15/46] cpu-exec: simplify icount code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,27 +43,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 10:43:06 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 11:21:13 -0000
 
-On 10 February 2015 at 07:29, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> The following changes since commit 89db21771782fd6050335e73542064f1187c9ced:
->
->   qmp: unbreak build for non-vnc configuration (2015-02-09 22:36:04 +0000)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-02-10
->
-> for you to fetch changes up to 43d735547b2a29cafd7d9529ac38734950b235f7:
->
->   virtio: Fix warning caused by missing 'static' attribute (2015-02-10 10:26:05 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2015-02-10
->
-> ----------------------------------------------------------------
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-Applied, thanks.
+Use MIN instead of an "if" statement.  Move "tb" assignment where
+the value is actually used.
 
--- PMM
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ cpu-exec.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/cpu-exec.c b/cpu-exec.c
+index 4ff1b23..6738117 100644
+--- a/cpu-exec.c
++++ b/cpu-exec.c
+@@ -499,22 +499,17 @@ int cpu_exec(CPUArchState *env)
+                     case TB_EXIT_ICOUNT_EXPIRED:
+                     {
+                         /* Instruction counter expired.  */
+-                        int insns_left;
+-                        tb = (TranslationBlock *)(next_tb & ~TB_EXIT_MASK);
+-                        insns_left = cpu->icount_decr.u32;
++                        int insns_left = cpu->icount_decr.u32;
+                         if (cpu->icount_extra && insns_left >= 0) {
+                             /* Refill decrementer and continue execution.  */
+                             cpu->icount_extra += insns_left;
+-                            if (cpu->icount_extra > 0xffff) {
+-                                insns_left = 0xffff;
+-                            } else {
+-                                insns_left = cpu->icount_extra;
+-                            }
++                            insns_left = MIN(0xffff, cpu->icount_extra);
+                             cpu->icount_extra -= insns_left;
+                             cpu->icount_decr.u16.low = insns_left;
+                         } else {
+                             if (insns_left > 0) {
+                                 /* Execute remaining instructions.  */
++                                tb = (TranslationBlock *)(next_tb & ~TB_EXIT_MASK);
+                                 cpu_exec_nocache(env, insns_left, tb);
+                                 align_clocks(&sc, cpu);
+                             }
+-- 
+2.1.4
+
 
