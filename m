@@ -1,38 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL4VX-0006pq-5x
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 01:41:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50548)
+	id 1YL4VZ-0006um-SF
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 01:41:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50592)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4VS-0006hk-KC
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:41:11 -0500
+	(envelope-from <Stefano.Stabellini@citrix.com>) id 1YL4VU-0006kz-IL
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:41:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL4VR-0003pN-Mk
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:41:10 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:57782)
+	(envelope-from <Stefano.Stabellini@citrix.com>) id 1YL4VT-0003qi-FK
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 01:41:12 -0500
+Received: from smtp.citrix.com ([66.165.176.89]:17466)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YL4VL-0003lo-S2; Tue, 10 Feb 2015 01:41:04 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 38F784182A;
-	Tue, 10 Feb 2015 09:41:03 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id BBFCE935;
-	Tue, 10 Feb 2015 09:34:44 +0300 (MSK)
-Received: (nullmailer pid 9357 invoked by uid 1000);
-	Tue, 10 Feb 2015 06:34:43 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Tue, 10 Feb 2015 09:34:01 +0300
-Message-Id: <dec0473dc683ac0ddd7946acdebd285728966a02.1423549659.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
-References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Chen Gang S <gang.chen@sunrus.com.cn>, Chen Gang <gang.chen.5i5j@gmail.com>
-Subject: [Qemu-trivial] [PULL 12/46] linux-user/syscall.c: do_ioctl_dm: Need
-	to call unlock_user() before going to failure return in default case
+	(envelope-from <Stefano.Stabellini@citrix.com>)
+	id 1YL4VP-0003o3-21; Tue, 10 Feb 2015 01:41:07 -0500
+X-IronPort-AV: E=Sophos;i="5.09,548,1418083200"; d="scan'208";a="224287220"
+Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
+	(10.13.107.78) with Microsoft SMTP Server id 14.3.210.2;
+	Tue, 10 Feb 2015 01:41:06 -0500
+Received: from kaball.uk.xensource.com ([10.80.2.59])	by
+	ukmail1.uk.xensource.com with esmtp (Exim 4.69)	(envelope-from
+	<stefano.stabellini@eu.citrix.com>)	id 1YL4VN-0001Kg-SU;
+	Tue, 10 Feb 2015 06:41:05 +0000
+Date: Tue, 10 Feb 2015 06:40:34 +0000
+From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+X-X-Sender: sstabellini@kaball.uk.xensource.com
+To: Gonglei <arei.gonglei@huawei.com>
+In-Reply-To: <1422689277-16032-2-git-send-email-arei.gonglei@huawei.com>
+Message-ID: <alpine.DEB.2.02.1502100640140.29696@kaball.uk.xensource.com>
+References: <1422689277-16032-1-git-send-email-arei.gonglei@huawei.com>
+	<1422689277-16032-2-git-send-email-arei.gonglei@huawei.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+X-DLP: MIA2
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 66.165.176.89
+Cc: qemu-trivial@nongnu.org, stefano.stabellini@eu.citrix.com,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH 1/2] xen-pt: fix Negative array index read
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,41 +49,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 06:41:11 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 06:41:13 -0000
 
-From: Chen Gang S <gang.chen@sunrus.com.cn>
+On Sat, 31 Jan 2015, arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+> 
+> Coverity spot:
+> Function xen_pt_bar_offset_to_index() may returns a negative
+> number (-1) value index, which as an index to array d->io_regions.
+> 
+> Let's directly and simply pass index as an argument to
+> xen_pt_bar_reg_parse().
+> 
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 
-In abi_long do_ioctl_dm(), after lock_user() call, the code does
-not call unlock_user() before going to failure return in default case.
+Acked-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
 
-Signed-off-by: Chen Gang <gang.chen.5i5j@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- linux-user/syscall.c | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 310080c..5720195 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -3576,6 +3576,7 @@ static abi_long do_ioctl_dm(const IOCTLEntry *ie, uint8_t *buf_temp, int fd,
-     }
-     default:
-         ret = -TARGET_EINVAL;
-+        unlock_user(argptr, guest_data, 0);
-         goto out;
-     }
-     unlock_user(argptr, guest_data, 0);
-@@ -3695,6 +3696,7 @@ static abi_long do_ioctl_dm(const IOCTLEntry *ie, uint8_t *buf_temp, int fd,
-             break;
-         }
-         default:
-+            unlock_user(argptr, guest_data, 0);
-             ret = -TARGET_EINVAL;
-             goto out;
-         }
--- 
-2.1.4
-
+>  hw/xen/xen_pt_config_init.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
+> index de9a20f..710fe50 100644
+> --- a/hw/xen/xen_pt_config_init.c
+> +++ b/hw/xen/xen_pt_config_init.c
+> @@ -360,15 +360,13 @@ static uint64_t xen_pt_get_bar_size(PCIIORegion *r)
+>  }
+>  
+>  static XenPTBarFlag xen_pt_bar_reg_parse(XenPCIPassthroughState *s,
+> -                                         XenPTRegInfo *reg)
+> +                                         int index)
+>  {
+>      PCIDevice *d = &s->dev;
+>      XenPTRegion *region = NULL;
+>      PCIIORegion *r;
+> -    int index = 0;
+>  
+>      /* check 64bit BAR */
+> -    index = xen_pt_bar_offset_to_index(reg->offset);
+>      if ((0 < index) && (index < PCI_ROM_SLOT)) {
+>          int type = s->real_device.io_regions[index - 1].type;
+>  
+> @@ -422,7 +420,7 @@ static int xen_pt_bar_reg_init(XenPCIPassthroughState *s, XenPTRegInfo *reg,
+>      }
+>  
+>      /* set BAR flag */
+> -    s->bases[index].bar_flag = xen_pt_bar_reg_parse(s, reg);
+> +    s->bases[index].bar_flag = xen_pt_bar_reg_parse(s, index);
+>      if (s->bases[index].bar_flag == XEN_PT_BAR_FLAG_UNUSED) {
+>          reg_field = XEN_PT_INVALID_REG;
+>      }
+> -- 
+> 1.7.12.4
+> 
+> 
 
