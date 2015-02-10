@@ -1,49 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL9Xv-0005eH-6x
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 07:04:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45928)
+	id 1YLFv8-0003Be-T9
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 13:52:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43248)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YL9Xs-0005cB-S6
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 07:04:01 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YLFv4-00035G-CA
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 13:52:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YL9Xr-0005wR-Nm
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 07:04:00 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45966)
+	(envelope-from <mjt@tls.msk.ru>) id 1YLFv3-0003fL-GY
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 13:52:22 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:50152)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YL9Xm-0005uS-DY; Tue, 10 Feb 2015 07:03:54 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1AC3oit000707
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 10 Feb 2015 07:03:51 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-87.ams2.redhat.com
-	[10.36.116.87])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1AC3mob000959
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 10 Feb 2015 07:03:50 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E51AC3040D0A; Tue, 10 Feb 2015 13:03:47 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-trivial@nongnu.org
-References: <1421846317-7088-1-git-send-email-armbru@redhat.com>
-	<CAEgOgz73n5P+LH=pa4+qqxNwoX45BJbaKbQK4VSZGkB8eYAthw@mail.gmail.com>
-Date: Tue, 10 Feb 2015 13:03:47 +0100
-In-Reply-To: <CAEgOgz73n5P+LH=pa4+qqxNwoX45BJbaKbQK4VSZGkB8eYAthw@mail.gmail.com>
-	(Peter Crosthwaite's message of "Wed, 4 Feb 2015 08:47:00 -0800")
-Message-ID: <87pp9ij7mk.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YLFuy-0003du-5O; Tue, 10 Feb 2015 13:52:16 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id C6A31419B0;
+	Tue, 10 Feb 2015 21:52:14 +0300 (MSK)
+Message-ID: <54DA535E.9030302@msgid.tls.msk.ru>
+Date: Tue, 10 Feb 2015 21:52:14 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+To: Gonglei <arei.gonglei@huawei.com>
+References: <1422689277-16032-1-git-send-email-arei.gonglei@huawei.com>
+	<54D81D70.8060508@huawei.com>
+In-Reply-To: <54D81D70.8060508@huawei.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] xilinx_ethlite: Clean up
-	after commit 2f991ad
+X-Received-From: 86.62.121.231
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"stefano.stabellini@eu.citrix.com" <stefano.stabellini@eu.citrix.com>
+Subject: Re: [Qemu-trivial] [PATCH 0/2] xen_pt: fix two Coverity defects
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,38 +47,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 12:04:01 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 18:52:26 -0000
 
-Since maintainers haven't picked it up: could this go in via -trivial?
+09.02.2015 05:37, Gonglei wrote:
+> On 2015/1/31 15:27, Gonglei (Arei) wrote:
+> 
+>> From: Gonglei <arei.gonglei@huawei.com>
+>>
+>> Gonglei (2):
+>>   xen-pt: fix Negative array index read
+>>   xen-pt: fix Out-of-bounds read
+>>
+>>  hw/xen/xen_pt_config_init.c | 11 +++++++----
+>>  1 file changed, 7 insertions(+), 4 deletions(-)
+> 
+> Ping...
 
-Peter Crosthwaite <peter.crosthwaite@xilinx.com> writes:
+I thought you want to change the second patch, did I misunderstand?
 
-> On Wed, Jan 21, 2015 at 5:18 AM, Markus Armbruster <armbru@redhat.com> wrote:
->> The "fall through" added by the commit is clearly intentional.  Mark
->> it so.  Hushes up Coverity.
->>
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->
-> Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
->
->> ---
->>  hw/net/xilinx_ethlite.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
->> index 9536f64..ad6b553 100644
->> --- a/hw/net/xilinx_ethlite.c
->> +++ b/hw/net/xilinx_ethlite.c
->> @@ -146,6 +146,7 @@ eth_write(void *opaque, hwaddr addr,
->>              if (!(value & CTRL_S)) {
->>                  qemu_flush_queued_packets(qemu_get_queue(s->nic));
->>              }
->> +            /* fall through */
->>          case R_TX_LEN0:
->>          case R_TX_LEN1:
->>          case R_TX_GIE0:
->> --
->> 1.9.3
->>
->>
+Thanks,
+
+/mjt
 
