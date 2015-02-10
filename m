@@ -1,58 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL72e-00024h-L7
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 04:23:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32819)
+	id 1YL7mr-0005Tp-Db
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 05:11:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47354)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bp@alien8.de>) id 1YL72c-00022N-Nf
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 04:23:35 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YL7mi-0005F2-5H
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 05:11:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bp@alien8.de>) id 1YL72b-0004al-Ki
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 04:23:34 -0500
-Received: from mail.skyhub.de ([2a01:4f8:120:8448::d00d]:55548)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <bp@alien8.de>)
-	id 1YL72V-0004Wb-Sp; Tue, 10 Feb 2015 04:23:28 -0500
-X-Virus-Scanned: Nedap ESD1 at mail.skyhub.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=alien8.de; s=alien8;
-	t=1423560205; bh=RqszSewlb7WH1LUTulgWHBTje4fzDpa/Z3Q1NBoos50=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	Content-Type:In-Reply-To; b=pBCq/0BAgEbluYLGjvDVBbnkHo6Ltw2Q5YK85/
-	0NeS508MRbFE6Xk/+8u6pAx7GlrlWZ8Ct3VUl4UTB/v6jLia7tEcnVPkr6NhKgeVBUI
-	M9vAj6GDvZAk0gPjr6Vrb79gBRlvLy/UH3hdBuSS7EP789QIo/VFN34DoRLeheekRw=
-Received: from mail.skyhub.de ([127.0.0.1])
-	by localhost (door.skyhub.de [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id 2hzXKIj78Xok; Tue, 10 Feb 2015 10:23:24 +0100 (CET)
-Received: from pd.tnic (p5DDC6814.dip0.t-ipconnect.de [93.220.104.20])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id
-	BF3501D9794; Tue, 10 Feb 2015 10:23:24 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=alien8.de; s=alien8;
-	t=1423560204; bh=RqszSewlb7WH1LUTulgWHBTje4fzDpa/Z3Q1NBoos50=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	Content-Type:In-Reply-To; b=K2oOQC6O9xoCYflhYN0qH0P31+okJuU4MXZSLO
-	bhok9zt+KDa96H9umu6/mGlPqSlN1pQT2juPPueFVTqwPYXHCq0aah/G3NVc7QMZs5o
-	xenbBNmmsS8H8nMLgby/n65+ZUk/gV4bCe4Oknzg8OhNvrrop9EyefXiduCtzTtHso=
-Received: by pd.tnic (Postfix, from userid 1000)
-	id 788EB16162D; Tue, 10 Feb 2015 10:22:50 +0100 (CET)
-Date: Tue, 10 Feb 2015 10:22:50 +0100
-From: Borislav Petkov <bp@alien8.de>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20150210092250.GA3195@pd.tnic>
-References: <1423340992-3156-1-git-send-email-bp@alien8.de>
-	<54D735D4.8000105@redhat.com> <20150208121438.GA6290@pd.tnic>
-	<54D7D91D.2040505@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <54D7D91D.2040505@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a01:4f8:120:8448::d00d
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
-	Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [PATCH] memsave: Improve and disambiguate error
-	message
+	(envelope-from <mjt@tls.msk.ru>) id 1YL7mh-0003tT-1h
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 05:11:12 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:34072)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YL7ma-0003pr-Lx; Tue, 10 Feb 2015 05:11:04 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 666B4418BF;
+	Tue, 10 Feb 2015 13:11:03 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id E05CE95E;
+	Tue, 10 Feb 2015 09:34:47 +0300 (MSK)
+Received: (nullmailer pid 9415 invoked by uid 1000);
+	Tue, 10 Feb 2015 06:34:43 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Tue, 10 Feb 2015 09:34:29 +0300
+Message-Id: <0a4b563c38b9ab036a1a7342b2c489e074783069.1423549659.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
+References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>, Amit Shah <amit.shah@redhat.com>,
+	Juan Quintela <quintela@redhat.com>
+Subject: [Qemu-trivial] [PULL 40/46] migration: Fix warnings caused by
+	missing 'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,25 +45,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 09:23:35 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 10:11:16 -0000
 
-On Sun, Feb 08, 2015 at 10:46:05PM +0100, Paolo Bonzini wrote:
-> I use ":set shiftwidth=4 expandtab" and c-indent mode.
-> 
-> Quick googling for "vim four spaces" suggests the following alternatives:
-> 
-> * ":set tabstop=8 expandtab shiftwidth=4 softtabstop=4"
-> 
-> * "set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab".
+From: Stefan Weil <sw@weilnetz.de>
 
-Thanks Paolo!
+Warnings from the Sparse static analysis tool:
 
-:-)
+migration-rdma.c:151:12: warning:
+ symbol 'wrid_desc' was not declared. Should it be static?
+migration-rdma.c:190:12: warning:
+ symbol 'control_desc' was not declared. Should it be static?
+migration-rdma.c:3301:19: warning:
+ symbol 'rdma_read_ops' was not declared. Should it be static?
+migration-rdma.c:3308:19: warning:
+ symbol 'rdma_write_ops' was not declared. Should it be static?
 
+Cc: Juan Quintela <quintela@redhat.com>
+Cc: Amit Shah <amit.shah@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ migration/rdma.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/migration/rdma.c b/migration/rdma.c
+index 29285e6..6bee30c 100644
+--- a/migration/rdma.c
++++ b/migration/rdma.c
+@@ -121,7 +121,7 @@ enum {
+     RDMA_WRID_RECV_CONTROL = 4000,
+ };
+ 
+-const char *wrid_desc[] = {
++static const char *wrid_desc[] = {
+     [RDMA_WRID_NONE] = "NONE",
+     [RDMA_WRID_RDMA_WRITE] = "WRITE RDMA",
+     [RDMA_WRID_SEND_CONTROL] = "CONTROL SEND",
+@@ -160,7 +160,7 @@ enum {
+     RDMA_CONTROL_UNREGISTER_FINISHED, /* unpinning finished */
+ };
+ 
+-const char *control_desc[] = {
++static const char *control_desc[] = {
+     [RDMA_CONTROL_NONE] = "NONE",
+     [RDMA_CONTROL_ERROR] = "ERROR",
+     [RDMA_CONTROL_READY] = "READY",
+@@ -3250,14 +3250,14 @@ static int qemu_rdma_get_fd(void *opaque)
+     return rdma->comp_channel->fd;
+ }
+ 
+-const QEMUFileOps rdma_read_ops = {
++static const QEMUFileOps rdma_read_ops = {
+     .get_buffer    = qemu_rdma_get_buffer,
+     .get_fd        = qemu_rdma_get_fd,
+     .close         = qemu_rdma_close,
+     .hook_ram_load = qemu_rdma_registration_handle,
+ };
+ 
+-const QEMUFileOps rdma_write_ops = {
++static const QEMUFileOps rdma_write_ops = {
+     .put_buffer         = qemu_rdma_put_buffer,
+     .close              = qemu_rdma_close,
+     .before_ram_iterate = qemu_rdma_registration_start,
 -- 
-Regards/Gruss,
-    Boris.
+2.1.4
 
-ECO tip #101: Trim your mails when you reply.
---
 
