@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YL7mr-0005UB-Pe
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 05:11:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47386)
+	id 1YL7mu-0005ZW-KU
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Feb 2015 05:11:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47431)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL7mk-0005Id-Ki
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 05:11:19 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YL7mr-0005Te-9K
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 05:11:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YL7mg-0003tD-Q5
-	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 05:11:14 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:36913)
+	(envelope-from <mjt@tls.msk.ru>) id 1YL7mq-0003wc-8u
+	for qemu-trivial@nongnu.org; Tue, 10 Feb 2015 05:11:21 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:53315)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YL7ma-0003pu-MB; Tue, 10 Feb 2015 05:11:04 -0500
+	id 1YL7ma-0003ps-M8; Tue, 10 Feb 2015 05:11:04 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 73187418C0;
+	by isrv.corpit.ru (Postfix) with ESMTP id 588B9418BD;
 	Tue, 10 Feb 2015 13:11:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id E1023937;
-	Tue, 10 Feb 2015 09:34:44 +0300 (MSK)
-Received: (nullmailer pid 9427 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 85914944;
+	Tue, 10 Feb 2015 09:34:45 +0300 (MSK)
+Received: (nullmailer pid 9373 invoked by uid 1000);
 	Tue, 10 Feb 2015 06:34:43 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 10 Feb 2015 09:34:35 +0300
-Message-Id: <3ff64f1f9391a9b71d4dd58c6c4bbaa1db3dd430.1423549659.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 10 Feb 2015 09:34:09 +0300
+Message-Id: <aa5e03d2aa4ed19bfb7f4ce80092758018c6a71c.1423549659.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 References: <cover.1423549659.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 86.62.121.231
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>, Michael Tokarev <mjt@tls.msk.ru>,
-	Anthony Liguori <aliguori@amazon.com>, Amit Shah <amit.shah@redhat.com>
-Subject: [Qemu-trivial] [PULL 46/46] virtio: Fix warning caused by missing
-	'static' attribute
+Cc: qemu-trivial@nongnu.org, Maxim Ostapenko <m.ostapenko@partner.samsung.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 20/46] linux-user: wrong TARGET_SI_PAD_SIZE
+	value for some targets.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,37 +44,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Feb 2015 10:11:19 -0000
+X-List-Received-Date: Tue, 10 Feb 2015 10:11:22 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Maxim Ostapenko <m.ostapenko@partner.samsung.com>
 
-Warning from the Sparse static analysis tool:
+Fix TARGET_SI_PAD_SIZE calculation to match the way the kernel does it.
+Use different TARGET_SI_PREAMBLE_SIZE for 32-bit and 64-bit targets.
 
-hw/char/virtio-serial-bus.c:31:3:
- warning: symbol 'vserdevices' was not declared. Should it be static?
-
-Cc: Amit Shah <amit.shah@redhat.com>
-Cc: Anthony Liguori <aliguori@amazon.com>
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Maxim Ostapenko <m.ostapenko@partner.samsung.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/char/virtio-serial-bus.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ linux-user/syscall_defs.h | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/hw/char/virtio-serial-bus.c b/hw/char/virtio-serial-bus.c
-index 37a6f44..47fbb34 100644
---- a/hw/char/virtio-serial-bus.c
-+++ b/hw/char/virtio-serial-bus.c
-@@ -26,7 +26,7 @@
- #include "hw/virtio/virtio-serial.h"
- #include "hw/virtio/virtio-access.h"
+diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+index ebb3be1..9ed6de8 100644
+--- a/linux-user/syscall_defs.h
++++ b/linux-user/syscall_defs.h
+@@ -655,7 +655,14 @@ typedef struct {
+ #endif
  
--struct VirtIOSerialDevices {
-+static struct VirtIOSerialDevices {
-     QLIST_HEAD(, VirtIOSerial) devices;
- } vserdevices;
+ #define TARGET_SI_MAX_SIZE	128
+-#define TARGET_SI_PAD_SIZE	((TARGET_SI_MAX_SIZE/sizeof(int)) - 3)
++
++#if TARGET_ABI_BITS == 32
++#define TARGET_SI_PREAMBLE_SIZE (3 * sizeof(int))
++#else
++#define TARGET_SI_PREAMBLE_SIZE (4 * sizeof(int))
++#endif
++
++#define TARGET_SI_PAD_SIZE ((TARGET_SI_MAX_SIZE - TARGET_SI_PREAMBLE_SIZE) / sizeof(int))
  
+ typedef struct target_siginfo {
+ #ifdef TARGET_MIPS
 -- 
 2.1.4
 
