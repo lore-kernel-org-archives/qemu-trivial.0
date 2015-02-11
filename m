@@ -1,46 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YLXXe-0006Gd-5S
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Feb 2015 08:41:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51135)
+	id 1YLXZ5-0007HU-8d
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Feb 2015 08:42:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51517)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YLXXb-00069c-Ot
-	for qemu-trivial@nongnu.org; Wed, 11 Feb 2015 08:41:20 -0500
+	(envelope-from <eblake@redhat.com>) id 1YLXZ2-0007HE-Kh
+	for qemu-trivial@nongnu.org; Wed, 11 Feb 2015 08:42:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YLXXX-0003VS-30
-	for qemu-trivial@nongnu.org; Wed, 11 Feb 2015 08:41:19 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33641)
+	(envelope-from <eblake@redhat.com>) id 1YLXZ0-0004Au-IX
+	for qemu-trivial@nongnu.org; Wed, 11 Feb 2015 08:42:48 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46318)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YLXXS-0003Un-OB; Wed, 11 Feb 2015 08:41:10 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1BDf60h024929
+	(envelope-from <eblake@redhat.com>)
+	id 1YLXZ0-0004Ad-9U; Wed, 11 Feb 2015 08:42:46 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1BDgiZ6020920
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 11 Feb 2015 08:41:07 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-65.ams2.redhat.com
-	[10.36.116.65])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1BDf5Xl019252
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 11 Feb 2015 08:41:06 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 8D42130000B4; Wed, 11 Feb 2015 14:41:04 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: <arei.gonglei@huawei.com>
-References: <1423627934-11676-1-git-send-email-arei.gonglei@huawei.com>
-Date: Wed, 11 Feb 2015 14:41:04 +0100
-In-Reply-To: <1423627934-11676-1-git-send-email-arei.gonglei@huawei.com> (arei
-	gonglei's message of "Wed, 11 Feb 2015 12:12:03 +0800")
-Message-ID: <87vbj87ehb.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	verify=FAIL); Wed, 11 Feb 2015 08:42:45 -0500
+Received: from [10.3.113.9] ([10.3.113.9])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t1BDgiTd029221; Wed, 11 Feb 2015 08:42:44 -0500
+Message-ID: <54DB5C53.1070601@redhat.com>
+Date: Wed, 11 Feb 2015 06:42:43 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <1423654243-20992-1-git-send-email-pbonzini@redhat.com>
+In-Reply-To: <1423654243-20992-1-git-send-email-pbonzini@redhat.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="Rj8o6m6NXfJNPrxr9QhI2ETqlcCX34G4W"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 00/11] trivial: Remove
-	superfluous '\n' around error_report/error_setg
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] cutils: refine strtol error
+ handling in parse_debug_env
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,38 +51,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Feb 2015 13:41:20 -0000
+X-List-Received-Date: Wed, 11 Feb 2015 13:42:49 -0000
 
-<arei.gonglei@huawei.com> writes:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--Rj8o6m6NXfJNPrxr9QhI2ETqlcCX34G4W
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-> From: Gonglei <arei.gonglei@huawei.com>
->
-> Yestoday, I found that some files have superflous '\n' charactor
-> around error_report/error_setg when reviewed patches.
->
-> By a simply script, the below files were listed. Classify and fix
-> them. It's suitable for appling via qemu-trivial IMHO.
+On 02/11/2015 04:30 AM, Paolo Bonzini wrote:
+> Avoid truncation of a 64-bit long to a 32-bit int, and check for errno
+> (especially ERANGE).
+>=20
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+> 	v1->v2: clear errno before strtol
+> ---
+>  util/cutils.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 
-You can find my script in commit 312fd5f :)
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-> Gonglei (11):
->   block: remove superfluous '\n' around error_report/error_setg
->   a9gtimer: remove superfluous '\n' around error_setg
->   pl330.c: remove superfluous '\n' around error_setg
->   numa: remove superfluous '\n' around error_setg
->   Remove superfluous '\n' around error_report()
->   vhost-scsi: Remove superfluous '\n' around error_report()
->   vfio: Remove superfluous '\n' around error_report()
->   xtensa: Remove superfluous '\n' around error_report()
->   tpm: Remove superfluous '\n' around error_report()
->   arm/digic_boards: Remove superfluous '\n' around error_report()
->   vhost: Remove superfluous '\n' around error_report()
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-When I fixed this before, I didn't split it up (commits 312fd5f 6daf194
-be62a2eb).  Splitting it up is fine, of course.  Having the catch-all as
-PATCH 05/11 is a bit odd, though.  Its qemu-img.c hunk could go into
-PATCH 01, because qemu-img is part of the block subsystem.  Not worth a
-respin as far as I'm concerned.
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+--Rj8o6m6NXfJNPrxr9QhI2ETqlcCX34G4W
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJU21xTAAoJEKeha0olJ0NqLHsIAIeRq/t6RYAii29+1eTEswv0
+8XDi6o0wAGgq+j05ZO0NUqo/VUU3ZLu5cavJlqveC4E3NkrjJXClesm+sLQg5ChW
+iOSzbLOD8Jo6WPcpiteB4iuHX2RrZRXxf4+9VAEtvA4OI0vfHrzMe09aJ7XMixv2
+5Bx08YoAYdeq6jyraYqTmre/YHvKSNpj1VmMNFBmjT+9vjGCXRooWCp2ibemc8NQ
+JZNJ0ZkIDRREIXNAbqcn6Pyj/TCtG6HQ5QulzShvetrzcLaLHvrAZy3Ggx3+MK1K
+p27f0fNDs/KkL537V/c0EE6OaeqhGJifZq4DUkwZ/7+aicA1BHyktOqYN+UvLxY=
+=Z+ER
+-----END PGP SIGNATURE-----
+
+--Rj8o6m6NXfJNPrxr9QhI2ETqlcCX34G4W--
 
