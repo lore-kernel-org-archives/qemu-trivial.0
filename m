@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YLrNh-0001xs-7M
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Feb 2015 05:52:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51666)
+	id 1YLrNq-0002CZ-A3
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Feb 2015 05:52:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51689)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YLrNe-0001vW-Hx
-	for qemu-trivial@nongnu.org; Thu, 12 Feb 2015 05:52:23 -0500
+	(envelope-from <armbru@redhat.com>) id 1YLrNi-000206-A5
+	for qemu-trivial@nongnu.org; Thu, 12 Feb 2015 05:52:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YLrNd-0006Un-KO
-	for qemu-trivial@nongnu.org; Thu, 12 Feb 2015 05:52:22 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45349)
+	(envelope-from <armbru@redhat.com>) id 1YLrNh-0006Vd-Da
+	for qemu-trivial@nongnu.org; Thu, 12 Feb 2015 05:52:26 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54147)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@redhat.com>)
-	id 1YLrNZ-0006TS-9N; Thu, 12 Feb 2015 05:52:17 -0500
+	id 1YLrNa-0006Ti-FD; Thu, 12 Feb 2015 05:52:18 -0500
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1CAqGpr001276
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1CAqHF8004981
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 12 Feb 2015 05:52:16 -0500
+	verify=FAIL); Thu, 12 Feb 2015 05:52:17 -0500
 Received: from blackfin.pond.sub.org (ovpn-116-32.ams2.redhat.com
 	[10.36.116.32])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1CAqELf001507
+	id t1CAqEOu001505
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
 	verify=NO); Thu, 12 Feb 2015 05:52:16 -0500
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 2D1B1303F913; Thu, 12 Feb 2015 11:52:14 +0100 (CET)
+	id 24B23303F912; Thu, 12 Feb 2015 11:52:14 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 12 Feb 2015 11:52:12 +0100
-Message-Id: <1423738334-13545-2-git-send-email-armbru@redhat.com>
-In-Reply-To: <1423738334-13545-1-git-send-email-armbru@redhat.com>
-References: <1423738334-13545-1-git-send-email-armbru@redhat.com>
+Date: Thu, 12 Feb 2015 11:52:11 +0100
+Message-Id: <1423738334-13545-1-git-send-email-armbru@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 1/3] hmp: Clean up declarations for long-gone
-	info handlers
+Cc: Kevin Wolf <kwolf@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+	Michael Walle <michael@walle.cc>, Gerd Hoffmann <kraxel@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [Qemu-trivial] [PATCH 0/3] hmp: Normalize HMP command handler names
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,63 +48,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Feb 2015 10:52:24 -0000
+X-List-Received-Date: Thu, 12 Feb 2015 10:52:31 -0000
 
-Leftovers from
-d1f2964 qapi: Convert query-spice
-791e7c8 qapi: Convert query-migrate
-0fe6a7f slirp: Drop statistic code
+When I can't guess a handler's name, I have to look it up in
+hmp-commands.hx.  Happens often enough to annoy me.  Let's make them
+more predictable.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- include/migration/migration.h | 4 ----
- include/sysemu/sysemu.h       | 3 ---
- include/ui/qemu-spice.h       | 3 ---
- 3 files changed, 10 deletions(-)
+Touches several subsystems because HMP command handlers are still
+spread far and wide, but the changes are trivial.  Speak up if you
+want your subsystem's part routed through your tree rather than
+-trivial.
 
-diff --git a/include/migration/migration.h b/include/migration/migration.h
-index f37348b..703b7d7 100644
---- a/include/migration/migration.h
-+++ b/include/migration/migration.h
-@@ -71,10 +71,6 @@ void qemu_start_incoming_migration(const char *uri, Error **errp);
- 
- uint64_t migrate_max_downtime(void);
- 
--void do_info_migrate_print(Monitor *mon, const QObject *data);
--
--void do_info_migrate(Monitor *mon, QObject **ret_data);
--
- void exec_start_incoming_migration(const char *host_port, Error **errp);
- 
- void exec_start_outgoing_migration(MigrationState *s, const char *host_port, Error **errp);
-diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-index 748d059..c42649c 100644
---- a/include/sysemu/sysemu.h
-+++ b/include/sysemu/sysemu.h
-@@ -90,9 +90,6 @@ void qemu_savevm_state_cancel(void);
- uint64_t qemu_savevm_state_pending(QEMUFile *f, uint64_t max_size);
- int qemu_loadvm_state(QEMUFile *f);
- 
--/* SLIRP */
--void do_info_slirp(Monitor *mon);
--
- typedef enum DisplayType
- {
-     DT_DEFAULT,
-diff --git a/include/ui/qemu-spice.h b/include/ui/qemu-spice.h
-index 762e063..25b94c7 100644
---- a/include/ui/qemu-spice.h
-+++ b/include/ui/qemu-spice.h
-@@ -45,9 +45,6 @@ int qemu_spice_migrate_info(const char *hostname, int port, int tls_port,
-                             const char *subject,
-                             MonitorCompletion cb, void *opaque);
- 
--void do_info_spice_print(Monitor *mon, const QObject *data);
--void do_info_spice(Monitor *mon, QObject **ret_data);
--
- CharDriverState *qemu_chr_open_spice_vmc(const char *type);
- #if SPICE_SERVER_VERSION >= 0x000c02
- CharDriverState *qemu_chr_open_spice_port(const char *name);
+Cc: Kevin Wolf <kwolf@redhat.com>
+Cc: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: Michael Walle <michael@walle.cc>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Jason Wang <jasowang@redhat.com>
+
+Markus Armbruster (3):
+  hmp: Clean up declarations for long-gone info handlers
+  hmp: Name HMP command handler functions hmp_COMMAND()
+  hmp: Name HMP info handler functions hmp_info_SUBCOMMAND()
+
+ block/block-backend.c          |   6 +-
+ blockdev.c                     |   6 +-
+ device-hotplug.c               |   2 +-
+ hmp-commands.hx                |  86 +++++++++++++-------------
+ hmp.c                          |   6 +-
+ hmp.h                          |   6 +-
+ hw/core/loader.c               |   2 +-
+ hw/intc/i8259.c                |   4 +-
+ hw/intc/lm32_pic.c             |   4 +-
+ hw/pci/pci-hotplug-old.c       |   4 +-
+ hw/pci/pci-stub.c              |   2 +-
+ hw/pci/pcie_aer.c              |   2 +-
+ hw/sparc/sun4m.c               |   4 +-
+ hw/usb/bus.c                   |   2 +-
+ hw/usb/host-libusb.c           |   2 +-
+ hw/usb/host-stub.c             |   2 +-
+ include/hw/i386/pc.h           |   4 +-
+ include/hw/lm32/lm32_pic.h     |   4 +-
+ include/hw/loader.h            |   2 +-
+ include/hw/sparc/sun4m.h       |   4 +-
+ include/hw/usb.h               |   2 +-
+ include/migration/migration.h  |   4 --
+ include/monitor/qdev.h         |   4 +-
+ include/net/net.h              |   6 +-
+ include/net/slirp.h            |   6 +-
+ include/sysemu/block-backend.h |   2 +-
+ include/sysemu/blockdev.h      |   4 +-
+ include/sysemu/sysemu.h        |  23 +++----
+ include/ui/console.h           |   2 +-
+ include/ui/qemu-spice.h        |   3 -
+ monitor.c                      | 134 ++++++++++++++++++++---------------------
+ net/net.c                      |   6 +-
+ net/slirp.c                    |   6 +-
+ qdev-monitor.c                 |   4 +-
+ savevm.c                       |   6 +-
+ ui/input.c                     |   2 +-
+ vl.c                           |   4 +-
+ 37 files changed, 181 insertions(+), 191 deletions(-)
+
 -- 
 1.9.3
 
