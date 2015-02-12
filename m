@@ -1,38 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YLb5W-0004C8-Bz
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Feb 2015 12:28:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45910)
+	id 1YLiDH-0006q2-3h
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Feb 2015 20:05:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40708)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1YLb5Q-0004Ap-LU
-	for qemu-trivial@nongnu.org; Wed, 11 Feb 2015 12:28:32 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1YLiDD-0006pU-T0
+	for qemu-trivial@nongnu.org; Wed, 11 Feb 2015 20:05:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1YLb5M-0007iI-L2
-	for qemu-trivial@nongnu.org; Wed, 11 Feb 2015 12:28:28 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50577)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YLiDA-0007rI-Mc
+	for qemu-trivial@nongnu.org; Wed, 11 Feb 2015 20:04:59 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:63919)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1YLb5M-0007iA-DF; Wed, 11 Feb 2015 12:28:24 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1BHSMjg027015
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 11 Feb 2015 12:28:23 -0500
-Received: from nilsson.home.kraxel.org (ovpn-116-79.ams2.redhat.com
-	[10.36.116.79])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1BGoGLJ016796; Wed, 11 Feb 2015 11:50:17 -0500
-Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
-	id 58ABB81C07; Wed, 11 Feb 2015 17:50:16 +0100 (CET)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 11 Feb 2015 17:50:10 +0100
-Message-Id: <1423673410-15100-1-git-send-email-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
-	Gerd Hoffmann <kraxel@redhat.com>, Luiz Capitulino <lcapitulino@redhat.com>
-Subject: [Qemu-trivial] [PATCH v2] spice: fix memory leak
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1YLiDA-0007qO-3Y; Wed, 11 Feb 2015 20:04:56 -0500
+Received: from 172.24.2.119 (EHLO szxeml426-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CHE47554; Thu, 12 Feb 2015 09:04:48 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml426-hub.china.huawei.com
+	(10.82.67.181) with Microsoft SMTP Server id 14.3.158.1;
+	Thu, 12 Feb 2015 09:04:44 +0800
+Message-ID: <54DBFC1D.6020901@huawei.com>
+Date: Thu, 12 Feb 2015 09:04:29 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+MIME-Version: 1.0
+To: Markus Armbruster <armbru@redhat.com>
+References: <1423635971-9928-1-git-send-email-arei.gonglei@huawei.com>
+	<87386c8uy4.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87386c8uy4.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, lcapitulino@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] monitor: Fix Resource leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,29 +48,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Feb 2015 17:28:32 -0000
+X-List-Received-Date: Thu, 12 Feb 2015 01:05:01 -0000
 
-Found by coverity.
+On 2015/2/11 21:00, Markus Armbruster wrote:
+> <arei.gonglei@huawei.com> writes:
+> 
+>> From: Gonglei <arei.gonglei@huawei.com>
+>>
+>> Coverity spot:
+>> qemu_using_spice allocates memory that is stored into err,
+>> but not freed before return.
+>>
+>> Cc:Markus Armbruster <armbru@redhat.com>
+>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>> ---
+>>  monitor.c | 3 ++-
+>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/monitor.c b/monitor.c
+>> index c3cc060..137d23f 100644
+>> --- a/monitor.c
+>> +++ b/monitor.c
+>> @@ -1095,12 +1095,13 @@ static int client_migrate_info(Monitor *mon, const QDict *qdict,
+>>      const char *subject  = qdict_get_try_str(qdict, "cert-subject");
+>>      int port             = qdict_get_try_int(qdict, "port", -1);
+>>      int tls_port         = qdict_get_try_int(qdict, "tls-port", -1);
+>> -    Error *err;
+>> +    Error *err = NULL;
+>>      int ret;
+>>  
+>>      if (strcmp(protocol, "spice") == 0) {
+>>          if (!qemu_using_spice(&err)) {
+>>              qerror_report_err(err);
+>> +            error_free(err);
+>>              return -1;
+>>          }
+> 
+> Your commit message is incomplete.  The resource leak is real, but it's
+> the less serious bug here.  The serious one is missing initialization of
+> err.
+> 
+> If using_spice, qemu_using_spice() returns true without touching err.
+> All fine.
+> 
+> Else, if err is null by chance, qemu_using_spice()'s error_set() creates
+> an error object and stores it in err.  We leak it.
+> 
+> If err is not null, error_set() fails its assertion.
+> 
+Thanks for your explanation, I haven't a global inspection TBH.
+> Broken in commit b25d81b by yours truly.  Thanks for cleaning up my
+> mess!
+> 
+> Let's fix up the commit message:
+> 
+>     monitor: Fix missing err = NULL in client_migrate_info()
+> 
+>     When SPICE isn't used, we either fail an assertion in error_set(),
+>     or leak an error object.  Broken in commit b25d81b.
+> 
+OK, will fix.
+> With such a fixup:
+> 
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> 
+Thanks.
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
----
- monitor.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/monitor.c b/monitor.c
-index c3cc060..2c37953 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -1101,6 +1101,7 @@ static int client_migrate_info(Monitor *mon, const QDict *qdict,
-     if (strcmp(protocol, "spice") == 0) {
-         if (!qemu_using_spice(&err)) {
-             qerror_report_err(err);
-+            error_free(err);
-             return -1;
-         }
- 
--- 
-1.8.3.1
+Regards,
+-Gonglei
 
 
