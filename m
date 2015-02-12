@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YLrNu-0002Iv-6C
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Feb 2015 05:52:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51720)
+	id 1YLrNw-0002NF-Ch
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Feb 2015 05:52:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51727)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YLrNp-0002As-7c
-	for qemu-trivial@nongnu.org; Thu, 12 Feb 2015 05:52:36 -0500
+	(envelope-from <armbru@redhat.com>) id 1YLrNr-0002Ec-Dp
+	for qemu-trivial@nongnu.org; Thu, 12 Feb 2015 05:52:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YLrNl-0006We-Ha
-	for qemu-trivial@nongnu.org; Thu, 12 Feb 2015 05:52:33 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54152)
+	(envelope-from <armbru@redhat.com>) id 1YLrNp-0006XI-22
+	for qemu-trivial@nongnu.org; Thu, 12 Feb 2015 05:52:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51357)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@redhat.com>)
-	id 1YLrNa-0006Tp-Ou; Thu, 12 Feb 2015 05:52:19 -0500
+	id 1YLrNa-0006Tj-FK; Thu, 12 Feb 2015 05:52:18 -0500
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1CAqIQF004988
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1CAqHIF005984
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 12 Feb 2015 05:52:18 -0500
+	verify=FAIL); Thu, 12 Feb 2015 05:52:17 -0500
 Received: from blackfin.pond.sub.org (ovpn-116-32.ams2.redhat.com
 	[10.36.116.32])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1CAqEpl031919
+	id t1CAqEmD031921
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
 	verify=NO); Thu, 12 Feb 2015 05:52:16 -0500
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 37B7B303F16E; Thu, 12 Feb 2015 11:52:14 +0100 (CET)
+	id 5173B3008AD6; Thu, 12 Feb 2015 11:52:14 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 12 Feb 2015 11:52:13 +0100
-Message-Id: <1423738334-13545-3-git-send-email-armbru@redhat.com>
+Date: Thu, 12 Feb 2015 11:52:14 +0100
+Message-Id: <1423738334-13545-4-git-send-email-armbru@redhat.com>
 In-Reply-To: <1423738334-13545-1-git-send-email-armbru@redhat.com>
 References: <1423738334-13545-1-git-send-email-armbru@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 2/3] hmp: Name HMP command handler functions
-	hmp_COMMAND()
+Subject: [Qemu-trivial] [PATCH 3/3] hmp: Name HMP info handler functions
+	hmp_info_SUBCOMMAND()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,1065 +48,696 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Feb 2015 10:52:37 -0000
+X-List-Received-Date: Thu, 12 Feb 2015 10:52:39 -0000
 
-Some are called do_COMMAND() (old ones, usually), some hmp_COMMAND(),
-and sometimes COMMAND pointlessly differs in spelling.
+Some are called do_info_SUBCOMMAND() (old ones, usually), some
+hmp_info_SUBCOMMAND(), some SUBCOMMAND_info(), sometimes SUBCOMMAND
+pointlessly differs in spelling.
 
-Normalize to hmp_COMMAND(), where COMMAND is exactly the command name
-with '-' replaced by '_'.
+Normalize to hmp_info_SUBCOMMAND(), where SUBCOMMAND is exactly the
+subcommand name with '-' replaced by '_'.
 
 Exceptions:
 
-* do_device_add() and client_migrate_info() *not* renamed to
-  hmp_device_add(), hmp_client_migrate_info(), because they're also
-  QMP handlers.  They still need to be converted to QAPI.
+* sun4m_irq_info(), sun4m_pic_info() renamed to sun4m_hmp_info_irq(),
+  sun4m_hmp_info_pic().
 
-* do_memory_dump(), do_physical_memory_dump(), do_ioport_read(),
-  do_ioport_write() renamed do hmp_* instead of hmp_x(), hmp_xp(),
-  hmp_i(), hmp_o(), because those names are too cryptic for my taste.
-
-* do_info_help() renamed to hmp_info_help() instead of hmp_info(),
-  because it only covers help.
+* lm32_irq_info(), lm32_pic_info() renamed to lm32_hmp_info_irq(),
+  lm32_hmp_info_pic().
 
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- block/block-backend.c          |  6 +--
- blockdev.c                     |  6 +--
- device-hotplug.c               |  2 +-
- hmp-commands.hx                | 86 +++++++++++++++++++++---------------------
- hmp.c                          |  6 +--
- hmp.h                          |  6 +--
- hw/pci/pci-hotplug-old.c       |  4 +-
- hw/pci/pci-stub.c              |  2 +-
- hw/pci/pcie_aer.c              |  2 +-
- include/net/net.h              |  4 +-
- include/net/slirp.h            |  4 +-
- include/sysemu/block-backend.h |  2 +-
- include/sysemu/blockdev.h      |  4 +-
- include/sysemu/sysemu.h        | 16 ++++----
- include/ui/console.h           |  2 +-
- monitor.c                      | 50 ++++++++++++------------
- net/net.c                      |  4 +-
- net/slirp.c                    |  4 +-
- savevm.c                       |  4 +-
- ui/input.c                     |  2 +-
- vl.c                           |  4 +-
- 21 files changed, 110 insertions(+), 110 deletions(-)
+ hw/core/loader.c           |  2 +-
+ hw/intc/i8259.c            |  4 +--
+ hw/intc/lm32_pic.c         |  4 +--
+ hw/sparc/sun4m.c           |  4 +--
+ hw/usb/bus.c               |  2 +-
+ hw/usb/host-libusb.c       |  2 +-
+ hw/usb/host-stub.c         |  2 +-
+ include/hw/i386/pc.h       |  4 +--
+ include/hw/lm32/lm32_pic.h |  4 +--
+ include/hw/loader.h        |  2 +-
+ include/hw/sparc/sun4m.h   |  4 +--
+ include/hw/usb.h           |  2 +-
+ include/monitor/qdev.h     |  4 +--
+ include/net/net.h          |  2 +-
+ include/net/slirp.h        |  2 +-
+ include/sysemu/sysemu.h    |  4 +--
+ monitor.c                  | 84 +++++++++++++++++++++++-----------------------
+ net/net.c                  |  2 +-
+ net/slirp.c                |  2 +-
+ qdev-monitor.c             |  4 +--
+ savevm.c                   |  2 +-
+ 21 files changed, 71 insertions(+), 71 deletions(-)
 
-diff --git a/block/block-backend.c b/block/block-backend.c
-index c28e240..1988515 100644
---- a/block/block-backend.c
-+++ b/block/block-backend.c
-@@ -101,7 +101,7 @@ static void blk_delete(BlockBackend *blk)
-         bdrv_unref(blk->bs);
-         blk->bs = NULL;
-     }
--    /* Avoid double-remove after blk_hide_on_behalf_of_do_drive_del() */
-+    /* Avoid double-remove after blk_hide_on_behalf_of_hmp_drive_del() */
-     if (blk->name[0]) {
-         QTAILQ_REMOVE(&blk_backends, blk, link);
-     }
-@@ -162,7 +162,7 @@ BlockBackend *blk_next(BlockBackend *blk)
- /*
-  * Return @blk's name, a non-null string.
-  * Wart: the name is empty iff @blk has been hidden with
-- * blk_hide_on_behalf_of_do_drive_del().
-+ * blk_hide_on_behalf_of_hmp_drive_del().
-  */
- const char *blk_name(BlockBackend *blk)
- {
-@@ -238,7 +238,7 @@ BlockBackend *blk_by_legacy_dinfo(DriveInfo *dinfo)
-  * Strictly for use by do_drive_del().
-  * TODO get rid of it!
-  */
--void blk_hide_on_behalf_of_do_drive_del(BlockBackend *blk)
-+void blk_hide_on_behalf_of_hmp_drive_del(BlockBackend *blk)
- {
-     QTAILQ_REMOVE(&blk_backends, blk, link);
-     blk->name[0] = 0;
-diff --git a/blockdev.c b/blockdev.c
-index 7d34960..0f1a253 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -1025,7 +1025,7 @@ fail:
-     return dinfo;
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index fcd4705..e45dc0b 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -1062,7 +1062,7 @@ void *rom_ptr(hwaddr addr)
+     return rom->data + (addr - rom->addr);
  }
  
--void do_commit(Monitor *mon, const QDict *qdict)
-+void hmp_commit(Monitor *mon, const QDict *qdict)
+-void do_info_roms(Monitor *mon, const QDict *qdict)
++void hmp_info_roms(Monitor *mon, const QDict *qdict)
  {
-     const char *device = qdict_get_str(qdict, "device");
-     BlockDriverState *bs;
-@@ -1953,7 +1953,7 @@ void qmp_block_set_io_throttle(const char *device, int64_t bps, int64_t bps_rd,
-     aio_context_release(aio_context);
+     Rom *rom;
+ 
+diff --git a/hw/intc/i8259.c b/hw/intc/i8259.c
+index c51901b..0f5c025 100644
+--- a/hw/intc/i8259.c
++++ b/hw/intc/i8259.c
+@@ -429,7 +429,7 @@ static void pic_realize(DeviceState *dev, Error **errp)
+     pc->parent_realize(dev, errp);
  }
  
--int do_drive_del(Monitor *mon, const QDict *qdict, QObject **ret_data)
-+int hmp_drive_del(Monitor *mon, const QDict *qdict, QObject **ret_data)
- {
-     const char *id = qdict_get_str(qdict, "id");
-     BlockBackend *blk;
-@@ -1995,7 +1995,7 @@ int do_drive_del(Monitor *mon, const QDict *qdict, QObject **ret_data)
-      * then we can just get rid of the block driver state right here.
-      */
-     if (blk_get_attached_dev(blk)) {
--        blk_hide_on_behalf_of_do_drive_del(blk);
-+        blk_hide_on_behalf_of_hmp_drive_del(blk);
-         /* Further I/O must not pause the guest */
-         bdrv_set_on_error(bs, BLOCKDEV_ON_ERROR_REPORT,
-                           BLOCKDEV_ON_ERROR_REPORT);
-diff --git a/device-hotplug.c b/device-hotplug.c
-index 9e38cc4..833d874 100644
---- a/device-hotplug.c
-+++ b/device-hotplug.c
-@@ -50,7 +50,7 @@ DriveInfo *add_init_drive(const char *optstr)
-     return dinfo;
- }
- 
--void drive_hot_add(Monitor *mon, const QDict *qdict)
-+void hmp_drive_add(Monitor *mon, const QDict *qdict)
- {
-     DriveInfo *dinfo = NULL;
-     const char *opts = qdict_get_str(qdict, "opts");
-diff --git a/hmp-commands.hx b/hmp-commands.hx
-index e37bc8b..81f276b 100644
---- a/hmp-commands.hx
-+++ b/hmp-commands.hx
-@@ -28,7 +28,7 @@ ETEXI
-         .args_type  = "device:B",
-         .params     = "device|all",
-         .help       = "commit changes to the disk images (if -snapshot is used) or backing files",
--        .mhandler.cmd = do_commit,
-+        .mhandler.cmd = hmp_commit,
-     },
- 
- STEXI
-@@ -180,7 +180,7 @@ ETEXI
-         .params     = "device",
-         .help       = "remove host block device",
-         .user_print = monitor_user_noop,
--        .mhandler.cmd_new = do_drive_del,
-+        .mhandler.cmd_new = hmp_drive_del,
-     },
- 
- STEXI
-@@ -245,7 +245,7 @@ ETEXI
-         .args_type  = "filename:F",
-         .params     = "filename",
-         .help       = "save screen into PPM image 'filename'",
--        .mhandler.cmd = hmp_screen_dump,
-+        .mhandler.cmd = hmp_screendump,
-     },
- 
- STEXI
-@@ -259,7 +259,7 @@ ETEXI
-         .args_type  = "filename:F",
-         .params     = "filename",
-         .help       = "output logs to 'filename'",
--        .mhandler.cmd = do_logfile,
-+        .mhandler.cmd = hmp_logfile,
-     },
- 
- STEXI
-@@ -273,7 +273,7 @@ ETEXI
-         .args_type  = "name:s,option:b",
-         .params     = "name on|off",
-         .help       = "changes status of a specific trace event",
--        .mhandler.cmd = do_trace_event_set_state,
-+        .mhandler.cmd = hmp_trace_event,
-     },
- 
- STEXI
-@@ -288,7 +288,7 @@ ETEXI
-         .args_type  = "op:s?,arg:F?",
-         .params     = "on|off|flush|set [arg]",
-         .help       = "open, close, or flush trace file, or set a new file name",
--        .mhandler.cmd = do_trace_file,
-+        .mhandler.cmd = hmp_trace_file,
-     },
- 
- STEXI
-@@ -303,7 +303,7 @@ ETEXI
-         .args_type  = "items:s",
-         .params     = "item1[,...]",
-         .help       = "activate logging of the specified items",
--        .mhandler.cmd = do_log,
-+        .mhandler.cmd = hmp_log,
-     },
- 
- STEXI
-@@ -317,7 +317,7 @@ ETEXI
-         .args_type  = "name:s?",
-         .params     = "[tag|id]",
-         .help       = "save a VM snapshot. If no tag or id are provided, a new snapshot is created",
--        .mhandler.cmd = do_savevm,
-+        .mhandler.cmd = hmp_savevm,
-     },
- 
- STEXI
-@@ -334,7 +334,7 @@ ETEXI
-         .args_type  = "name:s",
-         .params     = "tag|id",
-         .help       = "restore a VM snapshot from its tag or id",
--        .mhandler.cmd = do_loadvm,
-+        .mhandler.cmd = hmp_loadvm,
-         .command_completion = loadvm_completion,
-     },
- 
-@@ -350,7 +350,7 @@ ETEXI
-         .args_type  = "name:s",
-         .params     = "tag|id",
-         .help       = "delete a VM snapshot from its tag or id",
--        .mhandler.cmd = do_delvm,
-+        .mhandler.cmd = hmp_delvm,
-         .command_completion = delvm_completion,
-     },
- 
-@@ -365,7 +365,7 @@ ETEXI
-         .args_type  = "option:s?",
-         .params     = "[on|off]",
-         .help       = "run emulation in singlestep mode or switch to normal mode",
--        .mhandler.cmd = do_singlestep,
-+        .mhandler.cmd = hmp_singlestep,
-     },
- 
- STEXI
-@@ -422,7 +422,7 @@ ETEXI
-         .args_type  = "device:s?",
-         .params     = "[device]",
-         .help       = "start gdbserver on given device (default 'tcp::1234'), stop with 'none'",
--        .mhandler.cmd = do_gdbserver,
-+        .mhandler.cmd = hmp_gdbserver,
-     },
- 
- STEXI
-@@ -436,7 +436,7 @@ ETEXI
-         .args_type  = "fmt:/,addr:l",
-         .params     = "/fmt addr",
-         .help       = "virtual memory dump starting at 'addr'",
--        .mhandler.cmd = do_memory_dump,
-+        .mhandler.cmd = hmp_memory_dump,
-     },
- 
- STEXI
-@@ -450,7 +450,7 @@ ETEXI
-         .args_type  = "fmt:/,addr:l",
-         .params     = "/fmt addr",
-         .help       = "physical memory dump starting at 'addr'",
--        .mhandler.cmd = do_physical_memory_dump,
-+        .mhandler.cmd = hmp_physical_memory_dump,
-     },
- 
- STEXI
-@@ -533,7 +533,7 @@ ETEXI
-         .args_type  = "fmt:/,addr:i,index:i.",
-         .params     = "/fmt addr",
-         .help       = "I/O port read",
--        .mhandler.cmd = do_ioport_read,
-+        .mhandler.cmd = hmp_ioport_read,
-     },
- 
- STEXI
-@@ -545,7 +545,7 @@ ETEXI
-         .args_type  = "fmt:/,addr:i,val:i",
-         .params     = "/fmt addr value",
-         .help       = "I/O port write",
--        .mhandler.cmd = do_ioport_write,
-+        .mhandler.cmd = hmp_ioport_write,
-     },
- 
- STEXI
-@@ -557,7 +557,7 @@ ETEXI
-         .args_type  = "keys:s,hold-time:i?",
-         .params     = "keys [hold_ms]",
-         .help       = "send keys to the VM (e.g. 'sendkey ctrl-alt-f1', default hold time=100 ms)",
--        .mhandler.cmd = hmp_send_key,
-+        .mhandler.cmd = hmp_sendkey,
-         .command_completion = sendkey_completion,
-     },
- 
-@@ -611,7 +611,7 @@ ETEXI
-         .args_type  = "start:i,size:i",
-         .params     = "addr size",
-         .help       = "compute the checksum of a memory region",
--        .mhandler.cmd = do_sum,
-+        .mhandler.cmd = hmp_sum,
-     },
- 
- STEXI
-@@ -626,7 +626,7 @@ ETEXI
-         .args_type  = "devname:s",
-         .params     = "device",
-         .help       = "add USB device (e.g. 'host:bus.addr' or 'host:vendor_id:product_id')",
--        .mhandler.cmd = do_usb_add,
-+        .mhandler.cmd = hmp_usb_add,
-     },
- 
- STEXI
-@@ -642,7 +642,7 @@ ETEXI
-         .args_type  = "devname:s",
-         .params     = "device",
-         .help       = "remove USB device 'bus.addr'",
--        .mhandler.cmd = do_usb_del,
-+        .mhandler.cmd = hmp_usb_del,
-     },
- 
- STEXI
-@@ -706,7 +706,7 @@ ETEXI
-         .args_type  = "dx_str:s,dy_str:s,dz_str:s?",
-         .params     = "dx dy [dz]",
-         .help       = "send mouse move events",
--        .mhandler.cmd = do_mouse_move,
-+        .mhandler.cmd = hmp_mouse_move,
-     },
- 
- STEXI
-@@ -721,7 +721,7 @@ ETEXI
-         .args_type  = "button_state:i",
-         .params     = "state",
-         .help       = "change mouse button state (1=L, 2=M, 4=R)",
--        .mhandler.cmd = do_mouse_button,
-+        .mhandler.cmd = hmp_mouse_button,
-     },
- 
- STEXI
-@@ -735,7 +735,7 @@ ETEXI
-         .args_type  = "index:i",
-         .params     = "index",
-         .help       = "set which mouse device receives events",
--        .mhandler.cmd = do_mouse_set,
-+        .mhandler.cmd = hmp_mouse_set,
-     },
- 
- STEXI
-@@ -753,7 +753,7 @@ ETEXI
-         .args_type  = "path:F,freq:i?,bits:i?,nchannels:i?",
-         .params     = "path [frequency [bits [channels]]]",
-         .help       = "capture audio to a wave file (default frequency=44100 bits=16 channels=2)",
--        .mhandler.cmd = do_wav_capture,
-+        .mhandler.cmd = hmp_wavcapture,
-     },
- STEXI
- @item wavcapture @var{filename} [@var{frequency} [@var{bits} [@var{channels}]]]
-@@ -774,7 +774,7 @@ ETEXI
-         .args_type  = "n:i",
-         .params     = "capture index",
-         .help       = "stop capture",
--        .mhandler.cmd = do_stop_capture,
-+        .mhandler.cmd = hmp_stopcapture,
-     },
- STEXI
- @item stopcapture @var{index}
-@@ -818,7 +818,7 @@ ETEXI
-         .args_type  = "bootdevice:s",
-         .params     = "bootdevice",
-         .help       = "define new values for the boot device list",
--        .mhandler.cmd = do_boot_set,
-+        .mhandler.cmd = hmp_boot_set,
-     },
- 
- STEXI
-@@ -837,7 +837,7 @@ ETEXI
-         .args_type  = "",
-         .params     = "",
-         .help       = "inject an NMI",
--        .mhandler.cmd = hmp_inject_nmi,
-+        .mhandler.cmd = hmp_nmi,
-     },
- STEXI
- @item nmi @var{cpu}
-@@ -1140,7 +1140,7 @@ ETEXI
-                       "[,snapshot=on|off][,cache=on|off]\n"
-                       "[,readonly=on|off][,copy-on-read=on|off]",
-         .help       = "add drive to PCI storage controller",
--        .mhandler.cmd = drive_hot_add,
-+        .mhandler.cmd = hmp_drive_add,
-     },
- 
- STEXI
-@@ -1155,7 +1155,7 @@ ETEXI
-         .args_type  = "pci_addr:s,type:s,opts:s?",
-         .params     = "auto|[[<domain>:]<bus>:]<slot> nic|storage [[vlan=n][,macaddr=addr][,model=type]] [file=file][,if=type][,bus=nr]...",
-         .help       = "hot-add PCI device",
--        .mhandler.cmd = pci_device_hot_add,
-+        .mhandler.cmd = hmp_pci_add,
-     },
- #endif
- 
-@@ -1171,7 +1171,7 @@ ETEXI
-         .args_type  = "pci_addr:s",
-         .params     = "[[<domain>:]<bus>:]<slot>",
-         .help       = "hot remove PCI device",
--        .mhandler.cmd = do_pci_device_hot_remove,
-+        .mhandler.cmd = hmp_pci_del,
-     },
- #endif
- 
-@@ -1197,7 +1197,7 @@ ETEXI
-                       "<tlb header> = 32bit x 4\n\t\t\t"
-                       "<tlb header prefix> = 32bit x 4",
-         .user_print  = pcie_aer_inject_error_print,
--        .mhandler.cmd_new = do_pcie_aer_inject_error,
-+        .mhandler.cmd_new = hmp_pcie_aer_inject_error,
-     },
- 
- STEXI
-@@ -1211,7 +1211,7 @@ ETEXI
-         .args_type  = "device:s,opts:s?",
-         .params     = "tap|user|socket|vde|netmap|bridge|vhost-user|dump [options]",
-         .help       = "add host VLAN client",
--        .mhandler.cmd = net_host_device_add,
-+        .mhandler.cmd = hmp_host_net_add,
-         .command_completion = host_net_add_completion,
-     },
- 
-@@ -1226,7 +1226,7 @@ ETEXI
-         .args_type  = "vlan_id:i,device:s",
-         .params     = "vlan_id name",
-         .help       = "remove host VLAN client",
--        .mhandler.cmd = net_host_device_remove,
-+        .mhandler.cmd = hmp_host_net_remove,
-         .command_completion = host_net_remove_completion,
-     },
- 
-@@ -1302,7 +1302,7 @@ ETEXI
-         .args_type  = "arg1:s,arg2:s?,arg3:s?",
-         .params     = "[vlan_id name] [tcp|udp]:[hostaddr]:hostport-[guestaddr]:guestport",
-         .help       = "redirect TCP or UDP connections from host to guest (requires -net user)",
--        .mhandler.cmd = net_slirp_hostfwd_add,
-+        .mhandler.cmd = hmp_hostfwd_add,
-     },
- #endif
- STEXI
-@@ -1317,7 +1317,7 @@ ETEXI
-         .args_type  = "arg1:s,arg2:s?,arg3:s?",
-         .params     = "[vlan_id name] [tcp|udp]:[hostaddr]:hostport",
-         .help       = "remove host-to-guest TCP or UDP redirection",
--        .mhandler.cmd = net_slirp_hostfwd_remove,
-+        .mhandler.cmd = hmp_hostfwd_remove,
-     },
- 
- #endif
-@@ -1361,7 +1361,7 @@ ETEXI
-         .args_type  = "action:s",
-         .params     = "[reset|shutdown|poweroff|pause|debug|none]",
-         .help       = "change watchdog action",
--        .mhandler.cmd = do_watchdog_action,
-+        .mhandler.cmd = hmp_watchdog_action,
-         .command_completion = watchdog_action_completion,
-     },
- 
-@@ -1376,7 +1376,7 @@ ETEXI
-         .args_type  = "aclname:s",
-         .params     = "aclname",
-         .help       = "list rules in the access control list",
--        .mhandler.cmd = do_acl_show,
-+        .mhandler.cmd = hmp_acl_show,
-     },
- 
- STEXI
-@@ -1393,7 +1393,7 @@ ETEXI
-         .args_type  = "aclname:s,policy:s",
-         .params     = "aclname allow|deny",
-         .help       = "set default access control list policy",
--        .mhandler.cmd = do_acl_policy,
-+        .mhandler.cmd = hmp_acl_policy,
-     },
- 
- STEXI
-@@ -1409,7 +1409,7 @@ ETEXI
-         .args_type  = "aclname:s,match:s,policy:s,index:i?",
-         .params     = "aclname match allow|deny [index]",
-         .help       = "add a match rule to the access control list",
--        .mhandler.cmd = do_acl_add,
-+        .mhandler.cmd = hmp_acl_add,
-     },
- 
- STEXI
-@@ -1428,7 +1428,7 @@ ETEXI
-         .args_type  = "aclname:s,match:s",
-         .params     = "aclname match",
-         .help       = "remove a match rule from the access control list",
--        .mhandler.cmd = do_acl_remove,
-+        .mhandler.cmd = hmp_acl_remove,
-     },
- 
- STEXI
-@@ -1442,7 +1442,7 @@ ETEXI
-         .args_type  = "aclname:s",
-         .params     = "aclname",
-         .help       = "reset the access control list",
--        .mhandler.cmd = do_acl_reset,
-+        .mhandler.cmd = hmp_acl_reset,
-     },
- 
- STEXI
-@@ -1504,7 +1504,7 @@ ETEXI
-         .args_type  = "broadcast:-b,cpu_index:i,bank:i,status:l,mcg_status:l,addr:l,misc:l",
-         .params     = "[-b] cpu bank status mcgstatus addr misc",
-         .help       = "inject a MCE on the given CPU [and broadcast to other CPUs with -b option]",
--        .mhandler.cmd = do_inject_mce,
-+        .mhandler.cmd = hmp_mce,
-     },
- 
- #endif
-@@ -1694,7 +1694,7 @@ ETEXI
-         .args_type  = "item:s?",
-         .params     = "[subcommand]",
-         .help       = "show various information about the system state",
--        .mhandler.cmd = do_info_help,
-+        .mhandler.cmd = hmp_info_help,
-         .sub_table = info_cmds,
-     },
- 
-diff --git a/hmp.c b/hmp.c
-index b47f331..62dae32 100644
---- a/hmp.c
-+++ b/hmp.c
-@@ -923,7 +923,7 @@ void hmp_system_wakeup(Monitor *mon, const QDict *qdict)
-     qmp_system_wakeup(NULL);
- }
- 
--void hmp_inject_nmi(Monitor *mon, const QDict *qdict)
-+void hmp_nmi(Monitor *mon, const QDict *qdict)
- {
-     Error *err = NULL;
- 
-@@ -1532,7 +1532,7 @@ void hmp_closefd(Monitor *mon, const QDict *qdict)
-     hmp_handle_error(mon, &err);
- }
- 
--void hmp_send_key(Monitor *mon, const QDict *qdict)
-+void hmp_sendkey(Monitor *mon, const QDict *qdict)
- {
-     const char *keys = qdict_get_str(qdict, "keys");
-     KeyValueList *keylist, *head = NULL, *tmp = NULL;
-@@ -1601,7 +1601,7 @@ err_out:
-     goto out;
- }
- 
--void hmp_screen_dump(Monitor *mon, const QDict *qdict)
-+void hmp_screendump(Monitor *mon, const QDict *qdict)
- {
-     const char *filename = qdict_get_str(qdict, "filename");
-     Error *err = NULL;
-diff --git a/hmp.h b/hmp.h
-index 4bb5dca..81177b2 100644
---- a/hmp.h
-+++ b/hmp.h
-@@ -49,7 +49,7 @@ void hmp_ringbuf_write(Monitor *mon, const QDict *qdict);
- void hmp_ringbuf_read(Monitor *mon, const QDict *qdict);
- void hmp_cont(Monitor *mon, const QDict *qdict);
- void hmp_system_wakeup(Monitor *mon, const QDict *qdict);
--void hmp_inject_nmi(Monitor *mon, const QDict *qdict);
-+void hmp_nmi(Monitor *mon, const QDict *qdict);
- void hmp_set_link(Monitor *mon, const QDict *qdict);
- void hmp_block_passwd(Monitor *mon, const QDict *qdict);
- void hmp_balloon(Monitor *mon, const QDict *qdict);
-@@ -82,8 +82,8 @@ void hmp_netdev_add(Monitor *mon, const QDict *qdict);
- void hmp_netdev_del(Monitor *mon, const QDict *qdict);
- void hmp_getfd(Monitor *mon, const QDict *qdict);
- void hmp_closefd(Monitor *mon, const QDict *qdict);
--void hmp_send_key(Monitor *mon, const QDict *qdict);
--void hmp_screen_dump(Monitor *mon, const QDict *qdict);
-+void hmp_sendkey(Monitor *mon, const QDict *qdict);
-+void hmp_screendump(Monitor *mon, const QDict *qdict);
- void hmp_nbd_server_start(Monitor *mon, const QDict *qdict);
- void hmp_nbd_server_add(Monitor *mon, const QDict *qdict);
- void hmp_nbd_server_stop(Monitor *mon, const QDict *qdict);
-diff --git a/hw/pci/pci-hotplug-old.c b/hw/pci/pci-hotplug-old.c
-index 0c09c72..a0ef90c 100644
---- a/hw/pci/pci-hotplug-old.c
-+++ b/hw/pci/pci-hotplug-old.c
-@@ -267,7 +267,7 @@ static PCIDevice *qemu_pci_hot_add_storage(Monitor *mon,
-     return dev;
- }
- 
--void pci_device_hot_add(Monitor *mon, const QDict *qdict)
-+void hmp_pci_add(Monitor *mon, const QDict *qdict)
- {
-     PCIDevice *dev = NULL;
-     const char *pci_addr = qdict_get_str(qdict, "pci_addr");
-@@ -337,7 +337,7 @@ static int pci_device_hot_remove(Monitor *mon, const char *pci_addr)
-     return 0;
- }
- 
--void do_pci_device_hot_remove(Monitor *mon, const QDict *qdict)
-+void hmp_pci_del(Monitor *mon, const QDict *qdict)
- {
-     pci_device_hot_remove(mon, qdict_get_str(qdict, "pci_addr"));
- }
-diff --git a/hw/pci/pci-stub.c b/hw/pci/pci-stub.c
-index 1dda89b..5e564c3 100644
---- a/hw/pci/pci-stub.c
-+++ b/hw/pci/pci-stub.c
-@@ -34,7 +34,7 @@ static void pci_error_message(Monitor *mon)
-     monitor_printf(mon, "PCI devices not supported\n");
- }
- 
--int do_pcie_aer_inject_error(Monitor *mon,
-+int hmp_pcie_aer_inject_error(Monitor *mon,
-                              const QDict *qdict, QObject **ret_data)
- {
-     pci_error_message(mon);
-diff --git a/hw/pci/pcie_aer.c b/hw/pci/pcie_aer.c
-index 1f4be16..5a25c32 100644
---- a/hw/pci/pcie_aer.c
-+++ b/hw/pci/pcie_aer.c
-@@ -962,7 +962,7 @@ static int pcie_aer_parse_error_string(const char *error_name,
-     return -EINVAL;
- }
- 
--int do_pcie_aer_inject_error(Monitor *mon,
-+int hmp_pcie_aer_inject_error(Monitor *mon,
-                              const QDict *qdict, QObject **ret_data)
- {
-     const char *id = qdict_get_str(qdict, "id");
-diff --git a/include/net/net.h b/include/net/net.h
-index 008d610..ac43a8e 100644
---- a/include/net/net.h
-+++ b/include/net/net.h
-@@ -187,8 +187,8 @@ int net_client_parse(QemuOptsList *opts_list, const char *str);
- int net_init_clients(void);
- void net_check_clients(void);
- void net_cleanup(void);
--void net_host_device_add(Monitor *mon, const QDict *qdict);
--void net_host_device_remove(Monitor *mon, const QDict *qdict);
-+void hmp_host_net_add(Monitor *mon, const QDict *qdict);
-+void hmp_host_net_remove(Monitor *mon, const QDict *qdict);
- void netdev_add(QemuOpts *opts, Error **errp);
- int qmp_netdev_add(Monitor *mon, const QDict *qdict, QObject **ret);
- 
-diff --git a/include/net/slirp.h b/include/net/slirp.h
-index 0502389..d3b64f6 100644
---- a/include/net/slirp.h
-+++ b/include/net/slirp.h
-@@ -31,8 +31,8 @@
- 
- #ifdef CONFIG_SLIRP
- 
--void net_slirp_hostfwd_add(Monitor *mon, const QDict *qdict);
--void net_slirp_hostfwd_remove(Monitor *mon, const QDict *qdict);
-+void hmp_hostfwd_add(Monitor *mon, const QDict *qdict);
-+void hmp_hostfwd_remove(Monitor *mon, const QDict *qdict);
- 
- int net_slirp_redir(const char *redir_str);
- 
-diff --git a/include/sysemu/block-backend.h b/include/sysemu/block-backend.h
-index aab12b9..33eb400 100644
---- a/include/sysemu/block-backend.h
-+++ b/include/sysemu/block-backend.h
-@@ -70,7 +70,7 @@ BlockBackend *blk_next(BlockBackend *blk);
- 
- BlockDriverState *blk_bs(BlockBackend *blk);
- 
--void blk_hide_on_behalf_of_do_drive_del(BlockBackend *blk);
-+void blk_hide_on_behalf_of_hmp_drive_del(BlockBackend *blk);
- 
- void blk_iostatus_enable(BlockBackend *blk);
- int blk_attach_dev(BlockBackend *blk, void *dev);
-diff --git a/include/sysemu/blockdev.h b/include/sysemu/blockdev.h
-index 09d1e30..0c62643 100644
---- a/include/sysemu/blockdev.h
-+++ b/include/sysemu/blockdev.h
-@@ -67,6 +67,6 @@ DriveInfo *add_init_drive(const char *opts);
- 
- void qmp_change_blockdev(const char *device, const char *filename,
-                          const char *format, Error **errp);
--void do_commit(Monitor *mon, const QDict *qdict);
--int do_drive_del(Monitor *mon, const QDict *qdict, QObject **ret_data);
-+void hmp_commit(Monitor *mon, const QDict *qdict);
-+int hmp_drive_del(Monitor *mon, const QDict *qdict, QObject **ret_data);
- #endif
-diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-index c42649c..d132430 100644
---- a/include/sysemu/sysemu.h
-+++ b/include/sysemu/sysemu.h
-@@ -74,9 +74,9 @@ void qemu_remove_exit_notifier(Notifier *notify);
- 
- void qemu_add_machine_init_done_notifier(Notifier *notify);
- 
--void do_savevm(Monitor *mon, const QDict *qdict);
-+void hmp_savevm(Monitor *mon, const QDict *qdict);
- int load_vmstate(const char *name);
--void do_delvm(Monitor *mon, const QDict *qdict);
-+void hmp_delvm(Monitor *mon, const QDict *qdict);
- void do_info_snapshots(Monitor *mon, const QDict *qdict);
- 
- void qemu_announce_self(void);
-@@ -175,16 +175,16 @@ extern const char *prom_envs[MAX_PROM_ENVS];
- extern unsigned int nb_prom_envs;
- 
- /* pci-hotplug */
--void pci_device_hot_add(Monitor *mon, const QDict *qdict);
-+void hmp_pci_add(Monitor *mon, const QDict *qdict);
- int pci_drive_hot_add(Monitor *mon, const QDict *qdict, DriveInfo *dinfo);
--void do_pci_device_hot_remove(Monitor *mon, const QDict *qdict);
-+void hmp_pci_del(Monitor *mon, const QDict *qdict);
- 
- /* generic hotplug */
--void drive_hot_add(Monitor *mon, const QDict *qdict);
-+void hmp_drive_add(Monitor *mon, const QDict *qdict);
- 
- /* pcie aer error injection */
- void pcie_aer_inject_error_print(Monitor *mon, const QObject *data);
--int do_pcie_aer_inject_error(Monitor *mon,
-+int hmp_pcie_aer_inject_error(Monitor *mon,
-                              const QDict *qdict, QObject **ret_data);
- 
- /* serial ports */
-@@ -199,8 +199,8 @@ extern CharDriverState *serial_hds[MAX_SERIAL_PORTS];
- 
- extern CharDriverState *parallel_hds[MAX_PARALLEL_PORTS];
- 
--void do_usb_add(Monitor *mon, const QDict *qdict);
--void do_usb_del(Monitor *mon, const QDict *qdict);
-+void hmp_usb_add(Monitor *mon, const QDict *qdict);
-+void hmp_usb_del(Monitor *mon, const QDict *qdict);
- void usb_info(Monitor *mon, const QDict *qdict);
- 
- void add_boot_device_path(int32_t bootindex, DeviceState *dev,
-diff --git a/include/ui/console.h b/include/ui/console.h
-index 8a4d671..de88bba 100644
---- a/include/ui/console.h
-+++ b/include/ui/console.h
-@@ -56,7 +56,7 @@ struct MouseTransformInfo {
-     int a[7];
- };
- 
--void do_mouse_set(Monitor *mon, const QDict *qdict);
-+void hmp_mouse_set(Monitor *mon, const QDict *qdict);
- 
- /* keysym is a unicode code except for special keys (see QEMU_KEY_xxx
-    constants) */
-diff --git a/monitor.c b/monitor.c
-index c3cc060..75dbc53 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -881,7 +881,7 @@ static void do_help_cmd(Monitor *mon, const QDict *qdict)
-     help_cmd(mon, qdict_get_try_str(qdict, "name"));
- }
- 
--static void do_trace_event_set_state(Monitor *mon, const QDict *qdict)
-+static void hmp_trace_event(Monitor *mon, const QDict *qdict)
- {
-     const char *tp_name = qdict_get_str(qdict, "name");
-     bool new_state = qdict_get_bool(qdict, "option");
-@@ -895,7 +895,7 @@ static void do_trace_event_set_state(Monitor *mon, const QDict *qdict)
- }
- 
- #ifdef CONFIG_TRACE_SIMPLE
--static void do_trace_file(Monitor *mon, const QDict *qdict)
-+static void hmp_trace_file(Monitor *mon, const QDict *qdict)
- {
-     const char *op = qdict_get_try_str(qdict, "op");
-     const char *arg = qdict_get_try_str(qdict, "arg");
-@@ -958,7 +958,7 @@ static void user_async_cmd_handler(Monitor *mon, const mon_cmd_t *cmd,
-     }
- }
- 
--static void do_info_help(Monitor *mon, const QDict *qdict)
-+static void hmp_info_help(Monitor *mon, const QDict *qdict)
- {
-     help_cmd(mon, "info");
- }
-@@ -1122,12 +1122,12 @@ static int client_migrate_info(Monitor *mon, const QDict *qdict,
-     return -1;
- }
- 
--static void do_logfile(Monitor *mon, const QDict *qdict)
-+static void hmp_logfile(Monitor *mon, const QDict *qdict)
- {
-     qemu_set_log_filename(qdict_get_str(qdict, "filename"));
- }
- 
--static void do_log(Monitor *mon, const QDict *qdict)
-+static void hmp_log(Monitor *mon, const QDict *qdict)
- {
-     int mask;
-     const char *items = qdict_get_str(qdict, "items");
-@@ -1144,7 +1144,7 @@ static void do_log(Monitor *mon, const QDict *qdict)
-     qemu_set_log(mask);
- }
- 
--static void do_singlestep(Monitor *mon, const QDict *qdict)
-+static void hmp_singlestep(Monitor *mon, const QDict *qdict)
- {
-     const char *option = qdict_get_try_str(qdict, "option");
-     if (!option || !strcmp(option, "on")) {
-@@ -1156,7 +1156,7 @@ static void do_singlestep(Monitor *mon, const QDict *qdict)
-     }
- }
- 
--static void do_gdbserver(Monitor *mon, const QDict *qdict)
-+static void hmp_gdbserver(Monitor *mon, const QDict *qdict)
- {
-     const char *device = qdict_get_try_str(qdict, "device");
-     if (!device)
-@@ -1172,7 +1172,7 @@ static void do_gdbserver(Monitor *mon, const QDict *qdict)
-     }
- }
- 
--static void do_watchdog_action(Monitor *mon, const QDict *qdict)
-+static void hmp_watchdog_action(Monitor *mon, const QDict *qdict)
- {
-     const char *action = qdict_get_str(qdict, "action");
-     if (select_watchdog_action(action) == -1) {
-@@ -1331,7 +1331,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
-     }
- }
- 
--static void do_memory_dump(Monitor *mon, const QDict *qdict)
-+static void hmp_memory_dump(Monitor *mon, const QDict *qdict)
- {
-     int count = qdict_get_int(qdict, "count");
-     int format = qdict_get_int(qdict, "format");
-@@ -1341,7 +1341,7 @@ static void do_memory_dump(Monitor *mon, const QDict *qdict)
-     memory_dump(mon, count, format, size, addr, 0);
- }
- 
--static void do_physical_memory_dump(Monitor *mon, const QDict *qdict)
-+static void hmp_physical_memory_dump(Monitor *mon, const QDict *qdict)
- {
-     int count = qdict_get_int(qdict, "count");
-     int format = qdict_get_int(qdict, "format");
-@@ -1377,7 +1377,7 @@ static void do_print(Monitor *mon, const QDict *qdict)
-     monitor_printf(mon, "\n");
- }
- 
--static void do_sum(Monitor *mon, const QDict *qdict)
-+static void hmp_sum(Monitor *mon, const QDict *qdict)
- {
-     uint32_t addr;
-     uint16_t sum;
-@@ -1396,7 +1396,7 @@ static void do_sum(Monitor *mon, const QDict *qdict)
- 
- static int mouse_button_state;
- 
--static void do_mouse_move(Monitor *mon, const QDict *qdict)
-+static void hmp_mouse_move(Monitor *mon, const QDict *qdict)
- {
-     int dx, dy, dz, button;
-     const char *dx_str = qdict_get_str(qdict, "dx_str");
-@@ -1420,7 +1420,7 @@ static void do_mouse_move(Monitor *mon, const QDict *qdict)
-     qemu_input_event_sync();
- }
- 
--static void do_mouse_button(Monitor *mon, const QDict *qdict)
-+static void hmp_mouse_button(Monitor *mon, const QDict *qdict)
- {
-     static uint32_t bmap[INPUT_BUTTON_MAX] = {
-         [INPUT_BUTTON_LEFT]       = MOUSE_EVENT_LBUTTON,
-@@ -1437,7 +1437,7 @@ static void do_mouse_button(Monitor *mon, const QDict *qdict)
-     mouse_button_state = button_state;
- }
- 
--static void do_ioport_read(Monitor *mon, const QDict *qdict)
-+static void hmp_ioport_read(Monitor *mon, const QDict *qdict)
- {
-     int size = qdict_get_int(qdict, "size");
-     int addr = qdict_get_int(qdict, "addr");
-@@ -1471,7 +1471,7 @@ static void do_ioport_read(Monitor *mon, const QDict *qdict)
-                    suffix, addr, size * 2, val);
- }
- 
--static void do_ioport_write(Monitor *mon, const QDict *qdict)
-+static void hmp_ioport_write(Monitor *mon, const QDict *qdict)
- {
-     int size = qdict_get_int(qdict, "size");
-     int addr = qdict_get_int(qdict, "addr");
-@@ -1493,7 +1493,7 @@ static void do_ioport_write(Monitor *mon, const QDict *qdict)
-     }
- }
- 
--static void do_boot_set(Monitor *mon, const QDict *qdict)
-+static void hmp_boot_set(Monitor *mon, const QDict *qdict)
- {
-     Error *local_err = NULL;
-     const char *bootdevice = qdict_get_str(qdict, "bootdevice");
-@@ -2006,7 +2006,7 @@ static void do_info_capture(Monitor *mon, const QDict *qdict)
-     }
- }
- 
--static void do_stop_capture(Monitor *mon, const QDict *qdict)
-+static void hmp_stopcapture(Monitor *mon, const QDict *qdict)
+-void pic_info(Monitor *mon, const QDict *qdict)
++void hmp_info_pic(Monitor *mon, const QDict *qdict)
  {
      int i;
-     int n = qdict_get_int(qdict, "n");
-@@ -2022,7 +2022,7 @@ static void do_stop_capture(Monitor *mon, const QDict *qdict)
+     PICCommonState *s;
+@@ -447,7 +447,7 @@ void pic_info(Monitor *mon, const QDict *qdict)
      }
  }
  
--static void do_wav_capture(Monitor *mon, const QDict *qdict)
-+static void hmp_wavcapture(Monitor *mon, const QDict *qdict)
+-void irq_info(Monitor *mon, const QDict *qdict)
++void hmp_info_irq(Monitor *mon, const QDict *qdict)
  {
-     const char *path = qdict_get_str(qdict, "path");
-     int has_freq = qdict_haskey(qdict, "freq");
-@@ -2057,7 +2057,7 @@ static qemu_acl *find_acl(Monitor *mon, const char *name)
-     return acl;
+ #ifndef DEBUG_IRQ_COUNT
+     monitor_printf(mon, "irq statistic code not compiled.\n");
+diff --git a/hw/intc/lm32_pic.c b/hw/intc/lm32_pic.c
+index 72fc9ef..641ee47 100644
+--- a/hw/intc/lm32_pic.c
++++ b/hw/intc/lm32_pic.c
+@@ -43,7 +43,7 @@ struct LM32PicState {
+ typedef struct LM32PicState LM32PicState;
+ 
+ static LM32PicState *pic;
+-void lm32_do_pic_info(Monitor *mon, const QDict *qdict)
++void lm32_hmp_info_pic(Monitor *mon, const QDict *qdict)
+ {
+     if (pic == NULL) {
+         return;
+@@ -53,7 +53,7 @@ void lm32_do_pic_info(Monitor *mon, const QDict *qdict)
+             pic->im, pic->ip, pic->irq_state);
  }
  
--static void do_acl_show(Monitor *mon, const QDict *qdict)
-+static void hmp_acl_show(Monitor *mon, const QDict *qdict)
+-void lm32_irq_info(Monitor *mon, const QDict *qdict)
++void lm32_hmp_info_irq(Monitor *mon, const QDict *qdict)
  {
-     const char *aclname = qdict_get_str(qdict, "aclname");
-     qemu_acl *acl = find_acl(mon, aclname);
-@@ -2075,7 +2075,7 @@ static void do_acl_show(Monitor *mon, const QDict *qdict)
+     int i;
+     uint32_t count;
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index ecd9dc1..09afccf 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -176,13 +176,13 @@ static void nvram_init(M48t59State *nvram, uint8_t *macaddr,
+ 
+ static DeviceState *slavio_intctl;
+ 
+-void sun4m_pic_info(Monitor *mon, const QDict *qdict)
++void sun4m_hmp_info_pic(Monitor *mon, const QDict *qdict)
+ {
+     if (slavio_intctl)
+         slavio_pic_info(mon, slavio_intctl);
+ }
+ 
+-void sun4m_irq_info(Monitor *mon, const QDict *qdict)
++void sun4m_hmp_info_irq(Monitor *mon, const QDict *qdict)
+ {
+     if (slavio_intctl)
+         slavio_irq_info(mon, slavio_intctl);
+diff --git a/hw/usb/bus.c b/hw/usb/bus.c
+index 986b2d8..677122e 100644
+--- a/hw/usb/bus.c
++++ b/hw/usb/bus.c
+@@ -627,7 +627,7 @@ static char *usb_get_fw_dev_path(DeviceState *qdev)
+     return fw_path;
+ }
+ 
+-void usb_info(Monitor *mon, const QDict *qdict)
++void hmp_info_usb(Monitor *mon, const QDict *qdict)
+ {
+     USBBus *bus;
+     USBDevice *dev;
+diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
+index cff4f7c..625aec8 100644
+--- a/hw/usb/host-libusb.c
++++ b/hw/usb/host-libusb.c
+@@ -1637,7 +1637,7 @@ static void usb_host_auto_check(void *unused)
+     timer_mod(usb_auto_timer, qemu_clock_get_ms(QEMU_CLOCK_REALTIME) + 2000);
+ }
+ 
+-void usb_host_info(Monitor *mon, const QDict *qdict)
++void hmp_info_usbhost(Monitor *mon, const QDict *qdict)
+ {
+     libusb_device **devs = NULL;
+     struct libusb_device_descriptor ddesc;
+diff --git a/hw/usb/host-stub.c b/hw/usb/host-stub.c
+index 28d8032..2eaaa83 100644
+--- a/hw/usb/host-stub.c
++++ b/hw/usb/host-stub.c
+@@ -35,7 +35,7 @@
+ #include "hw/usb.h"
+ #include "monitor/monitor.h"
+ 
+-void usb_host_info(Monitor *mon, const QDict *qdict)
++void hmp_info_usbhost(Monitor *mon, const QDict *qdict)
+ {
+     monitor_printf(mon, "USB host devices not supported\n");
+ }
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 69d9cf8..dddd255 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -136,8 +136,8 @@ qemu_irq *i8259_init(ISABus *bus, qemu_irq parent_irq);
+ qemu_irq *kvm_i8259_init(ISABus *bus);
+ int pic_read_irq(DeviceState *d);
+ int pic_get_output(DeviceState *d);
+-void pic_info(Monitor *mon, const QDict *qdict);
+-void irq_info(Monitor *mon, const QDict *qdict);
++void hmp_info_pic(Monitor *mon, const QDict *qdict);
++void hmp_info_irq(Monitor *mon, const QDict *qdict);
+ 
+ /* Global System Interrupts */
+ 
+diff --git a/include/hw/lm32/lm32_pic.h b/include/hw/lm32/lm32_pic.h
+index 5556803..189fa38 100644
+--- a/include/hw/lm32/lm32_pic.h
++++ b/include/hw/lm32/lm32_pic.h
+@@ -8,7 +8,7 @@ uint32_t lm32_pic_get_im(DeviceState *d);
+ void lm32_pic_set_ip(DeviceState *d, uint32_t ip);
+ void lm32_pic_set_im(DeviceState *d, uint32_t im);
+ 
+-void lm32_do_pic_info(Monitor *mon, const QDict *qdict);
+-void lm32_irq_info(Monitor *mon, const QDict *qdict);
++void lm32_hmp_info_pic(Monitor *mon, const QDict *qdict);
++void lm32_hmp_info_irq(Monitor *mon, const QDict *qdict);
+ 
+ #endif /* QEMU_HW_LM32_PIC_H */
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 8593045..4f0681b 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -78,7 +78,7 @@ void rom_load_done(void);
+ void rom_set_fw(FWCfgState *f);
+ int rom_copy(uint8_t *dest, hwaddr addr, size_t size);
+ void *rom_ptr(hwaddr addr);
+-void do_info_roms(Monitor *mon, const QDict *qdict);
++void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ 
+ #define rom_add_file_fixed(_f, _a, _i)          \
+     rom_add_file(_f, NULL, _a, _i, false)
+diff --git a/include/hw/sparc/sun4m.h b/include/hw/sparc/sun4m.h
+index a587700..9c17425 100644
+--- a/include/hw/sparc/sun4m.h
++++ b/include/hw/sparc/sun4m.h
+@@ -29,8 +29,8 @@ void slavio_pic_info(Monitor *mon, DeviceState *dev);
+ void slavio_irq_info(Monitor *mon, DeviceState *dev);
+ 
+ /* sun4m.c */
+-void sun4m_pic_info(Monitor *mon, const QDict *qdict);
+-void sun4m_irq_info(Monitor *mon, const QDict *qdict);
++void sun4m_hmp_info_pic(Monitor *mon, const QDict *qdict);
++void sun4m_hmp_info_irq(Monitor *mon, const QDict *qdict);
+ 
+ /* sparc32_dma.c */
+ #include "hw/sparc/sparc32_dma.h"
+diff --git a/include/hw/usb.h b/include/hw/usb.h
+index b20b959..e6dfb87 100644
+--- a/include/hw/usb.h
++++ b/include/hw/usb.h
+@@ -473,7 +473,7 @@ int set_usb_string(uint8_t *buf, const char *str);
+ 
+ /* usb-linux.c */
+ USBDevice *usb_host_device_open(USBBus *bus, const char *devname);
+-void usb_host_info(Monitor *mon, const QDict *qdict);
++void hmp_info_usbhost(Monitor *mon, const QDict *qdict);
+ 
+ /* usb ports of the VM */
+ 
+diff --git a/include/monitor/qdev.h b/include/monitor/qdev.h
+index 8d16e11..5eb4a11 100644
+--- a/include/monitor/qdev.h
++++ b/include/monitor/qdev.h
+@@ -6,8 +6,8 @@
+ 
+ /*** monitor commands ***/
+ 
+-void do_info_qtree(Monitor *mon, const QDict *qdict);
+-void do_info_qdm(Monitor *mon, const QDict *qdict);
++void hmp_info_qtree(Monitor *mon, const QDict *qdict);
++void hmp_info_qdm(Monitor *mon, const QDict *qdict);
+ int do_device_add(Monitor *mon, const QDict *qdict, QObject **ret_data);
+ int qdev_device_help(QemuOpts *opts);
+ DeviceState *qdev_device_add(QemuOpts *opts);
+diff --git a/include/net/net.h b/include/net/net.h
+index ac43a8e..50ffcb9 100644
+--- a/include/net/net.h
++++ b/include/net/net.h
+@@ -156,7 +156,7 @@ ssize_t qemu_deliver_packet_iov(NetClientState *sender,
+                             void *opaque);
+ 
+ void print_net_client(Monitor *mon, NetClientState *nc);
+-void do_info_network(Monitor *mon, const QDict *qdict);
++void hmp_info_network(Monitor *mon, const QDict *qdict);
+ 
+ /* NIC info */
+ 
+diff --git a/include/net/slirp.h b/include/net/slirp.h
+index d3b64f6..64b795c 100644
+--- a/include/net/slirp.h
++++ b/include/net/slirp.h
+@@ -40,7 +40,7 @@ int net_slirp_parse_legacy(QemuOptsList *opts_list, const char *optarg, int *ret
+ 
+ int net_slirp_smb(const char *exported_dir);
+ 
+-void do_info_usernet(Monitor *mon, const QDict *qdict);
++void hmp_info_usernet(Monitor *mon, const QDict *qdict);
+ 
+ #endif
+ 
+diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+index d132430..1ab7063 100644
+--- a/include/sysemu/sysemu.h
++++ b/include/sysemu/sysemu.h
+@@ -77,7 +77,7 @@ void qemu_add_machine_init_done_notifier(Notifier *notify);
+ void hmp_savevm(Monitor *mon, const QDict *qdict);
+ int load_vmstate(const char *name);
+ void hmp_delvm(Monitor *mon, const QDict *qdict);
+-void do_info_snapshots(Monitor *mon, const QDict *qdict);
++void hmp_info_snapshots(Monitor *mon, const QDict *qdict);
+ 
+ void qemu_announce_self(void);
+ 
+@@ -201,7 +201,7 @@ extern CharDriverState *parallel_hds[MAX_PARALLEL_PORTS];
+ 
+ void hmp_usb_add(Monitor *mon, const QDict *qdict);
+ void hmp_usb_del(Monitor *mon, const QDict *qdict);
+-void usb_info(Monitor *mon, const QDict *qdict);
++void hmp_info_usb(Monitor *mon, const QDict *qdict);
+ 
+ void add_boot_device_path(int32_t bootindex, DeviceState *dev,
+                           const char *suffix);
+diff --git a/monitor.c b/monitor.c
+index 75dbc53..24a9af4 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -73,7 +73,7 @@
+ #include "qapi/qmp-event.h"
+ #include "qapi-event.h"
+ 
+-/* for pic/irq_info */
++/* for hmp_info_irq/pic */
+ #if defined(TARGET_SPARC)
+ #include "hw/sparc/sun4m.h"
+ #endif
+@@ -1027,7 +1027,7 @@ int monitor_get_cpu_index(void)
+     return cpu->cpu_index;
+ }
+ 
+-static void do_info_registers(Monitor *mon, const QDict *qdict)
++static void hmp_info_registers(Monitor *mon, const QDict *qdict)
+ {
+     CPUState *cpu;
+     CPUArchState *env;
+@@ -1036,18 +1036,18 @@ static void do_info_registers(Monitor *mon, const QDict *qdict)
+     cpu_dump_state(cpu, (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
+ }
+ 
+-static void do_info_jit(Monitor *mon, const QDict *qdict)
++static void hmp_info_jit(Monitor *mon, const QDict *qdict)
+ {
+     dump_exec_info((FILE *)mon, monitor_fprintf);
+     dump_drift_info((FILE *)mon, monitor_fprintf);
+ }
+ 
+-static void do_info_opcount(Monitor *mon, const QDict *qdict)
++static void hmp_info_opcount(Monitor *mon, const QDict *qdict)
+ {
+     dump_opcount_info((FILE *)mon, monitor_fprintf);
+ }
+ 
+-static void do_info_history(Monitor *mon, const QDict *qdict)
++static void hmp_info_history(Monitor *mon, const QDict *qdict)
+ {
+     int i;
+     const char *str;
+@@ -1064,7 +1064,7 @@ static void do_info_history(Monitor *mon, const QDict *qdict)
      }
  }
  
--static void do_acl_reset(Monitor *mon, const QDict *qdict)
-+static void hmp_acl_reset(Monitor *mon, const QDict *qdict)
+-static void do_info_cpu_stats(Monitor *mon, const QDict *qdict)
++static void hmp_info_cpustats(Monitor *mon, const QDict *qdict)
  {
-     const char *aclname = qdict_get_str(qdict, "aclname");
-     qemu_acl *acl = find_acl(mon, aclname);
-@@ -2086,7 +2086,7 @@ static void do_acl_reset(Monitor *mon, const QDict *qdict)
-     }
+     CPUState *cpu;
+     CPUArchState *env;
+@@ -1074,7 +1074,7 @@ static void do_info_cpu_stats(Monitor *mon, const QDict *qdict)
+     cpu_dump_statistics(cpu, (FILE *)mon, &monitor_fprintf, 0);
  }
  
--static void do_acl_policy(Monitor *mon, const QDict *qdict)
-+static void hmp_acl_policy(Monitor *mon, const QDict *qdict)
+-static void do_trace_print_events(Monitor *mon, const QDict *qdict)
++static void hmp_info_trace_events(Monitor *mon, const QDict *qdict)
  {
-     const char *aclname = qdict_get_str(qdict, "aclname");
-     const char *policy = qdict_get_str(qdict, "policy");
-@@ -2106,7 +2106,7 @@ static void do_acl_policy(Monitor *mon, const QDict *qdict)
-     }
+     TraceEventInfoList *events = qmp_trace_event_get_state("*", NULL);
+     TraceEventInfoList *elem;
+@@ -1657,7 +1657,7 @@ static void tlb_info_64(Monitor *mon, CPUArchState *env)
+ }
+ #endif
+ 
+-static void tlb_info(Monitor *mon, const QDict *qdict)
++static void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+ {
+     CPUArchState *env;
+ 
+@@ -1880,7 +1880,7 @@ static void mem_info_64(Monitor *mon, CPUArchState *env)
+ }
+ #endif
+ 
+-static void mem_info(Monitor *mon, const QDict *qdict)
++static void hmp_info_mem(Monitor *mon, const QDict *qdict)
+ {
+     CPUArchState *env;
+ 
+@@ -1919,7 +1919,7 @@ static void print_tlb(Monitor *mon, int idx, tlb_t *tlb)
+                    tlb->d, tlb->wt);
  }
  
--static void do_acl_add(Monitor *mon, const QDict *qdict)
-+static void hmp_acl_add(Monitor *mon, const QDict *qdict)
+-static void tlb_info(Monitor *mon, const QDict *qdict)
++static void hmp_info_tlb(Monitor *mon, const QDict *qdict)
  {
-     const char *aclname = qdict_get_str(qdict, "aclname");
-     const char *match = qdict_get_str(qdict, "match");
-@@ -2137,7 +2137,7 @@ static void do_acl_add(Monitor *mon, const QDict *qdict)
-     }
+     CPUArchState *env = mon_get_cpu();
+     int i;
+@@ -1935,7 +1935,7 @@ static void tlb_info(Monitor *mon, const QDict *qdict)
+ #endif
+ 
+ #if defined(TARGET_SPARC) || defined(TARGET_PPC) || defined(TARGET_XTENSA)
+-static void tlb_info(Monitor *mon, const QDict *qdict)
++static void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+ {
+     CPUArchState *env1 = mon_get_cpu();
+ 
+@@ -1943,12 +1943,12 @@ static void tlb_info(Monitor *mon, const QDict *qdict)
+ }
+ #endif
+ 
+-static void do_info_mtree(Monitor *mon, const QDict *qdict)
++static void hmp_info_mtree(Monitor *mon, const QDict *qdict)
+ {
+     mtree_info((fprintf_function)monitor_printf, mon);
  }
  
--static void do_acl_remove(Monitor *mon, const QDict *qdict)
-+static void hmp_acl_remove(Monitor *mon, const QDict *qdict)
+-static void do_info_numa(Monitor *mon, const QDict *qdict)
++static void hmp_info_numa(Monitor *mon, const QDict *qdict)
  {
-     const char *aclname = qdict_get_str(qdict, "aclname");
-     const char *match = qdict_get_str(qdict, "match");
-@@ -2154,7 +2154,7 @@ static void do_acl_remove(Monitor *mon, const QDict *qdict)
- }
+     int i;
+     CPUState *cpu;
+@@ -1976,7 +1976,7 @@ static void do_info_numa(Monitor *mon, const QDict *qdict)
+ int64_t qemu_time;
+ int64_t dev_time;
  
+-static void do_info_profile(Monitor *mon, const QDict *qdict)
++static void hmp_info_profile(Monitor *mon, const QDict *qdict)
+ {
+     monitor_printf(mon, "async time  %" PRId64 " (%0.3f)\n",
+                    dev_time, dev_time / (double)get_ticks_per_sec());
+@@ -1986,7 +1986,7 @@ static void do_info_profile(Monitor *mon, const QDict *qdict)
+     dev_time = 0;
+ }
+ #else
+-static void do_info_profile(Monitor *mon, const QDict *qdict)
++static void hmp_info_profile(Monitor *mon, const QDict *qdict)
+ {
+     monitor_printf(mon, "Internal profiler not compiled\n");
+ }
+@@ -1995,7 +1995,7 @@ static void do_info_profile(Monitor *mon, const QDict *qdict)
+ /* Capture support */
+ static QLIST_HEAD (capture_list_head, CaptureState) capture_head;
+ 
+-static void do_info_capture(Monitor *mon, const QDict *qdict)
++static void hmp_info_capture(Monitor *mon, const QDict *qdict)
+ {
+     int i;
+     CaptureState *s;
+@@ -2621,7 +2621,7 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show the network state",
+-        .mhandler.cmd = do_info_network,
++        .mhandler.cmd = hmp_info_network,
+     },
+     {
+         .name       = "chardev",
+@@ -2657,7 +2657,7 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show the cpu registers",
+-        .mhandler.cmd = do_info_registers,
++        .mhandler.cmd = hmp_info_registers,
+     },
+     {
+         .name       = "cpus",
+@@ -2671,7 +2671,7 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show the command line history",
+-        .mhandler.cmd = do_info_history,
++        .mhandler.cmd = hmp_info_history,
+     },
+ #if defined(TARGET_I386) || defined(TARGET_PPC) || defined(TARGET_MIPS) || \
+     defined(TARGET_LM32) || (defined(TARGET_SPARC) && !defined(TARGET_SPARC64))
+@@ -2681,11 +2681,11 @@ static mon_cmd_t info_cmds[] = {
+         .params     = "",
+         .help       = "show the interrupts statistics (if available)",
+ #ifdef TARGET_SPARC
+-        .mhandler.cmd = sun4m_irq_info,
++        .mhandler.cmd = sun4m_hmp_info_irq,
+ #elif defined(TARGET_LM32)
+-        .mhandler.cmd = lm32_irq_info,
++        .mhandler.cmd = lm32_hmp_info_irq,
+ #else
+-        .mhandler.cmd = irq_info,
++        .mhandler.cmd = hmp_info_irq,
+ #endif
+     },
+     {
+@@ -2694,11 +2694,11 @@ static mon_cmd_t info_cmds[] = {
+         .params     = "",
+         .help       = "show i8259 (PIC) state",
+ #ifdef TARGET_SPARC
+-        .mhandler.cmd = sun4m_pic_info,
++        .mhandler.cmd = sun4m_hmp_info_pic,
+ #elif defined(TARGET_LM32)
+-        .mhandler.cmd = lm32_do_pic_info,
++        .mhandler.cmd = lm32_hmp_info_pic,
+ #else
+-        .mhandler.cmd = pic_info,
++        .mhandler.cmd = hmp_info_pic,
+ #endif
+     },
+ #endif
+@@ -2716,7 +2716,7 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show virtual to physical memory mappings",
+-        .mhandler.cmd = tlb_info,
++        .mhandler.cmd = hmp_info_tlb,
+     },
+ #endif
  #if defined(TARGET_I386)
--static void do_inject_mce(Monitor *mon, const QDict *qdict)
-+static void hmp_mce(Monitor *mon, const QDict *qdict)
- {
-     X86CPU *cpu;
-     CPUState *cs;
-@@ -2232,7 +2232,7 @@ void qmp_closefd(const char *fdname, Error **errp)
-     error_set(errp, QERR_FD_NOT_FOUND, fdname);
- }
- 
--static void do_loadvm(Monitor *mon, const QDict *qdict)
-+static void hmp_loadvm(Monitor *mon, const QDict *qdict)
- {
-     int saved_vm_running  = runstate_is_running();
-     const char *name = qdict_get_str(qdict, "name");
+@@ -2725,7 +2725,7 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show the active virtual memory mappings",
+-        .mhandler.cmd = mem_info,
++        .mhandler.cmd = hmp_info_mem,
+     },
+ #endif
+     {
+@@ -2733,21 +2733,21 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show memory tree",
+-        .mhandler.cmd = do_info_mtree,
++        .mhandler.cmd = hmp_info_mtree,
+     },
+     {
+         .name       = "jit",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show dynamic compiler info",
+-        .mhandler.cmd = do_info_jit,
++        .mhandler.cmd = hmp_info_jit,
+     },
+     {
+         .name       = "opcount",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show dynamic compiler opcode counters",
+-        .mhandler.cmd = do_info_opcount,
++        .mhandler.cmd = hmp_info_opcount,
+     },
+     {
+         .name       = "kvm",
+@@ -2761,42 +2761,42 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show NUMA information",
+-        .mhandler.cmd = do_info_numa,
++        .mhandler.cmd = hmp_info_numa,
+     },
+     {
+         .name       = "usb",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show guest USB devices",
+-        .mhandler.cmd = usb_info,
++        .mhandler.cmd = hmp_info_usb,
+     },
+     {
+         .name       = "usbhost",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show host USB devices",
+-        .mhandler.cmd = usb_host_info,
++        .mhandler.cmd = hmp_info_usbhost,
+     },
+     {
+         .name       = "profile",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show profiling information",
+-        .mhandler.cmd = do_info_profile,
++        .mhandler.cmd = hmp_info_profile,
+     },
+     {
+         .name       = "capture",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show capture information",
+-        .mhandler.cmd = do_info_capture,
++        .mhandler.cmd = hmp_info_capture,
+     },
+     {
+         .name       = "snapshots",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show the currently saved VM snapshots",
+-        .mhandler.cmd = do_info_snapshots,
++        .mhandler.cmd = hmp_info_snapshots,
+     },
+     {
+         .name       = "status",
+@@ -2847,7 +2847,7 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show CPU statistics",
+-        .mhandler.cmd = do_info_cpu_stats,
++        .mhandler.cmd = hmp_info_cpustats,
+     },
+ #if defined(CONFIG_SLIRP)
+     {
+@@ -2855,7 +2855,7 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show user network stack connection states",
+-        .mhandler.cmd = do_info_usernet,
++        .mhandler.cmd = hmp_info_usernet,
+     },
+ #endif
+     {
+@@ -2891,28 +2891,28 @@ static mon_cmd_t info_cmds[] = {
+         .args_type  = "",
+         .params     = "",
+         .help       = "show device tree",
+-        .mhandler.cmd = do_info_qtree,
++        .mhandler.cmd = hmp_info_qtree,
+     },
+     {
+         .name       = "qdm",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show qdev device model list",
+-        .mhandler.cmd = do_info_qdm,
++        .mhandler.cmd = hmp_info_qdm,
+     },
+     {
+         .name       = "roms",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show roms",
+-        .mhandler.cmd = do_info_roms,
++        .mhandler.cmd = hmp_info_roms,
+     },
+     {
+         .name       = "trace-events",
+         .args_type  = "",
+         .params     = "",
+         .help       = "show available trace-events & their state",
+-        .mhandler.cmd = do_trace_print_events,
++        .mhandler.cmd = hmp_info_trace_events,
+     },
+     {
+         .name       = "tpm",
 diff --git a/net/net.c b/net/net.c
-index 74e651e..506dab9 100644
+index 506dab9..73d8ee9 100644
 --- a/net/net.c
 +++ b/net/net.c
-@@ -953,7 +953,7 @@ static int net_host_check_device(const char *device)
-     return 0;
+@@ -1117,7 +1117,7 @@ RxFilterInfoList *qmp_query_rx_filter(bool has_name, const char *name,
+     return filter_list;
  }
  
--void net_host_device_add(Monitor *mon, const QDict *qdict)
-+void hmp_host_net_add(Monitor *mon, const QDict *qdict)
+-void do_info_network(Monitor *mon, const QDict *qdict)
++void hmp_info_network(Monitor *mon, const QDict *qdict)
  {
-     const char *device = qdict_get_str(qdict, "device");
-     const char *opts_str = qdict_get_try_str(qdict, "opts");
-@@ -980,7 +980,7 @@ void net_host_device_add(Monitor *mon, const QDict *qdict)
-     }
- }
- 
--void net_host_device_remove(Monitor *mon, const QDict *qdict)
-+void hmp_host_net_remove(Monitor *mon, const QDict *qdict)
- {
-     NetClientState *nc;
-     int vlan_id = qdict_get_int(qdict, "vlan_id");
+     NetClientState *nc, *peer;
+     NetClientOptionsKind type;
 diff --git a/net/slirp.c b/net/slirp.c
-index 0cbca3c..9f1047c 100644
+index 9f1047c..9bbed74 100644
 --- a/net/slirp.c
 +++ b/net/slirp.c
-@@ -299,7 +299,7 @@ static SlirpState *slirp_lookup(Monitor *mon, const char *vlan,
-     }
- }
- 
--void net_slirp_hostfwd_remove(Monitor *mon, const QDict *qdict)
-+void hmp_hostfwd_remove(Monitor *mon, const QDict *qdict)
- {
-     struct in_addr host_addr = { .s_addr = INADDR_ANY };
-     int host_port;
-@@ -420,7 +420,7 @@ static int slirp_hostfwd(SlirpState *s, const char *redir_str,
+@@ -681,7 +681,7 @@ static int slirp_guestfwd(SlirpState *s, const char *config_str,
      return -1;
  }
  
--void net_slirp_hostfwd_add(Monitor *mon, const QDict *qdict)
-+void hmp_hostfwd_add(Monitor *mon, const QDict *qdict)
+-void do_info_usernet(Monitor *mon, const QDict *qdict)
++void hmp_info_usernet(Monitor *mon, const QDict *qdict)
  {
-     const char *redir_str;
      SlirpState *s;
+ 
+diff --git a/qdev-monitor.c b/qdev-monitor.c
+index ebfa701..0c25b82 100644
+--- a/qdev-monitor.c
++++ b/qdev-monitor.c
+@@ -667,13 +667,13 @@ static void qbus_print(Monitor *mon, BusState *bus, int indent)
+ }
+ #undef qdev_printf
+ 
+-void do_info_qtree(Monitor *mon, const QDict *qdict)
++void hmp_info_qtree(Monitor *mon, const QDict *qdict)
+ {
+     if (sysbus_get_default())
+         qbus_print(mon, sysbus_get_default(), 0);
+ }
+ 
+-void do_info_qdm(Monitor *mon, const QDict *qdict)
++void hmp_info_qdm(Monitor *mon, const QDict *qdict)
+ {
+     qdev_print_devinfos(true);
+ }
 diff --git a/savevm.c b/savevm.c
-index 8040766..ed9608c 100644
+index ed9608c..2a5ebfb 100644
 --- a/savevm.c
 +++ b/savevm.c
-@@ -1091,7 +1091,7 @@ static int del_existing_snapshots(Monitor *mon, const char *name)
-     return 0;
- }
- 
--void do_savevm(Monitor *mon, const QDict *qdict)
-+void hmp_savevm(Monitor *mon, const QDict *qdict)
- {
-     BlockDriverState *bs, *bs1;
-     QEMUSnapshotInfo sn1, *sn = &sn1, old_sn1, *old_sn = &old_sn1;
-@@ -1295,7 +1295,7 @@ int load_vmstate(const char *name)
-     return 0;
- }
- 
--void do_delvm(Monitor *mon, const QDict *qdict)
-+void hmp_delvm(Monitor *mon, const QDict *qdict)
- {
-     BlockDriverState *bs;
-     Error *err;
-diff --git a/ui/input.c b/ui/input.c
-index 7ba99e5..eeeabe8 100644
---- a/ui/input.c
-+++ b/ui/input.c
-@@ -526,7 +526,7 @@ MouseInfoList *qmp_query_mice(Error **errp)
-     return mice_list;
- }
- 
--void do_mouse_set(Monitor *mon, const QDict *qdict)
-+void hmp_mouse_set(Monitor *mon, const QDict *qdict)
- {
-     QemuInputHandlerState *s;
-     int index = qdict_get_int(qdict, "index");
-diff --git a/vl.c b/vl.c
-index 8c8f142..7e6e93c 100644
---- a/vl.c
-+++ b/vl.c
-@@ -1284,7 +1284,7 @@ static int usb_parse(const char *cmdline)
-     return r;
- }
- 
--void do_usb_add(Monitor *mon, const QDict *qdict)
-+void hmp_usb_add(Monitor *mon, const QDict *qdict)
- {
-     const char *devname = qdict_get_str(qdict, "devname");
-     if (usb_device_add(devname) < 0) {
-@@ -1292,7 +1292,7 @@ void do_usb_add(Monitor *mon, const QDict *qdict)
+@@ -1323,7 +1323,7 @@ void hmp_delvm(Monitor *mon, const QDict *qdict)
      }
  }
  
--void do_usb_del(Monitor *mon, const QDict *qdict)
-+void hmp_usb_del(Monitor *mon, const QDict *qdict)
+-void do_info_snapshots(Monitor *mon, const QDict *qdict)
++void hmp_info_snapshots(Monitor *mon, const QDict *qdict)
  {
-     const char *devname = qdict_get_str(qdict, "devname");
-     if (usb_device_del(devname) < 0) {
+     BlockDriverState *bs, *bs1;
+     QEMUSnapshotInfo *sn_tab, *sn, s, *sn_info = &s;
 -- 
 1.9.3
 
