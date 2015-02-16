@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YNHji-0005sH-SD
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Feb 2015 04:13:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55339)
+	id 1YNIAY-00065T-Bo
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Feb 2015 04:40:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59223)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YNHjg-0005op-Ky
-	for qemu-trivial@nongnu.org; Mon, 16 Feb 2015 04:13:01 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YNIAW-00063n-QY
+	for qemu-trivial@nongnu.org; Mon, 16 Feb 2015 04:40:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YNHjf-0005rF-KS
-	for qemu-trivial@nongnu.org; Mon, 16 Feb 2015 04:13:00 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:37835)
+	(envelope-from <mjt@tls.msk.ru>) id 1YNIAW-00061W-2Q
+	for qemu-trivial@nongnu.org; Mon, 16 Feb 2015 04:40:44 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:39590)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YNHjV-0005pe-Rr; Mon, 16 Feb 2015 04:12:50 -0500
+	id 1YNIAR-0005zP-Jg; Mon, 16 Feb 2015 04:40:39 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id C221942540;
-	Mon, 16 Feb 2015 12:12:48 +0300 (MSK)
-Message-ID: <54E1B490.60805@msgid.tls.msk.ru>
-Date: Mon, 16 Feb 2015 12:12:48 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id 4333A42598;
+	Mon, 16 Feb 2015 12:40:38 +0300 (MSK)
+Message-ID: <54E1BB16.4000809@msgid.tls.msk.ru>
+Date: Mon, 16 Feb 2015 12:40:38 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-To: Gonglei <arei.gonglei@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>
-References: <1424059258-11024-1-git-send-email-arei.gonglei@huawei.com>	
-	<1424059258-11024-3-git-send-email-arei.gonglei@huawei.com>
-	<1424075329.3722.0.camel@nilsson.home.kraxel.org>
-	<54E1AB64.3070303@msgid.tls.msk.ru> <54E1AFF2.2070706@huawei.com>
-In-Reply-To: <54E1AFF2.2070706@huawei.com>
+To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
+References: <1423673041-13522-1-git-send-email-kraxel@redhat.com>
+	<54E1AA98.4010203@msgid.tls.msk.ru>
+In-Reply-To: <54E1AA98.4010203@msgid.tls.msk.ru>
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Wang Xin <wangxinxin.wang@huawei.com>,
-	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH 2/2] qemu-char: add cyrillic key
- 'numerosign' to Russian keymap
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] spice: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,33 +45,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Feb 2015 09:13:01 -0000
+X-List-Received-Date: Mon, 16 Feb 2015 09:40:45 -0000
 
-16.02.2015 11:53, Gonglei wrote:
+16.02.2015 11:30, Michael Tokarev wrote:
+> Applied to -trivial, thanks!
 
-> Both "numbersign" and "numerosign" needed. Although they have the same
-> keymap characters, their keysym in vnc_keysym.h are different:
->=20
-> static const name2keysym_t name2keysym[]=3D{
-> ...
->      { "numbersign",           0x023},
-> ...
->     +{"numerosign",                    0x06b0},  /* U+2116 NUMERO SIGN =
-*/
-> ...
-> Please see the provenance:
->  http://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
-> #define XK_numbersign                    0x0023  /* U+0023 NUMBER SIGN =
-*/
-> #define XK_numerosign                    0x06b0  /* U+2116 NUMERO SIGN =
-*/
-
-Oh.  That's funny.  "Number sign" is actually just a hash character - #.
-While numero sign is this -- =E2=84=96.  So yes, okay, both are neecessar=
-y indeed.
-And yes, this "numero sign" (named after french word) is used in russia.
-
-Thanks,
+Er, nope, the right fix comes from Gonglei.
 
 /mjt
 
