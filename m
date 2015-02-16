@@ -1,42 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YNCsO-0006Td-Hm
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Feb 2015 23:01:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43557)
+	id 1YNGS8-0001mg-9p
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Feb 2015 02:50:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43495)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YNCsM-0006O4-00
-	for qemu-trivial@nongnu.org; Sun, 15 Feb 2015 23:01:38 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YNGS6-0001jr-4m
+	for qemu-trivial@nongnu.org; Mon, 16 Feb 2015 02:50:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YNCsL-0005Dv-9A
-	for qemu-trivial@nongnu.org; Sun, 15 Feb 2015 23:01:37 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:42413)
+	(envelope-from <mjt@tls.msk.ru>) id 1YNGS5-0005vI-7B
+	for qemu-trivial@nongnu.org; Mon, 16 Feb 2015 02:50:46 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:36250)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YNCsD-00059U-1q; Sun, 15 Feb 2015 23:01:29 -0500
-Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CJO77383; Mon, 16 Feb 2015 12:01:27 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml428-hub.china.huawei.com
-	(10.82.67.183) with Microsoft SMTP Server id 14.3.158.1;
-	Mon, 16 Feb 2015 12:01:16 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Mon, 16 Feb 2015 12:00:58 +0800
-Message-ID: <1424059258-11024-3-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
-In-Reply-To: <1424059258-11024-1-git-send-email-arei.gonglei@huawei.com>
-References: <1424059258-11024-1-git-send-email-arei.gonglei@huawei.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: qemu-trivial@nongnu.org, Wang Xin <wangxinxin.wang@huawei.com>,
-	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
-	Gonglei <arei.gonglei@huawei.com>, kraxel@redhat.com
-Subject: [Qemu-trivial] [PATCH 2/2] qemu-char: add cyrillic key 'numerosign'
-	to Russian keymap
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YNGRy-0005pL-Pp; Mon, 16 Feb 2015 02:50:39 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 7BA4C42508;
+	Mon, 16 Feb 2015 10:50:28 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 6781591B;
+	Mon, 16 Feb 2015 10:50:28 +0300 (MSK)
+Received: (nullmailer pid 13305 invoked by uid 1000);
+	Mon, 16 Feb 2015 07:50:28 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Mon, 16 Feb 2015 10:50:25 +0300
+Message-Id: <1424073025-13262-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Amit Shah <amit.shah@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Juan Quintela <quintela@redhat.com>
+Subject: [Qemu-trivial] [PATCH] migration/rdma: clean up qemu_rdma_dest_init
+	a bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,34 +42,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Feb 2015 04:01:38 -0000
+X-List-Received-Date: Mon, 16 Feb 2015 07:50:47 -0000
 
-From: Wang Xin <wangxinxin.wang@huawei.com>
+Do not check for rdma->host being empty twice.  This removes a large
+"if" block, so code indentation is changed.  While at it, remove an
+ugly goto from the loop, replacing it with a cleaner if logic.  And
+finally, there's no need to initialize `ret' variable since is always
+has a value.
 
-'numerosign' is the numbersign key of Russian keyboard layout, we
-get this key with press 'shift + 3'. It's missing in current
-Russian keymap file, this patch fix it.
-
-signed-off-by: Wang Xin <wangxinxin.wang@huawei.com>
-signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- pc-bios/keymaps/ru | 1 +
- 1 file changed, 1 insertion(+)
+ migration/rdma.c | 51 ++++++++++++++++++++++-----------------------------
+ 1 file changed, 22 insertions(+), 29 deletions(-)
 
-diff --git a/pc-bios/keymaps/ru b/pc-bios/keymaps/ru
-index b3e7d24..9432945 100644
---- a/pc-bios/keymaps/ru
-+++ b/pc-bios/keymaps/ru
-@@ -5,6 +5,7 @@ exclam 0x02 shift
- at 0x03 shift
- quotedbl 0x03 shift altgr
- numbersign 0x04 shift
-+numerosign 0x04 shift
- dollar 0x05 shift
- asterisk 0x05 shift altgr
- percent 0x06 shift
+diff --git a/migration/rdma.c b/migration/rdma.c
+index 6bee30c..76af724 100644
+--- a/migration/rdma.c
++++ b/migration/rdma.c
+@@ -2366,10 +2366,10 @@ err_rdma_source_connect:
+ 
+ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
+ {
+-    int ret = -EINVAL, idx;
++    int ret, idx;
+     struct rdma_cm_id *listen_id;
+     char ip[40] = "unknown";
+-    struct rdma_addrinfo *res;
++    struct rdma_addrinfo *res, *e;
+     char port_str[16];
+ 
+     for (idx = 0; idx < RDMA_WRID_MAX; idx++) {
+@@ -2377,7 +2377,7 @@ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
+         rdma->wr_data[idx].control_curr = NULL;
+     }
+ 
+-    if (rdma->host == NULL) {
++    if (!rdma->host || !rdma->host[0]) {
+         ERROR(errp, "RDMA host is not set!");
+         rdma->error_state = -EINVAL;
+         return -1;
+@@ -2400,40 +2400,33 @@ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
+     snprintf(port_str, 16, "%d", rdma->port);
+     port_str[15] = '\0';
+ 
+-    if (rdma->host && strcmp("", rdma->host)) {
+-        struct rdma_addrinfo *e;
++    ret = rdma_getaddrinfo(rdma->host, port_str, NULL, &res);
++    if (ret < 0) {
++        ERROR(errp, "could not rdma_getaddrinfo address %s", rdma->host);
++        goto err_dest_init_bind_addr;
++    }
+ 
+-        ret = rdma_getaddrinfo(rdma->host, port_str, NULL, &res);
+-        if (ret < 0) {
+-            ERROR(errp, "could not rdma_getaddrinfo address %s", rdma->host);
+-            goto err_dest_init_bind_addr;
++    for (e = res; e != NULL; e = e->ai_next) {
++        inet_ntop(e->ai_family,
++            &((struct sockaddr_in *) e->ai_dst_addr)->sin_addr, ip, sizeof ip);
++        trace_qemu_rdma_dest_init_trying(rdma->host, ip);
++        ret = rdma_bind_addr(listen_id, e->ai_dst_addr);
++        if (ret) {
++            continue;
+         }
+-
+-        for (e = res; e != NULL; e = e->ai_next) {
+-            inet_ntop(e->ai_family,
+-                &((struct sockaddr_in *) e->ai_dst_addr)->sin_addr, ip, sizeof ip);
+-            trace_qemu_rdma_dest_init_trying(rdma->host, ip);
+-            ret = rdma_bind_addr(listen_id, e->ai_dst_addr);
+-            if (!ret) {
+-                if (e->ai_family == AF_INET6) {
+-                    ret = qemu_rdma_broken_ipv6_kernel(errp, listen_id->verbs);
+-                    if (ret) {
+-                        continue;
+-                    }
+-                }
+-                    
+-                goto listen;
++        if (e->ai_family == AF_INET6) {
++            ret = qemu_rdma_broken_ipv6_kernel(errp, listen_id->verbs);
++            if (ret) {
++                continue;
+             }
+         }
++        break; 
++    }
+ 
++    if (!e) {
+         ERROR(errp, "Error: could not rdma_bind_addr!");
+         goto err_dest_init_bind_addr;
+-    } else {
+-        ERROR(errp, "migration host and port not specified!");
+-        ret = -EINVAL;
+-        goto err_dest_init_bind_addr;
+     }
+-listen:
+ 
+     rdma->listen_id = listen_id;
+     qemu_rdma_dump_gid("dest_init", listen_id);
 -- 
-1.8.3.4
-
+2.1.4
 
 
