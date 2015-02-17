@@ -1,44 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YNdwY-0007YN-RW
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Feb 2015 03:55:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48609)
+	id 1YNet5-0004ls-4u
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Feb 2015 04:56:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60050)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YNdwW-0007TU-82
-	for qemu-trivial@nongnu.org; Tue, 17 Feb 2015 03:55:45 -0500
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YNet0-0004fv-Ce
+	for qemu-trivial@nongnu.org; Tue, 17 Feb 2015 04:56:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YNdwV-0006f3-3t
-	for qemu-trivial@nongnu.org; Tue, 17 Feb 2015 03:55:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44902)
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YNesr-0003kU-0l
+	for qemu-trivial@nongnu.org; Tue, 17 Feb 2015 04:56:10 -0500
+Received: from e06smtp18.uk.ibm.com ([195.75.94.114]:39325)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YNdwQ-0006bL-2Y; Tue, 17 Feb 2015 03:55:38 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1H8tZoM019029
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 17 Feb 2015 03:55:35 -0500
-Received: from blackfin.pond.sub.org (ovpn-116-70.ams2.redhat.com
-	[10.36.116.70])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1H8tXGn024087
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 17 Feb 2015 03:55:34 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 283CF303FEA0; Tue, 17 Feb 2015 09:55:33 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@linux.vnet.ibm.com>
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YNesq-0003k7-Mk
+	for qemu-trivial@nongnu.org; Tue, 17 Feb 2015 04:56:00 -0500
+Received: from /spool/local
+	by e06smtp18.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
+	Tue, 17 Feb 2015 09:55:59 -0000
+Received: from b06cxnps4074.portsmouth.uk.ibm.com (9.149.109.196)
+	by e06smtp18.uk.ibm.com (192.168.101.148) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 17 Feb 2015 09:55:56 -0000
+Received: from d06av11.portsmouth.uk.ibm.com (d06av11.portsmouth.uk.ibm.com
+	[9.149.37.252])
+	by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t1H9qdA243122708; Tue, 17 Feb 2015 09:52:39 GMT
+Received: from d06av11.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id t1H9qdGI029958; Tue, 17 Feb 2015 02:52:39 -0700
+Received: from oc7435384737.ibm.com (dyn-9-152-224-69.boeblingen.de.ibm.com
+	[9.152.224.69])
+	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id t1H9qc4H029938; Tue, 17 Feb 2015 02:52:39 -0700
+Date: Tue, 17 Feb 2015 10:52:37 +0100
+From: Thomas Huth <thuth@linux.vnet.ibm.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20150217105237.11ccdafd@oc7435384737.ibm.com>
+In-Reply-To: <87twyknchm.fsf@blackfin.pond.sub.org>
 References: <1424122891-9390-1-git-send-email-thuth@linux.vnet.ibm.com>
 	<1424122891-9390-4-git-send-email-thuth@linux.vnet.ibm.com>
-Date: Tue, 17 Feb 2015 09:55:33 +0100
-In-Reply-To: <1424122891-9390-4-git-send-email-thuth@linux.vnet.ibm.com>
-	(Thomas Huth's message of "Mon, 16 Feb 2015 22:41:30 +0100")
-Message-ID: <87twyknchm.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+	<87twyknchm.fsf@blackfin.pond.sub.org>
+Organization: IBM
+X-Mailer: Claws Mail 3.9.0 (GTK+ 2.24.23; x86_64-redhat-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TM-AS-MML: disable
+x-cbid: 15021709-0033-0000-0000-0000001E273F
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+X-Received-From: 195.75.94.114
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/4] util: Remove unused
 	functions
@@ -53,43 +63,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Feb 2015 08:55:45 -0000
+X-List-Received-Date: Tue, 17 Feb 2015 09:56:13 -0000
 
-Thomas Huth <thuth@linux.vnet.ibm.com> writes:
 
-> Delete the unused functions qemu_opt_get_number_del(),
-> qemu_signalfd_available(), qemu_send_full() and qemu_recv_full().
->
-> Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
+ Hi,
 
-qemu_opt_get_number_del() was added in commit 782730b along with
-qemu_opt_get_del(), qemu_opt_get_bool_del() and qemu_opt_get_size_del().
-It hasn't been used so far, but removing it makes the interface
-irregular.  I'd rather not.  Covering all four in tests/test-qemu-opts.c
-would be nice.
+On Tue, 17 Feb 2015 09:55:33 +0100
+Markus Armbruster <armbru@redhat.com> wrote:
 
-qemu_send_full() and qemu_recv_full() complement qemu_write_full().  On
-the other hand, there's no qemu_read_full().  I don't think keeping the
-two unused ones hurts, but I don't object to dropping them, either.
+> Thomas Huth <thuth@linux.vnet.ibm.com> writes:
+> 
+> > Delete the unused functions qemu_opt_get_number_del(),
+> > qemu_signalfd_available(), qemu_send_full() and qemu_recv_full().
+> >
+> > Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
+> 
+> qemu_opt_get_number_del() was added in commit 782730b along with
+> qemu_opt_get_del(), qemu_opt_get_bool_del() and qemu_opt_get_size_del().
+> It hasn't been used so far, but removing it makes the interface
+> irregular.  I'd rather not.
 
-For what it's worth, glibc provides a macro to solve this problem once
-and for all:
+Ok, then let's keep them.
 
-    /* Evaluate EXPRESSION, and repeat as long as it returns -1 with `errno'
-       set to EINTR.  */
+> qemu_signalfd_available() is unused since commit 6d32717.  It's also the
+> only user of CONFIG_SIGNALFD.  If we want to drop it, I recommend
+> dropping CONFIG_SIGNALFD as well.
 
-    # define TEMP_FAILURE_RETRY(expression) \
-      (__extension__                                        \
-        ({ long int __result;                               \
-           do __result = (long int) (expression);           \
-           while (__result == -1L && errno == EINTR);       \
-           __result; }))
-    #endif
+As far as I can see, CONFIG_SIGNALFD is still used in qemu_signalfd(),
+so I think we've got to keep that.
 
-More elegant than writing the same old boring wrapper around everything
-that can fail with EINTR.
+ Thomas
 
-qemu_signalfd_available() is unused since commit 6d32717.  It's also the
-only user of CONFIG_SIGNALFD.  If we want to drop it, I recommend
-dropping CONFIG_SIGNALFD as well.
 
