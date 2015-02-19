@@ -1,38 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YOMjH-0003Y5-Ue
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Feb 2015 03:45:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52012)
+	id 1YOOIH-0002sW-4x
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Feb 2015 05:25:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38292)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1YOMjG-0003VY-1E
-	for qemu-trivial@nongnu.org; Thu, 19 Feb 2015 03:45:02 -0500
+	(envelope-from <dgilbert@redhat.com>) id 1YOOIE-0002pU-It
+	for qemu-trivial@nongnu.org; Thu, 19 Feb 2015 05:25:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>) id 1YOMjF-0000db-7i
-	for qemu-trivial@nongnu.org; Thu, 19 Feb 2015 03:45:01 -0500
-Received: from david.siemens.de ([192.35.17.14]:51322)
+	(envelope-from <dgilbert@redhat.com>) id 1YOOID-0007lY-CT
+	for qemu-trivial@nongnu.org; Thu, 19 Feb 2015 05:25:14 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45210)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@siemens.com>)
-	id 1YOMjA-0000cy-QO; Thu, 19 Feb 2015 03:44:57 -0500
-Received: from mail3.siemens.de (localhost [127.0.0.1])
-	by david.siemens.de (8.14.3/8.14.3) with ESMTP id t1J8irVA012401;
-	Thu, 19 Feb 2015 09:44:53 +0100
-Received: from md1f2u6c.ww002.siemens.net ([139.22.135.164])
-	by mail3.siemens.de (8.14.3/8.14.3) with SMTP id t1J8iqZM016105;
-	Thu, 19 Feb 2015 09:44:53 +0100
-Message-ID: <54E5A284.9060907@siemens.com>
-Date: Thu, 19 Feb 2015 09:44:52 +0100
-From: Jan Kiszka <jan.kiszka@siemens.com>
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de;
-	rv:1.8.1.12) Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12
-	Mnenhy/0.7.5.666
+	(envelope-from <dgilbert@redhat.com>)
+	id 1YOOI7-0007cy-0j; Thu, 19 Feb 2015 05:25:07 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1JAP4Sx010877
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 19 Feb 2015 05:25:05 -0500
+Received: from work-vm (ovpn-116-86.ams2.redhat.com [10.36.116.86])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t1JAP0vE016816
+	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NO);
+	Thu, 19 Feb 2015 05:25:03 -0500
+Date: Thu, 19 Feb 2015 10:25:00 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20150219102500.GA2305@work-vm>
+References: <1424073025-13262-1-git-send-email-mjt@msgid.tls.msk.ru>
 MIME-Version: 1.0
-To: qemu-trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1424073025-13262-1-git-send-email-mjt@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 192.35.17.14
-Cc: qemu-devel <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] qmp: Provide qmp_query_vnc_servers stub for
-	VNC-free build
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Amit Shah <amit.shah@redhat.com>,
+	qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] migration/rdma: clean up
+ qemu_rdma_dest_init a bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,30 +50,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Feb 2015 08:45:02 -0000
+X-List-Received-Date: Thu, 19 Feb 2015 10:25:15 -0000
 
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
----
- qmp.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+* Michael Tokarev (mjt@tls.msk.ru) wrote:
+> Do not check for rdma->host being empty twice.  This removes a large
+> "if" block, so code indentation is changed.  While at it, remove an
+> ugly goto from the loop, replacing it with a cleaner if logic.  And
+> finally, there's no need to initialize `ret' variable since is always
+> has a value.
 
-diff --git a/qmp.c b/qmp.c
-index 7f2d25a..ec070da 100644
---- a/qmp.c
-+++ b/qmp.c
-@@ -134,6 +134,12 @@ VncInfo *qmp_query_vnc(Error **errp)
-     error_set(errp, QERR_FEATURE_DISABLED, "vnc");
-     return NULL;
- };
-+
-+VncInfo2List *qmp_query_vnc_servers(Error **errp)
-+{
-+    error_set(errp, QERR_FEATURE_DISABLED, "vnc");
-+    return NULL;
-+};
- #endif
- 
- #ifndef CONFIG_SPICE
--- 
-2.1.4
+This looks OK; have you got RDMA hardware to test with, if not I can
+give it a go.
+
+Dave
+
+> 
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  migration/rdma.c | 51 ++++++++++++++++++++++-----------------------------
+>  1 file changed, 22 insertions(+), 29 deletions(-)
+> 
+> diff --git a/migration/rdma.c b/migration/rdma.c
+> index 6bee30c..76af724 100644
+> --- a/migration/rdma.c
+> +++ b/migration/rdma.c
+> @@ -2366,10 +2366,10 @@ err_rdma_source_connect:
+>  
+>  static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
+>  {
+> -    int ret = -EINVAL, idx;
+> +    int ret, idx;
+>      struct rdma_cm_id *listen_id;
+>      char ip[40] = "unknown";
+> -    struct rdma_addrinfo *res;
+> +    struct rdma_addrinfo *res, *e;
+>      char port_str[16];
+>  
+>      for (idx = 0; idx < RDMA_WRID_MAX; idx++) {
+> @@ -2377,7 +2377,7 @@ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
+>          rdma->wr_data[idx].control_curr = NULL;
+>      }
+>  
+> -    if (rdma->host == NULL) {
+> +    if (!rdma->host || !rdma->host[0]) {
+>          ERROR(errp, "RDMA host is not set!");
+>          rdma->error_state = -EINVAL;
+>          return -1;
+> @@ -2400,40 +2400,33 @@ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
+>      snprintf(port_str, 16, "%d", rdma->port);
+>      port_str[15] = '\0';
+>  
+> -    if (rdma->host && strcmp("", rdma->host)) {
+> -        struct rdma_addrinfo *e;
+> +    ret = rdma_getaddrinfo(rdma->host, port_str, NULL, &res);
+> +    if (ret < 0) {
+> +        ERROR(errp, "could not rdma_getaddrinfo address %s", rdma->host);
+> +        goto err_dest_init_bind_addr;
+> +    }
+>  
+> -        ret = rdma_getaddrinfo(rdma->host, port_str, NULL, &res);
+> -        if (ret < 0) {
+> -            ERROR(errp, "could not rdma_getaddrinfo address %s", rdma->host);
+> -            goto err_dest_init_bind_addr;
+> +    for (e = res; e != NULL; e = e->ai_next) {
+> +        inet_ntop(e->ai_family,
+> +            &((struct sockaddr_in *) e->ai_dst_addr)->sin_addr, ip, sizeof ip);
+> +        trace_qemu_rdma_dest_init_trying(rdma->host, ip);
+> +        ret = rdma_bind_addr(listen_id, e->ai_dst_addr);
+> +        if (ret) {
+> +            continue;
+>          }
+> -
+> -        for (e = res; e != NULL; e = e->ai_next) {
+> -            inet_ntop(e->ai_family,
+> -                &((struct sockaddr_in *) e->ai_dst_addr)->sin_addr, ip, sizeof ip);
+> -            trace_qemu_rdma_dest_init_trying(rdma->host, ip);
+> -            ret = rdma_bind_addr(listen_id, e->ai_dst_addr);
+> -            if (!ret) {
+> -                if (e->ai_family == AF_INET6) {
+> -                    ret = qemu_rdma_broken_ipv6_kernel(errp, listen_id->verbs);
+> -                    if (ret) {
+> -                        continue;
+> -                    }
+> -                }
+> -                    
+> -                goto listen;
+> +        if (e->ai_family == AF_INET6) {
+> +            ret = qemu_rdma_broken_ipv6_kernel(errp, listen_id->verbs);
+> +            if (ret) {
+> +                continue;
+>              }
+>          }
+> +        break; 
+> +    }
+>  
+> +    if (!e) {
+>          ERROR(errp, "Error: could not rdma_bind_addr!");
+>          goto err_dest_init_bind_addr;
+> -    } else {
+> -        ERROR(errp, "migration host and port not specified!");
+> -        ret = -EINVAL;
+> -        goto err_dest_init_bind_addr;
+>      }
+> -listen:
+>  
+>      rdma->listen_id = listen_id;
+>      qemu_rdma_dump_gid("dest_init", listen_id);
+> -- 
+> 2.1.4
+> 
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
