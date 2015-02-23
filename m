@@ -1,43 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YPz7g-0003eY-P6
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Feb 2015 14:56:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36247)
+	id 1YPzcV-0000v1-DL
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Feb 2015 15:28:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41553)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1YPz7e-0003eN-ME
-	for qemu-trivial@nongnu.org; Mon, 23 Feb 2015 14:56:55 -0500
+	(envelope-from <berto@igalia.com>) id 1YPzcS-0000qi-OZ
+	for qemu-trivial@nongnu.org; Mon, 23 Feb 2015 15:28:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1YPz7b-0004Ao-Gz
-	for qemu-trivial@nongnu.org; Mon, 23 Feb 2015 14:56:54 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54223)
+	(envelope-from <berto@igalia.com>) id 1YPzcR-0006yv-Ly
+	for qemu-trivial@nongnu.org; Mon, 23 Feb 2015 15:28:44 -0500
+Received: from smtp3.mundo-r.com ([212.51.32.191]:43994 helo=smtp4.mundo-r.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1YPz7b-0004Ak-8u; Mon, 23 Feb 2015 14:56:51 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1NJu76r005772
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 23 Feb 2015 14:56:07 -0500
-Received: from scv.usersys.redhat.com (dhcp-17-161.bos.redhat.com
-	[10.18.17.161])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1NJu78B019460; Mon, 23 Feb 2015 14:56:07 -0500
-Message-ID: <54EB85D6.1020509@redhat.com>
-Date: Mon, 23 Feb 2015 14:56:06 -0500
-From: John Snow <jsnow@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
-MIME-Version: 1.0
-To: Alberto Garcia <berto@igalia.com>, qemu-devel@nongnu.org
-References: <1424458395-31906-1-git-send-email-berto@igalia.com>
-In-Reply-To: <1424458395-31906-1-git-send-email-berto@igalia.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: "qemu-trivial >> QEMU Trivial" <qemu-trivial@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qerror.h: Swap definitions
- that were not in alphabetical order
+	(envelope-from <berto@igalia.com>)
+	id 1YPzcM-0006t2-8h; Mon, 23 Feb 2015 15:28:38 -0500
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: At8KAEaM61RbdWOb/2dsb2JhbABbgwaBLLA1BQEBAQEBAQUBd5dNgSVDAQEBAQEBfIUPSwRONIgzAdNPhgeJeh0ChBMFmRWKU4hgIoFFAYIqbYJDAQEB
+X-IPAS-Result: At8KAEaM61RbdWOb/2dsb2JhbABbgwaBLLA1BQEBAQEBAQUBd5dNgSVDAQEBAQEBfIUPSwRONIgzAdNPhgeJeh0ChBMFmRWKU4hgIoFFAYIqbYJDAQEB
+X-IronPort-AV: E=Sophos;i="5.09,632,1418079600"; d="scan'208";a="328763708"
+Received: from fanzine.igalia.com ([91.117.99.155])
+	by smtp4.mundo-r.com with ESMTP; 23 Feb 2015 21:28:00 +0100
+Received: from dsl-hkibrasgw4-50df50-128.dhcp.inet.fi ([80.223.80.128]
+	helo=perseus.local) by fanzine.igalia.com with esmtpsa 
+	(Cipher TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim)
+	id 1YPzbk-0001aA-4t; Mon, 23 Feb 2015 21:28:00 +0100
+Received: from berto by perseus.local with local (Exim 4.84)
+	(envelope-from <berto@igalia.com>)
+	id 1YPzbW-0006Lp-62; Mon, 23 Feb 2015 22:27:46 +0200
+From: Alberto Garcia <berto@igalia.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 23 Feb 2015 22:27:16 +0200
+Message-Id: <1424723236-24368-1-git-send-email-berto@igalia.com>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 212.51.32.191
+Cc: qemu-trivial@nongnu.org, Alberto Garcia <berto@igalia.com>
+Subject: [Qemu-trivial] [PATCH] qmp-commands.hx: Fix several typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,39 +46,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Feb 2015 19:56:55 -0000
+X-List-Received-Date: Mon, 23 Feb 2015 20:28:45 -0000
 
+Signed-off-by: Alberto Garcia <berto@igalia.com>
+---
+ qmp-commands.hx | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/qmp-commands.hx b/qmp-commands.hx
+index a85d847..52741ed 100644
+--- a/qmp-commands.hx
++++ b/qmp-commands.hx
+@@ -1,5 +1,5 @@
+ HXCOMM QMP dispatch table and documentation
+-HXCOMM Text between SQMP and EQMP is copied to the QMP documention file and
++HXCOMM Text between SQMP and EQMP is copied to the QMP documentation file and
+ HXCOMM does not show up in the other formats.
+ 
+ SQMP
+@@ -1767,7 +1767,7 @@ Arguments:
+ 
+ - "protocol": protocol name (json-string)
+ - "password": password (json-string)
+-- "connected": [ keep | disconnect | fail ] (josn-string, optional)
++- "connected": [ keep | disconnect | fail ] (json-string, optional)
+ 
+ Example:
+ 
+@@ -2922,7 +2922,7 @@ Channels are described by a json-object, each one contain the following:
+ - "channel-id": channel id.  Usually "0", might be different needed when
+                 multiple channels of the same type exist, such as multiple
+                 display channels in a multihead setup (json-int)
+-- "tls": whevener the channel is encrypted (json-bool)
++- "tls": whenever the channel is encrypted (json-bool)
+ 
+ Example:
+ 
+-- 
+2.1.4
 
-On 02/20/2015 01:53 PM, Alberto Garcia wrote:
-> Signed-off-by: Alberto Garcia <berto@igalia.com>
-> ---
->   include/qapi/qmp/qerror.h | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-> index 986260f..57a62d4 100644
-> --- a/include/qapi/qmp/qerror.h
-> +++ b/include/qapi/qmp/qerror.h
-> @@ -37,12 +37,12 @@ void qerror_report_err(Error *err);
->   #define QERR_BASE_NOT_FOUND \
->       ERROR_CLASS_GENERIC_ERROR, "Base '%s' not found"
->
-> -#define QERR_BLOCK_JOB_NOT_READY \
-> -    ERROR_CLASS_GENERIC_ERROR, "The active block job for device '%s' cannot be completed"
-> -
->   #define QERR_BLOCK_FORMAT_FEATURE_NOT_SUPPORTED \
->       ERROR_CLASS_GENERIC_ERROR, "Block format '%s' used by device '%s' does not support feature '%s'"
->
-> +#define QERR_BLOCK_JOB_NOT_READY \
-> +    ERROR_CLASS_GENERIC_ERROR, "The active block job for device '%s' cannot be completed"
-> +
->   #define QERR_BUS_NO_HOTPLUG \
->       ERROR_CLASS_GENERIC_ERROR, "Bus '%s' does not support hotplugging"
->
->
-
-Cc: qemu-trivial@nongnu.org
-
-Reviewed-by: John Snow <jsnow@redhat.com>
 
