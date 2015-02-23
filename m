@@ -1,44 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YPyxf-0002rF-04
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Feb 2015 14:46:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33975)
+	id 1YPz7g-0003eY-P6
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Feb 2015 14:56:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36247)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1YPyxX-0002is-Sd
-	for qemu-trivial@nongnu.org; Mon, 23 Feb 2015 14:46:32 -0500
+	(envelope-from <jsnow@redhat.com>) id 1YPz7e-0003eN-ME
+	for qemu-trivial@nongnu.org; Mon, 23 Feb 2015 14:56:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1YPyxV-0000t9-6g
-	for qemu-trivial@nongnu.org; Mon, 23 Feb 2015 14:46:27 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40941)
+	(envelope-from <jsnow@redhat.com>) id 1YPz7b-0004Ao-Gz
+	for qemu-trivial@nongnu.org; Mon, 23 Feb 2015 14:56:54 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54223)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>)
-	id 1YPyxU-0000s0-Vh; Mon, 23 Feb 2015 14:46:25 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1NJkHCd007675
+	(envelope-from <jsnow@redhat.com>)
+	id 1YPz7b-0004Ak-8u; Mon, 23 Feb 2015 14:56:51 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1NJu76r005772
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 23 Feb 2015 14:46:18 -0500
-Received: from work-vm (ovpn-116-85.ams2.redhat.com [10.36.116.85])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1NJkDdD014634
-	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NO);
-	Mon, 23 Feb 2015 14:46:16 -0500
-Date: Mon, 23 Feb 2015 19:46:13 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Message-ID: <20150223194612.GA14376@work-vm>
-References: <1424701054-26192-1-git-send-email-stefanb@linux.vnet.ibm.com>
+	verify=FAIL); Mon, 23 Feb 2015 14:56:07 -0500
+Received: from scv.usersys.redhat.com (dhcp-17-161.bos.redhat.com
+	[10.18.17.161])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t1NJu78B019460; Mon, 23 Feb 2015 14:56:07 -0500
+Message-ID: <54EB85D6.1020509@redhat.com>
+Date: Mon, 23 Feb 2015 14:56:06 -0500
+From: John Snow <jsnow@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1424701054-26192-1-git-send-email-stefanb@linux.vnet.ibm.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+To: Alberto Garcia <berto@igalia.com>, qemu-devel@nongnu.org
+References: <1424458395-31906-1-git-send-email-berto@igalia.com>
+In-Reply-To: <1424458395-31906-1-git-send-email-berto@igalia.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, joel.schopp@amd.com, qemu-devel@nongnu.org,
-	ehabkost@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add copyright and author
-	after file split
+Cc: "qemu-trivial >> QEMU Trivial" <qemu-trivial@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qerror.h: Swap definitions
+ that were not in alphabetical order
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,42 +49,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Feb 2015 19:46:32 -0000
+X-List-Received-Date: Mon, 23 Feb 2015 19:56:55 -0000
 
-* Stefan Berger (stefanb@linux.vnet.ibm.com) wrote:
-> Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
 
-Reviewed-by:  Dr. David Alan Gilbert <dgilbert@redhat.com>
 
-This corresponds to the discussion we had:
-http://lists.gnu.org/archive/html/qemu-devel/2014-12/msg02819.html
-
-Dave
-
-> 
+On 02/20/2015 01:53 PM, Alberto Garcia wrote:
+> Signed-off-by: Alberto Garcia <berto@igalia.com>
 > ---
->  migration/qemu-file-buf.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/migration/qemu-file-buf.c b/migration/qemu-file-buf.c
-> index e97e0bd..e56a8ad 100644
-> --- a/migration/qemu-file-buf.c
-> +++ b/migration/qemu-file-buf.c
-> @@ -2,6 +2,10 @@
->   * QEMU System Emulator
->   *
->   * Copyright (c) 2003-2008 Fabrice Bellard
-> + * Copyright (c) 2014 IBM Corp.
-> + *
-> + * Authors:
-> + *  Stefan Berger <stefanb@linux.vnet.ibm.com>
->   *
->   * Permission is hereby granted, free of charge, to any person obtaining a copy
->   * of this software and associated documentation files (the "Software"), to deal
-> -- 
-> 1.9.3
-> 
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+>   include/qapi/qmp/qerror.h | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+> index 986260f..57a62d4 100644
+> --- a/include/qapi/qmp/qerror.h
+> +++ b/include/qapi/qmp/qerror.h
+> @@ -37,12 +37,12 @@ void qerror_report_err(Error *err);
+>   #define QERR_BASE_NOT_FOUND \
+>       ERROR_CLASS_GENERIC_ERROR, "Base '%s' not found"
+>
+> -#define QERR_BLOCK_JOB_NOT_READY \
+> -    ERROR_CLASS_GENERIC_ERROR, "The active block job for device '%s' cannot be completed"
+> -
+>   #define QERR_BLOCK_FORMAT_FEATURE_NOT_SUPPORTED \
+>       ERROR_CLASS_GENERIC_ERROR, "Block format '%s' used by device '%s' does not support feature '%s'"
+>
+> +#define QERR_BLOCK_JOB_NOT_READY \
+> +    ERROR_CLASS_GENERIC_ERROR, "The active block job for device '%s' cannot be completed"
+> +
+>   #define QERR_BUS_NO_HOTPLUG \
+>       ERROR_CLASS_GENERIC_ERROR, "Bus '%s' does not support hotplugging"
+>
+>
+
+Cc: qemu-trivial@nongnu.org
+
+Reviewed-by: John Snow <jsnow@redhat.com>
 
