@@ -1,54 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQ8gd-0006Dg-Lh
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 01:09:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40795)
+	id 1YQ9VO-0006sI-72
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 02:02:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50405)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YQ8gb-0006AK-3G
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 01:09:38 -0500
+	(envelope-from <berto@igalia.com>) id 1YQ9VL-0006p9-Rs
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 02:02:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YQ8gV-0002qJ-8o
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 01:09:37 -0500
-Received: from mail-la0-f43.google.com ([209.85.215.43]:44573)
+	(envelope-from <berto@igalia.com>) id 1YQ9VL-000317-86
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 02:02:03 -0500
+Received: from smtp3.mundo-r.com ([212.51.32.191]:43293 helo=smtp4.mundo-r.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YQ8gV-0002q9-2B
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 01:09:31 -0500
-Received: by lams18 with SMTP id s18so23569924lam.11
-	for <qemu-trivial@nongnu.org>; Mon, 23 Feb 2015 22:09:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type
-	:content-transfer-encoding;
-	bh=d3RJHk7x2HIjRct8M2atrZpLm9CyrmgEJGrSX7srXrI=;
-	b=ZiHN1rsHrnWhGu2oXL1xVLBH2BKxjlYqAcsKmuz3muXWtuzKY00LbZvz3LNydTDo8C
-	x9xA6cG5Asi6GYZaZ/HgqwQcMhc4XiaLFbgW2bHMaI6gWJbZHo4CmsbPf+t/IM8LR95M
-	TobS8cqxBReXTkwbHaVHwFvwYbcPKELnZhkGxRJkpt0dUwWtm+JdRyp34v988GtC0/Py
-	3HHNwuudZhiqdY9I5Ugi8OEvpBsBySuejVhthjNtacc4wSF4Vt/1KPtC96nnYiA4ElS0
-	zHTcKgK1JDeeMeB9a8UqfHN4zK1qbHGOFirCgZyvzydOPrmNEgBM8DKeCMQC+mI0r1Kg
-	hLlg==
-X-Gm-Message-State: ALoCoQnDrAaV74IHg/l2LqxePN1fIH0LAlzJqwAilfvRhmHLG52MEfX+a6ijPp2xRVWkch1A+0Ms
+	(envelope-from <berto@igalia.com>)
+	id 1YQ9VD-0002z9-NK; Tue, 24 Feb 2015 02:01:55 -0500
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: AokIAIsg7FRbdWOb/2dsb2JhbABbgwaxZQUBAQEBAQEFAXeXTQKBJEMBAQEBAQF8hBABBTo/EAsOEyUPBSghiEYB0nABAQEBAQEEAQEBAQEdhgeFDIRuB4MXgRQFmRQBkzMig289gnQBAQE
+X-IPAS-Result: AokIAIsg7FRbdWOb/2dsb2JhbABbgwaxZQUBAQEBAQEFAXeXTQKBJEMBAQEBAQF8hBABBTo/EAsOEyUPBSghiEYB0nABAQEBAQEEAQEBAQEdhgeFDIRuB4MXgRQFmRQBkzMig289gnQBAQE
+X-IronPort-AV: E=Sophos;i="5.09,637,1418079600"; d="scan'208";a="328844260"
+Received: from fanzine.igalia.com ([91.117.99.155])
+	by smtp4.mundo-r.com with ESMTP; 24 Feb 2015 08:01:53 +0100
+Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
+	by fanzine.igalia.com with esmtps 
+	(Cipher TLS1.0:RSA_AES_256_CBC_SHA1:32) (Exim)
+	id 1YQ9VB-0002PN-2M; Tue, 24 Feb 2015 08:01:53 +0100
+Received: from berto by mail.igalia.com with local (Exim)
+	id 1YQ9VA-0002DT-Tl; Tue, 24 Feb 2015 08:01:52 +0100
+Date: Tue, 24 Feb 2015 08:01:52 +0100
+From: Alberto Garcia <berto@igalia.com>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20150224070152.GA8006@igalia.com>
+References: <1424723236-24368-1-git-send-email-berto@igalia.com>
+	<54EB9B04.1070901@redhat.com>
 MIME-Version: 1.0
-X-Received: by 10.112.185.101 with SMTP id fb5mr13224679lbc.12.1424758170247; 
-	Mon, 23 Feb 2015 22:09:30 -0800 (PST)
-Sender: peter.crosthwaite@petalogix.com
-Received: by 10.25.163.2 with HTTP; Mon, 23 Feb 2015 22:09:30 -0800 (PST)
-In-Reply-To: <A24CCA9D-484A-4AD0-A34C-8DFB6D891D7F@gmail.com>
-References: <A24CCA9D-484A-4AD0-A34C-8DFB6D891D7F@gmail.com>
-Date: Mon, 23 Feb 2015 22:09:30 -0800
-X-Google-Sender-Auth: wJOpwex2LxuA5_SQIJ4RzeDZ2RU
-Message-ID: <CAEgOgz5069y4H1PFTf6-09KNnv3iADrJOGRDgUN5PoB5gFe0Kw@mail.gmail.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: =?UTF-8?Q?Jorge_Acereda_Maci=C3=A1?= <jacereda@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.215.43
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Anthony Liguori <aliguori@amazon.com>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix crash when connecting
-	to VNC through websocket
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <54EB9B04.1070901@redhat.com>
+User-Agent: Mutt/1.5.20 (2009-06-14)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 212.51.32.191
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-commands.hx: Fix
+	several typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,56 +52,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Feb 2015 06:09:38 -0000
+X-List-Received-Date: Tue, 24 Feb 2015 07:02:04 -0000
 
-The subject should read V2 as this is a resubmit. Use git format-patch
---subject-prefix=3D"PATCH v2".
+On Mon, Feb 23, 2015 at 02:26:28PM -0700, Eric Blake wrote:
 
-On Mon, Feb 23, 2015 at 4:29 PM, Jorge Acereda Maci=C3=A1 <jacereda@gmail.c=
-om> wrote:
-> Please, forget my previous patch, worked somehow with Chrome but failed w=
-ith Safari (with a good reason, the sent headers were incorrect). This one =
-should be correct and simpler.
->
+> > -- "tls": whevener the channel is encrypted (json-bool)
+> > +- "tls": whenever the channel is encrypted (json-bool)
+> 
+> Might be nicer as 'whether' rather than 'whenever'.
 
-You should also start a fresh with your commit message content. Don't
-mention discarded versions of the patch or changes in your patch
-content. Just say what the patch does. Your v1 commit message looks
-good and coulld probably be reused as-is.
+Oh, you're right. Feel free to change it, or do you want me to
+resubmit the patch?
 
-> Signed-off-by: Jorge Acereda Macia <jacereda@gmail.com>
->
-> ---
-
-But you put you patch change log here, below the "---". This allows
-reviewers to see your change information, but git will discard the
-changlog on application of the final accepted version.
-
-Regards,
-Peter
-
->  ui/vnc-ws.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/ui/vnc-ws.c b/ui/vnc-ws.c
-> index e304baf..d75950d 100644
-> --- a/ui/vnc-ws.c
-> +++ b/ui/vnc-ws.c
-> @@ -207,8 +207,7 @@ static void vncws_send_handshake_response(VncState *v=
-s, const char* key)
->      }
->
->      response =3D g_strdup_printf(WS_HANDSHAKE, accept);
-> -    vnc_write(vs, response, strlen(response));
-> -    vnc_flush(vs);
-> +    vnc_client_write_buf(vs, (const uint8_t *)response, strlen(response)=
-);
->
->      g_free(accept);
->      g_free(response);
-> --
-> 1.9.3 (Apple Git-50)
->
->
->
+Berto
 
