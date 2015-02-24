@@ -1,49 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQIQD-0001gD-34
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 11:33:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43249)
+	id 1YQIRl-0003Sg-0T
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 11:34:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43963)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YQIQB-0001dz-4u
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:33:20 -0500
+	(envelope-from <eblake@redhat.com>) id 1YQIRi-0003Ry-Ja
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:34:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YQIQA-0002KJ-2M
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:33:19 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60218)
+	(envelope-from <eblake@redhat.com>) id 1YQIRf-0002jn-Bv
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:34:54 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49577)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eblake@redhat.com>)
-	id 1YQIQ5-0002IO-Id; Tue, 24 Feb 2015 11:33:13 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1OGX8PH018481
+	id 1YQIRf-0002jV-39; Tue, 24 Feb 2015 11:34:51 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1OGY86b025516
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 24 Feb 2015 11:33:09 -0500
+	verify=FAIL); Tue, 24 Feb 2015 11:34:09 -0500
 Received: from [10.3.113.36] (ovpn-113-36.phx2.redhat.com [10.3.113.36])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1OGX7S8008143; Tue, 24 Feb 2015 11:33:07 -0500
-Message-ID: <54ECA7C3.4040303@redhat.com>
-Date: Tue, 24 Feb 2015 09:33:07 -0700
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t1OGY738023262; Tue, 24 Feb 2015 11:34:07 -0500
+Message-ID: <54ECA7FF.8020301@redhat.com>
+Date: Tue, 24 Feb 2015 09:34:07 -0700
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>, =?UTF-8?B?Sm9yZ2UgQQ==?=
-	=?UTF-8?B?Y2VyZWRhIE1hY2nDoQ==?= <jacereda@gmail.com>
-References: <A24CCA9D-484A-4AD0-A34C-8DFB6D891D7F@gmail.com>
-	<CAEgOgz5069y4H1PFTf6-09KNnv3iADrJOGRDgUN5PoB5gFe0Kw@mail.gmail.com>
-In-Reply-To: <CAEgOgz5069y4H1PFTf6-09KNnv3iADrJOGRDgUN5PoB5gFe0Kw@mail.gmail.com>
+To: Alberto Garcia <berto@igalia.com>
+References: <1424723236-24368-1-git-send-email-berto@igalia.com>
+	<54EB9B04.1070901@redhat.com> <20150224070152.GA8006@igalia.com>
+In-Reply-To: <20150224070152.GA8006@igalia.com>
 OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="f4wxQmEuhCNiCOM6fldcDlJ4BnfwWfELq"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	boundary="qcORlKD6ujsSTWv6afT8cLXbwraTxkoV3"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Anthony Liguori <aliguori@amazon.com>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix crash when connecting
- to VNC through websocket
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-commands.hx: Fix
+	several typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,30 +52,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Feb 2015 16:33:20 -0000
+X-List-Received-Date: Tue, 24 Feb 2015 16:34:55 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---f4wxQmEuhCNiCOM6fldcDlJ4BnfwWfELq
+--qcORlKD6ujsSTWv6afT8cLXbwraTxkoV3
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-On 02/23/2015 11:09 PM, Peter Crosthwaite wrote:
-> The subject should read V2 as this is a resubmit. Use git format-patch
-> --subject-prefix=3D"PATCH v2".
+On 02/24/2015 12:01 AM, Alberto Garcia wrote:
+> On Mon, Feb 23, 2015 at 02:26:28PM -0700, Eric Blake wrote:
+>=20
+>>> -- "tls": whevener the channel is encrypted (json-bool)
+>>> +- "tls": whenever the channel is encrypted (json-bool)
+>>
+>> Might be nicer as 'whether' rather than 'whenever'.
+>=20
+> Oh, you're right. Feel free to change it, or do you want me to
+> resubmit the patch?
 
-Or shorter,
-
-git format-patch -v2
-
-Also, remember that 'git send-email' will take any options understood by
-'git format-patch'.
+Up to the trivial tree maintainer, but if it were me, I'd resend a v2 to
+make his life easier.
 
 --=20
 Eric Blake   eblake redhat com    +1-919-301-3266
 Libvirt virtualization library http://libvirt.org
 
 
---f4wxQmEuhCNiCOM6fldcDlJ4BnfwWfELq
+--qcORlKD6ujsSTWv6afT8cLXbwraTxkoV3
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
@@ -88,14 +88,14 @@ Version: GnuPG v1
 Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
 Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEcBAEBCAAGBQJU7KfDAAoJEKeha0olJ0NqwHQH/RPyy2BVsS2OKvbZX/RbImGa
-dklj+aZ9AtNvJsNTsKnsIOajgKYlsmYx4fwmOoqRFwVo0odvhlli3ZzgtBdTCw0v
-pKqxxo8H1N0LNFdxwCz5JMn7/p5Z5PrF4E1+5Et9OkPwxTTcSDUPcAjXTK7VjFuf
-5j7cip0McyzyyyLJWZVkfXS8F/P+JcJRsbqBnDZwl2gNgEHRpHiTu6eLGQI6qR7w
-DAQJWvcHgFsvFyuMHVyNLXCZoC97kIVpf8Bqi6cpwcDhypOds1KG6/15FYp8ub/w
-dhtiOoRsWLBF1Pq6rdiXtYLYbwB9Ifol8oY2sck5snigoB665PeA94n+ht5tzVs=
-=NeBI
+iQEcBAEBCAAGBQJU7Kf/AAoJEKeha0olJ0Nqn3YIAKEW/kR7TbOc6qJvo2FExtT3
+duxtJ61CQTj/yTw5GjHMLsYunPkKWY2B1R68HlkyvHVVm3YwdMAMfnOkeugdECAb
+3WYxV0Cm/Px4h3RXFYCFrknQEkNFugZeZRcwjH4aEv0UM6aGGG5EjLvqbbarz4Hr
+rQWcNpEgm3762PjPc6ef4Egmkzh4lBu3VvdkGNSYV7WdoPssL87ne6TQCLuMxsVF
+T05ZKE7QazKmJsDdHWpEEQ0+RLfcxQlPKIzQs3u8O3wFywThU/b1QOGzya4dFh70
+GF9SnAldcPBJJn0jSr28Dos4DEM30w4ZC9IczUVZyfAYTXtpoOOg3dYqdagsoMs=
+=6s6t
 -----END PGP SIGNATURE-----
 
---f4wxQmEuhCNiCOM6fldcDlJ4BnfwWfELq--
+--qcORlKD6ujsSTWv6afT8cLXbwraTxkoV3--
 
