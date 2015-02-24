@@ -1,63 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQILp-0000rj-Ra
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 11:28:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41583)
+	id 1YQIQD-0001gD-34
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 11:33:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43249)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YQILn-0000mm-N0
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:28:48 -0500
+	(envelope-from <eblake@redhat.com>) id 1YQIQB-0001dz-4u
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:33:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YQILk-0000OM-Ey
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:28:47 -0500
-Received: from e06smtp17.uk.ibm.com ([195.75.94.113]:47532)
+	(envelope-from <eblake@redhat.com>) id 1YQIQA-0002KJ-2M
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:33:19 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60218)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YQILk-0000OB-5u
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:28:44 -0500
-Received: from /spool/local
-	by e06smtp17.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
-	Tue, 24 Feb 2015 16:28:42 -0000
-Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
-	by e06smtp17.uk.ibm.com (192.168.101.147) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 24 Feb 2015 16:28:40 -0000
-Received: from b06cxnps3075.portsmouth.uk.ibm.com
-	(d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
-	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 5398C1B08061; 
-	Tue, 24 Feb 2015 16:28:54 +0000 (GMT)
-Received: from d06av07.portsmouth.uk.ibm.com (d06av07.portsmouth.uk.ibm.com
-	[9.149.37.248])
-	by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t1OGSdIO65208410; Tue, 24 Feb 2015 16:28:39 GMT
-Received: from d06av07.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id t1OGSdvZ017432; Tue, 24 Feb 2015 11:28:39 -0500
-Received: from oc7435384737.ibm.com (sig-9-81-188-148.evts.de.ibm.com
-	[9.81.188.148])
-	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id t1OGScWM017397; Tue, 24 Feb 2015 11:28:38 -0500
-Date: Tue, 24 Feb 2015 17:28:36 +0100
-From: Thomas Huth <thuth@linux.vnet.ibm.com>
-To: Amit Shah <amit.shah@redhat.com>
-Message-ID: <20150224172836.5aa5290f@oc7435384737.ibm.com>
-In-Reply-To: <20150224092829.GA26558@grmbl.mre>
-References: <1424365943-27563-1-git-send-email-thuth@linux.vnet.ibm.com>
-	<1424365943-27563-2-git-send-email-thuth@linux.vnet.ibm.com>
-	<20150224092829.GA26558@grmbl.mre>
-Organization: IBM
-X-Mailer: Claws Mail 3.9.0 (GTK+ 2.24.23; x86_64-redhat-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15022416-0029-0000-0000-0000037E4C63
+	(envelope-from <eblake@redhat.com>)
+	id 1YQIQ5-0002IO-Id; Tue, 24 Feb 2015 11:33:13 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1OGX8PH018481
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Tue, 24 Feb 2015 11:33:09 -0500
+Received: from [10.3.113.36] (ovpn-113-36.phx2.redhat.com [10.3.113.36])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t1OGX7S8008143; Tue, 24 Feb 2015 11:33:07 -0500
+Message-ID: <54ECA7C3.4040303@redhat.com>
+Date: Tue, 24 Feb 2015 09:33:07 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+MIME-Version: 1.0
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>, =?UTF-8?B?Sm9yZ2UgQQ==?=
+	=?UTF-8?B?Y2VyZWRhIE1hY2nDoQ==?= <jacereda@gmail.com>
+References: <A24CCA9D-484A-4AD0-A34C-8DFB6D891D7F@gmail.com>
+	<CAEgOgz5069y4H1PFTf6-09KNnv3iADrJOGRDgUN5PoB5gFe0Kw@mail.gmail.com>
+In-Reply-To: <CAEgOgz5069y4H1PFTf6-09KNnv3iADrJOGRDgUN5PoB5gFe0Kw@mail.gmail.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="f4wxQmEuhCNiCOM6fldcDlJ4BnfwWfELq"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.113
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Juan Quintela <quintela@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/5] migration: Remove
-	unused functions
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Anthony Liguori <aliguori@amazon.com>, Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix crash when connecting
+ to VNC through websocket
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,58 +55,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Feb 2015 16:28:49 -0000
+X-List-Received-Date: Tue, 24 Feb 2015 16:33:20 -0000
 
-On Tue, 24 Feb 2015 14:58:29 +0530
-Amit Shah <amit.shah@redhat.com> wrote:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--f4wxQmEuhCNiCOM6fldcDlJ4BnfwWfELq
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-> On (Thu) 19 Feb 2015 [18:12:19], Thomas Huth wrote:
-> > dup_mig_bytes_transferred(), skipped_mig_bytes_transferred(),
-> > migrate_rdma_pin_all(), qsb_clone() and qsb_set_length()
-> > are completely unused and thus can be deleted.
-> > 
-> > Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
-> > Cc: Juan Quintela <quintela@redhat.com>
-> > Cc: Amit Shah <amit.shah@redhat.com>
-> > ---
-> >  arch_init.c                   |   10 -------
-> >  include/migration/migration.h |    3 --
-> >  include/migration/qemu-file.h |    2 -
-> >  migration/migration.c         |    9 -------
-> >  migration/qemu-file-buf.c     |   53 -----------------------------------------
-> >  5 files changed, 0 insertions(+), 77 deletions(-)
-> > 
-> > diff --git a/arch_init.c b/arch_init.c
-> > index 89c8fa4..ad5ce28 100644
-> > --- a/arch_init.c
-> > +++ b/arch_init.c
-> > @@ -249,21 +249,11 @@ static void acct_clear(void)
-> >      memset(&acct_info, 0, sizeof(acct_info));
-> >  }
-> >  
-> > -uint64_t dup_mig_bytes_transferred(void)
-> > -{
-> > -    return acct_info.dup_pages * TARGET_PAGE_SIZE;
-> > -}
-> > -
-> >  uint64_t dup_mig_pages_transferred(void)
-> >  {
-> >      return acct_info.dup_pages;
-> >  }
-> >  
-> > -uint64_t skipped_mig_bytes_transferred(void)
-> > -{
-> > -    return acct_info.skipped_pages * TARGET_PAGE_SIZE;
-> > -}
-> 
-> These could be used for reporting; Juan, any idea why these aren't
-> used?
+On 02/23/2015 11:09 PM, Peter Crosthwaite wrote:
+> The subject should read V2 as this is a resubmit. Use git format-patch
+> --subject-prefix=3D"PATCH v2".
 
-Since they are very trivial, I think they could easily be re-added
-again in case they are needed again in the future.
-Or if you prefer, I can also rework my patch so that these two
-functions won't get deleted.
+Or shorter,
 
- Thomas
+git format-patch -v2
 
+Also, remember that 'git send-email' will take any options understood by
+'git format-patch'.
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--f4wxQmEuhCNiCOM6fldcDlJ4BnfwWfELq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJU7KfDAAoJEKeha0olJ0NqwHQH/RPyy2BVsS2OKvbZX/RbImGa
+dklj+aZ9AtNvJsNTsKnsIOajgKYlsmYx4fwmOoqRFwVo0odvhlli3ZzgtBdTCw0v
+pKqxxo8H1N0LNFdxwCz5JMn7/p5Z5PrF4E1+5Et9OkPwxTTcSDUPcAjXTK7VjFuf
+5j7cip0McyzyyyLJWZVkfXS8F/P+JcJRsbqBnDZwl2gNgEHRpHiTu6eLGQI6qR7w
+DAQJWvcHgFsvFyuMHVyNLXCZoC97kIVpf8Bqi6cpwcDhypOds1KG6/15FYp8ub/w
+dhtiOoRsWLBF1Pq6rdiXtYLYbwB9Ifol8oY2sck5snigoB665PeA94n+ht5tzVs=
+=NeBI
+-----END PGP SIGNATURE-----
+
+--f4wxQmEuhCNiCOM6fldcDlJ4BnfwWfELq--
 
