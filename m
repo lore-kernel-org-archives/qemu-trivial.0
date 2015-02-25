@@ -1,39 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQYcE-0000SV-NP
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Feb 2015 04:50:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49548)
+	id 1YQfBb-0006No-0b
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Feb 2015 11:51:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34065)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1YQYcC-0000NN-Kz
-	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 04:50:49 -0500
+	(envelope-from <Stefano.Stabellini@citrix.com>) id 1YQfBW-0006EL-0F
+	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 11:51:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1YQYcB-0003OR-Qn
-	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 04:50:48 -0500
-Received: from mel.act-europe.fr ([194.98.77.210]:38278
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1YQYc6-0003Ng-WF; Wed, 25 Feb 2015 04:50:43 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id C9BCF2CE56C3;
-	Wed, 25 Feb 2015 10:50:38 +0100 (CET)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Tqlb1H2vWeXw; Wed, 25 Feb 2015 10:50:38 +0100 (CET)
-Received: from localhost.localdomain (unknown [37.161.86.37])
-	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 89C9B2CE55E2;
-	Wed, 25 Feb 2015 10:50:36 +0100 (CET)
-From: Fabien Chouteau <chouteau@adacore.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Date: Wed, 25 Feb 2015 10:50:28 +0100
-Message-Id: <1424857828-4411-1-git-send-email-chouteau@adacore.com>
-X-Mailer: git-send-email 1.7.9.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 194.98.77.210
-Cc: agraf@suse.de
-Subject: [Qemu-trivial] [PATCH] Openpic: check that cpu id is within the
-	number of cpus
+	(envelope-from <Stefano.Stabellini@citrix.com>) id 1YQfBV-0000ii-6j
+	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 11:51:41 -0500
+Received: from smtp.citrix.com ([66.165.176.89]:9874)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Stefano.Stabellini@citrix.com>)
+	id 1YQfBP-0000gz-3Q; Wed, 25 Feb 2015 11:51:35 -0500
+X-IronPort-AV: E=Sophos;i="5.09,646,1418083200"; d="scan'208";a="236297897"
+Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
+	(10.13.107.78) with Microsoft SMTP Server id 14.3.210.2;
+	Wed, 25 Feb 2015 11:48:29 -0500
+Received: from kaball.uk.xensource.com ([10.80.2.59])	by
+	ukmail1.uk.xensource.com with esmtp (Exim 4.69)	(envelope-from
+	<stefano.stabellini@eu.citrix.com>)	id 1YQf8O-00080c-Ks;
+	Wed, 25 Feb 2015 16:48:28 +0000
+Date: Wed, 25 Feb 2015 16:47:42 +0000
+From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+X-X-Sender: sstabellini@kaball.uk.xensource.com
+To: Thomas Huth <thuth@linux.vnet.ibm.com>
+In-Reply-To: <1424365943-27563-6-git-send-email-thuth@linux.vnet.ibm.com>
+Message-ID: <alpine.DEB.2.02.1502251647260.23507@kaball.uk.xensource.com>
+References: <1424365943-27563-1-git-send-email-thuth@linux.vnet.ibm.com>
+	<1424365943-27563-6-git-send-email-thuth@linux.vnet.ibm.com>
+User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+X-DLP: MIA2
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 66.165.176.89
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+Subject: Re: [Qemu-trivial] [PATCH 5/5] xen: Remove xen_cmos_set_s3_resume()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,37 +49,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Feb 2015 09:50:49 -0000
+X-List-Received-Date: Wed, 25 Feb 2015 16:51:46 -0000
+
+On Thu, 19 Feb 2015, Thomas Huth wrote:
+> The function is not used anymore, and thus can be deleted.
+> 
+> Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
+> Cc: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+
+Acked-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
 
 
-Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
----
- hw/intc/openpic.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
-index 7d1f3b9..305377d 100644
---- a/hw/intc/openpic.c
-+++ b/hw/intc/openpic.c
-@@ -1013,7 +1013,7 @@ static void openpic_cpu_write_internal(void *opaque, hwaddr addr,
-     DPRINTF("%s: cpu %d addr %#" HWADDR_PRIx " <= 0x%08x\n", __func__, idx,
-             addr, val);
- 
--    if (idx < 0) {
-+    if (idx < 0 || idx >= opp->nb_cpus) {
-         return;
-     }
- 
-@@ -1152,7 +1152,7 @@ static uint32_t openpic_cpu_read_internal(void *opaque, hwaddr addr,
-     DPRINTF("%s: cpu %d addr %#" HWADDR_PRIx "\n", __func__, idx, addr);
-     retval = 0xFFFFFFFF;
- 
--    if (idx < 0) {
-+    if (idx < 0 || idx >= opp->nb_cpus) {
-         return retval;
-     }
- 
--- 
-1.7.9.5
-
+>  include/hw/xen/xen.h |    1 -
+>  xen-hvm-stub.c       |    4 ----
+>  2 files changed, 0 insertions(+), 5 deletions(-)
+> 
+> diff --git a/include/hw/xen/xen.h b/include/hw/xen/xen.h
+> index b0ed04c..4356af4 100644
+> --- a/include/hw/xen/xen.h
+> +++ b/include/hw/xen/xen.h
+> @@ -32,7 +32,6 @@ int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num);
+>  void xen_piix3_set_irq(void *opaque, int irq_num, int level);
+>  void xen_piix_pci_write_config_client(uint32_t address, uint32_t val, int len);
+>  void xen_hvm_inject_msi(uint64_t addr, uint32_t data);
+> -void xen_cmos_set_s3_resume(void *opaque, int irq, int level);
+>  
+>  qemu_irq *xen_interrupt_controller_init(void);
+>  
+> diff --git a/xen-hvm-stub.c b/xen-hvm-stub.c
+> index 2d98696..46867d8 100644
+> --- a/xen-hvm-stub.c
+> +++ b/xen-hvm-stub.c
+> @@ -30,10 +30,6 @@ void xen_hvm_inject_msi(uint64_t addr, uint32_t data)
+>  {
+>  }
+>  
+> -void xen_cmos_set_s3_resume(void *opaque, int irq, int level)
+> -{
+> -}
+> -
+>  void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr)
+>  {
+>  }
+> -- 
+> 1.7.1
+> 
 
