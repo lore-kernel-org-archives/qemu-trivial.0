@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQTVk-0006EW-Dr
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 23:23:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58805)
+	id 1YQWHq-0001xL-VV
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Feb 2015 02:21:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55449)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YQTVb-0005o4-3O
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 23:23:39 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1YQWHj-0001og-Ti
+	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 02:21:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YQTVW-0006XS-9b
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 23:23:39 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:11275)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YQWHf-0002PS-7h
+	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 02:21:31 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:41497)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YQTVQ-0006Ss-CH; Tue, 24 Feb 2015 23:23:29 -0500
-Received: from 172.24.2.119 (EHLO szxeml427-hub.china.huawei.com)
+	id 1YQWHd-0002Or-Mc; Wed, 25 Feb 2015 02:21:27 -0500
+Received: from 172.24.2.119 (EHLO szxeml426-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BCH13697; Wed, 25 Feb 2015 12:23:20 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml427-hub.china.huawei.com
-	(10.82.67.182) with Microsoft SMTP Server id 14.3.158.1;
-	Wed, 25 Feb 2015 12:23:12 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Wed, 25 Feb 2015 12:22:34 +0800
-Message-ID: <1424838157-5524-9-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
-In-Reply-To: <1424838157-5524-1-git-send-email-arei.gonglei@huawei.com>
-References: <1424838157-5524-1-git-send-email-arei.gonglei@huawei.com>
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CHQ56484; Wed, 25 Feb 2015 15:21:12 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml426-hub.china.huawei.com
+	(10.82.67.181) with Microsoft SMTP Server id 14.3.158.1;
+	Wed, 25 Feb 2015 15:21:01 +0800
+Message-ID: <54ED77C0.7040402@huawei.com>
+Date: Wed, 25 Feb 2015 15:20:32 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
+To: Gerd Hoffmann <kraxel@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
+References: <1424059258-11024-1-git-send-email-arei.gonglei@huawei.com>			
+	<1424059258-11024-3-git-send-email-arei.gonglei@huawei.com>		
+	<1424075329.3722.0.camel@nilsson.home.kraxel.org>		
+	<54E1AB64.3070303@msgid.tls.msk.ru> <54E1AFF2.2070706@huawei.com>	
+	<1424081886.3722.9.camel@nilsson.home.kraxel.org>	
+	<54E1C60F.2040602@msgid.tls.msk.ru>
+	<1424084529.3722.20.camel@nilsson.home.kraxel.org>
+In-Reply-To: <1424084529.3722.20.camel@nilsson.home.kraxel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.177.19.102]
 X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.54ED4E3D.0004, ss=1, re=0.001, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: d20a4cf456a421bd92c5ba3134a7608f
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>, mjt@tls.msk.ru,
-	peter.huangpeng@huawei.com
-Subject: [Qemu-trivial] [PATCH v2 08/11] xtensa: Remove superfluous '\n'
-	around error_report()
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, Wang Xin <wangxinxin.wang@huawei.com>,
+	qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH 2/2] qemu-char: add cyrillic key
+ 'numerosign' to Russian keymap
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,81 +55,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Feb 2015 04:23:40 -0000
+X-List-Received-Date: Wed, 25 Feb 2015 07:21:37 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+On 2015/2/16 19:02, Gerd Hoffmann wrote:
+> On Mo, 2015-02-16 at 13:27 +0300, Michael Tokarev wrote:
+>> 16.02.2015 13:18, Gerd Hoffmann wrote:
+>> []
+>>> But the russian keymap needs numerosign only, right?
+>>> Or does a russian keyboard have *both*?
+>>
+>> Now maybe I don't understand how keymap works.
+>>
+>> When switching my keyboard to russian (cyrillic) layout,
+>> I can't type # without switching back to latin layout.
+>> Both symbols are produced by the same key - it is key
+>> with number 3 on it, when used with Shift.  On latin
+>> layout it produces #, on cyrillic layout it produces №.
+> 
+> As the patch description suggests.  Thanks for confirming.
+> 
+>> Does it mean the layout does not have # key?
+> 
+> It might be somewhere else, in theory.  Seems not to be the case for the
+> russian layout though.
+> 
+> On a german keyboard shift-3 is '§', and the number sign is somewhere
+> else.  So I can get '#' with both 'us' and 'de' layouts, but I have to
+> use different keys ...
+> 
+I think the number sign(#) should be deleted from russian keymap file, for
+the following reasons:
+(1) In standard Russian keyboard layout we can not find key '#'[1][2];
+(2) on the other hand, '№' is Russian number sign[3], so there is no need '#'
+    in Russian input mode.
 
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
----
- hw/xtensa/sim.c    |  2 +-
- hw/xtensa/xtfpga.c | 10 +++++-----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+  [1] http://en.wikipedia.org/wiki/Keyboard_layout#Russian
+  [2] http://kbd-intl.narod.ru/english/layouts
+  [3] http://en.wikipedia.org/wiki/Numero_sign
 
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index 37ea9ae..328d209 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -64,7 +64,7 @@ static void xtensa_sim_init(MachineState *machine)
-     for (n = 0; n < smp_cpus; n++) {
-         cpu = cpu_xtensa_init(cpu_model);
-         if (cpu == NULL) {
--            error_report("unable to find CPU definition '%s'\n",
-+            error_report("unable to find CPU definition '%s'",
-                          cpu_model);
-             exit(EXIT_FAILURE);
-         }
-diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
-index e5a6bba..bb90eb2 100644
---- a/hw/xtensa/xtfpga.c
-+++ b/hw/xtensa/xtfpga.c
-@@ -190,7 +190,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-     for (n = 0; n < smp_cpus; n++) {
-         cpu = cpu_xtensa_init(cpu_model);
-         if (cpu == NULL) {
--            error_report("unable to find CPU definition '%s'\n",
-+            error_report("unable to find CPU definition '%s'",
-                          cpu_model);
-             exit(EXIT_FAILURE);
-         }
-@@ -235,7 +235,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-                 board->flash_size / board->flash_sector_size,
-                 4, 0x0000, 0x0000, 0x0000, 0x0000, be);
-         if (flash == NULL) {
--            error_report("unable to mount pflash\n");
-+            error_report("unable to mount pflash");
-             exit(EXIT_FAILURE);
-         }
-     }
-@@ -287,7 +287,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-             uint32_t dtb_addr = tswap32(cur_lowmem);
- 
-             if (!fdt) {
--                error_report("could not load DTB '%s'\n", dtb_filename);
-+                error_report("could not load DTB '%s'", dtb_filename);
-                 exit(EXIT_FAILURE);
-             }
- 
-@@ -307,7 +307,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-                                                   lowmem_end - cur_lowmem);
-             }
-             if (initrd_size < 0) {
--                error_report("could not load initrd '%s'\n", initrd_filename);
-+                error_report("could not load initrd '%s'", initrd_filename);
-                 exit(EXIT_FAILURE);
-             }
-             initrd_location.start = tswap32(cur_lowmem);
-@@ -333,7 +333,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-             if (success > 0 && is_linux) {
-                 entry_point = ep;
-             } else {
--                error_report("could not load kernel '%s'\n",
-+                error_report("could not load kernel '%s'",
-                              kernel_filename);
-                 exit(EXIT_FAILURE);
-             }
--- 
-1.7.12.4
+Any thoughts?
+
+Regards,
+-Gonglei
 
 
 
