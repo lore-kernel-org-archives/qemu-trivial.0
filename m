@@ -1,43 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQTS7-0000xS-U3
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 23:20:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58200)
+	id 1YQTVX-0005bz-0z
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 23:23:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58692)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YQTS5-0000wV-NH
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 23:20:02 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1YQTVS-0005Qk-OE
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 23:23:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YQTS2-00053H-Ir
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 23:20:01 -0500
-Received: from szxga02-in.huawei.com ([119.145.14.65]:38721)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YQTVR-0006UZ-IA
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 23:23:30 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:11240)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YQTS1-00052V-DM; Tue, 24 Feb 2015 23:19:58 -0500
-Received: from 172.24.2.119 (EHLO szxeml432-hub.china.huawei.com)
+	id 1YQTVJ-0006QT-T6; Tue, 24 Feb 2015 23:23:22 -0500
+Received: from 172.24.2.119 (EHLO szxeml426-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CHQ40910; Wed, 25 Feb 2015 12:19:45 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml432-hub.china.huawei.com
-	(10.82.67.209) with Microsoft SMTP Server id 14.3.158.1;
-	Wed, 25 Feb 2015 12:19:36 +0800
-Message-ID: <54ED4D2F.7070408@huawei.com>
-Date: Wed, 25 Feb 2015 12:18:55 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id BCH13694; Wed, 25 Feb 2015 12:23:18 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml426-hub.china.huawei.com
+	(10.82.67.181) with Microsoft SMTP Server id 14.3.158.1;
+	Wed, 25 Feb 2015 12:23:09 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Wed, 25 Feb 2015 12:22:30 +0800
+Message-ID: <1424838157-5524-5-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
+In-Reply-To: <1424838157-5524-1-git-send-email-arei.gonglei@huawei.com>
+References: <1424838157-5524-1-git-send-email-arei.gonglei@huawei.com>
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
-References: <1423627934-11676-1-git-send-email-arei.gonglei@huawei.com>
-	<1423627934-11676-4-git-send-email-arei.gonglei@huawei.com>
-	<54E1BC31.4000301@msgid.tls.msk.ru>
-In-Reply-To: <54E1BC31.4000301@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-Originating-IP: [10.177.19.102]
 X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020206.54ED4E37.0122, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: ee4be01c57747a2806dd7f19da8a0ccb
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH 03/11] pl330.c: remove superfluous '\n'
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>, mjt@tls.msk.ru,
+	peter.huangpeng@huawei.com
+Subject: [Qemu-trivial] [PATCH v2 04/11] numa: remove superfluous '\n'
 	around error_setg
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -50,34 +52,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Feb 2015 04:20:02 -0000
+X-List-Received-Date: Wed, 25 Feb 2015 04:23:31 -0000
 
-On 2015/2/16 17:45, Michael Tokarev wrote:
-> 11.02.2015 07:12, arei.gonglei@huawei.com wrote:
->> From: Gonglei <arei.gonglei@huawei.com>
->>
->> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
->> ---
->>  hw/dma/pl330.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
->> index 16cf77e..0f72b59 100644
->> --- a/hw/dma/pl330.c
->> +++ b/hw/dma/pl330.c
->> @@ -1566,7 +1566,7 @@ static void pl330_realize(DeviceState *dev, Error **errp)
->>          s->cfg[1] |= 5;
->>          break;
->>      default:
->> -        error_setg(errp, "Bad value for i-cache_len property: %" PRIx8 "\n",
->> +        error_setg(errp, "Bad value for i-cache_len property: %" PRIx8 "",
-> 
-> Not hugely important but there's no need in the trailing "" here and below.
-> 
-Fixed, thanks.
+From: Gonglei <arei.gonglei@huawei.com>
 
-Regards,
--Gonglei
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+---
+ numa.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/numa.c b/numa.c
+index afd2866..6decd13 100644
+--- a/numa.c
++++ b/numa.c
+@@ -59,7 +59,7 @@ static void numa_node_parse(NumaNodeOptions *node, QemuOpts *opts, Error **errp)
+ 
+     if (nodenr >= MAX_NODES) {
+         error_setg(errp, "Max number of NUMA nodes reached: %"
+-                   PRIu16 "\n", nodenr);
++                   PRIu16 "", nodenr);
+         return;
+     }
+ 
+@@ -78,7 +78,7 @@ static void numa_node_parse(NumaNodeOptions *node, QemuOpts *opts, Error **errp)
+     }
+ 
+     if (node->has_mem && node->has_memdev) {
+-        error_setg(errp, "qemu: cannot specify both mem= and memdev=\n");
++        error_setg(errp, "qemu: cannot specify both mem= and memdev=");
+         return;
+     }
+ 
+@@ -87,7 +87,7 @@ static void numa_node_parse(NumaNodeOptions *node, QemuOpts *opts, Error **errp)
+     }
+     if (node->has_memdev != have_memdevs) {
+         error_setg(errp, "qemu: memdev option must be specified for either "
+-                   "all or no nodes\n");
++                   "all or no nodes");
+         return;
+     }
+ 
+-- 
+1.7.12.4
 
 
 
