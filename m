@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQIRl-0003Sg-0T
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 11:34:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43963)
+	id 1YQTS7-0000xS-U3
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Feb 2015 23:20:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58200)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YQIRi-0003Ry-Ja
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:34:55 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1YQTS5-0000wV-NH
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 23:20:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YQIRf-0002jn-Bv
-	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 11:34:54 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49577)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YQTS2-00053H-Ir
+	for qemu-trivial@nongnu.org; Tue, 24 Feb 2015 23:20:01 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:38721)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1YQIRf-0002jV-39; Tue, 24 Feb 2015 11:34:51 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1OGY86b025516
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 24 Feb 2015 11:34:09 -0500
-Received: from [10.3.113.36] (ovpn-113-36.phx2.redhat.com [10.3.113.36])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1OGY738023262; Tue, 24 Feb 2015 11:34:07 -0500
-Message-ID: <54ECA7FF.8020301@redhat.com>
-Date: Tue, 24 Feb 2015 09:34:07 -0700
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1YQTS1-00052V-DM; Tue, 24 Feb 2015 23:19:58 -0500
+Received: from 172.24.2.119 (EHLO szxeml432-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CHQ40910; Wed, 25 Feb 2015 12:19:45 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml432-hub.china.huawei.com
+	(10.82.67.209) with Microsoft SMTP Server id 14.3.158.1;
+	Wed, 25 Feb 2015 12:19:36 +0800
+Message-ID: <54ED4D2F.7070408@huawei.com>
+Date: Wed, 25 Feb 2015 12:18:55 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
 	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Alberto Garcia <berto@igalia.com>
-References: <1424723236-24368-1-git-send-email-berto@igalia.com>
-	<54EB9B04.1070901@redhat.com> <20150224070152.GA8006@igalia.com>
-In-Reply-To: <20150224070152.GA8006@igalia.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="qcORlKD6ujsSTWv6afT8cLXbwraTxkoV3"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-commands.hx: Fix
-	several typos
+To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
+References: <1423627934-11676-1-git-send-email-arei.gonglei@huawei.com>
+	<1423627934-11676-4-git-send-email-arei.gonglei@huawei.com>
+	<54E1BC31.4000301@msgid.tls.msk.ru>
+In-Reply-To: <54E1BC31.4000301@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH 03/11] pl330.c: remove superfluous '\n'
+	around error_setg
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,50 +50,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Feb 2015 16:34:55 -0000
+X-List-Received-Date: Wed, 25 Feb 2015 04:20:02 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---qcORlKD6ujsSTWv6afT8cLXbwraTxkoV3
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 02/24/2015 12:01 AM, Alberto Garcia wrote:
-> On Mon, Feb 23, 2015 at 02:26:28PM -0700, Eric Blake wrote:
->=20
->>> -- "tls": whevener the channel is encrypted (json-bool)
->>> +- "tls": whenever the channel is encrypted (json-bool)
+On 2015/2/16 17:45, Michael Tokarev wrote:
+> 11.02.2015 07:12, arei.gonglei@huawei.com wrote:
+>> From: Gonglei <arei.gonglei@huawei.com>
 >>
->> Might be nicer as 'whether' rather than 'whenever'.
->=20
-> Oh, you're right. Feel free to change it, or do you want me to
-> resubmit the patch?
+>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>> ---
+>>  hw/dma/pl330.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/dma/pl330.c b/hw/dma/pl330.c
+>> index 16cf77e..0f72b59 100644
+>> --- a/hw/dma/pl330.c
+>> +++ b/hw/dma/pl330.c
+>> @@ -1566,7 +1566,7 @@ static void pl330_realize(DeviceState *dev, Error **errp)
+>>          s->cfg[1] |= 5;
+>>          break;
+>>      default:
+>> -        error_setg(errp, "Bad value for i-cache_len property: %" PRIx8 "\n",
+>> +        error_setg(errp, "Bad value for i-cache_len property: %" PRIx8 "",
+> 
+> Not hugely important but there's no need in the trailing "" here and below.
+> 
+Fixed, thanks.
 
-Up to the trivial tree maintainer, but if it were me, I'd resend a v2 to
-make his life easier.
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+Regards,
+-Gonglei
 
 
---qcORlKD6ujsSTWv6afT8cLXbwraTxkoV3
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJU7Kf/AAoJEKeha0olJ0Nqn3YIAKEW/kR7TbOc6qJvo2FExtT3
-duxtJ61CQTj/yTw5GjHMLsYunPkKWY2B1R68HlkyvHVVm3YwdMAMfnOkeugdECAb
-3WYxV0Cm/Px4h3RXFYCFrknQEkNFugZeZRcwjH4aEv0UM6aGGG5EjLvqbbarz4Hr
-rQWcNpEgm3762PjPc6ef4Egmkzh4lBu3VvdkGNSYV7WdoPssL87ne6TQCLuMxsVF
-T05ZKE7QazKmJsDdHWpEEQ0+RLfcxQlPKIzQs3u8O3wFywThU/b1QOGzya4dFh70
-GF9SnAldcPBJJn0jSr28Dos4DEM30w4ZC9IczUVZyfAYTXtpoOOg3dYqdagsoMs=
-=6s6t
------END PGP SIGNATURE-----
-
---qcORlKD6ujsSTWv6afT8cLXbwraTxkoV3--
 
