@@ -1,43 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQfBb-0006No-0b
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Feb 2015 11:51:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34065)
+	id 1YQlH2-0004ZM-Rz
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Feb 2015 18:21:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52130)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@citrix.com>) id 1YQfBW-0006EL-0F
-	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 11:51:45 -0500
+	(envelope-from <jacereda@gmail.com>) id 1YQlH0-0004Td-HE
+	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 18:21:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@citrix.com>) id 1YQfBV-0000ii-6j
-	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 11:51:41 -0500
-Received: from smtp.citrix.com ([66.165.176.89]:9874)
+	(envelope-from <jacereda@gmail.com>) id 1YQlGz-0006cm-1M
+	for qemu-trivial@nongnu.org; Wed, 25 Feb 2015 18:21:46 -0500
+Received: from mail-we0-x231.google.com ([2a00:1450:400c:c03::231]:33784)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Stefano.Stabellini@citrix.com>)
-	id 1YQfBP-0000gz-3Q; Wed, 25 Feb 2015 11:51:35 -0500
-X-IronPort-AV: E=Sophos;i="5.09,646,1418083200"; d="scan'208";a="236297897"
-Received: from ukmail1.uk.xensource.com (10.80.16.128) by smtprelay.citrix.com
-	(10.13.107.78) with Microsoft SMTP Server id 14.3.210.2;
-	Wed, 25 Feb 2015 11:48:29 -0500
-Received: from kaball.uk.xensource.com ([10.80.2.59])	by
-	ukmail1.uk.xensource.com with esmtp (Exim 4.69)	(envelope-from
-	<stefano.stabellini@eu.citrix.com>)	id 1YQf8O-00080c-Ks;
-	Wed, 25 Feb 2015 16:48:28 +0000
-Date: Wed, 25 Feb 2015 16:47:42 +0000
-From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-X-X-Sender: sstabellini@kaball.uk.xensource.com
-To: Thomas Huth <thuth@linux.vnet.ibm.com>
-In-Reply-To: <1424365943-27563-6-git-send-email-thuth@linux.vnet.ibm.com>
-Message-ID: <alpine.DEB.2.02.1502251647260.23507@kaball.uk.xensource.com>
-References: <1424365943-27563-1-git-send-email-thuth@linux.vnet.ibm.com>
-	<1424365943-27563-6-git-send-email-thuth@linux.vnet.ibm.com>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-X-DLP: MIA2
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.165.176.89
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-Subject: Re: [Qemu-trivial] [PATCH 5/5] xen: Remove xen_cmos_set_s3_resume()
+	(envelope-from <jacereda@gmail.com>)
+	id 1YQlGu-0006bB-K3; Wed, 25 Feb 2015 18:21:40 -0500
+Received: by wevk48 with SMTP id k48so6751488wev.0;
+	Wed, 25 Feb 2015 15:21:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:content-type:content-transfer-encoding:subject:date:message-id
+	:cc:to:mime-version;
+	bh=mqf4TUpag0lISbXDMDxdEKWy4oe3LZWIYKrkdR6lMQ8=;
+	b=TLY8KGVsjz39dBrA4+xV5Lqq5DL8kW3uhGcTRrOVqVNwDRoZ4JkV64RPKuiTWHCmNJ
+	al6ZHJ9dDTjkRYbLrLRjD7NadaYS05/pUl97v+T5OMEgdUCsuW6iw4dOC+zBpjvfeLav
+	HBY9LWYrJ7efC2TFHo/mfuPKJ5Bj/EI8XUEA4J+OkBJ9+5omL96IFUuTqrLQHbZHB6yQ
+	xjk5yvH5zsmszrRSdBMWbe7HsqbbwuygVANv+CNq7xaHyrPZWHJuZbY21fPSv1MyWHQG
+	QhVIYJduvmpPw28tSqZA5E8y+ftKOiKrCSQSwO5byVLtQmE+DsDgFFaSC5EgVF4EW06a
+	PpNw==
+X-Received: by 10.194.21.137 with SMTP id v9mr10700494wje.140.1424906499690;
+	Wed, 25 Feb 2015 15:21:39 -0800 (PST)
+Received: from [192.168.0.101] ([185.39.42.1])
+	by mx.google.com with ESMTPSA id u16sm27702632wjr.5.2015.02.25.15.21.38
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Wed, 25 Feb 2015 15:21:38 -0800 (PST)
+From: =?utf-8?Q?Jorge_Acereda_Maci=C3=A1?= <jacereda@gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Date: Thu, 26 Feb 2015 00:21:39 +0100
+Message-Id: <8A3EBB15-2138-4AC6-92B7-B0DA9825225A@gmail.com>
+To: qemu-devel@nongnu.org
+Mime-Version: 1.0 (Mac OS X Mail 8.2 \(2070.6\))
+X-Mailer: Apple Mail (2.2070.6)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c03::231
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com, aliguori@amazon.com
+Subject: [Qemu-trivial] [PATCH v2] Fix crash when connecting to VNC through
+	websocket
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,50 +55,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Feb 2015 16:51:46 -0000
-
-On Thu, 19 Feb 2015, Thomas Huth wrote:
-> The function is not used anymore, and thus can be deleted.
-> 
-> Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
-> Cc: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-
-Acked-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+X-List-Received-Date: Wed, 25 Feb 2015 23:21:47 -0000
 
 
+Connecting to VNC through websocket crashes in vnc_flush() when trying
+to acquire a mutex that hasn't been initialized (vnc_init_state(vs)
+hasn't been called at this point).
 
->  include/hw/xen/xen.h |    1 -
->  xen-hvm-stub.c       |    4 ----
->  2 files changed, 0 insertions(+), 5 deletions(-)
-> 
-> diff --git a/include/hw/xen/xen.h b/include/hw/xen/xen.h
-> index b0ed04c..4356af4 100644
-> --- a/include/hw/xen/xen.h
-> +++ b/include/hw/xen/xen.h
-> @@ -32,7 +32,6 @@ int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num);
->  void xen_piix3_set_irq(void *opaque, int irq_num, int level);
->  void xen_piix_pci_write_config_client(uint32_t address, uint32_t val, int len);
->  void xen_hvm_inject_msi(uint64_t addr, uint32_t data);
-> -void xen_cmos_set_s3_resume(void *opaque, int irq, int level);
->  
->  qemu_irq *xen_interrupt_controller_init(void);
->  
-> diff --git a/xen-hvm-stub.c b/xen-hvm-stub.c
-> index 2d98696..46867d8 100644
-> --- a/xen-hvm-stub.c
-> +++ b/xen-hvm-stub.c
-> @@ -30,10 +30,6 @@ void xen_hvm_inject_msi(uint64_t addr, uint32_t data)
->  {
->  }
->  
-> -void xen_cmos_set_s3_resume(void *opaque, int irq, int level)
-> -{
-> -}
-> -
->  void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr)
->  {
->  }
-> -- 
-> 1.7.1
-> 
+Signed-off-by: Jorge Acereda Macia <jacereda@gmail.com>
+
+---
+ ui/vnc-ws.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/ui/vnc-ws.c b/ui/vnc-ws.c
+index e304baf..d75950d 100644
+--- a/ui/vnc-ws.c
++++ b/ui/vnc-ws.c
+@@ -207,8 +207,7 @@ static void vncws_send_handshake_response(VncState =
+*vs, const char* key)
+     }
+=20
+     response =3D g_strdup_printf(WS_HANDSHAKE, accept);
+-    vnc_write(vs, response, strlen(response));
+-    vnc_flush(vs);
++    vnc_client_write_buf(vs, (const uint8_t *)response, =
+strlen(response));
+=20
+     g_free(accept);
+     g_free(response);
+--=20
+1.9.3 (Apple Git-50)
+
+
 
