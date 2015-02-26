@@ -1,45 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YR2Cd-0007jW-9V
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Feb 2015 12:26:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54387)
+	id 1YR3fd-0007Lv-1j
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Feb 2015 14:00:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42742)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1YR2CW-0007X8-S1
-	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 12:26:22 -0500
+	(envelope-from <crobinso@redhat.com>) id 1YR3fX-00078m-L9
+	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 14:00:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>) id 1YR2CW-0007px-0h
-	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 12:26:16 -0500
-Received: from mel.act-europe.fr ([194.98.77.210]:48558
-	helo=smtp.eu.adacore.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chouteau@adacore.com>)
-	id 1YR2CR-0007ZL-LF; Thu, 26 Feb 2015 12:26:11 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id A10162CEAC8E;
-	Thu, 26 Feb 2015 18:26:07 +0100 (CET)
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GJxANx6dXgn1; Thu, 26 Feb 2015 18:26:07 +0100 (CET)
-Received: from [10.10.1.115] (lanoue.act-europe.fr [10.10.1.115])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 8E9112CEAC2F;
-	Thu, 26 Feb 2015 18:26:07 +0100 (CET)
-Message-ID: <54EF572E.1080703@adacore.com>
-Date: Thu, 26 Feb 2015 18:26:06 +0100
-From: Fabien Chouteau <chouteau@adacore.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
-MIME-Version: 1.0
-To: Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org, 
-	qemu-trivial@nongnu.org
-References: <1424857828-4411-1-git-send-email-chouteau@adacore.com>
-	<54EF0E8A.8060701@suse.de>
-In-Reply-To: <54EF0E8A.8060701@suse.de>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+	(envelope-from <crobinso@redhat.com>) id 1YR3fU-0007g8-EL
+	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 14:00:19 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53501)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <crobinso@redhat.com>)
+	id 1YR3fK-0007VY-0U; Thu, 26 Feb 2015 14:00:06 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1QJ03VY017529
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 26 Feb 2015 14:00:03 -0500
+Received: from colepc.redhat.com (ovpn-113-31.phx2.redhat.com [10.3.113.31])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t1QJ028d020480; Thu, 26 Feb 2015 14:00:03 -0500
+From: Cole Robinson <crobinso@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 26 Feb 2015 13:59:58 -0500
+Message-Id: <c0d13cbb078dfba50ad9b00e66be60ec0c6d6776.1424977076.git.crobinso@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 194.98.77.210
-Subject: Re: [Qemu-trivial] [PATCH] Openpic: check that cpu id is within the
-	number of cpus
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Cole Robinson <crobinso@redhat.com>
+Subject: [Qemu-trivial] [PATCH] qapi-schema: Fix SpiceChannel docs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,21 +40,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Feb 2015 17:26:22 -0000
+X-List-Received-Date: Thu, 26 Feb 2015 19:00:23 -0000
 
-On 02/26/2015 01:16 PM, Alexander Graf wrote:
-> 
-> 
-> On 25.02.15 10:50, Fabien Chouteau wrote:
->> Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
-> 
-> Thanks, applied to ppc-next. Next time please include a commit message
-> though ;).
-> 
+The value is called channel-type, not connection-type
 
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+---
+ qapi-schema.json | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Noted.
-
-Thanks Alex,
+diff --git a/qapi-schema.json b/qapi-schema.json
+index e16f8eb..8141f71 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -860,31 +860,31 @@
+ # Since: 2.1
+ ##
+ { 'type': 'SpiceServerInfo',
+   'base': 'SpiceBasicInfo',
+   'data': { '*auth': 'str' } }
+ 
+ ##
+ # @SpiceChannel
+ #
+ # Information about a SPICE client channel.
+ #
+ # @connection-id: SPICE connection id number.  All channels with the same id
+ #                 belong to the same SPICE session.
+ #
+-# @connection-type: SPICE channel type number.  "1" is the main control
+-#                   channel, filter for this one if you want to track spice
+-#                   sessions only
++# @channel-type: SPICE channel type number.  "1" is the main control
++#                channel, filter for this one if you want to track spice
++#                sessions only
+ #
+ # @channel-id: SPICE channel ID number.  Usually "0", might be different when
+ #              multiple channels of the same type exist, such as multiple
+ #              display channels in a multihead setup
+ #
+ # @tls: true if the channel is encrypted, false otherwise.
+ #
+ # Since: 0.14.0
+ ##
+ { 'type': 'SpiceChannel',
+   'base': 'SpiceBasicInfo',
+   'data': {'connection-id': 'int', 'channel-type': 'int', 'channel-id': 'int',
+            'tls': 'bool'} }
+ 
+-- 
+2.1.0
 
 
