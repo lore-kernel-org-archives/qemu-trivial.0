@@ -1,42 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQs5q-0007Y8-Hy
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Feb 2015 01:38:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60275)
+	id 1YQxMb-0005iv-FR
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Feb 2015 07:16:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42534)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1YQs5n-0007V6-P1
-	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 01:38:40 -0500
+	(envelope-from <agraf@suse.de>) id 1YQxMX-0005cB-Id
+	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 07:16:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1YQs5m-0005d4-Up
-	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 01:38:39 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36941)
+	(envelope-from <agraf@suse.de>) id 1YQxMW-0006Em-Tw
+	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 07:16:17 -0500
+Received: from cantor2.suse.de ([195.135.220.15]:58148 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1YQs5h-0005cO-0V; Thu, 26 Feb 2015 01:38:33 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t1Q6cSfW009542
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 26 Feb 2015 01:38:28 -0500
-Received: from [10.36.116.36] (ovpn-116-36.ams2.redhat.com [10.36.116.36])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t1Q6cQTH002830; Thu, 26 Feb 2015 01:38:27 -0500
-Message-ID: <1424932706.23631.47.camel@nilsson.home.kraxel.org>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Jorge Acereda =?ISO-8859-1?Q?Maci=E1?= <jacereda@gmail.com>
-Date: Thu, 26 Feb 2015 07:38:26 +0100
-In-Reply-To: <8A3EBB15-2138-4AC6-92B7-B0DA9825225A@gmail.com>
-References: <8A3EBB15-2138-4AC6-92B7-B0DA9825225A@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by mx1.redhat.com id
-	t1Q6cSfW009542
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, aliguori@amazon.com
-Subject: Re: [Qemu-trivial] [PATCH v2] Fix crash when connecting to VNC
-	through websocket
+	(envelope-from <agraf@suse.de>)
+	id 1YQxMS-00064v-FI; Thu, 26 Feb 2015 07:16:12 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id E6558AB09;
+	Thu, 26 Feb 2015 12:16:11 +0000 (UTC)
+Message-ID: <54EF0E8A.8060701@suse.de>
+Date: Thu, 26 Feb 2015 13:16:10 +0100
+From: Alexander Graf <agraf@suse.de>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+MIME-Version: 1.0
+To: Fabien Chouteau <chouteau@adacore.com>, qemu-devel@nongnu.org, 
+	qemu-trivial@nongnu.org
+References: <1424857828-4411-1-git-send-email-chouteau@adacore.com>
+In-Reply-To: <1424857828-4411-1-git-send-email-chouteau@adacore.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 195.135.220.15
+Subject: Re: [Qemu-trivial] [PATCH] Openpic: check that cpu id is within the
+	number of cpus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,17 +44,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Feb 2015 06:38:40 -0000
-
-On Do, 2015-02-26 at 00:21 +0100, Jorge Acereda Maci=C3=A1 wrote:
-> Connecting to VNC through websocket crashes in vnc_flush() when trying
-> to acquire a mutex that hasn't been initialized (vnc_init_state(vs)
-> hasn't been called at this point).
-
-Patch updated.
-
-thanks,
-  Gerd
+X-List-Received-Date: Thu, 26 Feb 2015 12:16:18 -0000
 
 
+
+On 25.02.15 10:50, Fabien Chouteau wrote:
+> Signed-off-by: Fabien Chouteau <chouteau@adacore.com>
+
+Thanks, applied to ppc-next. Next time please include a commit message
+though ;).
+
+
+Alex
 
