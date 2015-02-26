@@ -1,54 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YQyUX-00020J-7E
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Feb 2015 08:28:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57150)
+	id 1YQzXo-00008O-Of
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Feb 2015 09:36:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45853)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YQyUN-0001eM-HB
-	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 08:28:35 -0500
+	(envelope-from <berto@igalia.com>) id 1YQzXl-0008W6-Kg
+	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 09:36:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YQyUC-0007dz-A7
-	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 08:28:27 -0500
-Received: from e06smtp15.uk.ibm.com ([195.75.94.111]:41639)
+	(envelope-from <berto@igalia.com>) id 1YQzXk-0001Sx-OV
+	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 09:36:01 -0500
+Received: from smtp3.mundo-r.com ([212.51.32.191]:57469 helo=smtp4.mundo-r.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YQyUC-0007cj-1S
-	for qemu-trivial@nongnu.org; Thu, 26 Feb 2015 08:28:16 -0500
-Received: from /spool/local
-	by e06smtp15.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
-	Thu, 26 Feb 2015 13:28:14 -0000
-Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
-	by e06smtp15.uk.ibm.com (192.168.101.145) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 26 Feb 2015 13:28:11 -0000
-Received: from b06cxnps3075.portsmouth.uk.ibm.com
-	(d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
-	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 01A7E1B08074; 
-	Thu, 26 Feb 2015 13:28:27 +0000 (GMT)
-Received: from d06av04.portsmouth.uk.ibm.com (d06av04.portsmouth.uk.ibm.com
-	[9.149.37.216])
-	by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t1QDSBlj11796882; Thu, 26 Feb 2015 13:28:11 GMT
-Received: from d06av04.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av04.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id t1QDSAge032688; Thu, 26 Feb 2015 06:28:10 -0700
-Received: from oc7435384737.ibm.com (sig-9-79-14-249.uk.ibm.com [9.79.14.249])
-	by d06av04.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id t1QDS8Wt032630; Thu, 26 Feb 2015 06:28:10 -0700
-From: Thomas Huth <thuth@linux.vnet.ibm.com>
-To: qemu-trivial@nongnu.org
-Date: Thu, 26 Feb 2015 14:28:07 +0100
-Message-Id: <1424957288-24408-3-git-send-email-thuth@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.1
-In-Reply-To: <1424957288-24408-1-git-send-email-thuth@linux.vnet.ibm.com>
-References: <1424957288-24408-1-git-send-email-thuth@linux.vnet.ibm.com>
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15022613-0021-0000-0000-00000306B630
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.111
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH 2/3] ui/vnc: Remove vnc_stop_worker_thread()
+	(envelope-from <berto@igalia.com>)
+	id 1YQzXf-0001R9-8s; Thu, 26 Feb 2015 09:35:55 -0500
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: ArQOAK4u71RbdWOb/2dsb2JhbABbgwKBLK8aBQEBAQEBAQUBd4JyiHqLZ4EkTQEBAQEBAXyFD0sETjSIMwHWfIYHiXodAoQTBZk0k0kjgUUBgiptgkMBAQE
+X-IPAS-Result: ArQOAK4u71RbdWOb/2dsb2JhbABbgwKBLK8aBQEBAQEBAQUBd4JyiHqLZ4EkTQEBAQEBAXyFD0sETjSIMwHWfIYHiXodAoQTBZk0k0kjgUUBgiptgkMBAQE
+X-IronPort-AV: E=Sophos;i="5.09,652,1418079600"; d="scan'208";a="322323939"
+Received: from fanzine.igalia.com ([91.117.99.155])
+	by smtp4.mundo-r.com with ESMTP; 26 Feb 2015 15:35:39 +0100
+Received: from dsl-hkibrasgw4-50df50-128.dhcp.inet.fi ([80.223.80.128]
+	helo=perseus.local) by fanzine.igalia.com with esmtpsa 
+	(Cipher TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim)
+	id 1YQzXP-0007sz-2S; Thu, 26 Feb 2015 15:35:39 +0100
+Received: from berto by perseus.local with local (Exim 4.84)
+	(envelope-from <berto@igalia.com>)
+	id 1YQzXB-0004gf-Kl; Thu, 26 Feb 2015 16:35:25 +0200
+From: Alberto Garcia <berto@igalia.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 26 Feb 2015 16:35:07 +0200
+Message-Id: <6d7cb262a6c7071f1085f445dbdc0b2721f0f06e.1424961146.git.berto@igalia.com>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 212.51.32.191
+Cc: qemu-trivial@nongnu.org, Alberto Garcia <berto@igalia.com>
+Subject: [Qemu-trivial] [PATCH v2 1/1] qmp-commands.hx: Fix several typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,51 +46,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Feb 2015 13:28:35 -0000
+X-List-Received-Date: Thu, 26 Feb 2015 14:36:02 -0000
 
-This function is not used anymore, let's remove it.
-
-Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Alberto Garcia <berto@igalia.com>
 ---
- ui/vnc-jobs.c |   13 -------------
- ui/vnc-jobs.h |    1 -
- 2 files changed, 0 insertions(+), 14 deletions(-)
+ qmp-commands.hx | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
-index 68f3d77..c8ee203 100644
---- a/ui/vnc-jobs.c
-+++ b/ui/vnc-jobs.c
-@@ -342,16 +342,3 @@ void vnc_start_worker_thread(void)
-                        QEMU_THREAD_DETACHED);
-     queue = q; /* Set global queue */
- }
--
--void vnc_stop_worker_thread(void)
--{
--    if (!vnc_worker_thread_running())
--        return ;
--
--    /* Remove all jobs and wake up the thread */
--    vnc_lock_queue(queue);
--    queue->exit = true;
--    vnc_unlock_queue(queue);
--    vnc_jobs_clear(NULL);
--    qemu_cond_broadcast(&queue->cond);
--}
-diff --git a/ui/vnc-jobs.h b/ui/vnc-jobs.h
-index 31da103..044bf9f 100644
---- a/ui/vnc-jobs.h
-+++ b/ui/vnc-jobs.h
-@@ -40,7 +40,6 @@ void vnc_jobs_join(VncState *vs);
+diff --git a/qmp-commands.hx b/qmp-commands.hx
+index a85d847..c12334a 100644
+--- a/qmp-commands.hx
++++ b/qmp-commands.hx
+@@ -1,5 +1,5 @@
+ HXCOMM QMP dispatch table and documentation
+-HXCOMM Text between SQMP and EQMP is copied to the QMP documention file and
++HXCOMM Text between SQMP and EQMP is copied to the QMP documentation file and
+ HXCOMM does not show up in the other formats.
  
- void vnc_jobs_consume_buffer(VncState *vs);
- void vnc_start_worker_thread(void);
--void vnc_stop_worker_thread(void);
+ SQMP
+@@ -1767,7 +1767,7 @@ Arguments:
  
- /* Locks */
- static inline int vnc_trylock_display(VncDisplay *vd)
+ - "protocol": protocol name (json-string)
+ - "password": password (json-string)
+-- "connected": [ keep | disconnect | fail ] (josn-string, optional)
++- "connected": [ keep | disconnect | fail ] (json-string, optional)
+ 
+ Example:
+ 
+@@ -2922,7 +2922,7 @@ Channels are described by a json-object, each one contain the following:
+ - "channel-id": channel id.  Usually "0", might be different needed when
+                 multiple channels of the same type exist, such as multiple
+                 display channels in a multihead setup (json-int)
+-- "tls": whevener the channel is encrypted (json-bool)
++- "tls": whether the channel is encrypted (json-bool)
+ 
+ Example:
+ 
 -- 
-1.7.1
+2.1.4
 
 
