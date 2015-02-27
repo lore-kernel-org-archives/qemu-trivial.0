@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YRFhM-0002dL-U8
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Feb 2015 02:51:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48130)
+	id 1YRFhN-0002e5-8R
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Feb 2015 02:51:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48138)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YRFhI-0002Qg-6C
-	for qemu-trivial@nongnu.org; Fri, 27 Feb 2015 02:50:57 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YRFh8-0007Vh-OB
+	(envelope-from <arei.gonglei@huawei.com>) id 1YRFhI-0002Qt-7e
 	for qemu-trivial@nongnu.org; Fri, 27 Feb 2015 02:50:56 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:23785)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YRFhD-0007Wk-8y
+	for qemu-trivial@nongnu.org; Fri, 27 Feb 2015 02:50:56 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:38306)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YRFh7-0007UV-Vn; Fri, 27 Feb 2015 02:50:46 -0500
-Received: from 172.24.2.119 (EHLO szxeml425-hub.china.huawei.com)
+	id 1YRFhC-0007Vz-GC; Fri, 27 Feb 2015 02:50:51 -0500
+Received: from 172.24.2.119 (EHLO szxeml426-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CJZ07458; Fri, 27 Feb 2015 15:50:35 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml425-hub.china.huawei.com
-	(10.82.67.180) with Microsoft SMTP Server id 14.3.158.1;
-	Fri, 27 Feb 2015 15:50:29 +0800
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CHS92345; Fri, 27 Feb 2015 15:50:36 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml426-hub.china.huawei.com
+	(10.82.67.181) with Microsoft SMTP Server id 14.3.158.1;
+	Fri, 27 Feb 2015 15:50:26 +0800
 From: <arei.gonglei@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Fri, 27 Feb 2015 15:50:16 +0800
-Message-ID: <1425023419-12244-7-git-send-email-arei.gonglei@huawei.com>
+Date: Fri, 27 Feb 2015 15:50:11 +0800
+Message-ID: <1425023419-12244-2-git-send-email-arei.gonglei@huawei.com>
 X-Mailer: git-send-email 1.7.3.1.msysgit.0
 In-Reply-To: <1425023419-12244-1-git-send-email-arei.gonglei@huawei.com>
 References: <1425023419-12244-1-git-send-email-arei.gonglei@huawei.com>
@@ -31,11 +31,11 @@ Content-Type: text/plain
 X-Originating-IP: [10.177.19.102]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
+X-Received-From: 119.145.14.65
 Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
 	Gonglei <arei.gonglei@huawei.com>, peter.huangpeng@huawei.com,
 	armbru@redhat.com
-Subject: [Qemu-trivial] [PATCH 6/9] 9pfs: fix memory leak
+Subject: [Qemu-trivial] [PATCH 1/9] nbd: fix resource leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,81 +53,21 @@ From: Gonglei <arei.gonglei@huawei.com>
 
 Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 ---
- hw/9pfs/virtio-9p-local.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ block/nbd.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/9pfs/virtio-9p-local.c b/hw/9pfs/virtio-9p-local.c
-index a183eee..bcad4e0 100644
---- a/hw/9pfs/virtio-9p-local.c
-+++ b/hw/9pfs/virtio-9p-local.c
-@@ -500,7 +500,6 @@ static int local_mknod(FsContext *fs_ctx, V9fsPath *dir_path,
-         buffer = rpath(fs_ctx, path);
-         err = mknod(buffer, SM_LOCAL_MODE_BITS|S_IFREG, 0);
-         if (err == -1) {
--            g_free(buffer);
-             goto out;
-         }
-         err = local_set_xattr(buffer, credp);
-@@ -513,7 +512,6 @@ static int local_mknod(FsContext *fs_ctx, V9fsPath *dir_path,
-         buffer = rpath(fs_ctx, path);
-         err = mknod(buffer, SM_LOCAL_MODE_BITS|S_IFREG, 0);
-         if (err == -1) {
--            g_free(buffer);
-             goto out;
-         }
-         err = local_set_mapped_file_attr(fs_ctx, path, credp);
-@@ -526,7 +524,6 @@ static int local_mknod(FsContext *fs_ctx, V9fsPath *dir_path,
-         buffer = rpath(fs_ctx, path);
-         err = mknod(buffer, credp->fc_mode, credp->fc_rdev);
-         if (err == -1) {
--            g_free(buffer);
-             goto out;
-         }
-         err = local_post_create_passthrough(fs_ctx, path, credp);
-@@ -540,8 +537,8 @@ static int local_mknod(FsContext *fs_ctx, V9fsPath *dir_path,
- err_end:
-     remove(buffer);
-     errno = serrno;
--    g_free(buffer);
- out:
-+    g_free(buffer);
-     v9fs_string_free(&fullname);
-     return err;
- }
-@@ -676,7 +673,6 @@ static int local_open2(FsContext *fs_ctx, V9fsPath *dir_path, const char *name,
-         buffer = rpath(fs_ctx, path);
-         fd = open(buffer, flags, SM_LOCAL_MODE_BITS);
-         if (fd == -1) {
--            g_free(buffer);
-             err = fd;
-             goto out;
-         }
-@@ -691,7 +687,6 @@ static int local_open2(FsContext *fs_ctx, V9fsPath *dir_path, const char *name,
-         buffer = rpath(fs_ctx, path);
-         fd = open(buffer, flags, SM_LOCAL_MODE_BITS);
-         if (fd == -1) {
--            g_free(buffer);
-             err = fd;
-             goto out;
-         }
-@@ -707,7 +702,6 @@ static int local_open2(FsContext *fs_ctx, V9fsPath *dir_path, const char *name,
-         buffer = rpath(fs_ctx, path);
-         fd = open(buffer, flags, credp->fc_mode);
-         if (fd == -1) {
--            g_free(buffer);
-             err = fd;
-             goto out;
-         }
-@@ -725,8 +719,8 @@ err_end:
-     close(fd);
-     remove(buffer);
-     errno = serrno;
--    g_free(buffer);
- out:
-+    g_free(buffer);
-     v9fs_string_free(&fullname);
-     return err;
- }
+diff --git a/block/nbd.c b/block/nbd.c
+index 2f3b9ad..b9955cb 100644
+--- a/block/nbd.c
++++ b/block/nbd.c
+@@ -273,6 +273,7 @@ static int nbd_open(BlockDriverState *bs, QDict *options, int flags,
+      */
+     sock = nbd_establish_connection(bs, errp);
+     if (sock < 0) {
++        g_free(export);
+         return sock;
+     }
+ 
 -- 
 1.7.12.4
 
