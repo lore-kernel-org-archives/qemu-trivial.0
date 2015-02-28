@@ -1,46 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YRdN5-0005N0-GD
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 04:07:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41510)
+	id 1YRdQi-0004wA-Sp
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 04:11:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42670)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YRdN0-0005Aq-Gp
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:07:38 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YRdQf-0004nl-N3
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:11:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YRdMq-0004UA-42
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:07:34 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:40040)
+	(envelope-from <mjt@tls.msk.ru>) id 1YRdQe-0006YM-R2
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:11:21 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:44601)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1YRdMp-0004OB-Bh; Sat, 28 Feb 2015 04:07:24 -0500
-Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BCK79701; Sat, 28 Feb 2015 17:07:14 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml433-hub.china.huawei.com
-	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1;
-	Sat, 28 Feb 2015 17:07:07 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-To: <qemu-trivial@nongnu.org>
-Date: Sat, 28 Feb 2015 17:05:23 +0800
-Message-ID: <1425114327-12136-2-git-send-email-zhang.zhanghailiang@huawei.com>
-X-Mailer: git-send-email 1.9.2.msysgit.0
-In-Reply-To: <1425114327-12136-1-git-send-email-zhang.zhanghailiang@huawei.com>
-References: <1425114327-12136-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YRdQZ-0006Vy-MH; Sat, 28 Feb 2015 04:11:15 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 1C4CE43EE1;
+	Sat, 28 Feb 2015 12:11:15 +0300 (MSK)
+Message-ID: <54F18633.7020703@msgid.tls.msk.ru>
+Date: Sat, 28 Feb 2015 12:11:15 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.54F18542.0166, ss=1, re=0.001, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: ddfdb0c958b004824d351b27791a94e4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, peter.huangpeng@huawei.com,
-	eblake@redhat.com, armbru@redhat.com, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH RFC 1/5] serial-pci: Avoid
-	qerror_report_err() outside QMP command handlers
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1424838157-5524-1-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1424838157-5524-1-git-send-email-arei.gonglei@huawei.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH v2 00/11] trivial: Remove superfluous
+	'\n' around error_report/error_setg
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,52 +44,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Feb 2015 09:07:38 -0000
+X-List-Received-Date: Sat, 28 Feb 2015 09:11:22 -0000
 
-qerror_report_err() is a transitional interface to help with
-converting existing monitor commands to QMP.  It should not be used
-elsewhere.  Replace by error_report_err() in serial_pci_init() and
-multi_serial_pci_init().
+25.02.2015 07:22, arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+> 
+> v2 -> v1:
+>  - remove superfluous "" in patch 3. (Michael Tokarev)
+>  - move qemu-img.c hunk from patch 5 to patch 1. (Markus)
+>  - add 'R-by' tag for this patch series.
+> 
+> Yestoday, I found that some files have superflous '\n' charactor
+> around error_report/error_setg when reviewed patches.
+> 
+> By a simply script, the below files were listed. Classify and fix
+> them. It's suitable for appling via qemu-trivial IMHO.
+> 
+> 
+> Gonglei (11):
+>   block: remove superfluous '\n' around error_report/error_setg
+>   a9gtimer: remove superfluous '\n' around error_setg
+>   pl330.c: remove superfluous '\n' around error_setg
+>   numa: remove superfluous '\n' around error_setg
+>   Remove superfluous '\n' around error_report()
+>   vhost-scsi: Remove superfluous '\n' around error_report()
+>   vfio: Remove superfluous '\n' around error_report()
+>   xtensa: Remove superfluous '\n' around error_report()
+>   tpm: Remove superfluous '\n' around error_report()
+>   arm/digic_boards: Remove superfluous '\n' around error_report()
+>   vhost: Remove superfluous '\n' around error_report()
 
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
----
- hw/char/serial-pci.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+Applied series to -trivial.  I was tempted to combine whole thing
+into one big patch, after trying to come up with a good prefix for 05/11 ;)
 
-diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
-index f05c9b4..2b0bf54 100644
---- a/hw/char/serial-pci.c
-+++ b/hw/char/serial-pci.c
-@@ -27,7 +27,6 @@
- 
- #include "hw/char/serial.h"
- #include "hw/pci/pci.h"
--#include "qapi/qmp/qerror.h"
- 
- #define PCI_SERIAL_MAX_PORTS 4
- 
-@@ -57,8 +56,7 @@ static int serial_pci_init(PCIDevice *dev)
-     s->baudbase = 115200;
-     serial_realize_core(s, &err);
-     if (err != NULL) {
--        qerror_report_err(err);
--        error_free(err);
-+        error_report_err(err);
-         return -1;
-     }
- 
-@@ -116,8 +114,7 @@ static int multi_serial_pci_init(PCIDevice *dev)
-         s->baudbase = 115200;
-         serial_realize_core(s, &err);
-         if (err != NULL) {
--            qerror_report_err(err);
--            error_free(err);
-+            error_report_err(err);
-             return -1;
-         }
-         s->irq = pci->irqs[i];
--- 
-1.7.12.4
+Thanks,
 
-
+/mjt
 
