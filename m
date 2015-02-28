@@ -1,37 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YRdMm-0004gT-PA
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 04:07:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41314)
+	id 1YRdMs-0004qe-4t
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 04:07:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41334)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YRdMg-0004d4-QI
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:07:18 -0500
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YRdMq-0004li-07
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:07:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YRdMg-0004Nr-46
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:07:14 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:58221)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YRdMl-0004Ss-Vg
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:07:23 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:7566)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YRdMY-0004NC-31; Sat, 28 Feb 2015 04:07:09 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9035943EE1;
-	Sat, 28 Feb 2015 12:07:05 +0300 (MSK)
-Message-ID: <54F18539.7040807@msgid.tls.msk.ru>
-Date: Sat, 28 Feb 2015 12:07:05 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.4.0
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1YRdMl-0004OC-JK; Sat, 28 Feb 2015 04:07:19 -0500
+Received: from 172.24.2.119 (EHLO szxeml430-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CHU78961; Sat, 28 Feb 2015 17:07:15 +0800 (CST)
+Received: from localhost (10.177.22.69) by szxeml430-hub.china.huawei.com
+	(10.82.67.185) with Microsoft SMTP Server id 14.3.158.1;
+	Sat, 28 Feb 2015 17:07:06 +0800
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+To: <qemu-trivial@nongnu.org>
+Date: Sat, 28 Feb 2015 17:05:22 +0800
+Message-ID: <1425114327-12136-1-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Mailer: git-send-email 1.9.2.msysgit.0
 MIME-Version: 1.0
-To: Alberto Garcia <berto@igalia.com>, qemu-devel@nongnu.org
-References: <6d7cb262a6c7071f1085f445dbdc0b2721f0f06e.1424961146.git.berto@igalia.com>
-In-Reply-To: <6d7cb262a6c7071f1085f445dbdc0b2721f0f06e.1424961146.git.berto@igalia.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2 1/1] qmp-commands.hx: Fix several typos
+Content-Type: text/plain
+X-Originating-IP: [10.177.22.69]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, peter.huangpeng@huawei.com,
+	eblake@redhat.com, armbru@redhat.com, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH RFC 0/5] Another patchset try to clean up
+	around qerror_report_err()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,9 +45,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Feb 2015 09:07:18 -0000
+X-List-Received-Date: Sat, 28 Feb 2015 09:07:25 -0000
 
-Applied to -trivial, thank you!
+Hi,
 
-/mjt
+I have noticed Markus's previous patchset 
+"Clean up around error_get_pretty(), qerror_report_err()".
+
+This is another patch series trying to do the same thing.
+I'm not sure if he has missed this places or these modifies are false.
+
+So, please review... 
+
+Thanks.
+
+zhanghailiang (5):
+  serial-pci: Avoid qerror_report_err() outside QMP command handlers
+  qdev: Avoid qerror_report_err() outside QMP command handlers
+  pci-hotplug-old: Avoid qerror_report_err() outside QMP command
+    handlers
+  pci-assign: Avoid qerror_report_err() outside QMP command handlers
+  savevm: Replace error_report() & error_free() with error_report_err()
+
+ hw/char/serial-pci.c     | 7 ++-----
+ hw/core/qdev.c           | 6 ++----
+ hw/i386/kvm/pci-assign.c | 3 +--
+ hw/pci/pci-hotplug-old.c | 3 +--
+ savevm.c                 | 3 +--
+ 5 files changed, 7 insertions(+), 15 deletions(-)
+
+-- 
+1.7.12.4
+
+
 
