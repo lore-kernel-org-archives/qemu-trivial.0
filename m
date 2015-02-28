@@ -1,55 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YRkRR-0007Hs-EX
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 11:40:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44188)
+	id 1YRkYq-0002ih-Mw
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 11:48:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45180)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YRkRP-0007Hh-OY
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 11:40:36 -0500
+	(envelope-from <sw@weilnetz.de>) id 1YRkYo-0002h8-FA
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 11:48:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YRkRL-0007fM-V9
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 11:40:35 -0500
-Received: from mail-wg0-x22e.google.com ([2a00:1450:400c:c00::22e]:33504)
+	(envelope-from <sw@weilnetz.de>) id 1YRkYk-0001hc-7O
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 11:48:14 -0500
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:41276)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YRkRL-0007fF-Nw; Sat, 28 Feb 2015 11:40:31 -0500
-Received: by wghb13 with SMTP id b13so25818633wgh.0;
-	Sat, 28 Feb 2015 08:40:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=wNG0lVDZsaiQYTy+mFiqPZMgjYLmvMrH6l/1a98SHKM=;
-	b=lbcLBJXVtkbUYMZPMmjICZZrzUNsbMKWjI6I+nPdBNnT7vFO/xJuGanFOXeo/C4UCx
-	++X+N4tftR4wjN0Ow+F5GUB9n3dND2PmgVEFUhqMZR2VvxGlRZgrMGJniOh5s2LAh4zT
-	fgbTXbDJ4x2obhz7CaUxkn5dv/jfkFJXzU6w7oURWqrmegYyE/05G43xWWHC85k/q3Tf
-	opdGzsfshbFKfAfwXEyX13omlhFrsc6C6EIb+cTv+Z3fMBieE7TYY4kbwS8kUJLeK25Q
-	J9aH+k1HUqmyu8bokBLJSrsehmeljgT5u7cWU+XXFzDkHK1O8HiXhshic5B9Sfycxhen
-	BDrg==
-X-Received: by 10.194.156.133 with SMTP id we5mr40758539wjb.37.1425141630992; 
-	Sat, 28 Feb 2015 08:40:30 -0800 (PST)
-Received: from [192.168.10.150] (net-37-116-207-136.cust.vodafonedsl.it.
-	[37.116.207.136])
-	by mx.google.com with ESMTPSA id m4sm7646086wik.20.2015.02.28.08.40.28
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 28 Feb 2015 08:40:29 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <54F1EF7A.4040007@redhat.com>
-Date: Sat, 28 Feb 2015 17:40:26 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <sw@weilnetz.de>) id 1YRkYk-0001hQ-0x
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 11:48:10 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	296FF11810A8; Sat, 28 Feb 2015 17:48:08 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id VEODujeVKDNA; Sat, 28 Feb 2015 17:47:57 +0100 (CET)
+Received: from [192.168.178.24] (p54ACAA0F.dip0.t-ipconnect.de [84.172.170.15])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	DB2FA1180040; Sat, 28 Feb 2015 17:47:56 +0100 (CET)
+Message-ID: <54F1F13C.9070204@weilnetz.de>
+Date: Sat, 28 Feb 2015 17:47:56 +0100
+From: Stefan Weil <sw@weilnetz.de>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, arei.gonglei@huawei.com, 
-	qemu-devel@nongnu.org
-References: <1425118124-11888-1-git-send-email-arei.gonglei@huawei.com>
-	<54F194B7.9080603@msgid.tls.msk.ru>
-In-Reply-To: <54F194B7.9080603@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c00::22e
+To: Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
+	arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1425118124-11888-1-git-send-email-arei.gonglei@huawei.com>	<54F194B7.9080603@msgid.tls.msk.ru>
+	<54F1EF7A.4040007@redhat.com>
+In-Reply-To: <54F1EF7A.4040007@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
 Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] e500: fix memory leak
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] e500: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,63 +51,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Feb 2015 16:40:36 -0000
+X-List-Received-Date: Sat, 28 Feb 2015 16:48:15 -0000
 
-
-
-On 28/02/2015 11:13, Michael Tokarev wrote:
-> 28.02.2015 13:08, arei.gonglei@huawei.com пишет:
->> From: Gonglei <arei.gonglei@huawei.com>
+Am 28.02.2015 um 17:40 schrieb Paolo Bonzini:
+> On 28/02/2015 11:13, Michael Tokarev wrote:
+>> 28.02.2015 13:08, arei.gonglei@huawei.com =D0=BF=D0=B8=D1=88=D0=B5=D1=82=
+:
+>>> From: Gonglei <arei.gonglei@huawei.com>
+>>>
+>>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>>> ---
+>>> v2: fix compilation complaint. (mjt)
+>>> ---
+>>>   hw/ppc/e500.c | 2 ++
+>>>   1 file changed, 2 insertions(+)
+>>>
+>>> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+>>> index 7e17d18..c060b50 100644
+>>> --- a/hw/ppc/e500.c
+>>> +++ b/hw/ppc/e500.c
+>>> @@ -309,8 +309,10 @@ static int ppce500_load_device_tree(MachineState=
+ *machine,
+>>>  =20
+>>>           fdt =3D load_device_tree(filename, &fdt_size);
+>>>           if (!fdt) {
+>>> +            g_free(filename);
+>>>               goto out;
+>>>           }
+>>> +        g_free(filename);
+>>>           goto done;
+>>>       }
 >>
->> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
->> ---
->> v2: fix compilation complaint. (mjt)
->> ---
->>  hw/ppc/e500.c | 2 ++
->>  1 file changed, 2 insertions(+)
+>> How about this?
 >>
->> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
->> index 7e17d18..c060b50 100644
 >> --- a/hw/ppc/e500.c
 >> +++ b/hw/ppc/e500.c
->> @@ -309,8 +309,10 @@ static int ppce500_load_device_tree(MachineState *machine,
->>  
->>          fdt = load_device_tree(filename, &fdt_size);
->>          if (!fdt) {
->> +            g_free(filename);
->>              goto out;
->>          }
+>> @@ -308,6 +308,7 @@ static int ppce500_load_device_tree(MachineState *=
+machine,
+>>           }
+>>
+>>           fdt =3D load_device_tree(filename, &fdt_size);
 >> +        g_free(filename);
->>          goto done;
->>      }
-> 
-> 
-> How about this?
-> 
-> --- a/hw/ppc/e500.c
-> +++ b/hw/ppc/e500.c
-> @@ -308,6 +308,7 @@ static int ppce500_load_device_tree(MachineState *machine,
->          }
-> 
->          fdt = load_device_tree(filename, &fdt_size);
-> +        g_free(filename);
->          if (!fdt) {
->              goto out;
->          }
+>>           if (!fdt) {
+>>               goto out;
+>>           }
+> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Which one of the two patch variants did you review?
 
-See also xilinx_load_device_tree:
+I suggest using Michael's version (only one g_free as early as=20
+possible). For that variant, my review may be added:
 
-        /* Try the local "ppc.dtb" override.  */
-        fdt = load_device_tree("ppc.dtb", &fdt_size);
-        if (!fdt) {
-            path = qemu_find_file(QEMU_FILE_TYPE_BIOS, BINARY_DEVICE_TREE_FILE);
-            if (path) {
-                fdt = load_device_tree(path, &fdt_size);
-                g_free(path);
-            }
-        }
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
-Paolo
 
