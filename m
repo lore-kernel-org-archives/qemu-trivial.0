@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YRdQi-0004wA-Sp
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 04:11:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42670)
+	id 1YRdVS-00035s-Li
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 04:16:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43411)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YRdQf-0004nl-N3
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:11:22 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YRdVQ-00032u-R6
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:16:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YRdQe-0006YM-R2
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:11:21 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:44601)
+	(envelope-from <mjt@tls.msk.ru>) id 1YRdVQ-0008TG-42
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 04:16:16 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:45832)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YRdQZ-0006Vy-MH; Sat, 28 Feb 2015 04:11:15 -0500
+	id 1YRdVL-0008RB-69; Sat, 28 Feb 2015 04:16:11 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1C4CE43EE1;
-	Sat, 28 Feb 2015 12:11:15 +0300 (MSK)
-Message-ID: <54F18633.7020703@msgid.tls.msk.ru>
-Date: Sat, 28 Feb 2015 12:11:15 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id 9EE1A43EE1;
+	Sat, 28 Feb 2015 12:16:10 +0300 (MSK)
+Message-ID: <54F1875A.1080805@msgid.tls.msk.ru>
+Date: Sat, 28 Feb 2015 12:16:10 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
-References: <1424838157-5524-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1424838157-5524-1-git-send-email-arei.gonglei@huawei.com>
+To: Thomas Huth <thuth@linux.vnet.ibm.com>, qemu-trivial@nongnu.org, 
+	qemu-devel@nongnu.org
+References: <1424365943-27563-1-git-send-email-thuth@linux.vnet.ibm.com>
+In-Reply-To: <1424365943-27563-1-git-send-email-thuth@linux.vnet.ibm.com>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH v2 00/11] trivial: Remove superfluous
-	'\n' around error_report/error_setg
+Subject: Re: [Qemu-trivial] [PATCH v2 0/5] Remove unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,40 +43,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Feb 2015 09:11:22 -0000
+X-List-Received-Date: Sat, 28 Feb 2015 09:16:17 -0000
 
-25.02.2015 07:22, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
-> 
-> v2 -> v1:
->  - remove superfluous "" in patch 3. (Michael Tokarev)
->  - move qemu-img.c hunk from patch 5 to patch 1. (Markus)
->  - add 'R-by' tag for this patch series.
-> 
-> Yestoday, I found that some files have superflous '\n' charactor
-> around error_report/error_setg when reviewed patches.
-> 
-> By a simply script, the below files were listed. Classify and fix
-> them. It's suitable for appling via qemu-trivial IMHO.
-> 
-> 
-> Gonglei (11):
->   block: remove superfluous '\n' around error_report/error_setg
->   a9gtimer: remove superfluous '\n' around error_setg
->   pl330.c: remove superfluous '\n' around error_setg
->   numa: remove superfluous '\n' around error_setg
->   Remove superfluous '\n' around error_report()
->   vhost-scsi: Remove superfluous '\n' around error_report()
->   vfio: Remove superfluous '\n' around error_report()
->   xtensa: Remove superfluous '\n' around error_report()
->   tpm: Remove superfluous '\n' around error_report()
->   arm/digic_boards: Remove superfluous '\n' around error_report()
->   vhost: Remove superfluous '\n' around error_report()
+19.02.2015 20:12, Thomas Huth wrote:
+> There are quite a lot of completely unused functions scattered
+> around in the QEMU sources - here are some patches to remove at
+> least some of them.
 
-Applied series to -trivial.  I was tempted to combine whole thing
-into one big patch, after trying to come up with a good prefix for 05/11 ;)
-
-Thanks,
+Applied series to -trivial, thank you!
 
 /mjt
 
