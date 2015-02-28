@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YRlq2-0008Q6-LF
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 13:10:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57851)
+	id 1YRlq3-0008SJ-I2
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Feb 2015 13:10:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57866)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1YRlpz-0008Jt-KP
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 13:10:04 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1YRlq0-0008L0-6S
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 13:10:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1YRlpy-0006jV-K4
-	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 13:10:03 -0500
-Received: from qemu.weilnetz.de ([37.221.198.45]:54220)
+	(envelope-from <stefan@weilnetz.de>) id 1YRlpz-0006k5-0O
+	for qemu-trivial@nongnu.org; Sat, 28 Feb 2015 13:10:04 -0500
+Received: from qemu.weilnetz.de ([37.221.198.45]:54219)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1YRlps-0006f0-UO; Sat, 28 Feb 2015 13:09:57 -0500
+	id 1YRlps-0006ez-Tc; Sat, 28 Feb 2015 13:09:57 -0500
 Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 6B68917F93E; Sat, 28 Feb 2015 19:09:53 +0100 (CET)
+	id 5027D1800A4; Sat, 28 Feb 2015 19:09:52 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: QEMU Trivial <qemu-trivial@nongnu.org>
-Date: Sat, 28 Feb 2015 19:09:42 +0100
-Message-Id: <1425146983-16015-3-git-send-email-sw@weilnetz.de>
+Date: Sat, 28 Feb 2015 19:09:41 +0100
+Message-Id: <1425146983-16015-2-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1425146983-16015-1-git-send-email-sw@weilnetz.de>
 References: <1425146983-16015-1-git-send-email-sw@weilnetz.de>
@@ -25,8 +25,8 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 37.221.198.45
 Cc: Amit Shah <amit.shah@redhat.com>, Stefan Weil <sw@weilnetz.de>,
 	QEMU Developer <qemu-devel@nongnu.org>, Juan Quintela <quintela@redhat.com>
-Subject: [Qemu-trivial] [PATCH 2/3] migration: Fix some 32 bit compiler
-	errors
+Subject: [Qemu-trivial] [PATCH 1/3] migration: Fix coding style (whitespace
+	issues)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,85 +40,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 28 Feb 2015 18:10:05 -0000
 
-The current code won't compile on 32 bit hosts because there are lots
-of type casts between pointers and 64 bit integers.
-
-Fix some of them.
+* Remove trailing whitespace (fixes 9 errors from checkpatch.pl).
+  One comment line was longer than 80 characters, so wrap it
+  and fix a typo, too.
+* Replace tabs by blanks (fixes 1 error).
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- migration/rdma.c |   23 +++++++++++------------
- 1 file changed, 11 insertions(+), 12 deletions(-)
+
+My editor automatically removes trailing whitespace, so before fixing code,
+I had to fix the coding style.
+
+ migration/rdma.c |   22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/migration/rdma.c b/migration/rdma.c
-index 67c5701..1512460 100644
+index 6bee30c..67c5701 100644
 --- a/migration/rdma.c
 +++ b/migration/rdma.c
-@@ -1104,7 +1104,7 @@ static int qemu_rdma_search_ram_block(RDMAContext *rdma,
-  * to perform the actual RDMA operation.
-  */
- static int qemu_rdma_register_and_get_keys(RDMAContext *rdma,
--        RDMALocalBlock *block, uint8_t *host_addr,
-+        RDMALocalBlock *block, uintptr_t host_addr,
-         uint32_t *lkey, uint32_t *rkey, int chunk,
-         uint8_t *chunk_start, uint8_t *chunk_end)
- {
-@@ -1141,11 +1141,12 @@ static int qemu_rdma_register_and_get_keys(RDMAContext *rdma,
-         if (!block->pmr[chunk]) {
-             perror("Failed to register chunk!");
-             fprintf(stderr, "Chunk details: block: %d chunk index %d"
--                            " start %" PRIu64 " end %" PRIu64 " host %" PRIu64
--                            " local %" PRIu64 " registrations: %d\n",
--                            block->index, chunk, (uint64_t) chunk_start,
--                            (uint64_t) chunk_end, (uint64_t) host_addr,
--                            (uint64_t) block->local_host_addr,
-+                            " start %" PRIuPTR " end %" PRIuPTR
-+                            " host %" PRIuPTR
-+                            " local %" PRIuPTR " registrations: %d\n",
-+                            block->index, chunk, (uintptr_t)chunk_start,
-+                            (uintptr_t)chunk_end, host_addr,
-+                            (uintptr_t)block->local_host_addr,
-                             rdma->total_registrations);
-             return -1;
-         }
-@@ -1932,8 +1933,7 @@ retry:
+@@ -703,7 +703,7 @@ static void qemu_rdma_dump_id(const char *who, struct ibv_context *verbs)
+                 verbs->device->ibdev_path,
+                 port.link_layer,
+                 (port.link_layer == IBV_LINK_LAYER_INFINIBAND) ? "Infiniband" :
+-                 ((port.link_layer == IBV_LINK_LAYER_ETHERNET) 
++                 ((port.link_layer == IBV_LINK_LAYER_ETHERNET)
+                     ? "Ethernet" : "Unknown"));
+ }
+ 
+@@ -738,7 +738,7 @@ static void qemu_rdma_dump_gid(const char *who, struct rdma_cm_id *id)
+  * and validate what time of hardware it is.
+  *
+  * Unfortunately, this puts the user in a fix:
+- * 
++ *
+  *  If the source VM connects with an IPv4 address without knowing that the
+  *  destination has bound to '[::]' the migration will unconditionally fail
+  *  unless the management software is explicitly listening on the the IPv4
+@@ -746,13 +746,13 @@ static void qemu_rdma_dump_gid(const char *who, struct rdma_cm_id *id)
+  *
+  *  If the source VM connects with an IPv6 address, then we're OK because we can
+  *  throw an error on the source (and similarly on the destination).
+- * 
++ *
+  *  But in mixed environments, this will be broken for a while until it is fixed
+  *  inside linux.
+  *
+  * We do provide a *tiny* bit of help in this function: We can list all of the
+  * devices in the system and check to see if all the devices are RoCE or
+- * Infiniband. 
++ * Infiniband.
+  *
+  * If we detect that we have a *pure* RoCE environment, then we can safely
+  * thrown an error even if the management software has specified '[::]' as the
+@@ -771,17 +771,17 @@ static int qemu_rdma_broken_ipv6_kernel(Error **errp, struct ibv_context *verbs)
+     /* This bug only exists in linux, to our knowledge. */
+ #ifdef CONFIG_LINUX
+ 
+-    /* 
++    /*
+      * Verbs are only NULL if management has bound to '[::]'.
+-     * 
++     *
+      * Let's iterate through all the devices and see if there any pure IB
+      * devices (non-ethernet).
+-     * 
++     *
+      * If not, then we can safely proceed with the migration.
+      * Otherwise, there are no guarantees until the bug is fixed in linux.
+      */
+     if (!verbs) {
+-	    int num_devices, x;
++        int num_devices, x;
+         struct ibv_device ** dev_list = ibv_get_device_list(&num_devices);
+         bool roce_found = false;
+         bool ib_found = false;
+@@ -826,8 +826,8 @@ static int qemu_rdma_broken_ipv6_kernel(Error **errp, struct ibv_context *verbs)
+ 
+     /*
+      * If we have a verbs context, that means that some other than '[::]' was
+-     * used by the management software for binding. In which case we can actually 
+-     * warn the user about a potential broken kernel;
++     * used by the management software for binding. In which case we can
++     * actually warn the user about a potentially broken kernel.
+      */
+ 
+     /* IB ports start with 1, not 0 */
+@@ -2421,7 +2421,7 @@ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
+                         continue;
+                     }
+                 }
+-                    
++
+                 goto listen;
              }
- 
-             /* try to overlap this single registration with the one we sent. */
--            if (qemu_rdma_register_and_get_keys(rdma, block,
--                                                (uint8_t *) sge.addr,
-+            if (qemu_rdma_register_and_get_keys(rdma, block, sge.addr,
-                                                 &sge.lkey, NULL, chunk,
-                                                 chunk_start, chunk_end)) {
-                 error_report("cannot get lkey");
-@@ -1952,8 +1952,7 @@ retry:
-             block->remote_host_addr = reg_result->host_addr;
-         } else {
-             /* already registered before */
--            if (qemu_rdma_register_and_get_keys(rdma, block,
--                                                (uint8_t *)sge.addr,
-+            if (qemu_rdma_register_and_get_keys(rdma, block, sge.addr,
-                                                 &sge.lkey, NULL, chunk,
-                                                 chunk_start, chunk_end)) {
-                 error_report("cannot get lkey!");
-@@ -1965,7 +1964,7 @@ retry:
-     } else {
-         send_wr.wr.rdma.rkey = block->remote_rkey;
- 
--        if (qemu_rdma_register_and_get_keys(rdma, block, (uint8_t *)sge.addr,
-+        if (qemu_rdma_register_and_get_keys(rdma, block, sge.addr,
-                                                      &sge.lkey, NULL, chunk,
-                                                      chunk_start, chunk_end)) {
-             error_report("cannot get lkey!");
-@@ -3036,7 +3035,7 @@ static int qemu_rdma_registration_handle(QEMUFile *f, void *opaque,
-                 chunk_start = ram_chunk_start(block, chunk);
-                 chunk_end = ram_chunk_end(block, chunk + reg->chunks);
-                 if (qemu_rdma_register_and_get_keys(rdma, block,
--                            (uint8_t *)host_addr, NULL, &reg_result->rkey,
-+                            (uintptr_t)host_addr, NULL, &reg_result->rkey,
-                             chunk, chunk_start, chunk_end)) {
-                     error_report("cannot get rkey");
-                     ret = -EINVAL;
+         }
 -- 
 1.7.10.4
 
