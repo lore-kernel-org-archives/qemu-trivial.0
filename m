@@ -1,55 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YS0lW-0007Gi-VB
-	for mharc-qemu-trivial@gnu.org; Sun, 01 Mar 2015 05:06:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60194)
+	id 1YS3M1-0002oM-7G
+	for mharc-qemu-trivial@gnu.org; Sun, 01 Mar 2015 07:52:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41812)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YS0lU-0007Dr-TI
-	for qemu-trivial@nongnu.org; Sun, 01 Mar 2015 05:06:25 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1YS3Lw-0002ji-QW
+	for qemu-trivial@nongnu.org; Sun, 01 Mar 2015 07:52:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YS0lR-0003MZ-Nv
-	for qemu-trivial@nongnu.org; Sun, 01 Mar 2015 05:06:24 -0500
-Received: from mail-wi0-x22b.google.com ([2a00:1450:400c:c05::22b]:39390)
+	(envelope-from <stefan@weilnetz.de>) id 1YS3Lv-0006Wz-V2
+	for qemu-trivial@nongnu.org; Sun, 01 Mar 2015 07:52:12 -0500
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:46573)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YS0lR-0003MM-HC; Sun, 01 Mar 2015 05:06:21 -0500
-Received: by widex7 with SMTP id ex7so8734571wid.4;
-	Sun, 01 Mar 2015 02:06:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=XKW5BWuG6t/0azkUPWTVYKtYb3u0NtFBOdrrtmiP2mU=;
-	b=xJgZd91zKRMST2QUeqr8+DWrYJpLI0UuQ6taCvNAKU4X3K8+Th4HA2P0wuJLHJYrEl
-	nw5/pwGspN3sls6mzWCfKl0O67gS6IU5qtWEMySGgjdWeogghKf4QC63dn5hHpRqT3T8
-	ZQRMBM7KoLwgy+fE1PanOgAcporMIbY7tSu3BqRkWBZnFagihpvFOb3b+Xg+oMEI1T70
-	ibBEPtm4jkS84n+S6C9WuX4avvBJBFydvQLX/b1KFOZMhazdL7oDbSVPbgvUe2e3hyzR
-	SsnoV+yRCRLN9yO5GScSCfgmnHogqvPFv/HiHN44It3WUuk/U+wUxxhLng9YZS8rx1Pi
-	lFJA==
-X-Received: by 10.194.109.9 with SMTP id ho9mr46135892wjb.29.1425204379785;
-	Sun, 01 Mar 2015 02:06:19 -0800 (PST)
-Received: from [192.168.10.150] (net-37-116-207-136.cust.vodafonedsl.it.
-	[37.116.207.136]) by mx.google.com with ESMTPSA id
-	hv5sm13990190wjb.16.2015.03.01.02.06.16
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 01 Mar 2015 02:06:17 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <54F2E496.7000700@redhat.com>
-Date: Sun, 01 Mar 2015 11:06:14 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <stefan@weilnetz.de>)
+	id 1YS3Lt-0006W7-Td; Sun, 01 Mar 2015 07:52:10 -0500
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id E20691803EC; Sun,  1 Mar 2015 13:52:06 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Sun,  1 Mar 2015 13:52:06 +0100
+Message-Id: <1425214326-25326-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, Michael Tokarev <mjt@tls.msk.ru>, 
-	arei.gonglei@huawei.com, qemu-devel@nongnu.org
-References: <1425118124-11888-1-git-send-email-arei.gonglei@huawei.com>	<54F194B7.9080603@msgid.tls.msk.ru>	<54F1EF7A.4040007@redhat.com>
-	<54F1F13C.9070204@weilnetz.de>
-In-Reply-To: <54F1F13C.9070204@weilnetz.de>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22b
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] e500: fix memory leak
+X-Received-From: 2a03:4000:2:362::1
+Cc: Paolo Bonzini <pbonzini@redhat.com>, QEMU Developer <qemu-devel@nongnu.org>,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] oslib-posix: Fix compiler warning
+	(-Wclobbered) and simplify the code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,21 +40,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 01 Mar 2015 10:06:25 -0000
+X-List-Received-Date: Sun, 01 Mar 2015 12:52:14 -0000
 
+gcc reports this warning with -Wclobbered:
 
+util/oslib-posix.c: In function =E2=80=98os_mem_prealloc=E2=80=99:
+util/oslib-posix.c:374:49: error: argument =E2=80=98memory=E2=80=99 might=
+ be clobbered by
+ =E2=80=98longjmp=E2=80=99 or =E2=80=98vfork=E2=80=99 [-Werror=3Dclobbere=
+d]
 
-On 28/02/2015 17:47, Stefan Weil wrote:
->> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-> 
-> Which one of the two patch variants did you review?
-> 
-> I suggest using Michael's version (only one g_free as early as
-> possible). For that variant, my review may be added:
-> 
-> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Fix this and simplify the code by using an existing macro.
 
-I also referred to Michael's.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ util/oslib-posix.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Paolo
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 16fcec2..37ffd96 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -399,10 +399,10 @@ void os_mem_prealloc(int fd, char *area, size_t mem=
+ory)
+     } else {
+         int i;
+         size_t hpagesize =3D fd_getpagesize(fd);
++        size_t numpages =3D DIV_ROUND_UP(memory, hpagesize);
+=20
+         /* MAP_POPULATE silently ignores failures */
+-        memory =3D (memory + hpagesize - 1) & -hpagesize;
+-        for (i =3D 0; i < (memory / hpagesize); i++) {
++        for (i =3D 0; i < numpages; i++) {
+             memset(area + (hpagesize * i), 0, 1);
+         }
+=20
+--=20
+1.7.10.4
+
 
