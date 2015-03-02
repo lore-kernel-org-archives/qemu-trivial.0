@@ -1,40 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YSPFx-0000uz-Ks
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2015 07:15:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59974)
+	id 1YSPJe-0004qW-SI
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2015 07:19:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60506)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YSPFp-0000p8-Br
-	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 07:15:26 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YSPJX-0004i2-Dn
+	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 07:19:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YSPFo-0003fK-LH
-	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 07:15:21 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:48844)
+	(envelope-from <mjt@tls.msk.ru>) id 1YSPJW-0004de-NH
+	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 07:19:11 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:32799)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YSPFi-0003eH-3G; Mon, 02 Mar 2015 07:15:14 -0500
+	id 1YSPJR-0004d5-QL; Mon, 02 Mar 2015 07:19:05 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 58AE0402C1;
-	Mon,  2 Mar 2015 15:15:11 +0300 (MSK)
-Message-ID: <54F4544F.6000602@msgid.tls.msk.ru>
-Date: Mon, 02 Mar 2015 15:15:11 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id DE785402D8;
+	Mon,  2 Mar 2015 15:19:04 +0300 (MSK)
+Message-ID: <54F45538.5080504@msgid.tls.msk.ru>
+Date: Mon, 02 Mar 2015 15:19:04 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
 To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1425146983-16015-1-git-send-email-sw@weilnetz.de>
-	<1425146983-16015-2-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1425146983-16015-2-git-send-email-sw@weilnetz.de>
+References: <1425147557-17216-1-git-send-email-sw@weilnetz.de>
+In-Reply-To: <1425147557-17216-1-git-send-email-sw@weilnetz.de>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: Amit Shah <amit.shah@redhat.com>, QEMU Developer <qemu-devel@nongnu.org>,
-	Juan Quintela <quintela@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH 1/3] migration: Fix coding style
-	(whitespace issues)
+Cc: QEMU Developer <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] vhost_net: Add missing 'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,31 +43,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Mar 2015 12:15:27 -0000
+X-List-Received-Date: Mon, 02 Mar 2015 12:19:17 -0000
 
-28.02.2015 21:09, Stefan Weil wrote:
-> * Remove trailing whitespace (fixes 9 errors from checkpatch.pl).
->   One comment line was longer than 80 characters, so wrap it
->   and fix a typo, too.
-> * Replace tabs by blanks (fixes 1 error).
-
-This hunk:
-
-> @@ -2421,7 +2421,7 @@ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
->                          continue;
->                      }
->                  }
-> -                    
-> +
->                  goto listen;
->              }
-
-
-clashes with my earlier attemt to clean up this code, I rewrote
-this loop a bit to avoid this "twisted" usage of gotos.
-I'll apply this patch without this change.
-
-Thanks,
+Applied to trivial, thank you!
 
 /mjt
 
