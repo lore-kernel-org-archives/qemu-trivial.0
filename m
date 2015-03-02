@@ -1,43 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YSEza-0002fh-LN
-	for mharc-qemu-trivial@gnu.org; Sun, 01 Mar 2015 20:17:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38389)
+	id 1YSJNa-0003Dc-IT
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2015 00:58:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42054)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YSEzX-0002c6-RJ
-	for qemu-trivial@nongnu.org; Sun, 01 Mar 2015 20:17:52 -0500
+	(envelope-from <amit.shah@redhat.com>) id 1YSJNY-0003Cx-T2
+	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 00:58:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YSEzX-0004Ng-2E
-	for qemu-trivial@nongnu.org; Sun, 01 Mar 2015 20:17:51 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:41556)
+	(envelope-from <amit.shah@redhat.com>) id 1YSJNT-0006VK-TD
+	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 00:58:56 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49283)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YSEzS-0004Ku-9e; Sun, 01 Mar 2015 20:17:46 -0500
-Received: from 172.24.2.119 (EHLO szxeml425-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CKD66575; Mon, 02 Mar 2015 09:17:25 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml425-hub.china.huawei.com
-	(10.82.67.180) with Microsoft SMTP Server id 14.3.158.1; Mon, 2 Mar 2015
-	09:17:20 +0800
-Message-ID: <54F3BA15.1040408@huawei.com>
-Date: Mon, 2 Mar 2015 09:17:09 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <amit.shah@redhat.com>)
+	id 1YSJNT-0006VE-LU; Mon, 02 Mar 2015 00:58:51 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t225wnQ4012560
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Mon, 2 Mar 2015 00:58:49 -0500
+Received: from localhost ([10.3.113.17])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t225wkTH002898; Mon, 2 Mar 2015 00:58:47 -0500
+Date: Mon, 2 Mar 2015 11:28:35 +0530
+From: Amit Shah <amit.shah@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20150302055835.GF26196@grmbl.mre>
+References: <1425146983-16015-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-	"Michael Tokarev" <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
-References: <1425118124-11888-1-git-send-email-arei.gonglei@huawei.com>	<54F194B7.9080603@msgid.tls.msk.ru>	<54F1EF7A.4040007@redhat.com>	<54F1F13C.9070204@weilnetz.de>
-	<54F2E496.7000700@redhat.com>
-In-Reply-To: <54F2E496.7000700@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] e500: fix memory leak
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1425146983-16015-1-git-send-email-sw@weilnetz.de>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developer <qemu-devel@nongnu.org>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Juan Quintela <quintela@redhat.com>
+Subject: Re: [Qemu-trivial] migration: Fix 32 bit compiler errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,29 +48,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Mar 2015 01:17:52 -0000
+X-List-Received-Date: Mon, 02 Mar 2015 05:58:58 -0000
 
-On 2015/3/1 18:06, Paolo Bonzini wrote:
+On (Sat) 28 Feb 2015 [19:09:40], Stefan Weil wrote:
+> Obviously that code was never before compiled on 32 bit hosts.
+> The RDMA API uses lots of uint64_t values and the code casts them
+> to and from pointers.
 > 
+> I tried to fix the compilation but did not run any runtime tests.
 > 
-> On 28/02/2015 17:47, Stefan Weil wrote:
->>> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
->>
->> Which one of the two patch variants did you review?
->>
->> I suggest using Michael's version (only one g_free as early as
->> possible). For that variant, my review may be added:
->>
->> Reviewed-by: Stefan Weil <sw@weilnetz.de>
-> 
-> I also referred to Michael's.
-> 
-OK, thanks.
+> I think the first two patches are trivial, but the third one might
+> not be trivial, so please review it carefully.
 
-Michael, need I send another version? Or you own handle it directly?
+Interestingly Juan found this out recently as well, and Dave was
+taking a look.  CC'ing Dave.
 
-Regards,
--Gonglei
+Thanks,
 
-
+		Amit
 
