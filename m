@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YSNMv-0001Of-UD
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2015 05:14:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34601)
+	id 1YSNYc-0004xe-EH
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Mar 2015 05:26:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37217)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YSNMs-0001JU-S1
-	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 05:14:31 -0500
+	(envelope-from <armbru@redhat.com>) id 1YSNYV-0004qG-WE
+	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 05:26:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YSNMr-0000va-Tu
-	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 05:14:30 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37993)
+	(envelope-from <armbru@redhat.com>) id 1YSNYV-000529-4r
+	for qemu-trivial@nongnu.org; Mon, 02 Mar 2015 05:26:31 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50335)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@redhat.com>)
-	id 1YSNMn-0000v2-EM; Mon, 02 Mar 2015 05:14:25 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t22AEMkd011976
+	id 1YSNYI-0004ya-RI; Mon, 02 Mar 2015 05:26:18 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t22AQEe9005757
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 2 Mar 2015 05:14:22 -0500
+	verify=FAIL); Mon, 2 Mar 2015 05:26:14 -0500
 Received: from blackfin.pond.sub.org (ovpn-116-68.ams2.redhat.com
 	[10.36.116.68])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t22AELsS020844
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t22AQDMZ017171
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 2 Mar 2015 05:14:22 -0500
+	verify=NO); Mon, 2 Mar 2015 05:26:14 -0500
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 7DB863042B60; Mon,  2 Mar 2015 11:14:20 +0100 (CET)
+	id 8A9D23042B60; Mon,  2 Mar 2015 11:26:12 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: zhanghailiang <zhang.zhanghailiang@huawei.com>
 References: <1425114327-12136-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<1425114327-12136-5-git-send-email-zhang.zhanghailiang@huawei.com>
-Date: Mon, 02 Mar 2015 11:14:20 +0100
-In-Reply-To: <1425114327-12136-5-git-send-email-zhang.zhanghailiang@huawei.com>
-	(zhanghailiang's message of "Sat, 28 Feb 2015 17:05:26 +0800")
-Message-ID: <878uffhfk3.fsf@blackfin.pond.sub.org>
+	<1425114327-12136-6-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Mon, 02 Mar 2015 11:26:12 +0100
+In-Reply-To: <1425114327-12136-6-git-send-email-zhang.zhanghailiang@huawei.com>
+	(zhanghailiang's message of "Sat, 28 Feb 2015 17:05:27 +0800")
+Message-ID: <874mq3hf0b.fsf@blackfin.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, peter.huangpeng@huawei.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RFC 4/5] pci-assign: Avoid
-	qerror_report_err() outside QMP command handlers
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RFC 5/5] savevm: Replace
+	error_report() & error_free() with error_report_err()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,35 +53,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Mar 2015 10:14:32 -0000
+X-List-Received-Date: Mon, 02 Mar 2015 10:26:37 -0000
 
 zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
 
-> qerror_report_err() is a transitional interface to help with
-> converting existing monitor commands to QMP.  It should not be used
-> elsewhere.  Replace by error_report_err() in assigned_initfn().
->
 > Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 > ---
->  hw/i386/kvm/pci-assign.c | 3 +--
+>  savevm.c | 3 +--
 >  1 file changed, 1 insertion(+), 2 deletions(-)
 >
-> diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
-> index bd92c69..f2f4e07 100644
-> --- a/hw/i386/kvm/pci-assign.c
-> +++ b/hw/i386/kvm/pci-assign.c
-> @@ -1831,8 +1831,7 @@ out:
+> diff --git a/savevm.c b/savevm.c
+> index ce2b6a2..c4f8c39 100644
+> --- a/savevm.c
+> +++ b/savevm.c
+> @@ -932,8 +932,7 @@ int qemu_loadvm_state(QEMUFile *f)
+>      int ret;
 >  
->  exit_with_error:
->      assert(local_err);
-> -    qerror_report_err(local_err);
-> -    error_free(local_err);
-> +    error_report_err(local_err);
->      return -1;
->  }
+>      if (qemu_savevm_state_blocked(&local_err)) {
+> -        error_report("%s", error_get_pretty(local_err));
+> -        error_free(local_err);
+> +        error_report_err(local_err);
+>          return -EINVAL;
+>      }
 
-This breaks the error reply when you hot plug the devices via QMP
-device_add.
+This one's good.  My commit 565f65d "error: Use error_report_err() where
+appropriate" cleaned up this pattern, but a few more instances have
+since crept in, and this is one.
 
-A correct solution is my "[PATCH 10/10] pci-assign: Convert to realize".
+I can see another one in hw/arm/virt.c machvirt_init().
 
