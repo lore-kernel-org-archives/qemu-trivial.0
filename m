@@ -1,45 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YSjEs-00022k-BB
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2015 04:35:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43067)
+	id 1YSjYl-0000vF-KH
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2015 04:56:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52085)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YSjEm-00022J-TM
-	for qemu-trivial@nongnu.org; Tue, 03 Mar 2015 04:35:40 -0500
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YSjYj-0000qg-Du
+	for qemu-trivial@nongnu.org; Tue, 03 Mar 2015 04:56:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YSjEh-0004DO-TD
-	for qemu-trivial@nongnu.org; Tue, 03 Mar 2015 04:35:36 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:8305)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YSjYe-00043t-N0
+	for qemu-trivial@nongnu.org; Tue, 03 Mar 2015 04:56:13 -0500
+Received: from szxga01-in.huawei.com ([119.145.14.64]:26514)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1YSjEh-0004CN-Aw; Tue, 03 Mar 2015 04:35:31 -0500
-Received: from 172.24.2.119 (EHLO szxeml425-hub.china.huawei.com)
+	id 1YSjYe-00040c-5n; Tue, 03 Mar 2015 04:56:08 -0500
+Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CKG19707; Tue, 03 Mar 2015 17:35:15 +0800 (CST)
-Received: from [127.0.0.1] (10.177.22.69) by szxeml425-hub.china.huawei.com
-	(10.82.67.180) with Microsoft SMTP Server id 14.3.158.1; Tue, 3 Mar 2015
-	17:34:34 +0800
-Message-ID: <54F5801A.2090109@huawei.com>
-Date: Tue, 3 Mar 2015 17:34:18 +0800
+	with ESMTP id CKG22673; Tue, 03 Mar 2015 17:56:00 +0800 (CST)
+Received: from localhost (10.177.22.69) by szxeml433-hub.china.huawei.com
+	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1; Tue, 3 Mar 2015
+	17:55:49 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
+To: <qemu-trivial@nongnu.org>
+Date: Tue, 3 Mar 2015 17:55:08 +0800
+Message-ID: <1425376508-12632-1-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Mailer: git-send-email 1.9.2.msysgit.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1425114327-12136-1-git-send-email-zhang.zhanghailiang@huawei.com>	<1425114327-12136-6-git-send-email-zhang.zhanghailiang@huawei.com>	<874mq3hf0b.fsf@blackfin.pond.sub.org>
-	<54F550AB.4040607@huawei.com>
-	<87sidm780f.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87sidm780f.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-Originating-IP: [10.177.22.69]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.64
-Cc: qemu-trivial@nongnu.org, hangaohuai@huawei.com, peter.huangpeng@huawei.com,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RFC 5/5] savevm: Replace
- error_report() & error_free() with error_report_err()
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, peter.huangpeng@huawei.com,
+	armbru@redhat.com, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] error: Replace error_report() & error_free()
+	with error_report_err()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,53 +45,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Mar 2015 09:35:41 -0000
+X-List-Received-Date: Tue, 03 Mar 2015 09:56:14 -0000
 
-On 2015/3/3 17:19, Markus Armbruster wrote:
-> zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
->
->> On 2015/3/2 18:26, Markus Armbruster wrote:
->>> zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
->>>
->>>> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
->>>> ---
->>>>    savevm.c | 3 +--
->>>>    1 file changed, 1 insertion(+), 2 deletions(-)
->>>>
->>>> diff --git a/savevm.c b/savevm.c
->>>> index ce2b6a2..c4f8c39 100644
->>>> --- a/savevm.c
->>>> +++ b/savevm.c
->>>> @@ -932,8 +932,7 @@ int qemu_loadvm_state(QEMUFile *f)
->>>>        int ret;
->>>>
->>>>        if (qemu_savevm_state_blocked(&local_err)) {
->>>> -        error_report("%s", error_get_pretty(local_err));
->>>> -        error_free(local_err);
->>>> +        error_report_err(local_err);
->>>>            return -EINVAL;
->>>>        }
->>>
->>> This one's good.  My commit 565f65d "error: Use error_report_err() where
->>> appropriate" cleaned up this pattern, but a few more instances have
->>> since crept in, and this is one.
->>>
->>> I can see another one in hw/arm/virt.c machvirt_init().
->>>
->>>
->>
->> Er, do you mean the follow place ?
->>
->>         /* Handle any CPU options specified by the user */
->>          cc->parse_features(CPU(cpuobj), cpustr[1], &err);
->>          if (err) {
->>              error_report("%s", error_get_pretty(err));
->>              exit(1);
->>          }
->
-> Yes.
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+---
+ hw/arm/virt.c | 2 +-
+ savevm.c      | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-OK, i will send a patch fix these two places. Thanks. :)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 69f51ac..4732c12 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -768,7 +768,7 @@ static void machvirt_init(MachineState *machine)
+         /* Handle any CPU options specified by the user */
+         cc->parse_features(CPU(cpuobj), cpustr[1], &err);
+         if (err) {
+-            error_report("%s", error_get_pretty(err));
++            error_report_err(err);
+             exit(1);
+         }
+ 
+diff --git a/savevm.c b/savevm.c
+index ce2b6a2..c4f8c39 100644
+--- a/savevm.c
++++ b/savevm.c
+@@ -932,8 +932,7 @@ int qemu_loadvm_state(QEMUFile *f)
+     int ret;
+ 
+     if (qemu_savevm_state_blocked(&local_err)) {
+-        error_report("%s", error_get_pretty(local_err));
+-        error_free(local_err);
++        error_report_err(local_err);
+         return -EINVAL;
+     }
+ 
+-- 
+1.7.12.4
 
 
 
