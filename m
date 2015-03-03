@@ -1,39 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YSjYl-0000vF-KH
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2015 04:56:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52085)
+	id 1YSqSv-0000ie-J7
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Mar 2015 12:18:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55715)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YSjYj-0000qg-Du
-	for qemu-trivial@nongnu.org; Tue, 03 Mar 2015 04:56:14 -0500
+	(envelope-from <eblake@redhat.com>) id 1YSqSt-0000dv-2R
+	for qemu-trivial@nongnu.org; Tue, 03 Mar 2015 12:18:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YSjYe-00043t-N0
-	for qemu-trivial@nongnu.org; Tue, 03 Mar 2015 04:56:13 -0500
-Received: from szxga01-in.huawei.com ([119.145.14.64]:26514)
+	(envelope-from <eblake@redhat.com>) id 1YSqSr-0002Mr-F5
+	for qemu-trivial@nongnu.org; Tue, 03 Mar 2015 12:18:38 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38534)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1YSjYe-00040c-5n; Tue, 03 Mar 2015 04:56:08 -0500
-Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CKG22673; Tue, 03 Mar 2015 17:56:00 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml433-hub.china.huawei.com
-	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1; Tue, 3 Mar 2015
-	17:55:49 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-To: <qemu-trivial@nongnu.org>
-Date: Tue, 3 Mar 2015 17:55:08 +0800
-Message-ID: <1425376508-12632-1-git-send-email-zhang.zhanghailiang@huawei.com>
-X-Mailer: git-send-email 1.9.2.msysgit.0
+	(envelope-from <eblake@redhat.com>)
+	id 1YSqSm-0002Lu-Aj; Tue, 03 Mar 2015 12:18:32 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t23HIRUn023202
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Tue, 3 Mar 2015 12:18:27 -0500
+Received: from [10.3.113.191] (ovpn-113-191.phx2.redhat.com [10.3.113.191])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t23HIQOi015402; Tue, 3 Mar 2015 12:18:27 -0500
+Message-ID: <54F5ECE2.80603@redhat.com>
+Date: Tue, 03 Mar 2015 10:18:26 -0700
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.64
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, peter.huangpeng@huawei.com,
-	armbru@redhat.com, qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] error: Replace error_report() & error_free()
-	with error_report_err()
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, qemu-trivial@nongnu.org
+References: <1425376508-12632-1-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1425376508-12632-1-git-send-email-zhang.zhanghailiang@huawei.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="BBbPaLmIr8B7EM8c9HkamlS6RiX0Q10xt"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-devel@nongnu.org, peter.huangpeng@huawei.com, armbru@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] error: Replace
+ error_report() & error_free() with error_report_err()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,43 +51,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Mar 2015 09:56:14 -0000
+X-List-Received-Date: Tue, 03 Mar 2015 17:18:40 -0000
 
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
----
- hw/arm/virt.c | 2 +-
- savevm.c      | 3 +--
- 2 files changed, 2 insertions(+), 3 deletions(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--BBbPaLmIr8B7EM8c9HkamlS6RiX0Q10xt
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 69f51ac..4732c12 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -768,7 +768,7 @@ static void machvirt_init(MachineState *machine)
-         /* Handle any CPU options specified by the user */
-         cc->parse_features(CPU(cpuobj), cpustr[1], &err);
-         if (err) {
--            error_report("%s", error_get_pretty(err));
-+            error_report_err(err);
-             exit(1);
-         }
- 
-diff --git a/savevm.c b/savevm.c
-index ce2b6a2..c4f8c39 100644
---- a/savevm.c
-+++ b/savevm.c
-@@ -932,8 +932,7 @@ int qemu_loadvm_state(QEMUFile *f)
-     int ret;
- 
-     if (qemu_savevm_state_blocked(&local_err)) {
--        error_report("%s", error_get_pretty(local_err));
--        error_free(local_err);
-+        error_report_err(local_err);
-         return -EINVAL;
-     }
- 
--- 
-1.7.12.4
+On 03/03/2015 02:55 AM, zhanghailiang wrote:
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+> ---
+
+Might have been nice to mention this was a continuation of the work
+started in commit 565f65d27.
+
+>  hw/arm/virt.c | 2 +-
+>  savevm.c      | 3 +--
+>  2 files changed, 2 insertions(+), 3 deletions(-)
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
+--BBbPaLmIr8B7EM8c9HkamlS6RiX0Q10xt
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJU9eziAAoJEKeha0olJ0Nqrs4H/23wb2ZTePsbiebMC0Yl0JZo
+iFX94VDu/KINQ8Qo6sOx8urwzci9LFuZdgcvqMZqly/x8xD43/zOxoyWybmiG+Pp
+Dd8wEcpntApz1lo/9gSvSzWSupfDDiPYIMDg5e7kORICbaYKcbvC2raPUzr3ICFJ
++EyKbpPMQga0gpCnIEPqAxCUE20LvXUeZSvCe4IOX2FAJ3snGZQx/kEOZ6yKQNrp
+Oo85mFTJfz1pIllOmkH0pnmuykONhNXbaJXT63R97TQQwa+yRpj07TbT8Q4bNb9e
+L0TlRTdNC0TOg272ds8rD/FQQGgOtpajUc5YP2FMvs+0ukRa55d7JoEtuh8sbdY=
+=/D5J
+-----END PGP SIGNATURE-----
+
+--BBbPaLmIr8B7EM8c9HkamlS6RiX0Q10xt--
 
