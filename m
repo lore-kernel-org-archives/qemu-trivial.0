@@ -1,45 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YT9Q0-0006Py-ST
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 08:32:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41556)
+	id 1YT9Rr-0007vt-OT
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 08:34:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41994)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1YT9Pu-0006FM-Jo
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 08:32:54 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YT9Rq-0007v1-9S
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 08:34:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1YT9Po-0002gP-UQ
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 08:32:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53863)
+	(envelope-from <mjt@tls.msk.ru>) id 1YT9Rp-00036C-Bu
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 08:34:50 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:40152)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>)
-	id 1YT9Ph-0002dM-Q5; Wed, 04 Mar 2015 08:32:37 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t24DWb1L023284
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 4 Mar 2015 08:32:37 -0500
-Received: from work-vm (ovpn-116-91.ams2.redhat.com [10.36.116.91])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t24DWXCY026603
-	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NO);
-	Wed, 4 Mar 2015 08:32:35 -0500
-Date: Wed, 4 Mar 2015 13:32:32 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20150304133232.GH2530@work-vm>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YT9Rj-00034q-Ek; Wed, 04 Mar 2015 08:34:43 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 77E564083D;
+	Wed,  4 Mar 2015 16:34:41 +0300 (MSK)
+Message-ID: <54F709F1.7050107@msgid.tls.msk.ru>
+Date: Wed, 04 Mar 2015 16:34:41 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.4.0
+MIME-Version: 1.0
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 References: <1424073025-13262-1-git-send-email-mjt@msgid.tls.msk.ru>
 	<20150304121654.GC2530@work-vm> <54F6F919.9060905@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <54F6F919.9060905@msgid.tls.msk.ru>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+	<20150304133232.GH2530@work-vm>
+In-Reply-To: <20150304133232.GH2530@work-vm>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Amit Shah <amit.shah@redhat.com>,
 	qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] migration/rdma: clean up
- qemu_rdma_dest_init a bit
+Subject: Re: [Qemu-trivial] [PATCH] migration/rdma: clean up
+	qemu_rdma_dest_init a bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,42 +47,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 13:32:55 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 13:34:51 -0000
 
-* Michael Tokarev (mjt@tls.msk.ru) wrote:
-> 04.03.2015 15:16, Dr. David Alan Gilbert wrote:
-> > * Michael Tokarev (mjt@tls.msk.ru) wrote:
-> >> Do not check for rdma->host being empty twice.  This removes a large
-> >> "if" block, so code indentation is changed.  While at it, remove an
-> >> ugly goto from the loop, replacing it with a cleaner if logic.  And
-> >> finally, there's no need to initialize `ret' variable since is always
-> >> has a value.
-> >>
-> >> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> > 
-> > Juan/Amit: There's a space at the end of a line that got in, so
-> >            that just needs fixing in the merge;  it's after the 'break;'
+04.03.2015 16:32, Dr. David Alan Gilbert wrote:
+> * Michael Tokarev (mjt@tls.msk.ru) wrote:
+[]
+>> I think it's okay to merge it using the -trivial tree, I'm about to
+>> send a pull request today.
 > 
-> I already fixed it in my tree two days ago.
-> 
-> > but the patch is a big improvement on what's there:
-> > 
-> > Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> > 
-> > also tested on an RDMA system.
-> 
-> Thank you!
-> 
-> I think it's okay to merge it using the -trivial tree, I'm about to
-> send a pull request today.
+> Yes, OK, although I'd generally prefer the RDMA stuff to go
+> through migration unless it's really trivial.
 
-Yes, OK, although I'd generally prefer the RDMA stuff to go
-through migration unless it's really trivial.
+I've no prob with either of these.  It is just that I'm preparing
+a pull request for -trivial tree now... ;)  I can drop the patch
+from there.
 
-Dave
+Thanks,
 
-> 
-> /mjt
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+/mjt
 
