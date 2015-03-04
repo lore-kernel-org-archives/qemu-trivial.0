@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTCuZ-0000Ww-EG
+	id 1YTCuZ-0000Xz-Oj
 	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 12:16:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38611)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38590)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTCuT-0000HF-1I
+	(envelope-from <mjt@tls.msk.ru>) id 1YTCuS-0000F9-7O
 	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:16:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTCuR-0000xK-SL
+	(envelope-from <mjt@tls.msk.ru>) id 1YTCuR-0000wz-FA
 	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:16:36 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:50284)
+Received: from isrv.corpit.ru ([86.62.121.231]:51081)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YTCuO-0000vG-H4; Wed, 04 Mar 2015 12:16:32 -0500
+	id 1YTCuO-0000vM-Jg; Wed, 04 Mar 2015 12:16:32 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id EB00C408A1;
-	Wed,  4 Mar 2015 20:16:31 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 0A8EB408A3;
+	Wed,  4 Mar 2015 20:16:32 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id D005693B;
-	Wed,  4 Mar 2015 20:07:06 +0300 (MSK)
-Received: (nullmailer pid 17493 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 576CB959;
+	Wed,  4 Mar 2015 20:07:09 +0300 (MSK)
+Received: (nullmailer pid 17565 invoked by uid 1000);
 	Wed, 04 Mar 2015 17:07:05 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Mar 2015 20:06:22 +0300
-Message-Id: <9e46c8b5da7959b601469c3fca3d4d930ed6ba02.1425488753.git.mjt@msgid.tls.msk.ru>
+Date: Wed,  4 Mar 2015 20:06:57 +0300
+Message-Id: <806021fc0fac27559d6b3d8ef9a47ffb2925349a.1425488753.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 References: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, "Gabriel L. Somlo" <gsomlo@gmail.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Gabriel Somlo <somlo@cmu.edu>
-Subject: [Qemu-trivial] [PULL 05/47] smbios: document cmdline options for
-	smbios type 2-4, 17 structures
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 40/47] disas/cris: Fix warning caused by
+	missing 'static' attribute
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,68 +46,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 04 Mar 2015 17:16:41 -0000
 
-From: "Gabriel L. Somlo" <gsomlo@gmail.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
+Warning from the Sparse static analysis tool:
+
+disas/cris.c:1218:26: warning:
+ symbol 'cris_cond15s' was not declared. Should it be static?
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qemu-options.hx | 32 +++++++++++++++++++++++++++++---
- 1 file changed, 29 insertions(+), 3 deletions(-)
+ disas/cris.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 85ca3ad..ee4b223 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1364,11 +1364,25 @@ ETEXI
- DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,
-     "-smbios file=binary\n"
-     "                load SMBIOS entry from binary file\n"
--    "-smbios type=0[,vendor=str][,version=str][,date=str][,release=%d.%d][,uefi=on|off]\n"
-+    "-smbios type=0[,vendor=str][,version=str][,date=str][,release=%d.%d]\n"
-+    "              [,uefi=on|off]\n"
-     "                specify SMBIOS type 0 fields\n"
-     "-smbios type=1[,manufacturer=str][,product=str][,version=str][,serial=str]\n"
-     "              [,uuid=uuid][,sku=str][,family=str]\n"
--    "                specify SMBIOS type 1 fields\n", QEMU_ARCH_I386)
-+    "                specify SMBIOS type 1 fields\n"
-+    "-smbios type=2[,manufacturer=str][,product=str][,version=str][,serial=str]\n"
-+    "              [,asset=str][,location=str]\n"
-+    "                specify SMBIOS type 2 fields\n"
-+    "-smbios type=3[,manufacturer=str][,version=str][,serial=str][,asset=str]\n"
-+    "              [,sku=str]\n"
-+    "                specify SMBIOS type 3 fields\n"
-+    "-smbios type=4[,sock_pfx=str][,manufacturer=str][,version=str][,serial=str]\n"
-+    "              [,asset=str][,part=str]\n"
-+    "                specify SMBIOS type 4 fields\n"
-+    "-smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]\n"
-+    "               [,asset=str][,part=str]\n"
-+    "                specify SMBIOS type 17 fields\n",
-+    QEMU_ARCH_I386)
- STEXI
- @item -smbios file=@var{binary}
- @findex -smbios
-@@ -1377,8 +1391,20 @@ Load SMBIOS entry from binary file.
- @item -smbios type=0[,vendor=@var{str}][,version=@var{str}][,date=@var{str}][,release=@var{%d.%d}][,uefi=on|off]
- Specify SMBIOS type 0 fields
+diff --git a/disas/cris.c b/disas/cris.c
+index 9dfb4e3..a034dba 100644
+--- a/disas/cris.c
++++ b/disas/cris.c
+@@ -1215,7 +1215,7 @@ cris_cc_strings[] =
+ };
  
--@item -smbios type=1[,manufacturer=@var{str}][,product=@var{str}] [,version=@var{str}][,serial=@var{str}][,uuid=@var{uuid}][,sku=@var{str}] [,family=@var{str}]
-+@item -smbios type=1[,manufacturer=@var{str}][,product=@var{str}][,version=@var{str}][,serial=@var{str}][,uuid=@var{uuid}][,sku=@var{str}][,family=@var{str}]
- Specify SMBIOS type 1 fields
-+
-+@item -smbios type=2[,manufacturer=@var{str}][,product=@var{str}][,version=@var{str}][,serial=@var{str}][,asset=@var{str}][,location=@var{str}][,family=@var{str}]
-+Specify SMBIOS type 2 fields
-+
-+@item -smbios type=3[,manufacturer=@var{str}][,version=@var{str}][,serial=@var{str}][,asset=@var{str}][,sku=@var{str}]
-+Specify SMBIOS type 3 fields
-+
-+@item -smbios type=4[,sock_pfx=@var{str}][,manufacturer=@var{str}][,version=@var{str}][,serial=@var{str}][,asset=@var{str}][,part=@var{str}]
-+Specify SMBIOS type 4 fields
-+
-+@item -smbios type=17[,loc_pfx=@var{str}][,bank=@var{str}][,manufacturer=@var{str}][,serial=@var{str}][,asset=@var{str}][,part=@var{str}]
-+Specify SMBIOS type 17 fields
- ETEXI
- 
- STEXI
+ /* Different names and semantics for condition 1111 (0xf).  */
+-const struct cris_cond15 cris_cond15s[] =
++static const struct cris_cond15 cris_cond15s[] =
+ {
+   /* FIXME: In what version did condition "ext" disappear?  */
+   {"ext", cris_ver_v0_3},
 -- 
 2.1.4
 
