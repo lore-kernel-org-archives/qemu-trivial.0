@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YT9Rr-0007vt-OT
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 08:34:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41994)
+	id 1YTARS-0006Ui-6k
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 09:38:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59225)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YT9Rq-0007v1-9S
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 08:34:51 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YTARL-0006Gu-Pu
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 09:38:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YT9Rp-00036C-Bu
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 08:34:50 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:40152)
+	(envelope-from <mjt@tls.msk.ru>) id 1YTARK-0008Eq-Sq
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 09:38:23 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:50329)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YT9Rj-00034q-Ek; Wed, 04 Mar 2015 08:34:43 -0500
+	id 1YTARA-00084k-U5; Wed, 04 Mar 2015 09:38:13 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 77E564083D;
-	Wed,  4 Mar 2015 16:34:41 +0300 (MSK)
-Message-ID: <54F709F1.7050107@msgid.tls.msk.ru>
-Date: Wed, 04 Mar 2015 16:34:41 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id 32B5C4085B;
+	Wed,  4 Mar 2015 17:38:12 +0300 (MSK)
+Message-ID: <54F718D4.2050804@msgid.tls.msk.ru>
+Date: Wed, 04 Mar 2015 17:38:12 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <1424073025-13262-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<20150304121654.GC2530@work-vm> <54F6F919.9060905@msgid.tls.msk.ru>
-	<20150304133232.GH2530@work-vm>
-In-Reply-To: <20150304133232.GH2530@work-vm>
+To: =?UTF-8?B?UmFkaW0gS3LEjW3DocWZ?= <rkrcmar@redhat.com>, 
+	qemu-devel@nongnu.org
+References: <1424448376-15599-1-git-send-email-rkrcmar@redhat.com>
+In-Reply-To: <1424448376-15599-1-git-send-email-rkrcmar@redhat.com>
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Amit Shah <amit.shah@redhat.com>,
-	qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] migration/rdma: clean up
-	qemu_rdma_dest_init a bit
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Walle <michael@walle.cc>, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH 0/2] Fix GCC 5.0.0 build errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,22 +45,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 13:34:51 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 14:38:29 -0000
 
-04.03.2015 16:32, Dr. David Alan Gilbert wrote:
-> * Michael Tokarev (mjt@tls.msk.ru) wrote:
-[]
->> I think it's okay to merge it using the -trivial tree, I'm about to
->> send a pull request today.
-> 
-> Yes, OK, although I'd generally prefer the RDMA stuff to go
-> through migration unless it's really trivial.
+20.02.2015 19:06, Radim Kr=C4=8Dm=C3=A1=C5=99 wrote:
+> Future patches should address the out-of-bounds access that is left by
+> using proposed solution for [2/2].
+>=20
+> Radim Kr=C4=8Dm=C3=A1=C5=99 (2):
+>   fix GCC 5.0.0 logical-not-parentheses warnings
+>   milkymist-pfpu: fix GCC 5.0.0 aggressive-loop-optimizations warning
+>=20
+>  hw/misc/milkymist-pfpu.c | 2 +-
+>  hw/net/virtio-net.c      | 4 ++--
+>  kvm-all.c                | 2 +-
+>  qemu-img.c               | 3 ++-
+>  4 files changed, 6 insertions(+), 5 deletions(-)
 
-I've no prob with either of these.  It is just that I'm preparing
-a pull request for -trivial tree now... ;)  I can drop the patch
-from there.
-
-Thanks,
+Applied both to -trivial finally.  Thank you!
 
 /mjt
+
+
+
 
