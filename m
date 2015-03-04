@@ -1,44 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YT54V-00028H-PP
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 03:54:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34455)
+	id 1YT6eL-0004pd-Vc
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 05:35:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53654)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YT54T-00027j-OJ
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 03:54:26 -0500
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YT6eF-0004ol-4h
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 05:35:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YT54R-0000Eu-1W
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 03:54:25 -0500
-Received: from szxga02-in.huawei.com ([119.145.14.65]:32553)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YT6eB-000497-3C
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 05:35:27 -0500
+Received: from szxga01-in.huawei.com ([58.251.152.64]:29968)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhang.zhanghailiang@huawei.com>)
-	id 1YT54Q-0000Em-EP; Wed, 04 Mar 2015 03:54:22 -0500
-Received: from 172.24.2.119 (EHLO szxeml431-hub.china.huawei.com)
+	id 1YT6eA-00047t-Cm; Wed, 04 Mar 2015 05:35:23 -0500
+Received: from 172.24.2.119 (EHLO szxeml427-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CHZ31769; Wed, 04 Mar 2015 16:54:13 +0800 (CST)
-Received: from [127.0.0.1] (10.177.22.69) by szxeml431-hub.china.huawei.com
-	(10.82.67.208) with Microsoft SMTP Server id 14.3.158.1; Wed, 4 Mar 2015
-	16:54:00 +0800
-Message-ID: <54F6C826.1010209@huawei.com>
-Date: Wed, 4 Mar 2015 16:53:58 +0800
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CKH45122; Wed, 04 Mar 2015 18:35:16 +0800 (CST)
+Received: from localhost (10.177.22.69) by szxeml427-hub.china.huawei.com
+	(10.82.67.182) with Microsoft SMTP Server id 14.3.158.1; Wed, 4 Mar 2015
+	18:27:39 +0800
 From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
+To: <qemu-trivial@nongnu.org>
+Date: Wed, 4 Mar 2015 18:25:54 +0800
+Message-ID: <1425464754-8364-1-git-send-email-zhang.zhanghailiang@huawei.com>
+X-Mailer: git-send-email 1.9.2.msysgit.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>
-References: <1425376508-12632-1-git-send-email-zhang.zhanghailiang@huawei.com>	<54F5ECE2.80603@redhat.com>
-	<874mq144ks.fsf@blackfin.pond.sub.org>
-In-Reply-To: <874mq144ks.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-Originating-IP: [10.177.22.69]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org, hangaohuai@huawei.com, peter.huangpeng@huawei.com,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] error: Replace
- error_report() & error_free() with error_report_err()
+X-Received-From: 58.251.152.64
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>, peter.huangpeng@huawei.com,
+	eblake@redhat.com, armbru@redhat.com, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH v2] error: Replace error_report() &
+	error_free() with error_report_err()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,31 +45,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 08:54:26 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 10:35:32 -0000
 
-On 2015/3/4 15:14, Markus Armbruster wrote:
-> Eric Blake <eblake@redhat.com> writes:
->
->> On 03/03/2015 02:55 AM, zhanghailiang wrote:
->>> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
->>> ---
->>
->> Might have been nice to mention this was a continuation of the work
->> started in commit 565f65d27.
->
-> Yes.  Perhaps the -trivial maintainer can stick in a reference on
-> commit.
->
+This is a continuation of the work started in commit 565f65d27:
+"error: Use error_report_err() where appropriate"
 
-:), i will send v2, to make his life easy. Thanks.
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+---
+v2:
+- Add Reviewd-by and commit message
+---
+ hw/arm/virt.c | 2 +-
+ savevm.c      | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
->>>   hw/arm/virt.c | 2 +-
->>>   savevm.c      | 3 +--
->>>   2 files changed, 2 insertions(+), 3 deletions(-)
->>
->> Reviewed-by: Eric Blake <eblake@redhat.com>
->
->
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 69f51ac..4732c12 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -768,7 +768,7 @@ static void machvirt_init(MachineState *machine)
+         /* Handle any CPU options specified by the user */
+         cc->parse_features(CPU(cpuobj), cpustr[1], &err);
+         if (err) {
+-            error_report("%s", error_get_pretty(err));
++            error_report_err(err);
+             exit(1);
+         }
+ 
+diff --git a/savevm.c b/savevm.c
+index ce2b6a2..c4f8c39 100644
+--- a/savevm.c
++++ b/savevm.c
+@@ -932,8 +932,7 @@ int qemu_loadvm_state(QEMUFile *f)
+     int ret;
+ 
+     if (qemu_savevm_state_blocked(&local_err)) {
+-        error_report("%s", error_get_pretty(local_err));
+-        error_free(local_err);
++        error_report_err(local_err);
+         return -EINVAL;
+     }
+ 
+-- 
+1.7.12.4
 
 
 
