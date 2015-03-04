@@ -1,40 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTCpi-00031O-Os
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 12:11:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37539)
+	id 1YTCuS-0000Ed-2w
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 12:16:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38531)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTCpg-0002y3-2H
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:11:41 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YTCuQ-000087-2W
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:16:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTCpc-0007ZY-Nd
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:11:40 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:53070)
+	(envelope-from <mjt@tls.msk.ru>) id 1YTCuO-0000vV-KU
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:16:34 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:38102)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YTCpT-0007Wy-0y; Wed, 04 Mar 2015 12:11:27 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8B39D4089A;
-	Wed,  4 Mar 2015 20:11:25 +0300 (MSK)
-Message-ID: <54F73CBD.7010401@msgid.tls.msk.ru>
-Date: Wed, 04 Mar 2015 20:11:25 +0300
+	id 1YTCuJ-0000tJ-P6; Wed, 04 Mar 2015 12:16:28 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 939544089A;
+	Wed,  4 Mar 2015 20:16:26 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 822D798A;
+	Wed,  4 Mar 2015 20:16:26 +0300 (MSK)
+Received: (nullmailer pid 19938 invoked by uid 1000);
+	Wed, 04 Mar 2015 17:16:26 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.4.0
-MIME-Version: 1.0
 To: qemu-devel@nongnu.org
-References: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
-	<433630b0ede6d001e3ac1f32493925185d732f5a.1425488753.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <433630b0ede6d001e3ac1f32493925185d732f5a.1425488753.git.mjt@msgid.tls.msk.ru>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Date: Wed,  4 Mar 2015 20:16:25 +0300
+Message-Id: <cover.1425489273.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Amit Shah <amit.shah@redhat.com>,
-	Juan Quintela <quintela@redhat.com>
-Subject: Re: [Qemu-trivial] [PULL 06/47] migration/rdma: clean up
-	qemu_rdma_dest_init a bit
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL v2 00/46] Trivial patches for 2015-03-04
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,112 +43,167 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 17:11:41 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 17:16:35 -0000
 
-I'm terrible sorry for this -- I forgot to remove this patch
-from the trivial-patches queue.  Should I re-do the pull
-request?
+This is a resend of my previous pull request, but without
+patch 6 "migration/rdma: clean up qemu_rdma_dest_init a bit".
+I won't include all the other patches since they're the same,
+there's no need to bomb people again.
 
+Thanks,
 
-04.03.2015 20:06, Michael Tokarev wrote:
-> Do not check for rdma->host being empty twice.  This removes a large
-> "if" block, so code indentation is changed.  While at it, remove an
-> ugly goto from the loop, replacing it with a cleaner if logic.  And
-> finally, there's no need to initialize `ret' variable since is always
-> has a value.
-> 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> ---
->  migration/rdma.c | 51 ++++++++++++++++++++++-----------------------------
->  1 file changed, 22 insertions(+), 29 deletions(-)
-> 
-> diff --git a/migration/rdma.c b/migration/rdma.c
-> index 6bee30c..a7bca91 100644
-> --- a/migration/rdma.c
-> +++ b/migration/rdma.c
-> @@ -2366,10 +2366,10 @@ err_rdma_source_connect:
->  
->  static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
->  {
-> -    int ret = -EINVAL, idx;
-> +    int ret, idx;
->      struct rdma_cm_id *listen_id;
->      char ip[40] = "unknown";
-> -    struct rdma_addrinfo *res;
-> +    struct rdma_addrinfo *res, *e;
->      char port_str[16];
->  
->      for (idx = 0; idx < RDMA_WRID_MAX; idx++) {
-> @@ -2377,7 +2377,7 @@ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
->          rdma->wr_data[idx].control_curr = NULL;
->      }
->  
-> -    if (rdma->host == NULL) {
-> +    if (!rdma->host || !rdma->host[0]) {
->          ERROR(errp, "RDMA host is not set!");
->          rdma->error_state = -EINVAL;
->          return -1;
-> @@ -2400,40 +2400,33 @@ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
->      snprintf(port_str, 16, "%d", rdma->port);
->      port_str[15] = '\0';
->  
-> -    if (rdma->host && strcmp("", rdma->host)) {
-> -        struct rdma_addrinfo *e;
-> +    ret = rdma_getaddrinfo(rdma->host, port_str, NULL, &res);
-> +    if (ret < 0) {
-> +        ERROR(errp, "could not rdma_getaddrinfo address %s", rdma->host);
-> +        goto err_dest_init_bind_addr;
-> +    }
->  
-> -        ret = rdma_getaddrinfo(rdma->host, port_str, NULL, &res);
-> -        if (ret < 0) {
-> -            ERROR(errp, "could not rdma_getaddrinfo address %s", rdma->host);
-> -            goto err_dest_init_bind_addr;
-> +    for (e = res; e != NULL; e = e->ai_next) {
-> +        inet_ntop(e->ai_family,
-> +            &((struct sockaddr_in *) e->ai_dst_addr)->sin_addr, ip, sizeof ip);
-> +        trace_qemu_rdma_dest_init_trying(rdma->host, ip);
-> +        ret = rdma_bind_addr(listen_id, e->ai_dst_addr);
-> +        if (ret) {
-> +            continue;
->          }
-> -
-> -        for (e = res; e != NULL; e = e->ai_next) {
-> -            inet_ntop(e->ai_family,
-> -                &((struct sockaddr_in *) e->ai_dst_addr)->sin_addr, ip, sizeof ip);
-> -            trace_qemu_rdma_dest_init_trying(rdma->host, ip);
-> -            ret = rdma_bind_addr(listen_id, e->ai_dst_addr);
-> -            if (!ret) {
-> -                if (e->ai_family == AF_INET6) {
-> -                    ret = qemu_rdma_broken_ipv6_kernel(errp, listen_id->verbs);
-> -                    if (ret) {
-> -                        continue;
-> -                    }
-> -                }
-> -                    
-> -                goto listen;
-> +        if (e->ai_family == AF_INET6) {
-> +            ret = qemu_rdma_broken_ipv6_kernel(errp, listen_id->verbs);
-> +            if (ret) {
-> +                continue;
->              }
->          }
-> +        break;
-> +    }
->  
-> +    if (!e) {
->          ERROR(errp, "Error: could not rdma_bind_addr!");
->          goto err_dest_init_bind_addr;
-> -    } else {
-> -        ERROR(errp, "migration host and port not specified!");
-> -        ret = -EINVAL;
-> -        goto err_dest_init_bind_addr;
->      }
-> -listen:
->  
->      rdma->listen_id = listen_id;
->      qemu_rdma_dump_gid("dest_init", listen_id);
-> 
+/mjt
 
+The following changes since commit 576a94d8bcaa1bb07a81d9ffd2cf76095a66ad=
+9a:
+
+  vl: take iothread lock very early (2015-03-03 13:21:53 +0000)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-03-04
+
+for you to fetch changes up to a49f076ea6b016ee14766db2b247b48f187794b1:
+
+  9pfs: remove useless return (2015-03-04 20:14:22 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2015-03-04
+
+----------------------------------------------------------------
+Alberto Garcia (2):
+      qerror.h: Swap definitions that were not in alphabetical order
+      qmp-commands.hx: Fix several typos
+
+Borislav Petkov (1):
+      memsave: Improve and disambiguate error message
+
+Cole Robinson (3):
+      qapi-schema: Fix SpiceChannel docs
+      gitignore: Track common.env in iotests gitignore
+      gitignore: Ignore new tests
+
+Gabriel L. Somlo (1):
+      smbios: document cmdline options for smbios type 2-4, 17 structures
+
+Gonglei (19):
+      xen-pt: fix Negative array index read
+      xen-pt: fix Out-of-bounds read
+      block: remove superfluous '\n' around error_report/error_setg
+      a9gtimer: remove superfluous '\n' around error_setg
+      pl330.c: remove superfluous '\n' around error_setg
+      numa: remove superfluous '\n' around error_setg
+      Remove superfluous '\n' around error_report()
+      vhost-scsi: Remove superfluous '\n' around error_report()
+      vfio: Remove superfluous '\n' around error_report()
+      xtensa: Remove superfluous '\n' around error_report()
+      tpm: Remove superfluous '\n' around error_report()
+      arm/digic_boards: Remove superfluous '\n' around error_report()
+      vhost: Remove superfluous '\n' around error_report()
+      nbd: fix resource leak
+      sparc/leon3.c: fix memory leak
+      macio: fix possible memory leak
+      milkymist.c: fix memory leak
+      sysbus: fix memory leak
+      microblaze: fix memory leak
+
+Markus Armbruster (1):
+      xilinx_ethlite: Clean up after commit 2f991ad
+
+Michael Tokarev (3):
+      qemu-options: fix/document -incoming options
+      e500: fix memory leak
+      9pfs: remove useless return
+
+Paolo Bonzini (2):
+      cutils: refine strtol error handling in parse_debug_env
+      gdbstub: avoid possible NULL pointer dereference
+
+Radim Kr=C4=8Dm=C3=A1=C5=99 (2):
+      fix GCC 5.0.0 logical-not-parentheses warnings
+      milkymist-pfpu: fix GCC 5.0.0 aggressive-loop-optimizations warning
+
+Stefan Berger (1):
+      Add copyright and author after file split
+
+Stefan Weil (6):
+      vhost_net: Add missing 'static' attribute
+      disas/arm: Fix warnings caused by missing 'static' attribute
+      disas/cris: Fix warning caused by missing 'static' attribute
+      disas/microblaze: Fix warnings caused by missing 'static' attribute
+      oslib-posix: Fix compiler warning (-Wclobbered) and simplify the co=
+de
+      migration: Fix coding style (whitespace issues)
+
+Thomas Huth (3):
+      ui: Removed unused functions
+      ui/vnc: Remove vnc_stop_worker_thread()
+      xen: Remove xen_cmos_set_s3_resume()
+
+Wang Xin (2):
+      qemu-char: add cyrillic characters 'numerosign' to VNC keysyms
+      qemu-char: add cyrillic key 'numerosign' to Russian keymap
+
+ .gitignore                    |   1 -
+ block/archipelago.c           |   6 +-
+ block/nbd.c                   |   1 +
+ cpus.c                        |   4 +-
+ disas/arm.c                   | 128 ------------------------------------=
+------
+ disas/cris.c                  |   2 +-
+ disas/microblaze.c            |  13 +++--
+ exec.c                        |   2 +-
+ gdbstub.c                     |   8 ++-
+ hw/9pfs/virtio-9p-local.c     |   1 -
+ hw/arm/digic_boards.c         |   6 +-
+ hw/block/nand.c               |   2 +-
+ hw/core/sysbus.c              |   2 +
+ hw/dma/pl330.c                |   4 +-
+ hw/ide/pci.c                  |   2 +-
+ hw/lm32/milkymist.c           |   1 +
+ hw/microblaze/boot.c          |   6 +-
+ hw/misc/macio/macio.c         |   3 +-
+ hw/misc/milkymist-pfpu.c      |   2 +-
+ hw/net/vhost_net.c            |   2 +-
+ hw/net/virtio-net.c           |   4 +-
+ hw/net/xilinx_ethlite.c       |   1 +
+ hw/ppc/e500.c                 |   1 +
+ hw/scsi/vhost-scsi.c          |   6 +-
+ hw/sparc/leon3.c              |   1 +
+ hw/timer/a9gtimer.c           |   2 +-
+ hw/tpm/tpm_passthrough.c      |  12 ++--
+ hw/vfio/common.c              |  10 ++--
+ hw/virtio/vhost-backend.c     |   2 +-
+ hw/xen/xen_pt_config_init.c   |   8 +--
+ hw/xtensa/sim.c               |   2 +-
+ hw/xtensa/xtfpga.c            |  10 ++--
+ include/hw/xen/xen.h          |   1 -
+ include/qapi/qmp/qerror.h     |   6 +-
+ include/ui/console.h          |   3 -
+ kvm-all.c                     |   2 +-
+ migration/qemu-file-buf.c     |   4 ++
+ migration/rdma.c              |  22 ++++----
+ net/vhost-user.c              |   4 +-
+ numa.c                        |   6 +-
+ pc-bios/keymaps/ru            |   2 +-
+ qapi-schema.json              |   6 +-
+ qemu-img.c                    |   5 +-
+ qemu-options.hx               |  56 ++++++++++++++++--
+ qmp-commands.hx               |   6 +-
+ target-s390x/kvm.c            |   2 +-
+ tests/.gitignore              |   3 +
+ tests/qemu-iotests/.gitignore |   1 +
+ tpm.c                         |   2 +-
+ trace/control.c               |   2 +-
+ ui/console.c                  |  12 ----
+ ui/d3des.c                    |   9 ---
+ ui/d3des.h                    |   6 --
+ ui/input-legacy.c             |   6 --
+ ui/vnc-jobs.c                 |  13 -----
+ ui/vnc-jobs.h                 |   1 -
+ ui/vnc_keysym.h               |   1 +
+ util/cutils.c                 |   5 +-
+ util/oslib-posix.c            |   4 +-
+ xen-hvm-stub.c                |   4 --
+ 60 files changed, 166 insertions(+), 283 deletions(-)
 
