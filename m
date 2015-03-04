@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTDNi-0000ZY-1g
+	id 1YTDNi-0000a7-BN
 	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 12:46:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45973)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45988)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTDNc-0000NL-5w
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:46:44 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YTDNc-0000OB-LI
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:46:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTDNb-0004HG-As
+	(envelope-from <mjt@tls.msk.ru>) id 1YTDNb-0004He-TY
 	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:46:44 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:39248)
+Received: from isrv.corpit.ru ([86.62.121.231]:41899)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YTDNS-0004CU-7r; Wed, 04 Mar 2015 12:46:34 -0500
+	id 1YTDNS-0004Du-Up; Wed, 04 Mar 2015 12:46:35 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 99673408AA;
+	by isrv.corpit.ru (Postfix) with ESMTP id AAC49408AE;
 	Wed,  4 Mar 2015 20:46:31 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 3354E984;
-	Wed,  4 Mar 2015 20:07:12 +0300 (MSK)
-Received: (nullmailer pid 17538 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 03C79972;
+	Wed,  4 Mar 2015 20:07:11 +0300 (MSK)
+Received: (nullmailer pid 17577 invoked by uid 1000);
 	Wed, 04 Mar 2015 17:07:05 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Mar 2015 20:06:44 +0300
-Message-Id: <9dd9fd786afa0e5d03d47627b4fe26db7a4e1f02.1425488753.git.mjt@msgid.tls.msk.ru>
+Date: Wed,  4 Mar 2015 20:07:03 +0300
+Message-Id: <8f3bad9f247b8123a90c9781d08de52535802d45.1425488753.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 References: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Wang Xin <wangxinxin.wang@huawei.com>,
-	Gonglei <arei.gonglei@huawei.com>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 27/47] qemu-char: add cyrillic characters
-	'numerosign' to VNC keysyms
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 46/47] gdbstub: avoid possible NULL pointer
+	dereference
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,32 +46,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 04 Mar 2015 17:46:45 -0000
 
-From: Wang Xin <wangxinxin.wang@huawei.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-This patch adds missing cyrillic character 'numerosign' to the VNC
-keysym table, it's needed by Russian keyboard. And I get the keysym from
-'<X11/keysymdef.h>', the current keysym table in Qemu was generated from
-it.
+Coverity reports that s->chr is checked after put_packet dereferences it.
+Move the check earlier, consistent with the code used for user-mode
+emulation.
 
-Signed-off-by: Wang xin <wangxinxin.wang@huawei.com>
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- ui/vnc_keysym.h | 1 +
- 1 file changed, 1 insertion(+)
+ gdbstub.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/ui/vnc_keysym.h b/ui/vnc_keysym.h
-index 1dc039f..7fa2bc1 100644
---- a/ui/vnc_keysym.h
-+++ b/ui/vnc_keysym.h
-@@ -404,6 +404,7 @@ static const name2keysym_t name2keysym[]={
- {"breve",                         0x01a2},  /* U+02D8 BREVE */
- {"caron",                         0x01b7},  /* U+02C7 CARON */
- {"Ccaron",                        0x01c8},  /* U+010C LATIN CAPITAL LETTER C WITH CARON */
-+{"numerosign",                    0x06b0},  /* U+2116 NUMERO SIGN */
- {"Cyrillic_a",                    0x06c1},  /* U+0430 CYRILLIC SMALL LETTER A */
- {"Cyrillic_A",                    0x06e1},  /* U+0410 CYRILLIC CAPITAL LETTER A */
- {"Cyrillic_be",                   0x06c2},  /* U+0431 CYRILLIC SMALL LETTER BE */
+diff --git a/gdbstub.c b/gdbstub.c
+index e4a1a79..8abcb8a 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -1443,15 +1443,17 @@ void gdb_exit(CPUArchState *env, int code)
+   if (gdbserver_fd < 0 || s->fd < 0) {
+       return;
+   }
++#else
++  if (!s->chr) {
++      return;
++  }
+ #endif
+ 
+   snprintf(buf, sizeof(buf), "W%02x", (uint8_t)code);
+   put_packet(s, buf);
+ 
+ #ifndef CONFIG_USER_ONLY
+-  if (s->chr) {
+-      qemu_chr_delete(s->chr);
+-  }
++  qemu_chr_delete(s->chr);
+ #endif
+ }
+ 
 -- 
 2.1.4
 
