@@ -1,45 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YT8f9-0001vy-MY
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 07:44:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60578)
+	id 1YT9AR-0005KC-DA
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 08:16:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38558)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1YT8f3-0001qN-Ua
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 07:44:30 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YT9AL-00059W-Pc
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 08:16:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1YT8ez-0002Rj-Cr
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 07:44:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35586)
+	(envelope-from <mjt@tls.msk.ru>) id 1YT9AD-0005d1-8Q
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 08:16:45 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:50854)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>)
-	id 1YT8ez-0002RU-5E; Wed, 04 Mar 2015 07:44:21 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t24CiI6T012869
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 4 Mar 2015 07:44:19 -0500
-Received: from work-vm (ovpn-116-91.ams2.redhat.com [10.36.116.91])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t24CiFJ9023305
-	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NO);
-	Wed, 4 Mar 2015 07:44:17 -0500
-Date: Wed, 4 Mar 2015 12:44:14 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20150304124414.GE2530@work-vm>
-References: <1425146983-16015-1-git-send-email-sw@weilnetz.de>
-	<1425146983-16015-3-git-send-email-sw@weilnetz.de>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YT9A9-0005cA-EV; Wed, 04 Mar 2015 08:16:33 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 47A994082A;
+	Wed,  4 Mar 2015 16:16:32 +0300 (MSK)
+Message-ID: <54F705B0.8040308@msgid.tls.msk.ru>
+Date: Wed, 04 Mar 2015 16:16:32 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1425146983-16015-3-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Amit Shah <amit.shah@redhat.com>,
-	QEMU Developer <qemu-devel@nongnu.org>, Juan Quintela <quintela@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] migration: Fix some 32
- bit compiler errors
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1425023419-12244-1-git-send-email-arei.gonglei@huawei.com>
+	<1425023419-12244-3-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1425023419-12244-3-git-send-email-arei.gonglei@huawei.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, peter.huangpeng@huawei.com,
+	armbru@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH 2/9] arm: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,118 +45,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 12:44:30 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 13:16:49 -0000
 
-* Stefan Weil (sw@weilnetz.de) wrote:
-> The current code won't compile on 32 bit hosts because there are lots
-> of type casts between pointers and 64 bit integers.
-> 
-> Fix some of them.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-
-Please route rdma stuff through migration, not -trivial; it's never
-trivial to read this code.
-
-> ---
->  migration/rdma.c |   23 +++++++++++------------
->  1 file changed, 11 insertions(+), 12 deletions(-)
-> 
-> diff --git a/migration/rdma.c b/migration/rdma.c
-> index 67c5701..1512460 100644
-> --- a/migration/rdma.c
-> +++ b/migration/rdma.c
-> @@ -1104,7 +1104,7 @@ static int qemu_rdma_search_ram_block(RDMAContext *rdma,
->   * to perform the actual RDMA operation.
->   */
->  static int qemu_rdma_register_and_get_keys(RDMAContext *rdma,
-> -        RDMALocalBlock *block, uint8_t *host_addr,
-> +        RDMALocalBlock *block, uintptr_t host_addr,
->          uint32_t *lkey, uint32_t *rkey, int chunk,
->          uint8_t *chunk_start, uint8_t *chunk_end)
-
-OK, so 'host_addr' seems to only be used in this function to print debug,
-so that should be harmless.
-
->  {
-> @@ -1141,11 +1141,12 @@ static int qemu_rdma_register_and_get_keys(RDMAContext *rdma,
->          if (!block->pmr[chunk]) {
->              perror("Failed to register chunk!");
->              fprintf(stderr, "Chunk details: block: %d chunk index %d"
-> -                            " start %" PRIu64 " end %" PRIu64 " host %" PRIu64
-> -                            " local %" PRIu64 " registrations: %d\n",
-> -                            block->index, chunk, (uint64_t) chunk_start,
-> -                            (uint64_t) chunk_end, (uint64_t) host_addr,
-> -                            (uint64_t) block->local_host_addr,
-> +                            " start %" PRIuPTR " end %" PRIuPTR
-> +                            " host %" PRIuPTR
-> +                            " local %" PRIuPTR " registrations: %d\n",
-> +                            block->index, chunk, (uintptr_t)chunk_start,
-> +                            (uintptr_t)chunk_end, host_addr,
-> +                            (uintptr_t)block->local_host_addr,
-
-OK, although is there any reason not to use %p for most of those?
-
->                              rdma->total_registrations);
->              return -1;
+27.02.2015 10:50, arei.gonglei@huawei.com wrote:
+[]
+> @@ -565,6 +565,7 @@ static void create_flash(const VirtBoardInfo *vbi)
+>              error_report("Could not load ROM image '%s'", bios_name);
+>              exit(1);
 >          }
-> @@ -1932,8 +1933,7 @@ retry:
->              }
->  
->              /* try to overlap this single registration with the one we sent. */
-> -            if (qemu_rdma_register_and_get_keys(rdma, block,
-> -                                                (uint8_t *) sge.addr,
-> +            if (qemu_rdma_register_and_get_keys(rdma, block, sge.addr,
->                                                  &sge.lkey, NULL, chunk,
->                                                  chunk_start, chunk_end)) {
+> +        g_free(fn);
+>      }
+> =20
+>      create_one_flash("virt.flash0", flashbase, flashsize);
+>=20
 
-sge.addr comes from /usr/include/infiniband/verbs.h for me:
+This change introduces a compiler error:
 
-struct ibv_sge {
-        uint64_t                addr;
-        uint32_t                length;
-        uint32_t                lkey;
-};
+hw/arm/virt.c: In function =91create_flash=92:
+hw/arm/virt.c:568:16: error: passing argument 1 of =91g_free=92 discards =
+=91const=92 qualifier from pointer target type [-Werror]
+         g_free(fn);
+                ^
+/usr/include/glib-2.0/glib/gmem.h:69:7: note: expected =91gpointer=92 but=
+ argument is of type =91const char *=92
+ void  g_free           (gpointer  mem);
+       ^
 
-and that's the same on both 32 bit and 64 bit hosts (Fedora 21).
-I'm confused about why this helps you build 32 bit, since that uint64_t gets
-passed to your host_addr that's now a unitptr_t that will be 32bit.
+This is because just a few lines above, `fn' variable
+is declared as `const char *', which obviously should
+not be used with any *free() functions.
 
-Dave
+The solution is to remove `const' from the variable
+declaration.
 
->                  error_report("cannot get lkey");
-> @@ -1952,8 +1952,7 @@ retry:
->              block->remote_host_addr = reg_result->host_addr;
->          } else {
->              /* already registered before */
-> -            if (qemu_rdma_register_and_get_keys(rdma, block,
-> -                                                (uint8_t *)sge.addr,
-> +            if (qemu_rdma_register_and_get_keys(rdma, block, sge.addr,
->                                                  &sge.lkey, NULL, chunk,
->                                                  chunk_start, chunk_end)) {
->                  error_report("cannot get lkey!");
-> @@ -1965,7 +1964,7 @@ retry:
->      } else {
->          send_wr.wr.rdma.rkey = block->remote_rkey;
->  
-> -        if (qemu_rdma_register_and_get_keys(rdma, block, (uint8_t *)sge.addr,
-> +        if (qemu_rdma_register_and_get_keys(rdma, block, sge.addr,
->                                                       &sge.lkey, NULL, chunk,
->                                                       chunk_start, chunk_end)) {
->              error_report("cannot get lkey!");
-> @@ -3036,7 +3035,7 @@ static int qemu_rdma_registration_handle(QEMUFile *f, void *opaque,
->                  chunk_start = ram_chunk_start(block, chunk);
->                  chunk_end = ram_chunk_end(block, chunk + reg->chunks);
->                  if (qemu_rdma_register_and_get_keys(rdma, block,
-> -                            (uint8_t *)host_addr, NULL, &reg_result->rkey,
-> +                            (uintptr_t)host_addr, NULL, &reg_result->rkey,
->                              chunk, chunk_start, chunk_end)) {
->                      error_report("cannot get rkey");
->                      ret = -EINVAL;
-> -- 
-> 1.7.10.4
-> 
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+And a much more general solution is to actually test
+patches before submitting them.  You obviously did not
+test this series, having 3 errors in 9 patches, ie,
+1/3 of your patches does not work...
+
+Thanks,
+
+/mjt
 
