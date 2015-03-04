@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTClY-0006AL-EX
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 12:07:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36434)
+	id 1YTClc-0006Fs-8A
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 12:07:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36457)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTClR-0005xA-M9
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:07:22 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YTClV-000629-M9
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:07:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTClL-0005jE-MS
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:07:17 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:40360)
+	(envelope-from <mjt@tls.msk.ru>) id 1YTClP-0005kB-4x
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:07:20 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:40356)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YTClG-0005hV-6z; Wed, 04 Mar 2015 12:07:06 -0500
+	id 1YTClG-0005hZ-A3; Wed, 04 Mar 2015 12:07:06 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9302D4089D;
+	by isrv.corpit.ru (Postfix) with ESMTP id C9C954089E;
 	Wed,  4 Mar 2015 20:07:05 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 6E83392E;
+	by tsrv.corpit.ru (Postfix) with SMTP id 969AE930;
 	Wed,  4 Mar 2015 20:07:05 +0300 (MSK)
-Received: (nullmailer pid 17507 invoked by uid 1000);
+Received: (nullmailer pid 17491 invoked by uid 1000);
 	Wed, 04 Mar 2015 17:07:05 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Mar 2015 20:06:29 +0300
-Message-Id: <475b7a5adf519fa2e38f8b360fe41ffce720733f.1425488753.git.mjt@msgid.tls.msk.ru>
+Date: Wed,  4 Mar 2015 20:06:21 +0300
+Message-Id: <8e27844ea031fe7e2dfc19a8fa580a55e64c14b2.1425488753.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 References: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+Cc: qemu-trivial@nongnu.org, Borislav Petkov <bp@suse.de>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 12/47] block: remove superfluous '\n' around
-	error_report/error_setg
+Subject: [Qemu-trivial] [PULL 04/47] memsave: Improve and disambiguate error
+	message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,76 +44,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 17:07:22 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 17:07:26 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+From: Borislav Petkov <bp@suse.de>
 
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+When requesting a size which cannot be read, the error message shows
+a different address which is misleading to the user and it looks like
+something's wrong with the address parsing. This is because the input
+@addr variable is incremented in the memory dumping loop:
+
+(qemu) memsave 0xffffffff8418069c 0xb00000 mem
+Invalid addr 0xffffffff849ffe9c specified
+
+Fix that by saving the original address and size and use them in the
+error message:
+
+(qemu) memsave 0xffffffff8418069c 0xb00000 mem
+Invalid addr 0xffffffff8418069c/size 11534336 specified
+
+Signed-off-by: Borislav Petkov <bp@suse.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- block/archipelago.c | 6 +++---
- hw/block/nand.c     | 2 +-
- qemu-img.c          | 2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ cpus.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/block/archipelago.c b/block/archipelago.c
-index a8114b5..855655c 100644
---- a/block/archipelago.c
-+++ b/block/archipelago.c
-@@ -291,7 +291,7 @@ static int qemu_archipelago_init(BDRVArchipelagoState *s)
+diff --git a/cpus.c b/cpus.c
+index 0fac143..1ce90a1 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -1474,6 +1474,7 @@ void qmp_memsave(int64_t addr, int64_t size, const char *filename,
+     uint32_t l;
+     CPUState *cpu;
+     uint8_t buf[1024];
++    int64_t orig_addr = addr, orig_size = size;
  
-     ret = qemu_archipelago_xseg_init(s);
-     if (ret < 0) {
--        error_report("Cannot initialize XSEG. Aborting...\n");
-+        error_report("Cannot initialize XSEG. Aborting...");
-         goto err_exit;
-     }
- 
-@@ -645,7 +645,7 @@ static int qemu_archipelago_create_volume(Error **errp, const char *volname,
- 
-     target = xseg_get_target(xseg, req);
-     if (!target) {
--        error_setg(errp, "Cannot get XSEG target.\n");
-+        error_setg(errp, "Cannot get XSEG target.");
-         goto err_exit;
-     }
-     memcpy(target, volname, targetlen);
-@@ -889,7 +889,7 @@ static BlockAIOCB *qemu_archipelago_aio_rw(BlockDriverState *bs,
-     return &aio_cb->common;
- 
- err_exit:
--    error_report("qemu_archipelago_aio_rw(): I/O Error\n");
-+    error_report("qemu_archipelago_aio_rw(): I/O Error");
-     qemu_aio_unref(aio_cb);
-     return NULL;
- }
-diff --git a/hw/block/nand.c b/hw/block/nand.c
-index 1882a0c..61d2cec 100644
---- a/hw/block/nand.c
-+++ b/hw/block/nand.c
-@@ -393,7 +393,7 @@ static void nand_realize(DeviceState *dev, Error **errp)
-         nand_init_2048(s);
-         break;
-     default:
--        error_setg(errp, "Unsupported NAND block size %#x\n",
-+        error_setg(errp, "Unsupported NAND block size %#x",
-                    1 << s->page_shift);
-         return;
-     }
-diff --git a/qemu-img.c b/qemu-img.c
-index 7ac7f56..6d17755 100644
---- a/qemu-img.c
-+++ b/qemu-img.c
-@@ -1645,7 +1645,7 @@ static int img_convert(int argc, char **argv)
-     if (skip_create) {
-         int64_t output_sectors = blk_nb_sectors(out_blk);
-         if (output_sectors < 0) {
--            error_report("unable to get output image length: %s\n",
-+            error_report("unable to get output image length: %s",
-                          strerror(-output_sectors));
-             ret = -1;
-             goto out;
+     if (!has_cpu) {
+         cpu_index = 0;
+@@ -1497,7 +1498,8 @@ void qmp_memsave(int64_t addr, int64_t size, const char *filename,
+         if (l > size)
+             l = size;
+         if (cpu_memory_rw_debug(cpu, addr, buf, l, 0) != 0) {
+-            error_setg(errp, "Invalid addr 0x%016" PRIx64 "specified", addr);
++            error_setg(errp, "Invalid addr 0x%016" PRIx64 "/size %" PRId64
++                             " specified", orig_addr, orig_size);
+             goto exit;
+         }
+         if (fwrite(buf, 1, l, f) != l) {
 -- 
 2.1.4
 
