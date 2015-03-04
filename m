@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTINQ-0006Rz-TD
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 18:06:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52673)
+	id 1YTINK-0006Av-1W
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 18:06:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52623)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTINO-0006LK-Ah
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 18:06:51 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YTINE-00061e-Kx
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 18:06:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTINN-0005RG-8C
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 18:06:50 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:58306)
+	(envelope-from <mjt@tls.msk.ru>) id 1YTIND-0005OK-Kl
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 18:06:40 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:46086)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YTIN7-0005Ma-K5; Wed, 04 Mar 2015 18:06:33 -0500
+	id 1YTIN7-0005Mc-K2; Wed, 04 Mar 2015 18:06:33 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 51EB140985;
+	by isrv.corpit.ru (Postfix) with ESMTP id 34DF240983;
 	Thu,  5 Mar 2015 02:06:31 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1C9AC974;
-	Wed,  4 Mar 2015 20:07:11 +0300 (MSK)
-Received: (nullmailer pid 17567 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 1D19794A;
+	Wed,  4 Mar 2015 20:07:08 +0300 (MSK)
+Received: (nullmailer pid 17530 invoked by uid 1000);
 	Wed, 04 Mar 2015 17:07:05 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Mar 2015 20:06:58 +0300
-Message-Id: <243a613ed15721291c5454bb8962c01a040eb652.1425488753.git.mjt@msgid.tls.msk.ru>
+Date: Wed,  4 Mar 2015 20:06:40 +0300
+Message-Id: <ee97bb4ccda297d456d963ebbfa31b5e0b325355.1425488753.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 References: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 41/47] disas/microblaze: Fix warnings caused
-	by missing 'static' attribute
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Thomas Huth <thuth@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PULL 23/47] ui: Removed unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,71 +43,130 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 23:06:51 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 23:06:42 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Thomas Huth <thuth@linux.vnet.ibm.com>
 
-Warnings from the Sparse static analysis tool:
+Remove qemu_console_displaystate(), qemu_remove_kbd_event_handler(),
+qemu_different_endianness_pixelformat() and cpkey(), since they are
+completely unused.
 
-disas/microblaze.c:289:3: warning:
- symbol 'opcodes' was not declared. Should it be static?
-disas/microblaze.c:570:6: warning:
- symbol 'register_prefix' was not declared. Should it be static?
-disas/microblaze.c:571:6: warning:
- symbol 'special_register_prefix' was not declared. Should it be static?
-disas/microblaze.c:572:6: warning:
- symbol 'fsl_register_prefix' was not declared. Should it be static?
-disas/microblaze.c:573:6: warning:
- symbol 'pvr_register_prefix' was not declared. Should it be static?
-
-Remove the unused variable special_register_prefix.
-The variable pvr_register_prefix was unused, too, but can be used.
-Add also 'const' where possible.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- disas/microblaze.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ include/ui/console.h |  3 ---
+ ui/console.c         | 12 ------------
+ ui/d3des.c           |  9 ---------
+ ui/d3des.h           |  6 ------
+ ui/input-legacy.c    |  6 ------
+ 5 files changed, 36 deletions(-)
 
-diff --git a/disas/microblaze.c b/disas/microblaze.c
-index ec91af3..c14ab89 100644
---- a/disas/microblaze.c
-+++ b/disas/microblaze.c
-@@ -275,7 +275,7 @@ enum microblaze_instr_type {
+diff --git a/include/ui/console.h b/include/ui/console.h
+index 0f97d86..6e5a867 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -36,7 +36,6 @@ typedef struct QEMUPutLEDEntry QEMUPutLEDEntry;
  
- #define MAX_OPCODES 280
+ QEMUPutKbdEntry *qemu_add_kbd_event_handler(QEMUPutKBDEvent *func,
+                                             void *opaque);
+-void qemu_remove_kbd_event_handler(QEMUPutKbdEntry *entry);
+ QEMUPutMouseEntry *qemu_add_mouse_event_handler(QEMUPutMouseEvent *func,
+                                                 void *opaque, int absolute,
+                                                 const char *name);
+@@ -194,7 +193,6 @@ DisplaySurface *qemu_create_displaysurface_guestmem(int width, int height,
+                                                     pixman_format_code_t format,
+                                                     int linesize,
+                                                     uint64_t addr);
+-PixelFormat qemu_different_endianness_pixelformat(int bpp);
+ PixelFormat qemu_default_pixelformat(int bpp);
  
--struct op_code_struct {
-+static struct op_code_struct {
-   const char *name;
-   short inst_type; /* registers and immediate values involved */
-   short inst_offset_type; /* immediate vals offset from PC? (= 1 for branches) */
-@@ -567,10 +567,9 @@ struct op_code_struct {
- };
+ DisplaySurface *qemu_create_displaysurface(int width, int height);
+@@ -322,7 +320,6 @@ void qemu_console_resize(QemuConsole *con, int width, int height);
+ void qemu_console_copy(QemuConsole *con, int src_x, int src_y,
+                        int dst_x, int dst_y, int w, int h);
+ DisplaySurface *qemu_console_surface(QemuConsole *con);
+-DisplayState *qemu_console_displaystate(QemuConsole *console);
  
- /* prefix for register names */
--char register_prefix[] = "r";
--char special_register_prefix[] = "spr";
--char fsl_register_prefix[] = "rfsl";
--char pvr_register_prefix[] = "rpvr";
-+static const char register_prefix[] = "r";
-+static const char fsl_register_prefix[] = "rfsl";
-+static const char pvr_register_prefix[] = "rpvr";
+ /* sdl.c */
+ void sdl_display_init(DisplayState *ds, int full_screen, int no_frame);
+diff --git a/ui/console.c b/ui/console.c
+index 87574a7..87af6b5 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -2005,18 +2005,6 @@ DisplaySurface *qemu_console_surface(QemuConsole *console)
+     return console->surface;
+ }
  
+-DisplayState *qemu_console_displaystate(QemuConsole *console)
+-{
+-    return console->ds;
+-}
+-
+-PixelFormat qemu_different_endianness_pixelformat(int bpp)
+-{
+-    pixman_format_code_t fmt = qemu_default_pixman_format(bpp, false);
+-    PixelFormat pf = qemu_pixelformat_from_pixman(fmt);
+-    return pf;
+-}
+-
+ PixelFormat qemu_default_pixelformat(int bpp)
+ {
+     pixman_format_code_t fmt = qemu_default_pixman_format(bpp, true);
+diff --git a/ui/d3des.c b/ui/d3des.c
+index 60c840e..5bc99b8 100644
+--- a/ui/d3des.c
++++ b/ui/d3des.c
+@@ -121,15 +121,6 @@ static void cookey(register unsigned long *raw1)
+ 	return;
+ 	}
  
- /* #defines for valid immediate range */
-@@ -738,7 +737,9 @@ get_field_special (long instr, struct op_code_struct * op)
-    default :
-      {
-        if ( ((((instr & IMM_MASK) >> IMM_LOW) ^ op->immval_mask) & 0xE000) == REG_PVR_MASK) {
--	 sprintf(tmpstr, "%spvr%d", register_prefix, (unsigned short)(((instr & IMM_MASK) >> IMM_LOW) ^ op->immval_mask) ^ REG_PVR_MASK);
-+	  sprintf(tmpstr, "%s%u", pvr_register_prefix,
-+                 (unsigned short)(((instr & IMM_MASK) >> IMM_LOW) ^
-+                                  op->immval_mask) ^ REG_PVR_MASK);
- 	 return(strdup(tmpstr));
-        } else {
- 	 strcpy(spr, "pc");
+-void cpkey(register unsigned long *into)
+-{
+-	register unsigned long *from, *endp;
+-
+-	from = KnL, endp = &KnL[32];
+-	while( from < endp ) *into++ = *from++;
+-	return;
+-	}
+-
+ void usekey(register unsigned long *from)
+ {
+ 	register unsigned long *to, *endp;
+diff --git a/ui/d3des.h b/ui/d3des.h
+index 70cb6b5..773667e 100644
+--- a/ui/d3des.h
++++ b/ui/d3des.h
+@@ -36,12 +36,6 @@ void usekey(unsigned long *);
+  * Loads the internal key register with the data in cookedkey.
+  */
+ 
+-void cpkey(unsigned long *);
+-/*		   cookedkey[32]
+- * Copies the contents of the internal key register into the storage
+- * located at &cookedkey[0].
+- */
+-
+ void des(unsigned char *, unsigned char *);
+ /*		    from[8]	      to[8]
+  * Encrypts/Decrypts (according to the key currently loaded in the
+diff --git a/ui/input-legacy.c b/ui/input-legacy.c
+index a698a34..2d4ca19 100644
+--- a/ui/input-legacy.c
++++ b/ui/input-legacy.c
+@@ -143,12 +143,6 @@ QEMUPutKbdEntry *qemu_add_kbd_event_handler(QEMUPutKBDEvent *func, void *opaque)
+     return entry;
+ }
+ 
+-void qemu_remove_kbd_event_handler(QEMUPutKbdEntry *entry)
+-{
+-    qemu_input_handler_unregister(entry->s);
+-    g_free(entry);
+-}
+-
+ static void legacy_mouse_event(DeviceState *dev, QemuConsole *src,
+                                InputEvent *evt)
+ {
 -- 
 2.1.4
 
