@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTF63-0006hu-Ie
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 14:36:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43160)
+	id 1YTF66-0006nv-UL
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 14:36:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43194)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTF60-0006dT-RN
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 14:36:41 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YTF62-0006h7-SZ
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 14:36:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTF60-0001UO-0B
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 14:36:40 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:51923)
+	(envelope-from <mjt@tls.msk.ru>) id 1YTF61-0001W6-VW
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 14:36:42 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:49900)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YTF5u-0001SD-GB; Wed, 04 Mar 2015 14:36:34 -0500
+	id 1YTF5u-0001SI-G6; Wed, 04 Mar 2015 14:36:34 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9F752408F7;
+	by isrv.corpit.ru (Postfix) with ESMTP id 7CB4F408F4;
 	Wed,  4 Mar 2015 22:36:31 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 6BDCF944;
-	Wed,  4 Mar 2015 20:07:07 +0300 (MSK)
-Received: (nullmailer pid 17501 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 6AB64986;
+	Wed,  4 Mar 2015 20:07:12 +0300 (MSK)
+Received: (nullmailer pid 17524 invoked by uid 1000);
 	Wed, 04 Mar 2015 17:07:05 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Mar 2015 20:06:26 +0300
-Message-Id: <93e4e5c47ce0b71c7ee0e7f8c84d4630e0d180c7.1425488753.git.mjt@msgid.tls.msk.ru>
+Date: Wed,  4 Mar 2015 20:06:37 +0300
+Message-Id: <e30010331d1afec95e43a7501fc739b090f4847a.1425488753.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 References: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PULL 09/47] Add copyright and author after file
-	split
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 20/47] tpm: Remove superfluous '\n' around
+	error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,32 +44,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 19:36:41 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 19:36:44 -0000
 
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+From: Gonglei <arei.gonglei@huawei.com>
 
-Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Reviewed-by:  Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- migration/qemu-file-buf.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/tpm/tpm_passthrough.c | 12 ++++++------
+ tpm.c                    |  2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/migration/qemu-file-buf.c b/migration/qemu-file-buf.c
-index e97e0bd..e56a8ad 100644
---- a/migration/qemu-file-buf.c
-+++ b/migration/qemu-file-buf.c
-@@ -2,6 +2,10 @@
-  * QEMU System Emulator
-  *
-  * Copyright (c) 2003-2008 Fabrice Bellard
-+ * Copyright (c) 2014 IBM Corp.
-+ *
-+ * Authors:
-+ *  Stefan Berger <stefanb@linux.vnet.ibm.com>
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining a copy
-  * of this software and associated documentation files (the "Software"), to deal
+diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
+index 2bf3c6f..13ac1d2 100644
+--- a/hw/tpm/tpm_passthrough.c
++++ b/hw/tpm/tpm_passthrough.c
+@@ -126,7 +126,7 @@ static int tpm_passthrough_unix_tx_bufs(TPMPassthruState *tpm_pt,
+         if (!tpm_pt->tpm_op_canceled ||
+             (tpm_pt->tpm_op_canceled && errno != ECANCELED)) {
+             error_report("tpm_passthrough: error while transmitting data "
+-                         "to TPM: %s (%i)\n",
++                         "to TPM: %s (%i)",
+                          strerror(errno), errno);
+         }
+         goto err_exit;
+@@ -139,14 +139,14 @@ static int tpm_passthrough_unix_tx_bufs(TPMPassthruState *tpm_pt,
+         if (!tpm_pt->tpm_op_canceled ||
+             (tpm_pt->tpm_op_canceled && errno != ECANCELED)) {
+             error_report("tpm_passthrough: error while reading data from "
+-                         "TPM: %s (%i)\n",
++                         "TPM: %s (%i)",
+                          strerror(errno), errno);
+         }
+     } else if (ret < sizeof(struct tpm_resp_hdr) ||
+                tpm_passthrough_get_size_from_buffer(out) != ret) {
+         ret = -1;
+         error_report("tpm_passthrough: received invalid response "
+-                     "packet from TPM\n");
++                     "packet from TPM");
+     }
+ 
+ err_exit:
+@@ -282,7 +282,7 @@ static void tpm_passthrough_cancel_cmd(TPMBackend *tb)
+         if (tpm_pt->cancel_fd >= 0) {
+             n = write(tpm_pt->cancel_fd, "-", 1);
+             if (n != 1) {
+-                error_report("Canceling TPM command failed: %s\n",
++                error_report("Canceling TPM command failed: %s",
+                              strerror(errno));
+             } else {
+                 tpm_pt->tpm_op_canceled = true;
+@@ -413,13 +413,13 @@ static int tpm_passthrough_handle_device_opts(QemuOpts *opts, TPMBackend *tb)
+ 
+     tpm_pt->tpm_fd = qemu_open(tpm_pt->tpm_dev, O_RDWR);
+     if (tpm_pt->tpm_fd < 0) {
+-        error_report("Cannot access TPM device using '%s': %s\n",
++        error_report("Cannot access TPM device using '%s': %s",
+                      tpm_pt->tpm_dev, strerror(errno));
+         goto err_free_parameters;
+     }
+ 
+     if (tpm_passthrough_test_tpmdev(tpm_pt->tpm_fd)) {
+-        error_report("'%s' is not a TPM device.\n",
++        error_report("'%s' is not a TPM device.",
+                      tpm_pt->tpm_dev);
+         goto err_close_tpmdev;
+     }
+diff --git a/tpm.c b/tpm.c
+index 4ffd9b9..963b7ee 100644
+--- a/tpm.c
++++ b/tpm.c
+@@ -134,7 +134,7 @@ static int configure_tpm(QemuOpts *opts)
+     Error *local_err = NULL;
+ 
+     if (!QLIST_EMPTY(&tpm_backends)) {
+-        error_report("Only one TPM is allowed.\n");
++        error_report("Only one TPM is allowed.");
+         return 1;
+     }
+ 
 -- 
 2.1.4
 
