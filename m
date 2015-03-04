@@ -1,45 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YT8IQ-0003ke-3G
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 07:21:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52897)
+	id 1YT8KZ-00080r-6K
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 07:23:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53690)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1YT8IM-0003ap-DF
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 07:20:59 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YT8KU-0007nK-3C
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 07:23:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1YT8II-0001o9-Kd
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 07:20:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49693)
+	(envelope-from <mjt@tls.msk.ru>) id 1YT8KO-0002a7-GV
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 07:23:10 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:40668)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>)
-	id 1YT8II-0001nI-6M; Wed, 04 Mar 2015 07:20:54 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t24CKr9q023308
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 4 Mar 2015 07:20:53 -0500
-Received: from work-vm (ovpn-116-91.ams2.redhat.com [10.36.116.91])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t24CKnDv026488
-	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NO);
-	Wed, 4 Mar 2015 07:20:51 -0500
-Date: Wed, 4 Mar 2015 12:20:49 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20150304122048.GD2530@work-vm>
-References: <1425146983-16015-1-git-send-email-sw@weilnetz.de>
-	<1425146983-16015-2-git-send-email-sw@weilnetz.de>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YT8KI-0002XI-9q; Wed, 04 Mar 2015 07:22:58 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id BD5F640803;
+	Wed,  4 Mar 2015 15:22:49 +0300 (MSK)
+Message-ID: <54F6F919.9060905@msgid.tls.msk.ru>
+Date: Wed, 04 Mar 2015 15:22:49 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1425146983-16015-2-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Amit Shah <amit.shah@redhat.com>,
-	QEMU Developer <qemu-devel@nongnu.org>, Juan Quintela <quintela@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] migration: Fix coding
- style (whitespace issues)
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+References: <1424073025-13262-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<20150304121654.GC2530@work-vm>
+In-Reply-To: <20150304121654.GC2530@work-vm>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Amit Shah <amit.shah@redhat.com>,
+	qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] migration/rdma: clean up
+ qemu_rdma_dest_init a bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,112 +46,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 12:20:59 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 12:23:13 -0000
 
-* Stefan Weil (sw@weilnetz.de) wrote:
-> * Remove trailing whitespace (fixes 9 errors from checkpatch.pl).
->   One comment line was longer than 80 characters, so wrap it
->   and fix a typo, too.
-> * Replace tabs by blanks (fixes 1 error).
+04.03.2015 15:16, Dr. David Alan Gilbert wrote:
+> * Michael Tokarev (mjt@tls.msk.ru) wrote:
+>> Do not check for rdma->host being empty twice.  This removes a large
+>> "if" block, so code indentation is changed.  While at it, remove an
+>> ugly goto from the loop, replacing it with a cleaner if logic.  And
+>> finally, there's no need to initialize `ret' variable since is always
+>> has a value.
+>>
+>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Juan/Amit: There's a space at the end of a line that got in, so
+>            that just needs fixing in the merge;  it's after the 'break;'
 
-Needs merging with Michael's fixes, but otherwise:
+I already fixed it in my tree two days ago.
 
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> but the patch is a big improvement on what's there:
+> 
+> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> 
+> also tested on an RDMA system.
 
-> ---
-> 
-> My editor automatically removes trailing whitespace, so before fixing code,
-> I had to fix the coding style.
-> 
->  migration/rdma.c |   22 +++++++++++-----------
->  1 file changed, 11 insertions(+), 11 deletions(-)
-> 
-> diff --git a/migration/rdma.c b/migration/rdma.c
-> index 6bee30c..67c5701 100644
-> --- a/migration/rdma.c
-> +++ b/migration/rdma.c
-> @@ -703,7 +703,7 @@ static void qemu_rdma_dump_id(const char *who, struct ibv_context *verbs)
->                  verbs->device->ibdev_path,
->                  port.link_layer,
->                  (port.link_layer == IBV_LINK_LAYER_INFINIBAND) ? "Infiniband" :
-> -                 ((port.link_layer == IBV_LINK_LAYER_ETHERNET) 
-> +                 ((port.link_layer == IBV_LINK_LAYER_ETHERNET)
->                      ? "Ethernet" : "Unknown"));
->  }
->  
-> @@ -738,7 +738,7 @@ static void qemu_rdma_dump_gid(const char *who, struct rdma_cm_id *id)
->   * and validate what time of hardware it is.
->   *
->   * Unfortunately, this puts the user in a fix:
-> - * 
-> + *
->   *  If the source VM connects with an IPv4 address without knowing that the
->   *  destination has bound to '[::]' the migration will unconditionally fail
->   *  unless the management software is explicitly listening on the the IPv4
-> @@ -746,13 +746,13 @@ static void qemu_rdma_dump_gid(const char *who, struct rdma_cm_id *id)
->   *
->   *  If the source VM connects with an IPv6 address, then we're OK because we can
->   *  throw an error on the source (and similarly on the destination).
-> - * 
-> + *
->   *  But in mixed environments, this will be broken for a while until it is fixed
->   *  inside linux.
->   *
->   * We do provide a *tiny* bit of help in this function: We can list all of the
->   * devices in the system and check to see if all the devices are RoCE or
-> - * Infiniband. 
-> + * Infiniband.
->   *
->   * If we detect that we have a *pure* RoCE environment, then we can safely
->   * thrown an error even if the management software has specified '[::]' as the
-> @@ -771,17 +771,17 @@ static int qemu_rdma_broken_ipv6_kernel(Error **errp, struct ibv_context *verbs)
->      /* This bug only exists in linux, to our knowledge. */
->  #ifdef CONFIG_LINUX
->  
-> -    /* 
-> +    /*
->       * Verbs are only NULL if management has bound to '[::]'.
-> -     * 
-> +     *
->       * Let's iterate through all the devices and see if there any pure IB
->       * devices (non-ethernet).
-> -     * 
-> +     *
->       * If not, then we can safely proceed with the migration.
->       * Otherwise, there are no guarantees until the bug is fixed in linux.
->       */
->      if (!verbs) {
-> -	    int num_devices, x;
-> +        int num_devices, x;
->          struct ibv_device ** dev_list = ibv_get_device_list(&num_devices);
->          bool roce_found = false;
->          bool ib_found = false;
-> @@ -826,8 +826,8 @@ static int qemu_rdma_broken_ipv6_kernel(Error **errp, struct ibv_context *verbs)
->  
->      /*
->       * If we have a verbs context, that means that some other than '[::]' was
-> -     * used by the management software for binding. In which case we can actually 
-> -     * warn the user about a potential broken kernel;
-> +     * used by the management software for binding. In which case we can
-> +     * actually warn the user about a potentially broken kernel.
->       */
->  
->      /* IB ports start with 1, not 0 */
-> @@ -2421,7 +2421,7 @@ static int qemu_rdma_dest_init(RDMAContext *rdma, Error **errp)
->                          continue;
->                      }
->                  }
-> -                    
-> +
->                  goto listen;
->              }
->          }
-> -- 
-> 1.7.10.4
-> 
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+Thank you!
+
+I think it's okay to merge it using the -trivial tree, I'm about to
+send a pull request today.
+
+/mjt
 
