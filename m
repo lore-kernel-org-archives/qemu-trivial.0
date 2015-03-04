@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTCuY-0000Sk-4P
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 12:16:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38608)
+	id 1YTCuZ-0000Ww-EG
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 12:16:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38611)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTCuS-0000HB-Vl
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:16:40 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1YTCuT-0000HF-1I
+	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:16:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTCuR-0000xB-PZ
+	(envelope-from <mjt@tls.msk.ru>) id 1YTCuR-0000xK-SL
 	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 12:16:36 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:34428)
+Received: from isrv.corpit.ru ([86.62.121.231]:50284)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YTCuO-0000vS-Ps; Wed, 04 Mar 2015 12:16:32 -0500
+	id 1YTCuO-0000vG-H4; Wed, 04 Mar 2015 12:16:32 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1C52B408A4;
-	Wed,  4 Mar 2015 20:16:32 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id EB00C408A1;
+	Wed,  4 Mar 2015 20:16:31 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id AAC4997C;
-	Wed,  4 Mar 2015 20:07:11 +0300 (MSK)
-Received: (nullmailer pid 17522 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id D005693B;
+	Wed,  4 Mar 2015 20:07:06 +0300 (MSK)
+Received: (nullmailer pid 17493 invoked by uid 1000);
 	Wed, 04 Mar 2015 17:07:05 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Mar 2015 20:06:36 +0300
-Message-Id: <bdca54700098f4806e17eb58d37ff0a0991d20ad.1425488753.git.mjt@msgid.tls.msk.ru>
+Date: Wed,  4 Mar 2015 20:06:22 +0300
+Message-Id: <9e46c8b5da7959b601469c3fca3d4d930ed6ba02.1425488753.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 References: <cover.1425488753.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 19/47] xtensa: Remove superfluous '\n' around
-	error_report()
+Cc: qemu-trivial@nongnu.org, "Gabriel L. Somlo" <gsomlo@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Gabriel Somlo <somlo@cmu.edu>
+Subject: [Qemu-trivial] [PULL 05/47] smbios: document cmdline options for
+	smbios type 2-4, 17 structures
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,80 +44,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Mar 2015 17:16:40 -0000
+X-List-Received-Date: Wed, 04 Mar 2015 17:16:41 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+From: "Gabriel L. Somlo" <gsomlo@gmail.com>
 
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/xtensa/sim.c    |  2 +-
- hw/xtensa/xtfpga.c | 10 +++++-----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ qemu-options.hx | 32 +++++++++++++++++++++++++++++---
+ 1 file changed, 29 insertions(+), 3 deletions(-)
 
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index 37ea9ae..328d209 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -64,7 +64,7 @@ static void xtensa_sim_init(MachineState *machine)
-     for (n = 0; n < smp_cpus; n++) {
-         cpu = cpu_xtensa_init(cpu_model);
-         if (cpu == NULL) {
--            error_report("unable to find CPU definition '%s'\n",
-+            error_report("unable to find CPU definition '%s'",
-                          cpu_model);
-             exit(EXIT_FAILURE);
-         }
-diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
-index e5a6bba..bb90eb2 100644
---- a/hw/xtensa/xtfpga.c
-+++ b/hw/xtensa/xtfpga.c
-@@ -190,7 +190,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-     for (n = 0; n < smp_cpus; n++) {
-         cpu = cpu_xtensa_init(cpu_model);
-         if (cpu == NULL) {
--            error_report("unable to find CPU definition '%s'\n",
-+            error_report("unable to find CPU definition '%s'",
-                          cpu_model);
-             exit(EXIT_FAILURE);
-         }
-@@ -235,7 +235,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-                 board->flash_size / board->flash_sector_size,
-                 4, 0x0000, 0x0000, 0x0000, 0x0000, be);
-         if (flash == NULL) {
--            error_report("unable to mount pflash\n");
-+            error_report("unable to mount pflash");
-             exit(EXIT_FAILURE);
-         }
-     }
-@@ -287,7 +287,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-             uint32_t dtb_addr = tswap32(cur_lowmem);
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 85ca3ad..ee4b223 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1364,11 +1364,25 @@ ETEXI
+ DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,
+     "-smbios file=binary\n"
+     "                load SMBIOS entry from binary file\n"
+-    "-smbios type=0[,vendor=str][,version=str][,date=str][,release=%d.%d][,uefi=on|off]\n"
++    "-smbios type=0[,vendor=str][,version=str][,date=str][,release=%d.%d]\n"
++    "              [,uefi=on|off]\n"
+     "                specify SMBIOS type 0 fields\n"
+     "-smbios type=1[,manufacturer=str][,product=str][,version=str][,serial=str]\n"
+     "              [,uuid=uuid][,sku=str][,family=str]\n"
+-    "                specify SMBIOS type 1 fields\n", QEMU_ARCH_I386)
++    "                specify SMBIOS type 1 fields\n"
++    "-smbios type=2[,manufacturer=str][,product=str][,version=str][,serial=str]\n"
++    "              [,asset=str][,location=str]\n"
++    "                specify SMBIOS type 2 fields\n"
++    "-smbios type=3[,manufacturer=str][,version=str][,serial=str][,asset=str]\n"
++    "              [,sku=str]\n"
++    "                specify SMBIOS type 3 fields\n"
++    "-smbios type=4[,sock_pfx=str][,manufacturer=str][,version=str][,serial=str]\n"
++    "              [,asset=str][,part=str]\n"
++    "                specify SMBIOS type 4 fields\n"
++    "-smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]\n"
++    "               [,asset=str][,part=str]\n"
++    "                specify SMBIOS type 17 fields\n",
++    QEMU_ARCH_I386)
+ STEXI
+ @item -smbios file=@var{binary}
+ @findex -smbios
+@@ -1377,8 +1391,20 @@ Load SMBIOS entry from binary file.
+ @item -smbios type=0[,vendor=@var{str}][,version=@var{str}][,date=@var{str}][,release=@var{%d.%d}][,uefi=on|off]
+ Specify SMBIOS type 0 fields
  
-             if (!fdt) {
--                error_report("could not load DTB '%s'\n", dtb_filename);
-+                error_report("could not load DTB '%s'", dtb_filename);
-                 exit(EXIT_FAILURE);
-             }
+-@item -smbios type=1[,manufacturer=@var{str}][,product=@var{str}] [,version=@var{str}][,serial=@var{str}][,uuid=@var{uuid}][,sku=@var{str}] [,family=@var{str}]
++@item -smbios type=1[,manufacturer=@var{str}][,product=@var{str}][,version=@var{str}][,serial=@var{str}][,uuid=@var{uuid}][,sku=@var{str}][,family=@var{str}]
+ Specify SMBIOS type 1 fields
++
++@item -smbios type=2[,manufacturer=@var{str}][,product=@var{str}][,version=@var{str}][,serial=@var{str}][,asset=@var{str}][,location=@var{str}][,family=@var{str}]
++Specify SMBIOS type 2 fields
++
++@item -smbios type=3[,manufacturer=@var{str}][,version=@var{str}][,serial=@var{str}][,asset=@var{str}][,sku=@var{str}]
++Specify SMBIOS type 3 fields
++
++@item -smbios type=4[,sock_pfx=@var{str}][,manufacturer=@var{str}][,version=@var{str}][,serial=@var{str}][,asset=@var{str}][,part=@var{str}]
++Specify SMBIOS type 4 fields
++
++@item -smbios type=17[,loc_pfx=@var{str}][,bank=@var{str}][,manufacturer=@var{str}][,serial=@var{str}][,asset=@var{str}][,part=@var{str}]
++Specify SMBIOS type 17 fields
+ ETEXI
  
-@@ -307,7 +307,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-                                                   lowmem_end - cur_lowmem);
-             }
-             if (initrd_size < 0) {
--                error_report("could not load initrd '%s'\n", initrd_filename);
-+                error_report("could not load initrd '%s'", initrd_filename);
-                 exit(EXIT_FAILURE);
-             }
-             initrd_location.start = tswap32(cur_lowmem);
-@@ -333,7 +333,7 @@ static void lx_init(const LxBoardDesc *board, MachineState *machine)
-             if (success > 0 && is_linux) {
-                 entry_point = ep;
-             } else {
--                error_report("could not load kernel '%s'\n",
-+                error_report("could not load kernel '%s'",
-                              kernel_filename);
-                 exit(EXIT_FAILURE);
-             }
+ STEXI
 -- 
 2.1.4
 
