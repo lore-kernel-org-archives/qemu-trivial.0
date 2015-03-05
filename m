@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTSK9-0002Se-Od
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2015 04:44:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52726)
+	id 1YTSji-0004wh-V8
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2015 05:10:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58027)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YTSK6-0002Ll-4R
-	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 04:44:06 -0500
+	(envelope-from <dgilbert@redhat.com>) id 1YTSjg-0004wL-5s
+	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 05:10:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YTSK1-0000eJ-1C
-	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 04:44:06 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:29846)
+	(envelope-from <dgilbert@redhat.com>) id 1YTSjb-0001XY-V5
+	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 05:10:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37192)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YTSK0-0000b2-8q; Thu, 05 Mar 2015 04:44:00 -0500
-Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BCQ59596; Thu, 05 Mar 2015 17:43:43 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml433-hub.china.huawei.com
-	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1; Thu, 5 Mar 2015
-	17:43:35 +0800
-Message-ID: <54F82535.1050903@huawei.com>
-Date: Thu, 5 Mar 2015 17:43:17 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <dgilbert@redhat.com>)
+	id 1YTSjb-0001XP-N2; Thu, 05 Mar 2015 05:10:27 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t25AAQ7h028663
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 5 Mar 2015 05:10:26 -0500
+Received: from work-vm (ovpn-116-95.ams2.redhat.com [10.36.116.95])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t25AAL6j014913
+	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NO);
+	Thu, 5 Mar 2015 05:10:24 -0500
+Date: Thu, 5 Mar 2015 10:10:21 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20150305101017.GC2381@work-vm>
+References: <1425146983-16015-1-git-send-email-sw@weilnetz.de>
+	<1425146983-16015-4-git-send-email-sw@weilnetz.de>
+	<20150304133120.GG2530@work-vm> <54F76ECE.5050205@weilnetz.de>
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1425023419-12244-1-git-send-email-arei.gonglei@huawei.com>	<1425023419-12244-3-git-send-email-arei.gonglei@huawei.com>	<54F705B0.8040308@msgid.tls.msk.ru>
-	<54F7BEC9.1060204@huawei.com>
-	<87oao7zv8m.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87oao7zv8m.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020201.54F82551.0070, ss=1, re=0.001, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 406bb2d8c6b263b749a9cd1411e78e9a
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [Qemu-devel]  [PATCH 2/9] arm: fix memory leak
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <54F76ECE.5050205@weilnetz.de>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Amit Shah <amit.shah@redhat.com>,
+	QEMU Developer <qemu-devel@nongnu.org>, Juan Quintela <quintela@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/3] migration: Fix
+ remaining 32 bit compiler errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,18 +52,226 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2015 09:44:06 -0000
+X-List-Received-Date: Thu, 05 Mar 2015 10:10:34 -0000
 
-On 2015/3/5 16:47, Markus Armbruster wrote:
-> Hard-won personal experience: the more trivial a change is, the more
-> likely I am to screw it up in some stupid way.
+* Stefan Weil (sw@weilnetz.de) wrote:
+> Please see my comments below.
 > 
-> In other words: no change is too trivial to screw it up.
+> Am 04.03.2015 um 14:31 schrieb Dr. David Alan Gilbert:
+> >* Stefan Weil (sw@weilnetz.de) wrote:
+> >>Fix type casts between pointers and 64 bit integers.
+> >>Now 32 bit builds are possible again.
+> >>
+> >>Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> >>---
+> >>  migration/rdma.c |   57 +++++++++++++++++++++++++++++-------------------------
+> >>  1 file changed, 31 insertions(+), 26 deletions(-)
+> >>
+> >>diff --git a/migration/rdma.c b/migration/rdma.c
+> >>index 1512460..a68f1f1 100644
+> >>--- a/migration/rdma.c
+> >>+++ b/migration/rdma.c
+> >>@@ -493,8 +493,8 @@ static inline uint64_t ram_chunk_index(const uint8_t *start,
+> >>  static inline uint8_t *ram_chunk_start(const RDMALocalBlock *rdma_ram_block,
+> >>                                         uint64_t i)
+> >>  {
+> >>-    return (uint8_t *) (((uintptr_t) rdma_ram_block->local_host_addr)
+> >>-                                    + (i << RDMA_REG_CHUNK_SHIFT));
+> >>+    return (uint8_t *)(uintptr_t)(rdma_ram_block->local_host_addr +
+> >>+                                  (i << RDMA_REG_CHUNK_SHIFT));
+> >>  }
+> >>  static inline uint8_t *ram_chunk_end(const RDMALocalBlock *rdma_ram_block,
+> >>@@ -515,7 +515,7 @@ static int __qemu_rdma_add_block(RDMAContext *rdma, void *host_addr,
+> >>  {
+> >This will clash with my 'unbreak dtrace tracing due to double _ in rdma names' that's
+> >going through Stefan's tree.
 > 
-> Corollary: no change is trivial enough to skip testing.
-I can't agree any more.    Never again. :(
+> Then this part will have to wait until Stefan's tree was applied.
+> 
+> >
+> >>      RDMALocalBlocks *local = &rdma->local_ram_blocks;
+> >>      RDMALocalBlock *block = g_hash_table_lookup(rdma->blockmap,
+> >>-        (void *) block_offset);
+> >>+        (void *)(uintptr_t)block_offset);
+> >>      RDMALocalBlock *old = local->block;
+> >
+> >>      assert(block == NULL);
+> >>@@ -526,9 +526,11 @@ static int __qemu_rdma_add_block(RDMAContext *rdma, void *host_addr,
+> >>          int x;
+> >>          for (x = 0; x < local->nb_blocks; x++) {
+> >>-            g_hash_table_remove(rdma->blockmap, (void *)old[x].offset);
+> >>-            g_hash_table_insert(rdma->blockmap, (void *)old[x].offset,
+> >>-                                                &local->block[x]);
+> >>+            g_hash_table_remove(rdma->blockmap,
+> >>+                                (void *)(uintptr_t)old[x].offset);
+> >>+            g_hash_table_insert(rdma->blockmap,
+> >>+                                (void *)(uintptr_t)old[x].offset,
+> >>+                                &local->block[x]);
+> >>          }
+> >>          memcpy(local->block, old, sizeof(RDMALocalBlock) * local->nb_blocks);
+> >>          g_free(old);
+> >>@@ -549,12 +551,12 @@ static int __qemu_rdma_add_block(RDMAContext *rdma, void *host_addr,
+> >>      block->is_ram_block = local->init ? false : true;
+> >>-    g_hash_table_insert(rdma->blockmap, (void *) block_offset, block);
+> >>+    g_hash_table_insert(rdma->blockmap, (void *)(uintptr_t)block_offset, block);
+> >>      trace___qemu_rdma_add_block(local->nb_blocks,
+> >>-                           (uint64_t) block->local_host_addr, block->offset,
+> >>+                           (uintptr_t)block->local_host_addr, block->offset,
+> >>                             block->length,
+> >>-                           (uint64_t) (block->local_host_addr + block->length),
+> >>+                           (uintptr_t)(block->local_host_addr + block->length),
+> >>                             BITS_TO_LONGS(block->nb_chunks) *
+> >>                                 sizeof(unsigned long) * 8,
+> >>                             block->nb_chunks);
+> >>@@ -595,7 +597,7 @@ static int qemu_rdma_init_ram_blocks(RDMAContext *rdma)
+> >>      return 0;
+> >>  }
+> >>-static int __qemu_rdma_delete_block(RDMAContext *rdma, ram_addr_t block_offset)
+> >>+static int __qemu_rdma_delete_block(RDMAContext *rdma, uintptr_t block_offset)
+> >>  {
+> >>      RDMALocalBlocks *local = &rdma->local_ram_blocks;
+> >>      RDMALocalBlock *block = g_hash_table_lookup(rdma->blockmap,
+> >>@@ -635,7 +637,7 @@ static int __qemu_rdma_delete_block(RDMAContext *rdma, ram_addr_t block_offset)
+> >>      block->remote_keys = NULL;
+> >>      for (x = 0; x < local->nb_blocks; x++) {
+> >>-        g_hash_table_remove(rdma->blockmap, (void *)old[x].offset);
+> >>+        g_hash_table_remove(rdma->blockmap, (void *)(uintptr_t)old[x].offset);
+> >>      }
+> >>      if (local->nb_blocks > 1) {
+> >>@@ -658,9 +660,9 @@ static int __qemu_rdma_delete_block(RDMAContext *rdma, ram_addr_t block_offset)
+> >>      }
+> >>      trace___qemu_rdma_delete_block(local->nb_blocks,
+> >>-                           (uint64_t)block->local_host_addr,
+> >>+                           (uintptr_t)block->local_host_addr,
+> >>                             block->offset, block->length,
+> >>-                           (uint64_t)(block->local_host_addr + block->length),
+> >>+                           (uintptr_t)(block->local_host_addr + block->length),
+> >>                             BITS_TO_LONGS(block->nb_chunks) *
+> >>                                 sizeof(unsigned long) * 8, block->nb_chunks);
+> >>@@ -670,8 +672,9 @@ static int __qemu_rdma_delete_block(RDMAContext *rdma, ram_addr_t block_offset)
+> >>      if (local->nb_blocks) {
+> >>          for (x = 0; x < local->nb_blocks; x++) {
+> >>-            g_hash_table_insert(rdma->blockmap, (void *)local->block[x].offset,
+> >>-                                                &local->block[x]);
+> >>+            g_hash_table_insert(rdma->blockmap,
+> >>+                                (void *)(uintptr_t)local->block[x].offset,
+> >>+                                &local->block[x]);
+> >>          }
+> >>      }
+> >>@@ -1076,7 +1079,7 @@ static int qemu_rdma_reg_whole_ram_blocks(RDMAContext *rdma)
+> >>   * This search cannot fail or the migration will fail.
+> >>   */
+> >>  static int qemu_rdma_search_ram_block(RDMAContext *rdma,
+> >>-                                      uint64_t block_offset,
+> >>+                                      uintptr_t block_offset,
+> >>                                        uint64_t offset,
+> >>                                        uint64_t length,
+> >>                                        uint64_t *block_index,
+> >>@@ -1380,8 +1383,8 @@ static uint64_t qemu_rdma_poll(RDMAContext *rdma, uint64_t *wr_id_out,
+> >>          RDMALocalBlock *block = &(rdma->local_ram_blocks.block[index]);
+> >>          trace_qemu_rdma_poll_write(print_wrid(wr_id), wr_id, rdma->nb_sent,
+> >>-                 index, chunk,
+> >>-                 block->local_host_addr, (void *)block->remote_host_addr);
+> >>+                                   index, chunk, block->local_host_addr,
+> >>+                                   (void *)(uintptr_t)block->remote_host_addr);
+> >I think that's the wrong fix there; remote_host_addr is actually 64bit because
+> >even if this host is 32bit the other end might be 64bit; I think the right
+> >fix is to change the trace to use a uint64_t for the remote_host_addr.
+> 
+> That depends on the kind of output which is wanted.
+> 
+> We can either use %p for pointers, then the output will depend on the host's
+> pointer size.
+> Or we can use %16 PRIu64, then the output will always show 16 digits (with
+> at least 8
+> leading zeros on 32 bit hosts).
 
-Regards,
--Gonglei
+Since it's trying to print the remote_host_addr and that really can be 64bit
+it doesn't seem right to use a %p since that's dependent on the local pointer
+size.  I'd use a % PRIx64.
 
+> >>          clear_bit(chunk, block->transit_bitmap);
+> >>@@ -1524,7 +1527,7 @@ static int qemu_rdma_post_send_control(RDMAContext *rdma, uint8_t *buf,
+> >>      RDMAWorkRequestData *wr = &rdma->wr_data[RDMA_WRID_CONTROL];
+> >>      struct ibv_send_wr *bad_wr;
+> >>      struct ibv_sge sge = {
+> >>-                           .addr = (uint64_t)(wr->control),
+> >>+                           .addr = (uintptr_t)(wr->control),
+> >No, as before, my belief is that the .addr is a uint64_t.
+> 
+> Yes, because wr->control is a pointer which you want to convert to an
+> integer value.
+> C allows assignments from 32 bit integers to 64 bit integers - the compiler
+> will add the
+> necessary 0 bits.
+
+Yes, fair enough.
+
+Dave
+
+> >(Although curiously I did a test and found that gcc lets me pass a uint64_t
+> >to a function that has a uintptr_t parameter on a 32bit machine, but I don't
+> >understand why.)
+> >
+> >Dave
+> >
+> >>                             .length = head->len + sizeof(RDMAControlHeader),
+> >>                             .lkey = wr->control_mr->lkey,
+> >>                           };
+> >>@@ -1578,7 +1581,7 @@ static int qemu_rdma_post_recv_control(RDMAContext *rdma, int idx)
+> >>  {
+> >>      struct ibv_recv_wr *bad_wr;
+> >>      struct ibv_sge sge = {
+> >>-                            .addr = (uint64_t)(rdma->wr_data[idx].control),
+> >>+                            .addr = (uintptr_t)(rdma->wr_data[idx].control),
+> >>                              .length = RDMA_CONTROL_MAX_BUFFER,
+> >>                              .lkey = rdma->wr_data[idx].control_mr->lkey,
+> >>                           };
+> >>@@ -1825,11 +1828,12 @@ static int qemu_rdma_write_one(QEMUFile *f, RDMAContext *rdma,
+> >>                               };
+> >>  retry:
+> >>-    sge.addr = (uint64_t)(block->local_host_addr +
+> >>+    sge.addr = (uintptr_t)(block->local_host_addr +
+> >>                              (current_addr - block->offset));
+> >>      sge.length = length;
+> >>-    chunk = ram_chunk_index(block->local_host_addr, (uint8_t *) sge.addr);
+> >>+    chunk = ram_chunk_index(block->local_host_addr,
+> >>+                            (uint8_t *)(uintptr_t)sge.addr);
+> >>      chunk_start = ram_chunk_start(block, chunk);
+> >>      if (block->is_ram_block) {
+> >>@@ -1882,8 +1886,9 @@ retry:
+> >>               * memset() + madvise() the entire chunk without RDMA.
+> >>               */
+> >>-            if (can_use_buffer_find_nonzero_offset((void *)sge.addr, length)
+> >>-                   && buffer_find_nonzero_offset((void *)sge.addr,
+> >>+            if (can_use_buffer_find_nonzero_offset((void *)(uintptr_t)sge.addr,
+> >>+                                                   length)
+> >>+                   && buffer_find_nonzero_offset((void *)(uintptr_t)sge.addr,
+> >>                                                      length) == length) {
+> >>                  RDMACompress comp = {
+> >>                                          .offset = current_addr,
+> >>@@ -2978,7 +2983,7 @@ static int qemu_rdma_registration_handle(QEMUFile *f, void *opaque,
+> >>               */
+> >>              for (i = 0; i < local->nb_blocks; i++) {
+> >>                  rdma->block[i].remote_host_addr =
+> >>-                    (uint64_t)(local->block[i].local_host_addr);
+> >>+                    (uintptr_t)(local->block[i].local_host_addr);
+> >>                  if (rdma->pin_all) {
+> >>                      rdma->block[i].remote_rkey = local->block[i].mr->rkey;
+> >>@@ -3042,7 +3047,7 @@ static int qemu_rdma_registration_handle(QEMUFile *f, void *opaque,
+> >>                      goto out;
+> >>                  }
+> >>-                reg_result->host_addr = (uint64_t) block->local_host_addr;
+> >>+                reg_result->host_addr = (uintptr_t)block->local_host_addr;
+> >>                  trace_qemu_rdma_registration_handle_register_rkey(
+> >>                                                             reg_result->rkey);
+> >>-- 
+> >>1.7.10.4
+> >>
+> >>
+> >--
+> >Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
