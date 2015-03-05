@@ -1,37 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTRt7-0003Wt-1c
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2015 04:16:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46405)
+	id 1YTSK9-0002Se-Od
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2015 04:44:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52726)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTRt1-0003OZ-VI
-	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 04:16:11 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1YTSK6-0002Ll-4R
+	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 04:44:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YTRt0-0007BJ-Nt
-	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 04:16:07 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:38655)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YTSK1-0000eJ-1C
+	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 04:44:06 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:29846)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YTRss-00079Q-HO; Thu, 05 Mar 2015 04:15:58 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0992040AA1;
-	Thu,  5 Mar 2015 12:15:57 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id EBD4992E;
-	Thu,  5 Mar 2015 12:15:56 +0300 (MSK)
-Received: (nullmailer pid 28125 invoked by uid 1000);
-	Thu, 05 Mar 2015 09:15:56 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Thu,  5 Mar 2015 12:15:56 +0300
-Message-Id: <cover.1425546787.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1YTSK0-0000b2-8q; Thu, 05 Mar 2015 04:44:00 -0500
+Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id BCQ59596; Thu, 05 Mar 2015 17:43:43 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml433-hub.china.huawei.com
+	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1; Thu, 5 Mar 2015
+	17:43:35 +0800
+Message-ID: <54F82535.1050903@huawei.com>
+Date: Thu, 5 Mar 2015 17:43:17 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL v3 00/45] Trivial patches for 2015-03-04
+To: Markus Armbruster <armbru@redhat.com>
+References: <1425023419-12244-1-git-send-email-arei.gonglei@huawei.com>	<1425023419-12244-3-git-send-email-arei.gonglei@huawei.com>	<54F705B0.8040308@msgid.tls.msk.ru>
+	<54F7BEC9.1060204@huawei.com>
+	<87oao7zv8m.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87oao7zv8m.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020201.54F82551.0070, ss=1, re=0.001, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 406bb2d8c6b263b749a9cd1411e78e9a
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel]  [PATCH 2/9] arm: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,170 +56,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2015 09:16:11 -0000
+X-List-Received-Date: Thu, 05 Mar 2015 09:44:06 -0000
 
-And here's Yet Another pull request, dropping one more patch
-("microblaze: fix memory leak") which was broken and escaped
-my testing coverage.  I left the tag/subject intact, and again,
-wont include all the individual patches, which is the same
-set as in the original pull request minus 2 patches.
+On 2015/3/5 16:47, Markus Armbruster wrote:
+> Hard-won personal experience: the more trivial a change is, the more
+> likely I am to screw it up in some stupid way.
+> 
+> In other words: no change is too trivial to screw it up.
+> 
+> Corollary: no change is trivial enough to skip testing.
+I can't agree any more.    Never again. :(
 
-Please consider pulling.
+Regards,
+-Gonglei
 
-Thanks,
-
-/mjt
-
-The following changes since commit 3539bbb93e944ffde31c61c369ea9eedcc5697=
-a6:
-
-  Merge remote-tracking branch 'remotes/awilliam/tags/vfio-update-2015030=
-2.0' into staging (2015-03-04 14:37:31 +0000)
-
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-03-04
-
-for you to fetch changes up to df16fd9e61db90c661e6630d7de1fdcc5200ac25:
-
-  9pfs: remove useless return (2015-03-05 12:12:16 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2015-03-04
-
-----------------------------------------------------------------
-Alberto Garcia (2):
-      qerror.h: Swap definitions that were not in alphabetical order
-      qmp-commands.hx: Fix several typos
-
-Borislav Petkov (1):
-      memsave: Improve and disambiguate error message
-
-Cole Robinson (3):
-      qapi-schema: Fix SpiceChannel docs
-      gitignore: Track common.env in iotests gitignore
-      gitignore: Ignore new tests
-
-Gabriel L. Somlo (1):
-      smbios: document cmdline options for smbios type 2-4, 17 structures
-
-Gonglei (18):
-      xen-pt: fix Negative array index read
-      xen-pt: fix Out-of-bounds read
-      block: remove superfluous '\n' around error_report/error_setg
-      a9gtimer: remove superfluous '\n' around error_setg
-      pl330.c: remove superfluous '\n' around error_setg
-      numa: remove superfluous '\n' around error_setg
-      Remove superfluous '\n' around error_report()
-      vhost-scsi: Remove superfluous '\n' around error_report()
-      vfio: Remove superfluous '\n' around error_report()
-      xtensa: Remove superfluous '\n' around error_report()
-      tpm: Remove superfluous '\n' around error_report()
-      arm/digic_boards: Remove superfluous '\n' around error_report()
-      vhost: Remove superfluous '\n' around error_report()
-      nbd: fix resource leak
-      sparc/leon3.c: fix memory leak
-      macio: fix possible memory leak
-      milkymist.c: fix memory leak
-      sysbus: fix memory leak
-
-Markus Armbruster (1):
-      xilinx_ethlite: Clean up after commit 2f991ad
-
-Michael Tokarev (3):
-      qemu-options: fix/document -incoming options
-      e500: fix memory leak
-      9pfs: remove useless return
-
-Paolo Bonzini (2):
-      cutils: refine strtol error handling in parse_debug_env
-      gdbstub: avoid possible NULL pointer dereference
-
-Radim Kr=C4=8Dm=C3=A1=C5=99 (2):
-      fix GCC 5.0.0 logical-not-parentheses warnings
-      milkymist-pfpu: fix GCC 5.0.0 aggressive-loop-optimizations warning
-
-Stefan Berger (1):
-      Add copyright and author after file split
-
-Stefan Weil (6):
-      vhost_net: Add missing 'static' attribute
-      disas/arm: Fix warnings caused by missing 'static' attribute
-      disas/cris: Fix warning caused by missing 'static' attribute
-      disas/microblaze: Fix warnings caused by missing 'static' attribute
-      oslib-posix: Fix compiler warning (-Wclobbered) and simplify the co=
-de
-      migration: Fix coding style (whitespace issues)
-
-Thomas Huth (3):
-      ui: Removed unused functions
-      ui/vnc: Remove vnc_stop_worker_thread()
-      xen: Remove xen_cmos_set_s3_resume()
-
-Wang Xin (2):
-      qemu-char: add cyrillic characters 'numerosign' to VNC keysyms
-      qemu-char: add cyrillic key 'numerosign' to Russian keymap
-
- .gitignore                    |   1 -
- block/archipelago.c           |   6 +-
- block/nbd.c                   |   1 +
- cpus.c                        |   4 +-
- disas/arm.c                   | 128 ------------------------------------=
-------
- disas/cris.c                  |   2 +-
- disas/microblaze.c            |  13 +++--
- exec.c                        |   2 +-
- gdbstub.c                     |   8 ++-
- hw/9pfs/virtio-9p-local.c     |   1 -
- hw/arm/digic_boards.c         |   6 +-
- hw/block/nand.c               |   2 +-
- hw/core/sysbus.c              |   2 +
- hw/dma/pl330.c                |   4 +-
- hw/ide/pci.c                  |   2 +-
- hw/lm32/milkymist.c           |   1 +
- hw/microblaze/boot.c          |   2 +-
- hw/misc/macio/macio.c         |   3 +-
- hw/misc/milkymist-pfpu.c      |   2 +-
- hw/net/vhost_net.c            |   2 +-
- hw/net/virtio-net.c           |   4 +-
- hw/net/xilinx_ethlite.c       |   1 +
- hw/ppc/e500.c                 |   1 +
- hw/scsi/vhost-scsi.c          |   6 +-
- hw/sparc/leon3.c              |   1 +
- hw/timer/a9gtimer.c           |   2 +-
- hw/tpm/tpm_passthrough.c      |  12 ++--
- hw/vfio/common.c              |  10 ++--
- hw/virtio/vhost-backend.c     |   2 +-
- hw/xen/xen_pt_config_init.c   |   8 +--
- hw/xtensa/sim.c               |   2 +-
- hw/xtensa/xtfpga.c            |  10 ++--
- include/hw/xen/xen.h          |   1 -
- include/qapi/qmp/qerror.h     |   6 +-
- include/ui/console.h          |   3 -
- kvm-all.c                     |   2 +-
- migration/qemu-file-buf.c     |   4 ++
- migration/rdma.c              |  22 ++++----
- net/vhost-user.c              |   4 +-
- numa.c                        |   6 +-
- pc-bios/keymaps/ru            |   2 +-
- qapi-schema.json              |   6 +-
- qemu-img.c                    |   5 +-
- qemu-options.hx               |  56 ++++++++++++++++--
- qmp-commands.hx               |   6 +-
- target-s390x/kvm.c            |   2 +-
- tests/.gitignore              |   3 +
- tests/qemu-iotests/.gitignore |   1 +
- tpm.c                         |   2 +-
- trace/control.c               |   2 +-
- ui/console.c                  |  12 ----
- ui/d3des.c                    |   9 ---
- ui/d3des.h                    |   6 --
- ui/input-legacy.c             |   6 --
- ui/vnc-jobs.c                 |  13 -----
- ui/vnc-jobs.h                 |   1 -
- ui/vnc_keysym.h               |   1 +
- util/cutils.c                 |   5 +-
- util/oslib-posix.c            |   4 +-
- xen-hvm-stub.c                |   4 --
- 60 files changed, 163 insertions(+), 282 deletions(-)
 
