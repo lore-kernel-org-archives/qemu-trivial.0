@@ -1,38 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YTM6j-0005Rm-F3
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Mar 2015 22:05:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36039)
+	id 1YTRRc-0004yV-Mw
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Mar 2015 03:47:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38795)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YTM6g-0005O6-FZ
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 22:05:51 -0500
+	(envelope-from <armbru@redhat.com>) id 1YTRRW-0004nR-Vu
+	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 03:47:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YTM6d-0006IJ-AK
-	for qemu-trivial@nongnu.org; Wed, 04 Mar 2015 22:05:50 -0500
-Received: from szxga01-in.huawei.com ([58.251.152.64]:19711)
+	(envelope-from <armbru@redhat.com>) id 1YTRRV-0006AN-VC
+	for qemu-trivial@nongnu.org; Thu, 05 Mar 2015 03:47:42 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33547)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YTM6c-0006IB-Bf; Wed, 04 Mar 2015 22:05:47 -0500
-Received: from 172.24.2.119 (EHLO szxeml427-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CKI16951; Thu, 05 Mar 2015 11:05:42 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml427-hub.china.huawei.com
-	(10.82.67.182) with Microsoft SMTP Server id 14.3.158.1; Thu, 5 Mar 2015
-	11:05:36 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 5 Mar 2015 11:05:20 +0800
-Message-ID: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
+	(envelope-from <armbru@redhat.com>)
+	id 1YTRRM-00068P-2o; Thu, 05 Mar 2015 03:47:32 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t258lO7A009567
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 5 Mar 2015 03:47:25 -0500
+Received: from blackfin.pond.sub.org (ovpn-116-48.ams2.redhat.com
+	[10.36.116.48])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t258lLLs004858
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 5 Mar 2015 03:47:23 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 4BC3F305E2A5; Thu,  5 Mar 2015 09:47:21 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Gonglei <arei.gonglei@huawei.com>
+References: <1425023419-12244-1-git-send-email-arei.gonglei@huawei.com>
+	<1425023419-12244-3-git-send-email-arei.gonglei@huawei.com>
+	<54F705B0.8040308@msgid.tls.msk.ru> <54F7BEC9.1060204@huawei.com>
+Date: Thu, 05 Mar 2015 09:47:21 +0100
+In-Reply-To: <54F7BEC9.1060204@huawei.com> (Gonglei's message of "Thu, 5 Mar
+	2015 10:26:17 +0800")
+Message-ID: <87oao7zv8m.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: qemu-trivial@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Gonglei <arei.gonglei@huawei.com>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PATCH v2] microblaze: fix memory leak
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel]  [PATCH 2/9] arm: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,61 +55,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Mar 2015 03:05:51 -0000
+X-List-Received-Date: Thu, 05 Mar 2015 08:47:48 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+Gonglei <arei.gonglei@huawei.com> writes:
 
-When not assign a -dtb argument, the variable dtb_filename
-storage returned from qemu_find_file(), which should be freed
-after use. Alternatively we define a local variable filename,
-with 'char *' type, free after use.
+> On 2015/3/4 21:16, Michael Tokarev wrote:
+[...]
+>> And a much more general solution is to actually test
+>> patches before submitting them.  You obviously did not
+>> test this series, having 3 errors in 9 patches, ie,
+>> 1/3 of your patches does not work...
+>> 
+> Apologize earnestly for troubling you. :(
+>
+> I just thought they are so trivial, meanwhile I hadn't arm compiling
+> environment (lack of
+> libfdt-dev), and assigned "--target-list=x86_64-softmmu" that moment.
 
-Cc: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
----
-v2: fix a complier error.
----
- hw/microblaze/boot.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+Hard-won personal experience: the more trivial a change is, the more
+likely I am to screw it up in some stupid way.
 
-diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
-index a2843cd..352ccb1 100644
---- a/hw/microblaze/boot.c
-+++ b/hw/microblaze/boot.c
-@@ -113,15 +113,15 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
-     const char *kernel_filename;
-     const char *kernel_cmdline;
-     const char *dtb_arg;
-+    char *filename = NULL;
- 
-     machine_opts = qemu_get_machine_opts();
-     kernel_filename = qemu_opt_get(machine_opts, "kernel");
-     kernel_cmdline = qemu_opt_get(machine_opts, "append");
-     dtb_arg = qemu_opt_get(machine_opts, "dtb");
--    if (dtb_arg) { /* Preference a -dtb argument */
--        dtb_filename = dtb_arg;
--    } else { /* default to pcbios dtb as passed by machine_init */
--        dtb_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
-+    /* default to pcbios dtb as passed by machine_init */
-+    if (!dtb_arg) {
-+        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
-     }
- 
-     boot_info.machine_cpu_reset = machine_cpu_reset;
-@@ -203,7 +203,8 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
-                             boot_info.initrd_start,
-                             boot_info.initrd_end,
-                             kernel_cmdline,
--                            dtb_filename);
-+                            /* Preference a -dtb argument */
-+                            dtb_arg ? dtb_arg : filename);
-     }
--
-+    g_free(filename);
- }
--- 
-1.7.12.4
+In other words: no change is too trivial to screw it up.
 
-
+Corollary: no change is trivial enough to skip testing.
 
