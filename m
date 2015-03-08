@@ -1,30 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YUfqs-0002nR-5h
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Mar 2015 14:22:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50483)
+	id 1YUfrH-0003TM-7v
+	for mharc-qemu-trivial@gnu.org; Sun, 08 Mar 2015 14:23:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50745)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1YUfqp-0002kR-WB
-	for qemu-trivial@nongnu.org; Sun, 08 Mar 2015 14:22:56 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1YUfrF-0003QT-BF
+	for qemu-trivial@nongnu.org; Sun, 08 Mar 2015 14:23:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1YUfqp-0007QG-AH
-	for qemu-trivial@nongnu.org; Sun, 08 Mar 2015 14:22:55 -0400
-Received: from qemu.weilnetz.de ([37.221.198.45]:46112)
+	(envelope-from <stefan@weilnetz.de>) id 1YUfrE-0007ZM-D3
+	for qemu-trivial@nongnu.org; Sun, 08 Mar 2015 14:23:21 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:46115)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1YUfqk-0007PS-Ta; Sun, 08 Mar 2015 14:22:51 -0400
+	id 1YUfr9-0007WM-M8; Sun, 08 Mar 2015 14:23:15 -0400
 Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id CAFE217F9E9; Sun,  8 Mar 2015 19:22:48 +0100 (CET)
+	id 99EAC17F9E9; Sun,  8 Mar 2015 19:23:13 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: QEMU Trivial <qemu-trivial@nongnu.org>
-Date: Sun,  8 Mar 2015 19:22:48 +0100
-Message-Id: <1425838968-28635-1-git-send-email-sw@weilnetz.de>
+Date: Sun,  8 Mar 2015 19:23:13 +0100
+Message-Id: <1425838993-28677-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 37.221.198.45
-Cc: Stefan Weil <sw@weilnetz.de>, Andrzej Zaborowski <balrogg@gmail.com>,
-	QEMU Developer <qemu-devel@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [Qemu-trivial] [PATCH 4/7] arm/nseries: Fix warnings from Sparse
+Cc: Stefan Weil <sw@weilnetz.de>, Leon Alrae <leon.alrae@imgtec.com>,
+	QEMU Developer <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH 5/7] target-mips: Fix warning from Sparse
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,39 +35,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 Mar 2015 18:22:57 -0000
+X-List-Received-Date: Sun, 08 Mar 2015 18:23:22 -0000
 
 Sparse report:
 
-arm/nseries.c:1406:5: warning: returning void-valued expression
-arm/nseries.c:1411:5: warning: returning void-valued expression
+target-mips/dsp_helper.c:3681:5: warning: returning void-valued expression
 
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+Cc: Leon Alrae <leon.alrae@imgtec.com>
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/arm/nseries.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ target-mips/dsp_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index 4d7be5e..f59adc1 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -1403,12 +1403,12 @@ static struct arm_boot_info n810_binfo = {
+diff --git a/target-mips/dsp_helper.c b/target-mips/dsp_helper.c
+index 349f2a0..46528de 100644
+--- a/target-mips/dsp_helper.c
++++ b/target-mips/dsp_helper.c
+@@ -3678,7 +3678,7 @@ void cpu_wrdsp(uint32_t rs, uint32_t mask_num, CPUMIPSState *env)
  
- static void n800_init(MachineState *machine)
+ void helper_wrdsp(target_ulong rs, target_ulong mask_num, CPUMIPSState *env)
  {
--    return n8x0_init(machine, &n800_binfo, 800);
-+    n8x0_init(machine, &n800_binfo, 800);
+-    return cpu_wrdsp(rs, mask_num, env);
++    cpu_wrdsp(rs, mask_num, env);
  }
  
- static void n810_init(MachineState *machine)
- {
--    return n8x0_init(machine, &n810_binfo, 810);
-+    n8x0_init(machine, &n810_binfo, 810);
- }
- 
- static QEMUMachine n800_machine = {
+ uint32_t cpu_rddsp(uint32_t mask_num, CPUMIPSState *env)
 -- 
 2.1.4
 
