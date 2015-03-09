@@ -1,45 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YV0WV-0002r0-9K
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2015 12:27:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45998)
+	id 1YV1W4-0003MI-Cf
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2015 13:30:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1YV0WS-0002mc-CT
-	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 12:27:17 -0400
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YV1Vx-00037L-3s
+	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 13:30:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1YV0WR-00022f-69
-	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 12:27:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57618)
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YV1Vl-0005WV-1l
+	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 13:30:49 -0400
+Received: from e06smtp11.uk.ibm.com ([195.75.94.107]:40401)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1YV0WO-000206-LZ; Mon, 09 Mar 2015 12:27:12 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t29GR3ih021153
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 9 Mar 2015 12:27:04 -0400
-Received: from [10.36.112.40] (ovpn-112-40.ams2.redhat.com [10.36.112.40])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t29GQvG4026061
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
-	Mon, 9 Mar 2015 12:27:00 -0400
-Message-ID: <54FDC9D1.7080900@redhat.com>
-Date: Mon, 09 Mar 2015 17:26:57 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1425719670-5486-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1425719670-5486-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YV1Vk-0005Tt-Ak
+	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 13:30:36 -0400
+Received: from /spool/local
+	by e06smtp11.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
+	Mon, 9 Mar 2015 17:30:34 -0000
+Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
+	by e06smtp11.uk.ibm.com (192.168.101.141) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Mon, 9 Mar 2015 17:30:31 -0000
+Received: from b06cxnps4075.portsmouth.uk.ibm.com
+	(d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
+	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 903371B0805F; 
+	Mon,  9 Mar 2015 17:30:51 +0000 (GMT)
+Received: from d06av02.portsmouth.uk.ibm.com (d06av02.portsmouth.uk.ibm.com
+	[9.149.37.228])
+	by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t29HUVPu64553026; Mon, 9 Mar 2015 17:30:31 GMT
+Received: from d06av02.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av02.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id t29HURgN024516; Mon, 9 Mar 2015 11:30:28 -0600
+Received: from oc7435384737.ibm.com (sig-9-81-34-230.evts.uk.ibm.com
+	[9.81.34.230])
+	by d06av02.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id t29HUF7l024224; Mon, 9 Mar 2015 11:30:16 -0600
+From: Thomas Huth <thuth@linux.vnet.ibm.com>
+To: qemu-trivial@nongnu.org
+Date: Mon,  9 Mar 2015 18:30:07 +0100
+Message-Id: <1425922215-20819-1-git-send-email-thuth@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.1
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15030917-0041-0000-0000-000003A4D4A7
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Kevin Wolf <kwolf@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
-	Peter Lieven <pl@kamp.de>, QEMU Developer <qemu-devel@nongnu.org>,
-	Ronnie Sahlberg <ronniesahlberg@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH] iscsi: Fix check for username
+X-Received-From: 195.75.94.107
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH 0/8] Remove more unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,48 +59,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2015 16:27:17 -0000
+X-List-Received-Date: Mon, 09 Mar 2015 17:30:54 -0000
 
+Here are some more patches to remove completely unused functions
+from QEMU. Please review carefully, some of the functions might
+still get usefull in the future again, so if you discover one,
+please let me know, then I'll remove it from the patch series
+again.
 
+Thomas Huth (8):
+  migration: Remove unused functions
+  vmxnet: Remove unused function vmxnet_rx_pkt_get_num_frags()
+  pci: Remove unused functions
+  monitor: Remove unused functions
+  ioport: Remove unused functions
+  usb: Remove unused functions
+  util: Remove unused functions
+  Remove various unused functions
 
-On 07/03/2015 10:14, Stefan Weil wrote:
-> The variable user in struct iscsi_url is a character array, not a pointer.
-> Therefore its address will never be NULL.
-> 
-> clang reports this error:
-> 
-> block/iscsi.c:1329:20: warning:
->  comparison of array 'iscsi_url->user' not equal to a null pointer
->  is always true [-Wtautological-pointer-compare]
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
-> 
-> This error also exists in libscsi. See my pull request
-> https://github.com/sahlberg/libiscsi/pull/146
-> 
-> Cheers
-> Stefan
-> 
->  block/iscsi.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/block/iscsi.c b/block/iscsi.c
-> index 1fa855a..a2bd70a 100644
-> --- a/block/iscsi.c
-> +++ b/block/iscsi.c
-> @@ -1326,7 +1326,7 @@ static int iscsi_open(BlockDriverState *bs, QDict *options, int flags,
->          goto out;
->      }
->  
-> -    if (iscsi_url->user != NULL) {
-> +    if (iscsi_url->user[0] != '\0') {
->          ret = iscsi_set_initiator_username_pwd(iscsi, iscsi_url->user,
->                                                iscsi_url->passwd);
->          if (ret != 0) {
-> 
+ backends/tpm.c                   |   11 ------
+ hmp.h                            |    1 -
+ hw/char/serial.c                 |    7 ----
+ hw/net/vmxnet_rx_pkt.c           |    7 ----
+ hw/net/vmxnet_rx_pkt.h           |    9 -----
+ hw/pci-bridge/i82801b11.c        |   21 ------------
+ hw/pci/pcie.c                    |   25 --------------
+ hw/usb/core.c                    |   41 -----------------------
+ include/exec/ioport.h            |    2 -
+ include/hw/char/serial.h         |    1 -
+ include/hw/i386/ich9.h           |    1 -
+ include/hw/pci/pcie.h            |    3 --
+ include/hw/usb.h                 |    5 ---
+ include/migration/migration.h    |    1 -
+ include/migration/qemu-file.h    |    2 -
+ include/monitor/monitor.h        |    1 -
+ include/qemu-common.h            |    4 --
+ include/qemu/compatfd.h          |    1 -
+ include/sysemu/iothread.h        |    1 -
+ include/sysemu/tpm_backend_int.h |    2 -
+ ioport.c                         |   24 --------------
+ iothread.c                       |   12 -------
+ migration/migration.c            |    9 -----
+ migration/qemu-file-buf.c        |   53 ------------------------------
+ monitor.c                        |   13 -------
+ util/compatfd.c                  |   19 -----------
+ util/osdep.c                     |   66 --------------------------------------
+ 27 files changed, 0 insertions(+), 342 deletions(-)
 
-Applied, thanks.
-
-Paolo
 
