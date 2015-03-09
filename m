@@ -1,55 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YV1WG-0003qz-BT
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2015 13:31:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36174)
+	id 1YV1W9-0003Yy-9S
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Mar 2015 13:31:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36091)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YV1W6-0003RC-EL
-	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 13:31:05 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YV1Vy-0005qR-Bi
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YV1W0-0003CQ-8T
 	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 13:30:58 -0400
-Received: from e06smtp10.uk.ibm.com ([195.75.94.106]:33135)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YV1Vt-0005mC-5N
+	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 13:30:52 -0400
+Received: from e06smtp17.uk.ibm.com ([195.75.94.113]:37736)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YV1Vy-0005pn-3v
-	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 13:30:50 -0400
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YV1Vs-0005lK-QF
+	for qemu-trivial@nongnu.org; Mon, 09 Mar 2015 13:30:45 -0400
 Received: from /spool/local
-	by e06smtp10.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e06smtp17.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
-	Mon, 9 Mar 2015 17:30:48 -0000
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp10.uk.ibm.com (192.168.101.140) with IBM ESMTP SMTP Gateway:
+	Mon, 9 Mar 2015 17:30:43 -0000
+Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
+	by e06smtp17.uk.ibm.com (192.168.101.147) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 9 Mar 2015 17:30:44 -0000
-Received: from b06cxnps3075.portsmouth.uk.ibm.com
-	(d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id B378717D8042; 
-	Mon,  9 Mar 2015 17:31:05 +0000 (GMT)
+	Mon, 9 Mar 2015 17:30:41 -0000
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+	(d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 43F9C1B08069; 
+	Mon,  9 Mar 2015 17:31:00 +0000 (GMT)
 Received: from d06av02.portsmouth.uk.ibm.com (d06av02.portsmouth.uk.ibm.com
 	[9.149.37.228])
-	by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t29HUimo4915496; Mon, 9 Mar 2015 17:30:44 GMT
+	by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t29HUeNb52560062; Mon, 9 Mar 2015 17:30:40 GMT
 Received: from d06av02.portsmouth.uk.ibm.com (localhost [127.0.0.1])
 	by d06av02.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id t29HUhMm025112; Mon, 9 Mar 2015 11:30:44 -0600
+	ESMTP id t29HUdTD025030; Mon, 9 Mar 2015 11:30:39 -0600
 Received: from oc7435384737.ibm.com (sig-9-81-34-230.evts.uk.ibm.com
 	[9.81.34.230])
 	by d06av02.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id t29HUF7t024224; Mon, 9 Mar 2015 11:30:43 -0600
+	ESMTP id t29HUF7n024224; Mon, 9 Mar 2015 11:30:38 -0600
 From: Thomas Huth <thuth@linux.vnet.ibm.com>
 To: qemu-trivial@nongnu.org
-Date: Mon,  9 Mar 2015 18:30:15 +0100
-Message-Id: <1425922215-20819-9-git-send-email-thuth@linux.vnet.ibm.com>
+Date: Mon,  9 Mar 2015 18:30:09 +0100
+Message-Id: <1425922215-20819-3-git-send-email-thuth@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.7.1
 In-Reply-To: <1425922215-20819-1-git-send-email-thuth@linux.vnet.ibm.com>
 References: <1425922215-20819-1-git-send-email-thuth@linux.vnet.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15030917-0041-0000-0000-00000382B26F
+x-cbid: 15030917-0029-0000-0000-000003B0320D
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.106
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH 8/8] Remove various unused functions
+X-Received-From: 195.75.94.113
+Cc: Dmitry Fleytman <dmitry@daynix.com>, qemu-devel@nongnu.org,
+	Thomas Huth <thuth@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH 2/8] vmxnet: Remove unused function
+	vmxnet_rx_pkt_get_num_frags()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,121 +63,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Mar 2015 17:31:06 -0000
+X-List-Received-Date: Mon, 09 Mar 2015 17:30:58 -0000
 
-The functions tpm_backend_thread_tpm_reset(), serial_set_frequency()
-and iothread_find() are completely unused, let's remove them.
+The function is not used anymore and thus can be deleted.
 
 Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
+Cc: Dmitry Fleytman <dmitry@daynix.com>
 ---
- backends/tpm.c                   |   11 -----------
- hw/char/serial.c                 |    7 -------
- include/hw/char/serial.h         |    1 -
- include/sysemu/iothread.h        |    1 -
- include/sysemu/tpm_backend_int.h |    2 --
- iothread.c                       |   12 ------------
- 6 files changed, 0 insertions(+), 34 deletions(-)
+ hw/net/vmxnet_rx_pkt.c |    7 -------
+ hw/net/vmxnet_rx_pkt.h |    9 ---------
+ 2 files changed, 0 insertions(+), 16 deletions(-)
 
-diff --git a/backends/tpm.c b/backends/tpm.c
-index 01860c4..0566202 100644
---- a/backends/tpm.c
-+++ b/backends/tpm.c
-@@ -165,17 +165,6 @@ void tpm_backend_thread_end(TPMBackendThread *tbt)
-     }
+diff --git a/hw/net/vmxnet_rx_pkt.c b/hw/net/vmxnet_rx_pkt.c
+index a40e346..acbca6a 100644
+--- a/hw/net/vmxnet_rx_pkt.c
++++ b/hw/net/vmxnet_rx_pkt.c
+@@ -172,13 +172,6 @@ bool vmxnet_rx_pkt_has_virt_hdr(struct VmxnetRxPkt *pkt)
+     return pkt->has_virt_hdr;
  }
  
--void tpm_backend_thread_tpm_reset(TPMBackendThread *tbt,
--                                  GFunc func, gpointer user_data)
+-uint16_t vmxnet_rx_pkt_get_num_frags(struct VmxnetRxPkt *pkt)
 -{
--    if (!tbt->pool) {
--        tpm_backend_thread_create(tbt, func, user_data);
--    } else {
--        g_thread_pool_push(tbt->pool, (gpointer)TPM_BACKEND_CMD_TPM_RESET,
--                           NULL);
--    }
+-    assert(pkt);
+-
+-    return pkt->vec_len;
 -}
 -
- static const TypeInfo tpm_backend_info = {
-     .name = TYPE_TPM_BACKEND,
-     .parent = TYPE_OBJECT,
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 55011cf..231ec7d 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -876,13 +876,6 @@ void serial_exit_core(SerialState *s)
-     qemu_unregister_reset(serial_reset, s);
- }
- 
--/* Change the main reference oscillator frequency. */
--void serial_set_frequency(SerialState *s, uint32_t frequency)
--{
--    s->baudbase = frequency;
--    serial_update_parameters(s);
--}
--
- const MemoryRegionOps serial_io_ops = {
-     .read = serial_ioport_read,
-     .write = serial_ioport_write,
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index 15beb6b..4be245f 100644
---- a/include/hw/char/serial.h
-+++ b/include/hw/char/serial.h
-@@ -80,7 +80,6 @@ extern const MemoryRegionOps serial_io_ops;
- 
- void serial_realize_core(SerialState *s, Error **errp);
- void serial_exit_core(SerialState *s);
--void serial_set_frequency(SerialState *s, uint32_t frequency);
- 
- /* legacy pre qom */
- SerialState *serial_init(int base, qemu_irq irq, int baudbase,
-diff --git a/include/sysemu/iothread.h b/include/sysemu/iothread.h
-index 7c01a61..2eefea1 100644
---- a/include/sysemu/iothread.h
-+++ b/include/sysemu/iothread.h
-@@ -33,7 +33,6 @@ typedef struct {
- #define IOTHREAD(obj) \
-    OBJECT_CHECK(IOThread, obj, TYPE_IOTHREAD)
- 
--IOThread *iothread_find(const char *id);
- char *iothread_get_id(IOThread *iothread);
- AioContext *iothread_get_aio_context(IOThread *iothread);
- 
-diff --git a/include/sysemu/tpm_backend_int.h b/include/sysemu/tpm_backend_int.h
-index 05d94d0..40f693a 100644
---- a/include/sysemu/tpm_backend_int.h
-+++ b/include/sysemu/tpm_backend_int.h
-@@ -32,8 +32,6 @@ void tpm_backend_thread_deliver_request(TPMBackendThread *tbt);
- void tpm_backend_thread_create(TPMBackendThread *tbt,
-                                GFunc func, gpointer user_data);
- void tpm_backend_thread_end(TPMBackendThread *tbt);
--void tpm_backend_thread_tpm_reset(TPMBackendThread *tbt,
--                                  GFunc func, gpointer user_data);
- 
- typedef enum TPMBackendCmd {
-     TPM_BACKEND_CMD_INIT = 1,
-diff --git a/iothread.c b/iothread.c
-index 342a23f..878a594 100644
---- a/iothread.c
-+++ b/iothread.c
-@@ -121,18 +121,6 @@ static void iothread_register_types(void)
- 
- type_init(iothread_register_types)
- 
--IOThread *iothread_find(const char *id)
--{
--    Object *container = container_get(object_get_root(), IOTHREADS_PATH);
--    Object *child;
--
--    child = object_property_get_link(container, id, NULL);
--    if (!child) {
--        return NULL;
--    }
--    return (IOThread *)object_dynamic_cast(child, TYPE_IOTHREAD);
--}
--
- char *iothread_get_id(IOThread *iothread)
+ uint16_t vmxnet_rx_pkt_get_vlan_tag(struct VmxnetRxPkt *pkt)
  {
-     return object_get_canonical_path_component(OBJECT(iothread));
+     assert(pkt);
+diff --git a/hw/net/vmxnet_rx_pkt.h b/hw/net/vmxnet_rx_pkt.h
+index 6b2c60e..5f8352a 100644
+--- a/hw/net/vmxnet_rx_pkt.h
++++ b/hw/net/vmxnet_rx_pkt.h
+@@ -114,15 +114,6 @@ bool vmxnet_rx_pkt_is_vlan_stripped(struct VmxnetRxPkt *pkt);
+ bool vmxnet_rx_pkt_has_virt_hdr(struct VmxnetRxPkt *pkt);
+ 
+ /**
+- * returns number of frags attached to the packet
+- *
+- * @pkt:            packet
+- * @ret:            number of frags
+- *
+- */
+-uint16_t vmxnet_rx_pkt_get_num_frags(struct VmxnetRxPkt *pkt);
+-
+-/**
+  * attach data to rx packet
+  *
+  * @pkt:            packet
 -- 
 1.7.1
 
