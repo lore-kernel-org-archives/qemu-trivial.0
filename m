@@ -1,48 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVKhT-0001d3-96
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 09:59:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41357)
+	id 1YVKj5-000399-AY
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 10:01:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41859)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1YVKhR-0001cu-0S
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 09:59:58 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1YVKj0-00031N-5q
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 10:01:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1YVKhN-0005dW-07
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 09:59:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58530)
+	(envelope-from <peter.maydell@linaro.org>) id 1YVKip-0006h8-9n
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 10:01:34 -0400
+Received: from mail-lb0-f177.google.com ([209.85.217.177]:35706)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1YVKhC-0005Xx-Vg; Tue, 10 Mar 2015 09:59:43 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2ADxbKs031014
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 10 Mar 2015 09:59:37 -0400
-Received: from noname.str.redhat.com (dhcp-192-197.str.redhat.com
-	[10.33.192.197])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id t2ADxZql006296; Tue, 10 Mar 2015 09:59:35 -0400
-Date: Tue, 10 Mar 2015 14:59:35 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20150310135934.GF3770@noname.str.redhat.com>
-References: <1425971164-9845-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<20150310085016.GC3770@noname.str.redhat.com>
-	<20150310091759.GC14320@ad.nay.redhat.com>
-	<20150310100936.GD3770@noname.str.redhat.com>
-	<87mw3lx9xb.fsf@blackfin.pond.sub.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1YVKip-0006gg-2q
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 10:01:23 -0400
+Received: by lbjf15 with SMTP id f15so1934994lbj.2
+	for <qemu-trivial@nongnu.org>; Tue, 10 Mar 2015 07:01:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=g/rH5iuktETfqh6RCFzfyBBoMimkHxQdnQtC9KUxwF0=;
+	b=cV047V6J/tgGHxcsuWdNppJtFvzHP+QcW5EJbvpzZ97+iOc6FhMjSsSd0oGbNZ/WyE
+	Oj45DY5SM8BtM6ZHXdaSaHUxsJWSu7sxCLnAH92wqPRlq+L6gt1zoNfD1dtApWBFz7NJ
+	ol/2LCUMxm9KDbZnGfFgscm/oaZ6kY+TKIY/dVQu8rKAXvMSUusKq8xVozp/csBQWFSe
+	J2yPZA0aBdTwjg8l3MM6rrh1tD5xHA7bkSyQVXgpVvDFS/7+wf+H/z8Znpc0BIcU199V
+	JuquwfKpcH1eWGFzTMcjAnqRjP0ri0Ul3zdkfqYqsWjA5I7m33I0A03ANXjlJV8Ap6Hy
+	KKQQ==
+X-Gm-Message-State: ALoCoQkktuud3/k5lPuDlp6D/mo5z3I3Bwst9fkyAUgyFUoYoUXD58hQxO3ae7YH0+8F8nQWkX+j
+X-Received: by 10.112.50.38 with SMTP id z6mr8965064lbn.122.1425996081182;
+	Tue, 10 Mar 2015 07:01:21 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87mw3lx9xb.fsf@blackfin.pond.sub.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Fam Zheng <famz@redhat.com>, qemu-block@nongnu.org, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	Peter Wu <peter@lekensteyn.nl>, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block/dmg: make it modular
- if using additional library
+Received: by 10.112.145.193 with HTTP; Tue, 10 Mar 2015 07:01:00 -0700 (PDT)
+In-Reply-To: <cover.1425964622.git.mjt@msgid.tls.msk.ru>
+References: <cover.1425964622.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 10 Mar 2015 14:01:00 +0000
+Message-ID: <CAFEAcA_W983x+wj+HLqxH413W4Fb5-5He_oVKfvT3EB_F8v0AQ@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.177
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL v4 00/44] Trivial patches for
+	2015-03-04
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,72 +55,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 13:59:58 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 14:01:38 -0000
 
-Am 10.03.2015 um 14:24 hat Markus Armbruster geschrieben:
-> Kevin Wolf <kwolf@redhat.com> writes:
-> 
-> > Am 10.03.2015 um 10:17 hat Fam Zheng geschrieben:
-> >> On Tue, 03/10 09:50, Kevin Wolf wrote:
-> >> > Am 10.03.2015 um 08:06 hat Michael Tokarev geschrieben:
-> >> > > block/dmg can use additional library (libbz2) to read
-> >> > > bzip2-compressed files.  Make the block driver to be
-> >> > > a module if libbz2 support is requested, to avoid extra
-> >> > > library dependency by default.
-> >> > > 
-> >> > > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> >> > 
-> >> > First of all: I don't think this is suitable for trivial. The actual
-> >> > code change might be small, but the change in behaviour is important and
-> >> > needs discussion.
-> >> > 
-> >> > > This might be questionable, to make the thing to be either
-> >> > > module or built-in depending on build environment, so a
-> >> > > better idea may be to make it modular unconditionally.
-> >> > > This block device format isn't used often.
-> >> > 
-> >> > Yes, I'm concerned that making it conditional might be a bit surprising.
-> >> > I'd like to hear some more opinions before applying this.
-> >> 
-> >> I don't see the advantage over making it an unconditional module - condition
-> >> only makes it a bit more complicated.
-> >> 
-> >> > 
-> >> > Also, should we consider making some more rarely used image formats
-> >> > modules even if they don't pull in external dependencies?
-> >> 
-> >> Sounds reasonable to me. Is the intention to reduce binary size?
-> 
-> Fair argument, but not a paricularly weighty one.  The unused code never
-> gets paged in, mostly, and isn't particularly large to begin with.
-> 
-> > Yes, that and also that it allows compiling out some drivers without
-> > having to mess with the Makefiles. You just don't install all of them.
-> 
-> Second best solution of the configuration management problem "select a
-> subset of the available block drivers", good enough when compiling the
-> unused ones isn't bothersome.  But the best solution is still
-> configuration management capable of disabling optional components.
+On 10 March 2015 at 05:24, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> This is a v4 (!) pull request for trivial-patches tree which was initially sent
+> Wed,  4 Mar 2015 20:06:17 +0300.  The following patches has been dropped:
+>
+>  - migration/rdma: clean up qemu_rdma_dest_init a bit --
+>    will go to the migration tree
+>
+>  - microblaze: fix memory leak --
+>    wrong change, causes compile failure, initially escaped my test coverage
+>
+>  - disas/cris: Fix warning caused by missing 'static' attribute --
+>    this makes an unused static variable as static, causing compile warning.
+>    To my shame, the same patch has been routed and dropped in trivial tree
+>    before.  Now it is dropped again, I'll hopefully fix the damn thing for
+>    good in the next pull request.
+>
+> Please consider pulling.  And please note I used the same tag name and
+> pull request date as before.
+>
+> I'm sorry for the noize.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 277263e1b320d759a760ba6c5ea75ec268f929e5:
+>
+>   Merge remote-tracking branch 'remotes/agraf/tags/signed-ppc-for-upstream' into staging (2015-03-09 14:04:14 +0000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-03-04
+>
+> for you to fetch changes up to 438940cbc2eabbe9e403e5249dfa0be6c792c93b:
+>
+>   9pfs: remove useless return (2015-03-10 08:15:34 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2015-03-04
+>
+> ----------------------------------------------------------------
 
-Yes. Though as far as I know, nobody is currently working on that.
+Applied, thanks.
 
-> > Related to that, Peter also mentioned that you (the user, not developer
-> > or packager) could simply disable a single driver, for example as a
-> > temporary hotfix in the case of security problems in a block driver.
-> > That would actually be an argument for making _all_ drivers modules.
-> 
-> And pretty much every other optional component.
-> 
-> For me, avoiding bothersome dependencies is a strong practical argument
-> for making a something a loadable module.  Other benefits of loadable
-> modules presented so far seem pretty negligible to me.  If you want
-> them, no objection from me, as long as the cost is similarly negligible,
-> additional complexity for developers, packagers and users in particular.
-
-I don't really have a strong opinion either way. I agree that the
-benefits wouldn't be huge, but then, it would be easy to do and I
-haven't heard yet of any drawbacks either. There may well be some that
-I'm not aware of, that's why I'm asking.
-
-Kevin
+-- PMM
 
