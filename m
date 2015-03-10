@@ -1,39 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVCZO-0002yh-JQ
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 01:19:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33744)
+	id 1YVCeS-0004eq-Ms
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 01:24:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34595)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVCZI-0002xb-Qx
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 01:19:04 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YVCeQ-0004c4-KW
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 01:24:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVCQU-0001B9-Qc
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 01:09:55 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:44949)
+	(envelope-from <mjt@tls.msk.ru>) id 1YVCeP-0006vr-5L
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 01:24:18 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:55184)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YVCQ8-00013e-9A; Tue, 10 Mar 2015 01:09:32 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id DA90941302;
-	Tue, 10 Mar 2015 08:09:29 +0300 (MSK)
-Message-ID: <54FE7C89.2030408@msgid.tls.msk.ru>
-Date: Tue, 10 Mar 2015 08:09:29 +0300
+	id 1YVCeJ-0006tx-16; Tue, 10 Mar 2015 01:24:11 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id CF19341302;
+	Tue, 10 Mar 2015 08:24:09 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id BBA7C722;
+	Tue, 10 Mar 2015 08:24:09 +0300 (MSK)
+Received: (nullmailer pid 31861 invoked by uid 1000);
+	Tue, 10 Mar 2015 05:24:09 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.4.0
+To: qemu-devel@nongnu.org
+Date: Tue, 10 Mar 2015 08:24:09 +0300
+Message-Id: <cover.1425964622.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1425215238-25799-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1425215238-25799-1-git-send-email-sw@weilnetz.de>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] disas/cris: Fix warning caused by
-	missing 'static' attribute
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL v4 00/44] Trivial patches for 2015-03-04
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,44 +43,185 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 05:19:04 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 05:24:20 -0000
 
-01.03.2015 16:07, Stefan Weil wrote:
-> Warning from the Sparse static analysis tool:
-> 
-> disas/cris.c:1218:26: warning:
->  symbol 'cris_cond15s' was not declared. Should it be static?
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  disas/cris.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/disas/cris.c b/disas/cris.c
-> index 9dfb4e3..a034dba 100644
-> --- a/disas/cris.c
-> +++ b/disas/cris.c
-> @@ -1215,7 +1215,7 @@ cris_cc_strings[] =
->  };
->  
->  /* Different names and semantics for condition 1111 (0xf).  */
-> -const struct cris_cond15 cris_cond15s[] =
-> +static const struct cris_cond15 cris_cond15s[] =
+This is a v4 (!) pull request for trivial-patches tree which was initiall=
+y sent
+Wed,  4 Mar 2015 20:06:17 +0300.  The following patches has been dropped:
 
-This is the same patch you sent 07-feb, with Message-Id:
-<1423258997-30957-2-git-send-email-sw@weilnetz.de>, and
-the same patch which makes at least clang unhappy:
+ - migration/rdma: clean up qemu_rdma_dest_init a bit --
+   will go to the migration tree
 
- disas/cris.c:1218:33: error:
- unused variable 'cris_cond15s' [-Werror,-Wunused-const-variable]
- static const struct cris_cond15 cris_cond15s[] =
-                                 ^
- 1 error generated.
+ - microblaze: fix memory leak --
+   wrong change, causes compile failure, initially escaped my test covera=
+ge
 
-I'll drop this patch and remove the unused variable
-instead.
+ - disas/cris: Fix warning caused by missing 'static' attribute --
+   this makes an unused static variable as static, causing compile warnin=
+g.
+   To my shame, the same patch has been routed and dropped in trivial tre=
+e
+   before.  Now it is dropped again, I'll hopefully fix the damn thing fo=
+r
+   good in the next pull request.
+
+Please consider pulling.  And please note I used the same tag name and
+pull request date as before.
+
+I'm sorry for the noize.
 
 Thanks,
 
 /mjt
+
+The following changes since commit 277263e1b320d759a760ba6c5ea75ec268f929=
+e5:
+
+  Merge remote-tracking branch 'remotes/agraf/tags/signed-ppc-for-upstrea=
+m' into staging (2015-03-09 14:04:14 +0000)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-03-04
+
+for you to fetch changes up to 438940cbc2eabbe9e403e5249dfa0be6c792c93b:
+
+  9pfs: remove useless return (2015-03-10 08:15:34 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2015-03-04
+
+----------------------------------------------------------------
+Alberto Garcia (2):
+      qerror.h: Swap definitions that were not in alphabetical order
+      qmp-commands.hx: Fix several typos
+
+Borislav Petkov (1):
+      memsave: Improve and disambiguate error message
+
+Cole Robinson (3):
+      qapi-schema: Fix SpiceChannel docs
+      gitignore: Track common.env in iotests gitignore
+      gitignore: Ignore new tests
+
+Gabriel L. Somlo (1):
+      smbios: document cmdline options for smbios type 2-4, 17 structures
+
+Gonglei (18):
+      xen-pt: fix Negative array index read
+      xen-pt: fix Out-of-bounds read
+      block: remove superfluous '\n' around error_report/error_setg
+      a9gtimer: remove superfluous '\n' around error_setg
+      pl330.c: remove superfluous '\n' around error_setg
+      numa: remove superfluous '\n' around error_setg
+      Remove superfluous '\n' around error_report()
+      vhost-scsi: Remove superfluous '\n' around error_report()
+      vfio: Remove superfluous '\n' around error_report()
+      xtensa: Remove superfluous '\n' around error_report()
+      tpm: Remove superfluous '\n' around error_report()
+      arm/digic_boards: Remove superfluous '\n' around error_report()
+      vhost: Remove superfluous '\n' around error_report()
+      nbd: fix resource leak
+      sparc/leon3.c: fix memory leak
+      macio: fix possible memory leak
+      milkymist.c: fix memory leak
+      sysbus: fix memory leak
+
+Markus Armbruster (1):
+      xilinx_ethlite: Clean up after commit 2f991ad
+
+Michael Tokarev (3):
+      qemu-options: fix/document -incoming options
+      e500: fix memory leak
+      9pfs: remove useless return
+
+Paolo Bonzini (2):
+      cutils: refine strtol error handling in parse_debug_env
+      gdbstub: avoid possible NULL pointer dereference
+
+Radim Kr=C4=8Dm=C3=A1=C5=99 (2):
+      fix GCC 5.0.0 logical-not-parentheses warnings
+      milkymist-pfpu: fix GCC 5.0.0 aggressive-loop-optimizations warning
+
+Stefan Berger (1):
+      Add copyright and author after file split
+
+Stefan Weil (5):
+      vhost_net: Add missing 'static' attribute
+      disas/arm: Fix warnings caused by missing 'static' attribute
+      disas/microblaze: Fix warnings caused by missing 'static' attribute
+      oslib-posix: Fix compiler warning (-Wclobbered) and simplify the co=
+de
+      migration: Fix coding style (whitespace issues)
+
+Thomas Huth (3):
+      ui: Removed unused functions
+      ui/vnc: Remove vnc_stop_worker_thread()
+      xen: Remove xen_cmos_set_s3_resume()
+
+Wang Xin (2):
+      qemu-char: add cyrillic characters 'numerosign' to VNC keysyms
+      qemu-char: add cyrillic key 'numerosign' to Russian keymap
+
+ .gitignore                    |   1 -
+ block/archipelago.c           |   6 +-
+ block/nbd.c                   |   1 +
+ cpus.c                        |   4 +-
+ disas/arm.c                   | 128 ------------------------------------=
+------
+ disas/microblaze.c            |  13 +++--
+ exec.c                        |   2 +-
+ gdbstub.c                     |   8 ++-
+ hw/9pfs/virtio-9p-local.c     |   1 -
+ hw/arm/digic_boards.c         |   6 +-
+ hw/block/nand.c               |   2 +-
+ hw/core/sysbus.c              |   2 +
+ hw/dma/pl330.c                |   4 +-
+ hw/ide/pci.c                  |   2 +-
+ hw/lm32/milkymist.c           |   1 +
+ hw/microblaze/boot.c          |   2 +-
+ hw/misc/macio/macio.c         |   3 +-
+ hw/misc/milkymist-pfpu.c      |   2 +-
+ hw/net/vhost_net.c            |   2 +-
+ hw/net/virtio-net.c           |   4 +-
+ hw/net/xilinx_ethlite.c       |   1 +
+ hw/ppc/e500.c                 |   1 +
+ hw/scsi/vhost-scsi.c          |   6 +-
+ hw/sparc/leon3.c              |   1 +
+ hw/timer/a9gtimer.c           |   2 +-
+ hw/tpm/tpm_passthrough.c      |  12 ++--
+ hw/vfio/common.c              |  10 ++--
+ hw/virtio/vhost-backend.c     |   2 +-
+ hw/xen/xen_pt_config_init.c   |   8 +--
+ hw/xtensa/sim.c               |   2 +-
+ hw/xtensa/xtfpga.c            |  10 ++--
+ include/hw/xen/xen.h          |   1 -
+ include/qapi/qmp/qerror.h     |   6 +-
+ include/ui/console.h          |   3 -
+ kvm-all.c                     |   2 +-
+ migration/qemu-file-buf.c     |   4 ++
+ migration/rdma.c              |  22 ++++----
+ net/vhost-user.c              |   4 +-
+ numa.c                        |   6 +-
+ pc-bios/keymaps/ru            |   2 +-
+ qapi-schema.json              |   6 +-
+ qemu-img.c                    |   5 +-
+ qemu-options.hx               |  56 ++++++++++++++++--
+ qmp-commands.hx               |   6 +-
+ target-s390x/kvm.c            |   2 +-
+ tests/.gitignore              |   3 +
+ tests/qemu-iotests/.gitignore |   1 +
+ tpm.c                         |   2 +-
+ trace/control.c               |   2 +-
+ ui/console.c                  |  12 ----
+ ui/d3des.c                    |   9 ---
+ ui/d3des.h                    |   6 --
+ ui/input-legacy.c             |   6 --
+ ui/vnc-jobs.c                 |  13 -----
+ ui/vnc-jobs.h                 |   1 -
+ ui/vnc_keysym.h               |   1 +
+ util/cutils.c                 |   5 +-
+ util/oslib-posix.c            |   4 +-
+ xen-hvm-stub.c                |   4 --
+ 59 files changed, 162 insertions(+), 281 deletions(-)
 
