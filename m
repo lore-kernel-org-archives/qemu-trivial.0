@@ -1,54 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVHVW-0002zP-NF
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 06:35:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34246)
+	id 1YVHzv-0003ZP-A3
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 07:06:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43833)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1YVHVP-0002ry-NI
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 06:35:24 -0400
+	(envelope-from <imammedo@redhat.com>) id 1YVHzo-0003NM-M5
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 07:06:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1YVHVA-0001SG-HW
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 06:35:19 -0400
-Received: from e9.ny.us.ibm.com ([32.97.182.139]:56199)
+	(envelope-from <imammedo@redhat.com>) id 1YVHzk-0005Ez-Pp
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 07:06:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47371)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1YVHVA-0001Ra-C3
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 06:35:04 -0400
-Received: from /spool/local
-	by e9.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
-	Tue, 10 Mar 2015 06:35:03 -0400
-Received: from d01dlp03.pok.ibm.com (9.56.250.168)
-	by e9.ny.us.ibm.com (192.168.1.109) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 10 Mar 2015 06:35:01 -0400
-Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
-	[9.57.198.23])
-	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id 2B541C90041;
-	Tue, 10 Mar 2015 06:26:11 -0400 (EDT)
-Received: from d01av05.pok.ibm.com (d01av05.pok.ibm.com [9.56.224.195])
-	by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	t2AAYqKx12845072; Tue, 10 Mar 2015 10:35:00 GMT
-Received: from d01av05.pok.ibm.com (localhost [127.0.0.1])
-	by d01av05.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	t2AAYSAh019837; Tue, 10 Mar 2015 06:34:28 -0400
-Received: from localhost.localdomain (dhcp-9-2-140-32.watson.ibm.com
-	[9.2.140.32])
-	by d01av05.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	t2AAYR2l019283; Tue, 10 Mar 2015 06:34:27 -0400
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
-To: mst@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Date: Tue, 10 Mar 2015 06:34:01 -0400
-Message-Id: <1425983641-216781-1-git-send-email-stefanb@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.9.3
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15031010-0033-0000-0000-0000020B9915
+	(envelope-from <imammedo@redhat.com>)
+	id 1YVHzf-0005Du-J3; Tue, 10 Mar 2015 07:06:35 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2AB6XbF027495
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Tue, 10 Mar 2015 07:06:34 -0400
+Received: from nial.brq.redhat.com (dhcp-1-125.brq.redhat.com [10.34.1.125])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t2AB6WAr008385; Tue, 10 Mar 2015 07:06:33 -0400
+Date: Tue, 10 Mar 2015 12:06:29 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Paulo Vital <paulo.vital@profitbricks.com>
+Message-ID: <20150310120629.0db9d481@nial.brq.redhat.com>
+In-Reply-To: <1425984177-10608-1-git-send-email-paulo.vital@profitbricks.com>
+References: <1425984177-10608-1-git-send-email-paulo.vital@profitbricks.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 32.97.182.139
-Cc: Stefan Berger <stefanb@us.ibm.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH v2] tpm: Move memory subregion function into
-	realize function
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pc-dimm: Add description
+	for device list.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,46 +46,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 10:35:24 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 11:06:48 -0000
 
-From: Stefan Berger <stefanb@us.ibm.com>
+On Tue, 10 Mar 2015 11:42:57 +0100
+Paulo Vital <paulo.vital@profitbricks.com> wrote:
 
-Move the memory subregion function into the DeviceClass realize function
-due to isa_address_space (now) crashing if called in the instance init
-function.
+> The pc-dimm option presented on device list (by argument "-device \?")
+> is the unique option that don't have any information about it. This
+> patch adds a description for the pc-dimm device to help users to
+> identify it.
+> 
+> Signed-off-by: Paulo Vital <paulo.vital@profitbricks.com>
+> ---
+>  hw/mem/pc-dimm.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
+> index de81b9c..d3f7b5b 100644
+> --- a/hw/mem/pc-dimm.c
+> +++ b/hw/mem/pc-dimm.c
+> @@ -351,6 +351,7 @@ static void pc_dimm_class_init(ObjectClass *oc, void *data)
+>  
+>      dc->realize = pc_dimm_realize;
+>      dc->props = pc_dimm_properties;
+> +    dc->desc = "Dimm device for Memory Hotplug";
+it's not necessarily only for hotplug, I'd suggest:
+"DIMM memory module"
 
-Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
----
- hw/tpm/tpm_tis.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
-index d0bb97f..9084ca4 100644
---- a/hw/tpm/tpm_tis.c
-+++ b/hw/tpm/tpm_tis.c
-@@ -959,18 +959,18 @@ static void tpm_tis_realizefn(DeviceState *dev, Error **errp)
-     tis->bh = qemu_bh_new(tpm_tis_receive_bh, s);
- 
-     isa_init_irq(&s->busdev, &tis->irq, tis->irq_num);
-+
-+    memory_region_add_subregion(isa_address_space(ISA_DEVICE(dev)),
-+                                TPM_TIS_ADDR_BASE, &s->mmio);
- }
- 
- static void tpm_tis_initfn(Object *obj)
- {
--    ISADevice *dev = ISA_DEVICE(obj);
-     TPMState *s = TPM(obj);
- 
-     memory_region_init_io(&s->mmio, OBJECT(s), &tpm_tis_memory_ops,
-                           s, "tpm-tis-mmio",
-                           TPM_TIS_NUM_LOCALITIES << TPM_TIS_LOCALITY_SHIFT);
--    memory_region_add_subregion(isa_address_space(dev), TPM_TIS_ADDR_BASE,
--                                &s->mmio);
- }
- 
- static void tpm_tis_class_init(ObjectClass *klass, void *data)
--- 
-2.1.0
+>  
+>      ddc->get_memory_region = pc_dimm_get_memory_region;
+>  }
 
 
