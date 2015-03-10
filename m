@@ -1,38 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVDqy-0001Qo-Io
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 02:41:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59293)
+	id 1YVEFB-0006H4-9x
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 03:06:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40531)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVDqw-0001OQ-Tm
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:41:19 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YVEF8-0006Cl-H8
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:06:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVDqv-0007TX-SO
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:41:18 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:55279)
+	(envelope-from <mjt@tls.msk.ru>) id 1YVEF7-0005SK-IE
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:06:18 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60938)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YVDqp-0007Li-Om; Tue, 10 Mar 2015 02:41:11 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8D5B841302;
-	Tue, 10 Mar 2015 09:41:10 +0300 (MSK)
-Message-ID: <54FE9206.1070809@msgid.tls.msk.ru>
-Date: Tue, 10 Mar 2015 09:41:10 +0300
+	id 1YVEF1-0005Pu-7G; Tue, 10 Mar 2015 03:06:11 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id ABDD241302;
+	Tue, 10 Mar 2015 10:06:08 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 98AC6722;
+	Tue, 10 Mar 2015 10:06:08 +0300 (MSK)
+Received: (nullmailer pid 9920 invoked by uid 1000);
+	Tue, 10 Mar 2015 07:06:08 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.4.0
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1425838487-28274-1-git-send-email-sw@weilnetz.de>	<54FE896B.1000802@msgid.tls.msk.ru>
-	<54FE8D8B.3070807@weilnetz.de>
-In-Reply-To: <54FE8D8B.3070807@weilnetz.de>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Tue, 10 Mar 2015 10:06:04 +0300
+Message-Id: <1425971164-9845-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 1/7] backends: Fix warning from Sparse
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Peter Wu <peter@lekensteyn.nl>
+Subject: [Qemu-trivial] [PATCH] block/dmg: make it modular if using
+	additional library
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,28 +42,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 06:41:19 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 07:06:19 -0000
 
-10.03.2015 09:22, Stefan Weil wrote:
+block/dmg can use additional library (libbz2) to read
+bzip2-compressed files.  Make the block driver to be
+a module if libbz2 support is requested, to avoid extra
+library dependency by default.
 
-> No, that was my mistake. Please excuse also the cris patch which I sent twice.
-> I did not notice that it already had caused trouble, nor did I notice that I had already sent it.
-> In my local patch queue (~ 50 patches) there was even a 2nd cris patch
-> which removed the unused variables...
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+--
 
-No problems with that (except that we bothered Peter twice
-with this cris thing already, and I really mean "we", since
-it escaped my testing and accurate review too, and it was
-twice too, so I'm as guilty if not more).
+This might be questionable, to make the thing to be either
+module or built-in depending on build environment, so a
+better idea may be to make it modular unconditionally.
+This block device format isn't used often.
 
-And this situation suggests that I should process and submit
-patches a) more carefully and b) faster.  So it is, again,
-good portion of my fault.  Not doing trivial-patches merging
-for 3 weeks and rushing a whole lot in one go without that
-good review isn't going to work well.
+ block/Makefile.objs | 3 ++-
+ configure           | 3 +++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-Thank you for the good work!  And it really is good, while
-boring...
+diff --git a/block/Makefile.objs b/block/Makefile.objs
+index db2933e..440c51f 100644
+--- a/block/Makefile.objs
++++ b/block/Makefile.objs
+@@ -1,7 +1,8 @@
+-block-obj-y += raw_bsd.o qcow.o vdi.o vmdk.o cloop.o dmg.o bochs.o vpc.o vvfat.o
++block-obj-y += raw_bsd.o qcow.o vdi.o vmdk.o cloop.o bochs.o vpc.o vvfat.o
+ block-obj-y += qcow2.o qcow2-refcount.o qcow2-cluster.o qcow2-snapshot.o qcow2-cache.o
+ block-obj-y += qed.o qed-gencb.o qed-l2-cache.o qed-table.o qed-cluster.o
+ block-obj-y += qed-check.o
++block-obj-$(CONFIG_DMG) += dmg.o
+ block-obj-$(CONFIG_VHDX) += vhdx.o vhdx-endian.o vhdx-log.o
+ block-obj-$(CONFIG_QUORUM) += quorum.o
+ block-obj-y += parallels.o blkdebug.o blkverify.o
+diff --git a/configure b/configure
+index 7ba4bcb..1dd5721 100755
+--- a/configure
++++ b/configure
+@@ -4772,6 +4772,9 @@ fi
+ if test "$bzip2" = "yes" ; then
+   echo "CONFIG_BZIP2=y" >> $config_host_mak
+   echo "BZIP2_LIBS=-lbz2" >> $config_host_mak
++  echo "CONFIG_DMG=m" >> $config_host_mak
++else
++  echo "CONFIG_DMG=y" >> $config_host_mak
+ fi
+ 
+ if test "$libiscsi" = "yes" ; then
+-- 
+2.1.4
 
-/mjt
 
