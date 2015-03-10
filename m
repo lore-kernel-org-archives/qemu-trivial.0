@@ -1,36 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVEFB-0006H4-9x
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 03:06:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40531)
+	id 1YVELZ-0001WB-LW
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 03:12:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42876)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVEF8-0006Cl-H8
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:06:19 -0400
+	(envelope-from <sw@weilnetz.de>) id 1YVELX-0001TR-9h
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:12:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVEF7-0005SK-IE
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:06:18 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:60938)
+	(envelope-from <sw@weilnetz.de>) id 1YVELW-0008V0-Ax
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:12:55 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:40349)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YVEF1-0005Pu-7G; Tue, 10 Mar 2015 03:06:11 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id ABDD241302;
-	Tue, 10 Mar 2015 10:06:08 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 98AC6722;
-	Tue, 10 Mar 2015 10:06:08 +0300 (MSK)
-Received: (nullmailer pid 9920 invoked by uid 1000);
-	Tue, 10 Mar 2015 07:06:08 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Tue, 10 Mar 2015 10:06:04 +0300
-Message-Id: <1425971164-9845-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Peter Wu <peter@lekensteyn.nl>
-Subject: [Qemu-trivial] [PATCH] block/dmg: make it modular if using
-	additional library
+	(envelope-from <sw@weilnetz.de>)
+	id 1YVELQ-0008TV-60; Tue, 10 Mar 2015 03:12:48 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	1FE211180041; Tue, 10 Mar 2015 08:12:47 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id kZE3uMjlfBo6; Tue, 10 Mar 2015 08:12:45 +0100 (CET)
+Received: from [192.168.178.24] (p54ACAA0C.dip0.t-ipconnect.de [84.172.170.12])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	E7DFB1180040; Tue, 10 Mar 2015 08:12:44 +0100 (CET)
+Message-ID: <54FE996C.2040501@weilnetz.de>
+Date: Tue, 10 Mar 2015 08:12:44 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.5.0
+MIME-Version: 1.0
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+References: <1425966045-13510-1-git-send-email-mjt@msgid.tls.msk.ru>
+In-Reply-To: <1425966045-13510-1-git-send-email-mjt@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=iso-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: qemu-trivial@nongnu.org, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>
+Subject: Re: [Qemu-trivial] [PATCH] cris: remove unused cris_cond15
+	declarations
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,54 +50,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 07:06:19 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 07:12:56 -0000
 
-block/dmg can use additional library (libbz2) to read
-bzip2-compressed files.  Make the block driver to be
-a module if libbz2 support is requested, to avoid extra
-library dependency by default.
+Am 10.03.2015 um 06:40 schrieb Michael Tokarev:
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>   disas/cris.c              | 11 -----------
+>   target-cris/opcode-cris.h | 10 ----------
+>   2 files changed, 21 deletions(-)
+>
+> diff --git a/disas/cris.c b/disas/cris.c
+> index 9dfb4e3..0fc7e54 100644
+> --- a/disas/cris.c
+> +++ b/disas/cris.c
+> @@ -1214,17 +1214,6 @@ cris_cc_strings[] =
+>     "wf"
+>   };
+>   
+> -/* Different names and semantics for condition 1111 (0xf).  */
+> -const struct cris_cond15 cris_cond15s[] =
+> -{
+> -  /* FIXME: In what version did condition "ext" disappear?  */
+> -  {"ext", cris_ver_v0_3},
+> -  {"wf", cris_ver_v10},
+> -  {"sb", cris_ver_v32p},
+> -  {NULL, 0}
+> -};
+> -
+> -
+>   /*
+>    * Local variables:
+>    * eval: (c-set-style "gnu")
+> diff --git a/target-cris/opcode-cris.h b/target-cris/opcode-cris.h
+> index 779d4aa..e7ebb98 100644
+> --- a/target-cris/opcode-cris.h
+> +++ b/target-cris/opcode-cris.h
+> @@ -108,16 +108,6 @@ struct cris_support_reg
+>   };
+>   extern const struct cris_support_reg cris_support_regs[];
+>   
+> -struct cris_cond15
+> -{
+> -  /* The name of the condition.  */
+> -  const char *const name;
+> -
+> -  /* What CPU version this condition name applies to.  */
+> -  enum cris_insn_version_usage applicable_version;
+> -};
+> -extern const struct cris_cond15 cris_conds15[];
+> -
+>   /* Opcode-dependent constants.  */
+>   #define AUTOINCR_BIT (0x04)
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
---
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
-This might be questionable, to make the thing to be either
-module or built-in depending on build environment, so a
-better idea may be to make it modular unconditionally.
-This block device format isn't used often.
-
- block/Makefile.objs | 3 ++-
- configure           | 3 +++
- 2 files changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/block/Makefile.objs b/block/Makefile.objs
-index db2933e..440c51f 100644
---- a/block/Makefile.objs
-+++ b/block/Makefile.objs
-@@ -1,7 +1,8 @@
--block-obj-y += raw_bsd.o qcow.o vdi.o vmdk.o cloop.o dmg.o bochs.o vpc.o vvfat.o
-+block-obj-y += raw_bsd.o qcow.o vdi.o vmdk.o cloop.o bochs.o vpc.o vvfat.o
- block-obj-y += qcow2.o qcow2-refcount.o qcow2-cluster.o qcow2-snapshot.o qcow2-cache.o
- block-obj-y += qed.o qed-gencb.o qed-l2-cache.o qed-table.o qed-cluster.o
- block-obj-y += qed-check.o
-+block-obj-$(CONFIG_DMG) += dmg.o
- block-obj-$(CONFIG_VHDX) += vhdx.o vhdx-endian.o vhdx-log.o
- block-obj-$(CONFIG_QUORUM) += quorum.o
- block-obj-y += parallels.o blkdebug.o blkverify.o
-diff --git a/configure b/configure
-index 7ba4bcb..1dd5721 100755
---- a/configure
-+++ b/configure
-@@ -4772,6 +4772,9 @@ fi
- if test "$bzip2" = "yes" ; then
-   echo "CONFIG_BZIP2=y" >> $config_host_mak
-   echo "BZIP2_LIBS=-lbz2" >> $config_host_mak
-+  echo "CONFIG_DMG=m" >> $config_host_mak
-+else
-+  echo "CONFIG_DMG=y" >> $config_host_mak
- fi
- 
- if test "$libiscsi" = "yes" ; then
--- 
-2.1.4
+There remains a comment in disas/cris.c referring to cris_conds15. Maybe you
+want to add that to your patch, too (keep my review then).
 
 
