@@ -1,57 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVMOX-0006Zm-To
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 11:48:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51753)
+	id 1YVNsu-00005z-Gt
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 13:24:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50712)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YVMOV-0006V9-Fk
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 11:48:32 -0400
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YVNss-00005Z-Gt
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 13:23:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YVMOU-0007Dp-Ju
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 11:48:31 -0400
-Received: from mail-wi0-x22d.google.com ([2a00:1450:400c:c05::22d]:46793)
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YVNsp-0001ey-B8
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 13:23:58 -0400
+Received: from e28smtp01.in.ibm.com ([122.248.162.1]:49208)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YVMOO-0007Az-Mo; Tue, 10 Mar 2015 11:48:24 -0400
-Received: by wiwh11 with SMTP id h11so4114053wiw.5;
-	Tue, 10 Mar 2015 08:48:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=wyeiMwk7AWIDvId7EBhpVMWLFgGwpIN9xglKMXM/68Q=;
-	b=oiLeTpgbV8iFl5KrpbDeTZiFhUcC7rfiEPUqBgU+rZjrDREcCSYXKKoz0H+HhajTQY
-	nHr2oyk0SbVrVUpHVg8vXADj+YQHeTQoLK0vLhIIlhl1h4bzDqN+LxIvayeywQtIO/+a
-	rBdD7nNGq5BYUfQLoMDv//qGxrIqvLoZKvtsNER+FUMxSIbWLZoH8lcQgGPaz0Sz3aIp
-	zsdzig1UjbStENLcnE3GA5PQbkDgLX5Y8EVU7riRd6zfeD25ApO514pegczhwT5QmgXZ
-	AJZkscc4yo6BcSvv2uFPGH1CAx7fEDhnK4uCp+OPEyo5MJzsZKhu9gw3D5T9xujpW7UC
-	wVew==
-X-Received: by 10.194.11.9 with SMTP id m9mr68489872wjb.82.1426002503971;
-	Tue, 10 Mar 2015 08:48:23 -0700 (PDT)
-Received: from [192.168.10.165] (net-188-216-23-124.cust.vodafonedsl.it.
-	[188.216.23.124])
-	by mx.google.com with ESMTPSA id ha5sm20834828wib.1.2015.03.10.08.48.22
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 10 Mar 2015 08:48:23 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <54FF1244.2080906@redhat.com>
-Date: Tue, 10 Mar 2015 16:48:20 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YVNso-0001e7-MY
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 13:23:55 -0400
+Received: from /spool/local
+	by e28smtp01.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aneesh.kumar@linux.vnet.ibm.com>;
+	Tue, 10 Mar 2015 22:53:50 +0530
+Received: from d28dlp03.in.ibm.com (9.184.220.128)
+	by e28smtp01.in.ibm.com (192.168.1.131) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 10 Mar 2015 22:53:48 +0530
+Received: from d28relay03.in.ibm.com (d28relay03.in.ibm.com [9.184.220.60])
+	by d28dlp03.in.ibm.com (Postfix) with ESMTP id BD36B1258044;
+	Tue, 10 Mar 2015 22:55:14 +0530 (IST)
+Received: from d28av01.in.ibm.com (d28av01.in.ibm.com [9.184.220.63])
+	by d28relay03.in.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	t2AHNlPg50462812; Tue, 10 Mar 2015 22:53:47 +0530
+Received: from d28av01.in.ibm.com (localhost [127.0.0.1])
+	by d28av01.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	t2AHNljT009482; Tue, 10 Mar 2015 22:53:47 +0530
+Received: from skywalker.linux.vnet.ibm.com ([9.79.191.119])
+	by d28av01.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	t2AHNld2009425
+	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
+	Tue, 10 Mar 2015 22:53:47 +0530
+From: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+In-Reply-To: <1425966860-13605-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1425966860-13605-1-git-send-email-mjt@msgid.tls.msk.ru>
+User-Agent: Notmuch/0.19+30~gd241a48 (http://notmuchmail.org) Emacs/24.3.1
+	(x86_64-pc-linux-gnu)
+Date: Tue, 10 Mar 2015 22:53:46 +0530
+Message-ID: <87mw3krckd.fsf@linux.vnet.ibm.com>
 MIME-Version: 1.0
-To: "Michael S. Tsirkin" <mst@redhat.com>, 
-	Stefan Berger <stefanb@linux.vnet.ibm.com>
-References: <1425983641-216781-1-git-send-email-stefanb@linux.vnet.ibm.com>
-	<20150310160704-mutt-send-email-mst@redhat.com>
-In-Reply-To: <20150310160704-mutt-send-email-mst@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22d
-Cc: qemu-trivial@nongnu.org, Stefan Berger <stefanb@us.ibm.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] tpm: Move memory subregion function
-	into realize function
+Content-Type: text/plain
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15031017-4790-0000-0000-000006FB3E15
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 122.248.162.1
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: Re: [Qemu-trivial] [PATCH] 9pfs-proxy: tiny cleanups in
+	proxy_pwritev and proxy_preadv
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,60 +64,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 15:48:32 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 17:23:59 -0000
+
+Michael Tokarev <mjt@tls.msk.ru> writes:
+
+> Don't compare syscall return with -1, use "<0" condition.
+> Don't introduce useless local variables when we already
+> have similar variable
+> Rename local variable to be consistent with other usages
+>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  hw/9pfs/virtio-9p-proxy.c | 12 +++++-------
+>  1 file changed, 5 insertions(+), 7 deletions(-)
+>
+> diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
+> index 59c7445..a01804a 100644
+> --- a/hw/9pfs/virtio-9p-proxy.c
+> +++ b/hw/9pfs/virtio-9p-proxy.c
+> @@ -696,9 +696,9 @@ static ssize_t proxy_preadv(FsContext *ctx, V9fsFidOpenState *fs,
+>  #ifdef CONFIG_PREADV
+>      return preadv(fs->fd, iov, iovcnt, offset);
+>  #else
+> -    int err = lseek(fs->fd, offset, SEEK_SET);
+> -    if (err == -1) {
+> -        return err;
+> +    int ret = lseek(fs->fd, offset, SEEK_SET);
+> +    if (err < 0)
+> +        return ret;
+>      } else {
+>          return readv(fs->fd, iov, iovcnt);
+>      }
+
+I am not sure this is needed, whether to use int err or int ret as the
+variable name is simply a matter of preference for the author. Also did
+you compile test the above ? (note: int ret followed by a check with
+variable name 'err').
 
 
+> @@ -714,10 +714,8 @@ static ssize_t proxy_pwritev(FsContext *ctx, V9fsFidOpenState *fs,
+>  #ifdef CONFIG_PREADV
+>      ret = pwritev(fs->fd, iov, iovcnt, offset);
+>  #else
+> -    int err = lseek(fs->fd, offset, SEEK_SET);
+> -    if (err == -1) {
+> -        return err;
+> -    } else {
+> +    ret = lseek(fs->fd, offset, SEEK_SET);
+> +    if (ret >= 0) {
+>          ret = writev(fs->fd, iov, iovcnt);
+>      }
+>  #endif
 
-On 10/03/2015 16:07, Michael S. Tsirkin wrote:
-> On Tue, Mar 10, 2015 at 06:34:01AM -0400, Stefan Berger wrote:
->> From: Stefan Berger <stefanb@us.ibm.com>
->>
->> Move the memory subregion function into the DeviceClass realize function
->> due to isa_address_space (now) crashing if called in the instance init
->> function.
->>
->> Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
-> 
-> Paolo can you ack pls?
+-aneesh
 
-Yup.
-
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-
-> 
->> ---
->>  hw/tpm/tpm_tis.c | 6 +++---
->>  1 file changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
->> index d0bb97f..9084ca4 100644
->> --- a/hw/tpm/tpm_tis.c
->> +++ b/hw/tpm/tpm_tis.c
->> @@ -959,18 +959,18 @@ static void tpm_tis_realizefn(DeviceState *dev, Error **errp)
->>      tis->bh = qemu_bh_new(tpm_tis_receive_bh, s);
->>  
->>      isa_init_irq(&s->busdev, &tis->irq, tis->irq_num);
->> +
->> +    memory_region_add_subregion(isa_address_space(ISA_DEVICE(dev)),
->> +                                TPM_TIS_ADDR_BASE, &s->mmio);
->>  }
->>  
->>  static void tpm_tis_initfn(Object *obj)
->>  {
->> -    ISADevice *dev = ISA_DEVICE(obj);
->>      TPMState *s = TPM(obj);
->>  
->>      memory_region_init_io(&s->mmio, OBJECT(s), &tpm_tis_memory_ops,
->>                            s, "tpm-tis-mmio",
->>                            TPM_TIS_NUM_LOCALITIES << TPM_TIS_LOCALITY_SHIFT);
->> -    memory_region_add_subregion(isa_address_space(dev), TPM_TIS_ADDR_BASE,
->> -                                &s->mmio);
->>  }
->>  
->>  static void tpm_tis_class_init(ObjectClass *klass, void *data)
->> -- 
->> 2.1.0
-> 
-> 
 
