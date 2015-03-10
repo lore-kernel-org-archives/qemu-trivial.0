@@ -1,40 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVDX7-0007b4-3X
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 02:20:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53781)
+	id 1YVDYS-0000b7-M2
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 02:22:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54065)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVDX5-0007Y0-7A
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:20:47 -0400
+	(envelope-from <sw@weilnetz.de>) id 1YVDYR-0000ZO-4s
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:22:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVDX4-0001Ik-Am
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:20:47 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:35065)
+	(envelope-from <sw@weilnetz.de>) id 1YVDYQ-0001ZF-DI
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:22:11 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:39769)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YVDX0-0001Gu-0t; Tue, 10 Mar 2015 02:20:42 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 59CCD41302;
-	Tue, 10 Mar 2015 09:20:41 +0300 (MSK)
-Message-ID: <54FE8D39.5030600@msgid.tls.msk.ru>
-Date: Tue, 10 Mar 2015 09:20:41 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
+	(envelope-from <sw@weilnetz.de>)
+	id 1YVDYM-0001YU-AY; Tue, 10 Mar 2015 02:22:06 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	7126B1180041; Tue, 10 Mar 2015 07:22:05 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id ix7GqIOFBQMj; Tue, 10 Mar 2015 07:22:03 +0100 (CET)
+Received: from [192.168.178.24] (p54ACAA0C.dip0.t-ipconnect.de [84.172.170.12])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	9B6A51180040; Tue, 10 Mar 2015 07:22:03 +0100 (CET)
+Message-ID: <54FE8D8B.3070807@weilnetz.de>
+Date: Tue, 10 Mar 2015 07:22:03 +0100
+From: Stefan Weil <sw@weilnetz.de>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.4.0
+	rv:31.0) Gecko/20100101 Icedove/31.5.0
 MIME-Version: 1.0
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>, 
- qemu-trivial@nongnu.org
-References: <1425464754-8364-1-git-send-email-zhang.zhanghailiang@huawei.com>
-In-Reply-To: <1425464754-8364-1-git-send-email-zhang.zhanghailiang@huawei.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
+To: Michael Tokarev <mjt@tls.msk.ru>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1425838487-28274-1-git-send-email-sw@weilnetz.de>
+	<54FE896B.1000802@msgid.tls.msk.ru>
+In-Reply-To: <54FE896B.1000802@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-devel@nongnu.org, eblake@redhat.com, peter.huangpeng@huawei.com,
-	armbru@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH v2] error: Replace error_report() &
- error_free() with error_report_err()
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: QEMU Developer <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH 1/7] backends: Fix warning from Sparse
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,13 +50,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 06:20:48 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 06:22:11 -0000
 
-04.03.2015 13:25, zhanghailiang wrote:
-> This is a continuation of the work started in commit 565f65d27:
-> "error: Use error_report_err() where appropriate"
+Am 10.03.2015 um 07:04 schrieb Michael Tokarev:
+> Applied all 7 to -trivial.
+>
+> Is it intentional that there's no cover letter for the series?
+>
+> Thanks,
+>
+> /mjt
 
-Applied to -trivial, thank you!
+No, that was my mistake. Please excuse also the cris patch which I sent 
+twice.
+I did not notice that it already had caused trouble, nor did I notice 
+that I had already sent it.
+In my local patch queue (~ 50 patches) there was even a 2nd cris patch
+which removed the unused variables...
 
-/mjt
+Regards
+Stefan
+
 
