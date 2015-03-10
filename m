@@ -1,46 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVH6u-0008Vb-CV
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 06:10:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54027)
+	id 1YVHVW-0002zP-NF
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 06:35:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34246)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1YVH6o-0008PW-Ve
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 06:09:58 -0400
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1YVHVP-0002ry-NI
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 06:35:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1YVH6o-0008JT-34
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 06:09:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58935)
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1YVHVA-0001SG-HW
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 06:35:19 -0400
+Received: from e9.ny.us.ibm.com ([32.97.182.139]:56199)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1YVH6g-0008Gm-8I; Tue, 10 Mar 2015 06:09:46 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2AA9dRk000718
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 10 Mar 2015 06:09:40 -0400
-Received: from noname.str.redhat.com (dhcp-192-197.str.redhat.com
-	[10.33.192.197])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id t2AA9aLD001741; Tue, 10 Mar 2015 06:09:37 -0400
-Date: Tue, 10 Mar 2015 11:09:36 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Fam Zheng <famz@redhat.com>
-Message-ID: <20150310100936.GD3770@noname.str.redhat.com>
-References: <1425971164-9845-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<20150310085016.GC3770@noname.str.redhat.com>
-	<20150310091759.GC14320@ad.nay.redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20150310091759.GC14320@ad.nay.redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1YVHVA-0001Ra-C3
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 06:35:04 -0400
+Received: from /spool/local
+	by e9.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
+	Tue, 10 Mar 2015 06:35:03 -0400
+Received: from d01dlp03.pok.ibm.com (9.56.250.168)
+	by e9.ny.us.ibm.com (192.168.1.109) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 10 Mar 2015 06:35:01 -0400
+Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
+	[9.57.198.23])
+	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id 2B541C90041;
+	Tue, 10 Mar 2015 06:26:11 -0400 (EDT)
+Received: from d01av05.pok.ibm.com (d01av05.pok.ibm.com [9.56.224.195])
+	by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	t2AAYqKx12845072; Tue, 10 Mar 2015 10:35:00 GMT
+Received: from d01av05.pok.ibm.com (localhost [127.0.0.1])
+	by d01av05.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	t2AAYSAh019837; Tue, 10 Mar 2015 06:34:28 -0400
+Received: from localhost.localdomain (dhcp-9-2-140-32.watson.ibm.com
+	[9.2.140.32])
+	by d01av05.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	t2AAYR2l019283; Tue, 10 Mar 2015 06:34:27 -0400
+From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+To: mst@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Date: Tue, 10 Mar 2015 06:34:01 -0400
+Message-Id: <1425983641-216781-1-git-send-email-stefanb@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.9.3
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15031010-0033-0000-0000-0000020B9915
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	armbru@redhat.com, Peter Wu <peter@lekensteyn.nl>, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] block/dmg: make it modular if using
-	additional library
+X-Received-From: 32.97.182.139
+Cc: Stefan Berger <stefanb@us.ibm.com>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH v2] tpm: Move memory subregion function into
+	realize function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,46 +60,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 10:09:58 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 10:35:24 -0000
 
-Am 10.03.2015 um 10:17 hat Fam Zheng geschrieben:
-> On Tue, 03/10 09:50, Kevin Wolf wrote:
-> > Am 10.03.2015 um 08:06 hat Michael Tokarev geschrieben:
-> > > block/dmg can use additional library (libbz2) to read
-> > > bzip2-compressed files.  Make the block driver to be
-> > > a module if libbz2 support is requested, to avoid extra
-> > > library dependency by default.
-> > > 
-> > > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> > 
-> > First of all: I don't think this is suitable for trivial. The actual
-> > code change might be small, but the change in behaviour is important and
-> > needs discussion.
-> > 
-> > > This might be questionable, to make the thing to be either
-> > > module or built-in depending on build environment, so a
-> > > better idea may be to make it modular unconditionally.
-> > > This block device format isn't used often.
-> > 
-> > Yes, I'm concerned that making it conditional might be a bit surprising.
-> > I'd like to hear some more opinions before applying this.
-> 
-> I don't see the advantage over making it an unconditional module - condition
-> only makes it a bit more complicated.
-> 
-> > 
-> > Also, should we consider making some more rarely used image formats
-> > modules even if they don't pull in external dependencies?
-> 
-> Sounds reasonable to me. Is the intention to reduce binary size?
+From: Stefan Berger <stefanb@us.ibm.com>
 
-Yes, that and also that it allows compiling out some drivers without
-having to mess with the Makefiles. You just don't install all of them.
+Move the memory subregion function into the DeviceClass realize function
+due to isa_address_space (now) crashing if called in the instance init
+function.
 
-Related to that, Peter also mentioned that you (the user, not developer
-or packager) could simply disable a single driver, for example as a
-temporary hotfix in the case of security problems in a block driver.
-That would actually be an argument for making _all_ drivers modules.
+Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+---
+ hw/tpm/tpm_tis.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Kevin
+diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+index d0bb97f..9084ca4 100644
+--- a/hw/tpm/tpm_tis.c
++++ b/hw/tpm/tpm_tis.c
+@@ -959,18 +959,18 @@ static void tpm_tis_realizefn(DeviceState *dev, Error **errp)
+     tis->bh = qemu_bh_new(tpm_tis_receive_bh, s);
+ 
+     isa_init_irq(&s->busdev, &tis->irq, tis->irq_num);
++
++    memory_region_add_subregion(isa_address_space(ISA_DEVICE(dev)),
++                                TPM_TIS_ADDR_BASE, &s->mmio);
+ }
+ 
+ static void tpm_tis_initfn(Object *obj)
+ {
+-    ISADevice *dev = ISA_DEVICE(obj);
+     TPMState *s = TPM(obj);
+ 
+     memory_region_init_io(&s->mmio, OBJECT(s), &tpm_tis_memory_ops,
+                           s, "tpm-tis-mmio",
+                           TPM_TIS_NUM_LOCALITIES << TPM_TIS_LOCALITY_SHIFT);
+-    memory_region_add_subregion(isa_address_space(dev), TPM_TIS_ADDR_BASE,
+-                                &s->mmio);
+ }
+ 
+ static void tpm_tis_class_init(ObjectClass *klass, void *data)
+-- 
+2.1.0
+
 
