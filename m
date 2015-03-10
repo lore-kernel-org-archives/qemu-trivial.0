@@ -1,51 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVK9D-0003nS-HZ
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 09:24:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59659)
+	id 1YVKGG-0001wB-Nh
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 09:31:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33944)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YVK9B-0003jQ-0J
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 09:24:34 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YVKGA-0001lB-Cr
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 09:31:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YVK99-0000HU-RU
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 09:24:32 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39821)
+	(envelope-from <mjt@tls.msk.ru>) id 1YVKG9-0003hw-HJ
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 09:31:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:41526)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YVK92-0000Fv-Mz; Tue, 10 Mar 2015 09:24:24 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2ADOJQF011164
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 10 Mar 2015 09:24:19 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-56.ams2.redhat.com
-	[10.36.116.56])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2ADOG0u012282
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 10 Mar 2015 09:24:18 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 1F4BA303FEBB; Tue, 10 Mar 2015 14:24:16 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-References: <1425971164-9845-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<20150310085016.GC3770@noname.str.redhat.com>
-	<20150310091759.GC14320@ad.nay.redhat.com>
-	<20150310100936.GD3770@noname.str.redhat.com>
-Date: Tue, 10 Mar 2015 14:24:16 +0100
-In-Reply-To: <20150310100936.GD3770@noname.str.redhat.com> (Kevin Wolf's
-	message of "Tue, 10 Mar 2015 11:09:36 +0100")
-Message-ID: <87mw3lx9xb.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YVKG3-0003fl-76; Tue, 10 Mar 2015 09:31:39 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3CFB24138F;
+	Tue, 10 Mar 2015 16:31:37 +0300 (MSK)
+Message-ID: <54FEF239.304@msgid.tls.msk.ru>
+Date: Tue, 10 Mar 2015 16:31:37 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+To: Markus Armbruster <armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>
+References: <1425971164-9845-1-git-send-email-mjt@msgid.tls.msk.ru>	<20150310085016.GC3770@noname.str.redhat.com>	<20150310091759.GC14320@ad.nay.redhat.com>	<20150310100936.GD3770@noname.str.redhat.com>
+	<87mw3lx9xb.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87mw3lx9xb.fsf@blackfin.pond.sub.org>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
 Cc: Fam Zheng <famz@redhat.com>, qemu-block@nongnu.org, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	Peter Wu <peter@lekensteyn.nl>, stefanha@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block/dmg: make it modular
-	if using additional library
+	qemu-devel@nongnu.org, Peter Wu <peter@lekensteyn.nl>, stefanha@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] block/dmg: make it modular if using
+	additional library
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,62 +46,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 13:24:34 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 13:31:51 -0000
 
-Kevin Wolf <kwolf@redhat.com> writes:
+10.03.2015 16:24, Markus Armbruster wrote:
+[]
+> For me, avoiding bothersome dependencies is a strong practical argument
+> for making a something a loadable module.  Other benefits of loadable
+> modules presented so far seem pretty negligible to me.  If you want
+> them, no objection from me, as long as the cost is similarly negligible,
+> additional complexity for developers, packagers and users in particular.
 
-> Am 10.03.2015 um 10:17 hat Fam Zheng geschrieben:
->> On Tue, 03/10 09:50, Kevin Wolf wrote:
->> > Am 10.03.2015 um 08:06 hat Michael Tokarev geschrieben:
->> > > block/dmg can use additional library (libbz2) to read
->> > > bzip2-compressed files.  Make the block driver to be
->> > > a module if libbz2 support is requested, to avoid extra
->> > > library dependency by default.
->> > > 
->> > > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->> > 
->> > First of all: I don't think this is suitable for trivial. The actual
->> > code change might be small, but the change in behaviour is important and
->> > needs discussion.
->> > 
->> > > This might be questionable, to make the thing to be either
->> > > module or built-in depending on build environment, so a
->> > > better idea may be to make it modular unconditionally.
->> > > This block device format isn't used often.
->> > 
->> > Yes, I'm concerned that making it conditional might be a bit surprising.
->> > I'd like to hear some more opinions before applying this.
->> 
->> I don't see the advantage over making it an unconditional module - condition
->> only makes it a bit more complicated.
->> 
->> > 
->> > Also, should we consider making some more rarely used image formats
->> > modules even if they don't pull in external dependencies?
->> 
->> Sounds reasonable to me. Is the intention to reduce binary size?
+That's the same for me.  No need to reduce code size, at least not
+by that much, and no need to disable some "insecure" eg block driver,
+but once something pulls in some interesting external dep it seems
+to be worth the effort (if it is not large anyway) to make it loadable.
 
-Fair argument, but not a paricularly weighty one.  The unused code never
-gets paged in, mostly, and isn't particularly large to begin with.
+It is much bigger PITA if some feature is needed in some obscure or
+rare sutuation but it is not present -- cost of solving this might
+be significantly larger than billions of copies of unused code on
+billions of user's hdds :)
 
-> Yes, that and also that it allows compiling out some drivers without
-> having to mess with the Makefiles. You just don't install all of them.
+This is the reason I made it a module or built-in depending on usage
+of external dep.
 
-Second best solution of the configuration management problem "select a
-subset of the available block drivers", good enough when compiling the
-unused ones isn't bothersome.  But the best solution is still
-configuration management capable of disabling optional components.
+However, in this case libbz2 is most likely present on a user's system
+anyway (since at least some time ago it was rather popular, not as
+wide as gzip but still significantly; now it is mostly replaced by xz),
+so there isn't much of an external dependency.
 
-> Related to that, Peter also mentioned that you (the user, not developer
-> or packager) could simply disable a single driver, for example as a
-> temporary hotfix in the case of security problems in a block driver.
-> That would actually be an argument for making _all_ drivers modules.
+Thanks,
 
-And pretty much every other optional component.
+/mjt
 
-For me, avoiding bothersome dependencies is a strong practical argument
-for making a something a loadable module.  Other benefits of loadable
-modules presented so far seem pretty negligible to me.  If you want
-them, no objection from me, as long as the cost is similarly negligible,
-additional complexity for developers, packagers and users in particular.
 
