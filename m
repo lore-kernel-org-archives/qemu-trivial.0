@@ -1,37 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVDHT-00052H-Jo
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 02:04:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48116)
+	id 1YVDIx-0006dS-M1
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 02:06:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48559)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVDHR-00051L-Sh
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:04:38 -0400
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YVDIv-0006dI-NG
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:06:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVDHR-0006wA-3p
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:04:37 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:44064)
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1YVDIr-0007zP-Kd
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:06:09 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:29553)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YVDHI-0006rv-Le; Tue, 10 Mar 2015 02:04:28 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3B3E241302;
-	Tue, 10 Mar 2015 09:04:27 +0300 (MSK)
-Message-ID: <54FE896B.1000802@msgid.tls.msk.ru>
-Date: Tue, 10 Mar 2015 09:04:27 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.4.0
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1YVDIq-0007wJ-FE; Tue, 10 Mar 2015 02:06:05 -0400
+Received: from 172.24.2.119 (EHLO szxeml432-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CKP25893; Tue, 10 Mar 2015 14:05:51 +0800 (CST)
+Received: from [127.0.0.1] (10.177.22.69) by szxeml432-hub.china.huawei.com
+	(10.82.67.209) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 10 Mar 2015 14:04:39 +0800
+Message-ID: <54FE8972.6090200@huawei.com>
+Date: Tue, 10 Mar 2015 14:04:34 +0800
+From: zhanghailiang <zhang.zhanghailiang@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1425838487-28274-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1425838487-28274-1-git-send-email-sw@weilnetz.de>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
+To: <mjt@tls.msk.ru>
+References: <1425464754-8364-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<87bnk8u2pt.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87bnk8u2pt.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 1/7] backends: Fix warning from Sparse
+X-Originating-IP: [10.177.22.69]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	hangaohuai@huawei.com, peter.huangpeng@huawei.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] error: Replace
+ error_report() & error_free() with error_report_err()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,13 +50,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 06:04:38 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 06:06:10 -0000
 
-Applied all 7 to -trivial.
+Hi Michael,
 
-Is it intentional that there's no cover letter for the series?
+This patch has been reviewed, Please consider for merging.
 
 Thanks,
+zhanghailiang
 
-/mjt
+On 2015/3/5 0:50, Markus Armbruster wrote:
+> zhanghailiang <zhang.zhanghailiang@huawei.com> writes:
+>
+>> This is a continuation of the work started in commit 565f65d27:
+>> "error: Use error_report_err() where appropriate"
+>>
+>> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+>> Reviewed-by: Eric Blake <eblake@redhat.com>
+>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>
+>
+
+
 
