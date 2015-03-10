@@ -1,44 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVELZ-0001WB-LW
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 03:12:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42876)
+	id 1YVEPB-0002x5-AD
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 03:16:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43688)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1YVELX-0001TR-9h
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:12:56 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1YVEP8-0002tW-IQ
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:16:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1YVELW-0008V0-Ax
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:12:55 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:40349)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YVEP3-0001pQ-Jd
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 03:16:38 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:16096)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1YVELQ-0008TV-60; Tue, 10 Mar 2015 03:12:48 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	1FE211180041; Tue, 10 Mar 2015 08:12:47 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id kZE3uMjlfBo6; Tue, 10 Mar 2015 08:12:45 +0100 (CET)
-Received: from [192.168.178.24] (p54ACAA0C.dip0.t-ipconnect.de [84.172.170.12])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	E7DFB1180040; Tue, 10 Mar 2015 08:12:44 +0100 (CET)
-Message-ID: <54FE996C.2040501@weilnetz.de>
-Date: Tue, 10 Mar 2015 08:12:44 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.5.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1YVEP2-0001oS-Cx; Tue, 10 Mar 2015 03:16:33 -0400
+Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CIH33260; Tue, 10 Mar 2015 15:16:25 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml428-hub.china.huawei.com
+	(10.82.67.183) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 10 Mar 2015 15:15:57 +0800
+Message-ID: <54FE9A16.7000108@huawei.com>
+Date: Tue, 10 Mar 2015 15:15:34 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-References: <1425966045-13510-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1425966045-13510-1-git-send-email-mjt@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
+To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
+References: <1425966860-13605-1-git-send-email-mjt@msgid.tls.msk.ru>
+In-Reply-To: <1425966860-13605-1-git-send-email-mjt@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial@nongnu.org, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH] cris: remove unused cris_cond15
-	declarations
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org,
+	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] 9pfs-proxy: tiny cleanups
+ in proxy_pwritev and proxy_preadv
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,61 +49,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 07:12:56 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 07:16:39 -0000
 
-Am 10.03.2015 um 06:40 schrieb Michael Tokarev:
+On 2015/3/10 13:54, Michael Tokarev wrote:
+> Don't compare syscall return with -1, use "<0" condition.
+> Don't introduce useless local variables when we already
+> have similar variable
+> Rename local variable to be consistent with other usages
+> 
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   disas/cris.c              | 11 -----------
->   target-cris/opcode-cris.h | 10 ----------
->   2 files changed, 21 deletions(-)
->
-> diff --git a/disas/cris.c b/disas/cris.c
-> index 9dfb4e3..0fc7e54 100644
-> --- a/disas/cris.c
-> +++ b/disas/cris.c
-> @@ -1214,17 +1214,6 @@ cris_cc_strings[] =
->     "wf"
->   };
->   
-> -/* Different names and semantics for condition 1111 (0xf).  */
-> -const struct cris_cond15 cris_cond15s[] =
-> -{
-> -  /* FIXME: In what version did condition "ext" disappear?  */
-> -  {"ext", cris_ver_v0_3},
-> -  {"wf", cris_ver_v10},
-> -  {"sb", cris_ver_v32p},
-> -  {NULL, 0}
-> -};
-> -
-> -
->   /*
->    * Local variables:
->    * eval: (c-set-style "gnu")
-> diff --git a/target-cris/opcode-cris.h b/target-cris/opcode-cris.h
-> index 779d4aa..e7ebb98 100644
-> --- a/target-cris/opcode-cris.h
-> +++ b/target-cris/opcode-cris.h
-> @@ -108,16 +108,6 @@ struct cris_support_reg
->   };
->   extern const struct cris_support_reg cris_support_regs[];
->   
-> -struct cris_cond15
-> -{
-> -  /* The name of the condition.  */
-> -  const char *const name;
-> -
-> -  /* What CPU version this condition name applies to.  */
-> -  enum cris_insn_version_usage applicable_version;
-> -};
-> -extern const struct cris_cond15 cris_conds15[];
-> -
->   /* Opcode-dependent constants.  */
->   #define AUTOINCR_BIT (0x04)
+>  hw/9pfs/virtio-9p-proxy.c | 12 +++++-------
+>  1 file changed, 5 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
+> index 59c7445..a01804a 100644
+> --- a/hw/9pfs/virtio-9p-proxy.c
+> +++ b/hw/9pfs/virtio-9p-proxy.c
+> @@ -696,9 +696,9 @@ static ssize_t proxy_preadv(FsContext *ctx, V9fsFidOpenState *fs,
+>  #ifdef CONFIG_PREADV
+>      return preadv(fs->fd, iov, iovcnt, offset);
+>  #else
+> -    int err = lseek(fs->fd, offset, SEEK_SET);
+> -    if (err == -1) {
+> -        return err;
+> +    int ret = lseek(fs->fd, offset, SEEK_SET);
+> +    if (err < 0)
+> +        return ret;
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+The above code fragment is confused.
 
-There remains a comment in disas/cris.c referring to cris_conds15. Maybe you
-want to add that to your patch, too (keep my review then).
+Regards,
+-Gonglei
+>      } else {
+>          return readv(fs->fd, iov, iovcnt);
+>      }
+> @@ -714,10 +714,8 @@ static ssize_t proxy_pwritev(FsContext *ctx, V9fsFidOpenState *fs,
+>  #ifdef CONFIG_PREADV
+>      ret = pwritev(fs->fd, iov, iovcnt, offset);
+>  #else
+> -    int err = lseek(fs->fd, offset, SEEK_SET);
+> -    if (err == -1) {
+> -        return err;
+> -    } else {
+> +    ret = lseek(fs->fd, offset, SEEK_SET);
+> +    if (ret >= 0) {
+>          ret = writev(fs->fd, iov, iovcnt);
+>      }
+>  #endif
+> 
+
 
 
