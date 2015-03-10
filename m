@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVDJi-0007ap-PZ
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 02:06:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48818)
+	id 1YVDLw-0000NB-B1
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 02:09:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49379)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVDJe-0007U9-FZ
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:06:55 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YVDLu-0000LK-0G
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:09:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVDJd-0008At-N4
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:06:54 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:55774)
+	(envelope-from <mjt@tls.msk.ru>) id 1YVDLt-00006T-6E
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 02:09:13 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:41683)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YVDJY-000893-EB; Tue, 10 Mar 2015 02:06:48 -0400
+	id 1YVDLo-00005Q-1m; Tue, 10 Mar 2015 02:09:08 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id D1EEC41302;
-	Tue, 10 Mar 2015 09:06:47 +0300 (MSK)
-Message-ID: <54FE89F7.1050108@msgid.tls.msk.ru>
-Date: Tue, 10 Mar 2015 09:06:47 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id 7ACB441302;
+	Tue, 10 Mar 2015 09:09:07 +0300 (MSK)
+Message-ID: <54FE8A83.3030805@msgid.tls.msk.ru>
+Date: Tue, 10 Mar 2015 09:09:07 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.4.0
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1425766581-18250-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1425766581-18250-1-git-send-email-sw@weilnetz.de>
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <1425632998-616-1-git-send-email-armbru@redhat.com>
+In-Reply-To: <1425632998-616-1-git-send-email-armbru@redhat.com>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: Kevin Wolf <kwolf@redhat.com>, QEMU Developer <qemu-devel@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] block/qapi: Fix Sparse warning
+Cc: qemu-trivial@nongnu.org, lcapitulino@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH 0/2] monitor: Fix and clean up around
+	.user_print
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,23 +44,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 06:06:55 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 06:09:15 -0000
 
-08.03.2015 01:16, Stefan Weil wrote:
-> Sparse reports this warning:
+06.03.2015 12:09, Markus Armbruster wrote:
+> A more thorough cleanup of the area is in the works, but I want to get
+> this out quickly, so it makes 2.3.
 > 
-> block/qapi.c:417:47: warning:
->  too long initializer-string for array of char(no space for nul char)
-> 
-> Replacing the string by an array of characters fixes this warning.
+> I think it can go via -trivial, if Luiz doesn't mind.
 
-> -    static const char suffixes[NB_SUFFIXES] = "KMGT";
-> +    static const char suffixes[NB_SUFFIXES] = {'K', 'M', 'G', 'T'};
-
-The latter is a bit uglier to my taste but oh well, damn warnings! :)
-
-Applied to -trivial, thanks!
+Applied to -trivial for now, thank you!
 
 /mjt
-
 
