@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVKzM-0006Lo-JR
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 10:18:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49485)
+	id 1YVLJA-0006fk-ET
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Mar 2015 10:38:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53611)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paulo.vital@profitbricks.com>) id 1YVIIS-0008IJ-QP
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 07:26:01 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YVLJ4-0006Ys-De
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 10:38:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paulo.vital@profitbricks.com>) id 1YVIIN-0004XL-N4
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 07:26:00 -0400
-Received: from mail-wg0-f46.google.com ([74.125.82.46]:35400)
+	(envelope-from <mjt@tls.msk.ru>) id 1YVLJ3-0004sL-Fs
+	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 10:38:50 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56856)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paulo.vital@profitbricks.com>) id 1YVIIN-0004X8-GN
-	for qemu-trivial@nongnu.org; Tue, 10 Mar 2015 07:25:55 -0400
-Received: by wggy19 with SMTP id y19so1066743wgg.2
-	for <qemu-trivial@nongnu.org>; Tue, 10 Mar 2015 04:25:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=NVbEFVKYLg8KOmYUaPiHsX2Ia3antHhhfVSpsm0Z7WI=;
-	b=Gvgy0iMdAVCobxcHfjQJBKk4fOVj5ESVthU+Ta6ExquFSe2FMhFBchf824IpP2b5ec
-	BGzLYUyvTeK3XRbwoE1aBt5fK66U3rc9FGZafdBKtTAoaO8wfbk/EjtKSiv6lgWd1CkZ
-	ZvR/An1Vlkx5aod1x9HjnotTKJvj9bADyUbjOoAxLJXl4UpjwLDI9k2ElZOw/9nM6Yra
-	aN2WX4AjQsa30f1uzXIvuFPfsJet2ophq+vXQwbHeIjGYCA2MBQnhTrvtHR5BZu8j2Gf
-	k4EmOc+IBMhCDXiqYP5/zOliEUnqahmTDwu4WggEoi5hfHJR5u2dfiQQwwiSIuFsolFh
-	F7Bg==
-X-Gm-Message-State: ALoCoQl2N59OEDg/TurCQBbJ2QPj/IAMbJHvddHfy4vPCs02a57/4ndxLxjYBA4kMNTOCyPebqlg
-X-Received: by 10.180.208.74 with SMTP id mc10mr112607177wic.38.1425986754805; 
-	Tue, 10 Mar 2015 04:25:54 -0700 (PDT)
-Received: from grippen.pb.local ([62.217.45.26])
-	by mx.google.com with ESMTPSA id l9sm1135129wij.16.2015.03.10.04.25.52
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 10 Mar 2015 04:25:52 -0700 (PDT)
-From: Paulo Vital <paulo.vital@profitbricks.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 10 Mar 2015 12:25:51 +0100
-Message-Id: <1425986751-16150-1-git-send-email-paulo.vital@profitbricks.com>
-X-Mailer: git-send-email 2.1.4
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YVLIo-0004mS-6H; Tue, 10 Mar 2015 10:38:34 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id B98DD413C8;
+	Tue, 10 Mar 2015 17:38:32 +0300 (MSK)
+Message-ID: <54FF01E8.6040207@msgid.tls.msk.ru>
+Date: Tue, 10 Mar 2015 17:38:32 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.5.0
+MIME-Version: 1.0
+To: Kevin Wolf <kwolf@redhat.com>
+References: <1425971164-9845-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<20150310085016.GC3770@noname.str.redhat.com>
+	<20150310091759.GC14320@ad.nay.redhat.com>
+	<20150310100936.GD3770@noname.str.redhat.com>
+	<CAJSP0QWk+KzGuR2e6m8KsCUbMqcU6cReQbp2231zf9+Nt8zF9g@mail.gmail.com>
+	<54FEF942.5010602@msgid.tls.msk.ru>
+	<20150310140751.GG3770@noname.str.redhat.com>
+In-Reply-To: <20150310140751.GG3770@noname.str.redhat.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.46
-X-Mailman-Approved-At: Tue, 10 Mar 2015 10:18:26 -0400
-Cc: qemu-trivial@nongnu.org, imammedo@redhat.com,
-	Paulo Vital <paulo.vital@profitbricks.com>
-Subject: [Qemu-trivial] [PATCH V2] pc-dimm: Add description for device list.
+X-Received-From: 86.62.121.231
+Cc: Fam Zheng <famz@redhat.com>, qemu-block@nongnu.org,
+	qemu-trivial <qemu-trivial@nongnu.org>,
+	Stefan Hajnoczi <stefanha@gmail.com>, qemu-devel <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, Peter Wu <peter@lekensteyn.nl>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] block/dmg: make it modular if using
+	additional library
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,32 +54,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Mar 2015 11:26:02 -0000
+X-List-Received-Date: Tue, 10 Mar 2015 14:38:54 -0000
 
-The pc-dimm option presented on device list (by argument "-device \?")
-is the unique option that don't have any information about it. This
-patch adds a description for the pc-dimm device to help users to
-identify it.
+10.03.2015 17:07, Kevin Wolf wrote:
+> Am 10.03.2015 um 15:01 hat Michael Tokarev geschrieben:
+[]
+>> That might be useful if module loading will be modified a bit,
+>> like by loadin modules on demand only.  Something like this,
+>> search a "foo" block driver in the registered list, found ->
+>> use it, if not, try to open block-foo.so (maybe after looking
+>> in the "available" internal list before that) and look up in
+>> the registered list again.
+>>
+>> That will make it more useful.
+> 
+> The problem with that would be that format probing wouldn't work any
+> more for drivers that aren't loaded yet.
 
-Signed-off-by: Paulo Vital <paulo.vital@profitbricks.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
----
- hw/mem/pc-dimm.c | 1 +
- 1 file changed, 1 insertion(+)
+Probing needed -> run the current "load everything" sequence (maybe
+limiting stuff being loaded to "block" system when other systems
+will be there) before actual probing.  That should fix both worlds.
 
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index de81b9c..39f0c97 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -351,6 +351,7 @@ static void pc_dimm_class_init(ObjectClass *oc, void *data)
- 
-     dc->realize = pc_dimm_realize;
-     dc->props = pc_dimm_properties;
-+    dc->desc = "DIMM memory module";
- 
-     ddc->get_memory_region = pc_dimm_get_memory_region;
- }
--- 
-2.1.4
+Alternatively, and this might be even better alternative actually,
+the more I think about it, is to have a single probe function
+which recognizes all known formats, no matter if the particular
+driver is being built or not.  This routine will be significantly
+simpler thant the combined "probe" functionality, it might know
+much more formats even if a given format is not supported, etc,
+So that format probing will be its own code which will trigger
+(attempt) to load a detected driver.
 
+Thanks,
+
+/mjt
 
