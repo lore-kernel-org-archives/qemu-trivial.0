@@ -1,39 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVwdy-0001S0-Ij
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 02:30:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43291)
+	id 1YVwjJ-0004Pa-AG
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 02:36:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44059)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVwdw-0001NX-31
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 02:30:52 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YVwjG-0004Ln-UA
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 02:36:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVwdv-0008Oz-5S
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 02:30:52 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:60251)
+	(envelope-from <mjt@tls.msk.ru>) id 1YVwjF-0001Q4-Px
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 02:36:22 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:39441)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YVwdp-0008OF-1P; Thu, 12 Mar 2015 02:30:45 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 628A141725;
-	Thu, 12 Mar 2015 09:30:42 +0300 (MSK)
-Message-ID: <55013292.9030306@msgid.tls.msk.ru>
-Date: Thu, 12 Mar 2015 09:30:42 +0300
+	id 1YVwj9-0001Mo-Fj; Thu, 12 Mar 2015 02:36:15 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 2686C41725;
+	Thu, 12 Mar 2015 09:36:14 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id BB98791E;
+	Thu, 12 Mar 2015 09:36:13 +0300 (MSK)
+Received: (nullmailer pid 30927 invoked by uid 1000);
+	Thu, 12 Mar 2015 06:36:13 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.5.0
-MIME-Version: 1.0
-To: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>, 
-	qemu-devel@nongnu.org
-References: <1425966860-13605-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<87mw3krckd.fsf@linux.vnet.ibm.com>
-In-Reply-To: <87mw3krckd.fsf@linux.vnet.ibm.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Thu, 12 Mar 2015 09:36:12 +0300
+Message-Id: <1426142172-30886-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] 9pfs-proxy: tiny cleanups in
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH v2] 9pfs-proxy: tiny cleanups in
 	proxy_pwritev and proxy_preadv
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -46,26 +42,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Mar 2015 06:30:53 -0000
+X-List-Received-Date: Thu, 12 Mar 2015 06:36:24 -0000
 
-10.03.2015 20:23, Aneesh Kumar K.V wrote:
-[]>
-> I am not sure this is needed, whether to use int err or int ret as the
-> variable name is simply a matter of preference for the author.
+Don't compare syscall return with -1, use "<0" condition.
+Don't introduce useless local variables when we already
+have similar variable
+Rename local variable to be consistent with other usages
+Finally make the two methods, read and write, to be similar to each other
 
-We have 2 filesystem methods in here, read and write, one near another,
-which are written by the same author (but one of them has been later
-extended a bit, adding another variable).  This patch makes them similar
-again.
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+v2: send the right patch, after actually committin the changes
+Also, now use more context in diff to show both functions.
 
->   Also did
-> you compile test the above ? (note: int ret followed by a check with
-> variable name 'err').
+ hw/9pfs/virtio-9p-proxy.c | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
 
-Well yes.  It is a forgotten git commit.  Ofcourse I verified the result,
-I just forgot to commit because I was distracted by something else, hence
-sent a wrong patch.  I'll resend it.
-
-/mjt
+diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
+index 59c7445..6bb191e 100644
+--- a/hw/9pfs/virtio-9p-proxy.c
++++ b/hw/9pfs/virtio-9p-proxy.c
+@@ -690,37 +690,35 @@ static void proxy_seekdir(FsContext *ctx, V9fsFidOpenState *fs, off_t off)
+ }
+ 
+ static ssize_t proxy_preadv(FsContext *ctx, V9fsFidOpenState *fs,
+                             const struct iovec *iov,
+                             int iovcnt, off_t offset)
+ {
++    ssize_t ret;
+ #ifdef CONFIG_PREADV
+-    return preadv(fs->fd, iov, iovcnt, offset);
++    ret = preadv(fs->fd, iov, iovcnt, offset);
+ #else
+-    int err = lseek(fs->fd, offset, SEEK_SET);
+-    if (err == -1) {
+-        return err;
+-    } else {
+-        return readv(fs->fd, iov, iovcnt);
++    ret = lseek(fs->fd, offset, SEEK_SET);
++    if (ret >= 0) {
++        ret = readv(fs->fd, iov, iovcnt);
+     }
+ #endif
++    return ret;
+ }
+ 
+ static ssize_t proxy_pwritev(FsContext *ctx, V9fsFidOpenState *fs,
+                              const struct iovec *iov,
+                              int iovcnt, off_t offset)
+ {
+     ssize_t ret;
+ 
+ #ifdef CONFIG_PREADV
+     ret = pwritev(fs->fd, iov, iovcnt, offset);
+ #else
+-    int err = lseek(fs->fd, offset, SEEK_SET);
+-    if (err == -1) {
+-        return err;
+-    } else {
++    ret = lseek(fs->fd, offset, SEEK_SET);
++    if (ret >= 0) {
+         ret = writev(fs->fd, iov, iovcnt);
+     }
+ #endif
+ #ifdef CONFIG_SYNC_FILE_RANGE
+     if (ret > 0 && ctx->export_flags & V9FS_IMMEDIATE_WRITEOUT) {
+         /*
+-- 
+2.1.4
 
 
