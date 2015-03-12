@@ -1,45 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YW6CP-0000Cy-FU
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 12:43:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58440)
+	id 1YW8cL-000825-BF
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 15:18:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32911)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YW6CN-0000Ak-8X
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 12:43:04 -0400
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YW8cI-00081O-QC
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 15:17:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YW6CI-0001Bj-J4
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 12:43:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45608)
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YW8cD-0001BX-Df
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 15:17:58 -0400
+Received: from e28smtp07.in.ibm.com ([122.248.162.7]:37803)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1YW6CI-0001BC-BK; Thu, 12 Mar 2015 12:42:58 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2CGgujR027539
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Thu, 12 Mar 2015 12:42:56 -0400
-Received: from [10.3.113.70] (ovpn-113-70.phx2.redhat.com [10.3.113.70])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2CGguZA016886; Thu, 12 Mar 2015 12:42:56 -0400
-Message-ID: <5501C20F.4060407@redhat.com>
-Date: Thu, 12 Mar 2015 10:42:55 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YW8cC-0001B1-Rb
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 15:17:53 -0400
+Received: from /spool/local
+	by e28smtp07.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aneesh.kumar@linux.vnet.ibm.com>;
+	Fri, 13 Mar 2015 00:47:48 +0530
+Received: from d28dlp03.in.ibm.com (9.184.220.128)
+	by e28smtp07.in.ibm.com (192.168.1.137) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 13 Mar 2015 00:47:46 +0530
+Received: from d28relay03.in.ibm.com (d28relay03.in.ibm.com [9.184.220.60])
+	by d28dlp03.in.ibm.com (Postfix) with ESMTP id 48D9E125842B;
+	Thu, 12 Mar 2015 19:03:45 +0530 (IST)
+Received: from d28av05.in.ibm.com (d28av05.in.ibm.com [9.184.220.67])
+	by d28relay03.in.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	t2CDQq0E23199812; Thu, 12 Mar 2015 19:02:17 +0530
+Received: from d28av05.in.ibm.com (localhost [127.0.0.1])
+	by d28av05.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	t2C9sFw3026693; Thu, 12 Mar 2015 15:24:15 +0530
+Received: from skywalker.linux.vnet.ibm.com (skywalker.in.ibm.com
+	[9.193.66.152])
+	by d28av05.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	t2C9s0Ug025577
+	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
+	Thu, 12 Mar 2015 15:24:08 +0530
+From: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+In-Reply-To: <1426143150-5641-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1426143150-5641-1-git-send-email-mjt@msgid.tls.msk.ru>
+User-Agent: Notmuch/0.19+30~gd241a48 (http://notmuchmail.org) Emacs/24.3.1
+	(x86_64-pc-linux-gnu)
+Date: Thu, 12 Mar 2015 15:23:55 +0530
+Message-ID: <8761a6bky4.fsf@linux.vnet.ibm.com>
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <1426172243-7830-1-git-send-email-pbonzini@redhat.com>
-In-Reply-To: <1426172243-7830-1-git-send-email-pbonzini@redhat.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="jBxPEf7dP4nSTLw2dPGEGPnBJP45wV1em"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Content-Type: text/plain
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15031219-0025-0000-0000-000003C03742
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl: fix resource leak with
-	monitor_fdset_add_fd
+X-Received-From: 122.248.162.7
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: Re: [Qemu-trivial] [PATCH v2] 9pfs-local: simplify/optimize
+	local_mapped_attr_path()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,47 +65,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Mar 2015 16:43:04 -0000
+X-List-Received-Date: Thu, 12 Mar 2015 19:17:59 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---jBxPEf7dP4nSTLw2dPGEGPnBJP45wV1em
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-On 03/12/2015 08:57 AM, Paolo Bonzini wrote:
-> monitor_fdset_add_fd returns an AddfdInfo struct (used by the QMP
-> command add_fd).  Free it.
->=20
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  vl.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+> Omit one unnecessary memory allocation for components
+> of the path and create the resulting path directly given
+> lengths of the components.
+>
+> Do not use basename(3) because there are 2 versions of
+> this function which differs when argument ends with
+> slash character, use strrchr() instead so we have
+> consistent result.  This also makes sure the function
+> will do the right thing in corner cases (eg, empty
+> pathname is given), when basename(3) return entirely
+> another string.
+>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Applied.
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+Thanks
+-aneesh
 
-
---jBxPEf7dP4nSTLw2dPGEGPnBJP45wV1em
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJVAcIQAAoJEKeha0olJ0Nq6kQH/jhQK4sDp/dlLg3rt8pTVKVo
-hhmGX7IC7iDRxvSyhNbE8nXKBLCGWb+6skurUwYU01HeVJO8GBYLAvf8WLea3VnT
-2bpTFYXCSxaO5tkj6lPPci5zeWBOOc6AkBueCdCmDKtw9FvCAflJxUPx4rlllJ+Z
-Nkfd5E6wfZ08ooV96/5oh6w61hdkh9C3I0KxpH5YYjQgKkrGv7pm6Rw8/rRWj1yI
-+hfHU4GaozWJaUowLA3riEnfRaAv+/1tR5lCEvw5AQyV6uQi0beSyl+kDUaE7aoz
-4e2Bmw71CcWCAEoNz3GErRGYpuFfGeNU0vxwCrrnin74EE5+rVzo5jaFW/SIYqc=
-=Nku+
------END PGP SIGNATURE-----
-
---jBxPEf7dP4nSTLw2dPGEGPnBJP45wV1em--
 
