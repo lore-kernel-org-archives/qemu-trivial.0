@@ -1,48 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVxMu-0004Cw-Fc
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 03:17:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50054)
+	id 1YVy8J-0001UI-9O
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 04:06:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YVxMs-0004Ci-Ge
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 03:17:19 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YVy8G-0001O7-Lm
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 04:06:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YVxMp-0004xK-Br
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 03:17:18 -0400
-Received: from mail-lb0-f175.google.com ([209.85.217.175]:45233)
+	(envelope-from <mjt@tls.msk.ru>) id 1YVy8F-0002bo-OE
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 04:06:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:59660)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YVxMp-0004x5-4e
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 03:17:15 -0400
-Received: by lbiz12 with SMTP id z12so13916146lbi.12
-	for <qemu-trivial@nongnu.org>; Thu, 12 Mar 2015 00:17:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=4yDpeBRpOT0KLANPVKEsSjvbAgpCCvcBSBlsk2T0NYg=;
-	b=dOYe9Z4c6h0aAZw6r8By5X5OHB8a4y1oP+V67gP6mNFJUUruSA7R9IC6i0pvFmV2UY
-	hGAhLmFkc4Aakv74raecAeLiElUOYEpmdIXVWyGmzdPXVGnG9PWzTsJexpA+aJ/wnRi4
-	dRmynac0l22y+aFoXRINfnIxUi4VqJkr6SvT9dW6H+ShJiYam0Poj/0F83JthtSo3D/c
-	8wPW10dr+JjAMSoARWze0+PoZzwO9ZXMKvR70pLIuwW6dCywLBYMN8kSTMDqVJgKFB1o
-	grtCkD5gVYUkt2zVBQ/uYhfrBwbv9ltYCS+vo3Sh1CilNtxXooLFHRmS4uHzo8US3BSf
-	7d8A==
-X-Gm-Message-State: ALoCoQk2qp+BcS4GQbIENNNCdw16knvZ4R2dxLVxxj08prLeOte9eW/VwJG95c/eyenk2RWj9XcW
-X-Received: by 10.112.64.2 with SMTP id k2mr38457777lbs.54.1426144633962; Thu,
-	12 Mar 2015 00:17:13 -0700 (PDT)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YVy8B-0002Zk-7w; Thu, 12 Mar 2015 04:06:11 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 7947B4176E;
+	Thu, 12 Mar 2015 11:06:08 +0300 (MSK)
+Message-ID: <550148F0.4030108@msgid.tls.msk.ru>
+Date: Thu, 12 Mar 2015 11:06:08 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.5.0
 MIME-Version: 1.0
-Received: by 10.112.145.193 with HTTP; Thu, 12 Mar 2015 00:16:53 -0700 (PDT)
-In-Reply-To: <55012E99.3030408@msgid.tls.msk.ru>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <55012E99.3030408@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Mar 2015 07:16:53 +0000
-Message-ID: <CAFEAcA9sksApiTRo_0RQ588xLYq+Jy26CQ02nKPp4zoFzyV3_Q@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
+	<CAFEAcA9sksApiTRo_0RQ588xLYq+Jy26CQ02nKPp4zoFzyV3_Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA9sksApiTRo_0RQ588xLYq+Jy26CQ02nKPp4zoFzyV3_Q@mail.gmail.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.175
+X-Received-From: 86.62.121.231
 Cc: qemu-trivial <qemu-trivial@nongnu.org>, 778737@bugs.debian.org,
 	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] configure: enable kvm on x32
+Subject: Re: [Qemu-trivial] configure: enable kvm on x32
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,17 +45,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Mar 2015 07:17:19 -0000
+X-List-Received-Date: Thu, 12 Mar 2015 08:06:18 -0000
 
-On 12 March 2015 at 06:13, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Here's a trivial change to enable kvm on x32 architecture.
-> I'm not 100% sure the result works correctly in all cases,
-> but this is a good start and in theory everything should
-> work.
+12.03.2015 10:16, Peter Maydell wrote:
+> On 12 March 2015 at 06:13, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>> Here's a trivial change to enable kvm on x32 architecture.
+>> I'm not 100% sure the result works correctly in all cases,
+>> but this is a good start and in theory everything should
+>> work.
+> 
+> Given the pessimism expressed in this comment, perhaps
+> we should delay this to 2.4 and when it's had more
+> testing?
 
-Given the pessimism expressed in this comment, perhaps
-we should delay this to 2.4 and when it's had more
-testing?
+There's no pessimism really.  It is a new arch for kvm, so
+_something_ might not work.  In practice it works fairy well,
+see https://bugs.debian.org/778737 -- at least debian can
+be installed in x32 kvm.
 
--- PMM
+And we don't lose anything really because it is a new arch.
+
+That's why it was Cc'd -trivial.
+
+Thanks,
+
+/mjt
 
