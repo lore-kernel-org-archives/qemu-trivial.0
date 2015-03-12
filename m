@@ -1,53 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YW5vr-00035T-CR
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 12:25:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39408)
+	id 1YW6CP-0000Cy-FU
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 12:43:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58440)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jhindin@daynix.com>) id 1YW0T1-0005Xm-Bs
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 06:35:55 -0400
+	(envelope-from <eblake@redhat.com>) id 1YW6CN-0000Ak-8X
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 12:43:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jhindin@daynix.com>) id 1YW0Sr-0000vm-Rx
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 06:35:51 -0400
-Received: from mail-wg0-f41.google.com ([74.125.82.41]:45037)
+	(envelope-from <eblake@redhat.com>) id 1YW6CI-0001Bj-J4
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 12:43:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45608)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jhindin@daynix.com>) id 1YW0Sr-0000ve-My
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 06:35:41 -0400
-Received: by wghl18 with SMTP id l18so15283776wgh.11
-	for <qemu-trivial@nongnu.org>; Thu, 12 Mar 2015 03:35:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=AwZOMzAfITrblftxCBY6NhHcrxz69GChm93723xfIsU=;
-	b=cIrHqL23HYowF6cy9BkNGx1RLbO89AzTsOmDbwbSgq2DvmMmhhi8g5zd6e5jLE5DAH
-	5IXhu7kNNov5LG/gqZwUowU9Wu2r7vHxAkD6/l6mf6CJbfLdlt4VuTN/SN4abM40XtS+
-	C6AUDYmzS0U/xFDq+JkiHDPJ2j6HpXD9WUjlWpTfS6lNE2SfDnLR5tNR7IXWWphdvYOL
-	zv4gkvhl/YVipMVpQTwCxjPiBFdc19IWAJ8qaN986jB8erncTNR+zIh2aSnC4kIQZw1A
-	wRsEKD0Bq6dVxxYBw5QBUDQ1x4y1W4gGXmy4VvFJhLlXjvKeL7OfWqsSHg7eUDcgSCN6
-	wLKA==
-X-Gm-Message-State: ALoCoQmM2LN98tKSOY6S9MAhZGncKR/Hfthp29uLkkpYlQ46JX3Porn2eDeaSUovWBt8MyZ1RmHg
-X-Received: by 10.194.62.52 with SMTP id v20mr86119507wjr.137.1426156541143;
-	Thu, 12 Mar 2015 03:35:41 -0700 (PDT)
-Received: from Snarl.daynix ([91.205.155.63]) by mx.google.com with ESMTPSA id
-	lx10sm9395596wjb.17.2015.03.12.03.35.38
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 12 Mar 2015 03:35:40 -0700 (PDT)
-From: Joseph Hindin <jhindin@daynix.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 12 Mar 2015 12:35:29 +0200
-Message-Id: <1426156529-31276-2-git-send-email-jhindin@daynix.com>
-X-Mailer: git-send-email 2.1.0
-In-Reply-To: <1426156529-31276-1-git-send-email-jhindin@daynix.com>
-References: <1426156529-31276-1-git-send-email-jhindin@daynix.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.41
-X-Mailman-Approved-At: Thu, 12 Mar 2015 12:25:58 -0400
-Cc: qemu-trivial@nongnu.org, Joseph Hindin <jhindin@daynix.com>
-Subject: [Qemu-trivial] [PATCH] When building qga-vss.dll with 64-bit MinGW
-	toolchain,
-	qga-vss.dll linking fails with unresolved symbols from libssp,
-	stack protection support, like the  following message:
+	(envelope-from <eblake@redhat.com>)
+	id 1YW6CI-0001BC-BK; Thu, 12 Mar 2015 12:42:58 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2CGgujR027539
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Thu, 12 Mar 2015 12:42:56 -0400
+Received: from [10.3.113.70] (ovpn-113-70.phx2.redhat.com [10.3.113.70])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t2CGguZA016886; Thu, 12 Mar 2015 12:42:56 -0400
+Message-ID: <5501C20F.4060407@redhat.com>
+Date: Thu, 12 Mar 2015 10:42:55 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+MIME-Version: 1.0
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <1426172243-7830-1-git-send-email-pbonzini@redhat.com>
+In-Reply-To: <1426172243-7830-1-git-send-email-pbonzini@redhat.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="jBxPEf7dP4nSTLw2dPGEGPnBJP45wV1em"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl: fix resource leak with
+	monitor_fdset_add_fd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,32 +51,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Mar 2015 10:35:55 -0000
+X-List-Received-Date: Thu, 12 Mar 2015 16:43:04 -0000
 
-.../qga/vss-win32/install.cpp:52: undefined reference to `__stack_chk_fail'
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--jBxPEf7dP4nSTLw2dPGEGPnBJP45wV1em
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-The patch fixes the problem by adding -fstack-protector-all option to the
-linker options' list.
+On 03/12/2015 08:57 AM, Paolo Bonzini wrote:
+> monitor_fdset_add_fd returns an AddfdInfo struct (used by the QMP
+> command add_fd).  Free it.
+>=20
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  vl.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 
-Signed-off-by: Joseph Hindin <jhindin@daynix.com>
----
- qga/vss-win32/Makefile.objs | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-diff --git a/qga/vss-win32/Makefile.objs b/qga/vss-win32/Makefile.objs
-index 6a69d50..3b296f0 100644
---- a/qga/vss-win32/Makefile.objs
-+++ b/qga/vss-win32/Makefile.objs
-@@ -5,7 +5,7 @@ qga-vss-dll-obj-y += requester.o provider.o install.o
- obj-qga-vss-dll-obj-y = $(addprefix $(obj)/, $(qga-vss-dll-obj-y))
- $(obj-qga-vss-dll-obj-y): QEMU_CXXFLAGS = $(filter-out -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Wold-style-declaration -Wold-style-definition -Wredundant-decls -fstack-protector-all, $(QEMU_CFLAGS)) -Wno-unknown-pragmas -Wno-delete-non-virtual-dtor
- 
--$(obj)/qga-vss.dll: LDFLAGS = -shared -Wl,--add-stdcall-alias,--enable-stdcall-fixup -lole32 -loleaut32 -lshlwapi -luuid -static
-+$(obj)/qga-vss.dll: LDFLAGS =  -fstack-protector-all -shared -Wl,--add-stdcall-alias,--enable-stdcall-fixup -lole32 -loleaut32 -lshlwapi -luuid -static
- $(obj)/qga-vss.dll: $(obj-qga-vss-dll-obj-y) $(SRC_PATH)/$(obj)/qga-vss.def
- 	$(call quiet-command,$(CXX) -o $@ $(qga-vss-dll-obj-y) $(SRC_PATH)/qga/vss-win32/qga-vss.def $(CXXFLAGS) $(LDFLAGS),"  LINK  $(TARGET_DIR)$@")
- 
--- 
-2.1.0
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
+
+--jBxPEf7dP4nSTLw2dPGEGPnBJP45wV1em
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJVAcIQAAoJEKeha0olJ0Nq6kQH/jhQK4sDp/dlLg3rt8pTVKVo
+hhmGX7IC7iDRxvSyhNbE8nXKBLCGWb+6skurUwYU01HeVJO8GBYLAvf8WLea3VnT
+2bpTFYXCSxaO5tkj6lPPci5zeWBOOc6AkBueCdCmDKtw9FvCAflJxUPx4rlllJ+Z
+Nkfd5E6wfZ08ooV96/5oh6w61hdkh9C3I0KxpH5YYjQgKkrGv7pm6Rw8/rRWj1yI
++hfHU4GaozWJaUowLA3riEnfRaAv+/1tR5lCEvw5AQyV6uQi0beSyl+kDUaE7aoz
+4e2Bmw71CcWCAEoNz3GErRGYpuFfGeNU0vxwCrrnin74EE5+rVzo5jaFW/SIYqc=
+=Nku+
+-----END PGP SIGNATURE-----
+
+--jBxPEf7dP4nSTLw2dPGEGPnBJP45wV1em--
 
