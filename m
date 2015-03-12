@@ -1,59 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YW02Y-0005cM-BX
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 06:08:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33539)
+	id 1YW3ti-000646-G6
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 10:15:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37881)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YW02V-0005cC-Kz
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 06:08:28 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1YW3tf-00063k-P8
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 10:15:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YW02Q-0008I4-HQ
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 06:08:27 -0400
-Received: from e23smtp03.au.ibm.com ([202.81.31.145]:36436)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1YW3tb-0001oD-AH
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 10:15:35 -0400
+Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:36380)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YW02P-0008HM-Te
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 06:08:22 -0400
-Received: from /spool/local
-	by e23smtp03.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aneesh.kumar@linux.vnet.ibm.com>;
-	Thu, 12 Mar 2015 20:08:15 +1000
-Received: from d23dlp03.au.ibm.com (202.81.31.214)
-	by e23smtp03.au.ibm.com (202.81.31.209) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 12 Mar 2015 20:08:12 +1000
-Received: from d23relay07.au.ibm.com (d23relay07.au.ibm.com [9.190.26.37])
-	by d23dlp03.au.ibm.com (Postfix) with ESMTP id DE2A73578048;
-	Thu, 12 Mar 2015 21:08:11 +1100 (EST)
-Received: from d23av02.au.ibm.com (d23av02.au.ibm.com [9.190.235.138])
-	by d23relay07.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	t2CA810Q55050322; Thu, 12 Mar 2015 21:08:11 +1100
-Received: from d23av02.au.ibm.com (localhost [127.0.0.1])
-	by d23av02.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	t2CA7a9S001365; Thu, 12 Mar 2015 21:07:36 +1100
-Received: from skywalker.linux.vnet.ibm.com (skywalker.in.ibm.com
-	[9.193.66.152])
-	by d23av02.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	t2CA7Xaf000303
-	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
-	Thu, 12 Mar 2015 21:07:35 +1100
-From: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-In-Reply-To: <1426142172-30886-1-git-send-email-mjt@msgid.tls.msk.ru>
-References: <1426142172-30886-1-git-send-email-mjt@msgid.tls.msk.ru>
-User-Agent: Notmuch/0.19+30~gd241a48 (http://notmuchmail.org) Emacs/24.3.1
-	(x86_64-pc-linux-gnu)
-Date: Thu, 12 Mar 2015 15:37:09 +0530
-Message-ID: <87385abkc2.fsf@linux.vnet.ibm.com>
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1YW3tb-0001n4-39; Thu, 12 Mar 2015 10:15:31 -0400
+Received: by wiwh11 with SMTP id h11so37713310wiw.1;
+	Thu, 12 Mar 2015 07:15:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=RnWGEWZA3HhKpPXD7GSs1dMqi3tAujRmwJkF/p8X3sc=;
+	b=NWhYnqw+lEEid3aaiTDg+ULTTyOtdw6c2Ec6lM6xM/EhEjb2OanDCmzA/R67JbFGh9
+	/EYfp52HTDpX9zjHonKhE5BHxRXvSgnT4/5B99U6TcSw3VE7GJTW/jtBh6mKiC+g94lY
+	D85Oo5qd2+IVWkqgvi3H+U+dvjYNjtIbndyw7Rv8+L0mKxo31SXsepzzSQ+a7gvUABYD
+	4UIgscthvLSLDGSJLmDViAFN5OQvjRSgGSN4qfb63GtYdTa9ZoDT+II6EkLM+lTu1jrc
+	69Gfz4PdVPhMxYRSdt55N5cRDzNo7ihG/angd1IIG41ERTeSUOFujTmQc3Kzy9ZJOhUh
+	LYvQ==
+X-Received: by 10.194.19.197 with SMTP id h5mr86132077wje.109.1426169729050;
+	Thu, 12 Mar 2015 07:15:29 -0700 (PDT)
+Received: from [192.168.10.150] (net-188-216-23-124.cust.vodafonedsl.it.
+	[188.216.23.124])
+	by mx.google.com with ESMTPSA id 17sm10205230wjt.45.2015.03.12.07.15.26
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 12 Mar 2015 07:15:27 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <55019F7C.3030905@redhat.com>
+Date: Thu, 12 Mar 2015 15:15:24 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15031210-0009-0000-0000-0000010B89AA
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 202.81.31.145
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: Re: [Qemu-trivial] [PATCH v2] 9pfs-proxy: tiny cleanups in
-	proxy_pwritev and proxy_preadv
+To: Joseph Hindin <jhindin@daynix.com>, qemu-devel@nongnu.org
+References: <1426156529-31276-1-git-send-email-jhindin@daynix.com>
+	<1426156529-31276-2-git-send-email-jhindin@daynix.com>
+In-Reply-To: <1426156529-31276-2-git-send-email-jhindin@daynix.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::22c
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] When building qga-vss.dll with 64-bit
+ MinGW toolchain,
+ qga-vss.dll linking fails with unresolved symbols from libssp,
+ stack protection support, like the  following message:
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,21 +63,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Mar 2015 10:08:28 -0000
+X-List-Received-Date: Thu, 12 Mar 2015 14:15:37 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
 
-> Don't compare syscall return with -1, use "<0" condition.
-> Don't introduce useless local variables when we already
-> have similar variable
-> Rename local variable to be consistent with other usages
-> Finally make the two methods, read and write, to be similar to each other
->
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 
-Applied.
+On 12/03/2015 11:35, Joseph Hindin wrote:
+> .../qga/vss-win32/install.cpp:52: undefined reference to `__stack_chk_fail'
+> 
+> The patch fixes the problem by adding -fstack-protector-all option to the
+> linker options' list.
+> 
+> Signed-off-by: Joseph Hindin <jhindin@daynix.com>
+> ---
+>  qga/vss-win32/Makefile.objs | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qga/vss-win32/Makefile.objs b/qga/vss-win32/Makefile.objs
+> index 6a69d50..3b296f0 100644
+> --- a/qga/vss-win32/Makefile.objs
+> +++ b/qga/vss-win32/Makefile.objs
+> @@ -5,7 +5,7 @@ qga-vss-dll-obj-y += requester.o provider.o install.o
+>  obj-qga-vss-dll-obj-y = $(addprefix $(obj)/, $(qga-vss-dll-obj-y))
+>  $(obj-qga-vss-dll-obj-y): QEMU_CXXFLAGS = $(filter-out -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Wold-style-declaration -Wold-style-definition -Wredundant-decls -fstack-protector-all, $(QEMU_CFLAGS)) -Wno-unknown-pragmas -Wno-delete-non-virtual-dtor
+>  
+> -$(obj)/qga-vss.dll: LDFLAGS = -shared -Wl,--add-stdcall-alias,--enable-stdcall-fixup -lole32 -loleaut32 -lshlwapi -luuid -static
+> +$(obj)/qga-vss.dll: LDFLAGS =  -fstack-protector-all -shared -Wl,--add-stdcall-alias,--enable-stdcall-fixup -lole32 -loleaut32 -lshlwapi -luuid -static
+>  $(obj)/qga-vss.dll: $(obj-qga-vss-dll-obj-y) $(SRC_PATH)/$(obj)/qga-vss.def
+>  	$(call quiet-command,$(CXX) -o $@ $(qga-vss-dll-obj-y) $(SRC_PATH)/qga/vss-win32/qga-vss.def $(CXXFLAGS) $(LDFLAGS),"  LINK  $(TARGET_DIR)$@")
+>  
+> 
 
-Thanks
--aneesh
+Sorry for the late reply to v1.  I left a few other comments there.
 
+Basically, the Makefile is trying to disable ssp, in the line above the
+one you touched.  Either we can support ssp, and then that incomplete
+effort must be removed, or we cannot, and then your fix may hide other bugs.
+
+Paolo
 
