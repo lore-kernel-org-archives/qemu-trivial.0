@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YW4YU-0003VE-Vx
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 10:57:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48458)
+	id 1YW5vq-00034t-UI
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 12:25:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39341)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YW4YQ-0003PP-PW
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 10:57:45 -0400
+	(envelope-from <jhindin@daynix.com>) id 1YW0Sv-0005SX-6y
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 06:35:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YW4YN-00040S-19
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 10:57:42 -0400
-Received: from mail-wg0-x22a.google.com ([2a00:1450:400c:c00::22a]:41449)
+	(envelope-from <jhindin@daynix.com>) id 1YW0Sp-0000ui-8b
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 06:35:45 -0400
+Received: from mail-we0-f176.google.com ([74.125.82.176]:33838)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YW4YF-0003zS-Ob; Thu, 12 Mar 2015 10:57:31 -0400
-Received: by wghl2 with SMTP id l2so16951873wgh.8;
-	Thu, 12 Mar 2015 07:57:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=ynPJWkxJ7lPoeV+w3no+YMwv7oM504FWL/U1n1JZoHw=;
-	b=I0Ph02jUoHBKymzznreKDDO8v5Q26/TVC1NiP4D88PfK9ipU1R1Su6WcH14TBU3pI5
-	PYvgSi2WFeoBmxVt/8ufMurzPz9EtwfOIYWXX9I+baGG+b+NQwSqTrazY4eaI1nfVs/4
-	zLRhs0VOXSa9zc6SPnnKOq8RcKZ8EhbdQyMVo6SGWeJ02aSjDO6XM0/4DSpmtDRo9IVp
-	4YO7vuIZ63hwqKRli6IsC29I3SC1IsPhFO9MgVvOUv2JZ+ajjfdPMDkOnjg98elA2Ao+
-	iFwqhB5VhCoVhlR8bgpFmjB9r8E3JxhCn/sErysTqa38E9gTYiAkXgRqrNEp1VfOjBGs
-	/ILQ==
-X-Received: by 10.194.200.8 with SMTP id jo8mr58407612wjc.64.1426172251040;
-	Thu, 12 Mar 2015 07:57:31 -0700 (PDT)
-Received: from donizetti.station (net-188-216-23-124.cust.vodafonedsl.it.
-	[188.216.23.124]) by mx.google.com with ESMTPSA id
-	lu13sm11087891wic.10.2015.03.12.07.57.28
+	(envelope-from <jhindin@daynix.com>) id 1YW0Sp-0000uX-2z
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 06:35:39 -0400
+Received: by wesx3 with SMTP id x3so15367569wes.1
+	for <qemu-trivial@nongnu.org>; Thu, 12 Mar 2015 03:35:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=9duYw/Kiq+1OGrilyxyymQrzkJCzL4w2b+G5lw5IgeQ=;
+	b=MlsXXdotgIw/Zk1bSlE0VEtXvI1TRymwShXbMaDSe4xwtc2MvAAncXMg8lBwn4XzB2
+	pltBtoemr1n7115i/A8LKWvrnG6ByhIORdBK4bAEgZHugQU1EV6QzltauHHZ3xymh0oo
+	2q99/pefAKWxRjKWEDNgL82DQqg226KmGK3L9cQQuBwtyxOAXHlksD0GsRyEHidaJoMN
+	TVqGhxWLVfundmQgBxVemIFaXQYMDp9OyjNhZwvhyXFWoud1zLMeHe3J5kI/jCIZXBPR
+	/UP25rLdZsSn16BNCENp6vVVAad4D8dvy08QG5qkYhcLDqOaFSqiZVyVjSoEAZrIXS1K
+	tMOw==
+X-Gm-Message-State: ALoCoQnRdPSPv3ZrGOlBFEC0+7SKnKjp94I7u9ckUClC9Q/9OltIcdtg63BfcEEKcL5ldiUI7CPb
+X-Received: by 10.194.210.103 with SMTP id mt7mr87119122wjc.103.1426156538515; 
+	Thu, 12 Mar 2015 03:35:38 -0700 (PDT)
+Received: from Snarl.daynix ([91.205.155.63]) by mx.google.com with ESMTPSA id
+	lx10sm9395596wjb.17.2015.03.12.03.35.35
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 12 Mar 2015 07:57:30 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
+	Thu, 12 Mar 2015 03:35:37 -0700 (PDT)
+From: Joseph Hindin <jhindin@daynix.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 12 Mar 2015 15:57:23 +0100
-Message-Id: <1426172243-7830-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.3.0
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c00::22a
+Date: Thu, 12 Mar 2015 12:35:28 +0200
+Message-Id: <1426156529-31276-1-git-send-email-jhindin@daynix.com>
+X-Mailer: git-send-email 2.1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.82.176
+X-Mailman-Approved-At: Thu, 12 Mar 2015 12:25:58 -0400
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] vl: fix resource leak with
-	monitor_fdset_add_fd
+Subject: [Qemu-trivial] Revised patch for qga-vss.dll linking
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,41 +53,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Mar 2015 14:57:46 -0000
+X-List-Received-Date: Thu, 12 Mar 2015 10:35:47 -0000
 
-monitor_fdset_add_fd returns an AddfdInfo struct (used by the QMP
-command add_fd).  Free it.
+I am submitting the revised patch for linking qga-vss.dll with 64-bit MinGW
+toolchain.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- vl.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/vl.c b/vl.c
-index eba5d4c..8902435 100644
---- a/vl.c
-+++ b/vl.c
-@@ -1011,6 +1011,7 @@ static int parse_add_fd(QemuOpts *opts, void *opaque)
-     int fd, dupfd, flags;
-     int64_t fdset_id;
-     const char *fd_opaque = NULL;
-+    AddfdInfo *fdinfo;
- 
-     fd = qemu_opt_get_number(opts, "fd", -1);
-     fdset_id = qemu_opt_get_number(opts, "set", -1);
-@@ -1060,8 +1061,9 @@ static int parse_add_fd(QemuOpts *opts, void *opaque)
-     }
- 
-     /* add the duplicate fd, and optionally the opaque string, to the fd set */
--    monitor_fdset_add_fd(dupfd, true, fdset_id, fd_opaque ? true : false,
--                         fd_opaque, NULL);
-+    fdinfo = monitor_fdset_add_fd(dupfd, true, fdset_id, fd_opaque ? true : false,
-+                                  fd_opaque, NULL);
-+    g_free(fdinfo);
- 
-     return 0;
- }
--- 
-2.3.0
+    Regards,
+       Joseph Hindin
 
 
