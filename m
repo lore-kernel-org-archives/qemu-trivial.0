@@ -1,36 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YVwjJ-0004Pa-AG
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 02:36:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44059)
+	id 1YVwx7-0002Tq-BD
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Mar 2015 02:50:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46761)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVwjG-0004Ln-UA
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 02:36:23 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YVwx4-0002RJ-PN
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 02:50:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YVwjF-0001Q4-Px
-	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 02:36:22 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:39441)
+	(envelope-from <mjt@tls.msk.ru>) id 1YVwx3-0006Ac-Ud
+	for qemu-trivial@nongnu.org; Thu, 12 Mar 2015 02:50:38 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56613)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YVwj9-0001Mo-Fj; Thu, 12 Mar 2015 02:36:15 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2686C41725;
-	Thu, 12 Mar 2015 09:36:14 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id BB98791E;
-	Thu, 12 Mar 2015 09:36:13 +0300 (MSK)
-Received: (nullmailer pid 30927 invoked by uid 1000);
-	Thu, 12 Mar 2015 06:36:13 -0000
+	id 1YVwwy-0005zB-9G; Thu, 12 Mar 2015 02:50:32 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 9DCC441725;
+	Thu, 12 Mar 2015 09:50:29 +0300 (MSK)
+Message-ID: <55013735.2080305@msgid.tls.msk.ru>
+Date: Thu, 12 Mar 2015 09:50:29 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Thu, 12 Mar 2015 09:36:12 +0300
-Message-Id: <1426142172-30886-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.5.0
+MIME-Version: 1.0
+To: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
+References: <1425503036-23707-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<87k2yorc9q.fsf@linux.vnet.ibm.com>
+In-Reply-To: <87k2yorc9q.fsf@linux.vnet.ibm.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH v2] 9pfs-proxy: tiny cleanups in
-	proxy_pwritev and proxy_preadv
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] 9pfs-local: simplify/optimize
+	local_mapped_attr_path()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,73 +45,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Mar 2015 06:36:24 -0000
+X-List-Received-Date: Thu, 12 Mar 2015 06:50:40 -0000
 
-Don't compare syscall return with -1, use "<0" condition.
-Don't introduce useless local variables when we already
-have similar variable
-Rename local variable to be consistent with other usages
-Finally make the two methods, read and write, to be similar to each other
+10.03.2015 20:30, Aneesh Kumar K.V wrote:
+> Michael Tokarev <mjt@tls.msk.ru> writes:
+> 
+>> Omit one unnecessary memory allocation for components of the path
+>> and create the resulting path directly given lengths of the components.
+>>
+>> This uses (char*) cast because basename() accepts a char* without const,
+>> for unknown reason.  Maybe it is better to use strrchr(), but I'm not
+>> sure for various forms of directory component delimiter.
+> 
+> basename(3) says:
+> Both dirname() and basename() may modify the contents of path, so it may
+> be desirable to pass a copy when calling one of these functions
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
-v2: send the right patch, after actually committin the changes
-Also, now use more context in diff to show both functions.
+The same manpage also says that there are 2 versions of basename(3),
+one modifies its arg while another doesn't, and they return different
+results in some corner cases.  Which one will be used depends on the
+compiler flags.
 
- hw/9pfs/virtio-9p-proxy.c | 18 ++++++++----------
- 1 file changed, 8 insertions(+), 10 deletions(-)
+So I think it really is better to open-code it here to have guaranteed
+consistent results.  I'll send a v2.
 
-diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
-index 59c7445..6bb191e 100644
---- a/hw/9pfs/virtio-9p-proxy.c
-+++ b/hw/9pfs/virtio-9p-proxy.c
-@@ -690,37 +690,35 @@ static void proxy_seekdir(FsContext *ctx, V9fsFidOpenState *fs, off_t off)
- }
- 
- static ssize_t proxy_preadv(FsContext *ctx, V9fsFidOpenState *fs,
-                             const struct iovec *iov,
-                             int iovcnt, off_t offset)
- {
-+    ssize_t ret;
- #ifdef CONFIG_PREADV
--    return preadv(fs->fd, iov, iovcnt, offset);
-+    ret = preadv(fs->fd, iov, iovcnt, offset);
- #else
--    int err = lseek(fs->fd, offset, SEEK_SET);
--    if (err == -1) {
--        return err;
--    } else {
--        return readv(fs->fd, iov, iovcnt);
-+    ret = lseek(fs->fd, offset, SEEK_SET);
-+    if (ret >= 0) {
-+        ret = readv(fs->fd, iov, iovcnt);
-     }
- #endif
-+    return ret;
- }
- 
- static ssize_t proxy_pwritev(FsContext *ctx, V9fsFidOpenState *fs,
-                              const struct iovec *iov,
-                              int iovcnt, off_t offset)
- {
-     ssize_t ret;
- 
- #ifdef CONFIG_PREADV
-     ret = pwritev(fs->fd, iov, iovcnt, offset);
- #else
--    int err = lseek(fs->fd, offset, SEEK_SET);
--    if (err == -1) {
--        return err;
--    } else {
-+    ret = lseek(fs->fd, offset, SEEK_SET);
-+    if (ret >= 0) {
-         ret = writev(fs->fd, iov, iovcnt);
-     }
- #endif
- #ifdef CONFIG_SYNC_FILE_RANGE
-     if (ret > 0 && ctx->export_flags & V9FS_IMMEDIATE_WRITEOUT) {
-         /*
--- 
-2.1.4
+[]
+> I am not sure whether we really need all these cleanups without really
+> fixing anyi specific issue.
 
+This is not a cleanup, it is an optimization: it removes one completely
+unnecessary memory allocation.  Not in a hottest path but I think it is
+worth this small effor anyway.
+
+Thanks,
+
+/mjt
 
