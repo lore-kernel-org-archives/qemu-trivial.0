@@ -1,60 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWL1q-0001ad-Cm
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2015 04:33:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40471)
+	id 1YWP3X-0007mw-EP
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2015 08:51:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35567)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YWL1n-0001Vz-Ca
-	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 04:33:08 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1YWP3V-0007mJ-2k
+	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 08:51:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YWL1f-0007Cr-87
-	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 04:33:07 -0400
-Received: from e23smtp06.au.ibm.com ([202.81.31.148]:55056)
+	(envelope-from <pbonzini@redhat.com>) id 1YWP3R-0000wH-Mq
+	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 08:51:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39176)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YWL1e-0007CY-Ji
-	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 04:32:59 -0400
-Received: from /spool/local
-	by e23smtp06.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <aneesh.kumar@linux.vnet.ibm.com>;
-	Fri, 13 Mar 2015 18:32:55 +1000
-Received: from d23dlp03.au.ibm.com (202.81.31.214)
-	by e23smtp06.au.ibm.com (202.81.31.212) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 13 Mar 2015 18:32:52 +1000
-Received: from d23relay08.au.ibm.com (d23relay08.au.ibm.com [9.185.71.33])
-	by d23dlp03.au.ibm.com (Postfix) with ESMTP id 53C2D3578047;
-	Fri, 13 Mar 2015 19:32:51 +1100 (EST)
-Received: from d23av01.au.ibm.com (d23av01.au.ibm.com [9.190.234.96])
-	by d23relay08.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	t2D8Wha430736564; Fri, 13 Mar 2015 19:32:51 +1100
-Received: from d23av01.au.ibm.com (localhost [127.0.0.1])
-	by d23av01.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	t2D8WH7a016489; Fri, 13 Mar 2015 19:32:17 +1100
-Received: from skywalker.linux.vnet.ibm.com ([9.77.213.26])
-	by d23av01.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	t2D8WE4k016007
-	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
-	Fri, 13 Mar 2015 19:32:15 +1100
-From: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
-In-Reply-To: <1426225687-12104-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1426225687-12104-1-git-send-email-zhaoshenglong@huawei.com>
-User-Agent: Notmuch/0.19+30~gd241a48 (http://notmuchmail.org) Emacs/24.3.1
-	(x86_64-pc-linux-gnu)
-Date: Fri, 13 Mar 2015 14:01:59 +0530
-Message-ID: <87zj7h9u2o.fsf@linux.vnet.ibm.com>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1YWP3R-0000w5-FH; Fri, 13 Mar 2015 08:51:05 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2DCotHd015284
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Fri, 13 Mar 2015 08:50:55 -0400
+Received: from [10.36.112.55] (ovpn-112-55.ams2.redhat.com [10.36.112.55])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t2DComeD019463
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES128-SHA bits=128 verify=NO);
+	Fri, 13 Mar 2015 08:50:50 -0400
+Message-ID: <5502DD26.6070401@redhat.com>
+Date: Fri, 13 Mar 2015 13:50:46 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15031308-0021-0000-0000-000000E8C925
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
+References: <1426244956-5316-1-git-send-email-zhaoshenglong@huawei.com>
+In-Reply-To: <1426244956-5316-1-git-send-email-zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 202.81.31.148
+X-Received-From: 209.132.183.28
 Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
 	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
-	shannon.zhao@linaro.org, pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] hw/9pfs/virtio-9p-posix-acl: Fix
-	out-of-bounds access
+	aneesh.kumar@linux.vnet.ibm.com, shannon.zhao@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH] hw/9pfs/virtio-9p-proxy: Fix possible
+	overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,34 +52,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Mar 2015 08:33:08 -0000
+X-List-Received-Date: Fri, 13 Mar 2015 12:51:10 -0000
 
-Shannon Zhao <zhaoshenglong@huawei.com> writes:
 
-> It's detected by coverity. Fix out-of-bounds access of the function mp_dacl_listxattr.
->
-> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-> ---
->  hw/9pfs/virtio-9p-posix-acl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/9pfs/virtio-9p-posix-acl.c b/hw/9pfs/virtio-9p-posix-acl.c
-> index 803d9d9..09dad07 100644
-> --- a/hw/9pfs/virtio-9p-posix-acl.c
-> +++ b/hw/9pfs/virtio-9p-posix-acl.c
-> @@ -114,7 +114,7 @@ static ssize_t mp_dacl_listxattr(FsContext *ctx, const char *path,
+
+On 13/03/2015 12:09, Shannon Zhao wrote:
+> +    g_assert(strlen(path) < sizeof(helper.sun_path));
+
+Ok.
+
+>      sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+>      if (sockfd < 0) {
+>          fprintf(stderr, "failed to create socket: %s\n", strerror(errno));
+>          return -1;
 >      }
->
->      /* len includes the trailing NUL */
-> -    memcpy(value, ACL_ACCESS, len);
-> +    memcpy(value, ACL_DEFAULT, len);
->      return 0;
->  }
+> -    strcpy(helper.sun_path, path);
+> +    strncpy(helper.sun_path, path, sizeof(helper.sun_path));
 
-Applied.
+strcpy is okay here.  strncpy makes people think of what happens if
+strlen(path) == sizeof(helper.sun_path).  While this cannot happen here
+because of the assertion, the function should still be used with care.
 
-Thanks
--aneesh
-
+Paolo
 
