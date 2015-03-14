@@ -1,44 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWanF-0006RF-VI
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2015 21:23:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56719)
+	id 1YWbO0-00063z-7a
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2015 22:01:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YWanE-0006PI-6B
-	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 21:23:08 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YWbNx-0005pX-AU
+	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 22:01:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YWanD-0002bZ-81
-	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 21:23:08 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:26775)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YWbNw-00025u-HC
+	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 22:01:05 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:31654)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1YWan6-0002ZD-Ik; Fri, 13 Mar 2015 21:23:01 -0400
-Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
+	id 1YWbNr-000243-Pp; Fri, 13 Mar 2015 22:01:00 -0400
+Received: from 172.24.2.119 (EHLO szxeml432-hub.china.huawei.com)
 	([172.24.2.119])
 	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CIL66717; Sat, 14 Mar 2015 09:19:34 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml428-hub.china.huawei.com
-	(10.82.67.183) with Microsoft SMTP Server id 14.3.158.1;
-	Sat, 14 Mar 2015 09:19:25 +0800
-Message-ID: <55038C9B.7050607@huawei.com>
-Date: Sat, 14 Mar 2015 09:19:23 +0800
+	with ESMTP id CIL68786; Sat, 14 Mar 2015 10:00:39 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	szxeml432-hub.china.huawei.com (10.82.67.209) with Microsoft SMTP
+	Server id 14.3.158.1; Sat, 14 Mar 2015 10:00:30 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+To: <qemu-devel@nongnu.org>
+Date: Sat, 14 Mar 2015 10:00:16 +0800
+Message-ID: <1426298416-884-1-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>, <qemu-devel@nongnu.org>
-References: <1426244956-5316-1-git-send-email-zhaoshenglong@huawei.com>
-	<5502DD26.6070401@redhat.com>
-In-Reply-To: <5502DD26.6070401@redhat.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.65
 Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
 	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
-	aneesh.kumar@linux.vnet.ibm.com, shannon.zhao@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH] hw/9pfs/virtio-9p-proxy: Fix possible
+	aneesh.kumar@linux.vnet.ibm.com, pbonzini@redhat.com,
+	shannon.zhao@linaro.org
+Subject: [Qemu-trivial] [PATCH v2] fsdev/virtfs-proxy-helper: Fix possible
 	overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -51,33 +47,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Mar 2015 01:23:09 -0000
+X-List-Received-Date: Sat, 14 Mar 2015 02:01:06 -0000
 
-On 2015/3/13 20:50, Paolo Bonzini wrote:
-> 
-> 
-> On 13/03/2015 12:09, Shannon Zhao wrote:
->> +    g_assert(strlen(path) < sizeof(helper.sun_path));
-> 
-> Ok.
-> 
->>      sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
->>      if (sockfd < 0) {
->>          fprintf(stderr, "failed to create socket: %s\n", strerror(errno));
->>          return -1;
->>      }
->> -    strcpy(helper.sun_path, path);
->> +    strncpy(helper.sun_path, path, sizeof(helper.sun_path));
-> 
-> strcpy is okay here.  strncpy makes people think of what happens if
-> strlen(path) == sizeof(helper.sun_path).  While this cannot happen here
-> because of the assertion, the function should still be used with care.
-> 
+It's detected by coverity. As max of sockaddr_un.sun_path is
+sizeof(helper.sun_path), should check the length of source
+and use strncpy instead of strcpy.
 
-Thanks, will fix along with the other patch.
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+    v1->v2: Still use strcpy [Paolo]
+---
+ fsdev/virtfs-proxy-helper.c | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+index bf2e5f3..13fe032 100644
+--- a/fsdev/virtfs-proxy-helper.c
++++ b/fsdev/virtfs-proxy-helper.c
+@@ -738,6 +738,7 @@ static int proxy_socket(const char *path, uid_t uid, gid_t gid)
+         return -1;
+     }
+ 
++    g_assert(strlen(path) < sizeof(proxy.sun_path));
+     sock = socket(AF_UNIX, SOCK_STREAM, 0);
+     if (sock < 0) {
+         do_perror("socket");
 -- 
-Thanks,
-Shannon
+1.8.3.1
+
 
 
