@@ -1,31 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWnjj-00012q-T5
-	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 11:12:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57394)
+	id 1YWoCY-0005Up-2J
+	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 11:42:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33191)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1YWnjh-000112-KY
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 11:12:22 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1YWoCV-0005RL-RR
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 11:42:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1YWnjg-0006HI-Sf
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 11:12:21 -0400
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:50535)
+	(envelope-from <stefan@weilnetz.de>) id 1YWoCU-00020Z-TJ
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 11:42:07 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:50582)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1YWnjf-0006G9-0i; Sat, 14 Mar 2015 11:12:19 -0400
+	id 1YWoCT-000200-1y; Sat, 14 Mar 2015 11:42:05 -0400
 Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 0B85917F713; Sat, 14 Mar 2015 16:12:16 +0100 (CET)
+	id E6A0317F713; Sat, 14 Mar 2015 16:42:01 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: QEMU Trivial <qemu-trivial@nongnu.org>
-Date: Sat, 14 Mar 2015 16:12:15 +0100
-Message-Id: <1426345935-7721-1-git-send-email-sw@weilnetz.de>
+Date: Sat, 14 Mar 2015 16:42:01 +0100
+Message-Id: <1426347721-8349-1-git-send-email-sw@weilnetz.de>
 X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2a03:4000:2:362::1
-Cc: Stefan Weil <sw@weilnetz.de>, Riku Voipio <riku.voipio@iki.fi>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH] linux-user: Add missing check for return
-	value of lock_user
+Cc: Stefan Weil <sw@weilnetz.de>, QEMU Developer <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] elf-loader: Add missing error handling for
+	call of lseek
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,37 +36,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Mar 2015 15:12:22 -0000
+X-List-Received-Date: Sat, 14 Mar 2015 15:42:08 -0000
 
-This fixes a warning from Coverity:
-"Dereference null return value (NULL_RETURNS)"
+This fixes a warning from Coverity.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- linux-user/flatload.c |    8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ include/hw/elf_ops.h |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/flatload.c b/linux-user/flatload.c
-index 566a7a8..56ac790 100644
---- a/linux-user/flatload.c
-+++ b/linux-user/flatload.c
-@@ -97,11 +97,13 @@ static int target_pread(int fd, abi_ulong ptr, abi_ulong len,
-                         abi_ulong offset)
- {
-     void *buf;
--    int ret;
-+    int ret = -TARGET_EFAULT;
+diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+index 16a627b..bd71968 100644
+--- a/include/hw/elf_ops.h
++++ b/include/hw/elf_ops.h
+@@ -315,7 +315,9 @@ static int glue(load_elf, SZ)(const char *name, int fd,
+     glue(load_symbols, SZ)(&ehdr, fd, must_swab, clear_lsb);
  
-     buf = lock_user(VERIFY_WRITE, ptr, len, 0);
--    ret = pread(fd, buf, len, offset);
--    unlock_user(buf, ptr, len);
-+    if (buf) {
-+        ret = pread(fd, buf, len, offset);
-+        unlock_user(buf, ptr, len);
+     size = ehdr.e_phnum * sizeof(phdr[0]);
+-    lseek(fd, ehdr.e_phoff, SEEK_SET);
++    if (lseek(fd, ehdr.e_phoff, SEEK_SET) != ehdr.e_phoff) {
++        goto fail;
 +    }
-     return ret;
- }
- /****************************************************************************/
+     phdr = g_malloc0(size);
+     if (!phdr)
+         goto fail;
 -- 
 1.7.10.4
 
