@@ -1,53 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWfQN-0006LM-NQ
-	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 02:19:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48576)
+	id 1YWfQO-0006Me-E0
+	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 02:19:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQL-0006GZ-8d
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQL-0006HB-Ju
 	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQC-0004BR-G6
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQE-0004CW-Qm
 	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:49 -0400
-Received: from e06smtp13.uk.ibm.com ([195.75.94.109]:38770)
+Received: from e06smtp15.uk.ibm.com ([195.75.94.111]:44940)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQC-0004Am-62
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:40 -0400
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQE-0004C9-IH
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:42 -0400
 Received: from /spool/local
-	by e06smtp13.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e06smtp15.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
-	Sat, 14 Mar 2015 06:19:39 -0000
-Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
-	by e06smtp13.uk.ibm.com (192.168.101.143) with IBM ESMTP SMTP Gateway:
+	Sat, 14 Mar 2015 06:19:41 -0000
+Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
+	by e06smtp15.uk.ibm.com (192.168.101.145) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Sat, 14 Mar 2015 06:19:35 -0000
+	Sat, 14 Mar 2015 06:19:38 -0000
 Received: from b06cxnps3075.portsmouth.uk.ibm.com
 	(d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
-	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 06F5C1B0804B; 
-	Sat, 14 Mar 2015 06:19:57 +0000 (GMT)
+	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 5B9C917D8059; 
+	Sat, 14 Mar 2015 06:20:01 +0000 (GMT)
 Received: from d06av07.portsmouth.uk.ibm.com (d06av07.portsmouth.uk.ibm.com
 	[9.149.37.248])
 	by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t2E6JZq78585686; Sat, 14 Mar 2015 06:19:35 GMT
+	ESMTP id t2E6JcNi64290834; Sat, 14 Mar 2015 06:19:38 GMT
 Received: from d06av07.portsmouth.uk.ibm.com (localhost [127.0.0.1])
 	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id t2E6JZpZ013373; Sat, 14 Mar 2015 02:19:35 -0400
+	ESMTP id t2E6JbRi013428; Sat, 14 Mar 2015 02:19:37 -0400
 Received: from oc7435384737.ibm.com (sig-9-84-84-76.evts.de.ibm.com
 	[9.84.84.76])
 	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id t2E6JYkS013361; Sat, 14 Mar 2015 02:19:34 -0400
+	ESMTP id t2E6JYkX013361; Sat, 14 Mar 2015 02:19:37 -0400
 From: Thomas Huth <thuth@linux.vnet.ibm.com>
 To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Sat, 14 Mar 2015 07:19:27 +0100
-Message-Id: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
+Date: Sat, 14 Mar 2015 07:19:32 +0100
+Message-Id: <1426313974-25607-6-git-send-email-thuth@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.7.1
+In-Reply-To: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
+References: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15031406-0013-0000-0000-0000034D613E
+x-cbid: 15031406-0021-0000-0000-0000033A3333
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.109
+X-Received-From: 195.75.94.111
 Cc: Thomas Huth <thuth@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH v2 0/7] Remove more unused functions
+Subject: [Qemu-trivial] [PATCH v2 5/7] usb: Remove unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,48 +63,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 14 Mar 2015 06:19:50 -0000
 
-Here are some more patches to remove completely unused functions
-from QEMU. Please review carefully, some of the functions might
-still get usefull in the future again, so if you discover one,
-please let me know, then I'll remove it from the patch series
-again.
+Delete set_usb_string(), usb_ep_get_ifnum(), usb_ep_get_max_packet_size()
+usb_ep_get_max_streams() and usb_ep_set_pipeline() since they are
+not used anymore.
 
-v2: Changed series according to review comment from v1:
-- Dropped the patch to remove portio_list_destroy() and portio_list_del()
-- Keep the ARI functions in the pci patch since they might get useful again
+Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/usb/core.c    |   41 -----------------------------------------
+ include/hw/usb.h |    5 -----
+ 2 files changed, 0 insertions(+), 46 deletions(-)
 
-Thomas Huth (7):
-  migration: Remove unused functions
-  vmxnet: Remove unused function vmxnet_rx_pkt_get_num_frags()
-  pci: Remove unused function ich9_d2pbr_init()
-  monitor: Remove unused functions
-  usb: Remove unused functions
-  util: Remove unused functions
-  Remove various unused functions
-
- backends/tpm.c                   |   11 ------
- hmp.h                            |    1 -
- hw/char/serial.c                 |    7 ----
- hw/net/vmxnet_rx_pkt.c           |    7 ----
- hw/net/vmxnet_rx_pkt.h           |    9 -----
- hw/pci-bridge/i82801b11.c        |   21 ------------
- hw/usb/core.c                    |   41 -----------------------
- include/hw/char/serial.h         |    1 -
- include/hw/i386/ich9.h           |    1 -
- include/hw/usb.h                 |    5 ---
- include/migration/migration.h    |    1 -
- include/migration/qemu-file.h    |    2 -
- include/monitor/monitor.h        |    1 -
- include/qemu-common.h            |    4 --
- include/qemu/compatfd.h          |    1 -
- include/sysemu/iothread.h        |    1 -
- include/sysemu/tpm_backend_int.h |    2 -
- iothread.c                       |   12 -------
- migration/migration.c            |    9 -----
- migration/qemu-file-buf.c        |   53 ------------------------------
- monitor.c                        |   13 -------
- util/compatfd.c                  |   19 -----------
- util/osdep.c                     |   66 --------------------------------------
- 23 files changed, 0 insertions(+), 288 deletions(-)
+diff --git a/hw/usb/core.c b/hw/usb/core.c
+index cf34755..d0025db 100644
+--- a/hw/usb/core.c
++++ b/hw/usb/core.c
+@@ -331,23 +331,6 @@ void usb_generic_async_ctrl_complete(USBDevice *s, USBPacket *p)
+     usb_packet_complete(s, p);
+ }
+ 
+-/* XXX: fix overflow */
+-int set_usb_string(uint8_t *buf, const char *str)
+-{
+-    int len, i;
+-    uint8_t *q;
+-
+-    q = buf;
+-    len = strlen(str);
+-    *q++ = 2 * len + 2;
+-    *q++ = 3;
+-    for(i = 0; i < len; i++) {
+-        *q++ = str[i];
+-        *q++ = 0;
+-    }
+-    return q - buf;
+-}
+-
+ USBDevice *usb_find_device(USBPort *port, uint8_t addr)
+ {
+     USBDevice *dev = port->dev;
+@@ -749,12 +732,6 @@ void usb_ep_set_type(USBDevice *dev, int pid, int ep, uint8_t type)
+     uep->type = type;
+ }
+ 
+-uint8_t usb_ep_get_ifnum(USBDevice *dev, int pid, int ep)
+-{
+-    struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+-    return uep->ifnum;
+-}
+-
+ void usb_ep_set_ifnum(USBDevice *dev, int pid, int ep, uint8_t ifnum)
+ {
+     struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+@@ -782,12 +759,6 @@ void usb_ep_set_max_packet_size(USBDevice *dev, int pid, int ep,
+     uep->max_packet_size = size * microframes;
+ }
+ 
+-int usb_ep_get_max_packet_size(USBDevice *dev, int pid, int ep)
+-{
+-    struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+-    return uep->max_packet_size;
+-}
+-
+ void usb_ep_set_max_streams(USBDevice *dev, int pid, int ep, uint8_t raw)
+ {
+     struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+@@ -801,18 +772,6 @@ void usb_ep_set_max_streams(USBDevice *dev, int pid, int ep, uint8_t raw)
+     }
+ }
+ 
+-int usb_ep_get_max_streams(USBDevice *dev, int pid, int ep)
+-{
+-    struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+-    return uep->max_streams;
+-}
+-
+-void usb_ep_set_pipeline(USBDevice *dev, int pid, int ep, bool enabled)
+-{
+-    struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+-    uep->pipeline = enabled;
+-}
+-
+ void usb_ep_set_halted(USBDevice *dev, int pid, int ep, bool halted)
+ {
+     struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+diff --git a/include/hw/usb.h b/include/hw/usb.h
+index e6dfb87..bdd570a 100644
+--- a/include/hw/usb.h
++++ b/include/hw/usb.h
+@@ -445,15 +445,11 @@ void usb_ep_reset(USBDevice *dev);
+ void usb_ep_dump(USBDevice *dev);
+ struct USBEndpoint *usb_ep_get(USBDevice *dev, int pid, int ep);
+ uint8_t usb_ep_get_type(USBDevice *dev, int pid, int ep);
+-uint8_t usb_ep_get_ifnum(USBDevice *dev, int pid, int ep);
+ void usb_ep_set_type(USBDevice *dev, int pid, int ep, uint8_t type);
+ void usb_ep_set_ifnum(USBDevice *dev, int pid, int ep, uint8_t ifnum);
+ void usb_ep_set_max_packet_size(USBDevice *dev, int pid, int ep,
+                                 uint16_t raw);
+-int usb_ep_get_max_packet_size(USBDevice *dev, int pid, int ep);
+ void usb_ep_set_max_streams(USBDevice *dev, int pid, int ep, uint8_t raw);
+-int usb_ep_get_max_streams(USBDevice *dev, int pid, int ep);
+-void usb_ep_set_pipeline(USBDevice *dev, int pid, int ep, bool enabled);
+ void usb_ep_set_halted(USBDevice *dev, int pid, int ep, bool halted);
+ USBPacket *usb_ep_find_packet_by_id(USBDevice *dev, int pid, int ep,
+                                     uint64_t id);
+@@ -469,7 +465,6 @@ void usb_port_reset(USBPort *port);
+ void usb_device_reset(USBDevice *dev);
+ void usb_wakeup(USBEndpoint *ep, unsigned int stream);
+ void usb_generic_async_ctrl_complete(USBDevice *s, USBPacket *p);
+-int set_usb_string(uint8_t *buf, const char *str);
+ 
+ /* usb-linux.c */
+ USBDevice *usb_host_device_open(USBBus *bus, const char *devname);
+-- 
+1.7.1
 
 
