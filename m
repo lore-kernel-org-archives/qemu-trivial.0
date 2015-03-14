@@ -1,57 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWfQN-0006Jw-0A
+	id 1YWfQN-0006LM-NQ
 	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 02:19:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48569)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48576)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQK-0006G9-Qi
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:49 -0400
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQL-0006GZ-8d
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQD-0004Bm-BJ
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:48 -0400
-Received: from e06smtp10.uk.ibm.com ([195.75.94.106]:33860)
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQC-0004BR-G6
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:49 -0400
+Received: from e06smtp13.uk.ibm.com ([195.75.94.109]:38770)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQD-0004B7-1P
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:41 -0400
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQC-0004Am-62
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:40 -0400
 Received: from /spool/local
-	by e06smtp10.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e06smtp13.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
 	Sat, 14 Mar 2015 06:19:39 -0000
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp10.uk.ibm.com (192.168.101.140) with IBM ESMTP SMTP Gateway:
+Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
+	by e06smtp13.uk.ibm.com (192.168.101.143) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Sat, 14 Mar 2015 06:19:37 -0000
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
-	(d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 2B4BD17D805A; 
-	Sat, 14 Mar 2015 06:20:00 +0000 (GMT)
+	Sat, 14 Mar 2015 06:19:35 -0000
+Received: from b06cxnps3075.portsmouth.uk.ibm.com
+	(d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
+	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 06F5C1B0804B; 
+	Sat, 14 Mar 2015 06:19:57 +0000 (GMT)
 Received: from d06av07.portsmouth.uk.ibm.com (d06av07.portsmouth.uk.ibm.com
 	[9.149.37.248])
-	by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t2E6JacV46596242; Sat, 14 Mar 2015 06:19:36 GMT
+	by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t2E6JZq78585686; Sat, 14 Mar 2015 06:19:35 GMT
 Received: from d06av07.portsmouth.uk.ibm.com (localhost [127.0.0.1])
 	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id t2E6Ja9Q013402; Sat, 14 Mar 2015 02:19:36 -0400
+	ESMTP id t2E6JZpZ013373; Sat, 14 Mar 2015 02:19:35 -0400
 Received: from oc7435384737.ibm.com (sig-9-84-84-76.evts.de.ibm.com
 	[9.84.84.76])
 	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id t2E6JYkV013361; Sat, 14 Mar 2015 02:19:36 -0400
+	ESMTP id t2E6JYkS013361; Sat, 14 Mar 2015 02:19:34 -0400
 From: Thomas Huth <thuth@linux.vnet.ibm.com>
 To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Sat, 14 Mar 2015 07:19:30 +0100
-Message-Id: <1426313974-25607-4-git-send-email-thuth@linux.vnet.ibm.com>
+Date: Sat, 14 Mar 2015 07:19:27 +0100
+Message-Id: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.7.1
-In-Reply-To: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
-References: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15031406-0041-0000-0000-0000039465FB
+x-cbid: 15031406-0013-0000-0000-0000034D613E
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.106
-Cc: Thomas Huth <thuth@linux.vnet.ibm.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [Qemu-trivial] [PATCH v2 3/7] pci: Remove unused function
-	ich9_d2pbr_init()
+X-Received-From: 195.75.94.109
+Cc: Thomas Huth <thuth@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH v2 0/7] Remove more unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,63 +59,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Mar 2015 06:19:49 -0000
+X-List-Received-Date: Sat, 14 Mar 2015 06:19:50 -0000
 
-The function ich9_d2pbr_init() is completely unused and
-thus can be deleted.
+Here are some more patches to remove completely unused functions
+from QEMU. Please review carefully, some of the functions might
+still get usefull in the future again, so if you discover one,
+please let me know, then I'll remove it from the patch series
+again.
 
-Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
-Cc: Michael S. Tsirkin <mst@redhat.com>
----
- hw/pci-bridge/i82801b11.c |   21 ---------------------
- include/hw/i386/ich9.h    |    1 -
- 2 files changed, 0 insertions(+), 22 deletions(-)
+v2: Changed series according to review comment from v1:
+- Dropped the patch to remove portio_list_destroy() and portio_list_del()
+- Keep the ARI functions in the pci patch since they might get useful again
 
-diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
-index 14cd7fd..7e79bc0 100644
---- a/hw/pci-bridge/i82801b11.c
-+++ b/hw/pci-bridge/i82801b11.c
-@@ -101,27 +101,6 @@ static const TypeInfo i82801b11_bridge_info = {
-     .class_init    = i82801b11_bridge_class_init,
- };
- 
--PCIBus *ich9_d2pbr_init(PCIBus *bus, int devfn, int sec_bus)
--{
--    PCIDevice *d;
--    PCIBridge *br;
--    char buf[16];
--    DeviceState *qdev;
--
--    d = pci_create_multifunction(bus, devfn, true, "i82801b11-bridge");
--    if (!d) {
--        return NULL;
--    }
--    br = PCI_BRIDGE(d);
--    qdev = DEVICE(d);
--
--    snprintf(buf, sizeof(buf), "pci.%d", sec_bus);
--    pci_bridge_map_irq(br, buf, pci_swizzle_map_irq_fn);
--    qdev_init_nofail(qdev);
--
--    return pci_bridge_get_sec_bus(br);
--}
--
- static void d2pbr_register(void)
- {
-     type_register_static(&i82801b11_bridge_info);
-diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
-index 59ea25b..5cede9b 100644
---- a/include/hw/i386/ich9.h
-+++ b/include/hw/i386/ich9.h
-@@ -19,7 +19,6 @@ void ich9_lpc_set_irq(void *opaque, int irq_num, int level);
- int ich9_lpc_map_irq(PCIDevice *pci_dev, int intx);
- PCIINTxRoute ich9_route_intx_pin_to_irq(void *opaque, int pirq_pin);
- void ich9_lpc_pm_init(PCIDevice *pci_lpc);
--PCIBus *ich9_d2pbr_init(PCIBus *bus, int devfn, int sec_bus);
- I2CBus *ich9_smb_init(PCIBus *bus, int devfn, uint32_t smb_io_base);
- 
- #define ICH9_CC_SIZE                            (16 * 1024)     /* 16KB */
--- 
-1.7.1
+Thomas Huth (7):
+  migration: Remove unused functions
+  vmxnet: Remove unused function vmxnet_rx_pkt_get_num_frags()
+  pci: Remove unused function ich9_d2pbr_init()
+  monitor: Remove unused functions
+  usb: Remove unused functions
+  util: Remove unused functions
+  Remove various unused functions
+
+ backends/tpm.c                   |   11 ------
+ hmp.h                            |    1 -
+ hw/char/serial.c                 |    7 ----
+ hw/net/vmxnet_rx_pkt.c           |    7 ----
+ hw/net/vmxnet_rx_pkt.h           |    9 -----
+ hw/pci-bridge/i82801b11.c        |   21 ------------
+ hw/usb/core.c                    |   41 -----------------------
+ include/hw/char/serial.h         |    1 -
+ include/hw/i386/ich9.h           |    1 -
+ include/hw/usb.h                 |    5 ---
+ include/migration/migration.h    |    1 -
+ include/migration/qemu-file.h    |    2 -
+ include/monitor/monitor.h        |    1 -
+ include/qemu-common.h            |    4 --
+ include/qemu/compatfd.h          |    1 -
+ include/sysemu/iothread.h        |    1 -
+ include/sysemu/tpm_backend_int.h |    2 -
+ iothread.c                       |   12 -------
+ migration/migration.c            |    9 -----
+ migration/qemu-file-buf.c        |   53 ------------------------------
+ monitor.c                        |   13 -------
+ util/compatfd.c                  |   19 -----------
+ util/osdep.c                     |   66 --------------------------------------
+ 23 files changed, 0 insertions(+), 288 deletions(-)
 
 
