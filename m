@@ -1,55 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWfQZ-0006kO-TP
-	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 02:20:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48614)
+	id 1YWfyC-0003NC-Nb
+	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 02:54:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58127)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQN-0006K5-1t
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:59 -0400
+	(envelope-from <sw@weilnetz.de>) id 1YWfyB-0003Ll-2J
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:54:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQF-0004Cv-EZ
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:50 -0400
-Received: from e06smtp11.uk.ibm.com ([195.75.94.107]:60951)
+	(envelope-from <sw@weilnetz.de>) id 1YWfyA-0000Ua-7W
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:54:46 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:43638)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWfQF-0004Cb-6T
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:19:43 -0400
-Received: from /spool/local
-	by e06smtp11.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
-	Sat, 14 Mar 2015 06:19:42 -0000
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp11.uk.ibm.com (192.168.101.141) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Sat, 14 Mar 2015 06:19:38 -0000
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
-	(d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id A796017D805A; 
-	Sat, 14 Mar 2015 06:20:01 +0000 (GMT)
-Received: from d06av07.portsmouth.uk.ibm.com (d06av07.portsmouth.uk.ibm.com
-	[9.149.37.248])
-	by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t2E6Jckw3211592; Sat, 14 Mar 2015 06:19:38 GMT
-Received: from d06av07.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id t2E6JcM1013450; Sat, 14 Mar 2015 02:19:38 -0400
-Received: from oc7435384737.ibm.com (sig-9-84-84-76.evts.de.ibm.com
-	[9.84.84.76])
-	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id t2E6JYkY013361; Sat, 14 Mar 2015 02:19:37 -0400
-From: Thomas Huth <thuth@linux.vnet.ibm.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Sat, 14 Mar 2015 07:19:33 +0100
-Message-Id: <1426313974-25607-7-git-send-email-thuth@linux.vnet.ibm.com>
-X-Mailer: git-send-email 1.7.1
-In-Reply-To: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
-References: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15031406-0041-0000-0000-000003B69E6D
+	(envelope-from <sw@weilnetz.de>)
+	id 1YWfy1-0000Su-K2; Sat, 14 Mar 2015 02:54:37 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	7549711810A5; Sat, 14 Mar 2015 07:54:35 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 6KKOyH_LDqow; Sat, 14 Mar 2015 07:54:24 +0100 (CET)
+Received: from [192.168.178.24] (p54AC89A6.dip0.t-ipconnect.de
+	[84.172.137.166])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	E90DD1180F74; Sat, 14 Mar 2015 07:54:23 +0100 (CET)
+Message-ID: <5503DB1F.8080305@weilnetz.de>
+Date: Sat, 14 Mar 2015 07:54:23 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.5.0
+MIME-Version: 1.0
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
+References: <1426303825-9040-1-git-send-email-zhaoshenglong@huawei.com>
+In-Reply-To: <1426303825-9040-1-git-send-email-zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset=iso-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.107
-Cc: Thomas Huth <thuth@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH v2 6/7] util: Remove unused functions
+X-Received-From: 37.221.199.173
+Cc: peter.maydell@linaro.org, hangaohuai@huawei.com,
+	zhang.zhanghailiang@huawei.com, qemu-trivial@nongnu.org,
+	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
+	shannon.zhao@linaro.org, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qga/commands-posix: Fix
+	resource leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,150 +54,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Mar 2015 06:19:59 -0000
+X-List-Received-Date: Sat, 14 Mar 2015 06:54:48 -0000
 
-Delete the unused functions qemu_signalfd_available(),
-qemu_send_full() and qemu_recv_full().
+Am 14.03.2015 um 04:30 schrieb Shannon Zhao:
+> It's detected by coverity. Close the dirfd.
+>
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> ---
+>   qga/commands-posix.c | 2 ++
+>   1 file changed, 2 insertions(+)
+>
+> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+> index d5bb5cb..cbf1c80 100644
+> --- a/qga/commands-posix.c
+> +++ b/qga/commands-posix.c
+> @@ -2285,6 +2285,7 @@ GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
+>       ga_read_sysfs_file(dirfd, "block_size_bytes", buf, 20, &local_err);
 
-Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
----
- include/qemu-common.h   |    4 ---
- include/qemu/compatfd.h |    1 -
- util/compatfd.c         |   19 -------------
- util/osdep.c            |   66 -----------------------------------------------
- 4 files changed, 0 insertions(+), 90 deletions(-)
+Why not closing it here? It's no longer needed.
 
-diff --git a/include/qemu-common.h b/include/qemu-common.h
-index 1b5cffb..6b373ff 100644
---- a/include/qemu-common.h
-+++ b/include/qemu-common.h
-@@ -217,10 +217,6 @@ void *qemu_oom_check(void *ptr);
- 
- ssize_t qemu_write_full(int fd, const void *buf, size_t count)
-     QEMU_WARN_UNUSED_RESULT;
--ssize_t qemu_send_full(int fd, const void *buf, size_t count, int flags)
--    QEMU_WARN_UNUSED_RESULT;
--ssize_t qemu_recv_full(int fd, void *buf, size_t count, int flags)
--    QEMU_WARN_UNUSED_RESULT;
- 
- #ifndef _WIN32
- int qemu_pipe(int pipefd[2]);
-diff --git a/include/qemu/compatfd.h b/include/qemu/compatfd.h
-index 6b04877..fc37915 100644
---- a/include/qemu/compatfd.h
-+++ b/include/qemu/compatfd.h
-@@ -39,6 +39,5 @@ struct qemu_signalfd_siginfo {
- };
- 
- int qemu_signalfd(const sigset_t *mask);
--bool qemu_signalfd_available(void);
- 
- #endif
-diff --git a/util/compatfd.c b/util/compatfd.c
-index 341ada6..e857150 100644
---- a/util/compatfd.c
-+++ b/util/compatfd.c
-@@ -108,22 +108,3 @@ int qemu_signalfd(const sigset_t *mask)
- 
-     return qemu_signalfd_compat(mask);
- }
--
--bool qemu_signalfd_available(void)
--{
--#ifdef CONFIG_SIGNALFD
--    sigset_t mask;
--    int fd;
--    bool ok;
--    sigemptyset(&mask);
--    errno = 0;
--    fd = syscall(SYS_signalfd, -1, &mask, _NSIG / 8);
--    ok = (errno != ENOSYS);
--    if (fd >= 0) {
--        close(fd);
--    }
--    return ok;
--#else
--    return false;
--#endif
--}
-diff --git a/util/osdep.c b/util/osdep.c
-index b2bd154..f938b69 100644
---- a/util/osdep.c
-+++ b/util/osdep.c
-@@ -310,72 +310,6 @@ int qemu_accept(int s, struct sockaddr *addr, socklen_t *addrlen)
-     return ret;
- }
- 
--/*
-- * A variant of send(2) which handles partial write.
-- *
-- * Return the number of bytes transferred, which is only
-- * smaller than `count' if there is an error.
-- *
-- * This function won't work with non-blocking fd's.
-- * Any of the possibilities with non-bloking fd's is bad:
-- *   - return a short write (then name is wrong)
-- *   - busy wait adding (errno == EAGAIN) to the loop
-- */
--ssize_t qemu_send_full(int fd, const void *buf, size_t count, int flags)
--{
--    ssize_t ret = 0;
--    ssize_t total = 0;
--
--    while (count) {
--        ret = send(fd, buf, count, flags);
--        if (ret < 0) {
--            if (errno == EINTR) {
--                continue;
--            }
--            break;
--        }
--
--        count -= ret;
--        buf += ret;
--        total += ret;
--    }
--
--    return total;
--}
--
--/*
-- * A variant of recv(2) which handles partial write.
-- *
-- * Return the number of bytes transferred, which is only
-- * smaller than `count' if there is an error.
-- *
-- * This function won't work with non-blocking fd's.
-- * Any of the possibilities with non-bloking fd's is bad:
-- *   - return a short write (then name is wrong)
-- *   - busy wait adding (errno == EAGAIN) to the loop
-- */
--ssize_t qemu_recv_full(int fd, void *buf, size_t count, int flags)
--{
--    ssize_t ret = 0;
--    ssize_t total = 0;
--
--    while (count) {
--        ret = qemu_recv(fd, buf, count, flags);
--        if (ret <= 0) {
--            if (ret < 0 && errno == EINTR) {
--                continue;
--            }
--            break;
--        }
--
--        count -= ret;
--        buf += ret;
--        total += ret;
--    }
--
--    return total;
--}
--
- void qemu_set_version(const char *version)
- {
-     qemu_version = version;
--- 
-1.7.1
+>       if (local_err) {
+>           g_free(buf);
+> +        close(dirfd);
+>           error_propagate(errp, local_err);
+>           return NULL;
+>       }
+> @@ -2293,6 +2294,7 @@ GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
+>       info->size = strtol(buf, NULL, 16); /* the unit is bytes */
+>   
+>       g_free(buf);
+> +    close(dirfd);
+>   
+>       return info;
+>   }
 
 
