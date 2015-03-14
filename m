@@ -1,40 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWd1d-0003UD-C4
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Mar 2015 23:46:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60954)
+	id 1YWei5-0002ux-Gc
+	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 01:34:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YWd1b-0003Oo-Bp
-	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 23:46:08 -0400
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWei0-0002oN-2e
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 01:34:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YWd1a-0000yv-CP
-	for qemu-trivial@nongnu.org; Fri, 13 Mar 2015 23:46:07 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:47849)
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWehj-0002zZ-Cx
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 01:34:00 -0400
+Received: from e06smtp13.uk.ibm.com ([195.75.94.109]:35382)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1YWd1Q-0000xT-Fp; Fri, 13 Mar 2015 23:45:57 -0400
-Received: from 172.24.2.119 (EHLO szxeml434-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CIL74458; Sat, 14 Mar 2015 11:42:35 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml434-hub.china.huawei.com (10.82.67.225) with Microsoft SMTP
-	Server id 14.3.158.1; Sat, 14 Mar 2015 11:42:27 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Sat, 14 Mar 2015 11:42:10 +0800
-Message-ID: <1426304530-9600-1-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
-	shannon.zhao@linaro.org, pbonzini@redhat.com
-Subject: [Qemu-trivial] [PATCH] hw/bt/sdp: Fix resource leak detect by
-	coverity
+	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YWehj-0002xW-28
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 01:33:43 -0400
+Received: from /spool/local
+	by e06smtp13.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
+	Sat, 14 Mar 2015 05:33:40 -0000
+Received: from d06dlp02.portsmouth.uk.ibm.com (9.149.20.14)
+	by e06smtp13.uk.ibm.com (192.168.101.143) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Sat, 14 Mar 2015 05:33:37 -0000
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+	(d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+	by d06dlp02.portsmouth.uk.ibm.com (Postfix) with ESMTP id EACD6219004D; 
+	Sat, 14 Mar 2015 05:33:26 +0000 (GMT)
+Received: from d06av09.portsmouth.uk.ibm.com (d06av09.portsmouth.uk.ibm.com
+	[9.149.37.250])
+	by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t2E5Xae77930278; Sat, 14 Mar 2015 05:33:36 GMT
+Received: from d06av09.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id t2E5XaS4025289; Fri, 13 Mar 2015 23:33:36 -0600
+Received: from oc7435384737.ibm.com (sig-9-84-84-76.evts.de.ibm.com
+	[9.84.84.76])
+	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id t2E5XZ7i025274; Fri, 13 Mar 2015 23:33:35 -0600
+From: Thomas Huth <thuth@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Date: Sat, 14 Mar 2015 06:33:35 +0100
+Message-Id: <1426311215-12764-1-git-send-email-thuth@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.7.1
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15031405-0013-0000-0000-0000034D577A
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.75.94.109
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH] hw/usb: Include USB files only if necessary
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,30 +59,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Mar 2015 03:46:08 -0000
+X-List-Received-Date: Sat, 14 Mar 2015 05:34:03 -0000
 
-Free data in function sdp_attr_write after use.
+Boards that do not include an USB controller should not provide
+USB devices. However, when running "qemu-system-s390x -device help"
+for example, there's still a usb-hub, usb-kbd, usb-mouse and
+usb-tablet in the list of "supported" devices. Let's fix that
+by compiling and linking the USB files only if it's really
+necessary.
 
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
 ---
- hw/bt/sdp.c | 1 +
- 1 file changed, 1 insertion(+)
+ default-configs/arm-softmmu.mak |    1 +
+ default-configs/usb.mak         |    1 +
+ hw/usb/Makefile.objs            |    8 ++++----
+ 3 files changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/hw/bt/sdp.c b/hw/bt/sdp.c
-index 218e075..8e6d5e3 100644
---- a/hw/bt/sdp.c
-+++ b/hw/bt/sdp.c
-@@ -735,6 +735,7 @@ static void sdp_service_record_build(struct sdp_service_record_s *record,
-         record->attribute_list[record->attributes ++].len = len;
-         data += len;
-     }
-+    g_free(data);
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 87d4e34..a767e4b 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -32,6 +32,7 @@ CONFIG_DS1338=y
+ CONFIG_PFLASH_CFI01=y
+ CONFIG_PFLASH_CFI02=y
+ CONFIG_MICRODRIVE=y
++CONFIG_USB=y
+ CONFIG_USB_MUSB=y
+ CONFIG_USB_EHCI_SYSBUS=y
+ CONFIG_PLATFORM_BUS=y
+diff --git a/default-configs/usb.mak b/default-configs/usb.mak
+index 73d8489..f4b8568 100644
+--- a/default-configs/usb.mak
++++ b/default-configs/usb.mak
+@@ -1,3 +1,4 @@
++CONFIG_USB=y
+ CONFIG_USB_TABLET_WACOM=y
+ CONFIG_USB_STORAGE_BOT=y
+ CONFIG_USB_STORAGE_UAS=y
+diff --git a/hw/usb/Makefile.objs b/hw/usb/Makefile.objs
+index 0ccd477..c514831 100644
+--- a/hw/usb/Makefile.objs
++++ b/hw/usb/Makefile.objs
+@@ -1,6 +1,6 @@
+ # usb subsystem core
+-common-obj-y += core.o combined-packet.o bus.o desc.o desc-msos.o
+-common-obj-y += libhw.o
++common-obj-y += core.o bus.o libhw.o
++common-obj-$(CONFIG_USB) +=  combined-packet.o desc.o desc-msos.o
  
-     /* Sort the attribute list by the AttributeID */
-     qsort(record->attribute_list, record->attributes,
+ # usb host adapters
+ common-obj-$(CONFIG_USB_UHCI) += hcd-uhci.o
+@@ -11,8 +11,8 @@ common-obj-$(CONFIG_USB_XHCI) += hcd-xhci.o
+ common-obj-$(CONFIG_USB_MUSB) += hcd-musb.o
+ 
+ # emulated usb devices
+-common-obj-y += dev-hub.o
+-common-obj-y += dev-hid.o
++common-obj-$(CONFIG_USB) += dev-hub.o
++common-obj-$(CONFIG_USB) += dev-hid.o
+ common-obj-$(CONFIG_USB_TABLET_WACOM) += dev-wacom.o
+ common-obj-$(CONFIG_USB_STORAGE_BOT)  += dev-storage.o
+ common-obj-$(CONFIG_USB_STORAGE_UAS)  += dev-uas.o
 -- 
-1.8.3.1
-
+1.7.1
 
 
