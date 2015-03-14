@@ -1,50 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWiAy-00059o-7P
-	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 05:16:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36073)
+	id 1YWig5-0007Jn-U2
+	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 05:48:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47631)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YWiAs-0004x6-6t
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 05:16:06 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YWig2-0007FO-VX
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 05:48:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YWiAl-0007ZK-N2
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 05:16:02 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:26867)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YWig2-0003PO-5n
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 05:48:14 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:34597)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1YWiAk-0007Yg-UU; Sat, 14 Mar 2015 05:15:55 -0400
-Received: from 172.24.2.119 (EHLO szxeml430-hub.china.huawei.com)
+	id 1YWifv-0003Mm-IR; Sat, 14 Mar 2015 05:48:09 -0400
+Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BDC01998; Sat, 14 Mar 2015 17:15:33 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml430-hub.china.huawei.com
-	(10.82.67.185) with Microsoft SMTP Server id 14.3.158.1;
-	Sat, 14 Mar 2015 17:15:25 +0800
-Message-ID: <5503FC2B.3090004@huawei.com>
-Date: Sat, 14 Mar 2015 17:15:23 +0800
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CIL94228; Sat, 14 Mar 2015 17:47:53 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	szxeml428-hub.china.huawei.com (10.82.67.183) with Microsoft SMTP
+	Server id 14.3.158.1; Sat, 14 Mar 2015 17:47:43 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+To: <qemu-devel@nongnu.org>
+Date: Sat, 14 Mar 2015 17:47:34 +0800
+Message-ID: <1426326454-7216-1-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, <qemu-devel@nongnu.org>
-References: <1426304530-9600-1-git-send-email-zhaoshenglong@huawei.com>
-	<5503DBDB.9040804@weilnetz.de>
-In-Reply-To: <5503DBDB.9040804@weilnetz.de>
-Content-Type: text/plain; charset="ISO-8859-15"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A0C0205.5503FC35.00D4, ss=1, re=0.001, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 443cf2996c8abcafe99e89fd747dc60f
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
+X-Received-From: 119.145.14.65
 Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
+	sw@weilnetz.de, mjt@tls.msk.ru, peter.huangpeng@huawei.com,
 	shannon.zhao@linaro.org, pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/bt/sdp: Fix resource
-	leak detect by coverity
+Subject: [Qemu-trivial] [PATCH] hw/bt/sdp: Fix resource leak detect by
+	coverity
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,39 +46,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Mar 2015 09:16:06 -0000
+X-List-Received-Date: Sat, 14 Mar 2015 09:48:16 -0000
 
-On 2015/3/14 14:57, Stefan Weil wrote:
-> Am 14.03.2015 um 04:42 schrieb Shannon Zhao:
->> Free data in function sdp_attr_write after use.
->>
->> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
->> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
->> ---
->>   hw/bt/sdp.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/bt/sdp.c b/hw/bt/sdp.c
->> index 218e075..8e6d5e3 100644
->> --- a/hw/bt/sdp.c
->> +++ b/hw/bt/sdp.c
->> @@ -735,6 +735,7 @@ static void sdp_service_record_build(struct sdp_service_record_s *record,
->>           record->attribute_list[record->attributes ++].len = len;
->>           data += len;
->>       }
->> +    g_free(data);
-> 
-> No, here more work is needed. data is no longer the original data,
-> because two lines above it is modified.
+Free data in function sdp_attr_write after use.
 
-Thanks for pointing out.
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+    For minimum modification, just add a variable to record the data.
+---
+ hw/bt/sdp.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-> 
->>         /* Sort the attribute list by the AttributeID */
->>       qsort(record->attribute_list, record->attributes,
-> 
-> 
-> .
-> 
+diff --git a/hw/bt/sdp.c b/hw/bt/sdp.c
+index 218e075..8be0d14 100644
+--- a/hw/bt/sdp.c
++++ b/hw/bt/sdp.c
+@@ -698,7 +698,7 @@ static void sdp_service_record_build(struct sdp_service_record_s *record,
+                 struct sdp_def_service_s *def, int handle)
+ {
+     int len = 0;
+-    uint8_t *data;
++    uint8_t *data, *pt;
+     int *uuid;
+ 
+     record->uuids = 0;
+@@ -712,7 +712,7 @@ static void sdp_service_record_build(struct sdp_service_record_s *record,
+             g_malloc0(record->attributes * sizeof(*record->attribute_list));
+     record->uuid =
+             g_malloc0(record->uuids * sizeof(*record->uuid));
+-    data = g_malloc(len);
++    pt = data = g_malloc(len);
+ 
+     record->attributes = 0;
+     uuid = record->uuid;
+@@ -735,6 +735,7 @@ static void sdp_service_record_build(struct sdp_service_record_s *record,
+         record->attribute_list[record->attributes ++].len = len;
+         data += len;
+     }
++    g_free(pt);
+ 
+     /* Sort the attribute list by the AttributeID */
+     qsort(record->attribute_list, record->attributes,
+-- 
+1.8.3.1
+
 
 
