@@ -1,47 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWg11-000588-Fm
-	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 02:57:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58806)
+	id 1YWgbF-0004sk-0Q
+	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 03:35:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39839)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1YWg0y-00057n-Nd
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:57:41 -0400
+	(envelope-from <dmitry@daynix.com>) id 1YWgbC-0004pk-IT
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 03:35:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1YWg0t-0001ae-Lb
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:57:40 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:43685)
+	(envelope-from <dmitry@daynix.com>) id 1YWgb7-0008Er-Qv
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 03:35:06 -0400
+Received: from mail-wg0-f53.google.com ([74.125.82.53]:36756)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1YWg0t-0001aa-Fu
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 02:57:35 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	E4FE211810A5; Sat, 14 Mar 2015 07:57:33 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id PKHt0ZhNi_rW; Sat, 14 Mar 2015 07:57:31 +0100 (CET)
-Received: from [192.168.178.24] (p54AC89A6.dip0.t-ipconnect.de
-	[84.172.137.166])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	6FD1E1180F74; Sat, 14 Mar 2015 07:57:31 +0100 (CET)
-Message-ID: <5503DBDB.9040804@weilnetz.de>
-Date: Sat, 14 Mar 2015 07:57:31 +0100
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.5.0
-MIME-Version: 1.0
-To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
-References: <1426304530-9600-1-git-send-email-zhaoshenglong@huawei.com>
-In-Reply-To: <1426304530-9600-1-git-send-email-zhaoshenglong@huawei.com>
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
-	shannon.zhao@linaro.org, pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/bt/sdp: Fix resource
-	leak detect by coverity
+	(envelope-from <dmitry@daynix.com>) id 1YWgb7-0008Dr-M8
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 03:35:01 -0400
+Received: by wgra20 with SMTP id a20so4005490wgr.3
+	for <qemu-trivial@nongnu.org>; Sat, 14 Mar 2015 00:35:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:references:mime-version:in-reply-to:content-type
+	:content-transfer-encoding:message-id:cc:from:subject:date:to;
+	bh=lO/CrLcFpMEiI7KOif0m7VIQAalJWXpxf0nxL0qqct4=;
+	b=my9Ay4546bDmNSfUEf8IXNTU8siRc/0ZDwpbYjaT7fAp7Uf8cLhc2OIzarIGDdDOHK
+	UDbIixn5PmLtJBn/n0/P6/cPjWHoIw/rL0ME6nIkhBDijsoSBH+xfArNjUCtkhzJ40j5
+	2UOmeSYHa7la8GUNDA72KTbF7MQgI7BuwVlMXw7bt9cUB5XQi7fl334MIKuCaFqAFLIh
+	ABjj6P8rp0RCaGTTd/VQBQr8jv6nLe+aIJZ6GJtWZp7w9f1nIhoUX/m1crXMfLo6THYk
+	LCDzypvT1J+ovE3Z2WjUrgz1KP0PpsZYighf0tYuxzIlREabXRI+/b/37Bx+pZBMJ4XP
+	keag==
+X-Gm-Message-State: ALoCoQlj+gKzCVcqKhReWnpwogccFu2coR3bqadzW899o8FtwEc5ZCCszIdOYnqcIcJ1QUFTaWWP
+X-Received: by 10.194.174.106 with SMTP id br10mr51956208wjc.21.1426318499935; 
+	Sat, 14 Mar 2015 00:34:59 -0700 (PDT)
+Received: from [192.168.0.102] ([5.144.63.13])
+	by mx.google.com with ESMTPSA id hd10sm5890010wib.7.2015.03.14.00.34.58
+	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+	Sat, 14 Mar 2015 00:34:59 -0700 (PDT)
+References: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
+	<1426313974-25607-3-git-send-email-thuth@linux.vnet.ibm.com>
+Mime-Version: 1.0 (1.0)
+In-Reply-To: <1426313974-25607-3-git-send-email-thuth@linux.vnet.ibm.com>
+Content-Type: text/plain;
+	charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <EB8FB283-8330-47DC-93FF-0243A41974D4@daynix.com>
+X-Mailer: iPad Mail (12B466)
+From: Dmitry Fleytman <dmitry@daynix.com>
+Date: Sat, 14 Mar 2015 09:35:03 +0200
+To: Thomas Huth <thuth@linux.vnet.ibm.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.82.53
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH v2 2/7] vmxnet: Remove unused function
+	vmxnet_rx_pkt_get_num_frags()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,32 +62,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Mar 2015 06:57:41 -0000
+X-List-Received-Date: Sat, 14 Mar 2015 07:35:07 -0000
 
-Am 14.03.2015 um 04:42 schrieb Shannon Zhao:
-> Free data in function sdp_attr_write after use.
->
-> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+Looks good. Thanks.
+
+> On Mar 14, 2015, at 08:19, Thomas Huth <thuth@linux.vnet.ibm.com> wrote:
+>=20
+> The function is not used anymore and thus can be deleted.
+>=20
+> Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
+> Cc: Dmitry Fleytman <dmitry@daynix.com>
 > ---
->   hw/bt/sdp.c | 1 +
->   1 file changed, 1 insertion(+)
->
-> diff --git a/hw/bt/sdp.c b/hw/bt/sdp.c
-> index 218e075..8e6d5e3 100644
-> --- a/hw/bt/sdp.c
-> +++ b/hw/bt/sdp.c
-> @@ -735,6 +735,7 @@ static void sdp_service_record_build(struct sdp_service_record_s *record,
->           record->attribute_list[record->attributes ++].len = len;
->           data += len;
->       }
-> +    g_free(data);
-
-No, here more work is needed. data is no longer the original data,
-because two lines above it is modified.
-
->   
->       /* Sort the attribute list by the AttributeID */
->       qsort(record->attribute_list, record->attributes,
-
+> hw/net/vmxnet_rx_pkt.c |    7 -------
+> hw/net/vmxnet_rx_pkt.h |    9 ---------
+> 2 files changed, 0 insertions(+), 16 deletions(-)
+>=20
+> diff --git a/hw/net/vmxnet_rx_pkt.c b/hw/net/vmxnet_rx_pkt.c
+> index a40e346..acbca6a 100644
+> --- a/hw/net/vmxnet_rx_pkt.c
+> +++ b/hw/net/vmxnet_rx_pkt.c
+> @@ -172,13 +172,6 @@ bool vmxnet_rx_pkt_has_virt_hdr(struct VmxnetRxPkt *p=
+kt)
+>     return pkt->has_virt_hdr;
+> }
+>=20
+> -uint16_t vmxnet_rx_pkt_get_num_frags(struct VmxnetRxPkt *pkt)
+> -{
+> -    assert(pkt);
+> -
+> -    return pkt->vec_len;
+> -}
+> -
+> uint16_t vmxnet_rx_pkt_get_vlan_tag(struct VmxnetRxPkt *pkt)
+> {
+>     assert(pkt);
+> diff --git a/hw/net/vmxnet_rx_pkt.h b/hw/net/vmxnet_rx_pkt.h
+> index 6b2c60e..5f8352a 100644
+> --- a/hw/net/vmxnet_rx_pkt.h
+> +++ b/hw/net/vmxnet_rx_pkt.h
+> @@ -114,15 +114,6 @@ bool vmxnet_rx_pkt_is_vlan_stripped(struct VmxnetRxPk=
+t *pkt);
+> bool vmxnet_rx_pkt_has_virt_hdr(struct VmxnetRxPkt *pkt);
+>=20
+> /**
+> - * returns number of frags attached to the packet
+> - *
+> - * @pkt:            packet
+> - * @ret:            number of frags
+> - *
+> - */
+> -uint16_t vmxnet_rx_pkt_get_num_frags(struct VmxnetRxPkt *pkt);
+> -
+> -/**
+>  * attach data to rx packet
+>  *
+>  * @pkt:            packet
+> --=20
+> 1.7.1
+>=20
 
