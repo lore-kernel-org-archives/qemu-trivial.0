@@ -1,56 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YWgbF-0004sk-0Q
-	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 03:35:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39839)
+	id 1YWh7o-0003YS-UR
+	for mharc-qemu-trivial@gnu.org; Sat, 14 Mar 2015 04:08:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46745)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1YWgbC-0004pk-IT
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 03:35:07 -0400
+	(envelope-from <armbru@redhat.com>) id 1YWh7m-0003Uv-79
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 04:08:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1YWgb7-0008Er-Qv
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 03:35:06 -0400
-Received: from mail-wg0-f53.google.com ([74.125.82.53]:36756)
+	(envelope-from <armbru@redhat.com>) id 1YWh7l-0002Bw-A9
+	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 04:08:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34637)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1YWgb7-0008Dr-M8
-	for qemu-trivial@nongnu.org; Sat, 14 Mar 2015 03:35:01 -0400
-Received: by wgra20 with SMTP id a20so4005490wgr.3
-	for <qemu-trivial@nongnu.org>; Sat, 14 Mar 2015 00:35:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:references:mime-version:in-reply-to:content-type
-	:content-transfer-encoding:message-id:cc:from:subject:date:to;
-	bh=lO/CrLcFpMEiI7KOif0m7VIQAalJWXpxf0nxL0qqct4=;
-	b=my9Ay4546bDmNSfUEf8IXNTU8siRc/0ZDwpbYjaT7fAp7Uf8cLhc2OIzarIGDdDOHK
-	UDbIixn5PmLtJBn/n0/P6/cPjWHoIw/rL0ME6nIkhBDijsoSBH+xfArNjUCtkhzJ40j5
-	2UOmeSYHa7la8GUNDA72KTbF7MQgI7BuwVlMXw7bt9cUB5XQi7fl334MIKuCaFqAFLIh
-	ABjj6P8rp0RCaGTTd/VQBQr8jv6nLe+aIJZ6GJtWZp7w9f1nIhoUX/m1crXMfLo6THYk
-	LCDzypvT1J+ovE3Z2WjUrgz1KP0PpsZYighf0tYuxzIlREabXRI+/b/37Bx+pZBMJ4XP
-	keag==
-X-Gm-Message-State: ALoCoQlj+gKzCVcqKhReWnpwogccFu2coR3bqadzW899o8FtwEc5ZCCszIdOYnqcIcJ1QUFTaWWP
-X-Received: by 10.194.174.106 with SMTP id br10mr51956208wjc.21.1426318499935; 
-	Sat, 14 Mar 2015 00:34:59 -0700 (PDT)
-Received: from [192.168.0.102] ([5.144.63.13])
-	by mx.google.com with ESMTPSA id hd10sm5890010wib.7.2015.03.14.00.34.58
-	(version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-	Sat, 14 Mar 2015 00:34:59 -0700 (PDT)
-References: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
-	<1426313974-25607-3-git-send-email-thuth@linux.vnet.ibm.com>
-Mime-Version: 1.0 (1.0)
-In-Reply-To: <1426313974-25607-3-git-send-email-thuth@linux.vnet.ibm.com>
-Content-Type: text/plain;
-	charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <EB8FB283-8330-47DC-93FF-0243A41974D4@daynix.com>
-X-Mailer: iPad Mail (12B466)
-From: Dmitry Fleytman <dmitry@daynix.com>
-Date: Sat, 14 Mar 2015 09:35:03 +0200
-To: Thomas Huth <thuth@linux.vnet.ibm.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.53
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH v2 2/7] vmxnet: Remove unused function
-	vmxnet_rx_pkt_get_num_frags()
+	(envelope-from <armbru@redhat.com>)
+	id 1YWh7h-0002Ao-0g; Sat, 14 Mar 2015 04:08:41 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 6CC638F2E1;
+	Sat, 14 Mar 2015 08:08:39 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-36.ams2.redhat.com
+	[10.36.116.36])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t2E88bRb006891
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Sat, 14 Mar 2015 04:08:38 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 73C6530408AB; Sat, 14 Mar 2015 09:08:36 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+References: <1426251334-29445-1-git-send-email-pbonzini@redhat.com>
+	<5502EC71.9000009@redhat.com>
+Date: Sat, 14 Mar 2015 09:08:36 +0100
+In-Reply-To: <5502EC71.9000009@redhat.com> (Eric Blake's message of "Fri, 13
+	Mar 2015 07:56:01 -0600")
+Message-ID: <87h9to6lx7.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	famz@redhat.com, qemu-devel@nongnu.org, zhaoshenglong@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl: fix resource leak with
+	monitor_fdset_add_fd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,62 +53,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Mar 2015 07:35:07 -0000
+X-List-Received-Date: Sat, 14 Mar 2015 08:08:47 -0000
 
-Looks good. Thanks.
+Eric Blake <eblake@redhat.com> writes:
 
-> On Mar 14, 2015, at 08:19, Thomas Huth <thuth@linux.vnet.ibm.com> wrote:
->=20
-> The function is not used anymore and thus can be deleted.
->=20
-> Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
-> Cc: Dmitry Fleytman <dmitry@daynix.com>
-> ---
-> hw/net/vmxnet_rx_pkt.c |    7 -------
-> hw/net/vmxnet_rx_pkt.h |    9 ---------
-> 2 files changed, 0 insertions(+), 16 deletions(-)
->=20
-> diff --git a/hw/net/vmxnet_rx_pkt.c b/hw/net/vmxnet_rx_pkt.c
-> index a40e346..acbca6a 100644
-> --- a/hw/net/vmxnet_rx_pkt.c
-> +++ b/hw/net/vmxnet_rx_pkt.c
-> @@ -172,13 +172,6 @@ bool vmxnet_rx_pkt_has_virt_hdr(struct VmxnetRxPkt *p=
-kt)
->     return pkt->has_virt_hdr;
-> }
->=20
-> -uint16_t vmxnet_rx_pkt_get_num_frags(struct VmxnetRxPkt *pkt)
-> -{
-> -    assert(pkt);
-> -
-> -    return pkt->vec_len;
-> -}
-> -
-> uint16_t vmxnet_rx_pkt_get_vlan_tag(struct VmxnetRxPkt *pkt)
-> {
->     assert(pkt);
-> diff --git a/hw/net/vmxnet_rx_pkt.h b/hw/net/vmxnet_rx_pkt.h
-> index 6b2c60e..5f8352a 100644
-> --- a/hw/net/vmxnet_rx_pkt.h
-> +++ b/hw/net/vmxnet_rx_pkt.h
-> @@ -114,15 +114,6 @@ bool vmxnet_rx_pkt_is_vlan_stripped(struct VmxnetRxPk=
-t *pkt);
-> bool vmxnet_rx_pkt_has_virt_hdr(struct VmxnetRxPkt *pkt);
->=20
-> /**
-> - * returns number of frags attached to the packet
-> - *
-> - * @pkt:            packet
-> - * @ret:            number of frags
-> - *
-> - */
-> -uint16_t vmxnet_rx_pkt_get_num_frags(struct VmxnetRxPkt *pkt);
-> -
-> -/**
->  * attach data to rx packet
->  *
->  * @pkt:            packet
-> --=20
-> 1.7.1
->=20
+> On 03/13/2015 06:55 AM, Paolo Bonzini wrote:
+>> monitor_fdset_add_fd returns an AddfdInfo struct (used by the QMP
+>> command add_fd).  Free it.
+>> 
+>> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+>> ---
+>> 	v1->v2: line length [Fam], pass &error_abort [Shannon]
+>> ---
+>>  vl.c | 7 +++++--
+>>  1 file changed, 5 insertions(+), 2 deletions(-)
+>> 
+>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+>
+>> diff --git a/vl.c b/vl.c
+>> index eba5d4c..9eae8f9 100644
+>> --- a/vl.c
+>> +++ b/vl.c
+>> @@ -1011,6 +1011,7 @@ static int parse_add_fd(QemuOpts *opts, void *opaque)
+>>      int fd, dupfd, flags;
+>>      int64_t fdset_id;
+>>      const char *fd_opaque = NULL;
+>> +    AddfdInfo *fdinfo;
+>>  
+>>      fd = qemu_opt_get_number(opts, "fd", -1);
+>>      fdset_id = qemu_opt_get_number(opts, "set", -1);
+>> @@ -1060,8 +1061,10 @@ static int parse_add_fd(QemuOpts *opts, void *opaque)
+>>      }
+>>  
+>>      /* add the duplicate fd, and optionally the opaque string, to
+>> the fd set */
+>> -    monitor_fdset_add_fd(dupfd, true, fdset_id, fd_opaque ? true : false,
+>> -                         fd_opaque, NULL);
+>> +    fdinfo = monitor_fdset_add_fd(dupfd, true, fdset_id,
+>> +                                  fd_opaque ? true : false, fd_opaque,
+>
+> I might have written !!fd_opaque (as cond ? true : false always looks so
+> long), but that's cosmetic and doesn't affect the review.
+
+The use of ?: here borders on code obfuscation.  Please clean it up.
+
+If you can't stand !!fd_opaque, then use fd_opaque != NULL.
 
