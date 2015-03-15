@@ -1,41 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YX5iN-0006bE-6E
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Mar 2015 06:24:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41311)
+	id 1YX6Ww-0002wA-39
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Mar 2015 07:16:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47656)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YX5iL-0006YG-0t
-	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 06:24:09 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1YX6Wr-0002r0-4e
+	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 07:16:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YX5iK-0003dM-3m
-	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 06:24:08 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46036)
+	(envelope-from <peter.maydell@linaro.org>) id 1YX6Wk-0006wl-P8
+	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 07:16:21 -0400
+Received: from mail-ie0-f181.google.com ([209.85.223.181]:34979)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YX5iF-0003H3-PW; Sun, 15 Mar 2015 06:24:03 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id DD5F241A89;
-	Sun, 15 Mar 2015 13:23:54 +0300 (MSK)
-Message-ID: <55055DBA.9040804@msgid.tls.msk.ru>
-Date: Sun, 15 Mar 2015 13:23:54 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.5.0
+	(envelope-from <peter.maydell@linaro.org>) id 1YX6Wk-0006w4-Le
+	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 07:16:14 -0400
+Received: by ieclw3 with SMTP id lw3so150977421iec.2
+	for <qemu-trivial@nongnu.org>; Sun, 15 Mar 2015 04:16:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=thE0mozhc2pKLVruy5imfSykVDK2qTPJBBOBxNdX6KE=;
+	b=R3rG/x9v4vszuYy4vQS/cy3lpfrPQNf8U43QN2mroKjX1JAPYVZBstTIo8aQJGEcWD
+	PTGiy2EsgdJzz2GyIeUrONlHzGMTY5vHnQxrruHRR96itekyFAjFHq4PDLWW2XEJhofo
+	+n9YH/3hcxU/FL/h4QIPBE0sqQP6gPPmQ8e+Ie+16KgoiaoJsZrrrfSaXbuEUH9PiXYH
+	jVgp8Owv8aD4UCm7ixMxW4PK0vA5f4J/kE9hgQTa4gZ3h3By4mI3DB2HpLZxF5uUbOa3
+	YEkkiDIpiunGWhM+Fba8oufsMyP76Uwaza1NNsLZDF5OW62RtI996BRrWsyshis/TUZH
+	Yv5A==
+X-Gm-Message-State: ALoCoQlD/O5s7pSyVKEJ51KS5rYTVd1Dz2lGXWyRIpTVj/OJvDwkjd4W/x4uC1pHWBM8sOqjLay6
+X-Received: by 10.107.9.88 with SMTP id j85mr87185668ioi.60.1426418174125;
+	Sun, 15 Mar 2015 04:16:14 -0700 (PDT)
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>, Stefan Weil <sw@weilnetz.de>, 
-	Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
-References: <1426326454-7216-1-git-send-email-zhaoshenglong@huawei.com>
-	<55040865.8050908@weilnetz.de> <55054F1D.2080408@redhat.com>
-In-Reply-To: <55054F1D.2080408@redhat.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: 7bit
+Received: by 10.107.136.170 with HTTP; Sun, 15 Mar 2015 04:15:53 -0700 (PDT)
+In-Reply-To: <1426345935-7721-1-git-send-email-sw@weilnetz.de>
+References: <1426345935-7721-1-git-send-email-sw@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 15 Mar 2015 11:15:53 +0000
+Message-ID: <CAFEAcA8GaCcB0ga4EhLL9ePYV3xrixjgjr7CiRBQuR5NEJjgRA@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, hangaohuai@huawei.com,
-	peter.huangpeng@huawei.com, shannon.zhao@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH] hw/bt/sdp: Fix resource leak detect by
-	coverity
+	[fuzzy]
+X-Received-From: 209.85.223.181
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
+	QEMU Developer <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: Add missing
+ check for return value of lock_user
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,33 +55,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Mar 2015 10:24:10 -0000
+X-List-Received-Date: Sun, 15 Mar 2015 11:16:22 -0000
 
-15.03.2015 12:21, Paolo Bonzini wrote:
-> On 14/03/2015 11:07, Stefan Weil wrote:
->>
->> This fixes the memory leak, but I still don't understand what is done here.
->> data is allocated, then filled with values, now it is also deallocated.
->> But I'm missing the part where all those data is used.
-> 
-> "data" escapes in record->attribute_list[record->attributes].pair.
-> 
-> The bug is in bt_l2cap_sdp_close_ch which does an invalid free every
-> time it frees the first sdp->service_list[i].attribute_list->pair (but
-> the qsort could have moved it elsewhere in the list).  The right fix is
-> to do a separate malloc for each attribute, instead of a single one.
+On 14 March 2015 at 15:12, Stefan Weil <sw@weilnetz.de> wrote:
+> This fixes a warning from Coverity:
+> "Dereference null return value (NULL_RETURNS)"
+>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  linux-user/flatload.c |    8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+>
+> diff --git a/linux-user/flatload.c b/linux-user/flatload.c
+> index 566a7a8..56ac790 100644
+> --- a/linux-user/flatload.c
+> +++ b/linux-user/flatload.c
+> @@ -97,11 +97,13 @@ static int target_pread(int fd, abi_ulong ptr, abi_ulong len,
+>                          abi_ulong offset)
+>  {
+>      void *buf;
+> -    int ret;
+> +    int ret = -TARGET_EFAULT;
 
-Or, alternatively, to keep this `data' pointer in sdp to use it in
-bt_l2cap_sdp_close_ch().
+The return value for this function should be a host errno,
+not a target errno, I think. (If you track back upwards
+then eventually main.c calls loader_exec() and treats the
+return value as a host errno.) This seems like the right
+thing given that these loader functions are all pre-run
+setup, and are not involved in emulation of guest syscalls.
 
-> In any case, it seems simpler to just leave this code aside.
+>
+>      buf = lock_user(VERIFY_WRITE, ptr, len, 0);
+> -    ret = pread(fd, buf, len, offset);
+> -    unlock_user(buf, ptr, len);
+> +    if (buf) {
+> +        ret = pread(fd, buf, len, offset);
 
-How many times this code is called?
+A different bug, but if ret here indicates that pread()
+failed we should be returning -errno.
 
-We have many many places in qemu where resources are allocated once
-at startup and never freed just because there's no need to.
+> +        unlock_user(buf, ptr, len);
+> +    }
+>      return ret;
+>  }
 
-Thanks,
-
-/mjt
+-- PMM
 
