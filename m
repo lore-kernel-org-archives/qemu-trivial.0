@@ -1,57 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YX9Gs-0006PZ-12
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Mar 2015 10:12:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39381)
+	id 1YXAZz-0000k2-Bu
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Mar 2015 11:35:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50766)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YX9Gq-0006PS-2r
-	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 10:12:00 -0400
+	(envelope-from <jhindin@daynix.com>) id 1YXAZw-0000jX-Tm
+	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 11:35:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YX9Gl-0002eU-1I
-	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 10:12:00 -0400
-Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:35094)
+	(envelope-from <jhindin@daynix.com>) id 1YXAZo-0004hJ-W7
+	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 11:35:48 -0400
+Received: from mail-we0-f178.google.com ([74.125.82.178]:33713)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YX9Gk-0002e1-QG; Sun, 15 Mar 2015 10:11:54 -0400
-Received: by wibdy8 with SMTP id dy8so19392245wib.0;
-	Sun, 15 Mar 2015 07:11:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=KzeNAoqrqpA3jgQulf+ZFSZ+Icf7mToZWWKSmE4qbd0=;
-	b=VL1hztLhgH5ggHsokIiASDWahSYQnNoXmXQbB4vlc8iOTDm6825eOrDBj91tD0umpf
-	PfmG3rGU9BI4/zElZ9XtbO+bHqCbe+lxgcRUSWeUvEWhO9CRYO3PEMTgDDpjjDjsjKFX
-	h+P5lKausQNat2SIwqoIdEAUqLtN4KCTVnKyACygBZPH/fj9IMkek6YO5s6AjW9KeBsH
-	okNRHhKeic5qWejWUH1xACqiVGjTFjFRYyvnHGw7EdNPnva4s9Rq1W2qIJuwUAkNei72
-	0AsTBXYuX0NroUghsfDwTghxKf+lvLx+Cjxg88eLT4eM3gp8767DD+o7vmf63/SlV+ho
-	wOXQ==
-X-Received: by 10.194.71.175 with SMTP id w15mr109650498wju.16.1426428713721; 
-	Sun, 15 Mar 2015 07:11:53 -0700 (PDT)
-Received: from [192.168.10.165] (net-188-216-23-124.cust.vodafonedsl.it.
-	[188.216.23.124]) by mx.google.com with ESMTPSA id
-	a13sm11165036wjx.30.2015.03.15.07.11.50
+	(envelope-from <jhindin@daynix.com>) id 1YXAZo-0004gi-PJ
+	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 11:35:40 -0400
+Received: by wejb47 with SMTP id b47so22360927wej.0
+	for <qemu-trivial@nongnu.org>; Sun, 15 Mar 2015 08:35:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=cEA4bv0UMGQ/43pKoS5ClvamP4VE5yz6jE2+HHe4nK0=;
+	b=Ek3kvXUKU3IKdSiVszl6Y04cgUmjMJjbg9T06/wmVKAl++u7x0mp0zok1N4ZDOisUA
+	sO7tLyvmQNP76yU7eQGkD0Hz0e7oBaAdD7tP/d3bZsODk+Jn0zzhR7Rd18lIFHz3M+4a
+	5FX1rTTYLmhJ8/zqRQ3zXYqjfZ2vtWo9rBmor73u/wAWKjnSJHmSQZcDZvJMHAWPZKdR
+	8Xd96EIFS1zICHVaurb/N9Y88UqpZXQdvZFgiqOfrQ1UKEV10HkU94M0iiDWcb64Dtlu
+	1uCHPMa6otqnBwJ2VSdvcI0fcuNGbXwYck2M0MVP9rzsNmSy8A185c7xodBzuwz4HeIk
+	XFLA==
+X-Gm-Message-State: ALoCoQkXwMTeg1TA25mk4+X50HuHwEU3SXmZLS+BiplbTKfDIU2g1xlSmFnOotha5Sdm42O6I/pX
+X-Received: by 10.194.80.40 with SMTP id o8mr112117006wjx.34.1426433739256;
+	Sun, 15 Mar 2015 08:35:39 -0700 (PDT)
+Received: from Snarl.daynix ([91.205.155.63]) by mx.google.com with ESMTPSA id
+	ax10sm11423599wjc.26.2015.03.15.08.35.36
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Mar 2015 07:11:51 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <55059324.8030202@redhat.com>
-Date: Sun, 15 Mar 2015 15:11:48 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
-MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, Stefan Weil <sw@weilnetz.de>, 
-	Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
-References: <1426326454-7216-1-git-send-email-zhaoshenglong@huawei.com>	<55040865.8050908@weilnetz.de>
-	<55054F1D.2080408@redhat.com> <55055DBA.9040804@msgid.tls.msk.ru>
-In-Reply-To: <55055DBA.9040804@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22c
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, hangaohuai@huawei.com,
-	peter.huangpeng@huawei.com, shannon.zhao@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH] hw/bt/sdp: Fix resource leak detect by
-	coverity
+	Sun, 15 Mar 2015 08:35:38 -0700 (PDT)
+From: Joseph Hindin <jhindin@daynix.com>
+To: qemu-devel@nongnu.org
+Date: Sun, 15 Mar 2015 17:35:25 +0200
+Message-Id: <1426433726-21414-1-git-send-email-jhindin@daynix.com>
+X-Mailer: git-send-email 2.1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.82.178
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] Another solution for qga-vss stack protection issue
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,25 +52,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Mar 2015 14:12:00 -0000
+X-List-Received-Date: Sun, 15 Mar 2015 15:35:49 -0000
+
+qga/vss-win32/Makefile.objsi filters  out -fstack-protector-all option from C++ flags,
+but with commit 63678e17c configure script may add option -fstack-protector-strong,
+depending on availability. The suggested change filters out both option for qga-vss.dll
+linking.
+
+     Regards,
+          Joseph Hindin
 
 
-
-On 15/03/2015 11:23, Michael Tokarev wrote:
-> Or, alternatively, to keep this `data' pointer in sdp to use it in
-> bt_l2cap_sdp_close_ch().
-
-Yes.
-
->> > In any case, it seems simpler to just leave this code aside.
-> How many times this code is called?
-> 
-> We have many many places in qemu where resources are allocated once
-> at startup and never freed just because there's no need to.
-
-Well, in this case the bug in bt_l2cap_sdp_close_ch is much worse than a
-resource leak.  But bluetooth is not the utmost priority in QEMU
-development...
-
-Paolo
 
