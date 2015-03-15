@@ -1,46 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXAZz-0000k2-Bu
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Mar 2015 11:35:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50766)
+	id 1YXAa5-0000o7-GE
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Mar 2015 11:35:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50779)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jhindin@daynix.com>) id 1YXAZw-0000jX-Tm
-	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 11:35:49 -0400
+	(envelope-from <jhindin@daynix.com>) id 1YXAZx-0000jk-U5
+	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 11:35:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jhindin@daynix.com>) id 1YXAZo-0004hJ-W7
-	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 11:35:48 -0400
-Received: from mail-we0-f178.google.com ([74.125.82.178]:33713)
+	(envelope-from <jhindin@daynix.com>) id 1YXAZq-0004hj-0z
+	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 11:35:49 -0400
+Received: from mail-wi0-f172.google.com ([209.85.212.172]:37944)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jhindin@daynix.com>) id 1YXAZo-0004gi-PJ
-	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 11:35:40 -0400
-Received: by wejb47 with SMTP id b47so22360927wej.0
-	for <qemu-trivial@nongnu.org>; Sun, 15 Mar 2015 08:35:39 -0700 (PDT)
+	(envelope-from <jhindin@daynix.com>) id 1YXAZp-0004hZ-R2
+	for qemu-trivial@nongnu.org; Sun, 15 Mar 2015 11:35:41 -0400
+Received: by wifj2 with SMTP id j2so23605759wif.1
+	for <qemu-trivial@nongnu.org>; Sun, 15 Mar 2015 08:35:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=cEA4bv0UMGQ/43pKoS5ClvamP4VE5yz6jE2+HHe4nK0=;
-	b=Ek3kvXUKU3IKdSiVszl6Y04cgUmjMJjbg9T06/wmVKAl++u7x0mp0zok1N4ZDOisUA
-	sO7tLyvmQNP76yU7eQGkD0Hz0e7oBaAdD7tP/d3bZsODk+Jn0zzhR7Rd18lIFHz3M+4a
-	5FX1rTTYLmhJ8/zqRQ3zXYqjfZ2vtWo9rBmor73u/wAWKjnSJHmSQZcDZvJMHAWPZKdR
-	8Xd96EIFS1zICHVaurb/N9Y88UqpZXQdvZFgiqOfrQ1UKEV10HkU94M0iiDWcb64Dtlu
-	1uCHPMa6otqnBwJ2VSdvcI0fcuNGbXwYck2M0MVP9rzsNmSy8A185c7xodBzuwz4HeIk
-	XFLA==
-X-Gm-Message-State: ALoCoQkXwMTeg1TA25mk4+X50HuHwEU3SXmZLS+BiplbTKfDIU2g1xlSmFnOotha5Sdm42O6I/pX
-X-Received: by 10.194.80.40 with SMTP id o8mr112117006wjx.34.1426433739256;
-	Sun, 15 Mar 2015 08:35:39 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=uBqUV/+8EjUx3A2PAu/F9AdN7y6Imjn7Ywdwfuv1B+k=;
+	b=YZ8WCRmjjzeyj/J/OfAq6QvurgKZ78FwcPhQp3/7YLXcFSBspDdHPVRIOcBW8u1tx3
+	Avr22cwG6QSICnJrieMS2vibVA4YwPrF3DwU3AYECa/4OB80Etw/fCSzGEWWqH9tRW3y
+	zYFwJBcB7Ns+z3uglofrox2r0ml1jmNxusruUfKuaeOZnj0ebni1V2OWFWBO4+Fp9BnV
+	idCokqXmP3mcmvOpSsHusBPVTtiHrPs4039JHVyMQffMf2lRpi6JpBFlFhZ4JuEVBvVJ
+	6rl/Zbnya4WoD0fK/hmP/fRmjjvGx0XaeYdBiGsbLVe6kLmEIPTEv+22aooQN5NRp6Yk
+	0U7Q==
+X-Gm-Message-State: ALoCoQlueOuFw0BG8hgo8BDLMKKaaLxUBHAOoxVth0pDQWxBRspd4pVS4FSsdoa5Kj0rlOR7u+DP
+X-Received: by 10.180.84.133 with SMTP id z5mr113454448wiy.25.1426433741211;
+	Sun, 15 Mar 2015 08:35:41 -0700 (PDT)
 Received: from Snarl.daynix ([91.205.155.63]) by mx.google.com with ESMTPSA id
-	ax10sm11423599wjc.26.2015.03.15.08.35.36
+	ax10sm11423599wjc.26.2015.03.15.08.35.39
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Mar 2015 08:35:38 -0700 (PDT)
+	Sun, 15 Mar 2015 08:35:40 -0700 (PDT)
 From: Joseph Hindin <jhindin@daynix.com>
 To: qemu-devel@nongnu.org
-Date: Sun, 15 Mar 2015 17:35:25 +0200
-Message-Id: <1426433726-21414-1-git-send-email-jhindin@daynix.com>
+Date: Sun, 15 Mar 2015 17:35:26 +0200
+Message-Id: <1426433726-21414-2-git-send-email-jhindin@daynix.com>
 X-Mailer: git-send-email 2.1.0
+In-Reply-To: <1426433726-21414-1-git-send-email-jhindin@daynix.com>
+References: <1426433726-21414-1-git-send-email-jhindin@daynix.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 74.125.82.178
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] Another solution for qga-vss stack protection issue
+X-Received-From: 209.85.212.172
+Cc: qemu-trivial@nongnu.org, Joseph Hindin <jhindin@daynix.com>
+Subject: [Qemu-trivial] [PATCH] gemu-ga-win: configure script may add
+	-fstack-protector-strong option instead of -fstack-protector-all,
+	depending on availability ( see commit 63678e17c ). Both options have
+	to by filtered out for qga-vss.dll
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,15 +58,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Mar 2015 15:35:49 -0000
+X-List-Received-Date: Sun, 15 Mar 2015 15:35:55 -0000
 
-qga/vss-win32/Makefile.objsi filters  out -fstack-protector-all option from C++ flags,
-but with commit 63678e17c configure script may add option -fstack-protector-strong,
-depending on availability. The suggested change filters out both option for qga-vss.dll
-linking.
+Signed-off-by: Joseph Hindin <jhindin@daynix.com>
+---
+ qga/vss-win32/Makefile.objs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-     Regards,
-          Joseph Hindin
-
+diff --git a/qga/vss-win32/Makefile.objs b/qga/vss-win32/Makefile.objs
+index 6a69d50..7c96c6b 100644
+--- a/qga/vss-win32/Makefile.objs
++++ b/qga/vss-win32/Makefile.objs
+@@ -3,7 +3,7 @@
+ qga-vss-dll-obj-y += requester.o provider.o install.o
+ 
+ obj-qga-vss-dll-obj-y = $(addprefix $(obj)/, $(qga-vss-dll-obj-y))
+-$(obj-qga-vss-dll-obj-y): QEMU_CXXFLAGS = $(filter-out -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Wold-style-declaration -Wold-style-definition -Wredundant-decls -fstack-protector-all, $(QEMU_CFLAGS)) -Wno-unknown-pragmas -Wno-delete-non-virtual-dtor
++$(obj-qga-vss-dll-obj-y): QEMU_CXXFLAGS = $(filter-out -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Wold-style-declaration -Wold-style-definition -Wredundant-decls -fstack-protector-all -fstack-protector-strong, $(QEMU_CFLAGS)) -Wno-unknown-pragmas -Wno-delete-non-virtual-dtor
+ 
+ $(obj)/qga-vss.dll: LDFLAGS = -shared -Wl,--add-stdcall-alias,--enable-stdcall-fixup -lole32 -loleaut32 -lshlwapi -luuid -static
+ $(obj)/qga-vss.dll: $(obj-qga-vss-dll-obj-y) $(SRC_PATH)/$(obj)/qga-vss.def
+-- 
+2.1.0
 
 
